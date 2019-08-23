@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: ac3cb1d637eae1b4ee0a7db59efe631c7eb1ac6f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: abff902dc62ad7ae48f2ecedfbd52aeb96719093
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815264"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970383"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>Obsługa języka i regionu dla usług mowy
 
@@ -24,40 +24,40 @@ Różne języki są obsługiwane dla różnych funkcji usługi Speech Services. 
 
 ## <a name="speech-to-text"></a>Zamiany mowy na tekst
 
-Zarówno zestaw Microsoft Speech Recognition SDK, jak i interfejs API REST obsługują następujące języki (ustawienia regionalne). Różne poziomy możliwości dostosowania są dostępne dla każdego języka.
+Zarówno zestaw Microsoft Speech Recognition SDK, jak i interfejs API REST obsługują następujące języki (ustawienia regionalne). W celu poprawienia dokładności, dostosowanie jest oferowane dla podzestawu języków przez przekazanie zatranskrypcji audio + personalne lub powiązanego tekstu: Zdań.  Dostosowanie wymowy jest obecnie dostępne tylko dla en-US i de-DE. Więcej informacji na temat dostosowywania [znajdziesz tutaj](how-to-custom-speech.md).
 
-  Kod | Język | [Akustyczna](how-to-customize-acoustic-models.md) | [Dostosowania języka](how-to-customize-language-model.md) | [Wymowa dostosowania](how-to-customize-pronunciation.md)
- ------|----------|---------------------|---------------------|-------------------------
- ar EG | Arabski (Egipt), standard nowoczesne | Nie | Yes | Nie
- ES urzędu certyfikacji | Kataloński | Nie | Nie | Nie
- Akcelerator deweloperski w wersji DK | Duński (Dania) | Nie | Nie | Nie
- de-DE. | Niemiecki (Niemcy) | Yes | Yes | Tak
- EN-AU | Angielski (Australia) | Nie | Yes | Nie
- EN-CA | Angielski (Kanada) | Nie | Yes | Nie
- en-GB | Angielski (Zjednoczone Królestwo) | Nie | Yes | Nie
- EN-IN | English (India) | Yes | Yes | Nie
- EN NZ | Angielski (Nowa Zelandia) | Nie | Yes | Nie 
- en-US | Angielski (Stany Zjednoczone) | Yes | Yes | Yes
- es-ES | Hiszpański (Hiszpania) | Yes | Yes | Nie
- es-MX | Hiszpański (Meksyk) | Nie | Yes | Nie
- fi-FI | Fiński (Finlandia) | Nie | Nie | Nie
- fr-CA | Francuski (Kanada) | Nie | Yes | Nie
- fr-FR | Francuski (Francja) | Yes | Yes | Nie
- w | Hindi (Indie) | Nie | Yes | Nie
- IT-IT | Włoski (Włochy) | Yes | Yes | Nie
- ja-JP | Japoński (Japonia) | Nie | Yes | Nie
- ko-KR | Koreański (Korea) | Nie | Yes | Nie
- nb-NO | Norweski (Bokmal) (Norwegia) | Nie | Nie | Nie
- NL-NL | Holenderski (Holandia) | Nie | Yes | Nie
- pl-PL | Polski (Polska) | Nie | Nie | Nie
- pt-BR | Portugalski (Brazylia) | Yes | Yes | Nie
- pt-PT | Portugalski (Portugalia) | Nie | Yes | Nie
- ru-RU | Rosyjski (Rosja) | Yes | Yes | Nie
- sv-SE | Szwedzki (Szwecja) | Nie | Nie | Nie
- zh-CN | Chiński (mandaryński uproszczony) | Yes | Yes | Nie
- zh-HK | Chiński (kantoński, tradycyjny) | Nie | Yes | Nie
- zh-TW | Chiński (mandaryński tajwańskie) | Nie | Yes | Nie
- th TH | Tajski (Tajlandia) | Nie | Nie | Nie
+  Kod | Język | Obsługiwane | Modyfikowalne
+ ------|----------|---------------------|---------------------
+ ar EG | Arabski (Egipt), standard nowoczesne | Tak | Tak
+ ES urzędu certyfikacji | Kataloński | Tak | Nie
+ Akcelerator deweloperski w wersji DK | Duński (Dania) | Tak | Nie
+ de-DE. | Niemiecki (Niemcy) | Yes | Tak
+ EN-AU | Angielski (Australia) | Tak | Yes
+ EN-CA | Angielski (Kanada) | Tak | Yes
+ en-GB | Angielski (Zjednoczone Królestwo) | Tak | Yes
+ EN-IN | English (India) | Yes | Yes
+ EN NZ | Angielski (Nowa Zelandia) | Tak | Yes
+ en-US | Angielski (Stany Zjednoczone) | Yes | Yes
+ es-ES | Hiszpański (Hiszpania) | Yes | Tak
+ es-MX | Hiszpański (Meksyk) | Tak | Tak
+ fi-FI | Fiński (Finlandia) | Tak | Nie
+ fr-CA | Francuski (Kanada) | Tak | Tak
+ fr-FR | Francuski (Francja) | Yes | Tak
+ w | Hindi (Indie) | Tak | Tak
+ IT-IT | Włoski (Włochy) | Yes | Tak
+ ja-JP | Japoński (Japonia) | Tak | Tak
+ ko-KR | Koreański (Korea) | Tak | Tak
+ nb-NO | Norweski (Bokmal) (Norwegia) | Tak | Nie
+ NL-NL | Holenderski (Holandia) | Tak | Tak
+ pl-PL | Polski (Polska) | Tak | Nie
+ pt-BR | Portugalski (Brazylia) | Yes | Tak
+ pt-PT | Portugalski (Portugalia) | Tak | Tak
+ ru-RU | Rosyjski (Rosja) | Yes | Tak
+ sv-SE | Szwedzki (Szwecja) | Tak | Nie
+ zh-CN | Chiński (mandaryński uproszczony) | Yes | Tak
+ zh-HK | Chiński (kantoński, tradycyjny) | Tak | Tak
+ zh-TW | Chiński (mandaryński tajwańskie) | Tak | Tak
+ th TH | Tajski (Tajlandia) | Tak | Nie 
 
 
 ## <a name="text-to-speech"></a>Zamiana tekstu na mowę

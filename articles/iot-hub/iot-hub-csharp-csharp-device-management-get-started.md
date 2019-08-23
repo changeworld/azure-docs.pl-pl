@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 09/15/2017
+ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 44dea072b9871d0be6e18549896456af2a4989f6
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 5a0be55df9be67fcf6ff5d53e18e3eb2b0e69d7f
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558789"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904476"
 ---
 # <a name="get-started-with-device-management-net"></a>Wprowadzenie do zarządzania urządzeniami (.NET)
 
@@ -34,7 +34,9 @@ Na końcu tego samouczka będziesz mieć dwie aplikacje konsolowe .NET:
 
 * **TriggerReboot**. Ta aplikacja wywołuje metodę bezpośrednią w aplikacji symulowanego urządzenia, wyświetla odpowiedź i wyświetla zaktualizowane raportowane właściwości.
 
-Do wykonania kroków tego samouczka niezbędne jest spełnienie następujących wymagań wstępnych:
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * Program Visual Studio.
 
@@ -81,7 +83,7 @@ W tej sekcji utworzysz aplikację konsolową .NET, za pomocą C#której zostanie
    using Microsoft.Azure.Devices.Shared;
    ```
 
-1. Dodaj następujące pola do klasy **Program**: Zastąp wartość symbolu zastępczego parametrami połączenia IoT Hub skopiowanymi wcześniej w polu [Pobierz parametry połączenia usługi IoT Hub](#get-the-iot-hub-connection-string).
+1. Dodaj następujące pola do klasy **Program**: Zastąp wartość [](#get-the-iot-hub-connection-string) symboluzastępczegoparametramipołączeniaIoTHubskopiowanymiwcześniejwpoluPobierzparametrypołączeniausługiIoT`{iot hub connection string}` Hub.
 
    ```csharp
    static RegistryManager registryManager;
@@ -133,7 +135,7 @@ W tej sekcji utworzysz aplikację konsolową .NET, za pomocą C#której zostanie
 
 ## <a name="create-a-simulated-device-app"></a>Tworzenie aplikacji symulowanego urządzenia
 
-W tej sekcji wykonaj następujące czynności:
+W tej sekcji omówiono następujące zagadnienia:
 
 * Utwórz aplikację konsolową platformy .NET, która odpowiada na bezpośrednią metodę wywoływaną przez chmurę.
 
@@ -164,11 +166,10 @@ Aby utworzyć aplikację symulowanego urządzenia, wykonaj następujące kroki:
     using Microsoft.Azure.Devices.Shared;
     ```
 
-1. Dodaj następujące pola do klasy **Program**: Zastąp wartość symbolu zastępczego parametrami połączenia urządzenia, które zostały zanotowane w poprzedniej sekcji.
+1. Dodaj następujące pola do klasy **Program**: Zastąp wartość [](#register-a-new-device-in-the-iot-hub) symboluzastępczegoparametramipołączeniaurządzeniazanotowanymiwcześniejwtemacierejestrowanienowegourządzeniawusłudzeIoT`{device connection string}` Hub.
 
     ```csharp
-    static string DeviceConnectionString = 
-      "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
+    static string DeviceConnectionString = "{device connection string}";
     static DeviceClient Client = null;
     ```
 
@@ -233,7 +234,7 @@ Aby utworzyć aplikację symulowanego urządzenia, wykonaj następujące kroki:
    }
    ```
 
-1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy rozwiązanie, a następnie wybierz pozycję **Ustaw projekty startowe**. 
+1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy rozwiązanie, a następnie wybierz pozycję **Ustaw projekty startowe**.
 
 1. W polu**projekt startowy** **typowych właściwości** > wybierz pozycję **pojedynczy projekt startowy**, a następnie wybierz projekt **SimulateManagedDevice** . Aby zapisać zmiany, wybierz pozycję **OK**.
 
@@ -244,7 +245,7 @@ Aby utworzyć aplikację symulowanego urządzenia, wykonaj następujące kroki:
 
 ## <a name="run-the-apps"></a>Uruchamianie aplikacji
 
-Teraz można przystąpić do uruchomienia aplikacji.
+Teraz można przystąpić do uruchamiania aplikacji.
 
 1. Aby uruchomić aplikację urządzenia .NET **SimulateManagedDevice**, w Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt **SimulateManagedDevice** , wybierz polecenie **Debuguj**, a następnie wybierz polecenie **Uruchom nowe wystąpienie**. Aplikacja powinna rozpocząć nasłuchiwanie wywołań metod z Centrum IoT Hub.
 

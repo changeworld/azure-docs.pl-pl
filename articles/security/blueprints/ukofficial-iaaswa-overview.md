@@ -8,16 +8,16 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 2fa9db20554df813e5da94e2bbea122ac6cc9b60
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 602e4356ccd9eb45855462a7a25e0966dc176b4f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946542"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899939"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Strategia zabezpieczeń i zgodności z przepisami platformy Azure — trzy warstwy wielowarstwowa aplikacja sieci Web IaaS dla URZĘDNIKów BRYTYJSKIch
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
  Ten artykuł zawiera wskazówki i skrypty automatyzacji umożliwiające dostarczenie Microsoft Azure architektury opartej na sieci Web trójwarstwowej, która jest odpowiednia do obsługi wielu obciążeń sklasyfikowanych jako oficjalne w Zjednoczonym Królestwie.
 
@@ -186,7 +186,7 @@ Te sieci wirtualnych są nadal zarządzane jako oddzielne zasoby, ale są wyświ
 
 [Wskazówki dotyczące wdrażania Active Directory systemu Windows Server na platformie Azure Virtual Machines](https://msdn.microsoft.com/library/azure/jj156090.aspx).
 
-**Integracja Active Directory**: Jako alternatywę dla dedykowanej architektury AD DS klienci mogą chcieć użyć integracji [Azure Active Directory](/azure/architecture/reference-architectures/identity.md) lub [Active Directory na platformie Azure przyłączonej do lasu lokalnego](/azure/architecture/reference-architectures/identity.md).
+**Integracja Active Directory**: Jako alternatywę dla dedykowanej architektury AD DS klienci mogą chcieć użyć integracji [Azure Active Directory](/azure/architecture/reference-architectures/identity) lub [Active Directory na platformie Azure przyłączonej do lasu lokalnego](/azure/architecture/reference-architectures/identity).
 
 ### <a name="security"></a>Bezpieczeństwo
 
@@ -200,9 +200,9 @@ Klienci mogą również rozważyć użycie [rozszerzonego modelu administracyjne
 
 **Zakresy adresów IP**: Zakresy adresów IP w architekturze są sugerowanymi zakresami. Klienci powinni wziąć pod uwagę swoje własne środowisko i korzystać z odpowiednich zakresów.
 
-**Łączność hybrydowa**: Obciążenia oparte na chmurze są połączone z lokalnym centrum danych za pośrednictwem protokołu IPSEC w sieci VPN przy użyciu usługi Azure VPN Gateway. Klienci powinni upewnić się, że używają odpowiednich VPN Gateway do łączenia się z platformą Azure. Przykład [VPN Gateway szablon Menedżer zasobów](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection). Klienci korzystający z dużych obciążeń o dużej skali z wymaganiami dotyczącymi danych Big Data mogą chcieć rozważyć architekturę sieci hybrydowej wykorzystującą [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute.md) do łączności z siecią prywatną z usługami w chmurze firmy Microsoft.
+**Łączność hybrydowa**: Obciążenia oparte na chmurze są połączone z lokalnym centrum danych za pośrednictwem protokołu IPSEC w sieci VPN przy użyciu usługi Azure VPN Gateway. Klienci powinni upewnić się, że używają odpowiednich VPN Gateway do łączenia się z platformą Azure. Przykład [VPN Gateway szablon Menedżer zasobów](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection). Klienci korzystający z dużych obciążeń o dużej skali z wymaganiami dotyczącymi danych Big Data mogą chcieć rozważyć architekturę sieci hybrydowej wykorzystującą [ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute) do łączności z siecią prywatną z usługami w chmurze firmy Microsoft.
 
-**Rozdzielenie obaw**: Ta architektura referencyjna oddziela sieci wirtualnych na potrzeby operacji zarządzania i operacji działania biznesowego. Osobne sieci wirtualnych i podsieci umożliwiają zarządzanie ruchem, w tym ograniczenia ruchu przychodzącego i wychodzącego, przy użyciu sieciowych grup zabezpieczeń między segmentami sieci w ramach [usług w chmurze firmy Microsoft i](/azure/architecture/vdc/networking-virtual-datacenter.md) najlepszych rozwiązań w zakresie zabezpieczeń sieci.
+**Rozdzielenie obaw**: Ta architektura referencyjna oddziela sieci wirtualnych na potrzeby operacji zarządzania i operacji działania biznesowego. Osobne sieci wirtualnych i podsieci umożliwiają zarządzanie ruchem, w tym ograniczenia ruchu przychodzącego i wychodzącego, przy użyciu sieciowych grup zabezpieczeń między segmentami sieci w ramach [usług w chmurze firmy Microsoft i](/azure/architecture/vdc/networking-virtual-datacenter) najlepszych rozwiązań w zakresie zabezpieczeń sieci.
 
 **Zarządzanie zasobami**: Zasoby platformy Azure, takie jak maszyny wirtualne, sieci wirtualnych i moduły równoważenia obciążenia, są zarządzane przez zgrupowanie ich razem z [grupami zasobów platformy Azure](../../azure-resource-manager/resource-group-overview.md). Role Access Control oparte na zasobach można następnie przypisać do poszczególnych grup zasobów, aby ograniczyć dostęp tylko do autoryzowanych użytkowników.
 

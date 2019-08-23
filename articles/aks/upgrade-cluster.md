@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 4cf959c5218160a8fe341e6ffdfdf459c1a19247
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 50264b1364f40ff5e68ae4a93783d62837c167b3
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019167"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898812"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Uaktualnianie klastra usługi Azure Kubernetes Service (AKS)
 
@@ -40,22 +40,22 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --outpu
 >
 > Aby przeprowadzić uaktualnienie, z wersji *1.12. x* -> *1.14. x*, najpierw Uaktualnij z wersji *1.12. x* -> *1.13. x*, a następnie Uaktualnij z *1.13. x* -> *1.14. x*.
 
-Następujące przykładowe dane wyjściowe pokazują, że klaster można uaktualnić do wersji *1.13.9*:
+Następujące przykładowe dane wyjściowe pokazują, że klaster można uaktualnić do wersji *1.13.9* i *1.13.10*:
 
 ```console
-Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
--------  ---------------  ---------------  -----------------  --------------
-default  myResourceGroup  1.12.8           1.12.8             1.13.9
+Name     ResourceGroup     MasterVersion    NodePoolVersion    Upgrades
+-------  ----------------  ---------------  -----------------  ---------------
+default  myResourceGroup   1.12.8           1.12.8             1.13.9, 1.13.10
 ```
 
 ## <a name="upgrade-an-aks-cluster"></a>Uaktualnianie klastra AKS
 
 Mając listę dostępnych wersji klastra AKS, użyj polecenia [AZ AKS upgrade][az-aks-upgrade] , aby przeprowadzić uaktualnienie. W trakcie procesu uaktualniania program AKS dodaje nowy węzeł do klastra, na którym działa określona wersja Kubernetes, a następnie uważnie [Cordon i opróżnia][kubernetes-drain] jeden ze starych węzłów w celu zminimalizowania przerw w działaniu aplikacji. Gdy nowy węzeł zostanie potwierdzony jako uruchomiony program ApplicationManager, stary węzeł zostanie usunięty. Ten proces jest powtarzany do momentu uaktualnienia wszystkich węzłów w klastrze.
 
-Poniższy przykład uaktualnia klaster do wersji *1.13.9*:
+Poniższy przykład uaktualnia klaster do wersji *1.13.10*:
 
 ```azurecli-interactive
-az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.13.9
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.13.10
 ```
 
 Uaktualnienie klastra trwa kilka minut, w zależności od liczby posiadanych węzłów.
@@ -66,12 +66,12 @@ Aby upewnić się, że uaktualnienie zakończyło się pomyślnie, użyj polecen
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Następujące przykładowe dane wyjściowe pokazują, że klaster działa teraz *1.13.9*:
+Następujące przykładowe dane wyjściowe pokazują, że klaster działa teraz *1.13.10*:
 
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
 ------------  ----------  ---------------  -------------------  -------------------  ---------------------------------------------------------------
-myAKSCluster  eastus      myResourceGroup  1.13.9               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
+myAKSCluster  eastus      myResourceGroup  1.13.10               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="next-steps"></a>Następne kroki

@@ -8,21 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 08/12/2019
+ms.date: 08/19/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 1dbf36a74773615b61e9fe3ac28eeb2e8919957e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: ef559a53980b35eb09333a3c2889cee3efed59ee
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968762"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907174"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language"></a>Szybki start: Używanie interfejs API tłumaczenia tekstu w usłudze Translator do wykrywania języka tekstu
 
 W tym przewodniku szybki start dowiesz się, jak wykryć język dostarczonego tekstu za pomocą interfejsu API REST tłumaczenie tekstu w usłudze Translator.
 
 Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem tłumaczenia tekstu w usłudze Translator. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
+
+[!INCLUDE [Custom subdomains notice](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ::: zone pivot="programming-language-csharp"
 

@@ -4,18 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 62a90e30b281a7a9b0d1369893cf58fb12086a0b
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 7f14a12d5de64206f64e8c7205beb2c59c4f1f2a
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968727"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906976"
 ---
-## <a name="prerequisites"></a>Wymagania wstępne
+[!INCLUDE [Prerequisites](prerequisites-python.md)]
 
-Ten przewodnik Szybki start wymaga następujących elementów:
-
-* Środowisko Python 2.7.x lub 3.x
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-project-and-import-required-modules"></a>Tworzenie projektu i importowanie wymaganych modułów
 
@@ -23,10 +21,7 @@ Utwórz nowy projekt języka Python przy użyciu ulubionego środowiska IDE lub 
 
 ```python
 # -*- coding: utf-8 -*-
-import os
-import requests
-import uuid
-import json
+import os, requests, uuid, json
 ```
 
 > [!NOTE]
@@ -34,17 +29,25 @@ import json
 
 Pierwszy komentarz informuje interpreter języka Python, aby używać kodowania UTF-8. Następnie wymagane moduły są importowane w celu odczytania klucza subskrypcji ze zmiennej środowiskowej, skonstruowania żądania http, utworzenia unikatowego identyfikatora i obsłużenia odpowiedzi JSON zwracanej przez interfejs API tłumaczenia tekstu w usłudze Translator.
 
-## <a name="set-the-base-url-and-path"></a>Ustawianie podstawowego adresu URL i ścieżki
+## <a name="set-the-endpoint-and-path"></a>Ustawianie punktu końcowego i ścieżki
 
-Globalny punkt końcowy interfejsu API tłumaczenia tekstu w usłudze Translator został ustawiony jako `base_url`. Element `path` ustawia trasę `languages` i określa, że chcemy korzystać z wersji 3 interfejsu API.
+Ten przykład spróbuje odczytać punkt końcowy tłumaczenie tekstu w usłudze Translator ze zmiennej środowiskowej: `TRANSLATOR_TEXT_ENDPOINT`. Jeśli nie chcesz korzystać ze zmiennych środowiskowych, możesz ustawić element `endpoint` jako ciąg i oznaczyć instrukcję warunkową jako komentarz.
+
+```python
+endpoint_var_name = 'TRANSLATOR_TEXT_ENDPOINT'
+if not endpoint_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(endpoint_var_name))
+endpoint = os.environ[endpoint_var_name]
+```
+
+Globalny punkt końcowy interfejsu API tłumaczenia tekstu w usłudze Translator został ustawiony jako `endpoint`. Element `path` ustawia trasę `languages` i określa, że chcemy korzystać z wersji 3 interfejsu API.
 
 >[!NOTE]
 > Aby uzyskać więcej informacji na temat punktów końcowych, tras i parametrów żądania, zobacz [Translator Text API 3.0: Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages) (Interfejs API 3.0 tłumaczenia tekstu w usłudze Translator: języki).
 
 ```python
-base_url = 'https://api.cognitive.microsofttranslator.com'
 path = '/languages?api-version=3.0'
-constructed_url = base_url + path
+constructed_url = endpoint + path
 ```
 
 ## <a name="add-headers"></a>Dodawanie nagłówków

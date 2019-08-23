@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: cc16f3c8ea287e78d7b7b4d9a56f5a2e82c26f01
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 54fc87f02ca058e17de3a65627bc76fd7d9cac11
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515339"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971555"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Samouczek: Wprowadzenie do tworzenia pierwszego eksperymentu z ML
 
@@ -73,7 +73,9 @@ Po uruchomieniu maszyny wirtualnej Użyj sekcji **maszyny wirtualne notesu** , a
     > [!TIP]
     > Ten folder znajduje się w [kontenerze magazynu](concept-workspace.md#resources) w obszarze roboczym, a nie na maszynie wirtualnej notesu.  Możesz usunąć maszynę wirtualną notesu i nadal zachować całą swoją służbę.  Po utworzeniu nowej maszyny wirtualnej notesu zostanie ona załadowana w tym samym folderze. Jeśli udostępnisz obszar roboczy innym osobom, zobaczysz Twój folder i zobaczysz ich.
 
-1. Otwórz podkatalog, a następnie otwórz `tutorials/tutorial-1st-experiment-sdk-train.ipynb` w celu uruchomienia **części dwóch** samouczka. `samples-*`
+1. `samples-*` Otwórz podkatalog, a następnie otwórz`tutorials/tutorial-1st-experiment-sdk-train.ipynb` 
+
+W **drugiej części** samouczka uruchomiono kod w `tutorial-1st-experiment-sdk-train.ipynb` celu uczenia modelu uczenia maszynowego.
 
 ## <a name="end"></a>Czyszczenie zasobów
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: helohr
-ms.openlocfilehash: 356b430e0bb9170999398eb8eb68ad31f2d5eeb6
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: d5f0dbf916096b608495c0cc1017d919616653d4
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017311"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899702"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Wdrażanie narzędzia diagnostycznego
 
@@ -106,7 +106,7 @@ Poniżej przedstawiono sposób ręcznego konfigurowania zalecanych liczników wy
     -   Informacje o procesorze\\(\*) czas procesora
     -   Opóźnienie wejściowe użytkownika na sesję (\*)\\maksymalne opóźnienie wejściowe
 
-Dowiedz się więcej o licznikach wydajności w [źródłach danych wydajności systemu Windows i Linux w Azure monitor](/articles/azure-monitor/platform/data-sources-performance-counters.md).
+Dowiedz się więcej o licznikach wydajności w [źródłach danych wydajności systemu Windows i Linux w Azure monitor](/azure/azure-monitor/platform/data-sources-performance-counters).
 
 >[!NOTE]
 >Wszystkie skonfigurowane dodatkowe liczniki nie będą wyświetlane w samym narzędziu diagnostyki. Aby pojawił się w narzędziu diagnostycznym, należy skonfigurować plik konfiguracyjny narzędzia. Instrukcje dotyczące sposobu wykonania tej czynności z zaawansowaną administracją będą dostępne w serwisie GitHub w późniejszym terminie.
@@ -189,7 +189,7 @@ Aby ustawić identyfikator URI przekierowania:
 
 Przed udostępnieniem narzędzi diagnostycznych użytkownikom upewnij się, że mają one następujące uprawnienia:
 
-- Użytkownicy potrzebują dostępu do odczytu usługi log Analytics. Aby uzyskać więcej informacji, zobacz Rozpoczynanie [pracy z rolami, uprawnieniami i zabezpieczeniami przy użyciu Azure monitor](/articles/azure-monitor/platform/roles-permissions-security.md).
+- Użytkownicy potrzebują dostępu do odczytu usługi log Analytics. Aby uzyskać więcej informacji, zobacz Rozpoczynanie [pracy z rolami, uprawnieniami i zabezpieczeniami przy użyciu Azure monitor](/azure/azure-monitor/platform/roles-permissions-security).
 -  Użytkownicy muszą również mieć dostęp do odczytu dla dzierżawy pulpitu wirtualnego systemu Windows (rola czytnika usług pulpitu zdalnego). Aby uzyskać więcej informacji, zobacz [delegowany dostęp w wersji zapoznawczej pulpitu wirtualnego systemu Windows](delegated-access-virtual-desktop.md).
 
 Należy również nadać użytkownikom następujące informacje:
@@ -229,22 +229,22 @@ Możesz również korzystać z użytkowników na hoście sesji:
 - Dysk logiczny (\*)\|% wolnego miejsca:
 
     - Przedstawia wartość procentową całkowitego użytecznego miejsca na dysku logicznym, który jest bezpłatny.
-    - Próg: Mniej niż 20% jest oznaczone jako w złej kondycji.
+    - Próg Mniej niż 20% jest oznaczone jako w złej kondycji.
 
 - Dysk logiczny (C:)\\średnia. Długość kolejki dysku:
 
     - Reprezentuje warunki systemu magazynu.
-    - Próg: Większy niż 5 jest oznaczony jako w złej kondycji.
+    - Próg Większy niż 5 jest oznaczony jako w złej kondycji.
 
 - Pamięć (\*)\\dostępne MB:
 
     - Dostępna pamięć dla systemu.
-    - Próg: Mniej niż 500 megabajtów oznaczone jako w złej kondycji.
+    - Próg Mniej niż 500 megabajtów oznaczone jako w złej kondycji.
 
 - Informacje o procesorze\\(\*) czas procesora:
 
-    - Próg: Większy niż 80% jest oznaczony jako w złej kondycji.
+    - Próg Większy niż 80% jest oznaczony jako w złej kondycji.
 
 - [Opóźnienie danych wejściowych użytkownika na sesję\*(\\) maksymalne opóźnienie wejścia](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
-    - Próg: Ponad 2000 MS jest oznaczony jako w złej kondycji.
+    - Próg Ponad 2000 MS jest oznaczony jako w złej kondycji.

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 08/21/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 85c6ff59b5f73e88c82ee8b788bd9f35d18bc0ed
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b91adc9dd5f221a6d354a98bdc0f4a7fd4483ecb
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697967"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982348"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Rozwiązywanie problemów dotyczących QnA Maker
 
@@ -136,9 +136,25 @@ Miejsce na dysku dla usługi App Service może być pełne. Procedura naprawy mi
 
 Nie, nie musisz używać [platformy bot](https://github.com/Microsoft/botbuilder-dotnet) z QNA Maker. QnA Maker jest jednak oferowany jako jeden z kilku szablonów w programie [Azure bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0). Usługa BOT Service umożliwia szybkie tworzenie inteligentnych botów programowania za pomocą narzędzi Microsoft Bot Framework i działa w środowisku bez serwera.
 
-### <a name="how-can-i-create-a-bot-with-qna-maker"></a>Jak utworzyć robota przy użyciu usługi QnA Maker?
+### <a name="how-can-i-create-a-new-bot-with-qna-maker"></a>Jak utworzyć nowy Bot z QnA Maker?
 
 Postępuj zgodnie z instrukcjami w [to](./Tutorials/create-qna-bot.md) dokumentacji do tworzenia Bota usługa Azure Bot Service.
+
+### <a name="how-do-i-use-a-different-knowledge-base-with-an-existing-azure-bot-service"></a>Jak mogę użyć innej bazy wiedzy z istniejącą usługą Azure bot?
+
+Musisz mieć następujące informacje na temat bazy wiedzy:
+
+* Identyfikator bazy wiedzy.
+* Nazwa hosta punktu końcowego z opublikowanym bazą wiedzy — znajduje się na stronie **Ustawienia** po opublikowaniu.
+* Klucz punktu końcowego opublikowany w bazie wiedzy — znajduje się na stronie **Ustawienia** po opublikowaniu. 
+
+Korzystając z tych informacji, przejdź do usługi App Service bot w Azure Portal. W obszarze **ustawienia > Konfiguracja — > Ustawienia aplikacji**Zmień te wartości.  
+
+Klucz punktu końcowego bazy wiedzy jest oznaczony `QnAAuthkey` jako usługa ABS. 
+
+### <a name="can-two-or-more-client-applications-share-a-knowledge-base"></a>Czy co najmniej dwie aplikacje klienckie współdzielą bazę wiedzy? 
+
+Tak. w bazie wiedzy można wykonywać zapytania z dowolnej liczby klientów. Jeśli odpowiedź z bazy wiedzy wydaje się powolnić lub przekroczyć limit czasu, rozważ uaktualnienie warstwy usług dla usługi App Service skojarzonej z bazą wiedzy.
 
 ### <a name="how-do-i-embed-the-qna-maker-service-in-my-website"></a>Jak osadzić usługę QnA Maker w witrynie internetowej?
 

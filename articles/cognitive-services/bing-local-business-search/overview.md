@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: bing-local-business
 ms.topic: overview
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 6992c5c9a7ecc9cff5f56733b8b7e851d8cd7e42
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 8ee5dbe546b78557dde70868d01ec09ae33bee07
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839923"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906326"
 ---
 # <a name="what-is-bing-local-business-search"></a>Co to jest lokalne wyszukiwanie w biznesie Bing?
 Lokalny interfejs API wyszukiwania biznesowego Bing to usługa RESTful, która umożliwia aplikacjom Znajdowanie informacji o lokalnych firmach na podstawie zapytań wyszukiwania. Na przykład `q=<business-name> in Redmond, Washington`, lub `q=Italian restaurants near me`. 
@@ -39,7 +40,7 @@ Wywołaj interfejs API wyszukiwania w usłudze Bing Local Business Search z dowo
 > [!NOTE]
 > Obecnie lokalne wyszukiwanie biznesowe nie obsługuje automatycznego sugerowania. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Zapytanie i odpowiedź](local-search-query-response.md)
 - [Lokalne wyszukiwanie biznesowe — Szybki Start](quickstarts/local-quickstart.md)
 - [Dokumentacja interfejsu API wyszukiwania lokalnego w firmie](local-search-reference.md)

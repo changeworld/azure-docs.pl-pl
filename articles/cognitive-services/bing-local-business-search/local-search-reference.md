@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: 9030d85ff5bc83bb54f4a67a9f319a1670a6c2ad
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c9ebaeb66bc46132160c77c09f93fc2921dc8961
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881843"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906352"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Dokumentacja wersji 7 interfejsu API wyszukiwania lokalnego usługi Bing
 
@@ -70,12 +71,12 @@ Poniżej znajdują się nagłówki, których może dotyczyć żądanie i odpowie
 Żądanie może zawierać następujące parametry zapytania. Sprawdź wymaganą kolumnę dla wymaganych parametrów. Należy zakodować parametry zapytania w adresie URL.  
   
   
-|Name (Nazwa)|Value|Type|Wymagane|  
+|Name|Value|Type|Wymagane|  
 |----------|-----------|----------|--------------|
 |<a name="count" />liczbą|Liczba wyników do zwrócenia, rozpoczynając od indeksu określonego przez `offset` parametr.|String|Nie|   
 |<a name="localCategories" />localCategories|Lista opcji definiujących wyszukiwanie według kategorii biznesowej.  Zobacz [Wyszukiwanie lokalnych kategorii firmowych](local-categories.md)|String|Nie|  
 |<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br />Aby uzyskać listę możliwych wartości rynkowych, zobacz Kody rynku.<br /><br /> **UWAGA:** Lokalny interfejs API wyszukiwania biznesowego obecnie obsługuje tylko rynek en-us i język.<br /><br />|String|Tak|
-|<a name="offset"/>Przesunięcie|Indeks do uruchamiania wyników określonego przez `count` parametr.|Liczba całkowita|Nie|  
+|<a name="offset"/>Przesunięcie|Indeks do uruchamiania wyników określonego przez `count` parametr.|Integer|Nie|  
 |<a name="query" />pytania|Termin wyszukiwania użytkownika.|String|Nie|  
 |<a name="responseformat" />responseFormat|Typ nośnika, który ma być używany na potrzeby odpowiedzi. Poniżej przedstawiono możliwe wartości bez uwzględniania wielkości liter.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Wartość domyślna to JSON. Aby uzyskać informacje na temat obiektów JSON zawartych w odpowiedzi, zobacz temat [obiekty odpowiedzi](#response-objects).<br /><br />  Jeśli określisz JsonLd, treść odpowiedzi zawiera obiekty JSON-LD, które zawierają wyniki wyszukiwania. Aby uzyskać informacje na temat JSON-LD, zobacz [JSON-LD](https://json-ld.org/).|String|Nie|  
 |<a name="safesearch" />safeSearch|Filtr używany do odfiltrowania zawartości dla dorosłych. Poniżej przedstawiono możliwe wartości filtru bez uwzględniania wielkości liter.<br /><ul><li>Wyłącz&mdash;zwracanie stron sieci Web z tekstem dla dorosłych, obrazami lub klipami wideo.<br /><br/></li><li>Umiarkowanie&mdash;zwracaj strony sieci Web z tekstem dla dorosłych, ale nie z obrazami lub wideo dla dorosłych.<br /><br/></li><li>Ścisłe&mdash;nie zwracają stron internetowych z tekstem dla dorosłych, obrazami lub klipami wideo.</li></ul><br /> Wartość domyślna to Moderate.<br /><br /> **UWAGA:** Jeśli żądanie pochodzi ze rynku, że zasady dla dorosłych usługi Bing wymagają `safeSearch` ustawienia Strict, Bing `safeSearch` ignoruje wartość i używa rygorystyczne.<br/><br/>**UWAGA:** Jeśli używasz `site:` operatora zapytania, istnieje możliwość, że odpowiedź może zawierać treści dla dorosłych niezależnie od tego, `safeSearch` co parametr zapytania jest ustawiony na. Operatora `site:` używaj tylko wtedy, gdy znasz zawartość witryny i w swoim scenariuszu uwzględniasz możliwość pojawienia się zawartości dla dorosłych. |String|Nie|  
@@ -107,7 +108,7 @@ Określa błąd, który wystąpił.
 ### <a name="errorresponse"></a>Zwrócono  
 Obiekt najwyższego poziomu, który odpowiedź zawiera, gdy żądanie nie powiedzie się.  
   
-|Name (Nazwa)|Value|Type|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka dotycząca typu.|String|  
 |<a name="errors" />Błędy|Lista błędów opisujących przyczyny niepowodzenia żądania.|[Błąd](#error) []|  
@@ -117,7 +118,7 @@ Obiekt najwyższego poziomu, który odpowiedź zawiera, gdy żądanie nie powied
 ### <a name="license"></a>Licencja  
 Definiuje licencję, pod którą można używać tekstu lub fotografii.  
   
-|Name (Nazwa)|Value|Type|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |name|Nazwa licencji.|String|  
 |url|Adres URL witryny sieci Web, w której użytkownik może uzyskać więcej informacji na temat licencji.<br /><br /> Użyj nazwy i adresu URL, aby utworzyć hiperłącze.|String|  
@@ -126,7 +127,7 @@ Definiuje licencję, pod którą można używać tekstu lub fotografii.
 ### <a name="link"></a>Łącze  
 Definiuje składniki hiperłącza.  
   
-|Name (Nazwa)|Value|Type|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka dotycząca typu.|String|  
 |text|Wyświetlany tekst.|String|  
@@ -140,7 +141,7 @@ Definiuje wydawcę.
   
 Należy pamiętać, że Wydawca może podać jego nazwę lub witrynę sieci Web.  
   
-|Name (Nazwa)|Value|Type|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |name|Nazwa wydawcy.|String|  
 |url|Adres URL witryny sieci Web wydawcy.<br /><br /> Zwróć uwagę, że Wydawca może nie dostarczyć witryny sieci Web.|String|  
@@ -150,7 +151,7 @@ Należy pamiętać, że Wydawca może podać jego nazwę lub witrynę sieci Web.
 ### <a name="place"></a>Miejsce  
 Definiuje informacje o lokalnej firmie, np. w restauracji lub hotelu.  
   
-|Name (Nazwa)|Value|Type|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówkę typu, która może być ustawiona na jedną z następujących wartości:<br /><br /><ul><li>Hotel</li><li>LocalBusiness<br /></li><li>Restauracja</ul><li>|String|  
 |adres|Adres pocztowy miejsca, w którym znajduje się jednostka.|PostalAddress|  
@@ -174,23 +175,23 @@ Definiuje kontekst zapytania, który jest używany przez usługę Bing dla żąd
 
 ### <a name="identifiable"></a>Identyfikowan
 
-|Name (Nazwa)|Value|Type|  
+|Name|Value|Type|  
 |-------------|-----------------|----------|
 |id|Identyfikator zasobu|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Definiuje grupę wyników wyszukiwania, taką jak linii głównej.
 
-|Name (Nazwa)|Value|Type|  
+|Name|Value|Type|  
 |-------------|-----------------|----------|
 |items|Lista wyników wyszukiwania, które mają być wyświetlane w grupie.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Definiuje element wyników wyszukiwania do wyświetlenia.
 
-|Name (Nazwa)|Value|Type|  
+|Name|Value|Type|  
 |-------------|-----------------|----------|
-|resultIndex|Indeks (liczony od zera) elementu w odpowiedzi, który ma być wyświetlany. Jeśli element nie zawiera tego pola, Wyświetl wszystkie elementy w odpowiedzi. Na przykład Wyświetl wszystkie artykuły z wiadomościami w odpowiedzi na wiadomości.|Liczba całkowita|
+|resultIndex|Indeks (liczony od zera) elementu w odpowiedzi, który ma być wyświetlany. Jeśli element nie zawiera tego pola, Wyświetl wszystkie elementy w odpowiedzi. Na przykład Wyświetl wszystkie artykuły z wiadomościami w odpowiedzi na wiadomości.|Integer|
 |odpowiedź|Odpowiedź zawierająca element do wyświetlenia. Na przykład wiadomości.<br /><br />Użyj typu, aby znaleźć odpowiedź w obiekcie SearchResponse. Typ jest nazwą pola SearchResponse.<br /><br /> Należy jednak użyć typu odpowiedzi tylko wtedy, gdy ten obiekt zawiera pole Value; w przeciwnym razie zignoruj ją.|String|
 |textualIndex|Indeks odpowiedzi w textualAnswers do wyświetlenia.| Liczba całkowita bez znaku|
 |value|Identyfikator identyfikujący odpowiedź do wyświetlenia lub element odpowiedzi do wyświetlenia. Jeśli identyfikator identyfikuje odpowiedź, Wyświetl wszystkie elementy odpowiedzi.|Identyfikowan|
@@ -198,7 +199,7 @@ Definiuje element wyników wyszukiwania do wyświetlenia.
 ### <a name="rankingresponse"></a>RankingResponse  
 Definiuje, gdzie powinna zostać umieszczona zawartość strony wyników wyszukiwania i w jakiej kolejności.  
   
-|Name (Nazwa)|Value|  
+|Name|Value|  
 |----------|-----------|  
 |<a name="ranking-mainline" />linii głównej|Wyniki wyszukiwania do wyświetlenia w linii głównej.|  
 |<a name="ranking-pole" />słup|Wyniki wyszukiwania, które powinny mieć zapewnione najbardziej widoczne traktowanie (na przykład widoczne nad linii głównej i paskiem bocznym).|  
@@ -209,7 +210,7 @@ Definiuje obiekt najwyższego poziomu, który odpowiedź zawiera, gdy żądanie 
   
 Należy pamiętać, że jeśli usługa podejrzewa atak typu "odmowa usługi", żądanie zakończy się pomyślnie (kod stanu HTTP to 200 OK); Jednakże treść odpowiedzi będzie pusta.  
   
-|Name (Nazwa)|Value|Type|  
+|Name|Value|Type|  
 |----------|-----------|----------|  
 |_type|Wskazówka dotycząca typu, która jest ustawiona na SearchResponse.|String|  
 |nabywc|Lista jednostek, które są istotne dla zapytania wyszukiwania.|Obiekt JSON|  

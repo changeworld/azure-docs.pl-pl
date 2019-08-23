@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b1fa24f919888e4454096e1ef84d2ba2948b865a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
-ms.translationtype: MT
+ms.openlocfilehash: c316e55700fc8a28ed39bea960a9fe2b2bbd4df1
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774296"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900388"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Jak zainicjować obsługę administracyjną maszyny wirtualnej z systemem Windows SQL Server w Azure Portal
 
@@ -122,7 +122,7 @@ Na karcie **dyski** Skonfiguruj opcje dysków.
 * W obszarze **Zaawansowane**wybierz pozycję **tak** w obszarze Użyj **Managed disks**.
 
    > [!NOTE]
-   > Firma Microsoft zaleca funkcję Dyski zarządzane dla programu SQL Server. Funkcja Dyski zarządzane obsługuje magazyn w tle. Ponadto jeśli maszyny wirtualne z funkcją Dyski zarządzane znajdują się w tym samym zestawie dostępności, platforma Azure dystrybuuje zasoby magazynu w celu zapewnienia odpowiedniej nadmiarowości. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Managed Disks] [.. /managed-disks-overview.md). Aby uzyskać szczegółowe informacje o dyskach zarządzanych w zestawie dostępności, zobacz [używanie dysków zarządzanych dla maszyn wirtualnych w zestawie dostępności] (.. /manage-availability.md.
+   > Firma Microsoft zaleca funkcję Dyski zarządzane dla programu SQL Server. Funkcja Dyski zarządzane obsługuje magazyn w tle. Ponadto jeśli maszyny wirtualne z funkcją Dyski zarządzane znajdują się w tym samym zestawie dostępności, platforma Azure dystrybuuje zasoby magazynu w celu zapewnienia odpowiedniej nadmiarowości. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Managed Disks] [.. /managed-disks-overview.md). Aby uzyskać szczegóły dotyczące dysków zarządzanych w zestawie dostępności, zobacz sekcję [Use managed disks for VMs in availability set](../manage-availability.md) (Używanie dysków zarządzanych dla maszyn wirtualnych w zestawie dostępności).
 
 ![Ustawienia dysku maszyny wirtualnej SQL](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-disks.png)
   
@@ -275,7 +275,7 @@ Aby uzyskać więcej informacji, zobacz [Automated Backup for SQL Server in Azur
 Istnieje możliwość włączenia [SQL Server R Services (analiza zaawansowana)](/sql/advanced-analytics/r/sql-server-r-services/). Ta opcja umożliwia używanie zaawansowanej analizy z SQL Server 2017. Wybierz pozycję **Włącz** w oknie **Ustawienia SQL Server** .
 
 
-## <a name="4-review--create"></a>4. Przeglądanie + tworzenie
+## <a name="4-review--create"></a>4. Przegląd + tworzenie
 
 Na karcie **Przegląd + tworzenie** Przejrzyj podsumowanie, a następnie wybierz pozycję **Utwórz** , aby utworzyć SQL Server, grupę zasobów i zasoby określone dla tej maszyny wirtualnej.
 

@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rosh
-ms.openlocfilehash: 1938bb0464eee458e7320cba4bf713a67c298d27
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 31f81d76ff433d5f2e634b9a8f5fac50f8425f49
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882868"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906354"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Wysyłanie zapytań i odpowiedzi interfejsu API wyszukiwania lokalnego usługi Bing oraz korzystanie z nich
 
@@ -22,7 +23,7 @@ Możesz uzyskać wyniki lokalne z interfejsu API wyszukiwania lokalnego usługi 
 
 ## <a name="creating-a-request"></a>Tworzenie żądania
 
-Aby wysłać żądanie do interfejsu API wyszukiwania lokalnego usługi Bing, Dołącz termin wyszukiwania do `q=` parametru przed dodaniem go do punktu końcowego interfejsu API, a w `Ocp-Apim-Subscription-Key` tym nagłówek. Na przykład:
+Aby wysłać żądanie do interfejsu API wyszukiwania lokalnego usługi Bing, Dołącz termin wyszukiwania do `q=` parametru przed dodaniem go do punktu końcowego interfejsu API, a w `Ocp-Apim-Subscription-Key` tym nagłówek. Przykład:
 
 `https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search?q=restaurant+in+Bellevue`
 

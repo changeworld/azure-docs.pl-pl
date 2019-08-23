@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: e169d7734776f9319685d97f941b3fc11eec8298
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 1e35baf24b59e7864982d131f44f79458e0d9015
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656246"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971504"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
@@ -89,9 +89,18 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
   + **Azure — widżety**
     + Udoskonalone wykresy macierzowe z błędami na potrzeby szkoleń klasyfikacji.
 
+### <a name="azure-machine-learning-data-prep-sdk-v1112"></a>Azure Machine Learning zestawu SDK 1.1.12 przygotowywania danych
++ **Nowe funkcje**
+  + Listy ciągów mogą teraz być przesyłane jako dane wejściowe do `read_*` metod.
+
++ **Poprawki i ulepszenia błędów**
+  + Wydajność programu `read_parquet` została znacznie ulepszona podczas korzystania z platformy Spark.
+  + Rozwiązano problem `column_type_builder` polegający na tym, że w przypadku pojedynczej kolumny z niejednoznacznymi formatami daty Wystąpił błąd.
+
 ### <a name="azure-portal"></a>Azure Portal
 + **Funkcja wersji zapoznawczej**
   + Przesyłanie strumieniowe plików dziennika i danych wyjściowych jest teraz dostępne dla stron szczegółów uruchamiania. Po włączeniu przełącznika podglądu pliki będą przesyłać strumieniowo aktualizacje w czasie rzeczywistym.
+  + Możliwość ustawiania limitu przydziału na poziomie obszaru roboczego jest publikowana w wersji zapoznawczej. Przydziały AmlCompute są przydzielane na poziomie subskrypcji, ale teraz można rozpowszechnić ten przydział między obszarami roboczymi i przydzielić go do sprawiedliwego udostępniania i zarządzania. Po prostu kliknij blok **użycie i limity przydziału** na lewym pasku nawigacyjnym obszaru roboczego i wybierz kartę **Konfigurowanie** przydziałów. Zwróć uwagę, że musisz być administratorem subskrypcji, aby móc ustawiać przydziały na poziomie obszaru roboczego, ponieważ jest to operacja między obszarami roboczymi.
 
 ## <a name="2019-08-05"></a>2019-08-05
 

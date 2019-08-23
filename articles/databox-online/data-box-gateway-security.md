@@ -1,97 +1,97 @@
 ---
-title: Zabezpieczenia usługi Azure Data Box bramy | Dokumentacja firmy Microsoft
-description: W tym artykule opisano funkcje zabezpieczeń i prywatności, które chronią urządzenia wirtualnego bramy pola danych platformy Azure, usług i danych lokalnych i w chmurze.
+title: Zabezpieczenia Azure Data Box Gateway | Microsoft Docs
+description: Opisuje funkcje zabezpieczeń i ochrony prywatności, które chronią Azure Data Box Gateway urządzeń wirtualnych, usług i danych, lokalnie i w chmurze.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 04/16/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 230d1a28ba15a8736e46c02cb08217a28fc18599
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 89f981fcda8f40daff49ebdf796b896d90ce1754
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695185"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900626"
 ---
-# <a name="azure-data-box-gateway-security-and-data-protection"></a>Usługa Azure brama pola danych zabezpieczeń i ochrony danych
+# <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway zabezpieczenia i ochrona danych
 
-Bezpieczeństwo jest głównym problemem, gdy jest przyjęcie nowych technologii, zwłaszcza, jeśli jest to technologia używana przy użyciu danych poufnych lub zastrzeżonych. Azure brama pola danych pomaga należy upewnić się tylko autoryzowane jednostki można wyświetlić, zmodyfikować lub usunąć swoje dane.
+Bezpieczeństwo jest ważnym problemem w przypadku przyjęcia nowej technologii, szczególnie jeśli technologia jest używana z danymi poufnymi lub zastrzeżonymi. Azure Data Box Gateway pomaga upewnić się, że tylko autoryzowane jednostki mogą wyświetlać, modyfikować i usuwać dane.
 
-W tym artykule opisano funkcje zabezpieczeń bramy pola danych platformy Azure, które chronić poszczególne składniki rozwiązania oraz danych przechowywanych w nich.
+W tym artykule opisano funkcje zabezpieczeń Azure Data Box Gateway chroniące poszczególne składniki rozwiązań i przechowywane w nich dane.
 
-Rozwiązanie bramy pola danych składa się z czterech głównych składników, które współdziałają ze sobą:
+Data Box Gateway rozwiązanie składa się z czterech głównych składników, które współpracują ze sobą:
 
-- **Usługa bramy pola danych, hostowanych na platformie Azure**. Zasób zarządzania, który umożliwia tworzenie kolejności urządzeń, skonfigurowanie urządzenia i śledzić kolejności do zakończenia.
-- **Urządzenie bramy pola danych**. Urządzenie wirtualne aprowizować w ramach funkcji hypervisor systemu, które należy podać. To urządzenie wirtualne umożliwia importowanie danych lokalnych do platformy Azure.
-- **Klienci/hosty są połączone z urządzeniem**. Klienci w infrastrukturze, połączyć się z urządzeniem bramy pola danych, które zawierają dane, które muszą być chronione.
-- **Magazyn w chmurze**. Lokalizacja platformy w chmurze, w którym są przechowywane dane. Ta lokalizacja jest zazwyczaj konto magazynu, połączone z utworzonego zasobu bramy pola danych.
+- **Usługa Data Box Gateway hostowana na platformie Azure**. Zasób zarządzania służący do tworzenia kolejności urządzeń, konfigurowania urządzenia, a następnie śledzenia kolejności do ukończenia.
+- **Data Box Gateway urządzenia**. Urządzenie wirtualne, które można udostępnić w funkcji hypervisor systemu. To urządzenie wirtualne służy do importowania danych lokalnych na platformę Azure.
+- **Klienci/hosty połączeni z urządzeniem**. Klienci w infrastrukturze, którzy łączą się z urządzeniem Data Box Gateway i zawierają dane, które muszą być chronione.
+- **Magazyn w chmurze**. Lokalizacja na platformie Azure w chmurze, w której są przechowywane dane. Ta lokalizacja jest zazwyczaj kontem magazynu połączonym z tworzonym zasobem Data Box Gateway.
 
 
-## <a name="data-box-gateway-service-protection"></a>Ochrona usługi bramy pola danych
+## <a name="data-box-gateway-service-protection"></a>Data Box Gateway ochronę usługi
 
-Usługa bramy pole danych jest usługą zarządzania, który jest hostowany na platformie Azure. Usługa jest używana do konfigurowania i zarządzania urządzeniem.
+Usługa Data Box Gateway to usługa zarządzania hostowana na platformie Azure. Usługa służy do konfigurowania urządzenia i zarządzania nim.
 
-[!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-service-protection.md)]
+[!INCLUDE [data-box-edge-gateway-service-protection](../../includes/data-box-edge-gateway-service-protection.md)]
 
-## <a name="data-box-gateway-device-protection"></a>Ochrona urządzenia bramy pola danych
+## <a name="data-box-gateway-device-protection"></a>Data Box Gateway ochrony urządzeń
 
-Urządzenie bramy pole danych jest aprowizowanej w funkcji hypervisor systemu lokalnego, który podasz urządzenia wirtualnego. Urządzenie pomaga wysyłania danych do platformy Azure. Urządzenia:
+Urządzenie Data Box Gateway jest urządzeniem wirtualnym, które jest obsługiwane w funkcji hypervisor systemu lokalnego, który jest udostępniany przez użytkownika. Urządzenie służy do przesyłania danych do platformy Azure. Twoje urządzenie:
 
-- Wymaga klucza aktywacji dostępu do usługi bramy okno usługi Edge i dane pole danych.
-- Jest chroniony na cały czas hasła urządzenia.
+- Potrzebuje klucza aktywacji, aby uzyskać dostęp do usługi Data Box Edge/Data Box Gateway.
+- Jest chronione przez cały czas przy użyciu hasła urządzenia.
 <!---  secure boot enabled.
 - Runs Windows Defender Device Guard. Device Guard allows you to run only trusted applications that you define in your code integrity policies.-->
 
-### <a name="protect-the-device-via-activation-key"></a>Ochrona urządzeń za pomocą klucza aktywacji
+### <a name="protect-the-device-via-activation-key"></a>Ochrona urządzenia za pomocą klucza aktywacji
 
-Tylko bramy pola danych urządzenia autoryzowanego może dołączyć do usługi bramy pola danych, utworzonego w ramach subskrypcji platformy Azure. Aby autoryzować urządzenia, musisz aktywacji urządzenia przy użyciu usługi bramy pola danych za pomocą klucza aktywacji.
+Tylko autoryzowane urządzenie Data Box Gateway może przyłączyć się do usługi Data Box Gateway utworzonej w ramach subskrypcji platformy Azure. Aby autoryzować urządzenie, należy użyć klucza aktywacji w celu aktywowania urządzenia za pomocą usługi Data Box Gateway.
 
-[!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-activation-key.md)]
+[!INCLUDE [data-box-edge-gateway-activation-key](../../includes/data-box-edge-gateway-activation-key.md)]
 
-Aby uzyskać więcej informacji, zobacz [uzyskiwanie klucza aktywacji](data-box-gateway-deploy-prep.md#get-the-activation-key).
+Aby uzyskać więcej informacji, zobacz [Uzyskiwanie klucza aktywacji](data-box-gateway-deploy-prep.md#get-the-activation-key).
 
-### <a name="protect-the-device-via-password"></a>Ochrona urządzeń za pomocą hasła
+### <a name="protect-the-device-via-password"></a>Ochrona urządzenia za pomocą hasła
 
-Haseł upewnij się, że tylko autoryzowani użytkownicy mogą uzyskiwać dostęp do danych. Dane bramy pola urządzenia rozruchu w stanie zablokowanym.
+Hasła zapewniają, że dostęp do danych mają tylko autoryzowani użytkownicy. Data Box Gateway urządzenia są uruchamiane w stanie zablokowanym.
 
 Możesz:
 
-- Nawiązać połączenie z lokalnego interfejsu użytkownika urządzenia za pośrednictwem przeglądarki sieci web, a następnie podaj hasło do logowania się na urządzeniu.
-- Zdalne łączenie się z interfejsu programu PowerShell urządzenia za pośrednictwem protokołu HTTP. Zdalne zarządzanie jest domyślnie włączona. Następnie możesz podać hasło urządzenia, aby zalogować się do urządzenia. Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia zdalne urządzenie bramy pola danych](data-box-gateway-connect-powershell-interface.md#connect-to-the-powershell-interface).
+- Połącz się z lokalnym interfejsem użytkownika sieci Web urządzenia za pośrednictwem przeglądarki, a następnie podaj hasło, aby zalogować się na urządzeniu.
+- Zdalne łączenie się z interfejsem programu PowerShell urządzenia za pośrednictwem protokołu HTTP. Zdalne zarządzanie jest domyślnie włączone. Następnie można podać hasło urządzenia, aby zalogować się na urządzeniu. Aby uzyskać więcej informacji, zobacz [zdalne łączenie z urządzeniem Data Box Gateway](data-box-gateway-connect-powershell-interface.md#connect-to-the-powershell-interface).
 
-[!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-password-best-practices.md)]
-- Użyj lokalnego internetowego interfejsu użytkownika do [zmiany hasła](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access). Jeśli zmienisz hasło, pamiętaj powiadomić wszystkich użytkowników dostępu zdalnego, aby nie mają problemy z logowaniem.
+[!INCLUDE [data-box-edge-gateway-password-best-practices](../../includes/data-box-edge-gateway-password-best-practices.md)]
+- [Zmień hasło](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access)przy użyciu lokalnego interfejsu użytkownika sieci Web. Jeśli zmienisz hasło, pamiętaj o poinformowaniu wszystkich użytkowników dostępu zdalnego, aby nie mieli problemów z logowaniem.
 
 
 ## <a name="protect-your-data"></a>Ochrona Twoich danych
 
-W tej sekcji opisano funkcje zabezpieczeń bramy pola danych, które ochrony danych podczas przesyłania i przechowywanych.
+W tej sekcji opisano funkcje zabezpieczeń Data Box Gateway chroniące dane przesyłane w trakcie przesyłania i przechowywania.
 
-### <a name="protect-data-at-rest"></a>Ochrona magazynowanych danych
+### <a name="protect-data-at-rest"></a>Ochrona danych magazynowanych
 
 [!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-data-rest.md)]
 
 ### <a name="protect-data-in-flight"></a>Ochrona danych w locie
 
-[!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-data-flight.md)]
+[!INCLUDE [data-box-edge-gateway-data-flight](../../includes/data-box-edge-gateway-data-flight.md)]
 
-### <a name="protect-data-via-storage-accounts"></a>Ochrona danych za pomocą konta magazynu
+### <a name="protect-data-via-storage-accounts"></a>Ochrona danych za pomocą kont magazynu
 
-[!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-protect-data-storage-accounts.md)]
-- Obróć i następnie [synchronizowanie kluczy konta magazynu](data-box-gateway-manage-shares.md#sync-storage-keys) regularnie, aby chronić swoje konto magazynu przed nieautoryzowanymi użytkownikami.
+[!INCLUDE [data-box-edge-gateway-data-storage-accounts](../../includes/data-box-edge-gateway-protect-data-storage-accounts.md)]
+- Regularnie Obróć i [Synchronizuj klucze konta magazynu](data-box-gateway-manage-shares.md#sync-storage-keys) , aby chronić konto magazynu przed nieautoryzowanymi użytkownikami.
 
-## <a name="manage-personal-information"></a>Zarządzanie informacji osobistych
+## <a name="manage-personal-information"></a>Zarządzanie informacjami osobistymi
 
-Usługa bramy pola danych zbiera informacje osobiste w następujących scenariuszach:
+Usługa Data Box Gateway zbiera informacje osobiste w następujących scenariuszach:
 
-[!INCLUDE [data-box-edge-gateway-data-rest](../../includes/data-box-edge-gateway-manage-personal-data.md)]
+[!INCLUDE [data-box-edge-gateway-manage-personal-data](../../includes/data-box-edge-gateway-manage-personal-data.md)]
 
-Aby wyświetlić listę użytkowników, którzy mogą uzyskać dostęp, lub usunąć udział, wykonaj kroki opisane w [Zarządzanie udziałami w bramie pole danych](data-box-gateway-manage-shares.md).
+Aby wyświetlić listę użytkowników, którzy mogą uzyskać dostęp do udziału lub go usunąć, wykonaj kroki opisane w sekcji [Zarządzanie udziałami na Data Box Gateway](data-box-gateway-manage-shares.md).
 
-Aby uzyskać więcej informacji, przejrzyj zasady zachowania poufności informacji firmy Microsoft na [Centrum zaufania](https://www.microsoft.com/trustcenter).
+Aby uzyskać więcej informacji, zapoznaj się z zasadami ochrony prywatności firmy Microsoft w [Centrum zaufania](https://www.microsoft.com/trustcenter).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Wdrażanie urządzenia bramy pola danych](data-box-gateway-deploy-prep.md)
+[Wdrażanie urządzenia Data Box Gateway](data-box-gateway-deploy-prep.md)

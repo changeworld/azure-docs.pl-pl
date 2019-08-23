@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: e730e1b5534c4c74734816f5481247e341436b08
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: 5a2cab9dff4a075545d919cb41e72cf6e446e9d2
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656339"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897314"
 ---
 # <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Użyj protokołu SSL, aby zabezpieczyć usługę sieci Web za pośrednictwem Azure Machine Learning
 
@@ -149,9 +149,9 @@ Następnie należy zaktualizować serwer DNS, aby wskazać usługę sieci web.
   > [!WARNING]
   > Jeśli usługa *leaf_domain_label* została użyta do utworzenia usługi przy użyciu certyfikatu firmy Microsoft, nie należy ręcznie aktualizować wartości DNS dla klastra. Wartość powinna być ustawiana automatycznie.
 
-  Zaktualizuj system DNS na karcie **Konfiguracja** publicznego adresu IP klastra AKS. (Zobacz poniższy obraz). Publiczny adres IP to typ zasobu, który jest tworzony w ramach grupy zasobów zawierającej węzły agenta AKS i inne zasoby sieciowe.
+  Zaktualizuj serwer DNS publicznego adresu IP klastra AKS na karcie **Konfiguracja** w obszarze **Ustawienia** w okienku po lewej stronie. (Zobacz poniższy obraz). Publiczny adres IP to typ zasobu, który jest tworzony w ramach grupy zasobów zawierającej węzły agenta AKS i inne zasoby sieciowe.
 
-  ![Usługa Azure Machine Learning: Zabezpieczanie usług sieci Web przy użyciu protokołu SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
+  [![Usługa Azure Machine Learning: Zabezpieczanie usług sieci Web przy użyciu protokołu SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>Aktualizowanie certyfikatu SSL
 
@@ -230,9 +230,7 @@ Aby uzyskać więcej informacji, zobacz następujące dokumenty referencyjne:
 
 ## <a name="disable-ssl"></a>Wyłącz protokół SSL
 
-Aby wyłączyć protokół SSL dla modelu wdrożonego w usłudze Azure Kubernetes Service, można użyć zestawu SDK lub interfejsu wiersza polecenia:
-
-**Korzystanie z zestawu SDK**
+Aby wyłączyć protokół SSL dla modelu wdrożonego w usłudze Azure Kubernetes, Utwórz `SslConfiguration` za `status="Disabled"`pomocą usługi, a następnie wykonaj aktualizację:
 
 ```python
 from azureml.core.compute import AksCompute
@@ -246,12 +244,6 @@ aks_target = AksCompute(ws, clustername)
 ssl_configuration = SslConfiguration(status="Disabled")
 update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)
-```
-
-**Korzystanie z interfejsu wiersza polecenia**
-
-```azurecli
- az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-disable True
 ```
 
 ## <a name="next-steps"></a>Następne kroki

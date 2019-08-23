@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 1fd08efd12e723a16445eba1d341f017a86a212e
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: e55b191e937b6c9f8183b3878b264eb50401b3f1
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68481522"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69903900"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Limity sieci — Azure Resource Manager następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych za pomocą **Azure Resource Manager** na region na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
@@ -73,12 +73,12 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 
 <sup>1</sup> Limit wynosi do 150 zasobów w dowolnej kombinacji autonomicznych zasobów maszyny wirtualnej, zasobów zestawu dostępności i zasobów zestawu skalowania maszyn wirtualnych.
 
-#### <a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy  użyciu klasycznego modelu wdrażania na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
+#### <a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu klasycznego modelu wdrażania na subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
 | Resource | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
 | Sieci wirtualne |100 |100 |
-| Lokalne lokacje sieciowe |20 |Skontaktuj się z pomocą techniczną. |
+| Lokalne lokacje sieciowe |20 |50 |
 | Serwery DNS na sieć wirtualną |20 |20 |
 | Prywatne adresy IP na sieć wirtualną |4 096 |4 096 |
 | Współbieżne przepływy TCP lub UDP na kartę sieciową maszyny wirtualnej lub wystąpienia roli |500 000, do 1 000 000 w przypadku co najmniej dwóch kart sieciowych. |500 000, do 1 000 000 w przypadku co najmniej dwóch kart sieciowych. |

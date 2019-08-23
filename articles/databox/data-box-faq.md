@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 8f090a3f07eba529fd39976545eb654083e637eb
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: f1a1a8a6b32567a1571c70e76a4ae6c570d27ca5
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561408"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900566"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Często zadawane pytania
 
@@ -24,8 +24,8 @@ Pytania i odpowiedzi są podzielone na następujące kategorie:
 - Informacje o usłudze
 - Zamawianie urządzenia
 - Konfigurowanie i łączenie 
-- Śledzenie stanu
-- Kopiowanie danych 
+- Śledź stan
+- Kopiuj dane 
 - Dostawa urządzenia
 - Weryfikowanie i przekazywanie danych 
 - Pomoc techniczna dotycząca łańcucha nadzoru
@@ -36,12 +36,12 @@ Pytania i odpowiedzi są podzielone na następujące kategorie:
 A.  Usługa Azure Data Box jest przeznaczona do pozyskiwania danych w trybie offline. Ta usługa zarządza szeregiem produktów dla różnych pojemności magazynu, dostosowanych do transportu danych. 
 
 ### <a name="q-what-is-azure-data-box"></a>PYTANIE: Co to jest usługa Azure Data Box?
-A. Azure Data Box pozwala na szybkie i tanie i bezpieczny transfer terabajtów danych na platformę Azure. Urządzenie Data Box można zamówić w witrynie Azure Portal. Firma Microsoft dostarcza urządzenie magazynujące o pojemności 80 TB za pośrednictwem regionalnego przewoźnika. 
+A. Azure Data Box umożliwia szybkie, niedrogie i bezpieczny transfer terabajtów danych do platformy Azure. Urządzenie Data Box można zamówić w witrynie Azure Portal. Firma Microsoft dostarcza urządzenie magazynujące o pojemności 80 TB za pośrednictwem regionalnego przewoźnika. 
 
 Po otrzymaniu urządzenia możesz szybko je skonfigurować przy użyciu lokalnego internetowego interfejsu użytkownika. Skopiuj dane z serwerów na urządzenie, a następnie wyślij urządzenie z powrotem do centrum danych platformy Azure. W centrum danych platformy Azure Twoje dane są automatycznie przekazywane z urządzenia na platformę Azure. Cały proces można śledzić przez usługę Data Box w witrynie Azure Portal.
 
 ### <a name="q-when-should-i-use-data-box"></a>PYTANIE: Kiedy używać usługi Data Box?
-A. Jeśli masz od 40 do 500 TB danych, które chcesz przetransferować na platformę Azure, korzystne będzie zastosowanie usługi Data Box. Dla danych rozmiary < 40 TB danych, należy użyć dysku Data Box i dla danych o rozmiarach > 500 TB, należy zasubskrybować [duże pole danych](data-box-heavy-overview.md).
+A. Jeśli masz od 40 do 500 TB danych, które chcesz przetransferować na platformę Azure, korzystne będzie zastosowanie usługi Data Box. W przypadku rozmiarów danych < 40 TB Użyj Data Box Disk i dla rozmiarów danych > 500 TB, zarejestruj się, aby uzyskać [Data Box Heavy](data-box-heavy-overview.md).
 
 ### <a name="q-what-is-the-price-of-data-box"></a>PYTANIE: Jaki jest koszt usługi Data Box?
 A. Usługa Data Box jest dostępna za symboliczną opłatą przez 10 dni. Po wybraniu modelu produktu podczas tworzenia zamówienia w witrynie Azure Portal zostaną wyświetlone opłaty za urządzenie. Bezpłatna jest także przesyłka, natomiast zostaną naliczone opłaty za usługę Azure Storage. Aby uzyskać więcej informacji, zobacz [cennik usługi Azure Data Box](https://azure.microsoft.com/pricing/details/storage/databox/). 
@@ -50,10 +50,10 @@ A. Usługa Data Box jest dostępna za symboliczną opłatą przez 10 dni. Po wyb
 A. Urządzenie Data Box ma 100 TB niesformatowanej pojemności i 80 TB pojemności do wykorzystania. Za pomocą urządzenia Data Box możesz przetransferować do 80 TB danych. Aby przetransferować większą ilość danych, musisz zamówić więcej urządzeń.
 
 ### <a name="q-how-can-i-check-if-data-box-is-available-in-my-region"></a>PYTANIE: Jak sprawdzić, czy usługa Data Box jest dostępna w moim regionie? 
-A.  Aby uzyskać informacje, w jakich krajach/regionach urządzenie Data Box jest dostępny, przejdź do [dostępność w poszczególnych regionach](data-box-overview.md#region-availability).  
+A.  Aby uzyskać informacje na temat krajów/regionów dostępnych urządzenie Data Box, przejdź do [obszaru dostępność regionu](data-box-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box"></a>PYTANIE: W jakich regionach mogę przechowywać dane, korzystając z usługi Data Box?
-A. Urządzenie Data Box jest obsługiwane dla wszystkich regionów w USA, Europa Zachodnia, Europa Północna, Francja, Zjednoczone Królestwo, Japonia, Australia i Kanadzie. Aby uzyskać więcej informacji, przejdź do tematu [Dostępność regionalna](data-box-overview.md#region-availability).
+A. Urządzenie Data Box jest obsługiwana w przypadku wszystkich regionów w Stanach Zjednoczonych, Europa Zachodnia, Europa Północna, Francja, Zjednoczone Królestwo, Japonia, Australia i Kanada. Aby uzyskać więcej informacji, przejdź do tematu [Dostępność regionalna](data-box-overview.md#region-availability).
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues-with-data-box"></a>PYTANIE: Z kim należy się skontaktować, gdy pojawią się jakiekolwiek problemy z usługą Data Box?
 A. Jeśli napotkasz jakiekolwiek problemy z usługą Data Box, [skontaktuj się z działem pomocy technicznej firmy Microsoft](data-box-disk-contact-microsoft-support.md).
@@ -124,7 +124,7 @@ A. Jeśli nie możesz uzyskać dostępu do hasła odblokowania w witrynie Azure 
 ### <a name="q-is-port-channel-configuration-supported-on-data-box-how-about-mpio"></a>PYTANIE: Czy na urządzeniu Data Box jest obsługiwana konfiguracja kanału portu? Jak wygląda sytuacja w przypadku wielościeżkowego we/wy (MPIO)?
 A. Nie obsługujemy konfiguracji kanału portu, konfiguracji wielościeżkowego we/wy (MPIO) ani konfiguracji sieci vLAN na urządzeniu Data Box.
 
-## <a name="track-status"></a>Śledzenie stanu
+## <a name="track-status"></a>Śledź stan
 
 ### <a name="q-how-do-i-track-the-data-box-from-when-i-placed-the-order-to-shipping-the-device-back"></a>PYTANIE: Jak mogę śledzić stan urządzenia Data Box od momentu złożenia zamówienia do jego odesłania? 
 A.  Stan zamówienia urządzenia Data Box możesz śledzić w witrynie Azure Portal. Podczas tworzenia zamówienia jest również wyświetlany monit o podanie adresu e-mail do powiadomień. Jeśli go podasz, będziesz otrzymywać powiadomienia e-mail o każdej zmianie stanu zamówienia. Więcej informacji na temat [konfigurowania wiadomości e-mail z powiadomieniami](data-box-portal-ui-admin.md#edit-notification-details).
@@ -183,8 +183,11 @@ A. Jeśli urządzenie zostało dostarczone uszkodzone lub istnieje dowód manipu
 ### <a name="q-can-i-use-my-own-shipping-carrier-to-ship-data-box"></a>PYTANIE: Czy mogę wysłać urządzenie Data Box za pośrednictwem własnej firmy przewozowej?
 A. W ramach usługi Data Box firma Microsoft obsługuje wysyłkę do i z centrum danych platformy Azure. Jeśli chcesz skorzystać z usług własnego przewoźnika, możesz skorzystać z usługi Azure Import/Export. Aby uzyskać więcej informacji, przejdź do tematu [Co to jest usługa Azure Import/Export?](../storage/common/storage-import-export-service.md)
 
-### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>PYTANIE: Będzie Moje urządzenia Data Box krzyżowe obramowania kraju podczas wysyłania?
-A. Wszystkie urządzenia Data Box są dostarczane z w obrębie tego samego kraju jako miejsca docelowego i nie przechodzi wszystkie międzynarodowej obramowania. Jedynym wyjątkiem jest zamówień w Unii Europejskiej (UE), których urządzeń można wysłać do i z jakiegokolwiek kraju UE. Dotyczy to zarówno Data Box, jak i duże pole danych urządzeń.
+### <a name="q-will-my-data-box-devices-cross-country-borders-during-shipping"></a>PYTANIE: Czy moje urządzenie Data Box urządzenia będą przecinać granice kraju podczas wysyłki?
+A. Wszystkie urządzenia urządzenie Data Box są wysyłane z tego samego kraju, w jakim się znajdują, i nie przechodzą poza granice międzynarodowe. Jedyny wyjątek dotyczy zamówień w Unii Europejskiej (UE), gdzie urządzenia mogą być dostarczane do i z dowolnego kraju UE. Dotyczy to zarówno urządzeń urządzenie Data Box, jak i Data Box Heavy.
+
+### <a name="q-i-ordered-a-data-box-in-us-east-but-i-received-a-device-that-was-shipped-from-a-location-in-us-west-where-should-i-return-the-device-to"></a>PYTANIE: W regionie Wschodnie stany USA zamówiłem urządzenie Data Box, ale otrzymałem urządzenie, które było dostarczane z lokalizacji w zachodnich stanach USA. Gdzie należy zwrócić urządzenie?
+A. Firma Microsoft próbuje uzyskać urządzenie Data Box urządzenie tak szybko, jak to możliwe. Firma Microsoft ustala priorytety wysyłki od centrum danych znajdującego się najbliżej lokalizacji konta magazynu, ale wyśle Urządzenie z dowolnego centrum danych platformy Azure, które ma dostępny spis. Twoja urządzenie Data Box powinna zostać zwrócona do tej samej lokalizacji, z której zostało wysłane, tak jak jest wyświetlana w etykiecie wysyłkowej.
 
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>PYTANIE: Etykieta wysyłki zwrotnej nie jest widoczna na wyświetlaczu E-ink. Co mam zrobić?
 A. Jeśli na wyświetlaczu E-ink nie widać etykiety wysyłki zwrotnej, wykonaj następujące czynności:
@@ -250,7 +253,7 @@ A.  Dzienniki śledzenia przewoźnika są przechwytywane w historii zamówień u
 A.  Nie. Obecnie centrum danych platformy Azure nie akceptuje dostarczania urządzeń Data Box od klientów lub od przewoźników innych niż UPS.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Przejrzyj [wymagania systemowe usługi Data Box](data-box-system-requirements.md).
 - Poznaj [ograniczenia usługi Data Box](data-box-limits.md).

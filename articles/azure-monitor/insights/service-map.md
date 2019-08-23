@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 1f06345995e30f4d7f165230f4292c560c89e2e8
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 98bf38a6c293f6d339413b5395bb32d74bcb30c0
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68489768"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905714"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Korzystanie z rozwiązania Service Map na platformie Azure
-Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Dzięki usłudze Service Map można wyświetlać serwery w sposób, w jakich się o nich myśli: jako wzajemnie połączone systemy dostarczające usługi. Usługa ta pokazuje połączenia między serwerami i procesami, opóźnienie połączeń przychodzących i wychodzących oraz porty dla każdej architektury połączonej za pomocą protokołu TCP. Nie jest wymagana żadna konfiguracja z wyjątkiem zainstalowania agenta.
+
+Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Dzięki usłudze Service Map można wyświetlać serwery w sposób, w jakich się o nich myśli: jako wzajemnie połączone systemy dostarczające usługi. Usługa Service Map pokazuje połączenia między serwerami i procesami, opóźnienie połączeń przychodzących i wychodzących oraz porty dla każdej architektury połączonej za pomocą protokołu TCP. Nie jest wymagana żadna konfiguracja, wystarczy zainstalować agenta.
 
 W tym artykule opisano szczegóły dotyczące dołączania i korzystania z Service Map. Aby uzyskać informacje o konfigurowaniu wymagań wstępnych dla tego rozwiązania, zobacz temat [włączanie Azure monitor dla maszyn wirtualnych przegląd](vminsights-enable-overview.md#prerequisites). Podsumowując, potrzebne są następujące elementy:
 
@@ -407,7 +408,7 @@ Każda właściwość RemoteIp w tabeli *VMConnection* jest sprawdzana względem
 | `ReportReferenceLink` |Linki do raportów związanych z tym, że jest to zauważalne. |
 | `AdditionalInformation` |Zawiera dodatkowe informacje o zaobserwowanym zagrożeniu, jeśli ma to zastosowanie. |
 
-### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL rekordy
+### <a name="servicemapcomputer_cl-records"></a>ServiceMapComputer_CL rekordy
 
 Rekordy z typem *ServiceMapComputer_CL* mają dane spisu dla serwerów z agentami Service map. Te rekordy mają właściwości podane w poniższej tabeli:
 
@@ -433,7 +434,7 @@ Rekordy z typem *ServiceMapComputer_CL* mają dane spisu dla serwerów z agentam
 | `VirtualMachineName_s` | Nazwa maszyny wirtualnej |
 | `BootTime_t` | Czas rozruchu |
 
-### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL typy rekordów
+### <a name="servicemapprocess_cl-type-records"></a>ServiceMapProcess_CL typy rekordów
 
 Rekordy z typem *ServiceMapProcess_CL* mają dane spisu dla procesów połączonych z protokołem TCP na serwerach z agentami Service map. Te rekordy mają właściwości podane w poniższej tabeli:
 
@@ -554,16 +555,57 @@ Firma Microsoft automatycznie zbiera dane dotyczące użycia i wydajności przez
 
 Aby uzyskać więcej informacji na temat zbierania i wykorzystywania danych, zobacz [Microsoft Online Services Privacy Statement](https://go.microsoft.com/fwlink/?LinkId=512132).
 
-
 ## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o przeszukiwaniu [dzienników](../../azure-monitor/log-query/log-query-overview.md) w log Analytics, aby pobrać dane zbierane przez Service map.
 
-
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Zapoznaj się z [sekcją Rozwiązywanie problemów w artykule konfigurowanie Service map dokumentu]( service-map-configure.md#troubleshooting).
+Jeśli masz problemy z Instalowanie i uruchamianie rozwiązania Service Map, w tej sekcji mogą pomóc. Jeśli nadal nie możesz rozwiązać problemu, skontaktuj się z Microsoft Support.
 
+### <a name="dependency-agent-installation-problems"></a>Problemy z instalacją agenta zależności
+
+#### <a name="installer-prompts-for-a-reboot"></a>Instalator monituje o ponowne uruchomienie komputera
+Agent zależności *zazwyczaj* nie wymaga ponownego uruchomienia podczas instalacji lub usuwania. Jednak w niektórych przypadkach rzadkich systemu Windows Server wymaga ponownego uruchomienia, aby kontynuować instalację. Dzieje się tak, gdy zależność, zazwyczaj Biblioteka redystrybucyjna firmy Microsoft C++ , wymaga ponownego uruchomienia ze względu na zablokowany plik.
+
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>Komunikat "nie można zainstalować agenta zależności: Nie można zainstalować bibliotek środowiska uruchomieniowego programu Visual Studio (kod = [code_number]) "
+
+Program Microsoft Dependency agent jest oparta na bibliotekach środowiska uruchomieniowego programu Microsoft Visual Studio. Jeśli występuje problem podczas instalacji bibliotek, zostanie wyświetlony komunikat. 
+
+Instalatory biblioteki środowiska uruchomieniowego twórz dzienniki w folderze %LOCALAPPDATA%\temp. Plik to `dd_vcredist_arch_yyyymmddhhmmss.log`, gdzie *Arch* `x86` jest lub `amd64` i *rrrrmmddggmmss* jest datą i godziną (zegar 24-godzinny) podczas tworzenia dziennika. Dziennik zawiera szczegółowe informacje o problemie, który blokuje instalację.
+
+Czasami warto zainstalować [najnowsze biblioteki środowiska uruchomieniowego](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) .
+
+W poniższej tabeli wymieniono numery kodu i sugerowanymi metodami rozwiązania.
+
+| Kod | Opis | Rozwiązanie |
+|:--|:--|:--|
+| 0x17 | Instalator biblioteki wymaga aktualizacji Windows, która nie została ona zainstalowana. | Poszukaj w dzienniku Instalatora usługi najnowszej biblioteki.<br><br>Jeśli po odwołaniu `Windows8.1-KB2999226-x64.msu` następuje wiersz `Error 0x80240017: Failed to execute MSU package,` nie spełnia wymagań wstępnych dotyczących instalacji KB2999226. Postępuj zgodnie z instrukcjami w sekcji wymagania wstępne w [środowisku uruchomieniowym uniwersalnego języka C w artykule systemu Windows](https://support.microsoft.com/kb/2999226) . Może być konieczne, uruchom usługę Windows Update i ponownie uruchomić wiele razy, aby można było zainstalować wymagania wstępne.<br><br>Ponownie uruchom Instalatora agenta Dependency firmy Microsoft. |
+
+### <a name="post-installation-issues"></a>Problemy z instalacją po
+
+#### <a name="server-doesnt-appear-in-service-map"></a>Serwer nie jest wyświetlane w mapy usługi
+
+Jeśli instalacja agenta zależności zakończyła się pomyślnie, ale nie widzisz maszyny w Service Map rozwiązaniu:
+* Agent zależności zainstalowano pomyślnie? Aby to sprawdzić przez sprawdzanie, czy usługa jest zainstalowana i uruchomiona.<br><br>
+**Windows**: Wyszukaj usługę o nazwie **Microsoft Dependency Agent**.
+**Linux**: Wyszukaj uruchomiony proces **Microsoft-Dependency-Agent**.
+
+* Czy jesteś w [log Analytics warstwy Bezpłatna](https://azure.microsoft.com/pricing/details/monitor/)? Plan bezpłatny pozwala na maksymalnie pięć unikatowych maszyn Service Map. Wszystkie kolejne maszyny nie będą wyświetlane w Service Map, nawet jeśli poprzednie pięć nie wyśle już danych.
+
+* Czy serwer wysyła dane dziennika i wydajności do dzienników Azure Monitor? Przejdź do usługi Azure Monitor\Logs i uruchom następujące zapytanie dla komputera: 
+
+    ```kusto
+    Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
+    ```
+
+Czy został wyświetlony w wynikach różnych zdarzeń? To najnowsze dane? Jeśli tak, Agent Log Analytics działa prawidłowo i komunikuje się z obszarem roboczym. Jeśli nie, sprawdź agenta na swojej maszynie: [Log Analytics agenta do rozwiązywania problemów z systemem Windows](../platform/agent-windows-troubleshoot.md) lub [agenta log Analytics do rozwiązywania problemów z systemem Linux](../platform/agent-linux-troubleshoot.md).
+
+#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Serwer jest wyświetlany w rozwiązania Service Map, ale żadne procesy nie ma
+
+Jeśli komputer jest widoczny w Service Map, ale nie ma żadnych procesów ani danych połączenia, oznacza to, że Agent zależności został zainstalowany i uruchomiony, ale nie załadowano sterownika jądra. 
+
+Sprawdź (Windows) lub `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux). `C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` Ostatnie wiersze pliku powinno wskazywać, dlaczego jądra nie została załadowana. Na przykład jądra mogą nie być obsługiwane w systemie Linux, jeśli zaktualizowane swoje jądra.
 
 ## <a name="feedback"></a>Opinia
 

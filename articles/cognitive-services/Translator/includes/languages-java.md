@@ -4,17 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: d37efdaf7e8f2b2b2cb6d3c5fcc90e166feab96a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 34ff0e792fc388f3083e2d490b2658822793988f
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968734"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906906"
 ---
-## <a name="prerequisites"></a>Wymagania wstępne
+[!INCLUDE [Prerequisites](prerequisites-java.md)]
 
-* [Zestaw JDK 7 lub nowszy](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* Narzędzie [Gradle](https://gradle.org/install/)
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="initialize-a-project-with-gradle"></a>Inicjowanie projektu za pomocą narzędzia Gradle
 
@@ -88,10 +87,12 @@ public class GetLanguages {
 }
 ```
 
-Dodaj następujące wiersze do klasy `GetLanguages`:
+Dodaj następujące wiersze do klasy `GetLanguages`. Zauważ, że klucz subskrypcji i punkt końcowy są odczytywane ze zmiennych środowiskowych:
 
 ```java
-String url = "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0";
+private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
+private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
+String url = endpoint + "/languages?api-version=3.0";
 ```
 
 Jeśli używasz subskrypcji usługi Cognitive Services, musisz także uwzględnić `Ocp-Apim-Subscription-Region` w parametrach żądania. [Dowiedz się więcej o uwierzytelnianiu w ramach subskrypcji wielu usług](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).

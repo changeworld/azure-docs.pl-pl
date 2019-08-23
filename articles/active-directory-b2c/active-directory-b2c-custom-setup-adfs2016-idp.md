@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 595f8a174e615fb08a042b0e9c4cfe6da6ac1b7e
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 5dffba9106493e60b35538a5210a51cead7fb135
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68773420"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899631"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Dodawanie usług AD FS jako dostawcy tożsamości SAML przy użyciu zasad niestandardowych w Azure Active Directory B2C
 
@@ -27,6 +27,7 @@ W tym artykule opisano sposób włączania logowania do konta użytkownika usłu
 
 - Wykonaj kroki opisane w temacie Wprowadzenie [do zasad niestandardowych w Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
 - Upewnij się, że masz dostęp do pliku PFX certyfikatu z kluczem prywatnym. Możesz wygenerować własny podpisany certyfikat i przekazać go do Azure AD B2C. Azure AD B2C używa tego certyfikatu do podpisywania żądania SAML wysyłanego do dostawcy tożsamości SAML.
+- Aby system Azure zaakceptował hasło pliku PFX, hasło musi być zaszyfrowane za pomocą opcji TripleDES-SHA1 w narzędziu eksportu magazynu certyfikatów systemu Windows, a nie AES256-SHA256.
 
 ## <a name="create-a-policy-key"></a>Tworzenie klucza zasad
 

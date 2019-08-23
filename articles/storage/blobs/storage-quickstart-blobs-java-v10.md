@@ -7,12 +7,12 @@ ms.date: 11/14/2018
 ms.service: storage
 ms.topic: quickstart
 ms.custom: seo-java-july2019
-ms.openlocfilehash: dcaefc6603221909329925f30bcf7556441b3d8e
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 633054d0e06a78124b8fdcefface665b2bf8c25d
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68722045"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900446"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10"></a>Szybki start: Przekazywanie, pobieranie i wyświetlanie listy obiektów BLOB przy użyciu zestawu SDK magazynu Java v10
 
@@ -283,11 +283,11 @@ Jeśli nie potrzebujesz już obiektów blob przekazanych podczas pracy z tym prz
 containerURL.delete(null).blockingGet();
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start przedstawiono metodę transferowania plików między dyskiem lokalnym i usługą Azure Blob Storage przy użyciu języka Java. 
 
 > [!div class="nextstepaction"]
 > [Kod źródłowy zestawu SDK usługi Storage w wersji 10 dla języka Java](https://github.com/Azure/azure-storage-java/)
-> [Dokumentacja interfejsu API](https://docs.microsoft.com/java/api/overview/azure/storage/client?view=azure-java-stable)
+> [Dokumentacja interfejsu API](https://docs.microsoft.com/java/api/overview/azure/storage)
 > [Dowiedz się więcej o bibliotece RxJava](https://github.com/ReactiveX/RxJava)

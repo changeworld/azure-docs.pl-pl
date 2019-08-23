@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a622aa85d1d0a9dcd5d5ad9b2b30e7a3120ea974
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d58cec644c75baaac37862f445477da92075c44d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878012"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907348"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-preview-features"></a>Samouczek: Definiowanie nowego typu urządzenia w aplikacji IoT Central platformy Azure (funkcje w wersji zapoznawczej)
 
@@ -90,11 +90,11 @@ Poniższe kroki pokazują, jak zaimportować model możliwości urządzenia **cz
 
 1. Aby dodać nowy szablon urządzenia, wybierz pozycję **+ Nowy** na stronie **Szablony urządzeń** .
 
-1. Wybierz pozycję niestandardowa z listy modeli możliwości urządzeń.
+1. Z listy szablonów wybierz pozycję **niestandardowy** .
 
 1. Wprowadź **czujnik środowiska** jako nazwę szablonu urządzenia.
 
-1. Wybierz pozycję **Importuj model możliwości** , aby utworzyć nowy model możliwości urządzenia z pliku JSON. Przejdź do folderu, w którym zapisano plik **EnvironmentalSensorInline. capabilitymodel. JSON** na komputerze lokalnym. Wybierz plik **EnvironmentalSensorInline. capabilitymodel. JSON** , a następnie wybierz pozycję Importuj. Model możliwości czujnika środowiska zawiera informacje o **czujniku** i interfejsie **informacji o urządzeniu** :
+1. Wybierz pozycję **Importuj model możliwości** , aby utworzyć nowy model możliwości urządzenia z pliku JSON. Przejdź do folderu, w którym zapisano plik **EnvironmentalSensorInline. capabilitymodel. JSON** na komputerze lokalnym. Wybierz plik **EnvironmentalSensorInline. capabilitymodel. JSON** , a następnie wybierz pozycję **Otwórz**. Model możliwości czujnika środowiska zawiera informacje o **czujniku** i interfejsie **informacji o urządzeniu** :
 
     ![Model możliwości urządzenia czujnika środowiska](./media/tutorial-define-device-type-pnp/newdevicecapabilitymodel.png)
 
@@ -147,9 +147,9 @@ Po wybraniu opcji **Generuj widoki domyślne**są one automatycznie dodawane do 
 
 Pulpit nawigacyjny urządzenia umożliwia operatorowi wizualizowanie urządzenia przy użyciu wykresów i metryk. Jako konstruktor możesz zdefiniować informacje wyświetlane na pulpicie nawigacyjnym urządzenia. Można zdefiniować wiele pulpitów nawigacyjnych dla urządzeń. Aby utworzyć pulpit nawigacyjny w celu wizualizacji danych telemetrycznych czujnika środowiska, wybierz pozycję **widoki** , a następnie **Wizualizuj urządzenie**:
 
-1. Wszystkie właściwości urządzenia, właściwości chmury, telemetrii i opcje statyczne są wymienione w panelu po prawej stronie. Można przeciągać i upuszczać dowolne z tych elementów w widoku. Przeciągnij wartość właściwości do widoku. Kafelek można skonfigurować przy użyciu ikony koła zębatego.
+1. Wszystkie właściwości urządzenia, właściwości chmury, telemetrii i opcje statyczne są wymienione w obszarze **Właściwości**. Można przeciągać i upuszczać dowolne z tych elementów w widoku. Przeciągnij Właściwość **poziom jasności** do widoku. Kafelek można skonfigurować przy użyciu ikony koła zębatego.
 
-1. Aby dodać wykres, który przedstawia dane telemetryczne , wybierz wilgotność i **temperaturę**, a następnie wybierz pozycję **Połącz**. Aby wyświetlić ten wykres w dowolnym innym formacie, takim jak wykres kołowy lub wykres słupkowy, wybierz przycisk **Zmień wizualizację** w górnej części kafelka.
+1. Aby dodać wykres, który przedstawia dane telemetryczne , wybierz wilgotność i **temperaturę**, a następnie wybierz pozycję **Połącz**. Aby wyświetlić ten wykres w innym formacie, na przykład na wykresie kołowym lub wykresie słupkowym, wybierz przycisk **Zmień wizualizację** w górnej części kafelka.
 
 1. Wybierz pozycję **Zapisz** , aby zapisać swój widok:
 
@@ -161,7 +161,7 @@ Formularz urządzenia umożliwia operatorowi Edytowanie właściwości urządzen
 
 Aby utworzyć formularz do wyświetlania i edytowania właściwości czujnika środowiska:
 
-1. Wybierz kafelek **Edytowanie urządzenia i danych w chmurze** .
+1. Przejdź do **widoku** w szablonie **czujnika środowiska** . Wybierz kafelek **Edytowanie urządzenia i danych w chmurze** , aby dodać nowy widok.
 
 1. Wprowadź nazwę formularza **Właściwości czujnika środowiska**.
 
@@ -169,10 +169,9 @@ Aby utworzyć formularz do wyświetlania i edytowania właściwości czujnika ś
 
 1. Wybierz **poziom jasności** i właściwości urządzenia **stanu urządzenia** . Następnie wybierz pozycję **Dodaj sekcję**. Edytuj tytuł sekcji jako **Właściwości czujnika**. Wybierz przycisk **Zastosuj**.
 
-1. Wybierz właściwości **baterii**pozostałej, **model urządzenia**, **wersja oprogramowania układowego**, **producent**i **numer seryjny** urządzenia. Następnie wybierz pozycję **Dodaj sekcję**. Edytuj tytuł sekcji jako **Właściwości urządzenia**. Wybierz przycisk **Zastosuj**.
+1. Wybierz właściwości urządzenia **model**, **wersja oprogramowania**, **producent**i **producent procesora** . Następnie wybierz pozycję **Dodaj sekcję**. Edytuj tytuł sekcji jako **Właściwości urządzenia**. Wybierz przycisk **Zastosuj**.
 
 1. Wybierz pozycję **Zapisz** , aby zapisać swój widok.
-
 
 ## <a name="publish-device-template"></a>Publikowanie szablonu urządzenia
 

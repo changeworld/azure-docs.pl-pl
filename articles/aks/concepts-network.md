@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 459c11448280b63bafdfd54c13a6cad5983ef1b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 967ca233169e2a2a213534d5b60bef2e3f44b6a9
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615891"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69969646"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Pojęcia dotyczące sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -55,7 +55,7 @@ Aby uprościć konfigurację sieci dla obciążeń aplikacji, Kubernetes używa 
 
 Adres IP dla modułów równoważenia obciążenia i usług może być dynamicznie przypisywany lub można określić istniejący statyczny adres IP do użycia. Można przypisać zarówno wewnętrzne, jak i zewnętrzne statyczne adresy IP. Ten istniejący statyczny adres IP jest często powiązany z wpisem DNS.
 
-Można utworzyć *wewnętrzne* i *zewnętrzne* usługi równoważenia obciążenia. Do wewnętrznych modułów równoważenia obciążenia przypisany jest tylko prywatny adres IP, dlatego nie można uzyskać do niego dostępu z Internetu.
+Można utworzyć *wewnętrzne* i *zewnętrzne* usługi równoważenia obciążenia. Do wewnętrznych modułów równoważenia obciążenia przypisany jest tylko prywatny adres IP, dlatego nie można uzyskać do nich dostępu z Internetu.
 
 ## <a name="azure-virtual-networks"></a>Sieci wirtualne platformy Azure
 

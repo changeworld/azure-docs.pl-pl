@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: b99dbd403de0de948527fbe74b7e1205316822c0
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 848cfc96a7da4e69ff77d16a42226a983153ac63
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019675"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897000"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Używanie uwierzytelniania Azure Active Directory na potrzeby uwierzytelniania przy użyciu programu SQL Server
 
@@ -116,8 +116,9 @@ Aby utworzyć użytkownika zawartej bazy danych w Azure SQL Database, wystąpien
 
 Azure Active Directory Authentication obsługuje następujące metody łączenia się z bazą danych przy użyciu tożsamości usługi Azure AD:
 
-- Używanie zintegrowanego uwierzytelniania systemu Windows
-- Używanie nazwy głównej i hasła usługi Azure AD
+- Azure Active Directory hasło
+- Azure Active Directory zintegrowany
+- Azure Active Directory Universal with MFA
 - Korzystanie z uwierzytelniania za pomocą tokenu aplikacji
 
 Następujące metody uwierzytelniania są obsługiwane dla podmiotów zabezpieczeń serwera usługi Azure AD (w**publicznej wersji**zapoznawczej):
@@ -125,7 +126,6 @@ Następujące metody uwierzytelniania są obsługiwane dla podmiotów zabezpiecz
 - Azure Active Directory hasło
 - Azure Active Directory zintegrowany
 - Azure Active Directory Universal with MFA
-- Azure Active Directory Interactive
 
 
 ### <a name="additional-considerations"></a>Dodatkowe zagadnienia

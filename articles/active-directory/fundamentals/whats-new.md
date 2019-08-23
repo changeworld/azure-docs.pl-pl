@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50f2f1f7f5d8509a28557e9704bc178be465b1ee
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 93327091d0065a67d441dd56cadd83f4f7d2d1f2
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648657"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970396"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>What's new in Azure Active Directory?
 
@@ -85,7 +85,7 @@ Nowe zmiany w interfejsie użytkownika są nachodzące do projektu **dodawania z
 **Kategoria usługi:** Uwierzytelnianie MFA  
 **Możliwość produktu:** Ochrona tożsamości & zabezpieczenia
 
-Usuwamy adres IP serwera usługi MFA z [usługi sieci Web adresu IP pakietu Office 365 i adresu URL](https://docs.microsoft.com/office365/enterprise/office-365-ip-web-service). Jeśli obecnie korzystasz z tych stron do aktualizowania ustawień zapory, upewnij się, że masz również listę adresów IP udokumentowaną w sekcji **wymagania dotyczące zapory serwera usługi Azure** MFA. [ w artykule serwer usługi Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy#azure-multi-factor-authentication-server-firewall-requirements) MFA.
+Usuwamy adres IP serwera usługi MFA z [usługi sieci Web adresu IP pakietu Office 365 i adresu URL](https://docs.microsoft.com/office365/enterprise/office-365-ip-web-service). Jeśli obecnie korzystasz z tych stron do aktualizowania ustawień zapory, musisz się upewnić, że zawarto również listę adresów IP udokumentowaną w sekcji **wymagania dotyczące zapory serwer Multi-Factor Authentication platformy Azure** . [ z artykułem Serwer Multi-Factor Authentication platformy Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy#azure-multi-factor-authentication-server-firewall-requirements) .
 
 ---
 
@@ -114,7 +114,7 @@ Aby uzyskać więcej informacji, zobacz [co nowego w uwierzytelnianiu?](https://
 
 Klienci usługi Azure AD mogą teraz ustawiać zasady zarządzania kluczami zabezpieczeń FIDO2 dla użytkowników i grup organizacji. Użytkownicy końcowi mogą również rejestrować swoje klucze zabezpieczeń, używając kluczy do logowania się do swoich kont Microsoft w witrynach sieci Web na urządzeniach z obsługą FIDO, a także logowania do urządzeń z systemem Windows 10 przyłączonych do usługi Azure AD.
 
-Aby uzyskać więcej informacji, zobacz [Włączanie logowania bezhasła w usłudze Azure AD (wersja zapoznawcza)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable) w celu uzyskania informacji związanych z administratorem i [Konfigurowanie informacji zabezpieczających do korzystania z klucza zabezpieczeń (wersja zapoznawcza)](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-security-key) dla informacji związanych z użytkownikiem końcowym.
+Aby uzyskać więcej informacji, zobacz [Włączanie logowania bezhasła w usłudze Azure AD (wersja zapoznawcza)](/azure/active-directory/authentication/concept-authentication-passwordless) w celu uzyskania informacji związanych z administratorem i [Konfigurowanie informacji zabezpieczających do korzystania z klucza zabezpieczeń (wersja zapoznawcza)](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-security-key) dla informacji związanych z użytkownikiem końcowym.
 
 ---
 
@@ -382,7 +382,7 @@ Aby uzyskać więcej informacji na temat konfigurowania znakowania firmowego, zo
 
 ---
 
-### <a name="azure-multi-factor-authentication-mfa-server-is-no-longer-available-for-new-deployments"></a>Serwer uwierzytelniania wieloskładnikowego (MFA) systemu Azure nie jest już dostępny dla nowych wdrożeń
+### <a name="azure-multi-factor-authentication-mfa-server-is-no-longer-available-for-new-deployments"></a>Serwer usługi Azure Multi-Factor Authentication (MFA) nie jest już dostępny dla nowych wdrożeń
 
 **Wprowadź** Przestarzałe  
 **Kategoria usługi:** Uwierzytelnianie MFA  
@@ -390,7 +390,7 @@ Aby uzyskać więcej informacji na temat konfigurowania znakowania firmowego, zo
 
 Od 1 lipca 2019 firma Microsoft nie będzie już oferować serwera MFA dla nowych wdrożeń. Nowi klienci, którzy chcą wymagać uwierzytelniania wieloskładnikowego w swojej organizacji, muszą teraz korzystać z uwierzytelniania wieloskładnikowego opartego na chmurze. Klienci, którzy aktywowali serwer usługi MFA przed 1 lipca, nie zobaczą zmiany. Nadal będzie można pobrać najnowszą wersję, pobrać przyszłe aktualizacje i wygenerować poświadczenia aktywacji.
 
-Aby uzyskać więcej informacji, zobacz [wprowadzenie do serwera usługi Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy)MFA. Aby uzyskać więcej informacji na temat uwierzytelniania wieloskładnikowego opartego na chmurze, zobacz [Planowanie wdrożenia usługi Azure](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted)MFA opartego na chmurze.
+Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Azure serwer Multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-deploy). Aby uzyskać więcej informacji na temat usługi Azure Multi-Factor Authentication opartej na chmurze, zobacz [Planowanie wdrożenia usługi azure Multi-Factor Authentication opartego na chmurze](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted).
 
 ---
 
@@ -632,7 +632,7 @@ Aby pomóc w rozwiązaniu opinii na temat wizualizacji z dziennikami aktywności
 
 - **Logowania.** Zawiera szczegółowe informacje dotyczące aplikacji i użytkowników, w tym lokalizacji logowania, systemu operacyjnego lub klienta przeglądarki oraz wersji, a także liczbę logowań zakończonych powodzeniem lub niepowodzeniem.
 
-- **Starsza wersja uwierzytelniania i dostęp warunkowy.** Zawiera szczegółowe informacje dotyczące aplikacji i użytkowników korzystających ze starszego uwierzytelniania, w tym użycie usługi uwierzytelniania wieloskładnikowego wyzwalane przez zasady dostępu warunkowego, aplikacje korzystające z zasad dostępu warunkowego itd.
+- **Starsza wersja uwierzytelniania i dostęp warunkowy.** Zawiera szczegółowe informacje dotyczące aplikacji i użytkowników korzystających ze starszego uwierzytelniania, w tym Multi-Factor Authentication użycie wyzwalane przez zasady dostępu warunkowego, aplikacje korzystające z zasad dostępu warunkowego itd.
 
 - **Analiza niepowodzeń logowania.** Pomaga ustalić, czy występują błędy logowania z powodu akcji użytkownika, problemów z zasadami lub infrastruktury.
 

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/01/2019
-ms.openlocfilehash: a5fd376a6da70ed68baedf44fd4c2cc47e68d3cf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
-ms.translationtype: HT
+ms.openlocfilehash: ada2a19de12c2f3f6b23fcc3d759afb0c747d37d
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872369"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897415"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Wdróż model uczenia maszynowego w Azure App Service (wersja zapoznawcza)
 
@@ -108,11 +108,11 @@ Gdy `show_output=True`są wyświetlane dane wyjściowe procesu kompilacji platfo
 
 1. Na [Azure Portal](https://portal.azure.com)wybierz obszar roboczy Azure Machine Learning. W sekcji __Przegląd__ Użyj linku __rejestru__ , aby uzyskać dostęp do Azure Container Registry obszaru roboczego.
 
-    ![Zrzut ekranu przedstawiający przegląd obszaru roboczego](media/how-to-deploy-app-service/workspace-overview.png)
+    [![Zrzut ekranu przedstawiający przegląd obszaru roboczego](media/how-to-deploy-app-service/workspace-overview.png)](media/how-to-deploy-app-service/workspace-overview-expanded.png)
 
 2. Z Azure Container Registry wybierz pozycję __repozytoria__, a następnie wybierz __nazwę obrazu__ , który chcesz wdrożyć. Dla wersji, którą chcesz wdrożyć, wybierz pozycję __...__ , a następnie __Wdróż ją w aplikacji sieci Web__.
 
-    ![Zrzut ekranu przedstawiający wdrażanie z ACR do aplikacji sieci Web](media/how-to-deploy-app-service/deploy-to-web-app.png)
+    [![Zrzut ekranu przedstawiający wdrażanie z ACR do aplikacji sieci Web](media/how-to-deploy-app-service/deploy-to-web-app.png)](media/how-to-deploy-app-service/deploy-to-web-app-expanded.png)
 
 3. Aby utworzyć aplikację sieci Web, podaj nazwę witryny, subskrypcję, grupę zasobów, a następnie wybierz pozycję plan/Lokalizacja usługi App Service. Na koniec wybierz pozycję __Utwórz__.
 
@@ -122,7 +122,7 @@ Gdy `show_output=True`są wyświetlane dane wyjściowe procesu kompilacji platfo
 
 W [Azure Portal](https://portal.azure.com)wybierz aplikację sieci Web utworzoną w poprzednim kroku. W sekcji __Przegląd__ Skopiuj __adres URL__. Ta wartość jest __podstawowym adresem URL__ usługi.
 
-![Zrzut ekranu przedstawiający przegląd aplikacji sieci Web](media/how-to-deploy-app-service/web-app-overview.png)
+[![Zrzut ekranu przedstawiający przegląd aplikacji sieci Web](media/how-to-deploy-app-service/web-app-overview.png)](media/how-to-deploy-app-service/web-app-overview-expanded.png)
 
 Usługa sieci Web, która przekazuje żądania do modelu, znajduje się `{baseurl}/score`w lokalizacji. Na przykład `https://mywebapp.azurewebsites.net/score`. Poniższy kod w języku Python pokazuje, jak przesłać dane do adresu URL i wyświetlić odpowiedź:
 

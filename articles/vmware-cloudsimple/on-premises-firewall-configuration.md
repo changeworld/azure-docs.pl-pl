@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: dadf5fb64ba727b388c373f9b8befb54592c49d9
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: c0f575417819f0e2d46565ad15aaa23a04fd7cf1
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68958514"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972637"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>Uzyskiwanie dostępu do środowiska chmury prywatnej CloudSimple i aplikacji z poziomu lokalnego
 

@@ -1,54 +1,59 @@
 ---
-title: Omówienie ciągłości biznesowej z usługą Azure Database for PostgreSQL — pojedynczy serwer
-description: Omówienie ciągłości biznesowej z usługą Azure Database for PostgreSQL.
+title: Przegląd ciągłości działania z Azure Database for PostgreSQL — pojedynczy serwer
+description: Przegląd ciągłości działania z Azure Database for PostgreSQL.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: a31112f3b6f7bd79785f89822e2881b152708254
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/21/2019
+ms.openlocfilehash: c346360c125d9316aed81ceeedbe265fd09465c1
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068933"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907500"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Omówienie ciągłości biznesowej z usługą Azure Database for PostgreSQL — pojedynczy serwer
+# <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Przegląd ciągłości działania z Azure Database for PostgreSQL — pojedynczy serwer
 
-W tym omówieniu opisano możliwości usługi Azure Database for PostgreSQL zapewnia ciągłość biznesową i odzyskiwanie po awarii. Poznaj opcje odzyskiwania zdarzeń powodujących zakłócenia, które mogą spowodować utratę danych lub spowodować, że bazy danych i aplikacja staną się niedostępne. Dowiedz się, co należy zrobić po błędzie użytkownika lub aplikacji wpływa na integralność danych, region platformy Azure wystąpiła awaria lub aplikacja wymaga konserwacji.
+Ten przegląd zawiera opis możliwości, które Azure Database for PostgreSQL zapewnia ciągłość działania i odzyskiwanie po awarii. Informacje o opcjach odzyskiwania zdarzeń powodujących zakłócenia, które mogą spowodować utratę danych lub spowodować, że baza danych i aplikacja staną się niedostępne. Dowiedz się, co zrobić, gdy błąd użytkownika lub aplikacji wpływa na integralność danych, region platformy Azure ma awarię lub aplikacja wymaga konserwacji.
 
-## <a name="features-that-you-can-use-to-provide-business-continuity"></a>Funkcje, które można użyć w celu zapewnienia ciągłości działania
+## <a name="features-that-you-can-use-to-provide-business-continuity"></a>Funkcje, których można użyć w celu zapewnienia ciągłości biznesowej
 
-Usługa Azure Database for PostgreSQL udostępnia funkcje zachowywania ciągłości biznesowej, obejmujących automatycznych kopii zapasowych i przez użytkowników, aby zainicjować przywracanie geograficzne. Każdy ma różne charakterystyki dotyczące szacowany czas odzyskiwania (ERT, Distributed File System) i potencjalnej utraty danych. Po zrozumieniu te opcje można wybrać między nimi, a używane razem w różnych scenariuszach. Podczas opracowywania planem ciągłości biznesowej, należy zrozumieć maksymalnego dopuszczalnego czasu oczekiwania na pełne odzyskanie aplikacji po wystąpieniu zdarzenia powodującego zakłócenia — jest to Twoja cel czasu odzyskiwania (RTO). Należy również zrozumieć maksymalną ilość danych najnowszych aktualizacji (przedział czasu) aplikacja może tolerować momencie odzyskiwania po wystąpieniu zdarzenia powodującego zakłócenia — jest to Twoja cel punktu odzyskiwania (RPO).
+Azure Database for PostgreSQL zapewnia funkcje ciągłości biznesowej, które obejmują automatyczne kopie zapasowe, oraz możliwość inicjowania przywracania geograficznego przez użytkowników. Każdy z nich ma różne cechy szacowanego czasu odzyskiwania (ERT) i potencjalną utratę danych. Po zrozumieniu tych opcji można wybierać spośród nich i używać ich razem w różnych scenariuszach. Podczas opracowywania planu ciągłości biznesowej należy zrozumieć maksymalny akceptowalny czas, po upływie którego aplikacja zostanie w pełni odzyskana po wystąpieniu zdarzenia zakłócenia — jest to cel czasu odzyskiwania (RTO). Należy również zrozumieć maksymalną ilość najnowszych aktualizacji danych (przedział czasu), jaką aplikacja może tolerować podczas odzyskiwania po wystąpieniu zdarzenia zakłócenia — jest to cel punktu odzyskiwania (RPO).
 
-W poniższej tabeli porównano wartości ERT i RPO dla dostępne funkcje:
+W poniższej tabeli porównano ERT i cel punktu odzyskiwania dla dostępnych funkcji:
 
-| **Możliwości** | **Podstawowa** | **Ogólnego przeznaczenia** | **Optymalizacja pod kątem pamięci** |
+| **Pozwala** | **Podstawowa** | **Ogólnego przeznaczenia** | **Optymalizacja pod kątem pamięci** |
 | :------------: | :-------: | :-----------------: | :------------------: |
 | Przywracanie do punktu w czasie z kopii zapasowej | Dowolny punkt przywracania w okresie przechowywania | Dowolny punkt przywracania w okresie przechowywania | Dowolny punkt przywracania w okresie przechowywania |
-| Przywracanie geograficzne z kopii zapasowych z replikacją geograficzną | Nieobsługiwane | ERT < 12 godz.<br/>RPO < 1 godz. | ERT < 12 godz.<br/>RPO < 1 godz. |
+| Przywracanie geograficzne z kopii zapasowych replikowanych geograficznie | Nieobsługiwane | ERT < 12 h<br/>Cel punktu odzyskiwania < 1 h | ERT < 12 h<br/>Cel punktu odzyskiwania < 1 h |
 
 > [!IMPORTANT]
-> Usunięto serwerów **nie** można przywrócić. Jeśli usuniesz serwera, wszystkie bazy danych, które należą do serwera również zostaną usunięte i nie można odzyskać.
+> **Nie** można przywrócić usuniętych serwerów. Usunięcie serwera spowoduje również usunięcie wszystkich baz danych należących do serwera, których nie można odzyskać. Użyj [blokady zasobów platformy Azure](../azure-resource-manager/resource-group-lock-resources.md) , aby zapobiec przypadkowemu usunięciu serwera.
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>Odzyskiwanie serwera po błędzie użytkownika lub aplikacji
 
-Możesz użyć usługi tworzenia kopii zapasowych, aby odzyskać serwer z różnych zdarzeń powodujących zakłócenia. Użytkownik może przypadkowo usunąć pewne dane, nieodwracalnie usunąć ważną tabelę lub nawet usunąć całą bazę danych. Aplikacja może przypadkowo zastąpić poprawnych danych błędnymi danymi wady aplikacji i tak dalej.
+Można użyć kopii zapasowych usługi do odzyskania serwera z różnych zdarzeń zakłócających działanie. Użytkownik może przypadkowo usunąć niektóre dane, przypadkowo porzucić ważną tabelę lub nawet porzucić całą bazę danych. Aplikacja może przypadkowo zastąpić dobre dane nieprawidłowymi danymi z powodu wady aplikacji i tak dalej.
 
-Można wykonywać w czasie — przywracania do punktu do utworzenia kopii serwera do znany dobry punkt w czasie. Ten punkt w czasie musi być w ramach okresu przechowywania kopii zapasowej, które zostały skonfigurowane dla serwera. Po przywróceniu danych do nowego serwera, możesz zastąpić oryginalny serwer nowo przywróconego serwera lub skopiować potrzebne dane z serwera przywrócone na oryginalnym serwerze.
+Można wykonać przywracanie do **punktu w czasie** , aby utworzyć kopię serwera do znanego dobrego punktu w czasie. Ten punkt w czasie musi przypadać w okresie przechowywania kopii zapasowej skonfigurowanym dla serwera. Po przywróceniu danych na nowy serwer można zastąpić oryginalny serwer nowym przywróconym serwerem lub skopiować potrzebne dane z przywróconego serwera na oryginalny serwer.
 
-## <a name="recover-from-an-azure-regional-data-center-outage"></a>Odzyskiwanie po awarii centrum danych platformy Azure regionalne
+## <a name="recover-from-an-azure-data-center-outage"></a>Odzyskaj sprawność po awarii centrum danych platformy Azure
 
-Sporadycznie centrum danych platformy Azure może mieć awarię. Taka awaria powoduje zakłócenia działania firmy, które mogą trwać tylko kilka minut, ale może trwać wiele godzin.
+Sporadycznie centrum danych platformy Azure może mieć awarię. Gdy wystąpi awaria, powoduje to zakłócenia działania firmy, które może trwać tylko kilka minut, ale może trwać w godzinach.
 
-Jedną z opcji jest oczekiwania serwera do trybu online po zakończeniu awarii centrum danych. Działa to w przypadku aplikacji, które można sobie pozwolić, aby serwer w trybie offline przez pewien czas, na przykład w środowisku deweloperskim. Centrum danych po awarii nie wiesz, jak długo może trwać awarii, więc ta opcja działa tylko, jeśli nie potrzebujesz serwera przez chwilę.
+Jedną z opcji jest poczekanie, aż serwer powróci do trybu online po zakończeniu awarii centrum danych. Działa to w przypadku aplikacji, które mogą zapewnić, że serwer jest w trybie offline przez pewien czas, na przykład w środowisku programistycznym. Gdy centrum danych jest w stanie awarii, nie wiesz, jak długo może trwać awaria, dlatego ta opcja działa tylko wtedy, gdy serwer nie jest potrzebny przez pewien czas.
 
-Inną opcją jest do użycia usługi Azure Database dla PostgreSQL funkcji przywracania geograficznego, która przywraca serwer za pomocą geograficznie nadmiarowych kopii zapasowych. Te kopie zapasowe są dostępne, nawet wtedy, gdy w regionie, w którym serwer znajduje się w jest w trybie offline. Można przywrócić z tych kopii zapasowych do dowolnego innego regionu i przełączyć serwer w tryb online.
+## <a name="geo-restore"></a>Przywracanie geograficzne
+
+Funkcja przywracania geograficznego przywraca serwer przy użyciu geograficznie nadmiarowych kopii zapasowych. Kopie zapasowe są hostowane w [sparowanym regionie](../best-practices-availability-paired-regions.md)serwera. Można przywrócić z tych kopii zapasowych do dowolnego innego regionu. Przywracanie geograficzne tworzy nowy serwer z danymi z kopii zapasowych. Dowiedz się więcej o przywracaniu geograficznym z [artykułu dotyczącego tworzenia kopii zapasowych i przywracania](concepts-backup.md).
 
 > [!IMPORTANT]
-> Funkcja przywracania geograficznego jest możliwe tylko wtedy, jeśli zainicjowano obsługę administracyjną serwera z magazynu geograficznie nadmiarowego magazynu kopii zapasowych. Jeśli chcesz przełączyć się z lokalnie nadmiarowy geograficznie nadmiarowych kopii zapasowych dla istniejącego serwera, należy wykonać zrzut przy użyciu pg_dump istniejącego serwera i go przywrócić do nowo utworzonego skonfigurowane za pomocą geograficznie nadmiarowych kopii zapasowych.
+> Przywracanie geograficzne jest możliwe tylko w przypadku aprowizacji serwera z magazynem kopii zapasowych nadmiarowego. Aby przełączyć się z lokalnie nadmiarowego do geograficznie nadmiarowych kopii zapasowych na istniejącym serwerze, należy wykonać zrzut przy użyciu pg_dump istniejącego serwera i przywrócić go na nowo utworzony serwer skonfigurowany z użyciem geograficznie nadmiarowych kopii zapasowych.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [automatyczne kopie zapasowe w usłudze Azure Database for PostgreSQL](concepts-backup.md). 
-- Dowiedz się, jak przywrócić dane przy użyciu [witryny Azure portal](howto-restore-server-portal.md) lub [wiersza polecenia platformy Azure](howto-restore-server-cli.md).
-- Dowiedz się więcej o [odczytu replik w usłudze Azure Database for PostgreSQL](concepts-read-replicas.md).
+## <a name="cross-region-read-replicas"></a>Repliki odczytu między regionami
+Za pomocą replik odczytu między regionami można usprawnić planowanie ciągłości działania i odzyskiwania po awarii. Repliki odczytu są aktualizowane asynchronicznie za pomocą technologii replikacji fizycznej PostgreSQL. Dowiedz się więcej na temat odczytywania replik, dostępnych regionów i sposobu przełączenia w tryb failover z [artykułu pojęć dotyczących replik](concepts-read-replicas.md). 
+
+## <a name="next-steps"></a>Następne kroki
+- Więcej informacji na temat [zautomatyzowanych kopii zapasowych znajduje się w Azure Database for PostgreSQL](concepts-backup.md). 
+- Dowiedz się, jak przywrócić za pomocą [Azure Portal](howto-restore-server-portal.md) lub [interfejsu wiersza polecenia platformy Azure](howto-restore-server-cli.md).
+- Dowiedz się więcej [na temat odczytywania replik w Azure Database for PostgreSQL](concepts-read-replicas.md).

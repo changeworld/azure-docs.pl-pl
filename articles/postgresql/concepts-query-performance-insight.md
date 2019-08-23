@@ -1,48 +1,51 @@
 ---
-title: Query Performance Insight w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-description: W tym artykule opisano funkcję Query Performance Insight w usłudze Azure Database for PostgreSQL — pojedynczy serwer.
+title: Szczegółowe informacje o wydajności zapytań na pojedynczym serwerze Azure Database for PostgreSQL
+description: W tym artykule opisano funkcję Szczegółowe informacje o wydajności zapytań w programie Azure Database for PostgreSQL — pojedynczy serwer.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: d45b79e2ca3b3d478102bebdcff3c8892bef2cb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/21/2019
+ms.openlocfilehash: cd07656ab4e6e0f684eecf35d241eac539b7a552
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067557"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907468"
 ---
 # <a name="query-performance-insight"></a>Szczegółowe informacje o wydajności zapytań 
 
-**Dotyczy:** Azure Database for PostgreSQL — pojedynczy serwer 9.6 i 10
+**Dotyczy:** Azure Database for PostgreSQL — jeden serwer 9,6 i 10
 
-Query Performance Insight ułatwia szybkie identyfikowanie najdłużej działających zapytań są, jak zmieniają się wraz z upływem czasu i czeka, które mają wpływ na ich.
+Szczegółowe informacje o wydajności zapytań pomaga szybko określić, co najdłuższe uruchomione zapytania, jak zmieniają się wraz z upływem czasu i co czeka na ich wpływ.
 
 ## <a name="permissions"></a>Uprawnienia
 Uprawnienia **Właściciel** lub **Współautor** są wymagane do wyświetlania tekstu zapytań w widoku Szczegółowe informacje o wydajności zapytań. **Czytelnik** może wyświetlać wykresy i tabele, ale nie tekst zapytań.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby uzyskać szczegółowe informacje o wydajności zapytań funkcji, dane muszą istnieć w [Query Store](concepts-query-store.md).
+Aby Szczegółowe informacje o wydajności zapytań do funkcji, dane muszą znajdować się w [magazynie zapytań](concepts-query-store.md).
 
-## <a name="viewing-performance-insights"></a>Przeglądanie szczegółowe informacje o wydajności
+## <a name="viewing-performance-insights"></a>Wyświetlanie szczegółowych informacji o wydajności
 W widoku [Szczegółowe informacje o wydajności zapytań](concepts-query-performance-insight.md) w witrynie Azure Portal będą ujawniane wizualizacje kluczowych informacji z magazynu zapytań. 
 
-Na stronie portalu usługi Azure Database for postgresql w warstwie serwera, wybierz **szczegółowe informacje o wydajności zapytań** w obszarze **inteligentne wydajności** części paska menu.
+Na stronie portalu serwera Azure Database for PostgreSQL wybierz pozycję **zapytanie wydajności szczegółowe informacje** w sekcji **Inteligentna wydajność** na pasku menu.
 
-![Query Performance Insight długotrwałe zapytania](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
+![Szczegółowe informacje o wydajności zapytań długotrwałych zapytań](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
 
-**Długotrwałych zapytań** karta przedstawia pięć zapytania według średniego czasu trwania w oparciu o wykonanie, przedstawiona w oparciu o 15-minutowych interwałach. Możesz wyświetlić więcej zapytań, wybierając wartość z listy rozwijanej **Liczba zapytań**. Gdy to zrobisz, kolory wykresu dla określonego identyfikatora zapytania mogą ulec zmianie.
+Karta **długotrwałe zapytania** pokazuje pięć pierwszych zapytań według średniego czasu trwania na wykonanie, zagregowane w odstępach 15-minutowych. Możesz wyświetlić więcej zapytań, wybierając wartość z listy rozwijanej **Liczba zapytań**. Gdy to zrobisz, kolory wykresu dla określonego identyfikatora zapytania mogą ulec zmianie.
 
-Klikając i przeciągając na wykresie, możesz zawęzić go do konkretnego przedziału czasu. Alternatywnie użyj powiększenia in i out ikony, aby wyświetlić mniejszy lub większy okres czasu, odpowiednio.
+Klikając i przeciągając na wykresie, możesz zawęzić go do konkretnego przedziału czasu. Alternatywnie możesz użyć ikon powiększenia i powiększania, aby wyświetlić odpowiednio krótszy lub dłuższy okres.
 
-W tabeli pod wykresem przedstawiono więcej informacji na temat długo wykonywane zapytania w tym przedziale czasowym.
+Tabela poniżej wykresu zawiera więcej szczegółów na temat długotrwałych zapytań w tym przedziale czasu.
 
 Wybierz kartę **Statystyki oczekiwania**, aby wyświetlić odpowiednie wizualizacje oczekiwań na serwerze.
 
-![Query Performance Insight czeka statystyki](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+![Dane statystyczne Szczegółowe informacje o wydajności zapytań czeka](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="considerations"></a>Zagadnienia do rozważenia
+* Szczegółowe informacje o wydajności zapytań nie jest dostępna dla [replik odczytu](concepts-read-replicas.md).
+
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o [monitorowaniu i dostrajaniu](concepts-monitoring.md) w usłudze Azure Database for PostgreSQL.
 
 

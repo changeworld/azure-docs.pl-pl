@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: v-mohabe
-ms.openlocfilehash: 73480c6e24ab13b7764c5b72280c19971eb3d039
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 1ef4d8e76b54b995a09decdfaf9974f0929c8ed9
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296496"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905340"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorowanie tożsamości i dostępu w Azure Security Center (wersja zapoznawcza)
 Ten artykuł ułatwia korzystanie z usługi Azure Security Center w celu monitorowania tożsamości i dostępu użytkowników.
@@ -44,10 +44,10 @@ Dzięki monitorowaniu działań związanych z tożsamością możesz podejmować
 Security Center nie może uruchomić zaleceń dotyczących tożsamości dla agentów administratora dostawcy rozwiązań w chmurze (CSP).
 >
 
-Zapoznaj [się](security-center-identity-access.md#recommendations) z listą rekomendacji i rekomendacji dotyczących dostępu zapewnianych przez Security Center.
+Zapoznaj się z listą rekomendacji i rekomendacji dotyczących dostępu zapewnianych przez Security Center. [](security-center-identity-access.md#recommendations)
 
 ## <a name="monitoring-security-health"></a>Monitorowanie kondycji zabezpieczeń
-Możesz monitorować stan zabezpieczeń zasobów na **Security Center — Przegląd** pulpitu nawigacyjnego. Sekcja  Resources to wskaźnik kondycji przedstawiający serwery dla każdego typu zasobu.
+Możesz monitorować stan zabezpieczeń zasobów na **Security Center — Przegląd** pulpitu nawigacyjnego. Sekcja Resources to wskaźnik kondycji przedstawiający serwery dla każdego typu zasobu.
 
 Można wyświetlić listę wszystkich problemów, wybierając **zalecenia**. W obszarze **zasoby**można wyświetlić listę problemów specyficznych dla obliczeń & aplikacji, zabezpieczeń danych, sieci lub tożsamości & dostępu. Aby uzyskać więcej informacji na temat stosowania zaleceń, zobacz [wdrażanie zaleceń dotyczących zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md).
 
@@ -111,9 +111,9 @@ Skorzystaj z poniższej tabeli jako odniesienia, aby pomóc zrozumieć dostępn�
 |Typ zasobu|Wskaźnik bezpieczeństwa|Zalecenie|Opis|
 |----|----|----|----|
 |Subscription|50|Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach z uprawnieniami właściciela w ramach subskrypcji|Włącz uwierzytelnianie wieloskładnikowe (MFA) dla wszystkich kont subskrypcji z uprawnieniami administratora, aby zapobiec naruszeniu kont lub zasobów.|
-|Subscription|40|Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach subskrypcji z uprawnieniami do zapisu|Włącz uwierzytelnianie wieloskładnikowe (MFA) dla wszystkich kont subskrypcji z uprawnieniami do zapisu, aby zapobiec naruszeniu kont lub zasobów.|
+|Subscription|40|Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach subskrypcji z uprawnieniami do zapisu|Włącz Multi-Factor Authentication (MFA) dla wszystkich kont subskrypcji z uprawnieniami do zapisu, aby zapobiec naruszeniu kont lub zasobów.|
 |Subscription|30|Konta zewnętrzne z uprawnieniami właściciela powinny zostać usunięte z subskrypcji|Usuń konta zewnętrzne z uprawnieniami właściciela z subskrypcji, aby zapobiec niemonitorowanemu dostępowi.|
-|Subscription|30|Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach subskrypcji z uprawnieniami do odczytu|Włącz uwierzytelnianie wieloskładnikowe (MFA) dla wszystkich kont subskrypcji z uprawnieniami do odczytu, aby zapobiec naruszeniu kont lub zasobów.|
+|Subscription|30|Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach subskrypcji z uprawnieniami do odczytu|Włącz Multi-Factor Authentication (MFA) dla wszystkich kont subskrypcji z uprawnieniami do odczytu, aby zapobiec naruszeniu kont lub zasobów.|
 |Subscription|25|Konta zewnętrzne z uprawnieniami do zapisu powinny zostać usunięte z subskrypcji|Usuń konta zewnętrzne z uprawnieniami do zapisu z subskrypcji, aby zapobiec niemonitorowanemu dostępowi. |
 |Subscription|20|Przestarzałe konta z uprawnieniami właściciela powinny zostać usunięte z subskrypcji|Usuń przestarzałe konta z uprawnieniami właściciela z subskrypcji.|
 |Subscription|5|Przestarzałe konta powinny zostać usunięte z subskrypcji|Usuń przestarzałe konta z subskrypcji, aby umożliwić dostęp tylko bieżącym użytkownikom. |
@@ -128,7 +128,7 @@ Skorzystaj z poniższej tabeli jako odniesienia, aby pomóc zrozumieć dostępn�
 ## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat zalecenia, które mają zastosowanie do innych typów zasobów platformy Azure, zobacz następujące tematy:
 
-- [Ochrona maszyn i aplikacji w usłudze Azure Security Center](security-center-virtual-machine-recommendations.md)
+- [Ochrona maszyn i aplikacji w usłudze Azure Security Center](security-center-virtual-machine-protection.md)
 - [Ochrona sieci w usłudze Azure Security Center](security-center-network-recommendations.md)
 - [Ochrona usługi Azure SQL i danych w Azure Security Center](security-center-sql-service-recommendations.md)
 

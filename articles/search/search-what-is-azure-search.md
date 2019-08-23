@@ -6,25 +6,20 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 08/13/2019
+ms.date: 08/21/2019
 ms.author: heidist
-ms.openlocfilehash: 1f3e4d69d3fdba8eba2e7d3cadc3c29703bffcaf
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 204951f725c2885fe9f8bf33fffe83e55628dd34
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558599"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899680"
 ---
 # <a name="what-is-azure-search"></a>Co to jest usługa Azure Search?
 
-Azure Search to rozwiązanie w chmurze typu "wyszukiwanie jako usługa", które udostępnia deweloperom interfejsy API i narzędzia umożliwiające dodawanie bogatego środowiska wyszukiwania do aplikacji sieci Web, mobilnych i firmowych. Niestandardowy kod wywołuje pozyskiwanie danych (indeksowanie), wysyła żądania zapytań i obsługuje odpowiedzi. Środowisko wyszukiwania jest zdefiniowane w kodzie klienta przy użyciu funkcji z Azure Search z wykonywaniem zapytań względem utrwalonego indeksu tworzonego, własnego i przechowywania Azure Search.
+Azure Search to rozwiązanie w chmurze typu "wyszukiwanie jako usługa", które udostępnia deweloperom interfejsy API i narzędzia umożliwiające dodawanie bogatego środowiska wyszukiwania do aplikacji sieci Web, mobilnych i firmowych. Niestandardowy kod wywołuje pozyskiwanie danych (indeksowanie) w celu utworzenia i załadowania indeksu. Po drugiej stronie kod aplikacji wystawia żądania zapytań i obsługuje odpowiedzi. Środowisko wyszukiwania jest zdefiniowane w kliencie przy użyciu funkcji z Azure Search z wykonywaniem zapytań względem utrwalonego indeksu tworzonego, własnego i przechowywania Azure Search.
 
 ![Architektura Azure Search](media/search-what-is-azure-search/azure-search-diagram.svg "Architektura Azure Search")
-
-<!-- + Build a search index containing only your data, sourced from multiple content types and platforms. 
-+ Leverage AI enrichments to extract text and features from image files, or entities and key phrases from raw text.
-+ Create intuitive search experiences with facet navigation and filters, synonyms, autocomplete, and text analysis for "did you mean" autocorrected search terms. Get relevance tuning through functions and boosting logic.
-+ Create search apps for specific use-cases. Geo-search supports a "find near me" experience. Multi-lingual search is supported through language analyzers for non-English full text search. -->
 
 Funkcje są uwidaczniane za pośrednictwem prostego [interfejsu API REST](/rest/api/searchservice/) lub [zestawu SDK platformy .NET](search-howto-dotnet-sdk.md), które pozwalają zamaskować złożoność związaną z używaniem pobierania informacji. Oprócz interfejsów API witryna Azure Portal udostępnia funkcje administrowania i zarządzania zawartością oraz narzędzia służące do tworzenia prototypów i wykonywania zapytań względem indeksów. Ponieważ usługa ta działa w chmurze, zarządzaniem infrastrukturą i dostępnością zajmuje się firma Microsoft.
 
@@ -36,7 +31,7 @@ Azure Search doskonale nadaje się dla następujących scenariuszy aplikacji:
 
 + Łatwa implementacja funkcji związanych z wyszukiwaniem. Interfejsy API Azure Search upraszczają konstruowanie zapytań, nawigację aspektową, filtry (w tym wyszukiwanie geoprzestrzenne), mapowanie synonimów, zapytania typeahead i dostrajanie istotności. Korzystając z wbudowanych funkcji, można zaspokoić oczekiwania użytkowników końcowych w przypadku wyszukiwania podobnego do komercyjnych aparatów wyszukiwania w sieci Web.
 
-+ Indeksowanie tekstu bez struktury lub Wyodrębnianie tekstu i informacji z plików obrazów. Funkcja wyszukiwania poznawczego Azure Search dodaje do potoku indeksowania przetwarzanie AI. Niektóre typowe przypadki użycia obejmują OCR przez zeskanowany dokument, rozpoznawanie jednostek i wyodrębnianie kluczowych fraz w przypadku dużych dokumentów, wykrywania języka i tłumaczenia tekstu oraz analizy tonacji.
++ Indeksowanie tekstu bez struktury lub Wyodrębnianie tekstu i informacji z plików obrazów. Funkcja [wyszukiwania poznawczego](cognitive-search-concept-intro.md) Azure Search dodaje do potoku indeksowania przetwarzanie AI. Niektóre typowe przypadki użycia obejmują OCR przez zeskanowany dokument, rozpoznawanie jednostek i wyodrębnianie kluczowych fraz w przypadku dużych dokumentów, wykrywania języka i tłumaczenia tekstu oraz analizy tonacji.
 
 + Wymagania lingwistyczne spełnione przy użyciu niestandardowych i analizatorów języka Azure Search. W przypadku braku zawartości w języku angielskim Azure Search obsługuje zarówno analizatory Lucene, jak i Microsoft Natural Language. Można również skonfigurować analizatory do osiągnięcia wyspecjalizowanego przetwarzania nieprzetworzonych zawartości, takich jak filtrowanie znaków diakrytycznych.
 
@@ -93,7 +88,9 @@ W modelu ściągania dane są pobierane z zewnętrznych źródeł danych. Jest o
 Model wypychania jest oparty na zestawie SDK lub interfejsach API REST i umożliwia wysyłanie zaktualizowanych dokumentów do indeksu. Dane możesz wypychać praktycznie z każdego zestawu danych w formacie JSON. Aby uzyskać wskazówki dotyczące ładowania danych, zobacz [Dodawanie, aktualizowanie lub usuwanie dokumentów](/rest/api/searchservice/addupdate-or-delete-documents) lub [Jak używać zestawu SDK dla platformy .NET](search-howto-dotnet-sdk.md).
 
 ### <a name="step-4-search"></a>Krok 4: Wyszukaj
-Po wypełnieniu indeksu możesz [wysyłać zapytania wyszukiwania](/rest/api/searchservice/Search-Documents) do punktu końcowego usługi za pomocą prostych żądań HTTP, korzystających z interfejsu API REST lub zestawu SDK dla platformy .NET.
+Po wypełnieniu indeksu możesz [wydać zapytania wyszukiwania](search-query-overview.md) do punktu końcowego usługi przy użyciu prostych żądań HTTP z [interfejsem API REST](/rest/api/searchservice/Search-Documents) lub [zestawem SDK platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations).
+
+Przejdź do sekcji [Tworzenie pierwszej aplikacji wyszukiwania](tutorial-csharp-create-first-app.md) , aby skompilować, a następnie rozwiń stronę sieci Web, która zbiera dane wejściowe użytkownika i obsługuje wyniki. Można również użyć [programu Poster do interaktywnego wywołania REST](search-get-started-postman.md) lub wbudowanego [eksploratora wyszukiwania](search-explorer.md) w Azure Portal, aby zbadać istniejący indeks.
 
 ## <a name="how-it-compares"></a>Porównanie z innymi rozwiązaniami
 

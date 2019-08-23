@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08e27052c3583ddea7a2fb6fe96fa6b48cd6c372
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 5d2247aab872a71f250bd0b4b52714e402d2102d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333883"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905209"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Informacje o zdarzeniach dotyczących ryzyka Azure Active Directory Identity Protection
 
@@ -24,7 +24,7 @@ Większość naruszeń zabezpieczeń odbywa się, gdy osoby atakujące uzyskują
 
 ## <a name="anonymous-ip-address"></a>Anonimowy adres IP
 
-**Typ wykrywania:** Czas rzeczywisty  
+**Typ wykrywania:** W czasie rzeczywistym  
 **Stara nazwa:** Logowania z anonimowego adresu IP
 
 Ten typ zdarzenia o podwyższonym ryzyku oznacza logowanie z anonimowego adresu IP (na przykład przeglądarki tor, sieci VPN Anonymizer).
@@ -63,7 +63,7 @@ Ten typ zdarzenia ryzyka wskazuje logowania z adresów IP zainfekowanych złośl
 
 ## <a name="unfamiliar-sign-in-properties"></a>Nieznane właściwości logowania
 
-**Typ wykrywania:** Czas rzeczywisty  
+**Typ wykrywania:** W czasie rzeczywistym  
 **Stara nazwa:** Logowania z nieznanych lokalizacji
 
 Ten typ zdarzenia ryzyka uwzględnia historię logowania (IP, szerokości geograficznej i ASN), aby wyszukać nietypowe logowania. System przechowuje informacje o poprzednich lokalizacjach używanych przez użytkownika i uwzględnia te "znane" lokalizacje. Zdarzenie ryzyka jest wyzwalane, gdy logowanie następuje z lokalizacji, która nie znajduje się na liście znanych lokalizacji. Nowo utworzeni użytkownicy będą w trybie uczenia się przez okres, w którym zdarzenia nieznanego ryzyka związanego z logowaniem są wyłączane, a nasze algorytmy poznają zachowanie użytkownika. Czas trwania trybu uczenia jest dynamiczny i zależy od tego, ile czasu zajmuje algorytm zbierania wystarczającej ilości informacji o wzorcach logowania użytkownika. Minimalny czas trwania wynosi pięć dni. Użytkownik może wrócić do trybu uczenia po długim czasie braku aktywności. System ignoruje logowania ze znanych urządzeń i lokalizacje, które znajdują się geograficznie blisko znanej lokalizacji. 
@@ -76,3 +76,8 @@ Uruchamiamy również to wykrywanie uwierzytelniania podstawowego (lub starszych
 **Stara nazwa:** To wykrywanie będzie wyświetlane w starszych raportach Azure AD Identity Protection (Użytkownicy oflagowani w przypadku ryzyka, zdarzenia o podwyższonym ryzyku) jako "Użytkownicy z nieujawnionymi poświadczeniami"
 
 Ten typ zdarzenia ryzyka wskazuje aktywność użytkownika nietypową dla danego użytkownika lub jest zgodna ze znanymi wzorcami ataków na podstawie wewnętrznych i zewnętrznych źródeł analizy zagrożeń firmy Microsoft.
+
+## <a name="admin-confirmed-user-compromised"></a>Administrator potwierdził naruszenie zabezpieczeń użytkownika
+
+**Typ wykrywania:** W trybie offline <br>
+To wykrywanie wskazuje, że administrator zaznaczył "Potwierdzanie naruszenia przez użytkownika" w interfejsie użytkownika ryzykownych użytkowników lub przy użyciu interfejsu API riskyUsers. Aby sprawdzić, który administrator został naruszony, należy sprawdzić historię ryzyka użytkownika (za pośrednictwem interfejsu użytkownika lub interfejsu API).

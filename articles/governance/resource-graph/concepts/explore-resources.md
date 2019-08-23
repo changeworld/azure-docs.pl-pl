@@ -1,33 +1,33 @@
 ---
-title: Zapoznaj się z zasobami platformy Azure
-description: Dowiedz się więcej, zapoznaj się z zasobami i Odkryj, jak są one połączone przy użyciu języka zapytań wykres zasobów.
+title: Eksplorowanie zasobów platformy Azure
+description: Dowiedz się, jak używać języka zapytań grafu zasobów do eksplorowania zasobów i dowiedzieć się, jak są one połączone.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/23/2019
+ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0b4a75558f5e82b707ae5d012acef4d2c5c4b7a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c6fdebad3cd84699e1ac7d06bb58a33d1522af1
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723807"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972308"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Badanie zasobów platformy Azure przy użyciu usługi Resources Graph
 
-Wykres zasobów platformy Azure umożliwia Eksplorowanie i odnajdywanie zasobów platformy Azure, szybko i w odpowiedniej skali. Zaprojektowany z myślą o szybkie uzyskiwanie odpowiedzi, jest doskonały sposób, aby dowiedzieć się więcej o środowisku, a także informacje o właściwościach, składających się z zasobami platformy Azure.
+Usługa Azure Resource Graph umożliwia szybkie eksplorowanie i odnajdywanie zasobów platformy Azure na dużą skalę. Zaprojektowana w celu uzyskania szybkich odpowiedzi to świetny sposób poznania środowiska oraz właściwości, które tworzą zasoby platformy Azure.
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
-## <a name="explore-virtual-machines"></a>Poznaj usługę virtual machines
+## <a name="explore-virtual-machines"></a>Eksplorowanie maszyn wirtualnych
 
-Typowe zasobów na platformie Azure jest maszyną wirtualną. Jako typ zasobu maszyny wirtualne mają wiele właściwości, które mogą być wyszukiwane. Każda właściwość udostępnia opcję filtrowania lub znajdowania dokładnie zasób, którego szukasz.
+Typowym zasobem na platformie Azure jest maszyna wirtualna. Jako typ zasobu maszyny wirtualne mają wiele właściwości, które mogą być badane. Każda właściwość zawiera opcję filtrowania lub znajdowania dokładnie szukanego zasobu.
 
-### <a name="virtual-machine-discovery"></a>Odnajdywanie maszyny wirtualnej
+### <a name="virtual-machine-discovery"></a>Odnajdywanie maszyn wirtualnych
 
-Zacznijmy od prostego zapytania do uzyskać pojedyncza maszyna wirtualna z naszego środowiska i przyjrzyj się zwrócono żadnych wartości.
+Zacznijmy od prostego zapytania, aby uzyskać pojedynczą maszynę wirtualną z naszego środowiska i przyjrzeć się zwracanym właściwościom.
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -43,9 +43,9 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit
 ```
 
 > [!NOTE]
-> Azure PowerShell `Search-AzGraph` polecenie cmdlet zwraca **PSCustomObject** domyślnie. Aby dane wyjściowe wyglądają tak samo jak dane zwracane przez interfejs wiersza polecenia platformy Azure, `ConvertTo-Json` służy polecenie cmdlet. Wartością domyślną dla **głębokość** jest _2_. Ustawienie _100_ należy przekonwertować wszystkie zwrócone poziomów.
+> Polecenie cmdlet `Search-AzGraph` Azure PowerShell domyślnie zwraca **parametr PSCustomObject** . Aby dane wyjściowe wyglądały tak samo jak zwracane przez interfejs wiersza polecenia platformy Azure, `ConvertTo-Json` jest używane polecenie cmdlet. Wartość domyślna dla **głębokości** wynosi _2_. Ustawienie go na _100_ powinno spowodować przekonwertowanie wszystkich zwracanych poziomów.
 
-Wyniki JSON są strukturę podobną do poniższego przykładu:
+Wyniki JSON są strukturalne podobne do poniższego przykładu:
 
 ```json
 [
@@ -110,11 +110,11 @@ Wyniki JSON są strukturę podobną do poniższego przykładu:
 ]
 ```
 
-Właściwości Powiedz nam, dodatkowe informacje na temat zasobów maszyny wirtualnej, wszystko — od jednostek SKU, systemu operacyjnego, dysków, tagi, i grupy zasobów i subskrypcji jest członkiem.
+Właściwości te zawierają dodatkowe informacje dotyczące samego zasobu maszyny wirtualnej, wszystkich elementów SKU, systemów operacyjnych, dysków, tagów i grup zasobów oraz subskrypcji, do których należy.
 
 ### <a name="virtual-machines-by-location"></a>Maszyny wirtualne według lokalizacji
 
-Biorąc dowiedzieliśmy dotyczące zasobów maszyny wirtualnej, użyjemy **lokalizacji** właściwości do obliczenia wszystkich maszyn wirtualnych według lokalizacji. Aby zaktualizować zapytanie, możemy usunąć limit i podsumowanie łącznej liczby wartości lokalizacji.
+Biorąc pod uwagę informacje o zasobach maszyn wirtualnych, użyjmy właściwości **Location** , aby policzyć wszystkie maszyny wirtualne według lokalizacji. Aby zaktualizować zapytanie, usuniemy limit i podsumowuje liczbę wartości lokalizacji.
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -129,7 +129,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | summarize
 Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | summarize count() by location"
 ```
 
-Wyniki JSON są strukturę podobną do poniższego przykładu:
+Wyniki JSON są strukturalne podobne do poniższego przykładu:
 
 ```json
 [
@@ -148,11 +148,11 @@ Wyniki JSON są strukturę podobną do poniższego przykładu:
 ]
 ```
 
-Teraz widać liczbę maszyn wirtualnych, które mamy w każdym regionie platformy Azure.
+Teraz możemy sprawdzić liczbę maszyn wirtualnych w każdym regionie świadczenia usługi Azure.
 
-### <a name="virtual-machines-by-sku"></a>Maszyn wirtualnych za pomocą jednostki SKU
+### <a name="virtual-machines-by-sku"></a>Maszyny wirtualne według jednostki SKU
 
-Wypróbujmy wracając do oryginalnego właściwości maszyny wirtualnej znaleźć wszystkie maszyny wirtualne, które mają rozmiar jednostki SKU **Standard_B2s**. Spojrzenie na dane JSON zwracane, widzimy, że jest on przechowywany w **properties.hardwareprofile.vmsize**. Zaktualizujemy zapytanie w celu znalezienia wszystkich maszyn wirtualnych, która pasuje do tego rozmiaru i zwracać tylko nazwę maszyny Wirtualnej i regionu.
+Powracając do właściwości oryginalnej maszyny wirtualnej, spróbuj znaleźć wszystkie maszyny wirtualne o rozmiarze SKU **Standard_B2s**. Po zwróconym kodzie JSON zobaczymy, że jest on przechowywany w **właściwości. — obiekt hardwareprofile. VmSize**. Zaktualizujemy zapytanie, aby znaleźć wszystkie maszyny wirtualne, które pasują do tego rozmiaru i zwracają tylko nazwę maszyny wirtualnej i regionu.
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
@@ -167,9 +167,9 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' and propert
 Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | project name, resourceGroup"
 ```
 
-### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Maszyny wirtualne podłączone do dysków zarządzanych w warstwie premium
+### <a name="virtual-machines-connected-to-premium-managed-disks"></a>Maszyny wirtualne połączone z dyskami zarządzanymi w warstwie Premium
 
-Jeśli chcemy uzyskać szczegółowe informacje na dyski zarządzane w warstwie premium, które są dołączone do tych **Standard_B2s** maszyn wirtualnych, możemy rozszerzyć zapytania, aby przesłać nam identyfikator zasobu tych dysków zarządzanych.
+Jeśli chcemy uzyskać szczegóły dotyczące dysków zarządzanych w warstwie Premium, które są dołączone do tych maszyn wirtualnych **Standard_B2s** , można rozszerzyć zapytanie w celu przekazania nam identyfikatora zasobu dla tych dysków zarządzanych.
 
 ```kusto
 where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
@@ -179,7 +179,7 @@ where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile
 ```
 
 > [!NOTE]
-> Inny sposób pobrania jednostki SKU byłby przy użyciu **aliasy** właściwość **Microsoft.Compute/virtualMachines/sku.name**. Zobacz [Pokaż aliasy](../samples/starter.md#show-aliases) i [Pokaż alias odrębne wartości](../samples/starter.md#distinct-alias-values) przykłady.
+> Innym sposobem uzyskania jednostki SKU byłby użycie właściwości **aliass** **Microsoft. COMPUTE/virtualMachines/SKU. Name**. Zapoznaj się z przykładami [Pokaż aliasy](../samples/starter.md#show-aliases) i [Pokaż różne wartości aliasów](../samples/starter.md#distinct-alias-values) .
 
 ```azurecli-interactive
 az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
@@ -189,13 +189,13 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualmachines' and propert
   Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualmachines' and properties.hardwareProfile.vmSize == 'Standard_B2s' | extend disk = properties.storageProfile.osDisk.managedDisk | where disk.storageAccountType == 'Premium_LRS' | project disk.id"
 ```
 
-Wynik jest listę identyfikatorów dysku.
+Wynikiem jest lista identyfikatorów dysków.
 
-### <a name="managed-disk-discovery"></a>Odnajdowanie dysku zarządzanego
+### <a name="managed-disk-discovery"></a>Odnajdywanie dysku zarządzanego
 
-Za pomocą pierwszy rekord z poprzedniej kwerendy pokażemy, właściwości, które istnieją na dysku zarządzanego, który został dołączony do pierwszej maszyny wirtualnej. Zaktualizowano zapytanie używa identyfikator dysku i zmienia typ.
+W przypadku pierwszego rekordu z poprzedniego zapytania będziemy eksplorować właściwości istniejące na dysku zarządzanym, który został dołączony do pierwszej maszyny wirtualnej. Zaktualizowane zapytanie używa identyfikatora dysku i zmienia typ.
 
-Przykład danych wyjściowych z poprzedniej kwerendy, na przykład:
+Przykład danych wyjściowych z poprzedniego zapytania na przykład:
 
 ```json
 [
@@ -209,11 +209,11 @@ Przykład danych wyjściowych z poprzedniej kwerendy, na przykład:
 where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'
 ```
 
-Przed uruchomieniem kwerendy, jak wiemy **typu** powinno być teraz **Microsoft.Compute/disks**?
-Jeśli przyjrzymy się pełny identyfikator, zobaczysz **/providers/Microsoft.Compute/disks/** jako część ciągu. Ten fragment ciągu zapewnia wskazówkę, jaki typ do wyszukania. Alternatywną metodą jest zamiast tylko wyszukiwanie pole Identyfikatora i usunąć limit według typu. Jako identyfikator jest unikatowy, zostaną zwrócone tylko do jednego rekordu a **typu** właściwości na nim zawiera szczegółowe informacje na ten.
+Przed uruchomieniem zapytania, w jaki sposób wiemy, że **Typ** powinien być teraz **Microsoft. COMPUTE/disks**?
+Jeśli zobaczysz pełny identyfikator, zobaczysz **/providers/Microsoft.COMPUTE/disks/** jako część ciągu. Ten fragment ciągu zawiera wskazówkę dotyczącą typu wyszukiwania. Alternatywną metodą jest usunięcie limitu według typu i wyszukanie tylko według pola identyfikatora. Ponieważ identyfikator jest unikatowy, zwracany jest tylko jeden rekord i Właściwość **Type** na nim zawiera te szczegóły.
 
 > [!NOTE]
-> W tym przykładzie do pracy można zastąpić pole Identyfikatora z wynikiem z własnego środowiska.
+> Aby ten przykład działał, należy zamienić pole ID na wynik z własnego środowiska.
 
 ```azurecli-interactive
 az graph query -q "where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'"
@@ -223,7 +223,7 @@ az graph query -q "where type =~ 'Microsoft.Compute/disks' and id == '/subscript
 Search-AzGraph -Query "where type =~ 'Microsoft.Compute/disks' and id == '/subscriptions/<subscriptionId>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/disks/ContosoVM1_OsDisk_1_9676b7e1b3c44e2cb672338ebe6f5166'"
 ```
 
-Wyniki JSON są strukturę podobną do poniższego przykładu:
+Wyniki JSON są strukturalne podobne do poniższego przykładu:
 
 ```json
 [
@@ -257,19 +257,27 @@ Wyniki JSON są strukturę podobną do poniższego przykładu:
 ]
 ```
 
-## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>Poznaj usługę virtual machines, aby znaleźć publiczne adresy IP
+## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>Eksplorowanie maszyn wirtualnych w celu znalezienia publicznych adresów IP
 
-Ten zestaw wiersza polecenia platformy Azure zapytań najpierw znajduje i przechowująca wszystkie interfejsy sieciowe (NIC) zasobów podłączonych do maszyn wirtualnych. Następnie używa listy kart sieciowych można znaleźć każdego zasobu adresu IP, który jest publiczny adres IP i przechowywania tych wartości. Na koniec zawiera listę publicznych adresów IP.
+Ten zestaw zapytań najpierw odnajduje i przechowuje wszystkie zasoby interfejsów sieciowych podłączonych do maszyn wirtualnych. Następnie zapytania używają listy kart sieciowych, aby znaleźć każdy zasób adresu IP, który jest publicznym adresem IP i przechowywać te wartości. Na koniec zapytania zawierają listę publicznych adresów IP.
 
 ```azurecli-interactive
-# Use Resource Graph to get all NICs and store in the 'nic' variable
+# Use Resource Graph to get all NICs and store in the 'nics.txt' file
 az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | project nic = tostring(properties['networkProfile']['networkInterfaces'][0]['id']) | where isnotempty(nic) | distinct nic | limit 20" --output table | tail -n +3 > nics.txt
 
 # Review the output of the query stored in 'nics.txt'
 cat nics.txt
 ```
 
-Użyj `nics.txt` pliku w następnym zapytaniu, aby dowiedzieć się interfejs sieciowy powiązane zasoby w przypadku, gdy ma publiczny adres IP dołączony do karty sieciowej.
+```azurepowershell-interactive
+# Use Resource Graph to get all NICs and store in the $nics variable
+$nics = Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | project nic = tostring(properties['networkProfile']['networkInterfaces'][0]['id']) | where isnotempty(nic) | distinct nic | limit 20"
+
+# Review the output of the query stored in the variable
+$nics.nic
+```
+
+Użyj pliku (interfejsu wiersza polecenia platformy Azure) lub zmiennej (Azure PowerShell) w następnym zapytaniu, aby uzyskać szczegółowe informacje o zasobach związanych z interfejsem sieciowym, w których istnieje Publiczny adres IP dołączony do karty sieciowej.
 
 ```azurecli-interactive
 # Use Resource Graph with the 'nics.txt' file to get all related public IP addresses and store in 'publicIp.txt' file
@@ -279,15 +287,28 @@ az graph query -q="where type =~ 'Microsoft.Network/networkInterfaces' | where i
 cat ips.txt
 ```
 
-Ostatnie, użyj listy zasobów publicznych adresów IP, przechowywane w `ips.txt` uzyskać rzeczywiste publiczny adres IP z nich i wyświetlania.
+```azurepowershell-interactive
+# Use Resource Graph  with the $nics variable to get all related public IP addresses and store in $ips variable
+$ips = Search-AzGraph -Query "where type =~ 'Microsoft.Network/networkInterfaces' | where id in ('$($nics.nic -join "','")') | project publicIp = tostring(properties['ipConfigurations'][0]['properties']['publicIPAddress']['id']) | where isnotempty(publicIp) | distinct publicIp"
+
+# Review the output of the query stored in the variable
+$ips.publicIp
+```
+
+Na koniec Użyj listy zasobów publicznego adresu IP przechowywanych w pliku (interfejsu wiersza polecenia platformy Azure) lub zmiennej (Azure PowerShell), aby uzyskać rzeczywisty publiczny adres IP z pokrewnego obiektu i wyświetlić.
 
 ```azurecli-interactive
 # Use Resource Graph with the 'ips.txt' file to get the IP address of the public IP address resources
 az graph query -q="where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$(awk -vORS="','" '{print $0}' ips.txt | sed 's/,$//')') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip" --output table
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+```azurepowershell-interactive
+# Use Resource Graph with the $ips variable to get the IP address of the public IP address resources
+Search-AzGraph -Query "where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
+```
+
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [języku zapytań](query-language.md)
-- Zobacz język używany w [początkowego zapytania](../samples/starter.md)
-- Zobacz zaawansowane używa w [zaawansowanych zapytań](../samples/advanced.md)
+- Zobacz język używany w zapytaniach [początkowych](../samples/starter.md)
+- Zobacz zaawansowane zastosowania w [zaawansowanych](../samples/advanced.md) zapytaniach

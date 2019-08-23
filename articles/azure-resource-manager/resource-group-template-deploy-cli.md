@@ -4,14 +4,14 @@ description: Użyj Azure Resource Manager i interfejsu wiersza polecenia platfor
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/12/2019
+ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 93b1b16776bac6cb24996d6fa08a547318802f32
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: bd43e919cc0b2bcf1d130c7e616b7da064abcc65
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853827"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971027"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Deploy resources with Resource Manager templates and Azure CLI (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure)
 
@@ -133,7 +133,7 @@ Określone wdrożenie musi się powieść.
 
 ## <a name="parameters"></a>Parametry
 
-Aby przekazać wartości parametrów, można użyć parametrów wbudowanych lub pliku parametrów. W powyższych przykładach w tym artykule przedstawiono parametry wbudowane.
+Aby przekazać wartości parametrów, można użyć parametrów wbudowanych lub pliku parametrów.
 
 ### <a name="inline-parameters"></a>Parametry wbudowane
 
@@ -172,23 +172,7 @@ Format arrayContent. JSON to:
 
 Zamiast przekazywać parametry jako wartości wbudowane w skrypcie, można ułatwić korzystanie z pliku JSON, który zawiera wartości parametrów. Plik parametru musi być plikiem lokalnym. Zewnętrzne pliki parametrów nie są obsługiwane w interfejsie wiersza polecenia platformy Azure.
 
-Plik parametru musi mieć następujący format:
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-     "storageAccountType": {
-         "value": "Standard_GRS"
-     }
-  }
-}
-```
-
-Zwróć uwagę, że sekcja Parameters zawiera nazwę parametru, która pasuje do parametru zdefiniowanego w szablonie (storageAccountType). Plik parametrów zawiera wartość parametru. Ta wartość jest automatycznie przenoszona do szablonu podczas wdrażania. Można utworzyć więcej niż jeden plik parametrów, a następnie przekazać odpowiedni plik parametru dla scenariusza. 
-
-Skopiuj poprzedni przykład i Zapisz go jako plik o nazwie `storage.parameters.json`.
+Aby uzyskać więcej informacji na temat pliku parametrów, zobacz [Tworzenie pliku parametrów Menedżer zasobów](resource-manager-parameter-files.md).
 
 Aby przekazać lokalny plik parametrów, użyj `@` , aby określić plik lokalny o nazwie Storage. Parameters. JSON.
 
@@ -198,18 +182,6 @@ az group deployment create \
   --resource-group ExampleGroup \
   --template-file storage.json \
   --parameters @storage.parameters.json
-```
-
-### <a name="parameter-precedence"></a>Pierwszeństwo parametrów
-
-W tej samej operacji wdrażania można używać wbudowanych parametrów i pliku parametrów lokalnych. Na przykład można określić niektóre wartości w lokalnym pliku parametrów i dodać inne wartości w tekście podczas wdrażania. Jeśli podano wartości dla parametru zarówno w pliku parametrów lokalnych, jak i wewnętrznie, wartość śródwierszowa ma pierwszeństwo.
-
-```azurecli
-az group deployment create \
-  --resource-group testgroup \
-  --template-file demotemplate.json \
-  --parameters @demotemplate.parameters.json \
-  --parameters exampleArray=@arrtest.json
 ```
 
 ## <a name="test-a-template-deployment"></a>Testowanie wdrożenia szablonu

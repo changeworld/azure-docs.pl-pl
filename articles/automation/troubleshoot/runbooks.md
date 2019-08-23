@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 759422ea8c327ae67278354217dac4c60b32f7a9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c6b526cdd317e8b075d28e0fb9018501148c731c
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850315"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971295"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami Runbook
 
@@ -31,11 +31,23 @@ Jeśli występują błędy wykonywania elementów Runbook w Azure Automation, mo
    - **Błędy składniowe**
    - **Błędy logiki**
 
-2. **Upewnij się, że węzły i obszar roboczy usługi Automation mają wymagane moduły:** Jeśli element Runbook importuje dowolne moduły, upewnij się, że są one dostępne na koncie usługi Automation, korzystając z procedury wymienionej w temacie [Import modules](../shared-resources/modules.md#import-modules). Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z modułami](shared-resources.md#modules).
+2. Zbadaj [strumienie błędów](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#runbook-output) elementu runbook pod kątem określonych komunikatów i porównaj je z poniższymi błędami.
+
+3. **Upewnij się, że węzły i obszar roboczy usługi Automation mają wymagane moduły:** Jeśli element Runbook importuje dowolne moduły, upewnij się, że są one dostępne na koncie usługi Automation, korzystając z procedury wymienionej w temacie [Import modules](../shared-resources/modules.md#import-modules). Zaktualizuj moduły do najnowszej wersji, postępując zgodnie z instrukcjami w sekcji [aktualizowanie modułów platformy Azure w Azure Automation](..//automation-update-azure-modules.md). Aby uzyskać więcej informacji dotyczących rozwiązywania problemów, zobacz [Rozwiązywanie problemów modułów](shared-resources.md#modules).
+
+### <a name="if-the-runbook-is-suspended-or-unexpectedly-failed"></a>Jeśli element Runbook jest zawieszony lub nieoczekiwanie zakończył się niepowodzeniem
+
+Istnieje kilka powodów, dla których element runbook może być wstrzymany lub kończyć się niepowodzeniem:
+
+* [Stan zadania](https://docs.microsoft.com/azure/automation/automation-runbook-execution#job-statuses) definiuje Stany elementów Runbook i niektóre możliwe przyczyny.
+* [Dodaj dodatkowe dane wyjściowe](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#message-streams) do elementu Runbook, aby określić, co się dzieje przed wstrzymaniem elementu Runbook.
+* [Obsługa wszelkich wyjątków](https://docs.microsoft.com/azure/automation/automation-runbook-execution#handling-exceptions) zgłaszanych przez zadanie.
 
 ## <a name="authentication-errors-when-working-with-azure-automation-runbooks"></a>Błędy uwierzytelniania podczas pracy z Azure Automation elementami Runbook
 
 ### <a name="login-azurerm"></a>Scenariusz Uruchom login-AzureRMAccount, aby zalogować się
+
+Ten błąd może wystąpić, gdy nie używasz konta Uruchom jako lub konto to wygasło. Zobacz [Zarządzanie kontami funkcji RunAs Azure Automation](https://docs.microsoft.com/azure/automation/manage-runas-account).
 
 #### <a name="issue"></a>Problem
 
@@ -455,7 +467,7 @@ Ten błąd występuje, gdy wykonanie zadania przekracza 500-minutowy bezpłatny 
 
 Jeśli chcesz użyć więcej niż 500 minut przetwarzania miesięcznie, musisz zmienić subskrypcję z warstwy Bezpłatna na warstwę podstawowa. Możesz przeprowadzić uaktualnienie do warstwy Podstawowa, wykonując następujące czynności:
 
-1. Zaloguj się do swojej subskrypcji platformy Azure
+1. Zaloguj się do Twojej subskrypcji platformy Azure.
 2. Wybierz konto usługi Automation, które chcesz zmienić.
 3. Kliknij pozycję **Ustawienia** > **Cennik**.
 4. Kliknij pozycję **Włącz** na stronie u dołu, aby uaktualnić konto do warstwy **podstawowa** .
@@ -513,7 +525,7 @@ Polecenia cmdlet programu PowerShell, które umożliwiają korzystanie z podrzę
 
 [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/get-azurermautomationjob) — Jeśli istnieją operacje, które należy wykonać po zakończeniu podrzędnego elementu Runbook, to polecenie cmdlet umożliwia sprawdzenie stanu zadania dla każdego elementu podrzędnego.
 
-### <a name="expired webhook"></a>Scenariusz Stan: 400 Nieprawidłowe żądanie podczas wywoływania elementu webhook
+### <a name="expired webhook"></a>Scenariusz Stany 400 Nieprawidłowe żądanie podczas wywoływania elementu webhook
 
 #### <a name="issue"></a>Problem
 
@@ -574,6 +586,97 @@ Istnieją dwa sposoby rozwiązania tego błędu:
 * Jeśli element Runbook ma ten komunikat o błędzie, uruchom go na hybrydowym procesie roboczym elementu Runbook
 
 Aby dowiedzieć się więcej na temat tego zachowania i innych zachowań Azure Automation elementów Runbook, zobacz [zachowanie elementu Runbook](../automation-runbook-execution.md#runbook-behavior).
+
+## <a name="other"></a>: Mój problem nie jest wymieniony powyżej
+
+W poniższych sekcjach wymieniono inne typowe błędy oprócz dokumentacji pomocniczej, które ułatwiają rozwiązanie problemu.
+
+### <a name="hybrid-runbook-worker-doesnt-run-jobs-or-isnt-responding"></a>Hybrydowy proces roboczy runbook nie uruchamia zadań lub nie odpowiada
+
+W przypadku uruchamiania zadań przy użyciu hybrydowego procesu roboczego, a nie w Azure Automation, może być konieczne [rozwiązanie tego samego procesu](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker).
+
+### <a name="runbook-fails-with-no-permission-or-some-variation"></a>Działanie elementu runbook kończy się błędem „Brak uprawnienia” lub jego odmianą
+
+Konta Uruchom jako nie mogą mieć tych samych uprawnień do zasobów platformy Azure co bieżące konto. Upewnij się, że Twoje konto Uruchom jako [ma uprawnienia dostępu do wszystkich zasobów](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) używanych w skrypcie.
+
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>Elementy runbook działały, ale nagle przestały
+
+* Jeśli elementy Runbook były wcześniej wykonywane, ale zatrzymane, [upewnij się, że konto Uruchom jako nie wygasło](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal).
+* Jeśli używasz elementów webhook do uruchamiania elementów runbook, [upewnij się, że odpowiedni element webhook nie wygasł](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook).
+
+### <a name="issues-passing-parameters-into-webhooks"></a>Problemy z przekazywaniem parametrów do elementów webhook
+
+Aby uzyskać pomoc w przekazywaniu parametrów do elementów webhook, zobacz [Uruchamianie elementu Runbook z](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters)elementu webhook.
+
+### <a name="issues-using-az-modules"></a>Problemy przy użyciu polecenia AZ modules
+
+Używanie modułów Az i modułów AzureRM w ramach tego samego konta usługi Automation nie jest obsługiwane. Aby uzyskać więcej informacji, zobacz [AZ modules in Runbook](https://docs.microsoft.com/azure/automation/az-modules) .
+
+### <a name="runbook-job-completed-but-with-unexpected-results-or-errors"></a>Zadanie elementu Runbook zostało ukończone, ale z nieoczekiwanymi wynikami lub błędami
+
+Poniżej wymieniono specyficzne problemy i ich rozwiązania, ale zdecydowanie zalecamy wypróbowanie najpierw następujących dwóch kroków rozwiązywania problemów:
+
+* Spróbuj [uruchomić element Runbook lokalnie](https://docs.microsoft.com/azure/automation/troubleshoot/runbooks#runbook-fails) przed uruchomieniem go w Azure Automation. To może wyjaśnić, czy problem powoduje usterka w elemencie runbook, czy problem z usługą Azure Automation.
+* Zbadaj [strumienie błędów](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#runbook-output) elementu runbook pod kątem określonych komunikatów i porównaj je z poniższymi błędami.
+* Dodaj [dodatkowe dane wyjściowe](https://docs.microsoft.com/azure/automation/automation-runbook-output-and-messages#message-streams) do elementu Runbook, aby określić, gdzie wystąpi błąd.
+
+### <a name="inconsistent-behavior-in-runbooks"></a>Niespójne zachowanie w elementach runbook
+
+Postępuj zgodnie ze wskazówkami w temacie [Wykonywanie elementu runbook](https://docs.microsoft.com/azure/automation/automation-runbook-execution#runbook-behavior), aby zapobiec problemom dotyczącym zadań współbieżnych, tworzeniu zasobów wiele razy lub innej logiki zależnej od czasu w elementach runbook.
+
+### <a name="switching-between-multiple-subscriptions-in-a-runbook"></a>Przełączanie między wieloma subskrypcjami w elemencie runbook
+
+Postępuj zgodnie ze wskazówkami w temacie [Praca z wieloma subskrypcjami](https://docs.microsoft.com/azure/automation/automation-runbook-execution#working-with-multiple-subscriptions).
+
+### <a name="runbook-fails-with-error-the-subscription-cannot-be-found"></a>Element Runbook kończy się niepowodzeniem z powodu błędu: Nie można znaleźć subskrypcji
+
+Ten problem może wystąpić, gdy element runbook nie używa konta Uruchom jako do uzyskiwania dostępu do zasobów platformy Azure. Aby rozwiązać problem, wykonaj kroki opisane w artykule [Scenariusz: Nie można odnaleźć subskrypcji platformy Azure](https://docs.microsoft.com/azure/automation/troubleshoot/runbooks#unable-to-find-subscription).
+
+### <a name="error-your-azure-credentials-have-not-been-set-up-or-have-expired-please-run-connect-azurermaccount-to-set-up-your-azure-credentials"></a>Błąd: Twoje poświadczenia platformy Azure nie zostały skonfigurowane lub wygasły. Uruchom polecenie Connect-azureRmAccount, aby skonfigurować swoje poświadczenia platformy Azure
+
+Ten błąd może wystąpić, gdy nie używasz konta Uruchom jako lub konto to wygasło. Zobacz [Zarządzanie kontami funkcji RunAs Azure Automation](https://docs.microsoft.com/azure/automation/manage-runas-account).
+
+### <a name="error-run-login-azurermaccount-to-login"></a>Błąd: Uruchom login-AzureRmAccount, aby zalogować się
+
+Ten błąd może wystąpić, gdy nie używasz konta Uruchom jako lub konto to wygasło. Zobacz [Zarządzanie kontami funkcji RunAs Azure Automation](https://docs.microsoft.com/azure/automation/manage-runas-account).
+
+### <a name="runbook-fails-with-error-strong-authentication-enrollment-is-required"></a>Element Runbook kończy się niepowodzeniem z powodu błędu: Wymagana jest rejestracja silnego uwierzytelniania
+
+Zobacz [uwierzytelnianie na platformie Azure nie powiodło się, ponieważ](https://docs.microsoft.com/azure/automation/troubleshoot/runbooks#auth-failed-mfa) w przewodniku rozwiązywania problemów z elementem Runbook jest włączone uwierzytelnianie wieloskładnikowe.
+
+### <a name="runbook-fails-with-the-errors-no-permission-forbidden-403-or-some-variation"></a>Wystąpił błąd elementu Runbook z błędami: Brak uprawnień, zabronionych, 403 lub niektórych odmian
+
+Konta Uruchom jako nie mogą mieć tych samych uprawnień do zasobów platformy Azure co bieżące konto. Upewnij się, że konto Uruchom jako ma [uprawnienia dostępu do wszystkich zasobów](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) używanych w skrypcie.
+
+### <a name="runbooks-were-working-but-suddenly-stopped"></a>Elementy runbook działały, ale nagle przestały
+
+* Jeśli elementy Runbook były wcześniej wykonywane, ale zatrzymane, upewnij się, że konto Uruchom jako [nie wygasło](https://docs.microsoft.com/azure/automation/manage-runas-account#cert-renewal).
+* Jeśli używasz elementu webhook do uruchamiania elementów Runbook, upewnij się, że element webhook [nie wygasł](https://docs.microsoft.com/azure/automation/automation-webhooks#renew-webhook).
+
+### <a name="passing-parameters-into-webhooks"></a>Przekazywanie parametrów do elementów webhook
+
+Aby uzyskać pomoc w przekazywaniu parametrów do elementów webhook, zobacz [Uruchamianie elementu Runbook z](https://docs.microsoft.com/azure/automation/automation-webhooks#parameters)elementu webhook.
+
+### <a name="error-the-term-is-not-recognized"></a>Błąd: Nie rozpoznano terminu
+
+Wykonaj kroki opisane w [poleceniu cmdlet](https://docs.microsoft.com/azure/automation/troubleshoot/runbooks#cmdlet-not-recognized) nierozpoznawanym w przewodniku rozwiązywania problemów elementu Runbook
+
+### <a name="errors-about-typedata"></a>Błędy dotyczące TypeData
+
+Jeśli występują błędy dotyczące elementu TypeData, używasz przepływu pracy programu PowerShell z modułami, które nie obsługują przepływu pracy. Musisz zmienić typ elementu runbook w programie PowerShell. Aby uzyskać więcej informacji, zobacz [typy elementów Runbook](https://docs.microsoft.com/azure/automation/automation-runbook-types#powershell-runbooks) .
+
+### <a name="using-az-modules"></a>Korzystanie z modułów Az
+
+Używanie modułów Az i modułów AzureRM w ramach tego samego konta usługi Automation nie jest obsługiwane. Aby uzyskać więcej informacji, zobacz [AZ modules in Runbook](https://docs.microsoft.com/azure/automation/az-modules) .
+
+### <a name="using-self-signed-certificates"></a>Używanie certyfikatów z podpisem własnym
+
+Aby korzystać z certyfikatów z podpisem własnym, należy postępować zgodnie z przewodnikiem po [utworzeniu nowego certyfikatu](https://docs.microsoft.com/azure/automation/shared-resources/certificates#creating-a-new-certificate).
+
+## <a name="recommended-documents"></a>Zalecane dokumenty
+
+* [Uruchamianie elementu runbook w usłudze Azure Automation](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
+* [Wykonywanie elementu runbook w usłudze Azure Automation](https://docs.microsoft.com/azure/automation/automation-runbook-execution)
 
 ## <a name="next-steps"></a>Następne kroki
 

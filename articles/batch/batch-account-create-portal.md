@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6e1543d578e6812fd270bd76ec18bdfe8fe5ba6a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d4bf7b894a23f0054485ddb6dbb91c4df2122222
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324024"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907324"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Tworzenie konta usługi Batch w witrynie Azure Portal
 
@@ -115,7 +115,7 @@ W trybie subskrypcji użytkownika wymagana jest usługa Azure Key Vault należą
 
 Podczas tworzenia konta usługi Batch w trybie subskrypcji użytkownika należy użyć grupy zasobów magazynu kluczy. Określ **subskrypcję użytkownika** jako tryb alokacji puli, wybierz magazyn kluczy i zaznacz pole wyboru w celu udzielenia Azure Batch dostępu do magazynu kluczy. 
 
-Jeśli wolisz udzielić dostępu do magazynu kluczy ręcznie, przejdź do sekcji **zasady dostępu** w magazynie kluczy i wybierz pozycję **Microsoft Azure Batch**. Skonfiguruj **uprawnienia klucza tajnego** za pomocą menu rozwijanego. Azure Batch musi mieć co najmniej uprawnienia **Get**, **list**, **Set**i **delete** .
+Jeśli wolisz udzielić dostępu do magazynu kluczy ręcznie, przejdź do sekcji **zasady dostępu** w magazynie kluczy i wybierz pozycję **Dodaj zasady dostępu** i Wyszukaj **Microsoft Azure Batch**. Po wybraniu tej opcji należy skonfigurować **uprawnienia klucza tajnego** za pomocą menu rozwijanego. Azure Batch musi mieć co najmniej uprawnienia **Get**, **list**, **Set**i **delete** .
 
 ![Uprawnienia klucza tajnego dla Azure Batch](./media/batch-account-create-portal/secret-permissions.png)
 

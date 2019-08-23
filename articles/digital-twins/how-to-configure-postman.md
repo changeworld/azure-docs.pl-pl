@@ -6,14 +6,14 @@ manager: alinast
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 08/21/2019
 ms.author: v-adgera
-ms.openlocfilehash: 66dbfd09ef07740c07ddb010b73e33e783340e5a
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: a39663adedfdb9c00c4429f65ec1bd27286cb136
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873644"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904294"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Jak skonfigurować usługę Poster dla usługi bliźniaczych reprezentacji Digital
 
@@ -35,9 +35,9 @@ Za pośrednictwem klienta programu Poster deweloperzy rozwiązań mogą określi
 
 Skonfiguruj aplikację Azure Active Directory tak, aby korzystała z niejawnego przepływu uwierzytelniania OAuth 2,0.
 
-1. Wykonaj kroki opisane w [tym przewodniku szybki start](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) , aby utworzyć aplikację usługi Azure AD typu macierzystego. Można też ponownie użyć istniejącej rejestracji aplikacji natywnej.
+1. Wykonaj kroki opisane w [naszym przewodniku szybki start](./quickstart-view-occupancy-dotnet.md) , aby utworzyć aplikację usługi Azure AD. Lub Utwórz [aplikację natywną przy użyciu starszego bloku AAD](./how-to-use-legacy-aad.md).
 
-1. W obszarze **wymagane uprawnienia**wybierz pozycję **Dodaj** i wprowadź **Azure Digital bliźniaczych reprezentacji** w obszarze **Dodaj dostęp do interfejsu API**. Jeśli wyszukiwanie nie znajdzie interfejsu API, zamiast tego wyszukaj frazę **Azure Smart Spaces**. Następnie wybierz pozycję **Udziel uprawnień > delegowane uprawnienia** i **gotowe**.
+1. W obszarze **uprawnienia interfejsu API**wybierz pozycję **Dodaj uprawnienie**. Następnie **usługa Azure Digital bliźniaczych reprezentacji** w obszarze **interfejsy API jest stosowana przez moją organizację**. Jeśli wyszukiwanie nie znajdzie interfejsu API, zamiast tego wyszukaj frazę **Azure Smart Spaces**. Następnie wybierz pozycję **uprawnienia delegowane**, Odczytaj > **Odczyt. zapis**i **Dodaj uprawnienie**.
 
     [![Dodawanie interfejsu API Azure Active Directory rejestracji aplikacji](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
@@ -75,7 +75,7 @@ Skonfiguruj i skonfiguruj aplikację do ogłaszania w celu uzyskania tokenu Azur
     | Typ udzielania | `Implicit` |
     | Adres URL wywołania zwrotnego | `https://www.getpostman.com/oauth2/callback` |
     | Adres URL uwierzytelniania | Użyj **adresu URL autoryzacji** z kroku 2 |
-    | Identyfikator klienta | Użyj **identyfikatora aplikacji** dla aplikacji Azure Active Directory, która została utworzona lub przetworzona w poprzedniej sekcji |
+    | Identyfikator klienta | Użyj **identyfikatora aplikacji** dla aplikacji Azure Active Directory, która została utworzona lub ponownie użyta w poprzedniej sekcji |
     | Scope | Pozostaw puste |
     | State | Pozostaw puste |
     | Uwierzytelnianie klienta | `Send as Basic Auth header` |

@@ -1,37 +1,46 @@
 ---
-title: Obsługiwane wersje w usłudze Azure Database dla serwera MariaDB
-description: W tym artykule opisano obsługiwane wersje w usłudze Azure Database dla serwera MariaDB.
+title: Obsługiwane wersje w Azure Database for MariaDB
+description: Opisuje obsługiwane wersje w Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/11/2019
-ms.openlocfilehash: 760cb39ea1f3980faba348c7aa1de68a66b20a8d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 08/21/2019
+ms.openlocfilehash: 950294094584958e83f6a16630a6e1f897785e46
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065723"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897283"
 ---
-# <a name="supported-azure-database-for-mariadb-server-versions"></a>Obsługiwane usługi Azure Database dla wersji serwera MariaDB
+# <a name="supported-azure-database-for-mariadb-server-versions"></a>Obsługiwane wersje serwera Azure Database for MariaDB
 
-Azure Database dla serwera MariaDB został opracowany z "open source" [serwera MariaDB](https://downloads.mariadb.org/), za pomocą aparat InnoDB. Azure Database dla serwera MariaDB obecnie obsługuje następującą wersję:
+Azure Database for MariaDB został opracowany z [serwera MariaDB](https://downloads.mariadb.org/)"open source" przy użyciu aparatu InnoDB. 
 
-## <a name="mariadb-version-102"></a>Wersja MariaDB 10.2
-
-Zapoznaj się [dokumentacji MariaDB](https://mariadb.com/kb/en/library/mariadb-10223-release-notes/) Aby dowiedzieć się więcej na temat ulepszeń i poprawek w MariaDB 10.2.23.
-
-## <a name="mariadb-version-103"></a>W wersji 10.3 MariaDB
-
-Zapoznaj się [dokumentacji MariaDB](https://mariadb.com/kb/en/library/mariadb-10314-release-notes/) Aby dowiedzieć się więcej na temat ulepszeń i poprawek w MariaDB 10.3.14.
+MariaDB używa schematu nazewnictwa X. Y. Z. X jest wersją główną, Y jest wersją pomocniczą i Z jest wersją poprawki.
 
 > [!NOTE]
-> W usłudze bramy jest używana do przekierowania połączenia do wystąpienia serwera. Po nawiązaniu połączenia klienta MySQL Wyświetla wersję zestawu w bramie nie rzeczywistą wersję uruchomionego w wystąpieniu serwera MariaDB MariaDB. Aby ustalić wersji wystąpienia serwera MariaDB, użyj `SELECT VERSION();` polecenie w wierszu polecenia MySQL.
+> W usłudze Brama jest używana do przekierowywania połączeń z wystąpieniami serwera. Po nawiązaniu połączenia klient MySQL wyświetla wersję zestawu MariaDB w bramie, a nie rzeczywistą wersję działającą w wystąpieniu serwera MariaDB. Aby określić wersję wystąpienia serwera MariaDB, użyj `SELECT VERSION();` polecenia.
 
-## <a name="managing-updates-and-upgrades"></a>Zarządzanie aktualizacji i uaktualnień
+Azure Database for MariaDB obecnie obsługuje następującą wersję:
 
-Usługa zarządza automatycznie poprawek dla aktualizacji wersji pomocniczej.
+## <a name="mariadb-version-102"></a>MariaDB w wersji 10,2
 
-## <a name="next-steps"></a>Kolejne kroki
+Wersja poprawki: 10.2.23
 
-- Aby uzyskać informacje dotyczące określonego zasobu Przydziały i ograniczenia na podstawie Twojej **warstwy usług**, zobacz [warstwy usług](./concepts-pricing-tiers.md).
+Zapoznaj się z [dokumentacją MariaDB](https://mariadb.com/kb/en/library/mariadb-10223-release-notes/) , aby dowiedzieć się więcej na temat ulepszeń i poprawek w programie MariaDB 10.2.23.
+
+## <a name="mariadb-version-103"></a>MariaDB w wersji 10,3
+
+Wersja poprawki: 10.3.14
+
+Zapoznaj się z [dokumentacją MariaDB](https://mariadb.com/kb/en/library/mariadb-10314-release-notes/) , aby dowiedzieć się więcej na temat ulepszeń i poprawek w programie MariaDB 10.3.14.
+
+## <a name="managing-updates-and-upgrades"></a>Zarządzanie aktualizacjami i uaktualnieniami
+Usługa automatycznie zarządza uaktualnieniami aktualizacji poprawek. Na przykład 10.2.21 do 10.2.23.  
+
+Obecnie wersje pomocnicze i główne nie są obsługiwane. Na przykład uaktualnienie z MariaDB 10,2 do MariaDB 10,3 nie jest obsługiwane. Jeśli chcesz przeprowadzić uaktualnienie z 10,2 do 10,3, zrób [zrzut i Przywróć](./howto-migrate-dump-restore.md) go do serwera, który został utworzony przy użyciu nowej wersji aparatu.
+
+## <a name="next-steps"></a>Następne kroki
+
+- Aby uzyskać informacje na temat konkretnych przydziałów zasobów i ograniczeń na podstawie **warstwy usług**, zobacz [warstwy usług](./concepts-pricing-tiers.md).

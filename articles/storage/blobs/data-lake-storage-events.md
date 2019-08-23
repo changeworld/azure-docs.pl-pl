@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: ce132c6a6859156b209a26b5950eb6a509f446fc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 5a85e3b16a5a93fedd6a2257f5601b0673f825ad
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657597"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904654"
 ---
 # <a name="tutorial-use-azure-data-lake-storage-gen2-events-to-update-a-databricks-delta-table"></a>Samouczek: Używanie zdarzeń Azure Data Lake Storage Gen2 do aktualizowania tabeli różnicowej datakostki
 
@@ -140,10 +140,9 @@ Aby uzyskać więcej informacji na temat tworzenia klastrów, zobacz [Create a S
 
     spark.conf.set("fs.azure.account.auth.type", "OAuth")
     spark.conf.set("fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-    spark.conf.set("fs.azure.account.oauth2.client.id", "<appId")
+    spark.conf.set("fs.azure.account.oauth2.client.id", "<appId>")
     spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")
     spark.conf.set("fs.azure.account.oauth2.client.endpoint", "https://login.microsoftonline.com/<tenant>/oauth2/token")
-    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
 
     adlsPath = 'abfss://data@contosoorders.dfs.core.windows.net/'
     inputPath = adlsPath + dbutils.widgets.get('source_file')
@@ -151,6 +150,9 @@ Aby uzyskać więcej informacji na temat tworzenia klastrów, zobacz [Create a S
     ```
 
     Ten kod tworzy widżet o nazwie **source_file**. Później utworzysz funkcję platformy Azure, która wywoła ten kod i przekaże ścieżkę pliku do tego widżetu.  Ten kod uwierzytelnia również nazwę główną usługi przy użyciu konta magazynu i tworzy pewne zmienne, które będą używane w innych komórkach.
+
+    > [!NOTE]
+    > W środowisku produkcyjnym rozważ przechowywanie klucza uwierzytelniania w usłudze Azure Databricks. Następnie dodaj do bloku kodu klucz wyszukiwania zamiast klucza uwierzytelniania. <br><br>Na przykład zamiast korzystania z tego wiersza kodu: `spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")`należy użyć następującego wiersza kodu:. `spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))` <br><br>Po ukończeniu tego samouczka zapoznaj się z artykułem [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) w witrynie internetowej Azure Databricks, aby zobaczyć przykłady tego podejścia.
 
 2. Naciśnij klawisze **SHIFT+ENTER**, aby uruchomić kod w tym bloku.
 
@@ -309,7 +311,7 @@ Utwórz funkcję platformy Azure, która uruchamia zadanie.
         log.LogInformation(eventGridEvent.Data.ToString());
 
         if (eventGridEvent.EventType == "Microsoft.Storage.BlobCreated" | | eventGridEvent.EventType == "Microsoft.Storage.FileRenamed") {
-            var fileData = ((JObject)(eventGridEvent.Data)) .ToObject<StorageBlobCreatedEventData>();
+            var fileData = ((JObject)(eventGridEvent.Data)).ToObject<StorageBlobCreatedEventData>();
             if (fileData.Api == "FlushWithClose") {
                 log.LogInformation("Triggering Databricks Job for file: " + fileData.Url);
                 var fileUrl = new Uri(fileData.Url);
@@ -382,6 +384,27 @@ W tej sekcji utworzysz subskrypcję Event Grid, która wywołuje funkcję platfo
    W zwracanej tabeli przedstawiono najnowszy rekord.
 
    ![W tabeli pojawia się najnowszy rekord](./media/data-lake-storage-events/final_query.png "W tabeli pojawia się najnowszy rekord")
+
+6. Aby zaktualizować ten rekord, Utwórz plik o nazwie `customer-order-update.csv`, wklej następujące informacje do tego pliku i Zapisz go na komputerze lokalnym.
+
+   ```
+   InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
+   536371,99999,EverGlow Single,22,1/1/2018 9:01,33.85,20993,Sierra Leone
+   ```
+
+   Ten plik CSV jest niemal identyczny z poprzednim, z wyjątkiem tego, że ilość zamówienia została zmieniona `228` z `22`na.
+
+7. W Eksplorator usługi Storage Przekaż ten plik do folderu **wejściowego** konta magazynu.
+
+8. Uruchom ponownie `select` zapytanie, aby wyświetlić zaktualizowaną tabelę różnicową.
+
+   ```
+   %sql select * from customer_data
+   ```
+
+   W zwracanej tabeli jest wyświetlany zaktualizowany rekord.
+
+   ![Zaktualizowany rekord pojawia się w tabeli](./media/data-lake-storage-events/final_query-2.png "Zaktualizowany rekord pojawia się w tabeli")
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

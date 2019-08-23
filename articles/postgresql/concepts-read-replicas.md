@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.openlocfilehash: 928a85c9d03148198fe3e965636740812ce732f7
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.date: 08/21/2019
+ms.openlocfilehash: 0884120c15b2e48566d1889400197e316bac9021
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976282"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907445"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Odczytaj repliki w Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -120,9 +120,25 @@ Można zatrzymać replikację między serwerem głównym a repliką. Akcja zatrz
 > Serwer autonomiczny nie może zostać ponownie utworzony w replice.
 > Przed zatrzymaniem replikacji w replice odczytu upewnij się, że replika ma wszystkie wymagane dane.
 
-Gdy zatrzymasz replikację, replika utraci wszystkie linki do poprzednich i innych replik. Między wzorcem i repliką nie ma automatycznej pracy awaryjnej. 
+Gdy zatrzymasz replikację, replika utraci wszystkie linki do poprzednich i innych replik.
 
 Dowiedz się, jak [zatrzymać replikację do repliki](howto-read-replicas-portal.md).
+
+## <a name="fail-over"></a>Tryb failover
+Nie ma automatycznej pracy awaryjnej między serwerami Master i replikami. 
+
+Ponieważ replikacja jest asynchroniczna, między wzorcem a repliką jest zwłoka. Kwota zwłoki zależy od tego, jak mocno obciążenie działa na serwerze głównym. W większości przypadków zwłoki repliki od kilku sekund do kilku minut. Rzeczywiste opóźnienie replikacji można śledzić przy użyciu *opóźnienia repliki*metryk, które jest dostępne dla każdej repliki. Ta Metryka przedstawia czas od ostatniego odtworzonej transakcji. Zalecamy, aby określić, co to jest średnie opóźnienie, obserwując opóźnienie repliki w danym okresie czasu. Można ustawić alert w przypadku zwłoki repliki, aby w przypadku, gdy znajdzie się poza oczekiwanym zakresem, można wykonać akcję.
+
+> [!Tip]
+> Jeśli przejdziesz do trybu failover w replice, opóźnienie w momencie odłączenia repliki od wzorca będzie wskazywać, ile danych jest utraconych.
+
+Po ustaleniu, że chcesz przełączyć się w tryb failover do repliki, 
+
+1. Zatrzymaj replikację do repliki ten krok jest niezbędny, aby serwer repliki mógł akceptować operacje zapisu. W ramach tego procesu serwer repliki zostanie ponownie uruchomiony i zostanie odłączona od wzorca. Po zainicjowaniu zatrzymania replikacji proces zaplecza zwykle trwa około 2 minuty. Dowiedz się więcej o [zatrzymaniu replikacji](#stop-replication).
+    
+2. Wskaż, że aplikacja zostanie Poprzednia (dawniej) repliką każdy serwer ma unikatowe parametry połączenia. Zaktualizuj swoją aplikację, tak aby wskazywała replikę (dawniej), a nie główną.
+    
+Po pomyślnym przetworzeniu odczytów i zapisów aplikacja została ukończona w trybie failover. Czas przestoju, w jakim zależą od aplikacji, będzie zależny od tego, kiedy wykryjesz problem, i wykonaj kroki 1 i 2 powyżej.
 
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
@@ -136,17 +152,17 @@ Przed utworzeniem repliki odczytu, `azure.replication_support` parametr musi by�
 Replika odczytu jest tworzona jako nowy serwer Azure Database for PostgreSQL. Nie można wykonać istniejącego serwera w replice. Nie można utworzyć repliki innej repliki odczytu.
 
 ### <a name="replica-configuration"></a>Konfiguracja repliki
-Replika jest tworzona przy użyciu tej samej konfiguracji serwera co serwer główny. Po utworzeniu repliki można zmienić kilka ustawień niezależnie od serwera głównego: generowanie obliczeń, rdzeni wirtualnych, magazyn i okres przechowywania kopii zapasowych. Warstwę cenową można także zmienić niezależnie, z wyjątkiem warstwy Podstawowa lub z niej.
+Replika jest tworzona przy użyciu tych samych ustawień obliczeniowych i magazynu co główny. Po utworzeniu repliki można zmienić kilka ustawień niezależnie od serwera głównego: generowanie obliczeń, rdzeni wirtualnych, magazyn i okres przechowywania kopii zapasowych. Warstwę cenową można także zmienić niezależnie, z wyjątkiem warstwy Podstawowa lub z niej.
 
 > [!IMPORTANT]
-> Przed zaktualizowaniem konfiguracji serwera głównego do nowych wartości, zaktualizuj konfigurację repliki do wartości równej lub wyższej. Ta akcja zapewnia, że replika może być zachowywana wraz ze wszystkimi zmianami wprowadzonymi do wzorca.
+> Przed zaktualizowaniem ustawień głównych do nowej wartości należy zaktualizować konfigurację repliki do wartości równej lub wyższej. Ta akcja zapewnia, że replika może być zachowywana wraz ze wszystkimi zmianami wprowadzonymi do wzorca.
 
 PostgreSQL wymaga, aby wartość `max_connections` parametru w replice odczytu była większa lub równa wartości głównej; w przeciwnym razie replika nie zostanie uruchomiona. W Azure Database for PostgreSQL `max_connections` wartość parametru jest określana na podstawie jednostki SKU. Aby uzyskać więcej informacji, zobacz [limity w Azure Database for PostgreSQL](concepts-limits.md). 
 
 Jeśli spróbujesz zaktualizować wartości serwera, ale nie przestrzegasz limitów, zostanie wyświetlony komunikat o błędzie.
 
 ### <a name="max_prepared_transactions"></a>max_prepared_transactions
-[PostgreSQL wymaga](https://www.postgresql.org/docs/10/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) , aby wartość `max_prepared_transactions` parametru w replice odczytu była większa lub równa wartości głównej; w przeciwnym razie replika nie zostanie uruchomiona. Jeśli chcesz zmienić `max_prepared_transactions` wzorzec, najpierw zmień go na repliki.
+[PostgreSQL wymaga](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) , aby wartość `max_prepared_transactions` parametru w replice odczytu była większa lub równa wartości głównej; w przeciwnym razie replika nie zostanie uruchomiona. Jeśli chcesz zmienić `max_prepared_transactions` wzorzec, najpierw zmień go na repliki.
 
 ### <a name="stopped-replicas"></a>Repliki zatrzymane
 Jeśli zatrzymasz replikację między serwerem głównym a repliką odczytu, replika zostanie ponownie uruchomiona w celu zastosowania zmiany. Zatrzymana replika stanie się serwerem autonomicznym, który akceptuje zarówno operacje odczytu, jak i zapisu. Serwer autonomiczny nie może zostać ponownie utworzony w replice.
@@ -155,4 +171,5 @@ Jeśli zatrzymasz replikację między serwerem głównym a repliką odczytu, rep
 Po usunięciu serwera głównego wszystkie jego repliki odczytu stają się serwerami autonomicznymi. Repliki są ponownie uruchamiane w celu odzwierciedlenia tej zmiany.
 
 ## <a name="next-steps"></a>Następne kroki
-Dowiedz się, jak [tworzyć repliki odczytu i zarządzać nimi w Azure Portal](howto-read-replicas-portal.md).
+* Dowiedz się, jak [tworzyć repliki odczytu i zarządzać nimi w Azure Portal](howto-read-replicas-portal.md).
+* Dowiedz się, jak [tworzyć repliki odczytu i zarządzać nimi w interfejsie wiersza polecenia platformy Azure](howto-read-replicas-cli.md).

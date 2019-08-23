@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: ebecb69e57c620b2eb84568757c8e3e6f1cb1663
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 510f58cc0b71fb75ac6f5e15fc883c3caf4a8f9a
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946403"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898026"
 ---
 # <a name="enterprise-security-for-azure-machine-learning-service"></a>Zabezpieczenia przedsiębiorstwa dla usługi Azure Machine Learning
 
@@ -31,7 +31,7 @@ Uwierzytelnianie wieloskładnikowe jest obsługiwane, jeśli Azure Active Direct
 * Klient przedstawia token, aby Azure Resource Manager & wszystkie usługi Azure Machine Learning
 * Usługa Azure Machine Learning udostępnia token Azure Machine Learning do obliczenia przez użytkownika. Na przykład środowisko obliczeniowe usługi Machine Learning. Ten token jest używany przez usługę obliczeniową użytkownika do wywołania zwrotnego do usługi Azure Machine Learning (ogranicza zakres do obszaru roboczego) po zakończeniu przebiegu.
 
-![Zrzut ekranu przedstawiający sposób działania uwierzytelniania w usłudze Azure Machine Learning](./media/enterprise-readiness/authentication.png)
+[![Zrzut ekranu przedstawiający sposób działania uwierzytelniania w usłudze Azure Machine Learning](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
 
 ### <a name="authentication-for-web-service-deployment"></a>Uwierzytelnianie dla wdrożenia usługi sieci Web
 
@@ -185,7 +185,7 @@ Każdy obszar roboczy ma skojarzoną tożsamość zarządzaną przez system (o t
 
 Metryki Azure Monitor mogą służyć do wyświetlania i monitorowania metryk dla obszaru roboczego usługi Azure Machine Learning. Na [Azure Portal](https://portal.azure.com)wybierz swój obszar roboczy, a następnie użyj linku __metryki__ .
 
-![Zrzut ekranu przedstawiający przykładowe metryki dla obszaru roboczego](./media/enterprise-readiness/workspace-metrics.png)
+[![Zrzut ekranu przedstawiający przykładowe metryki dla obszaru roboczego](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
 
 Metryki obejmują informacje o uruchomieniach, wdrożeniach i rejestracjach.
 
@@ -197,7 +197,7 @@ Dziennik aktywności można wyświetlić w obszarze roboczym, aby zobaczyć ró�
 
 Poniższy zrzut ekranu przedstawia dziennik aktywności obszaru roboczego:
 
-![Zrzut ekranu przedstawiający dziennik aktywności w obszarze roboczym](./media/enterprise-readiness/workspace-activity-log.png)
+[![Zrzut ekranu przedstawiający dziennik aktywności w obszarze roboczym](./media/enterprise-readiness/workspace-activity-log.png)](./media/enterprise-readiness/workspace-activity-log-expanded.png)
 
 Szczegóły żądania oceniania są przechowywane w usłudze Application Insights, która jest tworzona w ramach subskrypcji użytkownika podczas tworzenia obszaru roboczego. Zarejestrowane informacje zawierają pola, takie jak HTTPMethod, UserAgent, Computetype, RequestUrl, StatusCode, IdentyfikatorŻądania, Duration itd.
 
@@ -220,14 +220,14 @@ Użytkownik loguje się do usługi Azure AD z dowolnego obsługiwanego klienta u
 
 Inne obliczenia dołączone do obszaru roboczego (usługa Azure Kubernetes, maszyna wirtualna itp.) mogą być również obsługiwane przez klientów zgodnie z potrzebami.
 
-![Zrzut ekranu przedstawiający przepływ pracy tworzenia obszaru roboczego](./media/enterprise-readiness/create-workspace.png)
+[![Zrzut ekranu przedstawiający przepływ pracy tworzenia obszaru roboczego](./media/enterprise-readiness/create-workspace.png)](./media/enterprise-readiness/create-workspace-expanded.png)
 
 ### <a name="save-source-code-training-scripts"></a>Zapisz kod źródłowy (skrypty szkoleniowe)
 
 Na poniższym diagramie przedstawiono przepływ pracy migawek kodu.
 Skojarzona z obszarem roboczym usługi Azure Machine Learning są katalogami (eksperymenty), które zawierają kod źródłowy (skrypty szkoleniowe).  Te skrypty są przechowywane na lokalnym komputerze klienta i w chmurze (w Blob Storage na platformie Azure w ramach subskrypcji klienta). Migawki kodu są używane do wykonywania lub inspekcji inspekcji historycznej.
 
-![Zrzut ekranu przedstawiający przepływ pracy tworzenia obszaru roboczego](./media/enterprise-readiness/code-snapshot.png)
+[![Zrzut ekranu przedstawiający przepływ pracy tworzenia obszaru roboczego](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
 
 ### <a name="training"></a>Szkolenia
 
@@ -253,7 +253,7 @@ Na poniższym diagramie przedstawiono przepływ pracy szkoleniowej.
 
 Ten krok jest pokazywany w przepływie, w którym obliczenia szkoleniowe zapisują *metryki uruchamiania* z powrotem do usługi Azure Machine Learning, z której są przechowywane w Cosmos DB. Klienci mogą wywoływać usługę Azure Machine Learning, która będzie w stanie wyłączać metryki ściągania z Cosmos DB i zwracać ją z powrotem do klienta.
 
-![Zrzut ekranu przedstawiający przepływ pracy tworzenia obszaru roboczego](./media/enterprise-readiness/training-and-metrics.png)
+[![Zrzut ekranu przedstawiający przepływ pracy tworzenia obszaru roboczego](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
 
 ### <a name="creating-web-services"></a>Tworzenie usług sieci Web
 
@@ -267,7 +267,7 @@ Zobacz szczegóły poniżej:
 * Szczegóły żądania oceniania są przechowywane w usłudze Application Insights, która jest w subskrypcji użytkownika
 * Dane telemetryczne są również wypychane do subskrypcji firmy Microsoft/platformy Azure
 
-![Zrzut ekranu przedstawiający przepływ pracy tworzenia obszaru roboczego](./media/enterprise-readiness/inferencing.png)
+[![Zrzut ekranu przedstawiający przepływ pracy tworzenia obszaru roboczego](./media/enterprise-readiness/inferencing.png)](./media/enterprise-readiness/inferencing-expanded.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

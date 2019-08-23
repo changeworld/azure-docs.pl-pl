@@ -16,12 +16,12 @@ ms.date: 10/16/2018
 ms.author: cephalin
 ms.reviewer: apurvajo
 ms.custom: seodec18
-ms.openlocfilehash: 7675a22b4b2d8b13524f06f45d6bb805c1e2fad1
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 8f55e2eb3ac7fe2e869b6b1061f6d45d11894ccf
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019134"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905935"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla Azure App Service
 
@@ -50,7 +50,7 @@ Skorzystaj z poniższej tabeli, aby skonfigurować certyfikat. Po zakończeniu k
 
 | Ustawienie | Opis |
 |-|-|
-| Name (Nazwa) | Przyjazna nazwa certyfikatu App Service. |
+| Name | Przyjazna nazwa certyfikatu App Service. |
 | Sama nazwa hosta w domenie | W tym miejscu określ domenę główną. Wystawiony certyfikat zabezpiecza *zarówno* domenę główną, jak i `www` poddomenę. W wystawionym certyfikacie pole Common Name (nazwa pospolita) zawiera domenę główną, a pole Alternatywna nazwa `www` podmiotu zawiera domenę. Aby zabezpieczyć tylko każdą poddomenę, określ w pełni kwalifikowaną nazwę domeny podrzędnej domeny (na przykład `mysubdomain.contoso.com`).|
 | Subscription | Centrum danych, w którym hostowana jest aplikacja internetowa. |
 | Resource group | Grupa zasobów, która zawiera certyfikat. Możesz na przykład użyć nowej grupy zasobów lub wybrać tę samą grupę zasobów co App Service aplikacji. |
@@ -71,7 +71,7 @@ Na stronie **stan Key Vault** kliknij pozycję **Key Vault repozytorium** , aby 
 
 | Ustawienie | Opis |
 |-|-|
-| Name (Nazwa) | Unikatowa nazwa, która składa się z znaków alfanumerycznych i kresek. |
+| Name | Unikatowa nazwa, która składa się z znaków alfanumerycznych i kresek. |
 | Resource group | Zgodnie z zaleceniem wybierz tę samą grupę zasobów co certyfikat App Service. |
 | Location | Wybierz tę samą lokalizację, w której znajduje się aplikacja App Service. |
 | Warstwa cenowa | Aby uzyskać więcej informacji, zobacz [Azure Key Vault szczegóły cennika](https://azure.microsoft.com/pricing/details/key-vault/). |
@@ -139,7 +139,7 @@ Po ukończeniu operacji ponownego tworzenia kluczy kliknij pozycję **Synchroniz
 
 ## <a name="renew-certificate"></a>Odnów certyfikat
 
-Aby włączyć automatyczne odnawianie certyfikatu w dowolnym momencie, wybierz certyfikat na stronie [App Service certyfikaty](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) , a następnie kliknij pozycję **Ustawienia automatycznego odnawiania** w lewym okienku nawigacji.
+Aby włączyć automatyczne odnawianie certyfikatu w dowolnym momencie, wybierz certyfikat na stronie [App Service certyfikaty](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) , a następnie kliknij pozycję **Ustawienia automatycznego odnawiania** w lewym okienku nawigacji. Domyślnie certyfikaty App Service mają roczny okres ważności.
 
 Wybierz pozycję **włączone** , a następnie kliknij pozycję **Zapisz**. Certyfikaty mogą rozpoczynać automatyczne odnawianie 60 dni przed wygaśnięciem, jeśli włączono automatyczne odnawianie.
 

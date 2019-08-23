@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: eead4436a7135f6f74528cde52883ea247360fc6
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: a95e643d6561f425484a21b5032b1df585d0460b
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648772"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900325"
 ---
 # <a name="transfer-data-with-azcopy-and-blob-storage"></a>Transferowanie danych za pomocą AzCopy i magazynu obiektów BLOB
 
@@ -195,7 +195,7 @@ Ta sekcja zawiera następujące przykłady:
 
 ## <a name="synchronize-files"></a>Synchronizuj pliki
 
-Zawartość lokalnego systemu plików można zsynchronizować z kontenerem obiektów BLOB. Synchronizacja jest jednokierunkowa. Innymi słowy, możesz wybrać, które z tych dwóch punktów końcowych są źródłem, a które są lokalizacją docelową.
+Zawartość lokalnego systemu plików można zsynchronizować z kontenerem obiektów BLOB. Synchronizacja jest jednokierunkowa. Innymi słowy, możesz wybrać, które z tych dwóch punktów końcowych są źródłem, a które są lokalizacją docelową. Synchronizacja używa także serwera do interfejsów API serwera.
 
 > [!NOTE]
 > Obecnie ten scenariusz jest obsługiwany tylko w przypadku kont, które nie mają hierarchicznej przestrzeni nazw. Bieżąca wersja AzCopy nie jest synchronizowana między innymi źródłami i miejscami docelowymi (na przykład: Zasobniki magazynu plików lub Amazon Web Services (AWS) S3).

@@ -1,151 +1,151 @@
 ---
-title: Zrozumienie, jak metryki, alerty pracy w usłudze Azure Monitor.
-description: Zapoznaj się z omówieniem, co można zrobić za pomocą alertów dotyczących metryk i jak działają w usłudze Azure Monitor.
+title: Informacje o tym, jak alerty metryk działają w Azure Monitor.
+description: Zapoznaj się z informacjami o tym, co możesz zrobić z alertami metryk i jak działają w Azure Monitor.
 author: snehithm
 ms.author: snmuvva
 ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: ce65d87142df64a9f0c27f3acdb4d6f25e86fb8a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4dd95d32bad76a610b88a4362e7887efdfaf6af0
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071626"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972059"
 ---
-# <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Zrozumienie, jak metryki, alerty pracy w usłudze Azure Monitor
+# <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informacje o tym, jak alerty metryk działają w Azure Monitor
 
-Alerty metryk w usłudze Azure Monitor działać na podstawie metryk wielowymiarowych. Metryki te mogą być [metryk platformy](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [metryki niestandardowe](../../azure-monitor/platform/metrics-custom-overview.md), [popularnych dzienników z usługi Azure Monitor przekonwertowane na metryki](../../azure-monitor/platform/alerts-metric-logs.md) i metryk usługi Application Insights. Alerty metryki oceny w regularnych odstępach czasu, aby sprawdzić, czy warunki na co najmniej jeden metryki szeregów czasowych są spełnione i otrzymywać powiadomienia, gdy są spełnione ocen. Alerty metryki są stanowe, czyli one tylko wysyłacie powiadomienia po zmianie stanu.
+Alerty metryk w Azure Monitor działają na podstawie metryk wielowymiarowych. Te metryki mogą być [metrykami platformy](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), metrykami niestandardowymi, popularnymi [dziennikami z Azure monitor konwertowane na](../../azure-monitor/platform/alerts-metric-logs.md) metryki i metryki Application Insights. [](../../azure-monitor/platform/metrics-custom-overview.md) Alerty metryk oceniają w regularnych odstępach czasu, aby sprawdzić, czy warunki dotyczące co najmniej jednej z serii czasu metryk są prawdziwe i powiadamiać o spełnieniu oceny. Alerty metryk są stanowe, oznacza to, że wysyłają powiadomienia tylko wtedy, gdy stan zmieni się.
 
-## <a name="how-do-metric-alerts-work"></a>Jak działają alerty metryki
+## <a name="how-do-metric-alerts-work"></a>Jak działają Alerty metryk?
 
-Można zdefiniować regułę alertu metryki, określając zasób docelowy, który ma być monitorowany, Nazwa metryki, typ warunku (statycznej lub dynamicznej) i warunek (operator i wartość progową/czułości) i grupę akcji do wyzwalane, gdy zostanie wyzwolony reguły alertu. Typy warunków wpływa na sposób, w jaki są określane wartości progowe. [Dowiedz się więcej o opcjach Typ i ważność warunek dynamicznymi progami](alerts-dynamic-thresholds.md).
+Można zdefiniować regułę alertu metryki, określając zasób docelowy do monitorowania, nazwę metryki, typ warunku (statyczny lub dynamiczny) oraz warunek (operator i próg/czułość) oraz grupę akcji, która ma zostać wyzwolona po wyzwoleniu reguły alertu. Typy warunków mają wpływ na sposób określania progów. [Dowiedz się więcej o opcjach typu i czułości wartości progów dynamicznych](alerts-dynamic-thresholds.md).
 
-### <a name="alert-rule-with-static-condition-type"></a>Reguła alertu o typie warunek statyczny
+### <a name="alert-rule-with-static-condition-type"></a>Reguła alertu z typem warunku statycznego
 
-Załóżmy, że utworzono regułę alertu metryki prosty próg statyczne w następujący sposób:
+Załóżmy, że utworzono prostą regułę alertu metryki statycznej progu:
 
-- (Do monitorowania zasobów platformy Azure) zasób docelowy: myVM
-- Metryka: Procentowe użycie procesora CPU
+- Zasób docelowy (zasób platformy Azure, który chcesz monitorować): myVM
+- Metryki Procentowe użycie procesora CPU
 - Typ warunku: Static
-- Agregacja czasu (statystyki, który jest uruchamiany za pośrednictwem pierwotne wartości metryk. Czasu obsługiwane operacje agregacji są minimalny, maksymalny, Avg, łącznie i Count): Średnia
-- Okres (wygląd wsteczny okna za pośrednictwem metryki, które są sprawdzane w wartości): W ciągu ostatnich 5 minut.
-- Frequency (częstotliwość, z którą alert dotyczący metryki sprawdza, jeśli warunki są spełnione): 1 min
-- Operator: Większe niż
-- Wartość progowa: 70
+- Agregacja czasu (statystyka, która jest uruchamiana za pośrednictwem wartości metryk nieprzetworzonych. Agregacje obsługiwanego czasu to min, Max, średnia, suma, liczba): Average
+- Okres (wyszukanie okna, nad którym są sprawdzane wartości metryk): W ciągu 5 ostatnich minut
+- Częstotliwość (częstotliwość, z jaką alert dotyczący metryki sprawdza, czy warunki są spełnione): 1 min
+- Zakład Większe niż
+- Próg 70
 
-Od chwili, gdy zostanie utworzona reguła alertu monitor jest uruchamiane co 1 min i szuka w wartości metryk z ostatnich 5 minut i sprawdza się, jeśli średnia tych wartości przekracza 70. Jeśli warunek jest spełniony, oznacza to, średnie użycie procesora CPU procent dla ostatnich 5 minut przekracza 70, reguła alertu wyzwala powiadomienie aktywowane. Jeśli wiadomość e-mail lub Akcja punktu zaczepienia sieci web skonfigurowano grupy akcji skojarzonych z regułą alertu, otrzymasz powiadomienie aktywowanego zarówno.
+Od momentu utworzenia reguły alertu monitor jest uruchamiany co 1 min i sprawdza wartości metryk dla ostatnich 5 minut i sprawdza, czy średnia z tych wartości przekracza 70. Jeśli spełniony jest warunek, średni procent czasu procesora dla ostatnich 5 minut przekracza 70, reguła alertu wyzwala aktywowane powiadomienie. W przypadku skonfigurowania w grupie akcji skojarzonej z regułą alertu wiadomości e-mail lub elementu webhook zostanie wyświetlone aktywne powiadomienie.
 
-Kiedy używasz wiele warunków w ramach jednej reguły, "ands" warunki reguły ze sobą.  Oznacza to alertu, gdy wszystkie warunki alertu są interpretowane jako wartość true i rozwiązania, gdy jeden z warunków nie jest już wartość true. I będzie przykład tego typu alertu alert "CPU wyższa niż 90%" i "długość kolejki wynosi ponad 300 elementów". 
+W przypadku korzystania z wielu warunków w jednej regule reguła "ands".  Oznacza to, że alert jest uruchamiany, gdy wszystkie warunki w alercie będą oceniane jako prawdziwe i rozwiązywane, gdy jeden z warunków nie ma już wartości true. Przykładem tego typu alertu będzie alert, gdy "procesor CPU większy niż 90%" i "Długość kolejki przekracza 300 elementów". 
 
-### <a name="alert-rule-with-dynamic-condition-type"></a>Reguła alertu o typie warunek dynamiczny
+### <a name="alert-rule-with-dynamic-condition-type"></a>Reguła alertu z typem warunku dynamicznego
 
-Załóżmy, że utworzono proste reguła alertu metryki dynamicznymi progami w następujący sposób:
+Załóżmy, że utworzono prostą regułę alertu metryki dynamicznej wartości progowej:
 
-- (Do monitorowania zasobów platformy Azure) zasób docelowy: myVM
-- Metryka: Procentowe użycie procesora CPU
+- Zasób docelowy (zasób platformy Azure, który chcesz monitorować): myVM
+- Metryki Procentowe użycie procesora CPU
 - Typ warunku: Dynamiczne
-- Agregacja czasu (statystyki, który jest uruchamiany za pośrednictwem pierwotne wartości metryk. Czasu obsługiwane operacje agregacji są minimalny, maksymalny, Avg, łącznie i Count): Średnia
-- Okres (wygląd wsteczny okna za pośrednictwem metryki, które są sprawdzane w wartości): W ciągu ostatnich 5 minut.
-- Frequency (częstotliwość, z którą alert dotyczący metryki sprawdza, jeśli warunki są spełnione): 1 min
-- Operator: Większe niż
-- Czułość: Średni
-- Wygląd wstecz okresy: 4
+- Agregacja czasu (statystyka, która jest uruchamiana za pośrednictwem wartości metryk nieprzetworzonych. Agregacje obsługiwanego czasu to min, Max, średnia, suma, liczba): Average
+- Okres (wyszukanie okna, nad którym są sprawdzane wartości metryk): W ciągu 5 ostatnich minut
+- Częstotliwość (częstotliwość, z jaką alert dotyczący metryki sprawdza, czy warunki są spełnione): 1 min
+- Zakład Większe niż
+- Czułości Średni
+- Poszukaj kropek: 4
 - Liczba naruszeń: 4
 
-Po utworzeniu reguły alertu dynamicznymi progami algorytmu uczenia maszynowego uzyskania danych historycznych, który jest dostępny, obliczy wartości progowej, która najlepiej pasuje do wzorca zachowanie metryki serii, a będzie stale Dowiedz się, na podstawie nowych danych Próg dokładniejsze.
+Po utworzeniu reguły alertu algorytm dynamicznej uczenia maszynowego uzyska dostępne dane historyczne, oblicza próg, który najlepiej pasuje do wzorca zachowania serii metryk i będzie stale uczyć się na podstawie nowych danych w celu utworzenia wartość progowa jest bardziej dokładna.
 
-Od chwili, gdy zostanie utworzona reguła alertu monitor jest uruchamiane co 1 min i analizuje wartości metryk w ciągu ostatnich 20 minut, pogrupowane według okresy 5 minut i sprawdza, czy gdy średnią z okresu wartości w każdym z 4 okresów przekracza próg oczekiwane. Jeśli warunek jest spełniony, oznacza to, średnia procentowe użycie procesora CPU w ciągu ostatnich 20 minut (cztery okresy 5 minut) odpowiadają regułom z cztery razy zachowanie jest oczekiwane, reguła alertu wyzwala powiadomienie aktywowane. Jeśli wiadomość e-mail lub Akcja punktu zaczepienia sieci web skonfigurowano grupy akcji skojarzonych z regułą alertu, otrzymasz powiadomienie aktywowanego zarówno.
+Od momentu utworzenia reguły alertu monitor jest uruchamiany co 1 min i sprawdza wartości metryk w ostatnich 20 minutach pogrupowane w 5 minut i sprawdza, czy średnia wartość okresu w każdym z 4 okresów przekracza oczekiwany próg. Jeśli spełniony jest warunek, średni procent czasu procesora w ostatnich 20 minutach (cztery 5 minut okresów) odbiegał od oczekiwanego zachowania czterokrotnie, reguła alertu wyzwala aktywowane powiadomienie. W przypadku skonfigurowania w grupie akcji skojarzonej z regułą alertu wiadomości e-mail lub elementu webhook zostanie wyświetlone aktywne powiadomienie.
 
-### <a name="view-and-resolution-of-fired-alerts"></a>Wyświetlanie i rozpoznawanie wyzwolone alerty
+### <a name="view-and-resolution-of-fired-alerts"></a>Wyświetlanie i rozwiązywanie wygenerowanego alertu
 
-Powyższe przykłady reguł alertów wyzwalania można również wyświetlać w witrynie Azure portal w **wszystkie alerty** bloku.
+Powyższe przykłady reguł alertów można również wyświetlić w Azure Portal w bloku **wszystkie alerty** .
 
-Załóżmy, że użycie na "myVM" nadal jest powyżej wartości progowej przez w kolejnych kontroli, reguły alertu nie zostanie uruchomiony ponownie, dopóki warunki nie są rozwiązane.
+Załóżmy, że użycie "myVM" jest nadal powyżej progu w kolejnych sprawdzeniach, reguła alertu nie zostanie uruchomiona ponownie, dopóki te warunki nie zostaną rozwiązane.
 
-Po pewnym czasie wykorzystanie na "myVM" wróci do normalnego oznacza to, nie spadnie poniżej wartości progowej. Reguła alertu monitoruje warunku dwa razy, aby Wyślij powiadomienie o usunięciu. Reguły alertu wysyła komunikat o usunięciu dezaktywowane podczas warunek alertu nie został spełniony dla trzech następujących po sobie kropek redukcji szumu w przypadku niestabilny warunków.
+Po pewnym czasie użycie na "myVM" powróci do normalnego (spadnie poniżej wartości progowej). Reguła alertu monitoruje warunek przez dwa razy, aby wysłać rozpoznane powiadomienie. Reguła alertu wysyła komunikat rozwiązany/zdezaktywowany, gdy warunek alertu nie jest spełniony przez trzy kolejne okresy, aby zmniejszyć hałas w przypadku warunków niestabilny.
 
-Jak rozpoznać powiadomienie jest wysyłane za pomocą elementów web hook lub wiadomości e-mail, stan wystąpienia alertu (nazywane stan monitora) w witrynie Azure portal jest również ustawiona na rozwiązany.
+Gdy rozpoznane powiadomienie jest wysyłane za pośrednictwem elementów webhook lub email, stan wystąpienia alertu (nazywany stanem monitora) w Azure Portal jest również ustawiany jako rozwiązany.
 
-### <a name="using-dimensions"></a>Przy użyciu wymiarów
+### <a name="using-dimensions"></a>Korzystanie z wymiarów
 
-Alerty metryk w usłudze Azure Monitor obsługują także monitorowanie wielu kombinacje wartości wymiarów z jedną regułą. Przyjrzyjmy się, warto używać wielu kombinacji za pomocą przykładu.
+Alerty metryk w Azure Monitor obsługują również monitorowanie kombinacji wartości wymiarów wielu z jedną regułą. Rozważmy, dlaczego możesz użyć wielu kombinacji wymiarów z pomocą przykładu.
 
-Załóżmy, że masz plan usługi App Service dla witryny sieci Web. Chcesz monitorować użycie procesora CPU na wiele wystąpień witryny sieci web/aplikacji. Możesz to zrobić przy użyciu regułę alertu metryki w następujący sposób:
+Załóżmy, że masz plan App Service dla witryny sieci Web. Chcesz monitorować użycie procesora CPU w wielu wystąpieniach z uruchomioną witryną sieci Web lub aplikacją. Można to zrobić za pomocą reguły alertu metryk w następujący sposób:
 
 - Zasób docelowy: myAppServicePlan
-- Metryka: Procentowe użycie procesora CPU
+- Metryki Procentowe użycie procesora CPU
 - Typ warunku: Static
 - Wymiary
-  - Wystąpienia = InstanceName1, InstanceName2
-- Agregacja czasu: Średnia
-- Okres: W ciągu ostatnich 5 minut.
-- Częstotliwość: 1 min
-- Operator: GreaterThan
-- Wartość progowa: 70
+  - Wystąpienie = InstanceName1, InstanceName2
+- Agregacja czasu: Average
+- Czasu W ciągu 5 ostatnich minut
+- Jaką 1 min
+- Zakład GreaterThan
+- Próg 70
 
-Podobnie jak wcześniej, ta reguła umożliwia monitorowanie Jeśli średniego użycia procesora CPU dla ostatnich 5 minut przekracza 70%. Jednak ta zasada umożliwia monitorowanie dwóch wystąpień z witryną sieci Web. Każde wystąpienie będzie są monitorowane indywidualnie i będą wyświetlane powiadomienia indywidualnie.
+Tak jak wcześniej, ta reguła monitoruje, czy średnie użycie procesora CPU w ciągu ostatnich 5 minut przekracza 70%. Jednak za pomocą tej samej reguły można monitorować dwa wystąpienia z uruchomioną witryną sieci Web. Każde wystąpienie będzie monitorowane pojedynczo i będzie otrzymywać powiadomienia pojedynczo.
 
-Załóżmy, że masz aplikację sieci web, która ma do czynienia z ogromną żądanie i będzie konieczne dodanie większej liczby wystąpień. Reguła powyżej nadal monitoruje tylko dwa wystąpienia. Można jednak utworzyć regułę w następujący sposób:
+Załóżmy, że masz aplikację sieci Web, która widzi ogromne zapotrzebowanie i musisz dodać więcej wystąpień. Powyższa zasada nadal monitoruje tylko dwa wystąpienia. Można jednak utworzyć regułę w następujący sposób:
 
 - Zasób docelowy: myAppServicePlan
-- Metryka: Procentowe użycie procesora CPU
+- Metryki Procentowe użycie procesora CPU
 - Typ warunku: Static
 - Wymiary
-  - Wystąpienia = *
-- Agregacja czasu: Średnia
-- Okres: W ciągu ostatnich 5 minut.
-- Częstotliwość: 1 min
-- Operator: GreaterThan
-- Wartość progowa: 70
+  - Wystąpienie = *
+- Agregacja czasu: Average
+- Czasu W ciągu 5 ostatnich minut
+- Jaką 1 min
+- Zakład GreaterThan
+- Próg 70
 
-Ta reguła będzie automatycznie monitorować wszystkie wartości tj wystąpienia można monitorować wystąpień, jak pojawiają się bez konieczności modyfikowania usługi reguła alertu metryki ponownie.
+Ta reguła będzie automatycznie monitorować wszystkie wartości dla wystąpienia, np. wystąpienia można monitorować w miarę ich występowania, nie trzeba ponownie modyfikować reguły alertu metryki.
 
-Podczas monitorowania wielu wymiarach, dynamicznymi progami regułę alertów można tworzyć dostosowane progi setek serii metryki naraz. Dynamicznymi progami powoduje mniejszej liczby reguł alertów do zarządzania i dużo czasu na redukcję zarządzania i tworzenia reguł alertów.
+W przypadku monitorowania wielu wymiarów reguła alertów dynamicznych umożliwia tworzenie dostosowanych progów dla setek serii metrycznych w danym momencie. Progi dynamiczne mają mniejszą liczbę reguł alertów, które umożliwiają zarządzanie i znaczną oszczędność czasu na potrzeby zarządzania i tworzenia reguł alertów.
 
-Załóżmy, że masz aplikację sieci web za pomocą wielu wystąpień i nie wiesz, co to jest najbardziej odpowiedni próg. Powyższe zasady będą zawsze używać próg wynoszący 70%. Można jednak utworzyć regułę w następujący sposób:
+Załóżmy, że masz aplikację sieci Web z wieloma wystąpieniami i nie wiesz, co to jest najbardziej odpowiedni próg. Powyższe reguły zawsze będą używać progu 70%. Można jednak utworzyć regułę w następujący sposób:
 
 - Zasób docelowy: myAppServicePlan
-- Metryka: Procentowe użycie procesora CPU
+- Metryki Procentowe użycie procesora CPU
 - Typ warunku: Dynamiczne
 - Wymiary
-  - Wystąpienia = *
-- Agregacja czasu: Średnia
-- Okres: W ciągu ostatnich 5 minut.
-- Częstotliwość: 1 min
-- Operator: GreaterThan
-- Czułość: Średni
-- Wygląd wstecz okresy: 1
+  - Wystąpienie = *
+- Agregacja czasu: Average
+- Czasu W ciągu 5 ostatnich minut
+- Jaką 1 min
+- Zakład GreaterThan
+- Czułości Średni
+- Poszukaj kropek: 1
 - Liczba naruszeń: 1
 
-Ta reguła umożliwia monitorowanie Jeśli średniego użycia procesora CPU dla ostatnich 5 minut przekroczy oczekiwane zachowanie dla każdego wystąpienia. Ta zasada może monitorować wystąpień, jak pojawiają się bez konieczności modyfikowania usługi reguła alertu metryki ponownie. Każde wystąpienie będzie pobrać wartości progowej, która pasuje do wzorca zachowanie metryki serii i będzie stale zmianom w zależności od nowe dane, które umożliwiają bardziej precyzyjne wartość progową. Podobnie jak wcześniej, każde wystąpienie będzie monitorowany indywidualnie i będą wyświetlane powiadomienia indywidualnie.
+Ta reguła monitoruje, czy średnie użycie procesora CPU w ciągu ostatnich 5 minut przekracza oczekiwane zachowanie dla każdego wystąpienia. Ta sama reguła pozwala monitorować wystąpienia w miarę ich występowania, nie trzeba ponownie modyfikować reguły alertu metryki. Każde wystąpienie uzyska próg, który pasuje do wzorca zachowania serii metryk i ciągle zmienia się w oparciu o nowe dane, aby zapewnić dokładniejszy próg. Podobnie jak przed, każde wystąpienie zostanie monitorowane pojedynczo i otrzymasz powiadomienia pojedynczo.
 
-Zwiększenie okresy ponownie spojrzenie i liczbę naruszeń można również zezwolić filtrowanie alertów tylko alert na danej definicji odchylenie znaczące. [Dowiedz się więcej o dynamicznymi progami zaawansowane opcje](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
+Rosnące okresy zawracania i liczby naruszeń mogą również umożliwić filtrowanie alertów tylko w przypadku definicji znaczącego odchylenia. [Dowiedz się więcej o opcjach zaawansowanych progów dynamicznych](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
 
-## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Monitorowanie na dużą skalę za pomocą alertów dotyczących metryk w usłudze Azure Monitor
+## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Monitorowanie na dużą skalę przy użyciu alertów metryk w Azure Monitor
 
-Do tej pory wiesz, jak pojedynczy alert dotyczący metryki może służyć do monitorowania jednej lub wielu metryk Szeregi czasowe związane z jednego zasobu platformy Azure. Wiele razy możesz zechcieć tę samą regułę alertu stosowane do wielu zasobów. Usługa Azure Monitor obsługuje także monitorowanie wielu zasobów przy użyciu jednej reguły alertu metryki. Ta funkcja jest obecnie obsługiwana tylko na maszynach wirtualnych. Ponadto pojedynczy alert dotyczący metryki można monitorować zasoby w jednym regionie platformy Azure.
+Do tej pory dowiesz się, jak można użyć pojedynczego alertu metryki do monitorowania jednej lub wielu serii czasu metryk związanych z pojedynczym zasobem platformy Azure. Wiele razy można chcieć zastosować tę samą regułę alertu do wielu zasobów. Azure Monitor obsługuje również monitorowanie wielu zasobów przy użyciu jednej reguły alertu metryki. Ta funkcja jest obecnie obsługiwana tylko na maszynach wirtualnych. Ponadto pojedynczy alert dotyczący metryki może monitorować zasoby w jednym regionie świadczenia usługi Azure.
 
-Można określić zakres monitorowania, pojedynczy alert dotyczący metryki w jednym z trzech sposobów:
+Zakres monitorowania można określić za pomocą pojedynczego alertu dotyczącego metryki na jeden z trzech sposobów:
 
-- jako listę maszyn wirtualnych w jednym regionie platformy Azure w ramach subskrypcji
-- Wszystkie maszyny wirtualne (w jednym regionie platformy Azure) w co najmniej jedną grupę zasobów w ramach subskrypcji
-- Wszystkie maszyny wirtualne (w jednym regionie platformy Azure) w jednej subskrypcji
+- jako lista maszyn wirtualnych w jednym regionie świadczenia usługi Azure w ramach subskrypcji
+- wszystkie maszyny wirtualne (w jednym regionie świadczenia usługi Azure) w jednej lub większej liczbie grup zasobów w subskrypcji
+- wszystkie maszyny wirtualne (w jednym regionie świadczenia usługi Azure) w jednej subskrypcji
 
-Tworzenie reguł alertów dotyczących metryk, które monitorują wiele zasobów przypomina [tworzenie innych alertu metryki](alerts-metric.md) monitorująca pojedynczy zasób. Tylko różnica polega na tym, że będzie wybierz wszystkie zasoby, które chcesz monitorować. Możesz również utworzyć tych reguł za pomocą [szablonów usługi Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources). Otrzymasz poszczególnych powiadomień dla każdej maszyny wirtualnej.
+Tworzenie reguł alertów dotyczących metryk, które monitorują wiele zasobów, jest podobne do [tworzenia dowolnego innego alertu](alerts-metric.md) dotyczącego metryki monitorującego pojedynczy zasób. Tylko różnica polega na tym, że należy wybrać wszystkie zasoby, które mają być monitorowane. Te reguły można również utworzyć za poorednictwem [szablonów Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources). Zostaną odebrane indywidualne powiadomienia dla każdej maszyny wirtualnej.
 
-## <a name="typical-latency"></a>Typowy czas oczekiwania
+## <a name="typical-latency"></a>Typowe opóźnienia
 
-Dla alertów dotyczących metryk zwykle otrzymasz powiadomienie w niecałe 5 minut po ustawieniu częstotliwości reguły alertu jako 1 min. W przypadku dużego obciążenia systemów powiadomień można napotkać dłuższy czas oczekiwania.
+W przypadku alertów dotyczących metryk, zazwyczaj otrzymasz powiadomienie w ciągu 5 minut, jeśli ustawisz częstotliwość reguły alertu na 1 min. W przypadku dużego obciążenia systemów powiadomień może pojawić się dłuższe opóźnienie.
 
-## <a name="supported-resource-types-for-metric-alerts"></a>Obsługiwane typy zasobów dla alertów dotyczących metryk
+## <a name="supported-resource-types-for-metric-alerts"></a>Obsługiwane typy zasobów dla alertów metryk
 
-Pełną listę obsługiwane typy zasobów można znaleźć w tym [artykułu](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
+Pełną listę obsługiwanych typów zasobów można znaleźć w tym [artykule](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
-Jeśli są już dzisiaj za pomocą klasycznego alertów dotyczących metryk i chcesz dowiedzieć się, jeśli alertów dotyczących metryk obsługują wszystkie typy zasobów są używane, w poniższej tabeli przedstawiono zasobu typy obsługiwane przez klasyczny alertów dotyczących metryk i jeśli są one obsługiwane przez alertów dotyczących metryk, już dziś, czy nie.
+Jeśli obecnie używasz klasycznych alertów metryk i chcesz zobaczyć, czy alerty metryk obsługują wszystkie typy zasobów, z których korzystasz, w poniższej tabeli przedstawiono typy zasobów obsługiwane przez klasyczne alerty metryk i jeśli są one obecnie obsługiwane przez alerty metryk.
 
-|Typ zasobu obsługiwane przez klasyczny alertów dotyczących metryk | Obsługiwane przez alertów dotyczących metryk |
+|Typ zasobu obsługiwany przez klasyczne alerty metryk | Obsługiwane przez alerty metryk |
 |-------------------------------------------------|----------------------------|
 | Microsoft.ApiManagement/service | Tak |
 | Microsoft.Batch/batchAccounts| Tak|
@@ -154,34 +154,34 @@ Jeśli są już dzisiaj za pomocą klasycznego alertów dotyczących metryk i ch
 |Microsoft.ClassicCompute/domainNames/slots/roles | Nie|
 |Microsoft.CognitiveServices/accounts | Nie |
 |Microsoft.Compute/virtualMachines | Tak|
-|Microsoft.Compute/virtualMachineScaleSets| Yes|
-|Microsoft.ClassicStorage/storageAccounts| Nie |
-|Microsoft.DataFactory/datafactories | Yes|
+|Microsoft.Compute/virtualMachineScaleSets| Tak|
+|Microsoft. ClassicStorage/storageAccounts| Nie |
+|Microsoft.DataFactory/datafactories | Tak|
 |Microsoft.DBforMySQL/servers| Tak|
-|Microsoft.DBforPostgreSQL/servers| Yes|
+|Microsoft.DBforPostgreSQL/servers| Tak|
 |Microsoft.Devices/IotHubs | Nie|
-|Microsoft.DocumentDB/databaseAccounts| Yes|
-|Microsoft.EventHub/namespaces | Yes|
+|Microsoft.DocumentDB/databaseAccounts| Tak|
+|Microsoft.EventHub/namespaces | Tak|
 |Microsoft.Logic/workflows | Tak|
-|Microsoft.Network/loadBalancers |Yes|
+|Microsoft.Network/loadBalancers |Tak|
 |Microsoft.Network/publicIPAddresses| Tak|
 |Microsoft.Network/applicationGateways| Tak|
 |Microsoft.Network/expressRouteCircuits| Tak|
 |Microsoft.Network/trafficManagerProfiles | Tak|
 |Microsoft.Search/searchServices | Tak|
 |Microsoft.ServiceBus/namespaces| Tak |
-|Microsoft.Storage/storageAccounts | Yes|
+|Microsoft.Storage/storageAccounts | Tak|
 |Microsoft.StreamAnalytics/streamingjobs| Tak|
-|Microsoft.TimeSeriesInsights/environments | Yes|
-|Microsoft W sieci Web/farm serwerów | Tak |
-|Microsoft / Witryn (z wyjątkiem funkcji) | Tak|
-|Microsoft HostingEnvironments/Web/multiRolePools | Nie|
-|Microsoft HostingEnvironments/Web/workerPools| Nie |
+|Microsoft. TimeSeriesInsights/środowiska | Tak|
+|Microsoft Sieć Web/dopuszczalna | Tak |
+|Microsoft Sieć Web/Lokacje (z wyjątkiem funkcji) | Tak|
+|Microsoft Sieć Web/hostingEnvironments/multiRolePools | Nie|
+|Microsoft Sieć Web/hostingEnvironments/workerPools| Nie |
 |Microsoft.SQL/Servers | Nie |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Dowiedz się, jak tworzenie, wyświetlanie i zarządzanie alertów dotyczących metryk na platformie Azure](alerts-metric.md)
-- [Dowiedz się, jak wdrożyć za pomocą szablonów usługi Azure Resource Manager alertów dotyczących metryk](../../azure-monitor/platform/alerts-metric-create-templates.md)
-- [Dowiedz się więcej o grupach akcji](action-groups.md)
-- [Dowiedz się więcej na temat typu warunku dynamicznymi progami](alerts-dynamic-thresholds.md)
+- [Dowiedz się, jak tworzyć i wyświetlać alerty metryk na platformie Azure oraz zarządzać nimi](alerts-metric.md)
+- [Dowiedz się, jak wdrażać alerty metryk przy użyciu szablonów Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md)
+- [Dowiedz się więcej na temat grup akcji](action-groups.md)
+- [Dowiedz się więcej o typie warunku progi dynamiczne](alerts-dynamic-thresholds.md)

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 4130bb746a4faa4907353654d16f7c20c0cc7817
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c48323bb4c8798a0f36d3fda99a4c659187e0e81
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598950"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906372"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>Konfigurowanie wizualizacji zależności dla oceny
 
@@ -37,9 +37,9 @@ Mapowanie zależności ułatwia wizualizację zależności między maszynami, kt
 **Funkcje** | **Uwaga**
 --- | ---
 Dostępność | Wizualizacja zależności nie jest dostępna w Azure Government.
-Mapa usługi | Wizualizacja zależności używa rozwiązania Service Map w dziennikach Azure Monitor. [Service map](../azure-monitor/insights/service-map-configure.md) automatycznie wykrywa i pokazuje połączenia między serwerami.
-Agenci | Aby użyć wizualizacji zależności, Zainstaluj kilka agentów na maszynach, które chcesz zmapować:<br/> - Agent [usługi Azure log Analytics](../azure-monitor/platform/log-analytics-agent.md) (wcześniej określany jako Microsoft Monitoring Agent (MMA).<br/> -Service Map Agent zależności.<br/><br/> Aby zautomatyzować instalację agenta, można użyć narzędzia do wdrażania, takiego jak System Center Configuration Manager lub narzędzia partnerskiego, takiego jak [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), które ma rozwiązanie do wdrażania agenta dla Azure Migrate.
-Agent zależności | Przegląd obsługi agentów zależności dla [systemów Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) i [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems).<br/><br/> [Dowiedz się więcej](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples) o używaniu skryptów w celu zainstalowania agenta zależności.
+Mapa usługi | Wizualizacja zależności używa rozwiązania Service Map w Azure Monitor. [Service map](../azure-monitor/insights/service-map.md) automatycznie wykrywa i pokazuje połączenia między serwerami.
+Agenci | Aby użyć wizualizacji zależności, zainstaluj następujących agentów na maszynach, które chcesz zmapować:<br/> - Agent [agenta log Analytics](../azure-monitor/platform/log-analytics-agent.md) (wcześniej nazywany Microsoft Monitoring Agent (MMA).<br/> - [Agent zależności Service map](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent).<br/><br/> Aby zautomatyzować instalację agenta, można użyć narzędzia do wdrażania, takiego jak System Center Configuration Manager lub narzędzia partnerskiego, takiego jak [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), które ma rozwiązanie do wdrażania agenta dla Azure Migrate.
+Agent zależności | Przegląd [obsługi agentów zależności](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent) dla systemów Windows i Linux.<br/><br/> [Dowiedz się więcej](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) o używaniu skryptów w celu zainstalowania agenta zależności.
 Agent Log Analytics (MMA) | [Dowiedz się więcej](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent) o metodach instalacji MMA.<br/><br/> W przypadku maszyn monitorowanych przez System Center Operations Manager 2012 R2 lub nowsze nie trzeba instalować agenta MMA. Service Map integruje się z Operations Manager. Integrację można włączyć, korzystając z wskazówek przedstawionych [tutaj](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites). Należy jednak pamiętać, że Agent zależności musi być zainstalowany na tych komputerach.<br/><br/> [Zapoznaj](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) się z systemami operacyjnymi Linux obsługiwanymi przez agenta log Analytics.
 Grupy oceny | Grupy, dla których chcesz wizualizować zależności, nie mogą zawierać więcej niż 10 maszyn. Jeśli masz więcej niż 10 maszyn, Podziel je na mniejsze grupy w celu wizualizacji zależności.
 

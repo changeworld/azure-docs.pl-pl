@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 671b7de8852b0aac30e35b76d89eb4489a206f91
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 61c404abc9c0b00512014d4ebf3450023699507b
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708546"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907995"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-linux-virtual-machines"></a>Samouczek: Monitorowanie maszyn wirtualnych z systemem Linux za pomocą usługi Azure Security Center
 
@@ -72,7 +72,7 @@ Aby skonfigurować zasady zabezpieczeń dla całej subskrypcji:
 
 ## <a name="view-vm-configuration-health"></a>Wyświetlanie kondycji konfiguracji maszyny wirtualnej
 
-Po włączeniu zbierania danych i ustawieniu zasad zabezpieczeń usługa Security Center zacznie udostępniać alerty i zalecenia. Gdy maszyny wirtualne są wdrażane, instalowany jest agent zbierania danych. Usługa Security Center jest następnie wypełniana danymi dotyczącymi nowych maszyn wirtualnych. Aby uzyskać szczegółowe informacje o kondycji konfiguracji maszyny wirtualnej, zobacz [Ochrona maszyn wirtualnych w usłudze Security Center](../../security-center/security-center-virtual-machine-recommendations.md). 
+Po włączeniu zbierania danych i ustawieniu zasad zabezpieczeń usługa Security Center zacznie udostępniać alerty i zalecenia. Gdy maszyny wirtualne są wdrażane, instalowany jest agent zbierania danych. Usługa Security Center jest następnie wypełniana danymi dotyczącymi nowych maszyn wirtualnych. Aby uzyskać szczegółowe informacje o kondycji konfiguracji maszyny wirtualnej, zobacz [Ochrona maszyn wirtualnych w usłudze Security Center](../../security-center/security-center-virtual-machine-protection.md). 
 
 W miarę gromadzenia danych agregowana jest kondycja zasobu dla każdej maszyny wirtualnej i powiązanego zasobu platformy Azure. Informacje są pokazywane na czytelnym wykresie. 
 

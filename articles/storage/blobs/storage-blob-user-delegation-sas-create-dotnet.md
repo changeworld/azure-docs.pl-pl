@@ -9,12 +9,12 @@ ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: bed95c070649785a701f9d08a98faf29c8ee1413
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 98ab93bbec8da17dde93c9c343703838b0279994
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990691"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900425"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB przy użyciu platformy .NET (wersja zapoznawcza)
 
@@ -44,7 +44,7 @@ Aby uwierzytelnić się przy użyciu poświadczeń usługi Azure AD za pomocą b
 
 Aby utworzyć jednostkę usługi przy użyciu interfejsu wiersza polecenia platformy Azure i przypisać rolę RBAC, wywołaj polecenie [AZ AD Sp Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) . Podaj rolę dostępu do danych usługi Azure Storage, która ma zostać przypisana do nowej nazwy głównej usługi. Rola musi zawierać akcję **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** . Aby uzyskać więcej informacji na temat ról wbudowanych dla usługi Azure Storage, zobacz [wbudowane role dla zasobów platformy Azure](../../role-based-access-control/built-in-roles.md).
 
-Ponadto Podaj zakres przypisania roli. Jednostka usługi utworzy klucz delegowania użytkownika, który jest operacją wykonywaną na poziomie konta magazynu, więc przypisanie roli powinno być ograniczone do zakresu konta magazynu, grupy zasobów lub subskrypcji. Aby uzyskać więcej informacji na temat uprawnień RBAC do tworzenia sygnatury dostępu współdzielonego delegowania użytkowników, zobacz sekcję **przypisywanie uprawnień z RBAC** w temacie [Tworzenie funkcji SAS delegowania użytkowników (REST)](/rest/api/storageservices/create-a-user-delegation-sas).
+Ponadto Podaj zakres przypisania roli. Jednostka usługi utworzy klucz delegowania użytkownika, który jest operacją wykonywaną na poziomie konta magazynu, więc przypisanie roli powinno być ograniczone do zakresu konta magazynu, grupy zasobów lub subskrypcji. Aby uzyskać więcej informacji na temat uprawnień RBAC do tworzenia sygnatury dostępu współdzielonego delegowania użytkowników, zobacz sekcję **przypisywanie uprawnień z RBAC** w temacie [Tworzenie funkcji SAS delegowania użytkowników (REST)](/rest/api/storageservices/create-user-delegation-sas).
 
 Jeśli nie masz wystarczających uprawnień do przypisania roli do jednostki usługi, może być konieczne poproszenie właściciela konta lub administratora o wykonanie przypisania roli.
 
@@ -276,4 +276,4 @@ private static async Task ReadBlobWithSasAsync(Uri sasUri)
 ## <a name="see-also"></a>Zobacz także
 
 - [Pobierz operację klucza delegowania użytkownika](/rest/api/storageservices/get-user-delegation-key)
-- [Tworzenie sygnatury dostępu współdzielonego (API REST) delegowania użytkownika](/rest/api/storageservices/create-a-user-delegation-sas)
+- [Tworzenie sygnatury dostępu współdzielonego (API REST) delegowania użytkownika](/rest/api/storageservices/create-user-delegation-sas)

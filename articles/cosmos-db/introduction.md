@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: overview
 ms.date: 07/23/2019
 ms.author: rimman
-ms.openlocfilehash: ee863b6003444ec099753a6488f3fe4078338e60
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 5e53a671c866b9482296622d19d4ad6bec46829d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384119"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905285"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB — Zapraszamy!
 
@@ -24,6 +24,11 @@ Możesz [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.micros
 > [!div class="nextstepaction"]
 > [Wypróbuj bezpłatnie usługę Azure Cosmos DB](https://azure.microsoft.com/try/cosmosdb/)
 
+Możesz również użyć [programu Bootstrap Cosmos DB](https://azurecosmosdb.github.io/CosmosBootstrap/) , aby przyspieszyć Kompilowanie lub Migrowanie aplikacji na Azure Cosmos DB. Po zarejestrowaniu się w tym programie inżynierowie Azure Cosmos DB są przypisani do pomocy w projekcie i mogą być pomocne podczas migrowania danych do Azure Cosmos DB lub tworzenia nowych aplikacji w Azure Cosmos DB.
+
+> [!div class="nextstepaction"]
+> [Zarejestruj się, aby skorzystać z programu Bootstrap Cosmos DB](https://azurecosmosdb.github.io/CosmosBootstrap/)
+
 ![Azure Cosmos DB to dostępna w skali światowej usługa bazy danych firmy Microsoft z elastycznym skalowaniem, gwarantowanymi małymi opóźnieniami, pięcioma modelami spójności oraz kompleksowymi, gwarantowanymi umowami SLA](./media/introduction/azure-cosmos-db.png)
 
 ## <a name="key-benefits"></a>Najważniejsze korzyści
@@ -32,7 +37,7 @@ Możesz [bezpłatnie wypróbować usługę Azure Cosmos DB](https://azure.micros
 
 Usługa Cosmos DB umożliwia tworzenie bardzo dynamicznych i wysoce dostępnych aplikacji na całym świecie. Cosmos DB w sposób przezroczysty replikuje dane, wszędzie tam, gdzie się znajdują użytkownicy, dzięki czemu użytkownicy mogą korzystać z repliki danych znajdujących się najbliżej nich.
 
-Usługa Cosmos DB umożliwia dodawanie i usuwanie regionów platformy Azure do konta usługi Cosmos w dowolnym momencie, wystarczy kliknąć przycisk. Cosmos DB będzie bezproblemowo replikować dane do wszystkich regionów skojarzonych z kontem usługi Cosmos, gdy aplikacja nadal będzie wysoce dostępna, dzięki możliwościom  wielomultihostingunym. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [globalnej dystrybucji](distribute-data-globally.md).
+Usługa Cosmos DB umożliwia dodawanie i usuwanie regionów platformy Azure do konta usługi Cosmos w dowolnym momencie, wystarczy kliknąć przycisk. Cosmos DB będzie bezproblemowo replikować dane do wszystkich regionów skojarzonych z kontem usługi Cosmos, gdy aplikacja nadal będzie wysoce dostępna, dzięki możliwościom wielomultihostingunym. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [globalnej dystrybucji](distribute-data-globally.md).
 
 ### <a name="always-on"></a>Zawsze włączone
 
@@ -48,7 +53,7 @@ Przy użyciu usługi Cosmos DB można tworzyć szybko reagujące aplikacje skalo
 
 ### <a name="precisely-defined-multiple-consistency-choices"></a>Wiele dokładnie zdefiniowanych opcji spójności
 
-Podczas kompilowania aplikacji rozproszonych globalnie w Cosmos DB nie trzeba już podejmować wyjątkowo [kompromisów między spójnością, dostępnością, opóźnieniami i przepływności](consistency-levels-tradeoffs.md). Protokół replikacji wielu wzorców Cosmos DB został starannie zaprojektowany w celu zaoferowania [pięciu dobrze zdefiniowanych opcji](consistency-levels.md) - spójności, silnych, nieodświeżonych, *sesji*, *spójnego prefiksu*i *ostateczności* — w przypadku intuicyjnego modelu programowania o małym opóźnieniu i wysokiej dostępności dla aplikacji rozproszonej globalnie.
+Podczas kompilowania aplikacji rozproszonych globalnie w Cosmos DB nie trzeba już podejmować wyjątkowo [kompromisów między spójnością, dostępnością, opóźnieniami i przepływności](consistency-levels-tradeoffs.md). Protokół replikacji wielu wzorców Cosmos DB został starannie zaprojektowany w celu zaoferowania [pięciu dobrze zdefiniowanych opcji](consistency-levels.md) - spójności, silnych,nieodświeżonych, *sesji*, *spójnego prefiksu*i *ostateczności* — w przypadku intuicyjnego modelu programowania o małym opóźnieniu i wysokiej dostępności dla aplikacji rozproszonej globalnie.
 
 ### <a name="no-schema-or-index-management"></a>Bez zarządzania schematami lub indeksami
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/18/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 70b43c65703316e5dee8e9cf2cf86fe982a49592
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: aae2270417e0bb3bdf0dd847e2e09e7cb1999d39
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624782"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972465"
 ---
 # <a name="threat-detection-for-azure-service-layer-in-azure-security-center"></a>Wykrywanie zagrożeń dla warstwy usług platformy Azure w Azure Security Center
 
@@ -50,6 +50,10 @@ Security Center analiza warstwy sieciowej opiera się na przykładowych [danych 
 |**Wykryto komunikację sieciową ze złośliwym adresem**|Przykładowa analiza ruchu w sieci wykryła komunikację pochodzącą z zasobu we wdrożeniu za pomocą możliwego serwera z poleceniem i kontrolą (C & C). Należy pamiętać, że ten typ działań może powodować oflagowanie adresu IP jako złośliwego przez jednostki zewnętrzne.|
 
 Aby zrozumieć, jak Security Center mogą używać sygnałów związanych z siecią w celu zastosowania ochrony przed zagrożeniami, zobacz [heurystyczne wykrywanie nazw DNS w Azure Security Center](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/).
+
+>[!NOTE]
+>Alerty wykrywania zagrożeń warstwy sieciowej platformy Azure w Azure Security Center nie są generowane w ciągu pierwszej godziny po utworzeniu maszyny wirtualnej.
+
 ## Warstwa zarządzania Azure (Azure Resource Manager) (wersja zapoznawcza)<a name ="management-layer"></a>
 
 >[!NOTE]

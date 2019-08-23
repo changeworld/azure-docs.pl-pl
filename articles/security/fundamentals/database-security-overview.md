@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: 9053866b76ec1cc409c3f00d0af59bf3761d3936
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e5ed60ea59dc8cf19b8f9ca7e96777dbc6980171
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927981"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906058"
 ---
 # <a name="azure-database-security-overview"></a>Omówienie zabezpieczeń usługi Azure Database
 
@@ -206,7 +206,7 @@ SQL Advanced Threat Protection (ATP) oferuje zestaw zaawansowanych funkcji zabez
 
 Usługa [Azure Security Center](https://azure.microsoft.com/documentation/services/security-center/) pomaga w zapobieganiu zagrożeniom, wykrywaniu ich i reagowaniu na nie. Zapewnia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami w ramach subskrypcji platformy Azure. Pomaga wykrywać zagrożenia, które w przeciwnym razie mogłyby być niezauważalne, i współpracuje z szeroką ekosystemem rozwiązań w zakresie zabezpieczeń.
 
-[Security Center](../../security-center/security-center-sql-database.md) pomaga chronić dane w SQL Database, zapewniając wgląd w zabezpieczenia wszystkich serwerów i baz danych. Za pomocą Security Center można:
+[Security Center](../../security-center/security-center-alerts-data-services.md) pomaga chronić dane w SQL Database, zapewniając wgląd w zabezpieczenia wszystkich serwerów i baz danych. Za pomocą Security Center można:
 
 - Zdefiniuj zasady dla SQL Database szyfrowania i inspekcji.
 - Monitoruj zabezpieczenia SQL Database zasobów we wszystkich Twoich subskrypcjach.

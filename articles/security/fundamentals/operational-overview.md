@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 31e59f913fa29c92bc1b97029d8712bbd9b68ab8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 52d74983458a2c6a4de27ec91bc23a8dd9bee387
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934658"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899821"
 ---
 # <a name="azure-operational-security-overview"></a>Omówienie zabezpieczeń operacyjnych platformy Azure
 
-[Zabezpieczenia operacyjne platformy Azure] (/Azure/Security/Fundamentals/Operational-Security odnosi się do usług, formantów i funkcji dostępnych dla użytkowników w celu ochrony danych, aplikacji i innych zasobów w Microsoft Azure. Jest to platforma, która obejmuje wiedzę uzyskaną za pomocą różnych możliwości, które są unikatowe dla firmy Microsoft. Te funkcje obejmują cykl programowania zabezpieczeń firmy Microsoft (SDL), program Microsoft Security Response Center oraz dogłębną świadomość zagrożeń cyberbezpieczeństwa.
+[Zabezpieczenia operacyjne platformy Azure](/azure/security/fundamentals/operational-security) odnoszą się do usług, formantów i funkcji dostępnych dla użytkowników w celu ochrony danych, aplikacji i innych zasobów w Microsoft Azure. Jest to platforma, która obejmuje wiedzę uzyskaną za pomocą różnych możliwości, które są unikatowe dla firmy Microsoft. Te funkcje obejmują cykl programowania zabezpieczeń firmy Microsoft (SDL), program Microsoft Security Response Center oraz dogłębną świadomość zagrożeń cyberbezpieczeństwa.
 
 ## <a name="azure-management-services"></a>Usługi zarządzania platformy Azure
 

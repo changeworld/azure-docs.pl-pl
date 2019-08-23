@@ -7,14 +7,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 570429a2d5332e7d951271b36b79d9d16df174c0
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: b0345773956a0adc5c7f403195c496a3ea5e6fd6
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535202"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982339"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Usługi Cognitive Services i uczenie maszynowe
 
@@ -65,7 +65,7 @@ Zwykle odbiorcy są różne:
 
 Usługa poznawcze zapewnia dla Ciebie model szkolony. Dzięki temu dane i algorytm są razem dostępne z interfejsów API REST lub zestawu SDK. Tę usługę można zaimplementować w kilka minut, w zależności od scenariusza.  Usługa poznawcze zapewnia odpowiedzi na ogólne problemy, takie jak kluczowe frazy w identyfikacji tekstu lub elementu w obrazach. 
 
-Uczenie maszynowe to proces, który zwykle wymaga dłuższego czasu na pomyślne zaimplementowanie. Ten czas jest poświęcany na zbieranie danych, czyszczenie, przekształcanie, wybieranie algorytmów, uczenie modelu i wdrażanie w celu uzyskania tego samego poziomu funkcjonalności zapewnianego przez usługę poznawczej. Za pomocą uczenia maszynowego możliwe jest zapewnienie odpowiedzi na dowolny rodzaj problemu, w tym wysoce wyspecjalizowane lub konkretne problemy. Te problemy z uczeniem maszynowym wymagają zapoznania się z co najmniej jedną z następujących czynności: zagadnienie, uczenie maszynowe, nauka danych.
+Uczenie maszynowe to proces, który zwykle wymaga dłuższego czasu na pomyślne zaimplementowanie. Ten czas jest poświęcany na zbieranie danych, czyszczenie, przekształcanie, wybieranie algorytmów, uczenie modelu i wdrażanie w celu uzyskania tego samego poziomu funkcjonalności zapewnianego przez usługę poznawczej. W przypadku uczenia maszynowego istnieje możliwość zapewnienia odpowiedzi na wysoce wyspecjalizowane i/lub konkretne problemy. Problemy z uczeniem maszynowym wymagają znajomości określonego zagadnienia i danych dotyczących rozważanego problemu, a także doświadczenia w nauce danych.
 
 ## <a name="what-kind-of-data-do-you-have"></a>Jakiego rodzaju dane masz?
 

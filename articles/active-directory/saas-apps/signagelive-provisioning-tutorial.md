@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: 7838fd30869629298c5b44cc4b3e5c1e5daa7051
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: ef5a605fb0190e67de8b2bb95bbccfd8fd3cf279
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69519999"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906035"
 ---
 # <a name="tutorial-configure-signagelive--for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Signagelive na potrzeby automatycznego aprowizacji użytkowników
 
@@ -56,8 +56,7 @@ Przed skonfigurowaniem i włączeniem automatycznej aprowizacji użytkowników n
 
 Przed skonfigurowaniem usługi Signagelive na potrzeby automatycznego inicjowania obsługi administracyjnej użytkowników w usłudze Azure AD należy włączyć obsługę administracyjną Standard scim na Signagelive.
 
-1.  Skontaktuj się z [Signagelive](mailto:development@signagelive.com) , aby uzyskać token tajny, który jest wymagany do skonfigurowania aprowizacji Standard scim.
-
+  Skontaktuj się z [Signagelive](mailto:development@signagelive.com) , aby uzyskać token tajny, który jest wymagany do skonfigurowania aprowizacji Standard scim.
 
 ## <a name="add-signagelive-from-the-gallery"></a>Dodaj Signagelive z galerii
 
@@ -86,7 +85,7 @@ Aby skonfigurować Signagelive automatycznej aprowizacji użytkowników w usłud
 Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisioning w celu tworzenia, aktualizowania i wyłączania użytkowników i/lub grup w programie Signagelive na podstawie przypisań użytkowników i/lub grup w usłudze Azure AD.
 
 > [!TIP]
->  Możesz również włączyć logowanie jednokrotne oparte na protokole SAML dla BitaBIZ, postępując zgodnie z instrukcjami podanymi w [samouczku logowanie](Signagelive-tutorial.md)jednokrotne w Signagelive. Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji użytkowników, chociaż te dwie funkcje napadają nawzajem.
+>  Możesz również włączyć logowanie jednokrotne oparte na protokole SAML dla Signagelive, postępując zgodnie z instrukcjami podanymi w [samouczku logowanie](Signagelive-tutorial.md)jednokrotne w Signagelive. Logowanie jednokrotne można skonfigurować niezależnie od automatycznej aprowizacji użytkowników, chociaż te dwie funkcje napadają nawzajem.
 
 ### <a name="to-configure-automatic-user-provisioning-for-signagelive--in-azure-ad"></a>Aby skonfigurować automatyczne Inicjowanie obsługi użytkowników dla Signagelive w usłudze Azure AD:
 
@@ -106,7 +105,8 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
     ![Karta aprowizacji](common/provisioning-automatic.png)
 
-5. W sekcji poświadczenia administratora wprowadź ` https://samlapi.signagelive.com/scim/v2` **adres URL dzierżawy**. W polu **token tajny** wprowadź wartość **tokenu okaziciela** dostarczoną przez zespół programistyczny inżynieryjnego. Kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może się połączyć z usługą Signagelive. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi Signagelive ma ![uprawnienia administratora, a następnie spróbuj ponownie użyć adresu URL dzierżawy i tokenu](common/provisioning-testconnection-tenanturltoken.png)
+5. W sekcji poświadczenia administratora wprowadź ` https://samlapi.signagelive.com/scim/v2` **adres URL dzierżawy**. W polu **token tajny** wprowadź wartość **tokenu okaziciela** dostarczoną przez zespół programistyczny inżynieryjnego. Kliknij pozycję **Testuj połączenie** , aby upewnić się, że usługa Azure AD może się połączyć z usługą Signagelive. Jeśli połączenie nie powiedzie się, upewnij się, że konto usługi Signagelive ma uprawnienia administratora, a następnie spróbuj ponownie.
+    ![Adres URL dzierżawy + token](common/provisioning-testconnection-tenanturltoken.png)
 
 6. W polu **adres E-mail powiadomienia** wprowadź adres e-mail osoby lub grupy, które powinny otrzymywać powiadomienia o błędach aprowizacji, i zaznacz pole wyboru — **Wyślij powiadomienie e-mail, gdy wystąpi awaria**.
 
@@ -144,9 +144,9 @@ Ta sekcja przeprowadzi Cię przez kroki konfigurowania usługi Azure AD Provisio
 
     ![Zapisywanie konfiguracji aprowizacji](common/provisioning-configuration-save.png)
 
-Ta operacja uruchamia początkową synchronizację wszystkich użytkowników i/lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia** . Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje, które wystąpiły co około 40 minut, o ile usługa Azure AD Provisioning jest uruchomiona. Możesz użyć sekcji **szczegóły synchronizacji** do monitorowania postępu i postępuj zgodnie z raportem aktywności aprowizacji, który opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w witrynie Signagelive.
+Ta operacja uruchamia początkową synchronizację wszystkich użytkowników i/lub grup zdefiniowanych w **zakresie** w sekcji **Ustawienia** . Synchronizacja początkowa trwa dłużej niż kolejne synchronizacje. Aby uzyskać więcej informacji o tym, jak długo będzie trwać dla użytkowników i/lub grup, zobacz [jak długo trwa inicjowanie obsługi użytkowników](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users). 
 
-Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
+Możesz użyć bieżącej sekcji **stanu** , aby monitorować postęp i postępować zgodnie z raportem dotyczącym aktywności aprowizacji, który opisuje wszystkie akcje wykonywane przez usługę Azure AD Provisioning w systemie Signagelive. Aby uzyskać więcej informacji, zobacz [Sprawdzanie stanu aprowizacji użytkowników](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md). Aby zapoznać się z dziennikami aprowizacji usługi Azure AD, zobacz [Raportowanie dotyczące automatycznego inicjowania obsługi konta użytkownika](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 54d3f175e74b9f94c7845725e3d8f4531750df57
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
-ms.translationtype: HT
+ms.openlocfilehash: fe45adc3eb65631c0b127872240f8d76400f9102
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877559"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899663"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>Kontenery profili FSLogix i pliki platformy Azure
 
@@ -98,7 +98,7 @@ Poniższe przewodniki umożliwiają skonfigurowanie środowiska pulpitu wirtualn
 
 - Aby rozpocząć tworzenie rozwiązania do wirtualizacji pulpitu, zobacz [Tworzenie dzierżawy w systemie Windows Virtual Desktop](tenant-setup-azure-active-directory.md).
 - Aby utworzyć pulę hostów w ramach dzierżawy pulpitu wirtualnego systemu Windows, zobacz [Tworzenie puli hostów za pomocą witryny Azure Marketplace](create-host-pools-azure-marketplace.md).
-- Aby skonfigurować w pełni zarządzane udziały plików w chmurze, zobacz [Konfigurowanie udziału Azure Files](/articles/storage/files/storage-files-active-directory-enable.md).
+- Aby skonfigurować w pełni zarządzane udziały plików w chmurze, zobacz [Konfigurowanie udziału Azure Files](/azure/storage/files/storage-files-active-directory-enable).
 - Aby skonfigurować kontenery profilu FSLogix, zobacz [Tworzenie kontenera profilu dla puli hostów przy użyciu udziału plików](create-host-pools-user-profile.md).
 - Aby przypisać użytkowników do puli hostów, zobacz [Zarządzanie grupami aplikacji dla pulpitu wirtualnego systemu Windows](manage-app-groups.md).
 - Aby uzyskać dostęp do zasobów pulpitu wirtualnego systemu Windows z przeglądarki sieci Web, zobacz [nawiązywanie połączenia z pulpitem wirtualnym systemu Windows](connect-web.md).

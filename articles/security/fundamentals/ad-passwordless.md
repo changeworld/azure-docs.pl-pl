@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 38c850f167287fe5e1a444c8670e359c4d2b6b90
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e702a5921e785100c5971057d1652db9aab26acf
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934829"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899954"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Świat bez hasła przy użyciu Azure Active Directory
 
@@ -123,7 +123,7 @@ Aplikacja Microsoft Authenticator umożliwia użytkownikom weryfikowanie tożsam
 
 Wymagania wstępne dotyczące używania aplikacji Microsoft Authenticator do logowania bez hasła do usługi Azure AD są następujące:
 
-* Użytkownicy końcowi są włączeni do uwierzytelniania wieloskładnikowego platformy Azure
+* Użytkownicy końcowi są włączeni do Multi-Factor Authentication platformy Azure
 
 * Zaleca się, aby użytkownicy rejestrowali swoje urządzenia przy użyciu Microsoft Intune lub rozwiązania do zarządzania urządzeniami przenośnymi (MDM) innej firmy w celu ułatwienia wdrożenia aplikacji
 
@@ -131,7 +131,7 @@ Przy założeniu, że te wymagania są spełnione, Administratorzy włączają l
 
 Przy założeniu, że logowanie bezhasło jest włączone przez administratora, użytkownicy końcowi muszą spełniać następujące wymagania:
 
-* Zarejestrowano w usłudze Azure MFA Authentication
+* Zarejestrowane w usłudze Azure Multi-Factor Authentication
 
 * Najnowsza wersja Microsoft Authenticator zainstalowana na urządzeniach z systemem iOS 8,0 lub nowszym albo systemem Android 6,0 lub nowszym
 
@@ -150,7 +150,7 @@ Ze względu na to, że większość użytkowników jest przyzwyczajonych do korz
 
 Aby można było zalogować się do konta usługi Azure AD za pomocą aplikacji Microsoft Authenticator, należy wykonać czynności wykonywane przez administratora i użytkowników końcowych.
 
-Najpierw administrator musi [włączyć korzystanie z aplikacji jako poświadczenia](../../active-directory/authentication/howto-authentication-passwordless-phone.md) w dzierżawie przy użyciu programu Windows PowerShell. Administrator musi również umożliwić użytkownikom końcowym uwierzytelnianie wieloskładnikowe systemu Azure (Azure MFA) i skonfigurować aplikację Microsoft Authenticator jako jedną z [metod weryfikacji](../../active-directory/authentication/howto-mfa-mfasettings.md#verification-methods).
+Najpierw administrator musi [włączyć korzystanie z aplikacji jako poświadczenia](../../active-directory/authentication/howto-authentication-passwordless-phone.md) w dzierżawie przy użyciu programu Windows PowerShell. Administrator będzie również musiał włączyć użytkowników końcowych dla usługi Azure Multi-Factor Authentication (Azure MFA) i skonfigurować aplikację Microsoft Authenticator jako jedną z [metod weryfikacji](../../active-directory/authentication/howto-mfa-mfasettings.md#verification-methods).
 
 Użytkownicy końcowi będą musieli [pobrać i zainstalować](../../active-directory/user-help/user-help-auth-app-download-install.md) aplikację Microsoft Authenticator i [skonfigurować swoje konto](../../active-directory/user-help/security-info-setup-auth-app.md) do korzystania z aplikacji Microsoft Authenticator jako jednej z metod weryfikacji.
 
@@ -184,7 +184,7 @@ Uwierzytelnianie bez hasła przy użyciu Microsoft Authenticator jest zgodne z t
 
 #### <a name="user-manages-their-passwordless-sign-in-with-microsoft-authenticator-credentials"></a>Użytkownik zarządza logowaniem bez hasła przy użyciu poświadczeń Microsoft Authenticator
 
-Dzięki [połączeniu](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)z rejestracją użytkownicy mogą rejestrować i korzystać z zalet uwierzytelniania wieloskładnikowego platformy Azure oraz samoobsługowego resetowania hasła. Użytkownicy rejestrują te ustawienia i zarządzają nimi, przechodząc do [strony mój profil](https://aka.ms/mysecurityinfo). Oprócz włączenia SSPR, rejestracja łączona obsługuje wiele metod i akcji uwierzytelniania.
+Dzięki [połączeniu](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md)z rejestracją użytkownicy mogą rejestrować i korzystać z zalet usługi Azure Multi-Factor Authentication oraz samoobsługowego resetowania hasła. Użytkownicy rejestrują te ustawienia i zarządzają nimi, przechodząc do [strony mój profil](https://aka.ms/mysecurityinfo). Oprócz włączenia SSPR, rejestracja łączona obsługuje wiele metod i akcji uwierzytelniania.
 
 ## <a name="fido2-security-keys"></a>FIDO2 klucze zabezpieczeń
 
@@ -226,9 +226,9 @@ Zalecamy również, aby każda organizacja utworzyła protokół dla użytkownik
 
 #### <a name="user-sets-up-fido2-security-key"></a>Użytkownik konfiguruje klucz zabezpieczeń FIDO2
 
-Administratorzy mogą [ręcznie zainicjować obsługę kluczy](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable) i przekazać je do użytkowników końcowych, aprowizacji i włączeniu dostawcy poświadczeń FIDO2 na ekranie blokady systemu Windows 10 będą obsługiwane za pomocą usługi [Intune](https://docs.microsoft.com/intune/windows-enrollment-methods). Administratorzy muszą również użyć [Azure Portal](https://portal.azure.com/) , aby włączyć urządzenia tokenów sprzętowych jako metodę uwierzytelniania bezhaseł.
+Administratorzy mogą [ręcznie zainicjować obsługę kluczy](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless) i przekazać je do użytkowników końcowych, aprowizacji i włączeniu dostawcy poświadczeń FIDO2 na ekranie blokady systemu Windows 10 będą obsługiwane za pomocą usługi [Intune](https://docs.microsoft.com/intune/windows-enrollment-methods). Administratorzy muszą również użyć [Azure Portal](https://portal.azure.com/) , aby włączyć urządzenia tokenów sprzętowych jako metodę uwierzytelniania bezhaseł.
 
-Wdrożenie kluczy zabezpieczeń FIDO2 wymaga również, aby użytkownicy rejestrowali swoje klucze przy użyciu [połączonej rejestracji](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md). Dzięki połączeniu z rejestracją użytkownicy rejestrują się raz i uzyskują korzyści wynikające z uwierzytelniania wieloskładnikowego platformy Azure i resetowania hasła logowania jednokrotnego (SSPR).
+Wdrożenie kluczy zabezpieczeń FIDO2 wymaga również, aby użytkownicy rejestrowali swoje klucze przy użyciu [połączonej rejestracji](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md). Dzięki połączeniu z rejestracją użytkownicy rejestrują się jednokrotnie i uzyskują korzyści wynikające zarówno z usługi Azure Multi-Factor Authentication, jak i do resetowania hasła logowania jednokrotnego (SSPR).
 
 Oprócz wybierania tokenu sprzętowego jako domyślnej metody uwierzytelniania wieloskładnikowego zaleca się również wybranie opcji dodatkowej weryfikacji.
 
@@ -343,4 +343,4 @@ Wdrożenie nowoczesnych technologii usługi uwierzytelniania wieloskładnikowego
 ## <a name="next-steps"></a>Następne kroki
 
 * Omówienie tego, [co to jest bezhasło?](../../active-directory/authentication/concept-authentication-passwordless.md)
-* [Jak włączyć bezhasło w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-enable)
+* [Jak włączyć bezhasło w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/concept-authentication-passwordless)

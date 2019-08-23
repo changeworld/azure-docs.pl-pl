@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b9060ecbb9ca9e77d994a8f20378e2c53927586a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 8e8ea11da0339103375009709be8795cdede2448
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617368"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972923"
 ---
 # <a name="use-azure-ad-as-an-identity-provider-for-vcenter-on-cloudsimple-private-cloud"></a>Użyj usługi Azure AD jako dostawcy tożsamości dla programu vCenter w chmurze prywatnej CloudSimple
 
@@ -98,4 +98,4 @@ Opcjonalnie można skonfigurować inne funkcje usługi Azure AD.  Nie są one wy
 
 3. Zaloguj się do prywatnej chmury programu vCenter po eskalacji uprawnień.
 4. Postępuj zgodnie z instrukcjami w temacie [Dodawanie źródła tożsamości w programie vCenter](set-vcenter-identity.md#add-an-identity-source-on-vcenter) przy użyciu wartości z poprzedniego kroku, aby skonfigurować Azure Active Directory jako źródło tożsamości.
-5. Dodaj użytkowników/grupy z usługi Azure AD do grup vCenter, zgodnie z opisem w temacie VMware <a href="https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html" target="_blank">Dodaj członków do grupy programu vCenter logowanie</a>jednokrotne.
+5. Dodaj użytkowników/grupy z usługi Azure AD do grup vCenter, zgodnie z opisem w temacie VMware [Dodaj członków do grupy programu vCenter logowanie](https://docs.vmware.com/en/VMware-vSphere/5.5/com.vmware.vsphere.security.doc/GUID-CDEA6F32-7581-4615-8572-E0B44C11D80D.html)jednokrotne.

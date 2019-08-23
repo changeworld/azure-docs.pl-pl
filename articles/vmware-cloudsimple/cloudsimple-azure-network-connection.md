@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 90e3121c3f036d1abc8ca372ee349aef3485d07b
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: cfd4d65b07cf255ac2b60d6bf8376723a997374e
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69625026"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972943"
 ---
 # <a name="azure-network-connections-overview"></a>Omówienie połączeń sieciowych platformy Azure
 
@@ -44,7 +44,6 @@ Chmury prywatne mogą być połączone z zasobami platformy Azure za pomocą Exp
 Istniejący obwód usługi Azure ExpressRoute można połączyć z regionem CloudSimple. Funkcja ExpressRoute Global Reach służy do łączenia obu obwodów.  Nawiązywane jest połączenie między obwodami lokalnymi i CloudSimple ExpressRoute.  To połączenie umożliwia zwiększenie sieci lokalnych do sieci prywatnej chmury. Trasy z sieci CloudSimple będą wymieniane za pośrednictwem protokołu BGP z siecią lokalną.
 
 ![Połączenie lokalne ExpressRoute — Global Reach](media/cloudsimple-global-reach-connection.png)
-
 
 ## <a name="connection-to-on-premises-network-and-azure-virtual-network"></a>Połączenie z siecią lokalną i siecią wirtualną platformy Azure
 

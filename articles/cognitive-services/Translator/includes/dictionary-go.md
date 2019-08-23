@@ -4,23 +4,20 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 39f78e78ade206b73e64796e8d25243e20bb146d
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: b646f1994c83dba18b246dc3738729058ce6922d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968601"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907066"
 ---
-## <a name="prerequisites"></a>Wymagania wstępne
+[!INCLUDE [Prerequisites](prerequisites-go.md)]
 
-Ten przewodnik Szybki start wymaga następujących elementów:
-
-* [Go](https://golang.org/doc/install)
-* Klucz subskrypcji platformy Azure na potrzeby tłumaczenia tekstu w usłudze Translator
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-project-and-import-required-modules"></a>Tworzenie projektu i importowanie wymaganych modułów
 
-Utwórz nowy projekt w języku go przy użyciu ulubionego środowiska IDE/edytora lub nowego folderu na pulpicie. Następnie skopiuj ten fragment kodu do projektu/folderu w pliku o nazwie `alt-translations.go`.
+Utwórz nowy projekt w języku go przy użyciu ulubionego środowiska IDE/edytora lub nowego folderu na pulpicie. Następnie skopiuj ten fragment kodu do projektu/folderu w pliku o nazwie `dictionaryLookup.go`.
 
 ```go
 package main
@@ -38,28 +35,33 @@ import (
 
 ## <a name="create-the-main-function"></a>Tworzenie funkcji main
 
-Ten przykładowy kod spróbuje odczytać klucz subskrypcji na potrzeby tłumaczenia tekstu w usłudze Translator ze zmiennej środowiskowej `TRANSLATOR_TEXT_KEY`. Jeśli nie chcesz korzystać ze zmiennych środowiskowych, możesz ustawić element `subscriptionKey` jako ciąg i oznaczyć instrukcję warunkową jako komentarz.
+Ten przykład spróbuje odczytać klucz subskrypcji tłumaczenie tekstu w usłudze translator i punkt końcowy z tych zmiennych środowiskowych: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` i `TRANSLATOR_TEXT_ENDPOINT`. Jeśli nie znasz zmiennych środowiskowych, możesz ustawić `subscriptionKey` i `endpoint` jako ciągi i dodać komentarz do instrukcji warunkowych.
 
 Skopiuj ten kod do projektu:
 
 ```go
 func main() {
     /*
-     * Read your subscription key from an env variable.
-     * Please note: You can replace this code block with
-     * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
-     * want to use env variables. Then, be sure to delete the "os" import.
-     */
-    subscriptionKey := os.Getenv("TRANSLATOR_TEXT_KEY")
-    if subscriptionKey == "" {
-       log.Fatal("Environment variable TRANSLATOR_TEXT_KEY is not set.")
+    * Read your subscription key from an env variable.
+    * Please note: You can replace this code block with
+    * var subscriptionKey = "YOUR_SUBSCRIPTION_KEY" if you don't
+    * want to use env variables. If so, be sure to delete the "os" import.
+    */
+    if "" == os.Getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY") {
+      log.Fatal("Please set/export the environment variable TRANSLATOR_TEXT_SUBSCRIPTION_KEY.")
     }
+    subscriptionKey := os.Getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY")
+    if "" == os.Getenv("TRANSLATOR_TEXT_ENDPOINT") {
+      log.Fatal("Please set/export the environment variable TRANSLATOR_TEXT_ENDPOINT.")
+    }
+    endpoint := os.Getenv("TRANSLATOR_TEXT_ENDPOINT")
+    uri := endpoint + "/dictionary/lookup?api-version=3.0"
     /*
-     * This calls our altTranslations function, which we'll
+     * This calls our breakSentence function, which we'll
      * create in the next section. It takes a single argument,
      * the subscription key.
      */
-    altTranslations(subscriptionKey)
+    dictionaryLookup(subscriptionKey, uri)
 }
 ```
 
@@ -68,7 +70,7 @@ func main() {
 Utwórzmy funkcję do uzyskiwania tłumaczeń alternatywnych. Ta funkcja będzie przyjmować jeden argument — Twój klucz subskrypcji na potrzeby tłumaczenia tekstu w usłudze Translator.
 
 ```go
-func altTranslations(subscriptionKey string) {
+func dictionaryLookup(subscriptionKey string, uri string) {
     /*  
      * In the next few sections, we'll add code to this
      * function to make a request and handle the response.
@@ -82,7 +84,7 @@ Skopiuj ten kod do funkcji `altTranslations`.
 
 ```go
 // Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
-u, _ := url.Parse("https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0")
+u, _ := url.Parse(uri)
 q := u.Query()
 q.Add("from", "en")
 q.Add("to", "es")
@@ -149,7 +151,7 @@ fmt.Printf("%s\n", prettyJSON)
 To wszystko. Utworzono prosty program, który będzie wywoływał interfejs API tłumaczenia tekstu w usłudze Translator i zwracał odpowiedź w formacie JSON. Teraz nadszedł czas, aby uruchomić program:
 
 ```console
-go run alt-translations.go
+go run dictionaryLookup.go
 ```
 
 Jeśli chcesz porównać swój kod z naszym, kompletny przykład jest dostępny w witrynie [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go).

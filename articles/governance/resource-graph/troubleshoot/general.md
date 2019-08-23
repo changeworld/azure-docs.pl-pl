@@ -3,16 +3,16 @@ title: Rozwiązywanie typowych problemów
 description: Dowiedz się, jak rozwiązywać problemy z badaniem zasobów platformy Azure za pomocą usługi Azure Resource Graph.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/24/2019
+ms.date: 08/21/2019
 ms.topic: troubleshooting
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 511d170f90e8ed34b00a3960d084223ec73d99dd
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3c59b5c4b580604c65572364d29d4e5d10a26820
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480555"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900003"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Rozwiązywanie problemów z błędami przy użyciu grafu zasobów platformy Azure
 
@@ -60,6 +60,33 @@ foreach ($batch in $subscriptionsBatch){ $response += Search-AzGraph -Query $que
 # View the completed results of the query on all subscriptions
 $response
 ```
+
+### <a name="rest-contenttype"></a>Scenariusz Nieobsługiwany nagłówek REST typu Content-Type
+
+#### <a name="issue"></a>Problem
+
+Klienci wysyłający zapytanie do interfejsu API REST usługi Azure Resource Graph otrzymują odpowiedź _500_ (błąd wewnętrzny serwera).
+
+#### <a name="cause"></a>Przyczyna
+
+Interfejs API REST usługi Azure Resource Graph obsługuje tylko `Content-Type` **aplikację/plik JSON**. Niektóre narzędzia lub agenci REST są domyślnie **tekstem/zwykłym**, co nie jest obsługiwane przez interfejs API REST.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Sprawdź, czy narzędzie lub Agent używany do wysyłania zapytań do grafu zasobów platformy Azure ma nagłówek `Content-Type` interfejsu API REST skonfigurowany dla **aplikacji/JSON**.
+### <a name="rest-403"></a>Scenariusz Brak uprawnień do odczytu do wszystkich subskrypcji na liście
+
+#### <a name="issue"></a>Problem
+
+Klienci, którzy jawnie przekazują listę subskrypcji za pomocą zapytania grafu zasobów platformy Azure, uzyskują odpowiedź _403_ (dostęp zabroniony).
+
+#### <a name="cause"></a>Przyczyna
+
+Jeśli klient nie ma uprawnienia do odczytu wszystkich podanych subskrypcji, żądanie zostanie odrzucone z powodu braku odpowiednich praw zabezpieczeń.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Uwzględnij co najmniej jedną subskrypcję na liście subskrypcji, do której klient uruchamia kwerendę ma co najmniej dostęp do odczytu. Aby uzyskać więcej informacji, zobacz [uprawnienia na wykresie zasobów platformy Azure](../overview.md#permissions-in-azure-resource-graph).
 
 ## <a name="next-steps"></a>Następne kroki
 

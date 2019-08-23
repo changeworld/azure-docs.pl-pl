@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 015318b1695f76121662b82e94b37de1ddb63b1b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5573eea4e7a5322c762665d2db8e3fbed1f585a1
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952937"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970440"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatyzowanie zasobów w centrum danych lub w chmurze przy użyciu hybrydowego procesu roboczego elementu Runbook
 
@@ -36,7 +36,7 @@ Aby zainstalować i skonfigurować hybrydowy proces roboczy elementu Runbook sys
 
 |OS  |Typy wdrożeń  |
 |---------|---------|
-|Windows     | [Program PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[Ręcznie](automation-windows-hrw-install.md#manual-deployment)        |
+|Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[Ręcznie](automation-windows-hrw-install.md#manual-deployment)        |
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
 > [!NOTE]
@@ -47,6 +47,7 @@ Aby zainstalować i skonfigurować hybrydowy proces roboczy elementu Runbook sys
 Przed rozpoczęciem wdrażania hybrydowego procesu roboczego elementu Runbook zapoznaj się z [informacjami dotyczącymi planowania sieci](#network-planning) . Po pomyślnym wdrożeniu procesu roboczego zapoznaj się z tematem [Uruchamianie elementów Runbook w hybrydowym procesie roboczym elementu Runbook](automation-hrw-run-runbooks.md) , aby dowiedzieć się, jak skonfigurować elementy Runbook do automatyzowania procesów w lokalnym centrum danych lub w innym środowisku chmury.
 
 Komputer można dodać do grupy hybrydowych procesów roboczych elementu Runbook na koncie usługi Automation w celu obsługi elementów Runbook usługi Automation, o ile używasz tego samego konta zarówno dla tego rozwiązania, jak i dla członkostwa w grupie hybrydowych procesów roboczych elementu Runbook. Ta funkcjonalność została dodana do wersji 7.2.12024.0 hybrydowego procesu roboczego elementu Runbook.
+
 ## <a name="remove-a-hybrid-runbook-worker"></a>Usuwanie hybrydowego procesu roboczego elementu Runbook
 
 Można usunąć co najmniej jednego hybrydowego procesów roboczych elementów Runbook z grupy lub usunąć grupę, w zależności od wymagań. Aby usunąć hybrydowy proces roboczy elementu Runbook z komputera lokalnego, wykonaj następujące czynności:

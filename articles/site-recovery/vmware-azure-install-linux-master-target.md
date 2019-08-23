@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 062ed5e408317e95b36d6d0dfa395311ed4afe7f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 5b4b3f5025edef242b87215665fd65f131157943
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261435"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904413"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Zainstaluj główny serwer docelowy z systemem Linux na potrzeby powrotu po awarii
 Po przełączeniu maszyn wirtualnych w tryb failover na platformę Azure można wrócić do trybu failover maszyn wirtualnych w lokacji lokalnej. Aby powrócić po awarii, należy ponownie włączyć ochronę maszyny wirtualnej z platformy Azure do lokacji lokalnej. W przypadku tego procesu wymagany jest lokalny główny serwer docelowy do odbierania ruchu. 
@@ -214,12 +214,11 @@ Aby pobrać go przy użyciu systemu Linux, wpisz:
 
 ### <a name="apply-custom-configuration-changes"></a>Zastosuj niestandardowe zmiany konfiguracji
 
-Aby zastosować niestandardowe zmiany konfiguracji, wykonaj następujące czynności:
-
+Aby zastosować niestandardowe zmiany konfiguracji, wykonaj następujące czynności jako użytkownik główny:
 
 1. Uruchom następujące polecenie, aby untar dane binarne.
 
-    `tar -zxvf latestlinuxmobsvc.tar.gz`
+    `tar -xvf latestlinuxmobsvc.tar.gz`
 
     ![Zrzut ekranu przedstawiający polecenie do uruchomienia](./media/vmware-azure-install-linux-master-target/image16.png)
 
@@ -354,7 +353,7 @@ Zobaczysz, że w polu **wersja** nadano numer wersji głównego elementu docelow
     * Onboot = tak
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Po zakończeniu instalacji i rejestracji głównego elementu docelowego można zobaczyć, że główny element docelowy pojawia się w **głównej sekcji docelowej** w **infrastrukturze Site Recovery**, w obszarze przegląd serwera konfiguracji.
 
 Teraz możesz kontynuować ponowną [ochronę](vmware-azure-reprotect.md), a następnie powrócić po awarii.

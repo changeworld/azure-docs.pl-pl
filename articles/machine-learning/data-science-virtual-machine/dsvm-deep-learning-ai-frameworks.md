@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2019
 ms.author: vijetaj
-ms.openlocfilehash: de407f4b4de58abebf87b82ff6f76342a0e9f7e0
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: adf6a68d6da4236874dce403bb4d7043087049b2
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575029"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970363"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Platformy sztucznej inteligencji i uczenia głębokiego
 [Data Science Virtual Machine](https://aka.ms/dsvm) (DSVM) obsługuje wiele platform uczenia głębokiego, które ułatwiają tworzenie aplikacji sztucznej inteligencją (AI) z analizą predykcyjną i funkcjami poznawczymi, takimi jak zrozumienie obrazu i języka.

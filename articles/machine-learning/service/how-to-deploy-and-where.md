@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 7bfbec194733f2f8422eef45236a64e45bb553c7
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: acb3717f0e71ca1e67f1ddec79a259935f6cc539
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656376"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897670"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -723,7 +723,7 @@ Możesz ciągle wdrażać modele przy użyciu rozszerzenia Machine Learning dla 
 
 1. Użyj __połączeń usługi__ , aby skonfigurować połączenie główne usługi z obszarem roboczym usługi Azure Machine Learning, aby uzyskać dostęp do wszystkich artefaktów. Przejdź do pozycji Ustawienia projektu, kliknij pozycję połączenia usług, a następnie wybierz pozycję Azure Resource Manager.
 
-    ![Widok-usługa-połączenie](media/how-to-deploy-and-where/view-service-connection.png) 
+    [![Widok-usługa-połączenie](media/how-to-deploy-and-where/view-service-connection.png)](media/how-to-deploy-and-where/view-service-connection-expanded.png) 
 
 1. Zdefiniuj AzureMLWorkspace jako __poziom zakresu__ i Wypełnij kolejne parametry.
 
@@ -731,11 +731,11 @@ Możesz ciągle wdrażać modele przy użyciu rozszerzenia Machine Learning dla 
 
 1. Następnie, aby ciągle wdrożyć model uczenia maszynowego przy użyciu Azure Pipelines, w obszarze potoki wybierz pozycję __Zwolnij__. Dodaj nowy artefakt, wybierz opcję artefakt modelu usługi Azure i połączenie z usługą, które zostało utworzone w poprzednim kroku. Wybierz model i wersję, aby wyzwolić wdrożenie. 
 
-    ![select-AzureMLmodel-artifact](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)
+    [![SELECT-AzureMLmodel-artefakt](media/how-to-deploy-and-where/enable-modeltrigger-artifact.png)](media/how-to-deploy-and-where/enable-modeltrigger-artifact-expanded.png)
 
 1. Włącz wyzwalacz modelu w artefaktie modelu. Przez włączenie wyzwalacza, za każdym razem, gdy określona wersja (tj. Najnowsza wersja tego modelu jest zarejestrowana w Twoim obszarze roboczym, zostanie wyzwolony potok wydania usługi Azure DevOps. 
 
-    ![Włączanie-model-wyzwalacz](media/how-to-deploy-and-where/set-modeltrigger.png)
+    [![Włączanie-model-wyzwalacz](media/how-to-deploy-and-where/set-modeltrigger.png)](media/how-to-deploy-and-where/set-modeltrigger-expanded.png)
 
 Aby uzyskać więcej przykładowych projektów i przykładów, zobacz następujące przykładowe repozytoria:
 

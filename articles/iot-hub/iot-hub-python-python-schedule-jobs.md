@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: robinsh
-ms.openlocfilehash: 63534260e042a1b47ca5e635c48123672d663a9b
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: bc93dcea74f0660a4f56aec237eaae5a4e3eeb9a
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873297"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904523"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Planowanie i emitowanie zadań (Python)
 
@@ -53,9 +53,7 @@ Na końcu tego samouczka będziesz mieć dwie aplikacje w języku Python:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-## <a name="prerequisites"></a>Wymagania wstępne
-
-Do ukończenia tego samouczka niezbędne są następujące elementy:
+Poniżej przedstawiono instrukcje instalacji dotyczące wymagań wstępnych.
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 

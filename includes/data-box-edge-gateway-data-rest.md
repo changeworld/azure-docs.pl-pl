@@ -2,19 +2,18 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 04/16/2019
+ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 8a6ceee0f7db4b7b368dce1a28c8edc0b2b11180
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: eb55d993ad8960f821c2b72f0a53602166b7cc7e
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183873"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900608"
 ---
-Dla danych magazynowanych:
+W przypadku danych magazynowanych:
 
-- Szyfrowanie funkcją BitLocker XTS-AES 256-bitowy jest używany do ochrony danych lokalnych.
 - Dostęp do danych przechowywanych w udziałach jest ograniczony.
 
-    - Klientów protokołu SMB uzyskujących dostęp do danych udziału potrzebne poświadczenia użytkownika skojarzonego z udziałem. Te poświadczenia są zdefiniowane, po utworzeniu udziału.
-    - Adresy IP klientów systemu plików NFS, uzyskujących dostęp do udziału należy dodać po utworzeniu udziału.
+    - Klienci protokołu SMB, którzy uzyskują dostęp do danych udostępniania, potrzebują poświadczeń użytkownika skojarzonych z udziałem. Te poświadczenia są definiowane podczas tworzenia udziału.
+    - Po utworzeniu udziału należy dodać adresy IP klientów systemu plików NFS, którzy uzyskują dostęp do udziału.

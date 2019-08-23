@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/22/2019
+ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 52d7b84fe6210d8a4d46814ad6749bed0463478e
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: a0b0df9110f062b5f9c23840cb21308b634c9c81
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405651"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898149"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup akcji i zarządzanie nimi w Azure Portal
 Grupa akcji to zbiór preferencji powiadomień definiowanych przez właściciela subskrypcji platformy Azure. Alerty Azure Monitor i Service Health umożliwiają Powiadamianie użytkowników o wyzwoleniu alertu. Różne alerty mogą korzystać z tej samej grupy akcji lub różnych grup akcji w zależności od wymagań użytkownika. W ramach subskrypcji można skonfigurować maksymalnie 2 000 grup akcji.
@@ -76,6 +76,11 @@ Po utworzeniu grupy akcji jest ona widoczna w sekcji **grupy akcji** okienka **m
 > [!NOTE]
 > Zobacz [limity usługi subskrypcji, aby monitorować](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits) limity liczbowe dla każdego z poniższych elementów.  
 
+### <a name="automation-runbook"></a>Element runbook automatyzacji
+Limity dotyczące ładunków elementów Runbook można znaleźć w [limitach usługi subskrypcji platformy Azure](../../azure-subscription-service-limits.md) .
+
+W grupie akcji może istnieć ograniczona liczba akcji elementu Runbook. 
+
 ### <a name="azure-app-push-notifications"></a>Powiadomienia push aplikacji platformy Azure
 W grupie akcji może istnieć ograniczona liczba akcji aplikacji platformy Azure.
 
@@ -87,6 +92,16 @@ Wiadomości e-mail będą wysyłane z następujących adresów e-mail. Upewnij s
 
 W grupie akcji może istnieć ograniczona liczba akcji poczty e-mail. Zobacz artykuł [Informacje o ograniczeniu szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) .
 
+### <a name="email-azure-resource-manager-role"></a>Wyślij wiadomość e-mail do roli usługi Azure Resource Manager
+Wyślij wiadomość e-mail do członków roli subskrypcji.
+
+W grupie akcji może istnieć ograniczona liczba akcji poczty e-mail. Zobacz artykuł [Informacje o ograniczeniu szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) .
+
+### <a name="function"></a>Funkcja
+Klucze funkcji dla aplikacji funkcji skonfigurowanych jako akcje są odczytywane za pomocą interfejsu API funkcji, który obecnie wymaga aplikacji funkcji w wersji 2, aby skonfigurować ustawienie aplikacji "AzureWebJobsSecretStorageType" jako "Files". Aby uzyskać więcej informacji, zobacz [zmiany w zarządzaniu kluczami w funkcjach v2]( https://aka.ms/funcsecrets).
+
+W grupie akcji może istnieć ograniczona liczba akcji funkcji.
+
 ### <a name="itsm"></a>ITSM
 Akcja narzędzia ITSM wymaga połączenia narzędzia ITSM. Dowiedz się, jak utworzyć [połączenie narzędzia ITSM](../../azure-monitor/platform/itsmc-overview.md).
 
@@ -95,51 +110,7 @@ W grupie akcji może istnieć ograniczona liczba akcji narzędzia ITSM.
 ### <a name="logic-app"></a>Aplikacja logiki
 W grupie akcji może istnieć ograniczona liczba akcji aplikacji logiki.
 
-### <a name="function"></a>Funkcja
-Klucze funkcji dla aplikacji funkcji skonfigurowanych jako akcje są odczytywane za pomocą interfejsu API funkcji, który obecnie wymaga aplikacji funkcji w wersji 2, aby skonfigurować ustawienie aplikacji "AzureWebJobsSecretStorageType" jako "Files". Aby uzyskać więcej informacji, zobacz [zmiany w zarządzaniu kluczami w funkcjach v2]( https://aka.ms/funcsecrets).
-
-W grupie akcji może istnieć ograniczona liczba akcji funkcji.
-
-### <a name="automation-runbook"></a>Element runbook automatyzacji
-Limity dotyczące ładunków elementów Runbook można znaleźć w [limitach usługi subskrypcji platformy Azure](../../azure-subscription-service-limits.md) .
-
-W grupie akcji może istnieć ograniczona liczba akcji elementu Runbook. 
-
-### <a name="sms"></a>SMS
-Aby uzyskać dodatkowe informacje, zobacz [informacje dotyczące ograniczania szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) oraz [zachowanie alertu programu SMS](../../azure-monitor/platform/alerts-sms-behavior.md) .
-
-W grupie akcji może istnieć ograniczona liczba akcji programu SMS.  
-
-### <a name="voice"></a>Głos
-Zobacz artykuł [Informacje o ograniczeniu szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) .
-
-W grupie akcji może istnieć ograniczona liczba akcji głosowych.
-
-### <a name="webhook"></a>Element webhook
-Próby elementów webhook zostały ponowione przy użyciu następujących reguł. Wywołanie elementu webhook jest ponawiane maksymalnie 2 razy, gdy zwracane są następujące kody stanu HTTP: 408, 429, 503, 504 lub punkt końcowy HTTP nie odpowiada. Pierwsze ponowienie próby odbywa się po 10 sekundach. Druga ponowna próba nastąpi po 100 sekundach. Po dwóch awariach żadna grupa akcji nie będzie wywoływała punktu końcowego przez 30 minut. 
-
-Zakresy źródłowych adresów IP
- - 13.72.19.232
- - 13.106.57.181
- - 13.106.54.3
- - 13.106.54.19
- - 13.106.38.142
- - 13.106.38.148
- - 13.106.57.196
- - 13.106.57.197
- - 52.244.68.117
- - 52.244.65.137
- - 52.183.31.0
- - 52.184.145.166
- - 51.4.138.199
- - 51.5.148.86
- - 51.5.149.19
-
-Aby otrzymywać aktualizacje dotyczące zmian wprowadzonych w tych adresach IP, zalecamy skonfigurowanie alertu Service Health, który monitoruje powiadomienia informacyjne o usłudze grup akcji.
-
-W grupie akcji może istnieć ograniczona liczba akcji elementu webhook.
-
-#### <a name="secure-webhook"></a>Zabezpieczanie elementu webhook
+### <a name="secure-webhook"></a>Zabezpieczanie elementu webhook
 **Funkcja bezpiecznego elementu webhook jest obecnie dostępna w wersji zapoznawczej.**
 
 Akcja elementu webhook grup akcji umożliwia korzystanie z Azure Active Directory w celu zabezpieczenia połączenia między grupą akcji i chronionym internetowym interfejsem API (punkt końcowy elementu webhook). Poniżej opisano ogólny przepływ pracy w celu skorzystania z zalet tej funkcji. Omówienie aplikacji usługi Azure AD i nazw głównych usług można znaleźć w temacie [Microsoft Identity platform (v 2.0) — Omówienie](https://docs.microsoft.com/azure/active-directory/develop/v2-overview).
@@ -156,12 +127,12 @@ Akcja elementu webhook grup akcji umożliwia korzystanie z Azure Active Director
     - Zmodyfikuj zmienną $myAzureADApplicationObjectId skryptu programu PowerShell, aby użyć identyfikatora obiektu aplikacji usługi Azure AD
     - Uruchom zmodyfikowany skrypt.
     
-1. Skonfiguruj akcję elementu webhook grupy akcji.
+1. Skonfiguruj akcję bezpiecznego elementu webhook grupy akcji.
     - Skopiuj wartość $myApp. ObjectId ze skryptu i wprowadź ją w polu Identyfikator obiektu aplikacji w definicji akcji elementu webhook.
     
     ![Akcja bezpiecznego elementu webhook](./media/action-groups/action-groups-secure-webhook.png)
 
-##### <a name="secure-webhook-powershell-script"></a>Bezpieczny skrypt programu PowerShell elementu webhook
+#### <a name="secure-webhook-powershell-script"></a>Bezpieczny skrypt programu PowerShell elementu webhook
 
 ```PowerShell
 Connect-AzureAD -TenantId "<provide your Azure AD tenant ID here>"
@@ -229,6 +200,41 @@ Write-Host "My Azure AD Application ($myApp.ObjectId): " + $myApp.ObjectId
 Write-Host "My Azure AD Application's Roles"
 Write-Host $myApp.AppRoles
 ```
+
+### <a name="sms"></a>SMS
+Aby uzyskać dodatkowe informacje, zobacz [informacje dotyczące ograniczania szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) oraz [zachowanie alertu programu SMS](../../azure-monitor/platform/alerts-sms-behavior.md) .
+
+W grupie akcji może istnieć ograniczona liczba akcji programu SMS.  
+
+### <a name="voice"></a>Głos
+Zobacz artykuł [Informacje o ograniczeniu szybkości](./../../azure-monitor/platform/alerts-rate-limiting.md) .
+
+W grupie akcji może istnieć ograniczona liczba akcji głosowych.
+
+### <a name="webhook"></a>Element webhook
+Próby elementów webhook zostały ponowione przy użyciu następujących reguł. Wywołanie elementu webhook jest ponawiane maksymalnie 2 razy, gdy zwracane są następujące kody stanu HTTP: 408, 429, 503, 504 lub punkt końcowy HTTP nie odpowiada. Pierwsze ponowienie próby odbywa się po 10 sekundach. Druga ponowna próba nastąpi po 100 sekundach. Po dwóch awariach żadna grupa akcji nie będzie wywoływała punktu końcowego przez 30 minut. 
+
+Zakresy źródłowych adresów IP
+ - 13.72.19.232
+ - 13.106.57.181
+ - 13.106.54.3
+ - 13.106.54.19
+ - 13.106.38.142
+ - 13.106.38.148
+ - 13.106.57.196
+ - 13.106.57.197
+ - 52.244.68.117
+ - 52.244.65.137
+ - 52.183.31.0
+ - 52.184.145.166
+ - 51.4.138.199
+ - 51.5.148.86
+ - 51.5.149.19
+
+Aby otrzymywać aktualizacje dotyczące zmian wprowadzonych w tych adresach IP, zalecamy skonfigurowanie alertu Service Health, który monitoruje powiadomienia informacyjne o usłudze grup akcji.
+
+W grupie akcji może istnieć ograniczona liczba akcji elementu webhook.
+
 
 
 ## <a name="next-steps"></a>Następne kroki

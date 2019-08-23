@@ -4,18 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 34ecbf8b326972f76767648e6a162b57667484f8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a7715577936b0e95392f2d561e4b492b20c9dbf5
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968797"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906941"
 ---
-## <a name="prerequisites"></a>Wymagania wstępne
+[!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
-* [Zestaw SDK platformy .NET](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
-* [Pakiet NuGet platformy Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/)
-* Program [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) lub ulubiony edytor tekstów
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-net-core-project"></a>Tworzenie projektu platformy .NET Core
 
@@ -45,9 +43,26 @@ using System.Text;
 using Newtonsoft.Json;
 ```
 
+## <a name="get-endpoint-information-from-an-environment-variable"></a>Pobierz informacje o punkcie końcowym ze zmiennej środowiskowej
+
+Dodaj następujące wiersze do `Program` klasy. Te wiersze odczytają klucz subskrypcji i punkt końcowy ze zmiennych środowiskowych i zgłasza błąd, jeśli wystąpią jakieś problemy.
+
+```csharp
+private const string endpoint_var = "TRANSLATOR_TEXT_ENDPOINT";
+private static readonly string endpoint = Environment.GetEnvironmentVariable(endpoint_var);
+
+static Program()
+{
+    if (null == endpoint)
+    {
+        throw new Exception("Please set/export the environment variable: " + endpoint_var);
+    }
+}
+```
+
 ## <a name="create-a-function-to-get-a-list-of-languages"></a>Tworzenie funkcji w celu uzyskania listy języków
 
-W klasie `Program` utwórz funkcję o nazwie `GetLanguages`. Ta klasa hermetyzuje kod używany do wywołania zasobu Languages i wyświetla wynik w konsoli.
+W klasie Utwórz funkcję o nazwie `GetLanguages`. `Program` Ta klasa hermetyzuje kod używany do wywołania zasobu Languages i wyświetla wynik w konsoli.
 
 ```csharp
 static void GetLanguages()
@@ -59,12 +74,11 @@ static void GetLanguages()
 }
 ```
 
-## <a name="set-the-host-name-and-path"></a>Ustawianie nazwy hosta i ścieżki
+## <a name="set-the-route"></a>Ustawianie trasy
 
 Dodaj następujące wiersze do funkcji `GetLanguages`.
 
 ```csharp
-string host = "https://api.cognitive.microsofttranslator.com";
 string route = "/languages?api-version=3.0";
 ```
 
@@ -96,7 +110,7 @@ Dodaj następujący kod do elementu `HttpRequestMessage`:
 // Set the method to GET
 request.Method = HttpMethod.Get;
 // Construct the full URI
-request.RequestUri = new Uri(host + route);
+request.RequestUri = new Uri(endpoint + route);
 // Send request, get response
 var response = client.SendAsync(request).Result;
 var jsonResponse = response.Content.ReadAsStringAsync().Result;
@@ -108,7 +122,8 @@ Console.WriteLine("Press any key to continue.");
 Jeśli używasz subskrypcji usługi Cognitive Services, musisz także uwzględnić `Ocp-Apim-Subscription-Region` w parametrach żądania. [Dowiedz się więcej o uwierzytelnianiu w ramach subskrypcji wielu usług](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 Aby wydrukować odpowiedź przy użyciu "całkiem Print" (formatowanie dla odpowiedzi), Dodaj tę funkcję do klasy programu:
-```
+
+```csharp
 static string PrettyPrint(string s)
 {
     return JsonConvert.SerializeObject(JsonConvert.DeserializeObject(s), Formatting.Indented);

@@ -4,19 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 5a56744173974b470999f846da49d144f2013fbb
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 55ad3591a8c2e7d5de6d1efe255e0f3a4b3c11bd
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968643"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907020"
 ---
-## <a name="prerequisites"></a>Wymagania wstępne
+[!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
-* [Zestaw SDK platformy .NET](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
-* [Pakiet NuGet platformy Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/)
-* Program [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) lub ulubiony edytor tekstów
-* Klucz subskrypcji platformy Azure na potrzeby tłumaczenia tekstu w usłudze Translator
+[!INCLUDE [Setup and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-net-core-project"></a>Tworzenie projektu platformy .NET Core
 
@@ -46,6 +43,31 @@ using System.Text;
 using Newtonsoft.Json;
 ```
 
+## <a name="get-subscription-information-from-environment-variables"></a>Pobierz informacje o subskrypcji ze zmiennych środowiskowych
+
+Dodaj następujące wiersze do `Program` klasy. Te wiersze odczytają klucz subskrypcji i punkt końcowy ze zmiennych środowiskowych i zgłasza błąd, jeśli wystąpią jakieś problemy.
+
+```csharp
+private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
+private static readonly string subscriptionKey = Environment.GetEnvironmentVariable(key_var);
+
+private const string endpoint_var = "TRANSLATOR_TEXT_ENDPOINT";
+private static readonly string endpoint = Environment.GetEnvironmentVariable(endpoint_var);
+
+static Program()
+{
+    if (null == subscriptionKey)
+    {
+        throw new Exception("Please set/export the environment variable: " + key_var);
+    }
+    if (null == endpoint)
+    {
+        throw new Exception("Please set/export the environment variable: " + endpoint_var);
+    }
+}
+// The code in the next section goes here.
+```
+
 ## <a name="create-a-function-to-get-alternate-translations"></a>Tworzenie funkcji na potrzeby uzyskiwania tłumaczeń alternatywnych
 
 W klasie `Program` utwórz funkcję o nazwie `AltTranslation`. Ta klasa hermetyzuje kod używany do wywołania zasobu Dictionary i wyświetla wynik w konsoli.
@@ -60,14 +82,14 @@ static void AltTranslation()
 }
 ```
 
-## <a name="set-the-subscription-key-host-name-and-path"></a>Ustawianie klucza subskrypcji, nazwy hosta i ścieżki
+## <a name="construct-the-uri"></a>Konstruowanie identyfikatora URI
 
-Dodaj następujące wiersze do funkcji `AltTranslation`. Zauważysz, że razem z wersją `api-version` dołączono dwa dodatkowe parametry do elementu `route`. Te parametry są używane do ustawiania danych wejściowych i wyjściowych tłumaczenia. W tym przykładzie jest to język angielski (`en`) i hiszpański (`es`).
+Dodaj następujące wiersze do funkcji `AltTranslation`. Należy zauważyć `api-version`, że wraz z, zostały zadeklarowane dwa dodatkowe parametry. Te parametry są używane do ustawiania danych wejściowych i wyjściowych tłumaczenia. W tym przykładzie jest to język angielski (`en`) i hiszpański (`es`).
 
 ```csharp
-string host = "https://api.cognitive.microsofttranslator.com";
-string route = "/dictionary/lookup?api-version=3.0&from=en&to=es";
-string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
+string route = "/dictionary/lookup?api-version=3.0";
+static string params_ = "from=en&to=es";
+static string uri = endpoint + path + params_;
 ```
 
 Następnie musimy utworzyć i serializować obiekt JSON obejmujący tekst, który chcesz przetłumaczyć. Pamiętaj, że możesz przekazać więcej niż jeden obiekt w tablicy `body`.
@@ -76,8 +98,6 @@ Następnie musimy utworzyć i serializować obiekt JSON obejmujący tekst, któr
 System.Object[] body = new System.Object[] { new { Text = @"Elephants" } };
 var requestBody = JsonConvert.SerializeObject(body);
 ```
-
-
 
 ## <a name="instantiate-the-client-and-make-a-request"></a>Tworzenie wystąpienia klienta i wysyłanie żądania
 
@@ -109,7 +129,7 @@ Dodaj następujący kod do elementu `HttpRequestMessage`:
 request.Method = HttpMethod.Post;
 
 // Construct the full URI
-request.RequestUri = new Uri(host + route);
+request.RequestUri = new Uri(uri);
 
 // Add the serialized JSON object to your request
 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
@@ -142,7 +162,8 @@ Ostatnim krokiem jest wywołanie instrukcji `AltTranslation()` w funkcji `Main`.
 
 ```csharp
 AltTranslation();
-Console.ReadLine();
+Console.WriteLine("Press any key to continue.");
+Console.ReadKey();
 ```
 
 ## <a name="run-the-sample-app"></a>Uruchamianie przykładowej aplikacji

@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 05/28/2019
-ms.openlocfilehash: 591a62ebb6b83ea23d3ed6cf867c07b91e1596b3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 5664bf1eaee85d2492601ef00968d9b17d857abb
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847036"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900480"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hostowanie statycznej witryny sieci Web w usłudze Azure Storage
 
@@ -175,7 +175,7 @@ Zawartość z przeglądarki można wyświetlić za pomocą publicznego adresu UR
 Znajdź adres URL przy użyciu następującego polecenia:
 
 ```powershell
- $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
+ $storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -Name "<storage-account-name>"
 Write-Output $storageAccount.PrimaryEndpoints.Web
 ```
 
@@ -217,7 +217,7 @@ Po włączeniu metryk statystyki ruchu dla plików w kontenerze **$Web** są rap
 
    ![Metryki statycznych witryn sieci Web usługi Azure Storage GetWebContent](./media/storage-blob-static-website/storage-blob-static-website-metrics-getwebcontent.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Hostowanie statycznej witryny internetowej w usłudze Azure Storage](storage-blob-static-website.md)
 * [Użyj Azure CDN, aby uzyskać dostęp do obiektów BLOB za pomocą domen niestandardowych za pośrednictwem protokołu HTTPS](storage-https-custom-domain-cdn.md)

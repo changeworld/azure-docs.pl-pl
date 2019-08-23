@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 393c66f57cd4a7621ad660774a95502c0f5ad8c4
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: b9fcf06caf2abf116a2f2b99f26ead6277f7ad50
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534707"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970544"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management rozwiązanie na platformie Azure
 
@@ -76,7 +76,7 @@ W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych:
 |System operacyjny  |Uwagi  |
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Obsługuje tylko oceny aktualizacji.         |
-|Windows Server 2008 R2 z dodatkiem SP1 lub nowszym.  |Wymagany jest .NET Framework 4.5.1 lub nowszy. ([Pobierz .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Wymagany jest program Windows PowerShell w wersji 4,0 lub nowszej. ([Pobierz zawmf 4,0](https://www.microsoft.com/download/details.aspx?id=40855))<br/> W celu zwiększenia niezawodności zaleca się używanie programu Windows PowerShell 5,1.  ([Pobierz zawmf 5,1](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2019 (Datacenter/Datacenter/standard)<br><br>Windows Server 2016 (Datacenter/Datacenter/standard)<br><br>Windows Server 2012 R2 (Datacenter/standard)<br><br>Windows Server 2008 R2 (wersja RTM i SP1 standard)|Wymagany jest .NET Framework 4.5.1 lub nowszy. ([Pobierz .NET Framework](/dotnet/framework/install/guide-for-developers))<br/> Wymagany jest program Windows PowerShell w wersji 4,0 lub nowszej. ([Pobierz zawmf 4,0](https://www.microsoft.com/download/details.aspx?id=40855))<br/> W celu zwiększenia niezawodności zaleca się używanie programu Windows PowerShell 5,1.  ([Pobierz zawmf 5,1](https://www.microsoft.com/download/details.aspx?id=54616))        |
 |CentOS 6 (x86/x64) i 7 (x64)      | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji. Stosowanie poprawek opartych na klasyfikacji wymaga, aby element "yum" zwracał dane zabezpieczeń, które nie znajdują się w polu CentOS. Aby uzyskać więcej informacji na temat stosowania poprawek opartych na klasyfikacji na CentOS, zobacz [Aktualizacja klasyfikacji w systemie Linux](#linux-2)          |
 |Red Hat Enterprise 6 (x86/x64) i 7 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) i 12 (x64)     | Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.        |
@@ -371,7 +371,7 @@ Poniższe adresy są wymagane dla Update Management. Komunikacja z tymi adresami
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 |*.azure-automation.net|*. azure-automation.us|
 
-W przypadku maszyn z systemem Windows należy również zezwolić na ruch do wszystkich punktów końcowych wymaganych przez Windows Update.  Zaktualizowaną listę wymaganych punktów końcowych można znaleźć w przypadku [problemów związanych z protokołem HTTP/serwerem proxy](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Jeśli masz lokalny [serwer Windows Update](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment), musisz również zezwolić na ruch do serwera określonego w [kluczu WSUS](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry).
+W przypadku maszyn z systemem Windows należy również zezwolić na ruch do wszystkich punktów końcowych wymaganych przez Windows Update.  Zaktualizowaną listę wymaganych punktów końcowych można znaleźć w przypadku [problemów związanych z protokołem HTTP/proxy](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Jeśli masz lokalny [serwer Windows Update](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment), musisz również zezwolić na ruch do serwera określonego w [kluczu WSUS](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry).
 
 W przypadku maszyn z systemem Red Hat Linux należy skorzystać z [adresów IP dla serwerów dostarczania zawartości RHUI](../virtual-machines/linux/update-infrastructure-redhat.md#the-ips-for-the-rhui-content-delivery-servers) dla wymaganych punktów końcowych. W przypadku innych dystrybucji systemu Linux zapoznaj się z dokumentacją dostawcy.
 

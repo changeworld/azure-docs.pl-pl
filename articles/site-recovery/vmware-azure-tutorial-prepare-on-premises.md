@@ -6,19 +6,19 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7a61edc01a87be8996b4d7dd5093f9d3554e6585
-ms.sourcegitcommit: c05618a257787af6f9a2751c549c9a3634832c90
+ms.openlocfilehash: 315d4daf7155bc33235507f39b5cce8869db5aa6
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66417755"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972154"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Przygotowywanie lokalnych serwerów VMware do odzyskiwania po awarii na platformie Azure
 
-W tym artykule opisano sposób przygotowania lokalnych serwerów VMware do odzyskiwania po awarii na platformie Azure przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md) usług. 
+W tym artykule opisano sposób przygotowania lokalnych serwerów VMware do odzyskiwania po awarii na platformie Azure przy użyciu usług [Azure Site Recovery](site-recovery-overview.md) . 
 
 Z drugiego samouczka z serii dowiesz się, jak skonfigurować odzyskiwanie po awarii na platformie Azure dla lokalnych maszyn wirtualnych VMware. W pierwszym samouczku [konfigurowaliśmy składniki Azure](tutorial-prepare-azure.md) potrzebne do odzyskiwania po awarii programu VMware.
 
@@ -26,17 +26,17 @@ Z drugiego samouczka z serii dowiesz się, jak skonfigurować odzyskiwanie po aw
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Przygotowywanie konta na serwerze vCenter lub vSphere ESXi hoście, w celu zautomatyzowania odnajdowania maszyn wirtualnych.
-> * Przygotowywanie konta do automatycznej instalacji usługi mobilności na maszynach wirtualnych VMware.
-> * Serwer VMware Przegląd i wymagania dotyczące maszyny Wirtualnej i pomocy technicznej.
-> * Przygotowywanie do połączenia z maszynami wirtualnymi platformy Azure po włączeniu trybu failover.
+> * Przygotuj konto na serwerze vCenter lub hoście vSphere ESXi, aby zautomatyzować odnajdywanie maszyn wirtualnych.
+> * Przygotuj konto do automatycznej instalacji usługi mobilności na maszynach wirtualnych VMware.
+> * Przejrzyj wymagania i pomoc techniczną dla oprogramowania VMware Server i VM.
+> * Przygotuj się do łączenia się z maszynami wirtualnymi platformy Azure po przejściu
 
 > [!NOTE]
-> W samouczkach pokazano to najprostsza ścieżka wdrażania scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Szczegółowe informacje na ten temat można znaleźć w artykule w sekcji jak tabeli odzyskiwania lokacji zawartości.
+> Samouczki pokazują najprostszą ścieżkę wdrożenia dla scenariusza. Jeśli to możliwe, używają opcji domyślnych i nie przedstawiają wszystkich możliwych ustawień i ścieżek. Aby uzyskać szczegółowe instrukcje, zapoznaj się z artykułem w sekcji jak to zrobić w spisie treści Site Recovery.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-Upewnij się, że przygotowanymi Azure zgodnie z opisem w [pierwszym samouczku tej serii](tutorial-prepare-azure.md).
+Upewnij się, że przygotowano platformę Azure zgodnie z opisem w [pierwszym samouczku w tej serii](tutorial-prepare-azure.md).
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>Przygotowywanie konta do automatycznego odnajdowania
 
@@ -82,7 +82,7 @@ Upewnij się, że serwery VMware i maszyny wirtualne spełniają wymagania.
 3. Sprawdź obsługę lokalnej [sieci](vmware-physical-azure-support-matrix.md#network) i [magazynu](vmware-physical-azure-support-matrix.md#storage). 
 4. Sprawdź obsługę [sieci](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [magazynu](vmware-physical-azure-support-matrix.md#azure-storage) i [usług obliczeniowych](vmware-physical-azure-support-matrix.md#azure-compute) platformy Azure po przejściu do trybu failover.
 5. Lokalne maszyny wirtualne replikowane na platformę Azure muszą spełniać [wymagania dotyczące maszyn wirtualnych platformy Azure](vmware-physical-azure-support-matrix.md#azure-vm-requirements).
-6. W przypadku maszyn wirtualnych z systemem Linux nazwa urządzenia lub nazwa punktu instalacji powinny być unikatowe. Upewnij się, że żadna para urządzeń/punktów instalacji nie ma takich samych nazw. Należy zauważyć, że nazwa nie jest rozróżniana wielkość liter. Na przykład nie jest dozwolone nadanie dwóm urządzeniom dla tej samej maszyny wirtualnej nazw _urządzenie1_ i _Urządzenie1_.
+6. W przypadku maszyn wirtualnych z systemem Linux nazwa urządzenia lub nazwa punktu instalacji powinny być unikatowe. Upewnij się, że żadna para urządzeń/punktów instalacji nie ma takich samych nazw. Należy pamiętać, że w tej nazwie nie jest rozróżniana wielkość liter. Na przykład nie jest dozwolone nadanie dwóm urządzeniom dla tej samej maszyny wirtualnej nazw _urządzenie1_ i _Urządzenie1_.
 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Przygotowanie do połączenia z maszynami wirtualnymi Azure po przejściu do trybu failover
@@ -96,7 +96,7 @@ Aby nawiązać połączenie z maszynami wirtualnymi z systemem Windows przy uży
     - Przed przejściem do trybu failover włącz protokół RDP na maszynie lokalnej.
     - Używanie protokołu RDP powinno być dozwolone w pozycji **Zapora systemu Windows** -> **Dozwolone aplikacje i funkcje** dla sieci typu **Domena i prywatne**.
     - Upewnij się, że zasady sieci SAN systemu operacyjnego są ustawione na **OnlineAll**. [Dowiedz się więcej](https://support.microsoft.com/kb/3031135).
-- Podczas wyzwalania trybu failover na maszynie wirtualnej nie powinno być żadnych oczekujących aktualizacji systemu Windows. Jeśli, nie można zalogować się do maszyny wirtualnej, do momentu ukończenia aktualizacji.
+- Podczas wyzwalania trybu failover na maszynie wirtualnej nie powinno być żadnych oczekujących aktualizacji systemu Windows. Jeśli tak się stanie, nie będzie można zalogować się do maszyny wirtualnej do momentu ukończenia aktualizacji.
 - Na maszynie wirtualnej platformy Azure z systemem Windows po przejściu do trybu failover sprawdź **diagnostykę rozruchu**, aby wyświetlić zrzut ekranu maszyny wirtualnej. Jeśli nie możesz się połączyć, upewnij się, że maszyna wirtualna jest uruchomiona, i przejrzyj te [porady dotyczące rozwiązywania problemów](https://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 Aby nawiązać połączenie z maszynami wirtualnymi z systemem Linux przy użyciu powłoki SSH po przejściu do trybu failover, wykonaj następujące czynności:
@@ -109,13 +109,13 @@ Aby nawiązać połączenie z maszynami wirtualnymi z systemem Linux przy użyci
 
 
 ## <a name="failback-requirements"></a>Wymagania dotyczące powrotu po awarii
-Jeśli planujesz powrót po awarii do lokacji sieci lokalnej są szereg [wymagań wstępnych dotyczących powrotu po awarii](vmware-azure-reprotect.md##before-you-begin). Można je teraz przygotować, ale nie ma potrzeby. Można przygotować po przejścia w tryb failover na platformie Azure.
+Jeśli planujesz powrót po awarii do lokacji lokalnej, istnieje kilka [wymagań wstępnych dotyczących powrotu po awarii](vmware-azure-reprotect.md##before-you-begin). Możesz je przygotować teraz, ale nie musisz. Po przełączeniu w tryb failover na platformę Azure można przygotować.
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Konfigurowanie odzyskiwania po awarii. Jeśli replikujesz wielu maszyn wirtualnych, planowanie pojemności.
+Skonfiguruj odzyskiwanie po awarii. Jeśli wykonujesz replikację wielu maszyn wirtualnych, Zaplanuj pojemność.
 > [!div class="nextstepaction"]
-> [Konfigurowanie odzyskiwania po awarii na platformie Azure dla maszyn wirtualnych VMware](vmware-azure-tutorial.md)
-> [przeprowadza Planowanie pojemności](site-recovery-deployment-planner.md).
+> [Skonfiguruj odzyskiwanie po awarii na platformie Azure dla maszyn wirtualnych](vmware-azure-tutorial.md)
+> VMware, które[wykonują planowanie pojemności](site-recovery-deployment-planner.md).

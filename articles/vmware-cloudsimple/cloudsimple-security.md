@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: f7afd3d4b03c55c6cd9878b7d22106eee371ba99
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 1a33e20ec540a05885eb13a3828d28ffc9923fff
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877926"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972861"
 ---
 # <a name="cloudsimple-security-overview"></a>Przegląd zabezpieczeń CloudSimple
 
@@ -81,7 +81,7 @@ Usługa CloudSimple ma logicznie oddzielić sieci warstwy 2, które ograniczają
 
 CloudSimple jest odpowiedzialna za okresowe poprawianie zabezpieczeń zarządzanego oprogramowania VMware (ESXi, vCenter i NSX).
 
-## <a name="identity-and-access-management"></a>Tożsamość i zarządzanie dostępem
+## <a name="identity-and-access-management"></a>Zarządzanie tożsamościami i dostępem
 
 Klienci mogą uwierzytelniać się na koncie platformy Azure (w usłudze Azure AD) przy użyciu uwierzytelniania wieloskładnikowego lub logowania jednokrotnego jako preferowanego. W Azure Portal można uruchomić Portal CloudSimple bez ponownego wprowadzania poświadczeń.
 

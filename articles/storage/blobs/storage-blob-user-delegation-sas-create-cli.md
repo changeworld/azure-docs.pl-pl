@@ -9,12 +9,12 @@ ms.date: 08/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 1c60c4b868854952771ba297107904762a2357d8
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ef51a1b130323a8799d5334d8d043fda08fcc7ef
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032994"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69896961"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB za pomocą interfejsu wiersza polecenia platformy Azure (wersja zapoznawcza)
 
@@ -49,7 +49,7 @@ az role assignment create \
     --scope "/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>"
 ```
 
-Aby uzyskać więcej informacji na temat wbudowanych ról zawierających akcję **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** , zobacz [wbudowane role dla zasobów platformy Azure](/role-based-access-control/built-in-roles).
+Aby uzyskać więcej informacji na temat wbudowanych ról zawierających akcję **Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey** , zobacz [wbudowane role dla zasobów platformy Azure](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="use-azure-ad-credentials-to-secure-a-sas"></a>Zabezpieczanie sygnatury dostępu współdzielonego przy użyciu poświadczeń usługi Azure AD
 
@@ -63,7 +63,7 @@ W `--auth-mode login` przypadku tworzenia sygnatury dostępu współdzielonego `
 
 Aby utworzyć sygnaturę dostępu współdzielonego dla kontenera za pomocą interfejsu wiersza polecenia platformy Azure, wywołaj polecenie [AZ Storage Container Generate-SAS](/cli/azure/storage/container#az-storage-container-generate-sas) .
 
-Uprawnienia obsługiwane w przypadku delegowania SYGNATURy dostępu użytkownika w kontenerze obejmują dodawanie, tworzenie, usuwanie, wyświetlanie, Odczyt i zapis. Uprawnienia można określić pojedynczo lub łącznie. Aby uzyskać więcej informacji o tych uprawnieniach, zobacz [Tworzenie skojarzeń zabezpieczeń delegowania użytkownika](/rest/api/storageservices/create-a-user-delegation-sas).
+Uprawnienia obsługiwane w przypadku delegowania SYGNATURy dostępu użytkownika w kontenerze obejmują dodawanie, tworzenie, usuwanie, wyświetlanie, Odczyt i zapis. Uprawnienia można określić pojedynczo lub łącznie. Aby uzyskać więcej informacji o tych uprawnieniach, zobacz [Tworzenie skojarzeń zabezpieczeń delegowania użytkownika](/rest/api/storageservices/create-user-delegation-sas).
 
 Poniższy przykład zwraca token użytkownika delegowania sygnatury dostępu współdzielonego dla kontenera. Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach własnymi wartościami:
 
@@ -87,7 +87,7 @@ se=2019-07-27&sp=r&sv=2018-11-09&sr=c&skoid=<skoid>&sktid=<sktid>&skt=2019-07-26
 
 Aby utworzyć sygnaturę dostępu współdzielonego delegowania użytkownika dla obiektu BLOB za pomocą interfejsu wiersza polecenia platformy Azure, wywołaj polecenie [AZ Storage BLOB Generate-SAS](/cli/azure/storage/blob#az-storage-blob-generate-sas) .
 
-Obsługiwane uprawnienia do delegowania przez użytkownika funkcji sygnatury dostępu współdzielonego w obiekcie blob obejmują dodawanie, tworzenie, usuwanie, Odczyt i zapis. Uprawnienia można określić pojedynczo lub łącznie. Aby uzyskać więcej informacji o tych uprawnieniach, zobacz [Tworzenie skojarzeń zabezpieczeń delegowania użytkownika](/rest/api/storageservices/create-a-user-delegation-sas).
+Obsługiwane uprawnienia do delegowania przez użytkownika funkcji sygnatury dostępu współdzielonego w obiekcie blob obejmują dodawanie, tworzenie, usuwanie, Odczyt i zapis. Uprawnienia można określić pojedynczo lub łącznie. Aby uzyskać więcej informacji o tych uprawnieniach, zobacz [Tworzenie skojarzeń zabezpieczeń delegowania użytkownika](/rest/api/storageservices/create-user-delegation-sas).
 
 Poniższa składnia zwraca sygnaturę dostępu współdzielonego delegowania użytkownika dla obiektu BLOB. W przykładzie określono `--full-uri` parametr, który zwraca identyfikator URI obiektu BLOB z dołączonym tokenem SAS. Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach własnymi wartościami:
 
@@ -115,5 +115,5 @@ https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?se=2019-
 
 ## <a name="next-steps"></a>Następne kroki
 
-- [Tworzenie sygnatury dostępu współdzielonego (API REST) delegowania użytkownika](/rest/api/storageservices/create-a-user-delegation-sas)
+- [Tworzenie sygnatury dostępu współdzielonego (API REST) delegowania użytkownika](/rest/api/storageservices/create-user-delegation-sas)
 - [Pobierz operację klucza delegowania użytkownika](/rest/api/storageservices/get-user-delegation-key)

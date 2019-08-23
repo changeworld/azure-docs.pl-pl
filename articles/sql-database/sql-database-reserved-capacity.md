@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 08/02/2019
-ms.openlocfilehash: 0139b3471eb9117830180088498eb14efd6ab661
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 61b646ca1ec5a4826ac6418c1b80b88a89266012
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781315"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972548"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Przedpłata za SQL Database zasobów obliczeniowych z zastrzeżoną pojemnością Azure SQL Database
 
@@ -70,6 +70,10 @@ Można anulować, wymienić lub refundować rezerwacje z pewnymi ograniczeniami.
 ## <a name="vcore-size-flexibility"></a>elastyczność rozmiaru rdzeń wirtualny
 
 elastyczność rozmiaru rdzeń wirtualny ułatwia skalowanie w górę i w dół w warstwach i regionach wydajności bez utraty korzyści zarezerwowanej pojemności. Zarezerwowana pojemność SQL Database zapewnia również elastyczność tymczasowego przenoszenia gorących baz danych między pulami i pojedynczymi bazami danych w ramach normalnych operacji (w tym samym regionie i warstwie wydajności) bez utraty zarezerwowanej pojemności korzystać. Przez utrzymywanie niezastosowanych buforów w rezerwacji można efektywnie zarządzać wzrostami wydajności bez przekraczania budżetu.
+
+## <a name="limitation"></a>Ograniczenia
+
+Nie można zarezerwować baz danych SQL opartych na jednostkach DTU (podstawowa, standardowa lub Premium).
 
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami
 

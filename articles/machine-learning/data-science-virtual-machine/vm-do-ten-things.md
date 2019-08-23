@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: vijetaj
-ms.openlocfilehash: ee63f7aae70e93dfbe857b8680d2b4a477600d72
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
-ms.translationtype: MT
+ms.openlocfilehash: cd4acdd4009a94b51807a536c28b138b86d2aced
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575109"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971701"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Dziesięć rzeczy, które można wykonać na Windows maszyny wirtualnej analizy danych
 
@@ -64,10 +64,6 @@ Dla języka Python można użyć środowiska IDE, takie jak Visual Studio Commun
 * Tworzenie niestandardowego środowiska dla każdej wersji, przechodząc do **narzędzia** -> **narzędzi Python Tools** -> **środowiska Python** , a następnie klikając polecenie " **+ Niestandardowe**"w programie Visual Studio Community Edition
 * Wprowadź opis i Ustaw ścieżkę prefiks środowiska jako *c:\anaconda\envs\python2* Anaconda Python 2.7
 * Kliknij przycisk **Autowykrywanie** i następnie **Zastosuj** można zapisać środowiska.
-
-Oto jak wygląda instalacji środowiska niestandardowego w programie Visual Studio.
-
-![Zrzut ekranu programu Visual Studio za pomocą narzędzi Python Tools for Visual Studio wybrane](./media/vm-do-ten-things/PTVSSetup.png)
 
 Zobacz [dokumentacja narzędzi PTVS](https://aka.ms/ptvsdocs) Aby uzyskać więcej informacji na temat tworzenia środowiska Python.
 
@@ -219,7 +215,7 @@ Do administrowania subskrypcją platformy Azure i zasobami w chmurze dostępne s
 + **Azure PowerShell**: używanie skryptów programu Windows PowerShell. Uruchom program Azure PowerShell ze skrótu na pulpicie lub z menu Start zatytułowanego "Microsoft Azure PowerShell". Szczegółowe informacje znajdują się w [dokumentacji programu Microsoft Azure PowerShell](../../powershell-azure-resource-manager.md) . 
 
 ## <a name="5-extend-storage-with-shared-file-systems"></a>5. Rozszerzona pamięć masowa z udostępnionymi systemami plików
-Analitycy danych mogą udostępniać dużych zestawów danych, kodu lub innych zasobów w ramach zespołu. NAUKI, sama ma około 45GB dostępnego miejsca. Aby rozszerzyć magazynu, można użyć usługi Azure File Service i albo zainstalować na co najmniej jedno wystąpienie maszyny wirtualnej DSVM lub uzyskać do niego dostęp za pośrednictwem interfejsu API REST.  Można również użyć [witryny Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) lub użyj [programu Azure Powershell](../../virtual-machines/windows/attach-disk-ps.md) dodawanie dysków danych dodatkowych dedykowanych. 
+Analitycy danych mogą udostępniać dużych zestawów danych, kodu lub innych zasobów w ramach zespołu. NAUKI, sama ma około 45GB dostępnego miejsca. Aby rozszerzyć magazynu, można użyć usługi Azure File Service i albo zainstalować na co najmniej jedno wystąpienie maszyny wirtualnej DSVM lub uzyskać do niego dostęp za pośrednictwem interfejsu API REST.  Możesz również użyć [Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) lub użyć [programu Azure PowerShell](../../virtual-machines/windows/attach-disk-ps.md) , aby dodać dodatkowe dedykowane dyski danych. 
 
 > [!NOTE]
 > Maksymalna ilość miejsca na udział usługi Azure File Service jest 5 TB, a limit rozmiaru poszczególnych plików wynosi 1 TB. 
@@ -295,8 +291,6 @@ Do przenoszenia danych między lokalnymi plikami i usługi blob storage, narzęd
     AzCopy /Source:C:\myfolder /Dest:https://<mystorageaccount>.blob.core.windows.net/<mycontainer> /DestKey:<storage account key> /Pattern:abc.txt
 
 Zastąp **C:\myfolder** do ścieżki, w którym jest zapisany plik, **mystorageaccount** na nazwę konta magazynu obiektów blob, **mycontainer** do nazwy kontenera **klucz konta magazynu** na klucz dostępu do magazynu obiektów blob. Można znaleźć poświadczeń konta magazynu w [witryny Azure portal](https://portal.azure.com).
-
-![Zrzut ekranu przedstawiający kluczy konta magazynu i kontener informacji w witrynie Azure portal](./media/vm-do-ten-things/StorageAccountCredential_v2.png)
 
 W programie PowerShell lub wierszu polecenia, Uruchom polecenia narzędzia AzCopy. Poniżej przedstawiono przykłady użycia polecenia narzędzia AzCopy:
 
@@ -393,9 +387,7 @@ Usługi Azure Data Lake Storage to ogromne repozytorium dla obciążeń analizy 
 
 **Przenieś dane z maszyny wirtualnej do Data Lake: Eksplorator Azure Data Lake**
 
-Możesz użyć **usługi Azure Data Lake Explorer** do przekazania danych z plików lokalnych na maszynie wirtualnej do magazynu usługi Data Lake.
-
-![Zrzut ekranu przedstawiający przekazywanie plików przy użyciu programu Data Lake Explorer](./media/vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
+Za pomocą **eksploratora Azure Data Lake** można [przekazać dane z plików lokalnych na maszynę wirtualną do usługi Data Lake Storage](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal).
 
 Możesz również tworzyć potoku danych do obsługi operacji usługi przenoszenia danych do i z usługi Azure Data Lake za pomocą [Factory(ADF) danych platformy Azure](https://azure.microsoft.com/services/data-factory/). Zapoznaj się z tym [artykułu](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) przeprowadzenie Cię przez kroki do utworzenia danych potoków.
 
@@ -406,8 +398,6 @@ Jeśli dane znajdują się w usłudze Azure Blob storage, mogą bezpośrednio od
 ![Zrzut ekranu przedstawiający okno dialogowe Dodaj źródło danych](./media/vm-do-ten-things/Link_Blob_to_ADLA_v2.PNG)
 
 W programie Visual Studio można odczytać danych z magazynu obiektów blob, wykonaj operacje na danych, inżynieria i dane wyjściowe dane wynikowe do usługi Azure Data Lake lub usługi Azure Blob Storage. Gdy odwołujesz się dane w magazynie obiektów blob, użyj **wasb: / /** ; Gdy odwołujesz się dane w usłudze Azure Data Lake, użyj **swbhdfs: / /**
-
-![Zrzut ekranu zapytania z wyróżnioną pozycją wpisem WASB](./media/vm-do-ten-things/USQL_Read_Blob_v2.PNG)
 
 Możesz wykorzystać następujące zapytania U-SQL w programie Visual Studio:
 
@@ -486,7 +476,7 @@ Usługa Azure HDInsight to zarządzana usługa Apache Hadoop, Spark, HBase i Sto
 
 ![Włącz dostęp zdalny z klastrem HDInsight](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
-* Tworzenie obszaru roboczego usługi Azure Machine Learning. Twoje eksperymenty uczenia maszynowego są przechowywane w tym obszarze roboczym usługi Machine Learning. Wybieranie opcji wyróżnionych w portalu, jak pokazano na poniższym zrzucie ekranu:
+* Tworzenie obszaru roboczego usługi Azure Machine Learning. Twoje eksperymenty uczenia maszynowego są przechowywane w tym obszarze roboczym usługi Machine Learning. Wybierz wyróżnione opcje w portalu, jak pokazano na poniższym zrzucie ekranu:
 
 ![Tworzenie obszaru roboczego usługi Azure Machine Learning](./media/vm-do-ten-things/Create_ML_Space.PNG)
 
@@ -880,9 +870,7 @@ Masz teraz dane w modelu danych usługi Power BI. Usługi Power BI desktop powin
 
 ![Program Power BI Desktop](./media/vm-do-ten-things/PowerBIVolcanoData.png)
 
-Możesz rozpocząć tworzenie raportów i wizualizacji przy użyciu modelu danych. Możesz wykonać kroki opisane w tej [artykule dotyczącym usługi Power BI](../../cosmos-db/powerbi-visualize.md#build-the-reports) do tworzenia raportu. Dane wyjściowe to raport, który wygląda podobnie do poniższego.
-
-![Usługa Power BI Desktop widoku raportu — łącznik usługi Power BI](./media/vm-do-ten-things/power_bi_connector_pbireportview2.png)
+Możesz rozpocząć tworzenie raportów i wizualizacji przy użyciu modelu danych. Możesz wykonać kroki opisane w tej [artykule dotyczącym usługi Power BI](../../cosmos-db/powerbi-visualize.md#build-the-reports) do tworzenia raportu.
 
 ## <a name="9-dynamic-dsvm-scaling"></a>9. Dynamiczne skalowanie DSVM 
 Możesz skalować nauki do swoich potrzeb projektu w górę i w dół. Jeśli nie potrzebujesz użyć maszyny Wirtualnej wieczorami lub w weekendy, można po prostu zamknąć maszynę Wirtualną z [witryny Azure portal](https://portal.azure.com).
@@ -894,9 +882,7 @@ Możesz skalować nauki do swoich potrzeb projektu w górę i w dół. Jeśli ni
 
 Jeśli potrzebujesz do obsługi analizy na dużą skalę i potrzebujesz więcej możliwości procesora CPU lub pamięci i/lub dysków można znaleźć wyboru dużych rozmiarów maszyn wirtualnych w zakresie rdzeni procesora CPU, wystąpienia oparte na procesorze GPU uczenia głębokiego, pojemność pamięci i typy dysków (w tym dysków SSD) spełniające co do obliczeń i budżetowe. Pełną listę maszyn wirtualnych wraz z ich godzinowe ceny za usługi obliczeniowe jest dostępna na [cennika usługi Azure Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/) strony.
 
-Podobnie jeśli zmniejsza Twoje potrzeby możliwości przetwarzania maszyny Wirtualnej (na przykład: został przeniesiony najważniejszych obciążeń usługi Hadoop lub w klastrze Spark), możesz skalować w dół do klastra z [witryny Azure portal](https://portal.azure.com) i przechodząc do ustawień z wystąpieniem maszyny Wirtualnej. Poniżej przedstawiono zrzut ekranu.
-
-![Ustawienia wystąpienia maszyny Wirtualnej](./media/vm-do-ten-things/VMScaling.PNG)
+Podobnie jeśli zmniejsza Twoje potrzeby możliwości przetwarzania maszyny Wirtualnej (na przykład: został przeniesiony najważniejszych obciążeń usługi Hadoop lub w klastrze Spark), możesz skalować w dół do klastra z [witryny Azure portal](https://portal.azure.com) i przechodząc do ustawień z wystąpieniem maszyny Wirtualnej. 
 
 ## <a name="10-add-more-tools"></a>10. Dodaj więcej narzędzi
 Istnieje kilka narzędzi, wstępnie skompilowane do nauki, które może uwzględnić wiele wspólnych danych, czego potrzebuje analizy. Pozwala to zaoszczędzić czas, unikając konieczności Zainstaluj i skonfiguruj środowiska pojedynczo oraz zaoszczędzić pieniądze, płacąc tylko za zasoby, możesz użyć.

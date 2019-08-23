@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: bbccb9beab374a4a514d527c22b3861f0752d5fd
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 956e31c157c667acd2f830702467249d869648cb
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782382"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971273"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Zapoznaj się z wynikami sprawdzania agenta systemu Windows w Update Management
 
@@ -107,7 +107,9 @@ Sprawdzanie dostępu do folderu kryptograficznego określa, czy konto systemu lo
 
 ## <a name="troubleshoot-offline"></a>Rozwiązywanie problemów w trybie offline
 
-Aby użyć narzędzia do rozwiązywania problemów z hybrydowym procesem roboczym elementu Runbook, należy uruchomić skrypt lokalnie. Możesz uzyskać skrypt, [rozwiązać problemy — WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration), w Galeria programu PowerShell. Dane wyjściowe tego skryptu wyglądają podobnie jak w poniższym przykładzie:
+Aby użyć narzędzia do rozwiązywania problemów z hybrydowym procesem roboczym elementu Runbook, należy uruchomić skrypt lokalnie. Możesz uzyskać skrypt, [rozwiązać problemy — WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration), w Galeria programu PowerShell. Aby można było uruchomić skrypt, musi być zainstalowany program WMF 4,0 lub nowszy. Aby pobrać najnowszą wersję programu PowerShell, zobacz [Instalowanie różnych wersji programu PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell).
+
+Dane wyjściowe tego skryptu wyglądają podobnie jak w poniższym przykładzie:
 
 ```output
 RuleId                      : OperatingSystemCheck

@@ -9,18 +9,20 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6f41263bfb930d3aab41fd8ace86cd6afb0ace26
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c10262e50fff2903d7caf242304145a2ab93dbcd
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850583"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69970615"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Uruchamianie elementów Runbook w hybrydowym procesie roboczym elementu Runbook
 
 Nie ma różnicy w strukturze elementów Runbook, które działają w Azure Automation i elementach Runbook, które działają w hybrydowym procesie roboczym elementu Runbook. Elementy Runbook, które są używane z każdą najbardziej prawdopodobną różnicą. Ta różnica wynika z faktu, że elementy Runbook przeznaczone dla hybrydowego procesu roboczego elementu Runbook zwykle zarządzają zasobami na komputerze lokalnym lub z zasobami w środowisku lokalnym, w których zostały wdrożone. Elementy Runbook w Azure Automation zazwyczaj zarządzają zasobami w chmurze platformy Azure.
 
-Podczas tworzenia elementów Runbook do działania w hybrydowym procesie roboczym elementu Runbook należy edytować i testować elementy Runbook na komputerze, na którym jest hostowany hybrydowy proces roboczy. Na komputerze hosta znajdują się wszystkie moduły programu PowerShell i dostęp do sieci, które są potrzebne do zarządzania zasobami lokalnymi i uzyskiwania do nich dostępu. Po przetestowaniu elementu Runbook na maszynie hybrydowej procesu roboczego można przekazać go do środowiska Azure Automation, w którym będzie dostępny do uruchamiania w hybrydowym procesie roboczym. Ważne jest, aby wiedzieć, że zadania uruchamiane na koncie systemu lokalnego systemu Windows lub specjalne konto `nxautomation` użytkownika w systemie Linux. Takie zachowanie może wprowadzać drobne różnice podczas tworzenia elementów Runbook dla hybrydowego procesu roboczego elementu Runbook. Te zmiany należy przejrzeć podczas pisania elementów Runbook.
+Podczas tworzenia elementów Runbook do działania w hybrydowym procesie roboczym elementu Runbook należy edytować i testować elementy Runbook na komputerze, na którym jest hostowany hybrydowy proces roboczy. Na komputerze hosta znajdują się wszystkie moduły programu PowerShell i dostęp do sieci, które są potrzebne do zarządzania zasobami lokalnymi i uzyskiwania do nich dostępu. Po przetestowaniu elementu Runbook na maszynie hybrydowej procesu roboczego można przekazać go do środowiska Azure Automation, w którym będzie dostępny do uruchamiania w hybrydowym procesie roboczym. Ważne jest, aby wiedzieć, że zadania uruchamiane na koncie systemu lokalnego systemu Windows lub specjalne konto `nxautomation` użytkownika w systemie Linux. W systemie Linux oznacza to, że użytkownik musi upewnić `nxautomation` się, że konto ma dostęp do lokalizacji, w której przechowywane są moduły. W przypadku korzystania z polecenia cmdlet [Install-module]() należy określić **ALLUSERS** do `-Scope` parametru, aby potwierdzić, `naxautomation` że konto ma dostęp.
+
+Aby uzyskać więcej informacji na temat programu PowerShell w systemie Linux, zobacz [znane problemy dotyczące programu PowerShell na platformach innych niż Windows](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms).
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>Uruchamianie elementu Runbook w hybrydowym procesie roboczym elementu Runbook
 

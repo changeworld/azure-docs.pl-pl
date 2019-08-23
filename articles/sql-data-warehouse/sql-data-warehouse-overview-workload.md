@@ -1,21 +1,21 @@
 ---
-title: Dowiedz się więcej o operacjach usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
+title: Informacje o operacjach Azure SQL Data Warehouse | Microsoft Docs
 description: 'Elastyczność usługi SQL Data Warehouse pozwala powiększać, zmniejszać lub wstrzymywać moc obliczeniową przy użyciu ruchomej skali jednostek magazynu danych (jednostki DWU). W tym artykule opisano metryki magazynu danych i ich relacje z jednostkami DWU. '
 services: sql-data-warehouse
-author: kevinvngo
+author: julieMSFT
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: design
 ms.date: 04/17/2018
-ms.author: kevin
+ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: f0489d9c018abac380cd0f8b1aa51fa5bb81707a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 47e04cb6b58a185e84120fe73a8468834d2e57fd
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60531174"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907922"
 ---
 # <a name="data-warehouse-workload"></a>Obciążenie magazynu danych
 Obciążenie magazynu danych odwołuje się do wszystkich operacji wykonywanych w magazynie danych. Obciążenie magazynu danych uwzględnia cały proces ładowania danych do magazynu, wykonywanie analiz i raportów odnoszących się do magazynu danych, zarządzanie danymi w magazynie oraz eksportowanie danych z magazynu. Stopień zaawansowania i zasięgu tych składników często wynika bezpośrednio z poziomu dojrzałości magazynu danych.
@@ -61,7 +61,7 @@ Jednym ze sposobów udostępniania danych na potrzeby tworzenia raportów i anal
 * Aby generować raporty, każdej nocy można przesyłać migawki codziennych danych na serwery raportowania tylko do odczytu. W ten sposób klienci uzyskują większą przepustowość, natomiast zapotrzebowanie na zasoby obliczeniowe magazynu danych ulega ograniczeniu. W aspekcie bezpieczeństwa składnice danych umożliwiają zmniejszenie liczby użytkowników, którzy mają dostęp do magazynu danych.
 * W celu wykonywania analiz można skonstruować moduł analizy w magazynie danych i przeprowadzać analizy w magazynie danych lub wstępnie przetworzyć dane oraz wyeksportować je na serwer analiz do dalszej analizy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Teraz, gdy masz już podstawową wiedzę na temat usługi SQL Data Warehouse, możesz dowiedzieć się, jak szybko [utworzyć bazę danych w usłudze SQL Data Warehouse][create a SQL Data Warehouse] i [ładowanie danych przykładowych][load sample data].
 
 <!--Image references-->

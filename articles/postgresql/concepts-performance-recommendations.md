@@ -1,53 +1,54 @@
 ---
-title: Zalecenia dotyczące wydajności w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-description: W tym artykule opisano funkcję zalecenie dotyczące wydajności w usłudze Azure Database for PostgreSQL — pojedynczy serwer.
+title: Zalecenia dotyczące wydajności w Azure Database for PostgreSQL-pojedynczym serwerze
+description: W tym artykule opisano funkcję rekomendacji dotyczących wydajności w ramach Azure Database for PostgreSQL-jednego serwera.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 31d8c0fdf1b4df3ee00f3652c933b4b738384bea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/21/2019
+ms.openlocfilehash: e1e9e998c2ac4695d955a546d0f02fbc2b517d5e
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068838"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907492"
 ---
-# <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Zalecenia dotyczące wydajności w usłudze Azure Database for PostgreSQL — pojedynczy serwer
+# <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Zalecenia dotyczące wydajności w Azure Database for PostgreSQL-pojedynczym serwerze
 
-**Dotyczy:** Azure Database for PostgreSQL — pojedynczy serwer 9.6 i 10
+**Dotyczy:** Azure Database for PostgreSQL — jeden serwer 9,6 i 10
 
-Zalecenia dotyczące wydajności funkcji analizy bazy danych w celu tworzenie niestandardowych sugestii w celu zwiększenia wydajności. Aby uzyskać zalecenia, analiza patrzy na różne cechy bazy danych, w tym schemacie. Włącz [Query Store](concepts-query-store.md) na serwerze, aby w pełni wykorzystać funkcję zalecenia dotyczące wydajności. Po zaimplementowaniu żadnych rekomendacji wydajności, należy przetestować wydajność, aby ocenić wpływ tych zmian. 
+Funkcja zalecenia dotyczące wydajności analizuje bazy danych w celu utworzenia niestandardowych sugestii zwiększających wydajność. Aby utworzyć zalecenia, analiza analizuje różne cechy bazy danych, w tym schemat. Włącz [Magazyn zapytań](concepts-query-store.md) na serwerze, aby w pełni wykorzystać funkcję zaleceń dotyczących wydajności. Po wdrożeniu wszelkich zaleceń dotyczących wydajności należy przetestować wydajność, aby oszacować wpływ tych zmian. 
 
 ## <a name="permissions"></a>Uprawnienia
 Uprawnienia **Właściciel** lub **Współautor** są wymagane do uruchamiania analiz przy użyciu funkcji Zalecenia dotyczące wydajności.
 
-## <a name="performance-recommendations"></a>Zalecenia dotyczące wydajności
+## <a name="performance-recommendations"></a>Zalecenie dotyczące wydajności
 Funkcja [Zalecenia dotyczące wydajności](concepts-performance-recommendations.md) analizuje obciążenia na serwerze, aby zidentyfikować indeksy z potencjałem poprawy wydajności.
 
-Otwórz **zalecenia dotyczące wydajności** z **inteligentne wydajności** części paska menu na stronie portalu platformy Azure dla Twojego serwera PostgreSQL.
+Zaleceń dotyczących **wydajności** z **inteligentnej wydajności** na pasku menu na stronie Azure Portal serwera PostgreSQL.
 
 ![Zalecenia dotyczące wydajności, strona docelowa](./media/concepts-performance-recommendations/performance-recommendations-page.png)
 
-Wybierz **analizy** i wybierz bazę danych, który rozpoczyna się analizy. W zależności od obciążenia th analiza może potrwać kilka minut. Po zakończeniu analizy w portalu zostanie wyświetlone powiadomienie. Analiza wykonuje szczegółowe badanie bazy danych. Zalecane jest przeprowadzenie analizy w okresach poza szczytem. 
+Wybierz pozycję **Analizuj** i wybierz bazę danych, która rozpocznie analizę. W zależności od obciążenia analiza może potrwać kilka minut. Po zakończeniu analizy w portalu zostanie wyświetlone powiadomienie. Analiza wykonuje głębokie badanie bazy danych. Zalecamy przeprowadzanie analiz poza okresami szczytu. 
 
-**Zalecenia** okno zostanie wyświetlone lista zaleceń, jeśli którekolwiek.
+W oknie rekomendacje zostanie wyświetlona lista zaleceń, jeśli zostały znalezione.
 
-![Nowa strona zalecenia dotyczące wydajności](./media/concepts-performance-recommendations/performance-recommendations-result.png)
+![Zaleceń dotyczących wydajności — Nowa strona](./media/concepts-performance-recommendations/performance-recommendations-result.png)
 
-Zalecenia nie są automatycznie stosowane. Aby zastosować zalecenie, skopiuj tekst zapytania i uruchom go z wybranego klienta. Pamiętaj, aby przetestować i monitorowanie, aby ocenić zalecenia. 
+Zalecenia nie są automatycznie stosowane. Aby zastosować zalecenie, skopiuj tekst zapytania i uruchom go z wybranego klienta. Należy pamiętać o przetestowaniu i monitorowaniu w celu ocenienia zalecenia. 
 
-## <a name="recommendation-types"></a>Typami zaleceniu
+## <a name="recommendation-types"></a>Typy rekomendacji
 
-Obecnie obsługiwane są dwa rodzaje zalecenia: *Tworzenie indeksu* i *Drop Index*.
+Obecnie obsługiwane są dwa typy zaleceń: *Utwórz indeks* i *upuść indeks*.
 
-### <a name="create-index-recommendations"></a>Utwórz zalecenia dotyczące indeksu
-*Tworzenie indeksu* zalecenia Sugeruj nowe indeksy, aby przyspieszyć działanie najczęściej czasochłonne lub wykonywania zapytań w obciążeniu. Ten typ zalecenie wymaga [Query Store](concepts-query-store.md) włączenia. Query Store zbiera informacje o kwerendzie i zapewnia szczegółowe zapytania środowiska uruchomieniowego i częstotliwość statystycznych, które używa analizy, aby wykonać zalecenia.
+### <a name="create-index-recommendations"></a>Tworzenie zaleceń dotyczących indeksów
+*Tworzenie* zaleceń dotyczących indeksów Sugeruj nowe indeksy, aby przyspieszyć najczęściej wykonywane lub czasochłonne zapytania w obciążeniu. Ten typ rekomendacji wymaga włączenia [magazynu zapytań](concepts-query-store.md) . Magazyn zapytań zbiera informacje o zapytaniach i zawiera szczegółowe dane dotyczące środowiska uruchomieniowego zapytań i częstotliwości, których analiza używa do wykonania zalecenia.
 
-### <a name="drop-index-recommendations"></a>Upuść zalecenia dotyczące indeksu
-Oprócz wykrywania brakujące indeksy, — Azure Database for postgresql w warstwie analizuje wydajność istniejące indeksy. Jeśli indeks jest rzadko używane lub nadmiarowe, analizator zaleca porzuceniem jej.
+### <a name="drop-index-recommendations"></a>Porzuć zalecenia dotyczące indeksów
+Oprócz wykrywania brakujących indeksów Azure Database for PostgreSQL analizuje wydajność istniejących indeksów. Jeśli indeks jest rzadko używany lub nadmiarowy, Analizator zaleca jego usunięcie.
 
-
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="considerations"></a>Zagadnienia do rozważenia
+* Zalecenia dotyczące wydajności nie są dostępne dla [replik odczytu](concepts-read-replicas.md).
+## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej o [monitorowaniu i dostrajaniu](concepts-monitoring.md) w usłudze Azure Database for PostgreSQL.
 

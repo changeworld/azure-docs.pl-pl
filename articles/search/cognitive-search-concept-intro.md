@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: overview
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: 89c56496ed1f356ffedf4df93f1728bd4acda323
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 4987c17eabf5d9e140352e3581b38a7d29049c5f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639955"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899981"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co to jest "wyszukiwanie poznawcze" w Azure Search?
 
@@ -51,7 +51,7 @@ Wyszukiwanie poznawcze przy użyciu wstępnie utworzonych umiejętności jest od
 
   Ponadto wstępnie skompilowane umiejętności mogą również służyć do zmiany struktury zawartości przy użyciu operacji dzielenia tekstu, scalania i kształtowania.
 
-Umiejętności niestandardowe mogą obsługiwać bardziej złożone scenariusze, takie jak rozpoznawanie formularzy lub wykrywanie jednostek niestandardowych przy użyciu udostępnianego modelu i zawijania w niestandardowym [interfejsie sieci Web](cognitive-search-custom-skill-interface.md). Kilka przykładów umiejętności niestandardowych obejmuje [aparat rozpoznawania formularzy](), integrację [interfejs API wyszukiwania jednostek Bing](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)i [niestandardowego rozpoznawania jednostek](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
+Umiejętności niestandardowe mogą obsługiwać bardziej złożone scenariusze, takie jak rozpoznawanie formularzy lub wykrywanie jednostek niestandardowych przy użyciu udostępnianego modelu i zawijania w niestandardowym [interfejsie sieci Web](cognitive-search-custom-skill-interface.md). Kilka przykładów umiejętności niestandardowych obejmuje [aparat rozpoznawania formularzy](/azure/cognitive-services/form-recognizer/overview), integrację [interfejs API wyszukiwania jednostek Bing](https://docs.microsoft.com/azure/search/cognitive-search-create-custom-skill-example)i [niestandardowego rozpoznawania jednostek](https://github.com/Microsoft/SkillsExtractorCognitiveSearch).
 
 
 ## <a name="component-pipeline-of-cognitive-search"></a>Potok składnika wyszukiwania poznawczego

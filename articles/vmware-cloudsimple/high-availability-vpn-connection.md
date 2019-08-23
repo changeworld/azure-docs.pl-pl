@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0ad917215275ce2f80dfdd2ec4e5a16794b36c13
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: ea8ad80d8d12ae9ecac88bd6a3d661ca895d67f4
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650353"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972771"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Konfigurowanie połączenia o wysokiej dostępności z poziomu lokalnego z bramą sieci VPN CloudSimple
 
@@ -315,11 +315,11 @@ Konfigurowanie urządzeń z systemem Cisco adaptacyjne (ASAv) na platformie Azur
 
 Konfigurowanie sieci VPN typu lokacja-lokacja przy użyciu identyfikatorów serwera proxy w programie Palo Alto:
 
-<a href="https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/vpns/set-up-site-to-site-vpn#" target="_blank">Konfigurowanie sieci VPN typu lokacja-lokacja</a>
+[Konfigurowanie sieci VPN typu lokacja-lokacja](https://docs.paloaltonetworks.com/pan-os/9-0/pan-os-admin/vpns/set-up-site-to-site-vpn#)
 
 Konfigurowanie monitora tunelu:
 
-<a href="https://docs.paloaltonetworks.com/pan-os/7-1/pan-os-admin/vpns/set-up-tunnel-monitoring.html" target="_blank">Skonfiguruj monitorowanie tunelu</a>
+[Skonfiguruj monitorowanie tunelu](https://docs.paloaltonetworks.com/pan-os/7-1/pan-os-admin/vpns/set-up-tunnel-monitoring.html)
 
 Operacje związane z bramą IKE lub tunelu IPsec:
 

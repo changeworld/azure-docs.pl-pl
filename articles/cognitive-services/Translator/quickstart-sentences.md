@@ -8,21 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 08/12/2019
+ms.date: 08/19/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 6865bd9db7a963cc8e391bf8fb24b30d9b497137
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: c48e6912c907fe16343aac457c2171e96af90e8f
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968615"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906879"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length"></a>Szybki start: Użyj interfejs API tłumaczenia tekstu w usłudze Translator, aby określić długość zdania
 
 W tym przewodniku szybki start dowiesz się, jak określić długość zdań przy użyciu interfejs API tłumaczenia tekstu w usłudze Translator.
 
 Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem tłumaczenia tekstu w usłudze Translator. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
+
+[!INCLUDE [Custom subdomains notice](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ::: zone pivot="programming-language-csharp"
 

@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 288a05fc09e0c59a01a8d4c9940c0d51cabdd28f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 638b60bd3612fa25350ecef0a738fea75c2f53d3
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640959"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972332"
 ---
 # <a name="configure-vsan-encryption-for-cloudsimple-private-cloud"></a>Skonfiguruj szyfrowanie sieci vSAN dla chmury prywatnej CloudSimple
 
 Funkcję szyfrowania oprogramowania sieci vSAN można skonfigurować tak, aby Chmura prywatna CloudSimple mogła działać z serwerem zarządzania kluczami uruchomionymi w sieci wirtualnej platformy Azure.
 
-W przypadku korzystania z szyfrowania sieci vSAN oprogramowanie VMware wymaga użycia zewnętrznego KMIP 1,1 zgodnego z serwerem zarządzania kluczami (KMS) innej firmy. Możesz wykorzystać wszelkie obsługiwane usługi KMS certyfikowane przez program VMware i dostępne dla platformy Azure. 
+W przypadku korzystania z szyfrowania sieci vSAN oprogramowanie VMware wymaga użycia zewnętrznego KMIP 1,1 zgodnego z serwerem zarządzania kluczami (KMS) innej firmy. Możesz wykorzystać wszelkie obsługiwane usługi KMS certyfikowane przez program VMware i dostępne dla platformy Azure.
 
 W tym przewodniku opisano, jak używać HyTrust kontroli usługi KMS uruchomionej w sieci wirtualnej platformy Azure. Podobne podejście może być używane w przypadku wszelkich innych certyfikowanych rozwiązań usługi KMS innych firm dla sieci vSAN.
 

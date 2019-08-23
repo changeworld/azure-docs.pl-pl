@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e78dd093c4bbf0cf1bdbd5280ffaa63286e585d4
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 52ccaa17b9994751bb9dfd54848e20aef90146c3
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537137"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905882"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>Szybki start: Konfigurowanie zapory serwera — Portal
 
@@ -23,6 +23,7 @@ Ten przewodnik Szybki start ułatwia konfigurowanie zapory na potrzeby serwera u
 
 - Serwer usług Analysis Services w ramach subskrypcji. Aby dowiedzieć się więcej, zobacz [Szybki start: tworzenie serwera — portal](analysis-services-create-server.md) lub [Szybki start: tworzenie serwera — PowerShell](analysis-services-create-powershell.md)
 - Co najmniej jeden zakres adresów IP na potrzeby komputerów klienckich (w razie potrzeby).
+- Należy pamiętać, że scenariusz importowania z Power BI Premium nie jest obecnie obsługiwany.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal 
 
@@ -33,8 +34,8 @@ Ten przewodnik Szybki start ułatwia konfigurowanie zapory na potrzeby serwera u
 1. Kliknij serwer, aby otworzyć stronę Omówienie. 
 2. Wybierz opcje **USTAWIENIA** > **Zapora** > **Włącz zaporę** i kliknij przycisk **Włączone**.
 3. Aby zezwolić na dostęp w trybie DirectQuery z poziomu usługi Power BI, w obszarze **Zezwalaj na dostęp z usługi Power BI** kliknij przycisk **Włączone**.  
-4. (Opcjonalnie) Podaj co najmniej jeden zakres adresów IP. Wprowadź nazwę oraz początkowy i końcowy adres IP dla każdego zakresu. Nazwa reguły zapory powinny być ograniczone do 128 znaków i może zawierać tylko wielkie litery, małe litery, cyfry, podkreślenie i łącznik. Białych znaków i inne znaki specjalne są niedozwolone.
-5. Kliknij pozycję **Zapisz**.
+4. (Opcjonalnie) Podaj co najmniej jeden zakres adresów IP. Wprowadź nazwę oraz początkowy i końcowy adres IP dla każdego zakresu. Nazwa reguły zapory powinna być ograniczona do 128 znaków i może zawierać tylko wielkie litery, małe litery, cyfry, znaki podkreślenia i łącznik. Odstępy i inne znaki specjalne są niedozwolone.
+5. Kliknij polecenie **Zapisz**.
 
      ![Ustawienia zapory](./media/analysis-services-qs-firewall/aas-qs-firewall.png)
 
@@ -42,7 +43,7 @@ Ten przewodnik Szybki start ułatwia konfigurowanie zapory na potrzeby serwera u
 
 Gdy zakresy adresów IP nie będą już potrzebne, usuń je lub wyłącz zaporę.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym przewodniu Szybki start opisano, jak skonfigurować zaporę dla serwera. Teraz gdy serwer został już utworzony i zabezpieczony przy użyciu zapory, możesz do niego dodać podstawowy przykładowy model danych z portalu. Przykładowy model służy do zdobywania wiedzy na temat konfigurowania ról modelowej bazy danych oraz testowania połączeń klienckich. Aby dowiedzieć się więcej, przejdź do samouczka dotyczącego dodawania przykładowego modelu.
 
 > [!div class="nextstepaction"]

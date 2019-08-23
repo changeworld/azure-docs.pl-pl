@@ -1,6 +1,6 @@
 ---
-title: Tworzenie zestawu skalowania na platformie Azure, który używa strefy dostępności | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć zestawy skalowania maszyn wirtualnych platformy Azure, używających stref dostępności w celu zwiększenia nadmiarowości względem awarii
+title: Utwórz zestaw skalowania platformy Azure, który używa Strefy dostępności | Microsoft Docs
+description: Dowiedz się, jak tworzyć zestawy skalowania maszyn wirtualnych platformy Azure, które używają Strefy dostępności, aby zwiększyć nadmiarowość przed awarią
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -15,73 +15,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 7fa903f65a6c7d244ff424eae4a0def258b50bbc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a31ed174c7a5986594f7c07b7ce00b1649413c8
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803269"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907980"
 ---
-# <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Tworzenie zestawu skalowania maszyn wirtualnych, który używa strefy dostępności
+# <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Utwórz zestaw skalowania maszyn wirtualnych, który używa Strefy dostępności
 
-Aby chronić Twoje zestawy skalowania maszyn wirtualnych przed awariami na poziomie centrum danych, można utworzyć zestawu skalowania w strefach dostępności. Regiony platformy Azure, które obsługują strefy dostępności mają co najmniej trzy oddzielne strefy, z których każdy z własnych niezależne od zasilania źródła, sieć i chłodzenie. Aby uzyskać więcej informacji, zobacz [Przegląd stref dostępności](../availability-zones/az-overview.md).
+Aby chronić zestawy skalowania maszyn wirtualnych z niepowodzeń poziomu centrum danych, można utworzyć zestaw skalowania między Strefy dostępności. Regiony platformy Azure, które obsługują Strefy dostępności, mają co najmniej trzy oddzielne strefy, z których każda jest niezależna od źródła, sieci i chłodzenia. Aby uzyskać więcej informacji, zobacz [omówienie strefy dostępności](../availability-zones/az-overview.md).
 
 ## <a name="availability-considerations"></a>Zagadnienia dotyczące dostępności
 
-Podczas wdrażania zestawu skalowania w co najmniej jedna strefa, począwszy od wersji interfejsu API *2017-12-01*, masz możliwość wdrożenia aplikacji za pomocą "Maksymalna rozmieszczenie" lub "statyczne 5 usterek domeny rozprzestrzeniania się". Dzięki rozproszeniu Maksymalny zestaw skalowania się maszyn wirtualnych między wiele domen błędów, jak to możliwe w każdej strefie. To rozmieszczenie może być między większą lub mniej niż pięć domeny dla stref błędów. Za pomocą "statyczne 5 usterek domeny rozprzestrzeniania się", zestaw skalowania się maszyn wirtualnych w domenach błędów pięć dokładnie na strefy. Zestaw skalowania nie może znaleźć pięcioma domenami błędów distinct na strefy, aby spełnić żądania alokacji, żądanie kończy się niepowodzeniem.
+Po wdrożeniu zestawu skalowania w jednej lub kilku strefach w programie w wersji *2017-12-01*można wdrożyć program przy użyciu opcji "Max rozpraszanie" lub "static 5" rozproszonej domeny błędów. W przypadku maksymalnego rozmieszczenia, zestaw skalowania rozkłada maszyny wirtualne w możliwie największej liczbie domen błędów w ramach każdej strefy. Ta rozproszenie może znajdować się w więcej niż pięciu domenach błędów na strefę. W przypadku "rozproszenia domen błędów static 5" zestaw skalowania rozkłada maszyny wirtualne w dokładnie pięciu domenach błędów na strefę. Jeśli zestaw skalowania nie może znaleźć pięciu odrębnych domen błędów dla strefy w celu spełnienia żądania alokacji, żądanie nie powiedzie się.
 
-**Firma Microsoft zaleca wdrażanie przy użyciu maksymalna rozmieszczenie dla większości obciążeń**, jak to podejście oferuje bezpieczny najlepsze rozsyłanie się w większości przypadków. Repliki, aby można było ich rozmieszczenie jednostek izolacji różne sprzętu, należy zalecamy rozsyłanie się w różnych strefach dostępności i wykorzystywać maksymalna rozmieszczenie w każdej strefie.
+**Zalecamy wdrożenie z maksymalną ilością rozmieszczenia dla większości obciążeń**, ponieważ takie podejście zapewnia najlepsze rozmieszczenie w większości przypadków. Jeśli konieczne jest rozproszenie replik między różnymi jednostkami izolacji sprzętowej, zalecamy rozproszenie między Strefy dostępności i wykorzystać maksymalne rozmieszczenie w każdej strefie.
 
-Za pomocą maksymalna rozmieszczenie widoczne są tylko jedną domenę błędów w widok wystąpienia maszyny Wirtualnej zestawu skalowania i metadane wystąpienia niezależnie od tego, jak wiele domen błędów, które maszyny wirtualne są rozproszone między. Rozsyłanie się w każdej strefie jest niejawne.
+W przypadku maksymalnego rozproszenia widoczna jest tylko jedna domena błędów w widoku wystąpienia maszyny wirtualnej zestawu skalowania i w metadanych wystąpienia, niezależnie od tego, ile domen błędów są rozpraszane przez maszyny wirtualne. Rozproszenie w ramach każdej strefy jest niejawne.
 
-Aby użyć maksymalna rozmieszczenie, ustaw *elementem platformFaultDomainCount* do *1*. Aby użyć statycznego domeny błędów w pięciu rozprzestrzeniania się, ustaw *elementem platformFaultDomainCount* do *5*. W wersji interfejsu API *2017-12-01*, *elementem platformFaultDomainCount* wartość domyślna to *1* skalowania pojedynczej strefy i międzystrefowego ustawia. Obecnie tylko statyczne pięć błędów domeny rozmieszczenie jest obsługiwane dla zestawów skalowania regionalne.
+Aby użyć maksymalnego rozmieszczenia, ustaw *platformFaultDomainCount* na *1*. Aby użyć statycznego 5 rozproszenia domen błędów, ustaw *platformFaultDomainCount* na *5*. W interfejsie API w wersji *2017-12-01* *platformFaultDomainCount* domyślnie *1* dla wielostrefowych i wielostrefowych zestawów skalowania. Obecnie w przypadku zestawów skalowania Regionalnego (non-Zona) obsługiwane jest tylko statyczne pięć domen błędów.
 
 ### <a name="placement-groups"></a>Grupy umieszczania
 
-Gdy wdrażasz zestaw skalowania, istnieje również możliwość wdrożenia aplikacji za pomocą jednego [grupy umieszczania](./virtual-machine-scale-sets-placement-groups.md) za strefę dostępności lub z wieloma na strefy. Dla zestawów skalowania regionalne wybór jest mają pojedynczej grupy umieszczania w regionie lub ustawić wiele w regionie. Dla większości obciążeń zaleca się wiele grup umieszczania, co pozwala na większą skalę. W wersji interfejsu API *2017-12-01*, domyślne zestawy skalowania do wielu grup umieszczania dla zestawów skalowania pojedynczej strefy i między strefami, ale domyślnie pojedynczej grupy umieszczania dla zestawów skalowania regionalne.
+Podczas wdrażania zestawu skalowania można również wykonać wdrożenie z jedną [grupą umieszczania](./virtual-machine-scale-sets-placement-groups.md) na strefę dostępności lub z wielokrotnością dla każdej strefy. W przypadku zestawów skalowania Regionalnego (non-Zona) wybór ma mieć pojedynczą grupę umieszczania w regionie lub wiele w regionie. W przypadku większości obciążeń zalecamy stosowanie wielu grup umieszczania, które umożliwiają większą skalę. W interfejsie API w wersji *2017-12-01*, skalowanie ustawia domyślnie na wiele grup umieszczania dla zestawów skalowania z jedną strefą i między strefami, ale domyślnie do pojedynczej grupy umieszczania dla zestawów skalowania Regionalnego (bez stref).
 
 > [!NOTE]
-> Jeśli używasz maksymalna rozmieszczenie, należy użyć wielu grup umieszczania.
+> Jeśli używasz maksymalnego rozmieszczenia, musisz użyć wielu grup umieszczania.
 
-### <a name="zone-balancing"></a>Strefa równoważenia
+### <a name="zone-balancing"></a>Równoważenie strefy
 
-Na koniec dla zestawów skalowania, wdrożonych w wielu strefach, również masz możliwość wyboru "najlepsze równowadze stref nakład pracy" lub "równowadze stref strict". Zestaw skalowania jest uznawany za "zrównoważone", jeśli każda strefa taką samą liczbę maszyn wirtualnych lub +\\-1 maszyna wirtualna w innych strefach dla zestawu skalowania. Na przykład:
+Na koniec dla zestawów skalowania wdrożonych w wielu strefach można również wybrać opcję "Najlepsza stawka strefy" lub "ścisłe saldo strefy". Zestaw skalowania jest uznawany za "zrównoważony", jeśli każda strefa ma taką samą\\liczbę maszyn wirtualnych lub maszynę wirtualną "+-1" we wszystkich innych strefach zestawu skalowania. Na przykład:
 
-- Zestaw skalowania z 2 maszyn wirtualnych w strefie 1, 3 maszyn wirtualnych w strefie 2 i 3 maszyn wirtualnych w strefie 3 jest uznawany za zrównoważone. Ma tylko jedną strefę z różnych liczba maszyn wirtualnych i jest tylko 1, mniejsze niż w innych strefach. 
-- Zestaw skalowania z 1 maszyny Wirtualnej w strefie 1, 3 maszyn wirtualnych w strefie 2 i 3 maszyn wirtualnych w strefie 3 jest uznawany za niezrównoważone. Strefa 1 ma 2 maszyny wirtualne z mniej niż strefy 2 i 3.
+- Zestaw skalowania z 2 maszynami wirtualnymi w strefie 1, 3 maszyn wirtualnych w strefie 2 i 3 maszyn wirtualnych w strefie 3 jest uznawany za zrównoważony. Istnieje tylko jedna strefa z inną liczbą maszyn wirtualnych, która jest tylko 1 mniejsza niż w przypadku innych stref. 
+- Zestaw skalowania z 1 maszyną wirtualną w strefie 1, 3 maszyn wirtualnych w strefie 2 i 3 maszyn wirtualnych w strefie 3 jest traktowany jako niezrównoważony. Strefa 1 ma 2 mniej maszyn wirtualnych niż strefa 2 i 3.
 
-Istnieje możliwość, że pomyślnie tworzone są maszyny wirtualne w zestawie skalowania, ale rozszerzenia na tych maszynach wirtualnych nie można wdrożyć. Te maszyny wirtualne z błędami rozszerzeń nadal są uwzględniane podczas określania, jeśli zestaw skalowania jest równoważone. Na przykład, zestaw skalowania z 3 maszyn wirtualnych w strefie 1, 3 maszyn wirtualnych w strefie 2 i 3 maszyn wirtualnych w strefie 3 jest uznawany za równoważenia nawet wtedy, gdy wszystkie rozszerzenia nie powiodła się w strefie 1 i wszystkie rozszerzenia zakończyło się pomyślnie w strefach 2 i 3.
+Istnieje możliwość, że maszyny wirtualne w zestawie skalowania zostały pomyślnie utworzone, ale wdrożenie rozszerzeń na tych maszynach wirtualnych nie powiedzie się. Te maszyny wirtualne z błędami rozszerzeń są nadal zliczane podczas określania, czy zestaw skalowania jest zrównoważony. Na przykład zestaw skalowania z trzema maszynami wirtualnymi w strefie 1, 3 maszyn wirtualnych w strefie 2 i 3 maszyny wirtualne w strefie 3 jest uznawany za zrównoważony, nawet jeśli wszystkie rozszerzenia w strefie 1 zostały zakończone pomyślnie, a wszystkie rozszerzenia w strefach 2 i 3.
 
-Próby skalowania do wewnątrz i na zewnątrz przy zachowaniu równowagi zestawu skalowania z saldem strefy największej staranności. Jednakże jeśli z jakiegoś powodu nie jest to możliwe (na przykład, jeśli w jednej strefie ulegnie awarii, zestaw skalowania nie można utworzyć nową maszynę Wirtualną w tej strefie), zestaw skalowania umożliwia tymczasowe nierównowagi pomyślnie skalowanie w pionie lub poziomie. Na kolejnych prób skalowalnego w poziomie zestaw skalowania dodaje maszyn wirtualnych do stref, które wymagają więcej maszyn wirtualnych dla zestawu skalowania w celu zrównoważenia. Podobnie na kolejne skali w przypadku prób ataków, zestaw skalowania usuwa maszyny wirtualne w stref, które wymaga mniejszej liczby maszyn wirtualnych zestawu skalowania do zrównoważenia. Za pomocą "równowadze stref strict" zestaw skalowania nie powiedzie się każda próba ich skalowanie w pionie lub poziomie jeśli mogłoby to spowodować niezrównoważonej.
+Ze względu na optymalną strefę, zestaw skalowania próbuje skalować się i wyrównać z zachowaniem równowagi. Jednakże, jeśli z jakiegoś powodu nie jest to możliwe (na przykład jeśli jedna strefa ulegnie awarii, zestaw skalowania nie może utworzyć nowej maszyny wirtualnej w tej strefie), zestaw skalowania pozwala na tymczasowe skalowanie w celu pomyślnej skali. W przypadku kolejnych prób skalowania w poziomie zestaw skalowania dodaje maszyny wirtualne do stref, które wymagają więcej maszyn wirtualnych w celu zrównoważenia zestawu skalowania. Podobnie w przypadku kolejnej skalowanej próby zestaw skalowania usuwa maszyny wirtualne ze stref, które wymagają mniej maszyn wirtualnych, aby można było zrównoważyć zestaw skalowania. W przypadku użycia opcji "ścisłe saldo strefy" zestaw skalowania kończy się niepowodzeniem podczas skalowania w górę lub w dół, jeśli spowoduje to nierównowaga.
 
-Aby użyć równowadze stref optymalnych, ustaw *zoneBalance* do *false*. To ustawienie jest ustawieniem domyślnym w wersji interfejsu API *2017-12-01*. Aby użyć równowadze stref strict, ustaw *zoneBalance* do *true*.
+Aby użyć najlepszego nakładu strefowego, ustaw *zoneBalance* na *false*. To ustawienie jest domyślne w interfejsie API w wersji *2017-12-01*. Aby użyć ścisłego salda strefy, ustaw *zoneBalance* na *wartość true*.
 
-## <a name="single-zone-and-zone-redundant-scale-sets"></a>Zestawy skalowania pojedynczej strefy i strefowo nadmiarowy
+## <a name="single-zone-and-zone-redundant-scale-sets"></a>Pojedyncze strefy i nadmiarowe zestawy skalowania
 
-Podczas wdrażania zestawu skalowania maszyn wirtualnych, można użyć jednej strefie dostępności w regionie lub stref.
+Podczas wdrażania zestawu skalowania maszyn wirtualnych można wybrać opcję użycia pojedynczej strefy dostępności w regionie lub wielu strefach.
 
-Podczas tworzenia zestawu skalowania w jednej strefie, Ty określasz, która strefa te wystąpienia maszyn wirtualnych, uruchom w i odbywa się zestawu skalowania i automatycznego skalowania, tylko w ramach tej strefy. Zestaw skalowania strefowo nadmiarowe umożliwia utworzenie pojedynczego zestawu skalowania obejmującej wiele stref. Podczas tworzenia wystąpień maszyn wirtualnych, domyślnie one są równomiernie równoważone w strefach. Czy przerwę w przypadku wystąpienia w jednej ze stref, zestaw skalowania automatycznie skalować w poziomie w celu zwiększenia pojemności. Najlepszym rozwiązaniem byłoby skonfigurować reguły skalowania automatycznego na podstawie użycia procesora CPU lub pamięci. Reguły automatycznego skalowania umożliwia zestawie skalowania, aby reagować na utratę wystąpień maszyn wirtualnych w tej strefie, skalując w poziomie nowe wystąpienia w pozostałych strefach operacyjnej.
+Podczas tworzenia zestawu skalowania w ramach jednej strefy można kontrolować, w której strefie są uruchamiane wszystkie wystąpienia maszyn wirtualnych, a zestaw skalowania jest zarządzany i automatycznie skalowany tylko w ramach tej strefy. Nadmiarowy zestaw skalowania strefowo umożliwia utworzenie jednego zestawu skalowania obejmującego wiele stref. Ponieważ wystąpienia maszyn wirtualnych są tworzone, domyślnie są równomiernie zrównoważone w strefach. W przypadku wystąpienia przerwy w jednej ze stref zestaw skalowania nie jest automatycznie skalowany w celu zwiększenia pojemności. Najlepszym rozwiązaniem jest skonfigurowanie reguł skalowania automatycznego na podstawie użycia procesora lub pamięci. Reguły skalowania automatycznego pozwolą, aby zestaw skalowania odpowiadał utracie wystąpień maszyn wirtualnych w tej strefie przez skalowanie nowych wystąpień w pozostałych strefach operacyjnych.
 
-Do korzystania ze stref dostępności, należy utworzyć zestaw skalowania w [obsługiwanym regionie platformy Azure](../availability-zones/az-overview.md#services-support-by-region). Można utworzyć zestaw skalowania, który używa strefach dostępności przy użyciu jednego z następujących metod:
+Aby można było używać Strefy dostępności, zestaw skalowania musi być utworzony w [obsługiwanym regionie platformy Azure](../availability-zones/az-overview.md#services-support-by-region). Można utworzyć zestaw skalowania, który używa Strefy dostępności z jedną z następujących metod:
 
 - [Azure Portal](#use-the-azure-portal)
 - Interfejs wiersza polecenia platformy Azure
 - [Azure PowerShell](#use-azure-powershell)
-- [Szablony usługi Azure Resource Manager](#use-azure-resource-manager-templates)
+- [Szablony Azure Resource Manager](#use-azure-resource-manager-templates)
 
 ## <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
-Proces, aby utworzyć zestaw skalowania, który używa strefy dostępności jest taki sam, zgodnie z opisem w [wprowadzenie artykułu](quick-create-portal.md). Po wybraniu obsługiwany region platformy Azure, można utworzyć zestawu skalowania w jedną lub więcej stref dostępności, jak pokazano w poniższym przykładzie:
+Proces tworzenia zestawu skalowania, który używa strefy dostępności, jest taki sam jak szczegółowy w [artykule wprowadzenie](quick-create-portal.md). Po wybraniu obsługiwanego regionu platformy Azure można utworzyć zestaw skalowania w jednej lub kilku dostępnych strefach, jak pokazano w następującym przykładzie:
 
-![Tworzenie zestawu skalowania w jednej strefie dostępności](media/virtual-machine-scale-sets-use-availability-zones/vmss-az-portal.png)
+![Tworzenie zestawu skalowania w pojedynczej strefie dostępności](media/virtual-machine-scale-sets-use-availability-zones/vmss-az-portal.png)
 
-Zestaw skalowania i obsługi zasobów, takich jak usługa Azure load balancer i publicznego adresu IP są tworzone w jednej strefie, które określisz.
+Zestaw skalowania i zasoby pomocnicze, takie jak moduł równoważenia obciążenia platformy Azure i publiczny adres IP, są tworzone w pojedynczej określonej strefie.
 
 ## <a name="use-the-azure-cli"></a>Używanie interfejsu wiersza polecenia platformy Azure
 
-Proces, aby utworzyć zestaw skalowania, który używa strefy dostępności jest taki sam, zgodnie z opisem w [wprowadzenie artykułu](quick-create-cli.md). Aby korzystać ze stref dostępności, musisz utworzyć skalowania jest ustawiana w obsługiwanym regionie platformy Azure.
+Proces tworzenia zestawu skalowania, który używa strefy dostępności, jest taki sam jak szczegółowy w [artykule wprowadzenie](quick-create-cli.md). Aby użyć Strefy dostępności, musisz utworzyć zestaw skalowania w obsługiwanym regionie platformy Azure.
 
-Dodaj `--zones` parametr [tworzenie az vmss](/cli/azure/vmss) polecenia i określić które strefę do użycia (takie jak strefy *1*, *2*, lub *3*). Poniższy przykład tworzy jednostrefowego zestawu skalowania o nazwie *myScaleSet* w strefie *1*:
+[](/cli/azure/vmss) Dodaj parametr do polecenia AZ VMSS Create i określ, która strefa ma być używana (na przykład strefy 1, 2 lub 3). `--zones` Poniższy przykład tworzy zestaw skalowania z pojedynczą strefą o nazwie *myScaleSet* w strefie *1*:
 
 ```azurecli
 az vmss create \
@@ -94,13 +94,13 @@ az vmss create \
     --zones 1
 ```
 
-Pełny przykład Skaluj jednostrefowego zestawu i zasobów sieciowych, zobacz [ten przykładowy skrypt interfejsu wiersza polecenia](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-single-availability-zone/create-single-availability-zone.sh)
+Aby zapoznać się z kompletnym przykładem zestawu skalowania z pojedynczą strefą i zasobami sieciowymi, zobacz [Ten przykładowy skrypt interfejsu wiersza polecenia](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-single-availability-zone/create-single-availability-zone.sh) .
 
-### <a name="zone-redundant-scale-set"></a>Zestaw skalowania strefowo nadmiarowy
+### <a name="zone-redundant-scale-set"></a>Strefowo nadmiarowy zestaw skalowania
 
-Aby utworzyć skalę strefowo nadmiarowy zestaw, należy użyć *standardowa* jednostki SKU publicznego adresu IP adres i obciążenia równoważenia. Rozszerzone nadmiarowość *standardowa* jednostki SKU tworzy zasobów sieciowych strefowo nadmiarowe. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Load Balancer w warstwie standardowa](../load-balancer/load-balancer-standard-overview.md) i [Balancer w warstwie standardowa i strefy dostępności](../load-balancer/load-balancer-standard-availability-zones.md).
+Aby utworzyć strefowo nadmiarowy zestaw skalowania, należy użyć *standardowego* publicznego adresu IP jednostki SKU i modułu równoważenia obciążenia. W celu zwiększenia nadmiarowości *standardowa* jednostka SKU tworzy strefowo nadmiarowe zasoby sieciowe. Aby uzyskać więcej informacji, zobacz [Omówienie standardowego Azure Load Balancer](../load-balancer/load-balancer-standard-overview.md) i [Usługa Load Balancer w warstwie Standardowa i strefy dostępności](../load-balancer/load-balancer-standard-availability-zones.md).
 
-Aby utworzyć zestaw skalowania strefowo nadmiarowe, należy określić wieloma strefami z `--zones` parametru. Poniższy przykład tworzy strefowo nadmiarowego zestawu skalowania o nazwie *myScaleSet* w strefach *1,2,3*:
+Aby utworzyć strefowo nadmiarowy zestaw skalowania, określ wiele stref `--zones` z parametrem. Poniższy przykład tworzy strefowo nadmiarowy zestaw skalowania o nazwie *myScaleSet* w strefach *1, 2, 3*:
 
 ```azurecli
 az vmss create \
@@ -113,13 +113,13 @@ az vmss create \
     --zones 1 2 3
 ```
 
-Trwa kilka minut, aby utworzyć i skonfigurować wszystko, co zestaw skalowania maszyn wirtualnych i zasobów w określonej strefy. Pełny przykład skalowania strefowo nadmiarowego zestawu i zasobów sieciowych, zobacz [ten przykładowy skrypt interfejsu wiersza polecenia](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-zone-redundant-scale-set/create-zone-redundant-scale-set.sh)
+Utworzenie i skonfigurowanie wszystkich zasobów zestawu skalowania i maszyn wirtualnych w określonych strefach może potrwać kilka minut. Aby zapoznać się z kompletnym przykładem nadmiarowego zestawu skalowania i zasobów sieciowych przez strefę, zobacz [Ten przykładowy skrypt interfejsu wiersza polecenia](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-zone-redundant-scale-set/create-zone-redundant-scale-set.sh) .
 
 ## <a name="use-azure-powershell"></a>Korzystanie z programu Azure PowerShell
 
-Aby korzystać ze stref dostępności, musisz utworzyć skalowania jest ustawiana w obsługiwanym regionie platformy Azure. Dodaj `-Zone` parametr [New AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) polecenia i określić które strefę do użycia (takie jak strefy *1*, *2*, lub *3*).
+Aby użyć Strefy dostępności, musisz utworzyć zestaw skalowania w obsługiwanym regionie platformy Azure. [](/powershell/module/az.compute/new-azvmssconfig) Dodaj parametr do polecenia New-AzVmssConfig i określ, która strefa ma być używana (na przykład strefy 1, 2 lub 3). `-Zone`
 
-Poniższy przykład tworzy jednostrefowego zestawu skalowania o nazwie *myScaleSet* w *wschodnie stany USA 2* strefy *1*. Zasoby sieciowe platformy Azure dla sieci wirtualnej, publiczny adres IP i moduł równoważenia obciążenia są tworzone automatycznie. Po wyświetleniu monitu podaj własne odpowiednie poświadczenia administracyjne dla wystąpień maszyn wirtualnych w zestawie skalowania:
+Poniższy przykład tworzy zestaw skalowania z pojedynczą strefą o nazwie *myScaleSet* w *regionie Wschodnie stany USA 2* . Zasoby sieciowe platformy Azure dla sieci wirtualnej, publiczny adres IP i moduł równoważenia obciążenia są tworzone automatycznie. Po wyświetleniu monitu podaj własne odpowiednie poświadczenia administracyjne dla wystąpień maszyn wirtualnych w zestawie skalowania:
 
 ```powershell
 New-AzVmss `
@@ -134,9 +134,9 @@ New-AzVmss `
   -Zone "1"
 ```
 
-### <a name="zone-redundant-scale-set"></a>Zestaw skalowania strefowo nadmiarowy
+### <a name="zone-redundant-scale-set"></a>Strefowo nadmiarowy zestaw skalowania
 
-Aby utworzyć zestaw skalowania strefowo nadmiarowe, należy określić wieloma strefami z `-Zone` parametru. Poniższy przykład tworzy strefowo nadmiarowego zestawu skalowania o nazwie *myScaleSet* między *wschodnie stany USA 2* stref *1, 2, 3*. Zasoby strefowo nadmiarowa sieć platformy Azure dla sieci wirtualnej, publiczny adres IP i równoważenia obciążenia są tworzone automatycznie. Po wyświetleniu monitu podaj własne odpowiednie poświadczenia administracyjne dla wystąpień maszyn wirtualnych w zestawie skalowania:
+Aby utworzyć strefowo nadmiarowy zestaw skalowania, określ wiele stref `-Zone` z parametrem. Poniższy przykład tworzy strefowo nadmiarowy zestaw skalowania o nazwie *myScaleSet* w *regionach Wschodnie stany USA 2* *, 2, 3*. Strefy nadmiarowe zasoby sieciowe platformy Azure dla sieci wirtualnej, publicznego adresu IP i usługi równoważenia obciążenia są tworzone automatycznie. Po wyświetleniu monitu podaj własne odpowiednie poświadczenia administracyjne dla wystąpień maszyn wirtualnych w zestawie skalowania:
 
 ```powershell
 New-AzVmss `
@@ -153,9 +153,9 @@ New-AzVmss `
 
 ## <a name="use-azure-resource-manager-templates"></a>Korzystanie z szablonów usługi Azure Resource Manager
 
-Proces, aby utworzyć zestaw skalowania, który używa strefy dostępności jest taki sam, zgodnie z opisem w artykule wprowadzającym dla [Linux](quick-create-template-linux.md) lub [Windows](quick-create-template-windows.md). Aby korzystać ze stref dostępności, musisz utworzyć skalowania jest ustawiana w obsługiwanym regionie platformy Azure. Dodaj `zones` właściwości *Microsoft.Compute/virtualMachineScaleSets* zasobów, wpisz w szablonie i określ strefę, które ma być używana (takie jak strefy *1*, *2*, lub *3*).
+Proces tworzenia zestawu skalowania, który używa strefy dostępności, jest taki sam jak szczegółowy w artykule wprowadzenie do systemu [Linux](quick-create-template-linux.md) lub [Windows](quick-create-template-windows.md). Aby użyć Strefy dostępności, musisz utworzyć zestaw skalowania w obsługiwanym regionie platformy Azure. Dodaj właściwość do typu zasobu Microsoft. COMPUTE/virtualMachineScaleSets w szablonie i określ, która strefa ma być używana (na przykład Strefa 1, 2 lub 3). `zones`
 
-Poniższy przykład tworzy Linux jednostrefowego zestawu skalowania o nazwie *myScaleSet* w *wschodnie stany USA 2* strefy *1*:
+Poniższy przykład tworzy zestaw skalowania jednostrefowego systemu Linux o nazwie *myScaleSet* w *regionie Wschodnie stany USA 2* , strefa *1*:
 
 ```json
 {
@@ -195,11 +195,11 @@ Poniższy przykład tworzy Linux jednostrefowego zestawu skalowania o nazwie *my
 }
 ```
 
-Pełny przykład Skaluj jednostrefowego zestawu i zasobów sieciowych, zobacz [ten przykładowy szablon usługi Resource Manager](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/singlezone.json)
+Aby zapoznać się z kompletnym przykładem zestawu skalowania z pojedynczą strefą i zasobami sieciowymi, zobacz [Ten przykładowy szablon Menedżer zasobów](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/singlezone.json)
 
-### <a name="zone-redundant-scale-set"></a>Zestaw skalowania strefowo nadmiarowy
+### <a name="zone-redundant-scale-set"></a>Strefowo nadmiarowy zestaw skalowania
 
-Aby utworzyć zestaw skalowania strefowo nadmiarowe, należy określić wiele wartości w `zones` właściwość *Microsoft.Compute/virtualMachineScaleSets* typu zasobu. Poniższy przykład tworzy strefowo nadmiarowego zestawu skalowania o nazwie *myScaleSet* między *wschodnie stany USA 2* stref *1,2,3*:
+Aby utworzyć strefowo nadmiarowy zestaw skalowania, określ wiele wartości `zones` we właściwości dla typu zasobu *Microsoft. COMPUTE/virtualMachineScaleSets* . Poniższy przykład tworzy strefowo nadmiarowy zestaw skalowania o nazwie *myScaleSet* w *regionach Wschodnie stany USA 2* *, 2, 3*:
 
 ```json
 {
@@ -215,10 +215,10 @@ Aby utworzyć zestaw skalowania strefowo nadmiarowe, należy określić wiele wa
 }
 ```
 
-W przypadku tworzenia publicznego adresu IP lub równoważenia obciążenia, określić *"sku": {"name": "Standardowy"} "* właściwości, aby utworzyć zasoby sieciowe strefowo nadmiarowe. Należy również utworzyć sieciową grupę zabezpieczeń i reguł, aby zezwolić na ruch. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Load Balancer w warstwie standardowa](../load-balancer/load-balancer-standard-overview.md) i [Balancer w warstwie standardowa i strefy dostępności](../load-balancer/load-balancer-standard-availability-zones.md).
+Jeśli tworzysz publiczny adres IP lub moduł równoważenia obciążenia, określ *"SKU": {"name":*  Właściwość "standard"} umożliwia tworzenie strefowo nadmiarowych zasobów sieciowych. Należy również utworzyć sieciową grupę zabezpieczeń i reguły, aby zezwolić na ruch. Aby uzyskać więcej informacji, zobacz [Omówienie standardowego Azure Load Balancer](../load-balancer/load-balancer-standard-overview.md) i [Usługa Load Balancer w warstwie Standardowa i strefy dostępności](../load-balancer/load-balancer-standard-availability-zones.md).
 
-Pełny przykład skalowania strefowo nadmiarowego zestawu i zasobów sieciowych, zobacz [ten przykładowy szablon usługi Resource Manager](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
+Aby zapoznać się z kompletnym przykładem nadmiarowego zestawu skalowania i zasobów sieciowych przez strefę, zobacz [Ten przykładowy szablon Menedżer zasobów](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, po utworzeniu zestawu skalowania w strefie dostępności, możesz dowiedzieć się jak [wdrażanie aplikacji na maszynie wirtualnej zestawach skalowania](tutorial-install-apps-cli.md) lub [korzystanie ze skalowania automatycznego za pomocą zestawów skalowania maszyn wirtualnych](tutorial-autoscale-cli.md).
+Po utworzeniu zestawu skalowania w strefie dostępności można dowiedzieć się, jak [wdrażać aplikacje w zestawach skalowania maszyn wirtualnych](tutorial-install-apps-cli.md) lub [używać funkcji automatycznego skalowania z zestawami skalowania maszyn wirtualnych](tutorial-autoscale-cli.md).

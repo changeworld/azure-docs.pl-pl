@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d6229e78958fdc4995153d99ad02a15804330f1b
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: d314cc55096f681d1bcf66d33c4c30a4060751e9
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544567"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972650"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Skonfiguruj źródła tożsamości vCenter do użycia Active Directory
 
@@ -63,7 +63,7 @@ Podczas konfigurowania domeny Active Directory należy skorzystać z informacji 
 Jeśli masz informacje w poprzedniej tabeli, możesz dodać swoje Active Directory lokalne jako źródło tożsamości logowania jednokrotnego w programie vCenter.
 
 > [!TIP]
-> Więcej informacji o źródłach tożsamości logowania jednokrotnego znajdziesz na <a href="https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html" target="_blank">stronie dokumentacji programu VMware</a>.
+> Więcej informacji o źródłach tożsamości logowania jednokrotnego znajdziesz na [stronie dokumentacji programu VMware](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html).
 
 ## <a name="set-up-new-active-directory-on-a-private-cloud"></a>Konfigurowanie nowego Active Directory w chmurze prywatnej
 
@@ -83,7 +83,7 @@ Aby uzyskać szczegółowe instrukcje, zobacz temat [Instalowanie nowego lasu sy
 
 Po skonfigurowaniu lasu Active Directory i domeny możesz [dodać Źródło tożsamości w programie vCenter](#add-an-identity-source-on-vcenter) dla nowego Active Directory.
 
-### <a name="new-active-directory-domain-in-an-existing-active-directory-forest"></a>Nowe domena usługi Active Directory w istniejącym lesie Active Directory
+### <a name="new-active-directory-domain-in-an-existing-active-directory-forest"></a>Nowa domena Active Directory w istniejącym lesie Active Directory
 
 Aby skonfigurować nową domenę Active Directory w istniejącym lesie Active Directory, potrzebne są:
 

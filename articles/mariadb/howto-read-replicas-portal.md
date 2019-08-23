@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/12/2019
-ms.openlocfilehash: 902187c3462c54f728519aa1e6e60fbcc1eab20f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.date: 08/21/2019
+ms.openlocfilehash: a7e7beb3cdef7551a1bce2a693b8044ea6ed8946
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876310"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907682"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Tworzenie replik odczytu i zarządzanie nimi w Azure Database for MariaDB przy użyciu Azure Portal
 
@@ -45,9 +45,12 @@ Serwer repliki odczytu można utworzyć, wykonując następujące czynności:
 
     ![Azure Database for MariaDB — nazwa repliki](./media/howto-read-replica-portal/replica-name.png)
 
-6. Wybierz lokalizację serwera repliki. Replikę można utworzyć w dowolnym regionie świadczenia usługi Azure. Lokalizacja domyślna jest taka sama jak w przypadku serwera głównego.
+6. Wybierz lokalizację serwera repliki. Lokalizacja domyślna jest taka sama jak w przypadku serwera głównego.
 
     ![Azure Database for MariaDB — lokalizacja repliki](./media/howto-read-replica-portal/replica-location.png)
+
+   > [!NOTE]
+   > Aby dowiedzieć się więcej na temat regionów, w których można utworzyć replikę, zapoznaj się z [artykułem dotyczącym pojęć dotyczących repliki](concepts-read-replicas.md). 
 
 7. Wybierz **przycisk OK** , aby potwierdzić utworzenie repliki.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 5174b46bae5bbcc18f5a2575fb68cce1305507a3
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a1a97e7521e9772b1d13049d42e67d7ac318fffc
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826553"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907357"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopiowanie danych z usługi Azure Blob Storage do bazy danych SQL za pomocą usługi Azure Data Factory
 W tym samouczku utworzysz fabrykę danych przy użyciu interfejsu użytkownika usługi Azure Data Factory. Potok w tej fabryce danych kopiuje dane z usługi Azure Blob Storage do bazy danych SQL. Wzorzec konfiguracji w tym samouczku ma zastosowanie do kopiowania danych z magazynu opartego na plikach do relacyjnego magazynu danych. Aby zapoznać się z listą magazynów danych obsługiwanych jako źródła i ujścia, zobacz tabelę zawierającą [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -172,6 +172,9 @@ W tym samouczku zaczniesz od utworzenia potoku. Następnie utworzysz usługi po�
 1. Przejdź do karty z potokiem i upewnij się, że w obszarze **Zestaw danych będący ujściem** wybrano pozycję **OutputSqlDataset**.
 
     ![Karta potoku](./media/tutorial-copy-data-portal/pipeline-tab-2.png)       
+
+Opcjonalnie można zmapować schemat źródła do odpowiedniego schematu docelowego przez następujące [Mapowanie schematu w działaniu kopiowania](copy-activity-schema-and-type-mapping.md)
+    
 ## <a name="validate-the-pipeline"></a>Weryfikowanie potoku
 Wybierz na pasku narzędzi pozycję **Weryfikuj**, aby zweryfikować potok.
  

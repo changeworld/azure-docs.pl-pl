@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 4e1642366d41906035e1ba1b7f75d0ad875c739b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 8d4712ca57801c15510ffcaf54852ce9287d343b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574639"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972401"
 ---
 # <a name="create-vmware-virtual-machines-on-your-private-cloud"></a>Tworzenie maszyn wirtualnych VMware w chmurze prywatnej
 
@@ -143,7 +143,7 @@ Strony sieci w portalu CloudSimple umożliwiają określenie konfiguracji tabel 
 
     ![Publiczny adres IP](media/quick-create-pc-public-ip.png)
 
-Zostanie rozpoczęte zadanie alokowania publicznego adresu IP. Stan zadania można sprawdzić na stronie **zadania > zadań** . Po zakończeniu alokacji nowy wpis zostanie wyświetlony na stronie publiczne adresy IP. 
+Zostanie rozpoczęte zadanie alokowania publicznego adresu IP. Stan zadania można sprawdzić na stronie **zadania > zadań** . Po zakończeniu alokacji nowy wpis zostanie wyświetlony na stronie publiczne adresy IP.
 
 Maszyna wirtualna, do której należy zamapować ten adres IP, musi być skonfigurowana przy użyciu adresu lokalnego określonego powyżej. Procedura konfigurowania adresu IP jest specyficzna dla systemu operacyjnego maszyny wirtualnej. Aby uzyskać poprawną procedurę, zapoznaj się z dokumentacją systemu operacyjnego maszyny wirtualnej.
 
@@ -205,7 +205,7 @@ lub
 ```
 python3 -m http.server 80
 ```
-Uruchom przeglądarkę na pulpicie i wskaż port 80 dla publicznego adresu IP, aby przeglądać pliki na maszynie wirtualnej. 
+Uruchom przeglądarkę na pulpicie i wskaż port 80 dla publicznego adresu IP, aby przeglądać pliki na maszynie wirtualnej.
 
 ### <a name="default-cloudsimple-firewall-rules-for-public-ip"></a>Domyślne reguły zapory CloudSimple dla publicznego adresu IP
 

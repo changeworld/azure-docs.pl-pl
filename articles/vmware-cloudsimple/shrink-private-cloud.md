@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 67bb7e0cd8a800c2c2ba87c768739fd573ef6888
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 00d0067fe51efef8efffe31860e16f4530adf3ac
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812207"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972366"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>Zmniejsz chmurę prywatną CloudSimple
 
@@ -30,7 +30,7 @@ Aby zmniejszyć chmurę prywatną, należy spełnić następujące warunki.  Kla
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="shrink-a-private-cloud"></a>Zmniejsz chmurę prywatną 
+## <a name="shrink-a-private-cloud"></a>Zmniejsz chmurę prywatną
 
 1. [Dostęp do portalu CloudSimple](access-cloudsimple-portal.md).
 
@@ -54,7 +54,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 Rozpocznie się zmniejszanie chmury prywatnej.  Postęp można monitorować w zadaniach.  Proces zmniejszania może potrwać kilka godzin w zależności od danych, które muszą zostać ponownie zsynchronizowane w sieci vSAN.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Korzystanie z maszyn wirtualnych VMware na platformie Azure](quickstart-create-vmware-virtual-machine.md)
 * Dowiedz się więcej o [chmurach prywatnych](cloudsimple-private-cloud.md)

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 7/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 5095e680eb7fd33d28acb2d187f83d86db1b46bf
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: 8e535fc581e186abd032206c2bbf78623d95967f
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656629"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69899768"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>Jak korzystać z zarządzanej tożsamości aplikacji Service Fabric w celu uzyskiwania dostępu do usług platformy Azure (wersja zapoznawcza)
 
@@ -23,7 +23,7 @@ Aplikacje Service Fabric mogą korzystać z zarządzanych tożsamości w celu uz
 > Zarządzana tożsamość reprezentuje skojarzenie między zasobem platformy Azure i jednostką usługi w odpowiedniej dzierżawie Azure AD skojarzonym z subskrypcją zawierającą zasób. W związku z tym w kontekście Service Fabric zarządzane tożsamości są obsługiwane tylko w przypadku aplikacji wdrożonych jako zasoby platformy Azure. 
 
 > [!IMPORTANT]
-> Przed użyciem zarządzanej tożsamości aplikacji Service Fabric, aplikacja kliencka musi mieć udzielony dostęp do chronionego zasobu. Zapoznaj się z listą [usług platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-managed-identities-for-azure-resources) , aby sprawdzić pomoc techniczną, a następnie do dokumentacji odpowiedniej usługi, aby uzyskać dostęp do tożsamości do interesujących Cię zasobów. 
+> Przed użyciem zarządzanej tożsamości aplikacji Service Fabric, aplikacja kliencka musi mieć udzielony dostęp do chronionego zasobu. Zapoznaj się z listą [usług platformy Azure, które obsługują uwierzytelnianie usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources) , aby sprawdzić pomoc techniczną, a następnie do dokumentacji odpowiedniej usługi, aby uzyskać dostęp do tożsamości do interesujących Cię zasobów. 
 
 ## <a name="acquiring-an-access-token-using-rest-api"></a>Uzyskiwanie tokenu dostępu przy użyciu interfejsu API REST
 W klastrach obsługujących tożsamość zarządzaną środowisko uruchomieniowe Service Fabric udostępnia punkt końcowy localhost, którego aplikacje mogą używać do uzyskiwania tokenów dostępu. Punkt końcowy jest dostępny w każdym węźle klastra i jest dostępny dla wszystkich jednostek w tym węźle. Autoryzowane obiekty wywołujące mogą uzyskać tokeny dostępu przez wywołanie tego punktu końcowego i przedprezentowanie kodu uwierzytelniania; kod jest generowany przez środowisko uruchomieniowe Service Fabric dla każdej odrębnej aktywacji pakietu kodu usługi i jest powiązany z okresem istnienia procesu obsługującego ten pakiet kodu usługi.

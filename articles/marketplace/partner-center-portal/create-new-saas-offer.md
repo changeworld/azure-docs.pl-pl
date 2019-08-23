@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 37624c79a345f956de9a289c672340e391199e2f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
-ms.translationtype: HT
+ms.openlocfilehash: 584b9fdde33d14650c36c44b9b457a25f8a1d6f9
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650718"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900133"
 ---
 # <a name="create-a-new-saas-offer"></a>Utwórz nową ofertę SaaS
 
@@ -153,23 +153,9 @@ Po włączeniu dysku testowego zostanie wyświetlony monit o skonfigurowanie śr
 
 ## <a name="connect-lead-management"></a>Zarządzanie potencjalnymi klientami
 
-Połącz się z klientami bezpośrednio, wymieniając swoją ofertę na rynku Marketplace i łącząc system zarządzania relacjami z klientami (CRM, Customer Relationship Management), dzięki czemu możesz otrzymywać informacje kontaktowe klienta bezpośrednio po pomyślnym zajściu klienta lub wdrożeniu iloczyn.
+[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
-- **Wybierz miejsce docelowe potencjalnego klienta** (menu rozwijane): Podaj szczegóły połączenia z systemem CRM, do którego chcesz wysyłać potencjalnych klientów. 
-
-Centrum partnerskie obsługuje następujące systemy CRM do zarządzania potencjalnymi klientami. Wybierz łącze do instrukcji instalacji.
-
-- Obiekt blob platformy Azure — Podaj adres e-mail kontaktu, nazwę kontenera i parametry połączenia konta magazynu. 
-- [Tabela platformy Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) — Podaj kontaktowy adres e-mail i parametry połączenia konta magazynu. 
-- [Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) — umożliwia kontaktowanie się z serwerem poczty e-mail, adresem URL i trybem uwierzytelniania (pakietem Office 365 lub Azure Active Directory).
-- [Punkt końcowy https](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) — Podaj adres URL kontaktu i punkt końcowy https. 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) — Podaj adres e-mail kontaktu, identyfikator formularza, identyfikator konta Munchkin i identyfikator serwera.
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) — Podaj kontaktowy adres E-mail i identyfikator organizacji. 
-
-#### <a name="additional-lead-management-resources"></a>Dodatkowe zasoby zarządzania potencjalnymi klientami
-- [Często zadawane pytania dotyczące zarządzania potencjalnymi klientami](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Typowe błędy konfiguracji lidera](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [Przegląd zarządzania potencjalnymi klientami — Omówienie jednego modułu stronicowania](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
+Aby uzyskać więcej informacji, zobacz temat [Zarządzanie potencjalnymi klientami](./commercial-marketplace-get-customer-leads.md) .
 
 Pamiętaj, aby **zapisać** przed przejściem do następnej sekcji.
 

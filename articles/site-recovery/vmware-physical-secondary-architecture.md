@@ -1,23 +1,23 @@
 ---
-title: Architektura dla odzyskiwania po awarii serwera fizycznego/VMware do lokacji dodatkowej za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie składników i architektury używanych podczas odzyskiwania po awarii lokalnych maszyn wirtualnych z programu VMware lub serwerach fizycznych systemu Windows/Linux do lokacji dodatkowej programu VMware przy użyciu usługi Azure Site Recovery.
+title: Architektura odzyskiwania po awarii oprogramowania VMware/serwera fizycznego do lokacji dodatkowej z Azure Site Recovery | Microsoft Docs
+description: Ten artykuł zawiera omówienie składników i architektury używanych podczas odzyskiwania po awarii lokalnych maszyn wirtualnych VMware lub serwerów fizycznych z systemem Windows/Linux do pomocniczej lokacji programu VMware z Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: 171a88045531f1fdc01d7046ef0ad8157859d28c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0c00e26e6c12835db96c192400c3fe8652534dd4
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418268"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972110"
 ---
-# <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektura replikacji serwera fizycznego/VMware do lokacji dodatkowej w środowisku lokalnym
+# <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektura replikacji oprogramowania VMware/serwera fizycznego do pomocniczej lokacji lokalnej
 
-W tym artykule opisano architekturę i procesem stosowanym podczas konfigurowania replikacji odzyskiwania po awarii, tryb failover i odzyskiwanie maszyn wirtualnych VMware w środowisku lokalnym (VM) lub serwerach fizycznych systemu Windows/Linux do dodatkowej lokacji programu VMware, za pomocą [platformy Azure Site Recovery](site-recovery-overview.md).
+W tym artykule opisano architekturę i procesy używane podczas konfigurowania replikacji odzyskiwania po awarii, trybu failover i odzyskiwania lokalnych maszyn wirtualnych VMware lub serwerów fizycznych z systemem Windows/Linux do pomocniczej lokacji programu VMware przy użyciu [Azure Site Recovery ](site-recovery-overview.md).
 
 
 ## <a name="architectural-components"></a>Składniki architektury
@@ -38,12 +38,12 @@ W tym artykule opisano architekturę i procesem stosowanym podczas konfigurowani
 2. Po początkowej replikacji agent na każdej maszynie wysyła zmiany replikacji przyrostowej na serwer przetwarzania.
 3. Serwer przetwarzania optymalizuje dane i transferuje je na główny serwer docelowy w lokacji dodatkowej. Serwer konfiguracji zarządza procesem replikacji.
 
-**Rysunek 6: Program VMware do replikacji oprogramowania VMware**
+**Rysunek 6. Replikacja oprogramowania VMware do programu VMware**
 
 ![Z programu VMware do programu VMware](./media/site-recovery-components/vmware-to-vmware.png)
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Konfigurowanie](vmware-physical-secondary-disaster-recovery.md) odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych do lokacji dodatkowej.
+[Skonfiguruj](vmware-physical-secondary-disaster-recovery.md) odzyskiwanie po awarii maszyn wirtualnych VMware i serwerów fizycznych do lokacji dodatkowej.

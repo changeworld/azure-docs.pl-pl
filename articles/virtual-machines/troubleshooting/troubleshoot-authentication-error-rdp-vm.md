@@ -1,10 +1,10 @@
 ---
-title: Rozwiązywanie problemów z uwierzytelnianiem za pomocą protokołu RDP połączyć z maszyną Wirtualną platformy Azure | Dokumentacja firmy Microsoft
+title: Rozwiązywanie problemów z błędami uwierzytelniania podczas łączenia się z maszyną wirtualną platformy Azure przy użyciu protokołu RDP | Microsoft Docs
 description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: cshepard
+manager: cshepard,csscontent
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 47d3b827099d3a4a7520ac66765d2928795b6e49
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 68037ab55918a76567f2dfee7cbda1d84d0c442e
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60594921"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69908016"
 ---
-# <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Rozwiązywanie problemów z uwierzytelnianiem za pomocą protokołu RDP połączyć z maszyną Wirtualną platformy Azure
+# <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Rozwiązywanie problemów z błędami uwierzytelniania podczas łączenia się z maszyną wirtualną platformy Azure przy użyciu protokołu RDP
 
-Ten artykuł ułatwia rozwiązywanie problemów dotyczących błędów uwierzytelniania, które występują, gdy połączenia protokołu RDP (Remote Desktop) umożliwia łączenie z maszyną wirtualną (VM) platformy Azure.
+Ten artykuł może pomóc w rozwiązywaniu problemów z błędami uwierzytelniania występującymi w przypadku korzystania z połączenia Remote Desktop Protocol (RDP) w celu nawiązania połączenia z maszyną wirtualną platformy Azure.
 
 ## <a name="symptoms"></a>Objawy
 
-Możesz przechwycić zrzut ekranu przedstawiający wyświetlony ekran powitalny, która wskazuje, że jest uruchomiony system operacyjny maszyny Wirtualnej Azure. Jednak podczas nawiązywania połączenia z maszyną wirtualną przy użyciu usługi Podłączanie pulpitu zdalnego, otrzymasz następujący komunikat o błędzie.
+Przechwyć zrzut ekranu maszyny wirtualnej platformy Azure, który pokazuje ekran powitalny i wskazuje, że system operacyjny jest uruchomiony. Jednak podczas próby nawiązania połączenia z maszyną wirtualną przy użyciu Podłączanie pulpitu zdalnego zostanie wyświetlony jeden z następujących komunikatów o błędach.
 
 ### <a name="error-message-1"></a>Komunikat o błędzie 1
 
@@ -35,62 +35,62 @@ Możesz przechwycić zrzut ekranu przedstawiający wyświetlony ekran powitalny,
 
 ### <a name="error-message-2"></a>Komunikat o błędzie 2
 
-**Komputera zdalnego, w którym próbujesz nawiązać połączenie z wymaga sieci poziom Uwierzytelnianiem, ale nie można skontaktować się z kontrolerem domeny w Windows do wykonywania uwierzytelniania na poziomie sieci. Jeśli jesteś administratorem na komputerze zdalnym, można wyłączyć NLA, korzystając z opcji na karcie zdalny w oknie dialogowym Właściwości systemu.**
+**Komputer zdalny, z którym próbujesz nawiązać połączenie, wymaga Uwierzytelnianie na poziomie sieci (NLA), ale nie można skontaktować się z kontrolerem domeny systemu Windows w celu przeprowadzenia NLA. Jeśli jesteś administratorem na komputerze zdalnym, możesz wyłączyć uwierzytelnianie NLA przy użyciu opcji na karcie zdalne okna dialogowego Właściwości systemu.**
 
-### <a name="error-message-3-generic-connection-error"></a>Komunikat o błędzie 3 (błąd połączenia ogólnego)
+### <a name="error-message-3-generic-connection-error"></a>Komunikat o błędzie 3 (ogólny błąd połączenia)
 
-**Ten komputer nie może połączyć się z komputerem zdalnym. Spróbuj połączyć się ponownie, jeśli problem będzie się powtarzał, skontaktuj się z właścicielem komputera zdalnego lub z administratorem sieci.**
+**Ten komputer nie może nawiązać połączenia z komputerem zdalnym. Spróbuj ponownie nawiązać połączenie, jeśli problem będzie się powtarzał, skontaktuj się z właścicielem komputera zdalnego lub administratorem sieci.**
 
 ## <a name="cause"></a>Przyczyna
 
-Istnieje wiele powodów dlaczego NLA mogą blokować dostęp RDP z maszyną wirtualną.
+Istnieje wiele powodów, dla których może blokować dostęp RDP do maszyny wirtualnej.
 
 ### <a name="cause-1"></a>Przyczyny 1
 
-Maszyna wirtualna nie może komunikować się z kontrolerem domeny (DC). Ten problem może uniemożliwić dostęp do maszyny Wirtualnej przy użyciu poświadczeń domeny sesję RDP. Jednak nadal będzie mógł zalogować się przy użyciu poświadczeń administratora lokalnego. Ten problem może wystąpić w następujących sytuacjach:
+Maszyna wirtualna nie może komunikować się z kontrolerem domeny (DC). Ten problem może uniemożliwić sesji protokołu RDP uzyskanie dostępu do maszyny wirtualnej przy użyciu poświadczeń domeny. Jednak nadal będzie można zalogować się przy użyciu poświadczeń administratora lokalnego. Ten problem może wystąpić w następujących sytuacjach:
 
-1. Kanału zabezpieczeń Active Directory, między tej maszyny Wirtualnej i kontroler domeny został przerwany.
+1. Active Directory kanał zabezpieczeń między tą maszyną wirtualną a kontrolerem domeny zostanie przerwany.
 
-2. Maszyna wirtualna ma stara kopia hasło do konta i kontroler domeny ma nowszą kopię.
+2. Maszyna wirtualna ma starą kopię hasła konta, a kontroler domeny ma nowszą kopię.
 
-3. Kontroler domeny, który łączy się ta maszyna wirtualna jest w złej kondycji.
+3. Kontroler domeny, z którym jest nawiązywane połączenie z tą maszyną wirtualną, jest w złej kondycji.
 
 ### <a name="cause-2"></a>Przyczyny 2
 
-Poziom szyfrowania maszyny wirtualnej jest wyższa niż ten, który jest używany przez komputer kliencki.
+Poziom szyfrowania maszyny wirtualnej jest wyższy niż ten, który jest używany przez komputer kliencki.
 
-### <a name="cause-3"></a>Przyczyny 3
+### <a name="cause-3"></a>Przyczyna 3
 
-Protokoły TLS 1.0, 1.1 lub 1.2 (server) są wyłączone na maszynie Wirtualnej.
+Protokoły TLS 1,0, 1,1 lub 1,2 (serwery) są wyłączone na maszynie wirtualnej.
 
 ### <a name="cause-4"></a>Przyczyna 4
 
-Maszyna wirtualna została skonfigurowana do wyłączyć logowania przy użyciu poświadczeń domeny, a urząd zabezpieczeń lokalnych (LSA) jest nieprawidłowo skonfigurowana.
+Maszyna wirtualna została skonfigurowana w taki sposób, aby wyłączyć logowanie przy użyciu poświadczeń domeny, a Urząd zabezpieczeń lokalnych (LSA) jest niepoprawnie skonfigurowany.
 
-### <a name="cause-5"></a>Przyczyny 5
+### <a name="cause-5"></a>Przyczyna 5
 
-Maszyna wirtualna została skonfigurowana pod kątem akceptowania tylko informacje o przetwarzaniu Standard FIPS (Federal)-algorytmu zgodnego połączenia. Zwykle odbywa się przy użyciu zasad usługi Active Directory. Jest to konfiguracja rzadkich, ale ze standardem FIPS można wymusić tylko połączeń usług pulpitu zdalnego.
+Maszyna wirtualna została skonfigurowana w taki sposób, aby akceptowała tylko połączenia zgodne z algorytmem FIPS (Federal Information Processing Standard). Jest to zazwyczaj realizowane przy użyciu zasad Active Directory. Jest to rzadki sposób konfiguracji, ale dla Pulpit zdalny połączeń można wymusić stosowanie trybu FIPS.
 
-## <a name="before-you-troubleshoot"></a>Przed Rozwiązywanie problemów
+## <a name="before-you-troubleshoot"></a>Przed rozpoczęciem rozwiązywania problemów
 
-### <a name="create-a-backup-snapshot"></a>Tworzenie migawki kopii zapasowej
+### <a name="create-a-backup-snapshot"></a>Utwórz migawkę kopii zapasowej
 
-Aby utworzyć migawkę kopii zapasowej, wykonaj kroki opisane w [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
+Aby utworzyć migawkę kopii zapasowej, wykonaj kroki opisane w sekcji [migawka dysku](../windows/snapshot-copy-managed-disk.md).
 
-### <a name="connect-to-the-vm-remotely"></a>Zdalne ustanawianie połączenia z maszyną Wirtualną
+### <a name="connect-to-the-vm-remotely"></a>Zdalne nawiązywanie połączenia z maszyną wirtualną
 
-Aby zdalnie połączyć się z maszyną wirtualną, należy użyć jednej z metod w [sposobu rozwiązywania problemów maszyny Wirtualnej platformy Azure przy użyciu narzędzi zdalnych](remote-tools-troubleshoot-azure-vm-issues.md).
+Aby zdalnie nawiązać połączenie z maszyną wirtualną, użyj jednej z metod w temacie [jak używać narzędzi zdalnych do rozwiązywania problemów z maszynami wirtualnymi platformy Azure](remote-tools-troubleshoot-azure-vm-issues.md).
 
 ### <a name="group-policy-client-service"></a>Usługa klienta zasad grupy
 
-Jeśli jest to maszyna wirtualna przyłączonych do domeny, należy najpierw zatrzymać usługę klienta zasad grupy, aby zapobiec zastąpieniu zmiany wszystkie zasady usługi Active Directory. Aby to zrobić, uruchom następujące polecenie:
+Jeśli jest to maszyna wirtualna przyłączona do domeny, najpierw Zatrzymaj usługę klienta zasady grupy, aby zapobiec zastąpieniu zmian przez zasady Active Directory. Aby to zrobić, uruchom następujące polecenie:
 
 ```cmd
 REM Disable the member server to retrieve the latest GPO from the domain upon start
 REG add "HKLM\SYSTEM\CurrentControlSet\Services\gpsvc" /v Start /t REG_DWORD /d 4 /f
 ```
 
-Po usunięciu problemu Przywróć możliwości tej maszyny wirtualnej, skontaktuj się z domeny w celu pobrania najnowszych zasad grupy z domeny. Aby to zrobić, uruchom następujące polecenia:
+Po naprawieniu problemu Przywróć tę maszynę wirtualną, aby skontaktować się z domeną w celu pobrania najnowszego obiektu zasad grupy z domeny. Aby to zrobić, uruchom następujące polecenia:
 
 ```cmd
 sc config gpsvc start= auto
@@ -99,11 +99,11 @@ sc start gpsvc
 gpupdate /force
 ```
 
-Jeśli zmiana zostanie wycofana, oznacza to, czy przyczyną problemu jest zasady usługi Active Directory. 
+Jeśli zmiana zostanie wycofana, oznacza to, że Active Directory zasady powodują wystąpienie problemu. 
 
 ### <a name="workaround"></a>Obejście
 
-Aby obejść ten problem, uruchom następujące polecenia w oknie wiersza polecenia, aby wyłączyć uwierzytelniania na poziomie sieci:
+Aby obejść ten problem, uruchom następujące polecenia w oknie polecenia, aby wyłączyć uwierzytelnianie:
 
 ```cmd
 REM Disable the Network Level Authentication
@@ -112,9 +112,9 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-T
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 0
 ```
 
-Następnie należy ponownie uruchomić maszynę Wirtualną.
+Następnie uruchom ponownie maszynę wirtualną.
 
-Aby ponownie włączyć NLA, uruchom następujące polecenie, a następnie uruchom ponownie maszynę Wirtualną:
+Aby ponownie włączyć uwierzytelnianie NLA, uruchom następujące polecenie, a następnie uruchom ponownie maszynę wirtualną:
 
 ```cmd
 REG add "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v disabledomaincreds /t REG_DWORD /d 0 /f
@@ -126,101 +126,101 @@ REG add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-T
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-### <a name="for-domain-joined-vms"></a>Dla maszyn wirtualnych z przyłączonym do domeny
+### <a name="for-domain-joined-vms"></a>W przypadku maszyn wirtualnych przyłączonych do domeny
 
-Aby rozwiązać ten problem, najpierw sprawdzić, czy maszyna wirtualna może połączyć się kontrolera domeny i tego, czy kontroler domeny ma stan "w dobrej kondycji" i może obsługiwać żądań z maszyny Wirtualnej.
+Aby rozwiązać ten problem, należy najpierw sprawdzić, czy maszyna wirtualna może połączyć się z kontrolerem domeny, oraz czy kontroler domeny ma stan "dobra" i może obsługiwać żądania z maszyny wirtualnej.
 
 >[!Note] 
->Aby przetestować kondycji kontrolera domeny, można użyć innej maszyny Wirtualnej w tej samej sieci Wirtualnej i podsieci, które współdzielą ten sam serwer logowania.
+>Aby przetestować kondycję kontrolera domeny, można użyć innej maszyny wirtualnej w tej samej sieci wirtualnej i podsieci, która współużytkuje ten sam serwer logowania.
 
-Nawiązywanie połączenia z maszyny Wirtualnej, którego dotyczy problem, za pomocą konsoli szeregowej, CMD zdalnego lub zdalnej programu PowerShell, zgodnie z instrukcjami w sekcji "Nawiązać połączenia zdalne z maszyną wirtualną".
+Nawiąż połączenie z maszyną wirtualną, na której występuje problem przy użyciu Konsola szeregowa, zdalnego narzędzia CMD lub zdalnego programu PowerShell, zgodnie z krokami opisanymi w sekcji "łączenie się zdalnie z maszyną wirtualną".
 
-Aby określić kontroler domeny, które nawiązuje połączenie maszyna wirtualna, uruchom następujące polecenie w konsoli: 
+Aby określić, z którym kontrolerem domeny jest nawiązywane połączenie maszyna wirtualna, uruchom następujące polecenie w konsoli programu: 
 
 ```cmd
 set | find /i "LOGONSERVER"
 ```
 
-Następnie należy sprawdzić kondycję bezpiecznego kanału między maszyną Wirtualną i kontroler domeny. Aby to zrobić, uruchom następujące polecenie w wystąpieniu programu PowerShell z podwyższonym poziomem uprawnień. To polecenie zwraca flagę logiczną, wskazującą, czy bezpieczny kanał jest aktywna:
+Następnie Sprawdź kondycję bezpiecznego kanału między maszyną wirtualną a kontrolerem domeny. Aby to zrobić, uruchom następujące polecenie w wystąpieniu programu PowerShell z podwyższonym poziomem uprawnień. To polecenie zwraca flagę logiczną, która wskazuje, czy bezpieczny kanał jest aktywny:
 
 ```powershell
 Test-ComputerSecureChannel -verbose
 ```
 
-Jeśli kanał jest uszkodzona, uruchom następujące polecenie, aby go naprawić:
+Jeśli kanał jest przerwany, uruchom następujące polecenie, aby je naprawić:
 
 ```powershell
 Test-ComputerSecureChannel -repair
 ```
 
-Upewnij się, że hasło konta komputera w usłudze Active Directory został zaktualizowany na maszynie Wirtualnej i kontroler domeny:
+Upewnij się, że hasło konta komputera w Active Directory zostało zaktualizowane na maszynie wirtualnej i na kontrolerze domeny:
 
 ```powershell
 Reset-ComputerMachinePassword -Server "<COMPUTERNAME>" -Credential <DOMAIN CREDENTIAL WITH DOMAIN ADMIN LEVEL>
 ```
 
-Jeśli komunikacja między kontrolerem domeny i maszyny Wirtualnej jest dobry, ale kontroler domeny nie jest dobra, aby otworzyć sesję RDP, możesz spróbować uruchomić ponownie kontroler domeny.
+Jeśli komunikacja między kontrolerem domeny a maszyną wirtualną jest dobra, ale kontroler domeny nie ma wystarczającej kondycji, aby otworzyć sesję RDP, możesz spróbować ponownie uruchomić kontroler domeny.
 
-Jeśli w poprzednich poleceniach nie czy rozwiązanie problemu z komunikacją z domeną, możesz ponownie dołączyć do tej maszyny Wirtualnej do domeny. W tym celu wykonaj następujące kroki:
+Jeśli powyższe polecenia nie rozwiążą problemu z komunikacją z domeną, można ponownie dołączyć tę maszynę wirtualną do domeny. W tym celu wykonaj następujące kroki:
 
-1. Utwórz skrypt, który nosi nazwę Unjoin.ps1 przy użyciu następującej zawartości, a następnie wdrożyć skrypt jako niestandardowego rozszerzenia skryptu w witrynie Azure portal:
+1. Utwórz skrypt o nazwie unjoin. ps1, używając następującej zawartości, a następnie wdróż skrypt jako rozszerzenie niestandardowego skryptu na Azure Portal:
 
     ```cmd
     cmd /c "netdom remove <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10 /Force"
     ```
     
-    Ten skrypt wymuszone przejście maszyny Wirtualnej spoza domeny i ponownie go uruchamia na 10 sekund później. Następnie należy wyczyścić obiektu komputera, na stronie domeny.
+    Ten skrypt powoduje wymuszanie maszyny wirtualnej z domeny i ponowne uruchomienie jej ponownie 10 sekund. Następnie należy wyczyścić obiekt komputera po stronie domeny.
 
-2.  Po zakończeniu czyszczenia ponownie dołączyć tę maszynę Wirtualną do domeny. W tym celu należy utworzyć skrypt o nazwie JoinDomain.ps1 przy użyciu następującej zawartości, a następnie wdrożyć skrypt jako niestandardowego rozszerzenia skryptu w witrynie Azure portal: 
+2.  Po zakończeniu oczyszczania ponownie Dołącz tę maszynę wirtualną do domeny. W tym celu należy utworzyć skrypt o nazwie JoinDomain. ps1 przy użyciu następującej zawartości, a następnie wdrożyć skrypt jako rozszerzenie niestandardowego skryptu na Azure Portal: 
 
     ```cmd
     cmd /c "netdom join <<MachineName>> /domain:<<DomainName>> /userD:<<DomainAdminhere>> /passwordD:<<PasswordHere>> /reboot:10"
     ```
 
     >[!Note] 
-    >To dołącza do maszyny Wirtualnej w domenie przy użyciu podanych poświadczeń.
+    >Spowoduje to dołączenie do maszyny wirtualnej w domenie przy użyciu określonych poświadczeń.
 
-Jeśli kanał usługi Active Directory jest w dobrej kondycji, hasło komputera jest aktualizowana, a kontroler domeny działa zgodnie z oczekiwaniami, spróbuj wykonać poniższe czynności.
+Jeśli kanał Active Directory jest w dobrej kondycji, hasło komputera zostanie zaktualizowane, a kontroler domeny działa zgodnie z oczekiwaniami, spróbuj wykonać poniższe czynności.
 
-Jeśli problem będzie nadal występować, sprawdź, czy poświadczenia domeny jest wyłączona. W tym celu należy otworzyć podwyższone okno Wiersz polecenia, a następnie uruchom następujące polecenie, aby określić, czy maszyna wirtualna jest skonfigurowany do wyłączania kont domeny do logowania się do maszyny Wirtualnej:
+Jeśli problem będzie się powtarzał, sprawdź, czy poświadczenie domeny jest wyłączone. W tym celu Otwórz okno wiersza polecenia z podwyższonym poziomem uprawnień, a następnie uruchom następujące polecenie, aby określić, czy maszyna wirtualna została skonfigurowana do wyłączania kont domeny w celu zalogowania się na maszynie wirtualnej:
 
 ```cmd
 REG query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa" /v disabledomaincreds
 ```
 
-Jeśli jest ustawiona na **1**, oznacza to, że serwer został ustawiony w usłudze nie zezwalaj na poświadczenia domeny. Należy zmienić wartość tego klucza do **0**.
+Jeśli klucz jest ustawiony na **1**, oznacza to, że serwer został skonfigurowany tak, aby nie zezwalał na poświadczenia domeny. Zmień ten klucz na **0**.
 
 ### <a name="for-standalone-vms"></a>Dla autonomicznych maszyn wirtualnych
 
 #### <a name="check-minencryptionlevel"></a>Sprawdź MinEncryptionLevel
 
-W wystąpieniu CMD, uruchom następujące polecenie, aby wykonać zapytanie **MinEncryptionLevel** wartości rejestru:
+W wystąpieniu programu CMD Uruchom następujące polecenie, aby wykonać zapytanie dotyczące wartości rejestru **MinEncryptionLevel** :
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel
 ```
 
-Oparte na wartości rejestru, wykonaj następujące kroki:
+Na podstawie wartości rejestru wykonaj następujące kroki:
 
-* 4 (FIPS): Przejdź do [połączenia zgodnych algorytmów FIPs Sprawdź](#fips-compliant).
+* 4 (FIPS): Przejdź do [sprawdzenia połączeń algorytmów zgodnych ze standardem FIPs](#fips-compliant).
 
-* 3 (128-bitowe szyfrowanie): Ustaw ważność **2** , uruchamiając następujące polecenie:
+* 3 (szyfrowanie 128-bitowe): Ustaw ważność na **2** , uruchamiając następujące polecenie:
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 2 /f
     ```
 
-* 2 (najwyższy szyfrowania to możliwe, zgodnie z ustawieniem klienta): Możesz ustawić minimalną wartość szyfrowania **1** , uruchamiając następujące polecenie:
+* 2 (najwyższe szyfrowanie jest możliwe, zgodnie z podyktowaniem przez klienta): Możesz spróbować ustawić minimalną wartość **1** , uruchamiając następujące polecenie:
 
     ```cmd
     reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 1 /f
     ```
     
-Tak, aby zmiany w rejestrze wprowadzone, uruchom ponownie maszynę Wirtualną.
+Uruchom ponownie maszynę wirtualną, aby zmiany wprowadzone w rejestrze zaczęły obowiązywać.
 
-#### <a name="tls-version"></a>Wersji protokołu TLS
+#### <a name="tls-version"></a>Wersja protokołu TLS
 
-W zależności od systemu protokołu RDP korzysta z protokołu TLS 1.0, 1.1 lub 1.2 (serwer). Aby zbadać, jak te protokoły są konfigurowane na maszynie Wirtualnej, otwórz wystąpienie CMD, a następnie uruchom następujące polecenia:
+W zależności od systemu protokół RDP używa protokołu TLS 1,0, 1,1 lub 1,2 (serwer). Aby zbadać, jak te protokoły są skonfigurowane na maszynie wirtualnej, Otwórz wystąpienie programu CMD, a następnie uruchom następujące polecenia:
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled
@@ -228,7 +228,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server" /v Enabled
 ```
 
-Jeśli zwracane wartości nie są wszystkie **1**, oznacza to, że protokół jest wyłączona. Aby włączyć te protokoły, uruchom następujące polecenia:
+Jeśli zwracane wartości nie są wszystkie **1**, oznacza to, że protokół jest wyłączony. Aby włączyć te protokoły, uruchom następujące polecenia:
 
 ```cmd
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Server" /v Enabled /t REG_DWORD /d 1 /f
@@ -244,40 +244,40 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 </pre>
 
 > [!Note]
-> Pobierz x.x wersji protokołu SSH/TLS z dzienników systemu operacyjnego gościa na temat błędów kanału SCHANNEL.
+> Pobierz wersję x. x protokołu SSH/TLS z dzienników systemu operacyjnego gościa na stronie błędy SCHANNEL.
 
-#### <a name="fips-compliant"></a> Sprawdź połączenia algorytmów zgodnych ze standardem FIPs
+#### <a name="fips-compliant"></a>Sprawdzanie połączeń algorytmów zgodnych ze standardem FIPs
 
-Aby używać tylko zgodne ze standardem FIPs algorytmu połączeń można wymusić usług pulpitu zdalnego. To można ustawić przy użyciu klucza rejestru. Aby to zrobić, Otwórz okno wiersza polecenia z podwyższonym, a następnie utworzyć zapytanie względem następujące klucze:
+Pulpit zdalny można wymusić, aby używać tylko połączeń algorytmów zgodnych ze standardem FIPs. Można to skonfigurować przy użyciu klucza rejestru. W tym celu Otwórz okno wiersza polecenia z podwyższonym poziomem uprawnień, a następnie wykonaj zapytanie o następujące klucze:
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy" /v Enabled
 ```
 
-Jeśli polecenie zwraca **1**, zmień wartość rejestru w celu **0**.
+Jeśli polecenie zwraca **1**, Zmień wartość rejestru na **0**.
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy" /v Enabled /t REG_DWORD /d 0
 ```
 
-Sprawdzanie, który jest bieżącym MinEncryptionLevel na maszynie Wirtualnej:
+Sprawdź, który jest bieżącym MinEncryptionLevel na maszynie wirtualnej:
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel
 ```
 
-Jeśli polecenie zwraca **4**, zmień wartość rejestru w celu **2**
+Jeśli polecenie zwraca **4**, Zmień wartość rejestru na **2**
 
 ```cmd
 reg query "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v MinEncryptionLevel /t REG_DWORD /d 2
 ```
 
-Tak, aby zmiany w rejestrze wprowadzone, uruchom ponownie maszynę Wirtualną.
+Uruchom ponownie maszynę wirtualną, aby zmiany wprowadzone w rejestrze zaczęły obowiązywać.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Metoda SetEncryptionLevel klasy Win32_TSGeneralSetting](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting-setencryptionlevel)
 
-[Konfigurowanie uwierzytelniania serwera i poziomy szyfrowania](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770833(v=ws.11))
+[Konfigurowanie uwierzytelniania serwera i poziomów szyfrowania](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc770833(v=ws.11))
 
 [Klasa Win32_TSGeneralSetting](https://docs.microsoft.com/windows/desktop/TermServ/win32-tsgeneralsetting)

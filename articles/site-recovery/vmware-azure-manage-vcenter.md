@@ -1,121 +1,121 @@
 ---
-title: Zarządzanie serwerami vCenter VMware do odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano jak dodać i zarządzać oprogramowaniem VMware vCenter do odzyskiwania po awarii maszyn wirtualnych programu VMware na platformę Azure za pomocą usługi Azure Site Recovery.
+title: Zarządzanie serwerami VMware vCenter na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure przy użyciu Azure Site Recovery | Microsoft Docs "
+description: W tym artykule opisano, jak dodawać i zarządzać programem VMware vCenter na potrzeby odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure przy użyciu Azure Site Recovery.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 9694c682f171ab715812b05fed2064c9bbcd36b3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 59088d8351bf89c859312774e3e9e396be8dd532
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60600369"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904253"
 ---
-# <a name="manage-vmware-vcenter-server"></a>Zarządzaj serwerem VMware vCenter
+# <a name="manage-vmware-vcenter-server"></a>Zarządzanie programem VMware vCenter Server
 
-W tym artykule omówiono różne operacje odzyskiwania lokacji, które mogą być wykonywane na serwerze VMware vCenter. Sprawdź [wymagania wstępne](vmware-physical-azure-support-matrix.md#replicated-machines) przed rozpoczęciem.
+W tym artykule omówiono różne operacje Site Recovery, które można wykonać w oprogramowaniu VMware vCenter. Przed rozpoczęciem Sprawdź [wymagania wstępne](vmware-physical-azure-support-matrix.md#replicated-machines) .
 
 
-## <a name="set-up-an-account-for-automatic-discovery"></a>Konfigurowanie konta do automatycznego odnajdowania
+## <a name="set-up-an-account-for-automatic-discovery"></a>Konfigurowanie konta do automatycznego odnajdywania
 
-Usługa Site Recovery wymaga dostępu do zasobów programu VMware, serwer przetwarzania w celu automatycznego wykrywania maszyn wirtualnych i trybu failover i powrotu po awarii maszyn wirtualnych. Utwórz konto dostępu w następujący sposób:
+Site Recovery musi mieć dostęp do programu VMware, aby serwer przetwarzania automatycznie wykrywał maszyny wirtualne oraz w celu przełączenia w tryb failover i powrotu po awarii maszyn wirtualnych. Utwórz konto, aby uzyskać dostęp w następujący sposób:
 
 1. Zaloguj się na komputerze serwera konfiguracji.
-2. Otwórz uruchomienia cspsconfigtool.exe przy użyciu skrótu na pulpicie.
-3. Kliknij przycisk **Dodaj konto** na **Zarządzaj kontem** kartę.
+2. Otwórz plik Uruchom cspsconfigtool. exe przy użyciu skrótu na pulpicie.
+3. Kliknij pozycję **Dodaj konto** na karcie **Zarządzanie kontem** .
 
-   ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
-1. Podaj szczegóły konta, a następnie kliknij przycisk **OK** ją dodać.  Konto powinno mieć uprawnienia podsumowane w poniższej tabeli. 
+   ![Dodaj konto](./media/vmware-azure-manage-vcenter/addaccount.png)
+1. Podaj szczegóły konta, a następnie kliknij przycisk **OK** , aby go dodać.  Konto powinno mieć uprawnienia podsumowane w poniższej tabeli. 
 
-Trwa około 15 minut, aby uzyskać informacje o koncie, które można synchronizować się z usługą Site Recovery.
+Synchronizacja informacji o koncie z usługą Site Recovery trwa około 15 minut.
 
-### <a name="account-permissions"></a>Uprawnień konta
+### <a name="account-permissions"></a>Uprawnienia konta
 
 |**Zadanie** | **Konto** | **Uprawnienia** | **Szczegóły**|
 |--- | --- | --- | ---|
-|**Automatyczne odnajdowanie/migracji (bez powrotu po awarii)** | Potrzebujesz co najmniej użytkownik tylko do odczytu | Obiekt centrum danych –> propagacja do obiektu podrzędnego, rola = tylko do odczytu | Użytkownik przypisany na poziomie centrum danych, mający dostęp do wszystkich obiektów w centrum danych.<br/><br/> Aby ograniczyć dostęp, Przypisz **bez dostępu** roli **Propagacja do obiektu podrzędnego** obiektu do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyny wirtualne i sieci).|
-|**Replikacji i pracy awaryjnej** | Potrzebujesz co najmniej użytkownik tylko do odczytu| Obiekt centrum danych –> propagacja do obiektu podrzędnego, rola = tylko do odczytu | Użytkownik przypisany na poziomie centrum danych, mający dostęp do wszystkich obiektów w centrum danych.<br/><br/> Aby ograniczyć dostęp, Przypisz **bez dostępu** roli **Propagacja do obiektu podrzędnego** obiektu do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyny wirtualne i sieci).<br/><br/> Przydatne do celów migracji, ale nie Pełna replikacja, tryb failover i powrotu po awarii.|
-|**Replikacja/tryb failover/powrotu po awarii** | Zalecamy, aby utworzyć rolę (AzureSiteRecoveryRole) z wymaganymi uprawnieniami, a następnie przypisać rolę użytkownikowi lub grupie VMware | Data Center object –> Propagate to Child Object, role=AzureSiteRecoveryRole<br/><br/> Magazyn danych -> przydzielanie miejsca, przegląd magazynu danych, operacje na plikach niskiego poziomu, usuwanie pliku, aktualizowanie plików maszyn wirtualnych<br/><br/> Sieć -> przypisywanie sieci<br/><br/> Zasób -> przypisywanie maszyny wirtualnej do puli zasobów, migracja wyłączonej maszyny wirtualnej, migracja włączonej maszyny wirtualnej<br/><br/> Zadania -> tworzenie zadania, aktualizowanie zadania<br/><br/> Maszyna wirtualna -> konfiguracja<br/><br/> Maszyna wirtualna -> interakcja -> odpowiadanie na pytanie, połączenie z urządzeniem, konfigurowanie nośnika CD, konfigurowanie dyskietki, wyłączanie, włączanie, instalowanie narzędzi VMware<br/><br/> Maszyna wirtualna -> spis -> tworzenie, rejestrowanie, wyrejestrowywanie<br/><br/> Maszyna wirtualna -> aprowizowanie -> zezwalanie na pobieranie maszyny wirtualnej, zezwalanie na przekazywanie plików maszyny wirtualnej<br/><br/> Maszyna wirtualna -> migawki -> usuwanie migawek | Użytkownik przypisany na poziomie centrum danych, mający dostęp do wszystkich obiektów w centrum danych.<br/><br/> Aby ograniczyć dostęp, Przypisz **bez dostępu** roli **Propagacja do obiektu podrzędnego** obiektu do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyny wirtualne i sieci).|
+|**Automatyczne odnajdywanie/Migrowanie (bez powrotu po awarii)** | Potrzebujesz co najmniej użytkownika tylko do odczytu | Obiekt centrum danych –> propagacja do obiektu podrzędnego, rola = tylko do odczytu | Użytkownik przypisany na poziomie centrum danych, mający dostęp do wszystkich obiektów w centrum danych.<br/><br/> Aby ograniczyć dostęp, przypisz rolę **Brak dostępu** z obiektem **Propaguj do** obiektu podrzędnego do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyn wirtualnych i sieci).|
+|**Replikacja/tryb failover** | Potrzebujesz co najmniej użytkownika tylko do odczytu| Obiekt centrum danych –> propagacja do obiektu podrzędnego, rola = tylko do odczytu | Użytkownik przypisany na poziomie centrum danych, mający dostęp do wszystkich obiektów w centrum danych.<br/><br/> Aby ograniczyć dostęp, przypisz rolę **Brak dostępu** z obiektem **Propaguj do** obiektu podrzędnego do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyn wirtualnych i sieci).<br/><br/> Przydatne do migracji, ale nie pełna replikacja, tryb failover i powrót po awarii.|
+|**Replikacja/tryb failover/powrót po awarii** | Sugerujemy utworzenie roli (AzureSiteRecoveryRole) z wymaganymi uprawnieniami, a następnie przypisanie roli do użytkownika lub grupy programu VMware | Obiekt centrum danych — > propagowania do obiektu podrzędnego, rola = AzureSiteRecoveryRole<br/><br/> Magazyn danych -> przydzielanie miejsca, przegląd magazynu danych, operacje na plikach niskiego poziomu, usuwanie pliku, aktualizowanie plików maszyn wirtualnych<br/><br/> Sieć -> przypisywanie sieci<br/><br/> Zasób -> przypisywanie maszyny wirtualnej do puli zasobów, migracja wyłączonej maszyny wirtualnej, migracja włączonej maszyny wirtualnej<br/><br/> Zadania -> tworzenie zadania, aktualizowanie zadania<br/><br/> Maszyna wirtualna -> konfiguracja<br/><br/> Maszyna wirtualna -> interakcja -> odpowiadanie na pytanie, połączenie z urządzeniem, konfigurowanie nośnika CD, konfigurowanie dyskietki, wyłączanie, włączanie, instalowanie narzędzi VMware<br/><br/> Maszyna wirtualna -> spis -> tworzenie, rejestrowanie, wyrejestrowywanie<br/><br/> Maszyna wirtualna -> aprowizowanie -> zezwalanie na pobieranie maszyny wirtualnej, zezwalanie na przekazywanie plików maszyny wirtualnej<br/><br/> Maszyna wirtualna -> migawki -> usuwanie migawek | Użytkownik przypisany na poziomie centrum danych, mający dostęp do wszystkich obiektów w centrum danych.<br/><br/> Aby ograniczyć dostęp, przypisz rolę **Brak dostępu** z obiektem **Propaguj do** obiektu podrzędnego do obiektów podrzędnych (hostów vSphere, magazynów danych, maszyn wirtualnych i sieci).|
 
 
-## <a name="add-vmware-server-to-the-vault"></a>Dodawanie serwera VMware w magazynie
+## <a name="add-vmware-server-to-the-vault"></a>Dodawanie serwera VMware do magazynu
 
-1. W witrynie Azure portal Otwórz magazynu > **infrastruktura usługi Site Recovery** > **serwery konfiguracji**, a następnie otwórz na serwerze konfiguracji.
-2. Na **szczegóły** kliknij **+ vCenter**.
+1. W Azure Portal otwórz magazyn > **Site Recovery** > **serwery konfiguracji**infrastruktury i Otwórz serwer konfiguracji.
+2. Na stronie **szczegółów** kliknij pozycję **+ vCenter**.
 
 [!INCLUDE [site-recovery-add-vcenter](../../includes/site-recovery-add-vcenter.md)]
 
-## <a name="modify-credentials"></a>Zmodyfikowania poświadczeń
+## <a name="modify-credentials"></a>Modyfikuj poświadczenia
 
-Zmień poświadczenia używane do łączenia z serwerem vCenter lub hoście ESXi w następujący sposób:
+Zmodyfikuj poświadczenia używane do nawiązania połączenia z serwerem vCenter lub hostem ESXi w następujący sposób:
 
-1. Zaloguj się do serwera konfiguracji, a następnie uruchom cspsconfigtool.exe z pulpitu.
-2. Kliknij przycisk **Dodaj konto** na **Zarządzaj kontem** kartę.
+1. Zaloguj się na serwerze konfiguracji i uruchom program cspsconfigtool. exe z pulpitu.
+2. Kliknij pozycję **Dodaj konto** na karcie **Zarządzanie kontem** .
 
-   ![add-account](./media/vmware-azure-manage-vcenter/addaccount.png)
-3. Podaj nowe szczegóły konta, a następnie kliknij przycisk **OK** ją dodać. Konto musi mieć uprawnienia wymienione [powyżej](#account-permissions).
-4. W witrynie Azure portal Otwórz magazynu > **infrastruktura usługi Site Recovery** > **serwery konfiguracji**, a następnie otwórz na serwerze konfiguracji.
-5. W **szczegóły** kliknij **Odśwież serwer**.
-6. Po zakończeniu zadania odświeżania serwera wybierz serwer vCenter Server, aby otworzyć vCenter **Podsumowanie** strony.
-7. Wybierz nowo dodane konto w **konto hostów programu vCenter server/vSphere** pola, a następnie kliknij przycisk **Zapisz**.
+   ![Dodaj konto](./media/vmware-azure-manage-vcenter/addaccount.png)
+3. Podaj szczegóły nowego konta, a następnie kliknij przycisk **OK** , aby go dodać. Konto powinno mieć uprawnienia wymienione [powyżej](#account-permissions).
+4. Na Azure Portal otwórz magazyn > **Site Recovery** > **serwery konfiguracji**infrastruktury i Otwórz serwer konfiguracji.
+5. Na stronie **szczegółów** kliknij przycisk **Odśwież serwer**.
+6. Po zakończeniu zadania odświeżania serwera wybierz vCenter Server, aby otworzyć stronę podsumowania programu vCenter .
+7. W polu **konto hosta programu vCenter Server/vSphere** wybierz nowo dodane konto, a następnie kliknij przycisk **Zapisz**.
 
    ![modify-account](./media/vmware-azure-manage-vcenter/modify-vcente-creds.png)
 
 ## <a name="delete-a-vcenter-server"></a>Usuwanie serwera vCenter
 
-1. W witrynie Azure portal Otwórz magazynu > **infrastruktura usługi Site Recovery** > **serwery konfiguracji**, a następnie otwórz na serwerze konfiguracji.
-2. Na **szczegóły** wybierz serwer vCenter.
-3. Kliknij pozycję **Usuń** przycisku.
+1. W Azure Portal otwórz magazyn > **Site Recovery** > **serwery konfiguracji**infrastruktury i Otwórz serwer konfiguracji.
+2. Na stronie **szczegóły** wybierz serwer vCenter.
+3. Kliknij przycisk **Usuń** .
 
    ![delete-account](./media/vmware-azure-manage-vcenter/delete-vcenter.png)
 
-## <a name="modify-the-vcenter-ip-address-and-port"></a>Modyfikowanie adresu IP vCenter i portu
+## <a name="modify-the-vcenter-ip-address-and-port"></a>Modyfikowanie adresu IP i portu programu vCenter
 
 1. Zaloguj się do Portalu Azure.
-2. Przejdź do **magazyn usługi Recovery Services** > **infrastruktura usługi Site Recovery** > **serwery konfiguracji**.
-3. Kliknij na serwerze konfiguracji serwer vCenter jest przypisany do.
-4. W **serwerów vCenter** sekcji, kliknij serwer vCenter, który chcesz zmodyfikować.
-5. Na stronie podsumowania vCenter zaktualizuj adres IP i port serwer vCenter w odpowiednich polach, a następnie zapisz zmiany.
+2. Przejdź do **magazynu** > Recovery Services**Site Recovery** > **serwery konfiguracji**infrastruktury.
+3. Kliknij serwer konfiguracji, do którego zostanie przypisany program vCenter.
+4. W sekcji **serwery vCenter** kliknij program vCenter, który chcesz zmodyfikować.
+5. Na stronie Podsumowanie programu vCenter zaktualizuj adres IP i port vCenter w odpowiednich polach, a następnie Zapisz zmiany.
 
    ![add_ip_new_vcenter](media/vmware-azure-manage-vcenter/add-ip.png)
 
-6. Aby zmiany zaczynają obowiązywać, poczekaj 15 minut lub [Odśwież serwer konfiguracji](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
+6. Aby zmiany zaczęły obowiązywać, poczekaj 15 minut lub [Odśwież serwer konfiguracji](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 
-## <a name="migrate-all-protected-virtual-machines-to-a-new-vcenter"></a>Migrowanie wszystkich chronionych maszyn wirtualnych do nowego vCenter
+## <a name="migrate-all-protected-virtual-machines-to-a-new-vcenter"></a>Migruj wszystkie chronione maszyny wirtualne do nowego programu vCenter
 
-Aby przeprowadzić migrację wszystkich maszyn wirtualnych na nowy serwer vCenter, nie należy dodawać inne konto vCenter. Może to prowadzić do zduplikowane wpisy. Wystarczy zaktualizować adres IP nowego vCenter:
+Aby przeprowadzić migrację wszystkich maszyn wirtualnych do nowego programu vCenter, nie dodawaj kolejnego konta vCenter. Może to prowadzić do duplikowania wpisów. Po prostu zaktualizuj adres IP nowego programu vCenter:
 
 1. Zaloguj się do Portalu Azure.
-2. Przejdź do **magazyn usługi Recovery Services** > **infrastruktura usługi Site Recovery** > **serwery konfiguracji**.
-3. Kliknij na serwerze konfiguracji stary serwer vCenter jest przypisany do.
-4. W **serwerów vCenter** sekcji, kliknij serwer vCenter jest planowana migracja z.
-5. Na stronie podsumowania vCenter, zaktualizuj adres IP nowy serwer vCenter w polu **vCenter server/vSphere hosta lub adres IP**. Zapisz zmiany.
+2. Przejdź do **magazynu** > Recovery Services**Site Recovery** > **serwery konfiguracji**infrastruktury.
+3. Kliknij serwer konfiguracji, do którego jest przypisany stary program vCenter.
+4. W sekcji **serwery vCenter** kliknij program vCenter, z którego planujesz przeprowadzić migrację.
+5. Na stronie Podsumowanie programu vCenter zaktualizuj adres IP nowego serwera vCenter w polu **Nazwa hosta lub adres IP vSphere**. Zapisz zmiany.
 
-Jak adres IP zostanie zaktualizowany, składniki usługi Site Recovery rozpocznie się odbieranie informacji odnajdywania maszyn wirtualnych z nowego serwera vCenter. To nie ma wpływu na trwającą replikację działania.
+Po zaktualizowaniu adresu IP składniki Site Recovery będą rozpoczynać otrzymywanie informacji o odnajdywaniu maszyn wirtualnych z nowego programu vCenter. Nie będzie to miało wpływu na bieżące działania związane z replikacją.
 
-## <a name="migrate-few-protected-virtual-machines-to-a-new-vcenter"></a>Migrowanie kilka chronionych maszyn wirtualnych do nowego vCenter
+## <a name="migrate-few-protected-virtual-machines-to-a-new-vcenter"></a>Migrowanie kilku chronionych maszyn wirtualnych do nowego programu vCenter
 
 > [!NOTE]
-> Ta sekcja ma zastosowanie tylko podczas migrowania kilka chronionych maszyn wirtualnych do nowego vCenter. Jeśli chcesz, aby chronić nowy zestaw maszyn wirtualnych z programu vCenter nowe, [Dodaj nowe szczegóły vCenter do serwera konfiguracji](#add-vmware-server-to-the-vault) i rozpoczynać  **[Włącz ochronę](vmware-azure-tutorial.md#enable-replication)** .
+> Ta sekcja ma zastosowanie tylko w przypadku migrowania kilku chronionych maszyn wirtualnych do nowego programu vCenter. Jeśli chcesz chronić nowy zestaw maszyn wirtualnych z nowego programu vCenter, [Dodaj nowe szczegóły programu vCenter do serwera konfiguracji](#add-vmware-server-to-the-vault) i zacznij od **[włączenia ochrony](vmware-azure-tutorial.md#enable-replication)** .
 
-Aby przenieść kilku maszyn wirtualnych do nowego vCenter:
+Aby przenieść kilka maszyn wirtualnych do nowego programu vCenter:
 
-1. [Dodaj nowe szczegóły vCenter do serwera konfiguracji](#add-vmware-server-to-the-vault).
-2. [Wyłącz replikację maszyn wirtualnych](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) planujesz migrować.
-3. Zakończenie migracji wybranych maszyn wirtualnych na nowy serwer vCenter.
-4. Teraz, ochrona migrowanych maszyn wirtualnych za pomocą [wybierając nowy serwer vCenter, po włączeniu ochrony](vmware-azure-tutorial.md#enable-replication).
+1. [Dodaj nowe szczegóły programu vCenter do serwera konfiguracji](#add-vmware-server-to-the-vault).
+2. [Wyłącz replikację maszyn wirtualnych](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) , które chcesz zmigrować.
+3. Zakończ migrację wybranych maszyn wirtualnych do nowego programu vCenter.
+4. Teraz Chroń zmigrowane maszyny wirtualne, [wybierając nowy program vCenter po włączeniu ochrony](vmware-azure-tutorial.md#enable-replication).
 
 > [!TIP]
-> Jeśli liczba migrowanych maszyn wirtualnych jest **wyższe** , liczby maszyn wirtualnych, przechowywane w starym vCenter zaktualizowanie adresu IP nowego vcenter, wykonując instrukcje podane w tym miejscu. Kilka maszyn wirtualnych, które mają zostać zachowane podczas stary serwer vCenter [Wyłącz replikację](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure); [Dodaj nowe szczegóły vCenter do serwera konfiguracji](#add-vmware-server-to-the-vault)i Rozpocznij  **[Włącz ochronę](vmware-azure-tutorial.md#enable-replication)** .
+> Jeśli liczba migrowanych maszyn wirtualnych jest **większa** niż liczba maszyn wirtualnych przechowywanych w starym serwerze vCenter, zaktualizuj adres IP nowego programu vCenter przy użyciu instrukcji podanej w tym miejscu. W przypadku kilku maszyn wirtualnych, które są przechowywane w starym serwerze vCenter, [Wyłącz replikację](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure); [Dodaj nowe szczegóły programu vCenter do serwera konfiguracji](#add-vmware-server-to-the-vault)i uruchom **[opcję Włącz ochronę](vmware-azure-tutorial.md#enable-replication)** .
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-1. Jeśli chronione maszyny wirtualne są przenoszone z hosta ESXi, będzie ona wpływu na replikację?
+1. Jeśli chronione maszyny wirtualne są przenoszone z jednego hosta ESXi do innego, wpłynie to na replikację?
 
-    Nie, to nie ma wpływu na trwającą replikację. Jednak [upewnij się, że wdrażanie główny serwer docelowy o odpowiednich uprawnieniach](vmware-azure-reprotect.md#deploy-a-separate-master-target-server)
+    Nie, nie będzie to miało wpływu na bieżącą replikację. Pamiętaj jednak, [Aby wdrożyć główny serwer docelowy z odpowiednimi uprawnieniami](vmware-azure-reprotect.md#deploy-a-separate-master-target-server)
 
-2. Co to są numery portów używane do komunikacji między vCenter i inne usługi Site Recovery składniki?
+2. Jakie numery portów są używane do komunikacji między programem vCenter i innymi składnikami Site Recovery?
 
-    Domyślny port to 443. Serwer konfiguracji będzie uzyskiwać dostęp do informacji vCenter/hostem vSphere, za pośrednictwem tego portu. Jeśli chcesz zaktualizować te informacje, kliknij przycisk [tutaj](#modify-the-vcenter-ip-address-and-port).
+    Domyślnym portem jest 443. Serwer konfiguracji będzie miał dostęp do informacji o hoście vCenter/vSphere za poorednictwem tego portu. Jeśli chcesz zaktualizować te informacje, kliknij [tutaj](#modify-the-vcenter-ip-address-and-port).

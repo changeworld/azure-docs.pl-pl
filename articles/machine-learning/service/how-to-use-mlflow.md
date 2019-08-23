@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd451f4c7ada3c062862098d4cda5314152be0c0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: d819479c5e4bdbf8287dc7408c0f7813f5e32b13
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882009"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900178"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-service-preview"></a>Śledzenie metryk i wdrażanie modeli za pomocą usług MLflow i Azure Machine Learning (wersja zapoznawcza)
 
@@ -27,6 +27,8 @@ W tym artykule pokazano, jak włączyć śledzenie identyfikatorów URI MLflow i
 + Wdróż eksperymenty MLflow jako usługę sieci Web Azure Machine Learning. Wdrażając jako usługę sieci Web, można zastosować funkcje monitorowania Azure Machine Learning i wykrywania dryfowania danych do modeli produkcyjnych. 
 
 [MLflow](https://www.mlflow.org) to biblioteka typu open source służąca do zarządzania cyklem życia eksperymentów uczenia maszynowego. Śledzenie MLFlow jest składnikiem MLflow, które rejestruje i śledzi przebiegi szkoleniowe i artefakty modelu, niezależnie od środowiska eksperymentu — lokalnie, na maszynie wirtualnej, zdalnego klastra obliczeniowego, nawet na Azure Databricks.
+
+Na poniższym diagramie przedstawiono, że dzięki śledzeniu MLflow można dowolnie eksperymentować — czy znajduje się on na zdalnym miejscu docelowym obliczeń na maszynie wirtualnej, lokalnie na komputerze lub w klastrze Azure Databricks — i śledzi jego artefakty uruchamiania w obszarze roboczym Azure Machine Learning.
 
 ![mlflow z diagramem usługi Azure Machine Learning](media/how-to-use-mlflow/mlflow-diagram-track.png)
 
@@ -139,9 +141,11 @@ run = exp.submit(src)
 
 ## <a name="track-azure-databricks-runs"></a>Śledź uruchomienia Azure Databricks
 
-Śledzenie MLflow za pomocą usługi Azure Machine Learning umożliwia przechowywanie zarejestrowanych metryk i artefaktów z poziomu kostki danych w obszarze roboczym Azure Machine Learning.
+Śledzenie MLflow za pomocą usługi Azure Machine Learning umożliwia przechowywanie zarejestrowanych metryk i artefaktów z kostek danych w obszarze roboczym Azure Machine Learning.
 
-Aby uruchamiać eksperymenty Mlflow z Azure Databricks, musisz najpierw utworzyć [Azure Databricks obszar roboczy i klaster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). Upewnij się, że w klastrze została zainstalowana Biblioteka usługi *Azure mlflow* z poziomu programu PyPi, aby zapewnić, że klaster ma dostęp do wymaganych funkcji i klas.
+Aby uruchamiać eksperymenty Mlflow z Azure Databricks, musisz najpierw utworzyć [Azure Databricks obszar roboczy i klaster](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)
+
+Upewnij się, że w klastrze została zainstalowana Biblioteka usługi *Azure mlflow* z poziomu programu PyPi, aby zapewnić, że klaster ma dostęp do wymaganych funkcji i klas.
 
 ### <a name="install-libraries"></a>Zainstaluj biblioteki
 
@@ -210,10 +214,13 @@ ws.get_details()
 
 Wdrożenie eksperymentów MLflow jako usługi sieci Web Azure Machine Learning pozwala korzystać z funkcji zarządzania modelami Azure Machine Learning i wykrywania dryfowania danych oraz stosować je do modeli produkcyjnych.
 
+Na poniższym diagramie przedstawiono, że za pomocą interfejsu API MLflow Deploy można wdrożyć istniejące modele MLflow jako usługę sieci Web Azure Machine Learning, pomimo ich struktur — PyTorch, Tensorflow, scikit — uczyć się, ONNX itp. i zarządzać modelami produkcyjnymi w programie obszar roboczy.
+
 ![mlflow z diagramem usługi Azure Machine Learning](media/how-to-use-mlflow/mlflow-diagram-deploy.png)
 
 ### <a name="log-your-model"></a>Rejestruj model
-Przed wdrożeniem należy upewnić się, że model jest zapisany, aby można było odwołać się do niego i lokalizacji ścieżki dla wdrożenia. W skrypcie szkoleniowym powinien istnieć kod podobny do następującego: [mlflow. skryptu sklearn. log _model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) , który zapisuje model do określonego katalogu danych wyjściowych. 
+
+Przed wdrożeniem programu należy się upewnić, że model jest zapisany, aby można było odwołać się do niego i lokalizacji ścieżki dla wdrożenia. W skrypcie szkoleniowym powinien istnieć kod podobny do następującego: [mlflow. skryptu sklearn. log _model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) , który zapisuje model do określonego katalogu danych wyjściowych. 
 
 ```python
 # change sklearn to pytorch, tensorflow, etc. based on your experiment's framework 
@@ -244,7 +251,7 @@ model_save_path = 'model'
 
 `mlflow.azureml.build_image()` Funkcja kompiluje obraz platformy Docker z zapisanego modelu w sposób oparty na architekturze. Automatycznie tworzy kod otoki inferencing specyficzny dla platformy i określa zależności pakietów. Określ ścieżkę modelu, obszar roboczy, identyfikator przebiegu i inne parametry.
 
-W poniższym kodzie tworzymy obraz platformy Docker przy użyciu przebiegu *:/< Run. id >/model* jako ścieżkę model_uri dla eksperymentu Scikit.
+Poniższy kod tworzy obraz platformy Docker przy użyciu *przebiegu:/< Run. id >/model* jako ścieżkę model_uri dla eksperymentu Scikit — uczenie się.
 
 ```python
 import mlflow.azureml
@@ -290,9 +297,9 @@ webservice.wait_for_deployment(show_output=True)
 ```
 #### <a name="deploy-to-aks"></a>Wdrażanie w usłudze AKS
 
-Aby wdrożyć aplikację w usłudze AKS, należy utworzyć klaster AKS i przenieść go na obraz platformy Docker, który ma zostać wdrożony. W tym przykładzie przeniesiemy wcześniej utworzony obraz z naszego wdrożenia ACI.
+Aby wdrożyć aplikację w usłudze AKS, należy utworzyć klaster AKS i przenieść go na obraz platformy Docker, który ma zostać wdrożony. Na potrzeby tego przykładu należy przenieść wcześniej utworzony obraz z wdrożenia ACI.
 
-Aby pobrać obraz z poprzedniego wdrożenia ACI, korzystamy z klasy [Image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py) . 
+Aby pobrać obraz z poprzedniego wdrożenia ACI, użyj klasy [Image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py) . 
 
 ```python
 from azureml.core.image import Image

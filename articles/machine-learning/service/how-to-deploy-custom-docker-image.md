@@ -1,7 +1,7 @@
 ---
 title: Wdrażanie modeli przy użyciu niestandardowego obrazu platformy Docker
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać niestandardowego obrazu platformy Docker podczas wdrażania modeli usług Azure Machine Learning. Podczas wdrażania przeszkolonego modelu obraz platformy Docker jest tworzony w celu hostowania obrazu, serwera sieci Web i innych składników wymaganych do uruchomienia usługi. Gdy usługa Azure Machine Learning udostępnia obraz domyślny, można również użyć własnego obrazu.
+description: Dowiedz się, jak używać niestandardowego obrazu podstawowego platformy Docker podczas wdrażania modeli usług Azure Machine Learning. Podczas wdrażania przeszkolonego modelu obraz podstawowego kontenera jest wdrażany w celu uruchomienia modelu do wnioskowania. Gdy usługa Azure Machine Learning udostępnia domyślny obraz podstawowy, można również użyć własnego obrazu podstawowego.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,23 +9,25 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 07/11/2019
-ms.openlocfilehash: f41ccef7803366e63247e6862c59ddb983527d26
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.date: 08/22/2019
+ms.openlocfilehash: a86dd021d8f9cfe275b3af3f0cb71b99857c26d7
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990522"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971516"
 ---
-# <a name="deploy-a-model-by-using-a-custom-docker-image"></a>Wdrażanie modelu przy użyciu niestandardowego obrazu platformy Docker
+# <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Wdrażanie modelu przy użyciu niestandardowego obrazu platformy Docker
 
-Dowiedz się, jak używać niestandardowego obrazu platformy Docker podczas wdrażania przeszkolonych modeli przy użyciu usługi Azure Machine Learning.
+Dowiedz się, jak używać niestandardowego obrazu podstawowego platformy Docker podczas wdrażania przeszkolonych modeli przy użyciu usługi Azure Machine Learning.
 
-Po wdrożeniu przeszkolonego modelu do usługi sieci Web lub urządzenia IoT Edge zostanie utworzony obraz platformy Docker. Ten obraz zawiera model, środowisko Conda i zasoby, które są konieczne do korzystania z modelu. Zawiera również serwer sieci Web do obsługi żądań przychodzących, które są wdrażane jako usługa sieci Web, oraz składniki niezbędne do pracy z usługą Azure IoT Hub.
+W przypadku wdrożenia przeszkolonego modelu do usługi sieci Web lub IoT Edge urządzenia tworzony jest pakiet zawierający serwer sieci Web obsługujący żądania przychodzące.
 
-Usługa Azure Machine Learning udostępnia domyślny obraz platformy Docker, dzięki czemu nie trzeba martwić się o tworzenie go. Możesz również użyć niestandardowego obrazu, który tworzysz jako _obraz podstawowy_. Obraz podstawowy jest używany jako punkt wyjścia podczas tworzenia obrazu dla wdrożenia. Udostępnia on podstawowy system operacyjny i składniki. Następnie proces wdrażania dodaje do obrazu dodatkowe składniki, takie jak model, środowisko Conda i inne zasoby, przed jego wdrożeniem.
+Usługa Azure Machine Learning udostępnia domyślny obraz podstawowy platformy Docker, dzięki czemu nie trzeba martwić się o tworzenie go. Możesz również użyć niestandardowego obrazu podstawowego tworzonego jako _obraz podstawowy_. 
 
-Zazwyczaj tworzysz obraz niestandardowy, gdy chcesz kontrolować wersje składników lub zaoszczędzić czas podczas wdrażania. Na przykład możesz chcieć przeprowadzić standaryzację dla określonej wersji języka Python, Conda lub innego składnika. Możesz również zainstalować oprogramowanie wymagane przez model, w którym proces instalacji zajmuje dużo czasu. Zainstalowanie oprogramowania podczas tworzenia obrazu podstawowego oznacza, że nie trzeba go instalować dla każdego wdrożenia.
+Obraz podstawowy jest używany jako punkt wyjścia podczas tworzenia obrazu dla wdrożenia. Udostępnia on podstawowy system operacyjny i składniki. Następnie proces wdrażania dodaje do obrazu dodatkowe składniki, takie jak model, środowisko Conda i inne zasoby, przed jego wdrożeniem.
+
+Zazwyczaj tworzysz niestandardowy obraz podstawowy, gdy chcesz używać platformy Docker do zarządzania zależnościami, zachować ściślejszą kontrolę nad wersjami składników lub zaoszczędzić czas podczas wdrażania. Na przykład możesz chcieć przeprowadzić standaryzację dla określonej wersji języka Python, Conda lub innego składnika. Możesz również zainstalować oprogramowanie wymagane przez model, w którym proces instalacji zajmuje dużo czasu. Zainstalowanie oprogramowania podczas tworzenia obrazu podstawowego oznacza, że nie trzeba go instalować dla każdego wdrożenia.
 
 > [!IMPORTANT]
 > Podczas wdrażania modelu nie można przesłonić składników podstawowych, takich jak serwer sieci Web lub składniki IoT Edge. Te składniki zapewniają znane środowisko robocze, które jest testowane i obsługiwane przez firmę Microsoft.
@@ -35,8 +37,8 @@ Zazwyczaj tworzysz obraz niestandardowy, gdy chcesz kontrolować wersje składni
 
 Ten dokument jest podzielony na dwie sekcje:
 
-* Tworzenie obrazu niestandardowego: Zawiera informacje dla administratorów i DevOps na temat tworzenia obrazu niestandardowego i konfigurowania uwierzytelniania do Azure Container Registry przy użyciu interfejsu wiersza polecenia platformy Azure i interfejsu wiersza polecenia Machine Learning.
-* Użyj obrazu niestandardowego: Program udostępnia informacje osobom zajmującym się danymi i DevOps/MLOps na korzystanie z obrazów niestandardowych podczas wdrażania przeszkolonego modelu z zestawu SDK języka Python lub interfejsu wiersza polecenia.
+* Tworzenie niestandardowego obrazu podstawowego: Zawiera informacje dla administratorów i DevOps na temat tworzenia obrazu niestandardowego i konfigurowania uwierzytelniania do Azure Container Registry przy użyciu interfejsu wiersza polecenia platformy Azure i interfejsu wiersza polecenia Machine Learning.
+* Wdróż model przy użyciu niestandardowego obrazu podstawowego: Program udostępnia informacje osobom zajmującym się danymi i inżynierom DevOps/ML na korzystanie z obrazów niestandardowych podczas wdrażania przeszkolonego modelu z zestawu SDK języka Python lub interfejsu wiersza polecenia.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -47,7 +49,7 @@ Ten dokument jest podzielony na dwie sekcje:
 * [Azure Container Registry](/azure/container-registry) lub innych rejestrów platformy Docker, które są dostępne w Internecie.
 * W procedurach przedstawionych w tym dokumencie założono, że wiesz już, jak utworzyć i użyć obiektu __konfiguracji wnioskowania__ w ramach wdrażania modelu. Aby uzyskać więcej informacji, zobacz sekcję "Przygotowanie do wdrożenia" w temacie [gdzie można wdrożyć i jak to zrobić](how-to-deploy-and-where.md#prepare-to-deploy).
 
-## <a name="create-a-custom-image"></a>Tworzenie obrazu niestandardowego
+## <a name="create-a-custom-base-image"></a>Tworzenie niestandardowego obrazu podstawowego
 
 Informacje w tej sekcji założono, że używasz Azure Container Registry do przechowywania obrazów platformy Docker. Podczas planowania tworzenia obrazów niestandardowych dla usługi Azure Machine Learning należy użyć poniższej listy kontrolnej:
 
@@ -109,7 +111,7 @@ Jeśli modele zostały już przeszkolone lub wdrożone przy użyciu usługi Azur
 
     `<registry_name>` Wartość to nazwa Azure Container Registry obszaru roboczego.
 
-### <a name="build-a-custom-image"></a>Tworzenie obrazu niestandardowego
+### <a name="build-a-custom-base-image"></a>Tworzenie niestandardowego obrazu podstawowego
 
 Kroki opisane w tej sekcji przedstawiają Tworzenie niestandardowego obrazu platformy Docker w Azure Container Registry.
 
@@ -162,7 +164,7 @@ Aby uzyskać więcej informacji na temat tworzenia obrazów przy użyciu Azure C
 
 Aby uzyskać więcej informacji na temat przekazywania istniejących obrazów do Azure Container Registry, zobacz [wypychanie pierwszego obrazu do prywatnego rejestru kontenerów platformy Docker](/azure/container-registry/container-registry-get-started-docker-cli).
 
-## <a name="use-a-custom-image"></a>Korzystanie z obrazu niestandardowego
+## <a name="use-a-custom-base-image"></a>Używanie niestandardowego obrazu podstawowego
 
 Aby użyć obrazu niestandardowego, potrzebne są następujące informacje:
 
@@ -174,7 +176,7 @@ Aby użyć obrazu niestandardowego, potrzebne są następujące informacje:
 
     Jeśli nie masz tych informacji, porozmawiaj z administratorem, aby uzyskać Azure Container Registry, który zawiera obraz.
 
-### <a name="publicly-available-images"></a>Publicznie dostępne obrazy
+### <a name="publicly-available-base-images"></a>Publicznie dostępne obrazy podstawowe
 
 Firma Microsoft udostępnia kilka obrazów platformy Docker w publicznie dostępnym repozytorium, które może być używane z krokami z tej sekcji:
 

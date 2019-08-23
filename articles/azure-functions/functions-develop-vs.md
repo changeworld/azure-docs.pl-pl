@@ -1,21 +1,19 @@
 ---
 title: Opracowywanie Azure Functions przy użyciu programu Visual Studio | Microsoft Docs
 description: Dowiedz się, jak opracowywać i testować Azure Functions przy użyciu narzędzi Azure Functions Tools for Visual Studio 2019.
-services: functions
-documentationcenter: .net
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 6040552ccee5269e4a04d8b7a1ee072400a8506d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 10c356afc235494b00777561259190ae78b65482
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68593263"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905678"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Opracowywanie Azure Functions przy użyciu programu Visual Studio  
 
@@ -212,6 +210,9 @@ Spowoduje to wyświetlenie okna dialogowego **Ustawienia aplikacji** dla aplikac
 ![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
 **Local** reprezentuje wartość ustawienia w pliku Local. Settings. JSON, a dla opcji **Remote** to bieżące ustawienie w aplikacji funkcji na platformie Azure.  Wybierz pozycję **Dodaj ustawienie** , aby utworzyć nowe ustawienie aplikacji. Użyj linku **Wstaw wartość z lokalnego** , aby skopiować wartość ustawienia do pola **zdalnego** . Oczekujące zmiany są zapisywane w pliku ustawień lokalnych i aplikacji funkcji po wybraniu **przycisku OK**.
+
+> [!NOTE]
+> Domyślnie plik Local. Settings. JSON nie jest sprawdzany w kontroli źródła. Oznacza to, że w przypadku klonowania projektu funkcji lokalnych z kontroli źródła projekt nie ma pliku Local. Settings. JSON. W takim przypadku należy ręcznie utworzyć plik Local. Settings. JSON w katalogu głównym projektu, aby okno dialogowe **Ustawienia aplikacji** działało zgodnie z oczekiwaniami. 
 
 Można również zarządzać ustawieniami aplikacji w jeden z następujących sposobów:
 

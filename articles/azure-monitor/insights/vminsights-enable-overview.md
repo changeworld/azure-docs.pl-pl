@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 039a4db11adf66e0c28826106df5845b42fedef5
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: f395ba5d63463aa177b453d187d025a4461eff28
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688248"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905573"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Włączanie Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — Omówienie
 
@@ -33,7 +33,10 @@ Aby skonfigurować Azure Monitor dla maszyn wirtualnych:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem upewnij się, że rozumiesz, informacje w poniższych sekcjach.
+Przed rozpoczęciem upewnij się, że rozumiesz, informacje w poniższych sekcjach. 
+
+>[!NOTE]
+>Poniższe informacje opisane w tej sekcji dotyczą również [rozwiązania Service map](service-map.md).  
 
 ### <a name="log-analytics"></a>Log Analytics
 
@@ -46,8 +49,8 @@ Azure Monitor dla maszyn wirtualnych obsługuje obszar roboczy Log Analytics w n
 - Południowe Zjednoczone Królestwo
 - Europa Zachodnia
 - Azja Południowo-Wschodnia
-- Australia Wschodnia
-- Australia Południowo-Wschodnia
+- Australia Wschodnia<sup>1</sup>
+- Australia Południowo-Wschodnia<sup>1</sup>
 
 <sup>1</sup> ten region nie obsługuje obecnie funkcję kondycji usługi Azure monitor maszyn wirtualnych.
 
@@ -153,6 +156,9 @@ Funkcja map w Azure Monitor dla maszyn wirtualnych pobiera swoje dane z programu
 
 Niezależnie od tego, czy włączasz Azure Monitor dla maszyn wirtualnych dla jednej maszyny wirtualnej platformy Azure, czy korzystasz z metody wdrażania na dużą skalę, użyj rozszerzenia agenta zależności maszyny wirtualnej platformy Azure, aby zainstalować agenta w ramach środowiska.
 
+>[!NOTE]
+>Poniższe informacje opisane w tej sekcji dotyczą również [rozwiązania Service map](service-map.md).  
+
 W środowisku hybrydowym można pobrać i zainstalować agenta zależności ręcznie. Jeśli maszyny wirtualne są hostowane poza platformą Azure, użyj zautomatyzowanej metody wdrażania.
 
 W poniższej tabeli opisano połączone źródła obsługiwanych przez funkcję mapy w środowisku hybrydowym.
@@ -167,8 +173,8 @@ Agenta zależności można pobrać z następujących lokalizacji:
 
 | Plik | System operacyjny | Wersja | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.8.1 | 622C99924385CBF539988D759BCFDC9146BB157E7D577C997CDD2674E27E08DD |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.8.1 | 3037934A5D3FB7911D5840A9744AE9F980F87F620A7F7B407F05E276FE7AE4A8 |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.1 | FCF9C1D9B20AD414051B49EE79144E595CCC411EB6D444D6D5B5A7B1874DCDEC |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
 
 ## <a name="role-based-access-control"></a>Kontrola dostępu oparta na rolach
 
@@ -246,6 +252,6 @@ Aby uzyskać więcej informacji na temat zbierania i wykorzystywania danych, zob
 
 Teraz, gdy włączono monitorowanie dla maszyny wirtualnej, informacje o monitorowaniu są dostępne do analizy w Azure Monitor dla maszyn wirtualnych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się, jak korzystać z funkcji Health, zobacz [widok usługi Azure Monitor kondycji maszyn wirtualnych](vminsights-health.md). Aby obejrzeć zależności odnalezionych aplikacji, zobacz [widok usługi Azure Monitor dla maszyn wirtualnych mapy](vminsights-maps.md).

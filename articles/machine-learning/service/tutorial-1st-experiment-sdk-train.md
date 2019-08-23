@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: 17fee1f01bf883aa2a9845fe4f2817fb806056dd
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: aa3a9bdb51e1137cde2ca29e2b5db55ba621cf8c
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516245"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972507"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Samouczek: Uczenie swojego pierwszego modelu ML
 
@@ -31,11 +31,13 @@ W tym samouczku nauczysz się wykonywać następujące zadania:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jedynym wymaganiem wstępnym jest uruchomienie poprzedniego samouczka, [Ustawienia środowiska i obszaru roboczego](tutorial-1st-experiment-sdk-setup.md).
+Jedynym wymaganiem wstępnym jest uruchomienie części jednego z tego samouczka, [Ustawienia środowiska i obszaru roboczego](tutorial-1st-experiment-sdk-setup.md).
+
+W tej części samouczka uruchamiasz kod w notesie przykładowym Jupyter otwartym na końcu części pierwszej. Ten artykuł zawiera ten sam kod, który znajduje się w notesie.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Połącz obszar roboczy i Utwórz eksperyment
 
-Zaimportuj `config.json`klasęi Załaduj informacje o subskrypcji z pliku przy użyciu funkcji `from_config().` ta funkcja szuka domyślnego pliku JSON w bieżącym katalogu, ale można także określić parametr ścieżki, aby wskazywał na plik. `Workspace` przy `from_config(path="your/file/path")`użyciu. Jeśli używasz tego notesu na serwerze notesu w chmurze w obszarze roboczym, plik jest automatycznie w katalogu głównym.
+Zaimportuj `config.json`klasęi Załaduj informacje o subskrypcji z pliku przy użyciu funkcji `from_config().` ta funkcja szuka domyślnego pliku JSON w bieżącym katalogu, ale można także określić parametr ścieżki, aby wskazywał na plik. `Workspace` przy `from_config(path="your/file/path")`użyciu. W przypadku serwera notesu w chmurze plik jest automatycznie w katalogu głównym.
 
 Jeśli Poniższy kod pyta o dodatkowe uwierzytelnianie, wystarczy wkleić link w przeglądarce i wprowadzić token uwierzytelniania.
 

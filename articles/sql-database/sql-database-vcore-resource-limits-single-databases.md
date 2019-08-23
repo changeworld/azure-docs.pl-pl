@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 08/14/2019
-ms.openlocfilehash: 6a29d1e001d4c647d5b975b7e746eced29962ee4
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 08/22/2019
+ms.openlocfilehash: 481419a5db6efd600d74851238cd1a12d8766186
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637243"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972528"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na rdzeń wirtualny
 
@@ -301,7 +301,7 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |We/Wy, czas oczekiwania (w przybliżeniu)|Do ustalenia|Do ustalenia|Do ustalenia|Do ustalenia|Do ustalenia|Do ustalenia|Do ustalenia|Do ustalenia|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|800|1600|2400|3200|4000|8000|
 |Maksymalna liczba współbieżnych sesji|30000|30000|30000|30000|30000|30000|30000|30000|
-|Liczba replik|2|2|2|2|2|2|2|2|
+|Repliki pomocnicze|0-4|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|ND|ND|
 |Odczyt skalowalny w poziomie|Tak|Yes|Yes|Yes|Yes|Yes|Yes|Tak|
 |Uwzględniony magazyn kopii zapasowych |7|7|7|7|7|7|7|7|

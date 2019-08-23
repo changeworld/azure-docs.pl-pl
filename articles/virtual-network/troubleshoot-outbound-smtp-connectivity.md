@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: e21788dbf30b6fa3b37f84dd07d54b89bc91f17f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 64cf633d50fc81ae8d53f2b4ee2a9975a756f0c7
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935367"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972478"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>Rozwiązywanie problemów z łącznością wychodzącą SMTP na platformie Azure
 
@@ -38,7 +38,7 @@ Jeśli zarejestrowano się przed 15 listopada 2017 w przypadku ofert z ofertami 
 
 W przypadku subskrypcji z opcją płatność zgodnie z rzeczywistym użyciem lub Microsoft Partner Network, które zostały utworzone po 15 listopada 2017, będą obowiązywać ograniczenia techniczne, które blokują pocztę e-mail, która jest wysyłana bezpośrednio z maszyn wirtualnych w ramach tych subskrypcji. Aby móc wysyłać wiadomości e-mail z maszyn wirtualnych platformy Azure bezpośrednio do zewnętrznych dostawców poczty e-mail (bez użycia uwierzytelnionego przekazywania SMTP), możesz utworzyć żądanie usunięcia ograniczenia. Żądania będą weryfikowane i zatwierdzane według uznania firmy Microsoft, a ich przyznanie będzie możliwe tylko po przeprowadzeniu dodatkowych kontroli zabezpieczenia przed oszustwem. Aby wykonać żądanie, Otwórz przypadek pomocy technicznej, korzystając z następującego typu problemu: > **Nie można wysłać wiadomości e-mail (SMTP/port 25)** z**łącznością** > **Virtual Network** > techniczną. Upewnij się, że dodano szczegółowe informacje o tym, dlaczego wdrożenie musi wysyłać pocztą bezpośrednio do dostawców poczty, zamiast korzystać z uwierzytelnionego przekaźnika.
 
-Po wyłączeniu subskrypcji z opcją płatność zgodnie z rzeczywistym użyciem lub Microsoft Partner Network, gdy maszyny wirtualne zostały zatrzymane & "uruchomiono" w Azure Portal, wszystkie maszyny wirtualne w ramach tej subskrypcji zostaną wykluczone w przód. Wykluczenie ma zastosowanie tylko do żądanych subskrypcji.
+Po wyłączeniu subskrypcji z opcją płatność zgodnie z rzeczywistym użyciem lub Microsoft Partner Network, gdy maszyny wirtualne zostały zatrzymane & "uruchomiono" w Azure Portal, wszystkie maszyny wirtualne w ramach tej subskrypcji zostaną wykluczone w przód. Wyłączenie ma zastosowanie tylko do żądania subskrypcji i dotyczy tylko ruchu maszyn wirtualnych kierowanych bezpośrednio do Internetu. Ruch przychodzący portu 25 za pośrednictwem usług Azure PaaS Services, takich jak [Zapora platformy Azure](https://azure.microsoft.com/services/azure-firewall/) , nie jest obsługiwany.
 
 > [!NOTE]
 > Firma Microsoft zastrzega sobie prawo do odwołania tego wykluczenia w przypadku określenia, że wystąpiło naruszenie warunków użytkowania usługi.

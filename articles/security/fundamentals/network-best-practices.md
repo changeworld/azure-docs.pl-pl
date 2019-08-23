@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/05/2019
 ms.author: TomSh
-ms.openlocfilehash: 09caffcfdad4b132858b6ec52b36fe037f488b3a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4bc4e8e02c5b44c63ee531a295f2b59e91c056bd
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934705"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69900461"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Najlepsze rozwiązania dotyczące platformy Azure dotyczące zabezpieczeń sieci
 W tym artykule omówiono zbiór najlepszych rozwiązań dotyczących platformy Azure w celu zwiększenia bezpieczeństwa sieci. Te najlepsze rozwiązania wynikają z naszych rozwiązań związanych z obsługą sieci platformy Azure i klientami.
@@ -114,7 +114,7 @@ Urządzenia zabezpieczeń sieci platformy Azure mogą zapewniać lepsze zabezpie
 Aby znaleźć dostępne urządzenia zabezpieczeń sieci wirtualnej platformy Azure, przejdź do [witryny Azure Marketplace](https://azure.microsoft.com/marketplace/) i wyszukaj ciąg "zabezpieczenia" oraz "zabezpieczenia sieci".
 
 ## <a name="deploy-perimeter-networks-for-security-zones"></a>Wdrażanie sieci obwodowych pod kątem stref zabezpieczeń
-[Sieć obwodowa](./https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) (nazywana również strefą DMZ) jest segmentem sieci fizycznej lub logicznej, który zapewnia dodatkową warstwę zabezpieczeń między zasobami i Internetem. Wyspecjalizowane urządzenia kontroli dostępu do sieci na granicy sieci obwodowej zezwalają tylko na żądany ruch do sieci wirtualnej.
+[Sieć obwodowa](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter) (nazywana również strefą DMZ) jest segmentem sieci fizycznej lub logicznej, który zapewnia dodatkową warstwę zabezpieczeń między zasobami i Internetem. Wyspecjalizowane urządzenia kontroli dostępu do sieci na granicy sieci obwodowej zezwalają tylko na żądany ruch do sieci wirtualnej.
 
 Sieci obwodowe są przydatne, ponieważ możesz skoncentrować się na zarządzaniu, monitorowaniu, rejestrowaniu i raportowaniu kontroli dostępu do sieci na urządzeniach na granicy sieci wirtualnej platformy Azure. Sieć obwodowa polega na tym, że zwykle włączane jest zapobieganie atakom typu "odmowa usługi" (DDoS), Wykrywanie intruzów/systemy zapobiegania włamaniom (identyfikatory/adresy IP), reguły i zasady zapory, filtrowanie sieci Web, ochrona przed złośliwym oprogramowaniem w sieci i wiele innych. Urządzenia zabezpieczeń sieci są dostępne między Internetem a siecią wirtualną platformy Azure i mają interfejs w obu sieciach.
 
