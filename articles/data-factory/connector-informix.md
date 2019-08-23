@@ -89,7 +89,7 @@ Aby skopiować dane z programu Informix, obsługiwane są następujące właści
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type zestawu danych musi być ustawiona na wartość: **Informix** | Tak |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **Informix** | Tak |
 | tableName | Nazwa tabeli w programie Informix. | Nie dla źródła (Jeśli określono "zapytanie" w źródle aktywności);<br/>Tak dla ujścia |
 
 **Przykład**
