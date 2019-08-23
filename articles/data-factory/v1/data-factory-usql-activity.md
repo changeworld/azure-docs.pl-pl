@@ -208,7 +208,7 @@ W poniższej tabeli opisano nazwy i opisy właściwości, które są specyficzne
 
 | Właściwość            | Opis                              | Wymagane                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| — typ                | Właściwość type musi być równa **DataLakeAnalyticsU SQL**. | Yes                                      |
+| type                | Właściwość type musi być równa **DataLakeAnalyticsU SQL**. | Yes                                      |
 | linkedServiceName   | Odwołanie do usługi Azure Data Lake Analytics zarejestrowany jako połączonej usługi w usłudze Data Factory | Tak                                      |
 | scriptPath          | Ścieżka do folderu zawierającego skrypt U-SQL. Nazwa pliku jest uwzględniana wielkość liter. | Nie (Jeśli używany jest skrypt)                   |
 | scriptLinkedService | Połączonej usługi, która łączy magazyn, który zawiera skrypt w usłudze data factory | Nie (Jeśli używany jest skrypt)                   |
