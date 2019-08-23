@@ -121,7 +121,7 @@ W poniższej tabeli opisano nazwy i opisy właściwości, które są specyficzne
 | :------------------ | :--------------------------------------- | :------- |
 | name                | Nazwa działania w potoku     | Tak      |
 | description         | Tekst opisujący, co działanie robi.  | Nie       |
-| — typ                | Działanie U-SQL usługi Data Lake Analytics jest typ działania **DataLakeAnalyticsU SQL**. | Tak      |
+| type                | Działanie U-SQL usługi Data Lake Analytics jest typ działania **DataLakeAnalyticsU SQL**. | Tak      |
 | linkedServiceName   | Połączoną usługę służącą do usługi Azure Data Lake Analytics. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.  |Tak       |
 | scriptPath          | Ścieżka do folderu zawierającego skrypt U-SQL. Nazwa pliku jest uwzględniana wielkość liter. | Tak      |
 | scriptLinkedService | Połączona usługa, która łączy **usługi Azure Data Lake Store** lub **usługi Azure Storage** zawierający skrypt w usłudze data factory | Tak      |
