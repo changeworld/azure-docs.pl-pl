@@ -71,7 +71,7 @@ Poniższa tabela zawiera opis specyficzne dla usługi Azure SQL Data Warehouse, 
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| — typ |Właściwość type musi być równa: **AzureSqlDW** |Tak |
+| type |Właściwość type musi być równa: **AzureSqlDW** |Tak |
 | connectionString |Podaj informacje wymagane do połączenia z wystąpieniem usługi Azure SQL Data Warehouse dla właściwości connectionString. Obsługiwane jest tylko uwierzytelnianie podstawowe. |Tak |
 
 > [!IMPORTANT]
