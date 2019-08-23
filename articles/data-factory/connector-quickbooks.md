@@ -122,7 +122,7 @@ Aby skopiować dane z usługi QuickBooks Online, należy ustawić typ źródłow
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **QuickBooksSource** | Yes |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **QuickBooksSource** | Yes |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
