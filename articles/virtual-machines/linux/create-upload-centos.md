@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: 72ed518af579bb6b95d3b13400f2fbf6679cd036
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 6f7175e24f4eb85229847470bc37a6224ac6dd6e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248185"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013684"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu CentOS dla platformy Azure
 
@@ -174,11 +174,14 @@ W tym artykule przyjęto założenie, że już zainstalowano system operacyjny C
 
     Alternatywnie można wykonać instrukcje instalacji ręcznej na [stronie pobierania lis](https://go.microsoft.com/fwlink/?linkid=403033) , aby zainstalować RPM na maszynie wirtualnej.
 
-12. Zainstaluj agenta i zależności platformy Azure Linux:
+12. Zainstaluj agenta i zależności platformy Azure dla systemu Linux. Uruchom i Włącz usługę waagent:
 
     ```bash
     sudo yum install python-pyasn1 WALinuxAgent
+    sudo service waagent start
+    sudo chkconfig waagent on
     ```
+
 
     Pakiet WALinuxAgent usunie pakiety NetworkManager i WorkManager-GNOME, jeśli nie zostały jeszcze usunięte zgodnie z opisem w kroku 3.
 
@@ -205,7 +208,7 @@ W tym artykule przyjęto założenie, że już zainstalowano system operacyjny C
 
 15. Nie należy tworzyć obszaru wymiany na dysku systemu operacyjnego.
 
-    Agent systemu Azure Linux może automatycznie skonfigurować miejsce wymiany przy użyciu lokalnego dysku zasobu dołączonego do maszyny wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy pamiętać, że lokalny dysk zasobów jest  dyskiem tymczasowym i może zostać opróżniony w przypadku anulowania aprowizacji maszyny wirtualnej. Po zainstalowaniu agenta systemu Linux platformy Azure (zobacz poprzedni krok) zmodyfikuj `/etc/waagent.conf` odpowiednio następujące parametry:
+    Agent systemu Azure Linux może automatycznie skonfigurować miejsce wymiany przy użyciu lokalnego dysku zasobu dołączonego do maszyny wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy pamiętać, że lokalny dysk zasobów jest dyskiem tymczasowym i może zostać opróżniony w przypadku anulowania aprowizacji maszyny wirtualnej. Po zainstalowaniu agenta systemu Linux platformy Azure (zobacz poprzedni krok) zmodyfikuj `/etc/waagent.conf` odpowiednio następujące parametry:
 
     ```console
     ResourceDisk.Format=y
@@ -371,7 +374,7 @@ Przygotowywanie maszyny wirtualnej CentOS 7 na platformie Azure jest bardzo podo
 
 12. Nie należy tworzyć obszaru wymiany na dysku systemu operacyjnego.
 
-    Agent systemu Azure Linux może automatycznie skonfigurować miejsce wymiany przy użyciu lokalnego dysku zasobu dołączonego do maszyny wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy pamiętać, że lokalny dysk zasobów jest  dyskiem tymczasowym i może zostać opróżniony w przypadku anulowania aprowizacji maszyny wirtualnej. Po zainstalowaniu agenta systemu Linux platformy Azure (zobacz poprzedni krok) zmodyfikuj `/etc/waagent.conf` odpowiednio następujące parametry:
+    Agent systemu Azure Linux może automatycznie skonfigurować miejsce wymiany przy użyciu lokalnego dysku zasobu dołączonego do maszyny wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy pamiętać, że lokalny dysk zasobów jest dyskiem tymczasowym i może zostać opróżniony w przypadku anulowania aprowizacji maszyny wirtualnej. Po zainstalowaniu agenta systemu Linux platformy Azure (zobacz poprzedni krok) zmodyfikuj `/etc/waagent.conf` odpowiednio następujące parametry:
 
     ```console
     ResourceDisk.Format=y

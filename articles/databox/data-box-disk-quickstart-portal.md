@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
+ms.localizationpriority: high
 ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 65bf4e973ce33b2898abf585fe306a8bc85c64a0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 983edcc19a27b91599ea1e312268934b37f8b0ca
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477800"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012893"
 ---
 ::: zone target="docs"
 
@@ -24,7 +25,7 @@ ms.locfileid: "67477800"
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Rozpoczynanie pracy z usługą przy użyciu witryny Azure portal dysku Azure Data Box
+# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Wprowadzenie do Azure Data Box Disk przy użyciu Azure Portal
 
 ::: zone-end
 
@@ -40,7 +41,7 @@ Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://
 
 ::: zone target="chromeless"
 
-W tym przewodniku Szybki start opisano sposób wdrażania usługi Azure Data Box Disk przy użyciu witryny Azure Portal. Kroki obejmują Przegląd wymagań wstępnych, odblokować dyski, połączenia i kopiowanie danych na dyskach, które przekazuje do platformy Azure.
+W tym przewodniku Szybki start opisano sposób wdrażania usługi Azure Data Box Disk przy użyciu witryny Azure Portal. Kroki obejmują przegląd wymagań wstępnych, odblokowywanie dysków, łączenie i kopiowanie danych na dyskach w celu przekazywania ich do platformy Azure.
 
 ::: zone-end
 
@@ -62,12 +63,12 @@ Zaloguj się do witryny Azure Portal pod adresem [https://aka.ms/azuredataboxfro
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Umieszczono zamówienia na dysku Data Box przy użyciu [samouczka: zamawianie urządzenia Azure Data Box Disk](data-box-disk-deploy-ordered.md).
+- Zamówienie zostało złożone dla Data Box Disk przy użyciu [samouczka: zamawianie urządzenia Azure Data Box Disk](data-box-disk-deploy-ordered.md).
 - Dyski zostały do Ciebie dostarczone, a stan zadania w portalu zmienił się na **Dostarczono**.
 - Masz dostępny komputer kliencki, z którego możesz skopiować dane. Na komputerze klienckim wymagane jest:
 
-    - Uruchom [obsługiwanym systemie operacyjnym](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
-    - Masz [inne wymagane oprogramowanie](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) zainstalowano klienta Windows.
+    - Uruchom [obsługiwany system operacyjny](data-box-disk-system-requirements.md#supported-operating-systems-for-clients).
+    - Należy zainstalować [inne wymagane oprogramowanie](data-box-disk-system-requirements.md#other-required-software-for-windows-clients) , jeśli jest to klient systemu Windows.
 
 ::: zone-end
 
@@ -110,18 +111,18 @@ Ten krok zajmuje około 5 minut.
 
 Czas wymagany do ukończenia tej operacji zależy od rozmiaru danych.
 
-1. Dysk zawiera *PageBlob*, *BlockBlob*, *AzureFile*, *ManagedDisk*, i *DataBoxDiskImport* folderów. Przeciągnij i upuść dane, które mają zostać zaimportowane jako blokowe obiekty blob, do folderu *BlockBlob*. Podobnie, przeciągnij i upuść dane, takie jak dysk VHD/VHDX do *PageBlob* folder i odpowiednie dane do *AzureFile*. Kopiowanie wirtualnych dysków twardych, które chcesz przekazać jako dysków zarządzanych do folderu, w obszarze *ManagedDisk*.
+1. Dysk zawiera foldery *PageBlob*, *BlockBlob*, *AzureFile*, *ManagedDisk*i *DataBoxDiskImport* . Przeciągnij i upuść dane, które mają zostać zaimportowane jako blokowe obiekty blob, do folderu *BlockBlob*. Analogicznie, przeciągnij i upuść dane, takie jak VHD/VHDX, do folderu *PageBlob* oraz odpowiednie dane do *AzureFile*. Skopiuj wirtualne dyski twarde, które chcesz przekazać jako dyski zarządzane, do folderu w obszarze *ManagedDisk*.
 
-    Dla każdego podfolderu w folderach *BlockBlob* i *PageBlob* zostanie utworzony kontener na koncie usługi Azure Storage. Udział plików jest tworzona dla podfolderu w obszarze *AzureFile*.
+    Dla każdego podfolderu w folderach *BlockBlob* i *PageBlob* zostanie utworzony kontener na koncie usługi Azure Storage. Tworzony jest udział plików dla podfolderu w obszarze *AzureFile*.
 
-    Wszystkie pliki w folderach *BlockBlob* i *PageBlob* zostaną skopiowane do domyślnego kontenera `$root` na koncie usługi Azure Storage. Skopiuj pliki do folderu, w ramach *AzureFile*. Wszystkie pliki kopiowana bezpośrednio do *AzureFile* folderu zakończy się niepowodzeniem i są przekazywane jako blokowe obiekty BLOB.
+    Wszystkie pliki w folderach *BlockBlob* i *PageBlob* zostaną skopiowane do domyślnego kontenera `$root` na koncie usługi Azure Storage. Skopiuj pliki do folderu w *AzureFile*. Wszystkie pliki skopiowane bezpośrednio do folderu *AzureFile* nie powiodą się i są przekazywane jako blokowe obiekty blob.
 
     > [!NOTE]
-    > - Wszystkie kontenery, obiekty BLOB i plików powinny być zgodne z [konwencjami nazewnictwa platformy Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). W przypadku niezgodności z tymi regułami przekazywanie danych na platformę Azure zakończy się niepowodzeniem.
-    > - Upewnij się, że pliki nie przekraczają ~4.75 TiB dla blokowych obiektów blob, ~ 8 TiB dla stronicowych obiektów blob i OK. 1 TiB dla usługi Azure Files.
+    > - Wszystkie kontenery, obiekty blob i pliki powinny być zgodne z [konwencjami nazewnictwa platformy Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). W przypadku niezgodności z tymi regułami przekazywanie danych na platformę Azure zakończy się niepowodzeniem.
+    > - Upewnij się, że pliki nie przekraczają ~ 4,75 TiB dla blokowych obiektów blob, ~ 8 TiB dla stronicowych obiektów blob i ~ 1 TiB dla Azure Files.
 
-2. **(Opcjonalne, ale zalecane)**  Po zakończeniu kopiowania, zdecydowanie zalecamy co najmniej uruchomienie `DataBoxDiskValidation.cmd` podawany *DataBoxDiskImport* folder, a następnie wybierz opcję 1, aby zweryfikować pliki. Zalecamy również tego pozwalające czasu za pomocą opcji 2 również generowanie sum kontrolnych dla sprawdzania poprawności (może potrwać w zależności od rozmiaru danych). Te kroki zminimalizować prawdopodobieństwo wszelkie błędy, podczas przekazywania danych na platformie Azure.
-3. Bezpiecznie usunąć dysk.
+2. **(Opcjonalne, ale zalecane)** Po zakończeniu kopiowania zdecydowanie zaleca się, aby w `DataBoxDiskValidation.cmd` folderze *DataBoxDiskImport* wybrać opcję 1, aby zweryfikować pliki. Zaleca się również, aby ten czas mógł zostać użyty w celu wygenerowania sum kontrolnych na potrzeby walidacji (może upłynąć trochę czasu w zależności od rozmiaru danych). Te kroki minimalizują ryzyko wystąpienia błędów podczas przekazywania danych na platformę Azure.
+3. Bezpiecznie Usuń dysk.
 
 ## <a name="ship-to-azure"></a>Wysyłka do platformy Azure
 
@@ -156,7 +157,7 @@ Aby wyczyścić zasoby, możesz anulować zamówienie urządzenia Data Box i usu
 
     Aby usunąć zamówienie, w sekcji **Przegląd** kliknij pozycję **Usuń** na pasku poleceń.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Podczas pracy z tym przewodnikiem Szybki start wdrożono usługę Azure Data Box Disk w celu zaimportowania danych na platformę Azure. Aby dowiedzieć się więcej na temat zarządzania usługą Azure Data Box Disk, przejdź do kolejnego samouczka:
 

@@ -1,44 +1,49 @@
 ---
-title: Co to jest Azure morskiej?
-description: Azure morskiej umożliwia dostawcy usług dostarczania usług zarządzanych dla ich klientom pracę z wyższym automatyzacji i wydajności na dużą skalę.
+title: Co to jest Azure Lighthouse?
+description: Usługa Azure Lighthouse umożliwia dostawcom usług dostarczanie usług zarządzanych klientom o większej wydajności i skalowalności.
 author: JnHs
 ms.author: jenhayes
-ms.date: 07/11/2019
+ms.date: 08/22/2019
 ms.topic: overview
 ms.service: lighthouse
 manager: carmonm
-ms.openlocfilehash: eb55af5a1121eb193bb76efc9f9e0b833f4b5a1f
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 05fa16504e25a6bf0f6aa1c0a348284abba6e1ed
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67809820"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011908"
 ---
-# <a name="what-is-azure-lighthouse"></a>Co to jest Azure morskiej?
+# <a name="what-is-azure-lighthouse"></a>Co to jest Azure Lighthouse?
 
-Morskiej platformy Azure oferuje usługodawców płaszczyznę jednego formantu do przeglądania i zarządzania platformy Azure w swoim klientom wyższy automatyzacji, skalowanie i rozszerzone nadzoru. Za pomocą morskiej Azure dostawcy usług mogą dostarczać usługi zarządzane przy użyciu narzędzi zarządzania kompleksowe i niezawodne wbudowane w platformę Azure. Ta oferta również mogą korzystać przedsiębiorstwa organizacjom zarządzanie zasobami w wielu dzierżawach.
+Usługa Azure Lighthouse oferuje dostawcom usług jedną płaszczyznę kontroli do wyświetlania i zarządzania platformą Azure wśród wszystkich klientów, którzy mają wyższą automatyzację, skalę i ulepszone zarządzanie. Dzięki usłudze Azure Lighthouse dostawcy usług mogą dostarczać zarządzane usługi przy użyciu kompleksowych i niezawodnych narzędzi do zarządzania wbudowanych w platformę Azure. Ta oferta może również przynieść organizacjom IT przedsiębiorstwa zarządzanie zasobami w wielu dzierżawach.
 
-![Diagram przeglądowy morskiej platformy Azure](media/azure-lighthouse-overview.jpg)
+![Diagram omówienia usługi Azure Lighthouse](media/azure-lighthouse-overview.jpg)
 
 ## <a name="benefits"></a>Korzyści
 
-Morskiej Azure pomaga wydajnej i efektywne tworzenie i dostarczanie usług zarządzanych dla swoich klientów. Korzyści:
+Usługa Azure Lighthouse pozwala na opłacalną i wydajną kompilację i dostarczanie usług zarządzanych klientom. Korzyści obejmują:
 
-- **Zarządzanie na dużą skalę**: Zaangażowania i cyklu życia operacji klienta do zarządzania zasobami klienta są łatwiejsze i bardziej skalowalne.
-- **Zapewnia lepszy wgląd i dokładność dla klientów**: Klienci, do którego zasoby zarządzasz, mają lepszy wgląd w swoje działania i ścisłą kontrolę nad zakresem delegują one do zarządzania, gdy adres IP jest zachowywana.
-- **Narzędzia platformy kompleksowe i ujednolicone**: Nasze środowisko narzędzi jest przeznaczona dla scenariuszy dostawcy usługi klucza, w tym wiele modeli licencjonowania, takich jak EA, dostawcy usług Kryptograficznych i płatność za rzeczywiste użycie. Nowe możliwości pracy z istniejącymi narzędziami i interfejsy API, modele, licencjonowania i partnerów takich jak programy [programu Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/csp-overview). Opcje morskiej platformy Azure, możesz wybrać można zintegrować z istniejącymi przepływami pracy i aplikacjami oraz oddziaływania można śledzić na podczas pracy z klientami przez [łączenie się z Partnerem](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started).
+- **Zarządzanie na dużą skalę**: Działania związane z klientami i cyklem życia w celu zarządzania zasobami klientów są łatwiejsze i bardziej skalowalne.
+- **Większa widoczność i precyzja dla klientów**: Klienci, których zasoby są zarządzane, będą mieli lepszy wgląd w swoje działania i precyzyjną kontrolę nad zakresem delegowanym do zarządzania, podczas gdy adres IP jest zachowywany.
+- **Kompleksowe i ujednolicone narzędzia platformy**: Nasze środowisko narzędziowe obejmuje scenariusze dostawców usług kluczowych, w tym wiele modeli licencjonowania, takich jak EA, CSP i płatność zgodnie z rzeczywistym użyciem. Nowe możliwości działają z istniejącymi narzędziami i interfejsami API, modelami licencjonowania i programami partnerskimi, takimi jak [program Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/csp-overview). Wybrane opcje usługi Azure Lighthouse można zintegrować z istniejącymi przepływami pracy i aplikacjami. możesz śledzić wpływ na zaangażowanie klientów, [ŁĄCZĄC identyfikator partnera](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started).
 
-Brak bez dodatkowych kosztów związanych z użyciem morskiej platformy Azure do zarządzania zasobami platformy Azure Twoich klientów.
+Nie ma dodatkowych kosztów związanych z usługą Azure Lighthouse do zarządzania zasobami platformy Azure dla klientów.
 
 ## <a name="capabilities"></a>Możliwości
 
-Morskiej platformy Azure obejmuje wiele sposobów, aby usprawnić zaangażowania użytkowników i zarządzania:
+Usługa Azure Lighthouse obejmuje wiele sposobów usprawniania zaangażowania klientów i zarządzania nimi:
 
-- **Azure delegowane zarządzanie zasobami**: Zarządzanie zasobami platformy Azure Twoich klientów bezpiecznie z w obrębie własnej dzierżawy, bez konieczności przełączania kontekstu i kontroli. Aby uzyskać więcej informacji, zobacz [Azure delegowane zarządzanie zasobami](./concepts/azure-delegated-resource-management.md).
-- **Nowa witryna Azure portal napotyka**: Wyświetl informacje o wielu dzierżawach w nowym **moich klientów** strony w [witryny Azure portal](https://portal.azure.com). Odpowiedni **dostawców usług** bloku pozwala klientom wyświetlanie i zarządzanie dostępem do dostawcy usługi. Aby uzyskać więcej informacji, zobacz [widoku i zarządzania nimi klienci](./how-to/view-manage-customers.md) i [wyświetlanie i zarządzanie dostawcami usług](./how-to/view-manage-service-providers.md).
-- **Szablony usługi Azure Resource Manager**: Łatwiej wykonywać zadania zarządzania, w tym dodawanie klientów na platformie Azure delegowane zarządzanie zasobami. Aby uzyskać więcej informacji, zobacz nasze [przykłady repozytorium](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates) i [dołączanie klientów na platformie Azure delegowane zarządzanie zasobami](how-to/onboard-customer.md).
-- **Zarządzane oferty usług w witrynie Azure Marketplace**: Oferta usługi dla klientów za pośrednictwem oferty prywatnej lub publicznej i dodano je automatycznie do środowiska zarządzania usługi Azure resource delegowanego, jako alternatywnego do dołączania za pomocą szablonów usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [zarządzane oferty usług w witrynie Azure Marketplace](./concepts/managed-services-offers.md).
-- **Usługi Azure managed applications**: Pakiet i dostarczaj aplikacje, które są łatwe dla swoich klientów, wdrażania i stosowania w ich własnych subskrypcjach. Aplikacja jest wdrażana w grupie zasobów, możesz uzyskać dostęp w dzierżawie, co pozwala zarządzać usługą jako część ogólnego środowiska Azure morskiej. Aby uzyskać więcej informacji, zobacz [usługi Azure managed applications overview](https://docs.microsoft.com/azure/managed-applications/overview).
+- **Zarządzanie zasobami delegowanymi przez platformę Azure**: Bezpieczne zarządzanie zasobami platformy Azure klientów w ramach własnej dzierżawy bez konieczności przełączania kontekstu i płaszczyzny kontroli. Aby uzyskać więcej informacji, zobacz [Zarządzanie zasobami delegowanymi przez platformę Azure](./concepts/azure-delegated-resource-management.md).
+- **Nowe Azure Portal środowiska**: Wyświetl informacje dotyczące wielu dzierżawców na stronie nowe **moi klienci** w [Azure Portal](https://portal.azure.com). Odpowiedni blok **dostawców usług** umożliwia klientom wyświetlanie dostępu dostawcy usług i zarządzanie nim. Aby uzyskać więcej informacji, zobacz [Wyświetlanie i zarządzanie klientami](./how-to/view-manage-customers.md) oraz [Wyświetlanie i zarządzanie dostawcami usług](./how-to/view-manage-service-providers.md).
+- **Szablony Azure Resource Manager**: Łatwiejsze wykonywanie zadań zarządzania, w tym klientów dołączania do zarządzania zasobami delegowanymi przez platformę Azure. Aby uzyskać więcej informacji, zobacz nasze [przykładowe repozytorium](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/Azure-Delegated-Resource-Management/templates) i Dołącz [klienta do zarządzania zasobami delegowanymi przez platformę Azure](how-to/onboard-customer.md).
+- **Oferty usług zarządzanych w witrynie Azure Marketplace**: Oferowanie usług klientom za pośrednictwem ofert prywatnych lub publicznych oraz automatyczne dołączanie do funkcji zarządzania zasobami delegowanymi przez platformę Azure jako alternatywa do dołączania przy użyciu szablonów Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [oferty usług zarządzanych w witrynie Azure Marketplace](./concepts/managed-services-offers.md).
+- **Aplikacje zarządzane przez platformę Azure**: Pakowanie i dostarczanie aplikacji, które są łatwe dla klientów do wdrożenia i używania w swoich własnych subskrypcjach. Aplikacja jest wdrażana w grupie zasobów, do której masz dostęp z dzierżawy, co pozwala na zarządzanie usługą w ramach ogólnego środowiska Azure Lighthouse. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Managed Applications](https://docs.microsoft.com/azure/managed-applications/overview).
 
 > [!NOTE]
-> Możliwości opisanych powyżej są obecnie dostępne w chmurach publicznych. Regionalne Dostępność poszczególnych usług, zobacz [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/).
+> Opisane powyżej funkcje są obecnie dostępne w chmurach publicznych. Aby zapoznać się z regionalną dostępnością poszczególnych usług, zobacz [dostępne produkty według regionów](https://azure.microsoft.com/global-infrastructure/services/).
+
+## <a name="next-steps"></a>Następne kroki
+
+- Dowiedz się więcej o [zarządzaniu zasobami delegowanymi na platformie Azure](concepts/azure-delegated-resource-management.md).
+- Dowiedz się więcej na temat [środowisk zarządzania między dzierżawcami](concepts/cross-tenant-management-experience.md).

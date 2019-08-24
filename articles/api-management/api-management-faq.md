@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure API Management — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Dowiedz się, odpowiedzi na często zadawane pytania (FAQ), wzorców i najlepszych praktyk w usłudze Azure API Management.
+title: Azure API Management — często zadawane pytania | Microsoft Docs
+description: Poznaj odpowiedzi na często zadawane pytania, wzorce i najlepsze praktyki dotyczące usługi Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,153 +14,139 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: f4140754afa8de994b227dc187cd73c9ccfa86f9
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 55a340f2ee2dceb31a8457f6f2201160e573e8a2
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666027"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012360"
 ---
-# <a name="azure-api-management-faqs"></a>Często zadawane pytania usługi Azure API Management
-Odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dotyczące usługi Azure API Management.
+# <a name="azure-api-management-faqs"></a>Azure API Management — często zadawane pytania
+Uzyskaj odpowiedzi na często zadawane pytania, wzorce oraz najlepsze rozwiązania dotyczące usługi Azure API Management.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="contact-us"></a>Skontaktuj się z nami
-* [Jak mogę zadawać zespołu Microsoft Azure API Management pytanie?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
+* [Jak zadać pytanie w Microsoft Azure API Management zespołu?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
-* [Co oznacza Jeśli funkcja jest dostępna w wersji zapoznawczej?](#what-does-it-mean-when-a-feature-is-in-preview)
+* [Co oznacza, gdy funkcja jest w wersji zapoznawczej?](#what-does-it-mean-when-a-feature-is-in-preview)
 * [Jak mogę zabezpieczyć połączenie między bramą usługi API Management i usługami zaplecza?](#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)
 * [Jak mogę skopiować moje wystąpienie usługi API Management do nowego wystąpienia?](#how-do-i-copy-my-api-management-service-instance-to-a-new-instance)
-* [Może zarządzać Mój wystąpienia usługi API Management programowo?](#can-i-manage-my-api-management-instance-programmatically)
+* [Czy mogę programowo zarządzać moim wystąpieniem API Management?](#can-i-manage-my-api-management-instance-programmatically)
 * [Jak dodać użytkownika do grupy administratorów?](#how-do-i-add-a-user-to-the-administrators-group)
-* [Dlaczego jest zasady, które chcę dodać niedostępne w edytorze zasad?](#why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor)
-* [Jak skonfigurować wiele środowisk w pojedynczy interfejs API?](#how-do-i-set-up-multiple-environments-in-a-single-api)
-* [Dzięki usłudze API Management można używać protokołu SOAP?](#can-i-use-soap-with-api-management)
-* [Jest stałej adresu IP bramy usługi API Management? Można go używać w regułach zapory?](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)
-* [Przy użyciu zabezpieczeń usług AD FS można skonfigurować serwera autoryzacji OAuth 2.0?](#can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security)
-* [Jakie metody routingu dla usługi API Management używa w przypadku wdrożeń w wielu lokalizacjach geograficznych?](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
-* [Aby utworzyć wystąpienie usługi API Management można używać szablonu usługi Azure Resource Manager?](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
+* [Dlaczego zasady, które chcę dodać, są niedostępne w edytorze zasad?](#why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor)
+* [Jak mogę skonfigurować wiele środowisk w jednym interfejsie API?](#how-do-i-set-up-multiple-environments-in-a-single-api)
+* [Czy można używać protokołu SOAP z API Management?](#can-i-use-soap-with-api-management)
+* [Czy można skonfigurować serwer autoryzacji OAuth 2,0 z zabezpieczeniami AD FS?](#can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security)
+* [Jakiej metody routingu API Management używać we wdrożeniach w wielu lokalizacjach geograficznych?](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
+* [Czy można użyć szablonu Azure Resource Manager, aby utworzyć wystąpienie usługi API Management?](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
 * [Czy mogę używać certyfikatu SSL z podpisem własnym dla zaplecza?](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)
-* [Dlaczego komunikat o niepowodzeniu uwierzytelniania, przy próbie sklonowania repozytorium GIT?](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
-* [Usługa API Management działa z usługą Azure ExpressRoute?](#does-api-management-work-with-azure-expressroute)
-* [Dlaczego firma Microsoft wymagają dedykowanej podsieci w stylu Menedżera zasobów sieci wirtualnych po wdrożeniu usługi API Management do nich?](#why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them)
-* [Jaki jest rozmiar podsieci minimalne wymagane podczas wdrażania usługi API Management w sieci Wirtualnej?](#what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet)
+* [Dlaczego otrzymuję błąd uwierzytelniania podczas próby sklonowania repozytorium GIT?](#why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository)
+* [Czy API Management współpracuje z usługą Azure ExpressRoute?](#does-api-management-work-with-azure-expressroute)
+* [Dlaczego w Menedżer zasobów stylu sieci wirtualnych jest wymagana dedykowana podsieć, gdy API Management jest w nich wdrożona?](#why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them)
+* [Jaki jest minimalny rozmiar podsieci wymagany podczas wdrażania API Management w sieci wirtualnej?](#what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet)
 * [Czy mogę przenieść usługę API Management z jednej subskrypcji do innej](#can-i-move-an-api-management-service-from-one-subscription-to-another)
-* [Czy istnieją ograniczenia dotyczące lub znane problemy z importowaniem wybór interfejsu API?](#are-there-restrictions-on-or-known-issues-with-importing-my-api)
+* [Czy istnieją ograniczenia dotyczące lub znane problemy z importowaniem interfejsu API?](#are-there-restrictions-on-or-known-issues-with-importing-my-api)
 
-### <a name="how-can-i-ask-the-microsoft-azure-api-management-team-a-question"></a>Jak mogę zadawać zespołu Microsoft Azure API Management pytanie?
-Użytkownik może skontaktuj się z nami przy użyciu jednej z następujących opcji:
+### <a name="how-can-i-ask-the-microsoft-azure-api-management-team-a-question"></a>Jak zadać pytanie w Microsoft Azure API Management zespołu?
+Możesz skontaktować się z nami przy użyciu jednej z następujących opcji:
 
-* Publikuj swoje pytania w naszym [forum API Management MSDN](https://social.msdn.microsoft.com/forums/azure/home?forum=azureapimgmt).
+* Opublikuj swoje pytania na naszym [Forum usługi MSDN API Management](https://social.msdn.microsoft.com/forums/azure/home?forum=azureapimgmt).
 * Wyślij wiadomość e-mail na adres <mailto:apimgmt@microsoft.com>.
-* Wyślij zgłoszenie dotyczące funkcji [forum opinii platformy Azure](https://feedback.azure.com/forums/248703-api-management).
+* Wyślij nam żądanie funkcji na [forum opinii na platformie Azure](https://feedback.azure.com/forums/248703-api-management).
 
-### <a name="what-does-it-mean-when-a-feature-is-in-preview"></a>Co oznacza Jeśli funkcja jest dostępna w wersji zapoznawczej?
-Jeśli funkcja jest dostępna w wersji zapoznawczej, oznacza to, że firma Microsoft jest aktywnie znalezienia opinie na temat pracy funkcji dla Ciebie. Funkcja w wersji zapoznawczej jest funkcjonalnie ukończone, ale istnieje możliwość, że wprowadzimy istotne zmiany w odpowiedzi na opinie klientów. Zaleca się, że nie są zależne od funkcji, która jest dostępna w wersji zapoznawczej w środowisku produkcyjnym. Jeśli macie jakieś uwagi na funkcje w wersji zapoznawczej, prosimy o kontakt przez jedną z opcji kontaktu w [jak mogę zadawać zespołu Microsoft Azure API Management pytanie?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question).
+### <a name="what-does-it-mean-when-a-feature-is-in-preview"></a>Co oznacza, gdy funkcja jest w wersji zapoznawczej?
+Gdy funkcja jest w wersji zapoznawczej, oznacza to, że aktywnie szukamy opinii na temat sposobu działania tej funkcji. Funkcja w wersji zapoznawczej jest funkcjonalnie kompletna, ale istnieje możliwość, że w odpowiedzi na Opinie klientów wprowadzimy istotną zmianę. Zalecamy, aby nie zależały od funkcji, która jest w wersji zapoznawczej w środowisku produkcyjnym. Jeśli masz opinię na temat funkcji wersji zapoznawczej, skontaktuj się z nami za pomocą jednej z opcji kontaktu w temacie [jak zadać pytania Microsoft Azure API Management zespołu?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
 
-### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>Jak można zabezpieczyć połączenia między bramą usługi API Management i wykaz usług zaplecza
-Istnieje kilka opcji, aby zabezpieczyć połączenia między bramą usługi API Management i usług zaplecza. Możesz:
+### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>Jak zabezpieczyć połączenie między bramą API Management a usługą zaplecza?
+Istnieje kilka opcji zabezpieczania połączenia między bramą API Management i usługami zaplecza. Możesz:
 
-* Stosuj uwierzytelnianie podstawowe HTTP. Aby uzyskać więcej informacji, zobacz [importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
-* Użyj wzajemnego uwierzytelniania protokołu SSL, zgodnie z opisem w [sposób zabezpieczania usług zaplecza przy użyciu klienta uwierzytelniania certyfikatów w usłudze Azure API Management](api-management-howto-mutual-certificates.md).
-* Użyj listy dozwolonych adresów IP w usłudze zaplecza. We wszystkich warstwach usługi API Management, z wyjątkiem warstwa zużycie, adres IP bramy pozostanie niezmieniona, za pomocą kilku [zastrzeżenia](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules). Możesz ustawić Twojej listy dozwolonych, aby zezwolić na ten adres IP. Na pulpicie nawigacyjnym w witrynie Azure portal, można uzyskać adresu IP wystąpienia usługi API Management.
-* Wystąpienie usługi API Management nawiązać połączenia z siecią wirtualną platformy Azure.
+* Użyj uwierzytelniania podstawowego protokołu HTTP. Aby uzyskać więcej informacji, zobacz [Importowanie i publikowanie pierwszego interfejsu API](import-and-publish.md).
+* Użyj uwierzytelniania wzajemnego SSL zgodnie z opisem w artykule [jak zabezpieczyć usługi zaplecza przy użyciu uwierzytelniania certyfikatu klienta w usłudze Azure API Management](api-management-howto-mutual-certificates.md).
+* Użyj listy dozwolonych IP w usłudze zaplecza. We wszystkich warstwach API Management z wyjątkiem warstwy zużycia adres IP bramy pozostaje stały i z kilku zapisań opisanych w [artykule dokumentacji protokołu IP](api-management-howto-ip-addresses.md).
+* Połącz wystąpienie API Management z usługą Azure Virtual Network.
 
-### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Jak skopiować Moje wystąpienia usługi API Management do nowego wystąpienia?
-Istnieje kilka opcji, jeśli chcesz skopiować wystąpienia usługi API Management do nowego wystąpienia. Możesz:
+### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>Jak mogę skopiować wystąpienia usługi API Management do nowego wystąpienia?
+Istnieje kilka opcji, jeśli chcesz skopiować wystąpienie API Management do nowego wystąpienia. Możesz:
 
-* Użyj funkcji kopii zapasowej i przywracania funkcji w usłudze API Management. Aby uzyskać więcej informacji, zobacz [sposób zaimplementować funkcje odzyskiwania po awarii przy użyciu usługi kopii zapasowej i przywracania w usłudze Azure API Management](api-management-howto-disaster-recovery-backup-restore.md).
-* Utwórz własną kopię zapasową i przywrócić funkcji przy użyciu [interfejsu API REST zarządzania interfejsu API](/rest/api/apimanagement/). Zapisywanie i przywracanie jednostki z wystąpienia usługi, która ma za pomocą interfejsu API REST.
-* Pobierz konfigurację usługi przy użyciu narzędzia Git, a następnie przekaż go do nowego wystąpienia. Aby uzyskać więcej informacji, zobacz [zapisywanie i konfigurowanie konfiguracji usługi API Management przy użyciu narzędzia Git](api-management-configuration-repository-git.md).
+* Użyj funkcji tworzenia kopii zapasowych i przywracania w API Management. Aby uzyskać więcej informacji, zobacz [jak zaimplementować odzyskiwanie awaryjne przy użyciu kopii zapasowej i przywracania usługi w usłudze Azure API Management](api-management-howto-disaster-recovery-backup-restore.md).
+* Utwórz własną funkcję tworzenia kopii zapasowych i przywracania za pomocą [interfejsu API REST API Management](/rest/api/apimanagement/). Za pomocą interfejsu API REST Zapisz i Przywróć jednostki z wystąpienia usługi, które chcesz.
+* Pobierz konfigurację usługi za pomocą narzędzia Git, a następnie przekaż ją do nowego wystąpienia. Aby uzyskać więcej informacji, zobacz [jak zapisać i skonfigurować konfigurację usługi API Management za pomocą narzędzia Git](api-management-configuration-repository-git.md).
 
-### <a name="can-i-manage-my-api-management-instance-programmatically"></a>Może zarządzać Mój wystąpienia usługi API Management programowo?
-Tak, można zarządzać usługi API Management programowo przy użyciu:
+### <a name="can-i-manage-my-api-management-instance-programmatically"></a>Czy mogę programowo zarządzać moim wystąpieniem API Management?
+Tak, możesz zarządzać API Management programowo przy użyciu:
 
-* [Usługi API Management REST API](/rest/api/apimanagement/).
-* [Biblioteki zarządzania usługi ApiManagement platformy Microsoft Azure SDK](https://aka.ms/apimsdk).
-* [Wdrożenie usługi](https://docs.microsoft.com/powershell/module/wds) i [Zarządzanie usługami](https://docs.microsoft.com/powershell/azure/servicemanagement/overview) poleceń cmdlet programu PowerShell.
+* [Interfejs API REST API Management](/rest/api/apimanagement/).
+* [Zestaw SDK biblioteki zarządzania usługą Microsoft Azure ApiManagement](https://aka.ms/apimsdk).
+* Polecenia cmdlet programu PowerShell dotyczące [wdrażania usług](https://docs.microsoft.com/powershell/module/wds) i [zarządzania usługami](https://docs.microsoft.com/powershell/azure/servicemanagement/overview) .
 
-### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Jak dodać użytkownika do grupy administratorów?
-Poniżej przedstawiono, jak można dodać użytkownika do grupy administratorów:
+### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>Jak mogę dodać użytkownika do grupy administratorów?
+Oto jak można dodać użytkownika do grupy Administratorzy:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Przejdź do grupy zasobów zawierającej wystąpienia usługi API Management, który chcesz zaktualizować.
-3. W usłudze API Management, należy przypisać **Współautor usługi Api Management** roli do użytkownika.
+2. Przejdź do grupy zasobów, która ma API Management wystąpienia, które chcesz zaktualizować.
+3. W API Management Przypisz do użytkownika rolę **współautor usługi API Management** .
 
-Teraz używać programu Azure PowerShell nowo dodanych Współautor [poleceń cmdlet](https://docs.microsoft.com/powershell/azure/overview). Oto jak zalogować się jako administrator:
+Teraz nowo dodany współautor może używać Azure PowerShell [poleceń cmdlet](https://docs.microsoft.com/powershell/azure/overview). Oto jak zalogować się jako administrator:
 
-1. Użyj `Connect-AzAccount` polecenia cmdlet, aby zalogować się.
-2. Ustaw kontekst subskrypcji, z usługi przy użyciu `Set-AzContext -SubscriptionID <subscriptionGUID>`.
-3. Pobierz pojedynczy adres URL logowania za pomocą `Get-AzApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>`.
-4. Adres URL umożliwia dostęp do portalu administratora.
+1. Użyj polecenia `Connect-AzAccount` cmdlet, aby się zalogować.
+2. Ustaw kontekst na subskrypcję, która ma usługę przy użyciu `Set-AzContext -SubscriptionID <subscriptionGUID>`.
+3. Pobierz adres URL logowania jednokrotnego za pomocą `Get-AzApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>`polecenia.
+4. Użyj adresu URL, aby uzyskać dostęp do portalu administracyjnego.
 
-### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Dlaczego jest zasady, które chcę dodać niedostępne w edytorze zasad?
-Jeśli zasady, które chcesz dodać pojawi się nieaktywne lub cieniowania w edytorze zasad, upewnij się, że znajdują się w niewłaściwym zakresie zasad. Każda instrukcja zasad jest przeznaczona do użycia w określonych zakresach i sekcji zasady. Aby zapoznać się z sekcji zasad i zakresy dla zasad, zawiera sekcja zasady do użycia w [zasady usługi API Management](/azure/api-management/api-management-policies).
+### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Dlaczego zasady, które chcę dodać, są niedostępne w edytorze zasad?
+Jeśli zasady, które mają zostać dodane, są wyszarzone lub wyszarzone w edytorze zasad, upewnij się, że jesteś w prawidłowym zakresie dla zasad. Każda instrukcja zasad jest przeznaczona do użycia w określonych zakresach i sekcjach zasad. Aby zapoznać się z sekcjami zasad i zakresami zasad, zobacz sekcję użycie zasad w temacie [zasady API Management](/azure/api-management/api-management-policies).
 
-### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Jak skonfigurować wiele środowisk w pojedynczy interfejs API?
-Aby skonfigurować wielu środowiskach, na przykład środowisko testowe i środowisko produkcyjne, w pojedynczy interfejs API, masz dwie opcje. Możesz:
+### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Jak mogę skonfigurować wiele środowisk w jednym interfejsie API?
+Aby skonfigurować wiele środowisk, na przykład środowisko testowe i środowisko produkcyjne, w jednym interfejsie API dostępne są dwie opcje. Możesz:
 
-* Host różnych interfejsów API w tej samej dzierżawy.
+* Hostowanie różnych interfejsów API w tej samej dzierżawie.
 * Hostowanie tych samych interfejsów API w różnych dzierżawach.
 
-### <a name="can-i-use-soap-with-api-management"></a>Dzięki usłudze API Management można używać protokołu SOAP?
-[Przekazywanie protokołu SOAP](https://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) obsługa jest teraz dostępna. Administratorzy mogą importować WSDL usługi protokołu SOAP i usługi Azure API Management zostanie tworzenie frontonu protokołu SOAP. Dokumentacja portalu dla deweloperów, konsoli testów, zasad i analizy będą dostępne dla usługi SOAP.
+### <a name="can-i-use-soap-with-api-management"></a>Czy można używać protokołu SOAP z API Management?
+Obsługa [przekazywania protokołu SOAP](https://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/) jest teraz dostępna. Administratorzy mogą zaimportować WSDL usługi SOAP, a platforma Azure API Management utworzy fronton protokołu SOAP. Dokumentacja portalu dla deweloperów, konsola testowa, zasady i analiza są dostępne dla usług SOAP.
 
-### <a name="is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules"></a>Jest stałej adresu IP bramy usługi API Management? Można go używać w regułach zapory?
-Publiczny adres IP (VIP) dzierżawcy interfejsu API zarządzania we wszystkich warstwach usługi API Management, jest statyczny okres istnienia dzierżawy, z pewnymi wyjątkami. Zmiana adresu IP w takiej sytuacji:
+### <a name="can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security"></a>Czy można skonfigurować serwer autoryzacji OAuth 2,0 z zabezpieczeniami AD FS?
+Aby dowiedzieć się, jak skonfigurować serwer autoryzacji OAuth 2,0 z zabezpieczeniami Active Directory Federation Services (AD FS), zobacz [Korzystanie z usług AD FS w API Management](https://phvbaars.wordpress.com/2016/02/06/using-adfs-in-api-management/).
 
-* Usługa jest usuwana i ponownie utworzona.
-* Subskrypcja usługi jest [zawieszone](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) lub [ostrzegany](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states) (na przykład zgłaszane) i następnie przywrócone.
-* Dodawanie lub usuwanie sieci wirtualnej platformy Azure (sieć wirtualną można użyć tylko na dewelopera i warstwa Premium).
+### <a name="what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations"></a>Jakiej metody routingu API Management używać we wdrożeniach w wielu lokalizacjach geograficznych?
+API Management używa [metody routingu ruchu wydajności](../traffic-manager/traffic-manager-routing-methods.md#performance) we wdrożeniach w wielu lokalizacjach geograficznych. Ruch przychodzący jest kierowany do najbliższej bramy interfejsu API. Jeśli jeden region przejdzie w tryb offline, ruch przychodzący jest automatycznie kierowany do następnej najbliższej bramy. Dowiedz się więcej o metodach routingu w [Traffic Manager metodach routingu](../traffic-manager/traffic-manager-routing-methods.md).
 
-Dla wdrożeń w wielu regionach, gdy region jest zwolnione w wyniku, a następnie przywrócone zmiany adresu regionalnej (tylko w warstwie Premium można użyć wdrożenie w wielu regionach).
+### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>Czy można użyć szablonu Azure Resource Manager, aby utworzyć wystąpienie usługi API Management?
+Tak. Zobacz Szablony szybkiego startu [usługi Azure API Management](https://aka.ms/apimtemplate) .
 
-Dzierżaw warstwy Premium, które są skonfigurowane dla wdrożenia w wielu regionach są przypisywane jeden publiczny adres IP na region.
+### <a name="can-i-use-a-self-signed-ssl-certificate-for-a-back-end"></a>Czy mogę użyć certyfikatu SSL z podpisem własnym na potrzeby zaplecza?
+Tak. Można to zrobić za pomocą programu PowerShell lub przez bezpośrednie przesłanie do interfejsu API. Spowoduje to wyłączenie weryfikacji łańcucha certyfikatów i umożliwi korzystanie z certyfikatów z podpisem własnym lub z podpisem prywatnym podczas komunikowania się z API Management do usług zaplecza.
 
-Na stronie dzierżawy w witrynie Azure portal, możesz uzyskać adres IP (lub adresy w wdrożenie w wielu regionach).
-
-### <a name="can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security"></a>Przy użyciu zabezpieczeń usług AD FS można skonfigurować serwera autoryzacji OAuth 2.0?
-Aby dowiedzieć się, jak skonfigurować serwer autoryzacji OAuth 2.0 przy użyciu zabezpieczeń usługi Active Directory Federation Services (AD FS), zobacz [za pomocą usług AD FS w usłudze API Management](https://phvbaars.wordpress.com/2016/02/06/using-adfs-in-api-management/).
-
-### <a name="what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations"></a>Jakie metody routingu dla usługi API Management używa w przypadku wdrożeń w wielu lokalizacjach geograficznych?
-API Management używa [wydajności metodę routingu ruchu](../traffic-manager/traffic-manager-routing-methods.md#performance) w przypadku wdrożeń w wielu lokalizacjach geograficznych. Ruch przychodzący jest kierowany do najbliższego bramy interfejsu API. Jeśli jeden region przejdzie do trybu offline, ruch przychodzący jest automatycznie kierowany do następnego najbliższej bramy. Dowiedz się więcej na temat metody routingu w [metody routingu w usłudze Traffic Manager](../traffic-manager/traffic-manager-routing-methods.md).
-
-### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>Aby utworzyć wystąpienie usługi API Management można używać szablonu usługi Azure Resource Manager?
-Tak. Zobacz [usługa Azure API Management](https://aka.ms/apimtemplate) szablony szybkiego startu.
-
-### <a name="can-i-use-a-self-signed-ssl-certificate-for-a-back-end"></a>Dla zaplecza można używać certyfikatu SSL z podpisem własnym?
-Tak. Można to zrobić za pomocą programu PowerShell lub przesyłając bezpośrednio do interfejsu API. To spowoduje wyłączenie sprawdzania poprawności łańcucha certyfikatu i pozwala korzystać z podpisem własnym lub prywatnie podpisany certyfikatów, podczas komunikowania się z usługi API Management z usługami zaplecza.
-
-#### <a name="powershell-method"></a>PowerShell — metoda ####
-Użyj [ `New-AzApiManagementBackend` ](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (dla nowego zaplecza) lub [ `Set-AzApiManagementBackend` ](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (w przypadku istniejącego zaplecza) polecenia cmdlet programu PowerShell i ustaw `-SkipCertificateChainValidation` parametr `True`. 
+#### <a name="powershell-method"></a>PowerShell — Metoda ####
+Użyj (dla nowego zaplecza) lub [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (dla istniejących zaplecza) `-SkipCertificateChainValidation` poleceń cmdlet programu PowerShell i ustaw parametr na `True`. [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) 
 
 ```powershell
 $context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
 New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```
 
-#### <a name="direct-api-update-method"></a>Metoda bezpośrednia aktualizacja interfejsu API ####
-1. Tworzenie [zaplecza](/rest/api/apimanagement/) jednostki za pomocą usługi API Management.     
-2. Ustaw **skipCertificateChainValidation** właściwości **true**.     
-3. Jeśli nie chcesz już nie zezwalaj na certyfikaty z podpisem własnym, Usuń jednostkę wewnętrznej bazy danych lub ustaw **skipCertificateChainValidation** właściwości **false**.
+#### <a name="direct-api-update-method"></a>Metoda bezpośredniej aktualizacji interfejsu API ####
+1. Utwórz jednostkę [zaplecza](/rest/api/apimanagement/) przy użyciu API Management.     
+2. Ustaw właściwość **skipCertificateChainValidation** na **wartość true**.     
+3. Jeśli nie chcesz już zezwalać na certyfikaty z podpisem własnym, Usuń jednostkę zaplecza lub ustaw właściwość **skipCertificateChainValidation** na **wartość false**.
 
-### <a name="why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository"></a>Dlaczego komunikat o niepowodzeniu uwierzytelniania, przy próbie sklonowania repozytorium Git?
-Jeśli używasz programu Git Credential Manager lub jeśli chcesz sklonować repozytorium Git w programie Visual Studio, może wystąpić znany problem z okna dialogowego poświadczeń Windows. Okno dialogowe ogranicza długość hasła do 127 znaków, a jego obcina hasło wygenerowane przez Microsoft. Pracujemy nad skracanie hasło. Na razie użyj powłoki Git Bash sklonować repozytorium Git.
+### <a name="why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository"></a>Dlaczego otrzymuję błąd uwierzytelniania podczas próby sklonowania repozytorium git?
+W przypadku korzystania z programu Git Credential Manager lub jeśli próbujesz sklonować repozytorium Git w programie Visual Studio, możesz uruchomić w znanym problemie przy użyciu okna dialogowego poświadczenia systemu Windows. Okno dialogowe ogranicza długość hasła do 127 znaków i obcina hasło generowane przez firmę Microsoft. Pracujemy nad skróceniem hasła. Na razie użyj narzędzia Git bash, aby sklonować repozytorium git.
 
-### <a name="does-api-management-work-with-azure-expressroute"></a>Usługa API Management działa z usługą Azure ExpressRoute?
-Tak. Usługa API Management działa z usługą Azure ExpressRoute.
+### <a name="does-api-management-work-with-azure-expressroute"></a>Czy API Management współpracuje z usługą Azure ExpressRoute?
+Tak. API Management współpracuje z usługą Azure ExpressRoute.
 
-### <a name="why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them"></a>Dlaczego firma Microsoft wymagają dedykowanej podsieci w stylu Menedżera zasobów sieci wirtualnych po wdrożeniu usługi API Management do nich?
-Wymaganie dedykowanej podsieci dla usługi API Management jest dostarczany z faktu, że jest on oparty na modelu wdrożenia klasycznego (warstwy PAAS w wersji 1). Gdy możemy wdrożyć w sieci Wirtualnej usługi Resource Manager (Warstwa 2), ma skutków. Klasycznego modelu wdrażania na platformie Azure nie jest ściśle powiązany z modelu usługi Resource Manager, a więc jeśli utworzysz zasób w warstwie 2 warstwy V1 nie wie o nim i problemów może się zdarzyć, takich jak API Management próby wykorzystania adresu IP, który został już przydzielony do karty Sieciowej  (w oparciu V2).
-Aby dowiedzieć się więcej na temat różnicy modelach klasycznym i usługi Resource Manager na platformie Azure dotyczą [różnic w modelach wdrażania](../azure-resource-manager/resource-manager-deployment-model.md).
+### <a name="why-do-we-require-a-dedicated-subnet-in-resource-manager-style-vnets-when-api-management-is-deployed-into-them"></a>Dlaczego w Menedżer zasobów stylu sieci wirtualnych jest wymagana dedykowana podsieć, gdy API Management jest w nich wdrożona?
+Wymagania dedykowanej podsieci dla API Management wynikają z faktu, że jest on zbudowany na podstawie klasycznego modelu wdrażania (PAAS v1). Chociaż możemy wdrożyć program w Menedżer zasobów sieci wirtualnej (warstwa v2), istnieją pewne konsekwencje. Klasyczny model wdrażania na platformie Azure nie jest ściśle połączony z modelem Menedżer zasobów i dlatego jeśli utworzysz zasób w warstwie v2, warstwa w wersji 1 nie wie o tym, a mogą wystąpić problemy, takie jak API Management próby użycia adresu IP, który jest już przydzielony do karty sieciowej  (wbudowane w wersji 2).
+Aby dowiedzieć się więcej na temat różnic między modelami klasycznymi i Menedżer zasobówymi na platformie Azure, zapoznaj się z [różnicą w modelach wdrażania](../azure-resource-manager/resource-manager-deployment-model.md)
 
-### <a name="what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet"></a>Jaki jest rozmiar podsieci minimalne wymagane podczas wdrażania usługi API Management w sieci Wirtualnej?
-Rozmiar podsieci minimalne wymagane do wdrożenia usługi API Management jest [/29](../virtual-network/virtual-networks-faq.md#configuration), czyli rozmiar minimalny podsieci, obsługiwanych na platformie Azure.
+### <a name="what-is-the-minimum-subnet-size-needed-when-deploying-api-management-into-a-vnet"></a>Jaki jest minimalny rozmiar podsieci wymagany podczas wdrażania API Management w sieci wirtualnej?
+Minimalny rozmiar podsieci wymagany do wdrożenia API Management to [/29](../virtual-network/virtual-networks-faq.md#configuration), czyli minimalny rozmiar podsieci obsługiwany przez platformę Azure.
 
-### <a name="can-i-move-an-api-management-service-from-one-subscription-to-another"></a>Czy mogę przenieść usługi API Management z jednej subskrypcji do innej?
-Tak. Aby dowiedzieć się więcej, zobacz temat [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md).
+### <a name="can-i-move-an-api-management-service-from-one-subscription-to-another"></a>Czy mogę przenieść usługę API Management z jednej subskrypcji na inną?
+Tak. Aby dowiedzieć się, jak [przenieść zasoby do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md).
 
-### <a name="are-there-restrictions-on-or-known-issues-with-importing-my-api"></a>Czy istnieją ograniczenia dotyczące lub znane problemy z importowaniem wybór interfejsu API?
-[Znane problemy i ograniczenia](api-management-api-import-restrictions.md) dla API(Swagger) otwartych formatów WSDL i WADL.
+### <a name="are-there-restrictions-on-or-known-issues-with-importing-my-api"></a>Czy istnieją ograniczenia dotyczące lub znane problemy z importowaniem interfejsu API?
+[Znane problemy i ograniczenia](api-management-api-import-restrictions.md) dotyczące formatów Open API (Swagger), WSDL i WADL.

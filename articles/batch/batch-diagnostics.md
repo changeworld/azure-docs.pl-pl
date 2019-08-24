@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: da5a71c75485f929ba9c4f510066df84d7a31996
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
-ms.translationtype: HT
+ms.openlocfilehash: 23c5b7aab73ec6335238abede57f01ec7a30ef5f
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992165"
+ms.locfileid: "70012505"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metryki usługi Batch, alerty i dzienniki diagnostyczne oceny i monitorowania
 
@@ -120,7 +120,7 @@ Jeśli możesz zarchiwizować dzienniki diagnostyczne usługi Batch w ramach kon
 ```
 insights-{log category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/
 RESOURCEGROUPS/{resource group name}/PROVIDERS/MICROSOFT.BATCH/
-BATCHACCOUNTS/{batch account name}/y={four-digit numeric year}/
+BATCHACCOUNTS/{Batch account name}/y={four-digit numeric year}/
 m={two-digit numeric month}/d={two-digit numeric day}/
 h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
@@ -131,12 +131,15 @@ insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX
 RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/
 BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 ```
-Każdy plik blob PT1H.json zawiera zdarzenia w formacie JSON, które wystąpiły w ciągu godziny określonej w adresie URL obiektu blob (na przykład h = 12). Zdarzenia występujące w danej chwili są na bieżąco dołączane do pliku PT1H.json. Wartość minut (m = 00) jest zawsze 00, ponieważ dziennik diagnostyczny zdarzenia są dzielone na poszczególne obiekty BLOB na godzinę. (Wszystkie godziny są w formacie UTC).
+Każdy `PT1H.json` plik obiektu BLOB zawiera zdarzenia w formacie JSON, które wystąpiły w ciągu godziny określonej w adresie URL `h=12`obiektu BLOB (na przykład). W ciągu tej godziny zdarzenia są dołączane do `PT1H.json` pliku w miarę ich występowania. Wartość minuta (`m=00`) jest zawsze `00`, ponieważ zdarzenia dzienników diagnostycznych są dzielone na pojedyncze obiekty blob na godzinę. (Wszystkie godziny są w formacie UTC).
 
+Poniżej znajduje się przykład `PoolResizeCompleteEvent` wpisu `PT1H.json` w pliku dziennika. Zawiera informacje o bieżącej i docelowej liczbie węzłów dedykowanych i o niskim priorytecie oraz o godzinie rozpoczęcia i zakończenia operacji:
 
-Aby uzyskać więcej informacji o schemacie dzienniki diagnostyczne na koncie magazynu, zobacz [archiwizowanie dzienników diagnostycznych usługi Azure](../azure-monitor/platform/archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account).
+```
+{ "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
+```
 
-Aby programowo uzyskać dostęp dzienniki na koncie magazynu, przy użyciu interfejsów API magazynu. 
+Aby uzyskać więcej informacji o schemacie dzienniki diagnostyczne na koncie magazynu, zobacz [archiwizowanie dzienników diagnostycznych usługi Azure](../azure-monitor/platform/archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account). Aby programowo uzyskać dostęp dzienniki na koncie magazynu, przy użyciu interfejsów API magazynu. 
 
 ### <a name="service-log-events"></a>Usługa dziennika zdarzeń
 Dzienniki platformy Azure Batch usługi, jeżeli pobierane, zawierają zdarzenia emitowane przez usługę Azure Batch w okresie istnienia poszczególnych zasobów usługi Batch, takie jak pulą lub zadaniem. Każde zdarzenie emitowane przy użyciu usługi Batch są rejestrowane w formacie JSON. Na przykład, to jest treść próbkę **zdarzenie utworzenia puli**:

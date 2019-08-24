@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie aplikacji podwójnego stosu IPv6 przy użyciu usługa Load Balancer w warstwie Standardowa w usłudze Azure Virtual Network — interfejs wiersza polecenia
+title: Wdrażanie aplikacji dwustosowej IPv6 w usłudze Azure Virtual Network — interfejs wiersza polecenia
 titlesuffix: Azure Virtual Network
 description: W tym artykule pokazano, jak wdrożyć aplikację dwustosową protokołu IPv6 w usłudze Azure Virtual Network przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: virtual-network
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 7b231ded3fdae7553e101beff2ee77d82fe27e6e
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: f67494b229a14b66b593950903184e54e4a8ab8c
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68269626"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013697"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-with-standard-load-balancer-in-azure-virtual-network---cli-preview"></a>Wdrażanie aplikacji podwójnego stosu IPv6 przy użyciu usługa Load Balancer w warstwie Standardowa w usłudze Azure Virtual Network — interfejs wiersza polecenia (wersja zapoznawcza)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>Wdrażanie aplikacji podwójnego stosu IPv6 w usłudze Azure Virtual Network — interfejs wiersza polecenia (wersja zapoznawcza)
 
-W tym artykule opisano sposób wdrażania aplikacji podwójnego stosu (IPv4 + IPv6) na platformie Azure, która obejmuje sieć wirtualną o podwójnej stercie z podsiecią podwójnego stosu, moduł równoważenia obciążenia z dwoma sieciami frontonu (IPv4 + IPv6), maszyny wirtualne z kartami sieciowymi z konfiguracją Dual IP, podwójne reguły sieciowej grupy zabezpieczeń i dwa publiczne adresy IP.
+W tym artykule opisano sposób wdrażania aplikacji podwójnego stosu (IPv4 + IPv6) przy użyciu usługa Load Balancer w warstwie Standardowa na platformie Azure, która obejmuje sieć wirtualną o podwójnej stercie z podsiecią podwójnego stosu, usługa Load Balancer w warstwie Standardowa z dwoma (IPv4 + IPv6) konfiguracjami frontonu, maszyn wirtualnych z Karty sieciowe z konfiguracją podwójnego adresu IP, podwójne reguły sieciowej grupy zabezpieczeń i dwa publiczne adresy IP.
 
 > [!Important]
 > Podwójny stos IPv6 dla usługi Azure Virtual Network jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -154,7 +154,7 @@ az network lb address-pool create \
 
 Reguła modułu równoważenia obciążenia służy do definiowania sposobu dystrybucji ruchu do maszyn wirtualnych. Zdefiniuj konfigurację adresu IP frontonu na potrzeby ruchu przychodzącego oraz pulę adresów IP zaplecza do odbierania ruchu, wraz z wymaganym portem źródłowym i docelowym. 
 
-Utwórz regułę modułu równoważenia obciążenia za pomocą polecenia [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create). Poniższy przykład tworzy reguły modułu równoważenia obciążenia o nazwie *dsLBrule_v4* i *dsLBrule_v6* i równoważy ruch na  porcie TCP *80* do konfiguracji adresu IP frontonu IPv4 i IPv6:
+Utwórz regułę modułu równoważenia obciążenia za pomocą polecenia [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create). Poniższy przykład tworzy reguły modułu równoważenia obciążenia o nazwie *dsLBrule_v4* i *dsLBrule_v6* i równoważy ruch na porcie TCP *80* do konfiguracji adresu IP frontonu IPv4 i IPv6:
 
 ```azurecli
 az network lb rule create \

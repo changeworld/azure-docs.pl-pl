@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: a1c4575ec2ecc65d863ad80f73e64b7a4efdf96f
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: a1199e7578249de23c9cc7470b8f3c7d68d9ff1d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563253"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013513"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa metadanych wystąpienia platformy Azure
 
@@ -108,7 +108,7 @@ interfejs API | Domyślny format danych | Inne formaty
 /scheduledevents | json | brak
 /attested | json | brak
 
-Aby uzyskać dostęp do formatu niedomyślnej odpowiedzi, należy określić żądany format jako parametr ciągu zapytania w żądaniu. Na przykład:
+Aby uzyskać dostęp do formatu niedomyślnej odpowiedzi, należy określić żądany format jako parametr ciągu zapytania w żądaniu. Przykład:
 
 ```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
@@ -607,7 +607,7 @@ Dostawcy portalu Marketplace chcą mieć pewność, że ich oprogramowanie jest 
 
  ```bash
   # Get the signature
-   curl  --silent -H Metadata:True http://169.254.169.254/metadata/attested/document?api-version=2018-10-01 | jq -r '.["signature"]' > signature
+   curl  --silent -H Metadata:True http://169.254.169.254/metadata/attested/document?api-version=2019-04-30 | jq -r '.["signature"]' > signature
   # Decode the signature
   base64 -d signature > decodedsignature
   #Get PKCS7 format

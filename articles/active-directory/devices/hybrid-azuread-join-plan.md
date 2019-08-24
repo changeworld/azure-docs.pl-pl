@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ff24acd58d00f737a4342a7f45ddd22261a55be
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 62496aceb1454283449e952c0ed86623597e9e66
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562104"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011672"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Instrukcje: Planowanie implementacji dołączania hybrydowego Azure Active Directory
 
@@ -87,11 +87,13 @@ Jeśli korzystasz z narzędzia przygotowywania systemu (Sysprep) i używasz obra
 
 Jeśli korzystasz z migawki maszyny wirtualnej w celu utworzenia dodatkowych maszyn wirtualnych, upewnij się, że migawka nie pochodzi z maszyny wirtualnej, która jest już zarejestrowana w usłudze Azure AD jako sprzężenie hybrydowe usługi Azure AD.
 
-Jeśli urządzenia dołączone do domeny systemu Windows 10 są już zarejestrowane w usłudze [Azure AD](overview.md#getting-devices-in-azure-ad) , zdecydowanie zalecamy usunięcie tego stanu przed włączeniem sprzężenia hybrydowego usługi Azure AD. W wersji systemu Windows 10 1809 wprowadzono następujące zmiany, aby uniknąć tego podwójnego stanu:
+Jeśli urządzenia przyłączone do domeny systemu Windows 10 są zarejestrowane w dzierżawie [usługi Azure AD](overview.md#getting-devices-in-azure-ad) , może to doprowadzić do podwójnego stanu hybrydowego przyłączonego do usługi Azure AD i zarejestrowanego urządzenia usługi Azure AD. Zalecamy uaktualnienie do systemu Windows 10 1803 (z zastosowaniem programu KB4489894) lub nowszego, aby automatycznie rozwiązać ten scenariusz. W wersjach wcześniejszych niż 1803 należy ręcznie usunąć zarejestrowany stan usługi Azure AD przed włączeniem hybrydowego sprzężenia usługi Azure AD. W 1803 i nowszych wersjach wprowadzono następujące zmiany, aby uniknąć tego podwójnego stanu:
 
-- Wszystkie istniejące zarejestrowane Stany usługi Azure AD zostaną automatycznie usunięte po przyłączeniu urządzenia do hybrydowej usługi Azure AD.
+- Wszystkie istniejące zarejestrowane Stany usługi Azure AD zostaną automatycznie usunięte <i>po przyłączeniu urządzenia do hybrydowej usługi Azure AD</i>.
 - Aby uniemożliwić urządzeniu przyłączonym do domeny możliwość rejestracji w usłudze Azure AD, Dodaj ten klucz rejestru — HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" = DWORD: 00000001.
-- Ta zmiana jest teraz dostępna dla systemu Windows 10 1803 wydanie z zastosowaniem KB4489894. Jeśli jednak masz skonfigurowaną usługi Windows Hello dla firm, użytkownik jest zobowiązany do ponownego skonfigurowania usługi Windows Hello dla firm po oczyszczeniu podwójnego stanu.
+- W systemie Windows 10 1803, jeśli masz skonfigurowaną usługi Windows Hello dla firm, użytkownik musi zmienić konfigurację usługi Windows Hello dla firm po oczyszczeniu podwójnego stanu. Ten problem został rozwiązany z KB4512509
+
+
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Przeglądanie kontrolowanej weryfikacji hybrydowego sprzężenia usługi Azure AD
 

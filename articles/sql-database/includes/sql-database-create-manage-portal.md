@@ -3,18 +3,18 @@ author: stevestein
 ms.service: sql-database
 ms.subservice: operations
 ms.topic: include
-ms.date: 08/09/2019
+ms.date: 08/23/2019
 ms.author: sstein
-ms.openlocfilehash: f7b385f359311217595352be31ba0687ca87bf40
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 9e189d0582d2e81193c892cb349b475ed0d68df8
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873710"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70014799"
 ---
 ## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Tworzenie zasobów usługi Azure SQL i zarządzanie nimi za pomocą Azure Portal
 
-Azure Portal zawiera jedną stronę, na której można zarządzać [wszystkimi zasobami usługi Azure SQL, w](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql) tym maszynami wirtualnymi SQL.
+Azure Portal zawiera jedną stronę, na której można zarządzać [wszystkimi zasobami usługi Azure SQL, w](https://go.microsoft.com/fwlink/?linkid=2100641) tym maszynami wirtualnymi SQL.
 
 Aby uzyskać dostęp do strony **zasobów SQL platformy Azure** , wybierz pozycję **Azure SQL** w menu po lewej stronie Azure Portal. Jeśli na liście nie ma **usługi Azure SQL** , wybierz pozycję **wszystkie usługi**, a następnie wpisz *SQL Azure* w polu wyszukiwania.
 

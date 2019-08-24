@@ -1,5 +1,5 @@
 ---
-title: Sterownik woluminu Azure Files Service Fabric (wersja zapoznawcza) | Microsoft Docs
+title: Sterownik woluminu Azure Files Service Fabric (GA) | Microsoft Docs
 description: Service Fabric obsługuje używanie Azure Files do tworzenia kopii zapasowych woluminów z kontenera. Jest to obecnie dostępne w wersji zapoznawczej.
 services: service-fabric
 author: athinanthny
@@ -9,18 +9,20 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.author: atsenthi
-ms.openlocfilehash: eb45dda9886450d217355d876ae35af954d99845
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 70784e2c8c91d39c34ba503cc3ebfcf3469939d9
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955594"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013495"
 ---
 # <a name="service-fabric-azure-files-volume-driver"></a>Sterownik woluminu Azure Files Service Fabric
-Wtyczka woluminu Azure Files to [wtyczka woluminu platformy Docker](https://docs.docker.com/engine/extend/plugins_volume/) , która dostarcza woluminy oparte na [Azure Files](/azure/storage/files/storage-files-introduction) dla kontenerów platformy Docker. Ta wtyczka woluminu platformy Docker ma postać pakietu aplikacji usługi Service Fabric, który można wdrożyć w klastrach usługi Service Fabric. Celem jest zapewnienie woluminów opartych na Azure Files dla innych aplikacji kontenera Service Fabric wdrożonych w klastrze.
+Wtyczka woluminu Azure Files, [wtyczka woluminu platformy Docker](https://docs.docker.com/engine/extend/plugins_volume/) , która dostarcza woluminy oparte na [Azure Files](/azure/storage/files/storage-files-introduction) dla kontenerów platformy Docker, ma teraz wartość **GA (ogólnie dostępna)** .
+
+Ta wtyczka woluminu platformy Docker ma postać pakietu aplikacji usługi Service Fabric, który można wdrożyć w klastrach usługi Service Fabric. Celem jest zapewnienie woluminów opartych na Azure Files dla innych aplikacji kontenera Service Fabric wdrożonych w klastrze.
 
 > [!NOTE]
-> Wersja 6.5.516.9494 dodatku plug-in woluminu Azure Files to wersja zapoznawcza, która jest dostępna w tym dokumencie. Wersja zapoznawcza **nie** jest obsługiwana w środowiskach produkcyjnych.
+> Wersja 6.5.661.9590 dodatku plug-in woluminu Azure Files to wersja GA (ogólnie dostępna). 
 >
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -119,11 +121,11 @@ Aplikację Service Fabric, która dostarcza woluminy dla kontenerów, można pob
 4. Utwórz aplikację, zwracając bliską uwagę na wartość parametru **ListenPort** aplikacji. Ta wartość jest portem, na którym wtyczka woluminu Azure Files nasłuchuje żądań z demona platformy Docker. Upewnij się, że port podany dla aplikacji jest zgodny z VolumePluginPorts w ClusterManifest i nie powoduje konfliktu z żadnym innym portem używanym przez klaster lub aplikacje.
 
     ```powershell
-    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.516.9494  -ApplicationParameter @{ListenPort='19100'}
+    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590   -ApplicationParameter @{ListenPort='19100'}
     ```
 
     ```bash
-    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.516.9494 --parameter '{"ListenPort":"19100"}'
+    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.661.9590  --parameter '{"ListenPort":"19100"}'
     ```
 
 > [!NOTE]
@@ -136,11 +138,11 @@ Wykonaj kroki 1-3 z powyższego [.](/azure/service-fabric/service-fabric-contain
  Domyślna liczba wystąpień usługi dla aplikacji wtyczki woluminu Azure Files to-1, co oznacza, że istnieje wystąpienie usługi wdrożone w każdym węźle w klastrze. Jednak podczas wdrażania aplikacji wtyczki woluminu Azure Files w lokalnym klastrze projektowym liczba wystąpień usługi powinna być określona jako 1. Można to zrobić za pomocą parametru aplikacji **InstanceCount** . W związku z tym, polecenie do tworzenia aplikacji wtyczki woluminu Azure Files w lokalnym klastrze projektowym jest następujące:
 
 ```powershell
-New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.516.9494 -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
+New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590  -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
 ```
 
 ```bash
-sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.516.9494 --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
+sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.661.9590  --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
 ```
 
 ## <a name="configure-your-applications-to-use-the-volume"></a>Konfigurowanie aplikacji do korzystania z woluminu

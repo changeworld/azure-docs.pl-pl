@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e56be394bc7667dfca9a0b417593e8e587073712
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 000dacb7530b52784a68663d295fde9784d50e29
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699646"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013560"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Tworzenie udziału plików w usłudze Azure Files
 Udziały plików platformy Azure można tworzyć przy użyciu witryny  [Azure Portal](https://portal.azure.com/), poleceń cmdlet programu PowerShell usługi Azure Storage, bibliotek klienckich usługi Azure Storage lub interfejsu API REST usługi Azure Storage. Z tego samouczka dowiesz się:
@@ -41,24 +41,25 @@ Aby utworzyć udział plików Azure, można użyć istniejącego konta magazynu 
 
 
 ## <a name="create-file-share-through-powershell"></a>Tworzenie udziału plików za pośrednictwem programu PowerShell
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-Aby przygotować się do użycia programu Azure PowerShell, pobierz i zainstaluj polecenia cmdlet tego programu. Aby uzyskać informacje o punkcie instalacji oraz instrukcje dotyczące instalacji, zobacz  [Jak zainstalować i skonfigurować program Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/) .
+Aby przygotować się do użycia programu Azure PowerShell, pobierz i zainstaluj polecenia cmdlet tego programu. Aby uzyskać informacje o punkcie instalacji oraz instrukcje dotyczące instalacji, zobacz  [Jak zainstalować i skonfigurować program Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) .
 
 > [!Note]  
 > Zalecamy pobranie i zainstalowanie najnowszej wersji modułu Azure PowerShell (lub uaktualnienie do tej wersji).
 
-1. **Utwórz kontekst konta magazynu i klucza** W kontekście zawarta jest nazwa konta magazynu i klucz konta. Aby uzyskać instrukcje dotyczące kopiowania klucza konta z witryny  [Azure Portal](https://portal.azure.com/), zobacz  [Storage account access keys](../common/storage-account-manage.md#access-keys) (Klucze dostępu do konta usługi Storage).
+1. **Utwórz nowe konto magazynu:** Konto magazynu to udostępniona pula magazynu, w której można wdrażać udziały plików platformy Azure oraz inne zasoby magazynu, takie jak obiekty blob lub kolejki.
 
-    ```powershell
-    $storageContext = New-AzStorageContext <storage-account-name> <storage-account-key>
+    ```PowerShell
+    $resourceGroup = "myresourcegroup"
+    $storAcctName = "myuniquestorageaccount"
+    $region = "westus2"
+    $storAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name $storAcctName -SkuName Standard_LRS -Location $region -Kind StorageV2
     ```
-    
+
 2. **Utwórz nowy udział plików**:    
     
     ```powershell
-    $share = New-AzStorageShare logs -Context $storageContext
+    $shareName = "myshare"
+    $share = New-AzStorageShare -Context $storAcct.Context -Name $shareName
     ```
 
 > [!Note]  

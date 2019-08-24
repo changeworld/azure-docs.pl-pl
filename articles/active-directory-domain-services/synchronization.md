@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 9a7baa6385e0130b784b264a4c53c232ae8a1b50
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
-ms.translationtype: HT
+ms.openlocfilehash: 85b1e3eae9d7472fa829665707fca481a28f0623
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980456"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011289"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Jak obiekty i poświadczenia są synchronizowane w Azure AD Domain Servicesej domenie zarządzanej
 
@@ -127,7 +127,7 @@ Po włączeniu usługi Azure AD DS wymagane są starsze skróty haseł dla uwier
 
 W przypadku środowisk usługi Azure AD tylko w chmurze [Użytkownicy muszą zresetować/zmienić hasło](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds) , aby można było generować i przechowywać w usłudze Azure AD odpowiednie skróty haseł. W przypadku wszystkich kont użytkowników w chmurze utworzonych w usłudze Azure AD po włączeniu Azure AD Domain Services skróty haseł są generowane i przechowywane w formacie zgodnym z NTLM i Kerberos. Te nowe konta nie muszą zresetować/zmienić hasła generują starsze skróty haseł.
 
-W przypadku kont użytkowników hybrydowych synchronizowanych z lokalnego środowiska AD DS przy użyciu Azure AD Connect, należy [skonfigurować Azure AD Connect do synchronizowania skrótów haseł w formatach zgodnych z protokołem NTLM i Kerberos](active-directory-ds-getting-started-password-sync-synced-tenant.md).
+W przypadku kont użytkowników hybrydowych synchronizowanych z lokalnego środowiska AD DS przy użyciu Azure AD Connect, należy [skonfigurować Azure AD Connect do synchronizowania skrótów haseł w formatach zgodnych z protokołem NTLM i Kerberos](tutorial-configure-password-hash-sync.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

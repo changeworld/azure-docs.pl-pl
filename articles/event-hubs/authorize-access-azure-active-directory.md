@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 569399b2b5f676e11cd6540126e0b26dc0d26198
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
-ms.translationtype: HT
+ms.openlocfilehash: 1a42843cc81070cc284863b3736549576e32cb17
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992863"
+ms.locfileid: "70011875"
 ---
 # <a name="authorize-access-to-event-hubs-resources-using-azure-active-directory"></a>Autoryzuj dostęp do zasobów Event Hubs przy użyciu Azure Active Directory
 Usługa Azure Event Hubs obsługuje używanie Azure Active Directory (Azure AD) do autoryzacji żądań Event Hubs zasobów. Za pomocą usługi Azure AD można używać kontroli dostępu opartej na rolach (RBAC) do udzielania uprawnień podmiotowi zabezpieczeń, który może być użytkownikiem, grupą lub jednostką usługi aplikacji. Aby dowiedzieć się więcej o rolach i przypisaniach ról, zobacz [opis różnych ról](../role-based-access-control/overview.md).
@@ -38,9 +38,9 @@ Gdy rola RBAC jest przypisana do podmiotu zabezpieczeń usługi Azure AD, platfo
 ## <a name="built-in-rbac-roles-for-azure-event-hubs"></a>Wbudowane role RBAC dla usługi Azure Event Hubs
 Platforma Azure udostępnia następujące wbudowane role RBAC do autoryzowania dostępu do danych Event Hubs przy użyciu usługi Azure AD i uwierzytelniania OAuth:
 
-- [Właściciel danych Event Hubs platformy Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner-preview): Ta rola umożliwia pełen dostęp do zasobów Event Hubs.
-- [Nadawca danych Event Hubs platformy Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver-preview): Ta rola służy do nadawania dostępu Event Hubs do zasobów.
-- [Usługa Azure Event Hubs Data Receiver](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender-preview): Ta rola umożliwia nadanie dostępu do zasobów Event Hubs lub otrzymywanie do nich.
+- [Właściciel danych Event Hubs platformy Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner): Ta rola umożliwia pełen dostęp do zasobów Event Hubs.
+- [Nadawca danych Event Hubs platformy Azure](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver): Ta rola służy do nadawania dostępu Event Hubs do zasobów.
+- [Usługa Azure Event Hubs Data Receiver](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender): Ta rola umożliwia nadanie dostępu do zasobów Event Hubs lub otrzymywanie do nich.
 
 ## <a name="resource-scope"></a>Zakres zasobów 
 Przed przypisaniem roli RBAC do podmiotu zabezpieczeń należy określić zakres dostępu, który powinien mieć podmiot zabezpieczeń. Najlepsze rozwiązania określają, że zawsze najlepiej jest przyznać tylko najwęższy możliwy zakres.

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: f575dd882c217badb3320b85229149d9793ceb5f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 505a3104968e285a7fe4801db8029dc45647087a
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619264"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011347"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Samouczek: Konfigurowanie bezpiecznego protokołu LDAP dla Azure Active Directory Domain Services domeny zarządzanej
 
@@ -286,7 +286,7 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Wiązanie i testowanie bezpiecznego protokołu LDAP dla domeny zarządzanej AD DS platformy Azure
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak synchronizacja działa w Azure AD Domain Servicesej domenie zarządzanej](synchronization.md)
+> [Konfigurowanie synchronizacji skrótów haseł dla hybrydowego środowiska usługi Azure AD](tutorial-configure-password-hash-sync.md)
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

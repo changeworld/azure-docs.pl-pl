@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie aplikacji dwustosowej IPv6 przy użyciu standardowego modułu równoważenia obciążenia w usłudze Azure Virtual Network — szablon usługi Resource Manager (wersja zapoznawcza)
+title: Wdrażanie aplikacji dwustosowej IPv6 w programie Azure Virtual Network — szablon usługi Resource Manager (wersja zapoznawcza)
 titlesuffix: Azure Virtual Network
 description: W tym artykule pokazano, jak wdrożyć aplikację dwustosową IPv6 za pomocą usługa Load Balancer w warstwie Standardowa w usłudze Azure Virtual Network przy użyciu szablonów maszyn wirtualnych Azure Resource Manager.
 services: virtual-network
@@ -12,16 +12,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: fa39285eea14856db1bceba9e90f92b19afabfd0
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 8f2c6bc7fb7ab0939da20932fd531c158549ce7a
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295412"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012848"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-with-standard-load-balancer-in-azure---template-preview"></a>Wdrażanie aplikacji podwójnego stosu IPv6 przy użyciu usługa Load Balancer w warstwie Standardowa na platformie Azure — szablon (wersja zapoznawcza)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---template-preview"></a>Wdrażanie aplikacji podwójnego stosu IPv6 w usłudze Azure Virtual Network — szablon (wersja zapoznawcza)
 
-Ten artykuł zawiera listę zadań konfiguracyjnych IPv6 z częścią szablonu maszyny wirtualnej Azure Resource Manager, która ma zastosowanie do. Użyj szablonu opisanego w tym artykule, aby wdrożyć aplikację podwójnego stosu (IPv4 + IPv6) na platformie Azure, która obejmuje sieć wirtualną o podwójnej stercie z podsieciami IPv4 i IPv6, moduł równoważenia obciążenia z podwójnymi konfiguracjami frontonu (IPv4 + IPv6), maszyny wirtualne z kartami sieciowymi z podwójnym adresem IP Konfiguracja, sieciowa Grupa zabezpieczeń i publiczne adresy IP. 
+Ten artykuł zawiera listę zadań konfiguracyjnych IPv6 z częścią szablonu maszyny wirtualnej Azure Resource Manager, która ma zastosowanie do. Użyj szablonu opisanego w tym artykule, aby wdrożyć aplikację podwójnego stosu (IPv4 + IPv6) przy użyciu usługa Load Balancer w warstwie Standardowa na platformie Azure, która obejmuje sieć wirtualną o podwójnej stercie z podsieciami IPv4 i IPv6, usługa Load Balancer w warstwie Standardowa za pomocą podwójnego frontonu (IPv4 + IPv6). konfiguracje, maszyny wirtualne z kartami sieciowymi, które mają dwie konfiguracje protokołu IP, sieciowe grupy zabezpieczeń i publiczne IP. 
 
 ## <a name="required-configurations"></a>Wymagane konfiguracje
 
@@ -181,6 +181,6 @@ Jeśli używasz sieciowego urządzenia wirtualnego, Dodaj trasy IPv6 w tabeli tr
 ## <a name="sample-vm-template-json"></a>Przykładowy kod JSON szablonu maszyny wirtualnej
 Aby wdrożyć aplikację dwustosową protokołu IPv6 w usłudze Azure Virtual Network przy użyciu szablonu Azure Resource Manager, Wyświetl przykładowy szablon w [tym miejscu](https://azure.microsoft.com/resources/templates/ipv6-in-vnet-stdlb/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Możesz znaleźć szczegółowe informacje o cenach [publicznych adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses/), [przepustowości sieci](https://azure.microsoft.com/pricing/details/bandwidth/)lub [Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/).

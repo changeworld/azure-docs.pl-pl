@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie aplikacji podwójnego stosu IPv6 przy użyciu usługa Load Balancer w warstwie Standardowa w usłudze Azure Virtual Network — PowerShell
+title: Wdrażanie aplikacji dwustosowej IPv6 w usłudze Azure Virtual Network — PowerShell
 titlesuffix: Azure Virtual Network
 description: W tym artykule pokazano, jak wdrożyć aplikację dwustosową IPv6 za pomocą usługa Load Balancer w warstwie Standardowa w usłudze Azure Virtual Network przy użyciu programu Azure PowerShell.
 services: virtual-network
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: 99e01aa611eea3d6379e2a250cc99d121e41aa82
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 05794cfaf6a550d32acdfb731a5f477111e65606
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68269678"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011423"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-with-standard-load-balancer-in-azure---powershell-preview"></a>Wdrażanie aplikacji podwójnego stosu IPv6 przy użyciu usługa Load Balancer w warstwie Standardowa na platformie Azure — PowerShell (wersja zapoznawcza)
+# <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell-preview"></a>Wdrażanie aplikacji podwójnego stosu IPv6 na platformie Azure — PowerShell (wersja zapoznawcza)
 
-W tym artykule pokazano, jak wdrożyć aplikację dwuwarstwową (IPv4 + IPv6) na platformie Azure, która obejmuje sieć wirtualną o podwójnej stercie i podsieć, moduł równoważenia obciążenia z konfiguracją frontonu Dual (IPv4 + IPv6), maszyny wirtualne z kartami sieciowymi z konfiguracją Dual IP, Sieć Grupa zabezpieczeń i publiczne adresy IP.
+W tym artykule pokazano, jak wdrożyć aplikację podwójnego stosu (IPv4 + IPv6) przy użyciu usługa Load Balancer w warstwie Standardowa na platformie Azure, która obejmuje sieć wirtualną o podwójnym stosie i podsieć, usługa Load Balancer w warstwie Standardowa z dwoma (IPv4 + IPv6) konfiguracjami frontonu, maszyn wirtualnych z kartami sieciowymi z systemem Konfiguracja dwóch adresów IP, sieciowa Grupa zabezpieczeń i publiczne adresy IP.
 
 > [!Important]
 > Obsługa protokołu IPv6 dla usługi Azure Virtual Network jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -135,7 +135,7 @@ $backendPoolv6 = New-AzLoadBalancerBackendAddressPoolConfig `
 
 Reguła modułu równoważenia obciążenia służy do definiowania sposobu dystrybucji ruchu do maszyn wirtualnych. Zdefiniuj konfigurację adresu IP frontonu na potrzeby ruchu przychodzącego oraz pulę adresów IP zaplecza do odbierania ruchu, wraz z wymaganym portem źródłowym i docelowym. Aby upewnić się, że tylko zdrowe maszyny wirtualne odbierają ruch, można opcjonalnie zdefiniować sondę kondycji. Podstawowa usługa równoważenia obciążenia używa sondy IPv4 do oceny kondycji dla punktów końcowych IPv4 i IPv6 na maszynach wirtualnych. Usługa równoważenia obciążenia w warstwie Standardowa obejmuje obsługę jawnych sond kondycji protokołu IPv6.
 
-Utwórz regułę modułu równoważenia obciążenia przy użyciu polecenia [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig). Poniższy przykład tworzy reguły modułu równoważenia obciążenia o nazwie *dsLBrule_v4* i *dsLBrule_v6* i równoważy ruch na  porcie TCP *80* do konfiguracji adresu IP frontonu IPv4 i IPv6:
+Utwórz regułę modułu równoważenia obciążenia przy użyciu polecenia [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig). Poniższy przykład tworzy reguły modułu równoważenia obciążenia o nazwie *dsLBrule_v4* i *dsLBrule_v6* i równoważy ruch na porcie TCP *80* do konfiguracji adresu IP frontonu IPv4 i IPv6:
 
 ```azurepowershell-interactive
 $lbrule_v4 = New-AzLoadBalancerRuleConfig `

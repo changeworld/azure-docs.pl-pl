@@ -1,6 +1,6 @@
 ---
-title: Skalowanie w pionie maszyn wirtualnych platformy Azure z usługą Azure Automation | Dokumentacja firmy Microsoft
-description: Jak skalowanie w pionie maszyny wirtualnej systemu Linux w odpowiedzi na monitorowanie alertów w usłudze Azure Automation
+title: Skalowanie maszyn wirtualnych platformy Azure w pionie przy użyciu Azure Automation | Microsoft Docs
+description: Jak skalować w pionie maszynę wirtualną z systemem Linux w odpowiedzi na monitorowanie alertów za pomocą Azure Automation
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
@@ -16,31 +16,32 @@ ms.topic: article
 ms.date: 04/18/2019
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e0317344fd8ee1eb415b61d4f5035219e649b18d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f4f49030d479e85b749db28c59fd2e2462ff405f
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695476"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013581"
 ---
-# <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>Skalowanie w pionie maszyny wirtualnej systemu Linux platformy Azure z usługą Azure Automation
-Skalowanie w pionie polega na zwiększenie lub zmniejszenie zasoby maszyny w odpowiedzi na obciążenie. Na platformie Azure można to zrobić, zmieniając rozmiar maszyny wirtualnej. Może to pomóc w następujących scenariuszach
+# <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>Skalowanie maszyn wirtualnych z systemem Linux w pionie przy użyciu Azure Automation
+Skalowanie w pionie to proces zwiększania lub zmniejszania zasobów maszyny w odpowiedzi na obciążenie. Na platformie Azure można to osiągnąć, zmieniając rozmiar maszyny wirtualnej. Może to pomóc w następujących scenariuszach
 
-* Jeśli maszyna wirtualna nie jest często używane, należy zmienić jego rozmiar do mniejszego rozmiaru, aby zmniejszyć koszty miesięczne
-* Jeśli maszyna wirtualna ma do czynienia z szczytowego obciążenia, jego rozmiar można zmieniać na większy rozmiar, aby zwiększyć jego pojemność
+* Jeśli maszyna wirtualna nie jest często używana, można zmienić jej rozmiar na mniejszy, aby zmniejszyć koszty miesięczne
+* Jeśli maszyna wirtualna widzi szczytowe obciążenie, można zmienić jej rozmiar na większy rozmiar, aby zwiększyć jej pojemność.
 
-Kontur kroki osiągnąć ten cel jest jako poniżej
+Poniżej przedstawiono konspekt kroków, które należy wykonać, poniżej
 
-1. Konfigurowanie usługi Azure Automation, dostęp do sieci maszyn wirtualnych
-2. Importowanie elementów runbook usługi Azure Automation pionowy skalowania w ramach subskrypcji
-3. Dodawanie elementu webhook do elementu runbook
+1. Azure Automation Instalatora, aby uzyskać dostęp do Virtual Machines
+2. Zaimportuj Azure Automation elementy Runbook skalowania w pionie do subskrypcji
+3. Dodawanie elementu webhook do elementu Runbook
 4. Dodawanie alertu do maszyny wirtualnej
 
-## <a name="scale-limitations"></a>Ograniczenia dotyczące skali
 
-Ze względu na rozmiar pierwszej maszyny wirtualnej, rozmiary, które mogą być skalowane, może być ograniczona z powodu dostępności o innych rozmiarach w klastrze bieżącej maszyny wirtualnej jest wdrożony w. W opublikowanych elementów runbook usługi automation używane w tym artykule zajmie się tym przypadku firma Microsoft i można skalować tylko w ramach poniżej pary rozmiar maszyny Wirtualnej. Oznacza to, że Standard_D1v2 maszyny wirtualnej będzie nie nagle skalowany w górę aby maszyna wirtualna Standard_G5 lub skalowane w dół do Basic_A0. Ponadto ograniczone maszyny wirtualnej rozmiary skalowanie w górę/w dół nie jest obsługiwana. 
+## <a name="scale-limitations"></a>Ograniczenia skalowania
 
-Możesz skalować między następujące pary rozmiarów:
+Ze względu na rozmiar pierwszej maszyny wirtualnej rozmiary, do których można skalować, mogą być ograniczone ze względu na dostępność innych rozmiarów z bieżącej maszyny wirtualnej klastra wdrożonych w programie. W opublikowanym elemencie Runbook usługi Automation używanym w tym artykule zajmiemy się tym przypadkiem i skalujemy ją tylko w obrębie poniższych par rozmiaru maszyny wirtualnej. Oznacza to, że maszyna wirtualna Standard_D1v2 nie będzie nagle skalowana do Standard_G5 lub skalowana w dół do Basic_A0. Nie są obsługiwane również rozmiary maszyn wirtualnych z ograniczeniami skalowania w górę/w dół. 
+
+Można wybrać skalowanie między następującymi parami rozmiarów:
 
 * [Seria A](#a-series)
 * [Seria B](#b-series)
@@ -55,7 +56,7 @@ Możesz skalować między następujące pary rozmiarów:
 
 ### <a name="a-series"></a>Seria A
 
-| Rozmiar początkowy | Skalowanie w górę rozmiar | 
+| Rozmiar początkowy | Skaluj w górę | 
 | --- | --- |
 | Basic_A0 | Basic_A1 |
 | Basic_A1 | Basic_A2 |
@@ -77,7 +78,7 @@ Możesz skalować między następujące pary rozmiarów:
 
 ### <a name="b-series"></a>Seria B
 
-| Rozmiar początkowy | Skalowanie w górę rozmiar | 
+| Rozmiar początkowy | Skaluj w górę | 
 | --- | --- |
 | Standard_B1s | Standard_B2s |
 | Standard_B1ms | Standard_B2ms |
@@ -86,7 +87,7 @@ Możesz skalować między następujące pary rozmiarów:
 
 ### <a name="d-series"></a>Seria D
 
-| Rozmiar początkowy | Skalowanie w górę rozmiar | 
+| Rozmiar początkowy | Skaluj w górę | 
 | --- | --- |
 | Standardowa_D1 | Standardowa_D2 |
 | Standardowa_D2 | Standardowa_D3 |
@@ -128,7 +129,7 @@ Możesz skalować między następujące pary rozmiarów:
 
 ### <a name="e-series"></a>Seria E
 
-| Rozmiar początkowy | Skalowanie w górę rozmiar | 
+| Rozmiar początkowy | Skaluj w górę | 
 | --- | --- |
 | Standardowa_E2_v3 | Standardowa_E4_v3 |
 | Standardowa_E4_v3 | Standardowa_E8_v3 |
@@ -145,7 +146,7 @@ Możesz skalować między następujące pary rozmiarów:
 
 ### <a name="f-series"></a>Seria F
 
-| Rozmiar początkowy | Skalowanie w górę rozmiar | 
+| Rozmiar początkowy | Skaluj w górę | 
 | --- | --- |
 | Standardowa_F1 | Standardowa_F2 |
 | Standardowa_F2 | Standardowa_F4 |
@@ -164,12 +165,12 @@ Możesz skalować między następujące pary rozmiarów:
 
 ### <a name="g-series"></a>Seria G
 
-| Rozmiar początkowy | Skalowanie w górę rozmiar | 
+| Rozmiar początkowy | Skaluj w górę | 
 | --- | --- |
 | Standardowa_G1 | Standardowa_G2 |
 | Standardowa_G2 | Standardowa_G3 |
 | Standardowa_G3 | Standardowa_G4 |
-| Standardowa_G4 | Maszyna wirtualna Standard_G5 |
+| Standardowa_G4 | Standard_G5 |
 | Standardowa_GS1 | Standardowa_GS2 |
 | Standardowa_GS2 | Standardowa_GS3 |
 | Standardowa_GS3 | Standardowa_GS4 |
@@ -177,14 +178,14 @@ Możesz skalować między następujące pary rozmiarów:
 
 ### <a name="h-series"></a>Seria H
 
-| Rozmiar początkowy | Skalowanie w górę rozmiar | 
+| Rozmiar początkowy | Skaluj w górę | 
 | --- | --- |
 | Standardowa_H8 | Standardowa_H16 |
 | Standardowa_H8m | Standardowa_H16m |
 
 ### <a name="l-series"></a>Seria L
 
-| Rozmiar początkowy | Skalowanie w górę rozmiar | 
+| Rozmiar początkowy | Skaluj w górę | 
 | --- | --- |
 | Standardowa_L4s | Standardowa_L8s |
 | Standardowa_L8s | Standardowa_L16s |
@@ -196,20 +197,20 @@ Możesz skalować między następujące pary rozmiarów:
 
 ### <a name="m-series"></a>Seria M
 
-| Rozmiar początkowy | Skalowanie w górę rozmiar | 
+| Rozmiar początkowy | Skaluj w górę | 
 | --- | --- |
-| Warstwie standardowa_m8ms | Warstwie standardowa_m16ms |
-| Warstwie standardowa_m16ms | Warstwie standardowa_m32ms |
-| Warstwie standardowa_m32ms | Standardowa_M64ms |
-| Standardowa_M64ms | Maszyna wirtualna Standard_M128ms |
-| Warstwie standardowa_m32ls | Warstwie standardowa_m64ls |
-| Maszyna wirtualna Standard_M64s | Maszyna wirtualna Standard_M128s |
+| Standard_M8ms | Standard_M16ms |
+| Standard_M16ms | Standard_M32ms |
+| Standard_M32ms | Standardowa_M64ms |
+| Standardowa_M64ms | Standard_M128ms |
+| Standard_M32ls | Standard_M64ls |
+| Standard_M64s | Standard_M128s |
 | Standard_M64 | Standard_M128 |
 | Standard_M64m | Standard_M128m |
 
 ### <a name="n-series"></a>Seria N
 
-| Rozmiar początkowy | Skalowanie w górę rozmiar | 
+| Rozmiar początkowy | Skaluj w górę | 
 | --- | --- |
 | Standardowa_NC6 | Standardowa_NC12 |
 | Standardowa_NC12 | Standardowa_NC24 |
@@ -217,45 +218,47 @@ Możesz skalować między następujące pary rozmiarów:
 | Standard_NC12s_v2 | Standard_NC24s_v2 |
 | Standard_NC6s_v3 | Standard_NC12s_v3 |
 | Standard_NC12s_v3 | Standard_NC24s_v3 |
-| Maszyna wirtualna Standard_ND6 | Maszyna wirtualna Standard_ND12 |
-| Maszyna wirtualna Standard_ND12 | Maszyna wirtualna Standard_ND24 |
+| Standard_ND6 | Standard_ND12 |
+| Standard_ND12 | Standard_ND24 |
 | Standardowa_NV6 | Standardowa_NV12 |
 | Standardowa_NV12 | Standardowa_NV24 |
 | Standard_NV6s_v2 | Standard_NV12s_v2 |
 | Standard_NV12s_v2 | Standard_NV24s_v2 |
+| Standard_NV12s_v3 |Standard_NV48s_v3 |
 
-## <a name="setup-azure-automation-to-access-your-virtual-machines"></a>Konfigurowanie usługi Azure Automation, dostęp do sieci maszyn wirtualnych
-Pierwszą rzeczą, jaką należy wykonać jest utworzyć konto usługi Azure Automation, które będzie hostować elementy runbook umożliwia skalowanie wystąpień zestawu skalowania maszyn wirtualnych. Ostatnio usługi Automation wprowadza funkcję "Uruchom jako konto", co sprawia, że ustawienia zapasowej jednostki usługi do automatycznego uruchamiania elementów runbook w imieniu użytkownika bardzo proste. Możesz dowiedzieć się więcej o tym w poniższym artykule:
+
+## <a name="setup-azure-automation-to-access-your-virtual-machines"></a>Azure Automation Instalatora, aby uzyskać dostęp do Virtual Machines
+Najpierw należy utworzyć konto Azure Automation, które będzie hostować elementy Runbook używane do skalowania wystąpień zestawu skalowania maszyn wirtualnych. Ostatnio usługa Automation wprowadziła funkcję "Uruchom jako", która umożliwia skonfigurowanie nazwy głównej usługi do automatycznego uruchamiania elementów Runbook w imieniu użytkownika. Więcej informacji na ten temat można znaleźć w poniższym artykule:
 
 * [Uwierzytelnianie elementów Runbook przy użyciu konta Uruchom jako platformy Azure](../../automation/automation-sec-configure-azure-runas-account.md)
 
-## <a name="import-the-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Importowanie elementów runbook usługi Azure Automation pionowy skalowania w ramach subskrypcji
-Elementy runbook, które są potrzebne do skalowania w pionie maszyny wirtualnej zostały już opublikowane w galerii elementów Runbook automatyzacji Azure. Należy zaimportować je do Twojej subskrypcji. Możesz dowiedzieć się, jak można zaimportować elementy runbook, zapoznając się z następującym artykułem.
+## <a name="import-the-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Zaimportuj Azure Automation elementy Runbook skalowania w pionie do subskrypcji
+Elementy Runbook, które są zbędne do skalowania w pionie maszyny wirtualnej, zostały już opublikowane w galerii elementów Runbook Azure Automation. Konieczne będzie zaimportowanie ich do subskrypcji. Aby dowiedzieć się, jak importować elementy Runbook, przeczytaj następujący artykuł.
 
 * [Galerie elementów Runbook i modułów dla usługi Azure Automation](../../automation/automation-runbook-gallery.md)
 
-Elementy runbook, które muszą zostać zaimportowane, są wyświetlane na poniższej ilustracji
+Elementy Runbook, które należy zaimportować, są wyświetlane na poniższej ilustracji
 
-![Importowanie elementów runbook](./media/vertical-scaling-automation/scale-runbooks.png)
+![Importuj elementy Runbook](./media/vertical-scaling-automation/scale-runbooks.png)
 
-## <a name="add-a-webhook-to-your-runbook"></a>Dodawanie elementu webhook do elementu runbook
-Po zaimportowaniu elementów runbook, które będą potrzebne do Dodaj element webhook do elementu runbook, dzięki czemu mogą być wyzwalane przez alert z maszyny wirtualnej. Szczegółowe informacje o utworzenie elementu webhook dla elementu Runbook, które mogą być odczytywane w tym miejscu
+## <a name="add-a-webhook-to-your-runbook"></a>Dodawanie elementu webhook do elementu Runbook
+Po zaimportowaniu elementów Runbook należy dodać element webhook do elementu Runbook, aby mógł zostać wyzwolony przez alert z maszyny wirtualnej. Szczegóły dotyczące tworzenia elementu webhook dla elementu Runbook można znaleźć tutaj
 
-* [Usługa Azure Automation elementów webhook](../../automation/automation-webhooks.md)
+* [Azure Automation elementów webhook](../../automation/automation-webhooks.md)
 
-Upewnij się, że kopiujesz elementu webhook przed zamknięciem okna dialogowego elementu webhook, ponieważ będzie on potrzebny w następnej sekcji.
+Przed zamknięciem okna dialogowego elementu webhook upewnij się, że jest on kopiowany, ponieważ będzie potrzebny w następnej sekcji.
 
 ## <a name="add-an-alert-to-your-virtual-machine"></a>Dodawanie alertu do maszyny wirtualnej
-1. Wybierz ustawienia maszyny wirtualnej
-2. Wybierz pozycję "Reguły alertu"
-3. Wybierz pozycję "Dodaj alert"
-4. Wybierz metrykę, aby wyzwalać alert na
-5. Wybierz warunek, który, gdy spełniony zostanie wywołać alert ognia
-6. Wybierz wartości progowej dla warunku w kroku 5. do spełnienia
-7. Wybierz okres względem której będzie sprawdzać usługi monitorowania, warunek i wartość progową kroki 5 i 6
-8. Wklej element webhook, który został skopiowany z poprzedniej sekcji.
+1. Wybieranie ustawień maszyny wirtualnej
+2. Wybierz pozycję "reguły alertów"
+3. Wybierz pozycję "Dodaj Alert"
+4. Wybierz metrykę, na której ma być wyzwalany alert
+5. Wybierz warunek, który po spełnieniu spowoduje uruchomienie alertu
+6. Wybierz próg dla warunku w kroku 5. do spełnienia
+7. Wybierz okres, w którym usługa monitorowania sprawdzi warunek i próg w krokach 5 & 6
+8. Wklej element webhook skopiowany z poprzedniej sekcji.
 
-![Dodaj Alert do maszyny wirtualnej 1](./media/vertical-scaling-automation/add-alert-webhook-1.png)
+![Dodawanie alertu do maszyny wirtualnej 1](./media/vertical-scaling-automation/add-alert-webhook-1.png)
 
-![Dodaj Alert do maszyny wirtualnej 2](./media/vertical-scaling-automation/add-alert-webhook-2.png)
+![Dodawanie alertu do maszyny wirtualnej 2](./media/vertical-scaling-automation/add-alert-webhook-2.png)
 

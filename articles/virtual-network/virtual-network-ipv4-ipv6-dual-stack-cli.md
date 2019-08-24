@@ -1,5 +1,5 @@
 ---
-title: Wdrażanie aplikacji dwustosowej IPv6 w usłudze Azure Virtual Network — interfejs wiersza polecenia
+title: Wdrażanie aplikacji podwójnego stosu IPv6 przy użyciu podstawowego Load Balancer na platformie Azure — interfejs wiersza polecenia
 titlesuffix: Azure Virtual Network
 description: W tym artykule pokazano, jak wdrożyć aplikację dwustosową protokołu IPv6 w usłudze Azure Virtual Network przy użyciu interfejsu wiersza polecenia platformy Azure.
 services: virtual-network
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: 75af2012c4e6287a2fbe76098c2a325e6c9ae2ef
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 265a14fa216741a5a5994389e671e7558a527261
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640690"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013714"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure-virtual-network---cli-preview"></a>Wdrażanie aplikacji podwójnego stosu IPv6 w usłudze Azure Virtual Network — interfejs wiersza polecenia (wersja zapoznawcza)
+# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli-preview"></a>Wdrażanie aplikacji dwustosowej protokołu IPv6 przy użyciu podstawowego Load Balancer — interfejs wiersza polecenia (wersja zapoznawcza)
 
-W tym artykule opisano sposób wdrażania aplikacji podwójnego stosu (IPv4 + IPv6) na platformie Azure, która obejmuje sieć wirtualną o podwójnej stercie z podsiecią podwójnego stosu, moduł równoważenia obciążenia z dwoma sieciami frontonu (IPv4 + IPv6), maszyny wirtualne z kartami sieciowymi z konfiguracją Dual IP, podwójne reguły sieciowej grupy zabezpieczeń i dwa publiczne adresy IP.
+W tym artykule opisano sposób wdrażania aplikacji podwójnego stosu (IPv4 + IPv6) Load Balancer przy użyciu interfejsu wiersza polecenia platformy Azure, który obejmuje sieć wirtualną o podwójnej stercie z podsiecią podwójnego stosu, czyli podstawową Load Balancer z dwoma (IPv4 + IPv6) konfiguracjami frontonu, maszynami wirtualnymi z kartami sieciowymi jest to konfiguracja dwuadresowego protokołu IP, podwójne reguły sieciowej grupy zabezpieczeń i dwa publiczne adresy IP.
+
+Aby wdrożyć aplikację z podwójnym stosem (IPV4 + IPv6) przy użyciu usługa Load Balancer w warstwie Standardowa, zobacz Wdrażanie aplikacji dwustosowej przy użyciu [protokołu IPv6 usługa Load Balancer w warstwie Standardowa za pomocą interfejsu wiersza polecenia platformy Azure](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md).
 
 > [!Important]
 > Podwójny stos IPv6 dla usługi Azure Virtual Network jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).

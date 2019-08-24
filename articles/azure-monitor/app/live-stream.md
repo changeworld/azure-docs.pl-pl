@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f8203cade1d2e34a9852e945df03dc2fddc1fbe5
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 4e1d83d99f6df9407e24e2ae57af70f68858092d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359419"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012752"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Monitorowanie & diagnozowanie przy użyciu 1-sekundowego opóźnienia
 
@@ -96,7 +96,7 @@ Podobnie jak w przypadku metryk, można określić dowolne dowolne kryterium dla
 
 Uwaga: Obecnie w przypadku kryteriów opartych na komunikatach o wyjątkach należy użyć najbardziej zewnętrznego komunikatu o wyjątku. W poprzednim przykładzie, aby odfiltrować wyjątek niegroźny z wewnętrznym komunikatem wyjątku (następuje "<--" ogranicznik) "klient został odłączony". Użyj komunikatu niezawierającego kryterium "błąd podczas odczytu zawartości żądania".
 
-Zobacz szczegóły elementu w kanale dynamicznym, klikając go. Możesz wstrzymać kanał informacyjny przez kliknięcie  przycisku Wstrzymaj lub po prostu przewinięcie lub kliknięcie elementu. Kanały informacyjne na żywo zostaną wznowione po przeprowadzeniu przewijania do góry lub przez kliknięcie licznika zebranych elementów podczas wstrzymania.
+Zobacz szczegóły elementu w kanale dynamicznym, klikając go. Możesz wstrzymać kanał informacyjny przez kliknięcie przycisku Wstrzymaj lub po prostu przewinięcie lub kliknięcie elementu. Kanały informacyjne na żywo zostaną wznowione po przeprowadzeniu przewijania do góry lub przez kliknięcie licznika zebranych elementów podczas wstrzymania.
 
 ![Próbkowane błędy na żywo](./media/live-stream/live-metrics-eventdetail.png)
 
@@ -107,7 +107,12 @@ Jeśli chcesz monitorować konkretne wystąpienie roli serwera, możesz filtrowa
 ![Próbkowane błędy na żywo](./media/live-stream/live-stream-filter.png)
 
 ## <a name="sdk-requirements"></a>Wymagania dotyczące zestawu SDK
+
+### <a name="net"></a>.NET
 Niestandardowy Live Metrics Stream jest dostępny w wersji 2.4.0-beta2 lub nowszej [zestawu SDK Application Insights dla sieci Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/). Pamiętaj, aby wybrać opcję "Uwzględnij wersję wstępną" z Menedżera pakietów NuGet.
+
+### <a name="nodejs"></a>Node.js
+Live Metrics Stream jest dostępny w wersji 1.3.0 lub nowszej [zestawu Application Insights SDK dla środowiska Node. js](https://npmjs.com/package/applicationinsights). Pamiętaj o użyciu `setSendLiveMetrics(true)` podczas konfigurowania zestawu SDK w kodzie.
 
 ## <a name="secure-the-control-channel"></a>Zabezpieczanie kanału kontroli
 Określone kryteria filtrów niestandardowych są wysyłane z powrotem do składnika metryki na żywo w zestawie Application Insights SDK. Filtry mogą potencjalnie zawierać informacje poufne, takie jak customerID. Kanał można zabezpieczyć przy użyciu klucza tajnego interfejsu API oprócz klucza Instrumentacji.
@@ -199,7 +204,7 @@ Brak danych? Jeśli aplikacja należy do sieci chronionej: Live Metrics Stream u
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Monitorowanie użycia za pomocą Application Insights](../../azure-monitor/app/usage-overview.md)
 * [Korzystanie z wyszukiwania diagnostycznego](../../azure-monitor/app/diagnostic-search.md)
 * [Profiler](../../azure-monitor/app/profiler.md)

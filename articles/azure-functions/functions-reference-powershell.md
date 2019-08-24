@@ -1,6 +1,6 @@
 ---
-title: Dokumentacja dla deweloperów programu PowerShell dla usługi Azure Functions
-description: Dowiedz się, jak tworzenie funkcji przy użyciu programu PowerShell.
+title: Dokumentacja dewelopera programu PowerShell dla Azure Functions
+description: Dowiedz się, jak opracowywać funkcje przy użyciu programu PowerShell.
 services: functions
 documentationcenter: na
 author: tylerleonhardt
@@ -11,28 +11,28 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: a75bdaf0e26193a5b2792b52923c085eff89b83f
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 8c6f13f85b692d2405928fe06605d8b2ac0ec8e7
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706396"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012713"
 ---
-# <a name="azure-functions-powershell-developer-guide"></a>Przewodnik dewelopera usługi Azure PowerShell funkcji
+# <a name="azure-functions-powershell-developer-guide"></a>Przewodnik dewelopera programu Azure Functions PowerShell
 
-Ten artykuł zawiera szczegółowe informacje o tym, jak wpisać usługi Azure Functions przy użyciu programu PowerShell.
+W tym artykule przedstawiono szczegółowe informacje dotyczące sposobu pisania Azure Functions przy użyciu programu PowerShell.
 
 [!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
-PowerShell Azure — funkcja (funkcja) jest przedstawiana jako skrypt programu PowerShell, który jest wykonywany po ich wyzwoleniu. Każdy skrypt funkcji ma powiązane `function.json` pliku, który definiuje sposób działania funkcji, takich jak jak jest wyzwalane i jego parametrów wejściowych i wyjściowych. Aby dowiedzieć się więcej, zobacz [wyzwalacze i powiązania artykułu](functions-triggers-bindings.md). 
+Funkcja PowerShell platformy Azure (funkcja) jest reprezentowana przez skrypt programu PowerShell, który jest wykonywany po wyzwoleniu. Każdy skrypt funkcji zawiera plik powiązany `function.json` , który definiuje sposób zachowania funkcji, na przykład sposób wyzwalania i parametry wejściowe i wyjściowe. Aby dowiedzieć się więcej, zobacz [artykuł wyzwalacze i powiązania](functions-triggers-bindings.md). 
 
-Podobnie jak inne rodzaje funkcji funkcji skryptu programu PowerShell zająć parametry, które pasują do nazw powiązania danych wejściowych zdefiniowane w `function.json` pliku. A `TriggerMetadata` parametr jest przekazywany również, który zawiera dodatkowe informacje na temat wyzwalacza, który uruchomił funkcji.
+Podobnie jak w przypadku innych rodzajów funkcji, funkcja skryptu programu PowerShell przyjmuje parametry, które pasują do nazw wszystkich powiązań wejściowych zdefiniowanych `function.json` w pliku. `TriggerMetadata` Parametr jest również przekazywać, który zawiera dodatkowe informacje na temat wyzwalacza, który uruchomił funkcję.
 
-W tym artykule założono, że już znasz [dokumentacja dla deweloperów usługi Azure Functions](functions-reference.md). Należy również ukończyć [szybkiego startu usługi Functions dla programu PowerShell](functions-create-first-function-powershell.md) tworzenie pierwszej funkcji programu PowerShell.
+W tym artykule przyjęto założenie, że już odczytano [informacje dotyczące deweloperów Azure Functions](functions-reference.md). Należy również ukończyć funkcję [Szybki Start dla programu PowerShell](functions-create-first-function-powershell.md) , aby utworzyć pierwszą funkcję programu PowerShell.
 
 ## <a name="folder-structure"></a>Struktura folderów
 
-Struktura folderów wymagane dla projektu programu PowerShell wygląda podobnie do poniższego. Można zmienić to ustawienie domyślne. Aby uzyskać więcej informacji, zobacz [plik_skryptu](#configure-function-scriptfile) poniższej sekcji.
+Wymagana struktura folderów dla projektu programu PowerShell wygląda następująco. Tę wartość domyślną można zmienić. Aby uzyskać więcej informacji, zobacz sekcję [scriptFile](#configure-function-scriptfile) poniżej.
 
 ```
 PSFunctionApp
@@ -57,26 +57,26 @@ PSFunctionApp
  | - bin
 ```
 
-W folderze głównym projektu jest wspólny [ `host.json` ](functions-host-json.md) pliku, który może służyć do konfigurowania aplikacji funkcji. Każda funkcja ma folder z pliku z kodem (ps1) i plik konfiguracji powiązania (`function.json`). Nazwa katalogu nadrzędnego pliku function.json jest zawsze nazwę funkcji.
+W katalogu głównym projektu znajduje się plik udostępniony [`host.json`](functions-host-json.md) , za pomocą którego można skonfigurować aplikację funkcji. Każda funkcja ma folder z własnym plikiem kodu (. ps1) i plikiem konfiguracji powiązania (`function.json`). Nazwa katalogu funkcji Function. JSON jest zawsze nazwą funkcji.
 
-Niektóre powiązania wymagają obecności `extensions.csproj` pliku. Powiązanie rozszerzenia, wymagane w [wersji 2.x](functions-versions.md) funkcje środowiska uruchomieniowego, są definiowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](functions-bindings-register.md#extension-bundles). Podczas tworzenia funkcji w witrynie Azure portal, rejestracja odbywa się za Ciebie.
+Niektóre powiązania wymagają obecności `extensions.csproj` pliku. Rozszerzenia powiązań wymagane w [wersji 2. x](functions-versions.md) środowiska uruchomieniowego funkcji są zdefiniowane w `extensions.csproj` pliku z rzeczywistymi plikami `bin` biblioteki w folderze. Podczas programowania lokalnego należy [zarejestrować rozszerzenia powiązań](functions-bindings-register.md#extension-bundles). Podczas tworzenia funkcji w Azure Portal Rejestracja jest wykonywana.
 
-W aplikacjach funkcji programu PowerShell, mogą opcjonalnie mieć `profile.ps1` które są uruchamiane podczas uruchamiania aplikacji funkcji (znanych jako  *[zimnego](#cold-start)* . Aby uzyskać więcej informacji, zobacz [profil PowerShell](#powershell-profile).
+W aplikacjach funkcji programu PowerShell możesz opcjonalnie mieć, `profile.ps1` które są uruchamiane, gdy rozpocznie się uruchamianie aplikacji funkcji (w przeciwnym razie jako zimny *[Start](#cold-start)* ). Aby uzyskać więcej informacji, zobacz [profil programu PowerShell](#powershell-profile).
 
-## <a name="defining-a-powershell-script-as-a-function"></a>Definiowanie skryptu programu PowerShell w funkcji
+## <a name="defining-a-powershell-script-as-a-function"></a>Definiowanie skryptu programu PowerShell jako funkcji
 
-Domyślnie środowisko uruchomieniowe usługi Functions szuka funkcji w `run.ps1`, gdzie `run.ps1` udziałów tego samego katalogu nadrzędnego odpowiadającymi mu dostawcami `function.json`.
+Domyślnie środowisko uruchomieniowe funkcji wyszukuje funkcję w programie `run.ps1`, gdzie `run.ps1` jest w niej udostępniony ten sam katalog `function.json`nadrzędny.
 
-Wykonanie skryptu są przekazywane liczbę argumentów. Aby obsługiwać te parametry, należy dodać `param` bloku na początku skryptu w taki sposób, jak w poniższym przykładzie:
+Skrypt przeszedł wiele argumentów podczas wykonywania. Aby obsłużyć te parametry, `param` Dodaj blok na początku skryptu, tak jak w poniższym przykładzie:
 
 ```powershell
 # $TriggerMetadata is optional here. If you don't need it, you can safely remove it from the param block
 param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 ```
 
-### <a name="triggermetadata-parameter"></a>Parametr TriggerMetadata
+### <a name="triggermetadata-parameter"></a>TriggerMetadata — parametr
 
-`TriggerMetadata` Parametr jest używany, aby podać dodatkowe informacje na temat wyzwalacza. Dodatkowe metadane różni się powiązania powiązania, ale wszystkie one zawierać `sys` właściwość, która zawiera następujące dane:
+Ten `TriggerMetadata` parametr służy do dostarczania dodatkowych informacji na temat wyzwalacza. Dodatkowe metadane różnią się od powiązań do powiązania, ale wszystkie zawierają `sys` właściwość, która zawiera następujące dane:
 
 ```powershell
 $TriggerMetadata.sys
@@ -84,19 +84,19 @@ $TriggerMetadata.sys
 
 | Właściwość   | Opis                                     | Type     |
 |------------|-------------------------------------------------|----------|
-| utcNow     | Gdy w formacie UTC, funkcja została wyzwolona        | Datetime |
+| UtcNow     | Kiedy, w UTC, funkcja została wyzwolona        | DateTime |
 | MethodName | Nazwa funkcji, która została wyzwolona     | ciąg   |
-| RandGuid   | Unikatowy identyfikator guid do wykonywania tej funkcji | ciąg   |
+| RandGuid   | unikatowy identyfikator GUID dla tego wykonania funkcji | ciąg   |
 
-Każdy typ wyzwalacza ma inny zestaw metadanych. Na przykład `$TriggerMetadata` dla `QueueTrigger` zawiera `InsertionTime`, `Id`, `DequeueCount`, między innymi. Aby uzyskać więcej informacji na temat metadanych wyzwalacz kolejki, przejdź do [dokumentacji oficjalnego Usługa wyzwalaczy kolejkowania](functions-bindings-storage-queue.md#trigger---message-metadata). Zapoznaj się z dokumentacją na [wyzwalaczy](functions-triggers-bindings.md) pracujesz z, aby zobaczyć, co teraz wewnątrz metadanych wyzwalacza.
+Każdy typ wyzwalacza ma inny zestaw metadanych. Na `$TriggerMetadata` przykład, dla `InsertionTime` zawiera,`Id`, ,międzyinnymi.`DequeueCount` `QueueTrigger` Aby uzyskać więcej informacji na temat metadanych wyzwalacza kolejki, przejdź do [oficjalnej dokumentacji wyzwalaczy kolejek](functions-bindings-storage-queue.md#trigger---message-metadata). Zapoznaj się z dokumentacją dotyczącą [wyzwalaczy](functions-triggers-bindings.md) , z którymi pracujesz, aby zobaczyć, co znajduje się w metadanych wyzwalacza.
 
 ## <a name="bindings"></a>Powiązania
 
-W programie PowerShell [powiązania](functions-triggers-bindings.md) są konfigurowane i zdefiniowane w funkcji function.json. Funkcje wchodzić w interakcje z powiązaniami na wiele sposobów.
+W programie PowerShell [powiązania](functions-triggers-bindings.md) są konfigurowane i definiowane w funkcji Function. JSON. Funkcje współdziałają z powiązaniami na wiele sposobów.
 
-### <a name="reading-trigger-and-input-data"></a>Dane wejściowe i odczytywania wyzwalaczy
+### <a name="reading-trigger-and-input-data"></a>Odczytywanie wyzwalacza i danych wejściowych
 
-Wyzwalacz i powiązania danych wejściowych są odczytywane jako parametry przekazywane do funkcji. Powiązania danych wejściowych mają `direction` równa `in` w function.json. `name` Właściwości zdefiniowanych w `function.json` trwa nazwę parametru, `param` bloku. Od czasu programu PowerShell używa nazwanych parametrów na potrzeby powiązania, kolejność parametrów nie ma znaczenia. Jednak jest najlepszym rozwiązaniem zgodna z kolejnością powiązań zdefiniowanych w `function.json`.
+Wyzwalacze i powiązania wejściowe są odczytywane jako parametry przesłane do funkcji. Powiązania wejściowe mają `direction` `in` zestaw w funkcji Function. JSON. Właściwość zdefiniowana w `function.json` jest nazwą parametru w `param` bloku. `name` Ponieważ program PowerShell używa nazwanych parametrów do powiązania, kolejność parametrów nie ma znaczenia. Jednak najlepszym rozwiązaniem jest przestrzeganie kolejności powiązań zdefiniowanych w `function.json`.
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
@@ -104,9 +104,9 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 
 ### <a name="writing-output-data"></a>Zapisywanie danych wyjściowych
 
-W przypadku funkcji zawiera powiązania danych wyjściowych `direction` równa `out` w function.json. Możesz zapisywać powiązania danych wyjściowych za pomocą `Push-OutputBinding` polecenia cmdlet, które jest dostępne środowisko uruchomieniowe usługi Functions. We wszystkich przypadkach `name` właściwości powiązania, zgodnie z definicją w `function.json` odpowiada `Name` parametru `Push-OutputBinding` polecenia cmdlet.
+W funkcjach powiązanie danych wyjściowych ma `direction` `out` ustawioną wartość w pliku Function. JSON. Możesz zapisywać do powiązania danych wyjściowych za pomocą `Push-OutputBinding` polecenia cmdlet, które jest dostępne dla środowiska uruchomieniowego usługi Functions. We wszystkich przypadkach `name` właściwość powiązania, zgodnie z definicją w `function.json` , odpowiada `Name` parametrowi `Push-OutputBinding` polecenia cmdlet.
 
-Poniżej pokazano, jak wywoływać `Push-OutputBinding` w skrypcie funkcji:
+Poniżej pokazano, jak wywołać `Push-OutputBinding` w skrypcie funkcji:
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
@@ -114,7 +114,7 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 Push-OutputBinding -Name myQueue -Value $myValue
 ```
 
-Można również przekazać wartość dla określonego powiązania przy użyciu potoku.
+Możesz również przekazać wartość dla określonego powiązania za pomocą potoku.
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
@@ -122,25 +122,25 @@ param($MyFirstInputBinding, $MySecondInputBinding)
 Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 ```
 
-`Push-OutputBinding` zachowuje się inaczej w zależności od wartości określonej dla `-Name`:
+`Push-OutputBinding`zachowuje się inaczej w zależności od wartości określonej dla `-Name`:
 
-* Gdy nie można rozpoznać określonej nazwy do powiązania danych wyjściowych prawidłowe, zostanie zgłoszony błąd.
+* Gdy nie można rozpoznać określonej nazwy jako prawidłowego powiązania danych wyjściowych, zostanie zgłoszony błąd.
 
-* W przypadku powiązania danych wyjściowych akceptuje zbiór wartości, można wywołać `Push-OutputBinding` wielokrotnie, aby wypchnąć wielu wartości.
+* Gdy powiązanie danych wyjściowych akceptuje zbiór wartości, można wielokrotnie wywoływać `Push-OutputBinding` wiele wartości.
 
-* Kiedy powiązania danych wyjściowych akceptuje tylko wartości pojedynczego wystąpienia, wywołanie `Push-OutputBinding` zgłasza błąd, po raz drugi.
+* Gdy powiązanie danych wyjściowych akceptuje tylko wartość singleton, wywołanie `Push-OutputBinding` drugiego czasu powoduje wystąpienie błędu.
 
-#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding` Składnia
+#### <a name="push-outputbinding-syntax"></a>`Push-OutputBinding`obowiązuje
 
-Poniżej przedstawiono prawidłowe parametry w celu wywoływania `Push-OutputBinding`:
+Poniżej podano prawidłowe parametry wywołania `Push-OutputBinding`:
 
-| Name (Nazwa) | Type | Pozycja | Opis |
+| Name | Type | Pozycja | Opis |
 | ---- | ---- |  -------- | ----------- |
-| **`-Name`** | Ciąg | 1 | Nazwa powiązania danych wyjściowych chcesz ustawić. |
-| **`-Value`** | Object | 2 | Wartość powiązania danych wyjściowych należy ustawić, który jest akceptowany z potoku ByValue. |
-| **`-Clobber`** | SwitchParameter | o nazwie | (Opcjonalnie) Jeśli zostanie określony, wymusza wartość do ustawienia dla powiązania określonym produktem wyjściowym. | 
+| **`-Name`** | String | 1 | Nazwa powiązania danych wyjściowych, które chcesz ustawić. |
+| **`-Value`** | Object | 2 | Wartość powiązania danych wyjściowych, które ma zostać ustawione, które jest akceptowane z potoku ByValue. |
+| **`-Clobber`** | SwitchParameter | Nazywany | Obowiązkowe Gdy jest określony, wymusza wartość ustawioną dla określonego powiązania danych wyjściowych. | 
 
-Obsługiwane są również następujące parametry wspólne: 
+Obsługiwane są również następujące typowe parametry: 
 * `Verbose`
 * `Debug`
 * `ErrorAction`
@@ -151,11 +151,11 @@ Obsługiwane są również następujące parametry wspólne:
 * `PipelineVariable`
 * `OutVariable` 
 
-Aby uzyskać więcej informacji, zobacz [o CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
+Aby uzyskać więcej informacji, zobacz [Informacje o parametry](https://go.microsoft.com/fwlink/?LinkID=113216).
 
-#### <a name="push-outputbinding-example-http-responses"></a>Przykład wypychania OutputBinding: Odpowiedzi HTTP
+#### <a name="push-outputbinding-example-http-responses"></a>Przykład polecenia push-OutputBinding: Odpowiedzi HTTP
 
-Wyzwalacz HTTP zwraca odpowiedź przy użyciu powiązania danych wyjściowych o nazwie `response`. W poniższym przykładzie powiązania danych wyjściowych z `response` ma wartość "Wyjście #1":
+Wyzwalacz HTTP zwraca odpowiedź przy użyciu powiązania wyjściowego o nazwie `response`. W poniższym przykładzie powiązanie `response` danych wyjściowych ma wartość "Output #1":
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -164,7 +164,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 })
 ```
 
-Ponieważ dane wyjściowe do protokołu HTTP, który akceptuje tylko wartość singleton, błąd jest generowany, gdy `Push-OutputBinding` jest wywoływana po raz drugi.
+Ponieważ dane wyjściowe to http, który akceptuje tylko pojedynczą wartość, zwracany jest błąd, gdy `Push-OutputBinding` jest wywoływana po raz drugi.
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -173,7 +173,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 })
 ```
 
-W przypadku danych wyjściowych, które akceptują tylko pojedyncze wartości, można użyć `-Clobber` parametr do zastąpienia starej wartości, zamiast próby dodania do kolekcji. W poniższym przykładzie założono, że dodano już wartość. Za pomocą `-Clobber`, odpowiedź w poniższym przykładzie zastępuje istniejącą wartość w celu zwrócenia wartości "Wyjście #3":
+W przypadku danych wyjściowych, które akceptują tylko pojedyncze wartości `-Clobber` , można użyć parametru, aby zastąpić starą wartość zamiast próbować dodać do kolekcji. W poniższym przykładzie przyjęto założenie, że została już dodana wartość. Przy użyciu `-Clobber`, odpowiedź z następującego przykładu zastępuje istniejącą wartość, aby zwrócić wartość "Output #3":
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -182,33 +182,33 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 }) -Clobber
 ```
 
-#### <a name="push-outputbinding-example-queue-output-binding"></a>Przykład wypychania OutputBinding: Powiązania danych wyjściowych kolejki
+#### <a name="push-outputbinding-example-queue-output-binding"></a>Przykład polecenia push-OutputBinding: Powiązanie danych wyjściowych w kolejce
 
-`Push-OutputBinding` Służy do wysyłania danych do powiązania danych wyjściowych, takich jak [powiązania danych wyjściowych usługi Azure Queue storage](functions-bindings-storage-queue.md#output). W poniższym przykładzie komunikatów zapisywanych w kolejce ma wartość "Wyjście #1":
+`Push-OutputBinding`służy do wysyłania danych do powiązań wyjściowych, takich jak [powiązanie danych wyjściowych usługi Azure queue storage](functions-bindings-storage-queue.md#output). W poniższym przykładzie komunikat zapisany w kolejce ma wartość "Output #1":
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #1"
 ```
 
-Powiązania danych wyjściowych kolejki magazynu akceptuje wiele wartości danych wyjściowych. W takim przypadku wywołanie w poniższym przykładzie, po pierwszym zapisuje do kolejki, listy przy użyciu dwóch elementów: "dane wyjściowe #1" i "Wyjście #2".
+Powiązanie danych wyjściowych dla kolejki magazynu akceptuje wiele wartości wyjściowych. W takim przypadku należy wywołać Poniższy przykład po pierwszym zapisie w kolejce listy z dwoma elementami: "Output #1" i "Output #2".
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value "output #2"
 ```
 
-Poniższy przykład, gdy zostanie wywołana po dwie poprzednie, dodaje dwa więcej wartości do kolekcji danych wyjściowych:
+Poniższy przykład, gdy wywoływany po poprzednich dwóch, dodaje do kolekcji wyjściowej dwie więcej wartości:
 
 ```powershell
 PS >Push-OutputBinding -Name outQueue -Value @("output #3", "output #4")
 ```
 
-Podczas zapisywania do kolejki, komunikat zawiera tych czterech wartości: "Wyjście #1", "Wyjście #2", "Wyjście #3" i "Wyjście #4".
+Po zapisaniu w kolejce komunikat zawiera te cztery wartości: "Output #1", "Output #2", "Output #3" i "Output #4".
 
-#### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding` Polecenia cmdlet
+#### <a name="get-outputbinding-cmdlet"></a>`Get-OutputBinding`parametr
 
-Możesz użyć `Get-OutputBinding` polecenie cmdlet do pobierania wartości ustawione dla wiązania danych wyjściowych. To polecenie cmdlet pobiera tablicę skrótów, która zawiera nazwiska powiązania danych wyjściowych przy użyciu odpowiadających im wartości. 
+Za pomocą `Get-OutputBinding` polecenia cmdlet można pobrać wartości aktualnie ustawionych dla powiązań wyjściowych. To polecenie cmdlet pobiera tablicę skrótów, która zawiera nazwy powiązań wyjściowych z odpowiednimi wartościami. 
 
-Oto przykład użycia `Get-OutputBinding` do zwracania bieżącej wartości wiązania:
+Oto przykład użycia `Get-OutputBinding` do zwracania bieżących wartości powiązania:
 
 ```powershell
 Get-OutputBinding
@@ -221,7 +221,7 @@ MyQueue                        myData
 MyOtherQueue                   myData
 ```
 
-`Get-OutputBinding` zawiera również parametr o nazwie `-Name`, który może służyć do filtrowania zwrócone powiązanie, jak w poniższym przykładzie:
+`Get-OutputBinding`zawiera również parametr o nazwie `-Name`, który może służyć do filtrowania zwracanego powiązania, jak w poniższym przykładzie:
 
 ```powershell
 Get-OutputBinding -Name MyQ*
@@ -233,30 +233,30 @@ Name                           Value
 MyQueue                        myData
 ```
 
-Symbole wieloznaczne (*) są obsługiwane w `Get-OutputBinding`.
+Symbole wieloznaczne (*) są obsługiwane `Get-OutputBinding`w programie.
 
 ## <a name="logging"></a>Rejestrowanie
 
-Rejestrowanie w funkcjach programu PowerShell działa jak regularne rejestrowania programu PowerShell. Można użyć polecenia cmdlet funkcji rejestrowania można zapisać do każdego strumienia wyjściowego. Każde polecenie cmdlet jest mapowany na poziom dziennika, przez funkcje.
+Logowanie w funkcjach programu PowerShell działa jak regularne rejestrowanie programu PowerShell. Polecenia cmdlet rejestrowania można użyć do zapisu w każdym strumieniu wyjściowym. Każde polecenie cmdlet mapuje na poziom rejestrowania używany przez funkcje.
 
-| Funkcje poziom rejestrowania | Polecenia cmdlet rejestrowania |
+| Poziom rejestrowania funkcji | Polecenie cmdlet rejestrowania |
 | ------------- | -------------- |
 | Błąd | **`Write-Error`** |
 | Ostrzeżenie | **`Write-Warning`**  | 
-| Informacje | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informacje | Zapisuje _informacji_ poziomu rejestrowania. |
+| Information | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Information | Zapisuje dane w dzienniku na poziomie _informacji_ . |
 | Debugowanie | **`Write-Debug`** |
 | Ślad | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
-Oprócz tych poleceń cmdlet nic zapisywane do potoku zostanie przekierowana do `Information` dziennika poziomu i wyświetlane w formacie domyślnym programu PowerShell.
+Oprócz tych poleceń cmdlet wszystkie elementy zapisywane w potoku są przekierowywane do `Information` poziomu dziennika i wyświetlane z domyślnym formatowaniem programu PowerShell.
 
 > [!IMPORTANT]
-> Za pomocą `Write-Verbose` lub `Write-Debug` poleceń cmdlet nie jest wystarczająco, aby zobaczyć pełne i rejestrowanie na poziomie debugowania. Należy także skonfigurować próg poziomu dziennika, który deklaruje poziom dzienniki faktycznie interesujące Cię. Aby dowiedzieć się więcej, zobacz [skonfigurować poziom dziennika aplikacji funkcji](#configure-the-function-app-log-level).
+> Korzystanie z `Write-Verbose` poleceń `Write-Debug` cmdlet lub nie wystarcza do wyświetlenia pełnych informacji i rejestrowania na poziomie debugowania. Należy również skonfigurować próg poziomu dziennika, który deklaruje żądany poziom dzienników. Aby dowiedzieć się więcej, zobacz [Konfigurowanie poziomu dziennika aplikacji funkcji](#configure-the-function-app-log-level).
 
-### <a name="configure-the-function-app-log-level"></a>Konfiguruje poziom dziennika aplikacji — funkcja
+### <a name="configure-the-function-app-log-level"></a>Konfigurowanie poziomu dziennika aplikacji funkcji
 
-Usługa Azure Functions umożliwia definiowanie poziomu próg ułatwia do sterowania sposobem funkcji zapisuje w dziennikach. Aby ustawić próg wszystkie ślady wyświetlony w konsoli, należy użyć `logging.logLevel.default` właściwość [ `host.json` pliku][dokumentacja pliku host.JSON]. To ustawienie ma zastosowanie do wszystkich funkcji w aplikacji funkcji.
+Azure Functions umożliwia zdefiniowanie poziomu progu, aby ułatwić kontrolowanie sposobu zapisu w dziennikach. Aby ustawić wartość progową dla wszystkich śladów, które są zapisywane w `logging.logLevel.default` konsoli programu, należy użyć właściwości [ `host.json` ]w[dokumentacji pliku host. JSON]. To ustawienie ma zastosowanie do wszystkich funkcji w aplikacji funkcji.
 
-Poniższy przykład ustawia próg na wartość, aby włączyć pełne rejestrowanie dla wszystkich funkcji, ale ustawiające próg na wartość, aby włączyć rejestrowanie debugowania dla funkcji o nazwie `MyFunction`:
+Poniższy przykład ustawia próg w celu włączenia pełnego rejestrowania dla wszystkich funkcji, ale ustawia próg włączania rejestrowania debugowania dla funkcji o nazwie `MyFunction`:
 
 ```json
 {
@@ -269,21 +269,21 @@ Poniższy przykład ustawia próg na wartość, aby włączyć pełne rejestrowa
 }  
 ```
 
-Aby uzyskać więcej informacji, zobacz [dokumentacja pliku host.JSON].
+Aby uzyskać więcej informacji, zobacz [Dokumentacja pliku host. JSON].
 
 ### <a name="viewing-the-logs"></a>Wyświetlanie dzienników
 
-Jeśli aplikacja funkcji jest uruchomiona na platformie Azure, można użyć usługi Application Insights do monitorowania go. Odczyt [monitorowania usługi Azure Functions](functions-monitoring.md) Aby dowiedzieć się więcej na temat przeglądania i zapytania o dzienniki funkcji.
+Jeśli aplikacja funkcji działa na platformie Azure, można użyć Application Insights do monitorowania. Przeczytaj [Azure Functions monitorowania](functions-monitoring.md) , aby dowiedzieć się więcej o przeglądaniu i wysyłaniu zapytań o dzienniki funkcji.
 
-Jeśli korzystasz z aplikacji funkcji lokalnie na potrzeby programowania, rejestruje domyślny system plików. Aby wyświetlić dzienniki w konsoli, należy ustawić `AZURE_FUNCTIONS_ENVIRONMENT` zmiennej środowiskowej, aby `Development` przed uruchomieniem aplikacji funkcji.
+W przypadku korzystania z aplikacja funkcji lokalnie na potrzeby programowania program domyślnie rejestruje w systemie plików. Aby wyświetlić dzienniki w konsoli programu, należy ustawić `AZURE_FUNCTIONS_ENVIRONMENT` zmienną środowiskową na `Development` przed rozpoczęciem aplikacja funkcji.
 
-## <a name="triggers-and-bindings-types"></a>Wyzwalacze i powiązania typów
+## <a name="triggers-and-bindings-types"></a>Wyzwalacze i typy powiązań
 
-Liczba wyzwalaczy i powiązań są dostępne za pomocą aplikacji funkcji. Pełną listę wyzwalaczy i powiązań [można znaleźć tutaj](functions-triggers-bindings.md#supported-bindings).
+Istnieje wiele wyzwalaczy i powiązań dostępnych do użycia z aplikacją funkcji. Pełną listę wyzwalaczy i powiązań [można znaleźć tutaj](functions-triggers-bindings.md#supported-bindings).
 
-Wszystkich wyzwalaczy i powiązań są reprezentowane jako kilka typów rzeczywiste dane w kodzie:
+Wszystkie wyzwalacze i powiązania są reprezentowane w kodzie jako kilka rzeczywistych typów danych:
 
-* Tablica skrótów
+* Elemencie
 * ciąg
 * byte[]
 * int
@@ -291,45 +291,45 @@ Wszystkich wyzwalaczy i powiązań są reprezentowane jako kilka typów rzeczywi
 * HttpRequestContext
 * HttpResponseContext
 
-Pierwszych pięć typów na tej liście są typy .NET standard. Ostatnie dwa są używane tylko przez [wyzwalacza HttpTrigger](#http-triggers-and-bindings).
+Pierwsze pięć typów na tej liście są standardowymi typami .NET. Ostatnie dwa są używane tylko przez [wyzwalacz HttpTrigger](#http-triggers-and-bindings).
 
-Każdy parametr wiązania w funkcji musi być jednym z tych typów.
+Każdy parametr powiązania w funkcjach musi być jednym z tych typów.
 
-### <a name="http-triggers-and-bindings"></a>HTTP wyzwalaczy i powiązań
+### <a name="http-triggers-and-bindings"></a>Wyzwalacze i powiązania HTTP
 
-HTTP i wyzwalaczy elementu webhook protokołu HTTP wyjściowe i powiązania reprezentują wiadomości HTTP za pomocą obiektów żądań i odpowiedzi.
+Wyzwalacze HTTP i webhook oraz powiązania wyjściowe HTTP używają obiektów Request i Response do reprezentowania komunikatów HTTP.
 
-#### <a name="request-object"></a>Obiekt "Request"
+#### <a name="request-object"></a>Obiekt żądania
 
-Obiekt odpowiedzi, który jest przekazywany do skryptu jest typu `HttpRequestContext`, który ma następujące właściwości:
+Obiekt żądania, który jest przesyłany do skryptu, jest typu `HttpRequestContext`, który ma następujące właściwości:
 
 | Właściwość  | Opis                                                    | Type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
-| **`Body`**    | Obiekt, który zawiera treść żądania. `Body` jest serializowany w najlepszy typ na podstawie danych. Na przykład jeśli dane JSON, jest przekazywany w tablicy skrótów. Jeśli danych jest ciągiem, jest przekazywany w postaci ciągu. | object |
-| **`Headers`** | Słownik zawierający nagłówki żądania.                | Dictionary < string, string ><sup>*</sup> |
+| **`Body`**    | Obiekt, który zawiera treść żądania. `Body`jest serializowany do najlepszego typu na podstawie danych. Na przykład, jeśli dane są w formacie JSON, są one przenoszone jako tablica skrótów. Jeśli dane są ciągami, są one przenoszone jako ciąg. | object |
+| **`Headers`** | Słownik zawierający nagłówki żądania.                | Ciąg < słownika, ciąg ><sup>*</sup> |
 | **`Method`** | Metoda HTTP żądania.                                | ciąg                    |
-| **`Params`**  | Obiekt zawierający parametry routingu żądania. | Dictionary < string, string ><sup>*</sup> |
-| **`Query`** | Obiekt zawierający parametry zapytania.                  | Dictionary < string, string ><sup>*</sup> |
+| **`Params`**  | Obiekt, który zawiera parametry routingu żądania. | Ciąg < słownika, ciąg ><sup>*</sup> |
+| **`Query`** | Obiekt, który zawiera parametry zapytania.                  | Ciąg < słownika, ciąg ><sup>*</sup> |
 | **`Url`** | Adres URL żądania.                                        | ciąg                    |
 
-<sup>*</sup> Wszystkie `Dictionary<string,string>` kluczy jest rozróżniana wielkość liter.
+<sup>*</sup>We `Dictionary<string,string>` wszystkich kluczach nie jest rozróżniana wielkość liter.
 
 #### <a name="response-object"></a>Obiekt odpowiedzi
 
-Obiekt odpowiedzi, który należy wysłać ponownie jest typu `HttpResponseContext`, który ma następujące właściwości:
+Obiekt odpowiedzi, który ma zostać wysłany z tyłu, ma typ `HttpResponseContext`, który ma następujące właściwości:
 
 | Właściwość      | Opis                                                 | Type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
-| **`Body`**  | Obiekt, który zawiera treści odpowiedzi.           | object                    |
-| **`ContentType`** | Krótkie dostępne ustawienia Typ zawartości odpowiedzi. | ciąg                    |
-| **`Headers`** | Obiekt, który zawiera nagłówki odpowiedzi.               | Słownik lub tablicy skrótów   |
+| **`Body`**  | Obiekt, który zawiera treść odpowiedzi.           | object                    |
+| **`ContentType`** | Krótkie ustawienie typu zawartości odpowiedzi. | ciąg                    |
+| **`Headers`** | Obiekt, który zawiera nagłówki odpowiedzi.               | Słownik lub Hashtable   |
 | **`StatusCode`**  | Kod stanu HTTP odpowiedzi.                       | ciąg lub int             |
 
 #### <a name="accessing-the-request-and-response"></a>Uzyskiwanie dostępu do żądania i odpowiedzi
 
-Podczas pracy z wyzwalaczami HTTP są dostępne żądania HTTP w taki sam sposób jak inne powiązania danych wejściowych. Jest on `param` bloku.
+Podczas pracy z wyzwalaczami HTTP możesz uzyskać dostęp do żądania HTTP w taki sam sposób, jak w przypadku dowolnego innego powiązania danych wejściowych. Znajduje się w `param` bloku.
 
-Użyj `HttpResponseContext` obiekt do zwrotu odpowiedzi, jak pokazano w następującym:
+`HttpResponseContext` Użyj obiektu, aby zwrócić odpowiedź, jak pokazano na poniższej liście:
 
 `function.json`
 
@@ -362,18 +362,18 @@ Push-OutputBinding -Name res -Value ([HttpResponseContext]@{
 })
 ```
 
-Wynik wywołania tej funkcji będą:
+Wynikiem wywołania tej funkcji będzie:
 
 ```
 PS > irm http://localhost:5001?Name=Functions
 Hello Functions!
 ```
 
-### <a name="type-casting-for-triggers-and-bindings"></a>Rzutowanie typów wyzwalaczy i powiązań
+### <a name="type-casting-for-triggers-and-bindings"></a>Rzutowanie typu dla wyzwalaczy i powiązań
 
-W przypadku niektórych powiązania, takich jak powiązania obiektu blob, możesz określić typ parametru.
+W przypadku niektórych powiązań, takich jak powiązanie obiektu BLOB, można określić typ parametru.
 
-Na przykład, aby dane z magazynu obiektów Blob, podana jako ciąg znaków, należy dodać następujący typ rzutowany na Moje `param` bloku:
+Na przykład, aby dane z magazynu obiektów BLOB były dostarczane jako ciąg, Dodaj następujące rzutowanie typu do mojego `param` bloku:
 
 ```powershell
 param([string] $myBlob)
@@ -381,29 +381,29 @@ param([string] $myBlob)
 
 ## <a name="powershell-profile"></a>Profil programu PowerShell
 
-W programie PowerShell istnieje pojęcie profilu programu PowerShell. Jeśli nie znasz przy użyciu profilów programu PowerShell, zobacz [o profilach](/powershell/module/microsoft.powershell.core/about/about_profiles).
+W programie PowerShell istnieje koncepcja profilu programu PowerShell. Jeśli nie znasz profilów programu PowerShell, zobacz [Informacje o profilach](/powershell/module/microsoft.powershell.core/about/about_profiles).
 
-W funkcjach programu PowerShell skrypt profilu jest wykonywany podczas uruchamiania aplikacji funkcji. Funkcja aplikacje mają swój początek podczas pierwszego wdrożenia, a po jest bezczynny ([zimnego](#cold-start)).
+W funkcjach programu PowerShell skrypt profilu jest wykonywany, gdy uruchamiana jest aplikacja funkcji. Aplikacje funkcji są uruchamiane po pierwszym wdrożeniu i po przejściu w stan bezczynności ([zimny start](#cold-start)).
 
-Po utworzeniu aplikacji funkcji przy użyciu narzędzi, takich jak Visual Studio Code i funkcji podstawowych narzędzi usługi Azure, domyślny `profile.ps1` zostanie utworzony. Profil domyślny jest utrzymywany [w repozytorium GitHub narzędzia Core](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1) i zawiera:
+Po utworzeniu aplikacji funkcji przy użyciu narzędzi, takich jak Visual Studio Code i Azure Functions Core Tools, zostanie utworzona wartość `profile.ps1` domyślna. Profil domyślny jest przechowywany [w repozytorium usługi podstawowe narzędzia usługi GitHub](https://github.com/Azure/azure-functions-core-tools/blob/dev/src/Azure.Functions.Cli/StaticResources/profile.ps1) i zawiera następujące funkcje:
 
-* Automatyczne uwierzytelnianie tożsamości usługi Zarządzanej na platformie Azure.
-* Możliwości, aby włączyć funkcję programu Azure PowerShell `AzureRM` aliasy środowiska PowerShell, jeśli chcesz.
+* Automatyczne uwierzytelnianie MSI na platformie Azure.
+* Możliwość włączenia aliasów programu Azure PowerShell `AzureRM` PowerShell, jeśli chcesz.
 
 ## <a name="powershell-version"></a>Wersja programu PowerShell
 
-W poniższej tabeli przedstawiono wersja programu PowerShell, używane przez każda główna wersja środowiska uruchomieniowego funkcji:
+W poniższej tabeli przedstawiono wersję programu PowerShell używaną przez każdą główną wersję środowiska uruchomieniowego funkcji:
 
-| Funkcje wersji | Wersja programu PowerShell                             |
+| Wersja funkcji | Wersja programu PowerShell                             |
 |-------------------|------------------------------------------------|
-| 1.x               | Windows PowerShell 5.1 (zablokowane przez środowisko uruchomieniowe) |
-| 2.x               | PowerShell Core 6                              |
+| 1.x               | Windows PowerShell 5,1 (zablokowany przez środowisko uruchomieniowe) |
+| 2.x               | Program PowerShell Core 6                              |
 
-Możesz wyświetlić bieżącą wersję, drukowanie `$PSVersionTable` z żadnej funkcji.
+Bieżącą wersję można zobaczyć, drukując `$PSVersionTable` ją z dowolnej funkcji.
 
 ## <a name="dependency-management"></a>Zarządzanie zależnościami
 
-Funkcje programu PowerShell obsługują zarządzanie moduły platformy Azure przez usługę. Modyfikowanie host.json i ustawienie właściwości managedDependency włączone na wartość true, plik requirements.psd1 zostanie przetworzony. Najnowszych modułów platformy Azure zostanie automatycznie pobrana i udostępnione do funkcji.
+Funkcje programu PowerShell obsługują zarządzanie modułami platformy Azure przez usługę. Zmodyfikowanie pliku host. JSON i ustawienie dla właściwości Enabled managedDependency wartości true, plik Requirements. psd1 zostanie przetworzony. Najnowsze moduły platformy Azure zostaną automatycznie pobrane i udostępnione funkcji.
 
 host.json
 ```json
@@ -414,7 +414,7 @@ host.json
 }
 ```
 
-requirements.psd1
+wymagania. psd1
 
 ```powershell
 @{
@@ -422,27 +422,27 @@ requirements.psd1
 }
 ```
 
-Korzystanie z własnych niestandardowych modułów lub modułów z [galerii programu PowerShell](https://powershellgallery.com) różni się nieco od jak go normalnie.
+Korzystanie z własnych niestandardowych modułów lub modułów z [Galeria programu PowerShell](https://powershellgallery.com) jest nieco inne niż w przypadku normalnego działania.
 
-Po zainstalowaniu modułu na komputerze lokalnym, usługa zostanie wprowadzona w jednym z folderów globalnie dostępną w Twojej `$env:PSModulePath`. Ponieważ funkcja działa na platformie Azure, nie mają dostępu do modułów, zainstalowana na tym komputerze. Takie rozwiązanie wymaga `$env:PSModulePath` dla funkcji programu PowerShell aplikacji różni się od `$env:PSModulePath` w regularnych skrypt programu PowerShell.
+Po zainstalowaniu modułu na komputerze lokalnym znajduje się on w jednym z dostępnych globalnie folderów w usłudze `$env:PSModulePath`. Ponieważ funkcja działa na platformie Azure, nie będziesz mieć dostępu do modułów zainstalowanych na maszynie. Wymaga to, `$env:PSModulePath` aby aplikacja funkcji programu PowerShell była `$env:PSModulePath` inna niż w zwykłych skryptach programu PowerShell.
 
-W przypadku funkcji `PSModulePath` zawiera dwie ścieżki:
+W funkcjach `PSModulePath` zawiera dwie ścieżki:
 
-* A `Modules` folder, który istnieje w katalogu głównym aplikacji funkcji.
-* Ścieżka do `Modules` folderu, który znajduje się wewnątrz procesu roboczego języka programu PowerShell.
+* `Modules` Folder, który istnieje w katalogu głównym aplikacja funkcji.
+* Ścieżka do `Modules` folderu, który znajduje się w procesie roboczym języka programu PowerShell.
 
-### <a name="function-app-level-modules-folder"></a>Aplikacja funkcji na poziomie `Modules` folderu
+### <a name="function-app-level-modules-folder"></a>Folder poziomu `Modules` aplikacji funkcji
 
-Aby użyć moduły niestandardowe lub moduły programu PowerShell z galerii programu PowerShell, można umieścić moduły od których zależą swoje funkcje, w `Modules` folderu. Z tego folderu moduły są automatycznie dostępne dla środowisko uruchomieniowe usługi functions. Dowolną funkcję w aplikacji funkcji można użyć tych modułów.
+Aby użyć modułów niestandardowych lub modułów programu PowerShell z Galeria programu PowerShell, można umieścić moduły, na których funkcje są zależne `Modules` od folderu. Z tego folderu moduły są automatycznie dostępne dla środowiska uruchomieniowego usługi Functions. Każda funkcja w aplikacji funkcji może korzystać z tych modułów.
 
-Aby móc korzystać z tej funkcji, należy utworzyć `Modules` folder w katalogu głównym aplikacji funkcji. Zapisz moduły, w których chcesz użyć w funkcji w tej lokalizacji.
+Aby skorzystać z tej funkcji, Utwórz `Modules` folder w katalogu głównym aplikacji funkcji. Zapisz moduły, których chcesz używać w funkcjach w tej lokalizacji.
 
 ```powershell
 mkdir ./Modules
 Save-Module MyGalleryModule -Path ./Modules
 ```
 
-Użyj `Save-Module` Zapisz wszystkie moduły, użyj funkcji lub skopiować niestandardowe moduły do `Modules` folderu. Z folderem, moduły aplikacja funkcji mają następującą strukturę folderów:
+Służy `Save-Module` do zapisywania wszystkich modułów używanych przez funkcje lub kopiowania własnych modułów niestandardowych `Modules` do folderu. W przypadku folderu modułów aplikacja funkcji powinna mieć następującą strukturę folderów:
 
 ```
 PSFunctionApp
@@ -457,22 +457,22 @@ PSFunctionApp
  | - host.json
 ```
 
-Po uruchomieniu aplikacji funkcji, proces roboczy języka programu PowerShell dodaje `Modules` folder `$env:PSModulePath` , dzięki czemu możesz polegać na moduł autoloading tak samo, jak w regularnym skrypt programu PowerShell.
+Po uruchomieniu aplikacji funkcji proces roboczy języka PowerShell dodaje ten `Modules` folder do programu `$env:PSModulePath` , dzięki czemu można polegać na automatyczne ładowanie modułu, tak jak w przypadku zwykłego skryptu programu PowerShell.
 
-### <a name="language-worker-level-modules-folder"></a>Poziom procesu roboczego języka `Modules` folderu
+### <a name="language-worker-level-modules-folder"></a>Folder poziomu `Modules` procesów roboczych języka
 
-Kilka modułów są często używane przez proces roboczy języka programu PowerShell. Te moduły są zdefiniowane w ostatniej pozycji `PSModulePath`. 
+Proces roboczy języka programu PowerShell często korzysta z kilku modułów. Te moduły są zdefiniowane w ostatniej pozycji `PSModulePath`. 
 
-Bieżącą listę modułów jest następująca:
+Bieżąca lista modułów jest następująca:
 
-* [Microsoft.PowerShell.Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): moduł używany do pracy z archiwami, takie jak `.zip`, `.nupkg`i innym osobom.
-* **ThreadJob**: Implementacja oparta zadania programu PowerShell, interfejsów API.
+* [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): moduł używany do pracy z archiwami, `.zip`takimi jak, `.nupkg`i innymi.
+* **ThreadJob**: Implementacja oparta na wątkach interfejsów API zadań programu PowerShell.
 
-Najbardziej aktualną wersję tych modułów jest używany przez funkcje. Aby użyć określonej wersji tych modułów, możesz umieścić w określonej wersji `Modules` folderu aplikacji funkcji.
+Najnowsza wersja tych modułów jest używana przez funkcje. Aby użyć określonej wersji tych modułów, można umieścić konkretną wersję w `Modules` folderze aplikacji funkcji.
 
 ## <a name="environment-variables"></a>Zmienne środowiskowe
 
-W przypadku funkcji [ustawienia aplikacji](functions-app-settings.md), takie jak połączenia z usługą ciągów, są widoczne jako zmiennych środowiskowych podczas wykonywania. Możesz uzyskać dostęp te ustawienia przy użyciu `$env:NAME_OF_ENV_VAR`, jak pokazano w poniższym przykładzie:
+W funkcjach, [Ustawienia aplikacji](functions-app-settings.md), takie jak parametry połączenia usługi, są ujawniane jako zmienne środowiskowe podczas wykonywania. Możesz uzyskać dostęp do tych ustawień `$env:NAME_OF_ENV_VAR`przy użyciu, jak pokazano w następującym przykładzie:
 
 ```powershell
 param($myTimer)
@@ -484,46 +484,46 @@ Write-Host $env:WEBSITE_SITE_NAME
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
-Podczas uruchamiania lokalnego, ustawienia aplikacji są odczytywane z [local.settings.json](functions-run-local.md#local-settings-file) pliku projektu.
+W przypadku uruchamiania lokalnego ustawienia aplikacji są odczytywane z pliku projektu [Local. Settings. JSON](functions-run-local.md#local-settings-file) .
 
 ## <a name="concurrency"></a>Współbieżność
 
-Domyślnie środowisko uruchomieniowe funkcji PowerShell może przetwarzać tylko jedno wywołanie funkcji w danym momencie. Jednak ten poziom współbieżności może nie być wystarczające w następujących sytuacjach:
+Domyślnie środowisko uruchomieniowe programu PowerShell może przetwarzać tylko jedno wywołanie funkcji w danym momencie. Jednak ten poziom współbieżności może być niewystarczający w następujących sytuacjach:
 
-* Gdy próbujesz obsługiwać dużą liczbę wywołań w tym samym czasie.
-* Jeśli używasz funkcji, które wywołują innych funkcji w tej samej aplikacji funkcji.
+* Gdy próbujesz obsłużyć dużą liczbę wywołań w tym samym czasie.
+* Gdy masz funkcje, które wywołują inne funkcje w tej samej aplikacji funkcji.
 
-To zachowanie można zmienić, ustawiając następującą zmienną środowiskową na wartość całkowitą:
+Możesz zmienić to zachowanie, ustawiając następującą zmienną środowiskową na wartość całkowitą:
 
 ```
 PSWorkerInProcConcurrencyUpperBound
 ```
 
-Ta zmienna środowiskowa jest ustawiony [ustawienia aplikacji](functions-app-settings.md) aplikacji funkcji.
+Ta zmienna środowiskowa jest ustawiana w [ustawieniach aplikacji](functions-app-settings.md) aplikacja funkcji.
 
-### <a name="considerations-for-using-concurrency"></a>Zagadnienia dotyczące korzystania ze współbieżności
+### <a name="considerations-for-using-concurrency"></a>Zagadnienia dotyczące korzystania z współbieżności
 
-Program PowerShell jest _jednowątkowej_ języku skryptowym domyślnie. Jednak można dodać współbieżności przy użyciu wielu obszarach działania programu PowerShell w tym samym procesie. Ta funkcja jest o tym, jak działa środowisko uruchomieniowe usługi Azure Functions w programie PowerShell.
+Domyślnie program PowerShell jest wielowątkowym językiem skryptowym. Współbieżność można jednak dodać przy użyciu wielu obszarami działania programu PowerShell w tym samym procesie. Ta funkcja jest oparta na tym, jak działa środowisko uruchomieniowe programu Azure Functions PowerShell.
 
-Istnieją pewne wady w przypadku tej metody.
+Takie podejście ma pewne wady.
 
-#### <a name="concurrency-is-only-as-good-as-the-machine-its-running-on"></a>Współbieżność tylko jest dobrą maszyny, na którym jest uruchomiona na
+#### <a name="concurrency-is-only-as-good-as-the-machine-its-running-on"></a>Współbieżność jest taka sama jak na maszynie, w której jest uruchomiona
 
-Jeśli aplikacja funkcji jest uruchomiony na [planu usługi App Service](functions-scale.md#app-service-plan) obsługuje tylko pojedynczego rdzenia, a następnie współbieżności nie pomoże, większość. To, ponieważ nie ma żadnych więcej rdzeni, aby ułatwić Równoważenie obciążenia. W tym przypadku wydajność może się zmieniać, gdy jeden rdzeń przełączenie kontekstu między obszary działania.
+Jeśli aplikacja funkcji jest uruchomiona w [planie App Service](functions-scale.md#app-service-plan) , który obsługuje tylko jeden rdzeń, współbieżność nie będzie pomocna. Wynika to z faktu, że nie ma dodatkowych rdzeni, które pomogą zrównoważyć obciążenie. W takim przypadku wydajność może się różnić, gdy pojedyncze rdzeń ma przełączać się między obszarami działania.
 
-[Planu zużycie](functions-scale.md#consumption-plan) jest wykonywane przy użyciu tylko jednego rdzenia, więc nie mogą wykorzystać współbieżności. Jeśli chcesz wykorzystać współbieżności, zamiast tego wdrażania funkcji działanie aplikacji funkcji na dedykowanego planu usługi App Service za pomocą rdzeni.
+[Plan zużycia](functions-scale.md#consumption-plan) jest uruchamiany przy użyciu tylko jednego rdzenia, więc nie można użyć współbieżności. Aby w pełni wykorzystać możliwości współbieżności, zamiast tego należy wdrożyć funkcje w aplikacji funkcji działającej w ramach dedykowanego planu App Service z wystarczającą liczbą rdzeni.
 
-#### <a name="azure-powershell-state"></a>Stan programu PowerShell platformy Azure
+#### <a name="azure-powershell-state"></a>Stan Azure PowerShell
 
-Program Azure PowerShell używa niektórych _poziom procesu_ konteksty i stanie, aby pomóc w zmniejszeniu możesz wpisać nadmiarowe. Jednak jeśli włączyć współbieżności w aplikacji funkcji i wykonywanie działań takich jak zmiany stanu, może wystąpić z wyścigu. Te warunki wyścigu są trudne do debugowania, ponieważ jedno wywołanie zależy od pewnego stanu, a inne wywołania zmieniła stan.
+Azure PowerShell używa niektórych kontekstów i Stanów na _poziomie procesu_ , aby pomóc zaoszczędzić przed nadmiarowym wpisywaniem. Jeśli jednak włączysz współbieżność w aplikacji funkcji i wywołująsz akcje, które zmieniają stan, możesz zakończyć z użyciem warunków wyścigu. Te sytuacje wyścigu są trudne do debugowania, ponieważ jedno wywołanie jest zależne od pewnego stanu, a inne wywołanie zmieniło stan.
 
-Współbieżności przy użyciu programu Azure PowerShell jest wiele wartości, ponieważ niektóre operacje może zająć znaczną ilość czasu. Jednak należy kontynuować z rozwagą. Jeśli podejrzewasz, że występują warunki sytuacji wyścigu, ustaw współbieżność do `1` i ponów próbę żądania.
+Ogromną wartość współbieżności z Azure PowerShell, ponieważ niektóre operacje mogą zająć dużo czasu. Należy jednak zachować ostrożność. Jeśli podejrzewasz, że masz sytuację wyścigu, ustaw ustawienie aplikacji PSWorkerInProcConcurrencyUpperBound na `1` , a zamiast tego użyj [izolacji poziomu procesu roboczego języka](functions-app-settings.md#functions_worker_process_count) dla współbieżności.
 
-## <a name="configure-function-scriptfile"></a>Konfigurowanie funkcji `scriptFile`
+## <a name="configure-function-scriptfile"></a>Konfiguruj funkcję`scriptFile`
 
-Domyślnie funkcja programu PowerShell jest wykonywany z `run.ps1`, plik, który współużytkuje tego samego katalogu nadrzędnego odpowiadającymi mu dostawcami `function.json`.
+Domyślnie funkcja programu PowerShell jest wykonywana z `run.ps1`, plik, który współużytkuje ten sam katalog `function.json`nadrzędny.
 
-`scriptFile` Właściwość `function.json` pozwala uzyskać strukturę folderów, która wygląda podobnie jak w poniższym przykładzie:
+Właściwość w w programie może służyć do uzyskania struktury folderów, która wygląda podobnie do poniższego przykładu: `function.json` `scriptFile`
 
 ```
 FunctionApp
@@ -534,7 +534,7 @@ FunctionApp
  | | - PSFunction.ps1
 ```
 
-W tym przypadku `function.json` dla `myFunction` obejmuje `scriptFile` właściwości odwołującej się do pliku za pomocą funkcji eksportowanych do uruchomienia.
+W takim przypadku `function.json` w przypadku `myFunction` zawiera `scriptFile` Właściwość odwołującą się do pliku z wyeksportowaną funkcją do uruchomienia.
 
 ```json
 {
@@ -545,14 +545,14 @@ W tym przypadku `function.json` dla `myFunction` obejmuje `scriptFile` właściw
 }
 ```
 
-## <a name="use-powershell-modules-by-configuring-an-entrypoint"></a>Użycie modułów programu PowerShell, konfigurując punkt wejścia
+## <a name="use-powershell-modules-by-configuring-an-entrypoint"></a>Używanie modułów programu PowerShell przez skonfigurowanie punktu wejścia
 
-Ten artykuł pokazuje funkcje programu PowerShell w domyślnym `run.ps1` pliku skryptu, wygenerowane za pomocą szablonów.
-Można jednak również uwzględnić funkcje w modułach programu PowerShell. Można odwoływać się za pomocą kodu określonych funkcji w module `scriptFile` i `entryPoint` pól w function.json "pliku konfiguracji.
+W tym artykule przedstawiono funkcje programu PowerShell w domyślnym `run.ps1` pliku skryptu generowanym przez szablony.
+Można jednak również dołączać funkcje w modułach programu PowerShell. Można odwołać się do określonego kodu funkcji w module przy użyciu `scriptFile` pól i `entryPoint` w pliku konfiguracyjnym Function. JSON.
 
-W tym przypadku `entryPoint` jest nazwą funkcji lub polecenia cmdlet w module programu PowerShell, do którego odwołuje się `scriptFile`.
+W tym przypadku `entryPoint` jest nazwą funkcji lub polecenia cmdlet w module programu PowerShell, `scriptFile`do którego odwołuje się.
 
-Należy rozważyć następujące struktury folderów:
+Weź pod uwagę następującą strukturę folderów:
 
 ```
 FunctionApp
@@ -575,7 +575,7 @@ function Invoke-PSTestFunc {
 Export-ModuleMember -Function "Invoke-PSTestFunc"
 ```
 
-W tym przykładzie konfiguracja `myFunction` obejmuje `scriptFile` właściwość, która odwołuje się do `PSFunction.psm1`, który jest moduł programu PowerShell w innym folderze.  `entryPoint` Odwołania do właściwości `Invoke-PSTestFunc` funkcji, która jest punktem wejścia w module.
+W tym przykładzie konfiguracja programu `myFunction` `scriptFile` zawiera właściwość, która odwołuje `PSFunction.psm1`się do, czyli modułu programu PowerShell w innym folderze.  Właściwość odwołuje się `Invoke-PSTestFunc` do funkcji, która jest punktem wejścia w module. `entryPoint`
 
 ```json
 {
@@ -587,26 +587,26 @@ W tym przykładzie konfiguracja `myFunction` obejmuje `scriptFile` właściwoś�
 }
 ```
 
-W przypadku tej konfiguracji `Invoke-PSTestFunc` pobiera wykonywane dokładnie jako `run.ps1` będzie.
+W przypadku tej konfiguracji to `Invoke-PSTestFunc` polecenie jest wykonywane dokładnie `run.ps1` tak jak w przypadku.
 
 ## <a name="considerations-for-powershell-functions"></a>Zagadnienia dotyczące funkcji programu PowerShell
 
-Podczas pracy z funkcjami programu PowerShell, należy pamiętać o kwestiach w poniższych sekcjach.
+Podczas pracy z funkcjami programu PowerShell należy pamiętać o zagadnieniach w poniższych sekcjach.
 
-### <a name="cold-start"></a>Zimny Start
+### <a name="cold-start"></a>Zimne uruchomienie
 
-Podczas tworzenia funkcji platformy Azure w [bez użycia serwera modelu hostingu](functions-scale.md#consumption-plan), zimny start są mogą stać się rzeczywistością. *Zimnego* odwołuje się do czas jego przyjmuje na aplikację funkcji, aby rozpocząć Uruchamianie przetwarzania żądania. Zimnego występuje więcej często zużycia planu, ponieważ pobiera zamknięcia aplikacji funkcji w czasie nieaktywności.
+Podczas opracowywania Azure Functions w [modelu hostingu](functions-scale.md#consumption-plan)bezserwerowego zimny start jest rzeczywistości. *Zimny start* odnosi się do okresu czasu potrzebnego na uruchomienie aplikacji funkcji w celu przetworzenia żądania. Zimny przebieg występuje częściej od planu zużycia, ponieważ aplikacja funkcji jest zamykana w okresach braku aktywności.
 
-### <a name="bundle-modules-instead-of-using-install-module"></a>Moduły pakietu zamiast `Install-Module`
+### <a name="bundle-modules-instead-of-using-install-module"></a>Moduły pakietu zamiast używania`Install-Module`
 
-Skrypt jest uruchamiany na każdego wywołania. Unikaj używania `Install-Module` w skrypcie. Zamiast tego użyć `Save-Module` przed opublikowaniem, dzięki czemu nie trzeba marnowania czasu pobierania modułu funkcji. Jeśli zimnych startów mających wpływ na funkcje, zaleca się wdrożenie aplikacji funkcji do [planu usługi App Service](functions-scale.md#app-service-plan) równa *zawsze włączone* lub [plan w warstwie Premium](functions-scale.md#premium-plan).
+Skrypt jest uruchamiany na każdym wywołaniu. Unikaj `Install-Module` używania w skrypcie. Zamiast tego `Save-Module` należy użyć przed opublikowaniem, aby funkcja nie mogła tracić czasu na pobranie modułu. Jeśli zimne uruchomienie ma wpływ na funkcje, warto rozważyć wdrożenie aplikacji funkcji w planie [App servicem](functions-scale.md#app-service-plan) ustawionym na *zawsze włączony* lub do [planu Premium](functions-scale.md#premium-plan).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji, zobacz następujące zasoby:
 
 * [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)
 * [Dokumentacja usługi Azure Functions dla deweloperów](functions-reference.md)
-* [Wyzwalacze w usłudze Azure Functions i powiązania](functions-triggers-bindings.md)
+* [Azure Functions wyzwalacze i powiązania](functions-triggers-bindings.md)
 
-[Dokumentacja pliku host.JSON]: functions-host-json.md
+[Dokumentacja pliku host. JSON]: functions-host-json.md

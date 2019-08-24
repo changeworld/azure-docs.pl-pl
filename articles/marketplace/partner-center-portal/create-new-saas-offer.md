@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 584b9fdde33d14650c36c44b9b457a25f8a1d6f9
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7dd57e41144ec33aec6eb716716d0794d92071f5
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900133"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013087"
 ---
 # <a name="create-a-new-saas-offer"></a>Utwórz nową ofertę SaaS
 
@@ -79,25 +79,29 @@ Aby wyświetlić listę ofert oprogramowania jako usługi (SaaS) z komercyjnym r
 - Twoja oferta musi używać [interfejsów API realizacji SaaS](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) do integracji z portalem Azure Marketplace.
 - Aby uzyskać bardziej szczegółowe wymagania, zobacz [Przewodnik po publikowaniu oferty SaaS](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
-#### <a name="saas-on-azure-billing-infrastructure-costs"></a>SaaS na koszty infrastruktury rozliczeń na platformie Azure
-Jeśli oferta SaaS jest hostowana na platformie Azure, w przypadku wydawców należy uwzględnić opłaty za użycie infrastruktury platformy Azure oraz opłaty za licencję na oprogramowanie jako pojedynczy koszt. Ten koszt jest reprezentowany jako stała miesięczna opłata dla klienta. Użycie infrastruktury platformy Azure jest zarządzane i rozliczane dla Ciebie bezpośrednio przez partnera. Klient nie widzi rzeczywistych opłat za użycie infrastruktury. Wydawcy zwykle wybierają opłaty za użycie infrastruktury platformy Azure do cen licencji na oprogramowanie. 
+#### <a name="saas-pricing-and-billing-options"></a>Opcje cen i rozliczeń SaaS
+Dzięki rozwiązaniom SaaS działającym w ramach subskrypcji platformy Azure wydawcy opłaty licencyjne są naliczane przez klientów obejmują koszt infrastruktury, w której wdrażane jest oprogramowanie. Użycie infrastruktury platformy Azure jest zarządzane i rozliczane dla Ciebie bezpośrednio przez partnera. Klient nie widzi rzeczywistych opłat za użycie infrastruktury. Wydawcy powinni uzyskać opłaty za użycie infrastruktury platformy Azure do ich cen licencji na oprogramowanie. 
 
-Opłaty za licencje na oprogramowanie są prezentowane jako comiesięczne, cykliczne opłaty za subskrypcję w oparciu o lokację i nie są naliczane ani zużywane.
+Usługa SaaS oferuje comiesięczne lub roczne rozliczanie w oparciu o stałą opłatę za użytkownika lub opłaty za użycie przy użyciu taryfowej usługi rozliczania. Komercyjny Portal firmy Microsoft działa na modelu agencji, zgodnie z którym wydawcy ustawili ceny, klienci Microsoft Bills i Microsoft płaciją za wydawcę, przy jednoczesnym potrąceniu Opłaty za Agencję.
+
+W poniższej tabeli przedstawiono przykład podziału kosztów i wypłaty w celu przedstawienia modelu agencji.
 
 |**Koszt licencji**|**$100 miesięcznie**|
 |:---|:---|
 |Koszt użycia platformy Azure (D1/1-rdzeniowe)|Rozliczana bezpośrednio z wydawcą, a nie klientem|
 |Klient jest rozliczany przez firmę Microsoft|$100,00 miesięcznie (w przypadku wydawców należy uwzględnić koszty związane z założeniami lub przekazaniem infrastruktury w ramach opłaty licencyjnej)|
 
-- W tym scenariuszu firma Microsoft Bills $100,00 na potrzeby licencji na oprogramowanie i płaci wydawcę $80,00.
+|**Rachunki firmy Microsoft**|**$100 miesięcznie**|
+|:---|:---|
+|Firma Microsoft płaci 80% kosztu licencji <br>**W przypadku kwalifikujących się aplikacji SaaS firma Microsoft płaci 90% kosztu licencji*|$80,00 miesięcznie <br>*$* 90,00 miesięcznie *|
+
+- W tym przykładzie firma Microsoft rozlicza $100,00 od klienta na potrzeby licencji na oprogramowanie i płaci do wydawcy $80,00.
 - Partnerzy, którzy zakwalifikowani do **obniżonej opłaty za usługę Marketplace** , będą widzieć obniżoną opłatę za transakcje w ofertach SaaS od maja 2019 do 2020 czerwca. W tym scenariuszu firma Microsoft Bills $100,00 na potrzeby licencji na oprogramowanie i płaci wydawcę $90,00.
 
 > [!NOTE]
 > **Zmniejszona opłata za usługę Marketplace**: W przypadku niektórych ofert SaaS opublikowanych na naszej komercyjnej witrynie Marketplace firma Microsoft obniży opłatę za usługę Marketplace z 20% (zgodnie z opisem w umowie Microsoft Publisher) do 10%. Aby oferta mogła zakwalifikować się, co najmniej jedna oferta musi zostać wystawiona przez firmę Microsoft, ponieważ jest to adres IP do współsprzedaży lub co do sprzedaży.  Przed końcem każdego miesiąca kalendarzowego należy spełnić co najmniej pięć (5) dni roboczych, aby uzyskać tę obniżoną opłatę za usługę Marketplace w danym miesiącu.  Zmniejszona opłata za usługę Marketplace nie dotyczy maszyn wirtualnych, zarządzanych aplikacji ani innych produktów udostępnianych za pośrednictwem komercyjnej witryny Marketplace.  Zmniejszona opłata za usługę Marketplace będzie dostępna tylko w przypadku ofert z tytułu licencji uzyskanych przez firmę Microsoft od 1 maja 2019 do 30 czerwca 2020.  Po tym czasie opłata za usługę Marketplace powróci do normalnej kwoty. 
 
-|**Rachunki firmy Microsoft**|**$100 miesięcznie**|
-|:---|:---|
-|Firma Microsoft płaci 80% kosztu licencji <br>**W przypadku kwalifikujących się aplikacji SaaS firma Microsoft płaci 90% kosztu licencji*|$80,00 miesięcznie <br>*$* 90,00 miesięcznie *|
+
 
 
 #### <a name="csp-program-opt-in"></a>Wybór programu CSP
@@ -153,9 +157,23 @@ Po włączeniu dysku testowego zostanie wyświetlony monit o skonfigurowanie śr
 
 ## <a name="connect-lead-management"></a>Zarządzanie potencjalnymi klientami
 
-[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
+Połącz się z klientami bezpośrednio, wymieniając swoją ofertę na rynku Marketplace i łącząc system zarządzania relacjami z klientami (CRM, Customer Relationship Management), dzięki czemu możesz otrzymywać informacje kontaktowe klienta bezpośrednio po pomyślnym zajściu klienta lub wdrożeniu iloczyn.
 
-Aby uzyskać więcej informacji, zobacz temat [Zarządzanie potencjalnymi klientami](./commercial-marketplace-get-customer-leads.md) .
+- **Wybierz miejsce docelowe potencjalnego klienta** (menu rozwijane): Podaj szczegóły połączenia z systemem CRM, do którego chcesz wysyłać potencjalnych klientów. 
+
+Centrum partnerskie obsługuje następujące systemy CRM do zarządzania potencjalnymi klientami. Wybierz łącze do instrukcji instalacji.
+
+- Obiekt blob platformy Azure — Podaj adres e-mail kontaktu, nazwę kontenera i parametry połączenia konta magazynu. 
+- [Tabela platformy Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) — Podaj kontaktowy adres e-mail i parametry połączenia konta magazynu. 
+- [Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) — umożliwia kontaktowanie się z serwerem poczty e-mail, adresem URL i trybem uwierzytelniania (pakietem Office 365 lub Azure Active Directory).
+- [Punkt końcowy https](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) — Podaj adres URL kontaktu i punkt końcowy https. 
+- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) — Podaj adres e-mail kontaktu, identyfikator formularza, identyfikator konta Munchkin i identyfikator serwera.
+- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) — Podaj kontaktowy adres E-mail i identyfikator organizacji. 
+
+#### <a name="additional-lead-management-resources"></a>Dodatkowe zasoby zarządzania potencjalnymi klientami
+- [Często zadawane pytania dotyczące zarządzania potencjalnymi klientami](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
+- [Typowe błędy konfiguracji lidera](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Przegląd zarządzania potencjalnymi klientami — Omówienie jednego modułu stronicowania](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
 Pamiętaj, aby **zapisać** przed przejściem do następnej sekcji.
 

@@ -149,7 +149,7 @@
       items:
         - name: Omówienie
           href: media-services-apis-overview.md
-          displayName: 'accessing, naming, long-running'
+          displayName: 'accessing, naming, long-running, invalid character'
         - name: 'Stronicowanie, filtrowanie i określanie kolejności jednostek'
           href: entities-overview.md
         - name: Kontrola dostępu oparta na rolach

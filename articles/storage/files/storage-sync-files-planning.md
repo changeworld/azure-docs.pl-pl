@@ -7,15 +7,15 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f89e7307d75b159886cb47bde3e1fceb5ed557f5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: bd587bfed7fcfea8e8cd99ca155ee9d86222ae3d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699341"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013536"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
-Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
+Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
 
 W tym artykule opisano ważne zagadnienia dotyczące wdrażania Azure File Sync. Zalecamy także zapoznanie się z [planowaniem wdrożenia Azure Files](storage-files-planning.md). 
 
@@ -149,7 +149,7 @@ Aby wyświetlić wyniki w formacie CSV:
 | \\SyncShareState | Folder do synchronizacji |
 
 ### <a name="failover-clustering"></a>Klaster trybu failover
-Usługa Windows Server Failover Clustering jest obsługiwana przez Azure File Sync dla opcji wdrażania "serwer plików do użytku ogólnego". Klaster trybu failover nie jest obsługiwany na serwerze plików skalowalnym w poziomie dla danych aplikacji (SOFS) lub na udostępnionych woluminach klastra (CSV).
+Usługa Windows Server Failover Clustering jest obsługiwana przez Azure File Sync dla opcji wdrażania "serwer plików do użytku ogólnego". Klaster trybu failover nie jest obsługiwany na "Serwer plików skalowalny w poziomie dla danych aplikacji" (SOFS) ani na udostępnionych woluminach klastra (CSV).
 
 > [!Note]  
 > Aby synchronizacja działała poprawnie, Agent Azure File Sync musi być zainstalowany na każdym węźle w klastrze trybu failover.
@@ -254,12 +254,15 @@ Azure File Sync jest dostępna tylko w następujących regionach:
 | East US | Wirginia |
 | Wschodnie stany USA 2 | Wirginia |
 | Francja Środkowa | Paryż |
-| Korea Środkowa| Seul |
-| Korea Południowa| Busan |
+| Francja Południowa * | Marsylia |
+| Korea Środkowa | Seul |
+| Korea Południowa | Busan |
 | Japonia Wschodnia | Tokyo, Saitama |
 | Japonia Zachodnia | Osaka |
 | Środkowo-północne stany USA | Illinois |
 | Europa Północna | Irlandia |
+| Północna Republika Południowej Afryki | Johannesburg |
+| Zachodnia Republika Południowej Afryki * | Kapsztad |
 | Środkowo-południowe stany USA | Teksas |
 | Indie Południowe | Chennai |
 | Azja Południowo-Wschodnia | Singapur |
@@ -274,6 +277,8 @@ Azure File Sync jest dostępna tylko w następujących regionach:
 | Zachodnie stany USA 2 | Waszyngton |
 
 Azure File Sync obsługuje synchronizowanie tylko z udziałem plików platformy Azure, który znajduje się w tym samym regionie co usługa synchronizacji magazynu.
+
+W przypadku regionów oznaczonych gwiazdkami należy skontaktować się z pomocą techniczną platformy Azure, aby zażądać dostępu do usługi Azure Storage w tych regionach. Proces został przedstawiony w [tym dokumencie](https://azure.microsoft.com/global-infrastructure/geographies/).
 
 ### <a name="azure-disaster-recovery"></a>Odzyskiwanie po awarii platformy Azure
 Aby chronić przed utratą w regionie świadczenia usługi Azure, Azure File Sync integruje się z opcją [nadmiarowości magazynu geograficznie](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) nadmiarowego (GRS). Magazyn GRS działa przy użyciu asynchronicznej replikacji bloków między magazynem w regionie podstawowym, z którym zwykle odbywa się praca, i magazynu w sparowanym regionie pomocniczym. W przypadku awarii, która powoduje tymczasowe lub trwałe przejście regionu platformy Azure do trybu offline, firma Microsoft przejdzie w tryb failover do sparowanego regionu. 
@@ -296,12 +301,15 @@ Aby zapewnić obsługę integracji trybu failover między magazynem geograficzni
 | East US             | Zachodnie stany USA            |
 | Wschodnie stany USA 2           | Środkowe stany USA         |
 | Francja Środkowa      | Francja Południowa       |
+| Francja Południowa        | Francja Środkowa     |
 | Japonia Wschodnia          | Japonia Zachodnia         |
 | Japonia Zachodnia          | Japonia Wschodnia         |
 | Korea Środkowa       | Korea Południowa        |
 | Korea Południowa         | Korea Środkowa      |
 | Europa Północna        | Europa Zachodnia        |
 | Środkowo-północne stany USA    | Środkowo-południowe stany USA   |
+| Północna Republika Południowej Afryki  | Zachodnia Republika Południowej Afryki  |
+| Zachodnia Republika Południowej Afryki   | Północna Republika Południowej Afryki |
 | Środkowo-południowe stany USA    | Środkowo-północne stany USA   |
 | Indie Południowe         | Indie Środkowe      |
 | Azja Południowo-Wschodnia      | Azja Wschodnia          |

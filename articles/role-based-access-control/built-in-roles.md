@@ -15,12 +15,12 @@ ms.date: 08/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 09551eb2620349fa2445c1da3a7e0d66062ebaf0
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 776b8303e3454b40979691ea32fdcca11be4fa71
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899735"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013376"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role dla zasobów platformy Azure
 
@@ -54,15 +54,15 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 | [Operator elementu Runbook usługi Automation](#automation-runbook-operator) | Odczytywanie właściwości elementu Runbook — aby można było tworzyć zadania elementu Runbook. |
 | [Współautor avere](#avere-contributor) | Można utworzyć klaster avere vFXT i zarządzać nim. |
 | [Operator avere](#avere-operator) | Używane przez klaster avere vFXT do zarządzania klastrem |
-| [Właściciel danych Event Hubs platformy Azure (wersja zapoznawcza)](#azure-event-hubs-data-owner-preview) | Umożliwia pełny dostęp do zasobów usługi Azure Event Hubs. |
-| [Azure Event Hubs Data Receiver (wersja zapoznawcza)](#azure-event-hubs-data-receiver-preview) | Zezwala na odbieranie dostępu do zasobów usługi Azure Event Hubs. |
-| [Usługa Azure Event Hubs Data Sender (wersja zapoznawcza)](#azure-event-hubs-data-sender-preview) | Zezwala na wysyłanie dostępu do zasobów Event Hubs platformy Azure. |
+| [Właściciel danych Event Hubs platformy Azure](#azure-event-hubs-data-owner) | Umożliwia pełny dostęp do zasobów usługi Azure Event Hubs. |
+| [Usługa Azure Event Hubs Data Receiver](#azure-event-hubs-data-receiver) | Zezwala na odbieranie dostępu do zasobów usługi Azure Event Hubs. |
+| [Nadawca danych Event Hubs platformy Azure](#azure-event-hubs-data-sender) | Zezwala na wysyłanie dostępu do zasobów Event Hubs platformy Azure. |
 | [Rola administratora klastra usługi Kubernetes platformy Azure](#azure-kubernetes-service-cluster-admin-role) | Wyświetl listę akcji poświadczeń administratora klastra. |
 | [Rola użytkownika klastra usługi Azure Kubernetes Service](#azure-kubernetes-service-cluster-user-role) | Wyświetl listę akcji poświadczeń użytkownika klastra. |
 | [Czytnik danych Azure Maps (wersja zapoznawcza)](#azure-maps-data-reader-preview) | Przyznaje dostęp do odczytu danych związanych z mapowaniem z konta usługi Azure Maps. |
-| [Właściciel danych Azure Service Bus (wersja zapoznawcza)](#azure-service-bus-data-owner-preview) | Umożliwia pełny dostęp do zasobów Azure Service Bus. |
-| [Azure Service Bus — odbiorca danych (wersja zapoznawcza)](#azure-service-bus-data-receiver-preview) | Umożliwia uzyskanie dostępu do zasobów Azure Service Bus. |
-| [Nadawca danych Azure Service Bus (wersja zapoznawcza)](#azure-service-bus-data-sender-preview) | Zezwala na dostęp do Azure Service Bus zasobów. |
+| [Właściciel danych Azure Service Bus](#azure-service-bus-data-owner) | Umożliwia pełny dostęp do zasobów Azure Service Bus. |
+| [Azure Service Bus odbiorca danych](#azure-service-bus-data-receiver) | Umożliwia uzyskanie dostępu do zasobów Azure Service Bus. |
+| [Nadawca danych Azure Service Bus](#azure-service-bus-data-sender) | Zezwala na dostęp do Azure Service Bus zasobów. |
 | [Właściciel rejestracji Azure Stack](#azure-stack-registration-owner) | Umożliwia zarządzanie rejestracjami Azure Stack. |
 | [Współautor kopii zapasowej](#backup-contributor) | Umożliwia zarządzanie usługą kopii zapasowych, ale nie może tworzyć magazynów i zapewniać dostępu innym osobom |
 | [Operator kopii zapasowych](#backup-operator) | Umożliwia zarządzanie usługami kopii zapasowych, z wyjątkiem usuwania kopii zapasowych, tworzenia magazynu i udzielania dostępu innym osobom |
@@ -556,7 +556,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | **NotDataActions** |  |
 > | *dawaj* |  |
 
-## <a name="azure-event-hubs-data-owner-preview"></a>Właściciel danych Event Hubs platformy Azure (wersja zapoznawcza)
+## <a name="azure-event-hubs-data-owner"></a>Właściciel danych Event Hubs platformy Azure
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -571,7 +571,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | **NotDataActions** |  |
 > | *dawaj* |  |
 
-## <a name="azure-event-hubs-data-receiver-preview"></a>Azure Event Hubs Data Receiver (wersja zapoznawcza)
+## <a name="azure-event-hubs-data-receiver"></a>Usługa Azure Event Hubs Data Receiver
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -586,7 +586,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | **NotDataActions** |  |
 > | *dawaj* |  |
 
-## <a name="azure-event-hubs-data-sender-preview"></a>Usługa Azure Event Hubs Data Sender (wersja zapoznawcza)
+## <a name="azure-event-hubs-data-sender"></a>Nadawca danych Event Hubs platformy Azure
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -646,7 +646,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | **NotDataActions** |  |
 > | *dawaj* |  |
 
-## <a name="azure-service-bus-data-owner-preview"></a>Właściciel danych Azure Service Bus (wersja zapoznawcza)
+## <a name="azure-service-bus-data-owner"></a>Właściciel danych Azure Service Bus
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -661,7 +661,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | **NotDataActions** |  |
 > | *dawaj* |  |
 
-## <a name="azure-service-bus-data-receiver-preview"></a>Azure Service Bus — odbiorca danych (wersja zapoznawcza)
+## <a name="azure-service-bus-data-receiver"></a>Azure Service Bus odbiorca danych
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -678,7 +678,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | **NotDataActions** |  |
 > | *dawaj* |  |
 
-## <a name="azure-service-bus-data-sender-preview"></a>Nadawca danych Azure Service Bus (wersja zapoznawcza)
+## <a name="azure-service-bus-data-sender"></a>Nadawca danych Azure Service Bus
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |

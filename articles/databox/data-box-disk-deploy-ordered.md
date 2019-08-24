@@ -1,5 +1,5 @@
 ---
-title: Samouczek zamówienie dysku Azure Data Box | Dokumentacja firmy Microsoft
+title: Samouczek przedstawiający kolejność Azure Data Box Disk | Microsoft Docs
 description: Z tego samouczka dowiesz się, jak utworzyć konto i zamówić usługę Azure Data Box Disk w celu importowania danych na platformę Azure.
 services: databox
 author: alkohli
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 39d39b313cd2e65989989080d4cb0729b0be1e65
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: c1626542aba71f971ad96fe9f187ce9f1c1a99f3
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561446"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012938"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Samouczek: zamawianie urządzenia Azure Data Box Disk
 
@@ -51,26 +51,26 @@ Przed rozpoczęciem upewnij się, że:
 
 Zaloguj się do:
 
-- Witryny Azure portal pod tym adresem URL: https://portal.azure.com zamówieniem dysku Data Box.
-- Lub, w portalu Azure dla instytucji rządowych pod tym adresem URL: https://portal.azure.us. Aby uzyskać więcej informacji, przejdź do [nawiązywanie połączenia z platformy Azure Government przy użyciu portalu](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
+- Azure Portal pod tym adresem URL: https://portal.azure.com w celu uporządkowania Data Box Disk.
+- Lub Portal Azure Government pod tym adresem URL: https://portal.azure.us. Aby uzyskać więcej informacji, przejdź do [obszaru łączenie z Azure Government przy użyciu portalu](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
-Wykonaj następujące kroki w kolejności dysku Data Box.
+Wykonaj następujące kroki, aby zamówić Data Box Disk.
 
 1. W lewym górnym rogu portalu kliknij pozycję **+ Utwórz zasób** i wyszukaj pozycję *Azure Data Box*. Kliknij pozycję **Azure Data Box**.
     
    ![Wyszukiwanie pozycji Azure Data Box 1](media/data-box-disk-deploy-ordered/search-data-box11.png)
 
-2. Kliknij pozycję **Utwórz**.
+2. Kliknij przycisk **Utwórz**.
 
 3. Sprawdź, czy usługa Data Box jest dostępna w Twoim regionie. Wprowadź lub wybierz poniższe informacje i kliknij pozycję **Zastosuj**.
 
     ![Wybieranie opcji Data Box Disk](media/data-box-disk-deploy-ordered/select-data-box-sku-1.png)
 
-    |Ustawienie|Wartość|
+    |Ustawienie|Value|
     |---|---|
-    |Subskrypcja|Wybierz subskrypcję, w ramach której włączono usługę Data Box.<br> Subskrypcja jest połączona z kontem rozliczeniowym. |
+    |Subscription|Wybierz subskrypcję, w ramach której włączono usługę Data Box.<br> Subskrypcja jest połączona z kontem rozliczeniowym. |
     |Typ transferu| Importuj na platformę Azure|
-    |Kraj źródłowy | Wybierz kraj/region, w którym dane aktualnie znajduje się.|
+    |Kraj źródłowy | Wybierz kraj/region, w którym znajdują się obecnie dane.|
     |Docelowy region platformy Azure|Wybierz region platformy Azure, do którego chcesz przenieść dane.|
 
   
@@ -82,26 +82,26 @@ Wykonaj następujące kroki w kolejności dysku Data Box.
 
     |Ustawienie|Wartość|
     |---|---|
-    |Name (Nazwa)|Podaj przyjazną nazwę, aby śledzić zamówienie.<br> Nazwa może zawierać od 3 do 24 znaków, które mogą być literami, cyframi i łącznikami. <br> Nazwa musi zaczynać i kończyć się literą lub cyfrą. |
-    |Grupa zasobów| Użyj istniejącej grupy lub utwórz nową. <br> Grupa zasobów to kontener logiczny zasobów, które mogą być zarządzane lub wdrażane razem. |
+    |Name|Podaj przyjazną nazwę, aby śledzić zamówienie.<br> Nazwa może zawierać od 3 do 24 znaków, które mogą być literami, cyframi i łącznikami. <br> Nazwa musi zaczynać i kończyć się literą lub cyfrą. |
+    |Resource group| Użyj istniejącej grupy lub utwórz nową. <br> Grupa zasobów to kontener logiczny zasobów, które mogą być zarządzane lub wdrażane razem. |
     |Docelowy region platformy Azure| Wybierz region swojego konta magazynu.<br> Obecnie są obsługiwane konta magazynu we wszystkich regionach USA, regionach Europa Zachodnia i Europa Północna, Kanadzie i Australii. |
     |Szacowany rozmiar danych w terabajtach (TB)| Wprowadź szacowany rozmiar w TB. <br>W zależności od rozmiaru danych firma Microsoft wysyła odpowiednią liczbę dysków SSD o pojemności 8 TB (7 TB pojemności do wykorzystania). <br>Maksymalna pojemność do wykorzystania na 5 dyskach to maksymalnie 35 TB. |
     |Klucz dostępu dla dysków| Jeśli zaznaczono opcję **Użyj niestandardowego klucza dostępu zamiast tego wygenerowanego przez platformę Azure**, podaj klucz dostępu dla dysków. <br> Podaj klucz alfanumeryczny zawierający od 12 do 32 znaków, w tym co najmniej jedną cyfrę i jeden znak specjalny. Dozwolone są następujące znaki specjalne: `@?_+`. <br> Tę opcję możesz pominąć i do odblokowywania dysków korzystać z klucza dostępu wygenerowanego przez platformę Azure.|
-    |Magazyn docelowy     | Wybierz z konta magazynu dysków zarządzanych i/lub. <br> Oparte na określonego regionu Azure, wybierz konto magazynu z listy filtrowanej istniejącego konta magazynu. Dysku Data Box, może być połączony z kontem magazynu tylko 1. <br> Można również utworzyć nową **General-purpose v1**, **ogólnego przeznaczenia v2**, lub **konta magazynu obiektów Blob**. <br>Konta magazynu z sieciami wirtualnymi są obsługiwane. Aby usługa Data Box do pracy z kontami magazynu zabezpieczone, Włącz zaufanych usług w ramach ustawienia zapory sieci konta magazynu. Aby uzyskać więcej informacji, zobacz instrukcje [Dodaj urządzenia Azure Data Box jako zaufaną usługę](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).|
+    |Magazyn docelowy     | Wybierz opcję z konta magazynu lub dysków zarządzanych lub obu. <br> Na podstawie określonego regionu świadczenia usługi Azure wybierz konto magazynu z listy filtrowanej istniejącego konta magazynu. Data Box Disk można połączyć tylko z 1 kontem magazynu. <br> Możesz również utworzyć nowe konto **ogólnego przeznaczenia w wersji 1**, w **wersji 2**lub na potrzeby **magazynu obiektów BLOB**. <br>Konta magazynu z sieciami wirtualnymi są obsługiwane. Aby umożliwić usłudze urządzenie Data Box współpracują z bezpiecznymi kontami magazynu, należy włączyć usługi zaufane w ustawieniach zapory sieciowej dla konta magazynu. Aby uzyskać więcej informacji, zobacz jak [dodać Azure Data Box jako zaufaną usługę](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).|
 
-    Jeśli jako miejsce docelowe przechowywania, przy użyciu konta magazynu, zostanie wyświetlony poniższy zrzut ekranu:
+    W przypadku używania konta magazynu jako miejsca docelowego magazynu zostanie wyświetlony następujący zrzut ekranu:
 
-    ![Zamówienie dysku pole danych dla konta magazynu](media/data-box-disk-deploy-ordered/order-storage-account.png)
+    ![Zamówienie Data Box Disk dla konta magazynu](media/data-box-disk-deploy-ordered/order-storage-account.png)
 
-    Jeśli tworzenie dysków zarządzanych z wirtualnych dysków twardych w środowisku lokalnym za pomocą dysku Data Box, należy podać następujące informacje:
+    Jeśli przy użyciu Data Box Disk utworzyć dyski zarządzane na podstawie lokalnych dysków VHD, należy również podać następujące informacje:
 
-    |Ustawienie  |Wartość  |
+    |Ustawienie  |Value  |
     |---------|---------|
-    |Grupa zasobów     | Utwórz nową grupę zasobów, jeśli zamierzasz utworzyć dysków zarządzanych z wirtualnych dysków twardych w środowisku lokalnym. Użyj istniejącej grupy zasobów, tylko wtedy, gdy został utworzony przez usługę Data Box dla zamówienia dysku Data Box dla dysku zarządzanego. <br> Obsługiwane jest tylko jednej grupy zasobów.|
+    |Resource group     | Utwórz nową grupę zasobów, jeśli zamierzasz utworzyć dyski zarządzane na podstawie lokalnych dysków VHD. Użyj istniejącej grupy zasobów tylko wtedy, gdy została utworzona dla Data Box Disk kolejności dla dysku zarządzanego przez usługę urządzenie Data Box. <br> Obsługiwana jest tylko jedna grupa zasobów.|
 
-    ![Zamówienie dysku pole danych dla dysku zarządzanego](media/data-box-disk-deploy-ordered/order-managed-disks.png)
+    ![Kolejność Data Box Disk dla dysku zarządzanego](media/data-box-disk-deploy-ordered/order-managed-disks.png)
 
-    Konto magazynu określone dla dysków zarządzanych jest używane jako konta magazynu przejściowego. Usługa Data Box przekazuje wirtualnych dysków twardych do konta magazynu przejściowego i następnie konwertuje je na dyski zarządzane i przenosi do grupy zasobów. Aby uzyskać więcej informacji, zobacz [danych sprawdź, czy przekazać na platformę Azure](data-box-disk-deploy-picked-up.md#verify-data-upload-to-azure).
+    Konto magazynu określone dla usługi Managed disks jest używane jako tymczasowe konto magazynu. Usługa urządzenie Data Box przekazuje wirtualne dyski twarde do konta magazynu tymczasowego, a następnie konwertuje je na dyski zarządzane i przenosi do grup zasobów. Aby uzyskać więcej informacji, zobacz [Sprawdzanie przekazywania danych na platformę Azure](data-box-disk-deploy-upload-verify.md#verify-data-upload-to-azure).
 
 13. Kliknij przycisk **Dalej**.
 
@@ -146,7 +146,7 @@ Anulowanie jest możliwe tylko, jeśli zamówiono dyski, a zamówienie jest prze
 Aby usunąć anulowane zamówienie, w obszarze **Omówienie** kliknij pozycję **Usuń** na pasku poleceń.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące usługi Azure Data Box, takie jak:
 

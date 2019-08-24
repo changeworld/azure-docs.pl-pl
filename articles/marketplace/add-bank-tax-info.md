@@ -1,57 +1,30 @@
 ---
-title: Dodaj bank i informacje podatkowe | Portal Azure Marketplace
-description: Bank i informacje podatkowe należy dodać do swojego konta Centrum deweloperów.
+title: Dodawanie informacji bankowych i podatkowych | Portal Azure Marketplace
+description: Dodaj informacje o banku i podatku do konta Centrum deweloperów.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
-manager: pabutler
+author: qianw211
+manager: evansma
 ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
-ms.author: ellacroi
-ms.openlocfilehash: b435260edcbb132adc19f65b6bfcab7edd3afb9e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: blevens
+ms.openlocfilehash: 469268637db0b3118b2db8190e9eaf2043662dea
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935673"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011487"
 ---
-# <a name="add-bank-and-tax-information"></a>Dodaj informacje o bank i opodatkowaniem  
-Bank i informacje podatkowe jest wymagana dla wszystkich ofert komercyjnych przy użyciu języka transact typ oferty.  
-*   W przypadku publikowania oferty komercyjnej do zakupu, następnie należy dodać informacje dotyczące wypłat i informacje podatkowe i weryfikację żądań w Centrum deweloperów.  
-    >[!IMPORTANT]
-    >W przypadku ofert komercyjnych (transact) bank i informacje podatkowe należy wykonać, zanim będzie możliwe wypchnąć swoje oferty do środowiska produkcyjnego.  
+# <a name="add-bank-and-tax-information"></a>Dodawanie informacji o banku i podatku  
 
-*   Jeśli jesteś oferuje publikowania tylko bezpłatne lub BYOL, a następnie nie należy dodawać informacje. Możesz dodać te informacje później, ale weryfikacji informacji podatkowych dopiero po pewnym czasie. Jeśli planujesz oferty komercyjnej oferty zakupu, należy dodać informacje jak najszybciej.  
+Informacje o banku i podatku są wymagane dla wszystkich ofert komercyjnych przy użyciu typu listy języka Transact.  
 
-## <a name="add-bank-information"></a>Dodaj informacje o nazwie bank  
-1.  Zaloguj się do Centrum deweloperów za pomocą usługi Microsoft ID.  
-    *   Aby zalogować się do Centrum deweloperów, odwiedź stronę znajdującym się w Centrum deweloperów Windows [dev.windows.com](https://dev.windows.com).  
-2.  Wybierz konto informacje dotyczące wypłat w menu po lewej stronie.
-3.  Na `Choose payment method` wybierz opcję `Bank account` lub `PayPal`.  
-    >[!IMPORTANT]
-    >Jeśli masz komercyjnych oferty, które klienci dokonywać zakupów w portalu Marketplace, Twoje konto informacje dotyczące wypłat jest, który otrzymujesz informacje dotyczące wypłat na zakupy.  
+## <a name="partner-center"></a>Centrum partnerskie
 
-4.  Wprowadź informacje o płatności. Po upewnieniu się, że informacje są poprawne, kliknij przycisk Zapisz.  
-    >[!IMPORTANT]
-    >Jeśli zaktualizować lub zmienić ustawienia konta informacje dotyczące wypłat, należy wykonać te same czynności, zastępując bieżące informacje o nowe informacje. Zmiany do swojego konta informacje dotyczące wypłat może opóźnić płatności maksymalnie jednej płatności cyklu. To opóźnienie występuje, ponieważ zmiana konta należy sprawdzić, Microsoft, jest taka sama jak podczas pierwszej konfiguracji konta informacje dotyczące wypłat. Po zweryfikowaniu konta Pobierz zapłacili całej kwoty. Płatności powodu z bieżącej płatności cyklu są dodawane do następnego cyklu.  
+Informacje dotyczące banku i podatku są teraz zarządzane w centrum partnerskim. Instrukcje dotyczące konfigurowania tych ustawień można znaleźć w sekcji "Szczegóły finansowe" tematu [Zarządzanie kontem Centrum partnerskiego](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account#financial-details).
 
-4.  Kliknij przycisk Dalej. 
 
----
-
-## <a name="add-tax-information"></a>Dodaj informacje podatkowe  
-1.  Zaloguj się do Centrum deweloperów za pomocą usługi Microsoft ID.  
-    *   Aby zalogować się do Centrum deweloperów, odwiedź stronę znajdującym się w Centrum deweloperów Windows [dev.windows.com](https://dev.windows.com).  
-2.  Wybierz profil podatku w menu po lewej stronie. 
-3.  Na `Set up your tax form` wybierz kraj lub region, w którym masz stały rezydencji.  
-    
-    Wybierz kraj lub region, gdzie przechowywać obywatelstwa podstawowego.  
-    
-    Kliknij przycisk Dalej. 
-4.  Wprowadź szczegóły podatku.  
-5.  Kliknij przycisk Dalej.  
-
-## <a name="next-steps"></a>Kolejne kroki
-*   Odwiedź stronę [portalu Azure Marketplace i AppSource — przewodnik dla wydawcy](./marketplace-publishers-guide.md) strony.  
+## <a name="next-steps"></a>Następne kroki
+*   Odwiedź stronę [przewodnika po wydawcy portalu Azure Marketplace i AppSource](./marketplace-publishers-guide.md) .  
  
 ---

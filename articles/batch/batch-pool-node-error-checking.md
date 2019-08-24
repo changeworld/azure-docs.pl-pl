@@ -5,14 +5,14 @@ services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
-ms.date: 07/16/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9481263773cc919fecacce80191cf209ec2a1282
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: d115b7d56609b95f2ea10b3fee2f8900102b94e4
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359245"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012473"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Sprawdź, czy występują błędy puli i węzłów
 
@@ -64,7 +64,7 @@ Wsadowe ustawia [stan puli](https://docs.microsoft.com/rest/api/batchservice/poo
 
 ## <a name="pool-compute-node-errors"></a>Błędy węzłów obliczeniowych puli
 
-Nawet w przypadku pomyślnego przydzielenia węzłów w puli różne problemy mogą spowodować, że niektóre węzły są w złej kondycji i nie mogą uruchamiać zadań. W tych węzłach nadal są naliczane opłaty, dlatego ważne jest, aby wykrywać problemy, aby uniknąć płacenia za węzły, które nie mogą być używane.
+Nawet w przypadku pomyślnego przydzielenia węzłów w puli różne problemy mogą spowodować, że niektóre węzły są w złej kondycji i nie mogą uruchamiać zadań. W tych węzłach nadal są naliczane opłaty, dlatego ważne jest, aby wykrywać problemy, aby uniknąć płacenia za węzły, które nie mogą być używane. Oprócz typowych błędów węzłów, wiedząc, że bieżący [stan zadania](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate) jest przydatny do rozwiązywania problemów.
 
 ### <a name="start-task-failures"></a>Błędy uruchamiania zadań
 
@@ -118,7 +118,7 @@ Proces agenta wsadowego, który jest uruchamiany w poszczególnych węzłach pul
 
 ### <a name="node-disk-full"></a>Dysk węzła jest pełny
 
-Dysk tymczasowy dla maszyny wirtualnej węzła puli jest używany przez partię dla plików zadań, plików zadań i plików udostępnionych. 
+Dysk tymczasowy dla maszyny wirtualnej węzła puli jest używany przez partię dla plików zadań, plików zadań i plików udostępnionych.
 
 - Pliki pakietów aplikacji
 - Pliki zasobów zadań
@@ -140,6 +140,6 @@ W przypadku plików pisanych przez każde zadanie można określić czas przecho
 Jeśli ilość miejsca na dysku jest wypełniona, obecnie węzeł przestanie uruchamiać zadania. W przyszłości zostanie zgłoszony [błąd węzła](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) .
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Sprawdź, czy ustawiono aplikację, aby zaimplementować kompleksowe sprawdzanie błędów, szczególnie w przypadku operacji asynchronicznych. Może to być krytyczne, aby szybko wykrywać i diagnozować problemy.

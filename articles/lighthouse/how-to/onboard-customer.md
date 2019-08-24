@@ -4,15 +4,15 @@ description: Dowiedz się, jak dołączyć klienta do zarządzania zasobami dele
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 08/22/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: d1876977d819b50569b6f07242af91fb1d6832ee
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 35cf61897d012690f0a0f752a7cb36270e11e10e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934316"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012061"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Dołączanie klienta do zarządzania zasobami delegowanymi na platformie Azure
 
@@ -20,7 +20,7 @@ W tym artykule wyjaśniono, jak usługodawca może dołączyć klienta do zarzą
 
 Ten proces można powtórzyć, Jeśli zarządzasz zasobami dla wielu klientów. Następnie, gdy autoryzowany użytkownik loguje się do dzierżawy, ten użytkownik może być autoryzowany w zakresach dzierżawy klienta w celu wykonywania operacji zarządzania bez konieczności logowania się do każdej dzierżawy klienta.
 
-Możesz skojarzyć swój identyfikator Microsoft Partner Network (MPN) z subskrypcjami dołączanymi, aby śledzić swój wpływ na zaangażowanie klientów. Aby uzyskać więcej informacji, zobacz [łączenie identyfikatora partnera z kontami platformy Azure](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started).
+Możesz skojarzyć swój identyfikator Microsoft Partner Network (MPN) z subskrypcjami dołączanymi, aby śledzić wpływ klientów i na otrzymywanie rozpoznawania. Aby uzyskać więcej informacji, zobacz [łączenie identyfikatora partnera z kontami platformy Azure](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started). Należy pamiętać, że należy wykonać to skojarzenie osobno dla każdej dzierżawy klienta, w której zarządzane są zasoby. 
 
 > [!NOTE]
 > Po zakupieniu oferty usług zarządzanych (publicznej lub prywatnej) opublikowanej w portalu Azure Marketplace klienci mogą być automatycznie dołączani. Aby uzyskać więcej informacji, zobacz temat [Publikowanie usług zarządzanych w witrynie Azure Marketplace](publish-managed-services-offers.md). Możesz również użyć procesu dołączania opisanego tutaj z ofertą opublikowaną w witrynie Azure Marketplace.
@@ -71,7 +71,7 @@ Klient może potwierdzić, że subskrypcja jest gotowa do dołączenia w jeden z
 ### <a name="azure-portal"></a>Azure Portal
 
 1. W Azure Portal wybierz subskrypcję.
-1. Wybierz pozycję **dostawcy zasobów**.
+1. Wybierz pozycję **Dostawcy zasobów**.
 1. Upewnij się, że **program Microsoft. ManagedServices** jest wyświetlany jako **zarejestrowany**.
 
 ### <a name="powershell"></a>PowerShell

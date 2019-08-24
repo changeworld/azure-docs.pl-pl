@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22d1da4c194b392993b37b16ab20673120c3362e
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 160be4224e31793b5bb172f5b913c364ae2c8a59
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951794"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013042"
 ---
 # <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Co to są potoki ML w usłudze Azure Machine Learning?
 
@@ -69,7 +69,7 @@ Najważniejsze zalety używania potoków dla przepływów pracy usługi Machine 
 
 ## <a name="the-python-sdk-for-pipelines"></a>Zestaw SDK języka Python dla potoków
 
-[Użyj zestawu SDK języka Python](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) , aby utworzyć potoki ml w preferowanych notesach IDE lub Jupyter. Zestaw SDK usługi Azure Machine Learning oferuje imperatywne konstrukcje sekwencyjne i przekształcają kroki potoków, gdy obecny jest niezależne danych. 
+[Użyj zestawu SDK języka Python](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py) , aby utworzyć potoki ml w preferowanym, zintegrowanym środowisku programistycznym (IDE) lub w notesach Jupyter. Zestaw SDK usługi Azure Machine Learning oferuje imperatywne konstrukcje sekwencyjne i przekształcają kroki potoków, gdy obecny jest niezależne danych. 
 
 Dane deklaratywne zależności można zoptymalizować swoje zadania. Zestaw SDK zawiera strukturę wstępnie utworzonych modułów dla typowych zadań, takich jak transfer danych i publikowanie modeli. Można zwiększyć strukturę w celu modelowania własnych Konwencji przez implementację niestandardowych kroków wielokrotnego użytku między potokami. Można także zarządzać elementami docelowymi obliczeń i zasobami magazynu bezpośrednio z zestawu SDK.
 

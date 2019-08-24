@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 0ebf18fe2dc6906bc2c06d94388d126fb55c6024
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
-ms.translationtype: HT
+ms.openlocfilehash: bf2b83725f8ce8e712974c182c9a11e8ed0d04f0
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981413"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013220"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Kolejki magazynu i kolejki Service Bus — porównane i rozróżnienia
 Ten artykuł analizuje różnice i podobieństwa między dwoma typami kolejek oferowanych przez Microsoft Azure Dzisiaj: Kolejki magazynu i kolejki Service Bus. Dzięki tym informacjom można porównać odpowiednie technologie i świadomie wybrać rozwiązanie, które najlepiej odpowiada danym potrzebom.
@@ -52,7 +52,9 @@ Jako architekt rozwiązań/deweloper należy **rozważyć użycie kolejek Servic
 * Aplikacja ma przetwarzać komunikaty jako Parallel długotrwałe strumienie (komunikaty są skojarzone ze strumieniem przy użyciu właściwości [SessionID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) w komunikacie). W tym modelu każdy węzeł w aplikacji zużywanej konkuruje o strumienie, w przeciwieństwie do komunikatów. Gdy strumień jest przyznany w węźle zużywanym, węzeł może przeanalizować stan strumienia aplikacji przy użyciu transakcji.
 * Twoje rozwiązanie wymaga transakcyjnego zachowania i niepodzielności podczas wysyłania lub otrzymywania wielu komunikatów z kolejki.
 * Aplikacja obsługuje komunikaty, które mogą przekraczać 64 KB, ale prawdopodobnie nie zbliża się do limitu 256 KB.
-* Istnieje wymóg, aby zapewnić model dostępu oparty na rolach dla kolejek i różne prawa/uprawnienia dla nadawców i odbiorników. Aby uzyskać więcej informacji, zobacz [Active Directory Access Control opartych na rolach (wersja zapoznawcza)](service-bus-role-based-access-control.md)
+* Istnieje wymóg, aby zapewnić model dostępu oparty na rolach dla kolejek i różne prawa/uprawnienia dla nadawców i odbiorników. Aby uzyskać więcej informacji zobacz następujące artykuły:
+    - [Uwierzytelnianie za pomocą tożsamości zarządzanych](service-bus-managed-service-identity.md)
+    - [Uwierzytelnianie z poziomu aplikacji](authenticate-application.md)
 * Rozmiar kolejki nie będzie większy niż 80 GB.
 * Chcesz użyć protokołu obsługi komunikatów opartych na standardach AMQP 1,0. Aby uzyskać więcej informacji na temat AMQP, zobacz [Service Bus AMQP Overview](service-bus-amqp-overview.md).
 * Można Envision z komunikacji punkt-punktowego opartego na kolejkach do wzorca wymiany komunikatów, który umożliwia bezproblemową integrację dodatkowych odbiorników (subskrybentów), z których każdy otrzymuje niezależne kopie niektórych lub wszystkich Komunikaty wysyłane do kolejki. Drugie odnosi się do możliwości publikowania/subskrybowania natywnie udostępniane przez Service Bus.

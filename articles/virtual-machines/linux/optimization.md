@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: ea8f3f1860223e102aeccf81f72b5294283b83f6
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ad512baad86133cc1aad80438a6b68d2a31a6cc6
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640758"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013605"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optymalizowanie maszyny wirtualnej systemu Linux na platformie Azure
 Tworzenie maszyny wirtualnej z systemem Linux jest proste z poziomu wiersza polecenia lub portalu. W tym samouczku pokazano, jak upewnić się, że został skonfigurowany, aby zoptymalizować jego wydajność na platformie Microsoft Azure. W tym temacie jest używana maszyna wirtualna serwera Ubuntu, ale można również utworzyć maszynę wirtualną z systemem Linux przy użyciu [własnych obrazów jako szablonów](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -53,7 +53,7 @@ W przypadku obciążeń o dużej liczbie IOps i wybrania magazynu w warstwie Sta
 ## <a name="your-vm-temporary-drive"></a>Dysk tymczasowy maszyny wirtualnej
 Domyślnie podczas tworzenia maszyny wirtualnej platforma Azure udostępnia dysk systemu operacyjnego ( **/dev/SDA**) i dysk tymczasowy ( **/dev/sdb**).  Wszystkie dodane dyski są wyświetlane jako **/dev/SDC**, **/dev/SDD**, **/dev/SDE** i tak dalej. Wszystkie dane na dysku tymczasowym ( **/dev/sdb**) nie są trwałe i mogą zostać utracone, jeśli określone zdarzenia, takie jak zmiany rozmiarów maszyn wirtualnych, ponowne wdrożenie lub konserwacja, wymuszają ponowny uruchomienie maszyny wirtualnej.  Rozmiar i typ dysku tymczasowego są związane z wybranym rozmiarem maszyny wirtualnej w czasie wdrażania. Wszystkie maszyny wirtualne z rozmiarem w warstwie Premium (DS, G i DS_V2) są obsługiwane przez lokalny dysk SSD w celu uzyskania dodatkowej wydajności do 48K operacji we/wy na sekundę. 
 
-## <a name="linux-swap-file"></a>Plik wymiany systemu Linux
+## <a name="linux-swap-partition"></a>Partycja wymiany systemu Linux
 Jeśli maszyna wirtualna platformy Azure pochodzi z obrazu Ubuntu lub CoreOS, można użyć CustomData do wysłania pliku Cloud-config do usługi Cloud-init. W przypadku [przekazania niestandardowego obrazu systemu Linux](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) korzystającego z usługi Cloud-init należy również skonfigurować partycje wymiany przy użyciu funkcji Cloud-init.
 
 W przypadku obrazów w chmurze Ubuntu do skonfigurowania partycji wymiany należy użyć funkcji Cloud-init. Aby uzyskać więcej informacji, zobacz [AzureSwapPartitions](https://wiki.ubuntu.com/AzureSwapPartitions).
@@ -127,6 +127,8 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>Używanie oprogramowania RAID do osiągania wyższych operacji I/Ops
 Jeśli obciążenia wymagają większej liczby operacji we/wy na sekundę, należy użyć konfiguracji oprogramowania RAID z wieloma dyskami. Ponieważ platforma Azure zapewnia już odporność dysku na lokalną warstwę sieci szkieletowej, osiągnięty jest najwyższy poziom wydajności z konfiguracji rozłożenia RAID-0.  Udostępnianie i tworzenie dysków w środowisku platformy Azure i dołączanie ich do maszyny wirtualnej z systemem Linux przed partycjonowaniem, formatowaniem i instalowaniem dysków.  Więcej informacji o konfigurowaniu oprogramowania instalacyjnego RAID na maszynie wirtualnej z systemem Linux na platformie Azure można znaleźć w dokumencie **[Konfigurowanie oprogramowania RAID w systemie Linux](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** .
+
+Alternatywą dla tradycyjnej konfiguracji RAID jest również zainstalowanie Menedżera woluminów logicznych (LVM) w celu skonfigurowania wielu dysków fizycznych w jednym woluminie z rozłożonym logicznym magazynem. W tej konfiguracji operacje odczytu i zapisu są dystrybuowane do wielu dysków znajdujących się w grupie woluminów (podobnie jak w przypadku RAID0). Ze względu na wydajność prawdopodobnie chcesz umieścić woluminy logiczne, aby odczyty i zapisy używały wszystkich dołączonych dysków danych.  Więcej szczegółowych informacji na temat konfigurowania rozłożonego woluminu logicznego na maszynie wirtualnej z systemem Linux na platformie Azure można znaleźć w temacie **[Konfigurowanie LVM na maszynie wirtualnej z systemem Linux w dokumencie platformy Azure](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** .
 
 ## <a name="next-steps"></a>Następne kroki
 Pamiętaj, podobnie jak w przypadku wszystkich dyskusji optymalizacji, musisz wykonać testy przed i po każdej zmianie, aby zmierzyć wpływ zmiany.  Optymalizacja jest procesem krok po kroku, który ma różne wyniki na różnych maszynach w środowisku.  Co działa dla jednej konfiguracji, może nie działać dla innych osób.

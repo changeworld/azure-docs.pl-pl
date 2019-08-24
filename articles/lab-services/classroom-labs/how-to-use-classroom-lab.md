@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 08/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 8987a22d4546fe887d1dda9adff8f46afe667618
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 8d3d08c772c28ff4e3a32e736253ba69b03684f0
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644983"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012314"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Jak uzyskać dostęp do laboratorium w usłudze Azure Lab Services
 W tym artykule opisano sposób rejestracji w laboratorium zajęć, wyświetlania wszystkich laboratoriów, do których można uzyskać dostęp, uruchamiania/zatrzymywania maszyny wirtualnej w laboratorium oraz nawiązywania połączenia z maszyną wirtualną. 
@@ -55,6 +55,33 @@ W tym artykule opisano sposób rejestracji w laboratorium zajęć, wyświetlania
 2. Wykonaj jedną z następujących czynności: 
     1. W przypadku maszyn wirtualnych z **systemem Windows** Zapisz plik **RDP** na dysku twardym. Otwórz plik RDP, aby nawiązać połączenie z maszyną wirtualną. Zaloguj się na komputerze przy użyciu **nazwy użytkownika** i **hasła** uzyskanych z nauczycieli/profesor. 
     3. W przypadku maszyn wirtualnych z **systemem Linux** można użyć protokołu **SSH** lub **RDP** (jeśli jest włączony), aby połączyć się z nimi. Aby uzyskać więcej informacji, zobacz [Włączanie usługi Podłączanie pulpitu zdalnego dla komputerów z systemem Linux](how-to-enable-remote-desktop-linux.md). 
+    1. Jeśli używasz **komputera Mac** do nawiązywania połączenia z maszyną wirtualną laboratorium, postępuj zgodnie z instrukcjami w następnej sekcji. 
+
+## <a name="connect-to-a-vms-ui-using-rdp-on-a-mac"></a>Nawiązywanie połączenia z interfejsem użytkownika maszyny wirtualnej przy użyciu protokołu RDP na komputerze Mac
+W tej sekcji pokazano, jak student może połączyć się z interfejsem użytkownika maszyny wirtualnej z komputera Mac przy użyciu protokołu RDP. Oto szybkie kroki, po których następuje szczegóły: 
+
+1. Zainstaluj Pulpit zdalny Microsoft na komputerze Mac.
+2. Nawiązywanie połączenia z interfejsem użytkownika maszyny wirtualnej z komputera Mac przy użyciu protokołu RDP. 
+
+### <a name="install-microsoft-remote-desktop-on-a-mac"></a>Instalowanie Pulpit zdalny Microsoft na komputerze Mac
+1. Otwórz sklep App Store na komputerze Mac, a następnie wyszukaj **pulpit zdalny Microsoft**.
+
+    ![Pulpit zdalny Microsoft](../media/how-to-use-classroom-lab/install-ms-remote-desktop.png)
+1. Zainstaluj najnowszą wersję programu Pulpit zdalny Microsoft. 
+
+### <a name="access-the-vms-ui-from-your-mac-using-rdp"></a>Dostęp do interfejsu użytkownika maszyny wirtualnej z komputera Mac przy użyciu protokołu RDP
+1. Otwórz plik **RDP** pobrany na komputerze z zainstalowanym **pulpit zdalny Microsoft** . Należy rozpocząć łączenie się z maszyną wirtualną. 
+
+    ![Łączenie z interfejsem użytkownika maszyny wirtualnej](../media/how-to-use-classroom-lab/connect-linux-vm.png)
+1. Wybierz pozycję **Kontynuuj** , jeśli zostanie wyświetlony następujący błąd. 
+
+    ![Błąd certyfikatu](../media/how-to-use-classroom-lab/certificate-error.png)
+1. Powinien zostać wyświetlony interfejs użytkownika maszyny wirtualnej. 
+
+    > [!NOTE]
+    > Poniższy przykład dotyczy maszyny wirtualnej z systemem CentOS Linux. 
+
+    ![INTERFEJS UŻYTKOWNIKA MASZYNY WIRTUALNEJ](../media/how-to-use-classroom-lab/vm-ui.png)
 
 ## <a name="progress-bar"></a>Pasek postępu 
 Pasek postępu na kafelku pokazuje liczbę godzin użycia w odniesieniu do liczby godzin [](how-to-configure-student-usage.md#set-quotas-for-users) przypisanych do użytkownika. Ten czas jest dodatkowym czasem przydzielonym do czasu zaplanowanym dla laboratorium. Kolor paska postępu i tekstu pod paskiem postępu różnią się w zależności od następujących scenariuszy:

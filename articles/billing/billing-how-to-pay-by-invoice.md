@@ -9,14 +9,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 08/23/2019
 ms.author: banders
-ms.openlocfilehash: 90c7014e3c22ac7186854d5c01b911aa630d20dd
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 9e4e05acd88e9b0f0c17d4dd4caf5eb5a883d63d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774674"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012591"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Płatność za subskrypcję platformy Azure według faktury
 
@@ -24,7 +24,8 @@ Jeśli przełączysz się na płatność za pomocą faktury, oznacza to, że op�
 
 > [!IMPORTANT]
 > * Płatność faktury (czek/przelew) jest dostępna tylko dla kont firmowych.
-> * Przed przełączeniem na fakturę płatność należy uiścić wszystkie zaległe opłaty.
+> * Przed przełączeniem na fakturę płatność należy uregulować wszystkie zaległe opłaty.
+> * Obecnie płatność faktury nie jest obsługiwana w przypadku globalnej platformy Azure w Chinach.
 
 ## <a name="request-to-pay-by-invoice"></a>Żądanie wypłaty według faktury
 
@@ -64,7 +65,7 @@ Jeśli przełączysz się na płatność za pomocą faktury, oznacza to, że op�
          Specific region & series of Subscription:
 
     - **Nazwa firmy** i **adres firmy** powinny być zgodne z informacjami podanymi dla konta platformy Azure. Aby wyświetlić lub zaktualizować informacje, zobacz [zmiana informacji o profilu konta platformy Azure](billing-how-to-change-azure-account-profile.md).
-    - Aby można było zatwierdzić limit środków, należy dodać informacje kontaktowe dotyczące rozliczeń w Azure Portal. Szczegóły kontaktu powinny być powiązane z działem rachunków firmy lub działu finansów. Aby zaktualizować informacje kontaktowe dotyczące rozliczeń, przejdź do [centrum konta platformy Azure](https://account.azure.com/Profile).
+    - Dodaj informacje kontaktowe dotyczące rozliczeń w Azure Portal przed zatwierdzeniem limitu kredytowego. Szczegóły kontaktu powinny być powiązane z działem rachunków firmy lub działu finansów. Aby zaktualizować informacje kontaktowe dotyczące rozliczeń, przejdź do [centrum konta platformy Azure](https://account.azure.com/Profile).
 
 6. Zweryfikuj informacje kontaktowe i preferowaną metodę kontaktu, a następnie kliknij polecenie **Utwórz**.
 
@@ -74,7 +75,7 @@ Jeśli konieczne jest przetestowanie kredytu z powodu wymaganej kwoty kredytu, w
 
 Gdy zatwierdzisz płatność za pomocą faktury, możesz przełączyć się do faktury płatność (czek/przelew) w Azure Portal.
 
-Jeśli masz konto programu Microsoft Online Services, możesz przełączyć swoją subskrypcję platformy Azure w celu sprawdzenia/transferu. Jeśli masz umowę klienta firmy Microsoft, możesz przełączyć profil rozliczeń w celu sprawdzenia/transferu. [Dowiedz się, jak sprawdzić typ konta](#check-access-to-a-microsoft-customer-agreement).
+Jeśli masz konto programu Microsoft Online Services, możesz przełączyć swoją subskrypcję platformy Azure w celu sprawdzenia/transferu. Umowa klienta firmy Microsoft umożliwia przełączenie profilu rozliczeń w celu sprawdzenia/transferu danych. [Dowiedz się, jak sprawdzić typ konta](#check-access-to-a-microsoft-customer-agreement).
 
 ### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Przełącz subskrypcję platformy Azure w celu sprawdzenia/transferu
 
@@ -93,7 +94,7 @@ Postępuj zgodnie z poniższymi instrukcjami, aby przełączyć subskrypcję pla
 
 ### <a name="switch-billing-profile-to-checkwire-transfer"></a>Przełącz profil rozliczeń w celu sprawdzenia/transferu
 
-Postępuj zgodnie z poniższymi instrukcjami, aby przełączyć profil rozliczeń w celu sprawdzenia/transferu. Pamiętaj, że tylko osoba, która utworzyła konto na platformie Azure, może zmienić domyślną metodę płatności dla profilu rozliczania.
+Postępuj zgodnie z poniższymi instrukcjami, aby przełączyć profil rozliczeń w celu sprawdzenia/transferu. Tylko osoba, która zarejestrowała się na platformie Azure, może zmienić domyślną metodę płatności dla profilu rozliczeń.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Wyszukiwanie **Cost Management + rozliczenia**.

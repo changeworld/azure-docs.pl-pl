@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8987c14fab141a71ba2dd9f1ed228a56ce419bce
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
-ms.translationtype: HT
+ms.openlocfilehash: b7cb4f1a106d8caa2c43f5f17c5efa16a3ee6df2
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982819"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011643"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Jak działa usługa Azure Machine Learning: Architektura i pojęcia
 
@@ -151,7 +151,7 @@ Przykład — patrz [Tutorial: uczenie modelu klasyfikacji obrazów za pomocą u
 
 ### <a name="runs"></a>Przebiegi
 
-Przebieg jest rekord, który zawiera następujące informacje:
+Uruchomienie to pojedyncze wykonanie skryptu szkoleniowego. Azure Machine Learning rejestruje wszystkie uruchomienia i przechowuje następujące informacje:
 
 * Metadane dotyczące przebiegu (Sygnatura czasowa, czas trwania itd.)
 * Metryki rejestrowane przez skrypt

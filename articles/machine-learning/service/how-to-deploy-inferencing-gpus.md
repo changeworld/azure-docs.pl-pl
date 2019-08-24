@@ -10,18 +10,21 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 07/24/2019
-ms.openlocfilehash: 9cf39230d6a2c615925222b6545a091a4be941ac
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 08ceb5d795465a5759d0130618eafdccdc8c3c91
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847983"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011518"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Wdrażanie modelu uczenia głębokiego na potrzeby wnioskowania z procesorem GPU
 
 W tym artykule przedstawiono sposób użycia usługi Azure Machine Learning do wdrożenia modelu z obsługą procesora GPU jako usługi sieci Web. Informacje przedstawione w tym artykule opierają się na wdrażaniu modelu w usłudze Azure Kubernetes Service (AKS). Klaster AKS udostępnia zasób procesora GPU, który jest używany przez model do wnioskowania.
 
 Wnioskowanie, lub ocenianie modelu, to faza, w której wdrożony model jest używany do tworzenia prognoz. Korzystanie z procesorów GPU zamiast procesorów oferuje zalety wydajności na wysoce działania równoległego obliczeń.
+
+> [!IMPORTANT]
+> Wnioskowanie procesora GPU jest obsługiwane tylko w usłudze Azure Kubernetes.
 
 > [!TIP]
 > Chociaż fragmenty kodu w tym artykule uSee model TensorFlow, można zastosować informacje do dowolnej platformy uczenia maszynowego, która obsługuje procesory GPU.
