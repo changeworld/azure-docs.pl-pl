@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: 0ab658b26a44e98b073c477c1aaeeb683372ee46
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0f3995e8904396dbb0bcbeeea1f993913d68587e
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988493"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013117"
 ---
 # <a name="what-is-azure-service-bus"></a>Co to jest Azure Service Bus?
 
@@ -39,7 +39,7 @@ Komunikaty są wysyłane do *kolejek* i odbierane z nich. Kolejki umożliwiają 
 
 ![Kolejka](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-Komunikaty w kolejkach są uporządkowane i oznaczony sygnaturą czasową po przybyciu. Po zaakceptowaniu komunikat jest bezpiecznie przechowywany w magazynie nadmiarowym. Komunikaty są dostarczane w *ściągnięcia* trybu, który dostarcza komunikaty na żądanie.
+Komunikaty w kolejkach są uporządkowane i oznaczane jako sygnatura czasowa przybycia. Po zaakceptowaniu komunikat jest bezpiecznie przechowywany w magazynie nadmiarowym. Komunikaty są dostarczane w trybie ściągania, który dostarcza komunikaty na żądanie.
 
 ## <a name="topics"></a>Tematy
 
@@ -97,7 +97,7 @@ Jeśli wystąpi błąd, który powoduje, że klient ma wątpliwości dotyczące 
 
 ### <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>Sygnatura SAS, kontrola RBAC i tożsamości zarządzane dla zasobów platformy Azure
 
-Usługa Service Bus obsługuje protokoły zabezpieczeń, np. [sygnatury dostępu współdzielonego](service-bus-sas.md) (SAS), [kontrolę dostępu na podstawie ról](service-bus-role-based-access-control.md) (RBAC) i [tożsamości zarządzane dla zasobów platformy Azure](service-bus-managed-service-identity.md).
+Usługa Service Bus obsługuje protokoły zabezpieczeń, np. [sygnatury dostępu współdzielonego](service-bus-sas.md) (SAS), [kontrolę dostępu na podstawie ról](authenticate-application.md) (RBAC) i [tożsamości zarządzane dla zasobów platformy Azure](service-bus-managed-service-identity.md).
 
 ### <a name="geo-disaster-recovery"></a>Geograficzne odzyskiwanie po awarii
 
@@ -121,7 +121,7 @@ Usługa Service Bus w pełni integruje się z następującymi usługami platform
 - [Dynamics 365](https://dynamics.microsoft.com)
 - [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
  
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby rozpocząć korzystanie z obsługi komunikatów usługi Service Bus, zobacz następujące artykuły:
 
@@ -129,4 +129,4 @@ Aby rozpocząć korzystanie z obsługi komunikatów usługi Service Bus, zobacz 
 * Dodatkowe informacje na temat warstw [Standardowej i Premium](https://azure.microsoft.com/pricing/details/service-bus/) usługi Azure Service Bus oraz ich cen
 * [Performance and Latency of Azure Service Bus Premium tier](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722) (Wydajność i opóźnienie usługi Azure Service Bus w warstwie Premium)
 * Wypróbuj przewodniki Szybki start dla technologii [.NET](service-bus-dotnet-get-started-with-queues.md), [Java](service-bus-java-how-to-use-queues.md) lub [JMS](service-bus-java-how-to-use-jms-api-amqp.md)
-* [Zarządzanie zasobami usługi Service Bus za pomocą Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
+* [Zarządzanie zasobami Service Bus za pomocą Eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
