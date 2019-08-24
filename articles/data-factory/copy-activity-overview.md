@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: 23ae7b5cfec26fb2483a3e4ac13a1220888d76ee
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 59ac4b36a4bc2b3ff454b3a2ae98ce60f6bfcb5f
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614266"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996610"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Działanie kopiowania w usłudze Azure Data Factory
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-data-movement-activities.md)
@@ -264,10 +264,7 @@ W tym przykładzie podczas przebiegu kopiowania usługa ADF zwraca informację o
 ## <a name="incremental-copy"></a>Przyrostowa kopia
 Data Factory obsługuje scenariusze przyrostowego kopiowania danych różnicowych z magazynu danych źródłowych do magazynu danych ujścia. Zobacz [samouczek: przyrostowe kopiowanie danych](tutorial-incremental-copy-overview.md).
 
-## <a name="read-and-write-partitioned-data"></a>Odczyt i zapis danych partycjonowanych
-W wersji 1 usługi Azure Data Factory obsługiwane Odczyt lub zapis danych podzielonych na partycje, korzystając z parametru SliceStart/SliceEnd/WindowStart/WindowEnd zmiennych systemowych. W bieżącej wersji tego zachowania można osiągnąć przy użyciu parametrów potoku i czas/zaplanowana godzina rozpoczęcia wyzwalacza jako wartość parametru. Aby uzyskać więcej informacji, zobacz [jak Odczyt lub zapis partycjonowania danych](how-to-read-write-partitioned-data.md).
-
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Zobacz następujące Przewodniki Szybki Start, samouczków i przykładów:
 
 - [Kopiowanie danych z jednej lokalizacji do innej lokalizacji w tej samej usłudze Azure Blob Storage](quickstart-create-data-factory-dot-net.md)

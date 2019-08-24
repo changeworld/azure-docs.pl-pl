@@ -6,23 +6,23 @@ ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.openlocfilehash: a77310d0e45f095260d77ead0cfe14a3ce0ebd8e
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.date: 08/22/2019
+ms.openlocfilehash: 03bea7b9df929914e25ca97b382dc5c120b5a769
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623841"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983030"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrowanie do szczegółowego dostępu opartego na rolach w przypadku konfiguracji klastrów
 
-Wprowadzamy pewne ważne zmiany, aby obsługiwać bardziej szczegółowy dostęp oparty na rolach w celu uzyskania poufnych informacji. W ramach tych zmian niektóre **akcje mogą być wymagane** , jeśli używasz jednego z tych [jednostek/scenariuszy, których dotyczy](#am-i-affected-by-these-changes).
+Wprowadzamy pewne ważne zmiany, aby obsługiwać bardziej szczegółowy dostęp oparty na rolach w celu uzyskania poufnych informacji. W ramach tych zmian niektóre działania mogą być wymagane **do 3 września 2019,** Jeśli używasz jednego z tych [jednostek/scenariuszy, których to dotyczy](#am-i-affected-by-these-changes).
 
 ## <a name="what-is-changing"></a>Co się zmieni?
 
 Wcześniej wpisy tajne mogą być uzyskiwane za pośrednictwem interfejsu API usługi HDInsight przez użytkowników klastrów, którzy posiadają [role](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)właściciela, współautora lub czytelnika, ponieważ były `*/read` dostępne dla wszystkich osób z uprawnieniami. Wpisy tajne są definiowane jako wartości, które mogą być używane do uzyskania bardziej podwyższonego poziomu dostępu, niż powinna zezwalać rola użytkownika. Obejmują one wartości, takie jak poświadczenia HTTP bramy klastra, klucze konta magazynu i poświadczenia bazy danych.
 
-W przód dostęp do tych kluczy tajnych będzie `Microsoft.HDInsight/clusters/configurations/action` wymagał uprawnień, co oznacza, że użytkownicy z rolą czytelnik nie będą już mieli do nich dostępu. Role, które mają to uprawnienie, to współautor, właściciel i Nowa rola operatora klastra usługi HDInsight (więcej informacji znajduje się poniżej).
+Od 3 września 2019 dostęp do tych kluczy tajnych będzie wymagał `Microsoft.HDInsight/clusters/configurations/action` uprawnień, co oznacza, że użytkownicy z rolą czytelnik nie będą mieli dostępu do nich. Role, które mają to uprawnienie, to współautor, właściciel i Nowa rola operatora klastra usługi HDInsight (więcej informacji znajduje się poniżej).
 
 Wprowadzamy również nową rolę [operatora klastra usługi HDInsight](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) , która będzie mogła pobierać wpisy tajne bez przyznawania uprawnień administracyjnych współautora lub właściciela. Aby podsumować:
 
@@ -59,13 +59,13 @@ Następujące interfejsy API zostaną zmienione lub przestarzałe:
 
 - [**Pobierz/Configurations/{ConfigurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (usunięto poufne informacje)
     - Poprzednio używane do uzyskiwania poszczególnych typów konfiguracji (w tym kluczy tajnych).
-    - To wywołanie interfejsu API spowoduje teraz zwrócenie poszczególnych typów konfiguracji z kluczami tajnymi. Aby uzyskać wszystkie konfiguracje, w tym klucze tajne, Użyj nowego wywołania POST/Configurations. Aby uzyskać tylko ustawienia bramy, Użyj nowego wywołania POST/getGatewaySettings.
+    - Od 3 września 2019 to wywołanie interfejsu API zwróci teraz indywidualne typy konfiguracji z kluczami tajnymi, które zostały pominięte. Aby uzyskać wszystkie konfiguracje, w tym klucze tajne, Użyj nowego wywołania POST/Configurations. Aby uzyskać tylko ustawienia bramy, Użyj nowego wywołania POST/getGatewaySettings.
 - [**Pobierz/Configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) przestarzałe
     - Poprzednio używane do uzyskiwania wszystkich konfiguracji (w tym wpisów tajnych)
-    - To wywołanie interfejsu API nie będzie już obsługiwane. Aby uzyskać wszystkie konfiguracje w przód, Użyj nowego wywołania POST/Configurations. Aby uzyskać konfigurację z pominiętymi parametrami, użyj wywołania GET/configurations/{configurationName}.
+    - Od 3 września 2019 to wywołanie interfejsu API będzie przestarzałe i nie będzie już obsługiwane. Aby uzyskać wszystkie konfiguracje w przód, Użyj nowego wywołania POST/Configurations. Aby uzyskać konfigurację z pominiętymi parametrami, użyj wywołania GET/configurations/{configurationName}.
 - [**Opublikuj/Configurations/{ConfigurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) przestarzałe
     - Poprzednio używane do aktualizacji poświadczeń bramy.
-    - To wywołanie interfejsu API zostanie zaniechane i nie jest już obsługiwane. Zamiast tego użyj nowego wpisu/updateGatewaySettings.
+    - Od 3 września 2019 to wywołanie interfejsu API zostanie zaniechane i nie będzie już obsługiwane. Zamiast tego użyj nowego wpisu/updateGatewaySettings.
 
 Dodano następujące zastępcze interfejsy API:</span>
 
@@ -201,7 +201,7 @@ Jeśli to jeszcze nie zadziała, skontaktuj się z administratorem usługi AAD, 
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>Co się stanie, jeśli nie będę podejmować żadnych działań?
 
-Wywołania `GET /configurations` `GET /configurations/{configurationName}` i `POST /configurations/gateway` nie będą już zwracały żadnych informacji, a wywołanie nie zwróci już poufnych parametrów, takich jak klucze konta magazynu lub hasło klastra. Ta sama wartość dotyczy odpowiednich metod zestawu SDK i poleceń cmdlet programu PowerShell.
+Od 3 września 2019 `GET /configurations` i `POST /configurations/gateway` wywołania nie będą już `GET /configurations/{configurationName}` zwracały żadnych informacji i wywołanie nie zwróci już parametrów poufnych, takich jak klucze konta magazynu czy hasło klastra. Ta sama wartość dotyczy odpowiednich metod zestawu SDK i poleceń cmdlet programu PowerShell.
 
 Jeśli używasz starszej wersji jednego z narzędzi dla programu Visual Studio, programu vscode, IntelliJ lub zaćmienie wymienione powyżej, nie będą one już działać do momentu aktualizacji.
 

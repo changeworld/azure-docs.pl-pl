@@ -10,13 +10,13 @@ ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 05/21/2019
-ms.openlocfilehash: 67dda1ab56c6a706a9fdbef45fabdae9167ffe2b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 08/22/2019
+ms.openlocfilehash: 497a00570d85ab83f71416e979e485db4685b64a
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616343"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992114"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Tworzenie zestawów danych i uzyskiwanie do nich dostępu (wersja zapoznawcza) w Azure Machine Learning
 
@@ -26,7 +26,7 @@ Za pomocą Azure Machine Learning zestawów danych można:
 
 * **Przechowywanie pojedynczej kopii danych w magazynie** , do której odwołują się zestawy danych. 
 
-* **Łatwo Uzyskuj dostęp do danych podczas uczenia modelowego** bez obaw o parametry połączenia lub ścieżki danych.
+* **Łatwe uzyskiwanie dostępu do danych podczas uczenia modelowego** bez obaw o parametry połączenia lub ścieżki danych.
 
 * **Udostępnianie danych & współpracy** z innymi użytkownikami.
 
@@ -44,7 +44,8 @@ Aby tworzyć zestawy danych i korzystać z nich, potrzebne są:
 > Niektóre klasy zestawu danych (wersja zapoznawcza) mają zależności w pakiecie [Azure](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) preprodukcyjnym. W przypadku użytkowników systemu Linux te klasy są obsługiwane tylko w następujących dystrybucjach:  Red Hat Enterprise Linux, Ubuntu, Fedora i CentOS.
 
 ## <a name="dataset-types"></a>Typy zestawów danych
-Zestawy danych są podzielone na różne typy w zależności od tego, jak użytkownicy zużywają je w szkoleniu. Obecnie obsługujemy TabularDatasets, które reprezentują dane w formacie tabelarycznym przez analizowanie dostarczonego pliku lub listy plików. Zapewnia to możliwość zmaterializowania danych w Pandas Dataframe. TabularDataset można tworzyć z plików CSV, TSV, Parquet, wyników zapytań SQL itp. Pełną listę można znaleźć w naszej dokumentacji.
+
+Zestawy danych są podzielone na różne typy w zależności od tego, jak użytkownicy zużywają je w szkoleniu. Obecnie obsługujemy [TabularDatasets](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) , które reprezentują dane w formacie tabelarycznym przez analizowanie dostarczonego pliku lub listy plików. Zapewnia to możliwość zmaterializowania danych w Pandas Dataframe. `TabularDataset` Obiekt można utworzyć na podstawie plików CSV, TSV, Parquet, wyników zapytania SQL itp. Pełną listę można znaleźć w naszej dokumentacji.
 
 Aby dowiedzieć się więcej o nadchodzących zmianach interfejsu API, zobacz [co to jest usługa Azure Machine Learning?](https://aka.ms/tabular-dataset) 
 
@@ -136,7 +137,7 @@ titanic_ds = titanic_ds.register(workspace = workspace,
 
 ## <a name="access-your-data-during-training"></a>Uzyskiwanie dostępu do danych podczas szkoleń
 
-Zarejestrowane zestawy danych są dostępne lokalnie i zdalnie w klastrach obliczeniowych, takich jak Azure Machine Learning COMPUTE. Aby uzyskać dostęp do zarejestrowanego zestawu danych w ramach eksperymentów, użyj poniższego kodu, aby uzyskać obszar roboczy i zarejestrowany zestaw danych według nazwy. `get_by_name` Metoda`Dataset` w klasie domyślnie zwraca najnowszą wersję zestawu danych zarejestrowanego w obszarze roboczym.
+Zarejestrowane zestawy danych są dostępne lokalnie i zdalnie w klastrach obliczeniowych, takich jak Azure Machine Learning COMPUTE. Aby uzyskać dostęp do zarejestrowanego zestawu danych w ramach eksperymentów, użyj poniższego kodu, aby uzyskać obszar roboczy i zarejestrowany zestaw danych według nazwy. [`get_by_name()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py#get-by-name-workspace--name--version--latest--) Metoda`Dataset` w klasie domyślnie zwraca najnowszą wersję zestawu danych zarejestrowanego w obszarze roboczym.
 
 ```Python
 %%writefile $script_folder/train.py

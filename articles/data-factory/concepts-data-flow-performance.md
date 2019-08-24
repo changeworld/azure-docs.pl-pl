@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 090c229c5e97ede8eb7a397ce8f4d13d8735a346
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 8eb244a0eff1569ac27feae68104db613373463a
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404612"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992345"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Przewodnik dotyczący wydajności i dostrajania przepływu danych
 
@@ -117,6 +117,10 @@ Kliknięcie tej ikony spowoduje wyświetlenie planu wykonania i kolejnego profil
 * Możesz kontrolować liczbę partycji, które będą używane przez ADF. Dla każdego źródła & transformacji, a także poszczególnych transformacji pojedynczych, można ustawić schemat partycjonowania. W przypadku mniejszych plików można wybrać opcję "pojedyncza partycja" może czasami pracować lepiej i szybciej niż w przypadku, gdy platforma Spark ma dzielić małe pliki.
 * Jeśli nie masz wystarczającej ilości informacji na temat danych źródłowych, możesz wybrać partycjonowanie "Round Robin" i ustawić liczbę partycji.
 * W przypadku eksplorowania danych i znajdowania kolumn, które mogą być dobrymi kluczami skrótów, użyj opcji partycjonowania skrótów.
+* Podczas debugowania w podglądzie danych i w potoku debugowania należy zauważyć, że rozmiar i rozmiary próbkowania źródłowych elementów DataSet opartych na plikach mają zastosowanie tylko do liczby zwracanych wierszy, a nie liczby odczytanych wierszy. Jest to ważne, ponieważ może to skutkować wydajnością wykonywania debugowania i może spowodować niepowodzenie przepływu.
+* Należy pamiętać, że klastry debugowania są domyślnie małymi klastrami z jednym węzłem, dlatego należy użyć tymczasowych małych plików do debugowania. Przejdź do pozycji Ustawienia debugowania i wskaż mały podzestaw danych przy użyciu pliku tymczasowego.
+
+![Ustawienia debugowania](media/data-flow/debugsettings3.png "Ustawienia debugowania")
 
 ### <a name="file-naming-options"></a>Opcje nazewnictwa plików
 

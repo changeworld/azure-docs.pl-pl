@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b08358680793ccdadca27c5f2aa57fbffe89b53a
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: f35836f60fae11c0955c128e96a4cea188681942
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973794"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997661"
 ---
-# <a name="how-to-run-the-opc-ua-certificate-management-service-securely"></a>Jak bezpiecznie uruchomić usługę zarządzania certyfikatami OPC UA
+# <a name="how-to-run-the-opc-vault-certificate-management-service-securely"></a>Jak bezpiecznie uruchomić usługę zarządzania certyfikatami magazynu OPC
 
-W tym artykule opisano sposób bezpiecznego uruchamiania usługi zarządzania certyfikatami OPC UA na platformie Azure oraz innych wytycznych dotyczących zabezpieczeń, które należy wziąć pod uwagę.
+W tym artykule opisano sposób bezpiecznego uruchamiania usługi zarządzania certyfikatami magazynu OPC na platformie Azure i innych wytycznych dotyczących zabezpieczeń, które należy wziąć pod uwagę.
 
 ## <a name="roles"></a>Role
 
@@ -32,7 +32,7 @@ Mikrousługa magazynu OPC jest skonfigurowana tak, aby zezwalać na różne role
 
 ### <a name="certificate-management-service-roles"></a>Role usługi zarządzania certyfikatami
 
-Mikrousługa definiuje następujące role:
+Mikrousługa magazynu OPC definiuje następujące role:
 
 - **Czytelnik**: Domyślnie każdy uwierzytelniony użytkownik w dzierżawie ma dostęp do odczytu. 
   - Dostęp do odczytu do aplikacji i żądań certyfikatów. Może wyświetlać listę aplikacji i żądań certyfikatów oraz wykonywać dla nich zapytania. Również informacje o odnajdywaniu urządzeń i certyfikaty publiczne są dostępne z dostępem do odczytu.
@@ -132,14 +132,14 @@ W przypadku urządzeń IoT Edge nazwy hostów i adresów IP powinny być udokume
 
 Dokumentacja hierarchii urzędu certyfikacji musi zawierać wszystkie obsługiwane urzędy certyfikacji, w tym wszystkie powiązane podrzędne urzędy certyfikacji, nadrzędne urzędy certyfikacji i główne urzędy certyfikacji, nawet jeśli nie są zarządzane przez usługę. Można uzyskać wyczerpujący zestaw wszystkich niewygasłych certyfikatów urzędu certyfikacji, zamiast formalnej dokumentacji.
 
-> [!IMPORTANT]
+> [!NOTE]
 > Przykładowa aplikacja magazynu OPC obsługuje pobieranie wszystkich certyfikatów używanych i wygenerowanych w usłudze w celu uzyskania dokumentacji.
 
 ### <a name="document-the-issued-certificates-by-all-certification-authorities-cas"></a>Udokumentowanie wystawionych certyfikatów przez wszystkie urzędy certyfikacji (CA)
 
 Wyczerpujący zestaw wszystkich certyfikatów wystawionych w ciągu ostatnich 12 miesięcy powinien zostać udostępniony w dokumentacji.
 
-> [!IMPORTANT]
+> [!NOTE]
 > Przykładowa aplikacja magazynu OPC obsługuje pobieranie wszystkich certyfikatów używanych i wygenerowanych w usłudze w celu uzyskania dokumentacji.
 
 ### <a name="document-the-sop-for-securely-deleting-cryptographic-keys"></a>Udokumentowanie SOP w celu bezpiecznego usunięcia kluczy kryptograficznych
@@ -220,7 +220,7 @@ OPC SOP magazynu usługi Magazyn jest opisany w przeglądzie [](overview-opc-vau
 
 Proces odwoływania certyfikatu został opisany w temacie [Omówienie](overview-opc-vault-architecture.md) i [Zarządzanie](howto-opc-vault-manage.md) dokumentami.
     
-### <a name="document-certification-authority-key-generation-ceremony"></a>Dokument generowanie klucza urzędu certyfikacji procedury 
+### <a name="document-certification-authority-ca-key-generation-ceremony"></a>Generowanie klucza urzędu certyfikacji (CA) procedury 
 
 Generowanie klucza urzędu certyfikacji wystawcy w mikrousłudze magazynu OPC jest uproszczone ze względu na bezpieczny magazyn w magazynie kluczy platformy Azure i opisany w temacie [jak zarządzać](howto-opc-vault-manage.md) dokumentacją.
 

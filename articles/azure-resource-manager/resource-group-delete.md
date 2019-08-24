@@ -1,24 +1,86 @@
 ---
 title: Usuń grupę zasobów i zasoby — usługi Azure Resource Manager
-description: W tym artykule opisano, jak usługi Azure Resource Manager porządkuje usuwania zasobów, podczas usuwania grupy zasobów. Opisano w nim kodów odpowiedzi i jak Menedżera zasobów obsługuje je, aby określić, jeśli usunięcie powiodło się.
+description: Opisuje sposób usuwania grup zasobów i zasobów. Opisano w nim, jak Azure Resource Manager zamówienia usunięcia zasobów podczas usuwania grupy zasobów. Opisano w nim kodów odpowiedzi i jak Menedżera zasobów obsługuje je, aby określić, jeśli usunięcie powiodło się.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 12/09/2018
+ms.date: 08/22/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 18990b51b5ff2184197db48fd139d63750626663
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 75cdeb88a68dece59d6b037592f7212fa895e821
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204202"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991677"
 ---
-# <a name="azure-resource-manager-resource-group-deletion"></a>Usuwanie grupy zasobów w usłudze Azure Resource Manager
+# <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager grupy zasobów i usuwania zasobów
 
-W tym artykule opisano, jak usługi Azure Resource Manager porządkuje usuwania zasobów, podczas usuwania grupy zasobów.
+W tym artykule przedstawiono sposób usuwania grup zasobów i zasobów. Opisano w nim, jak Azure Resource Manager zamówienia usunięcia zasobów podczas usuwania grupy zasobów.
 
-## <a name="determine-order-of-deletion"></a>Określić kolejność usuwania
+## <a name="delete-resource-group"></a>Usuń grupę zasobów
+
+Aby usunąć grupę zasobów, użyj jednej z poniższych metod.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name <resource-group-name>
+```
+
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+
+```azurecli-interactive
+az group delete --name <resource-group-name>
+```
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+1. W [portalu](https://portal.azure.com)wybierz grupę zasobów, którą chcesz usunąć.
+
+1. Wybierz pozycję **Usuń grupę zasobów**.
+
+   ![Usuń grupę zasobów](./media/resource-group-delete/delete-group.png)
+
+1. Aby potwierdzić usunięcie, wpisz nazwę grupy zasobów
+
+---
+
+## <a name="delete-resource"></a>Usuń zasób
+
+Użyj jednej z poniższych metod, aby usunąć zasób.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell-interactive
+Remove-AzResource `
+  -ResourceGroupName ExampleResourceGroup `
+  -ResourceName ExampleVM `
+  -ResourceType Microsoft.Compute/virtualMachines
+```
+
+# <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
+
+```azurecli-interactive
+az resource delete \
+  --resource-group ExampleResourceGroup \
+  --name ExampleVM \
+  --resource-type "Microsoft.Compute/virtualMachines"
+```
+
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+1. W [portalu](https://portal.azure.com)wybierz zasób, który chcesz usunąć.
+
+1. Wybierz pozycję **Usuń**. Poniższy zrzut ekranu przedstawia opcje zarządzania dla maszyny wirtualnej.
+
+   ![Usuń zasób](./media/resource-group-delete/delete-resource.png)
+
+1. Po wyświetleniu monitu potwierdź usunięcie.
+
+---
+
+## <a name="how-order-of-deletion-is-determined"></a>Sposób określania kolejności usuwania
 
 Podczas usuwania grupy zasobów usługi Resource Manager, określa kolejność, aby usunąć zasoby. Używa następującej kolejności:
 
@@ -27,8 +89,6 @@ Podczas usuwania grupy zasobów usługi Resource Manager, określa kolejność, 
 2. Zasoby, które zarządzają inne zasoby są następnie usuwane. Zasób może mieć `managedBy` właściwość ustawioną na wskazywanie, czy inny zasób zarządza nim. Gdy ta właściwość jest ustawiona, zasobu, który zarządza inne zasoby zostaną usunięte przed inne zasoby.
 
 3. Pozostałe zasoby są usuwane po poprzednich dwóch kategorii.
-
-## <a name="resource-deletion"></a>Usuwanie zasobów
 
 Po kolejność jest określana, Menedżer zasobów wystawia operację usuwania dla każdego zasobu. Czeka on na wszystkie zależności zakończyć działanie przed kontynuowaniem.
 

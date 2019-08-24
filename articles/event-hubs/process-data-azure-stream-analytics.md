@@ -8,18 +8,15 @@ ms.author: spelluru
 ms.date: 07/09/2019
 ms.topic: article
 ms.service: event-hubs
-ms.openlocfilehash: 003e68b36ff71fb2991cf087ef33f72aba73a8be
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 531426656fe833752c9c4685688c00de3894895b
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68233962"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991945"
 ---
-# <a name="process-data-from-your-event-hub-using-azure-stream-analytics-preview"></a>Przetwarzanie danych z centrum zdarzeń przy użyciu Azure Stream Analytics (wersja zapoznawcza)
+# <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Przetwarzanie danych z centrum zdarzeń przy użyciu Azure Stream Analytics 
 Usługa Azure Stream Analytics ułatwia pozyskiwanie, przetwarzanie i analizowanie danych przesyłanych strumieniowo z usługi Azure Event Hubs, dzięki czemu można uzyskać zaawansowane informacje o działaniach w czasie rzeczywistym. Ta Integracja umożliwia szybkie utworzenie potoku analizy na gorąco. Za pomocą Azure Portal można wizualizować dane przychodzące i pisać zapytanie Stream Analytics. Gdy zapytanie będzie gotowe, możesz je przenieść do środowiska produkcyjnego tylko na kilka kliknięć. 
-
-> [!NOTE]
-> Ta funkcja jest obecnie dostępna w wersji zapoznawczej. 
 
 ## <a name="key-benefits"></a>Najważniejsze korzyści
 Oto najważniejsze zalety platformy Azure Event Hubs i integracji Azure Stream Analytics: 
@@ -81,9 +78,9 @@ Oto najważniejsze zalety platformy Azure Event Hubs i integracji Azure Stream A
 Podczas testowania zapytania wyniki testów trwają około 6 sekund. Pracujemy nad ulepszeniem testów wydajności. Jednak w przypadku wdrożenia w środowisku produkcyjnym Azure Stream Analytics będzie miał opóźnienie w drugim.
 
 ## <a name="streaming-units"></a>Jednostki przesyłania strumieniowego
-Domyślna wartość zadania Azure Stream Analytics to trzy jednostki przesyłania strumieniowego (SUs). Aby dostosować to ustawienie, wybierz  pozycję skalowanie w menu po lewej stronie **zadania Stream Analytics** w Azure Portal. Aby dowiedzieć się więcej o jednostkach przesyłania strumieniowego, zobacz [Opis i Dostosowywanie jednostek przesyłania strumieniowego](../stream-analytics/stream-analytics-streaming-unit-consumption.md).
+Domyślna wartość zadania Azure Stream Analytics to trzy jednostki przesyłania strumieniowego (SUs). Aby dostosować to ustawienie, wybierz pozycję skalowanie w menu po lewej stronie **zadania Stream Analytics** w Azure Portal. Aby dowiedzieć się więcej o jednostkach przesyłania strumieniowego, zobacz [Opis i Dostosowywanie jednostek przesyłania strumieniowego](../stream-analytics/stream-analytics-streaming-unit-consumption.md).
 
 ![Skalowanie jednostek przesyłania strumieniowego](./media/process-data-azure-stream-analytics/scale.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby dowiedzieć się więcej na temat zapytań Stream Analytics, zobacz [Stream Analytics języka zapytań](/stream-analytics-query/built-in-functions-azure-stream-analytics)

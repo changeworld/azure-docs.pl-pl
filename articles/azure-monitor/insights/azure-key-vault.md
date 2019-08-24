@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: bwren
-ms.openlocfilehash: b7d9ff760bac06602d8d770a358c8a2e22a72c81
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1e0e9a0d76e644ec48ecd423a105dd89629d290c
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849193"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997702"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Rozwiązanie Azure Key Vault Analytics w Azure Monitor
 
@@ -105,26 +105,26 @@ Azure Key Vault rozwiązanie analizuje rekordy, które mają typy magazynów klu
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Type |*AzureDiagnostics* |
-| SourceSystem |*Azure* |
-| CallerIpAddress |Adres IP klienta, który wykonał żądanie |
-| Kategoria | *AuditEvent* |
-| Identyfikator korelacji |Opcjonalny identyfikator GUID, który klient może przekazać w celu skorelowania dzienników po stronie klienta z dziennikami po stronie usługi (Key Vault). |
-| Milisekundach) |Czas potrzebny do obsłużenia żądania interfejsu API REST podany w milisekundach. Ta godzina nie obejmuje opóźnienia sieci, dlatego czas pomiaru po stronie klienta może nie być zgodny z tym czasem. |
-| httpStatusCode_d |Kod stanu HTTP zwrócony przez żądanie (na przykład *200*) |
-| id_s |Unikatowy identyfikator żądania |
-| identity_claim_appid_g | Identyfikator GUID dla identyfikatora aplikacji |
-| OperationName |Nazwa operacji, zgodnie z opisem w [Azure Key Vault rejestrowania](../../key-vault/key-vault-logging.md) |
-| OperationVersion |Wersja interfejsu API REST żądana przez klienta (na przykład *2015-06-01*) |
-| requestUri_s |Identyfikator URI żądania |
-| Resource |Nazwa magazynu kluczy |
-| Grupa zasobów |Grupa zasobów magazynu kluczy |
-| ResourceId |Identyfikator zasobu usługi Azure Resource Manager W przypadku dzienników Key Vault jest to Key Vault identyfikator zasobu. |
-| ResourceProvider |*MICROSOFT.KEYVAULT* |
-| ResourceType | *VAULTS* |
-| ResultSignature |Stan HTTP (na przykład *OK*) |
-| Result |Wynik żądania interfejsu API REST (na przykład *sukcesu*) |
-| SubscriptionId |Identyfikator subskrypcji platformy Azure dla subskrypcji zawierającej Key Vault |
+| `Type` |*AzureDiagnostics* |
+| `SourceSystem` |*Azure* |
+| `CallerIpAddress` |Adres IP klienta, który wykonał żądanie |
+| `Category` | *AuditEvent* |
+| `CorrelationId` |Opcjonalny identyfikator GUID, który klient może przekazać w celu skorelowania dzienników po stronie klienta z dziennikami po stronie usługi (Key Vault). |
+| `DurationMs` |Czas potrzebny do obsłużenia żądania interfejsu API REST podany w milisekundach. Ta godzina nie obejmuje opóźnienia sieci, dlatego czas pomiaru po stronie klienta może nie być zgodny z tym czasem. |
+| `httpStatusCode_d` |Kod stanu HTTP zwrócony przez żądanie (na przykład *200*) |
+| `id_s` |Unikatowy identyfikator żądania |
+| `identity_claim_appid_g` | Identyfikator GUID dla identyfikatora aplikacji |
+| `OperationName` |Nazwa operacji, zgodnie z opisem w [Azure Key Vault rejestrowania](../../key-vault/key-vault-logging.md) |
+| `OperationVersion` |Wersja interfejsu API REST żądana przez klienta (na przykład *2015-06-01*) |
+| `requestUri_s` |Identyfikator URI żądania |
+| `Resource` |Nazwa magazynu kluczy |
+| `ResourceGroup` |Grupa zasobów magazynu kluczy |
+| `ResourceId` |Identyfikator zasobu usługi Azure Resource Manager W przypadku dzienników Key Vault jest to Key Vault identyfikator zasobu. |
+| `ResourceProvider` |*MICROSOFT.KEYVAULT* |
+| `ResourceType` | *VAULTS* |
+| `ResultSignature` |Stan HTTP (na przykład *OK*) |
+| `ResultType` |Wynik żądania interfejsu API REST (na przykład *sukcesu*) |
+| `SubscriptionId` |Identyfikator subskrypcji platformy Azure dla subskrypcji zawierającej Key Vault |
 
 ## <a name="migrating-from-the-old-key-vault-solution"></a>Migrowanie ze starego rozwiązania Key Vault
 W styczniu 2017 obsługiwany sposób wysyłania dzienników z Key Vault do Log Analytics zmieniony. Te zmiany zapewniają następujące korzyści:

@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 850d580d4eb1ca41932a28005d3375ced709db60
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 7c018ad15ee653bcdc903492028ec5ed058dbd14
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016375"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992235"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>Uaktualnij rozwiązania do analizy danych Big Data z Azure Data Lake Storage Gen1 do Azure Data Lake Storage Gen2
 
@@ -235,7 +235,7 @@ Należy zauważyć, że istnieją inne firmy, które mogą obsłużyć Data Lake
 
 * Jeśli nie chcesz kopiować listy ACL za pomocą narzędzia, która nie obejmuje kopiowania listy ACL, następnie należy do ustawiania listy kontroli dostępu na komputerze docelowym ręcznie na odpowiednie najwyższym poziomie. Możesz tworzyć, za pomocą Eksploratora usługi Storage. Upewnij się, że te listy ACL domyślne listy kontroli dostępu, aby pliki i foldery, kopiujących za pośrednictwem dziedziczy ich.
 
-* W Data Lake Storage Gen1 najwyższego poziomu, można ustawić list ACL jest w katalogu głównym konta. W Data Lake Storage Gen2 jednak najwyższy poziom można ustawić listy ACL w folderze głównym w systemie plików, a nie w całym koncie. Dlatego jeśli chcesz ustawić domyślne listy kontroli dostępu na poziomie konta, należy te we wszystkich systemach plików na koncie usługi Data Lake Storage Gen2 zduplikowane.
+* W Data Lake Storage Gen1 najwyższego poziomu, można ustawić list ACL jest w katalogu głównym konta. W Data Lake Storage Gen2 jednak najwyższy poziom można ustawić listy ACL w folderze głównym w kontenerze, a nie w całym koncie. Dlatego jeśli chcesz ustawić domyślne listy kontroli dostępu na poziomie konta, należy te we wszystkich systemach plików na koncie usługi Data Lake Storage Gen2 zduplikowane.
 
 * Ograniczenia nazewnictwa plików różnią się między dwoma systemami magazynowania. Te różnice są szczególnie dotyczące podczas kopiowania z Data Lake Storage Gen2 Data Lake Storage Gen1 ponieważ one bardziej ma ograniczone ograniczenia.
 

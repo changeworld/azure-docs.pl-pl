@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 22a5a2e157c0b2095673e75e7a3bc9ccb80f8ffd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ba9cda5aeebaf0764068a463cdb55f3ef5542ea3
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928026"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997814"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wybierz właściwą metodę uwierzytelniania dla Azure Active Directory rozwiązanie do tworzenia tożsamości hybrydowej 
 
@@ -67,6 +67,9 @@ Poniższa sekcja ułatwia podjęcie decyzji, która metoda uwierzytelniania jest
 
 ## <a name="decision-tree"></a>Drzewo decyzyjne
 
+> [!NOTE]
+> PTA działa tylko z alternatywnym IDENTYFIKATORem, gdy jako alternatywny identyfikator jest wybrany element UserPrincipalName. Tylko lokalny element UserPrincipalName zostanie zsynchronizowany z usługi AD z usługą AAD. Aby uzyskać więcej informacji, zobacz [czy uwierzytelnianie przekazywane obsługuje "alternatywny identyfikator" jako nazwę użytkownika, a nie "userPrincipalName"?](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname).
+
 ![Drzewo decyzyjne uwierzytelniania usługi Azure AD](./media/choose-ad-authn/azure-ad-authn-image1.png)
 
 Szczegółowe informacje na temat decyzji:
@@ -118,7 +121,7 @@ Zapoznaj się z artykułem [implementowanie synchronizacji skrótów haseł](../
 
 * **Scenariusze zaawansowane**. Uwierzytelnianie przekazywane wymusza lokalne zasady kont w momencie logowania się. Na przykład dostęp jest odrzucany, gdy stan konta użytkownika lokalnego jest wyłączony, zablokowany lub [hasło wygasłe](../../active-directory/hybrid/how-to-connect-pta-faq.md#what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication) lub wykracza poza godziny, gdy użytkownik może się zalogować. 
 
-    Organizacje, które wymagają uwierzytelniania wieloskładnikowego z uwierzytelnianiem przekazującym, muszą korzystać z niestandardowych kontrolek usługi Azure MFA lub [dostępu warunkowego](../../active-directory/conditional-access/controls.md#custom-controls-preview). Organizacje te nie mogą korzystać z metody uwierzytelniania wieloskładnikowego innej firmy ani lokalnej, która opiera się na Federacji. Funkcje zaawansowane wymagają, aby synchronizacja skrótów haseł była wdrażana niezależnie od tego, czy wybrano opcję uwierzytelnianie przekazywane. Przykładem jest raport dotyczący przecieków poświadczeń programu Identity Protection.
+    Organizacje, które wymagają uwierzytelniania wieloskładnikowego z uwierzytelnianiem przekazującym, muszą używać niestandardowych kontrolek usługi Azure Multi-Factor Authentication (MFA) lub [dostępu warunkowego](../../active-directory/conditional-access/controls.md#custom-controls-preview). Organizacje te nie mogą korzystać z metody uwierzytelniania wieloskładnikowego innej firmy ani lokalnej, która opiera się na Federacji. Funkcje zaawansowane wymagają, aby synchronizacja skrótów haseł była wdrażana niezależnie od tego, czy wybrano opcję uwierzytelnianie przekazywane. Przykładem jest raport dotyczący przecieków poświadczeń programu Identity Protection.
 
 * **Ciągłość**działania. Zalecamy wdrożenie dwóch dodatkowych agentów uwierzytelniania Pass-through. Te dodatki są uzupełnieniem pierwszego agenta na serwerze Azure AD Connect. To dodatkowe wdrożenie zapewnia wysoką dostępność żądań uwierzytelniania. Po wdrożeniu trzech agentów jeden Agent może nadal kończyć się niepowodzeniem, gdy inny agent nie działa do konserwacji. 
 
@@ -176,7 +179,7 @@ Na poniższym diagramie przedstawiono składniki architektury wysokiego poziomu 
 
 |Badan|Synchronizacja skrótów haseł + bezproblemowe logowanie jednokrotne|Uwierzytelnianie przekazywane i bezproblemowe logowanie jednokrotne|Federacja z usługami AD FS|
 |:-----|:-----|:-----|:-----|
-|Gdzie jest wykonywane uwierzytelnianie?|W chmurze|W chmurze po bezpiecznej weryfikacji hasła przy użyciu lokalnego agenta uwierzytelniania|Lokalne|
+|Gdzie jest wykonywane uwierzytelnianie?|W chmurze|W chmurze po bezpiecznej weryfikacji hasła przy użyciu lokalnego agenta uwierzytelniania|Lokalnie|
 |Jakie są wymagania dotyczące serwera lokalnego poza systemem aprowizacji: Azure AD Connect?|Brak|Jeden serwer dla każdego dodatkowego agenta uwierzytelniania|Co najmniej dwa serwery AD FS<br><br>Dwa lub więcej serwerów WAP w sieci obwodowej/strefy DMZ|
 |Jakie są wymagania dotyczące lokalnego Internetu i sieci poza systemem aprowizacji?|Brak|[Wychodzący dostęp do Internetu](../../active-directory/hybrid/how-to-connect-pta-quick-start.md) z serwerów z uruchomionymi agentami uwierzytelniania|[Przychodzący dostęp do Internetu](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements) do serwerów WAP na obrzeżu<br><br>Dostęp do sieci przychodzącej do serwerów AD FS z serwerów WAP na obrzeżu<br><br>Równoważenie obciążenia sieciowego|
 |Czy istnieje wymagania dotyczące certyfikatu SSL?|Nie|Nie|Tak|

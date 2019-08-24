@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 4722cda0506493671ff872d75e7376f3de74b1b8
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 2d7cc217ff8ae45491c0f9d6b54ea8afea19cd2e
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886652"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981236"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database i kontrola dostępu do sieci hurtowni danych
 
@@ -33,6 +33,7 @@ Po utworzeniu nowego SQL Server platformy Azure [z Azure Portal](sql-database-si
 
 - Virtual Network reguł zapory: Użyj tej funkcji, aby zezwolić na ruch z określonego Virtual Network w ramach granicy platformy Azure
 
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--SQL-Database-Connectivity-Explained/player?WT.mc_id=dataexposed-c9-niner]
 
 ## <a name="allow-azure-services"></a>Zezwalaj na usługi platformy Azure 
 Po utworzeniu nowego SQL Server platformy Azure [z poziomu Azure Portal](sql-database-single-database-get-started.md)to ustawienie nie jest zaznaczone.

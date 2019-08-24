@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie do uczenia głębokiego i uczenia maszynowego
+title: Uczenie głębokie a uczenie maszynowe
 titleSuffix: Azure Machine Learning service
 description: Dowiedz się więcej o relacji między głęboką nauką a uczeniem maszynowym i sposobem ich dopasowania do kategorii sztucznej analizy. W tym artykule opisano, jak uczenie głębokie rozwiązuje scenariusze, takie jak wykrywanie oszustw, rozpoznawanie głosu i twarzy, tonacji Analytics i prognozowanie szeregów czasowych.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 08/07/2019
-ms.openlocfilehash: 186ba03142e01c4b9340fc5b492621cc17575104
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5301be493ef22fc2d74cc337d88b04caf391fdaa
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934289"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982806"
 ---
-# <a name="introduction-to-deep-learning-vs-machine-learning"></a>Wprowadzenie do uczenia głębokiego i uczenia maszynowego
+# <a name="deep-learning-vs-machine-learning"></a>Uczenie głębokie a uczenie maszynowe
 
 Ten artykuł ułatwia zrozumienie relacji między uczeniem szczegółowym a uczeniem maszynowym. Dowiesz się, jak te dwie koncepcje porównują i jak mieszczą się w szerszej kategorii sztucznej analizy. W tym artykule opisano, jak można zastosować uczenie głębokie w rzeczywistych scenariuszach, takich jak wykrywanie oszustw, rozpoznawanie głosu i twarzy, analiza tonacji i prognozowanie szeregów czasowych.
 

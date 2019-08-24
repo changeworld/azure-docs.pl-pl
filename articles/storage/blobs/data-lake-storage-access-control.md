@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: aa2cfbee6feeacf46003fdc244f0aeea5df0f41a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 51a51e63f1d45d67cda63d4491a3bac572434dc0
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847345"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991908"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Kontrola dostępu w Azure Data Lake Storage Gen2
 
@@ -31,7 +31,7 @@ Aby dowiedzieć się, jak przypisać role do podmiotów zabezpieczeń w zakresie
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>Wpływ przypisań ról na listy kontroli dostępu na poziomie plików i katalogów
 
-W przypadku korzystania z przypisań ról RBAC jest zaawansowanym mechanizmem kontrolowania uprawnień dostępu, jest to bardzo duży mechanizm względem list ACL. Najmniejszy stopień szczegółowości kontroli RBAC jest na poziomie systemu plików i zostanie on oceniony z wyższym priorytetem niż listy kontroli dostępu. W związku z tym, Jeśli rola jest przypisywana do podmiotu zabezpieczeń w zakresie systemu plików, ten podmiot zabezpieczeń ma poziom autoryzacji skojarzony z tą rolą dla wszystkich katalogów i plików w tym systemie plików, niezależnie od przypisań listy ACL.
+W przypadku korzystania z przypisań ról RBAC jest zaawansowanym mechanizmem kontrolowania uprawnień dostępu, jest to bardzo duży mechanizm względem list ACL. Najmniejszy stopień szczegółowości dla RBAC jest na poziomie kontenera i zostanie on oceniony z wyższym priorytetem niż listy kontroli dostępu. W związku z tym, Jeśli rola jest przypisywana do podmiotu zabezpieczeń w zakresie kontenera, ten podmiot zabezpieczeń ma poziom autoryzacji skojarzony z tą rolą dla wszystkich katalogów i plików w tym kontenerze, niezależnie od przypisań listy ACL.
 
 Gdy podmiot zabezpieczeń otrzymuje uprawnienia do danych RBAC za pomocą [wbudowanej roli](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)lub roli niestandardowej, te uprawnienia są oceniane jako pierwsze przy autoryzacji żądania. Jeśli żądana operacja jest autoryzowana przez przypisania kontroli RBAC podmiotu zabezpieczeń, wówczas Autoryzacja jest natychmiast rozwiązywana i nie są wykonywane żadne dodatkowe kontrole listy ACL. Alternatywnie, jeśli podmiot zabezpieczeń nie ma przypisania RBAC lub operacja żądania nie jest zgodna z przypisanym uprawnieniem, sprawdzenia listy ACL są wykonywane w celu ustalenia, czy podmiot zabezpieczeń jest autoryzowany do wykonywania żądanych operacji.
 
@@ -81,7 +81,7 @@ Listy ACL dostępu i domyślne listy ACL mają tę samą strukturę.
 
 ### <a name="levels-of-permission"></a>Poziomy uprawnień
 
-Uprawnienia do obiektu systemu plików są odczytywane, **zapisywane**i **wykonywane**oraz mogą być używane dla plików i katalogów, jak pokazano w poniższej tabeli:
+Uprawnienia do obiektu kontenera są odczytywane, **zapisywane**i **wykonywane**oraz mogą być używane dla plików i katalogów, jak pokazano w poniższej tabeli:
 
 |            |    Plik     |   Katalog |
 |------------|-------------|----------|
@@ -90,7 +90,7 @@ Uprawnienia do obiektu systemu plików są odczytywane, **zapisywane**i **wykony
 | **Wykonanie (X)** | Nie oznacza wszystkiego w kontekście Data Lake Storage Gen2 | Wymagane do przechodzenia między elementami podrzędnymi katalogu |
 
 > [!NOTE]
-> W przypadku przyznawania uprawnień przy użyciu tylko list kontroli dostępu (bez RBAC), a następnie udzielenia jednostce usługi dostępu do odczytu lub zapisu do pliku należy przyznać uprawnienia do **wykonywania** głównej usługi do systemu plików oraz do każdego folderu w hierarchii folderów, które prowadzić do pliku.
+> W przypadku przyznawania uprawnień przy użyciu tylko list ACL (bez RBAC), a następnie do udzielenia podmiotu usługi uprawnień do odczytu lub zapisu do pliku należy nadać jednostce usługi uprawnienia do **wykonywania** dla kontenera oraz do każdego folderu w hierarchii folderów, które prowadzić do pliku.
 
 #### <a name="short-forms-for-permissions"></a>Krótkie formy uprawnień
 
@@ -154,7 +154,7 @@ Na listach kontroli dostępu POSIX każdy użytkownik jest skojarzony z *grupą 
 
 ##### <a name="assigning-the-owning-group-for-a-new-file-or-directory"></a>Przypisywanie grupy będącej właścicielem dla nowego pliku lub katalogu
 
-* **Przypadek 1**: Katalog główny "/". Ten katalog jest tworzony podczas tworzenia systemu plików Data Lake Storage Gen2. W takim przypadku grupa będąca właścicielem jest ustawiana na użytkownika, który utworzył system plików, jeśli został on wykonany przy użyciu protokołu OAuth. Jeśli system plików jest tworzony przy użyciu klucza współużytkowanego, SYGNATURy dostępu współdzielonego konta lub SYGNATURy dostępu współdzielonego usługi, to właściciel i grupa będąca właścicielem są ustawiani jako **$superuser**.
+* **Przypadek 1**: Katalog główny "/". Ten katalog jest tworzony podczas tworzenia kontenera Data Lake Storage Gen2. W takim przypadku grupa będąca właścicielem jest ustawiana na użytkownika, który utworzył kontener, jeśli został on wykonany przy użyciu protokołu OAuth. Jeśli kontener jest tworzony przy użyciu klucza współużytkowanego, SYGNATURy dostępu współdzielonego konta lub SYGNATURy dostępu współdzielonego usługi, właściciel i grupa będąca właścicielem są ustawiani na **$superuser**.
 * **Przypadek 2** (W każdym innym przypadku): Po utworzeniu nowego elementu grupa będąca właścicielem jest kopiowana z katalogu nadrzędnego.
 
 ##### <a name="changing-the-owning-group"></a>Zmiana grupy będącej właścicielem
@@ -216,13 +216,13 @@ return ( (desired_perms & perms & mask ) == desired_perms)
 Jak pokazano w algorytmie kontroli dostępu, maska ogranicza dostęp dla użytkowników nazwanych, grupy będącej właścicielem i nazwanych grup.  
 
 > [!NOTE]
-> W przypadku nowego systemu plików Data Lake Storage Gen2 maska listy ACL dostępu katalogu głównego ("/") domyślnie 750 dla katalogów i 640 dla plików. Pliki nie otrzymują bitów X, ponieważ nie są one istotne dla plików w systemie tylko do magazynowania.
+> W przypadku nowego kontenera Data Lake Storage Gen2 maska listy ACL dostępu katalogu głównego ("/") domyślnie 750 dla katalogów i 640 dla plików. Pliki nie otrzymują bitów X, ponieważ nie są one istotne dla plików w systemie tylko do magazynowania.
 >
 > Maskę można określić dla każdego wywołania. Dzięki temu różne systemy zużywające, takie jak klastry, mają różne efektywne maski dla operacji na plikach. Jeśli Maska jest określona dla danego żądania, całkowicie zastępuje domyślną maskę.
 
 #### <a name="the-sticky-bit"></a>Atrybut sticky bit
 
-Program Sticky bit to bardziej zaawansowaną funkcję systemu plików POSIX. W kontekście Data Lake Storage Gen2 jest mało prawdopodobne, że będzie wymagany bit. W podsumowaniu, jeśli w katalogu jest włączony bit programu Sticky, element podrzędny może zostać usunięty lub zmieniony tylko przez użytkownika będącego właścicielem elementu podrzędnego.
+Bit programu Sticky to bardziej zaawansowaną funkcję kontenera POSIX. W kontekście Data Lake Storage Gen2 jest mało prawdopodobne, że będzie wymagany bit. W podsumowaniu, jeśli w katalogu jest włączony bit programu Sticky, element podrzędny może zostać usunięty lub zmieniony tylko przez użytkownika będącego właścicielem elementu podrzędnego.
 
 Bit programu Sticky nie jest widoczny w Azure Portal.
 
@@ -291,7 +291,7 @@ Lub
 
 ### <a name="who-is-the-owner-of-a-file-or-directory"></a>Kto jest właścicielem pliku lub katalogu?
 
-Twórca pliku lub katalogu stał się właścicielem. W przypadku katalogu głównego jest to tożsamość użytkownika, który utworzył system plików.
+Twórca pliku lub katalogu stał się właścicielem. W przypadku katalogu głównego jest to tożsamość użytkownika, który utworzył kontener.
 
 ### <a name="which-group-is-set-as-the-owning-group-of-a-file-or-directory-at-creation"></a>Która grupa jest ustawiona jako grupa będąca właścicielem pliku lub katalogu podczas tworzenia?
 
@@ -320,7 +320,7 @@ Jeśli masz prawidłowy identyfikator OID dla jednostki usługi, przejdź do str
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Czy Data Lake Storage Gen2 obsługuje dziedziczenie list ACL?
 
-Dziedziczenie przypisań RBAC platformy Azure. Przydziały przepływów z subskrypcji, grupy zasobów i zasobów konta magazynu w dół do zasobu systemu plików.
+Dziedziczenie przypisań RBAC platformy Azure. Przepływy zadań z subskrypcji, grupy zasobów i zasobów konta magazynu w dół do zasobu kontenera.
 
 Listy ACL nie są dziedziczone. Jednak domyślne listy ACL mogą być używane do ustawiania list ACL dla podrzędnych podkatalogów i plików utworzonych w katalogu nadrzędnym. 
 

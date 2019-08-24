@@ -1,6 +1,6 @@
 ---
-title: Diagnozowanie błędów artefaktów na maszynie wirtualnej Azure DevTest Labs | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozwiązywać problemy z artefaktów w usłudze Azure DevTest Labs.
+title: Diagnozowanie błędów artefaktów na maszynie wirtualnej Azure DevTest Labs | Microsoft Docs
+description: Dowiedz się, jak rozwiązywać błędy artefaktów w Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,51 +12,52 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2019
+ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 29af70a2713e7b4aebf611d8f2b547e38c6c5d3d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8b7a72c03d41d54aa80505e781b6f6d32cd2a2c0
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60623144"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991363"
 ---
-# <a name="diagnose-artifact-failures-in-the-lab"></a>Diagnozowanie błędów artefaktów w środowisku laboratoryjnym 
-Po utworzeniu artefakt, można sprawdzić, aby zobaczyć, czy zakończonych powodzeniem lub niepowodzeniem. Dzienniki artefaktów w usłudze Azure DevTest Labs zawierają informacje, które umożliwia diagnozowanie błędów artefaktów. Masz kilka opcji, podczas wyświetlania informacji dziennika artefaktu dla maszyny Wirtualnej z systemem Windows:
+# <a name="diagnose-artifact-failures-in-the-lab"></a>Diagnozowanie błędów artefaktów w laboratorium 
+Po utworzeniu artefaktu możesz sprawdzić, czy zakończyło się powodzeniem, czy niepowodzeniem. Dzienniki artefaktów w Azure DevTest Labs zawierają informacje, których można użyć do diagnozowania błędu artefaktu. Istnieje kilka opcji wyświetlania informacji o dzienniku artefaktów dla maszyny wirtualnej z systemem Windows:
 
 * W witrynie Azure Portal
 * Na maszynie wirtualnej
 
 > [!NOTE]
-> Aby upewnić się, błędy zostały poprawnie zidentyfikowane i wyjaśniono, jest ważne, czy artefakt jest struktura. Aby uzyskać informacje o tym, jak utworzyć poprawnie artefakt, zobacz [Tworzenie niestandardowych artefaktów](devtest-lab-artifact-author.md). Aby zobaczyć przykład artefaktu prawidłowo ze strukturą, zapoznaj się z [Test typy parametrów](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes) artefaktu.
+> Aby upewnić się, że błędy są poprawnie zidentyfikowane i wyjaśnione, ważne jest, aby artefakt miał prawidłową strukturę. Aby uzyskać informacje na temat poprawnego konstruowania artefaktu, zobacz [Tworzenie niestandardowych artefaktów](devtest-lab-artifact-author.md). Aby zobaczyć przykład prawidłowo uporządkowanej artefaktu, sprawdź artefakty [typów parametrów testu](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts/windows-test-paramtypes) .
 
-## <a name="troubleshoot-artifact-failures-by-using-the-azure-portal"></a>Rozwiązywanie problemów z błędami artefaktów przy użyciu witryny Azure portal
+## <a name="troubleshoot-artifact-failures-by-using-the-azure-portal"></a>Rozwiązywanie problemów z błędami artefaktów przy użyciu Azure Portal
 
-1. W witrynie Azure portal, na liście zasobów wybierz środowiska laboratoryjnego.
-2. Wybierz maszynę Wirtualną Windows, która obejmuje artefakt, który chcesz zbadać.
-3. W lewym panelu w obszarze **ogólne**, wybierz opcję **artefaktów**. Zostanie wyświetlona lista artefakty skojarzone z daną maszynę Wirtualną. Nazwa artefaktu i stan artefaktów są wskazane.
+1. W Azure Portal na liście zasobów wybierz swoje laboratorium.
+2. Wybierz maszynę wirtualną z systemem Windows, która zawiera artefakt, który chcesz zbadać.
+3. W lewym panelu w obszarze **Ogólne**wybierz pozycję **artefakty**. Zostanie wyświetlona lista artefaktów skojarzonych z tą maszyną wirtualną. Nazwa artefaktu i stan artefaktu są wskazane.
 
    ![Stan artefaktu](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifacts-failure.png)
 
-4. Wybierz artefakt pokazujący **stanu**. Zostanie otwarty artefaktu. Wyświetlany jest komunikat rozszerzenia, który zawiera szczegółowe informacje o błędzie artefaktu.
+4. Wybierz artefakt pokazujący **stanu**. Artefakt zostanie otwarty. Zostanie wyświetlony komunikat o rozszerzeniu, który zawiera szczegółowe informacje o błędzie artefaktu.
 
    ![Komunikat o błędzie artefaktu](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error.png)
 
 
-## <a name="troubleshoot-artifact-failures-from-within-the-virtual-machine"></a>Rozwiązywanie problemów z błędami artefaktu z poziomu maszyny wirtualnej
+## <a name="troubleshoot-artifact-failures-from-within-the-virtual-machine"></a>Rozwiązywanie problemów z błędami artefaktów z poziomu maszyny wirtualnej
 
-1. Zaloguj się do maszyny Wirtualnej, która zawiera artefaktu, który chcesz zdiagnozować.
-2. Przejdź do C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\\*1.9*\Status, gdzie *1.9* jest numerem wersji niestandardowe rozszerzenie skryptu platformy Azure.
+1. Zaloguj się do maszyny wirtualnej zawierającej artefakt, który chcesz zdiagnozować.
+2. Przejdź do C:\Packages\Plugins\Microsoft.COMPUTE.CustomScriptExtension\\*1,9*\Status, gdzie *1,9* to numer wersji rozszerzenia niestandardowego skryptu platformy Azure.
 
    ![Plik stanu](./media/devtest-lab-troubleshoot-artifact-failure/devtest-lab-artifact-error-vm-status.png)
 
-3. Otwórz **stan** pliku.
+3. Otwórz plik **stanu** .
 
-[!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
+Aby uzyskać instrukcje dotyczące znajdowania plików dziennika na maszynie wirtualnej z **systemem Linux** , zobacz następujący artykuł: [Korzystanie z rozszerzenia niestandardowego skryptu platformy Azure w wersji 2 z maszynami wirtualnymi z systemem Linux](../virtual-machines/extensions/custom-script-linux.md#troubleshooting)
 
-## <a name="related-blog-posts"></a>Wpisy w blogu pokrewne
-* [Dołączanie maszyny Wirtualnej do istniejącej domeny usługi Active Directory przy użyciu szablonu usługi Resource Manager w usłudze DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
-## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się, jak [Dodawanie repozytorium Git do laboratorium](devtest-lab-add-artifact-repo.md).
+## <a name="related-blog-posts"></a>Powiązane wpisy w blogu
+* [Przyłączanie maszyny wirtualnej do istniejącej domeny Active Directory przy użyciu szablonu Menedżer zasobów w DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+
+## <a name="next-steps"></a>Następne kroki
+* Dowiedz się, jak [dodać repozytorium git do laboratorium](devtest-lab-add-artifact-repo.md).
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4d6c7665d281ff7c27fd8b61537804b6803b3b43
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 1634d7cd3dfe8d118e220fa8620ef6467c15ea2c
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360171"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983020"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Uwierzytelnianie urządzenia podrzędnego w usłudze Azure IoT Hub
 
@@ -29,6 +29,12 @@ Należy wykonać trzy ogólne kroki, aby skonfigurować pomyślne, przezroczyste
 Urządzenia podrzędne mogą uwierzytelniać się za pomocą IoT Hub przy użyciu jednej z trzech metod: klucze symetryczne (czasami określane jako klucze dostępu współdzielonego), certyfikaty z podpisem własnym X. 509 lub certyfikaty z certyfikatem X. 509 (CA). Kroki uwierzytelniania są podobne do kroków użytych w celu skonfigurowania dowolnego urządzenia niezwiązanego z usługą IoT-Edge z IoT Hub z małymi różnicami w celu zadeklarować relacji bramy.
 
 W krokach przedstawionych w tym artykule przedstawiono Ręczne inicjowanie obsługi urządzeń, a nie automatyczne Inicjowanie obsługi przy użyciu IoT Hub Device Provisioning Service platformy Azure. 
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Wykonaj kroki opisane w [sekcji Konfigurowanie urządzenia IoT Edge do działania jako nieprzezroczyste bramy](how-to-create-transparent-gateway.md).
+
+Ten artykuł odnosi się do *nazwy hosta bramy* w kilku punktach. Nazwa hosta bramy jest zadeklarowana w parametrze **hostname** pliku config. YAML na urządzeniu bramy IoT Edge. Służy do tworzenia certyfikatów w tym artykule i jest określany w parametrach połączenia urządzeń podrzędnych. Nazwa hosta bramy musi być rozpoznawalna na adres IP przy użyciu systemu DNS lub wpisu pliku hosta.
 
 ## <a name="symmetric-key-authentication"></a>Uwierzytelnianie klucza symetrycznego
 
@@ -77,7 +83,7 @@ Wszystkie razem, kompletne parametry połączenia wyglądają następująco:
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
 ```
 
-Jeśli została ustanowiona relacja nadrzędny/podrzędny dla tego urządzenia podrzędnego, można uprościć parametry połączenia przez wywołanie bramy bezpośrednio jako hosta połączenia. Przykład: 
+Jeśli została ustanowiona relacja nadrzędny/podrzędny dla tego urządzenia podrzędnego, można uprościć parametry połączenia przez wywołanie bramy bezpośrednio jako hosta połączenia. Na przykład: 
 
 ```
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
@@ -133,7 +139,7 @@ Najprostszym sposobem na przetestowanie tego scenariusza jest użycie tego sameg
    * `<WRKDIR>\certs\iot-device-<device name>*-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-device-<device name>*.key.pem`
 
-   Te pliki będą odwoływać się do tych plików w aplikacjach urządzeń typu liść, które łączą się z IoT Hub. Aby przenieść pliki certyfikatów, można użyć usługi, takiej jak [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) , lub funkcji, takiej jak [Secure Copy protoco](https://www.ssh.com/ssh/scp/) .
+   Te pliki będą odwoływać się do tych plików w aplikacjach urządzeń typu liść, które łączą się z IoT Hub. Do przenoszenia plików certyfikatów można użyć usługi, takiej jak [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) lub funkcja, taka jak [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) .
 
 Możesz użyć [rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension) , aby ukończyć tę samą operację tworzenia urządzenia. Poniższy przykład tworzy nowe urządzenie IoT z uwierzytelnianiem z podpisem własnym X. 509 i przypisuje urządzenie nadrzędne: 
 
@@ -187,7 +193,7 @@ Najprostszym sposobem na przetestowanie tego scenariusza jest użycie tego sameg
    * `<WRKDIR>\certs\iot-device-<device id>*-full-chain.cert.pem`
    * `<WRKDIR>\private\iot-device-<device id>*.key.pem`
 
-   Te pliki będą odwoływać się do tych plików w aplikacjach urządzeń typu liść, które łączą się z IoT Hub. Aby przenieść pliki certyfikatów, można użyć usługi, takiej jak [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) , lub funkcji, takiej jak [Secure Copy protoco](https://www.ssh.com/ssh/scp/) .
+   Te pliki będą odwoływać się do tych plików w aplikacjach urządzeń typu liść, które łączą się z IoT Hub. Do przenoszenia plików certyfikatów można użyć usługi, takiej jak [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) lub funkcja, taka jak [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) .
 
 Możesz użyć [rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension) , aby ukończyć tę samą operację tworzenia urządzenia. Poniższy przykład tworzy nowe urządzenie IoT przy użyciu podpisanego uwierzytelniania urzędu certyfikacji X. 509 i przypisuje urządzenie nadrzędne: 
 
@@ -395,6 +401,6 @@ private static String privateKeyString =
 DeviceClient client = new DeviceClient(connectionString, protocol, publicKeyCertificateString, false, privateKeyString, false);
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wykonanie tego artykułu powinno spowodować, że urządzenie IoT Edge działa jako niewidoczna brama i urządzenie podrzędne zarejestrowane w usłudze IoT Hub. Następnie należy skonfigurować urządzenia podrzędne, aby ufać urządzeniu bramy i wysyłać do niego komunikaty. Aby uzyskać więcej informacji, zobacz [połączyć podrzędny urządzenie bramy usługi Azure IoT Edge](how-to-connect-downstream-device.md).

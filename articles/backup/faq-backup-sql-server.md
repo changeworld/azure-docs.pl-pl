@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: a600c50e97f0d069443112a59d529c0d6f6fecad
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 6e3ce21419e131ceef65939202eb70a98f10b040
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737074"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982432"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Często zadawane pytania dotyczące SQL Server baz danych uruchomionych w ramach kopii zapasowej maszyny wirtualnej platformy Azure
 
@@ -37,9 +37,10 @@ W pewnych okolicznościach usługa Azure Backup wyzwala odtworzenie kopii zapaso
 Funkcja Autokorekty jest domyślnie włączona dla wszystkich użytkowników; Jednak w przypadku wybrania opcji rezygnacji z niej wykonaj następujące czynności:
 
   * Na wystąpieniu SQL Server w folderze *C:\Program Files\Azure Backup\bin obciążenia* Utwórz lub edytuj plik **ExtensionSettingsOverrides. JSON** .
-  * W pliku **ExtensionSettingsOverrides. JSON**Ustaw *{"EnableAutoHealer": false}* .
+  * W pliku **ExtensionSettingsOverrides. JSON**Ustaw *{"EnableAutoHealer": false}* .
   * Zapisz zmiany i zamknij plik.
-  * Na wystąpieniu SQL Server Otwórz **zadanie Zarządzaj** , a następnie uruchom ponownie usługę **AzureWLBackupCoordinatorSvc** .  
+  * Na wystąpieniu SQL Server Otwórz **zadanie Zarządzaj** , a następnie uruchom ponownie usługę **AzureWLBackupCoordinatorSvc** .
+   
 
 ## <a name="can-i-control-as-to-how-many-concurrent-backups-run-on-the-sql-server"></a>Czy mogę kontrolować, jak wiele współbieżnych kopii zapasowych jest uruchomionych na serwerze SQL?
 
@@ -71,12 +72,12 @@ Nie. Zakończone pomyślnie zadania tworzenia kopii zapasowej nie generują aler
 W menu **zadania tworzenia kopii zapasowej** będą wyświetlane tylko zadania tworzenia kopii zapasowych ad hoc. W przypadku zaplanowanego zadania Użyj [monitorowania przy użyciu Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>Czy przyszłe bazy danych są automatycznie dodawane do kopii zapasowej?
-Tak, możesz uzyskać tę możliwość dzięki funkcji [ochrony autoprotection](backup-sql-server-database-azure-vms.md#enable-auto-protection).  
+Tak, możesz uzyskać tę możliwość dzięki funkcji [ochrony autoprotection](backup-sql-server-database-azure-vms.md#enable-auto-protection).  
 
 ## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>Czy po usunięciu bazy danych z wystąpienia z ochroną chronioną będą wykonywane kopie zapasowe?
 Jeśli baza danych zostanie porzucona z wystąpienia z ochroną chronioną, nadal będą podejmowane kopie zapasowe bazy danych. Oznacza to, że usunięta baza danych zaczyna wyglądać jak w złej kondycji w obszarze **elementy kopii zapasowej** i nadal jest chroniona.
 
-Prawidłowym sposobem zatrzymania ochrony tej bazy danych jest **zatrzymanie wykonywania kopii zapasowej** z **usuwaniem danych** z tej bazy danych.  
+Prawidłowym sposobem zatrzymania ochrony tej bazy danych jest **zatrzymanie wykonywania kopii zapasowej** z **usuwaniem danych** z tej bazy danych.  
 
 ## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>Czy w przypadku zatrzymania operacji tworzenia kopii zapasowej bazy danych z ochroną chronioną jej zachowaniem?
 W przypadku **zatrzymania wykonywania kopii zapasowej z zachowaniem danych**nie będą wykonywane żadne przyszłe kopie zapasowe, a istniejące punkty odzyskiwania pozostaną nienaruszone. Baza danych nadal będzie traktowana jako chroniona i będzie wyświetlana w obszarze **elementy kopii zapasowej**.
@@ -94,6 +95,6 @@ Baza danych, którą można [dodać do wystąpienia](backup-sql-server-database-
   ![Ręczne odnajdywanie nowo dodanej bazy danych](./media/backup-azure-sql-database/view-newly-added-database.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak [utworzyć kopię zapasową bazy danych SQL Server](backup-azure-sql-database.md) działającej na maszynie wirtualnej platformy Azure.

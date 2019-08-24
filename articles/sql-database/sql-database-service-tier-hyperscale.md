@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/06/2019
-ms.openlocfilehash: ce6fc5d32fc9e17499a56cec7f4db2849370a1ec
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d9d70444adee26eab77c0e3d256cd8f340a1b4c8
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566721"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981162"
 ---
 # <a name="hyperscale-service-tier-for-up-to-100-tb"></a>Skalowanie warstwy usług dla maksymalnie 100 TB
 
@@ -110,7 +110,7 @@ Dzięki możliwości szybkiej zmiany w górę i w dół dodatkowych węzłów ob
 
 Bazę danych ze skalą można utworzyć przy użyciu [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) lub [interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Bazy danych ze skalowaniem są dostępne tylko przy użyciu [modelu zakupu opartego na rdzeń wirtualny](sql-database-service-tiers-vcore.md).
 
-Następujące polecenie T-SQL tworzy bazę danych w skali. W `CREATE DATABASE` instrukcji należy określić zarówno cel wersji, jak i usługi. Zapoznaj się z [limitami zasobów](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier) , aby uzyskać listę prawidłowych celów usługi.
+Następujące polecenie T-SQL tworzy bazę danych w skali. W `CREATE DATABASE` instrukcji należy określić zarówno cel wersji, jak i usługi. Zapoznaj się z [limitami zasobów](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier-for-provisioned-compute) , aby uzyskać listę prawidłowych celów usługi.
 
 ```sql
 -- Create a HyperScale Database
@@ -232,7 +232,7 @@ Są to bieżące ograniczenia dotyczące warstwy usług w ramach skalowania na p
 | Elastyczne pule |  Pule elastyczne nie są obecnie obsługiwane z użyciem funkcji wieloskalowania SQL Database.|
 | Migracja do funkcji Moje skalowanie jest obecnie operacją jednokierunkową | Po przeprowadzeniu migracji bazy danych do warstwy usługi nie można migrować jej bezpośrednio na warstwę usług, która nie jest w skali. W obecnym czasie jedynym sposobem migrowania bazy danych z funkcji ze skalowaniem do nieze skalowania jest eksportowanie/importowanie przy użyciu pliku BACPAC.|
 | Migracja baz danych z trwałymi obiektami w pamięci | Funkcja przeskalowania obsługuje tylko nietrwałe obiekty w pamięci (typy tabel, natywne SPs i funkcje).  Trwałe tabele w pamięci i inne obiekty muszą zostać porzucone i odtworzone jako obiekty nieznajdujące się w pamięci przed migracją bazy danych do warstwy usługi.|
-| Zmień śledzenie danych | Nie będzie można używać funkcji śledzenia zmian danych z bazami danych z możliwością skalowania. |
+| Śledzenie zmian | Nie będzie można używać Change Tracking z bazami danych w ramach skalowania. |
 | Replikacja geograficzna  | Nie można jeszcze skonfigurować replikacji geograficznej na potrzeby Azure SQL Database skalowania.  Można wykonywać operacje przywracania geograficznego (Przywracanie bazy danych w innej lokalizacji geograficznej, na potrzeby odzyskiwania po awarii lub w innych celach) |
 | Integracja TDE/AKV | Szyfrowanie przezroczystej bazy danych przy użyciu Azure Key Vault (nazywanego też kluczem "Przenieś jako własne-Key" lub BYOK) nie jest jeszcze obsługiwane dla Azure SQL Database funkcji TDE, ale z kluczami zarządzanymi przez usługę jest w pełni obsługiwane. |
 |Funkcje inteligentnej bazy danych | 1. Tworzenie indeksu, usuwanie modeli doradców indeksu nie jest obsługiwane dla baz danych w skali. <br/>2. Problem ze schematem, DbParameterization — ostatnio dodani doradcy nie są obsługiwane w przypadku bazy danych w celu przeskalowania.|

@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: e4b7de3931c0d3508e5af6aa6bf85dfa18641aee
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 059a614dff7fc0eab5419e3e2ffdeaeecb79ad99
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624989"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981383"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Samouczek: Dodawanie SQL Database wystąpienia zarządzanego do grupy trybu failover
 
@@ -47,7 +47,7 @@ W tym kroku utworzysz grupę zasobów i podstawowe wystąpienie zarządzane dla 
 1. Wybierz pozycję **Utwórz** , aby uruchomić stronę tworzenia **wystąpienia zarządzanego SQL** . 
 1. Na stronie **tworzenie Azure SQL Database wystąpienia zarządzanego** na karcie **podstawowe**
     1. W obszarze **szczegóły projektu**wybierz **subskrypcję** z listy rozwijanej, a następnie wybierz opcję **Utwórz nową** grupę zasobów. Wpisz nazwę grupy zasobów, `myResourceGroup`na przykład. 
-    1. W obszarze **szczegóły wystąpienia zarządzanego**Podaj nazwę wystąpienia zarządzanego oraz region, w którym chcesz wdrożyć wystąpienie zarządzane. Upewnij się, że wybrano region z [sparowanym regionem](/azure/best-practices-availability-paired-regions). Pozostaw wartości domyślne w obszarze **obliczenia i magazyn** . 
+    1. W obszarze **szczegóły wystąpienia zarządzanego**Podaj nazwę wystąpienia zarządzanego oraz region, w którym chcesz wdrożyć wystąpienie zarządzane. Pozostaw wartości domyślne w obszarze **obliczenia i magazyn** . 
     1. W obszarze **konto administratora**Podaj nazwę logowania administratora, `azureuser`na przykład i złożone hasło administratora. 
 
     ![Utwórz podstawowe MI](media/sql-database-managed-instance-failover-group-tutorial/primary-sql-mi-values.png)
@@ -79,7 +79,7 @@ Aby utworzyć sieć wirtualną, wykonaj następujące kroki:
     | **Nazwa** |  Nazwa sieci wirtualnej, która ma być używana przez pomocnicze wystąpienie zarządzane, na przykład `vnet-sql-mi-secondary`. |
     | **Przestrzeń adresowa** | Przestrzeń adresowa sieci wirtualnej, `10.128.0.0/16`na przykład. | 
     | **Subskrypcja** | Subskrypcja, w której znajduje się główne wystąpienie zarządzane i Grupa zasobów. |
-    | **Region** | Lokalizacja, w której zostanie wdrożone pomocnicze wystąpienie zarządzane; powinno to być w [sparowanym regionie](/azure/best-practices-availability-paired-regions) z podstawowym wystąpieniem zarządzanym.  |
+    | **Region** | Lokalizacja, w której zostanie wdrożone pomocnicze wystąpienie zarządzane. |
     | **Podsieć** | Nazwa podsieci. `default`jest dostarczany domyślnie. |
     | **Zakres adresów**| Zakres adresów dla podsieci. Ta wartość musi być inna niż zakres adresów podsieci używany przez sieć wirtualną głównego wystąpienia zarządzanego, `10.128.0.0/24`na przykład.  |
     | &nbsp; | &nbsp; |
@@ -92,7 +92,6 @@ W tym kroku utworzysz dodatkowe wystąpienie zarządzane w Azure Portal, które 
 
 Drugie wystąpienie zarządzane musi:
 - Być pusty. 
-- Znajdować się w ramach [sparowanego regionu](/azure/best-practices-availability-paired-regions) z odpowiadającym mu podstawowym wystąpieniem zarządzanym. 
 - Ma inną podsieć i zakres adresów IP niż podstawowe wystąpienie zarządzane. 
 
 Aby utworzyć dodatkowe wystąpienie zarządzane, wykonaj następujące kroki: 
@@ -108,7 +107,7 @@ Aby utworzyć dodatkowe wystąpienie zarządzane, wykonaj następujące kroki:
     | **Subskrypcja** |  Subskrypcja, w której znajduje się główne wystąpienie zarządzane. |
     | **Grupa zasobów**| Grupa zasobów, w której znajduje się podstawowe wystąpienie zarządzane. |
     | **Nazwa wystąpienia zarządzanego** | Nazwa nowego pomocniczego wystąpienia zarządzanego, takiego jak`sql-mi-secondary`  | 
-    | **Region**| Lokalizacja [sparowanego regionu](/azure/best-practices-availability-paired-regions) dla pomocniczego wystąpienia zarządzanego.  |
+    | **Region**| Lokalizacja pomocniczego wystąpienia zarządzanego.  |
     | **Identyfikator logowania administratora wystąpienia zarządzanego** | Nazwa logowania, która ma być używana dla nowego pomocniczego wystąpienia zarządzanego, na `azureuser`przykład. |
     | **Hasło** | Złożone hasło, które będzie używane przez nazwę logowania administratora dla nowego wystąpienia zarządzanego.  |
     | &nbsp; | &nbsp; |

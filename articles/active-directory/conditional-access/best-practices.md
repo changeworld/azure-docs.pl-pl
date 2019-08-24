@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b7265f8d5ec4b7336253787e9cb881900a52b79
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 29a30e466e78c3a71764b36bf8337aaeae8981f7
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963443"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980499"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Najlepsze rozwiązania dotyczące dostępu warunkowego w Azure Active Directory
 
@@ -87,7 +87,9 @@ Dla każdego logowania Azure Active Directory oblicza wszystkie zasady i gwarant
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>Czy dostęp warunkowy działa z programem Exchange ActiveSync?
 
-Tak, w ramach zasad dostępu warunkowego można użyć programu Exchange ActiveSync z [](block-legacy-authentication.md)pewnymi ograniczeniami. 
+Tak, można użyć programu Exchange ActiveSync w zasadach dostępu warunkowego.
+
+Niektóre aplikacje w chmurze, takie jak SharePoint Online i Exchange Online, obsługują również starsze protokoły uwierzytelniania. Gdy aplikacja kliencka może korzystać z starszego protokołu uwierzytelniania w celu uzyskania dostępu do aplikacji w chmurze, usługa Azure AD nie może wymusić zasady dostępu warunkowego dla tej próby dostępu. Aby uniemożliwić aplikacji klienta pomijanie wymuszania zasad, należy sprawdzić, czy można włączyć tylko nowoczesne uwierzytelnianie w aplikacjach w chmurze, których to dotyczy.
 
 ### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Jak należy skonfigurować dostęp warunkowy przy użyciu aplikacji pakietu Office 365?
 

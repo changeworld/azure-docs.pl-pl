@@ -1,6 +1,6 @@
 ---
-title: Inicjowanie obsługi administracyjnej zarządzania dla aplikacji przedsiębiorstwa w usłudze Azure Active Directory użytkownika | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zarządzanie aprowizacją konta użytkownika dla aplikacji korporacyjnych przy użyciu usługi Azure Active Directory
+title: Zarządzanie użytkownikami dla aplikacji dla przedsiębiorstw w Azure Active Directory | Microsoft Docs
+description: Dowiedz się, jak zarządzać obsługą kont użytkowników w aplikacjach dla przedsiębiorstw przy użyciu Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,86 +15,80 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b994078350aec5657659f8835d228eb907606bb8
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: b6d42c961054927581e7cc43b6f467e5d3e23c4e
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807637"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996724"
 ---
-# <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Zarządzanie kontami użytkowników, inicjowanie obsługi administracyjnej dla aplikacji dla przedsiębiorstw w witrynie Azure portal
+# <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Zarządzanie obsługą kont użytkowników w aplikacjach dla przedsiębiorstw w Azure Portal
 
-W tym artykule opisano sposób używania [witryny Azure portal](https://portal.azure.com) Zarządzanie aprowizacją konta użytkownika automatyczne i cofanie aprowizacji dla aplikacji, które go obsługują. Aby dowiedzieć się więcej na temat inicjowania obsługi administracyjnej konta użytkowników i sposób jej działania, zobacz [Automatyzowanie aprowizacji użytkowników oraz anulowania zastrzeżenia do aplikacji SaaS w usłudze Azure Active Directory](user-provisioning.md).
+W tym artykule opisano sposób korzystania z [Azure Portal](https://portal.azure.com) w celu zarządzania automatyczną obsługą kont użytkowników i anulowaniem aprowizacji dla aplikacji, które go obsługują. Aby dowiedzieć się więcej o automatycznym inicjowaniu obsługi kont użytkowników i sposobie jej działania, zobacz [Automatyzowanie aprowizacji użytkowników i Anulowanie udostępniania aplikacji SaaS przy użyciu Azure Active Directory](user-provisioning.md).
 
 ## <a name="finding-your-apps-in-the-portal"></a>Znajdowanie aplikacji w portalu
 
-Użyj portalu usługi Azure Active Directory do przeglądania i zarządzania wszystkich aplikacji, które są skonfigurowane do logowania jednokrotnego w katalogu. Aplikacje dla przedsiębiorstw to aplikacje, które są wdrażane i używane w organizacji. Wykonaj następujące kroki, aby wyświetlić aplikacje i zarządzaj nimi przedsiębiorstwa:
+Za pomocą portalu Azure Active Directory można wyświetlać wszystkie aplikacje skonfigurowane do rejestracji jednokrotnej w katalogu i zarządzać nimi. Aplikacje dla przedsiębiorstw to aplikacje wdrożone i używane w organizacji. Wykonaj następujące kroki, aby wyświetlić aplikacje dla przedsiębiorstw i zarządzać nimi:
 
-1. Otwórz [portalu Azure Active Directory](https://aad.portal.azure.com).
-1. Wybierz **aplikacje dla przedsiębiorstw** z okienka po lewej stronie. Jest wyświetlana lista wszystkich skonfigurowanych aplikacji, w tym aplikacje, które zostały dodane z galerii.
-1. Wybierz dowolną aplikację, aby załadować jej okienko zasobów, gdzie można wyświetlać raporty i Zarządzaj ustawieniami aplikacji.
-1. Wybierz **aprowizacji** Zarządzanie kontem użytkownika inicjowania obsługi ustawienia dla wybranej aplikacji.
+1. Otwórz [portal Azure Active Directory](https://aad.portal.azure.com).
+1. W okienku po lewej stronie wybierz pozycję **aplikacje dla przedsiębiorstw** . Zostanie wyświetlona lista wszystkich skonfigurowanych aplikacji, w tym aplikacji, które zostały dodane z galerii.
+1. Wybierz dowolną aplikację, aby załadować jej okienko zasobów, w której można wyświetlać raporty i zarządzać ustawieniami aplikacji.
+1. Wybierz opcję **aprowizacji** , aby zarządzać ustawieniami aprowizacji konta użytkownika dla wybranej aplikacji.
 
-   ![Inicjowanie obsługi administracyjnej ekranu, aby zarządzać kontem użytkownika, ustawienia aprowizacji](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
+   ![Ekran aprowizacji do zarządzania ustawieniami aprowizacji konta użytkownika](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning.png)
 
-## <a name="provisioning-modes"></a>Tryby udostępniania
+## <a name="provisioning-modes"></a>Tryby aprowizacji
 
-**Aprowizacji** okienko zaczyna się od **tryb** menu, które pokazuje tryby udostępniania, obsługiwane w przypadku aplikacji dla przedsiębiorstw i można je skonfigurować. Dostępne opcje to:
+Okienko **aprowizacji** rozpoczyna się od menu **tryb** , w którym są wyświetlane tryby aprowizacji obsługiwane przez aplikację dla przedsiębiorstw i umożliwiają ich Konfigurowanie. Dostępne opcje to:
 
-* **Automatyczne** — ta opcja jest wyświetlana, jeśli usługa Azure AD obsługuje oparte na interfejsie API automatyczne aprowizowanie lub cofanie aprowizacji kont użytkowników do tej aplikacji. Wybierz ten tryb, aby wyświetlić interfejs, który ułatwia administratorom:
+* **Automatyczne** — ta opcja jest wyświetlana, jeśli usługa Azure AD obsługuje automatyczną obsługę administracyjną opartą na interfejsie API lub cofanie aprowizacji kont użytkowników w tej aplikacji. Wybierz ten tryb, aby wyświetlić interfejs, który pomaga administratorom:
 
-  * Konfigurowanie usługi Azure AD, aby nawiązać połączenie z interfejsem API zarządzania użytkownikami aplikacji
-  * Tworzenie mapowania konta i przepływów pracy, które definiują przepływ danych kont użytkowników między usługą Azure AD i aplikacji
-  * Zarządzanie usługą Azure AD, usługa aprowizacji
+  * Konfigurowanie usługi Azure AD do nawiązywania połączenia z interfejsem API zarządzania użytkownikami aplikacji
+  * Tworzenie mapowań kont i przepływów pracy definiujących sposób przepływu danych konta użytkownika między usługą Azure AD a aplikacją
+  * Zarządzanie usługą Azure AD Provisioning
 
-* **Ręczne** — ta opcja jest wyświetlana, jeśli usługa Azure AD nie obsługuje automatyczną aprowizację kont użytkowników do tej aplikacji. W tym przypadku konta użytkownika, które rekordy są przechowywane w aplikacji muszą być zarządzane przy użyciu procesu zewnętrznego, oparta na funkcjach zarządzania i inicjowania obsługi użytkowników udostępniane przez tę aplikację (wraz z ewentualnym aprowizacji SAML just in Time).
+* **Ręczna** — ta opcja jest wyświetlana, jeśli usługa Azure AD nie obsługuje automatycznej aprowizacji kont użytkowników w tej aplikacji. W takim przypadku rekordy kont użytkowników przechowywane w aplikacji muszą być zarządzane przy użyciu procesu zewnętrznego w oparciu o możliwości zarządzania użytkownikami i aprowizacji udostępniane przez tę aplikację (co może obejmować Inicjowanie obsługi just in Time do protokołu SAML).
 
-## <a name="configuring-automatic-user-account-provisioning"></a>Konfigurowanie automatycznej konta aprowizacji użytkowników
+## <a name="configuring-automatic-user-account-provisioning"></a>Konfigurowanie automatycznego inicjowania obsługi konta użytkownika
 
-Wybierz **automatyczne** opcję, aby określić ustawienia poświadczeń administratora, mapowań, uruchamianie i zatrzymywanie i synchronizacji.
+Wybierz opcję **Automatyczne** , aby określić ustawienia poświadczeń administratora, mapowania, uruchamianie i zatrzymywanie oraz synchronizację.
 
 ### <a name="admin-credentials"></a>Poświadczenia administratora
 
-Rozwiń **poświadczeń administratora** o podanie poświadczeń wymaganych przez usługi Azure AD nawiązać połączenie z interfejsem API zarządzania użytkownikami aplikacji. Wymagane dane wejściowe różni się w zależności od aplikacji. Aby dowiedzieć się więcej o typach poświadczeń i wymagania dotyczące określonych aplikacji, zobacz [samouczek konfigurowania aplikacji dla tej konkretnej aplikacji](user-provisioning.md).
+Rozwiń węzeł **poświadczenia administratora** , aby wprowadzić poświadczenia wymagane przez usługę Azure AD do łączenia się z interfejsem API zarządzania użytkownikami aplikacji. Wymagane dane wejściowe różnią się w zależności od aplikacji. Aby dowiedzieć się więcej o typach poświadczeń i wymaganiach dotyczących określonych aplikacji, zapoznaj się z [samouczkiem dotyczącym konfiguracji tej konkretnej aplikacji](user-provisioning.md).
 
-Wybierz **Testuj połączenie** do testowania poświadczeń dzięki usłudze Azure AD próba nawiązania połączenia w aplikacji przez Inicjowanie obsługi administracyjnej aplikacji przy użyciu podanych poświadczeń.
+Wybierz pozycję **Testuj połączenie** , aby przetestować poświadczenia, ponieważ usługa Azure AD podejmie próbę nawiązania połączenia z aplikacją aprowizacji aplikacji przy użyciu podanych poświadczeń.
 
 ### <a name="mappings"></a>Mapowania
 
-Rozwiń **mapowania** możesz wyświetlać i edytować atrybuty użytkownika, które przepływ między usługą Azure AD a aplikacją docelową, gdy konta użytkowników są aprowizowane lub aktualizowane.
+Rozwiń węzeł **mapowania** , aby wyświetlić i edytować atrybuty użytkownika, które przepływają między usługą Azure AD a aplikacją docelową, gdy konta użytkowników są inicjowane lub aktualizowane.
 
-Istnieje zestaw wstępnie skonfigurowanego mapowania między obiektami użytkownika usługi Azure AD i obiektów użytkowników każdej aplikacji SaaS. Niektóre aplikacje, zarządzać innych typów obiektów, takich jak grup ani kontaktów. Wybierz mapowanie w tabeli, aby otworzyć Edytor mapowania do prawej, w którym można wyświetlać i odpowiednio je Dostosuj.
+Istnieje wstępnie skonfigurowany zestaw mapowań między obiektami użytkowników usługi Azure AD i obiektami użytkowników aplikacji SaaS. Niektóre aplikacje zarządzają innymi typami obiektów, takimi jak grupy lub kontakty. Wybierz mapowanie w tabeli, aby otworzyć Edytor mapowania po prawej stronie, gdzie można je przeglądać i dostosowywać.
 
 ![Pokazuje ekran mapowania atrybutów](./media/configure-automatic-user-provisioning-portal/enterprise-apps-provisioning-mapping.png)
 
 Obsługiwane dostosowania obejmują:
 
-* Włączanie i wyłączanie mapowania dla określonych obiektów, takich jak obiekt użytkownika usługi Azure AD do obiektu użytkownika dla aplikacji SaaS.
-* Edycja atrybutów, które będą działać z obiektu użytkownika w usłudze Azure AD do obiektu użytkownika w aplikacji. Aby uzyskać więcej informacji na temat Mapowanie atrybutów, zobacz [opis atrybutu mapowania typów](customize-application-attributes.md#understanding-attribute-mapping-types).
-* Filtrowanie akcji aprowizacji, które usługi Azure AD, który jest uruchamiany w aplikacji docelowej. Zamiast pełnej synchronizacji obiektów z usługi Azure AD, można ograniczyć uruchamianie akcji.
+* Włączanie i wyłączanie mapowań określonych obiektów, takich jak obiekt użytkownika usługi Azure AD, do obiektu użytkownika aplikacji SaaS.
+* Edytowanie atrybutów przepływających z obiektu użytkownika usługi Azure AD do obiektu użytkownika aplikacji. Aby uzyskać więcej informacji na temat mapowania atrybutów, zobacz [Omówienie typów mapowania atrybutów](customize-application-attributes.md#understanding-attribute-mapping-types).
+* Filtrowanie akcji aprowizacji, które usługa Azure AD działa w aplikacji dostosowanej. Zamiast korzystać z w pełni zsynchronizowanych obiektów usługi Azure AD, można ograniczyć uruchamianie akcji.
 
-  Na przykład wybrać tylko **aktualizacji** i usługi Azure AD tylko aktualizacje istniejącego użytkownika konta w aplikacji, ale nie tworzy nowe. Wybierz tylko **Utwórz** i platformy Azure tylko powoduje utworzenie nowych kont użytkowników, ale nie aktualizuje już istniejące. Ta funkcja umożliwia administratorom tworzenie różnych mapowań dla tworzenia kont i aktualizowanie przepływów pracy.
+  Na przykład wybierz pozycję **Aktualizacja** i usługa Azure AD tylko aktualizuje istniejące konta użytkowników w aplikacji, ale nie tworzy nowych. Tylko wybierz pozycję **Utwórz** i tylko platforma Azure tworzy tylko nowe konta użytkowników, ale nie aktualizuje istniejących. Ta funkcja umożliwia administratorom tworzenie różnych mapowań na potrzeby tworzenia kont i aktualizowania przepływów pracy.
 
-* Dodano nowe mapowanie atrybutu. Wybierz **Dodaj nowe mapowanie** w dolnej części **mapowanie atrybutu** okienka. Wypełnij **Edytuj atrybut** formularza, a następnie wybierz pozycję **Ok** można dodać nowe mapowanie do listy.
+* Dodawanie nowego mapowania atrybutów. Wybierz pozycję **Dodaj nowe mapowanie** w dolnej części okienka **Mapowanie atrybutu** . Wypełnij formularz **Edytuj atrybut** i wybierz **przycisk OK** , aby dodać nowe mapowanie do listy.
 
 ### <a name="settings"></a>Ustawienia
 
-Można uruchomić i zatrzymać usługi Azure AD, usługi dla wybranej aplikacji w inicjowania obsługi administracyjnej **ustawienia** obszaru **aprowizacji** ekranu. Można także wyczyścić pamięć podręczną inicjowania obsługi administracyjnej i uruchom ponownie usługę.
+Możesz uruchomić i zatrzymać usługę Azure AD Provisioning dla wybranej aplikacji w obszarze **Ustawienia** na ekranie **aprowizacji** . Możesz również wyczyścić pamięć podręczną aprowizacji i ponownie uruchomić usługę.
 
-Jeśli Inicjowanie obsługi administracyjnej jest włączane po raz pierwszy dla aplikacji, należy włączyć usługę, zmieniając **stanie aprowizacji** do **na**. Ta zmiana powoduje, że usługi Azure AD usługi inicjowania obsługi administracyjnej do uruchamiania synchronizacji początkowej. Odczytuje użytkowników przypisanych w **użytkowników i grup** sekcji aplikacji docelowej dla nich zapytania, a następnie wykonuje akcji aprowizacji, zdefiniowane w usłudze Azure AD **mapowania** sekcji. W trakcie tego procesu usługi aprowizacji są przechowywane dane buforowane dotyczące konta użytkownika, które zarządza, niezarządzanego konta w aplikacjach docelowych, które nigdy nie były zakres przypisania nie ma wpływu na anulowanie obsługi operacji. Po wykonaniu początkowej synchronizacji usługi aprowizacji automatycznie synchronizuje obiekty użytkowników i grup na dziesięć minut.
+Jeśli Inicjowanie obsługi jest włączane po raz pierwszy dla aplikacji, Włącz usługę, zmieniając **stan aprowizacji** na **włączone**. Ta zmiana powoduje, że usługa Azure AD Provisioning uruchamia synchronizację początkową. Odczytuje użytkowników przypisanych w sekcji **Użytkownicy i grupy** , wysyła zapytanie do aplikacji docelowej, a następnie uruchamia akcje aprowizacji zdefiniowane w sekcji **mapowania** usługi Azure AD. W trakcie tego procesu usługa aprowizacji przechowuje buforowane dane dotyczące kont użytkowników, którymi zarządza, dlatego nie ma to wpływu na konta niezarządzane w aplikacjach docelowych, które nigdy nie są objęte zakresem przydziału. Po synchronizacji początkowej usługa aprowizacji automatycznie synchronizuje obiekty użytkowników i grup w przedziale dziesięciu minut.
 
-Zmiana **stanie aprowizacji** do **poza** wstrzymanie usługi aprowizacji. W tym stanie platformy Azure nie utworzyć, zaktualizować lub usunąć wszystkich użytkowników lub grupy obiektów w aplikacji. Zmień stan z powrotem do **na** i przejmuje tam, gdzie ją przerwaliśmy usługi.
+Zmień **stan aprowizacji** na **wyłączony** , aby wstrzymać usługę aprowizacji. W tym stanie platforma Azure nie tworzy, nie aktualizuje ani nie usuwa żadnych obiektów użytkowników ani grup w aplikacji. Zmień stan z powrotem na **włączony** , a usługa odbiera w miejscu, w którym została przerwana.
 
-Wybierz **wyczyść bieżący stan i ponownie Rozpocznij synchronizację** pole wyboru i wybrać **Zapisz** do:
+Zaznacz pole wyboru **Wyczyść bieżący stan i ponownie uruchom synchronizację** i wybierz pozycję **Zapisz** w:
 
 * Zatrzymaj usługę aprowizacji
-* Zrzutu pamięci podręcznej dane dotyczące konta, które jest zarządzany przez usługę Azure AD
-* Uruchom ponownie usługi i uruchom ponownie synchronizacji początkowej
+* Zrzuć dane przechowywane w pamięci podręcznej dotyczące kont, którymi zarządza usługa Azure AD
+* Uruchom ponownie usługi i ponownie uruchom synchronizację początkową
 
-Ta opcja umożliwia administratorom IT rozpocząć proces wdrażania inicjowania obsługi administracyjnej za pośrednictwem ponownie.
-
-### <a name="synchronization-details"></a>Szczegóły synchronizacji
-
-Ta sekcja zawiera szczegółowe informacje dotyczące działania usługi aprowizacji, w tym imię i nazwisko przypadków, gdy usługa aprowizowania przeprowadzony na aplikacji, a ilu użytkowników i grupy obiektów, którymi zarządza.
-
-Zostanie podane łącze aby **aprowizacji raport aktywności**, które zapewnia dziennikiem wszystkich użytkowników i grup utworzonych, zaktualizowano i usunięto między usługi Azure AD a aplikacją docelową. Udostępniane są również link do **raport o błędach aprowizacji**, który zawiera bardziej szczegółowe komunikaty o błędach dla użytkowników i grupy obiektów, które nie udało się odczytać, utworzony, zaktualizowany lub usunięty.
+Ta opcja umożliwia administratorom ponowne uruchomienie procesu inicjowania obsługi administracyjnej.

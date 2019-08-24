@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2018
+ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 5639571739f3eb6263f62444e7ab02186e2ca945
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 21720ead788a505f86c4d35eb5a39943ff4a2e12
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742577"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981000"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Pobieranie wirtualnego dysku twardego z systemem Linux z platformy Azure
 
@@ -58,9 +58,9 @@ Aby użyć dysku VHD jako obrazu do tworzenia innych maszyn wirtualnych, wykonaj
 Aby użyć dysku VHD jako dysku dla nowego wystąpienia istniejącej maszyny wirtualnej lub dysku danych, wykonaj następujące kroki:
 
 1.  Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2.  W menu Centrum kliknij pozycję **Virtual Machines**.
+2.  Z menu po lewej stronie wybierz pozycję **Virtual Machines**.
 3.  Z listy wybierz maszynę wirtualną.
-4.  W bloku maszyny wirtualnej kliknij pozycję **Zatrzymaj**.
+4.  Na stronie maszyny wirtualnej wybierz pozycję **Zatrzymaj**.
 
     ![Zatrzymaj maszynę wirtualną](./media/download-vhd/export-stop.png)
 
@@ -68,21 +68,21 @@ Aby użyć dysku VHD jako dysku dla nowego wystąpienia istniejącej maszyny wir
 
 Aby pobrać plik VHD, należy wygenerować adres URL sygnatury [dostępu współdzielonego (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Po wygenerowaniu adresu URL zostanie do niego przypisany czas wygaśnięcia.
 
-1.  W menu bloku maszyny wirtualnej kliknij pozycję **dyski**.
-2.  Wybierz dysk systemu operacyjnego dla maszyny wirtualnej, a następnie kliknij pozycję **eksport dysku**.
-3.  Kliknij pozycję **Generuj adres URL**.
+1.  W menu strony dla maszyny wirtualnej wybierz pozycję **dyski**.
+2.  Wybierz dysk systemu operacyjnego dla maszyny wirtualnej, a następnie wybierz pozycję **eksport dysku**.
+3.  Wybierz pozycję **Generuj adres URL**.
 
     ![Generuj adres URL](./media/download-vhd/export-generate.png)
 
 ## <a name="download-vhd"></a>Pobierz dysk VHD
 
-1.  W obszarze wygenerowanego adresu URL kliknij pozycję Pobierz plik VHD.
-
+1.  W obszarze wygenerowanego adresu URL wybierz pozycję **Pobierz plik VHD**.
+**
     ![Pobierz dysk VHD](./media/download-vhd/export-download.png)
 
-2.  Aby rozpocząć pobieranie, może być konieczne kliknięcie przycisku **Zapisz** w przeglądarce. Domyślna nazwa pliku VHD jest *ABCD*.
+2.  Aby rozpocząć pobieranie, może być konieczne wybranie opcji **Zapisz** w przeglądarce. Domyślna nazwa pliku VHD jest *ABCD*.
 
-    ![Kliknij przycisk Zapisz w przeglądarce](./media/download-vhd/export-save.png)
+    ![Wybierz pozycję Zapisz w przeglądarce](./media/download-vhd/export-save.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

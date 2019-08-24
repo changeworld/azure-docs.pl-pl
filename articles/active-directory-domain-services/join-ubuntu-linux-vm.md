@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: c782629d422eb8846b209fed7ab6b5a5c015de25
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80dbb4f3d0c8b993beab5f6344d6034d6c2b6895
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612293"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990589"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Przyłączanie maszyny wirtualnej Ubuntu na platformie Azure do domeny zarządzanej
 W tym artykule opisano sposób przyłączania maszyny wirtualnej Ubuntu Linux do domeny zarządzanej Azure AD Domain Services.
@@ -88,7 +88,7 @@ Następnie zainstaluj pakiety wymagane do przyłączenia do domeny na maszynie w
 3. Podczas instalacji protokołu Kerberos zobaczysz różowy ekran. Podczas instalacji pakietu "krb5-User" są wyświetlane informacje o nazwie obszaru (WIELKImi LITERAmi). Instalacja zapisuje sekcje [Realm] i [domain_realm] w/etc/krb5.conf.
 
     > [!TIP]
-    > Jeśli nazwa domeny zarządzanej to contoso.com, wprowadź contoso.COM jako obszar. Należy pamiętać, że nazwa obszaru musi być określona WIELKImi LITERAmi.
+    > Jeśli nazwa domeny zarządzanej to contoso.com, wprowadź CONTOSO.COM jako obszar. Należy pamiętać, że nazwa obszaru musi być określona WIELKImi LITERAmi.
 
 
 ## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>Konfigurowanie ustawień NTP (Network Time Protocol) na maszynie wirtualnej z systemem Linux
@@ -121,7 +121,7 @@ Teraz, gdy wymagane pakiety są zainstalowane na maszynie wirtualnej z systemem 
 1. Odkryj domenę zarządzaną usług domenowych w usłudze AAD. W terminalu SSH wpisz następujące polecenie:
 
     ```console
-    sudo realm discover contoso.COM
+    sudo realm discover CONTOSO.COM
     ```
 
    > [!NOTE]
@@ -138,7 +138,7 @@ Teraz, gdy wymagane pakiety są zainstalowane na maszynie wirtualnej z systemem 
     >
 
     ```console
-    kinit bob@contoso.COM
+    kinit bob@CONTOSO.COM
     ```
 
 3. Dołącz komputer do domeny. W terminalu SSH wpisz następujące polecenie:
@@ -149,7 +149,7 @@ Teraz, gdy wymagane pakiety są zainstalowane na maszynie wirtualnej z systemem 
     > Jeśli maszyna wirtualna nie może przyłączyć się do domeny, upewnij się, że sieciowa Grupa zabezpieczeń maszyny wirtualnej zezwala na ruch wychodzący Kerberos na porcie TCP + UDP 464 do podsieci sieci wirtualnej dla domeny zarządzanej platformy Azure AD DS.
 
     ```console
-    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM' --install=/
+    sudo realm join --verbose CONTOSO.COM -U 'bob@CONTOSO.COM' --install=/
     ```
 
 Po pomyślnym przyłączeniu komputera do domeny zarządzanej powinien zostać wyświetlony komunikat ("pomyślnie zarejestrowano maszynę w obszarze").
@@ -192,10 +192,10 @@ session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
 ## <a name="verify-domain-join"></a>Weryfikuj przyłączanie do domeny
 Sprawdź, czy maszyna została pomyślnie przyłączona do domeny zarządzanej. Nawiąż połączenie z dołączoną do domeny maszyną wirtualną Ubuntu przy użyciu innego połączenia SSH. Użyj konta użytkownika domeny, a następnie sprawdź, czy konto użytkownika jest prawidłowo rozwiązane.
 
-1. W terminalu SSH wpisz następujące polecenie, aby nawiązać połączenie z przyłączoną do domeny maszyną wirtualną Ubuntu przy użyciu protokołu SSH. Użyj konta domeny, które należy do domeny zarządzanej (na przykład "bob@contoso.COM" w tym przypadku).
+1. W terminalu SSH wpisz następujące polecenie, aby nawiązać połączenie z przyłączoną do domeny maszyną wirtualną Ubuntu przy użyciu protokołu SSH. Użyj konta domeny, które należy do domeny zarządzanej (na przykład "bob@CONTOSO.COM" w tym przypadku).
     
     ```console
-    ssh -l bob@contoso.COM contoso-ubuntu.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-ubuntu.contoso.com
     ```
 
 2. W terminalu SSH wpisz następujące polecenie, aby sprawdzić, czy katalog macierzysty został zainicjowany prawidłowo.

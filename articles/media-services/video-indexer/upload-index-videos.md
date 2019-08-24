@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 6e62eb862cf6d6760ca67b9e948a724b16303e89
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 8fffc74075abf6dcc4b5c293819f739a9725646b
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305638"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998172"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksowanie plików wideo  
 
@@ -60,7 +60,7 @@ Adres URL używany do powiadamiania klienta (za pomocą żądania POST) o nastę
 - Zmiana stanu indeksowania: 
     - Właściwości:    
     
-        |Name (Nazwa)|Opis|
+        |Name|Opis|
         |---|---|
         |id|Identyfikator wideo|
         |state|Stan wideo|  
@@ -68,7 +68,7 @@ Adres URL używany do powiadamiania klienta (za pomocą żądania POST) o nastę
 - Osoba rozpoznana na filmie wideo:
   - Właściwości
     
-      |Name (Nazwa)|Opis|
+      |Name|Opis|
       |---|---|
       |id| Identyfikator wideo|
       |faceId|Identyfikator Face ID w indeksie wideo|
@@ -159,9 +159,9 @@ public async Task Sample()
     // as an alternative to specifying video URL, you can upload a file.
     // remove the videoUrl parameter from the query params below and add the following lines:
     //FileStream video =File.OpenRead(Globals.VIDEOFILE_PATH);
-    //byte[] buffer =newbyte[video.Length];
+    //byte[] buffer =new byte[video.Length];
     //video.Read(buffer, 0, buffer.Length);
-    //content.Add(newByteArrayContent(buffer));
+    //content.Add(new ByteArrayContent(buffer));
 
     queryParams = CreateQueryString(
         new Dictionary<string, string>()

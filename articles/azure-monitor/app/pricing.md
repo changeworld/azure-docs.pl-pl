@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/19/2019
+ms.date: 08/22/2019
 ms.author: dalek
-ms.openlocfilehash: c3da37d89da8c70f6acdfb1b5ab9c5b10edb86f0
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 45a8f8a7ee4d887503aeaf8e0e285c45a21c4bcc
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624391"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982617"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użyciem i kosztami Application Insights
 
@@ -65,30 +65,43 @@ Opłaty za Application Insights są dodawane do rachunku na korzystanie z platfo
 
 ![W menu po lewej stronie wybierz pozycję rozliczenia](./media/pricing/02-billing.png)
 
-## <a name="data-rate"></a>Szybkość danych
-Ilość wysyłanych danych jest ograniczona na trzy sposoby:
+## <a name="managing-your-data-volume"></a>Zarządzanie ilością danych 
 
-* **Próbkowanie**: Możesz użyć próbkowania, aby zmniejszyć ilość danych telemetrycznych wysyłanych z serwera i aplikacji klienckich przy minimalnym zniekształceniu metryk. Próbkowanie to podstawowe narzędzie, za pomocą którego można dostroić ilość wysyłanych danych. Dowiedz się więcej o [funkcjach pobierania próbek](../../azure-monitor/app/sampling.md). 
-* **Dzienny limit**: Po utworzeniu zasobu Application Insights w Azure Portal dzienny limit jest ustawiany na 100 GB/dzień. Podczas tworzenia zasobu Application Insights w programie Visual Studio wartość domyślna to małe (tylko 32,3 MB/dzień). Domyślna wartość limitu dziennego jest ustawiana na ułatwienia testowania. Przed wdrożeniem aplikacji w środowisku produkcyjnym należy zamierzać, że użytkownik będzie zgłaszał dzienny limit. 
-
-    Maksymalny limit wynosi 1 000 GB/dzień, chyba że zostanie zażądana wyższa wartość maksymalna dla aplikacji o dużym ruchu. 
-
-    Należy zachować ostrożność podczas ustawiania dziennego limitu. Zamiarem powinna być *nigdy nie trafiać dziennego limitu*. Po osiągnięciu dziennego limitu utracisz dane przez pozostałą część dnia i nie będzie można monitorować aplikacji. Aby zmienić dzienny limit, użyj opcji **dzienny limit ilości** . Możesz uzyskać dostęp do tej opcji w okienku **użycie i szacowane koszty** (jest to opisane w dalszej części artykułu).
-    Usunięto ograniczenie dla niektórych typów subskrypcji, które mają środki kredytowe, których nie można użyć dla Application Insights. Wcześniej, jeśli subskrypcja ma limit wydatków, w oknie dialogowym dzienne zakończenie znajdują się instrukcje usuwania limitu wydatków i włączania codziennych limitów ponad 32,3 MB/dzień.
-* **Ograniczanie przepustowości**: Ograniczanie przepustowości ogranicza szybkość danych do 32 000 zdarzeń na sekundę, średnio na 1 minutę na klucz Instrumentacji.
-
-*Co się stanie, jeśli moja aplikacja przekroczy stawkę ograniczenia przepustowości?*
-
-* Ilość danych wysyłanych przez aplikację jest szacowana co minutę. W przypadku przekroczenia stawki za sekundę obliczonej w ciągu minuty serwer odrzuca niektóre żądania. Zestaw SDK buforuje dane, a następnie próbuje ponownie wysłać ją. Rozłożenie przeskoku przez kilka minut. Jeśli aplikacja stale wysyła dane przy użyciu stawki ograniczenia, niektóre dane zostaną usunięte. (Zestawy SDK ASP.NET, Java i JavaScript próbują ponownie wysłać dane w ten sposób; inne zestawy SDK mogą po prostu porzucić dane ograniczające ograniczenia). W przypadku wystąpienia ograniczenia zostanie wyświetlone ostrzeżenie informujące o tym, że wystąpiło.
-
-*Jak mogę wiesz, ile danych jest wysyłanych przez moją aplikację?*
-
-Możesz użyć jednej z następujących opcji, aby sprawdzić, ile danych jest wysyłanych przez aplikację:
+Aby zrozumieć, ile danych jest wysyłanych przez aplikację, możesz:
 
 * Przejdź do okienka **użycie i szacowane koszty** , aby wyświetlić wykres dziennego wolumenu danych. 
 * W Eksplorator metryk Dodaj nowy wykres. Dla metryki wykresu wybierz pozycję **wolumin punktu danych**. Włącz **grupowanie**, a następnie Grupuj według **typu danych**.
+* Użyj typu `systemEvents` danych. Na przykład aby zobaczyć ilość danych pozyskaną w ciągu ostatniego dnia, zapytanie będzie:
 
-## <a name="reduce-your-data-rate"></a>Zmniejsz szybkość danych
+```kusto
+systemEvents 
+| where timestamp >= ago(1d)
+| where type == "Billing" 
+| extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
+| extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
+| summarize sum(BillingTelemetrySizeInBytes)
+```
+
+Tego zapytania można użyć w [alercie dziennika platformy Azure](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log) w celu skonfigurowania alertów dla woluminów danych. 
+
+Ilość wysyłanych danych może być zarządzana na trzy sposoby:
+
+* **Próbkowanie**: Możesz użyć próbkowania, aby zmniejszyć ilość danych telemetrycznych wysyłanych z serwera i aplikacji klienckich przy minimalnym zniekształceniu metryk. Próbkowanie to podstawowe narzędzie, za pomocą którego można dostroić ilość wysyłanych danych. Dowiedz się więcej o [funkcjach pobierania próbek](../../azure-monitor/app/sampling.md).
+ 
+* **Dzienny limit**: Po utworzeniu zasobu Application Insights w Azure Portal dzienny limit jest ustawiany na 100 GB/dzień. Podczas tworzenia zasobu Application Insights w programie Visual Studio wartość domyślna to małe (tylko 32,3 MB/dzień). Domyślna wartość limitu dziennego jest ustawiana na ułatwienia testowania. Przed wdrożeniem aplikacji w środowisku produkcyjnym należy zamierzać, że użytkownik będzie zgłaszał dzienny limit. 
+
+    Maksymalny limit wynosi 1 000 GB/dzień, chyba że zostanie zażądana wyższa wartość maksymalna dla aplikacji o dużym ruchu. 
+    
+    Ostrzegawcze wiadomości e-mail dotyczące dziennego limitu są wysyłane do konta, które są członkami tych ról dla zasobu Application Insights: "Serviceadmin", "AccountAdmin", "Administrator", "Owner".
+
+    Należy zachować ostrożność podczas ustawiania dziennego limitu. Zamiarem powinna być *nigdy nie trafiać dziennego limitu*. Po osiągnięciu dziennego limitu utracisz dane przez pozostałą część dnia i nie będzie można monitorować aplikacji. Aby zmienić dzienny limit, użyj opcji **dzienny limit ilości** . Możesz uzyskać dostęp do tej opcji w okienku **użycie i szacowane koszty** (jest to opisane w dalszej części artykułu).
+    
+    Usunięto ograniczenie dla niektórych typów subskrypcji, które mają środki kredytowe, których nie można użyć dla Application Insights. Wcześniej, jeśli subskrypcja ma limit wydatków, w oknie dialogowym dzienne zakończenie znajdują się instrukcje usuwania limitu wydatków i włączania codziennych limitów ponad 32,3 MB/dzień.
+    
+* **Ograniczanie przepustowości**: Ograniczanie przepustowości ogranicza szybkość danych do 32 000 zdarzeń na sekundę, średnio na 1 minutę na klucz Instrumentacji. Ilość danych wysyłanych przez aplikację jest szacowana co minutę. W przypadku przekroczenia stawki za sekundę obliczonej w ciągu minuty serwer odrzuca niektóre żądania. Zestaw SDK buforuje dane, a następnie próbuje ponownie wysłać ją. Rozłożenie przeskoku przez kilka minut. Jeśli aplikacja stale wysyła dane przy użyciu stawki ograniczenia, niektóre dane zostaną usunięte. (Zestawy SDK ASP.NET, Java i JavaScript próbują ponownie wysłać dane w ten sposób; inne zestawy SDK mogą po prostu porzucić dane ograniczające ograniczenia). W przypadku wystąpienia ograniczenia zostanie wyświetlone ostrzeżenie informujące o tym, że wystąpiło.
+
+## <a name="reduce-your-data-volume"></a>Zmniejszanie ilości danych
+
 Oto kilka rzeczy, które można zrobić, aby zmniejszyć ilość danych:
 
 * Użyj [próbkowania](../../azure-monitor/app/sampling.md). Ta technologia zmniejsza szybkość danych bez pochylania metryk. Nie utracisz możliwości nawigowania między powiązanymi elementami w wyszukiwaniu. W obszarze aplikacje serwera próbkowanie działa automatycznie.

@@ -1,6 +1,6 @@
 ---
 title: Omówienie dedykowanych event hubs — usługa Azure Event Hubs | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie dedykowanej usługi Azure Event Hubs, oferująca wdrożenia pojedynczej dzierżawy usługi event hubs.
+description: Ten artykuł zawiera omówienie dedykowanych Event Hubs platformy Azure, które oferują wdrożenia z jedną dzierżawą centrów zdarzeń.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -15,93 +15,93 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 52e092e6e48f004656860cb5d078e780039584ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ebc6dd672fd180e22cc1edf5c9978e0985427e50
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730236"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991854"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Omówienie usługi Event Hubs w wersji dedykowanej
 
-*Zdarzenie Hubs klastry* oferują wdrożenia pojedynczej dzierżawy dla klientów korzystających z najbardziej wymagające potrzeby przesyłania strumieniowego. Ta oferta pojedynczej dzierżawy ma gwarantowanej umowy SLA dostępność przez 99,99% i jest dostępna tylko w naszych dedykowane warstwy cenowej. Klaster usługi Event Hubs można ruch przychodzący miliony zdarzeń na sekundę z gwarantowaną pojemności i nieprzekraczającymi sekundy opóźnieniami. Przestrzenie nazw i centrów zdarzeń utworzonych w dedykowanym klastrze obejmują wszystkie funkcje standardowe oferty i inne, ale bez żadnych ograniczeń transferu danych przychodzących. Obejmuje również popularnej [przechwytywania usługi Event Hubs](event-hubs-capture-overview.md) funkcji bez dodatkowych kosztów, co pozwala na automatyczne usługi batch i dziennika strumienie danych do usługi Azure Storage lub Azure Data Lake. 
+*Klastry Event Hubs* oferują wdrożenia z jedną dzierżawą dla klientów z najbardziej wymaganymi potrzebami przesyłania strumieniowego. Ta oferta dla jednej dzierżawy jest objęta umową SLA gwarantującą dostępność na poziomie 99,99% i jest dostępna tylko w warstwie cenowej Dedykowana. Klaster Event Hubs może odbierać miliony zdarzeń na sekundę z gwarantowaną pojemnością i opóźnieniami podrzędnymi. Przestrzenie nazw i centra zdarzeń utworzone w dedykowanym klastrze obejmują wszystkie funkcje standardowej oferty i wiele innych, ale bez ograniczeń związanych z transferem danych przychodzących. Zawiera również popularne funkcje [przechwytywania Event Hubs](event-hubs-capture-overview.md) bez dodatkowych kosztów, co pozwala na automatyczne tworzenie partii i rejestrowanie strumieni danych w usłudze Azure Storage lub Azure Data Lake. 
 
-Klastry są aprowizowane i opłata jest naliczana według **jednostek pojemności (CUs)** , wstępnie przydzielić ilości zasobów Procesora i pamięci. Możesz kupić 1, 2, 4, 8, 12, 16 lub 20 jednostek pojemności dla każdego klastra. Ile pozyskiwać i przesyłanie strumieniowe na jednostkę pojemności zależy od wielu czynników, takich jak liczba producentów i konsumentów, ładunek kształtu, ruch wychodzący szybkości (Zobacz więcej szczegółów zawierają wyniki testów porównawczych poniżej). 
+Klastry są udostępniane i są rozliczane według **jednostek pojemności**, wstępnie przydzielonej ilości zasobów procesora i pamięci. W każdym klastrze można zakupić 1, 2, 4, 8, 12, 16 lub 20 jednostek. Ile można pozyskiwania i przesyłania strumieniowego na CU, zależy od różnych czynników, takich jak liczba producentów i odbiorców, kształt ładunku, szybkość ruchu wychodzącego (Zobacz wyniki testów porównawczych poniżej, aby uzyskać więcej informacji). 
 
 > [!NOTE]
-> Wszystkie klastry usługi Event Hubs są platformy Kafka — domyślnie włączone i obsługują punkty końcowe platformy Kafka, które mogą być używane przez istniejące platformy Kafka na podstawie aplikacji. Posiadanie Kafka włączone na klastrze nie ma wpływu na swoje przypadki użycia innego niż Kafka; nie ma opcji lub trzeba wyłączyć platformy Kafka w klastrze.
+> Wszystkie klastry Event Hubs są domyślnie włączone i obsługują punkty końcowe Kafka, które mogą być używane przez istniejące aplikacje oparte na Kafka. Funkcja Kafka włączona w klastrze nie wpływa na przypadki użycia poza Kafkaem; nie ma opcji ani nie trzeba wyłączać Kafka w klastrze.
 
-## <a name="why-dedicated"></a>Dlaczego w wersji dedykowanej?
+## <a name="why-dedicated"></a>Dlaczego są dedykowane?
 
-Dedykowane usługi Event Hubs zapewnia trzy atrakcyjnych korzyści dla klientów potrzebujących pojemność na poziomie przedsiębiorstwa:
+Dedykowane Event Hubs oferują trzy atrakcyjne korzyści dla klientów, którzy potrzebują pojemności na poziomie przedsiębiorstwa:
 
-#### <a name="single-tenancy-guarantees-capacity-for-better-performance"></a>Pojedynczej dzierżawy gwarantuje pojemności w celu zapewnienia lepszej wydajności
+#### <a name="single-tenancy-guarantees-capacity-for-better-performance"></a>Gwarancja jednej dzierżawy w celu zapewnienia lepszej wydajności
 
-Dedykowany klaster gwarantuje pojemności w pełnej skali, a ruch przychodzący do gigabajty danych przesyłanych strumieniowo z pełni trwałe magazynu i nieprzekraczającymi sekundy opóźnieniami, aby uwzględnić dowolny zwiększyć w ruchu. 
+Dedykowany klaster gwarantuje pojemność w pełnej skali i może przystąpić do gigabajtów danych przesyłanych strumieniowo za pomocą w pełni trwałego magazynu i opóźnień podrzędnych w celu uwzględnienia dowolnego obciążenia w ruchu. 
 
-#### <a name="inclusive-and-exclusive-access-to-features"></a>Włączne i wyłączne dostęp do funkcji 
-Dedykowana oferta obejmuje funkcje, takie jak przechwytywanie w nie dodatkowych kosztów, a także wyłączny dostęp do przyszłych funkcji, takich jak BYOK. Usługa również zarządza równoważenia obciążenia, systemu operacyjnego aktualizacje, poprawki zabezpieczeń i partycjonowania dla klientów, dzięki czemu możesz poświęcać mniej czasu na konieczność konserwacji infrastruktury i więcej czasu na tworzeniu funkcji, po stronie klienta.  
+#### <a name="inclusive-and-exclusive-access-to-features"></a>Włączny i wyłączny dostęp do funkcji 
+Oferta dedykowana obejmuje funkcje, takie jak przechwytywanie bez dodatkowych kosztów, a także wyłączny dostęp do przyszłych funkcji, takich jak Bring Your Own Key (BYOK). Usługa zarządza również równoważeniem obciążenia, aktualizacjami systemu operacyjnego, poprawkami zabezpieczeń i partycjonowaniem klienta, dzięki czemu można poświęcać mniej czasu na konserwację infrastruktury i więcej czasu na tworzenie funkcji po stronie klienta.  
 
 #### <a name="cost-savings"></a>Oszczędności kosztów
-Na woluminy wysokiej transferu danych przychodzących (> 100 jednostek przepływności), koszty klastra liczbą znacznie mniejszą za godzinę od zakupu porównywalne ilość jednostek przepływności w ramach oferty Standard.
+W przypadku dużych ilości danych wejściowych (> 100 TUs) klaster postanowił znacznie mniej na godzinę niż zakup porównywalnej liczby jednostek przepływności w ramach oferty standardowej.
 
 
-## <a name="event-hubs-dedicated-quotas-and-limits"></a>Usługa Event Hubs w wersji dedykowanej limity przydziału i ograniczenia
+## <a name="event-hubs-dedicated-quotas-and-limits"></a>Przydziały i limity Event Hubs — warstwa Dedykowana
 
-Event hubs w warstwie dedykowana oferta jest rozliczana w stałej miesięcznej cenie, co najmniej 4 godziny użycia. Dedykowane warstwy są dostępne wszystkie funkcje plan w warstwie standardowa, ale o pojemności Skala przedsiębiorstwa i limity dla klientów wymagających obciążeń. 
+W przypadku oferty Event Hubs — warstwa Dedykowana jest naliczana stała cena miesięczna, a co najmniej 4 godziny użytkowania. Warstwa dedykowana oferuje wszystkie funkcje planu Standard, ale z możliwością skalowania w przedsiębiorstwie i limitami dla klientów wymagających obciążeń. 
 
 | Cecha | Standardowa (Standard) | Dedykowany |
 | --- |:---:|:---:|
-| Przepustowość | 20 jednostek przepływności (maksymalnie 40 jednostek przepływności) | 20 jednostek pojemności |
-| Przestrzenie nazw |  1 | 50 na jednostkę pojemności |
+| Przepustowość | 20 TUs (do 40 TUs) | 20 jednostek |
+| Przestrzenie nazw |  1 | 50 na CU |
 | Event Hubs |  10 na przestrzeń nazw | 1000 na przestrzeń nazw |
 | Zdarzenia związane z transferem danych przychodzących | Płatność za milion zdarzeń | Dołączono |
-| Rozmiar komunikatu | 1 milion bajtów | 1 milion bajtów |
-| Partycje | 40 przestrzeni nazw | 2000 na jednostkę pojemności |
-| Grupy odbiorców | 20 za Centrum zdarzeń | Dopuszczalne na jednostkę pojemności, 1000 na Centrum zdarzeń |
-| Połączenia obsługiwane przez brokera | uwzględniono 1000, 5000 maksymalny | 100 tys. w cenie i maksymalna |
-| Przechowywanie komunikatów | 7 dni, 84 GB na jednostek Przepływności | 90 dni, 10 TB uwzględnione na jednostkę pojemności |
+| Rozmiar komunikatu | 1 000 000 bajtów | 1 000 000 bajtów |
+| Partycje | 40 na przestrzeń nazw | 2000 na CU |
+| Grupy odbiorców | 20 na centrum zdarzeń | Brak limitu na wartość CU, 1000 na centrum zdarzeń |
+| Połączenia obsługiwane przez brokera | 1 000, maksymalnie 5 000 | 100 K uwzględnione i maks. |
+| Przechowywanie komunikatów | 7 dni, 84 GB uwzględnionych na jednostek PRZEPŁYWNOŚCI | 90 dni, 10 TB uwzględnionych na CU |
 | Przechwytywanie | Płatność za godzinę | Dołączono |
 
 ## <a name="how-to-onboard"></a>Jak dołączyć
 
-Samoobsługa możliwość [Tworzenie klastra usługi Event Hubs](event-hubs-dedicated-cluster-create-portal.md) za pośrednictwem [witryny Azure Portal](https://aka.ms/eventhubsclusterquickstart) jest teraz dostępna w wersji zapoznawczej. Jeśli masz pytania lub potrzebujesz pomocy przy dołączaniu do Event hubs w warstwie dedykowana, skontaktuj się z [zespołu usługi Event Hubs](mailto:askeventhubs@microsoft.com).
+Samoobsługowe środowisko [tworzenia klastra Event Hubs](event-hubs-dedicated-cluster-create-portal.md) za pomocą witryny [Azure Portal](https://aka.ms/eventhubsclusterquickstart) jest teraz w wersji zapoznawczej. Jeśli masz jakieś pytania lub potrzebujesz pomocy przy dołączaniu do Event Hubs — warstwa Dedykowana, skontaktuj się z [zespołem Event Hubs](mailto:askeventhubs@microsoft.com).
 
 ## <a name="faqs"></a>Często zadawane pytania
 
-#### <a name="what-can-i-achieve-with-a-cluster"></a>Co można osiągnąć za pomocą klastra?
+#### <a name="what-can-i-achieve-with-a-cluster"></a>Co można osiągnąć przy użyciu klastra?
 
-Dla klastra usługi Event Hubs ile pozyskiwania i przesyłanie strumieniowe zależy od różnych czynników, takich jak usługi producentów konsumentów, szybkość, z jaką są wprowadzane i przetwarzania i wiele więcej. 
+W przypadku klastra Event Hubs, jak dużo możliwości pozyskiwania i przesyłania strumieniowego zależy od różnych czynników, takich jak producenci, konsumenci, szybkość pozyskiwania i przetwarzania oraz wiele innych. 
 
 Poniższej tabeli przedstawiono wyniki testów porównawczych, że możemy osiągnąć podczas testowania naszych:
 
 | Kształt ładunku | Odbiorniki | Przepustowość ruchu przychodzącego| Komunikaty przychodzące | Przepustowość danych wychodzących | Komunikaty wychodzące | Łączna liczba jednostek przepływności | Jednostek przepływności na jednostkę pojemności |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| Partie 100x1KB | 2 | 400 MB/s | 400 k komunikatów na sekundę | 800 MB/s | 800 KB komunikatów na sekundę | 400 jednostek przepływności | 100 jednostek przepływności | 
-| Partie 10x10KB | 2 | 666 MB/s | 66.6 k komunikatów na sekundę | 1.33 GB/s | 133 k komunikatów na sekundę | 666 jednostek przepływności | 166 jednostek przepływności |
-| Partie 6x32KB | 1 | 1,05 GB/s | 34 k komunikaty / sekundę | 1,05 GB/s | 34 k komunikatów na sekundę | 1000 jednostek przepływności | 250 jednostek przepływności |
+| Partie 100x1KB | 2 | 400 MB/s | komunikaty 400 000/s | 800 MB/s | komunikaty 800k/s | 400 jednostek przepływności | 100 jednostek przepływności | 
+| Partie 10x10KB | 2 | 666 MB/s | 66.6 k komunikatów/s | 1.33 GB/s | komunikaty 133k/s | 666 jednostek przepływności | 166 jednostek przepływności |
+| Partie 6x32KB | 1 | 1,05 GB/s | komunikaty 34k/s | 1,05 GB/s | komunikaty 34k/s | 1000 jednostek przepływności | 250 jednostek przepływności |
 
 Podczas testowania, użyto następujących kryteriów:
 
-- Klaster warstwy dedykowana dla usługi Event Hubs przy użyciu czterech jednostek pojemności (CUs) został użyty. 
+- Użyto dedykowanego klastra Event Hubs z czterema jednostkami pojemności (CUs). 
 - Centrum zdarzeń, umożliwiający wprowadzanie ma partycje 200. 
 - Dane, które zostało pozyskane została odebrana przez dwie aplikacje odbiorcy odbieranie od wszystkich partycji.
 
-#### <a name="can-i-scale-updown-my-cluster"></a>Można czy mogę skalować w górę/dół mojego klastra?
+#### <a name="can-i-scale-updown-my-cluster"></a>Czy mogę skalować w górę i w dół mój klaster?
 
-Po utworzeniu klastry są naliczane za okres co najmniej 4 godziny użycia. W wersji zapoznawczej środowiska samoobsługowego, możesz przesłać [żądania pomocy technicznej](https://ms.portal.azure.com/#create/Microsoft.Support) do zespołu usługi Event Hubs, w obszarze *techniczne > przydziału > żądanie skalowania w górę lub Skaluj w dół dedykowany klaster* skalowania klaster w górę lub w dół. Może potrwać maksymalnie 7 dni, aby ukończyć żądanie, aby skalować w dół klastra. 
+Po utworzeniu opłaty za klastry są naliczane co najmniej 4 godziny użytkowania. W wersji zapoznawczej środowiska samoobsługowego można przesłać [żądanie pomocy technicznej](https://ms.portal.azure.com/#create/Microsoft.Support) do zespołu Event Hubs w obszarze przydziały *> technicznych > żądania skalowania* klastra w górę lub w dół w celu skalowania klastra w górę lub w dół. Ukończenie żądania skalowania klastra może potrwać do 7 dni. 
 
-#### <a name="how-will-geo-dr-work-with-my-cluster"></a>Jak Geo-DR będą współpracować z mojego klastra?
+#### <a name="how-will-geo-dr-work-with-my-cluster"></a>Jak będzie współdziałać z moim klastrem za pomocą programu Geo-DR?
 
-Możesz to zrobić pary geograficznie przestrzeni nazw w ramach klastra dedykowane warstwy z innej przestrzeni nazw w ramach klastra dedykowane warstwy. Firma Microsoft nie zachęca parowanie warstwy dedykowana przestrzeń nazw z przestrzeni nazw w naszych standardowych oferty, ponieważ limit przepływności będzie niezgodna będą powodować błędy. 
+Można sparować geograficznie przestrzeń nazw w klastrze dedykowanym z inną przestrzenią nazw w klastrze dedykowanym. Nie zachęcamy do kojarzenia przestrzeni nazw dedykowanej warstwy z przestrzenią nazw w naszej ofercie standardowej, ponieważ ograniczenie przepływności będzie niezgodne, co spowoduje błędy. 
 
-#### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Czy mogę zmigrować Moje standardowych przestrzeni nazw, należy do klastra warstwy dedykowana
-Firma Microsoft nie obsługujemy proces automatycznej migracji dotyczące migracji danych centra zdarzeń ze standardową przestrzeń nazw dedykowana, jeden. 
+#### <a name="can-i-migrate-my-standard-namespaces-to-belong-to-a-dedicated-tier-cluster"></a>Czy mogę migrować moje standardowe przestrzenie nazw, które mają należeć do klastra warstwy dedykowanej?
+Obecnie nie obsługujemy zautomatyzowanego procesu migracji danych centrów zdarzeń z standardowej przestrzeni nazw do dedykowanej. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Skontaktuj się z przedstawicielem handlowym firmy Microsoft lub Microsoft Support, aby uzyskać dodatkowe szczegóły dotyczące Event hubs w warstwie dedykowana. Można również utworzyć klaster lub dowiedzieć się więcej na temat usługi Event Hubs w warstwach cenowych, odwiedź następujące linki:
+Skontaktuj się z przedstawicielem handlowym firmy Microsoft lub pomoc techniczna firmy Microsoft, aby uzyskać dodatkowe informacje dotyczące Event Hubs — warstwa Dedykowana. Możesz również utworzyć klaster lub dowiedzieć się więcej na temat Event Hubs warstw cenowych, odwiedzając następujące linki:
 
-- [Tworzenie klastra usługi Event Hubs za pomocą witryny Azure Portal](https://aka.ms/eventhubsclusterquickstart) 
+- [Tworzenie klastra Event Hubs za pomocą witryny Azure Portal](https://aka.ms/eventhubsclusterquickstart) 
 - [Usługa Event hubs w warstwie dedykowana — cennik](https://azure.microsoft.com/pricing/details/event-hubs/). Można również skontaktować się z przedstawicielem handlowym firmy Microsoft lub Microsoft Support, aby uzyskać dodatkowe szczegóły dotyczące Event hubs w warstwie dedykowana pojemność.
 - [— Często zadawane pytania dla centrów zdarzeń](event-hubs-faq.md) zawiera informacje o cenach i odpowiedzi na niektóre często zadawane pytania dotyczące usługi Event Hubs.

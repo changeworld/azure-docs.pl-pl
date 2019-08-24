@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 3a283f6cbcf4dc345a8c55192507c461f33244d6
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 66394600963cf154b3cb1fe661968f4ded2ec225
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855442"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992262"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Samouczek: Uzyskiwanie dostępu do danych usługi Access Data Lake Storage Gen2 za pomocą usługi Azure DataBricks i platformy Spark
 
@@ -124,18 +124,18 @@ Korzystanie z narzędzia AzCopy do kopiowania danych z pliku *csv* na konto usł
 2. Aby skopiować dane z pliku *csv*, wprowadź następujące polecenie.
 
    ```bash
-   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
+   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
    * Zastąp wartość symboluzastępczegościeżkądopliku`<csv-folder-path>` CSV.
 
    * Zastąp wartość symbolu zastępczego `<storage-account-name>` nazwą konta magazynu.
 
-   * Zastąp symbol zastępczy `<file-system-name>` dowolną nazwą, którą chcesz nadać systemowi plików.
+   * Zastąp `<container-name>` symbol zastępczy dowolną nazwą, którą chcesz przypisać do kontenera.
 
-## <a name="create-a-file-system-and-mount-it"></a>Tworzenie systemu plików i instalowanie go
+## <a name="create-a-container-and-mount-it"></a>Utwórz kontener i zainstaluj go
 
-W tej sekcji utworzysz system plików i folder na koncie magazynu.
+W tej sekcji utworzysz kontener i folder na koncie magazynu.
 
 1. W witrynie [Azure Portal](https://portal.azure.com) przejdź do utworzonej usługi Azure Databricks i wybierz pozycję **Uruchom obszar roboczy**.
 
@@ -158,12 +158,12 @@ W tej sekcji utworzysz system plików i folder na koncie magazynu.
            "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
 
     dbutils.fs.mount(
-    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/folder1",
+    source = "abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/folder1",
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
 
-18. W tym bloku kodu zamień symbole zastępcze `appId`, `password`, `tenant` i `storage-account-name` na wartości zebrane podczas wykonywania kroków wymagań wstępnych. Zastąp `file-system-name` wartość symbolu zastępczego nazwą nadaną w systemie plików ADLS w poprzednim kroku.
+18. W tym bloku kodu zamień symbole zastępcze `appId`, `password`, `tenant` i `storage-account-name` na wartości zebrane podczas wykonywania kroków wymagań wstępnych. Zastąp `container-name` wartość symbolu zastępczego nazwą przedaną do kontenera w poprzednim kroku.
 
 Użyj tych wartości, aby zastąpić wymienione symbole zastępcze.
 
@@ -173,7 +173,7 @@ Użyj tych wartości, aby zastąpić wymienione symbole zastępcze.
 
    * Parametr `storage-account-name` to nazwa konta magazynu usługi Azure Data Lake Storage Gen2.
 
-   * Zastąp symbol zastępczy `file-system-name` dowolną nazwą, którą chcesz nadać systemowi plików.
+   * Zastąp `container-name` symbol zastępczy dowolną nazwą, którą chcesz przypisać do kontenera.
 
    > [!NOTE]
    > W ustawieniach produkcyjnych Rozważ przechowywanie hasła w Azure Databricks. Następnie Dodaj klucz wyszukiwania do bloku kodu zamiast hasła. Po zakończeniu tego samouczka Szybki start zobacz artykuł na temat usługi [Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html) w witrynie internetowej usługi Azure Databricks, aby zapoznać się z przykładami tego podejścia.

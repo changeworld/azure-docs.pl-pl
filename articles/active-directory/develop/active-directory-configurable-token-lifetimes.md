@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 08/22/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f6aa209b6e99be406634e01be47c6dd9572d62a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 95c337501c46dd9b30ff20d71a9363ab03fdb608
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853433"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980447"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurowalne okresy istnienia tokenu w Azure Active Directory (wersja zapoznawcza)
 
@@ -81,15 +81,15 @@ Zasada okresu istnienia tokenu jest typem obiektu zasad, który zawiera reguły 
 ### <a name="configurable-token-lifetime-properties"></a>Konfigurowalne właściwości okresu istnienia tokenu
 | Właściwość | Ciąg właściwości zasad | Mową | Domyślny | Minimalne | Maksimum |
 | --- | --- | --- | --- | --- | --- |
-| Okres istnienia tokenu dostępu |AccessTokenLifetime<sup>4</sup> |Tokeny dostępu, tokeny identyfikatorów, tokeny SAML2 |1 godzina |10 minut |1 dzień |
+| Okres istnienia tokenu dostępu |AccessTokenLifetime<sup>2</sup> |Tokeny dostępu, tokeny identyfikatorów, tokeny SAML2 |1 godzina |10 minut |1 dzień |
 | Maksymalny czas nieaktywności tokenu odświeżania |MaxInactiveTime |Odśwież tokeny |90 dni |10 minut |90 dni |
 | Maksymalny wiek tokenu odświeżania pojedynczego czynnika |MaxAgeSingleFactor |Odśwież tokeny (dla wszystkich użytkowników) |Do odwołania |10 minut |Until-revoked<sup>1</sup> |
 | Maksymalny wiek tokenu wieloskładnikowego odświeżania |MaxAgeMultiFactor |Odśwież tokeny (dla wszystkich użytkowników) |Do odwołania |10 minut |Until-revoked<sup>1</sup> |
-| Maksymalny wiek tokenu sesji pojedynczego czynnika |MaxAgeSessionSingleFactor<sup>2</sup> |Tokeny sesji (trwałe i nietrwałe) |Do odwołania |10 minut |Until-revoked<sup>1</sup> |
-| Maksymalny wiek tokenu sesji wieloskładnikowe |MaxAgeSessionMultiFactor<sup>3</sup> |Tokeny sesji (trwałe i nietrwałe) |Do odwołania |10 minut |Until-revoked<sup>1</sup> |
+| Maksymalny wiek tokenu sesji pojedynczego czynnika |MaxAgeSessionSingleFactor |Tokeny sesji (trwałe i nietrwałe) |Do odwołania |10 minut |Until-revoked<sup>1</sup> |
+| Maksymalny wiek tokenu sesji wieloskładnikowe |MaxAgeSessionMultiFactor |Tokeny sesji (trwałe i nietrwałe) |Do odwołania |10 minut |Until-revoked<sup>1</sup> |
 
 * <sup>1</sup>365 dni to maksymalna jawna długość, którą można ustawić dla tych atrybutów.
-* <sup>4</sup> Aby umożliwić działanie klienta sieci Web Microsoft Teams, zaleca się ustawienie AccessTokenLifetime na ponad 15 minut dla zespołów Microsoft Teams.
+* <sup>2</sup> Aby umożliwić działanie klienta sieci Web Microsoft Teams, zaleca się ustawienie AccessTokenLifetime na ponad 15 minut dla zespołów Microsoft Teams.
 
 ### <a name="exceptions"></a>Wyjątki
 | Właściwość | Mową | Domyślny |

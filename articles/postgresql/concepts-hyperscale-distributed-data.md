@@ -1,56 +1,57 @@
 ---
-title: Rozproszone dane w usłudze Azure Database for PostgreSQL — w Hiperskali (Citus) (wersja zapoznawcza)
-description: Tabele i fragmentów rozpowszechniane w grupie serwerów.
+title: Dane rozproszone w Azure Database for PostgreSQL — skalowanie (Citus)
+description: Tabele i fragmentów dystrybuowane w grupie serwerów.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 9020ee690d93a1b477471fac4a482a909fca5935
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: acc07086f4eaac523cb27e1361cb9cc6d380c695
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65077338"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998043"
 ---
-# <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Rozproszone dane w usłudze Azure Database for PostgreSQL — w Hiperskali (Citus) (wersja zapoznawcza)
+# <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Dane rozproszone w Azure Database for PostgreSQL — skalowanie (Citus)
 
-W tym artykule opisano typy trzy tabeli w Hiperskali (Citus).
-Pokazuje, jak rozproszone tabele są przechowywane jako fragmentów i sposób fragmentów są umieszczane w węzłach.
+W tym artykule opisano trzy typy tabel w programie Azure Database for PostgreSQL — wersja zapoznawcza (Citus).
+Pokazuje, jak tabele rozproszone są przechowywane jako fragmentów, i sposób, w jaki fragmentów są umieszczane w węzłach.
 
 ## <a name="table-types"></a>Typy tabel
 
-Istnieją trzy typy tabel w grupie serwerów na dużą skalę, każdy obiekt używany do różnych celów.
+Istnieją trzy typy tabel w grupie serwerów ze skalą (Citus), z których każdy jest używany do różnych celów.
 
-### <a name="type-1-distributed-tables"></a>Typu 1: rozproszone tabele
+### <a name="type-1-distributed-tables"></a>Typ 1: Rozproszone tabele
 
-Pierwszy typ i najczęściej występujące *rozproszonych* tabel. Wydaje się normalnych tabel do instrukcji SQL, ale poziomie *partycjonowane* w węzłach procesu roboczego. Oznacza to, że wiersze w tabeli są przechowywane w różnych węzłach w tabelach fragment o nazwie *fragmentów*.
+Pierwszy typ, a najpopularniejsze, są tabelami rozproszonymi. Wyglądają one jako normalne tabele do instrukcji SQL, ale są one podzielone na partycje w węzłach procesu roboczego. Oznacza to, że wiersze tabeli są przechowywane w różnych węzłach w tabelach fragmentów o nazwie fragmentów.
 
-W Hiperskali działa nie tylko SQL, ale instrukcji DDL w całym klastrze, więc zmiany schematu tabeli rozproszonych dokonuje kaskadowych można zaktualizować wszystkich tabeli fragmentów dla pracowników.
+Funkcja przeskalowania (Citus) jest uruchamiana nie tylko SQL, ale instrukcje języka DDL w całym klastrze.
+Zmiana schematu rozproszonej tabeli kaskadowej w celu zaktualizowania wszystkich fragmentów tabeli między pracownikami.
 
 #### <a name="distribution-column"></a>Kolumna dystrybucji
 
-W Hiperskali przypisuje wierszy do fragmentów przy użyciu konsolidatorze fragmentowania. Sposób deterministyczny w oparciu o wartość kolumny tabeli o nazwie w przydziału *kolumny dystrybucji.* Podczas dystrybucji tabelę, administrator klastra należy wyznaczyć tej kolumny.
-Tworzenie właściwym wyborem jest ważne w przypadku wydajności i funkcjonalności.
+Funkcja przeskaling (Citus) używa algorytmu fragmentowania do przypisywania wierszy do fragmentów. Przypisanie jest wykonywane w sposób deterministyczny na podstawie wartości kolumny tabeli zwanej kolumną dystrybucji. Administrator klastra musi wyznaczyć tę kolumnę podczas dystrybucji tabeli.
+Wybór właściwego wyboru jest istotny dla wydajności i funkcjonalności.
 
-### <a name="type-2-reference-tables"></a>Typu 2: tabele odwołań
+### <a name="type-2-reference-tables"></a>Typ 2: Tabele odwołań
 
-Tabela odwołania jest typu rozproszona tabela, której cała zawartość jest skoncentrowana do jednego fragmentu. Fragment jest replikowana na każdy pracownik, więc kwerendy dla każdego pracownika dostęp informacje lokalnie, bez obciążenie sieci, żądać wierszy z innego węzła. Tabele odwołań mieć żadnej kolumny dystrybucji, ponieważ nie ma potrzeby do rozróżniania osobnych fragmentach każdego wiersza.
+Tabela referencyjna jest typem rozproszonej tabeli, której cała zawartość jest skoncentrowana na jednym fragmentu. Fragmentu jest replikowana na każdym procesie roboczym. Zapytania dotyczące dowolnego pracownika mogą uzyskać dostęp do informacji referencyjnych lokalnie, bez narzutu sieciowego żądającego wierszy z innego węzła. Tabele referencyjne nie mają kolumny dystrybucji, ponieważ nie ma potrzeby odróżniania oddzielnych fragmentów na wiersz.
 
-Tabele odwołań są zwykle małe i są używane do przechowywania danych, które są istotne dla kwerendy uruchamianie na dowolnym węźle procesu roboczego. Na przykład wyliczonych wartości, takich jak Stany kolejności lub kategorie produktów.
+Tabele odwołań są zwykle małe i są używane do przechowywania danych, które są istotne dla zapytań uruchomionych w dowolnym węźle procesu roboczego. Przykładem są wartości wyliczane, takie jak Stany zamówień lub kategorie produktów.
 
-### <a name="type-3-local-tables"></a>Typ 3: lokalne tablice
+### <a name="type-3-local-tables"></a>Typ 3: Tabele lokalne
 
-Gdy używasz w Hiperskali, węzeł koordynatora, z którymi są nawiązywane połączenia jest regularne bazy danych PostgreSQL. Można utworzyć zwykłej tabele dla koordynatora i zrezygnować z fragmentu je.
+W przypadku używania funkcji Citus (preskalowanie) węzeł koordynatora, z którym nawiązujesz połączenie, jest zwykłą bazą danych PostgreSQL. Można utworzyć zwykłe tabele na koordynatorze i zrezygnować z ich fragmentu.
 
-Dobrym kandydatem do tabel lokalnych będą małe administracyjne tabel, które nie są używane w zapytaniach sprzężenia. Na przykład tabela użytkowników do uwierzytelniania i logowania do aplikacji.
+Dobrym kandydatem do tabel lokalnych byłyby małe tabele administracyjne, które nie uczestniczą w zapytaniach sprzężenia. Przykładem jest tabela użytkownicy do logowania i uwierzytelniania aplikacji.
 
 ## <a name="shards"></a>Fragmentów
 
-Poprzedniej sekcji opisano, jak rozproszone tabele są przechowywane jako fragmentów na węzłach procesu roboczego. W tej sekcji pobiera więcej szczegóły techniczne.
+W poprzedniej sekcji opisano, jak tabele rozproszone są przechowywane jako fragmentów w węzłach procesu roboczego. W tej sekcji omówiono więcej szczegółów technicznych.
 
-`pg_dist_shard` Tabeli metadanych dla koordynatora zawiera wiersz dla każdego fragmentu w każdej tabeli rozproszonych w systemie. Wiersz jest zgodny z Identyfikatorem fragmentu z zakresu liczb całkowitych w obszarze wyznaczania wartości skrótu (shardminvalue, shardmaxvalue):
+Tabela `pg_dist_shard` metadanych w koordynatorze zawiera wiersz dla każdej fragmentu tabeli rozproszonej w systemie. Wiersz jest zgodny z IDENTYFIKATORem fragmentu z zakresem liczb całkowitych w przestrzeni skrótów (shardminvalue, shardmaxvalue).
 
 ```sql
 SELECT * from pg_dist_shard;
@@ -63,13 +64,13 @@ SELECT * from pg_dist_shard;
  (4 rows)
 ```
 
-Jeśli węzeł koordynujący chce, aby określić, który fragment zawiera wiersz `github_events`, miesza wartość kolumny dystrybucji, w tym wierszu i sprawdza, który fragment\'s zakres zawiera wartość skrótu. (Zakresy są zdefiniowane tak, aby obraz funkcji skrótu ich Unii rozłącznej).
+Jeśli węzeł koordynatora chce określić, które fragmentu przechowuje wiersz `github_events`, miesza wartość kolumny dystrybucji w wierszu. Następnie węzeł sprawdzi, który zakres\'fragmentu zawiera wartość zmieszaną. Zakresy są zdefiniowane, aby obraz funkcji skrótu był ich rozłącznym złożeniem.
 
-### <a name="shard-placements"></a>Takie umieszczenie fragmentów
+### <a name="shard-placements"></a>Fragmentu
 
-Załóżmy, że w tym fragmencie 102027 jest skojarzona z danego wiersza. Wiersz będzie odczytu lub zapisu w tabeli o nazwie `github_events_102027` w jednym pracowników. Których procesów roboczych? Który jest całkowicie tabel metadanych, i mapowania fragmentów do procesu roboczego jest znany jako fragment *umieszczania*.
+Załóżmy, że fragmentu 102027 jest skojarzony z danym wierszem. Wiersz jest odczytywany lub zapisywana w tabeli o `github_events_102027` nazwie w jednym z procesów roboczych. Który proces roboczy? Jest to określane całkowicie przez tabele metadanych. Mapowanie elementu fragmentu na proces roboczy jest nazywane rozmieszczeniem fragmentu.
 
-Węzeł koordynatora ponownie zapisuje zapytania na fragmenty, które odwołują się do określonych tabel, takich jak `github_events_102027`, i uruchamia tych fragmentów dla odpowiednich procesów roboczych. Oto przykład kwerendy, uruchom w tle można odnaleźć węzła zawierający 102027 identyfikator fragmentu.
+Węzeł koordynator ponownie zapisuje zapytania do fragmentów odwołujących się do określonych tabel, `github_events_102027` takich jak i uruchamia te fragmenty na odpowiednich procesach roboczych. Oto przykład zapytania uruchamianego w tle, aby znaleźć węzeł przechowujący fragmentu o IDENTYFIKATORze 102027.
 
 ```sql
 SELECT
@@ -89,5 +90,5 @@ WHERE shardid = 102027;
     │  102027 │ localhost │     5433 │
     └─────────┴───────────┴──────────┘
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się, jak [wybierz kolumnę dystrybucji](concepts-hyperscale-choose-distribution-column.md) dla rozproszone tabele
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się, jak [wybrać kolumnę dystrybucji](concepts-hyperscale-choose-distribution-column.md) dla tabel rozproszonych.

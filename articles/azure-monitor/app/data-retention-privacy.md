@@ -1,6 +1,6 @@
 ---
-title: Przechowywanie danych i magazynu w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
-description: Deklaracja zasad przechowywania i ochrona prywatności
+title: Przechowywanie i przechowywanie danych w usłudze Azure Application Insights | Microsoft Docs
+description: Zasady przechowywania i zasad zachowania poufności informacji
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,152 +10,151 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 08/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 38723a5dd306c2a4b594d95e5cc660d117966bc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18129c625630e7e21e2139ea3967ba5152bc0b30
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65518839"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991180"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w usłudze Application Insights
 
-Po zainstalowaniu [usługi Azure Application Insights] [ start] zestawu SDK w Twojej aplikacji wysyła telemetrię dotyczącą swojej aplikacji w chmurze. Oczywiście deweloperzy odpowiada chcą wiedzieć, dokładnie przesyłanych danych, co się dzieje z danymi i jak można zachować kontrolę nad nim. W szczególności można było wysłać dane poufne, gdzie są przechowywane i jak bezpieczne jest? 
+Po zainstalowaniu zestawu [Azure Application Insights][start] SDK w aplikacji wysyła ona dane telemetryczne dotyczące aplikacji do chmury. W naturalny sposób zainteresowani deweloperzy chcą dokładnie wiedzieć, jakie dane są wysyłane, co się dzieje z danymi i jak mogą one zachować kontrolę nad nimi. W szczególności mogą być wysyłane poufne dane, gdzie są przechowywane i jak są bezpieczne? 
 
-Pierwszy, krótka odpowiedź:
+Najpierw krótka odpowiedź:
 
-* Moduły standardowe dane telemetryczne, które Uruchom "fabrycznej" prawdopodobnie nie wysyłać danych poufnych do usługi. Dane telemetryczne dotyczy obciążenia, metryki wydajności i użycia, raporty dotyczące wyjątków i inne dane diagnostyczne. Dane użytkownika głównego widoczne w raporty diagnostyczne są adresami URL; ale aplikacja nie powinna w każdym przypadku poufnych danych w postaci zwykłego tekstu w adresie URL.
-* Można napisać kod, który wysyła dodatkowe niestandardowych danych telemetrycznych do udzielenia odpowiedzi na dane diagnostyczne i użycia monitorowania. (Rozszerzania jest atrakcyjną funkcją usługi Application Insights). Będzie to możliwe, przez pomyłkę, aby napisać ten kod, aby obejmowała osobistych, jak i innych poufnych danych. Jeśli aplikacja działa przy użyciu tych danych, należy zastosować procesy szczegółowej weryfikacji do tworzonego kodu.
-* Podczas tworzenia i testowania aplikacji, to łatwo sprawdzić, co jest wysyłane przez zestaw SDK. Dane są wyświetlane w oknie danych wyjściowych debugowania w IDE i przeglądarki. 
-* Dane są przechowywane w [Microsoft Azure](https://azure.com) serwerów w Stanach Zjednoczonych lub Europy. (Ale aplikację można uruchomić gdziekolwiek). Platforma Azure ma [silne zabezpieczenie przetwarza i spełnia szeroki zakres standardami](https://azure.microsoft.com/support/trust-center/). Tylko dla Ciebie i Twojego zespołu wyznaczonym należy mieć dostęp do danych. Pracownicy firmy Microsoft mogą mieć ograniczony dostęp do jej tylko w szczególnych okolicznościach ograniczone, korzystając ze znajomości. Jest on zaszyfrowany przesyłanych i magazynowanych.
+* Standardowe moduły telemetrii, które działają "poza Box", prawdopodobnie nie będą wysyłać poufnych danych do usługi. Dane telemetryczne są powiązane z metrykami obciążenia, wydajności i użycia, raportami o wyjątkach i innymi danymi diagnostycznymi. Główne dane użytkownika widoczne w raportach diagnostycznych są adresami URL; Jednak aplikacja nie powinna w żadnym przypadku umieszczać poufnych danych w postaci zwykłego tekstu w adresie URL.
+* Można napisać kod, który wysyła dodatkowe niestandardowe dane telemetryczne, aby ułatwić diagnostykę i użycie monitorowania. (To rozszerzalność to świetna funkcja Application Insights.) Można to zrobić przez pomyłkę, aby napisać ten kod w taki sposób, aby zawierał dane osobowe i inne poufne. Jeśli aplikacja współpracuje z takimi danymi, należy zastosować dokładne procesy przeglądu do całego kodu, który napiszesz.
+* Podczas tworzenia i testowania aplikacji można łatwo sprawdzić, co jest wysyłane przez zestaw SDK. Dane są wyświetlane w oknach wyjściowych debugowania środowiska IDE i przeglądarki. 
+* Dane są przechowywane na serwerach [Microsoft Azure](https://azure.com) w Stanach Zjednoczonych i Europie. (Ale aplikacja może działać w dowolnym miejscu). Platforma Azure ma [silne procesy zabezpieczeń i spełnia szeroki zakres standardów zgodności](https://azure.microsoft.com/support/trust-center/). Tylko ty i Twój Wyznaczeni zespół mają dostęp do danych. Pracownicy firmy Microsoft mogą mieć ograniczony dostęp do niego tylko w określonych ograniczonych okolicznościach z Twoją wiedzą. Jest on szyfrowany podczas przesyłania i przechowywania.
 
-W pozostałej części tego artykułu bardziej pełni rosnącego odpowiedzi na te pytania. Ustalono, aby być na niezależne tak, aby je pokazać współpracownikom, którzy nie należą do natychmiastowego zespołu.
+W dalszej części tego artykułu szczegółowo opracowano te odpowiedzi. Jest ona zaprojektowana jako samodzielna, aby można było ją pokazać współpracownikom, którzy nie są częścią swojego bezpośredniego zespołu.
 
 ## <a name="what-is-application-insights"></a>Co to jest usługa Application Insights?
-[Usługa Azure Application Insights] [ start] jest usługę oferowaną przez firmę Microsoft, która pomaga zwiększyć wydajność i użyteczność działającej aplikacji. Monitoruje ona cały czas, którym jest uruchomiona, podczas testowania i po jej wdrożeniu lub opublikowanych aplikacji. Usługa Application Insights tworzy wykresy i tabele, w których znajdziesz informacje, na przykład, jakich porach dnia otrzymasz większość użytkowników, jak szybko reagujących aplikacji jest i jak dobrze jest obsługiwany przez zewnętrzne usługi, których jest zależna. Jeśli występują awarie, błędy lub problemy z wydajnością, możesz wyszukać dane telemetryczne szczegółowo przyczynę. I Usługa wyśle do Ciebie wiadomości e-mail, jeśli wystąpiły jakiekolwiek zmiany w dostępności i wydajności aplikacji.
+[Azure Application Insights][start] to usługa świadczona przez firmę Microsoft, która pomaga w ulepszaniu wydajności i użyteczności działającej aplikacji. Monitoruje aplikację przez cały czas jej działania, zarówno podczas testowania, jak i po jej opublikowaniu lub wdrożeniu. Application Insights tworzy wykresy i tabele, które pokazują Ci, na przykład pory dnia, w jaki każdy dzień otrzymuje większość użytkowników, jak reaguje na aplikację i jak jest obsługiwany przez wszystkie zewnętrzne usługi, od których zależy. W przypadku awarii, błędów lub problemów z wydajnością można wyszukać szczegółowe dane telemetryczne, aby zdiagnozować przyczynę. A usługa wyśle Ci wiadomości e-mail w przypadku zmiany dostępności i wydajności aplikacji.
 
-W aplikacji, która staje się częścią jego kodu, aby pobrać tę funkcję, zainstaluj zestaw SDK usługi Application Insights. Gdy aplikacja jest uruchomiona, zestaw SDK monitoruje jego działanie i wysyła dane telemetryczne do usługi Application Insights. Jest to usługa w chmurze hostowana przez [Microsoft Azure](https://azure.com). (Ale usługi Application Insights działa w przypadku aplikacji, nie tylko te, które są hostowane na platformie Azure).
+Aby można było skorzystać z tej funkcji, należy zainstalować zestaw SDK Application Insights w aplikacji, który będzie częścią kodu. Gdy aplikacja jest uruchomiona, zestaw SDK monitoruje swoją operację i wysyła dane telemetryczne do usługi Application Insights. Jest to usługa w chmurze hostowana przez [Microsoft Azure](https://azure.com). (Ale Application Insights działa dla wszystkich aplikacji, a nie tylko tych, które są hostowane na platformie Azure).
 
-Usługa Application Insights są przechowywane i analizuje dane telemetryczne. Aby wyświetlić analizy lub przeszukaj zachowane dane telemetryczne, zaloguj się do konta platformy Azure i otwórz zasób usługi Application Insights dla aplikacji. Dostęp do danych można także udostępnić innym członkom zespołu lub z określoną subskrypcją platformy Azure.
+Usługa Application Insights przechowuje i analizuje dane telemetryczne. Aby wyświetlić analizę lub przeszukać dane telemetryczne przechowywane, zaloguj się do konta platformy Azure i Otwórz zasób Application Insights aplikacji. Dostęp do danych można również udostępnić innym członkom zespołu lub określonym subskrybentom platformy Azure.
 
-Może mieć danych wyeksportowanych z usługi Application Insights, na przykład do bazy danych lub do zewnętrznego narzędzia. Każde narzędzie zapewnia specjalny klucz, który można uzyskać z usługi. Mogą być odwoływane klucz, jeśli to konieczne. 
+Dane można eksportować z usługi Application Insights, na przykład do bazy danych lub narzędzi zewnętrznych. Każdemu narzędziu można udostępnić klucz specjalny uzyskany od usługi. Klucz można odwołać w razie potrzeby. 
 
-Zestawy SDK usługi Application Insights są dostępne dla zakresu typów aplikacji: sieci web usług hostowanych w Twoich własnych serwerach Java EE lub ASP.NET lub w środowisku Azure. sieci Web klientów — oznacza to, że kod uruchomiony na stronie sieci web; aplikacje komputerowe i usług. aplikacje urządzenia, takie jak Windows Phone, iOS i Android. Wszystkie one wysyłają dane telemetryczne do tej samej usługi.
+Zestawy SDK Application Insights są dostępne dla różnych typów aplikacji: usług sieci Web hostowanych we własnych serwerach Java EE lub ASP.NET lub na platformie Azure; Klienci sieci Web — to oznacza kod uruchomiony na stronie sieci Web; aplikacje i usługi pulpitu; aplikacje urządzenia, takie jak Windows Phone, iOS i Android. Wszystkie dane telemetryczne są wysyłane do tej samej usługi.
 
-## <a name="what-data-does-it-collect"></a>Jakie dane są jej zbierane?
-### <a name="how-is-the-data-is-collected"></a>Jak to dane są zbierane?
+## <a name="what-data-does-it-collect"></a>Jakie dane są zbierane?
+### <a name="how-is-the-data-is-collected"></a>Jak są zbierane dane?
 Istnieją trzy źródła danych:
 
-* Zestaw SDK, integracja z aplikacją albo [w rozwoju](../../azure-monitor/app/asp-net.md) lub [w czasie wykonywania](../../azure-monitor/app/monitor-performance-live-website-now.md). Istnieją różne zestawy SDK dla typy innej aplikacji. Istnieje również [zestawu SDK dla stron sieci web](../../azure-monitor/app/javascript.md), który ładuje do przeglądarki użytkownika końcowego oraz strony.
+* Zestaw SDK, który można zintegrować z aplikacją [w trakcie programowania](../../azure-monitor/app/asp-net.md) lub w [czasie wykonywania](../../azure-monitor/app/monitor-performance-live-website-now.md). Istnieją różne zestawy SDK dla różnych typów aplikacji. Istnieje również [zestaw SDK dla stron sieci Web](../../azure-monitor/app/javascript.md), który ładuje się do przeglądarki użytkownika końcowego wraz ze stroną.
   
-  * Każdy zestaw SDK zawiera szereg [modułów](../../azure-monitor/app/configuration-with-applicationinsights-config.md), które używają różnych technik zbierać różne rodzaje danych telemetrycznych.
-  * Po zainstalowaniu zestawu SDK w rozwoju, można użyć jej interfejsu API do wysyłania własnej telemetrii, oprócz standardowych modułów. Tej niestandardowej telemetrii może zawierać żadnych danych, które mają zostać wysłane.
-* Na niektórych serwerach sieci web są również agentów razem aplikacji, które wysyłają dane telemetryczne dotyczące procesora CPU, pamięci i rozszerzenia sieci. Na przykład maszyny wirtualne platformy Azure, hostów platformy Docker i [serwery Java EE](../../azure-monitor/app/java-agent.md) mogą mieć takich agentów.
-* [Testy dostępności](../../azure-monitor/app/monitor-web-app-availability.md) są uruchamiane procesy, przez firmę Microsoft, które wysyłają żądania do aplikacji sieci web w regularnych odstępach czasu. Wyniki są wysyłane do usługi Application Insights.
+  * Każdy zestaw SDK ma wiele [modułów](../../azure-monitor/app/configuration-with-applicationinsights-config.md), które używają różnych technik do zbierania różnych typów danych telemetrycznych.
+  * Jeśli instalujesz zestaw SDK w programie Development, możesz użyć jego interfejsu API do wysyłania własnej telemetrii (oprócz modułów standardowych). Ta niestandardowa Telemetria może zawierać dowolne dane, które chcesz wysłać.
+* Na niektórych serwerach sieci Web są również agenci, którzy uruchamiają się wraz z aplikacją i wysyłają dane telemetryczne dotyczące użycia procesora CPU, pamięci i sieci. Na przykład serwery Azure Virtual Machines, Docker Hosts i [Java EE](../../azure-monitor/app/java-agent.md) mogą mieć takich agentów.
+* [Testy dostępności](../../azure-monitor/app/monitor-web-app-availability.md) to procesy uruchamiane przez firmę Microsoft, które wysyłają żądania do aplikacji sieci Web w regularnych odstępach czasu. Wyniki są wysyłane do usługi Application Insights.
 
-### <a name="what-kinds-of-data-are-collected"></a>Jakiego rodzaju dane są zbierane?
-Dostępne są następujące główne kategorie:
+### <a name="what-kinds-of-data-are-collected"></a>Jakie rodzaje danych są zbierane?
+Główne kategorie to:
 
-* [Dane telemetryczne serwera Web](../../azure-monitor/app/asp-net.md) -żądania HTTP.  Identyfikator URI, czas poświęcony na przetworzenie żądania, kod odpowiedzi, adres IP klienta. Identyfikator sesji.
-* [Strony sieci Web](../../azure-monitor/app/javascript.md) — liczby stron, użytkowników i sesji. Czasy ładowania stron. Liczba wyjątków. Wywołania AJAX.
-* Wydajność liczniki — pamięci, procesora CPU, we/wy, zajętość sieci.
-* Klient i serwer kontekst — system operacyjny, ustawienia regionalne, typu urządzenia, przeglądarki, rozdzielczość ekranu.
-* [Wyjątki](../../azure-monitor/app/asp-net-exceptions.md) i awarie - **zrzuty stosu**, identyfikator, typ Procesora kompilacji. 
-* [Zależności](../../azure-monitor/app/asp-net-dependencies.md) -wywołania usług zewnętrznych, takich jak REST i SQL, AJAX. Identyfikator URI lub parametrów połączenia, czas trwania, Powodzenie, polecenia.
-* [Testy dostępności](../../azure-monitor/app/monitor-web-app-availability.md) — czas trwania testów i kroków, odpowiedzi.
-* [Dzienniki śledzenia](../../azure-monitor/app/asp-net-trace-logs.md) i [niestandardowych danych telemetrycznych](../../azure-monitor/app/api-custom-events-metrics.md) - **niczego kodu w dziennikach lub dane telemetryczne**.
+* Dane telemetryczne [serwera sieci Web](../../azure-monitor/app/asp-net.md) — żądania HTTP.  Identyfikator URI, czas trwania przetwarzania żądania, kod odpowiedzi, adres IP klienta. Identyfikator sesji.
+* [Strony sieci Web](../../azure-monitor/app/javascript.md) — liczba stron, użytkowników i sesji. Czasy ładowania strony. Liczba wyjątków. Wywołania AJAX.
+* Liczniki wydajności — pamięć, procesor CPU, we/wy, zajętość sieci.
+* Kontekst klienta i serwera — system operacyjny, ustawienia regionalne, typ urządzenia, przeglądarka, rozdzielczość ekranu.
+* [Wyjątki](../../azure-monitor/app/asp-net-exceptions.md) i awarie — **zrzuty stosu**, identyfikator kompilacji, typ procesora CPU. 
+* [Zależności](../../azure-monitor/app/asp-net-dependencies.md) — wywołania usług zewnętrznych, takich jak REST, SQL i AJAX. Identyfikator URI lub parametry połączenia, czas trwania, powodzenie, polecenie.
+* [Testy dostępności](../../azure-monitor/app/monitor-web-app-availability.md) — czas trwania testu i kroków, odpowiedzi.
+* [Dzienniki śledzenia](../../azure-monitor/app/asp-net-trace-logs.md) i [niestandardowa Telemetria](../../azure-monitor/app/api-custom-events-metrics.md) - —**wszystko, co jest używane w dziennikach lub danych**telemetrycznych.
 
 [Więcej szczegółów](#data-sent-by-application-insights).
 
-## <a name="how-can-i-verify-whats-being-collected"></a>Jak sprawdzić, jakie są zbierane?
-Jeśli tworzysz aplikację za pomocą programu Visual Studio, należy uruchomić tę aplikację w trybie debugowania (F5). Dane telemetryczne pojawią się w oknie danych wyjściowych. Z tego miejsca możesz skopiować go i sformatować je jako dane JSON łatwą inspekcję. 
+## <a name="how-can-i-verify-whats-being-collected"></a>Jak mogę sprawdzić, co jest zbierane?
+Jeśli tworzysz aplikację przy użyciu programu Visual Studio, uruchom aplikację w trybie debugowania (F5). Dane telemetryczne pojawiają się w oknie danych wyjściowych. Z tego miejsca możesz skopiować go i sformatować jako kod JSON w celu zapewnienia łatwej inspekcji. 
 
 ![](./media/data-retention-privacy/06-vs.png)
 
-Dostępna jest również bardziej czytelny widok w oknie diagnostyki.
+W oknie Diagnostyka znajduje się również bardziej czytelny widok.
 
-Dla stron sieci web Otwórz okno debugowania w przeglądarce.
+W przypadku stron sieci Web otwórz okno debugowanie przeglądarki.
 
-![Naciśnij klawisz F12, aby otworzyć kartę sieci.](./media/data-retention-privacy/08-browser.png)
+![Naciśnij klawisz F12 i Otwórz kartę Sieć.](./media/data-retention-privacy/08-browser.png)
 
-### <a name="can-i-write-code-to-filter-the-telemetry-before-it-is-sent"></a>Czy można napisać kod, aby filtrować dane telemetryczne przed wysłaniem?
-Będzie to możliwe, pisząc [wtyczki procesora telemetrii](../../azure-monitor/app/api-filtering-sampling.md).
+### <a name="can-i-write-code-to-filter-the-telemetry-before-it-is-sent"></a>Czy mogę napisać kod, aby odfiltrować dane telemetryczne przed wysłaniem?
+Jest to możliwe dzięki napisaniu [wtyczki procesora](../../azure-monitor/app/api-filtering-sampling.md)telemetrii.
 
 ## <a name="how-long-is-the-data-kept"></a>Jak długo są przechowywane dane?
-Punkty danych pierwotnych (czyli elementów, które można wykonywać zapytania w usłudze Analytics i sprawdzanie w wyszukiwaniu) są przechowywane przez 90 dni. Jeśli zachodzi potrzeba przechowywać danych dłużej niż ta, możesz użyć [Eksport ciągły](../../azure-monitor/app/export-telemetry.md) skopiowania go do konta magazynu.
+Pierwotne punkty danych (czyli elementy, które można badać w analizie i inspekcji wyszukiwania) są przechowywane przez maksymalnie 730 dni. Można [wybrać okres przechowywania](https://docs.microsoft.com/azure/azure-monitor/app/pricing#change-the-data-retention-period) równy 30, 60, 90, 120, 180, 270, 365, 550 lub 730. Jeśli chcesz przechowywać dane dłużej niż 730 dni, możesz użyć [eksportu ciągłego](../../azure-monitor/app/export-telemetry.md) , aby skopiować go do konta magazynu podczas pozyskiwania danych. 
 
-Zagregowane dane (oznacza to, liczby, średnie i innych danych statystycznych, który zostanie wyświetlony w Eksploratorze metryk) są zachowane w ziarna wynoszącym 1 minutę przez 90 dni.
+Dane przechowywane dłużej niż 90 dni spowodują naliczenie opłat za dodawanie. Dowiedz się więcej o cenach Application Insights na [stronie cennika Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
-> [!NOTE]
-> Zmienna przechowywania dla usługi Application Insights jest teraz dostępna w wersji zapoznawczej. Więcej informacji można znaleźć [tutaj](https://feedback.azure.com/forums/357324-application-insights/suggestions/17454031). 
+Zagregowane dane (czyli liczniki, średnie i inne dane statystyczne widoczne w Eksploratorze metryk) są zachowywane w ciągu 1 minuty przez 90 dni.
 
-[Debugowanie migawek](../../azure-monitor/app/snapshot-debugger.md) są przechowywane przez piętnaście dni. Te zasady przechowywania jest ustawiona na podstawie poszczególnych aplikacji. Jeśli potrzebujesz zwiększyć tę wartość, możesz poprosić o zwiększenie przez otwarcie zgłoszenia do pomocy technicznej w witrynie Azure portal.
+[Migawki debugowania](../../azure-monitor/app/snapshot-debugger.md) są przechowywane przez piętnaście dni. Te zasady przechowywania jest ustawiona na podstawie poszczególnych aplikacji. Jeśli potrzebujesz zwiększyć tę wartość, możesz poprosić o zwiększenie przez otwarcie zgłoszenia do pomocy technicznej w witrynie Azure portal.
 
 ## <a name="who-can-access-the-data"></a>Kto ma dostęp do danych?
-Dane są widoczne dla użytkownika oraz, jeśli masz konto organizacji, członków zespołu. 
+Dane są widoczne dla Ciebie i, jeśli masz konto organizacji, członków zespołu. 
 
-Można można wyeksportować przez Ciebie i członków zespołu i może być skopiowany do innej lokalizacji i przekazywane do innych osób.
+Mogą być eksportowane przez Ciebie i członków zespołu i mogą być kopiowane do innych lokalizacji i przesyłane do innych osób.
 
-#### <a name="what-does-microsoft-do-with-the-information-my-app-sends-to-application-insights"></a>Co robi firmy Microsoft informacje, które Moja aplikacja wysyła do usługi Application Insights?
-Firma Microsoft używa danych tylko w celu świadczenie tej usługi.
+#### <a name="what-does-microsoft-do-with-the-information-my-app-sends-to-application-insights"></a>Do czego służy firma Microsoft z informacjami wysyłanymi przez aplikację do Application Insights?
+Firma Microsoft używa danych tylko w celu udostępnienia usługi.
 
 ## <a name="where-is-the-data-held"></a>Gdzie są przechowywane dane?
-* W USA, Europa lub Azja południowo-wschodnia. Podczas tworzenia nowego zasobu usługi Application Insights, można wybrać lokalizację. 
+* W Stanach Zjednoczonych, Europie lub Południowo-Wschodnia. Lokalizację można wybrać podczas tworzenia nowego zasobu Application Insights. 
 
-#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Oznacza, że Moja aplikacja musi być obsługiwana w USA, Europa lub Azja południowo-wschodnia?
-* Nie. Aplikację można uruchomić dowolnego miejsca i w hostów w środowisku lokalnym lub w chmurze.
+#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Czy oznacza to, że moja aplikacja musi być hostowana w USA, Europie czy Azji Południowo-Wschodnia?
+* Nie. Aplikacja może działać w dowolnym miejscu — na własnych hostach lokalnych lub w chmurze.
 
 ## <a name="how-secure-is-my-data"></a>Jak bezpieczne są moje dane?
-Usługa Application Insights to usługa platformy Azure. Zasady zabezpieczeń są opisane w artykule [oficjalny dokument zabezpieczenia platformy Azure, ochrony prywatności i zgodności](https://go.microsoft.com/fwlink/?linkid=392408).
+Application Insights to usługa platformy Azure. Zasady zabezpieczeń są opisane w [oficjalny dokument dotyczący zabezpieczeń, ochrony prywatności i zgodności z platformą Azure](https://go.microsoft.com/fwlink/?linkid=392408).
 
-Dane są przechowywane na serwerach Microsoft Azure. W przypadku kont w witrynie Azure Portal konta ograniczenia są opisane w [dokumentu zabezpieczeń platformy Azure, ochrony prywatności i zgodności](https://go.microsoft.com/fwlink/?linkid=392408).
+Dane są przechowywane na serwerach Microsoft Azure. W przypadku kont w witrynie Azure Portal ograniczenia konta są opisane w [dokumencie zabezpieczenia, prywatność i zgodność platformy Azure](https://go.microsoft.com/fwlink/?linkid=392408).
 
-Dostęp do danych przez personel firmy Microsoft jest ograniczona. Mamy dostęp do danych, tylko za zgodą użytkownika, a jeśli jest konieczna Obsługa korzystania z usługi Application Insights. 
+Dostęp do danych przez personel firmy Microsoft jest ograniczony. Dostęp do danych odbywa się tylko przy użyciu uprawnień użytkownika, a jeśli jest to konieczne, aby obsługiwać korzystanie z Application Insights. 
 
-Dane w agregacji w aplikacjach wszystkich naszych klientów (np. przesyłania danych i średni rozmiar danych śledzenia) są używane do poprawy usługi Application Insights.
+Dane zagregowane dla wszystkich naszych aplikacji klientów (takie jak stawki danych i średni rozmiar śladów) są używane do ulepszania Application Insights.
 
-#### <a name="could-someone-elses-telemetry-interfere-with-my-application-insights-data"></a>Czy dane telemetryczne osoby może kolidować z Moje dane usługi Application Insights?
-Można dodatkowe dane telemetryczne są wysyłane do swojego konta przy użyciu klucza instrumentacji, który można znaleźć w kodzie strony sieci web. Wystarczającą ilość dodatkowych danych metryk będzie poprawnie reprezentuje wydajność i użycie aplikacji.
+#### <a name="could-someone-elses-telemetry-interfere-with-my-application-insights-data"></a>Czy dane telemetryczne innej osoby mogą przeszkadzać w danych Application Insights?
+Mogą oni wysyłać dodatkowe dane telemetryczne do konta za pomocą klucza instrumentacji, który można znaleźć w kodzie stron sieci Web. Dzięki wystarczającej ilości dodatkowych danych metryki nie będą poprawnie przedstawiać wydajności i użycia aplikacji.
 
-Jeśli kod jest współużytkowana z innymi projektami, pamiętaj, aby usunąć klucz instrumentacji.
+Jeśli współużytkujesz kod z innymi projektami, pamiętaj o usunięciu klucza Instrumentacji.
 
 ## <a name="is-the-data-encrypted"></a>Czy dane są szyfrowane?
-Wszystkie dane są szyfrowane, gdy i ponieważ przechodzi między danymi centrów.
+Wszystkie dane są szyfrowane w czasie spoczynku i przenoszone między centrami danych.
 
-#### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Czy dane są szyfrowane podczas przesyłania z mojej aplikacji na serwerach usługi Application Insights?
-Tak, będziemy używać protokołu https z wysyłania danych do portalu z niemal wszystkie zestawy SDK, w tym serwerów sieci web, urządzeń i stron sieci web protokołu HTTPS. Jedynym wyjątkiem jest dane wysyłane z zwykły stron sieci web HTTP.
+#### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Czy dane są szyfrowane podczas przesyłania z mojej aplikacji do Application Insights serwerów?
+Tak, protokół HTTPS jest używany do wysyłania danych do portalu z niemal wszystkich zestawów SDK, w tym serwerów sieci Web, urządzeń i stron sieci Web HTTPS. Jedynym wyjątkiem są dane wysyłane z zwykłych stron sieci Web HTTP.
 
-## <a name="does-the-sdk-create-temporary-local-storage"></a>Zestaw SDK tworzy tymczasowy magazyn lokalny?
+## <a name="does-the-sdk-create-temporary-local-storage"></a>Czy zestaw SDK tworzy tymczasowy magazyn lokalny?
 
-Tak, niektóre kanałów danych Telemetrycznych utrwalić dane lokalnie, jeśli nie można nawiązać połączenia z punktem końcowym. Przejrzyj poniżej można zobaczyć, które struktury i danych telemetrycznych kanałów dotyczy problem.
+Tak, niektóre kanały telemetrii będą utrzymywać dane lokalnie, jeśli nie można nawiązać połączenia z punktem końcowym. Zapoznaj się z poniższymi tematami, aby zobaczyć, które platformy i kanały telemetrii mają oddziaływać.
 
-Kanały dane telemetryczne, które korzystają z magazynu lokalnego utworzyć pliki tymczasowe w katalogach TEMP lub folder dane aplikacji, które są ograniczone do określonego konta działania aplikacji. Może się tak zdarzyć, gdy punkt końcowy został tymczasowo niedostępna lub zostanie osiągnięty limit ograniczania przepustowości. Gdy ten problem został rozwiązany, kanału danych telemetrycznych zostanie wznowiona wysyłania wszystkich nowych i istniejących danych.
+Kanały telemetrii korzystające z lokalnego magazynu tworzenie plików tymczasowych w katalogach TEMP lub APPDATA, które są ograniczone do określonego konta, na którym działa aplikacja. Może się tak zdarzyć, gdy punkt końcowy był tymczasowo niedostępny lub osiągnięto limit ograniczania. Po rozwiązaniu tego problemu kanał telemetrii zostanie wznowiony, wysyłając wszystkie nowe i utrwalone dane.
 
-Ta utrwalone dane nie są szyfrowane lokalnie. Jeśli jest to niepożądane, sprawdź dane i ograniczyć zbieranie prywatnych danych. (Zobacz [sposobu eksportowania i usuwania danych prywatnych](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data) Aby uzyskać więcej informacji.)
+Te utrwalone dane nie są szyfrowane lokalnie. Jeśli jest to problem, Przejrzyj dane i Ogranicz zbieranie danych prywatnych. (Aby uzyskać więcej informacji [, zobacz Jak eksportować i usuwać dane prywatne](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data#how-to-export-and-delete-private-data) ).
 
-Jeśli klient potrzebuje do konfigurowania tego katalogu z wymaganiami zabezpieczeń można skonfigurować na framework. Upewnij się, że proces uruchamiania aplikacji ma dostęp do zapisu do tego katalogu, ale także upewnij się, że ten katalog jest chroniona w celu uniknięcia dane telemetryczne są odczytywane przez udostępnianie niepowołanym użytkownikom.
+Jeśli klient musi skonfigurować ten katalog z określonymi wymaganiami dotyczącymi zabezpieczeń, można go skonfigurować na platformę. Upewnij się, że proces z uruchomioną aplikacją ma dostęp do zapisu w tym katalogu, ale upewnij się również, że ten katalog jest chroniony, aby uniknąć odczytania danych telemetrycznych przez niezamierzonych użytkowników.
 
 ### <a name="java"></a>Java
 
-`C:\Users\username\AppData\Local\Temp` Służy do utrwalanie danych. Ta lokalizacja nie można skonfigurować z poziomu katalogu konfiguracji i uprawnień dostępu do tego folderu są ograniczone do określonego użytkownika przy użyciu wymaganych poświadczeń. (Zobacz [implementacji](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72) tutaj.)
+`C:\Users\username\AppData\Local\Temp`służy do utrwalania danych. Ta lokalizacja nie jest konfigurowalna z katalogu konfiguracji, a uprawnienia dostępu do tego folderu są ograniczone do określonego użytkownika z wymaganymi poświadczeniami. (Zobacz [](https://github.com/Microsoft/ApplicationInsights-Java/blob/40809cb6857231e572309a5901e1227305c27c1a/core/src/main/java/com/microsoft/applicationinsights/internal/util/LocalFileSystemUtils.java#L48-L72) tutaj implementację).
 
 ###  <a name="net"></a>.Net
 
-Domyślnie `ServerTelemetryChannel` używa bieżącego użytkownika lokalnej aplikacji danych folderu `%localAppData%\Microsoft\ApplicationInsights` lub folderu tymczasowego `%TMP%`. (Zobacz [implementacji](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) tutaj.)
+Domyślnie `ServerTelemetryChannel` używa folderu `%localAppData%\Microsoft\ApplicationInsights` danych lokalnej aplikacji lub folderu `%TMP%`tymczasowego bieżącego użytkownika. (Zobacz [](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) tutaj implementację).
 
 
-Za pomocą pliku konfiguracji:
+Plik konfiguracji:
 ```xml
 <TelemetryChannel Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel,   Microsoft.AI.ServerTelemetryChannel">
     <StorageFolder>D:\NewTestFolder</StorageFolder>
 </TelemetryChannel>
 ```
 
-Za pomocą kodu:
+Za pośrednictwem kodu:
 
 - Usuń ServerTelemetryChannel z pliku konfiguracji
-- Dodaj następujący fragment do konfiguracji:
+- Dodaj następujący fragment kodu do konfiguracji:
   ```csharp
   ServerTelemetryChannel channel = new ServerTelemetryChannel();
   channel.StorageFolder = @"D:\NewTestFolder";
@@ -165,42 +164,42 @@ Za pomocą kodu:
 
 ### <a name="netcore"></a>NetCore
 
-Domyślnie `ServerTelemetryChannel` używa bieżącego użytkownika lokalnej aplikacji danych folderu `%localAppData%\Microsoft\ApplicationInsights` lub folderu tymczasowego `%TMP%`. (Zobacz [implementacji](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) tutaj.) W środowisku systemu Linux magazynu lokalnego zostanie wyłączone, o ile nie określono folderu magazynu.
+Domyślnie `ServerTelemetryChannel` używa folderu `%localAppData%\Microsoft\ApplicationInsights` danych lokalnej aplikacji lub folderu `%TMP%`tymczasowego bieżącego użytkownika. (Zobacz [](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84) tutaj implementację). W środowisku systemu Linux magazyn lokalny zostanie wyłączony, chyba że zostanie określony folder magazynu.
 
-Poniższy fragment kodu przedstawia sposób ustawiania `ServerTelemetryChannel.StorageFolder` w `ConfigureServices()`  metody usługi `Startup.cs` klasy:
+Poniższy fragment kodu pokazuje, `ServerTelemetryChannel.StorageFolder` `ConfigureServices()` jak ustawić w metodzie `Startup.cs` klasy:
 
 ```csharp
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
 ```
 
-(Zobacz [Konfiguracja niestandardowa AspNetCore](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) Aby uzyskać więcej informacji. )
+(Zobacz [Konfiguracja niestandardowa AspNetCore](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) , aby uzyskać więcej informacji. )
 
 ### <a name="nodejs"></a>Node.js
 
-Domyślnie `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` służy do utrwalanie danych. Uprawnienia dostępu do tego folderu są ograniczone do bieżącego użytkownika i administratorów. (Zobacz [implementacji](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts) tutaj.)
+Domyślnie `%TEMP%/appInsights-node{INSTRUMENTATION KEY}` jest używany do utrwalania danych. Uprawnienia dostępu do tego folderu są ograniczone do bieżącego użytkownika i administratorów. (Zobacz [](https://github.com/Microsoft/ApplicationInsights-node.js/blob/develop/Library/Sender.ts) tutaj implementację).
 
-Prefiks folderu `appInsights-node` można przesłonić, zmieniając wartość czasu wykonania zmienna statyczna `Sender.TEMPDIR_PREFIX` w [Sender.ts](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384).
+Prefiks `appInsights-node` folderu można przesłonić, zmieniając wartość w czasie wykonywania zmiennej `Sender.TEMPDIR_PREFIX` statycznej znalezionej w elemencie [Sender. TS](https://github.com/Microsoft/ApplicationInsights-node.js/blob/7a1ecb91da5ea0febf5ceab13d6a4bf01a63933d/Library/Sender.ts#L384).
 
 
 
-## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Jak wysyłać dane do usługi Application Insights przy użyciu protokołu TLS 1.2?
+## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Jak mogę wysyłać dane do Application Insights przy użyciu protokołu TLS 1,2?
 
-Na ułatwieniu zapewnienia bezpieczeństwa danych przesyłanych do punktów końcowych usługi Application Insights, zdecydowanie zachęcamy klientów do skonfigurowania aplikacji użyj co najmniej zabezpieczeń TLS (Transport Layer) 1.2. Znaleziono starsze wersje protokołu TLS/Secure Sockets Layer (SSL) są narażone i gdy działają nadal obecnie Zezwalaj wstecznej zgodności, są one **niezalecane**, i branży szybko rozwijających się do porzucenia pomocy technicznej dla tych starszych protokołów. 
+Aby zapewnić bezpieczeństwo danych przesyłanych do Application Insightsych punktów końcowych, zdecydowanie zachęcamy klientów do konfigurowania aplikacji do korzystania z co najmniej Transport Layer Security (TLS) 1,2. Znaleziono starsze wersje protokołu TLS/Secure Sockets Layer (SSL) są narażone i gdy działają nadal obecnie Zezwalaj wstecznej zgodności, są one **niezalecane**, i branży szybko rozwijających się do porzucenia pomocy technicznej dla tych starszych protokołów. 
 
-[Rady standardami bezpieczeństwa PCI](https://www.pcisecuritystandards.org/) ustawił [terminu 30 czerwca 2018 r.](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) wyłączyć starsze wersje protokołu TLS/SSL i uaktualniania, aby lepiej zabezpieczyć protokołów. Gdy starsze obsługuje jest już w Azure, jeśli aplikacja/klienci nie mogą komunikować się za pośrednictwem co najmniej protokołu TLS 1.2, nie będzie mogła wysyłać dane do usługi Application Insights. Podejście, które należy wykonać w celu testowania i sprawdzania poprawności Obsługa protokołu TLS Twojej aplikacji różnią się w zależności od tego, czy system operacyjny/platformy, a także języka/platformy, używanych przez aplikację.
+[Rady standardami bezpieczeństwa PCI](https://www.pcisecuritystandards.org/) ustawił [terminu 30 czerwca 2018 r.](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) wyłączyć starsze wersje protokołu TLS/SSL i uaktualniania, aby lepiej zabezpieczyć protokołów. Gdy platforma Azure pozostanie w starszej wersji, jeśli aplikacja/klienci nie mogą komunikować się za pomocą co najmniej protokołu TLS 1,2, nie będzie możliwe wysyłanie danych do Application Insights. Podejście wykonywane do testowania i weryfikowania obsługi protokołu TLS aplikacji będzie się różnić w zależności od systemu operacyjnego/platformy, a także od języka/platformy używanej przez aplikację.
 
-Firma Microsoft nie zaleca się jawne ustawienie bezwzględnie konieczne, ponieważ może to spowodować awarię funkcji zabezpieczenia na poziomie platformy, które pozwalają na automatyczne wykrywanie i korzystać z nowsze protokoły bezpieczniejsze staną się one aplikację, aby używać tylko protokołu TLS 1.2, chyba że dostępne, takich jak TLS 1.3. Firma Microsoft zaleca wykonanie dokładnego audyt kodu aplikacji pod kątem hardcoding określonych wersji protokołu TLS/SSL.
+Firma Microsoft nie zaleca jawnej konfiguracji aplikacji, aby używała protokołu TLS 1,2, chyba że jest to absolutnie konieczne, ponieważ może to spowodować przerwanie funkcji zabezpieczeń na poziomie platformy, które umożliwiają automatyczne wykrywanie i korzystanie z nowszych bezpieczniejszych protokołów w miarę ich używania dostępne, takie jak TLS 1,3. Zalecamy przeprowadzenie szczegółowej inspekcji kodu aplikacji w celu sprawdzenia zakodowana określonych wersji protokołu TLS/SSL.
 
-### <a name="platformlanguage-specific-guidance"></a>Wskazówki dotyczące określonego języka/platformy
+### <a name="platformlanguage-specific-guidance"></a>Wskazówki dotyczące platformy/języka
 
 |Języka/platformy | Pomoc techniczna | Więcej informacji |
 | --- | --- | --- |
-| Azure App Services  | Obsługiwane, może być wymagana konfiguracja. | Obsługa zostało zapowiedziane w kwietniu 2018. Przeczytaj ogłoszenie dla [szczegóły konfiguracji](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/).  |
-| Aplikacje funkcji platformy Azure | Obsługiwane, może być wymagana konfiguracja. | Obsługa zostało zapowiedziane w kwietniu 2018. Przeczytaj ogłoszenie dla [szczegóły konfiguracji](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/). |
-|.NET | Obsługiwane, konfiguracja jest zależna od wersji. | Informacje o konfiguracji szczegółowe dla platformy .NET 4.7 i wcześniejsze wersje można znaleźć [w instrukcjach](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
-|Monitor stanu | Obsługiwane, wymagana jest Konfiguracja | Monitor stanu opiera się na [Konfiguracja systemu operacyjnego](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [konfiguracja .NET](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) do obsługi protokołu TLS 1.2.
-|Node.js |  Obsługiwane w v10.5.0, może być wymagana konfiguracja. | Użyj [oficjalnej dokumentacji środowiska Node.js protokołów TLS/SSL](https://nodejs.org/api/tls.html) dla żadnej konfiguracji określonej aplikacji. |
-|Java | Obsługiwane, zestawu JDK obsługę protokołu TLS 1.2 został dodany w [zestaw JDK 6 aktualizacja 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) i [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | Używa JDK 8 [protokołu TLS 1.2, domyślnie](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
+| Azure App Services  | Obsługiwane, może być wymagana konfiguracja. | Obsługa została ogłoszona w kwietniu 2018. Zapoznaj się z ogłoszeniem, aby uzyskać [szczegółowe informacje o konfiguracji](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/).  |
+| Aplikacje funkcji platformy Azure | Obsługiwane, może być wymagana konfiguracja. | Obsługa została ogłoszona w kwietniu 2018. Zapoznaj się z ogłoszeniem, aby uzyskać [szczegółowe informacje o konfiguracji](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/). |
+|.NET | Obsługiwane, konfiguracja zależy od wersji. | Aby uzyskać szczegółowe informacje o konfiguracji dla programu .NET 4,7 i wcześniejszych wersji, zobacz [te instrukcje](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12).  |
+|Monitor stanu | Obsługiwane, wymagana konfiguracja | Monitor stanu korzysta z[konfiguracji platformy .NET](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)  +  [konfiguracji systemu operacyjnego](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)w celu zapewnienia obsługi protokołu TLS 1,2.
+|Node.js |  Obsługiwane w programie v 10.5.0 może być wymagana konfiguracja. | Informacje o konfiguracji specyficzne dla aplikacji zawiera [Oficjalna dokumentacja protokołu TLS/SSL w programie Node. js](https://nodejs.org/api/tls.html) . |
+|Java | Obsługiwane, JDK support for TLS 1,2 zostało dodane w [JDK 6 update 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) i [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | JDK 8 [domyślnie używa protokołu TLS 1,2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
 |Linux | Dystrybucje systemu Linux, zwykle zależą od [OpenSSL](https://www.openssl.org) obsługę protokołu TLS 1.2.  | Sprawdź [dziennika zmian OpenSSL](https://www.openssl.org/news/changelog.html) aby upewnić się, używana wersja biblioteki openssl jest obsługiwana.|
 | Windows 8.0 10 | Obsługiwane i domyślnie włączona. | Aby upewnić się, że nadal używasz [domyślne ustawienia](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
 | System Windows Server 2012 2016 | Obsługiwane i domyślnie włączona. | Aby upewnić się, że nadal używasz [ustawienia domyślne](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
@@ -208,81 +207,81 @@ Firma Microsoft nie zaleca się jawne ustawienie bezwzględnie konieczne, poniew
 | Windows Server 2008 SP2 | Obsługa protokołu TLS 1.2 wymaga aktualizacji. | Zobacz [aktualizacji, aby dodać obsługę protokołu TLS 1.2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) w systemie Windows Server 2008 z dodatkiem SP2. |
 |Windows Vista | Nieobsługiwane. | ND
 
-### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Upewnij się, jakie wersją biblioteki OpenSSL dystrybucji systemu Linux jest uruchomiona.
+### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Sprawdź wersję OpenSSL, w której działa dystrybucja systemu Linux
 
-Aby sprawdzić, jakie wersją biblioteki OpenSSL zainstalowaniu, otwórz terminal i uruchom:
+Aby sprawdzić zainstalowaną wersję programu OpenSSL, Otwórz Terminal i uruchom polecenie:
 
 ```terminal
 openssl version -a
 ```
 
-### <a name="run-a-test-tls-12-transaction-on-linux"></a>Uruchom test transakcji protokołu TLS 1.2 w systemie Linux
+### <a name="run-a-test-tls-12-transaction-on-linux"></a>Uruchamianie testowej transakcji TLS 1,2 w systemie Linux
 
-Aby uruchomić podstawowe test wstępny, aby zobaczyć, jeśli w systemie Linux mogą komunikować się za pośrednictwem protokołu TLS 1.2. Otwórz terminal i uruchom:
+Aby uruchomić podstawowy test wstępny, aby sprawdzić, czy system Linux może komunikować się za pośrednictwem protokołu TLS 1,2. Otwórz Terminal i uruchom:
 
 ```terminal
 openssl s_client -connect bing.com:443 -tls1_2
 ```
 
-## <a name="personal-data-stored-in-application-insights"></a>Dane osobowe przechowywane w usłudze Application Insights
+## <a name="personal-data-stored-in-application-insights"></a>Dane osobowe przechowywane w Application Insights
 
-Nasze [usługi Application Insights dane osobowe artykułu](../../azure-monitor/platform/personal-data-mgmt.md) ten problem, szczegółowe.
+Nasz [artykuł dotyczący danych osobowych w Application Insights](../../azure-monitor/platform/personal-data-mgmt.md) zawiera szczegółowe omówienie tego problemu.
 
-#### <a name="can-my-users-turn-off-application-insights"></a>Moi użytkownicy wyłączyć usługi Application Insights?
-Nie bezpośrednio. Firma Microsoft nie oferuje przełącznik, który użytkownicy mogą działać wyłączenia usługi Application Insights.
+#### <a name="can-my-users-turn-off-application-insights"></a>Czy moi użytkownicy mogą wyłączyć Application Insights?
+Nie bezpośrednio. Nie udostępniamy przełącznika, który użytkownicy mogą wykonywać, aby wyłączyć Application Insights.
 
-Jednakże można zaimplementować taka funkcja w aplikacji. Wszystkie zestawy SDK obejmują ustawienia interfejsu API, która wyłącza zbieranie danych telemetrycznych. 
+Można jednak zaimplementować takie funkcje w aplikacji. Wszystkie zestawy SDK zawierają ustawienie interfejsu API, które powoduje wyłączenie zbierania danych telemetrycznych. 
 
-## <a name="data-sent-by-application-insights"></a>Dane wysyłane przez usługę Application Insights
-Zestawy SDK różnią się między platformami, a jest wiele składników, które można zainstalować. (Zobacz [Application Insights — omówienie][start].) Każdy składnik wysyła różnych danych.
+## <a name="data-sent-by-application-insights"></a>Dane wysyłane przez Application Insights
+Zestawy SDK różnią się między platformami i istnieje kilka składników, które można zainstalować. (Zobacz [Application Insights — przegląd][start]). Każdy składnik wysyła różne dane.
 
-#### <a name="classes-of-data-sent-in-different-scenarios"></a>Klasy danych przesyłanych w różnych scenariuszach
+#### <a name="classes-of-data-sent-in-different-scenarios"></a>Klasy danych wysyłanych w różnych scenariuszach
 
-| Twoja Akcja | Klasy danych zebranych (zobacz następną tabelę) |
+| Twoja akcja | Zebrane klasy danych (zobacz następną tabelę) |
 | --- | --- |
-| [Dodaj zestaw SDK usługi Application Insights do projektu sieci web platformy .NET][greenbrown] |ServerContext<br/>Wywnioskowane<br/>Liczniki wydajności<br/>Żądania<br/>**Wyjątki**<br/>Sesja<br/>użytkownicy |
-| [Zainstaluj Monitor stanu na serwerze IIS][redfield] |Zależności<br/>ServerContext<br/>Wywnioskowane<br/>Liczniki wydajności |
-| [Dodaj zestaw SDK usługi Application Insights do aplikacji sieci web Java][java] |ServerContext<br/>Wywnioskowane<br/>Żądanie<br/>Sesja<br/>użytkownicy |
-| [Dodaj zestaw SDK JavaScript do strony sieci web][client] |ClientContext <br/>Wywnioskowane<br/>Strona<br/>ClientPerf<br/>Ajax |
-| [Zdefiniuj właściwości domyślne][apiproperties] |**Właściwości** na wszystkich standardowych i niestandardowych zdarzeń |
-| [Wywołanie TrackMetric][api] |Wartości liczbowe<br/>**Właściwości** |
-| [Śledzenie wywołań *][api] |Nazwa zdarzenia<br/>**Właściwości** |
-| [Metoda TrackException wywołania][api] |**Wyjątki**<br/>Zrzut stosu<br/>**Właściwości** |
-| Zestaw SDK nie może zbierać dane. Na przykład: <br/> — nie ma dostępu do liczników wydajności<br/> — wyjątek w inicjatora telemetrii |Zestaw SDK diagnostyki |
+| [Dodawanie Application Insights SDK do projektu sieci Web platformy .NET][greenbrown] |ServerContext<br/>Wywnioskować<br/>Liczniki wydajności<br/>Żądania<br/>**Wyjątki**<br/>Sesja<br/>Użytkownicy |
+| [Instalowanie monitor stanu w usługach IIS][redfield] |Zależności<br/>ServerContext<br/>Wywnioskować<br/>Liczniki wydajności |
+| [Dodawanie Application Insights SDK do aplikacji sieci Web Java][java] |ServerContext<br/>Wywnioskować<br/>Żądanie<br/>Sesja<br/>Użytkownicy |
+| [Dodaj zestaw SDK JavaScript do strony sieci Web][client] |ClientContext <br/>Wywnioskować<br/>Strona<br/>ClientPerf<br/>Ajax |
+| [Definiowanie właściwości domyślnych][apiproperties] |**Właściwości** wszystkich zdarzeń standardowych i niestandardowych |
+| [TrackMetric wywołań][api] |Wartości liczbowe<br/>**Aœciwoœci** |
+| [Śledzenie wywołań *][api] |Nazwa zdarzenia<br/>**Aœciwoœci** |
+| [Wywołanie metody Trackexception][api] |**Wyjątki**<br/>Zrzut stosu<br/>**Aœciwoœci** |
+| Zestaw SDK nie może zbierać danych. Przykład: <br/> -nie można uzyskać dostępu do liczników wydajności<br/> -wyjątek w inicjatorze telemetrii |Diagnostyka zestawu SDK |
 
-Aby uzyskać [zestawy SDK dla innych platform][platforms], zobacz swoje dokumenty.
+W przypadku [zestawów SDK dla innych platform][platforms]Zobacz dokumenty.
 
 #### <a name="the-classes-of-collected-data"></a>Klasy zebranych danych
 
-| Klasa zebranych danych | Zawiera (nie stanowi wyczerpującej listy) |
+| Klasa zebranych danych | Zawiera (nie jest to pełna lista) |
 | --- | --- |
-| **Właściwości** |**Wszystkie dane — ustalany na podstawie kodu** |
-| DeviceContext |Identyfikator adresu IP, ustawienia regionalne, model urządzenia, sieć, typ sieci, nazwa producenta OEM, rozdzielczość ekranu i wystąpienia roli, nazwa roli, rodzaju urządzenia |
-| ClientContext |System operacyjny, ustawienia regionalne, języka, sieć, rozdzielczość okna |
+| **Aœciwoœci** |**Wszystkie dane — określone przez kod** |
+| DeviceContext |Identyfikator, adres IP, ustawienia regionalne, model urządzenia, Sieć, typ sieci, nazwa OEM, rozdzielczość ekranu, wystąpienie roli, nazwa roli, typ urządzenia |
+| ClientContext |System operacyjny, ustawienia regionalne, język, Sieć, rozdzielczość okna |
 | Sesja |Identyfikator sesji |
-| ServerContext |Nazwa maszyny, ustawień regionalnych systemu operacyjnego, urządzenie, sesja użytkownika, kontekst użytkownika, operacji |
-| Wywnioskowane |Lokalizacja geograficzna z adresu IP, timestamp, systemu operacyjnego, przeglądarki |
-| Metryki |Nazwa metryki i wartości |
-| Events |Nazwa zdarzenia i wartości |
-| PageViews |Nazwa adresu URL i strony lub ekranu |
-| Wydajności klienta |Nazwa adresu URL/strony, czas ładowania przez przeglądarkę |
-| Ajax |Wywołania HTTP ze strony sieci web serwera |
+| ServerContext |Nazwa komputera, ustawienia regionalne, system operacyjny, urządzenie, sesja użytkownika, kontekst użytkownika, operacja |
+| Wywnioskować |Lokalizacja geograficzna z adresu IP, sygnatury czasowej, systemu operacyjnego, przeglądarki |
+| Metryki |Nazwa i wartość metryki |
+| Events |Nazwa i wartość zdarzenia |
+| PageViews |Adres URL i nazwa strony lub nazwa ekranu |
+| Wydajność klienta |Nazwa adresu URL/strony, czas ładowania przeglądarki |
+| Ajax |Wywołania HTTP ze strony sieci Web na serwer |
 | Żądania |Adres URL, czas trwania, kod odpowiedzi |
-| Zależności |Typ (SQL, HTTP,...), parametry połączenia lub identyfikatora URI synchronizacji/async, czas trwania, Powodzenie, instrukcja SQL (za pomocą Monitora stanu) |
-| **Wyjątki** |Typ, **komunikat**, stosy wywołań, źródło pliku i wierszu numer identyfikatora wątku |
-| Awarie |Identyfikator procesu, identyfikator procesu nadrzędnego, identyfikator wątku awarii; poprawki aplikacji, identyfikator kompilacji.  Typ wyjątku, adres, reason; symbole zaciemnionego i rejestry, binarne początkowy i końcowy adres, nazwa pliku binarnego i ścieżki, typ procesora |
+| Zależności |Typ (SQL, HTTP,...), parametry połączenia lub identyfikator URI, synchronizacja/Async, czas trwania, sukces, instrukcja SQL (z monitor stanu) |
+| **Wyjątki** |Typ, **komunikat**, stosy wywołań, plik źródłowy i numer wiersza, identyfikator wątku |
+| Stąp |Identyfikator procesu, identyfikator procesu nadrzędnego, identyfikator wątku awarii; Poprawka aplikacji, identyfikator, kompilacja;  Typ wyjątku, adres, Przyczyna; zasłonięte symbole i rejestry, binarne adresy startowe i końcowe, nazwa binarna i ścieżka, typ procesora |
 | Ślad |**Komunikat** i poziom ważności |
-| Liczniki wydajności |Czas procesora, pamięci, żądań zakończonych, częstotliwość występowania wyjątków, prywatne bajty procesu, we/wy, czas trwania żądania długość kolejki żądań |
-| Dostępność |Kod odpowiedzi testu sieci Web, czas trwania każdego kroku testu, nazwa testu, sygnatury czasowej, Powodzenie, czas odpowiedzi, lokalizacji testu |
-| Zestaw SDK diagnostyki |Komunikat śledzenia i wyjątków |
+| Liczniki wydajności |Czas procesora, dostępna pamięć, szybkość żądania, szybkość wyjątku, bajty prywatne procesu, szybkość operacji we/wy, czas żądania, Długość kolejki żądań |
+| Dostępność |Kod odpowiedzi testu sieci Web, czas trwania każdego kroku testu, nazwa testu, sygnatura czasowa, sukces, czas odpowiedzi, lokalizacja testu |
+| Diagnostyka zestawu SDK |Komunikat lub wyjątek śledzenia |
 
-Możesz [wyłączyć niektórych danych, edytując plik ApplicationInsights.config][config]
+[Niektóre dane można wyłączyć, edytując plik ApplicationInsights. config][config]
 
 > [!NOTE]
-> Klient IP jest używany w celu lokalizacji geograficznej, ale domyślnie nie jest już przechowywania danych adresów IP i zer są zapisywane w odpowiednim polu. Aby dowiedzieć się więcej na temat obsługi danych osobowych jest to zalecane [artykułu](../../azure-monitor/platform/personal-data-mgmt.md#application-data). Jeśli potrzebujesz przechować adres IP możesz to zrobić za pomocą [inicjatora telemetrii](./../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer).
+> Adres IP klienta jest używany do wywnioskowania lokalizacji geograficznej, ale domyślnie dane IP nie są już przechowywane i wszystkie zera są zapisywane w skojarzonym polu. Aby dowiedzieć się więcej na temat obsługi danych osobowych, zalecamy korzystanie z tego [artykułu](../../azure-monitor/platform/personal-data-mgmt.md#application-data). Jeśli zachodzi potrzeba zapisania danych adresów IP w [artykule dotyczącym zbierania adresów IP](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection) , przeprowadzisz Cię przez opcje.
 
 ## <a name="credits"></a>Napisy końcowe
-Ten produkt zawiera dane GeoLite2 utworzone przez MaxMind dostępne [ https://www.maxmind.com ](https://www.maxmind.com).
+Ten produkt zawiera dane GeoLite2 utworzone przez MaxMind, dostępne z [https://www.maxmind.com](https://www.maxmind.com).
 
 
 
@@ -298,4 +297,3 @@ Ten produkt zawiera dane GeoLite2 utworzone przez MaxMind dostępne [ https://ww
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: ../../azure-monitor/app/app-insights-overview.md
-

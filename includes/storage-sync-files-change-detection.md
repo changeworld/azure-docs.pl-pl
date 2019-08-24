@@ -4,13 +4,20 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: beb08c29587e4ce522131142fd61925b5af45fa9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 59adee2f1d6a99a0a984b9b63c7201266b6381d4
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183301"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69984552"
 ---
-Zmiany wprowadzone do udziału plików platformy Azure przy użyciu witryny Azure portal lub SMB nie od razu są wykryte i zreplikowane, takie jak zmiany punktu końcowego serwera. Usługa pliki systemu Azure nie ma jeszcze powiadomienia o zmianie lub rejestrowanie, więc nie ma możliwości automatycznie zainicjować sesję synchronizacji, gdy pliki są zmieniane. W systemie Windows Server używa usługi Azure File Sync [rejestrowanie numerów USN Windows](https://msdn.microsoft.com/library/windows/desktop/aa363798.aspx) automatycznie zainicjować sesję synchronizacji, gdy zmiany plików.<br /><br /> Aby wykryć zmiany do udziału plików platformy Azure, usługi Azure File Sync jest zaplanowane zadanie o nazwie *Zmień zadanie wykrywania*. Zadanie wykrywania zmian wylicza każdy plik w udziale plików i porównuje go do wersji synchronizacji dla tego pliku. Gdy zadanie wykrywania zmian okaże się, że pliki zostały zmienione, usługi Azure File Sync inicjuje sesję synchronizacji. Zadanie wykrywania zmian jest inicjowane co 24 godziny. Ponieważ zadanie wykrywania zmian działa wyliczając każdego pliku w udziale plików platformy Azure, wykrywania zmian trwa dłużej, w przestrzeniach nazw większych niż w mniejszej przestrzeni nazw. Dla dużych przestrzeni nazw może trwać dłużej niż co 24 godziny do określenia, które pliki uległy zmianie.<br /><br />
-Uwaga: zmiany wprowadzone do udziału plików platformy Azure przy użyciu interfejsu REST nie nie aktualizacja SMB czas ostatniej modyfikacji i nie będą widoczne jako zmiany przez sync. <br /><br />
-Firma Microsoft analizowania Dodawanie wykrywania zmian dla udziału plików platformy Azure, które jest podobny do numeru USN dla woluminów w systemie Windows Server. Pomóż nam określić priorytety tej funkcji do przyszłego rozwoju za oddanie głosu na na stronie [UserVoice plików Azure](https://feedback.azure.com/forums/217298-storage/category/180670-files).
+Zmiany wprowadzone w udziale plików platformy Azure przy użyciu Azure Portal lub protokołu SMB nie są natychmiast wykrywane i replikowane, podobnie jak zmiany w punkcie końcowym serwera. Azure Files nie ma jeszcze powiadomień o zmianach ani rejestrowania, dlatego nie ma możliwości automatycznego inicjowania sesji synchronizacji w przypadku zmiany plików. W systemie Windows Server Azure File Sync używa [rejestrowania numerów USN systemu Windows](https://msdn.microsoft.com/library/windows/desktop/aa363798.aspx) do automatycznego inicjowania sesji synchronizacji, gdy pliki zostaną zmienione.
+
+Aby wykryć zmiany w udziale plików platformy Azure, Azure File Sync ma zaplanowane zadanie o nazwie *zadanie wykrywania zmian*. Zadanie wykrywania zmian wylicza każdy plik w udziale plików, a następnie porównuje go z wersją synchronizacji dla tego pliku. Gdy zadanie wykrywania zmian określi, że pliki uległy zmianie, Azure File Sync inicjuje sesję synchronizacji. Zadanie wykrywania zmian jest inicjowane co 24 godziny. Ponieważ zadanie wykrywania zmian działa przez wyliczenie wszystkich plików w udziale plików platformy Azure, wykrywanie zmian trwa dłużej w większych przestrzeniach nazw niż w mniejszych przestrzeniach nazw. W przypadku dużych przestrzeni nazw może upłynąć więcej niż co 24 godziny, aby określić, które pliki uległy zmianie.
+
+Aby natychmiast synchronizować pliki, które zostały zmienione w udziale plików platformy Azure, można ręcznie zainicjować wykrywanie zmian w udziale plików platformy Azure za pomocą polecenia cmdlet **Invoke-AzStorageSyncChangeDetection** programu PowerShell. To polecenie cmdlet jest przeznaczone dla scenariuszy, w których jakiś typ zautomatyzowany proces wprowadza zmiany w udziale plików platformy Azure lub zmiany są wykonywane przez administratora (na przykład przeniesienie plików i katalogów do udziału). W przypadku zmian wprowadzonych przez użytkownika końcowego zaleca się zainstalowanie agenta Azure File Sync na maszynie wirtualnej IaaS, a użytkownicy końcowi uzyskują dostęp do udziału plików za pomocą maszyny wirtualnej IaaS. W ten sposób wszystkie zmiany zostaną szybko zsynchronizowane z innymi agentami bez konieczności korzystania z polecenia cmdlet Invoke-AzStorageSyncChangeDetection. Aby dowiedzieć się więcej, zobacz dokumentację [Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) .
+
+>[!NOTE]
+>Zmiany wprowadzone w udziale plików platformy Azure przy użyciu REST nie aktualizują czasu ostatniej modyfikacji SMB i nie będą widoczne jako zmiany przez synchronizację.
+
+Eksplorujemy Dodawanie wykrywania zmian dla udziału plików platformy Azure podobnego do numeru USN dla woluminów w systemie Windows Server. Pomóż nam określić priorytet tej funkcji na potrzeby przyszłego rozwoju dzięki głosowaniu na [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).

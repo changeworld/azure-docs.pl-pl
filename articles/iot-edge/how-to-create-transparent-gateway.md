@@ -4,17 +4,17 @@ description: Używanie usługi Azure IoT Edge urządzenia rolę przezroczystej b
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 08/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a91860e9ec8d503a01d079925466093d19bbbccf
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e61ddd6cb51795fad564b6246fb24ea4ce48f028
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698604"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982957"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>Konfigurowanie urządzenia usługi IoT Edge, aby pełnić rolę przezroczystej bramy
 
@@ -52,8 +52,6 @@ Poniższe kroki przeprowadzą Cię przez proces tworzenia certyfikatów i instal
 Urządzenia z systemem Azure IoT Edge można skonfigurować jako bramę. Wykonaj kroki instalacji IoT Edge jednego z następujących systemów operacyjnych:
   * [Windows](how-to-install-iot-edge-windows.md)
   * [Linux](how-to-install-iot-edge-linux.md)
-
-Ten artykuł odnosi się do *nazwy hosta bramy* w kilku punktach. Nazwa hosta bramy jest zadeklarowana w parametrze **hostname** pliku config. YAML na urządzeniu bramy IoT Edge. Służy do tworzenia certyfikatów w tym artykule i jest określany w parametrach połączenia urządzeń podrzędnych. Nazwa hosta bramy musi być rozpoznawalna na adres IP przy użyciu systemu DNS lub wpisu pliku hosta.
 
 ## <a name="generate-certificates-with-windows"></a>Generowanie certyfikatów z Windows
 
@@ -142,15 +140,18 @@ W tej sekcji utworzysz trzy certyfikaty i połączyć je w łańcuch. Umieszczen
    To polecenie skryptu tworzy kilka certyfikatów i plików kluczy, ale odwołuje się do jednego w dalszej części tego artykułu:
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
-2. Utwórz certyfikat i klucz prywatny urzędu certyfikacji urządzenia IoT Edge przy użyciu następującego polecenia. Podaj nazwę hosta bramy, którą można znaleźć w pliku iotedge\config.YAML na urządzeniu bramy. Nazwa hosta bramy służy do nazwy plików i podczas generowania certyfikatu. 
+2. Utwórz certyfikat i klucz prywatny urzędu certyfikacji urządzenia IoT Edge przy użyciu następującego polecenia. Podaj nazwę certyfikatu urzędu certyfikacji, na przykład **MyEdgeDeviceCA**. Nazwa jest używana do nazwy plików i podczas generowania certyfikatu. 
 
    ```powershell
-   New-CACertsEdgeDevice "<gateway hostname>"
+   New-CACertsEdgeDeviceCA "MyEdgeDeviceCA"
    ```
 
    To polecenie skryptu tworzy kilka certyfikatów i plików kluczy, w tym dwie, do których odwołuje się w dalszej części tego artykułu:
-   * `<WRKDIR>\certs\iot-edge-device-<gateway hostname>-full-chain.cert.pem`
-   * `<WRKDIR>\private\iot-edge-device-<gateway hostname>.key.pem`
+   * `<WRKDIR>\certs\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * `<WRKDIR>\private\iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
+
+   >[!TIP]
+   >Jeśli podano nazwę inną niż **MyEdgeDeviceCA**, wówczas certyfikaty i klucze utworzone przez to polecenie zostaną odzwierciedlone w tej nazwie. 
 
 Teraz, gdy masz certyfikaty, przejdź z wyprzedzeniem, aby [zainstalować certyfikaty na bramie](#install-certificates-on-the-gateway)
 
@@ -193,6 +194,8 @@ W tej sekcji utworzysz trzy certyfikaty i połączyć je w łańcuch. Umieszczen
 
 1. Utwórz certyfikat głównego urzędu certyfikacji i jeden certyfikat pośredni. Te certyfikaty są umieszczane w  *\<WRKDIR >* .
 
+   Jeśli certyfikaty główne i pośrednie zostały już utworzone w tym katalogu roboczym, nie uruchamiaj ponownie tego skryptu. Uruchomienie tego skryptu spowoduje zastąpienie istniejących certyfikatów. Zamiast tego przejdź do następnego kroku. 
+
    ```bash
    ./certGen.sh create_root_and_intermediate
    ```
@@ -200,15 +203,18 @@ W tej sekcji utworzysz trzy certyfikaty i połączyć je w łańcuch. Umieszczen
    Skrypt tworzy kilka certyfikatów i kluczy. Zwróć uwagę na to, do której odwołuje się w następnej sekcji:
    * `<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem`
 
-2. Utwórz certyfikat i klucz prywatny urzędu certyfikacji urządzenia IoT Edge przy użyciu następującego polecenia. Podaj nazwę hosta bramy, którą można znaleźć w pliku iotedge/config. YAML na urządzeniu bramy. Nazwa hosta bramy służy do nazwy plików i podczas generowania certyfikatu. 
+2. Utwórz certyfikat i klucz prywatny urzędu certyfikacji urządzenia IoT Edge przy użyciu następującego polecenia. Podaj nazwę certyfikatu urzędu certyfikacji, na przykład **MyEdgeDeviceCA**. Nazwa jest używana do nazwy plików i podczas generowania certyfikatu. 
 
    ```bash
-   ./certGen.sh create_edge_device_certificate "<gateway hostname>"
+   ./certGen.sh create_edge_device_ca_certificate "MyEdgeDeviceCA"
    ```
 
    Skrypt tworzy kilka certyfikatów i kluczy. Zanotuj dwa, do których odnosimy się w następnej sekcji: 
-   * `<WRKDIR>/certs/iot-edge-device-<gateway hostname>-full-chain.cert.pem`
-   * `<WRKDIR>/private/iot-edge-device-<gateway hostname>.key.pem`
+   * `<WRKDIR>/certs/iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * `<WRKDIR>/private/iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
+
+   >[!TIP]
+   >Jeśli podano nazwę inną niż **MyEdgeDeviceCA**, wówczas certyfikaty i klucze utworzone przez to polecenie zostaną odzwierciedlone w tej nazwie. 
 
 ## <a name="install-certificates-on-the-gateway"></a>Instalowanie certyfikatów na bramę
 
@@ -216,8 +222,8 @@ Po utworzeniu łańcucha certyfikatów, należy go zainstalować na urządzeniu 
 
 1. Skopiuj następujące pliki z  *\<WRKDIR >* . Zapisz je w dowolnym miejscu na urządzeniu usługi IoT Edge. Będziemy odnosić się do katalogu docelowego na twoim urządzeniu usługi IoT Edge jako  *\<CERTDIR >* . 
 
-   * Certyfikat dostępu Warunkowego do urządzeń —  `<WRKDIR>\certs\iot-edge-device-<gateway hostname>-full-chain.cert.pem`
-   * Klucz prywatny urzędu certyfikacji urządzenia — `<WRKDIR>\private\iot-edge-device-<gateway hostname>.key.pem`
+   * Certyfikat dostępu Warunkowego do urządzeń —  `<WRKDIR>\certs\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * Klucz prywatny urzędu certyfikacji urządzenia — `<WRKDIR>\private\iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
    * Główny urząd certyfikacji —`<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
    Do przenoszenia plików certyfikatów można użyć usługi, takiej jak [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) lub funkcja, taka jak [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) .  Jeśli certyfikaty zostały wygenerowane na urządzeniu IoT Edge, możesz pominąć ten krok i użyć ścieżki do katalogu roboczego.
@@ -233,16 +239,16 @@ Po utworzeniu łańcucha certyfikatów, należy go zainstalować na urządzeniu 
 
       ```yaml
       certificates:
-        device_ca_cert: "<CERTDIR>\\certs\\iot-edge-device-<gateway hostname>-full-chain.cert.pem"
-        device_ca_pk: "<CERTDIR>\\private\\iot-edge-device-<gateway hostname>.key.pem"
+        device_ca_cert: "<CERTDIR>\\certs\\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem"
+        device_ca_pk: "<CERTDIR>\\private\\iot-edge-device-ca-MyEdgeDeviceCA.key.pem"
         trusted_ca_certs: "<CERTDIR>\\certs\\azure-iot-test-only.root.ca.cert.pem"
       ```
    
    * W systemie Linux: 
       ```yaml
       certificates:
-        device_ca_cert: "<CERTDIR>/certs/iot-edge-device-<gateway hostname>-full-chain.cert.pem"
-        device_ca_pk: "<CERTDIR>/private/iot-edge-device-<gateway hostname>.key.pem"
+        device_ca_cert: "<CERTDIR>/certs/iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem"
+        device_ca_pk: "<CERTDIR>/private/iot-edge-device-ca-MyEdgeDeviceCA.key.pem"
         trusted_ca_certs: "<CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem"
       ```
 
@@ -313,6 +319,6 @@ Dzięki tej możliwości lokalne moduły lub urządzenia podrzędne mogą ponown
 
 Aby włączyć rozszerzone możliwości trybu offline, należy ustanowić relację nadrzędny-podrzędny między urządzeniem bramy IoT Edge a urządzeniami podrzędnymi, które będą się z nim połączyć. Te kroki zostały omówione bardziej szczegółowo w temacie [uwierzytelnianie urządzenia podrzędnego w usłudze Azure IoT Hub](how-to-authenticate-downstream-device.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Teraz, gdy masz urządzenia usługi IoT Edge działa jako przezroczystej bramy, należy skonfigurować podrzędne urządzenia, aby ufać bramy i wysyłanie komunikatów do niego. Aby uzyskać więcej informacji, zobacz [łączenie urządzenia podrzędnego z bramą Azure IoT Edge](how-to-connect-downstream-device.md) i [uwierzytelnianie urządzenia podrzędnego w usłudze Azure IoT Hub](how-to-authenticate-downstream-device.md).

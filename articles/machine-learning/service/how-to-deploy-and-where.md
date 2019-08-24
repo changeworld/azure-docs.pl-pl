@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/06/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: acb3717f0e71ca1e67f1ddec79a259935f6cc539
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: a4146e20efae87287b77687e4a1d3b0196cb1c95
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897670"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997933"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -416,7 +416,20 @@ def run(request):
 
 Konfiguracja wnioskowania opisuje, jak skonfigurować model do tworzenia prognoz. Ta konfiguracja nie jest częścią skryptu Wejścia; odwołuje się do skryptu wejścia i służy do lokalizowania wszystkich zasobów wymaganych przez wdrożenie. Jest on używany później podczas rzeczywistego wdrażania modelu.
 
-W poniższym przykładzie pokazano, jak utworzyć konfigurację wnioskowania. Ta konfiguracja określa środowisko uruchomieniowe, skrypt wpisu oraz (opcjonalnie) plik środowiska Conda:
+Konfiguracja wnioskowania może używać środowisk Azure Machine Learning do definiowania zależności oprogramowania wymaganego do wdrożenia. Środowiska umożliwiają tworzenie i ponowne używanie zależności oprogramowania wymaganych do szkolenia i wdrażania, a także zarządzanie nimi. Poniższy przykład ilustruje ładowanie środowiska z obszaru roboczego, a następnie używanie go z konfiguracją wnioskowania:
+
+```python
+from azureml.core import Environment
+from azureml.core.model import InferenceConfig
+
+deploy_env = Environment.get(workspace=ws,name="myenv",version="1")
+inference_config = InferenceConfig(entry_script="x/y/score.py",
+                                   environment=deploy_env)
+```
+
+Aby uzyskać więcej informacji o środowiskach, zobacz [Tworzenie środowisk i zarządzanie nimi na potrzeby szkolenia i wdrażania](how-to-use-environments.md).
+
+Można również bezpośrednio określić zależności bez użycia środowiska. W poniższym przykładzie pokazano, jak utworzyć konfigurację wnioskowania, która ładuje zależności oprogramowania z pliku Conda:
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -468,10 +481,40 @@ Każdą z tych klas dla lokalnych, ACI i AKS usług sieci Web można zaimportowa
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
 ```
 
-> [!TIP]
-> Przed wdrożeniem modelu jako usługi można go profilować, aby określić optymalne wymagania dotyczące procesora i pamięci. Możesz profilować model przy użyciu zestawu SDK lub interfejsu wiersza polecenia. Aby uzyskać więcej informacji, zobacz Dokumentacja profilu [profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--models--inference-config--input-data-) i [AZ ml model](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile) Reference.
->
-> Wyniki profilowania modelu są emitowane jako `Run` obiekt. Aby uzyskać więcej informacji, zobacz odwołanie do klasy [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py) .
+#### <a name="profiling"></a>Profilowanie
+
+Przed wdrożeniem modelu jako usługi można go profilować, aby określić optymalne wymagania dotyczące procesora i pamięci. Możesz profilować model przy użyciu zestawu SDK lub interfejsu wiersza polecenia. W poniższych przykładach pokazano, jak używać profilowania z zestawu SDK:
+
+> [!IMPORTANT]
+> W przypadku korzystania z profilowania konfiguracja wnioskowania nie może odwoływać się do Azure Machine Learning środowiska. Zamiast tego należy zdefiniować zależności oprogramowania przy użyciu `conda_file` parametru `InferenceConfig` obiektu.
+
+```python
+import json
+test_sample = json.dumps({'data': [
+    [1,2,3,4,5,6,7,8,9,10]
+]})
+
+profile = Model.profile(ws, "profilemymodel", [model], inference_config, test_data)
+profile.wait_for_profiling(true)
+profiling_results = profile.get_results()
+print(profiling_results)
+```
+
+Ten kod wyświetla wynik podobny do następującego tekstu:
+
+```python
+{'cpu': 1.0, 'memoryInGB': 0.5}
+```
+
+Wyniki profilowania modelu są emitowane jako `Run` obiekt.
+
+Aby uzyskać informacje na temat korzystania z profilowania z interfejsu wiersza polecenia, zobacz [AZ ml model profile](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-profile).
+
+Aby uzyskać więcej informacji, zobacz następujące dokumenty referencyjne:
+
+* [ModelProfile](https://docs.microsoft.com/python/api/azureml-core/azureml.core.profile.modelprofile?view=azure-ml-py)
+* [profil ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#profile-workspace--profile-name--model~s--inference-config--input-data-)
+* [Schemat pliku konfiguracji wnioskowania](reference-azure-machine-learning-cli.md#inference-configuration-schema)
 
 ## <a name="deploy-to-target"></a>Wdróż do celu
 
@@ -742,7 +785,136 @@ Aby uzyskać więcej przykładowych projektów i przykładów, zobacz następuj�
 * [https://github.com/Microsoft/MLOps](https://github.com/Microsoft/MLOps)
 * [https://github.com/Microsoft/MLOpsPython](https://github.com/microsoft/MLOpsPython)
 
+## <a name="package-models"></a>Modele pakietów
+
+W niektórych przypadkach może być konieczne utworzenie obrazu platformy Docker bez wdrażania modelu. Na przykład podczas planowania [wdrożenia do Azure App Service](how-to-deploy-app-service.md). Możesz też chcieć pobrać obraz i uruchomić go w lokalnej instalacji platformy Docker. Możesz nawet chcieć pobrać pliki użyte do skompilowania obrazu, sprawdzić je, zmodyfikować i skompilować ręcznie.
+
+Pakowanie modeli umożliwia wykonywanie obu tych czynności. Pakiet IT pakuje wszystkie zasoby potrzebne do hostowania modelu jako usługi sieci Web i umożliwia pobranie w pełni skompilowanego obrazu platformy Docker lub plików niezbędnych do jego skompilowania. Istnieją dwa sposoby używania pakowania modelu:
+
+* __Pobierz spakowany model__: Pobierasz obraz platformy Docker zawierający model i inne pliki potrzebne do hostowania go jako usługi sieci Web.
+* __Generuj pliku dockerfile__: Pobierzesz pliku dockerfile, model, skrypt wejścia i inne zasoby potrzebne do skompilowania obrazu platformy Docker. Następnie można przeprowadzić inspekcję plików lub wprowadzić zmiany przed rozpoczęciem tworzenia obrazu lokalnie.
+
+Oba pakiety mogą służyć do pobrania lokalnego obrazu platformy Docker. 
+
+> [!TIP]
+> Tworzenie pakietu jest podobne do wdrażania modelu, ponieważ używa zarejestrowanego modelu i konfiguracji wnioskowania.
+
+> [!IMPORTANT]
+> Funkcje takie jak pobieranie w pełni wbudowanego obrazu lub tworzenie obrazu lokalnie wymagają pracy instalacji [platformy Docker](https://www.docker.com) w środowisku deweloperskim.
+
+### <a name="download-a-packaged-model"></a>Pobierz spakowany model
+
+Poniższy przykład ilustruje sposób tworzenia obrazu, który jest rejestrowany w Azure Container Registry dla obszaru roboczego:
+
+```python
+package = Model.package(ws, [model], inference_config)
+package.wait_for_creation(show_output=True)
+```
+
+Po utworzeniu pakietu możesz użyć `package.pull()` programu, aby ściągnąć obraz do lokalnego środowiska Docker. W danych wyjściowych tego polecenia zostanie wyświetlona nazwa obrazu. Na przykład `Status: Downloaded newer image for myworkspacef78fd10.azurecr.io/package:20190822181338`. Po pobraniu Użyj `docker images` polecenia, aby wyświetlić listę obrazów lokalnych:
+
+```text
+REPOSITORY                               TAG                 IMAGE ID            CREATED             SIZE
+myworkspacef78fd10.azurecr.io/package    20190822181338      7ff48015d5bd        4 minutes ago       1.43GB
+```
+
+Aby uruchomić kontener lokalny przy użyciu tego obrazu, użyj następującego polecenia, aby uruchomić nazwany kontener z powłoki lub wiersza polecenia. Zastąp `docker images` wartość identyfikatorem obrazu zwracanym z polecenia: `<imageid>`
+
+```bash
+docker run -p 6789:5001 --name mycontainer <imageid>
+```
+
+To polecenie powoduje uruchomienie najnowszej wersji obrazu o nazwie `myimage`. Mapuje port lokalny 6789 na port w kontenerze, na którym nasłuchuje usługa sieci Web (5001). Przypisuje również nazwę `mycontainer` do kontenera, co ułatwia jego zatrzymanie. Po uruchomieniu można przesłać żądania do `http://localhost:6789/score`.
+
+### <a name="generate-dockerfile-and-dependencies"></a>Generowanie pliku dockerfile i zależności
+
+Poniższy przykład ilustruje sposób pobierania pliku dockerfile, modelu i innych zasobów wymaganych do lokalnego utworzenia obrazu. `generate_dockerfile=True` Parametr wskazuje, że pliki nie są w pełni skompilowane:
+
+```python
+package = Model.package(ws, [model], inference_config, generate_dockerfile=True)
+package.wait_for_creation(show_output=True)
+# Download the package
+package.save("./imagefiles")
+# Get the Azure Container Registry that the model/dockerfile uses
+acr=package.get_container_registry()
+print("Address:", acr.address)
+print("Username:", acr.username)
+print("Password:", acr.password)
+```
+
+Ten kod pobiera pliki, które są konieczne do skompilowania obrazu `imagefiles` do katalogu. Pliku dockerfile zawarty w pliku Save odwołuje się do obrazu podstawowego przechowywanego w Azure Container Registry. Podczas kompilowania obrazu w lokalnej instalacji platformy Docker należy użyć adresu, nazwy użytkownika i hasła do uwierzytelniania w tym rejestrze. Wykonaj następujące kroki, aby skompilować obraz przy użyciu lokalnej instalacji platformy Docker:
+
+1. Z poziomu powłoki lub sesji wiersza polecenia Użyj następującego polecenia, aby uwierzytelnić platformę Docker przy użyciu Azure Container Registry. `<address>`Zastąp `<username>`wartości, `<password>` i z wartościami pobranymi `package.get_container_registry()`przy użyciu:
+
+    ```bash
+    docker login <address> -u <username> -p <password>
+    ```
+
+2. Aby skompilować obraz, użyj następującego polecenia. Zamień `<imagefiles>` na ścieżkę do katalogu, w którym `package.save()` zapisano pliki:
+
+    ```bash
+    docker build --tag myimage <imagefiles>
+    ```
+
+    To polecenie ustawia nazwę obrazu na `myimage`.
+
+Aby sprawdzić, czy obraz został skompilowany, użyj `docker images` polecenia. `myimage` Obraz powinien zostać wyświetlony na liście:
+
+```text
+REPOSITORY      TAG                 IMAGE ID            CREATED             SIZE
+<none>          <none>              2d5ee0bf3b3b        49 seconds ago      1.43GB
+myimage         latest              739f22498d64        3 minutes ago       1.43GB
+```
+
+Aby rozpocząć nowy kontener oparty na tym obrazie, użyj następującego polecenia:
+
+```bash
+docker run -p 6789:5001 --name mycontainer myimage:latest
+```
+
+To polecenie powoduje uruchomienie najnowszej wersji obrazu o nazwie `myimage`. Mapuje port lokalny 6789 na port w kontenerze, na którym nasłuchuje usługa sieci Web (5001). Przypisuje również nazwę `mycontainer` do kontenera, co ułatwia jego zatrzymanie. Po uruchomieniu można przesłać żądania do `http://localhost:6789/score`.
+
+### <a name="example-client-to-test-the-local-container"></a>Przykładowy klient do testowania lokalnego kontenera
+
+Poniższy kod stanowi przykład klienta języka Python, który może być używany z kontenerem:
+
+```python
+import requests
+import json
+
+# URL for the web service
+scoring_uri = 'http://localhost:6789/score'
+
+# Two sets of data to score, so we get two results back
+data = {"data":
+        [
+            [ 1,2,3,4,5,6,7,8,9,10 ],
+            [ 10,9,8,7,6,5,4,3,2,1 ]
+        ]
+        }
+# Convert to JSON string
+input_data = json.dumps(data)
+
+# Set the content type
+headers = {'Content-Type': 'application/json'}
+
+# Make the request and display the response
+resp = requests.post(scoring_uri, input_data, headers=headers)
+print(resp.text)
+```
+
+Aby uzyskać więcej przykładowych klientów w innych językach programowania, zobacz [Korzystanie z modeli wdrożonych jako usługi sieci Web](how-to-consume-web-service.md).
+
+### <a name="stop-the-docker-container"></a>Zatrzymaj kontener platformy Docker
+
+Aby zatrzymać kontener, użyj następującego polecenia z innej powłoki lub wiersza polecenia:
+
+```bash
+docker kill mycontainer
+```
+
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
 Aby usunąć wdrożonej usługi sieci web, użyj `service.delete()`.
 Aby usunąć zarejestrowanego modelu, użyj `model.delete()`.
 

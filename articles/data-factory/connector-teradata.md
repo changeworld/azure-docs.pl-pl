@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 134302bffdadc27cf202a43e7dc4cc94704bb5b3
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: ddce94cab0067c34ad056a40251d79c5470ba460
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69557869"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996570"
 ---
 # <a name="copy-data-from-teradata-by-using-azure-data-factory"></a>Kopiowanie danych z programu Teradata przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -142,7 +142,7 @@ Aby skopiować dane z programu Teradata, obsługiwane są następujące właści
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na `TeradataTable`wartość. | Tak |
-| database | Nazwa bazy danych programu Teradata. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
+| database | Nazwa bazy danych programu Teradata. | Nie (Jeśli określono parametr "query" w źródle działania) |
 | table | Nazwa tabeli w bazie danych programu Teradata. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład:**
@@ -189,7 +189,7 @@ Ta sekcja zawiera listę właściwości obsługiwanych przez źródło programu 
 ### <a name="teradata-as-source"></a>Teradata jako źródło
 
 >[!TIP]
->Aby efektywnie załadować dane z programu Teradata przy użyciu partycjonowania danych, zapoznaj się z sekcją [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) .
+>Aby efektywnie załadować dane z programu Teradata przy użyciu partycjonowania danych, Dowiedz się więcej z sekcji [Kopiowanie równoległe z programu Teradata](#parallel-copy-from-teradata) .
 
 Aby skopiować dane z programu Teradata, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
@@ -245,9 +245,9 @@ Aby skopiować dane z programu Teradata, w sekcji **Źródło** działania kopio
 
 ![Zrzut ekranu przedstawiający opcje partycji](./media/connector-teradata/connector-teradata-partition-options.png)
 
-Po włączeniu kopiowania partycjonowanego Data Factory uruchamia zapytania równoległe względem źródła programu Teradata w celu załadowania danych przez partycje. Stopień równoległy jest kontrolowany przez [`parallelCopies`](copy-activity-performance.md#parallel-copy) ustawienie działania kopiowania. Jeśli na przykład ustawisz `parallelCopies` cztery, Data Factory współbieżnie generuje i uruchamia cztery zapytania na podstawie określonej opcji partycji i ustawień. Każde zapytanie pobiera część danych z bazy danych programu Teradata.
+Po włączeniu kopiowania partycjonowanego Data Factory uruchamia zapytania równoległe względem źródła programu Teradata w celu załadowania danych przez partycje. Stopień równoległy jest kontrolowany przez [`parallelCopies`](copy-activity-performance.md#parallel-copy) ustawienie działania kopiowania. Jeśli na przykład ustawisz `parallelCopies` cztery, Data Factory współbieżnie generuje i uruchamia cztery zapytania w oparciu o określoną opcję partycji i ustawienia, a każde zapytanie pobiera część danych z bazy danych programu Teradata.
 
-Dobrym pomysłem jest włączenie kopiowania równoległego przy użyciu partycjonowania danych, szczególnie w przypadku ładowania dużej ilości danych z bazy danych programu Teradata. Poniżej przedstawiono sugerowane konfiguracje dla różnych scenariuszy:
+Dobrym pomysłem jest włączenie kopiowania równoległego przy użyciu partycjonowania danych, szczególnie w przypadku ładowania dużej ilości danych z bazy danych programu Teradata. Poniżej przedstawiono sugerowane konfiguracje dla różnych scenariuszy. Podczas kopiowania danych do magazynu danych opartego na plikach, należy ponownie wykonać zapis do folderu jako wiele plików (Określ tylko nazwę folderu), w którym to przypadku wydajność jest lepsza niż zapis do pojedynczego pliku.
 
 | Scenariusz                                                     | Sugerowane ustawienia                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

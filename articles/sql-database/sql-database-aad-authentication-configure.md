@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: b6414ac41b1bb43e3fe1470a7ae2b1358126003a
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: a14926dea576e0331cb8c0f8010f060f47faa3e7
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68569675"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991159"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurowanie i Zarządzanie uwierzytelnianiem Azure Active Directory przy użyciu programu SQL
 
@@ -327,7 +327,7 @@ Aby upewnić się, że administrator usługi Azure AD został prawidłowo skonfi
 Aby udostępnić użytkownikom zawartej bazy danych opartych na usłudze Azure AD (innym niż administrator serwera, który jest właścicielem bazy danych), Połącz się z bazą danych za pomocą tożsamości usługi Azure AD, która ma dostęp do bazy danych.
 
 > [!IMPORTANT]
-> Obsługa Azure Active Directorygo uwierzytelniania jest dostępna w [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) i [SQL Server narzędziach](https://msdn.microsoft.com/library/mt204009.aspx) do obsługi danych w programie Visual Studio 2015. Wydanie programu SSMS 2016 sierpnia w sierpniu obejmuje również obsługę uwierzytelniania uniwersalnego Active Directory, dzięki któremu Administratorzy mogą wymagać uwierzytelniania wieloskładnikowego za pomocą połączenia telefonicznego, wiadomości tekstowej, kart inteligentnych z numerem PIN lub powiadomienia aplikacji mobilnej.
+> Obsługa Azure Active Directorygo uwierzytelniania jest dostępna w [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) i [SQL Server narzędziach](https://msdn.microsoft.com/library/mt204009.aspx) do obsługi danych w programie Visual Studio 2015. Wydanie programu SSMS 2016 sierpnia w sierpniu obejmuje również obsługę uwierzytelniania uniwersalnego Active Directory, co umożliwia administratorom wymaganie Multi-Factor Authentication przy użyciu połączenia telefonicznego, wiadomości tekstowej, kart inteligentnych z numerem PIN lub powiadomień aplikacji mobilnej.
 
 ## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>Używanie tożsamości usługi Azure AD do nawiązywania połączenia przy użyciu programu SSMS lub SSDT
 
@@ -412,6 +412,9 @@ Aby uzyskać więcej informacji, zobacz Blog dotyczący [zabezpieczeń SQL Serve
 ### <a name="sqlcmd"></a>sqlcmd
 
 Poniższe instrukcje łączą się przy użyciu wersji 13,1 narzędzia sqlcmd, która jest dostępna w [Centrum pobierania](https://go.microsoft.com/fwlink/?LinkID=825643).
+
+> [!NOTE]
+> `sqlcmd``-G` polecenie nie działa z tożsamościami systemu i wymaga logowania do podmiotu zabezpieczeń użytkownika.
 
 ```cmd
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  

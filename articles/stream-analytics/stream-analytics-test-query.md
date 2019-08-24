@@ -1,55 +1,109 @@
 ---
-title: Testowanie zadania usługi Azure Stream Analytics z przykładowymi danymi
-description: W tym artykule opisano sposób użycia witryny Azure portal do testowania zadania usługi Azure Stream Analytics, przykładowe dane wejściowe i Przekaż dane przykładowe.
+title: Testowanie zadania Azure Stream Analytics przy użyciu przykładowych danych
+description: W tym artykule opisano sposób użycia Azure Portal do testowania Azure Stream Analytics zadania, przykładowe dane wejściowe i przekazywanie przykładowych danych.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 6/21/2019
+ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: ad0e0ca75bf3d3a8d9d1029d42f8609b3c4c627b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: b8670fc7958e66e7c25e27bb3a22429ab20b2514
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620825"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991003"
 ---
-# <a name="test-a-stream-analytics-query-with-sample-data"></a>Testowanie zapytania usługi Stream Analytics z przykładowymi danymi
+# <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Testowanie zadania Azure Stream Analytics przy użyciu przykładowych danych
 
-Za pomocą usługi Azure Stream Analytics, możesz przykładowe dane z danych wejściowych lub przekazywanie przykładowych danych do testowania zapytań w witrynie Azure portal, bez uruchamiania lub zatrzymywania zadania.
+W Azure Stream Analytics można testować zapytanie bez uruchamiania lub zatrzymywania zadania. Można testować zapytania dotyczące danych przychodzących z obiektu ujścia danych wejściowych lub przekazać przykładowe dane z pliku lokalnego.
 
-## <a name="upload-or-sample-data-from-a-live-source-to-test-the-query"></a>Przekazywanie lub przykładowe dane ze źródła na żywo, aby przetestować zapytanie
+## <a name="sample-incoming-data-from-input"></a>Przykładowe przychodzące dane z danych wejściowych
 
-1. Zaloguj się do Portalu Azure. 
+Azure Stream Analytics automatycznie pobiera zdarzenia z danych wejściowych przesyłania strumieniowego. Można uruchamiać zapytania na domyślnym przykładzie lub ustawić określony przedział czasu dla przykładu.
 
+1. Zaloguj się do Portalu Azure.
+
+2. Znajdź i wybierz istniejące zadanie Stream Analytics.
+
+3. Na stronie Stream Analytics zadania w obszarze nagłówek **topologii zadania** wybierz pozycję **zapytanie** , aby otworzyć okno edytora zapytań. 
+
+4. Aby wyświetlić przykładową listę zdarzeń przychodzących, wybierz pozycję dane wejściowe z ikoną pliku, a Przykładowe zdarzenia będą automatycznie wyświetlane w **podglądzie danych wejściowych**. 
+
+   a. Typ serializacji dla danych jest wykrywany automatycznie, jeśli jego kod JSON lub CSV. Możesz również ręcznie zmienić ten plik w formacie JSON, CSV, AVRO, zmieniając opcję z menu rozwijanego.
+    
+   b. Użyj selektora, aby wyświetlić dane w formacie **tabeli** lub nieprzetworzonym.
+    
+   c. Jeśli wyświetlane dane nie są aktualne, wybierz pozycję **Odśwież** , aby wyświetlić najnowsze zdarzenia.
+
+   W poniższej tabeli przedstawiono przykład danych w **formacie tabeli**:
+
+   ![Azure Stream Analytics przykładowe dane wejściowe w formacie tabeli](./media/stream-analytics-test-query/asa-sample-table.png)
+
+   W poniższej tabeli przedstawiono przykład danych w **formacie**nieprzetworzonym:
+
+   ![Azure Stream Analytics przykładowe dane wejściowe w formacie nieprzetworzonym](./media/stream-analytics-test-query/asa-sample-raw.png)
+
+5. Aby przetestować zapytanie z danymi przychodzącymi, wybierz opcję **zapytanie testowe**. Wyniki są wyświetlane na karcie **wyniki testu** . Możesz również wybrać pozycję **Pobierz wyniki** , aby pobrać wyniki.
+
+   ![Azure Stream Analytics przykładowe wyniki zapytania testu](./media/stream-analytics-test-query/asa-test-query.png)
+
+6. Aby przetestować zapytanie względem określonego zakresu czasu zdarzeń przychodzących, wybierz **pozycję Wybierz zakres czasu**.
+   
+   ![Azure Stream Analytics zakres czasu dla przychodzących zdarzeń przykładowych](./media/stream-analytics-test-query/asa-select-time-range.png)
+
+7. Ustaw zakres czasu zdarzeń, których chcesz użyć do testowania zapytania, a następnie wybierz pozycję **przykład**. W tym przedziale czasowym można pobrać maksymalnie 1000 zdarzeń lub 1 MB, zależnie od tego, co nastąpi wcześniej.
+
+   ![Azure Stream Analytics Ustaw zakres czasu dla przychodzących zdarzeń przykładowych](./media/stream-analytics-test-query/asa-set-time-range.png)
+
+8. Po pobraniu zdarzeń dla wybranego zakresu czasu są one wyświetlane na karcie **Podgląd danych wejściowych** .
+
+   ![Wyświetl wyniki testów Azure Stream Analytics](./media/stream-analytics-test-query/asa-view-test-results.png)
+
+9. Wybierz pozycję **Zresetuj** , aby wyświetlić przykładową listę zdarzeń przychodzących. W przypadku wybrania opcji **Zresetuj**wybór zakresu czasu zostanie utracony. Wybierz **zapytanie testowe** , aby przetestować zapytanie i przejrzeć wyniki na karcie **wyniki testów** .
+
+10. Po wprowadzeniu zmian w zapytaniu wybierz pozycję **Zapisz zapytanie** , aby przetestować nową logikę zapytań. Pozwala to na iteracyjne modyfikowanie zapytania i przetestowanie go w celu sprawdzenia, jak dane wyjściowe zmieniają się.
+
+11. Po sprawdzeniu wyników wyświetlanych w przeglądarce można **rozpocząć** zadanie.
+
+## <a name="upload-sample-data-from-a-local-file"></a>Przekazywanie przykładowych danych z pliku lokalnego
+
+Zamiast korzystać z danych na żywo, można użyć przykładowych danych z pliku lokalnego do testowania kwerendy Azure Stream Analytics.
+
+1. Zaloguj się do Portalu Azure.
+   
 2. Znajdź istniejące zadanie usługi Stream Analytics i zaznacz je.
 
-3. W usłudze Stream Analytics zadania stronie w obszarze **topologia zadań** nagłówka, wybierz **zapytania** otwarte okno edytora zapytań. 
+3. Na stronie Stream Analytics zadania w obszarze nagłówek **topologii zadania** wybierz pozycję **zapytanie** , aby otworzyć okno edytora zapytań.
 
-4. Aby przetestować zapytanie można można następnie albo przykładowe dane z danych wejściowych na żywo lub przekazywania z pliku. Dane muszą być zserializowane w formacie JSON, CSV lub AVRO. Przykładowe dane wejściowe musi być zakodowany w formacie UTF-8 i nie skompresowany. Tylko przecinek (,) ogranicznik jest obsługiwana dla testowanie danych wejściowych CSV, w portalu.
+4. Aby przetestować zapytanie przy użyciu pliku lokalnego, wybierz pozycję **Przekaż przykładowe dane wejściowe** na karcie **Podgląd danych wejściowych** . 
 
-    1. Przy użyciu danych wejściowych na żywo: kliknij prawym przyciskiem myszy na dowolnym dane wejściowe. Następnie wybierz pozycję **przykładowe dane z danych wejściowych**. Na następnym ekranie można ustawić czasu trwania próbki. Próbkowania zdarzeń od źródła na żywo pobierze maksymalnie 1000 zdarzeń lub 1 MB (osiągnięta jako pierwsza), dzięki czemu dane próbkowania mogą nie reprezentować wskazany interwał w pełnym wymiarze czasu.
+   ![Plik przykładowy przekazywania Azure Stream Analytics](./media/stream-analytics-test-query/asa-upload-sample-file.png)
 
-    1. Przy użyciu plików: kliknij prawym przyciskiem myszy na dowolnym dane wejściowe. Następnie wybierz pozycję **Przekaż dane przykładowe z pliku**. 
+5. Przekaż plik lokalny, aby przetestować zapytanie. Można przekazać tylko pliki z formatami JSON, CSV lub AVRO. Kliknij przycisk **OK**.
 
-    ![Zapytanie testowe edytora zapytań usługi Stream analytics](media/stream-analytics-test-query/stream-analytics-test-query-editor-upload.png)
+   ![Plik przykładowy przekazywania Azure Stream Analytics](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 
-5. Po zakończeniu pobierania próbek lub przekazywania, wybierz **Test** do testowania to zapytanie względem przykładowych danych zostały podane.
+6. Gdy tylko przekażesz plik, możesz również wyświetlić zawartość pliku w postaci tabeli lub w formacie nieprzetworzonym. W przypadku wybrania opcji **Zresetuj**dane przykładowe zostaną zwrócone do przychodzących danych wejściowych opisanych w poprzedniej sekcji. Można przekazać dowolny inny plik, aby przetestować zapytanie w dowolnym momencie.
 
-    ![Edytor testu przykładowych danych zapytań usługi Stream analytics](media/stream-analytics-test-query/stream-analytics-test-query-editor-test.png)
+7. Wybierz **kwerendę testową** , aby przetestować zapytanie względem przekazanego pliku przykładowego.
 
-6. Jeśli potrzebujesz danych wyjściowych testu w celu późniejszego użycia danych wyjściowych zapytania jest wyświetlany w przeglądarce z linkiem do pobierania wyników. 
+8. Wyniki testu są wyświetlane na podstawie zapytania. Możesz zmienić zapytanie i wybrać pozycję **Zapisz zapytanie** , aby przetestować nową logikę zapytań. Pozwala to na iteracyjne modyfikowanie zapytania i przetestowanie go w celu sprawdzenia, jak dane wyjściowe zmieniają się.
 
-7. Iteracyjne zmodyfikuj zapytanie i przetestować go ponownie, aby zobaczyć, jak zmienią się dane wyjściowe.
+9. W przypadku użycia wielu wyjść w zapytaniu wyniki są wyświetlane na podstawie wybranych danych wyjściowych. 
 
-   ![Edytor przykładowe dane wyjściowe zapytań usługi Stream Analytics](media/stream-analytics-test-query/stream-analytics-test-query-editor-samples-output.png)
+   ![Azure Stream Analytics wybrane dane wyjściowe](./media/stream-analytics-test-query/asa-sample-test-selected-output.png)
 
-   Gdy używasz wiele wyjść w zapytaniu, wyniki są wyświetlane w osobnych kartach, a następnie można łatwo przełączać się między nimi.
+10. Po sprawdzeniu wyników wyświetlanych w przeglądarce można **uruchomić** zadanie.
 
-8. Po upewnieniu się wyniki wyświetlane w przeglądarce, **Zapisz** zapytania. Następnie **Start** zadania i pozwól mu przetwarzanie zdarzeń przychodzących.
+## <a name="next-steps"></a>Następne kroki
 
-## <a name="next-steps"></a>Kolejne kroki
-> [!div class="nextstepaction"]
-> [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Azure Stream Analytics Query Language Reference (Dokumentacja dotycząca języka zapytań usługi Azure Stream Analytics)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+
+* [Przykłady zapytań dla typowych wzorców użycia Stream Analytics](stream-analytics-stream-analytics-query-patterns.md)
+
+* [Informacje o danych wejściowych dla Azure Stream Analytics](stream-analytics-add-inputs.md)
+
+* [Zrozumieć dane wyjściowe z usługi Azure Stream Analytics](stream-analytics-define-outputs.md)

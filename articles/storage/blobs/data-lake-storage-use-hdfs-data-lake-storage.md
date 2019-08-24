@@ -1,6 +1,6 @@
 ---
-title: Za pomocą usługi Azure Data Lake Storage Gen2 przy użyciu interfejsu wiersza polecenia systemu plików HDFS
-description: Wprowadzenie do systemu plików HDFS interfejs wiersza polecenia dla Gen2 Lake magazynu danych
+title: Korzystanie z interfejsu wiersza polecenia systemu plików HDFS z Azure Data Lake Storage Gen2
+description: Wprowadzenie do interfejsu wiersza polecenia systemu HDFS dla Data Lake Storage Gen2
 services: storage
 author: normesta
 ms.service: storage
@@ -9,27 +9,27 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 24123278ff353860ff2af59f4fd77645dfc189e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d5313f3f0fff128dd09f9c9857b7dd9921ea4f8
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938856"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992219"
 ---
-# <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Przy użyciu interfejsu wiersza polecenia systemu plików HDFS z Gen2 Lake magazynu danych
+# <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Korzystanie z interfejsu wiersza polecenia systemu plików HDFS z Data Lake Storage Gen2
 
-Możesz uzyskać dostęp i zarządzania danymi na koncie magazynu przy użyciu interfejsu wiersza polecenia, tak samo, jak za pomocą [pliku System (HDFS, Hadoop Distributed)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Ten artykuł zawiera kilka przykładów, które pomogą Ci rozpocząć pracę.
+Możesz uzyskiwać dostęp do danych na koncie magazynu i zarządzać nimi za pomocą interfejsu wiersza polecenia tak samo jak w przypadku [rozproszony system plików Hadoop (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). W tym artykule przedstawiono przykłady, które pomogą Ci rozpocząć pracę.
 
-Usługa HDInsight zapewnia dostęp do rozproszonego systemu plików, który jest lokalnie dołączony do węzłów obliczeniowych. Możesz uzyskać dostęp w tym systemie plików, przy użyciu powłoki, który wchodzi w interakcję bezpośrednio z systemu plików HDFS i innych systemów plików które obsługuje platformy Hadoop.
+Usługa HDInsight zapewnia dostęp do kontenera rozproszonego, który jest lokalnie dołączony do węzłów obliczeniowych. Dostęp do tego kontenera można uzyskać przy użyciu powłoki, która bezpośrednio współdziała z systemem plików HDFS i innymi systemami, które obsługuje usługa Hadoop.
 
-Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia systemu plików HDFS, zobacz [oficjalnej dokumentacji](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) i [Przewodnik po uprawnieniach systemu plików HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
+Aby uzyskać więcej informacji na temat interfejsu systemu plików HDFS, zobacz [oficjalną dokumentację](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) i [Podręcznik uprawnień systemu HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 
 >[!NOTE]
->Jeśli używasz usługi Azure Databricks zamiast HDInsight, a chcesz interakcję z danymi przy użyciu interfejsu wiersza polecenia, można użyć interfejsu wiersza polecenia Databricks wchodzić w interakcje w systemie plików usługi Databricks. Zobacz [interfejsu wiersza polecenia Databricks](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html).
+>Jeśli używasz Azure Databricks zamiast usługi HDInsight, a chcesz korzystać z danych przy użyciu interfejsu wiersza polecenia, możesz użyć obiektu CLI, aby móc korzystać z systemu plików datakostki. Zobacz [interfejs wiersza polecenia](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html)datakosteks.
 
-## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>Należy użyć interfejsu wiersza polecenia systemu plików HDFS z klastra usługi HDInsight Hadoop w systemie Linux
+## <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>Korzystanie z interfejsu wiersza polecenia systemu plików HDFS z klastrem Hadoop usługi HDInsight w systemie Linux
 
-Najpierw należy ustanowić [zdalny dostęp do usług](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-information#remote-access-to-services). W przypadku wybrania [SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) przykładowego kodu programu PowerShell będzie wyglądać w następujący sposób:
+Najpierw Ustanów [dostęp zdalny do usług](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-information#remote-access-to-services). W przypadku wybrania protokołu [SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) przykładowy kod programu PowerShell będzie wyglądać następująco:
 
 ```powershell
 #Connect to the cluster via SSH.
@@ -39,16 +39,16 @@ hdfs dfs -ls /
 #Create a sample directory.
 hdfs dfs -mkdir /samplefolder
 ```
-Parametry połączenia znajduje się w temacie "klastra i protokołu SSH logowania" części bloku klastra HDInsight w witrynie Azure portal. Poświadczenia protokołu SSH zostały określone podczas tworzenia klastra.
+Parametry połączenia można znaleźć w sekcji "SSH + logowanie do klastra" w bloku klastra usługi HDInsight w Azure Portal. Podczas tworzenia klastra określono poświadczenia SSH.
 
 >[!IMPORTANT]
->Klaster HDInsight rozliczeń rozpoczyna się po utworzeniu klastra i zatrzymuje, gdy klaster jest usuwany. Opłaty są naliczane za minutę, więc jeśli klaster nie jest używany, należy go usunąć. Aby dowiedzieć się, jak usunąć klaster, zobacz nasze [artykuł na temat](../../hdinsight/hdinsight-delete-cluster.md). Jednak dane przechowywane na koncie magazynu w usłudze Data Lake magazynu Gen2 — włączone będzie nadal występował mimo klastra usługi HDInsight zostanie usunięty.
+>Rozliczanie klastra usługi HDInsight rozpoczyna się po utworzeniu klastra i zostaje zatrzymane po usunięciu klastra. Opłaty są naliczane za minutę, więc jeśli klaster nie jest używany, należy go usunąć. Aby dowiedzieć się, jak usunąć klaster, zapoznaj się z [artykułem w temacie](../../hdinsight/hdinsight-delete-cluster.md). Jednak dane przechowywane na koncie magazynu z włączonym Data Lake Storage Gen2 są utrwalane nawet po usunięciu klastra usługi HDInsight.
 
-## <a name="create-a-file-system"></a>Tworzenie systemu plików
+## <a name="create-a-container"></a>Tworzenie kontenera
 
-    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
+    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
 
-* Zamień symbol zastępczy `<file-system-name>` na nazwę, którą chcesz nadać systemowi plików.
+* Zastąp `<container-name>` symbol zastępczy nazwą, którą chcesz przypisać do kontenera.
 
 * Zastąp symbol zastępczy `<storage-account-name>` nazwą konta magazynu.
 
@@ -56,7 +56,7 @@ Parametry połączenia znajduje się w temacie "klastra i protokołu SSH logowan
 
     hdfs dfs -ls <path>
 
-Zastąp `<path>` zastępczego identyfikatorów URI systemu plików lub folderu systemu plików.
+Zastąp `<path>` symbol zastępczy identyfikatorem URI kontenera lub folderu kontenerów.
 
 Na przykład: `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
@@ -64,7 +64,7 @@ Na przykład: `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.wind
 
     hdfs dfs -mkdir [-p] <path>
 
-Zastąp `<path>` symbol zastępczy przy użyciu głównej nazwy systemu plików lub folder w systemie plików.
+Zastąp `<path>` symbol zastępczy nazwą kontenera głównego lub folderem w kontenerze.
 
 Na przykład: `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
 
@@ -72,11 +72,11 @@ Na przykład: `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.w
 
     hdfs dfs -rm <path>
 
-Zastąp `<path>` symbolu zastępczego z identyfikatorem URI pliku lub folderu, który chcesz usunąć.
+Zastąp `<path>` symbol zastępczy identyfikatorem URI pliku lub folderu, który chcesz usunąć.
 
 Na przykład: `hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
 
-## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>Wyświetlanie list kontroli dostępu (ACL) plików i katalogów
+## <a name="display-the-access-control-lists-acls-of-files-and-directories"></a>Wyświetlanie list Access Control (ACL) plików i katalogów
 
     hdfs dfs -getfacl [-R] <path>
 
@@ -86,7 +86,7 @@ Przykład:
 
 Zobacz [getfacl](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#getfacl)
 
-## <a name="set-acls-of-files-and-directories"></a>Ustaw listy ACL plików i katalogów
+## <a name="set-acls-of-files-and-directories"></a>Ustawianie list ACL plików i katalogów
 
     hdfs dfs -setfacl [-R] [-b|-k -m|-x <acl_spec> <path>]|[--set <acl_spec> <path>]
 
@@ -96,28 +96,28 @@ Przykład:
 
 Zobacz [setfacl](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#setfacl)
 
-## <a name="change-the-owner-of-files"></a>Zmień właściciela pliku
+## <a name="change-the-owner-of-files"></a>Zmień właściciela plików
 
     hdfs dfs -chown [-R] <new_owner>:<users_group> <URI>
 
-Zobacz [zmienić właściciela](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chown)
+Zobacz [chown](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chown)
 
-## <a name="change-group-association-of-files"></a>Zmień powiązanie grupy plików
+## <a name="change-group-association-of-files"></a>Zmień skojarzenie grupy plików
 
     hdfs dfs -chgrp [-R] <group> <URI>
 
 Zobacz [chgrp](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chgrp)
 
-## <a name="change-the-permissions-of-files"></a>Zmienianie uprawnień pliku
+## <a name="change-the-permissions-of-files"></a>Zmień uprawnienia plików
 
     hdfs dfs -chmod [-R] <mode> <URI>
 
 Zobacz [chmod](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html#chmod)
 
-Można wyświetlić pełną listę poleceń na [podręczniku powłoki System plików Apache Hadoop 2.4.1](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) witryny sieci Web.
+Pełną listę poleceń można wyświetlić w witrynie sieci Web [podręcznika powłoki systemu plików w Apache Hadoop 2.4.1](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Użyj konta usługi Azure Data Lake Storage Gen2 możliwością w usłudze Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md)
+* [Używanie Azure Data Lake Storage Gen2 konta obsługującego Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md)
 
-* [Więcej informacji na temat list kontroli dostępu do plików i katalogów](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)
+* [Informacje o listach kontroli dostępu do plików i katalogów](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)

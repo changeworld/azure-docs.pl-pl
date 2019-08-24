@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b338ad90c01c109cc9b2e222f1d7bcaa09f20346
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a978e2755818e88cad580753e041eacd50a9e6d2
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812953"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980479"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiwum nowości? w usłudze Azure Active Directory
 
@@ -36,7 +36,7 @@ Co to jest nowe informacje o wersji uzyskać informacje na temat:
 
 ## <a name="january-2019"></a>Styczeń 2019
 
-### <a name="active-directory-b2b-collaboration-using-one-time-passcode-authentication-public-preview"></a>Współpraca B2B w usłudze Active Directory przy użyciu uwierzytelniania za pomocą jednorazowego kodu dostępu (publiczna wersja zapoznawcza)
+### <a name="active-directory-b2b-collaboration-using-one-time-passcode-authentication-public-preview"></a>Active Directory współpracy B2B przy użyciu jednorazowego uwierzytelniania kodu dostępu (publiczna wersja zapoznawcza)
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** B2B  
@@ -64,7 +64,7 @@ Aby uzyskać więcej informacji na temat nowych plików cookie, zobacz [Ustawien
 
 ---
 
-### <a name="new-federated-apps-available-in-azure-ad-app-gallery---january-2019"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji Azure AD — styczeń 2019
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---january-2019"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — styczeń 2019
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** Aplikacje dla przedsiębiorstw  
@@ -78,11 +78,11 @@ Aby uzyskać więcej informacji o aplikacjach, zobacz [integracji aplikacji SaaS
 
 ---
 
-### <a name="new-azure-ad-identity-protection-enhancements-public-preview"></a>Nowe ulepszenia usługi Azure AD Identity Protection (publicznego wersja zapoznawcza)
+### <a name="new-azure-ad-identity-protection-enhancements-public-preview"></a>Nowe udoskonalenia Azure AD Identity Protection (publiczna wersja zapoznawcza)
 
 **Wprowadź** Zmieniona funkcja  
 **Kategoria usługi:** Identity Protection  
-**Możliwość produktu:** Ochrona i zabezpieczanie tożsamości
+**Możliwość produktu:** Ochrona tożsamości & zabezpieczenia
 
 Przyjemnością się, że dodaliśmy następujące usprawnienia do oferty Azure AD Identity Protection publicznej wersji zapoznawczej, w tym:
 
@@ -98,11 +98,11 @@ Aby uzyskać więcej informacji na temat ulepszeń, zobacz [co to jest Azure Act
 
 ---
 
-### <a name="new-app-lock-feature-for-the-microsoft-authenticator-app-on-ios-and-android-devices"></a>Nowa funkcja blokady aplikacji dla aplikacji Microsoft Authenticator na urządzeniach z systemami iOS i Android
+### <a name="new-app-lock-feature-for-the-microsoft-authenticator-app-on-ios-and-android-devices"></a>Nowa funkcja blokowania aplikacji dla aplikacji Microsoft Authenticator na urządzeniach z systemami iOS i Android
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** Aplikacja Microsoft Authenticator  
-**Możliwość produktu:** Ochrona i zabezpieczanie tożsamości
+**Możliwość produktu:** Ochrona tożsamości & zabezpieczenia
 
 Aby zapewnić bezpieczeństwo jednorazowych kodów dostępu, informacji o aplikacji i ustawień aplikacji, możesz włączyć funkcję blokowania aplikacji w aplikacji Microsoft Authenticator. Włączenie blokady aplikacji oznacza, że użytkownik zostanie poproszony o uwierzytelnienie przy użyciu kodu PIN lub biometrycznego za każdym razem, gdy otworzysz aplikację Microsoft Authenticator.
 
@@ -110,7 +110,7 @@ Aby uzyskać więcej informacji, zobacz [często zadawane pytania dotyczące apl
 
 ---
 
-### <a name="enhanced-azure-ad-privileged-identity-management-pim-export-capabilities"></a>Rozszerzone funkcje eksportowania w usłudze Azure AD Privileged Identity Management (PIM)
+### <a name="enhanced-azure-ad-privileged-identity-management-pim-export-capabilities"></a>Ulepszone możliwości eksportowania Azure AD Privileged Identity Management (PIM)
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** Privileged Identity Management  
@@ -124,7 +124,7 @@ Aby uzyskać więcej informacji, zobacz [Wyświetlanie historii aktywności i in
 
 ## <a name="novemberdecember-2018"></a>Listopad/grudzień 2018
 
-### <a name="users-removed-from-synchronization-scope-no-longer-switch-to-cloud-only-accounts"></a>Użytkownicy usunięci z zakresu synchronizacji nie są już przełączani na konta tylko w chmurze
+### <a name="users-removed-from-synchronization-scope-no-longer-switch-to-cloud-only-accounts"></a>Użytkownicy usunięci z zakresu synchronizacji nie przełączają się już do kont tylko w chmurze
 
 **Wprowadź** Ustalone  
 **Kategoria usługi:** Zarządzanie użytkownikami  
@@ -143,19 +143,19 @@ W związku z tym ta poprawka uniemożliwia bezpośrednie aktualizacje atrybutu I
 
 - **Aktualizacja ImmutableID o dużej skali dla wielu użytkowników w podejściu przygotowanym**
   
-  Na przykład należy wykonać długość AD DS migracji między lasami. Rozwiązanie: Użyj Azure AD Connect, aby **skonfigurować kotwicę źródłową** i, w miarę migrowania użytkownika, skopiować istniejące wartości ImmutableID z usługi Azure AD do AD DS lokalnego atrybutu "MS-ds-Consistency-GUID" w nowym lesie. Aby uzyskać więcej informacji, zobacz [Używanie MS-ds-ConsistencyGuid jako sourceAnchor](/azure/active-directory/hybrid/plan-connect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor).
+  Na przykład należy wykonać długość AD DS migracji między lasami. Narzędzie Użyj Azure AD Connect, aby **skonfigurować kotwicę źródłową** i, w miarę migrowania użytkownika, skopiować istniejące wartości ImmutableID z usługi Azure AD do AD DS lokalnego atrybutu "MS-ds-Consistency-GUID" w nowym lesie. Aby uzyskać więcej informacji, zobacz [Używanie MS-ds-ConsistencyGuid jako sourceAnchor](/azure/active-directory/hybrid/plan-connect-design-concepts#using-ms-ds-consistencyguid-as-sourceanchor).
 
 - **Aktualizacje ImmutableID na dużą skalę dla wielu użytkowników w jednym zrzucie**
 
-  Na przykład podczas wdrażania Azure AD Connect pomyłkę i teraz trzeba zmienić atrybut SourceAnchor. Rozwiązanie: Wyłącz narzędzie DirSync na poziomie dzierżawy i wyczyść wszystkie nieprawidłowe wartości ImmutableID. Aby uzyskać więcej informacji, zobacz Wyłączanie [synchronizacji katalogów dla pakietu Office 365](/office365/enterprise/turn-off-directory-synchronization).
+  Na przykład podczas wdrażania Azure AD Connect pomyłkę i teraz trzeba zmienić atrybut SourceAnchor. Narzędzie Wyłącz narzędzie DirSync na poziomie dzierżawy i wyczyść wszystkie nieprawidłowe wartości ImmutableID. Aby uzyskać więcej informacji, zobacz Wyłączanie [synchronizacji katalogów dla pakietu Office 365](/office365/enterprise/turn-off-directory-synchronization).
 
-- **Dopasowanie użytkownika lokalnego z istniejącym użytkownikiem w usłudze Azure AD** Na przykład użytkownik, który został utworzony w AD DS, generuje duplikat na koncie usługi Azure AD, a nie dopasowuje go przy użyciu istniejącego konta usługi Azure AD (obiektu oddzielonego). Rozwiązanie: Użyj Azure AD Connect Health w Azure Portal, aby ponownie zmapować kotwicę źródłową/ImmutableID. Aby uzyskać więcej informacji, zobacz [scenariusz obiektu](/azure/active-directory/hybrid/how-to-connect-health-diagnose-sync-errors#orphaned-object-scenario)oddzielonego.
+- **Dopasowanie użytkownika lokalnego z istniejącym użytkownikiem w usłudze Azure AD** Na przykład użytkownik, który został utworzony w AD DS, generuje duplikat na koncie usługi Azure AD, a nie dopasowuje go przy użyciu istniejącego konta usługi Azure AD (obiektu oddzielonego). Narzędzie Użyj Azure AD Connect Health w Azure Portal, aby ponownie zmapować kotwicę źródłową/ImmutableID. Aby uzyskać więcej informacji, zobacz [scenariusz obiektu](/azure/active-directory/hybrid/how-to-connect-health-diagnose-sync-errors#orphaned-object-scenario)oddzielonego.
 
 ### <a name="breaking-change-updates-to-the-audit-and-sign-in-logs-schema-through-azure-monitor"></a>Nieprzerwana zmiana: Aktualizacje schematu inspekcji i rejestrowania dzienników za pomocą Azure Monitor
 
 **Wprowadź** Zmieniona funkcja  
 **Kategoria usługi:** Raportowanie  
-**Możliwość produktu:** Monitorowanie i raportowanie
+**Możliwość produktu:** Monitorowanie & raportowania
 
 Obecnie publikujemy strumienie inspekcji i logowania za pomocą Azure Monitor, dzięki czemu możesz bezproblemowo zintegrować pliki dziennika z narzędziami SIEM lub z Log Analytics. Na podstawie opinii i przygotowania do ogólnej dostępności tej funkcji wprowadzamy następujące zmiany w naszym schemacie. Te zmiany schematu i powiązane z nimi aktualizacje dokumentacji będą wykonywane przez pierwszy tydzień stycznia.
 
@@ -169,7 +169,7 @@ Następujące pola są zmieniane w schemacie inspekcji:
 |----------|------------|----------|----------|
 |Kategoria|To jest pole **nazwa usługi** . Jest teraz polem **kategorie inspekcji** . **Nazwa usługi** została zmieniona na pole **loggedByService** .|<ul><li>Aprowizacja kont</li><li>Katalog podstawowy</li><li>Samoobsługowe resetowanie hasła</li></ul>|<ul><li>Zarządzanie użytkownikami</li><li>Zarządzanie grupami</li><li>Zarządzanie aplikacjami</li></ul>|
 |targetResources|Obejmuje **TargetResourceType** na najwyższego poziomu.|&nbsp;|<ul><li>Zasady</li><li>Aplikacja</li><li>Użytkownik</li><li>Grupa</li></ul>|
-|loggedByService|Zawiera nazwę usługi, która wygenerowała dziennik inspekcji.|Null|<ul><li>Aprowizacja kont</li><li>Katalog podstawowy</li><li>Samoobsługowe resetowanie hasła</li></ul>|
+|loggedByService|Zawiera nazwę usługi, która wygenerowała dziennik inspekcji.|Null|<ul><li>Aprowizacja kont</li><li>Katalog podstawowy</li><li>Samoobsługowe resetowanie haseł</li></ul>|
 |Wynik|Zawiera wyniki dzienników inspekcji. Wcześniej było to wyliczone, ale teraz pokazywane są rzeczywiste wartości.|<ul><li>0</li><li>1</li></ul>|<ul><li>Powodzenie</li><li>Niepowodzenie</li></ul>|
 
 #### <a name="changed-fields-in-the-sign-in-schema"></a>Zmieniono pola w schemacie logowania
@@ -185,7 +185,7 @@ Aby uzyskać więcej informacji na temat schematu, zobacz [interpretowanie schem
 
 ---
 
-### <a name="identity-protection-improvements-to-the-supervised-machine-learning-model-and-the-risk-score-engine"></a>Ulepszenia usługi Identity Protection dotyczące nadzorowanego modelu uczenia maszynowego i aparatu oceny ryzyka
+### <a name="identity-protection-improvements-to-the-supervised-machine-learning-model-and-the-risk-score-engine"></a>Ulepszenia ochrony tożsamości dla nadzorowanego modelu uczenia maszynowego i aparatu oceny ryzyka
 
 **Wprowadź** Zmieniona funkcja  
 **Kategoria usługi:** Identity Protection  
@@ -197,7 +197,7 @@ Wykrywanie ryzyka jest teraz oceniane przez nadzorowany model uczenia maszynoweg
 
 ---
 
-### <a name="administrators-can-reset-their-own-password-using-the-microsoft-authenticator-app-public-preview"></a>Administratorzy mogą resetować swoje hasła przy użyciu aplikacji Microsoft Authenticator (publiczna wersja zapoznawcza)
+### <a name="administrators-can-reset-their-own-password-using-the-microsoft-authenticator-app-public-preview"></a>Administratorzy mogą zresetować własne hasło przy użyciu aplikacji Microsoft Authenticator (publiczna wersja zapoznawcza)
 
 **Wprowadź** Zmieniona funkcja  
 **Kategoria usługi:** Samodzielne resetowanie hasła  
@@ -215,11 +215,11 @@ Administratorzy usługi Azure AD mogą teraz resetować swoje hasła przy użyci
 
 - Wiadomość SMS
 
-Aby uzyskać więcej informacji na temat używania aplikacji Microsoft Authenticator do resetowania haseł, zobacz Samoobsługowe resetowanie haseł w [usłudze Azure AD — aplikacja mobilna i SSPR (wersja zapoznawcza)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#mobile-app-and-sspr-preview)
+Aby uzyskać więcej informacji na temat używania aplikacji Microsoft Authenticator do resetowania haseł, zobacz Samoobsługowe resetowanie haseł w [usłudze Azure AD — aplikacja mobilna i SSPR (wersja zapoznawcza)](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-howitworks#mobile-app-and-sspr)
 
 ---
 
-### <a name="new-azure-ad-cloud-device-administrator-role-public-preview"></a>Nowa rola Administrator urządzeń w chmurze w usłudze Azure AD (publiczna wersja zapoznawcza)
+### <a name="new-azure-ad-cloud-device-administrator-role-public-preview"></a>Nowa rola administratora urządzenia w chmurze usługi Azure AD (publiczna wersja zapoznawcza)
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** Rejestracja urządzeń i zarządzanie nimi  
@@ -231,7 +231,7 @@ Aby uzyskać więcej informacji o rolach i uprawnieniach, zobacz [Przypisywanie 
 
 ---
 
-### <a name="manage-your-devices-using-the-new-activity-timestamp-in-azure-ad-public-preview"></a>Zarządzanie urządzeniami przy użyciu nowego znacznika czasu aktywności w usłudze Azure AD (publiczna wersja zapoznawcza)
+### <a name="manage-your-devices-using-the-new-activity-timestamp-in-azure-ad-public-preview"></a>Zarządzanie urządzeniami przy użyciu nowej sygnatury czasowej działania w usłudze Azure AD (publiczna wersja zapoznawcza)
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** Rejestracja urządzeń i zarządzanie nimi  
@@ -280,7 +280,7 @@ Aby uzyskać więcej informacji, zobacz [sekcję Dodawanie warunków użytkowani
  
 ---
 
-### <a name="new-azure-ad-privileged-identity-management-pim-emails-for-azure-active-directory-roles"></a>Nowe wiadomości e-mail usługi Azure AD Privileged Identity Management (PIM) dla ról usługi Azure Active Directory
+### <a name="new-azure-ad-privileged-identity-management-pim-emails-for-azure-active-directory-roles"></a>Nowe wiadomości e-mail w usłudze Azure AD Privileged Identity Management (PIM) dla ról Azure Active Directory
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** Privileged Identity Management  
@@ -334,7 +334,7 @@ Aby uzyskać więcej informacji o aplikacjach, zobacz [integracji aplikacji SaaS
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** Raportowanie  
-**Możliwość produktu:** Monitorowanie i raportowanie
+**Możliwość produktu:** Monitorowanie & raportowania
 
 Cieszymy się, mogąc mogą obecnie przekazywać dzienników usługi Azure AD do usługi Azure Log Analytics! Najczęściej żądanych pomaga umożliwiają jeszcze lepsze dostęp do analizy dla Twojej firmy, operacji i zabezpieczeń, a także sposób, aby wspomóc monitorowanie infrastruktury. Aby uzyskać więcej informacji, zobacz [działanie usługi Azure Active Directory rejestruje się w usłudze Azure Log Analytics jest teraz dostępna](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-Activity-logs-in-Azure-Log-Analytics-now/ba-p/274843) blogu.
 
@@ -451,7 +451,7 @@ Aby uzyskać więcej informacji, zobacz [co to jest portal Moje aplikacje?](http
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** Raportowanie  
-**Możliwość produktu:** Monitorowanie i raportowanie
+**Możliwość produktu:** Monitorowanie & raportowania
 
 Nowy **Rozwiązywanie problemów i pomoc techniczna** karcie **logowania** strony Azure portal, mają na celu ułatwienie administratorom i pracowników działu pomocy technicznej, rozwiązywania problemów związanych z logowania usługi Azure AD. Ta nowa karta zawiera kod błędu, komunikat o błędzie i zaleceniami związanymi z korygowaniem (jeśli istnieje) Aby rozwiązać ten problem. Jeśli nie uda się rozwiązać ten problem, również udostępniamy nowy sposób tworzenia biletu pomocy technicznej przy użyciu **Kopiuj do Schowka** środowisko, które wypełnia **identyfikator żądania** i **Data (UTC)** pól pliku dziennika w biletu pomocy technicznej.  
 
@@ -504,7 +504,7 @@ Aby uzyskać więcej informacji, zobacz [jak włączyć funkcję resetowania z W
 ### <a name="change-notice-authorization-codes-will-no-longer-be-available-for-reuse"></a>Zmień powiadomienie: Kody autoryzacji nie będą już dostępne do ponownego użycia 
 
 **Wprowadź** Plan zmiany  
-**Kategoria usługi:** Uwierzytelnienia (logowania)  
+**Kategoria usługi:** Uwierzytelnienia (nazwy logowania)  
 **Możliwość produktu:** Uwierzytelnianie użytkownika
 
 15 listopada 2018 r. usługi Azure AD będzie akceptować kody poprzednio używanych uwierzytelniania dla aplikacji. Ta zmiana zabezpieczeń pomaga do usługi Azure AD zgodnie ze specyfikacją protokołu OAuth i będzie wymuszany w punktach końcowych v1 i v2.
@@ -588,7 +588,7 @@ Zdecydowanie zaleca się nie usuwa starych zakresów adresów IP, dopóki wszyst
 ### <a name="change-notice-authorization-codes-will-no-longer-be-available-for-reuse"></a>Zmień powiadomienie: Kody autoryzacji nie będą już dostępne do ponownego użycia 
 
 **Wprowadź** Plan zmiany  
-**Kategoria usługi:** Uwierzytelnienia (logowania)  
+**Kategoria usługi:** Uwierzytelnienia (nazwy logowania)  
 **Możliwość produktu:** Uwierzytelnianie użytkownika
 
 15 listopada 2018 r. usługi Azure AD będzie akceptować kody poprzednio używanych uwierzytelniania dla aplikacji. Ta zmiana zabezpieczeń pomaga do usługi Azure AD zgodnie ze specyfikacją protokołu OAuth i będzie wymuszany w punktach końcowych v1 i v2.
@@ -719,7 +719,7 @@ Na przykład niektóre nowe projekty poczty e-mail i więcej informacji, zobacz 
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** Raportowanie  
-**Możliwość produktu:** Monitorowanie i raportowanie
+**Możliwość produktu:** Monitorowanie & raportowania
 
 Dzienniki aktywności usługi Azure AD są teraz dostępne w publicznej wersji zapoznawczej dla usługi Azure Monitor (Usługa monitorowania całej platformy Azure). Usługa Azure Monitor udostępnia długoterminowego przechowywania i bezproblemową integrację, oprócz tych usprawnień:
 
@@ -737,7 +737,7 @@ Aby uzyskać więcej informacji o tych nowych funkcjach, zobacz nasz blog [Dzien
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** Raportowanie  
-**Możliwość produktu:** Ochrona i zabezpieczanie tożsamości
+**Możliwość produktu:** Ochrona tożsamości & zabezpieczenia
  
 Ta aktualizacja pozwala zobaczyć, które zasady są oceniane, gdy użytkownik loguje się wraz z wyników zasad. Ponadto raport zawiera teraz typ aplikacji klienckiej używane przez użytkownika, dzięki czemu można zidentyfikować ruch w protokole starszej wersji. Wpisy raportu mogą teraz również być wyszukiwane identyfikator korelacji, który można znaleźć w komunikacie o błędzie widocznych dla użytkownika i może służyć do identyfikowania i rozwiązywania problemów z pasujące żądanie logowania.
 
@@ -747,7 +747,7 @@ Ta aktualizacja pozwala zobaczyć, które zasady są oceniane, gdy użytkownik l
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** Raportowanie  
-**Możliwość produktu:** Monitorowanie i raportowanie
+**Możliwość produktu:** Monitorowanie & raportowania
  
 Wraz z wprowadzeniem **aplikację kliencką** dzienniki pola w aktywności logowania, klienci mogą teraz Zobacz użytkowników, którzy używają starszej wersji uwierzytelnienia. Klienci będą mogli korzystać z tych informacji przy użyciu interfejsu API programu Graph w MS logowania lub za pośrednictwem logowania Dzienniki aktywności w portalu usługi Azure AD, w którym można korzystać z **aplikację kliencką** formantu, aby odfiltrować uwierzytelnień starszej wersji. Zapoznaj się z dokumentacją, aby uzyskać więcej informacji.
 
@@ -787,7 +787,7 @@ Aby uzyskać listę wszystkich aplikacji, które obsługują aprowizowania użyt
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** AD Connect  
-**Możliwość produktu:** Monitorowanie i raportowanie
+**Możliwość produktu:** Monitorowanie & raportowania
  
 Program Azure AD Connect Health wprowadza samodzielne rozwiązanie problemu, ułatwiające wyróżnić i naprawić błędy synchronizacji. Ta funkcja rozwiązuje błędy synchronizacji zduplikowanym atrybutem i poprawki obiektów, które są oddzielone od usługi Azure AD. Diagnostyka to ma następujące zalety:
 
@@ -846,7 +846,7 @@ Trwa aktualizowanie ciągu akceptacji w Interfejsie użytkownika końcowego waru
 ### <a name="pass-through-authentication-supports-legacy-protocols-and-applications"></a>Uwierzytelnianie przekazywane obsługuje starsze protokoły i aplikacje
 
 **Wprowadź** Zmieniona funkcja  
-**Kategoria usługi:** Uwierzytelnienia (logowania)  
+**Kategoria usługi:** Uwierzytelnienia (nazwy logowania)  
 **Możliwość produktu:** Uwierzytelnianie użytkownika
  
 Uwierzytelnianie przekazywane teraz obsługuje starszych protokołów i aplikacji. Następujące ograniczenia są teraz w pełni obsługiwane:
@@ -895,7 +895,7 @@ Tylko powiadomienia aplikacji mobilnej może zostać włączona w ramach zasad, 
 
 **Wprowadź** Plan zmiany  
 **Kategoria usługi:** Raportowanie  
-**Możliwość produktu:** Monitorowanie i raportowanie
+**Możliwość produktu:** Monitorowanie & raportowania
 
 Ze względu na nasze silniejsze wymuszania zabezpieczeń Musieliśmy wprowadzić zmianę uprawnień dla aplikacji używających przepływ delegowanej autoryzacji dostępu do [interfejsy API usługi Azure AD działania dzienniki](https://aka.ms/aadreportsapi). Ta zmiana zostanie przeprowadzona przez **26 czerwca 2018 r**.
 
@@ -1015,7 +1015,7 @@ Aby uzyskać więcej informacji, zobacz [Azure Active Directory — warunki doty
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** Inne  
-**Możliwość produktu:** Ochrona i zabezpieczanie tożsamości
+**Możliwość produktu:** Ochrona tożsamości & zabezpieczenia
  
 Udostępniliśmy nowe wskazówki krok po kroku dotyczące wdrażania usługi Azure Multi-Factor Authentication (MFA) w Twojej organizacji.
 
@@ -1054,7 +1054,7 @@ Aby uzyskać więcej informacji na temat publicznej wersji zapoznawczej, zobacz 
 ### <a name="expressroute-support-changes"></a>Zmiany pomocy technicznej usługi ExpressRoute
 
 **Wprowadź** Plan zmiany  
-**Kategoria usługi:** Uwierzytelnienia (logowania)  
+**Kategoria usługi:** Uwierzytelnienia (nazwy logowania)  
 **Możliwość produktu:** Platforma  
 
 Oprogramowanie jako usługa, takich jak Azure Active Directory (Azure AD) są przeznaczone do najlepszej metody, przechodząc bezpośrednio przez Internet, bez korzystania z usługi ExpressRoute lub innych prywatnej tuneli sieci VPN. W związku z tym na **1 sierpnia 2018**, firma Microsoft nie będzie obsługiwać usługi ExpressRoute dla usługi Azure AD przy użyciu publicznej komunikacji równorzędnej Azure i społeczności platformy Azure w komunikacji równorzędnej firmy Microsoft. Wszystkie usługi, wpływ tej zmiany może się okazać, Azure AD ruchu stopniowo przesunięcie z usługi ExpressRoute z Internetem.
@@ -1082,7 +1082,7 @@ Dodaliśmy Microsoft Graph interfejsów API dla operacji administrowania warunka
 ### <a name="add-azure-ad-multi-tenant-endpoint-as-an-identity-provider-in-azure-ad-b2c"></a>Dodaj punkt końcowy z wieloma dzierżawami usługi Azure AD jako dostawcy tożsamości w usłudze Azure AD B2C
 
 **Wprowadź** Nowa funkcja  
-**Kategoria usługi:** B2C — Consumer Identity Management  
+**Kategoria usługi:** B2C — Zarządzanie tożsamościami konsumentów  
 **Możliwość produktu:** B2B/B2C
  
 Za pomocą zasad niestandardowych, możesz teraz dodać wspólnego punktu końcowego usługi Azure AD jako dostawcy tożsamości w usłudze Azure AD B2C. Umożliwia to pojedynczy punkt wejścia dla wszystkich użytkowników usługi Azure AD, którzy logują się do aplikacji. Aby uzyskać więcej informacji, [Zobacz Azure Active Directory B2C: Zezwól użytkownikom na logowanie się do wielodostępnego dostawcy tożsamości usługi Azure AD przy użyciu zasad](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-commonaad-custom)niestandardowych.
@@ -1141,7 +1141,7 @@ Przegląd dostępu grup i aplikacji jest teraz ogólnie dostępna w ramach usłu
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** Raportowanie  
-**Możliwość produktu:** Monitorowanie i raportowanie
+**Możliwość produktu:** Monitorowanie & raportowania
  
 Dzienniki aktywności usługi AD platformy Azure, co obejmuje dzienniki inspekcji i logowania, są teraz dostępne za pośrednictwem MS Graph. Udostępniliśmy dwie punktów końcowych za pośrednictwem MS Graph dostępu do tych dzienników. Zapoznaj się z naszym [dokumenty](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal) uzyskać programowy dostęp do usługi Azure AD interfejsy API raportowania na rozpoczęcie pracy. 
 
@@ -1222,7 +1222,7 @@ Przeglądy dostępu dotyczące dostępu grupy i aplikacje są teraz ogólnie dos
 ### <a name="id-tokens-can-no-longer-be-returned-using-the-query-response_mode-for-new-apps"></a>Tokeny Identyfikatora już nie mogą być zwracane w przypadku nowych aplikacji przy użyciu response_mode zapytania. 
 
 **Wprowadź** Zmieniona funkcja  
-**Kategoria usługi:** Uwierzytelnienia (logowania)  
+**Kategoria usługi:** Uwierzytelnienia (nazwy logowania)  
 **Możliwość produktu:** Uwierzytelnianie użytkownika
  
 Aplikacje utworzone na lub po 25 kwietnia 2018 r. nie będzie już mógł zażądać **id_token** przy użyciu **zapytania** response_mode.  To umożliwia wbudowanej usługi Azure AD ze specyfikacjami OIDC, a także pomaga zmniejszyć obszar ataków aplikacji.  Aplikacje utworzone przed 25 kwietnia 2018 r. nie jest zablokowany za pomocą **zapytania** response_mode przy użyciu elementu response_type z **id_token**.  Błąd zwrócony podczas żądania elementu id_token z usługi AAD, **AADSTS70007: "query" nie jest obsługiwaną wartością "response_mode" podczas żądania tokenu**.
@@ -1236,7 +1236,7 @@ Aplikacje utworzone na lub po 25 kwietnia 2018 r. nie będzie już mógł zażą
 ### <a name="azure-ad-b2c-access-token-are-ga"></a>Usługa Azure AD B2C Token dostępu są ogólnie dostępne
 
 **Wprowadź** Nowa funkcja  
-**Kategoria usługi:** B2C — Consumer Identity Management  
+**Kategoria usługi:** B2C — Zarządzanie tożsamościami konsumentów  
 **Możliwość produktu:** B2B/B2C 
 
 Teraz możesz uzyskać dostęp do interfejsów API sieci Web zabezpieczony za pomocą usługi Azure AD B2C przy użyciu tokenów dostępu. Ta funkcja jest przenoszona z publicznej wersji zapoznawczej do GA. Udoskonalono środowisko interfejsu użytkownika do konfigurowania aplikacji usługi Azure AD B2C i interfejsów API sieci web i wprowadzono drobne ulepszenia.
@@ -1276,7 +1276,7 @@ Aby uzyskać więcej informacji, zobacz [są wyposażone w usłudze Azure AD z w
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** Inne  
-**Możliwość produktu:** Monitorowanie i raportowanie
+**Możliwość produktu:** Monitorowanie & raportowania
 
 Teraz obsługuje możliwość wykrywania adresów IP adresy, która przekracza próg nieudanych logowań U/P na podstawie godzinową lub dzienną programu Connect Health. Dostępne są następujące funkcje oferowane przez tę funkcję:
 
@@ -1420,7 +1420,7 @@ Aby uzyskać więcej informacji, zobacz:
 ### <a name="twitter-and-github-identity-providers-in-azure-ad-b2c"></a>Usługi Twitter i GitHub dostawców tożsamości w usłudze Azure AD B2C
 
 **Wprowadź** Nowa funkcja  
-**Kategoria usługi:** B2C — Consumer Identity Management  
+**Kategoria usługi:** B2C — Zarządzanie tożsamościami konsumentów  
 **Możliwość produktu:** B2B/B2C
  
 Możesz teraz dodać Twitter lub GitHub jako dostawcy tożsamości w usłudze Azure AD B2C. Twitter jest przenoszona z publicznej wersji zapoznawczej do ogólnego udostępnienia. GitHub został wydany w publicznej wersji zapoznawczej.
@@ -1433,7 +1433,7 @@ Aby uzyskać więcej informacji, zobacz [czym jest współpraca B2B w usłudze A
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** Dostęp warunkowy  
-**Możliwość produktu:** Ochrona i zabezpieczanie tożsamości
+**Możliwość produktu:** Ochrona tożsamości & zabezpieczenia
  
 **Teraz w publicznej wersji zapoznawczej!**
 
@@ -1466,7 +1466,7 @@ Aby uzyskać więcej informacji, zobacz [AzureAD](https://docs.microsoft.com/pow
 ### <a name="office-365-native-clients-are-supported-by-seamless-sso-using-a-non-interactive-protocol"></a>Natywne klienci usługi Office 365 są obsługiwane przez bezproblemowe logowanie Jednokrotne przy użyciu protokołu nieinterakcyjnym
 
 **Wprowadź** Nowa funkcja  
-**Kategoria usługi:** Uwierzytelnienia (logowania)  
+**Kategoria usługi:** Uwierzytelnienia (nazwy logowania)  
 **Możliwość produktu:** Uwierzytelnianie użytkownika
  
 Użytkownika przy użyciu natywnych klientów usługi Office 365 (wersja 16.0.8730.xxxx i nowsze wersje) Pobierz dyskretnej środowisko logowania jednokrotnego przy użyciu bezproblemowego logowania jednokrotnego. Te są obsługiwane przez dodanie nieinterakcyjnych protokołu (WS-Trust) do usługi Azure AD.
@@ -1478,7 +1478,7 @@ Aby uzyskać więcej informacji, zobacz [sposób logowania na komputerze klienck
 ### <a name="users-get-a-silent-sign-on-experience-with-seamless-sso-if-an-application-sends-sign-in-requests-to-azure-ads-tenant-endpoints"></a>Użytkownicy uzyskują dyskretnej logowania jednokrotnego, za pomocą bezproblemowego logowania jednokrotnego, jeśli aplikacja przesyła żądania rejestrowania do punktów końcowych dzierżawy usługi Azure AD
 
 **Wprowadź** Nowa funkcja  
-**Kategoria usługi:** Uwierzytelnienia (logowania)  
+**Kategoria usługi:** Uwierzytelnienia (nazwy logowania)  
 **Możliwość produktu:** Uwierzytelnianie użytkownika
  
 Użytkownicy uzyskują dyskretnej logowania jednokrotnego, za pomocą bezproblemowego logowania jednokrotnego, jeśli aplikacja (na przykład `https://contoso.sharepoint.com`) wysyła żądania rejestrowania do punktów końcowych z dzierżawy usługi Azure AD — oznacza to, `https://login.microsoftonline.com/contoso.com/<..>` lub `https://login.microsoftonline.com/<tenant_ID>/<..>` — zamiast wspólnego punktu końcowego usługi Azure AD (`https://login.microsoftonline.com/common/<...>`).
@@ -1490,7 +1490,7 @@ Aby uzyskać więcej informacji, zobacz [usługi Azure Active Directory bezprobl
 ### <a name="need-to-add-only-one-azure-ad-url-instead-of-two-urls-previously-to-users-intranet-zone-settings-to-roll-out-seamless-sso"></a>Należy dodać tylko jeden adres URL usługi Azure AD, zamiast wcześniej dwa adresy URL do ustawienia strefy Intranet użytkowników to dystrybucję bezproblemowe logowanie Jednokrotne
 
 **Wprowadź** Nowa funkcja  
-**Kategoria usługi:** Uwierzytelnienia (logowania)  
+**Kategoria usługi:** Uwierzytelnienia (nazwy logowania)  
 **Możliwość produktu:** Uwierzytelnianie użytkownika
  
 Aby rozwinąć bezproblemowe logowanie Jednokrotne dla użytkowników, należy dodać tylko jeden usługi Azure AD adres URL użytkowników w sieci Intranet ustawienia strefy za pomocą zasad grupy w usłudze Active Directory: `https://autologon.microsoftazuread-sso.com`. Wcześniej klienci musieli dodać dwa adresy URL.
@@ -1530,7 +1530,7 @@ Aby uzyskać więcej informacji, zobacz [PIM dla zasobów platformy Azure (wersj
 ### <a name="adding-optional-claims-to-your-apps-tokens-public-preview"></a>Dodawanie opcjonalnych oświadczeń do tokenów aplikacji (publiczna wersja zapoznawcza)
 
 **Wprowadź** Nowa funkcja  
-**Kategoria usługi:** Uwierzytelnienia (logowania)  
+**Kategoria usługi:** Uwierzytelnienia (nazwy logowania)  
 **Możliwość produktu:** Uwierzytelnianie użytkownika
  
 Aplikacja usługi Azure AD mogą teraz oświadczenia żądań, niestandardowych lub opcjonalnie tokenów Jwt lub SAML tokenów.  To są oświadczenia dotyczące użytkownika lub dzierżawy, które nie są uwzględnione w tokenie, z powodu ograniczeń rozmiaru lub stosowania domyślnie.  Ta funkcja jest obecnie w publicznej wersji zapoznawczej dla aplikacji usługi Azure AD w wersji 1.0 i 2.0 punktach końcowych.  Zobacz dokumentację, aby uzyskać informacje na oświadczeniach, jakie można dodać i jak edytować manifest aplikacji do ich zażądać.  
@@ -1542,7 +1542,7 @@ Aby uzyskać więcej informacji, zobacz [opcjonalnie oświadczeń w usłudze Azu
 ### <a name="azure-ad-supports-pkce-for-more-secure-oauth-flows"></a>Usługa Azure AD obsługuje PKCE bardziej bezpieczne przepływy OAuth
 
 **Wprowadź** Nowa funkcja  
-**Kategoria usługi:** Uwierzytelnienia (logowania)  
+**Kategoria usługi:** Uwierzytelnienia (nazwy logowania)  
 **Możliwość produktu:** Uwierzytelnianie użytkownika
  
 Dokumentacja usługi Azure AD zostały zaktualizowane należy pamiętać, obsługa PKCE, który pozwala na bardziej bezpiecznej komunikacji w przepływie przyznawania kodu autoryzacji usługi uwierzytelniania OAuth 2.0.  Code_challenges S256 i w postaci zwykłego tekstu są obsługiwane dla punktów końcowych w wersji 1.0 i 2.0. 
@@ -1579,7 +1579,7 @@ Aby uzyskać więcej informacji, zobacz [dynamiczne reguły członkostwa dla gru
 ### <a name="improved-sign-out-behavior-with-seamless-sso"></a>Ulepszone zachowanie wylogowania z bezproblemowe logowanie Jednokrotne
 
 **Wprowadź** Zmieniona funkcja  
-**Kategoria usługi:** Uwierzytelnienia (logowania)  
+**Kategoria usługi:** Uwierzytelnienia (nazwy logowania)  
 **Możliwość produktu:** Uwierzytelnianie użytkownika
  
 Wcześniej nawet wtedy, gdy użytkownicy wylogowanie jawnie aplikacji zabezpieczonej przez usługi Azure AD, ich będzie automatycznie zalogować się ponownie przy użyciu bezproblemowe logowanie Jednokrotne gdy one próbował uzyskać dostęp do aplikacji usługi Azure AD, ponownie w ramach ich sieci corpnet za pomocą ich urządzeń przyłączonych do domeny. Dzięki tej zmianie Wyloguj jest obsługiwane.  Dzięki temu użytkownicy mogą wybrać tej samej lub innej usługi Azure AD konto do zalogowania Wstecz, a nie są automatycznie zalogować się przy użyciu bezproblemowe logowanie Jednokrotne.
@@ -1592,7 +1592,7 @@ Aby uzyskać więcej informacji, zobacz [usługi Azure Active Directory bezprobl
 
 **Wprowadź** Zmieniona funkcja  
 **Kategoria usługi:** Serwer proxy aplikacji  
-**Możliwość produktu:** Ochrona i zabezpieczanie tożsamości
+**Możliwość produktu:** Ochrona tożsamości & zabezpieczenia
  
 Ta wersja łącznika jest stopniowo wdrażana za pośrednictwem listopada. Nowa wersja łącznika obejmuje następujące zmiany:
 
@@ -1621,7 +1621,7 @@ Usprawniono środowisko nawigacji do zarządzania użytkownikami i grupami. Moż
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** Azure Stack  
-**Możliwość produktu:** Monitorowanie i raportowanie
+**Możliwość produktu:** Monitorowanie & raportowania
 
 Raporty dziennika usługi Azure AD Activity są teraz dostępne w systemie Microsoft Azure, świadczona przez firmę 21Vianet (Azure China 21Vianet) wystąpień. Uwzględnione są następujące dzienniki:
 
@@ -1645,7 +1645,7 @@ Aby uzyskać więcej informacji na temat używania tych raportów, zobacz [rapor
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** Raportowanie  
-**Możliwość produktu:** Monitorowanie i raportowanie
+**Możliwość produktu:** Monitorowanie & raportowania
 
 Jako część opinie klientów, aby włączyć role bez uprawnień administratora na dostęp do działania usługi Azure AD dzienników, udostępniliśmy możliwość dla użytkowników, którzy znajdują się w roli "Czytnik raportów" dostęp do logowania i działania inspekcji w witrynie Azure portal, jak i za pomocą naszych interfejsów API programu Graph. 
 
@@ -1790,7 +1790,7 @@ Ta wersja ma następujące aktualizacje i zmiany:
 
 **Wprowadź** Zmieniona funkcja  
 **Kategoria usługi:** Dostęp warunkowy  
-**Możliwość produktu:** Ochrona i zabezpieczanie tożsamości
+**Możliwość produktu:** Ochrona tożsamości & zabezpieczenia
 
 Dodaliśmy więcej aplikacji obsługujących dostęp warunkowy oparty na aplikacji. Teraz można uzyskać dostęp do usługi Office 365 i inne aplikacje podłączone usługi AD platformy Azure w chmurze przy użyciu tych zatwierdzonych aplikacji klienckich.
 
@@ -1841,7 +1841,7 @@ Aby uzyskać więcej informacji o ofercie swoją aplikację w galerii aplikacji 
 
 **Wprowadź** Nowa funkcja  
 **Kategoria usługi:** Identity Protection  
-**Możliwość produktu:** Ochrona i zabezpieczanie tożsamości
+**Możliwość produktu:** Ochrona tożsamości & zabezpieczenia
 
 Szczegółowe informacje, uzyskasz na zdarzenie wykryte zagrożenie jest powiązany ze swoją subskrypcją usługi Azure AD. Za pomocą wersji Azure AD Premium P2 otrzymasz najbardziej szczegółowe informacje na temat wszystkie wykrycia bazowego.
 
@@ -2030,7 +2030,7 @@ Za pomocą przepływu pracy zatwierdzania Administratorzy ról uprzywilejowanych
 ### <a name="pass-through-authentication-skype-for-business-support"></a>Uwierzytelnianie przekazywane: Obsługa usługi Skype dla firm
 
 **Wprowadź** Zmieniona funkcja  
-**Kategoria usługi:** Uwierzytelnienia (logowania)  
+**Kategoria usługi:** Uwierzytelnienia (nazwy logowania)  
 **Możliwość produktu:** Uwierzytelnianie użytkowników
 
 Teraz uwierzytelniania przekazywanego obsługuje logowania użytkowników do usługi Skype dla firm aplikacji klienckich, które obsługują nowoczesnego uwierzytelniania, w tym w trybie online i hybrydowe topologie. 
@@ -2120,7 +2120,7 @@ Administratorzy mogą teraz utworzyć nowe warunki użytkowania, które zawieraj
 ### <a name="real-time-password-writeback-client-status"></a>Stan klienta zapisywania zwrotnego haseł w czasie rzeczywistym
 
 **Wprowadź** Nowa funkcja  
-**Kategoria usługi:** Samoobsługowe resetowanie hasła  
+**Kategoria usługi:** Samoobsługowe resetowanie haseł  
 **Możliwość produktu:** Uwierzytelnianie użytkowników
 
 Teraz można sprawdzić stan swojego klienta zapisywania zwrotnego haseł w środowisku lokalnym. Ta opcja jest dostępna w **integracji lokalnego** części [resetowania hasła](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset) strony. 

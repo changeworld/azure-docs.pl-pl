@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 05/21/2019
-ms.openlocfilehash: a1475188d2e1ab0db3dfd9775fc37d3fc0a17158
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1b35533eeb4c4a364588dbea11f74e8d6b76df3b
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567272"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998225"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database metryki i rejestrowania diagnostyki
 
@@ -64,7 +64,7 @@ Można skonfigurować bazy danych Azure SQL Database i wystąpienia baz danych, 
 | Monitorowanie telemetrii dla baz danych | Obsługa pojedynczej bazy danych i bazy danych w puli | Obsługa bazy danych wystąpień |
 | :------------------- | ----- | ----- |
 | [Metryki podstawowe](#basic-metrics): Zawiera wartość procentową jednostek DTU/procesor CPU, limit liczby jednostek DTU/procesora, procent odczytu danych fizycznych, procent zapisu w dzienniku, powodzenie/niepowodzenie/zablokowany przez połączenia zapory, procent sesji, procenty użycia, magazyn, procent magazynu i procent magazynu XTP. | Tak | Nie |
-| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): Zawiera informacje o statystykach środowiska uruchomieniowego zapytań, takich jak użycie procesora CPU i statystyka czasu trwania zapytania. | Yes | Tak |
+| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): Zawiera informacje o statystykach środowiska uruchomieniowego zapytań, takich jak użycie procesora CPU i statystyka czasu trwania zapytania. | Tak | Tak |
 | [QueryStoreWaitStatistics](#query-store-wait-statistics): Zawiera informacje o statystyce oczekiwania zapytań (zapytania, w których oczekują zapytania), takie jak użycie procesora CPU, dziennika i blokowania. | Tak | Tak |
 | [Błędy](#errors-dataset): Zawiera informacje o błędach SQL w bazie danych. | Tak | Tak |
 | [DatabaseWaitStatistics](#database-wait-statistics-dataset): Zawiera informacje o tym, ile czasu baza danych poświęca na oczekiwanie na różne typy oczekiwania. | Tak | Nie |
@@ -344,9 +344,12 @@ Najprostszym sposobem skonfigurowania lokalizacji baz danych rekordów jest uży
 
 Jeśli są używane pule elastyczne lub wystąpienia zarządzane, należy również skonfigurować ustawienia diagnostyki w tych zasobach, aby umożliwić strumieniowe przesyłanie danych telemetrycznych do obszaru roboczego.
 
-### <a name="use-the-sql-analytics-solution"></a>Korzystanie z rozwiązania analitycznego SQL
+### <a name="use-the-sql-analytics-solution-for-monitoring-and-alerting"></a>Używanie rozwiązania analitycznego SQL do monitorowania i generowania alertów
 
-Usługi SQL Analytics można używać jako hierarchicznego pulpitu nawigacyjnego do wyświetlania zasobów SQL Database. Aby dowiedzieć się, jak używać rozwiązania analitycznego SQL, zobacz [monitorowanie SQL Database przy użyciu rozwiązania SQL Analytics](../log-analytics/log-analytics-azure-sql.md).
+Usługi SQL Analytics można używać jako hierarchicznego pulpitu nawigacyjnego do wyświetlania zasobów SQL Database.
+
+- Aby dowiedzieć się, jak używać rozwiązania analitycznego SQL, zobacz [monitorowanie SQL Database przy użyciu rozwiązania SQL Analytics](../log-analytics/log-analytics-azure-sql.md).
+- Aby dowiedzieć się, jak skonfigurować alerty dla SQL Database i wystąpienia zarządzanego na podstawie analizy SQL, zobacz [tworzenie alertów dla SQL Database i wystąpienia zarządzanego](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts).
 
 ## <a name="stream-into-event-hubs"></a>Przesyłanie strumieniowe do usługi Event Hubs
 
@@ -704,7 +707,7 @@ Dowiedz się więcej na temat [statystyk oczekiwania bazy danych](https://docs.m
 
 Dowiedz się więcej o [formacie dziennika Intelligent Insights](sql-database-intelligent-insights-use-diagnostics-log.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się, jak włączyć rejestrowanie i zrozumieć metryki i kategorie dzienników obsługiwane przez różne usługi platformy Azure, zobacz:
 
@@ -715,3 +718,7 @@ Aby dowiedzieć się więcej na temat Event Hubs, Przeczytaj:
 
 - [Co to jest usługa Azure Event Hubs?](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Rozpoczynanie pracy z usługą Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+
+Aby dowiedzieć się, jak skonfigurować alerty na podstawie danych telemetrycznych z usługi log Analytics, zobacz:
+
+- [Tworzenie alertów dla SQL Database i wystąpienia zarządzanego](../azure-monitor/insights/azure-sql.md#analyze-data-and-create-alerts)

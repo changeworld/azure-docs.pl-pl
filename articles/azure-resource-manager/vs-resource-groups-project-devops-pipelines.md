@@ -1,65 +1,65 @@
 ---
-title: Ciągła Integracja/ciągłe dostarczanie za pomocą szablonów potoki usługi Azure i usługi Resource Manager
-description: W tym artykule opisano sposób konfigurowania ciągłej integracji w potokach platformy Azure przy użyciu projekty wdrażania grupy zasobów platformy Azure w programie Visual Studio do wdrażania szablonów usługi Resource Manager.
+title: Ciągłej integracji/ciągłego wdrażania za pomocą szablonów Azure Pipelines i Menedżer zasobów
+description: Opisuje sposób konfigurowania ciągłej integracji w Azure Pipelines przy użyciu projektów wdrażania grupy zasobów platformy Azure w programie Visual Studio w celu wdrażania szablonów Menedżer zasobów.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: b70b38904c0373c53c3731dd0442511116d9c4de
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: ae896fa0820fbd25ed3f2d29c89fbcd56e7fd6f5
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67191462"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982456"
 ---
-# <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Integracja z szablonów usługi Resource Manager z potokiem, Azure
+# <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Integrowanie szablonów Menedżer zasobów z Azure Pipelines
 
-Visual Studio zawiera projekt grupy zasobów platformy Azure do tworzenia szablonów i wdrażanie ich do subskrypcji platformy Azure. Ten projekt można zintegrować z Azure potoków ciągłej integracji i ciągłego wdrażania (CI/CD).
+Program Visual Studio udostępnia projekt grupy zasobów platformy Azure na potrzeby tworzenia szablonów i wdrażania ich w ramach subskrypcji platformy Azure. Można zintegrować ten projekt z Azure Pipelines na potrzeby ciągłej integracji i ciągłego wdrażania (CI/CD).
 
-Istnieją dwa sposoby wdrażania szablonów przy użyciu potoków usługi Azure:
+Istnieją dwa sposoby wdrażania szablonów przy użyciu Azure Pipelines:
 
-* **Dodaj zadanie, które uruchamia skrypt programu Azure PowerShell**. Ta opcja ma tę zaletę, zapewniając spójność w całym cyklu, ponieważ używają tego samego skryptu, który znajduje się w projekcie programu Visual Studio (Wdróż AzureResourceGroup.ps1). Skrypt etapów artefakty z projektu do konta magazynu usługi Resource Manager można uzyskać dostęp. Artefakty są elementy w projekcie, takie jak połączonymi szablonami, skrypty i pliki binarne aplikacji. Następnie skrypt służy do wdrażania szablonu.
+* **Dodaj zadanie, które uruchamia skrypt Azure PowerShell**. Ta opcja ma zalety zapewnienia spójności w całym cyklu życia, ponieważ jest używany ten sam skrypt, który jest zawarty w projekcie programu Visual Studio (Deploy-AzureResourceGroup. ps1). Etapy skryptu są artefaktami z projektu do konta magazynu, do którego Menedżer zasobów może uzyskać dostęp. Artefakty to elementy w projekcie, takie jak połączone szablony, skrypty i pliki binarne aplikacji. Następnie skrypt wdraża szablon.
 
-* **Dodawanie podzadań do kopiowania i wdrożenia zadań**. Tej opcji można używać zamiast do skryptu projektu. Należy skonfigurować dwa zadania w potoku. Jedno zadanie przygotowuje artefakty i inne zadanie służy do wdrażania szablonu.
+* **Dodawanie zadań do kopiowania i wdrażania zadań**. Ta opcja oferuje wygodną alternatywę dla skryptu projektu. W potoku konfiguruje się dwa zadania. Jednym etapem zadania artefakty, a inne zadanie wdraża szablon.
 
-W tym artykule opisano obie te metody.
+W tym artykule przedstawiono oba podejścia.
 
-## <a name="prepare-your-project"></a>Przygotowanie projektu programu
+## <a name="prepare-your-project"></a>Przygotowywanie projektu
 
-W tym artykule założono, że projekt programu Visual Studio i organizacji DevOps platformy Azure są gotowe do utworzenia potoku. Poniższe kroki pokazują jak upewnić się, że wszystko jest gotowe:
+W tym artykule przyjęto założenie, że projekt programu Visual Studio i organizacja usługi Azure DevOps są gotowe do tworzenia potoku. W poniższych krokach pokazano, jak upewnić się, że wszystko jest gotowe:
 
-* Masz organizacji DevOps platformy Azure. Jeśli nie masz, [utworzyć jedno za darmo](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops). Jeśli Twój zespół ma już organizacji DevOps platformy Azure, upewnij się, że jesteś administratorem projektu DevOps platformy Azure, którego chcesz użyć.
+* Masz organizację usługi Azure DevOps. Jeśli go nie masz, [Utwórz go bezpłatnie](/azure/devops/pipelines/get-started/pipelines-sign-up?view=azure-devops). Jeśli Twój zespół ma już organizację usługi Azure DevOps, upewnij się, że jesteś administratorem projektu usługi Azure DevOps, którego chcesz użyć.
 
-* Skonfigurowano [połączenia usługi](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) do subskrypcji platformy Azure. Wykonywanie zadań w potoku w obszarze tożsamość jednostki usługi. Aby uzyskać instrukcje dotyczące tworzenia połączenia, zobacz [Utwórz projekt DevOps](resource-manager-tutorial-use-azure-pipelines.md#create-a-devops-project).
+* Skonfigurowano [połączenie usługi](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) z subskrypcją platformy Azure. Zadania w potoku są wykonywane w ramach tożsamości nazwy głównej usługi. Aby uzyskać instrukcje dotyczące tworzenia połączenia, zobacz [Tworzenie projektu DevOps](resource-manager-tutorial-use-azure-pipelines.md#create-a-devops-project).
 
-* Masz projekt programu Visual Studio, który został utworzony na podstawie **grupy zasobów platformy Azure** początkowy szablon. Aby uzyskać informacji na temat tworzenia tego typu projektu, zobacz [tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+* Masz projekt programu Visual Studio, który został utworzony na podstawie początkowego szablonu **grupy zasobów platformy Azure** . Aby uzyskać informacje na temat tworzenia tego typu projektu, zobacz [Tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
-* Projekt programu Visual Studio jest [podłączony do projektu DevOps platformy Azure](/azure/devops/repos/git/share-your-code-in-git-vs-2017?view=azure-devops).
+* Projekt programu Visual Studio jest [połączony z projektem usługi Azure DevOps](/azure/devops/repos/git/share-your-code-in-git-vs-2017?view=azure-devops).
 
 ## <a name="create-pipeline"></a>Tworzenie potoku
 
-1. Jeśli potok nie zostały dodane wcześniej, musisz utworzyć nowy potok. W Twojej organizacji DevOps platformy Azure wybierz **potoki** i **nowy potok**.
+1. Jeśli potok nie został wcześniej dodany, należy utworzyć nowy potok. W organizacji usługi Azure DevOps wybierz pozycję **potoki** i **Nowy potok**.
 
    ![Dodaj nowy potok](./media/vs-resource-groups-project-devops-pipelines/new-pipeline.png)
 
-1. Określ, gdzie znajduje się kod. Na poniższej ilustracji przedstawiono, wybierając **Azure repozytoriów Git**.
+1. Określ miejsce przechowywania kodu. Na poniższej ilustracji przedstawiono Wybieranie **Azure Repos git**.
 
    ![Wybierz źródło kodu](./media/vs-resource-groups-project-devops-pipelines/select-source.png)
 
-1. Wybierz repozytorium, które zawiera kod dla Twojego projektu z tego źródła.
+1. Z tego źródła wybierz repozytorium, które ma kod dla projektu.
 
-   ![Wybierz repozytorium](./media/vs-resource-groups-project-devops-pipelines/select-repo.png)
+   ![Wybieranie repozytorium](./media/vs-resource-groups-project-devops-pipelines/select-repo.png)
 
-1. Wybierz typ potoku do utworzenia. Możesz wybrać **potoku Starter**.
+1. Wybierz typ potoku, który ma zostać utworzony. Możesz wybrać pozycję **potok początkowy**.
 
-   ![Wybierz potoku](./media/vs-resource-groups-project-devops-pipelines/select-pipeline.png)
+   ![Wybierz potok](./media/vs-resource-groups-project-devops-pipelines/select-pipeline.png)
 
-Możesz przystąpić do dodawania zadania programu Azure PowerShell lub Kopiuj plik i wdrożenia zadań.
+Możesz dodać zadanie Azure PowerShell lub skopiować plik i wdrożyć zadania.
 
-## <a name="azure-powershell-task"></a>Zadanie usługi Azure PowerShell
+## <a name="azure-powershell-task"></a>Azure PowerShell, zadanie
 
-W tej sekcji pokazano, jak skonfigurować ciągłe wdrażanie za pomocą pojedynczego zadania, które uruchamia skrypt programu PowerShell w projekcie. Tworzy następującego pliku YAML [zadań programu Azure PowerShell](/azure/devops/pipelines/tasks/deploy/azure-powershell?view=azure-devops):
+W tej sekcji pokazano, jak skonfigurować ciągłe wdrażanie przy użyciu pojedynczego zadania, które uruchamia skrypt programu PowerShell w projekcie. Następujący plik YAML tworzy [zadanie Azure PowerShell](/azure/devops/pipelines/tasks/deploy/azure-powershell?view=azure-devops):
 
 ```yaml
 pool:
@@ -75,41 +75,41 @@ steps:
     azurePowerShellVersion: LatestVersion
 ```
 
-Po ustawieniu zadania na `AzurePowerShell@3`, potok używa poleceń z modułu AzureRM do uwierzytelniania połączenia. Domyślnie skrypt programu PowerShell w projekcie programu Visual Studio używa modułu AzureRM. Jeśli zaktualizowano skrypt, aby użyć [modułu Az](/powershell/azure/new-azureps-module-az), ustaw zadania `AzurePowerShell@4`.
+Po ustawieniu zadania na `AzurePowerShell@3`, potok używa poleceń z modułu AzureRM do uwierzytelniania połączenia. Domyślnie skrypt programu PowerShell w projekcie programu Visual Studio używa modułu AzureRM. Jeśli skrypt został zaktualizowany tak, aby korzystał z [modułu AZ module](/powershell/azure/new-azureps-module-az), Ustaw zadanie na `AzurePowerShell@4`.
 
 ```yaml
 steps:
 - task: AzurePowerShell@4
 ```
 
-Aby uzyskać `azureSubscription`, podaj nazwę połączenia usługi został utworzony.
+W `azureSubscription`polu podaj nazwę utworzonego połączenia z usługą.
 
 ```yaml
 inputs:
     azureSubscription: '<your-connection-name>'
 ```
 
-Aby uzyskać `scriptPath`, podaj ścieżkę względną z pliku potoku do skryptu. Możesz przejrzeć w repozytorium, aby wyświetlić ścieżkę.
+W `scriptPath`przypadku, podaj ścieżkę względną z pliku potoku do skryptu. Możesz wyszukać w repozytorium, aby zobaczyć ścieżkę.
 
 ```yaml
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
 ```
 
-Jeśli nie potrzebujesz do etapu artefaktów, po prostu przekaż nazwę i lokalizację grupy zasobów do zastosowania podczas wdrażania. Skrypt Visual Studio tworzy grupę zasobów, jeśli jeszcze nie istnieje.
+Jeśli nie musisz przemieścić artefaktów, po prostu przekaż nazwę i lokalizację grupy zasobów, która ma zostać użyta do wdrożenia. Skrypt programu Visual Studio tworzy grupę zasobów, jeśli jeszcze nie istnieje.
 
 ```yaml
 ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocation '<location>'
 ```
 
-Jeśli zachodzi potrzeba etapu artefakty do istniejącego konta magazynu, użyj:
+Jeśli musisz przemieścić artefakty na istniejącym koncie magazynu, użyj:
 
 ```yaml
 ScriptArguments: -ResourceGroupName '<resource-group-name>' -ResourceGroupLocation '<location>' -UploadArtifacts -ArtifactStagingDirectory '$(Build.StagingDirectory)' -StorageAccountName '<your-storage-account>'
 ```
 
-Teraz, że rozumiesz, jak utworzyć zadanie, Przejdźmy przez kroki, aby edytować potoku.
+Teraz, gdy zrozumiesz, jak utworzyć zadanie, przejdźmy do instrukcji, aby przeprowadzić edycję potoku.
 
-1. Otwórz potok i zastąp jego zawartość kodem swoje YAML:
+1. Otwórz potok i Zastąp jego zawartość YAML:
 
    ```yaml
    pool:
@@ -127,21 +127,21 @@ Teraz, że rozumiesz, jak utworzyć zadanie, Przejdźmy przez kroki, aby edytowa
 
 1. Wybierz pozycję **Zapisz**.
 
-   ![Zapisz potoku](./media/vs-resource-groups-project-devops-pipelines/save-pipeline.png)
+   ![Zapisywanie potoku](./media/vs-resource-groups-project-devops-pipelines/save-pipeline.png)
 
-1. Udostępnij komunikat dla zatwierdzenia i zatwierdź bezpośrednio **wzorca**.
+1. Podaj komunikat dotyczący zatwierdzenia i przekaż go bezpośrednio do serwera **głównego**.
 
-1. Po wybraniu **Zapisz**, potok kompilacji jest uruchamiana automatycznie. Wróć do podsumowania dla potoku kompilacji, a następnie obejrzyj stanu.
+1. Po wybraniu opcji **Zapisz**potok kompilacji zostanie automatycznie uruchomiony. Wróć do podsumowania potoku kompilacji i obejrzyj stan.
 
    ![Wyświetlanie wyników](./media/vs-resource-groups-project-devops-pipelines/view-results.png)
 
-Możesz wybrać aktualnie uruchomionych potoku, aby zobaczyć szczegółowe informacje o zadaniach. Po zakończeniu zobaczysz wyniki dla każdego kroku.
+Możesz wybrać aktualnie uruchomiony potok, aby wyświetlić szczegółowe informacje o zadaniach. Po zakończeniu zobaczysz wyniki dla każdego kroku.
 
-## <a name="copy-and-deploy-tasks"></a>Skopiuj i wdrożenia zadań
+## <a name="copy-and-deploy-tasks"></a>Kopiowanie i wdrażanie zadań
 
-W tej sekcji pokazano, jak skonfigurować ciągłe wdrażanie przy użyciu dwóch zadań Przygotuj artefakty do wdrożenia szablonu. 
+W tej sekcji pokazano, jak skonfigurować ciągłe wdrażanie przy użyciu dwóch zadań do przygotowania artefaktów i wdrożenia szablonu. 
 
-Pokazano w poniższym YAML [zadanie kopiowania plików platformy Azure](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops):
+W poniższym YAML przedstawiono [zadanie kopiowania plików platformy Azure](/azure/devops/pipelines/tasks/deploy/azure-file-copy?view=azure-devops):
 
 ```yaml
 - task: AzureFileCopy@3
@@ -157,26 +157,26 @@ Pokazano w poniższym YAML [zadanie kopiowania plików platformy Azure](/azure/d
     sasTokenTimeOutInMinutes: '240'
 ```
 
-Istnieje kilka elementów do poprawiania środowiska tego zadania. `SourcePath` Wskazuje lokalizację artefaktów względną do pliku potoku. W tym przykładzie pliki znajdują się w folderze o nazwie `AzureResourceGroup1` co było nazwę projektu.
+Istnieje kilka części tego zadania, które można poprawić w danym środowisku. `SourcePath` Wskazuje lokalizację artefaktów względem pliku potoku. W tym przykładzie pliki znajdują się w folderze o nazwie `AzureResourceGroup1` , która jest nazwą projektu.
 
 ```yaml
 SourcePath: '<path-to-artifacts>'
 ```
 
-Aby uzyskać `azureSubscription`, podaj nazwę połączenia usługi został utworzony.
+W `azureSubscription`polu podaj nazwę utworzonego połączenia z usługą.
 
 ```yaml
 azureSubscription: '<your-connection-name>'
 ```
 
-Nazwa magazynu i kontener Podaj nazwy konta magazynu i kontener, którego chcesz użyć do przechowywania artefaktów. Konto magazynu musi istnieć.
+W polu Nazwa magazynu i kontenera Podaj nazwy konta magazynu i kontenera, które mają być używane do przechowywania artefaktów. Konto magazynu musi istnieć.
 
 ```yaml
 storage: '<your-storage-account-name>'
 ContainerName: '<container-name>'
 ```
 
-Pokazano w poniższym YAML [zadania wdrożenia grupy zasobów platformy Azure](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment?view=azure-devops):
+W poniższym YAML przedstawiono [zadanie wdrażania grupy zasobów platformy Azure](/azure/devops/pipelines/tasks/deploy/azure-resource-group-deployment?view=azure-devops):
 
 ```yaml
 - task: AzureResourceGroupDeployment@2
@@ -191,24 +191,24 @@ Pokazano w poniższym YAML [zadania wdrożenia grupy zasobów platformy Azure](/
     overrideParameters: '-_artifactsLocation $(artifactsLocation) -_artifactsLocationSasToken "$(artifactsLocationSasToken)"'
 ```
 
-Istnieje kilka elementów do poprawiania środowiska tego zadania. Aby uzyskać `azureSubscription`, podaj nazwę połączenia usługi został utworzony.
+Istnieje kilka części tego zadania, które można poprawić w danym środowisku. W `azureSubscription`polu podaj nazwę utworzonego połączenia z usługą.
 
 ```yaml
 azureSubscription: '<your-connection-name>'
 ```
 
-Aby uzyskać `resourceGroupName` i `location`, podaj nazwę i lokalizację grupy zasobów, które mają zostać wdrożone na. Zadanie tworzy grupę zasobów, jeśli nie istnieje.
+W `resourceGroupName` przypadku `location`systemów i podaj nazwę i lokalizację grupy zasobów, w której chcesz wdrożyć. Zadanie tworzy grupę zasobów, jeśli nie istnieje.
 
 ```yaml
 resourceGroupName: '<resource-group-name>'
 location: '<location>'
 ```
 
-Łącza do zadań wdrażania do szablonu o nazwie `WebSite.json` i plik parametrów o nazwie WebSite.parameters.json. Użyj nazw plików szablonu oraz parametrów.
+Zadanie wdrażania łączy się z szablonem o `WebSite.json` nazwie i plikiem parametrów o nazwie website. Parameters. JSON. Użyj nazw szablonu i plików parametrów.
 
-Teraz, że rozumiesz sposób tworzenia zadania, Przejdźmy przez kroki, aby edytować potoku.
+Teraz, gdy zrozumiesz, jak tworzyć zadania, przejdźmy do kroków, aby edytować potok.
 
-1. Otwórz potok i zastąp jego zawartość kodem swoje YAML:
+1. Otwórz potok i Zastąp jego zawartość YAML:
 
    ```yaml
    pool:
@@ -240,14 +240,14 @@ Teraz, że rozumiesz sposób tworzenia zadania, Przejdźmy przez kroki, aby edyt
 
 1. Wybierz pozycję **Zapisz**.
 
-1. Udostępnij komunikat dla zatwierdzenia i zatwierdź bezpośrednio **wzorca**.
+1. Podaj komunikat dotyczący zatwierdzenia i przekaż go bezpośrednio do serwera **głównego**.
 
-1. Po wybraniu **Zapisz**, potok kompilacji jest uruchamiana automatycznie. Wróć do podsumowania dla potoku kompilacji, a następnie obejrzyj stanu.
+1. Po wybraniu opcji **Zapisz**potok kompilacji zostanie automatycznie uruchomiony. Wróć do podsumowania potoku kompilacji i obejrzyj stan.
 
    ![Wyświetlanie wyników](./media/vs-resource-groups-project-devops-pipelines/view-results.png)
 
-Możesz wybrać aktualnie uruchomionych potoku, aby zobaczyć szczegółowe informacje o zadaniach. Po zakończeniu zobaczysz wyniki dla każdego kroku.
+Możesz wybrać aktualnie uruchomiony potok, aby wyświetlić szczegółowe informacje o zadaniach. Po zakończeniu zobaczysz wyniki dla każdego kroku.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać instrukcje krok po kroku proces przy użyciu potoków platformy Azure przy użyciu szablonów usługi Resource Manager, zobacz [samouczka: Ciągła integracja szablonów usługi Azure Resource Manager za pomocą potoków Azure](resource-manager-tutorial-use-azure-pipelines.md).
+Aby uzyskać instrukcje krok po kroku dotyczące korzystania z Azure Pipelines z szablonami Menedżer zasobów, [zobacz Samouczek: Ciągła integracja szablonów Azure Resource Manager z Azure Pipelines](resource-manager-tutorial-use-azure-pipelines.md).

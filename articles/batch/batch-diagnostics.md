@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 63d0196609e432b081e91a49b5b1410431223632
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
-ms.translationtype: MT
+ms.openlocfilehash: da5a71c75485f929ba9c4f510066df84d7a31996
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323623"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992165"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metryki usługi Batch, alerty i dzienniki diagnostyczne oceny i monitorowania
 
@@ -48,6 +48,7 @@ Aby wyświetlić wszystkie metryki konta usługi Batch:
 1. W portalu, kliknij przycisk **wszystkich usług** > **konta usługi Batch**, a następnie kliknij nazwę swojego konta usługi Batch.
 2. W obszarze **monitorowanie**, kliknij przycisk **metryki**.
 3. Wybierz co najmniej jednej z metryk. Należy wybrać metryki dodatkowych zasobów, przy użyciu **subskrypcje**, **grupy zasobów**, **typ zasobu**, i **zasobów** listy rozwijane.
+    * W przypadku metryk opartych na liczbie (takich jak "dedykowana liczba rdzeni" lub "Liczba węzłów o niskim priorytecie") Użyj agregacji "Średnia". W przypadku metryk opartych na zdarzeniach (takich jak "zmiany rozmiaru puli zakończonych zdarzeń") Użyj agregacji "Count".
 
     ![Metryki usługi Batch](media/batch-diagnostics/metrics-portal.png)
 

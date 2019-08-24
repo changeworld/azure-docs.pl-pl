@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: a5bfc664c412c93bbf3e522b01528e8247be3291
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 1f1db1c347709ed7c8587ed8b5523a231e373999
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016054"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991870"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Najlepsze rozwiązania dotyczące korzystania z Azure Data Lake Storage Gen2
 
@@ -31,11 +31,11 @@ Gdy grupa zabezpieczeń ma przypisane uprawnienia, Dodawanie lub usuwanie użytk
 
 ### <a name="security-for-groups"></a>Zabezpieczenia dla grup
 
-Gdy użytkownik lub użytkownicy będą musieli uzyskać dostęp do danych na koncie magazynu z włączoną hierarchiczną przestrzenią nazw, najlepiej jest używać Azure Active Directory grup zabezpieczeń. Niektóre zalecane grupy do uruchomienia programu mogą być **ReadOnlyUsers**, **WriteAccessUsers**i **FullAccessUsers** dla katalogu głównego systemu plików, a nawet oddzielić je dla podkatalogów kluczy. Jeśli istnieją inne przewidywane grupy użytkowników, które mogą zostać później dodane, ale nie zostały jeszcze zidentyfikowane, warto rozważyć utworzenie fikcyjnych grup zabezpieczeń, które mają dostęp do niektórych folderów. Dzięki użyciu grupy zabezpieczeń można uniknąć długiego czasu przetwarzania podczas przypisywania nowych uprawnień do tysięcy plików.
+Gdy użytkownik lub użytkownicy będą musieli uzyskać dostęp do danych na koncie magazynu z włączoną hierarchiczną przestrzenią nazw, najlepiej jest używać Azure Active Directory grup zabezpieczeń. Niektóre zalecane grupy do rozpoczęcia z programu to **ReadOnlyUsers**, **WriteAccessUsers**i **FullAccessUsers** dla katalogu głównego kontenera, a nawet oddzielne dla podkatalogów kluczy. Jeśli istnieją inne przewidywane grupy użytkowników, które mogą zostać później dodane, ale nie zostały jeszcze zidentyfikowane, warto rozważyć utworzenie fikcyjnych grup zabezpieczeń, które mają dostęp do niektórych folderów. Dzięki użyciu grupy zabezpieczeń można uniknąć długiego czasu przetwarzania podczas przypisywania nowych uprawnień do tysięcy plików.
 
 ### <a name="security-for-service-principals"></a>Zabezpieczenia dla podmiotów usługi
 
-Nazwy główne usług Azure Active Directory są zwykle używane przez usługi, takie jak Azure Databricks, aby uzyskać dostęp do danych w Data Lake Storage Gen2. W przypadku wielu klientów jedna jednostka usługi Azure Active Directory może być odpowiednia i może mieć pełne uprawnienia w katalogu głównym Data Lake Storage Gen2 systemie plików. Inni klienci mogą wymagać wielu klastrów z różnymi jednostkami usługi, w których jeden klaster ma pełny dostęp do danych, i inny klaster z dostępem tylko do odczytu. 
+Nazwy główne usług Azure Active Directory są zwykle używane przez usługi, takie jak Azure Databricks, aby uzyskać dostęp do danych w Data Lake Storage Gen2. W przypadku wielu klientów jedna jednostka usługi Azure Active Directory może być odpowiednia i może mieć pełne uprawnienia w katalogu głównym kontenera Data Lake Storage Gen2. Inni klienci mogą wymagać wielu klastrów z różnymi jednostkami usługi, w których jeden klaster ma pełny dostęp do danych, i inny klaster z dostępem tylko do odczytu. 
 
 ### <a name="enable-the-data-lake-storage-gen2-firewall-with-azure-service-access"></a>Włączanie zapory Data Lake Storage Gen2 z dostępem do usługi platformy Azure
 

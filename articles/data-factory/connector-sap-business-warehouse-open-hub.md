@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: e94c4f179174a3957aef8828687ebf1fbb299903
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 0c4a70f337166a304bd8664da2180fcda29ca8ac
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967437"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996636"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopiowanie danych z programu SAP Business Warehouse za pośrednictwem usługi Open Hub przy użyciu Azure Data Factory
 
@@ -174,7 +174,7 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania dz
 
 Aby skopiować dane z SAP BW Otwórz Centrum, ustaw typ źródła w działaniu kopiowania na **SapOpenHubSource**. W sekcji **Źródło** działania kopiowania nie są dostępne żadne dodatkowe właściwości specyficzne dla typu.
 
-Aby przyspieszyć ładowanie danych, można ustawić [`parallelCopies`](copy-activity-performance.md#parallel-copy) działanie kopiowania w celu załadowania danych z SAP BW otwartego centrum. Jeśli na przykład ustawisz `parallelCopies` cztery, Data Factory współbieżnie wykonuje cztery wywołania RFC, a każde wywołanie RFC pobierze część danych z SAP BW otwartej tabeli z podziałem na partycje według identyfikatora żądania DTP i identyfikatora pakietu. Ma to zastosowanie, gdy liczba unikatowych identyfikatorów żądań DTP i identyfikator pakietu jest większa niż wartość `parallelCopies`.
+Aby przyspieszyć ładowanie danych, można ustawić [`parallelCopies`](copy-activity-performance.md#parallel-copy) działanie kopiowania w celu załadowania danych z SAP BW otwartego centrum. Jeśli na przykład ustawisz `parallelCopies` cztery, Data Factory współbieżnie wykonuje cztery wywołania RFC, a każde wywołanie RFC pobierze część danych z SAP BW otwartej tabeli z podziałem na partycje według identyfikatora żądania DTP i identyfikatora pakietu. Ma to zastosowanie, gdy liczba unikatowych identyfikatorów żądań DTP i identyfikator pakietu jest większa niż wartość `parallelCopies`. Podczas kopiowania danych do magazynu danych opartego na plikach, jest również ponownie wykonywane polecenie zapisu do folderu jako wiele plików (Określ nazwę folderu), w którym to przypadku wydajność jest lepsza niż zapis do pojedynczego pliku.
 
 **Przykład:**
 
