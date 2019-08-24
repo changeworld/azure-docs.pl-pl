@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/19/2018
 ms.author: gwallace
-ms.openlocfilehash: 14bbbb6581d3e6d00db532e343f8362fc44d0044
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c7251b24ccd15971a704b6b47288f49168b27039
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876338"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980892"
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Instalowanie i Konfigurowanie Terraform w celu aprowizacji maszyn wirtualnych i innych infrastruktury na platformie Azure
  
@@ -47,10 +47,10 @@ Usage: terraform [--version] [--help] <command> [args]
 
 Aby włączyć Terraform do udostępniania zasobów na platformie Azure, Utwórz jednostkę [usługi Azure AD](/cli/azure/create-an-azure-service-principal-azure-cli). Nazwa główna usługi przyznaje skryptom Terraform obsługę zasobów w ramach subskrypcji platformy Azure.
 
-Jeśli masz wiele subskrypcji platformy Azure, najpierw Zbadaj swoje konto za pomocą opcji [AZ Account show](/cli/azure/account#az-account-show) , aby uzyskać listę identyfikatorów subskrypcji i wartości identyfikatorów dzierżawców:
+Jeśli masz wiele subskrypcji platformy Azure, najpierw Zbadaj swoje konto za pomocą opcji [AZ Account List](/cli/azure/account#az-account-list) , aby uzyskać listę identyfikatorów subskrypcji i wartości identyfikatorów dzierżawców:
 
 ```azurecli-interactive
-az account show --query "{subscriptionId:id, tenantId:tenantId}"
+az account list --query "[].{name:name, subscriptionId:id, tenantId:tenantId}"
 ```
 
 Aby skorzystać z wybranej subskrypcji, ustaw dla tej sesji subskrypcję [AZ Account Set](/cli/azure/account#az-account-set). Ustaw zmienną `id` środowiskową tak, aby pomieścić wartość zwracanego pola z subskrypcji, której chcesz użyć: `SUBSCRIPTION_ID`

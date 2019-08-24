@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 369069ef9a9c562ef6ba88a46dc0ef82c4debba1
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 951b1f3749807ac6aee78a96ae7eb38877ca6acc
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950677"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991808"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Znane problemy związane z usługi Azure Data Lake Storage Gen2
 
@@ -32,7 +32,7 @@ Interfejsy API magazynu obiektów BLOB są wyłączone, aby zapobiec problemom z
 
 Jeśli którykolwiek z tych użyje interfejsów API obiektów blob i chcesz korzystać z nich do pracy ze wszystkimi zawartością przekazywaną do konta, dostępne są dwie opcje.
 
-* **Opcja 1**: Nie włączaj hierarchicznej przestrzeni nazw na koncie magazynu obiektów blob, dopóki interfejsy API obiektów BLOB nie będą współdziałać z Azure Data Lake interfejsami API Gen2. Użycie konta magazynu bez hierarchicznej przestrzeni nazw oznacza, że nie masz dostępu do Data Lake Storage Gen2 określonych funkcji, takich jak listy kontroli dostępu do katalogu i systemu plików.
+* **Opcja 1**: Nie włączaj hierarchicznej przestrzeni nazw na koncie magazynu obiektów blob, dopóki interfejsy API obiektów BLOB nie będą współdziałać z Azure Data Lake interfejsami API Gen2. Użycie konta magazynu bez hierarchicznej przestrzeni nazw oznacza, że nie masz dostępu do Data Lake Storage Gen2 określonych funkcji, takich jak katalogi i listy kontroli dostępu do kontenera.
 
 * **Opcja 2**: Zarejestruj się w publicznej wersji zapoznawczej [dostępu wieloprotokołowego na Data Lake Storage](data-lake-storage-multi-protocol-access.md). Narzędzia i aplikacje, które wywołują interfejsy API obiektów blob, a także funkcje magazynu obiektów blob, takie jak dzienniki diagnostyczne, mogą współdziałać z kontami, które mają hierarchiczną przestrzeń nazw.
 

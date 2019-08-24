@@ -1,78 +1,78 @@
 ---
-title: Wybierz kolumny dystrybucji w usłudze Azure Database for PostgreSQL — w Hiperskali (Citus) (wersja zapoznawcza)
-description: Dobrych wyborów dla kolumn dystrybucji w typowych scenariuszach w hiperskali
+title: Wybieranie kolumn dystrybucji w Azure Database for PostgreSQL — funkcja do skalowania (Citus)
+description: Dobrym wybór dla kolumn dystrybucji we wspólnych scenariuszach w ramach skalowania
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: e9fba14b8979f739fd29bc277e32fb544221d08a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0d1f343aa9b125ab0a5a9ab559d0788253037aa
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65078988"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998194"
 ---
-# <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Wybierz kolumny dystrybucji w usłudze Azure Database for PostgreSQL — w Hiperskali (Citus) (wersja zapoznawcza)
+# <a name="choose-distribution-columns-in-azure-database-for-postgresql--hyperscale-citus"></a>Wybieranie kolumn dystrybucji w Azure Database for PostgreSQL — funkcja do skalowania (Citus)
 
-Wybór kolumny dystrybucji każdej tabeli jest **jedną z najważniejszych** modelowania decyzji. W Hiperskali przechowuje wierszy we fragmentach, na podstawie wartości kolumny dystrybucji wiersze.
+Wybranie kolumny dystrybucji każdej tabeli jest jednym z najważniejszych decyzji dotyczących modelowania. Azure Database for PostgreSQL — funkcja Citus w wersji zapoznawczej zapisuje wiersze w fragmentów na podstawie wartości kolumny dystrybucji wierszy.
 
-Odpowiedni wybór grup powiązanych danych razem na tym samym węzłów fizycznych, dzięki czemu zapytania szybki i dodanie obsługi dla wszystkich funkcji programu SQL. Nieprawidłowy wybór sprawia, że system będzie działał wolno i nie obsługują wszystkie funkcje SQL w węzłach.
+Poprawne grupy wyboru są powiązane z danymi w tych samych węzłach fizycznych, co sprawia, że zapytania są szybko dodawane i obsługują wszystkie funkcje SQL. Niepoprawny wybór sprawia, że system działa wolno i nie obsługuje wszystkich funkcji SQL w różnych węzłach.
 
-W tej sekcji przedstawiono rozkład porady kolumny dla dwóch najbardziej typowych scenariuszy w Hiperskali.
+Ten artykuł zawiera wskazówki dotyczące kolumn dystrybucji dla dwóch najpopularniejszych scenariuszy Citus.
 
 ### <a name="multi-tenant-apps"></a>Aplikacje z wieloma dzierżawami
 
-Architektury wielodostępnej korzysta z formy hierarchicznej modelowania, aby rozdystrybuować zapytania węzły w grupie serwera w bazie danych.  Hierarchii danych jest znany jako *identyfikator dzierżawy*i musi być przechowywany w kolumnie dla każdej tabeli.
+Architektura wielu dzierżawców korzysta z formy modelowania hierarchicznej bazy danych w celu dystrybuowania zapytań między węzłami w grupie serwerów. Góra hierarchii danych jest określana jako *Identyfikator dzierżawy* i musi być przechowywana w kolumnie w każdej tabeli.
 
-W Hiperskali bada zapytań, aby wyświetlić identyfikator dzierżawy, które obejmują i umożliwia znalezienie pasującego fragmentu tabeli. Kieruje zapytania do węzła pojedynczego procesu roboczego, który zawiera fragmentu. Uruchamianie zapytania przy użyciu wszystkich odpowiednich danych umieszczony na tym samym węźle nosi nazwę wspólną lokalizację.
+Funkcja wieloskalowania (Citus) sprawdza zapytania, aby zobaczyć, który identyfikator dzierżawy obejmuje i znajduje pasującą tabelę fragmentu. Kieruje zapytanie do jednego węzła procesu roboczego, który zawiera fragmentu. Uruchomienie zapytania ze wszystkimi odpowiednimi danymi umieszczonymi w tym samym węźle nosi nazwę wspólnej lokalizacji.
 
-Na poniższym diagramie przedstawiono wspólną lokalizację, w modelu danych z wieloma dzierżawami. Zawiera on dwie tabele, konta i kampanii, każda dystrybucja `account_id`. Zacieniony pola reprezentują fragmentów, z którego kolor każdy reprezentuje węzeł procesu roboczego, który go zawiera. Zielony fragmenty są przechowywane razem na węzeł jednego procesu roboczego i niebieski na innym. Zwróć uwagę, jak zapytanie sprzężenia między kontami i kampanii miałby wszystkich niezbędnych danych ze sobą w jednym węźle po ograniczeniu obu tabel do tego samego konta\_identyfikator.
+Poniższy diagram ilustruje współlokalizowanie w modelu danych wielodostępnych. Zawiera dwie tabele, konta i kampanie, z których każdy `account_id`jest dystrybuowany przez program. Zacienione pola reprezentują fragmentów. Zielona fragmentów są przechowywane razem w jednym węźle procesu roboczego, a niebieskie fragmentów są przechowywane w innym węźle procesu roboczego. Zwróć uwagę, jak zapytanie sprzężenia między kontami i kampaniami zawiera wszystkie niezbędne dane razem w jednym węźle, gdy obie tabele są ograniczone\_do tego samego identyfikatora konta.
 
-![wielodostępne wspólnej](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
+![Współlokalizacja z wieloma dzierżawcami](media/concepts-hyperscale-choosing-distribution-column/multi-tenant-colocation.png)
 
-Aby zastosować ten projekt w własny schemat, należy zidentyfikować, co stanowi dzierżawy w aplikacji. Typowe wystąpienia obejmują firmy, konto, organizację lub klientów. Nazwa kolumny będzie to wyglądać `company_id` lub `customer_id`. Zbadanie wszystkich zapytań, i spróbuj odpowiedzieć sobie: będzie działać, jakby dodatkowe klauzulach WHERE, aby ograniczyć wszystkich tabel, których dotyczy do wierszy z tym samym Identyfikatorem dzierżawy?
-Zapytania w modelu wielodostępnym są ograniczone do dzierżawy, na przykład zapytań dotyczących sprzedaży lub magazynu będzie ograniczone w niektórych magazynie.
+Aby zastosować ten projekt we własnym schemacie, należy określić, co stanowi dzierżawcę w aplikacji. Typowe wystąpienia to firma, konto, organizacja lub klient. Nazwa kolumny będzie wyglądać następująco `company_id` lub. `customer_id` Sprawdź poszczególne zapytania i zadawaj siebie, czy będą one działały, jeśli miały dodatkowe klauzule WHERE, aby ograniczyć wszystkie tabele do wierszy z tym samym IDENTYFIKATORem dzierżawy?
+Zapytania w modelu z wieloma dzierżawcami są objęte zakresem dzierżawy. Na przykład zapytania dotyczące sprzedaży lub spisu są objęte zakresem w ramach określonego magazynu.
 
-#### <a name="best-practices"></a>Najlepsze rozwiązania
+#### <a name="best-practices"></a>Najlepsze praktyki
 
--   **Partycja rozproszone tabele według wspólnych dzierżawy\_kolumny identyfikatora.** Na przykład w aplikacji SaaS, w których firmy, dzierżawa dzierżaw\_identyfikator będzie prawdopodobnie firmy\_identyfikator.
--   **Tabele odwołań przekonwertować małe tabele w wielu dzierżawach.** Wiele dzierżaw współużytkuje to mały tabelę z informacjami o, dystrybuować je jako tabeli referencyjnej.
--   **Ograniczenia filtru wszystkich aplikacja wykonuje zapytania przez dzierżawcę\_identyfikator.** Każda kwerenda powinien zażądać informacji dla jednej dzierżawy w danym momencie.
+-   **Partycjonowanie tabel rozproszonych za pomocą\_wspólnej kolumny identyfikatora dzierżawy.** Na przykład w aplikacji SaaS, w której znajdują się dzierżawcy są firmy\_, identyfikator dzierżawy może być identyfikatorem firmy.\_
+-   **Konwertuj małe tabele obejmujące wiele dzierżawców na tabele referencyjne.** Gdy wiele dzierżawców udostępnia małą tabelę informacji, należy ją rozpowszechnić jako tabelę referencyjną.
+-   **Ogranicz filtrowanie wszystkich zapytań aplikacji według identyfikatora\_dzierżawy.** Każde zapytanie powinno zażądać informacji dla jednej dzierżawy w danym momencie.
 
-Odczyt [samouczek wielodostępnych](./tutorial-design-database-hyperscale-multi-tenant.md) przykładem tworzenia tego rodzaju aplikacji.
+Zapoznaj się z samouczkiem z [wieloma dzierżawcami](./tutorial-design-database-hyperscale-multi-tenant.md) , aby zapoznać się z przykładem tworzenia tego rodzaju aplikacji.
 
 ### <a name="real-time-apps"></a>Aplikacje w czasie rzeczywistym
 
-Architektury wielodostępnej wprowadza hierarchicznej struktury i korzysta z danych wspólną lokalizację, aby zapytania na dzierżawę. Z drugiej strony architektury w czasie rzeczywistym są zależne od właściwości dystrybucji ich danych w celu osiągnięcia wysokiej równoległego przetwarzania.
+Architektura wielu dzierżawców wprowadza strukturę hierarchiczną i używa wspólnej lokalizacji danych do kierowania zapytań na dzierżawcę. Natomiast architektury w czasie rzeczywistym zależą od konkretnych właściwości dystrybucji danych, aby osiągnąć wysoce równoległe przetwarzanie.
 
-Używamy "Identyfikatorem jednostki" jako termin dla dystrybucji kolumn w modelu w czasie rzeczywistym. Typowe jednostki są użytkownicy, hostów lub urządzeń.
+Używamy "identyfikatora jednostki" jako terminu dla kolumn dystrybucji w modelu czasu rzeczywistego. Typowe jednostki są użytkownikami, hostami lub urządzeniami.
 
-Zapytania w czasie rzeczywistym jest zazwyczaj poprosić o liczbowe wartości zagregowane, pogrupowane według daty lub kategorii. W Hiperskali wysyła zapytania do każdego fragmentu, aby uzyskać wyniki częściowe i składa końcowego odpowiedzi na węźle koordynatora. Zapytania wykonywane najszybciej po zgodnie z wieloma węzłami współtworzyć, jak to możliwe, a nie pojedynczego węzła należy wykonać nieproporcjonalnie duża ilość pracy.
+Zapytania w czasie rzeczywistym zazwyczaj pytają o wartości zagregowane liczbowe pogrupowane według daty lub kategorii. Funkcja Citus) wysyła te zapytania do każdego fragmentuu w celu uzyskania częściowych wyników i składa ostateczną odpowiedź na węźle koordynatora. Zapytania działają najszybciej, gdy liczba węzłów jest możliwie jak najprawdopodobniej, a w przypadku, gdy żaden z pojedynczych węzłów nie musi wykonać nieproporcjonalnej ilości pracy.
 
-#### <a name="best-practices"></a>Najlepsze rozwiązania
+#### <a name="best-practices"></a>Najlepsze praktyki
 
--   **Wybierz kolumnę o dużej kardynalności, jako kolumna dystrybucji.** Dla porównania \"stan\" pole w tabeli zamówienia z wartościami "new", "płatnych" i "wysłane" zły wybór kolumny dystrybucji. Zakłada tylko kilka wartości, co ogranicza liczbę fragmentów, które mogą zawierać dane, a liczba węzłów, które mogą go przetworzyć. Wśród kolumn o dużej kardynalności warto również wybrać te, które są często używane klauzul group by lub join kluczy.
--   **Wybierz kolumnę z rozdzielenie.** Jeśli dystrybuować tabelę według kolumny nierówne niektóre typowe wartości danych w tabeli zostaną mają tendencję do są gromadzone w niektórych fragmentów. Wykonując więcej pracy niż inne węzły ostatecznie węzłów zawierający tych fragmentach.
--   **Dystrybucja tabel faktów i wymiarów na ich wspólnych kolumn.**
-    Tabela faktów, może mieć tylko jeden klucz dystrybucji. Tabele, które odbędzie się inny klucz nie będą wspólnie przechowywane z tabelą faktów. Wybierz jeden wymiar razem na taśmie, na podstawie częstotliwości jest dołączony i rozmiar przyłączany wierszy.
--   **Zmienić niektóre tabele wymiarów w tabelach odwołań.** Jeśli tabela wymiarów nie może być wspólnie przechowywane z tabelą faktów, może poprawić wydajność zapytań, przekazując kopii tabeli wymiarów, aby wszystkie węzły w postaci tabeli referencyjnej.
+-   **Wybierz kolumnę o dużej kardynalności jako kolumnę dystrybucji.** W przypadku porównania pole Stan w tabeli zamówienia o wartościach nowe, płatne i wysłane jest niewłaściwym wyborem kolumny dystrybucji. Założono tylko kilka wartości, które ograniczają liczbę fragmentówów, które mogą zawierać dane, oraz liczbę węzłów, które mogą je przetworzyć. W kolumnach o dużej kardynalności warto również wybrać te kolumny, które są często używane w klauzulach Group by lub jako klucze sprzężenia.
+-   **Wybierz kolumnę z parzystą dystrybucją.** W przypadku dystrybucji tabeli w kolumnie pochylonej do określonych wspólnych wartości dane w tabeli są gromadzone w pewnych fragmentów. Węzły, które przechowują te fragmentów, działają dłużej niż inne węzły.
+-   **Rozpowszechnij tabele faktów i wymiarów w ich wspólnych kolumnach.**
+    Tabela faktów może mieć tylko jeden klucz dystrybucji. Tabele, które dołączą do innego klucza nie będą wspólnie zlokalizowane z tabelą faktów. Wybierz jeden wymiar do rozłączenia w zależności od tego, jak często jest on połączony, i rozmiar wierszy sprzęgania.
+-   **Zmień niektóre tabele wymiarów w tabele referencyjne.** Jeśli tabeli wymiarów nie można wspólnie zlokalizować z tabelą faktów, można poprawić wydajność zapytań, rozkładając kopie tabeli wymiarów na wszystkie węzły w postaci tabeli referencyjnej.
 
-Odczyt [samouczek pulpitu nawigacyjnego w czasie rzeczywistym](./tutorial-design-database-hyperscale-realtime.md) przykładem tworzenia tego rodzaju aplikacji.
+Zapoznaj się z [samouczkiem pulpitu nawigacyjnego w czasie rzeczywistym](./tutorial-design-database-hyperscale-realtime.md) , aby zapoznać się z przykładem tworzenia tego rodzaju aplikacji.
 
-### <a name="timeseries-data"></a>Szeregi czasowe danych
+### <a name="time-series-data"></a>Dane szeregów czasowych
 
-W obciążeniu szeregów czasowych aplikacje zapytania aktualnymi informacjami podczas archiwizowania stare informacje.
+W obciążeniu szeregów czasowych aplikacje wykonują zapytania dotyczące najnowszych informacji podczas archiwizowania starych informacji.
 
-Najbardziej powszechnym modelowanie informacji Szeregi czasowe w Hiperskali korzysta z sygnatury czasowej, sama jako kolumna dystrybucji. Dystrybucji skrótów, na podstawie czasu będzie dystrybuować razy pozornie w losowo wybranym momencie w różnych fragmentach niż utrzymywanie zakresy czasu razem we fragmentach. Zapytania obejmujące czasu ogólnie odwoływać się do zakresów czasu (na przykład najnowszych danych), więc takie dystrybucji skrótów doprowadziłoby do błędów sieci obciążenie.
+Najbardziej typowym błędem modelowania informacji o szeregach czasowych w ramach skalowania (Citus) jest użycie sygnatury czasowej jako kolumny dystrybucji. Rozkład wartości skrótu oparty na czasie rozkłada się przypadkowo na różne fragmentów, zamiast przechowywać zakresy czasu razem w fragmentów. Zapytania, które obejmują czas na ogół odwołują się do zakresu czasu, na przykład najnowsze dane. Ten typ rozkładu mieszania prowadzi do obciążenia sieci.
 
-#### <a name="best-practices"></a>Najlepsze rozwiązania
+#### <a name="best-practices"></a>Najlepsze praktyki
 
--   **Nie należy wybierać sygnaturę czasową jako kolumna dystrybucji.** Wybierz kolumnę innej dystrybucji. W aplikacji z wieloma dzierżawami Użyj Identyfikatora dzierżawy lub w aplikacji w czasie rzeczywistym za pomocą identyfikatora jednostki.
--   **Za pomocą PostgreSQL Partycjonowanie tabel raz zamiast tego.** Użyj Partycjonowanie tabel, aby Podziel duże tabelę danych uporządkowanej w czasie na wielu tabel dziedziczonych przez poszczególne zawierający zakresów w innym czasie.  Dystrybucja Postgres są podzielone na partycje tabeli w Hiperskali tworzy fragmentów dla tabeli dziedziczenia.
+-   **Nie wybieraj sygnatury czasowej jako kolumny dystrybucji.** Wybierz inną kolumnę dystrybucji. W aplikacji z wieloma dzierżawami Użyj identyfikatora dzierżawy lub w aplikacji w czasie rzeczywistym Użyj identyfikatora jednostki.
+-   **Zamiast tego użyj partycjonowania tabeli PostgreSQL.** Partycjonowanie tabeli służy do dzielenia dużej ilości danych uporządkowanych według czasu na wiele dziedziczonych tabel każdej tabeli zawierającej różne zakresy czasu. Dystrybuowanie tabeli partycjonowanej Postgres w Citus) tworzy fragmentów dla dziedziczonych tabel.
 
-Odczyt [samouczek Szeregi czasowe](https://aka.ms/hyperscale-tutorial-timeseries) przykładem tworzenia tego rodzaju aplikacji.
+Zapoznaj [](https://aka.ms/hyperscale-tutorial-timeseries) się z samouczkiem dotyczącym szeregów czasowych, aby zapoznać się z przykładem tworzenia tego rodzaju aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się, jak [wspólnej](concepts-hyperscale-colocation.md) między pomaga danych rozproszonych zapytań działają szybko
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz [](concepts-hyperscale-colocation.md) się, jak współdziałanie między danymi rozproszonymi ułatwia wykonywanie zapytań.

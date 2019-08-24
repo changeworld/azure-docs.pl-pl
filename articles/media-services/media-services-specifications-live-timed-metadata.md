@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/2/2019
+ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 444d5ca996c014bdbf2e62cacf2563c7b63372e4
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 19d3fe4285cf6bf316a0d445e49a398ed5d66a35
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69015720"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991797"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Sygnalizowanie metadanych w czasie przesyłania strumieniowego na żywo 
 
-Ostatnia aktualizacja: 2019-07-02
+Ostatnia aktualizacja: 2019-08-22
 
 ### <a name="conformance-notation"></a>Notacja zgodności
 
@@ -74,6 +74,7 @@ Następujące dokumenty zawierają postanowienia, które za pomocą odwołania w
 | [AMF0]            | ["Format komunikatu akcji AMF0"](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf) |
 | [ŁĄCZNIK-IF-REDUKCJA]     | KRESKOWANY forum branżowe wskazówki dotyczące międzyoperacyjności v 4,2[https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html) |
 | [HLS-TMD]         | Metadane czasu dla HTTP Live Streaming-[https://developer.apple.com/streaming](https://developer.apple.com/streaming) |
+| [CMAF-ID3]         | [Metadane czasowe w formacie Common Media Application (CMAF)](https://aomediacodec.github.io/av1-id3/)
 | [ID3v2]           | 2\.4.0 tag ID3 wersja[http://id3.org/id3v2.4.0-structure](http://id3.org/id3v2.4.0-structure) |
 | [ISO-14496-12]    | ISO/IEC 14496-12: Część 12 format podstawowego pliku multimedialnego ISO, FourthEdition 2012-07-15  |
 | [MPEGDASH]        | Technologia informacyjna — dynamiczne adaptacyjne przesyłanie strumieniowe za pośrednictwem protokołu HTTP (KRESKa) — część 1: Opis prezentacji multimediów i formaty segmentów. 2014 maja. Publikacj. ADRES URL: https://www.iso.org/standard/65274.html |
@@ -95,23 +96,148 @@ Następujące dokumenty zawierają postanowienia, które za pomocą odwołania w
 
 ## <a name="2-timed-metadata-ingest"></a>2. Pozyskiwanie metadanych z limitem czasu
 
-## <a name="21-rtmp-ingest"></a>2,1 RTMP
+Azure Media Services obsługuje metadane w czasie rzeczywistym dla protokołów [RTMP] i Smooth Streaming [MS-SSTR-pozyskiwania]. Metadane w czasie rzeczywistym mogą służyć do definiowania niestandardowych zdarzeń, z własnymi unikatowymi schematami niestandardowymi (JSON, Binary, XML), a także w formatach branżowych, takich jak ID3, lub SCTE-35 dla sygnałów AD w strumieniu emisji. 
 
-[RTMP] zezwala na wysyłanie sygnałów metadanych z limitem czasu jako [AMF0] komunikatów kontrolnych osadzonych w strumieniu [RTMP]. Komunikaty kontrolne mogą być wysyłane jakiś czas przed wystąpieniem zdarzenia "AD splice" lub "[SCTE35]". W celu obsługi tego scenariusza rzeczywista godzina zdarzenia jest wysyłana w ramach komunikatu wskaźnika. Aby uzyskać więcej informacji, zobacz [AMF0].
+Ten artykuł zawiera szczegółowe informacje dotyczące sposobu wysyłania niestandardowych sygnałów do metadanych czasowych przy użyciu obsługiwanych protokołów pozyskiwania Media Services. W artykule wyjaśniono również, w jaki sposób manifesty dla HLS, ŁĄCZNIKa i Smooth Streaming są uzupełnione o czasowe sygnały metadanych, a także jak są przenoszone w paśmie, gdy zawartość jest dostarczana przy użyciu CMAF (fragmentów MP4) lub segmentów usługi Transport Stream (TS) dla HLS. 
+
+Typowe scenariusze przypadków użycia dla metadanych czasowych obejmują:
+
+ - SCTE-35 — sygnały usługi AD wyzwalające przerwy w usłudze AD w zdarzeniu na żywo lub w emisji liniowej
+ - Niestandardowe metadane ID3, które mogą wyzwalać zdarzenia w aplikacji klienckiej (przeglądarce, systemu iOS lub Android)
+ - Niestandardowe zdefiniowane dane JSON, dane binarne lub metadane XML do wyzwalania zdarzeń w aplikacji klienckiej
+ - Dane telemetryczne z kodera na żywo, aparatu IP lub drona
+ - Zdarzenia z kamery IP, takie jak ruch, wykrywanie czołowe itp.
+ - Informacje o położeniach geograficznych z aparatu akcji, drona lub przenoszone urządzenie
+ - Teksty utworów
+ - Granice programu dla liniowego kanału informacyjnego
+ - Obrazy lub rozszerzone metadane do wyświetlania na żywo kanału informacyjnego
+ - Wyniki sportowe lub informacje o zegarze gier
+ - Interaktywne pakiety reklamowe, które mają być wyświetlane obok filmu wideo w przeglądarce
+ - Kwizy lub sondy
+  
+Azure Media Services zdarzenia na żywo i Pakowarka mogą odbierać te sygnały metadanych czasowych i przekształcać je w strumień metadanych, które mogą uzyskiwać dostęp do aplikacji klienckich przy użyciu opartych na standardach protokołów takich jak HLS i myślnik.
+
+
+## <a name="21-rtmp-timed-metadata"></a>2,1 metadane czasu RTMP
+
+Protokół [RTMP] umożliwia wysyłanie sygnałów do metadanych czasowych dla różnych scenariuszy, w tym niestandardowych metadanych, i sygnałów AD SCTE-35. 
+
+Sygnały anonsowania (komunikaty kontrolne) są wysyłane jako [AMF0] komunikaty kontrolne osadzone w strumieniu [RTMP]. Komunikaty kontrolne mogą być wysyłane jakiś czas przed wystąpieniem zdarzenia "AD splice" lub "[SCTE35]". W celu obsługi tego scenariusza rzeczywista godzina zdarzenia jest wysyłana w ramach komunikatu wskaźnika. Aby uzyskać więcej informacji, zobacz [AMF0].
+
+Następujące polecenia [AMF0] są obsługiwane przez Azure Media Services na potrzeby pozyskiwania RTMP:
+
+- **onUserDataEvent** — używany na potrzeby metadanych niestandardowych lub [ID3v2]
+- **onAdCue** — używane przede wszystkim do sygnalizowania możliwości rozmieszczenia anonsu w strumieniu na żywo. Obsługiwane są dwie formy wskaźnika, tryb prosty i tryb "SCTE-35". 
+- **onCuePoint** — obsługiwane przez niektóre lokalne kodery sprzętowe, takie jak element kodera na żywo, do sygnałów [SCTE35] komunikatów. 
+  
 
 W poniższych tabelach opisano format ładunku komunikatu AMF, który Media Services zostanie wyzyskany dla trybów komunikatów "Simple" i [SCTE35].
 
 Nazwa komunikatu [AMF0] może być używana do rozróżniania wielu strumieni zdarzeń tego samego typu.  W przypadku komunikatów [SCTE-35] i trybu "Simple" nazwa komunikatu AMF musi być typu "onAdCue", jak jest to wymagane w specyfikacji [Adobe-Primetime].  Wszelkie pola, które nie są wymienione poniżej, zostaną zignorowane przez Azure Media Services w trakcie pozyskiwania.
 
-## <a name="211-rtmp-signal-syntax"></a>2.1.1 — składnia sygnału RTMP
+## <a name="211-rtmp-with-custom-metadata-using-onuserdataevent"></a>2.1.1 RTMP z niestandardowymi metadanymi przy użyciu "onUserDataEvent"
+
+Jeśli chcesz dostarczyć niestandardowe źródła metadanych z kodera-strumienia, aparatu IP, drona lub urządzenia przy użyciu protokołu RTMP, użyj polecenia "onUserDataEvent" [AMF0] komunikatu o danych.
+
+Polecenie komunikatu danych **"onUserDataEvent"** musi zawierać ładunek komunikatu z następującą definicją, która ma zostać przechwycona przez Media Services i spakowane w formacie pliku w paśmie, a także manifesty dla HLS, kreski i gładkie.
+Zalecane jest wysyłanie komunikatów o przekroczonym czasie, nie częściej niż co 0,5 sekund (500 ms). Każdy komunikat może agregować metadane z wielu ramek, jeśli konieczne jest dostarczenie metadanych na poziomie ramki. W przypadku wysyłania strumieni o większej szybkości transmisji bitów zaleca się również dostarczenie metadanych pojedynczej szybkości transmisji bitów tylko w celu zmniejszenia przepustowości i uniknięcia zakłóceń w przetwarzaniu wideo/audio. 
+
+Ładunek dla **"onUserDataEvent"** powinien być komunikatem formatu XML [MPEGDASH] EventStream. Dzięki temu można łatwo przekazywać niestandardowe zdefiniowane schematy, które mogą być przenoszone do emsg ' ładunków w paśmie dla zawartości CMAF [MPEGCMAF], która jest dostarczana za pośrednictwem protokołów HLS lub PAUZy. Każdy komunikat strumienia zdarzeń PAUZy zawiera schemeIdUri, który działa jako identyfikator schematu komunikatu URN i definiuje ładunek wiadomości. Niektóre schematy, takie jak https://aomedia.org/emsg/ID3"" dla [ID3v2] lub **urn: SCTE: scte35:2013: bin** dla [SCTE-35] są standardowe dla konsorcjów branżowych na potrzeby współdziałania. Każdy dostawca aplikacji może zdefiniować własny schemat niestandardowy przy użyciu adresu URL, który kontroluje (domena własnością) i może podać specyfikację w tym adresie URL. Jeśli gracz ma procedurę obsługi dla zdefiniowanego schematu, to jest jedynym składnikiem, który musi zrozumieć ładunek i protokół.
+
+Schemat dla ładunku [MPEG-myślnik] EventStream został zdefiniowany jako (wyciąg z KRESKi ISO-IEC-23009-1-trzecie wydanie). Należy zauważyć, że w tym momencie jest obsługiwane tylko jedno "EventType" na "EventStream". Tylko pierwszy element **zdarzenia** zostanie przetworzony, jeśli w **EventStream**podano wiele zdarzeń.
+
+```xml
+  <!-- Event Stream -->
+  <xs:complexType name="EventStreamType">
+    <xs:sequence>
+      <xs:element name="Event" type="EventType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute ref="xlink:href"/>
+    <xs:attribute ref="xlink:actuate" default="onRequest"/>
+    <xs:attribute name="schemeIdUri" type="xs:anyURI" use="required"/>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attribute name="timescale" type="xs:unsignedInt"/>
+  </xs:complexType>
+  <!-- Event  -->
+  <xs:complexType name="EventType">
+    <xs:sequence>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="presentationTime" type="xs:unsignedLong" default="0"/>
+    <xs:attribute name="duration" type="xs:unsignedLong"/>
+    <xs:attribute name="id" type="xs:unsignedInt"/>
+    <xs:attribute name="contentEncoding" type="ContentEncodingType"/>
+    <xs:attribute name="messageData" type="xs:string"/>
+    <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:complexType>
+```
+
+
+### <a name="example-xml-event-stream-with-id3-schema-id-and-base64-encoded-data-payload"></a>Przykładowy strumień zdarzeń XML z IDENTYFIKATORem schematu ID3 i ładunkiem danych zakodowanym w formacie base64.  
+```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <EventStream schemeIdUri="https://aomedia.org/emsg/ID3">
+         <Event contentEncoding="Base64">
+          -- base64 encoded ID3v2 full payload here per [CMAF-TMD] --
+         </Event>
+   <EventStream>
+```
+
+### <a name="example-event-stream-with-custom-schema-id-and-base64-encoded-binary-data"></a>Przykładowy strumień zdarzeń z niestandardowym IDENTYFIKATORem schematu i danymi binarnymi szyfrowanymi algorytmem Base64  
+```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <EventStream schemeIdUri="urn:example.org:custom:binary">
+         <Event contentEncoding="Base64">
+          -- base64 encoded custom binary data message --
+         </Event>
+   <EventStream>
+```
+
+### <a name="example-event-stream-with-custom-schema-id-and-custom-json"></a>Przykładowy strumień zdarzeń z niestandardowym IDENTYFIKATORem schematu i niestandardowym kodem JSON  
+```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <EventStream schemeIdUri="urn:example.org:custom:JSON">
+         <Event>
+          [
+            {"key1" : "value1"},
+            {"key2" : "value2"}
+          ]
+         </Event>
+   <EventStream>
+```
+
+### <a name="built-in-supported-scheme-id-uris"></a>Wbudowane identyfikatory URI obsługiwanych schematów
+| Identyfikator URI identyfikatora schematu                 |  Opis                                             |
+|-------------------------------|----------------------------------------------------------|
+| https://aomedia.org/emsg/ID3   | Opisuje, w jaki sposób metadane [ID3v2] mogą być przenoszone jako metadane z przekroczeniem czasu CMAF w postaci "MPEGCMAF], które są pofragmentowane. Aby uzyskać więcej informacji, zobacz [metadane czasowe w formacie Common Media Application Format (CMAF)](https://aomediacodec.github.io/av1-id3/) |
+
+### <a name="event-processing-and-manifest-signaling"></a>Przetwarzanie zdarzeń i sygnalizowanie manifestu
+
+Po odebraniu prawidłowego zdarzenia **"onUserDataEvent"** Azure Media Services szuka prawidłowego ładunku XML zgodnego z EventStreamType (zdefiniowanego w [MPEGDASH]), Przeanalizuj ładunek XML i przekonwertuj go na [MPEGCMAF] fragment MP4 "emsg" w wersji 1 pola dla przechowywanie w archiwum na żywo i przesyłanie do Pakowarki Media Services.   Pakowarka wykryje pole "emsg" w strumieniu na żywo i będzie:
+
+- (a) "dynamicznie Pakuj" do segmentów TS w celu dostarczenia do klientów HLS zgodnych ze specyfikacją metadanych HLS czas [HLS-TMD] lub
+- (b) przekazać go do dostarczania w fragmentach CMAF za pośrednictwem HLS lub KRESKi lub 
+- (c) Konwertuj go na sygnał ścieżki rozrzedzonej na potrzeby dostarczania za pośrednictwem Smooth Streaming [MS-SSTR].
+
+Oprócz zestawu emsg ' CMAF lub pakietów PES serwera terminali dla HLS, manifesty dla ŁĄCZNIKa (MPD) i Smooth Streaming będą zawierać odwołanie do strumieni zdarzeń w paśmie (nazywanych również ścieżką strumienia rozrzedzonego w Smooth Streaming). 
+
+Pojedyncze zdarzenia lub ich ładunki danych nie są wyprowadzane bezpośrednio w HLS, MYŚLNIKu lub gładkich manifestach. 
+
+### <a name="additional-informational-constraints-and-defaults-for-onuserdataevent-events"></a>Dodatkowe ograniczenia informacyjne i wartości domyślne dla zdarzeń onUserDataEvent
+
+- Jeśli skala czasu nie jest ustawiona w elemencie EventStream, domyślnie używana jest skala czasu RTMP 1Khz
+- Dostarczenie komunikatu onUserDataEvent jest ograniczone do co 500 MS max. Jeśli zdarzenia są wysyłane częściej, może to mieć wpływ na przepustowość i stabilność kanału informacyjnego na żywo
+
+## <a name="212-rtmp-ad-cue-signaling-with-oncuepoint"></a>2.1.2 "onCuePoint" sygnałów usługi AD
 
 Azure Media Services może nasłuchiwać i odpowiadać na kilka typów komunikatów [AMF0], które mogą służyć do sygnalizowania różnych metadanych zsynchronizowanych w czasie rzeczywistym w strumieniu na żywo.  Specyfikacja [Adobe-Primetime] definiuje dwa typy sygnalizacji o nazwie "Simple" i "SCTE-35". W przypadku trybu "Simple" Media Services obsługuje pojedyncze AMF komunikat o nazwie "onAdCue" przy użyciu ładunku zgodnego z tabelą poniżej zdefiniowanej dla sygnału "tryb prosty".  
 
 W poniższej sekcji przedstawiono ładunek protokołu RTMP "Simple" Mode, który może służyć do sygnalizowania podstawowego sygnału usługi AD "spliceOut", który będzie przenoszony do manifestu klienta dla HLS, ŁĄCZNIKa i Microsoft Smooth Streaming. Jest to bardzo przydatne w scenariuszach, w których klient nie ma złożonego wdrożenia usługi AD lub systemu wstawiania opartego na SCTE-35 i używa podstawowego kodera lokalnego do wysyłania wiadomości kontrolnej za pośrednictwem interfejsu API. Zwykle koder lokalny będzie obsługiwał interfejs API oparty na usłudze REST, aby wyzwolić ten sygnał, który również będzie "odfiltrować" strumień wideo, wstawiając ramkę IDR do filmu wideo i rozpoczynając nową grupę GOP.
 
-## <a name="212--simple-mode-ad-signaling-with-rtmp"></a>2.1.2 tryb proste AD sygnalizowanie przy użyciu protokołu RTMP
+## <a name="213--rtmp-ad-cue-signaling-with-oncuepoint---simple-mode"></a>2.1.3 usługi AD Cue z sygnałem "onCuePoint" i tryb prosty
 
-| Nazwa pola | Typ pola | Wymagane? | Opisy                                                                                                             |
+| Nazwa pola | Typ pola | Wymagana? | Opisy                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
 | kontrol        | String     | Wymagane | Komunikat zdarzenia.  Powinien być "SpliceOut", aby wyznaczyć Metoda łączenia w trybie prostym.                                              |
 | id         | String     | Wymagane | Unikatowy identyfikator opisujący metody łączenia lub segmentów. Identyfikuje to wystąpienie komunikatu                            |
@@ -121,7 +247,7 @@ W poniższej sekcji przedstawiono ładunek protokołu RTMP "Simple" Mode, który
 
 ---
  
-## <a name="213-scte-35-mode-ad-signaling-with-rtmp"></a>2.1.3 SCTE-35 tryb usługi AD sygnalizowanie przy użyciu protokołu RTMP
+## <a name="214-rtmp-ad-cue-signaling-with-oncuepoint---scte-35-mode"></a>w przypadku używania wskaźnika "onCuePoint" — SCTE-35
 
 Podczas pracy z bardziej zaawansowanym przepływem pracy produkcyjnym, który wymaga przeprowadzenia pełnego komunikatu ładunku SCTE-35 do manifestu HLS lub PAUZy, najlepiej jest używać trybu "SCTE-35" w specyfikacji [Adobe-Primetime].  Ten tryb obsługuje w-paśmie sygnały SCTE-35 wysyłane bezpośrednio do lokalnego kodera na żywo, który następnie koduje sygnały w strumieniu RTMP przy użyciu trybu "SCTE-35" określonego w specyfikacji [Adobe-Primetime]. 
 
@@ -129,7 +255,7 @@ Zazwyczaj komunikaty SCTE-35 mogą być wyświetlane tylko w danych wejściowych
 
 W tym scenariuszu należy wysłać następujący ładunek z kodera lokalnego przy użyciu typu komunikatu **"onAdCue"** [AMF0].
 
-| Nazwa pola | Typ pola | Wymagane? | Opisy                                                                                                             |
+| Nazwa pola | Typ pola | Wymagana? | Opisy                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
 | kontrol        | String     | Wymagane | Komunikat zdarzenia.  W przypadku komunikatów [SCTE-35] musi to być kod binarny szyfrowany algorytmem Base64 [RFC4648] (), aby komunikaty były wysyłane do klientów HLS, gładkich i kresowych.                                              |
 | type       | String     | Wymagane | Nazwa URN lub adres URL identyfikujący schemat komunikatów. W przypadku komunikatów [SCTE-35] **powinno** to być **"scte35"** , aby komunikaty były wysyłane do klientów HLS, gładkich i kresowych, w zgodności z [Adobe-Primetime]. Opcjonalnie można również użyć nazwy URN: SCTE: scte35:2013: bin, aby sygnalizować komunikat [SCTE-35]. |
@@ -139,7 +265,7 @@ W tym scenariuszu należy wysłać następujący ładunek z kodera lokalnego prz
 | time       | Number     | Wymagane | Czas prezentacji zdarzenia lub łączenia z usługą AD.  Czas prezentacji i czas trwania **powinny być** wyrównane z punktami dostępu strumienia (SAP) typu 1 lub 2, zgodnie z definicją w załączniku I [ISO-14496-12]. Dla ruchu wychodzącego HLS, czas i czas trwania **powinny być** wyrównane z granicami segmentów. Czas prezentacji i czas trwania różnych komunikatów o zdarzeniach w ramach tego samego strumienia zdarzeń nie mogą nakładać się na siebie. Jednostki są ułamkami sekund.
 
 ---
-## <a name="214-elemental-live-oncuepoint-ad-markers-with-rtmp"></a>Znaczniki AD "onCuePoint" "
+## <a name="215-rtmp-ad-signaling-with-oncuepoint-for-elemental-live"></a>2.1.5 "onCuePoint" przy użyciu protokołu RTMP dla elementów na żywo
 
 Dynamiczny koder on-premises Encoder obsługuje znaczniki usługi AD w sygnale RTMP. Azure Media Services obecnie obsługuje tylko typ znacznika "onCuePoint" dla protokołu RTMP.  Tę funkcję można włączyć w ustawieniach grupy firmy Adobe RTMP w ustawieniach usługi Media Encoder na żywo lub w interfejsie API, ustawiając wartość "**ad_markers**" na "onCuePoint".  Aby uzyskać szczegółowe informacje, zapoznaj się z dokumentacją na żywo. Włączenie tej funkcji w grupie RTMP spowoduje przekazanie sygnałów SCTE-35 do danych wyjściowych Adobe RTMP do przetworzenia przez Azure Media Services.
 
@@ -156,7 +282,7 @@ Typ komunikatu "onCuePoint" jest zdefiniowany w [Adobe-Flash-AS] i ma następuj�
 
 Gdy jest używany ten tryb znacznika AD, dane wyjściowe manifestu HLS są podobne do trybu "Simple" programu Adobe. 
 
-### <a name="215-cancellation-and-updates"></a>Aktualizacja 2.1.5 i anulowanie
+### <a name="216-cancellation-and-updates"></a>2.1.6 Anulowanie i aktualizacje
 
 Komunikaty można anulować lub zaktualizować, wysyłając wiele komunikatów z tym samym czasem prezentacji i IDENTYFIKATORem. Czas prezentacji i identyfikator jednoznacznie identyfikują zdarzenie, a ostatni komunikat odebrany dla określonego czasu prezentacji, który spełnia ograniczenia przed przystąpieniem, jest komunikatem, na którym działa. Zaktualizowane zdarzenie zastępuje wszystkie wcześniej odebrane komunikaty. Ograniczenie przed przyrzutem to cztery sekundy. Komunikaty odebrane co najmniej cztery sekundy przed czasem prezentacji zostaną podjęte.
 
@@ -465,6 +591,13 @@ Po powyższym formacie wiadomości są wysyłane do klientów HLS, gładkich i K
 Podczas testowania implementacji przy użyciu platformy Azure Media Services, najpierw Rozpocznij testowanie przy użyciu LiveEvent "pass-through" przed przejściem do testowania na LiveEvent kodowania.
 
 ---
+
+## <a name="change-history"></a>Historia zmian
+
+| Date     | Zmiany                                                                            |
+|----------|------------------------------------------------------------------------------------|
+| 07/2/19  | Zweryfikowane pozyskiwanie RTMP na potrzeby obsługi SCTE35, dodano "onCuePoint" dla elementów na żywo | 
+| 08/22/19 | Zaktualizowano w celu dodania OnUserDataEvent do protokołu RTMP dla metadanych niestandardowych                         |
 
 ## <a name="next-steps"></a>Następne kroki
 Wyświetl ścieżki uczenia Media Servicesowego.

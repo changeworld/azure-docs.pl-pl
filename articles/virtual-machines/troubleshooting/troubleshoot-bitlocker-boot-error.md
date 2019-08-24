@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 03/25/2019
+ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: 27a675982711f8d8f0b36ea0cc2600de45e97a6e
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c96c8ef5e5bd9758cf270946da1e90bb12e8bca0
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348463"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998002"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>Błędy rozruchu funkcji BitLocker na maszynie wirtualnej platformy Azure
 
@@ -127,26 +127,27 @@ Jeśli ta metoda nie rozwiąże problemu, wykonaj następujące kroki, aby ręcz
     ```
     W tym przykładzie dołączony dysk systemu operacyjnego to dysk F. Upewnij się, że używasz odpowiedniej litery dysku. 
 
-    - Jeśli dysk został pomyślnie odblokowany przy użyciu klucza klucz szyfrowania bloków. możemy rozważyć problem z funkcją BitLocker, który ma zostać rozwiązany. 
+8. Po pomyślnym odblokowaniu dysku przy użyciu klucza klucz szyfrowania bloków należy odłączyć dysk od maszyny wirtualnej odzyskiwania, a następnie ponownie utworzyć maszynę wirtualną przy użyciu tego nowego dysku systemu operacyjnego.
 
-    - Jeśli użycie klucza klucz szyfrowania bloków nie powoduje odblokowania dysku, można użyć opcji Wstrzymaj ochronę, aby tymczasowo wyłączyć funkcję BitLocker, uruchamiając następujące polecenie
-    
-        ```powershell
-        manage-bde -protectors -disable F: -rc 0
-        ```      
-    - Jeśli zamierzasz ponownie skompilować maszynę wirtualną przy użyciu dysku dytem, musisz całkowicie odszyfrować dysk. Aby to zrobić, uruchom następujące polecenie:
+    > [!NOTE]
+    > Zamienianie dysku systemu operacyjnego nie jest obsługiwane w przypadku maszyn wirtualnych korzystających z szyfrowania dysków.
 
-        ```powershell
-        manage-bde -off F:
-        ```
-8.  Odłącz dysk od maszyny wirtualnej odzyskiwania, a następnie ponownie podłącz dysk do maszyny wirtualnej, której to dotyczy, jako dysku systemowego. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z maszyną wirtualną z systemem Windows przez dołączenie dysku systemu operacyjnego do maszyny wirtualnej odzyskiwania](troubleshoot-recovery-disks-windows.md).
+9. Jeśli nowa maszyna wirtualna nadal nie może zostać normalnie uruchomiona, spróbuj wykonać jedną z następujących czynności po odblokowaniu dysku:
+
+    - Wstrzymaj ochronę, aby tymczasowo wyłączyć funkcję BitLocker, wykonując następujące czynności:
+
+                    manage-bde -protectors -disable F: -rc 0
+           
+    - Całkowicie Odszyfruj dysk. Aby to zrobić, uruchom następujące polecenie:
+
+                    manage-bde -off F:
 
 ### <a name="key-encryption-key-scenario"></a>Scenariusz klucz szyfrowania klucza
 
 W przypadku scenariusza klucz szyfrowania klucza wykonaj następujące czynności:
 
 1. Upewnij się, że konto zalogowanego użytkownika wymaga uprawnienia "niezapakowane" w zasadach dostępu Key Vault w ramach **użytkownika | Uprawnienia klucza | Operacje kryptograficzne | Odpakuj klucz**.
-2. Zapisz następujące skrypty w. Plik PS1:
+2. Zapisz Poniższy skrypt w. Plik PS1:
 
     ```powershell
     #Set the Parameters for the script
@@ -184,6 +185,7 @@ W przypadku scenariusza klucz szyfrowania klucza wykonaj następujące czynnośc
     # Create Authentication Context tied to Azure AD Tenant
     $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
     # Acquire token
+    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
     $authResult = $authContext.AcquireTokenAsync($resourceAppIdURI, $clientId, $redirectUri, $platformParameters).result
     # Generate auth header 
     $authHeader = $authResult.CreateAuthorizationHeader()
@@ -231,7 +233,7 @@ W przypadku scenariusza klucz szyfrowania klucza wykonaj następujące czynnośc
     $bekFileBytes = [System.Convert]::FromBase64String($base64Bek);
     [System.IO.File]::WriteAllBytes($bekFilePath,$bekFileBytes)
     ```
-3. Ustaw parametry. Skrypt przetworzy wpis tajny KEK w celu utworzenia klucza klucz szyfrowania bloków, a następnie zapisze go w folderze lokalnym na maszynie wirtualnej odzyskiwania.
+3. Ustaw parametry. Skrypt przetworzy wpis tajny KEK w celu utworzenia klucza klucz szyfrowania bloków, a następnie zapisze go w folderze lokalnym na maszynie wirtualnej odzyskiwania. Jeśli podczas uruchamiania skryptu wystąpią błędy, zapoznaj się z sekcją [Rozwiązywanie problemów](#script-troubleshooting) z skryptem.
 
 4. Po rozpoczęciu skryptu zobaczysz następujące dane wyjściowe:
 
@@ -254,17 +256,38 @@ W przypadku scenariusza klucz szyfrowania klucza wykonaj następujące czynnośc
     ```
     W tym przykładzie dołączony dysk systemu operacyjnego to dysk F. Upewnij się, że używasz odpowiedniej litery dysku. 
 
-    - Jeśli dysk został pomyślnie odblokowany przy użyciu klucza klucz szyfrowania bloków. możemy rozważyć problem z funkcją BitLocker, który ma zostać rozwiązany. 
+6. Po pomyślnym odblokowaniu dysku przy użyciu klucza klucz szyfrowania bloków należy odłączyć dysk od maszyny wirtualnej odzyskiwania, a następnie ponownie utworzyć maszynę wirtualną przy użyciu tego nowego dysku systemu operacyjnego. 
 
-    - Jeśli użycie klucza klucz szyfrowania bloków nie powoduje odblokowania dysku, można użyć opcji Wstrzymaj ochronę, aby tymczasowo wyłączyć funkcję BitLocker, uruchamiając następujące polecenie
-    
-        ```powershell
-        manage-bde -protectors -disable F: -rc 0
-        ```      
-    - Jeśli zamierzasz ponownie skompilować maszynę wirtualną przy użyciu dysku dytem, musisz całkowicie odszyfrować dysk. Aby to zrobić, uruchom następujące polecenie:
+    > [!NOTE]
+    > Zamienianie dysku systemu operacyjnego nie jest obsługiwane w przypadku maszyn wirtualnych korzystających z szyfrowania dysków.
 
-        ```powershell
-        manage-bde -off F:
-        ```
+7. Jeśli nowa maszyna wirtualna nadal nie może zostać normalnie uruchomiona, spróbuj wykonać jedną z następujących czynności po odblokowaniu dysku:
 
-6. Odłącz dysk od maszyny wirtualnej odzyskiwania, a następnie ponownie podłącz dysk do maszyny wirtualnej, której to dotyczy, jako dysku systemowego. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z maszyną wirtualną z systemem Windows przez dołączenie dysku systemu operacyjnego do maszyny wirtualnej odzyskiwania](troubleshoot-recovery-disks-windows.md).
+    - Wstrzymaj ochronę, aby tymczasowo wyłączyć funkcję BitLocker, uruchamiając następujące polecenie:
+
+             manage-bde -protectors -disable F: -rc 0
+           
+    - Całkowicie Odszyfruj dysk. Aby to zrobić, uruchom następujące polecenie:
+
+                    manage-bde -off F:
+## <a name="script-troubleshooting"></a>Rozwiązywanie problemów z skryptami
+
+**Błąd: Nie można załadować pliku lub zestawu**
+
+Ten błąd występuje, ponieważ ścieżki zestawów ADAL są nieprawidłowe. Jeśli polecenie AZ module jest zainstalowane tylko dla bieżącego użytkownika, zestawy ADAL będą zlokalizowane w `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`.
+
+Możesz również wyszukać `Az.Accounts` folder, aby znaleźć poprawną ścieżkę.
+
+**Błąd: Parametr Get-AzKeyVaultSecret lub Get-AzKeyVaultSecret nie jest rozpoznawany jako nazwa polecenia cmdlet**
+
+Jeśli używasz starego modułu AZ PowerShell, musisz zmienić te dwa polecenia na `Get-AzureKeyVaultSecret` i. `Get-AzureKeyVaultSecret`
+
+**Przykłady parametrów**
+
+| Parametry  | Przykład wartości  |Komentarze   |
+|---|---|---|
+|  $keyVaultName | myKeyVault2112852926  | Nazwa magazynu kluczy, w którym jest przechowywany klucz |
+|$kekName   |klucze   | Nazwa klucza, który jest używany do szyfrowania maszyny wirtualnej|
+|$secretName   |7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D  | Nazwa wpisu tajnego klucza maszyny wirtualnej|
+|$bekFilePath   |c:\bek\7EB4F531-5FBA-4970-8E2D-C11FD6B0C69D. KLUCZ szyfrowania bloków |Ścieżka do zapisu pliku klucz szyfrowania bloków.|
+|$adTenant  |contoso.onmicrosoft.com   | Nazwa FQDN lub identyfikator GUID Azure Active Directory, który hostuje Magazyn kluczy |

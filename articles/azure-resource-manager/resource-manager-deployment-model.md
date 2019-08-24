@@ -3,15 +3,15 @@ title: Wdrażanie przy użyciu usługi Resource Manager i wdrażanie klasyczne |
 description: W tym artykule opisano różnice między modelem wdrażania przy użyciu usługi Resource Manager a modelem klasycznym (lub przy użyciu zarządzania usługami).
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: overview
-ms.date: 11/15/2017
+ms.topic: conceptual
+ms.date: 08/22/2019
 ms.author: tomfitz
-ms.openlocfilehash: 773d369f23154a510624169b9329555a1f865320
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 9356a1603a39f2ac4d18b27445bf0f8d3a555d7e
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206315"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982470"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Porównanie usługi Azure Resource Manager i wdrożenia klasycznego: omówienie modeli wdrażania i stanu zasobów
 
@@ -102,7 +102,7 @@ Klasyczne rozwiązanie dla hostowania maszyny wirtualnej obejmuje następujące 
 
 W poniższej tabeli opisano zmiany dotyczące interakcji dostawców zasobów obliczeniowych, sieciowych i magazynu:
 
-| Element | Wdrożenie klasyczne | Resource Manager |
+| Element | Klasyczny | Resource Manager |
 | --- | --- | --- |
 | Usługa w chmurze dla maszyn wirtualnych |Usługa w chmurze stanowiła kontener do przechowywania maszyn wirtualnych wymagających dostępności na platformie oraz równoważenia obciążenia. |Usługa w chmurze nie jest już obiektem wymaganym do utworzenia maszyny wirtualnej przy użyciu nowego modelu. |
 | Sieci wirtualne |Sieć wirtualna jest opcjonalna dla maszyny wirtualnej. Jeśli sieć wirtualna zostanie uwzględniona, nie będzie można jej wdrożyć przy użyciu usługi Resource Manager. |Maszyna wirtualna wymaga sieci wirtualnej, która została wdrożona przy użyciu usługi Resource Manager. |
@@ -148,7 +148,7 @@ Wszelkie utworzone elementy do automatyzacji oraz skrypty będą nadal działać
 
 Kompleksowy zestaw szablonów startowych można znaleźć na stronie [Szablony szybkiego startu usługi Azure Resource Manager](https://azure.microsoft.com/documentation/templates/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby zapoznać się z tworzeniem szablonu definiującego maszynę wirtualną, konto magazynu i sieć wirtualną, zobacz [Przewodnik po szablonie usługi Resource Manager](resource-manager-template-walkthrough.md).
 * Aby wyświetlić polecenia dotyczące wdrażania szablonu, zobacz [Wdrażanie aplikacji za pomocą szablonu usługi Azure Resource Manager](resource-group-template-deploy.md).

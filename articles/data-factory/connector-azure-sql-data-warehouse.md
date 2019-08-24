@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/24/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 3b50b0e81103f0b4c8ffa757673c9ec0ef652fc0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 45f7db943499b8a722b8e203d676d1d80eb5091e
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614124"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996675"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory 
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -431,12 +431,14 @@ Jeśli nie są spełnione wymagania, usługi Azure Data Factory umożliwia spraw
 2. **Format danych źródłowych** jest **Parquet**, **Orc**lub rozdzielany **tekstem**z następującymi konfiguracjami:
 
    1. Ścieżka folderu nie zawiera filtru symboli wieloznacznych.
-   2. Nazwa pliku wskazuje pojedynczy plik lub jest `*` lub. `*.*`
-   3. `rowDelimiter` musi być **\n**.
-   4. `nullValue` albo ustawiono **pusty ciąg** ("") lub w lewo jako domyślny, i `treatEmptyAsNull` jest pozostanie domyślnie lub wartość true.
-   5. `encodingName` ustawiono **utf-8**, która jest wartością domyślną.
+   2. Nazwa pliku jest pusta lub wskazuje na pojedynczy plik. W przypadku określenia wieloznacznej nazwy pliku w działaniu kopiowania może to `*` być `*.*`tylko lub.
+   3. `rowDelimiter`jest **wartością domyślną**, **\n**, **\r\n**lub **\r**.
+   4. `nullValue`jest pozostawiony jako domyślny lub ustawiony jako **pusty ciąg** ("") i `treatEmptyAsNull` jest pozostawiany jako domyślny lub ma ustawioną wartość true.
+   5. `encodingName`jest pozostawiony jako domyślny lub ustawiony na **UTF-8**.
    6. `quoteChar`, `escapeChar` i`skipLineCount` nie są określone. Obsługa technologii PolyBase, Pomiń wiersz nagłówka, w którym można skonfigurować jako `firstRowAsHeader` w usłudze ADF.
    7. `compression` może być **bez kompresji**, **GZip**, lub **Deflate**.
+
+3. Jeśli źródło jest folderem, `recursive` w działaniu Kopiuj musi być ustawiona wartość true.
 
 ```json
 "activities":[
@@ -445,7 +447,7 @@ Jeśli nie są spełnione wymagania, usługi Azure Data Factory umożliwia spraw
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "BlobDataset",
+                "referenceName": "ParquetDataset",
                 "type": "DatasetReference"
             }
         ],
@@ -457,7 +459,11 @@ Jeśli nie są spełnione wymagania, usługi Azure Data Factory umożliwia spraw
         ],
         "typeProperties": {
             "source": {
-                "type": "BlobSource",
+                "type": "ParquetSource",
+                "storeSettings":{
+                    "type": "AzureBlobStorageReadSetting",
+                    "recursive": true
+                }
             },
             "sink": {
                 "type": "SqlDWSink",

@@ -1,6 +1,6 @@
 ---
-title: Narzędzie do kopiowania danych usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Informacje na temat narzędzia do kopiowania danych w interfejsie użytkownika usługi Azure Data Factory
+title: Azure Data Factory narzędzia Kopiowanie danych | Microsoft Docs
+description: Zawiera informacje o narzędziu Kopiowanie danych w interfejsie użytkownika Azure Data Factory
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
@@ -11,76 +11,76 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
-ms.openlocfilehash: 107687c785433f81870449d1445136b5148a4d2c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 144a991eb911fa6a337b6711515bd5760456fc10
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787737"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996382"
 ---
-# <a name="copy-data-tool-in-azure-data-factory"></a>Narzędzie do kopiowania danych w usłudze Azure Data Factory
-Narzędzie kopiowania fabryki danych Azure ułatwia i optymalizuje proces pozyskiwania danych w usłudze data lake, zwykle jest to pierwszy krok w scenariuszu integracji danych end-to-end.  Można zaoszczędzić czas, szczególnie przy za pomocą usługi Azure Data Factory pozyskiwania danych ze źródła danych po raz pierwszy. Niektóre z korzyści z używania tego narzędzia to:
+# <a name="copy-data-tool-in-azure-data-factory"></a>Narzędzie Kopiowanie danych w Azure Data Factory
+Narzędzie Azure Data Factory Kopiowanie danych ułatwia i optymalizuje proces pozyskiwania danych w usłudze Data Lake, która jest zazwyczaj pierwszym krokiem w przypadku kompleksowego scenariusza integracji danych.  Oszczędność czasu, szczególnie w przypadku używania Azure Data Factory do pozyskiwania danych ze źródła danych po raz pierwszy. Oto niektóre zalety korzystania z tego narzędzia:
 
-- Podczas korzystania z narzędzia Azure Data Factory kopiowania danych, nie potrzebujesz rozumiesz definicji usługi Data Factory dla połączonych usług, zestawów danych, potoki, działania i wyzwalacze. 
-- Przepływ narzędzia do kopiowania danych jest intuicyjna dotyczące ładowania danych do usługi data lake. Narzędzie automatycznie utworzy wszystkie wymagane zasoby usługi Data Factory do kopiowania danych z magazynu wybranego źródła danych do magazynu danych wybranego docelowego/ujścia. 
-- Narzędzie do kopiowania danych ułatwia sprawdzanie poprawności danych, pobieranym w czasie tworzenia zawartości, co pomaga uniknąć wszelkich potencjalnych błędów na początku sam.
-- Jeśli musisz zaimplementować złożoną logikę biznesową do ładowania danych do usługi data lake możesz edytować zasoby usługi Data Factory, utworzone przez narzędzie do kopiowania danych za pomocą tworzenia dla działania w programie interfejs użytkownika usługi Data Factory. 
+- Korzystając z narzędzia Kopiowanie danych Azure Data Factory, nie potrzebujesz zrozumienia Data Factory definicji dla połączonych usług, zestawów danych, potoków, działań i wyzwalaczy. 
+- Przepływ narzędzia Kopiowanie danych jest intuicyjny do ładowania danych do usługi Data Lake. Narzędzie automatycznie tworzy wszystkie zasoby Data Factory niezbędne do skopiowania danych z wybranego źródłowego magazynu danych do wybranego magazynu danych miejsca docelowego/ujścia. 
+- Narzędzie Kopiowanie danych pomaga weryfikować dane, które są pozyskiwane w momencie tworzenia, co pomaga uniknąć ewentualnych błędów na początku.
+- Jeśli konieczne jest zaimplementowanie złożonej logiki biznesowej w celu załadowania danych do usługi Data Lake, nadal można edytować Data Factory zasoby utworzone przez narzędzie Kopiowanie danych przy użyciu funkcji tworzenia poszczególnych działań w Data Factory interfejsie użytkownika. 
 
-W poniższej tabeli przedstawiono wskazówki dotyczące kiedy należy używać narzędzia do kopiowania danych, a dla działania tworzenia w programie interfejs użytkownika usługi Data Factory: 
+W poniższej tabeli przedstawiono wskazówki dotyczące sytuacji, w których należy użyć narzędzia Kopiowanie danych a tworzenie poszczególnych działań w Data Factory interfejsie użytkownika: 
 
-| Narzędzie do kopiowania danych | Na tworzenie działanie (działanie kopiowania) |
+| Narzędzie do kopiowania danych | Tworzenie na działanie (działanie kopiowania) |
 | -------------- | -------------------------------------- |
-| Aby w łatwy sposób tworzyć ładowaniem zadania bez zapoznaniu się z jednostek usługi Azure Data Factory (połączone usługi, zestawy danych, potoki itp.) | Chcesz zaimplementować logikę złożone i elastyczne dotyczące ładowania danych do lake. |
-| Chcesz szybko załadować dużą liczbę artefaktów danych do usługi data lake. | Możesz chcieć połączyć w łańcuch działania kopiowania przy użyciu kolejne czynności czyszczenia lub przetwarzania danych. |
+| Chcesz łatwo utworzyć zadanie ładowania danych bez uczenia się Azure Data Factory jednostek (połączone usługi, zestawy danych, potoki itp.). | Chcesz zaimplementować złożoną i elastyczną logikę do ładowania danych do usługi Lake. |
+| Chcesz szybko załadować dużą liczbę artefaktów danych do sieci Data Lake. | Chcesz utworzyć łańcuch działania kopiowania z kolejnymi działaniami do czyszczenia lub przetwarzania danych. |
 
-Aby uruchomić narzędzie do kopiowania danych, kliknij przycisk **kopiowania danych** kafelków na stronie głównej fabryki danych.
+Aby uruchomić narzędzie Kopiowanie danych, kliknij kafelek **Kopiowanie danych** na stronie głównej fabryki danych.
 
-![Stronie wprowadzenie — link do narzędzia do kopiowania danych](./media/copy-data-tool/get-started-page.png)
+![Wprowadzenie do narzędzia do Kopiowanie danych](./media/copy-data-tool/get-started-page.png)
 
 
-## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>Intuicyjne przepływu dotyczące ładowania danych do usługi data lake
-To narzędzie umożliwia łatwe przenoszenie danych z wielu różnych źródeł do miejsc docelowych w ciągu kilku minut za pomocą intuicyjnego przepływu:  
+## <a name="intuitive-flow-for-loading-data-into-a-data-lake"></a>Intuicyjny przepływ do ładowania danych do usługi Data Lake
+To narzędzie umożliwia łatwe przenoszenie danych z wielu źródeł do miejsc docelowych w ciągu kilku minut z intuicyjnym przepływem:  
 
-1. Skonfiguruj ustawienia dla **źródła**.
-2. Skonfiguruj ustawienia dla **docelowy**. 
-3. Konfigurowanie **Zaawansowane ustawienia** dla operacji kopiowania, takie jak mapowanie kolumn, ustawienia wydajności i odporności na uszkodzenia ustawienia. 
-4. Określ **harmonogram** dla zadań ładowania danych. 
-5. Przegląd **podsumowania** jednostek usługi fabryka danych ma zostać utworzony. 
-6. **Edytuj** potoku można zaktualizować ustawień dla działania kopiowania, zgodnie z potrzebami. 
+1. Skonfiguruj ustawienia źródłowe.
+2. Skonfiguruj ustawienia dla **miejsca docelowego**. 
+3. Skonfiguruj **Ustawienia zaawansowane** dla operacji kopiowania, takie jak mapowanie kolumn, ustawienia wydajności i ustawienia odporności na uszkodzenia. 
+4. Określ **harmonogram** zadania ładowania danych. 
+5. Przejrzyj **podsumowanie** Data Factory jednostek, które mają zostać utworzone. 
+6. **Edytuj** potok, aby zaktualizować ustawienia działania kopiowania zgodnie z wymaganiami. 
 
-   To narzędzie jest przeznaczony z danymi big data na uwadze od samego początku obsługę zróżnicowanych danych i typów obiektów. Służy on do przenoszenia setek folderów, pliki lub tabele. Narzędzie obsługuje automatyczne danych w wersji zapoznawczej, przechwytywania schematu i automatyczne mapowanie i danych filtrowania także.
+   Narzędzie zostało zaprojektowane z myślą o rozpoczęciu pracy z obsługą różnorodnych danych i typów obiektów. Można jej używać do przenoszenia setek folderów, plików lub tabel. Narzędzie obsługuje automatyczne Podgląd danych, przechwytywanie schematu i automatyczne mapowanie oraz filtrowanie danych.
 
 ![Narzędzie do kopiowania danych](./media/copy-data-tool/copy-data-tool.png)
 
-## <a name="automatic-data-preview"></a>Automatyczne dane (wersja zapoznawcza)
-Można wyświetlać podgląd część danych z magazynu danych wybranego źródła, co pozwala na sprawdzanie poprawności danych, które są kopiowane. Ponadto jeśli źródło danych znajduje się w pliku tekstowym, narzędzia do kopiowania danych analizuje plik tekstowy, aby automatycznie wykrywać ograniczników wiersza i kolumny, a schemat.
+## <a name="automatic-data-preview"></a>Automatyczna wersja zapoznawcza danych
+Możesz wyświetlić podgląd danych z wybranego źródłowego magazynu danych, co umożliwia zweryfikowanie kopiowanych danych. Ponadto, jeśli dane źródłowe są w pliku tekstowym, narzędzie Kopiowanie danych analizuje plik tekstowy w celu automatycznego wykrycia ograniczników wierszy i kolumn oraz schemat.
 
 ![Ustawienia pliku](./media/copy-data-tool/file-format-settings.png)
 
 Po wykryciu:
 
-![Wykryto plik ustawień i (wersja zapoznawcza)](./media/copy-data-tool/after-detection.png)
+![Wykryto ustawienia plików i Podgląd](./media/copy-data-tool/after-detection.png)
 
 ## <a name="schema-capture-and-automatic-mapping"></a>Przechwytywanie schematu i automatyczne mapowanie
-Schematu źródła danych nie może być taka sama jak schemat miejsce docelowe danych w wielu przypadkach. W tym scenariuszu należy mapować kolumny z schematu źródła kolumn ze schematu docelowego.
+Schemat źródła danych może nie być taki sam jak schemat miejsca docelowego danych w wielu przypadkach. W tym scenariuszu należy zmapować kolumny ze schematu źródłowego do kolumn z schematu docelowego.
 
-Narzędzie do kopiowania danych monitoruje i uzyskuje informacje o swoje zachowanie, gdy mapowanie kolumn między magazynami źródłowym i docelowym. Po wybierz jedną lub kilka kolumn z magazynu danych źródła i mapowania ich na schemat docelowy, narzędzia do kopiowania danych rozpoczyna się do analizowania wzorzec pary kolumn, wybrany przez Ciebie z obu stron. Następnie dotyczy ona tego samego wzorca rest kolumn. W związku z tym zobaczysz wszystkie kolumny zostały zmapowane do miejsca docelowego w sposób, w jaki chcesz zaraz po kilku kliknięć.  Jeśli nie jesteś zadowolony z możliwością wybrania mapowanie kolumn określone przez narzędzie do kopiowania danych, możesz go zignorować i kontynuować ręcznie mapowania kolumn. W tym samym czasie narzędzia do kopiowania danych ciągle uczy się i aktualizuje wzorzec i ostatecznie osiągnie prawo wzorzec mapowania kolumn, które chcesz osiągnąć. 
+Narzędzie Kopiowanie danych służy do monitorowania i uczenia się zachowania podczas mapowania kolumn między magazynami źródłowymi i docelowymi. Po wybraniu jednej lub kilku kolumn z magazynu danych źródłowych i zamapowaniu ich na schemat docelowy narzędzie Kopiowanie danych rozpocznie analizowanie wzorców dla par kolumn pobranych z obu stron. Następnie stosuje ten sam wzorzec do reszty kolumn. W związku z tym zobaczysz, że wszystkie kolumny zostały zamapowane na miejsce docelowe w żądany sposób po kilku kliknięciach.  Jeśli nie masz zadowalającego wyboru mapowania kolumn dostarczonego przez narzędzie Kopiowanie danych, możesz je zignorować i kontynuować ręczne Mapowanie kolumn. W tym czasie narzędzie Kopiowanie danych ciągle uczy się i aktualizuje wzorzec, a ostatecznie osiągnie prawy wzorzec dla mapowania kolumn, które chcesz osiągnąć. 
 
 > [!NOTE]
-> Podczas kopiowania danych z programu SQL Server lub usługi Azure SQL Database do usługi Azure SQL Data Warehouse, jeśli tabela nie istnieje w magazynie docelowym, narzędzia do kopiowania danych obsługuje tworzenie tabeli automatycznie przy użyciu schematu źródła. 
+> W przypadku kopiowania danych z SQL Server lub Azure SQL Database do Azure SQL Data Warehouse, jeśli tabela nie istnieje w magazynie docelowym, narzędzie Kopiowanie danych obsługuje tworzenie tabeli automatycznie przy użyciu schematu źródłowego. 
 
 ## <a name="filter-data"></a>Filtrowanie danych
-Można filtrować dane źródłowe, aby wybrać tylko dane, które muszą być kopiowane do magazynu danych ujścia. Filtrowanie zmniejsza ilość danych, które mają być kopiowane do magazynu danych ujścia i w związku z tym zwiększa przepływność operacji kopiowania. Narzędzia do kopiowania danych zapewnia elastyczny sposób, aby filtrować dane w relacyjnej bazie danych za pomocą języka zapytania SQL lub plików w folderze obiektu blob platformy Azure. 
+Można filtrować dane źródłowe, aby wybrać tylko te dane, które muszą zostać skopiowane do magazynu danych ujścia. Filtrowanie zmniejsza ilość danych do skopiowania do magazynu danych ujścia i w związku z tym zwiększa przepływność operacji kopiowania. Narzędzie Kopiowanie danych zapewnia elastyczny sposób filtrowania danych w relacyjnej bazie danych przy użyciu języka zapytań SQL lub plików w folderze obiektów blob platformy Azure. 
 
 ### <a name="filter-data-in-a-database"></a>Filtrowanie danych w bazie danych
 Poniższy zrzut ekranu przedstawia zapytanie SQL do filtrowania danych.
 
 ![Filtrowanie danych w bazie danych](./media/copy-data-tool/filter-data-in-database.png)
 
-### <a name="filter-data-in-an-azure-blob-folder"></a>Filtrowanie danych w folderze obiektu blob platformy Azure
-Aby skopiować dane z folderem, można używać zmiennych w ścieżce folderu. Są obsługiwane zmienne: **{year}** , **{month}** , **{dzień}** , **{godzina}** , i **{minuta}** . Na przykład: inputfolder / {year} / {month} / {day}. 
+### <a name="filter-data-in-an-azure-blob-folder"></a>Filtrowanie danych w folderze obiektów blob platformy Azure
+W ścieżce folderu można używać zmiennych do kopiowania danych z folderu. Obsługiwane są następujące zmienne: **{Year}** , **{Month}** , **{Day}** , **{Hour}** i **{min}** . Na przykład: inputfolder/{Year}/{Month}/{Day}. 
 
-Załóżmy, że należy wprowadzić folderów w następującym formacie: 
+Załóżmy, że masz foldery wejściowe w następującym formacie: 
 
 ```
 2016/03/01/01
@@ -89,25 +89,25 @@ Załóżmy, że należy wprowadzić folderów w następującym formacie:
 ...
 ```
 
-Kliknij przycisk **Przeglądaj** przycisku **pliku lub folderu**, przejdź do jednej z tych folderów (na przykład, 2016 -> 03 -> 01 -> 02) i kliknij przycisk **wybierz**. Powinien zostać wyświetlony 2016/03/01/02 w polu tekstowym. 
+Kliknij przycisk **Przeglądaj** dla **pliku lub folderu**, przejdź do jednego z tych folderów (na przykład 2016-> 03-> 01-> 02), a następnie kliknij pozycję **Wybierz**. W polu tekstowym powinna zostać wyświetlona wartość 2016/03/01/02. 
 
-Następnie zastąp **2016** z **{year}** , **03** z **{month}** , **01** z **{dzień}** , i **02** z **{godzina}** i naciśnij klawisz **kartę** klucza. Powinny zostać wyświetlone list rozwijanych, aby wybrać format dla tych czterech zmiennych:
+Następnie zastąp wartość 2016 **{Year}** , **03** przez **{Month}** , **01** z **{Day}** i **02** z **{Hour}** , a następnie naciśnij klawisz **Tab** . Powinny pojawić się listy rozwijane, aby wybrać format dla tych czterech zmiennych:
 
-![Filtr pliku lub folderu](./media/copy-data-tool/filter-file-or-folder.png)
+![Filtruj plik lub folder](./media/copy-data-tool/filter-file-or-folder.png)
 
-Narzędzie do kopiowania danych generuje parametrów za pomocą wyrażenia, funkcje i zmienne systemowe, które mogą służyć do reprezentowania {year}, {month} {dzień} {godzina} i {minute} podczas tworzenia potoku. Aby uzyskać więcej informacji, zobacz [jak Odczyt lub zapis partycjonowania danych](how-to-read-write-partitioned-data.md) artykułu.
+Narzędzie Kopiowanie danych generuje parametry z wyrażeniami, funkcjami i zmiennymi systemowymi, które mogą być używane do reprezentowania {Year}, {month}, {Day}, {Hour} i {min} podczas tworzenia potoku.
 
-## <a name="scheduling-options"></a>Opcje harmonogramu
-Możesz uruchomić operacji kopiowania raz lub zgodnie z harmonogramem (co godzinę, codziennie, i tak dalej). Te opcje może służyć do łączników w różnych środowiskach, w tym w środowisku lokalnym, chmury i pulpit lokalny. 
+## <a name="scheduling-options"></a>Opcje planowania
+Operację kopiowania można wykonać raz lub zgodnie z harmonogramem (co godzinę, codziennie itd.). Te opcje mogą być używane dla łączników w różnych środowiskach, w tym lokalnie, w chmurze i na pulpicie lokalnym. 
 
-Operacja jednorazowa kopia umożliwia przenoszenie danych ze źródła do miejsca docelowego tylko raz. Dotyczy to dane, dowolnego rozmiaru i dowolnego obsługiwanego formatu. Zaplanowaną kopię umożliwia kopiowanie danych w cyklu, który określisz. Ustawienia zaawansowane (np. Ponów próbę, limit czasu i alertami) umożliwiają skonfigurowanie zaplanowaną kopię.
+Jednorazowa operacja kopiowania umożliwia przenoszenie danych ze źródła do miejsca docelowego tylko raz. Ma to zastosowanie do danych o dowolnym rozmiarze i dowolnym obsługiwanym formacie. Zaplanowana kopia umożliwia skopiowanie danych zgodnie z określonym cyklem. Aby skonfigurować zaplanowaną kopię, można użyć zaawansowanych ustawień (takich jak ponowna próba, limit czasu i alerty).
 
-![Opcje harmonogramu](./media/copy-data-tool/scheduling-options.png)
+![Opcje planowania](./media/copy-data-tool/scheduling-options.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
-Wypróbuj następujące samouczki, korzystających z narzędzia do kopiowania danych:
+## <a name="next-steps"></a>Następne kroki
+Wypróbuj te samouczki korzystające z narzędzia Kopiowanie danych:
 
-- [Szybki Start: tworzenie fabryki danych przy użyciu narzędzia do kopiowania danych](quickstart-create-data-factory-copy-data-tool.md)
-- [Samouczek: kopiowanie danych na platformie Azure przy użyciu narzędzia do kopiowania danych](tutorial-copy-data-tool.md) 
-- [Samouczek: kopiowanie danych lokalnych do platformy Azure przy użyciu narzędzia do kopiowania danych](tutorial-hybrid-copy-data-tool.md)
+- [Szybki Start: Tworzenie fabryki danych przy użyciu narzędzia Kopiowanie danych](quickstart-create-data-factory-copy-data-tool.md)
+- [Samouczek: kopiowanie danych na platformie Azure przy użyciu narzędzia Kopiowanie danych](tutorial-copy-data-tool.md) 
+- [Samouczek: kopiowanie danych lokalnych na platformę Azure przy użyciu narzędzia Kopiowanie danych](tutorial-hybrid-copy-data-tool.md)

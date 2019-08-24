@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b2cacc8cc6d7c22a93f46007e8150a4e55dc7650
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: b2fb7496f16359f01ddbbe6db31b2d047a2ab4df
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967714"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012808"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Szybki start: Tworzenie bazy wiedzy przy użyciu portalu usługi interfejs API usługi QnA Maker
 
@@ -45,24 +45,21 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
     ![Zestaw źródeł danych](../media/qnamaker-how-to-create-kb/set-data-sources.png)
 
-    - Nadaj usługi **nazwy.** Zduplikowane nazwy i znaki specjalne są obsługiwane.
-    - Dodaj adresy URL dla danych, które mają zostać wyodrębnione. Zobacz więcej informacji na temat typów źródła obsługiwane [tutaj](../Concepts/data-sources-supported.md).
-    - Przekaż pliki danych, które mają zostać wyodrębnione. Zobacz [informacje o cenach](https://aka.ms/qnamaker-pricing) aby zobaczyć, jak wiele dokumentów można dodać.
-    - Jeśli chcesz ręcznie dodać znacznie, możesz pominąć **kroku 4** na poprzednim obrazie.
+1. Nadaj usłudze **nazwę** , taką jak `my first kb`. Zduplikowane nazwy i znaki specjalne są obsługiwane.
 
-1. Dodaj **rozmowy Chit** do wiedzy. Wybierz, aby dodać obsługę Chit-Chat dla bot, wybierając jedną z osobistych. 
+1. Dodaj QNA Maker stronę rozwiązywania problemów jako adres URL `https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/troubleshooting`:, a `+ Add URL`następnie wybierz pozycję. Zobacz więcej informacji na temat typów źródła obsługiwane [tutaj](../Concepts/data-sources-supported.md). W tym przewodniku Szybki Start **nie przekazuj plików** dla danych, które mają zostać wyodrębnione. Zobacz [informacje o cenach](https://aka.ms/qnamaker-pricing) aby zobaczyć, jak wiele dokumentów można dodać.
 
-    ![Dodawanie Chit-Chat do bazy wiedzy](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
+1. Dodaj  **_profesjonalne_ Chit — czat** do swojej bazy wiedzy. 
 
 1. Wybierz **tworzenie wiedzy**.
 
     ![Tworzenie bazy wiedzy](../media/qnamaker-how-to-create-kb/create-kb.png)
 
-1. Trwa kilka minut, zanim dane do wyodrębnienia.
+1. Wyodrębnienie danych może potrwać kilka minut.
 
     ![Wyodrębniania](../media/qnamaker-how-to-create-kb/hang-tight-extraction.png)
 
-1. Po pomyślnym utworzeniu wiedzy, nastąpi przekierowanie do **wiedzy** strony.
+1. Po pomyślnym utworzeniu bazy wiedzy nastąpi przekierowanie do strony **bazy wiedzy** .
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

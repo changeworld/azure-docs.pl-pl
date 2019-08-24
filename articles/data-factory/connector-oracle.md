@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 08/23/2019
 ms.author: jingwang
-ms.openlocfilehash: 142c99b2471a9010a00bf9b5d50549c5e84548f1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 9c27b81717c32ccf4c78143a3d3d31de7181c5fe
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966466"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996627"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopiowanie danych z i do programu Oracle przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -198,7 +198,7 @@ Ta sekcja zawiera listę właściwości obsługiwanych przez źródło i ujścia
 ### <a name="oracle-as-source"></a>Oracle as Source
 
 >[!TIP]
->Aby efektywnie ładować dane z programu Oracle przy użyciu partycjonowania danych, zobacz [Kopiowanie równoległe z programu Oracle](#parallel-copy-from-oracle).
+>Aby wydajnie ładować dane z programu Oracle przy użyciu partycjonowania danych, Dowiedz się więcej z [kopii równoległej od firmy Oracle](#parallel-copy-from-oracle).
 
 Aby skopiować dane z programu Oracle, należy ustawić typ źródła w działaniu kopiowania `OracleSource`na. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji.
 
@@ -293,9 +293,9 @@ Aby skopiować dane do programu Oracle, należy ustawić typ ujścia w działani
 
 ![Zrzut ekranu przedstawiający opcje partycji](./media/connector-oracle/connector-oracle-partition-options.png)
 
-Po włączeniu kopiowania partycjonowanego Data Factory uruchamia zapytania równoległe względem źródła programu Oracle w celu załadowania danych przez partycje. Stopień równoległy jest kontrolowany przez [`parallelCopies`](copy-activity-performance.md#parallel-copy) ustawienie działania kopiowania. Jeśli na przykład ustawisz `parallelCopies` cztery, Data Factory współbieżnie generuje i uruchamia cztery zapytania na podstawie określonej opcji partycji i ustawień. Każde zapytanie pobiera część danych z bazy danych programu Oracle.
+Po włączeniu kopiowania partycjonowanego Data Factory uruchamia zapytania równoległe względem źródła programu Oracle w celu załadowania danych przez partycje. Stopień równoległy jest kontrolowany przez [`parallelCopies`](copy-activity-performance.md#parallel-copy) ustawienie działania kopiowania. Jeśli na przykład ustawisz `parallelCopies` cztery, Data Factory współbieżnie generuje i uruchamia cztery zapytania w oparciu o określoną opcję partycji i ustawienia, a każde zapytanie pobiera część danych z bazy danych Oracle.
 
-Dobrym pomysłem jest włączenie kopiowania równoległego przy użyciu partycjonowania danych, szczególnie w przypadku ładowania dużej ilości danych z bazy danych programu Oracle. Poniżej przedstawiono sugerowane konfiguracje dla różnych scenariuszy:
+Dobrym pomysłem jest włączenie kopiowania równoległego przy użyciu partycjonowania danych, szczególnie w przypadku ładowania dużej ilości danych z bazy danych programu Oracle. Poniżej przedstawiono sugerowane konfiguracje dla różnych scenariuszy. Podczas kopiowania danych do magazynu danych opartego na plikach, należy ponownie wykonać zapis do folderu jako wiele plików (Określ tylko nazwę folderu), w którym to przypadku wydajność jest lepsza niż zapis do pojedynczego pliku.
 
 | Scenariusz                                                     | Sugerowane ustawienia                                           |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

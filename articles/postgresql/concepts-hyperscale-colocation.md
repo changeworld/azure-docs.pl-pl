@@ -1,32 +1,32 @@
 ---
-title: Pojęcia serwera w usłudze Azure Database for PostgreSQL
-description: Ten artykuł zawiera zagadnienia i wytyczne dotyczące konfigurowania i zarządzanie usługą Azure Database for postgresql w warstwie serwerów.
+title: Pojęcia dotyczące serwerów w Azure Database for PostgreSQL
+description: Ten artykuł zawiera zagadnienia i wskazówki dotyczące konfigurowania serwerów Azure Database for PostgreSQL i zarządzania nimi.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: d03cfd49887adf1f6a4650e374d3e13eeca735a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 533958221898b620500b7363f3710f75f155934a
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65077473"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69998058"
 ---
-# <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus-preview"></a>Wspólnej tabeli w usłudze Azure Database for PostgreSQL — w Hiperskali (Citus) (wersja zapoznawcza)
+# <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Współlokalizacja tabeli w Azure Database for PostgreSQL — funkcja do skalowania (Citus)
 
-Wspólnej oznacza, zapisując powiązane informacje ze sobą w tej samej węzłów. Zapytania można przejść, szybko w przypadku, gdy wszystkie niezbędne dane są dostępne bez żadnego ruchu sieciowego. Kolokowanie powiązanych danych w różnych węzłach umożliwia zapytania, aby wydajnie uruchamiać równolegle na każdym węźle.
+Wspólna lokalizacja oznacza przechowywanie powiązanych informacji w tych samych węzłach. Zapytania mogą szybko przechodzić, gdy wszystkie niezbędne dane są dostępne bez żadnego ruchu sieciowego. Współlokalizowanie powiązanych danych w różnych węzłach pozwala wydajnie uruchamiać zapytania w każdym węźle.
 
-## <a name="data-colocation-for-hash-distributed-tables"></a>Wspólnej danych dla tabel rozproszonych wyznaczania wartości skrótu
+## <a name="data-colocation-for-hash-distributed-tables"></a>Współlokalizacja danych dla tabel dystrybuowanych przez funkcję tworzenia skrótów
 
-W Hiperskali wiersza są przechowywane w jednym fragmencie z Jeśli skrót wartości w kolumnie dystrybucji, który znajduje się w zakresie skrótów fragmentu. Fragmenty z tego samego zakresu wyznaczania wartości skrótu są zawsze umieszczane w tym samym węźle. Wiersze z równomierną dystrybucję wartości kolumn są zawsze w tym samym węźle między tabelami.
+W programie Azure Database for PostgreSQL — wersja zapoznawcza (Citus) — wiersz jest przechowywany w fragmentu, jeśli wartość skrótu wartości w kolumnie dystrybucja mieści się w zakresie wartości skrótu fragmentu. Fragmentów z tym samym zakresem wyznaczania wartości skrótu są zawsze umieszczane w tym samym węźle. Wiersze z równymi wartościami kolumny dystrybucji są zawsze w tym samym węźle między tabelami.
 
 ![Fragmentów](media/concepts-hyperscale-colocation/colocation-shards.png)
 
-## <a name="a-practical-example-of-colocation"></a>Praktyczny przykład wspólnej
+## <a name="a-practical-example-of-colocation"></a>Praktyczny przykład wspólnej lokalizacji
 
-Należy wziąć pod uwagę następujące tabele, które mogą być częścią sieci web z wieloma dzierżawami usługi analytics SaaS:
+Weź pod uwagę następujące tabele, które mogą być częścią wielodostępnego SaaS Web Analytics:
 
 ```sql
 CREATE TABLE event (
@@ -45,9 +45,9 @@ CREATE TABLE page (
 );
 ```
 
-Teraz chcemy do odpowiadania na kwerendy, które mogą być wydane przez pulpit nawigacyjny przeznaczonych dla klientów, takie jak: "Zwraca liczba wizyt w ostatnim tygodniu dla wszystkich stron, rozpoczynając od" / blog "w dzierżawie sześciu."
+Teraz chcemy odpowiedzieć na zapytania, które mogą być wystawiane przez pulpit nawigacyjny dostępny dla klienta. Przykładowe zapytanie to "Zwróć liczbę wizyt w ubiegłym tygodniu dla wszystkich stron zaczynających się od"/blog "w dzierżawie szóstej."
 
-Jeśli dane w opcji wdrożenia pojedynczego serwera, firma Microsoft może łatwo express naszego zapytania przy użyciu bogatego zestawu operacji relacyjnych oferowanych przez program SQL:
+Jeśli nasze dane były w opcji wdrożenia na jednym serwerze, możemy łatwo wyrazić nasze zapytanie przy użyciu bogatego zestawu operacji relacyjnych oferowanych przez SQL:
 
 ```sql
 SELECT page_id, count(event_id)
@@ -62,13 +62,13 @@ WHERE tenant_id = 6 AND path LIKE '/blog%'
 GROUP BY page_id;
 ```
 
-Tak długo, jak [zestaw roboczy](https://en.wikipedia.org/wiki/Working_set) dla tego zapytania mieści się w pamięci, tabela jednym serwerze jest to odpowiednie rozwiązanie. Rozważmy jednak możliwości skalowania w modelu danych przy użyciu opcji wdrożenia na dużą skalę.
+Tak długo, jak [zestaw roboczy](https://en.wikipedia.org/wiki/Working_set) dla tej kwerendy mieści się w pamięci, jest to odpowiednie rozwiązanie w tabeli na jednym serwerze. Rozważmy możliwości skalowania modelu danych za pomocą opcji wdrożenia Citus.
 
-### <a name="distributing-tables-by-id"></a>Dystrybucja tabel według Identyfikatora
+### <a name="distribute-tables-by-id"></a>Dystrybuuj tabele według identyfikatora
 
-Zapytania na jednym serwerze uruchom spowalniania wzrostem liczby dzierżawców i dane przechowywane dla każdego dzierżawcy. Zestaw roboczy zatrzymuje w pamięci i procesora CPU staje się wąskim gardłem.
+Zapytania na jednym serwerze zaczynają spowalniać działanie, ponieważ liczba dzierżawców i danych przechowywanych dla każdej dzierżawy rośnie. Zestaw roboczy przestanie być dopasowany do pamięci, a procesor CPU stał się wąskim gardłem.
 
-W tym przypadku możemy dzielenia danych na wielu węzłach przy użyciu na dużą skalę. Pierwszy i najważniejszy wybór musimy upewnić się, gdy fragmentowania jest kolumna dystrybucji. Zacznijmy od prostego wyboru używania `event_id` dla tabeli zdarzeń i `page_id` dla `page` tabeli:
+W takim przypadku możemy fragmentu dane między wieloma węzłami przy użyciu funkcji Citus. Pierwszy i najważniejszy wybór, które należy podjąć, gdy zdecydujemy, że fragmentu jest kolumną dystrybucji. Zacznijmy od algorytmie wyboru użycia `event_id` dla tabeli zdarzeń i `page_id` dla `page` tabeli:
 
 ```sql
 -- naively use event_id and page_id as distribution columns
@@ -77,7 +77,7 @@ SELECT create_distributed_table('event', 'event_id');
 SELECT create_distributed_table('page', 'page_id');
 ```
 
-Gdy dane są rozprowadzane przez różne procesy robocze, firma Microsoft nie można wykonać sprzężenia, jak firma Microsoft z jednego węzła PostgreSQL. Zamiast tego konieczne będzie wysyłać dwa zapytania:
+Gdy dane są rozproszone dla różnych procesów roboczych, nie można wykonać sprzężenia, tak jak w przypadku jednego węzła PostgreSQL. Zamiast tego musimy wydać dwie zapytania:
 
 ```sql
 -- (Q1) get the relevant page_ids
@@ -92,24 +92,24 @@ WHERE page_id IN (/*…page IDs from first query…*/)
 GROUP BY page_id ORDER BY count DESC LIMIT 10;
 ```
 
-Później wyniki z dwóch kroków muszą zostać połączone przez aplikację.
+Następnie wyniki dwóch kroków muszą być połączone przez aplikację.
 
-Uruchamianie zapytania zapoznać się z danych we fragmentach rozproszone w węzłach.
+Uruchomienie zapytań musi zajrzeć do danych w fragmentów rozproszeniu między węzłami.
 
-![Niewydajne kwerendy](media/concepts-hyperscale-colocation/colocation-inefficient-queries.png)
+![Niewydajne zapytania](media/concepts-hyperscale-colocation/colocation-inefficient-queries.png)
 
-W takim przypadku dystrybucję danych tworzy istotne wady:
+W takim przypadku Dystrybucja danych tworzy znaczące wady:
 
--   Obciążenie związane z każdego fragmentu i wykonywania zapytań w wielu zapytań
--   Obciążenie Q1 zwracanie wielu wierszy do klienta
--   Q2 staje się duże
--   Konieczność pisania zapytań w wielu kroków wymaga wprowadzenia zmian w aplikacji
+-   Narzutowanie zapytania o poszczególne fragmentu i uruchamianie wielu zapytań.
+-   Narzuty z Q1 zwracają wiele wierszy do klienta.
+-   Q2 jest duży.
+-   Konieczność zapisu zapytań w wielu krokach wymaga wprowadzenia zmian w aplikacji.
 
-Ponieważ dane są rozprowadzane, zapytania mogą być przetwarzane równolegle. Jednak jest tylko korzystne, jeśli ilość pracy, który wykonuje zapytanie jest znacznie większa niż koszty związane z zapytań wiele fragmentów.
+Dane są rozproszone, więc zapytania mogą być równoległe. Jest to przydatne tylko wtedy, gdy ilość pracy wykonywanej przez zapytanie jest znacznie większa niż obciążenie związane z wykonywaniem zapytań dotyczących wielu fragmentów.
 
-### <a name="distributing-tables-by-tenant"></a>Dystrybucja tabel przez dzierżawcę
+### <a name="distribute-tables-by-tenant"></a>Dystrybuowanie tabel według dzierżawy
 
-W Hiperskali wiersze z taką samą wartość kolumny dystrybucji zagwarantowane jest występowanie na tym samym węźle. Zacznij od nowa, możemy utworzyć naszych tabel z `tenant_id` jako kolumna dystrybucji.
+W obszarze skalowanie (Citus) wiersze o tej samej wartości kolumny dystrybucji są gwarantowane w tym samym węźle. Od początku możemy utworzyć nasze tabele `tenant_id` jako kolumnę dystrybucji.
 
 ```sql
 -- co-locate tables by using a common distribution column
@@ -117,7 +117,7 @@ SELECT create_distributed_table('event', 'tenant_id');
 SELECT create_distributed_table('page', 'tenant_id', colocate_with => 'event');
 ```
 
-Teraz na dużą skalę może odpowiedzieć oryginalne zapytanie pojedynczego serwera bez żadnych modyfikacji (P1):
+Teraz funkcja wieloskalowania (Citus) może odpowiedzieć na oryginalne zapytanie pojedynczego serwera bez modyfikacji (Q1):
 
 ```sql
 SELECT page_id, count(event_id)
@@ -132,12 +132,12 @@ WHERE tenant_id = 6 AND path LIKE '/blog%'
 GROUP BY page_id;
 ```
 
-Z powodu filtru i przyłączenia tenant_id Hiperskali wie, że całe zapytanie należy odpowiedzieć przy użyciu zestawu wspólnie przechowywane fragmentów, które zawierają dane dla tej konkretnej dzierżawy. Jeden węzeł PostgreSQL pozwala uzyskać odpowiedzi na zapytania w jednym kroku.
+Ze względu na filtr i sprzężenie w tenant_id, funkcja Citus (przeskaling) wie, że całe zapytanie może być odpowiedzią przy użyciu zestawu współdzielonej fragmentów, który zawiera dane dla danej dzierżawy. Pojedynczy węzeł PostgreSQL może odpowiedzieć na zapytanie w jednym kroku.
 
-![lepsze zapytania](media/concepts-hyperscale-colocation/colocation-better-query.png)
+![Lepsze zapytanie](media/concepts-hyperscale-colocation/colocation-better-query.png)
 
-W niektórych przypadkach należy zmienić zapytań i schematy tabeli do uwzględnia Identyfikatora dzierżawy w unikatowych ograniczeń, a następnie dołącz warunków. Jednak zazwyczaj jest to prosta zmiana.
+W niektórych przypadkach zapytania i schematy tabeli muszą zostać zmienione w celu uwzględnienia identyfikatora dzierżawy w unikatowych ograniczeniach i warunkach sprzężenia. Ta zmiana jest zwykle prosta.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Zobacz, jak wspólnie przechowywane dane dzierżawy w [samouczek wielu dzierżaw](tutorial-design-database-hyperscale-multi-tenant.md)
+- Zobacz, jak dane dzierżawy znajdują się w samouczku dotyczącym [wielu dzierżawców](tutorial-design-database-hyperscale-multi-tenant.md).

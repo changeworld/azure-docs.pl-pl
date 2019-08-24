@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d58cec644c75baaac37862f445477da92075c44d
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 877769041d1587c6c1b0f4dbaff51d5a1a7924b5
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907348"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997714"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-preview-features"></a>Samouczek: Definiowanie nowego typu urządzenia w aplikacji IoT Central platformy Azure (funkcje w wersji zapoznawczej)
 
@@ -70,7 +70,7 @@ Aby utworzyć nową aplikację usługi Azure IoT Central, która korzysta z funk
 
     Aby uzyskać więcej informacji, zapoznaj się z [przewodnikiem Szybki start dotyczącym tworzenia aplikacji](quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json).
 
-Potrzebna jest również lokalna kopia pliku **EnvironmentalSensorInline. capabilitymodel. JSON** , który zawiera model możliwości urządzenia [IoT Plug and Play](https://aka.ms/iot-pnp-docs) . Możesz pobrać go z tego [miejsca](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json). Kliknij prawym przyciskiem myszy na stronie i wybierz polecenie **Zapisz jako**.
+Potrzebna jest również lokalna kopia pliku **EnvironmentalSensorInline. capabilitymodel. JSON** , który zawiera model możliwości urządzenia [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) . Możesz pobrać go z tego [miejsca](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json). Kliknij prawym przyciskiem myszy na stronie i wybierz polecenie **Zapisz jako**.
 
 Po pobraniu pliku Otwórz go w edytorze tekstów i Zastąp oba wystąpienia `<YOUR_COMPANY_NAME_HERE>` nazwą. Używaj tylko znaków a-z, A-Z, 0-9 i znaku podkreślenia.
 

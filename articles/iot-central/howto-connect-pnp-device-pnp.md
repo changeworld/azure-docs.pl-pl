@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 630f92bc8cf5fb89626bfe4de4e4a575045c961a
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6eb73c1c2b768d82143890415702950905f261f6
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880958"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997243"
 ---
 # <a name="use-visual-studio-code-to-create-an-iot-plug-and-play-device-that-connects-to-iot-central"></a>Użyj Visual Studio Code, aby utworzyć urządzenie IoT Plug and Play, które nawiązuje połączenie z IoT Central
 
@@ -22,7 +22,7 @@ Ten przewodnik przedstawia, jak:
 
 * Jako operator, aby dodać i skonfigurować rzeczywiste urządzenie w aplikacji IoT Central platformy Azure.
 
-* Jako deweloper urządzenia, aby użyć Visual Studio Code do utworzenia urządzenia [IoT Plug and Play](https://aka.ms/iot-pnp-docs) , które nawiązuje połączenie z aplikacją IoT Central.
+* Jako deweloper urządzenia, aby użyć Visual Studio Code do utworzenia urządzenia [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) , które nawiązuje połączenie z aplikacją IoT Central.
 
 [Model możliwości urządzenia](./concepts-architecture-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json) służy do definiowania urządzenia, które nawiązuje połączenie z IoT Central. W tym przewodniku należy użyć modelu, który definiuje urządzenie czujnika środowiska.
 
