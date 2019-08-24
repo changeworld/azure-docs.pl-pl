@@ -15,7 +15,7 @@ ms.date: 07/29/2019
 ms.author: daperlov
 ms.openlocfilehash: 6e5e293e9759f091b6537d5efab9884e0a20fabc
 ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/01/2019
 ms.locfileid: "68725433"
