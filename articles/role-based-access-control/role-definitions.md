@@ -15,12 +15,12 @@ ms.date: 06/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: ece5d8f9733dde57c2990bfbb6bb90305d8bc37d
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 2ec3872b9e11830f7891e98f5fc0182b99e1586d
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977183"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997347"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Opis definicji ról dla zasobów platformy Azure
 
@@ -88,7 +88,7 @@ Kontrola dostępu oparta na rolach dla operacji zarządzania jest określona we 
 - Tworzenie, aktualizowanie lub usuwanie kontenera obiektów BLOB
 - Usuwanie grupy zasobów i wszystkich jej zasobów
 
-Dostęp do zarządzania nie jest dziedziczony do danych. Ta separacja zapobiega nieograniczonemu dostępowi do danych w rolach z symbolami wieloznacznymi (`*`). Na przykład jeśli użytkownik ma rolę czytelnika [](built-in-roles.md#reader) w ramach subskrypcji, może wyświetlić konto magazynu, ale domyślnie nie może wyświetlić danych źródłowych.
+Dostęp do zarządzania nie jest dziedziczony do danych, pod warunkiem, że metoda uwierzytelniania kontenera jest ustawiona na "konto użytkownika usługi Azure AD", a nie "klucz dostępu". Ta separacja zapobiega nieograniczonemu dostępowi do danych w rolach z symbolami wieloznacznymi (`*`). Na przykład jeśli użytkownik ma rolę czytelnika [](built-in-roles.md#reader) w ramach subskrypcji, może wyświetlić konto magazynu, ale domyślnie nie może wyświetlić danych źródłowych.
 
 Wcześniej kontrola dostępu oparta na rolach nie była używana do wykonywania operacji na danych. Autoryzacja dla operacji na danych, które są różne dla różnych dostawców zasobów. Ten sam model autoryzacji kontroli dostępu oparty na rolach używany na potrzeby operacji zarządzania został rozszerzony do operacji na danych.
 

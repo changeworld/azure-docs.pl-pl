@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: 0f2d3079de43767e61dfc1c8d77244da19f13a40
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
-ms.translationtype: HT
+ms.openlocfilehash: 0e26b9b5aee61f399a39c032cdbd2084884538c9
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898866"
+ms.locfileid: "69982711"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Obsługiwane wersje Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
@@ -30,7 +30,6 @@ Kubernetes używa standardowego schematu [](https://semver.org/) obsługi wersji
 Example:
   1.12.14
   1.12.15
-  1.13.7
 ```
 
 Każda liczba w wersji wskazuje ogólną zgodność z poprzednią wersją:
@@ -39,7 +38,7 @@ Każda liczba w wersji wskazuje ogólną zgodność z poprzednią wersją:
 * Wersje pomocnicze zmieniają się, gdy wprowadzane są zmiany funkcjonalności, które są wstecznie zgodne z innymi wersjami pomocniczymi.
 * Wersje poprawek zmieniają się w przypadku wprowadzenia poprawek błędów zgodnych z poprzednimi wersjami.
 
-Ogólnie rzecz biorąc, użytkownicy powinni Endeavor, aby uruchomić najnowszą wersję poprawki wersji pomocniczej, na przykład jeśli klaster produkcyjny znajduje się na *1.13.6* i *1.13.7* to najnowsza dostępna wersja poprawki dostępna dla serii *1,13* . należy uaktualnić do *1.13.7* zaraz po zapewnieniu, że klaster jest w pełni objęty poprawką i jest obsługiwany.
+Ogólnie rzecz biorąc, użytkownicy powinni Endeavor, aby uruchomić najnowszą wersję poprawki wersji pomocniczej, na przykład jeśli klaster produkcyjny znajduje się na *1.12.14* i *1.12.15* to najnowsza dostępna wersja poprawki dostępna dla serii *1,12* należy przeprowadzić uaktualnienie do *1.12.15* zaraz po upewnieniu się, że klaster jest w pełni objęty poprawką i jest obsługiwany.
 
 ## <a name="kubernetes-version-support-policy"></a>Zasady obsługi wersji platformy Kubernetes
 
@@ -160,7 +159,7 @@ KubernetesVersion    Upgrades
 
 **Co się stanie, gdy klient uaktualnia klaster Kubernetes z nieobsługiwaną wersją pomocniczą?**
 
-Jeśli korzystasz z wersji *n-4* , jesteś poza pomocą techniczną i zostanie wyświetlony monit o uaktualnienie. Jeśli uaktualnienie z wersji n-4 do n-3 powiedzie się, jesteś teraz w naszych zasadach pomocy technicznej. Przykład:
+Jeśli korzystasz z wersji *n-4* , jesteś poza pomocą techniczną i zostanie wyświetlony monit o uaktualnienie. Jeśli uaktualnienie z wersji n-4 do n-3 powiedzie się, jesteś teraz w naszych zasadach pomocy technicznej. Na przykład:
 
 - Jeśli obsługiwane wersje AKS to *1.13. x*, *1.12. a* + *1.12. b*, *1.11. c* + *1.11 d*, i *1.10. e* + *1.10 f* i w dniu *1.9. g* lub *1.9. h*, jesteś poza pomocą techniczną.
 - Jeśli uaktualnienie z *1,9. g* lub *1.9. h* do *1.10. e* lub *1.10. f* powiedzie się, jesteś z powrotem w ramach naszych zasad pomocy technicznej.

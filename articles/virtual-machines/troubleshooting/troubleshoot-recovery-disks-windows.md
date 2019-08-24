@@ -1,6 +1,6 @@
 ---
-title: Użyj Windows, rozwiązywanie problemów z maszyny Wirtualnej przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozwiązywać problemy z maszyn wirtualnych Windows na platformie Azure, łącząc dysku systemu operacyjnego do odzyskiwania maszyny Wirtualnej przy użyciu programu Azure PowerShell
+title: Korzystanie z maszyny wirtualnej Rozwiązywanie problemów z systemem Windows przy użyciu Azure PowerShell | Microsoft Docs
+description: Dowiedz się, jak rozwiązywać problemy dotyczące maszyn wirtualnych z systemem Windows na platformie Azure, łącząc dysk systemu operacyjnego z maszyną wirtualną odzyskiwania przy użyciu Azure PowerShell
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -13,68 +13,68 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 94abf9c8621e842605a4fab521fa4df853e1fb4a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e634213a4a6249dfbfe944e0ab42af27d78c057a
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709296"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997965"
 ---
-# <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Rozwiązywanie problemów z maszyny Wirtualnej z systemem Windows, dołączając dysk systemu operacyjnego do odzyskiwania maszyny Wirtualnej przy użyciu programu Azure PowerShell
-Windows maszyny wirtualnej (VM) na platformie Azure napotka błąd rozruchu lub dysk, może być konieczne wykonanie kroków rozwiązywania problemów na dysku. Typowym przykładem może być Niepowodzenie aktualizacji aplikacji, która uniemożliwia maszynie Wirtualnej możliwość wykonania rozruchu pomyślnie. W tym artykule szczegółowo przedstawiono sposób podłącz dysk do innej Windows maszyny Wirtualnej, aby naprawić wszystkie błędy, a następnie napraw oryginalną maszynę Wirtualną za pomocą programu Azure PowerShell. 
+# <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Rozwiązywanie problemów z maszyną wirtualną z systemem Windows przez dołączenie dysku systemu operacyjnego do maszyny wirtualnej odzyskiwania przy użyciu Azure PowerShell
+Jeśli maszyna wirtualna z systemem Windows na platformie Azure napotyka błąd rozruchowy lub dyskowy, może być konieczne wykonanie kroków rozwiązywania problemów na dysku. Typowym przykładem może być niepowodzenie aktualizacji aplikacji, która uniemożliwia pomyślne uruchomienie maszyny wirtualnej. W tym artykule szczegółowo opisano, jak za pomocą Azure PowerShell połączyć dysk z inną maszyną wirtualną z systemem Windows w celu usunięcia błędów, a następnie naprawić oryginalną maszynę wirtualną. 
 
 > [!Important]
-> Skrypty w tym artykule dotyczą tylko maszyn wirtualnych, które używają [dysku zarządzanego](../windows/managed-disks-overview.md). 
+> Skrypty w tym artykule mają zastosowanie tylko do maszyn wirtualnych, które korzystają z [dysku zarządzanego](../windows/managed-disks-overview.md). 
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="recovery-process-overview"></a>Omówienie procesu odzyskiwania
-Teraz możemy użyć programu Azure PowerShell do zmiany dysku systemu operacyjnego dla maszyny Wirtualnej. Firma Microsoft nie będzie konieczne usunięcie i ponowne utworzenie maszyny Wirtualnej.
+Teraz można użyć Azure PowerShell, aby zmienić dysk systemu operacyjnego dla maszyny wirtualnej. Nie jest już konieczne usuwanie i Tworzenie maszyny wirtualnej.
 
 Proces rozwiązywania problemów jest następujący:
 
-1. Zatrzymywanie dotyczy maszyny Wirtualnej.
-2. Tworzenie migawki z dysku systemu operacyjnego maszyny wirtualnej.
-3. Tworzenie dysku na podstawie migawki dysku systemu operacyjnego.
-4. Dołącz dysk jako dysk danych do maszyny Wirtualnej odzyskiwania.
-5. Podłącz do maszyny Wirtualnej odzyskiwania. Edytuj pliki lub uruchom wszystkie narzędzia, aby naprawić problemy na skopiowanego dysku systemu operacyjnego.
-6. Odinstaluj i Odłącz dysk od maszyny Wirtualnej odzyskiwania.
-7. Objęte maszyny wirtualnej, należy zmienić dysk systemu operacyjnego.
+1. Zatrzymaj zaatakowaną maszynę wirtualną.
+2. Utwórz migawkę z dysku systemu operacyjnego maszyny wirtualnej.
+3. Utwórz dysk na podstawie migawki dysku systemu operacyjnego.
+4. Dołącz dysk jako dysk danych do maszyny wirtualnej odzyskiwania.
+5. Nawiąż połączenie z maszyną wirtualną odzyskiwania. Edytuj pliki lub Uruchom dowolne narzędzia, aby rozwiązać problemy na skopiowanym dysku systemu operacyjnego.
+6. Odinstalowanie i odłączanie dysku od maszyny wirtualnej odzyskiwania.
+7. Zmień dysk systemu operacyjnego dla maszyny wirtualnej, której to dotyczy.
 
-Skrypty do odzyskiwania maszyny Wirtualnej można użyć do automatyzowania czynności 1, 2, 3, 4, 6 i 7. Aby uzyskać więcej dokumentacji i instrukcje, zobacz [skrypty odzyskiwania maszyny Wirtualnej dla maszyny Wirtualnej usługi Resource Manager](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager).
+Za pomocą skryptów odzyskiwania maszyny wirtualnej można zautomatyzować kroki 1, 2, 3, 4, 6 i 7. Aby uzyskać więcej dokumentacji i instrukcje, zobacz [skrypty odzyskiwania maszyny wirtualnej dla Menedżer zasobów VM](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager).
 
-Upewnij się, że masz [najnowszą wersję programu Azure PowerShell](/powershell/azure/overview) zainstalowane i zalogować się do Twojej subskrypcji:
+Upewnij się, że masz zainstalowaną [najnowszą Azure PowerShell](/powershell/azure/overview) i zalogowano się do subskrypcji:
 
 ```powershell
 Connect-AzAccount
 ```
 
-W poniższych przykładach należy zastąpić własnymi wartościami nazw parametrów. 
+W poniższych przykładach Zastąp nazwy parametrów własnymi wartościami. 
 
-## <a name="determine-boot-issues"></a>Określenia problemów rozruchu
-Możesz wyświetlić zrzut ekranu maszyny wirtualnej na platformie Azure, aby ułatwić rozwiązywanie problemów rozruchu. Ten zrzut ekranu może pomóc w ustaleniu, dlaczego maszyny Wirtualnej nie można uruchomić. Poniższy przykład pobiera zrzut ekranu z maszyny Wirtualnej Windows o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`:
+## <a name="determine-boot-issues"></a>Określanie problemów z rozruchem
+Możesz wyświetlić zrzut ekranu maszyny wirtualnej na platformie Azure, aby pomóc w rozwiązywaniu problemów z rozruchem. Ten zrzut ekranu może pomóc w ustaleniu, dlaczego rozruch maszyny wirtualnej nie powiedzie się. Poniższy przykład pobiera zrzut ekranu z maszyny wirtualnej z systemem Windows `myVM` o nazwie w grupie zasobów `myResourceGroup`o nazwie:
 
 ```powershell
 Get-AzVMBootDiagnosticsData -ResourceGroupName myResourceGroup `
     -Name myVM -Windows -LocalPath C:\Users\ops\
 ```
 
-Przejrzyj zrzut ekranu, aby ustalić, dlaczego maszyny Wirtualnej nie może uruchomić. Należy pamiętać, wszystkie określone komunikaty o błędach lub kody błędów, pod warunkiem.
+Przejrzyj zrzut ekranu, aby określić, dlaczego rozruch maszyny wirtualnej kończy się niepowodzeniem. Zwróć uwagę na wszystkie określone komunikaty o błędach lub podane kody błędów.
 
 ## <a name="stop-the-vm"></a>Zatrzymywanie maszyny wirtualnej
 
-Poniższy przykład zatrzymuje maszynę Wirtualną o nazwie `myVM` z grupy zasobów o nazwie `myResourceGroup`:
+Poniższy przykład powoduje zatrzymanie maszyny wirtualnej o `myVM` nazwie z grupy zasobów o `myResourceGroup`nazwie:
 
 ```powershell
 Stop-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ```
 
-Poczekaj, aż maszyny Wirtualnej zostało zakończone, usuwanie, przed rozpoczęciem przetwarzania do następnego kroku.
+Przed przetworzeniem do następnego kroku poczekaj na zakończenie usuwania maszyny wirtualnej.
 
 
-## <a name="create-a-snapshot-from-the-os-disk-of-the-vm"></a>Tworzenie migawki z dysku systemu operacyjnego maszyny wirtualnej
+## <a name="create-a-snapshot-from-the-os-disk-of-the-vm"></a>Utwórz migawkę z dysku systemu operacyjnego maszyny wirtualnej
 
-Poniższy przykład tworzy migawkę o nazwie `mySnapshot` z systemu operacyjnego dysk maszyny Wirtualnej o nazwie "myVM". 
+Poniższy przykład tworzy migawkę o nazwie `mySnapshot` z dysku systemu operacyjnego maszyny wirtualnej o nazwie "myVM". 
 
 ```powershell
 $resourceGroupName = 'myResourceGroup' 
@@ -100,11 +100,11 @@ New-AzSnapshot `
    -ResourceGroupName $resourceGroupName 
 ```
 
-Migawka jest pełna, tylko do odczytu kopię dysku VHD. Nie można dołączyć do maszyny Wirtualnej. W następnym kroku zostanie utworzony dysk z tą migawką.
+Migawka to pełna kopia tylko do odczytu dysku VHD. Nie można go dołączyć do maszyny wirtualnej. W następnym kroku utworzymy dysk na podstawie tej migawki.
 
-## <a name="create-a-disk-from-the-snapshot"></a>Tworzenie dysku z migawki
+## <a name="create-a-disk-from-the-snapshot"></a>Utwórz dysk na podstawie migawki
 
-Ten skrypt tworzy dysk zarządzany o nazwie `newOSDisk` z migawki o nazwie `mysnapshot`.  
+Ten skrypt tworzy dysk zarządzany o nazwie `newOSDisk` z migawki o nazwie. `mysnapshot`  
 
 ```powershell
 #Set the context to the subscription Id where Managed Disk will be created
@@ -126,8 +126,8 @@ $diskName = 'newOSDisk'
 #Provide the size of the disks in GB. It should be greater than the VHD file size.
 $diskSize = '128'
 
-#Provide the storage type for Managed Disk. PremiumLRS or StandardLRS.
-$storageType = 'StandardLRS'
+#Provide the storage type for Managed Disk. Premium_LRS or Standard_LRS.
+$storageType = 'Standard_LRS'
 
 #Provide the Azure region (e.g. westus) where Managed Disks will be located.
 #This location should be same as the snapshot location
@@ -141,14 +141,14 @@ $diskConfig = New-AzDiskConfig -AccountType $storageType -Location $location -Cr
  
 New-AzDisk -Disk $diskConfig -ResourceGroupName $resourceGroupName -DiskName $diskName
 ```
-Masz teraz kopię dysku systemu operacyjnego, oryginalnym. Ten dysk do innej maszyny Wirtualnej Windows można zainstalować na potrzeby rozwiązywania problemów.
+Teraz masz kopię oryginalnego dysku systemu operacyjnego. Ten dysk można zainstalować na innej maszynie wirtualnej z systemem Windows w celu rozwiązywania problemów.
 
-## <a name="attach-the-disk-to-another-windows-vm-for-troubleshooting"></a>Dołącz dysk do innej maszyny Wirtualnej Windows do rozwiązywania problemów
+## <a name="attach-the-disk-to-another-windows-vm-for-troubleshooting"></a>Dołączanie dysku do innej maszyny wirtualnej z systemem Windows w celu rozwiązywania problemów
 
-Teraz możemy dołączyć kopię oryginalny dysk systemu operacyjnego do maszyny Wirtualnej jako dysk danych. Ten proces pozwala naprawić błędy konfiguracji lub przejrzyj dodatkową aplikację i plikach dziennika systemowego na dysku. Poniższy przykład dołącza dysk o nazwie `newOSDisk` do maszyny Wirtualnej o nazwie `RecoveryVM`.
+Teraz dołączymy kopię oryginalnego dysku systemu operacyjnego do maszyny wirtualnej jako dysk danych. Ten proces umożliwia poprawienie błędów konfiguracji lub przejrzenie dodatkowych plików dziennika aplikacji lub systemu na dysku. Poniższy przykład dołącza dysk o nazwie `newOSDisk` do maszyny wirtualnej o nazwie. `RecoveryVM`
 
 > [!NOTE]
-> Aby dołączyć dysku, kopię oryginalny dysk systemu operacyjnego i odzyskiwania maszyn wirtualnych musi być w tej samej lokalizacji.
+> Aby dołączyć dysk, kopia oryginalnego dysku systemu operacyjnego i maszyny wirtualnej odzyskiwania musi znajdować się w tej samej lokalizacji.
 
 ```powershell
 $rgName = "myResourceGroup"
@@ -164,22 +164,22 @@ $vm = Add-AzVMDataDisk -CreateOption Attach -Lun 0 -VM $vm -ManagedDiskId $disk.
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
-## <a name="connect-to-the-recovery-vm-and-fix-issues-on-the-attached-disk"></a>Nawiązywanie połączenia maszyny Wirtualnej odzyskiwania i rozwiązywanie problemów na dołączonym dysku
+## <a name="connect-to-the-recovery-vm-and-fix-issues-on-the-attached-disk"></a>Nawiązywanie połączenia z maszyną wirtualną odzyskiwania i rozwiązywanie problemów na dołączonym dysku
 
-1. Protokół RDP do odzyskiwania maszyny Wirtualnej przy użyciu odpowiednich poświadczeń. Poniższy przykład pobiera plik połączenia RDP dla maszyny Wirtualnej o nazwie `RecoveryVM` w grupie zasobów o nazwie `myResourceGroup`i pobranie go do `C:\Users\ops\Documents`"
+1. Połącz protokół RDP z maszyną wirtualną odzyskiwania przy użyciu odpowiednich poświadczeń. Poniższy przykład pobiera plik połączenia RDP dla maszyny wirtualnej o `RecoveryVM` nazwie w grupie zasobów o nazwie `myResourceGroup`i pobiera ją do `C:\Users\ops\Documents`"
 
     ```powershell
     Get-AzRemoteDesktopFile -ResourceGroupName "myResourceGroup" -Name "RecoveryVM" `
         -LocalPath "C:\Users\ops\Documents\myVMRecovery.rdp"
     ```
 
-2. Dysk z danymi powinny automatycznie wykryte i dołączony. Wyświetl listę dołączone woluminy w celu określenia litery dysku w następujący sposób:
+2. Dysk danych powinien zostać automatycznie wykryty i dołączony. Wyświetl listę dołączonych woluminów, aby określić literę dysku w następujący sposób:
 
     ```powershell
     Get-Disk
     ```
 
-    Następujące przykładowe dane wyjściowe zawiera dysk podłączony dysk **2**. (Możesz również użyć `Get-Volume` do wyświetlania literę dysku):
+    Poniższe przykładowe dane wyjściowe przedstawiają dysk połączony z dyskiem **2**. (Można również użyć `Get-Volume` , aby wyświetlić literę dysku):
 
     ```powershell
     Number   Friendly Name   Serial Number   HealthStatus   OperationalStatus   Total Size   Partition
@@ -190,18 +190,18 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
     2        newOSDisk                                  Healthy             Online       127 GB MBR
     ```
 
-Po kopię oryginalny dysk systemu operacyjnego jest zainstalowany, można wykonać konserwacji oraz procedurę rozwiązywania problemów, zgodnie z potrzebami. Po usunięciu problemów wykonaj następujące kroki.
+Po zainstalowaniu oryginalnego dysku systemu operacyjnego można wykonać wszelkie czynności konserwacyjne i rozwiązywania problemów zgodnie z wymaganiami. Po usunięciu problemów wykonaj następujące kroki.
 
 ## <a name="unmount-and-detach-original-os-disk"></a>Odinstalowywanie i odłączanie oryginalnego dysku systemu operacyjnego
-Gdy błędy są rozwiązywane, odinstaluj i Odłącz istniejący dysk od maszyny Wirtualnej odzyskiwania. Nie można użyć dysku z innej maszyny Wirtualnej, dopóki dzierżawa, przyłączanie dysku do maszyny Wirtualnej odzyskiwania zostanie zwolniona.
+Po rozwiązaniu problemów zostanie odinstalowany i odłączony istniejący dysk od maszyny wirtualnej odzyskiwania. Nie można używać dysku z żadną inną maszyną wirtualną, dopóki nie zostanie wydana dzierżawa dołączania dysku do maszyny wirtualnej odzyskiwania.
 
-1. Z w ramach sesji protokołu RDP, odinstaluj dysk z danymi na maszynę Wirtualną odzyskiwania. Potrzebujesz numer dysku z poprzedniego `Get-Disk` polecenia cmdlet. Następnie należy użyć `Set-Disk` można ustawić dysk w trybie offline:
+1. W ramach sesji RDP Odinstaluj dysk z danymi na maszynie wirtualnej odzyskiwania. Wymagany jest numer dysku z poprzedniego `Get-Disk` polecenia cmdlet. Następnie użyj `Set-Disk` , aby ustawić dysk jako w trybie offline:
 
     ```powershell
     Set-Disk -Number 2 -IsOffline $True
     ```
 
-    Upewnij się, dysku są teraz ustawione w trybie offline, używając `Get-Disk` ponownie. Następujące przykładowe dane wyjściowe pokazuje, że dysk jest teraz skonfigurowane w trybie offline:
+    Potwierdź, że dysk jest teraz ustawiony jako używany `Get-Disk` ponownie w trybie offline. Następujące przykładowe dane wyjściowe pokazują, że dysk jest teraz ustawiony jako offline:
 
     ```powershell
     Number   Friendly Name   Serial Number   HealthStatus   OperationalStatus   Total Size   Partition
@@ -212,7 +212,7 @@ Gdy błędy są rozwiązywane, odinstaluj i Odłącz istniejący dysk od maszyny
     2        Msft Virtu...                                  Healthy             Offline      127 GB MBR
     ```
 
-2. Zamknij sesję RDP. Z poziomu sesji programu Azure PowerShell, Usuń dysk o nazwie `newOSDisk` z maszyny Wirtualnej o nazwie "RecoveryVM".
+2. Zakończ sesję RDP. Z poziomu sesji Azure PowerShell Usuń dysk o nazwie `newOSDisk` z maszyny wirtualnej o nazwie "RecoveryVM".
 
     ```powershell
     $myVM = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "RecoveryVM"
@@ -220,11 +220,11 @@ Gdy błędy są rozwiązywane, odinstaluj i Odłącz istniejący dysk od maszyny
     Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
     ```
 
-## <a name="change-the-os-disk-for-the-affected-vm"></a>Zmień dysk systemu operacyjnego dla maszyny Wirtualnej z zainfekowanego
+## <a name="change-the-os-disk-for-the-affected-vm"></a>Zmiana dysku systemu operacyjnego dla maszyny wirtualnej, której to dotyczy
 
-Konieczność wymiany dysków systemu operacyjnego, można użyć programu Azure PowerShell. Nie masz usunięcie i ponowne utworzenie maszyny Wirtualnej.
+Aby zamienić dyski systemu operacyjnego, można użyć Azure PowerShell. Nie trzeba usuwać ani tworzyć ponownie maszyny wirtualnej.
 
-W tym przykładzie zatrzymuje maszynę Wirtualną o nazwie `myVM` i przypisuje dysku o nazwie `newOSDisk` jako nowy dysk systemu operacyjnego. 
+Ten przykład powoduje zatrzymanie maszyny wirtualnej `myVM` o nazwie i przypisanie dysku `newOSDisk` o nazwie jako nowego dysku systemu operacyjnego. 
 
 ```powershell
 # Get the VM 
@@ -246,9 +246,9 @@ Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -StorageAccountType <Type
 Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 ```
 
-## <a name="verify-and-enable-boot-diagnostics"></a>Sprawdź i Włącz diagnostykę rozruchu
+## <a name="verify-and-enable-boot-diagnostics"></a>Weryfikowanie i włączanie diagnostyki rozruchu
 
-Poniższy przykład umożliwia rozszerzenie diagnostyki na maszynie Wirtualnej o nazwie `myVMDeployed` w grupie zasobów o nazwie `myResourceGroup`:
+Poniższy przykład włącza rozszerzenie diagnostyki na maszynie wirtualnej o nazwie `myVMDeployed` w grupie zasobów o nazwie: `myResourceGroup`
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVMDeployed"
@@ -256,7 +256,7 @@ Set-AzVMBootDiagnostics -ResourceGroupName myResourceGroup -VM $myVM -enable
 Update-AzVM -ResourceGroup "myResourceGroup" -VM $myVM
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Jeśli występują problemy z nawiązywaniem połączenia z maszyną wirtualną, zobacz [połączenia RDP Rozwiązywanie problemów z Maszyną wirtualną platformy Azure](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). W przypadku problemów z dostępem do aplikacji działających na maszynie Wirtualnej, zobacz [aplikacji Rozwiązywanie problemów z łącznością na maszynie Wirtualnej Windows](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+## <a name="next-steps"></a>Następne kroki
+Jeśli masz problemy z nawiązywaniem połączenia z maszyną wirtualną, zobacz [Rozwiązywanie problemów z połączeniami RDP z maszyną wirtualną platformy Azure](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Problemy dotyczące uzyskiwania dostępu do aplikacji uruchomionych na maszynie wirtualnej można znaleźć w temacie Rozwiązywanie problemów z [łącznością aplikacji na maszynie wirtualnej z systemem Windows](troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Aby uzyskać więcej informacji na temat przy użyciu usługi Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+Aby uzyskać więcej informacji o korzystaniu z Menedżer zasobów, zobacz [Azure Resource Manager omówienie](../../azure-resource-manager/resource-group-overview.md).

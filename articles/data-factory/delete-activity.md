@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/25/2019
-ms.openlocfilehash: e749138cd28f7bd8faf10ca1087a73f323533a25
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.date: 08/20/2019
+ms.openlocfilehash: d9a1c76e8ac386b954c68f16e2189df4e6c0e1b7
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335668"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996317"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Usuń działanie w Azure Data Factory
 
@@ -44,6 +44,7 @@ Poniżej przedstawiono kilka zaleceń dotyczących używania działania usuwania
 -   [Azure Blob Storage](connector-azure-blob-storage.md)
 -   [Usługa Azure Data Lake Storage 1. generacji](connector-azure-data-lake-store.md)
 -   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
+-   [Azure File Storage](connector-azure-file-storage.md)
 
 ### <a name="file-system-data-stores"></a>Magazyny danych systemu plików
 
@@ -51,6 +52,7 @@ Poniżej przedstawiono kilka zaleceń dotyczących używania działania usuwania
 -   [FTP](connector-ftp.md)
 -   [SFTP](connector-sftp.md)
 -   [Amazon S3](connector-amazon-simple-storage-service.md)
+-   [Google Cloud Storage](connector-google-cloud-storage.md)
 
 ## <a name="syntax"></a>Składnia
 
@@ -115,7 +117,7 @@ Istnieją dwa miejsca, w których można zobaczyć i monitorować wyniki działa
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Przykładowy plik dziennika działania usuwania
 
-| Name (Nazwa) | Kategoria | Stan | Błąd |
+| Name | Kategoria | State | Błąd |
 |:--- |:--- |:--- |:--- |
 | TEST1/yyy. JSON | Plik | Usunięte |  |
 | test2/hello789.txt | Plik | Usunięte |  |
@@ -572,7 +574,7 @@ Możesz również pobrać szablon, aby przenieść pliki z tego [miejsca](soluti
 
 -   W przypadku korzystania z filtru atrybutu pliku: modifiedDatetimeStart i modifiedDatetimeEnd aby wybrać pliki do usunięcia, upewnij się, że ustawiono "fileName": "*" w zestawie danych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o przenoszeniu plików w Azure Data Factory.
 

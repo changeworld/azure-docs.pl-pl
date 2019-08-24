@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6e29e0f89d9270a143d48cf6e85b479813e19d9d
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: a73d048a66c70eaf22caf6b33c4a495df6d730dd
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013643"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997914"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurowanie zautomatyzowanych eksperymentów ML w języku Python
 
@@ -207,6 +207,8 @@ Trzy różne `task` wartości parametrów określają listę algorytmów, które
 ### <a name="primary-metric"></a>Podstawowe metryki
 Metryka podstawowa; jak pokazano w powyższych przykładach, określa metrykę, która ma być używana podczas szkolenia modelu na potrzeby optymalizacji. Podstawowa metryka, którą można wybrać, zależy od wybranego typu zadania. Poniżej znajduje się lista dostępnych metryk.
 
+Zapoznaj się z określonymi definicjami tych elementów, aby [poznać automatyczne wyniki uczenia maszynowego](how-to-understand-automated-ml.md).
+
 |Klasyfikacja | Regresji | Prognozowanie szeregów czasowych
 |-- |-- |--
 |accuracy| spearman_correlation | spearman_correlation
@@ -377,7 +379,7 @@ Użyj tych 2 interfejsów API w pierwszym kroku dopasowanego modelu, aby poznać
 
 + Interfejs API 1 `get_engineered_feature_names()` : zwraca listę nazw przytworzonych funkcji.
 
-  Sposób użycia:
+  Użycie:
   ```python
   fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
   ```
@@ -393,7 +395,7 @@ Użyj tych 2 interfejsów API w pierwszym kroku dopasowanego modelu, aby poznać
 
 + API 2: `get_featurization_summary()` zwraca podsumowanie cechowania dla wszystkich funkcji wejściowych.
 
-  Sposób użycia:
+  Użycie:
   ```python
   fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
   ```

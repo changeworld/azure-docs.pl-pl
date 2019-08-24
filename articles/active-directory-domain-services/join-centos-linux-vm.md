@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: iainfou
-ms.openlocfilehash: f28933623100ed18320df37741c7c1e82ccffa9f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 183f1190e4ccbd730600290305a5847f83853c39
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612851"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990743"
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>Przyłączanie maszyny wirtualnej z systemem CentOS Linux do domeny zarządzanej
 W tym artykule opisano sposób przyłączania maszyny wirtualnej z systemem CentOS Linux na platformie Azure do domeny zarządzanej Azure AD Domain Services.
@@ -84,7 +84,7 @@ Teraz, gdy wymagane pakiety są zainstalowane na maszynie wirtualnej z systemem 
 1. Odkryj domenę zarządzaną usług domenowych w usłudze AAD. W terminalu SSH wpisz następujące polecenie:
 
     ```console
-    sudo realm discover contoso.COM
+    sudo realm discover CONTOSO.COM
     ```
 
    > [!NOTE]
@@ -100,7 +100,7 @@ Teraz, gdy wymagane pakiety są zainstalowane na maszynie wirtualnej z systemem 
     > * Podaj nazwę domeny z dużymi literami, w przeciwnym razie narzędzie kinit nie powiedzie się.
 
     ```console
-    kinit bob@contoso.COM
+    kinit bob@CONTOSO.COM
     ```
 
 3. Dołącz komputer do domeny. W terminalu SSH wpisz następujące polecenie:
@@ -111,7 +111,7 @@ Teraz, gdy wymagane pakiety są zainstalowane na maszynie wirtualnej z systemem 
     > Jeśli maszyna wirtualna nie może przyłączyć się do domeny, upewnij się, że sieciowa Grupa zabezpieczeń maszyny wirtualnej zezwala na ruch wychodzący Kerberos na porcie TCP + UDP 464 do podsieci sieci wirtualnej dla domeny zarządzanej platformy Azure AD DS.
 
     ```console
-    sudo realm join --verbose contoso.COM -U 'bob@contoso.COM'
+    sudo realm join --verbose CONTOSO.COM -U 'bob@CONTOSO.COM'
     ```
 
 Po pomyślnym przyłączeniu komputera do domeny zarządzanej powinien zostać wyświetlony komunikat ("pomyślnie zarejestrowano maszynę w obszarze").
@@ -120,10 +120,10 @@ Po pomyślnym przyłączeniu komputera do domeny zarządzanej powinien zostać w
 ## <a name="verify-domain-join"></a>Weryfikuj przyłączanie do domeny
 Sprawdź, czy maszyna została pomyślnie przyłączona do domeny zarządzanej. Nawiąż połączenie z dołączoną do domeny maszyną wirtualną CentOS przy użyciu innego połączenia SSH. Użyj konta użytkownika domeny, a następnie sprawdź, czy konto użytkownika jest prawidłowo rozwiązane.
 
-1. W terminalu SSH wpisz następujące polecenie, aby nawiązać połączenie z przyłączoną do domeny maszyną wirtualną CentOS przy użyciu protokołu SSH. Użyj konta domeny, które należy do domeny zarządzanej (na przykład "bob@contoso.COM" w tym przypadku).
+1. W terminalu SSH wpisz następujące polecenie, aby nawiązać połączenie z przyłączoną do domeny maszyną wirtualną CentOS przy użyciu protokołu SSH. Użyj konta domeny, które należy do domeny zarządzanej (na przykład "bob@CONTOSO.COM" w tym przypadku).
     
     ```console
-    ssh -l bob@contoso.COM contoso-centos.contoso.com
+    ssh -l bob@CONTOSO.COM contoso-centos.contoso.com
     ```
 
 2. W terminalu SSH wpisz następujące polecenie, aby sprawdzić, czy katalog macierzysty został zainicjowany prawidłowo.

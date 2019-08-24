@@ -1,6 +1,6 @@
 ---
-title: Zbieranie i analizowanie dzienników zdarzeń Windows w usłudze Azure Monitor | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania zbierania dzienników zdarzeń Windows usługi Azure monitor i szczegółowe informacje o rekordy, które tworzą.
+title: Zbieranie i analizowanie dzienników zdarzeń systemu Windows w Azure Monitor | Microsoft Docs
+description: Opisuje sposób konfigurowania kolekcji dzienników zdarzeń systemu Windows przez Azure Monitor i szczegóły tworzonych przez nie rekordów.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,66 +13,69 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 8fcab1ead4ab6135e715dc173829178e43f8af2a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cc81a8d8023d0724f4ecb71c157e8f575aa9edc8
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60236906"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997473"
 ---
-# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Źródła danych dziennika zdarzeń Windows w usłudze Azure Monitor
-Dzienniki zdarzeń Windows są jedną z najbardziej typowych [źródeł danych](agent-data-sources.md) do zbierania danych przy użyciu agentów Windows, ponieważ wiele aplikacji zapisu w dzienniku zdarzeń Windows.  Oprócz określenia żadnych dzienników niestandardowych utworzone przez aplikacje, które są potrzebne do monitorowania może zbierać zdarzenia z dzienników standardowych, takich jak systemu i aplikacji.
+# <a name="windows-event-log-data-sources-in-azure-monitor"></a>Źródła danych dziennika zdarzeń systemu Windows w Azure Monitor
+Dzienniki zdarzeń systemu Windows to jedno z najpopularniejszych [źródeł danych](agent-data-sources.md) do zbierania danych przy użyciu agentów systemu Windows, ponieważ wiele aplikacji zapisuje w dzienniku zdarzeń systemu Windows.  Można zbierać zdarzenia z dzienników standardowych, takich jak system i aplikacja, oprócz określania dzienników niestandardowych utworzonych przez aplikacje, które mają być monitorowane.
 
 ![Zdarzenia systemu Windows](media/data-sources-windows-events/overview.png)     
 
-## <a name="configuring-windows-event-logs"></a>Dzienniki konfigurowanie zdarzeń Windows
-Skonfiguruj dzienniki zdarzeń Windows z [menu danych w zaawansowanych ustawieniach](agent-data-sources.md#configuring-data-sources).
+## <a name="configuring-windows-event-logs"></a>Konfigurowanie dzienników zdarzeń systemu Windows
+Skonfiguruj dzienniki zdarzeń systemu Windows z [menu dane w oknie Ustawienia zaawansowane](agent-data-sources.md#configuring-data-sources).
 
-Usługa Azure Monitor zbiera tylko zdarzenia z dzienników zdarzeń Windows, które są określone w ustawieniach.  Możesz dodać dziennik zdarzeń przez wpisanie nazwy dziennika, a następnie klikając polecenie **+** .  Dla każdego dziennika są zbierane tylko zdarzenia o ważności wybranych.  Zaznacz ważności dla określonego dziennika, które mają być zbierane.  Nie można podać wszelkie dodatkowe kryteria, aby filtrować zdarzenia.
+Azure Monitor zbiera tylko zdarzenia z dzienników zdarzeń systemu Windows, które są określone w ustawieniach.  Możesz dodać dziennik zdarzeń, wpisując nazwę dziennika, a następnie klikając pozycję **+** .  Dla każdego dziennika zbierane są tylko zdarzenia z wybranymi serwerami.  Sprawdź informacje o wykorzystaniu poszczególnych dzienników, które chcesz zebrać.  Nie można podać żadnych dodatkowych kryteriów filtrowania zdarzeń.
 
-Podczas wpisywania nazwy dziennika zdarzeń, usługi Azure Monitor zapewnia sugestie dotyczące nazw pospolitych dziennika zdarzeń. Jeśli dziennik, który chcesz dodać, nie ma na liście, możesz je dodać, wpisując pełną nazwę dziennika. Pełna nazwa dziennika można znaleźć za pomocą Podglądu zdarzeń. W Podglądzie zdarzeń, otwórz *właściwości* strony dziennika i skopiuj ciąg z *imię i nazwisko* pola.
+Podczas wpisywania nazwy dziennika zdarzeń Azure Monitor zawiera sugestie typowych nazw dzienników zdarzeń. Jeśli dziennik, który chcesz dodać, nie znajduje się na liście, możesz dodać go, wpisując pełną nazwę dziennika. Pełną nazwę dziennika można znaleźć za pomocą podglądu zdarzeń. W Podglądzie zdarzeń Otwórz stronę *Właściwości* dziennika i skopiuj ciąg z pola *pełna nazwa* .
 
-![Konfiguruj zdarzenia Windows](media/data-sources-windows-events/configure.png)
+![Konfigurowanie zdarzeń systemu Windows](media/data-sources-windows-events/configure.png)
+
+> [!NOTE]
+> Krytyczne zdarzenia w dzienniku zdarzeń systemu Windows będą mieć ważność "błąd" w dziennikach Azure Monitor.
 
 ## <a name="data-collection"></a>Zbieranie danych
-Usługa Azure Monitor umożliwia zbieranie informacji o każdego zdarzenia, które odpowiada wybranej ważności z monitorowanych dziennika zdarzeń, podczas tworzenia zdarzenia.  Agent rejestruje jej miejscu w każdym dzienniku zdarzeń, który zbiera z.  Jeśli agent przejdzie do trybu offline w okresie czasu, następnie zbiera zdarzenia z tam, gdzie ją ostatnia przerwaliśmy, nawet jeśli te zdarzenia zostały utworzone, gdy agent był w trybie offline.  Istnieje możliwość dla tych zdarzeń nie można pobrać, jeśli w dzienniku zdarzeń opakowuje ze zdarzeniami niepobranych zostaną zastąpione, gdy agent jest w trybie offline.
+Azure Monitor zbiera każde zdarzenie, które jest zgodne z wybraną ważnością z monitorowanego dziennika zdarzeń w miarę tworzenia zdarzenia.  Agent rejestruje swoje miejsce w dzienniku zdarzeń, z którego zbiera dane.  Jeśli Agent przejdzie w tryb offline przez pewien czas, zbiera zdarzenia z miejsca, w którym został on ostatnio pozostawiony, nawet jeśli te zdarzenia zostały utworzone, gdy agent był w trybie offline.  Istnieje możliwość, że te zdarzenia nie są zbierane, jeśli dziennik zdarzeń zostanie zawinięty przez zastępowanie niezebranych zdarzeń, gdy Agent jest w trybie offline.
 
 >[!NOTE]
->Usługa Azure Monitor nie są zbierane zdarzenia inspekcji utworzone przez program SQL Server ze źródła *MSSQLSERVER* z Identyfikatorem zdarzenia 18453, który zawiera słowa kluczowe — *klasycznego* lub *Sukces inspekcji* i słowo kluczowe *0xa0000000000000*.
+>Azure Monitor nie zbiera zdarzeń inspekcji utworzonych przez SQL Server ze źródłowego *MSSQLSERVER* z identyfikatorem zdarzenia 18453, który zawiera słowa kluczowe — *klasyczne* lub *inspekcji sukces* i *0xa0000000000000*słów kluczowych.
 >
 
-## <a name="windows-event-records-properties"></a>Właściwości rekordy zdarzeń Windows
-Rekordy zdarzeń Windows mają typ **zdarzeń** i mają właściwości podane w poniższej tabeli:
+## <a name="windows-event-records-properties"></a>Właściwości rekordów zdarzeń systemu Windows
+Rekordy zdarzeń systemu Windows mają typ **zdarzenia** i mają właściwości w poniższej tabeli:
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Computer (Komputer) |Nazwa komputera, na którym zostały zebrane zdarzenia. |
+| Computer |Nazwa komputera, z którego został zebrany zdarzenie. |
 | EventCategory |Kategoria zdarzenia. |
 | EventData |Wszystkie dane zdarzeń w formacie nieprzetworzonym. |
-| Identyfikator zdarzenia |Numer zdarzenia. |
-| eventLevel |Ważność zdarzenia w forma liczbowa. |
+| EventID |Liczba zdarzeń. |
+| EventLevel |Ważność zdarzenia w postaci numerycznej. |
 | EventLevelName |Ważność zdarzenia w postaci tekstu. |
-| Dziennik zdarzeń |Nazwa dziennika zdarzeń, które zostały zebrane zdarzenia. |
+| Elemencie |Nazwa dziennika zdarzeń, z którego zostały zebrane zdarzenia. |
 | ParameterXml |Wartości parametrów zdarzenia w formacie XML. |
-| ManagementGroupName |Nazwa grupy zarządzania agentów programu System Center Operations Manager.  W innych agentów ta wartość to `AOI-<workspace ID>` |
-| RenderedDescription |Opis zdarzenia przy użyciu wartości parametrów |
-| source |Źródło zdarzenia. |
-| SourceSystem |Typ agenta, które zostały zebrane zdarzenia. <br> Łączenie OpsManager — Windows agent, bezpośrednio lub zarządzania programu Operations Manager <br> Linux — Wszyscy agenci systemu Linux  <br> AzureStorage — Diagnostyka Azure |
-| TimeGenerated |Data i godzina utworzenia zdarzenia w Windows. |
-| UserName |Nazwa użytkownika konta, które są rejestrowane zdarzenia. |
+| ManagementGroupName |Nazwa grupy zarządzania dla agentów System Center Operations Manager.  W przypadku innych agentów ta wartość jest`AOI-<workspace ID>` |
+| RenderedDescription |Opis zdarzenia z wartościami parametrów |
+| Source |Źródło zdarzenia. |
+| SourceSystem |Typ agenta, z którego zostały zebrane zdarzenia. <br> OpsManager — Agent systemu Windows, bezpośrednie połączenie lub Operations Manager zarządzany <br> Linux — Wszyscy agenci systemu Linux  <br> AzureStorage — Diagnostyka Azure |
+| TimeGenerated |Data i godzina utworzenia zdarzenia w systemie Windows. |
+| UserName |Nazwa użytkownika konta, które zarejestrowało zdarzenie. |
 
-## <a name="log-queries-with-windows-events"></a>Dziennik zapytań ze zdarzeniami Windows
-Poniższa tabela zawiera przykłady różnych zapytań dziennika, które pobierają rekordy zdarzeń Windows.
+## <a name="log-queries-with-windows-events"></a>Rejestruj zapytania ze zdarzeniami systemu Windows
+W poniższej tabeli przedstawiono różne przykłady zapytań dzienników, które pobierają rekordy zdarzeń systemu Windows.
 
 | Zapytanie | Opis |
 |:---|:---|
-| Wydarzenie |Wszystkie zdarzenia Windows. |
-| Zdarzenie &#124; gdzie EventLevelName == "error" |Windows wszystkich zdarzeń o ważności błędu. |
-| Event &#124; summarize count() by Source |Liczba Windows zdarzenia według źródła. |
-| Event &#124; where EventLevelName == "error" &#124; summarize count() by Source |Zdarzenia błędu liczba Windows według źródła. |
+| Wydarzenie |Wszystkie zdarzenia systemu Windows. |
+| Zdarzenie &#124; , gdzie EventLevelName = = "Error" |Wszystkie zdarzenia systemu Windows o ważności błędu. |
+| Event &#124; summarize count() by Source |Liczba zdarzeń systemu Windows według źródła. |
+| Zdarzenie &#124; , gdzie EventLevelName = = "Error &#124; " Sumuj liczbę () według źródła |Liczba zdarzeń błędów systemu Windows według źródła. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
-* Skonfiguruj usługę Log Analytics do gromadzenia innych [źródeł danych](agent-data-sources.md) do analizy.
+## <a name="next-steps"></a>Następne kroki
+* Skonfiguruj Log Analytics, aby zbierać inne [źródła danych](agent-data-sources.md) na potrzeby analizy.
 * Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
-* Konfigurowanie [zbieranie liczników wydajności](data-sources-performance-counters.md) z agentów użytkownika Windows.
+* Skonfiguruj [kolekcję liczników wydajności](data-sources-performance-counters.md) z poziomu agentów systemu Windows.

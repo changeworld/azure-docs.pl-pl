@@ -1,6 +1,6 @@
 ---
-title: Tworzenie wyzwalaczy harmonogramu usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć wyzwalacz w usłudze Azure Data Factory, który uruchamia potok zgodnie z harmonogramem.
+title: Tworzenie wyzwalaczy harmonogramu w Azure Data Factory | Microsoft Docs
+description: Dowiedz się, jak utworzyć wyzwalacz w Azure Data Factory, który uruchamia potok zgodnie z harmonogramem.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -12,25 +12,25 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: 09f80f69857ae17a0136229fe9bf13d4f63e7096
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6b38e85994fc99272a649b9e529380cb953d1bca
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65151088"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996371"
 ---
-# <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Utwórz wyzwalacz, który uruchamia potok zgodnie z harmonogramem
-Ten artykuł zawiera informacje dotyczące wyzwalacza harmonogramu oraz instrukcje umożliwiające tworzenie, uruchamianie i monitorowanie wyzwalacza harmonogramu. Dla innych typów wyzwalaczy, zobacz [wyzwalacze i wykonywanie potoku](concepts-pipeline-execution-triggers.md).
+# <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Tworzenie wyzwalacza uruchamiającego potok zgodnie z harmonogramem
+Ten artykuł zawiera informacje na temat wyzwalacza harmonogramu oraz czynności służących do tworzenia, uruchamiania i monitorowania wyzwalacza harmonogramu. W przypadku innych typów wyzwalaczy zapoznaj się z tematem [wykonywanie i wyzwalacze potoku](concepts-pipeline-execution-triggers.md).
 
-Tworząc wyzwalacz harmonogramu, możesz określić harmonogram (Data, ponownego rozpoczęcia, zakończenia Data itp.) dla wyzwalacza i skojarzyć je z potoku. Między potokami i wyzwalaczami występuje relacja wiele-do-wielu. Wiele wyzwalaczy może uruchomić jeden potok. Jeden wyzwalacz może uruchamiać wiele potoków.
+Podczas tworzenia wyzwalacza harmonogramu należy określić harmonogram (datę rozpoczęcia, cykl, datę końcową itp.) dla wyzwalacza i skojarzyć z potokiem. Między potokami i wyzwalaczami występuje relacja wiele-do-wielu. Wiele wyzwalaczy może uruchomić jeden potok. Jeden wyzwalacz może uruchamiać wiele potoków.
 
-W poniższych sekcjach opisano kroki, aby utworzyć wyzwalacz harmonogramu na różne sposoby. 
+W poniższych sekcjach przedstawiono procedurę tworzenia wyzwalacza harmonogramu na różne sposoby. 
 
 ## <a name="data-factory-ui"></a>Interfejs użytkownika usługi Data Factory
-Możesz utworzyć **wyzwalacz harmonogramu** Aby zaplanować okresowe uruchamianie (co godzinę, codziennie itp.) potoku. 
+Można utworzyć **wyzwalacz harmonogramu** , aby zaplanować okresowe uruchamianie potoku (co godzinę, codziennie itd.). 
 
 > [!NOTE]
-> Aby uzyskać szczegółowy przewodnik tworzenia potoku i wyzwalacza harmonogramu, kojarzenie wyzwalacz potoku i uruchamiania i monitorowanie potoku, zobacz [Szybki Start: tworzenie fabryki danych przy użyciu interfejsu użytkownika usługi Data Factory](quickstart-create-data-factory-portal.md).
+> Aby uzyskać kompletny przewodnik tworzenia potoku i wyzwalacza harmonogramu, kojarzenia wyzwalacza z potokiem oraz uruchamiania i monitorowania potoku, zobacz [Szybki Start: Tworzenie fabryki danych przy użyciu interfejsu użytkownika Data Factory](quickstart-create-data-factory-portal.md).
 
 1. Przejdź do karty **Edycja**. 
 
@@ -41,24 +41,24 @@ Możesz utworzyć **wyzwalacz harmonogramu** Aby zaplanować okresowe uruchamian
 2. Na stronie **Dodawanie wyzwalaczy** kliknij pozycję **Wybierz wyzwalacz...** , a następnie kliknij przycisk **Nowy**. 
 
     ![Dodawanie wyzwalaczy — nowy wyzwalacz](./media/how-to-create-schedule-trigger/add-trigger-new-button.png)
-3. W **nowy wyzwalacz** wykonaj następujące czynności: 
+3. Na stronie **Nowy wyzwalacz** wykonaj następujące czynności: 
 
-    1. Upewnij się, że **harmonogram** wybrano **typu**. 
-    2. Określ datę i godzinę rozpoczęcia wyzwalacza dla **Start Data (UTC)** . Jego jest domyślnie do bieżącej daty/godziny. 
-    3. Określ **cyklu** wyzwalacza. Wybierz jedną z wartości z listy rozwijanej (co minutę, co godzinę, codziennie, co tydzień i co miesiąc). Mnożnik należy wprowadzić w polu tekstowym. Na przykład, jeśli chcesz, aby wyzwalacz, aby uruchomić jeden raz dla co 15 minut, wybrania **co minutę**, a następnie wprowadź **15** w polu tekstowym. 
-    4. Dla **zakończenia** pola, jeśli nie chcesz określić daty/godziny zakończenia dla wyzwalacza, wybierz opcję **zakończenia nie**. Koniec Data i godzina, zaznacz **w dniu**i określ daty/godziny zakończenia i kliknij **Zastosuj**. Z każdym uruchomieniem potoku wiąże się koszt. Jeśli testujesz, warto upewnić się, że potok jest wyzwalane tylko kilka razy. Upewnij się również, że okres między czasem publikowania i czasem zakończenia będzie wystarczający do uruchomienia potoku. Wyzwalacz zaczyna obowiązywać dopiero po opublikowaniu rozwiązania w fabryce Data Factory, a nie po zapisaniu go w interfejsie użytkownika.
+    1. Upewnij się, że wybrano **harmonogram** dla **typu**. 
+    2. Określ początkową datę i godzinę wyzwalacza dla **daty rozpoczęcia (UTC)** . Domyślnie ustawiono bieżącą datę i godzinę. 
+    3. Określ **cykl** dla wyzwalacza. Wybierz jedną z wartości z listy rozwijanej (co minutę, co godzinę, codziennie, co tydzień i co miesiąc). Wprowadź mnożnik w polu tekstowym. Na przykład jeśli wyzwalacz ma być uruchamiany raz przez co 15 minut, należy wybrać **co minutę**i wprowadzić wartość **15** w polu tekstowym. 
+    4. Jeśli nie chcesz określać końcowej daty i godziny dla wyzwalacza, wybierz pozycję **Brak Zakończ**. Aby określić datę i godzinę zakończenia, wybierz pozycję **Data**i Określ końcową datę i godzinę, a następnie kliknij przycisk **Zastosuj**. Z każdym uruchomieniem potoku wiąże się koszt. W przypadku testowania można upewnić się, że potok jest wyzwalany tylko kilka razy. Upewnij się również, że okres między czasem publikowania i czasem zakończenia będzie wystarczający do uruchomienia potoku. Wyzwalacz zaczyna obowiązywać dopiero po opublikowaniu rozwiązania w fabryce Data Factory, a nie po zapisaniu go w interfejsie użytkownika.
 
         ![Ustawienia wyzwalacza](./media/how-to-create-schedule-trigger/trigger-settings.png)
-4. W **nowy wyzwalacz** okno wyboru **aktywowano** opcji, a następnie kliknij przycisk **dalej**. To pole wyboru, można użyć później dezaktywować wyzwalacz. 
+4. W oknie **Nowy wyzwalacz** zaznacz opcję aktywowana , a następnie kliknij przycisk **dalej**. To pole wyboru służy do dezaktywowania wyzwalacza później. 
 
     ![Ustawienia wyzwalacza — przycisk Dalej](./media/how-to-create-schedule-trigger/trigger-settings-next.png)
 5. Na stronie **Nowy wyzwalacz** zapoznaj się z komunikatem ostrzegawczym, a następnie kliknij przycisk **Zakończ**.
 
     ![Ustawienia wyzwalacza — przycisk Zakończ](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
-6. Kliknij pozycję **Opublikuj**, aby opublikować zmiany w fabryce Data Factory. Dopóki nie opublikujesz zmian do usługi Data Factory wyzwalacz nie można uruchomić wyzwalanie uruchomienia potoku. 
+6. Kliknij pozycję **Opublikuj**, aby opublikować zmiany w fabryce Data Factory. Do momentu opublikowania zmian w Data Factory wyzwalacz nie rozpocznie uruchamiania uruchamiania potoków. 
 
     ![Przycisk Opublikuj](./media/how-to-create-schedule-trigger/publish-2.png)
-8. Przejdź do karty **Monitorowanie** po lewej stronie. Kliknij pozycję **Odśwież**, aby odświeżyć listę. Zobaczysz, że zostało wyzwolone za zaplanowane wyzwalanie uruchomienia potoku. Zwróć uwagę na wartości w kolumnie **Wyzwolone przez**. Jeśli używasz **Wyzwól teraz** wyświetlona wyzwalacza ręcznego uruchamiania na liście. 
+8. Przejdź do karty **Monitorowanie** po lewej stronie. Kliknij pozycję **Odśwież**, aby odświeżyć listę. Zostanie wyświetlone uruchomienie potoku wyzwalane przez zaplanowany wyzwalacz. Zwróć uwagę na wartości w kolumnie **Wyzwolone przez**. W przypadku użycia opcji **Wyzwól teraz** na liście zostanie wyświetlony wyzwalacz ręczny. 
 
     ![Monitorowanie wyzwolonych uruchomień](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
 9. Kliknij strzałkę w dół obok pozycji **Uruchomienia potoków**, aby przejść do widoku **Uruchomienia wyzwalacza**. 
@@ -69,12 +69,12 @@ Możesz utworzyć **wyzwalacz harmonogramu** Aby zaplanować okresowe uruchamian
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-W tej sekcji dowiesz się, jak tworzenie, uruchamianie i monitorowanie wyzwalacza harmonogramu za pomocą programu Azure PowerShell. Aby wyświetlić to przykład działa, najpierw przejść [Szybki Start: Tworzenie fabryki danych przy użyciu programu Azure PowerShell](quickstart-create-data-factory-powershell.md). Następnie dodaj następujący kod do metody głównej, która tworzy i uruchamia wyzwalacz harmonogramu, który jest uruchamiany co 15 minut. Wyzwalacz jest skojarzony z potoku o nazwie **Adfv2QuickStartPipeline** utworzonego w ramach tego przewodnika Szybki Start.
+W tej sekcji przedstawiono sposób użycia Azure PowerShell do tworzenia, uruchamiania i monitorowania wyzwalacza harmonogramu. Aby zobaczyć ten przykład pracy, najpierw przejdź do [przewodnika Szybki Start: Utwórz fabrykę danych przy użyciu Azure PowerShell](quickstart-create-data-factory-powershell.md). Następnie Dodaj następujący kod do metody Main, która tworzy i uruchamia wyzwalacz harmonogramu, który jest uruchamiany co 15 minut. Wyzwalacz jest skojarzony z potokiem o nazwie **Adfv2QuickStartPipeline** , który tworzysz w ramach przewodnika Szybki Start.
 
-1. Utwórz plik JSON o nazwie **MyTrigger.json** w folderze C:\ADFv2QuickStartPSH\ o następującej zawartości:
+1. Utwórz plik JSON o nazwie C:\ADFv2QuickStartPSH\ **. JSON** w folderze o następującej zawartości:
 
     > [!IMPORTANT]
-    > Przed zapisaniem pliku JSON, ustaw wartość **startTime** element do bieżącego czasu UTC. Ustaw wartość **endTime** element na jedną godzinę w przeszłości bieżący czas UTC.
+    > Przed zapisaniem pliku JSON ustaw wartość parametru **StartTime** na bieżący czas UTC. Ustaw wartość elementu **Endtime** na godzinę wcześniejszą od bieżącego czasu UTC.
 
     ```json   
     {
@@ -104,50 +104,50 @@ W tej sekcji dowiesz się, jak tworzenie, uruchamianie i monitorowanie wyzwalacz
     }
     ```
 
-    Ten fragment kodu JSON:
-    - **Typu** element wyzwalacza jest ustawiony na wartość "ScheduleTrigger."
-    - **Częstotliwość** element jest ustawiony na wartość "Minute" i **interwał** element jest ustawiony na wartość 15. W związku z tym wyzwalacz uruchamia potok co 15 minut od czasu rozpoczęcia i zakończenia.
-    - **EndTime** element jest jedną godzinę po wartości **startTime** elementu. W związku z tym wyzwalacz uruchamia potok 15 minut, 30 minut i 45 minut po czasie rozpoczęcia. Należy pamiętać zaktualizować godziny rozpoczęcia do bieżącego czasu UTC i czas zakończenia na jedną godzinę późniejsza niż godzina rozpoczęcia. 
-    - Wyzwalacz jest skojarzony z **Adfv2QuickStartPipeline** potoku. Aby skojarzyć wiele potoków z wyzwalacza, Dodaj więcej **pipelineReference** sekcje.
-    - Potok w opcji szybkiego startu przyjmuje dwa **parametry** wartości: **inputPath** i **outputPath**. W związku z tym należy przekazać wartości tych parametrów z wyzwalacza.
+    W fragmencie kodu JSON:
+    - Element **Type** wyzwalacza jest ustawiony na wartość "ScheduleTrigger".
+    - Element **częstotliwości** jest ustawiony na wartość "minuta", a element **Interval** ma wartość 15. W związku z tym wyzwalacz uruchamia potok co 15 minut między czasem rozpoczęcia i zakończenia.
+    - Element **Endtime** ma godzinę po wartości elementu **StartTime** . W związku z tym wyzwalacz uruchamia potok 15 minut, 30 minut i 45 minut po czasie rozpoczęcia. Nie zapomnij zaktualizować czasu rozpoczęcia do bieżącego czasu UTC i godziny zakończenia do godziny poza godziną rozpoczęcia. 
+    - Wyzwalacz jest skojarzony z potokiem **Adfv2QuickStartPipeline** . Aby skojarzyć wiele potoków z wyzwalaczem, Dodaj więcej sekcji **pipelineReference** .
+    - Potok w szybkim samouczku pobiera dwie wartości **parametrów** : **inputPath** i **outputPath**. W związku z tym, należy przekazać wartości tych parametrów z wyzwalacza.
 
-2. Tworzenie wyzwalacza za pomocą **AzDataFactoryV2Trigger zestaw** polecenia cmdlet:
+2. Utwórz wyzwalacz za pomocą polecenia cmdlet **Set-AzDataFactoryV2Trigger** :
 
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. Upewnij się, że jest w stanie wyzwalacz **zatrzymane** przy użyciu **Get AzDataFactoryV2Trigger** polecenia cmdlet:
+3. Upewnij się, że stan wyzwalacza został **zatrzymany** za pomocą polecenia cmdlet **Get-AzDataFactoryV2Trigger** :
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. Uruchom wyzwalacz za pomocą **Start AzDataFactoryV2Trigger** polecenia cmdlet:
+4. Uruchom wyzwalacz za pomocą polecenia cmdlet **Start-AzDataFactoryV2Trigger** :
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. Upewnij się, że jest w stanie wyzwalacz **uruchomiono** przy użyciu **Get AzDataFactoryV2Trigger** polecenia cmdlet:
+5. Upewnij się, że stan wyzwalacza został **uruchomiony** przy użyciu polecenia cmdlet **Get-AzDataFactoryV2Trigger** :
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6.  GET, o których uruchamiany jest wyzwalacz w programie Azure PowerShell przy użyciu **Get AzDataFactoryV2TriggerRun** polecenia cmdlet. Aby uzyskać informacje na temat uruchomienia wyzwalacza, wykonaj następujące polecenie okresowo. Aktualizacja **TriggerRunStartedAfter** i **TriggerRunStartedBefore** wartości odpowiadają wartościom w definicji wyzwalacza:
+6.  Pobierz wyzwalacz uruchomiony w Azure PowerShell przy użyciu polecenia cmdlet **Get-AzDataFactoryV2TriggerRun** . Aby uzyskać informacje o przebiegu wyzwalacza, należy wykonać następujące polecenie okresowo. Zaktualizuj wartości **TriggerRunStartedAfter** i **TriggerRunStartedBefore** w taki sposób, aby odpowiadały wartościom w definicji wyzwalacza:
 
     ```powershell
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
     ```
     
-    Aby monitorować wyzwalacz jest uruchamiany i uruchomienia potoków w witrynie Azure portal, zobacz [monitorowanie uruchomień potoku](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
+    Aby monitorować uruchomienia wyzwalacza i uruchomienia potoków w Azure Portal, zobacz [monitorowanie uruchomień potoków](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
 
 ## <a name="net-sdk"></a>Zestaw SDK .NET
-W tej sekcji dowiesz się, jak tworzenie, uruchamianie i monitorowanie wyzwalacz za pomocą zestawu .NET SDK. Aby wyświetlić to przykład działa, najpierw przejść [Szybki Start: Tworzenie fabryki danych przy użyciu zestawu .NET SDK](quickstart-create-data-factory-dot-net.md). Następnie dodaj następujący kod do metody głównej, która tworzy i uruchamia wyzwalacz harmonogramu, który jest uruchamiany co 15 minut. Wyzwalacz jest skojarzony z potoku o nazwie **Adfv2QuickStartPipeline** utworzonego w ramach tego przewodnika Szybki Start.
+W tej sekcji pokazano, jak utworzyć, uruchomić i monitorować wyzwalacz przy użyciu zestawu .NET SDK. Aby zobaczyć ten przykład pracy, najpierw przejdź do [przewodnika Szybki Start: Utwórz fabrykę danych przy użyciu zestawu .NET SDK](quickstart-create-data-factory-dot-net.md). Następnie Dodaj następujący kod do metody Main, która tworzy i uruchamia wyzwalacz harmonogramu, który jest uruchamiany co 15 minut. Wyzwalacz jest skojarzony z potokiem o nazwie **Adfv2QuickStartPipeline** , który tworzysz w ramach przewodnika Szybki Start.
 
-Aby utworzyć i uruchomić wyzwalacz harmonogramu, który jest uruchamiany co 15 minut, Dodaj następujący kod do metody głównej:
+Aby utworzyć i uruchomić wyzwalacz harmonogramu, który jest uruchamiany co 15 minut, Dodaj następujący kod do metody Main:
 
 ```csharp
             // Create the trigger
@@ -197,7 +197,7 @@ Aby utworzyć i uruchomić wyzwalacz harmonogramu, który jest uruchamiany co 15
             client.Triggers.Start(resourceGroup, dataFactoryName, triggerName);
 ```
 
-Aby monitorować uruchomienie wyzwalacza, Dodaj następujący kod przed ostatnią `Console.WriteLine` instrukcji w przykładzie:
+Aby monitorować uruchomienie wyzwalacza, Dodaj następujący kod przed ostatnią `Console.WriteLine` instrukcją w przykładzie:
 
 ```csharp
             // Check that the trigger runs every 15 minutes
@@ -221,11 +221,11 @@ Aby monitorować uruchomienie wyzwalacza, Dodaj następujący kod przed ostatni�
             }
 ```
 
-Aby monitorować wyzwalacz jest uruchamiany i uruchomienia potoków w witrynie Azure portal, zobacz [monitorowanie uruchomień potoku](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
+Aby monitorować uruchomienia wyzwalacza i uruchomienia potoków w Azure Portal, zobacz [monitorowanie uruchomień potoków](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
 
 ## <a name="python-sdk"></a>Zestaw SDK dla języka Python
-W tej sekcji dowiesz się, jak tworzenie, uruchamianie i monitorowanie wyzwalacz za pomocą zestawu SDK języka Python. Aby wyświetlić to przykład działa, najpierw przejść [Szybki Start: Tworzenie fabryki danych przy użyciu zestawu SDK języka Python](quickstart-create-data-factory-python.md). Następnie dodaj następujący blok kodu po bloku kodu "Monitorowanie uruchomienia potoku" w skrypcie języka Python. Ten kod tworzy wyzwalacz harmonogramu, który jest uruchamiany co 15 minut od określonego czasu rozpoczęcia i zakończenia. Aktualizacja **godzina_rozpoczęcia** zmienną bieżący czas UTC i **end_time** zmienną na jedną godzinę w przeszłości bieżący czas UTC.
+W tej sekcji pokazano, jak używać zestawu SDK języka Python do tworzenia, uruchamiania i monitorowania wyzwalacza. Aby zobaczyć ten przykład pracy, najpierw przejdź do [przewodnika Szybki Start: Utwórz fabrykę danych przy użyciu zestawu SDK](quickstart-create-data-factory-python.md)języka Python. Następnie Dodaj następujący blok kodu po bloku kod "Monitoruj uruchomienie potoku" w skrypcie języka Python. Ten kod tworzy wyzwalacz harmonogramu, który jest uruchamiany co 15 minut między określonymi godzinami rozpoczęcia i zakończenia. Zaktualizuj zmienną **start_time** do bieżącego czasu UTC, a zmienna **end_time** na godzinę wcześniejszą od bieżącego czasu UTC.
 
 ```python
     # Create a trigger
@@ -242,24 +242,22 @@ W tej sekcji dowiesz się, jak tworzenie, uruchamianie i monitorowanie wyzwalacz
     adf_client.triggers.start(rg_name, df_name, tr_name)
 ```
 
-Aby monitorować wyzwalacz jest uruchamiany i uruchomienia potoków w witrynie Azure portal, zobacz [monitorowanie uruchomień potoku](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
+Aby monitorować uruchomienia wyzwalacza i uruchomienia potoków w Azure Portal, zobacz [monitorowanie uruchomień potoków](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 
 ## <a name="azure-resource-manager-template"></a>Szablon usługi Azure Resource Manager
-Aby utworzyć wyzwalacz, można użyć szablonu usługi Azure Resource Manager. Aby uzyskać instrukcje krok po kroku, zobacz [Tworzenie usługi Azure data factory przy użyciu szablonu usługi Resource Manager](quickstart-create-data-factory-resource-manager-template.md).  
+Aby utworzyć wyzwalacz, można użyć szablonu Azure Resource Manager. Aby uzyskać instrukcje krok po kroku, zobacz [Tworzenie fabryki danych Azure przy użyciu szablonu Menedżer zasobów](quickstart-create-data-factory-resource-manager-template.md).  
 
-## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>Przekaż godzina rozpoczęcia dla wyzwalacza do potoku
-Usługa Azure Data Factory w wersji 1 obsługuje Odczyt lub zapis danych podzielonych na partycje za pomocą zmiennych systemowych: **SliceStart**, **SliceEnd**, **WindowStart**, i **WindowEnd**. W bieżącej wersji usługi Azure Data Factory to zachowanie można osiągnąć za pomocą parametru potoku. Czas rozpoczęcia i czas zaplanowanego wyzwalacza są ustawiane jako wartość parametru potoku. W poniższym przykładzie zaplanowanym terminie wyzwalacza jest przekazywany jako wartość do potoku **scheduledRunTime** parametru:
+## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>Przekaż czas rozpoczęcia wyzwalacza do potoku
+Azure Data Factory wersja 1 obsługuje odczytywanie lub zapisywanie danych partycjonowanych przy użyciu zmiennych systemowych: **Parametru slicestart**, **SliceEnd**, **WindowStart**i **WindowEnd**. W bieżącej wersji Azure Data Factory można osiągnąć takie zachowanie przy użyciu parametru potoku. Czas rozpoczęcia i zaplanowany czas dla wyzwalacza są ustawiane jako wartość parametru potoku. W poniższym przykładzie zaplanowany czas dla wyzwalacza jest przenoszona jako wartość do parametru **scheduledRunTime** potoku:
 
 ```json
 "parameters": {
     "scheduledRunTime": "@trigger().scheduledTime"
 }
-```    
-
-Aby uzyskać więcej informacji, zobacz instrukcje w [jak Odczyt lub zapis partycjonowania danych](how-to-read-write-partitioned-data.md).
+```
 
 ## <a name="json-schema"></a>Schemat JSON
-Poniższą definicję formatu JSON dowiesz się, jak utworzyć wyzwalacz harmonogramu za pomocą harmonogramu i cyklu:
+Poniższa definicja JSON pokazuje, jak utworzyć wyzwalacz harmonogramu z harmonogramem i cyklem:
 
 ```json
 {
@@ -325,11 +323,11 @@ Poniższa tabela zawiera ogólne omówienie głównych elementów schematu odnos
 
 ### <a name="schema-defaults-limits-and-examples"></a>Wartości domyślne, limity i przykłady harmonogramów
 
-| Właściwość JSON | Typ | Wymagane | Wartość domyślna | Prawidłowe wartości | Przykład |
+| Właściwość JSON | Type | Wymagane | Wartość domyślna | Prawidłowe wartości | Przykład |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | String | Tak | Brak | Daty i godziny ISO-8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
-| **recurrence** | Object | Yes | Brak | Obiekt cyklu | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
-| **interval** | Liczba | Nie | 1 | Od 1 do 1000 | `"interval":10` |
+| **recurrence** | Object | Tak | Brak | Obiekt cyklu | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **interval** | Number | Nie | 1 | Od 1 do 1000 | `"interval":10` |
 | **endTime** | String | Tak | Brak | Wartość daty i godziny reprezentująca godzinę w przyszłości. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | Object | Nie | Brak | Obiekt harmonogramu | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
@@ -364,7 +362,7 @@ W poniższej tabeli opisano szczegółowo elementy właściwości **schedule**:
 | **minutes** | Minuty godziny, o których uruchamiany jest wyzwalacz. | <ul><li>Integer</li><li>Tablica liczb całkowitych</li></ul>
 | **hours** | Godziny dnia, o których uruchamiany jest wyzwalacz. | <ul><li>Integer</li><li>Tablica liczb całkowitych</li></ul> |
 | **weekDays** | Dni tygodnia, w których uruchamiany jest wyzwalacz. Wartość można określić tylko z częstotliwością tygodniową. | <ul><li>Monday, Tuesday, Wednesday, Thursday, Friday, Saturday lub Sunday</li><li>Tablica wartości dni (maksymalny rozmiar tablicy to 7)</li><li>W wartościach dni nie są uwzględniane wielkości liter</li></ul> |
-| **monthlyOccurrences** | Dni miesiąca, w których uruchamiany jest wyzwalacz. Wartość można określić tylko z częstotliwością miesięczną. | <ul><li>Tablica **monthlyOccurrence** obiektów: `{ "day": day,  "occurrence": occurrence }`.</li><li>Atrybut **day** jest dniem tygodnia, w którym uruchamiany jest wyzwalacz. Na przykład właściwość **monthlyOccurrences** o wartości **day** wynoszącej `{Sunday}` oznacza każdą niedzielę miesiąca. Atrybut **day** jest wymagany.</li><li>Atrybut **occurence** jest wystąpieniem określonej wartości **day** w miesiącu. Na przykład właściwość **monthlyOccurrences** o wartościach **day** i **occurence** wynoszących `{Sunday, -1}` oznacza ostatnią niedzielę miesiąca. Atrybut **occurence** jest opcjonalny.</li></ul> |
+| **monthlyOccurrences** | Dni miesiąca, w których uruchamiany jest wyzwalacz. Wartość można określić tylko z częstotliwością miesięczną. | <ul><li>Tablica obiektów **monthlyOccurrence** : `{ "day": day,  "occurrence": occurrence }`.</li><li>Atrybut **day** jest dniem tygodnia, w którym uruchamiany jest wyzwalacz. Na przykład właściwość **monthlyOccurrences** o wartości **day** wynoszącej `{Sunday}` oznacza każdą niedzielę miesiąca. Atrybut **day** jest wymagany.</li><li>Atrybut **occurence** jest wystąpieniem określonej wartości **day** w miesiącu. Na przykład właściwość **monthlyOccurrences** o wartościach **day** i **occurence** wynoszących `{Sunday, -1}` oznacza ostatnią niedzielę miesiąca. Atrybut **occurence** jest opcjonalny.</li></ul> |
 | **monthDays** | Dzień miesiąca, w którym uruchamiany jest wyzwalacz. Wartość można określić tylko z częstotliwością miesięczną. | <ul><li>Dowolna wartość <= -1 i >= -31</li><li>Dowolna wartość >= 1 i <= 31</li><li>Tablica wartości</li></ul> |
 
 
@@ -403,5 +401,5 @@ W przykładach założono, ze wartość właściwości **interval** wynosi 1 ora
 | `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | Uruchamiany o godz. 5:15, 5:45, 17:15 i 17:45 w trzecią środę każdego miesiąca. |
 
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać szczegółowe informacje na temat wyzwalaczy, zobacz [wyzwalacze i wykonywanie potoku](concepts-pipeline-execution-triggers.md#triggers).
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać szczegółowe informacje na temat wyzwalaczy, zobacz [wykonywanie i wyzwalacze potoku](concepts-pipeline-execution-triggers.md#triggers).

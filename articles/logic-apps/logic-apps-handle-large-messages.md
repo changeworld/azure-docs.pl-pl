@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: 4a37345cf33cbb02a6bd9a70b0253a55ee4c9478
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ed086c4c36711f92ba654a64856b43a5fdaadf5f
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035586"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69989920"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Obsługa dużych komunikatów z fragmentacją w Azure Logic Apps
 
@@ -128,7 +128,7 @@ W tych krokach opisano szczegółowy proces Logic Apps używany do przekazywania
    | Pole nagłówka odpowiedzi punktu końcowego | Type | Wymagane | Opis |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | Integer | Nie | Sugerowany rozmiar fragmentu w bajtach |
-   | **Location** | String | Nie | Lokalizacja adresu URL, w której mają zostać wysłane komunikaty poprawek HTTP |
+   | **Location** | String | Tak | Lokalizacja adresu URL, w której mają zostać wysłane komunikaty poprawek HTTP |
    ||||
 
 3. Aplikacja logiki tworzy i wysyła komunikaty poprawek protokołu HTTP z monitami o następujące informacje:

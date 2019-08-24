@@ -10,39 +10,38 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 08/14/2019
-ms.openlocfilehash: e53cd92a9dfd8f823918fb38e14c2b73c2ce071f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 01228dc01b8006a0a2476ddbbd6fa8ff430e280a
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534382"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982757"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Samouczek: Tworzenie pierwszego modelu klasyfikacji przy użyciu automatycznej uczenia maszynowego
 
 W tym samouczku dowiesz się, jak utworzyć pierwszy zautomatyzowany eksperyment uczenia maszynowego w Azure Portal (wersja zapoznawcza) bez konieczności pisania pojedynczego wiersza kodu. Ten przykład tworzy model klasyfikacji, aby przewidzieć, czy klient zasubskrybuje stały termin wpłaty z instytucją finansową.
 
-Korzystając z funkcji automatycznego uczenia maszynowego usługi Azure Machine Learning i Azure Portal, rozpocznie się proces automatycznego uczenia maszynowego. Wybór algorytmu i dostrajanie parametrów są wykonywane. Technika zautomatyzowanego uczenia maszynowego wykonuje iterację wielu kombinacji algorytmów i hiperparametrów aż do momentu znalezienia najlepszego modelu na podstawie podanego kryterium.
+Dzięki zautomatyzowanej usłudze Machine Learning można zautomatyzować czasochłonne zadania. Automatyczne Uczenie maszynowe szybko iteruje wiele kombinacji algorytmów i parametrów, aby ułatwić znalezienie najlepszego modelu w oparciu o pomyślną metrykę wybrania.
 
-W tym samouczku nauczysz się wykonywać następujące zadania:
+W tym samouczku dowiesz się, jak wykonywać następujące zadania:
 
 > [!div class="checklist"]
-> * Konfigurowanie obszaru roboczego usługi Azure Machine Learning.
-> * Utwórz eksperyment.
-> * Autouczenie modelu klasyfikacji.
-> * Wyświetl szczegóły przebiegu szkoleniowego.
+> * Utwórz obszar roboczy usługi Azure Machine Learning.
+> * Uruchom zautomatyzowany eksperyment uczenia maszynowego.
+> * Wyświetl szczegóły eksperymentu.
 > * Wdróż model.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://aka.ms/AMLFree).
 
-* Pobierz plik danych [ **bankmarketing_train. csv** ](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) . Kolumna **y** wskazuje, czy klient subskrybuje stały termin wpłaty, który jest później zidentyfikowany jako kolumna docelowa dla prognoz w tym samouczku. 
+* Pobierz plik danych [**bankmarketing_train. csv**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) . Kolumna **y** wskazuje, czy klient subskrybuje stały termin wpłaty, który jest później zidentyfikowany jako kolumna docelowa dla prognoz w tym samouczku. 
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-## <a name="create-an-experiment"></a>Tworzenie eksperymentu
+## <a name="create-and-run-the-experiment"></a>Tworzenie i uruchamianie eksperymentu
 
 Te kroki przeprowadzą Cię przez proces eksperymentowania skonfigurowany z wyboru danych, aby wybrać podstawową metrykę i typ modelu. 
 
@@ -50,8 +49,6 @@ Te kroki przeprowadzą Cię przez proces eksperymentowania skonfigurowany z wybo
 Zobaczysz ekran " **Witamy w Machine Learning zautomatyzowanym** ", ponieważ jest to pierwszy eksperyment z automatycznym Machine Learningem.
 
     ![Azure Portal okienku nawigacji](media/tutorial-1st-experiment-automated-ml/nav-pane.png)
-
-
 
 1. Wybierz pozycję **Utwórz eksperyment**. Następnie wprowadź **My-1-automl-eksperyment** jako nazwę eksperymentu.
 
@@ -72,14 +69,11 @@ Zobaczysz ekran " **Witamy w Machine Learning zautomatyzowanym** ", ponieważ je
 
 1. Wybierz pozycję **Przekaż** i wybierz plik **bankmarketing_train. csv** z komputera lokalnego, aby przekazać go do domyślnego kontenera. Publiczna wersja zapoznawcza obsługuje tylko lokalne operacje przekazywania plików i konta usługi Azure Blob Storage. Po zakończeniu przekazywania wybierz plik z listy. 
 
-    [![Wybierz plik danych](media/tutorial-1st-experiment-automated-ml/select-data-file.png)](media/tutorial-1st-experiment-automated-ml/select-data-file-expanded.png#lightbox)
-
 1. Karta **Podgląd** pozwala na dalsze Konfigurowanie naszych danych dla tego eksperymentu.
 
     Na karcie **Podgląd** wskaż, że dane obejmują nagłówki. Usługa domyślnie zawiera wszystkie funkcje (kolumny) do szkoleń. Na potrzeby tego przykładu przewiń w prawo i **zignoruj** funkcję **day_of_week** .
 
     ![Konfiguracja karty podglądu](media/tutorial-1st-experiment-automated-ml/preview-tab-config.gif)
-
 
     >[!NOTE]
     > Profilowanie danych nie jest dostępne w przypadku obliczeń z nieminimalnymi węzłami o wartości zero.
@@ -103,9 +97,7 @@ Zobaczysz ekran " **Witamy w Machine Learning zautomatyzowanym** ", ponieważ je
 
 1. Wybierz pozycję **Rozpocznij** , aby uruchomić eksperyment.
 
-   Po rozpoczęciu eksperymentu zobaczysz pusty ekran **szczegóły uruchamiania** z następującym stanem u góry. 
-
-      ![Uruchom przygotowywanie](media/tutorial-1st-experiment-automated-ml/run-preparing.png)
+   Po rozpoczęciu eksperymentu zobaczysz pusty ekran **szczegóły uruchamiania** z następującym stanem u góry.
       
 Proces przygotowywania eksperymentu trwa kilka minut. Po zakończeniu procesu zostanie wyświetlony komunikat o stanie " **uruchomiony**".
 
@@ -137,11 +129,9 @@ W tym kontekście eksperymentu **VotingEnsemble** jest uznawany za najlepszy mod
     
 1. Wybierz pozycję **Wdróż**.
 
-    Po pomyślnym zakończeniu wdrożenia zostanie wyświetlony następujący komunikat:
-
-    ![Zakończono wdrożenie](media/tutorial-1st-experiment-automated-ml/deploy-complete-status.png)
+    Po pomyślnym zakończeniu wdrażania zostanie wyświetlony komunikat o ukończeniu wdrożenia.
     
-    Teraz masz działającą usługę sieci Web do generowania prognoz.
+Teraz masz działającą usługę sieci Web do generowania prognoz.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -167,7 +157,6 @@ W tym samouczku zautomatyzowanym uczenia maszynowego Azure Portal utworzyć i wd
 
 > [!div class="nextstepaction"]
 > [Korzystanie z usługi sieci Web](how-to-consume-web-service.md)
-
 
 + Dowiedz się więcej na temat [przetwarzania wstępnego](how-to-create-portal-experiments.md#preprocess).
 + Dowiedz się więcej na temat [profilowania danych](how-to-create-portal-experiments.md#profile).

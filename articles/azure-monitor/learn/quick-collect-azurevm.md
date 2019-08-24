@@ -1,5 +1,5 @@
 ---
-title: Zbieranie danych dotyczących infrastruktury Azure Virtual Machines | Microsoft Docs
+title: Zbieranie danych z maszyny wirtualnej platformy Azure za pomocą Azure Monitor | Microsoft Docs
 description: Dowiedz się, jak włączyć rozszerzenie agenta usługi Log Analytics dla maszyn wirtualnych i umożliwić zbieranie danych z maszyn wirtualnych platformy Azure za pomocą usługi Log Analytics.
 services: log-analytics
 documentationcenter: log-analytics
@@ -14,16 +14,16 @@ ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 1a61c0f96f62712bbd2500b2e80fd08565990bbe
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8e44908baea506efa488899c90e9022acc6e30b8
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874908"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992151"
 ---
-# <a name="collect-data-about-azure-virtual-machines"></a>Zbieranie danych o maszynach wirtualnych platformy Azure
+# <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Zbieranie danych z maszyny wirtualnej platformy Azure za pomocą Azure Monitor
 
-Usługa [Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md) umożliwia zbieranie danych bezpośrednio z maszyn wirtualnych platformy Azure i innych zasobów w środowisku do pojedynczego repozytorium na potrzeby szczegółowej analizy i korelacji. W tym przewodniku Szybki start opisano, jak w kilku krokach skonfigurować i rozpocząć zbieranie danych z maszyn wirtualnych platformy Azure z systemem Linux lub Windows.  
+[Azure monitor](../overview.md) może zbierać dane bezpośrednio z maszyn wirtualnych platformy Azure w obszarze roboczym log Analytics w celu uzyskania szczegółowej analizy i korelacji. Zainstalowanie rozszerzenia Log Analytics VM dla [systemów Windows](../../virtual-machines/extensions/oms-windows.md) i [Linux](../../virtual-machines/extensions/oms-linux.md) umożliwia Azure monitor zbieranie danych z maszyn wirtualnych platformy Azure. W tym przewodniku szybki start pokazano, jak skonfigurować i zbierać dane z maszyn wirtualnych z systemem Linux lub Windows przy użyciu rozszerzenia maszyny wirtualnej z kilkoma prostymi krokami.  
  
 W tym przewodniku Szybki start przyjęto założenie, że masz już maszynę wirtualną platformy Azure. Jeśli jeszcze jej nie masz, możesz [utworzyć maszynę wirtualną z systemem Windows](../../virtual-machines/windows/quick-create-portal.md) lub [utworzyć maszynę wirtualną z systemem Linux](../../virtual-machines/linux/quick-create-cli.md), wykonując czynności opisane w przewodnikach Szybki start dotyczących maszyn wirtualnych.
 
@@ -33,7 +33,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](http
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
-1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
+1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **log Analytics obszary robocze**.
 
     ![Azure Portal](media/quick-collect-azurevm/azure-portal-01.png)<br>  
 
@@ -55,7 +55,7 @@ Podczas weryfikowania informacji i tworzenia obszaru roboczego możesz śledzić
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-W przypadku wdrożonych już na platformie Azure maszyn wirtualnych z systemem Windows i Linux agent usługi Log Analytics jest instalowany za pomocą rozszerzenia Log Analytics VM Extension. Użycie tego rozszerzenia upraszcza proces instalacji i automatycznie konfiguruje agenta do przesyłania danych do określonego obszaru roboczego usługi Log Analytics. Agent jest również automatycznie uaktualniany, co zapewnia, że posiadane funkcje i poprawki są zawsze najnowsze. Przed kontynuowaniem sprawdź, czy maszyna wirtualna działa. W przeciwnym razie proces zakończy się niepowodzeniem.  
+W przypadku wdrożonych już na platformie Azure maszyn wirtualnych z systemem Windows i Linux agent usługi Log Analytics jest instalowany za pomocą rozszerzenia Log Analytics VM Extension. Użycie tego rozszerzenia upraszcza proces instalacji i automatycznie konfiguruje agenta do przesyłania danych do określonego obszaru roboczego usługi Log Analytics. Agent jest również automatycznie uaktualniany po wydaniu nowszej wersji, co gwarantuje, że masz najnowsze funkcje i poprawki. Przed kontynuowaniem sprawdź, czy maszyna wirtualna działa. W przeciwnym razie proces zakończy się niepowodzeniem.  
 
 >[!NOTE]
 >Agenta usługi Log Analytics dla systemu Linux nie można skonfigurować w taki sposób, aby przesyłał raporty do więcej niż jednego obszaru roboczego usługi Log Analytics. 
@@ -74,7 +74,7 @@ W przypadku wdrożonych już na platformie Azure maszyn wirtualnych z systemem W
 
 ## <a name="collect-event-and-performance-data"></a>Zbieranie danych zdarzeń i wydajności
 
-Usługa Log Analytics może zbierać zdarzenia z dzienników zdarzeń systemu Windows lub dzienników Syslog systemu Linux oraz z liczników wydajności określonych na potrzeby analizy i raportowania w dłuższym okresie po wykryciu określonego warunku. Wykonaj następujące kroki, aby skonfigurować zbieranie zdarzeń z dziennika zdarzeń systemu Windows i dziennika Syslog systemu Linux oraz na początek z kilku typowych liczników wydajności.  
+Azure Monitor może zbierać zdarzenia z dzienników zdarzeń systemu Windows lub dziennika systemowego Linux oraz liczników wydajności określonych na potrzeby analizy i raportowania w dłuższym czasie i podejmować działania w przypadku wykrycia określonego warunku. Wykonaj następujące kroki, aby skonfigurować zbieranie zdarzeń z dziennika zdarzeń systemu Windows i dziennika Syslog systemu Linux oraz na początek z kilku typowych liczników wydajności.  
 
 ### <a name="data-collection-from-windows-vm"></a>Zbieranie danych z maszyny wirtualnej z systemem Windows
 
@@ -124,15 +124,15 @@ Usługa Log Analytics może zbierać zdarzenia z dzienników zdarzeń systemu Wi
 
 Teraz, po włączeniu zbierania danych, uruchomimy proste przykładowe wyszukiwanie w dziennikach, aby wyświetlić dane z docelowych maszyn wirtualnych.  
 
-1. W witrynie Azure Portal przejdź do usługi Log Analytics i wybierz utworzony wcześniej obszar roboczy.
+1. W wybranym obszarze roboczym w okienku po lewej stronie wybierz pozycję **dzienniki**.
 
-2. Wybierz kafelek **przeszukiwanie dzienników** i w okienku przeszukiwanie dzienników w polu zapytanie wpisz `Perf` , a następnie naciśnij klawisz ENTER lub wybierz przycisk wyszukiwania z prawej strony pola zapytania.
+2. Na stronie kwerendy dzienników wpisz `Perf` w edytorze zapytań i wybierz polecenie **Uruchom**.
 
-    ![Przykład zapytania dotyczącego przeszukiwania dzienników w usłudze Log Analytics](./media/quick-collect-azurevm/log-analytics-portal-perf-query.png) 
+    ![Przykład zapytania dotyczącego przeszukiwania dzienników w usłudze Log Analytics](./media/quick-collect-windows-computer/log-analytics-portal-queryexample.png) 
 
-Na przykład zapytanie na poniższej ilustracji zwróciło 735 rekordów wydajności.  W Twoim przypadku wyników będzie znacznie mniej.
+    Na przykład zapytanie na poniższej ilustracji zwróciło 10 000 rekordów wydajności. W Twoim przypadku wyników będzie znacznie mniej.
 
-![Wynik przeszukiwania dzienników w usłudze Log Analytics](media/quick-collect-azurevm/log-analytics-search-perf.png)
+    ![Wynik przeszukiwania dzienników w usłudze Log Analytics](media/quick-collect-azurevm/log-analytics-search-perf.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

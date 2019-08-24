@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: abc09ac1a13537c31fe96fae14edefd0d06b6aef
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: fab65828228bdea8f0367f8928b83934bf0a7a4f
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880256"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995871"
 ---
 # <a name="azure-iot-central-architecture-preview-features"></a>Architektura usługi Azure IoT Central (funkcje w wersji zapoznawczej)
 
@@ -73,7 +73,7 @@ W aplikacji IoT Central platformy Azure szablony urządzeń określają zachowan
 
 W IoT Central szablonu urządzenia aplikacji w wersji zapoznawczej:
 
-- **Modele możliwości urządzeń** określają możliwości urządzenia, takie jak dane telemetryczne, które wysyła, właściwości definiujące stan urządzenia i polecenia, na które odpowiada urządzenie. Możliwości urządzenia są zorganizowane w jeden lub więcej interfejsów. Aby uzyskać więcej informacji na temat modeli możliwości urządzeń, zobacz dokumentację usługi [IoT Plug and Play](https://aka.ms/iot-pnp-docs) .
+- **Modele możliwości urządzeń** określają możliwości urządzenia, takie jak dane telemetryczne, które wysyła, właściwości definiujące stan urządzenia i polecenia, na które odpowiada urządzenie. Możliwości urządzenia są zorganizowane w jeden lub więcej interfejsów. Aby uzyskać więcej informacji na temat modeli możliwości urządzeń, zobacz dokumentację usługi [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md) .
 - **Właściwości chmury** określają właściwości IoT Central magazynów dla urządzenia. Te właściwości są przechowywane tylko w IoT Central i nigdy nie są wysyłane do urządzenia.
 - **Widoki** umożliwiają określanie pulpitów nawigacyjnych i formularzy tworzonych przez konstruktora, aby umożliwić operatorowi monitorowanie urządzeń i zarządzanie nimi.
 - **Dostosowania** pozwalają konstruktorowi zastąpić niektóre definicje w modelu możliwości urządzenia, aby zwiększyć ich znaczenie do aplikacji IoT Central.

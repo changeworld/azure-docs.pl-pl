@@ -1,5 +1,5 @@
 ---
-title: Jak zarządzać usługą zarządzania certyfikatami magazynu OPC — Azure | Microsoft Docs
+title: Jak zarządzać usługą certyfikatów magazynu OPC — Azure | Microsoft Docs
 description: Zarządzanie certyfikatami głównego urzędu certyfikacji magazynu OPC i uprawnieniami użytkownika.
 author: mregen
 ms.author: mregen
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 6e53914b16bc126cdab7300d918dbb7b6b868728
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 4420e5b0d895f8ea30dbd39fc50dd7480d57d086
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973807"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995993"
 ---
-# <a name="how-to-manage-the-opc-ua-certificate-service"></a>Jak zarządzać usługą certyfikatów OPC UA
+# <a name="how-to-manage-the-opc-vault-certificate-service"></a>Jak zarządzać usługą certyfikatów magazynu OPC
 
-W tym artykule wyjaśniono zadania administracyjne dotyczące usługi zarządzania certyfikatami OPC UA na platformie Azure, jak odnowić certyfikaty urzędu certyfikacji wystawcy, jak odnowić listę odwołania certyfikatów (CRL) i sposób udzielania dostępu do użytkowników oraz odwoływania się do nich.
+W tym artykule wyjaśniono zadania administracyjne dotyczące usługi zarządzania certyfikatami magazynu OPC na platformie Azure, jak odnowić certyfikaty urzędu certyfikacji wystawcy, jak odnowić listę odwołania certyfikatów (CRL) i sposób udzielania dostępu do użytkowników oraz odwoływania się do nich.
 
 ## <a name="create-or-renew-the-root-ca-certificate"></a>Utwórz lub odnów certyfikat głównego urzędu certyfikacji
 
@@ -64,7 +64,7 @@ Szczegółowy opis definicji ról można znaleźć w sekcji [role](howto-opc-vau
 
 Domyślnie uwierzytelniony użytkownik w dzierżawie może zalogować się w usłudze jako czytelnik. Wyższe role uprzywilejowane wymagają ręcznego zarządzania w Azure Portal lub przy użyciu programu PowerShell.
 
-### <a name="add-user"></a>Dodawanie użytkownika
+### <a name="add-user"></a>Dodaj użytkownika
 
 1. Otwórz Azure Portal pod adresem `portal.azure.com`.
 2. Przejdź do strony `Azure Active Directory`/`Enterprise applications`.

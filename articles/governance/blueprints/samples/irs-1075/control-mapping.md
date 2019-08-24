@@ -7,12 +7,12 @@ ms.date: 08/07/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d7419f6133ab32cdea3f44a8def1f736f48c1c4e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1f12545bce29d0ca32c7c7a62c56b8c9604c4268
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934155"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983131"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>Sterowanie mapowaniem przykładu planu IRS 1075
 
@@ -35,7 +35,7 @@ Ten plan ułatwia przeglądanie kont, które mogą nie być zgodne z wymaganiami
 Platforma Azure implementuje funkcję [kontroli dostępu opartej na rolach](../../../../role-based-access-control/overview.md) (RBAC), która ułatwia zarządzanie dostępem do zasobów na platformie Azure. Za pomocą Azure Portal można sprawdzić, kto ma dostęp do zasobów platformy Azure i ich uprawnień. Ten plan przypisuje również definicje [Azure Policy](../../../policy/overview.md) do inspekcji użycia uwierzytelniania Azure Active Directory dla serwerów SQL i Service Fabric. Korzystanie z uwierzytelniania Azure Active Directory umożliwia uproszczone zarządzanie uprawnieniami oraz scentralizowane zarządzanie tożsamościami użytkowników baz danych i innych usług firmy Microsoft. Ponadto ten plan przypisuje definicję Azure Policy do inspekcji użycia niestandardowych reguł RBAC. Zrozumienie, gdzie są zaimplementowane niestandardowe reguły RBAC, może pomóc w sprawdzeniu potrzeby i właściwej implementacji, ponieważ niestandardowe reguły RBAC są podatne na błędy.
 
 - Dla serwerów SQL powinien zostać zainicjowany administrator Azure Active Directory
-- Przeprowadź inspekcję użycia niestandardowych reguł kontroli RBAC
+- Inspekcja użycia niestandardowych reguł RBAC
 - W klastrach Service Fabric należy używać tylko Azure Active Directory do uwierzytelniania klientów
 
 ## <a name="9321-ac-2-12-account-management--account-monitoring--atypical-usage"></a>9.3.2.1 AC-2 (12) Zarządzanie kontami | Monitorowanie konta/nietypowe użycie
@@ -56,10 +56,10 @@ Zrozumienie implementacji mechanizmu CORS może pomóc w sprawdzeniu, czy są za
 Posiadanie tylko jednego właściciela subskrypcji platformy Azure nie pozwala na nadmiarowość administracyjną. Bez względu na to, że zbyt wielu właścicieli subskrypcji platformy Azure może zwiększyć prawdopodobieństwo naruszenia za pośrednictwem konta właściciela z naruszeniem. Ten plan pomaga zachować odpowiednią liczbę właścicieli subskrypcji platformy Azure, przypisując definicje [Azure Policy](../../../policy/overview.md) , które przeprowadzają inspekcję liczby właścicieli subskrypcji platformy Azure. Ten plan przypisuje również definicje Azure Policy, które ułatwiają kontrolowanie członkostwa w grupie Administratorzy na maszynach wirtualnych z systemem Windows. Zarządzanie właścicielami subskrypcji i uprawnieniami administratora maszyny wirtualnej może pomóc w zaimplementowaniu odpowiedniego rozdzielenia obowiązków.
 
 - Dla subskrypcji należy wyznaczyć maksymalnie 3 właścicieli
-- Przeprowadź inspekcję maszyn wirtualnych z systemem Windows, na których grupa Administratorzy zawiera dowolnych określonych członków
-- Przeprowadź inspekcję maszyn wirtualnych z systemem Windows, na których grupa Administratorzy nie zawiera wszystkich określonych członków
-- Wdróż wymagania w celu przeprowadzania inspekcji maszyn wirtualnych z systemem Windows, na których grupa Administratorzy zawiera dowolnych określonych członków
-- Wdróż wymagania w celu przeprowadzania inspekcji maszyn wirtualnych z systemem Windows, na których grupa Administratorzy nie zawiera wszystkich określonych członków
+- Inspekcja maszyn wirtualnych z systemem Windows, w których Grupa Administratorzy zawiera którykolwiek z określonych elementów członkowskich
+- Inspekcja maszyn wirtualnych z systemem Windows, w których Grupa Administratorzy nie zawiera wszystkich określonych elementów członkowskich
+- Wdróż wymagania, aby przeprowadzić inspekcję maszyn wirtualnych z systemem Windows, w których Grupa Administratorzy zawiera dowolnego z określonych elementów członkowskich
+- Wdróż wymagania, aby przeprowadzić inspekcję maszyn wirtualnych z systemem Windows, w których Grupa Administratorzy nie zawiera wszystkich określonych elementów członkowskich
 - Do subskrypcji powinien być przypisany więcej niż jeden właściciel
 
 ## <a name="9316-ac-6-7-least-privilege--review-of-user-privileges"></a>9.3.1.6 AC-6 (7) najniższych uprawnień | Przegląd uprawnień użytkownika
@@ -67,10 +67,10 @@ Posiadanie tylko jednego właściciela subskrypcji platformy Azure nie pozwala n
 Platforma Azure implementuje funkcję [kontroli dostępu opartej na rolach](../../../../role-based-access-control/overview.md) (RBAC), która ułatwia zarządzanie dostępem do zasobów na platformie Azure. Za pomocą Azure Portal można sprawdzić, kto ma dostęp do zasobów platformy Azure i ich uprawnień. Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) do kont inspekcji, dla których należy określić priorytety. Przejrzenie tych wskaźników konta może pomóc w zapewnieniu implementacji najniższych uprawnień.
 
 - Dla subskrypcji należy wyznaczyć maksymalnie 3 właścicieli
-- Przeprowadź inspekcję maszyn wirtualnych z systemem Windows, na których grupa Administratorzy zawiera dowolnych określonych członków
-- Przeprowadź inspekcję maszyn wirtualnych z systemem Windows, na których grupa Administratorzy nie zawiera wszystkich określonych członków
-- Wdróż wymagania w celu przeprowadzania inspekcji maszyn wirtualnych z systemem Windows, na których grupa Administratorzy zawiera dowolnych określonych członków
-- Wdróż wymagania w celu przeprowadzania inspekcji maszyn wirtualnych z systemem Windows, na których grupa Administratorzy nie zawiera wszystkich określonych członków
+- Inspekcja maszyn wirtualnych z systemem Windows, w których Grupa Administratorzy zawiera którykolwiek z określonych elementów członkowskich
+- Inspekcja maszyn wirtualnych z systemem Windows, w których Grupa Administratorzy nie zawiera wszystkich określonych elementów członkowskich
+- Wdróż wymagania, aby przeprowadzić inspekcję maszyn wirtualnych z systemem Windows, w których Grupa Administratorzy zawiera dowolnego z określonych elementów członkowskich
+- Wdróż wymagania, aby przeprowadzić inspekcję maszyn wirtualnych z systemem Windows, w których Grupa Administratorzy nie zawiera wszystkich określonych elementów członkowskich
 - Do subskrypcji powinien być przypisany więcej niż jeden właściciel
 
 ## <a name="93112-ac-17-1-remote-access--automated-monitoring--control"></a>9.3.1.12 AC – 17 (1) dostęp zdalny | Zautomatyzowane monitorowanie/kontrola
@@ -79,7 +79,7 @@ Ten plan ułatwia monitorowanie i kontrolowanie dostępu zdalnego przez przypisa
 
 - \[Wersja\]zapoznawcza: Inspekcja maszyn wirtualnych z systemem Linux, które zezwalają na połączenia zdalne z kont bez hasła
 - \[Wersja\]zapoznawcza: Wdróż wymagania, aby przeprowadzić inspekcję maszyn wirtualnych z systemem Linux, które zezwalają na połączenia zdalne z kont bez hasła
-- Przeprowadź inspekcję nieograniczonego dostępu do kont magazynu
+- Inspekcja nieograniczonego dostępu sieciowego do kont magazynu
 - Debugowanie zdalne powinno być wyłączone dla aplikacji interfejsu API
 - Zdalne debugowanie powinno zostać wyłączone dla aplikacja funkcji
 - Zdalne debugowanie powinno zostać wyłączone dla aplikacji sieci Web
@@ -101,7 +101,7 @@ Dane dziennika zbierane przez Azure Monitor są przechowywane w Log Analytics ob
 Ten plan przypisuje definicje [Azure Policy](../../../policy/overview.md) , które monitorują konfiguracje inspekcji i rejestrowania zdarzeń. Monitorowanie tych konfiguracji może zapewnić wskaźnik awarii systemu inspekcji lub błędnej konfiguracji i pomóc w podejmowaniu działań naprawczych.
 
 - Przeprowadź inspekcję ustawienia diagnostyki
-- Przeprowadź inspekcję ustawień inspekcji SQL na poziomie serwera
+- Inspekcja ustawień inspekcji poziomu serwera SQL
 - Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
 - Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
 
@@ -129,7 +129,7 @@ Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypi
 - \[Wersja\]zapoznawcza: Wdróż Log Analytics agenta dla systemu Windows VM Scale Sets (VMSS)
 - \[Wersja\]zapoznawcza: Wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
 - Przeprowadź inspekcję ustawienia diagnostyki
-- Przeprowadź inspekcję ustawień inspekcji SQL na poziomie serwera
+- Inspekcja ustawień inspekcji poziomu serwera SQL
 - Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
 - Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
 - Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
@@ -158,7 +158,7 @@ Adaptacyjna kontrola aplikacji w Azure Security Center to inteligentne, zautomat
 
 Azure Site Recovery replikuje obciążenia uruchomione na maszynach wirtualnych z lokalizacji głównej do lokacji dodatkowej. W przypadku wystąpienia awarii w lokacji głównej obciążenie kończy się niepowodzeniem w lokalizacji pomocniczej. Ten plan przypisuje definicję [Azure Policy](../../../policy/overview.md) , która przeprowadza inspekcję maszyn wirtualnych bez skonfigurowanego odzyskiwania po awarii. Monitorowanie tego wskaźnika może pomóc w zapewnieniu niezbędnych kontroli awaryjnych.
 
-- Przeprowadź inspekcję maszyn wirtualnych bez skonfigurowanego odzyskiwania po awarii
+- Inspekcja maszyn wirtualnych bez skonfigurowanego odzyskiwania po awarii
 
 ## <a name="9372-ia-2-1-identification-and-authentication-organizational-users--network-access-to-privileged-accounts"></a>9.3.7.2 IA-2 (1) Identyfikacja i uwierzytelnianie (Użytkownicy w organizacji) | Dostęp sieciowy do kont uprzywilejowanych
 
@@ -227,7 +227,7 @@ Ponadto ten plan przypisuje również definicje zasad, które monitorują niechr
 - Reguły sieciowej grupy zabezpieczeń dla maszyn wirtualnych mających dostęp do Internetu powinny być zaostrzone
 - Dostęp za poorednictwem punktu końcowego połączonego z Internetem powinien być ograniczony
 - Reguły sieciowych grup zabezpieczeń dla aplikacji sieci Web w usłudze IaaS powinny być zaostrzone
-- Przeprowadź inspekcję nieograniczonego dostępu do kont magazynu
+- Inspekcja nieograniczonego dostępu sieciowego do kont magazynu
 
 ## <a name="93165-sc-7-3-boundary-protection--access-points"></a>9.3.16.5 SC-7 (3) ograniczenie ochrony | Punkty dostępu
 
@@ -246,8 +246,8 @@ Dostęp z maszyn wirtualnych just-in-Time (JIT) blokuje ruch przychodzący do ma
 Ten plan pomaga chronić poufne i integralność przesyłanych informacji przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które ułatwiają monitorowanie mechanizmu kryptograficznego zaimplementowanego dla protokołów komunikacyjnych. Zapewnienie, że komunikacja jest prawidłowo zaszyfrowana, może pomóc spełnić wymagania organizacji lub chronić informacje przed nieautoryzowanym ujawnieniem i modyfikacją.
 
 - Aplikacja interfejsu API powinna być dostępna tylko za pośrednictwem protokołu HTTPS
-- Przeprowadź inspekcję serwerów internetowych z systemem Windows, które nie korzystają z bezpiecznych protokołów komunikacyjnych
-- Wdróż wymagania w celu przeprowadzania inspekcji serwerów internetowych z systemem Windows, które nie korzystają z bezpiecznych protokołów komunikacyjnych
+- Inspekcja serwerów sieci Web systemu Windows, które nie używają bezpiecznych protokołów komunikacyjnych
+- Wdróż wymagania w celu inspekcji serwerów sieci Web systemu Windows, które nie używają bezpiecznych protokołów komunikacyjnych
 - Funkcja aplikacji powinny być dostępne tylko za pośrednictwem protokołu HTTPS
 - Należy włączyć tylko bezpieczne połączenia z Redis Cache
 - Należy włączyć bezpieczny transfer do kont magazynu
@@ -260,7 +260,7 @@ Ten plan pomaga wymusić zasady korzystania z formantów cryptograph, aby chroni
 - Zaawansowana ochrona danych powinna być włączona w wystąpieniach zarządzanych
 - Zaawansowane zabezpieczenia danych powinny być włączone na Twoich serwerach SQL
 - Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
-- Wdróż przezroczyste szyfrowanie danych usługi SQL DB
+- Wdróż przezroczyste szyfrowanie danych SQL DB
 - Szyfrowanie dysków powinno być stosowane na maszynach wirtualnych
 - Wymagaj szyfrowania na kontach Data Lake Store
 - Należy włączyć Transparent Data Encryption baz danych SQL
@@ -283,14 +283,14 @@ Ten plan ułatwia zarządzanie programem Endpoint Protection, w tym złośliwą 
 
 - Wdróż domyślne rozszerzenie Microsoft IaaSAntimalware dla systemu Windows Server
 - Rozwiązanie Endpoint Protection powinno być zainstalowane w zestawach skalowania maszyn wirtualnych
-- Monitoruj brakujący program Endpoint Protection w usłudze Azure Security Center
+- Monitoruj brakujące Endpoint Protection w Azure Security Center
 
 ## <a name="93173-si-3-1-malicious-code-protection--central-management"></a>9.3.17.3 SI-3 (1) złośliwe zabezpieczenie kodu | Zarządzanie centralne
 
 Ten plan ułatwia zarządzanie programem Endpoint Protection, w tym złośliwą ochroną kodu, przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które monitorują brak ochrony punktu końcowego na maszynach wirtualnych w programie Azure Security Center. Azure Security Center udostępnia funkcje scentralizowanego zarządzania i raportowania, które umożliwiają wgląd w informacje o stanie zabezpieczeń wdrożonych zasobów platformy Azure w czasie rzeczywistym.
 
 - Rozwiązanie Endpoint Protection powinno być zainstalowane w zestawach skalowania maszyn wirtualnych
-- Monitoruj brakujący program Endpoint Protection w usłudze Azure Security Center
+- Monitoruj brakujące Endpoint Protection w Azure Security Center
 
 ## <a name="93174-si-4-information-system-monitoring"></a>Monitorowanie systemu informacji 9.3.17.4 SI-4
 
@@ -308,8 +308,8 @@ Ten plan ułatwia monitorowanie systemu przez inspekcjonowanie i wymuszanie reje
 - Wdróż zaawansowane zabezpieczenia danych na serwerach SQL
 - Wdróż zaawansowaną ochronę przed zagrożeniami na kontach magazynu
 - Wdrażanie inspekcji na serwerach SQL
-- Wdrażaj zasób Network Watcher podczas tworzenia sieci wirtualnych
-- Wdróż wykrywanie zagrożeń na serwerach SQL
+- Wdróż obserwatora sieciowego po utworzeniu sieci wirtualnych
+- Wdrażanie wykrywania zagrożeń na serwerach SQL
 
 ## <a name="93174-si-4-18-information-system-monitoring--analyze-traffic--covert-exfiltration"></a>Monitorowanie systemu informacji 9.3.17.4 SI-4 (18) | Analizuj ruch/przekonwertować Eksfiltracji
 
@@ -318,7 +318,7 @@ Zaawansowana ochrona przed zagrożeniami dla usługi Azure Storage wykrywa niety
 - Wdróż zaawansowaną ochronę przed zagrożeniami na kontach magazynu
 
 > [!NOTE]
-> Dostępność określonych Azure Policy definicje może się różnić w zależności od Azure Government i innych chmur krajowych. 
+> Dostępność określonych definicji Azure Policy może się różnić w zależności od Azure Government i innych chmur krajowych. 
 
 ## <a name="next-steps"></a>Następne kroki
 

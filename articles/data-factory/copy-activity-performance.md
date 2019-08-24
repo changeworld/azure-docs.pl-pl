@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.author: jingwang
-ms.openlocfilehash: 7b5c0a045fe932db38666559ee415d7b27aa11e4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 05ecfdc4f082aaa44fe54e6b807a1c5faf84eb8d
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614190"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996459"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Przewodnik dotyczący wydajności i skalowalności działania kopiowania
 > [!div class="op_single_selector" title1="Wybierz używaną wersję Azure Data Factory:"]
@@ -41,30 +41,30 @@ Po przeczytaniu tego artykułu, możliwe będzie odpowiadać na następujące py
 
 System ADF oferuje architekturę bezserwerową, która umożliwia równoległość na różnych poziomach, dzięki czemu deweloperzy mogą tworzyć potoki w celu pełnego wykorzystania przepustowości sieci, a także liczby operacji we/wy magazynu i przepustowości w celu zmaksymalizowania przepływności przenoszenia danych w środowisku.  Oznacza to, że przepływność, którą można osiągnąć, można oszacować przez zmierzenie minimalnej przepływności oferowanej przez źródłowy magazyn danych, docelowy magazyn danych i przepustowość sieci między źródłem a miejscem docelowym.  Poniższa tabela oblicza czas trwania kopiowania na podstawie rozmiaru danych i limitu przepustowości dla danego środowiska. 
 
-| Rozmiar danych \ przepustowość | 50 Mb/s    | 100 Mb/s  | 200 Mb/s  | 500 Mb/s  | 1 Gb/s   | 10 Gb/s  |
-| --------------------- | ---------- | --------- | --------- | --------- | -------- | -------- |
-| 1 GB                  | 2,7 min    | 1,4 min   | 0,7 min   | 0,3 min   | 0,1 min  | 0,0 min  |
-| 10 GB                 | 27,3 min   | 13,7 min  | 6,8 min   | 2,7 min   | 1,3 min  | 0,1 min  |
-| 100 GB                | 4,6 godz.    | 2,3 godz.   | 1,1 godz.   | 0,5 godz.   | 0,2 godz.  | 0,0 godz.  |
-| 1 TB                  | 46,6 godz.   | 23,3 godz.  | 11,7 godz.  | 4,7 godz.   | 2,3 godz.  | 0,2 godz.  |
-| 10 TB                 | 19,4 dni  | 9,7 dni  | 4,9 dni  | 1,9 dni  | 0,9 dni | 0,1 dni |
-| 100 TB                | 194,2 dni | 97,1 dni | 48,5 dni | 19,4 dni | 9,5 dni | 0,9 dni |
-| 1 PB                  | 64,7 mo    | 32,4 mo   | 16,2 mo   | 6,5 mo    | 3,2 mo   | 0,3 mo   |
-| 10 PB                 | 647,3 mo   | 323,6 mo  | 161,8 mo  | 64,7 mo   | 31,6 mo  | 3,2 mo   |
+| Rozmiar danych/ <br/> bandwidth | 50 Mb/s    | 100 Mb/s  | 500 Mb/s  | 1 Gb/s   | 5 Gb/s   | 10 Gb/s  | 50 GB/s   |
+| --------------------------- | ---------- | --------- | --------- | -------- | -------- | -------- | --------- |
+| **1 GB**                    | 2,7 min    | 1,4 min   | 0,3 min   | 0,1 min  | 0,03 min | 0,01 min | 0,0 min   |
+| **10 GB**                   | 27,3 min   | 13,7 min  | 2,7 min   | 1,3 min  | 0,3 min  | 0,1 min  | 0,03 min  |
+| **100 GB**                  | 4,6 godz.    | 2,3 godz.   | 0,5 godz.   | 0,2 godz.  | 0,05 godz. | 0,02 godz. | 0,0 godz.   |
+| **1 TB**                    | 46,6 godz.   | 23,3 godz.  | 4,7 godz.   | 2,3 godz.  | 0,5 godz.  | 0,2 godz.  | 0,05 godz.  |
+| **10 TB**                   | 19,4 dni  | 9,7 dni  | 1,9 dni  | 0,9 dni | 0,2 dni | 0,1 dni | 0,02 dni |
+| **100 TB**                  | 194,2 dni | 97,1 dni | 19,4 dni | 9,7 dni | 1,9 dni | 1 dni   | 0,2 dni  |
+| **1 PB**                    | 64,7 mo    | 32,4 mo   | 6,5 mo    | 3,2 mo   | 0,6 mo   | 0,3 mo   | 0,06 mo   |
+| **10 PB**                   | 647,3 mo   | 323,6 mo  | 64,7 mo   | 31,6 mo  | 6,5 mo   | 3,2 mo   | 0,6 mo    |
 
 Kopiowanie na podajniku APD jest skalowalne na różnych poziomach:
 
 ![jak są skalowane kopie APD](media/copy-activity-performance/adf-copy-scalability.png)
 
-- Pojedyncze działanie kopiowania może korzystać z skalowalnych zasobów obliczeniowych: w przypadku korzystania z Azure Integration Runtime można określić [maksymalnie 256 DIUs](#data-integration-units) dla każdego działania kopiowania w sposób bezserwerowy. w przypadku korzystania z Integration Runtime samoobsługowego można ręcznie skalować maszynę w górę lub w poziomie na wielu maszynach ([maksymalnie 4 węzły](create-self-hosted-integration-runtime.md#high-availability-and-scalability)), a działanie pojedynczej kopii spowoduje partycjonowanie zestawu plików we wszystkich węzłach.
-- Pojedyncze działanie kopiowania odczytuje i zapisuje dane w magazynie danych przy użyciu wielu wątków.
 - Przepływ sterowania ADF można uruchomić równolegle wiele działań kopiowania, na przykład przy użyciu [dla każdej pętli](control-flow-for-each-activity.md).
+- Pojedyncze działanie kopiowania może korzystać z skalowalnych zasobów obliczeniowych: w przypadku korzystania z Azure Integration Runtime można określić [maksymalnie 256 DIUs](#data-integration-units) dla każdego działania kopiowania w sposób bezserwerowy. w przypadku korzystania z Integration Runtime samoobsługowego można ręcznie skalować maszynę w górę lub w poziomie na wielu maszynach ([maksymalnie 4 węzły](create-self-hosted-integration-runtime.md#high-availability-and-scalability)), a działanie pojedynczej kopii spowoduje partycjonowanie zestawu plików we wszystkich węzłach.
+- Pojedyncze działanie kopiowania odczytuje i zapisuje dane w magazynie danych przy użyciu [równolegle](#parallel-copy)wielu wątków.
 
 ## <a name="performance-tuning-steps"></a>Kroki dostosowywania wydajności
 
 Wykonaj następujące kroki, aby dostroić wydajność usługi Azure Data Factory za pomocą działania kopiowania.
 
-1. **Ustanów linię bazową.** Podczas fazy tworzenia Przetestuj potok za pomocą działania kopiowania względem reprezentatywnej próbki danych. Zbierz szczegóły wykonania i charakterystyki wydajności następujące po [monitorowaniu działania kopiowania](copy-activity-overview.md#monitoring).
+1. **Pobierz zestaw danych testowych i Ustanów linię bazową.** Podczas fazy tworzenia Przetestuj potok za pomocą działania kopiowania względem reprezentatywnej próbki danych. Wybrany zestaw danych powinien reprezentować typowe wzorce danych (strukturę folderów, wzorzec pliku, schemat danych itp.) i jest wystarczająco duży, aby można było oszacować wydajność kopiowania, na przykład wykonanie operacji kopiowania trwa 10 minut lub dłużej. Zbierz szczegóły wykonania i charakterystyki wydajności następujące po [monitorowaniu działania kopiowania](copy-activity-overview.md#monitoring).
 
 2. **Jak zmaksymalizować wydajność pojedynczego działania kopiowania**:
 
@@ -78,19 +78,19 @@ Wykonaj następujące kroki, aby dostroić wydajność usługi Azure Data Factor
 
    Działanie kopiowania powinno być skalowane niemal idealnie liniowo, gdy zwiększy się ustawienie DIU.  Jeśli po podwojeniu ustawienia DIU nie widzisz przepustowości podwójnie, mogą wystąpić dwie rzeczy:
 
-   - Używany wzorzec kopiowania nie pozwala na Dodawanie więcej DIUs.  Mimo że określono większą wartość DIU, rzeczywista DIUa była taka sama, co oznacza, że przepływność jest taka sama jak wcześniej.  W takim przypadku przejdź do kroku #3
+   - Używany wzorzec kopiowania nie pozwala na Dodawanie więcej DIUs.  Mimo że określono większą wartość DIU, rzeczywista DIUa była taka sama, co oznacza, że przepływność jest taka sama jak wcześniej.  W takim przypadku Maksymalizuj zagregowaną przepływność, uruchamiając wiele kopii jednocześnie, odwołując się do kroku 3.
    - Dodając więcej DIUs (więcej informacji o mocy), a tym samym zapewniając wyższą szybkość wyodrębniania, przesyłania i ładowania danych, zarówno źródłowy magazyn danych, sieć między, jak i docelowy magazyn danych osiągnął wąskie gardło i może być ograniczone.  W takim przypadku spróbuj skontaktować się z administratorem magazynu danych lub administratorem sieci, aby podnieść górny limit, lub też Zmniejsz ustawienie DIU, dopóki nie zostanie zatrzymane ograniczenie przepustowości.
 
    **Jeśli działanie kopiowania jest wykonywane na samodzielnym Integration Runtime:**
 
-   Zalecamy używanie dedykowanej maszyny niezależnej od serwera hostującym magazyn danych w celu hostowania środowiska Integration Runtime
+   Zalecamy używanie dedykowanej maszyny niezależnej od serwera hostującym magazyn danych w celu hostowania środowiska Integration Runtime.
 
    Zacznij od domyślnych wartości ustawienia [kopiowania równoległego](#parallel-copy) i przy użyciu jednego węzła dla samodzielnego środowiska IR.  Wykonaj przebieg testu wydajnościowego i zanotuj osiągniętą wydajność.
 
    Jeśli chcesz osiągnąć wyższą przepływność, możesz skalować w górę lub w poziomie do własnego środowiska IR:
 
    - Jeśli użycie procesora CPU i dostępnej pamięci w węźle podczerwieni nie jest w pełni wykorzystane, ale wykonanie współbieżnych zadań zbliża się do limitu, należy skalować w górę, zwiększając liczbę współbieżnych zadań, które mogą być uruchamiane w węźle.  Aby uzyskać instrukcje, zobacz [tutaj](create-self-hosted-integration-runtime.md#scale-up) .
-   - Jeśli z drugiej strony, procesor CPU jest wysoki w węźle samodzielnego środowiska IR, a dostępna pamięć jest niska, można dodać nowy węzeł, aby ułatwić skalowanie obciążenia w wielu węzłach.  Aby uzyskać instrukcje, zobacz [tutaj](create-self-hosted-integration-runtime.md#high-availability-and-scalability) .
+   - Jeśli z drugiej strony procesor CPU jest wysoki w węźle samodzielnego środowiska IR lub dostępna pamięć jest niska, można dodać nowy węzeł, aby ułatwić skalowanie obciążenia w wielu węzłach.  Aby uzyskać instrukcje, zobacz [tutaj](create-self-hosted-integration-runtime.md#high-availability-and-scalability) .
 
    Podczas skalowania w górę lub w poziomie środowiska samodzielnego środowiska IR należy powtórzyć przebieg testu wydajności, aby zobaczyć, czy coraz bardziej zwiększa się przepływność.  Jeśli przepływność zostanie zatrzymana, najprawdopodobniej źródłowy magazyn danych, sieć między nimi lub docelowy magazyn danych osiągnął wąskie gardło i zaczyna się uzyskać ograniczenie przepustowości. W takim przypadku spróbuj skontaktować się z administratorem magazynu danych lub administratorem sieci, aby podnieść górny limit lub alternatywnie, Wróć do poprzedniego ustawienia skalowania dla samodzielnego środowiska IR. 
 
@@ -98,9 +98,7 @@ Wykonaj następujące kroki, aby dostroić wydajność usługi Azure Data Factor
 
    Teraz, gdy masz zmaksymalizowaną wydajność pojedynczego działania kopiowania, jeśli nie osiągnięto jeszcze górnych limitów przepływności dla środowiska — sieci, magazynu danych źródłowych i docelowego magazynu danych — można uruchomić wiele działań kopiowania równolegle przy użyciu funkcji ADF Konstrukcje przepływu sterowania, takie jak [dla każdej pętli](control-flow-for-each-activity.md).
 
-4. **Diagnozuj i Optymalizuj wydajność.** Jeśli obserwowanie wydajności nie spełnia oczekiwań, zidentyfikuj wąskie gardła wydajności. Następnie zoptymalizować wydajność, aby usunąć lub zmniejszają efekt wąskich gardeł.
-
-   W niektórych przypadkach po uruchomieniu działania kopiowania w Azure Data Factory na początku [monitorowania działania kopiowania](copy-activity-overview.md#monitor-visually)zostanie wyświetlony komunikat "porady dotyczące dostrajania wydajności", jak pokazano w poniższym przykładzie. Komunikat informuje o wąskim gardła, który został zidentyfikowany dla danego przebiegu kopiowania. Przedstawiono w nim również informacje o tym, co należy zmienić w celu zwiększenia przepływności kopiowania. Porady dotyczące dostrajania wydajności obecnie udostępniają sugestie, takie jak:
+4. **Wskazówki dotyczące dostrajania wydajności i funkcje optymalizacji.** W niektórych przypadkach po uruchomieniu działania kopiowania w Azure Data Factory na początku [monitorowania działania kopiowania](copy-activity-overview.md#monitor-visually)zostanie wyświetlony komunikat "porady dotyczące dostrajania wydajności", jak pokazano w poniższym przykładzie. Komunikat informuje o wąskim gardła, który został zidentyfikowany dla danego przebiegu kopiowania. Przedstawiono w nim również informacje o tym, co należy zmienić w celu zwiększenia przepływności kopiowania. Porady dotyczące dostrajania wydajności obecnie udostępniają sugestie, takie jak:
 
    - Użyj podstawy podczas kopiowania danych do Azure SQL Data Warehouse.
    - Zwiększ liczbę jednostek żądania Azure Cosmos DB lub Azure SQL Database DTU (jednostki przepływności bazy danych), gdy zasób po stronie magazynu danych to wąskie gardło.
@@ -114,12 +112,11 @@ Wykonaj następujące kroki, aby dostroić wydajność usługi Azure Data Factor
 
    ![Kopiuj monitorowanie ze wskazówkami dotyczącymi dostrajania wydajności](media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
-   Ponadto poniżej przedstawiono kilka typowych zagadnień. Pełny opis diagnostyki wydajności wykracza poza zakres tego artykułu.
+   Ponadto należy pamiętać o następujących funkcjach optymalizacji wydajności:
 
-   - Funkcje optymalizacji wydajności:
-     - [Kopiuj równoległe](#parallel-copy)
-     - [Jednostki integracji danych](#data-integration-units)
-     - [Kopiowania przejściowego](#staged-copy)
+   - [Kopiuj równoległe](#parallel-copy)
+   - [Jednostki integracji danych](#data-integration-units)
+   - [Kopiowania przejściowego](#staged-copy)
    - [Samoobsługowa skalowalność środowiska Integration Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime)
 
 5. **Rozwiń konfigurację do całego zestawu danych.** Gdy wyniki wykonywania i wydajność są zadowalające, można rozwinąć definicję i potok, aby pokryć cały zestaw danych.
@@ -136,7 +133,9 @@ Azure Data Factory zapewnia następujące funkcje optymalizacji wydajności:
 
 Jednostka integracji danych to miara, która reprezentuje moc (kombinację procesora CPU, pamięci i alokacji zasobów sieciowych) pojedynczej jednostki w Azure Data Factory. Jednostka integracji danych ma zastosowanie tylko do [środowiska Azure Integration Runtime](concepts-integration-runtime.md#azure-integration-runtime), ale nie do [własnego środowiska Integration Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime).
 
-Dozwolony DIUs do upoważnienia do uruchomienia działania kopiowania jest z przedziału od 2 do 256. Jeśli nie zostanie określony, w poniższej tabeli wymieniono DIUs domyślne używane w scenariuszach różnych kopii:
+Zostanie naliczona opłata za **użycie jednostki czasu \* trwania \* kopiowania DIUs (cena jednostkowa)/DIU godzin**. Zobacz bieżące ceny [tutaj](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/). Waluta lokalna i oddzielne opłaty mogą dotyczyć poszczególnych typów subskrypcji.
+
+Dozwolony DIUs do upoważnienia do uruchomienia działania kopiowania jest z przedziału **od 2 do 256**. Jeśli nie zostanie określony, lub wybierzesz opcję "automatycznie" w interfejsie użytkownika, Data Factory dynamicznie zastosować optymalne ustawienie DIU na podstawie pary Source-sink i wzorca danych. W poniższej tabeli wymieniono domyślne DIUs używane w różnych scenariuszach kopiowania:
 
 | Skopiuj scenariusza | Domyślne DIUs określany przez usługę |
 |:--- |:--- |
@@ -151,7 +150,7 @@ Można zobaczyć DIUs używane dla każdej kopii przebiegu w danych wyjściowych
 > [!NOTE]
 > Ustawienie DIUs o rozmiarze większym niż cztery jest obecnie stosowane tylko w przypadku kopiowania wielu plików z usługi Azure Storage, Azure Data Lake Storage, Amazon S3, Google Cloud Storage, Cloud FTP lub SFTP w chmurze do innych magazynów danych w chmurze.
 
-**Przykład**
+**Przykład:**
 
 ```json
 "activities":[
@@ -173,10 +172,6 @@ Można zobaczyć DIUs używane dla każdej kopii przebiegu w danych wyjściowych
 ]
 ```
 
-#### <a name="data-integration-units-billing-impact"></a>Wpływ rozliczeniowym jednostki integracji danych
-
-Należy pamiętać, że opłata jest naliczana na podstawie łącznego czasu operacji kopiowania. Łączny czas trwania naliczania na przemieszczenie danych to suma czasu trwania w DIUs. Jeśli zadanie kopiowania używany do podejmowania jedną godzinę od dwóch jednostek chmury, a obecnie zajmuje 15 minut przy użyciu osiem jednostek chmury, ogólną kwotę rachunku pozostanie prawie taki sam.
-
 ### <a name="parallel-copy"></a>Kopiowanie równoległe
 
 Możesz użyć właściwości **parallelCopies** , aby wskazać równoległość, która ma być używana przez działanie kopiowania. Tę właściwość można traktować jako maksymalną liczbę wątków w ramach działania kopiowania, które mogą być jednocześnie odczytywane ze źródła lub zapisywać do magazynów danych ujścia.
@@ -193,6 +188,15 @@ Dla każdego przebiegu działania kopiowania Azure Data Factory określa liczbę
 > Podczas kopiowania danych między magazynami opartymi na plikach, domyślne zachowanie zwykle zapewnia najlepszą przepływność. Domyślne zachowanie jest określane na podstawie wzorca pliku źródłowego.
 
 Aby kontrolować obciążenie maszyn, które obsługują magazyny danych, lub dostosować wydajność kopiowania, można zastąpić wartość domyślną i określić wartość właściwości **parallelCopies** . Wartość musi być liczba całkowita większa lub równa 1. W czasie wykonywania w celu uzyskania najlepszej wydajności działanie kopiowania używa wartości, która jest mniejsza lub równa ustawionej wartości.
+
+**Punkty do uwagi:**
+
+- Podczas kopiowania danych między magazynami opartymi na plikach **parallelCopies** określa równoległość na poziomie pliku. Fragmentowanie w pojedynczym pliku odbywa się automatycznie i w sposób przezroczysty. Zaprojektowano w celu użycia najlepszego odpowiedniego rozmiaru fragmentu dla danego typu magazynu danych źródłowych w celu załadowania danych równolegle i ortogonalnych do **parallelCopies**. Rzeczywista liczba równoległych kopii usługi data movement service używa dla operacji kopiowania w czasie wykonywania jest nie więcej niż liczba plików, których masz. Jeśli zachowanie kopiowania ma wartość **mergeFile**, działanie kopiowania nie może korzystać z równoległości na poziomie plików.
+- W przypadku kopiowania danych z magazynów, które nie są oparte na plikach (z wyjątkiem programu [Oracle](connector-oracle.md#oracle-as-source), [Teradata](connector-teradata.md#teradata-as-source), [tabeli SAP](connector-sap-table.md#sap-table-as-source)i [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) Connector jako źródło z włączoną funkcją partycjonowania danych), do magazynów, które są oparte na plikach, Usługa przenoszenia danych ignoruje Właściwość **parallelCopies** . Nawet jeśli równoległości jest określona, nie zostanie zastosowane w tym przypadku.
+- Właściwość **parallelCopies** jest prostopadła do **dataIntegrationUnits**. Pierwsza jest liczony we wszystkich jednostkach integracji danych.
+- Po określeniu wartości właściwości **parallelCopies** należy wziąć pod uwagę wzrost obciążenia magazynów danych źródłowych i ujścia. Należy również rozważyć zwiększenie obciążenia do własnego środowiska Integration Runtime, jeśli działanie kopiowania jest przez niego uprawnione, na przykład w przypadku kopii hybrydowej. Ten wzrost obciążenia występuje szczególnie w przypadku wielu działań lub współbieżnych uruchomień tych samych działań, które działają w tym samym magazynie danych. Jeśli zauważysz, że magazyn danych lub własne środowisko Integration Runtime jest przeciążony, zmniejsz wartość **parallelCopies** , aby zwolnić obciążenie.
+
+**Przykład:**
 
 ```json
 "activities":[
@@ -213,13 +217,6 @@ Aby kontrolować obciążenie maszyn, które obsługują magazyny danych, lub do
     }
 ]
 ```
-
-**Punkty do uwagi:**
-
-* Podczas kopiowania danych między magazynami opartymi na plikach **parallelCopies** określa równoległość na poziomie pliku. Fragmentowanie w pojedynczym pliku odbywa się automatycznie i w sposób przezroczysty. Zaprojektowano w celu użycia najlepszego odpowiedniego rozmiaru fragmentu dla danego typu magazynu danych źródłowych w celu załadowania danych równolegle i ortogonalnych do **parallelCopies**. Rzeczywista liczba równoległych kopii usługi data movement service używa dla operacji kopiowania w czasie wykonywania jest nie więcej niż liczba plików, których masz. Jeśli zachowanie kopiowania ma wartość **mergeFile**, działanie kopiowania nie może korzystać z równoległości na poziomie plików.
-* W przypadku kopiowania danych z magazynów, które nie są oparte na plikach (z wyjątkiem programu [Oracle](connector-oracle.md#oracle-as-source), [Teradata](connector-teradata.md#teradata-as-source), [tabeli SAP](connector-sap-table.md#sap-table-as-source)i [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) Connector jako źródło z włączoną funkcją partycjonowania danych), do magazynów, które są oparte na plikach, Usługa przenoszenia danych ignoruje Właściwość **parallelCopies** . Nawet jeśli równoległości jest określona, nie zostanie zastosowane w tym przypadku.
-* Właściwość **parallelCopies** jest prostopadła do **dataIntegrationUnits**. Pierwsza jest liczony we wszystkich jednostkach integracji danych.
-* Po określeniu wartości właściwości **parallelCopies** należy wziąć pod uwagę wzrost obciążenia magazynów danych źródłowych i ujścia. Należy również rozważyć zwiększenie obciążenia do własnego środowiska Integration Runtime, jeśli działanie kopiowania jest przez niego uprawnione, na przykład w przypadku kopii hybrydowej. Ten wzrost obciążenia występuje szczególnie w przypadku wielu działań lub współbieżnych uruchomień tych samych działań, które działają w tym samym magazynie danych. Jeśli zauważysz, że magazyn danych lub własne środowisko Integration Runtime jest przeciążony, zmniejsz wartość **parallelCopies** , aby zwolnić obciążenie.
 
 ### <a name="staged-copy"></a>Kopiowania przejściowego
 
@@ -305,5 +302,5 @@ Poniżej znajdują się informacje dotyczące monitorowania wydajności i dostra
 Zapoznaj się z innymi artykułami dotyczącymi działania kopiowania:
 
 - [Omówienie działania kopiowania](copy-activity-overview.md)
-- [Mapowanie schematu działania kopiowania](copy-activity-schema-and-type-mapping.md)
-- [Kopiuj działania odporności na uszkodzenia](copy-activity-fault-tolerance.md)
+- [Używanie Azure Data Factory do migrowania danych z usługi Data Lake lub magazynu danych na platformę Azure](data-migration-guidance-overview.md)
+- [Migrowanie danych z usług Amazon S3 do usługi Azure Storage](data-migration-guidance-s3-azure-storage.md)

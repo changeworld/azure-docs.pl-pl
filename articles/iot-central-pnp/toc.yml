@@ -119,6 +119,8 @@
       items:
         - name: Usługa IoT Hub
           href: /azure/iot-hub
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
         - name: Usługa IoT Hub Device Provisioning
           href: /azure/iot-dps
         - name: Usługi oparte na lokalizacji

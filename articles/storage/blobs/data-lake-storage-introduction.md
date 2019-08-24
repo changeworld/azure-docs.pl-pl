@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 3dea4dfc58bf087b8f6bc0a3f45646da5cb597ad
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: de2dc5068dc454925744688a43f49a855aac42f3
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847231"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991849"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Wprowadzenie do Azure Data Lake Storage Gen2
 
@@ -64,7 +64,7 @@ Poniżej przedstawiono równoważne jednostek, zgodnie z opisem w różnych poj�
 | Pojęcie                                | Najwyższego poziomu organizacji | Obniż poziom organizacji                                            | Kontener danych |
 |----------------------------------------|------------------------|---------------------------------------------------------------------|----------------|
 | Obiekty BLOB — magazyn obiektów ogólnego przeznaczenia | Kontener              | Katalog wirtualny (zestaw SDK — nie zapewniają tylko manipulowania atomic) | Obiekt blob           |
-| Azure Data Lake Store Gen2 — Analytics Storage          | System plików             | Katalog                                                           | Plik           |
+| Azure Data Lake Store Gen2 — Analytics Storage          | Kontener            | Katalog                                                           | Plik           |
 
 ## <a name="supported-open-source-platforms"></a>Obsługiwane platformy typu open source
 

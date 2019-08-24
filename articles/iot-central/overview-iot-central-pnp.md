@@ -9,19 +9,19 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 0675be988e7e9560560dd07338563c9fa22fcb4c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: af5b16448a39e0106dbc04724607ff603483484c
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878292"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997743"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Co to jest usługa Azure IoT Central (funkcje w wersji zapoznawczej)?
 
 [!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
 > [!WARNING]
-> Możliwości [Plug and Play IoT](https://aka.ms/iot-pnp-docs) na platformie Azure IoT Central są obecnie dostępne w publicznej wersji zapoznawczej. Nie należy używać Plug and Play IoT włączonych IoT Central aplikacji dla obciążeń produkcyjnych. W przypadku środowisk produkcyjnych używana jest aplikacja IoT Central utworzona na podstawie bieżącego, ogólnie dostępnego szablonu aplikacji.
+> Możliwości [Plug and Play IoT](../iot-pnp/overview-iot-plug-and-play.md) na platformie Azure IoT Central są obecnie dostępne w publicznej wersji zapoznawczej. Nie należy używać Plug and Play IoT włączonych IoT Central aplikacji dla obciążeń produkcyjnych. W przypadku środowisk produkcyjnych używana jest aplikacja IoT Central utworzona na podstawie bieżącego, ogólnie dostępnego szablonu aplikacji.
 
 Azure IoT Central to w pełni zarządzane rozwiązanie typu "oprogramowanie jako usługa" IoT, które ułatwia tworzenie produktów łączących fizyczne i cyfrowe środowiska światowe. Wizję połączonych produktów można realizować w następujący sposób:
 
@@ -95,7 +95,7 @@ Ten szablon urządzenia obejmuje następujące:
 
 ### <a name="create-device-templates"></a>Tworzenie szablonów urządzeń
 
-[Plug and Play IoT](https://aka.ms/iot-pnp-docs) umożliwia IoT Central integrację urządzeń bez konieczności pisania kodu urządzenia osadzonego. Podstawą Plug and Play IoT jest schemat modelu możliwości urządzenia, który opisuje możliwości urządzeń. W aplikacji IoT Central w wersji zapoznawczej szablony urządzeń używają tych modeli możliwości urządzeń Plug and Play IoT.
+[Plug and Play IoT](../iot-pnp/overview-iot-plug-and-play.md) umożliwia IoT Central integrację urządzeń bez konieczności pisania kodu urządzenia osadzonego. Podstawą Plug and Play IoT jest schemat modelu możliwości urządzenia, który opisuje możliwości urządzeń. W aplikacji IoT Central w wersji zapoznawczej szablony urządzeń używają tych modeli możliwości urządzeń Plug and Play IoT.
 
 Jako Konstruktor można utworzyć szablony urządzeń za pomocą kilku opcji:
 
@@ -151,4 +151,4 @@ Oto następne sugerowane kroki po zapoznaniu się z omówieniem usługi Azure Io
   - [Dodawanie reguł w celu zautomatyzowania rozwiązania jako konstruktor](tutorial-configure-rules-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
   - [Monitorowanie urządzeń jako operator](tutorial-monitor-devices-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
   - [Jako operator Dodaj urządzenie do rozwiązania](tutorial-add-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
-- Dowiedz się więcej o usłudze [IoT Plug and Play](https://aka.ms/iot-pnp-docs)
+- Dowiedz się więcej o usłudze [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md)

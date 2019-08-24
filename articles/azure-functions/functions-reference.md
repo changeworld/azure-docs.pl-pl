@@ -1,23 +1,20 @@
 ---
 title: Wskazówki dotyczące opracowywania Azure Functions | Microsoft Docs
 description: Poznaj Azure Functions koncepcje i techniki, które są potrzebne do opracowania funkcji na platformie Azure, we wszystkich językach programowania i powiązaniach.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: Przewodnik dla deweloperów, usługa Azure Functions, funkcje, przetwarzanie zdarzeń, elementy webhook, dynamiczne obliczenia, architektura bezserwerowa
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 2715aeae5d10241703fa876557d1edcea1723874
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c60fedfe855cc803ee2f4b1c463e2b0614239c04
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874953"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982631"
 ---
 # <a name="azure-functions-developers-guide"></a>Przewodnik dla deweloperów Azure Functions
 W Azure Functions określone funkcje udostępniają kilka podstawowych pojęć i składników technicznych, niezależnie od używanego języka lub powiązania. Przed przejściem do szczegółów szczegółowych informacji dotyczących danego języka lub powiązania należy zapoznać się z tym omówieniem, który ma zastosowanie do wszystkich z nich.
@@ -44,7 +41,7 @@ Plik Function. JSON definiuje wyzwalacz funkcji, powiązania i inne ustawienia k
 }
 ```
 
-Aby uzyskać więcej przykładów, zobacz [stronę typu wiki Functions. JSON](https://github.com/Azure/azure-functions-host/wiki/function.json).
+Aby uzyskać więcej informacji, zobacz temat [Azure Functions wyzwalacze i koncepcje powiązań](functions-triggers-bindings.md).
 
 Właściwość `bindings` służy do konfigurowania wyzwalaczy i powiązań. Każde powiązanie udostępnia kilka typowych ustawień i niektóre ustawienia, które są specyficzne dla określonego typu powiązania. Każde powiązanie wymaga następujących ustawień:
 
@@ -55,7 +52,7 @@ Właściwość `bindings` służy do konfigurowania wyzwalaczy i powiązań. Ka�
 | `name` |ciąg |Nazwa, która jest używana dla powiązanych danych w funkcji. Dla C#, jest to nazwa argumentu; w przypadku języka JavaScript jest to klucz na liście kluczy/wartości. |
 
 ## <a name="function-app"></a>Aplikacja funkcji
-Aplikacja funkcji udostępnia kontekst wykonywania na platformie Azure, w którym działają funkcje. Aplikacja funkcji składa się z co najmniej jednej konkretnej funkcji, która jest zarządzana, wdrażana i skalowana ze sobą. Wszystkie funkcje w aplikacji funkcji korzystają z tego samego planu cenowego, ciągłego wdrażania i wersji środowiska uruchomieniowego. Zastanów się nad aplikacją funkcji, aby zorganizować i wspólnie zarządzać funkcjami. 
+Aplikacja funkcji udostępnia kontekst wykonywania na platformie Azure, w którym działają funkcje. W związku z tym jest to jednostka wdrażania i zarządzania dla swoich funkcji. Aplikacja funkcji składa się z co najmniej jednej konkretnej funkcji, która jest zarządzana, wdrażana i skalowana ze sobą. Wszystkie funkcje w aplikacji funkcji mają ten sam plan cenowy, metodę wdrażania i wersję środowiska uruchomieniowego. Zastanów się nad aplikacją funkcji, aby zorganizować i wspólnie zarządzać funkcjami. Aby dowiedzieć się więcej, zobacz [jak zarządzać aplikacją funkcji](functions-how-to-use-azure-function-app-settings.md). 
 
 > [!NOTE]
 > Wszystkie funkcje w aplikacji funkcji muszą zostać utworzone w tym samym języku. W [poprzednich wersjach](functions-versions.md) środowiska uruchomieniowego Azure Functions nie było to wymagane.

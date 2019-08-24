@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 32c903e5d469a9a3e7b98bd406b5512d752bb210
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
-ms.translationtype: MT
+ms.openlocfilehash: 0ebf18fe2dc6906bc2c06d94388d126fb55c6024
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017791"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981413"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Kolejki magazynu i kolejki Service Bus — porównane i rozróżnienia
 Ten artykuł analizuje różnice i podobieństwa między dwoma typami kolejek oferowanych przez Microsoft Azure Dzisiaj: Kolejki magazynu i kolejki Service Bus. Dzięki tym informacjom można porównać odpowiednie technologie i świadomie wybrać rozwiązanie, które najlepiej odpowiada danym potrzebom.
@@ -68,7 +68,7 @@ W tej sekcji porównano niektóre podstawowe możliwości kolejkowania zapewnian
 | Kryteria porównania | Kolejki magazynu | Kolejki usługi Service Bus |
 | --- | --- | --- |
 | Gwarancja porządkowania |**Nie** <br/><br>Aby uzyskać więcej informacji, zobacz pierwszą uwagę w sekcji "dodatkowe informacje".</br> |**Tak — pierwszy w pierwszej kolejności (FIFO)**<br/><br>(za pomocą sesji obsługi komunikatów) |
-| Gwarancja dostarczania |**Co najmniej raz** |**Co najmniej raz**<br/><br/>**Co najwyżej raz** |
+| Gwarancja dostarczania |**Co najmniej raz** |**Co najmniej raz** (Używanie trybu odbierania PeekLock — jest to ustawienie domyślne) <br/><br/>**Co najwyżej raz** (Używanie trybu odbierania ReceiveAndDelete) <br/> <br/> Dowiedz się więcej na temat różnych [trybów odbierania](service-bus-queues-topics-subscriptions.md#receive-modes)  |
 | Obsługa niepodzielnych operacji |**Nie** |**Tak**<br/><br/> |
 | Zachowanie odbierania |**Bez blokowania**<br/><br/>(wykonuje natychmiast, jeśli nie zostanie znaleziony nowy komunikat) |**Blokowanie z limitem czasu/bez**<br/><br/>(oferuje długotrwałe sondowanie lub ["technikę" Comet "](https://go.microsoft.com/fwlink/?LinkId=613759))<br/><br/>**Bez blokowania**<br/><br/>(tylko w przypadku korzystania z zarządzanego interfejsu API platformy .NET) |
 | Interfejs API w stylu wypychania |**Nie** |**Tak**<br/><br/>[](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) Interfejsy API platformy .NET dla sesji OnMessage i OnMessage. |

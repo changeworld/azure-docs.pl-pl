@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: dadc394e9c9ddb152923095de10b8f727310d3f7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eeab0433310892f27b9cb2d2eb6f64e17e6f14ef
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60554833"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991721"
 ---
 #  <a name="create-a-cicd-pipeline-for--nodejs-with-azure-devops-projects"></a>Tworzenie potoku ciągłej integracji/ciągłego wdrażania dla środowiska Node.js w usłudze Azure DevOps Projects 
 
@@ -54,9 +54,9 @@ Usługa DevOps Projects tworzy potok ciągłej integracji/ciągłego wdrażania 
 
 1. Utwórz nową organizację usługi Azure DevOps lub wybierz istniejącą organizację. 
 
-    a. Wybierz nazwę projektu. 
+    a. Wprowadź nazwę dla projektu.
 
-    b. Wybierz lokalizację i subskrypcję platformy Azure, wybierz nazwę aplikacji, a następnie wybierz przycisk **Gotowe**.  
+    b. Wybierz swoją subskrypcję platformy Azure i lokalizację, wprowadź nazwę aplikacji, a następnie wybierz pozycję **Gotowe**.  
     Po kilku minutach w witrynie Azure Portal zostanie wyświetlony pulpit nawigacyjny usługi DevOps Projects. Aplikacja przykładowa zostanie skonfigurowana w repozytorium w organizacji usługi Azure DevOps, skompilowana i wdrożona na platformie Azure. Ten pulpit nawigacyjny zapewnia wgląd w repozytorium kodu, potok ciągłej integracji/ciągłego wdrażania i aplikację na platformie Azure.
      
 3. Wybierz pozycję **Przeglądaj**, aby wyświetlić uruchomioną aplikację.
@@ -78,7 +78,7 @@ Ten link otwiera widok nowo utworzonego repozytorium Git.
 1. Przejdź do pliku **views/index.pug** z lewej strony okna przeglądarki.
 
 1. Wybierz pozycję **Edytuj** i wprowadź zmianę w nagłówku h2.  
-    Wpisz na przykład hasło **Zaczynamy pracę z projektem DevOps platformy Azure** lub wprowadź inną zmianę.
+    Na przykład wprowadź od razu rozpocząć **pracę z Azure DevOps projects** lub wprowadź inne zmiany.
 
 1. Wybierz pozycję **Zatwierdź**, a następnie zapisz zmiany.
 
@@ -147,13 +147,13 @@ Dzienniki zawierają przydatne informacje na temat procesu wdrażania. Mogą by�
 Gdy usługa Azure App Service i inne utworzone powiązane zasoby nie będą już potrzebne, możesz je usunąć. Użyj funkcji **Usuń** na pulpicie nawigacyjnym usługi DevOps Projects.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Podczas konfigurowania procesu ciągłej integracji/ciągłego wdrażania zostały automatycznie utworzone potoki kompilacji i wydania. Możesz zmodyfikować potoki kompilacji i wydania, aby dopasować je do potrzeb swojego zespołu. Aby dowiedzieć się więcej na temat potoku ciągłej integracji/ciągłego wdrażania, zobacz:
 
 > [!div class="nextstepaction"]
 > [Dostosowywanie procesu ciągłego wdrażania](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
-## <a name="videos"></a>Filmy wideo
+## <a name="videos"></a>Wideo
 
 > [!VIDEO https://www.youtube.com/embed/3etwjubReJs]

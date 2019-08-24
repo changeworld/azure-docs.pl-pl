@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2987f8fb116bfcbb1698335c3aca6f1fd8eb633e
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: f2f7e26e2f32ba02db9afc0676a99003717ff585
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717285"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991073"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Co to jest Azure Active Directory Identity Protection (odświeżone)?
 
@@ -49,19 +49,19 @@ Azure AD Identity Protection wykrywa następujące zdarzenia dotyczące ryzyka:
 | Typ zdarzenia o podwyższonym ryzyku | Opis | Typ wykrywania |
 | --- | --- | --- |
 | Nietypowa podróż | Zaloguj się z nietypowej lokalizacji na podstawie ostatnich logowań użytkownika. | W trybie offline |
-| Anonimowy adres IP | Zaloguj się przy użyciu anonimowego adresu IP (na przykład: Przeglądarka tor, Anonymizer sieci VPN). | Czas rzeczywisty |
-| Nieznane właściwości logowania | Zaloguj się przy użyciu właściwości, które nie były ostatnio widziane dla danego użytkownika. | Czas rzeczywisty |
+| Anonimowy adres IP | Zaloguj się przy użyciu anonimowego adresu IP (na przykład: Przeglądarka tor, Anonymizer sieci VPN). | W czasie rzeczywistym |
+| Nieznane właściwości logowania | Zaloguj się przy użyciu właściwości, które nie były ostatnio widziane dla danego użytkownika. | W czasie rzeczywistym |
 | Adres IP połączony ze złośliwym oprogramowaniem | Zaloguj się przy użyciu połączonego adresu IP złośliwego oprogramowania | W trybie offline |
-| Nieujawnione poświadczenia | To zdarzenie ryzyka wskazuje, że ujawniono prawidłowe poświadczenia użytkownika | W trybie offline |
+| Nieujawnione poświadczenia | To zdarzenie ryzyka wskazuje, że nieprawidłowe poświadczenia użytkownika zostały ujawnione | W trybie offline |
 
 ## <a name="types-of-risk"></a>Rodzaje ryzyka 
 
 Ochrona tożsamości jest oparta na dwóch typach ryzyka:
 
-- Ryzyko logowania
+- Ryzyko związane z logowaniem
 - Ryzyko związane z użytkownikiem
 
-### <a name="sign-in-risk"></a>Ryzyko logowania
+### <a name="sign-in-risk"></a>Ryzyko związane z logowaniem
 
 Ryzyko związane z logowaniem reprezentuje prawdopodobieństwo, że dane żądanie uwierzytelnienia nie jest autoryzowane przez właściciela tożsamości.
 
@@ -145,13 +145,17 @@ Aby uzyskać więcej informacji, zobacz [Przypisywanie ról administratorów w A
 >[!NOTE]
 > W trakcie publicznej wersji zapoznawczej ochrony tożsamości (odświeżone) tylko Azure AD — wersja Premium klienci P2 będą mieli dostęp do raportu ryzykownych użytkowników i raport dotyczący ryzykownych logowań.
 
-| Możliwość | Usługa Azure AD — warstwa Premium P2 | Usługa Azure AD — warstwa Premium P1 | Azure AD — wersja Podstawowa/bezpłatnie |
-| --- | --- | --- | --- |
-| Zasady dotyczące ryzyka związanego z użytkownikiem | Yes | Nie | Nie |
-| Zasady dotyczące ryzyka związanego z logowaniem | Tak | Nie | Nie |
-| Raport ryzykownych użytkowników | Pełny dostęp | Ograniczone informacje | Ograniczone informacje |
-| Raport dotyczący ryzykownych logowań | Pełny dostęp | Ograniczone informacje | Ograniczone informacje |
-| Zasady rejestracji w usłudze MFA | Tak | Nie | Nie |
+| Możliwość | Szczegóły | Usługa Azure AD — warstwa Premium P2 | Usługa Azure AD — warstwa Premium P1 | Azure AD — wersja Podstawowa/bezpłatnie |
+| --- | --- | --- | --- | --- |
+| Zasady dotyczące ryzyka | Zasady ryzyka użytkownika (za pośrednictwem ochrony tożsamości) | Tak | Nie | Nie |
+| Zasady dotyczące ryzyka | Zasady dotyczące ryzyka związanego z logowaniem (za pośrednictwem funkcji ochrony tożsamości lub dostępu warunkowego) | Tak | Nie | Nie |
+| Raporty dotyczące zabezpieczeń | Omówienie | Tak | Nie | Nie |
+| Raporty dotyczące zabezpieczeń | Ryzykowni użytkownicy | Pełny dostęp | Ograniczone informacje | Ograniczone informacje |
+| Raporty dotyczące zabezpieczeń | Ryzykowne logowania | Pełny dostęp | Ograniczone informacje | Ograniczone informacje |
+| Raporty dotyczące zabezpieczeń | Wykrywanie ryzyka | Pełny dostęp | Ograniczone informacje | Nie |
+| Powiadomienia | Wykryte alerty dotyczące zagrożonych użytkowników | Tak | Nie | Nie |
+| Powiadomienia | Podsumowanie tygodniowe | Tak | Nie | Nie |
+| | Zasady rejestracji w usłudze MFA | Tak | Nie | Nie |
 
 ## <a name="next-steps"></a>Następne kroki 
 

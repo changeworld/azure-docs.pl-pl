@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
+ms.date: 8/22/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 79a5f9a1269bdfc63d9d0b6fffd8458d011b777b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 13d6eb64b2089cf93f08c294cc9b6a2034b64fa0
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640880"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990557"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Użyj zaleceń Azure Security Center, aby zwiększyć bezpieczeństwo
 Aby zmniejszyć prawdopodobieństwo wystąpienia poważnych zdarzeń zabezpieczeń, można skonfigurować zasady zabezpieczeń, a następnie zaimplementować zalecenia udostępniane przez Azure Security Center. W tym artykule pokazano, jak używać zasad zabezpieczeń i zaleceń w Security Center, aby pomóc w ograniczeniu ataku zabezpieczeń. 
@@ -75,6 +75,6 @@ Zalecenia dotyczące monitorowania w Security Center pomagają wyeliminować luk
 ## <a name="next-steps"></a>Następne kroki
 Upewnij się, że masz proces monitorowania, w którym regularnie sprawdzasz zalecenia w Security Center, aby upewnić się, że zasoby są bezpieczne z upływem czasu.
 
-W tym scenariuszu pokazano, jak używać zasad zabezpieczeń i zaleceń w Security Center, aby pomóc w ograniczeniu ataku zabezpieczeń. Zapoznaj się z scenariuszem reagowania na [zdarzenia](security-center-incident-response.md) , aby dowiedzieć się, jak mieć plan reagowania na zdarzenia przed rozpoczęciem ataku.
+W tym scenariuszu pokazano, jak używać zasad zabezpieczeń i zaleceń w Security Center, aby pomóc w ograniczeniu ataku zabezpieczeń.
 
-Dowiedz się, jak reagować na zagrożenia z odpowiedzią na [zdarzenia](security-center-incident-response.md).
+Dowiedz się, jak reagować na zagrożenia [, aby zarządzać alertami zabezpieczeń i odpowiadać na](security-center-managing-and-responding-alerts.md)nie.

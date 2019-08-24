@@ -4,14 +4,14 @@ description: Wyświetla listę typów zasobów platformy Azure, które można pr
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 07/09/2019
+ms.date: 08/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: 73f4b6fe4714d21c12d2c7bd387cd30f6f711d5a
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: a588d4e4b1978b572488dcd5d53698cbb8f7d311
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624319"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997293"
 ---
 # <a name="move-operation-support-for-resources"></a>Obsługa operacji przenoszenia dla zasobów
 W tym artykule przedstawiono, czy typ zasobu platformy Azure obsługuje operację przenoszenia. Zawiera również informacje dotyczące specjalnych warunków, które należy wziąć pod uwagę podczas przeniesienia zasobu.
@@ -28,6 +28,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft.Authorization](#microsoftauthorization)
 > - [Microsoft. Automation](#microsoftautomation)
 > - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
+> - [Microsoft. AzureData](#microsoftazuredata)
 > - [Microsoft.AzureStack](#microsoftazurestack)
 > - [Microsoft.Backup](#microsoftbackup)
 > - [Microsoft.Batch](#microsoftbatch)
@@ -103,6 +104,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft. Maps](#microsoftmaps)
 > - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
 > - [Microsoft. Media](#microsoftmedia)
+> - [Microsoft. Microservices4Spring](#microsoftmicroservices4spring)
 > - [Microsoft. Migrowanie](#microsoftmigrate)
 > - [Microsoft.NetApp](#microsoftnetapp)
 > - [Microsoft.Network](#microsoftnetwork)
@@ -117,6 +119,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft.ProjectOxford](#microsoftprojectoxford)
 > - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
 > - [Microsoft.Relay](#microsoftrelay)
+> - [Microsoft. ResourceGraph](#microsoftresourcegraph)
 > - [Microsoft.SaaS](#microsoftsaas)
 > - [Microsoft. Scheduler](#microsoftscheduler)
 > - [Microsoft.Search](#microsoftsearch)
@@ -150,400 +153,536 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > - [Microsoft.WindowsVirtualDesktop](#microsoftwindowsvirtualdesktop)
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| domainservices | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | domainservices | Nie | Nie |
+> | domainservices / replicasets | Nie | Nie |
 
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| dzierżaw | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | dzierżaw | Nie | Nie |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| actionrules | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | actionrules | Tak | Tak |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| serwerów | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | serwerów | Tak | Tak |
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| usługa | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | usługa | Tak | Tak |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| configurationstores | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | configurationstores | Tak | Tak |
 
 ## <a name="microsoftappservice"></a>Microsoft.AppService
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| apiapps | Nie | Nie |
-| appidentities | Nie | Nie |
-| bram | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | apiapps | Nie | Nie |
+> | appidentities | Nie | Nie |
+> | bram | Nie | Nie |
 
 > [!IMPORTANT]
 > Zobacz [App Service wskazówki dotyczące przenoszenia](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| policyassignments | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | policyassignments | Nie | Nie |
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| automationaccounts | Tak | Tak |
-| automationaccounts/konfiguracje | Tak | Tak |
-| automationaccounts/elementy Runbook | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | automationaccounts | Tak | Tak |
+> | automationaccounts/konfiguracje | Tak | Tak |
+> | automationaccounts/elementy Runbook | Tak | Tak |
 
 > [!IMPORTANT]
 > Elementy Runbook muszą istnieć w tej samej grupie zasobów co konto usługi Automation.
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| b2cdirectories | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | b2cdirectories | Tak | Tak |
+
+## <a name="microsoftazuredata"></a>Microsoft. AzureData
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | sqlserverregistrations | Nie | Nie |
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| rejestracje | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | rejestracje | Tak | Tak |
 
 ## <a name="microsoftbackup"></a>Microsoft.Backup
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| backupvault | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | backupvault | Nie | Nie |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| batchaccounts | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | batchaccounts | Tak | Tak |
 
 ## <a name="microsoftbatchai"></a>Microsoft.BatchAI
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| oparty | Nie | Nie |
-| fileservers | Nie | Nie |
-| zadania | Nie | Nie |
-| obszary robocze | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | oparty | Nie | Nie |
+> | fileservers | Nie | Nie |
+> | zadania | Nie | Nie |
+> | obszary robocze | Nie | Nie |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| mapapis | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | mapapis | Nie | Nie |
 
 ## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| biztalk | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | biztalk | Tak | Tak |
 
 ## <a name="microsoftblockchain"></a>Microsoft. łańcucha bloków
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| blockchainmembers | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | blockchainmembers | Tak | Tak |
+> | obserwatorzy | Nie | Nie |
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| blueprintassignments | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | blueprintassignments | Nie | Nie |
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| botservices | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | botservices | Tak | Tak |
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| Redis | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | Redis | Tak | Tak |
 
 > [!IMPORTANT]
-> Jeśli wystąpienie usługi Azure cache for Redis jest skonfigurowane przy użyciu sieci wirtualnej, nie można przenieść wystąpienia do innej subskrypcji. Zobacz [ograniczenia przenoszenia sieci wirtualnych](./move-limitations/networking-move-limitations.md).
+> Jeśli wystąpienie usługi Azure cache for Redis jest skonfigurowane przy użyciu sieci wirtualnej, nie można przenieść wystąpienia do innej subskrypcji. Zobacz [ograniczenia dotyczące przenoszenia sieci](./move-limitations/networking-move-limitations.md).
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| profiles | Tak | Tak |
-| Profile/punkty końcowe | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | cdnwebapplicationfirewallpolicies | Nie | Nie |
+> | profiles | Tak | Tak |
+> | Profile/punkty końcowe | Tak | Tak |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| certificateorders | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | certificateorders | Tak | Tak |
 
 > [!IMPORTANT]
 > Zobacz [App Service wskazówki dotyczące przenoszenia](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| domainnames | Tak | Nie |
-| virtualmachines | Tak | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | domainnames | Tak | Nie |
+> | virtualmachines | Tak | Nie |
 
 > [!IMPORTANT]
 > Zobacz [klasyczne wskazówki dotyczące przenoszenia wdrożenia](./move-limitations/classic-model-move-limitations.md). Klasyczne zasoby wdrażania można przenosić między subskrypcjami przy użyciu operacji specyficznych dla tego scenariusza.
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| networksecuritygroups | Nie | Nie |
-| reservedips | Nie | Nie |
-| virtualnetworks | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | networksecuritygroups | Nie | Nie |
+> | reservedips | Nie | Nie |
+> | virtualnetworks | Nie | Nie |
 
 > [!IMPORTANT]
 > Zobacz [klasyczne wskazówki dotyczące przenoszenia wdrożenia](./move-limitations/classic-model-move-limitations.md). Klasyczne zasoby wdrażania można przenosić między subskrypcjami przy użyciu operacji specyficznych dla tego scenariusza.
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| storageaccounts | Tak | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | storageaccounts | Tak | Nie |
 
 > [!IMPORTANT]
 > Zobacz [klasyczne wskazówki dotyczące przenoszenia wdrożenia](./move-limitations/classic-model-move-limitations.md). Klasyczne zasoby wdrażania można przenosić między subskrypcjami przy użyciu operacji specyficznych dla tego scenariusza.
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| konta | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | konta | Tak | Tak |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| availabilitysets | Tak | Tak |
-| dyski | Tak | Tak |
-| znajduj | Nie | Nie |
-| Galerie/obrazy | Nie | Nie |
-| Galerie/obrazy/wersje | Nie | Nie |
-| hostgroups | Nie | Nie |
-| hostgroups/hosty | Nie | Nie |
-| obrazy | Tak | Tak |
-| proximityplacementgroups | Nie | Nie |
-| restorepointcollections | Nie | Nie |
-| sharedvmimages | Nie | Nie |
-| sharedvmimages/wersje | Nie | Nie |
-| migawki | Tak | Tak |
-| virtualmachines | Tak | Tak |
-| virtualmachines/rozszerzenia | Tak | Tak |
-| virtualmachinescalesets | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | availabilitysets | Tak | Tak |
+> | diskencryptionsets | Nie | Nie |
+> | dyski | Tak | Tak |
+> | znajduj | Nie | Nie |
+> | Galerie/obrazy | Nie | Nie |
+> | Galerie/obrazy/wersje | Nie | Nie |
+> | hostgroups | Nie | Nie |
+> | hostgroups/hosty | Nie | Nie |
+> | obrazy | Tak | Tak |
+> | proximityplacementgroups | Nie | Nie |
+> | restorepointcollections | Nie | Nie |
+> | sharedvmimages | Nie | Nie |
+> | sharedvmimages/wersje | Nie | Nie |
+> | migawki | Tak | Tak |
+> | virtualmachines | Tak | Tak |
+> | virtualmachines/rozszerzenia | Tak | Tak |
+> | virtualmachinescalesets | Tak | Tak |
 
 > [!IMPORTANT]
 > Zobacz [Virtual Machines wskazówki dotyczące przenoszenia](./move-limitations/virtual-machines-move-limitations.md).
 
 ## <a name="microsoftcontainer"></a>Microsoft.Container
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| containergroups | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | containergroups | Nie | Nie |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| containergroups | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | containergroups | Nie | Nie |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| wołuje | Tak | Tak |
-| rejestry/BuildTasks | Tak | Tak |
-| rejestry/replikacje | Tak | Tak |
-| rejestry/zadania | Tak | Tak |
-| rejestry/elementy webhook | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | wołuje | Tak | Tak |
+> | rejestry/BuildTasks | Tak | Tak |
+> | rejestry/replikacje | Tak | Tak |
+> | rejestry/zadania | Tak | Tak |
+> | rejestry/elementy webhook | Tak | Tak |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| containerservices | Nie | Nie |
-| managedclusters | Nie | Nie |
-| openshiftmanagedclusters | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | containerservices | Nie | Nie |
+> | managedclusters | Nie | Nie |
+> | openshiftmanagedclusters | Nie | Nie |
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| aplikacje | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | aplikacje | Tak | Tak |
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| konta | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | konta | Nie | Nie |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| łączniki | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | łączniki | Tak | Tak |
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| węzłów | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | węzłów | Tak | Tak |
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| zadania | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | zadania | Nie | Nie |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| databoxedgedevices | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | databoxedgedevices | Nie | Nie |
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| obszary robocze | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | obszary robocze | Nie | Nie |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| wykazy | Tak | Tak |
-| wykazy | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | wykazy | Tak | Tak |
+> | wykazy | Nie | Nie |
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| connectionmanagers | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | connectionmanagers | Nie | Nie |
 
 ## <a name="microsoftdataexchange"></a>Microsoft.DataExchange
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| pakiety | Nie | Nie |
-| pakiety | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | pakiety | Nie | Nie |
+> | pakiety | Nie | Nie |
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| fabryki datafactors | Tak | Tak |
-| fabryki | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | fabryki datafactors | Tak | Tak |
+> | fabryki | Tak | Tak |
 
 ## <a name="microsoftdatalake"></a>Microsoft.DataLake
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| datalakeaccounts | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | datalakeaccounts | Nie | Nie |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| konta | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | konta | Tak | Tak |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| konta | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | konta | Tak | Tak |
 
 ## <a name="microsoftdatamigration"></a>Migracja Microsoft.
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| services | Nie | Nie |
-| usługi/projekty | Nie | Nie |
-| czasów | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | services | Nie | Nie |
+> | usługi/projekty | Nie | Nie |
+> | czasów | Nie | Nie |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| serwerów | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | serwerów | Tak | Tak |
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| serwerów | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | serwerów | Tak | Tak |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| servergroups | Nie | Nie |
-| serwerów | Tak | Tak |
-| serversv2 | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | servergroups | Nie | Nie |
+> | serwerów | Tak | Tak |
+> | serversv2 | Tak | Tak |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| artifactsources | Tak | Tak |
-| wprowadzanie | Tak | Tak |
-| servicetopologie | Tak | Tak |
-| servicetopologie/usługi | Tak | Tak |
-| servicetopologie/usługi/serviceunits | Tak | Tak |
-| kroki | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | artifactsources | Tak | Tak |
+> | wprowadzanie | Tak | Tak |
+> | servicetopologie | Tak | Tak |
+> | servicetopologie/usługi | Tak | Tak |
+> | servicetopologie/usługi/serviceunits | Tak | Tak |
+> | kroki | Tak | Tak |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| elasticpools | Nie | Nie |
-| elasticpools/iothubtenants | Nie | Nie |
-| iothubs | Tak | Tak |
-| provisioningservices | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | elasticpools | Nie | Nie |
+> | elasticpools / iothubtenants | Nie | Nie |
+> | iothubs | Tak | Tak |
+> | provisioningservices | Tak | Tak |
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| Rejestrowanie | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | Rejestrowanie | Tak | Tak |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| labcenters | Nie | Nie |
-| Labs | Tak | Nie |
-| laboratoria/środowiska | Tak | Tak |
-| laboratoria/servicerunner | Tak | Tak |
-| Labs/virtualmachines | Tak | Nie |
-| Uruchamianie | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | labcenters | Nie | Nie |
+> | Labs | Tak | Nie |
+> | laboratoria/środowiska | Tak | Tak |
+> | laboratoria/servicerunner | Tak | Tak |
+> | Labs/virtualmachines | Tak | Nie |
+> | Uruchamianie | Tak | Tak |
 
 ## <a name="microsoftdns"></a>microsoft.dns
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| dnszones | Nie | Nie |
-| dnszones/a | Nie | Nie |
-| dnszones/AAAA | Nie | Nie |
-| dnszones/CNAME | Nie | Nie |
-| dnszones/MX | Nie | Nie |
-| dnszones/PTR | Nie | Nie |
-| dnszones/SRV | Nie | Nie |
-| dnszones/txt | Nie | Nie |
-| trafficmanagerprofiles | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | dnszones | Nie | Nie |
+> | dnszones/a | Nie | Nie |
+> | dnszones/AAAA | Nie | Nie |
+> | dnszones/CNAME | Nie | Nie |
+> | dnszones/MX | Nie | Nie |
+> | dnszones/PTR | Nie | Nie |
+> | dnszones/SRV | Nie | Nie |
+> | dnszones/txt | Nie | Nie |
+> | trafficmanagerprofiles | Nie | Nie |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| databaseaccounts | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | databaseaccounts | Tak | Tak |
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| domeny | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | domeny | Tak | Tak |
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft.EnterpriseKnowledgeGraph
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| services | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | services | Tak | Tak |
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| domeny | Tak | Tak |
-| opisano | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | domeny | Tak | Tak |
+> | opisano | Tak | Tak |
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| oparty | Tak | Tak |
-| przestrzenie nazw | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | oparty | Tak | Tak |
+> | przestrzenie nazw | Tak | Tak |
 
 ## <a name="microsoftgenomics"></a>Microsoft.Genomics
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| konta | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | konta | Nie | Nie |
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| hanainstances | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | hanainstances | Nie | Nie |
+> | sapmonitors | Tak | Tak |
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| oparty | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | oparty | Tak | Tak |
 
 > [!IMPORTANT]
 > Klastry HDInsight można przenieść do nowej subskrypcji lub grupy zasobów. Jednak nie można przenosić między subskrypcjami, zasoby sieciowe połączone z klastrem HDInsight (na przykład sieci wirtualnej, kart interfejsu Sieciowego lub modułu równoważenia obciążenia). Ponadto nie można przenieść do nowej grupy zasobów interfejsu Sieciowego, który jest dołączony do maszyny wirtualnej do klastra.
@@ -551,504 +690,656 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > Podczas przenoszenia klastra usługi HDInsight do nowej subskrypcji, należy najpierw przenieść innych zasobów (np. konta magazynu). Następnie przenieś klaster HDInsight samodzielnie.
 
 ## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| services | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | services | Tak | Tak |
 
 ## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| maszyny | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | maszyny | Nie | Nie |
 
 ## <a name="microsofthybriddata"></a>Microsoft. HybridData
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| datamanagers | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | datamanagers | Tak | Tak |
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| zadania | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | zadania | Tak | Tak |
 
 ## <a name="microsoftinsights"></a>Microsoft. Insights
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| konta | Nie | Nie |
-| actiongroups | Tak | Tak |
-| activitylogalerts | Nie | Nie |
-| alertrules | Tak | Tak |
-| autoscalesettings | Tak | Tak |
-| komponentów | Tak | Tak |
-| guestdiagnosticsettings | Nie | Nie |
-| metricalerts | Nie | Nie |
-| notificationgroups | Nie | Nie |
-| notificationrules | Nie | Nie |
-| scheduledqueryrules | Tak | Tak |
-| testów internetowych | Tak | Tak |
-| skoroszyty | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | konta | Nie | Nie |
+> | actiongroups | Tak | Tak |
+> | activitylogalerts | Nie | Nie |
+> | alertrules | Tak | Tak |
+> | autoscalesettings | Tak | Tak |
+> | komponentów | Tak | Tak |
+> | guestdiagnosticsettings | Nie | Nie |
+> | metricalerts | Nie | Nie |
+> | notificationgroups | Nie | Nie |
+> | notificationrules | Nie | Nie |
+> | scheduledqueryrules | Tak | Tak |
+> | testów internetowych | Tak | Tak |
+> | skoroszyty | Tak | Tak |
 
 > [!IMPORTANT]
 > Upewnij się, że przejście do nowej subskrypcji nie przekracza przydziałów [subskrypcji](../azure-subscription-service-limits.md#azure-monitor-limits).
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| iotapps | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | iotapps | Tak | Tak |
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| checknameavailability | Tak | Tak |
-| graph | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | checknameavailability | Tak | Tak |
+> | graph | Tak | Tak |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| hsmpools | Nie | Nie |
-| magazynów | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | hsmpools | Nie | Nie |
+> | magazynów | Tak | Tak |
 
 > [!IMPORTANT]
 > Magazyny kluczy używane do szyfrowania dysków nie mogą zostać przeniesione do grupy zasobów w tej samej subskrypcji lub w różnych subskrypcjach.
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| oparty | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | oparty | Tak | Tak |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| labaccounts | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | labaccounts | Nie | Nie |
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| konta | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | konta | Nie | Nie |
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| konta | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | konta | Nie | Nie |
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| hostingenvironments | Nie | Nie |
-| integrationaccounts | Tak | Tak |
-| integrationserviceenvironments | Nie | Nie |
-| isolatedenvironments | Nie | Nie |
-| przebieg | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | hostingenvironments | Nie | Nie |
+> | integrationaccounts | Tak | Tak |
+> | integrationserviceenvironments | Nie | Nie |
+> | isolatedenvironments | Nie | Nie |
+> | przebieg | Tak | Tak |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| commitmentplans | Tak | Tak |
-| WebServices | Tak | Nie |
-| obszary robocze | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | commitmentplans | Tak | Tak |
+> | WebServices | Tak | Nie |
+> | obszary robocze | Tak | Tak |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| operationalizationclusters | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | operationalizationclusters | Tak | Tak |
 
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft. MachineLearningExperimentation
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| konta | Nie | Nie |
-| konta/obszary robocze | Nie | Nie |
-| konta/obszary robocze/projekty | Nie | Nie |
-| teamaccounts | Nie | Nie |
-| teamaccounts/obszary robocze | Nie | Nie |
-| teamaccounts/obszary robocze/projekty | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | konta | Nie | Nie |
+> | konta/obszary robocze | Nie | Nie |
+> | konta/obszary robocze/projekty | Nie | Nie |
+> | teamaccounts | Nie | Nie |
+> | teamaccounts/obszary robocze | Nie | Nie |
+> | teamaccounts/obszary robocze/projekty | Nie | Nie |
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| konta | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | konta | Nie | Nie |
 
 ## <a name="microsoftmachinelearningoperationalization"></a>Microsoft. MachineLearningOperationalization
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| hostingaccounts | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | hostingaccounts | Nie | Nie |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| obszary robocze | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | obszary robocze | Nie | Nie |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| resourceidentity | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | resourceidentity | Nie | Nie |
 
 ## <a name="microsoftmaps"></a>Microsoft. Maps
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| konta | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | konta | Tak | Tak |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| classicdevservices | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | classicdevservices | Nie | Nie |
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| MediaServices | Tak | Tak |
-| MediaServices/liveevents | Tak | Tak |
-| MediaServices/streamingendpoints | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | MediaServices | Tak | Tak |
+> | MediaServices/liveevents | Tak | Tak |
+> | MediaServices/streamingendpoints | Tak | Tak |
+
+## <a name="microsoftmicroservices4spring"></a>Microsoft. Microservices4Spring
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | appclusters | Nie | Nie |
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| assessmentprojects | Nie | Nie |
-| migrateprojects | Nie | Nie |
-| projektami | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | assessmentprojects | Nie | Nie |
+> | migrateprojects | Nie | Nie |
+> | projektami | Nie | Nie |
 
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| netappaccounts | Nie | Nie |
-| netappaccounts/capacitypools | Nie | Nie |
-| netappaccounts/capacitypools/volumes | Nie | Nie |
-| netappaccounts/capacitypools/woluminy/mounttargets | Nie | Nie |
-| netappaccounts/capacitypools/volumes/snapshots | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | netappaccounts | Nie | Nie |
+> | netappaccounts / capacitypools | Nie | Nie |
+> | netappaccounts/capacitypools/woluminy | Nie | Nie |
+> | netappaccounts/capacitypools/woluminy/mounttargets | Nie | Nie |
+> | netappaccounts/capacitypools/woluminy/migawki | Nie | Nie |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| applicationgateways | Nie | Nie |
-| applicationgatewaywebapplicationfirewallpolicies | Nie | Nie |
-| applicationsecuritygroups | Tak | Tak |
-| azurefirewalls | Tak | Tak |
-| bastionhosts | Nie | Nie |
-| połączenia | Tak | Tak |
-| ddoscustompolicies | Tak | Tak |
-| ddosprotectionplans | Nie | Nie |
-| dnszones | Tak | Tak |
-| expressroutecircuits | Nie | Nie |
-| expressroutecrossconnections | Nie | Nie |
-| expressroutegateways | Nie | Nie |
-| expressrouteports | Nie | Nie |
-| usługi Frontdoor | Nie | Nie |
-| frontdoorwebapplicationfirewallpolicies | Nie | Nie |
-| loadbalancers | Tak — podstawowa jednostka SKU<br>Niestandardowa jednostka SKU | Tak — podstawowa jednostka SKU<br>Niestandardowa jednostka SKU |
-| localnetworkgateways | Tak | Tak |
-| natgateways | Tak | Tak |
-| networkintentpolicies | Tak | Tak |
-| networkinterfaces | Tak | Tak |
-| networkprofiles | Nie | Nie |
-| networksecuritygroups | Tak | Tak |
-| networkwatchers | Tak | Tak |
-| networkwatchers/connectionmonitors | Tak | Tak |
-| networkwatchers/soczewki | Tak | Tak |
-| networkwatchers/pingmeshes | Tak | Tak |
-| p2svpngateways | Nie | Nie |
-| privatednszones | Tak | Tak |
-| privatednszones/virtualnetworklinks | Tak | Tak |
-| privateendpoints | Nie | Nie |
-| privatelinkservices | Nie | Nie |
-| adresów publicipaddress | Tak — podstawowa jednostka SKU<br>Niestandardowa jednostka SKU | Tak — podstawowa jednostka SKU<br>Niestandardowa jednostka SKU |
-| publicipprefixes | Tak | Tak |
-| routefilters | Nie | Nie |
-| routetables | Tak | Tak |
-| securegateways | Tak | Tak |
-| serviceendpointpolicies | Tak | Tak |
-| trafficmanagerprofiles | Tak | Tak |
-| virtualhubs | Nie | Nie |
-| virtualnetworkgateways | Tak | Tak |
-| virtualnetworks | Tak | Tak |
-| virtualnetworktaps | Nie | Nie |
-| virtualwans | Nie | Nie |
-| vpngateways | Nie | Nie |
-| vpnsites | Nie | Nie |
-| webapplicationfirewallpolicies | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | applicationgateways | Nie | Nie |
+> | applicationgatewaywebapplicationfirewallpolicies | Nie | Nie |
+> | applicationsecuritygroups | Tak | Tak |
+> | azurefirewalls | Tak | Tak |
+> | bastionhosts | Nie | Nie |
+> | połączenia | Tak | Tak |
+> | ddoscustompolicies | Tak | Tak |
+> | ddosprotectionplans | Nie | Nie |
+> | dnszones | Tak | Tak |
+> | expressroutecircuits | Nie | Nie |
+> | expressroutecrossconnections | Nie | Nie |
+> | expressroutegateways | Nie | Nie |
+> | expressrouteports | Nie | Nie |
+> | usługi Frontdoor | Nie | Nie |
+> | frontdoorwebapplicationfirewallpolicies | Nie | Nie |
+> | loadbalancers | Tak — podstawowa jednostka SKU<br>Niestandardowa jednostka SKU | Tak — podstawowa jednostka SKU<br>Niestandardowa jednostka SKU |
+> | localnetworkgateways | Tak | Tak |
+> | natgateways | Tak | Tak |
+> | networkintentpolicies | Tak | Tak |
+> | networkinterfaces | Tak | Tak |
+> | networkprofiles | Nie | Nie |
+> | networksecuritygroups | Tak | Tak |
+> | networkwatchers | Tak | Tak |
+> | networkwatchers / connectionmonitors | Tak | Tak |
+> | networkwatchers/soczewki | Tak | Tak |
+> | networkwatchers / pingmeshes | Tak | Tak |
+> | p2svpngateways | Nie | Nie |
+> | privatednszones | Tak | Tak |
+> | privatednszones / virtualnetworklinks | Tak | Tak |
+> | privateendpoints | Nie | Nie |
+> | privatelinkservices | Nie | Nie |
+> | adresów publicipaddress | Tak — podstawowa jednostka SKU<br>Niestandardowa jednostka SKU | Tak — podstawowa jednostka SKU<br>Niestandardowa jednostka SKU |
+> | publicipprefixes | Tak | Tak |
+> | routefilters | Nie | Nie |
+> | routetables | Tak | Tak |
+> | securegateways | Tak | Tak |
+> | serviceendpointpolicies | Tak | Tak |
+> | trafficmanagerprofiles | Tak | Tak |
+> | virtualhubs | Nie | Nie |
+> | virtualnetworkgateways | Tak | Tak |
+> | virtualnetworks | Tak | Tak |
+> | virtualnetworktaps | Nie | Nie |
+> | virtualwans | Nie | Nie |
+> | vpngateways (wirtualna sieć WAN) | Nie | Nie |
+> | vpnsites (wirtualna sieć WAN) | Nie | Nie |
+> | webapplicationfirewallpolicies | Tak | Tak |
 
 > [!IMPORTANT]
 > Zobacz [wskazówki dotyczące przenoszenia sieci](./move-limitations/networking-move-limitations.md).
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| przestrzenie nazw | Tak | Tak |
-| przestrzenie nazw/notificationhubs | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | przestrzenie nazw | Tak | Tak |
+> | przestrzenie nazw/notificationhubs | Tak | Tak |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| obszary robocze | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | obszary robocze | Tak | Tak |
 
 > [!IMPORTANT]
 > Upewnij się, że przejście do nowej subskrypcji nie przekracza przydziałów [subskrypcji](../azure-subscription-service-limits.md#azure-monitor-limits).
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| managementconfigurations | Tak | Tak |
-| rozwiązania | Tak | Tak |
-| wyświetlenia | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | managementconfigurations | Tak | Tak |
+> | rozwiązania | Tak | Tak |
+> | wyświetlenia | Tak | Tak |
 
 ## <a name="microsoftpeering"></a>Microsoft. Komunikacja równorzędna
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| komunikacje równorzędne | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | komunikacje równorzędne | Nie | Nie |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| pulpitów nawigacyjnych | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | pulpitów nawigacyjnych | Tak | Tak |
 
 ## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| rootresources | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | rootresources | Nie | Nie |
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| workspacecollections | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | workspacecollections | Tak | Tak |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| produkcyjnych | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | produkcyjnych | Tak | Tak |
 
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| konta | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | konta | Nie | Nie |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| magazynów | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | magazynów | Tak | Tak |
 
 > [!IMPORTANT]
 > Zobacz [Recovery Services wskazówki dotyczące przenoszenia](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| przestrzenie nazw | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | przestrzenie nazw | Tak | Tak |
+
+## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | — zapytania | Tak | Tak |
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| aplikacje | Tak | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | aplikacje | Tak | Nie |
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| przepływy | Tak | Tak |
-| jobcollections | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | przepływy | Tak | Tak |
+> | jobcollections | Tak | Tak |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| searchservices | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | searchservices | Tak | Tak |
 
 > [!IMPORTANT]
 > Nie można przenieść kilku zasobów wyszukiwania w różnych regionach w jednej operacji. Zamiast tego należy przenieść je w osobnych operacjach.
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| iotsecuritysolutions | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | iotsecuritysolutions | Tak | Tak |
+> | playbookconfigurations | Nie | Nie |
 
 ## <a name="microsoftservermanagement"></a>Microsoft.ServerManagement
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| bram | Nie | Nie |
-| węzły | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | bram | Nie | Nie |
+> | węzły | Nie | Nie |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| przestrzenie nazw | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | przestrzenie nazw | Tak | Tak |
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| aplikacje | Nie | Nie |
-| oparty | Tak | Tak |
-| containergroups | Nie | Nie |
-| containergroupsets | Nie | Nie |
-| edgeclusters | Nie | Nie |
-| sieci | Nie | Nie |
-| secretstores | Nie | Nie |
-| woluminy | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | aplikacje | Nie | Nie |
+> | oparty | Tak | Tak |
+> | klastry/aplikacje | Nie | Nie |
+> | containergroups | Nie | Nie |
+> | containergroupsets | Nie | Nie |
+> | edgeclusters | Nie | Nie |
+> | sieci | Nie | Nie |
+> | secretstores | Nie | Nie |
+> | woluminy | Nie | Nie |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| aplikacje | Tak | Tak |
-| containergroups | Nie | Nie |
-| bram | Tak | Tak |
-| sieci | Tak | Tak |
-| wpisy tajne | Tak | Tak |
-| woluminy | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | aplikacje | Tak | Tak |
+> | containergroups | Nie | Nie |
+> | bram | Tak | Tak |
+> | sieci | Tak | Tak |
+> | wpisy tajne | Tak | Tak |
+> | woluminy | Tak | Tak |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| SignalR | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | SignalR | Tak | Tak |
 
 ## <a name="microsoftsiterecovery"></a>Microsoft.SiteRecovery
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| siterecoveryvault | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | siterecoveryvault | Nie | Nie |
 
 > [!IMPORTANT]
 > Zobacz [Recovery Services wskazówki dotyczące przenoszenia](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| appliancedefinitions | Nie | Nie |
-| gotowania | Nie | Nie |
-| applicationdefinitions | Nie | Nie |
-| aplikacje | Nie | Nie |
-| jitrequests | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | appliancedefinitions | Nie | Nie |
+> | gotowania | Nie | Nie |
+> | applicationdefinitions | Nie | Nie |
+> | aplikacje | Nie | Nie |
+> | jitrequests | Nie | Nie |
 
 ## <a name="microsoftsql"></a>Microsoft.Sql
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| instancepools | Nie | Nie |
-| managedinstances | Nie | Nie |
-| ManagedInstances/bazy danych | Nie | Nie |
-| serwerów | Tak | Tak |
-| Serwery/bazy danych | Tak | Tak |
-| serwery/elasticpools | Tak | Tak |
-| virtualclusters | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | instancepools | Nie | Nie |
+> | managedinstances | Nie | Nie |
+> | ManagedInstances/bazy danych | Nie | Nie |
+> | serwerów | Tak | Tak |
+> | Serwery/bazy danych | Tak | Tak |
+> | serwery/elasticpools | Tak | Tak |
+> | virtualclusters | Tak | Tak |
 
 > [!IMPORTANT]
 > Baza danych i serwer muszą znajdować się w tej samej grupie zasobów. Gdy przesuniesz programu SQL server, jego baz danych są również przenoszone. To zachowanie ma zastosowanie do baz danych Azure SQL Database i Azure SQL Data Warehouse.
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| sqlvirtualmachinegroups | Tak | Tak |
-| sqlvirtualmachines | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | sqlvirtualmachinegroups | Tak | Tak |
+> | sqlvirtualmachines | Tak | Tak |
 
 ## <a name="microsoftsqlvm"></a>Microsoft.SqlVM
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| dwvm | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | dwvm | Nie | Nie |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| storageaccounts | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | storageaccounts | Tak | Tak |
 
 ## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| pamięci podręcznych | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | pamięci podręcznych | Nie | Nie |
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| storagesyncservices | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | storagesyncservices | Tak | Tak |
 
 ## <a name="microsoftstoragesyncdev"></a>Microsoft.StorageSyncDev
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| storagesyncservices | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | storagesyncservices | Nie | Nie |
 
 ## <a name="microsoftstoragesyncint"></a>Microsoft.StorageSyncInt
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| storagesyncservices | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | storagesyncservices | Nie | Nie |
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| skonfigurowany | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | skonfigurowany | Nie | Nie |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| streamingjobs | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | streamingjobs | Tak | Tak |
 
 > [!IMPORTANT]
 > Nie można przenieść zadań Stream Analytics, gdy stan jest uruchomiony.
 
 ## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft.StreamAnalyticsExplorer
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| wiejski | Nie | Nie |
-| środowiska/źródła zdarzeń | Nie | Nie |
-| wystąpienia | Nie | Nie |
-| wystąpienia/środowiska | Nie | Nie |
-| wystąpienia/środowiska/obiekty EventSource | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | wiejski | Nie | Nie |
+> | środowiska/źródła zdarzeń | Nie | Nie |
+> | wystąpienia | Nie | Nie |
+> | wystąpienia/środowiska | Nie | Nie |
+> | wystąpienia/środowiska/obiekty EventSource | Nie | Nie |
 
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| providerregistrations | Nie | Nie |
-| zasoby | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | providerregistrations | Nie | Nie |
+> | zasoby | Nie | Nie |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| wiejski | Tak | Tak |
-| środowiska/źródła zdarzeń | Tak | Tak |
-| środowiska/referencedatasets | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | wiejski | Tak | Tak |
+> | środowiska/źródła zdarzeń | Tak | Tak |
+> | środowiska/referencedatasets | Tak | Tak |
 
 ## <a name="microsofttoken"></a>Microsoft. token
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| przechowywać | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | przechowywać | Nie | Nie |
 
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| imagetemplates | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | imagetemplates | Nie | Nie |
 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| konto | Tak | Tak |
-| konto/rozszerzenie | Tak | Tak |
-| konto/projekt | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | konto | Tak | Tak |
+> | konto/rozszerzenie | Tak | Tak |
+> | konto/projekt | Tak | Tak |
 
 > [!IMPORTANT]
 > Aby zmienić subskrypcję usługi Azure DevOps, zobacz [zmiana subskrypcji platformy Azure używanej do](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)rozliczania.
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft. VMwareCloudSimple
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| dedicatedcloudnodes | Tak | Tak |
-| dedicatedcloudservices | Tak | Tak |
-| virtualmachines | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | dedicatedcloudnodes | Tak | Tak |
+> | dedicatedcloudservices | Tak | Tak |
+> | virtualmachines | Tak | Tak |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| Certyfikaty | Nie | Tak |
-| connectiongateways | Tak | Tak |
-| połączenia | Tak | Tak |
-| customapis | Tak | Tak |
-| hostingenvironments | Nie | Nie |
-| dopuszczalna | Tak | Tak |
-| lokacje | Tak | Tak |
-| sites/premieraddons | Tak | Tak |
-| Lokacje/miejsca | Tak | Tak |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | Certyfikaty | Nie | Tak |
+> | connectiongateways | Tak | Tak |
+> | połączenia | Tak | Tak |
+> | customapis | Tak | Tak |
+> | hostingenvironments | Nie | Nie |
+> | dopuszczalna | Tak | Tak |
+> | lokacje | Tak | Tak |
+> | Lokacje/premieraddons | Tak | Tak |
+> | Lokacje/miejsca | Tak | Tak |
 
 > [!IMPORTANT]
 > Zobacz [App Service wskazówki dotyczące przenoszenia](./move-limitations/app-service-move-limitations.md).
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| deviceservices | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | deviceservices | Nie | Nie |
 
 ## <a name="microsoftwindowsvirtualdesktop"></a>Microsoft.WindowsVirtualDesktop
-| Typ zasobu | Resource group | Subscription |
-| ------------- | ----------- | ---------- |
-| applicationgroups | Nie | Nie |
-| hostpools | Nie | Nie |
-| obszary robocze | Nie | Nie |
+
+> [!div class="mx-tableFixed"]
+> | Typ zasobu | Resource group | Subscription |
+> | ------------- | ----------- | ---------- |
+> | applicationgroups | Nie | Nie |
+> | hostpools | Nie | Nie |
+> | obszary robocze | Nie | Nie |
 
 ## <a name="third-party-services"></a>Usługi innych firm
 

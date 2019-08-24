@@ -11,44 +11,44 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/29/2019
+ms.date: 08/22/2019
 ms.author: juliako
-ms.openlocfilehash: 5979e34e7c186a0484c8db2d432a3c57a5ed1d15
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 352b42099bcd832792aad2fa24dca3e14525dc06
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679153"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69990629"
 ---
 # <a name="dynamic-packaging"></a>Dynamiczne tworzenie pakietów
 
-Microsoft Azure Media Services może służyć do dostarczania wielu formatów plików źródłowych multimediów, formatów przesyłania strumieniowego multimediów i formatów ochrony zawartości do różnych technologii klienta (na przykład iOS i XBOX). Ci klienci znają różne protokoły, na przykład system iOS wymaga formatu HTTP Live Streaming (HLS), a konsola Xbox wymaga Smooth Streaming. Jeśli masz zestaw plików MP4 z adaptacyjną szybkością transmisji bitów (z nośnikami ISO 14496-12) lub zestaw z adaptacyjną szybkością transmisji bitów Smooth Streaming plików, które chcesz obsłużyć klientom znającym HLS, PAUZę MPEG lub Smooth Streaming, możesz skorzystać z funkcji *dynamicznych Pakowanie*. Pakiet jest niezależny od do rozdzielczości wideo, a SD/HD/UHD-4K są obsługiwane.
+Microsoft Azure Media Services może służyć do kodowania wielu formatów plików źródłowych multimediów i dostarczania ich za pośrednictwem różnych protokołów przesyłania strumieniowego z ochroną zawartości lub bez niej, aby uzyskać dostęp do wszystkich głównych urządzeń (na przykład urządzeń z systemem iOS lub Android). Ci klienci rozumieją różne protokoły, na przykład system iOS wymaga dostarczania strumieni w formacie HTTP Live Streaming (HLS), a urządzenia z systemem Android obsługują HLS, a także KRESKę MPEG. Aby przygotować pliki źródłowe do dostarczenia przez przesyłanie strumieniowe z adaptacyjną szybkością transmisji [](encoding-concept.md) bitów, należy je zakodować do zestawu wielu szybkości transmisji bitów (nazywanego również adaptacyjną szybkością transmisji bitów) MP4 (pliki ISO Base Media 14496-12). Z tego zestawu plików MP4 można dostarczyć wideo za pośrednictwem HLS lub MPEG-MYŚLNIKa lub Smooth Streaming protokołów przy użyciu **dynamicznego tworzenia pakietów**.
 
 W Media Services [punkt końcowy przesyłania strumieniowego](streaming-endpoint-concept.md) reprezentuje dynamiczny (just-in-Time) pakiet i pierwotną usługę, która umożliwia dostarczanie zawartości na żywo i na żądanie bezpośrednio do aplikacji odtwarzacza klienta przy użyciu jednego z popularnych protokołów multimediów przesyłania strumieniowego (HLS lub KRESKA). Dynamiczne pakowanie to funkcja, która jest standardem dla wszystkich **punktów końcowych przesyłania strumieniowego** (Standard lub Premium). 
 
-Aby korzystać z funkcji dynamicznego tworzenia pakietów, musisz mieć [zasób](assets-concept.md) z zestawem plików MP4 z adaptacyjną szybkością transmisji bitów i plików konfiguracji przesyłania strumieniowego (. ISM,. ISMC,. MPI itp.). Jednym ze sposobów uzyskiwania plików jest kodowanie pliku mezzanine (źródłowego) za pomocą usługi Media Services. Aby udostępnić wideo w zakodowanym elemencie zawartości klientom do odtwarzania, należy utworzyć [lokalizator przesyłania strumieniowego](streaming-locators-concept.md) i tworzyć adresy URL przesyłania strumieniowego. Następnie w oparciu o określony format w manifeście klienta przesyłania strumieniowego (HLS, myślnik lub gładki) otrzymasz strumień w wybranym protokole.
+Aby skorzystać z funkcji **dynamicznego tworzenia pakietów**, musisz mieć **zasób** z zestawem plików MP4 z adaptacyjną szybkością transmisji bitów i plików konfiguracji przesyłania strumieniowego, które są wymagane przez Media Servicesgo dynamicznego tworzenia pakietów. Jednym ze sposobów uzyskiwania plików jest kodowanie pliku mezzanine (źródłowego) za pomocą usługi Media Services. Aby udostępnić wideo w zakodowanym elemencie zawartości klientom do odtwarzania, należy utworzyć **lokalizator przesyłania strumieniowego** i tworzyć adresy URL przesyłania strumieniowego. Następnie w oparciu o określony format w manifeście klienta przesyłania strumieniowego (HLS, PAUZy MPEG lub Smooth Streaming) otrzymasz strumień w wybranym protokole.
 
 Dzięki temu wystarczy przechowywać i opłacać pliki w jednym formacie magazynu, a usługa Media Services utworzy oraz udostępni właściwą odpowiedź na podstawie żądań klienta. 
 
-W Media Services, dynamiczne pakowanie jest używane niezależnie od tego, czy przesyłasz strumieniowo na żywo, czy na żądanie. 
+W Media Services, dynamiczne pakowanie jest używane do przesyłania strumieniowego wideo na żywo lub na żądanie. 
 
 > [!NOTE]
 > Obecnie nie można zarządzać zasobami w wersji 3 z witryny Azure Portal. Użyj [interfejsu API REST](https://aka.ms/ams-v3-rest-ref), [interfejsu wiersza polecenia](https://aka.ms/ams-v3-cli-ref) lub jednego z obsługiwanych [zestawów SDK](media-services-apis-overview.md#sdks).
 
 ## <a name="on-demand-streaming-workflow"></a>Przepływ pracy przesyłania strumieniowego na żądanie
 
-Oto typowy przepływ pracy dla Media Services przesyłania strumieniowego na żądanie z pakietem dynamicznym:
+Poniżej przedstawiono typowy przepływ pracy przesyłania strumieniowego Media Services, w którym jest używane dynamiczne pakowanie wraz ze standardowym koderem w Azure Media Services.
 
-1. Przekaż plik danych wejściowych lub źródłowych (nazywany plikem *Mezzanine* ). Przykłady obejmują plik MP4, MOV lub MXF. 
-1. Koduj plik w formacie Mezzanine do H. 264 zbiorów z adaptacyjną szybkością transmisji bitów. 
+1. Przekaż plik wejściowy, taki jak plik QuickTime/MOV lub MXF (Aby uzyskać listę obsługiwanych formatów, zobacz [formaty obsługiwane przez Media Encoder Standard](media-encoder-standard-formats.md). Jest on również nazywany plikem Mezzanine lub source.
+1. [Koduj](#encode-to-adaptive-bitrate-mp4s) plik Mezzanine do zestawu H. 264/AAC MP4 z adaptacyjną szybkością transmisji bitów. 
 1. Opublikuj element wyjściowy z adaptacyjną szybkością transmisji bitów. Publikujesz, tworząc lokalizator przesyłania strumieniowego.
-1. Tworzenie adresów URL przeznaczonych dla różnych formatów (HLS, MPEG-KRESKa i Smooth Streaming). Punkt końcowy przesyłania strumieniowego zajmuje się zachowaniem prawidłowego manifestu i żądań dla różnych formatów.
+1. Tworzenie adresów URL przeznaczonych dla różnych formatów (HLS, MPEG-KRESKa i Smooth Streaming). **Punkt końcowy przesyłania strumieniowego** zajmie się zachowaniem prawidłowego manifestu i żądań dla wszystkich tych formatów.
 
-Ten diagram przedstawia przepływ pracy przesyłania strumieniowego na żądanie z użyciem dynamicznego tworzenia pakietów:
+Na poniższym diagramie przedstawiono strumień przesyłania strumieniowego na żądanie z dynamicznym przepływem pracy tworzenia pakietów.
 
 ![Diagram przepływu pracy na potrzeby przesyłania strumieniowego na żądanie z użyciem dynamicznego tworzenia pakietów](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
-### <a name="encoding-to-adaptive-bitrate-mp4s"></a>Kodowanie do adaptacyjnej szybkości transmisji bitów pliki MP4
+### <a name="encode-to-adaptive-bitrate-mp4s"></a>Kodowanie do adaptacyjnej szybkości transmisji bitów pliki MP4
 
 W poniższych artykułach przedstawiono przykłady [kodowania wideo przy użyciu Media Services](encoding-concept.md):
 
@@ -93,14 +93,15 @@ Możesz użyć tych protokołów dostarczania dla zawartości w Media Services d
 |MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
 |Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
 
-## <a name="delivery-codecs-support"></a>Obsługa kodeków dostarczania 
-
-### <a name="video-codecs"></a>Kodery-dekoder wideo
+## <a name="video-codecs-supported-by-dynamic-packaging"></a>Kodery-dekoder wideo obsługiwane przez pakowanie dynamiczne
 
 Pakowanie dynamiczne obsługuje następujące kodeki wideo:
 * Pliki MP4, które zawierają wideo zakodowane za pomocą [H. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC lub avc1) lub [H. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 lub hvc1).
 
-### <a name="audio-codecs"></a>Kodery-dekoder audio
+> [!NOTE]
+> Rozdzielczości do 4 KB i szybkości klatek do 60 klatek/s zostały przetestowane przy użyciu dynamicznego tworzenia pakietów. [Koder w warstwie Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) obsługuje kodowanie do H. 265 za pośrednictwem starszych interfejsów API v2. Skontaktuj się amshelp@microsoft.com z nami, jeśli masz pytania dotyczące tego tematu. 
+
+## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>Kodery-dekoder audio obsługiwane przez pakowanie dynamiczne
 
 Pakowanie dynamiczne obsługuje następujące protokoły audio opisane poniżej:
 
@@ -109,7 +110,10 @@ Pakowanie dynamiczne obsługuje następujące protokoły audio opisane poniżej:
 
 Dynamiczne pakowanie nie obsługuje plików zawierających audio [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) (jest to starszy koder-dekoder).
 
-#### <a name="mp4-files"></a>Pliki MP4
+> [!NOTE]
+> [Koder w warstwie Premium](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) obsługuje kodowanie do Dolby Digital Plus, za pośrednictwem starszych interfejsów API v2. Skontaktuj się amshelp@microsoft.com z nami, jeśli masz pytania dotyczące tego tematu. 
+
+### <a name="mp4-files"></a>Pliki MP4
 
 Dynamiczne pakowanie obsługuje pliki MP4, które zawierają dźwięki kodowane przy użyciu następujących protokołów: 
 
@@ -126,7 +130,7 @@ Dynamiczne pakowanie obsługuje pliki MP4, które zawierają dźwięki kodowane 
     * DTS Express (dtse)
     * DTS — bezstratny dysk HD (bez rdzenia) (DTSL)
 
-#### <a name="multiple-audio-tracks"></a>Wiele ścieżek audio
+### <a name="multiple-audio-tracks"></a>Wiele ścieżek audio
 
 Dynamiczne pakowanie obsługuje ścieżki wielu audio dla danych wyjściowych HLS (w wersji 4 lub nowszej) dla zasobów przesyłania strumieniowego z wieloma dźwiękami i wieloma językami.
 

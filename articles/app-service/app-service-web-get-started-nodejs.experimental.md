@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/21/2019
+ms.date: 08/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 237f498d1ebe2b402c86f1a4aed66a7ed443ccfa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f70699c104f2649969159c3cf4a5c5564c11692e
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66139234"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996877"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Tworzenie aplikacji internetowej Node.js na platformie Azure
 
@@ -45,7 +45,7 @@ W usłudze Cloud Shell utwórz katalog Szybki start, a następnie przejdź do ni
 ```azurecli-interactive
 mkdir quickstart
 
-cd quickstart
+cd $HOME/quickstart
 ```
 
 Uruchom następujące polecenie, aby sklonować przykładowe repozytorium aplikacji na komputer lokalny.
@@ -72,7 +72,7 @@ Checking connectivity... done.
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-scus.md)]
 
-## <a name="create-a-web-app"></a>Utwórz aplikację internetową
+## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
 
 W usłudze Cloud Shell utwórz aplikację internetową w planie usługi App Service `myAppServicePlan` za pomocą polecenia [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create).
 
@@ -194,7 +194,7 @@ Menu po lewej stronie zawiera różne strony służące do konfigurowania aplika
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Środowisko Node.js z bazą danych MongoDB](app-service-web-tutorial-nodejs-mongodb-app.md)

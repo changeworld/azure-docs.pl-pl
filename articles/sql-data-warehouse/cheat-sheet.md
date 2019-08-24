@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
-ms.date: 04/17/2018
+ms.date: 08/23/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 38d353541b233f3cd9466e8dcf6c2b84083bd859
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 6c198b6d5e9ecfed3f36ddc3be831af85a913ca5
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515785"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995834"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Ściągawka dotycząca usługi Azure SQL Data Warehouse
 Ta ściągawka zawiera przydatne porady i wskazówki dotyczące kompilowania rozwiązań usługi Azure SQL Data Warehouse. Przed rozpoczęciem pracy zapoznaj się ze szczegółowymi informacjami na temat poszczególnych kroków w artykule [Azure SQL Data Warehouse Workload Patterns and Anti-Patterns (Wzorce i antywzorce obciążeń usługi Azure SQL Data Warehouse)](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns). Opisano w nim elementy wchodzące i niewchodzące w skład usługi SQL Data Warehouse.
@@ -37,7 +37,7 @@ Wcześniejsza znajomość typów operacji pomaga zoptymalizować projekt tabel.
 
 Najpierw załaduj dane do usługi [Azure Data Lake Store](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) lub magazynu Azure Blob Storage. Następnie użyj programu PolyBase, aby załadować dane do magazynu SQL Data Warehouse w tabeli tymczasowej. Użyj następującej konfiguracji:
 
-| Projekt | Zalecenie |
+| Projektuj | Zalecenie |
 |:--- |:--- |
 | Dystrybucja | Działanie okrężne |
 | Indeksowanie | Sterta |
@@ -96,9 +96,11 @@ Dowiedz się więcej o [partycjach].
 
 ## <a name="incremental-load"></a>Ładowanie przyrostowe
 
-Jeśli planujesz ładować dane przyrostowo, najpierw upewnij się, że przydzielasz większe klasy zasobów na potrzeby ładowania danych. Zalecamy automatyzowanie potoków ELT do usługi SQL Data Warehouse przy użyciu programu PolyBase i pliku ADF w wersji V2.
+Jeśli planujesz ładować dane przyrostowo, najpierw upewnij się, że przydzielasz większe klasy zasobów na potrzeby ładowania danych.  Jest to szczególnie ważne podczas ładowania do tabel z klastrowanymi indeksami magazynu kolumn.  Zobacz [klasy zasobów](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management) , aby uzyskać więcej szczegółów.  
 
-W przypadku dużych partii aktualizacji danych historycznych najpierw usuń powiązane dane. Następnie przeprowadź zbiorcze wstawianie nowych danych. Takie podejście dwuetapowe jest bardziej wydajne.
+Zalecamy automatyzowanie potoków ELT do usługi SQL Data Warehouse przy użyciu programu PolyBase i pliku ADF w wersji V2.
+
+W przypadku dużej partii aktualizacji danych historycznych Rozważ użycie [CTAs](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) , aby napisać dane, które mają być przechowywane w tabeli, a nie za pomocą instrukcji INSERT, Update i DELETE.
 
 ## <a name="maintain-statistics"></a>Prowadzenie statystyk
  Do momentu ogólnego udostępnienia statystyk automatycznych usługa SQL Data Warehouse wymaga ręcznej obsługi statystyk. Ważne jest aktualizowanie statystyk w miarę pojawiania się kolejnych *znaczących* zmian danych. Ułatwia to optymalizowanie planów zapytań. Jeśli okaże się, że obsługa wszystkich statystyk trwa zbyt długo, należy przemyśleć dokładnie wybór kolumn ze statystykami. 
@@ -157,7 +159,7 @@ Wdrażaj szprychy za pomocą jednego kliknięcia w bazach danych SQL Database z 
 <!--Other Web references-->
 [typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/
 [is and is not]:https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
-[migracji danych]:https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
+[migracji danych]: https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
 
 [Azure Data Lake Store]: ../data-factory/connector-azure-data-lake-store.md
 [sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql

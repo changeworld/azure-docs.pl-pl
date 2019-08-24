@@ -8,18 +8,18 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 151eb535e70bd485c978ac21539c784bbea0a532
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 9331473402ddd22180df3b404824969360d48164
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69973233"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69995812"
 ---
 # <a name="opc-vault-architecture"></a>Architektura magazynu OPC
 
 Ten artykuł zawiera omówienie **mikrousługi magazynu OPC** oraz **magazynu OPC IoT Edge**.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Aplikacje OPC UA używają certyfikatów wystąpień aplikacji, aby zapewnić zabezpieczenia na poziomie aplikacji. Bezpieczne połączenie jest nawiązywane za pomocą kryptografii asymetrycznej, dla którego certyfikaty aplikacji zapewniają parę kluczy publicznych i prywatnych. Certyfikaty mogą być podpisane z podpisem własnym lub mogą być podpisane przez urząd certyfikacji.
 
@@ -88,3 +88,10 @@ Aby zapewnić obsługę globalnego serwera odnajdywania sieci, moduł magazynu O
 ## <a name="yet-unsupported-features"></a>Jeszcze Nieobsługiwane funkcje
 
 **(*)** jeszcze nieobsługiwane.
+
+## <a name="next-steps"></a>Następne kroki
+
+Teraz, kiedy już wiesz o architekturze magazynu OPC, Oto sugerowany następny krok:
+
+> [!div class="nextstepaction"]
+> [Kompilowanie i wdrażanie magazynu OPC](howto-opc-vault-deploy.md)

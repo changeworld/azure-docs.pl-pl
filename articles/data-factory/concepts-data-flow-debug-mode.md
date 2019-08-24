@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 945d123c0901722a527e7cc8181c91f09e4e95ec
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 71e08f00600bebcc21eba32d991353c9bcaeaa97
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014523"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991925"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapowanie trybu debugowania przepływu danych
 
@@ -53,7 +53,14 @@ Po zakończeniu debugowania na karcie Podgląd danych zostanie wystawiony dolny 
 
 ![Podgląd danych](media/data-flow/datapreview.png "Podgląd danych")
 
+> [!NOTE]
+> Źródła plików ograniczają tylko te wiersze, które są widoczne, a nie odczytywane wiersze. W przypadku bardzo dużych zestawów danych zaleca się wykonanie małej części tego pliku i użycie jej do testowania. Można wybrać plik tymczasowy w ustawieniach debugowania dla każdego źródła, które jest typem zestawu danych.
+
 Podczas uruchamiania w trybie debugowania w przepływie danych dane nie będą zapisywane do transformacji ujścia. Sesja debugowania jest przeznaczona do użycia jako zespół testów dla transformacji. Ujścia nie są wymagane podczas debugowania i są ignorowane w przepływie danych. Jeśli chcesz przetestować zapisywanie danych w ujściach, wykonaj przepływ danych z potoku Azure Data Factory i użyj wykonywania debugowania z potoku.
+
+### <a name="testing-join-conditions"></a>Testowanie warunków sprzężenia
+
+Gdy Przekształć testy jednostkowe, istnieją lub przekształcenia wyszukiwania, upewnij się, że używasz małego zestawu znanych danych dla testu. Możesz użyć opcji Ustawienia debugowania powyżej, aby ustawić plik tymczasowy do użycia na potrzeby testowania. Jest to konieczne, ponieważ w przypadku ograniczania lub próbkowania wierszy z dużego zestawu danych nie można przewidzieć, które wiersze i które klucze będą odczytywane w przepływie na potrzeby testowania. Wynik nie jest deterministyczny, co oznacza, że warunki sprzężenia mogą się nie powieść.
 
 ### <a name="quick-actions"></a>Szybkie akcje
 

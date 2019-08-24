@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: grgale
-ms.openlocfilehash: a9451b5dcd572eee27809cf66df889f06da960ed
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e2a94f82e4830bd1e9c96039f5ef8fe6546b0d0b
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68571499"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982680"
 ---
 # <a name="role-based-access-control-rbac-and-privileged-identity-management-pim"></a>Access Control oparte na rolach (RBAC) i Privileged Identity Management (PIM)
 
@@ -27,7 +27,7 @@ Na wysokim poziomie implementacja RBAC wymaga trzech składników:
 
 ![RBAC — przegląd](media/rbac-overview.png)
 
-* **Podmioty zabezpieczeń**: Podmiot zabezpieczeń może być jednym z następujących elementów: Użytkownik, Grupa, [nazwy główne usług lub [tożsamość zarządzana](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Do podmiotów zabezpieczeń należy przypisać uprawnienia przy użyciu grup Azure Active Directory.
+* **Podmioty zabezpieczeń**: Podmiot zabezpieczeń może być jednym z następujących elementów: Użytkownik, Grupa, [nazwy główne usług](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)lub [tożsamość zarządzana](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview). Do podmiotów zabezpieczeń należy przypisać uprawnienia przy użyciu grup Azure Active Directory.
 
 * **Definicje ról**: Definicja roli, nazywana również rolą, jest kolekcją uprawnień. Te uprawnienia definiują operacje, które mogą być wykonywane przez podmioty zabezpieczeń przypisane do definicji roli. Ta funkcja jest udostępniana przez role zasobów platformy Azure i role administratorów Azure Active Directory. Platforma Azure udostępnia zestaw wbudowanych ról (link), które można rozszerzyć za pomocą ról niestandardowych.
 

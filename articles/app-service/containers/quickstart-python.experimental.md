@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/28/2019
+ms.date: 08/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ea247907aebc241fb8f1b266ad55bc2fc983607f
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: c971e84a12b23625326d63b3493395f1d1381937
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853990"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996894"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Tworzenie aplikacji języka Python w usłudze App Service dla systemu Linux (wersja zapoznawcza)
 
@@ -41,7 +41,7 @@ W usłudze Cloud Shell utwórz katalog Szybki start, a następnie przejdź do ni
 ```bash
 mkdir quickstart
 
-cd quickstart
+cd $HOME/quickstart
 ```
 
 Uruchom następujące polecenie, aby sklonować przykładowe repozytorium aplikacji na komputer lokalny.
@@ -60,7 +60,7 @@ Unpacking objects: 100% (43/43), done.
 Checking connectivity... done.
 ```
 
-## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
+## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
 
 Przejdź do katalogu, który zawiera przykładowy kod, i uruchom polecenie `az webapp up`.
 
@@ -165,7 +165,7 @@ Menu po lewej stronie zawiera różne strony służące do konfigurowania aplika
 
 ## <a name="next-steps"></a>Następne kroki
 
-Wbudowany obraz języka Python w usłudze App Service w systemie Linux jest obecnie w wersji zapoznawczej. Można dostosować polecenie używane do uruchamiania aplikacji. Można też tworzyć aplikacje produkcyjne w języku Python przy użyciu kontenera niestandardowego.
+Wbudowany obraz języka Python w App Service w systemie Linux jest obecnie w wersji zapoznawczej i można dostosować polecenie używane do uruchamiania aplikacji. Można też tworzyć aplikacje produkcyjne w języku Python przy użyciu kontenera niestandardowego.
 
 > [!div class="nextstepaction"]
 > [Samouczek: Aplikacja języka Python z PostgreSQL](tutorial-python-postgresql-app.md)

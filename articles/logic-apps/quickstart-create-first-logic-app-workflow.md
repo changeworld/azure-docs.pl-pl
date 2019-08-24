@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
-ms.openlocfilehash: 2f39678e9fa0ed665863a94767240e2e37eace39
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
-ms.translationtype: HT
+ms.openlocfilehash: f0d63b9e01b7e39b03e6a3b1e310b5fae0f8d25f
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906085"
+ms.locfileid: "69982866"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Szybki start: Tworzenie pierwszego zautomatyzowanego przepływu pracy za pomocą usługi Azure Logic Apps — witryna Azure Portal
 
@@ -43,7 +43,7 @@ Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu po
 
    | Właściwość | Value | Opis |
    |----------|-------|-------------|
-   | **Nazwa** | <*Logic-App-Name*> | Nazwa aplikacji logiki, która może zawierać tylko litery, cyfry `-`lub `.` znaki `)`, `(`,, `_`,. W tym przykładzie zastosowano "My-First-Logic-App". |
+   | **Nazwa** | <*Logic-App-Name*> | Nazwa aplikacji logiki, która może zawierać tylko litery`-`, cyfry, łączniki (), podkreślenia (`_`), nawiasy (`(`, `)`) i kropki (`.`). W tym przykładzie zastosowano "My-First-Logic-App". |
    | **Subskrypcja** | <*Azure-subscription-name*> | Nazwa subskrypcji platformy Azure |
    | **Grupa zasobów** | <*Azure-resource-group-name*> | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) używanej do organizowania powiązanych zasobów. W tym przykładzie jest stosowana wartość "My-First-LA-RG". |
    | **Location** | <*Platforma Azure — region*> | Region, w którym są przechowywane informacje o aplikacji logiki. W tym przykładzie zastosowano "zachodnie stany USA". |

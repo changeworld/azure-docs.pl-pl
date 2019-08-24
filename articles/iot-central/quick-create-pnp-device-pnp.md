@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 152e373f3a340a8abe3d8bc54d6515296d95efba
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 48161f56a8885239525587b764c4a116ffc8539f
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878320"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997730"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Szybki start: Użyj modelu możliwości urządzenia, aby utworzyć urządzenie Plug and Play IoT i połączyć je z aplikacją IoT Central
 
 [!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
-_Model możliwości urządzenia_ (DCM) opisuje możliwości urządzenia [Plug and Play IoT](https://aka.ms/iot-pnp-docs) . IoT Central może użyć DCM, aby utworzyć szablon urządzenia i wizualizacje dla urządzenia podczas łączenia się urządzenia po raz pierwszy. W tym przewodniku szybkiego startu przedstawiono sposób wykonywania następujących czynności:
+_Model możliwości urządzenia_ (DCM) opisuje możliwości urządzenia [Plug and Play IoT](../iot-pnp/overview-iot-plug-and-play.md) . IoT Central może użyć DCM, aby utworzyć szablon urządzenia i wizualizacje dla urządzenia podczas łączenia się urządzenia po raz pierwszy. W tym przewodniku szybkiego startu przedstawiono sposób wykonywania następujących czynności:
 
 * Użyj Visual Studio Code, aby utworzyć urządzenie usługi IoT Plug and Play przy użyciu DCM.
 * Uruchom kod urządzenia w systemie Windows i sprawdź, czy jest on połączony z aplikacją IoT Central.
