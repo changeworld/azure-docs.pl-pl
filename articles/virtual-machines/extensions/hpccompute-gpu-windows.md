@@ -75,8 +75,8 @@ Następujący kod JSON zawiera schemat dla rozszerzenia.
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | ciąg |
-| type | NvidiaGpuDriverWindows | ciąg |
+| publisher | Microsoft.HpcCompute | string |
+| type | NvidiaGpuDriverWindows | string |
 | typeHandlerVersion | 1.2 | int |
 
 
