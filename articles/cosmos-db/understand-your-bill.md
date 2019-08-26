@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: f800560aa4ddef52c2274fa8b3f5c98d68189f0f
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 1dc4120ec9f1db8ac34800096ae407b5581758a4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717518"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614168"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Zapoznaj się z Azure Cosmos DB rachunku
 
@@ -90,7 +90,7 @@ W przypadku zwiększenia elastycznej przepływności dla kontenera lub zestawu k
 
 ## <a name="billing-examples-with-geo-replication-and-multi-master"></a>Przykłady rozliczeń z replikacją geograficzną i wieloma wzorcami  
 
-W dowolnym momencie możesz dodawać i usuwać regiony platformy Azure w dowolnym miejscu na świecie do konta bazy danych Azure Cosmos DB. Przepływność skonfigurowana dla różnych Azure Cosmos DB baz danych i kontenerów zostanie zarezerwowana w każdym z regionów świadczenia usługi Azure skojarzonych z kontem bazy danych usługi Azure Cosmos. Jeśli suma zainicjowanej przepływności (RU/s) skonfigurowana dla wszystkich baz danych i kontenerów w ramach konta usługi Azure Cosmos Database (zainicjowana na godzinę) to T, a liczba regionów platformy Azure skojarzonych z kontem bazy danych to N, suma zainicjowana przepływność przez daną godzinę dla konta bazy danych Azure Cosmos (a) skonfigurowanego za pomocą jednego regionu zapisu jest równa T x N RU/s i (b) skonfigurowany ze wszystkimi regionami, w których przetwarzanie zapisów jest równe T x (N + 1) RU/s piwo. Elastyczna przepływność (pojedynczy region zapisu) koszty $0.008/godz. na 100 RU/s i zainicjowana przepływność z wieloma regionami do zapisu (Konfiguracja z wieloma wzorcami) — koszty $0,016;/za godzinę na 100 RU/s (zobacz [stronę](https://azure.microsoft.com/pricing/details/cosmos-db/)z cennikiem). Niezależnie od tego, czy jego pojedynczy region zapisu lub wiele regionów zapisu Azure Cosmos DB umożliwia odczytywanie danych z dowolnego regionu.
+W dowolnym momencie możesz dodawać i usuwać regiony platformy Azure w dowolnym miejscu na świecie do konta usługi Azure Cosmos Database. Przepływność skonfigurowana dla różnych baz danych i kontenerów usługi Azure Cosmos zostanie zarezerwowana w każdym z regionów świadczenia usługi Azure skojarzonych z kontem bazy danych usługi Azure Cosmos. Jeśli suma zainicjowanej przepływności (RU/s) skonfigurowana dla wszystkich baz danych i kontenerów w ramach konta usługi Azure Cosmos Database (zainicjowana na godzinę) to T, a liczba regionów platformy Azure skojarzonych z kontem bazy danych to N, suma zainicjowana przepływność przez daną godzinę dla konta bazy danych Azure Cosmos (a) skonfigurowanego za pomocą jednego regionu zapisu jest równa T x N RU/s i (b) skonfigurowany ze wszystkimi regionami, w których przetwarzanie zapisów jest równe T x (N + 1) RU/s piwo. Elastyczna przepływność (pojedynczy region zapisu) koszty $0.008/godz. na 100 RU/s i zainicjowana przepływność z wieloma regionami do zapisu (Konfiguracja z wieloma wzorcami) — koszty $0,016;/za godzinę na 100 RU/s (zobacz [stronę](https://azure.microsoft.com/pricing/details/cosmos-db/)z cennikiem). Niezależnie od tego, czy jego pojedynczy region zapisu lub wiele regionów zapisu Azure Cosmos DB umożliwia odczytywanie danych z dowolnego regionu.
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>Przykład rozliczeń: wieloregionowe konto usługi Azure Cosmos, zapisy jednego regionu
 
@@ -228,7 +228,7 @@ Rozważmy inny przykład, w którym chcesz proaktywnie oszacować swój rachunek
 
 ## <a name="billing-with-azure-cosmos-db-reserved-capacity"></a>Rozliczanie za pomocą zarezerwowanej pojemności Azure Cosmos DB
 
-Azure Cosmos DB zarezerwowana pojemność umożliwia zakupienie alokowanej przepływności (zarezerwowanej pojemności lub rezerwacji), która może zostać zastosowana do wszystkich Azure Cosmos DB baz danych i kontenerów (dla dowolnego interfejsu API lub modelu danych) we wszystkich regionach świadczenia usługi Azure. Ze względu na to, że zainicjowana cena przepływności różni się w zależności od regionu, można traktować zastrzeżoną pojemność jako środki pieniężne, które zostały nabyte w ramach rabatu, które mogą być naliczane z tytułu przepustowości w poszczególnych regionach. Załóżmy na przykład, że masz konto usługi Azure Cosmos z jednym kontenerem z obsługą jednostki 50 – K RU/s i globalnie zreplikowane dwa regiony — Wschodnie stany USA i Japonia Wschodnia. Jeśli wybierzesz opcję płatność zgodnie z rzeczywistym użyciem, płacisz:  
+Azure Cosmos DB zarezerwowana pojemność umożliwia zakupienie alokowanej przepływności (zarezerwowanej pojemności lub rezerwacji), która może zostać zastosowana do wszystkich baz danych i kontenerów platformy Azure Cosmos (dla dowolnego interfejsu API lub modelu danych) we wszystkich regionach świadczenia usługi Azure. Ze względu na to, że zainicjowana cena przepływności różni się w zależności od regionu, można traktować zastrzeżoną pojemność jako środki pieniężne, które zostały nabyte w ramach rabatu, które mogą być naliczane z tytułu przepustowości w poszczególnych regionach. Załóżmy na przykład, że masz konto usługi Azure Cosmos z jednym kontenerem z obsługą jednostki 50 – K RU/s i globalnie zreplikowane dwa regiony — Wschodnie stany USA i Japonia Wschodnia. Jeśli wybierzesz opcję płatność zgodnie z rzeczywistym użyciem, płacisz:  
 
 * we wschodnich stanach USA: dla 50 – K RU/s według stawki $0,008 za 100 RU/s w tym regionie 
 
