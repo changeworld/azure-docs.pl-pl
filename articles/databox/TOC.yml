@@ -95,8 +95,10 @@
               href: data-box-disk-deploy-set-up.md
             - name: 3 — kopiowanie i weryfikowanie
               href: data-box-disk-deploy-copy-data.md
-            - name: '4 — zwracanie, przekazywanie, weryfikowanie'
+            - name: 4 — zwracanie
               href: data-box-disk-deploy-picked-up.md
+            - name: 5 — weryfikacja przekazania
+              href: data-box-disk-deploy-upload-verify.md
         - name: Pojęcia
           items:
             - name: Sprawdzanie wymagań

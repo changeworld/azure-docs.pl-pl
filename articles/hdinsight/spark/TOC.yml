@@ -327,6 +327,8 @@
           href: ./apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
         - name: Dziennik zdarzeń platformy Apache Spark — RequestBodyTooLarge
           href: ./apache-spark-troubleshoot-event-log-requestbodytoolarge.md
+        - name: Nie można uzyskać kworum usługi Apache ZooKeeper
+          href: ./zookeeper-troubleshoot-quorum-fails.md
 - name: Dokumentacja
   items:
     - name: Przykłady kodu

@@ -17,12 +17,16 @@
       href: tutorial-create-management-vm.md
     - name: Konfigurowanie protokołu Secure LDAP
       href: tutorial-configure-ldaps.md
+    - name: Konfigurowanie synchronizacji skrótów haseł
+      href: tutorial-configure-password-hash-sync.md
 - name: Przykłady
   items:
     - name: Tworzenie wystąpienia usługi Azure AD DS za pomocą programu Azure PowerShell
       href: powershell-create-instance.md
 - name: Pojęcia
   items:
+    - name: Typowe scenariusze wdrażania
+      href: scenarios.md
     - name: Jak działa synchronizacja usługi Azure AD DS
       href: synchronization.md
     - name: Jak działa synchronizacja skrótów haseł
@@ -37,8 +41,6 @@
   items:
     - name: Konfigurowanie wspólnych ustawień
       items:
-        - name: Włączanie synchronizacji skrótów haseł
-          href: active-directory-ds-getting-started-password-sync-synced-tenant.md
         - name: Konfigurowanie synchronizacji o określonym zakresie z usługi Azure AD
           href: scoped-synchronization.md
         - name: Tworzenie jednostki organizacyjnej
@@ -47,8 +49,6 @@
           href: create-gmsa.md
     - name: Planowanie usługi Azure AD DS
       items:
-        - name: Typowe scenariusze
-          href: scenarios.md
         - name: Zagadnienia dotyczące sieci wirtualnej
           href: network-considerations.md
     - name: Zarządzanie usługą Azure AD DS

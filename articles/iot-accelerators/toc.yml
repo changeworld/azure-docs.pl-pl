@@ -149,6 +149,8 @@
       items:
         - name: Architektura bliźniaczej reprezentacji OPC
           href: overview-opc-twin-architecture.md
+        - name: Architektura magazynu OPC
+          href: overview-opc-vault-architecture.md
     - name: Przewodniki z instrukcjami
       items:
         - name: Połączona fabryka
@@ -169,14 +171,14 @@
               href: howto-opc-twin-deploy-dependencies.md
         - name: Magazyn OPC
           items:
-            - name: Wdrażanie magazynu OPC w istniejącym projekcie
-              items:
-                - name: Bezpieczna komunikacja klienta OPC i sterownika OPC PLC
-                  href: howto-opc-vault-deploy-existing-client-plc-communication.md
-                - name: Bezpieczne aplikacje klienta OPC UA i serwera OPC UA
-                  href: howto-opc-vault-deploy-existing-client-server-communication.md
-            - name: Wdrażanie magazynu OPC od podstaw
-              href: howto-opc-vault-deploy-scratch.md
+            - name: Wdrażanie usługi magazynu OPC
+              href: howto-opc-vault-deploy.md
+            - name: Zarządzanie usługą magazynu OPC
+              href: howto-opc-vault-manage.md
+            - name: Zabezpieczanie komunikacji urządzenia OPC UA z magazynem OPC
+              href: howto-opc-vault-secure.md
+            - name: Bezpieczne działanie usługi magazynu OPC
+              href: howto-opc-vault-secure-ca.md
         - name: Wydawca OPC
           items:
             - name: Konfigurowanie wydawcy OPC

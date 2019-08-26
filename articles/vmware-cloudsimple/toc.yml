@@ -106,8 +106,6 @@
               href: users.md
             - name: Konfigurowanie połączenia sieci wirtualnej z chmurą prywatną
               href: virtual-network-connection.md
-            - name: Edytowanie profilu użytkownika
-              href: 'https://docs.azure.cloudsimple.com/editprofile/'
         - name: Konfigurowanie maszyn wirtualnych VMware dla chmury prywatnej
           items:
             - name: Tworzenie maszyny wirtualnej na platformie Azure
@@ -147,7 +145,7 @@
             - name: Migrowanie maszyn wirtualnych obciążeń do chmury prywatnej
               href: migrate-workloads.md
             - name: Zapewnianie wysokiej dostępności aplikacji w oprogramowaniu VMware na platformie Azure
-              href: 'https://docs.azure.cloudsimple.com/ensuring-high-availability/'
+              href: ensuring-high-availability.md
             - name: Wybieranie rozwiązania do równoważenia obciążenia
               href: load-balancers.md
         - name: Ekosystem oprogramowania VMware
@@ -156,8 +154,10 @@
               href: backup-workloads-veeam.md
             - name: Konfigurowanie chmury prywatnej jako lokalizacji odzyskiwania po awarii za pomocą rozwiązania Zerto
               href: disaster-recovery-zerto.md
+            - name: Konfigurowanie chmury prywatnej jako lokalizacji odzyskiwania po awarii za pomocą rozwiązania VMware SRM
+              href: disaster-recovery-site-recovery-manager.md
             - name: Przewodnik po rozwiązaniu VMware Horizon
-              href: 'https://docs.azure.cloudsimple.com/horizon-guide/'
+              href: horizon-guide.md
             - name: Konfigurowanie szyfrowania sieci vSAN dla chmury prywatnej
               href: vsan-encryption.md
             - name: Optymalizacja chmury prywatnej dla programu Oracle RAC

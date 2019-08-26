@@ -3,15 +3,14 @@ documentType: LandingData
 title: Dokumentacja interfejsu API wyszukiwania wizualnego Bing
 metadata:
   document_id: 230494A6-34F9-416D-A6C0-57E69E1C2590
-  title: 'Dokumentacja interfejsu API wyszukiwania wizualnego Bing — samouczki, przewodniki Szybki start i dokumentacja interfejsu API | Microsoft Docs'
+  title: 'Dokumentacja interfejsu API wyszukiwania wizualnego Bing — samouczki, przewodniki Szybki start i dokumentacja interfejsu API'
+  titleSuffix: Azure Cognitive Services
   description: 'Dowiedz się, jak za pomocą interfejsu API wyszukiwania wizualnego Bing uzyskać szczegółowe informacje o obrazie.'
   services: cognitive-services
   author: swhite-msft
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-visual-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/16/2019
   ms.author: scottwhi

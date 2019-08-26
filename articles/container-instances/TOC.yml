@@ -121,6 +121,8 @@
       href: /javascript/api/overview/azure/containerinstances
     - name: Szablon usługi Resource Manager
       href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: Łącznik
+      href: /connectors/aci
 - name: Zasoby
   items:
     - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn

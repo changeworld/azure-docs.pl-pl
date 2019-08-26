@@ -79,10 +79,6 @@
       href: service-bus-samples.md
 - name: Pojęcia
   items:
-    - name: Tożsamości zarządzane dla zasobów platformy Azure
-      href: service-bus-managed-service-identity.md
-    - name: Kontrola dostępu oparta na rolach (wersja zapoznawcza)
-      href: service-bus-role-based-access-control.md
     - name: Obsługa komunikatów Premium
       href: service-bus-premium-messaging.md
     - name: Porównanie kolejek platformy Azure i kolejek usługi Service Bus
@@ -95,8 +91,25 @@
       href: service-bus-async-messaging.md
     - name: Obsługa wyłączeń i awarii
       href: service-bus-outages-disasters.md
-    - name: Wspólne atrybuty zabezpieczeń platformy Azure
-      href: service-bus-messaging-security-attributes.md
+    - name: Bezpieczeństwo
+      items:
+        - name: Uwierzytelnianie i autoryzacja
+          href: service-bus-authentication-and-authorization.md
+          items:
+            - name: Korzystanie z sygnatur dostępu współdzielonego
+              items:
+                - name: Migrowanie z usługi ACS do sygnatury dostępu współdzielonego
+                  href: service-bus-migrate-acs-sas.md
+                - name: Uwierzytelnianie za pomocą sygnatur dostępu współdzielonego
+                  href: service-bus-sas.md
+            - name: Korzystanie z usługi Azure Active Directory
+              items:
+                - name: Uwierzytelnianie przy użyciu tożsamości zarządzanych dla zasobów platformy Azure
+                  href: service-bus-managed-service-identity.md
+                - name: Uwierzytelnianie przy użyciu aplikacji
+                  href: authenticate-application.md
+        - name: Wspólne atrybuty zabezpieczeń platformy Azure
+          href: service-bus-messaging-security-attributes.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Tworzenie przestrzeni nazw
@@ -119,13 +132,6 @@
               href: service-bus-to-event-grid-integration-concept.md
             - name: Przykłady usługi Azure Event Grid
               href: service-bus-to-event-grid-integration-example.md
-        - name: Uwierzytelnianie i autoryzacja
-          href: service-bus-authentication-and-authorization.md
-          items:
-            - name: Migrowanie z usługi ACS do sygnatury dostępu współdzielonego
-              href: service-bus-migrate-acs-sas.md
-            - name: Uwierzytelnianie za pomocą sygnatur dostępu współdzielonego
-              href: service-bus-sas.md
         - name: Filtry tematów i akcje
           href: topic-filters.md
         - name: Migrowanie z przestrzeni nazw w warstwie Standardowa do przestrzeni nazw w warstwie Premium

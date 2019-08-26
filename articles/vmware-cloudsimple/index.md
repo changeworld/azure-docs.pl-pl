@@ -1,36 +1,87 @@
 ---
 title: Rozwiązanie Azure VMware firmy CloudSimple
-description: Informacje o rozwiązaniu Azure VMware firmy CloudSimple
+description: Portal dokumentacji dla rozwiązania Azure VMware firmy CloudSimple.
 author: sharaths-cs
-ms.author: dikamath
-ms.date: 04/23/2019
+ms.author: b-mashar
+ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 13d2b3cccdcba6b8e8d7459db94d3c57a607c222
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 936a9eb4d9b33b45800fab213fc72a306a04146e
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812173"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972737"
 ---
 # <a name="azure-vmware-solution-by-cloudsimple"></a>Rozwiązanie Azure VMware firmy CloudSimple
 
-Witamy w rozwiązaniu Azure VMware firmy CloudSimple. Znajdziesz tu szczegółowe informacje na temat sposobu używania usługi CloudSimple oraz włączania rozwiązań w tej usłudze. Wyszukaj artykuły lub przejrzyj spis treści.
+Witamy w portalu, w którym scentralizowano zasoby pomocy dotyczące rozwiązania Azure VMware firmy CloudSimple.
+W tej witrynie dokumentacji można zapoznać się z następującymi tematami:
 
-- Zapoznaj się z [omówieniem](cloudsimple-vmware-solutions-overview.md), aby dowiedzieć się więcej o rozwiązaniu Azure VMware firmy CloudSimple.
-- Wybierz temat [Omówienie chmury prywatnej firmy CloudSimple](cloudsimple-private-cloud.md), aby dowiedzieć się więcej o rozwiązaniu chmury prywatnej firmy CloudSimple.
-- Wybierz temat [Węzły](cloudsimple-node.md), aby dowiedzieć się więcej o węzłach firmy CloudSimple.
-- Wybierz temat [Inicjowanie i aprowizowanie pojemności](quickstart-create-cloudsimple-service.md), aby rozpocząć korzystanie z rozwiązania VMware firmy CloudSimple na platformie Azure.
+## <a name="overview"></a>Omówienie
 
-| Szybki wgląd w pojęcia     | Zasób                    | Przeznaczenie                                                                       | Zarządzanie         |
-|--------------------------|-----------------------------|-------------------------------------------------------------------------------|--------------------|
-| **Tworzenie usług**     | Usługa CloudSimple         | Konfigurowanie sieci brzegowej usługi CloudSimple                                    | Portal Azure       |
-|                          | Węzeł usługi CloudSimple            | Aprowizacja pojemności do użycia w usłudze CloudSimple                          | Portal Azure       |
-| **Użycie usługi**  | Chmura prywatna               | Tworzenie środowisk VMware                                                    | Portal CloudSimple |
-|                          | Sieć VLAN/podsieć                 | Tworzenie sieci izolacyjnej na potrzeby użycia oprogramowania VMware                               | Portal CloudSimple |
-|                          | Tabela zapory              | Konfigurowanie reguł zabezpieczeń północ-południe i wschód-zachód w sieciach izolacyjnych | Portal CloudSimple |
-|                          | Publiczny adres IP           | Uzyskiwanie publicznych adresów dla obciążeń oprogramowania VMware                           | Portal CloudSimple |
-|                          | Połączenie platformy Azure            | Ustanawianie łączności ze środowiskiem lokalnym lub sieciami wirtualnymi na platformie Azure         | Portal CloudSimple |
-| **Ujednolicone zarządzanie**   | Maszyna wirtualna CloudSimple | Zarządzanie maszynami wirtualnymi oprogramowania VMware w witrynie Azure Portal                                | Portal Azure       |
+Więcej informacji o rozwiązaniu Azure VMware firmy CloudSimple
+
+* Informacje na temat funkcji, korzyści i scenariuszy użycia: [Co to jest rozwiązanie Azure VMware firmy CloudSimple](cloudsimple-vmware-solutions-overview.md)
+* Zapoznaj się z [kluczowymi pojęciami dotyczącymi administracji](key-concepts.md)
+
+## <a name="quickstart"></a>Szybki start
+
+Dowiedz się, jak zacząć korzystać z rozwiązania
+
+* Opis [inicjowania usługi i pojemności zakupu](quickstart-create-cloudsimple-service.md)
+* Dowiedz się, jak utworzyć nowe środowisko VMware: [Konfigurowanie środowiska chmury prywatnej](quickstart-create-private-cloud.md)
+* Dowiedz się, jak ujednolicić zarządzanie w środowisku VMware i Azure — artykuł [Używanie maszyn wirtualnych VMware na platformie Azure](quickstart-create-vmware-virtual-machine.md)
+
+## <a name="concepts"></a>Pojęcia
+
+Poznaj następujące pojęcia
+
+* [Usługa CloudSimple](cloudsimple-service.md) (określana również jako „rozwiązanie Azure VMware firmy CloudSimple — usługa”). Ten zasób należy utworzyć raz w każdym regionie.
+* Kupowanie pojemności dla środowiska przez utworzenie jednego lub większej liczby zasobów [węzła CloudSimple](cloudsimple-node.md). Te zasoby są również określane jako „rozwiązanie Azure VMware firmy CloudSimple — węzeł”.
+* Inicjowanie i konfigurowanie środowiska VMware przy użyciu [chmur prywatnych](cloudsimple-private-cloud.md).
+* Ujednolicanie zarządzania przy użyciu[maszyn wirtualnych CloudSimple](cloudsimple-virtual-machines.md) (określanych również jako „rozwiązanie Azure VMware firmy CloudSimple — maszyna wirtualna”).
+* Projektowanie sieci bazowej [przy użyciu podsieci/VLAN](cloudsimple-vlans-subnets.md).
+* Segmentowanie i zabezpieczanie sieci bazowej za pomocą zasobu [Tabela zapory](cloudsimple-firewall-tables.md).
+* Uzyskiwanie bezpiecznego dostępu do środowisk VMware za pośrednictwem sieci WAN przy użyciu[bram VPN Gateway](cloudsimple-vpn-gateways.md).
+* Zapewnianie publicznego dostępu do obciążeń przy użyciu [publicznego adresu IP](cloudsimple-public-ip-address.md).
+* Ustanawianie łączności z sieciami wirtualnymi platformy Azure i sieciami lokalnymi przy użyciu [połączenia sieciowego platformy Azure](cloudsimple-azure-network-connection.md).
+* Konfigurowanie elementów docelowych poczty e-mail dla alertów za pomocą obszaru [Zarządzanie kontami](cloudsimple-account.md).
+* Wyświetlanie dzienników aktywności użytkowników i systemu przy użyciu ekranów [Zarządzanie działaniami](cloudsimple-activity.md).
+* Przegląd różnych [składników oprogramowania VMware](vmware-components.md).
+
+## <a name="tutorials"></a>Samouczki
+
+Dowiedz się, jak wykonywać typowe zadania, takie jak:
+
+* [Tworzenie usługi CloudSimple](create-cloudsimple-service.md), raz w każdym regionie, w którym mają zostać wdrożone środowiska VMware.
+* Zarządzanie podstawową funkcjonalnością usługi w [portalu CloudSimple](access-cloudsimple-portal.md).
+* Zapewnianie pojemności i optymalizowanie rozliczeń dla danej infrastruktury przez [zakup węzłów CloudSimple](create-nodes.md).
+* Zarządzanie konfiguracjami środowiska VMware przy użyciu chmur prywatnych. Chmury prywatne można [tworzyć](create-private-cloud.md), [rozszerzać](expand-private-cloud.md) i [zmniejszać](shrink-private-cloud.md) oraz [zarządzać](manage-private-cloud.md) nimi.
+* Włączanie ujednoliconego zarządzania przez [zamapowanie subskrypcji platformy Azure](azure-subscription-mapping.md).
+* Monitorowanie aktywności użytkowników i systemu przy użyciu ekranów [stron działań](monitor-activity.md).
+* Konfigurowanie sieci dla danych środowisk przez [utworzenie podsieci i zarządzanie nimi](create-vlan-subnet.md).
+* Segmentowanie i zabezpieczanie środowiska [przy użyciu reguł i tabel zapory](firewall.md).
+* Zapewnianie dostępu przychodzącego przez Internet dla obciążeń przez [przydzielenie publicznych adresów IP](public-ips.md).
+* Zapewnienie łączności z sieci wewnętrznych lub klienckich stacji roboczych przez [skonfigurowanie sieci VPN](vpn-gateway.md).
+* Zapewnianie komunikacji ze [środowisk lokalnych](on-premises-connection.md), a także z [sieciami wirtualnymi platformy Azure](virtual-network-connection.md).
+* Konfigurowanie elementów docelowych alertów i wyświetlanie całej zakupionej pojemności w [podsumowaniu konta](account.md).
+* Wyświetlanie [użytkowników](users.md), którzy uzyskali dostęp do portalu CloudSimple.
+* Zarządzanie maszynami wirtualnymi oprogramowania VMware w witrynie Azure Portal:
+    * [Tworzenie maszyn wirtualnych](azure-create-vm.md) w witrynie Azure Portal.
+    * [Zarządzanie utworzonymi maszynami wirtualnymi](azure-manage-vm.md).
+
+## <a name="how-to-guides"></a>Przewodniki z instrukcjami
+
+W tych przewodnikach opisano rozwiązania realizujące następujące cele:
+
+* [Zabezpieczanie środowiska](private-cloud-secure.md)
+* Instalowanie narzędzi innych producentów, włączanie dodatkowych użytkowników i zewnętrznego źródła uwierzytelniania w programie vSphere przy użyciu [eskalacji uprawnień](escalate-privileges.md).
+* Konfigurowanie dostępu do różnych usług VMware przez [skonfigurowanie lokalnego systemu DNS](on-premises-dns-setup.md).
+* Włączanie przydzielania nazw i adresów dla obciążeń przez [skonfigurowanie dla tych obciążeń systemów DNS i DHCP](dns-dhcp-setup.md).
+* Omówienie sposobu, w jaki usługa zapewnia bezpieczeństwo i funkcjonalność na platformie klienta za pomocą [aktualizacji i uaktualnień](vmware-components.md#updates-and-upgrades) usługi.
+* Zmniejszanie całkowitego kosztu posiadania związanego z kopiami zapasowymi dzięki utworzeniu przykładowej architektury tworzenia kopii zapasowych za pomocą [oprogramowania do tworzenia kopii zapasowych innego producenta, takiego jak Veeam](backup-workloads-veeam.md).
+* Tworzenie bezpiecznego środowiska przez włączenie szyfrowania danych w spoczynku przy użyciu [oprogramowania do szyfrowania KMS innego producenta](vsan-encryption.md).
+* Rozszerzanie zarządzania za pomocą usługi Azure Active Directory (Azure AD) na środowisko VMware przez skonfigurowanie [źródła tożsamości usługi Azure AD](azure-ad.md).

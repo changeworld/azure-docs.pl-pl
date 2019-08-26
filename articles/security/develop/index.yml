@@ -41,6 +41,7 @@ sections:
         className: spaced noBullet
         items:
           - html: <a href="/azure/security/develop/secure-web-app">Aplikacja internetowa w kontenerze systemu Linux</a>
+          - html: <a href="/azure/security/develop/secure-pci-web-app">Payment Card Industry</a>
   - title: Pojęcia
     items:
       - type: list

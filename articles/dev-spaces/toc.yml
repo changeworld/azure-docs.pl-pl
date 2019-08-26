@@ -73,6 +73,8 @@
           href: how-to/manage-secrets.md
         - name: Korzystanie z niestandardowego źródła danych NuGet
           href: how-to/use-custom-nuget-feed.md
+        - name: Korzystanie z prywatnego repozytorium Helm
+          href: how-to/use-private-helm-repo.md
         - name: Używanie narzędzia kubectl w ramach usługi Azure Dev Spaces
           href: how-to/use-kubectl-with-azure-dev-spaces.md
         - name: Uaktualnianie rozszerzenia Azure Dev Spaces Tools

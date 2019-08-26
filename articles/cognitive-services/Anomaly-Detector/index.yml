@@ -2,15 +2,15 @@
 documentType: LandingData
 title: Dokumentacja interfejsu API narzędzia do wykrywania anomalii
 metadata:
-  title: 'Interfejsu API narzędzia do wykrywania anomalii — samouczki, przewodniki Szybki start i dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs'
+  title: 'Interfejs API narzędzia do wykrywania anomalii — samouczki, przewodniki Szybki start i dokumentacja interfejsu API'
+  titleSuffix: Azure Cognitive Services
   description: 'Interfejs API narzędzia do wykrywania anomalii umożliwia monitorowanie danych w czasie i wykrywanie anomalii za pomocą uczenia maszynowego. Uzyskaj wgląd w dane niezależnie od ilości, branży czy scenariusza.'
   services: cognitive-services
   author: aahill
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: anomaly-detector
   ms.topic: landing-page
   ms.date: 03/26/2019
   ms.author: aahi

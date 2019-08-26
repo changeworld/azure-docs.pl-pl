@@ -130,7 +130,7 @@ Następujący szablon działania kopiowania zawiera stanowi wyczerpującej listy
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type działania Copy musi mieć ustawioną wartość: **Kopiuj** | Tak |
+| type | Właściwość Type działania Copy musi mieć ustawioną wartość: **Copy** | Tak |
 | inputs | Określ zestaw danych utworzony wskazującą na źródło danych. Działanie kopiowania obsługuje tylko jednego danych wejściowych. | Yes |
 | outputs | Określ zestaw danych został utworzony, które punkty danych ujścia. Działanie kopiowania obsługuje tylko pojedynczego wyjścia. | Yes |
 | typeProperties | Grupa właściwości, aby skonfigurować działanie kopiowania. | Yes |

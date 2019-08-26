@@ -3,15 +3,14 @@ documentType: LandingData
 title: Dokumentacja interfejsu API sprawdzania pisowni Bing
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: Dokumentacja interfejsu API sprawdzania pisowni Bing — samouczki i dokumentacja interfejsu API — Azure Cognitive Services | Microsoft Docs
+  title: Dokumentacja interfejsu API sprawdzania pisowni Bing — samouczki i dokumentacja interfejsu API
+  titleSuffix: Azure Cognitive Services
   description: 'Dowiedz się, jak używać interfejsu API sprawdzania pisowni Bing w celu uzyskania sugerowanych poprawek dla dokumentów tekstowych. W samouczkach wyjaśniono, jak tworzyć aplikacje korzystające z interfejsu API.'
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-spell-check
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi

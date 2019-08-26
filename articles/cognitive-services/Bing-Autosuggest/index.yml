@@ -3,15 +3,14 @@ documentType: LandingData
 title: Dokumentacja funkcji automatycznego sugerowania Bing
 metadata:
   document_id: ce69fd12-adf8-11e7-abc4-cec278b6b50a
-  title: 'Dokumentacja funkcji automatycznego sugerowania Bing — samouczki, przewodniki Szybki start i dokumentacja interfejsu API | Microsoft Docs'
+  title: 'Dokumentacja funkcji automatycznego sugerowania Bing — samouczki, przewodniki Szybki start i dokumentacja interfejsu API'
+  titleSuffix: Azure Cognitive Services
   description: 'Dowiedz się, jak używać interfejsu API automatycznego sugerowania Bing w celu uzyskania propozycji zapytań na podstawie zapytania częściowego. W samouczkach wyjaśniono, jak tworzyć aplikacje korzystające z usługi.'
   services: cognitive-services
   author: aahill
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-autosuggest
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/25/2019
   ms.author: aahi

@@ -3,15 +3,14 @@ documentType: LandingData
 title: Dokumentacja interfejsu API wyszukiwania w sieci Web Bing
 metadata:
   document_id: 6111ada8-aec2-11e7-abc4-cec278b6b50a
-  title: 'Dokumentacja interfejsu API wyszukiwania w sieci Web Bing — samouczki, przewodniki Szybki start i dokumentacja interfejsu API | Microsoft Docs'
+  title: 'Dokumentacja interfejsu API wyszukiwania w sieci Web Bing — samouczki, przewodniki Szybki start i dokumentacja interfejsu API'
+  titleSuffix: Azure Cognitive Services
   description: 'Dowiedz się, jak za pomocą interfejsu API wyszukiwania w Internecie Bing wyszukiwać strony internetowe, obrazy, wideo, wiadomości i inne elementy w Internecie.'
   services: cognitive-services
   author: nitinme
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-web-search
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 7/25/2019
   ms.author: nitinme

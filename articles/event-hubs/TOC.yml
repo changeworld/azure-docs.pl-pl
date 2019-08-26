@@ -71,12 +71,24 @@
           href: event-hubs-geo-dr.md
     - name: Bezpieczeństwo
       items:
-        - name: Tożsamość zarządzana dla zasobów platformy Azure
-          href: event-hubs-managed-service-identity.md
-        - name: Kontrola dostępu oparta na rolach (wersja zapoznawcza)
-          href: event-hubs-role-based-access-control.md
-        - name: Omówienie modelu uwierzytelniania i zabezpieczeń
-          href: event-hubs-authentication-and-security-model-overview.md
+        - name: Autoryzacja
+          items:
+            - name: Autoryzacja dostępu do usługi Azure Event Hubs
+              href: authorize-access-event-hubs.md
+            - name: Autoryzacja dostępu za pomocą usługi Azure Active Directory
+              href: authorize-access-azure-active-directory.md
+            - name: Autoryzacja dostępu za pomocą sygnatury dostępu współdzielonego
+              href: authorize-access-shared-access-signature.md
+        - name: Authentication
+          items:
+            - name: Uwierzytelnianie za pomocą usługi Azure Active Directory
+              items:
+                - name: Uwierzytelnianie przy użyciu tożsamości zarządzanej
+                  href: authenticate-managed-identity.md
+                - name: Uwierzytelnianie przy użyciu aplikacji
+                  href: authenticate-application.md
+            - name: Uwierzytelnianie za pomocą sygnatury dostępu współdzielonego
+              href: authenticate-shared-access-signature.md
         - name: Atrybuty zabezpieczeń
           href: event-hubs-security-attributes.md
     - name: Przewodnik dotyczący protokołu AMQP 1.0
@@ -166,6 +178,8 @@
           href: event-hubs-service-endpoints.md
         - name: Włączanie integracji sieci wirtualnych i zapór ogniowych w przestrzeni nazw usługi Event Hubs
           href: event-hubs-tutorial-virtual-networks-firewalls.md
+        - name: Konfigurowanie zarządzanych przez klienta kluczy na potrzeby szyfrowania danych magazynowanych
+          href: configure-customer-managed-key.md
     - name: Rozwiązywanie problemów
       items:
         - name: Wyjątki

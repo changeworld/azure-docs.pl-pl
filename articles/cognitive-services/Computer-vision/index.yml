@@ -2,15 +2,14 @@
 documentType: LandingData
 title: Dokumentacja interfejsu API przetwarzania obrazów
 metadata:
-  title: Dokumentacja interfejsu API — przetwarzanie obrazów — Azure Cognitive Services | Microsoft Docs
+  title: Dokumentacja interfejsu API — przetwarzanie obrazów
+  titleSuffix: Azure Cognitive Services
   description: 'Dowiedz się, jak używać funkcji przetwarzania obrazów do przetwarzania obrazów i zwracania informacji. W samouczkach wyjaśniono, jak tworzyć aplikacje korzystające z interfejsu API.'
   services: cognitive-services
   author: nitinme
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: computer-vision
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 02/26/2019
   ms.author: nitinme

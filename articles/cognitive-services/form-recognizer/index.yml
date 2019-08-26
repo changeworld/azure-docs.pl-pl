@@ -2,15 +2,14 @@
 documentType: LandingData
 title: Dokumentacja rozpoznawania formularzy
 metadata:
-  title: Dokumentacja interfejsu API — rozpoznawanie formularzy — Azure Cognitive Services | Microsoft Docs
+  title: Dokumentacja interfejsu API — rozpoznawanie formularzy
+  titleSuffix: Azure Cognitive Services
   description: 'Dowiedz się, jak za pomocą rozpoznawania formularzy inteligentnie wyodrębniać dane klucz-wartość z dokumentów formularzy.'
   services: cognitive-services
   author: PatrickFarley
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: forms-recognizer
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 04/16/2019
   ms.author: pafarley
