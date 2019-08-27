@@ -179,6 +179,9 @@
         - name: Dostrajanie hiperparametrów
           displayName: parameter
           href: how-to-tune-hyperparameters.md
+        - name: Używanie usługi Key Vault podczas trenowania
+          displayName: secrets keyvault
+          href: how-to-use-secrets-in-runs.md
     - name: Śledzenie i monitorowanie eksperymentów
       items:
         - name: 'Uruchamianie, monitorowanie i anulowanie przebiegów'
