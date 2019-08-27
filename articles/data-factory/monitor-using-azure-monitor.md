@@ -103,7 +103,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Właściwość | Typ | Opis |
+| Właściwość | Type | Opis |
 | --- | --- | --- |
 | storageAccountId |String | Identyfikator zasobu konta magazynu, do którego chcesz wysłać dzienniki diagnostyczne |
 | serviceBusRuleId |String | Identyfikator reguły usługi Service Bus w przestrzeni nazw usługi Service Bus, w której chcesz utworzyć Event Hubs dla dzienników diagnostycznych przesyłania strumieniowego. Identyfikator reguły ma format: "{Identyfikator zasobu usługi Service Bus}/authorizationrules/{Key Name}".|
@@ -275,20 +275,20 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Właściwość | Typ | Opis | Przykład |
+| Właściwość | Type | Opis | Przykład |
 | --- | --- | --- | --- |
-| Poziom |Ciąg | Poziom dzienników diagnostycznych. Poziom 4 zawsze jest uwzględniany w przypadku dzienników uruchomienia działania. | `4`  |
+| Poziom |String | Poziom dzienników diagnostycznych. Poziom 4 zawsze jest uwzględniany w przypadku dzienników uruchomienia działania. | `4`  |
 | correlationId |String | Unikatowy identyfikator do śledzenia określonego żądania od końca do końca | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | String | Godzina zdarzenia w wartości TimeSpan, format UTC`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |activityRunId| String| Identyfikator uruchomienia działania | `3a171e1f-b36e-4b80-8a54-5625394f4354` |
 |pipelineRunId| String| Identyfikator uruchomienia potoku | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|resourceId| Ciąg | Identyfikator skojarzonego zasobu dla zasobu usługi Data Factory | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|resourceId| String | Identyfikator skojarzonego zasobu dla zasobu usługi Data Factory | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | Kategoria dzienników diagnostycznych. Ustaw tę właściwość na "ActivityRuns" | `ActivityRuns` |
 |level| String | Poziom dzienników diagnostycznych. Ustaw tę właściwość na "informacyjny" | `Informational` |
-|operationName| Ciąg |Nazwa działania o stanie. Jeśli stan jest pulsem startowym, jest to `MyActivity -`. Jeśli stan jest pulsem końcowym, jest `MyActivity - Succeeded` on końcowym stanem | `MyActivity - Succeeded` |
+|operationName| String |Nazwa działania o stanie. Jeśli stan jest pulsem startowym, jest to `MyActivity -`. Jeśli stan jest pulsem końcowym, jest `MyActivity - Succeeded` on końcowym stanem | `MyActivity - Succeeded` |
 |pipelineName| String | Nazwa potoku | `MyPipeline` |
 |activityName| String | Nazwa działania | `MyActivity` |
-|start| Ciąg | Początek uruchomienia działania w wartości TimeSpan, format UTC | `2017-06-26T20:55:29.5007959Z`|
+|start| String | Początek uruchomienia działania w wartości TimeSpan, format UTC | `2017-06-26T20:55:29.5007959Z`|
 |end| String | Koniec uruchomienia działania w formacie TimeSpan, UTC. Jeśli działanie nie zakończyło się jeszcze (Dziennik diagnostyczny dla uruchomienia działania), `1601-01-01T00:00:00Z` zostanie ustawiona wartość domyślna równa.  | `2017-06-26T20:55:29.5007959Z` |
 
 #### <a name="pipeline-run-logs-attributes"></a>Atrybuty dzienników uruchomienia potoku
@@ -321,15 +321,15 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 }
 ```
 
-| Właściwość | Typ | Opis | Przykład |
+| Właściwość | Type | Opis | Przykład |
 | --- | --- | --- | --- |
 | Poziom |String | Poziom dzienników diagnostycznych. Poziom 4 jest uwzględniany w przypadku dzienników uruchomienia działania. | `4`  |
-| correlationId |Ciąg | Unikatowy identyfikator do śledzenia określonego żądania od końca do końca | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
-| time | Ciąg | Godzina zdarzenia w wartości TimeSpan, format UTC`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| correlationId |String | Unikatowy identyfikator do śledzenia określonego żądania od końca do końca | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| time | String | Godzina zdarzenia w wartości TimeSpan, format UTC`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 |runId| String| Identyfikator uruchomienia potoku | `9f6069d6-e522-4608-9f99-21807bfc3c70` |
-|resourceId| Ciąg | Identyfikator skojarzonego zasobu dla zasobu usługi Data Factory | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|resourceId| String | Identyfikator skojarzonego zasobu dla zasobu usługi Data Factory | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | Kategoria dzienników diagnostycznych. Ustaw tę właściwość na "PipelineRuns" | `PipelineRuns` |
-|level| Ciąg | Poziom dzienników diagnostycznych. Ustaw tę właściwość na "informacyjny" | `Informational` |
+|level| String | Poziom dzienników diagnostycznych. Ustaw tę właściwość na "informacyjny" | `Informational` |
 |operationName| String |Nazwa potoku ze stanem. "Potok — powodzenie" ze stanem końcowym po zakończeniu przebiegu potoku| `MyPipeline - Succeeded` |
 |pipelineName| String | Nazwa potoku | `MyPipeline` |
 |start| String | Początek uruchomienia działania w wartości TimeSpan, format UTC | `2017-06-26T20:55:29.5007959Z`|
@@ -365,19 +365,19 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ```
 
-| Właściwość | Typ | Opis | Przykład |
+| Właściwość | Type | Opis | Przykład |
 | --- | --- | --- | --- |
 | Poziom |String | Poziom dzienników diagnostycznych. Ustaw poziom 4 dla dzienników uruchamiania aktywności. | `4`  |
-| correlationId |Ciąg | Unikatowy identyfikator do śledzenia określonego żądania od końca do końca | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
+| correlationId |String | Unikatowy identyfikator do śledzenia określonego żądania od końca do końca | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
 | time | String | Godzina zdarzenia w wartości TimeSpan, format UTC`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
-|triggerId| Ciąg| Identyfikator uruchomienia wyzwalacza | `08587023010602533858661257311` |
-|resourceId| Ciąg | Identyfikator skojarzonego zasobu dla zasobu usługi Data Factory | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
+|triggerId| String| Identyfikator uruchomienia wyzwalacza | `08587023010602533858661257311` |
+|resourceId| String | Identyfikator skojarzonego zasobu dla zasobu usługi Data Factory | `/SUBSCRIPTIONS/<subID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 |category| String | Kategoria dzienników diagnostycznych. Ustaw tę właściwość na "PipelineRuns" | `PipelineRuns` |
 |level| String | Poziom dzienników diagnostycznych. Ustaw tę właściwość na "informacyjny" | `Informational` |
-|operationName| Ciąg |Nazwa wyzwalacza ze stanem końcowym, czy element został pomyślnie wyzwolony. "Wyzwalacz — powodzenie", jeśli puls zakończył się pomyślnie| `MyTrigger - Succeeded` |
+|operationName| String |Nazwa wyzwalacza ze stanem końcowym, czy element został pomyślnie wyzwolony. "Wyzwalacz — powodzenie", jeśli puls zakończył się pomyślnie| `MyTrigger - Succeeded` |
 |triggerName| String | Nazwa wyzwalacza | `MyTrigger` |
 |triggerType| String | Typ wyzwalacza (wyzwalacz ręczny lub wyzwalacz harmonogramu) | `ScheduleTrigger` |
-|triggerEvent| Ciąg | Zdarzenie wyzwalacza | `ScheduleTime - 2017-07-06T01:50:25Z` |
+|triggerEvent| String | Zdarzenie wyzwalacza | `ScheduleTime - 2017-07-06T01:50:25Z` |
 |start| String | Początek wyzwalania wyzwalacza w wartości TimeSpan, format UTC | `2017-06-26T20:55:29.5007959Z`|
 |status| String | Końcowy stan, czy wyzwalacz został pomyślnie wywołany (powodzenie lub niepowodzenie) | `Succeeded`|
 
@@ -396,7 +396,7 @@ Log Analytics dziedziczy schemat z Azure Monitor z następującymi wyjątkami:
     | $. Properties. Klawiatur | Dane wejściowe | Dynamiczne |
     | $. Properties. Rozdzielczości | Output | Dynamiczne |
     | $. Properties. Błąd. errorCode | Kodzie | int |
-    | $. Properties. Błąd. komunikat | ErrorMessage | ciąg |
+    | $. Properties. Błąd. komunikat | ErrorMessage | string |
     | $. Properties. Porn | Błąd | Dynamiczne |
     | $. Properties. Poprzednikami hostowanymi | Poprzednikami hostowanymi | Dynamiczne |
     | $. Properties. Wejściowe | Parametry | Dynamiczne |

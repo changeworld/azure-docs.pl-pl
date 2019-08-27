@@ -65,7 +65,7 @@ Połączona usługa łączy magazyn danych z fabryką danych. Utworzysz połącz
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| accessKeyID |Identyfikator klucza dostępu do kluczy tajnych. |ciąg |Tak |
+| accessKeyID |Identyfikator klucza dostępu do kluczy tajnych. |string |Tak |
 | secretAccessKey |Sam klucz dostępu do kluczy tajnych. |Zaszyfrowany ciąg tajny |Tak |
 
 >[!NOTE]
