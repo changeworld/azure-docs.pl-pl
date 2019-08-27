@@ -1,0 +1,261 @@
+---
+title: Używanie z Kubernetes i Helm-przetwarzanie obrazów
+titleSuffix: Azure Cognitive Services
+description: Wdróż kontener przetwarzanie obrazów w usłudze Azure Container instance i przetestuj go w przeglądarce sieci Web.
+services: cognitive-services
+author: IEvangelist
+manager: nitinme
+ms.service: cognitive-services
+ms.subservice: computer-vision
+ms.topic: conceptual
+ms.date: 8/22/2019
+ms.author: dapine
+ms.openlocfilehash: 5befba9bdc44a594363dba86c0c2d082a9b44cdd
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036628"
+---
+# <a name="use-with-kubernetes-and-helm"></a>Używanie z usługą Kubernetes i rozwiązaniem Helm
+
+Jedną z opcji zarządzania kontenerami przetwarzanie obrazów w środowisku lokalnym jest użycie Kubernetes i Helm. Korzystając z Kubernetes i Helm do definiowania obrazu kontenera Rozpoznawanie tekstu, utworzymy pakiet Kubernetes. Ten pakiet zostanie wdrożony w klastrze Kubernetes lokalnie. Na koniec zapoznaj się z tematem testowanie wdrożonych usług. Aby uzyskać więcej informacji na temat uruchamiania kontenerów platformy Docker bez aranżacji Kubernetes, zobacz [Install and run rozpoznawanie tekstu Containers](computer-vision-how-to-install-containers.md).
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Poniższe wymagania wstępne przed użyciem kontenerów przetwarzanie obrazów lokalnie:
+
+|Wymagane|Cel|
+|--|--|
+| Azure Account | Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto][free-azure-account]. |
+| Dostęp Container Registry | Aby Kubernetes do ściągania obrazów platformy Docker do klastra, będzie potrzebny dostęp do rejestru kontenerów. Musisz najpierw zażądać [dostępu do rejestru kontenerów][vision-preview-access] . |
+| Interfejs wiersza polecenia Kubernetes | [Interfejs wiersza polecenia Kubernetes][kubernetes-cli] jest wymagany do zarządzania poświadczeniami udostępnionymi z rejestru kontenerów. Kubernetes jest również wymagany przed Helm, który jest menedżerem pakietów Kubernetes. |
+| Interfejs wiersza polecenia Helm | W ramach instalacji [interfejsu wiersza polecenia Helm][helm-install] trzeba również zainicjować Helm, który zainstaluje system. [][tiller-install] |
+| Zasób przetwarzanie obrazów |Aby można było używać kontenera, musisz mieć:<br><br>Zasób usługi Azure **Przetwarzanie obrazów** i skojarzony klucz interfejsu API dla identyfikatora URI punktu końcowego. Obie wartości są dostępne na stronach przeglądów i kluczy dla zasobu i są wymagane do uruchomienia kontenera.<br><br>**{API_KEY}** : Jeden z dwóch dostępnych kluczy zasobów na stronie **klucze**<br><br>**{ENDPOINT_URI}** : Punkt końcowy zgodnie z opisem na stronie **Przegląd**|
+
+[!INCLUDE [Gathering required parameters](../containers/includes/container-gathering-required-parameters.md)]
+
+### <a name="the-host-computer"></a>Komputer-host
+
+[!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
+
+### <a name="container-requirements-and-recommendations"></a>Kontener wymagania i zalecenia
+
+[!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
+
+## <a name="connect-to-the-kubernetes-cluster"></a>Nawiązywanie połączenia z klastrem Kubernetes
+
+Oczekuje się, że komputer hosta ma dostępny klaster Kubernetes. Zapoznaj się z tym samouczkiem dotyczącym [wdrażania klastra Kubernetes](../../aks/tutorial-kubernetes-deploy-cluster.md) , aby poznać koncepcję wdrażania klastra Kubernetes na komputerze hosta.
+
+### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Udostępnianie poświadczeń platformy Docker w klastrze Kubernetes
+
+Aby umożliwić klastrowi Kubernetes na `docker pull` skonfigurowane obrazy `containerpreview.azurecr.io` z rejestru kontenerów, należy przenieść poświadczenia platformy Docker do klastra. Wykonaj poniższe [`kubectl create`][kubectl-create] polecenie, aby utworzyć *wpis tajny platformy Docker* na podstawie poświadczeń podanych w ramach wymagania wstępnego dostępu do rejestru kontenerów.
+
+Z wybranego interfejsu wiersza polecenia Uruchom następujące polecenie. Pamiętaj `<username>`, aby zastąpić poświadczenia rejestru `<password>`kontenerów `<email-address>` , i.
+
+```console
+kubectl create secret docker-registry containerpreview \
+    --docker-server=containerpreview.azurecr.io \
+    --docker-username=<username> \
+    --docker-password=<password> \
+    --docker-email=<email-address>
+```
+
+> [!NOTE]
+> Jeśli masz już dostęp do `containerpreview.azurecr.io` rejestru kontenerów, możesz utworzyć wpis tajny Kubernetes przy użyciu flagi generycznej. Rozważ następujące polecenie, które jest wykonywane względem pliku JSON konfiguracji platformy Docker.
+> ```console
+>  kubectl create secret generic containerpreview \
+>      --from-file=.dockerconfigjson=~/.docker/config.json \
+>      --type=kubernetes.io/dockerconfigjson
+> ```
+
+Następujące dane wyjściowe są drukowane w konsoli po pomyślnym utworzeniu wpisu tajnego.
+
+```console
+secret "containerpreview" created
+```
+
+Aby sprawdzić, czy wpis tajny został utworzony, wykonaj [`kubectl get`][kubectl-get] polecenie `secrets` z flagą.
+
+```console
+kuberctl get secrets
+```
+
+Wykonanie operacji `kubectl get secrets` drukuje wszystkie skonfigurowane wpisy tajne.
+
+```console
+NAME                  TYPE                                  DATA      AGE
+containerpreview      kubernetes.io/dockerconfigjson        1         30s
+```
+
+## <a name="configure-helm-chart-values-for-deployment"></a>Konfigurowanie wartości wykresu Helm na potrzeby wdrożenia
+
+Zacznij od utworzenia folderu o nazwie *Text-rozpoznającego*, skopiuj i wklej następującą zawartość YAML do nowego pliku o nazwie `Chart.yml`.
+
+```yaml
+apiVersion: v1
+name: text-recognizer
+version: 1.0.0
+description: A Helm chart to deploy the microsoft/cognitive-services-recognize-text to a Kubernetes cluster
+```
+
+Aby skonfigurować wartości domyślne wykresu Helm, skopiuj i wklej następujący YAML do pliku o nazwie `values.yaml`. Zastąp Komentarze `# {API_KEY}`ikomentarz własnymi wartościami. `# {ENDPOINT_URI}`
+
+```yaml
+# These settings are deployment specific and users can provide customizations
+
+recognizeText:
+  enabled: true
+  image:
+    name: cognitive-services-recognize-text
+    registry: containerpreview.azurecr.io/
+    repository: microsoft/cognitive-services-recognize-text
+    tag: latest
+    pullSecret: containerpreview # Or an existing secret
+    args:
+      eula: accept
+      billing: # {ENDPOINT_URI}
+      apikey: # {API_KEY}
+```
+
+> [!IMPORTANT]
+> Jeśli wartości `apikey` i nie zostaną podane, usługi wygasną po 15 minutach. `billing` Podobnie weryfikacja nie powiedzie się, ponieważ usługi nie będą dostępne.
+
+Utwórz folder *szablonów* w katalogu *Text-rozpoznającego* . Skopiuj i wklej następujący YAML do pliku o nazwie `deployment.yaml`. `deployment.yaml` Plik będzie używany jako szablon Helm.
+
+> Szablony generują pliki manifestu, które są YAMLmi opisami zasobów, które Kubernetes mogą zrozumieć. [— Przewodnik po szablonach wykresu Helm][chart-template-guide]
+
+```yaml
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: text-recognizer
+spec:
+  template:
+    metadata:
+      labels:
+        app: text-recognizer-app
+    spec:
+      containers:
+      - name: {{.Values.recognizeText.image.name}}
+        image: {{.Values.recognizeText.image.registry}}{{.Values.recognizeText.image.repository}}
+        ports:
+        - containerPort: 5000
+        env:
+        - name: EULA
+          value: {{.Values.recognizeText.image.args.eula}}
+        - name: billing
+          value: {{.Values.recognizeText.image.args.billing}}
+        - name: apikey
+          value: {{.Values.recognizeText.image.args.apikey}}
+      imagePullSecrets:
+      - name: {{.Values.recognizeText.image.pullSecret}}
+
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: text-recognizer
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+  selector:
+    app: text-recognizer-app
+```
+
+Szablon określa usługę modułu równoważenia obciążenia oraz wdrożenie kontenera/obrazu na potrzeby rozpoznawania tekstu.
+
+### <a name="the-kubernetes-package-helm-chart"></a>Pakiet Kubernetes (wykres Helm)
+
+*Wykres Helm* zawiera konfigurację, którą obrazy platformy Docker pobrać z `containerpreview.azurecr.io` rejestru kontenerów.
+
+> [Wykres Helm][helm-charts] to zbiór plików, które opisują powiązany zestaw zasobów Kubernetes. Pojedynczy wykres może służyć do wdrażania bardzo prostego, takiego jak Memcached pod lub złożonego, takiego jak pełny stos aplikacji sieci Web z serwerami HTTP, bazami danych, pamięciami podręcznymi i tak dalej.
+
+Dostarczone *wykresy Helm* pobierają obrazy platformy Docker usługi przetwarzanie obrazów i rozpoznają usługi tekstowe z `containerpreview.azurecr.io` rejestru kontenerów.
+
+## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Instalowanie wykresu Helm w klastrze Kubernetes
+
+Aby zainstalować *Wykres Helm*, należy wykonać [`helm install`][helm-install-cmd] polecenie. Upewnij się, że polecenie Install jest wykonane z katalogu znajdującego się powyżej `text-recognizer` folderu.
+
+```console
+helm install text-recognizer --name text-recognizer
+```
+
+Oto przykładowe dane wyjściowe, które mogą być widoczne w przypadku pomyślnego wykonania instalacji:
+
+```console
+NAME:   text-recognizer
+LAST DEPLOYED: Thu Aug 22 13:24:06 2019
+NAMESPACE: default
+STATUS: DEPLOYED
+
+RESOURCES:
+==> v1/Pod(related)
+NAME                              READY  STATUS             RESTARTS  AGE
+text-recognizer-57cb76bcf7-45sdh  0/1    ContainerCreating  0         0s
+
+==> v1/Service
+NAME             TYPE          CLUSTER-IP    EXTERNAL-IP  PORT(S)         AGE
+text-recognizer  LoadBalancer  10.110.44.86  localhost    5000:31301/TCP  0s
+
+==> v1beta1/Deployment
+NAME             READY  UP-TO-DATE  AVAILABLE  AGE
+text-recognizer  0/1    1           0          0s
+```
+
+Wdrożenie Kubernetes może potrwać kilka minut. Aby upewnić się, że oba typy i usługi są poprawnie wdrożone i dostępne, wykonaj następujące polecenie:
+
+```console
+kubectl get all
+```
+
+Powinieneś oczekiwać, że zobaczysz coś podobnego do następującego:
+
+```console
+λ kubectl get all
+NAME                                   READY   STATUS    RESTARTS   AGE
+pod/text-recognizer-57cb76bcf7-45sdh   1/1     Running   0          17s
+
+NAME                      TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+service/kubernetes        ClusterIP      10.96.0.1      <none>        443/TCP          45h
+service/text-recognizer   LoadBalancer   10.110.44.86   localhost     5000:31301/TCP   17s
+
+NAME                              READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/text-recognizer   1/1     1            1           17s
+
+NAME                                         DESIRED   CURRENT   READY   AGE
+replicaset.apps/text-recognizer-57cb76bcf7   1         1         1       17s
+```
+
+<!--  ## Validate container is running -->
+
+[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+
+## <a name="next-steps"></a>Następne kroki
+
+Aby uzyskać więcej informacji na temat instalowania aplikacji z programem Helm w usłudze Azure Kubernetes Service (AKS), [odwiedź to tutaj][installing-helm-apps-in-aks].
+
+> [!div class="nextstepaction"]
+> [Kontenery Cognitive Services][cog-svcs-containers]
+
+<!-- LINKS - external -->
+[free-azure-account]: https://azure.microsoft.com/free
+[git-download]: https://git-scm.com/downloads
+[azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[docker-engine]: https://www.docker.com/products/docker-engine
+[kubernetes-cli]: https://kubernetes.io/docs/tasks/tools/install-kubectl
+[helm-install]: https://helm.sh/docs/using_helm/#installing-helm
+[helm-install-cmd]: https://helm.sh/docs/helm/#helm-install
+[tiller-install]: https://helm.sh/docs/install/#installing-tiller
+[helm-charts]: https://helm.sh/docs/developing_charts
+[kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+[kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[helm-test]: https://helm.sh/docs/helm/#helm-test
+[chart-template-guide]: https://helm.sh/docs/chart_template_guide
+
+<!-- LINKS - internal -->
+[vision-preview-access]: computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry
+[vision-container-host-computer]: computer-vision-how-to-install-containers.md#the-host-computer
+[installing-helm-apps-in-aks]: ../../aks/kubernetes-helm.md
+[cog-svcs-containers]: ../cognitive-services-container-support.md

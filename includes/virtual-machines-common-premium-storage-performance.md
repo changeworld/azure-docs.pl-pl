@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8aeb32ecddc0ef368b615a201179f17178ececad
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: abee645f8929c10856f662b1504b163b58d953a5
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817238"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036027"
 ---
 ## <a name="application-performance-indicators"></a>Wskaźniki wydajności aplikacji
 
@@ -111,7 +111,7 @@ Dowiedz się więcej na temat [iostat](https://linux.die.net/man/1/iostat) i [mo
 
 Główne czynniki wpływające na wydajność aplikacji działającej na Premium Storage są charakterem żądań we/wy, rozmiarem maszyny wirtualnej, rozmiarem dysku, liczbą dysków, buforowaniem dysków, wielowątkowości i głębokości kolejki. Niektóre z tych czynników można kontrolować za pomocą pokręteł dostarczonych przez system. Większość aplikacji może nie dawać opcji, aby zmienić rozmiar we/wy i głębokość kolejki bezpośrednio. Na przykład jeśli używasz SQL Server, nie możesz wybrać rozmiaru operacji we/wy i głębokości kolejki. SQL Server wybiera optymalną wartość we/wy i głębokość kolejki w celu uzyskania najwyższej wydajności. Ważne jest, aby zrozumieć wpływ obu typów czynników na wydajność aplikacji, dzięki czemu można udostępnić odpowiednie zasoby w celu spełnienia wymagań dotyczących wydajności.
 
-W tej sekcji zapoznaj się z utworzoną listą kontrolną dotyczącą wymagań aplikacji, aby sprawdzić, ile jest potrzebnych do zoptymalizowania wydajności aplikacji. W zależności od tego można określić, które czynniki z tej sekcji należy dostosować. Aby wypróbować wpływ każdego czynnika na wydajność aplikacji, Uruchom narzędzia do testów porównawczych w konfiguracji aplikacji. Zapoznaj się z sekcją testy porównawcze na końcu tego artykułu, aby zapoznać się z procedurą uruchamiania typowych narzędzi do testów porównawczych na maszynach wirtualnych z systemem Windows i Linux.
+W tej sekcji zapoznaj się z utworzoną listą kontrolną dotyczącą wymagań aplikacji, aby sprawdzić, ile jest potrzebnych do zoptymalizowania wydajności aplikacji. W zależności od tego można określić, które czynniki z tej sekcji należy dostosować. Aby wypróbować wpływ każdego czynnika na wydajność aplikacji, Uruchom narzędzia do testów porównawczych w konfiguracji aplikacji. Zapoznaj się z artykułem dotyczącym testów porównawczych połączonym na końcu, aby zapoznać się z krokami uruchamiania wspólnych narzędzi testowych na maszynach wirtualnych z systemami Windows i Linux.
 
 ### <a name="optimize-iops-throughput-and-latency-at-a-glance"></a>Błyskawiczne Optymalizowanie operacji we/wy, przepływności i opóźnień
 
@@ -166,7 +166,7 @@ Aby uzyskać liczbę operacji we/wy i przepustowość wyższą niż maksymalna w
 > [!NOTE]
 > W miarę zwiększania liczby operacji we/wy lub przepływności inne również zwiększają się, pamiętaj, aby nie trafiać przepływności ani limitów liczby operacji we/wy dysku lub maszyny wirtualnej podczas jej wzrostu.
 
-Aby posłużyć do monitorowania wpływu rozmiaru operacji we/wy na wydajność aplikacji, można uruchomić narzędzia do oceny porównawczej na maszynie wirtualnej i na dyskach. Utwórz wiele przebiegów testowych i użyj innego rozmiaru we/wy dla każdego przebiegu, aby zobaczyć wpływ. Aby uzyskać więcej informacji, zapoznaj się z sekcją testy porównawcze na końcu tego artykułu.
+Aby posłużyć do monitorowania wpływu rozmiaru operacji we/wy na wydajność aplikacji, można uruchomić narzędzia do oceny porównawczej na maszynie wirtualnej i na dyskach. Utwórz wiele przebiegów testowych i użyj innego rozmiaru we/wy dla każdego przebiegu, aby zobaczyć wpływ. Aby uzyskać więcej informacji, zapoznaj się z artykułem dotyczącym testów porównawczych.
 
 ## <a name="high-scale-vm-sizes"></a>Rozmiary maszyn wirtualnych o dużej skali
 
@@ -385,13 +385,5 @@ W przypadku woluminu rozłożonego należy zachować górną głębokość kolej
 
 Usługa Azure Premium Storage postanowił określoną liczbę operacji we/wy na sekundę i przepływności w zależności od wybranego rozmiaru maszyny wirtualnej i wybranego rozmiaru dysku. Gdy aplikacja próbuje zwiększyć liczbę operacji we/wy lub przepływności powyżej tych limitów, co może obsłużyć maszyna wirtualna lub dysk, Premium Storage będzie ograniczać ją. Te manifesty mają postać obniżonej wydajności aplikacji. Może to oznaczać większe opóźnienia, niższą przepływność lub mniejsze liczby operacji we/wy na sekundę. Jeśli Premium Storage nie jest ograniczana, aplikacja może zakończyć się niepowodzeniem, przekroczenie możliwości osiągania zasobów. Aby uniknąć problemów z wydajnością ze względu na ograniczenie przepustowości, zawsze Zapewnij odpowiednią ilość zasobów dla aplikacji. Weź pod uwagę to, co omówiono w sekcjach rozmiary maszyn wirtualnych i rozmiary dysków powyżej. Testy porównawcze to najlepszy sposób ustalania zasobów potrzebnych do hostowania aplikacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat dostępnych typów dysków:
-
-* [Wybierz typ dysku](../articles/virtual-machines/windows/disks-types.md)  
-
-Aby uzyskać SQL Server użytkowników, przeczytaj artykuły dotyczące najlepszych rozwiązań w zakresie wydajności dla SQL Server:
-
-* [Najlepsze rozwiązania dotyczące wydajności SQL Server na platformie Azure Virtual Machines](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md)
-* [Usługa Azure Premium Storage zapewnia najwyższą wydajność SQL Server na maszynie wirtualnej platformy Azure](https://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 369729f10de4a55cd14bb866795ea1aa15b3d9da
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 9476290669606f6eb6c56b51497f3026b9613698
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639783"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034961"
 ---
 # <a name="preview---limit-egress-traffic-for-cluster-nodes-and-control-access-to-required-ports-and-services-in-azure-kubernetes-service-aks"></a>Wersja zapoznawcza — Ogranicz ruch wychodzący dla węzłów klastra i Kontroluj dostęp do wymaganych portów i usług w usłudze Azure Kubernetes Service (AKS)
 
@@ -85,15 +85,13 @@ Wymagane są następujące reguły dotyczące nazwy FQDN/aplikacji:
 |----------------------------|-----------|----------|
 | *.hcp. \<Location\>. azmk8s.IO | HTTPS:443, TCP:22, TCP:9000 | Ten adres jest punktem końcowym serwera interfejsu API. *Zamień\<lokalizację\>* na region, w którym wdrożono klaster AKS. |
 | *.tun. \<Location\>. azmk8s.IO | HTTPS:443, TCP:22, TCP:9000 | Ten adres jest punktem końcowym serwera interfejsu API. *Zamień\<lokalizację\>* na region, w którym wdrożono klaster AKS. |
-| aksrepos.azurecr.io        | HTTPS:443 | Ten adres jest wymagany w celu uzyskania dostępu do obrazów w Azure Container Registry (ACR). |
+| aksrepos.azurecr.io        | HTTPS:443 | Ten adres jest wymagany w celu uzyskania dostępu do obrazów w Azure Container Registry (ACR). Ten Rejestr zawiera obrazy/wykresy innych firm (na przykład serwer metryk, podstawowe DNS itd.) wymagane do działania klastra podczas uaktualniania i skalowania klastra|
 | *.blob.core.windows.net    | HTTPS:443 | Ten adres jest magazynem zaplecza dla obrazów przechowywanych w ACR. |
-| mcr.microsoft.com          | HTTPS:443 | Ten adres jest wymagany w celu uzyskania dostępu do obrazów w programie Microsoft Container Registry (MCR). |
+| mcr.microsoft.com          | HTTPS:443 | Ten adres jest wymagany w celu uzyskania dostępu do obrazów w programie Microsoft Container Registry (MCR). Ten Rejestr zawiera obrazy i wykresy pierwszej strony (na przykład Moby itp.) wymagane do działania klastra podczas uaktualniania i skalowania klastra |
 | *.cdn.mscr.io              | HTTPS:443 | Ten adres jest wymagany dla magazynu MCR obsługiwanego przez usługę Azure Content Delivery Network (CDN). |
 | management.azure.com       | HTTPS:443 | Ten adres jest wymagany do Kubernetes operacji pobierania/UMIESZCZAnia. |
 | login.microsoftonline.com  | HTTPS:443 | Ten adres jest wymagany na potrzeby uwierzytelniania Azure Active Directory. |
-| api.snapcraft.io           | HTTPS:443, HTTP:80 | Ten adres jest wymagany do zainstalowania pakietów Snap w węzłach systemu Linux. |
 | ntp.ubuntu.com             | UDP:123   | Ten adres jest wymagany w przypadku synchronizacji czasu NTP w węzłach systemu Linux. |
-| *. docker.io                | HTTPS:443 | Ten adres jest wymagany do ściągnięcia wymaganych obrazów kontenerów dla frontonu tunelu. |
 
 ## <a name="optional-recommended-addresses-and-ports-for-aks-clusters"></a>Opcjonalne zalecane adresy i porty dla klastrów AKS
 
@@ -103,7 +101,7 @@ Następujące reguły dotyczące nazwy FQDN/aplikacji są zalecane, aby klastry 
 
 | NAZWA FQDN                                    | Port      | Zastosowanie      |
 |-----------------------------------------|-----------|----------|
-| *.ubuntu.com                            | HTTP:80   | Ten adres umożliwia pobranie przez węzły klastra systemu Linux wymaganych poprawek i aktualizacji zabezpieczeń. |
+| security.ubuntu.com, azure.archive.ubuntu.com, changelogs.ubuntu.com                           | HTTP:80   | Ten adres umożliwia pobranie przez węzły klastra systemu Linux wymaganych poprawek i aktualizacji zabezpieczeń. |
 | packages.microsoft.com                  | HTTPS:443 | Ten adres jest repozytorium pakietów firmy Microsoft używanym do buforowanych operacji *apt-get* . |
 | dc.services.visualstudio.com            | HTTPS:443 | Zalecane do poprawnego metryk i monitorowania przy użyciu Azure Monitor. |
 | *.opinsights.azure.com                  | HTTPS:443 | Zalecane do poprawnego metryk i monitorowania przy użyciu Azure Monitor. |

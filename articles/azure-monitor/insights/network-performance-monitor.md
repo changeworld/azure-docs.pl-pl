@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: vinigam
-ms.openlocfilehash: c350ca3cd8cbfb5e550fccd0bae0df53168de178
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 80bca606a2b06d85afc8a2115133f44d738f7e0a
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312071"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035248"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor rozwiązanie na platformie Azure
 
@@ -71,7 +71,7 @@ Użyj podstawowych procesów, aby zainstalować agentów na [komputerach z syste
 
 * **Monitor łączności usługi**: Zainstaluj agenta Log Analytics w każdym węźle, z którego chcesz monitorować łączność sieciową do punktu końcowego usługi. Przykładem jest to, że chcesz monitorować łączność sieciową z pakietem Office 365 z witryn biur oznaczonych jako O1, O2 i O3. Zainstaluj agenta Log Analytics na co najmniej jednym węźle, każdy w O1, O2 i O3. 
 
-* **Monitor ExpressRoute**: Zainstaluj co najmniej jednego agenta Log Analytics w sieci wirtualnej platformy Azure. Zainstaluj także co najmniej jednego agenta w podsieci lokalnej, który jest połączony za pomocą prywatnej komunikacji równorzędnej ExpressRoute.  
+* **Monitor ExpressRoute**: Zainstaluj co najmniej jednego agenta Log Analytics w sieci wirtualnej platformy Azure. Zainstaluj także co najmniej jednego agenta w podsieci lokalnej, który jest połączony za pomocą prywatnej komunikacji równorzędnej ExpressRoute.  
 
 ### <a name="configure-log-analytics-agents-for-monitoring"></a>Skonfiguruj Log Analytics agentów do monitorowania 
 
@@ -105,7 +105,7 @@ Network Performance Monitor używa transakcji syntetycznych do monitorowania wyd
 
 1. Dodaj rozwiązanie Network Performance Monitor do obszaru roboczego z [witryny Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview). Można również użyć procesu opisanego w temacie [Dodawanie rozwiązań Azure monitor z Galeria rozwiązań](../../azure-monitor/insights/solutions.md). 
 2. Otwórz obszar roboczy Log Analytics i wybierz kafelek **Przegląd** . 
-3. Wybierz kafelek **Network Performance Monitor** z *rozwiązaniem wiadomości wymaga dodatkowej konfiguracji*.
+3. Wybierz kafelek **Network Performance Monitor** z *rozwiązaniem wiadomości wymaga dodatkowej konfiguracji*.
 
    ![Kafelek Network Performance Monitor](media/network-performance-monitor/npm-config.png)
 
@@ -133,7 +133,7 @@ Po zakończeniu instalacji trwa od 30 minut do godziny w celu wypełnienia danyc
 
 #### <a name="edit-monitoring-settings-for-subnets-and-nodes"></a>Edytowanie ustawień monitorowania dla podsieci i węzłów 
 
-Wszystkie podsieci z zainstalowanym co najmniej jednym agentem są wyświetlane na ****  karcie podsieci na stronie Konfiguracja. 
+Wszystkie podsieci z zainstalowanym co najmniej jednym agentem są wyświetlane na karcie **podsieci** na stronie Konfiguracja. 
 
 
 Aby włączyć lub wyłączyć monitorowanie określonych podsieci:
@@ -189,11 +189,11 @@ Po włączeniu rozwiązania Network Performance Monitor kafelek rozwiązania na 
 
 * **Najważniejsze zdarzenia dotyczące kondycji sieci**: Ta strona zawiera listę najnowszych zdarzeń i alertów dotyczących kondycji w systemie oraz czas aktywności zdarzeń. Zdarzenie kondycji lub alert jest generowany za każdym razem, gdy wartość wybranej metryki (utrata, opóźnienie, czas odpowiedzi lub wykorzystanie przepustowości) dla reguły monitorowania przekroczy wartość progową. 
 
-* **Monitor ExpressRoute**: Ta strona zawiera podsumowania kondycji różnych połączeń komunikacji równorzędnej ExpressRoute monitorowanych przez rozwiązanie. Kafelek **topologia** przedstawia liczbę ścieżek sieciowych za pomocą obwodów usługi ExpressRoute monitorowanych w sieci. Wybierz ten kafelek, aby przejść do  widoku topologii.
+* **Monitor ExpressRoute**: Ta strona zawiera podsumowania kondycji różnych połączeń komunikacji równorzędnej ExpressRoute monitorowanych przez rozwiązanie. Kafelek **topologia** przedstawia liczbę ścieżek sieciowych za pomocą obwodów usługi ExpressRoute monitorowanych w sieci. Wybierz ten kafelek, aby przejść do widoku topologii.
 
-* **Monitor łączności usługi**: Ta strona zawiera podsumowania kondycji dla różnych utworzonych testów. Kafelek **topologia** pokazuje liczbę monitorowanych punktów końcowych. Wybierz ten kafelek, aby przejść do  widoku topologii.
+* **Monitor łączności usługi**: Ta strona zawiera podsumowania kondycji dla różnych utworzonych testów. Kafelek **topologia** pokazuje liczbę monitorowanych punktów końcowych. Wybierz ten kafelek, aby przejść do widoku topologii.
 
-* **Monitor wydajności**: Ta strona zawiera podsumowania kondycji dla linków **sieciowych** i linków **podsieci** monitorowanych przez rozwiązanie. Kafelek **topologia** przedstawia liczbę ścieżek sieciowych monitorowanych w sieci. Wybierz ten kafelek, aby przejść do  widoku topologii. 
+* **Monitor wydajności**: Ta strona zawiera podsumowania kondycji dla linków **sieciowych** i linków **podsieci** monitorowanych przez rozwiązanie. Kafelek **topologia** przedstawia liczbę ścieżek sieciowych monitorowanych w sieci. Wybierz ten kafelek, aby przejść do widoku topologii. 
 
 * **Typowe zapytania**: Ta strona zawiera zestaw zapytań wyszukiwania, które bezpośrednio pobierają dane monitorowania sieci RAW. Tych zapytań można użyć jako punktu wyjścia do tworzenia własnych zapytań na potrzeby niestandardowego raportowania. 
 
@@ -203,9 +203,9 @@ Po włączeniu rozwiązania Network Performance Monitor kafelek rozwiązania na 
 
 ### <a name="drill-down-for-depth"></a>Przechodzenie do szczegółów w celu uzyskania głębokości 
 
-Możesz wybrać różne linki na pulpicie nawigacyjnym rozwiązania, aby przelepszyć szczegółowe informacje w dowolnym interesującym obszarze. Na przykład jeśli na pulpicie nawigacyjnym pojawi się alert lub link sieciowy o złej kondycji, wybierz go, aby dokładniej zbadać. Na stronie znajduje się lista wszystkich łączy podsieci dla danego łącza sieciowego. Możesz zobaczyć utratę, opóźnienie i stan kondycji poszczególnych linków podsieci. Możesz szybko sprawdzić, które łącze podsieci powoduje problemy. Wybierz pozycję **Wyświetl linki** węzłów, aby wyświetlić wszystkie linki węzłów dla łącza podsieci w złej kondycji. Następnie można zobaczyć poszczególne linki węzeł-węzeł i znaleźć linki węzłów w złej kondycji. 
+Możesz wybrać różne linki na pulpicie nawigacyjnym rozwiązania, aby przelepszyć szczegółowe informacje w dowolnym interesującym obszarze. Na przykład jeśli na pulpicie nawigacyjnym pojawi się alert lub link sieciowy o złej kondycji, wybierz go, aby dokładniej zbadać. Na stronie znajduje się lista wszystkich łączy podsieci dla danego łącza sieciowego. Możesz zobaczyć utratę, opóźnienie i stan kondycji poszczególnych linków podsieci. Możesz szybko sprawdzić, które łącze podsieci powoduje problemy. Wybierz pozycję **Wyświetl linki węzłów** , aby wyświetlić wszystkie linki węzłów dla łącza podsieci w złej kondycji. Następnie można zobaczyć poszczególne linki węzeł-węzeł i znaleźć linki węzłów w złej kondycji. 
 
-Wybierz pozycję **Wyświetl topologię** , aby wyświetlić topologię przeskoków między węzłami źródłowymi a docelowymi. Trasy w złej kondycji są wyświetlane na czerwono. Możesz wyświetlić czas opóźnienia przytworzony przez każdy z przeskoków, aby szybko zidentyfikować problem do konkretnej części sieci.
+Wybierz pozycję **Wyświetl topologię** , aby wyświetlić topologię przeskoków między węzłami źródłowymi a docelowymi. Trasy w złej kondycji są wyświetlane na czerwono. Możesz wyświetlić czas opóźnienia przytworzony przez każdy z przeskoków, aby szybko zidentyfikować problem do konkretnej części sieci.
 
  
 
@@ -245,7 +245,7 @@ Topologia wyświetlana na mapie jest topologią warstwy 3 i nie zawiera urządze
 
 ## <a name="log-queries-in-azure-monitor"></a>Rejestruj zapytania w Azure Monitor
 
-Wszystkie dane, które są udostępniane graficznie za pomocą pulpitu nawigacyjnego Network Performance Monitor i stron przechodzenia do szczegółów, są również dostępne natywnie w [kwerendach dzienników](../log-query/log-query-overview.md). Można przeprowadzić interaktywną analizę danych w repozytorium i skorelować dane z różnych źródeł. Można również tworzyć niestandardowe alerty i widoki oraz eksportować dane do programu Excel, Power BI lub link możliwego do udostępniania. Obszar **typowe zapytania** na pulpicie nawigacyjnym zawiera kilka przydatnych zapytań, których można użyć jako punktu wyjścia do tworzenia własnych zapytań i raportów. 
+Wszystkie dane, które są udostępniane graficznie za pomocą pulpitu nawigacyjnego Network Performance Monitor i stron przechodzenia do szczegółów, są również dostępne natywnie w [kwerendach dzienników](../log-query/log-query-overview.md). Można przeprowadzić interaktywną analizę danych w repozytorium i skorelować dane z różnych źródeł. Można również tworzyć niestandardowe alerty i widoki oraz eksportować dane do programu Excel, Power BI lub link możliwego do udostępniania. Obszar **typowe zapytania** na pulpicie nawigacyjnym zawiera kilka przydatnych zapytań, których można użyć jako punktu wyjścia do tworzenia własnych zapytań i raportów. 
 
 ## <a name="alerts"></a>Alerty
 
@@ -277,7 +277,7 @@ Informacje o cenach są dostępne w [trybie online](network-performance-monitor-
 
 * **UserVoice** Możesz publikować swoje pomysły dotyczące Network Performance Monitor funkcji, nad którymi chcesz, nad którymi pracujemy. Odwiedź [stronę usługi UserVoice](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring). 
 
-* **Dołącz do naszego kohorta:** Zawsze interesuje Cię, aby nowi klienci mogli dołączyć do naszego kohortau. W ramach tego artykułu otrzymujesz wczesny dostęp do nowych funkcji i możliwość poprawy Network Performance Monitor. Jeśli interesuje Cię dołączenie, Wypełnij tę [szybką ankietę](https://aka.ms/npmcohort). 
+* **Dołącz do naszego kohorta:** Zawsze interesuje Cię, aby nowi klienci mogli dołączyć do naszego kohortau. W ramach tego artykułu otrzymujesz wczesny dostęp do nowych funkcji i możliwość poprawy Network Performance Monitor. Jeśli interesuje Cię dołączenie, Wypełnij tę [szybką ankietę](https://aka.ms/npmcohort). 
 
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Następne kroki 
 Dowiedz się więcej na temat [monitora wydajności](network-performance-monitor-performance-monitor.md), [monitora łączności usług](network-performance-monitor-performance-monitor.md)i [monitora ExpressRoute](network-performance-monitor-expressroute.md). 

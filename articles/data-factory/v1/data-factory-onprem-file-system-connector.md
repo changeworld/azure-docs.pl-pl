@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych do/z systemu plików przy użyciu usługi Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane do i z systemu plików w środowisku lokalnym za pomocą usługi Azure Data Factory.
+title: Kopiowanie danych do/z systemu plików przy użyciu Azure Data Factory | Microsoft Docs
+description: Informacje o kopiowaniu danych do i z lokalnego systemu plików przy użyciu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,84 +13,84 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4d3816eebe85f01301c770a50a618142bcbfbb21
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 92274f63db78d53bdd0fa3fd440977422be3b4a1
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839967"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036281"
 ---
-# <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopiowanie danych do i z systemu plików w środowisku lokalnym za pomocą usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, którego używasz:"]
+# <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopiowanie danych do i z lokalnego systemu plików przy użyciu Azure Data Factory
+> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](data-factory-onprem-file-system-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-file-system.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [łącznika systemu plików w wersji 2](../connector-file-system.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [Łącznik systemu plików w wersji 2](../connector-file-system.md).
 
 
-W tym artykule wyjaśniono, jak używać działania kopiowania w usłudze Azure Data Factory do kopiowania danych do/z lokalnego systemu plików. Opiera się na [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólne omówienie przenoszenie danych za pomocą działania kopiowania.
+W tym artykule wyjaśniono, jak używać działania kopiowania w Azure Data Factory do kopiowania danych do/z lokalnego systemu plików. Jest on używany w artykule dotyczącym [przenoszenia danych](data-factory-data-movement-activities.md) , który przedstawia ogólne omówienie przenoszenia danych za pomocą działania kopiowania.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="supported-scenarios"></a>Obsługiwane scenariusze
-Dane można kopiować **z lokalnym systemem plików** się następujące dane są przechowywane:
+Dane **z lokalnego systemu plików** można kopiować do następujących magazynów danych:
 
 [!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
 
-Możesz skopiować dane z następujących magazynów danych **systemu plików w środowisku lokalnym**:
+Dane z następujących magazynów danych można kopiować **do lokalnego systemu plików**:
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 > [!NOTE]
-> Działanie kopiowania nie powoduje usunięcia pliku źródłowego, po pomyślnym są kopiowane do lokalizacji docelowej. Jeśli zachodzi potrzeba usunięcia pliku źródłowego po kopiowania zakończonego powodzeniem, należy utworzyć niestandardowe działanie, aby usunąć plik i użyć działania w potoku.
+> Działanie kopiowania nie usuwa pliku źródłowego po pomyślnym skopiowaniu do miejsca docelowego. Jeśli musisz usunąć plik źródłowy po pomyślnej kopii, Utwórz niestandardowe działanie, aby usunąć plik i użyć działania w potoku.
 
-## <a name="enabling-connectivity"></a>Włączanie połączenia
-Usługa Data Factory obsługuje łączenie z lokalnym systemem plików za pośrednictwem i **bramy zarządzania danymi**. Należy zainstalować bramę zarządzania danymi w środowisku lokalnych usługi Data Factory nawiązać połączenie z dowolnego obsługiwanego lokalnego magazynu danych, w tym system plików. Aby dowiedzieć się o bramy zarządzania danymi i instrukcje krok po kroku na temat konfigurowania bramy, zobacz [przenoszenie danych między źródłami lokalnymi i w chmurze przy użyciu bramy zarządzania danymi](data-factory-move-data-between-onprem-and-cloud.md). Niezależnie od bramą zarządzania danymi żadne inne pliki binarne muszą być zainstalowane do komunikowania się z lokalnym systemem plików i. Należy zainstalować i używać bramy zarządzania danymi, nawet jeśli system plików znajduje się w maszynie Wirtualnej IaaS platformy Azure. Aby uzyskać szczegółowe informacje na temat bramy, zobacz [bramy zarządzania danymi](data-factory-data-management-gateway.md).
+## <a name="enabling-connectivity"></a>Włączanie łączności
+Data Factory obsługuje łączenie z lokalnym systemem plików i z niego za pośrednictwem **bramy zarządzanie danymi Gateway**. Aby usługa Data Factory mogła łączyć się z dowolnym obsługiwanym lokalnym magazynem danych, w tym systemem plików, należy zainstalować bramę Zarządzanie danymi w środowisku lokalnym. Aby dowiedzieć się więcej na temat bramy Zarządzanie danymi i instrukcje krok po kroku dotyczące konfigurowania bramy, zobacz [przenoszenie danych między źródłami lokalnymi i chmurą przy użyciu bramy zarządzanie danymi Gateway](data-factory-move-data-between-onprem-and-cloud.md). Poza bramą Zarządzanie danymi nie trzeba instalować żadnych innych plików binarnych, aby komunikować się z lokalnym systemem plików i z niego. Należy zainstalować bramę Zarządzanie danymi i korzystać z niej nawet wtedy, gdy system plików znajduje się na maszynie wirtualnej IaaS platformy Azure. Aby uzyskać szczegółowe informacje o bramie, zobacz [Zarządzanie danymi Gateway](data-factory-data-management-gateway.md).
 
-Aby użyć udziału pliku systemu Linux, należy zainstalować [Samba](https://www.samba.org/) na serwer z systemem Linux i zainstaluj bramę zarządzania danymi na serwerze Windows. Instalowanie bramy zarządzania danymi na serwerze z systemem Linux nie jest obsługiwane.
+Aby użyć udziału plików systemu Linux, zainstaluj program [Samba](https://www.samba.org/) na serwerze z systemem Linux i zainstaluj bramę zarządzanie danymi na serwerze z systemem Windows. Instalowanie bramy Zarządzanie danymi na serwerze z systemem Linux nie jest obsługiwane.
 
 ## <a name="getting-started"></a>Wprowadzenie
-Utworzysz potok z działaniem kopiowania, które przenosi dane z systemu plików przy użyciu różnych narzędzi/interfejsów API.
+Można utworzyć potok z działaniem kopiowania, które przenosi dane do/z systemu plików przy użyciu różnych narzędzi/interfejsów API.
 
-Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
+Najprostszym sposobem utworzenia potoku jest użycie **Kreatora kopiowania**. Zobacz [samouczek: Tworzenie potoku za pomocą kreatora](data-factory-copy-data-wizard-tutorial.md) kopiowania na potrzeby szybkiego instruktażu dotyczącego tworzenia potoku przy użyciu Kreatora kopiowania danych.
 
-Aby utworzyć potok umożliwia także następujących narzędzi: **Program Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**, i **interfejsu API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+Do utworzenia potoku można także użyć następujących narzędzi: **Visual Studio**, **Azure PowerShell**, **szablon Azure Resource Manager**, **interfejs API platformy .NET**i **interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
-Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
+Niezależnie od tego, czy używasz narzędzi, czy interfejsów API, wykonaj następujące kroki, aby utworzyć potok służący do przenoszenia danych ze źródłowego magazynu danych do magazynu danych ujścia:
 
-1. Tworzenie **usługi data factory**. Fabryka danych może zawierać jeden lub wiele potoków.
-2. Tworzenie **połączonych usług** połączyć dane wejściowe i wyjściowe przechowywane z fabryką danych. Na przykład jeśli kopiujesz dane z magazynu obiektów blob platformy Azure do lokalnego systemu plików, utworzysz dwie połączone usługi, aby połączyć systemu plików w środowisku lokalnym i konto usługi Azure storage z fabryką danych. Aby uzyskać właściwości połączonej usługi, które są specyficzne dla środowiska lokalnego systemu plików, zobacz [właściwości usługi połączonej](#linked-service-properties) sekcji.
-3. Tworzenie **zestawów danych** do reprezentowania dane wejściowe i wyjściowe operacji kopiowania. W tym przykładzie wymienione w ostatnim kroku utworzysz zestaw danych, aby określić kontener obiektów blob oraz folder, który zawiera dane wejściowe. I utwórz inny zestaw danych, aby określić folder i nazwę pliku (opcjonalnie) w systemie plików. Dla właściwości zestawu danych, które są specyficzne dla środowiska lokalnego systemu plików, zobacz [właściwości zestawu danych](#dataset-properties) sekcji.
-4. Tworzenie **potoku** za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe. W przykładzie, o których wspomniano wcześniej możesz użyć BlobSource jako źródła i FileSystemSink jako obiekt sink dla działania kopiowania. Podobnie system plików w środowisku lokalnym są kopiowane do usługi Azure Blob Storage, należy użyć FileSystemSource i BlobSink w działaniu kopiowania. Właściwości działania kopiowania, które są specyficzne dla środowiska lokalnego systemu plików, zobacz [właściwości działania kopiowania](#copy-activity-properties) sekcji. Aby uzyskać szczegółowe informacje na temat korzystania z magazynu danych jako źródła lub ujścia kliknij link w poprzedniej sekcji dla magazynu danych.
+1. Utwórz **fabrykę danych**. Fabryka danych może zawierać jeden lub więcej potoków.
+2. Utwórz **połączone usługi** , aby połączyć magazyny danych wejściowych i wyjściowych z fabryką danych. Na przykład w przypadku kopiowania danych z usługi Azure Blob Storage do lokalnego systemu plików należy utworzyć dwie połączone usługi, aby połączyć lokalny system plików i konto usługi Azure Storage z fabryką danych. Aby uzyskać właściwości połączonej usługi, które są specyficzne dla lokalnego systemu plików, zobacz sekcję [Właściwości połączonej usługi](#linked-service-properties) .
+3. Utwórz **zestawy** danych, aby reprezentować dane wejściowe i wyjściowe dla operacji kopiowania. W przykładzie opisanym w ostatnim kroku utworzysz zestaw danych, aby określić kontener obiektów blob i folder zawierający dane wejściowe. Ponadto utworzysz kolejny zestaw danych, aby określić folder i nazwę pliku (opcjonalnie) w systemie plików. Dla właściwości zestawu danych, które są specyficzne dla lokalnego systemu plików, zobacz sekcję [Właściwości zestawu danych](#dataset-properties) .
+4. Utwórz **potok** z działaniem kopiowania, które pobiera zestaw danych jako dane wejściowe i zestaw danych jako dane wyjściowe. W powyższym przykładzie użyto BlobSource jako źródła i FileSystemSink jako ujścia dla działania kopiowania. Podobnie w przypadku kopiowania z lokalnego systemu plików na platformę Azure Blob Storage należy użyć funkcji FileSystemSource i wartość blobsink w działaniu kopiowania. Aby uzyskać właściwości działania kopiowania specyficzne dla lokalnego systemu plików, zobacz sekcję [właściwości działania kopiowania](#copy-activity-properties) . Aby uzyskać szczegółowe informacje na temat używania magazynu danych jako źródła lub ujścia, kliknij link w poprzedniej sekcji dla magazynu danych.
 
-Korzystając z kreatora, definicje JSON dotyczące tych jednostek usługi Data Factory (połączone usługi, zestawy danych i potok) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON.  Aby uzyskać przykłady przy użyciu definicji JSON dla jednostek fabryki danych, które są używane do kopiowania danych z systemu plików, zobacz [JSON przykłady](#json-examples-for-copying-data-to-and-from-file-system) dalszej części tego artykułu.
+Gdy używasz Kreatora, definicje JSON dla tych Data Factory jednostek (połączone usługi, zestawy danych i potok) są automatycznie tworzone. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API .NET), należy zdefiniować te Data Factory jednostki przy użyciu formatu JSON.  Przykłady zawierające definicje JSON dla Data Factory jednostek, które są używane do kopiowania danych do/z systemu plików, zobacz sekcję [przykłady JSON](#json-examples-for-copying-data-to-and-from-file-system) w tym artykule.
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, które są używane do definiowania jednostek usługi fabryka danych określonej do systemu plików:
+Poniższe sekcje zawierają szczegółowe informacje na temat właściwości JSON, które są używane do definiowania jednostek Data Factory specyficznych dla systemu plików:
 
 ## <a name="linked-service-properties"></a>Właściwości usługi połączonej
-Możesz połączyć i lokalnym systemem plików usługi Azure data factory przy użyciu **na lokalnym serwerze plików** połączoną usługę. Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla serwera plików dla lokalnej połączonej usługi.
+Lokalny system plików można połączyć z fabryką danych Azure przy użyciu połączonej usługi **lokalnego serwera plików** . Poniższa tabela zawiera opisy elementów JSON, które są specyficzne dla połączonej usługi lokalnego serwera plików.
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| type |Upewnij się, że właściwość typu jest ustawiona na **OnPremisesFileServer**. |Tak |
+| type |Upewnij się, że Właściwość Type ma wartość **OnPremisesFileServer**. |Tak |
 | host |Określa ścieżkę katalogu głównego folderu, który chcesz skopiować. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady. |Yes |
-| userid |Określ identyfikator użytkownika, który ma dostęp do serwera. |Nie (Jeśli wybierzesz encryptedCredential) |
-| password |Określ hasło dla użytkownika (nazwa użytkownika). |Nie (Jeśli wybierzesz encryptedCredential |
-| encryptedCredential |Określ zaszyfrowane poświadczenia, które można uzyskać, uruchamiając polecenie cmdlet New-AzDataFactoryEncryptValue. |Nie (Jeśli chcesz określić identyfikator użytkownika i hasło w postaci zwykłego tekstu) |
-| gatewayName |Określa nazwę bramy, która Data Factory powinna używać do łączenia się z serwerem plików lokalnych. |Tak |
+| userid |Określ identyfikator użytkownika, który ma dostęp do serwera. |Nie (w przypadku wybrania opcji encryptedCredential) |
+| password |Określ hasło dla użytkownika (nazwa użytkownika). |Nie (w przypadku wybrania opcji encryptedCredential |
+| encryptedCredential |Określ zaszyfrowane poświadczenia, które można uzyskać, uruchamiając polecenie cmdlet New-AzDataFactoryEncryptValue. |Nie (Jeśli wybierzesz opcję określenia identyfikatora użytkownika i hasła w postaci zwykłego tekstu) |
+| gatewayName |Określa nazwę bramy, która Data Factory powinna być używana do nawiązywania połączenia z lokalnym serwerem plików. |Tak |
 
 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>Przykładowe połączona usługa i definicje zestawów danych
-| Scenariusz | Hosting w definicji połączonej usługi | folderPath w definicji zestawu danych |
+| Scenariusz | Definicja hosta w połączonej usłudze | folderPath w definicji zestawu danych |
 | --- | --- | --- |
-| Folder lokalny na maszynie bramy zarządzania danymi: <br/><br/>Przykłady: D:\\ \* lub D:\folder\subfolder\\* |D:\\ \\ (dla danych bramy zarządzania w wersji 2.0 i nowsze wersje) <br/><br/> localhost (dla starszych niż danych bramy zarządzania w wersji 2.0) |. \\ \\ lub folderu\\\\podfolder (dla danych bramy zarządzania w wersji 2.0 i nowsze wersje) <br/><br/>D:\\ \\ lub D:\\\\folderu\\\\podfolder (dla bramy w wersji 2.0) |
-| Zdalny folder udostępniony: <br/><br/>Przykłady: \\ \\myserver\\udostępnianie\\ \* lub \\ \\myserver\\udostępnianie\\folderu\\podfolderów\\* |\\\\\\\\MYSERVER\\\\udostępniania |. \\ \\ lub folderu\\\\podfolderów |
+| Folder lokalny na maszynie Zarządzanie danymi bramy: <br/><br/>Przykłady: D:\\ \* lub D:\folder\subfolder\\\* |D:\\ \\ (for zarządzanie danymi Gateway 2,0 i nowsze wersje) <br/><br/> localhost (dla wcześniejszych wersji niż Zarządzanie danymi Gateway 2,0) |. lub podfolderfolderu\\(dla zarządzanie danymi Gateway 2,0 i nowsze wersje)\\ \\ \\ <br/><br/>D:\\ \\ lub d:\\podfolderfolderu\\(dlawersjibramyponiżej2,0)\\\\ |
+| Zdalny folder udostępniony: <br/><br/>Przykłady: \\ \\datashare\\*lub\\datapodfolder folderu udziału\\ \\\\\\ \\\\\\* |\\\\\\\\\\Udostępnijudział\\ |. lub podfolderfolderu\\\\ \\ \\ |
 
 >[!NOTE]
 >Podczas tworzenia, za pośrednictwem interfejsu użytkownika, nie jest potrzebny do wprowadzenia podwójny ukośnik odwrotny (`\\`) aby wyjść, jak za pomocą formatu JSON, należy określić pojedynczy ukośnik odwrotny.
 
-### <a name="example-using-username-and-password-in-plain-text"></a>Przykład: Przy użyciu nazwy użytkownika i hasła w postaci zwykłego tekstu
+### <a name="example-using-username-and-password-in-plain-text"></a>Przykład: Używanie nazwy użytkownika i hasła w postaci zwykłego tekstu
 
 ```JSON
 {
@@ -107,7 +107,7 @@ Możesz połączyć i lokalnym systemem plików usługi Azure data factory przy 
 }
 ```
 
-### <a name="example-using-encryptedcredential"></a>Przykład: Za pomocą encryptedcredential
+### <a name="example-using-encryptedcredential"></a>Przykład: Korzystanie z encryptedcredential
 
 ```JSON
 {
@@ -124,26 +124,26 @@ Możesz połączyć i lokalnym systemem plików usługi Azure data factory przy 
 ```
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
-Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do definiowania zestawów danych, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md). Sekcje, takie jak struktury, dostępność i zasady zestawem danych JSON są podobne dla wszystkich typów w zestawie danych.
+Aby zapoznać się z pełną listą sekcji i właściwości, które są dostępne do definiowania zestawów danych, zobacz [Tworzenie zestawów danych](data-factory-create-datasets.md). Sekcje, takie jak struktura, dostępność i zasady JSON zestawu danych, są podobne dla wszystkich typów zestawów danych.
 
-W sekcji typeProperties różni się dla każdego typu zestawu danych. Zawiera informacje, takie jak lokalizacja i format danych w magazynie danych. Zestaw danych o typie sekcji typeProperties **FileShare** ma następujące właściwości:
+Sekcja typeProperties jest inna dla każdego typu zestawu danych. Zawiera informacje, takie jak lokalizacja i format danych w magazynie danych. Sekcja typeProperties dla zestawu danych typu "DataSet " ma następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| folderPath |Określa podrzędna ścieżka do folderu. Użyj znaku ucieczki "\' dla znaków specjalnych w ciągu. Filtr z symbolami wieloznacznymi nie jest obsługiwana. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady.<br/><br/>Można połączyć tę właściwość z **partitionBy** mieć folderu ścieżki, w oparciu o wycinek rozpoczęcia/zakończenia daty i godziny. |Yes |
-| fileName |Określ nazwę pliku w **folderPath** chcącym tabeli do odwoływania się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Gdy **fileName** nie jest określona dla wyjściowego zestawu danych i **preserveHierarchy** nie została określona w ujścia działania nazwę wygenerowanego pliku znajduje się w następującym formacie: <br/><br/>`Data.<Guid>.txt` (Przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nie |
-| fileFilter |Określ filtr służący do wybierają podzbiór plików w ścieżce folderu, a nie wszystkich plików. <br/><br/>Dozwolone wartości to: `*` (wielu znaków) i `?` (pojedynczy znak).<br/><br/>Przykład 1: "obiektu fileFilter": "* .log"<br/>Przykład 2: "obiektu fileFilter": 2014 - 1-?. txt"<br/><br/>Należy zauważyć, że tego obiektu fileFilter jest odpowiednie dla wejściowego zestawu danych w udziale plików. |Nie |
-| partitionedBy |PartitionedBy służy do określania dynamiczne folderPath/nazwę pliku do danych szeregów czasowych. Przykładem jest folderPath sparametryzowane za każdą godzinę danych. |Nie |
+| folderPath |Określa ścieżkę podrzędną do folderu. Użyj znaku ucieczki "\' dla znaków specjalnych w ciągu. Filtr z symbolami wieloznacznymi nie jest obsługiwana. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady.<br/><br/>Możesz połączyć tę właściwość z **partitionBy** , aby mieć ścieżki folderu na podstawie daty rozpoczęcia/zakończenia wycinka. |Tak |
+| fileName |Określ nazwę pliku w **folderPath** , jeśli chcesz, aby tabela odnosiła się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Jeśli nie określono **nazwy pliku** dla wyjściowego zestawu danych, a **preserveHierarchy** nie jest określona w ujścia aktywności, nazwa wygenerowanego pliku ma następujący format: <br/><br/>`Data.<Guid>.txt`Przyklad Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt) |Nie |
+| fileFilter |Określ filtr, który ma być używany do wybierania podzbioru plików w folderPath, a nie wszystkich plików. <br/><br/>Dozwolone wartości to: `*` (wiele znaków) i `?` (pojedynczy znak).<br/><br/>Przykład 1: "fileFilter": "*. log"<br/>Przykład 2: "fileFilter": 2014-1-?. zawierającego<br/><br/>Należy zauważyć, że fileFilter ma zastosowanie do wejściowego zestawu danych. |Nie |
+| partitionedBy |Możesz użyć partitionedBy, aby określić dynamiczny folderPath/fileName dla danych szeregów czasowych. Przykładem jest folderPath sparametryzowane dla każdej godziny danych. |Nie |
 | format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
-| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Są obsługiwane poziomy: **Optymalne** i **najszybszy**. zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane są następujące poziomy: Optymalnai najszybsza. Zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
 > [!NOTE]
-> Nie można użyć nazwy pliku i obiektu fileFilter jednocześnie.
+> Nie można jednocześnie używać fileName i fileFilter.
 
-### <a name="using-partitionedby-property"></a>Przy użyciu właściwości partitionedBy
-Jak wspomniano w poprzedniej sekcji, można określić folderPath dynamiczne i nazwę pliku dla danych szeregów czasowych z **partitionedBy** właściwości [funkcji usługi fabryka danych i zmiennych systemowych](data-factory-functions-variables.md).
+### <a name="using-partitionedby-property"></a>Używanie właściwości partitionedBy
+Jak wspomniano w poprzedniej sekcji, można określić dynamiczne folderPath i nazwa pliku dla danych szeregów czasowych z właściwością **partitionedBy** , [funkcjami Data Factory i zmiennymi systemowymi](data-factory-functions-variables.md).
 
-Aby poznać szczegółowe informacje na temat zestawów danych szeregów czasowych, planowanie i wycinków, zobacz [tworzenie zestawów danych](data-factory-create-datasets.md), [planowanie i wykonywanie](data-factory-scheduling-and-execution.md), i [tworzenia potoków](data-factory-create-pipelines.md).
+Aby poznać więcej szczegółów na temat zestawów danych, planowania i wycinków szeregów czasowych, zobacz [Tworzenie zestawów danych](data-factory-create-datasets.md), [Planowanie i wykonywanie](data-factory-scheduling-and-execution.md)oraz [Tworzenie potoków](data-factory-create-pipelines.md).
 
 #### <a name="sample-1"></a>Przykład 1:
 
@@ -155,7 +155,7 @@ Aby poznać szczegółowe informacje na temat zestawów danych szeregów czasowy
 ],
 ```
 
-W tym przykładzie {wycinek} jest zastępowana wartością zmiennej systemowej usługi Data Factory SliceStart w formacie (YYYYMMDDHH). SliceStart odnosi się do rozpoczęcie wycinka. FolderPath różni się dla każdego wycinka. Na przykład: wikidatagateway/wikisampledataout/2014100103 lub wikidatagateway/wikisampledataout/2014100104.
+W tym przykładzie {Slice} jest zastępowana wartością zmiennej systemowej Data Factory parametru slicestart w formacie (YYYYMMDDHH). Parametru slicestart odnosi się do czasu rozpoczęcia wycinka. FolderPath różni się dla każdego wycinka. Na przykład: wikidatagateway/wikisampledataout/2014100103 lub wikidatagateway/wikisampledataout/2014100104.
 
 #### <a name="sample-2"></a>Przykład 2:
 
@@ -171,57 +171,57 @@ W tym przykładzie {wycinek} jest zastępowana wartością zmiennej systemowej u
 ],
 ```
 
-W tym przykładzie rok, miesiąc, dzień i godzina SliceStart są wyodrębniane do oddzielnych zmiennych, korzystających z właściwości folderPath i nazwę pliku.
+W tym przykładzie rok, miesiąc, dzień i czas parametru slicestart są wyodrębniane do oddzielnych zmiennych, których właściwości folderPath i fileName używają.
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
-Aby uzyskać pełną listę sekcje & właściwości dostępne do definiowania działań, zobacz [tworzenie potoków](data-factory-create-pipelines.md) artykułu. Właściwości, takie jak nazwa, opis, dane wejściowe i wyjściowe zestawy danych i zasady są dostępne dla wszystkich typów działań. Natomiast właściwości dostępnych w **typeProperties** różnią się w sekcji działania za pomocą poszczególnych typów działań.
+Aby uzyskać pełną listę sekcji & właściwości dostępne do definiowania działań, zobacz artykuł [Tworzenie potoków](data-factory-create-pipelines.md) . Właściwości, takie jak nazwa, opis, wejściowe i wyjściowe zestawy danych, oraz zasady są dostępne dla wszystkich typów działań. Natomiast właściwości dostępne w sekcji **typeProperties** działania różnią się w zależności od typu działania.
 
-Działanie kopiowania ich różnią się w zależności od typów źródła i ujścia. Jeśli chcesz przenieść dane z lokalnego systemu plików, należy ustawić typ źródła w działanie kopiowania w celu **FileSystemSource**. Podobnie, jeśli dane są przenoszone do środowiska lokalnego systemu plików, należy ustawić typ ujścia w działaniu kopiowania, aby **FileSystemSink**. Ta sekcja zawiera listę obsługiwanych przez FileSystemSource i FileSystemSink właściwości.
+W przypadku działania kopiowania różnią się w zależności od typów źródeł i ujścia. Jeśli przenosisz dane z lokalnego systemu plików, należy ustawić typ źródła w działaniu kopiowania na **FileSystemSource**. Podobnie, Jeśli przenosisz dane do lokalnego systemu plików, należy ustawić typ ujścia w działaniu kopiowania na **FileSystemSink**. Ta sekcja zawiera listę właściwości obsługiwanych przez FileSystemSource i FileSystemSink.
 
 **FileSystemSource** obsługuje następujące właściwości:
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| recursive |Wskazuje, czy dane są odczytywane cyklicznie z podfolderów lub tylko z określonego folderu. |Wartość true, False (domyślnie) |Nie |
+| recursive |Wskazuje, czy dane są odczytywane cyklicznie z podfolderów lub tylko z określonego folderu. |Prawda, FAŁSZ (wartość domyślna) |Nie |
 
 **FileSystemSink** obsługuje następujące właściwości:
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| copyBehavior |Definiuje zachowania dotyczącego kopiowania, gdy źródłem jest BlobSource lub systemu plików. |**PreserveHierarchy:** Zachowuje hierarchii plików w folderze docelowym. Względna ścieżka pliku źródłowego do folderu źródłowego jest taka sama jak ścieżka względna pliku docelowego, do folderu docelowego.<br/><br/>**FlattenHierarchy:** Wszystkie pliki z folderu źródłowego są tworzone w pierwszy poziom folderu docelowego. Pliki docelowe są tworzone z nazwą wygenerowany automatycznie.<br/><br/>**MergeFiles:** Scala wszystkie pliki z folderu źródłowego do jednego pliku. Jeśli określono nazwę pliku nazwy/obiekt blob, nazwa pliku scalonego jest określona nazwa. W przeciwnym razie jest to nazwa pliku generowanych automatycznie. |Nie |
+| copyBehavior |Definiuje zachowanie kopiowania, gdy źródłem jest BlobSource lub system plików. |**PreserveHierarchy:** Zachowuje hierarchię plików w folderze docelowym. Oznacza to, że ścieżka względna pliku źródłowego do folderu źródłowego jest taka sama jak ścieżka względna pliku docelowego do folderu docelowego.<br/><br/>**FlattenHierarchy** Wszystkie pliki z folderu źródłowego są tworzone przy użyciu pierwszego poziomu folderu docelowego. Pliki docelowe są tworzone z automatycznie wygenerowaną nazwą.<br/><br/>**MergeFiles** Scala wszystkie pliki z folderu źródłowego do jednego pliku. Jeśli nazwa pliku/obiektu BLOB jest określona, scalona nazwa pliku jest podaną nazwą. W przeciwnym razie jest to automatycznie wygenerowana nazwa pliku. |Nie |
 
 ### <a name="recursive-and-copybehavior-examples"></a>przykładów rekurencyjnych i copyBehavior
-W tej sekcji opisano wynikowe zachowania operacji kopiowania dla różnych kombinacji wartości dla właściwości cyklicznego i copyBehavior.
+W tej sekcji opisano zachowanie operacji kopiowania dla różnych kombinacji wartości właściwości cyklicznych i copyBehavior.
 
-| wartość cyklicznej | wartość copyBehavior | Wynikowe zachowania |
+| wartość cykliczna | copyBehavior wartość | Zachowanie rezultatowe |
 | --- | --- | --- |
-| true |preserveHierarchy |W przypadku folderu źródłowego Folder1 o następującej strukturze<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony przy użyciu tej samej struktury jako źródła:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
-| true |flattenHierarchy |W przypadku folderu źródłowego Folder1 o następującej strukturze<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>element docelowy Folder1 jest tworzony o następującej strukturze: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Wygenerowany automatycznie nazwę plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File5 |
-| true |mergeFiles |W przypadku folderu źródłowego Folder1 o następującej strukturze<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>element docelowy Folder1 jest tworzony o następującej strukturze: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik1 + plik2 + plik3 + File4 + 5 plików zawartości są scalane w jeden plik o nazwie wygenerowany automatycznie plik. |
-| false |preserveHierarchy |W przypadku folderu źródłowego Folder1 o następującej strukturze<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony o następującej strukturze:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/><br/>Subfolder1 plik3, File4 i File5 nie są pobierane. |
-| false |flattenHierarchy |W przypadku folderu źródłowego Folder1 o następującej strukturze<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony o następującej strukturze:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Wygenerowany automatycznie nazwę plik1<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę plik2<br/><br/>Subfolder1 plik3, File4 i File5 nie są pobierane. |
-| false |mergeFiles |W przypadku folderu źródłowego Folder1 o następującej strukturze<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Plik3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony o następującej strukturze:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik1 + plik2 zawartości są scalane w jeden plik o nazwie wygenerowany automatycznie plik.<br/>&nbsp;&nbsp;&nbsp;&nbsp;Wygenerowany automatycznie nazwę plik1<br/><br/>Subfolder1 plik3, File4 i File5 nie są pobierane. |
+| true |preserveHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony z tą samą strukturą co Źródło:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5 |
+| true |flattenHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>docelowy Folder1 jest tworzony z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File5 |
+| true |mergeFiles |Dla folderu źródłowego Folder1 z następującą strukturą,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>docelowy Folder1 jest tworzony z następującą strukturą: <br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Plik1 + plik2 + file3 + File4 + zawartość pliku 5 są scalane w jeden plik z automatycznie wygenerowaną nazwą pliku. |
+| false |preserveHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony z następującą strukturą:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/>Subfolder1 File3, File4 i File5 nie są pobierane. |
+| false |flattenHierarchy |Dla folderu źródłowego Folder1 z następującą strukturą,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony z następującą strukturą:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;wygenerowany automatycznie nazwę File2<br/><br/>Subfolder1 File3, File4 i File5 nie są pobierane. |
+| false |mergeFiles |Dla folderu źródłowego Folder1 z następującą strukturą,<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>folder docelowy Folder1 jest tworzony z następującą strukturą:<br/><br/>Folder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;Wartość plik1 + plik2 jest scalana w jeden plik z automatycznie wygenerowaną nazwą pliku.<br/>&nbsp;&nbsp;&nbsp;&nbsp;Automatycznie wygenerowana nazwa dla plik1<br/><br/>Subfolder1 File3, File4 i File5 nie są pobierane. |
 
 ## <a name="supported-file-and-compression-formats"></a>Obsługiwane formaty plików i kompresji
-Zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md) artykuł na temat szczegółów.
+Aby uzyskać szczegółowe informacje [, zobacz formaty plików i kompresji w artykule Azure Data Factory](data-factory-supported-file-and-compression-formats.md) .
 
-## <a name="json-examples-for-copying-data-to-and-from-file-system"></a>Przykłady JSON na potrzeby kopiowania danych do i z systemu plików
-W poniższych przykładach udostępniono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują, jak kopiować dane do i z systemu plików w środowisku lokalnym i usługą Azure Blob storage. Jednak może kopiować dane *bezpośrednio* z dowolnego źródła do dowolnego ujścia, na liście [obsługiwane źródłami i ujściami](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
+## <a name="json-examples-for-copying-data-to-and-from-file-system"></a>Przykłady JSON kopiowania danych do i z systemu plików
+W poniższych przykładach przedstawiono przykładowe definicje JSON, których można użyć do utworzenia potoku przy użyciu [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują one sposób kopiowania danych do i z lokalnego systemu plików i usługi Azure Blob Storage. Można jednak skopiować dane *bezpośrednio* z dowolnego źródła do dowolnego ujścia wymienionego w obszarze [obsługiwane źródła i ujścia](data-factory-data-movement-activities.md#supported-data-stores-and-formats) przy użyciu działania kopiowania w Azure Data Factory.
 
-### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>Przykład: Kopiowanie danych z lokalnego systemu plików do usługi Azure Blob storage
-Ten przykład pokazuje, jak skopiować dane z lokalnego systemu plików do usługi Azure Blob storage. Przykład obejmuje następujących jednostek usługi Data Factory:
+### <a name="example-copy-data-from-an-on-premises-file-system-to-azure-blob-storage"></a>Przykład: Kopiowanie danych z lokalnego systemu plików do usługi Azure Blob Storage
+Ten przykład pokazuje, jak skopiować dane z lokalnego systemu plików do usługi Azure Blob Storage. Przykład zawiera następujące jednostki Data Factory:
 
-* Połączonej usługi typu [OnPremisesFileServer](#linked-service-properties).
-* Połączonej usługi typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
-* Dane wejściowe [dataset](data-factory-create-datasets.md) typu [FileShare](#dataset-properties).
-* Dane wyjściowe [dataset](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
-* A [potoku](data-factory-create-pipelines.md) za pomocą działania kopiowania, która używa [FileSystemSource](#copy-activity-properties) i [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
+* Połączona usługa typu [OnPremisesFileServer](#linked-service-properties).
+* Połączona usługa typu [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+* Wejściowy [zestaw danych](data-factory-create-datasets.md) typu [udziału](#dataset-properties).
+* Wyjściowy [zestaw danych](data-factory-create-datasets.md) typu [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+* [Potok](data-factory-create-pipelines.md) z działaniem kopiowania korzystającym z [FileSystemSource](#copy-activity-properties) i [wartość blobsink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Poniższy przykład kopiuje dane szeregów czasowych z lokalnego systemu plików do magazynu obiektów Blob platformy Azure co godzinę. Właściwości kodu JSON, które są używane w tych przykładach są opisane w sekcjach po próbkach.
+Poniższy przykład kopiuje dane szeregów czasowych z lokalnego systemu plików do usługi Azure Blob Storage co godzinę. Właściwości JSON, które są używane w tych przykładach, są opisane w sekcjach po przykładach.
 
-Pierwszym krokiem skonfigurować bramę zarządzania danymi zgodnie z instrukcjami w [przenoszenie danych między źródłami lokalnymi i w chmurze przy użyciu bramy zarządzania danymi](data-factory-move-data-between-onprem-and-cloud.md).
+Najpierw należy skonfigurować bramę Zarządzanie danymi zgodnie z instrukcjami w temacie [przenoszenie danych między źródłami lokalnymi i chmurą przy użyciu bramy zarządzanie danymi Gateway](data-factory-move-data-between-onprem-and-cloud.md).
 
-**Serwer plików w środowisku lokalnym połączoną usługę:**
+**Połączona usługa lokalnego serwera plików:**
 
 ```JSON
 {
@@ -238,7 +238,7 @@ Pierwszym krokiem skonfigurować bramę zarządzania danymi zgodnie z instrukcja
 }
 ```
 
-Firma Microsoft zaleca używanie **encryptedCredential** właściwości zamiast **userid** i **hasło** właściwości. Zobacz [serwera plików połączoną usługę](#linked-service-properties) Aby uzyskać szczegółowe informacje na ten temat połączoną usługę.
+Zalecamy użycie właściwości **encryptedCredential** zamiast właściwości **UserID** i **Password** . Aby uzyskać szczegółowe informacje na temat tej połączonej usługi, zobacz [połączoną usługę serwera plików](#linked-service-properties) .
 
 **Połączona usługa Azure Storage:**
 
@@ -254,11 +254,11 @@ Firma Microsoft zaleca używanie **encryptedCredential** właściwości zamiast 
 }
 ```
 
-**Lokalnego pliku wejściowego zestawu danych systemu:**
+**Lokalny zestaw danych wejściowy systemu plików:**
 
-Dane są pobierane z nowego pliku co godzinę. Właściwości folderPath i nazwa pliku są określane na podstawie czasu uruchomienia wycinka.
+Dane są pobierane z nowego pliku co godzinę. Właściwości folderPath i fileName są określane na podstawie czasu rozpoczęcia wycinka.
 
-Ustawienie `"external": "true"` usługi Data Factory informuje, że zestaw danych jest zewnętrzne w usłudze data factory i nie jest generowany przez działanie w usłudze data factory.
+Ustawienie `"external": "true"` informuje Data Factory, że zestaw danych jest zewnętrzny względem fabryki danych i nie jest tworzony przez działanie w fabryce danych.
 
 ```JSON
 {
@@ -320,9 +320,9 @@ Ustawienie `"external": "true"` usługi Data Factory informuje, że zestaw danyc
 }
 ```
 
-**Usługa Azure Blob storage wyjściowy zestaw danych:**
+**Wyjściowy zestaw danych usługi Azure Blob Storage:**
 
-Dane są zapisywane do nowego obiektu blob, co godzinę (frequency: godzina, interwał: 1). Ścieżka folderu dla obiektu blob jest dynamicznie obliczana na podstawie czasu rozpoczęcia wycinek, który jest przetwarzany. Ścieżka folderu używa rok, miesiąc, dzień i godzinę części czas rozpoczęcia.
+Dane są zapisywane w nowym obiekcie blob co godzinę (częstotliwość: godzina, interwał: 1). Ścieżka folderu dla obiektu BLOB jest obliczana dynamicznie na podstawie czasu rozpoczęcia przetwarzanego wycinka. Ścieżka folderu używa części roku, miesiąca, dnia i godziny rozpoczęcia.
 
 ```JSON
 {
@@ -380,9 +380,9 @@ Dane są zapisywane do nowego obiektu blob, co godzinę (frequency: godzina, int
 }
 ```
 
-**Działanie kopiowania w potoku za pomocą systemu plików źródła i ujścia obiektu Blob:**
+**Działanie kopiowania w potoku ze źródłem systemu plików i obiektem sink obiektów blob:**
 
-Potoku zawierającego działanie kopiowania, który jest skonfigurowany do korzystania z danych wejściowych i wyjściowych zestawów danych i jest zaplanowane do uruchomienia na godzinę. W definicji JSON potok **źródła** ustawiono typ **FileSystemSource**, i **ujścia** ustawiono typ **BlobSink**.
+Potok zawiera działanie kopiowania, które jest skonfigurowane do korzystania z wejściowych i wyjściowych zestawów danych i jest zaplanowane do uruchomienia co godzinę. W definicji JSON potoku typ **źródła** ma wartość **FileSystemSource**, a typ **ujścia** to **wartość blobsink**.
 
 ```JSON
 {
@@ -430,18 +430,18 @@ Potoku zawierającego działanie kopiowania, który jest skonfigurowany do korzy
 }
 ```
 
-### <a name="example-copy-data-from-azure-sql-database-to-an-on-premises-file-system"></a>Przykład: Kopiowanie danych z usługi Azure SQL Database do lokalnego systemu plików
+### <a name="example-copy-data-from-azure-sql-database-to-an-on-premises-file-system"></a>Przykład: Kopiowanie danych z Azure SQL Database do lokalnego systemu plików
 Poniższy przykład pokazuje:
 
-* Połączonej usługi typu [AzureSqlDatabase.](data-factory-azure-sql-connector.md#linked-service-properties)
-* Połączonej usługi typu [OnPremisesFileServer](#linked-service-properties).
-* Wejściowy zestaw danych o typie [AzureSqlTable](data-factory-azure-sql-connector.md#dataset-properties).
-* Wyjściowy zestaw danych o typie [FileShare](#dataset-properties).
-* Potok z działaniem kopiowania, która używa [SqlSource](data-factory-azure-sql-connector.md##copy-activity-properties) i [FileSystemSink](#copy-activity-properties).
+* Połączona usługa typu [AzureSqlDatabase.](data-factory-azure-sql-connector.md#linked-service-properties)
+* Połączona usługa typu [OnPremisesFileServer](#linked-service-properties).
+* Wejściowy zestaw danych typu [wartość azuresqltable](data-factory-azure-sql-connector.md#dataset-properties).
+* Wyjściowy zestaw danych typu. [](#dataset-properties)
+* Potok z działaniem kopiowania, który używa [](data-factory-azure-sql-connector.md##copy-activity-properties) elementu sqlsource i [FileSystemSink](#copy-activity-properties).
 
-Przykładowy skrypt kopiuje dane szeregów czasowych z tabeli usługi Azure SQL do systemu plików w środowisku lokalnym co godzinę. Właściwości kodu JSON, które są używane w tych przykładach są opisane w sekcjach po próbkach.
+Przykład kopiuje dane szeregów czasowych z tabeli usługi Azure SQL do lokalnego systemu plików co godzinę. Właściwości JSON, które są używane w tych przykładach, są opisane w sekcjach po przykładach.
 
-**Usługa Azure SQL Database połączoną usługę:**
+**Azure SQL Database połączona usługa:**
 
 ```JSON
 {
@@ -455,7 +455,7 @@ Przykładowy skrypt kopiuje dane szeregów czasowych z tabeli usługi Azure SQL 
 }
 ```
 
-**Serwer plików w środowisku lokalnym połączoną usługę:**
+**Połączona usługa lokalnego serwera plików:**
 
 ```JSON
 {
@@ -472,13 +472,13 @@ Przykładowy skrypt kopiuje dane szeregów czasowych z tabeli usługi Azure SQL 
 }
 ```
 
-Firma Microsoft zaleca używanie **encryptedCredential** zamiast przy użyciu właściwości **userid** i **hasło** właściwości. Zobacz [System plików połączoną usługę](#linked-service-properties) Aby uzyskać szczegółowe informacje na ten temat połączoną usługę.
+Zalecamy użycie właściwości **encryptedCredential** zamiast używania właściwości **UserID** i **Password** . Aby uzyskać szczegółowe informacje o tej połączonej usłudze, zobacz [połączoną usługę File System](#linked-service-properties) .
 
-**Usługa Azure SQL wejściowy zestaw danych:**
+**Zestaw danych wejściowych usługi Azure SQL:**
 
-Przykład założono, że utworzono tabelę "MyTable" w usłudze Azure SQL i zawiera kolumnę o nazwie "timestampcolumn" dla danych szeregów czasowych.
+W przykładzie przyjęto założenie, że utworzono tabelę "MyTable" w usłudze Azure SQL, która zawiera kolumnę o nazwie "timestampcolumn" dla danych szeregów czasowych.
 
-Ustawienie ``“external”: ”true”`` usługi Data Factory informuje, że zestaw danych jest zewnętrzne w usłudze data factory i nie jest generowany przez działanie w usłudze data factory.
+Ustawienie ``“external”: ”true”`` informuje Data Factory, że zestaw danych jest zewnętrzny względem fabryki danych i nie jest tworzony przez działanie w fabryce danych.
 
 ```JSON
 {
@@ -505,9 +505,9 @@ Ustawienie ``“external”: ”true”`` usługi Data Factory informuje, że ze
 }
 ```
 
-**W środowisku lokalnym plikiem systemu wyjściowego zestawu danych:**
+**Lokalny zestaw danych wyjściowy system plików:**
 
-Dane są kopiowane do nowego pliku co godzinę. FolderPath i nazwę pliku obiektu blob są określane na podstawie czasu uruchomienia wycinka.
+Dane są kopiowane do nowego pliku co godzinę. FolderPath i nazwa pliku dla obiektu BLOB są określane na podstawie czasu rozpoczęcia wycinka.
 
 ```JSON
 {
@@ -569,9 +569,9 @@ Dane są kopiowane do nowego pliku co godzinę. FolderPath i nazwę pliku obiekt
 }
 ```
 
-**Działanie kopiowania w potoku za pomocą programu SQL źródła i ujścia systemu plików:**
+**Działanie kopiowania w potoku ze źródłem SQL i ujścia systemu plików:**
 
-Potoku zawierającego działanie kopiowania, który jest skonfigurowany do korzystania z danych wejściowych i wyjściowych zestawów danych i jest zaplanowane do uruchomienia na godzinę. W definicji JSON potok **źródła** ustawiono typ **SqlSource**i **ujścia** ustawiono typ **FileSystemSink**. Zapytanie SQL, który jest określony dla **SqlReaderQuery** właściwość wybiera dane w ciągu ostatniej godziny do skopiowania.
+Potok zawiera działanie kopiowania, które jest skonfigurowane do korzystania z wejściowych i wyjściowych zestawów danych i jest zaplanowane do uruchomienia co godzinę. W definicji JSON potoku typ **źródła** ma wartość sqlsource,a typ **ujścia** to **FileSystemSink**. Zapytanie SQL określone dla właściwości **SqlReaderQuery** wybiera dane w ostatniej godzinie do skopiowania.
 
 ```JSON
 {
@@ -620,7 +620,7 @@ Potoku zawierającego działanie kopiowania, który jest skonfigurowany do korzy
 }
 ```
 
-Można również mapować kolumny z zestawu danych źródłowych do kolumn z zestaw danych ujścia w definicji działania kopiowania. Aby uzyskać więcej informacji, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).
+Można również mapować kolumny ze źródłowego zestawu danych do kolumn z zestawu danych ujścia w definicji działania kopiowania. Aby uzyskać szczegółowe informacje, zobacz [Mapowanie kolumn zestawu danych w Azure Data Factory](data-factory-map-columns.md).
 
 ## <a name="performance-and-tuning"></a>Wydajności i dostosowywanie
- Aby dowiedzieć się więcej na temat kluczowych czynników, które mają wpływ na wydajność przenoszenia danych (działanie kopiowania) w usłudze Azure Data Factory i różne sposoby, aby zoptymalizować ją, zobacz [dostrajania przewodnik dotyczący wydajności działania kopiowania i](data-factory-copy-activity-performance.md).
+ Aby dowiedzieć się więcej na temat kluczowych czynników wpływających na wydajność przenoszenia danych (działanie kopiowania) w Azure Data Factory i różne sposoby jego optymalizacji, zobacz [Przewodnik dotyczący wydajności i dostrajania działania kopiowania](data-factory-copy-activity-performance.md).

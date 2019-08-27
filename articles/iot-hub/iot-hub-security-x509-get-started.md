@@ -1,102 +1,103 @@
 ---
-title: Samouczek dotyczący zabezpieczeń X.509 w usłudze Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Rozpocznij pracę od bezpieczeństwa opartych na standardzie X.509 w usłudze Azure IoT hub w środowisku symulowanym.
+title: Samouczek dotyczący zabezpieczeń X. 509 na platformie Azure IoT Hub | Microsoft Docs
+description: Zacznij korzystać z zabezpieczeń opartych na X. 509 w usłudze Azure IoT Hub w symulowanym środowisku.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/10/2017
-ms.openlocfilehash: 0bfb66f54ec09e86b46a41499211e93a0083e8d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/20/2019
+ms.openlocfilehash: 03ac9f878f0869ef33d22f50c6bdba4276bd4d3c
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65779926"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70048311"
 ---
-# <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Konfigurowanie zabezpieczeń X.509 w usłudze Azure IoT hub
+# <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Konfigurowanie zabezpieczeń X. 509 w usłudze Azure IoT Hub
 
-Ten samouczek symuluje czynności, musisz zabezpieczyć usługi Azure IoT hub przy użyciu *uwierzytelnianie certyfikatu X.509*. Na potrzeby ilustracji firma Microsoft pokazują, jak tworzyć certyfikaty lokalnie na komputerze Windows przy użyciu narzędzia typu open source OpenSSL. Zalecamy użycie w tym samouczku wyłącznie do celów testowych. W środowisku produkcyjnym, musisz kupić certyfikaty z *główny urząd certyfikacji (CA)* .
+W tym samouczku przedstawiono kroki potrzebne do zabezpieczenia usługi Azure IoT Hub przy użyciu *uwierzytelniania certyfikatu X. 509*. Na potrzeby ilustracji korzystamy z narzędzia typu "open source" OpenSSL do tworzenia certyfikatów lokalnie na komputerze z systemem Windows. Zalecamy korzystanie z tego samouczka tylko do celów testowych. W środowisku produkcyjnym należy zakupić certyfikaty z *głównego urzędu certyfikacji (CA)* .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ten samouczek wymaga, że masz następujące zasoby gotowe:
+Ten samouczek wymaga przygotowań następujących zasobów:
 
-* Utworzono Centrum IoT hub z subskrypcją platformy Azure. Zobacz [Tworzenie Centrum IoT za pośrednictwem portalu](iot-hub-create-through-portal.md) szczegółowy opis kroków.
+* Utworzono Centrum IoT Hub przy użyciu subskrypcji platformy Azure. Szczegółowe instrukcje można znaleźć w temacie [Tworzenie usługi IoT Hub w portalu](iot-hub-create-through-portal.md) .
 
-* Masz [Visual Studio 2017 lub Visual Studio 2019](https://www.visualstudio.com/vs/) zainstalowana na tym komputerze.
+* Masz zainstalowany [program Visual studio 2017 lub Visual studio 2019](https://www.visualstudio.com/vs/) .
 
-## <a name="get-x509-ca-certificates"></a>Pobierz certyfikaty X.509 urzędu certyfikacji
+## <a name="get-x509-ca-certificates"></a>Pobierz certyfikaty urzędu certyfikacji X. 509
 
-Zabezpieczenia oparte na certyfikatach X.509 w usłudze IoT Hub, należy rozpocząć od [łańcucha certyfikatów X.509](https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification), który zawiera certyfikat główny, a także wszystkie certyfikaty pośrednie przesłaną certyfikatu liścia.
+Zabezpieczenia oparte na certyfikatach X. 509 w IoT Hub wymagają rozpoczęcia od [łańcucha certyfikatów x. 509](https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification), który obejmuje certyfikat główny, a także wszystkie certyfikaty pośrednie aż do certyfikatu liścia.
 
-Można wybrać jedną z następujących sposobów, aby uzyskać certyfikaty:
+Możesz wybrać jeden z następujących sposobów uzyskiwania certyfikatów:
 
-* Zakup certyfikatu x.509 z *główny urząd certyfikacji (CA)* . Jest to zalecane w środowiskach produkcyjnych.
+* Zakup certyfikatów X. 509 z *głównego urzędu certyfikacji (CA)* . Ta metoda jest zalecana w środowiskach produkcyjnych.
 
-* Tworzenie własnych certyfikatów X.509 przy użyciu narzędzia innych firm, takich jak [OpenSSL](https://www.openssl.org/). Będzie to wystarczające do celów projektowania i testowania. Zobacz [testu Zarządzanie urzędu certyfikacji certyfikatów, przykłady i samouczki](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) informacje na temat generowania testów certyfikatów urzędu certyfikacji przy użyciu programu PowerShell lub Bash. Certyfikaty testów urzędu certyfikacji zgodnie z instrukcjami w korzysta z pozostałej części tego samouczka [testu Zarządzanie urzędu certyfikacji certyfikatów, przykłady i samouczki](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
+* Utwórz własne certyfikaty X. 509 przy użyciu narzędzi innych firm, takich jak [OpenSSL](https://www.openssl.org/). Ta technika jest przeznaczona dla celów testowych i programistycznych. Więcej informacji na temat generowania certyfikatów testów urzędu certyfikacji przy użyciu programu PowerShell lub bash można znaleźć w temacie [Zarządzanie certyfikatami dla przykładów i samouczków](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) . W pozostałej części tego samouczka są używane certyfikaty testów urzędu certyfikacji wygenerowane zgodnie z instrukcjami zawartymi w temacie [Zarządzanie certyfikatami testów urzędu certyfikacji dla przykładów i samouczków](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
 
-* Generowanie [certyfikat pośredniego urzędu certyfikacji X.509](iot-hub-x509ca-overview.md#sign-devices-into-the-certificate-chain-of-trust) podpisany przez istniejący certyfikat głównego urzędu certyfikacji, a następnie przekaż go do usługi IoT Hub. Gdy certyfikat pośredniego jest przekazany i zweryfikowany, zgodnie z poniższymi instrukcjami, może służyć do miejsca certyfikat głównego urzędu certyfikacji, wymienione poniżej. Narzędzia takie jak biblioteki OpenSSL ([wymagane biblioteki openssl](https://www.openssl.org/docs/manmaster/man1/openssl-req.html) i [urzędu certyfikacji openssl](https://www.openssl.org/docs/manmaster/man1/openssl-ca.html)) może służyć do generowania i zarejestrować certyfikat pośredniego urzędu certyfikacji.
+* Generuj [certyfikat pośredniego urzędu certyfikacji X. 509](iot-hub-x509ca-overview.md#sign-devices-into-the-certificate-chain-of-trust) podpisany przez istniejący certyfikat głównego urzędu certyfikacji i przekaż go do centrum. Po przekazaniu i zweryfikowaniu certyfikatu pośredniego można go użyć w miejscu certyfikatu głównego urzędu certyfikacji wymienionego poniżej. Narzędzia takie jak OpenSSL ([OpenSSL REQ](https://www.openssl.org/docs/manmaster/man1/openssl-req.html) i [OpenSSL CA](https://www.openssl.org/docs/manmaster/man1/openssl-ca.html)) mogą służyć do generowania i podpisywania certyfikatu pośredniego urzędu certyfikacji.
 
+## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>Rejestrowanie certyfikatów urzędu certyfikacji X. 509 w usłudze IoT Hub
 
-## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>Rejestrowanie certyfikatów X.509 urzędu certyfikacji do usługi IoT hub
+W tych krokach pokazano, jak dodać nowy urząd certyfikacji do centrum IoT Hub za pomocą portalu.
 
-Te kroki pokazują, jak dodać nowego urzędu certyfikacji do Centrum IoT hub za pośrednictwem portalu.
+1. W Azure Portal przejdź do centrum IoT Hub, a następnie wybierz pozycję **Ustawienia** > **Certyfikaty** dla centrum.
 
-1. W witrynie Azure portal przejdź do Centrum IoT hub i Otwórz **ustawienia** > **certyfikaty** menu.
+1. Wybierz pozycję **Dodaj** , aby dodać nowy certyfikat.
 
-2. Kliknij przycisk **Dodaj** można dodać nowego certyfikatu.
+1. W polu **Nazwa certyfikatu**wprowadź przyjazną nazwę wyświetlaną i wybierz plik certyfikatu utworzony w poprzedniej sekcji na komputerze.
 
-3. Wprowadź przyjazną nazwę wyświetlaną do certyfikatu. Wybierz plik certyfikatu głównego, o nazwie *RootCA.cer* utworzony w poprzedniej sekcji, w tym komputerze. Kliknij pozycję **Przekaż**.
+1. Po otrzymaniu powiadomienia o pomyślnym przekazaniu certyfikatu wybierz pozycję **Zapisz**.
 
-4. Gdy otrzymasz powiadomienie, że Twój certyfikat została pomyślnie przekazana, kliknij przycisk **Zapisz**.
+    ![Przekaż certyfikat](./media/iot-hub-security-x509-get-started/iot-hub-add-cert.png)  
 
-    ![Przekazywanie certyfikatu](./media/iot-hub-security-x509-get-started/add-new-cert.png)  
+   Certyfikat zostanie wyświetlony na liście certyfikaty ze stanem niezweryfikowane.
 
-   Spowoduje to wyświetlenie certyfikatu w **Eksplorator certyfikatów** listy. Uwaga **stan** tego certyfikatu jest *niezweryfikowane*.
+1. Wybierz właśnie dodany certyfikat, aby wyświetlić **Szczegóły certyfikatu**, a następnie wybierz pozycję **Generuj kod weryfikacyjny**.
 
-5. Kliknij certyfikat, który zostało dodane w poprzednim kroku.
+   ![Weryfikuj certyfikat](./media/iot-hub-security-x509-get-started/copy-verification-code.png)  
 
-6. W **szczegóły certyfikatu** bloku kliknij **Generuj kod weryfikacyjny**.
+1. Skopiuj **kod weryfikacyjny** do Schowka. Służy do weryfikacji własności certyfikatu.
 
-7. Tworzy **kod weryfikacyjny** do weryfikacji własności certyfikatu. Skopiuj kod do Schowka.
+1. Wykonaj krok 3 w temacie [Zarządzanie certyfikatami testów urzędu certyfikacji dla przykładów i samouczków](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).  Ten proces podpisuje kod weryfikacyjny z kluczem prywatnym skojarzonym z certyfikatem urzędu certyfikacji X. 509, który generuje podpis. Dostępne są narzędzia umożliwiające wykonanie tego procesu podpisywania, na przykład OpenSSL. Ten proces jest znany jako [dowód posiadania](https://tools.ietf.org/html/rfc5280#section-3.1).
 
-   ![Zweryfikuj certyfikat](./media/iot-hub-security-x509-get-started/verify-cert.png)  
+1. W obszarze **Szczegóły certyfikatu**w obszarze **certyfikat weryfikacyjny plik PEM lub CER**Znajdź i Otwórz plik sygnatury. Następnie wybierz pozycję **Weryfikuj**.
 
-8. Teraz, musisz zarejestrować to *kod weryfikacyjny* z skojarzenia klucza prywatnego za pomocą certyfikatu X.509 urzędu certyfikacji, który generuje sygnaturę. Istnieją narzędzia dostępne, aby wykonać ten proces podpisywania, na przykład OpenSSL. Jest to nazywane [dowodu posiadania](https://tools.ietf.org/html/rfc5280#section-3.1). Krok 3 w [testu Zarządzanie urzędu certyfikacji certyfikatów, przykłady i samouczki](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) generuje kod weryfikacyjny.
+   Stan certyfikatu zmieni się na zweryfikowane. Wybierz pozycję **Odśwież** , jeśli certyfikat nie zostanie automatycznie zaktualizowany.
 
-9. Przekaż wynikowy podpis w kroku 8 powyżej do Centrum IoT w portalu. W **szczegóły certyfikatu** bloku w witrynie Azure portal przejdź do **plik PEM lub cer certyfikatu weryfikacji**i wybierz podpis, na przykład *VerifyCert4.cer*utworzone za pomocą polecenia programu PowerShell przykładowe _Eksploratora plików_ ikonę oprócz go.
+## <a name="create-an-x509-device-for-your-iot-hub"></a>Tworzenie urządzenia X. 509 dla Centrum IoT Hub
 
-10. Po pomyślnym przekazaniu tego certyfikatu, kliknij przycisk **Sprawdź**. **Stan** zmian certyfikatu **_Verified_** w **certyfikaty** bloku. Kliknij przycisk **Odśwież** Jeśli on nie być zaktualizowane automatycznie.
+1. W Azure Portal przejdź do centrum IoT Hub, a następnie wybierz pozycję **Explorer** > **urządzenia IoT**.
 
-    ![Przekaż certyfikat weryfikacji](./media/iot-hub-security-x509-get-started/upload-cert-verification.png)  
+1. Wybierz pozycję **Nowy** , aby dodać nowe urządzenie.
 
-## <a name="create-an-x509-device-for-your-iot-hub"></a>Tworzenie urządzenia X.509 dla usługi IoT hub
+1. W polu **Identyfikator urządzenia**wprowadź przyjazną nazwę wyświetlaną. W obszarze **Typ uwierzytelniania**wybierz **podpisany urząd certyfikacji X. 509**, a następnie wybierz pozycję **Zapisz**.
 
-1. W witrynie Azure portal przejdź do usługi IoT hub **Eksploratory > urządzenia IoT** strony.
+   ![Tworzenie urządzenia X. 509 w portalu](./media/iot-hub-security-x509-get-started/new-x509-device.png)
 
-2. Kliknij przycisk **+ Dodaj** można dodać nowe urządzenie.
+## <a name="authenticate-your-x509-device-with-the-x509-certificates"></a>Uwierzytelnianie urządzenia X. 509 za pomocą certyfikatów X. 509
 
-3. Nadaj przyjazną nazwę wyświetlaną dla **identyfikator urządzenia**i wybierz **_podpisany urzędu certyfikacji X.509_** jako **typ uwierzytelniania**. Kliknij pozycję **Zapisz**.
+Aby uwierzytelnić urządzenie X. 509, należy najpierw podpisać urządzenie przy użyciu certyfikatu urzędu certyfikacji. Podpisywanie urządzeń liściowych jest zwykle wykonywane w zakładzie produkcyjnym, gdzie zostały odpowiednio włączone narzędzia produkcyjne. Gdy urządzenie przejdzie od jednego producenta do drugiego, Akcja podpisywania każdej z producentów jest przechwytywana jako certyfikat pośredni w łańcuchu. Wynikiem jest łańcuch certyfikatów z certyfikatu urzędu certyfikacji do certyfikatu liścia urządzenia. Krok 4 w temacie [Zarządzanie certyfikatami przetestowanych urzędów certyfikacji dla przykładów i samouczków](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) powoduje wygenerowanie certyfikatu urządzenia.
 
-   ![Tworzenie urządzenia X.509 w portalu](./media/iot-hub-security-x509-get-started/create-x509-device.png)
+Następnie pokażemy, jak utworzyć C# aplikację, aby symulować urządzenie X. 509 zarejestrowane dla Centrum IoT. Będziemy wysyłać wartości temperatury i wilgotności z symulowanego urządzenia do centrum. W tym samouczku utworzymy tylko aplikację urządzenia. Jest to pozostawione jako ćwiczenie dla czytelników, aby utworzyć aplikację usługi IoT Hub, która będzie wysyłać odpowiedzi na zdarzenia wysyłane przez to symulowane urządzenie. W C# aplikacji założono, że wykonano kroki [zarządzania certyfikatami testów urzędu certyfikacji dla przykładów i samouczków](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
 
-## <a name="authenticate-your-x509-device-with-the-x509-certificates"></a>Uwierzytelnienia urządzenia X.509 za pomocą certyfikatów X.509
+1. Otwórz program Visual Studio, wybierz pozycję **Utwórz nowy projekt**, a następnie wybierz szablon projektu **aplikacja konsoli (.NET Framework)** . Wybierz opcję **Dalej**.
 
-Aby uwierzytelniać urządzenie X.509, musisz najpierw zarejestrować urządzenia przy użyciu certyfikatu urzędu certyfikacji. Rejestrowanie urządzeń liścia zwykle odbywa się w zakładzie produkcyjnym, w którym produkcji narzędzia zostały włączone w związku z tym. Gdy urządzenie z jednego producenta do innego, akcja podpisywania dostarczana przez producenta jest przechwytywany jako pośredniego certyfikatu w łańcuchu. Wynik końcowy jest łańcuch certyfikatów z certyfikatu urzędu certyfikacji do certyfikatu liścia urządzenia. Krok 4 [testu Zarządzanie urzędu certyfikacji certyfikatów, przykłady i samouczki](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) wygeneruje certyfikat z urządzenia.
+1. W obszarze **Konfigurowanie nowego projektu**Nazwij projekt *SimulateX509Device*, a następnie wybierz pozycję **Utwórz**.
 
-Następnie pokażemy sposób tworzenia aplikacji języka C# zasymulować urządzenie X.509 zarejestrowanych dla Centrum IoT hub. Firma Microsoft wyśle wartości temperatury i wilgotności z symulowanego urządzenia do Centrum. Należy pamiętać, że w tym samouczku zostanie utworzona tylko aplikację urządzenia. Pozostawia się w charakterze ćwiczenia do czytelników do tworzenia aplikacji usługi IoT Hub, która będzie wysyłać odpowiedzi na zdarzenia wysyłane przez urządzenie symulowane. Aplikacja C# zakłada, że zostały wykonane kroki opisane w [testu Zarządzanie urzędu certyfikacji certyfikatów, przykłady i samouczki](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md).
+   ![Tworzenie projektu urządzenia X. 509 w programie Visual Studio](./media/iot-hub-security-x509-get-started/create-device-project-vs2019.png)
 
-1. W programie Visual Studio Utwórz nowy projekt Visual C# Windows Classic Desktop za pomocą szablonu projektu aplikacji konsoli. Nadaj projektowi nazwę **SimulateX509Device**.
+1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt **SimulateX509Device** , a następnie wybierz pozycję **Zarządzaj pakietami NuGet**.
 
-   ![Utwórz projekt urządzenia X.509 w programie Visual Studio](./media/iot-hub-security-x509-get-started/create-device-project.png)
+1. W **Menedżerze pakietów NuGet**wybierz pozycję **Przeglądaj** i Wyszukaj, a następnie wybierz pozycję **Microsoft. Azure. Devices. Client**. Wybierz pozycję **Zainstaluj**.
 
-2. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy **SimulateX509Device** projektu, a następnie kliknij przycisk **Zarządzaj pakietami NuGet...** . W oknie Menedżera pakietów NuGet wybierz **Przeglądaj** i wyszukaj **microsoft.azure.devices.client**. Wybierz **zainstalować** zainstalował **Microsoft.Azure.Devices.Client** pakietu, a następnie zaakceptuj warunki użytkowania. Tę procedurę pobierania, instalowania i dodanie odwołania do pakietu NuGet zestawu SDK urządzeń Azure IoT i jego zależności.
+   ![Dodaj pakiet NuGet zestawu SDK urządzenia w programie Visual Studio](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
 
-   ![Dodawanie pakietu NuGet zestawu SDK urządzenia w programie Visual Studio](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
+    Ten krok spowoduje pobranie, zainstalowanie i dodanie odwołania do pakietu NuGet zestawu SDK urządzenia usługi Azure IoT oraz jego zależności.
 
-3. Dodaj następujące wiersze kodu w górnej części *Program.cs* pliku:
+1. Dodaj następujące instrukcje `using` w górnej części pliku **Program.cs**:
 
     ```CSharp
         using Microsoft.Azure.Devices.Client;
@@ -104,7 +105,7 @@ Następnie pokażemy sposób tworzenia aplikacji języka C# zasymulować urządz
         using System.Security.Cryptography.X509Certificates;
     ```
 
-4. Dodaj następujące wiersze kodu wewnątrz **Program** klasy:
+1. Dodaj następujące pola do klasy **program** :
 
     ```CSharp
         private static int MESSAGE_COUNT = 5;
@@ -115,9 +116,9 @@ Następnie pokażemy sposób tworzenia aplikacji języka C# zasymulować urządz
         private static Random rnd = new Random();
     ```
 
-     Użyj przyjazną nazwę użyto w poprzedniej sekcji zamiast _< your_device_id >_ symbol zastępczy.
+    Użyj przyjaznej nazwy urządzenia, która została użyta w poprzedniej sekcji zamiast _< your_device_id >_ .
 
-5. Dodaj następującą funkcję umożliwiającą tworzenie liczby losowe dla temperatury i wilgotności i wysłać te wartości do Centrum:
+1. Dodaj następującą funkcję, aby utworzyć liczbę losową dla temperatury i wilgotności i wysłać te wartości do centrum:
 
     ```CSharp
     static async Task SendEvent(DeviceClient deviceClient)
@@ -139,7 +140,7 @@ Następnie pokażemy sposób tworzenia aplikacji języka C# zasymulować urządz
     }
     ```
 
-6. Na koniec należy dodać następujące wiersze kodu do **Main** funkcji, zastępując symbole zastępcze _identyfikator urządzenia_, _your-iot-hub-name_ i  _Absolute-Path-to-your-Device-PFX-File_ zgodnie z wymaganiami konfiguracji.
+1. Na koniec Dodaj następujące wiersze kodu do funkcji **Main** , zastępując symbole zastępcze _Identyfikator urządzenia_, _nazwę pliku-IoT-Hub-Name_i bezwzględną _ścieżkę do urządzenia-PFX_ , zgodnie z wymaganiami Instalatora.
 
     ```CSharp
     try
@@ -166,21 +167,32 @@ Następnie pokażemy sposób tworzenia aplikacji języka C# zasymulować urządz
     }
     ```
 
-   Ten kod łączy do usługi IoT hub, tworząc parametry połączenia dla urządzenia X.509. Po pomyślnym nawiązaniu połączenia, następnie wysyła zdarzenia temperatury i wilgotności z koncentratorem i czeka na jego odpowiedź. 
-7. Ponieważ ta aplikacja uzyskuje dostęp do *PFX* pliku, może być konieczne wykonanie w *administratora* trybu. Twórz rozwiązania Visual Studio. Otwórz nowe okno polecenia jako **administratora**, a następnie przejdź do folderu zawierającego to rozwiązanie. Przejdź do *bin/Debug* ścieżkę w folderze rozwiązania. Uruchom aplikację **SimulateX509Device.exe** z _administratora_ okna poleceń. Powinien zostać wyświetlony urządzenie pomyślnie łączenie z Centrum i wysyłania zdarzeń. 
+   Ten kod nawiązuje połączenie z Centrum IoT Hub przez utworzenie parametrów połączenia dla urządzenia X. 509. Po pomyślnym nawiązaniu połączenia wysyła on do centrum zdarzenia temperatury i wilgotności i czeka na odpowiedź.
 
-   ![Uruchamianie aplikacji urządzenia](./media/iot-hub-security-x509-get-started/device-app-success.png)
+1. Uruchom aplikację. Ponieważ ta aplikacja uzyskuje dostęp do pliku *PFX* , może być konieczne uruchomienie tej aplikacji jako administrator.
 
-## <a name="next-steps"></a>Kolejne kroki
+   1. Utwórz rozwiązanie Visual Studio.
+
+   1. Otwórz nowe okno wiersza polecenia, korzystając z opcji **Uruchom jako administrator**.  
+
+   1. Przejdź do folderu, który zawiera Twoje rozwiązanie, a następnie przejdź do ścieżki *bin/debug* w folderze rozwiązania.
+
+   1. Uruchom aplikację **SimulateX509Device. exe** z wiersza polecenia.
+
+   Urządzenie powinno być widoczne, aby pomyślnie nawiązać połączenie z centrum i wysłać zdarzenia.
+
+   ![Uruchom aplikację urządzenia](./media/iot-hub-security-x509-get-started/device-app-success.png)
+
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat zabezpieczania rozwiązania IoT, zobacz:
 
-* [Najlepsze rozwiązania dotyczące zabezpieczeń IoT](../iot-fundamentals/iot-security-best-practices.md)
+* [Najlepsze rozwiązania z zakresu zabezpieczeń IoT](../iot-fundamentals/iot-security-best-practices.md)
 
 * [Architektura zabezpieczeń IoT](../iot-fundamentals/iot-security-architecture.md)
 
 * [Zabezpieczanie wdrożenia IoT](../iot-fundamentals/iot-security-deployment.md)
 
-Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:
+Aby dowiedzieć się więcej o możliwościach IoT Hub, zobacz:
 
-* [Wdrażanie rozwiązań SI na urządzeniach brzegowych za pomocą usługi Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Wdrażanie AI na urządzeniach brzegowych za pomocą Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

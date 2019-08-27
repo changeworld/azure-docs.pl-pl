@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 6f51d2907738f49ace559f1b127458eda71de287
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 18a85fae7d2d241bd8d582db73c71e1d1472f04d
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624105"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036313"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Omówienie usługi Azure Policy gościa konfiguracji
 
@@ -28,11 +28,16 @@ Nie można jeszcze stosować konfiguracji.
 
 Inspekcja ustawień na maszynie wirtualnej [rozszerzenie maszyny wirtualnej](../../../virtual-machines/extensions/overview.md) jest włączona. Rozszerzenie pobiera przypisania zasad mających zastosowanie i odpowiedniej definicji konfiguracji.
 
-### <a name="register-guest-configuration-resource-provider"></a>Procedura Rejestruj dostawcę zasobów konfiguracji gościa
+### <a name="limits-set-on-the-exension"></a>Limity ustawione na exension
+
+Aby ograniczyć rozszerzenie od wpływu na aplikacje działające na komputerze, konfiguracja gościa nie może przekroczyć więcej niż 5% użycia procesora CPU.
+Jest to prawdziwe BOH w przypadku konfiguracji dostarczonych przez firmę Microsoft jako "wbudowane" i dla konfiguracji niestandardowych utworzonych przez klientów.
+
+## <a name="register-guest-configuration-resource-provider"></a>Procedura Rejestruj dostawcę zasobów konfiguracji gościa
 
 Zanim użyjesz konfiguracji gościa, należy zarejestrować dostawcę zasobów. Możesz zarejestrować się za pośrednictwem portalu lub za pomocą programu PowerShell. Dostawca zasobów jest automatycznie rejestrowany w przypadku przypisywania zasad konfiguracji gościa za pomocą portalu.
 
-#### <a name="registration---portal"></a>Rejestracja — Portal
+### <a name="registration---portal"></a>Rejestracja — Portal
 
 Aby zarejestrować dostawcę zasobów dla konfiguracji gościa za pośrednictwem witryny Azure portal, wykonaj następujące kroki:
 
@@ -44,7 +49,7 @@ Aby zarejestrować dostawcę zasobów dla konfiguracji gościa za pośrednictwem
 
 1. Filtruj lub przewiń do momentu zlokalizowania **Microsoft.GuestConfiguration**, następnie kliknij przycisk **zarejestrować** na tym samym wierszu.
 
-#### <a name="registration---powershell"></a>Rejestracja — PowerShell
+### <a name="registration---powershell"></a>Rejestracja — PowerShell
 
 Aby zarejestrować dostawcę zasobów dla konfiguracji gościa za pomocą programu PowerShell, uruchom następujące polecenie:
 
@@ -53,7 +58,7 @@ Aby zarejestrować dostawcę zasobów dla konfiguracji gościa za pomocą progra
 Register-AzResourceProvider -ProviderNamespace 'Microsoft.GuestConfiguration'
 ```
 
-### <a name="validation-tools"></a>Narzędzia do sprawdzania poprawności
+## <a name="validation-tools"></a>Narzędzia do sprawdzania poprawności
 
 Wewnątrz maszyny wirtualnej gościa konfiguracji klient korzysta z lokalnego narzędzia przeprowadzić inspekcji.
 
@@ -68,7 +73,7 @@ W poniższej tabeli przedstawiono listę narzędzi lokalnego, używane we wszyst
 
 Klient konfiguracji gościa sprawdza nową zawartość co 5 minut. Po odebraniu przypisania gościa ustawienia są sprawdzane w przedziale 15 minut. Wyniki są wysyłane do dostawcy zasobów konfiguracji gościa zaraz po zakończeniu inspekcji. Po wystąpieniu [wyzwalacza oceny](../how-to/get-compliance-data.md#evaluation-triggers) zasad stan maszyny jest zapisywana w dostawcy zasobów konfiguracji gościa. Powoduje Azure Policy ocenę Azure Resource Manager właściwości. Ocena Azure Policy na żądanie Pobiera najnowszą wartość z dostawcy zasobów konfiguracji gościa. Jednak nie wyzwala ona nowej inspekcji konfiguracji w ramach maszyny wirtualnej.
 
-### <a name="supported-client-types"></a>Typy obsługiwanych klientów
+## <a name="supported-client-types"></a>Typy obsługiwanych klientów
 
 W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych na obrazach platformy Azure:
 
@@ -89,7 +94,7 @@ W poniższej tabeli przedstawiono listę obsługiwanych systemów operacyjnych n
 
 System Windows Server nano Server nie jest obsługiwany w żadnej wersji.
 
-### <a name="guest-configuration-extension-network-requirements"></a>Wymagania dotyczące sieci rozszerzenia konfiguracji gościa
+## <a name="guest-configuration-extension-network-requirements"></a>Wymagania dotyczące sieci rozszerzenia konfiguracji gościa
 
 Aby komunikować się z dostawcą zasobów konfiguracji gościa na platformie Azure, maszyny wirtualne wymagają dostępu wychodzącego do centrów danych platformy Azure na porcie **443**. Jeśli używasz prywatnej sieci wirtualnej na platformie Azure i nie zezwolisz na ruch wychodzący, należy skonfigurować wyjątki przy użyciu reguł [sieciowej grupy zabezpieczeń](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) . W tym momencie tag usługi nie istnieje dla Azure Policy konfiguracji gościa.
 
@@ -100,7 +105,7 @@ W przypadku list adresów IP można pobrać [Microsoft Azure zakresy adresów IP
 
 ## <a name="guest-configuration-definition-requirements"></a>Wymagania dotyczące definicji konfiguracji gościa
 
-Każde uruchomienie inspekcji według konfiguracji gościa wymaga dwóch definicji zasad, definicji **DeployIfNotExists** i definicji **inspekcji** . Definicja **DeployIfNotExists** służy do przygotowywania maszyny wirtualnej z agentem konfiguracji gościa i innymi składnikami do obsługi [narzędzi walidacji](#validation-tools).
+Każde uruchomienie inspekcji według konfiguracji gościa wymaga dwóch definicji zasad, definicji **DeployIfNotExists** i definicji **AuditIfNotExists** . Definicja **DeployIfNotExists** służy do przygotowywania maszyny wirtualnej z agentem konfiguracji gościa i innymi składnikami do obsługi [narzędzi walidacji](#validation-tools).
 
 **DeployIfNotExists** definicji zasad sprawdza i naprawia następujące elementy:
 
@@ -111,18 +116,18 @@ Każde uruchomienie inspekcji według konfiguracji gościa wymaga dwóch definic
 
 Jeśli przypisanie **DeployIfNotExists** jest niezgodne, może zostać użyte [zadanie korygowania](../how-to/remediate-resources.md#create-a-remediation-task) .
 
-Gdy przypisanie **DeployIfNotExists** jest zgodne, przypisanie zasad **inspekcji** używa lokalnych narzędzi walidacji w celu ustalenia, czy przypisanie konfiguracji jest zgodne, czy niezgodne.
+Gdy przypisanie **DeployIfNotExists** jest zgodne, przypisanie zasad **AuditIfNotExists** używa lokalnych narzędzi walidacji w celu ustalenia, czy przypisanie konfiguracji jest zgodne, czy niezgodne.
 Narzędzie sprawdzania poprawności zapewnia wyniki do klienta konfiguracji gościa. Klient przesyła wyniki z rozszerzeniem gościa i udostępnia je za pośrednictwem dostawcy zasobów gościa konfiguracji.
 
 Usługa Azure Policy korzysta z dostawców zasobów gościa konfiguracji **complianceStatus** właściwości raportu zgodności w **zgodności** węzła. Aby uzyskać więcej informacji, zobacz [pobierania danych zgodności](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
-> Aby zasady **inspekcji** zwracały wyniki, wymagane są zasady **DeployIfNotExistsymi** .
-> Bez **DeployIfNotExists**zasady **inspekcji** są wyświetlane jako stan zasobów "0 z 0".
+> Zasady **DeployIfNotExists** są wymagane do zwracania wyników przez zasady **AuditIfNotExists** .
+> Bez **DeployIfNotExists**zasady **AuditIfNotExists** są wyświetlane jako stan zasobów "0 z 0".
 
-Wszystkie wbudowane zasady konfiguracji gościa znajdują się w inicjatywy do grupy definicje służące do użycia w przypisaniach. Wbudowana inicjatywa o nazwie *[wersja zapoznawcza]: Ustawienia zabezpieczeń hasła inspekcji w systemach Linux i Windows Virtual* Machines zawierają 18 zasad. Istnieje sześć **DeployIfNotExists** i par **inspekcji** dla systemu Windows i trzech par w systemie Linux. W każdym przypadku logiki wewnątrz definicji sprawdza tylko element docelowy system operacyjny jest obliczana na podstawie [reguła zasad](definition-structure.md#policy-rule) definicji.
+Wszystkie wbudowane zasady konfiguracji gościa znajdują się w inicjatywy do grupy definicje służące do użycia w przypisaniach. Wbudowana inicjatywa o nazwie *[wersja zapoznawcza]: Ustawienia zabezpieczeń hasła inspekcji w systemach Linux i Windows Virtual* Machines zawierają 18 zasad. Sześć **DeployIfNotExists** i **AuditIfNotExists** pary dla Windows i trzy pary dla systemu Linux. W każdym przypadku logiki wewnątrz definicji sprawdza tylko element docelowy system operacyjny jest obliczana na podstawie [reguła zasad](definition-structure.md#policy-rule) definicji.
 
-## <a name="multiple-assignments"></a>Wiele przypisań
+### <a name="multiple-assignments"></a>Wiele przypisań
 
 Zasady konfiguracji gościa obsługują obecnie tylko jednokrotne przypisanie tego samego przypisania gościa na maszynę wirtualną, nawet jeśli przypisanie zasad używa różnych parametrów.
 

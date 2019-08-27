@@ -1,6 +1,6 @@
 ---
-title: Nawiązywanie połączenia źródła danych RSS z usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Automatyzowanie zadań i przepływów pracy, które monitorują i zarządzać kanałów informacyjnych RSS przy użyciu usługi Azure Logic Apps
+title: Łączenie ze źródłami danych RSS z Azure Logic Apps | Microsoft Docs
+description: Automatyzowanie zadań i przepływów pracy, które monitorują kanały informacyjne RSS i zarządzają nimi przy użyciu Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -11,57 +11,57 @@ ms.topic: article
 ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 01573871700bbeeb653ce3efdbf6c6aca88fd454
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 70b250074395977f70ac1b3eb0ce3ffdc96fced1
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204855"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050844"
 ---
-# <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>Zarządzanie źródłami danych RSS przy użyciu usługi Azure Logic Apps
+# <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>Zarządzanie źródłami danych RSS przy użyciu Azure Logic Apps
 
-Za pomocą usługi Azure Logic Apps i łącznik RSS można utworzyć automatycznych zadań i przepływów pracy na potrzeby RSS dowolnego źródła danych, na przykład:
+Za pomocą Azure Logic Apps i łącznika RSS można tworzyć automatyczne zadania i przepływy pracy dla dowolnego kanału informacyjnego RSS, na przykład:
 
-* Monitorował opublikowaniu elementów kanału informacyjnego RSS.
+* Monitoruj, gdy elementy kanału informacyjnego RSS są publikowane.
 * Wyświetl listę wszystkich elementów kanału informacyjnego RSS.
 
-Funkcja RSS (Rich Site podsumowanie) jest określana skrótem naprawdę proste syndykacji to popularny format do syndykacji w sieci web i służy do publikowania często aktualizowanej zawartości, takie jak wpisy w blogu i nagłówków wiadomości. Wielu wydawców zawartości zapewniają, że źródła danych RSS, dzięki czemu użytkownicy mogą subskrybować tę zawartość. 
+Funkcja RSS (Podsumowanie witryny bogatej), nazywana również naprawdę prostym Zespalaniem, jest popularnym formatem dla zespalania sieci Web i służy do publikowania często aktualizowanej zawartości, takiej jak wpisy w blogu i wiadomości. Wielu wydawców zawartości udostępnia kanał informacyjny RSS, aby użytkownicy mogli subskrybować tę zawartość. 
 
-Możesz użyć wyzwalacz kanału informacyjnego RSS, pobiera odpowiedzi z kanału informacyjnego RSS, która udostępnia dane wyjściowe do innych działań. Akcja RSS w aplikacjach logiki służy do wykonywania zadań z kanałem informacyjnym RSS. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Można użyć wyzwalacza RSS, który pobiera odpowiedzi ze źródła danych RSS i udostępnia dane wyjściowe innym akcjom. W aplikacjach logiki można używać akcji RSS do wykonywania zadań ze źródłem danych RSS. Jeśli jesteś nowym sposobem logiki aplikacji, zapoznaj [się z tematem Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/). 
 
-* Adres URL dla źródła danych RSS
+* Adres URL źródła danych RSS
 
-* Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikacja logiki, w której chcesz uzyskać dostęp RSS do źródła danych. Chcesz rozpocząć od wyzwalacz RSS [Tworzenie pustej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji RSS, uruchom aplikację logiki za pomocą wyzwalacza innego, na przykład, **cyklu** wyzwalacza.
+* Aplikacja logiki, do której chcesz uzyskać dostęp do kanału informacyjnego RSS. Aby rozpocząć pracę z wyzwalaczem RSS, [Utwórz pustą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji RSS, uruchom aplikację logiki z innym wyzwalaczem, na przykład wyzwalaczem **cyklu** .
 
-## <a name="connect-to-an-rss-feed"></a>Nawiązać połączenie z kanału informacyjnego RSS
+## <a name="connect-to-an-rss-feed"></a>Nawiązywanie połączenia ze źródłem danych RSS
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoją aplikację logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com)i Otwórz aplikację logiki w Projektancie aplikacji logiki, jeśli nie jest jeszcze otwarta.
 
 1. Wybierz ścieżkę: 
 
-   * W przypadku aplikacji logiki puste w polu wyszukiwania wprowadź "ciąg rss" jako filtr. W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
+   * W przypadku pustych aplikacji logiki w polu wyszukiwania wprowadź wartość "RSS" jako filtr. Na liście Wyzwalacze wybierz wyzwalacz, który chcesz. 
 
      —lub—
 
-   * Dla istniejących aplikacji logiki w ramach kroku, w której chcesz dodać akcję, wybierz **nowy krok**. W polu wyszukiwania jako filtr wprowadź „rss”. W obszarze listy akcji wybierz akcję, którą chcesz.
+   * W przypadku istniejących aplikacji logiki w kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**. W polu wyszukiwania jako filtr wprowadź „rss”. Na liście Akcje wybierz żądaną akcję.
 
-1. Podaj odpowiednie szczegóły wybranego wyzwalacza lub akcji i kontynuuj tworzenie przepływu pracy aplikacji logiki.
+1. Podaj niezbędne szczegóły wybranego wyzwalacza lub akcji i Kontynuuj tworzenie przepływu pracy aplikacji logiki.
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Szczegółowe informacje techniczne dotyczące wyzwalaczy, akcje i ograniczeń, które opisano przez standard OpenAPI łącznika (dawniej Swagger) opis, przejrzyj łącznika [strona referencyjna](/connectors/rss/).
+Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów, które są opisane w opisie OpenAPI łącznika (dawniej Swagger), przejrzyj [stronę odwołania](/connectors/rss/)łącznika.
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)
+* Dowiedz się więcej na temat innych [łączników Logic Apps](../connectors/apis-list.md)

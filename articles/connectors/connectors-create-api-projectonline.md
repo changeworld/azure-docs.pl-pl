@@ -1,6 +1,6 @@
 ---
-title: Połącz się z projektem Online z usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Automatyzuj przepływy pracy monitorowania, tworzenie i zarządzanie projekty usługi Project Online, zadaniami i zasobami za pomocą usługi Azure Logic Apps
+title: Nawiązywanie połączenia z usługą Project Online z poziomu Azure Logic Apps | Microsoft Docs
+description: Automatyzowanie przepływów pracy, które monitorują, tworzą i zarządzają projektami, zadaniami i zasobami usługi Project Online przy użyciu Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 author: ecfan
@@ -11,64 +11,64 @@ ms.topic: article
 ms.assetid: 40ce621e-4925-4653-93bb-71ab9abcbdf1
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 663363d05c1875d22a0ecc0478abcf7e0ec89c99
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe571209d28fe098ce9b507cb67b0a9a5abd25a3
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105634"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050866"
 ---
-# <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>Zarządzanie usługi Project Online projektami, zadaniami i zasobami za pomocą usługi Azure Logic Apps
+# <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>Zarządzanie projektami, zadaniami i zasobami usługi Project Online przy użyciu Azure Logic Apps
 
-Za pomocą usługi Azure Logic Apps i łączników usługi Project Online możesz utworzyć automatycznych zadań i przepływów pracy dla projektów, zadań i zasobów w usłudze Project Online za pośrednictwem usługi Office 365. Przepływy pracy mogą wykonywać te akcje i inne, na przykład:
+Dzięki Azure Logic Apps i łącznika usługi Project Online można tworzyć automatyczne zadania i przepływy pracy dla projektów, zadań i zasobów w usłudze Project Online za pomocą pakietu Office 365. Przepływy pracy mogą wykonywać te akcje i inne, na przykład:
 
-* Monitor, gdy zostaną utworzone nowe projekty, zadania lub zasobów. Lub monitora podczas publikowania nowych projektów.
-* Utwórz nowe projekty, zadania lub zasobów.
-* Utwórz listę istniejących projektów lub zadania.
-* Zapoznaj się z, sprawdź plik w folderze lub publikowanie projektów.
+* Monitoruj, gdy tworzone są nowe projekty, zadania lub zasoby. Lub Monitoruj, kiedy nowe projekty są publikowane.
+* Twórz nowe projekty, zadania lub zasoby.
+* Wyświetl listę istniejących projektów lub zadań.
+* Wyewidencjonowywanie, ewidencjonowanie lub publikowanie projektów.
 
-Project Online ułatwia planowanie, kategoryzowania i Zarządzaj projektami i inwestycjami dotyczącymi portfela projektów z niemal dowolnego miejsca na prawie każdym urządzeniu, zapewniając możliwości zarządzania projektem zaawansowane. Możesz użyć usługi Project Online wyzwalacze, które uzyskiwanie odpowiedzi z usługi Project Online i udostępnić dane wyjściowe innych działań. Akcje w aplikacjach logiki służy do wykonywania różnych zadań w usłudze Project Online. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Program Project Online ułatwia planowanie, określanie priorytetów i zarządzanie projektami oraz inwestycjami w portfolio projektów z niemal dowolnego miejsca na prawie każdego urządzenia, zapewniając zaawansowane możliwości zarządzania projektami. Możesz użyć wyzwalaczy usługi Project Online, które odbierają odpowiedzi z usługi Project Online i udostępniają dane wyjściowe innym akcjom. W usłudze Logic Apps można używać akcji do wykonywania różnych zadań w usłudze Project Online. Jeśli jesteś nowym sposobem logiki aplikacji, zapoznaj [się z tematem Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/). 
 
-* Project Online i dostępne za pośrednictwem [konta usługi Office 365](https://www.office.com/), 
+* Project Online, dostępne za poorednictwem [konta Office 365](https://www.office.com/), 
 
-* Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikacja logiki, w której chcesz uzyskać dostęp do danych usługi Project Online. Aby uruchomić z wyzwalaczem usługi Project Online [Tworzenie pustej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby korzystać z usługi Project Online akcje, uruchomić swoją aplikację logiki za pomocą wyzwalacza innego, na przykład, **cyklu** wyzwalacza.
+* Aplikacja logiki, w której chcesz uzyskać dostęp do danych usługi Project Online. Aby rozpocząć pracę z wyzwalaczem usługi Project Online, [Utwórz pustą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby korzystać z akcji usługi Project Online, uruchom aplikację logiki z innym wyzwalaczem, na przykład wyzwalaczem **cyklu** .
 
-## <a name="connect-to-project-online"></a>Łączenie z usługą Project Online
+## <a name="connect-to-project-online"></a>Połącz z usługą Project Online
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoją aplikację logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com)i Otwórz aplikację logiki w Projektancie aplikacji logiki, jeśli nie jest jeszcze otwarta.
 
 1. Wybierz ścieżkę: 
 
-   * W przypadku aplikacji logiki puste w polu wyszukiwania wprowadź "Project Online" jako filtr. 
-   W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
+   * W przypadku pustych aplikacji logiki w polu wyszukiwania wprowadź ciąg "Project Online" jako filtr. 
+   Na liście Wyzwalacze wybierz wyzwalacz, który chcesz. 
 
      —lub—
 
-   * Dla istniejących aplikacji logiki w ramach kroku, w której chcesz dodać akcję, wybierz **nowy krok**. W polu wyszukiwania jako filtr wprowadź "Project Online". W obszarze listy akcji wybierz akcję, którą chcesz.
+   * W przypadku istniejących aplikacji logiki w kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**. W polu wyszukiwania wprowadź wartość "Project Online" jako filtr. Na liście Akcje wybierz żądaną akcję.
 
-1. Jeśli zostanie wyświetlony monit do logowania się w usłudze Project Online, zarejestruj się teraz.
+1. Jeśli zostanie wyświetlony monit o zalogowanie się do usługi Project Online, zaloguj się teraz.
 
-   Poświadczenia Autoryzuj aplikację logiki, aby utworzyć połączenie z usługi Project Online i uzyskiwać dostęp do danych.
+   Twoje poświadczenia autoryzują aplikację logiki, aby utworzyć połączenie z usługą Project Online i uzyskać dostęp do danych.
 
-1. Podaj odpowiednie szczegóły wybranego wyzwalacza lub akcji i kontynuuj tworzenie przepływu pracy aplikacji logiki.
+1. Podaj niezbędne szczegóły wybranego wyzwalacza lub akcji i Kontynuuj tworzenie przepływu pracy aplikacji logiki.
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Szczegółowe informacje techniczne dotyczące wyzwalaczy, akcje i ograniczeń, które opisano przez standard OpenAPI łącznika (dawniej Swagger) opis, przejrzyj łącznika [strona referencyjna](/connectors/projectonline/).
+Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów, które są opisane w opisie OpenAPI łącznika (dawniej Swagger), przejrzyj [stronę odwołania](/connectors/projectonline/)łącznika.
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)
+* Dowiedz się więcej na temat innych [łączników Logic Apps](../connectors/apis-list.md)

@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c6c070012db0857759c63603072b8321896398b4
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 9019e6f72944823d7c256fa5f6b99b0aca84c845
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516139"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036337"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Twórz aplikacje usługi Azure Storage o wysokiej dostępności przy użyciu strefy geograficznej nadmiarowej (GZRS) (wersja zapoznawcza)
 
@@ -70,7 +70,7 @@ Gdy strefa dostępności jest niedostępna, platforma Azure podniesie aktualizac
 Jeśli błąd dotyczy całego regionu podstawowego, firma Microsoft najpierw podejmie próbę przywrócenia regionu podstawowego. Jeśli przywracanie nie jest możliwe, firma Microsoft przejdzie w tryb failover do regionu pomocniczego, aby region pomocniczy stał się nowym regionem podstawowym. Jeśli konto magazynu ma włączone RA-GZRS, aplikacje przeznaczone dla tego scenariusza mogą odczytywać z regionu pomocniczego podczas oczekiwania na przejście w tryb failover. Jeśli konto magazynu nie ma włączonej usługi RA-GZRS, aplikacje nie będą mogły czytać z poziomu pomocniczego do momentu ukończenia pracy w trybie failover.
 
 > [!NOTE]
-> GZRS i RA-GZRS są obecnie w wersji zapoznawczej tylko w regionie Wschodnie stany USA 2. Konto zarządzane przez klienta w trybie failover (wersja zapoznawcza) nie jest jeszcze dostępne w regionie Wschodnie stany USA 2, dlatego klienci nie mogą obecnie zarządzać zdarzeniami trybu failover konta przy użyciu kont GZRS i RA-GZRS. W ramach wersji zapoznawczej firma Microsoft będzie zarządzać wszystkimi zdarzeniami trybu failover wpływającymi na konta GZRS i RA-GZRS.
+> GZRS i RA-GZRS są obecnie w wersji zapoznawczej tylko w regionie Wschodnie stany USA. Konto zarządzane przez klienta w trybie failover (wersja zapoznawcza) nie jest jeszcze dostępne w regionie Wschodnie stany USA 2, dlatego klienci nie mogą obecnie zarządzać zdarzeniami trybu failover konta przy użyciu kont GZRS i RA-GZRS. W ramach wersji zapoznawczej firma Microsoft będzie zarządzać wszystkimi zdarzeniami trybu failover wpływającymi na konta GZRS i RA-GZRS.
 
 Ponieważ dane są replikowane do regionu pomocniczego asynchronicznie, awaria wpływająca na region podstawowy może spowodować utratę danych, jeśli nie można odzyskać regionu podstawowego. Interwał między ostatnimi zapisami w regionie podstawowym a ostatnim zapisem w regionie pomocniczym jest znany jako cel punktu odzyskiwania (RPO). Cel punktu odzyskiwania wskazuje punkt w czasie, do którego można odzyskać dane. Usługa Azure Storage zazwyczaj ma cel punktu odzyskiwania krótszy niż 15 minut, chociaż obecnie nie ma umowy SLA dotyczącej czasu trwania replikacji danych do regionu pomocniczego.
 

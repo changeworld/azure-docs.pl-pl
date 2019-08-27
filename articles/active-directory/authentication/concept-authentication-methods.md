@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d18c74e908f6d5c4c3d2eefb0518add380fa1324
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 3b0c91357e5ab15b88c92b04fd0896b989e83953
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69561303"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051446"
 ---
 # <a name="what-are-authentication-methods"></a>Co to są metody uwierzytelniania?
 
-Jako administrator, wybierając metody uwierzytelniania uwierzytelniania wieloskładnikowego i samoobsługowego resetowania hasła (SSPR), zaleca się, aby użytkownicy musieli zarejestrować wiele metod uwierzytelniania. Gdy metoda uwierzytelniania nie jest dostępna dla użytkownika, może wybrać opcję uwierzytelnienia przy użyciu innej metody.
+Jako administrator wybieraj metody uwierzytelniania dla usługi Azure Multi-Factor Authentication i samoobsługowego resetowania hasła (SSPR) zaleca się, aby użytkownicy musieli zarejestrować wiele metod uwierzytelniania. Gdy metoda uwierzytelniania nie jest dostępna dla użytkownika, może wybrać opcję uwierzytelnienia przy użyciu innej metody.
 
-Administratorzy mogą definiować w zasadach, które metody uwierzytelniania są dostępne dla użytkowników usługi SSPR i MFA. Niektóre metody uwierzytelniania mogą nie być dostępne dla wszystkich funkcji. Aby uzyskać więcej informacji o konfigurowaniu zasad, zobacz artykuł [jak pomyślnie wdrożyć](howto-sspr-deployment.md) Samoobsługowe resetowanie hasła i [zaplanować usługę Azure MFA w chmurze](howto-mfa-getstarted.md)
+Administratorzy mogą definiować w zasadach, które metody uwierzytelniania są dostępne dla użytkowników usługi SSPR i MFA. Niektóre metody uwierzytelniania mogą nie być dostępne dla wszystkich funkcji. Aby uzyskać więcej informacji na temat konfigurowania zasad, zobacz artykuł [jak pomyślnie wdrożyć](howto-sspr-deployment.md) Samoobsługowe resetowanie haseł i [zaplanować Multi-Factor Authentication platformy Azure opartej na chmurze](howto-mfa-getstarted.md)
 
 Firma Microsoft zdecydowanie zaleca administratorów pozwala użytkownikom wybrać więcej niż minimalną wymaganą liczbę metod uwierzytelniania na wypadek, gdyby nie mieli dostępu do jednego.
 
@@ -60,41 +60,41 @@ Jeśli używasz pytań zabezpieczających, zalecamy ich użycie w połączeniu z
 
 ### <a name="predefined-questions"></a>Wstępnie zdefiniowane pytania
 
-* W jakim mieście poznałeś/poznałaś swoją pierwszą współmałżonkę lub partnerkę albo swojego pierwszego współmałżonka lub partnera?
-* W jakim mieście poznali się Twoi rodzice?
-* W jaki mieście mieszka Twoje najbliższe rodzeństwo?
-* W jakim mieście urodził się Twój ojciec?
-* W jakim mieście podjąłeś/podjęłaś swoją pierwszą pracę?
-* W jakim mieście urodziła się Twoja matka?
-* W jakim mieście byłeś/byłaś w Nowy Rok w 2000 r.?
-* Jak miał na nazwisko Twój ulubiony nauczyciel w szkole średniej?
-* Na jaką uczelnię próbowałeś/próbowałaś się dostać, ale się nie udało?
-* Gdzie odbyło się Twoje pierwsze wesele?
-* Jakie jest drugie imię Twojego ojca?
-* Jakie jest Twoje ulubione danie?
-* Jak ma na imię i nazwisko Twoja babcia od strony matki?
-* Jakie jest drugie imię Twojej matki?
+* W jakim mieście Twój pierwszy współmałżonek/partner?
+* W jakim mieście spotkali się rodzice?
+* W jakim mieście znajduje się najbliższy element równorzędny?
+* W jakim mieście urodziły się ojciec?
+* W jakim mieście było Twoje pierwsze zadanie?
+* W jakim mieście urodziła się twoja matka?
+* W którym mieście nastąpiło w nowym roku 2000?
+* Jaka jest nazwisko Twojego ulubionego nauczyciela w wysokiej szkoły?
+* Jaka jest nazwa uczelni, która została zastosowana, ale nie uczestniczyła?
+* Jaka jest nazwa miejsca, w którym ma zostać przeprowadzone pierwsze odbiór z ślubu?
+* Co to jest drugie imię Twojego ojca?
+* Jaka jest Twoja ulubiona żywność?
+* Co to jest imię i nazwisko matki babcia?
+* Co to jest imię i nazwisko matki?
 * Co to jest miesiąc i rok urodzinowy Twojego elementu równorzędnego? (np. listopad 1985)
-* Jakie jest drugie imię Twojego najstarszego rodzeństwa?
-* Jak ma na imię i nazwisko Twój dziadek od strony ojca?
-* Jakie jest drugie imię Twojego najmłodszego rodzeństwa?
-* Do jakiej szkoły uczęszczałeś/uczęszczałaś w szóstej klasie?
-* Jak miał na imię i nazwisko Twój najlepszy przyjaciel lub przyjaciółka w dzieciństwie?
-* Jakie było imię i nazwisko Twojego pierwszego partnera lub Twojej pierwszej partnerki?
-* Jak miał na nazwisko Twój ulubiony nauczyciel w szkole podstawowej?
-* Jakie były marka i model Twojego pierwszego samochodu lub motocykla?
-* Jak się nazywała Twoja pierwsza szkoła?
-* Jak się nazywał szpital, w którym się urodziłeś/urodziłaś?
-* Przy jakiej ulicy znajdował się Twój pierwszy dom z dzieciństwa?
-* Jak się nazywał Twój bohater z dzieciństwa?
-* Jak się nazywała Twoja ulubiona maskotka?
-* Jak się wabiło Twoje pierwsze zwierzę domowe?
-* Jaki był Twój pseudonim w dzieciństwie?
-* Jaki był Twój ulubiony sport w szkole średniej?
-* Jaka była Twoja pierwsza praca?
-* Jakie były cztery ostatnie cyfry Twojego numeru telefonu z dzieciństwa?
-* Kim chciałeś/chciałaś zostać w dzieciństwie, gdy dorośniesz?
-* Jak się nazywa najpopularniejsza poznana przez Ciebie osoba?
+* Jaka jest nazwa najstarszego elementu równorzędnego?
+* Co to jest imię i nazwisko z Paternal dziadka?
+* Co to jest drugie imię z najmłodszego elementu równorzędnego?
+* Jaką szkołę znasz na szóstej ocenie?
+* Jakie było imię i nazwisko najlepszego przyjaciela?
+* Jakie było imię i nazwisko Twojego pierwszego znaczenia?
+* Jaka była nazwisko Twojego ulubionego nauczyciela szkoły szkolnej?
+* Co to jest marka i model Twojego pierwszego samochodu lub motocykla?
+* Jaka była nazwa pierwszej szkolnej szkoły?
+* Jaka była nazwa szpitala, z którego korzystasz?
+* Jaka była nazwa ulicy Twojego pierwszego domu z domem?
+* Jaka była nazwa Twojego heroi z domu?
+* Jaka była nazwa ulubionego zwierzęcia?
+* Jaka była nazwa Twojego pierwszego zwierzęcia domowego?
+* Jaki był pseudonim w Twoim domu,?
+* Jaki był Twój ulubiony sport w dużej szkole?
+* Jakie było Twoje pierwsze zadanie?
+* Jakie były cztery ostatnie cyfry Twojego numeru telefonu w Twoim serwisie
+* Kiedy jesteś w młodych, co chcesz zrobić po wzrósłe?
+* Kto jest najbardziej sławęą osobą?
 
 Wszystkie wstępnie zdefiniowane pytania zabezpieczające są tłumaczone i lokalizowane do pełnego zestawu języków pakietu Office 365 na podstawie ustawień regionalnych przeglądarki użytkownika.
 
@@ -195,6 +195,8 @@ Aby działały prawidłowo, numery telefonów muszą mieć format *+ CountryCode
 >
 > Resetowanie hasła nie obsługuje rozszerzeń telefonu. Nawet w formacie 4255551234X12345 + 1 rozszerzenia są usuwane przed umieszczeniem wywołania.
 
+Firma Microsoft nie gwarantuje spójnego dostarczania wiadomości SMS lub głosowych Multi-Factor Authentication na podstawie tej samej liczby. W interesie naszych użytkowników firma Microsoft może dodawać lub usuwać krótkie kody w dowolnym momencie, gdy wprowadzimy zmiany trasy w celu poprawy możliwości dostarczania wiadomości SMS. Firma Microsoft nie obsługuje krótkich kodów dla krajów/regionów poza Stany Zjednoczone i Kanadę.
+
 #### <a name="text-message"></a>Wiadomość SMS
 
 Wiadomość SMS jest wysyłana na numer telefonu komórkowego zawierający kod weryfikacyjny. Aby kontynuować, wprowadź kod weryfikacyjny podany w interfejsie logowania.
@@ -245,7 +247,7 @@ Typowe problemy związane z metodami uwierzytelniania przy użyciu numeru telefo
 
 Niektóre aplikacje nie korzystające z przeglądarki nie obsługują uwierzytelniania wieloskładnikowego, jeśli użytkownik włączył uwierzytelnianie wieloskładnikowe i spróbuje korzystać z aplikacji niekorzystających z przeglądarki, nie może się uwierzytelnić. Hasło aplikacji umożliwia użytkownikom dalsze uwierzytelnianie
 
-W przypadku wymuszania uwierzytelniania wieloskładnikowego przy użyciu zasad dostępu warunkowego, a nie za poorednictwem usługi MFA dla poszczególnych użytkowników, nie można tworzyć haseł aplikacji. Aplikacje korzystające z zasad dostępu warunkowego do sterowania dostępem nie potrzebują haseł aplikacji.
+W przypadku wymuszania Multi-Factor Authentication przy użyciu zasad dostępu warunkowego, a nie za poorednictwem usługi MFA dla poszczególnych użytkowników, nie można tworzyć haseł aplikacji. Aplikacje korzystające z zasad dostępu warunkowego do sterowania dostępem nie potrzebują haseł aplikacji.
 
 Jeśli Twoja organizacja jest federacyjnym logowaniem jednokrotnym w usłudze Azure AD i zamierzasz korzystać z usługi Azure MFA, weź pod uwagę następujące informacje:
 
@@ -259,7 +261,7 @@ Jeśli Twoja organizacja jest federacyjnym logowaniem jednokrotnym w usłudze Az
 
 [Włącz Samoobsługowe resetowanie hasła dla organizacji](quickstart-sspr.md)
 
-[Włączanie uwierzytelniania wieloskładnikowego platformy Azure dla Twojej organizacji](howto-mfa-getstarted.md)
+[Włączanie Multi-Factor Authentication platformy Azure dla Twojej organizacji](howto-mfa-getstarted.md)
 
 [Włącz rejestrację połączoną w dzierżawie](howto-registration-mfa-sspr-combined.md)
 

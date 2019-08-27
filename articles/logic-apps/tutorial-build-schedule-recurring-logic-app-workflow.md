@@ -6,16 +6,17 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+ms.manager: carmonm
 ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: ebc6388f1ebc7546ffda07095ead50797bde4e8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: ec29eef7e733155b205d4feda844883bbc4496c9
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60507399"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051747"
 ---
 # <a name="check-traffic-on-a-schedule-with-azure-logic-apps"></a>Cykliczne sprawdzanie ruchu przy użyciu usługi Azure Logic Apps
 
@@ -35,17 +36,17 @@ Po ukończeniu aplikacja logiki będzie ogólnie wyglądać jak ten przepływ pr
 
 ![Ogólna struktura aplikacji logiki](./media/tutorial-build-scheduled-recurring-logic-app-workflow/check-travel-time-overview.png)
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>.
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Konto e-mail od dostawcy obsługiwanego przez usługę Logic Apps, na przykład Office 365 Outlook, Outlook.com lub Gmail. W przypadku innych dostawców [przejrzyj tę listę łączników](https://docs.microsoft.com/connectors/). W tym przewodniku Szybki start jest używane konto usługi Outlook.com. Jeśli korzystasz z innego konta e-mail, ogólne kroki pozostają takie same, ale Twój interfejs użytkownika może wyglądać trochę inaczej.
 
-* Aby pobrać czas podróży dla danej trasy, potrzebny jest klucz dostępu dla interfejsu API usługi Mapy Bing. Aby pobrać ten klucz, postępuj zgodnie z instrukcjami <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">uzyskiwania klucza usługi Mapy Bing</a>. 
+* Aby pobrać czas podróży dla danej trasy, potrzebny jest klucz dostępu dla interfejsu API usługi Mapy Bing. Aby pobrać ten klucz, postępuj zgodnie z instrukcjami [uzyskiwania klucza usługi Mapy Bing](https://msdn.microsoft.com/library/ff428642.aspx). 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-Zaloguj się do <a href="https://portal.azure.com" target="_blank">witryny Azure Portal</a> przy użyciu poświadczeń konta Azure.
+Zaloguj się do [witryny Azure Portal](https://portal.azure.com) przy użyciu poświadczeń konta Azure.
 
 ## <a name="create-your-logic-app"></a>Tworzenie aplikacji logiki
 
@@ -62,7 +63,7 @@ Zaloguj się do <a href="https://portal.azure.com" target="_blank">witryny Azure
    | **Nazwa** | LA-TravelTime | Nazwa aplikacji logiki | 
    | **Subskrypcja** | <*your-Azure-subscription-name*> | Nazwa subskrypcji platformy Azure | 
    | **Grupa zasobów** | LA-TravelTime-RG | Nazwa [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) używanej do organizowania powiązanych zasobów | 
-   | **Lokalizacja** | Wschodnie stany USA 2 | Region, w którym będą przechowywane informacje na temat aplikacji logiki | 
+   | **Location** | Wschodnie stany USA 2 | Region, w którym będą przechowywane informacje na temat aplikacji logiki | 
    | **Log Analytics** | Wyłączone | Ustawienie **Wyłączone** umożliwia rejestrowanie w celach diagnostycznych. | 
    |||| 
 
@@ -74,11 +75,11 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
 
 ## <a name="add-scheduler-trigger"></a>Dodawanie wyzwalacza harmonogramu
 
-1. W Projektancie wprowadź ciąg „cyklicznie” w polu wyszukiwania. Wybierz ten wyzwalacz: **Harmonogram — cyklicznie**
+1. W Projektancie wprowadź ciąg „cyklicznie” w polu wyszukiwania. Wybierz ten wyzwalacz: **Harmonogram — cykl**
 
    ![Znajdywanie i dodawanie wyzwalacza „Harmonogram — cyklicznie”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-schedule-recurrence-trigger.png)
 
-2. Na kształcie **Cyklicznie** wybierz przycisk **wielokropka** (**...**), a następnie wybierz pozycję **Zmień nazwę**. Zmień nazwę wyzwalacza na następujący opis: ```Check travel time every weekday morning```
+2. Na kształcie **Cyklicznie** wybierz przycisk **wielokropka** ( **...** ), a następnie wybierz pozycję **Zmień nazwę**. Zmień nazwę wyzwalacza na następujący opis: ```Check travel time every weekday morning```
 
    ![Zmiana nazwy wyzwalacza](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 
@@ -90,7 +91,7 @@ Następnie dodaj [wyzwalacz](../logic-apps/logic-apps-overview.md#logic-app-conc
 
    | Ustawienie | Wartość | Opis | 
    | ------- | ----- | ----------- | 
-   | **Interwał** | 1 | Liczba interwałów do odczekania między sprawdzaniami | 
+   | **Interval** | 1 | Liczba interwałów do odczekania między sprawdzaniami | 
    | **Częstotliwość** | Tydzień | Jednostka czasu cyklu | 
    | **Strefa czasowa** | Brak | Ma zastosowanie tylko, jeśli określisz godzinę rozpoczęcia. Umożliwia określenie innej strefy czasowej niż lokalna. | 
    | **Godzina rozpoczęcia** | Brak | Umożliwia opóźnienie cyklu do określonej daty i godziny. Aby uzyskać więcej informacji, zobacz [Schedule tasks and workflows that run regularly (Planowanie regularnie uruchamianych zadań i przepływów pracy)](../connectors/connectors-native-recurrence.md). | 
@@ -117,7 +118,7 @@ Po utworzeniu wyzwalacza możesz dodać [akcję](../logic-apps/logic-apps-overvi
 
 1. W Projektancie aplikacji logiki w obszarze wyzwalacza wybierz kolejno pozycje **+ Nowy krok** > **Dodaj akcję**.
 
-2. Wyszukaj "mapy" i wybierz następującą akcję: **Mapy Bing — Pobierz trasę**
+2. Wyszukaj ciąg "Maps" i wybierz tę akcję: **Mapy Bing — pobieranie trasy**
 
 3. Jeśli nie masz połączenia z usługą Mapy Bing, zostanie wyświetlony monit o utworzenie połączenia. Podaj następujące szczegóły połączenia, a następnie wybierz pozycję **Utwórz**.
 
@@ -126,7 +127,7 @@ Po utworzeniu wyzwalacza możesz dodać [akcję](../logic-apps/logic-apps-overvi
    | Ustawienie | Wartość | Opis |
    | ------- | ----- | ----------- |
    | **Nazwa połączenia** | BingMapsConnection | Podaj nazwę połączenia. | 
-   | **Klucz interfejsu API** | <*klucz_usługi_Mapy_Bing*> | Wprowadź uzyskany wcześniej klucz usługi Mapy Bing. Jeśli nie masz klucza usługi Mapy Bing, dowiedz się <a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">jak uzyskać klucz</a>. | 
+   | **Klucz interfejsu API** | <*your-Bing-Maps-key*> | Wprowadź uzyskany wcześniej klucz usługi Mapy Bing. Jeśli nie masz klucza usługi Mapy Bing, dowiedz się [jak uzyskać klucz](https://msdn.microsoft.com/library/ff428642.aspx). | 
    | | | |  
 
 4. Zmień nazwę akcji na następujący opis: ```Get route and travel time with traffic```
@@ -141,8 +142,8 @@ Po utworzeniu wyzwalacza możesz dodać [akcję](../logic-apps/logic-apps-overvi
    | **Punkt nawigacyjny 2** | <*lokalizacja_końcowa*> | Koniec trasy | 
    | **Unikaj** | Brak | Wszelkie elementy trasy, których należy unikać, na przykład autostrady, drogi płatne i tym podobne | 
    | **Optymalizacja** | timeWithTraffic | Parametr używany do optymalizowania trasy, na przykład odległość, czas podróży z uwzględnieniem aktualnego natężenia ruchu i tak dalej. Wybierz parametr: „timeWithTraffic” | 
-   | **Jednostka odległości** | <*według_preferencji*> | Jednostka odległości trasy. W tym artykule używaną jednostką: "Mile"  | 
-   | **Tryb podróży** | Jazda samochodem | Tryb podróży dla trasy. Wybierz tryb, w tym: "Samochodem" | 
+   | **Jednostka odległości** | <*według_preferencji*> | Jednostka odległości trasy. W tym artykule jest stosowana ta jednostka: Prywatnego  | 
+   | **Tryb podróży** | Jazda samochodem | Tryb podróży dla trasy. Wybierz ten tryb: Siłach | 
    | **Transport publiczny — data i godzina** | Brak | Dotyczy tylko trybu „Transport publiczny” | 
    | **Rodzaj daty i godziny** | Brak | Dotyczy tylko trybu „Transport publiczny” | 
    |||| 
@@ -161,7 +162,7 @@ Domyślnie poprzednia akcja **Pobierz trasę** zwraca aktualny czas podróży z 
 
 1. W obszarze akcji **Pobierz trasę** akcji wybierz kolejno pozycje **+ Nowy krok** > **Dodaj akcję**.
 
-2. Wyszukaj "zmienne" i wybierz następującą akcję: **Zmienne — inicjowane zmiennej**
+2. Wyszukaj frazę "zmienne" i wybierz tę akcję: **Zmienne — inicjowanie zmiennej**
 
    ![Wybieranie akcji „Zmienne - inicjowane zmiennej”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-initialize-variable-action.png)
 
@@ -172,7 +173,7 @@ Domyślnie poprzednia akcja **Pobierz trasę** zwraca aktualny czas podróży z 
    | Ustawienie | Wartość | Opis | 
    | ------- | ----- | ----------- | 
    | **Nazwa** | travelTime | Nazwa zmiennej | 
-   | **Typ** | Liczba całkowita | Typ danych dla zmiennej | 
+   | **Typ** | Integer | Typ danych dla zmiennej | 
    | **Wartość** | Wyrażenie, które konwertuje aktualny czas podróży z sekund na minuty (zobacz instrukcje pod tą tabelą). | Początkowa wartość zmiennej | 
    |||| 
 
@@ -194,7 +195,7 @@ Domyślnie poprzednia akcja **Pobierz trasę** zwraca aktualny czas podróży z 
 
       ![Wprowadź wyrażenie: „div(,60)”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-2.png)
 
-   3. Umieść kursor wewnątrz wyrażenia między lewym nawiasem (**(**) a przecinkiem (**,**). 
+   3. Umieść kursor wewnątrz wyrażenia między lewym nawiasem ( **(** ) a przecinkiem ( **,** ). 
    Wybierz pozycję **Zawartość dynamiczna**.
 
       ![Umieszczanie kursora i wybieranie polecenia „Zawartość dynamiczna”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-3.png)
@@ -283,7 +284,7 @@ Teraz dodaj akcję, która wysyła do Ciebie wiadomość e-mail, jeśli czas pod
 
       ![Wprowadzanie wyrażenia w celu obliczenia dodatkowego czasu podróży w minutach](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-2.png)
 
-   4. Umieść kursor wewnątrz wyrażenia między lewym nawiasem (**(**) a przecinkiem (**,**). Wybierz pozycję **Zawartość dynamiczna**.
+   4. Umieść kursor wewnątrz wyrażenia między lewym nawiasem ( **(** ) a przecinkiem ( **,** ). Wybierz pozycję **Zawartość dynamiczna**.
 
       ![Kontynuacja tworzenia wyrażenia do obliczania dodatkowego czasu podróży w minutach](./media/tutorial-build-scheduled-recurring-logic-app-workflow/send-email-body-settings-3.png)
 
@@ -333,7 +334,7 @@ Gdy grupa zasobów zawierająca aplikację logiki i powiązane zasoby nie będzi
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Podczas pracy z tym samouczkiem utworzono aplikację logiki, która sprawdza natężenie ruchu na podstawie określonego harmonogramu (codziennie rano) i podejmuje działania (wysyła wiadomości e-mail), gdy czas podróży przekracza określony limit. Możesz teraz dowiedzieć się, w jaki sposób utworzyć aplikację logiki, która wysyła żądania listy adresowej do zatwierdzenia poprzez zintegrowanie usług platformy Azure, usług firmy Microsoft i innych aplikacji SaaS.
 

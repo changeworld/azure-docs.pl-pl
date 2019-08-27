@@ -1,62 +1,54 @@
 ---
-title: Rozwiązywanie problemów z platformy Spark w usłudze Azure HDInsight
+title: Rozwiązywanie problemów Apache Spark w usłudze Azure HDInsight
 description: Uzyskaj odpowiedzi na często zadawane pytania na temat pracy z usługą Apache Spark i Azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: troubleshooting
-ms.date: 08/15/2019
+ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: c88136fee7a75b8f3b8e504b1ff1e6673a31bcf7
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 143a941b8266734a8415c71daafc07681bc13b80
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543163"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049565"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z platformy Apache Spark przy użyciu usługi Azure HDInsight
 
-Dowiedz się więcej o najważniejszych problemach i ich rozwiązania, pracując z [platformy Apache Spark](https://spark.apache.org/) ładunków w [Apache Ambari](https://ambari.apache.org/).
+Poznaj najważniejsze problemy i ich rozwiązania podczas pracy z Apache Spark ładunkiami w programie [Apache Ambari](https://ambari.apache.org/).
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters"></a>Jak skonfigurować aplikację platformy Apache Spark przy użyciu Apache Ambari w klastrach?
 
-### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
+Wartości konfiguracji platformy Spark można dostrajać w celu uniknięcia wyjątku `OutofMemoryError` aplikacji Apache Spark. Poniższe kroki pokazują domyślne wartości konfiguracji platformy Spark w usłudze Azure HDInsight:
 
-Wartości konfiguracji platformy Spark można dostrajać, unikając Apache Spark wyjątek OutofMemoryError aplikacji. Poniższe kroki pokazują domyślne wartości konfiguracji platformy Spark w usłudze Azure HDInsight: 
+1. Zaloguj się do Ambari `https://CLUSTERNAME.azurehdidnsight.net` przy użyciu poświadczeń klastra. Na ekranie początkowym zostanie wyświetlony pulpit nawigacyjny przegląd. Istnieją niewielkie różnice między usługami HDInsight 3,6 i 4,0.
 
-1. Wybierz listy klastrów, **Spark2**.
-
-    ![Wybierz klaster, z listy](./media/apache-troubleshoot-spark/update-config-1.png)
-
-2. Wybierz **Configs** kartę.
+1. Przejdź do **Spark2** > **configs**.
 
     ![Wybierz kartę konfiguracje](./media/apache-troubleshoot-spark/update-config-2.png)
 
-3. Na liście konfiguracji wybierz **Custom-spark2 — domyślne**.
+1. Na liście konfiguracji wybierz i rozwiń pozycję **Custom-spark2-Defaults**.
 
-    ![Wybierz niestandardowe — spark — ustawienia domyślne](./media/apache-troubleshoot-spark/update-config-3.png)
+1. Znajdź ustawienie wartości, które należy dopasować, takich jak **spark.executor.memory**. W tym przypadku wartość **9728m** jest zbyt wysoka.
 
-4. Znajdź ustawienie wartości, które należy dopasować, takich jak **spark.executor.memory**. W tym przypadku wartość **4608m** jest zbyt wysoka.
+    ![Wybierz niestandardowe — spark — ustawienia domyślne](./media/apache-troubleshoot-spark/update-config-4.png)
 
-    ![Wybierz pole spark.executor.memory](./media/apache-troubleshoot-spark/update-config-4.png)
+1. Ustaw wartość na ustawienie zalecane. Wartość **2048m** jest zalecane w przypadku tego ustawienia.
 
-5. Ustaw wartość na ustawienie zalecane. Wartość **2048m** jest zalecane w przypadku tego ustawienia.
+1. Zapisz wartość, a następnie Zapisz konfigurację. Wybierz pozycję **Zapisz**.
 
-    ![Zmień wartość na 2048m](./media/apache-troubleshoot-spark/update-config-5.png)
-
-6. Zapisz wartość, a następnie Zapisz konfigurację. Na pasku narzędzi wybierz **Zapisz**.
-
-    ![Zapisz ustawienia i Konfiguracja](./media/apache-troubleshoot-spark/update-config-6a.png)
-
-    Otrzymasz powiadomienie, jeśli wszystkie konfiguracje wymagające uwagi. Należy pamiętać, elementy, a następnie wybierz **kontynuować mimo to**. 
-
-    ![Wybierz kontynuować mimo to](./media/apache-troubleshoot-spark/update-config-6b.png)
+    ![Zmień wartość na 2048m](./media/apache-troubleshoot-spark/update-config-6a.png)
 
     Wpisz notatkę o zmiany konfiguracji, a następnie wybierz **Zapisz**.
 
     ![Wprowadź informację o zmianach, które wprowadziłeś](./media/apache-troubleshoot-spark/update-config-6c.png)
 
-7. Przy każdym zapisaniu konfiguracji pojawia się monit o ponowne uruchomienie usługi. Wybierz **ponowne uruchomienie**.
+    Otrzymasz powiadomienie, jeśli wszystkie konfiguracje wymagające uwagi. Należy pamiętać, elementy, a następnie wybierz **kontynuować mimo to**.
+
+    ![Wybierz kontynuować mimo to](./media/apache-troubleshoot-spark/update-config-6b.png)
+
+1. Przy każdym zapisaniu konfiguracji pojawia się monit o ponowne uruchomienie usługi. Wybierz **ponowne uruchomienie**.
 
     ![Uruchom ponownie](./media/apache-troubleshoot-spark/update-config-7a.png)
 
@@ -68,66 +60,41 @@ Wartości konfiguracji platformy Spark można dostrajać, unikając Apache Spark
 
     ![Przegląd uruchomionego procesu](./media/apache-troubleshoot-spark/update-config-7c.png)
 
-8. Można dodać konfiguracji. Na liście konfiguracji, wybierz **Custom-spark2 — ustawienia domyślne**, a następnie wybierz pozycję **Dodaj właściwość**.
+1. Można dodać konfiguracji. Na liście konfiguracji, wybierz **Custom-spark2 — ustawienia domyślne**, a następnie wybierz pozycję **Dodaj właściwość**.
 
     ![Wybierz opcję Dodaj właściwość](./media/apache-troubleshoot-spark/update-config-8.png)
 
-9. Definiowania nowej właściwości. Można zdefiniować jedną właściwość, za pomocą okno dialogowe dotyczące konkretnych ustawień, takich jak typ danych. Alternatywnie można zdefiniować wiele właściwości, za pomocą jednej definicji dla każdego wiersza. 
+1. Definiowania nowej właściwości. Można zdefiniować jedną właściwość, za pomocą okno dialogowe dotyczące konkretnych ustawień, takich jak typ danych. Alternatywnie można zdefiniować wiele właściwości, za pomocą jednej definicji dla każdego wiersza.
 
     W tym przykładzie **spark.driver.memory** właściwość jest zdefiniowana z wartością **4g**.
 
     ![Zdefiniuj nową właściwość](./media/apache-troubleshoot-spark/update-config-9.png)
 
-10. Zapisz konfigurację, a następnie uruchom ponownie usługę, zgodnie z opisem w kroku 6 i 7.
+1. Zapisz konfigurację, a następnie uruchom ponownie usługę, zgodnie z opisem w kroku 6 i 7.
 
 Te zmiany są całego klastra, ale mogą być zastąpione, gdy prześlesz zadanie platformy Apache Spark.
 
-### <a name="additional-reading"></a>Materiały uzupełniające
-
-[Przesyłanie zadań platformy Apache Spark w klastrach HDInsight](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
-
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-a-jupyter-notebook-on-clusters"></a>Jak skonfigurować aplikację platformy Apache Spark za pomocą notesu Jupyter w klastrach?
 
-### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
+W pierwszej komórki notesu programu Jupyter po **%% skonfigurować** dyrektywy, określanie konfiguracji platformy Spark w prawidłowym formacie JSON. Ustaw rzeczywistymi wartościami:
 
-1. Aby określić, które konfiguracje platformy Spark muszą zostać ustawione i jakie wartości, zobacz co Apache Spark powoduje wyjątek OutofMemoryError aplikacji.
-
-2. W pierwszej komórki notesu programu Jupyter po **%% skonfigurować** dyrektywy, określanie konfiguracji platformy Spark w prawidłowym formacie JSON. Ustaw rzeczywistymi wartościami:
-
-    ![Dodaj konfigurację](./media/apache-troubleshoot-spark/add-configuration-cell.png)
-
-### <a name="additional-reading"></a>Materiały uzupełniające
-
-[Przesyłanie zadań platformy Apache Spark w klastrach HDInsight](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
-
+![Dodaj konfigurację](./media/apache-troubleshoot-spark/add-configuration-cell.png)
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-livy-on-clusters"></a>Jak skonfigurować aplikację platformy Apache Spark przy użyciu usługi Livy Apache w klastrach?
 
-### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
+Przesyłanie aplikacji Spark usługi Livy za pomocą klienta REST, takich jak narzędzie cURL. Użyj polecenia podobnego do następującego. Ustaw rzeczywistymi wartościami:
 
-1. Aby określić, które konfiguracje platformy Spark muszą zostać ustawione i jakie wartości, zobacz co Apache Spark powoduje wyjątek OutofMemoryError aplikacji. 
-
-2. Przesyłanie aplikacji Spark usługi Livy za pomocą klienta REST, takich jak narzędzie cURL. Użyj polecenia podobnego do następującego. Ustaw rzeczywistymi wartościami:
-
-    ```apache
-    curl -k --user 'username:password' -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://container@storageaccountname.blob.core.windows.net/example/jars/sparkapplication.jar", "className":"com.microsoft.spark.application", "numExecutors":4, "executorMemory":"4g", "executorCores":2, "driverMemory":"8g", "driverCores":4}'  
-    ```
-
-### <a name="additional-reading"></a>Materiały uzupełniające
-
-[Przesyłanie zadań platformy Apache Spark w klastrach HDInsight](https://web.archive.org/web/20190112152841/https://blogs.msdn.microsoft.com/azuredatalake/2017/01/06/spark-job-submission-on-hdinsight-101/)
+```apache
+curl -k --user 'username:password' -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://container@storageaccountname.blob.core.windows.net/example/jars/sparkapplication.jar", "className":"com.microsoft.spark.application", "numExecutors":4, "executorMemory":"4g", "executorCores":2, "driverMemory":"8g", "driverCores":4}'  
+```
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-spark-submit-on-clusters"></a>Jak skonfigurować aplikację za pomocą skryptu spark-submit Apache Spark w klastrach?
 
-### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
+Uruchamianie powłoki spark przy użyciu polecenia podobnego do następującego. Zmień rzeczywistej wartości konfiguracji zgodnie z potrzebami:
 
-1. Aby określić, które konfiguracje platformy Spark muszą zostać ustawione i jakie wartości, zobacz co Apache Spark powoduje wyjątek OutofMemoryError aplikacji.
-
-2. Uruchamianie powłoki spark przy użyciu polecenia podobnego do następującego. Zmień rzeczywistej wartości konfiguracji zgodnie z potrzebami: 
-
-    ```apache
-    spark-submit --master yarn-cluster --class com.microsoft.spark.application --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4 /home/user/spark/sparkapplication.jar
-    ```
+```apache
+spark-submit --master yarn-cluster --class com.microsoft.spark.application --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4 /home/user/spark/sparkapplication.jar
+```
 
 ### <a name="additional-reading"></a>Materiały uzupełniające
 

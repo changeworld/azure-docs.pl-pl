@@ -6,60 +6,61 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+manager: carmonm
 ms.reviewer: klam, LADocs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/01/2019
 tags: connectors
-ms.openlocfilehash: 5a1bfe8ca38fc23f09b13195fb8ca5bd443a4afd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4e0689454ec074348fcbc775373a48d6825cfac4
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60312562"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050976"
 ---
-# <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>Przekazywanie plików i zarządzanie nimi w usłudze Dropbox za pomocą usługi Azure Logic Apps
+# <a name="upload-and-manage-files-in-dropbox-by-using-azure-logic-apps"></a>Przekazywanie plików i zarządzanie nimi w usłudze Dropbox przy użyciu Azure Logic Apps
 
-Łącznik usługi Dropbox i Azure Logic Apps umożliwia tworzenie zautomatyzowanych przepływów pracy i zarządzanie plikami na Twoim koncie Dropbox. 
+Za pomocą łącznika usługi Dropbox i Azure Logic Apps można tworzyć zautomatyzowane przepływy pracy, które przesyłają pliki i zarządzają nimi na koncie usługi Dropbox. 
 
-W tym artykule pokazano, jak nawiązać połączenie usługi Dropbox z aplikacji logiki, a następnie dodaj usługi Dropbox **po utworzeniu pliku** wyzwalacza i Dropbox **Pobierz zawartość pliku przy użyciu ścieżki** akcji.
+W tym artykule pokazano, jak nawiązać połączenie z usługą Dropbox z poziomu aplikacji logiki, a następnie dodać tę funkcję, **gdy zostanie utworzony plik** wyzwalacza, a w polu Dropbox **pobierana zawartość pliku przy użyciu ścieżki** .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>.
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/).
 
-* A [konta usługi Dropbox](https://www.dropbox.com/), której można zarejestrować za darmo. Poświadczenia konta są niezbędne do utworzenia połączenia między aplikacją logiki i kontem usługi Dropbox.
+* [Konto usługi Dropbox](https://www.dropbox.com/), którego możesz zarejestrować się bezpłatnie. Poświadczenia konta są niezbędne do utworzenia połączenia między aplikacją logiki a kontem usługi Dropbox.
 
-* Podstawową wiedzę na temat o [jak tworzyć aplikacje logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). W tym przykładzie należy pustej aplikacji logiki.
+* Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Na potrzeby tego przykładu potrzebujesz pustej aplikacji logiki.
 
-## <a name="add-trigger"></a>Dodawanie wyzwalacza
+## <a name="add-trigger"></a>Dodaj wyzwalacz
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. W polu wyszukiwania wybierz pozycję **Wszystko**. W polu wyszukiwania wprowadź "dropbox" jako filtr.
-Z listy wyzwalaczy wybierz następujący wyzwalacz: **Po utworzeniu pliku**
+1. W polu wyszukiwania wybierz pozycję **Wszystko**. W polu wyszukiwania wprowadź ciąg "Dropbox" jako filtr.
+Z listy Wyzwalacze wybierz następujący wyzwalacz: **Po utworzeniu pliku**
 
-   ![Wybieranie wyzwalacza usługi Dropbox](media/connectors-create-api-dropbox/select-dropbox-trigger.png)
+   ![Wybierz wyzwalacz usługi Dropbox](media/connectors-create-api-dropbox/select-dropbox-trigger.png)
 
-1. Zaloguj się przy użyciu poświadczeń konta usługi Dropbox i autoryzować dostęp do danych usługi Dropbox do usługi Azure Logic Apps.
+1. Zaloguj się przy użyciu poświadczeń konta usługi Dropbox i Autoryzuj dostęp do danych usługi Dropbox w celu Azure Logic Apps.
 
-1. Podaj wymagane informacje dotyczące wyzwalacza. 
+1. Podaj wymagane informacje dla wyzwalacza. 
 
-   W tym przykładzie wybierz folder, w którym chcesz ją śledzić tworzenia pliku. Aby przeglądać folderów, wybierz ikonę folderu **folderu** pole.
+   W tym przykładzie wybierz folder, w którym chcesz śledzić tworzenie plików. Aby przeglądać foldery, wybierz ikonę folderu obok pola **folder** .
 
 ## <a name="add-action"></a>Dodaj akcję
 
 Teraz Dodaj akcję, która pobiera zawartość z dowolnego nowego pliku.
 
-1. W obszarze wyzwalacza wybierz **następny krok**. 
+1. W obszarze wyzwalacza wybierz pozycję **Następny krok**. 
 
-1. W polu wyszukiwania wybierz pozycję **Wszystko**. W polu wyszukiwania wprowadź "dropbox" jako filtr.
-Z listy akcji wybierz następującą akcję: **Pobierz zawartość pliku przy użyciu ścieżki**
+1. W polu wyszukiwania wybierz pozycję **Wszystko**. W polu wyszukiwania wprowadź ciąg "Dropbox" jako filtr.
+Z listy Akcje wybierz tę akcję: **Pobierz zawartość pliku przy użyciu ścieżki**
 
-1. Jeśli już nie został autoryzowany Azure Logic Apps, aby dostęp do usługi Dropbox, teraz Autoryzowanie dostępu.
+1. Jeśli nie masz jeszcze autoryzacji Azure Logic Apps dostępu do usługi Dropbox, Autoryzuj dostęp teraz.
 
-1. Aby przejść do ścieżki pliku, którego chcesz użyć obok **ścieżka pliku** , wybierz wielokropek ( **...** ) przycisku. 
+1. Aby przejść do ścieżki pliku, której chcesz użyć, obok pola **ścieżka pliku** wybierz przycisk wielokropka ( **...** ). 
 
-   Możesz również kliknąć wewnątrz **ścieżka pliku** , a z listy zawartości dynamicznej wybierz **ścieżka pliku**, którego wartość jest dostępna jako dane wyjściowe z wyzwalacza dodany w poprzedniej sekcji.
+   Możesz również kliknąć wewnątrz pola **ścieżka pliku** i z listy zawartość dynamiczna wybierz pozycję **ścieżka pliku**, której wartość jest dostępna jako dane wyjściowe wyzwalacza dodanego w poprzedniej sekcji.
 
 1. Gdy skończysz, Zapisz aplikację logiki.
 
@@ -67,13 +68,8 @@ Z listy akcji wybierz następującą akcję: **Pobierz zawartość pliku przy u�
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Szczegóły techniczne, takich jak wyzwalacze, akcje i ograniczeń, zgodnie z opisem w łącznika interfejsu OpenAPI (dawniej Swagger) plików, zobacz [strona referencyjna łącznika](/connectors/dropbox/).
+Aby uzyskać szczegółowe informacje techniczne, takie jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku OpenAPI łącznika (dawniej Swagger), zobacz [stronę odwołania łącznika](/connectors/dropbox/).
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+## <a name="next-steps"></a>Następne kroki
 
-* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
-
-## <a name="next-steps"></a>Kolejne kroki
-
-* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)
+* Dowiedz się więcej na temat innych [łączników Logic Apps](../connectors/apis-list.md)

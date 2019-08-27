@@ -1,6 +1,6 @@
 ---
-title: Łączenie z serwisem Twitter z usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Automatyzowanie zadań i przepływów pracy, które monitorowanie i zarządzanie tweety, a także uzyskać dane dotyczące obserwatorów, obserwowanych użytkowników, innych użytkowników, osie czasu i innymi za pomocą konta w usłudze Twitter przy użyciu usługi Azure Logic Apps
+title: Nawiązywanie połączenia z usługą Twitter z poziomu usługi Azure Logic Apps | Microsoft Docs
+description: Automatyzuj zadania i przepływy pracy, które monitorują tweety i zarządzają nimi, a także pobierają dane dotyczące obserwatorów, zaobserwowanego użytkownika, innych użytkowników, osi czasu i innych informacji z konta usługi Twitter przy użyciu Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,86 +11,86 @@ ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 0fbd89202796cb4543dbecbeee605c9b87cc9d05
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22b75b2d2b47dbd496eda06c09b418ae66f6403a
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104990"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050688"
 ---
-# <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Monitorowanie i zarządzanie nimi Twitter przy użyciu usługi Azure Logic Apps
+# <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Monitoruj usługi Twitter i zarządzaj nimi za pomocą Azure Logic Apps
 
-Za pomocą usługi Azure Logic Apps i łącznika serwisu Twitter można utworzyć zautomatyzowanych zadań i przepływów pracy, które monitorują i zarządzania danymi, które Cię interesują w usłudze Twitter takich jak opublikuje obserwatorów, użytkowników i następnie użytkowników, osie czasu i uzyskać więcej informacji, oraz inne czynności, na przykład:
+Za pomocą Azure Logic Apps i łącznika usługi Twitter można tworzyć automatyczne zadania i przepływy pracy, które monitorują i zarządzają danymi, które są potrzebne w serwisie Twitter, takich jak tweety, obserwatorzy, użytkownicy i zaobserwowane użytkownicy, osie czasu i inne, a także inne akcje, na przykład:
 
-* Monitorowanie, post i wyszukiwanie tweetów.
-* Pobierz dane, takie jak obserwatorów obserwowanych użytkowników, osie czasu i więcej.
+* Monitoruj, Publikuj i wyszukuj tweety.
+* Pobieraj dane, takie jak obserwatorzy, zaobserwowane użytkownicy, osie czasu i nie tylko.
 
-Możesz użyć wyzwalaczy, które uzyskać odpowiedzi z kontem w usłudze Twitter i udostępnić dane wyjściowe innych działań. Możesz użyć akcji, które wykonują zadania związane z kontem w usłudze Twitter. Mogą też istnieć inne akcje użyć danych wyjściowych z akcji usługi Twitter. Na przykład gdy pojawi się nowy tweet z określonym hasztagiem, możesz wysłać wiadomości z łącznikiem usługi Slack. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Możesz użyć wyzwalaczy, które pobierają odpowiedzi z konta usługi Twitter i udostępniają dane wyjściowe innym akcjom. Możesz użyć akcji, które wykonują zadania przy użyciu konta w usłudze Twitter. Możesz również mieć inne akcje, które używają danych wyjściowych z akcji usługi Twitter. Na przykład po pojawieniu się nowego tweetu z określonym elementem hasztagów można wysłać komunikaty z łącznikiem zapasowym. Jeśli jesteś nowym sposobem logiki aplikacji, zapoznaj [się z tematem Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/). 
 
-* Poświadczenia konta i użytkownika usługi Twitter
+* Twoje konto i poświadczenia użytkownika usługi Twitter
 
-   Poświadczenia Autoryzuj aplikację logiki, aby utworzyć połączenie i uzyskać dostępu do konta usługi Twitter.
+   Twoje poświadczenia autoryzują aplikację logiki, aby utworzyć połączenie i uzyskać dostęp do konta usługi Twitter.
 
-* Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikacja logiki, w której chcesz uzyskać dostęp do konta usługi Twitter. Aby uruchomić z wyzwalaczem usługi Twitter [Tworzenie pustej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji usługi Twitter, uruchomić swoją aplikację logiki za pomocą wyzwalacza innego, na przykład, **cyklu** wyzwalacza.
+* Aplikacja logiki, w której chcesz uzyskać dostęp do konta usługi Twitter. Aby rozpocząć pracę z wyzwalaczem usługi Twitter, [Utwórz pustą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji usługi Twitter, uruchom aplikację logiki z innym wyzwalaczem, na przykład wyzwalaczem **cyklu** .
 
 ## <a name="connect-to-twitter"></a>Łączenie z usługą Twitter
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoją aplikację logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com)i Otwórz aplikację logiki w Projektancie aplikacji logiki, jeśli nie jest jeszcze otwarta.
 
 1. Wybierz ścieżkę: 
 
-   * Puste logic apps, w polu wyszukiwania wprowadź "twitter" jako filtr. 
-   W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
+   * W przypadku pustych aplikacji logiki w polu wyszukiwania wprowadź wartość "Twitter" jako filtr. 
+   Na liście Wyzwalacze wybierz wyzwalacz, który chcesz. 
 
      —lub—
 
-   * W przypadku istniejących aplikacji logiki: 
+   * Dla istniejących aplikacji logiki: 
    
-     * W ostatnim kroku, której chcesz dodać akcję, wybierz **nowy krok**. 
+     * W ostatnim kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**. 
 
        —lub—
 
-     * Między krokami, które chcesz dodać akcję wskaźnik myszy nad strzałką znajdującą się między krokami. 
-     Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
+     * Między krokami, do których chcesz dodać akcję, przesuń wskaźnik myszy nad strzałkę między krokami. 
+     Wybierz wyświetlony znak plus ( **+** ), a następnie wybierz pozycję **Dodaj akcję**.
      
-       W polu wyszukiwania wprowadź "twitter" jako filtr. 
-       W obszarze listy akcji wybierz akcję, którą chcesz.
+       W polu wyszukiwania wprowadź wartość "Twitter" jako filtr. 
+       Na liście Akcje wybierz żądaną akcję.
 
-1. Jeśli zostanie wyświetlony monit logować się do usługi Twitter, zarejestruj się teraz, dzięki czemu można Autoryzowanie dostępu dla aplikacji logiki.
+1. Jeśli zostanie wyświetlony monit o zalogowanie się do usługi Twitter, zaloguj się teraz, aby można było autoryzować dostęp do aplikacji logiki.
 
-1. Podaj odpowiednie szczegóły wybranego wyzwalacza lub akcji i kontynuuj tworzenie przepływu pracy aplikacji logiki.
+1. Podaj niezbędne szczegóły wybranego wyzwalacza lub akcji i Kontynuuj tworzenie przepływu pracy aplikacji logiki.
 
 ## <a name="examples"></a>Przykłady
 
-### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Wyzwalacz usługi Twitter: Po wysłaniu nowego tweetu
+### <a name="twitter-trigger-when-a-new-tweet-is-posted"></a>Wyzwalacz usługi Twitter: Po opublikowaniu nowego tweetu
 
-Ten wyzwalacz jest uruchamiany przepływ pracy aplikacji logiki, jeśli wyzwalacz wykryje nowy tweet, na przykład z hasztagiem, #Seattle. Na przykład gdy znajdują się te tweety, można dodać plik z zawartością tweetów do magazynu, takich jak konta usługi Dropbox za pomocą łącznika usługi Dropbox. 
+Ten wyzwalacz uruchamia przepływ pracy aplikacji logiki, gdy wyzwalacz wykryje nowy Tweet, na przykład przy użyciu #Seattle. Na przykład po znalezieniu tych tweetów możesz dodać plik z zawartością tweetów do magazynu, na przykład konto usługi Dropbox przy użyciu łącznika usługi Dropbox. 
 
-Można opcjonalnie dodać warunek, który kwalifikujących się tweetów muszą pochodzić z użytkowników z co najmniej określonej liczbie obserwatorów.
+Opcjonalnie możesz dołączyć warunek, który uprawnieni tweety muszą pochodzić od użytkowników, którzy mają co najmniej określoną liczbę obserwatorów.
 
-**Przykład Enterprise**: Ten wyzwalacz umożliwia monitorowanie tweetów o Twojej firmie i przekaż zawartość tweetów do usługi SQL database.
+**Przykład przedsiębiorstwa**: Ten wyzwalacz służy do monitorowania tweetów dotyczących firmy i przekazywania zawartości tweetów do bazy danych SQL.
 
-### <a name="twitter-action-post-a-tweet"></a>Akcja Twitter: Opublikuj tweet
+### <a name="twitter-action-post-a-tweet"></a>Akcja usługi Twitter: Wyślij tweet
 
-Ta akcja publikuje tweet, ale można skonfigurować akcję, dzięki czemu tweet zawiera zawartość z tweetów znaleziono wyzwalaczu opisany wcześniej. 
+Ta akcja służy do ogłaszania tweetu, ale można skonfigurować akcję tak, aby Tweet zawierał zawartość tweetów znalezionych przez poprzednio opisany wyzwalacz. 
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Szczegółowe informacje techniczne dotyczące wyzwalaczy, akcje i ograniczeń, które opisano przez standard OpenAPI łącznika (dawniej Swagger) opis, przejrzyj łącznika [strona referencyjna](/connectors/twitterconnector/).
+Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów, które są opisane w opisie OpenAPI łącznika (dawniej Swagger), przejrzyj [stronę odwołania](/connectors/twitterconnector/)łącznika.
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)
+* Dowiedz się więcej na temat innych [łączników Logic Apps](../connectors/apis-list.md)

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/03/2019
+ms.date: 08/21/2019
 ms.author: atsenthi
-ms.openlocfilehash: 8512b1c94145d573d96cd3a43190cda5b9cfa222
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: b7d34095568fa1d98c5f2987a70397ca042c8867
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775307"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036409"
 ---
 # <a name="supported-service-fabric-versions"></a>Obsługiwane Service Fabric wersje
 
@@ -108,3 +108,4 @@ W poniższej tabeli wymieniono nazwy wersji Service Fabric i odpowiadające im n
 | 6,5 RTO | 6.5.639.9590 | 6.5.435.1 |
 | 6,5 CU1 | 6.5.641.9590 | 6.5.454.1 |
 | 6,5 ZASTOSUJESZ PAKIETU CU2 | 6.5.658.9590 | 6.5.460.1 |
+| 6,5 CU3 | 6.5.664.9590 | 6.5.466.1 |

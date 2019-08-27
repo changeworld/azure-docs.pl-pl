@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: magoedte
-ms.openlocfilehash: a559fe86850ee9c1378876bc5ed8f2d0ddfb2d99
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 4b426fbc1d1b3eeed2321f86bb51c9c5d705adb4
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543048"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035614"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Połącz Operations Manager z Azure Monitor
 
@@ -47,8 +47,8 @@ Przed rozpoczęciem należy zapoznać się z następującymi wymaganiami.
 * Azure Monitor obsługuje tylko System Center Operations Manager 2016 lub nowsze, Operations Manager 2012 SP1 UR6 lub nowsze, a Operations Manager 2012 R2 UR2 lub nowszy. Obsługa serwera proxy została dodana w programach Operations Manager 2012 SP1 UR7 i Operations Manager 2012 R2 UR3.
 * Integracja System Center Operations Manager 2016 z chmurą dla instytucji rządowych USA wymaga zaktualizowanego pakietu administracyjnego klasyfikatora zawartego w pakiecie zbiorczym aktualizacji 2 lub nowszym. System Center Operations Manager 2012 R2 wymaga zaktualizowanego pakietu administracyjnego klasyfikatora dołączonego do pakietu zbiorczego aktualizacji 3 lub nowszego.
 * Wszystkie agenty programu Operations Manager muszą spełniać minimalne wymagania dotyczące obsługi. Upewnij się, że agenci są w minimalnej aktualizacji, w przeciwnym razie komunikacja z agentem systemu Windows może zakończyć się niepowodzeniem i wygenerować błędy w dzienniku zdarzeń Operations Manager.
-* Obszar roboczy usługi Log Analytics. Aby uzyskać więcej informacji, zapoznaj się z tematem przegląd [log Analytics obszaru roboczego](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json).   
-* Uwierzytelnianie na platformie Azure odbywa się przy użyciu konta, które jest członkiem [roli współautor log Analytics](../../azure-monitor/platform/manage-access.md#manage-accounts-and-users).
+* Obszar roboczy usługi Log Analytics. Aby uzyskać więcej informacji, zapoznaj się z tematem przegląd [log Analytics obszaru roboczego](design-logs-deployment.md). 
+* Uwierzytelnianie na platformie Azure odbywa się przy użyciu konta, które jest członkiem [roli współautor log Analytics](manage-access.md#manage-access-using-azure-permissions).
 
 * Obsługiwane regiony — System Center Operations Manager do nawiązywania połączenia z obszarem roboczym Log Analytics, obsługiwane są tylko następujące regiony platformy Azure:
     - Środkowo-zachodnie stany USA

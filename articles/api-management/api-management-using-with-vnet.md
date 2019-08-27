@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 338ceef8ce94e97f7569f85b0079f75aed033612
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 18bbeb2b4936b1c8a03ffdc7eade8dc92d094fde
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558638"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050612"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management z sieciami wirtualnymi
 Usługi Azure Virtual Networks (sieci wirtualnych) umożliwiają umieszczanie dowolnego z zasobów platformy Azure w sieci niezwiązanej z obsługą Internetu, do której można kontrolować dostęp. Te sieci mogą następnie być połączone z sieciami lokalnymi przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej na temat sieci wirtualnych platformy Azure, Zacznij od informacji poniżej: [Omówienie usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -140,7 +140,7 @@ Poniżej znajduje się lista typowych problemów z błędami konfiguracji, któr
 
 + **Przekaźnik SMTP**: Wychodząca łączność sieciowa dla przekaźnika SMTP, która jest rozpoznawana `smtpi-ch1.msn.com`pod kątem `smtpi-sin.msn.com` hosta `smtpi-co1.msn.com`,, `smtpi-db3.msn.com`i`ies.global.microsoft.com`
 
-+ **CAPTCHA portalu deweloperów**: Wychodząca łączność sieciowa dla CAPTCHA portalu deweloperów, która jest rozpoznawana pod `client.hip.live.com`hostem.
++ **CAPTCHA portalu deweloperów**: Wychodząca łączność sieciowa dla CAPTCHA portalu deweloperów, która jest rozpoznawana w `client.hip.live.com` obszarze `partner.hip.live.com`hosty i.
 
 + **Diagnostyka Azure Portal**: Aby umożliwić przepływ dzienników diagnostycznych z Azure Portal przy użyciu rozszerzenia API Management z wewnątrz Virtual Network, wymagany jest dostęp wychodzący `dc.services.visualstudio.com` do portu 443. Pomaga to w rozwiązywaniu problemów, które mogą wystąpić podczas korzystania z rozszerzenia.
 

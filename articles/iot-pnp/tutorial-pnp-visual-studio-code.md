@@ -1,5 +1,5 @@
 ---
-title: Tworzenie i testowanie urządzenia usługi Azure IoT Plug and Play w wersji zapoznawczej | Microsoft Docs
+title: Tworzenie i testowanie urządzenia IoT Plug and Play w wersji zapoznawczej | Microsoft Docs
 description: Jako deweloper urządzenia zapoznaj się z tematem jak używać VS Code do tworzenia i testowania nowego modelu możliwości urządzenia dla urządzenia IoT Plug and Play Preview.
 author: dominicbetts
 ms.author: dobett
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 5a03eea84d0d68f06b432014fc4374e799914d67
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 10eb9655371177a52d1c1a5a9118665015076b35
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878075"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047966"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Samouczek: Tworzenie i testowanie modelu możliwości urządzenia przy użyciu Visual Studio Code
 

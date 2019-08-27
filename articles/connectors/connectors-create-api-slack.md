@@ -1,6 +1,6 @@
 ---
-title: Nawiązywanie połączenia Slack z usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Automatyzowanie zadań i przepływów pracy, które monitorował pliki i zarządzać kanałów, grup i komunikaty na koncie usługi Slack za pomocą usługi Azure Logic Apps
+title: Łączenie z zapasem czasu z Azure Logic Apps | Microsoft Docs
+description: Automatyzuj zadania i przepływy pracy, które monitorują pliki i zarządzają kanałami, grupami i komunikatami w ramach konta zapasowego za pomocą Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,72 +11,72 @@ ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 675e37120b06af3add58b564495f22875647a0fa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2606fdc15194264bc3d84496d2de258adfc314be
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105653"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050799"
 ---
-# <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Monitorowanie i zarządzanie nimi Slack przy użyciu usługi Azure Logic Apps
+# <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Monitoruj zapasy czasu i zarządzaj nimi za pomocą Azure Logic Apps
 
-Korzystając z usługi Azure Logic Apps i łącznika usługi Slack można utworzyć automatycznych zadań i przepływów pracy, które monitorują Slack plików i zarządzać kanałach Slack, wiadomości, grup i tak dalej, na przykład:
+Korzystając z Azure Logic Apps i łącznika zapasowego, można tworzyć automatyczne zadania i przepływy pracy, które monitorują pliki zapasowe i zarządzać kanałami czasu, wiadomościami, grupami i tak dalej, na przykład:
 
-* Monitor, gdy zostaną utworzone nowe pliki.
-* Utwórz listę i Dołącz do kanałów 
-* Opublikuj wiadomości.
-* Tworzenie grup i nie przeszkadzać zestawu.
+* Monitoruj po utworzeniu nowych plików.
+* Tworzenie, wyświetlanie i sprzęganie kanałów 
+* Komunikaty post.
+* Utwórz grupy i ustaw nie przeszkadzać.
 
-Możesz użyć wyzwalaczy, które uzyskiwanie odpowiedzi z konta usługi Slack i udostępnić dane wyjściowe innych działań. Możesz użyć akcji, które wykonują zadania przy użyciu konta Slack. Mogą też istnieć inne akcje użyć danych wyjściowych z akcji Slack. Na przykład gdy nowy plik zostanie utworzony, możesz wysłać wiadomość e-mail za pośrednictwem łącznika Office 365 Outlook. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Można użyć wyzwalaczy, które odbierają odpowiedzi z konta zapasowego i umożliwiają udostępnienie danych wyjściowych innym akcjom. Możesz użyć akcji wykonujących zadania z kontem zapasowym. Możesz również mieć inne akcje, używając danych wyjściowych z akcji zapasowych. Na przykład po utworzeniu nowego pliku można wysłać wiadomość e-mail za pomocą łącznika programu Outlook pakietu Office 365. Jeśli jesteś nowym sposobem logiki aplikacji, zapoznaj [się z tematem Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/). 
 
-* Twoje [Slack](https://slack.com/) konta i poświadczenia użytkownika
+* Konto [czasu](https://slack.com/) i poświadczenia użytkownika
 
-  Poświadczenia Autoryzuj aplikację logiki, aby utworzyć połączenie i dostęp do konta programu Slack.
+  Twoje poświadczenia autoryzują aplikację logiki, aby utworzyć połączenie i uzyskać dostęp do konta zapasowego.
 
-* Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikacja logiki, w której chcesz uzyskać dostęp do konta Slack. Można uruchomić z wyzwalaczem Slack [Tworzenie pustej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć Slack akcji, uruchom aplikację logiki z wyzwalaczem, takich jak Slack wyzwalacza lub innym, takich jak **cyklu** wyzwalacza.
+* Aplikacja logiki, do której chcesz uzyskać dostęp do konta zapasowego. Aby rozpocząć pracę z wyzwalaczem zapasowym, [Utwórz pustą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji zapasowej, uruchom aplikację logiki z wyzwalaczem, takim jak wyzwalacz zapasowy lub inny wyzwalacz, taki jak wyzwalacz **cyklu** .
 
-## <a name="connect-to-slack"></a>Nawiązać połączenie z Slack
+## <a name="connect-to-slack"></a>Połącz ze zapasem czasu
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoją aplikację logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com)i Otwórz aplikację logiki w Projektancie aplikacji logiki, jeśli nie jest jeszcze otwarta.
 
-1. W przypadku aplikacji logiki puste w polu wyszukiwania wprowadź "slack" jako filtr. W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
+1. W przypadku pustych aplikacji logiki w polu wyszukiwania wprowadź wartość "zapasowy" jako filtr. Na liście Wyzwalacze wybierz wyzwalacz, który chcesz. 
 
    —lub—
 
-   Dla istniejących aplikacji logiki w ostatnim kroku, które chcesz dodać akcję, wybierz **nowy krok**. 
-   W polu wyszukiwania wprowadź "slack" jako filtr. 
-   W obszarze listy akcji wybierz akcję, którą chcesz.
+   W przypadku istniejących aplikacji logiki w ostatnim kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**. 
+   W polu wyszukiwania wprowadź wartość "zapasowy" jako filtr. 
+   Na liście Akcje wybierz żądaną akcję.
 
-   Aby dodać akcję między krokami, wskaźnik myszy nad strzałką znajdującą się między krokami. 
-   Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
+   Aby dodać akcję między krokami, przesuń wskaźnik myszy nad strzałkę między krokami. 
+   Wybierz wyświetlony znak plus ( **+** ), a następnie wybierz pozycję **Dodaj akcję**.
 
-1. Jeśli zostanie wyświetlony monit, aby zarejestrować się w usłudze Slack, zaloguj się do obszaru roboczego usługi Slack. 
+1. Jeśli zostanie wyświetlony monit o zalogowanie się do zapasu czasu, zaloguj się do obszaru roboczego zapasu. 
 
-   ![Zaloguj się w usłudze Slack obszaru roboczego](./media/connectors-create-api-slack/slack-sign-in-workspace.png)
+   ![Obszar roboczy logowanie w usłudze unsigner](./media/connectors-create-api-slack/slack-sign-in-workspace.png)
 
-1. Autoryzowanie dostępu dla aplikacji logiki.
+1. Autoryzuj dostęp do aplikacji logiki.
 
-   ![Autoryzowanie dostępu do Slack](./media/connectors-create-api-slack/slack-authorize-access.png)
+   ![Autoryzuj dostęp do zapasu czasu](./media/connectors-create-api-slack/slack-authorize-access.png)
 
-1. Podaj odpowiednie szczegóły wybranego wyzwalacza lub akcji. Aby kontynuować tworzenie przepływu pracy aplikacji logiki, Dodaj więcej akcji.
+1. Podaj niezbędne szczegóły dotyczące wybranego wyzwalacza lub akcji. Aby kontynuować tworzenie przepływu pracy aplikacji logiki, Dodaj więcej akcji.
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Szczegółowe informacje techniczne dotyczące wyzwalaczy, akcje i ograniczeń, które opisano przez standard OpenAPI łącznika (dawniej Swagger) opis, przejrzyj łącznika [strona referencyjna](/connectors/slack/).
+Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów, które są opisane w opisie OpenAPI łącznika (dawniej Swagger), przejrzyj [stronę odwołania](/connectors/slack/)łącznika.
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)
+* Dowiedz się więcej na temat innych [łączników Logic Apps](../connectors/apis-list.md)

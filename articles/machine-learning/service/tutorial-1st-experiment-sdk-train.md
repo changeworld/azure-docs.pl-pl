@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 07/20/2019
-ms.openlocfilehash: aa3a9bdb51e1137cde2ca29e2b5db55ba621cf8c
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: cee5801826c78bdee51ba5afb14d6776a1191702
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972507"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051632"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Samouczek: Uczenie swojego pierwszego modelu ML
 
@@ -33,7 +33,7 @@ W tym samouczku nauczysz się wykonywać następujące zadania:
 
 Jedynym wymaganiem wstępnym jest uruchomienie części jednego z tego samouczka, [Ustawienia środowiska i obszaru roboczego](tutorial-1st-experiment-sdk-setup.md).
 
-W tej części samouczka uruchamiasz kod w notesie przykładowym Jupyter otwartym na końcu części pierwszej. Ten artykuł zawiera ten sam kod, który znajduje się w notesie.
+W tej części samouczka uruchamiasz kod w notesie `tutorials/tutorial-1st-experiment-sdk-train.ipynb` przykładowym Jupyter otwartym na końcu części pierwszej. Ten artykuł zawiera ten sam kod, który znajduje się w notesie.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Połącz obszar roboczy i Utwórz eksperyment
 
@@ -41,6 +41,8 @@ Zaimportuj `config.json`klasęi Załaduj informacje o subskrypcji z pliku przy u
 
 Jeśli Poniższy kod pyta o dodatkowe uwierzytelnianie, wystarczy wkleić link w przeglądarce i wprowadzić token uwierzytelniania.
 
+> [!TIP]
+> Jeśli dopiero zaczynasz korzystać z notesów Jupyter, uruchom kod, klikając komórkę kodu i naciskając **klawisze SHIFT + ENTER** , aby uruchamiać komórki pojedynczo. Alternatywnie, aby uruchomić cały Notes na raz, kliknij **komórkę** na górnym pasku menu, a następnie kliknij pozycję **Uruchom wszystkie**.
 
 ```python
 from azureml.core import Workspace

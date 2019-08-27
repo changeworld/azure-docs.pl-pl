@@ -1,164 +1,165 @@
 ---
-title: Łączenie do wyszukiwania usługi Bing — Azure Logic Apps
-description: Znajdź wiadomości za pomocą interfejsów API REST wyszukiwania usługi Bing i Azure Logic Apps
+title: Nawiązywanie połączenia z Wyszukiwanie Bing-Azure Logic Apps
+description: Znajdowanie wiadomości za pomocą interfejsów API REST Wyszukiwanie Bing i Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+manager: carmonm
 ms.reviewer: klam, LADocs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 7146e59eabf9e30fa263f957f1c546414ad0fe26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61004ed75a1935ada21b5c620a909fb5289aebb8
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60952667"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051002"
 ---
-# <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Znajdź wiadomości za pomocą wyszukiwania w usłudze Bing i Azure Logic Apps
+# <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Znajdź wiadomości Wyszukiwanie Bing i Azure Logic Apps
 
-Ten artykuł pokazuje, jak możesz znaleźć wiadomości, wideo i innych elementów za pomocą funkcji wyszukiwania usługi Bing z wewnątrz aplikacji logiki z łącznikiem usługi wyszukiwania Bing. W ten sposób można utworzyć aplikacji logiki, które automatyzują zadania i przepływy pracy do przetwarzania wyników wyszukiwania i Udostępnij te elementy do innych działań. 
+W tym artykule pokazano, jak można znaleźć wiadomości, klipy wideo i inne elementy za pośrednictwem Wyszukiwanie Bing z poziomu aplikacji logiki za pomocą łącznika Wyszukiwanie Bing. Dzięki temu można tworzyć aplikacje logiki, które automatyzują zadania i przepływy pracy związane z przetwarzaniem wyników wyszukiwania i udostępniają te elementy innym akcjom. 
 
-Na przykład można znaleźć elementy grup dyskusyjnych, na podstawie kryteriów wyszukiwania i ma wpis te elementy, jak tweety w usłudze Twitter kanału informacyjnego usługi Twitter.
+Na przykład można znaleźć elementy wiadomości na podstawie kryteriów wyszukiwania i ogłosić te elementy jako tweety w kanale usługi Twitter.
 
-Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps](../logic-apps/logic-apps-overview.md) i [Szybki Start: Utwórz swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
-Aby uzyskać informacje techniczne dotyczące łącznika, zobacz <a href="https://docs.microsoft.com/connectors/bingsearch/" target="blank">dokumentacja łączników wyszukiwania Bing</a>.
+Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/). Jeśli jesteś nowym usługą Logic Apps, zapoznaj [się](../logic-apps/logic-apps-overview.md) z tematem [Azure Logic Apps i szybki start: Utwórz swoją pierwszą aplikację](../logic-apps/quickstart-create-first-logic-app-workflow.md)logiki.
+Informacje techniczne dotyczące konkretnego łącznika znajdują się w [dokumentacji dotyczącej łącznika wyszukiwanie Bing](https://docs.microsoft.com/connectors/bingsearch/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* A [konta usług Cognitive Services](../cognitive-services/cognitive-services-apis-create-account.md)
+* [Konto Cognitive Services](../cognitive-services/cognitive-services-apis-create-account.md)
 
-* A [klucz interfejsu API wyszukiwania Bing](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api), który zapewnia dostęp do interfejsów API wyszukiwania Bing z aplikacji logiki
+* [Wyszukiwanie Bing klucz interfejsu API](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api), który zapewnia dostęp z aplikacji logiki do interfejsy API wyszukiwania Bing
 
-* Aplikacja logiki gdzie mają dostęp do Centrum zdarzeń. Aby uruchomić aplikację logiki z wyzwalaczem wyszukiwania Bing, musisz mieć [pusta aplikacja logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Aplikacja logiki, do której chcesz uzyskać dostęp do centrum zdarzeń. Aby uruchomić aplikację logiki z wyzwalaczem Wyszukiwanie Bing, musisz mieć pustą [aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="add-trigger"></a>
 
-## <a name="add-a-bing-search-trigger"></a>Dodawanie wyzwalacza wyszukiwanie Bing
+## <a name="add-a-bing-search-trigger"></a>Dodawanie wyzwalacza Wyszukiwanie Bing
 
-W usłudze Azure Logic Apps, każda aplikacja logiki musi rozpoczynać się [wyzwalacza](../logic-apps/logic-apps-overview.md#logic-app-concepts), który jest aktywowany wystąpienia, gdy zajdzie określone zdarzenie lub po spełnieniu określonego warunku. Każdym aktywowaniu wyzwalacza aparat usługi Logic Apps tworzy wystąpienie aplikacji logiki i uruchamiania przepływu pracy Twojej aplikacji.
+W Azure Logic Apps każda aplikacja logiki musi rozpoczynać się od [wyzwalacza](../logic-apps/logic-apps-overview.md#logic-app-concepts), który jest uruchamiany w przypadku wystąpienia konkretnego zdarzenia lub spełnienia określonego warunku. Za każdym razem, gdy wyzwala wyzwalacz, aparat Logic Apps tworzy wystąpienie aplikacji logiki i uruchamia przepływ pracy aplikacji.
 
-1. W witrynie Azure portal lub programu Visual Studio należy utworzyć pustej aplikacji logiki, który zostanie otwarty projektant aplikacji logiki. W tym przykładzie użyto portalu Azure.
+1. W Azure Portal lub Visual Studio Utwórz pustą aplikację logiki, która otwiera projektanta aplikacji logiki. Ten przykład używa Azure Portal.
 
-2. W polu wyszukiwania wprowadź "Wyszukiwanie Bing" jako filtr. Z listy wyzwalaczy wybierz wyzwalacz, który ma.
+2. W polu wyszukiwania wprowadź ciąg "wyszukiwanie Bing" jako filtr. Z listy Wyzwalacze wybierz wyzwalacz, który chcesz.
 
-   W tym przykładzie użyto tego wyzwalacza: **Wyszukiwanie Bing — na nowych artykułów**
+   W tym przykładzie używa tego wyzwalacza: **Wyszukiwanie Bing — nowy artykuł z wiadomościami**
 
-   ![Znajdź wyzwalacz wyszukiwanie Bing](./media/connectors-create-api-bing-search/add-trigger.png)
+   ![Znajdź wyzwalacz Wyszukiwanie Bing](./media/connectors-create-api-bing-search/add-trigger.png)
 
-3. Jeśli zostanie wyświetlony monit, aby uzyskać informacje dotyczące połączenia, [utworzyć połączenie wyszukiwania Bing teraz](#create-connection).
-Lub, jeśli istnieje już połączenie, podaj informacje niezbędne dla wyzwalacza.
+3. Jeśli zostanie wyświetlony monit o podanie szczegółów połączenia, [Utwórz teraz połączenie wyszukiwanie Bing](#create-connection).
+Lub, jeśli połączenie już istnieje, podaj niezbędne informacje dla wyzwalacza.
 
-   W tym przykładzie należy podać kryteria dla zwracania artykuły z wiadomościami zgodnego z wyszukiwania Bing.
+   Na potrzeby tego przykładu Podaj kryteria zwracania pasujących artykułów z Wyszukiwanie Bing.
 
    | Właściwość | Wymagany | Value | Opis |
    |----------|----------|-------|-------------|
-   | Search Query | Yes | <*search-words*> | Wprowadź słowa kluczowe wyszukiwania, których chcesz użyć. |
-   | Market | Yes | <*locale*> | Ustawienia regionalne wyszukiwania. Wartość domyślna to "en US", ale można wybrać inną wartość. |
-   | Safe Search | Yes | <*search-level*> | Poziom filtrowania wykluczania treści dla dorosłych. Wartość domyślna to "Średni", ale możesz wybrać inny poziom. |
-   | Count | Nie | <*results-count*> | Zwróć określoną liczbę wyników. Wartość domyślna to 20, ale można określić inną wartość. Może to być mniejsza niż określona liczba rzeczywista liczba zwróconych wyników. |
-   | Offset | Nie | <*skip-value*> | Liczba wyników do pominięcia przed zwróceniem wyników |
+   | Search Query | Tak | <*wyszukiwanie — słowa*> | Wprowadź słowa kluczowe wyszukiwania, które mają być używane. |
+   | Market | Tak | <*ustawienie*> | Ustawienia regionalne wyszukiwania. Wartością domyślną jest "en-US", ale można wybrać inną wartość. |
+   | Safe Search | Tak | <*poziom wyszukiwania*> | Poziom filtru dla wykluczenia treści dla dorosłych. Wartość domyślna to "umiarkowane", ale wybierasz inny poziom. |
+   | Count | Nie | <*results-count*> | Zwróć określoną liczbę wyników. Wartością domyślną jest 20, ale można określić inną wartość. Rzeczywista liczba zwracanych wyników może być mniejsza niż określona liczba. |
+   | Offset | Nie | <*Pomiń wartość*> | Liczba wyników do pominięcia przed zwróceniem wyników |
    |||||
 
-   Na przykład:
+   Przykład:
 
    ![Konfigurowanie wyzwalacza](./media/connectors-create-api-bing-search/bing-search-trigger.png)
 
-4. Wybierz interwał i częstotliwość jak często ma wyzwalacz, aby sprawdzić, czy wyniki.
+4. Wybierz interwał i częstotliwość sprawdzania wyników przez wyzwalacz.
 
-5. Gdy wszystko będzie gotowe, na pasku narzędzi Projektanta wybierz pozycję **Zapisz**.
+5. Gdy skończysz, na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
-6. Teraz kontynuowana, dodając jedną lub więcej akcji do aplikacji logiki dla zadań, które mają być wykonywane z wynikami wyzwalacza.
+6. Teraz Kontynuuj dodawanie co najmniej jednej akcji do aplikacji logiki w celu wykonywania zadań, które chcesz wykonać z wynikami wyzwalacza.
 
 <a name="add-action"></a>
 
-## <a name="add-a-bing-search-action"></a>Dodawanie akcji wyszukiwania Bing
+## <a name="add-a-bing-search-action"></a>Dodaj akcję Wyszukiwanie Bing
 
-W usłudze Azure Logic Apps [akcji](../logic-apps/logic-apps-overview.md#logic-app-concepts) jest to krok w przepływie pracy, występującego wyzwalacza lub innej akcji. W tym przykładzie aplikacja logiki rozpoczyna się od wyzwalacza wyszukiwania Bing, zwracające artykuły z wiadomościami odpowiadającego określonym kryteriom.
+W Azure Logic Apps [Akcja](../logic-apps/logic-apps-overview.md#logic-app-concepts) to krok w przepływie pracy, który następuje po wyzwalaczu lub innej akcji. W tym przykładzie aplikacja logiki rozpoczyna się od wyzwalacza Wyszukiwanie Bing, który zwraca artykuły z wiadomościami zgodne z określonymi kryteriami.
 
-1. W witrynie Azure portal lub programu Visual Studio Otwórz aplikację logiki w Projektancie aplikacji logiki. W tym przykładzie użyto portalu Azure.
+1. W Azure Portal lub Visual Studio Otwórz aplikację logiki w Projektancie aplikacji logiki. Ten przykład używa Azure Portal.
 
-2. W obszarze wyzwalacza lub akcji, wybierz opcję **nowy krok** > **Dodaj akcję**.
+2. W obszarze wyzwalacza lub akcji wybierz pozycję **nowy krok** > **Dodaj akcję**.
 
-   W tym przykładzie użyto tego wyzwalacza:
+   W tym przykładzie używa tego wyzwalacza:
 
-   **Wyszukiwanie Bing — na nowych artykułów**
+   **Wyszukiwanie Bing — nowy artykuł z wiadomościami**
 
    ![Dodaj akcję](./media/connectors-create-api-bing-search/add-action.png)
 
-   Aby dodać akcję między krokami istniejących, myszą strzałkę nawiązującego połączenie. 
-   Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
+   Aby dodać akcję między istniejącymi krokami, przesuń wskaźnik myszy na strzałkę łączącą. 
+   Wybierz wyświetlony znak plus ( **+** ), a następnie wybierz pozycję **Dodaj akcję**.
 
-3. W polu wyszukiwania wprowadź "Wyszukiwanie Bing" jako filtr.
-Z listy akcji wybierz akcję, którą chcesz.
+3. W polu wyszukiwania wprowadź ciąg "wyszukiwanie Bing" jako filtr.
+Z listy Akcje wybierz żądaną akcję.
 
-   W tym przykładzie użyto tej akcji:
+   W tym przykładzie używa tej akcji:
 
-   **Wyszukiwanie Bing — lista wiadomości przez zapytanie**
+   **Wyszukiwanie Bing listy dyskusyjne według zapytania**
 
-   ![Znajdź działania wyszukiwania Bing](./media/connectors-create-api-bing-search/bing-search-select-action.png)
+   ![Znajdź akcję Wyszukiwanie Bing](./media/connectors-create-api-bing-search/bing-search-select-action.png)
 
-4. Jeśli zostanie wyświetlony monit, aby uzyskać informacje dotyczące połączenia, [utworzyć połączenie wyszukiwania Bing teraz](#create-connection). Lub, jeśli istnieje już połączenie, podaj informacje niezbędne do działania.
+4. Jeśli zostanie wyświetlony monit o podanie szczegółów połączenia, [Utwórz teraz połączenie wyszukiwanie Bing](#create-connection). Lub, jeśli połączenie już istnieje, podaj niezbędne informacje dla tej akcji.
 
-   W tym przykładzie należy podać kryteria dla zwracania podzbiór wyników tego wyzwalacza.
+   Na potrzeby tego przykładu Podaj kryteria zwracające podzestaw wyników wyzwalacza.
 
    | Właściwość | Wymagany | Value | Opis |
    |----------|----------|-------|-------------|
-   | Search Query | Yes | <*search-expression*> | Wprowadź wyrażenie dotyczące zapytaniach dotyczących wyników wyzwalacza. Wybierz z pól na liście zawartości dynamicznej lub utwórz wyrażenie z konstruktorem wyrażeń. |
-   | Market | Yes | <*locale*> | Ustawienia regionalne wyszukiwania. Wartość domyślna to "en US", ale można wybrać inną wartość. |
-   | Safe Search | Yes | <*search-level*> | Poziom filtrowania wykluczania treści dla dorosłych. Wartość domyślna to "Średni", ale możesz wybrać inny poziom. |
-   | Count | Nie | <*results-count*> | Zwróć określoną liczbę wyników. Wartość domyślna to 20, ale można określić inną wartość. Może to być mniejsza niż określona liczba rzeczywista liczba zwróconych wyników. |
-   | Offset | Nie | <*skip-value*> | Liczba wyników do pominięcia przed zwróceniem wyników |
+   | Search Query | Tak | <*search-expression*> | Wprowadź wyrażenie służące do wykonywania zapytań dotyczących wyników wyzwalacza. Możesz wybrać spośród pól na liście zawartości dynamicznej lub utworzyć wyrażenie przy użyciu Konstruktora wyrażeń. |
+   | Market | Tak | <*ustawienie*> | Ustawienia regionalne wyszukiwania. Wartością domyślną jest "en-US", ale można wybrać inną wartość. |
+   | Safe Search | Tak | <*poziom wyszukiwania*> | Poziom filtru dla wykluczenia treści dla dorosłych. Wartość domyślna to "umiarkowane", ale wybierasz inny poziom. |
+   | Count | Nie | <*results-count*> | Zwróć określoną liczbę wyników. Wartością domyślną jest 20, ale można określić inną wartość. Rzeczywista liczba zwracanych wyników może być mniejsza niż określona liczba. |
+   | Offset | Nie | <*Pomiń wartość*> | Liczba wyników do pominięcia przed zwróceniem wyników |
    |||||
 
-   Na przykład załóżmy, że chcesz użyć tych wyników, których nazwa kategorii zawiera wyraz "pomoc".
+   Załóżmy na przykład, że chcesz uzyskać te wyniki, których nazwa kategorii zawiera wyraz "Tech".
 
-   1. Kliknij w **zapytania wyszukiwania** polu, aby wyświetlić listę zawartości dynamicznej. 
-   Na tej liście, wybierz **wyrażenie** więc pojawia się konstruktorem wyrażeń. 
+   1. Kliknij pole **zapytania wyszukiwania** , aby wyświetlić listę zawartości dynamicznej. 
+   Z tej listy wybierz pozycję **wyrażenie** , aby pojawił się Konstruktor wyrażeń. 
 
-      ![Wyzwalacz wyszukiwanie Bing](./media/connectors-create-api-bing-search/bing-search-action.png)
+      ![Wyzwalacz Wyszukiwanie Bing](./media/connectors-create-api-bing-search/bing-search-action.png)
 
-      Teraz możesz rozpocząć tworzenie w wyrażeniu.
+      Teraz możesz zacząć tworzyć wyrażenie.
 
-   2. Wybierz z listy funkcji **contains()** funkcji, która następnie zostanie wyświetlony w polu wyrażenie. Kliknij przycisk **zawartości dynamicznej** tak, aby ponownie pojawi się lista pól, ale upewnij się, że kursor pozostaje wewnątrz nawiasów.
+   2. Z listy funkcje wybierz funkcję **Contains ()** , która zostanie wyświetlona w polu wyrażenie. Kliknij pozycję **zawartość dynamiczna** , aby wyświetlić listę pól ponownie, ale upewnij się, że kursor pozostaje wewnątrz nawiasów.
 
       ![Wybierz funkcję](./media/connectors-create-api-bing-search/expression-select-function.png)
 
-   3. Wybierz z listy pola **kategorii**, która konwertuje parametr. 
-   Dodaj przecinek, po upływie pierwszego parametru i po przecinku, Dodaj ten wyraz: `'tech'` 
+   3. Z listy pól wybierz **kategorię**, która konwertuje do parametru. 
+   Dodaj przecinek po pierwszym parametrze, a po przecinku Dodaj następujące słowo:`'tech'` 
 
       ![Wybierz pole](./media/connectors-create-api-bing-search/expression-select-field.png)
 
-   4. Gdy wszystko będzie gotowe, wybierz pozycję **OK**.
+   4. Gdy skończysz, wybierz opcję **OK**.
 
-      Teraz wyrażenie pojawia się w **zapytania wyszukiwania** polu w następującym formacie:
+      Wyrażenie jest teraz wyświetlane w polu **zapytania wyszukiwania** w tym formacie:
 
-      ![Zakończono wyrażenia](./media/connectors-create-api-bing-search/resolved-expression.png)
+      ![Gotowe wyrażenie](./media/connectors-create-api-bing-search/resolved-expression.png)
 
-      W widoku kodu to wyrażenie pojawia się w następującym formacie:
+      W widoku kodu to wyrażenie jest wyświetlane w tym formacie:
 
       `"@{contains(triggerBody()?['category'],'tech')}"`
 
-5. Gdy wszystko będzie gotowe, na pasku narzędzi Projektanta wybierz pozycję **Zapisz**.
+5. Gdy skończysz, na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
 <a name="create-connection"></a>
 
-## <a name="connect-to-bing-search"></a>Łączenie do wyszukiwania w usłudze Bing
+## <a name="connect-to-bing-search"></a>Połącz z Wyszukiwanie Bing
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Po wyświetleniu monitu, aby uzyskać informacje o połączeniu, należy podać następujące dane:
+1. Po wyświetleniu monitu o podanie informacji o połączeniu podaj następujące informacje:
 
    | Właściwość | Wymagany | Value | Opis |
    |----------|----------|-------|-------------|
-   | Nazwa połączenia | Yes | <*connection-name*> | Nazwa do utworzenia połączenia |
-   | Wersja interfejsu API | Yes | <*Wersja interfejsu API*> | Domyślnie wersja interfejsu API wyszukiwania Bing jest ustawiona na bieżącą wersję. Wybierz z wcześniejszej wersji, zgodnie z potrzebami. |
-   | Klucz interfejsu API | Yes | <*API-key*> | Klucz interfejsu API wyszukiwania Bing, uzyskany wcześniej. Jeśli nie masz klucza usługi [klucz interfejsu API teraz](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
+   | Nazwa połączenia | Tak | <*Nazwa połączenia*> | Nazwa do utworzenia dla połączenia |
+   | Wersja interfejsu API | Tak | <*Wersja interfejsu API*> | Domyślnie wersja interfejsu API Wyszukiwanie Bing jest ustawiona na bieżącą wersję. W razie potrzeby możesz wybrać wcześniejszą wersję. |
+   | Klucz interfejsu API | Tak | <*API-key*> | Wcześniej pobrano klucz interfejsu API Wyszukiwanie Bing. Jeśli nie masz klucza, Pobierz [klucz interfejsu API teraz](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api). |  
    |||||  
 
-   Na przykład:
+   Przykład:
 
    ![Tworzenie połączenia](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
 
@@ -166,13 +167,8 @@ Z listy akcji wybierz akcję, którą chcesz.
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Szczegóły techniczne, takich jak wyzwalacze, akcje i ograniczeń, zgodnie z opisem w łącznika interfejsu OpenAPI (dawniej Swagger) plików, zobacz [strona referencyjna łącznika](/connectors/bingsearch/).
+Aby uzyskać szczegółowe informacje techniczne, takie jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku OpenAPI łącznika (dawniej Swagger), zobacz [stronę odwołania łącznika](/connectors/bingsearch/).
 
-## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
+## <a name="next-steps"></a>Następne kroki
 
-* Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
-
-## <a name="next-steps"></a>Kolejne kroki
-
-* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)
+* Dowiedz się więcej na temat innych [łączników Logic Apps](../connectors/apis-list.md)

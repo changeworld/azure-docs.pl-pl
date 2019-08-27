@@ -1,6 +1,6 @@
 ---
 title: Store bezpieczny - dostęp poświadczeń na maszynie wirtualnej do nauki o danych platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak bezpiecznie przechowywać poświadczenia dostępu na maszynie wirtualnej do nauki o danych. Dowiesz się jak używać tożsamości usługi zarządzanej i usługi Azure Key Vault do przechowywania poświadczeń dostępu.
+description: Dowiedz się, jak bezpiecznie przechowywać poświadczenia dostępu na maszynie wirtualnej do nauki o danych. Dowiesz się, jak używać tożsamości usługi zarządzanej i Azure Key Vault do przechowywania poświadczeń dostępu.
 keywords: głębokiego uczenia i sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, geoprzestrzenna analiza, zespół danych dla celów naukowych
 services: machine-learning
 documentationcenter: ''
@@ -16,22 +16,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: vijetaj
-ms.openlocfilehash: 7adc968dd88ede70b18766ce2c156c23324d0c4e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1374cbef41f40ea270f3c4d84c68d08e7db095bc
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68557913"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051621"
 ---
-# <a name="store-access-credentials-on-the-data-science-virtual-machine-securely"></a>Store dostępu bezpiecznie poświadczeń na maszynie wirtualnej do nauki o danych
+# <a name="store-access-credentials-securely-on-a-data-science-virtual-machine"></a>Bezpieczne przechowywanie poświadczeń dostępu na Data Science Virtual Machine
 
-Typowe wyzwania w tworzeniu aplikacji w chmurze jest sposób zarządzania poświadczeniami, które muszą być w kodzie do uwierzytelniania w usługach w chmurze. Zabezpieczanie tych poświadczeń to ważne zadanie. W idealnym przypadku one nigdy nie są wyświetlane na stanowisko pracy dewelopera lub uzyskaj zaewidencjonowane do kontroli źródła. 
+Często kod w aplikacjach w chmurze zawiera poświadczenia służące do uwierzytelniania w usługach w chmurze. Zarządzanie tymi poświadczeniami i ich Zabezpieczanie to dobrze znane wyzwanie w tworzeniu aplikacji w chmurze. W idealnym przypadku poświadczenia nigdy nie powinny występować na stacjach roboczych deweloperów ani nie są zaewidencjonowane do kontroli źródła.
 
-[Zarządzane tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) sprawia, że rozwiązywania tego problemu, prostsze, zapewniając Azure usług automatycznie zarządzanych tożsamości w usłudze Azure Active Directory (Azure AD). Można użyć tej tożsamości do uwierzytelniania na dowolne usługi obsługujące uwierzytelnianie usługi Azure AD bez żadnych poświadczeń w kodzie. 
+[Zarządzane tożsamości dla zasobów platformy Azure](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) ułatwiają rozwiązanie tego problemu, dając usługi platformy Azure automatycznie zarządzaną tożsamość w Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD bez konieczności przechowywania poświadczeń w kodzie.
 
-Jednym ze sposobów, aby zabezpieczyć poświadczenia jest przy użyciu pliku MSI w połączeniu z [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/), zarządzana usługa platformy Azure umożliwiająca bezpieczne przechowywanie wpisów tajnych i kluczy kryptograficznych. Można dostęp do magazynu kluczy za pomocą tożsamości zarządzanej i pobrać autoryzowanych wpisami tajnymi i kluczami szyfrowania z usługi key vault. 
+Jednym ze sposobów zabezpieczania poświadczeń jest używanie Instalator Windows (MSI) w połączeniu z [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/), zarządzaną usługą platformy Azure, która umożliwia bezpieczne przechowywanie tajemnic i kluczy kryptograficznych. Możesz uzyskać dostęp do magazynu kluczy przy użyciu tożsamości zarządzanej, a następnie pobrać wpisy tajne i klucze kryptograficzne z magazynu kluczy.
 
-Zarządzanych tożsamości dla zasobów platformy Azure i dokumentacji usługi Key Vault jest pełne zasoby, aby uzyskać szczegółowe informacje na temat tych usług. W pozostałej części tego artykułu przedstawiono podstawowe zastosowanie pakietów MSI i usługi Key Vault na maszynę wirtualną do nauki o danych (DSVM) dostęp do zasobów platformy Azure. 
+Dokumentacja dotycząca zarządzanych tożsamości dla zasobów platformy Azure i Key Vault składa się ze wszechstronnego zasobu, aby uzyskać szczegółowe informacje na temat tych usług. W pozostałej części tego artykułu przedstawiono podstawowe zastosowanie pakietów MSI i usługi Key Vault na maszynę wirtualną do nauki o danych (DSVM) dostęp do zasobów platformy Azure. 
 
 ## <a name="create-a-managed-identity-on-the-dsvm"></a>Utwórz tożsamość zarządzana na maszyny DSVM 
 
@@ -46,11 +46,11 @@ az resource list -n <Name of the VM> --query [*].identity.principalId --out tsv
 ```
 
 
-## <a name="assign-key-vault-access-permission-to-a-vm-principal"></a>Przypisz uprawnienia dostępu do usługi Key Vault z podmiotem zabezpieczeń maszyny Wirtualnej
+## <a name="assign-key-vault-access-permissions-to-a-vm-principal"></a>Przypisywanie uprawnień dostępu Key Vault do podmiotu maszyny wirtualnej
 ```
-# Prerequisite: You have already created an empty Key Vault resource on Azure by using the Azure portal or Azure CLI. 
+# Prerequisite: You have already created an empty Key Vault resource on Azure by using the Azure portal or Azure CLI.
 
-# Assign only get and set permission but not the capability to list the keys.
+# Assign only get and set permissions but not the capability to list the keys.
 az keyvault set-policy --object-id <Principal ID of the DSVM from previous step> --name <Key Vault Name> -g <Resource Group of Key Vault>  --secret-permissions get set
 ```
 
@@ -61,14 +61,14 @@ az keyvault set-policy --object-id <Principal ID of the DSVM from previous step>
 x=`curl http://localhost:50342/oauth2/token --data "resource=https://vault.azure.net" -H Metadata:true`
 token=`echo $x | python -c "import sys, json; print(json.load(sys.stdin)['access_token'])"`
 
-# Access the key vault by using the access token. 
+# Access the key vault by using the access token.
 curl https://<Vault Name>.vault.azure.net/secrets/SQLPasswd?api-version=2016-10-01 -H "Authorization: Bearer $token"
 ```
 
 ## <a name="access-storage-keys-from-the-dsvm"></a>Dostęp do magazynu kluczy z maszyny DSVM
 
 ```
-# Prerequisite: You have granted your VM's MSI access to use storage account access keys based on instructions from the article at https://docs.microsoft.com/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage. This article describes the process in more detail.
+# Prerequisite: You have granted your VMs MSI access to use storage account access keys based on instructions at https://docs.microsoft.com/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage. This article describes the process in more detail.
 
 y=`curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true`
 ytoken=`echo $y | python -c "import sys, json; print(json.load(sys.stdin)['access_token'])"`
@@ -108,8 +108,8 @@ print("My secret value is {}".format(secret.value))
 ## <a name="access-the-key-vault-from-azure-cli"></a>Dostęp do magazynu kluczy z wiersza polecenia platformy Azure
 
 ```
-# With managed identities for Azure resources set up on the DSVM, users on the DSVM can use Azure CLI to perform the authorized functions. Here are commands to access the key vault from Azure CLI without having to log in to an Azure account. 
-# Prerequisites: MSI is already set up on the DSVM as indicated earlier. Specific permission, like accessing storage account keys, reading specific secrets, and writing new secrets, is provided to the MSI. 
+# With managed identities for Azure resources set up on the DSVM, users on the DSVM can use Azure CLI to perform the authorized functions. The following commands enable access to the key vault from Azure CLI without requiring login to an Azure account.
+# Prerequisites: MSI is already set up on the DSVM as indicated earlier. Specific permissions, like accessing storage account keys, reading specific secrets, and writing new secrets, are provided to the MSI.
 
 # Authenticate to Azure CLI without requiring an Azure account. 
 az login --msi

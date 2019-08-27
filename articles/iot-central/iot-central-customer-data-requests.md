@@ -1,48 +1,48 @@
 ---
-title: Dane klienta żądania funkcji w usłudze Azure IoT Central | Dokumentacja firmy Microsoft
-description: Funkcji żądania danych klienta w usłudze Azure IoT Central
+title: Funkcje żądania danych klienta na platformie Azure IoT Central | Microsoft Docs
+description: Funkcje żądania danych klienta na platformie Azure IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/24/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 4c63ac8d6b16b2a0476600f67c66b2ccc8dc2aab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1775c8680b2e0d931c623d2e8ced2224205a767
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685554"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050492"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Podsumowanie funkcji żądania danych klienta
 
-Usługa Azure IoT Central to w pełni zarządzane rozwiązanie oprogramowania jako usługi Internetu rzeczy (IoT), które ułatwia łączenie, monitorowanie i zarządzać elementami zawartości IoT na dużą skalę, utworzyć szczegółowe informacje na podstawie danych IoT i podejmowania świadomych decyzji.
+Azure IoT Central to w pełni Internet rzeczy zarządzane rozwiązanie typu "oprogramowanie jako usługa", które ułatwia łączenie i monitorowanie zasobów IoT oraz zarządzanie nimi na dużą skalę, tworzenie szczegółowych informacji na podstawie danych IoT oraz podejmowanie świadomych działań.
 
 [!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="identifying-customer-data"></a>Identyfikowanie danych klienta
 
-Usługa Azure Active Directory — identyfikatory obiektów są używane do identyfikowania użytkowników i przypisywać role. Usługa Azure IoT Central adresy e-mail użytkowników w portalu jest wyświetlany w do przypisania roli, ale tylko usługi Azure Active Directory — identyfikator obiektu są przechowywane, adres e-mail jest wysyłane zapytanie dynamiczne z usługi Azure Active Directory. Administratorzy usługi Azure IoT Central można wyświetlić, eksportowanie i usuwanie użytkowników aplikacji, w sekcji Administracja użytkownika aplikacji usługi Azure IoT Central.
+Identyfikatory obiektów Azure Active Directory są używane do identyfikowania użytkowników i przypisywania ról. W portalu usługi Azure IoT Central są wyświetlane adresy e-mail użytkowników dla przypisań ról, ale tylko identyfikator obiektu Azure Active Directory jest przechowywany, adres e-mail jest dynamicznie wysyłany z Azure Active Directory. Administratorzy usługi Azure IoT Central mogą wyświetlać, eksportować i usuwać użytkowników aplikacji w sekcji Administracja użytkownikami aplikacji IoT Central platformy Azure.
 
-W aplikacji aby otrzymywać alerty można skonfigurować adresy e-mail. W takim przypadku adresy e-mail są przechowywane w ramach IoT Central i musi być zarządzany z poziomu strony administrowania konta w aplikacji.
+W aplikacji można skonfigurować adresy e-mail w celu otrzymywania alertów. W takim przypadku adresy e-mail są przechowywane w IoT Central i muszą być zarządzane na stronie administratora konta w aplikacji.
 
-Dotyczące urządzenia firma Microsoft zachowuje żadnych informacji i nie ma dostępu do danych, które umożliwia urządzenia do użytkownika korelacji. Wiele urządzeń zarządzanych w usłudze Azure IoT Central nie są urządzeń osobistych, na przykład Automat lub twórca kawy. Klienci mogą jednak wziąć pod uwagę niektóre urządzenia jako osobiste i według własnego uznania mogą utrzymać ich własnych zasobów magazynu śledzenia systemami powiązanie urządzeń fizycznych. Usługa Azure IoT Central zarządza i przechowuje wszystkie dane skojarzone z urządzeń, jak w przypadku danych osobowych.
+W odniesieniu do urządzeń firma Microsoft nie utrzymuje informacji i nie ma dostępu do danych, które umożliwiają korelację urządzenia z użytkownikiem. Wiele urządzeń zarządzanych w usłudze Azure IoT Central nie są urządzeniami osobistymi, na przykład na komputerze lub w ramach ekspresu do sprzedaży. Klienci mogą jednak rozważyć, że niektóre urządzenia mają być identyfikowalne i według ich uznania mogą obsługiwać własne systemy śledzenia zasobów lub spisu, które wiążą urządzenia z osobami. Usługa Azure IoT Central zarządza i przechowuje wszystkie dane skojarzone z urządzeniami, tak jakby były danymi osobistymi.
 
-Korzystając z usług firmy Microsoft dla przedsiębiorstw firmy Microsoft generuje pewnych informacji, znane jako dzienniki generowane przez system. Te dzienniki stanowią odzwierciedlenie faktycznych działań przeprowadzanych w ramach usługi i dane diagnostyczne, które dotyczą poszczególnych urządzeń, a nie są związane z aktywności użytkownika. Usługa Azure IoT Central dzienniki generowane przez system nie są dostępne lub który można eksportować przez administratorów aplikacji.
+W przypadku korzystania z usług Microsoft Enterprise Services firma Microsoft generuje pewne informacje, znane jako dzienniki generowane przez system. Te dzienniki składają się na faktyczne działania wykonywane w ramach usługi i danych diagnostycznych związanych z poszczególnymi urządzeniami i nie są związane z aktywnością użytkownika. Dzienniki generowane przez system IoT Central systemu Azure nie są dostępne ani eksportowane przez administratorów aplikacji.
 
 ## <a name="deleting-customer-data"></a>Usuwanie danych klienta
 
-Możliwość usunięcia danych użytkownika jest dostępna wyłącznie przez stronę administracyjną IoT Central. Administratorzy aplikacji można wybrać użytkownika do usunięcia, a następnie wybierz **Usuń** w prawym górnym rogu aplikacji, aby usunąć rekord. Administratorzy aplikacji można również usunąć indywidualne konta, które nie są już skojarzone z aplikacją, która jest zagrożona.
+Możliwość usuwania danych użytkownika jest dostępna tylko za pomocą strony Administracja IoT Central. Administratorzy aplikacji mogą wybrać użytkownika, który ma zostać usunięty, a następnie wybrać pozycję **Usuń** w prawym górnym rogu aplikacji, aby usunąć rekord. Administratorzy aplikacji mogą również usunąć pojedyncze konta, które nie są już skojarzone z daną aplikacją.
 
-Po użytkownik zostanie usunięty, żadne dalsze alerty wysyłane są do nich. Jednak swój adres e-mail musi indywidualnie usunięte z każdego skonfigurowanego alertu.
+Po usunięciu użytkownika żadne dalsze alerty nie będą wysyłane do nich pocztą e-mail. Jednak ich adresy e-mail muszą zostać usunięte osobno z każdego skonfigurowanego alertu.
 
-Aby uzyskać więcej informacji, zobacz [Konfiguruj reguły i akcje dla Twojego urządzenia](tutorial-configure-rules.md).
+Aby uzyskać więcej informacji, zobacz [Konfigurowanie reguł i akcji dla urządzenia](tutorial-configure-rules.md).
 
 ## <a name="exporting-customer-data"></a>Eksportowanie danych klienta
 
-Możliwość eksportowania danych jest dostępna wyłącznie przez stronę administracyjną IoT Central. Dane klienta, w tym przypisane role można wybrane, skopiować i wkleić, administrator aplikacji.
+Możliwość eksportowania danych jest dostępna tylko za pomocą strony Administracja IoT Central. Dane klienta, w tym przypisane role, mogą być wybierane, kopiowane i wklejane przez administratora aplikacji.
 
 ## <a name="links-to-additional-documentation"></a>Linki do dodatkowej dokumentacji
 
-Aby uzyskać więcej informacji na temat administrowania kontem, w tym definicje ról, zobacz [jak zarządzać aplikacją](howto-administer.md).
+Aby uzyskać więcej informacji na temat administrowania kontem, w tym definicji ról, zobacz [jak administrować aplikacją](howto-administer.md).

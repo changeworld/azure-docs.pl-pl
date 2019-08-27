@@ -1,30 +1,30 @@
 ---
-title: Lokalizacja — usługa Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Określ element Localization zasad niestandardowych w usłudze Azure Active Directory B2C.
+title: Lokalizacja — Azure Active Directory B2C
+description: Określ element lokalizacji niestandardowych zasad w Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 08/27/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a02983c5019870e8b17db48184b2f238a82f8a40
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec9b4e7ce761d524d047f4d12cab9e5b782e6032
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510581"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033461"
 ---
 # <a name="localization"></a>Lokalizacja
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**Lokalizacji** elementu pozwala na potrzeby obsługi wielu ustawień regionalnych lub języków w ramach zasad dla podróży użytkownika. Obsługa lokalizacji, w ramach zasad umożliwia:
+Element **Lokalizacja** umożliwia obsługę wielu ustawień regionalnych lub języków w zasadach dla podróży użytkownika. Obsługa lokalizacji w ramach zasad pozwala:
 
-- Konfigurowanie jawną listę obsługiwanych języków w zasadach, a następnie wybierz język domyślny.
-- Podaj parametry specyficzne dla języka i kolekcje.
+- Skonfiguruj jawną listę obsługiwanych języków w zasadach i wybierz język domyślny.
+- Podaj odpowiednie dla języka ciągi i kolekcje.
 
 ```XML
 <Localization Enabled="true">
@@ -37,83 +37,84 @@ ms.locfileid: "66510581"
   ...
 ```
 
-**Lokalizacji** element zawiera następujące atrybuty:
+Element **lokalizacji** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Enabled (Włączony) | Nie | Możliwe wartości: `true` lub `false`. |
+| Włączono | Nie | Możliwe wartości: `true` lub `false`. |
 
-**Lokalizacji** element zawiera następujące elementy XML
+Element **lokalizacji** zawiera następujące elementy XML
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| SupportedLanguages | 1: n | Listę obsługiwanych języków. | 
+| SupportedLanguages | 1: n | Lista obsługiwanych języków. |
 | LocalizedResources | 0: n | Lista zlokalizowanych zasobów. |
 
 ## <a name="supportedlanguages"></a>SupportedLanguages
 
-**SupportedLanguages** element zawiera następujące atrybuty:
+Element **SupportedLanguages** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | DefaultLanguage | Tak | Język, który ma być używany jako domyślny dla zlokalizowanych zasobów. |
-| MergeBehavior | Nie | Wartości wyliczenia wartości, które zostaną scalone razem z dowolnego typu oświadczenia obecne w zasadach nadrzędnego zawierających ten sam identyfikator. Podczas zastępowania oświadczenia określone w zasadach podstawowych, należy użyć tego atrybutu. Możliwe wartości: `Append`, `Prepend`, lub `ReplaceAll`. `Append` Wartość określa, że zbieranie danych jest obecny powinna zostać dołączona do końca kolekcji określonej w zasadach nadrzędnej. `Prepend` Wartość określa, że zbieranie danych jest obecny należy dodać przed określonej w zasadach nadrzędny kolekcji. `ReplaceAll` Wartość określa, że zbieranie danych, zdefiniowane w zasadach nadrzędnej mają być ignorowane, zamiast dane zdefiniowane w bieżących zasadach. |
+| MergeBehavior | Nie | Wartości wyliczenia wartości, które są scalone ze wszystkimi oświadczeniami obecnymi w zasadach nadrzędnych o tym samym identyfikatorze. Użyj tego atrybutu podczas zastępowania żądania określonego w zasadach podstawowych. Możliwe wartości: `Append`, `Prepend`, lub `ReplaceAll`. `Append` Wartość określa, że kolekcja danych powinna być dołączana na końcu kolekcji określonej w zasadach nadrzędnych. `Prepend` Wartość określa, że kolekcja danych powinna zostać dodana przed kolekcją określoną w zasadach nadrzędnych. `ReplaceAll` Wartość określa, że kolekcja danych zdefiniowana w zasadach nadrzędnych powinna być ignorowana, przy użyciu zamiast danych zdefiniowanych w bieżących zasadach. |
 
 ### <a name="supportedlanguages"></a>SupportedLanguages
 
-**SupportedLanguages** element zawiera następujące elementy:
+Element **SupportedLanguages** zawiera następujące elementy:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| SupportedLanguage | 1: n | Wyświetla zawartość, który jest zgodny z tagu języka na RFC 5646 - znaczniki identyfikacji języków. | 
+| SupportedLanguage | 1: n | Wyświetla zawartość, która jest zgodna ze znacznikiem języka na RFC 5646-Tagi dla identyfikacji języków. |
 
 ## <a name="localizedresources"></a>LocalizedResources
 
-**LocalizedResources** element zawiera następujące atrybuty:
+Element **LocalizedResources** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Identyfikator | Tak | Identyfikator, który jest używany do jednoznacznego identyfikowania zlokalizowanych zasobów. |
+| Id | Tak | Identyfikator, który jest używany do unikatowego identyfikowania zlokalizowanych zasobów. |
 
-**LocalizedResources** element zawiera następujące elementy:
+Element **LocalizedResources** zawiera następujące elementy:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| LocalizedCollections | 0: n | Definiuje całej kolekcji w różnych kulturach. Kolekcja może mieć różne liczby elementów oraz różne parametry dla różnych kultur. Kolekcje przykładami wyliczenia, które pojawiają się w typów oświadczeń. Na przykład listę krajów/regionów jest wyświetlany na liście rozwijanej. |
-| LocalizedStrings | 0: n | Określa wszystkie parametry, z wyjątkiem tych ciągów, które pojawiają się w kolekcji, w różnych kulturach. |
+| LocalizedCollections | 0: n | Definiuje całe kolekcje w różnych kulturach. Kolekcja może mieć różną liczbę elementów i różne ciągi dla różnych kultur. Przykłady kolekcji obejmują wyliczenia, które pojawiają się w typach zgłoszeń. Na przykład lista krajów/regionów jest pokazywana użytkownikowi na liście rozwijanej. |
+| LocalizedStrings | 0: n | Definiuje wszystkie ciągi, z wyjątkiem tych, które znajdują się w kolekcjach w różnych kulturach. |
 
 ### <a name="localizedcollections"></a>LocalizedCollections
 
-**LocalizedCollections** element zawiera następujące elementy:
+Element **LocalizedCollections** zawiera następujące elementy:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| LocalizedCollection | 1: n | Listę obsługiwanych języków. |
+| Zlokalizowany | 1: n | Lista obsługiwanych języków. |
 
-#### <a name="localizedcollection"></a>LocalizedCollection
+#### <a name="localizedcollection"></a>Zlokalizowany
 
-**LocalizedCollection** element zawiera następujące atrybuty:
+**Zlokalizowany** ElementCollection zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ElementType | Yes | Odwołuje się do elementu typu oświadczenia lub element interfejsu użytkownika w pliku zasad. |
-| ElementId | Tak | Ciąg, który zawiera odwołanie do typu oświadczenia już zdefiniowane w sekcji ClaimsSchema, która jest używana, gdy **ElementType** jest ustawiona na typ oświadczenia. |
-| TargetCollection | Yes | Kolekcji docelowej. |
+| ElementType | Tak | Odwołuje się do elementu ClaimType lub elementu interfejsu użytkownika w pliku zasad. |
+| ElementId | Tak | Ciąg, który zawiera odwołanie do typu oświadczenia zdefiniowanego już w sekcji ClaimsSchema, która jest używana, jeśli **ElementType** jest ustawiony jako typ oświadczenia. |
+| Targetcollection | Tak | Kolekcja docelowa. |
 
-**LocalizedCollection** element zawiera następujące elementy:
+Element zlokalizowany zawiera następujące elementy:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
-| Element | 0: n | Definiuje opcję dostępną dla użytkownika wybrać oświadczenia w interfejsie użytkownika, takie jak wartości na liście rozwijanej. |
+| Element | 0: n | Definiuje dostępną opcję dla użytkownika do wyboru w interfejsie użytkownika, na przykład wartość z listy rozwijanej. |
 
-**Elementu** element zawiera następujące atrybuty:
+Element **Item** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| Text | Tak | Ciąg wyświetlania przyjazny dla użytkownika, który ma być wyświetlany użytkownikowi w interfejsie użytkownika dla tej opcji. |
-| Wartość | Tak | Ciąg oświadczenie wartość skojarzoną z wybraniu tej opcji. |
+| Text | Tak | Przyjazny dla użytkownika ciąg wyświetlania, który powinien być widoczny dla użytkownika w interfejsie użytkownika dla tej opcji. |
+| Value | Tak | Wartość żądania ciągu skojarzona z wybraniem tej opcji. |
+| SelectByDefault | Nie | Wskazuje, czy ta opcja powinna być wybrana domyślnie w interfejsie użytkownika. Możliwe wartości: Wartość TRUE lub False. |
 
-Poniższy przykład pokazuje użycie **LocalizedCollections** elementu. Zawiera dwa **LocalizedCollection** elementy, jeden dla języka angielskiego i inny dla języka hiszpańskiego. Jednocześnie ustawionych **ograniczeń** kolekcji oświadczenia `Gender` z listy elementów w języku angielskim i hiszpańskim.
+W poniższym przykładzie pokazano użycie elementu **LocalizedCollections** . Zawiera dwa **zlokalizowane** elementycollection, jeden dla języka angielskiego i drugi dla języka hiszpańskiego. Oba te ustawienia są ustawiane jako kolekcja `Gender` ograniczeń dla żądania z listą elementów w języku angielskim i hiszpańskim.
 
 ```XML
 <LocalizedResources Id="api.selfasserted.en">
@@ -131,27 +132,26 @@ Poniższy przykład pokazuje użycie **LocalizedCollections** elementu. Zawiera 
       <Item Text="Masculino" Value="M" />
     </LocalizedCollection>
 </LocalizedCollections>
-
 ```
 
 ### <a name="localizedstrings"></a>LocalizedStrings
 
-**LocalizedStrings** element zawiera następujące elementy:
+Element **LocalizedStrings** zawiera następujące elementy:
 
 | Element | Wystąpienia | Opis |
 | ------- | ----------- | ----------- |
 | LocalizedString | 1: n | Zlokalizowany ciąg. |
 
-**LocalizedString** element zawiera następujące atrybuty:
+Element **LocalizedString** zawiera następujące atrybuty:
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| ElementType | Tak | Odwołanie do elementu typu oświadczenia lub element interfejsu użytkownika w ramach zasad. Możliwe wartości: `ClaimType`, `UxElement`, `ErrorMessage`, `Predicate`, lub. `ClaimType` Wartość jest używana do lokalizowania jeden z atrybutów oświadczenia, jak to określono w identyfikator ciągu. `UxElement` Wartość jest używana do lokalizowania jeden z elementów interfejsu użytkownika, jak to określono w identyfikator ciągu. `ErrorMessage` Wartość jest używana do lokalizowania komunikat o błędzie systemu, jak to określono w identyfikator ciągu. `Predicate` Wartość jest używana do lokalizowania jednego z [predykatu](predicates.md) komunikaty o błędach, jak to określono w identyfikator ciągu. `InputValidation` Wartość jest używana do lokalizowania jednego z [PredicateValidation](predicates.md) grupie komunikaty o błędach, jak to określono w identyfikator ciągu. |
-| ElementId | Yes | Jeśli **ElementType** ustawiono `ClaimType`, `Predicate`, lub `InputValidation`, ten element zawiera odwołanie do typu oświadczenia już zdefiniowane w sekcji ClaimsSchema. | 
-| StringId | Yes | Jeśli **ElementType** ustawiono `ClaimType`, ten element zawiera odwołanie do atrybutu typu oświadczenia. Możliwe wartości: `DisplayName`, `AdminHelpText`, lub `PatternHelpText`. `DisplayName` Wartość jest używana do ustawiania oświadczenia nazwy wyświetlanej. `AdminHelpText` Wartość jest używana do ustawiania Nazwa tekstu pomocy oświadczenia użytkownika. `PatternHelpText` Wartość jest używana do ustawiania tekst pomocy wzorzec oświadczenia. Jeśli **ElementType** ustawiono `UxElement`, ten element zawiera odwołanie do atrybutu elementu interfejsu użytkownika. Jeśli **ElementType** ustawiono `ErrorMessage`, ten element Określa identyfikator komunikatu o błędzie. Zobacz [ciągu lokalizacji identyfikatorów](localization-string-ids.md) szczegółowy wykaz `UxElement` identyfikatorów.|
+| ElementType | Tak | Odwołanie do elementu typu "Claim" lub elementu interfejsu użytkownika w zasadach. Możliwe wartości: `ClaimType`, `UxElement`, `ErrorMessage` ,lub.`Predicate` `ClaimType` Wartość jest używana do lokalizowania jednego z atrybutów, jak określono w StringId. `UxElement` Wartość jest używana do lokalizowania jednego z elementów interfejsu użytkownika, jak określono w StringId. `ErrorMessage` Wartość jest używana do lokalizowania jednego z komunikatów o błędach systemu określonych w StringId. Wartość jest używana do lokalizowania jednego z komunikatów o błędach predykatu, jak określono w StringId. [](predicates.md) `Predicate` Wartość jest używana do lokalizowania jednej z komunikatów o błędach grupy PredicateValidation, jak określono w StringId. [](predicates.md) `InputValidation` |
+| ElementId | Tak | Jeśli **ElementType** ma wartość `ClaimType`,, lub `InputValidation`, ten element zawiera odwołanie do typu, `Predicate`który już został zdefiniowany w sekcji ClaimsSchema. |
+| StringId | Tak | Jeśli **ElementType** ma wartość `ClaimType`, ten element zawiera odwołanie do atrybutu typu "typ". Możliwe wartości: `DisplayName`, `AdminHelpText`, lub `PatternHelpText`. `DisplayName` Wartość jest używana do ustawiania nazwy wyświetlanej w ramach żądania. `AdminHelpText` Wartość jest używana do ustawiania nazwy tekstu pomocy dla użytkownika. `PatternHelpText` Wartość jest używana do ustawiania tekstu pomocy dla wzorca roszczeń. Jeśli **ElementType** ma wartość `UxElement`, ten element zawiera odwołanie do atrybutu elementu interfejsu użytkownika. Jeśli **ElementType** ma wartość `ErrorMessage`, ten element określa identyfikator komunikatu o błędzie. Aby uzyskać pełną listę identyfikatorów, `UxElement` zobacz [identyfikatory ciągów lokalizacji](localization-string-ids.md) .|
 
 
-Poniższy przykład pokazuje zlokalizowane stronę rejestracji. Pierwsze trzy **LocalizedString** atrybut roszczenia ustawić wartości. Trzeci zmienia wartość przycisk Kontynuuj. Ostatnie zmiany komunikat o błędzie.
+Poniższy przykład pokazuje zlokalizowaną stronę rejestracji. Pierwsze trzy wartości **LocalizedString** ustawiają atrybut Claim. Trzecia zmiana wartości przycisku Kontynuuj. Ostatni z nich zmienia komunikat o błędzie.
 
 ```XML
 <LocalizedResources Id="api.selfasserted.en">
@@ -165,7 +165,7 @@ Poniższy przykład pokazuje zlokalizowane stronę rejestracji. Pierwsze trzy **
 </LocalizedResources>
 ```
 
-W poniższym przykładzie pokazano zlokalizowany **UserHelpText** z **predykatu** o identyfikatorze `IsLengthBetween8And64`. I zlokalizowanych **UserHelpText** z **PredicateGroup** o identyfikatorze `CharacterClasses` z **PredicateValidation** o identyfikatorze `StrongPassword`.
+Poniższy przykład pokazuje zlokalizowany **UserHelpText** predykatu z identyfikatorem `IsLengthBetween8And64`. I zlokalizowany **UserHelpText** z identyfikatorem `CharacterClasses` **PredicateValidation** o identyfikatorze `StrongPassword`.
 
 ```XML
 <PredicateValidation Id="StrongPassword">
@@ -187,16 +187,16 @@ W poniższym przykładzie pokazano zlokalizowany **UserHelpText** z **predykatu*
 
 <LocalizedString ElementType="InputValidation" ElementId="StrongPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
 
-<LocalizedString ElementType="Predicate" ElementId="IsLengthBetween8And64" StringId="HelpText">The password must be between 8 and 64 characters.</LocalizedString>              
+<LocalizedString ElementType="Predicate" ElementId="IsLengthBetween8And64" StringId="HelpText">The password must be between 8 and 64 characters.</LocalizedString>
 ```
 
-## <a name="set-up-localization"></a>Ustawianie lokalizacji
+## <a name="set-up-localization"></a>Konfigurowanie lokalizacji
 
-W tym artykule przedstawiono sposób obsługi wielu ustawień regionalnych lub języków w ramach zasad dla podróży użytkownika. Lokalizacja wymaga wykonania trzech kroków: konfiguracji jawną listę języków obsługiwanych ciągów specyficznych dla języka i kolekcji, a następnie edytuj ContentDefinition dla strony.
+W tym artykule przedstawiono sposób obsługi wielu ustawień regionalnych lub języków w zasadach dla podróży użytkownika. Lokalizacja wymaga trzech kroków: Skonfiguruj jawną listę obsługiwanych języków, podaj odpowiednie dla języka ciągi i kolekcje, a następnie Edytuj ContentDefinition dla strony.
 
-### <a name="set-up-the-explicit-list-of-supported-languages"></a>Konfigurowanie jawną listę obsługiwanych języków
+### <a name="set-up-the-explicit-list-of-supported-languages"></a>Skonfiguruj jawną listę obsługiwanych języków
 
-W obszarze **BuildingBlocks** elementu Dodawanie **lokalizacji** element z listy obsługiwanych języków. Poniższy przykład pokazuje jak zdefiniować obsługi lokalizacji dla języka angielskiego (ustawienie domyślne) i hiszpański:
+W elemencie **BuildingBlocks** Dodaj element **lokalizacji** z listą obsługiwanych języków. Poniższy przykład pokazuje, jak zdefiniować obsługę lokalizacji dla języka angielskiego (domyślnego) i hiszpańskiego:
 
 ```XML
 <Localization Enabled="true">
@@ -207,22 +207,23 @@ W obszarze **BuildingBlocks** elementu Dodawanie **lokalizacji** element z listy
 </Localization>
 ```
 
-### <a name="provide-language-specific-strings-and-collections"></a>Podaj parametry specyficzne dla języka i kolekcji 
+### <a name="provide-language-specific-strings-and-collections"></a>Podawanie ciągów i kolekcji specyficznych dla języka
 
-Dodaj **LocalizedResources** elementy wewnątrz **lokalizacji** elementu po zamknięciu **SupportedLanguages** elementu. Możesz dodać **LocalizedResources** elementy dla każdej strony (definicja zawartości) i dowolnego języka, które mają być obsługiwane. Aby dostosować ujednolicona strona rejestracji lub logowania, strony rejestracji oraz uwierzytelnianie wieloskładnikowe (MFA), angielski, hiszpański i (Francja), należy dodać następujące **LocalizedResources** elementów.  
-- Ujednolicona strona tworzenia konta lub logowania, angielski `<LocalizedResources Id="api.signuporsignin.en">`
-- Ujednolicona strona tworzenia konta lub logowania, hiszpański `<LocalizedResources Id="api.signuporsignin.es">`
-- Ujednolicona strona tworzenia konta lub logowania, (Francja) `<LocalizedResources Id="api.signuporsignin.fr">` 
-- Zarejestruj się, angielski `<LocalizedResources Id="api.localaccountsignup.en">`
-- Zarejestruj się, hiszpański `<LocalizedResources Id="api.localaccountsignup.es">`
-- Zarejestruj się, Francja `<LocalizedResources Id="api.localaccountsignup.fr">`
-- Uwierzytelnianie wieloskładnikowe, angielski `<LocalizedResources Id="api.phonefactor.en">`
-- Uwierzytelnianie wieloskładnikowe, hiszpański `<LocalizedResources Id="api.phonefactor.es">`
-- MFA, France `<LocalizedResources Id="api.phonefactor.fr">`
+Dodaj elementy **LocalizedResources** wewnątrz elementu **lokalizacyjnego** po zamknięciu elementu **SupportedLanguages** . Należy dodać elementy **LocalizedResources** na każdej stronie (definicji zawartości) i dowolnym języku, który ma być obsługiwany. Aby dostosować ujednoliconą stronę rejestracji lub logowania, strony rejestracji i uwierzytelniania wieloskładnikowego (MFA) dla języka angielskiego, hiszpańskiego i Francji, należy dodać następujące elementy **LocalizedResources** .
 
-Każdy **LocalizedResources** element zawiera wszystkie wymagane **LocalizedStrings** elementy z wieloma **LocalizedString** elementy i  **LocalizedCollections** elementy z wieloma **LocalizedCollection** elementów.  Poniższy przykład dodaje lokalizacji angielskiej stronę rejestracji: 
+- Ujednolicona Strona rejestracji lub logowania, angielski`<LocalizedResources Id="api.signuporsignin.en">`
+- Ujednolicona Strona rejestracji lub logowania, hiszpański`<LocalizedResources Id="api.signuporsignin.es">`
+- Ujednolicona Strona rejestracji lub logowania, Francja`<LocalizedResources Id="api.signuporsignin.fr">`
+- Rejestracja, angielski`<LocalizedResources Id="api.localaccountsignup.en">`
+- Rejestracja, hiszpański`<LocalizedResources Id="api.localaccountsignup.es">`
+- Rejestracja, Francja`<LocalizedResources Id="api.localaccountsignup.fr">`
+- MFA, angielski`<LocalizedResources Id="api.phonefactor.en">`
+- MFA, hiszpański`<LocalizedResources Id="api.phonefactor.es">`
+- MFA, Francja`<LocalizedResources Id="api.phonefactor.fr">`
 
-Uwaga: W tym przykładzie sprawia, że odwołanie do `Gender` i `City` typów oświadczeń. Aby wykorzystać ten przykład, upewnij się, że należy zdefiniować te oświadczenia. Aby uzyskać więcej informacji, zobacz [ClaimsSchema](claimsschema.md).
+Każdy element **LocalizedResources** zawiera wszystkie wymagane elementy **LocalizedStrings** z wieloma elementami **LocalizedString** i **LocalizedCollections** z wieloma zlokalizowanymi części.  Poniższy przykład dodaje lokalizację w języku angielskim strony rejestracji:
+
+Uwaga: Ten przykład służy do odwoływania `Gender` się `City` do typów zgłoszeń i. Aby użyć tego przykładu, należy się upewnić, że zostały zdefiniowane te oświadczenia. Aby uzyskać więcej informacji, zobacz [ClaimsSchema](claimsschema.md).
 
 ```XML
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -276,11 +277,11 @@ Lokalizacja strony rejestracji dla języka hiszpańskiego.
 </LocalizedResources>
 ```
 
-### <a name="edit-the-contentdefinition-for-the-page"></a>Edytuj ContentDefinition strony 
+### <a name="edit-the-contentdefinition-for-the-page"></a>Edytuj ContentDefinition strony
 
-Dla każdej strony, którą chcesz zlokalizować Określ kodów języków do wyszukania w **ContentDefinition**.
+Dla każdej strony, którą chcesz zlokalizować, określ kody języka, które mają być wyszukiwane w **ContentDefinition**.
 
-W poniższym przykładzie język angielski (en) i hiszpański (es) — niestandardowe ciągi są dodawane do strony rejestracji. **LocalizedResourcesReferenceId** dla każdego **LocalizedResourcesReference** jest taka sama jak ich ustawień regionalnych, ale można użyć dowolnego ciągu jako identyfikator. Każda kombinacja języka i strony wskaż odpowiednich **LocalizedResources** utworzonego wcześniej.
+W poniższym przykładzie niestandardowe ciągi (EN) i hiszpański (ES) są dodawane do strony rejestracji. **LocalizedResourcesReferenceId** dla każdego **LocalizedResourcesReferenceu** jest taka sama jak ich ustawienia regionalne, ale można użyć dowolnego ciągu jako identyfikatora. Dla każdej kombinacji języka i strony należy wskazać odpowiednie **LocalizedResources** wcześniej utworzone.
 
 ```XML
 <ContentDefinition Id="api.localaccountsignup">
@@ -292,7 +293,7 @@ W poniższym przykładzie język angielski (en) i hiszpański (es) — niestanda
 </ContentDefinition>
 ```
 
-Końcowego pliku XML można znaleźć w poniższym przykładzie:
+Poniższy przykład pokazuje końcowy kod XML:
 
 ```XML
 <BuildingBlocks>
@@ -363,7 +364,3 @@ Końcowego pliku XML można znaleźć w poniższym przykładzie:
   </Localization>
 </BuildingBlocks>
 ```
-
-
-
-

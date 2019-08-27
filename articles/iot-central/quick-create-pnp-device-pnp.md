@@ -1,5 +1,5 @@
 ---
-title: Połącz urządzenie z usługą Azure IoT Plug and Play w wersji zapoznawczej, aby IoT Central | Microsoft Docs
+title: Połącz urządzenie IoT Plug and Play w wersji zapoznawczej z usługą Azure IoT Central | Microsoft Docs
 description: Użyj modelu możliwości urządzenia do generowania kodu urządzenia. Następnie uruchom kod urządzenia, sprawdź, czy urządzenie nawiązuje połączenie z aplikacją IoT Central, i użyj wygenerowanych widoków.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 48161f56a8885239525587b764c4a116ffc8539f
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 2f1ee5caf89af718d91abeac01730700c131ab41
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997730"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70048963"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Szybki start: Użyj modelu możliwości urządzenia, aby utworzyć urządzenie Plug and Play IoT i połączyć je z aplikacją IoT Central
 

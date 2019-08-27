@@ -4,14 +4,14 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: 39bb75a6f834789f91cb590ffebb72f45624eb25
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: c7b9e3a9eb5c906fa598da9c8c547cb542ecb719
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183784"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036752"
 ---
-# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>(PRZESTARZAŁE) Zabezpieczanie kontenerów Docker w usłudze Azure Container Service
+# <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>PRZESTARZAŁE Zabezpieczanie kontenerów platformy Docker w Azure Container Service
 
 [!INCLUDE [ACS deprecation](container-service-deprecation.md)]
 
@@ -34,7 +34,7 @@ Przedsiębiorstwa bardzo dbają o bezpieczeństwo. Aby ochronić się przed atak
 
 Nawet w przypadku używania rejestru prywatnego warto używać rozwiązań do skanowania obrazów w celu przeprowadzenia dodatkowej weryfikacji zabezpieczeń. Każda warstwa oprogramowania w obrazie kontenera jest potencjalnie podatna na luki w zabezpieczeniach niezależnie od innych warstw obrazu kontenera. Coraz więcej firm zaczyna wdrażać obciążenia produkcyjne przy użyciu technologii związanych z kontenerami, a skanowanie obrazów staje się ważne, ponieważ zapobiega atakom na zabezpieczenia organizacji. 
 
-Rozwiązanie do skanowania i monitorowania zabezpieczeń, takie jak między innymi [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry) i [Aqua Security](http://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry), mogą być używane do skanowania obrazów kontenerów w rejestrze prywatnym oraz identyfikowania potencjalnych luk w zabezpieczeniach. Ważne jest, aby dobrze zrozumieć poziom szczegółowości oferowany przez poszczególne rozwiązania do skanowania. Na przykład niektóre rozwiązania mogą tylko sprawdzać warstwy obrazu pod kątem występowania znanych luk w zabezpieczeniach. Te rozwiązania mogą nie mieć możliwości zweryfikowania oprogramowania w warstwie obrazu, którą skompilowano przy użyciu określonego oprogramowania menedżera pakietów. Inne rozwiązania oferują głębszą integrację skanowania i mogą wyszukiwać luki w zabezpieczeniach dowolnego oprogramowania w pakiecie.
+Rozwiązanie do skanowania i monitorowania zabezpieczeń, takie jak między innymi [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry) i [Aqua Security](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry), mogą być używane do skanowania obrazów kontenerów w rejestrze prywatnym oraz identyfikowania potencjalnych luk w zabezpieczeniach. Ważne jest, aby dobrze zrozumieć poziom szczegółowości oferowany przez poszczególne rozwiązania do skanowania. Na przykład niektóre rozwiązania mogą tylko sprawdzać warstwy obrazu pod kątem występowania znanych luk w zabezpieczeniach. Te rozwiązania mogą nie mieć możliwości zweryfikowania oprogramowania w warstwie obrazu, którą skompilowano przy użyciu określonego oprogramowania menedżera pakietów. Inne rozwiązania oferują głębszą integrację skanowania i mogą wyszukiwać luki w zabezpieczeniach dowolnego oprogramowania w pakiecie.
 
 ### <a name="production-deployment-rules-and-audit"></a>Reguły wdrożenia produkcyjnego i inspekcja
 Gdy aplikacja jest wdrażana w środowisku produkcyjnym, niezbędne jest skonfigurowanie kilku reguł, dzięki którym będzie można zapewnić, że obrazy używane w środowisku produkcyjnym są bezpieczne i nie mają luk w zabezpieczeniach.
@@ -58,13 +58,13 @@ Każdy koordynator dostępny w usłudze Azure Container Service ma własne wzgl�
 
 Aby uzyskać dodatkowe informacje na temat zabezpieczeń poszczególnych koordynatorów, zobacz następujące zasoby:
 
-* **Kubernetes**: [Najlepsze rozwiązania dotyczące wdrażania rozwiązania Kubernetes](https://kubernetes.io/blog/2016/08/security-best-practices-kubernetes-deployment/)
+* **Kubernetes**: [Najlepsze rozwiązania w zakresie zabezpieczeń dotyczące wdrażania Kubernetes](https://kubernetes.io/blog/2016/08/security-best-practices-kubernetes-deployment/)
 
 * **DC/OS**: [Zabezpieczanie klastra](http://docs.mesosphere.com/1.12/administering-clusters/securing-your-cluster)
 
-* **Rozwiązanie docker Swarm**: [Zabezpieczenia platformy docker](https://www.docker.com/docker-security)
+* **Swarm platformy Docker**: [Zabezpieczenia platformy Docker](https://www.docker.com/docker-security)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby uzyskać więcej informacji o architekturze platformy Docker i zabezpieczeniach kontenerów, zobacz [Introduction to Container Security (Wprowadzenie do usługi Container Security)](https://www.docker.com/sites/default/files/WP_IntrotoContainerSecurity_08.19.2016.pdf).
 

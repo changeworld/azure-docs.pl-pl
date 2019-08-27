@@ -1,45 +1,48 @@
 ---
-title: Łączenie z serwisem Facebook — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Zarządzaj oś czasu i strony za pomocą interfejsów API REST usługi Facebook i Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 11/07/2016
-ms.topic: article
-ms.service: logic-apps
+title: Nawiązywanie połączenia z usługą Facebook — Azure Logic Apps
+description: Zarządzanie osią czasu i stroną przy użyciu interfejsów API REST usługi Facebook i Azure Logic Apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+manager: carmonm
+ms.reviewer: klam, LADocs
+ms.topic: conceptual
+ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 25595127d913d3cd093e0af3d7916e33fc7cb352
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 83431184d7e9c5970ece6af143ee9b5166da96d5
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105979"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050953"
 ---
-# <a name="get-started-with-the-facebook-connector"></a>Rozpoczynanie pracy z usługą łącznika serwisu Facebook
-Łączenie z serwisem Facebook i publikować na osi czasu, uzyskiwanie kanału informacyjnego strony i nie tylko. Za pomocą usługi Facebook możesz wykonywać następujące czynności:
+# <a name="manage-your-facebook-timeline-and-page-by-using-azure-logic-apps"></a>Zarządzanie osią czasu i stroną w serwisie Facebook przy użyciu Azure Logic Apps
 
-* Tworzenie przepływu biznesowych na podstawie danych, który jest pobierany z usługi Facebook. 
-* Po otrzymaniu nowego wpisu, należy użyć wyzwalacza.
-* Akcje użycia, które wpis na Twojej osi czasu, uzyskiwanie kanału informacyjnego strony i nie tylko. Te akcje uzyskać odpowiedzi, a następnie udostępnić dane wyjściowe do innych działań. Na przykład po nowy wpis na Twojej osi czasu, można wykonać tego wpisu i Wypchnij go do Twojego kanału informacyjnego usługi Twitter. 
+Nawiąż połączenie z serwisem Facebook i Opublikuj je na osi czasu, Pobierz kanał informacyjny strony i nie tylko. W usłudze Facebook można:
 
-Możesz rozpocząć od teraz tworzenie aplikacji logiki, zobacz [tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* Utwórz przepływ biznesowy na podstawie danych uzyskanych z serwisu Facebook. 
+* Użyj wyzwalacza, gdy zostanie odebrany nowy wpis.
+* Użyj akcji, które są ogłaszane na osi czasu, uzyskaj kanał informacyjny strony i nie tylko. Te akcje odbierają odpowiedź, a następnie udostępniają dane wyjściowe dla innych akcji. Na przykład, gdy na osi czasu jest nowy wpis, możesz wykonać ten wpis i wypchnąć go do kanału informacyjnego usługi Twitter. 
 
-## <a name="create-a-connection-to-facebook"></a>Utworzenie połączenia z usługi Facebook
-Po dodaniu tego łącznika do aplikacji logiki, należy autoryzować logic apps, aby nawiązać połączenie z usługi Facebook.
+Teraz możesz zacząć od utworzenia aplikacji logiki, zobacz [Tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Zaloguj się do konta w serwisie Facebook
-2. Wybierz **Autoryzuj**i Zezwól aplikacji logiki, aby łączenie i korzystanie z usługi Facebook. 
+## <a name="create-a-connection-to-facebook"></a>Utwórz połączenie z usługą Facebook
+
+Po dodaniu tego łącznika do usługi Logic Apps musisz autoryzować Aplikacje logiki, aby połączyć się z serwisem Facebook.
+
+1. Zaloguj się do swojego konta w serwisie Facebook.
+
+2. Wybierz pozycję **Autoryzuj**, aby umożliwić aplikacjom logiki łączenie się z usługą Facebook i korzystanie z niej. 
 
 > [!INCLUDE [Steps to create a connection to Facebook](../../includes/connectors-create-api-facebook.md)]
 > 
 
+## <a name="connector-reference"></a>Dokumentacja łączników
 
-## <a name="connector-specific-details"></a>Szczegóły specyficzne dla łącznika
+Aby uzyskać szczegółowe informacje techniczne, takie jak wyzwalacze, akcje i limity, zgodnie z opisem w pliku OpenAPI łącznika (dawniej Swagger), zobacz [stronę odwołania łącznika](/connectors/facebook/).
 
-Wyświetlanie wszystkich wyzwalaczy i akcji zdefiniowanych w strukturze swagger i zobacz też jakiekolwiek ograniczenia w [szczegóły łącznika](/connectors/facebook/).
+## <a name="next-steps"></a>Następne kroki
 
-## <a name="more-connectors"></a>Więcej łączników
-Wróć do [listy interfejsów API](apis-list.md).
+* Dowiedz się więcej na temat innych [łączników Logic Apps](../connectors/apis-list.md)

@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie obszarami roboczymi Log Analytics w Azure Monitor | Microsoft Docs
-description: Obszarami roboczymi Log Analytics można zarządzać w Azure Monitor przy użyciu różnych zadań administracyjnych dotyczących użytkowników, kont, obszarów roboczych i kont platformy Azure.
+description: Możesz zarządzać dostępem do danych przechowywanych w obszarze roboczym Log Analytics w Azure Monitor przy użyciu zasobów, obszaru roboczego lub uprawnień na poziomie tabeli. W tym artykule szczegółowo opisano, jak to zrobić.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 08/26/2019
 ms.author: magoedte
-ms.openlocfilehash: 59e5bbaf8deccdd8218e9c5590266070ed3b5ebb
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 9bf278b76846b98f58126957c589df87524bb8a4
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624337"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034711"
 ---
-# <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Zarządzanie danymi dziennika i obszarami roboczymi w Azure Monitor
+# <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Zarządzanie dostępem do danych dziennika i obszarów roboczych w Azure Monitor
 
 Azure Monitor przechowuje dane [dziennika](data-platform-logs.md) w log Analytics obszarze roboczym, który zasadniczo jest kontenerem zawierającym informacje o danych i konfiguracji. Aby zarządzać dostępem do danych dziennika, należy wykonać różne zadania administracyjne związane z obszarem roboczym.
 
@@ -32,7 +32,7 @@ W tym artykule opisano sposób zarządzania dostępem do dzienników i zarządza
 
 * Jak udzielić dostępu użytkownikom, którzy potrzebują dostępu do danych dziennika w określonej tabeli w obszarze roboczym przy użyciu funkcji RBAC platformy Azure.
 
-## <a name="define-access-control-mode"></a>Zdefiniuj tryb kontroli dostępu
+## <a name="configure-access-control-mode"></a>Konfigurowanie trybu kontroli dostępu
 
 Tryb kontroli dostępu skonfigurowany w obszarze roboczym można wyświetlić z poziomu Azure Portal lub Azure PowerShell.  To ustawienie można zmienić przy użyciu jednej z następujących obsługiwanych metod:
 
@@ -42,7 +42,7 @@ Tryb kontroli dostępu skonfigurowany w obszarze roboczym można wyświetlić z 
 
 * Szablon usługi Azure Resource Manager
 
-### <a name="configure-from-the-azure-portal"></a>Skonfiguruj z poziomu Azure Portal
+### <a name="from-the-azure-portal"></a>Z Azure Portal
 
 Bieżący tryb kontroli dostępu obszaru roboczego można wyświetlić na stronie **Przegląd** obszaru roboczego w menu **log Analytics obszaru roboczego** .
 
@@ -55,7 +55,7 @@ To ustawienie można zmienić na stronie **Właściwości** obszaru roboczego. Z
 
 ![Zmień tryb dostępu obszaru roboczego](media/manage-access/change-access-control-mode.png)
 
-### <a name="configure-using-powershell"></a>Konfigurowanie przy użyciu programu PowerShell
+### <a name="using-powershell"></a>Korzystanie z programu PowerShell
 
 Użyj następującego polecenia, aby przeanalizować tryb kontroli dostępu dla wszystkich obszarów roboczych w subskrypcji:
 
@@ -99,18 +99,14 @@ else
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
 
-### <a name="configure-using-a-resource-manager-template"></a>Konfigurowanie przy użyciu szablonu Menedżer zasobów
+### <a name="using-a-resource-manager-template"></a>Korzystanie z szablonu Menedżer zasobów
 
 Aby skonfigurować tryb dostępu w szablonie Azure Resource Manager, Ustaw flagę funkcji **enableLogAccessUsingOnlyResourcePermissions** w obszarze roboczym na jedną z następujących wartości.
 
 * **wartość false**: Ustaw obszar roboczy na uprawnienia kontekstu obszaru roboczego. Jest to ustawienie domyślne, jeśli flaga nie jest ustawiona.
 * **wartość true**: Ustaw obszar roboczy na uprawnienia kontekstu zasobów.
 
-## <a name="manage-accounts-and-users"></a>Zarządzanie kontami i użytkownikami
-
-Uprawnienia zastosowane do obszaru roboczego dla określonego użytkownika są definiowane przez ich [tryb dostępu](design-logs-deployment.md#access-mode) i [Tryb kontroli dostępu](design-logs-deployment.md#access-control-mode) obszaru roboczego. Za pomocą **kontekstu obszaru roboczego**można wyświetlić wszystkie dzienniki w obszarze roboczym, do którego masz uprawnienia, ponieważ zapytania w tym trybie są ograniczone do wszystkich danych we wszystkich tabelach w obszarze roboczym. Przy użyciu **kontekstu zasobów**można wyświetlać dane dzienników w obszarze roboczym dla określonego zasobu, grupy zasobów lub subskrypcji podczas wyszukiwania bezpośrednio z zasobu w Azure Portal, do którego masz dostęp. Zapytania w tym trybie są ograniczone do danych skojarzonych z tym zasobem.
-
-### <a name="workspace-permissions"></a>Uprawnienia obszaru roboczego
+## <a name="manage-access-using-workspace-permissions"></a>Zarządzanie dostępem przy użyciu uprawnień obszaru roboczego
 
 Każdy obszar roboczy może mieć wiele kont skojarzonych z nim, a każde konto może uzyskiwać dostęp do wielu obszarów roboczych. Dostęp jest zarządzany przy użyciu [dostępu opartego na rolach na platformie Azure](../../role-based-access-control/role-assignments-portal.md).
 
@@ -130,7 +126,7 @@ Następujące działania również wymagają uprawnień platformy Azure:
 
 ## <a name="manage-access-using-azure-permissions"></a>Zarządzanie dostępem przy użyciu uprawnień platformy Azure
 
-Aby udzielić dostępu do obszaru roboczego usługi Log Analytics przy użyciu uprawnień platformy Azure, wykonaj kroki opisane w części [Zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../../role-based-access-control/role-assignments-portal.md).
+Aby udzielić dostępu do obszaru roboczego usługi Log Analytics przy użyciu uprawnień platformy Azure, wykonaj kroki opisane w części [Zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../../role-based-access-control/role-assignments-portal.md). Przykład ról niestandardowych można znaleźć w temacie [przykład role niestandardowe](#custom-role-examples)
 
 Platforma Azure ma dwie wbudowane role użytkowników dla Log Analytics obszarów roboczych:
 
@@ -180,7 +176,7 @@ Rola Współautor usługi Log Analytics obejmuje następujące działania dla pl
 | `Microsoft.ClassicStorage/storageAccounts/listKeys/action` <br> `Microsoft.Storage/storageAccounts/listKeys/action` | Wyświetlanie klucza konta magazynu. Wymagane do skonfigurowania usługi Log Analytics w celu odczytu dzienników z kont magazynów platformy Azure |
 | `Microsoft.Insights/alertRules/*` | Dodawanie, aktualizowanie i usuwanie reguł alertu |
 | `Microsoft.Insights/diagnosticSettings/*` | Dodawanie, aktualizowanie i usuwanie ustawień diagnostycznych dla zasobów platformy Azure |
-| `Microsoft.OperationalInsights/*` | Dodawanie, aktualizowanie i usuwanie konfiguracji dla obszarów roboczych usługi Log Analytics |
+| `Microsoft.OperationalInsights/*` | Dodawanie, aktualizowanie i usuwanie konfiguracji dla obszarów roboczych Log Analytics. Aby edytować zaawansowane ustawienia obszaru roboczego, wymagane `Microsoft.OperationalInsights/workspaces/write`przez użytkownika. |
 | `Microsoft.OperationsManagement/*` | Dodawanie i usuwanie rozwiązań do zarządzania |
 | `Microsoft.Resources/deployments/*` | Tworzenie i usuwanie wdrożeń. Wymagane w celu dodawania i usuwania rozwiązań, obszarów roboczych oraz kont usługi Automation |
 | `Microsoft.Resources/subscriptions/resourcegroups/deployments/*` | Tworzenie i usuwanie wdrożeń. Wymagane w celu dodawania i usuwania rozwiązań, obszarów roboczych oraz kont usługi Automation |
@@ -207,6 +203,39 @@ Gdy użytkownicy wykonują zapytania dotyczące dzienników z obszaru roboczego 
 `/read`uprawnienie _\*_ jest zazwyczaj udzielane z roli [](../../role-based-access-control/built-in-roles.md#contributor) [](../../role-based-access-control/built-in-roles.md#reader)  _\*obejmującej/Read lub_ uprawnienia, takie jak wbudowane czytniki i role współautor. Należy zauważyć, że role niestandardowe zawierające określone akcje lub dedykowane role wbudowane mogą nie uwzględniać tego uprawnienia.
 
 Zobacz [Definiowanie kontroli dostępu dla tabel](#table-level-rbac) poniżej, jeśli chcesz utworzyć inną kontrolę dostępu dla różnych tabel.
+
+## <a name="custom-role-examples"></a>Przykłady ról niestandardowych
+
+1. Aby udzielić użytkownikowi dostępu do danych dziennika z zasobów, wykonaj następujące czynności:
+
+    * Konfigurowanie trybu kontroli dostępu do obszaru roboczego w celu **używania uprawnień obszaru roboczego lub zasobu**
+
+    * Przyznaj `*/read` użytkownikom `Microsoft.Insights/logs/*/read` lub uprawnienia do ich zasobów. Jeśli przypisano już rolę [czytnika log Analytics](../../role-based-access-control/built-in-roles.md#reader) w obszarze roboczym, wystarczy.
+
+2. Aby udzielić użytkownikowi dostępu do danych dziennika z zasobów i skonfigurować zasoby do wysyłania dzienników do obszaru roboczego, wykonaj następujące czynności:
+
+    * Konfigurowanie trybu kontroli dostępu do obszaru roboczego w celu **używania uprawnień obszaru roboczego lub zasobu**
+
+    * Przyznaj użytkownikom następujące uprawnienia w obszarze roboczym `Microsoft.OperationalInsights/workspaces/read` : `Microsoft.OperationalInsights/workspaces/sharedKeys/action`i. Przy użyciu tych uprawnień użytkownicy nie mogą wykonywać żadnych zapytań na poziomie obszaru roboczego.
+
+    * Udziel użytkownikom następujących uprawnień do swoich zasobów: `Microsoft.Insights/logs/*/read` i. `Microsoft.Insights/diagnosticSettings/write` Jeśli przypisano już do tego zasobu rolę [współautor log Analytics](../../role-based-access-control/built-in-roles.md#contributor) , wystarczy.
+
+3. Aby udzielić użytkownikowi dostępu do danych dziennika z zasobów, Przeczytaj wszystkie logowania do usługi Azure AD i odczytaj Update Management dane dziennika rozwiązania, wykonaj następujące czynności:
+
+    * Konfigurowanie trybu kontroli dostępu do obszaru roboczego w celu **używania uprawnień obszaru roboczego lub zasobu**
+
+    * Przyznaj użytkownikom następujące uprawnienia w obszarze roboczym: 
+
+        * `Microsoft.OperationalInsights/workspaces/read`— wymagane, aby użycie może wyliczyć obszar roboczy i otworzyć blok obszaru roboczego w Azure Portal
+        * `Microsoft.OperationalInsights/workspaces/query/read`— wymagane przez każdego użytkownika, który może wykonywać zapytania
+        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read`— Aby móc odczytywać dzienniki logowania usługi Azure AD
+        * `Microsoft.OperationalInsights/workspaces/query/Update/read`— Aby można było odczytać dzienniki rozwiązań Update Management
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read`— Aby można było odczytać dzienniki rozwiązań Update Management
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read`— Aby można było odczytać dzienniki zarządzania aktualizacjami
+        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read`— wymagane jest, aby można było używać rozwiązania Update Management
+        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read`— wymagane jest, aby można było używać rozwiązania Update Management
+
+    * Przyznaj użytkownikom następujące uprawnienia do swoich zasobów: `*/read` lub `Microsoft.Insights/logs/*/read`. Jeśli przypiszesz rolę [czytnika log Analytics](../../role-based-access-control/built-in-roles.md#reader) w obszarze roboczym, wystarczy.
 
 ## <a name="table-level-rbac"></a>Kontrola RBAC na poziomie tabeli
 

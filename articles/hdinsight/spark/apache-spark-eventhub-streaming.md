@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
-ms.openlocfilehash: fef551c254eb4fa212333a55bde3d642645a16b6
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 0d47c3f0838e22ad8c5185a42f5f0c748335dfa8
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489804"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049480"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Samouczek: Przetwarzanie tweetów przy użyciu usługi Azure Event Hubs i Apache Spark w usłudze HDInsight
 
@@ -46,7 +46,7 @@ Aby otrzymywać strumień tweetów, musisz utworzyć aplikację w usłudze Twitt
 
     |Właściwość |Value |
     |---|---|
-    |Name (Nazwa)|Podaj nazwę aplikacji. Wartość użyta w tym samouczku to **HDISparkStreamApp0423**. Ta nazwa musi być unikatową nazwą.|
+    |Name|Podaj nazwę aplikacji. Wartość użyta w tym samouczku to **HDISparkStreamApp0423**. Ta nazwa musi być unikatową nazwą.|
     |Opis|Podaj krótki opis aplikacji. Wartość używana w tym samouczku to **prosta aplikacja przesyłania strumieniowego HDInsight Spark**.|
     |Witryna internetowa|Podaj witrynę sieci Web aplikacji. Nie musi być prawidłową witryną sieci Web.  Ta wartość jest `http://www.contoso.com`używana w tym samouczku.|
     |Adres URL wywołania zwrotnego|Możesz pozostawić to pole puste.|
@@ -82,7 +82,7 @@ To centrum zdarzeń służy do przechowywania tweetów.
 
     |Właściwość |Value |
     |---|---|
-    |Name (Nazwa)|Wprowadź nazwę centrum zdarzeń.  Wartość użyta w tym samouczku to **myeventhubns20180403**.|
+    |Name|Wprowadź nazwę centrum zdarzeń.  Wartość użyta w tym samouczku to **myeventhubns20180403**.|
     |Warstwa cenowa|Wybierz opcję **Standardowa**.|
     |Subscription|Wybierz odpowiednią subskrypcję.|
     |Resource group|Wybierz istniejącą grupę zasobów z listy rozwijanej lub wybierz pozycję **Utwórz nową** , aby utworzyć nową grupę zasobów.|
@@ -135,7 +135,7 @@ Utwórz Notes Jupyter i nadaj mu nazwę **SendTweetsToEventHub**.
 
     ```
     %%configure
-    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.2.0,org.twitter4j:twitter4j-core:4.0.6"}}
+    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13,org.twitter4j:twitter4j-core:4.0.6"}}
     ```
 
 2. Edytuj Poniższy kod, zastępując `<Event hub name>`, `<Event hub namespace connection string>`, `<CONSUMER KEY>` `<CONSUMER SECRET>`,, i`<TOKEN SECRET>` z odpowiednimi wartościami. `<ACCESS TOKEN>` Uruchom edytowany kod, aby wysłać tweety do centrum zdarzeń:
@@ -217,7 +217,7 @@ Utwórz inny Notes Jupyter i nadaj mu nazwę **ReadTweetsFromEventHub**.
 
     ```
     %%configure -f
-    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.2.0"}}
+    {"conf":{"spark.jars.packages":"com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.13"}}
     ```
 
 2. Edytuj Poniższy kod, zastępując `<Event hub name>`go i `<Event hub namespace connection string>` odpowiednimi wartościami. Uruchom edytowany kod, aby przeczytać tweety z centrum zdarzeń:
@@ -256,7 +256,7 @@ Otwórz klaster w witrynie Azure Portal, a następnie wybierz pozycję **Usuń**
 
 Dodatkowo możesz wybrać nazwę grupy zasobów, aby otworzyć stronę grupy zasobów, a następnie wybrać pozycję **Usuń grupę zasobów**. Usunięcie grupy zasobów powoduje usunięcie zarówno klastra Spark w usłudze HDInsight, jak i domyślnego konta magazynu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób tworzenia Apache Spark aplikacji przesyłania strumieniowego w celu wysyłania tweetów do centrum zdarzeń platformy Azure i utworzenia innej aplikacji w celu odczytania tweetów z centrum zdarzeń.  Przejdź do następnego artykułu, aby zobaczyć, jak można utworzyć aplikację uczenia maszynowego.
 

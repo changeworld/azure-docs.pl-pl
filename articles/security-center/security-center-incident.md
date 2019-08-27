@@ -1,6 +1,6 @@
 ---
-title: Obsługa alertów zabezpieczeń w usłudze Azure Security Center | Microsoft Docs
-description: Ten dokument wyjaśnia, jak korzystać z funkcji usługi Azure Security Center do obsługi zdarzeń naruszenia zabezpieczeń.
+title: Zarządzanie zdarzeniami zabezpieczeń w Azure Security Center | Microsoft Docs
+description: Ten dokument ułatwia używanie Azure Security Center do zarządzania zdarzeniami zabezpieczeń.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -12,53 +12,62 @@ ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2018
+ms.date: 8/27/2019
 ms.author: rkarlin
-ms.openlocfilehash: 68bcd2b1916ccdf68eaa31ed251661a6b7e1bca0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df487b5d16568605544fb69111579bd4a9fb045f
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60704121"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047614"
 ---
-# <a name="handling-security-incidents-in-azure-security-center"></a>Obsługa zdarzeń naruszenia zabezpieczeń w usłudze Azure Security Center
-Klasyfikowanie i badanie alertów zabezpieczeń może być czasochłonne nawet dla najbardziej doświadczonego analityka bezpieczeństwa, a wielu nie wie nawet od czego zacząć. Używając [analizy](security-center-detection-capabilities.md) w celu powiązania informacji z różnych [alertów zabezpieczeń](security-center-managing-and-responding-alerts.md), usługa Security Center może dostarczyć pojedynczego widoku kampanii ataku i wszystkich powiązanych alertów — dzięki temu można szybko dowiedzieć się, jakie akcje zostały podjęte przez osobę atakującą i na jakie zasoby miały wpływ.
+# <a name="manage-security-incidents-in-azure-security-center"></a>Zarządzanie zdarzeniami zabezpieczeń w Azure Security Center
 
-W tym dokumencie omówiono sposób użycia funkcji alertu zabezpieczeń w usłudze Security Center, aby ułatwić obsługę zdarzeń naruszenia zabezpieczeń.
+Klasyfikacja i badanie alertów zabezpieczeń może być czasochłonne dla nawet najbardziej wykwalifikowanych analityków zabezpieczeń, a dla wielu z nich trudno wiedzieć, gdzie zacząć. Używając [analizy](security-center-detection-capabilities.md) w celu powiązania informacji z różnych [alertów zabezpieczeń](security-center-managing-and-responding-alerts.md), usługa Security Center może dostarczyć pojedynczego widoku kampanii ataku i wszystkich powiązanych alertów — dzięki temu można szybko dowiedzieć się, jakie akcje zostały podjęte przez osobę atakującą i na jakie zasoby miały wpływ.
+
+W tym temacie wyjaśniono informacje o zdarzeniach w Security Center i sposobach używania korygowania alertów.
 
 ## <a name="what-is-a-security-incident"></a>Co to jest zdarzenie naruszenia zabezpieczeń?
-W usłudze Security Center zdarzenie naruszenia zabezpieczeń to agregacja wszystkich alertów zasobu, które są zgodne ze wzorcami [kill chain](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/), tzw. „zabójczego łańcucha”. Zdarzenia są wyświetlane na kafelku i w bloku [Alerty zabezpieczeń](security-center-managing-and-responding-alerts.md). Zdarzenie wyświetli listę powiązanych alertów, co pozwala uzyskać więcej informacji na temat każdego wystąpienia.
+
+W usłudze Security Center zdarzenie naruszenia zabezpieczeń to agregacja wszystkich alertów zasobu, które są zgodne ze wzorcami [kill chain](https://blogs.technet.microsoft.com/office365security/addressing-your-cxos-top-five-cloud-security-concerns/), tzw. „zabójczego łańcucha”. Zdarzenia są wyświetlane na liście [alerty zabezpieczeń](security-center-managing-and-responding-alerts.md) . Kliknij pozycję instalacją systemu zdarzenie, aby wyświetlić powiązane alerty, co pozwala uzyskać więcej informacji na temat każdego wystąpienia.
 
 ## <a name="managing-security-incidents"></a>Zarządzanie zdarzeniami naruszenia zabezpieczeń
-Bieżące zdarzenia naruszenia zabezpieczeń można przeglądać przy użyciu kafelka alertów zabezpieczeń. Otwórz witrynę Azure Portal i wykonaj poniższe kroki, aby wyświetlić więcej szczegółowych informacji dotyczących poszczególnych zdarzeń naruszenia zabezpieczeń:
 
-1. Na pulpicie nawigacyjnym Centrum zabezpieczeń widoczny jest kafelek **Alerty zabezpieczeń**.
+1. Na pulpicie nawigacyjnym Security Center kliknij kafelek **alerty zabezpieczeń** . Zdarzenia i alerty są wymienione na liście. Należy zwrócić uwagę, że ikona opisu zdarzenia naruszenia zabezpieczeń różni się od ikon innych alertów.
 
-    ![Kafelek Alerty zabezpieczeń w usłudze Security Center](./media/security-center-incident/security-center-incident-fig1.png)
+    ![Wyświetl zdarzenia dotyczące zabezpieczeń](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
 
-2. Kliknij kafelek, aby go rozwinąć. Jeśli zostanie wykryte zdarzenie naruszenia zabezpieczeń, pojawi się ono pod wykresem alertów zabezpieczeń, jak pokazano poniżej:
+1. Aby wyświetlić szczegóły, kliknij zdarzenie. Blok **wykryte zdarzenia zabezpieczeń** wyświetla dalsze szczegóły. Sekcja **Informacje ogólne** może oferować wgląd w to, co wyzwolił alert zabezpieczeń. Są w nim wyświetlane informacje, takie jak zasób docelowy, źródłowy adres IP (jeśli ma zastosowanie), jeśli alert jest nadal aktywny i zalecenia dotyczące sposobu korygowania.  
 
-    ![Zdarzenie naruszenia zabezpieczeń](./media/security-center-incident/security-center-incident-fig2.png)
+    ![Reagowanie na zdarzenia związane z bezpieczeństwem w Azure Security Center](./media/security-center-managing-and-responding-alerts/security-center-alert-incident.png)
 
-3. Należy zwrócić uwagę, że ikona opisu zdarzenia naruszenia zabezpieczeń różni się od ikon innych alertów. Kliknij tę ikonę, aby wyświetlić więcej informacji na temat tego zdarzenia.
+1. Aby uzyskać więcej informacji na temat każdego alertu, kliknij alert. Czynności naprawcze sugerowane w Centrum zabezpieczeń różnią się w zależności od alertu zabezpieczeń. Czynności naprawcze sugerowane w Centrum zabezpieczeń różnią się w zależności od alertu zabezpieczeń. 
 
-    ![Zdarzenie naruszenia zabezpieczeń](./media/security-center-incident/security-center-incident-fig3.png)
+   > [!NOTE]
+   > Ten sam alert może istnieć jako część zdarzenia, a także być widoczny jako alert autonomiczny.
 
-4. W bloku **zdarzeń** pojawi się więcej szczegółów dotyczących danego zdarzenia, w tym: jego pełny opis, ważność (w tym przypadku jest wysoka), obecny stan (w tym przypadku nadal jest *aktywny*, co oznacza, że użytkownik nie podjął przy tym działań — można to zrobić, klikając prawym przyciskiem myszy zdarzenie w bloku **Alerty zabezpieczeń**). Znajdują się tutaj też informacje na temat zaatakowanego zasobu (w tym przypadku jest to *VM1*), kroki naprawcze dla tego zdarzenia, a w dolnym okienku są wyświetlone alerty, które wchodzą w skład tego zdarzenia. Jeśli chcesz uzyskać więcej informacji na temat każdego alertu, wystarczy kliknąć go, a otworzy się inny blok, jak pokazano poniżej:
+    ![Szczegóły alertu](./media/security-center-incident/security-center-incident-alert.png)
 
-    ![Zdarzenie naruszenia zabezpieczeń](./media/security-center-incident/security-center-incident-fig4.png)
+1. Wykonaj czynności zaradcze podane dla każdego alertu.
 
-Informacje w tym bloku będą się różnić w zależności od alertu. Więcej informacji na temat zarządzania alertami zabezpieczeń znajduje się w artykule [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md). Pewne istotne kwestie dotyczące tej funkcji:
+Aby uzyskać więcej informacji na temat alertów, [zarządzania alertami zabezpieczeń i reagowania na](security-center-managing-and-responding-alerts.md)nie.
 
-* Nowy filtr pozwala na dostosowanie widoku tak, aby wyświetlane były tylko zdarzenia, tylko alerty albo zdarzenia i alerty jednocześnie.
-* Ten sam alert może istnieć w ramach zdarzenia (jeśli go dotyczy), ale może też być wyświetlany jako samodzielny alert.
+Poniższe tematy przeprowadzą Cię przez różne alerty, zgodnie z typami zasobów:
+
+* [Alerty maszyn wirtualnych i serwerów IaaS](security-center-alerts-iaas.md)
+* [Natywne alerty obliczeniowe](security-center-alerts-compute.md)
+* [Alerty usług danych](security-center-alerts-data-services.md)
+
+W poniższych tematach opisano, jak Security Center używa różnych danych telemetrycznych zbieranych z integracji z infrastrukturą platformy Azure w celu zastosowania dodatkowych warstw ochrony dla zasobów wdrożonych na platformie Azure:
+
+* [Alerty warstwy usług](security-center-alerts-service-layer.md)
+* [Integracja z produktami zabezpieczeń platformy Azure](security-center-alerts-integration.md)
 
 ## <a name="see-also"></a>Zobacz także
 W tym dokumencie przedstawiono sposób użycia funkcji zdarzeń naruszenia zabezpieczeń w usłudze Security Center. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:
 
-* [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md)
-* [Funkcje wykrywania usługi Azure Security Center](security-center-detection-capabilities.md)
+* [Alerty zabezpieczeń w Azure Security Center](security-center-alerts-overview.md).
+* [Zarządzanie alertami zabezpieczeń](security-center-managing-and-responding-alerts.md)
 * [Przewodnik planowania i obsługi usługi Azure Security Center](security-center-planning-and-operations-guide.md)
-* [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md)
 * [Centrum zabezpieczeń Azure — często zadawane pytania](security-center-faq.md) — odpowiedzi na najczęstsze pytania dotyczące korzystania z usługi.
 * [Blog Azure Security](https://blogs.msdn.com/b/azuresecurity/) — wpisy na blogu dotyczące zabezpieczeń i zgodności platformy Azure.

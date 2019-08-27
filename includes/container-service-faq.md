@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: f903828285b0d4fdc8fbd932fa7c85056e937481
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3e1e1266122ebcccc0149ca8e0421577becd6708
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183788"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036753"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(PRZESTARZAŁE) Często zadawane pytania dotyczące usługi Container Service
 
@@ -37,7 +37,7 @@ W zależności od swojego scenariusza możesz również kompilować niestandardo
 ### <a name="what-is-the-difference-between-azure-container-service-and-acs-engine"></a>Jaka jest różnica między usługą Azure Container Service i aparatem usługi ACS? 
 Azure Container Service to usługa platformy Azure z umową SLA, która oferuje funkcje działające w witrynie Azure Portal, narzędziach wiersza polecenia platformy Azure oraz interfejsach API platformy Azure. Usługa ta umożliwia szybkie implementowanie klastrów z uruchomionymi standardowymi narzędziami koordynowania kontenerów i stosunkowo niewielką liczbą opcji konfiguracji do wyboru oraz zarządzanie nimi. 
 
-[Aparat usługi ACS](http://github.com/Azure/acs-engine) to projekt typu open source, który umożliwia użytkownikom zaawansowanym dostosowywanie konfiguracji klastra na dowolnym poziomie. Ta zdolność do zmiany konfiguracji infrastruktury i oprogramowania oznacza, że w przypadku aparatu usługi ACS nie oferujemy umowy SLA. Obsługa odbywa się za pośrednictwem projektu typu open source w usłudze GitHub, a nie przez oficjalne kanały firmy Microsoft. 
+[Aparat usługi ACS](https://github.com/Azure/acs-engine) to projekt typu open source, który umożliwia użytkownikom zaawansowanym dostosowywanie konfiguracji klastra na dowolnym poziomie. Ta zdolność do zmiany konfiguracji infrastruktury i oprogramowania oznacza, że w przypadku aparatu usługi ACS nie oferujemy umowy SLA. Obsługa odbywa się za pośrednictwem projektu typu open source w usłudze GitHub, a nie przez oficjalne kanały firmy Microsoft. 
 
 Dodatkowe informacje można znaleźć w naszych [zasadach wsparcia dla kontenerów](https://support.microsoft.com/en-us/help/4035670/support-policy-for-containers).
 
@@ -80,8 +80,8 @@ Często używane adresy URL dla klastra można znaleźć w witrynie Azure Portal
 ### <a name="how-do-i-tell-which-orchestrator-version-is-running-in-my-cluster"></a>Jak sprawdzić, która wersja koordynatora jest uruchamiana w moim klastrze?
 
 * DC/OS: Zobacz [dokumentację w witrynie Mesosphere](https://docs.mesosphere.com/1.7/usage/cli/command-reference/)
-* Docker Swarm: Uruchom polecenie `docker version`
-* Kubernetes: Uruchom polecenie `kubectl version`
+* Docker Swarm: Uruchom `docker version`
+* Kubernetes: Uruchom `kubectl version`
 
 ### <a name="how-do-i-upgrade-the-orchestrator-after-deployment"></a>Jak uaktualnić koordynatora po wdrożeniu?
 
@@ -117,7 +117,7 @@ Istnieją znane problemy z usługą DNS w systemie Windows, dla których poprawk
 | Dostęp do adresu VIP usługi nie działa | Skonfiguruj element [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) tak, aby zawsze był uruchomiony jeden normalny (nieuprzywilejowany) zasobnik |
 |Gdy węzeł, na którym działa kontener, staje się niedostępny, zapytania DNS mogą kończyć się niepowodzeniem dającym w efekcie „ujemny wpis pamięci podręcznej”. | Uruchom następujące polecenia wewnątrz kontenerów, których to dotyczy: <ul><li> `New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxCacheTtl -Value 0 -Type DWord`</li><li>`New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxNegativeCacheTtl -Value 0 -Type DWord`</li><li>`Restart-Service dnscache` </li></ul><br> Jeśli to nie rozwiąże problemu, spróbuj całkowicie wyłączyć buforowanie DNS: <ul><li>`Set-Service dnscache -StartupType disabled`</li><li>`Stop-Service dnscache`</li></ul> |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Dowiedz się więcej](../articles/container-service/kubernetes/container-service-intro-kubernetes.md) o usłudze Azure Container Service.
 * Wdrażanie klastra usługi kontenera przy użyciu [portalu](../articles/container-service/dcos-swarm/container-service-deployment.md) lub [interfejsu wiersza polecenia platformy Azure](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md).

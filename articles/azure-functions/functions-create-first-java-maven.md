@@ -12,15 +12,15 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
-ms.custom: mvc, devcenter, seo-java-july2019
-ms.openlocfilehash: 116d211e366e17ba667baf1e1deae719b56dc3ee
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 52cbb6ef97459c6c3fafc6df5794c91a9274b4ff
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542750"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051763"
 ---
-# <a name="create-your-first-function-with-java-and-maven"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i narzędzia Maven
+# <a name="quickstart-use-java-to-create-and-publish-a-function-to-azure-functions"></a>Szybki start: Używanie języka Java do tworzenia i publikowania funkcji do Azure Functions
 
 W tym artykule opisano sposób tworzenia i publikowania funkcji języka Java do Azure Functions przy użyciu narzędzia wiersza polecenia Maven. Gdy wszystko będzie gotowe, Twój kod funkcji zostanie uruchomiony w [planie zużycia](functions-scale.md#consumption-plan) na platformie Azure i może być wyzwalany za pomocą żądania HTTP.
 

@@ -1,6 +1,6 @@
 ---
-title: Łączenie z usługą Twilio z usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Automatyzowanie zadań i przepływów pracy, które zarządzać globalnego wiadomości SMS, wiadomości MMS i protokołu IP za pośrednictwem Twojego konta usługi Twilio za pomocą usługi Azure Logic Apps
+title: Nawiązywanie połączenia z usługą Twilio z poziomu Azure Logic Apps | Microsoft Docs
+description: Automatyzuj zadania i przepływy pracy służące do zarządzania globalnymi wiadomościami SMS, MMS i IP za pośrednictwem konta usługi Twilio przy użyciu Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,71 +11,71 @@ ms.assetid: 43116187-4a2f-42e5-9852-a0d62f08c5fc
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: fab52236c701f10c8e8e23ac398362ca4583ea06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 09d4a6acf93f5fb01c70f9e9bd935c404c5abf50
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104905"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050710"
 ---
-# <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Zarządzanie wiadomości w Twilio za pomocą usługi Azure Logic Apps
+# <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Zarządzanie komunikatami w programie Twilio przy użyciu Azure Logic Apps
 
-Korzystając z usługi Azure Logic Apps i łącznik usługi Twilio można utworzyć zautomatyzowanym zadaniom i przepływów pracy, które pobieranie, wysyłanie i wyświetlanie wiadomości usługi Twilio, obejmujących globalnego wiadomości SMS, wiadomości MMS i adresu IP. Te akcje służy do wykonywania zadań przy użyciu konta usługi Twilio. Mogą też istnieć inne akcje użyć danych wyjściowych z akcji usługi Twilio. Na przykład gdy nadejdzie nowa wiadomość, możesz wysłać wiadomość zawartości z łącznikiem usługi Slack. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Za pomocą Azure Logic Apps i łącznika Twilio można tworzyć automatyczne zadania i przepływy pracy, które pobierają, wysyłają i wyświetlają komunikaty w Twilio, które obejmują globalne wiadomości SMS, MMS i IP. Te akcje służą do wykonywania zadań przy użyciu konta Twilio. Możesz również mieć inne akcje, które używają danych wyjściowych z akcji Twilio. Na przykład po nadejściu nowej wiadomości można wysłać zawartość wiadomości za pomocą łącznika zapasowego. Jeśli jesteś nowym sposobem logiki aplikacji, zapoznaj [się z tematem Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/). 
 
 * Z [Twilio](https://www.twilio.com/): 
 
-  * Twój identyfikator konta Twilio i [token uwierzytelniania](https://support.twilio.com/hc/en-us/articles/223136027-Auth-Tokens-and-How-to-Change-Them), który można znaleźć na pulpicie nawigacyjnym usługi Twilio
+  * Identyfikator konta Twilio i [token uwierzytelniania](https://support.twilio.com/hc/en-us/articles/223136027-Auth-Tokens-and-How-to-Change-Them), które można znaleźć na pulpicie nawigacyjnym Twilio
 
-    Poświadczenia Autoryzuj aplikację logiki, aby utworzyć połączenie i dostęp do konta usługi Twilio, z aplikacji logiki. 
-    Jeśli używasz konta wersji próbnej usługi Twilio, możesz wysłać wiadomości SMS tylko do *zweryfikować* numerów telefonów.
+    Twoje poświadczenia autoryzują aplikację logiki, aby utworzyć połączenie i uzyskać dostęp do konta usługi Twilio z poziomu aplikacji logiki. 
+    Jeśli używasz konta próbnego Twilio, możesz wysyłać wiadomości SMS tylko do zweryfikowanych numerów telefonów.
 
-  * Zweryfikowano numer telefonu usługi Twilio, który można wysłać wiadomości SMS
+  * Zweryfikowany numer telefonu Twilio, który może wysyłać wiadomości SMS
 
-  * Zweryfikowano numer telefonu usługi Twilio, który umożliwia odbieranie wiadomości SMS
+  * Zweryfikowany numer telefonu Twilio, który może odbierać wiadomości SMS
 
-* Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikacja logiki, w której chcesz uzyskać dostęp do konta usługi Twilio. Aby użyć akcji usługi Twilio, uruchomić swoją aplikację logiki za pomocą wyzwalacza innego, na przykład, **cyklu** wyzwalacza.
+* Aplikacja logiki, do której chcesz uzyskać dostęp do konta Twilio. Aby użyć akcji Twilio, uruchom aplikację logiki z innym wyzwalaczem, na przykład wyzwalaczem **cyklu** .
 
-## <a name="connect-to-twilio"></a>Łączenie z usługą Twilio
+## <a name="connect-to-twilio"></a>Nawiązywanie połączenia z usługą Twilio
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoją aplikację logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com)i Otwórz aplikację logiki w Projektancie aplikacji logiki, jeśli nie jest jeszcze otwarta.
 
 1. Wybierz ścieżkę: 
 
-     * W ostatnim kroku, której chcesz dodać akcję, wybierz **nowy krok**. 
+     * W ostatnim kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**. 
 
        —lub—
 
-     * Między krokami, które chcesz dodać akcję wskaźnik myszy nad strzałką znajdującą się między krokami. 
-     Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
+     * Między krokami, do których chcesz dodać akcję, przesuń wskaźnik myszy nad strzałkę między krokami. 
+     Wybierz wyświetlony znak plus ( **+** ), a następnie wybierz pozycję **Dodaj akcję**.
      
-       W polu wyszukiwania wprowadź "twilio" jako filtr. 
-       W obszarze listy akcji wybierz akcję, którą chcesz.
+       W polu wyszukiwania wprowadź ciąg "Twilio" jako filtr. 
+       Na liście Akcje wybierz żądaną akcję.
 
-1. Podaj odpowiednie szczegóły połączenia, a następnie wybierz **Utwórz**:
+1. Podaj niezbędne szczegóły dotyczące połączenia, a następnie wybierz pozycję **Utwórz**:
 
-   * Nazwa do użycia w celu nawiązania połączenia
-   * Twój identyfikator konta Twilio 
-   * Token dostępu (uwierzytelnianie) usługi Twilio
+   * Nazwa do użycia dla połączenia
+   * Identyfikator konta Twilio 
+   * Token dostępu Twilio (Authentication)
 
-1. Podaj odpowiednie szczegóły wybranej akcji i kontynuuj tworzenie przepływu pracy aplikacji logiki.
+1. Podaj niezbędne szczegóły wybranej akcji i Kontynuuj tworzenie przepływu pracy aplikacji logiki.
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Szczegółowe informacje techniczne dotyczące wyzwalaczy, akcje i ograniczeń, które opisano przez standard OpenAPI łącznika (dawniej Swagger) opis, przejrzyj łącznika [strona referencyjna](/connectors/twilio/).
+Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów, które są opisane w opisie OpenAPI łącznika (dawniej Swagger), przejrzyj [stronę odwołania](/connectors/twilio/)łącznika.
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)
+* Dowiedz się więcej na temat innych [łączników Logic Apps](../connectors/apis-list.md)

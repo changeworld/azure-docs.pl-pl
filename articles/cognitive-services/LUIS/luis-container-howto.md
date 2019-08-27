@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dapine
-ms.openlocfilehash: 2b87f9bcbaa0fd9d8a23d774e0765e1eb5b56633
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: eaf689ecb8fd64dca15570179733b7d7539a352e
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563897"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050079"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Instalowanie i uruchamianie kontenerów platformy Docker LUIS
  
@@ -84,7 +84,7 @@ Gdy kontener znajduje się na [komputerze hosta](#the-host-computer), użyj nast
 ![Proces używania kontenera Language Understanding (LUIS)](./media/luis-container-how-to/luis-flow-with-containers-diagram.jpg)
 
 1. [Pakiet eksportu](#export-packaged-app-from-luis) dla kontenera z Luis Portal lub interfejsów API Luis.
-1. Przenieś plik pakietu do wymaganego  katalogu wejściowego na [komputerze-hoście](#the-host-computer). Nie zmieniaj nazwy, nie zmieniaj, zastępuj ani nie Kompresuj pliku pakietu LUIS.
+1. Przenieś plik pakietu do wymaganego katalogu wejściowego na [komputerze-hoście](#the-host-computer). Nie zmieniaj nazwy, nie zmieniaj, zastępuj ani nie Kompresuj pliku pakietu LUIS.
 1. [Uruchom kontener](##run-the-container-with-docker-run)z wymaganymi ustawieniami _instalacji_ i rozliczeń. Więcej [przykładów](luis-container-configuration.md#example-docker-run-commands) `docker run` polecenia jest dostępnych. 
 1. [Wykonywanie zapytania dotyczącego punktu końcowego przewidywania kontenera](#query-the-containers-prediction-endpoint). 
 1. Po zakończeniu pracy z kontenerem zaimportuj [dzienniki punktów końcowych](#import-the-endpoint-logs-for-active-learning) z instalacji wyjściowej w portalu Luis i [Zatrzymaj](#stop-the-container) kontener.
@@ -248,7 +248,7 @@ Dla tego kontenera są dostępne zarówno wersje 2, jak i [v3 (](luis-migration-
 
 Kontener udostępnia interfejsy API punktu końcowego przewidywania zapytań. Punkty końcowe dla opublikowanych aplikacji (przemieszczania lub produkcji) mają _różną_ trasę niż punkty końcowe dla przeszkolonych aplikacji. 
 
-Użyj hosta, `https://localhost:5000`, dla interfejsów API kontenerów. 
+Użyj hosta, `http://localhost:5000`, dla interfejsów API kontenerów. 
 
 |Typ pakietu|Metoda|Trasa|Parametry zapytania|
 |--|--|--|--|
@@ -314,7 +314,7 @@ Aby zamknąć kontener, w środowisku wiersza polecenia, w którym jest uruchomi
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli uruchamiasz kontener z [instalacją wyjściową](luis-container-configuration.md#mount-settings) i włączono rejestrowanie, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera. 
+Jeśli uruchamiasz kontener z instalacją wyjściową [](luis-container-configuration.md#mount-settings) i włączono rejestrowanie, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera. 
 
 ## <a name="billing"></a>Rozliczenia
 

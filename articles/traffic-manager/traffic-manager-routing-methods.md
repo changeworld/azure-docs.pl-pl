@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: allensu
-ms.openlocfilehash: 305f24fc274ad48f5c60762223b7bf4e970fe083
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 06ce7fb5d18920be6f71821b034dc13061c60032
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333737"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051466"
 ---
 # <a name="traffic-manager-routing-methods"></a>Metody routingu w usłudze Traffic Manager
 
@@ -27,7 +27,7 @@ W Traffic Manager są dostępne następujące metody routingu ruchu:
 * **[Ważone](#weighted):** Wybierz opcję **ważone** , gdy chcesz rozpowszechnić ruch w zestawie punktów końcowych, a nawet zgodnie z wagami definiowanymi przez użytkownika.
 * **[Wydajność](#performance):** Wybierz pozycję **wydajność** , jeśli masz punkty końcowe w różnych lokalizacjach geograficznych, i chcesz, aby użytkownicy końcowi korzystali z punktu końcowego "najbliższy" w warunkach najmniejszego opóźnienia sieci.
 * **[Geograficzne](#geographic):** Wybierz opcję **geograficzne** , aby użytkownicy mogli kierować do określonych punktów końcowych (Azure, External lub Nested) na podstawie lokalizacji geograficznej, z której pochodzą zapytanie DNS. Pozwala to Traffic Manager klientom na umożliwienie scenariuszy, w których wiadomo region geograficzny użytkownika i kierowanie ich na podstawie tego, co jest ważne. Przykładami mogą być wymagania dotyczące suwerenności danych, lokalizacji zawartości & środowiska użytkownika i mierzenia ruchu z różnych regionów.
-* **Z [wieloma wartościami](#multivalue):** Wybierz **pozycję** wieloznaczny dla profilów Traffic Manager, które mogą mieć tylko adresy IPv4/IPv6 jako punkty końcowe. Po odebraniu zapytania dla tego profilu są zwracane wszystkie zdrowe punkty końcowe.
+* **Z [wieloma wartościami](#multivalue):** Wybierz pozycję wieloznaczny dla profilów Traffic Manager, które mogą mieć tylko adresy IPv4/IPv6 jako punkty końcowe. Po odebraniu zapytania dla tego profilu są zwracane wszystkie zdrowe punkty końcowe.
 * **[Podsieć](#subnet):** Wybierz pozycję ruch **podsieci** — Metoda routingu w celu mapowania zestawów zakresów adresów IP użytkowników końcowych na konkretny punkt końcowy w ramach profilu Traffic Manager. Po odebraniu żądania punkt końcowy zostanie przypisany do źródłowego adresu IP tego żądania. 
 
 
@@ -119,7 +119,7 @@ Traffic Manager odczytuje źródłowy adres IP zapytania DNS i decyduje, z któr
     >Zdecydowanie zaleca się, aby klienci korzystający z metody routingu geograficznego skojarzyć ją z punktami końcowymi typu zagnieżdżonego, które mają profile podrzędne zawierające co najmniej dwa punkty końcowe w ramach każdego z nich.
 - Jeśli zostanie znaleziony odpowiednik punktu końcowego i ten punkt końcowy jest w stanie **zatrzymania** , Traffic Manager zwraca odpowiedź NoData. W takim przypadku żadne dalsze wyszukiwania nie są większe w hierarchii regionów geograficznych. To zachowanie jest również stosowane dla zagnieżdżonych typów punktów końcowych, gdy profil podrzędny jest w stanie **zatrzymania** lub **wyłączenia** .
 - Jeśli punkt końcowy wyświetla stan **wyłączony** , nie zostanie uwzględniony w procesie dopasowywania regionu. To zachowanie jest również stosowane dla zagnieżdżonych typów punktów końcowych, gdy punkt końcowy jest w stanie **wyłączenia** .
-- Jeśli zapytanie pochodzi z regionu geograficznego, który nie ma mapowania w tym profilu, Traffic Manager zwraca odpowiedź NoData. W związku z tym zdecydowanie zaleca się, aby klienci używali routingu geograficznego z jednym punktem końcowym, idealnie do typu zagnieżdżonego z co najmniej dwoma punktami końcowymi w profilu podrzędnym, **z przypisanym** do niego regionem. Zapewnia to również, że obsługiwane są wszystkie adresy IP, które nie są mapowane do regionu.
+- Jeśli zapytanie pochodzi z regionu geograficznego, który nie ma mapowania w tym profilu, Traffic Manager zwraca odpowiedź NoData. W związku z tym zdecydowanie zaleca się, aby klienci używali routingu geograficznego z jednym punktem końcowym, idealnie do typu zagnieżdżonego z co najmniej dwoma punktami końcowymi w profilu podrzędnym, z przypisanym do niego regionem. Zapewnia to również, że obsługiwane są wszystkie adresy IP, które nie są mapowane do regionu.
 
 Zgodnie z opisem w temacie [jak działa Traffic Manager](traffic-manager-how-it-works.md), Traffic Manager nie odbiera zapytań DNS bezpośrednio od klientów. Zamiast tego zapytania DNS pochodzą z cyklicznej usługi DNS, z której korzystają klienci. W związku z tym adres IP używany do określenia regionu nie jest adresem IP klienta, ale jest adresem IP cyklicznej usługi DNS. W tym przypadku ten adres IP jest dobrym serwerem proxy dla klienta.
 
@@ -146,7 +146,7 @@ Zgodnie z opisem w temacie [jak działa Traffic Manager](traffic-manager-how-it-
 * [Czy istnieją jakieś ograniczenia dotyczące wersji interfejsu API, która obsługuje ten typ routingu?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type)
 
 ## <a name = "multivalue"></a>Wielowartościowy ruch-Metoda routingu
-Metoda **routingu ruchu** wielowartościowego umożliwia uzyskanie wielu prawidłowych punktów końcowych w pojedynczej odpowiedzi na zapytanie DNS. Umożliwia to obiektowi wywołującemu wykonanie ponownych prób po stronie klienta z innymi punktami końcowymi w przypadku, gdy zwrócony punkt końcowy nie odpowiada. Ten wzorzec może zwiększyć dostępność usługi i ograniczyć opóźnienia związane z nowym zapytaniem DNS w celu uzyskania prawidłowego punktu końcowego. Metoda routingu z wieloma wartościami działa tylko wtedy, gdy wszystkie punkty końcowe typu "External" i są określone jako adresy IPv4 lub IPv6. Po odebraniu zapytania dla tego profilu są zwracane wszystkie prawidłowe punkty końcowe i podlegają konfigurowalnej maksymalnej liczbie zwracanych wartości.
+Metoda routingu ruchu wielowartościowego umożliwia uzyskanie wielu prawidłowych punktów końcowych w pojedynczej odpowiedzi na zapytanie DNS. Dzięki temu obiekt wywołujący może wykonać ponowną próbę po stronie klienta z innymi punktami końcowymi w przypadku, gdy zwrócony punkt końcowy nie odpowiada. Ten wzorzec może zwiększyć dostępność usługi i ograniczyć opóźnienia związane z nowym zapytaniem DNS w celu uzyskania prawidłowego punktu końcowego. Metoda routingu z wieloma wartościami działa tylko wtedy, gdy wszystkie punkty końcowe typu "External" i są określone jako adresy IPv4 lub IPv6. Po odebraniu zapytania dla tego profilu są zwracane wszystkie prawidłowe punkty końcowe i podlegają konfigurowalnej maksymalnej liczbie zwracanych wartości.
 
 ### <a name="faqs"></a>Często zadawane pytania
 

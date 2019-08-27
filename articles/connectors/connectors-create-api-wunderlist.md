@@ -1,6 +1,6 @@
 ---
-title: Łączenie z usługą Wunderlist z usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Automatyzowanie zadań i przepływów pracy, które monitorowanie i zarządzanie nimi list, zadania, przypomnienia i tylko na Twoim koncie w aplikacji Wunderlist za pomocą usługi Azure Logic Apps
+title: Łączenie z usługą Wunderlist z Azure Logic Apps | Microsoft Docs
+description: Automatyzuj zadania i przepływy pracy, które monitorują listy, zadania, przypomnienia i nie tylko w ramach konta usługi Wunderlist oraz zarządzają nimi przy użyciu Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,74 +11,74 @@ ms.assetid: e4773ecf-3ad3-44b4-a1b5-ee5f58baeadd
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: e3570ab1227ca388ac62bffdc74bb68b1ddc41d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d57ab4a7b655a7d49a7120d358dccc627099e5fd
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105670"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050663"
 ---
-# <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Monitorowanie i zarządzanie nimi aplikacji Wunderlist za pomocą usługi Azure Logic Apps
+# <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>Monitoruj i Zarządzaj usługą Wunderlist przy użyciu Azure Logic Apps
 
-Korzystając z usługi Azure Logic Apps i łącznik usługi Wunderlist można utworzyć zautomatyzowanym zadaniom i przepływy pracy umożliwiające monitorowanie i zarządzanie listami zadań do wykonania, zadania, przypomnienia i więcej ze swojego konta usługi Wunderlist, oraz inne czynności, na przykład:
+Korzystając z Azure Logic Apps i łącznika usługi Wunderlist, możesz tworzyć automatyczne zadania i przepływy pracy, które monitorują listy zadań, zadania, przypomnienia i inne na koncie usługi Wunderlist oraz zarządzają nimi, a także z innymi akcjami, na przykład:
 
-* Monitor, gdy utworzone nowe zadania, gdy zadania są należne lub się zdarzyć, przypomnienia.
-* Tworzenie i zarządzanie nimi, list, notatki, zadania i podzadania.
-* Ustaw przypomnienia.
-* Pobieranie listy, zadań, podzadań, przypomnienia, pliki, uwagi, komentarze i więcej.
+* Monitoruj po utworzeniu nowych zadań, gdy zadania są zaległe lub przypomnienia są wykonywane.
+* Twórz listy, notatki, zadania i podzadania oraz zarządzaj nimi.
+* Ustawianie przypomnień.
+* Pobieranie list, zadań, podzadań, przypomnień, plików, notatek, komentarzy i innych.
 
-[Wunderlist](https://www.wunderlist.com/) to usługa, która ułatwia planowanie, zarządzanie i zakończyć swoje projekty, listy zadań do wykonania i zadania — w dowolnym miejscu i urządzenia. Możesz użyć wyzwalaczy, które uzyskiwanie odpowiedzi z Twojego konta w usłudze Wunderlist i udostępnić dane wyjściowe innych działań. Możesz użyć akcji, które wykonują zadania z Twoim kontem usługi Wunderlist. Mogą też istnieć inne akcje użyć danych wyjściowych z akcji aplikacji Wunderlist. Na przykład gdy nowe zadania są wymagane, możesz zadać wiadomości z łącznikiem usługi Slack. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+[Wunderlist](https://www.wunderlist.com/) to usługa, która ułatwia planowanie i kończenie projektów oraz zarządzanie nimi, listy zadań do wykonania i zadania — na dowolnym urządzeniu i w dowolnym miejscu. Możesz użyć wyzwalaczy, które pobierają odpowiedzi z konta usługi Wunderlist, i udostępniają dane wyjściowe innym akcjom. Możesz użyć akcji, które wykonują zadania przy użyciu konta aplikacji Wunderlist. Możesz również mieć inne akcje, które używają danych wyjściowych z akcji aplikacji Wunderlist. Na przykład, gdy nowe zadania są zaległe, można publikować komunikaty za pomocą łącznika zapasowego. Jeśli jesteś nowym sposobem logiki aplikacji, zapoznaj [się z tematem Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/). 
 
-* Poświadczenia konta i użytkownik aplikacji Wunderlist
+* Twoje konto aplikacji Wunderlist i poświadczenia użytkownika
 
-   Poświadczenia Autoryzuj aplikację logiki, aby utworzyć połączenie i dostęp do tego konta usługi Wunderlist.
+   Twoje poświadczenia autoryzują aplikację logiki, aby utworzyć połączenie i uzyskać dostęp do konta usługi Wunderlist.
 
-* Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikacja logiki, w której chcesz uzyskać dostęp do konta usługi Yammer. Można uruchomić z wyzwalaczem usługi Wunderlist [Tworzenie pustej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć działania programu Wunderlist, uruchomić swoją aplikację logiki za pomocą wyzwalacza innego, na przykład, **cyklu** wyzwalacza.
+* Aplikacja logiki, w której chcesz uzyskać dostęp do konta w usłudze Yammer. Aby rozpocząć pracę z wyzwalaczem aplikacji Wunderlist, [Utwórz pustą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji Wunderlist, uruchom aplikację logiki z innym wyzwalaczem, na przykład wyzwalaczem **cyklu** .
 
 ## <a name="connect-to-wunderlist"></a>Łączenie z usługą Wunderlist
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoją aplikację logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com)i Otwórz aplikację logiki w Projektancie aplikacji logiki, jeśli nie jest jeszcze otwarta.
 
 1. Wybierz ścieżkę: 
 
-   * W przypadku aplikacji logiki puste w polu wyszukiwania wprowadź "wunderlist" jako filtr. 
-   W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
+   * W przypadku pustych aplikacji logiki w polu wyszukiwania wprowadź ciąg "Wunderlist" jako filtr. 
+   Na liście Wyzwalacze wybierz wyzwalacz, który chcesz. 
 
      —lub—
 
-   * W przypadku istniejących aplikacji logiki: 
+   * Dla istniejących aplikacji logiki: 
    
-     * W ostatnim kroku, której chcesz dodać akcję, wybierz **nowy krok**. 
+     * W ostatnim kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**. 
 
        —lub—
 
-     * Między krokami, które chcesz dodać akcję wskaźnik myszy nad strzałką znajdującą się między krokami. 
-     Wybierz znak plus ( **+** ) pojawia się, a następnie wybierz **Dodaj akcję**.
+     * Między krokami, do których chcesz dodać akcję, przesuń wskaźnik myszy nad strzałkę między krokami. 
+     Wybierz wyświetlony znak plus ( **+** ), a następnie wybierz pozycję **Dodaj akcję**.
      
-       W polu wyszukiwania wprowadź "wunderlist" jako filtr. 
-       W obszarze listy akcji wybierz akcję, którą chcesz.
+       W polu wyszukiwania wprowadź ciąg "Wunderlist" jako filtr. 
+       Na liście Akcje wybierz żądaną akcję.
 
-1. Jeśli zostanie wyświetlony monit logować się do aplikacji Wunderlist, zarejestruj się teraz, dzięki czemu można zezwolić na dostęp.
+1. Jeśli zostanie wyświetlony monit o zalogowanie się do aplikacji Wunderlist, zaloguj się teraz, aby zezwolić na dostęp.
 
-1. Podaj odpowiednie szczegóły wybranego wyzwalacza lub akcji i kontynuuj tworzenie przepływu pracy aplikacji logiki.
+1. Podaj niezbędne szczegóły wybranego wyzwalacza lub akcji i Kontynuuj tworzenie przepływu pracy aplikacji logiki.
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Szczegółowe informacje techniczne dotyczące wyzwalaczy, akcje i ograniczeń, które opisano przez standard OpenAPI łącznika (dawniej Swagger) opis, przejrzyj łącznika [strona referencyjna](/connectors/wunderlist/).
+Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów, które są opisane w opisie OpenAPI łącznika (dawniej Swagger), przejrzyj [stronę odwołania](/connectors/wunderlist/)łącznika.
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)
+* Dowiedz się więcej na temat innych [łączników Logic Apps](../connectors/apis-list.md)

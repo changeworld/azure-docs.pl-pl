@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie powiadomień konserwacyjnych dla maszyn wirtualnych z systemem Windows na platformie Azure | Microsoft Docs
-description: Dowiedz się, jak skonfigurować zaplanowane powiadomienia o konserwacji dla maszyn wirtualnych platformy Azure.
+title: Monitorowanie zaplanowanych zdarzeń dla maszyn wirtualnych z systemem Windows na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak monitorować maszyny wirtualne platformy Azure pod kątem zaplanowanych zdarzeń.
 services: virtual-machines-windows
 documentationcenter: ''
 author: mysarn
@@ -10,14 +10,14 @@ ms.tgt_pltfrm: vm-windows
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: conceptual
-ms.openlocfilehash: 18b46b848946bb2450604bdf0650a004e21778d9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 49c82339e5a3774cd286d700d709371d46cf0571
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657413"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051843"
 ---
-# <a name="set-up-notifications-about-maintenance-affecting-your-vm"></a>Skonfiguruj powiadomienia dotyczące konserwacji, które mają wpływ na maszynę wirtualną
+# <a name="monitoring-scheduled-events"></a>Scheduled Events monitorowania
 
 Aktualizacje są stosowane do różnych części platformy Azure codziennie, aby zapewnić ich bezpieczeństwo i aktualność usług. Oprócz planowanych aktualizacji mogą wystąpić również niezaplanowane zdarzenia. Jeśli na przykład zostanie wykryte obniżenie wydajności sprzętu lub błędu, usługi platformy Azure mogą wymagać nieplanowanej konserwacji. Korzystanie z migracji na żywo, zachowywanie i ogólnie bardziej rygorystycznego paska wpływu na aktualizacje, w większości przypadków te zdarzenia są prawie niewidoczne dla klientów i nie mają wpływu na kilka sekund blokowania maszyn wirtualnych. Jednak w przypadku niektórych aplikacji nawet kilka sekund zablokowania maszyny wirtualnej może spowodować wpływ. Zapoznaj się z wyprzedzeniem o zbliżającej się konserwacji platformy Azure, aby zapewnić najlepsze środowisko dla tych aplikacji. [Usługa Scheduled Events](scheduled-events.md) udostępnia interfejs programistyczny, który będzie powiadamiany o nadchodzącej konserwacji i pozwala bezpiecznie obsłużyć konserwację. 
 
