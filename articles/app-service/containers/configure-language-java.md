@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 428c470eb633c7727f65c5a9a3afa76bce50b177
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: f0cbb8d19d2a7d60fdfd3c10a8c9914ffa79e0a3
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647240"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034902"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurowanie aplikacji Java dla systemu Linux dla Azure App Service
 
@@ -402,7 +402,7 @@ Na koniec Umieść sterownik JARs w ścieżce klasy Tomcat i ponownie uruchom Ap
 
     Alternatywnie możesz użyć klienta FTP do przekazania sterownika JDBC. Postępuj zgodnie z tymi [instrukcjami w celu uzyskania poświadczeń FTP](../deploy-configure-credentials.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
-2. Jeśli utworzono źródło danych na poziomie serwera, uruchom ponownie aplikację App Service Linux. Tomcat zostanie `CATALINA_HOME` zresetowana `/home/tomcat/conf` do programu i użyta zostanie zaktualizowana konfiguracja.
+2. Jeśli utworzono źródło danych na poziomie serwera, uruchom ponownie aplikację App Service Linux. Tomcat zostanie `CATALINA_BASE` zresetowana `/home/tomcat` do programu i użyta zostanie zaktualizowana konfiguracja.
 
 ### <a name="spring-boot"></a>Spring Boot
 

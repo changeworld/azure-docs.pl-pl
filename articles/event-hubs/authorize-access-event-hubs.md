@@ -1,5 +1,5 @@
 ---
-title: Autoryzuj dostęp do usługi Azure Event Hubs
+title: Autoryzacja dostępu do usługi Azure Event Hubs
 description: Ten artykuł zawiera informacje o różnych opcjach autoryzacji dostępu do zasobów usługi Azure Event Hubs.
 services: event-hubs
 ms.service: event-hubs
@@ -8,14 +8,14 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: 9847f2f51da57526f84a7fcb3929e95ae267546c
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: f01758c70e52f96fcd22a94e9b83f910cbf200c9
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992551"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035869"
 ---
-# <a name="authorize-access-to-azure-event-hubs"></a>Autoryzuj dostęp do usługi Azure Event Hubs
+# <a name="authorize-access-to-azure-event-hubs"></a>Autoryzacja dostępu do usługi Azure Event Hubs
 Za każdym razem, gdy publikujesz lub zużywasz zdarzenia/dane z centrum zdarzeń, klient próbuje uzyskać dostęp do zasobów Event Hubs. Każde żądanie do bezpiecznego zasobu musi być autoryzowane, aby usługa mogła zapewnić, że klient ma uprawnienia wymagane do publikowania/używania danych. 
 
 Usługa Azure Event Hubs oferuje następujące opcje autoryzacji dostępu do bezpiecznych zasobów:
@@ -23,7 +23,10 @@ Usługa Azure Event Hubs oferuje następujące opcje autoryzacji dostępu do bez
 ## <a name="azure-active-directory"></a>Usługa Azure Active Directory
 Integracja Azure Active Directory (Azure AD) dla zasobów Event Hubs zapewnia kontrolę dostępu opartą na rolach (RBAC) na potrzeby precyzyjnej kontroli dostępu klienta do zasobów. Za pomocą kontroli dostępu opartej na rolach (RBAC) można przyznać uprawnienia podmiotowi zabezpieczeń, które mogą być użytkownikami, grupami lub podmiotem usługi aplikacji. Podmiot zabezpieczeń jest uwierzytelniany przez usługę Azure AD w celu zwrócenia tokenu OAuth 2,0. Token może służyć do autoryzowania żądania dostępu do zasobu Event Hubs.
 
-Aby uzyskać więcej informacji na temat uwierzytelniania przy użyciu usługi Azure AD, zobacz [uwierzytelnianie żądań na platformie azure Event Hubs przy użyciu Azure Active Directory](authenticate-application.md). Aby uzyskać więcej informacji na temat autoryzacji za pomocą usługi Azure AD, zobacz [Autoryzuj dostęp do zasobów Event Hubs przy użyciu Azure Active Directory](authorize-access-azure-active-directory.md).
+Aby uzyskać więcej informacji na temat uwierzytelniania przy użyciu usługi Azure AD, zobacz następujące artykuły:
+
+- [Uwierzytelniaj żądania na platformie Azure Event Hubs przy użyciu Azure Active Directory](authenticate-application.md)
+- [Autoryzuj dostęp do zasobów Event Hubs przy użyciu Azure Active Directory](authorize-access-azure-active-directory.md).
 
 ## <a name="share-access-signatures"></a>Udostępnianie sygnatur dostępu 
 Sygnatury dostępu współdzielonego (SAS) dla zasobów Event Hubs zapewniają ograniczonego delegowanego dostępu do Event Hubs zasobów. Dodanie ograniczeń w przedziale czasowym, dla którego podpis jest prawidłowy lub na uprawnienia, które ma w ten sposób zapewnia elastyczność zarządzania zasobami. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie przy użyciu sygnatur dostępu współdzielonego (SAS)](authenticate-shared-access-signature.md). 

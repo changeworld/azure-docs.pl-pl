@@ -12,30 +12,77 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/20/2019
+ms.date: 8/25/2019
 ms.author: v-mohabe
-ms.openlocfilehash: d905096432c6e05e5386631480e5cc45b5c890c5
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 1a3ce29750351d6037b376ebb93eb73e141c0727
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013293"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047589"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Alerty zabezpieczeń w Centrum zabezpieczeń Azure
 
-W Azure Security Center istnieje wiele alertów dla wielu różnych typów zasobów. Security Center generuje alerty dotyczące zasobów wdrożonych na platformie Azure, a także dla zasobów wdrożonych w środowiskach lokalnych i hybrydowych w chmurze. 
+W Azure Security Center istnieje wiele alertów dla wielu różnych typów zasobów. Security Center generuje alerty dotyczące zasobów wdrożonych na platformie Azure, a także dla zasobów wdrożonych w środowiskach lokalnych i hybrydowych w chmurze.
+
+Funkcje zaawansowanego wykrywania są dostępne w warstwie Standardowa usługi Azure Security Center. Dostępna jest bezpłatna wersja próbna. Uaktualnienie usługi jest możliwe po przejściu do wyboru warstwy cenowej na stronie [Zasady zabezpieczeń](security-center-pricing.md). Odwiedź [stronę usługi Security Center](https://azure.microsoft.com/pricing/details/security-center/), aby dowiedzieć się więcej na temat cen.
+
+## Reagowanie na współczesne <a name="respond-threats"></a> zagrożenia
+
+W ciągu ostatnich 20 lat miały miejsce istotne zmiany dotyczące charakteru występujących zagrożeń. W przeszłości firmy martwiły się tylko atakami skutkującymi zmianą zawartości witryny internetowej, a sami atakujący chcieli przede wszystkim przekonać się, co potrafią zrobić. Obecnie osoby atakujące są bardziej wyrafinowane i zorganizowane. Często mają określone cele finansowe i strategiczne. Ponadto dysponują większą ilością zasobów, ponieważ mogą być finansowane przez państwa lub zorganizowane grupy przestępcze.
+
+Te zmiany mogą doprowadziły do niewcześniejszego poziomu profesjonalizmu w rangach osoby atakującej. Nie wystarcza im już wpływ na zawartość witryn internetowych. Są one teraz zainteresowane kradzieżą informacji, kont finansowych i danych prywatnych, z których mogą korzystać w celu wygenerowania środków pieniężnych na otwartym rynku lub do korzystania z określonych pozycji gospodarczych, politycznych lub wojskowych. Bardziej niepokojący od osób o motywach finansowych są atakujący, którzy naruszają bezpieczeństwo sieci, aby uszkodzić infrastrukturę lub zaszkodzić ludziom.
+
+W odpowiedzi na takie działania organizacje często wdrażają różne rozwiązania punktowe, które poprzez wyszukiwanie znanych sygnatur ataku koncentrują się na obronie obwodów lub punktów końcowych przedsiębiorstwa. Tego typu rozwiązania zazwyczaj generują duże ilości alertów niskiej jakości, które wymagają dokonania klasyfikacji i przeprowadzenia badań przez analityka zabezpieczeń. Większość organizacji nie dysponuje czasem i niezbędną wiedzą, które umożliwiłyby odpowiednie zareagowanie na te ostrzeżenia — wiele z nich nie jest rozwiązywanych.  
+
+Ponadto osoby atakujące rozwinęły swoje metody w celu podwyższenia liczby zabezpieczeń opartych na sygnaturach i [adaptacji do środowisk chmurowych](https://azure.microsoft.com/blog/detecting-threats-with-azure-security-center/). Wymagane jest nowe podejście do problemu zabezpieczeń, które pozwoliłoby na szybszą identyfikację potencjalnych zagrożeń, a także przyspieszone wykrywanie ich i reagowanie na nie.
 
 ## <a name="what-are-security-alerts"></a>Czym są alerty zabezpieczeń?
 
-Alerty są powiadomieniami generowanymi przez Security Center w przypadku wykrycia zagrożeń dotyczących zasobów. Określa priorytet i wyświetla listę alertów wraz z informacjami wymaganymi do szybkiego zbadania problemu. Security Center również zawiera zalecenia dotyczące sposobu korygowania ataku.
+Alerty są powiadomieniami generowanymi przez Security Center w przypadku wykrycia zagrożeń dotyczących zasobów. Security Center priorytetów i wyświetla listę alertów wraz z informacjami wymaganymi do szybkiego zbadania problemu. Security Center również zawiera zalecenia dotyczące sposobu korygowania ataku.
 
-## <a name="how-does-security-center-detect-threats"></a>Jak Security Center wykrywać zagrożenia?
+## Jak Security Center wykrywać zagrożenia? <a name="detect-threats"></a>
+
+Pracownicy naukowo-badawczy firmy Microsoft stale poszukują nowych zagrożeń. Ze względu na globalną obecność firmy Microsoft w chmurze i lokalnie mają dostęp do zestawu danych telemetrycznych rozległych. Szeroka i różnorodna kolekcja zestawów danych umożliwia odnalezienie nowych wzorców ataków i trendów w lokalnych produktach konsumenckich i firmowych, a także Usługi online. W związku z tym usługa Security Center może szybko zaktualizować swoje algorytmy wykrywania, w miarę jak atakujący wprowadzają nowe i coraz bardziej zaawansowane metody. Takie podejście pomaga sprostać wymaganiom szybko zmieniającego się środowiska zagrożenia.
 
 Aby wykrywać rzeczywiste zagrożenia i zmniejszyć liczbę fałszywych wyników, Security Center gromadzi, analizuje i integruje dane dzienników z zasobów platformy Azure i sieci. Współpracuje również z rozwiązaniami partnerskimi, takimi jak zapora i rozwiązania programu Endpoint Protection. Security Center analizuje te informacje, często skorelowane informacje z wielu źródeł, aby identyfikować zagrożenia.
 
-Security Center monitoruje zasoby w dowolnym środowisku, w którym się znajdują. Aby dowiedzieć się więcej na temat wykrywania zagrożeń i reagowania na nie, zobacz [jak Security Center wykrywać zagrożenia i reagować](security-center-detection-capabilities.md#asc-detects)na nie.
+![Prezentacja i zbieranie danych przez usługę Security Center](./media/security-center-alerts-overview/security-center-detection-capabilities.png)
 
-## <a name="security-alert-types"></a>Typy alertów zabezpieczeń
+Usługa Security Center wykorzystuje zaawansowane narzędzia analizy zabezpieczeń, które wykraczają daleko poza metody bazujące na sygnaturze. Przełomowe rozwiązania dotyczące danych big data i technologii [uczenia maszynowego](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/) są używane do oceny zdarzeń zachodzących w całej sieci szkieletowej chmury. Wykrywane są zagrożenia, które byłyby niemożliwe do wykrycia przy użyciu ręcznych metod, i przewidywany jest kierunek ewolucji ataków. Do narzędzi analizy zabezpieczeń należą:
+
+* **Zintegrowana analiza zagrożeń**: Szuka znanych nieprawidłowych aktorów, wykorzystując globalne analizy zagrożeń z produktów i usług firmy Microsoft, jednostki Microsoft Digital Zbrodnis (DCU), centrum Microsoft Security Response Center (MSRC) i zewnętrznych źródeł danych.
+* **Analiza behawioralna**: Stosuje znane wzorce w celu odnalezienia złośliwego zachowania.
+* **Wykrywanie anomalii**: Używa profilowania statystycznego do tworzenia historycznej linii bazowej. Narzędzie to alarmuje o odchyleniach od ustalonych linii bazowych zgodnych z wektorem potencjalnego ataku.
+
+W poniższych tematach szczegółowo omówiono każdą z tych analiz.
+
+### <a name="integrated-threat-intelligence"></a>Zintegrowana analiza zagrożeń
+
+Firma Microsoft dysponuje ogromną ilością danych do globalnej analizy zagrożeń. Telemetria pochodzi z wielu źródeł, takich jak usługi Azure, Office 365, Microsoft CRM online, Microsoft Dynamics AX, outlook.com i MSN.com, jednostka Microsoft Digital Crimes Unit (DCU) oraz centrum Microsoft Security Response Center (MSRC). Pracownicy naukowi otrzymują również informacje dotyczące analizy zagrożeń, które są wymieniane między największymi dostawcami usług w chmurze oraz subskrypcje źródeł analizy zagrożeń od innych firm. Usługa Azure Security Center może użyć tych informacji, aby ostrzec użytkownika przed zagrożeniami ze strony znanych złośliwych podmiotów.
+
+### <a name="behavioral-analytics"></a>Analiza behawioralna
+
+Analiza behawioralna to metoda, która polega na analizie danych i porównywaniu ich z kolekcją znanych wzorców. Wzorce te nie są jednak prostymi sygnaturami. Określa się je za pośrednictwem złożonych algorytmów uczenia maszynowego, które są stosowane w przypadku wielkich zestawów danych. Są one również określane przez specjalistów od analizy, którzy dokonują dokładnej analizy złośliwych zachowań. Usługa Azure Security Center może użyć analizy behawioralnej w celu identyfikacji zasobów, których bezpieczeństwo zostało naruszone, na podstawie analizy dzienników maszyny wirtualnej, dzienników urządzenia sieci wirtualnej, dzienników sieci szkieletowej, zrzutów awaryjnych i innych źródeł.
+
+Ponadto istnieje korelacja z innymi sygnałami, które wykrywają dowody potwierdzające istnienie szeroko zakrojonej kampanii ataku. Ta korelacja pomaga w identyfikacji zdarzeń, które są zgodne ze sprawdzonymi wskaźnikami naruszenia bezpieczeństwa. 
+
+### <a name="anomaly-detection"></a>Wykrywanie anomalii
+
+Usługa Azure Security Center używa również wykrywania anomalii do identyfikowania zagrożeń. W przeciwieństwie do analizy behawioralnej (która zależy od znanych wzorców wyprowadzonych z dużych zestawów danych), wykrywanie anomalii jest bardziej „spersonalizowane” i koncentruje się na liniach bazowych, które są specyficzne dla przeprowadzonych wdrożeń. Uczenie maszynowe jest stosowane do określania normalnego działania wdrożeń, a następnie generowania reguł definiujących odstające warunki, które mogą reprezentować zdarzenie związane z zabezpieczeniami.
+
+## <a name="continuous-monitoring-and-assessments"></a>Ciągłe monitorowanie i oceny
+
+Azure Security Center korzyści ze stosowania przez firmę Microsoft zespołów badawczych i naukowych dotyczących zabezpieczeń, którzy stale monitorują zmiany w poziomie zagrożeń. Obejmuje to następujące inicjatywy:
+
+* **Monitorowanie analizy zagrożeń**: Analiza zagrożeń obejmuje mechanizmy, wskaźniki, konsekwencje i porady umożliwiające podejmowanie działań dotyczących istniejących lub powstających zagrożeń. Te informacje są udostępniane w branży zabezpieczeń, a firma Microsoft stale monitoruje zagrożenia płynące z wewnętrznych i zewnętrznych źródeł.
+* **Udostępnianie sygnałów**: Szczegółowe informacje z zespołów ds. zabezpieczeń w szerokim portfelu usług w chmurze i lokalnych usługach, serwerach i klientach w firmie Microsoft są udostępniane i analizowane.
+* **Specjaliści ds. zabezpieczeń firmy Microsoft**: Ciągłe zaangażowanie z zespołami w firmie Microsoft, którzy pracują w wyspecjalizowanych polach zabezpieczeń, takich jak dowodowych i wykrywanie ataków w sieci Web.
+* **Dostrajanie wykrywania**: Algorytmy są uruchamiane z rzeczywistymi zestawami danych klienta i pracownicy działu bezpieczeństwa pracują z klientami w celu weryfikacji wyników. Wyniki prawdziwie i fałszywie dodatnie są używane w celu udoskonalania algorytmów uczenia maszynowego.
+
+Wszystkie te połączone wysiłki skutkują nowymi i ulepszonymi sposobami wykrywania zagrożeń, z których można korzystać od razu — użytkownik nie musi w tym kierunku nic robić.
+
+## Typy <a name="security-alert-types"></a> alertów zabezpieczeń
 
 Poniższe tematy przeprowadzą Cię przez różne alerty, zgodnie z typami zasobów:
 
@@ -53,25 +100,6 @@ W poniższych tematach opisano, jak Security Center używa różnych danych tele
 Zdarzenie zabezpieczeń to kolekcja powiązanych alertów, a nie każdego pojedynczego alertu. Security Center używa [korelacji alertów inteligentnych w chmurze](security-center-alerts-cloud-smart.md) w celu skorelowania różnych alertów i niskiej dokładności sygnałów do zdarzeń zabezpieczeń.
 
 Korzystając z incydentów, Security Center zapewnia jeden widok kampanii ataku i wszystkich powiązanych alertów. Ten widok umożliwia szybkie zrozumienie działań podejmowanych przez osobę atakującą oraz zasobów, których dotyczy. Aby uzyskać więcej informacji, zobacz [korelacja alertów inteligentnych w chmurze](security-center-alerts-cloud-smart.md).
-
-## <a name="get-started-with-alerts"></a>Wprowadzenie do alertów
-
-Poniżej przedstawiono artykuły, które ułatwiają zapoznanie się z informacjami o zasobach monitorowanych przez Security Center i przedstawiono wskazówki dotyczące sposobu reagowania na przedstawione alerty.
-
-* [Platformy i funkcje obsługiwane przez usługę Azure Security Center](security-center-os-coverage.md)  
-* [Jak obsłużyć zdarzenia zabezpieczeń w Azure Security Center](security-center-incident.md) 
-* [Reagowanie na alerty zabezpieczeń i zarządzanie nimi w usłudze Azure Security Center](security-center-managing-and-responding-alerts.md)
-* [Walidacja alertów w usłudze Azure Security Center](security-center-alert-validation.md)  
-
-
-## <a name="upgrade-to-standard-for-advanced-detections"></a>Uaktualnij do wersji Standard na potrzeby zaawansowanych wykryć
-
-Aby skonfigurować wykrywanie zaawansowane, przeprowadź uaktualnienie usługi Azure Security Center do wersji Standard. 
-
-1. Z menu **Security Center** wybierz pozycję **zasady zabezpieczeń**.
-2. W przypadku subskrypcji, które chcesz przenieść do warstwy Standardowa, wybierz pozycję **Edytuj ustawienia**. 
-3. Na stronie Ustawienia wybierz pozycję **warstwa cenowa**. 
-   Bezpłatna wersja próbna jest dostępna w danym miesiącu. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/). 
 
 ## <a name="next-steps"></a>Następne kroki
 

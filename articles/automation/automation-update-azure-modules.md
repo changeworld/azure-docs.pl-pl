@@ -1,6 +1,6 @@
 ---
-title: Aktualizowanie modułów platformy Azure w usłudze Azure Automation
-description: W tym artykule opisano, jak można teraz zaktualizować wspólnego moduły programu Azure PowerShell zapewniany domyślnie w usłudze Azure Automation.
+title: Aktualizowanie modułów platformy Azure w Azure Automation
+description: W tym artykule opisano, jak można teraz aktualizować typowe moduły Azure PowerShell udostępniane domyślnie w programie Azure Automation.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,47 +9,50 @@ ms.author: robreed
 ms.date: 06/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a42fae4e7ff9ba9edc29c64480983987e41cf9c1
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a71eb00ce4d4ace6ccc17e050946b39debed929c
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476796"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034881"
 ---
-# <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Jak zaktualizować moduły programu Azure PowerShell w usłudze Azure Automation
+# <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Jak zaktualizować moduły Azure PowerShell w programie Azure Automation
 
-Aby zaktualizować moduły platformy Azure na koncie usługi Automation, musisz użyć [elementu runbook usługi Azure aktualizowanie modułów](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update), która jest dostępna jako oprogramowanie open source. Aby rozpocząć korzystanie z **AutomationAzureModulesForAccount aktualizacji** elementu runbook, aby zaktualizować moduły platformy Azure, pobierz go z [repozytorium runbook modułów Azure aktualizacji](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) w witrynie GitHub. Można następnie zaimportować go do konta usługi Automation lub uruchomić go jako skrypt. Aby dowiedzieć się zaimportować element runbook na Twoim koncie usługi Automation, zobacz [importowanie elementu runbook](manage-runbooks.md#import-a-runbook).
+Aby zaktualizować moduły platformy Azure na koncie usługi Automation, musisz użyć [elementu Runbook aktualizacji modułów platformy Azure](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update), który jest dostępny jako Open Source. Aby rozpocząć korzystanie z elementu Runbook **Update-AutomationAzureModulesForAccount** do aktualizowania modułów platformy Azure, Pobierz go z [repozytorium elementów Runbook aktualizacji modułów platformy Azure](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) w witrynie GitHub. Następnie można zaimportować ją do konta usługi Automation lub uruchomić jako skrypt. Aby dowiedzieć się, jak zaimportować element Runbook na koncie usługi Automation, zobacz [Importowanie elementu Runbook](manage-runbooks.md#import-a-runbook).
 
-Najbardziej typowe moduły AzureRM PowerShell znajdują się domyślnie w ramach każdego konta usługi Automation. Zespół platformy Azure regularnie aktualizuje moduły platformy Azure, w związku z tym aby zapewnić aktualność można użyć [AutomationAzureModulesForAccount aktualizacji](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) elementu runbook, aby zaktualizować moduły na kontach usługi Automation.
+Najpopularniejsze moduły AzureRM PowerShell są udostępniane domyślnie na poszczególnych kontach usługi Automation. Zespół platformy Azure regularnie aktualizuje moduły platformy Azure, dlatego w celu uzyskania Aktualności należy użyć elementu Runbook [Update-AutomationAzureModulesForAccount](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) w celu zaktualizowania modułów na kontach usługi Automation.
 
-Ponieważ moduły są regularnie aktualizowane przez grupę produktu, zmiany mogą być uwzględniane polecenia cmdlet. Ta akcja może niekorzystnie wpłynąć na Twoje elementy runbook w zależności od typu zmiany, takiej jak zmiana nazwy parametru lub całkowicie wycofano polecenie cmdlet.
+Ponieważ moduły są regularnie aktualizowane przez grupę produktów, zmiany mogą wystąpić z dołączonymi poleceniami cmdlet. Ta akcja może mieć negatywny wpływ na elementy Runbook, w zależności od typu zmiany, na przykład zmiana nazwy parametru lub całkowite wycofanie polecenia cmdlet.
 
-Aby uniknąć wpływu na Twoje elementy runbook i procesy, które mogą zautomatyzować, przetestować i sprawdzić przed kontynuowaniem. Jeśli nie masz dedykowane konto usługi Automation, przeznaczone do tego celu, należy rozważyć utworzenie jednego, tak, aby podczas tworzenia elementów runbook można przetestować wielu różnych scenariuszach. Te testy powinny obejmować iteracyjne zmiany, takie jak aktualizowanie modułów programu PowerShell.
+Aby uniknąć wpływu elementów Runbook i procesów, które automatyzują, Testuj i Weryfikuj przed kontynuowaniem. Jeśli nie masz dedykowanego konta usługi Automation przeznaczonego do tego celu, rozważ utworzenie go, aby umożliwić testowanie wielu różnych scenariuszy podczas opracowywania elementów Runbook. Testowanie powinno obejmować iteracyjne zmiany, takie jak aktualizowanie modułów programu PowerShell.
 
-W przypadku tworzenia skryptów lokalnie, zaleca się mieć tej samej wersji modułu lokalnie, do których masz na koncie usługi Automation, podczas testowania, aby zagwarantować, że otrzymasz te same wyniki. Po zweryfikowaniu wyniki i wszelkie wymagane zmiany zostały zastosowane, zmiany można przenieść do środowiska produkcyjnego.
+W przypadku lokalnego tworzenia skryptów zaleca się, aby te same wersje modułów były lokalnie dostępne w ramach konta usługi Automation podczas testowania, aby upewnić się, że otrzymasz te same wyniki. Po sprawdzeniu poprawności wyników i zastosowaniu wymaganych zmian można przenieść zmiany do środowiska produkcyjnego.
 
 > [!NOTE]
-> Nowe konto usługi Automation nie mogą zawierać najnowsze moduły.
+> Nowe konto usługi Automation może nie zawierać najnowszych modułów.
+
+> [!NOTE]
+> Nie będzie można usunąć modułów globalnych — moduły, które nie są dostępne dla usługi Automation.
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
-Poniżej przedstawiono niektóre zagadnienia, weź pod uwagę podczas korzystania z tego procesu można zaktualizować moduły platformy Azure:
+Poniżej przedstawiono kilka kwestii, które należy wziąć pod uwagę w przypadku aktualizowania modułów platformy Azure przy użyciu tego procesu:
 
-* Ten element runbook obsługuje aktualizowanie **Azure** i **AzureRm** modułów domyślnie. Ten element runbook obsługuje aktualizowanie **Az** także modułów. Przegląd [elementu runbook usługi Azure aktualizacji modułów README](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md) Aby uzyskać więcej informacji na temat aktualizowania `Az` modułów przy użyciu tego elementu runbook. Istnieją dodatkowe ważne czynniki, które należy wziąć pod uwagę w przypadku korzystania z `Az` modułów na koncie usługi Automation, aby dowiedzieć się więcej, zobacz [Az używanie modułów na koncie usługi Automation](az-modules.md).
+* Ten element Runbook domyślnie obsługuje aktualizowanie modułów **platformy Azure** i **AzureRm** . Ten element Runbook obsługuje również funkcję **AZ** modules. Aby uzyskać więcej informacji na temat aktualizowania `Az` modułów za pomocą tego elementu Runbook, zapoznaj się z tematem [aktualizowanie pliku Readme elementów Runbook modułów Azure](https://github.com/microsoft/AzureAutomation-Account-Modules-Update/blob/master/README.md) . Istnieją dodatkowe ważne czynniki, które należy wziąć pod uwagę podczas korzystania z `Az` modułów na koncie usługi Automation, aby dowiedzieć się więcej, zobacz [Używanie polecenia AZ modules na koncie usługi Automation](az-modules.md).
 
-* Przed rozpoczęciem tego elementu runbook, upewnij się, Twoje konto usługi Automation ma [Uruchom jako platformy Azure poświadczeń konta](manage-runas-account.md) utworzone.
+* Przed uruchomieniem tego elementu Runbook upewnij się, że konto usługi Automation ma utworzone [poświadczenie konta Uruchom jako platformy Azure](manage-runas-account.md) .
 
-* Ten kod można użyć jako regularne skrypt programu PowerShell zamiast elementu runbook: tak. wystarczy zalogować się do platformy Azure za pomocą [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) polecenia najpierw, a następnie przekazać `-Login $false` do skryptu.
+* Możesz użyć tego kodu jako zwykłego skryptu programu PowerShell zamiast elementu Runbook: wystarczy najpierw zalogować się do platformy Azure przy użyciu polecenia [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) , a `-Login $false` następnie przekazać do skryptu.
 
-* Aby użyć tego elementu runbook w chmurach suwerennych, użyj `AzureRmEnvironment` parametr do przekazania odpowiednie środowisko do elementu runbook.  Dopuszczalne wartości to **AzureCloud**, **AzureChinaCloud**, **AzureGermanCloud**, i **AzureUSGovernment**. Te wartości mogą być pobierane z przy użyciu `Get-AzureRmEnvironment | select Name`. Jeśli nie możesz przekazać wartość tego parametru, elementu runbook będą domyślnie chmury publicznej platformy Azure **AzureCloud**
+* Aby użyć tego elementu Runbook w przypadku suwerennych chmur, `AzureRmEnvironment` Użyj parametru, aby przekazać poprawne środowisko do elementu Runbook.  Dopuszczalne wartości to **AzureCloud**, **AzureChinaCloud**, **AzureGermanCloud**i **AzureUSGovernment**. Te wartości można pobrać z użycia `Get-AzureRmEnvironment | select Name`. Jeśli wartość tego parametru nie zostanie przekazana, element Runbook będzie domyślnie **AzureCloud** chmurę publiczną platformy Azure.
 
-* Jeśli chcesz użyć określonej wersji modułu Azure PowerShell zamiast najnowszy dostępny w galerii programu PowerShell, należy przekazać te wersje, opcjonalny `ModuleVersionOverrides` parametru **Update-AutomationAzureModulesForAccount**elementu runbook. Aby uzyskać przykłady, zobacz [AutomationAzureModulesForAccount.ps1 aktualizacji](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1
-) elementu runbook. Moduły programu Azure PowerShell, które nie są wymienione w `ModuleVersionOverrides` parametru są aktualizowane przy użyciu najnowszej wersji modułu w galerii programu PowerShell. Jeśli nie ma niczego do przekazania `ModuleVersionOverrides` parametru, wszystkie moduły są aktualizowane przy użyciu najnowszej wersji modułu w galerii programu PowerShell. To zachowanie jest taka sama jak **aktualizowania modułów platformy Azure** przycisku.
+* Jeśli chcesz użyć określonej Azure PowerShell wersji modułu zamiast najnowszej dostępnej w Galeria programu PowerShell, Przekaż te wersje do opcjonalnego `ModuleVersionOverrides` parametru elementu Runbook **Update-AutomationAzureModulesForAccount** . Aby zapoznać się z [przykładami, zobacz element Runbook Update-AutomationAzureModulesForAccount. ps1.](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1
+) Moduły Azure PowerShell, które nie są wymienione `ModuleVersionOverrides` w parametrze, są aktualizowane przy użyciu najnowszych wersji modułu na Galeria programu PowerShell. Jeśli wartość `ModuleVersionOverrides` Nothing nie zostanie przekazana do parametru, wszystkie moduły są aktualizowane przy użyciu najnowszych wersji modułu na Galeria programu PowerShell. Takie zachowanie jest takie samo, jak przycisk **Aktualizuj moduły platformy Azure** .
 
 ## <a name="known-issues"></a>Znane problemy
 
-Istnieje znany problem z aktualizowaniem moduł AzureRM na koncie usługi Automation, która znajduje się w grupie zasobów o nazwie numeryczne, która rozpoczyna się od 0. Aby zaktualizować moduły platformy Azure na koncie usługi Automation, musi być w grupie zasobów o nazwie alfanumeryczne. Nie można zaktualizować usługi AzureRM moduły w tym momencie są grupy zasobów o nazwach liczbowe od 0.
+Istnieje znany problem z aktualizacją modułów AzureRM na koncie usługi Automation, które znajduje się w grupie zasobów o nazwie liczbowej rozpoczynającej się od 0. Aby zaktualizować moduły platformy Azure na koncie usługi Automation, musi ono należeć do grupy zasobów o nazwie alfanumerycznej. Grupy zasobów o nazwach liczbowych zaczynających się od 0 nie mogą teraz zaktualizować modułów AzureRM.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Odwiedź stronę "open source" [elementu runbook usługi Azure aktualizacji modułów](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) Aby dowiedzieć się więcej na ten temat.
+Aby dowiedzieć się więcej na ten temat, odwiedź [element Runbook modułu Update modules dla usługi Azure](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) sources.

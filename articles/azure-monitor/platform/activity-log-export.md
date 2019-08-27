@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: d34040722ac8793fd4bbb02f2d3fa59247f8267c
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 9b4e7ce714d0a1f65e0a35b9c493e99200c668c6
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639637"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034848"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Eksportowanie dziennika aktywności platformy Azure do magazynu lub Event Hubs platformy Azure
 [Dziennik aktywności platformy Azure](activity-logs-overview.md) zapewnia wgląd w zdarzenia na poziomie subskrypcji, które wystąpiły w ramach subskrypcji platformy Azure. Oprócz wyświetlania dziennika aktywności w Azure Portal lub kopiowania go do Log Analytics obszaru roboczego, gdzie można analizować z innymi danymi zebranymi przez Azure Monitor, można utworzyć profil dziennika w celu zarchiwizowania dziennika aktywności na koncie usługi Azure Storage lub przesyłania strumienia do niego  Centrum zdarzeń.
@@ -55,7 +55,7 @@ Profil dziennika definiuje następujące elementy.
 
 **Które regiony (lokalizacje) powinny zostać wyeksportowane.** Należy uwzględnić wszystkie lokalizacje, ponieważ wiele zdarzeń w dzienniku aktywności jest zdarzeniami globalnymi.
 
-**Czas zachowywania dziennika aktywności na koncie magazynu.** Wpisanie wartości zero oznacza, że dzienniki są przechowywane w nieskończoność. W przeciwnym razie wartość może być dowolną liczbę dni z zakresu od 1 do 2147483647.
+**Czas zachowywania dziennika aktywności na koncie magazynu.** Wpisanie wartości zero oznacza, że dzienniki są przechowywane w nieskończoność. W przeciwnym razie wartość może być dowolną liczbą dni z zakresu od 1 do 365.
 
 Jeśli zasady przechowywania są ustawione, ale przechowywanie dzienników na koncie magazynu jest wyłączone, zasady przechowywania nie będą miały żadnego efektu. Zasady przechowywania są stosowane dziennie, aby na koniec dnia (UTC), dzienniki w dzień, w którym jest teraz, po przekroczeniu przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania w jeden dzień, na początku dnia już dziś dzienników z wczoraj zanim dnia zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może upłynąć do 24 godzin dla dzienników są usuwane z konta magazynu.
 
@@ -117,7 +117,7 @@ Jeśli profil dziennika już istnieje, najpierw musisz usunąć istniejący prof
     | StorageAccountId |Nie |Identyfikator zasobu konta magazynu, w którym ma zostać zapisany dziennik aktywności. |
     | serviceBusRuleId |Nie |Service Bus Identyfikator reguły dla przestrzeni nazw Service Bus, w której chcesz utworzyć Centra zdarzeń. Jest to ciąg o formacie: `{service bus resource ID}/authorizationrules/{key name}`. |
     | Location |Tak |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. |
-    | RetentionInDays |Tak |Liczba dni, przez jaką zdarzenia mają być przechowywane na koncie magazynu, z zakresu od 1 do 2147483647. Wartość zero przechowuje dzienniki w nieskończoność. |
+    | RetentionInDays |Tak |Liczba dni, przez jaką zdarzenia mają być przechowywane na koncie magazynu, z zakresu od 1 do 365. Wartość zero przechowuje dzienniki w nieskończoność. |
     | Kategoria |Nie |Rozdzielana przecinkami lista kategorii zdarzeń, które mają być zbierane. Możliwe wartości to _Write_, _delete_i _Action_. |
 
 ### <a name="example-script"></a>Przykładowy skrypt

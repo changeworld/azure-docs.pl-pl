@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca2b7f2b0e20e85e1e62f8efabb81eddd5f901f2
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: eb4486c889dec29f81b57605c3ccee510242f832
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991110"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035140"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Włączanie dostępu zdalnego do Power BI Mobile przy użyciu usługi Azure serwer proxy aplikacji usługi Azure AD
 
@@ -103,28 +103,27 @@ Teraz możesz przystąpić do konfigurowania serwer proxy aplikacji usługi Azur
 
 Aby zakończyć konfigurowanie aplikacji, przejdź do sekcji **Użytkownicy i grupy** i przypisz użytkownikom dostęp do tej aplikacji.
 
-## <a name="step-3-grant-power-bi-mobile-access-to-report-services"></a>Krok 3: Udzielanie Power BI dostępu mobilnego do usług raportów
+## <a name="step-3-modify-the-reply-uris-for-the-application"></a>Krok 3: Modyfikowanie identyfikatora URI odpowiedzi dla aplikacji
 
-Aby aplikacja mobilna Power BI mogła łączyć się z usługami raportów i uzyskiwać do nich dostęp, musisz zarejestrować się prawidłowo w usłudze Azure AD.  
+Aby aplikacja mobilna Power BI mogła łączyć się z usługami raportów i uzyskiwać do nich dostęp, musisz skonfigurować rejestrację aplikacji, która została automatycznie utworzona w kroku 2. 
 
 1. Na stronie **przegląd** Azure Active Directory wybierz pozycję **rejestracje aplikacji**.
 2. Na karcie **wszystkie aplikacje** Wyszukaj aplikację utworzoną w kroku 2.
 3. Wybierz aplikację, a następnie wybierz pozycję **uwierzytelnianie**.
 4. Dodaj następujące identyfikatory URI przekierowania na podstawie używanej platformy.
 
-   Podczas rejestrowania aplikacji dla Power BI Mobile **iOS**Dodaj następujące identyfikatory URI przekierowania typu klient publiczny (Mobile & Desktop):
+   Podczas konfigurowania aplikacji dla Power BI Mobile **iOS**Dodaj następujące identyfikatory URI przekierowania typu klient publiczny (Mobile & Desktop):
    - `msauth://code/mspbi-adal%3a%2f%2fcom.microsoft.powerbimobile`
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
    
-   Podczas rejestrowania aplikacji dla Power BI Mobile **Android**Dodaj następujące identyfikatory URI przekierowania typu klient publiczny (Mobile & Desktop):
+   Podczas konfigurowania aplikacji dla Power BI Mobile **Android**Dodaj następujące identyfikatory URI przekierowania typu klient publiczny (Mobile & Desktop):
    - `urn:ietf:wg:oauth:2.0:oob`
+   - `mspbi-adal://com.microsoft.powerbimobile`
 
    > [!IMPORTANT]
-   > Aby aplikacja działała poprawnie, należy dodać identyfikatory URI przekierowania. W przypadku konfigurowania tej usługi dla systemów iOS i Android wystarczy tylko zarejestrować pojedynczą aplikację i dodać identyfikatory URI przekierowania dla systemów iOS i Android. Jeśli wymagane są oddzielne aplikacje dla każdej platformy, konieczne będzie uwzględnienie identyfikatora URI przekierowania: `mspbi-adal://com.microsoft.powerbimobile` dla obu aplikacji.
-
-2. Po zarejestrowaniu aplikacji natywnej można udzielić jej dostępu do innych aplikacji w katalogu, w tym przypadku do uzyskiwania dostępu do usług raportów publikowanych za poorednictwem serwera proxy aplikacji. Wykonaj kroki opisane w [sekcji Krok 3: Przyznaj dostęp do aplikacji](application-proxy-configure-native-client-application.md#step-3-grant-access-to-your-proxy-application)serwera proxy.
+   > Aby aplikacja działała poprawnie, należy dodać identyfikatory URI przekierowania. W przypadku konfigurowania aplikacji do Power BI Mobile iOS i Android Dodaj następujący identyfikator URI przekierowania typu klient publiczny (Mobile & Desktop) do listy identyfikatorów URI przekierowania skonfigurowanych dla systemu iOS: `urn:ietf:wg:oauth:2.0:oob`.
 
 ## <a name="step-4-connect-from-the-power-bi-mobile-app"></a>Krok 4: Nawiązywanie połączenia z aplikacji mobilnej Power BI
 

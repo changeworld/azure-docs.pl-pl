@@ -1,6 +1,6 @@
 ---
-title: Ustawianie lub edytowanie zasad usługi Azure API Management | Dokumentacja firmy Microsoft
-description: W tym temacie pokazano, jak można ustawiać lub edytować zasady usługi Azure API Management.
+title: Jak ustawić lub edytować zasady usługi Azure API Management | Microsoft Docs
+description: W tym temacie przedstawiono sposób ustawiania lub edytowania zasad usługi Azure API Management.
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -13,126 +13,128 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 3d1847b6001ef8e32f00a4e1cd9728d5ca0662f8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 052bf619cd6f41aad139db45a8f3ecd9f4a0a62f
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205299"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034916"
 ---
-# <a name="how-to-set-or-edit-azure-api-management-policies"></a>Ustawianie lub edytowanie zasad usługi Azure API Management
+# <a name="how-to-set-or-edit-azure-api-management-policies"></a>Jak ustawić lub edytować zasady usługi Azure API Management
 
-Definicja zasad jest dokument XML, który opisuje sekwencji instrukcji dla ruchu przychodzącego i wychodzącego. Plik XML można edytować bezpośrednio w oknie definicji. Możesz również wybrać wstępnie zdefiniowanych zasad z listy, który znajduje się po prawej stronie okna zasady. Instrukcje, które są stosowane do bieżącego zakresu są włączone i wyróżnione. Kliknięcie instrukcji włączone powoduje dodanie odpowiedniego pliku XML w lokalizacji kursora w definicji widoku. 
+Definicja zasad jest dokumentem XML, który opisuje sekwencję przychodzących i wychodzących instrukcji. KOD XML można edytować bezpośrednio w oknie definicji. Możesz również wybrać wstępnie zdefiniowane zasady z listy znajdującej się po prawej stronie okna zasady. Instrukcje mające zastosowanie do bieżącego zakresu są włączone i wyróżnione. Kliknięcie instrukcji Enabled powoduje dodanie odpowiedniego kodu XML w lokalizacji kursora w widoku definicji. 
 
-Aby uzyskać szczegółowe informacje na temat zasad, zobacz [zasad w usłudze Azure API Management](api-management-howto-policies.md).
+Aby uzyskać szczegółowe informacje na temat zasad, zobacz [zasady w usłudze Azure API Management](api-management-howto-policies.md).
 
 ## <a name="set-or-edit-a-policy"></a>Ustawianie lub edytowanie zasad
 
-Można ustawiać lub edytować zasady, wykonaj następujące czynności:
+Aby ustawić lub edytować zasady, wykonaj następujące czynności:
 
 1. Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
 2. Przejdź do swojego wystąpienia usługi APIM.
 3. Kliknij kartę **Interfejsy API**.
 
-    ![Edycja zasad](./media/set-edit-policies/code-editor.png)
+    ![Edytuj zasady](./media/set-edit-policies/code-editor.png)
 
 4. Wybierz jeden z wcześniej zaimportowanych interfejsów API.
 5. Wybierz kartę **Projekt**.
-6. Wybierz operację, do której chcesz zastosować zasady. Aby zastosować zasady do wszystkich operacji, należy zaznaczyć **wszystkie operacje**.
-7. Wybierz **</>** ikonę (Edytor kodu) w **przychodzące przetwarzanie** lub **przetwarzanie danych wychodzących** sekcji.
-8. Wklej kod żądane zasady do jednego z odpowiednich bloków.
-         
-        <policies>
-             <inbound>
-                 <base />
-             </inbound>
-             <backend>
-                 <base />
-             </backend>
-             <outbound>
-                 <base />
-             </outbound>
-             <on-error>
-                 <base />
-             </on-error>
-         </policies>
+6. Wybierz operację, do której chcesz zastosować zasady. Jeśli chcesz zastosować zasady do wszystkich operacji, wybierz pozycję **wszystkie operacje**.
+7. Wybierz ikonę (Edytor kodu) w sekcji przetwarzanie przychodzące lub przetwarzanie wychodzące. **</>**
+8. Wklej żądany kod zasad do jednego z odpowiednich bloków.
+
+    ```XML
+    <policies>
+        <inbound>
+            <base />
+        </inbound>
+        <backend>
+            <base />
+        </backend>
+        <outbound>
+            <base />
+        </outbound>
+        <on-error>
+            <base />
+        </on-error>
+    </policies>
+    ```
  
 ## <a name="configure-scope"></a>Konfigurowanie zakresu
 
-Zasady można skonfigurować globalnie lub w zakresie produktu, interfejsu API lub operacji. Aby rozpocząć konfigurowanie zasad, musisz najpierw wybrać zakres, w którym mają być stosowane zasady.
+Zasady można konfigurować globalnie lub w zakresie produktu, interfejsu API lub operacji. Aby rozpocząć konfigurowanie zasad, należy najpierw wybrać zakres, w którym zasady powinny być stosowane.
 
-Zakresy zasad są obliczane w następującej kolejności:
+Zakresy zasad są oceniane w następującej kolejności:
 
-1. Globalne
+1. Zakres globalny
 2. Zakres produktu
 3. Zakres interfejsu API
 4. Zakres operacji
 
-Instrukcje w ramach zasad są oceniane według położenia `base` elementu, jeśli jest obecny. Zasady globalne nie ma elementu nadrzędnego zasad i za pomocą `<base>` element w nim nie ma wpływu.
+Instrukcje w ramach zasad są oceniane zgodnie z położeniem `base` elementu, jeśli jest obecny. Zasady globalne nie mają zasad nadrzędnych i używanie `<base>` elementu nie ma żadnego efektu.
 
-Aby wyświetlić zasady w bieżącym zakresie w edytorze zasad, kliknij **ponownie Oblicz efektywnych zasad dla wybranego zakresu**.
+Aby wyświetlić zasady w bieżącym zakresie w edytorze zasad, kliknij pozycję **Oblicz ponownie obowiązujące zasady dla wybranego zakresu**.
 
-### <a name="global-scope"></a>Globalne
+### <a name="global-scope"></a>Zakres globalny
 
-Globalny zakres jest skonfigurowany dla **wszystkie interfejsy API** w swojego wystąpienia usługi APIM.
+Globalny zakres jest skonfigurowany dla **wszystkich interfejsów API** w wystąpieniu usługi APIM.
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) i przejdź do swojego wystąpienia usługi APIM.
-2. Kliknij przycisk **wszystkie interfejsy API**.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/) i przejdź do wystąpienia APIM.
+2. Kliknij pozycję **wszystkie interfejsy API**.
 
-    ![Globalne](./media/api-management-howto-policies/global-scope.png)
+    ![Zakres globalny](./media/api-management-howto-policies/global-scope.png)
 
-3. Kliknij ikonę trójkąt.
+3. Kliknij ikonę trójkąta.
 4. Wybierz pozycję **Edytor kodu**.
 5. Dodawanie lub edytowanie zasad.
 6. Naciśnij pozycję **Zapisz**. 
 
-    Zmiany są natychmiast propagowane do bramy usługi API Management.
+    Zmiany są natychmiast propagowane do bramy API Management.
 
 ### <a name="product-scope"></a>Zakres produktu
 
-Zakres produktu jest skonfigurowany dla wybranego produktu.
+Zakres produktu został skonfigurowany dla wybranego produktu.
 
-1. Kliknij przycisk **produktów**.
+1. Kliknij pozycję **produkty**.
 
     ![Zakres produktu](./media/api-management-howto-policies/product-scope.png)
 
-2. Wybierz produkt, do której chcesz zastosować zasady.
-3. Kliknij przycisk **zasady**.
+2. Wybierz produkt, do którego chcesz zastosować zasady.
+3. Kliknij pozycję **zasady**.
 4. Dodawanie lub edytowanie zasad.
 5. Naciśnij pozycję **Zapisz**. 
 
 ### <a name="api-scope"></a>Zakres interfejsu API
 
-Zakres interfejsu API jest skonfigurowany dla **wszystkie operacje** wybranego interfejsu API.
+Zakres interfejsu API jest skonfigurowany dla **wszystkich operacji** wybranego interfejsu API.
 
-1. Wybierz **API** mają dotyczyć zasady.
+1. Wybierz **interfejs API** , do którego chcesz zastosować zasady.
 
     ![Zakres interfejsu API](./media/api-management-howto-policies/api-scope.png)
 
 2. Wybierz pozycję **Wszystkie operacje**.
-3. Kliknij ikonę trójkąt.
+3. Kliknij ikonę trójkąta.
 4. Wybierz pozycję **Edytor kodu**.
 5. Dodawanie lub edytowanie zasad.
 6. Naciśnij pozycję **Zapisz**. 
 
 ### <a name="operation-scope"></a>Zakres operacji 
 
-Zakres operacji jest skonfigurowany dla wybranej operacji.
+Dla wybranej operacji skonfigurowano zakres operacji.
 
-1. Wybierz **API**.
-2. Wybierz operację, aby stosować zasady umożliwiające.
+1. Wybierz **interfejs API**.
+2. Wybierz operację, do której chcesz zastosować zasady.
 
     ![Zakres operacji](./media/api-management-howto-policies/operation-scope.png)
 
-3. Kliknij ikonę trójkąt.
+3. Kliknij ikonę trójkąta.
 4. Wybierz pozycję **Edytor kodu**.
 5. Dodawanie lub edytowanie zasad.
 6. Naciśnij pozycję **Zapisz**. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zobacz następujące tematy pokrewne:
 
 + [Przekształć interfejsy API](transform-api.md)
-+ [Informacje o zasadach](api-management-policy-reference.md) pełną listę zasad i ich ustawienia
++ [Dokumentacja zasad](api-management-policy-reference.md) pełna lista instrukcji zasad i ich ustawień
 + [Przykłady zasad](policy-samples.md)

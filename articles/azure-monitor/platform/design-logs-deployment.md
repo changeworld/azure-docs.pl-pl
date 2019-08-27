@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 1c2416d9fb1d45116bb6594b29863c1fe8f524a3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5d6e68b4b17c31056ed1f96a779823fc856962fb
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883202"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034741"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Projektowanie wdrożenia dzienników Azure Monitor
 
@@ -71,7 +71,7 @@ Dane, do których użytkownik ma dostęp, są określane przez kombinację czynn
 |:---|:---|
 | [Tryb dostępu](#access-mode) | Metoda wykorzystywana przez użytkownika w celu uzyskania dostępu do obszaru roboczego.  Definiuje zakres dostępnych danych i tryb kontroli dostępu, który został zastosowany. |
 | [Tryb kontroli dostępu](#access-control-mode) | Ustawienie w obszarze roboczym, które określa, czy uprawnienia są stosowane na poziomie obszaru roboczego czy zasobu. |
-| [Uprawnienia](manage-access.md#manage-accounts-and-users) | Uprawnienia zastosowane do poszczególnych lub grup użytkowników dla obszaru roboczego lub zasobu. Definiuje dane, do których użytkownik będzie miał dostęp. |
+| [Uprawnienia](manage-access.md) | Uprawnienia zastosowane do poszczególnych lub grup użytkowników dla obszaru roboczego lub zasobu. Definiuje dane, do których użytkownik będzie miał dostęp. |
 | [Kontrola RBAC na poziomie tabeli](manage-access.md#table-level-rbac) | Opcjonalne, szczegółowe uprawnienia, które mają zastosowanie do wszystkich użytkowników niezależnie od ich trybu dostępu lub trybu kontroli dostępu. Określa typy danych, do których użytkownik może uzyskać dostęp. |
 
 ## <a name="access-mode"></a>Tryb dostępu
@@ -105,7 +105,7 @@ Poniższa tabela zawiera podsumowanie trybów dostępu:
 | | Obszar roboczy — kontekst | Zasób-kontekst |
 |:---|:---|:---|
 | Dla kogo jest przeznaczony każdy model? | Administracja centralna. Administratorzy, którzy muszą skonfigurować zbieranie danych i użytkowników, którzy potrzebują dostępu do szerokiej gamy zasobów. Są one również wymagane dla użytkowników, którzy muszą uzyskać dostęp do dzienników dla zasobów poza platformą Azure. | Zespoły aplikacji. Administratorzy monitorowanych zasobów platformy Azure. |
-| Co jest wymagane przez użytkownika do wyświetlania dzienników? | Uprawnienia do obszaru roboczego. Zobacz **uprawnienia obszaru roboczego** w artykule [Zarządzanie kontami i użytkownikami](manage-access.md#manage-accounts-and-users). | Dostęp do odczytu do zasobu. Zobacz **uprawnienia zasobów** w obszarze [Zarządzanie kontami i użytkownikami](manage-access.md#manage-accounts-and-users). Uprawnienia mogą być dziedziczone (takie jak z grupy zasobów zawierających) lub bezpośrednio przypisane do zasobu. Uprawnienie do dzienników dla zasobu zostanie automatycznie przypisane. |
+| Co jest wymagane przez użytkownika do wyświetlania dzienników? | Uprawnienia do obszaru roboczego. Zobacz **uprawnienia obszaru roboczego** w obszarze [Zarządzanie dostępem przy użyciu uprawnień obszaru roboczego](manage-access.md#manage-access-using-workspace-permissions). | Dostęp do odczytu do zasobu. Zobacz **uprawnienia zasobów** w obszarze [Zarządzanie dostępem przy użyciu uprawnień platformy Azure](manage-access.md#manage-access-using-azure-permissions). Uprawnienia mogą być dziedziczone (takie jak z grupy zasobów zawierających) lub bezpośrednio przypisane do zasobu. Uprawnienie do dzienników dla zasobu zostanie automatycznie przypisane. |
 | Jaki jest zakres uprawnień? | Obszary. Użytkownicy z dostępem do obszaru roboczego mogą wykonywać zapytania dotyczące wszystkich dzienników w obszarze roboczym z tabel, do których mają uprawnienia. Zobacz [tabelę kontroli dostępu](manage-access.md#table-level-rbac) | Zasób platformy Azure. Użytkownik może wysyłać zapytania do dzienników dla określonych zasobów, grup zasobów lub subskrypcji, do których mają dostęp z dowolnego obszaru roboczego, ale nie może wysyłać zapytań do dzienników innych zasobów. |
 | Jak użytkownicy mogą uzyskiwać dostęp do dzienników? | <ul><li>Uruchom **dzienniki** z menu **Azure monitor** .</li></ul> <ul><li>Uruchom **dzienniki** z **log Analytics obszarów roboczych**.</li></ul> <ul><li>Ze [skoroszytów](../visualizations.md#workbooks)Azure monitor.</li></ul> | <ul><li>Uruchom **dzienniki** z menu dla zasobu platformy Azure</li></ul> <ul><li>Uruchom **dzienniki** z menu **Azure monitor** .</li></ul> <ul><li>Uruchom **dzienniki** z **log Analytics obszarów roboczych**.</li></ul> <ul><li>Ze [skoroszytów](../visualizations.md#workbooks)Azure monitor.</li></ul> |
 
@@ -128,7 +128,7 @@ Poniższa tabela zawiera podsumowanie trybów dostępu:
     > [!NOTE]
     > Jeśli użytkownik ma tylko uprawnienia do zasobów w obszarze roboczym, może uzyskać dostęp do obszaru roboczego tylko przy użyciu trybu kontekstu zasobów, przy założeniu, że tryb dostępu do obszaru roboczego jest ustawiony na **Używanie uprawnień zasobu lub obszaru roboczego**.
 
-Aby dowiedzieć się, jak zmienić tryb kontroli dostępu w portalu przy użyciu programu PowerShell lub szablonu Menedżer zasobów, zobacz [Definiowanie trybu kontroli dostępu](manage-access.md#define-access-control-mode).
+Aby dowiedzieć się, jak zmienić tryb kontroli dostępu w portalu przy użyciu programu PowerShell lub szablonu Menedżer zasobów, zobacz [Konfigurowanie trybu kontroli dostępu](manage-access.md#configure-access-control-mode).
 
 ## <a name="recommendations"></a>Zalecenia
 

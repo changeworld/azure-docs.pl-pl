@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: yurid
-ms.openlocfilehash: 725ac79414a9f94a40675bffe28a6972120c0cbf
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 402406f8aa677348d30551937cfca1e2726efba1
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515509"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033949"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines-with-linux"></a>Usługi Azure Security Center i Azure Virtual Machines z systemem Linux
 Usługa [Azure Security Center](https://azure.microsoft.com/services/security-center/) pomaga w zapobieganiu zagrożeniom, wykrywaniu ich i reagowaniu na nie. Zapewnia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami subskrypcji platformy Azure, pomaga wykrywać zagrożenia, które w przeciwnym razie mogłyby pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań z zakresu zabezpieczeń.
@@ -85,7 +85,7 @@ Po włączeniu [zasad zabezpieczeń](tutorial-security-policy.md) dla zasobów s
 ![Kondycja zabezpieczeń](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
 ## <a name="manage-and-respond-to-security-alerts"></a>Zarządzanie alertami zabezpieczeń i reagowanie na nie
-Usługa Security Center automatycznie gromadzi, analizuje i integruje dane dzienników z zasobów platformy Azure, sieci oraz połączonych rozwiązań partnerskich (takich jak rozwiązania zapory i ochrony punktów końcowych), aby wykrywać prawdziwe zagrożenia i redukować liczbę fałszywych alarmów. Dzięki korzystaniu z rozmaitych [funkcji wykrywania](security-center-detection-capabilities.md) usługa Security Center generuje alerty zabezpieczeń uporządkowane według priorytetu, aby pomóc w szybkim zbadaniu danego problemu i przedstawić zalecenia dotyczące działań zaradczych w przypadku ewentualnego ataku.
+Usługa Security Center automatycznie gromadzi, analizuje i integruje dane dzienników z zasobów platformy Azure, sieci oraz połączonych rozwiązań partnerskich (takich jak rozwiązania zapory i ochrony punktów końcowych), aby wykrywać prawdziwe zagrożenia i redukować liczbę fałszywych alarmów. Dzięki korzystaniu z rozmaitych [funkcji wykrywania](security-center-alerts-overview.md#detect-threats) usługa Security Center generuje alerty zabezpieczeń uporządkowane według priorytetu, aby pomóc w szybkim zbadaniu danego problemu i przedstawić zalecenia dotyczące działań zaradczych w przypadku ewentualnego ataku.
 
 ![Alerty zabezpieczeń](./media/security-center-virtual-machine/security-center-virtual-machine-fig3.png)
 

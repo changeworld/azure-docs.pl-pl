@@ -6,13 +6,13 @@ manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 0d6721c2ef24665035cc4a99c9bf3804b312fe75
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/26/2019
+ms.openlocfilehash: e127d937dfaeb8afaad6b9a95383f0008f5ea898
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900162"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033279"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Utwórz nową ofertę Dynamics 365 Business Central
 
@@ -354,7 +354,7 @@ Opcja **wystaw w witrynie Marketplace** znajdująca się na karcie **dysk testow
 
 ## <a name="supplemental-content"></a>Dodatkowa zawartość
 
-Ta strona umożliwia podanie dodatkowych wymaganych informacji o ofercie.
+Ta strona umożliwia podanie dodatkowych informacji o ofercie, które ułatwią nam zweryfikowanie oferty. Te informacje nie są widoczne dla klientów ani opublikowane w portalu Marketplace.
 
 ### <a name="target-release"></a>Wersja docelowa
 
@@ -362,15 +362,15 @@ Wskaż, która wersja programu Microsoft Dynamics Business Central, której doty
 
 ### <a name="supported-editions"></a>Obsługiwane wersje
 
-Wskaż, czy rozwiązanie obsługuje wersję podstawowa i/lub Premium systemu Microsoft Dynamics 365 Business Central. Należy wybrać co najmniej jedną wartość.
+Jeśli oferta wymaga wersji Premium systemu Microsoft Dynamics 365 Business Central, wybierz opcję tylko **Premium** . W przeciwnym razie wybierz zarówno **podstawowe** , jak i **Premium**.
 
 ### <a name="key-usage-scenario"></a>Scenariusz użycia klucza
 
-`.pdf` Przekaż plik, który zawiera listę scenariuszy użycia klucza oferty wymienionych w dokumencie (format PDF). Wszystkie scenariusze wymienione w tym miejscu mogą być weryfikowane przez nasz zespół ds. weryfikacji przed zatwierdzeniem oferty dla portalu Marketplace.
+Należy diagnostycznyc `.pdf` plik, który zawiera listę scenariuszy użycia klucza oferty wymienionych w dokumencie (format PDF). Wszystkie scenariusze wymienione w tym miejscu mogą być weryfikowane przez nasz zespół ds. weryfikacji przed zatwierdzeniem oferty dla portalu Marketplace.
 
 ### <a name="app-tests-automation"></a>Automatyzacja testów aplikacji
 
-Przekaż również plik **automatyzacji testów aplikacji** tutaj (. app).
+Opcjonalnie możesz przekazać plik **automatyzacji testów aplikacji** tutaj (. app).
 
 ### <a name="test-accounts"></a>Konta testowe
 

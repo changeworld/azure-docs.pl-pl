@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 445ee2784a74a366089a49a0e2f2f17d51ef93bf
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: b688218b871a5f652e7f4de172d23f1b1fb0aa5c
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624297"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035521"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Rozwiązywanie problemów z przeniesieniem zasobów platformy Azure do nowej grupy zasobów lub subskrypcji
 
@@ -43,7 +43,9 @@ Jeśli to możliwe, podział dużych przenosi do operacji przenoszenia oddzielne
 
 ## <a name="resource-not-in-succeeded-state"></a>Zasób nie jest w stanie pomyślnym
 
-Jeśli zostanie wyświetlony komunikat o błędzie informujący o tym, że nie można przenieść zasobu, ponieważ nie jest on w stanie "powodzenie", może to być zależny zasób, który blokuje przeniesienie. Zobacz [stan zasobów zależnych](./move-limitations/networking-move-limitations.md#state-of-dependent-resources).
+Gdy zostanie wyświetlony komunikat o błędzie informujący o tym, że nie można przenieść zasobu, ponieważ nie jest on w stanie "powodzenie", może to być zależny zasób, który blokuje przeniesienie.
+
+Jeśli źródłowa lub docelowa Grupa zasobów zawiera sieć wirtualną, Stany wszystkich zasobów zależnych dla sieci wirtualnej są sprawdzane podczas przenoszenia. Jeśli którykolwiek z tych zasobów jest w stanie niepowodzenia, przeniesienie jest zablokowane. Na przykład jeśli maszyna wirtualna, która używa sieci wirtualnej, zakończyła się niepowodzeniem, przenoszenie jest zablokowane. Przenoszenie jest blokowane nawet wtedy, gdy maszyna wirtualna nie jest jednym z przenoszonych zasobów i nie znajduje się w jednej z grup zasobów dla przeniesienia. Aby uniknąć tego problemu, Przenieś zasoby do grupy zasobów, która nie ma sieci wirtualnej.
 
 ## <a name="next-steps"></a>Następne kroki
 

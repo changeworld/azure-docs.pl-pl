@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 08/26/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 59c7a85ae564981029163bf99a8e44e72237f709
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 9f43b056275ba83630e711ff1a512cb73e84216a
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383654"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034630"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Szybki start: wyszukiwanie obrazów za pomocą interfejsu API wyszukiwania obrazów Bing i języka Python
 
@@ -142,7 +142,7 @@ Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący jednostronicowej aplikacji wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)

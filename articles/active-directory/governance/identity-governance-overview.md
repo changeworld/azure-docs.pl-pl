@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/29/2019
+ms.date: 08/25/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f09a8c2f8caae3cbb182cf2dc4621deb95f7e5c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 014a2c3cff3804657e4e2bf624b97eceef4bf4b2
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499659"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033320"
 ---
-# <a name="what-is-azure-ad-identity-governance"></a>Co to jest Azure AD Identity Governance?
+# <a name="what-is-azure-ad-identity-governance"></a>Co to jest usługa Azure AD Identity Governance?
 
 Usługa Azure Active Directory (Azure AD) Zarządzanie tożsamościami pozwala zrównoważyć potrzebę organizacji w zakresie zabezpieczeń i produktywności pracowników z właściwymi procesami i widocznością. Zapewnia to możliwość zapewnienia, że odpowiedni użytkownicy mają odpowiedni dostęp do odpowiednich zasobów i umożliwia ochronę, monitorowanie i inspekcję dostępu do kluczowych elementów zawartości — jednocześnie zapewniając produktywność pracowników.  
 
@@ -42,7 +42,7 @@ W odróżnieniu od tych czterech najważniejszych pytań warto ułatwić organiz
 
 ## <a name="identity-lifecycle"></a>Cykl życia tożsamości
 
-Zarządzanie tożsamościami pomaga organizacjom w osiągnięciu  równowagi między produktywnością — jak szybko można uzyskać dostęp do potrzebnych zasobów, takich jak dołączanie do mojej organizacji? I *zabezpieczenia* — jak należy zmienić ich dostęp z upływem czasu, na przykład ze względu na zmiany stanu zatrudnienia osoby?  Zarządzanie cyklem życia tożsamości jest podstawą do zarządzania tożsamościami, a skuteczne zarządzanie na dużą skalę wymaga modernizacji infrastruktury zarządzania cyklem życia tożsamości dla aplikacji.
+Zarządzanie tożsamościami pomaga organizacjom w osiągnięciu równowagi między produktywnością — jak szybko można uzyskać dostęp do potrzebnych zasobów, takich jak dołączanie do mojej organizacji? I *zabezpieczenia* — jak należy zmienić ich dostęp z upływem czasu, na przykład ze względu na zmiany stanu zatrudnienia osoby?  Zarządzanie cyklem życia tożsamości jest podstawą do zarządzania tożsamościami, a skuteczne zarządzanie na dużą skalę wymaga modernizacji infrastruktury zarządzania cyklem życia tożsamości dla aplikacji.
 
 ![Cykl życia tożsamości](./media/identity-governance-overview/identity-lifecycle.png)
 
@@ -80,6 +80,8 @@ Chociaż nie ma doskonałego rozwiązania lub rekomendacji dla każdego klienta,
 Możesz również zapoznać się z kartą wprowadzenie w temacie **Zarządzanie tożsamościami** w Azure Portal, aby rozpocząć korzystanie z funkcji zarządzania prawami, przeglądów dostępu, Privileged Identity Management i warunki użytkowania.
 
 ![Wprowadzenie do zarządzania tożsamościami](./media/identity-governance-overview/getting-started.png)
+
+Jeśli masz opinię na temat funkcji zarządzania tożsamościami, kliknij przycisk **otrzymasz opinię?** w Azure Portal przesłać swoją opinię. Zespół regularnie przegląda swoją opinię.
 
 ## <a name="next-steps"></a>Następne kroki
 

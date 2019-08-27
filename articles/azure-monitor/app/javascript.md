@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: mbullwin
-ms.openlocfilehash: 77c5285462c4368badd63d7cdbf6589c7ad03c8d
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f72feeefeb896c9006f767f8724d9ca3b3640c1e
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534510"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035235"
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
 
@@ -36,7 +36,7 @@ Usługi Application Insights można używać z dowolnymi stronami sieci Web — 
 > [!IMPORTANT]
 > Musisz użyć jednej z poniższych metod, aby dodać do aplikacji Application Insights zestaw SDK języka JavaScript. W przypadku korzystania z konfiguracji opartej na NPM nie należy używać Instalatora opartego na fragmentach kodu. Ten sam przebiega w odniesieniu do scenariusza zwrotnego przy użyciu podejścia opartego na fragmentach kodu. nie należy również używać konfiguracji opartej na NPM. 
 
-### <a name="npm-based-setup"></a>Konfiguracja oparta na NPM 
+### <a name="npm-based-setup"></a>Konfiguracja oparta na NPM
 
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
@@ -198,7 +198,7 @@ Zminimalizowanego stosu wywołań danych telemetrycznych dotyczących wyjątków
 2. Określ, które mapy źródłowe odpowiadają temu stosowi wywołań. Mapa źródłowa musi być zgodna z plikiem źródłowym ramki stosu, ale z sufiksem`.map`
 3. Przeciągnij i upuść mapy źródłowe na stos wywołań w Azure Portal![](https://i.imgur.com/Efue9nU.gif)
 
-## <a name="application-insights-web-basic"></a>Application Insights Web Basic
+### <a name="application-insights-web-basic"></a>Application Insights Web Basic
 
 Aby zapoznać się z lekkim doświadczeniem, możesz zamiast tego zainstalować wersję podstawową Application Insights
 ```

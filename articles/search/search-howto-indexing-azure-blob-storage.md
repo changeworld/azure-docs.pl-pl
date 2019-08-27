@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: c72a60dfb19c71ee039e2fcdb278581e41117b93
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: ce268f03f53378544b8c329ee69a2bcb8dcc232d
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656653"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032135"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indeksowanie dokumentów na platformie Azure Blob Storage przy użyciu Azure Search
 W tym artykule pokazano, jak używać Azure Search do indeksowania dokumentów (takich jak pliki PDF, dokumenty Microsoft Office i inne popularne formaty) przechowywane w usłudze Azure Blob Storage. Najpierw objaśnia podstawowe informacje na temat konfigurowania i konfigurowania indeksatora obiektów BLOB. Następnie oferuje dokładniejszą eksplorację zachowań i scenariuszy, które prawdopodobnie napotkasz.
@@ -276,7 +276,7 @@ Azure Search ogranicza rozmiar indeksowanych obiektów BLOB. Limity te są udoku
 
     "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 
-Możesz również kontynuować indeksowanie w przypadku wystąpienia błędów w dowolnym momencie przetwarzania, podczas analizowania obiektów blob lub dodawania dokumentów do indeksu. Aby zignorować określoną liczbę błędów, należy ustawić `maxFailedItems` wymagane wartości parametrów i `maxFailedItemsPerBatch` konfiguracji. Na przykład:
+Możesz również kontynuować indeksowanie w przypadku wystąpienia błędów w dowolnym momencie przetwarzania, podczas analizowania obiektów blob lub dodawania dokumentów do indeksu. Aby zignorować określoną liczbę błędów, należy ustawić `maxFailedItems` wymagane wartości parametrów i `maxFailedItemsPerBatch` konfiguracji. Przykład:
 
     {
       ... other parts of indexer definition
@@ -375,13 +375,13 @@ Poniższa tabela zawiera podsumowanie przetwarzania dla każdego formatu dokumen
 | XLS (application/vnd. MS-Excel) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` |Wyodrębnij tekst, w tym osadzone dokumenty |
 | PPTX (application/vnd.openxmlformats-officedocument.presentationml.presentation) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Wyodrębnij tekst, w tym osadzone dokumenty |
 | PPT (application/vnd. MS-PowerPoint) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` |Wyodrębnij tekst, w tym osadzone dokumenty |
-| MSG (application/vnd. MS-Outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |Wyodrębnij tekst, w tym załączniki |
+| MSG (application/vnd. MS-Outlook) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_from_email`<br/>`metadata_message_to`<br/>`metadata_message_to_email`<br/>`metadata_message_cc`<br/>`metadata_message_cc_email`<br/>`metadata_message_bcc`<br/>`metadata_message_bcc_email`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` |Wyodrębnij tekst, w tym załączniki |
 | Plik ZIP (Application/zip) |`metadata_content_type` |Wyodrębnij tekst ze wszystkich dokumentów w archiwum |
-| XML (aplikacja/XML) |`metadata_content_type`</br>`metadata_content_encoding`</br> |Przepakowywanie znacznika XML i wyodrębnienie tekstu |
-| JSON (Application/JSON) |`metadata_content_type`</br>`metadata_content_encoding` |Wyodrębnij tekst<br/>UWAGA: Jeśli musisz wyodrębnić wiele pól dokumentu z obiektu BLOB JSON, zobacz Indeksowanie [obiektów BLOB JSON](search-howto-index-json-blobs.md) w celu uzyskania szczegółów |
+| XML (aplikacja/XML) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> |Przepakowywanie znacznika XML i wyodrębnienie tekstu |
+| JSON (Application/JSON) |`metadata_content_type`<br/>`metadata_content_encoding` |Wyodrębnij tekst<br/>UWAGA: Jeśli musisz wyodrębnić wiele pól dokumentu z obiektu BLOB JSON, zobacz Indeksowanie [obiektów BLOB JSON](search-howto-index-json-blobs.md) w celu uzyskania szczegółów |
 | EML (Message/RFC822) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` |Wyodrębnij tekst, w tym załączniki |
-| RTF (aplikacja/RTF) |`metadata_content_type`</br>`metadata_author`</br>`metadata_character_count`</br>`metadata_creation_date`</br>`metadata_page_count`</br>`metadata_word_count`</br> | Wyodrębnij tekst|
-| Zwykły tekst (tekst/zwykły) |`metadata_content_type`</br>`metadata_content_encoding`</br> | Wyodrębnij tekst|
+| RTF (aplikacja/RTF) |`metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_page_count`<br/>`metadata_word_count`<br/> | Wyodrębnij tekst|
+| Zwykły tekst (tekst/zwykły) |`metadata_content_type`<br/>`metadata_content_encoding`<br/> | Wyodrębnij tekst|
 
 
 ## <a name="help-us-make-azure-search-better"></a>Pomóż nam w ulepszaniu Azure Search

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3f45389cd4cef160f8778ea6ba6e530a970dac07
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: a601792198b6efb1b3c24e3a3270c3faf78f2635
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69908028"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036344"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>Samouczek: Monitorowanie maszyn wirtualnych z systemem Windows za pomocą usługi Azure Security Center
 
@@ -105,7 +105,7 @@ W miarę stosowania się do zaleceń są one oznaczane jako rozwiązane.
 
 ## <a name="view-detected-threats"></a>Wyświetlanie wykrytych zagrożeń
 
-Oprócz zaleceń dotyczących konfiguracji zasobów usługa Security Center wyświetla alerty dotyczące wykrywania zagrożeń. Funkcja alertów zabezpieczeń agreguje dane zbierane z każdej maszyny wirtualnej, dzienników sieci platformy Azure i połączonych rozwiązań partnerów w celu wykrywania zagrożeń bezpieczeństwa dotyczących zasobów platformy Azure. Aby uzyskać szczegółowe informacje na temat możliwości wykrywania zagrożeń w usłudze Security Center, zobacz [Funkcje wykrywania usługi Azure Security Center](../../security-center/security-center-detection-capabilities.md).
+Oprócz zaleceń dotyczących konfiguracji zasobów usługa Security Center wyświetla alerty dotyczące wykrywania zagrożeń. Funkcja alertów zabezpieczeń agreguje dane zbierane z każdej maszyny wirtualnej, dzienników sieci platformy Azure i połączonych rozwiązań partnerów w celu wykrywania zagrożeń bezpieczeństwa dotyczących zasobów platformy Azure. Aby uzyskać szczegółowe informacje na temat możliwości wykrywania zagrożeń Security Center, zobacz [jak usługa Security Center wykrywać zagrożenia?](../../security-center/security-center-alerts-overview.md#detect-threats).
 
 Funkcja alertów zabezpieczeń wymaga podniesienia warstwy cenowej usługi Security Center z *Bezpłatna* do *Standardowa*. Przy przechodzeniu na tę wyższą warstwę cenową jest dostępna **bezpłatna wersja próbna**. 
 

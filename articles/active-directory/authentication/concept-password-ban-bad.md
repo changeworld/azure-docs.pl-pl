@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe2b4ed91969248bc0818f98306a108555eac424
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 77309a73f3c5641aa8a7667015ed02808e376348
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853054"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032873"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Eliminowanie nieprawidłowych haseł w organizacji
 
@@ -39,7 +39,7 @@ Za każdym razem, gdy nowe hasło jest zmieniane lub resetowane dla dowolnego u�
 > [!NOTE]
 > Cybernetycznymi — przestępcy stosują także podobne strategie w oddziałach. W związku z tym firma Microsoft nie publikuje zawartości tej listy publicznie.
 
-## <a name="custom-banned-password-list"></a>Niestandardowa lista wykluczonych haseł
+## <a name="custom-banned-password-list"></a>Lista zakazanych haseł niestandardowych
 
 Niektóre organizacje mogą chcieć jeszcze bardziej poprawić zabezpieczenia poprzez dodanie własnych dostosowań na liście globalnie zakazanych haseł, w których firma Microsoft wywołuje niestandardową listę wykluczonych haseł. Firma Microsoft zaleca, aby warunki dodane do tej listy były głównie skoncentrowane na warunkach określonych w organizacji, takich jak:
 
@@ -121,7 +121,7 @@ Dopasowywanie rozmyte jest używane na znormalizowanym haśle, aby określić, c
 
 Przykład: Załóżmy, że hasło "abcdef" jest zabronione, a użytkownik próbuje zmienić hasło na jedną z następujących czynności:
 
-"abcdeg"    *(ostatni znak został zmieniony z "f" na "g")* "abcdefg"   *"(" dołączono do końca ")* " abcd "     *(końcowe" f "zostało usunięte z końca)*
+"abcdeg" *(ostatni znak został zmieniony z "f" na "g")* "abcdefg" *"(" dołączono do końca ")* " abcd " *(końcowe" f "zostało usunięte z końca)*
 
 Każde z powyższych haseł nie jest jawnie zgodne z zakazanym hasłem "abcdef". Jednakże, ponieważ każdy przykład znajduje się w odległości od 1 niedozwolonego terminu "abcdef", wszystkie są uważane za zgodne z "abcdef".
 
@@ -174,7 +174,7 @@ Gdy użytkownik spróbuje zresetować hasło do elementu, który mógłby zosta�
 
 Niestety, hasło zawiera słowo, frazę lub wzorzec, które ułatwiają odgadnięcie hasła. Spróbuj ponownie, używając innego hasła.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Skonfiguruj niestandardową listę wykluczonych haseł](howto-password-ban-bad.md)
 - [Włączanie lokalnych agentów ochrony hasłem usługi Azure AD](howto-password-ban-bad-on-premises-deploy.md)

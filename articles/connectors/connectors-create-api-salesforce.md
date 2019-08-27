@@ -1,6 +1,6 @@
 ---
-title: Nawiązywanie połączenia usługi Salesforce z usługi Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Automatyzowanie zadań i przepływów pracy, które monitorowanie, tworzenie i zarządzanie rekordy usługi Salesforce i zadań za pomocą usługi Azure Logic Apps
+title: Nawiązywanie połączenia z usługą Salesforce z poziomu Azure Logic Apps | Microsoft Docs
+description: Automatyzowanie zadań i przepływów pracy, które monitorują i tworzą rekordy i zadania usługi Salesforce oraz zarządzają nimi przy użyciu Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -11,62 +11,62 @@ ms.assetid: 54fe5af8-7d2a-4da8-94e7-15d029e029bf
 ms.topic: article
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 292d517f2c99974f4674a4c94472a0a320320ce4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3e9f7c841d25fa988ae7e0c97adf64a51d8ef87
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62106019"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050830"
 ---
-# <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Monitorowanie, tworzenie i zarządzanie zasobami usługi Salesforce za pomocą usługi Azure Logic Apps
+# <a name="monitor-create-and-manage-salesforce-resources-by-using-azure-logic-apps"></a>Monitorowanie i tworzenie zasobów usług Salesforce oraz zarządzanie nimi za pomocą Azure Logic Apps
 
-Za pomocą usługi Azure Logic Apps i łącznika usług Salesforce możesz utworzyć automatycznych zadań i przepływów pracy dla zasobów usługi Salesforce, takich jak rekordy, zadań i obiekty, na przykład:
+Za pomocą Azure Logic Apps i łącznika usługi Salesforce można tworzyć automatyczne zadania i przepływy pracy dla zasobów usługi Salesforce, takie jak rekordy, zadania i obiekty, na przykład:
 
-* Monitor, gdy rekordy są tworzone lub zmienione. 
-* Tworzenie, pobieranie, zarządzanie zadania i rekordach, takie jak insert, update i usuwanie akcji.
+* Monitoruj, gdy rekordy są tworzone lub zmieniane. 
+* Twórz i pobieraj zadania i rekordy oraz zarządzaj nimi, w tym akcje insert, Update i DELETE.
 
-Możesz użyć wyzwalaczy usługi Salesforce, które uzyskiwanie odpowiedzi z usług Salesforce i udostępnić dane wyjściowe innych działań. Akcje w aplikacjach logiki służy do wykonywania zadań przy użyciu zasobów usługi Salesforce. Jeśli dopiero zaczynasz pracę z usługi logic apps, zapoznaj się z [co to jest Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
+Można użyć wyzwalaczy usługi Salesforce, które uzyskują odpowiedzi z usługi Salesforce i udostępnić dane wyjściowe innym akcjom. W aplikacjach logiki można używać akcji do wykonywania zadań z zasobami usługi Salesforce. Jeśli jesteś nowym sposobem logiki aplikacji, zapoznaj [się z tematem Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, [zarejestruj się w celu założenia bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/). 
 
-* A [konta usług Salesforce](https://salesforce.com/)
+* [Konto usługi Salesforce](https://salesforce.com/)
 
-* Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Podstawowa wiedza [na temat tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Aplikacja logiki, w której chcesz uzyskać dostęp do konta usługi Salesforce. Można uruchomić z wyzwalaczem usługi Salesforce [Tworzenie pustej aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji usługi Salesforce, uruchomić swoją aplikację logiki za pomocą wyzwalacza innego, na przykład, **cyklu** wyzwalacza.
+* Aplikacja logiki, w której chcesz uzyskać dostęp do konta usługi Salesforce. Aby rozpocząć pracę z wyzwalaczem usługi Salesforce, [Utwórz pustą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md). Aby użyć akcji Salesforce, uruchom aplikację logiki z innym wyzwalaczem, na przykład wyzwalaczem **cyklu** .
 
 ## <a name="connect-to-salesforce"></a>Łączenie z usługą Salesforce
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com)i Otwórz swoją aplikację logiki w Projektancie aplikacji logiki, jeśli nie otwarto już.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com)i Otwórz aplikację logiki w Projektancie aplikacji logiki, jeśli nie jest jeszcze otwarta.
 
 1. Wybierz ścieżkę: 
 
-   * Puste logic apps w polu wyszukiwania wprowadź "salesforce" jako filtr. 
-   W obszarze listy wyzwalaczy wybierz wyzwalacz, który ma. 
+   * W przypadku pustych aplikacji logiki w polu wyszukiwania wprowadź ciąg "Salesforce" jako filtr. 
+   Na liście Wyzwalacze wybierz wyzwalacz, który chcesz. 
 
      —lub—
 
-   * Dla istniejących aplikacji logiki w ramach kroku, w której chcesz dodać akcję, wybierz **nowy krok**. W polu wyszukiwania wprowadź "salesforce" jako filtr. W obszarze listy akcji wybierz akcję, którą chcesz.
+   * W przypadku istniejących aplikacji logiki w kroku, w którym chcesz dodać akcję, wybierz pozycję **nowy krok**. W polu wyszukiwania wprowadź ciąg "Salesforce" jako filtr. Na liście Akcje wybierz żądaną akcję.
 
-1. Jeśli zostanie wyświetlony monit logować się do usługi Salesforce, zarejestruj się teraz i zezwolić na dostęp.
+1. Jeśli zostanie wyświetlony monit o zalogowanie się do usługi Salesforce, zaloguj się teraz i zezwól na dostęp.
 
-   Poświadczenia Autoryzuj aplikację logiki, aby utworzyć połączenie z usługą Salesforce i uzyskiwać dostęp do danych.
+   Twoje poświadczenia autoryzują aplikację logiki, aby utworzyć połączenie z usługą Salesforce i uzyskać dostęp do danych.
 
-1. Podaj odpowiednie szczegóły wybranego wyzwalacza lub akcji i kontynuuj tworzenie przepływu pracy aplikacji logiki.
+1. Podaj niezbędne szczegóły wybranego wyzwalacza lub akcji i Kontynuuj tworzenie przepływu pracy aplikacji logiki.
 
 ## <a name="connector-reference"></a>Dokumentacja łączników
 
-Szczegółowe informacje techniczne dotyczące wyzwalaczy, akcje i ograniczeń, które opisano przez standard OpenAPI łącznika (dawniej Swagger) opis, przejrzyj łącznika [strona referencyjna](/connectors/salesforce/).
+Aby uzyskać szczegółowe informacje techniczne na temat wyzwalaczy, akcji i limitów, które są opisane w opisie OpenAPI łącznika (dawniej Swagger), przejrzyj [stronę odwołania](/connectors/salesforce/)łącznika.
 
 ## <a name="get-support"></a>Uzyskiwanie pomocy technicznej
 
 * Jeśli masz pytania, odwiedź [forum usługi Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 * Aby przesłać pomysły dotyczące funkcji lub zagłosować na nie, odwiedź [witrynę opinii użytkowników usługi Logic Apps](https://aka.ms/logicapps-wish).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się więcej o innych [łączników Logic Apps](../connectors/apis-list.md)
+* Dowiedz się więcej na temat innych [łączników Logic Apps](../connectors/apis-list.md)

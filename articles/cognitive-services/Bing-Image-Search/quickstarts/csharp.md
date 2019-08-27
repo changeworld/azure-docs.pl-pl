@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 08/26/2019
 ms.author: aahi
-ms.openlocfilehash: a931ecb255d20199dca13b60aa70a54d9d0fc85f
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: b369dc82e98dff58a42b63b9733e7b786593d534
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66383728"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034667"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-c"></a>Szybki start: wyszukiwanie obrazów za pomocą interfejsu API wyszukiwania obrazów Bing i języka C#
 
@@ -24,7 +24,7 @@ Użyj tego przewodnika Szybki start, aby rozpocząć wysyłanie żądań wyszuki
 Kod źródłowy dla tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingImageSearchv7Quickstart.cs) wraz z dodatkową obsługą błędów i adnotacjami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Dowolnej wersji programu [programu Visual Studio 2017 r. lub nowszej](https://www.visualstudio.com/downloads/).
+* Dowolna wersja programu [Visual Studio 2017 lub nowszego](https://www.visualstudio.com/downloads/).
 * Struktura [Json.NET](https://www.newtonsoft.com/json) dostępna jako pakiet NuGet.
 * Jeśli używasz systemu Linux/MacOS, możesz uruchomić tę aplikację przy użyciu środowiska [Mono](https://www.mono-project.com/).
 
@@ -201,7 +201,7 @@ Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie J
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Samouczek dotyczący jednostronicowej aplikacji wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)

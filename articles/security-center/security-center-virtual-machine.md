@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
-ms.openlocfilehash: aad42ea891b671bd481322d8b499d375ca06a7dc
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5d13e7375c9e3cd874bc61b686ff2549c38da1f3
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512643"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036362"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Usługi Azure Security Center i Azure Virtual Machines
 Usługa [Azure Security Center](https://azure.microsoft.com/services/security-center/) pomaga w zapobieganiu zagrożeniom, wykrywaniu ich i reagowaniu na nie. Zapewnia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami subskrypcji platformy Azure, pomaga wykrywać zagrożenia, które w przeciwnym razie mogłyby pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań z zakresu zabezpieczeń.
@@ -59,8 +59,6 @@ Zasady zabezpieczeń określają zestaw mechanizmów kontrolnych, które są zal
 
 > [!NOTE]
 > Aby dowiedzieć się więcej na temat poszczególnych dostępnych **zasad zapobiegania**, zobacz artykuł [Ustawianie zasad zabezpieczeń](tutorial-security-policy.md).
-> 
-> 
 
 ## <a name="manage-security-recommendations"></a>Zarządzanie zaleceniami dotyczącymi zabezpieczeń
 Usługa Security Center analizuje stan zabezpieczeń zasobów platformy Azure. Po znalezieniu potencjalnych luk w zabezpieczeniach usługa Security Center tworzy odpowiednie zalecenia. Przewodnik dotyczący zaleceń prowadzi użytkownika przez proces konfigurowania wymaganych kontrolek.
@@ -90,7 +88,7 @@ Po włączeniu [zasad zabezpieczeń](tutorial-security-policy.md) dla zasobów s
 ![Kondycja zabezpieczeń](./media/security-center-virtual-machine/security-center-virtual-machine-fig2.png)
 
 ## <a name="manage-and-respond-to-security-alerts"></a>Zarządzanie alertami zabezpieczeń i reagowanie na nie
-Usługa Security Center automatycznie gromadzi, analizuje i integruje dane dzienników z zasobów platformy Azure, sieci oraz połączonych rozwiązań partnerskich (takich jak rozwiązania zapory i ochrony punktów końcowych), aby wykrywać prawdziwe zagrożenia i redukować liczbę fałszywych alarmów. Dzięki korzystaniu z rozmaitych [funkcji wykrywania](security-center-detection-capabilities.md) usługa Security Center generuje alerty zabezpieczeń uporządkowane według priorytetu, aby pomóc w szybkim zbadaniu danego problemu i przedstawić zalecenia dotyczące działań zaradczych w przypadku ewentualnego ataku.
+Usługa Security Center automatycznie gromadzi, analizuje i integruje dane dzienników z zasobów platformy Azure, sieci oraz połączonych rozwiązań partnerskich (takich jak rozwiązania zapory i ochrony punktów końcowych), aby wykrywać prawdziwe zagrożenia i redukować liczbę fałszywych alarmów. Dzięki korzystaniu z rozmaitych [funkcji wykrywania](security-center-alerts-overview.md#detect-threats) usługa Security Center generuje alerty zabezpieczeń uporządkowane według priorytetu, aby pomóc w szybkim zbadaniu danego problemu i przedstawić zalecenia dotyczące działań zaradczych w przypadku ewentualnego ataku.
 
 ![Alerty zabezpieczeń](./media/security-center-virtual-machine/security-center-virtual-machine-fig3.png)
 

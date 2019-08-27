@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 07/30/2019
+ms.date: 08/26/2019
 ms.author: aahi
-ms.openlocfilehash: ee4551f6a31436ef2322fcea3a0c479b45036993
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 8c5df8461c74d48c0712ab1947e29813e7e1ea3f
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697619"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032674"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Czym jest interfejs API analizy tekstu?
 
@@ -81,7 +81,7 @@ Ta sekcja została przeniesiona do oddzielnego artykułu, aby zapewnić lepszą 
 
 ## <a name="data-limits"></a>Limity danych
 
-Wszystkie punkty końcowe interfejsu API analizy tekstu akceptują dane w postaci nieprzetworzonego tekstu. Aktualne ograniczenie to 5120 znaków dla każdego dokumentu; jeśli chcesz przeanalizować większe dokumenty, możesz podzielić je na mniejsze części. Jeśli nadal potrzebujesz większego limitu, [skontaktuj się z nami](https://azure.microsoft.com/overview/sales-number/), abyśmy mogli omówić Twoje wymagania.
+Wszystkie punkty końcowe interfejsu API analizy tekstu akceptują dane w postaci nieprzetworzonego tekstu. Aktualne ograniczenie to 5120 znaków dla każdego dokumentu; jeśli chcesz przeanalizować większe dokumenty, możesz podzielić je na mniejsze części.
 
 | Limit | Value |
 |------------------------|---------------|
@@ -93,7 +93,7 @@ Twoje limity szybkości różnią się w zależności od warstwy cenowej.
 
 | Warstwa          | Liczba żądań na sekundę | Liczba żądań na minutę |
 |---------------|---------------------|---------------------|
-| Wiele usług | 1000                | 1000                |
+| S/wiele usług | 1000                | 1000                |
 | S0/F0         | 100                 | 300                 |
 | S1            | 200                 | 300                 |
 | S2            | 300                 | 300                 |
@@ -106,7 +106,7 @@ Twoje limity szybkości różnią się w zależności od warstwy cenowej.
 
 Interfejs API analizy tekstu używa kodowania Unicode na potrzeby przedstawiania tekstu oraz obliczeń w zakresie liczby znaków. Żądania można przesyłać w kodowaniu UTF-8 oraz UTF-16, bez żadnych mierzalnych różnic w liczbie znaków. Punkty kodu Unicode są używane jako heurystyka dla długości znaków i są uznawane za równoważne dla celów związanych z limitami danych analizy tekstu. Jeśli używasz funkcji [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) w celu obliczenia liczby znaków, korzystasz z tej samej metody, której używamy do mierzenia rozmiaru danych.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 + [Utwórz zasób platformy Azure](../cognitive-services-apis-create-account.md) dla analiza tekstu, aby uzyskać klucz i punkt końcowy dla aplikacji.
 

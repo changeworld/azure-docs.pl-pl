@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
+author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 07/05/2019
-ms.openlocfilehash: 67e877609eec98e7100b34ab477dbab7c5577772
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.date: 08/26/2019
+ms.openlocfilehash: 418ca6f8d6258b826bb126252d7cf7b1c5fee299
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515285"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035719"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database bezserwerowe (wersja zapoznawcza)
 
@@ -136,7 +136,7 @@ Autowznawianie jest wyzwalane, jeśli w dowolnym momencie spełniony jest który
 |Kopiowanie bazy danych|Utwórz bazę danych jako kopię.<br>Eksportuj do pliku BACPAC.|
 |Synchronizacja danych SQL|Synchronizacja między bazami danych centrum i elementami członkowskimi, które są uruchamiane w konfigurowalnym harmonogramie lub są wykonywane ręcznie|
 |Modyfikowanie niektórych metadanych bazy danych|Dodawanie nowych tagów bazy danych.<br>Zmiana maksymalnego opóźnienia rdzeni wirtualnych, minimum rdzeni wirtualnych lub AutoPause.|
-|SQL Server Management Studio (SSMS)|Korzystanie z programu SSMS w wersji 18 i otwieranie nowego okna zapytania dla każdej bazy danych na serwerze spowoduje wznowienie wszystkich autowstrzymanych baz danych na tym samym serwerze. Takie zachowanie nie występuje, jeśli używany jest program SSMS w wersji 17.9.1 z wyłączonym technologią IntelliSense.|
+|SQL Server Management Studio (SSMS)|Użycie programu SSMS w wersji wcześniejszej niż 18,1 i otwarcie nowego okna zapytania dla każdej bazy danych na serwerze spowoduje wznowienie wszystkich autowstrzymanych baz danych na tym samym serwerze. Takie zachowanie nie występuje, jeśli używany jest program SSMS w wersji 18,1 lub nowszej.|
 
 Autowznawianie jest również wyzwalane podczas wdrażania niektórych aktualizacji usługi, które wymagają, aby baza danych była w trybie online.
 
@@ -165,7 +165,7 @@ Tworzenie nowej bazy danych lub przeniesienie istniejącej bazy danych do warstw
    |Parametr|Opcje wartości|Wartość domyślna|
    |---|---|---|---|
    |Min rdzeni wirtualnych|Dowolny z {0,5, 1, 2, 4} nie przekracza maksymalnej rdzeni wirtualnych|0,5 rdzeni wirtualnych|
-   |Opóźnienie AutoPause|Minimum: 60 minut (1 godzina)<br>Maksimum: 10080 minut (7 dni)<br>Zwiększa 60 minut<br>Wyłącz autowstrzymywanie:-1|60 minut|
+   |Opóźnienie AutoPause|Minimalny 60 minut (1 godzina)<br>Długość 10080 minut (7 dni)<br>Zwiększa 60 minut<br>Wyłącz autowstrzymywanie:-1|60 minut|
 
 > [!NOTE]
 > Używanie języka T-SQL do przenoszenia istniejącej bazy danych do bezserwerowej lub zmiany jej rozmiaru nie jest obecnie obsługiwane, ale można ją wykonać za pośrednictwem Azure Portal lub PowerShell.

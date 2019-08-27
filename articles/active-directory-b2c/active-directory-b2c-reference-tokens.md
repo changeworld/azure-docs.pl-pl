@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 08/27/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c347a5740a13d071d4bb06daf43463f974198e5d
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 2b33c35b1e4f83c30e2efdf64aed0b5f2035c79b
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69980797"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032073"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Omówienie tokenów w Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Usługa Azure Active Directory B2C (Azure AD) B2C emituje kilka typów tokenów zabezpieczających podczas przetwarzania poszczególnych [przepływów uwierzytelniania](active-directory-b2c-apps.md). W tym dokumencie opisano format, charakterystykę zabezpieczeń i zawartość każdego typu tokenu.
+Azure Active Directory B2C (Azure AD B2C) emituje kilka typów tokenów zabezpieczających podczas przetwarzania poszczególnych [przepływów uwierzytelniania](active-directory-b2c-apps.md). W tym dokumencie opisano format, charakterystykę zabezpieczeń i zawartość każdego typu tokenu.
 
 ## <a name="token-types"></a>Typy tokenów
 
@@ -40,7 +40,7 @@ Następujące tokeny są używane w komunikacji z Azure AD B2C:
 - `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/authorize`
 - `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token`
 
-Tokeny zabezpieczające, od których aplikacja otrzymuje Azure AD B2C mogą pochodzić z `/authorize` punktów `/token` końcowych lub. Gdy tokeny identyfikatorów są uzyskiwane `/authorize` z punktu końcowego, są one wykonywane przy użyciu niejawnego [przepływu](active-directory-b2c-reference-spa.md), który jest często używany w przypadku użytkowników logujących się do aplikacji sieci Web opartych na języku JavaScript. Gdy tokeny identyfikatorów są uzyskiwane `/token` z punktu końcowego, są one wykonywane przy użyciu [przepływu kodu poufnego](active-directory-b2c-reference-oidc.md), który utrzymuje token ukryty w przeglądarce.
+Tokeny zabezpieczające, od których aplikacja otrzymuje Azure AD B2C mogą pochodzić z `/authorize` punktów `/token` końcowych lub. Gdy tokeny identyfikatorów są uzyskiwane `/authorize` z punktu końcowego, jest ono realizowane przy użyciu niejawnego [przepływu](active-directory-b2c-reference-spa.md), który jest często używany w przypadku użytkowników logujących się do aplikacji sieci Web opartych na języku JavaScript. Gdy tokeny identyfikatorów są uzyskiwane `/token` z punktu końcowego, odbywa się przy użyciu [przepływu kodu autoryzacji](active-directory-b2c-reference-oidc.md#get-a-token), który utrzymuje token ukryty w przeglądarce.
 
 ## <a name="claims"></a>Oświadczenia
 

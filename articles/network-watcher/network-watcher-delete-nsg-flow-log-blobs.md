@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2019
 ms.author: damendo
-ms.openlocfilehash: 6b6227827e8d1efbb1d20899cd08315c4cbb0150
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6898bed0645146af9c0131307459e31bad661329
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875195"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036292"
 ---
 # <a name="delete-network-security-group-flow-log-storage-blobs-in-network-watcher"></a>Usuwanie obiektów blob magazynu dzienników sieciowej grupy zabezpieczeń w Network Watcher
 
@@ -135,5 +135,6 @@ Write-Output ('Retention policy for all NSGs evaluated and completed successfull
    ```
     
 ## <a name="next-steps"></a>Następne kroki
+- Klienci mogą zautomatyzować uruchamianie skryptu przy użyciu [usługi Azure Scheduler](https://azure.microsoft.com/services/scheduler/) lub [Azure Automation](https://azure.microsoft.com/services/automation/)
 - Aby dowiedzieć się więcej o rejestrowaniu sieciowej grupy zabezpieczeń, zobacz [dzienniki Azure monitor dla sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń)](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 

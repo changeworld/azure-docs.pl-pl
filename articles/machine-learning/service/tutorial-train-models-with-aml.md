@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: tutorial
 author: sdgilley
 ms.author: sgilley
-ms.date: 05/08/2019
+ms.date: 08/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: df5085011fd2771f094131244c1f466cebcbc89a
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 90f745d3ef5fd4442a184a51d82cd61b12828e15
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534803"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036192"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Samouczek: Uczenie modeli klasyfikacji obrazów przy użyciu MNIST ręcznie danych i scikit — uczenie się za pomocą Azure Machine Learning
 
@@ -96,11 +96,11 @@ experiment_name = 'sklearn-mnist'
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
-### <a name="create-or-attach-an-existing-compute-resource"></a>Tworzenie lub dołączanie istniejącego zasobu obliczeniowego
+### <a name="create-or-attach-an-existing-compute-target"></a>Utwórz lub Dołącz istniejący obiekt docelowy obliczeń
 
 Za pomocą usługi zarządzanej Azure Machine Learning Compute analitycy danych mogą szkolić modele uczenia maszynowego w klastrach maszyn wirtualnych platformy Azure. Przykłady obejmują maszyny wirtualne z obsługą procesorów GPU. W tym samouczku utworzysz usługę Azure Machine Learning Compute jako środowisko uczenia. Poniższy kod utworzy za Ciebie klastry obliczeniowe, jeśli nie istnieją one jeszcze w Twoim obszarze roboczym.
 
- **Tworzenie klastrów obliczeniowych zajmuje około pięciu minut.** Jeśli klastry obliczeniowe znajdują się już w obszarze roboczym, kod skorzysta z nich i pominie proces tworzenia.
+ **Tworzenie obiektu docelowego obliczeń trwa około 5 minut.** Jeśli zasób obliczeniowy znajduje się już w obszarze roboczym, kod używa go i pomija proces tworzenia.
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -211,9 +211,9 @@ Teraz wiesz już, jak wyglądają te obrazy i jakie są oczekiwane wyniki przewi
 
 ### <a name="upload-data-to-the-cloud"></a>Przekazywanie danych do chmury
 
-Teraz umożliw zdalny dostęp do danych, przekazując je ze swojego komputera lokalnego na platformę Azure. Będą one wtedy dostępne dla zdalnego uczenia. Magazyn danych to wygodna konstrukcja skojarzona z Twoim obszarem roboczym służąca do przekazywania/pobierania danych. Umożliwia także interakcję z nimi z poziomu zdalnych docelowych zasobów obliczeniowych. Jest on wspierany przez konto usługi Azure Blob Storage.
+Dane szkoleniowe zostały pobrane i użyte na komputerze, na którym działa Twój Notes.  W następnej sekcji nastąpi przeszkolenie modelu w ramach obliczeń Azure Machine Learning zdalnego.  Zdalny zasób obliczeniowy będzie również wymagał dostępu do Twoich danych. Aby zapewnić dostęp, Przekaż dane do scentralizowanego magazynu danych skojarzonego z Twoim obszarem roboczym. Ten magazyn danych zapewnia szybki dostęp do Twoich potrzeb w przypadku używania zdalnych obiektów docelowych obliczeń w chmurze, które znajdują się w centrum danych platformy Azure.
 
-Pliki MNIST są przekazywane do katalogu o nazwie `mnist` w folderze głównym magazynu danych:
+Przekaż pliki mnist ręcznie do katalogu o nazwie `mnist` w katalogu głównym magazynu danych. Aby uzyskać więcej informacji, zobacz [Uzyskiwanie dostępu do danych z przechowywanych magazynów](how-to-access-data.md) .
 
 ```python
 ds = ws.get_default_datastore()

@@ -1,6 +1,6 @@
 ---
-title: Skalowalność usługi Service Fabric | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób skalowania usługi Service Fabric
+title: Skalowalność usług Service Fabric Services | Microsoft Docs
+description: Opisuje sposób skalowania Service Fabric usług
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -12,31 +12,31 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/18/2017
+ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: 14a7389fe562b5f3206b81411d2224257051c636
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f44a44c0923374b2f6024903213305f1defb3b94
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60781135"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035918"
 ---
-# <a name="scaling-in-service-fabric"></a>Skalowanie w usłudze Service Fabric
-Usługa Azure Service Fabric ułatwia tworzenie skalowalnych aplikacji, umożliwiając zarządzanie usług, partycji i replik w węzłach klastra. Uruchamianie wielu obciążeń na tym samym sprzęcie umożliwia wykorzystanie zasobów maksymalna, ale również zapewnia elastyczność pod względem sposobu wybranego obciążenia. W tym wideo Channel 9 opisano, jak tworzyć aplikacje skalowalnych mikrousług:
+# <a name="scaling-in-service-fabric"></a>Skalowanie w Service Fabric
+Usługa Azure Service Fabric ułatwia tworzenie skalowalnych aplikacji przez zarządzanie usługami, partycjami i replikami w węzłach klastra. Uruchamianie wielu obciążeń na tym samym sprzęcie pozwala na maksymalne wykorzystanie zasobów, ale również zapewnia elastyczność w zakresie skalowania obciążeń. Ten film wideo Channel 9 opisuje, jak można tworzyć skalowalne aplikacje mikrousług:
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T116/player]
 
-Skalowanie w usłudze Service Fabric odbywa się na kilka różnych sposobów:
+Skalowanie w Service Fabric jest realizowane na kilka różnych sposobów:
 
-1. Skalowanie przez tworzenie lub usuwanie wystąpień usługi bezstanowej
-2. Skalowanie przez utworzenie lub usunięcie nowych o nazwie usługi
-3. Skalowanie przez utworzenie lub usunięcie nowych nazwanego wystąpienia aplikacji
-4. Skalowanie za pomocą usług podzielonym na partycje
+1. Skalowanie przez tworzenie lub usuwanie bezstanowych wystąpień usługi
+2. Skalowanie przez tworzenie lub usuwanie nowych nazwanych usług
+3. Skalowanie przez tworzenie lub usuwanie nowych nazwanych wystąpień aplikacji
+4. Skalowanie przy użyciu usług partycjonowanych
 5. Skalowanie przez dodawanie i usuwanie węzłów z klastra 
 6. Skalowanie przy użyciu metryk Menedżer zasobów klastra
 
-## <a name="scaling-by-creating-or-removing-stateless-service-instances"></a>Skalowanie przez tworzenie lub usuwanie wystąpień usługi bezstanowej
-Jedną z najprostszych sposobów skalowania w ramach usługi Service Fabric sprawdza w przypadku usług bezstanowych. Gdy tworzysz usługę bezstanową, otrzymasz możliwość definiowania `InstanceCount`. `InstanceCount` Określa, ile uruchomionej kopii kodu tej usługi są tworzone podczas uruchamiania usługi. Powiedzmy, na przykład, że istnieją 100 węzłów w klastrze. Ponadto Załóżmy, że usługa jest tworzona przy użyciu `InstanceCount` 10. Podczas wykonywania tych 10 uruchomionej kopii kodu może wszystkie stać się zbyt zajęty (lub może nie być wystarczająco zajęty). Jednym ze sposobów skalowania tego obciążenia jest aby zmienić liczbę wystąpień. Na przykład niektóre części kodu monitorowania lub zarządzania można zmienić istniejące liczby wystąpień, 50 lub 5, w zależności od tego, czy obciążenie konieczne skalowanie w pionie lub poziomie na podstawie obciążenia. 
+## <a name="scaling-by-creating-or-removing-stateless-service-instances"></a>Skalowanie przez tworzenie lub usuwanie bezstanowych wystąpień usługi
+Jednym z najprostszych sposobów skalowania w ramach Service Fabric współpracuje z usługami bezstanowymi. Podczas tworzenia usługi bezstanowej uzyskasz możliwość zdefiniowania `InstanceCount`. `InstanceCount`definiuje, ile uruchomionych kopii kodu usługi jest tworzonych podczas uruchamiania usługi. Załóżmy na przykład, że w klastrze znajdują się węzły 100. Załóżmy również, że usługa została utworzona z `InstanceCount` 10. W czasie wykonywania te 10 uruchomione kopie kodu mogły być zbyt zajęte (lub nie mogą być zbyt małe). Jednym ze sposobów skalowania obciążenia jest zmiana liczby wystąpień. Na przykład część kodu monitorowania lub zarządzania może zmienić istniejącą liczbę wystąpień na 50 lub 5, w zależności od tego, czy obciążenie wymaga skalowania w poziomie, czy w dół na podstawie obciążenia. 
 
 C#:
 
@@ -46,13 +46,13 @@ updateDescription.InstanceCount = 50;
 await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/app/service"), updateDescription);
 ```
 
-Program PowerShell:
+Narzędzia
 
 ```posh
 Update-ServiceFabricService -Stateless -ServiceName $serviceName -InstanceCount 50
 ```
-### <a name="using-dynamic-instance-count"></a>Za pomocą dynamicznego liczba wystąpień
-Specjalnie dla usługi bezstanowej usługi Service Fabric oferuje automatyczny sposób, aby zmienić liczbę wystąpień. Dzięki temu usługa dynamicznie skalować liczbę węzłów, które są dostępne. Sposobem zdecydować się na to zachowanie jest Ustaw liczbę wystąpień = -1. InstanceCount = -1 jest instrukcję do usługi Service Fabric, który jest wyświetlany komunikat "Uruchom tę usługę bezstanową w każdym węźle." Zmiana liczby węzłów usługi Service Fabric automatycznie zmieni liczbę wystąpień, aby dopasować, zapewnienie, że usługa jest uruchomiona na wszystkich węzłach prawidłowe. 
+### <a name="using-dynamic-instance-count"></a>Używanie dynamicznej liczby wystąpień
+W odniesieniu do usług bezstanowych Service Fabric oferuje automatyczny sposób zmiany liczby wystąpień. Pozwala to na dynamiczne skalowanie usługi przy użyciu liczby dostępnych węzłów. Aby zrezygnować z tego zachowania, należy ustawić liczbę wystąpień =-1. InstanceCount =-1 jest instrukcją Service Fabric, która mówi "Uruchom tę usługę bezstanową na każdym węźle". W przypadku zmiany liczby węzłów Service Fabric automatycznie zmienia liczbę wystąpień na zgodną, co zapewnia, że usługa jest uruchomiona na wszystkich prawidłowych węzłach. 
 
 C#:
 
@@ -63,90 +63,94 @@ serviceDescription.InstanceCount = -1;
 await fc.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Program PowerShell:
+Narzędzia
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName -Stateless -PartitionSchemeSingleton -InstanceCount "-1"
 ```
 
-## <a name="scaling-by-creating-or-removing-new-named-services"></a>Skalowanie przez utworzenie lub usunięcie nowych o nazwie usługi
-Nazwanym wystąpieniu usługi jest wystąpienie określonego typu usługi (zobacz [cyklu życia aplikacji usługi Service Fabric](service-fabric-application-lifecycle.md)) w ramach niektórych wystąpień nazwanych aplikacji w klastrze. 
+## <a name="scaling-by-creating-or-removing-new-named-services"></a>Skalowanie przez tworzenie lub usuwanie nowych nazwanych usług
+Nazwane wystąpienie usługi jest określonym wystąpieniem typu usługi (zobacz [Service Fabric cyklu życia aplikacji](service-fabric-application-lifecycle.md)) w przypadku niektórych nazwanych wystąpień aplikacji w klastrze. 
 
-Nowe wystąpienia usługi o nazwie można utworzyć (lub usunięte) jako usługi staną się bardziej lub mniej zajęty. Dzięki temu żądania do większej liczby wystąpień usługi, zazwyczaj co obciążenia na istniejące usługi, aby zmniejszyć ich rozmieszczenie. Podczas tworzenia usługi, Menedżer zasobów klastra usługi Service Fabric umieszcza usług w klastrze w sposób rozproszonych. Podlegają dokładnie decyzje [metryki](service-fabric-cluster-resource-manager-metrics.md) w klastrze i inne reguły umieszczania. Usługi można utworzyć kilka różnych sposobów, ale są najbardziej typowych, za pomocą działania administracyjne, takiego jak wywołanie [ `New-ServiceFabricService` ](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps), lub za pośrednictwem wywołania kodu [ `CreateServiceAsync` ](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet). `CreateServiceAsync` nawet można wywołać z w ramach innych usług uruchomionych w klastrze.
+Nowe nazwane wystąpienia usługi można utworzyć (lub usunąć), ponieważ usługi stają się bardziej lub mniej zajęte. Pozwala to na rozproszenie żądań w większej liczbie wystąpień usługi, zwykle umożliwiając zmniejszenie obciążeń istniejących usług. Podczas tworzenia usług klaster Service Fabric Menedżer zasobów umieści usługi w klastrze w sposób rozproszony. Dokładne decyzje podlegają metrykom w klastrze [](service-fabric-cluster-resource-manager-metrics.md) i innymi regułami umieszczania. Usługi można tworzyć na kilka różnych sposobów, ale najczęściej są one za pomocą akcji administracyjnych, takich jak ktoś [`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)wywołujący lub wywołujący [`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet)kod. `CreateServiceAsync`może być nawet wywoływana z innych usług uruchomionych w klastrze.
 
-Tworzenie usługi dynamicznie mogą być używane w szerokiej gamy scenariuszy i jest to typowy wzorzec. Rozważmy na przykład usługi stanowej, która reprezentuje określonego przepływu pracy. Wywołania reprezentujące pracę mają pojawienie się do tej usługi, a ta usługa będzie można wykonać kroki tego przepływu pracy i rejestrowanie postępu. 
+Dynamiczne tworzenie usług może być używane we wszystkich różnych scenariuszach i jest typowym wzorcem. Rozważmy na przykład usługę stanową, która reprezentuje konkretny przepływ pracy. Wywołania reprezentujące prace będą wyświetlane w tej usłudze, a ta usługa będzie wykonywała kroki do tego przepływu pracy i rejestrowania postępu. 
 
-Jak można utworzyć tej skali określonej usługi? Usługa może być wielu dzierżawców w pewnej postaci akceptować wywołania i uruchamiał kroki dla wielu różnych wystąpień tego samego przepływu pracy w całości. Jednak, może uczynić kod bardziej skomplikowane, ponieważ teraz ma już martwić się o wiele różnych wystąpień tego samego przepływu pracy na różnych etapach i od innych klientów. Ponadto obsługa wiele przepływów pracy w tym samym czasie nie rozwiąże problemu skali. Jest to spowodowane w pewnym momencie tej usłudze będą używać zbyt wiele zasobów, aby dopasować na danym komputerze. Wiele usług, które nie zostały skompilowane dla tego wzoru w pierwszej kolejności również występować problemy ze względu na pewne nieprzerwaną pracę wąskich gardeł lub spowolnienia w ich kodzie. Tego rodzaju problemy spowodować, że usługa nie działa tak dobrze, podczas gdy większe pobiera liczbę jednoczesnych przepływów pracy, który go służy do śledzenia.  
+Jak można utworzyć tę konkretną skalę usługi? Usługa może być wielodostępna w niektórych formach i akceptować wywołania i uruchamiać kroki dla wielu różnych wystąpień tego samego przepływu pracy jednocześnie. Jednak może to spowodować, że kod jest bardziej skomplikowany, ponieważ teraz trzeba martwić się o wiele różnych wystąpień tego samego przepływu pracy, na różnych etapach i od różnych klientów. Ponadto obsługa wielu przepływów pracy jednocześnie nie rozwiązuje problemu ze skalą. Dzieje się tak, ponieważ w pewnym momencie ta usługa będzie zużywać zbyt wiele zasobów do dopasowania na konkretnym komputerze. Wiele usług nieskompilowanych dla tego wzorca w pierwszym miejscu ma także trudności z powodu nietypowego wąskiego gardła lub spowolnienia w kodzie. Te typy problemów powodują, że usługa nie będzie działała prawidłowo, gdy liczba współbieżnych przepływów pracy, które są śledzone, jest większa.  
 
-Jest to rozwiązanie do utworzenia wystąpienia tej usługi dla każdego innego wystąpienia przepływu pracy, który chcesz śledzić. Jest to doskonałe wzorzec i działa, czy usługa jest bezstanowe lub stanowe. Ten wzorzec do pracy jest zazwyczaj innej usługi, która działa jako "Usługa Menedżera obciążenia". Zadania tej usługi jest do odbierania żądań i kierowania tych żądań do innych usług. Menedżera można dynamiczne tworzenie wystąpienia usługi Obciążenie, po odebraniu wiadomości, a następnie przekazać w odpowiedzi na żądania do tych usług. Usługa Menedżera również otrzymać wywołania zwrotne danego przepływu pracy usługi zakończeniu swojego zadania. Kiedy Menedżera otrzymuje te wywołania zwrotne go można usunąć to wystąpienie usługi przepływu pracy, lub pozostaw to pole, jeśli są oczekiwano kolejnych wywołań. 
+Rozwiązaniem jest utworzenie wystąpienia tej usługi dla każdego innego wystąpienia przepływu pracy, który ma być śledzony. Jest to doskonały wzorzec i działa niezależnie od tego, czy usługa jest bezstanowa, czy stanowa. Aby ten wzorzec działał, zazwyczaj istnieje inna usługa, która działa jako "Usługa Menedżera obciążeń". Zadaniem tej usługi jest odbieranie żądań i kierowanie tych żądań do innych usług. Menedżer może dynamicznie utworzyć wystąpienie usługi obciążenia, gdy odbierze komunikat, a następnie przekazać żądania do tych usług. Usługa Menedżer może również odbierać wywołania zwrotne, gdy dana usługa przepływu pracy ukończy zadanie. Gdy Menedżer odbiera te wywołania zwrotne, może usunąć to wystąpienie usługi przepływu pracy lub pozostawić ją, jeśli oczekiwane jest zwiększenie liczby wywołań. 
 
-Zaawansowane wersje tego rodzaju Menedżera można nawet tworzyć pule usługi, którymi zarządza. Pula zapewnia, że gdy nowe żądanie jest oferowana w nie musi czekać do uruchomienia usługi. Zamiast tego menedżera można po prostu wybierz usługi przepływu pracy, który nie jest obecnie zajęta z puli lub losowo trasy. Utrzymywanie puli usług dostępnych sprawia, że nowe żądania obsługi szybciej, ponieważ jest mniej prawdopodobne, że żądanie ma czekać na nową usługę, która jest przetworzyliśmy. Tworzenia nowych usług w szybki, ale nie jest bezpłatne lub natychmiastowe. Pula pomaga zminimalizować ilość czasu, przez który żądanie ma czekać przed są obsługiwane. Często zobaczysz ten wzorzec puli i Menedżera gdy czas reakcji niezależnie od tego najczęściej. Kolejkowanie żądania i tworzenia usługi w tle i _następnie_ przekazanie jej jest również wzorcu Menedżera popularne jest tworzenie i usuwanie usług opartych na niektórych śledzenia dla ilości pracy usługi obecnie ma oczekujące . 
+Zaawansowane wersje tego typu Menedżera mogą nawet tworzyć pule zarządzanych usług. Pula pomaga upewnić się, że w przypadku pojawienia się nowego żądania nie trzeba czekać na zakończenie działania usługi. Zamiast tego Menedżer może po prostu wybrać usługę przepływu pracy, która nie jest obecnie zajęta w puli, lub losowo ją rozesłać. Utrzymywanie puli dostępnych usług sprawia, że nowe żądania są szybsze, ponieważ jest mniej przyczyną, że żądanie musi czekać na nową usługę. Tworzenie nowych usług jest szybkie, ale nie bezpłatnie ani natychmiastowo. Pula pomaga zminimalizować ilość czasu oczekiwania żądania przed podjęciem obsługi. Ten Menedżer i wzorzec puli często są wyświetlane, gdy czasy odpowiedzi są najważniejsze. Kolejkowanie żądania i tworzenie usługi w tle, a _następnie_ przekazanie jej do programu jest również popularnym wzorcem Menedżera, jak tworzenie i usuwanie usług na podstawie pewnych śledzenia ilości pracy, która aktualnie oczekuje. 
 
-## <a name="scaling-by-creating-or-removing-new-named-application-instances"></a>Skalowanie przez utworzenie lub usunięcie nowych nazwanego wystąpienia aplikacji
-Tworzenie i usuwanie wystąpień całej aplikacji jest podobny do wzorca, tworzenia i usuwania usług. Ten wzorzec jest niektóre Usługa menedżera, która jest podejmowania decyzji na podstawie żądań, które ma ona do czynienia i informacje, że odbiera od innych usług w klastrze. 
+## <a name="scaling-by-creating-or-removing-new-named-application-instances"></a>Skalowanie przez tworzenie lub usuwanie nowych nazwanych wystąpień aplikacji
+Tworzenie i usuwanie całych wystąpień aplikacji jest podobne do wzorca tworzenia i usuwania usług. W przypadku tego wzorca istnieje pewna Usługa Menedżera, która wprowadza decyzję na podstawie żądań, które widzi, oraz informacji otrzymywanych z innych usług w klastrze. 
 
-Kiedy należy utworzyć nowe wystąpienie aplikacji o nazwie użyć zamiast tworzyć nowe wystąpienia usługi o nazwie w niektórych już istniejącej aplikacji? Istnieje kilka przypadków:
+Kiedy należy utworzyć nowe nazwane wystąpienie aplikacji zamiast tworzyć nowe nazwane wystąpienia usługi w już istniejącej aplikacji? Istnieje kilka przypadków:
 
-  * Nowe wystąpienie aplikacji jest dla klienta, którego kod musi zostać uruchomiony w ramach niektóre konkretnej tożsamości lub ustawienia zabezpieczeń.
-    * Usługa Service Fabric umożliwia definiowanie pakietów inny kod uruchamiany w kontekście określonej tożsamości. Aby uruchomić ten sam pakiet kodu w ramach różnych tożsamości, aktywacja muszą zostać wykonane w różne wystąpienia aplikacji. Należy rozważyć przypadek, w którym masz istniejący klient obciążenia wdrożone. One może być uruchomiony w kontekście określonej tożsamości, aby można było monitorowanie i kontrolowanie dostępu do innych zasobów, takich jak zdalne bazy danych lub innych systemów. W takim przypadku po zarejestrowaniu nowego klienta, prawdopodobnie nie chcesz aktywować swój kod w tym samym kontekście (przestrzeni procesu). Chociaż można wykonać następujące akcje, to na celu utrudnienie kodu usługi do działania w kontekście określonej tożsamości. Zazwyczaj trzeba więcej zabezpieczeń, izolacji i kod zarządzania tożsamościami. Zamiast korzystać z różnych o nazwie wystąpienia usługi w ramach tego samego wystąpienia aplikacji i dlatego tego samego procesu miejsce, można użyć różnych wystąpień nazwanych aplikacji usługi Service Fabric. Ułatwia do definiowania kontekstów inna tożsamość.
-  * Nowe wystąpienie aplikacji służy również jako sposób konfiguracji
-    * Domyślnie wszystkich wystąpień usługi o nazwie typu określonej usługi w ramach wystąpienie aplikacji zostanie uruchomiony w ten sam proces danego węzła. Oznacza to, że mimo że możesz skonfigurować inaczej każde wystąpienie usługi jest to skomplikowane. Usługi muszą mieć pewne tokenu, używane w celu wyszukania ich konfiguracji w ramach pakietu konfiguracji. Zazwyczaj jest to po prostu nazwę usługi. Działa to prawidłowo, ale jej couples konfiguracji do nazw wystąpień poszczególnych nazwaną usługę w ciągu tego wystąpienia aplikacji. Może to być mylące i trudny do zarządzania, ponieważ konfiguracja jest zwykle artefaktu czasu projektowania, z określonymi wartościami wystąpienia aplikacji. Tworzenie większej liczby usług zawsze oznacza, że więcej uaktualnień aplikacji, aby zmienić informacji zawartych w pakietach konfiguracji lub wdrożyć nowe nowych usług można wyszukiwać ich szczegółowe informacje. Często łatwiej jest utworzyć zupełnie nowe wystąpienie aplikacji o nazwie. Następnie można użyć parametry aplikacji, można ustawić, niezależnie od konfiguracji jest niezbędne dla usług. Dzięki temu wszystkie usługi, które są tworzone w ramach których nazwane wystąpienie aplikacji może dziedziczyć ustawienia określonej konfiguracji. Na przykład zamiast pojedynczym pliku konfiguracji z ustawień i dostosowań, dla każdego klienta, takie jak hasła lub względem poszczególnych limity zasobów klienta, zamiast tego trzeba wystąpienie aplikacji jest inny dla każdego klienta przy użyciu tych ustawień zastąpione. 
-  * Nowa aplikacja służy jako granicę uaktualnienia
-    * W ramach usługi Service Fabric różne nazwanego wystąpienia aplikacji pełnić rolę granic dla uaktualnienie. Uaktualnienie jedno wystąpienie aplikacji o nazwie nie ma wpływu na kod, który jest uruchomione inne wystąpienie nazwane aplikacji. Różne aplikacje zostaną uruchomione różne wersje tego samego kodu w tej samej węzłów. Może to być czynnikiem, gdy trzeba podjąć decyzję skalowania, ponieważ można wybrać, czy nowego kodu należy przestrzegać tych samych uaktualnień jako inną usługę lub nie. Na przykład załóżmy, że wywołanie dociera do usługi Menedżera, która jest odpowiedzialna za skalowanie obciążeń określonego klienta, tworzenie i usuwanie usług dynamicznie. W takim jednak wywołanie jest dla obciążenia skojarzone z _nowe_ klienta. Większość klientów tak, pozostając w izolacji od siebie nawzajem nie tylko z powodów bezpieczeństwa i konfiguracji wymienionych powyżej, ale ponieważ zapewnia większą elastyczność w zakresie uruchomioną określoną wersją oprogramowania, a następnie wybierając, gdy ich uaktualniony. Może również utworzyć nowe wystąpienie aplikacji i Utwórz usługę po prostu na kolejne partycje ilość usługi, które będzie w ogóle jakiegokolwiek uaktualnienia jeden. Wystąpienia osobnych aplikacji zapewniają większą szczegółowość podczas wykonywania uaktualnienia aplikacji oraz włączenie A / B wdrożeń testowych i niebieski i zielony. 
-  * Istniejące wystąpienie aplikacji jest pełny
-    * W usłudze Service Fabric [pojemności aplikacji](service-fabric-cluster-resource-manager-application-groups.md) koncepcja używanej do kontrolowania ilości zasobów dostępnych dla wystąpień określonej aplikacji. Może na przykład można określić, że dana usługa musi mieć innego wystąpienia utworzone w celu przeprowadzenia skalowania. Jednak tego wystąpienia aplikacji jest poza pojemności dla niektórych metryki. Jeśli tego konkretnego klienta lub obciążenia może nadal być przyznany więcej zasobów, następnie użytkownik może zwiększyć pojemność istniejącego dla tej aplikacji lub Utwórz nową aplikację. 
+  * Nowe wystąpienie aplikacji jest przeznaczone dla klienta, którego kod musi być uruchomiony w ramach określonej tożsamości lub ustawień zabezpieczeń.
+    * Service Fabric umożliwia definiowanie różnych pakietów kodu do uruchamiania w określonych tożsamościach. Aby można było uruchomić ten sam pakiet kodu pod różnymi tożsamościami, aktywacje muszą wystąpić w różnych wystąpieniach aplikacji. Rozważ przypadek, w którym masz wdrożone obciążenia istniejącego klienta. Mogą one działać w ramach określonej tożsamości, aby można było monitorować i kontrolować dostęp do innych zasobów, takich jak zdalne bazy danych lub inne systemy. W tym przypadku, gdy nowy klient zostanie zarejestrowani, prawdopodobnie nie chcesz aktywować kodu w tym samym kontekście (przestrzeni procesu). Chociaż można to utrudnić, kod usługi może działać w kontekście określonej tożsamości. Zwykle trzeba mieć większy kod zabezpieczeń, izolacji i zarządzania tożsamościami. Zamiast korzystać z różnych nazwanych wystąpień usługi w ramach tego samego wystąpienia aplikacji, a tym samym obszaru procesu, można użyć różnych nazwanych wystąpień aplikacji Service Fabric. Ułatwia to Definiowanie różnych kontekstów tożsamości.
+  * Nowe wystąpienie aplikacji również służy jako sposób konfiguracji.
+    * Domyślnie wszystkie nazwane wystąpienia usługi określonego typu usługi w ramach wystąpienia aplikacji będą uruchamiane w tym samym procesie dla danego węzła. Oznacza to, że chociaż można skonfigurować każde wystąpienie usługi w inny sposób, to jest skomplikowane. Usługi muszą mieć jakiś token używany do wyszukiwania konfiguracji w ramach pakietu konfiguracyjnego. Zwykle jest to tylko nazwa usługi. To działa prawidłowo, ale Couples konfigurację do nazw poszczególnych wystąpień usługi nazwanych w ramach tego wystąpienia aplikacji. Może to być mylące i trudne do zarządzania, ponieważ konfiguracja jest zwykle artefaktem czasu projektowania z wartościami specyficznymi dla wystąpienia aplikacji. Tworzenie kolejnych usług zawsze oznacza więcej uaktualnień aplikacji, aby zmienić informacje w ramach pakietów konfiguracyjnych lub wdrożyć nowe, aby nowe usługi mogły wyszukiwać określone informacje. Często łatwiej jest utworzyć całe nowe nazwane wystąpienie aplikacji. Następnie możesz użyć parametrów aplikacji, aby ustawić dowolną konfigurację, która jest niezbędna dla usług. W ten sposób wszystkie usługi, które są tworzone w nazwanym wystąpieniu aplikacji, mogą dziedziczyć określone ustawienia konfiguracji. Na przykład zamiast posiadania pojedynczego pliku konfiguracji z ustawieniami i dostosowaniami dla każdego klienta, takich jak wpisy tajne lub limity zasobów klienta, zamiast tego należy użyć innego wystąpienia aplikacji dla każdego klienta z tymi ustawieniami. zmienione. 
+  * Nowa aplikacja służy jako granica uaktualnienia
+    * W Service Fabric różne nazwane wystąpienia aplikacji służą jako granice dla uaktualnienia. Uaktualnienie jednego nazwanego wystąpienia aplikacji nie będzie miało wpływu na kod, na którym działa inne nazwane wystąpienie aplikacji. Różne aplikacje będą na bieżąco uruchamiać różne wersje tego samego kodu w tych samych węzłach. Może to być czynnik, gdy konieczne jest podjęcie decyzji dotyczącej skalowania, ponieważ można określić, czy nowy kod powinien postępować zgodnie z takimi uaktualnieniami, jak inna usługa, czy nie. Załóżmy na przykład, że wywołanie dociera do usługi Menedżera, która jest odpowiedzialna za skalowanie obciążeń określonego klienta przez automatyczne tworzenie i usuwanie usług. W takim przypadku wywołanie dotyczy obciążenia związanego z _nowym_ klientem. Większość klientów, takich jak odizolowane od siebie, nie tylko w przypadku wymienionych wcześniej powodów związanych z zabezpieczeniami i konfiguracją, ale ponieważ zapewnia większą elastyczność w zakresie uruchamiania określonych wersji oprogramowania i wybierania ich podczas uaktualniania. Możesz również utworzyć nowe wystąpienie aplikacji i utworzyć usługę, po prostu aby dodatkowo podzielić ilość usług, na które będzie można nawiązać uaktualnienie. Oddzielne wystąpienia aplikacji zapewniają większy stopień szczegółowości podczas przeprowadzania uaktualnień aplikacji, a także umożliwiają testowanie a/B oraz wdrożenia niebieskie/zielone. 
+  * Istniejące wystąpienie aplikacji jest zapełnione
+    * W Service Fabric [wydajność aplikacji](service-fabric-cluster-resource-manager-application-groups.md) to koncepcja, za pomocą której można kontrolować ilość zasobów dostępnych dla konkretnych wystąpień aplikacji. Na przykład możesz zdecydować, że dana usługa musi mieć utworzone inne wystąpienie, aby można było skalować ją. Jednak to wystąpienie aplikacji nie jest pojemnością dla określonej metryki. Jeśli tego konkretnego klienta lub obciążenia nadal można udzielić większej ilości zasobów, można zwiększyć istniejącą pojemność aplikacji lub utworzyć nową aplikację. 
 
-## <a name="scaling-at-the-partition-level"></a>Skalowanie w poziomie partycji
-Usługa Service Fabric obsługuje partycjonowanie. Partycjonowanie dzieli usługi na kilka sekcji logiczne i fizyczne, każde z nich działa niezależnie od siebie. To jest przydatne w przypadku usług stanowych, ponieważ nikt zestawu replik musi obsługiwać wszystkie wywołania i manipulowania wszystkimi stanu na raz. [Partycjonowanie Przegląd](service-fabric-concepts-partitioning.md) zawiera informacje na temat typów poszczególne schematy partycjonowania, które są obsługiwane. Replik każdej partycji są dystrybuowane między węzłami w klastrze, dystrybucji obciążenia tę usługę i zapewnienie, że żadna usługa jako całości ani żadnej partycji ma pojedynczy punkt awarii. 
+## <a name="scaling-at-the-partition-level"></a>Skalowanie na poziomie partycji
+Service Fabric obsługuje partycjonowanie. Partycjonowanie dzieli usługę na kilka sekcji logicznych i fizycznych, z których każda działa niezależnie. Jest to przydatne w przypadku usług stanowych, ponieważ żaden zestaw replik nie musi obsługiwać wszystkich wywołań i manipulować wszystkimi Stanami jednocześnie. [Omówienie partycjonowania](service-fabric-concepts-partitioning.md) zawiera informacje na temat typów obsługiwanych schematów partycjonowania. Repliki każdej partycji są rozmieszczane w węzłach klastra, rozpowszechniać obciążenie tej usługi i upewniając się, że żadna usługa jako cała lub żadna partycja nie ma single point of failure. 
 
-Należy wziąć pod uwagę to usługa, która używa ranged schematu partycjonowania niska wartość klucza 0, wysoka wartość klucza 99 i liczbę partycji wynoszącą 4. W klastrze z trzema węzłami usługa może być rozmieszczony z czterech replik, które współdzielą zasoby w każdym węźle, jak pokazano poniżej:
-
-<center>
-
-![Układ partycji w przypadku użycia trzech węzłów](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
-</center>
-
-Jeśli zwiększysz liczbę węzłów usługi Service Fabric zostanie przesunięty w niektóre z istniejących replik istnieje. Na przykład załóżmy Załóżmy, że liczba węzłów wzrasta do czterech i replikami Pobierz redystrybucji. Teraz usługa ma teraz trzy repliki uruchomione w każdym węźle, każdy należących do różnych partycji. Umożliwia to lepsze wykorzystanie zasobów, ponieważ nowy węzeł nie jest zimno. Zwykle również zwiększa wydajność, ponieważ każda usługa ma więcej dostępnych zasobów.
+Należy wziąć pod uwagę usługę, która używa schematu partycjonowania z zakresem o niskim kluczu równym 0, wysoki klucz 99 i liczbę partycji wynoszącą 4. W klastrze z trzema węzłami usługa może zostać ustanowiona przy użyciu czterech replik, które współużytkują zasoby w poszczególnych węzłach, jak pokazano poniżej:
 
 <center>
 
-![Układ partycji w przypadku czterech węzłów](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
+![Układ partycji z trzema węzłami](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
 </center>
 
-## <a name="scaling-by-using-the-service-fabric-cluster-resource-manager-and-metrics"></a>Skalowanie za pomocą Menedżera zasobów klastra usługi w sieci szkieletowej i metryki
-[Metryki](service-fabric-cluster-resource-manager-metrics.md) są, jak usługi express ich użycie zasobów w usłudze Service Fabric. Przy użyciu metryk daje możliwość reorganizowanie i zoptymalizować układ klastra Menedżer zasobów klastra. Na przykład może istnieć wiele zasobów w klastrze, ale nie może być przydzielonych do usług, które obecnie wykonują pracę. Przy użyciu metryk umożliwia Menedżer zasobów klastra reorganizacja klastra, aby upewnić się, że usługi mają dostęp do dostępnych zasobów. 
+W przypadku zwiększenia liczby węzłów Service Fabric spowoduje przeniesienie niektórych istniejących replik. Załóżmy na przykład, że liczba węzłów zostanie zwiększona do czterech, a repliki zostaną rozdystrybuowane. Teraz usługa ma trzy repliki uruchomione w każdym węźle, z których każda należy do różnych partycji. Pozwala to na lepsze wykorzystanie zasobów od momentu, gdy nowy węzeł nie jest zimny. Zwykle zwiększa wydajność, ponieważ każda usługa ma więcej dostępnych zasobów.
+
+<center>
+
+![Układ partycji z czterema węzłami](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
+</center>
+
+## <a name="scaling-by-using-the-service-fabric-cluster-resource-manager-and-metrics"></a>Skalowanie przy użyciu Menedżer zasobów klastra Service Fabric i metryk
+[Metryki](service-fabric-cluster-resource-manager-metrics.md) to sposób, w jaki usługa wyraża użycie zasobów do Service Fabric. Dzięki metrykom klaster Menedżer zasobów możliwość reorganizowania i optymalizowania układu klastra. Na przykład może istnieć duża ilość zasobów w klastrze, ale mogą one nie zostać przydzieleni do usług, które obecnie działają. Użycie metryk umożliwia Menedżer zasobów klastra zreorganizować klaster w celu zapewnienia, że usługi mają dostęp do dostępnych zasobów. 
 
 
 ## <a name="scaling-by-adding-and-removing-nodes-from-the-cluster"></a>Skalowanie przez dodawanie i usuwanie węzłów z klastra 
-Inną opcją skalowania za pomocą usługi Service Fabric jest aby zmienić rozmiar klastra. Zmiana rozmiaru klastra oznacza dodawanie lub usuwanie węzłów dla jednego lub więcej typów węzłów w klastrze. Na przykład rozważmy przypadek, gdzie są wszystkie węzły w klastrze gorąca. Oznacza to, że zasoby klastra są prawie wszystkie używane. W przypadku dodawania kolejnych węzłów do klastra jest najlepszym sposobem skalowania. Po nowe węzły dołączą do klastra Menedżer zasobów klastra usługi Service Fabric przeniesienie usług, co mniej całkowitego obciążenia na istniejących węzłów. Przypadku usług bezstanowych z liczbą wystąpień = -1, usługa więcej wystąpień są tworzone automatycznie. Dzięki temu niektóre połączenia można przenieść z istniejących węzłów do nowych węzłów. 
+Kolejną opcją skalowania przy użyciu Service Fabric jest zmiana rozmiaru klastra. Zmiana rozmiaru klastra oznacza dodanie lub usunięcie węzłów dla co najmniej jednego typu węzła w klastrze. Rozważmy na przykład przypadek, w którym wszystkie węzły w klastrze są gorąca. Oznacza to, że zasoby klastra są prawie zużyte. W takim przypadku Dodawanie większej liczby węzłów do klastra jest najlepszym sposobem skalowania. Po dołączeniu nowych węzłów do klastra Service Fabric klaster Menedżer zasobów przenosi do nich usługi, co zmniejsza całkowite obciążenie istniejących węzłów. W przypadku usług bezstanowych z liczbą wystąpień =-1 automatycznie tworzone są więcej wystąpień usługi. Pozwala to na przejście niektórych wywołań z istniejących węzłów do nowych węzłów. 
 
 Aby uzyskać więcej informacji, zobacz [skalowanie klastra](service-fabric-cluster-scaling.md).
 
+## <a name="choosing-a-platform"></a>Wybieranie platformy
+
+Ze względu na różnice między systemami operacyjnymi korzystanie z Service Fabric z systemem Windows lub Linux może być istotną częścią skalowania aplikacji. Jedną z potencjalnych barier jest to, jak odbywa się rejestrowanie etapowe. Service Fabric w systemie Windows używa sterownika jądra dla dziennika jednego komputera, współużytkowanego przez repliki stanowe. Ten dziennik waży od około 8 GB. Z drugiej strony system Linux używa dziennika przemieszczania 256 MB dla każdej repliki, co sprawia, że jest to mniej idealne dla aplikacji, które chcą zmaksymalizować liczbę lekkich replik usług uruchomionych w danym węźle. Te różnice w tymczasowych wymaganiach dotyczących magazynu mogą potencjalnie poinformować żądaną platformę do wdrożenia klastra Service Fabric.
+
 ## <a name="putting-it-all-together"></a>Zebranie wszystkich elementów
-Weźmy pomysły, które firma Microsoft została omówiona w tym miejscu i komunikować się za pośrednictwem przykładem. Należy wziąć pod uwagę następujące usługi: próbujesz utworzyć usługę, który działa jako książkę adresową utrzymuje nazwy i informacje kontaktowe. 
+Zajmiemy się wszystkimi pomysłami, które zostały tutaj omówione, i zapoznaj się z przykładem. Weź pod uwagę następujące usługi: próbujesz utworzyć usługę, która działa jako książka adresowa, która znajduje się na nazwach i informacjach kontaktowych. 
 
-Bezpośrednio na początku masz wiele pytania dotyczące skalowania: Ilu użytkowników będą mieć? Ile kontakty będą przechowywane w poszczególnych użytkowników Ilustracja to wszystko na zewnątrz po użytkownik stały się z usługą po raz pierwszy jest trudne. Załóżmy, że miało go z jedną usługą statyczne wraz z liczbą określonej partycji. Konsekwencje pobrania liczba partycji problem może spowodować później mieć problemów związanych ze skalowaniem. Podobnie nawet w przypadku wybrania prawo liczby, których możesz nie mieć wszystkie informacje potrzebne. Na przykład również należy określić rozmiar klastra, na początku, zarówno pod względem liczby węzłów i ich rozmiary. Jest to zazwyczaj trudny do prognozowania liczby zasobów, usługa będzie używać przez cały okres ich istnienia. Można go również wiadomo wcześniejsze wzorzec ruchu, który faktycznie widzi usługi. Na przykład osób może być dodawanie i usuwanie kontaktów w tylko po pierwsze, w nocy lub może on jest rozmieszczonych równomiernie w ciągu dnia. Oparte na tym, który może być konieczne skalowanie w poziomie w dynamicznie. Być może można znaleźć umożliwiającej przewidywanie, kiedy użytkownik chce potrzeby skalowania w poziomie i w, ale w obu przypadkach prawdopodobnie będziemy potrzebować reagować na zmieniające się użycie zasobów przez usługę. Może to obejmować zmiany rozmiaru klastra w celu zapewnienia większej ilości zasobów, gdy reorganizacja korzystanie z istniejących zasobów nie jest wystarczająco dużo. 
+Z prawej strony masz wiele pytań dotyczących skalowania: Ile użytkowników chcesz mieć? Ile kontaktów będzie magazynów poszczególnych użytkowników? Próba wyszukania wszystkich danych w przypadku, gdy usługa jest po raz pierwszy jest trudna. Załóżmy, że przejdziesz do jednej usługi statycznej z określoną liczbą partycji. Konsekwencje pobrania nieprawidłowej liczby partycji mogą spowodować problemy ze skalą w dalszej części. Podobnie nawet w przypadku wybrania odpowiedniej liczby może nie być wszystkich potrzebnych informacji. Na przykład trzeba również określić rozmiar klastra na początku, zarówno w odniesieniu do liczby węzłów, jak i ich rozmiarów. Zwykle trudno jest przewidzieć, ile zasobów usługa ma zużywać w okresie istnienia. Może być również trudno wiedzieć od czasu, w którym usługa rzeczywiście widzi ten wzorzec ruchu. Na przykład użytkownicy mogli dodawać i usuwać kontakty tylko po raz pierwszy rano lub być rozdysponowane nawet w ciągu dnia. W zależności od tego może być konieczne skalowanie w poziomie i w sposób dynamiczny. Może się okazać, że można dowiedzieć się, Kiedy planujesz skalować w poziomie i w programie, ale w ten sposób prawdopodobnie będziesz potrzebować reakcji na zmianę zużycia zasobów przez usługę. Może to wiązać się z zmianami rozmiaru klastra w celu zapewnienia większej ilości zasobów podczas restrukturyzacji użycia istniejących zasobów. 
 
-Ale Dlaczego nawet spróbuj wyszukać schematu jednej partycji dla wszystkich użytkowników? Dlaczego ograniczać się do jednej usługi i jeden klaster statyczne? Rzeczywisty stan jest zazwyczaj bardziej dynamiczne. 
+Ale dlaczego mimo to próbować wybrać jeden schemat partycji dla wszystkich użytkowników? Dlaczego należy ograniczyć się do jednej usługi i jednego klastra statycznego? Rzeczywista sytuacja jest zwykle bardziej dynamiczna. 
 
-Podczas kompilowania dla skalowania, należy wziąć pod uwagę następujący wzorzec dynamicznych. Może być konieczne dostosowanie jej do swojej sytuacji:
+Podczas kompilowania na potrzeby skalowania należy wziąć pod uwagę następujący wzorzec dynamiczny. Może być konieczne dostosowanie go do swojej sytuacji:
 
-1. Zamiast próbować wybierz schemat partycjonowania dla wszystkich użytkowników na początku, twórz "manager service".
-2. Zadania programu manager service jest spojrzeć na informacje o kliencie, po utworzeniu konta usługi. A następnie w zależności od tych informacji usługi Menedżera Utwórz wystąpienie usługi _rzeczywiste_ skontaktuj się z magazynu usługi _tylko dla tego klienta_. Jeśli wymagają konkretnej konfiguracji, izolacji lub uaktualnień, można też uruchomić wystąpienie aplikacji dla danego klienta. 
+1. Zamiast próbować wybrać schemat partycjonowania dla każdego z wierzchu, Utwórz "usługę menedżera".
+2. Zadaniem usługi Menedżer jest sprawdzenie informacji o klientach podczas rejestrowania się w usłudze. Następnie w zależności od tego, czy usługa Menedżer tworzy wystąpienie rzeczywistej usługi magazynu kontaktowego _dla tego klienta_. Jeśli wymagają konkretnej konfiguracji, izolacji lub uaktualnień, możesz również wybrać opcję uruchomienia wystąpienia aplikacji dla tego klienta. 
 
-To dynamiczne tworzenie wzorca wiele korzyści:
+Ten wzorzec dynamicznego tworzenia ma wiele zalet:
 
-  - Nie próby odgadnięcia liczbę właściwą partycję dla wszystkich użytkowników na początku lub tworzenia pojedynczej usługi, która jest nieskończenie skalowalnych wszystko samodzielnie. 
-  - Różni użytkownicy nie mają mieć tej samej liczby partycji, liczba replik, ograniczeniami dotyczącymi umieszczania, metryki, ładowania domyślnej, nazwy usługi, ustawienia dns lub dowolne inne właściwości określonego na poziomie aplikacji lub usługi. 
-  - Możesz uzyskać segmentacji dodatkowe dane. Każdy klient ma swoje własne kopie usługi
-    - Każda usługa klienta można inaczej skonfigurowana i przyznane zwiększenie lub zmniejszenie liczby zasobów, z zwiększenie lub zmniejszenie liczby partycji lub repliki zgodnie z potrzebami, w oparciu o ich oczekiwanej skali.
-      - Na przykład powiedz klienta płatnej warstwie "Złota" - one można pobrać więcej replik lub większą liczbę partycji oraz potencjalnie zasobów dedykowanych do swoich usług przy użyciu możliwości metryk i aplikacji.
-      - Lub Załóżmy, że udostępniała informacje wskazujące, kontakty, potrzebnych została "Małe" — otrzymamy tylko kilka partycje lub nawet mogą być wprowadzane w pulę usługi udostępnionej przy użyciu innych klientów.
-  - Nie Uruchamiamy wiele wystąpień usługi lub replik w czasie oczekiwania dla klientów do wyświetlenia
-  - Jeśli klient nigdy nie opuszcza, następnie usuwania ich informacji z usługi jest proste jako posiadające manager Usuń tej usługi lub aplikacji, do którego utworzona.
+  - Nie próbujesz odgadnąć liczby poprawnych partycji dla wszystkich użytkowników lub utworzyć pojedynczą usługę, która jest nieskończonie skalowalna w całości. 
+  - Różni użytkownicy nie muszą mieć tej samej liczby partycji, liczby replik, ograniczeń umieszczania, metryk, obciążeń domyślnych, nazw usług, ustawień DNS ani żadnych innych właściwości określonych na poziomie usługi lub aplikacji. 
+  - Uzyskujesz dodatkową segmentację danych. Każdy klient ma własną kopię usługi
+    - Każdą usługę klienta można skonfigurować w różny sposób i przydzielić więcej lub mniej zasobów, z co najmniej większą liczbą partycji lub replik na podstawie ich oczekiwanej skali.
+      - Załóżmy na przykład, że klient płacił za warstwę "Gold" — może uzyskać więcej replik lub większą liczbę partycji oraz potencjalnie zasoby przeznaczone dla usług za pośrednictwem metryk i pojemności aplikacji.
+      - Lub Załóżmy, że podano informacje wskazujące, że liczba wymaganych kontaktów była "mała" — spowoduje to uzyskanie tylko kilku partycji lub nawet umieszczenie w udostępnionej puli usług innym klientom.
+  - Nie korzystasz z wielu wystąpień usługi ani replik, gdy czekasz na wyświetlenie klientów
+  - Jeśli klient kiedykolwiek opuści te informacje, usuwanie ich z usługi jest tak proste, jakby Menedżer usunął tę usługę lub aplikację, którą utworzyła.
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat pojęć usługi Service Fabric zobacz następujące artykuły:
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji na temat pojęć Service Fabric, zobacz następujące artykuły:
 
-* [Dostępność usługi Service Fabric](service-fabric-availability-services.md)
-* [Partycjonowanie usługi Service Fabric](service-fabric-concepts-partitioning.md)
+* [Dostępność usług Service Fabric Services](service-fabric-availability-services.md)
+* [Partycjonowanie Service Fabric usług](service-fabric-concepts-partitioning.md)

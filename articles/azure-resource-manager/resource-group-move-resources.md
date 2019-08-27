@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 114e0d8e935aa8e6ac3f70a34a8050b19758fb42
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 69cd6031111c72d54cb87975c2040078a9965821
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624556"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035552"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -35,8 +35,6 @@ Przed przeniesieniem zasobu należy wykonać kilka ważnych czynności. Dzięki 
    * [Wskazówki dotyczące przenoszenia sieci](./move-limitations/networking-move-limitations.md)
    * [Recovery Services wskazówki dotyczące przenoszenia](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [Virtual Machines wskazówki dotyczące przenoszenia](./move-limitations/virtual-machines-move-limitations.md)
-
-   Jeśli docelowa Grupa zasobów zawiera sieć wirtualną, stan jej zasobów zależnych może blokować przenoszenie, nawet jeśli te zasoby nie są objęte przenoszeniem. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące przenoszenia sieci](./move-limitations/virtual-network-move-limitations.md).
 
 1. Subskrypcje źródłowe i docelowe muszą być aktywne. Jeśli masz problemy z włączeniem wyłączonego konta, [Utwórz żądanie pomocy technicznej platformy Azure](../azure-supportability/how-to-create-azure-support-request.md). Wybierz **zarządzania subskrypcjami** jako typ problemu.
 

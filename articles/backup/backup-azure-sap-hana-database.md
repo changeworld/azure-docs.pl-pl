@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: dacurwin
-ms.openlocfilehash: f5a76ef44ebef0689ec0587434996f28ba7b7025
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a11d454feb965907f3bd4e994c0916eeb7236fa7
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735538"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034569"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>Tworzenie kopii zapasowej bazy danych SAP HANA na platformie Azure
 
@@ -106,9 +106,9 @@ Teraz Włącz tworzenie kopii zapasowej.
 
 1. W kroku 2 kliknij pozycję **Konfiguruj kopię zapasową**.
 2. W obszarze **Wybierz elementy do utworzenia kopii zapasowej**wybierz wszystkie bazy danych, które mają być chronione > **OK**.
-3. W obszarze >  **zasady tworzenia kopii**zapasowych**Wybierz pozycję Zasady tworzenia kopii**zapasowych, Utwórz nowe zasady tworzenia kopii zapasowych baz danych, zgodnie z poniższymi instrukcjami.
+3. W obszarze >  **zasady tworzenia kopii**zapasowych**Wybierz pozycję Zasady tworzenia kopii**zapasowych, Utwórz nowe zasady tworzenia kopii zapasowych baz danych, zgodnie z poniższymi instrukcjami.
 4. Po utworzeniu zasad w menu **kopia zapasowa** kliknij pozycję **Włącz kopię zapasową**.
-5. Śledź postęp konfiguracji kopii zapasowej w obszarze **powiadomienia** portalu.
+5. Śledź postęp konfiguracji kopii zapasowej w obszarze **powiadomienia** portalu.
 
 ### <a name="create-a-backup-policy"></a>Tworzenie zasad kopii zapasowych
 

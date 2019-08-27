@@ -3,8 +3,8 @@ title: Wytyczne dotyczące oznaczania aplikacji marką | Microsoft Docs
 description: Kompletny przewodnik dotyczący zasobów dla deweloperów usługi Azure Active Directory
 services: active-directory
 documentationcenter: dev-center-name
-author: CelesteDG
-manager: mtillman
+author: rwike77
+manager: CelesteDG
 editor: ''
 ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
-ms.author: celested
+ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2e62d24ea56e00b49c32c00136db858ecd0f778
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 92770acb19bf95d6a19507184bd8bea10806d5b7
+ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173778"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "70053247"
 ---
 # <a name="branding-guidelines-for-applications"></a>Wytyczne dotyczące oznaczania aplikacji marką
 
@@ -60,7 +60,7 @@ We wcześniejszej wersji tych wytycznych zalecamy używanie piktogramu niebieski
 
 Aplikacja może mieć różne procedury tworzenia konta i logowania. W poniższych sekcjach przedstawiono wizualne wskazówki dla obu scenariuszy.
 
-**Jeśli aplikacja obsługuje rejestrację użytkownika końcowego (np. w celu skorzystania z bezpłatnej wersji próbnej lub w modelu freemium)**: Możesz wyświetlić przycisk **logowania**, który umożliwia użytkownikom uzyskanie dostępu do aplikacji za pomocą konta służbowego lub konta osobistego. Przy pierwszym uzyskaniu dostępu do aplikacji w usłudze Azure AD jest wyświetlany monit o wyrażenie zgody.
+**Jeśli aplikacja obsługuje rejestrację użytkownika końcowego (np. w celu skorzystania z bezpłatnej wersji próbnej lub w modelu freemium)** : Możesz wyświetlić przycisk **logowania**, który umożliwia użytkownikom uzyskanie dostępu do aplikacji za pomocą konta służbowego lub konta osobistego. Przy pierwszym uzyskaniu dostępu do aplikacji w usłudze Azure AD jest wyświetlany monit o wyrażenie zgody.
 
 **Jeśli organizacja wymaga uprawnień, na które zgodę mogą wyrazić tylko administratorzy, lub aplikacja wymaga licencjonowania organizacji**: Należy oddzielić dostęp administratora od logowania użytkowników. Użycie **przycisku „Pobierz tę aplikację”** powoduje przekierowanie administratorów do logowania, a następnie wyświetlenie monitu o wyrażenie zgody w imieniu użytkowników w organizacji, co ma dodatkową zaletę w postaci pomijania monitów o wyrażenie zgody użytkowników końcowych w aplikacji.
 
@@ -70,7 +70,7 @@ Użycie linku „Pobierz aplikację” musi powodować przekierowanie użytkowni
 
 Gdy administratorzy wyrażą zgodę na aplikację, będą mogli dodać ją do środowiska uruchamiania aplikacji usługi Office 365 użytkowników (dostępne w menu typu „gofr” i na stronie [https://portal.office.com/myapps](https://portal.office.com/myapps)). Aby informować o tej możliwości, można użyć takich terminów jak „Dodaj tę aplikację do organizacji” i wyświetlić przycisk, jak w poniższym przykładzie:
 
-![Scenariusze i typy aplikacji](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
+![Przycisk pokazujący logo firmy Microsoft i tekst "Dodaj do mojej organizacji"](./media/howto-add-branding-in-azure-ad-apps/add-to-my-org.png)
 
 Jednak zalecamy napisanie tekstu objaśnienia, aby nie trzeba było używać tylko przycisków. Na przykład:
 
@@ -80,7 +80,7 @@ Aby pobrać oficjalne logo firmy Microsoft do użycia w aplikacji, kliknij prawy
 
 | Element zawartości                                | Format PNG | Format SVG |
 | ------------------------------------ | ---------- | ---------- |
-| Logo firmy Microsoft  | ![Logo firmy Microsoft (PNG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![Logo firmy Microsoft (SVG)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
+| Logo firmy Microsoft  | ![Logo Microsoft do pobrania w formacie PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.png) | ![Logo Microsoft do pobrania w formacie SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_mssymbol_19.svg) |
 
 ## <a name="visual-guidance-for-sign-in"></a>Wizualne wskazówki dotyczące logowania
 
@@ -92,16 +92,16 @@ Połączenie logo firmy Microsoft i tekstu „Zaloguj się przy użyciu konta Mi
 
 Na poniższym diagramie pokazano granice zalecane przez firmę Microsoft podczas używania elementów zawartości w aplikacji. Te granice dotyczą tekstu „Zaloguj się przy użyciu konta Microsoft” i jego krótszej wersji („Zaloguj się”).
 
-![Granice dla tekstu Zaloguj się przy użyciu konta Microsoft](./media/howto-add-branding-in-azure-ad-apps/sign-in-with-microsoft-redlines.png)
+![Pokazuje "Zaloguj się przy użyciu konta Microsoft" redlines](./media/howto-add-branding-in-azure-ad-apps/sign-in-with-microsoft-redlines.png)
 
 Aby pobrać oficjalne obrazy do użycia w aplikacji, kliknij prawym przyciskiem myszy obraz, którego chcesz użyć, a następnie zapisz go w komputerze.
 
 | Element zawartości                                | Format PNG | Format SVG |
 | ------------------------------------ | ---------- | ---------- |
-| Zaloguj się przy użyciu konta Microsoft (motyw ciemny)  | ![Przycisk „Zaloguj się” w formacie PNG (motyw ciemny)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.png) | ![Przycisk „Zaloguj się przy użyciu konta Microsoft” w formacie SVG (motyw ciemny)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.svg) |
-| Zaloguj się przy użyciu konta Microsoft (motyw jasny) | ![Przycisk „Zaloguj się” w formacie PNG (motyw jasny)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![Przycisk „Zaloguj się przy użyciu konta Microsoft” w formacie SVG (motyw jasny)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
-| Zaloguj się (motyw ciemny)                 | ![Krótki przycisk „Zaloguj się” w formacie PNG (motyw ciemny)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![Krótki przycisk „Zaloguj się” w formacie SVG (motyw ciemny)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
-| Zaloguj się (motyw jasny)                | ![Krótki przycisk „Zaloguj się” w formacie PNG (motyw jasny)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![Krótki przycisk „Zaloguj się” w formacie SVG (motyw jasny)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
+| Zaloguj się przy użyciu konta Microsoft (motyw ciemny)  | ![Do pobrania "Zaloguj się przy użyciu konta Microsoft" ciemny motyw przycisku PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.png) | !["Zaloguj się przy użyciu konta Microsoft" — ciemny przycisk formatu SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark.svg) |
+| Zaloguj się przy użyciu konta Microsoft (motyw jasny) | ![Możliwe do pobrania "Zaloguj się przy użyciu konta Microsoft" motyw jasny PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![Możliwe do pobrania "Zaloguj się przy użyciu konta Microsoft" motyw jasny SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
+| Zaloguj się (motyw ciemny)                 | ![Do pobrania "Zaloguj się" krótki motyw ciemny, PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![Plik do pobrania "Logowanie krótkie" — ciemny motyw SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
+| Zaloguj się (motyw jasny)                | ![Do pobrania "Zaloguj się" krótki motyw jasny przycisku PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![Do pobrania "Zaloguj się" krótki motyw uproszczony](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
 
 ## <a name="branding-dos-and-donts"></a>Zalecenia dotyczące oznaczania marką
 

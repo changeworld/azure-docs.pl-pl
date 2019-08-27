@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: mlearned
-ms.openlocfilehash: ec017901e36a01042485e9aeca2431c8a6838ab8
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 6c06453d479ae55ceb1c05a7ee8a29ce19a7a13b
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69536757"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034971"
 ---
 # <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Wersja zapoznawcza — uwierzytelnianie za pomocą Azure Container Registry z usługi Azure Kubernetes
 
@@ -46,11 +46,15 @@ az extension add -y --name aks-preview
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Utwórz nowy klaster AKS z integracją ACR
 
-Integrację AKS i ACR można skonfigurować podczas początkowego tworzenia klastra AKS.  Aby umożliwić klastrowi AKS współdziałanie z ACR, używana jest jednostka **usługi** Azure Active Directory. Następujące polecenie interfejsu wiersza polecenia tworzy ACR w określonej grupie zasobów i konfiguruje odpowiednią rolę **ACRPull** dla jednostki usługi. Jeśli *ACR-Name* nie istnieje, `aks<resource-group>acr` zostanie automatycznie utworzona domyślna nazwa ACR.  Podaj prawidłowe wartości parametrów poniżej.  Parametry w nawiasach są opcjonalne.
+Integrację AKS i ACR można skonfigurować podczas początkowego tworzenia klastra AKS.  Aby umożliwić klastrowi AKS współdziałanie z ACR, używana jest jednostka **usługi** Azure Active Directory. Następujące polecenie interfejsu wiersza polecenia tworzy ACR w określonej grupie zasobów i konfiguruje odpowiednią rolę **ACRPull** dla jednostki usługi. Jeśli *ACR-Name* nie istnieje w określonej grupie zasobów, zostanie automatycznie utworzona domyślna nazwa `aks<resource-group>acr` ACR.  Podaj prawidłowe wartości parametrów poniżej.  Parametry w nawiasach są opcjonalne.
 ```azurecli
 az login
 az aks create -n myAKSCluster -g myResourceGroup --enable-acr [--acr <acr-name-or-resource-id>]
 ```
+\* * Identyfikator zasobu ACR ma następujący format: 
+
+/subscriptions/< Subscription-d >/resourceGroups/< Resource-Group-Name ><name> 
+  
 Wykonanie tego kroku może potrwać kilka minut.
 
 ## <a name="create-acr-integration-for-existing-aks-clusters"></a>Tworzenie integracji ACR dla istniejących klastrów AKS

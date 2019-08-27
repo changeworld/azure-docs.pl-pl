@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2019
 ms.author: v-mohabe
-ms.openlocfilehash: a8033448c2db2ca30ece54b3367ecb60ecf12c3d
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: afb7d4530a56687e7cd4d9c279451870d5567284
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990702"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032116"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Przewodnik planowania i obsługi usługi Azure Security Center
 Ten przewodnik jest przeznaczony dla specjalistów IT, architektów IT, analityków zabezpieczeń informacji i administratorów chmury, których organizacje planują wdrożenie usługa Azure Security Center.
@@ -215,7 +215,7 @@ Możesz użyć funkcji [adaptacyjnego sterowania aplikacjami](https://docs.micro
 
 
 ## <a name="incident-response"></a>Reagowanie na zdarzenia
-Usługa Security Center wykrywa zagrożenia i powiadamia o nich, gdy tylko wystąpią. Firmy powinny śledzić pojawianie się nowych alertów zabezpieczeń i w razie potrzeby podejmować działania w celu zbadania ataku lub usunięcia jego skutków. Aby uzyskać więcej informacji na temat sposobu działania funkcji wykrywania zagrożeń usługi Security Center, przeczytaj [Funkcje wykrywania usługi Azure Security Center](security-center-detection-capabilities.md).
+Usługa Security Center wykrywa zagrożenia i powiadamia o nich, gdy tylko wystąpią. Firmy powinny śledzić pojawianie się nowych alertów zabezpieczeń i w razie potrzeby podejmować działania w celu zbadania ataku lub usunięcia jego skutków. Aby uzyskać więcej informacji na temat sposobu działania wykrywania zagrożeń Security Center, Przeczytaj, [jak Azure Security Center wykrywa zagrożenia i reaguje na](security-center-alerts-overview.md#detect-threats)nie.
 
 Ponieważ celem tego artykułu nie jest pomoc w tworzeniu Twojego planu reagowania na zdarzenia, jako podstawy dla etapów reagowania na zdarzenia użyjemy funkcji Microsoft Azure Security Response w cyklu życia chmury. Poszczególne etapy przedstawiono na poniższym diagramie:
 

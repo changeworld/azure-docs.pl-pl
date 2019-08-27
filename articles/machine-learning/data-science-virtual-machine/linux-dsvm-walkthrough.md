@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: vijetaj
-ms.openlocfilehash: 95d128a7af60a1504d05fb5316969fccc49c397f
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 8100108adc7115921948d3e8f10e415bc2705fbd
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574969"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051652"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Do nauki o danych z systemem Linux maszyny wirtualnej analizy danych na platformie Azure
 W tym instruktażu przedstawiono sposób wykonywania kilku typowych zadań do nauki o danych z maszyna wirtualna do nauki o danych systemu Linux. Linux Data Science Virtual Machine (dsvm dystrybucji) jest obraz maszyny wirtualnej dostępne na platformie Azure, który jest wstępnie instalowane ze zbiorem narzędzi często używane do analizy danych i uczenia maszynowego. Składniki oprogramowania są wymienione w [Aprowizowanie maszyny wirtualnej do nauki o danych Linux](linux-dsvm-intro.md) tematu. Obraz maszyny Wirtualnej ułatwia rozpoczęcie pracy, nauki o danych w ciągu kilku minut, bez konieczności instalowania i konfigurowania poszczególnych narzędzi indywidualnie. Możesz łatwo skalować w górę maszyny Wirtualnej, w razie potrzeby i zatrzymaj ją, gdy użycie. Więc ten zasób jest elastyczne i ekonomiczne.
@@ -36,7 +36,7 @@ Przed użyciem systemu Linux maszyny wirtualnej do nauki o danych, musisz mieć 
 
 * **Subskrypcji platformy Azure**. Jeśli nie masz już jeden, zobacz [Utwórz bezpłatne konto platformy Azure już dziś](https://azure.microsoft.com/free/).
 * A [ **Linux maszyny Wirtualnej do analizy danych**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Aby uzyskać informacje o inicjowaniu obsługi tej maszyny Wirtualnej, zobacz [Aprowizowanie maszyny wirtualnej do nauki o danych Linux](linux-dsvm-intro.md).
-* [X2Go](https://wiki.x2go.org/doku.php) zainstalowana na danym komputerze i otworzyć sesję XFCE. Aby uzyskać informacje dotyczące instalowania i konfigurowania **klienta X2Go**, zobacz [Instalowanie i konfigurowanie klienta X2Go](linux-dsvm-intro.md#installing-and-configuring-x2go-client).
+* [X2Go](https://wiki.x2go.org/doku.php) zainstalowana na danym komputerze i otworzyć sesję XFCE. Aby uzyskać informacje na temat instalowania i konfigurowania **klienta programu x2go**, zobacz [Instalowanie i Konfigurowanie klienta x2go](linux-dsvm-intro.md#install-and-configure-the-x2go-client).
 * Dla płynne przewijanie, Przełącz flagę gfx.xrender.enabled o: config w przeglądarce FireFox maszyn wirtualnych. [Zobacz więcej informacji znajdziesz tutaj. ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Należy również rozważyć przełączanie *mousewheel.enable_pixel_scrolling* na wartość False. [Instrukcje w tym miejscu.](https://support.mozilla.org/questions/981140)
 * **Konta usługi Azure ml**. Jeśli nie masz jeszcze jeden Załóż nowe na [strony głównej usługi Azure ml](https://studio.azureml.net/). Brak warstwę bezpłatnego użycia, aby pomóc Ci rozpocząć pracę.
 

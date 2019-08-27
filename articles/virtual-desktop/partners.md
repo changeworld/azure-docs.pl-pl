@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 6fe2e63138ce9e0f4e8980e4f37330228ac2bdb6
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: bd5ec1e75fa1669b0ca33e4cb4629793b09a9bad
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369445"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036121"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integracja z partnerem pulpitu wirtualnego systemu Windows
 
@@ -82,7 +82,7 @@ ThinPrint to dostawca usług dodanego pulpitu wirtualnego systemu Windows, któr
 Rozwiązanie ezeep ThinPrint rozszerza wartość pulpitu wirtualnego systemu Windows, umożliwiając połączenie z istniejącą infrastrukturą drukowania w przedsiębiorstwie. ezeep zapewnia użytkownikom kontrolę nad drukowaniem w przedsiębiorstwie niezależnie od tego, gdzie się znajdują. Korzystając z ezeep, użytkownicy mogą mostkować przerwy między pulpitem wirtualnym i sprzętem drukowania systemu Windows.
 
 - [Zobacz Krótki opis wspólnego rozwiązania.](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oYas)
-- [Przejdź do witryny sieci Web partnera.](http://www.ezeep.com/wvd-printing)
+- [Przejdź do witryny sieci Web partnera.](https://www.ezeep.com/wvd-printing)
 
 ## <a name="workspot"></a>Workspot
 

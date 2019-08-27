@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: f981c14e26c51c427dab6b418cab8df46b1bb026
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 5257724add570be480063ab776248a8fd1d944c7
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302245"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034755"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Informacje o działaniu narzędzia migracji
 
@@ -75,9 +75,9 @@ Wszystkie klasyczne alerty dotyczące Cosmos DB metryk można migrować z wyjąt
 
 - Średnia liczba żądań na sekundę
 - Poziom spójności
-- Http 2xx
-- Http 3xx
-- Http 400
+- HTTP 2xx
+- HTTP 3xx
+- HTTP 400
 - HTTP 401
 - Wewnętrzny błąd serwera
 - Maksymalna liczba zużytych promocja na minutę
@@ -217,7 +217,7 @@ W przypadku Cosmos DB równoważne metryki są przedstawione poniżej:
 | Opłata za żądanie zapytania Mongo | MongoRequestCharge z wymiarem "CommandName" = "Find"||
 | Częstotliwość żądań zapytań Mongo | MongoRequestsCount z wymiarem "CommandName" = "Find"||
 | Opłata za żądanie aktualizacji Mongo | MongoRequestCharge z wymiarem "CommandName" = "Update"||
-| Usługa jest niedostępna| Dostępność||
+| Usługa niedostępna| Dostępność||
 | TotalRequestUnits | TotalRequestUnits||
 
 ### <a name="how-equivalent-action-groups-are-created"></a>Jak są tworzone równoważne grupy akcji
@@ -256,15 +256,22 @@ Każdy użytkownik, który ma wbudowaną rolę współautor monitorowania na poz
 
 Po zainicjowaniu [migracji](alerts-using-migration-tool.md)otrzymasz wiadomości e-mail pod podanymi adresami, aby powiadomić, że migracja została ukończona, lub jeśli jest wymagana jakakolwiek akcja. W tej sekcji opisano niektóre typowe problemy i sposoby postępowania z nimi.
 
-### <a name="validation-failed"></a>Weryfikacja nie powiodła się
+### <a name="validation-failed"></a>Nie można sprawdzić poprawności
 
-Ze względu na ostatnie zmiany reguł alertów klasycznych w Twojej subskrypcji nie można zmigrować subskrypcji. Ten problem jest tymczasowy. Możesz ponownie uruchomić migrację po przeniesieniu stanu migracji **do tyłu w** ciągu kilku dni.
+Ze względu na ostatnie zmiany reguł alertów klasycznych w Twojej subskrypcji nie można zmigrować subskrypcji. Ten problem jest tymczasowy. Możesz ponownie uruchomić migrację po przeniesieniu stanu migracji do tyłu w ciągu kilku dni.
 
-### <a name="policy-or-scope-lock-preventing-us-from-migrating-your-rules"></a>Blokada zasad lub zakresu uniemożliwia nam Migrowanie reguł
+### <a name="scope-lock-preventing-us-from-migrating-your-rules"></a>Blokada zakresu uniemożliwia nam Migrowanie reguł
 
-W ramach migracji zostaną utworzone nowe alerty metryki i nowe grupy akcji, a następnie zostaną usunięte reguły klasycznego alertu. Istnieje jednak zasada lub blokada zakresu uniemożliwiające tworzenie zasobów. W zależności od zasad lub blokady zakresu nie można migrować niektórych lub wszystkich reguł. Możesz rozwiązać ten problem, usuwając tymczasowo blokadę lub zasady zakresu, a następnie ponownie wyzwalając proces migracji.
+W ramach migracji zostaną utworzone nowe alerty metryki i nowe grupy akcji, a następnie zostaną usunięte reguły klasycznego alertu. Jednak blokada zakresu może uniemożliwić nam tworzenie lub usuwanie zasobów. W zależności od blokady zakresu nie można migrować niektórych lub wszystkich reguł. Ten problem można rozwiązać, usuwając blokadę zakresu dla subskrypcji, grupy zasobów lub zasobu, która jest wymieniona w narzędziu do [migracji](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel), i ponownie wyzwoli migrację. Nie można wyłączyć blokady zakresu i należy ją usunąć w czasie trwania procesu migracji. [Dowiedz się więcej na temat zarządzania blokadami zakresu](../../azure-resource-manager/resource-group-lock-resources.md#portal).
 
-## <a name="next-steps"></a>Kolejne kroki
+### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>Zasady z efektem "Odmów" uniemożliwiają nam Migrowanie reguł
+
+W ramach migracji zostaną utworzone nowe alerty metryki i nowe grupy akcji, a następnie zostaną usunięte reguły klasycznego alertu. Jednak zasady mogą uniemożliwić tworzenie zasobów przez firmę Microsoft. W zależności od zasad nie można migrować niektórych lub wszystkich reguł. Zasady, które blokują proces, są wymienione w [narzędziu migracji](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel). Rozwiąż ten problem, korzystając z:
+
+- Wykluczanie subskrypcji lub grup zasobów na czas trwania procesu migracji z przypisania zasad. [Dowiedz się więcej o zarządzaniu zakresem wykluczeń zasad](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion).
+- Usunięcie lub zmiana efektu na "Audit" lub "append" (na przykład może rozwiązać problemy związane z brakującymi tagami). [Dowiedz się więcej o zarządzaniu wpływem zasad](../../governance/policy/concepts/definition-structure.md#policy-rule).
+
+## <a name="next-steps"></a>Następne kroki
 
 - [Jak korzystać z narzędzia do migracji](alerts-using-migration-tool.md)
 - [Przygotowanie do migracji](alerts-prepare-migration.md)

@@ -6,17 +6,22 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.localizationpriority: high
-ms.date: 08/23/2019
+ms.date: 08/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 6dcd55cc2c269024179e450d789df544bb8ff9a9
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 1c102d05d4c570f9415fad18c004847de11d50cc
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012917"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035708"
 ---
+::: zone target="chromeless"
+
+# <a name="return-azure-data-box-disk"></a>Zwróć Azure Data Box Disk 
+
+::: zone-end
+
 ::: zone target="docs"
 
 # <a name="tutorial-return-azure-data-box-disk"></a>Samouczek: Zwróć Azure Data Box Disk 
@@ -29,13 +34,14 @@ Niniejszy samouczek zawiera informacje na temat wykonywania następujących czyn
 > * Wysyłanie urządzenia Data Box Disk do firmy Microsoft
 > * Pobierz Data Box Disk w różnych regionach
 
-
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem upewnij się, że zostały wykonane kroki opisane w artykule [Samouczek: kopiowanie danych na urządzenie Azure Data Box Disk i ich weryfikacja](data-box-disk-deploy-copy-data.md).
 
 
 ## <a name="ship-data-box-disk-back"></a>Wysyłka zwrotna urządzenia Data Box Disk
+
+::: zone-end
 
 1. Po zakończeniu sprawdzania poprawności danych odłącz dyski. Odłącz kable połączeniowe.
 2. Zapakuj wszystkie dyski i kable połączeniowe w folię bąbelkową, a następnie umieść w opakowaniu wysyłkowym. Opłaty mogą być stosowane w przypadku braku akcesoriów.
@@ -45,15 +51,25 @@ Przed rozpoczęciem upewnij się, że zostały wykonane kroki opisane w artykule
 
 Następne kroki są określane przez miejsce zwrócenia urządzenia.
 
+
+
+- Zaplanuj powracanie [za pomocą zasilacza UPS w przypadku powrotu urządzenia do Stanów Zjednoczonych i Kanady](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada).
+- [Zaplanuj pobranie z DHL dla Europy](data-box-disk-deploy-picked-up.md#pick-up-in-europe) , odwiedzając swoją witrynę sieci Web i podając numer rachunku Airway.
+- [Zaplanuj odbiór w Australii](data-box-disk-deploy-picked-up.md#pick-up-in-australia).
+- [Zaplanuj pobranie dla krajów w Azji](data-box-disk-deploy-picked-up.md#pick-up-in-asia) , takich jak Japonia, Korea i Singapur.
+
+::: zone target="chromeless"
+
+Po pobraniu dysków przez operatora zostanie wyświetlony stan zamówienia w portalu aktualizacje i identyfikator śledzenia.
+
+::: zone-end
+
 ## <a name="pick-up-in-us-canada"></a>Wybieraj w Stanach Zjednoczonych, Kanadzie
 
 W przypadku powrotu urządzenia w Stanach Zjednoczonych lub Kanadzie wykonaj następujące czynności.
 
 1. Użyj zwrotnej etykiety wysyłkowej, znajdującej się w przezroczystej koszulce przyklejonej do opakowania. Jeśli etykieta jest uszkodzona lub utracona:
     - Przejdź do **omówienia > Pobierz etykietę wysyłkową** i Pobierz etykietę zwracanego odbiorcy.
-
-        ![Pobierz etykietę wysyłkową](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - Umieszczanie etykiety na urządzeniu.
 
 2. Zamknij i zaklej opakowanie wysyłkowe. Upewnij się, że zwrotna etykieta wysyłkowa jest widoczna.
@@ -64,33 +80,20 @@ W przypadku powrotu urządzenia w Stanach Zjednoczonych lub Kanadzie wykonaj nas
     - Jeśli numer śledzenia nie jest ujęty w cudzysłów, UPS będzie wymagał dodatkowej opłaty za pobranie.
     - Zamiast planowania pobrania, można również wycofać Data Box Disk w najbliższej lokalizacji docelowej.
 
-
 ## <a name="pick-up-in-europe"></a>Pobierz w Europie
 
 W przypadku powrotu urządzenia w Europie należy wykonać poniższe czynności.
 
 1. Użyj zwrotnej etykiety wysyłkowej, znajdującej się w przezroczystej koszulce przyklejonej do opakowania. Jeśli etykieta jest uszkodzona lub utracona:
     - Przejdź do **omówienia > Pobierz etykietę wysyłkową** i Pobierz etykietę zwracanego odbiorcy.
-
-        ![Pobierz etykietę wysyłkową](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - Umieszczanie etykiety na urządzeniu.
 
 2. Zamknij i zaklej opakowanie wysyłkowe. Upewnij się, że zwrotna etykieta wysyłkowa jest widoczna.
 3. Jeśli zwracasz urządzenie w Europie za pośrednictwem firmy DHL, zamów odbiór paczki przez firmę DHL w witrynie internetowej firmy, podając numer listu przewozowego.
-4. Przejdź do witryny sieci Web kraj/region DHL Express i wybierz pozycję **książka kolekcja kurierów > eReturn**.
-
-    ![DHL zwrotne](media/data-box-disk-deploy-picked-up/dhl-ship-1.png)
-    
+4. Przejdź do witryny sieci Web kraj/region DHL Express i wybierz pozycję **książka kolekcja kurierów > eReturn**.    
 3. Podaj numer listu przewozowego i kliknij przycisk **Zamówienie kuriera**, aby zaplanować odebranie przesyłki.
 
-      ![Zaplanuj odebranie](media/data-box-disk-deploy-picked-up/dhl-ship-2.png)
-
-## <a name="pick-up-in-asia-pacific"></a>Wybierz w Azji i Pacyfiku
-
-Ten region zawiera instrukcje dotyczące odbioru w Japonii, Korei, Australii i Singapurze.
-
-### <a name="pick-up-in-australia"></a>Wybierz w Australii
+## <a name="pick-up-in-australia"></a>Wybierz w Australii
 
 Centra danych platformy Azure w Australii mają dodatkowe powiadomienie o zabezpieczeniach. Wszystkie wychodzące wysyłki muszą mieć zaawansowane powiadomienie. Wykonaj następujące kroki, aby uzyskać w Australii.
 
@@ -100,6 +103,10 @@ Centra danych platformy Azure w Australii mają dodatkowe powiadomienie o zabezp
     - Nazwa zamówienia
     - Adres
     - Nazwa kontaktu
+
+## <a name="pick-up-in-asia"></a>Wybierz w Azji
+
+Instrukcje dotyczące odbioru są różne dla Japonii, Korei i Singapuru.
 
 ### <a name="pick-up-in-japan"></a>Pobierz w Japonii
 
@@ -159,6 +166,8 @@ W razie konieczności można skontaktować się z pomocą techniczną rozwiązan
 3. Dostęp do kurierów. 
 
 
+::: zone target="docs"
+
 ## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące urządzenia Azure Data Box Disk, takie jak:
@@ -175,24 +184,5 @@ Przejdź do następnej procedury, aby dowiedzieć się, jak zweryfikować przeka
 ::: zone-end
 
 
-::: zone target="chromeless"
-
-# <a name="return-the-disk-to-azure"></a>Zwracanie dysku na platformę Azure
-
-1. Po zakończeniu walidacji danych Odłącz dyski. Odłącz kable połączeniowe.
-2. Zapakuj wszystkie dyski i kable połączeniowe w folię bąbelkową, a następnie umieść w opakowaniu wysyłkowym. Opłaty mogą być stosowane w przypadku braku akcesoriów.
-    - Ponownie Użyj opakowania z początkowego wydania.  
-    - Zalecamy pakowanie dysków przy użyciu dobrze zabezpieczonego zawijania bąbelkowego.
-    - Upewnij się, że dopasowanie jest Snug, aby zmniejszyć liczbę ruchów w polu.
-
-3. Następne kroki są określane przez miejsce zwrócenia urządzenia.
-
-    - Zaplanuj powracanie [za pomocą zasilacza UPS w przypadku powrotu urządzenia do Stanów Zjednoczonych i Kanady](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada).
-    - [Zaplanuj pobranie z DHL dla Europy](data-box-disk-deploy-picked-up.md#pick-up-in-europe) , odwiedzając swoją witrynę sieci Web i podając numer rachunku Airway.
-    - [Zaplanuj odbiór dla krajów w regionie Australii](data-box-disk-deploy-picked-up.md#pick-up-in-asia-pacific) , takim jak Australia, Japonia, Korea i Singapur.
-
-Po pobraniu dysków przez operatora zostanie wyświetlony stan zamówienia w portalu aktualizacje i identyfikator śledzenia.
-
-::: zone-end
 
 

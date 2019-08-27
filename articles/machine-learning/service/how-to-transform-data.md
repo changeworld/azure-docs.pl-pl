@@ -12,19 +12,20 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 07/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: add5584ccf3d9d6837e328bbf70d71598e5c0839
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 339a4f93d45b3d3b3e242aa735ce4b737a9292f0
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694304"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035961"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Przekształcanie danych za pomocą usługi Azure Machine Learning Prep zestawu SDK usługi Data
 
 W tym artykule przedstawiono różne metody przekształcania danych przy użyciu `azureml-dataprep` pakietu. Pakiet oferuje funkcje, które ułatwiają dodawanie kolumn, odfiltrowanie niechcianych wierszy lub kolumn, a także brak wartości w kolumnie. Zapoznaj się z pełną dokumentacją referencyjną dla [pakietu Azure-](https://aka.ms/data-prep-sdk)preprodukcyjnym.
 
 > [!Important]
-> Jeśli tworzysz nowe rozwiązanie, wypróbuj [Azure Machine Learning zestawy](how-to-explore-prepare-data.md) danych (wersja zapoznawcza), aby przekształcić dane, dane migawek i magazynować definicje zestawów danych. Zbiory danych to następna wersja zestawu SDK przygotowywania, oferująca rozszerzone funkcje zarządzania zestawami elementów w rozwiązaniach AI. Jeśli używasz `azureml-dataprep` pakietu do tworzenia przepływu danych z transformacjami zamiast `azureml-datasets` używania pakietu do tworzenia zestawu danych, nie będzie można użyć migawek ani zestawów danych z wersjami w późniejszym czasie.
+> Jeśli tworzysz nowe rozwiązanie, wypróbuj [Azure Machine Learning zestawy](how-to-explore-prepare-data.md) danych (wersja zapoznawcza), aby przekształcić dane, dane migawek i magazynować definicje zestawów danych. Zbiory danych to następna wersja zestawu SDK przygotowywania, oferująca rozszerzone funkcje zarządzania zestawami elementów w rozwiązaniach AI.
+> Jeśli używasz `azureml-dataprep` pakietu do tworzenia przepływu danych z transformacjami zamiast `azureml-datasets` używania pakietu do tworzenia zestawu danych, nie będzie można użyć migawek ani zestawów danych z wersjami w późniejszym czasie.
 
 Ten sposób przedstawia przykłady dla następujących zadań:
 
@@ -345,7 +346,7 @@ Za pomocą Konstruktora wyrażeń `col`, określ nazwę kolumny jako argumentu c
 
 W tym przykładzie `dflow.filter(col('Tip_amount') > 0)` zwraca nowego przepływu danych z wierszami, w którym wartość `Tip_amount` jest większa niż 0.
 
-> [!NOTE] 
+> [!NOTE]
 > `Tip_amount` jest najpierw konwertowany na liczbowy, co pozwala utworzyć wyrażenie Porównanie innych wartości liczbowych.
 
 ```python
@@ -517,4 +518,4 @@ dflow.head(2)
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Przykład rozwiązywania określonego scenariusza można [](tutorial-data-prep.md) znaleźć w samouczku dotyczącym przygotowania zestawu danych Azure Machine Learning.
+* Aby uzyskać więcej informacji, zobacz [dokumentację dotyczącą](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#dataprep) zestawu SDK przygotowywania danych Azure Machine Learning.

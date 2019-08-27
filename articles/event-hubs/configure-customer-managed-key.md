@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 794f8f136521acbb51139b9e781a30c71a1560e6
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 311f69ffa436eebb261fb8aa5ee72886ad9fe9d0
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992759"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035907"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Skonfiguruj klucze zarządzane przez klienta do szyfrowania danych Event Hubs platformy Azure przechowywanych przy użyciu Azure Portal
 Usługa Azure Event Hubs zapewnia szyfrowanie danych przechowywanych przy użyciu usługi Azure szyfrowanie usługi Storage (SSE platformy Azure). Event Hubs opiera się na usłudze Azure Storage do przechowywania danych i domyślnie wszystkie dane przechowywane w usłudze Azure Storage są szyfrowane przy użyciu kluczy zarządzanych przez firmę Microsoft. 
@@ -170,7 +170,7 @@ Poniżej przedstawiono kody typowych błędów, które należy wyszukać, gdy w�
 > Aby włączyć funkcję Geo-DR w przestrzeni nazw używającej szyfrowania BYOK, pomocnicza przestrzeń nazw dla parowania musi znajdować się w dedykowanym klastrze i musi mieć włączoną dla niej tożsamość zarządzaną przez system. Aby dowiedzieć się więcej, zobacz [zarządzane tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
 > [!NOTE]
-> W przypadku BYOK szyfrowanych przestrzenie nazw Event Hubs punkty końcowe usługi sieci wirtualnej nie są obsługiwane w wersji zapoznawczej. 
+> Jeśli punkty końcowe usługi Sieć wirtualna (VNet) są skonfigurowane na Azure Key Vault dla Event Hubs przestrzeni nazw, BYOK nie będzie obsługiwana. 
 
 
 ## <a name="next-steps"></a>Następne kroki

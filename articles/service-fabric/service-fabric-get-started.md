@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/08/2019
+ms.date: 08/22/2019
 ms.author: atsenthi
-ms.openlocfilehash: 2e19a7c267131de845143b681457966ed884a565
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 0bc8a5bbecc4e7d58265e9c10c2c8a3351fcc312
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775300"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036012"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Przygotowywanie środowiska deweloperskiego w systemie Windows
 > [!div class="op_single_selector"]
@@ -69,8 +69,8 @@ Jeśli potrzebujesz tylko zestawu SDK, możesz zainstalować ten pakiet:
 * [Zainstaluj zestaw SDK usługi Microsoft Azure Service Fabric][core-sdk]
 
 Bieżące wersje:
-* Service Fabric zestawu SDK i narzędzi 3.4.658
-* 6\.5.658 środowiska uruchomieniowego Service Fabric
+* Service Fabric zestawu SDK i narzędzi 3.4.664
+* 6\.5.664 środowiska uruchomieniowego Service Fabric
 * Service Fabric Tools dla programu Visual Studio 2015 2.5.20615.1
 * Program Visual Studio 2017 15,9 zawiera Service Fabric Tools dla programu Visual Studio 2.4.11024.1 
 * Program Visual Studio 2019 16,1 zawiera Service Fabric Tools dla programu Visual Studio 2.5.20423.3
@@ -89,7 +89,7 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ## <a name="install-docker-optional"></a>Zainstaluj platformę Docker (opcjonalnie)
 [Service Fabric to koordynator kontenera](service-fabric-containers-overview.md) służący do wdrażania mikrousług w klastrze maszyn. Aby uruchamiać aplikacje kontenera systemu Windows w lokalnym klastrze programistycznym, należy najpierw zainstalować Docker for Windows. Pobierz [Docker CE for Windows (stabilny)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Po zainstalowaniu i uruchomieniu programu Docker kliknij prawym przyciskiem myszy jego ikonę na pasku zadań i wybierz pozycję **Switch to Windows containers** (Przełącz na kontenery systemu Windows). Ten krok jest wymagany do uruchomienia obrazów platformy Docker opartych na systemie Windows.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Po skonfigurowaniu środowiska projektowego możesz zacząć kompilować i uruchamiać aplikacje.
 
 * [Dowiedz się, jak tworzyć i wdrażać aplikacje oraz zarządzać nimi](service-fabric-tutorial-create-dotnet-app.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62496aceb1454283449e952c0ed86623597e9e66
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 1431a46bf0981ee7ca3ecd06be9d7ebc35f05982
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011672"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032729"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Instrukcje: Planowanie implementacji dołączania hybrydowego Azure Active Directory
 
@@ -35,7 +35,7 @@ Jeśli masz lokalne środowisko Active Directory (AD) i chcesz dołączyć kompu
 W tym artykule założono, że znasz już [wprowadzenie do zarządzania tożsamościami urządzeń w Azure Active Directory](../device-management-introduction.md).
 
 > [!NOTE]
-> Minimalny wymagany poziom funkcjonalności domeny i lasu dla systemu Windows 10 hybrydowego sprzężenia usługi Azure AD to Windows Server 2008 R2.
+> Minimalna wymagana wersja kontrolera domeny dla hybrydowego sprzężenia usługi Azure AD systemu Windows 10 to Windows Server 2008 R2.
 
 ## <a name="plan-your-implementation"></a>Planowanie implementacji
 

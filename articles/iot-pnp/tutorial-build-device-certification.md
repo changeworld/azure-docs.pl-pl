@@ -1,5 +1,5 @@
 ---
-title: Utwórz urządzenie usługi Azure IoT Plug and Play w wersji zapoznawczej, które jest gotowe do certyfikacji | Microsoft Docs
+title: Utwórz urządzenie usługi IoT Plug and Play w wersji zapoznawczej, które jest gotowe do certyfikacji | Microsoft Docs
 description: Jako deweloper urządzenia zapoznaj się z informacjami na temat tworzenia urządzenia usługi IoT Plug and Play w wersji zapoznawczej, które jest gotowe do certyfikacji.
 author: tbhagwat3
 ms.author: tanmayb
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: bfa611eba8e7a990626fbace8b930962615e0594
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 151f6609375063a68a848f4c799af0b459124f23
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878096"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70047911"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Utwórz urządzenie usługi IoT Plug and Play w wersji zapoznawczej, które jest gotowe do certyfikacji
 
@@ -124,7 +124,7 @@ Aby przeprowadzić certyfikację urządzenia, należy włączyć obsługę admin
 
 #### <a name="implement-the-model-information-and-sdk-information-interfaces"></a>Implementowanie informacji o modelu i interfejsów informacji zestawu SDK
 
-Zestaw SDK urządzenia usługi Azure IoT implementuje informacje o modelu i interfejsy informacji zestawu SDK. Jeśli używasz funkcji generowania kodu w VS Code, kod urządzenia używa zestawu SDK usługi Azure IoT Plug and Play.
+Zestaw SDK urządzenia usługi Azure IoT implementuje informacje o modelu i interfejsy informacji zestawu SDK. Jeśli używasz funkcji generowania kodu w VS Code, kod urządzenia używa zestawu SDK Plug and Play urządzenia IoT.
 
 Jeśli zdecydujesz się nie używać zestawu SDK urządzeń Azure IoT, możesz użyć kodu źródłowego zestawu SDK jako odniesienia do własnej implementacji.
 

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: c41ab1c3309243fa3a96d907f620ffeff10376a1
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6ad7f32704d8cb73999a6e3cf60cb2a238268242
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69626264"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034542"
 ---
 # <a name="move-guidance-for-networking-resources"></a>Wskazówki dotyczące przenoszenia zasobów sieciowych
 
@@ -22,10 +22,6 @@ W tym artykule opisano sposób przenoszenia sieci wirtualnych i innych zasobów 
 Podczas przenoszenia sieci wirtualnej, możesz również przenieść jego zasobów zależnych. Dla bramy sieci VPN należy przenieść adresy IP, bramy sieci wirtualnej i wszystkie zasoby skojarzone z nimi połączenie. Bramy sieci lokalnej może znajdować się w innej grupie zasobów.
 
 Aby przenieść maszynę wirtualną z kartą sieciową, należy przenieść wszystkie zasoby zależne. Przenieś sieć wirtualną dla karty interfejsu sieciowego, wszystkie inne karty interfejsu sieciowego dla sieci wirtualnej i bramy sieci VPN.
-
-## <a name="state-of-dependent-resources"></a>Stan zasobów zależnych
-
-Jeśli źródłowa lub docelowa Grupa zasobów zawiera sieć wirtualną, Stany wszystkich zasobów zależnych dla sieci wirtualnej są sprawdzane podczas przenoszenia. Jeśli którykolwiek z tych zasobów jest w stanie niepowodzenia, przeniesienie jest zablokowane. Na przykład jeśli maszyna wirtualna, która używa sieci wirtualnej, zakończyła się niepowodzeniem, przenoszenie jest zablokowane. Przenoszenie jest blokowane nawet wtedy, gdy maszyna wirtualna nie jest jednym z przenoszonych zasobów i nie znajduje się w jednej z grup zasobów dla przeniesienia. Aby uniknąć tego problemu, Przenieś zasoby do grupy zasobów, która nie ma sieci wirtualnej.
 
 ## <a name="peered-virtual-network"></a>Równorzędna Sieć wirtualna
 

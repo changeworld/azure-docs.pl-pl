@@ -1,44 +1,44 @@
 ---
-title: Przykłady przekształcania oświadczeń ogólne tożsamości środowisko Framework schematu z usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
-description: Przykłady przekształcania oświadczeń ogólne tożsamości środowisko Framework schematu z usługi Azure Active Directory B2C.
+title: Ogólne przykłady transformacji oświadczeń dla schematu struktury obsługi tożsamości Azure Active Directory B2C
+description: Ogólne przykłady transformacji oświadczeń dla schematu programu Identity Experience Framework Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 08/27/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a5f8068ea7e97343749c719d2d0800e20701079c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7cea33cb61f8f8d0fe305a757f11c80bc5da24ca
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511000"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032895"
 ---
-# <a name="general-claims-transformations"></a>Przekształcenia oświadczeń ogólne
+# <a name="general-claims-transformations"></a>Ogólne przekształcenia oświadczeń
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Ten artykuł zawiera przykłady dotyczące używania przekształcenia oświadczeń ogólne schematu, struktura środowiska tożsamości w usłudze Azure Active Directory (Azure AD) B2C. Aby uzyskać więcej informacji, zobacz [ClaimsTransformations](claimstransformations.md).
+W tym artykule przedstawiono przykłady użycia ogólnych przekształceń oświadczeń schematu programu Identity Experience Framework w Azure Active Directory B2C (Azure AD B2C). Aby uzyskać więcej informacji, zobacz [ClaimsTransformations](claimstransformations.md).
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
-Sprawdza, czy **oświadczenie inputClaim** istnieje lub nie, a następnie ustawia **oświadczenie outputClaim** na wartość true lub false odpowiednio.
+Sprawdza, czy **oświadczenie inputclaim** istnieje, czy nie, i odpowiednio ustawia **oświadczenie outputclaim** na wartość true lub false.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | Oświadczenie InputClaim |Dowolne | Oświadczeń wejściowych, których istnienie muszą zostać zweryfikowane. |
-| oświadczenie outputClaim | oświadczenie outputClaim | wartość logiczna | Typ oświadczenia, które są generowane po wywołaniu tego ClaimsTransformation. |
+| Oświadczenie inputclaim | Oświadczenie inputclaim |Any | Dane wejściowe, których istnienie musi być zweryfikowane. |
+| Oświadczenie outputclaim | Oświadczenie outputclaim | boolean | Wartość oświadczenia jest generowana po wywołaniu tego ClaimsTransformation. |
 
-Użyj tego przekształcania do Sprawdź, czy oświadczenie istnieje lub zawiera wszystkie wartości oświadczeń. Wartość zwracana jest wartość logiczna wskazująca, czy istnieje oświadczenia. Poniższy przykład sprawdza, czy istnieje adres e-mail.
+Ta transformacja oświadczeń służy do sprawdzania, czy oświadczenie istnieje lub zawiera dowolną wartość. Wartość zwracana jest wartością logiczną, która wskazuje, czy istnieje. Poniższy przykład sprawdza, czy adres e-mail istnieje.
 
 ```XML
 <ClaimsTransformation Id="CheckIfEmailPresent" TransformationMethod="DoesClaimExist">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="inputClaim" />
-  </InputClaims>                    
+  </InputClaims>
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="isEmailPresent" TransformationClaimType="outputClaim" />
   </OutputClaims>
@@ -47,21 +47,21 @@ Użyj tego przekształcania do Sprawdź, czy oświadczenie istnieje lub zawiera 
 
 ### <a name="example"></a>Przykład
 
-- Oświadczeń wejściowych:
-  - **oświadczenie inputClaim**: someone@contoso.com
-- Oświadczeń danych wyjściowych: 
-    - **oświadczenie outputClaim**: true
+- Oświadczenia wejściowe:
+  - **oświadczenie inputclaim**:someone@contoso.com
+- Oświadczenia wyjściowe:
+  - **oświadczenie outputclaim**: true
 
 ## <a name="hash"></a>Skrót
 
-Skrótu podany tekst zwykły przy użyciu ziarna i klucz tajny.
+Mieszaj podany zwykły tekst przy użyciu soli i wpisu tajnego. Algorytmem wyznaczania wartości skrótu jest SHA-256.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | zwykły tekst | string | Oświadczeń wejściowych do zaszyfrowania |
-| Oświadczenie InputClaim | ziarna | string | Parametr ziarna. Możesz utworzyć losową wartość, przy użyciu `CreateRandomString` przekształcania oświadczeń. |
-| InputParameter | randomizerSecret | string | Wskazuje na istniejące usługi Azure AD B2C **klucze zasad**. Aby utworzyć nowe konto: W ramach dzierżawy usługi Azure AD B2C wybierz **ustawieniami B2C > Struktura środowiska tożsamości**. Wybierz **klucze zasad** do wyświetlania kluczy, które są dostępne w Twojej dzierżawie. Wybierz pozycję **Dodaj**. Aby uzyskać **opcje**, wybierz opcję **ręczne**. Podaj nazwę (prefiks B2C_1A_ mogą zostać dodane automatycznie.). W polu klucza tajnego wprowadź wszystkie hasła, które chcesz użyć, takie jak 1234567890. Wybierz użycie klucza **klucz tajny**. Wybierz pozycję **Utwórz**. |
-| oświadczenie outputClaim | Skrót | string | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane. Oświadczenie skonfigurowane w `plaintext` oświadczenie inputClaim. |
+| Oświadczenie inputclaim | formacie | ciąg | Dane wejściowe do zaszyfrowania |
+| Oświadczenie inputclaim | Solo | ciąg | Parametr soli. Można utworzyć wartość losową przy użyciu `CreateRandomString` transformacji oświadczeń. |
+| InputParameter | randomizerSecret | ciąg | Wskazuje istniejący **klucz zasad**Azure AD B2C. Aby utworzyć nowy klucz zasad: W dzierżawie Azure AD B2C w obszarze **Zarządzaj**wybierz pozycję **platforma obsługi tożsamości**. Wybierz pozycję **klucze zasad** , aby wyświetlić klucze, które są dostępne w dzierżawie. Wybierz pozycję **Dodaj**. W obszarze **Opcje**wybierz pozycję **Ręczne**. Podaj nazwę (prefiks *B2C_1A_* może zostać dodany automatycznie). W polu tekstowym **wpis tajny** wprowadź dowolne tajne, na przykład 1234567890. W obszarze **użycie klucza**wybierz pozycję **podpis**. Wybierz pozycję **Utwórz**. |
+| Oświadczenie outputclaim | skrótu | ciąg | Wartość oświadczenia, która jest generowana po wywołaniu tej transformacji oświadczeń. Zostało skonfigurowane w `plaintext` oświadczenie inputclaim. |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">
@@ -80,12 +80,9 @@ Skrótu podany tekst zwykły przy użyciu ziarna i klucz tajny.
 
 ### <a name="example"></a>Przykład
 
-- Oświadczeń wejściowych:
-    - **PlainText**: MyPass@word1
-    - **ziarna**: 487624568
-    - **randomizerSecret**: B2C_1A_AccountTransformSecret
-- Oświadczeń danych wyjściowych: 
-    - **oświadczenie outputClaim**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=
-
-
-
+- Oświadczenia wejściowe:
+  - **zwykły tekst**:MyPass@word1
+  - **sól**: 487624568
+  - **randomizerSecret**: B2C_1A_AccountTransformSecret
+- Oświadczenia wyjściowe:
+  - **oświadczenie outputclaim**: CdMNb/KTEfsWzh9MR1kQGRZCKjuxGMWhA5YQNihzV6U=
