@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 08/20/2019
 ms.author: shants
-ms.openlocfilehash: 2ba1bb914dfc2edbe17d12cc58df097b60d1f94c
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 413301fd8b6b4b2a3b60501378cf6da23cc38d81
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849733"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018842"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Powiadomienia o planowanej konserwacji dla zestawów skalowania maszyn wirtualnych
 
@@ -28,13 +28,13 @@ Platforma Azure okresowo przeprowadza aktualizacje, aby zwiększyć niezawodnoś
 
 - Jeśli konserwacja nie wymaga ponownego uruchomienia, platforma Azure używa migracji w miejscu w celu wstrzymania maszyny wirtualnej podczas aktualizowania hosta. Operacje konserwacji, które nie wymagają ponownego uruchomienia, są stosowane w domenie błędów przez domenę błędów. Postęp jest zatrzymany w przypadku odebrania ostrzeżeń o ostrzeżeniach o kondycji.
 
-- Jeśli konserwacja wymaga ponownego uruchomienia, otrzymasz powiadomienie, które pokazuje, kiedy planowana jest konserwacja. W takich przypadkach zostanie nadany przedział czasu, w którym można samodzielnie rozpocząć konserwację, gdy będzie on najlepiej działać.
+- Jeśli konserwacja wymaga ponownego uruchomienia, otrzymasz powiadomienie o zaplanowaniu konserwacji. W takich przypadkach użytkownik otrzymuje przedział czasu, który zwykle 35 dni, w którym można samodzielnie rozpocząć konserwację, gdy będzie ona działać.
 
 
 Planowana konserwacja wymagająca ponownego uruchomienia jest zaplanowana na fale. Każda fala ma inny zakres (regiony):
 
 - Fala rozpoczyna się od powiadomienia do klientów. Domyślnie powiadomienia są wysyłane do właściciela subskrypcji i współwłaścicieli. Za pomocą [alertów dziennika aktywności](../azure-monitor/platform/activity-logs-overview.md)platformy Azure Możesz dodać adresatów i opcje obsługi wiadomości, takie jak wiadomości e-mail, wiadomości SMS i elementy webhook do powiadomień.  
-- Z powiadomieniem jest udostępniane *okno* samoobsługowe. W tym oknie możesz znaleźć, które maszyny wirtualne znajdują się w tej fazie. Możesz proaktywnie rozpocząć konserwację zgodnie z własnymi potrzebami w zakresie planowania.
+- Z powiadomieniem jest udostępniane *okno* samoobsługowe. W tym oknie, które jest zwykle 35 dni, można znaleźć, które maszyny wirtualne znajdują się w tej fazie. Możesz proaktywnie rozpocząć konserwację zgodnie z własnymi potrzebami w zakresie planowania.
 - Po włączeniu okna samoobsługowego zostanie rozpoczęte *zaplanowane okno obsługi* . W pewnym momencie w tym oknie usługa Azure planuje i stosuje wymaganą konserwację na maszynie wirtualnej. 
 
 Celem dwóch okien jest udostępnienie wystarczającej ilości czasu na rozpoczęcie konserwacji i ponowne uruchomienie maszyny wirtualnej, co pozwoli na automatyczne rozpoczęcie konserwacji przez platformę Azure.
@@ -63,7 +63,7 @@ Konserwacja samoobsługowa nie jest zalecana w przypadku wdrożeń korzystający
 - W przypadku częstego zmieniania rozmiaru maszyny wirtualnej. Ten scenariusz może spowodować przywrócenie stanu konserwacji. 
 - W przypadku zaakceptowania zaplanowanych zdarzeń, które umożliwiają aktywne przejście w tryb failover lub bezpieczne zamknięcie obciążenia 15 minut przed rozpoczęciem zamykania konserwacji.
 
-**Użyj konserwacji** samoobsługowej, jeśli planujesz uruchomić maszynę wirtualną w trybie nieprzerwanym w fazie zaplanowanej konserwacji, a żaden z powyższych counterindications nie ma zastosowania. 
+Użyj konserwacji samoobsługowej, jeśli planujesz uruchomić maszynę wirtualną w trybie nieprzerwanym w fazie zaplanowanej konserwacji, a żaden z powyższych counterindications nie ma zastosowania. 
 
 Najlepiej używać samoobsługowej konserwacji w następujących przypadkach:
 
@@ -100,7 +100,7 @@ Platforma Azure komunikuje harmonogram planowanej konserwacji, wysyłając wiado
 2. W menu po lewej stronie wybierz pozycję **Monitoruj**. 
 3. W okienku **monitorowanie — alerty (klasyczne)** wybierz pozycję **+ Dodaj alert dziennika aktywności**.
 4. Na stronie **Dodawanie alertu dziennika aktywności** wybierz lub wprowadź żądane informacje. W obszarze **kryteria**upewnij się, że ustawisz następujące wartości:
-   - **Kategoria zdarzenia**: Wybierz **Service Health**.
+   - **Kategoria zdarzenia**: Wybierz pozycję **Service Health**.
    - **Usługi**: Wybierz **Virtual Machine Scale Sets i Virtual Machines**.
    - **Typ**: Wybierz pozycję **Planowana konserwacja**. 
     
@@ -215,10 +215,10 @@ Aby uzyskać więcej informacji o wysokiej dostępności, zobacz [regiony i dost
 
 **Odp.:** W przypadku kilku przypadków użycia zaplanowano konserwację maszyny wirtualnej po zakończeniu konserwacji i ponownym wdrożeniu:
    - Twoja fala została anulowana i uruchomiona ponownie z innym ładunkiem. Może się okazać, że wykryto błąd ładunku, a po prostu musimy wdrożyć dodatkowy ładunek.
-   - Twoja maszyna wirtualna *została* zaakceptowana w innym węźle z powodu błędu sprzętowego.
+   - Twoja maszyna wirtualna została zaakceptowana w innym węźle z powodu błędu sprzętowego.
    - Wybrano zatrzymanie (Cofnięcie alokacji) i ponowne uruchomienie maszyny wirtualnej.
    - Włączono **automatyczne zamykanie** dla maszyny wirtualnej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, jak zarejestrować zdarzenia konserwacji z poziomu maszyny wirtualnej za pomocą zaplanowanych [zdarzeń](../virtual-machines/windows/scheduled-events.md).

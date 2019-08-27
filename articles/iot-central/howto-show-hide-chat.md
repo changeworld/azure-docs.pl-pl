@@ -1,52 +1,52 @@
 ---
-title: Rozmowa Pokaż/Ukryj w usłudze Azure IoT Central | Dokumentacja firmy Microsoft
-description: Jako użytkownik Dowiedz się, jak wyświetlać i ukrywać rozmowy.
+title: Usługa Azure IoT Central Pokaż/Ukryj rozmowę | Microsoft Docs
+description: Jako użytkownik, Dowiedz się, jak wyświetlać i ukrywać rozmowy.
 author: v-krghan
 ms.author: v-krghan
-ms.date: 04/18/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a8d2b71899cdd6b7f9c8cb803732b760f3009811
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ab0f830ab3b06f272e371a6908ac6dde3e3893a
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64513326"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019718"
 ---
 # <a name="toggle-live-chat"></a>Przełączanie czatu na żywo
 
-W tym artykule pokazano, jak przełączać Czat na żywo w aplikacji IoT Central. Czat na żywo umożliwia dostęp do pomocy technicznej.
+W tym artykule opisano sposób przełączania rozmowy na żywo w aplikacji IoT Central. Korzystając z rozmowy na żywo, możesz uzyskać dostęp do pomocy technicznej.
 
 > [!NOTE]
-> Opcja rozmowy jest dostępna tylko w przypadku subskrypcji wersji próbnej.
+> Opcja rozmowa jest dostępna tylko w przypadku subskrypcji wersji próbnej.
 
 ## <a name="chat-with-us"></a>Porozmawiaj z nami
 
-Aby uzyskać pomoc techniczną, otwórz IoT Central aplikacji i wybierz **Porozmawiaj z nami**.
+Aby uzyskać pomoc techniczną, Otwórz aplikację IoT Central i wybierz pozycję **Czat z nami**.
 
 ![Porozmawiaj z nami](media/howto-show-hide-chat/chat-with-us.png)
 
 Możesz wpisać pytanie, jak pokazano na poniższym zrzucie ekranu:
 
-!["Configure szczegóły urządzenia" formularz Szczegóły ustawień i właściwości](media/howto-show-hide-chat/sample-chat.png)
+![Formularz "Konfigurowanie szczegółów urządzenia" z informacjami szczegółowymi dotyczącymi ustawień i właściwości](media/howto-show-hide-chat/sample-chat.png)
 
-## <a name="hide-chat"></a>Ukryj rozmowy
+## <a name="hide-chat"></a>Ukryj czat
 
-Aby ukryć czatu, wybierz opcję **Ukryj rozmowy** w **pomocy** panelu:
+Aby ukryć rozmowę, wybierz pozycję **Ukryj rozmowę** w panelu **Pomoc** :
 
- ![Ukryj rozmowy](media/howto-show-hide-chat/hide-chat.png)
+ ![Ukryj czat](media/howto-show-hide-chat/hide-chat.png)
 
-## <a name="enable-chat"></a>Włącz rozmowy
+## <a name="enable-chat"></a>Włącz rozmowę
 
-Aby wyświetlić czatu, wybierz polecenie **Pokaż rozmowy** w **pomocy** panelu:
+Aby wyświetlić rozmowę, wybierz pozycję **Pokaż rozmowę** w panelu **pomocy** :
 
- ![Pokaż rozmowę](media/howto-show-hide-chat/show-chat.png)
+ ![Pokaż czat](media/howto-show-hide-chat/show-chat.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Skoro już wiesz, jak Przełącz Czat na żywo w usłudze Azure IoT Central, poniżej przedstawiono sugerowany następny krok:
+Teraz, gdy wiesz już, jak przełączać czat na żywo w usłudze Azure IoT Central, poniżej przedstawiono sugerowany następny krok:
 
 > [!div class="nextstepaction"]
 > [Konfigurowanie pulpitu nawigacyjnego aplikacji](howto-configure-homepage.md)

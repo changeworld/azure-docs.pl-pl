@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 8321a9dd779406b2d1de44bd4c9313e4d855548d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 7246a0223e156abd866594c65542069944601b01
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68740892"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018250"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrowanie aplikacji z usługą Azure Virtual Network
 W tym dokumencie opisano funkcję integracji Azure App Service sieci wirtualnej i sposób jej konfigurowania z aplikacjami w [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Sieci wirtualne platformy Azure][VNETOverview] (Sieci wirtualnych) umożliwia umieszczenie wielu zasobów platformy Azure w sieci bez obsługi Internetu.  
@@ -84,8 +84,9 @@ Ta funkcja jest w wersji zapoznawczej, ale jest obsługiwana w przypadku obcią�
 * Aplikacja i Sieć wirtualna muszą znajdować się w tym samym regionie
 * Nie można usunąć sieci wirtualnej przy użyciu zintegrowanej aplikacji. Najpierw należy usunąć integrację 
 * Możesz mieć tylko jedną regionalną integrację sieci wirtualnej na App Service plan. Wiele aplikacji w tym samym planie App Service może korzystać z tej samej sieci wirtualnej. 
+* Nie można zmienić subskrypcji aplikacji ani planu App Service, gdy istnieje aplikacja, która korzysta z integracji regionalnej sieci wirtualnej.
 
-Jeden adres jest używany dla każdego wystąpienia planu App Service. Jeśli aplikacja została przeskalowana do 5 wystąpień, oznacza to, że używane są 5 adresów. Ponieważ nie można zmienić rozmiaru podsieci po przypisaniu, należy użyć podsieci, która jest wystarczająco duża, aby można było dowolnie skalować dostęp do aplikacji. Zalecanym rozmiarem jest/27 z 32 adres, który będzie uwzględniać plan App Service w warstwie Premium, który jest skalowany do 20 wystąpień.
+Jeden adres jest używany dla każdego wystąpienia planu App Service. Jeśli aplikacja została przeskalowana do 5 wystąpień, zostaną użyte 5 adresów. Ponieważ nie można zmienić rozmiaru podsieci po przypisaniu, należy użyć podsieci, która jest wystarczająco duża, aby można było dowolnie skalować dostęp do aplikacji. Zalecany rozmiar to/26 z 64 adresami. Adresy/27 z 32mi mogą obsłużyć App Service planu o pojemności Premium 20, jeśli nie zmieniono rozmiaru planu App Service. W przypadku skalowania planu App Service w górę lub w dół wystarczy kilka adresów w krótkim czasie. 
 
 Jeśli chcesz, aby aplikacje w innym App Service planować dostęp do sieci wirtualnej, która jest już połączona z aplikacjami w innym planie App Service, musisz wybrać inną podsieć niż ta, która jest używana przez istniejącą integrację z siecią wirtualną.  
 
@@ -102,6 +103,8 @@ Ta funkcja jest dostępna w wersji zapoznawczej dla systemu Linux. Aby użyć fu
    ![Wybieranie sieci wirtualnej i podsieci][7]
 
 Gdy aplikacja zostanie zintegrowana z siecią wirtualną, użyje tego samego serwera DNS, z którym jest skonfigurowana Sieć wirtualna. 
+
+Integracja z regionalną siecią wirtualną wymaga delegowania podsieci integracji do firmy Microsoft. Web.  Interfejs użytkownika integracji sieci wirtualnej automatycznie przekaże podsieć do firmy Microsoft. Web. Jeśli Twoje konto nie ma wystarczających uprawnień sieciowych do jego ustawienia, będziesz potrzebować kogoś, kto może ustawić atrybuty w podsieci integracji w celu delegowania podsieci. Aby ręcznie delegować podsieć integracji, przejdź do interfejsu użytkownika podsieci usługi Azure Virtual Network i ustaw delegowanie dla Microsoft. Web.
 
 Aby odłączyć aplikację od sieci wirtualnej, wybierz pozycję **Rozłącz**. Spowoduje to ponowne uruchomienie aplikacji sieci Web. 
 
@@ -249,7 +252,7 @@ Istnieją trzy powiązane opłaty za korzystanie z funkcji integracji sieci wirt
 
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-Chociaż ta funkcja jest łatwa do skonfigurowania, nie oznacza to, że Twoje środowisko nie będzie miało problemu. Jeśli wystąpią problemy z uzyskaniem dostępu do żądanego punktu końcowego, istnieją pewne narzędzia, których można użyć do testowania łączności z poziomu konsoli aplikacji. Istnieją dwie konsole, których można użyć. Jedna z nich jest konsolą kudu, a druga jest konsolą w Azure Portal. Aby nawiązać połączenie z konsolą kudu z poziomu aplikacji, przejdź do pozycji narzędzia-> kudu. Jest to takie samo, jak w przypadku programu [sitename]. SCM. azurewebsites. NET. Po jego otwarciu przejdź do karty konsola debugowania. Aby przejść do Azure Portal hostowanej konsoli, w aplikacji przejdź do pozycji narzędzia — > Konsola. 
+Chociaż ta funkcja jest łatwa do skonfigurowania, nie oznacza to, że Twoje środowisko nie będzie miało problemu. Jeśli wystąpią problemy z uzyskaniem dostępu do żądanego punktu końcowego, istnieją pewne narzędzia, których można użyć do testowania łączności z poziomu konsoli aplikacji. Istnieją dwie konsole, których można użyć. Jedna z nich jest konsolą kudu, a druga jest konsolą w Azure Portal. Aby nawiązać połączenie z konsolą kudu z poziomu aplikacji, przejdź do pozycji narzędzia-> kudu. Możesz również uzyskać dostęp do konsoli Kudo na stronie [sitename]. SCM. azurewebsites. NET. Po załadowaniu witryny sieci Web przejdź do karty konsola debugowania. Aby przejść do Azure Portal hostowanej konsoli, w aplikacji przejdź do pozycji narzędzia — > Konsola. 
 
 #### <a name="tools"></a>Narzędzia
 Narzędzia **ping**, **nslookup** i **tracert** nie przełączają się za pomocą konsoli ze względu na ograniczenia zabezpieczeń. Aby wypełnić wartość void, dodano dwa osobne narzędzia. W celu przetestowania funkcjonalności DNS dodaliśmy narzędzie o nazwie nameresolver. exe. Składnia jest następująca:

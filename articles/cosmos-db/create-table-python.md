@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 2425d14e43abd98d80bef8ce01e1c1c5f73a78a0
-ms.sourcegitcommit: 3ced637c8f1f24256dd6ac8e180fff62a444b03c
+ms.openlocfilehash: 358f55594037f4a468d31265f4e65a6ec4d7ef28
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65833082"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020134"
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Szybki start: tworzenie aplikacji interfejsu API tabel przy użyciu języka Python i usługi Azure Cosmos DB
 
@@ -35,7 +35,7 @@ Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy
 
 Ponadto:
 
-* Jeśli nie masz jeszcze programu Visual Studio 2019 r zainstalowany, możesz pobrać i używać **bezpłatne** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Podczas instalacji programu Visual Studio upewnij się, że wybrano pakiety robocze **Programowanie na platformie Azure** i **Opracowywanie zawartości w języku Python**.
+* Jeśli nie masz jeszcze zainstalowanego programu Visual Studio 2019, możesz pobrać i korzystać **bezpłatnie** z programu [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/). Podczas instalacji programu Visual Studio upewnij się, że wybrano pakiety robocze **Programowanie na platformie Azure** i **Opracowywanie zawartości w języku Python**.
 * Wybierz również opcję języka Python 2 w pakiecie roboczym **Opracowywanie zawartości w języku Python** lub pobierz środowisko Python 2.7 z witryny [python.org](https://www.python.org/downloads/release/python-2712/).
 
 ## <a name="create-a-database-account"></a>Tworzenie konta bazy danych
@@ -82,7 +82,7 @@ Teraz sklonujemy aplikację Tabela z serwisu GitHub, ustawimy parametry połącz
 
 Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach połączenia i skopiować je do aplikacji. Umożliwia to aplikacji komunikację z hostowaną bazą danych. 
 
-1. W witrynie [Azure Portal](https://portal.azure.com/) kliknij pozycję **Parametry połączenia**. 
+1. W witrynie [Azure Portal](https://portal.azure.com/) wybierz pozycję **Parametry połączenia**. 
 
     ![Wyświetlanie i kopiowanie PARAMETRÓW POŁĄCZENIA w panelu parametrów połączenia](./media/create-table-python/connection-string.png)
 
@@ -100,7 +100,7 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
 1. W programie Visual Studio kliknij prawym przyciskiem myszy projekt w **Eksploratorze rozwiązań**, wybierz bieżące środowisko Python, a następnie kliknij je prawym przyciskiem myszy.
 
-2. Wybierz polecenie Zainstaluj pakiet języka Python, a następnie wpisz ciąg **azure-storage-table**.
+2. Wybierz pozycję Zainstaluj pakiet języka Python, a następnie wprowadź pozycję **Azure-Storage-Table**
 
 3. Naciśnij klawisz F5, aby uruchomić aplikację. Aplikacja zostanie wyświetlona w przeglądarce. 
 

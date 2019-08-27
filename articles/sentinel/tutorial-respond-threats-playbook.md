@@ -14,14 +14,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/25/2019
+ms.date: 8/21/2019
 ms.author: rkarlin
-ms.openlocfilehash: cd3288e308308729cf9b97e3c699d489857840a8
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 08c88df2f8ccc69f213687209d1d003f3bb1c7b8
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780370"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018799"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>Samouczek: Konfigurowanie zautomatyzowanych odpowiedzi na zagrożenia w wersji zapoznawczej platformy Azure wskaźnikowej
 
@@ -105,8 +105,6 @@ Wiele, jeśli nie większość z tych alertów, jest zgodny ze wzorcami cykliczn
 Aby zautomatyzować odpowiedzi:
 
 1. Wybierz Alert, dla którego chcesz zautomatyzować odpowiedź.
-1. Z menu nawigacji obszaru roboczego wskaźnikowego platformy Azure wybierz pozycję **Analiza**.
-1. Wybierz Alert, który chcesz zautomatyzować. 
 1. Na stronie **Edytowanie reguły alertu** w obszarze **Automatyzacja w czasie rzeczywistym**wybierz **wyzwolone element PlayBook** , które chcesz uruchomić po dopasowaniu tej reguły alertu.
 1. Wybierz pozycję **Zapisz**.
 

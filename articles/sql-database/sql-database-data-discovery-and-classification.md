@@ -11,16 +11,16 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 ms.date: 03/22/2019
-ms.openlocfilehash: a606364503172d5cb1ddcf00262eb81b9423b55b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f2b57aa517c1518929b857eff6aed2ef4e0d8ca1
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569054"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018967"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Klasyfikacja & Azure SQL Database i SQL Data Warehouse odnajdywania danych
 
-Klasyfikacja & odnajdywania danych (obecnie w wersji zapoznawczej) oferuje zaawansowane możliwościwbudowane w Azure SQL Database do odnajdywania & , **klasyfikowania**i etykietowania**ochrony** danych poufnych w 6.5.
+Funkcja odnajdywania danych & zapewnia zaawansowane funkcje wbudowane w Azure SQL Databasedo odnajdywania, klasyfikowania & i etykietowania**ochrony** poufnych danych w bazach danych.
 Odnajdywanie i klasyfikowanie najbardziej poufnych danych (biznes, finanse, opieka, dane osobowe) i tak dalej.) może odgrywać rolę przestawną w schemacieie ochrony informacji organizacji. Może to być infrastruktura dla:
 
 - Pomóc spełnić standardy prywatności danych i wymagania dotyczące zgodności z przepisami.
@@ -76,7 +76,7 @@ Po zdefiniowaniu zasad dla dzierżawy możesz kontynuować klasyfikację poszcze
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 
-2. Przejdź do pozycji **Zaawansowane zabezpieczenia danych** w obszarze nagłówek zabezpieczenia w okienku Azure SQL Database. Kliknij, aby włączyć zaawansowane zabezpieczenia danych, a następnie kliknij kartę **odnajdywanie danych & Klasyfikacja (wersja zapoznawcza)** .
+2. Przejdź do pozycji **Zaawansowane zabezpieczenia danych** w obszarze nagłówek zabezpieczenia w okienku Azure SQL Database. Kliknij, aby włączyć zaawansowane zabezpieczenia danych, a następnie kliknij kartę **odnajdywanie danych &** .
 
    ![Skanowanie bazy danych](./media/sql-data-discovery-and-classification/data_classification.png)
 

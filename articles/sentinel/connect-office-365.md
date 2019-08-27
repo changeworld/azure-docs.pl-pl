@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0013540bf0ca921b2f41260dea185f6aa32567d7
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 39245cb43dacfeec2b647936d5e5790d4a185467
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679263"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018996"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Łączenie danych z dzienników pakietu Office 365
 
@@ -37,6 +37,9 @@ Dzienniki inspekcji z [pakietu Office 365](https://docs.microsoft.com/office365/
 
 - Musisz być administratorem globalnym lub administratorem zabezpieczeń w swojej dzierżawie
 - Na komputerze, z którego zalogowano się do punktu kontrolnego platformy Azure, aby utworzyć połączenie, upewnij się, że port 4433 jest otwarty dla ruchu w sieci Web.
+- Jeśli dzierżawa nie ma licencji pakietu Office 365 E3 lub pakietu Office 365 E5, musisz włączyć ujednolicone inspekcje w Twoim zasobie przy użyciu jednego z następujących procesów:
+    - [Za pomocą polecenia cmdlet Set-AdminAuditLogConfig](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) i włączania parametru "UnifiedAuditLogIngestionEnabled").
+    - [Lub przy użyciu interfejsu użytkownika Centrum zabezpieczeń i zgodności](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
 
 ## <a name="connect-to-office-365"></a>Łączenie z usługą Office 365
 

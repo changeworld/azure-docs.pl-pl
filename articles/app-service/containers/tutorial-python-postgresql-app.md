@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1cb9cd72908dc88ef2890764bc8d3fad88a82707
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: b5a21bd144558459ac60ae2da405f9ea57ca2fd1
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951901"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020186"
 ---
 # <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Tworzenie aplikacji sieci Web w języku Python (Django) z PostgreSQL w Azure App Service
 
@@ -140,13 +140,13 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
 
-W przeglądarce przejdź do adresu `http://localhost:8000`. Powinien zostać wyświetlony komunikat `No polls are available.`. 
+Przejdź do `http://localhost:8000` programu w przeglądarce. Powinien zostać wyświetlony komunikat `No polls are available.`. 
 
-Przejdź pod adres `http://localhost:8000/admin` i zaloguj się przy użyciu konta administratora utworzonego w poprzednim kroku. Kliknij pozycję **Dodaj** obok pozycji **Pytania** i utwórz pytanie ankiety z kilkoma opcjami wyboru.
+Przejdź do `http://localhost:8000/admin` i zaloguj się przy użyciu użytkownika administracyjnego utworzonego w ostatnim kroku. Wybierz pozycję **Dodaj** obok pozycji **pytania** i Utwórz pytanie dotyczące ankiety z wybranymi opcjami.
 
 ![Działająca lokalnie aplikacja platformy Django](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-Przejdź ponownie pod adres `http://localhost:8000` i zobacz wyświetlane pytanie ankiety.
+Przejdź do `http://localhost:8000` ponownie i Wyświetl wyświetlone pytanie dotyczące sondowania.
 
 Przykładowa aplikacja platformy Django przechowuje dane użytkowników w bazie danych. Po pomyślnym dodaniu pytania ankiety aplikacja będzie zapisywała dane w lokalnej bazie danych PostgreSQL.
 
@@ -269,13 +269,13 @@ Po utworzeniu administratora uruchom serwer Django.
 python manage.py runserver
 ```
 
-Przejdź ponownie pod adres `http://localhost:8000`. Powinien zostać ponownie wyświetlony komunikat `No polls are available.`. 
+Przejdź do `http://localhost:8000` . Powinien zostać ponownie wyświetlony komunikat `No polls are available.`. 
 
-Przejdź pod adres `http://localhost:8000/admin` i zaloguj się przy użyciu utworzonego konta administratora, a następnie utwórz pytanie ankiety jak wcześniej.
+Przejdź do `http://localhost:8000/admin` i zaloguj się przy użyciu utworzonego przez Ciebie administratora i Utwórz pytania dotyczące ankiety, takie jak wcześniej.
 
 ![Działająca lokalnie aplikacja platformy Python Django](./media/tutorial-python-postgresql-app/django-admin-local.png)
 
-Przejdź ponownie pod adres `http://localhost:8000` i zobacz wyświetlane pytanie ankiety. Aplikacja zapisuje teraz dane w bazie danych na platformie Azure.
+Przejdź do `http://localhost:8000` ponownie i Wyświetl wyświetlone pytanie dotyczące sondowania. Aplikacja zapisuje teraz dane w bazie danych na platformie Azure.
 
 ## <a name="deploy-to-azure"></a>Wdrażanie na platformie Azure
 
@@ -328,7 +328,7 @@ git commit -am "configure for App Service"
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
-### <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
+### <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-python-linux-no-h.md)]
 
@@ -386,7 +386,7 @@ Powinno zostać wyświetlone utworzone wcześniej pytanie ankiety.
 
 Usługa App Service wykrywa projekt Django w repozytorium, wyszukując w poszczególnych podkatalogach plik _wsgi.py_ utworzony domyślnie przez element `manage.py startproject`. Gdy odnajdzie plik, ładuje aplikację sieci Web Django. Aby uzyskać więcej informacji na temat sposobu ładowania aplikacji języka Python przez usługę App Service, zobacz [Konfigurowanie wbudowanego obrazu języka Python](how-to-configure-python.md).
 
-Przejdź do strony `<app-name>.azurewebsites.net` i zaloguj się przy użyciu tego samego konta administratora, które utworzono wcześniej. Jeśli chcesz, spróbuj utworzyć więcej pytań ankiety.
+Przejdź do `<app-name>.azurewebsites.net` i zaloguj się przy użyciu tego samego użytkownika administracyjnego, który został utworzony. Jeśli chcesz, spróbuj utworzyć więcej pytań ankiety.
 
 ![Działająca lokalnie aplikacja platformy Python Django](./media/tutorial-python-postgresql-app/django-admin-azure.png)
 
@@ -400,7 +400,7 @@ Przejdź do strony `<app-name>.azurewebsites.net` i zaloguj się przy użyciu te
 
 Przejdź do witryny [Azure Portal](https://portal.azure.com), aby wyświetlić utworzoną aplikację.
 
-W menu po lewej stronie kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji na platformie Azure.
+Z menu po lewej stronie wybierz pozycję **App Services**, a następnie wybierz nazwę aplikacji platformy Azure.
 
 ![Nawigacja w portalu do aplikacji platformy Azure](./media/tutorial-python-postgresql-app/app-resource.png)
 

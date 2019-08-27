@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2019
+ms.date: 08/22/2019
 ms.author: shants
-ms.openlocfilehash: c82bacfdff1c9d939016b48735f7917e7d34b47f
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 347df9567817cdaea731e06646196142885757b1
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849680"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018839"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Obsługa powiadomień dotyczących planowanej konserwacji dla maszyn wirtualnych z systemem Linux
 
@@ -27,13 +27,13 @@ Platforma Azure jest co pewien czas aktualizowana w celu poprawy niezawodności,
 
 - Jeśli konserwacja nie wymaga ponownego uruchomienia, platforma Azure używa migracji w miejscu w celu wstrzymania maszyny wirtualnej podczas aktualizowania hosta. Te operacje konserwacji bez ponownego uruchomienia są stosowane w domenie błędów przez domenę błędów, a postęp jest zatrzymany w przypadku odebrania wszelkich ostrzeżeń dotyczących kondycji.
 
-- Jeśli konserwacja wymaga ponownego uruchomienia, otrzymasz powiadomienie o zaplanowaniu konserwacji. W takich przypadkach użytkownik otrzymuje przedział czasu, który zazwyczaj trwa 30 dni, aby można było samodzielnie rozpocząć konserwację, gdy będzie ona działać.
+- Jeśli konserwacja wymaga ponownego uruchomienia, otrzymasz powiadomienie o zaplanowaniu konserwacji. W takich przypadkach użytkownik otrzymuje przedział czasu, który zwykle 35 dni, w którym można samodzielnie rozpocząć konserwację, gdy będzie ona działać.
 
 
 Planowana konserwacja wymagająca ponownego uruchomienia jest zaplanowana na fale. Każda fala ma inny zakres (regiony).
 
 - Fala rozpoczyna się od powiadomienia do klientów. Domyślnie powiadomienia są wysyłane do właściciela subskrypcji i współwłaścicieli. Do powiadomień przy użyciu [alertów dziennika aktywności](../../azure-monitor/platform/activity-logs-overview.md)platformy Azure można dodawać więcej adresatów i opcji obsługi komunikatów, takich jak wiadomości e-mail, wiadomości SMS i elementy webhook.  
-- W momencie powiadomienia jest udostępniane *okno* samoobsługowe. W tym oknie, które zazwyczaj trwa 30 dni, można sprawdzić, które z maszyn wirtualnych znajdują się w tej fazie, i aktywnie rozpocząć konserwację zgodnie z własnymi potrzebami w zakresie planowania.
+- W momencie powiadomienia jest udostępniane *okno* samoobsługowe. W tym oknie, które jest zwykle 35 dni, można dowiedzieć się, które maszyny wirtualne znajdują się w tej Wave, i aktywnie rozpocząć konserwację zgodnie z własnymi potrzebami w zakresie planowania.
 - Po włączeniu okna samoobsługowego zostanie rozpoczęte *zaplanowane okno obsługi* . W pewnym momencie w tym oknie usługa Azure planuje i stosuje wymaganą konserwację na maszynie wirtualnej. 
 
 Celem dwóch okien jest udostępnienie wystarczającej ilości czasu na rozpoczęcie konserwacji i ponowne uruchomienie maszyny wirtualnej, wiedząc, że platforma Azure automatycznie rozpocznie konserwację.
@@ -122,7 +122,7 @@ Aby uzyskać stan konserwacji maszyny wirtualnej o nazwie *myVM*, wpisz:
 azure vm show myVM 
 ``` 
 
-Aby rozpocząć konserwację klasycznej maszyny wirtualnej o nazwie *myVM* w usłudze WebService *i* wdrożeniu wdrażania, wpisz:
+Aby rozpocząć konserwację klasycznej maszyny wirtualnej o nazwie *myVM* w usłudze WebService i wdrożeniu wdrażania, wpisz:
 
 ```
 azure compute virtual-machine initiate-maintenance --service-name myService --name myDeployment --virtual-machine-name myVM
@@ -177,7 +177,7 @@ Aby uzyskać więcej informacji na temat wysokiej dostępności, zobacz [dostęp
 
 **Odp.:** Istnieje kilka przypadków użycia, w których zobaczysz, że maszyna wirtualna została zaplanowana do konserwacji po zakończeniu konserwacji i ponownego wdrożenia:
 1.  Twoja fala została anulowana i uruchomiona ponownie z innym ładunkiem. Może być to, że wykryto błąd ładunku i po prostu musimy wdrożyć dodatkowy ładunek.
-2.  Twoja maszyna wirtualna  została zaakceptowana w innym węźle z powodu błędu sprzętowego.
+2.  Twoja maszyna wirtualna została zaakceptowana w innym węźle z powodu błędu sprzętowego.
 3.  Wybrano zatrzymanie (Cofnięcie alokacji) i ponowne uruchomienie maszyny wirtualnej.
 4.  Włączono **automatyczne zamykanie** dla maszyny wirtualnej.
 

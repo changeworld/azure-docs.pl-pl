@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/27/2019
+ms.date: 08/22/2019
 ms.author: rkarlin
-ms.openlocfilehash: 0c37d6167012af46204cbca29397f5d226b9649b
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: b609dc70c45941ec1132c7cdf614cf9bec8119ff
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611907"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019019"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>Wersja zapoznawcza platformy Azure — Podgląd
 
@@ -59,7 +59,8 @@ Po nawiązaniu połączenia ze źródłami danych wybierz z galerii ekspertów, 
 
    >[!NOTE] 
    > - Domyślne obszary robocze utworzone przez Azure Security Center nie będą wyświetlane na liście; nie można zainstalować na nich wskaźnikiem na platformie Azure.
-   > - Wskaźnik platformy Azure może działać w obszarach roboczych, które są wdrożone w jednym z następujących regionów:  Australia Południowo-Wschodnia, Kanada środkowa, Indie Środkowe, Wschodnie stany USA, Wschodnie stany USA 2 — EUAP (Wyspy Kanaryjskie), Japonia Wschodnia, Azja Południowo-Wschodnia, Południowe Zjednoczone Królestwo, Europa Zachodnia, zachodnie stany USA 2.
+   > - Wskaźnik platformy Azure może działać w obszarach roboczych, które są wdrożone w jednym z następujących regionów: Australia Wschodnia, Australia Południowo-Wschodnia, Kanada środkowa, Indie Środkowe, Wschodnie stany USA, Wschodnie stany USA 2 — EUAP (Wyspy Kanaryjskie), Japonia Wschodnia, Azja Południowo-Wschodnia, Południowe Zjednoczone Królestwo, Europa Zachodnia, zachodnie stany USA 2, zachodnio-środkowe stany USA, Francja Azja Wschodnia środkowa Południowo-środkowe stany USA.
+
 
 6. Kliknij pozycję **Dodaj wskaźnik platformy Azure**.
   

@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: sngun
-ms.openlocfilehash: b1d8d2539ae89dfdb8feb2e38f00bf4440411d8a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 9824e1468604763834e37abe94290d68d81077ab
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815136"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020129"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Samouczek: Opracowywanie ASP.NET Core aplikacji sieci Web MVC z Azure Cosmos DB przy użyciu zestawu .NET SDK 
 
@@ -120,22 +120,6 @@ Teraz możemy dodać modele, widoki i kontrolery do aplikacji MVC:
    
    Dane z usługi Azure Cosmos DB zostaną przekazane i zapisane w formacie JSON. Aby kontrolować sposób serializowania/deserializacji obiektów przez JSON.NET, można użyć atrybutu **JsonProperty** , jak pokazano w utworzonej klasie **Item** . Można nie tylko kontrolować format nazwy właściwości, która znajduje się w formacie JSON, a także zmienić nazwy właściwości platformy .NET, tak jak w przypadku właściwości **ukończone** . 
 
-### <a name="add-a-controller"></a>Dodawanie kontrolera
-
-1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy folder **Kontrolery**, wybierz polecenie **Dodaj**, a następnie wybierz pozycję **Kontroler**. Zostanie wyświetlone okno dialogowe **Dodawanie szkieletu**.
-
-1. Wybierz pozycję **kontroler MVC — pusty** i wybierz pozycję **Dodaj**.
-
-   ![Zrzut ekranu przedstawiający okno dialogowe Dodawanie szkieletu z wyróżnioną opcją pusty kontroler MVC](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
-
-1. Nazwij nowy kontroler, **ItemController**i Zastąp kod w tym pliku następującym kodem:
-
-   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs)]
-
-   Atrybut **ValidateAntiForgeryToken** jest tu używany do ochrony aplikacji przed atakami polegającymi na fałszerstwie żądania międzywitrynowego. Dodanie tego atrybutu to nie jedyna korzyść — widoki powinny też współdziałać z tokenem zabezpieczającym przed fałszerstwem. Aby uzyskać więcej informacji na temat tego tematu i Przykłady sposobu ich implementacji, zobacz [zapobieganie fałszerstwu żądań][Preventing Cross-Site Request Forgery]międzywitrynowych. Kod źródłowy dostępny w usłudze [GitHub][GitHub] zawiera pełną implementację.
-
-   Korzystamy również z atrybutu **Bind** dla parametru metody, aby ułatwić ochronę przed atakami polegającymi na przesyłaniu zmodyfikowanych akcji POST. Aby uzyskać więcej informacji, zobacz [podstawowe operacje CRUD w ASP.NET MVC][Basic CRUD Operations in ASP.NET MVC].
-
 ### <a name="add-views"></a>Dodawanie widoków
 
 Następnie utworzymy trzy następujące widoki: 
@@ -191,7 +175,23 @@ Na koniec wykonaj następujące kroki, aby dodać widok umożliwiający edycję 
 
 Po zakończeniu zamknij wszystkie dokumenty cshtml w programie Visual Studio. Wrócimy do tych widoków później.
 
-## <a name="connect-to-cosmosdb"></a>Krok 5: Łączenie z usługą Azure Cosmos DB 
+### <a name="add-a-controller"></a>Dodawanie kontrolera
+
+1. W **Eksploratorze rozwiązań** kliknij prawym przyciskiem myszy folder **Kontrolery**, wybierz polecenie **Dodaj**, a następnie wybierz pozycję **Kontroler**. Zostanie wyświetlone okno dialogowe **Dodawanie szkieletu**.
+
+1. Wybierz pozycję **kontroler MVC — pusty** i wybierz pozycję **Dodaj**.
+
+   ![Zrzut ekranu przedstawiający okno dialogowe Dodawanie szkieletu z wyróżnioną opcją pusty kontroler MVC](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
+
+1. Nazwij nowy kontroler, **ItemController**i Zastąp kod w tym pliku następującym kodem:
+
+   [!code-csharp[Main](~/samples-cosmosdb-dotnet-core-web-app/src/Controllers/ItemController.cs)]
+
+   Atrybut **ValidateAntiForgeryToken** jest tu używany do ochrony aplikacji przed atakami polegającymi na fałszerstwie żądania międzywitrynowego. Dodanie tego atrybutu to nie jedyna korzyść — widoki powinny też współdziałać z tokenem zabezpieczającym przed fałszerstwem. Aby uzyskać więcej informacji na temat tego tematu i Przykłady sposobu ich implementacji, zobacz [zapobieganie fałszerstwu żądań][Preventing Cross-Site Request Forgery]międzywitrynowych. Kod źródłowy dostępny w usłudze [GitHub][GitHub] zawiera pełną implementację.
+
+   Korzystamy również z atrybutu **Bind** dla parametru metody, aby ułatwić ochronę przed atakami polegającymi na przesyłaniu zmodyfikowanych akcji POST. Aby uzyskać więcej informacji, zobacz [podstawowe operacje CRUD w ASP.NET MVC][Basic CRUD Operations in ASP.NET MVC].
+
+## <a name="connect-to-cosmosdb"></a>Krok 5. Łączenie z usługą Azure Cosmos DB 
 
 Po przygotowaniu standardowych zasobów wzorca MVC możemy zacząć dodawać kod umożliwiający połączenie się z usługą Azure Cosmos DB i wykonywanie operacji CRUD. 
 

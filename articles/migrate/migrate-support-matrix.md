@@ -1,77 +1,77 @@
 ---
-title: Macierz obsługi usługi Azure Migrate
-description: Zawiera podsumowanie ustawień pomocy technicznej i ograniczenia dotyczące usługi Azure Migrate.
+title: Macierz obsługi Azure Migrate
+description: Zawiera podsumowanie ustawień i ograniczeń pomocy technicznej dla usługi Azure Migrate.
 services: backup
 author: rayne-wiselman
 manager: carmonm
-ms.service: backup
+ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: raynew
-ms.openlocfilehash: b2ca1b9118ecc3d112a49bb4c79b413c46fe67cb
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 49bd193303255cdf7d18fd5da9dec8d84c50a829
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811559"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019187"
 ---
-# <a name="azure-migrate-support-matrix"></a>Macierz obsługi usługi Azure Migrate
+# <a name="azure-migrate-support-matrix"></a>Macierz obsługi Azure Migrate
 
-Możesz użyć [usługi Azure Migrate](migrate-overview.md) ocenianie i Migrowanie maszyn do chmury Microsoft Azure. Ten artykuł zawiera podsumowanie ustawień ogólną pomoc techniczną i ograniczenia dotyczące usługi Azure Migrate scenariuszy i wdrożenia.
+Za pomocą [usługi Azure Migrate](migrate-overview.md) można oceniać i migrować maszyny do chmury Microsoft Azure. W tym artykule zestawiono ogólne ustawienia i ograniczenia dotyczące Azure Migrate scenariuszy i wdrożeń.
 
 
-## <a name="azure-migrate-versions"></a>Usługa Azure Migrate wersji
+## <a name="azure-migrate-versions"></a>Wersje Azure Migrate
 
 Istnieją dwie wersje usługi Azure Migrate:
 
-- **Bieżąca wersja**: Przy użyciu tej wersji można tworzyć nowe projekty usługi Azure Migrate, Dowiedz się, w środowisku lokalnym ocenia i organizowanie oceny i migracji. [Dowiedz się więcej](whats-new.md#azure-migrate-new-version).
-- **Poprzednia wersja**: Dla klientów przy użyciu poprzedniej wersji usługi Azure Migrate (obsługiwał tylko ocena lokalnych maszyn wirtualnych programu VMware) teraz należy używać bieżącej wersji. W poprzedniej wersji nie można tworzyć nowe projekty usługi Azure Migrate lub wykonywać nowych operacji odnajdywania.
+- **Bieżąca wersja**: Korzystając z tej wersji, można tworzyć nowe projekty Azure Migrate, wykrywać, oceniać lokalne oraz organizować oceny i migracje. [Dowiedz się więcej](whats-new.md#azure-migrate-new-version).
+- **Poprzednia wersja**: W przypadku klientów korzystających z poprzedniej wersji Azure Migrate (obsługiwana jest tylko Ocena lokalnych maszyn wirtualnych programu VMware). teraz należy używać bieżącej wersji. W poprzedniej wersji nie można tworzyć nowych projektów Azure Migrate ani wykonywać nowych odkrycia.
 
 ## <a name="supported-migration-scenarios"></a>Obsługiwane scenariusze migracji
 
-Tabela zawiera podsumowanie obsługiwanych scenariuszy migracji.
+W tabeli zestawiono obsługiwane scenariusze migracji.
 
-**Wdrożenie** | **Szczegółowe informacje*** 
+**Wdrożenie** | **Uzyskać*** 
 --- | --- 
-**Ocena w środowisku lokalnym** | Ocena obciążeń lokalnych i danych uruchomiony na maszynach wirtualnych VMware i maszyny wirtualne funkcji Hyper-V. Oceń, używając oceny Server migracji platformy Azure i Microsoft Data Migration Assistant (DMA) oraz narzędzi innych firm, obejmujących Cloudamize, Corent Tech i Turbonomic serwera.
-**Migracja lokalnych na platformę Azure** | Przeprowadź migrację obciążeń oraz danych, uruchomione na serwerach fizycznych, maszyn wirtualnych VMware, maszyny wirtualne funkcji Hyper-V, a na wystąpień usługi AWS/GCP, na platformie Azure. Migrowanie za pomocą oceny Server migracji platformy Azure i usługi Azure Database Migration Service (DMS), a także przy użyciu narzędzi innych firm, które obejmują Carbonite i CorentTech.
+**Ocena lokalna** | Oceniaj obciążenia lokalne i dane uruchomione na maszynach wirtualnych VMware i maszynach wirtualnych funkcji Hyper-V. Oceń przy użyciu Azure Migrate oceny i Microsoft Data Migration Assistant (DMA), a także narzędzi innych firm, które obejmują Cloudamize, telenajmu i platforma turbonomic Server.
+**Migracja lokalna na platformę Azure** | Migruj obciążenia i dane uruchomione na serwerach fizycznych, maszynach wirtualnych VMware, maszynach wirtualnych funkcji Hyper-V i w wystąpieniach AWS/GCP na platformę Azure. Migruj przy użyciu narzędzia do oceny i Azure Database Migration Service Azure Migrate Server (DMS) oraz narzędzi innych firm, które zawierają Carbonite i CorentTech.
 
-Poniżej przedstawiono streszczenie określonego narzędzia pomocy technicznej.
+Pomoc dotycząca określonego narzędzia jest podsumowana w następujący sposób.
 
 **Narzędzie** | **Ocena/migracja** | **Szczegóły**
 --- | --- | ---
-Usługa Azure Migrate oceny Server | Ocena | Wypróbuj server assessment dla [funkcji Hyper-V](tutorial-prepare-hyper-v.md) i [VMware](tutorial-prepare-vmware.md).
+Azure Migrate oceny serwera | Ocena | Wypróbuj ocenę serwera dla [funkcji Hyper-V](tutorial-prepare-hyper-v.md) i programu [VMware](tutorial-prepare-vmware.md).
 Cloudamize | Ocena | [Dowiedz się więcej](https://www.cloudamize.com/platform#tab-0).
 CorentTech | Ocena | [Dowiedz się więcej](https://www.corenttech.com/).
 Turbonomic | Ocena | [Dowiedz się więcej](https://turbonomic.com/solutions/technologies/azure-cloud/).
-Azure Migrate Server Migration | Migracja | Wypróbuj migracji serwera dla [funkcji Hyper-V](tutorial-migrate-hyper-v.md) i [VMware](tutorial-migrate-vmware.md).
+Migracja serwera Azure Migrate | Migracja | Wypróbuj migrację serwera dla [funkcji Hyper-V](tutorial-migrate-hyper-v.md) i programu [VMware](tutorial-migrate-vmware.md).
 Carbonite | Migracja | [Dowiedz się więcej](https://www.carbonite.com/data-protection-resources/resource/Datasheet/carbonite-migrate-for-microsoft-azure).
 CorentTech | Migracja | [Dowiedz się więcej](https://www.corenttech.com/).
 
 
-## <a name="azure-migrate-projects"></a>Projekty migracji platformy Azure
+## <a name="azure-migrate-projects"></a>Projekty Azure Migrate
 
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
-Subscription | Do tego pojedynczego projektu Azure Migrate może mieć w ramach subskrypcji.
-Uprawnienia platformy Azure | Musisz mieć uprawnienia współautora lub właściciela w ramach subskrypcji, aby utworzyć projekt usługi Azure Migrate.
-Maszyny wirtualne VMware  | Oceń maksymalnie 35 000 maszyn wirtualnych programu VMware w jednym projekcie.
-Maszyny wirtualne funkcji Hyper-V | Oceń maksymalnie 10 000 maszyn wirtualnych funkcji Hyper-V na platformie pojedynczego projektu.
+Subscription | W ramach subskrypcji można korzystać z pojedynczego projektu Azure Migrate.
+Uprawnienia platformy Azure | Aby utworzyć projekt Azure Migrate, musisz mieć uprawnienia współautora lub właściciela w ramach subskrypcji.
+Maszyny wirtualne VMware  | Oceń do 35 000 maszyn wirtualnych VMware w jednym projekcie.
+Maszyny wirtualne funkcji Hyper-V | Oceń do 10 000 maszyn wirtualnych funkcji Hyper-V w jednym projekcie.
 
-Projekt może zawierać zarówno maszyny wirtualne VMware i maszyn wirtualnych funkcji Hyper-V, w granicach oceny.
+Projekt może zawierać zarówno maszyny wirtualne VMware, jak i maszyny wirtualne funkcji Hyper-V, a także limity oceny.
 
 
-## <a name="vmware-assessment-and-migration"></a>Ocena programu VMware i migracji
+## <a name="vmware-assessment-and-migration"></a>Ocena i migracja oprogramowania VMware
 
-[Przegląd](migrate-support-matrix-vmware.md) Azure migracji serwera oceny i migracji serwera macierz obsługi dla maszyn wirtualnych VMware.
+[Zapoznaj](migrate-support-matrix-vmware.md) się z macierzą obsługi Azure Migrate oceny serwera i migracji serwera dla maszyn wirtualnych VMware.
 
-## <a name="hyper-v-assessment-and-migration"></a>Ocena funkcji Hyper-V i migracja
+## <a name="hyper-v-assessment-and-migration"></a>Ocena i migracja funkcji Hyper-V
 
-[Przegląd](migrate-support-matrix-hyper-v.md) Azure migracji serwera oceny i migracji serwera macierz obsługi dla maszyn wirtualnych funkcji Hyper-V.
+[Zapoznaj](migrate-support-matrix-hyper-v.md) się z macierzą obsługi Azure Migrate oceny serwera i migracji serwera dla maszyn wirtualnych funkcji Hyper-V.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
 - [Ocenianie maszyn wirtualnych VMware](tutorial-assess-vmware.md) do migracji.
-- [Ocenianie maszyn wirtualnych funkcji Hyper-V](tutorial-assess-hyper-v.md) do migracji.
+- [Oceń maszyny wirtualne funkcji Hyper-V](tutorial-assess-hyper-v.md) do migracji.
 

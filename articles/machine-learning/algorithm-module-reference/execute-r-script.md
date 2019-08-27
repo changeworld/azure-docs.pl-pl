@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: peterlu
 ms.date: 06/01/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7de3dd016700d10ef5fac97fada5cd23c2f4e1cb
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 926e2004207472d16a195ceba2ecf3f2a4590885
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558300"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019135"
 ---
 # <a name="execute-r-script"></a>Wykonywanie skryptu języka R
 
@@ -66,7 +66,7 @@ azureml_main <- function(dataframe1, dataframe2){
 }
 ```
  > [!NOTE]
-    > Sprawdź, czy pakiet już istnieje przed zainstalowaniem go, aby uniknąć powtarzania instalacji. Podobnie `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` jak w przypadku powyżej przykładowego kodu. Powtórzenie instalacji może spowodować przekroczenie limitu czasu żądania usługi sieci Web.     
+  > Sprawdź, czy pakiet już istnieje przed zainstalowaniem go, aby uniknąć powtarzania instalacji. Podobnie `  if(!require(zoo)) install.packages("zoo",repos = "http://cran.us.r-project.org")` jak w przypadku powyżej przykładowego kodu. Powtórzenie instalacji może spowodować przekroczenie limitu czasu żądania usługi sieci Web.     
 
 ## <a name="how-to-configure-execute-r-script"></a>Jak skonfigurować skrypt wykonywania skryptu języka R
 

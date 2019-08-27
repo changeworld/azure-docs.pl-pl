@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: ce663dec47f99b6ba4751e23e7ac7f13de866a5d
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 7a3cdab8e05a873e67788a72350d1bf3fde3cd18
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982985"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018207"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Nawiązywanie połączenia z sieciami wirtualnymi platformy Azure z Azure Logic Apps przy użyciu środowiska usługi integracji (ISE)
 
@@ -67,31 +67,34 @@ W przypadku używania ISE z istniejącą siecią wirtualną występuje typowy pr
 
 W przypadku utworzenia nowej sieci wirtualnej i podsieci bez ograniczeń nie trzeba konfigurować [sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń)](../virtual-network/security-overview.md) w sieci wirtualnej, aby można było kontrolować ruch między podsieciami. W przypadku istniejącej sieci wirtualnej można *Opcjonalnie* skonfigurować sieciowych grup zabezpieczeń przez [Filtrowanie ruchu sieciowego między](../virtual-network/tutorial-filter-network-traffic.md)podsieciami. W przypadku wybrania tej trasy upewnij się, że ISE otwiera określone porty, zgodnie z opisem w poniższej tabeli, w sieci wirtualnej, która ma sieciowych grup zabezpieczeń. W przypadku istniejących sieciowych grup zabezpieczeń lub zapór w sieci wirtualnej upewnij się, że otwierają one te porty. Dzięki temu Twoje ISE pozostają dostępne i może działać prawidłowo, dzięki czemu nie utracisz dostępu do ISE. W przeciwnym razie, jeśli którykolwiek z wymaganych portów jest niedostępny, ISE przestanie działać.
 
-W tej tabeli opisano porty w sieci wirtualnej używane przez ISE i miejsce, w których te porty są używane. [Tagi usługi Menedżer zasobów](../virtual-network/security-overview.md#service-tags) reprezentuje grupę prefiksów adresów IP, która pomaga zminimalizować złożoność podczas tworzenia reguł zabezpieczeń.
-
 > [!IMPORTANT]
 > W przypadku komunikacji wewnętrznej wewnątrz podsieci ISE wymaga otwarcia wszystkich portów w tych podsieciach.
 
-| Cel | Direction | Porty | Tag usługi źródłowej | Docelowy tag usługi | Uwagi |
-|---------|-----------|-------|--------------------|-------------------------|-------|
-| Komunikacja z Azure Logic Apps | Wychodzące | 80 & 443 | VirtualNetwork | Internet | Port zależy od usługi zewnętrznej, z którą komunikuje się usługa Logic Apps |
-| Usługa Azure Active Directory | Wychodzące | 80 & 443 | VirtualNetwork | AzureActiveDirectory | |
-| Zależność usługi Azure Storage | Wychodzące | 80 & 443 | VirtualNetwork | Magazyn | |
-| Komunikacja między sieciami | Przychodzące & wychodzące | 80 & 443 | VirtualNetwork | VirtualNetwork | Do komunikacji między podsieciami |
+W tej tabeli opisano porty w sieci wirtualnej używane przez ISE i miejsce, w których te porty są używane. [Tagi usługi Menedżer zasobów](../virtual-network/security-overview.md#service-tags) reprezentuje grupę prefiksów adresów IP, która pomaga zminimalizować złożoność podczas tworzenia reguł zabezpieczeń.
+
+> [!NOTE]
+> Porty źródłowe są tymczasowe, więc ustaw `*` dla nich dla wszystkich reguł.
+
+| Cel | Direction | Porty docelowe | Tag usługi źródłowej | Docelowy tag usługi | Uwagi |
+|---------|-----------|-------------------|--------------------|-------------------------|-------|
+| Komunikacja z Azure Logic Apps | Wychodzące | 80, 443 | VirtualNetwork | Internet | Port zależy od usługi zewnętrznej, z którą komunikuje się usługa Logic Apps |
+| Usługa Azure Active Directory | Wychodzące | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
+| Zależność usługi Azure Storage | Wychodzące | 80, 443 | VirtualNetwork | Magazyn | |
+| Komunikacja między sieciami | Przychodzące & wychodzące | 80, 443 | VirtualNetwork | VirtualNetwork | Do komunikacji między podsieciami |
 | Komunikacja do Azure Logic Apps | Przychodzący | 443 | Punkty końcowe dostępu wewnętrznego: <br>VirtualNetwork <p><p>Punkty końcowe dostępu zewnętrznego: <br>Internet <p><p>**Uwaga**: Te punkty końcowe odnoszą się do ustawienia punktu końcowego, który został [wybrany podczas tworzenia ISE](#create-environment). Aby uzyskać więcej informacji, zobacz [dostęp do punktu końcowego](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). | VirtualNetwork | Adres IP komputera lub usługi, który wywołuje każdy wyzwalacz żądania lub element webhook, który istnieje w aplikacji logiki. Zamknięcie lub zablokowanie tego portu uniemożliwia wywołania HTTP aplikacjom logiki z wyzwalaczami żądań. |
 | Historia uruchamiania aplikacji logiki | Przychodzący | 443 | Punkty końcowe dostępu wewnętrznego: <br>VirtualNetwork <p><p>Punkty końcowe dostępu zewnętrznego: <br>Internet <p><p>**Uwaga**: Te punkty końcowe odnoszą się do ustawienia punktu końcowego, który został [wybrany podczas tworzenia ISE](#create-environment). Aby uzyskać więcej informacji, zobacz [dostęp do punktu końcowego](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). | VirtualNetwork | Adres IP komputera, z którego ma zostać wyświetlona historia uruchamiania aplikacji logiki. Mimo że zamknięcie lub zablokowanie tego portu nie uniemożliwia wyświetlenia historii uruchamiania, nie można wyświetlić danych wejściowych i wyjściowych dla każdego kroku w tej historii uruchamiania. |
 | Zarządzanie połączeniami | Wychodzące | 443 | VirtualNetwork  | Internet | |
 | Publikowanie dzienników diagnostycznych & metryki | Wychodzące | 443 | VirtualNetwork  | AzureMonitor | |
 | Komunikacja z Traffic Manager platformy Azure | Przychodzący | 443 | AzureTrafficManager | VirtualNetwork | |
-| Logic Apps Designer — właściwości dynamiczne | Przychodzący | 454 | Internet  | VirtualNetwork | Żądania pochodzą z Logic Apps [adresów IP ruchu przychodzącego punktu końcowego dostępu w tym regionie](../logic-apps/logic-apps-limits-and-config.md#inbound). |
-| Zależność zarządzania App Service | Przychodzący | 454 & 455 | AppServiceManagement | VirtualNetwork | |
-| Wdrożenie łącznika | Przychodzący | 454 & 3443 | Internet  | VirtualNetwork | Niezbędne do wdrażania i aktualizowania łączników. Zamknięcie lub zablokowanie tego portu powoduje, że wdrożenia ISE kończą się niepowodzeniem i uniemożliwiają aktualizacje lub poprawki łącznika. |
-| Zależność SQL platformy Azure | Wychodzące | 1433 | VirtualNetwork | SQL |
+| Logic Apps Designer — właściwości dynamiczne | Przychodzący | 454 | Internet | VirtualNetwork | Żądania pochodzą z Logic Apps [adresów IP ruchu przychodzącego punktu końcowego dostępu w tym regionie](../logic-apps/logic-apps-limits-and-config.md#inbound). |
+| Zależność zarządzania App Service | Przychodzący | 454, 455 | AppServiceManagement | VirtualNetwork | |
+| Wdrożenie łącznika | Przychodzący | 454, 3443 | Internet | VirtualNetwork | Niezbędne do wdrażania i aktualizowania łączników. Zamknięcie lub zablokowanie tego portu powoduje, że wdrożenia ISE kończą się niepowodzeniem i uniemożliwiają aktualizacje lub poprawki łącznika. |
+| Zależność SQL platformy Azure | Wychodzące | 1433 | VirtualNetwork | SQL | |
 | Azure Resource Health | Wychodzące | 1886 | VirtualNetwork | AzureMonitor | Aby opublikować stan kondycji Resource Health |
-| Punkt końcowy zarządzania API Management | Przychodzący | 3443 | APIManagement  | VirtualNetwork | |
-| Zależność od dziennika do zasad usługi Event Hub i agenta monitorowania | Wychodzące | 5672 | VirtualNetwork  | EventHub | |
-| Dostęp do pamięci podręcznej platformy Azure dla wystąpień Redis między wystąpieniami roli | Przychodzący <br>Wychodzące | 6379-6383 | VirtualNetwork  | VirtualNetwork | Ponadto, aby ISE współpracował z usługą Azure cache for Redis, należy otworzyć te [porty wychodzące i przychodzące opisane w pamięci podręcznej platformy Azure dla Redis często zadawane pytania](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
-| Azure Load Balancer | Przychodzący | * | AzureLoadBalancer | VirtualNetwork |  |
+| Punkt końcowy zarządzania API Management | Przychodzący | 3443 | APIManagement | VirtualNetwork | |
+| Zależność od dziennika do zasad usługi Event Hub i agenta monitorowania | Wychodzące | 5672 | VirtualNetwork | EventHub | |
+| Dostęp do pamięci podręcznej platformy Azure dla wystąpień Redis między wystąpieniami roli | Przychodzący <br>Wychodzące | 6379-6383 | VirtualNetwork | VirtualNetwork | Ponadto, aby ISE współpracował z usługą Azure cache for Redis, należy otworzyć te [porty wychodzące i przychodzące opisane w pamięci podręcznej platformy Azure dla Redis często zadawane pytania](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
+| Azure Load Balancer | Przychodzący | * | AzureLoadBalancer | VirtualNetwork | |
 ||||||
 
 <a name="create-environment"></a>
@@ -123,7 +126,7 @@ W polu wyszukiwania wprowadź "środowisko usługi integracji" jako filtr.
    | **Dodatkowa pojemność** | Premium: <br>Tak <p><p>Developer: <br>Nie dotyczy | Premium: <br>od 0 do 10 <p><p>Developer: <br>Nie dotyczy | Liczba dodatkowych jednostek przetwarzania, które mają być używane dla tego zasobu ISE. Aby dodać pojemność po utworzeniu, zobacz [Dodawanie pojemności ISE](#add-capacity). |
    | **Punkt końcowy dostępu** | Tak | **Wewnętrzne** lub **zewnętrzne** | Typ punktów końcowych dostępu do użycia w ISE, które określają, czy wyzwalacze żądania lub elementu webhook w usłudze Logic Apps w ISE mogą odbierać wywołania spoza sieci wirtualnej. Typ punktu końcowego ma także wpływ na dostęp do danych wejściowych i wyjściowych w historii uruchamiania aplikacji logiki. Aby uzyskać więcej informacji, zobacz [dostęp do punktu końcowego](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). <p><p>**Ważne**: Ta opcja jest dostępna tylko podczas tworzenia ISE i nie można jej później zmienić. |
    | **Sieć wirtualna** | Tak | <*Azure-virtual-network-name*> | Sieć wirtualna platformy Azure, w której chcesz wstrzyknąć środowisko, aby aplikacje logiki w tym środowisku mogły uzyskiwać dostęp do sieci wirtualnej. Jeśli nie masz sieci, [najpierw Utwórz sieć wirtualną platformy Azure](../virtual-network/quick-create-portal.md). <p>**Ważne**: Tę iniekcję można wykonać *tylko* po utworzeniu ISE. |
-   | **Podsieci** | Tak | <*subnet-resource-list*> | ISE wymaga czterech *pustych* podsieci do tworzenia i wdrażania zasobów w środowisku. Aby utworzyć każdą podsieć, [wykonaj kroki opisane w tej tabeli](#create-subnet).  |
+   | **Podsieci** | Tak | <*subnet-resource-list*> | ISE wymaga czterech *pustych* podsieci do tworzenia i wdrażania zasobów w środowisku. Aby utworzyć każdą podsieć, [wykonaj kroki opisane w tej tabeli](#create-subnet). |
    |||||
 
    <a name="create-subnet"></a>
@@ -136,7 +139,7 @@ W polu wyszukiwania wprowadź "środowisko usługi integracji" jako filtr.
 
    * Używa [formatu routingu bezklasowego (cidr)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) i przestrzeni adresowej klasy B.
 
-   * Program używa co najmniej `/27` 32 adresów w przestrzeni adresowej, ponieważ każda podsieć musi mieć minimalną *Długość* równą. Na przykład:
+   * Program używa co najmniej `/27` 32 adresów w przestrzeni adresowej, ponieważ każda podsieć musi mieć minimalną *Długość* równą. Przykład:
 
      * `10.0.0.0/27`ma 32 adresów, ponieważ 2<sup>(32-27)</sup> jest 2<sup>5</sup> lub 32.
 
@@ -228,6 +231,7 @@ Jednostka bazowa ISE Premium ma stałą pojemność, więc jeśli potrzebujesz w
    * W przypadku wybrania opcji opartych na pomiarach wykonaj następujące czynności:
 
      1. W sekcji **reguły** wybierz pozycję **Dodaj regułę**.
+
      1. W okienku **reguła skalowania** Skonfiguruj swoje kryteria i akcję, które mają być wykonywane po wyzwoleniu reguły.
 
      1. Gdy skończysz, wybierz pozycję **Dodaj**.

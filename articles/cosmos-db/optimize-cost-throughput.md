@@ -4,14 +4,14 @@ description: W tym artykule wyjaśniono, jak zoptymalizować koszty przepływno�
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 08/26/2019
 ms.author: rimman
-ms.openlocfilehash: 8829c2534184bc14e82dfbf30d2170a7a1b8add0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: d874f1ba8823ceddbef378decde127cef4ff8885
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614992"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020109"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Optymalizacja kosztu zaalokowanej przepływności w Azure Cosmos DB
 
@@ -65,7 +65,7 @@ Dzięki aprowizacji przepływności na różnych poziomach można zoptymalizowa�
 
 ## <a name="optimize-with-rate-limiting-your-requests"></a>Optymalizacja z szybkością ograniczania żądań
 
-W przypadku obciążeń, które nie są zależne od opóźnienia, można zapewnić mniejszą przepływność i pozwolić aplikacji na ograniczenie szybkości obsługi, gdy rzeczywista przepływność przekracza zainicjowaną przepływność. Serwer zapobiegawczo zakończyć żądanie z RequestRateTooLarge (kod stanu HTTP 429) i zwróci `x-ms-retry-after-ms` nagłówek wskazujący ilość czasu (w milisekundach), przez który użytkownik musi czekać przed ponowieniem próby wykonania żądania. 
+W przypadku obciążeń, które nie są zależne od opóźnienia, można zapewnić mniejszą przepływność i pozwolić aplikacji na ograniczenie szybkości obsługi, gdy rzeczywista przepływność przekracza zainicjowaną przepływność. Serwer zapobiegawczo żądanie z `RequestRateTooLarge` żądaniem (kod stanu HTTP 429) i `x-ms-retry-after-ms` zwraca nagłówek wskazujący ilość czasu (w milisekundach), przez który użytkownik musi czekać przed ponowieniem próby wykonania żądania. 
 
 ```html
 HTTP Status 429, 
@@ -77,15 +77,13 @@ HTTP Status 429,
 
 Natywne zestawy SDK (.NET/.NET Core, Java, Node. js i Python) niejawnie przechwytuje tę odpowiedź, przestrzegając określonego przez serwer nagłówka retry-After i ponów próbę wykonania żądania. O ile Twoje konto nie jest dostępne współbieżnie przez wielu klientów, następna próba powiodła się.
 
-Jeśli masz więcej niż jeden klient, który działa w sposób ciągły nad częstotliwością żądań, domyślna liczba ponownych prób aktualnie ustawiona na 9 może nie być wystarczająca. W takim przypadku klient zgłasza `DocumentClientException` kod stanu o stanie 429 do aplikacji. Domyślną liczbę ponownych prób można zmienić, ustawiając wartość `RetryOptions` w wystąpieniu ConnectionPolicy. Domyślnie DocumentClientException z kodem stanu 429 jest zwracany po skumulowanym czasie oczekiwania 30 sekund, jeśli żądanie będzie nadal działać powyżej stawki żądania. Dzieje się tak nawet wtedy, gdy bieżąca liczba ponownych prób jest mniejsza niż maksymalna liczba ponownych prób, być wartością domyślną 9 lub wartości zdefiniowanej przez użytkownika. 
+Jeśli masz więcej niż jeden klient, który działa w sposób ciągły nad częstotliwością żądań, domyślna liczba ponownych prób aktualnie ustawiona na 9 może nie być wystarczająca. W takim przypadku klient zgłasza `DocumentClientException` kod stanu o stanie 429 do aplikacji. Domyślną liczbę ponownych prób można zmienić, ustawiając wartość `RetryOptions` w wystąpieniu ConnectionPolicy. Domyślnie kod stanu `DocumentClientException` z 429 jest zwracany po upływie skumulowanego czasu oczekiwania 30 sekund, jeśli żądanie będzie nadal działać powyżej stawki żądania. Dzieje się tak nawet wtedy, gdy bieżąca liczba ponownych prób jest mniejsza niż maksymalna liczba ponownych prób, być wartością domyślną 9 lub wartości zdefiniowanej przez użytkownika. 
 
-[MaxRetryAttemptsOnThrottledRequests jest ustawiona](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet)na 3, więc w tym przypadku, jeśli operacja żądania jest naliczana proporcjonalnie do przekroczenia zarezerwowanej przepływności dla kolekcji, operacja żądania jest ponawiana trzy razy przed wygenerowaniem wyjątku do  Aplikacja.  [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds)  jest ustawiony na 60, więc w tym przypadku, jeśli skumulowana ponowna próba odczeka czas w sekundach, ponieważ pierwsze żądanie przekracza 60 sekund, zostanie zgłoszony wyjątek.
+[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) jest ustawiona na 3, więc w tym przypadku, jeśli operacja żądania jest naliczana proporcjonalnie do przekroczenia zarezerwowanej przepływności dla kontenera, operacja żądania jest ponawiana trzy razy przed przekazaniem wyjątku do aplikacji. [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) jest ustawiona na 60, więc w tym przypadku, jeśli łączny czas oczekiwania ponowienia próby (w sekundach) od momentu pierwszego żądania przekracza 60 sekund, zostanie zgłoszony wyjątek.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
-
 connectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 3; 
-
 connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 ```
 

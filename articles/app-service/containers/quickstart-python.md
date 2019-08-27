@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
-ms.openlocfilehash: 2ff4364fdb0f24ca08a77279d569c0f03de9bb24
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: c7306de4af7f958ef8f89dac41a5e08209916432
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996838"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020211"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Tworzenie aplikacji w języku Python w Azure App Service w systemie Linux
 
@@ -37,7 +37,7 @@ Aby ukończyć ten przewodnik Szybki start:
 
 ## <a name="download-the-sample-locally"></a>Pobieranie przykładu na maszynę lokalną
 
-W oknie terminala uruchom następujące polecenia, aby sklonować aplikację przykładową na maszynę lokalną, a następnie przejść do katalogu zawierającego przykładowy kod.
+W oknie terminalu uruchom następujące polecenia, aby sklonować przykładową aplikację na maszynę lokalną, a następnie przejdź do katalogu przy użyciu przykładowego kodu.
 
 ```bash
 git clone https://github.com/Azure-Samples/python-docs-hello-world
@@ -158,7 +158,7 @@ Przykładowy kod w języku Python jest uruchamiany w usłudze App Service dla sy
 
 ## <a name="update-locally-and-redeploy-the-code"></a>Lokalne aktualizowanie i ponowne wdrażanie kodu
 
-W usłudze Cloud Shell wpisz `code application.py`, aby otworzyć edytor usługi Cloud Shell.
+W Cloud Shell wprowadź `code application.py` , aby otworzyć Edytor Cloud Shell.
 
 ![Kod application.py](media/quickstart-python/code-applicationpy.png)
 
@@ -184,7 +184,7 @@ Po zakończeniu wdrożenia przejdź z powrotem do okna przeglądarki otwartego w
 
 Przejdź do witryny <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, aby zarządzać utworzoną aplikacją.
 
-W menu po lewej stronie kliknij pozycję **App Services**, a następnie kliknij nazwę swojej aplikacji platformy Azure.
+W lewym menu wybierz pozycję **App Services**, a następnie wybierz nazwę swojej aplikacji platformy Azure.
 
 ![Nawigacja w portalu do aplikacji platformy Azure](./media/quickstart-python/app-service-list.png)
 

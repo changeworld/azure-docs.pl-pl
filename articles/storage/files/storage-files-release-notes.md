@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 8/14/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 45f383691a52d841f35ed9b67d4658341de18afc
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: f4ea820eb116c4efe550997cbe7c9ed69713c965
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036258"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019127"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Informacje o wersji dla agenta Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Instalacje systemów Windows Server są przekształcane w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS). Możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -23,7 +23,7 @@ W tym artykule udostępniono informacje o obsługiwanych wersjach agenta usługi
 ## <a name="supported-versions"></a>Obsługiwane wersje
 Następujące wersje są obsługiwane przez agenta usługi Azure File Sync:
 
-| Rozwoju | Numer wersji agenta | Data wydania | Stan |
+| Rozwoju | Numer wersji agenta | Data wydania | State |
 |----|----------------------|--------------|------------------|
 | 2019 lipca zbiorczych aktualizacji — [KB4490497](https://support.microsoft.com/help/4490497)| 7.2.0.0 | 24 lipca 2019 r. | Obsługiwane |
 | 2019 lipca zbiorczych aktualizacji — [KB4490496](https://support.microsoft.com/help/4490496)| 7.1.0.0 | 12 lipca 2019 | Obsługiwane |
@@ -71,6 +71,12 @@ Poniższe informacje o wersji dotyczą wersji 7.0.0.0 agenta Azure File Sync (wy
 
 - Obsługa większych rozmiarów udziałów plików
     - W wersji zapoznawczej większych udziałów plików platformy Azure zwiększamy również limity pomocy technicznej dotyczące synchronizacji plików. W tym pierwszym kroku Azure File Sync obsługuje teraz do 25TB i 50million plików w pojedynczej, synchronizowanej przestrzeni nazw. Aby złożyć udział w wersji zapoznawczej dużego udziału plików, Wypełnij https://aka.ms/azurefilesatscalesurvey ten formularz. 
+- Obsługa ustawień zapory i sieci wirtualnej na kontach magazynu
+    - Azure File Sync teraz obsługuje ustawienia zapory i sieci wirtualnej na kontach magazynu. Aby skonfigurować wdrożenie do pracy z ustawieniami zapory i sieci wirtualnej, zobacz [Konfigurowanie ustawień zapory i sieci wirtualnej](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings).
+- Polecenie cmdlet programu PowerShell do natychmiastowej synchronizacji plików zmienionych w udziale plików platformy Azure
+    - Aby natychmiast synchronizować pliki, które zostały zmienione w udziale plików platformy Azure, można ręcznie zainicjować wykrywanie zmian w udziale plików platformy Azure za pomocą polecenia cmdlet Invoke-AzStorageSyncChangeDetection programu PowerShell. To polecenie cmdlet jest przeznaczone dla scenariuszy, w których jakiś typ zautomatyzowany proces wprowadza zmiany w udziale plików platformy Azure lub zmiany są wykonywane przez administratora (na przykład przeniesienie plików i katalogów do udziału). W przypadku zmian wprowadzonych przez użytkownika końcowego zaleca się zainstalowanie agenta Azure File Sync na maszynie wirtualnej IaaS, a użytkownicy końcowi uzyskują dostęp do udziału plików za pomocą maszyny wirtualnej IaaS. W ten sposób wszystkie zmiany zostaną szybko zsynchronizowane z innymi agentami bez konieczności korzystania z polecenia cmdlet Invoke-AzStorageSyncChangeDetection. Aby dowiedzieć się więcej, zobacz dokumentację [Invoke-AzStorageSyncChangeDetection](https://docs.microsoft.com/powershell/module/az.storagesync/invoke-azstoragesyncchangedetection) .
+- Udoskonalone środowisko portalu w przypadku wystąpienia plików, które nie są synchronizowane
+    - Jeśli masz pliki, których synchronizacja nie powiedzie się, rozróżnimy od błędów przejściowych i trwałych w portalu. Błędy przejściowe zwykle rozwiązują się samodzielnie bez konieczności działania administratora. Na przykład plik, który jest aktualnie używany, nie będzie synchronizowany do momentu zamknięcia dojścia do pliku. W przypadku błędów trwałych jest teraz wyświetlana liczba plików, na które mają wpływ poszczególne błędy. Liczba trwałych błędów jest również wyświetlana w kolumnie brak synchronizacji plików wszystkich punktów końcowych serwera w grupie synchronizacji.
 - Ulepszone Azure Backup przywracanie na poziomie plików
     - Pojedyncze pliki przywrócone przy użyciu Azure Backup są teraz wykrywane i synchronizowane z punktem końcowym serwera.
 - Ulepszona niezawodność poleceń cmdlet odwoływania się do warstw w chmurze 

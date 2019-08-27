@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 6bafd5ed5f2d7080b0f2a2db71ac96e4f97a1f76
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 64649c86dbd3c3469247308bfc4dd0ed12e06949
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774945"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018233"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Uaktualnianie i skalowanie wystąpienia usługi Azure API Management  
 
@@ -53,8 +53,11 @@ Warstwa **Premium** umożliwia dystrybucję pojedynczego wystąpienia usługi Az
 
 Możesz uaktualnić i obniżyć wersję do i z dowolnej warstwy. Należy pamiętać, że uaktualnienie lub obniżenie wersji może usunąć niektóre funkcje — na przykład wdrożenie sieci wirtualnych lub z wieloregionem, gdy jest to wersja Standard lub Basic z warstwy Premium.
 
->[!NOTE]
->Procesu uaktualniania lub skalowania zastosowanie może potrwać od 15 do 45 minut. Po zakończeniu otrzymasz powiadomienie.
+> [!NOTE]
+> Procesu uaktualniania lub skalowania zastosowanie może potrwać od 15 do 45 minut. Po zakończeniu otrzymasz powiadomienie.
+
+> [!NOTE]
+> Usługa API Management w warstwie **zużycia** jest skalowana automatycznie na podstawie ruchu.
 
 ## <a name="use-the-azure-portal-to-upgrade-and-scale"></a>Używanie Azure Portal do uaktualniania i skalowania
 

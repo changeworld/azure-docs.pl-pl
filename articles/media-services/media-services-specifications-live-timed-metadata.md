@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 19d3fe4285cf6bf316a0d445e49a398ed5d66a35
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: d2fec29c96639d21db362f6982b88a90bd6c319f
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991797"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70019079"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Sygnalizowanie metadanych w czasie przesyłania strumieniowego na żywo 
 
@@ -98,7 +98,7 @@ Następujące dokumenty zawierają postanowienia, które za pomocą odwołania w
 
 Azure Media Services obsługuje metadane w czasie rzeczywistym dla protokołów [RTMP] i Smooth Streaming [MS-SSTR-pozyskiwania]. Metadane w czasie rzeczywistym mogą służyć do definiowania niestandardowych zdarzeń, z własnymi unikatowymi schematami niestandardowymi (JSON, Binary, XML), a także w formatach branżowych, takich jak ID3, lub SCTE-35 dla sygnałów AD w strumieniu emisji. 
 
-Ten artykuł zawiera szczegółowe informacje dotyczące sposobu wysyłania niestandardowych sygnałów do metadanych czasowych przy użyciu obsługiwanych protokołów pozyskiwania Media Services. W artykule wyjaśniono również, w jaki sposób manifesty dla HLS, ŁĄCZNIKa i Smooth Streaming są uzupełnione o czasowe sygnały metadanych, a także jak są przenoszone w paśmie, gdy zawartość jest dostarczana przy użyciu CMAF (fragmentów MP4) lub segmentów usługi Transport Stream (TS) dla HLS. 
+Ten artykuł zawiera szczegółowe informacje dotyczące sposobu wysyłania niestandardowych sygnałów do metadanych czasowych przy użyciu obsługiwanych protokołów pozyskiwania Azure Media Services. W artykule wyjaśniono również, w jaki sposób manifesty dla HLS, ŁĄCZNIKa i Smooth Streaming są uzupełnione o czasowe sygnały metadanych, a także jak są przenoszone w paśmie, gdy zawartość jest dostarczana przy użyciu CMAF (fragmentów MP4) lub segmentów usługi Transport Stream (TS) dla HLS. 
 
 Typowe scenariusze przypadków użycia dla metadanych czasowych obejmują:
 
@@ -122,7 +122,7 @@ Azure Media Services zdarzenia na żywo i Pakowarka mogą odbierać te sygnały 
 
 Protokół [RTMP] umożliwia wysyłanie sygnałów do metadanych czasowych dla różnych scenariuszy, w tym niestandardowych metadanych, i sygnałów AD SCTE-35. 
 
-Sygnały anonsowania (komunikaty kontrolne) są wysyłane jako [AMF0] komunikaty kontrolne osadzone w strumieniu [RTMP]. Komunikaty kontrolne mogą być wysyłane jakiś czas przed wystąpieniem zdarzenia "AD splice" lub "[SCTE35]". W celu obsługi tego scenariusza rzeczywista godzina zdarzenia jest wysyłana w ramach komunikatu wskaźnika. Aby uzyskać więcej informacji, zobacz [AMF0].
+Sygnały anonsowania (komunikaty kontrolne) są wysyłane jako [AMF0] komunikaty kontrolne osadzone w strumieniu [RTMP]. Komunikaty kontrolne mogą być wysyłane jakiś czas przed wystąpieniem zdarzenia "AD splice" lub "[SCTE35]". W celu obsługi tego scenariusza rzeczywista sygnatura czasowa prezentacji zdarzenia jest wysyłana w ramach komunikatu wskaźnika. Aby uzyskać więcej informacji, zobacz [AMF0].
 
 Następujące polecenia [AMF0] są obsługiwane przez Azure Media Services na potrzeby pozyskiwania RTMP:
 
@@ -139,8 +139,8 @@ Nazwa komunikatu [AMF0] może być używana do rozróżniania wielu strumieni zd
 
 Jeśli chcesz dostarczyć niestandardowe źródła metadanych z kodera-strumienia, aparatu IP, drona lub urządzenia przy użyciu protokołu RTMP, użyj polecenia "onUserDataEvent" [AMF0] komunikatu o danych.
 
-Polecenie komunikatu danych **"onUserDataEvent"** musi zawierać ładunek komunikatu z następującą definicją, która ma zostać przechwycona przez Media Services i spakowane w formacie pliku w paśmie, a także manifesty dla HLS, kreski i gładkie.
-Zalecane jest wysyłanie komunikatów o przekroczonym czasie, nie częściej niż co 0,5 sekund (500 ms). Każdy komunikat może agregować metadane z wielu ramek, jeśli konieczne jest dostarczenie metadanych na poziomie ramki. W przypadku wysyłania strumieni o większej szybkości transmisji bitów zaleca się również dostarczenie metadanych pojedynczej szybkości transmisji bitów tylko w celu zmniejszenia przepustowości i uniknięcia zakłóceń w przetwarzaniu wideo/audio. 
+Polecenie komunikatu danych **"onUserDataEvent"** musi zawierać ładunek komunikatu z następującą definicją, która ma zostać przechwycona przez Media Services i spakowane w formacie pliku w paśmie, a także manifesty dla HLS, łączników i Smooth Streaming.
+Zalecane jest wysyłanie komunikatów o przekroczonym czasie — nie częściej niż co 0,5 sekund (500 ms) lub problemy ze stabilnością w strumieniu na żywo mogą wystąpić. Każdy komunikat może agregować metadane z wielu ramek, jeśli konieczne jest dostarczenie metadanych na poziomie ramki. W przypadku wysyłania strumieni o większej szybkości transmisji bitów zaleca się również dostarczenie metadanych pojedynczej szybkości transmisji bitów tylko w celu zmniejszenia przepustowości i uniknięcia zakłóceń w przetwarzaniu wideo/audio. 
 
 Ładunek dla **"onUserDataEvent"** powinien być komunikatem formatu XML [MPEGDASH] EventStream. Dzięki temu można łatwo przekazywać niestandardowe zdefiniowane schematy, które mogą być przenoszone do emsg ' ładunków w paśmie dla zawartości CMAF [MPEGCMAF], która jest dostarczana za pośrednictwem protokołów HLS lub PAUZy. Każdy komunikat strumienia zdarzeń PAUZy zawiera schemeIdUri, który działa jako identyfikator schematu komunikatu URN i definiuje ładunek wiadomości. Niektóre schematy, takie jak https://aomedia.org/emsg/ID3"" dla [ID3v2] lub **urn: SCTE: scte35:2013: bin** dla [SCTE-35] są standardowe dla konsorcjów branżowych na potrzeby współdziałania. Każdy dostawca aplikacji może zdefiniować własny schemat niestandardowy przy użyciu adresu URL, który kontroluje (domena własnością) i może podać specyfikację w tym adresie URL. Jeśli gracz ma procedurę obsługi dla zdefiniowanego schematu, to jest jedynym składnikiem, który musi zrozumieć ładunek i protokół.
 
@@ -226,7 +226,7 @@ Pojedyncze zdarzenia lub ich ładunki danych nie są wyprowadzane bezpośrednio 
 
 ### <a name="additional-informational-constraints-and-defaults-for-onuserdataevent-events"></a>Dodatkowe ograniczenia informacyjne i wartości domyślne dla zdarzeń onUserDataEvent
 
-- Jeśli skala czasu nie jest ustawiona w elemencie EventStream, domyślnie używana jest skala czasu RTMP 1Khz
+- Jeśli skala czasu nie jest ustawiona w elemencie EventStream, domyślnie jest używana Skala czasu RTMP 1 kHz
 - Dostarczenie komunikatu onUserDataEvent jest ograniczone do co 500 MS max. Jeśli zdarzenia są wysyłane częściej, może to mieć wpływ na przepustowość i stabilność kanału informacyjnego na żywo
 
 ## <a name="212-rtmp-ad-cue-signaling-with-oncuepoint"></a>2.1.2 "onCuePoint" sygnałów usługi AD

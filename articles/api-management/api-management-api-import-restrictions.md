@@ -1,6 +1,6 @@
 ---
-title: Ograniczenia i znane problemy podczas importowania interfejsu API usługi Azure API Management | Dokumentacja firmy Microsoft
-description: Szczegółowe informacje o znanych problemów i ograniczeń dotyczących importowania do usługi Azure API Management przy użyciu otwartych interfejsów API, WSDL lub WADL formatów.
+title: Ograniczenia i znane problemy dotyczące importowania usługi Azure API Management API | Microsoft Docs
+description: Szczegóły znanych problemów i ograniczeń dotyczących importowania do usługi Azure API Management przy użyciu formatów Open API, WSDL lub WADL.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,57 +14,58 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: af550d3cdf359fc79b3cc2c799e531e5ec491c4e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: bf39e508b8e4c883934b51fdc99eaef96caf1235
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613628"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018227"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>Ograniczenia importu interfejsu API i znane problemy
 
-## <a name="about-this-list"></a>Ta lista — informacje
+## <a name="about-this-list"></a>Informacje o tej liście
 
-Podczas importowania interfejsu API, może spotkać się z pewnymi ograniczeniami lub identyfikowaniu problemów, które muszą zostać usunięty, zanim będzie można pomyślnie zaimportować. Ten artykuł dokumentów, te, uporządkowane według format importu interfejsu API.
+Podczas importowania interfejsu API mogą występować pewne ograniczenia lub zidentyfikować problemy, które należy skorygować przed pomyślnym zaimportowaniem. W tym artykule opisano te dokumenty uporządkowane według formatu importu interfejsu API.
 
-## <a name="open-api"> </a>OpenAPI/Swagger
+## <a name="open-api"> </a>Openapi/Swagger
 
-Jeśli otrzymujesz błędy importowania dokument OpenAPI, upewnij się, że zweryfikowaniu go wcześniej. Możesz to zrobić przy użyciu narzędzia Projektant w witrynie Azure portal (projekt - Front End — Edytor specyfikacji interfejsu OpenAPI) lub za pomocą narzędzia innej firmy takie jak <a href="https://editor.swagger.io">edytora programu Swagger</a>.
+Jeśli otrzymujesz błędy podczas importowania dokumentu OpenAPI, upewnij się, że został on wcześniej sprawdzony. Można to zrobić przy użyciu narzędzia Projektant w Azure Portal (Edytor specyfikacji OpenAPI frontonu) lub za pomocą narzędzi innych firm, takich jak <a href="https://editor.swagger.io">Edytor Swagger</a>.
 
 ### <a name="open-api-general"> </a>Ogólne
 
--   Wymagane parametry zarówno ścieżka i kwerenda muszą mieć unikatowe nazwy. (W standardzie OpenAPI nazwę parametru tylko musi być unikatowa w lokalizacji, na przykład ścieżka, zapytanie, nagłówek. Jednak w usłudze API Management zezwalamy na operacje, aby być suma rozłączna przez parametry zarówno ścieżka i kwerenda, (które nie obsługuje interfejsu OpenAPI). That's Dlaczego firma Microsoft wymaga nazwy parametrów, aby była unikatowa w ramach całego szablonu adresu URL.)
--   **\$REF** wskaźniki nie można utworzyć zewnętrzne pliki odwołań.
--   **x-ms ścieżki** i **serwerach x** są obsługiwane tylko rozszerzenia.
--   Niestandardowe rozszerzenia są ignorowane podczas importowania i nie są zapisywane lub zachowywane na potrzeby eksportu.
--   **Rekursja** — API Management nie obsługuje rekursywnie definicji (na przykład, schematy odwołujące się do siebie).
--   Adres URL pliku źródłowego (jeśli jest dostępny) są stosowane do serwera względnych adresów URL.
+-   Wymagane parametry w ścieżce i zapytaniu muszą mieć unikatowe nazwy. (W OpenAPI Nazwa parametru musi być unikatowa w obrębie lokalizacji, na przykład Path, Query, header. Jednakże w API Management zezwalamy na rozróżnienie operacji przy użyciu parametrów Path i Query (które nie są obsługiwane przez OpenAPI). Dlatego wymagamy, aby nazwy parametrów były unikatowe w ramach całego szablonu adresu URL.
+-   wskaźniki ref nie mogą odwoływać się do plików zewnętrznych.  **\$**
+-   **ścieżki x-MS** i **x-Server** są jedynymi obsługiwanymi rozszerzeniami.
+-   Rozszerzenia niestandardowe są ignorowane podczas importowania i nie są zapisywane ani zachowywane do eksportu.
+-   **Rekursja** — API Management nie obsługuje definicji zdefiniowanych cyklicznie (na przykład schematów odnoszących się do siebie).
+-   Adres URL pliku źródłowego (jeśli jest dostępny) jest stosowany do względnych adresów URL serwera.
+-   Definicje zabezpieczeń zostały zignorowane.
 
-### <a name="open-api-v2"> </a>Plik OpenAPI w wersji 2
+### <a name="open-api-v2"> </a>Openapi wersja 2
 
--   Jest obsługiwany tylko format JSON.
+-   Obsługiwany jest tylko format JSON.
 
-### <a name="open-api-v3"> </a>W wersji 3 interfejsu OpenAPI
+### <a name="open-api-v3"> </a>Openapi wersja 3
 
--   Jeśli wiele **serwerów** podano podejmie próbę wybierz pierwszy adres HTTPs URL usługi API Management. Jeśli nie ma żadnych adresów URL HTTPs — pierwszy adres URL protokołu HTTP. Jeśli nie ma żadnych adresów URL HTTP — adres URL serwera jest pusta.
--   **Przykłady** nie jest obsługiwane, ale **przykład** jest.
--   **Multipart/formularza data** nie jest obsługiwane.
+-   Jeśli określono wiele **serwerów** , API Management spróbuje wybrać pierwszy adres URL https. Jeśli nie ma żadnych adresów URL HTTPs — pierwszy adres URL protokołu HTTP. Jeśli nie ma adresów URL protokołu HTTP, adres URL serwera będzie pusty.
+-   **Przykłady** nie są obsługiwane, ale **przykład** to.
+-   **Wieloczęściowe/formularz — dane** nie są obsługiwane.
 
 > [!IMPORTANT]
 > Zobacz ten [dokument](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/), aby uzyskać ważne informacje i wskazówki związane z importowaniem interfejsu OpenAPI.
 
-## <a name="wsdl"> </a>WSDL
+## <a name="wsdl"> </a>JĘZYK WSDL
 
-Pliki WSDL są używane do tworzenia przekazywanie protokołu SOAP i interfejsy API protokołu SOAP do stałej.
+Pliki WSDL są używane do tworzenia protokołu SOAP przekazującego i interfejsów API protokołu SOAP-to-REST.
 
--   **Powiązania protokołu SOAP** — obsługiwane są tylko protokołu SOAP powiązania styl "dokument" i "literal" kodowania. Nie jest obsługiwane dla styl "rpc" lub kodowaniem SOAP.
--   **WSDL** — ten atrybut nie jest obsługiwane. Klienci powinno się scalać operacji importu do jednego dokumentu.
--   **Komunikaty, w których wiele części** -komunikatów tego typu nie są obsługiwane.
--   **WCF wsHttpBinding** — usługi protokołu SOAP utworzone za pomocą programu Windows Communication Foundation, należy użyć basicHttpBinding — wsHttpBinding nie jest obsługiwane.
--   **MTOM** — usług przy użyciu MTOM <em>może</em> pracy. Oficjalna Obsługa nie jest oferowana w tej chwili.
--   **Rekursja** — typy, które są zdefiniowane rekursywnie (na przykład, zobacz tablicę samodzielnie) nie są obsługiwane przez usługi APIM.
--   **Wiele przestrzeni nazw** — wiele przestrzeni nazw mogą być używane w schemacie, ale tylko docelowej przestrzeni nazw może służyć do definiowania części wiadomości. Przestrzenie nazw innej niż docelowa, które są używane do definiowania inne elementy wejściowe i wyjściowe nie są zachowywane. Mimo że można zaimportować dokumentu WSDL na eksport wszystkich części wiadomości są docelowy obszar nazw WSDL.
--   **Tablice** — obsługuje tylko zawinięty tablic przekształcania protokołu SOAP do REST, pokazano w poniższym przykładzie:
+-   **Powiązania SOAP** — obsługiwane są tylko powiązania SOAP ze stylem "Document" i "literal". Nie ma obsługi stylu "RPC" ani kodowania SOAP.
+-   **WSDL: import** — ten atrybut nie jest obsługiwany. Klienci powinni scalić Importy do jednego dokumentu.
+-   **Komunikaty z wieloma częściami** — te typy komunikatów nie są obsługiwane.
+-   **WCF WSHttpBinding** — usługa SOAP utworzona przy użyciu Windows Communication Foundation powinna używać BasicHttpBinding-WSHttpBinding nie jest obsługiwana.
+-   **MTOM** — usługi korzystające z mechanizmu MTOM <em>mogą</em> funkcjonować. Oficjalne wsparcie nie jest w tej chwili oferowane.
+-   **Rekursja** — typy, które są zdefiniowane cyklicznie (na przykład odnoszą się do tablicy samej) nie są obsługiwane przez APIM.
+-   **Wiele przestrzeni nazw** — w schemacie można używać wielu przestrzeni nazw, ale tylko docelowa przestrzeń nazw może służyć do definiowania części komunikatów. Przestrzenie nazw inne niż element docelowy, które są używane do definiowania innych elementów wejściowych lub wyjściowych, nie są zachowywane. Mimo że ten dokument WSDL można zaimportować, w obszarze Eksportuj wszystkie części wiadomości będzie miał docelowy obszar nazw WSDL.
+-   **Tablice** — transformacja protokołu SOAP do REST obsługuje tylko opakowane tablice przedstawione w poniższym przykładzie:
 
 ```xml
     <complexType name="arrayTypeName">
@@ -83,4 +84,4 @@ Pliki WSDL są używane do tworzenia przekazywanie protokołu SOAP i interfejsy 
 
 ## <a name="wadl"> </a>WADL
 
-Obecnie nie istnieją żadne znane problemy importu WADL.
+Obecnie nie ma żadnych znanych problemów z importem WADL.
