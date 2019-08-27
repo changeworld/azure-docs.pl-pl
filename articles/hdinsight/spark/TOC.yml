@@ -311,8 +311,6 @@
           href: ./apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
         - name: Zadanie platformy Apache Spark kończy się niepowodzeniem — InvalidClassException
           href: ./apache-spark-troubleshoot-job-fails-invalidclassexception.md
-        - name: Powolne zadania platformy Apache Spark — listStatus
-          href: ./apache-spark-troubleshoot-job-slowness-liststatus.md
         - name: Powolne zadania platformy Apache Spark — kontener magazynu
           href: ./apache-spark-troubleshoot-job-slowness-container.md
         - name: Wyjątek IllegalArgumentException
