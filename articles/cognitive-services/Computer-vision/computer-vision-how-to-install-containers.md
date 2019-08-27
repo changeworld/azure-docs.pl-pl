@@ -11,16 +11,17 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: afccce5ca9101ed1e30f69264abae7ad85b4902b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: cbf199c391b49518bb595d7d1a0ed47147903a85
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564583"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034501"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Instalowanie i uruchamianie kontenerów Rozpoznawanie tekstu
 
-Rozpoznaj tekst część przetwarzania obrazów jest również dostępny jako kontener platformy Docker. Umożliwia ona wykrywanie i wyodrębnianie tekstu drukowanego z obrazów różne obiekty na różnych powierzchniach i tłach, takich jak przychody oraz plakaty i wizytówki.  
+Rozpoznaj tekst część przetwarzania obrazów jest również dostępny jako kontener platformy Docker. Umożliwia ona wykrywanie i wyodrębnianie tekstu drukowanego z obrazów różne obiekty na różnych powierzchniach i tłach, takich jak przychody oraz plakaty i wizytówki.
+
 > [!IMPORTANT]
 > Kontener Rozpoznaj tekst obecnie działa tylko w języku angielskim.
 
@@ -38,7 +39,7 @@ Przed użyciem kontenerów Rozpoznawanie tekstu należy spełnić następujące 
 
 ## <a name="request-access-to-the-private-container-registry"></a>Poproś o dostęp do prywatnego rejestru kontenerów
 
-[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-request-access.md)]
+[!INCLUDE [Request access to public preview](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>Komputer-host
 
@@ -46,16 +47,7 @@ Przed użyciem kontenerów Rozpoznawanie tekstu należy spełnić następujące 
 
 ### <a name="container-requirements-and-recommendations"></a>Kontener wymagania i zalecenia
 
-W poniższej tabeli opisano minimalną i zalecaną liczbę rdzeni procesora CPU oraz ilość pamięci do przydzielenia dla każdego kontenera Rozpoznawanie tekstu.
-
-| Kontener | Minimalne | Zalecane |TPS<br>(Minimum, maksimum)|
-|-----------|---------|-------------|--|
-|Rozpoznawanie tekstu|1 rdzeń, 8 GB pamięci, 0,5 TPS|2 rdzenie, 8 GB pamięci, 1 TPS|0,5, 1|
-
-* Każdy rdzeń musi mieć co najmniej 2,6 gigaherca (GHz) lub szybszy.
-* TPS — liczba transakcji na sekundę
-
-Rdzeń i pamięć odpowiadają `--cpus` ustawieniom i `--memory` , które są `docker run` używane jako część polecenia.
+[!INCLUDE [Container requirements and recommendations](includes/container-requirements-and-recommendations.md)]
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Pobierz obraz kontenera za pomocą`docker pull`
 
@@ -144,7 +136,7 @@ Możesz użyć `POST /vision/v2.0/recognizeTextDirect` operacji synchronicznie, 
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli uruchamiasz kontener z [instalacją wyjściową](./computer-vision-resource-container-config.md#mount-settings) i włączono rejestrowanie, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera. 
+Jeśli uruchamiasz kontener z instalacją wyjściową [](./computer-vision-resource-container-config.md#mount-settings) i włączono rejestrowanie, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera. 
 
 
 ## <a name="billing"></a>Rozliczenia

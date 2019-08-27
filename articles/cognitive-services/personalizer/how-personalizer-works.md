@@ -9,12 +9,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: diberry
-ms.openlocfilehash: e55ccb508760c4473f71245c183948219f31985c
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c258799b1305c4204d08d66aa36a0be7c71a4944
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663908"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034371"
 ---
 # <a name="how-personalizer-works"></a>Jak działa usługa Personalizacja
 
@@ -163,7 +163,7 @@ Aparaty rekomendacji można używać z personalizacją:
 
 ## <a name="adding-content-safeguards-to-your-application"></a>Dodawanie zabezpieczeń zawartości do aplikacji
 
-Jeśli aplikacja zezwala na duże wariancje zawartości widocznej dla użytkowników, a niektóre z nich mogą być niebezpieczne lub nieodpowiednie dla niektórych użytkowników, należy zaplanować z wyprzedzeniem, aby upewnić się, że odpowiednie zabezpieczenia są stosowane w celu uniemożliwienia użytkownikom nieakceptowalnego wyświetlenia treści. Najlepszym wzorcem do implementowania zabezpieczeń są: Najlepszym wzorcem do implementowania zabezpieczeń są:
+Jeśli aplikacja zezwala na duże wariancje zawartości widocznej dla użytkowników, a niektóre z nich mogą być niebezpieczne lub nieodpowiednie dla niektórych użytkowników, należy zaplanować z wyprzedzeniem, aby upewnić się, że odpowiednie zabezpieczenia są stosowane w celu uniemożliwienia użytkownikom nieakceptowalnego wyświetlenia treści. Najlepszym wzorcem do implementowania zabezpieczeń są:
     * Uzyskaj listę akcji do rangi.
     * Odfiltruj te, które nie są przeznaczone dla odbiorców.
     * Należy tylko klasyfikować te działania.
