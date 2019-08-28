@@ -9,17 +9,16 @@ ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/05/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4b41772a4e904603309f45244cf4df22af876a32
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 08a18dc115990ad7d44a8b20412e07995c9af390
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812747"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069509"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Tworzenie i używanie wewnętrznego Load Balancer App Service Environment 
 
@@ -30,7 +29,7 @@ Azure App Service Environment to wdrożenie Azure App Service w podsieci w sieci
 
 W tym artykule przedstawiono sposób tworzenia środowiska ASE z wewnętrznym modułem równoważenia obciążenia. Aby zapoznać się z omówieniem środowiska ASE, zobacz [wprowadzenie do środowisk App Service][Intro]. Aby dowiedzieć się, jak utworzyć zewnętrzny środowisko ASE, zobacz [Tworzenie zewnętrznego środowiska ASE][MakeExternalASE].
 
-## <a name="overview"></a>Przegląd 
+## <a name="overview"></a>Omówienie 
 
 Środowisko ASE można wdrożyć za pomocą punktu końcowego dostępnego z Internetu lub adresu IP w sieci wirtualnej. Aby można było ustawić jako adres IP adres sieci wirtualnej, należy wdrożyć środowisko ASE z wewnętrznym modułem równoważenia obciążenia. W przypadku wdrażania środowiska ASE przy użyciu ILB należy podać nazwę środowiska ASE. Nazwa środowiska ASE jest używana w sufiksie domeny dla aplikacji w środowisku ASE.  Sufiks domeny dla środowiska ILB ASE to &lt;ASE Name&gt;. appservicewebsites.NET. Aplikacje utworzone w środowisku ILB ASE nie są umieszczane w publicznym systemie DNS. 
 

@@ -11,17 +11,16 @@ ms.assetid: bc85eff6-bbdf-410a-93dc-0f1222796676
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 6bca1b067f5ec667e8b5da92a182a5618582b2f3
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 7c00946ed9de88df43a4435c23ebef27b5c64e5c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617441"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071327"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Wprowadzenie do usługi Azure App Service w systemie Linux
 
@@ -33,16 +32,16 @@ Usługa App Service w systemie Linux obsługuje szereg wbudowanych obrazów w ce
 
 | Język | Obsługiwane wersje |
 |---|---|
-| Node.js | 4.4, 4.5, 4.8, 6.2, 6.6, 6.9, 6.10, 6.11, 8.0, 8.1, 8.2, 8.8, 8.9, 8.11, 8.12, 9.4, 10.1, 10.10, 10.14 |
+| Node.js | 4,4, 4,5, 4,8, 6,2, 6,6, 6,9, 6,10, 6,11, 8,0, 8,1, 8,2, 8,8, 8,9, 8,11, 8,12, 9,4, 10,1, 10,10, 10,14 |
 | Java * | Tomcat 8.5, 9.0, Java SE, WildFly 14 (z uruchomionym środowiskiem JRE 8) |
-| PHP | 5.6, 7.0, 7.2, 7.3 |
+| PHP | 5,6, 7,0, 7,2, 7,3 |
 | Python | 2.7, 3.6, 3.7 |
-| .NET Core | 1.0, 1.1, 2.0, 2.1, 2.2 |
-| Ruby | 2.3, 2.4, 2.5, 2.6 |
+| .NET Core | 1,0, 1,1, 2,0, 2,1, 2,2 |
+| Ruby | 2,3, 2,4, 2,5, 2,6 |
 
 ## <a name="deployments"></a>Wdrożenia
 
-* FTP
+* Protokół FTP
 * Lokalna usługa Git
 * GitHub
 * Bitbucket
@@ -71,13 +70,13 @@ Sprawdź [Pulpit nawigacyjny stanu platformy Azure](https://azure.microsoft.com/
 
 Witryna Azure Portal wyświetla tylko te funkcje, które obecnie działają dla usługi Web App for Containers. Kiedy włączymy więcej funkcji, będą one widoczne w portalu.
 
-App Service w systemie Linux jest obsługiwana tylko z [bezpłatna, podstawowa, standardowa i Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) planów usługi app service, a nie ma [Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) warstwy. Nie można utworzyć aplikację internetową systemu Linux w ramach planu usługi App Service już hostującym usługę Web Apps innego niż Linux.  
+App Service w systemie Linux jest obsługiwana tylko w przypadku planów usługi App Service w warstwach [bezpłatna, podstawowa, standardowa i Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) i nie ma warstwy [udostępnionej](https://azure.microsoft.com/pricing/details/app-service/plans/) . Nie można utworzyć aplikacji sieci Web systemu Linux w planie App Service, na którym jest już obsługiwany Web Apps w systemie innym niż Linux.  
 
-Oparte na bieżące ograniczenie dla tej samej grupie zasobów nie można mieszać aplikacji Windows i Linux, w tym samym regionie.
+W oparciu o bieżące ograniczenie dla tej samej grupy zasobów nie można mieszać aplikacji systemu Windows i Linux w tym samym regionie.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli nie można uruchomić aplikacji lub chcesz sprawdzić rejestrowanie z aplikacji, sprawdź dzienniki platformy Docker w katalogu LogFiles. Dostęp do tego katalogu można uzyskać za pomocą witryny funkcji SCM lub za pośrednictwem protokołu FTP. W dzienniku `stdout` i `stderr` z kontenera, musisz włączyć **rejestrowanie kontenerów Docker** w obszarze **dzienniki usługi aplikacji**. To ustawienie jest stosowane od razu. Usługa App Service wykrywa zmianę i kontenera do automatycznego ponownego uruchomienia.
+Jeśli nie można uruchomić aplikacji lub chcesz sprawdzić rejestrowanie z aplikacji, sprawdź dzienniki platformy Docker w katalogu LogFiles. Dostęp do tego katalogu można uzyskać za pomocą witryny funkcji SCM lub za pośrednictwem protokołu FTP. Aby zalogować `stdout` się `stderr` i z kontenera, musisz włączyć **Rejestrowanie kontenerów platformy Docker** w obszarze **dzienniki App Service**. To ustawienie jest stosowane od razu. App Service wykrywa zmianę i automatycznie ponownie uruchamia kontener.
 
 Dostęp do witryny SCM można uzyskać za pomocą opcji **Narzędzia zaawansowane** w menu **Narzędzia programistyczne**.
 
