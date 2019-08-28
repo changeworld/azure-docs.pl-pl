@@ -1,0 +1,99 @@
+### YamlMime:Landing
+title: Dokumentacja z pomocą dla użytkowników
+summary: Jako pracownik, pracownik działu IT lub użytkownik końcowy skonfiguruj uwierzytelnianie dla konta służbowego, zresetuj własne hasło, skonfiguruj i dołącz urządzenia, skonfiguruj aplikację Microsoft Authenticator i użyj różnych portali.
+metadata:
+  title: Pomoc dla użytkowników dotycząca uwierzytelniania, aplikacji i urządzeń
+  description: Jako pracownik lub użytkownik końcowy dowiedz się, jak skonfigurować uwierzytelnianie, aplikację Microsoft Authenticator i portal Moje aplikacje oraz jak z nich korzystać.
+  services: active-directory
+  ms.service: active-directory
+  ms.subservice: user-help
+  ms.topic: landing-page
+  ms.collection: M365-identity-device-management
+  author: eross-msft
+  ms.author: lizross
+  ms.date: 08/26/2019
+  ms.openlocfilehash: 687ae4b276b4e975c9b9de9d688f23180deaeebc
+  ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70062209"
+landingContent:
+- title: Konfigurowanie aplikacji Microsoft Authenticator używanie jej
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Czym jest aplikacja Microsoft Authenticator?
+      url: user-help-auth-app-overview.md
+  - linkListType: download
+    links:
+    - text: Pobieranie i instalowanie aplikacji
+      url: user-help-auth-app-download-install.md
+  - linkListType: how-to-guide
+    links:
+    - text: Wykonywanie kopii zapasowych i odzyskiwanie danych konta
+      url: user-help-auth-app-backup-recovery.md
+    - text: Logowanie się za pomocą aplikacji
+      url: user-help-auth-app-sign-in.md
+- title: Konfigurowanie i używanie weryfikacji dwuetapowej
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest weryfikacja dwuskładnikowa?
+      url: user-help-two-step-verification-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurowanie metod weryfikacji
+      url: multi-factor-authentication-end-user-first-time.md
+    - text: Zarządzanie ustawieniami
+      url: multi-factor-authentication-end-user-manage-settings.md
+    - text: Uzyskiwanie pomocy
+      url: multi-factor-authentication-end-user-troubleshoot.md
+- title: Konfigurowanie i używanie portalu Moje aplikacje
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest portal Moje aplikacje?
+      url: my-apps-portal-end-user-access.md
+  - linkListType: how-to-guide
+    links:
+    - text: Aktualizowanie informacji
+      url: my-apps-portal-end-user-update-profile.md
+    - text: Uzyskiwanie pomocy
+      url: my-apps-portal-end-user-troubleshoot.md
+- title: Konfigurowanie i używanie informacji zabezpieczających (wersja zapoznawcza)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to są informacje zabezpieczające (wersja zapoznawcza)?
+      url: user-help-security-info-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurowanie metod informacji zabezpieczających
+      url: security-info-add-update-methods-overview.md
+    - text: Dodawanie informacji podczas logowania
+      url: security-info-setup-signin.md
+- title: Konfigurowanie i używanie portalu Mój profil (wersja zapoznawcza)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest portal Mój profil (wersja zapoznawcza)?
+      url: myprofile-portal-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Zarządzanie swoimi organizacjami
+      url: myprofile-portal-organizations-page.md
+    - text: Zarządzanie swoimi połączonymi urządzeniami
+      url: myprofile-portal-devices-page.md
+- title: Resetowanie hasła
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest resetowanie hasła?
+      url: user-help-password-reset-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Rejestrowanie się w celu zresetowania hasła
+      url: active-directory-passwords-reset-register.md
+    - text: Resetowanie hasła
+      url: user-help-reset-password.md

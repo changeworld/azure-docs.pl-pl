@@ -11,6 +11,9 @@
     - name: Tworzenie strategii — portal
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-portal.md
+    - name: Tworzenie strategii — PowerShell
+      displayName: 'publish, assign, track, unassign, delete'
+      href: create-blueprint-powershell.md
     - name: Tworzenie strategii — interfejs API REST
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md

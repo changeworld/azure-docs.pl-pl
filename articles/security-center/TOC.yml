@@ -33,18 +33,16 @@
       href: security-center-data-security.md
     - name: Używanie zaleceń w celu ulepszania zabezpieczeń
       href: security-center-using-recommendations.md
-    - name: Wykrywania zagrożeń
-      href: security-center-detection-capabilities.md
-    - name: Zarządzanie alertami zabezpieczeń
-      href: security-center-managing-and-responding-alerts.md
-    - name: Zdarzenia dotyczące zabezpieczeń
-      href: security-center-incident.md
     - name: Zarządzanie wieloma dzierżawami
       href: security-center-cross-tenant-management.md
-    - name: Alerty wykrywania zagrożeń
+    - name: Alerty wykrywania zagrożeń i zdarzenia
       items:
         - name: Omówienie alertów zabezpieczeń
           href: security-center-alerts-overview.md
+        - name: Zarządzanie alertami zabezpieczeń
+          href: security-center-managing-and-responding-alerts.md
+        - name: Zarządzanie zdarzeniami zabezpieczeń
+          href: security-center-incident.md
         - name: Wykrywanie zagrożeń dla maszyn wirtualnych i serwerów
           href: security-center-alerts-iaas.md
         - name: Wykrywanie zagrożeń dla natywnych obliczeń w chmurze

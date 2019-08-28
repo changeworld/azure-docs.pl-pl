@@ -1,56 +1,75 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja kontroli dostępu opartej na rolach dla zasobów platformy Azure
+summary: Kontrola dostępu oparta na rolach to system umożliwiający precyzyjne zarządzanie dostępem do zasobów platformy Azure. Przy użyciu kontroli dostępu opartej na rolach można przeprowadzić segregowanie zadań w ramach zespołu i nadać użytkownikom tylko takie uprawnienia dostępu, które są im niezbędne do wykonywania zadań.
 metadata:
-  document_id: null
-  title: Dokumentacja kontroli dostępu opartej na rolach dla zasobów platformy Azure | Microsoft Docs
-  description: 'Dowiedz się więcej na temat kontroli dostępu opartej na rolach w celu zarządzania osobami mającymi dostęp do zasobów platformy Azure, czynnościami, jakie mogą wykonywać, oraz obszarami, do których mają dostęp.'
-  services: active-directory
-  author: rolyon
-  manager: mtillman
+  title: Dokumentacja kontroli dostępu opartej na rolach dla zasobów platformy Azure
+  description: Dowiedz się więcej na temat kontroli dostępu opartej na rolach w celu zarządzania osobami mającymi dostęp do zasobów platformy Azure, czynnościami, jakie mogą wykonywać, oraz obszarami, do których mają dostęp.
+  services: role-based-access-control
   ms.service: role-based-access-control
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: na
   ms.topic: landing-page
-  ms.date: 02/16/2019
+  ms.collection: na
+  author: rolyon
   ms.author: rolyon
-abstract:
-  description: 'Kontrola dostępu oparta na rolach to system umożliwiający precyzyjne zarządzanie dostępem do zasobów platformy Azure. Przy użyciu kontroli dostępu opartej na rolach można przeprowadzić segregowanie zadań w ramach zespołu i nadać użytkownikom tylko takie uprawnienia dostępu, które są im niezbędne do wykonywania zadań.'
-  aside:
-    image:
-      alt: null
-      height: 112
-      src: media/index/video-thumb-get-started.png
-      width: 200
-    title: 'Blokowanie dostępu do platformy Azure (1:16)'
-    href: 'https://www.youtube.com/embed/FKBoWWKRnvI'
-    width: 200
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/role-based-access-control/check-access">Wyświetlanie dostępu dla użytkownika</a>
-  - title: Samouczki krok po kroku
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/role-based-access-control/quickstart-assign-role-user-portal">Udzielanie dostępu użytkownikowi — portal</a>
-          - html: <a href="/azure/role-based-access-control/tutorial-role-assignments-group-powershell">Udzielanie dostępu grupie — PowerShell</a>
-          - html: <a href="/azure/role-based-access-control/tutorial-custom-role-powershell">Tworzenie roli niestandardowej — PowerShell</a>
-          - html: <a href="/azure/role-based-access-control/tutorial-custom-role-cli">Tworzenie roli niestandardowej — interfejs wiersza polecenia</a>
-  - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Ochrona zasobów platformy Azure za pomocą kontroli dostępu na podstawie ról (RBAC)
-            href: /learn/modules/secure-azure-resources-with-rbac/
-            image:
-              src: /learn/achievements/secure-azure-resources-with-rbac.svg
-              href: /learn/modules/secure-azure-resources-with-rbac/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-active-directory">Więcej interakcyjnych zasobów szkoleniowych...</a>
+  ms.date: 08/26/2019
+  ms.openlocfilehash: cd4628ef5e7d56f03590899fe514141d415c8f01
+  ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 08/27/2019
+  ms.locfileid: "70052012"
+landingContent:
+- title: Informacje o kontroli dostępu opartej na rolach dla zasobów platformy Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest kontrola dostępu oparta na rolach?
+      url: overview.md
+    - text: Omówienie różnych ról
+      url: rbac-and-directory-admin-roles.md
+  - linkListType: video
+    links:
+    - text: 'Microsoft Ignite: Blokowanie dostępu do platformy Azure'
+      url: https://www.youtube.com/embed/FKBoWWKRnvI
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Wyświetlanie dostępu dla użytkownika
+      url: check-access.md
+  - linkListType: tutorial
+    links:
+    - text: Udzielanie dostępu użytkownikowi — portal
+      url: quickstart-assign-role-user-portal.md
+    - text: Udzielanie dostępu grupie — PowerShell
+      url: tutorial-role-assignments-group-powershell.md
+  - linkListType: learn
+    links:
+    - text: Zabezpieczanie zasobów platformy Azure przy użyciu kontroli dostępu opartej na rolach
+      url: https://docs.microsoft.com/learn/modules/secure-azure-resources-with-rbac/
+- title: Zarządzanie dostępem
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Portal
+      url: role-assignments-portal.md
+    - text: PowerShell
+      url: role-assignments-powershell.md
+    - text: Interfejs wiersza polecenia platformy Azure
+      url: role-assignments-cli.md
+    - text: Interfejs API REST
+      url: role-assignments-rest.md
+    - text: Szablon
+      url: role-assignments-template.md
+- title: Tworzenie ról niestandardowych
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Role niestandardowe
+      url: custom-roles.md
+  - linkListType: tutorial
+    links:
+    - text: Tworzenie roli niestandardowej — PowerShell
+      url: tutorial-custom-role-powershell.md
+    - text: Tworzenie roli niestandardowej — interfejs wiersza polecenia
+      url: tutorial-custom-role-cli.md

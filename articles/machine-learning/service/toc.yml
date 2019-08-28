@@ -28,10 +28,7 @@
               href: tutorial-deploy-models-with-aml.md
         - name: Regresja (dane dotyczące taksówek w Nowym Jorku)
           items:
-            - name: 1. Przygotowywanie danych do modelowania
-              displayName: data prep
-              href: tutorial-data-prep.md
-            - name: 2. Automatyczne trenowanie modelu uczenia maszynowego
+            - name: Automatyczne trenowanie modelu uczenia maszynowego
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
     - name: Interfejs wizualny
@@ -260,7 +257,7 @@
     - name: Tworzenie przepływów danych wielokrotnego użytku
       displayName: pipelines
       items:
-        - name: Potoki uczenia maszynowego
+        - name: Tworzenie potoków ML w języku Python
           href: how-to-create-your-first-pipeline.md
         - name: Potoki platformy Azure dla ciągłej integracji i ciągłego wdrażania
           displayName: 'continuous, integration, delivery'
