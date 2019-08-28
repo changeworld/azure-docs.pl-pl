@@ -7,20 +7,20 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
-ms.date: 04/16/2019
-ms.openlocfilehash: 69fe3287083523a3a47975a3db51d7241681f5c4
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.date: 08/22/2019
+ms.openlocfilehash: c8533f79dd2bf02a03ff4a37283359f3b3a5bf39
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68569509"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066050"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
-Inspekcja w usłudze Azure [SQL Database](sql-database-technical-overview.md) i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) śledzi zdarzenia bazy danych i zapisuje je w dzienniku inspekcji na koncie usługi Azure Storage, w obszarze roboczym pakietu OMS lub w Event Hubs. Inspekcja również:
+Inspekcja usługi Azure [SQL Database](sql-database-technical-overview.md) i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) śledzi zdarzenia bazy danych i zapisuje je w dzienniku inspekcji na koncie usługi Azure Storage, w obszarze roboczym log Analytics lub Event Hubs. Inspekcja również:
 
 - Pomaga zachować zgodność z przepisami, zrozumieć aktywność bazy danych oraz uzyskać wgląd w niezgodności i anomalie, które mogą wskazywać na problemy biznesowe lub podejrzane naruszenia zabezpieczeń.
 
@@ -121,11 +121,22 @@ W przypadku wybrania opcji zapisania dzienników inspekcji do Azure Monitor dzie
 
 - Użyj [Azure Portal](https://portal.azure.com).  Otwórz odpowiednią bazę danych. W górnej części strony Inspekcja bazy danych kliknij pozycję **Wyświetl dzienniki inspekcji**.
 
-    ![Wyświetlanie dzienników inspekcji](./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png)
+    ![Wyświetlanie dzienników inspekcji](./media/sql-database-auditing-get-started/auditing-view-audit-logs.png)
 
-- Następnie kliknięcie przycisku **Otwórz w usłudze OMS** w górnej części strony **rekordy inspekcji** spowoduje otwarcie widoku dzienników w log Analytics, w którym można dostosować zakres czasu i zapytanie wyszukiwania.
+- Następnie masz dwa sposoby wyświetlania dzienników:
+    
+    Kliknięcie **log Analytics** w górnej części strony **rekordy inspekcji** spowoduje otwarcie widoku dzienniki w obszarze roboczym log Analytics, gdzie można dostosować zakres czasu i zapytanie wyszukiwania.
+    
+    ![Otwórz w obszarze roboczym Log Analytics](./media/sql-database-auditing-get-started/auditing-log-analytics.png)
 
-    ![Otwórz w Log Analytics](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
+    Kliknięcie przycisku **Wyświetl pulpit nawigacyjny** w górnej części strony **rekordy inspekcji** spowoduje otwarcie pulpitu nawigacyjnego wyświetlającego informacje o dziennikach inspekcji, w którym można przejść do szczegółowych informacji o zabezpieczeniach, uzyskać dostęp do poufnych danych i nie tylko. Ten pulpit nawigacyjny umożliwia uzyskanie szczegółowych informacji o zabezpieczeniach danych.
+    Możesz również dostosować zakres czasu i zapytanie wyszukiwania. 
+    ![Wyświetl pulpit nawigacyjny Log Analytics](media/sql-database-auditing-get-started/auditing-view-dashboard.png)
+
+    ![Pulpit nawigacyjny Log Analytics](media/sql-database-auditing-get-started/auditing-log-analytics-dashboard.png)
+
+    ![Log Analytics szczegółowe informacje o zabezpieczeniach](media/sql-database-auditing-get-started/auditing-log-analytics-dashboard-data.png)
+ 
 
 - Alternatywnie można również uzyskać dostęp do dzienników inspekcji w bloku Log Analytics. Otwórz obszar roboczy Log Analytics i w sekcji **Ogólne** kliknij pozycję **dzienniki**. Możesz zacząć od prostego zapytania, takiego jak: *Search "SQLSecurityAuditEvents"* , aby wyświetlić dzienniki inspekcji.
     W tym miejscu możesz również użyć [dzienników Azure monitor](../log-analytics/log-analytics-log-search.md) , aby uruchomić zaawansowane wyszukiwania w danych dziennika inspekcji. Dzienniki Azure Monitor udostępniają usługi operacyjne w czasie rzeczywistym przy użyciu zintegrowanego wyszukiwania i niestandardowych pulpitów nawigacyjnych, które umożliwiają łatwe analizowanie milionów rekordów na wszystkich obciążeniach i serwerach. Aby uzyskać dodatkowe informacje dotyczące Azure Monitor języka i poleceń wyszukiwania dzienników, zobacz artykuł [Azure monitor Logs Search Reference](../log-analytics/log-analytics-log-search.md).
@@ -257,7 +268,7 @@ Rozszerzone zasady z klauzulą WHERE obsługują dodatkowe filtrowanie:
 - [Pobierz zasady inspekcji rozszerzonej bazy danych](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
 - [Pobieranie zasad inspekcji rozszerzonej serwera](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
-## <a id="subheading-10"></a>Zarządzanie inspekcją usługi SQL Database przy użyciu szablonów usługi ARM
+## <a id="subheading-10"></a>Zarządzanie inspekcją usługi SQL Database przy użyciu szablonów Azure Resource Manager
 
 Inspekcją usługi Azure SQL Database można zarządzać przy użyciu szablonów [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) , jak pokazano w poniższych przykładach:
 

@@ -1,6 +1,6 @@
 ---
-title: Rozmiary maszyn wirtualnych platformy Azure Windows — poprzednie generacje | Dokumentacja firmy Microsoft
-description: Wyświetla listę poprzednie generacje dostępnych rozmiarów maszyn wirtualnych Windows na platformie Azure.
+title: Rozmiary maszyn wirtualnych z systemem Windows Azure — poprzednie generacje | Microsoft Docs
+description: Zawiera listę poprzednich generacji rozmiarów dostępnych dla maszyn wirtualnych z systemem Windows na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
@@ -9,30 +9,29 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: 30b2d042d3f8e77e04dfb83c21509e423bf208e5
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 43fecfcdbb381588f0c717b7ca771c23c19f367d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710148"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088475"
 ---
-# <a name="previous-generations-of-virtual-machine-sizes"></a>Poprzednie generacje rozmiarów maszyn wirtualnych
+# <a name="previous-generations-of-virtual-machine-sizes"></a>Poprzednie generacji rozmiarów maszyn wirtualnych
 
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-sizes-previous-gen.md)]
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="older-generations-of-virtual-machine-sizes"></a>Starszych generacjach rozmiarów maszyn wirtualnych
+## <a name="older-generations-of-virtual-machine-sizes"></a>Starsze generacji rozmiarów maszyn wirtualnych
 
 [!INCLUDE [virtual-machines-common-sizes-older](../../../includes/virtual-machines-common-sizes-older.md)]
 
-## <a name="other-sizes"></a>O innych rozmiarach
+## <a name="other-sizes"></a>Inne rozmiary
 
 - [Zastosowania ogólne](sizes-general.md)
 - [Optymalizacja pod kątem obliczeń](sizes-compute.md)
@@ -43,4 +42,4 @@ ms.locfileid: "67710148"
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o tym, jak [usługi Azure compute jednostki (ACU)](acu.md) pozwalają porównać wydajności obliczeń w jednostkach SKU platformy Azure.
+Dowiedz się więcej o tym, jak [usługa Azure COMPUTE units (ACU)](acu.md) może pomóc w porównaniu wydajności obliczeniowej w ramach jednostek SKU platformy Azure.

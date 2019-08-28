@@ -16,12 +16,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff74db14a1621cdcea1b1ae082d351ce6a3a52f6
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 13beafe9a6937b0404a58d3508a9aba9892ac04d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227407"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073872"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect synchronizacji: Skonfiguruj preferowaną lokalizację danych dla zasobów pakietu Office 365
 W tym temacie opisano sposób konfigurowania atrybutu dla preferowanej lokalizacji danych w programie Azure Active Directory (Azure AD) Connect Sync. Gdy ktoś korzysta z funkcji wieloznacznych w pakiecie Office 365, ten atrybut służy do określania lokalizacji geograficznej danych pakietu Office 365 użytkownika. ( *Region* terminów i geograficznie są używane zamiennie).
@@ -32,7 +32,7 @@ Domyślnie zasoby pakietu Office 365 dla użytkowników znajdują się w tej sam
 Ustawiając atrybut **preferredDataLocation**, można zdefiniować geograficzną użytkownika. Możesz mieć zasoby pakietu Office 365, takie jak Skrzynka pocztowa i usługa OneDrive, w tym samym georegionie, w którym znajduje się użytkownik, i nadal mieć jedną dzierżawę dla całej organizacji.
 
 > [!IMPORTANT]
-> Wiele lokalizacji geograficznych jest obecnie dostępnych dla klientów z co najmniej 500 subskrypcjami usług Office 365. Skontaktuj się z przedstawicielem firmy Microsoft, aby uzyskać szczegółowe informacje.
+> Wiele lokalizacji geograficznych jest obecnie dostępnych dla klientów z aktywną Umowa Enterprise i co najmniej 500 subskrypcji usług Office 365. Skontaktuj się z przedstawicielem firmy Microsoft, aby uzyskać szczegółowe informacje.
 >
 >
 
@@ -49,8 +49,8 @@ Georegiony w pakiecie Office 365 dostępne dla wielogeograficzne:
 | Francja | FRA |
 | Indie | IND |
 | Japonia | JPN |
-| Korea | KOR |
-| Republika Południowej Afryki | ZAF |
+| Korea Południowa | KOR |
+| RPA | ZAF |
 | Zjednoczone Emiraty Arabskie | LEŻĄ |
 | Zjednoczone Królestwo | GBR |
 | Stany Zjednoczone | WIETNAM |
@@ -64,7 +64,7 @@ Georegiony w pakiecie Office 365 dostępne dla wielogeograficzne:
 Azure AD Connect obsługuje synchronizację atrybutu **preferredDataLocation** dla obiektów **użytkownika** w wersji 1.1.524.0 i nowszych. W szczególności:
 
 * Schemat typu obiektu **użytkownika** w łączniku usługi Azure AD został rozszerzony w celu uwzględnienia atrybutu **preferredDataLocation** . Ten atrybut jest typu String o pojedynczej wartości.
-* Schemat **typu obiektu** w obiekcie Metaverse został rozszerzony tak, aby obejmował atrybut **preferredDataLocation** . Ten atrybut jest typu String o pojedynczej wartości.
+* Schemat typu obiektu w obiekcie Metaverse został rozszerzony tak, aby obejmował atrybut **preferredDataLocation** . Ten atrybut jest typu String o pojedynczej wartości.
 
 Domyślnie **preferredDataLocation** nie jest włączona na potrzeby synchronizacji. Ta funkcja jest przeznaczona dla dużych organizacji. Należy również określić atrybut do przechowywania geograficznego pakietu Office 365 dla użytkowników, ponieważ w Active Directory lokalnym nie ma atrybutu **preferredDataLocation** . Jest to różne dla każdej organizacji.
 
@@ -121,19 +121,19 @@ Domyślnie atrybut **preferredDataLocation** nie jest zaimportowany do obszaru �
 ## <a name="step-4-create-an-inbound-synchronization-rule"></a>Krok 4: Tworzenie reguły synchronizacji ruchu przychodzącego
 Reguła synchronizacji ruchu przychodzącego zezwala na przepływ wartości atrybutu z atrybutu Source w Active Directory lokalnym do magazynu Metaverse.
 
-1. Uruchom **Edytor reguł synchronizacji** , przechodząc do  > **edytora reguł synchronizacji**.
+1. Uruchom **Edytor reguł synchronizacji** , przechodząc do > **edytora reguł synchronizacji**.
 2. Ustaw **kierunek** filtrowania wyszukiwania na **ruch**przychodzący.
 3. Aby utworzyć nową regułę ruchu przychodzącego, wybierz pozycję **Dodaj nową regułę**.
 4. Na karcie **Opis** podaj następującą konfigurację:
 
     | Atrybut | Value | Szczegóły |
     | --- | --- | --- |
-    | Name (Nazwa) | *Podaj nazwę* | Na przykład "w usłudze AD — User preferredDataLocation" |
+    | Name | *Podaj nazwę* | Na przykład "w usłudze AD — User preferredDataLocation" |
     | Opis | *Podaj niestandardowy opis* |  |
     | Połączony system | *Wybieranie łącznika Active Directory lokalnego* |  |
     | Typ połączonego obiektu systemu | **Użytkownicy** |  |
     | Typ obiektu metaverse | **Sprzedawca** |  |
-    | Typ łącza | **Join** |  |
+    | Typ linku | **Join** |  |
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 do 99* | 1 – 99 jest zarezerwowany dla reguł synchronizacji niestandardowej. Nie wybieraj wartości, która jest używana przez inną regułę synchronizacji. |
 
 5. Pozostaw pusty **Filtr zakresu** , aby uwzględnić wszystkie obiekty. Może być konieczne dostosowanie filtru określania zakresu zgodnie ze wdrożeniem Azure AD Connect.
@@ -141,7 +141,7 @@ Reguła synchronizacji ruchu przychodzącego zezwala na przepływ wartości atry
 
     | Typ przepływu | Atrybut docelowy | Source | Zastosuj raz | Typ scalania |
     | --- | --- | --- | --- | --- |
-    |Direct | preferredDataLocation | Wybierz atrybut źródłowy | Unchecked | Aktualizacja |
+    |Bezpośrednie | preferredDataLocation | Wybierz atrybut źródłowy | Unchecked | Aktualizacja |
 
 7. Aby utworzyć regułę ruchu przychodzącego, wybierz pozycję **Dodaj**.
 
@@ -157,17 +157,17 @@ Reguła synchronizacji danych wychodzących zezwala na przepływ wartości atryb
 
     | Atrybut | Value | Szczegóły |
     | ----- | ------ | --- |
-    | Name (Nazwa) | *Podaj nazwę* | Na przykład "do usługi Azure AD — User preferredDataLocation" |
+    | Name | *Podaj nazwę* | Na przykład "do usługi Azure AD — User preferredDataLocation" |
     | Opis | *Podaj opis* ||
     | Połączony system | *Wybieranie łącznika usługi Azure AD* ||
     | Typ połączonego obiektu systemu | **Użytkownicy** ||
     | Typ obiektu metaverse | **Sprzedawca** ||
-    | Typ łącza | **Join** ||
+    | Typ linku | **Join** ||
     | Pierwszeństwo | *Wybierz liczbę z zakresu od 1 do 99* | 1 – 99 jest zarezerwowany dla reguł synchronizacji niestandardowej. Nie wybieraj wartości, która jest używana przez inną regułę synchronizacji. |
 
 5. Przejdź do karty **Filtr zakresu** i Dodaj pojedynczą grupę filtrów określania zakresu przy użyciu dwóch klauzul:
 
-    | Atrybut | Operator | Wartość |
+    | Atrybut | Operator | Value |
     | --- | --- | --- |
     | sourceObjectType | WIĘKSZY | Użytkownik |
     | cloudMastered | NOTEQUAL | Prawda |
@@ -178,7 +178,7 @@ Reguła synchronizacji danych wychodzących zezwala na przepływ wartości atryb
 
     | Typ przepływu | Atrybut docelowy | Source | Zastosuj raz | Typ scalania |
     | --- | --- | --- | --- | --- |
-    | Direct | preferredDataLocation | preferredDataLocation | Unchecked | Aktualizacja |
+    | Bezpośrednie | preferredDataLocation | preferredDataLocation | Unchecked | Aktualizacja |
 
 7. Zamknij **Dodaj** , aby utworzyć regułę wychodzącą.
 

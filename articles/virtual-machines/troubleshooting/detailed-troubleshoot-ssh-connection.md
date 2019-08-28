@@ -1,7 +1,7 @@
 ---
-title: Szczegóły SSH rozwiązywania problemów z Maszyną wirtualną platformy Azure | Dokumentacja firmy Microsoft
-description: Szczegółowe kroki rozwiązywania problemów dotyczących problemy z nawiązywaniem połączenia z maszyną wirtualną platformy Azure SSH
-keywords: SSH połączenia zostało odrzucone, ssh błąd, azure ssh, połączenie SSH nie powiodło się
+title: Szczegółowe Rozwiązywanie problemów z protokołem SSH dla maszyny wirtualnej platformy Azure | Microsoft Docs
+description: Bardziej szczegółowe procedury rozwiązywania problemów z protokołem SSH dotyczące problemów z nawiązywaniem połączenia z maszyną wirtualną platformy Azure
+keywords: odmówiono połączenia SSH, błąd SSH, usługa Azure SSH, Niepowodzenie połączenia SSH
 services: virtual-machines-linux
 documentationcenter: ''
 author: genlin
@@ -12,123 +12,122 @@ ms.assetid: b8e8be5f-e8a6-489d-9922-9df8de32e839
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 153117488cf94eb304eeb63ba6dca92a6c6ff27d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 41265973df21be289e63cbd6ed2703febc50cff2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67696228"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090497"
 ---
-# <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>SSH szczegółowe kroki rozwiązywania problemów dotyczących problemy z połączeniem do maszyny Wirtualnej z systemem Linux na platformie Azure
-Istnieje wiele możliwych przyczyn, które klient SSH może nie można nawiązać połączenia z usługą SSH na maszynę Wirtualną. Jeśli wykonano za pomocą bardziej [SSH ogólne kroki rozwiązywania problemów](troubleshoot-ssh-connection.md), należy rozwiązać problem z połączeniem. Ten artykuł przeprowadzi Cię przez szczegółowe kroki rozwiązywania problemów, aby określić, gdzie występuje błąd połączenia SSH i sposobie jego rozwiązania.
+# <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Szczegółowe informacje na temat rozwiązywania problemów z maszyną wirtualną z systemem Linux na platformie Azure
+Istnieje wiele możliwych powodów, dla których klient SSH może nie mieć dostępu do usługi SSH na maszynie wirtualnej. Jeśli po wykonaniu bardziej [ogólnych kroków związanych z rozwiązywaniem problemów](troubleshoot-ssh-connection.md)z PROTOKOŁem SSH należy jeszcze bardziej rozwiązać problem z połączeniem. W tym artykule szczegółowo opisano kroki rozwiązywania problemów w celu ustalenia, gdzie połączenie SSH kończy się niepowodzeniem i jak rozwiązać ten problem.
 
-## <a name="take-preliminary-steps"></a>Wykonaj kroki wstępnego
-Na poniższym diagramie przedstawiono składniki, które są zaangażowane.
+## <a name="take-preliminary-steps"></a>Wykonaj kroki wstępne
+Na poniższym diagramie przedstawiono składniki, które są objęte pomocą.
 
-![Diagram pokazujący składniki usługi SSH](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot1.png)
+![Diagram przedstawiający składniki usługi SSH](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot1.png)
 
-Poniższe kroki pomogą Ci wyizolować źródła błędów i ustalić rozwiązania lub obejścia.
+Poniższe kroki ułatwiają wyizolowanie źródła awarii i ustalenie rozwiązań lub obejścia tego problemu.
 
-1. Sprawdź stan maszyny Wirtualnej w portalu.
-   W [witryny Azure portal](https://portal.azure.com), wybierz opcję **maszyn wirtualnych** > *nazwa_maszyny_wirtualnej*.
+1. Sprawdź stan maszyny wirtualnej w portalu.
+   W [Azure Portal](https://portal.azure.com)wybierz opcję*Nazwa maszyny* **wirtualnej maszyn** > wirtualnych.
 
-   W okienku stanu maszyny wirtualnej powinien zostać wyświetlony **systemem**. Przewiń w dół do pokazu ostatnią aktywność, zasobów obliczeniowych, magazynu i zasobów sieciowych.
+   W okienku stanu dla maszyny wirtualnej powinny być wyświetlane **działania**. Przewiń w dół, aby wyświetlić ostatnie działania dotyczące zasobów obliczeniowych, magazynu i sieci.
 
-2. Wybierz **ustawienia** zbadanie punktów końcowych, adresy IP, sieciowe grupy zabezpieczeń i inne ustawienia.
+2. Wybierz pozycję **Ustawienia** , aby przejrzeć punkty końcowe, adresy IP, sieciowe grupy zabezpieczeń i inne ustawienia.
 
-   Maszyna wirtualna powinna mieć punkt końcowy zdefiniowany dla ruchu protokołu SSH, który można wyświetlić w **punktów końcowych** lub  **[sieciowej grupy zabezpieczeń](../../virtual-network/security-overview.md)** . Punkty końcowe na maszynach wirtualnych, które zostały utworzone przy użyciu usługi Resource Manager są przechowywane w sieciowej grupie zabezpieczeń. Sprawdź, czy zasady zostały zastosowane do sieciowej grupy zabezpieczeń i do których istnieją odwołania w tej podsieci.
+   Maszyna wirtualna powinna mieć punkt końcowy zdefiniowany dla ruchu SSH, który można wyświetlić w **punktach końcowych** lub **[sieciowej grupie zabezpieczeń](../../virtual-network/security-overview.md)** . Punkty końcowe na maszynach wirtualnych, które zostały utworzone przy użyciu Menedżer zasobów są przechowywane w sieciowej grupie zabezpieczeń. Upewnij się, że reguły zostały zastosowane do sieciowej grupy zabezpieczeń i są przywoływane w podsieci.
 
-Aby sprawdzić łączność sieciową, sprawdź skonfigurowane punkty końcowe i zobacz, jeśli możesz połączyć z maszyną wirtualną za pomocą protokołu innego, takiego jak HTTP lub innej usługi.
+Aby sprawdzić łączność sieciową, sprawdź skonfigurowane punkty końcowe i sprawdź, czy można nawiązać połączenie z maszyną wirtualną za pośrednictwem innego protokołu, takiego jak HTTP lub inna usługa.
 
-Po wykonaniu tych kroków spróbuj ponownie za pomocą połączenie SSH.
+Po wykonaniu tych kroków spróbuj ponownie nawiązać połączenie SSH.
 
 ## <a name="find-the-source-of-the-issue"></a>Znajdź źródło problemu
-Klient SSH na komputerze może się nie powieść się z usługą SSH na maszynie Wirtualnej platformy Azure, ze względu na problemy lub błędy konfiguracji w następujących obszarach:
+Klient SSH na komputerze może nie połączyć się z usługą SSH na maszynie wirtualnej platformy Azure z powodu problemów lub błędów konfiguracji w następujących obszarach:
 
 * [Komputer kliencki SSH](#source-1-ssh-client-computer)
 * [Urządzenie brzegowe organizacji](#source-2-organization-edge-device)
-* [Punkt końcowy usługi w chmurze i dostęp do listy kontroli (ACL)](#source-3-cloud-service-endpoint-and-acl)
+* [Punkt końcowy usługi w chmurze i lista kontroli dostępu (ACL)](#source-3-cloud-service-endpoint-and-acl)
 * [Sieciowe grupy zabezpieczeń](#source-4-network-security-groups)
-* [Opartą na systemie Linux maszyny Wirtualnej platformy Azure](#source-5-linux-based-azure-virtual-machine)
+* [Maszyna wirtualna platformy Azure oparta na systemie Linux](#source-5-linux-based-azure-virtual-machine)
 
 ## <a name="source-1-ssh-client-computer"></a>Źródło 1: Komputer kliencki SSH
-Aby wyeliminować komputera jako źródło błędu, sprawdź, czy może sprawić, że połączenia SSH do innego serwera lokalnego, komputer oparty na systemie Linux.
+Aby wyeliminować komputer jako źródło błędu, sprawdź, czy może nawiązać połączenia SSH z innym lokalnym komputerem z systemem Linux.
 
-![Diagram, który wyróżnia elementy komputera klienta SSH](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot2.png)
+![Diagram przedstawiający składniki komputera klienckiego SSH](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot2.png)
 
-Jeśli połączenie nie powiedzie się, sprawdź, czy następujące problemy na komputerze:
+Jeśli połączenie nie powiedzie się, sprawdź, czy na komputerze występują następujące problemy:
 
-* Ustawienie zapory lokalnej, która blokuje ruch przychodzący lub wychodzący ruch SSH (TCP 22)
-* Lokalnie zainstalowane oprogramowanie serwera proxy klienta, który uniemożliwia nawiązanie połączenia SSH
-* Lokalnie zainstalowane oprogramowanie, które uniemożliwia nawiązanie połączenia SSH do monitorowania sieci
-* Inne rodzaje oprogramowania zabezpieczającego, przeznaczonych do monitorowania ruchu lub umożliwić/nie zezwalaj na określone typy ruchu
+* Ustawienie zapory lokalnej, która blokuje ruch przychodzący lub wychodzących SSH (TCP 22)
+* Zainstalowane lokalnie oprogramowanie proxy klienta, które uniemożliwia połączenia SSH
+* Lokalne zainstalowanie oprogramowania do monitorowania sieci, które uniemożliwia połączenia SSH
+* Inne typy oprogramowania zabezpieczającego, które monitorują ruch lub zezwalają/nie zezwalają na określone typy ruchu
 
-Jeśli występuje jeden z tych warunków, tymczasowo wyłączone i spróbuj połączenie SSH na komputerze lokalnym, aby dowiedzieć się, powodów, dla którego połączenie jest blokowane na tym komputerze. Następnie skontaktowanie się z administratorem sieci, aby poprawić ustawień oprogramowania, aby zezwolić na połączenia SSH.
+W przypadku zastosowania jednego z tych warunków należy tymczasowo wyłączyć oprogramowanie i wypróbować połączenie SSH z komputerem lokalnym, aby dowiedzieć się, dlaczego połączenie jest blokowane na komputerze. Następnie skontaktuj się z administratorem sieci, aby skorygować ustawienia oprogramowania w celu zezwolenia na połączenia SSH.
 
-Jeśli używasz uwierzytelniania certyfikatów, sprawdź, ma te uprawnienia do folderu .ssh w katalogu macierzystym:
+Jeśli używasz uwierzytelniania przy użyciu certyfikatu, sprawdź, czy masz uprawnienia do folderu. SSH w katalogu macierzystym:
 
-* Chmod 700 ~/.ssh
-* Chmod 644 ~/.ssh/\*.pub
-* Chmod 600 ~/.ssh/id_rsa (lub innych plików, które mają klucze prywatne przechowywane w nich)
-* ~/.Ssh/known_hosts chmod 644 (zawiera hosty, które zostały połączone za pośrednictwem protokołu SSH)
+* Chmod 700 ~/.SSH
+* Chmod 644 ~/.SSH/\*. pub
+* Chmod 600 ~/.ssh/id_rsa (lub wszystkie inne pliki, w których są przechowywane klucze prywatne)
+* Chmod 644 ~/.ssh/known_hosts (zawiera hosty, z którymi nawiązano połączenie za pośrednictwem protokołu SSH)
 
 ## <a name="source-2-organization-edge-device"></a>Źródło 2: Urządzenie brzegowe organizacji
-Aby usunąć urządzenie brzegowe organizacji jako źródło błędu, sprawdź, czy komputer bezpośrednio połączony z Internetem ułatwia połączeń SSH z maszyną wirtualną platformy Azure. Jeśli uzyskujesz dostęp do maszyny Wirtualnej za pośrednictwem sieci VPN lokacja lokacja lub połączenia usługi ExpressRoute platformy Azure, przejdź do [4 źródła: Sieciowe grupy zabezpieczeń](#nsg).
+Aby wyeliminować urządzenie w organizacji jako źródło błędu, sprawdź, czy komputer połączony bezpośrednio z Internetem może nawiązać połączenia SSH z maszyną wirtualną platformy Azure. Jeśli uzyskujesz dostęp do maszyny wirtualnej za pośrednictwem sieci VPN typu lokacja-lokacja lub połączenia usługi Azure [ExpressRoute, przejdź do źródła 4: Sieciowe grupy](#nsg)zabezpieczeń.
 
-![Diagram, który wyróżnia urządzenie brzegowe organizacji](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
+![Diagram przedstawiający Urządzenie brzegowe organizacji](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
-Jeśli nie masz komputera, który jest bezpośrednio połączony z Internetem, Utwórz nową maszynę Wirtualną platformy Azure w jego własnej grupie zasobów lub usługi w chmurze i korzystanie z tej nowej maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [Utwórz maszynę wirtualną z systemem Linux na platformie Azure](../linux/quick-create-cli.md). Po zakończeniu testowania, Usuń grupę zasobów lub usługi maszyny Wirtualnej i w chmurze.
+Jeśli nie masz komputera połączonego bezpośrednio z Internetem, Utwórz nową maszynę wirtualną platformy Azure w ramach własnej grupy zasobów lub usługi w chmurze, a następnie użyj nowej maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure](../linux/quick-create-cli.md). Po zakończeniu testowania Usuń grupę zasobów lub maszynę wirtualną oraz usługę w chmurze.
 
-Jeśli tworzysz połączenie SSH z komputerem, który jest bezpośrednio połączony z Internetem, sprawdź organizacji edge na urządzeniu:
+Jeśli można utworzyć połączenie SSH z komputerem, który jest bezpośrednio połączony z Internetem, należy sprawdzić urządzenie Edge w organizacji dla:
 
-* Wewnętrzny zapory, która blokuje ruch SSH z Internetu
-* Serwer proxy, który uniemożliwia nawiązanie połączenia SSH
-* Wykrywanie włamań lub oprogramowanie działające na urządzeniach w sieci krawędź, który uniemożliwia nawiązanie połączenia SSH do monitorowania sieci
+* Zapora wewnętrzna, która blokuje ruch SSH za pośrednictwem Internetu
+* Serwer proxy, który uniemożliwia połączenia SSH
+* Wykrywanie intruza lub oprogramowanie do monitorowania sieci działające na urządzeniach w sieci brzegowej, które uniemożliwiają połączenia SSH
 
-Praca z administratorem sieci, aby poprawić ustawienia urządzenia brzegowe organizacji, aby zezwolić na ruch SSH z Internetu.
+Skontaktuj się z administratorem sieci, aby skorygować ustawienia urządzeń brzegowych organizacji w celu zezwolenia na ruch SSH za pośrednictwem Internetu.
 
-## <a name="source-3-cloud-service-endpoint-and-acl"></a>Źródło 3: Punkt końcowy usługi w chmurze i listy ACL
+## <a name="source-3-cloud-service-endpoint-and-acl"></a>Źródło 3: Punkt końcowy usługi w chmurze i lista ACL
 > [!NOTE]
-> To źródło ma zastosowanie tylko do maszyn wirtualnych, które zostały utworzone przy użyciu klasycznego modelu wdrażania. Dla maszyn wirtualnych, które zostały utworzone przy użyciu usługi Resource Manager, przejdź do [źródła 4: Sieciowe grupy zabezpieczeń](#nsg).
+> To źródło ma zastosowanie tylko do maszyn wirtualnych, które zostały utworzone przy użyciu klasycznego modelu wdrażania. W przypadku maszyn wirtualnych, które zostały utworzone przy użyciu Menedżer zasobów [, przejdź do źródła 4: Sieciowe grupy](#nsg)zabezpieczeń.
 
-Aby usunąć punkt końcowy usługi w chmurze i listę ACL jako źródło błędu, sprawdź innej maszyny Wirtualnej platformy Azure w tej samej sieci wirtualnej mogą nawiązywać połączenie przy użyciu protokołu SSH.
+Aby wyeliminować punkt końcowy usługi w chmurze i listę ACL jako źródło błędu, sprawdź, czy inna maszyna wirtualna platformy Azure w tej samej sieci wirtualnej może nawiązać połączenie przy użyciu protokołu SSH.
 
-![Diagram, który wyróżnia punkt końcowy usługi w chmurze i listy ACL](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot4.png)
+![Diagram, który wyróżnia punkt końcowy usługi w chmurze i listę ACL](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot4.png)
 
-Jeśli nie masz inną maszynę Wirtualną w tej samej sieci wirtualnej, można łatwo można utworzyć jeden. Aby uzyskać więcej informacji, zobacz [utworzyć Maszynę wirtualną systemu Linux na platformie Azure przy użyciu interfejsu wiersza polecenia](../linux/quick-create-cli.md). Po zakończeniu testowania, należy usunąć dodatkowe maszyny Wirtualnej.
+Jeśli nie masz innej maszyny wirtualnej w tej samej sieci wirtualnej, możesz łatwo ją utworzyć. Aby uzyskać więcej informacji, zobacz [Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu interfejsu wiersza polecenia](../linux/quick-create-cli.md). Usuń dodatkową maszynę wirtualną po zakończeniu testowania.
 
-Jeśli tworzysz połączenie SSH z maszyną Wirtualną w tej samej sieci wirtualnej, sprawdź następujące obszary:
+Jeśli możesz utworzyć połączenie SSH z MASZYNą wirtualną w tej samej sieci wirtualnej, sprawdź następujące obszary:
 
-* **Konfiguracja punktu końcowego dla ruchu protokołu SSH na docelowej maszynie Wirtualnej.** Port TCP prywatny punktu końcowego powinna odpowiadać portu TCP, na którym nasłuchuje usługa SSH na maszynie Wirtualnej. (Domyślny port to 22). Sprawdź numer portu TCP protokołu SSH w witrynie Azure portal, wybierając **maszyn wirtualnych** > *nazwa_maszyny_wirtualnej* > **ustawienia**  >   **Punkty końcowe**.
-* **Listy ACL dla punktu końcowego ruchu protokołu SSH na docelowej maszynie wirtualnej.** Listy ACL można określić dozwolony lub niedozwolony ruch przychodzący z Internetu, w oparciu o jego źródłowy adres IP. Nieprawidłowo skonfigurowane listy ACL może uniemożliwić ruch przychodzący protokołu SSH do punktu końcowego. Sprawdź swoje listy ACL, aby upewnić się, że ruch przychodzący z publicznych adresów IP na serwerze proxy lub inny serwer krawędzi jest dozwolony. Aby uzyskać więcej informacji, zobacz [o dostęp do sieci list (kontroli dostępu ACL) kontroli](../../virtual-network/virtual-networks-acl.md).
+* **Konfiguracja punktu końcowego dla ruchu SSH na docelowej maszynie wirtualnej.** Prywatny port TCP punktu końcowego powinien być zgodny z portem TCP, na którym nasłuchuje usługa SSH na maszynie wirtualnej. (Domyślny numer portu to 22). Sprawdź numer portu TCP SSH wAzure Portal, wybierając pozycję **maszyny** > wirtualne**Ustawienia** > *nazw* > maszyn wirtualnych.
+* **Lista ACL dla punktu końcowego ruchu SSH na docelowej maszynie wirtualnej.** Lista ACL pozwala określić dozwolony lub zabroniony ruch przychodzący z Internetu, na podstawie jego źródłowego adresu IP. Nieprawidłowo skonfigurowane listy ACL mogą zapobiegać przychodzącemu ruchowi SSH do punktu końcowego. Sprawdź listy kontroli dostępu, aby upewnić się, że ruch przychodzący z publicznych adresów IP serwera proxy lub innego serwera granicznego jest dozwolony. Aby uzyskać więcej informacji, zobacz [Informacje o listach kontroli dostępu do sieci (ACL)](../../virtual-network/virtual-networks-acl.md).
 
-Aby usunąć punkt końcowy jako źródło problemu, Usuń bieżący punkt końcowy, tworzenie kolejnego punktu końcowego i określ nazwę protokołu SSH (port TCP 22 dla numeru portu publicznego i prywatnego). Aby uzyskać więcej informacji, zobacz [skonfigurować punkty końcowe na maszynie wirtualnej na platformie Azure](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Aby wyeliminować punkt końcowy jako źródło problemu, Usuń bieżący punkt końcowy, Utwórz inny punkt końcowy i określ nazwę SSH (port TCP 22 dla numeru portu publicznego i prywatnego). Aby uzyskać więcej informacji, zobacz [Konfigurowanie punktów końcowych na maszynie wirtualnej na platformie Azure](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 <a id="nsg"></a>
 
 ## <a name="source-4-network-security-groups"></a>Źródło 4: Grupy zabezpieczeń sieci
-Sieciowe grupy zabezpieczeń umożliwiają zapewniają bardziej szczegółową kontrolę dozwolonego ruchu przychodzącego i wychodzącego. Można utworzyć reguły, które obejmować podsieci i usług w chmurze w sieci wirtualnej platformy Azure. Sprawdź reguły grupy zabezpieczeń sieci, tak aby upewnić się, że ruch SSH z Internetu i może.
-Aby uzyskać więcej informacji, zobacz [temat sieciowych grup zabezpieczeń](../../virtual-network/security-overview.md).
+Sieciowe grupy zabezpieczeń umożliwiają bardziej szczegółową kontrolę nad dozwolonym ruchem przychodzącym i wychodzącym. Można tworzyć reguły obejmujące podsieci i usługi w chmurze w sieci wirtualnej platformy Azure. Sprawdź reguły sieciowej grupy zabezpieczeń, aby upewnić się, że ruch SSH do i z Internetu jest dozwolony.
+Aby uzyskać więcej informacji, zobacz [Informacje o sieciowych grupach zabezpieczeń](../../virtual-network/security-overview.md).
 
-Umożliwia także sprawdzić adresów IP do sprawdzania poprawności konfiguracji sieciowej grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz [sieci platformy Azure, omówienie monitorowania](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
+Możesz również użyć weryfikacji adresu IP, aby sprawdzić poprawność konfiguracji sieciowej grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz [Omówienie monitorowania sieci platformy Azure](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview). 
 
-## <a name="source-5-linux-based-azure-virtual-machine"></a>Źródło 5: Maszyna wirtualna platformy Azure opartych na systemie Linux
-Ostatnie źródło potencjalnych problemów jest samej maszyny wirtualnej platformy Azure.
+## <a name="source-5-linux-based-azure-virtual-machine"></a>Źródło 5: Maszyna wirtualna platformy Azure oparta na systemie Linux
+Ostatnim źródłem możliwych problemów jest sama maszyna wirtualna platformy Azure.
 
-![Diagram, który wyróżnia opartych na systemie Linux maszyny wirtualnej platformy Azure](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot5.png)
+![Diagram, który podświetla maszynę wirtualną platformy Azure opartą na systemie Linux](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot5.png)
 
-Jeśli użytkownik jeszcze tego nie zrobiono, wykonaj instrukcje [do zresetowania hasła opartych na systemie Linux wirtualne](../linux/reset-password.md).
+Jeśli jeszcze tego nie zrobiono, postępuj zgodnie z instrukcjami [resetowania maszyn wirtualnych opartych](../linux/reset-password.md)na systemie Linux.
 
-Spróbuj ponownie nawiązać połączenie z komputera. Jeśli nadal nie, poniżej przedstawiono niektóre możliwe problemy:
+Spróbuj ponownie nawiązać połączenie z komputera. Jeśli nadal nie powiedzie się, poniżej przedstawiono niektóre z możliwych problemów:
 
 * Usługa SSH nie jest uruchomiona na docelowej maszynie wirtualnej.
-* Usługa SSH nie nasłuchuje na porcie TCP 22. Do testowania, zainstalować klienta usługi telnet na komputerze lokalnym i uruchamiania "telnet *cloudServiceName*. cloudapp.net 22". Ten krok określa, jeśli maszyna wirtualna umożliwia przychodzący i wychodzący komunikacji z punktem końcowym protokołu SSH.
-* Zapory lokalnej na docelowej maszynie wirtualnej ma reguł, które nie pozwalają na ruch przychodzący lub wychodzący ruch SSH.
-* Wykrywanie włamań lub oprogramowania, który jest uruchomiony na maszynie wirtualnej platformy Azure do monitorowania sieci uniemożliwia nawiązanie połączenia SSH.
+* Usługa SSH nie nasłuchuje na porcie TCP 22. Aby przetestować, zainstaluj klienta Telnet na komputerze lokalnym i uruchom polecenie "Telnet *cloudServiceName*. cloudapp.NET 22". Ten krok określa, czy maszyna wirtualna zezwala na ruch przychodzący i wychodzący do punktu końcowego SSH.
+* Lokalna Zapora na docelowej maszynie wirtualnej ma reguły uniemożliwiające ruch w ruchu SSH lub wychodzącym.
+* Wykrywanie intruza lub oprogramowanie do monitorowania sieci działające na maszynie wirtualnej platformy Azure uniemożliwia połączenia SSH.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
-Aby uzyskać więcej informacji na temat rozwiązywania problemów z dostępem do aplikacji, zobacz [Rozwiązywanie problemów z dostępem do aplikacji uruchamianej na maszynie wirtualnej platformy Azure](../linux/troubleshoot-app-connection.md)
+Aby uzyskać więcej informacji na temat rozwiązywania problemów z dostępem do aplikacji, zobacz [Rozwiązywanie problemów z dostępem do aplikacji uruchomionej na maszynie wirtualnej platformy Azure](../linux/troubleshoot-app-connection.md)

@@ -5,17 +5,16 @@ services: batch
 author: laurenhughes
 manager: gwallace
 ms.service: batch
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 33455a95dff946676e3dfffbd2737ed36be59c64
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 92f8499a10c07e7d5ea74e49c374cef192b8a47f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322365"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094121"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Szybki start: Uruchamianie pierwszego zadania usługi Batch w witrynie Azure Portal
 
@@ -83,7 +82,7 @@ Usługa Batch tworzy pulę natychmiast, ale przydzielenie i uruchomienie węzł�
 
 Po kilku minutach stan puli zmieni się na **Stały** i węzły zostaną uruchomione. Wybierz pozycję **Węzły**, aby sprawdzić stan węzłów. Gdy węzeł ma stan **Bezczynny**, jest gotowy do uruchamiania zadań podrzędnych. 
 
-## <a name="create-a-job"></a>Tworzenie zadania
+## <a name="create-a-job"></a>Utwórz zadanie
 
 Teraz, gdy masz już pulę, utwórz zadanie, które zostanie w niej uruchomione. Zadanie usługi Batch to logiczna grupa zawierająca co najmniej jedno zadanie podrzędne. Zadanie uwzględnia wspólne ustawienia zadań podrzędnych, takie jak priorytet i pula, w której zadania podrzędne mają być uruchamiane. Początkowo zadanie nie zawiera zadań podrzędnych. 
 
@@ -91,7 +90,7 @@ Teraz, gdy masz już pulę, utwórz zadanie, które zostanie w niej uruchomione.
 
 2. W polu **Identyfikator zadania** wprowadź wartość *myjob*. W polu **Pula** wybierz pozycję *mypool*. Zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz przycisk **OK**.
 
-   ![Tworzenie zadania][job_create]
+   ![Utwórz zadanie][job_create]
 
 Po utworzeniu zadania zostanie otwarta strona **Zadania podrzędne**.
 

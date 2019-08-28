@@ -1,6 +1,6 @@
 ---
-title: Omówienie architektury sieciowej środowisk usługi App Service, Azure
-description: Omówienie architektury ofApp topologii sieci środowiska usług.
+title: Omówienie architektury sieci App Service środowisk — Azure
+description: Omówienie architektury topologii sieci ofApp środowiska usługi.
 services: app-service
 documentationcenter: ''
 author: stefsch
@@ -10,81 +10,80 @@ ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 0d7d4af46e54ad89e0d084cb15af13e56115e996
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 98eb4d7440126bedb3d2e1de5711141eaac8b07a
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60765315"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070065"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>Omówienie architektury sieciowej środowisk usługi App Service
 ## <a name="introduction"></a>Wprowadzenie
-Środowiska usługi App Service są zawsze tworzone w podsieci [sieci wirtualnej] [ virtualnetwork] — aplikacje działające w środowisku usługi App Service może komunikować się z punktami końcowymi prywatnych, znajdującymi się w tym samym wirtualnej Topologia sieci.  Ponieważ klienci mogą zablokować części infrastruktury sieci wirtualnej, należy zapoznać się z typami przepływów komunikacji sieci, które występują w środowisku usługi App Service.
+Środowiska App Service są zawsze tworzone w ramach podsieci [sieci wirtualnej][virtualnetwork] — aplikacje działające w App Service Environment mogą komunikować się z prywatnymi punktami końcowymi znajdującymi się w tej samej topologii sieci wirtualnej.  Ponieważ klienci mogą blokować części swojej infrastruktury sieci wirtualnej, ważne jest zrozumienie typów przepływów komunikacji sieciowej występujących w App Service Environment.
 
-## <a name="general-network-flow"></a>Przepływ sieciowy ogólne
-Gdy App Service Environment (ASE) używa publiczny wirtualny adres IP (VIP) dla aplikacji, cały ruch przychodzący dociera przy użyciu tego publicznego adresu VIP.  W tym ruchu HTTP i HTTPS dla aplikacji, a także pozostałe rodzaje ruchu dla protokołu FTP, funkcji debugowania zdalnego i operacje zarządzania platformy Azure.  Aby uzyskać pełną listę określonych portów (wymagane i opcjonalne), które są dostępne w publicznych adresów VIP zobacz artykuł [kontrolowanie ruchu przychodzącego] [ controllinginboundtraffic] do środowiska usługi App Service. 
+## <a name="general-network-flow"></a>Ogólny przepływ sieci
+Gdy App Service Environment (ASE) używa publicznego wirtualnego adresu IP (VIP) dla aplikacji, cały ruch przychodzący jest docierany do tego publicznego adresu VIP.  Obejmuje to ruch HTTP i HTTPS dla aplikacji, a także inny ruch związany z usługą FTP, funkcją zdalnego debugowania i operacjami zarządzania platformy Azure.  Aby zapoznać się z pełną listą określonych portów (wymagane i opcjonalne), które są dostępne w publicznym adresie IP, zobacz artykuł dotyczący [kontrolowania ruchu przychodzącego][controllinginboundtraffic] do App Service Environment. 
 
-Środowiska App Service Environment obsługują również uruchamiania aplikacji, które są powiązane tylko z siecią wirtualną wewnętrzny adres, określane również jako adresu wewnętrznego modułu równoważenia obciążenia (wewnętrzny moduł równoważenia obciążenia).  W wewnętrznym modułem równoważenia obciążenia włączone ruchu środowiska ASE, HTTP i HTTPS dla aplikacji, a także wywołania zdalne debugowanie, pojawić się na adres wewnętrznego modułu równoważenia obciążenia.  W przypadku najbardziej typowych konfiguracji środowiska ASE wewnętrznego modułu równoważenia obciążenia ruchu protokołu FTP/FTPS również zostaną dostarczone adresu wewnętrznego modułu równoważenia obciążenia.  Jednak operacje zarządzania platformą Azure nadal będą przepływać portach 454/455 w publicznych adresów VIP z wewnętrznym modułem równoważenia obciążenia włączone środowiska ASE.
+Środowiska App Service obsługują również uruchamianie aplikacji, które są powiązane tylko z adresem wewnętrznym sieci wirtualnej, nazywanym również adresem ILB (wewnętrznym modułem równoważenia obciążenia).  Na ILB z włączonym ruchem środowiska ASE, HTTP i HTTPS dla aplikacji, jak również wywołania zdalnego debugowania, docierają do adresu ILB.  W przypadku najczęściej używanych konfiguracji ILB-ASE ruch FTP/FTPS zostanie również wyświetlony na adresie ILB.  Jednak operacje zarządzania platformy Azure będą nadal przepływać do portów 454/455 w publicznym adresie IP ILB środowiska ASE.
 
-Na poniższym diagramie przedstawiono omówienie poszczególnych przepływów ruchu przychodzącego i wychodzącego dla środowiska App Service Environment, na których aplikacje są powiązane z publiczny wirtualny adres IP:
+Na poniższym diagramie przedstawiono omówienie różnych przepływów sieci przychodzących i wychodzących dla App Service Environment, w przypadku których aplikacje są powiązane z publicznym wirtualnym adresem IP:
 
-![Ogólne przepływów sieci][GeneralNetworkFlows]
+![Ogólne przepływy sieciowe][GeneralNetworkFlows]
 
-Środowisko usługi App Service może komunikować się z różnych punktów końcowych klienta prywatnych.  Na przykład aplikacje działające w środowisku App Service można nawiązać połączenia serwerach baz danych uruchamianych na maszynach wirtualnych IaaS w tej samej topologii sieci wirtualnej.
+App Service Environment może komunikować się z różnymi prywatnymi punktami końcowymi klientów.  Na przykład aplikacje działające w App Service Environment mogą łączyć się z serwerami baz danych uruchomionymi na maszynach wirtualnych IaaS w tej samej topologii sieci wirtualnej.
 
 > [!IMPORTANT]
-> Patrząc na diagramie sieciowym, "Inne obliczenia zasoby" są wdrażane w innej podsieci z usługi App Service Environment. Wdrażanie zasobów w tej samej podsieci za pomocą środowiska ASE zablokuje łączności z ASE do tych zasobów (z wyjątkiem określonych wewnątrz środowiska ASE routingu). Wdróż do innej podsieci z zamiast (w tej samej sieci Wirtualnej). Usługa App Service Environment będą w stanie połączyć. Dodatkowa konfiguracja nie jest konieczne.
+> Podczas przeglądania diagramu sieci "inne zasoby obliczeniowe" są wdrażane w innej podsieci niż App Service Environment. Wdrożenie zasobów w tej samej podsieci przy użyciu środowiska ASE spowoduje zablokowanie łączności z platformą ASE z tymi zasobami (z wyjątkiem określonego routingu w środowisku ASE). W zamian Wdróż w inną podsieć (w tej samej sieci wirtualnej). Następnie App Service Environment będzie mógł nawiązać połączenie. Żadna dodatkowa konfiguracja nie jest wymagana.
 > 
 > 
 
-Środowiska usługi App Service również komunikować się z bazą danych Sql i Azure Storage zasoby niezbędne do działania w środowisku usługi App Service i zarządzanie nimi.  Niektóre zasoby Sql i Storage, które komunikuje się środowisko App Service znajdują się w tym samym regionie co usługa App Service Environment, podczas gdy inne znajdują się w odległych regionów platformy Azure.  W wyniku połączenia wychodzącego do Internetu jest zawsze wymagany dla środowiska usługi App Service do poprawnego działania. 
+Środowiska App Servicee komunikują się również z zasobami usługi SQL DB i Azure Storage, które są niezbędne do zarządzania i obsługi App Service Environment.  Niektóre z zasobów SQL i magazynu, z którymi App Service Environment się komunikują, znajdują się w tym samym regionie co App Service Environment, podczas gdy inne znajdują się w odległych regionach platformy Azure.  W związku z tym połączenie wychodzące do Internetu jest zawsze wymagane do poprawnego działania App Service Environment. 
 
-Ponieważ środowisko App Service jest wdrażana w podsieci, sieciowe grupy zabezpieczeń można kontrolować ruch przychodzący do podsieci.  Aby uzyskać szczegółowe informacje o tym, jak kontrolować ruch przychodzący do środowiska usługi App Service, zapoznaj się z poniższymi [artykułu][controllinginboundtraffic].
+Ponieważ App Service Environment jest wdrożona w podsieci, grupy zabezpieczeń sieci mogą służyć do kontrolowania ruchu przychodzącego do podsieci.  Aby uzyskać szczegółowe informacje na temat sterowania ruchem przychodzącym do App Service Environment, zobacz następujący [artykuł][controllinginboundtraffic].
 
-Szczegółowe informacje na temat sposobu zezwalania wychodzące połączenie z Internetem w środowisku usługi App Service, zobacz następujący artykuł o pracy z [Express Route][ExpressRoute].  Tej samej metody opisanej w artykule stosuje się podczas pracy z połączeniem lokacja-lokacja i przy użyciu wymuszonego tunelowania.
+Aby uzyskać szczegółowe informacje na temat sposobu zezwalania na wychodzące połączenie internetowe z App Service Environment, zobacz następujący artykuł dotyczący pracy z usługą [Express Route][ExpressRoute].  To samo podejście opisane w artykule ma zastosowanie podczas pracy z połączeniem lokacja-lokacja i korzystania z wymuszonego tunelowania.
 
-## <a name="outbound-network-addresses"></a>Adresy sieciowe dotyczące połączeń wychodzących
-Po wywołań ruchu wychodzącego środowiska App Service Environment adres IP jest zawsze skojarzone z połączenia wychodzące.  Określony adres IP, która jest używana, zależy od tego, czy punktu końcowego wywołanego znajduje się w topologii sieci wirtualnej lub poza topologii sieci wirtualnej.
+## <a name="outbound-network-addresses"></a>Wychodzące adresy sieciowe
+Gdy App Service Environment wykonuje wywołania wychodzące, adres IP zawsze jest skojarzony z wywołaniami wychodzącymi.  Określony adres IP, który jest używany, zależy od tego, czy wywoływany punkt końcowy znajduje się w topologii sieci wirtualnej, czy poza topologią sieci wirtualnej.
 
-Jeśli punkt końcowy, wywoływana jest **poza** topologii sieci wirtualnej, następnie adres ruchu wychodzącego (alias wychodzący adres translatora adresów Sieciowych), który jest używany jest publicznych adresów VIP dla usługi App Service Environment.  Ten adres znajdują się w interfejsie użytkownika portalu usługi App Service Environment w bloku właściwości.
+Jeśli wywoływany punkt końcowy znajduje się **poza** topologią sieci wirtualnej, adres wychodzący (alias wychodzącego adresu NAT) jest używany jako publiczny adres VIP App Service Environment.  Ten adres można znaleźć w interfejsie użytkownika portalu dla App Service Environment w bloku właściwości.
 
 ![Wychodzący adres IP][OutboundIPAddress]
 
-Ten adres można również określić dla środowiska ASE, którzy mają tylko publicznych adresów VIP przez tworzenie aplikacji w środowisku App Service, a następnie wykonuje *nslookup* adresu aplikacji. Wynikowe adres IP jest zarówno publicznych adresów VIP, a także adres translatora adresów Sieciowych z ruchu wychodzącego środowiska App Service Environment.
+Ten adres można również ustalić dla środowisk ASE, który ma tylko publiczny adres VIP, tworząc aplikację w App Service Environment, a następnie wykonując polecenie *nslookup* na adresie aplikacji. Wynikowy adres IP jest zarówno publicznym adresem VIP, jak i wychodzącym adresem NAT App Service Environment.
 
-Jeśli punkt końcowy, wywoływana jest **wewnątrz** topologii sieci wirtualnej adres ruchu wychodzącego wywoływania aplikacji będzie wewnętrzny adres IP zasobów obliczeniowych poszczególnych, uruchamiając aplikację.  Jednak nie ma trwały mapowanie sieci wirtualnych adresów IP do aplikacji.  Aplikacje można zmieniają położenie w różnych zasobów obliczeniowych i puli dostępnych obliczeń, które zasoby w środowisku usługi App Service można zmienić z powodu operacji skalowania.
+Jeśli wywoływany punkt końcowy jest **wewnątrz** topologii sieci wirtualnej, adres wychodzący aplikacji wywołującej będzie wewnętrznym adresem IP indywidualnego zasobu obliczeniowego, na którym działa aplikacja.  Nie istnieje jednak trwałe mapowanie wewnętrznych adresów IP sieci wirtualnej do aplikacji.  Aplikacje mogą poruszać się w różnych zasobach obliczeniowych, a pula dostępnych zasobów obliczeniowych w App Service Environment może ulec zmianie ze względu na operacje skalowania.
 
-Jednak ponieważ środowisko App Service zawsze znajduje się w podsieci, ma gwarancji, że wewnętrzny adres IP zasobu obliczeniowego, uruchomienie aplikacji, zawsze będzie znajdować się w obrębie zakres CIDR podsieci.  Co w efekcie gdy list ACL identyfikatorach lub sieciowe grupy zabezpieczeń służą do bezpiecznego dostępu do innych punktów końcowych w sieci wirtualnej, zakres podsieci zawierających środowiska App Service Environment musi otrzymać dostęp.
+Jednak ponieważ App Service Environment zawsze znajduje się w podsieci, masz gwarancję, że wewnętrzny adres IP zasobu obliczeniowego, na którym działa aplikacja, będzie zawsze znajdować się w zakresie CIDR podsieci.  W związku z tym, gdy szczegółowe listy ACL lub sieciowe grupy zabezpieczeń są używane w celu zabezpieczenia dostępu do innych punktów końcowych w sieci wirtualnej, zakres podsieci zawierający App Service Environment musi mieć przyznane prawo dostępu.
 
-Na poniższym diagramie przedstawiono te pojęcia bardziej szczegółowo:
+Na poniższym diagramie przedstawiono te koncepcje bardziej szczegółowo:
 
-![Adresy sieciowe dotyczące połączeń wychodzących][OutboundNetworkAddresses]
+![Wychodzące adresy sieciowe][OutboundNetworkAddresses]
 
 Na powyższym diagramie:
 
-* Ponieważ publicznych adresów VIP dla usługi App Service Environment jest 192.23.1.2, który jest wychodzący adres IP używany podczas nawiązywania połączeń z punktami końcowymi "Internet".
-* Zakres CIDR podsieci zawierającej App Service Environment jest 10.0.1.0/26.  Inne punkty końcowe w ramach tej samej infrastrukturze sieci wirtualnej, zostaną wyświetlone wywołań z aplikacji jako pochodzący z gdzieś w ramach tego zakresu adresów.
+* Ponieważ publiczne adresy VIP App Service Environment to 192.23.1.2, to jest wychodzący adres IP używany podczas wykonywania wywołań do punktów końcowych "Internet".
+* Zakres CIDR podsieci zawierającej App Service Environment to 10.0.1.0/26.  W przypadku innych punktów końcowych w ramach tej samej infrastruktury sieci wirtualnej będą widoczne wywołania z aplikacji pochodzące z dowolnego miejsca w ramach tego zakresu adresów.
 
-## <a name="calls-between-app-service-environments"></a>Wywołania między środowisk usługi App Service
-Bardziej złożone scenariusz może wystąpić, jeśli możesz wdrożyć wiele środowisk App Service Environment w tej samej sieci wirtualnej i wprowadzić połączenia wychodzące z jednego środowiska usługi App Service do innego środowiska App Service Environment.  Tego rodzaju obejmujące wiele wywołań również będą traktowane jako "Internet" wywołania środowiska App Service Environment.
+## <a name="calls-between-app-service-environments"></a>Wywołania między środowiskami App Service
+Bardziej skomplikowany scenariusz może wystąpić w przypadku wdrożenia wielu środowisk App Service w tej samej sieci wirtualnej i wychodzące wywołania z jednego App Service Environment do innego App Service Environment.  Te typy wywołań krzyżowych App Service Environment również będą traktowane jako wywołania "Internet".
 
-Na poniższym diagramie przedstawiono przykład architektury warstwowej, za pomocą aplikacji w jednym środowisku usługi App Service (np. Aplikacje sieci web "Drzwi wejściowe") podczas wywoływania aplikacji w drugim środowisku App Service Environment (np. wewnętrznych aplikacji interfejsu API zaplecza nie mają być dostępne z Internetu). 
+Na poniższym diagramie przedstawiono przykład architektury warstwowej z aplikacjami na jednym App Service Environment (np. "Aplikacje sieci Web" z przodu "umożliwiają wywoływanie aplikacji na drugim App Service Environment (np. wewnętrzne aplikacje interfejsu API zaplecza, które nie są przeznaczone do dostępności z Internetu). 
 
-![Wywołania między środowisk usługi App Service][CallsBetweenAppServiceEnvironments] 
+![Wywołania między środowiskami App Service][CallsBetweenAppServiceEnvironments] 
 
-W powyższym przykładzie środowiska App Service Environment "ASE jeden" ma adres IP ruchu wychodzącego 192.23.1.2.  Jeśli aplikacji uruchomionej na tym środowisku usługi App Service będzie sprawia, że wywołanie ruchu wychodzącego do aplikacji uruchomionej na drugie środowisko usługi App Service ("ASE dwie") znajduje się w tej samej sieci wirtualnej wychodzące wywołanie jest traktowane jako wywołanie "Internet".  W rezultacie ruch sieciowy przychodzący drugiego środowiska App Service Environment będą wyświetlane jako pochodzący z 192.23.1.2 (czyli nie zakresu adresów podsieci z pierwszej usługi App Service Environment).
+W przykładzie powyżej App Service Environment "ASE one" ma wychodzący adres IP 192.23.1.2.  Jeśli aplikacja uruchomiona na tym App Service Environment wykonuje wychodzące wywołanie do aplikacji uruchomionej w drugim App Service Environment ("ASE dwa") znajdującej się w tej samej sieci wirtualnej, wywołanie wychodzące będzie traktowane jako wywołanie "Internet".  W efekcie ruch sieciowy odbierany na drugim App Service Environment będzie widoczny jako pochodzący z 192.23.1.2 (tj. nie jest to zakres adresów podsieci pierwszego App Service Environment).
 
-Mimo że wywołań między różnych środowisk usługi App Service są traktowane jako wywołania "Internet", gdy zarówno środowisk usługi App Service znajdują się w tym samym regionie platformy Azure ruch sieciowy będzie pozostawać na regionalnej sieci platformy Azure, a nie fizycznie przepływu za pośrednictwem publicznej sieci Internet.  W rezultacie można użyć sieciowej grupy zabezpieczeń w podsieci drugim środowisku usługi App Service umożliwia tylko wywołań przychodzących od pierwszej usługi App Service Environment (których wychodzący adres IP jest 192.23.1.2), co pozwala na zapewnienie bezpiecznej komunikacji między aplikacji Środowiska usługi.
+Mimo że wywołania między różnymi środowiskami App Service są traktowane jako wywołania "Internet", gdy oba środowiska App Service znajdują się w tym samym regionie świadczenia usługi Azure, ruch sieciowy pozostanie w regionalnej sieci platformy Azure i nie będzie fizycznie przepływał przez publiczny Internet.  W związku z tym można użyć sieciowej grupy zabezpieczeń w podsieci drugiej App Service Environment, aby zezwalać tylko na wywołania przychodzące z pierwszego App Service Environment (którego wychodzący adres IP to 192.23.1.2), co zapewnia bezpieczną komunikację między aplikacją Środowiska usługi.
 
 ## <a name="additional-links-and-information"></a>Dodatkowe linki i informacje
-Szczegółowe informacje dotyczące portów używanych przez środowisk usługi App Service dla ruchu przychodzącego i kontrolować ruch przychodzący przy użyciu sieciowych grup zabezpieczeń jest dostępne [tutaj][controllinginboundtraffic].
+Szczegółowe informacje na temat portów ruchu przychodzącego używanych przez środowiska App Service i usługi Network Security Groups do kontrolowania ruchu przychodzącego są dostępne [tutaj][controllinginboundtraffic].
 
-Szczegółowe informacje na temat korzystania z użytkowników zdefiniowanych tras do udzielania wychodzącego dostępu do Internetu dla środowisk usługi App Service jest dostępna w tym [artykułu][ExpressRoute]. 
+Szczegółowe informacje na temat korzystania z tras zdefiniowanych przez użytkownika w celu przyznania wychodzącego dostępu do Internetu w środowiskach App Service jest dostępnych w tym [artykule][ExpressRoute]. 
 
 <!-- LINKS -->
 [virtualnetwork]: https://azure.microsoft.com/services/virtual-network/

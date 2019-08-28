@@ -1,6 +1,6 @@
 ---
-title: Instalowanie aplikacji Symantec Endpoint Protection na Windows maszyny Wirtualnej na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zainstalować i skonfigurować rozwiązanie Symantec Endpoint Protection rozszerzenie zabezpieczeń na nowej lub istniejącej maszyny Wirtualnej platformy Azure utworzonych za pomocą klasycznego modelu wdrażania.
+title: Instalowanie Endpoint Protection firmy Symantec na maszynie wirtualnej z systemem Windows na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak zainstalować i skonfigurować rozszerzenie zabezpieczeń firmy Symantec Endpoint Protection na nowej lub istniejącej maszynie wirtualnej platformy Azure utworzonej przy użyciu klasycznego modelu wdrażania.
 services: virtual-machines-windows
 documentationcenter: ''
 author: roiyz
@@ -11,35 +11,34 @@ ms.assetid: 19dcebc7-da6b-4510-907b-d64088e81fa2
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roiyz
-ms.openlocfilehash: d79e46467c24277200ef72bb64e8c5b7427bf269
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e6e81732c0e25bc46d28172cdf085f6c3f457ca8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705879"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084250"
 ---
 # <a name="how-to-install-and-configure-symantec-endpoint-protection-on-a-windows-vm"></a>Jak zainstalować i skonfigurować rozwiązanie Symantec Endpoint Protection na maszynie wirtualnej systemu Windows
 > [!IMPORTANT] 
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Usługi Resource Manager i Model Klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Menedżer zasobów i klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano korzystanie z klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
 
-Ten artykuł pokazuje, jak zainstalować i skonfigurować klienta programu Symantec Endpoint Protection na istniejącej maszyny wirtualnej (VM) systemem Windows Server. Ta pełnego klienta obejmuje usługi, takie jak przed wirusami i ochrony przed programami szpiegującymi, zapory i zapobiegania nieautoryzowanego dostępu. Klient jest zainstalowany jako rozszerzenie zabezpieczeń przy użyciu agenta maszyny Wirtualnej.
+W tym artykule opisano sposób instalowania i konfigurowania klienta programu Symantec Endpoint Protection na istniejącej maszynie wirtualnej z systemem Windows Server. Ten pełny klient zawiera usługi, takie jak ochrona przed wirusami i programami szpiegującymi, Zapora i Zapobieganie włamaniom. Klient programu jest instalowany jako rozszerzenie zabezpieczeń przy użyciu agenta maszyny wirtualnej.
 
-Jeśli masz istniejącą subskrypcję od firmy Symantec dla rozwiązania w środowisku lokalnym, można użyć go do ochrony maszyn wirtualnych platformy Azure. Jeśli nie jesteś klientem jeszcze, możesz zarejestrować się w przypadku subskrypcji wersji próbnej. Aby uzyskać więcej informacji na temat tego rozwiązania, zobacz [rozwiązanie Symantec Endpoint Protection na platformie Azure firmy Microsoft][Symantec]. Ta strona zawiera także łącza do informacji dotyczących licencjonowania i instrukcje dotyczące instalowania klienta, jeśli jesteś klientem firmy Symantec.
+Jeśli masz istniejącą subskrypcję firmy Symantec dla rozwiązania lokalnego, możesz użyć jej do ochrony maszyn wirtualnych platformy Azure. Jeśli nie jesteś jeszcze klientem, możesz zarejestrować się w celu uzyskania subskrypcji wersji próbnej. Aby uzyskać więcej informacji na temat tego rozwiązania, zobacz artykuł [Symantec Endpoint Protection na platformie Azure platformy Microsoft][Symantec]. Ta strona zawiera również linki do informacji licencyjnych i instrukcje dotyczące instalowania klienta programu, jeśli jesteś już klientem firmy Symantec.
 
-## <a name="install-symantec-endpoint-protection-on-an-existing-vm"></a>Zainstaluj rozwiązanie Symantec Endpoint Protection na istniejącej maszyny Wirtualnej
-Przed rozpoczęciem potrzebne są następujące elementy:
+## <a name="install-symantec-endpoint-protection-on-an-existing-vm"></a>Instalowanie Endpoint Protection firmy Symantec na istniejącej maszynie wirtualnej
+Przed rozpoczęciem należy wykonać następujące czynności:
 
-* Moduł Azure PowerShell, wersja 0.8.2 lub nowszych wersjach na komputerze służbowym. Możesz sprawdzić wersję programu Azure PowerShell, który został zainstalowany przy użyciu **Get-Module azure | format-table wersji** polecenia. Aby uzyskać instrukcje i łącza do najnowszej wersji, zobacz [jak instalowanie i konfigurowanie programu Azure PowerShell][PS]. Zaloguj się do swojej subskrypcji platformy Azure za pomocą `Add-AzureAccount`.
-* Agent maszyny Wirtualnej, systemem maszyny wirtualnej platformy Azure.
+* Moduł Azure PowerShell w wersji 0.8.2 lub nowszej na komputerze służbowym. Możesz sprawdzić wersję Azure PowerShell, która została zainstalowana za pomocą polecenia **Get-module platformy Azure | format-Table Version** . Instrukcje i link do najnowszej wersji znajdują się w temacie [How to Install and Configure Azure PowerShell][PS]. Zaloguj się do subskrypcji platformy Azure za `Add-AzureAccount`pomocą polecenia.
+* Agent maszyny wirtualnej uruchomiony na maszynie wirtualnej platformy Azure.
 
-Po pierwsze sprawdzenie, czy Agent maszyny Wirtualnej jest już zainstalowane na maszynie wirtualnej. Wypełnij pola nazwy usługi w chmurze i Nazwa maszyny wirtualnej, a następnie uruchom następujące polecenia w wierszu polecenia programu Azure PowerShell z poziomu administratora. Zastąp wszystkie elementy w ramach oferty, w tym < a > znaków.
+Najpierw upewnij się, że Agent maszyny wirtualnej jest już zainstalowany na maszynie wirtualnej. Wypełnij pola Nazwa usługi w chmurze i nazwa maszyny wirtualnej, a następnie uruchom następujące polecenia w wierszu polecenia Azure PowerShell na poziomie administratora. Zamień wszystkie elementy w cudzysłowie, w tym znaki < i >.
 
 > [!TIP]
-> Jeśli nie znasz nazwy maszyny wirtualnej i usługi w chmurze, uruchom **Get-AzureVM** listę nazw wszystkich maszyn wirtualnych w Twojej bieżącej subskrypcji.
+> Jeśli nie znasz nazw usług w chmurze i maszyn wirtualnych, uruchom polecenie **Get-AzureVM** , aby wyświetlić listę nazw wszystkich maszyn wirtualnych w bieżącej subskrypcji.
 
 ```powershell
 $CSName = "<cloud service name>"
@@ -48,9 +47,9 @@ $vm = Get-AzureVM -ServiceName $CSName -Name $VMName
 write-host $vm.VM.ProvisionGuestAgent
 ```
 
-Jeśli **zapisu hosta** polecenie wyświetla **True**, jest zainstalowany Agent maszyny Wirtualnej. Jeśli zostanie wyświetlony **False**, zobacz instrukcje i linkiem umożliwiającym pobranie wpis w blogu platformy Azure [VM Agent i rozszerzenia — część 2][Agent].
+Jeśli polecenie **write-host** wyświetli **wartość true**, Agent maszyny wirtualnej jest zainstalowany. Jeśli wartość jest **równa false**, zapoznaj się z instrukcjami i linkiem do pobrania w blogu Azure post [VM Agent i Extensions-część 2][Agent].
 
-Jeśli jest zainstalowany Agent maszyny Wirtualnej, uruchom następujące polecenia, aby zainstalować agenta programu Symantec Endpoint Protection.
+Jeśli Agent maszyny wirtualnej jest zainstalowany, uruchom następujące polecenia, aby zainstalować agenta Endpoint Protection firmy Symantec.
 
 ```powershell
 $Agent = Get-AzureVMAvailableExtension -Publisher Symantec -ExtensionName SymantecEndpointProtection
@@ -59,16 +58,16 @@ Set-AzureVMExtension -Publisher Symantec –Version $Agent.Version -ExtensionNam
     -VM $vm | Update-AzureVM
 ```
 
-Aby sprawdzić, czy rozszerzenie zabezpieczeń firmy Symantec został zainstalowany i jest aktualne:
+Aby sprawdzić, czy rozszerzenie zabezpieczeń firmy Symantec zostało zainstalowane i jest aktualne:
 
-1. Zaloguj się do maszyny wirtualnej. Aby uzyskać instrukcje, zobacz [jak logować się do maszyny wirtualnej systemem Windows Server][Logon].
-2. Dla systemu Windows Server 2008 R2, kliknij przycisk **Start > rozwiązanie Symantec Endpoint Protection**. Dla systemu Windows Server 2012 lub Windows Server 2012 R2, na ekranie startowym wpisz **Symantec**, a następnie kliknij przycisk **rozwiązanie Symantec Endpoint Protection**.
-3. Z **stan** karcie **stan Symantec Endpoint Protection** okna, zastosować aktualizacje lub ponowne uruchomienie w razie potrzeby.
+1. Zaloguj się do maszyny wirtualnej. Aby uzyskać instrukcje, zobacz [Jak zalogować się do maszyny wirtualnej z systemem Windows Server][Logon].
+2. W przypadku systemu Windows Server 2008 R2 kliknij przycisk **Start > Symantec Endpoint Protection**. W przypadku systemu Windows Server 2012 lub Windows Server 2012 R2 na ekranie startowym wpisz **Symantec**, a następnie kliknij pozycję **Symantec Endpoint Protection**.
+3. Na karcie **stan** okna **stanu — Symantec Endpoint Protection** Zastosuj aktualizacje lub Uruchom ponownie, jeśli jest to wymagane.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
-[Jak logować się do maszyny wirtualnej z systemem Windows Server][Logon]
+[Jak zalogować się do maszyny wirtualnej z systemem Windows Server][Logon]
 
-[Rozszerzenia maszyny Wirtualnej platformy Azure i funkcji][Ext]
+[Rozszerzenia i funkcje maszyny wirtualnej platformy Azure][Ext]
 
 <!--Link references-->
 [Symantec]: https://www.symantec.com/connect/blogs/symantec-endpoint-protection-now-microsoft-azure

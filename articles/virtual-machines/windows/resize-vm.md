@@ -1,6 +1,6 @@
 ---
-title: Aby zmienić rozmiar maszyny Wirtualnej z systemem Windows na platformie Azure przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
-description: Zmień rozmiar maszyny wirtualnej Windows utworzone w modelu wdrażania usługi Resource Manager przy użyciu programu Azure Powershell.
+title: Zmienianie rozmiaru maszyny wirtualnej z systemem Windows na platformie Azure przy użyciu programu PowerShell | Microsoft Docs
+description: Zmienianie rozmiaru maszyny wirtualnej z systemem Windows utworzonej w modelu wdrażania Menedżer zasobów przy użyciu programu Azure PowerShell.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,43 +11,42 @@ ms.assetid: 057ff274-6dad-415e-891c-58f8eea9ed78
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 353bc3499f93eca72dd325c2114cd364145986c6
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 9537744787df7fc6c470bc1ee6862ad3f2991ae9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722899"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088723"
 ---
-# <a name="resize-a-windows-vm"></a>Zmień rozmiar Windows maszyny Wirtualnej
+# <a name="resize-a-windows-vm"></a>Zmienianie rozmiaru maszyny wirtualnej z systemem Windows
 
-W tym artykule dowiesz się, jak przenieść Maszynę wirtualną do innego [rozmiar maszyny Wirtualnej](sizes.md) przy użyciu programu Azure Powershell.
+W tym artykule pokazano, jak przenieść maszynę wirtualną do innego [rozmiaru maszyny wirtualnej](sizes.md) przy użyciu programu Azure PowerShell.
 
-Po utworzeniu maszyny wirtualnej (VM), możesz skalować maszynę Wirtualną w górę lub w dół, zmieniając rozmiar maszyny Wirtualnej. W niektórych przypadkach możesz najpierw cofnąć maszyny Wirtualnej. Może to nastąpić, jeśli nowy rozmiar jest niedostępny w klastrze sprzętu, który obecnie udostępnia maszyny Wirtualnej.
+Po utworzeniu maszyny wirtualnej można skalować ją w górę lub w dół, zmieniając rozmiar maszyny wirtualnej. W niektórych przypadkach należy najpierw cofnąć alokację maszyny wirtualnej. Może się tak zdarzyć, jeśli nowy rozmiar nie jest dostępny w klastrze sprzętowym hostującym maszynę wirtualną.
 
-Jeśli maszyna wirtualna korzysta z usługi Premium Storage, upewnij się, że wybierasz **s** wersję rozmiar Aby uzyskać pomoc techniczną Premium Storage. Na przykład wybrać Standard_E4**s**_v3 zamiast maszyna wirtualna Standard_E4_v3.
+Jeśli maszyna wirtualna używa Premium Storage, upewnij się, że wybrano wersję **s** rozmiaru do uzyskania pomocy technicznej Premium Storage. Na przykład wybierz Standard_E4**s**_V3 zamiast Standard_E4_v3.
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>Zmień rozmiar maszyny Wirtualnej z systemem Windows nie znajduje się w zestawie dostępności
+## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>Zmienianie rozmiaru maszyny wirtualnej z systemem Windows, która nie znajduje się w zestawie dostępności
 
-Ustaw zmienne. Zastąp wartości, podając własne informacje.
+Ustaw pewne zmienne. Zastąp wartości własnymi informacjami.
 
 ```powershell
 $resourceGroup = "myResourceGroup"
 $vmName = "myVM"
 ```
 
-Wyświetl listę rozmiarów maszyn wirtualnych, które są dostępne w klastrze sprzętu, w którym jest hostowana maszyna wirtualna. 
+Wyświetl listę rozmiarów maszyn wirtualnych, które są dostępne w klastrze sprzętowym, w którym jest hostowana maszyna wirtualna. 
    
 ```powershell
 Get-AzVMSize -ResourceGroupName $resourceGroup -VMName $vmName 
 ```
 
-Jeśli żądany rozmiar jest wymieniony, uruchom następujące polecenia, aby zmienić rozmiar maszyny Wirtualnej. Jeśli żądany rozmiar nie ma na liście, przejdź do kroku 3.
+Jeśli odpowiedni rozmiar znajduje się na liście, uruchom następujące polecenia, aby zmienić rozmiar maszyny wirtualnej. Jeśli żądany rozmiar nie znajduje się na liście, przejdź do kroku 3.
    
 ```powershell
 $vm = Get-AzVM -ResourceGroupName $resourceGroup -VMName $vmName
@@ -55,7 +54,7 @@ $vm.HardwareProfile.VmSize = "<newVMsize>"
 Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 ```
 
-Jeśli żądany rozmiar nie ma na liście, uruchom następujące polecenia, aby cofnąć przydział maszyny Wirtualnej, zmień jego rozmiar i ponownie maszynę Wirtualną. Zastąp  **\<newVMsize >** z żądany rozmiar.
+Jeśli żądany rozmiar nie znajduje się na liście, uruchom następujące polecenia, aby cofnąć alokację maszyny wirtualnej, zmienić jej rozmiar i ponownie uruchomić maszynę wirtualną. Zastąp  **\<newVMsize >** rozmiarem, który chcesz.
    
 ```powershell
 Stop-AzVM -ResourceGroupName $resourceGroup -Name $vmName -Force
@@ -66,26 +65,26 @@ Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName
 ```
 
 > [!WARNING]
-> Cofanie przydziału maszyny Wirtualnej zwalnia dynamiczne adresy IP przypisane do maszyny Wirtualnej. Nie dotyczy systemu operacyjnego i dysków z danymi. 
+> Cofnięcie przydziału maszyny wirtualnej powoduje wydanie wszystkich dynamicznych adresów IP przypisanych do maszyny wirtualnej. Nie dotyczy to dysków systemu operacyjnego i danych. 
 > 
 > 
 
-## <a name="resize-a-windows-vm-in-an-availability-set"></a>Zmień rozmiar maszyny Wirtualnej z systemem Windows w zestawie dostępności
+## <a name="resize-a-windows-vm-in-an-availability-set"></a>Zmienianie rozmiaru maszyny wirtualnej z systemem Windows w zestawie dostępności
 
-Jeśli nowy rozmiar maszyny Wirtualnej w zestawie dostępności nie jest dostępny w klastrze sprzętu obecnie obsługującego maszynę Wirtualną, następnie wszystkich maszyn wirtualnych w zestawie dostępności należy cofnąć przydział, aby zmienić rozmiar maszyny Wirtualnej. Możesz również może być konieczne zaktualizowanie rozmiaru innych maszyn wirtualnych w zestawie, po jednej maszyny Wirtualnej został zmieniony dostępności. Aby zmienić rozmiar maszyny Wirtualnej w zestawie dostępności, wykonaj następujące czynności.
+Jeśli nowy rozmiar maszyny wirtualnej w zestawie dostępności nie jest dostępny w klastrze sprzętowym hostującym maszynę wirtualną, wszystkie maszyny wirtualne w zestawie dostępności muszą zostać cofnięte, aby zmienić rozmiar maszyny wirtualnej. Może być też konieczne zaktualizowanie rozmiaru pozostałych maszyn wirtualnych w zestawie dostępności po zmianie rozmiaru jednej maszyny wirtualnej. Aby zmienić rozmiar maszyny wirtualnej w zestawie dostępności, wykonaj następujące czynności.
 
 ```powershell
 $resourceGroup = "myResourceGroup"
 $vmName = "myVM"
 ```
 
-Wyświetl listę rozmiarów maszyn wirtualnych, które są dostępne w klastrze sprzętu, w którym jest hostowana maszyna wirtualna. 
+Wyświetl listę rozmiarów maszyn wirtualnych, które są dostępne w klastrze sprzętowym, w którym jest hostowana maszyna wirtualna. 
    
 ```powershell
 Get-AzVMSize -ResourceGroupName $resourceGroup -VMName $vmName 
 ```
 
-Jeśli żądany rozmiar jest na liście, uruchom następujące polecenia, aby zmienić rozmiar maszyny Wirtualnej. Jeśli nie ma na liście, przejdź do następnej sekcji.
+Jeśli jest wyświetlany żądany rozmiar, uruchom następujące polecenia, aby zmienić rozmiar maszyny wirtualnej. Jeśli nie ma go na liście, przejdź do następnej sekcji.
    
 ```powershell
 $vm = Get-AzVM -ResourceGroupName $resourceGroup -VMName $vmName 
@@ -93,7 +92,7 @@ $vm.HardwareProfile.VmSize = "<newVmSize>"
 Update-AzVM -VM $vm -ResourceGroupName $resourceGroup
 ```
     
-Jeśli nie ma odpowiedni rozmiar, kontynuuj poniższe kroki, aby cofnąć wszystkie maszyny wirtualne w zestawie dostępności, zmienianie rozmiaru maszyn wirtualnych i uruchom je ponownie.
+Jeśli żądanego rozmiaru nie ma na liście, wykonaj następujące kroki, aby cofnąć alokację wszystkich maszyn wirtualnych w zestawie dostępności, zmienić rozmiar maszyn wirtualnych, a następnie uruchom je ponownie.
 
 Zatrzymaj wszystkie maszyny wirtualne w zestawie dostępności.
    
@@ -107,7 +106,7 @@ foreach ($vmId in $vmIDs){
     } 
 ```
 
-Zmień rozmiar i ponowne uruchamianie maszyn wirtualnych w zestawie dostępności.
+Zmień rozmiar i ponownie uruchom maszyny wirtualne w zestawie dostępności.
    
 ```powershell
 $newSize = "<newVmSize>"
@@ -125,5 +124,5 @@ $vmIds = $as.VirtualMachinesReferences
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dla uzyskania dodatkowej skalowalności uruchomić wiele wystąpień maszyny Wirtualnej, a następnie skalować w poziomie. Aby uzyskać więcej informacji, zobacz [automatyczne skalowanie maszyn Windows w zestawie skalowania maszyn wirtualnych](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md).
+Aby uzyskać dodatkową skalowalność, należy uruchomić wiele wystąpień maszyn wirtualnych i skalować je w poziomie. Aby uzyskać więcej informacji, zobacz [Automatyczne skalowanie maszyn z systemem Windows w zestawie skalowania maszyn wirtualnych](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md).
 

@@ -1,6 +1,6 @@
 ---
-title: Otwieranie portów dla maszyny Wirtualnej przy użyciu witryny Azure portal | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak otworzyć port / utworzyć punkt końcowy do maszyny Wirtualnej Windows przy użyciu modelu wdrażania usługi resource manager w witrynie Azure Portal
+title: Otwórz porty na maszynie wirtualnej przy użyciu Azure Portal | Microsoft Docs
+description: Dowiedz się, jak otworzyć port/utworzyć punkt końcowy na maszynie wirtualnej z systemem Windows przy użyciu modelu wdrażania usługi Resource Manager w witrynie Azure Portal
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -8,20 +8,19 @@ manager: gwallace
 editor: ''
 ms.assetid: f7cf0319-5ee7-435e-8f94-c484bf5ee6f1
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: cf85bfd8be146cb599ced61eaa2126ee9e12538b
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: f9edee7a0ff19a536d0ea719ede6d0cd2e9d6ac7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723076"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102629"
 ---
-# <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Jak otworzyć porty do maszyny wirtualnej w witrynie Azure portal
+# <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Jak otworzyć porty na maszynie wirtualnej przy użyciu Azure Portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 
@@ -30,61 +29,61 @@ Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 ## <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
 
-1. Wyszukaj i wybierz grupę zasobów dla maszyny Wirtualnej, wybierz **Dodaj**, a następnie wyszukaj i wybierz **sieciowej grupy zabezpieczeń**.
+1. Wyszukaj i wybierz grupę zasobów dla maszyny wirtualnej, wybierz pozycję **Dodaj**, a następnie wyszukaj i wybierz pozycję **sieciowa Grupa zabezpieczeń**.
 
 2. Wybierz pozycję **Utwórz**.
 
-    **Tworzenie sieciowej grupy zabezpieczeń** zostanie otwarte okno.
+    Zostanie otwarte okno **Tworzenie sieciowej grupy zabezpieczeń** .
 
     ![Tworzenie sieciowej grupy zabezpieczeń](./media/nsg-quickstart-portal/create-nsg.png)
 
-2. Wprowadź nazwę dla sieciowej grupy zabezpieczeń. 
+2. Wprowadź nazwę sieciowej grupy zabezpieczeń. 
 
 3. Wybierz lub Utwórz grupę zasobów, a następnie wybierz lokalizację.
 
-4. Wybierz **Utwórz** utworzyć sieciową grupę zabezpieczeń.
+4. Wybierz pozycję **Utwórz** , aby utworzyć grupę zabezpieczeń sieci.
 
 ## <a name="create-an-inbound-security-rule"></a>Tworzenie reguły zabezpieczeń dla ruchu przychodzącego
 
-1. Wybierz nową grupę zabezpieczeń sieci. 
+1. Wybierz nową sieciową grupę zabezpieczeń. 
 
-2. Wybierz **reguły zabezpieczeń dla ruchu przychodzącego**, a następnie wybierz **Dodaj**.
+2. Wybierz pozycję **reguły zabezpieczeń dla ruchu przychodzącego**, a następnie wybierz pozycję **Dodaj**.
 
     ![Dodaj regułę ruchu przychodzącego](./media/nsg-quickstart-portal/add-inbound-rule.png)
 
 3. Wybierz pozycję **Zaawansowane**. 
 
-4. Wybierz często **usługi** z menu rozwijanego, takich jak **HTTP**. Możesz również wybrać **niestandardowe** Jeśli chcesz udostępnić określony port do użycia. 
+4. Wybierz wspólną **usługę** z menu rozwijanego, na przykład **http**. Możesz również wybrać opcję **niestandardowe** , jeśli chcesz podać konkretny port. 
 
-5. Opcjonalnie można zmienić **priorytet** lub **nazwa**. Priorytet wpływa na kolejność stosowania reguł: niższe wartości liczbowej, wcześniej reguła jest stosowana.
+5. Opcjonalnie można zmienić **priorytet** lub **nazwę**. Priorytet ma wpływ na kolejność stosowania reguł: mniejsza wartość liczbowa, przed zastosowaniem reguły.
 
-6. Wybierz **Dodaj** Aby utworzyć regułę.
+6. Wybierz pozycję **Dodaj** , aby utworzyć regułę.
 
 ## <a name="associate-your-network-security-group-with-a-subnet"></a>Kojarzenie sieciowej grupy zabezpieczeń z podsiecią
 
-Ostatni krok to skojarzenie sieciowej grupy zabezpieczeń z podsiecią lub określonym interfejsem sieciowym. W tym przykładzie firma Microsoft skojarzyć sieciową grupę zabezpieczeń z podsiecią. 
+Ostatni krok to skojarzenie sieciowej grupy zabezpieczeń z podsiecią lub określonym interfejsem sieciowym. Na potrzeby tego przykładu zostanie skojarzona sieciowa Grupa zabezpieczeń z podsiecią. 
 
-1. Wybierz **podsieci**, a następnie wybierz **skojarzyć**.
+1. Wybierz pozycję **podsieci**, a następnie wybierz pozycję **Skojarz**.
 
-    ![Skojarz sieciową grupę zabezpieczeń z podsiecią](./media/nsg-quickstart-portal/associate-subnet.png)
+    ![Kojarzenie sieciowej grupy zabezpieczeń z podsiecią](./media/nsg-quickstart-portal/associate-subnet.png)
 
 2. Wybierz sieć wirtualną, a następnie wybierz odpowiednią podsieć.
 
     ![Kojarzenie sieciowej grupy zabezpieczeń z sieciami wirtualnymi](./media/nsg-quickstart-portal/select-vnet-subnet.png)
 
-    Wszystkie maszyny wirtualne, z którymi się łączysz się do tej podsieci są teraz dostępne na porcie 80.
+    Wszystkie maszyny wirtualne, które są połączone z tą podsiecią, są teraz dostępne na porcie 80.
 
 ## <a name="additional-information"></a>Dodatkowe informacje
 
-Możesz również [przy użyciu programu Azure PowerShell, wykonaj kroki w tym artykule](nsg-quickstart-powershell.md).
+[Kroki opisane w tym artykule można także wykonać przy użyciu Azure PowerShell](nsg-quickstart-powershell.md).
 
-Polecenie opisane w tym artykule umożliwiają szybkie rozpoczęcie ruch przepływający do maszyny Wirtualnej. Sieciowe grupy zabezpieczeń zapewniają wiele świetnych funkcji i stopień szczegółowości do kontrolowania dostępu do zasobów. Aby uzyskać więcej informacji, zobacz [filtrowanie ruchu sieciowego z sieciową grupą zabezpieczeń](../../virtual-network/tutorial-filter-network-traffic.md).
+Polecenia opisane w tym artykule pozwalają szybko uzyskać ruch sieciowy przepływający na maszynę wirtualną. Sieciowe grupy zabezpieczeń zapewniają wiele doskonałych funkcji i szczegółowości kontroli dostępu do zasobów. Aby uzyskać więcej informacji, zobacz [Filtrowanie ruchu sieciowego za pomocą sieciowej grupy zabezpieczeń](../../virtual-network/tutorial-filter-network-traffic.md).
 
-Dla aplikacji sieci web o wysokiej dostępności należy rozważyć umieszczenie maszyny wirtualne za modułem równoważenia obciążenia platformy Azure. Moduł równoważenia obciążenia dystrybuuje ruch do maszyn wirtualnych z sieciową grupą zabezpieczeń, która pozwala na filtrowanie ruchu sieciowego. Aby uzyskać więcej informacji, zobacz [Równoważenie obciążenia maszyn wirtualnych Windows na platformie Azure do utworzenia aplikacji o wysokiej dostępności](tutorial-load-balancer.md).
+W przypadku aplikacji sieci Web o wysokiej dostępności Rozważ umieszczenie maszyn wirtualnych za modułem równoważenia obciążenia platformy Azure. Moduł równoważenia obciążenia dystrybuuje ruch do maszyn wirtualnych z sieciową grupą zabezpieczeń, która zapewnia filtrowanie ruchu. Aby uzyskać więcej informacji, zobacz [równoważenie obciążenia maszyn wirtualnych systemu Windows na platformie Azure w celu utworzenia aplikacji o wysokiej](tutorial-load-balancer.md)dostępności.
 
 ## <a name="next-steps"></a>Następne kroki
-W tym artykule utworzono sieciową grupę zabezpieczeń, utworzyć regułę ruchu przychodzącego, która zezwala na ruch HTTP na porcie 80, a następnie skojarzone z tą regułą z podsiecią. 
+W tym artykule utworzono sieciową grupę zabezpieczeń, utworzoną regułę ruchu przychodzącego, która zezwala na ruch HTTP na porcie 80, a następnie skojarzono tę regułę z podsiecią. 
 
-Można znaleźć informacje dotyczące tworzenia środowisk bardziej szczegółowe w następujących artykułach:
+Informacje na temat tworzenia bardziej szczegółowych środowisk można znaleźć w następujących artykułach:
 - [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)
 - [Grupy zabezpieczeń](../../virtual-network/security-overview.md)

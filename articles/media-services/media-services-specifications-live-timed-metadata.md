@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: d2fec29c96639d21db362f6982b88a90bd6c319f
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: df2a86dd1292f58511765e842ee97daddcff4e3e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019079"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102924"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Sygnalizowanie metadanych w czasie przesyłania strumieniowego na żywo 
 
@@ -210,7 +210,7 @@ Schemat dla ładunku [MPEG-myślnik] EventStream został zdefiniowany jako (wyci
 ### <a name="built-in-supported-scheme-id-uris"></a>Wbudowane identyfikatory URI obsługiwanych schematów
 | Identyfikator URI identyfikatora schematu                 |  Opis                                             |
 |-------------------------------|----------------------------------------------------------|
-| https://aomedia.org/emsg/ID3   | Opisuje, w jaki sposób metadane [ID3v2] mogą być przenoszone jako metadane z przekroczeniem czasu CMAF w postaci "MPEGCMAF], które są pofragmentowane. Aby uzyskać więcej informacji, zobacz [metadane czasowe w formacie Common Media Application Format (CMAF)](https://aomediacodec.github.io/av1-id3/) |
+| https:\//aomedia.org/emsg/ID3   | Opisuje, w jaki sposób metadane [ID3v2] mogą być przenoszone jako metadane z przekroczeniem czasu CMAF w postaci "MPEGCMAF], które są pofragmentowane. Aby uzyskać więcej informacji, zobacz [metadane czasowe w formacie Common Media Application Format (CMAF)](https://aomediacodec.github.io/av1-id3/) |
 
 ### <a name="event-processing-and-manifest-signaling"></a>Przetwarzanie zdarzeń i sygnalizowanie manifestu
 

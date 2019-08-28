@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure GPU N-series driver Setup for Konfiguracja Windows | Dokumentacja firmy Microsoft
-description: Jak skonfigurować sterowniki procesora GPU NVIDIA dla maszyn wirtualnych serii N z systemem Windows Server lub Windows na platformie Azure
+title: Konfiguracja sterowników procesora GPU platformy Azure dla systemu Windows | Microsoft Docs
+description: Jak skonfigurować sterowniki NVIDIA GPU dla maszyn wirtualnych serii N z systemem Windows Server lub Windows na platformie Azure
 services: virtual-machines-windows
 author: cynthn
 manager: gwallace
@@ -8,67 +8,66 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: f3950c34-9406-48ae-bcd9-c0418607b37d
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24189fa8e0f6c31d7fbd3779f666eb85e24dc8f7
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: bc6e37b088c6bcbb2de4693eb50be661db869ecd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723116"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089186"
 ---
-# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Instalowanie sterowników procesora GPU NVIDIA na maszynach wirtualnych serii N z systemem Windows 
+# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Instalowanie sterowników NVIDIA GPU na maszynach wirtualnych serii N z systemem Windows 
 
-Aby skorzystać z możliwości procesora GPU platformy Azure serii N maszyn wirtualnych z systemem Windows, muszą być zainstalowane sterowniki procesora GPU firmy NVIDIA. [Rozszerzenia sterowników procesora GPU NVIDIA](../extensions/hpccompute-gpu-windows.md) instaluje odpowiednie sterowniki NVIDIA CUDA lub siatki na maszynie Wirtualnej serii N. Zainstaluj lub zarządzać rozszerzenia za pomocą witryny Azure portal lub narzędzi, takich jak szablony programu Azure PowerShell lub usługi Azure Resource Manager. Zobacz [dokumentację dotyczącą rozszerzeń sterowników procesora GPU NVIDIA](../extensions/hpccompute-gpu-windows.md) dla obsługiwanych systemów operacyjnych i kroki związane z wdrażaniem.
+Aby skorzystać z możliwości procesora GPU dla maszyn wirtualnych serii N z systemem Windows, należy zainstalować sterowniki NVIDIA GPU. [Rozszerzenie sterownika NVIDIA GPU](../extensions/hpccompute-gpu-windows.md) instaluje odpowiednie sterowniki NVIDIA CUDA lub Grid na maszynie wirtualnej z serii N. Zainstaluj rozszerzenie lub Zarządzaj nim przy użyciu Azure Portal lub narzędzi, takich jak szablony Azure PowerShell lub Azure Resource Manager. Zapoznaj się z [dokumentacją rozszerzenia sterownika graficznego procesora NVIDIA](../extensions/hpccompute-gpu-windows.md) dla obsługiwanych systemów operacyjnych i kroków wdrażania.
 
-Jeśli zdecydujesz się zainstalować sterowniki procesora GPU ręcznie, ten artykuł zawiera obsługiwane systemy operacyjne, sterowników i kroki instalacji i weryfikacji. Informacje o konfiguracji ręcznej sterownik jest również dostępna dla [maszyn wirtualnych systemu Linux](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+W przypadku wybrania opcji ręcznego instalowania sterowników procesora GPU w tym artykule przedstawiono obsługiwane systemy operacyjne, sterowniki oraz czynności instalacyjne i weryfikacyjne. Informacje o ręcznej instalacji sterownika są również dostępne dla [maszyn wirtualnych z systemem Linux](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Specyfikacje podstawowych, pojemności magazynu i szczegóły dysku, zobacz [rozmiarów maszyn wirtualnych Windows GPU](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
+Aby zapoznać się z podstawowymi danymi, pojemnościami magazynu i szczegółami dysku, zobacz [rozmiary maszyn wirtualnych w systemie Windows GPU](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 
 [!INCLUDE [virtual-machines-n-series-windows-support](../../../includes/virtual-machines-n-series-windows-support.md)]
 
 ## <a name="driver-installation"></a>Instalacja sterownika
 
-1. Nawiąż połączenie, poszczególnych maszyn wirtualnych serii N usługi pulpitu zdalnego.
+1. Połącz się Pulpit zdalny z każdą maszyną wirtualną serii N.
 
-2. Pobierz, Wyodrębnij i zainstaluj obsługiwany sterownik w systemie operacyjnym Windows.
+2. Pobierz, Wyodrębnij i zainstaluj obsługiwany sterownik dla systemu operacyjnego Windows.
 
-Po zakończeniu instalacji sterowników siatki na maszynie Wirtualnej ponowne uruchomienie jest wymagane. Po zakończeniu instalacji sterownik CUDA ponowne uruchomienie komputera nie jest wymagane.
+Po instalacji sterownika siatki na maszynie wirtualnej wymagane jest ponowne uruchomienie. Po zainstalowaniu sterownika CUDA ponowne uruchomienie nie jest wymagane.
 
-## <a name="verify-driver-installation"></a>Weryfikacja instalacji sterowników
+## <a name="verify-driver-installation"></a>Weryfikuj instalację sterownika
 
-Aby sprawdzić, instalacja sterownika w Menedżerze urządzeń. Poniższy przykład pokazuje pomyślne konfiguracji karta Tesla K80 na Maszynie wirtualnej platformy Azure przez kontroler sieci.
+Instalację sterownika można sprawdzić w Menedżer urządzeń. Poniższy przykład przedstawia pomyślne Konfigurowanie karty Tesla K80 na maszynie wirtualnej Azure NC.
 
-![Właściwości sterowników procesora GPU](./media/n-series-driver-setup/GPU_driver_properties.png)
+![Właściwości sterownika procesora GPU](./media/n-series-driver-setup/GPU_driver_properties.png)
 
-Aby zbadać stan urządzenia procesora GPU, uruchom [nvidia smi](https://developer.nvidia.com/nvidia-system-management-interface) zainstalowane ze sterownikiem narzędzie wiersza polecenia.
+Aby wykonać zapytanie o stan urządzenia GPU, uruchom narzędzie wiersza polecenia [NVIDIA-SMI](https://developer.nvidia.com/nvidia-system-management-interface) zainstalowane wraz z sterownikiem.
 
-1. Otwórz wiersz polecenia i zmień **C:\Program Files\NVIDIA Corporation\NVSMI** katalogu.
+1. Otwórz wiersz polecenia i przejdź do katalogu **C:\Program Files\NVIDIA Corporation\NVSMI** .
 
-2. Uruchom polecenie `nvidia-smi`. Jeśli sterownik jest zainstalowany, pojawi się dane wyjściowe podobne do następujących. **GPU Util** pokazuje **0%** , chyba że obciążenie procesora GPU są aktualnie uruchomione na maszynie Wirtualnej. Twoja wersja sterownika i szczegóły procesora GPU mogą różnić się od wyświetlonych.
+2. Uruchom polecenie `nvidia-smi`. Jeśli sterownik jest zainstalowany, zostaną wyświetlone dane wyjściowe podobne do poniższych. **Procesor GPU** pokazuje **0%** , chyba że obecnie działa obciążenie procesora GPU na maszynie wirtualnej. Informacje o wersji sterownika i procesora GPU mogą różnić się od podanych elementów.
 
 ![Stan urządzenia NVIDIA](./media/n-series-driver-setup/smi.png)  
 
-## <a name="rdma-network-connectivity"></a>Połączenie sieciowe RDMA
+## <a name="rdma-network-connectivity"></a>Łączność sieciowa RDMA
 
-Połączenie sieciowe RDMA można włączyć dla obsługą dostępu RDMA maszyn wirtualnych serii N, takich jak NC24r wdrożonych w tym samym zestawie dostępności lub w pojedynczej grupy umieszczania w zestawie skalowania maszyn wirtualnych. Aby zainstalować sterowniki urządzeń sieciowych Windows, które umożliwiają łączność RDMA, należy dodać rozszerzenie HpcVmDrivers. Aby dodać rozszerzenie maszyny Wirtualnej do maszyny Wirtualnej serii N z obsługą funkcji RDMA, należy użyć [programu Azure PowerShell](/powershell/azure/overview) poleceń cmdlet usługi Azure Resource Manager.
+Łączność sieciową RDMA można włączyć na maszynach wirtualnych z serii N obsługujących funkcję RDMA, takich jak NC24r wdrożone w tym samym zestawie dostępności lub w pojedynczej grupie umieszczania w zestawie skalowania maszyn wirtualnych. Aby zainstalować sterowniki urządzeń sieciowych z systemem Windows, które umożliwiają łączność RDMA, należy dodać rozszerzenie HpcVmDrivers. Aby dodać rozszerzenie maszyny wirtualnej do maszyny wirtualnej z serii N z obsługą funkcji RDMA, użyj [Azure PowerShell](/powershell/azure/overview) poleceń cmdlet dla Azure Resource Manager.
 
-Aby zainstalować najnowszą wersję 1.1 rozszerzenia HpcVMDrivers obsługą dostępu RDMA istniejącej maszyny wirtualnej o nazwie myVM w regionie zachodnie stany USA:
+Aby zainstalować najnowszą wersję 1,1 rozszerzenia HpcVMDrivers na istniejącej maszynie wirtualnej z obsługą funkcji RDMA o nazwie myVM w regionie zachodnie stany USA:
   ```powershell
   Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
   ```
-  Aby uzyskać więcej informacji, zobacz [rozszerzeń maszyn wirtualnych i funkcji dla Windows](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+  Aby uzyskać więcej informacji, zobacz [rozszerzenia i funkcje maszyny wirtualnej dla systemu Windows](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-Sieć RDMA obsługuje ruch interfejsu przekazywania komunikatów (MPI) dla aplikacji uruchamianych przy użyciu [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) lub Intel MPI 5.x. 
+Sieć RDMA obsługuje ruch MPI (Message Passing Interface) dla aplikacji uruchamianych z programem [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) lub Intel MPI 5. x. 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Deweloperzy tworzący aplikacje accelerated procesora GPU dla procesory GPU NVIDIA Tesla można także pobrać i zainstalować najnowszą [CUDA Toolkit](https://developer.nvidia.com/cuda-downloads). Aby uzyskać więcej informacji, zobacz [Przewodnik instalacji CUDA](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
+* Deweloperzy tworzący przyspieszające procesor GPU aplikacje dla procesorów GPU NVIDIA Tesla mogą również pobrać i zainstalować najnowszy [zestaw narzędzi cuda](https://developer.nvidia.com/cuda-downloads). Aby uzyskać więcej informacji, zobacz [Przewodnik instalacji cuda](https://docs.nvidia.com/cuda/cuda-installation-guide-microsoft-windows/index.html#axzz4ZcwJvqYi).
 
 

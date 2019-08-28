@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2019
+ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a9fb68fff492b6f3b00825b1fae91310f091a3f
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: c1ce7197a195b37787d1a43a44efd8438154e9f9
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033392"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113646"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Dodawanie logowania do firmy Microsoft do aplikacji sieci Web ASP.NET
 
@@ -485,8 +485,15 @@ Dowiedz się, jak aplikacje sieci Web mogą wywoływać interfejsy API sieci Web
 
 ### <a name="learn-how-to-create-the-application-used-in-this-quickstart-guide"></a>Dowiedz się, jak utworzyć aplikację używaną w tym przewodniku Szybki Start
 
+Dowiedz się więcej na temat aplikacji sieci Web wywołujących interfejsy API sieci Web za pomocą platformy tożsamości firmy Microsoft:
+
 > [!div class="nextstepaction"]
-> [Aplikacje sieci Web wywołujące interfejsy API sieci Web]( https://aka.ms/msal-net-authorization-code)
+> [Aplikacje sieci Web wywołujące interfejsy API sieci Web](scenario-web-app-sign-user-overview.md)
+
+Dowiedz się, jak tworzyć aplikacje sieci Web wywołujące Microsoft Graph:
+
+> [!div class="nextstepaction"]
+> [Samouczek ASP.NET Microsoft Graph](https://docs.microsoft.com/graph/tutorials/aspnet)
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

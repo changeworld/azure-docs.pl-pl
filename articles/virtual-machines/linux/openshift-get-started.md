@@ -1,6 +1,6 @@
 ---
-title: OpenShift w usłudze Azure — omówienie | Dokumentacja firmy Microsoft
-description: Omówienie platformy OpenShift na platformie Azure.
+title: OpenShift na platformie Azure — omówienie | Microsoft Docs
+description: Omówienie OpenShift na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
@@ -9,50 +9,49 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: d9e3aa3dae81166ef91f57ea6a95087a952001ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80f0ec57aa287bae9b10d9a4cdb013014aab3332
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65550985"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082556"
 ---
 # <a name="openshift-in-azure"></a>Usługa OpenShift na platformie Azure
 
-OpenShift to platforma aplikacji kontenera otwartej i rozszerzalnej prawdziwym platformy Docker i Kubernetes przedsiębiorstwa.  
+OpenShift to otwarta i rozszerzalna platforma aplikacji kontenerów, która udostępnia platformę Docker i Kubernetes do przedsiębiorstwa.  
 
-OpenShift obejmuje Kubernetes orkiestracji kontenerów i zarządzania. Dodaje skoncentrowany na deweloperach i skoncentrowane na operacje narzędzi Włącz tego:
+OpenShift obejmuje Kubernetes do organizowania i zarządzania kontenerami. Dodaje narzędzia skoncentrowane na deweloperach i oparte na operacjach, które umożliwiają:
 
 - Szybkie opracowywanie aplikacji.
 - Łatwe wdrażanie i skalowanie.
-- Długoterminowe obsługi cyklu życia dla aplikacji i zespołów.
+- Długoterminowa konserwacja dla zespołów i aplikacji.
 
-Brak dostępnych wiele wersji platformy OpenShift.  Z tych wersji tylko dwa są obecnie dostępne dla klientów do wdrożenia na platformie Azure: OpenShift Container Platform i OKD (dawniej platformy OpenShift Origin).
+Dostępnych jest wiele wersji OpenShift.  W tych wersjach obecnie klienci mogą wdrażać na platformie Azure tylko dwie te wersje: Platforma kontenera OpenShift i OKD (dawniej pochodzenie OpenShift).
 
 ## <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
-Microsoft Azure Red Hat OpenShift. jest to w pełni zarządzana oferta platformy OpenShift działających na platformie Azure. Ta usługa jest wspólnie zarządzane i obsługiwane przez firmę Microsoft i Red Hat. Aby uzyskać więcej informacji, zobacz [Azure Red Hat OpenShift Service](https://docs.microsoft.com/azure/openshift/) dokumentacji.
+Microsoft Azure Red Hat OpenShift to w pełni zarządzana oferta OpenShift działającego na platformie Azure. Ta usługa jest wspólnie zarządzana i obsługiwana przez firmę Microsoft i Red Hat. Aby uzyskać więcej informacji, zobacz dokumentację [usługi Azure Red Hat OpenShift](https://docs.microsoft.com/azure/openshift/) .
 
 ## <a name="openshift-container-platform"></a>OpenShift Container Platform
 
-Platforma kontenera jest przedsiębiorstw [komercyjnej wersji](https://www.openshift.com) z i obsługiwane przez firmy Red Hat. W tej wersji klienci zakupu niezbędnych uprawnień dla rozwiązania OpenShift Container Platform i jest odpowiedzialny za instalację i zarządzanie całą infrastrukturą.
+Platforma kontenerów to [wersja komercyjna](https://www.openshift.com) przeznaczona dla przedsiębiorstw, obsługiwana przez firmę Red Hat. W tej wersji klienci kupują niezbędne uprawnienia dla platformy kontenera OpenShift i są odpowiedzialni za instalację i zarządzanie całą infrastrukturą.
 
-Ponieważ klienci "własnością" tej platformy, mogą ją zainstalować w ich lokalnym centrum danych lub w chmurze publicznej (np. Azure).
+Ze względu na to, że klienci są własnością całej platformy, mogą ją zainstalować w lokalnych centrach danych lub w chmurze publicznej (na przykład na platformie Azure).
 
 ## <a name="okd"></a>OKD
 
-Jest OKD [typu open-source](https://www.okd.io/) nadrzędnego projektu OpenShift, który jest wspieranym przez społeczność. OKD można zainstalować na CentOS i Red Hat Enterprise Linux (RHEL).
+OKD to projekt typu ["open source"](https://www.okd.io/) OpenShift, który jest obsługiwany przez społeczność. OKD można zainstalować w CentOS lub Red Hat Enterprise Linux (RHEL).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Konfigurowanie wspólne wymagania wstępne dla rozwiązania OpenShift na platformie Azure](./openshift-prerequisites.md)
-- [Wdrażanie rozwiązania OpenShift Container Platform na platformie Azure](./openshift-container-platform.md)
-- [Wdrażanie oferty Samozarządzanej portalu Marketplace platformy kontenera OpenShift](./openshift-marketplace-self-managed.md)
-- [Wdrażanie platformy OpenShift w usłudze Azure Stack](./openshift-azure-stack.md)
-- [Po wdrożeniu zadania](./openshift-post-deployment.md)
-- [Rozwiązywanie problemów z wdrożenia platformy OpenShift](./openshift-troubleshooting.md)
+- [Konfigurowanie typowych wymagań wstępnych dotyczących programu OpenShift na platformie Azure](./openshift-prerequisites.md)
+- [Wdrażanie platformy kontenera OpenShift na platformie Azure](./openshift-container-platform.md)
+- [Wdróż niezarządzaną ofertę portalu OpenShift platformy kontenera](./openshift-marketplace-self-managed.md)
+- [Wdróż OpenShift w Azure Stack](./openshift-azure-stack.md)
+- [Zadania po wdrożeniu](./openshift-post-deployment.md)
+- [Rozwiązywanie problemów z wdrażaniem OpenShift](./openshift-troubleshooting.md)

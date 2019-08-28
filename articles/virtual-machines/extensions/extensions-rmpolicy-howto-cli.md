@@ -7,19 +7,18 @@ author: roiyz-msft
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz
 ms.reviewer: cynthn
-ms.openlocfilehash: 79a65dc0e7aa85b2f8cef5f884fab7bc6cd076fe
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 49f56d5bd258a75efaed03b51076ca194749830e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876723"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092357"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Używanie Azure Policy do ograniczania instalacji rozszerzeń na maszynach wirtualnych z systemem Linux
 
@@ -116,7 +115,7 @@ az policy definition create \
 
 ## <a name="assign-the-policy"></a>Przypisywanie zasad
 
-Ten przykład przypisuje zasady do grupy zasobów za pomocą polecenia [AZ Policy przypisanie Create](/cli/azure/policy/assignment). W przypadku wszystkich maszyn wirtualnych utworzonych w **grupie zasobów grupy** zasobu nie będzie można zainstalować dostępu do maszyny wirtualnej z systemem Linux ani rozszerzeń niestandardowego skryptu dla systemu Linux. Aby można było przypisać zasady, musi istnieć Grupa zasobów.
+Ten przykład przypisuje zasady do grupy zasobów za pomocą polecenia [AZ Policy przypisanie Create](/cli/azure/policy/assignment). W przypadku wszystkich maszyn wirtualnych utworzonych w grupie zasobów grupy zasobu nie będzie można zainstalować dostępu do maszyny wirtualnej z systemem Linux ani rozszerzeń niestandardowego skryptu dla systemu Linux. Aby można było przypisać zasady, musi istnieć Grupa zasobów.
 
 Użyj [AZ Account List](/cli/azure/account?view=azure-cli-latest) , aby skorzystać z identyfikatora subskrypcji zamiast tego w przykładzie.
 

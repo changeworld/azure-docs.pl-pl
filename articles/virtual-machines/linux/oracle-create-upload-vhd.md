@@ -1,6 +1,6 @@
 ---
-title: Tworzenie i przekazywanie wirtualnego dysku twardego systemu Linux Oracle | Dokumentacja firmy Microsoft
-description: Dowiedz się utworzyć i przekazać Azure wirtualnego dysku twardego (VHD) z systemem operacyjnym Oracle Linux.
+title: Tworzenie i przekazywanie wirtualnego dysku twardego Oracle Linux | Microsoft Docs
+description: Zapoznaj się z tematem tworzenie i przekazywanie wirtualnego dysku twardego (VHD) platformy Azure zawierającego Oracle Linux system operacyjny.
 services: virtual-machines-linux
 documentationcenter: ''
 author: szarkos
@@ -11,49 +11,48 @@ ms.assetid: dd96f771-26eb-4391-9a89-8c8b6d691822
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: szark
-ms.openlocfilehash: 0d83a6f9b42a56799371c5cdf82422ab73b8859a
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: ede12520fc6db089aea2d22b02dc32e72496830c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671085"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082457"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Przygotowywanie maszyny wirtualnej systemu Linux w środowisku Oracle dla platformy Azure
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule założono, że już zainstalowano systemu operacyjnego Oracle Linux do wirtualnego dysku twardego. Istnieje wiele narzędzi do tworzenia plików VHD, na przykład rozwiązanie wirtualizacji takich jak funkcji Hyper-V. Aby uzyskać instrukcje, zobacz [należy zainstalować rolę funkcji Hyper-V i konfigurowanie maszyny wirtualnej](https://technet.microsoft.com/library/hh846766.aspx).
+W tym artykule założono, że zainstalowano już Oracle Linux system operacyjny na wirtualnym dysku twardym. Istnieje wiele narzędzi do tworzenia plików VHD, na przykład rozwiązanie wirtualizacji, takie jak funkcja Hyper-V. Aby uzyskać instrukcje, zobacz [Instalowanie roli funkcji Hyper-V i Konfigurowanie maszyny wirtualnej](https://technet.microsoft.com/library/hh846766.aspx).
 
-### <a name="oracle-linux-installation-notes"></a>Uwagi dotyczące instalacji systemu Linux Oracle
-* Zobacz również [ogólne informacje o instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes) więcej porad na temat przygotowywania systemu Linux na platformie Azure.
-* Oracle firmy Red Hat zgodne jądra i swojego UEK3 (podzielenie jądra Enterprise) są obsługiwane w funkcji Hyper-V i platformą Azure. Aby uzyskać najlepsze wyniki należy upewnić się, że najnowsze jądra podczas przygotowywania wirtualnego dysku twardego systemu Linux Oracle.
-* UEK2 firmy Oracle nie jest obsługiwane w funkcji Hyper-V i platformą Azure, ponieważ nie zawiera wymaganych sterowników.
-* VHDX format jest nieobsługiwane na platformie Azure, tylko **stałej wirtualnego dysku twardego**.  Dysk można przekonwertować na format VHD za pomocą Menedżera funkcji Hyper-V lub polecenia cmdlet convert-vhd.
-* Podczas instalowania systemu Linux zalecane jest użycie standardowe partycje, a nie LVM (często domyślnie w przypadku instalacji wielu). Pozwoli to uniknąć LVM wystąpił konflikt między nazwą sklonowany w przypadku maszyn wirtualnych, szczególnie w przypadku, gdy dysk systemu operacyjnego nigdy nie musi być dołączony do innej maszyny Wirtualnej do rozwiązywania problemów. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) może być używana dla dysków z danymi, jeśli preferowane.
-* NUMA nie jest obsługiwana dla większych rozmiarów maszyn wirtualnych z powodu błędu w wersje jądra systemu Linux poniżej 2.6.37. Ten problem ma wpływ przede wszystkim na za pomocą nadrzędnego Red Hat 2.6.32 jądra. Ręczna instalacja agenta systemu Linux platformy Azure (waagent) zostanie automatycznie wyłączyć technologię NUMA w konfiguracji programu GRUB jądra systemu Linux. Więcej informacji na ten temat można znaleźć w poniższych krokach.
-* Nie należy konfigurować partycji wymiany na dysku systemu operacyjnego. Aby utworzyć plik wymiany na dysk tymczasowy zasobów można skonfigurować agenta systemu Linux.  Więcej informacji na ten temat można znaleźć w poniższych krokach.
-* Wszystkie dyski VHD na platformie Azure musi mieć rozmiar wirtualny wyrównane do 1MB. Podczas konwersji z pierwotnych dysku wirtualnego dysku twardego należy się upewnić, że rozmiar dysku surowego jest wielokrotnością 1MB przed dokonaniem konwersji. Zobacz [uwagi dotyczące instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes) Aby uzyskać więcej informacji.
-* Upewnij się, że `Addons` repozytorium jest włączona. Edytuj plik `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) lub `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7) i zmień wiersz `enabled=0` do `enabled=1` w obszarze **[ol6_addons]** lub **[ol7_addons]** w tym pliku.
+### <a name="oracle-linux-installation-notes"></a>Oracle Linux uwagi dotyczące instalacji
+* Aby uzyskać więcej porad dotyczących przygotowywania systemu Linux dla platformy Azure, zobacz również [Ogólne informacje o instalacji](create-upload-generic.md#general-linux-installation-notes) w systemie Linux.
+* W przypadku funkcji Hyper-V i platformy Azure obsługiwane są zarówno jądro zgodne z technologią Red Hat, jak i ich UEK3 (niemożliwe do rozdzielenia przedsiębiorstwa). Aby uzyskać najlepsze wyniki, pamiętaj o zaktualizowaniu do najnowszego jądra podczas przygotowywania Oracle Linux wirtualnego dysku twardego.
+* UEK2 firmy Oracle nie jest obsługiwana w przypadku funkcji Hyper-V i platformy Azure, ponieważ nie obejmują one wymaganych sterowników.
+* Format VHDX nie jest obsługiwany na platformie Azure, tylko **stałego dysku VHD**.  Dysk można przekonwertować na format VHD przy użyciu Menedżera funkcji Hyper-V lub polecenia cmdlet Convert-VHD.
+* W przypadku instalowania systemu Linux zaleca się używanie partycji standardowych zamiast LVM (często jest to ustawienie domyślne dla wielu instalacji). Pozwoli to uniknąć konfliktów nazw LVM z klonowanymi maszynami wirtualnymi, szczególnie w przypadku, gdy kiedykolwiek konieczne jest dołączenie dysku systemu operacyjnego do innej maszyny wirtualnej w celu rozwiązywania problemów. Na dyskach danych można używać [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , jeśli są preferowane.
+* Architektura NUMA nie jest obsługiwana w przypadku większych rozmiarów maszyn wirtualnych ze względu na usterkę w wersjach jądra systemu Linux poniżej 2.6.37. Ten problem dotyczy głównie dystrybucji przy użyciu systemu Red Hat 2.6.32 jądro. Ręczna instalacja agenta systemu Linux (waagent) w systemie Azure spowoduje automatyczne wyłączenie architektury NUMA w konfiguracji GRUB jądra systemu Linux. Więcej informacji na ten temat można znaleźć w poniższych krokach.
+* Nie należy konfigurować partycji wymiany na dysku systemu operacyjnego. Agenta systemu Linux można skonfigurować tak, aby utworzył plik wymiany na tymczasowym dysku zasobów.  Więcej informacji na ten temat można znaleźć w poniższych krokach.
+* Wszystkie wirtualne dyski twarde na platformie Azure muszą mieć rozmiar wirtualny wyrównany do 1 MB. Podczas konwertowania z dysku surowego na dysk VHD należy upewnić się, że rozmiar dysku surowego jest wielokrotnością 1 MB przed konwersją. Aby uzyskać więcej informacji, zobacz [uwagi dotyczące instalacji systemu Linux](create-upload-generic.md#general-linux-installation-notes) .
+* Upewnij się, że `Addons` repozytorium jest włączone. `/etc/yum.repos.d/public-yum-ol6.repo`Edytuj plik (Oracle Linux 6) lub `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7) i Zmień wiersz `enabled=0` na `enabled=1` **[ol6_addons]** lub **[ol7_addons]** w tym pliku.
 
-## <a name="oracle-linux-64"></a>Oracle Linux 6.4+
-Należy wykonać kroki konfiguracji określone w system operacyjny dla maszyny wirtualnej do uruchamiania na platformie Azure.
+## <a name="oracle-linux-64"></a>Oracle Linux 6.4 +
+Należy wykonać określone czynności konfiguracyjne w systemie operacyjnym, aby maszyna wirtualna mogła działać na platformie Azure.
 
 1. W środkowym okienku Menedżera funkcji Hyper-V wybierz maszynę wirtualną.
-2. Kliknij przycisk **Connect** aby otworzyć okno dla maszyny wirtualnej.
-3. Odinstaluj NetworkManager, uruchamiając następujące polecenie:
+2. Kliknij przycisk **Połącz** , aby otworzyć okno dla maszyny wirtualnej.
+3. Odinstaluj program NetworkManager, uruchamiając następujące polecenie:
    
         # sudo rpm -e --nodeps NetworkManager
    
-    **Uwaga:** Pakiet nie jest już zainstalowany, to polecenie zakończy się niepowodzeniem z komunikatem o błędzie. Jest to oczekiwane.
-4. Utwórz plik o nazwie **sieci** w `/etc/sysconfig/` katalog zawierający następujący tekst:
+    **Uwaga:** Jeśli pakiet nie jest jeszcze zainstalowany, to polecenie zakończy się niepowodzeniem z komunikatem o błędzie. Jest to oczekiwane.
+4. Utwórz plik o nazwie **Network** w `/etc/sysconfig/` katalogu zawierającym następujący tekst:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-5. Utwórz plik o nazwie **ifcfg-eth0** w `/etc/sysconfig/network-scripts/` katalog zawierający następujący tekst:
+5. Utwórz plik o nazwie **ifcfg-eth0** w `/etc/sysconfig/network-scripts/` katalogu zawierającym następujący tekst:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -62,71 +61,71 @@ Należy wykonać kroki konfiguracji określone w system operacyjny dla maszyny w
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-6. Zmodyfikuj zasady usługi udev, aby uniknąć generowania reguł statycznej interfejsy sieci Ethernet. Te reguły, które może powodować problemy podczas klonowania maszyny wirtualnej na platformie Microsoft Azure lub funkcji Hyper-V:
+6. Zmodyfikuj reguły udev, aby uniknąć generowania statycznych reguł dla interfejsów sieci Ethernet. Te reguły mogą spowodować problemy podczas klonowania maszyny wirtualnej w Microsoft Azure lub funkcji Hyper-V:
    
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
-7. Upewnij się, że Usługa sieciowa rozpocznie się w czasie rozruchu, uruchamiając następujące polecenie:
+7. Upewnij się, że usługa sieciowa zacznie działać w czasie rozruchu, uruchamiając następujące polecenie:
    
         # chkconfig network on
-8. Zainstaluj pyasn1 języka python, uruchamiając następujące polecenie:
+8. Zainstaluj środowisko Python-pyasn1, uruchamiając następujące polecenie:
    
         # sudo yum install python-pyasn1
-9. Zmodyfikuj wiersza rozruchu jądra w konfiguracji programu grub obejmujący jądra dodatkowe parametry dla platformy Azure. Aby zrobić to open "/ boot/grub/menu.lst" w edytorze tekstów i upewnij się, że jądra domyślna obejmuje następujące parametry:
+9. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. Aby to zrobić, Otwórz "/boot/grub/menu.lst" w edytorze tekstów i upewnij się, że domyślne jądro zawiera następujące parametry:
    
         console=ttyS0 earlyprintk=ttyS0 rootdelay=300 numa=off
    
-   Zapewni to także wszystkie konsoli są wysyłane do pierwszego portu szeregowego mogą ułatwić rozwiązanie Azure pomocy technicznej w debugowaniu problemów. Spowoduje to wyłączenie NUMA z powodu błędu w firmy Oracle firmy Red Hat zgodne jądra.
+   Spowoduje to również, że wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego, który może pomóc w pomocy technicznej platformy Azure z problemami z debugowaniem. Spowoduje to wyłączenie architektury NUMA z powodu usterki w jądrze zgodnej z firmą Red Hat firmy Oracle.
    
-   Oprócz powyższego, zaleca się *Usuń* następujące parametry:
+   Oprócz powyższych zaleca się *usunięcie* następujących parametrów:
    
         rhgb quiet crashkernel=auto
    
-   Graficzne i cichy rozruchu nie są przydatne w środowisku chmury, w której chcemy, aby wszystkie dzienniki mają być wysyłane do portu szeregowego.
+   Rozruch graficzny i cichy nie są przydatne w środowisku chmury, w którym wszystkie dzienniki mają być wysyłane do portu szeregowego.
    
-   `crashkernel` Opcja może być skonfigurowany w razie potrzeby po lewej stronie, ale należy pamiętać, że ten parametr powoduje zmniejszenie ilości dostępnej pamięci na maszynie Wirtualnej o co najmniej 128 MB, może być kłopotliwe w przypadku mniejszych rozmiarów maszyn wirtualnych.
-10. Upewnij się, że serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu.  Zazwyczaj jest to opcja domyślna.
+   `crashkernel` Opcja może pozostać skonfigurowana w razie potrzeby, ale należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci na maszynie wirtualnej o 128 MB/większej, co może powodować problemy w mniejszych rozmiarach maszyn wirtualnych.
+10. Upewnij się, że serwer SSH został zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu.  Zwykle jest to ustawienie domyślne.
 11. Zainstaluj agenta systemu Linux platformy Azure, uruchamiając następujące polecenie. Najnowsza wersja to 2.0.15.
     
         # sudo yum install WALinuxAgent
     
-    Pamiętaj, że instalowanie pakietu WALinuxAgent spowoduje usunięcie NetworkManager pakietów NetworkManager gnome jeśli one nie zostały już usunięte zgodnie z opisem w kroku 2.
-12. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
+    Należy pamiętać, że zainstalowanie pakietu WALinuxAgent spowoduje usunięcie pakietów sieciowych i programu NetworkManager-GNOME, jeśli nie zostały one jeszcze usunięte zgodnie z opisem w kroku 2.
+12. Nie należy tworzyć obszaru wymiany na dysku systemu operacyjnego.
     
-    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny Wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy zauważyć, że dysk lokalny zasób *tymczasowe* dysku i może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure (zobacz poprzedni krok), zmodyfikuj następujące parametry w /etc/waagent.conf odpowiednio:
+    Agent systemu Azure Linux może automatycznie skonfigurować miejsce wymiany przy użyciu lokalnego dysku zasobu dołączonego do maszyny wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy pamiętać, że lokalny dysk zasobów jest dyskiem tymczasowym i może zostać opróżniony w przypadku anulowania aprowizacji maszyny wirtualnej. Po zainstalowaniu agenta systemu Linux platformy Azure (zobacz poprzedni krok) zmodyfikuj odpowiednio następujące parametry w/etc/waagent.conf:
     
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
         ResourceDisk.MountPoint=/mnt/resource
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
-13. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
+13. Uruchom następujące polecenia, aby anulować obsługę administracyjną maszyny wirtualnej i przygotować ją do aprowizacji na platformie Azure:
     
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-14. Kliknij przycisk **akcji -> Zamknij dół** w Menedżerze funkcji Hyper-V. Wirtualnego dysku twardego systemu Linux jest teraz gotowy do przekazania na platformę Azure.
+14. Kliknij **akcję-> wyłączyć** w Menedżerze funkcji Hyper-V. Wirtualny dysk twardy z systemem Linux jest teraz gotowy do przekazania na platformę Azure.
 
 ---
 ## <a name="oracle-linux-70"></a>Oracle Linux 7.0+
-**Zmiany w systemie Oracle Linux 7**
+**Zmiany w Oracle Linux 7**
 
-Przygotowywanie maszyny wirtualnej Oracle Linux 7 dla systemu Azure jest bardzo podobny do Oracle Linux 6, jednak istnieje kilka istotnych różnic warte odnotowania:
+Przygotowywanie maszyny wirtualnej Oracle Linux 7 na platformie Azure jest bardzo podobne do Oracle Linux 6, jednak istnieje kilka ważnych różnic:
 
-* Red Hat zgodne jądra i UEK3 firmy Oracle są obsługiwane na platformie Azure.  Jądra UEK3 jest zalecane.
-* Pakiet NetworkManager nie powodował konfliktu z agentem systemu Linux platformy Azure. Ten pakiet jest instalowany domyślnie i zaleca się, że nie jest usuwany.
-* GRUB2 obecnie jest używany jako domyślny program inicjujący, dzięki czemu procedury do edycji jądra parametry został zmieniony (zobacz poniżej).
-* XFS jest teraz domyślnego systemu plików. Nadal można ext4 systemu plików, w razie potrzeby.
+* Na platformie Azure są obsługiwane zarówno jądro zgodne z systemem Red Hat, jak i UEK3 firmy Oracle.  Zalecane jest jądro UEK3.
+* Pakiet programu NetworkManager nie jest już w konflikcie z agentem systemu Linux platformy Azure. Ten pakiet jest instalowany domyślnie i zalecamy, aby nie został usunięty.
+* GRUB2 jest teraz używany jako domyślne program inicjujący, więc procedura edytowania parametrów jądra została zmieniona (patrz poniżej).
+* XFS jest teraz domyślnym systemem plików. W razie potrzeby można nadal używać systemu plików ext4.
 
 **Kroki konfiguracji**
 
 1. W Menedżerze funkcji Hyper-V wybierz maszynę wirtualną.
-2. Kliknij przycisk **Connect** aby otworzyć okno konsoli dla maszyny wirtualnej.
-3. Utwórz plik o nazwie **sieci** w `/etc/sysconfig/` katalog zawierający następujący tekst:
+2. Kliknij przycisk **Połącz** , aby otworzyć okno konsoli dla maszyny wirtualnej.
+3. Utwórz plik o nazwie **Network** w `/etc/sysconfig/` katalogu zawierającym następujący tekst:
    
         NETWORKING=yes
         HOSTNAME=localhost.localdomain
-4. Utwórz plik o nazwie **ifcfg-eth0** w `/etc/sysconfig/network-scripts/` katalog zawierający następujący tekst:
+4. Utwórz plik o nazwie **ifcfg-eth0** w `/etc/sysconfig/network-scripts/` katalogu zawierającym następujący tekst:
    
         DEVICE=eth0
         ONBOOT=yes
@@ -135,54 +134,54 @@ Przygotowywanie maszyny wirtualnej Oracle Linux 7 dla systemu Azure jest bardzo 
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-5. Zmodyfikuj zasady usługi udev, aby uniknąć generowania reguł statycznej interfejsy sieci Ethernet. Te reguły, które może powodować problemy podczas klonowania maszyny wirtualnej na platformie Microsoft Azure lub funkcji Hyper-V:
+5. Zmodyfikuj reguły udev, aby uniknąć generowania statycznych reguł dla interfejsów sieci Ethernet. Te reguły mogą spowodować problemy podczas klonowania maszyny wirtualnej w Microsoft Azure lub funkcji Hyper-V:
    
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
-6. Upewnij się, że Usługa sieciowa rozpocznie się w czasie rozruchu, uruchamiając następujące polecenie:
+6. Upewnij się, że usługa sieciowa zacznie działać w czasie rozruchu, uruchamiając następujące polecenie:
    
         # sudo chkconfig network on
-7. Zainstaluj pakiet pyasn1 języka python, uruchamiając następujące polecenie:
+7. Zainstaluj pakiet Python-pyasn1, uruchamiając następujące polecenie:
    
         # sudo yum install python-pyasn1
-8. Uruchom następujące polecenie, aby wyczyścić bieżących metadanych yum i zainstaluj wszystkie aktualizacje:
+8. Uruchom następujące polecenie, aby wyczyścić bieżące metadane yum i zainstalować wszystkie aktualizacje:
    
         # sudo yum clean all
         # sudo yum -y update
-9. Zmodyfikuj wiersza rozruchu jądra w konfiguracji programu grub obejmujący jądra dodatkowe parametry dla platformy Azure. W tym celu otwórz "/ etc/domyślne/chodników" w edytorze tekstów i Edytuj `GRUB_CMDLINE_LINUX` parametru, na przykład:
+9. Zmodyfikuj wiersz rozruchowy jądra w konfiguracji grub, aby uwzględnić dodatkowe parametry jądra platformy Azure. Aby to zrobić, Otwórz "/etc/default/grub" w edytorze tekstów i edytuj `GRUB_CMDLINE_LINUX` parametr, na przykład:
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   Zapewni to także wszystkie konsoli są wysyłane do pierwszego portu szeregowego mogą ułatwić rozwiązanie Azure pomocy technicznej w debugowaniu problemów. On również wyłącza nowe konwencje nazw OEL 7 dla kart interfejsu sieciowego. Oprócz powyższego, zaleca się *Usuń* następujące parametry:
+   Spowoduje to również, że wszystkie komunikaty konsoli są wysyłane do pierwszego portu szeregowego, który może pomóc w pomocy technicznej platformy Azure z problemami z debugowaniem. Wyłącza również nowe konwencje nazewnictwa OEL 7 dla kart sieciowych. Oprócz powyższych zaleca się *usunięcie* następujących parametrów:
    
        rhgb quiet crashkernel=auto
    
-   Graficzne i cichy rozruchu nie są przydatne w środowisku chmury, w której chcemy, aby wszystkie dzienniki mają być wysyłane do portu szeregowego.
+   Rozruch graficzny i cichy nie są przydatne w środowisku chmury, w którym wszystkie dzienniki mają być wysyłane do portu szeregowego.
    
-   `crashkernel` Opcja może być skonfigurowany w razie potrzeby po lewej stronie, ale należy pamiętać, że ten parametr powoduje zmniejszenie ilości dostępnej pamięci na maszynie Wirtualnej o co najmniej 128 MB, może być kłopotliwe w przypadku mniejszych rozmiarów maszyn wirtualnych.
-10. Po zakończeniu edycji "/ etc/domyślne/chodników" na powyżej, uruchom następujące polecenie, aby ponownie skompilować konfigurację programu grub:
+   `crashkernel` Opcja może pozostać skonfigurowana w razie potrzeby, ale należy pamiętać, że ten parametr zmniejsza ilość dostępnej pamięci na maszynie wirtualnej o 128 MB/większej, co może powodować problemy w mniejszych rozmiarach maszyn wirtualnych.
+10. Po zakończeniu edycji "/etc/default/grub" powyżej, uruchom następujące polecenie, aby ponownie skompilować konfigurację grub:
     
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
-11. Upewnij się, że serwer SSH jest zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu.  Zazwyczaj jest to opcja domyślna.
+11. Upewnij się, że serwer SSH został zainstalowany i skonfigurowany do uruchamiania w czasie rozruchu.  Zwykle jest to ustawienie domyślne.
 12. Zainstaluj agenta systemu Linux platformy Azure, uruchamiając następujące polecenie:
     
         # sudo yum install WALinuxAgent
         # sudo systemctl enable waagent
-13. Nie należy tworzyć zamiany miejsca na dysku systemu operacyjnego.
+13. Nie należy tworzyć obszaru wymiany na dysku systemu operacyjnego.
     
-    Agent systemu Linux platformy Azure może automatycznie skonfigurować obszar wymiany przy użyciu dysku zasób lokalny, który jest dołączony do maszyny Wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy zauważyć, że dysk lokalny zasób *tymczasowe* dysku i może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji. Po zainstalowaniu agenta systemu Linux dla platformy Azure (w opisie poprzedniego kroku), zmodyfikuj następujące parametry w /etc/waagent.conf odpowiednio:
+    Agent systemu Azure Linux może automatycznie skonfigurować miejsce wymiany przy użyciu lokalnego dysku zasobu dołączonego do maszyny wirtualnej po zainicjowaniu obsługi administracyjnej na platformie Azure. Należy pamiętać, że lokalny dysk zasobów jest dyskiem tymczasowym i może zostać opróżniony w przypadku anulowania aprowizacji maszyny wirtualnej. Po zainstalowaniu agenta systemu Linux platformy Azure (zobacz poprzedni krok) zmodyfikuj odpowiednio następujące parametry w/etc/waagent.conf:
     
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4
         ResourceDisk.MountPoint=/mnt/resource
         ResourceDisk.EnableSwap=y
         ResourceDisk.SwapSizeMB=2048    ## NOTE: set this to whatever you need it to be.
-14. Uruchom następujące polecenia, aby anulować aprowizację maszyny wirtualnej i przygotować je do inicjowania obsługi na platformie Azure:
+14. Uruchom następujące polecenia, aby anulować obsługę administracyjną maszyny wirtualnej i przygotować ją do aprowizacji na platformie Azure:
     
         # sudo waagent -force -deprovision
         # export HISTSIZE=0
         # logout
-15. Kliknij przycisk **akcji -> Zamknij dół** w Menedżerze funkcji Hyper-V. Wirtualnego dysku twardego systemu Linux jest teraz gotowy do przekazania na platformę Azure.
+15. Kliknij **akcję-> wyłączyć** w Menedżerze funkcji Hyper-V. Wirtualny dysk twardy z systemem Linux jest teraz gotowy do przekazania na platformę Azure.
 
-## <a name="next-steps"></a>Kolejne kroki
-Teraz możesz przystąpić do Twojej VHD Oracle Linux umożliwia tworzenie nowych maszyn wirtualnych na platformie Azure. Jeśli po raz pierwszy, w przypadku przekazywania pliku VHD na platformie Azure, zobacz [Utwórz Maszynę wirtualną systemu Linux z niestandardowego dysku](upload-vhd.md#option-1-upload-a-vhd).
+## <a name="next-steps"></a>Następne kroki
+Teraz możesz przystąpić do tworzenia nowych maszyn wirtualnych na platformie Azure za pomocą pliku Oracle Linux. VHD. Jeśli przekazujesz plik VHD na platformę Azure po raz pierwszy, zobacz [Tworzenie maszyny wirtualnej z systemem Linux z dysku niestandardowego](upload-vhd.md#option-1-upload-a-vhd).
 

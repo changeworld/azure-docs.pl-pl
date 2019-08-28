@@ -1,6 +1,6 @@
 ---
-title: SAP Business jeden na maszynach wirtualnych platformy Azure | Dokumentacja firmy Microsoft
-description: SAP Business jednej na Azure.
+title: Oprogramowanie SAP Business One na platformie Azure Virtual Machines | Microsoft Docs
+description: SAP Business One na platformie Azure.
 services: virtual-machines-linux,virtual-machines-windows
 documentationcenter: ''
 author: msjuergent
@@ -9,151 +9,150 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 101710b5a57faa37be77ff4b059fa0d494f4e617
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18409f93ab50f7d031ec78a55b9eaf8ad1b85a49
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60835655"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101411"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One na maszynach wirtualnych platformy Azure
-Ten dokument zawiera wskazówki dotyczące wdrażania SAP Business One na maszynach wirtualnych platformy Azure. Dokumentacja nie jest zamiennikiem dokumentacji instalacji działalności jeden dla rozwiązania SAP. Dokumentacja obejmuje podstawowe wskazówki dotyczące planowania i wdrażania infrastruktury platformy Azure do uruchamiania aplikacji Business One na.
+Ten dokument zawiera wskazówki dotyczące wdrażania oprogramowania SAP Business One na platformie Azure Virtual Machines. Dokumentacja programu nie zastępuje dokumentacji dotyczącej instalacji dla oprogramowania SAP. Dokumentacja powinna obejmować podstawowe wytyczne dotyczące planowania i wdrażania infrastruktury platformy Azure w celu uruchamiania aplikacji firmowych.
 
-Firma co obsługuje dwóch różnych bazach danych:
-- SQL Server — zobacz [928839 # Uwaga SAP - planowania wydania programu Microsoft SQL Server](https://launchpad.support.sap.com/#/notes/928839)
-- SAP HANA — dokładnie SAP Business One macierzy pomocy technicznej dla oprogramowania SAP HANA wyewidencjonowania [macierzy dostępności produktów SAP](https://support.sap.com/pam)
+Firma 1 obsługuje dwie różne bazy danych:
+- SQL Server — zobacz temat [SAP uwagi #928839 — planowanie wydania dla Microsoft SQL Server](https://launchpad.support.sap.com/#/notes/928839)
+- SAP HANA — aby zapoznać się z przykładową matrycą wsparcia SAP Business dla SAP HANA, Zaewidencjonuj [macierz dostępności produktu SAP](https://support.sap.com/pam)
 
-Dotyczące programu SQL Server, zagadnienia związane z wdrażaniem podstawowe, zgodnie z opisem w [wdrażania systemu DBMS na maszynach wirtualnych platformy Azure dla oprogramowania SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide) ma zastosowanie. dla oprogramowania SAP HANA zagadnienia są wymienione w tym dokumencie.
+W odniesieniu do SQL Server należy zastosować podstawowe zagadnienia dotyczące wdrażania, zgodnie z opisem w artykule [wdrażanie systemu Azure Virtual Machines DBMS dla oprogramowania SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide) . w przypadku SAP HANA uwagi zostały wymienione w tym dokumencie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby użyć tego przewodnika, potrzebujesz podstawową wiedzę na temat następujących składników platformy Azure:
+Aby skorzystać z tego przewodnika, potrzebna jest podstawowa znajomość następujących składników platformy Azure:
 
-- [Maszyny wirtualne platformy Azure na Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
-- [Maszyny wirtualne platformy Azure w systemie Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
-- [Azure, sieci i wirtualnych sieci zarządzania przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-virtual-network)
-- [Sieci platformy Azure i sieci wirtualnych za pomocą interfejsu wiersza polecenia](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
-- [Zarządzanie dyskami platformy Azure przy użyciu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
+- [Azure Virtual Machines w systemie Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
+- [Azure Virtual Machines w systemie Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
+- [Zarządzanie sieciami i sieciami wirtualnymi platformy Azure za pomocą programu PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-virtual-network)
+- [Obsługa sieci i sieci wirtualnych platformy Azure przy użyciu interfejsu wiersza polecenia](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
+- [Zarządzanie dyskami platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
 
-Nawet jeśli interesuje Cię w firmie, jeden tylko dokumentu [planowanie maszyn wirtualnych platformy Azure i wdrażanie środowiska SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) może być dobrym źródłem informacji.
+Nawet jeśli interesuje Cię podmiot gospodarczy, dokument [Azure Virtual Machines Planning and implementation for SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) może być dobrym źródłem informacji.
 
-Zakłada się, jako wystąpienie wdrażanie SAP Business One się:
+Przyjęto założenie, że wystąpienie wdrożenia SAP Business to:
 
-- Znasz instalowanie platformy SAP HANA na danej infrastruktury, takich jak maszyny Wirtualnej
-- Znany instalowania aplikacji SAP Business One na infrastruktury, takich jak maszyny wirtualne platformy Azure
-- Masz działające oprogramowanie SAP Business One i wybrany system DBMS
-- Zapoznać się z wdrożeniem infrastruktury na platformie Azure
+- Znajomość instalacji SAP HANA w danej infrastrukturze, takiej jak maszyna wirtualna
+- Znajomość instalacji aplikacji SAP Business na infrastrukturze, takiej jak maszyny wirtualne platformy Azure
+- Zapoznaj się z usługą SAP Business i wybranym systemem DBMS
+- Znajomość wdrażania infrastruktury na platformie Azure
 
-Te obszary będzie nieuwzględnione w tym dokumencie.
+Wszystkie te obszary nie zostaną omówione w tym dokumencie.
 
-Oprócz dokumentacji platformy Azure warto wiedzieć głównego SAP Notes, które odnoszą się do jednej firmy lub które są centralnej uwagi SAP dla firm, jeden:
+Oprócz dokumentacji platformy Azure należy zapoznać się z głównymi uwagami dotyczącymi oprogramowania SAP, które odnoszą się do współpracy z firmą 1 lub które są centralnymi uwagami dotyczącymi oprogramowania SAP dla firm:
 
-- [528296 — ogólne omówienie Uwaga dotycząca wersji jednej firmy SAP i powiązanych produktów](https://launchpad.support.sap.com/#/notes/528296)
-- [2216195 - aktualizacji informacje o wersji dla SAP Business jeden 9.2 wersji platformy SAP Hana](https://launchpad.support.sap.com/#/notes/2216195)
-- [2483583 — Uwaga środkowa for SAP Business jeden 9.3](https://launchpad.support.sap.com/#/notes/2483583)
-- [2483615 — wydanie aktualizacji Uwaga SAP Business jeden 9.3](https://launchpad.support.sap.com/#/notes/2483615)
-- [2483595 - Uwaga zbiorowe for SAP Business ogólnych problemów z jednego 9.3](https://launchpad.support.sap.com/#/notes/2483595)
-- [2027458 - zbiorowe doradcze uwagi SAP HANA-Related tematy programu SAP Business One, SAP HANA w wersji](https://launchpad.support.sap.com/#/notes/2027458)
-
-
-## <a name="business-one-architecture"></a>Jeden architektury biznesowej
-Firma jest aplikacja, która ma dwie warstwy:
-
-- Warstwa klienta, za pomocą klienta "systemu plików fat"
-- Warstwa bazy danych, który zawiera schemat bazy danych dla dzierżawy
-
-Lepsze — omówienie, które składniki są uruchomione w ramach klienta, a które części są uruchomione w ramach serwera jest udokumentowany w [SAP Business jednej dla administratorów](https://help.sap.com/http.svc/rc/879bd9289df34a47af838e67d74ea302/9.3/en-US/AdministratorGuide_SQL.pdf) 
-
-Ponieważ występuje duże opóźnienie krytyczne interakcji między warstwami klienta i DBMS, obu warstwach muszą znajdować się na platformie Azure, w przypadku wdrażania na platformie Azure. jest to zwykle, czy użytkownicy, a następnie usług pulpitu zdalnego do jednego lub wielu maszyn wirtualnych z systemem usług pulpitu zdalnego usług Business One składników klienta.
-
-### <a name="sizing-vms-for-sap-business-one"></a>Rozmiary maszyn wirtualnych dla SAP Business jeden
-
-Dotyczące rozmiaru klienta maszyn wirtualnych, wymagania dotyczące zasobów są opisane przez firmę SAP w dokumencie [SAP Business jednego sprzętu Requirements Guide](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf). Dla platformy Azure należy skoncentrować się i obliczeń z wymagania określone w rozdziale 2.4 dokumentu.
-
-Jako maszyn wirtualnych platformy Azure do hostowania Business One składniki klienta i hosta systemu DBMS dozwolone są tylko maszyny wirtualne, które są oprogramowanie SAP NetWeaver obsługiwane. Aby znaleźć listę oprogramowania SAP NetWeaver obsługiwanych maszynach wirtualnych platformy Azure, przeczytaj [1928533 # Uwaga SAP](https://launchpad.support.sap.com/#/notes/1928533).
-
-Uruchamiania oprogramowania SAP HANA jako DBMS wewnętrznej bazy danych dla jednej firmy tylko maszyny wirtualne, które są wymienione dla firm na platformie HANA w [listy platform IaaS certifeid HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) są obsługiwane w przypadku platformy HANA. Składniki klienta programu Business One nie dotyczy to ograniczenie silniejsze platformy SAP Hana jako DBMS system.
-
-### <a name="operating-system-releases-to-use-for-sap-business-one"></a>Wersje systemu operacyjnego do użycia rozwiązanie SAP Business One
-
-W zasadzie jest zawsze używać najnowszej wersji systemu operacyjnego. Szczególnie w tym obszarze nowe funkcje platformy Azure została wprowadzona w systemach różnych nowszą pomocnicza wydań Suse i Red Hat. Na stronie Windows przy użyciu systemu Windows Server 2016 zdecydowanie zaleca się.
+- [528296 — ogólne omówienie wersji SAP Business i produktów pokrewnych](https://launchpad.support.sap.com/#/notes/528296)
+- [2216195 — aktualizacje wersji dla oprogramowania SAP Business 1 9,2, wersja dla SAP HANA](https://launchpad.support.sap.com/#/notes/2216195)
+- [2483583 — Centralna Uwaga dla SAP Business 1 9,3](https://launchpad.support.sap.com/#/notes/2483583)
+- [2483615 — informacje o wersji dla oprogramowania SAP Business 1 9,3](https://launchpad.support.sap.com/#/notes/2483615)
+- [2483595 — Zbiorcza Uwaga dla oprogramowania SAP Business 1 9,3 ogólne problemy](https://launchpad.support.sap.com/#/notes/2483595)
+- [2027458 — uwagi dotyczące zbiorowego konsultowania dla tematów związanych z SAP HANAą oprogramowania SAP Business One, wersja dla SAP HANA](https://launchpad.support.sap.com/#/notes/2027458)
 
 
-## <a name="deploying-infrastructure-in-azure-for-sap-business-one"></a>Wdrażanie infrastruktury na platformie Azure for SAP Business One
-W następnym rozdziale kilka infrastruktura kawałki służącego do wdrożenia SAP.
+## <a name="business-one-architecture"></a>Biznes — jedna architektura
+Firma to aplikacja, która ma dwie warstwy:
+
+- Warstwa klienta z klientem "Fat"
+- Warstwa bazy danych, która zawiera schemat bazy danych dla dzierżawy
+
+Lepszy przegląd składników uruchomionych w części klienta i części, które są uruchomione w części serwera, został udokumentowany w [podręczniku administratora oprogramowania SAP Business](https://help.sap.com/http.svc/rc/879bd9289df34a47af838e67d74ea302/9.3/en-US/AdministratorGuide_SQL.pdf) . 
+
+Ponieważ występuje duże opóźnienie krytyczne między warstwą klienta i warstwą DBMS, obie warstwy muszą znajdować się na platformie Azure podczas wdrażania na platformie Azure. zwykle jest to, że użytkownicy będą następnie RDS w jednej lub wielu maszynach wirtualnych z uruchomioną usługą RDS dla firmowego składnika klienta.
+
+### <a name="sizing-vms-for-sap-business-one"></a>Ustalanie wielkości maszyn wirtualnych dla oprogramowania SAP Business One
+
+W odniesieniu do wielkości maszyn wirtualnych klienta wymagania dotyczące zasobów są udokumentowane przez SAP w dokumencie [SAP Business — wymagania sprzętowe](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf). W przypadku platformy Azure należy skoncentrować się i obliczać zgodnie z wymaganiami podanymi w rozdziale 2,4 dokumentu.
+
+Jako że usługa Azure Virtual Machines na potrzeby hostowania firmowych składników klienta i hosta DBMS, dozwolone są tylko maszyny wirtualne, które są obsługiwane przez SAP NetWeaver. Aby znaleźć listę obsługiwanych maszyn wirtualnych platformy SAP NetWeaver, przeczytaj temat [SAP uwagi #1928533](https://launchpad.support.sap.com/#/notes/1928533).
+
+Uruchamianie SAP HANA jako bazy danych DBMS dla firm jeden, tylko maszyny wirtualne, które są wymienione dla firm na platformie HANA na [liście platform Hana Certifeid IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) , są obsługiwane w przypadku platformy Hana. Te silniejsze ograniczenia dotyczące SAP HANA jako systemu DBMS nie mają wpływ na działalność biznesową jednego klienta.
+
+### <a name="operating-system-releases-to-use-for-sap-business-one"></a>Wersje systemu operacyjnego do użycia w oprogramowaniu SAP Business One
+
+W zasadzie zawsze najlepiej używać najnowszych wersji systemu operacyjnego. W szczególności w miejscu w systemie Linux wprowadzono nowe funkcje platformy Azure z innymi nowszymi wersjami oprogramowania SUSE i Red Hat. Po stronie systemu Windows, w którym jest używany system Windows Server 2016, jest zdecydowanie zalecane.
+
+
+## <a name="deploying-infrastructure-in-azure-for-sap-business-one"></a>Wdrażanie infrastruktury na platformie Azure dla oprogramowania SAP Business One
+W następnych kilku działach, fragmenty infrastruktury, które dotyczą wdrażania SAP.
 
 ### <a name="azure-network-infrastructure"></a>Infrastruktura sieci platformy Azure
-Infrastruktury sieci, które należy wdrożyć na platformie Azure, zależy od tego, czy wdrożyć jeden system Business One dla siebie. Lub czy dostawcy usług hostingowych, który obsługuje wielu systemów biznesowych jeden dla klientów. Istnieje również może być drobne zmiany w projekcie na czy sposobie nawiązywania połączenia platformy Azure. Przechodzenia przez różne możliwości, jeden z projektem, w którym masz połączenie z siecią VPN na platformie Azure i gdzie Rozszerzanie usługi Active Directory za pośrednictwem [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design) lub [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) na platformie Azure.
+Infrastruktura sieci, którą należy wdrożyć na platformie Azure, zależy od tego, czy w danym systemie wdrożono jedną firmę. Lub niezależnie od tego, czy jesteś gospodarzem, który hostuje dziesiątki firmy dla klientów. W projekcie mogą być również nieznaczne zmiany dotyczące sposobu łączenia się z platformą Azure. Korzystając z różnych możliwości, jeden projekt, w którym masz połączenie sieci VPN na platformę Azure, i dowiesz się, Active Directory za pośrednictwem [sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design) lub [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) na platformę Azure.
 
-![Prostą konfigurację sieci z Business One](./media/business-one-azure/simple-network-with-VPN.PNG)
+![Prosta konfiguracja sieci z firmą 1](./media/business-one-azure/simple-network-with-VPN.PNG)
 
-Uproszczona konfiguracja prezentowane wprowadza kilka wystąpień zabezpieczeń, które umożliwiają kontrolę i limit routingu. Zaczyna się od 
+W uproszczonej konfiguracji przedstawiono kilka wystąpień zabezpieczeń, które umożliwiają kontrolowanie i ograniczanie routingu. Zaczyna się od 
 
-- Router/Zapora po stronie klienta w środowisku lokalnym.
-- Kolejne wystąpienie ma miejsce [sieciowej grupy zabezpieczeń platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview) użyć wprowadzenie reguł routingu i zabezpieczeń dla sieci wirtualnej platformy Azure, uruchamianego jedna konfiguracja usługi SAP Business w.
-- Aby uniknąć przez użytkowników biznesowych jednego klienta można zobaczyć także serwera, na którym działa serwer Business One działa baza danych, należy oddzielić maszyn wirtualnych hostujących firm jednego klienta, jak i biznesowych jeden serwer, który w dwóch różnych podsieci w sieci wirtualnej.
-- Należy ponownie użyć sieciowej grupy zabezpieczeń platformy Azure przypisanych do dwóch różnych podsieci w celu ograniczenia dostępu do jednego serwera firmy.
+- Router/zapora po stronie klienta.
+- Następnym wystąpieniem jest [Grupa zabezpieczeń sieci platformy Azure](https://docs.microsoft.com/azure/virtual-network/security-overview) , której można użyć w celu wprowadzenia reguł routingu i zabezpieczeń dla usługi Azure VNET, w której jest uruchamiana konfiguracja oprogramowania SAP Business w systemie.
+- Aby uniknąć, że użytkownicy biznesowi jednego klienta mogą również zobaczyć serwer, na którym działa serwer biznesowy, na którym działa baza danych programu, należy oddzielić maszynę wirtualną, która jest hostem biznesowym i firmą jeden serwer w dwóch różnych podsieciach w ramach połączenia z siecią wirtualną.
+- Należy ponownie użyć usługi Azure sieciowej grupy zabezpieczeń przypisanej do dwóch różnych podsieci w celu ograniczenia dostępu do jednego serwera biznesowego.
 
-Nieco bardziej zaawansowanej konfiguracji sieci platformy Azure opiera się na platformie Azure [opisano najlepsze rozwiązania architektury gwiazdy](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke). Wzorzec architektury gwiazdy zmieniłby pierwszy uproszczona konfiguracja do jednego następująco:
+Bardziej rozbudowana wersja konfiguracji sieci platformy Azure jest oparta na udokumentowanych [najlepszych rozwiązaniach dotyczących architektury gwiazdy i szprych](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke). Wzorzec architektury piasty i szprychy spowoduje zmianę pierwszej uproszczonej konfiguracji na taką, jak to:
 
 
-![Gwiazda konfiguracji za pomocą Business One](./media/business-one-azure/hub-spoke-network-with-VPN.PNG)
+![Konfiguracja gwiazdy i gwiazdy z firmą 1](./media/business-one-azure/hub-spoke-network-with-VPN.PNG)
 
-W przypadkach, w których użytkownicy nawiązują połączenie za pośrednictwem sieci internet bez prywatnej łączności do platformy Azure, projekt sieci na platformie Azure, powinno być wyrównane z zasadami udokumentowane w architektura referencyjna platformy Azure dla [strefy DMZ między platformą Azure a Internetem](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-dmz).
+W przypadku, gdy użytkownicy nawiązują połączenie za pośrednictwem Internetu bez jakichkolwiek połączeń prywatnych z platformą Azure, projekt sieci na platformie Azure powinien być wyrównany przy użyciu zasad udokumentowanych w architekturze referencyjnej platformy Azure dla [strefy DMZ między platformą Azure a Internet](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-dmz).
 
-### <a name="business-one-database-server"></a>Serwer jedna baza danych biznesowych
-Typ bazy danych programu SQL Server i programu SAP HANA są dostępne. Niezależnie od systemu DBMS, powinien przeczytać dokument [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) Aby uzyskać ogólne omówienie wdrożeń systemu DBMS na maszynach wirtualnych platformy azure i powiązane sieci i magazynu tematy.
+### <a name="business-one-database-server"></a>Biznesowy serwer bazy danych
+Dla typu bazy danych dostępne są SQL Server i SAP HANA. Niezależnie od systemu DBMS należy przeczytać zagadnienia dotyczące dokumentu [dotyczące wdrożenia platformy azure Virtual Machines DBMS dla obciążenia SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general) w celu uzyskania ogólnych informacji na temat wdrożeń systemów DBMS na maszynach wirtualnych platformy Azure oraz związanych z nimi tematów dotyczących sieci i magazynu.
 
-Chociaż już zostać w dokumentach ogólnych i specyficznych bazy danych, należy upewnić się, samodzielnie zapoznać się z:
+Chociaż są już wyróżnione w określonych i ogólnych dokumentach baz danych, należy zaznajomić się z:
 
-- [Zarządzanie dostępnością maszyn wirtualnych Windows na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) i [Zarządzanie dostępnością maszyn wirtualnych systemu Linux na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability)
-- [Umowa SLA dla maszyn wirtualnych](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)
+- [Zarządzanie dostępnością maszyn wirtualnych z systemem Windows na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) i [Zarządzanie dostępnością maszyn wirtualnych z systemem Linux na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability)
+- [Umowa SLA dla Virtual Machines](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)
 
-Te dokumenty powinny ułatwić podjęcie decyzji o wyborze typów magazynów i konfiguracja wysokiej dostępności.
+Te dokumenty powinny ułatwić podjęcie decyzji dotyczącej wyboru typów magazynu i konfiguracji wysokiej dostępności.
 
-W zasadzie następujące czynności:
+W zasadzie należy:
 
-- Użyj dysków SSD w warstwie Premium za pośrednictwem standardowych dysków twardych. Aby dowiedzieć się więcej na temat typów dostępnego miejsca na dysku, zobacz nasze artykuł [wybierz typ dysku](../../windows/disks-types.md)
-- Użyj usługi Azure Managed disks za pośrednictwem dysków niezarządzanych
-- Upewnij się, że masz wystarczającą przepustowość operacje We/Wy i operacje We/Wy skonfigurowane za pomocą konfiguracji dysku
-- Łączenie/hana/dane i /hana/log woluminu, aby mogła mieć konfigurację magazynu wydajne kosztów
+- Korzystaj z dysków SSD Premium w warstwie Standardowa HDD. Aby dowiedzieć się więcej o dostępnych typach dysków, zapoznaj się z artykułem [Wybieranie typu dysku](../../windows/disks-types.md)
+- Korzystanie z usługi Azure Managed disks za pośrednictwem dysków niezarządzanych
+- Upewnij się, że masz wystarczającą liczbę operacji we/wy i przepływności operacji wejścia/wyjścia skonfigurowanej z konfiguracją dysku
+- Połącz woluminy/Hana/Data i/Hana/log w celu zapewnienia ekonomicznej konfiguracji magazynu
 
 
 #### <a name="sql-server-as-dbms"></a>SQL Server jako system DBMS
-Do wdrożenia programu SQL Server jako system DBMS dla jednej firmy, przejść wzdłuż dokumentu [wdrażania systemu DBMS na maszyny wirtualne SQL Server Azure dla oprogramowania SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver). 
+Aby wdrożyć SQL Server jako system DBMS dla firm, przejdź do dokumentu [SQL Server wdrożenia systemu Azure Virtual Machines DBMS dla oprogramowania SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_sqlserver). 
 
-Oszacowania nierównej rozmiaru strony bazami danych programu SQL Server są:
+Przybliżone określanie wielkości szacunków dla strony systemu DBMS dla SQL Server są następujące:
 
-| Liczba użytkowników | procesorów wirtualnych | Memory (Pamięć) | Przykładowe typy maszyn wirtualnych |
+| Liczba użytkowników | Procesory wirtualne vCPU | Memory (Pamięć) | Przykładowe typy maszyn wirtualnych |
 | --- | --- | --- | --- |
 | do 20 | 4 | 16 GB | D4s_v3, E4s_v3 |
-| maksymalnie 40 | 8 | 32 GB | D8s_v3, E8s_v3 |
+| do 40 | 8 | 32 GB | D8s_v3, E8s_v3 |
 | do 80 | 16 | 64 GB | D16s_v3, E16s_v3 |
-| maksymalnie 150 | 32 | 128 GB | D32s_v3, E32s_v3 |
+| do 150 | 32 | 128 GB | D32s_v3, E32s_v3 |
 
-Ustalanie rozmiaru wymienionych powyżej powinien zapewnić pomysł, gdzie zacząć. Być może potrzebujesz mniejszej lub większej liczby zasobów, w którym to przypadku dostosowania na platformie azure jest łatwe. Zmiana między typami maszyny Wirtualnej jest możliwe dzięki właśnie ponownego uruchomienia maszyny wirtualnej.
+Wymienione powyżej zmiany wielkości powinny dawać pomysł, gdzie zaczyna się od. Może być potrzebne mniejsze lub więcej zasobów, w takim przypadku dostosowanie na platformie Azure jest proste. Zmiana między typami maszyn wirtualnych jest możliwa po ponownym uruchomieniu maszyny wirtualnej.
 
-#### <a name="sap-hana-as-dbms"></a>SAP HANA jako systemu DBMS
-Zagadnienia dotyczące dokumentu przy użyciu oprogramowania SAP HANA DBMS następujące sekcje należy powinien być zgodny [platformy SAP HANA w podręczniku obsługi platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).
+#### <a name="sap-hana-as-dbms"></a>SAP HANA jako system DBMS
+Korzystanie z SAP HANA jako systemu DBMS następujące sekcje powinny być zgodne z zagadnieniami [SAP HANA dokumentu w Przewodniku obsługi platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).
 
-O wysokiej dostępności i konfiguracjami odzyskiwania po awarii całego oprogramowania SAP HANA jako bazy danych dla Business One na platformie Azure, należy przeczytać dokumentację [platformy SAP HANA wysoką dostępność dla maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview) i dokumentacji wskazywał z tego dokumentu.
+Aby uzyskać wysoką dostępność i konfiguracje odzyskiwania po awarii dotyczące SAP HANA jako bazy danych dla firm jednej na platformie Azure, należy zapoznać się z dokumentacją [SAP HANA wysokiej dostępności dla maszyn wirtualnych platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview) i dokumentacji wskazywanej w tym dokumencie. .
 
-Dla oprogramowania SAP HANA kopia zapasowa i przywracanie strategie, powinni przeczytać dokument [przewodniku kopia zapasowa dla oprogramowania SAP HANA na maszynach wirtualnych Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide) i dokumentacji wskazywał z tego dokumentu.
+Aby uzyskać SAP HANA strategii tworzenia kopii zapasowych i przywracania, należy przeczytać Przewodnik po kopiach zapasowych dokumentu [dotyczący SAP HANA na platformie Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-backup-guide) oraz dokumentacji wskazanej w tym dokumencie.
 
  
-### <a name="business-one-client-server"></a>Business jeden klient serwer
-Składniki te zagadnienia dotyczące magazynu nie są podstawową kwestią. Niemniej jednak chcesz mieć niezawodnej platformie. Dlatego należy używać usługi Azure Premium Storage dla tej maszyny Wirtualnej, nawet w przypadku podstawowy dysk VHD. Ustalanie rozmiaru maszyny Wirtualnej, z danymi w [SAP Business jednego sprzętu Requirements Guide](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf). Dla platformy Azure należy skoncentrować się i obliczeń z wymagania określone w rozdziale 2.4 dokumentu. Podczas obliczania wymagania należy porównać w poniższych dokumentach można znaleźć idealne maszyny Wirtualnej:
+### <a name="business-one-client-server"></a>Biznes jeden serwer kliencki
+Zagadnienia związane z przechowywaniem tych składników nie są zasadniczym problemem. Niemniej jednak chcesz mieć niezawodną platformę. W związku z tym należy używać Premium Storage platformy Azure dla tej maszyny wirtualnej, nawet w przypadku podstawowego wirtualnego dysku twardego. Ustalanie rozmiarów maszyny wirtualnej przy użyciu danych z [przewodnika dotyczącego wymagań sprzętowych SAP Business](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf). W przypadku platformy Azure należy skoncentrować się i obliczać zgodnie z wymaganiami podanymi w rozdziale 2,4 dokumentu. Podczas obliczania wymagań należy porównać je z następującymi dokumentami, aby znaleźć idealną maszynę wirtualną:
 
 - [Rozmiary maszyn wirtualnych z systemem Windows na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
-- [Uwaga SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533)
+- [#1928533 uwagi SAP](https://launchpad.support.sap.com/#/notes/1928533)
 
-Porównaj liczbę procesorów i pamięci potrzebnej do dokumentacji, przez firmę Microsoft. Również pamiętać przepustowość sieci podczas wybierania maszyny wirtualne.
+Porównanie liczby procesorów i pamięci wymaganej przez firmę Microsoft. Należy również zachować przepustowość sieci podczas wybierania maszyn wirtualnych.
 
 
 

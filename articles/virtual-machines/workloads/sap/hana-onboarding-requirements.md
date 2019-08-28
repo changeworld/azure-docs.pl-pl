@@ -1,87 +1,86 @@
 ---
-title: Dołączanie wymagania dotyczące oprogramowania SAP HANA na platformie Azure (duże wystąpienia) | Dokumentacja firmy Microsoft
-description: Wymagania dotyczące przechodzenia do platformy SAP HANA na platformie Azure (duże wystąpienia).
+title: Wymagania dotyczące dołączania do SAP HANA na platformie Azure (duże wystąpienia) | Microsoft Docs
+description: Wymagania dotyczące dołączania SAP HANA na platformie Azure (duże wystąpienia).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/31/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2f596f44acfd51b1e2449bc77eed6add0d9d90b0
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 99ad334a526b269879034dcc0e1cd0b1b22f1f7f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707389"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101194"
 ---
 # <a name="onboarding-requirements"></a>Wymagania dotyczące dołączania
 
-Ta lista składa się wymagania dotyczące uruchamiania oprogramowania SAP HANA na platformie Azure (wystąpienia większy).
+Ta lista składa wymagania dotyczące uruchamiania SAP HANA na platformie Azure (duże wystąpienia).
 
 **Microsoft Azure**
 
-- Subskrypcja platformy Azure, które mogą być połączone z platformą SAP HANA na platformie Azure (duże wystąpienia).
-- Umowę na pomoc techniczną Premium firmy Microsoft. Aby uzyskać szczegółowe informacje związane z systemem SAP na platformie Azure, zobacz [2015553 # Uwaga SAP pomocy technicznej — SAP w systemie Microsoft Azure: Wymagania wstępne dotyczące obsługi](https://launchpad.support.sap.com/#/notes/2015553). Jeśli używasz jednostek dużych wystąpień HANA 384 i większej liczby procesorów CPU, również należy rozszerzyć Premier umowę pomocy technicznej, aby uwzględnić Azure Rapid Response.
-- Rozpoznawanie HANA duże wystąpienie jednostki SKU należy po wykonaniu wykonywania zmiany rozmiaru, korzystając z oprogramowania SAP.
+- Subskrypcja platformy Azure, która może być połączona z SAP HANA na platformie Azure (duże wystąpienia).
+- Umowa dotycząca pomocy technicznej Premier firmy Microsoft. Aby uzyskać szczegółowe informacje dotyczące uruchamiania oprogramowania SAP na platformie Azure [, zobacz uwagi dotyczące pomocy technicznej SAP #2015553 — SAP on Microsoft Azure: Wymagania wstępne](https://launchpad.support.sap.com/#/notes/2015553)dotyczące obsługi. W przypadku używania dużych wystąpień platformy HANA z 384 i więcej procesorów CPU należy również zwiększyć umowę pomocy technicznej Premier, aby uwzględnić Azure Rapid Response.
+- Świadomość potrzebnych magazynów dużych wystąpień platformy HANA, które są potrzebne po dokonaniu zmiany rozmiarów przy użyciu oprogramowania SAP.
 
-**Połączenie sieciowe**
+**Łączność sieciowa**
 
-- ExpressRoute między środowiska lokalnego do platformy Azure: Do łączenia z centrum danych lokalnych do platformy Azure, upewnij się uporządkować połączenia o wielkości co najmniej 1 GB/s od usługodawcy internetowego. Łączność między jednostkami dużych wystąpień HANA i Azure używa także technologii usługi ExpressRoute. To połączenie usługi ExpressRoute między jednostkami dużych wystąpień HANA i Azure znajduje się w cenie jednostki dużych wystąpień HANA, w tym wszystkie dane przychodzące i wychodzące opłaty dla tego określonego obwodu usługi ExpressRoute. W związku z tym jako klient, czy nie występują dodatkowe koszty poza link usługi ExpressRoute między lokalną i platformą Azure.
+- ExpressRoute między środowiskiem lokalnym i platformą Azure: Aby połączyć lokalne centrum danych z platformą Azure, upewnij się, że zawarto zamówienie od usługodawcy internetowego (co najmniej 1 GB/s). Łączność między jednostkami dużej instancji HANA i platformą Azure korzysta również z technologii ExpressRoute. To połączenie ExpressRoute między jednostkami dużej wystąpienia HANA i platformą Azure jest uwzględniane w cenie jednostek dużego wystąpienia HANA, w tym wszystkich opłat za transfer danych przychodzących i wychodzących dla tego konkretnego obwodu usługi ExpressRoute. W związku z tym klient nie napotyka dodatkowych kosztów poza linkiem ExpressRoute między środowiskiem lokalnym i platformą Azure.
 
 **System operacyjny**
 
 - Licencje dla SUSE Linux Enterprise Server 12 dla aplikacji SAP.
 
    > [!NOTE] 
-   > System operacyjny, dostarczone przez firmę Microsoft nie jest zarejestrowany w usłudze SUSE. Nie jest ona dołączona do wystąpienia narzędzia do zarządzania subskrypcją.
+   > System operacyjny dostarczany przez firmę Microsoft nie jest zarejestrowany w systemie SUSE. Nie jest on połączony z wystąpieniem narzędzia do zarządzania subskrypcjami.
 
-- SUSE Linux subskrypcji narzędzia do zarządzania wdrożonymi na platformie Azure na maszynie Wirtualnej. To narzędzie zapewnia funkcje platformy SAP Hana na platformie Azure (duże wystąpienia) były rejestrowane i odpowiednio aktualizowana przez SUSE. (Brak jest Brak dostępu do Internetu w centrum danych dużych wystąpień HANA). 
-- Licencji Red Hat Enterprise Linux 6.7 lub 7.x dla oprogramowania SAP HANA.
+- Narzędzie do zarządzania subskrypcjami systemu SUSE Linux wdrożone na platformie Azure na maszynie wirtualnej. To narzędzie udostępnia możliwości SAP HANA na platformie Azure (duże wystąpienia), które mają zostać zarejestrowane i odpowiednio zaktualizowane przez SUSE. (W centrum danych dużych wystąpień HANA nie ma dostępu do Internetu). 
+- Licencje dla Red Hat Enterprise Linux 6,7 lub 7. x dla SAP HANA.
 
    > [!NOTE]
-   > System operacyjny, dostarczone przez firmę Microsoft nie jest zarejestrowana z firmą Red Hat. Nie jest ona dołączona do wystąpienia systemu Red Hat subskrypcji Menedżera.
+   > System operacyjny dostarczany przez firmę Microsoft nie jest zarejestrowany w systemie Red Hat. Nie jest on połączony z wystąpieniem programu Red Hat Subscription Manager.
 
-- Red Hat subskrypcji Menedżera wdrożonych na platformie Azure na maszynie Wirtualnej. Menedżer subskrypcji Red Hat zapewnia funkcje platformy SAP Hana na platformie Azure (duże wystąpienia), aby były rejestrowane i odpowiednio aktualizowane przez firmy Red Hat. (Nie jest brak bezpośredniego dostępu do Internetu z w ramach dzierżawy wdrożone w sygnaturze dużego wystąpienia platformy Azure).
-- Środowisko SAP wymaga posiadania pomocy technicznej kontraktu u swojego dostawcy systemu Linux. To wymaganie nie są usuwane przez to rozwiązanie, dużych wystąpień HANA lub faktu uruchomienia systemu Linux na platformie Azure. W przeciwieństwie do niektórych obrazów Galeria Azure dla systemu Linux, opłata za usługę jest *nie* uwzględnione w ofercie rozwiązania dużych wystąpień HANA. Jest odpowiedzialny za spełniają wymagania SAP dotyczące umowy pomocy technicznej za pomocą dystrybutora systemu Linux. 
-   - W przypadku systemu SUSE Linux wyszukać wymagania umowy pomocy technicznej w [1984787 # Uwaga SAP — SUSE Linux Enterprise Server 12: Uwagi dotyczące instalacji](https://launchpad.support.sap.com/#/notes/1984787) i [1056161 # Uwaga SAP — SUSE priorytetowa pomoc techniczna dla aplikacji SAP](https://launchpad.support.sap.com/#/notes/1056161).
-   - Dla systemu Red Hat Linux musisz mieć poziomy poprawną subskrypcję, które obejmują pomoc techniczną i aktualizowaniem, systemów operacyjnych, HANA, duże wystąpienia usługi. Red Hat zaleca subskrypcji Red Hat Enterprise Linux dla rozwiązania SAP. Zapoznaj się https://access.redhat.com/solutions/3082481. 
+- Red Hat Subscription Manager wdrożony na platformie Azure na maszynie wirtualnej. Program Red Hat Subscription Manager oferuje możliwość SAP HANA na platformie Azure (duże wystąpienia), które mają zostać zarejestrowane i odpowiednio zaktualizowane przez firmę Red Hat. (Nie ma bezpośredniego dostępu do Internetu z dzierżawy wdrożonej w sygnaturze dużej instancji platformy Azure).
+- SAP wymaga również posiadania kontraktu pomocy technicznej dotyczącej dostawcy systemu Linux. To wymaganie nie jest usuwane przez rozwiązanie dużego wystąpienia HANA lub fakt, że jest uruchamiany system Linux na platformie Azure. W przeciwieństwie do niektórych obrazów z galerii systemu Linux Azure opłata za usługę *nie* jest uwzględniana w ofercie rozwiązania dla dużych wystąpień Hana. Ponosisz odpowiedzialność za spełnienie wymagań SAP dotyczących umów pomocy technicznej z dystrybutorem systemu Linux. 
+   - W przypadku systemu SUSE Linux zapoznaj się z wymaganiami umów pomocy [technicznej w temacie SAP uwagi #1984787-SUSE Linux Enterprise Server 12: Uwagi](https://launchpad.support.sap.com/#/notes/1984787) dotyczące instalacji i [programu SAP Note #1056161 — Obsługa priorytetu systemu SUSE dla aplikacji SAP](https://launchpad.support.sap.com/#/notes/1056161).
+   - W systemie Red Hat Linux należy dysponować prawidłowymi poziomami subskrypcji obejmującymi aktualizacje pomocy technicznej i usługi do systemów operacyjnych z dużym wystąpieniem usługi HANA. Red Hat zaleca Red Hat Enterprise Linux subskrypcję rozwiązania SAP. Odwołaj https://access.redhat.com/solutions/3082481 się do. 
 
-Macierz obsługi różnych wersji platformy SAP HANA z użyciem różnych wersji systemu Linux, można zobaczyć [2235581 # Uwaga SAP](https://launchpad.support.sap.com/#/notes/2235581).
+Aby uzyskać macierz pomocy technicznej dla różnych wersji SAP HANA z różnymi wersjami systemu Linux, zobacz [uwagi dotyczące oprogramowania SAP #2235581](https://launchpad.support.sap.com/#/notes/2235581).
 
-Macierz zgodności systemu operacyjnego i wersji oprogramowania układowego/driver HLI, można znaleźć [uaktualnienia systemu operacyjnego dla HLI](os-upgrade-hana-large-instance.md).
+Aby uzyskać informacje na temat macierzy zgodności systemów operacyjnych i oprogramowania sprzętowego//////lub sterownika programu//lub wersji, zobacz [uaktualnienie systemu operacyjnego dla](os-upgrade-hana-large-instance.md)
 
 
 > [!IMPORTANT] 
-> Dla typu II jednostek tylko w systemie SLES 12 z dodatkiem SP2 systemu operacyjnego wersja jest obsługiwana w tym momencie. 
+> W tym momencie jest obsługiwana tylko wersja systemu operacyjnego SLES 12 SP2. 
 
 
 **Baza danych**
 
-- Licencje i składniki instalacyjne oprogramowania dla oprogramowania SAP HANA (platforma lub enterprise edition).
+- Licencje i składniki instalacji oprogramowania dla SAP HANA (platforma lub Enterprise Edition).
 
 **Aplikacje**
 
-- Licencje i składniki instalacyjne oprogramowania dla wszystkich aplikacji SAP, łączące się z platformą SAP HANA i powiązane SAP umowy dotyczące pomocy technicznej.
-- Licencje i składniki instalacyjne oprogramowania dla wszystkich aplikacji innych niż SAP, używane z platformą SAP HANA na platformie Azure (duże wystąpienia) środowiska i związane z umowami pomocy technicznej.
+- Licencje i składniki instalacji oprogramowania dla wszystkich aplikacji SAP, które łączą się z SAP HANA i powiązane kontrakty pomocy technicznej SAP.
+- Licencje i składniki instalacji oprogramowania dla wszystkich aplikacji innych niż SAP używanych z SAP HANA na platformie Azure (duże wystąpienia) i powiązane kontrakty pomocy technicznej.
 
-**Umiejętności**
+**Nowych**
 
-- Środowisko i wiedzy na temat infrastruktury IaaS platformy Azure i jego składników.
-- Doświadczenia i wiedzy na temat sposobu wdrażania obciążeń SAP na platformie Azure.
-- Instalacja oprogramowania SAP HANA certyfikowane osobistych.
-- SAP Architekt umiejętności, aby zaprojektować wysokiej dostępności i odzyskiwania po awarii całego oprogramowania SAP HANA.
+- Środowisko i znajomość usługi Azure IaaS oraz jej składników.
+- Środowisko i znajomość sposobu wdrażania obciążeń SAP na platformie Azure.
+- SAP HANA certyfikat instalacji osobistej.
+- Umiejętności architekta SAP do projektowania wysokiej dostępności i odzyskiwania po awarii na SAP HANA.
 
 **SAP**
 
-- Oczekuje się, że jesteś klientem usługi SAP i masz pomocy technicznej umowy z oprogramowaniem SAP.
-- Szczególnie w przypadku implementacji klasy typu II jednostek SKU platformy HANA duże wystąpienie zapoznaj się z oprogramowaniem SAP wersje oprogramowania SAP HANA i ostateczną konfiguracje sprzętu skalowanie w górę o dużych rozmiarach.
+- Oczekujemy, że jesteś klientem SAP i masz umowę na pomoc techniczną dotyczącą oprogramowania SAP.
+- Szczególnie w przypadku implementacji klasy typu II z magazynów dużych wystąpień usługi HANA zapoznaj się z programem SAP w wersjach SAP HANA i ostatecznej konfiguracji na potrzeby sprzętu skalowalnego w poziomie.
 
 **Następne kroki**
-- Zapoznaj się [architektura SAP HANA (duże wystąpienia) na platformie Azure](hana-architecture.md)
+- Rozpoznaj [architekturę SAP HANA (duże wystąpienia) na platformie Azure](hana-architecture.md)

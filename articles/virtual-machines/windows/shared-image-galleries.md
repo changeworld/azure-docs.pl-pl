@@ -1,6 +1,6 @@
 ---
-title: Galeria obrazów współdzielonego platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać galerie obrazów udostępnionych do udostępniania obrazów maszyn wirtualnych w ramach organizacji.
+title: Galeria udostępnionych obrazów platformy Azure | Microsoft Docs
+description: Dowiedz się, jak używać udostępnionych galerii obrazów do udostępniania obrazów maszyn wirtualnych w całej organizacji.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: axayjo
@@ -9,7 +9,6 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
@@ -17,14 +16,14 @@ ms.date: 05/06/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: b28ad9b61a14a1961cf2a9de828df320134be838
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 35789e7f85e99d7985e8e19b82a7aea585483daf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709179"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088720"
 ---
-# <a name="shared-image-gallery-overview"></a>Udostępnione galerii obrazów — omówienie
+# <a name="shared-image-gallery-overview"></a>Omówienie galerii obrazów udostępnionych
 
 
 [!INCLUDE [virtual-machines-common-shared-image-galleries](../../../includes/virtual-machines-common-shared-image-galleries.md)]
@@ -32,4 +31,4 @@ ms.locfileid: "67709179"
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak [wdrażania obrazów udostępnionych przy użyciu programu Azure PowerShell](shared-images.md).
+Dowiedz się, jak [wdrażać obrazy udostępnione przy użyciu Azure PowerShell](shared-images.md).

@@ -10,16 +10,15 @@ ms.assetid: 2e6d88f2-1980-4a24-827e-a81616a0d247
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 19d30d207e67e1dfd8cdec2fe9951c763a921a0e
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 771064774371e71c0664918790b296c156ed1c1f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67706069"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084789"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Używanie programu PowerShell do uruchamiania narzędzia Diagnostyka Azure na maszynie wirtualnej systemu Windows
 
@@ -84,7 +83,7 @@ Należy zaktualizować konfigurację, aby uwzględnić następujące elementy:
 * Atrybut *ResourceID* elementu Metrics należy zaktualizować przy użyciu identyfikatora zasobu maszyny wirtualnej.
   
   * Identyfikator zasobu można utworzyć przy użyciu następującego wzorca: "*Identyfikator subskrypcji/subscriptions/{dla subskrypcji z maszyną wirtualną*}/ResourceGroups/{*nazwę tej usługi dla maszyny wirtualnej*}/Providers/Microsoft.COMPUTE/virtualMachines/{ *Nazwa maszyny wirtualnej*} ".
-  * Na przykład jeśli Identyfikator subskrypcji dla subskrypcji, w której uruchomiono maszynę wirtualną, to **11111111-1111-1111-1111-111111111111**, nazwa grupy zasobów dla grupy zasobów jest grupą **zasobów, a**Nazwa maszyny wirtualnej to **MyWindowsVM**, a następnie wartość parametru *ResourceID* to:
+  * Na przykład jeśli Identyfikator subskrypcji dla subskrypcji, w której uruchomiono maszynę wirtualną, to **11111111-1111-1111-1111-111111111111**, nazwa grupy zasobów dla grupy zasobów jest grupą zasobów, a nazwa maszyny wirtualnej to **MyWindowsVM**, a następnie wartość parametru *ResourceID* to:
     
       ```xml
       <Metrics resourceId="/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/MyWindowsVM" >
@@ -196,7 +195,7 @@ Należy zaktualizować konfigurację, aby uwzględnić następujące elementy:
     </PublicConfig>
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Aby uzyskać dodatkowe wskazówki dotyczące korzystania z możliwości Diagnostyka Azure i innych technik rozwiązywania problemów, zobacz [Włączanie diagnostyki na platformie Azure Cloud Services i Virtual Machines](../../cloud-services/cloud-services-dotnet-diagnostics.md).
 * [Schemat konfiguracji diagnostyki](https://msdn.microsoft.com/library/azure/mt634524.aspx) objaśnia różne opcje konfiguracji XML dla rozszerzenia diagnostyki.
 

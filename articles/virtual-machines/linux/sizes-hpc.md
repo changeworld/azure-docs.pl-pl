@@ -1,6 +1,6 @@
 ---
-title: Rozmiary maszyn wirtualnych systemu Linux platformy Azure — HPC | Dokumentacja firmy Microsoft
-description: Wyświetla listę różnych rozmiarach, dostępne dla systemu Linux o wysokiej wydajności obliczeniowej maszyn wirtualnych na platformie Azure. Wyświetla informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także magazynu przepustowości przepływność i sieci dla rozmiarów w tej serii.
+title: Rozmiary maszyn wirtualnych z systemem Linux na platformie Azure — HPC | Microsoft Docs
+description: Wyświetla listę różnych rozmiarów dostępnych w przypadku maszyn wirtualnych o wysokiej wydajności z systemem Linux na platformie Azure. Wyświetla informacje o liczbie procesorów wirtualnych vCPU, dyskach danych i kartach sieciowych oraz o przepływności magazynu i przepustowości sieci dla rozmiarów w tej serii.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -9,20 +9,19 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 847f25d9be1a8654bbc0435d7874acb0ff793304
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ee99869c2b7a7b3ab38fdd9eae0687862ea53819
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695598"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100875"
 ---
-# <a name="high-performance-compute-virtual-machine-sizes"></a>Wysoka wydajność obliczenia rozmiarów maszyn wirtualnych
+# <a name="high-performance-compute-virtual-machine-sizes"></a>Wymiary maszyn wirtualnych o wysokiej wydajności obliczeniowej
 
 [!INCLUDE [virtual-machines-common-sizes-hpc](../../../includes/virtual-machines-common-sizes-hpc.md)]
 
@@ -33,22 +32,22 @@ ms.locfileid: "67695598"
 
 ### <a name="mpi"></a>MPI 
 
-Funkcja SR-IOV włączone rozmiarów maszyn wirtualnych na platformie Azure Zezwalaj na prawie każdym flavor MPI, które ma być używany.
-Na maszynach wirtualnych włączone bez do funkcji SR-IOV obsługiwane są tylko wersje 5.x Intel MPI. Nowsze wersje (2017, 2018 r.) środowiska uruchomieniowego Intel MPI biblioteki może być lub może nie być zgodny ze sterownikami RDMA systemu Linux platformy Azure.
+Rozmiary maszyn wirtualnych z obsługą wirtualizacji SR-IOV na platformie Azure zezwalają na użycie niemal wszystkich wersji MPI.
+Na maszynach wirtualnych z obsługą wirtualizacji SR-IOV obsługiwane są tylko wersje Intel MPI 5. x. Nowsze wersje (2017, 2018) biblioteki środowiska uruchomieniowego Intel MPI mogą być niezgodne ze sterownikami RDMA systemu Linux.
 
 
 ### <a name="supported-os-images"></a>Obsługiwane obrazy systemu operacyjnego
  
-W portalu Azure Marketplace zawiera wiele dystrybucji systemu Linux, które obsługują łączności funkcji RDMA:
+Portal Azure Marketplace ma wiele dystrybucji systemu Linux obsługujących łączność RDMA:
   
-* **HPC opartych na systemie centOS** — bez do funkcji SR-IOV jest włączona w przypadku maszyn wirtualnych opartych na systemie CentOS wersji 6.5 obliczenia HPC lub jego nowsza wersja maksymalnie 7.5 są odpowiednie. W przypadku maszyn wirtualnych serii H są zalecane w wersji 7.1 lub 7.5. Sterowniki RDMA i Intel MPI 5.1 są zainstalowane na maszynie Wirtualnej.
-  W przypadku maszyn wirtualnych funkcji SR-IOV 7.6 CentOS HPC pochodzi zoptymalizowane i wstępnie załadowane sterowniki RDMA i zainstalowane różne pakiety MPI.
-  Innych obrazów systemu RHEL/CentOS maszyny Wirtualnej Dodaj rozszerzenie InfiniBandLinux umożliwiające InfiniBand. To rozszerzenie maszyny Wirtualnej systemu Linux instaluje sterowniki Mellanox OFED (na maszynach wirtualnych z funkcji SR-IOV) dla łączności RDMA. Następujące polecenie cmdlet programu PowerShell zainstalowanie najnowszej wersji (w wersji 1.0) rozszerzenia InfiniBandDriverLinux istniejącej maszyny wirtualnej funkcją RDMA. Obsługa funkcji maszyna wirtualna ma nazwę *myVM* i jest wdrażana w grupie zasobów o nazwie *myResourceGroup* w *zachodnie stany USA* regionu, w następujący sposób:
+* **CentOS HPC** — dla maszyn wirtualnych z obsługą wirtualizacji SR-IOV, CentOS w wersji 6,5 HPC lub nowszej, do 7,5 są odpowiednie. W przypadku maszyn wirtualnych z serii H zaleca się używanie wersji 7,1 do 7,5. Sterowniki RDMA i Intel MPI 5,1 są zainstalowane na maszynie wirtualnej.
+  W przypadku maszyn wirtualnych SR-IOV CentOS-HPC 7,6 jest zoptymalizowane i wstępnie załadowane ze sterownikami RDMA i zainstalowanymi różnymi pakietami MPI.
+  W przypadku innych obrazów maszyn wirtualnych RHEL/CentOS Dodaj rozszerzenie InfiniBandLinux, aby włączyć funkcję InfiniBand. To rozszerzenie maszyny wirtualnej z systemem Linux instaluje sterowniki Mellanox OFED (na maszynach wirtualnych SR-IOV) na potrzeby łączności RDMA. Następujące polecenie cmdlet programu PowerShell instaluje najnowszą wersję (w wersji 1,0) rozszerzenia InfiniBandDriverLinux na istniejącej maszynie wirtualnej z obsługą funkcji RDMA. Maszyna wirtualna z obsługą funkcji RDMA ma nazwę *myVM* i jest wdrażana w grupie zasobów o nazwie Moja *zasobów* w regionie *zachodnie stany USA* w następujący sposób:
 
   ```powershell
   Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
   ```
-  Alternatywnie rozszerzenia maszyn wirtualnych może obejmować w szablonach usługi Azure Resource Manager w celu łatwiejszego wdrażania przy użyciu następującego elementu JSON:
+  Alternatywnie rozszerzenia maszyn wirtualnych można dołączać do szablonów Azure Resource Manager, aby ułatwić wdrażanie za pomocą następującego elementu JSON:
   ```json
   "properties":{
   "publisher": "Microsoft.HpcCompute",
@@ -57,7 +56,7 @@ W portalu Azure Marketplace zawiera wiele dystrybucji systemu Linux, które obs�
   } 
   ```
   
-  Poniższe polecenie instaluje najnowsze rozszerzenia InfiniBandDriverLinux w wersji 1.0 na wszystkich maszynach wirtualnych z funkcją RDMA w istniejącej maszyny Wirtualnej zestawu skalowania o nazwie *myVMSS* wdrożone w grupie zasobów o nazwie *myResourceGroup*:
+  Następujące polecenie instaluje najnowszą wersję 1,0 rozszerzenia InfiniBandDriverLinux na wszystkich maszynach wirtualnych z obsługą funkcji RDMA w istniejącym zestawie skalowania maszyn wirtualnych o nazwie *myVMSS* wdrożoną w grupie zasobów o nazwie Moja *zasobów*:
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
   Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
@@ -66,48 +65,48 @@ W portalu Azure Marketplace zawiera wiele dystrybucji systemu Linux, które obs�
   ```
   
   > [!NOTE]
-  > W obrazach opartych na systemie CentOS HPC aktualizacji jądra są wyłączone w **yum** pliku konfiguracji. Jest to spowodowane sterowniki RDMA systemu Linux są dystrybuowane jako pakiet RPM i aktualizacje sterowników może nie działać, jeśli jest aktualizowana w jądrze.
+  > W obrazach HPC opartych na CentOS aktualizacje jądra są wyłączone w pliku konfiguracyjnym **yum** . Wynika to z faktu, że sterowniki RDMA systemu Linux są dystrybuowane jako pakiet RPM, a aktualizacje sterowników mogą nie zadziałać, jeśli jądro zostało zaktualizowane.
   >
   
 
-* **SUSE Linux Enterprise Server** -SLES 12 dla HPC, SLES 12 z dodatkiem SP3 dla HPC (Premium), SLES 12 z dodatkiem SP3 dla HPC, SLES 12 z dodatkiem SP1 z dodatkiem SP1 dla HPC (Premium), SLES 12 z dodatkiem SP4 i SLES 15. RDMA sterowniki są zainstalowane i Intel MPI pakiety są dystrybuowane na maszynie Wirtualnej. Zainstaluj MPI, uruchamiając następujące polecenie:
+* **SUSE Linux Enterprise Server** -SLES 12 SP3 dla HPC, SLES 12 SP3 dla HPC (Premium), SLES 12 SP1 dla HPC, SLES 12 SP1 dla HPC (Premium), SLES 12 SP4 i SLES 15. Sterowniki RDMA są zainstalowane i pakiety Intel MPI są dystrybuowane na maszynie wirtualnej. Zainstaluj program MPI, uruchamiając następujące polecenie:
 
   ```bash
   sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
   ```
   
-* **Ubuntu** — Ubuntu Server 16.04 LTS, 18.04 LTS. Konfigurowanie sterowników RDMA na maszynie Wirtualnej i zarejestrowanie firmy Intel, Intel MPI pobierania:
+* **Ubuntu** -Ubuntu Server 16,04 LTS, 18,04 LTS. Skonfiguruj sterowniki RDMA na maszynie wirtualnej i zarejestruj się w firmie Intel, aby pobrać firmę Intel MPI:
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]  
 
-  Aby uzyskać więcej informacji na temat włączania InfiniBand, konfigurowanie MPI, zobacz [Włącz InfiniBand](../workloads/hpc/enable-infiniband.md).
+  Aby uzyskać więcej informacji na temat włączania funkcji InfiniBand, konfigurowania MPI, zobacz [enable InfiniBand](../workloads/hpc/enable-infiniband.md).
 
 
 ### <a name="cluster-configuration-options"></a>Opcje konfiguracji klastra
 
-System Azure oferuje kilka opcji tworzenia klastrów HPC maszyn wirtualnych systemu Linux, który może komunikować się za pośrednictwem sieci RDMA, w tym: 
+System Azure oferuje kilka opcji tworzenia klastrów maszyn wirtualnych z systemem Linux HPC, które mogą komunikować się za pomocą sieci RDMA, w tym: 
 
-* **Maszyny wirtualne** — wdrażanie maszyn wirtualnych z funkcją RDMA HPC w ten sam zestaw dostępności (podczas użycie modelu wdrażania usługi Azure Resource Manager). Jeśli używasz klasycznego modelu wdrażania, należy wdrożyć maszyny wirtualne w tej samej usłudze w chmurze. 
+* **Maszyny wirtualne** — Wdróż maszyny wirtualne z obsługą funkcji RDMA w tym samym zestawie dostępności (w przypadku korzystania z Azure Resource Manager modelu wdrażania). W przypadku korzystania z klasycznego modelu wdrażania należy wdrożyć maszyny wirtualne w tej samej usłudze w chmurze. 
 
-* **Zestawy skalowania maszyn wirtualnych** — zestaw skalowania maszyn wirtualnych zestawu, upewnij się, ograniczenie wdrożenia do pojedynczej grupy umieszczania. Na przykład w szablonie usługi Resource Manager, należy ustawić `singlePlacementGroup` właściwość `true`. 
+* **Zestawy skalowania maszyn wirtualnych** — w zestawie skalowania maszyn wirtualnych należy ograniczyć wdrożenie do pojedynczej grupy umieszczania. Na przykład w szablonie Menedżer zasobów Ustaw `singlePlacementGroup` właściwość na. `true` 
 
-* **MPI między maszynami wirtualnymi** — w przypadku komunikacji MPI w razie potrzeby między maszyny wirtualne (VM), upewnij się, że maszyny wirtualne są w tym samym zestawie dostępności lub maszynę wirtualną, takie same zestawu skalowania.
+* **MPI między maszynami wirtualnymi** — jeśli jest to wymagane między maszynami wirtualnymi, upewnij się, że maszyny wirtualne znajdują się w tym samym zestawie dostępności lub na maszynie wirtualnej tego samego zestawu skalowania.
 
-* **Azure CycleCloud** — Tworzenie klastra HPC w [Azure CycleCloud](/azure/cyclecloud/) do uruchamiania zadań MPI w węzłach systemu Linux.
+* **Azure CycleCloud** — Tworzenie klastra HPC w [usłudze Azure CycleCloud](/azure/cyclecloud/) w celu uruchamiania zadań MPI w węzłach systemu Linux.
 
-* **Usługa Azure Batch** — tworzenie [usługi Azure Batch](/azure/batch/) węzłów obliczeniowych w puli w celu uruchamiania obciążeń MPI w systemie Linux. Aby uzyskać więcej informacji, zobacz [Użyj obsługą dostępu RDMA lub włączonymi procesorami GPU wystąpień w pulach usługi Batch](../../batch/batch-pool-compute-intensive-sizes.md). Zobacz też [usługa Batch Shipyard](https://github.com/Azure/batch-shipyard) projektu do uruchamiania obciążeń opartych na kontenerach w usłudze Batch.
+* **Azure Batch** — utwórz pulę [Azure Batch](/azure/batch/) do uruchamiania obciążeń MPI w węzłach obliczeniowych systemu Linux. Aby uzyskać więcej informacji, zobacz [Korzystanie z wystąpień obsługujących funkcję RDMA lub GPU w pulach usługi Batch](../../batch/batch-pool-compute-intensive-sizes.md). Zobacz również projekt [stoczni usługi Batch](https://github.com/Azure/batch-shipyard) do uruchamiania obciążeń opartych na kontenerach w usłudze Batch.
 
-* **Pakiet Microsoft HPC Pack** - [pakietu HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) obsługuje wdrożonych na maszynach wirtualnych Azure funkcją RDMA, węzłów obliczeniowych kilku dystrybucje systemu Linux do uruchamiania na zarządzanych przez węzłem systemu Windows Server. Przykład wdrożenia, zobacz [Utwórz pakiet systemu Linux RDMA klastra HPC na platformie Azure](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
+* **Pakiet Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) obsługuje kilka dystrybucji systemu Linux do uruchomienia w węzłach obliczeniowych wdrożonych na maszynach wirtualnych platformy Azure obsługujących funkcję RDMA zarządzanym przez węzeł główny systemu Windows Server. Aby zapoznać się z przykładowym wdrożeniem, zobacz [Tworzenie klastra programu HPC Pack w systemie Linux na platformie Azure](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
 
 
 ### <a name="network-considerations"></a>Zagadnienia dotyczące sieci
-* W innych niż-funkcja SR-IOV obsługą funkcji RDMA maszyn wirtualnych systemu Linux na platformie Azure, eth1 jest zarezerwowana dla ruchu sieciowego RDMA. Nie zmieniaj żadnych ustawień eth1 lub wszelkie informacje zawarte w pliku konfiguracji odnoszące się do tej sieci.
-* W funkcji SR-IOV włączonych maszyn wirtualnych (HB i serii HC), ib0 jest zarezerwowany dla ruchu sieciowego RDMA.
-* Sieć RDMA na platformie Azure rezerwuje 172.16.0.0/16 przestrzeni adresowej. Do uruchamiania aplikacji MPI w wystąpieniach wdrożonych w sieci wirtualnej platformy Azure, upewnij się, przestrzeń adresową sieci wirtualnej nie nakłada sieci RDMA.
-* W zależności od wybranego narzędzia do zarządzania klastrem dodatkowy system konfiguracji mogą być potrzebne do uruchamiania zadań MPI. Na przykład w klastrze maszyn wirtualnych, konieczne może być ustanowienie relacji zaufania między węzłami klastra, przez generowanie kluczy SSH, albo poprzez utworzenie bez hasła logowania do protokołu SSH.
+* W przypadku maszyn wirtualnych z systemem Linux, które nie obsługują funkcji RDMA na platformie Azure, eth1 jest zarezerwowany dla ruchu sieciowego RDMA. Nie należy zmieniać żadnych ustawień eth1 ani żadnych informacji w pliku konfiguracyjnym odnoszących się do tej sieci.
+* Na maszynach wirtualnych z obsługą wirtualizacji SR-IOV (HB i HC) ib0 jest zarezerwowany dla ruchu sieciowego RDMA.
+* Sieć RDMA na platformie Azure rezerwuje przestrzeń adresową 172.16.0.0/16. Aby uruchamiać aplikacje MPI w wystąpieniach wdrożonych w sieci wirtualnej platformy Azure, upewnij się, że przestrzeń adresowa sieci wirtualnej nie nakłada się na sieć RDMA.
+* W zależności od wybranego narzędzia do zarządzania klastrami może być wymagana dodatkowa konfiguracja systemu do uruchamiania zadań MPI. Na przykład w klastrze maszyn wirtualnych może być konieczne ustanowienie relacji zaufania między węzłami klastra przez wygenerowanie kluczy SSH lub przez ustanowienie logowania za pomocą protokołu SSH.
 
 
-## <a name="other-sizes"></a>O innych rozmiarach
+## <a name="other-sizes"></a>Inne rozmiary
 - [Zastosowania ogólne](sizes-general.md)
 - [Optymalizacja pod kątem obliczeń](sizes-compute.md)
 - [Optymalizacja pod kątem pamięci](sizes-memory.md)
@@ -115,7 +114,7 @@ System Azure oferuje kilka opcji tworzenia klastrów HPC maszyn wirtualnych syst
 - [Procesor GPU](../windows/sizes-gpu.md)
 - [Poprzednie generacje](sizes-previous-gen.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej na temat sposobu instalacji, optymalizacji i skalowania [obciążeń HPC](../workloads/hpc/configure.md) na platformie Azure.
-- Dowiedz się więcej o tym, jak [usługi Azure compute jednostki (ACU)](acu.md) pozwalają porównać wydajności obliczeń w jednostkach SKU platformy Azure.
+- Dowiedz się więcej na temat sposobu konfigurowania, optymalizowania i skalowania [obciążeń HPC](../workloads/hpc/configure.md) na platformie Azure.
+- Dowiedz się więcej o tym, jak [usługa Azure COMPUTE units (ACU)](acu.md) może pomóc w porównaniu wydajności obliczeniowej w ramach jednostek SKU platformy Azure.

@@ -7,18 +7,17 @@ author: cynthn
 manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/28/2019
 ms.author: cynthn
-ms.openlocfilehash: d6d8986117bd2899ea0de0aa6490954aef6c3a56
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 81b9dc5059a6ab3e8245acd9c7e7ef8be5abdafd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67850342"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083865"
 ---
 # <a name="co-locate-resources-for-improved-latency"></a>Wspólne Lokalizowanie zasobów w celu uzyskania lepszych opóźnień
 
@@ -28,7 +27,7 @@ Podczas wdrażania aplikacji na platformie Azure rozproszenie wystąpień międz
 
 [!INCLUDE [virtual-machines-common-ppg-overview](../../../includes/virtual-machines-common-ppg-overview.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Wdróż maszynę wirtualną w [grupie umieszczania sąsiedztwa](proximity-placement-groups.md) przy użyciu interfejsu wiersza polecenia platformy Azure.
 

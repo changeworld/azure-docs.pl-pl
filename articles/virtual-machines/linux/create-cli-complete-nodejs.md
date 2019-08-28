@@ -1,6 +1,6 @@
 ---
-title: Tworzenie kompletnego środowiska systemu Linux za pomocą wiersza polecenia platformy Azure Classic | Dokumentacja firmy Microsoft
-description: Tworzenie magazynu, Maszynę wirtualną systemu Linux, sieci wirtualnej i podsieci, modułu równoważenia obciążenia, kartę Sieciową, publiczny adres IP i sieciową grupę zabezpieczeń, wszystkie od podstaw przy użyciu klasycznego wiersza polecenia platformy Azure.
+title: Tworzenie kompletnego środowiska systemu Linux przy użyciu klasycznego interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+description: Tworzenie magazynu, maszyny wirtualnej z systemem Linux, sieci wirtualnej i podsieci, modułu równoważenia obciążenia, karty sieciowej, publicznego adresu IP i sieciowej grupy zabezpieczeń, a wszystko to od podstaw przy użyciu klasycznego interfejsu wiersza polecenia platformy Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,50 +9,49 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 4ba4060b-ce95-4747-a735-1d7c68597a1a
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 5fbcbc63b3038151a7d45a70ce88eb7ca9829fe5
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: aaf91aa81be5fc4c5944dde804798a61ceffc5a6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668006"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083716"
 ---
-# <a name="create-a-complete-linux-environment-with-the-azure-classic-cli"></a>Tworzenie kompletnego środowiska systemu Linux za pomocą klasycznego wiersza polecenia platformy Azure
-W tym artykule firma Microsoft tworzy prostą sieć przy użyciu modułu równoważenia obciążenia i pary maszyn wirtualnych, które są przydatne do tworzenia i przetwarzania proste. Części omówimy proces polecenia przez polecenie, dopóki nie uzyskasz dwa działa, bezpieczne maszyn wirtualnych systemu Linux do których możesz połączyć z dowolnego miejsca w Internecie. Następnie możesz przejść do bardziej złożonych sieci i środowisk.
+# <a name="create-a-complete-linux-environment-with-the-azure-classic-cli"></a>Tworzenie kompletnego środowiska systemu Linux przy użyciu klasycznego interfejsu wiersza polecenia platformy Azure
+W tym artykule tworzymy prostą sieć z modułem równoważenia obciążenia oraz parę maszyn wirtualnych, które są przydatne do tworzenia i przetwarzania prostych danych. Analizujemy polecenie Process Command by, dopóki nie masz dwóch działających i bezpiecznych maszyn wirtualnych z systemem Linux, z którymi można się połączyć z dowolnego miejsca w Internecie. Następnie możesz przejść do bardziej złożonych sieci i środowisk.
 
-Po drodze poznasz hierarchii zależności, zapewnia modelu wdrażania usługi Resource Manager i o ile włączenie go zawiera. Gdy zobaczysz, jak zbudowane jest systemu, można ponownie utworzyć jej znacznie szybciej za pomocą [szablonów usługi Azure Resource Manager](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Ponadto po dowiesz się, jak części środowiska współdziałają ze sobą, tworzenie szablonów, aby je zautomatyzować staje się łatwiejsze.
+W ten sposób poznasz hierarchię zależności, którą oferuje Menedżer zasobów model wdrażania, i o ile mocy zapewnia. Po zawieszeniu się, jak system został skompilowany, można ponownie skompilować go znacznie szybciej przy użyciu [szablonów Azure Resource Manager](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Ponadto, po poznaniu współdziałania części środowiska, tworzenie szablonów służących do automatyzowania ich jest łatwiejsze.
 
 Środowisko zawiera:
 
 * Dwie maszyny wirtualne w zestawie dostępności.
 * Moduł równoważenia obciążenia z regułą równoważenia obciążenia na porcie 80.
-* Reguły sieciowej grupy zabezpieczeń (NSG) do ochrony maszyny Wirtualnej z niepożądanym ruchem.
+* Reguły sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń) w celu ochrony maszyny wirtualnej przed niechcianym ruchem.
 
-Do utworzenia tego środowiska niestandardowego, potrzebujesz najnowszej [klasyczny interfejs wiersza polecenia platformy Azure](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) w trybie Menedżera zasobów (`azure config mode arm`). Należy również narzędzia analizy JSON. W tym przykładzie użyto [jq](https://stedolan.github.io/jq/).
+Aby utworzyć to środowisko niestandardowe, potrzebujesz najnowszego [klasycznego interfejsu wiersza polecenia platformy Azure](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) w`azure config mode arm`trybie Menedżer zasobów (). Potrzebujesz także narzędzia do analizy JSON. W tym przykładzie używa [JQ](https://stedolan.github.io/jq/).
 
 
 ## <a name="cli-versions-to-complete-the-task"></a>Wersje interfejsu wiersza polecenia umożliwiające wykonanie zadania
 Zadanie można wykonać przy użyciu jednej z następujących wersji interfejsu wiersza polecenia:
 
-- [Klasyczny interfejs wiersza polecenia Azure](#quick-commands) — Nasz interfejs wiersza polecenia dla klasycznego i zasobów zarządzania modeli wdrażania (w tym artykule)
-- [Interfejs wiersza polecenia Azure](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) — naszej nowej generacji interfejsu wiersza polecenia dla modelu wdrażania usługi resource management
+- [Klasyczny interfejs wiersza polecenia platformy Azure](#quick-commands) — nasz interfejs wiersza polecenia dla modeli wdrożeń klasycznych i zarządzania zasobami (w tym artykule)
+- [Interfejs wiersza polecenia platformy Azure](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) — nasz interfejs wiersza polecenia nowej generacji dla modelu wdrażania usługi Resource Management
 
 
 ## <a name="quick-commands"></a>Szybkie polecenia
-Jeśli chcesz szybko wykonać zadania w poniższej sekcji opisano szczegółowo base polecenia do przekazania Maszynę wirtualną na platformie Azure. Bardziej szczegółowe informacje i kontekst dla każdego kroku można znaleźć w pozostałej części dokumentu, uruchamianie [tutaj](#detailed-walkthrough).
+Jeśli musisz szybko wykonać zadanie, w poniższej sekcji przedstawiono podstawowe polecenia dotyczące przekazywania maszyny wirtualnej do platformy Azure. Bardziej szczegółowe informacje i kontekst dla każdego kroku można znaleźć w pozostałej części dokumentu, zaczynając od tego [miejsca](#detailed-walkthrough).
 
-Upewnij się, że masz [wiersza polecenia platformy Azure Classic](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) zalogowany i korzystania z trybu usługi Resource Manager:
+Upewnij się, że masz zalogowanie [klasycznego interfejsu wiersza polecenia platformy Azure](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) i użycie trybu Menedżer zasobów:
 
 ```azurecli
 azure config mode arm
 ```
 
-W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru zawierają `myResourceGroup`, `mystorageaccount`, i `myVM`.
+W poniższych przykładach Zastąp przykładowe nazwy parametrów własnymi wartościami. Przykładowe nazwy parametrów obejmują `myResourceGroup`, `mystorageaccount`, i `myVM`.
 
 Utwórz grupę zasobów. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westeurope`:
 
@@ -60,20 +59,20 @@ Utwórz grupę zasobów. Poniższy przykład obejmuje tworzenie grupy zasobów o
 azure group create -n myResourceGroup -l westeurope
 ```
 
-Sprawdź grupy zasobów przy użyciu analizatora składni JSON:
+Sprawdź grupę zasobów przy użyciu analizatora JSON:
 
 ```azurecli
 azure group show myResourceGroup --json | jq '.'
 ```
 
-Utwórz konto magazynu. Poniższy przykład tworzy konto magazynu o nazwie `mystorageaccount`. (Nazwa konta magazynu muszą być unikatowe, więc należy podać swoją własną unikatową nazwę.)
+Utwórz konto magazynu. Poniższy przykład tworzy konto magazynu o nazwie `mystorageaccount`. (Nazwa konta magazynu musi być unikatowa, więc podaj własną unikatową nazwę).
 
 ```azurecli
 azure storage account create -g myResourceGroup -l westeurope \
   --kind Storage --sku-name GRS mystorageaccount
 ```
 
-Sprawdź konto magazynu przy użyciu analizatora składni JSON:
+Sprawdź konto magazynu przy użyciu analizatora JSON:
 
 ```azurecli
 azure storage account show -g myResourceGroup mystorageaccount --json | jq '.'
@@ -93,26 +92,26 @@ azure network vnet subnet create -g myResourceGroup \
   -e myVnet -n mySubnet -a 192.168.1.0/24
 ```
 
-Sprawdź sieć wirtualną i podsieć, za pomocą analizatora składni JSON:
+Sprawdź sieć wirtualną i podsieć przy użyciu analizatora JSON:
 
 ```azurecli
 azure network vnet show myResourceGroup myVnet --json | jq '.'
 ```
 
-Tworzenie publicznego adresu IP. Poniższy przykład tworzy publiczny adres IP o nazwie `myPublicIP` nazwą DNS `mypublicdns`. (Nazwa DNS muszą być unikatowe, więc należy podać swoją własną unikatową nazwę.)
+Utwórz publiczny adres IP. Poniższy przykład tworzy publiczny adres IP o nazwie `myPublicIP` z `mypublicdns`nazwą DNS. (Nazwa DNS musi być unikatowa, więc podaj własną unikatową nazwę).
 
 ```azurecli
 azure network public-ip create -g myResourceGroup -l westeurope \
   -n myPublicIP  -d mypublicdns -a static -i 4
 ```
 
-Tworzenie modułu równoważenia obciążenia. Poniższy przykład tworzy moduł równoważenia obciążenia o nazwie `myLoadBalancer`:
+Utwórz moduł równoważenia obciążenia. Poniższy przykład tworzy moduł równoważenia obciążenia o nazwie `myLoadBalancer`:
 
 ```azurecli
 azure network lb create -g myResourceGroup -l westeurope -n myLoadBalancer
 ```
 
-Utwórz pulę adresów IP frontonu modułu równoważenia obciążenia i skojarz publiczny adres IP. Poniższy przykład tworzy pulę adresów IP frontonu o nazwie `mySubnetPool`:
+Utwórz pulę adresów IP frontonu dla modułu równoważenia obciążenia i skojarz publiczny adres IP. Poniższy przykład tworzy pulę adresów IP frontonu o nazwie `mySubnetPool`:
 
 ```azurecli
 azure network lb frontend-ip create -g myResourceGroup -l myLoadBalancer \
@@ -126,7 +125,7 @@ azure network lb address-pool create -g myResourceGroup -l myLoadBalancer \
   -n myBackEndPool
 ```
 
-Utwórz sieć dla ruchu przychodzącego protokołu SSH reguły translatora adresów (NAT) dla modułu równoważenia obciążenia. Poniższy przykład tworzy dwie reguły modułu równoważenia obciążenia, `myLoadBalancerRuleSSH1` i `myLoadBalancerRuleSSH2`:
+Utwórz przychodzące reguły translacji adresów sieciowych (NAT) protokołu SSH dla modułu równoważenia obciążenia. Poniższy przykład tworzy dwie reguły `myLoadBalancerRuleSSH1` `myLoadBalancerRuleSSH2`modułu równoważenia obciążenia:
 
 ```azurecli
 azure network lb inbound-nat-rule create -g myResourceGroup -l myLoadBalancer \
@@ -135,7 +134,7 @@ azure network lb inbound-nat-rule create -g myResourceGroup -l myLoadBalancer \
   -n myLoadBalancerRuleSSH2 -p tcp -f 4223 -b 22
 ```
 
-Utwórz sieć web reguły NAT modułu równoważenia obciążenia dla ruchu przychodzącego. Poniższy przykład tworzy regułę modułu równoważenia obciążenia o nazwie `myLoadBalancerRuleWeb`:
+Utwórz reguły NAT ruchu przychodzącego sieci Web dla modułu równoważenia obciążenia. Poniższy przykład tworzy regułę modułu równoważenia obciążenia o nazwie `myLoadBalancerRuleWeb`:
 
 ```azurecli
 azure network lb rule create -g myResourceGroup -l myLoadBalancer \
@@ -143,22 +142,22 @@ azure network lb rule create -g myResourceGroup -l myLoadBalancer \
   -t myFrontEndPool -o myBackEndPool
 ```
 
-Tworzenie sondy kondycji modułu równoważenia obciążenia. Poniższy przykład tworzy sondę TCP, o nazwie `myHealthProbe`:
+Utwórz sondę kondycji modułu równoważenia obciążenia. Poniższy przykład tworzy sondę TCP o nazwie `myHealthProbe`:
 
 ```azurecli
 azure network lb probe create -g myResourceGroup -l myLoadBalancer \
   -n myHealthProbe -p "tcp" -i 15 -c 4
 ```
 
-Zweryfikować moduł równoważenia obciążenia, pule adresów IP i reguł translatora adresów Sieciowych przy użyciu analizatora JSON:
+Sprawdź, czy moduł równoważenia obciążenia, pule adresów IP i reguły NAT są używane przy użyciu analizatora JSON:
 
 ```azurecli
 azure network lb show -g myResourceGroup -n myLoadBalancer --json | jq '.'
 ```
 
-Tworzenie pierwszej karty interfejsu sieciowego (NIC). Zastąp `#####-###-###` sekcje własnym identyfikatorem subskrypcji platformy Azure Identyfikator jest podana w danych wyjściowych subskrypcja **jq** podczas badania zasobów tworzona. Można również wyświetlić swój identyfikator subskrypcji z `azure account list`.
+Utwórz pierwszą kartę sieciową (NIC). Zastąp `#####-###-###` sekcje własnym identyfikatorem subskrypcji platformy Azure. Identyfikator subskrypcji jest zanotowany w danych wyjściowych **JQ** podczas badania tworzonych zasobów. Identyfikator subskrypcji można także wyświetlić w usłudze `azure account list`.
 
-Poniższy przykład tworzy kartę Sieciową o nazwie `myNic1`:
+Poniższy przykład tworzy kartę sieciową o `myNic1`nazwie:
 
 ```azurecli
 azure network nic create -g myResourceGroup -l westeurope \
@@ -167,7 +166,7 @@ azure network nic create -g myResourceGroup -l westeurope \
   -e "/subscriptions/########-####-####-####-############/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/inboundNatRules/myLoadBalancerRuleSSH1"
 ```
 
-Tworzenie drugiej karty sieciowej. Poniższy przykład tworzy kartę Sieciową o nazwie `myNic2`:
+Utwórz drugą kartę sieciową. Poniższy przykład tworzy kartę sieciową o `myNic2`nazwie:
 
 ```azurecli
 azure network nic create -g myResourceGroup -l westeurope \
@@ -176,7 +175,7 @@ azure network nic create -g myResourceGroup -l westeurope \
   -e "/subscriptions/########-####-####-####-############/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/inboundNatRules/myLoadBalancerRuleSSH2"
 ```
 
-Aby zweryfikować dwie karty sieciowe, przy użyciu analizatora JSON:
+Sprawdź dwie karty sieciowe przy użyciu analizatora JSON:
 
 ```azurecli
 azure network nic show myResourceGroup myNic1 --json | jq '.'
@@ -190,7 +189,7 @@ azure network nsg create -g myResourceGroup -l westeurope \
   -n myNetworkSecurityGroup
 ```
 
-Dodaj dwie reguły dla ruchu przychodzącego dla sieciowej grupy zabezpieczeń. Poniższy przykład tworzy dwie reguły `myNetworkSecurityGroupRuleSSH` i `myNetworkSecurityGroupRuleHTTP`:
+Dodaj dwie reguły ruchu przychodzącego dla sieciowej grupy zabezpieczeń. Poniższy przykład tworzy dwie reguły `myNetworkSecurityGroupRuleSSH` i: `myNetworkSecurityGroupRuleHTTP`
 
 ```azurecli
 azure network nsg rule create -p tcp -r inbound -y 1000 -u 22 -c allow \
@@ -199,26 +198,26 @@ azure network nsg rule create -p tcp -r inbound -y 1001 -u 80 -c allow \
   -g myResourceGroup -a myNetworkSecurityGroup -n myNetworkSecurityGroupRuleHTTP
 ```
 
-Sprawdź sieciowej grupy zabezpieczeń i reguł dla ruchu przychodzącego za pomocą analizatora składni JSON:
+Sprawdź sieciową grupę zabezpieczeń i reguły ruchu przychodzącego za pomocą analizatora JSON:
 
 ```azurecli
 azure network nsg show -g myResourceGroup -n myNetworkSecurityGroup --json | jq '.'
 ```
 
-Powiąż sieciową grupę zabezpieczeń z dwiema kartami sieciowymi:
+Powiąż grupę zabezpieczeń sieci z dwiema kartami interfejsu sieciowego:
 
 ```azurecli
 azure network nic set -g myResourceGroup -o myNetworkSecurityGroup -n myNic1
 azure network nic set -g myResourceGroup -o myNetworkSecurityGroup -n myNic2
 ```
 
-Tworzenie zestawu dostępności. Poniższy przykład obejmuje tworzenie zestawu dostępności o nazwie `myAvailabilitySet`:
+Utwórz zestaw dostępności. Poniższy przykład tworzy zestaw dostępności o nazwie `myAvailabilitySet`:
 
 ```azurecli
 azure availset create -g myResourceGroup -l westeurope -n myAvailabilitySet
 ```
 
-Tworzenie pierwszej maszyny Wirtualnej systemu Linux. Poniższy przykład tworzy Maszynę wirtualną o nazwie `myVM1`:
+Utwórz pierwszą maszynę wirtualną z systemem Linux. Poniższy przykład tworzy maszynę wirtualną o `myVM1`nazwie:
 
 ```azurecli
 azure vm create \
@@ -236,7 +235,7 @@ azure vm create \
     --admin-username azureuser
 ```
 
-Utwórz drugą maszynę Wirtualną systemu Linux. Poniższy przykład tworzy Maszynę wirtualną o nazwie `myVM2`:
+Utwórz drugą maszynę wirtualną z systemem Linux. Poniższy przykład tworzy maszynę wirtualną o `myVM2`nazwie:
 
 ```azurecli
 azure vm create \
@@ -254,32 +253,32 @@ azure vm create \
     --admin-username azureuser
 ```
 
-Korzystanie z analizatora JSON do sprawdzenia, czy wszystkie elementy, który został utworzony:
+Użyj analizatora JSON, aby sprawdzić, czy wszystko zostało skompilowane:
 
 ```azurecli
 azure vm show -g myResourceGroup -n myVM1 --json | jq '.'
 azure vm show -g myResourceGroup -n myVM2 --json | jq '.'
 ```
 
-Eksportuj nowe środowisko do szablonu w celu ponownego szybkie tworzenie nowych wystąpień:
+Wyeksportuj nowe środowisko do szablonu, aby szybko utworzyć nowe wystąpienia:
 
 ```azurecli
 azure group export myResourceGroup
 ```
 
 ## <a name="detailed-walkthrough"></a>Szczegółowy przewodnik
-Szczegółowy opis kroków, które należy wykonać wyjaśniają, każde polecenie czynności jak tworzysz swoje środowisko. Te pojęcia są przydatne podczas tworzenia niestandardowego środowiska programowania lub produkcji.
+Szczegółowe kroki, które należy wykonać, wyjaśniają, jakie poszczególne polecenia są wykonywane podczas tworzenia środowiska. Te pojęcia są przydatne podczas tworzenia własnych środowisk niestandardowych na potrzeby programowania lub produkcji.
 
-Upewnij się, że masz [wiersza polecenia platformy Azure Classic](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) zalogowany i korzystania z trybu usługi Resource Manager:
+Upewnij się, że masz zalogowanie [klasycznego interfejsu wiersza polecenia platformy Azure](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) i użycie trybu Menedżer zasobów:
 
 ```azurecli
 azure config mode arm
 ```
 
-W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru zawierają `myResourceGroup`, `mystorageaccount`, i `myVM`.
+W poniższych przykładach Zastąp przykładowe nazwy parametrów własnymi wartościami. Przykładowe nazwy parametrów obejmują `myResourceGroup`, `mystorageaccount`, i `myVM`.
 
-## <a name="create-resource-groups-and-choose-deployment-locations"></a>Tworzenie grupy zasobów i Wybieranie lokalizacji wdrożenia
-Grupy zasobów platformy Azure są jednostek logiczną wdrożenia, które zawierają informacje dotyczące konfiguracji oraz metadane, aby umożliwić zarządzanie logiczną wdrożenia zasobów. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westeurope`:
+## <a name="create-resource-groups-and-choose-deployment-locations"></a>Tworzenie grup zasobów i Wybieranie lokalizacji wdrożenia
+Grupy zasobów platformy Azure są logicznymi jednostkami wdrażania, które zawierają informacje o konfiguracji i metadane umożliwiające logiczne Zarządzanie wdrożeniami zasobów. Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westeurope`:
 
 ```azurecli
 azure group create --name myResourceGroup --location westeurope
@@ -302,9 +301,9 @@ info:    group create command OK
 ```
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
-Potrzebujesz konta usługi storage dla dysków maszyn wirtualnych i dla dowolnego dodatkowego dysku z danymi, które chcesz dodać. Niemal natychmiast, po utworzeniu grupy zasobów możesz utworzyć konta magazynu.
+Wymagane są konta magazynu dla dysków maszyny wirtualnej i dla wszystkich dodatkowych dysków z danymi, które chcesz dodać. Konta magazynu można tworzyć niemal natychmiast po utworzeniu grup zasobów.
 
-W tym miejscu użyjemy `azure storage account create` polecenia przekazaniem Lokalizacja konta, grupy zasobów, które kontroluje, a typ ma storage — pomoc techniczna. Poniższy przykład tworzy konto magazynu o nazwie `mystorageaccount`:
+W tym miejscu użyjemy `azure storage account create` polecenia, przekazując lokalizację konta, grupę zasobów, która go kontroluje, i typ obsługiwanego magazynu. Poniższy przykład tworzy konto magazynu o nazwie `mystorageaccount`:
 
 ```azurecli
 azure storage account create \  
@@ -322,7 +321,7 @@ info:    Executing command storage account create
 info:    storage account create command OK
 ```
 
-Aby sprawdzić naszą grupę zasobów za pomocą `azure group show` poleceń, użyjemy [jq](https://stedolan.github.io/jq/) narzędzia wraz z `--json` opcji wiersza polecenia platformy Azure. (Możesz użyć **jsawk** lub każdą bibliotekę języka chcesz przeanalizować za pomocą pliku JSON.)
+Aby zapoznać się z naszą grupą zasobów `azure group show` przy użyciu polecenia, użyjmy [](https://stedolan.github.io/jq/) `--json` narzędzia JQ wraz z opcją interfejsu wiersza polecenia platformy Azure. (Możesz użyć **jsawk** lub dowolnej biblioteki języka, aby przeanalizować kod JSON).
 
 ```azurecli
 azure group show myResourceGroup --json | jq '.'
@@ -360,13 +359,13 @@ Dane wyjściowe:
 }
 ```
 
-Aby zbadać konta magazynu przy użyciu interfejsu wiersza polecenia, należy najpierw do ustawiania nazwy konta i klucze. Zastąp nazwę tworzonej nazwę konta magazynu w następującym przykładzie:
+Aby zbadać konto magazynu przy użyciu interfejsu wiersza polecenia, należy najpierw ustawić nazwy kont i kluczy. Zastąp nazwę konta magazynu w poniższym przykładzie nazwą, którą wybierzesz:
 
 ```bash
 export AZURE_STORAGE_CONNECTION_STRING="$(azure storage account connectionstring show mystorageaccount --resource-group myResourceGroup --json | jq -r '.string')"
 ```
 
-Następnie można wyświetlić informacje dotyczące Twojego magazynu łatwe:
+Możesz łatwo wyświetlić informacje o magazynie:
 
 ```azurecli
 azure storage container list
@@ -384,7 +383,7 @@ info:    storage container list command OK
 ```
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Tworzenie sieci wirtualnej i podsieci
-Następnie możesz zacząć, należy utworzyć sieć wirtualną, uruchomiony w systemie Azure i podsieć, w którym można utworzyć maszyny wirtualne. Poniższy przykład tworzy sieć wirtualną o nazwie `myVnet` z `192.168.0.0/16` prefiks adresu:
+Następnie musisz utworzyć sieć wirtualną działającą na platformie Azure i podsieć, w której można tworzyć maszyny wirtualne. Poniższy przykład tworzy sieć wirtualną o nazwie `myVnet` `192.168.0.0/16` z prefiksem adresu:
 
 ```azurecli
 azure network vnet create --resource-group myResourceGroup --location westeurope \
@@ -408,7 +407,7 @@ data:      192.168.0.0/16
 info:    network vnet create command OK
 ```
 
-Ponownie, możemy użyć opcji--json `azure group show` i `jq` aby zobaczyć, jak tworzymy nasze zaawansowane zasoby. W efekcie powstał `storageAccounts` zasobów i `virtualNetworks` zasobów.  
+Użyjmy opcji `azure group show` --json i, aby zobaczyć, `jq` w jaki sposób tworzysz zasoby. Mamy teraz `storageAccounts` zasób `virtualNetworks` i zasób.  
 
 ```azurecli
 azure group show myResourceGroup --json | jq '.'
@@ -453,7 +452,7 @@ Dane wyjściowe:
 }
 ```
 
-Teraz Utwórzmy podsieci `myVnet` sieci wirtualnej, w której maszyny wirtualne są wdrażane. Używamy `azure network vnet subnet create` polecenie wraz z zasobami, utworzyliśmy już: `myResourceGroup` grupy zasobów i `myVnet` sieci wirtualnej. W poniższym przykładzie dodamy podsieć o nazwie `mySubnet` z prefiksem adresu podsieci `192.168.1.0/24`:
+Teraz Utwórzmy podsieć w `myVnet` sieci wirtualnej, w której zostaną wdrożone maszyny wirtualne. Używamy `azure network vnet subnet create` polecenia wraz z już utworzonymi zasobami `myResourceGroup` : grupą zasobów i `myVnet` siecią wirtualną. W poniższym przykładzie dodamy podsieć o nazwie `mySubnet` z `192.168.1.0/24`prefiksem adresu podsieci:
 
 ```azurecli
 azure network vnet subnet create --resource-group myResourceGroup \
@@ -476,7 +475,7 @@ data:
 info:    network vnet subnet create command OK
 ```
 
-Ponieważ podsieci logicznie znajduje się wewnątrz sieci wirtualnej, firma Microsoft poszukaj informacji o podsieci za pomocą polecenia nieco inne. Polecenie używamy jest `azure network vnet show`, ale Kontynuujemy Sprawdź dane wyjściowe JSON za pomocą `jq`.
+Ze względu na to, że podsieć jest logicznie w sieci wirtualnej, szukamy informacji o podsieci z nieco innym poleceniem. To polecenie jest `azure network vnet show`używane, ale nadal badamy dane wyjściowe JSON przy użyciu `jq`.
 
 ```azurecli
 azure network vnet show myResourceGroup myVnet --json | jq '.'
@@ -514,7 +513,7 @@ Dane wyjściowe:
 ```
 
 ## <a name="create-a-public-ip-address"></a>Tworzenie publicznego adresu IP
-Teraz Utwórzmy publiczny adres IP (PIP), który możemy Przypisz do modułu równoważenia obciążenia. Umożliwia łączenie maszyn wirtualnych z Internetu przy użyciu `azure network public-ip create` polecenia. Ponieważ adres domyślny jest dynamiczny, utworzymy nazwanego wpisu DNS w **cloudapp.azure.com** domeny przy użyciu `--domain-name-label` opcji. Poniższy przykład tworzy publiczny adres IP o nazwie `myPublicIP` nazwą DNS `mypublicdns`. Ponieważ nazwa DNS musi być unikatowa, możesz podać swoją własną unikatową nazwę DNS:
+Teraz Utwórzmy publiczny adres IP (PIP) przypisywany do modułu równoważenia obciążenia. Umożliwia nawiązanie połączenia z maszynami wirtualnymi z Internetu za pomocą `azure network public-ip create` polecenia. Ponieważ domyślny adres jest dynamiczny, w domenie **cloudapp.Azure.com** tworzymy wpis DNS o nazwie przy użyciu `--domain-name-label` opcji. Poniższy przykład tworzy publiczny adres IP o nazwie `myPublicIP` z `mypublicdns`nazwą DNS. Ponieważ nazwa DNS musi być unikatowa, należy podać własną unikatową nazwę DNS:
 
 ```azurecli
 azure network public-ip create --resource-group myResourceGroup \
@@ -540,7 +539,7 @@ data:    FQDN                            : mypublicdns.westeurope.cloudapp.azure
 info:    network public-ip create command OK
 ```
 
-Publiczny adres IP jest również zasobem najwyższego poziomu, można to sprawdzić za pomocą `azure group show`.
+Publiczny adres IP jest również zasobem najwyższego poziomu, więc można go wyświetlić za pomocą `azure group show`.
 
 ```azurecli
 azure group show myResourceGroup --json | jq '.'
@@ -592,7 +591,7 @@ Dane wyjściowe:
 }
 ```
 
-Możesz zbadać, aby uzyskać więcej informacji zasobów, w tym w pełni kwalifikowana nazwa domeny (FQDN) domeny podrzędnej, korzystając z pełnego `azure network public-ip show` polecenia. Zasób publicznego adresu IP przydzielone logicznie, ale nie został jeszcze przypisany określony adres. Aby uzyskać adres IP, zamierzasz muszą modułu równoważenia obciążenia, które firma Microsoft nie zostały jeszcze utworzone.
+Można zbadać więcej szczegółów zasobów, w tym w pełni kwalifikowaną nazwę domeny (FQDN) poddomeny, za pomocą polecenia Complete `azure network public-ip show` . Zasób publicznego adresu IP został przydzielony logicznie, ale określony adres nie został jeszcze przypisany. Aby uzyskać adres IP, należy potrzebować modułu równoważenia obciążenia, który jeszcze nie został utworzony.
 
 ```azurecli
 azure network public-ip show myResourceGroup myPublicIP --json | jq '.'
@@ -617,8 +616,8 @@ Dane wyjściowe:
 }
 ```
 
-## <a name="create-a-load-balancer-and-ip-pools"></a>Tworzenie modułu równoważenia obciążenia i pule adresów IP
-Podczas tworzenia modułu równoważenia obciążenia pozwala rozdziela ruch między wieloma maszynami wirtualnymi. Umożliwia także nadmiarowości aplikacji, uruchamiając wiele maszyn wirtualnych, które odpowiadają na żądania użytkownika w przypadku konserwacji lub dużym obciążeniem. Poniższy przykład tworzy moduł równoważenia obciążenia o nazwie `myLoadBalancer`:
+## <a name="create-a-load-balancer-and-ip-pools"></a>Tworzenie modułu równoważenia obciążenia i pul adresów IP
+Podczas tworzenia modułu równoważenia obciążenia można rozpowszechnić ruch na wielu maszynach wirtualnych. Zapewnia również nadmiarowość aplikacji przez uruchamianie wielu maszyn wirtualnych, które odpowiadają na żądania użytkowników w przypadku konserwacji lub dużego obciążenia. Poniższy przykład tworzy moduł równoważenia obciążenia o nazwie `myLoadBalancer`:
 
 ```azurecli
 azure network lb create --resource-group myResourceGroup --location westeurope \
@@ -639,9 +638,9 @@ data:    Provisioning state              : Succeeded
 info:    network lb create command OK
 ```
 
-Nasze usługi równoważenia obciążenia jest dość pusta, więc Utwórzmy niektóre pule adresów IP. Chcemy utworzyć dwie pule adresów IP dla naszej usługi równoważenia obciążenia: jeden dla frontonu, a drugi dla wewnętrznej. Puli adresów IP frontonu jest widoczna publicznie. Jest również lokalizacji, do której firma Microsoft Przypisz publiczny adres IP, która została utworzona wcześniej. Następnie używamy puli zaplecza jako lokalizacja, w przypadku naszych maszyn wirtualnych Aby nawiązać połączenie. W ten sposób ruch może przepływać za pośrednictwem modułu równoważenia obciążenia do maszyn wirtualnych.
+Nasz moduł równoważenia obciążenia jest dość pusty, więc Utwórzmy kilka pul adresów IP. Chcemy utworzyć dwie pule adresów IP dla naszego modułu równoważenia obciążenia, jeden dla frontonu i jeden dla zaplecza. Pula adresów IP frontonu jest publicznie widoczna. Jest również lokalizacją, do której przypiszemy utworzony wcześniej element PIP. Następnie używamy puli zaplecza jako lokalizacji dla maszyn wirtualnych, z którymi ma nawiązać połączenie. Dzięki temu ruch może przepływać przez moduł równoważenia obciążenia do maszyn wirtualnych.
 
-Po pierwsze Utwórzmy naszych puli adresów IP frontonu. Poniższy przykład tworzy pulę frontonu o nazwie `myFrontEndPool`:
+Najpierw Utwórzmy pulę adresów IP frontonu. Poniższy przykład tworzy pulę frontonu o nazwie `myFrontEndPool`:
 
 ```azurecli
 azure network lb frontend-ip create --resource-group myResourceGroup \
@@ -663,9 +662,9 @@ data:    Public IP address id            : /subscriptions/guid/resourceGroups/my
 info:    network lb mySubnet-ip create command OK
 ```
 
-Należy zauważyć, jak użyliśmy `--public-ip-name` przełącznika, aby przekazać `myPublicIP` utworzona wcześniej. Przypisanie publicznego adresu IP do modułu równoważenia obciążenia, można dotrzeć do maszyn wirtualnych przez Internet.
+Zwróć uwagę na to `--public-ip-name` `myPublicIP` , w jaki sposób użyto przełącznika do przekazania utworzonego wcześniej. Przypisanie publicznego adresu IP do modułu równoważenia obciążenia umożliwia nawiązanie połączenia z maszynami wirtualnymi za pośrednictwem Internetu.
 
-Następnie utworzymy naszej drugiej puli adresów IP, tym razem dla naszych ruchu zaplecza. Poniższy przykład tworzy pulę zaplecza o nazwie `myBackEndPool`:
+Następnie Utwórzmy kolejną pulę adresów IP, tym razem dla ruchu zaplecza. Poniższy przykład tworzy pulę zaplecza o nazwie `myBackEndPool`:
 
 ```azurecli
 azure network lb address-pool create --resource-group myResourceGroup \
@@ -683,7 +682,7 @@ data:    Provisioning state              : Succeeded
 info:    network lb address-pool create command OK
 ```
 
-Widać, sposobu działania naszych modułu równoważenia obciążenia przez wyszukiwanie za pomocą `azure network lb show` i badanie danych wyjściowych JSON:
+Możemy zobaczyć, jak działa nasz moduł równoważenia obciążenia, wyszukując `azure network lb show` i sprawdzając dane wyjściowe JSON:
 
 ```azurecli
 azure network lb show myResourceGroup myLoadBalancer --json | jq '.'
@@ -728,8 +727,8 @@ Dane wyjściowe:
 }
 ```
 
-## <a name="create-load-balancer-nat-rules"></a>Tworzenie reguły NAT modułu równoważenia obciążenia
-Aby uzyskać ruch przepływający przez naszych modułu równoważenia obciążenia, należy utworzyć adres sieciowy reguły translatora (NAT), które określają akcji dla ruchu przychodzącego lub wychodzącego. Możesz określić protokół do użycia, a następnie mapowania portów zewnętrznych do wewnętrznych portów zgodnie z potrzebami. W naszym środowisku Utwórzmy niektórych reguł, które umożliwiają SSH za pośrednictwem naszej usługi równoważenia obciążenia do naszych maszyn wirtualnych. Skonfigurujemy porty TCP 4222 i 4223 kierować do portu TCP 22 na nasze maszyny wirtualne, (które możemy utworzyć później). Poniższy przykład tworzy regułę o nazwie `myLoadBalancerRuleSSH1` mapować TCP port 4222 na port 22:
+## <a name="create-load-balancer-nat-rules"></a>Tworzenie reguł translatora adresów sieciowych usługi równoważenia obciążenia
+Aby uzyskać ruch przepływający przez nasz moduł równoważenia obciążenia, należy utworzyć reguły translatora adresów sieciowych (NAT) określające akcje przychodzące lub wychodzące. Można określić protokół, który ma być używany, a następnie mapować zewnętrzne porty na porty wewnętrzne zgodnie z potrzebami. W naszym środowisku utworzymy pewne reguły zezwalające na używanie protokołu SSH za pośrednictwem naszego modułu równoważenia obciążenia z maszynami wirtualnymi. Skonfigurujemy porty TCP 4222 i 4223, aby skierować port TCP 22 na naszych maszynach wirtualnych (którą utworzysz później). Poniższy przykład tworzy regułę o nazwie `myLoadBalancerRuleSSH1` , aby mapować port TCP 4222 na port 22:
 
 ```azurecli
 azure network lb inbound-nat-rule create --resource-group myResourceGroup \
@@ -757,7 +756,7 @@ data:    mySubnet IP configuration id    : /subscriptions/guid/resourceGroups/my
 info:    network lb inbound-nat-rule create command OK
 ```
 
-Powtórz procedurę dla drugiej reguły NAT dla protokołu SSH. Poniższy przykład tworzy regułę o nazwie `myLoadBalancerRuleSSH2` mapować TCP port 4223 na port 22:
+Powtórz procedurę dla drugiej reguły NAT dla protokołu SSH. Poniższy przykład tworzy regułę o nazwie `myLoadBalancerRuleSSH2` , aby mapować port TCP 4223 na port 22:
 
 ```azurecli
 azure network lb inbound-nat-rule create --resource-group myResourceGroup \
@@ -765,7 +764,7 @@ azure network lb inbound-nat-rule create --resource-group myResourceGroup \
   --frontend-port 4223 --backend-port 22
 ```
 
-Umożliwia także Przejdź dalej i Utwórz regułę NAT dla portu TCP 80 dla ruchu w sieci web, przechwytywanie reguły do naszego pule adresów IP. Jeśli firma Microsoft podpiąć reguły do puli adresów IP zamiast Podłączanie zasadę, aby nasze maszyny wirtualne pojedynczo, firma Microsoft można dodawać i usuwać maszyny wirtualne z puli adresów IP. Moduł równoważenia obciążenia są automatycznie dostosowuje przepływu ruchu. Poniższy przykład tworzy regułę o nazwie `myLoadBalancerRuleWeb` do mapowania porcie 80 protokołu TCP na porcie 80:
+Można również utworzyć regułę NAT dla portu TCP 80 dla ruchu w sieci Web, podłączając regułę do naszych pul adresów IP. Jeśli odłączysz regułę do puli adresów IP, zamiast podłączać regułę do maszyn wirtualnych, można dodawać lub usuwać maszyny wirtualne z puli adresów IP. Moduł równoważenia obciążenia automatycznie dostosowuje przepływ ruchu. Poniższy przykład tworzy regułę o nazwie `myLoadBalancerRuleWeb` , aby mapować port TCP 80 na port 80:
 
 ```azurecli
 azure network lb rule create --resource-group myResourceGroup \
@@ -797,7 +796,7 @@ info:    network lb rule create command OK
 ```
 
 ## <a name="create-a-load-balancer-health-probe"></a>Tworzenie sondy kondycji modułu równoważenia obciążenia
-Sonda kondycji okresowo sprawdza na maszynach wirtualnych, które znajdują się za naszych modułu równoważenia obciążenia, aby upewnić się, ich działania i odpowiadanie na żądania, zgodnie z definicją. W przeciwnym razie zostali oni usunięci z działania, aby upewnić się, że użytkownicy nie ma być kierowany do ich. Można zdefiniować niestandardowe sprawdza, czy sondę kondycji, wraz z odstępach czasu i wartości limitu czasu. Aby uzyskać więcej informacji na temat sond kondycji, zobacz [sondy modułu równoważenia obciążenia](../../load-balancer/load-balancer-custom-probe-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Poniższy przykład tworzy TCP kondycji sondowany o nazwie `myHealthProbe`:
+Sonda kondycji okresowo sprawdza na maszynach wirtualnych, które znajdują się za naszym modułem równoważenia obciążenia, aby upewnić się, że działają i odpowiadają na żądania zgodnie z definicją. Jeśli nie, są one usuwane z operacji, aby upewnić się, że użytkownicy nie są kierowani do nich. Można zdefiniować niestandardowe sprawdzenia dla sondy kondycji, a także interwały i wartości limitu czasu. Aby uzyskać więcej informacji na temat sond kondycji, zobacz [Load Balancer sondy](../../load-balancer/load-balancer-custom-probe-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Poniższy przykład tworzy sondę kondycji TCP o nazwie `myHealthProbe`:
 
 ```azurecli
 azure network lb probe create --resource-group myResourceGroup \
@@ -821,18 +820,18 @@ data:    Number of probes                : 4
 info:    network lb probe create command OK
 ```
 
-W tym miejscu określonej odstępie 15 sekund dla naszych kontrole kondycji. Firma Microsoft może pominąć maksymalnie cztery sondy (jednej minuty), zanim moduł równoważenia obciążenia uzna, że host działa już.
+W tym miejscu określono interwał 15 sekund dla naszych testów kondycji. Możemy pominąć maksymalnie cztery sondy (minutę), zanim moduł równoważenia obciążenia uzna, że host nie działa już.
 
-## <a name="verify-the-load-balancer"></a>Sprawdź modułu równoważenia obciążenia
-Po zakończeniu konfiguracji usługi równoważenia obciążenia. Poniżej przedstawiono kroki, które zostały podjęte:
+## <a name="verify-the-load-balancer"></a>Weryfikowanie modułu równoważenia obciążenia
+Teraz Konfiguracja modułu równoważenia obciążenia jest gotowa. Poniżej przedstawiono kroki, które należy wykonać:
 
 1. Utworzono moduł równoważenia obciążenia.
-2. Możesz utworzyć pulę adresów IP frontonu i do niej przypisany publiczny adres IP.
-3. Utworzono pulę adresów IP zaplecza, które maszyny wirtualne mogą łączyć się z.
-4. Reguły translatora adresów Sieciowych, umożliwiające SSH do maszyn wirtualnych, zarządzania oraz regułę zezwalającą na porcie 80 protokołu TCP dla naszej aplikacji sieci web została utworzona.
-5. Po dodaniu sondę kondycji, aby okresowo sprawdzać maszyn wirtualnych. Tej sondy kondycji gwarantuje, że użytkownicy nie należy próbować dostępu do maszyny Wirtualnej, który już nie działa lub obsługujących zawartość.
+2. Utworzono pulę adresów IP frontonu i przypisano do niej publiczny adres IP.
+3. Utworzono pulę adresów IP zaplecza, z którą mogą się łączyć maszyny wirtualne.
+4. Utworzono reguły NAT zezwalające na używanie protokołu SSH na maszynach wirtualnych, a także regułę, która zezwala na port TCP 80 dla naszej aplikacji sieci Web.
+5. Dodano sondę kondycji, aby okresowo sprawdzać maszyny wirtualne. To sondowanie kondycji zapewnia, że użytkownicy nie próbują uzyskać dostępu do maszyny wirtualnej, która nie działa ani nie obsługuje zawartości.
 
-Podsumujmy, jak moduł równoważenia obciążenia wygląda teraz:
+Zapoznaj się z informacjami o tym, jak wygląda Twój moduł równoważenia obciążenia:
 
 ```azurecli
 azure network lb show --resource-group myResourceGroup \
@@ -955,12 +954,12 @@ Dane wyjściowe:
 }
 ```
 
-## <a name="create-an-nic-to-use-with-the-linux-vm"></a>Utwórz kartę Sieciową do użycia z maszyną Wirtualną systemu Linux
-Karty sieciowe są programowo dostępne, ponieważ możliwe jest stosowanie reguł do ich wykorzystania. Również może mieć więcej niż jeden. W następującym `azure network nic create` polecenia Podłączanie do interfejsu Sieciowego do puli adresów IP zaplecza obciążenia i skojarzyć ją z regułą translatora adresów Sieciowych, aby zezwalać na ruch SSH.
+## <a name="create-an-nic-to-use-with-the-linux-vm"></a>Tworzenie karty sieciowej do użycia z maszyną wirtualną z systemem Linux
+Karty sieciowe są dostępne programowo, ponieważ można stosować reguły do ich używania. Możesz również mieć więcej niż jeden. W poniższym `azure network nic create` poleceniu można podłączyć kartę sieciową do puli adresów IP zaplecza i skojarzyć ją z regułą NAT, aby zezwolić na ruch SSH.
 
-Zastąp `#####-###-###` sekcje własnym identyfikatorem subskrypcji platformy Azure Identyfikator jest podana w danych wyjściowych subskrypcja `jq` podczas badania zasobów tworzona. Można również wyświetlić swój identyfikator subskrypcji z `azure account list`.
+Zastąp `#####-###-###` sekcje własnym identyfikatorem subskrypcji platformy Azure. Identyfikator subskrypcji jest zanotowany w danych wyjściowych `jq` podczas badania tworzonych zasobów. Identyfikator subskrypcji można także wyświetlić w usłudze `azure account list`.
 
-Poniższy przykład tworzy kartę Sieciową o nazwie `myNic1`:
+Poniższy przykład tworzy kartę sieciową o `myNic1`nazwie:
 
 ```azurecli
 azure network nic create --resource-group myResourceGroup --location westeurope \
@@ -996,7 +995,7 @@ data:
 info:    network nic create command OK
 ```
 
-Można wyświetlić szczegóły, sprawdzając zasobu bezpośrednio. Sprawdź zasobu za pomocą `azure network nic show` polecenia:
+Szczegóły można wyświetlić, sprawdzając zasób bezpośrednio. Zasób można przeanalizować za pomocą `azure network nic show` polecenia:
 
 ```azurecli
 azure network nic show myResourceGroup myNic1 --json | jq '.'
@@ -1044,7 +1043,7 @@ Dane wyjściowe:
 }
 ```
 
-Teraz możemy utworzyć drugi interfejs Sieciowy przechwytywanie w ponownie do naszych puli adresów IP zaplecza. Tę regułę NAT czasu druga zezwala na ruch SSH. Poniższy przykład tworzy kartę Sieciową o nazwie `myNic2`:
+Teraz tworzymy drugą kartę sieciową, przełączając się do puli adresów IP zaplecza. Tym razem druga reguła NAT zezwala na ruch SSH. Poniższy przykład tworzy kartę sieciową o `myNic2`nazwie:
 
 ```azurecli
 azure network nic create --resource-group myResourceGroup --location westeurope \
@@ -1053,15 +1052,15 @@ azure network nic create --resource-group myResourceGroup --location westeurope 
   --lb-inbound-nat-rule-ids /subscriptions/########-####-####-####-############/resourceGroups/myResourceGroup/providers/Microsoft.Network/loadBalancers/myLoadBalancer/inboundNatRules/myLoadBalancerRuleSSH2
 ```
 
-## <a name="create-a-network-security-group-and-rules"></a>Utwórz sieciową grupę zabezpieczeń i reguł
-Teraz możemy utworzyć sieciową grupę zabezpieczeń i reguł dla ruchu przychodzącego, które umożliwiają zarządzanie dostępem do karty sieciowej. Sieciowa grupa zabezpieczeń można zastosować do kart Sieciowych lub podsieci. Należy zdefiniować regułę, aby sterować przepływem ruchu sieciowego do i z maszyn wirtualnych. Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie `myNetworkSecurityGroup`:
+## <a name="create-a-network-security-group-and-rules"></a>Tworzenie sieciowej grupy zabezpieczeń i reguł
+Teraz tworzymy sieciową grupę zabezpieczeń i reguły ruchu przychodzącego, które regulują dostęp do karty sieciowej. Do karty sieciowej lub podsieci można zastosować grupę zabezpieczeń sieci. Definiowane są reguły umożliwiające sterowanie przepływem ruchu do i z maszyn wirtualnych. Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie `myNetworkSecurityGroup`:
 
 ```azurecli
 azure network nsg create --resource-group myResourceGroup --location westeurope \
   --name myNetworkSecurityGroup
 ```
 
-Dodajmy Reguła ruchu przychodzącego dla sieciowej grupy zabezpieczeń zezwolić na połączenia przychodzące na porcie 22 (do obsługi protokołu SSH). Poniższy przykład tworzy regułę o nazwie `myNetworkSecurityGroupRuleSSH` aby umożliwić ruch TCP na porcie 22:
+Dodajmy regułę ruchu przychodzącego dla sieciowej grupy zabezpieczeń, aby zezwolić na połączenia przychodzące na porcie 22 (do obsługi protokołu SSH). Poniższy przykład tworzy regułę o nazwie `myNetworkSecurityGroupRuleSSH` , aby zezwolić na TCP na porcie 22:
 
 ```azurecli
 azure network nsg rule create --resource-group myResourceGroup \
@@ -1070,7 +1069,7 @@ azure network nsg rule create --resource-group myResourceGroup \
   --name myNetworkSecurityGroupRuleSSH
 ```
 
-Teraz możemy dodać regułę ruchu przychodzącego dla sieciowej grupy zabezpieczeń zezwolić na połączenia przychodzące na porcie 80 (do obsługi ruchu w sieci web). Poniższy przykład tworzy regułę o nazwie `myNetworkSecurityGroupRuleHTTP` aby umożliwić ruch TCP na porcie 80:
+Teraz Dodajmy regułę ruchu przychodzącego dla sieciowej grupy zabezpieczeń, aby zezwolić na połączenia przychodzące na porcie 80 (do obsługi ruchu w sieci Web). Poniższy przykład tworzy regułę o nazwie `myNetworkSecurityGroupRuleHTTP` , aby zezwalać na ruch TCP na porcie 80:
 
 ```azurecli
 azure network nsg rule create --resource-group myResourceGroup \
@@ -1080,12 +1079,12 @@ azure network nsg rule create --resource-group myResourceGroup \
 ```
 
 > [!NOTE]
-> Reguła ruchu przychodzącego jest filtrem dla połączeń sieciowych dla ruchu przychodzącego. W tym przykładzie firma Microsoft powiązać sieciowej grupy zabezpieczeń z maszyn wirtualnych z wirtualną kartę Sieciową, co oznacza, że każde żądanie na port 22 jest przekazywana do karty Sieciowej na maszynie Wirtualnej z naszych. Ta reguła ruchu przychodzącego jest o połączenie sieciowe, a nie o punktu końcowego, czyli co byłoby o we wdrożeniach klasycznych. Otwierania portu, należy pozostawić `--source-port-range` ustawiona na "\*" (wartość domyślna) do akceptowania żądań przychodzących od **wszelkie** żądanie portu. Porty są zazwyczaj dynamicznych.
+> Reguła ruchu przychodzącego jest filtrem dla przychodzących połączeń sieciowych. W tym przykładzie powiążemy sieciowej grupy zabezpieczeń z wirtualną kartą sieciową maszyn wirtualnych, co oznacza, że każde żądanie do portu 22 jest przesyłane do karty sieciowej maszyny wirtualnej. Ta reguła ruchu przychodzącego dotyczy połączenia sieciowego, a nie informacji o punkcie końcowym, co w przypadku wdrożeń klasycznych. Aby otworzyć port, należy pozostawić `--source-port-range` ustawiony na wartość "\*" (wartością domyślną), aby akceptować żądania przychodzące z **dowolnego** portu żądającego. Porty są zwykle dynamiczne.
 >
 >
 
-## <a name="bind-to-the-nic"></a>Powiązywanie z kartą Sieciową
-Powiąż sieciowej grupy zabezpieczeń do kart sieciowych. Musimy połączyć nasz kart sieciowych z naszych sieciową grupą zabezpieczeń. Uruchom oba polecenia, aby zaczepić oba nasz kart sieciowych:
+## <a name="bind-to-the-nic"></a>Powiąż z kartą sieciową
+Powiąż sieciowej grupy zabezpieczeń z kartami sieciowymi. Musimy połączyć nasze karty sieciowe z naszą sieciową grupą zabezpieczeń. Uruchom Oba polecenia, aby podłączyć się do obu kart sieciowych:
 
 ```azurecli
 azure network nic set --resource-group myResourceGroup --name myNic1 \
@@ -1098,32 +1097,32 @@ azure network nic set --resource-group myResourceGroup --name myNic2 \
 ```
 
 ## <a name="create-an-availability-set"></a>Tworzenie zestawu dostępności
-Zestawy dostępności pomocy rozprzestrzeniania się maszyn wirtualnych w różnych domenach błędów i uaktualnień. Utwórz zestaw dostępności dla maszyn wirtualnych. Poniższy przykład obejmuje tworzenie zestawu dostępności o nazwie `myAvailabilitySet`:
+Zestawy dostępności ułatwiają rozmieszczanie maszyn wirtualnych w domenach błędów i domenach uaktualniania. Utwórzmy zestaw dostępności dla maszyn wirtualnych. Poniższy przykład tworzy zestaw dostępności o nazwie `myAvailabilitySet`:
 
 ```azurecli
 azure availset create --resource-group myResourceGroup --location westeurope
   --name myAvailabilitySet
 ```
 
-Domeny błędów definiują grupę maszyn wirtualnych, które mają wspólnego źródła zasilania i sieci przełącznika. Domyślnie maszyny wirtualne, które są skonfigurowane w zestawie dostępności są rozdzielane między maksymalnie trzy domeny błędów. Chodzi o to, że problem ze sprzętem w jednym z tych domen błędów nie ma wpływu na każdej maszynie Wirtualnej, na którym działa aplikacja. Azure automatycznie rozdziela maszyny wirtualne między domeny błędów podczas umieszczania ich w zestawie dostępności.
+Domeny błędów definiują grupowanie maszyn wirtualnych, które współużytkują wspólne źródło i przełącznik sieciowy. Domyślnie maszyny wirtualne skonfigurowane w ramach zestawu dostępności są oddzielane do trzech domen błędów. Dobrym pomysłem jest to, że problem z sprzętem w jednej z tych domen błędów nie ma wpływu na każdą maszynę wirtualną, na której działa aplikacja. Platforma Azure automatycznie rozdziela maszyny wirtualne między domeny błędów, umieszczając je w zestawie dostępności.
 
-Domen uaktualnienia wskazanie grup maszyn wirtualnych i odpowiedniego sprzętu fizycznego, które mogą być uruchamiane w tym samym czasie. Kolejność, w którym wykonywany jest ponowny rozruch domen uaktualnienia może nie być sekwencyjne podczas zaplanowanej konserwacji, ale tylko jedno uaktualnienie jest uruchamiany ponownie w danym momencie. Ponownie Azure automatycznie rozdziela maszyny wirtualne między domeny uaktualnienia podczas umieszczania ich w witrynie dostępności.
+Domeny uaktualnienia wskazują grupy maszyn wirtualnych i bazowego sprzętu fizycznego, które mogą być ponownie uruchamiane w tym samym czasie. Kolejność, w której domeny uaktualnień jest ponownie uruchamiana, może nie być sekwencyjna podczas planowanej konserwacji, ale tylko jeden z nich jest uruchamiany ponownie. Ponownie program Azure automatycznie dystrybuuje maszyny wirtualne między domenami uaktualniania, umieszczając je w lokacji dostępności.
 
-Przeczytaj więcej na temat [Zarządzanie dostępnością maszyn wirtualnych](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Dowiedz się więcej o [zarządzaniu dostępnością maszyn wirtualnych](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="create-the-linux-vms"></a>Tworzenie maszyn wirtualnych systemu Linux
-Utworzono zasoby magazynu i sieci do obsługi maszyn wirtualnych dostępne za pośrednictwem Internetu. Teraz możemy utworzyć te maszyny wirtualne i zabezpieczenia przy użyciu klucza SSH, który nie ma hasła. W tym przypadku będziemy tworzyć oparte na najnowszych LTS maszyny Wirtualnej z systemem Ubuntu. Firma Microsoft zlokalizować te informacje z obrazów za pomocą `azure vm image list`, zgodnie z opisem w [znajdowanie obrazów maszyn wirtualnych Azure](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+## <a name="create-the-linux-vms"></a>Tworzenie maszyn wirtualnych z systemem Linux
+Utworzono zasoby magazynu i sieci do obsługi maszyn wirtualnych dostępnych z Internetu. Teraz Utwórzmy te maszyny wirtualne i zabezpiecz je za pomocą klucza SSH, który nie ma hasła. W takim przypadku będziemy tworzyć maszyny wirtualne Ubuntu na podstawie najnowszych LTS. Informacje o obrazie można znaleźć za `azure vm image list`pomocą, zgodnie z opisem w temacie [Znajdowanie obrazów maszyn wirtualnych platformy Azure](../windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Wybrano obraz za pomocą polecenia `azure vm image list westeurope canonical | grep LTS`. W tym przypadku używamy `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`. Na ostatnim polu przekazujemy `latest` tak, aby w przyszłości zawsze uzyskujemy najnowszej kompilacji. (Ciąg, używamy `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`).
+Wybrano obraz przy użyciu polecenia `azure vm image list westeurope canonical | grep LTS`. W tym przypadku używamy `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`. Dla ostatniego pola przekazujemy `latest` , aby w przyszłości zawsze uzyskać najnowszą kompilację. (Używany ciąg to `canonical:UbuntuServer:16.04.0-LTS:16.04.201608150`).
 
-Ta następnym krokiem jest znany dla każdego, kto utworzył już ssh rsa klucz publiczny i prywatny pair w systemie Linux lub Mac za pomocą **ssh-keygen - t rsa -b 2048**. Jeśli nie masz żadnych certyfikatów pary kluczy swojej `~/.ssh` katalogu, możesz utworzyć je:
+Następnym krokiem jest zapoznanie się z każdą osobą, która utworzyła parę kluczy publicznych i prywatnych SSH RSA w systemie Linux lub Mac przy użyciu **protokołu ssh-keygen-t RSA-b 2048**. Jeśli nie masz żadnych par kluczy certyfikatu w `~/.ssh` katalogu, możesz je utworzyć:
 
-* Automatycznie, przy użyciu `azure vm create --generate-ssh-keys` opcji.
-* Ręcznie, przy użyciu [instrukcjami, aby utworzyć samodzielnie](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Automatycznie przy użyciu `azure vm create --generate-ssh-keys` opcji.
+* Ręcznie przy użyciu [instrukcji, aby utworzyć je samodzielnie](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Alternatywnie, można użyć `--admin-password` metody uwierzytelniania połączenia protokołu SSH, po utworzeniu maszyny Wirtualnej. Ta metoda jest zazwyczaj mniej bezpieczna opcja.
+Alternatywnie można użyć `--admin-password` metody do uwierzytelniania połączeń SSH po utworzeniu maszyny wirtualnej. Ta metoda jest zazwyczaj mniej bezpieczna.
 
-Możemy utworzyć maszynę Wirtualną, przenosząc wszystkie nasze zasoby i informacje wraz z `azure vm create` polecenia:
+Utworzymy maszynę wirtualną, przenosząc wszystkie nasze zasoby i informacje `azure vm create` razem z poleceniem:
 
 ```azurecli
 azure vm create \
@@ -1160,7 +1159,7 @@ info:    The storage URI 'https://mystorageaccount.blob.core.windows.net/' will 
 info:    vm create command OK
 ```
 
-Możesz połączyć z maszyną wirtualną bezpośrednio przy użyciu kluczy SSH domyślne. Upewnij się, określ odpowiedni port, ponieważ firma Microsoft jest przekazywanych przez moduł równoważenia obciążenia. (Dla pierwszej maszyny Wirtualnej, możemy skonfigurować reguły NAT do przekazywania portu 4222 do maszyny Wirtualnej).
+Możesz natychmiast połączyć się z maszyną wirtualną przy użyciu domyślnych kluczy SSH. Upewnij się, że określisz odpowiedni port, ponieważ przekazujemy moduł równoważenia obciążenia. (W przypadku pierwszej maszyny wirtualnej skonfigurujemy regułę NAT do przesyłania dalej portu 4222 do naszej maszyny wirtualnej).
 
 ```bash
 ssh ops@mypublicdns.westeurope.cloudapp.azure.com -p 4222
@@ -1188,7 +1187,7 @@ Welcome to Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-34-generic x86_64)
 ops@myVM1:~$
 ```
 
-Przejdź dalej i tworzenie drugiej maszyny Wirtualnej w taki sam sposób:
+Przejdź dalej i Utwórz drugą maszynę wirtualną w taki sam sposób:
 
 ```azurecli
 azure vm create \
@@ -1206,7 +1205,7 @@ azure vm create \
   --admin-username azureuser
 ```
 
-Można teraz używać `azure vm show myResourceGroup myVM1` polecenie, aby sprawdzić, został utworzony. W tym momencie używasz Ubuntu maszyn wirtualnych za modułem równoważenia obciążenia na platformie Azure, które użytkownik może zalogować się do tylko z pary kluczy SSH (ponieważ hasła są wyłączone). Można zainstalować serwer nginx lub host z wieloma adresami, wdrażanie aplikacji sieci web i ruch flow za pośrednictwem modułu równoważenia obciążenia do obu maszyn wirtualnych.
+Możesz teraz użyć `azure vm show myResourceGroup myVM1` polecenia, aby przejrzeć utworzone elementy. W tym momencie korzystasz z maszyn wirtualnych Ubuntu za modułem równoważenia obciążenia na platformie Azure, do których można się zalogować tylko za pomocą pary kluczy SSH (ponieważ hasła są wyłączone). Można zainstalować Nginx lub http, wdrożyć aplikację internetową i sprawdzić przepływ ruchu przez moduł równoważenia obciążenia do obu maszyn wirtualnych.
 
 ```azurecli
 azure vm show --resource-group myResourceGroup --name myVM1
@@ -1270,23 +1269,23 @@ info:    vm show command OK
 ```
 
 
-## <a name="export-the-environment-as-a-template"></a>Eksportuj środowisko jako szablon
-Teraz, gdy został wcześniej utworzony się tego środowiska, co zrobić, jeśli chcesz utworzyć środowisko dodatkowego programowania przy użyciu tych samych parametrach lub do środowiska produkcyjnego, który mu odpowiada? Usługi Resource Manager korzysta z szablonów JSON, które definiują wszystkie parametry dla danego środowiska. Twórz się całych środowisk, odwołując się do tego szablonu JSON. Możesz [ręczne tworzenie szablonów JSON](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub wyeksportować istniejącego środowiska, aby utworzyć szablon JSON dla Ciebie:
+## <a name="export-the-environment-as-a-template"></a>Eksportowanie środowiska jako szablonu
+Teraz, gdy to środowisko zostało utworzone, co zrobić, jeśli chcesz utworzyć dodatkowe środowisko programistyczne z tymi samymi parametrami lub środowiskiem produkcyjnym, które je dopasowuje? Menedżer zasobów używa szablonów JSON, które definiują wszystkie parametry środowiska. Wszystkie środowiska można tworzyć, odwołując się do tego szablonu JSON. [Szablony JSON można kompilować ręcznie](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) lub wyeksportować istniejące środowisko, aby utworzyć szablon JSON:
 
 ```azurecli
 azure group export --name myResourceGroup
 ```
 
-To polecenie umożliwia utworzenie `myResourceGroup.json` plik w bieżącym katalogu roboczym. Po utworzeniu środowiska za pomocą tego szablonu, zostanie wyświetlony monit o wszystkich nazw zasobów, łącznie z nazwami dla modułu równoważenia obciążenia, interfejsów sieciowych lub maszyn wirtualnych. Możesz wypełnić te nazwy w pliku szablonu, dodając `-p` lub `--includeParameterDefaultValue` parametr `azure group export` polecenia, pokazaną wcześniej. Edytuj szablon JSON do określenia nazwy zasobu lub [Tworzenie pliku parameters.json](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) określający nazw zasobów.
+To polecenie tworzy `myResourceGroup.json` plik w bieżącym katalogu roboczym. Po utworzeniu środowiska na podstawie tego szablonu zostanie wyświetlony monit dotyczący wszystkich nazw zasobów, w tym nazw modułu równoważenia obciążenia, interfejsów sieciowych lub maszyn wirtualnych. Można wypełnić te nazwy w pliku szablonu, dodając `-p` parametr lub `--includeParameterDefaultValue` do `azure group export` polecenia, które zostało pokazane wcześniej. Edytuj szablon JSON, aby określić nazwy zasobów, lub [Utwórz plik Parameters. JSON](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) , który określa nazwy zasobów.
 
-Aby utworzyć środowisko z szablonu:
+Aby utworzyć środowisko na podstawie szablonu:
 
 ```azurecli
 azure group deployment create --resource-group myNewResourceGroup \
   --template-file myResourceGroup.json
 ```
 
-Warto przeczytać [więcej informacji na temat sposobu wdrażania za pomocą szablonów](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Dowiedz się więcej na temat przyrostowe aktualizowanie środowisk przy użyciu pliku parametrów oraz uzyskiwać dostęp do szablonów z lokalizacji pojedynczy magazyn.
+Warto zapoznać się z artykułem [więcej na temat wdrażania z szablonów](../../resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Dowiedz się, jak stopniowo aktualizować środowiska, korzystać z pliku parametrów i uzyskiwać dostęp do szablonów z pojedynczej lokalizacji magazynu.
 
-## <a name="next-steps"></a>Kolejne kroki
-Teraz możesz przystąpić do rozpoczęcia pracy z wieloma składnikami sieciowymi i maszyny wirtualne. To środowisko przykładowe służy do kompilowania aplikacji przy użyciu podstawowych składników wprowadzone w tym miejscu.
+## <a name="next-steps"></a>Następne kroki
+Teraz wszystko jest gotowe do rozpoczęcia pracy z wieloma składnikami sieciowymi i maszynami wirtualnymi. Możesz użyć tego przykładowego środowiska do kompilowania aplikacji przy użyciu najważniejszych składników wprowadzonych w tym miejscu.

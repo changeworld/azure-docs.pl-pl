@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: a562630ef19c134c227ef44b944c1dd921ff2e46
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: d20ea4a6e86bb889615d3ab9bfcac5aedf838ceb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726820"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098620"
 ---
 # <a name="securing-paas-deployments"></a>Zabezpieczanie wdrożeń PaaS
 
@@ -96,14 +96,14 @@ Poniżej przedstawiono najlepsze rozwiązania dotyczące zarządzania obwodem to
 **Najlepsze rozwiązanie**: Zabezpiecz interfejsy zarządzania maszyną wirtualną w ramach hybrydowych usług PaaS i IaaS przy użyciu interfejsu zarządzania, który umożliwia zdalne zarządzanie tymi maszynami wirtualnymi.   
 **Szczegóły**: Mogą być używane protokoły zdalnego zarządzania, takie jak [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607)i [komunikacja zdalna programu PowerShell](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/enable-psremoting) . Ogólnie rzecz biorąc, zaleca się, aby nie włączać bezpośredniego dostępu zdalnego do maszyn wirtualnych z Internetu.
 
-Jeśli to możliwe, użyj alternatywnych metod, takich jak korzystanie z wirtualnych sieci prywatnych w sieci wirtualnej platformy Azure. Jeśli alternatywne podejścia nie są dostępne, należy się upewnić, że są używane złożone hasła i uwierzytelnianie dwuskładnikowe (na przykład [usługa Azure MFA Authentication](/azure/active-directory/authentication/multi-factor-authentication)).
+Jeśli to możliwe, użyj alternatywnych metod, takich jak korzystanie z wirtualnych sieci prywatnych w sieci wirtualnej platformy Azure. Jeśli alternatywne podejścia nie są dostępne, należy się upewnić, że są używane złożone hasła i uwierzytelnianie dwuskładnikowe (na przykład [Azure Multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication)).
 
 **Najlepsze rozwiązanie**: Używaj mocnych platform uwierzytelniania i autoryzacji.   
 **Szczegóły**: Zamiast niestandardowych magazynów użytkowników używaj tożsamości federacyjnych w usłudze Azure AD. W przypadku korzystania z tożsamości federacyjnych należy skorzystać z podejścia opartego na platformie i delegować zarządzanie autoryzowanymi tożsamościami do partnerów. Podejście do tożsamości federacyjnej jest szczególnie ważne, gdy pracownicy są zwolnieni i że informacje muszą być widoczne przez wiele systemów tożsamości i autoryzacji.
 
 Używanie mechanizmów uwierzytelniania i autoryzacji dostarczonych przez platformę zamiast kodu niestandardowego. Przyczyną jest to, że programowanie niestandardowego kodu uwierzytelniania może być podatne na błędy. Większość deweloperów nie jest ekspertami ds. zabezpieczeń i nie jest mało prawdopodobne, że subtleties i najnowsze postępy w zakresie uwierzytelniania i autoryzacji. Kod komercyjny (na przykład od firmy Microsoft) jest często szeroko przeglądany pod kątem zabezpieczeń.
 
-Użyj uwierzytelniania dwuskładnikowego. Uwierzytelnianie dwuskładnikowe jest bieżącym standardem uwierzytelniania i autoryzacji, ponieważ pozwala to uniknąć słabych zagrożeń związanych z typami nazw użytkowników i haseł uwierzytelniania. Dostęp do interfejsów Azure Management (Portal/Remote PowerShell) i usług związanych z klientem powinien zostać zaprojektowany i skonfigurowany do korzystania z [uwierzytelniania wieloskładnikowego platformy Azure](/azure/active-directory/authentication/multi-factor-authentication).
+Użyj uwierzytelniania dwuskładnikowego. Uwierzytelnianie dwuskładnikowe jest bieżącym standardem uwierzytelniania i autoryzacji, ponieważ pozwala to uniknąć słabych zagrożeń związanych z typami nazw użytkowników i haseł uwierzytelniania. Dostęp do interfejsów Azure Management (Portal/Remote PowerShell) i usług związanych z klientem powinien zostać zaprojektowany i skonfigurowany do korzystania z usługi [azure Multi-Factor Authentication](/azure/active-directory/authentication/multi-factor-authentication).
 
 Użyj standardowych protokołów uwierzytelniania, takich jak OAuth2 i Kerberos. Te protokoły zostały rozbudowane i mogą być wdrażane w ramach bibliotek platformy na potrzeby uwierzytelniania i autoryzacji.
 
@@ -139,7 +139,7 @@ Poniżej przedstawiono najlepsze rozwiązania dotyczące korzystania z App Servi
 **Szczegóły**: [App Service Environment](/azure/app-service/environment/intro) ma funkcję integracji sieci wirtualnej, która pomaga ograniczyć przychodzące źródłowe adresy IP za pomocą sieciowych grup zabezpieczeń. Sieci wirtualne umożliwiają umieszczanie zasobów platformy Azure w nieinternetowej, rutowanej sieci, do której kontroluje się dostęp. Aby dowiedzieć się więcej, zobacz [Integrowanie aplikacji z siecią wirtualną platformy Azure](/azure/app-service/web-sites-integrate-with-vnet).
 
 **Najlepsze rozwiązanie**: Monitoruj stan zabezpieczeń środowisk App Serviceych.   
-**Szczegóły**: Aby monitorować środowiska App Service, użyj Azure Security Center. Gdy Security Center identyfikuje potencjalne luki w zabezpieczeniach, tworzy [zalecenia](/azure/security-center/security-center-virtual-machine-recommendations) , które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek.
+**Szczegóły**: Aby monitorować środowiska App Service, użyj Azure Security Center. Gdy Security Center identyfikuje potencjalne luki w zabezpieczeniach, tworzy [zalecenia](../../security-center/security-center-virtual-machine-protection.md) , które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek.
 
 > [!NOTE]
 > App Service monitorowania jest w wersji zapoznawczej i jest dostępna tylko w [warstwie standardowa](/azure/security-center/security-center-pricing) Security Center.

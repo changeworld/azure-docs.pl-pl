@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
-ms.date: 03/12/2019
-ms.openlocfilehash: 9b28a8efcc09954d9046ad1dda3ba5f10f45bdfa
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.date: 08/27/2019
+ms.openlocfilehash: 8948a0fe6112df0d29c0f04685dadbd379a4a382
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840461"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098922"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Korzystanie z punktów końcowych usługi sieci wirtualnej i reguł dla serwerów baz danych
 
@@ -31,44 +31,7 @@ Aby można było utworzyć regułę sieci wirtualnej, musi ona być [punktem ko�
 
 Jeśli tworzysz tylko regułę sieci wirtualnej, możesz przejść do kroków i wyjaśnień [w dalszej części tego artykułu](#anchor-how-to-by-using-firewall-portal-59j).
 
-<a name="anch-terminology-and-description-82f" />
-
-## <a name="terminology-and-description"></a>Terminologia i opis
-
-**Sieć wirtualna:** Możesz mieć sieci wirtualne skojarzone z subskrypcją platformy Azure.
-
-**Podsieci** Sieć wirtualna zawiera **podsieci**. Wszystkie maszyny wirtualne platformy Azure, które są przypisane do podsieci. Jedna podsieć może zawierać wiele maszyn wirtualnych lub innych węzłów obliczeniowych. Węzły obliczeniowe znajdujące się poza siecią wirtualną nie mogą uzyskać dostępu do sieci wirtualnej, chyba że skonfigurowano zabezpieczenia, aby zezwolić na dostęp.
-
-**Virtual Network punkt końcowy usługi:** [Punkt końcowy usługi Virtual Network][vm-virtual-network-service-endpoints-overview-649d] jest podsiecią, której wartości właściwości zawierają co najmniej jedną formalną nazwę typu usługi platformy Azure. W tym artykule interesuje Cię nazwę typu **Microsoft. SQL**, która odnosi się do usługi platformy Azure o nazwie SQL Database.
-
-**Reguła sieci wirtualnej:** Reguła sieci wirtualnej dla serwera SQL Database to podsieć wymieniona na liście kontroli dostępu (ACL) serwera SQL Database. Aby można było uzyskać listę ACL SQL Database, podsieć musi zawierać nazwę typu **Microsoft. SQL** .
-
-Reguła sieci wirtualnej instruuje serwer SQL Database, aby akceptował komunikację z każdego węzła znajdującego się w podsieci.
-
-<a name="anch-benefits-of-a-vnet-rule-68b" />
-
-## <a name="benefits-of-a-virtual-network-rule"></a>Zalety reguły sieci wirtualnej
-
-Do momentu podjęcia działania maszyny wirtualne w podsieciach nie mogą komunikować się z SQL Database. Jedną z akcji, która ustanawia komunikację, jest utworzenie reguły sieci wirtualnej. Uzasadnienie wyboru podejścia reguły sieci wirtualnej wymaga dyskusji porównującej i kontrastowej obejmującej konkurencyjne opcje zabezpieczeń oferowane przez zaporę.
-
-### <a name="a-allow-access-to-azure-services"></a>A. Zezwalaj na dostęp do usług platformy Azure
-
-W okienku Zapora znajduje się przycisk **włączania/** wyłączania, który ma etykietę **Zezwalaj na dostęp do usług platformy Azure**. Ustawienie **on** umożliwia komunikację ze wszystkimi adresami IP platformy Azure i wszystkimi podsieciami platformy Azure. Te adresy IP lub podsieci platformy Azure mogą nie należeć do użytkownika. To ustawienie jest prawdopodobnie dłużej otwierane, niż chcesz, aby SQL Database. Funkcja reguły sieci wirtualnej oferuje znacznie bardziej precyzyjną kontrolę.
-
-### <a name="b-ip-rules"></a>B. Reguły adresów IP
-
-Zapora SQL Database umożliwia określenie zakresów adresów IP, z których ma zostać zaakceptowana komunikacja, SQL Database. To podejście jest odpowiednie dla stabilnych adresów IP, które są poza siecią prywatną platformy Azure. Jednak wiele węzłów wewnątrz sieci prywatnej platformy Azure jest skonfigurowanych przy użyciu *dynamicznych* adresów IP. Dynamiczne adresy IP mogą ulec zmianie, na przykład po ponownym uruchomieniu maszyny wirtualnej. Folly do określenia dynamicznego adresu IP w regule zapory w środowisku produkcyjnym.
-
-Możesz odzyskać opcję IP, uzyskując *statyczny* adres IP dla maszyny wirtualnej. Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie prywatnych adresów IP dla maszyny wirtualnej przy użyciu Azure Portal][vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w].
-
-Jednak podejście ze statycznym adresem IP może być trudne do zarządzania i jest kosztowne, gdy jest wykonywane w odpowiedniej skali. Reguły sieci wirtualnej są łatwiejsze do ustanowienia i zarządzania.
-
-> [!NOTE]
-> Nie można jeszcze mieć SQL Database w podsieci. Jeśli serwer Azure SQL Database był węzłem w podsieci w sieci wirtualnej, wszystkie węzły w sieci wirtualnej mogą komunikować się z SQL Database. W takim przypadku maszyny wirtualne mogą komunikować się z SQL Database bez konieczności używania reguł sieci wirtualnej ani reguł adresów IP.
-
-Jednak od września 2017 usługa Azure SQL Database nie należy jeszcze do usług, które mogą być przypisane do podsieci.
-
-<a name="anch-details-about-vnet-rules-38q" />
+<!--<a name="anch-details-about-vnet-rules-38q"/> -->
 
 ## <a name="details-about-virtual-network-rules"></a>Szczegóły dotyczące reguł sieci wirtualnej
 
@@ -141,27 +104,7 @@ FYI: Re ARM, 'Azure Service Management (ASM)' was the old name of 'classic deplo
 When searching for blogs about ASM, you probably need to use this old and now-forbidden name.
 -->
 
-## <a name="impact-of-removing-allow-azure-services-to-access-server"></a>Wpływ usunięcia "Zezwalaj na usługi platformy Azure na dostęp do serwera"
 
-Wielu użytkowników chce usunąć opcję **Zezwól usługom platformy Azure na dostęp do serwera** z serwerów usługi Azure SQL Server i zamienić ją na regułę zapory sieci wirtualnej.
-Usunięcie tego dotyczy jednak następujących funkcji:
-
-### <a name="import-export-service"></a>Importuj usługę eksportu
-
-Usługa Azure SQL Database Import Export jest uruchamiana na maszynach wirtualnych na platformie Azure. Te maszyny wirtualne nie znajdują się w sieci wirtualnej, dlatego Uzyskaj adres IP platformy Azure podczas łączenia się z bazą danych. Po usunięciu **Zezwalaj usługom platformy Azure na dostęp do serwera** te maszyny wirtualne nie będą mogły uzyskać dostępu do baz danych.
-Można obejść ten problem. Uruchom BACPAC zaimportować lub wyeksportować bezpośrednio w kodzie za pomocą interfejsu API DACFx. Upewnij się, że jest ona wdrożona na maszynie wirtualnej, która znajduje się w podsieci wirtualnej, dla której ustawiono regułę zapory.
-
-### <a name="sql-database-query-editor"></a>Edytor zapytań SQL Database
-
-Edytor zapytań Azure SQL Database jest wdrażany na maszynach wirtualnych na platformie Azure. Te maszyny wirtualne nie znajdują się w sieci wirtualnej. W związku z tym maszyny wirtualne uzyskują adres IP platformy Azure podczas łączenia się z bazą danych. Po usunięciu **Zezwalaj usługom platformy Azure na dostęp do serwera**te maszyny wirtualne nie będą mogły uzyskać dostępu do baz danych.
-
-### <a name="table-auditing"></a>Inspekcja tabeli
-
-Obecnie istnieją dwa sposoby włączania inspekcji na SQL Database. Inspekcja tabeli kończy się niepowodzeniem po włączeniu punktów końcowych usługi w usłudze Azure SQL Server. Środki zaradcze w tym miejscu umożliwiają przejście do inspekcji obiektów BLOB.
-
-### <a name="impact-on-data-sync"></a>Wpływ na synchronizację danych
-
-Azure SQL Database zawiera funkcję synchronizacji danych, która łączy się z bazami danych przy użyciu adresów IP platformy Azure. Gdy korzystasz z punktów końcowych usługi, prawdopodobnie wyłączysz opcję **Zezwól usługom platformy Azure na dostęp do serwera** na serwerze SQL Database. Spowoduje to przerwanie funkcji synchronizacji danych.
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Wpływ używania punktów końcowych usługi sieci wirtualnej z usługą Azure Storage
 
@@ -174,6 +117,7 @@ Baza danych wielobase jest często używana do ładowania dane do Azure SQL Data
 #### <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 > [!IMPORTANT]
 > Moduł Azure Resource Manager programu PowerShell jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. W przypadku tych poleceń cmdlet zobacz [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne.
 
@@ -182,12 +126,12 @@ Baza danych wielobase jest często używana do ładowania dane do Azure SQL Data
 3.  Musisz **zezwolić zaufanym usługom firmy Microsoft na dostęp do tego konta magazynu** , włączone w obszarze zapory konta usługi Azure Storage i menu ustawienia **sieci wirtualnych** . Aby uzyskać więcej [](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) informacji, zapoznaj się z tym przewodnikiem.
  
 #### <a name="steps"></a>Kroki
-1. W programie PowerShell **zarejestruj serwer SQL Database** przy użyciu usługi Azure Active Directory (AAD):
+1. W programie PowerShell **zarejestruj SQL Server platformy Azure** , które obsługują wystąpienie Azure SQL Data Warehouse za pomocą usługi Azure Active Directory (AAD):
 
    ```powershell
    Connect-AzAccount
    Select-AzSubscription -SubscriptionId your-subscriptionId
-   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+   Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
     
    1. Utwórz **konto magazynu ogólnego przeznaczenia w wersji 2** za pomocą [](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)tego przewodnika.
@@ -196,7 +140,7 @@ Baza danych wielobase jest często używana do ładowania dane do Azure SQL Data
    > - Jeśli masz konto usługi Magazyn ogólnego przeznaczenia w wersji 1 lub BLOB, musisz **najpierw przeprowadzić uaktualnienie do wersji 2** przy [](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)użyciu tego przewodnika.
    > - Aby uzyskać znane problemy z Azure Data Lake Storage Gen2, zapoznaj się [](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)z tym przewodnikiem.
     
-1. W obszarze konto magazynu przejdź do pozycji **Access Control (IAM)** , a następnie kliknij pozycję **Dodaj przypisanie roli**. Przypisz rolę RBAC **współautor danych obiektów blob magazynu** do serwera SQL Database.
+1. W obszarze konto magazynu przejdź do pozycji **Access Control (IAM)** , a następnie kliknij pozycję **Dodaj przypisanie roli**. Przypisz rolę RBAC **współautor danych obiektów blob magazynu** do platformy Azure SQL Server Hosting Azure SQL Data Warehouse, który został zarejestrowany w usłudze Azure Active Directory (AAD), jak w kroku 1.
 
    > [!NOTE] 
    > Tylko członkowie z uprawnieniami właściciela mogą wykonać ten krok. Aby uzyskać różne wbudowane role dla zasobów platformy Azure, zapoznaj się [](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)z tym przewodnikiem.

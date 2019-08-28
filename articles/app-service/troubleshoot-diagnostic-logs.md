@@ -1,6 +1,6 @@
 ---
-title: Włączanie rejestrowania diagnostycznego dla aplikacji — usłudze Azure App Service
-description: Dowiedz się, jak włączyć rejestrowanie diagnostyczne i dodać Instrumentację do aplikacji, a także jak uzyskać dostęp do informacji rejestrowanych przez system Azure.
+title: Włączanie rejestrowania diagnostycznego dla aplikacji — Azure App Service
+description: Dowiedz się, jak włączyć rejestrowanie diagnostyczne i dodać instrumentację do aplikacji, a także jak uzyskać dostęp do informacji rejestrowanych przez platformę Azure.
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -10,226 +10,225 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c21a923f06a768c0a9a0f2843a24583df7a7821d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: af6d8b61c5d49ae219e90513abb93185f957222e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059649"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074054"
 ---
-# <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji w usłudze Azure App Service
+# <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji w Azure App Service
 ## <a name="overview"></a>Omówienie
-Platforma Azure udostępnia wbudowaną funkcję diagnostyki, która pomaga w debugowaniu [aplikację usługi app Service](https://go.microsoft.com/fwlink/?LinkId=529714). W tym artykule dowiesz się, jak włączyć rejestrowanie diagnostyczne i dodać Instrumentację do aplikacji, a także jak uzyskać dostęp do informacji rejestrowanych przez system Azure.
+Platforma Azure udostępnia wbudowaną diagnostykę, która pomaga w debugowaniu [aplikacji App Service](https://go.microsoft.com/fwlink/?LinkId=529714). W tym artykule dowiesz się, jak włączyć rejestrowanie diagnostyczne i dodać instrumentację do aplikacji, a także jak uzyskać dostęp do informacji rejestrowanych przez platformę Azure.
 
-W tym artykule wykorzystano [witryny Azure portal](https://portal.azure.com) i wiersza polecenia platformy Azure, aby pracować z dzienników diagnostycznych. Aby uzyskać informacje na temat pracy z dzienników diagnostycznych przy użyciu programu Visual Studio, zobacz [Rozwiązywanie problemów z platformy Azure w programie Visual Studio](troubleshoot-dotnet-visual-studio.md).
+W tym artykule są wykorzystywane [Azure Portal](https://portal.azure.com) i interfejs wiersza polecenia platformy Azure do pracy z dziennikami diagnostycznymi. Aby uzyskać informacje dotyczące pracy z dziennikami diagnostycznymi przy użyciu programu Visual Studio, zobacz [Rozwiązywanie problemów z platformą Azure w programie Visual Studio](troubleshoot-dotnet-visual-studio.md)
 
-## <a name="whatisdiag"></a>Diagnostyka serwera sieci Web i diagnostyki aplikacji
-Usługa App Service oferuje funkcje diagnostyczne dla rejestrowanie informacji z serwera sieci web i aplikacji sieci web. Są one logicznie oddzielone w **diagnostyką serwerów w sieci web** i **programu application diagnostics**.
+## <a name="whatisdiag"></a>Diagnostyka serwera sieci Web i Diagnostyka aplikacji
+App Service udostępnia funkcje diagnostyczne do rejestrowania informacji z serwera sieci Web i aplikacji sieci Web. Są one logicznie rozdzielone na **diagnostykę serwera sieci Web** i **diagnostykę aplikacji**.
 
 ### <a name="web-server-diagnostics"></a>Diagnostyka serwera sieci Web
-Można włączyć lub wyłączyć następujące rodzaje dzienników:
+Można włączać lub wyłączać następujące rodzaje dzienników:
 
-* **Szczegółowe rejestrowanie błędów** — szczegółowe informacje na temat każde żądanie, które powoduje kod stanu HTTP 400 lub nowszej. Może on zawierać informacje, które mogą pomóc ustalić, dlaczego serwer zwrócił kod błędu. Jeden plik HTML jest generowany dla każdego błędu, w systemie plików aplikacji i maksymalnie 50 błędów (pliki) są zachowywane. Jeżeli liczba plików HTML przekracza 50, 26 najstarsze pliki są automatycznie usuwane.
-* **Nie powiodło się żądanie śledzenia** — szczegółowe informacje dotyczące żądań zakończonych niepowodzeniem, w tym śledzenia komponenty używani do przetwarzania żądania i czasu trwania w poszczególnych składnikach. Jest to przydatne, jeśli chcesz zwiększyć wydajność witryny lub izolowania określonego błędu HTTP. Jeden folder jest generowany dla każdego błędu w systemie plików aplikacji. Zasady przechowywania plików są takie same jak szczegółowy komunikat o błędzie logowania powyżej.
-* **Rejestrowanie serwera w sieci Web** — informacje o transakcji HTTP za pomocą [rozszerzonym formacie W3C dziennika pliku](/windows/desktop/Http/w3c-logging). Jest to przydatne, podczas określania ogólnego metryki witryn, takie jak liczba żądań obsłużonych lub ile żądań pochodzących z określonego adresu IP.
+* **Szczegóły rejestrowania błędów** — szczegółowe informacje dotyczące każdego żądania, które powoduje, że kod stanu HTTP 400 lub nowszy. Może on zawierać informacje, które mogą pomóc w ustaleniu, dlaczego serwer zwrócił kod błędu. Jeden plik HTML jest generowany dla każdego błędu w systemie plików aplikacji, a do 50 błędów (plików) są zachowywane. Gdy liczba plików HTML przekracza 50, najstarsze 26 plików zostanie automatycznie usunięta.
+* **Śledzenie nieudanych żądań** — szczegółowe informacje o żądaniach zakończonych niepowodzeniem, w tym śledzenia składników usług IIS używanych do przetwarzania żądania oraz czasu wykonywanego w każdym składniku. Jest to przydatne, jeśli chcesz zwiększyć wydajność lokacji lub odizolować określony błąd HTTP. Jeden folder jest generowany dla każdego błędu w systemie plików aplikacji. Zasady przechowywania plików są takie same jak w przypadku szczegółowego rejestrowania błędów powyżej.
+* **Rejestrowanie serwera sieci Web** — informacje o transakcjach http przy użyciu [rozszerzonego formatu W3C plików dziennika](/windows/desktop/Http/w3c-logging). Jest to przydatne podczas określania ogólnych metryk lokacji, takich jak Liczba obsłużonych żądań lub ile żądań pochodzi z określonego adresu IP.
 
-### <a name="application-diagnostics"></a>Usługa Application diagnostics
-Usługa Application diagnostics można przechwytywać informacji generowanych przez aplikację sieci web. Aplikacje ASP.NET mogą używać [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) klasy do rejestrowania informacji w dzienniku diagnostyki aplikacji. Na przykład:
+### <a name="application-diagnostics"></a>Diagnostyka aplikacji
+Diagnostyka aplikacji umożliwia przechwytywanie informacji generowanych przez aplikację sieci Web. Aplikacje ASP.NET mogą używać klasy [System. Diagnostics. Trace](/dotnet/api/system.diagnostics.trace) do rejestrowania informacji w dzienniku diagnostyki aplikacji. Na przykład:
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
-W czasie wykonywania możesz pobrać te dzienniki w celu ułatwienia rozwiązywania problemów. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z usługi Azure App Service w programie Visual Studio](troubleshoot-dotnet-visual-studio.md).
+W środowisku uruchomieniowym można pobrać te dzienniki, aby ułatwić rozwiązywanie problemów. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów Azure App Service w programie Visual Studio](troubleshoot-dotnet-visual-studio.md).
 
-Usługa App Service rejestruje informacje o wdrożeniu podczas publikowania zawartości do aplikacji. Odbywa się automatycznie i nie ma żadnych ustawień konfiguracji dla rejestrowania wdrożenia. Rejestrowanie wdrażania pozwala określić, dlaczego wdrożenie nie powiodło się. Na przykład jeśli używany jest skrypt wdrożenia niestandardowego, może być umożliwia rejestrowanie wdrożenia Sprawdź, dlaczego skrypt jest możliwe.
+App Service również rejestruje informacje o wdrożeniu podczas publikowania zawartości w aplikacji. Odbywa się to automatycznie i nie ma ustawień konfiguracji rejestrowania wdrożenia. Rejestrowanie wdrożenia pozwala określić przyczynę niepowodzenia wdrożenia. Na przykład jeśli używasz niestandardowego skryptu wdrożenia, możesz użyć rejestrowania wdrożenia, aby określić, dlaczego skrypt kończy się niepowodzeniem.
 
 ## <a name="enablediag"></a>Jak włączyć diagnostykę
-Aby włączyć diagnostykę w [witryny Azure portal](https://portal.azure.com), przejdź do strony aplikacji i kliknij przycisk **Ustawienia > dzienniki diagnostyczne**.
+Aby włączyć diagnostykę w [Azure Portal](https://portal.azure.com), przejdź do strony aplikacji, a następnie kliknij pozycję **Ustawienia > dzienników diagnostycznych**.
 
 <!-- todo:cleanup dogfood addresses in screenshot -->
 ![Część dzienników](./media/web-sites-enable-diagnostic-log/logspart.png)
 
-Po włączeniu **programu application diagnostics**, możesz również wybrać **poziom**. W poniższej tabeli przedstawiono kategorie dzienników, które każdy poziom zawiera:
+Po włączeniu **diagnostyki aplikacji**należy również wybrać **poziom**. W poniższej tabeli przedstawiono kategorie dzienników na każdym poziomie:
 
-| Poziom| Uwzględnione Rejestruj kategorie |
+| Poziom| Uwzględnione kategorie dzienników |
 |-|-|
 |**Disabled (Wyłączone)** | Brak |
-|**Error** | Błąd krytyczny |
-|**Ostrzeżenie** | Ostrzeżenie, błąd krytyczny|
-|**Informacje o** | Info, Warning, błąd krytyczny|
-|**pełne** | Śledzenia, debugowania, informacje, ostrzeżenie, błąd krytyczny (wszystkie kategorie) |
+|**Error** | Błąd, krytyczny |
+|**Ostrzeżenie** | Ostrzeżenie, błąd, krytyczny|
+|**Informacje o** | Informacje, ostrzeżenie, błąd, krytyczne|
+|**Pełne** | Trace, Debug, info, Warning, Error, krytyczny (wszystkie kategorie) |
 |-|-|
 
-Aby uzyskać **rejestrowanie aplikacji**, można włączyć opcję systemu pliku tymczasowego na potrzeby debugowania. Ta opcja powoduje wyłączenie automatycznie w ciągu 12 godzin. Można również włączyć opcję magazynu obiektów blob umożliwia wybór kontenera obiektów blob, będą zapisywane dzienniki.
+W przypadku **rejestrowania aplikacji**można tymczasowo włączyć opcję systemu plików na potrzeby debugowania. Ta opcja wyłącza się automatycznie w ciągu 12 godzin. Możesz również włączyć opcję magazynu obiektów blob, aby wybrać kontener obiektów blob, w którym mają zostać zapisane dzienniki.
 
 > [!NOTE]
-> Obecnie tylko Dzienniki aplikacji .NET można zapisać w magazynie obiektów blob. Java, PHP, Node.js, Python, dzienniki aplikacji mogą być przechowywane tylko w systemie plików (bez modyfikacji kodu do zapisywania dzienników magazynu zewnętrznego).
+> Obecnie tylko Dzienniki aplikacji .NET mogą być zapisywane w magazynie obiektów BLOB. Java, PHP, Node. js Dzienniki aplikacji w języku Python mogą być przechowywane tylko w systemie plików (bez modyfikacji kodu do zapisu dzienników do magazynu zewnętrznego).
 >
 >
 
-Aby uzyskać **rejestrowanie serwera sieci Web**, możesz wybrać **magazynu** lub **system plików**. Wybieranie **magazynu** służy do wybierania konta magazynu i kontener obiektów blob, które dzienniki są zapisywane. 
+Aby można było **rejestrować serwer sieci Web**, wybierz pozycję **Magazyn** lub **system plików**. Wybranie pozycji **Magazyn** umożliwia wybranie konta magazynu, a następnie kontenera obiektów blob, w którym zapisywane są dzienniki. 
 
-Jeśli dzienniki są przechowywane w systemie plików, pliki mogą być dostęp do FTP, lub pobrane jako archiwum Zip przy użyciu wiersza polecenia platformy Azure.
+W przypadku przechowywania dzienników w systemie plików dostęp do plików można uzyskać za pomocą protokołu FTP lub pobrać jako archiwum zip przy użyciu interfejsu wiersza polecenia platformy Azure.
 
-Domyślnie dzienniki nie są automatycznie usuwane (z wyjątkiem produktów **rejestrowanie aplikacji (system plików)** ). Aby automatycznie usunąć dzienniki, ustaw **okres przechowywania (dni)** pola.
+Domyślnie dzienniki nie są automatycznie usuwane (z wyjątkiem **rejestrowania aplikacji (FileSystem)** ). Aby automatycznie usunąć dzienniki, ustaw wartość pola **okres przechowywania (dni)** .
 
 > [!NOTE]
-> Jeśli użytkownik [ponowne generowanie kluczy dostępu do konta magazynu](../storage/common/storage-create-storage-account.md), musisz zresetować konfigurację rejestrowania odpowiednich do używania kluczy zaktualizowane. W tym celu:
+> W przypadku ponownego [wygenerowania kluczy dostępu konta magazynu](../storage/common/storage-create-storage-account.md)należy zresetować odpowiednią konfigurację rejestrowania, aby użyć zaktualizowanych kluczy. W tym celu:
 >
-> 1. W **Konfiguruj** karcie należy ustawić funkcji rejestrowania odpowiednich **poza**. Zapisywanie ustawień użytkownika.
-> 2. Włącz rejestrowanie na obiekt blob z konta magazynu ponownie. Zapisywanie ustawień użytkownika.
+> 1. Na karcie **Konfiguracja** Ustaw odpowiednią funkcję rejestrowania na **off**. Zapisz ustawienie.
+> 2. Ponownie Włącz rejestrowanie do obiektu BLOB konta magazynu. Zapisz ustawienie.
 >
 >
 
-Dowolne kombinacje file system lub usługi blob Storage można włączyć w tym samym czasie i mieć osobny dziennik konfiguracje poziomu. Na przykład możesz rejestrować błędy i ostrzeżenia do magazynu obiektów blob jako rozwiązaniem długoterminowym rejestrowania podczas włączania rejestrowania w systemie plików z poziomem pełne.
+Dowolna kombinacja systemu plików lub magazynu obiektów BLOB może być włączona w tym samym czasie i ma poszczególne konfiguracje poziomu dziennika. Na przykład możesz chcieć rejestrować błędy i ostrzeżenia w usłudze BLOB Storage jako długoterminowe rozwiązanie do rejestrowania, jednocześnie włączając rejestrowanie systemu plików z poziomu pełnego.
 
-Gdy zarówno w lokalizacji magazynu zapewnia te same informacje podstawowe dla zarejestrowanych zdarzeń **magazynu obiektów blob** rejestruje informacje dodatkowe, takie jak identyfikator wystąpienia, identyfikator wątku i bardziej szczegółową sygnatura czasowa (format taktu) niż rejestrowania **system plików**.
+Chociaż obie lokalizacje przechowywania zawierają te same podstawowe informacje dotyczące rejestrowanych zdarzeń, usługa **BLOB Storage** rejestruje dodatkowe informacje, takie jak identyfikator wystąpienia, identyfikator wątku i bardziej szczegółowy znacznik czasu (w formacie Tick) niż rejestrowanie w **systemie plików**.
 
 > [!NOTE]
-> Informacje przechowywane w **magazynu obiektów blob** może zostać oceniony jedynie przy użyciu klienta usługi storage lub aplikacji, która bezpośrednio może współpracować z tych systemów magazynowania. Na przykład programu Visual Studio 2013 zawiera Eksploratora magazynu, który może służyć do eksplorowania usługi blob storage i HDInsight dostęp do danych przechowywanych w magazynie obiektów blob. Możesz również zapisywać dane aplikacji, która uzyskuje dostęp do usługi Azure Storage przy użyciu jednej z [zestawami SDK Azure](https://azure.microsoft.com/downloads/).
+> Dostęp do informacji przechowywanych w usłudze **BLOB Storage** można uzyskać tylko przy użyciu klienta magazynu lub aplikacji, która może bezpośrednio współpracować z tymi systemami magazynu. Na przykład Visual Studio 2013 zawiera Eksplorator usługi Storage, których można użyć do eksplorowania usługi BLOB Storage, a Usługa HDInsight może uzyskać dostęp do danych przechowywanych w usłudze BLOB Storage. Możesz również napisać aplikację, która uzyskuje dostęp do usługi Azure Storage, korzystając z jednego z [zestawów SDK platformy Azure](https://azure.microsoft.com/downloads/).
 >
 
-## <a name="download"></a> Jak: Pobieranie dzienników
-Informacje diagnostyczne są przechowywane w systemie plików aplikacji są dostępne bezpośrednio za pomocą protokołu FTP. Można go również pobrać jako archiwum Zip, przy użyciu wiersza polecenia platformy Azure.
+## <a name="download"></a>Jak: Dzienniki pobierania
+Dostęp do informacji diagnostycznych przechowywanych w systemie plików aplikacji można uzyskać bezpośrednio przy użyciu protokołu FTP. Można go również pobrać jako archiwum zip przy użyciu interfejsu wiersza polecenia platformy Azure.
 
-Struktury katalogów, które dzienniki są przechowywane w jest następująca:
+Struktura katalogów, w której są przechowywane dzienniki, jest następująca:
 
-* **Dzienniki aplikacji** -/LogFiles/aplikacji /. Ten folder zawiera jeden lub więcej plików tekstowych zawierających informacji generowanych przez rejestrowanie aplikacji.
-* **Nie powiodło się żądanie ślady** -/ LogFiles/W3SVC ### /. Ten folder zawiera pliku XSL i co najmniej jeden plik XML. Upewnij się, pobrać pliku XSL do tego samego katalogu, jak pliki XML, ponieważ plik XSL zapewnia funkcje dotyczące formatowania i filtrowania zawartości plików XML podczas wyświetlania w przeglądarce Internet Explorer.
-* **Szczegółowe dzienniki błędów** -/LogFiles/DetailedErrors /. Ten folder zawiera jeden lub więcej plików htm, które zapewniają szczegółowe informacje, które wystąpiły błędy HTTP.
-* **Dzienniki serwera Web** -/LogFiles/http/RawLogs. Ten folder zawiera jeden lub więcej plików tekstowych formatowana przy użyciu [rozszerzonym formacie W3C dziennika pliku](/windows/desktop/Http/w3c-logging).
-* **Dzienniki wdrożenia** -/ LogFiles/Git. Ten folder zawiera dzienniki generowane przez procesy wewnętrznego wdrażania używane przez usługę Azure App Service, a także dzienniki dla wdrożenia Git. Można również znaleźć dzienniki wdrożenia w obszarze D:\home\site\deployments.
+* **Dzienniki aplikacji** —/LogFiles/Application/. Ten folder zawiera jeden lub więcej plików tekstowych zawierających informacje generowane przez funkcję rejestrowania aplikacji.
+* **Ślady nieudanych żądań** —/LogFiles/W3SVC # # # # # # # # #/. Ten folder zawiera plik XSL i jeden lub więcej plików XML. Upewnij się, że plik XSL został pobrany do tego samego katalogu co pliki XML, ponieważ plik XSL zawiera funkcje formatowania i filtrowania zawartości plików XML wyświetlanych w programie Internet Explorer.
+* **Szczegółowe dzienniki błędów** —/LogFiles/DetailedErrors/. Ten folder zawiera jeden lub więcej plików. htm, które zawierają obszerne informacje dotyczące wszystkich błędów HTTP, które wystąpiły.
+* **Dzienniki serwera sieci Web** —/LogFiles/http/RawLogs. Ten folder zawiera jeden lub więcej plików tekstowych sformatowanych przy użyciu [rozszerzonego formatu W3C plików dziennika](/windows/desktop/Http/w3c-logging).
+* **Dzienniki wdrażania** —/LogFiles/git. Ten folder zawiera dzienniki wygenerowane przez procesy wdrażania wewnętrznego używane przez Azure App Service, a także dzienniki wdrożeń usługi git. Dzienniki wdrożenia można również znaleźć w obszarze D:\home\site\deployments.
 
 ### <a name="ftp"></a>Protokół FTP
 
-Aby otworzyć połączenie FTP do serwera FTP swojej aplikacji, zobacz [wdrażanie aplikacji w usłudze Azure App Service przy użyciu protokołu FTP/S](deploy-ftp.md).
+Aby otworzyć połączenie FTP z serwerem FTP aplikacji, zobacz [wdrażanie aplikacji do Azure App Service przy użyciu protokołu FTP/s](deploy-ftp.md).
 
-Po nawiązaniu połączenia do serwera FTP/S w swojej aplikacji otwórz **LogFiles** folder, w którym są przechowywane pliki dziennika.
+Po nawiązaniu połączenia z serwerem FTP/S aplikacji otwórz folder **LogFiles** , w którym są przechowywane pliki dziennika.
 
-### <a name="download-with-azure-cli"></a>Pobieranie z wiersza polecenia platformy Azure
-Aby pobrać pliki dziennika przy użyciu interfejsu wiersza polecenia platformy Azure, otwórz nowy wiersz polecenia, programu PowerShell, Bash lub sesji terminalowej i wprowadź następujące polecenie:
+### <a name="download-with-azure-cli"></a>Pobierz za pomocą interfejsu wiersza polecenia platformy Azure
+Aby pobrać pliki dziennika przy użyciu interfejsu wiersza polecenia platformy Azure, Otwórz nowy wiersz polecenia, PowerShell, bash lub sesję terminala, a następnie wprowadź następujące polecenie:
 
     az webapp log download --resource-group resourcegroupname --name appname
 
-To polecenie zapisuje w dziennikach aplikacji o nazwie "appname" w pliku o nazwie **webapp_logs.zip** w bieżącym katalogu.
+To polecenie zapisuje Dzienniki aplikacji o nazwie "nazwa_aplikacji" w pliku o nazwie **webapp_logs. zip** w bieżącym katalogu.
 
 > [!NOTE]
-> Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure lub nie został skonfigurowany do korzystania z subskrypcji platformy Azure, zobacz [instrukcje wiersza polecenia platformy Azure użyj](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
+> Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure lub nie został on skonfigurowany do korzystania z subskrypcji platformy Azure, zobacz [jak korzystać z interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest).
 >
 >
 
-## <a name="how-to-view-logs-in-application-insights"></a>Instrukcje: Wyświetlanie dzienników w usłudze Application Insights
-Visual Studio Application Insights udostępnia narzędzia, filtrowanie i przeszukiwanie dzienników oraz korelacji dzienniki z żądaniami oraz innymi zdarzeniami.
+## <a name="how-to-view-logs-in-application-insights"></a>Instrukcje: Wyświetlanie dzienników w Application Insights
+Program Visual Studio Application Insights udostępnia narzędzia do filtrowania i wyszukiwania dzienników oraz skorelowania dzienników z żądaniami i innymi zdarzeniami.
 
 1. Dodaj zestaw Application Insights SDK do projektu w programie Visual Studio.
-   * W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy projekt i wybierz polecenie Dodaj usługę Application Insights. Interfejs przeprowadzi Cię przez kroki, które obejmują tworzenie zasobu usługi Application Insights. [Dowiedz się więcej](../azure-monitor/app/asp-net.md)
-2. Dodaj pakiet odbiornik śledzenia do projektu.
-   * Kliknij prawym przyciskiem myszy projekt i wybierz polecenie Zarządzaj pakietami NuGet. Wybierz `Microsoft.ApplicationInsights.TraceListener` [Dowiedz się więcej](../azure-monitor/app/asp-net-trace-logs.md)
-3. Przekaż swój projekt i uruchomić go w celu wygenerowania danych dziennika.
-4. W [witryny Azure portal](https://portal.azure.com/), przejdź do nowego zasobu usługi Application Insights i Otwórz **wyszukiwania**. Powinny być widoczne dane dziennika oraz żądania, użycia i inną telemetrią. Dane telemetryczne może potrwać kilka minut: kliknij przycisk Odśwież. [Dowiedz się więcej](../azure-monitor/app/diagnostic-search.md)
+   * W Eksplorator rozwiązań kliknij prawym przyciskiem myszy projekt i wybierz polecenie Dodaj Application Insights. Interfejs zawiera instrukcje dotyczące tworzenia zasobów Application Insights. [Dowiedz się więcej](../azure-monitor/app/asp-net.md)
+2. Dodaj pakiet odbiornika śledzenia do projektu.
+   * Kliknij prawym przyciskiem myszy projekt i wybierz polecenie Zarządzaj pakietami NuGet. Wybierz `Microsoft.ApplicationInsights.TraceListener` pozycję [Dowiedz się więcej](../azure-monitor/app/asp-net-trace-logs.md)
+3. Przekaż projekt i uruchom go, aby wygenerować dane dziennika.
+4. W [Azure Portal](https://portal.azure.com/)przejdź do nowego zasobu Application Insights i Otwórz pozycję **Wyszukaj**. Powinny pojawić się dane dziennika wraz z żądaniem, użyciem i inną telemetrią. Niektóre dane telemetryczne mogą potrwać kilka minut: kliknij przycisk Odśwież. [Dowiedz się więcej](../azure-monitor/app/diagnostic-search.md)
 
-[Więcej informacji na temat wydajności śledzenia za pomocą usługi Application Insights](../azure-monitor/app/azure-web-apps.md)
+[Dowiedz się więcej o śledzeniu wydajności za pomocą Application Insights](../azure-monitor/app/azure-web-apps.md)
 
-## <a name="streamlogs"></a> Jak: Strumieniowe przesyłanie dzienników
-Podczas tworzenia aplikacji, jest często warto wyświetlać informacje rejestrowania w czasie niemal rzeczywistym. Informacje o rejestrowaniu można przesyłać strumieniowo do środowiska deweloperskiego przy użyciu wiersza polecenia platformy Azure.
+## <a name="streamlogs"></a>Jak: Strumieniowe przesyłanie dzienników
+Podczas tworzenia aplikacji często warto zobaczyć informacje o rejestrowaniu w czasie niemal rzeczywistym. Informacje o rejestrowaniu można przesyłać do środowiska deweloperskiego przy użyciu interfejsu wiersza polecenia platformy Azure.
 
 > [!NOTE]
-> Niektóre rodzaje rejestrowania bufor zapisu do pliku dziennika, co może skutkować zdarzeń poza kolejnością w strumieniu. Na przykład wpis dziennika aplikacji, który występuje, gdy użytkownik odwiedzi strony mogą być wyświetlane w usłudze stream przed odpowiadający mu wpis dziennika HTTP dla żądania strony.
+> Niektóre typy buforów rejestrowania zapisu w pliku dziennika, co może spowodować brak kolejności zdarzeń w strumieniu. Na przykład wpis dziennika aplikacji, który występuje, gdy użytkownik odwiedzi stronę, może zostać wyświetlony w strumieniu przed odpowiednim wpisem dziennika HTTP dla żądania strony.
 >
 > [!NOTE]
-> Przesyłanie strumieniowe dzienników również przesyła strumieniowo informacje zapisane do pliku tekstowego, wszystkie przechowywane w **D:\\macierzystego\\LogFiles\\**  folderu.
+> Przesyłanie strumieniowe dzienników również przesyła strumieniowo informacje zapisane w dowolnym pliku tekstowym przechowywanym w folderze **D:\\\\ Home\\LogFiles** .
 >
 >
 
-### <a name="streaming-with-azure-cli"></a>Przesyłanie strumieniowe z wiersza polecenia platformy Azure
-Przesyłanie strumieniowe rejestrowanie informacji, otwórz nowy wiersz polecenia, programu PowerShell, Bash lub sesji terminalowej i wprowadź następujące polecenie:
+### <a name="streaming-with-azure-cli"></a>Przesyłanie strumieniowe za pomocą interfejsu wiersza polecenia platformy Azure
+Aby przesłać strumieniowo informacje o rejestrowaniu, Otwórz nowy wiersz polecenia, PowerShell, bash lub sesję terminala i wprowadź następujące polecenie:
 
     az webapp log tail --name appname --resource-group myResourceGroup
 
-To polecenie łączy do przetworzenia aplikacji o nazwie "appname" i rozpocząć przesyłanie strumieniowe informacje do okna, w momencie wystąpienia zdarzenia dziennika, w aplikacji. Wszystkie informacje zapisane pliki kończące się na .txt, log lub .htm, które są przechowywane w katalogu /LogFiles (d:/home/logfiles) jest przesyłany strumieniowo do konsoli lokalnej.
+To polecenie umożliwia nawiązanie połączenia z aplikacją o nazwie "nazwa_aplikacji" i rozpoczęcie przesyłania strumieniowego informacji do okna jako zdarzenia dziennika występujące w aplikacji. Wszelkie informacje zapisane w plikach kończących się na. txt,. log lub. htm, które są przechowywane w katalogu/LogFiles (d:/Home/LogFiles), są przesyłane strumieniowo do konsoli lokalnej.
 
-Aby odfiltrować określone zdarzenia, takie jak błędy, użyj **— filtr** parametru. Na przykład:
+Aby odfiltrować określone zdarzenia, takie jak błędy, użyj parametru **--Filter** . Przykład:
 
     az webapp log tail --name appname --resource-group myResourceGroup --filter Error
 
-Aby odfiltrować typów określonego dziennika, takich jak HTTP, użyj **— ścieżka** parametru. Na przykład:
+Aby filtrować określone typy dzienników, takie jak HTTP, użyj parametru **--Path** . Na przykład:
 
     az webapp log tail --name appname --resource-group myResourceGroup --path http
 
 > [!NOTE]
-> Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure lub nie został skonfigurowany do korzystania z subskrypcji platformy Azure, zobacz [instrukcje wiersza polecenia platformy Azure użyj](../cli-install-nodejs.md).
+> Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure lub nie został on skonfigurowany do korzystania z subskrypcji platformy Azure, zobacz [jak korzystać z interfejsu wiersza polecenia platformy Azure](../cli-install-nodejs.md).
 >
 >
 
-## <a name="understandlogs"></a> Jak: Zrozumienie dzienniki diagnostyczne
+## <a name="understandlogs"></a>Jak: Omówienie dzienników diagnostycznych
 ### <a name="application-diagnostics-logs"></a>Dzienniki diagnostyki aplikacji
-Usługa Application diagnostics przechowuje informacje w określonym formacie dla aplikacji .NET, w zależności od tego, czy są przechowywane dzienniki do pliku systemu lub blob storage. 
+Program Application Diagnostics przechowuje informacje w określonym formacie dla aplikacji .NET, w zależności od tego, czy dzienniki są przechowywane w systemie plików czy w magazynie obiektów BLOB. 
 
-Podstawowy zestaw przechowywanych danych jest taka sama w przypadku obu typów magazynu — Data i godzina wystąpienia zdarzenia, identyfikator procesu, który zdarzenia, typ zdarzenia (informacje, ostrzeżenie, błąd) oraz komunikatów o zdarzeniach. Korzystanie z systemu plików na potrzeby przechowywania dzienników jest przydatne, gdy potrzebujesz uzyskać natychmiastowy dostęp do rozwiązania problemu, ponieważ pliki dziennika są aktualizowane niemal natychmiast. Magazyn obiektów blob jest używany w celu jego archiwizacji, ponieważ pliki są buforowane, a następnie opróżniany do kontenera magazynu, zgodnie z harmonogramem.
+Podstawowy zestaw przechowywanych danych jest taki sam dla obu typów magazynów — datę i godzinę wystąpienia zdarzenia, identyfikator procesu, który wygenerował zdarzenie, typ zdarzenia (informacje, ostrzeżenie, błąd) i komunikat o zdarzeniu. Korzystanie z systemu plików dla magazynu dzienników jest przydatne, gdy potrzebujesz natychmiastowego dostępu do rozwiązania problemu, ponieważ pliki dziennika są aktualizowane niemal natychmiastowo. Magazyn obiektów BLOB jest używany na potrzeby archiwizowania, ponieważ pliki są buforowane, a następnie opróżniane do kontenera magazynu zgodnie z harmonogramem.
 
 **System plików**
 
-Każdy wiersz logowania do systemu plików lub odebranych przy użyciu przesyłania strumieniowego znajduje się w następującym formacie:
+Każdy wiersz zarejestrowany w systemie plików lub otrzymany przy użyciu przesyłania strumieniowego ma następujący format:
 
     {Date}  PID[{process ID}] {event type/level} {message}
 
-Na przykład zdarzenie błędu zostanie wyświetlony podobny do poniższego przykładu:
+Na przykład zdarzenie błędu będzie wyglądać podobnie do poniższego przykładu:
 
     2014-01-30T16:36:59  PID[3096] Error       Fatal error on the page!
 
-Logowanie do systemu plików zawiera podstawowe informacje z trzech dostępnych metod udostępnia tylko czasu, identyfikator procesu, poziom zdarzenia i komunikat.
+Rejestrowanie w systemie plików zapewnia najbardziej podstawowe informacje o trzech dostępnych metodach, zapewniając tylko godzinę, identyfikator procesu, poziom zdarzenia i komunikat.
 
 **Blob Storage**
 
-Gdy logujesz się do magazynu obiektów blob, dane są przechowywane w formacie wartości rozdzielanych przecinkami (CSV). Dodatkowe pola są rejestrowane w celu zapewnienia bardziej szczegółowe informacje o zdarzeniu. Następujące właściwości są używane dla każdego wiersza w woluminie CSV:
+Podczas rejestrowania w usłudze BLOB Storage dane są przechowywane w formacie wartości rozdzielanych przecinkami (CSV). Dodatkowe pola są rejestrowane w celu zapewnienia bardziej szczegółowych informacji o zdarzeniu. Dla każdego wiersza w woluminie CSV są używane następujące właściwości:
 
-| Nazwa właściwości | Format wartości / |
+| Nazwa właściwości | Wartość/format |
 | --- | --- |
 | Date |Data i godzina wystąpienia zdarzenia |
 | Poziom |Poziom zdarzenia (na przykład błąd, ostrzeżenie, informacje) |
 | ApplicationName |Nazwa aplikacji |
-| InstanceId |Wystąpienie aplikacji, które zdarzenie |
-| EventTickCount |Data i godzina wystąpienia zdarzenia, format taktu (większą precyzję) |
-| Identyfikator zdarzenia |Identyfikator zdarzenia tego zdarzenia<p><p>Wartość domyślna to 0, jeśli żaden określony |
-| Identyfikator PID |Identyfikator procesu |
-| identyfikatora TID |Identyfikator wątku wątku, który jest generowane zdarzenie |
-| Message |Komunikat szczegółów zdarzenia |
+| Identyfikator wystąpienia |Wystąpienie aplikacji, na której wystąpiło zdarzenie |
+| EventTickCount |Data i godzina wystąpienia zdarzenia w formacie osi (większa precyzja) |
+| Identyfikator zdarzenia |Identyfikator zdarzenia tego zdarzenia<p><p>Wartość domyślna to 0, jeśli nie określono |
+| Identyfikatora |Identyfikator procesu |
+| TID |Identyfikator wątku wątku, który wygenerował zdarzenie. |
+| Message |Komunikat szczegółowy o zdarzeniu |
 
-Dane przechowywane w obiekcie blob powinien wyglądać podobnie do poniższego przykładu:
+Dane przechowywane w obiekcie blob wyglądają podobnie do poniższego przykładu:
 
     date,level,applicationName,instanceId,eventTickCount,eventId,pid,tid,message
     2014-01-30T16:36:52,Error,mywebapp,6ee38a,635266966128818593,0,3096,9,An error occurred
 
 > [!NOTE]
-> Dla platformy ASP.NET Core rejestrowanie odbywa się przy użyciu [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) dostawcy dzienniku dodatkowe depozyty dostawcy plików w kontenerze obiektów blob. Aby uzyskać więcej informacji, zobacz [platformy ASP.NET Core rejestrowania na platformie Azure](/aspnet/core/fundamentals/logging).
+> W przypadku ASP.NET Core rejestrowanie odbywa się przy użyciu dostawcy [Microsoft. Extensions. Logging. AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices) ten dostawca złoży dodatkowe pliki dziennika do kontenera obiektów BLOB. Aby uzyskać więcej informacji, zobacz [rejestrowanie ASP.NET Core na platformie Azure](/aspnet/core/fundamentals/logging).
 >
 >
 
-### <a name="failed-request-traces"></a>Nie powiodło się żądanie śladów
-Śledzenie żądań zakończonych niepowodzeniem są przechowywane w plikach XML o nazwie **fr ### .xml**. Aby ułatwić wyświetlać zarejestrowane informacje o nazwie arkusz stylów XSL **freb.xsl** znajduje się w tym samym katalogu co pliki XML. Po otwarciu pliki XML w programie Internet Explorer programu Internet Explorer używa arkusza stylów XSL, zapewnienie sformatowane wyświetlanie informacji o śledzeniu, podobny do poniższego przykładu:
+### <a name="failed-request-traces"></a>Ślady nieudanych żądań
+Ślady nieudanych żądań są przechowywane w plikach XML o nazwie **fr # # # # # #. XML**. Aby ułatwić wyświetlanie zarejestrowanych informacji, arkusz stylów XSL o nazwie **freb. xsl** znajduje się w tym samym katalogu, w którym znajdują się pliki XML. W przypadku otwarcia jednego z plików XML w programie Internet Explorer program Internet Explorer używa arkusza stylów XSL do zapewnienia sformatowanego wyświetlania informacji śledzenia, podobnie jak w poniższym przykładzie:
 
-![Żądanie zakończone niepowodzeniem w przeglądarce](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
+![żądanie zakończone niepowodzeniem wyświetlane w przeglądarce](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
 
 > [!NOTE]
-> Prosty sposób, aby wyświetlić ślady sformatowanych żądań zakończonych niepowodzeniem jest przejście na stronę aplikacji w portalu. Z menu po lewej stronie wybierz **diagnozowanie i rozwiązywanie problemów**, a następnie wyszukaj **nie powiodło się dzienniki śledzenia żądań**, następnie kliknij ikonę, aby przeglądać i wyświetlać śledzenia ma.
+> W prosty sposób można wyświetlić sformatowane śledzenie nieudanych żądań, aby przejść do strony aplikacji w portalu. Z menu po lewej stronie wybierz opcję **Diagnozuj i rozwiąż problemy**, a następnie wyszukaj **dzienniki śledzenia niepomyślnych żądań**, a następnie kliknij ikonę, aby przeglądać i wyświetlić odpowiedni ślad.
 >
 
-### <a name="detailed-error-logs"></a>Dzienniki szczegółowy komunikat o błędzie
-Dzienniki szczegółowy komunikat o błędzie są dokumenty HTML, które zawierają bardziej szczegółowe informacje dotyczące błędów protokołu HTTP, które wystąpiły. Ponieważ są one po prostu dokumentów HTML, ich można wyświetlić w przeglądarce sieci web.
+### <a name="detailed-error-logs"></a>Szczegółowe dzienniki błędów
+Szczegółowe dzienniki błędów to dokumenty HTML, które zawierają bardziej szczegółowe informacje na temat błędów HTTP, które wystąpiły. Ponieważ są one po prostu dokumenty HTML, można je przeglądać za pomocą przeglądarki sieci Web.
 
 ### <a name="web-server-logs"></a>Dzienniki serwera sieci Web
-Dzienniki serwera sieci web są formatowane przy użyciu [rozszerzonym formacie W3C dziennika pliku](/windows/desktop/Http/w3c-logging). Te informacje mogą być odczytywane za pomocą edytora tekstu lub analizowany za pomocą narzędzi takich jak [analizator dzienników](https://go.microsoft.com/fwlink/?LinkId=246619).
+Dzienniki serwera sieci Web są formatowane przy użyciu [rozszerzonego formatu W3C plików dziennika](/windows/desktop/Http/w3c-logging). Te informacje można odczytać za pomocą edytora tekstu lub przeanalizować przy użyciu narzędzi, takich jak [parser dzienników](https://go.microsoft.com/fwlink/?LinkId=246619).
 
 > [!NOTE]
-> Dzienniki generowane przez usługę Azure App Service nie obsługują **s-computername**, **s-ip**, lub **cs-version** pola.
+> Dzienniki utworzone przez Azure App Service nie obsługują pól **s-ComputerName**, **s-IP**ani **cs-version** .
 >
 >
 
 ## <a name="nextsteps"></a> Następne kroki
-* [Jak monitorować usługi Azure App Service](web-sites-monitor.md)
-* [Rozwiązywanie problemów z usługi Azure App Service w programie Visual Studio](troubleshoot-dotnet-visual-studio.md)
-* [Analizowanie dzienników aplikacji w HDInsight](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
+* [Jak monitorować Azure App Service](web-sites-monitor.md)
+* [Rozwiązywanie problemów Azure App Service w programie Visual Studio](troubleshoot-dotnet-visual-studio.md)
+* [Analizowanie dzienników aplikacji w usłudze HDInsight](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

@@ -9,21 +9,20 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 302f60680d909f39af4573ec38ac8b76993392cd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 890d4ab0dcbaa814b4ce3365025e4c35e4ba4c6b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695538"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103542"
 ---
-# <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Samouczek: Tworzenie kopii zapasowej i przywracania plików dla maszyn wirtualnych systemu Linux na platformie Azure
+# <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>Samouczek: Tworzenie kopii zapasowych i przywracanie plików dla maszyn wirtualnych z systemem Linux na platformie Azure
 
 Możesz chronić swoje dane, tworząc kopie zapasowe w regularnych odstępach czasu. Usługa Azure Backup tworzy punkty odzyskiwania przechowywane w geograficznie nadmiarowych magazynach odzyskiwania. Z punktu odzyskiwania można przywrócić całą maszynę wirtualną lub poszczególne pliki. W tym artykule opisano sposób przywracania pojedynczego pliku na maszynę wirtualną z systemem Linux i uruchomionym serwerem nginx. Jeśli nie masz jeszcze maszyny wirtualnej gotowej do użycia, możesz ją utworzyć, korzystając z [przewodnika Szybki start dla systemu Linux](quick-create-cli.md). Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -94,8 +93,8 @@ W tym przykładzie przedstawiono sposób odzyskiwania domyślnej strony internet
 7. Z listy wybierz maszynę wirtualną.
 8. W bloku maszyny wirtualnej w sekcji **Ustawienia** kliknij pozycję **Kopia zapasowa**. Zostanie otwarty blok **Kopia zapasowa**. 
 9. W menu w górnej części bloku wybierz opcję **Odzyskiwanie pliku**. Zostanie otwarty blok **Odzyskiwanie plików**.
-10. W **krok 1: Wybierz punkt odzyskiwania**, wybierz punkt odzyskiwania z listy rozwijanej.
-11. W **krok 2: Pobierz skrypt do przeglądania i odzyskiwania plików**, kliknij przycisk **Pobierz plik wykonywalny** przycisku. Zapisz pobrany plik na komputerze lokalnym.
+10. W **kroku 1: Wybierz pozycję punkt**odzyskiwania i wybierz z listy rozwijanej punkt odzyskiwania.
+11. W **kroku 2: Pobierz skrypt, aby przeglądać i odzyskiwać pliki**, kliknij przycisk **Pobierz plik wykonywalny** . Zapisz pobrany plik na komputerze lokalnym.
 7. Kliknij przycisk **Pobierz skrypt**, aby pobrać lokalnie plik skryptu.
 8. Otwórz wiersz Bash i wpisz następujące polecenie, zastępując fragmenty *Linux_myVM_05-05-2017.sh* prawidłową ścieżką i nazwą pliku pobranego skryptu, *azureuser* nazwą użytkownika maszyny wirtualnej oraz *13.69.75.209* publicznym adresem IP maszyny wirtualnej.
     
@@ -156,7 +155,7 @@ W tym przykładzie przedstawiono sposób odzyskiwania domyślnej strony internet
 
     ![Domyślna strona internetowa serwera nginx](./media/tutorial-backup-vms/nginx-working.png)
 
-18. Na komputerze lokalnym wróć do karty przeglądarki dla portalu Azure i w **krok 3: Odinstalowanie dysków po odzyskiwaniu** kliknij **odinstaluj dyski** przycisku. Jeśli pominiesz ten krok, połączenie z punktem instalacji zostanie automatycznie zamknięte po 12 godzinach. Po upłynięciu tych 12 godzin musisz pobrać nowy skrypt, aby utworzyć nowy punkt instalacji.
+18. Na komputerze lokalnym Wróć do karty przeglądarki dla Azure Portal i w **kroku 3: Odinstaluj dyski po odzyskaniu** kliknij przycisk Odinstalowywanie **dysków** . Jeśli pominiesz ten krok, połączenie z punktem instalacji zostanie automatycznie zamknięte po 12 godzinach. Po upłynięciu tych 12 godzin musisz pobrać nowy skrypt, aby utworzyć nowy punkt instalacji.
 
 
 ## <a name="next-steps"></a>Następne kroki

@@ -10,17 +10,16 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f06b0866f5a79756f3404d7911f03bcdcc7f67d7
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b108814caaace83cd417dc8858e27ed01d54c39e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608038"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066763"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Funkcjonalność systemu operacyjnego na Azure App Service
 W tym artykule opisano typowe podstawowe funkcje systemu operacyjnego, które są dostępne dla wszystkich aplikacji systemu Windows działających na [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Ta funkcja obejmuje dostęp do plików, sieci i rejestru oraz dzienniki i zdarzenia diagnostyczne. 
@@ -75,7 +74,7 @@ Jednym z unikatowych aspektów App Service, które ułatwiają wdrażanie i kons
 
 W ramach App Service istnieje wiele udziałów UNC utworzonych w każdym centrum danych. Procent zawartości użytkownika dla wszystkich klientów w poszczególnych centrach danych jest przypisywany do każdego udziału UNC. Ponadto cała zawartość pliku dla subskrypcji jednego klienta jest zawsze umieszczana w tym samym udziale UNC. 
 
-Ze względu na sposób działania usług platformy Azure, określona maszyna wirtualna odpowiedzialna za hostowanie udziału UNC zmieni się z upływem czasu. Jest gwarantowane, że udziały UNC będą instalowane przez różne maszyny wirtualne w miarę ich przygotowywania w trakcie normalnego działania platformy Azure. Z tego powodu aplikacje nigdy nie powinny wprowadzać sztywno założeń, że informacje o maszynie w ścieżce pliku UNC pozostaną stabilne w czasie. Zamiast tego powinny *używać wygodnej* , **D:\home\site** ścieżki bezwzględnej, która zapewnia App Service. Ta przysymulowana ścieżka bezwzględna zapewnia przenośną metodę niezależny od, App-and-User-dla odwołującą się do własnej aplikacji. Za pomocą **D:\home\site**, jeden może przesyłać pliki udostępnione z aplikacji do aplikacji bez konieczności konfigurowania nowej ścieżki bezwzględnej dla każdego transferu.
+Ze względu na sposób działania usług platformy Azure, określona maszyna wirtualna odpowiedzialna za hostowanie udziału UNC zmieni się z upływem czasu. Jest gwarantowane, że udziały UNC będą instalowane przez różne maszyny wirtualne w miarę ich przygotowywania w trakcie normalnego działania platformy Azure. Z tego powodu aplikacje nigdy nie powinny wprowadzać sztywno założeń, że informacje o maszynie w ścieżce pliku UNC pozostaną stabilne w czasie. Zamiast tego powinny używać wygodnej, **D:\home\site** ścieżki bezwzględnej, która zapewnia App Service. Ta przysymulowana ścieżka bezwzględna zapewnia przenośną metodę niezależny od, App-and-User-dla odwołującą się do własnej aplikacji. Za pomocą **D:\home\site**, jeden może przesyłać pliki udostępnione z aplikacji do aplikacji bez konieczności konfigurowania nowej ścieżki bezwzględnej dla każdego transferu.
 
 <a id="TypesOfFileAccess"></a>
 

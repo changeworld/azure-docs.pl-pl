@@ -1,6 +1,6 @@
 ---
-title: Skalowanie automatyczne i środowisko App Service Environment v1 — platformy Azure
-description: Skalowanie automatyczne i środowisko usługi App Service
+title: Skalowanie automatyczne i App Service Environment V1 — Azure
+description: Skalowanie automatyczne i App Service Environment
 services: app-service
 documentationcenter: ''
 author: btardif
@@ -10,220 +10,219 @@ ms.assetid: c23af2d8-d370-4b1f-9b3e-8782321ddccb
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6660aa4e21aa36dc94c4ed9201fecb5637dddb3a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f0c49e1835412b61817ff3571dd3ee1eaa29f21f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65955965"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070083"
 ---
-# <a name="autoscaling-and-app-service-environment-v1"></a>Skalowanie automatyczne i środowisko App Service Environment w wersji 1
+# <a name="autoscaling-and-app-service-environment-v1"></a>Skalowanie automatyczne i App Service Environment v1
 
 > [!NOTE]
-> Ten artykuł dotyczy środowiska App Service Environment w wersji 1.  Istnieje nowsza wersja usługi App Service Environment jest łatwiejszy w obsłudze, która działa na bardziej zaawansowanych infrastruktury. Aby dowiedzieć się więcej na temat nowej wersji rozpoczynać [wprowadzenie do usługi App Service Environment](intro.md).
+> Ten artykuł dotyczy App Service Environment v1.  Istnieje nowsza wersja App Service Environment ułatwiająca korzystanie z bardziej wydajną infrastrukturą. Aby dowiedzieć się więcej o nowej wersji, Zacznij od [wprowadzenia do App Service Environment](intro.md).
 > 
 
-Obsługa środowiska Azure App Service Environment *skalowania automatycznego*. Możesz to zrobić skalowania automatycznego poszczególne pule procesów roboczych na podstawie metryki lub harmonogramu.
+Środowiska Azure App Service obsługują *skalowanie*automatyczne. Można automatycznie skalować poszczególne pule procesów roboczych na podstawie metryk lub harmonogramu.
 
-![Opcje automatycznego skalowania puli procesów roboczych.][intro]
+![Opcje skalowania automatycznego dla puli procesów roboczych.][intro]
 
-Skalowanie automatyczne optymalizuje wykorzystanie zasobów przez automatycznie stałym wzbogacaniu i zmniejszanie środowiska usługi App Service w taki sposób, aby dopasować swój budżet i/lub Załaduj profil.
+Skalowanie automatyczne optymalizuje wykorzystanie zasobów, automatycznie zwiększając i zmniejszając środowisko App Service, aby dopasować je do budżetu i lub załadować profil.
 
 ## <a name="configure-worker-pool-autoscale"></a>Konfigurowanie automatycznego skalowania puli procesów roboczych
-Możesz uzyskać dostęp z funkcji skalowania automatycznego z **ustawienia** kartę puli procesów roboczych.
+Możesz uzyskać dostęp do funkcji skalowania automatycznego z karty **Ustawienia** w puli procesów roboczych.
 
 ![Karta Ustawienia puli procesów roboczych.][settings-scale]
 
-Z tego miejsca interfejsu powinny być dość dobrze, ponieważ jest taki sam sposób, zobacz w przypadku skalowania planu usługi App Service. 
+Z tego miejsca interfejs powinien być dobrze zaznajomiony, ponieważ jest to to samo środowisko, które jest widoczne podczas skalowania planu App Service. 
 
-![Skalowanie ręczne ustawienia.][scale-manual]
+![Ustawienia skalowania ręcznego.][scale-manual]
 
-Można również skonfigurować profil skalowania automatycznego.
+Możesz również skonfigurować profil skalowania automatycznego.
 
-![Ustawienia automatycznego skalowania.][scale-profile]
+![Ustawienia skalowania automatycznego.][scale-profile]
 
-Profile automatycznego skalowania są przydatne do ustawić limity skalowania. W ten sposób można mieć spójną wydajność środowiska, ustawiając wartość skali dolna granica (1) i limit wydatków przewidywalne, ustawiając górną granicę opóźnień (2).
+Profile automatycznego skalowania są przydatne do ustawiania limitów skali. W ten sposób można mieć spójną wydajność, ustawiając dolną granicę wartości skali (1) i przewidywalny limit wydatków, ustawiając górną granicę (2).
 
 ![Ustawienia skalowania w profilu.][scale-profile2]
 
-Po zdefiniowaniu profilu, możesz dodać reguły skalowania automatycznego skalowania w górę lub w dół liczbę wystąpień w puli procesów roboczych w granicach zdefiniowane przez profil. Reguły skalowania automatycznego są określane na podstawie.
+Po zdefiniowaniu profilu można dodać reguły skalowania automatycznego w celu skalowania w górę lub w dół liczby wystąpień w puli procesów roboczych w granicach zdefiniowanych przez profil. Reguły automatycznego skalowania są oparte na metrykach.
 
-![Reguły skalowania.][scale-rule]
+![Reguła skalowania.][scale-rule]
 
- Dowolnej puli procesów roboczych lub metryk frontonu może służyć do zdefiniowania reguł skalowania automatycznego. Te metryki są te same metryki można monitorować na wykresach w bloku zasobów lub ustawić alerty dla.
+ Do definiowania reguł skalowania automatycznego można użyć dowolnej puli procesów roboczych lub metryk frontonu. Te metryki są tymi samymi metrykami, które można monitorować w wykresach bloku zasobów lub ustawiać dla nich alerty.
 
 ## <a name="autoscale-example"></a>Przykład skalowania automatycznego
-Funkcja automatycznego skalowania środowiska App Service najlepiej można zilustrowane Instruktaż scenariusza.
+Automatyczne skalowanie środowiska App Service można uzyskać, przechodząc przez scenariusz.
 
-W tym artykule opisano wszystkie niezbędne zagadnienia podczas konfigurowania automatycznego skalowania. Artykuł przeprowadzi Cię przez interakcji, które dochodzą do głosu, gdy należy wziąć pod uwagę automatycznego skalowania środowiska App Service Environment, które są hostowane w środowisku App Service.
+W tym artykule objaśniono wszystkie niezbędne uwagi dotyczące konfigurowania automatycznego skalowania. Artykuł przeprowadzi Cię przez interakcje, które są odtwarzane w przypadku automatycznego skalowania App Service środowiska hostowane w App Service Environment.
 
-### <a name="scenario-introduction"></a>Wprowadzenie do scenariusza
-Frank jest sysadmin w przedsiębiorstwie, który został zmigrowany część obciążeń, które zarządzają do środowiska usługi App Service.
+### <a name="scenario-introduction"></a>Wprowadzenie scenariusza
+Piotr jest administratorem systemu dla przedsiębiorstwa, który przeprowadził migrację części obciążeń zarządzanych przez nich do środowiska App Serviceowego.
 
-Środowisko usługi App Service jest skonfigurowane pod kątem skalowanie ręczne w następujący sposób:
+Środowisko App Service jest skonfigurowane do ręcznego skalowania w następujący sposób:
 
 * **Frontony:** 3
 * **Pula procesów roboczych 1**: 10
 * **Pula procesów roboczych 2**: 5
 * **Pula procesów roboczych 3**: 5
 
-Pula procesów roboczych 1 jest używany w przypadku obciążeń produkcyjnych puli procesów roboczych 2 i 3. pula procesów roboczych, które są używane do zapewniania jakości (QA) i obciążeń deweloperskich.
+Pula procesów roboczych 1 jest używana w przypadku obciążeń produkcyjnych, natomiast Pula procesów roboczych 2 i Pula procesów roboczych 3 są używane w celu zapewnienia jakości i obciążeń programistycznych.
 
-Plany usługi App Service dla odpowiedzi na pytania i deweloperów są skonfigurowane do skalowanie ręczne. Plan usługi App Service w środowisku produkcyjnym ustawiono automatyczne skalowanie radzenia sobie z wahania obciążenia i ruch.
+Plany App Service dla pytań i odpowiedzi są skonfigurowane do skalowania ręcznego. Plan App Service produkcji jest ustawiany na automatyczne skalowanie w celu zajmowania się wahaniami obciążenia i ruchu.
 
-Frank jest bardzo podobnie do funkcji z aplikacją. Wiedzą, że godzinach szczytu obciążenia są między 9:00 i 18:00:00, ponieważ jest to aplikacja line-of-business (LOB), używanego przez pracowników, gdy znajdują się w biurze. Po spadku wykorzystania, gdy użytkownicy są wykonywane na ten dzień. Poza godzinami szczytu występuje nadal niektóre obciążenia, ponieważ użytkownicy mogą uzyskiwać dostęp aplikacji zdalnie za pomocą ich urządzeń przenośnych lub komputerów głównego. Plan usługi App Service w środowisku produkcyjnym jest już skonfigurowana do automatycznego skalowania na podstawie użycia procesora CPU z następującymi regułami:
+Piotr jest bardzo zaznajomiony z aplikacją. Wiemy, że szczytowe godziny ładowania są z zakresu od 9:00 do 6:00 PM, ponieważ jest to aplikacja biznesowa (LOB), której pracownicy używają w biurze. Użycie spadnie po tym, gdy użytkownicy ukończyją ten dzień. Poza godzinami szczytu wciąż występuje pewne obciążenie, ponieważ użytkownicy mogą zdalnie uzyskiwać dostęp do aplikacji przy użyciu urządzeń przenośnych lub komputerów domowych. Plan App Service produkcji jest już skonfigurowany do automatycznego skalowania na podstawie użycia procesora CPU z następującymi regułami:
 
-![Określone ustawienia dla aplikacji biznesowych.][asp-scale]
+![Określone ustawienia dla aplikacji LOB.][asp-scale]
 
-| **Profil skalowania automatycznego — dni tygodnia — plan usługi App Service** | **Profil skalowania automatycznego — weekendy — plan usługi App Service** |
+| **Profil skalowania automatycznego — dni tygodnia — plan App Service** | **Profil skalowania automatycznego — weekendy — plan App Service** |
 | --- | --- |
-| **Nazwa:** Profil dzień tygodnia |**Nazwa:** Profil weekend |
-| **Skalowanie przez:** Reguły harmonogramu i wydajności |**Skalowanie przez:** Reguły harmonogramu i wydajności |
-| **Profil:** Dni tygodnia |**Profil:** Weekend |
-| **Typ:** Cykl |**Typ:** Cykl |
-| **Zakres docelowy:** 5 do 20 wystąpień |**Zakres docelowy:** 3 do 10 wystąpień |
-| **Liczba dni:** Poniedziałek, Wtorek, Środa, czwartek, piątek |**Liczba dni:** SATURDAY lub Sunday |
+| **Nazwa:** Profil dnia tygodnia |**Nazwa:** Profil weekendu |
+| **Skaluj według:** Reguły harmonogramu i wydajności |**Skaluj według:** Reguły harmonogramu i wydajności |
+| **Profilu** Dni robocze |**Profilu** Weekend |
+| **Wprowadź** Cykl |**Wprowadź** Cykl |
+| **Zakres docelowy:** od 5 do 20 wystąpień |**Zakres docelowy:** od 3 do 10 wystąpień |
+| **Dni** Poniedziałek, wtorek, środa, czwartek, piątek |**Dni** Sobota, niedziela |
 | **Godzina rozpoczęcia:** 9:00 AM |**Godzina rozpoczęcia:** 9:00 AM |
 | **Strefa czasowa:** UTC-08 |**Strefa czasowa:** UTC-08 |
 |  | |
-| **Reguły skalowania automatycznego (skalowanie w górę)** |**Reguły skalowania automatycznego (skalowanie w górę)** |
-| **Zasób:** (Usługa App Service Environment) w środowisku produkcyjnym |**Zasób:** (Usługa App Service Environment) w środowisku produkcyjnym |
-| **Metryka:** PROCENT UŻYCIA PROCESORA CPU |**Metryka:** PROCENT UŻYCIA PROCESORA CPU |
-| **Operacja:** Przekracza 60% |**Operacja:** Większe niż 80% |
-| **Czas trwania:** 5 minut |**Czas trwania:** 10 minut |
-| **Agregacja czasu:** Średnia |**Agregacja czasu:** Średnia |
-| **Akcja:** Zwiększ liczbę o 2 |**Akcja:** Zwiększ liczbę o 1 |
-| **Czas ochładzania (minuty):** 15 |**Czas ochładzania (minuty):** 20 |
+| **Reguła automatycznego skalowania (skalowanie w górę)** |**Reguła automatycznego skalowania (skalowanie w górę)** |
+| **Zasoby** Produkcja (App Service Environment) |**Zasoby** Produkcja (App Service Environment) |
+| **Metryki** TESTY |**Metryki** TESTY |
+| **Operacje** Ponad 60% |**Operacje** Ponad 80% |
+| **Trwania** 5 minut |**Trwania** 10 minut |
+| **Agregacja czasu:** Average |**Agregacja czasu:** Average |
+| **Transakcji** Zwiększ liczbę o 2 |**Transakcji** Zwiększ liczbę o 1 |
+| **Chłodna (minuty):** 15 |**Chłodna (minuty):** 20 |
 |  | |
-| **Reguły skalowania automatycznego (skalowanie w dół)** |**Reguły skalowania automatycznego (skalowanie w dół)** |
-| **Zasób:** (Usługa App Service Environment) w środowisku produkcyjnym |**Zasób:** (Usługa App Service Environment) w środowisku produkcyjnym |
-| **Metryka:** PROCENT UŻYCIA PROCESORA CPU |**Metryka:** PROCENT UŻYCIA PROCESORA CPU |
-| **Operacja:** Mniej niż 30% |**Operacja:** Mniej niż 20% |
-| **Czas trwania:** 10 minut |**Czas trwania:** 15 minut |
-| **Agregacja czasu:** Średnia |**Agregacja czasu:** Średnia |
-| **Akcja:** Zmniejsz liczbę o 1 |**Akcja:** Zmniejsz liczbę o 1 |
-| **Czas ochładzania (minuty):** 20 |**Czas ochładzania (minuty):** 10 |
+| **Reguła automatycznego skalowania (skalowanie w dół)** |**Reguła automatycznego skalowania (skalowanie w dół)** |
+| **Zasoby** Produkcja (App Service Environment) |**Zasoby** Produkcja (App Service Environment) |
+| **Metryki** TESTY |**Metryki** TESTY |
+| **Operacje** Mniej niż 30% |**Operacje** Mniej niż 20% |
+| **Trwania** 10 minut |**Trwania** 15 minut |
+| **Agregacja czasu:** Average |**Agregacja czasu:** Average |
+| **Transakcji** Zmniejsz liczbę o 1 |**Transakcji** Zmniejsz liczbę o 1 |
+| **Chłodna (minuty):** 20 |**Chłodna (minuty):** 10 |
 
-### <a name="app-service-plan-inflation-rate"></a>Stawka inflacji planu usługi App Service
-Plany usługi App Service, które są skonfigurowane do automatycznego skalowania to zrobić z maksymalną szybkością na godzinę. Tego kursu mogą być obliczane na podstawie wartości podanych dla reguły skalowania automatycznego.
+### <a name="app-service-plan-inflation-rate"></a>Częstotliwość inflacji planu App Service
+Plany App Service, które są skonfigurowane do automatycznego skalowania, to w maksymalnej stawce za godzinę. Tę stawkę można obliczyć na podstawie wartości podanych w regule skalowania automatycznego.
 
-Opis i obliczanie *stawka inflacji planu usługi App Service* jest ważne w przypadku automatycznego skalowania środowiska App Service, ponieważ zmiany skali w puli procesów roboczych są natychmiastowe.
+Interpretacja i obliczanie *współczynnika inflacji planu App Service* jest ważne dla skalowania App Service środowiska, ponieważ zmiany skalowania do puli procesów roboczych nie są natychmiastowe.
 
-Stawka inflacji planu usługi App Service jest obliczany w następujący sposób:
+Współczynnik inflacji planu App Service jest obliczany w następujący sposób:
 
-![Obliczanie współczynnik inflacji planu usługi App Service.][ASP-Inflation]
+![Obliczanie współczynnika inflacji App Service planu.][ASP-Inflation]
 
-Oparte na automatyczne skalowanie — Skaluj w górę reguły odnoszące się do profilu dzień tygodnia, produkcji, plan usługi App Service:
+Na podstawie reguły skalowania automatycznego — Skaluj w górę dla profilu dnia tygodnia planu App Service produkcji:
 
-![Usługa App Service kurs inflacji plan oparte na automatyczne skalowanie — reguła Skaluj w górę w dni robocze.][Equation1]
+![App Service planowanie odsetek dla dni tygodnia na podstawie reguły skalowania automatycznego.][Equation1]
 
-W przypadku skalowania automatycznego — reguła Skaluj w górę profilu Weekend produkcji planu usługi App Service, formuła może rozpoznać:
+W przypadku reguły automatycznego skalowania — skalowanie w górę dla profilu weekendowego planu App Service produkcji, formuła zostanie rozwiązana:
 
-![Usługa App Service kurs inflacji plan weekendy oparte na automatyczne skalowanie — reguła Skaluj w górę.][Equation2]
+![App Service planowanie współczynnika inflacji dla weekendów na podstawie reguły skalowania automatycznego.][Equation2]
 
-Tę wartość można obliczyć, operacji skalowania w dół.
+Tę wartość można również obliczyć dla operacji skalowania w dół.
 
-Oparte na automatyczne skalowanie — reguła skalowania w dół dla profilu Weekday produkcji planu usługi App Service, to będzie wyglądać w następujący sposób:
+W oparciu o regułę automatycznego skalowania (skalowanie w dół) dla profilu dnia roboczego planu App Service produkcji będzie to wyglądać następująco:
 
-![Stawka inflacji planu usługi App Service dla dni tygodnia, automatyczne skalowanie — reguła skalowania w dół w oparciu.][Equation3]
+![App Service planowanie odsetek dla dni tygodnia na podstawie reguły skalowania automatycznego.][Equation3]
 
-W przypadku skalowania automatycznego — reguła skalowania w dół dla profilu Weekend produkcji planu usługi App Service, formuła może rozpoznać:  
+W przypadku reguły automatycznego skalowania — skalowanie w dół dla profilu weekendowego planu App Service produkcji, formuła zostanie rozpoznana jako:  
 
-![Usługa App Service kurs inflacji plan weekendy oparte na automatyczne skalowanie — reguła skalowania w dół.][Equation4]
+![App Service planowanie współczynnika inflacji dla weekendów na podstawie reguły skalowania automatycznego.][Equation4]
 
-Plan usługi App Service w środowisku produkcyjnym można rozwijać w maksymalnej wysokości osiem godzinę wystąpienia w tygodniu i cztery godzinę wystąpienia przez weekend. Wydających wystąpieniami maksymalnie cztery wystąpienia/godz. w tygodniu i sześć wystąpień/godz. podczas weekendów.
+Plan App Service produkcyjnych może wzrosnąć o maksymalnie osiem wystąpień na godzinę w tygodniu i czterech wystąpieniach na godzinę w weekendie. Może zwolnić wystąpienia z maksymalną częstotliwością czterech wystąpień na godzinę w tygodniu i sześciu wystąpieniami/godz. w weekendy.
 
-Jeśli wiele planów usługi App Service jest hostowany w puli procesów roboczych, musisz obliczyć *całkowitej szybkości inflacji* jako suma stawce inflacji dla wszystkich planów usługi App Service, które są w tej puli procesów roboczych.
+Jeśli wiele planów App Service jest obsługiwanych w puli procesów roboczych, należy obliczyć *łączną stawkę* za inflację jako sumę współczynnika inflacji dla wszystkich planów App Service, które są hostowane w tej puli procesów roboczych.
 
-![Obliczenia całkowitej szybkości inflacji dla wielu planów usługi App Service, hostowany w puli procesów roboczych.][ASP-Total-Inflation]
+![Łączna liczba obliczeń dla wielu planów App Service hostowanych w puli procesów roboczych.][ASP-Total-Inflation]
 
-### <a name="use-the-app-service-plan-inflation-rate-to-define-worker-pool-autoscale-rules"></a>Użyj stawka inflacji planu usługi App Service do zdefiniowania reguł automatycznego skalowania puli procesów roboczych
-Proces roboczy pul obsługujących planów usługi App Service, które są skonfigurowane do automatycznego skalowania, należy można przydzielić bufora pojemności. Bufor zezwala na powiększanie i zmniejszanie planu usługi App Service, odpowiednio do potrzeb operacji skalowania automatycznego. Minimalna buforu byłoby obliczeniowe całkowitej aplikacji Service Plan inflacji szybkości.
+### <a name="use-the-app-service-plan-inflation-rate-to-define-worker-pool-autoscale-rules"></a>Definiowanie reguł automatycznego skalowania puli procesów roboczych przy użyciu planu App Service
+Pule procesów roboczych, które obsługują plany App Service, które są skonfigurowane do automatycznego skalowania, muszą mieć przydzieloną bufor pojemności. Bufor umożliwia rozszerzanie i zmniejszanie planu App Service w miarę potrzeb. Minimalny bufor to obliczona suma App Service planu inflacji.
 
-Ponieważ operacje skalowania środowiska App Service zająć dużo czasu, aby zastosować, wszelkie zmiany powinny uwzględniać dalszych zmian zapotrzebowania, które może się zdarzyć, gdy trwa operacja skalowania. Aby uwzględnić to opóźnienie, zaleca się użyć obliczeniowego całkowitej aplikacji Service Plan inflacji szybkości jako minimalna liczba wystąpień, które są dodawane dla każdej operacji skalowania automatycznego.
+Ze względu na to, że zastosowanie App Service operacji skalowania środowiska wymaga pewnego czasu, każda zmiana powinna uwzględniać dalsze zmiany zapotrzebowania, które mogą wystąpić podczas wykonywania operacji skalowania. W celu uwzględnienia tego opóźnienia zalecamy użycie obliczonej sumy App Service planowanie inflacji jako minimalnej liczby wystąpień, które są dodawane dla każdej operacji automatycznego skalowania.
 
-Dzięki tym informacjom Frank można zdefiniować następujące profilu skalowania automatycznego i reguł:
+Dzięki tym informacjom Piotr może zdefiniować następujący profil i reguły automatycznego skalowania:
 
-![Zasady profilu skalowania automatycznego na przykład LOB.][Worker-Pool-Scale]
+![Automatyczne skalowanie reguł profilu dla przykładu LOB.][Worker-Pool-Scale]
 
 | **Profil skalowania automatycznego — dni tygodnia** | **Profil skalowania automatycznego — weekendy** |
 | --- | --- |
-| **Nazwa:** Profil dzień tygodnia |**Nazwa:** Profil weekend |
-| **Skalowanie przez:** Reguły harmonogramu i wydajności |**Skalowanie przez:** Reguły harmonogramu i wydajności |
-| **Profil:** Dni tygodnia |**Profil:** Weekend |
-| **Typ:** Cykl |**Typ:** Cykl |
-| **Zakres docelowy:** 13-25 wystąpień |**Zakres docelowy:** wystąpienia 6-15 |
-| **Liczba dni:** Poniedziałek, Wtorek, Środa, czwartek, piątek |**Liczba dni:** SATURDAY lub Sunday |
+| **Nazwa:** Profil dnia tygodnia |**Nazwa:** Profil weekendu |
+| **Skaluj według:** Reguły harmonogramu i wydajności |**Skaluj według:** Reguły harmonogramu i wydajności |
+| **Profilu** Dni robocze |**Profilu** Weekend |
+| **Wprowadź** Cykl |**Wprowadź** Cykl |
+| **Zakres docelowy:** od 13 do 25 wystąpień |**Zakres docelowy:** od 6 do 15 wystąpień |
+| **Dni** Poniedziałek, wtorek, środa, czwartek, piątek |**Dni** Sobota, niedziela |
 | **Godzina rozpoczęcia:** 7:00 AM |**Godzina rozpoczęcia:** 9:00 AM |
 | **Strefa czasowa:** UTC-08 |**Strefa czasowa:** UTC-08 |
 |  | |
-| **Reguły skalowania automatycznego (skalowanie w górę)** |**Reguły skalowania automatycznego (skalowanie w górę)** |
-| **Zasób:** Pula procesów roboczych 1 |**Zasób:** Pula procesów roboczych 1 |
-| **Metryka:** WorkersAvailable |**Metryka:** WorkersAvailable |
-| **Operacja:** Mniejsze niż 8 |**Operacja:** Mniej niż 3 |
-| **Czas trwania:** 20 minut |**Czas trwania:** 30 minut |
-| **Agregacja czasu:** Średnia |**Agregacja czasu:** Średnia |
-| **Akcja:** Zwiększ liczbę o 8 |**Akcja:** Zwiększ liczbę o 3 |
-| **Czas ochładzania (minuty):** 180 |**Czas ochładzania (minuty):** 180 |
+| **Reguła automatycznego skalowania (skalowanie w górę)** |**Reguła automatycznego skalowania (skalowanie w górę)** |
+| **Zasoby** Pula procesów roboczych 1 |**Zasoby** Pula procesów roboczych 1 |
+| **Metryki** WorkersAvailable |**Metryki** WorkersAvailable |
+| **Operacje** Mniej niż 8 |**Operacje** Mniej niż 3 |
+| **Trwania** 20 minut |**Trwania** 30 minut |
+| **Agregacja czasu:** Average |**Agregacja czasu:** Average |
+| **Transakcji** Zwiększ liczbę o 8 |**Transakcji** Zwiększ liczbę o 3 |
+| **Chłodna (minuty):** 180 |**Chłodna (minuty):** 180 |
 |  | |
-| **Reguły skalowania automatycznego (skalowanie w dół)** |**Reguły skalowania automatycznego (skalowanie w dół)** |
-| **Zasób:** Pula procesów roboczych 1 |**Zasób:** Pula procesów roboczych 1 |
-| **Metryka:** WorkersAvailable |**Metryka:** WorkersAvailable |
-| **Operacja:** Większe niż 8 |**Operacja:** Większy niż 3 |
-| **Czas trwania:** 20 minut |**Czas trwania:** 15 minut |
-| **Agregacja czasu:** Średnia |**Agregacja czasu:** Średnia |
-| **Akcja:** Zmniejsz liczbę o 2 |**Akcja:** Zmniejsz liczbę o 3 |
-| **Czas ochładzania (minuty):** 120 |**Czas ochładzania (minuty):** 120 |
+| **Reguła automatycznego skalowania (skalowanie w dół)** |**Reguła automatycznego skalowania (skalowanie w dół)** |
+| **Zasoby** Pula procesów roboczych 1 |**Zasoby** Pula procesów roboczych 1 |
+| **Metryki** WorkersAvailable |**Metryki** WorkersAvailable |
+| **Operacje** Większy niż 8 |**Operacje** Większe niż 3 |
+| **Trwania** 20 minut |**Trwania** 15 minut |
+| **Agregacja czasu:** Average |**Agregacja czasu:** Average |
+| **Transakcji** Zmniejsz liczbę o 2 |**Transakcji** Zmniejsz liczbę o 3 |
+| **Chłodna (minuty):** 120 |**Chłodna (minuty):** 120 |
 
-Zakres docelowy, zdefiniowaną w profilu jest obliczana przez minimalny wystąpień, zdefiniowaną w profilu dla planu usługi App Service + buforu.
+Zakres docelowy zdefiniowany w profilu jest obliczany przez minimalne wystąpienia zdefiniowane w profilu dla buforu App Service plan +.
 
-Maksymalny zakres będzie sumę wszystkich maksymalna zakresy dla wszystkich planów usługi App Service, hostowany w puli procesów roboczych.
+Maksymalny zakres to suma wszystkich zakresów App Service obsługiwanych w puli procesów roboczych.
 
-Zwiększ liczbę dla skalowania w górę reguły powinna być równa co najmniej 1 X stawka inflacji planu usługi aplikacji, dla skalowania w.
+W przypadku skalowania w górę dla reguł skalowania w górę należy ustawić co najmniej wartość 1X App Service plan o inflację w górę.
 
-Zmniejsz liczbę można zmienić na coś między 1/2 X lub 1 X stawka inflacji planu usługi aplikacji, skalowanie w dół.
+Licznik Zmniejsz liczbę może zostać dostosowany do wartości z zakresu od 1 do 2 lub 1X współczynnika inflacji App Service planu dla skalowania w dół.
 
-### <a name="autoscale-for-front-end-pool"></a>Funkcja automatycznego skalowania dla puli frontonu
-Reguły automatycznego skalowania frontonu są prostsze niż w przypadku pul procesów roboczych. Przede wszystkim wykonaj następujące czynności  
-Upewnij się, że czas trwania pomiaru i czasomierzy ochładzania należy wziąć pod uwagę operacje skalowania na plan usługi App Service nie są natychmiastowe.
+### <a name="autoscale-for-front-end-pool"></a>Skalowanie automatyczne dla puli frontonu
+Reguły automatycznego skalowania frontonu są prostsze niż w przypadku pul procesów roboczych. Przede wszystkim należy  
+Upewnij się, że czas trwania pomiaru i czasomierze cooldownu uwzględniają, że operacje skalowania w planie App Service nie są chwilowo.
 
-W tym scenariuszu Frank wie, że współczynnik błędów wzrasta, gdy Frontony osiągnie 80% wykorzystania procesora CPU i Ustawia regułę skalowania automatycznego, aby zwiększyć wystąpień w następujący sposób:
+W tym scenariuszu Piotr wie, że współczynnik błędów wzrasta po zakończeniu frontonu osiągnie 80% użycia procesora CPU i ustawia regułę automatycznego skalowania, aby zwiększyć wystąpienia w następujący sposób:
 
 ![Ustawienia automatycznego skalowania dla puli frontonu.][Front-End-Scale]
 
-| **Profil skalowania automatycznego — frontonów** |
+| **Profil skalowania automatycznego — frontony** |
 | --- |
-| **Nazwa:** Automatyczne skalowanie — frontonów |
-| **Skalowanie przez:** Reguły harmonogramu i wydajności |
-| **Profil:** codziennie |
-| **Typ:** Cykl |
-| **Zakres docelowy:** 3 do 10 wystąpień |
-| **Liczba dni:** codziennie |
+| **Nazwa:** Skalowanie automatyczne — frontony |
+| **Skaluj według:** Reguły harmonogramu i wydajności |
+| **Profilu** Codziennie |
+| **Wprowadź** Cykl |
+| **Zakres docelowy:** od 3 do 10 wystąpień |
+| **Dni** Codziennie |
 | **Godzina rozpoczęcia:** 9:00 AM |
 | **Strefa czasowa:** UTC-08 |
 |  |
-| **Reguły skalowania automatycznego (skalowanie w górę)** |
-| **Zasób:** Pula frontonu |
-| **Metryka:** PROCENT UŻYCIA PROCESORA CPU |
-| **Operacja:** Przekracza 60% |
-| **Czas trwania:** 20 minut |
-| **Agregacja czasu:** Średnia |
-| **Akcja:** Zwiększ liczbę o 3 |
-| **Czas ochładzania (minuty):** 120 |
+| **Reguła automatycznego skalowania (skalowanie w górę)** |
+| **Zasoby** Pula frontonu |
+| **Metryki** TESTY |
+| **Operacje** Ponad 60% |
+| **Trwania** 20 minut |
+| **Agregacja czasu:** Average |
+| **Transakcji** Zwiększ liczbę o 3 |
+| **Chłodna (minuty):** 120 |
 |  |
-| **Reguły skalowania automatycznego (skalowanie w dół)** |
-| **Zasób:** Pula procesów roboczych 1 |
-| **Metryka:** PROCENT UŻYCIA PROCESORA CPU |
-| **Operacja:** Mniej niż 30% |
-| **Czas trwania:** 20 minut |
-| **Agregacja czasu:** Średnia |
-| **Akcja:** Zmniejsz liczbę o 3 |
-| **Czas ochładzania (minuty):** 120 |
+| **Reguła automatycznego skalowania (skalowanie w dół)** |
+| **Zasoby** Pula procesów roboczych 1 |
+| **Metryki** TESTY |
+| **Operacje** Mniej niż 30% |
+| **Trwania** 20 minut |
+| **Agregacja czasu:** Average |
+| **Transakcji** Zmniejsz liczbę o 3 |
+| **Chłodna (minuty):** 120 |
 
 <!-- IMAGES -->
 [intro]: ./media/app-service-environment-auto-scale/introduction.png

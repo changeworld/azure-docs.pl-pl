@@ -1,6 +1,6 @@
 ---
-title: Tworzenie kopii zapasowych i odzyskiwanie bazy danych Oracle database 12c na maszynie wirtualnej z systemem Linux platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak tworzyć kopie zapasowe i odzyskiwanie bazy danych Oracle database 12c w środowisku platformy Azure.
+title: Tworzenie kopii zapasowej i odzyskiwanie bazy danych Oracle Database 12c na maszynie wirtualnej platformy Azure z systemem Linux | Microsoft Docs
+description: Dowiedz się, jak utworzyć kopię zapasową i odzyskać bazę danych Oracle Database 12c w środowisku platformy Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: romitgirdhar
@@ -9,47 +9,46 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 461f6127111e745fe4a81958aaa225ed1dc4392a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c493f79a066f872be6b38d127622cc757ab3c1cc
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707714"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100239"
 ---
-# <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Tworzenie kopii zapasowych i odzyskiwanie bazy danych Oracle database 12c na maszynie wirtualnej z systemem Linux platformy Azure
+# <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>Tworzenie kopii zapasowej i odzyskiwanie bazy danych Oracle Database 12c na maszynie wirtualnej platformy Azure z systemem Linux
 
-Można użyć wiersza polecenia platformy Azure, aby utworzyć i zarządzać zasobami platformy Azure, w wierszu polecenia lub za pomocą skryptów. W tym artykule używamy skrypty wiersza polecenia platformy Azure do wdrożenia oprogramowania Oracle database 12c w obrazie galerii w portalu Azure Marketplace.
+Za pomocą interfejsu wiersza polecenia platformy Azure można tworzyć zasoby platformy Azure i zarządzać nimi w wierszu poleceń lub używać skryptów. W tym artykule używamy skryptów interfejsu wiersza polecenia platformy Azure do Oracle Database wdrażania bazy danych 12c Database z poziomu obrazu z galerii portalu Azure Marketplace.
 
-Przed przystąpieniem do wykonywania upewnij się, że zainstalowano interfejs wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [Przewodnik instalacji interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Przed rozpoczęciem upewnij się, że jest zainstalowany interfejs wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [Przewodnik instalacji interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="prepare-the-environment"></a>Przygotowywanie środowiska
 
 ### <a name="step-1-prerequisites"></a>Krok 1: Wymagania wstępne
 
-*   Aby przeprowadzić proces tworzenia kopii zapasowych i odzyskiwania, należy najpierw utworzyć maszyny Wirtualnej systemu Linux, który ma zainstalowane wystąpienie bazy danych Oracle Database 12c. Obraz witryny Marketplace umożliwia utworzenie maszyny Wirtualnej o nazwie *Oracle: Oracle — bazy danych — Ee:12.1.0.2:latest*.
+*   Aby wykonać proces tworzenia kopii zapasowej i odzyskiwania, należy najpierw utworzyć maszynę wirtualną z systemem Linux, która ma zainstalowane wystąpienie Oracle Database 12c. Obraz portalu Marketplace używany do tworzenia maszyny wirtualnej nosi nazwę *Oracle: Oracle-Database-EE: 12.1.0.2: Najnowsze*.
 
-    Aby dowiedzieć się, jak utworzyć bazę danych Oracle, zobacz [Oracle tworzenie database — Szybki Start](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).
+    Aby dowiedzieć się, jak utworzyć bazę danych Oracle, zobacz [Przewodnik Szybki Start dotyczący tworzenia bazy danych Oracle](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create).
 
 
 ### <a name="step-2-connect-to-the-vm"></a>Krok 2: Łączenie z maszyną wirtualną
 
-*   Do utworzenia sesji protokołu Secure Shell (SSH) z maszyną Wirtualną, użyj następującego polecenia. Zastąp adres IP i kombinacja nazwy hosta, za pomocą `publicIpAddress` wartości dla swojej maszyny Wirtualnej.
+*   Aby utworzyć sesję Secure Shell (SSH) z maszyną wirtualną, użyj następującego polecenia. Zastąp adres IP i kombinację `publicIpAddress` nazwy hosta wartością dla maszyny wirtualnej.
 
     ```bash 
     ssh <publicIpAddress>
     ```
 
-### <a name="step-3-prepare-the-database"></a>Krok 3: Przygotowywanie bazy danych programu
+### <a name="step-3-prepare-the-database"></a>Krok 3: Przygotowywanie bazy danych
 
-1.  W tym kroku przyjęto założenie, iż z wystąpieniem bazy danych Oracle (cdb1), który jest uruchomiony na maszynie Wirtualnej o nazwie *myVM*.
+1.  W tym kroku przyjęto założenie, że masz wystąpienie Oracle (cdb1), które działa na maszynie wirtualnej o nazwie *myVM*.
 
-    Uruchom *oracle* głównego administratora, a następnie zainicjować odbiornika:
+    Uruchom polecenie *Oracle* administratora root, a następnie zainicjuj odbiornik:
 
     ```bash
     $ sudo su - oracle
@@ -79,7 +78,7 @@ Przed przystąpieniem do wykonywania upewnij się, że zainstalowano interfejs w
     The command completed successfully
     ```
 
-2.  (Opcjonalnie) Upewnij się, że baza danych jest w trybie dziennika archiwum:
+2.  Obowiązkowe Upewnij się, że baza danych jest w trybie dziennika archiwum:
 
     ```bash
     $ sqlplus / as sysdba
@@ -95,7 +94,7 @@ Przed przystąpieniem do wykonywania upewnij się, że zainstalowano interfejs w
     SQL> ALTER DATABASE OPEN;
     SQL> ALTER SYSTEM SWITCH LOGFILE;
     ```
-3.  (Opcjonalnie) Utwórz tabelę do przetestowania zatwierdzenia:
+3.  Obowiązkowe Utwórz tabelę, aby przetestować zatwierdzenie:
 
     ```bash
     SQL> alter session set "_ORACLE_SCRIPT"=true ;
@@ -116,7 +115,7 @@ Przed przystąpieniem do wykonywania upewnij się, że zainstalowano interfejs w
     SQL> commit;
     Commit complete.
     ```
-4.  Sprawdź lub zmień lokalizację pliku kopii zapasowej i rozmiar:
+4.  Sprawdź lub Zmień lokalizację i rozmiar pliku kopii zapasowej:
 
     ```bash
     $ sqlplus / as sysdba
@@ -126,20 +125,20 @@ Przed przystąpieniem do wykonywania upewnij się, że zainstalowano interfejs w
     db_recovery_file_dest                string      /u01/app/oracle/fast_recovery_area
     db_recovery_file_dest_size           big integer 4560M
     ```
-5. Aby utworzyć kopię zapasową bazy danych, należy użyć Menedżera odzyskiwania bazy danych Oracle (RMAN):
+5. Aby utworzyć kopię zapasową bazy danych, użyj programu Oracle Recovery Manager (RMAN):
 
     ```bash
     $ rman target /
     RMAN> backup database plus archivelog;
     ```
 
-### <a name="step-4-application-consistent-backup-for-linux-vms"></a>Krok 4: Spójna na poziomie aplikacji Kopia zapasowa maszyn wirtualnych systemu Linux
+### <a name="step-4-application-consistent-backup-for-linux-vms"></a>Krok 4: Kopia zapasowa spójna na poziomie aplikacji dla maszyn wirtualnych z systemem Linux
 
-Kopie zapasowe spójnych z aplikacją to nowa funkcja w usłudze Azure Backup. Można tworzyć i zaznaczyć skrypt do wykonania przed i po wykonaniu migawki maszyny Wirtualnej (przed i po utworzeniu migawki).
+Kopie zapasowe spójne z aplikacjami są nową funkcją w Azure Backup. Można tworzyć i wybierać skrypty do wykonania przed i po migawce maszyny wirtualnej (przed migawką i po utworzeniu migawki).
 
 1. Pobierz plik JSON.
 
-    Download VMSnapshotScriptPluginConfig.json from https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig. Zawartość pliku wyglądać podobnie do następującego:
+    Pobierz plik VMSnapshotScriptPluginConfig. JSON https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig z elementu. Zawartość pliku wygląda podobnie do poniższego:
 
     ```azurecli
     {
@@ -156,7 +155,7 @@ Kopie zapasowe spójnych z aplikacją to nowa funkcja w usłudze Azure Backup. M
     }
     ```
 
-2. Utwórz folder etc na maszynie Wirtualnej:
+2. Utwórz folder/etc/Azure na maszynie wirtualnej:
 
     ```bash
     $ sudo su -
@@ -166,11 +165,11 @@ Kopie zapasowe spójnych z aplikacją to nowa funkcja w usłudze Azure Backup. M
 
 3. Skopiuj plik JSON.
 
-    Skopiuj VMSnapshotScriptPluginConfig.json do folderu, etc.
+    Skopiuj plik VMSnapshotScriptPluginConfig. JSON do folderu/etc/Azure.
 
 4. Edytuj plik JSON.
 
-    Edytuj plik VMSnapshotScriptPluginConfig.json, aby uwzględnić `PreScriptLocation` i `PostScriptlocation` parametrów. Na przykład:
+    Edytuj plik VMSnapshotScriptPluginConfig. JSON, aby zawierał `PreScriptLocation` parametry i. `PostScriptlocation` Przykład:
 
     ```azurecli
     {
@@ -187,11 +186,11 @@ Kopie zapasowe spójnych z aplikacją to nowa funkcja w usłudze Azure Backup. M
     }
     ```
 
-5. Utwórz pliki skryptów przed i po utworzeniu migawki.
+5. Tworzenie plików skryptów przedmigawkowych i po migawce.
 
-    Oto przykład skrypty przed i po utworzeniu migawki dla "zimnych kopia zapasowa" (kopie zapasowe offline, zamknięcie i ponowne uruchomienie):
+    Oto przykład skryptów przedmigawkowych i po migawce dla "zimnej kopii zapasowej" (kopia zapasowa offline, z zamknięciem i ponownym uruchomieniem):
 
-    Aby uzyskać /etc/azure/pre_script.sh:
+    Dla/etc/Azure/pre_script.sh:
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -200,7 +199,7 @@ Kopie zapasowe spójnych z aplikacją to nowa funkcja w usłudze Azure Backup. M
     su - $ORA_OWNER -c "$ORA_HOME/bin/dbshut $ORA_HOME" > /etc/azure/pre_script_$v_date.log
     ```
 
-    Aby uzyskać /etc/azure/post_script.sh:
+    Dla/etc/Azure/post_script.sh:
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -209,7 +208,7 @@ Kopie zapasowe spójnych z aplikacją to nowa funkcja w usłudze Azure Backup. M
     su - $ORA_OWNER -c "$ORA_HOME/bin/dbstart $ORA_HOME" > /etc/azure/post_script_$v_date.log
     ```
 
-    Oto przykład skrypty przed i po utworzeniu migawki dla "hot kopia zapasowa" (kopii zapasowej online):
+    Oto przykład skryptów przedmigawkowych i po migawce dla "gorąca kopia zapasowa" (kopia zapasowa online):
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -218,7 +217,7 @@ Kopie zapasowe spójnych z aplikacją to nowa funkcja w usłudze Azure Backup. M
     su - $ORA_OWNER -c "sqlplus / as sysdba @/etc/azure/pre_script.sql" > /etc/azure/pre_script_$v_date.log
     ```
 
-    Aby uzyskać /etc/azure/post_script.sh:
+    Dla/etc/Azure/post_script.sh:
 
     ```bash
     v_date=`date +%Y%m%d%H%M`
@@ -227,7 +226,7 @@ Kopie zapasowe spójnych z aplikacją to nowa funkcja w usłudze Azure Backup. M
     su - $ORA_OWNER -c "sqlplus / as sysdba @/etc/azure/post_script.sql" > /etc/azure/pre_script_$v_date.log
     ```
 
-    W przypadku /etc/azure/pre_script.sql zmodyfikuj zawartość pliku, zgodnie z wymaganiami:
+    W przypadku/etc/Azure/pre_script.SQL zmodyfikuj zawartość pliku zgodnie z wymaganiami:
 
     ```bash
     alter tablespace SYSTEM begin backup;
@@ -237,7 +236,7 @@ Kopie zapasowe spójnych z aplikacją to nowa funkcja w usłudze Azure Backup. M
     alter system archive log stop;
     ```
 
-    W przypadku /etc/azure/post_script.sql zmodyfikuj zawartość pliku, zgodnie z wymaganiami:
+    W przypadku/etc/Azure/post_script.SQL zmodyfikuj zawartość pliku zgodnie z wymaganiami:
 
     ```bash
     alter tablespace SYSTEM end backup;
@@ -256,73 +255,73 @@ Kopie zapasowe spójnych z aplikacją to nowa funkcja w usłudze Azure Backup. M
 
 7. Przetestuj skrypty.
 
-    Aby przetestować skrypty, najpierw zaloguj się jako użytkownik główny. Następnie upewnij się, że nie ma żadnych błędów:
+    Aby przetestować skrypty, najpierw Zaloguj się jako element główny. Następnie upewnij się, że nie ma żadnych błędów:
 
     ```bash
     # /etc/azure/pre_script.sh
     # /etc/azure/post_script.sh
     ```
 
-Aby uzyskać więcej informacji, zobacz [spójnych z aplikacją kopii zapasowych maszyn wirtualnych systemu Linux](https://azure.microsoft.com/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).
+Aby uzyskać więcej informacji, zobacz [Tworzenie kopii zapasowej spójnej na poziomie aplikacji dla maszyn wirtualnych z systemem Linux](https://azure.microsoft.com/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/).
 
 
-### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>Krok 5. Magazyny usług odzyskiwania Azure Użyj do tworzenia kopii zapasowej maszyny Wirtualnej
+### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>Krok 5. Tworzenie kopii zapasowej maszyny wirtualnej za pomocą magazynów usługi Azure Recovery Services
 
-1.  W witrynie Azure portal Wyszukaj **Magazyny usługi Recovery Services**.
+1.  W Azure Portal Wyszukaj pozycję magazyny **Recovery Services**.
 
-    ![Stronie Magazyny usług odzyskiwania](./media/oracle-backup-recovery/recovery_service_01.png)
+    ![Strona Recovery Services magazynów](./media/oracle-backup-recovery/recovery_service_01.png)
 
-2.  Na **Magazyny usługi Recovery Services** bloku, aby dodać nowego magazynu, kliknij przycisk **Dodaj**.
+2.  W bloku **Recovery Services magazynów** , aby dodać nowy magazyn, kliknij przycisk **Dodaj**.
 
-    ![Strona dodawania Magazyny usługi Recovery Services](./media/oracle-backup-recovery/recovery_service_02.png)
+    ![Dodawanie strony do magazynów Recovery Services](./media/oracle-backup-recovery/recovery_service_02.png)
 
-3.  Aby kontynuować, kliknij przycisk **myVault**.
+3.  Aby kontynuować, kliknij pozycję Moja **Magazyn**.
 
-    ![Strony szczegółów Magazyny usługi Recovery Services](./media/oracle-backup-recovery/recovery_service_03.png)
+    ![Strona szczegółów Recovery Services magazynów](./media/oracle-backup-recovery/recovery_service_03.png)
 
-4.  Na **myVault** bloku kliknij **kopii zapasowej**.
+4.  W bloku moje **Magazyn** kliknij pozycję **kopia zapasowa**.
 
-    ![Magazyny usługi Recovery Services stronie kopii zapasowej](./media/oracle-backup-recovery/recovery_service_04.png)
+    ![Strona kopii zapasowych magazynów Recovery Services](./media/oracle-backup-recovery/recovery_service_04.png)
 
-5.  Na **cel kopii zapasowej** bloku, użyj wartości domyślnej **Azure** i **maszyny wirtualnej**. Kliknij przycisk **OK**.
+5.  W bloku **cel kopii zapasowej** Użyj wartości domyślnych **platformy Azure** i **maszyny wirtualnej**. Kliknij przycisk **OK**.
 
-    ![Strony szczegółów Magazyny usługi Recovery Services](./media/oracle-backup-recovery/recovery_service_05.png)
+    ![Strona szczegółów Recovery Services magazynów](./media/oracle-backup-recovery/recovery_service_05.png)
 
-6.  Dla **zasady tworzenia kopii zapasowej**, użyj **DefaultPolicy**, lub wybierz **utworzyć nowe zasady**. Kliknij przycisk **OK**.
+6.  Dla **zasad tworzenia kopii zapasowych**Użyj **DefaultPolicy**lub wybierz pozycję **Utwórz nowe zasady**. Kliknij przycisk **OK**.
 
-    ![Strona szczegółów zasad tworzenia kopii zapasowych magazynów usługi Recovery Services](./media/oracle-backup-recovery/recovery_service_06.png)
+    ![Strona szczegółów zasad tworzenia kopii zapasowych magazynów Recovery Services](./media/oracle-backup-recovery/recovery_service_06.png)
 
-7.  Na **wybierz maszyny wirtualne** bloku wybierz **myVM1** pole wyboru, a następnie kliknij przycisk **OK**. Kliknij przycisk **Włącz kopię zapasową** przycisku.
+7.  W bloku **Wybieranie maszyn wirtualnych** zaznacz pole wyboru **myVM1** , a następnie kliknij przycisk **OK**. Kliknij przycisk **Włącz kopię zapasową** .
 
-    ![Elementy Magazyny usług odzyskiwania do strony szczegółów kopii zapasowej](./media/oracle-backup-recovery/recovery_service_07.png)
+    ![Recovery Services elementy magazynów na stronie szczegółów kopii zapasowej](./media/oracle-backup-recovery/recovery_service_07.png)
 
     > [!IMPORTANT]
-    > Po kliknięciu **Włącz kopię zapasową**, proces tworzenia kopii zapasowej nie zaczyna się do momentu wygaśnięcia ważności w zaplanowanym czasie. Aby skonfigurować Natychmiastowa kopia zapasowa, należy wykonać następny krok.
+    > Po kliknięciu przycisku **Włącz kopię zapasową**proces tworzenia kopii zapasowej nie zostanie uruchomiony do czasu wygaśnięcia zaplanowanego czasu. Aby skonfigurować natychmiastową kopię zapasową, wykonaj następny krok.
 
-8.  Na **myVault — elementy kopii zapasowej** bloku, w obszarze **liczba elementów kopii zapasowej**, wybierz liczba elementów kopii zapasowej.
+8.  W bloku moje **magazyny — elementy kopii zapasowej** w obszarze **Liczba elementów kopii**zapasowej wybierz liczbę elementów kopii zapasowej.
 
-    ![Strona szczegółów myVault Magazyny usług odzyskiwania](./media/oracle-backup-recovery/recovery_service_08.png)
+    ![Strona szczegółów magazynu Recovery Services magazynów](./media/oracle-backup-recovery/recovery_service_08.png)
 
-9.  Na **elementy kopii zapasowej (maszynie wirtualnej platformy Azure)** bloku w prawej części strony, kliknij przycisk wielokropka ( **...** ) przycisk, a następnie kliknij przycisk **Utwórz teraz kopię zapasową**.
+9.  W bloku **elementy kopii zapasowej (maszyna wirtualna platformy Azure)** w prawej części strony kliknij przycisk wielokropka ( **...** ), a następnie kliknij pozycję **Utwórz kopię zapasową teraz**.
 
-    ![Kopia zapasowa teraz polecenia Magazyny usługi Recovery Services](./media/oracle-backup-recovery/recovery_service_09.png)
+    ![Tworzenie kopii zapasowej Recovery Services magazynów teraz — polecenie](./media/oracle-backup-recovery/recovery_service_09.png)
 
-10. Kliknij przycisk **kopii zapasowej** przycisku. Poczekaj, aż do zakończenia procesu tworzenia kopii zapasowej. Następnie przejdź do [krok 6: Usuń pliki bazy danych](#step-6-remove-the-database-files).
+10. Kliknij przycisk **kopia zapasowa** . Poczekaj na zakończenie procesu tworzenia kopii zapasowej. Następnie przejdź do [kroku 6: Usuń pliki](#step-6-remove-the-database-files)bazy danych.
 
-    Aby wyświetlić stan zadania tworzenia kopii zapasowej, kliknij przycisk **zadań**.
+    Aby wyświetlić stan zadania tworzenia kopii zapasowej, kliknij pozycję **zadania**.
 
-    ![Magazyny usługi Recovery Services zadania strony](./media/oracle-backup-recovery/recovery_service_10.png)
+    ![Strona zadania magazynu Recovery Services](./media/oracle-backup-recovery/recovery_service_10.png)
 
-    Stan zadania tworzenia kopii zapasowej pojawia się na poniższej ilustracji:
+    Stan zadania tworzenia kopii zapasowej zostanie wyświetlony na poniższej ilustracji:
 
-    ![Magazyny usługi Recovery Services zadania strona ze stanem](./media/oracle-backup-recovery/recovery_service_11.png)
+    ![Strona zadań magazynu Recovery Services ze stanem](./media/oracle-backup-recovery/recovery_service_11.png)
 
-11. Do tworzenia kopii zapasowych spójnych z aplikacją rozwiązać wszelkie błędy w pliku dziennika. Plik dziennika znajduje się w /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.
+11. W przypadku kopii zapasowej spójnej na poziomie aplikacji należy rozwiązać wszelkie błędy w pliku dziennika. Plik dziennika znajduje się w lokalizacji/var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0.
 
 ### <a name="step-6-remove-the-database-files"></a>Krok 6: Usuń pliki bazy danych 
-W dalszej części tego artykułu dowiesz się, jak przetestować proces odzyskiwania. Przed przetestowaniem proces odzyskiwania, należy usunąć pliki bazy danych.
+W dalszej części tego artykułu dowiesz się, jak przetestować proces odzyskiwania. Aby można było przetestować proces odzyskiwania, należy usunąć pliki bazy danych.
 
-1.  Usuń pliki tabel i wykonywania kopii zapasowych:
+1.  Usuń obszar tabel i pliki kopii zapasowej:
 
     ```bash
     $ sudo su - oracle
@@ -332,7 +331,7 @@ W dalszej części tego artykułu dowiesz się, jak przetestować proces odzyski
     $ rm -rf *
     ```
     
-2.  (Opcjonalnie) Zamknij wystąpienie programu Oracle:
+2.  Obowiązkowe Zamknij wystąpienie programu Oracle:
 
     ```bash
     $ sqlplus / as sysdba
@@ -340,38 +339,38 @@ W dalszej części tego artykułu dowiesz się, jak przetestować proces odzyski
     ORACLE instance shut down.
     ```
 
-## <a name="restore-the-deleted-files-from-the-recovery-services-vaults"></a>Przywracanie usuniętych plików z magazynów usługi Recovery Services
+## <a name="restore-the-deleted-files-from-the-recovery-services-vaults"></a>Przywracanie usuniętych plików z magazynów Recovery Services
 Aby przywrócić usunięte pliki, wykonaj następujące czynności:
 
-1. W witrynie Azure portal Wyszukaj *myVault* elementu Magazyny usługi Recovery Services. Na **Przegląd** bloku, w obszarze **kopii zapasowych elementów**, wybierz liczbę elementów.
+1. W Azure Portal Wyszukaj element magazyny Recovery Services magazynu. W bloku **Przegląd** w obszarze **elementy kopii zapasowej**wybierz liczbę elementów.
 
-    ![Elementy kopii zapasowej myVault Magazyny usług odzyskiwania](./media/oracle-backup-recovery/recovery_service_12.png)
+    ![Magazyn Recovery Services elementy kopii zapasowej magazynu](./media/oracle-backup-recovery/recovery_service_12.png)
 
-2. W obszarze **liczba elementów kopii zapasowej**, wybierz liczbę elementów.
+2. W obszarze **Liczba elementów kopii zapasowej**wybierz liczbę elementów.
 
-    ![Magazyny usługi Recovery Services liczba elementów kopii zapasowej maszyny wirtualnej platformy Azure](./media/oracle-backup-recovery/recovery_service_13.png)
+    ![Magazyn Recovery Services liczba elementów kopii zapasowej maszyny wirtualnej platformy Azure](./media/oracle-backup-recovery/recovery_service_13.png)
 
-3. Na **myvm1** bloku kliknij **odzyskiwanie plików (wersja zapoznawcza)** .
+3. W bloku **myvm1** kliknij pozycję **odzyskiwanie plików (wersja zapoznawcza)** .
 
-    ![Zrzut ekranu przedstawiający usługi Recovery Services magazyny strona odzyskiwania plików](./media/oracle-backup-recovery/recovery_service_14.png)
+    ![Zrzut ekranu przedstawiający stronę odzyskiwania plików Recovery Services magazynów](./media/oracle-backup-recovery/recovery_service_14.png)
 
-4. Na **odzyskiwanie plików (wersja zapoznawcza)** okienku kliknij **Pobierz skrypt**. Następnie zapisz plik pobierania (SH) do folderu na komputerze klienckim.
+4. W okienku **odzyskiwanie plików (wersja zapoznawcza)** kliknij pozycję **Pobierz skrypt**. Następnie Zapisz plik Download (. sh) do folderu na komputerze klienckim.
 
-    ![Pobierz opcje zapisywania pliku skryptu](./media/oracle-backup-recovery/recovery_service_15.png)
+    ![Pobieranie pliku skryptu — opcje zapisywania](./media/oracle-backup-recovery/recovery_service_15.png)
 
-5. Skopiuj plik SH do maszyny Wirtualnej.
+5. Skopiuj plik. sh na maszynę wirtualną.
 
-    Poniższy przykład pokazuje, jak przy użyciu bezpiecznego kopiowania (scp) polecenia, aby przenieść plik na maszynie wirtualnej. Możesz również skopiować zawartość do Schowka, a następnie wklej zawartość do nowego pliku, który jest ustawiony na maszynie Wirtualnej.
+    W poniższym przykładzie pokazano, jak za pomocą polecenia Secure Copy (SCP) przenieść plik na maszynę wirtualną. Możesz również skopiować zawartość do schowka, a następnie wkleić zawartość do nowego pliku, który jest skonfigurowany na maszynie wirtualnej.
 
     > [!IMPORTANT]
-    > W poniższym przykładzie upewnij się zaktualizowanie wartości IP adres i folderu. Wartość musi być mapowane do folderu, w której zapisany plik.
+    > W poniższym przykładzie upewnij się, że Zaktualizowano wartości adresów IP i folderów. Wartości muszą być mapowane do folderu, w którym zapisano plik.
 
     ```bash
     $ scp Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh <publicIpAddress>:/<folder>
     ```
-6. Tak, że jest własnością katalogu głównego, należy zmienić ten plik.
+6. Zmień plik, tak aby należał do katalogu głównego.
 
-    W poniższym przykładzie należy zmienić plik tak, że jest własnością katalogu głównego. Następnie należy zmienić uprawnienia.
+    W poniższym przykładzie Zmień plik tak, aby należał do katalogu głównego. Następnie Zmień uprawnienia.
 
     ```bash 
     $ ssh <publicIpAddress>
@@ -380,7 +379,7 @@ Aby przywrócić usunięte pliki, wykonaj następujące czynności:
     # chmod 755 /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     # /<folder>/Linux_myvm1_xx-xx-2017 xx-xx-xx PM.sh
     ```
-    Poniższy przykład pokazuje, co powinien zostać wyświetlony po uruchomieniu skryptu poprzedzającego. Po wyświetleniu monitu, aby kontynuować, wprowadź **Y**.
+    Poniższy przykład pokazuje, co powinno być widoczne po uruchomieniu powyższego skryptu. Po wyświetleniu monitu o kontynuowanie wprowadź **Y**.
 
     ```bash
     Microsoft Azure VM Backup - File Recovery
@@ -412,13 +411,13 @@ Aby przywrócić usunięte pliki, wykonaj następujące czynności:
     Please enter 'q/Q' to exit...
     ```
 
-7. Dostęp do woluminów zainstalowanych został potwierdzony.
+7. Zatwierdzono dostęp do zainstalowanych woluminów.
 
-    Aby zakończyć pracę, wprowadź **q**, a następnie wyszukaj zainstalowanych woluminów. Aby utworzyć listę woluminów dodane, w wierszu polecenia, wpisz **df -k**.
+    Aby wyjść, wprowadź **q**, a następnie wyszukaj woluminy zainstalowane. Aby utworzyć listę dodanych woluminów, w wierszu polecenia wprowadź wartość **DF-k**.
 
-    ![Polecenie -k df](./media/oracle-backup-recovery/recovery_service_16.png)
+    ![DF-k — polecenie](./media/oracle-backup-recovery/recovery_service_16.png)
 
-8. Użyj następującego skryptu, aby skopiować brakujące pliki ponownie do folderów:
+8. Użyj następującego skryptu, aby skopiować brakujące pliki z powrotem do folderów:
 
     ```bash
     # cd /root/myVM-2017XXXXXXX/Volume2/u01/app/oracle/fast_recovery_area/CDB1/backupset/2017_xx_xx
@@ -430,7 +429,7 @@ Aby przywrócić usunięte pliki, wykonaj następujące czynności:
     # cd /u01/app/oracle/oradata/cdb1
     # chown oracle:oinstall *.dbf
     ```
-9. W poniższym skrypcie Użyj RMAN, aby odzyskać bazę danych:
+9. W poniższym skrypcie Użyj RMAN do odzyskania bazy danych:
 
     ```bash
     # sudo su - oracle
@@ -444,91 +443,91 @@ Aby przywrócić usunięte pliki, wykonaj następujące czynności:
     
 10. Odinstaluj dysk.
 
-    W witrynie Azure portal na **odzyskiwanie plików (wersja zapoznawcza)** bloku kliknij **odinstaluj dyski**.
+    W Azure Portal w bloku **odzyskiwanie plików (wersja zapoznawcza)** kliknij pozycję **odinstalowanie dysków**.
 
-    ![Odinstaluj dyski polecenia](./media/oracle-backup-recovery/recovery_service_17.png)
+    ![Odinstalowywanie dysków — polecenie](./media/oracle-backup-recovery/recovery_service_17.png)
 
-## <a name="restore-the-entire-vm"></a>Przywróć całą maszynę Wirtualną
+## <a name="restore-the-entire-vm"></a>Przywróć całą maszynę wirtualną
 
-Zamiast przywracanie usuniętych plików z magazynów usługi Recovery Services, można przywrócić całą maszynę Wirtualną.
+Zamiast przywracać usunięte pliki z magazynów Recovery Services, można przywrócić całą maszynę wirtualną.
 
 ### <a name="step-1-delete-myvm"></a>Krok 1: Usuń myVM
 
-*   W witrynie Azure portal przejdź do **myVM1** magazynu, a następnie wybierz **Usuń**.
+*   W Azure Portal przejdź do magazynu **myVM1** , a następnie wybierz pozycję **Usuń**.
 
-    ![Polecenie Usuń magazyn](./media/oracle-backup-recovery/recover_vm_01.png)
+    ![Polecenie usunięcia magazynu](./media/oracle-backup-recovery/recover_vm_01.png)
 
-### <a name="step-2-recover-the-vm"></a>Krok 2: Odzyskiwanie maszyny Wirtualnej
+### <a name="step-2-recover-the-vm"></a>Krok 2: Odzyskiwanie maszyny wirtualnej
 
-1.  Przejdź do **Magazyny usługi Recovery Services**, a następnie wybierz pozycję **myVault**.
+1.  Przejdź do **Recovery Services magazynów**, a następnie wybierz pozycję Usuń **Magazyn**.
 
-    ![wpis myVault](./media/oracle-backup-recovery/recover_vm_02.png)
+    ![wpis magazynu](./media/oracle-backup-recovery/recover_vm_02.png)
 
-2.  Na **Przegląd** bloku, w obszarze **kopii zapasowych elementów**, wybierz liczbę elementów.
+2.  W bloku **Przegląd** w obszarze **elementy kopii zapasowej**wybierz liczbę elementów.
 
-    ![myVault wykonywanie kopii zapasowych elementów](./media/oracle-backup-recovery/recover_vm_03.png)
+    ![Tworzenie kopii zapasowej elementów w magazynie](./media/oracle-backup-recovery/recover_vm_03.png)
 
-3.  Na **elementy kopii zapasowej (maszynie wirtualnej platformy Azure)** bloku wybierz **myvm1**.
+3.  W bloku **elementy kopii zapasowej (maszyna wirtualna platformy Azure)** wybierz pozycję **myvm1**.
 
-    ![Strona maszyny Wirtualnej odzyskiwania](./media/oracle-backup-recovery/recover_vm_04.png)
+    ![Strona maszyny wirtualnej odzyskiwania](./media/oracle-backup-recovery/recover_vm_04.png)
 
-4.  Na **myvm1** bloku, kliknij przycisk wielokropka ( **...** ) przycisk, a następnie kliknij przycisk **przywrócić maszynę Wirtualną**.
+4.  W bloku **myvm1** kliknij przycisk wielokropka ( **...** ), a następnie kliknij pozycję **Przywróć maszynę wirtualną**.
 
-    ![Przywracanie maszyny Wirtualnej, polecenie](./media/oracle-backup-recovery/recover_vm_05.png)
+    ![Polecenie Restore VM](./media/oracle-backup-recovery/recover_vm_05.png)
 
-5.  Na **wybierz punkt przywracania** bloku wybierz element, który chcesz przywrócić, a następnie kliknij przycisk **OK**.
+5.  W bloku **Wybierz punkt przywracania** wybierz element, który chcesz przywrócić, a następnie kliknij przycisk **OK**.
 
     ![Wybierz punkt przywracania](./media/oracle-backup-recovery/recover_vm_06.png)
 
-    Po włączeniu kopii zapasowej spójnej na poziomie aplikacji, pojawi się pionowy pasek niebieski.
+    Jeśli włączono tworzenie kopii zapasowej spójnej na poziomie aplikacji, zostanie wyświetlony pionowy niebieski pasek.
 
-6.  Na **przywracania konfiguracji** bloku, wybierz nazwę maszyny wirtualnej, wybierz grupę zasobów, a następnie kliknij przycisk **OK**.
+6.  W bloku **Przywracanie konfiguracji** wybierz nazwę maszyny wirtualnej, wybierz grupę zasobów, a następnie kliknij przycisk **OK**.
 
-    ![Przywróć wartości konfiguracji](./media/oracle-backup-recovery/recover_vm_07.png)
+    ![Przywróć wartości konfiguracyjne](./media/oracle-backup-recovery/recover_vm_07.png)
 
-7.  Aby przywrócić maszynę Wirtualną, kliknij przycisk **przywrócić** przycisku.
+7.  Aby przywrócić maszynę wirtualną, kliknij przycisk **Przywróć** .
 
-8.  Aby wyświetlić stan procesu przywracania, kliknij przycisk **zadania**, a następnie kliknij przycisk **zadania tworzenia kopii zapasowej**.
+8.  Aby wyświetlić stan procesu przywracania, kliknij pozycję **zadania**, a następnie kliknij pozycję **zadania tworzenia kopii zapasowej**.
 
-    ![Polecenie status zadania tworzenia kopii zapasowej](./media/oracle-backup-recovery/recover_vm_08.png)
+    ![Stan zadań kopii zapasowej — polecenie](./media/oracle-backup-recovery/recover_vm_08.png)
 
     Na poniższej ilustracji przedstawiono stan procesu przywracania:
 
     ![Stan procesu przywracania](./media/oracle-backup-recovery/recover_vm_09.png)
 
 ### <a name="step-3-set-the-public-ip-address"></a>Krok 3: Ustaw publiczny adres IP
-Po przywróceniu maszyny Wirtualnej należy skonfigurować publiczny adres IP.
+Po przywróceniu maszyny wirtualnej Skonfiguruj publiczny adres IP.
 
 1.  W polu wyszukiwania wprowadź **publiczny adres IP**.
 
-    ![Listę publicznych adresów IP](./media/oracle-backup-recovery/create_ip_00.png)
+    ![Lista publicznych adresów IP](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  Na **publiczne adresy IP** bloku kliknij **Dodaj**. Na **tworzenie publicznego adresu IP** bloku dla **nazwa**, wybierz nazwę publicznego adresu IP. W obszarze **Grupa zasobów** wybierz pozycję **Użyj istniejącej**. Następnie kliknij przycisk **Utwórz**.
+2.  W bloku **publiczne adresy IP** kliknij pozycję **Dodaj**. W bloku **Utwórz publiczny adres IP** w polu **Nazwa**wybierz publiczną nazwę IP. W obszarze **Grupa zasobów** wybierz pozycję **Użyj istniejącej**. Następnie kliknij przycisk **Utwórz**.
 
     ![Utwórz adres IP](./media/oracle-backup-recovery/create_ip_01.png)
 
-3.  Aby skojarzyć publiczny adres IP z interfejsem sieciowym maszyny wirtualnej, wyszukiwanie i wybieranie **myVMip**. Następnie kliknij przycisk **skojarzyć**.
+3.  Aby skojarzyć publiczny adres IP z interfejsem sieciowym dla maszyny wirtualnej, Wyszukaj i wybierz pozycję **myVMip**. Następnie kliknij pozycję **Skojarz**.
 
-    ![Skojarzenie adresu IP](./media/oracle-backup-recovery/create_ip_02.png)
+    ![Skojarz adres IP](./media/oracle-backup-recovery/create_ip_02.png)
 
-4.  Aby uzyskać **typ zasobu**, wybierz opcję **interfejs sieciowy**. Wybierz interfejs sieciowy, który jest używany przez wystąpienie myVM, a następnie kliknij przycisk **OK**.
+4.  W obszarze **Typ zasobu**wybierz pozycję **interfejs sieciowy**. Wybierz interfejs sieciowy, który jest używany przez wystąpienie myVM, a następnie kliknij przycisk **OK**.
 
-    ![Wybierz typ zasobu i wartości karty Sieciowej](./media/oracle-backup-recovery/create_ip_03.png)
+    ![Wybieranie wartości typu zasobu i karty sieciowej](./media/oracle-backup-recovery/create_ip_03.png)
 
-5.  Wyszukaj, a następnie otwórz wystąpienie myVM, które są przenoszone z poziomu portalu. Adres IP, który jest skojarzony z maszyną Wirtualną jest wyświetlana na myVM **Przegląd** bloku.
+5.  Wyszukaj i Otwórz wystąpienie myVM, które jest przewidziane z portalu. Adres IP skojarzony z maszyną wirtualną pojawia się w bloku **Przegląd** myVM.
 
     ![Wartość adresu IP](./media/oracle-backup-recovery/create_ip_04.png)
 
 ### <a name="step-4-connect-to-the-vm"></a>Krok 4: Łączenie z maszyną wirtualną
 
-*   Aby połączyć się z maszyną wirtualną, użyj następującego skryptu:
+*   Aby nawiązać połączenie z maszyną wirtualną, użyj następującego skryptu:
 
     ```bash 
     ssh <publicIpAddress>
     ```
 
-### <a name="step-5-test-whether-the-database-is-accessible"></a>Krok 5. Sprawdź, czy baza danych jest niedostępna
-*   Aby przetestować ułatwień dostępu, użyj następującego skryptu:
+### <a name="step-5-test-whether-the-database-is-accessible"></a>Krok 5. Sprawdź, czy baza danych jest dostępna
+*   Aby przetestować ułatwienia dostępu, użyj następującego skryptu:
 
     ```bash 
     $ sudo su - oracle
@@ -537,9 +536,9 @@ Po przywróceniu maszyny Wirtualnej należy skonfigurować publiczny adres IP.
     ```
 
     > [!IMPORTANT]
-    > Jeśli baza danych **uruchamiania** polecenie generuje błąd, aby odzyskać bazę danych, zobacz [krok 6: Użyj RMAN, aby odzyskać bazę danych](#step-6-optional-use-rman-to-recover-the-database).
+    > Jeśli polecenie **uruchamiania** bazy danych generuje błąd, aby odzyskać bazę danych, zobacz [krok 6. Użyj RMAN do odzyskania](#step-6-optional-use-rman-to-recover-the-database)bazy danych.
 
-### <a name="step-6-optional-use-rman-to-recover-the-database"></a>Krok 6: (Opcjonalnie) Użyj RMAN, aby odzyskać bazę danych
+### <a name="step-6-optional-use-rman-to-recover-the-database"></a>Krok 6: Obowiązkowe Użyj RMAN do odzyskania bazy danych
 *   Aby odzyskać bazę danych, użyj następującego skryptu:
 
     ```bash
@@ -552,11 +551,11 @@ Po przywróceniu maszyny Wirtualnej należy skonfigurować publiczny adres IP.
     RMAN> SELECT * FROM scott.scott_table;
     ```
 
-Kopia zapasowa i odzyskiwanie bazy danych programu Oracle Database 12c na maszynie Wirtualnej systemu Linux platformy Azure jest teraz ukończona.
+Tworzenie kopii zapasowej i odzyskiwanie bazy danych Oracle Database 12c na maszynie wirtualnej platformy Azure z systemem Linux zostało zakończone.
 
 ## <a name="delete-the-vm"></a>Usuwanie maszyny wirtualnej
 
-Gdy maszyna wirtualna nie są już potrzebne, można użyć następującego polecenia można usunąć grupy zasobów, maszyna wirtualna i wszystkie powiązane zasoby:
+Jeśli maszyna wirtualna nie jest już potrzebna, możesz użyć następującego polecenia, aby usunąć grupę zasobów, maszynę wirtualną i wszystkie powiązane zasoby:
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -566,7 +565,7 @@ az group delete --name myResourceGroup
 
 [Samouczek: Tworzenie maszyn wirtualnych o wysokiej dostępności](../../linux/create-cli-complete.md)
 
-[Poznaj przykłady interfejsu wiersza polecenia Azure wdrażania maszyn wirtualnych](../../linux/cli-samples.md)
+[Eksplorowanie przykładów interfejsu wiersza polecenia platformy Azure wdrożenia maszyny wirtualnej](../../linux/cli-samples.md)
 
 
 

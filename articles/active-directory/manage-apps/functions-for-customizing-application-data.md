@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3524f34773f4627dff478ee7cc9cbff9f674bf8e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ec23d3f08fb22f73618c27443bcd8b72c43a9862
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931764"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113560"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Pisanie wyrażeń do mapowania atrybutów w usłudze Azure Active Directory
 Podczas konfigurowania, inicjowania obsługi administracyjnej aplikacji SaaS, jest jeden z typów mapowania atrybutów, które można określić mapowanie wyrażenia. W tym przypadku trzeba napisać wyrażenia podobne do skryptu, która pozwala na przekształcanie danych użytkowników w formatach, które są bardziej akceptowalne dla aplikacji SaaS.
@@ -29,12 +29,12 @@ Składnia wyrażeń do mapowania atrybutów jest przypominający języka Visual 
 
 * Całe wyrażenie musi być zdefiniowany w zakresie funkcji, które składają się z nazwy argumentów w nawiasach: <br>
   *FunctionName (`<<argument 1>>`,`<<argument N>>`)*
-* Może być zagnieżdżony funkcji w ramach siebie nawzajem. Na przykład: <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
+* Może być zagnieżdżony funkcji w ramach siebie nawzajem. Przykład: <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
 * Trzy różne rodzaje argumenty można przekazać do funkcji:
   
   1. Atrybuty, które muszą być ujęte w nawiasy kwadratowe. Na przykład: [attributeName]
   2. Stałe typu String, które muszą być ujęte w cudzysłów. Na przykład: "Stany Zjednoczone"
-  3. Inne funkcje. Przykład: FunctionOne (`<<argument1>>`, FunctionTwo (`<<argument2>>`))
+  3. Inne funkcje. Na przykład: FunctionOne (`<<argument1>>`, FunctionTwo (`<<argument2>>`))
 * Dla stałych ciągów Jeśli potrzebujesz kreski ułamkowej odwróconej (\) lub cudzysłowu (") w ciągu go należy użyć znaków ucieczki symbolem kreski ułamkowej odwróconej (\). Przykład: "Nazwa firmy: \\"Contoso\\" "
 
 ## <a name="list-of-functions"></a>Lista funkcji
@@ -164,7 +164,8 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 
 > [!NOTE]
 >1. To jest funkcja najwyższego poziomu, nie mogą być zagnieżdżone.
->2. Ta funkcja jest przeznaczone tylko do użytku z Tworzenie wpisu. Podczas korzystania z atrybutem, ustaw **zastosować mapowanie** właściwości **tylko podczas tworzenia obiektu**.
+>2. Nie można zastosować tej funkcji do atrybutów, które mają pasujące pierwszeństwo.  
+>3. Ta funkcja jest przeznaczone tylko do użytku z Tworzenie wpisu. Podczas korzystania z atrybutem, ustaw **zastosować mapowanie** właściwości **tylko podczas tworzenia obiektu**.
 
 
 **Parametry:**<br> 

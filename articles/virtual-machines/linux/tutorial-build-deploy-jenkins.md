@@ -6,19 +6,18 @@ manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: jenkins
 ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 7cd7b8f7b49915db9fcf17602429e47c1b9da95d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a62a302748cb7e60b6a857c686d1833ad499cc7a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60478399"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081652"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Samouczek: wdrażanie aplikacji na maszynach wirtualnych systemu Linux na platformie Azure przy użyciu usług Jenkins i Azure DevOps Services
 
@@ -35,7 +34,7 @@ do [grupy wdrożenia](https://docs.microsoft.com/azure/devops/pipelines/release/
 > * Konfigurowanie usługi Jenkins do integracji z usługami Azure DevOps Services.
 > * Tworzenie punktu końcowego usługi Jenkins.
 > * Tworzenie grupy wdrożenia dla maszyn wirtualnych platformy Azure.
-> * Instrukcje tworzenia potoku usługi Azure potoków wydania.
+> * Utwórz potok wydania Azure Pipelines.
 > * Przeprowadzanie wdrożeń wyzwalanych ręcznie i za pomocą CI.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
@@ -133,7 +132,7 @@ Potrzebujesz [grupy wdrożenia](https://www.visualstudio.com/docs/build/concepts
 
 1. Otwórz kartę **Wydania** centrum **Kompilacja &amp; wydanie**, otwórz pozycję **Grupy wdrożenia** i wybierz pozycję **+ Nowy**.
 2. Wprowadź nazwę grupy wdrożenia i opcjonalny opis. Następnie wybierz przycisk **Utwórz**.
-3. Wybierz system operacyjny docelowej maszyny wirtualnej wdrożenia. Na przykład wybierz pozycję **Ubuntu 16.04+**.
+3. Wybierz system operacyjny docelowej maszyny wirtualnej wdrożenia. Na przykład wybierz pozycję **Ubuntu 16.04+** .
 4. Wybierz pozycję **Do uwierzytelnienia użyj osobistego tokenu dostępu w skrypcie**.
 5. Wybierz link **Wymagania wstępne systemu**. Zainstaluj wymagania wstępne swojego systemu operacyjnego.
 6. Wybierz pozycję **Kopiuj skrypt do schowka**, aby skopiować skrypt.
@@ -141,7 +140,7 @@ Potrzebujesz [grupy wdrożenia](https://www.visualstudio.com/docs/build/concepts
 8. Po zakończeniu instalacji zostanie wyświetlony monit o tagi grupy wdrożenia. Zaakceptuj wartości domyślne.
 9. W usługach Azure DevOps Services sprawdź nowo zarejestrowaną maszynę wirtualną w pozycji **Miejsca docelowe** w obszarze **Grupy wdrożenia**.
 
-## <a name="create-an-azure-pipelines-release-pipeline"></a>Instrukcje tworzenia potoku usługi Azure potoki wersji
+## <a name="create-an-azure-pipelines-release-pipeline"></a>Tworzenie potoku wydania Azure Pipelines
 
 Potok wydania określa proces, którego usługa Azure Pipelines używa do wdrażania aplikacji. W tym przykładzie wykonasz skrypt powłoki.
 
@@ -152,7 +151,7 @@ W celu utworzenia potoku wydania w usłudze Azure Pipelines:
 3. W sekcji **Artefakty** wybierz pozycję **+ Dodaj artefakt**, a następnie wybierz wartość **Jenkins** dla pozycji **Typ źródła**. Wybierz połączenie punktu końcowego usługi Jenkins. Następnie wybierz zadanie źródłowe usługi Jenkins, po czym wybierz pozycję **Dodaj**.
 4. Wybierz symbol wielokropka obok pozycji **Środowisko 1**. Wybierz pozycję **Dodaj fazę grupy wdrożenia**.
 5. Wybierz swoją grupę wdrożenia.
-5. Wybierz symbol **+**, aby dodać zadanie do pozycji **Faza grupy wdrożenia**.
+5. Wybierz symbol **+** , aby dodać zadanie do pozycji **Faza grupy wdrożenia**.
 6. Wybierz zadanie **Skrypt powłoki**, a następnie wybierz pozycję **Dodaj**. Zadanie **Skrypt powłoki** zapewnia, że konfiguracja skryptu jest uruchamiana na każdym serwerze w celu zainstalowania środowiska Node.js i uruchomienia aplikacji.
 8. W pozycji **Ścieżka skryptu** wprowadź **$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh**.
 9. Wybierz pozycję **Zaawansowane**, a następnie włącz pozycję **Określ katalog roboczy**.
@@ -166,7 +165,7 @@ W celu utworzenia potoku wydania w usłudze Azure Pipelines:
 2. Wybierz ukończoną kompilację na wyróżnionej liście rozwijanej, a następnie wybierz pozycję **Kolejka**.
 3. Wybierz link wydania w komunikacie podręcznym. Na przykład: „Wydanie **Wydanie 1** zostało utworzone”.
 4. Otwórz kartę **Dzienniki**, aby obejrzeć dane wyjściowe konsoli wydania.
-5. W przeglądarce otwórz adres URL jednego z serwerów, które zostały dodane do grupy wdrożenia. Na przykład wprowadź **http://{adres_IP_serwera}**.
+5. W przeglądarce otwórz adres URL jednego z serwerów, które zostały dodane do grupy wdrożenia. Na przykład wprowadź **http://{adres_IP_serwera}** .
 6. Przejdź do źródłowego repozytorium Git i zmodyfikuj zawartość nagłówka **h1** w pliku app/views/index.jade, zmieniając tekst.
 7. Zatwierdź wprowadzone zmiany.
 8. Po kilku minutach nowo utworzone wydanie pojawi się na stronie **Wydania** usług Azure DevOps Services. Otwórz wydanie, aby zobaczyć trwające wdrożenie. Gratulacje!
@@ -175,7 +174,7 @@ W celu utworzenia potoku wydania w usłudze Azure Pipelines:
 
 Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku zautomatyzowano wdrażanie aplikacji na platformie Azure przy użyciu usługi Jenkins na potrzeby kompilacji i usług Azure DevOps Services na potrzeby wydania. W tym samouczku omówiono:
 

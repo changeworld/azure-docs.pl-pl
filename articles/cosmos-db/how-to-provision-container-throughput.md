@@ -3,32 +3,32 @@ title: Aprowizowanie przepływności kontenera w usłudze Azure Cosmos DB
 description: Dowiedz się, jak aprowizować przepływność na poziomie kontenera w usłudze Azure Cosmos DB
 author: rimman
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: rimman
-ms.openlocfilehash: f195eaa0f5d22160de8c1e9e2f429073de001828
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 0975fe5135bbe9f5e1dc65ee0444cc3aab986a2e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67986025"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093057"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Aprowizowanie przepływności dla kontenera usługi Azure Cosmos
 
-W tym artykule wyjaśniono, jak aprowizować przepływność na kontenerze (kolekcja, wykres lub tabelę) w usłudze Azure Cosmos DB. Użytkownik może aprowizować przepływność mierzoną w jednym kontenerze, lub [aprowizowanie przepływności w bazie danych](how-to-provision-database-throughput.md) i udostępniać je między kontenerów w bazie danych. Możesz aprowizować przepływność na kontenerze przy użyciu witryny Azure portal, interfejsu wiersza polecenia platformy Azure lub zestawów SDK usługi Azure Cosmos DB.
+W tym artykule wyjaśniono, jak zainicjować przepływność na kontenerze (kolekcji, grafie lub tabeli) w Azure Cosmos DB. Można zainicjować przepływność na jednym kontenerze lub [zainicjować przepływność dla bazy danych](how-to-provision-database-throughput.md) i udostępnić ją między kontenerami w bazie danych. Przepływność można zainicjować przy użyciu Azure Portal, interfejsu wiersza polecenia platformy Azure lub Azure Cosmos DB zestawów SDK.
 
 ## <a name="provision-throughput-using-azure-portal"></a>Aprowizowanie przepływności przy użyciu witryny Azure Portal
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-1. [Utwórz nowe konto usługi Azure Cosmos](create-sql-api-dotnet.md#create-account), lub wybierz istniejące konto usługi Azure Cosmos.
+1. [Utwórz nowe konto usługi Azure Cosmos](create-sql-api-dotnet.md#create-account)lub Wybierz istniejące konto usługi Azure Cosmos.
 
 1. Otwórz okienko **Data Explorer** i wybierz pozycję **Nowa kolekcja**. Następnie podaj następujące szczegóły:
 
    * Wskaż, czy tworzysz nową bazę danych, czy używasz istniejącej.
-   * Wprowadź identyfikator kontenera (tabela lub wykres).
+   * Wprowadź identyfikator kontenera (lub tabeli lub grafu).
    * Wprowadź wartość klucza partycji (na przykład `/userid`).
-   * Wprowadź przepływność, którą chcesz aprowizować (na przykład 1000 jednostek).
+   * Wprowadź przepływność, która ma zostać zainicjowana (na przykład 1000 jednostek ru).
    * Kliknij przycisk **OK**.
 
 ![Zrzut ekranu okienka usługi Data Explorer z wyróżnioną pozycją Nowa kolekcja](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
@@ -46,7 +46,7 @@ az cosmosdb collection create \
     --throughput 400
 ```
 
-## <a name="provision-throughput-using-powershell"></a>Aprowizowanie przepływności przy użyciu programu PowerShell
+## <a name="provision-throughput-using-powershell"></a>Obsługa przepływności przy użyciu programu PowerShell
 
 ```azurepowershell-interactive
 # Create a container with a partition key and provision throughput of 400 RU/s
@@ -72,15 +72,15 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts/apis/databas
     -Name $resourceName -PropertyObject $ContainerProperties
 ```
 
-W przypadku udostępniania przepływność na kontenerze na koncie usługi Azure Cosmos skonfigurowany z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB, użyj `/myShardKey` dla ścieżki klucza partycji. W przypadku udostępniania przepływność na kontenerze na koncie usługi Azure Cosmos skonfigurowane za pomocą interfejsu Cassandra API użyj `/myPrimaryKey` dla ścieżki klucza partycji.
+Jeśli zainicjowano przepływność na kontenerze na koncie usługi Azure Cosmos skonfigurowanym za pomocą interfejsu API Azure Cosmos DB dla MongoDB, `/myShardKey` Użyj dla ścieżki klucza partycji. Jeśli zainicjowano przepływność na kontenerze na koncie usługi Azure Cosmos skonfigurowanym pod warunkiem interfejs API Cassandra `/myPrimaryKey` , użyj dla ścieżki klucza partycji.
 
 ## <a name="provision-throughput-by-using-net-sdk"></a>Aprowizowanie przepływności przy użyciu zestawu .NET SDK
 
 > [!Note]
-> Umożliwia Cosmos zestawy SDK dla interfejsu API SQL aprowizowanie przepływności dla wszystkich interfejsów API usługi DB Cosmos, z wyjątkiem interfejsu API rozwiązania Cassandra.
+> Użyj Cosmos SDK dla interfejsu API SQL, aby zainicjować przepływność dla wszystkich Cosmos DB interfejsów API, z wyjątkiem interfejs API Cassandra.
 
 ### <a id="dotnet-most"></a>Język SQL, usługa MongoDB, język Gremlin oraz interfejsy API tabel
-### <a name="net-v2-sdk"></a>.Net V2 SDK
+### <a name="net-v2-sdk"></a>Zestaw .NET V2 SDK
 
 ```csharp
 // Create a container with a partition key and provision throughput of 400 RU/s
@@ -94,7 +94,7 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 400 });
 ```
 
-### <a name="net-v3-sdk"></a>.Net V3 SDK
+### <a name="net-v3-sdk"></a>Zestaw SDK dla platformy .NET v3
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/ContainerDocsSampleCode.cs?name=ContainerCreateWithThroughput)]
 
 ### <a id="dotnet-cassandra"></a>Interfejs API rozwiązania Cassandra
@@ -111,5 +111,5 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
 
 Zobacz następujące artykuły, aby dowiedzieć się więcej na temat aprowizowania przepływności w usłudze Azure Cosmos DB:
 
-* [Jak aprowizować przepływność mierzoną w bazie danych](how-to-provision-database-throughput.md)
+* [Jak zapewnić przepustowość bazy danych](how-to-provision-database-throughput.md)
 * [Jednostki żądania i przepływności w usłudze Azure Cosmos DB](request-units.md)

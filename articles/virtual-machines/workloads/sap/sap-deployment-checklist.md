@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: abe04a88f3337ed26b98815b5633fd5d719b7ce3
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 2d6170dead4e8577cea6883ffea25b90ebe39b88
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234223"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079007"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Obciążenie SAP na liście kontrolnej planowania i wdrażania platformy Azure 
 
@@ -179,7 +178,7 @@ W tej fazie przyjęto założenie, że po pomyślnym uruchomieniu pilotażu lub 
 5.  Stale sprawdzaj dokumentację platformy Azure dla prezentacji firmy Microsoft na takich kanałach jak [channel9](https://channel9.msdn.com/) , aby uzyskać nowe funkcje, które mogą być stosowane do wdrożeń
 6.  Sprawdź uwagi SAP powiązane z platformą Azure, takie jak [#1928533](https://launchpad.support.sap.com/#/notes/1928533) uwagi na temat pomocy technicznej dla nowych jednostek SKU maszyn wirtualnych lub nowo obsługiwane wersje systemów operacyjnych i DBMS. Porównaj nowe typy maszyn wirtualnych ze starszymi typami maszyn wirtualnych w cenniku, dzięki czemu możesz wdrażać maszyny wirtualne z najlepszym wskaźnikiem cen/wydajności
 7.  Sprawdź poprawność zasobów na temat pomocy technicznej SAP, SAP HANA katalogu sprzętu i usługi Azure PAM ponownie, aby upewnić się, że nie zostały wprowadzone żadne zmiany w obsługiwanych maszynach wirtualnych dla platformy Azure, obsługiwane wersje systemu operacyjnego w tych maszynach wirtualnych oraz obsługiwane wersje oprogramowania SAP i DBMS
-8.  Zapoznaj [się](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) z nowymi jednostkami SKU certyfikowanych platformy Hana na platformie Azure i Porównaj ceny z zaplanowanymi planami i ostatecznie Zmień, aby uzyskać dostęp do jednostek z lepszymi dawkami dotyczącymi wydajności 
+8.  Zapoznaj się z nowymi jednostkami SKU certyfikowanych platformy HANA na platformie Azure i Porównaj ceny z zaplanowanymi planami i ostatecznie Zmień, aby uzyskać dostęp do jednostek z lepszymi dawkami dotyczącymi wydajności [](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) 
 9.  Dostosuj skrypty wdrażania, aby wykorzystać nowe typy maszyn wirtualnych i uwzględnić nowe funkcje platformy Azure, których chcesz użyć
 10. Po wdrożeniu infrastruktury Przetestuj i Oceń opóźnienia sieci między MASZYNami wirtualnymi aplikacji SAP i maszyną wirtualną DBMS, zgodnie z uwagami dotyczącymi pomocy technicznej SAP [#500235](https://launchpad.support.sap.com/#/notes/500235) i [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)uwagi dotyczące pomocy technicznej SAP. Oceń wyniki na wskazówki dotyczące opóźnień sieci w przypadku pomocy technicznej SAP [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Opóźnienie sieci powinno być w średnim i odpowiednim zakresie. Wyjątki dotyczą ruchu między maszynami wirtualnymi i jednostkami dużych wystąpień platformy HANA, jak opisano [tutaj](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance). Upewnij się, że żadne ograniczenia wymienione w temacie [uwagi dotyczące wdrażania platformy azure Virtual Machines DBMS dla obciążenia SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#azure-network-considerations) i [SAP HANA konfiguracje infrastruktury i operacje na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations) mają zastosowanie do Twojego wdrożenia
 11. Upewnij się, że maszyny wirtualne zostały wdrożone przy użyciu poprawnej [grupy umieszczania w pobliżu platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) , zgodnie z opisem w temacie [grupy umieszczania zbliżeniowe platformy Azure w celu uzyskania optymalnego opóźnienia sieci w aplikacjach SAP](sap-proximity-placement-scenarios.md)

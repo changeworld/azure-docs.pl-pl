@@ -11,16 +11,15 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: f893e417420b26dcb56e0d84551fbad3577b8fdb
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: c597bb47ba6d075523b2eb2ca4d146fa22a97a2e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874874"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083082"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale na platformie Azure
 
@@ -41,7 +40,7 @@ W tym artykule nie omówiono różnic i możliwych zadań migracji dotyczących 
 Aby ułatwić podejmowanie decyzji na temat najlepszej architektury DB2 pureScale dla danego środowiska, zalecamy całkowite oszacowanie rozmiarów i naprowadzenie hipotez. Upewnij się, że w systemie źródłowym zauważasz Sysplex równoległy z/OS na architekturę udostępniania danych, konfigurację funkcji sprzęgania i dane statystyczne użycia funkcji rozproszonego przetwarzania danych (DDF).
 
 > [!NOTE]
-> W tym artykule opisano jedno podejście do migracji bazy danych DB2, ale istnieją inne. Na przykład program DB2 pureScale może być również uruchamiany w zwirtualizowanych środowiskach lokalnych. Firma IBM obsługuje bazy danych DB2 w systemie Microsoft Hyper-V w różnych konfiguracjach. Aby uzyskać więcej informacji, zobacz [Architektura wirtualizacji pureScale](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/r0061462.html) w programie DB2 w centrum wiedzy firmy IBM.
+> W tym artykule opisano jedno podejście do migracji bazy danych DB2, ale istnieją inne. Na przykład program DB2 pureScale może być również uruchamiany w zwirtualizowanych środowiskach lokalnych. Firma IBM obsługuje bazy danych DB2 na Microsoft Hyper-V w różnych konfiguracjach. Aby uzyskać więcej informacji, zobacz [Architektura wirtualizacji pureScale](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/r0061462.html) w programie DB2 w centrum wiedzy firmy IBM.
 
 ## <a name="architecture"></a>Architektura
 

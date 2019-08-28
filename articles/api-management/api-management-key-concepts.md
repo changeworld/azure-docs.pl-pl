@@ -9,23 +9,22 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 3934dbb01c3b9f3219c5e649d97371850b8daadc
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 8d7fa8b8119ddf1769b36bcb55831047d6242470
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230627"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073436"
 ---
 # <a name="about-api-management"></a>Informacje o usłudze API Management
 
-API Management (APIM) jest sposobem tworzenia spójne i nowoczesne bramy interfejsu API dla istniejących usług zaplecza.
+API Management (APIM) to sposób tworzenia spójnych i nowoczesnych bram interfejsu API dla istniejących usług zaplecza.
 
-Usługa API Management pomaga organizacjom publikować interfejsy API dla zewnętrznych, partnerskich i wewnętrzni programiści Odblokuj niewykorzystany potencjał swoich danych i usług. Firmy na całym świecie dążą do rozszerzenia operacji w postaci platformy cyfrowej, tworząc nowe kanały, znajdując nowych klientów i nakłaniając obecnych do głębszego zaangażowania. Usługa API Management udostępnia podstawowe funkcje wymagane do tworzenia skutecznych interfejsów API przez zaangażowanych deweloperów, a także zapewnia informacje biznesowe, analizy, zabezpieczenia i ochronę. Usługa Azure API Management umożliwia użycie dowolnego oprogramowania zaplecza i uruchomienie opartego na nim, w pełni funkcjonalnego programu interfejsu API.
+API Management pomaga organizacjom publikować interfejsy API dla deweloperów zewnętrznych, partnerskich i wewnętrznych, aby odblokować potencjał swoich danych i usług. Firmy na całym świecie dążą do rozszerzenia operacji w postaci platformy cyfrowej, tworząc nowe kanały, znajdując nowych klientów i nakłaniając obecnych do głębszego zaangażowania. Usługa API Management udostępnia podstawowe funkcje wymagane do tworzenia skutecznych interfejsów API przez zaangażowanych deweloperów, a także zapewnia informacje biznesowe, analizy, zabezpieczenia i ochronę. Usługa Azure API Management umożliwia użycie dowolnego oprogramowania zaplecza i uruchomienie opartego na nim, w pełni funkcjonalnego programu interfejsu API.
 
 Ten artykuł zawiera omówienie typowych scenariuszy dotyczących usługi APIM.  Omówiono w nim też krótko główne składniki systemu usługi APIM. W dalszej części artykułu bardziej szczegółowo omówiono poszczególne składniki.
 
@@ -70,12 +69,12 @@ Aby uzyskać więcej informacji, przeczytaj oficjalny dokument PDF [Cloud-based 
  * Analizy i metryki
  * Uzyskiwanie kontroli i wglądu dzięki platformie usługi API Management
  * Porównanie rozwiązań w chmurze i rozwiązań lokalnych
- * Usługa Azure API Management
+ * Azure API Management
  
 ## <a name="apis"> </a>Interfejsy API i operacje
 Interfejsy API są podstawą wystąpienia usługi API Management. Każdy interfejs API reprezentuje zestaw operacji dostępnych dla deweloperów. Każdy interfejs API zawiera odwołanie do usługi zaplecza, która implementuje interfejs API, oraz mapę odwzorowań operacji interfejsu API na operacje zaimplementowane w usłudze zaplecza. Operacje usługi API Management są wysoce konfigurowalne, pozwalają na kontrolę mapowania adresu URL, parametrów zapytania i ścieżki, zawartości żądania i odpowiedzi oraz buforowanie odpowiedzi operacji. Ograniczenia liczby wywołań, przydziały i zasady ograniczeń adresów IP mogą być implementowane zarówno na poziomie interfejsu API, jak i na poziomie poszczególnych operacji.
 
-Aby uzyskać więcej informacji, zobacz [How to create APIs][How to create APIs] (Jak utworzyć interfejsy API) i [How to add operations to an API][How to add operations to an API] (Jak dodać operacje do interfejsu API).
+Aby uzyskać więcej informacji, zobacz artykuły [How to create APIs][How to create APIs] (Tworzenie interfejsów API) i [How to add operations to an API][How to add operations to an API] (Dodawanie operacji do interfejsu API).
 
 ## <a name="products"> </a> Produkty
 Produkty stanowią sposób udostępniania interfejsów API deweloperom. Produkty w usłudze API Management mają co najmniej jeden interfejs API oraz skonfigurowany tytuł, opis i warunki użytkowania. Produkty mogą być **otwarte** lub **chronione**. Produkty chronione trzeba subskrybować przed użyciem, a produkty otwarte mogą być używane bez subskrypcji. Kiedy produkt jest gotowy do użycia przez deweloperów, można go opublikować. Po opublikowaniu produktu deweloperzy mogą go wyświetlać (a w przypadku produktów chronionych również subskrybować). Zatwierdzenie subskrypcji jest konfigurowane na poziomie produktu i może wymagać zatwierdzenia przez administratora lub odbywać się automatycznie.
@@ -91,14 +90,14 @@ Grupy służą do zarządzania widocznością produktów dla deweloperów. Usłu
 
 Oprócz tych grup systemowych administratorzy mogą tworzyć niestandardowe grupy lub [wykorzystać zewnętrzne grupy w skojarzonych dzierżawach usługi Azure Active Directory](api-management-howto-aad.md). Niestandardowe i zewnętrzne grupy mogą być używane razem z grupami systemowymi, zapewniając deweloperom widoczność produktów interfejsu API i dostęp do nich. Można na przykład utworzyć jedną grupę niestandardową dla deweloperów powiązanych z konkretną organizacją partnera i zezwolić im na dostęp do interfejsów API z produktów zawierających tylko odpowiednie interfejsy API. Użytkownik może należeć do więcej niż jednej grupy.
 
-Aby uzyskać więcej informacji, zobacz [How to create and use groups][How to create and use groups] (Jak utworzyć grupy i używać ich).
+Aby uzyskać więcej informacji, zobacz artykuł [How to create and use groups][How to create and use groups] (Tworzenie i używanie grup).
 
 ## <a name="developers"> </a> Deweloperzy
 Deweloperzy reprezentują konta użytkowników w wystąpieniu usługi API Management. Konta deweloperów mogą być tworzone lub dołączane na zaproszenie administratorów. Ponadto deweloperzy mogą się zarejestrować w [Portalu dla deweloperów][Developer portal]. Każdy deweloper jest członkiem co najmniej jednej grupy i może subskrybować produkty widoczne w tych grupach.
 
 Kiedy deweloperzy subskrybują produkt, otrzymują klucz podstawowy i pomocniczy produktu. Ten klucz jest używany podczas wywołań interfejsów API produktu.
 
-Aby uzyskać więcej informacji, zobacz [How to create or invite developers][How to create or invite developers] (Jak utworzyć i zaprosić deweloperów) i [How to associate groups with developers][How to associate groups with developers] (Jak skojarzyć grupy z deweloperami).
+Aby uzyskać więcej informacji, zobacz artykuły [How to create or invite developers][How to create or invite developers] (Tworzenie i zapraszanie deweloperów) i [How to associate groups with developers][How to associate groups with developers] (Kojarzenie grup z deweloperami).
 
 ## <a name="policies"> </a> Zasady
 Zasady są zaawansowaną możliwością usługi API Management, która pozwala witrynie Azure Portal zmieniać zachowanie interfejsu API za pomocą konfiguracji. Zasady to zbiór instrukcji, które są wykonywane sekwencyjnie podczas żądania lub odpowiedzi interfejsu API. Popularne instrukcje obejmują konwersję z formatu XML na format JSON i ograniczanie liczby wywołań, aby zmniejszyć liczbę wywołań przychodzących od dewelopera. Ponadto dostępnych jest wiele innych zasad.
@@ -106,7 +105,7 @@ Zasady są zaawansowaną możliwością usługi API Management, która pozwala w
 Wyrażenia zasad mogą służyć jako wartości atrybutów lub wartości tekstowe w dowolnej z zasad usługi API Management, o ile w zasadach nie określono inaczej. Niektóre zasady, np. [Przepływ sterowania](/azure/api-management/api-management-advanced-policies#choose) i [Ustawianie zmiennej](/azure/api-management/api-management-advanced-policies#set-variable), są oparte na wyrażeniach zasad. Aby uzyskać więcej informacji, zobacz tematy [Advanced policies](/azure/api-management/api-management-advanced-policies#AdvancedPolicies) (Zaawansowane zasady) i [Policy expressions](/azure/api-management/api-management-policy-expressions) (Wyrażenia zasad).
 
 
-Pełna lista zasad usługi API Management znajduje się w artykule [Policy reference][Policy reference] (Dokumentacja zasad). Aby uzyskać więcej informacji na temat korzystania z zasad i konfigurowania ich, zobacz [API Management policies][API Management policies] (Zasady usługi API Management). Samouczek dotyczący tworzenia produktu z zasadami dotyczącymi ograniczania liczby wywołań i przydziałów znajduje się w artykule [Jak utworzyć i skonfigurować zaawansowane ustawienia produktów][How create and configure advanced product settings].
+Pełna lista zasad usługi API Management jest zawarta w artykule [Policy reference][Policy reference] (Dokumentacja zasad). Aby uzyskać więcej informacji na temat korzystania z zasad i konfigurowania ich, zobacz artykuł [API Management policies][API Management policies] (Zasady usługi API Management). Samouczek dotyczący tworzenia produktu z zasadami dotyczącymi ograniczania liczby wywołań i przydziałów jest zawarty w artykule [Tworzenie i konfigurowanie zaawansowanych ustawień produktów][How create and configure advanced product settings].
 
 
 ## <a name="developer-portal"> </a> Portal dla deweloperów

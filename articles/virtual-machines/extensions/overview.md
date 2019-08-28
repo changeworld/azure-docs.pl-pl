@@ -1,6 +1,6 @@
 ---
-title: Rozszerzenia maszyny wirtualnej platformy Azure i funkcje | Dokumentacja firmy Microsoft
-description: Dowiedz się, czym są rozszerzenia maszyny Wirtualnej platformy Azure i jak z nich korzystać w usłudze Azure virtual machines
+title: Rozszerzenia i funkcje maszyny wirtualnej platformy Azure | Microsoft Docs
+description: Informacje o rozszerzeniach maszyn wirtualnych platformy Azure i sposobach ich używania z maszynami wirtualnymi platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
@@ -9,51 +9,50 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 3a8c571d3c6bb55fdd8b2d097b71b83afab5ca00
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 8c63df2d9a7e398fb9b67edd3b57a3ba06cbe7a1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705919"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084323"
 ---
-# <a name="azure-virtual-machine-extensions-and-features"></a>Rozszerzenia maszyny wirtualnej platformy Azure i funkcji
-Rozszerzenia maszyn wirtualnych (VM) to małych aplikacji, które zapewniają po wdrożeniu konfiguracji oraz zadania automatyzacji na maszynach wirtualnych platformy Azure, możesz użyć istniejących obrazów i następnie dostosuj je, jako część wdrożenia, uzyskiwanie działalność niestandardowe Tworzenie obrazu.
+# <a name="azure-virtual-machine-extensions-and-features"></a>Rozszerzenia i funkcje maszyny wirtualnej platformy Azure
+Rozszerzenia maszyny wirtualnej platformy Azure to małe aplikacje, które udostępniają zadania konfiguracji po wdrożeniu i automatyzacji na maszynach wirtualnych platformy Azure, można użyć istniejących obrazów, a następnie dostosować je w ramach wdrożeń, dzięki czemu możesz uzyskać niestandardową firmę Kompilowanie obrazów.
 
-Platforma Azure obsługuje wiele rozszerzeń, które należeć do zakresu od konfiguracji maszyny Wirtualnej, monitorowania, zabezpieczeń i aplikacji narzędzie. Wydawcy przełączenia aplikacji, a następnie ująć je w rozszerzeniu i uprościć instalację, dzięki czemu jest wszystko, co należy zrobić, podaj wymagane parametry. 
+Platforma Azure obsługuje wiele rozszerzeń, które przedziały od konfiguracji maszyny wirtualnej, monitorowania, zabezpieczeń i narzędzi. Wydawcy pobierają aplikację, zaznaczają ją w rozszerzeniu i upraszczają instalację, dlatego należy podać obowiązkowe parametry. 
 
- Ma duże wybór pierwszy i rozszerzenia innych firm, jeśli aplikacja w repozytorium rozszerzeń nie istnieje, a następnie można użyć rozszerzenia niestandardowego skryptu i konfigurowanie maszyny Wirtualnej przy użyciu własnych skryptów i poleceń.
+ Jeśli aplikacja w repozytorium rozszerzeń nie istnieje, można użyć rozszerzenia niestandardowego skryptu i skonfigurować maszynę wirtualną przy użyciu własnych skryptów i poleceń, jeśli nie istnieją.
 
-Przykłady kluczowych scenariuszy, które rozszerzenia są używane do:
-* Konfiguracja maszyny Wirtualnej można użyć programu Powershell DSC (Desired State Configuration), Chef, Puppet i rozszerzenia skryptu niestandardowego do instalowania agentów konfiguracji maszyn wirtualnych i konfigurowania maszyny Wirtualnej. 
-* Pliki audio i wideo produktów, takich jak firmy Symantec, firmy ESET.
-* Narzędzie luk w zabezpieczeniach maszyn wirtualnych, takich jak rozwiązania firmy Qualys Rapid7, HPE.
-* Maszyna wirtualna i narzędzi, takich jak DynaTrace, usługi Azure Network Watcher, Site24x7 i rozwiązania Stackify monitorowania aplikacji.
+Przykłady kluczowych scenariuszy, w których rozszerzenia są używane dla:
+* Konfiguracja maszyny wirtualnej pozwala zainstalować agentów konfiguracji maszyny wirtualnej i skonfigurować maszynę wirtualną przy użyciu programu PowerShell DSC (Konfiguracja żądanego stanu), Chef, Puppet i niestandardowych rozszerzeń skryptów. 
+* Produkty AV, takie jak Symantec, ESET.
+* Narzędzie do luk w zabezpieczeniach maszyny wirtualnej, takie jak Qualys, Rapid7, HPE.
+* Narzędzia do monitorowania maszyn wirtualnych i aplikacji, takie jak DynaTrace, Azure Network Watcher, Site24x7 i rozwiązania Stackify.
 
-Rozszerzenia dołączone nowe wdrożenie maszyny Wirtualnej. Na przykład można być częścią większej wdrażania, konfigurowania aplikacji na obsługę administracyjną maszyny Wirtualnej, lub uruchamiać wszystkie obsługiwane rozszerzenia obsługiwane systemy po wdrożeniu.
+Rozszerzenia można powiązać z nowym wdrożeniem maszyny wirtualnej. Mogą na przykład być częścią większego wdrożenia, konfigurowania aplikacji na maszynach wirtualnych lub uruchamiania ich na wszystkich obsługiwanych systemach obsługujących rozszerzenia po wdrożeniu.
 
-## <a name="how-can-i-find-what-extensions-are-available"></a>Jak znaleźć, jakie rozszerzenia są dostępne?
-Dostępnych rozszerzeń można wyświetlić w bloku maszyny Wirtualnej w portalu w obszarze rozszerzenia, jest to po prostu niewielkie, aby uzyskać pełną listę, użyj narzędzi interfejsu wiersza polecenia, zobacz [odnajdywania rozszerzeń maszyn wirtualnych dla systemu Linux](features-linux.md) i [ Odnajdywanie rozszerzeń maszyn wirtualnych dla Windows](features-windows.md).
+## <a name="how-can-i-find-what-extensions-are-available"></a>Jak mogę znaleźć dostępne rozszerzenia?
+Dostępne rozszerzenia można wyświetlić w bloku maszyny wirtualnej w portalu, w obszarze rozszerzenia reprezentuje ona tylko niewielką ilość, aby uzyskać pełną listę, można użyć narzędzi interfejsu wiersza polecenia, zobacz odnajdywanie [rozszerzeń maszyn wirtualnych dla systemu Linux](features-linux.md) i [odnajdywanie rozszerzeń maszyn wirtualnych w systemie Windows](features-windows.md).
 
-## <a name="how-can-i-install-an-extension"></a>Jak zainstalować rozszerzenie?
-Rozszerzenia maszyn wirtualnych platformy Azure mogą być zarządzane przy użyciu wiersza polecenia platformy Azure, programu Azure PowerShell, szablony usługi Azure Resource Manager i witryny Azure portal. Aby wypróbować rozszerzenia, możesz można przejdź do witryny Azure portal, wybierz opcję rozszerzenia niestandardowego skryptu, a następnie przekazać za pomocą polecenia / skrypt i uruchomić rozszerzenia.
+## <a name="how-can-i-install-an-extension"></a>Jak mogę zainstalować rozszerzenie?
+Rozszerzenia maszyny wirtualnej platformy Azure można zarządzać przy użyciu interfejsu wiersza polecenia platformy Azure, Azure PowerShell, szablonów Azure Resource Manager i Azure Portal. Aby wypróbować rozszerzenie, możesz przejść do Azure Portal, wybrać rozszerzenie niestandardowego skryptu, a następnie przekazać polecenie/skrypt i uruchomić rozszerzenia.
 
-Jeśli chcesz samo rozszerzenie, które zostały dodane w portalu przez szablon interfejsu wiersza polecenia lub usługi Resource Manager znajdują się inne rozszerzenie dokumentacji, takie jak [Windows niestandardowego rozszerzenia skryptu](custom-script-windows.md) i [Linux niestandardowego rozszerzenia skryptu](custom-script-linux.md).
+Jeśli chcesz mieć to samo rozszerzenie dodane w portalu według interfejsu wiersza polecenia lub szablonu Menedżer zasobów, zobacz inną dokumentację rozszerzenia, taką jak rozszerzenie [niestandardowego skryptu systemu Windows](custom-script-windows.md) i [rozszerzenia niestandardowego skryptu](custom-script-linux.md)w systemie Linux.
 
-## <a name="how-do-i-manage-extension-application-lifecycle"></a>Jak zarządzać cyklem życia aplikacji rozszerzenia?
-Nie trzeba połączyć się bezpośrednio, aby zainstalować lub usunąć rozszerzenia maszyny Wirtualnej. Cykl życia aplikacji rozszerzenie platformy Azure zarządzanego poza maszyny Wirtualnej i zintegrowane z platformą Azure, możesz także uzyskać zintegrowane stan rozszerzenia.
+## <a name="how-do-i-manage-extension-application-lifecycle"></a>Jak mogę zarządzać cyklem życia aplikacji rozszerzenia?
+Nie musisz łączyć się z maszyną wirtualną bezpośrednio, aby zainstalować lub usunąć rozszerzenie. Gdy cykl życia aplikacji rozszerzenia platformy Azure jest zarządzany poza maszyną wirtualną i jest zintegrowany z platformą Azure, można również uzyskać zintegrowany stan rozszerzenia.
 
-## <a name="anything-else-i-should-be-thinking-about-for-extensions"></a>Czymkolwiek I powinny być zastanawiasz się rozszerzeń?
-Rozszerzenia instalowanie aplikacji, np. wszystkie aplikacje, które istnieją pewne wymagania dotyczące rozszerzeń znajduje się lista obsługiwanych Windows i systemów operacyjnych Linux i musisz mieć zainstalowanych agentów maszyny Wirtualnej platformy Azure. Niektóre poszczególnych aplikacji rozszerzenia maszyny Wirtualnej może mieć własne wymagania wstępne środowiska, takich jak dostęp do punktu końcowego.
+## <a name="anything-else-i-should-be-thinking-about-for-extensions"></a>Coś innego, co muszę zrobić w przypadku rozszerzeń?
+Rozszerzenia instalują aplikacje, podobnie jak w przypadku niektórych aplikacji, istnieją pewne wymagania, w przypadku rozszerzenia istnieje lista obsługiwanych systemów operacyjnych systemów Windows i Linux oraz wymaganych jest zainstalowanie agentów maszyny wirtualnej platformy Azure. Niektóre pojedyncze aplikacje rozszerzenia maszyny wirtualnej mogą mieć własne wymagania wstępne dotyczące środowiska, takie jak dostęp do punktu końcowego.
 
 ## <a name="next-steps"></a>Następne kroki
-* Aby uzyskać więcej informacji na temat działania agenta systemu Linux i rozszerzenia, zobacz [rozszerzeń maszyny Wirtualnej platformy Azure i funkcji dla systemu Linux](features-linux.md).
-* Aby uzyskać więcej informacji na temat działania agenta gościa Windows i rozszerzenia zobacz [rozszerzeń maszyny Wirtualnej platformy Azure i funkcji dla Windows](features-windows.md).  
-* Aby zainstalować agenta gościa Windows, zobacz [omówienie agenta maszyny wirtualnej Windows Azure](agent-windows.md).  
-* Aby zainstalować agenta systemu Linux, zobacz [omówienie agenta maszyny wirtualnej systemu Linux platformy Azure](agent-linux.md).  
+* Aby uzyskać więcej informacji na temat działania agenta i rozszerzeń systemu Linux, zobacz [Azure VM Extensions and features for Linux](features-linux.md).
+* Aby uzyskać więcej informacji o działaniu agenta i rozszerzeń gościa systemu Windows, zobacz [rozszerzenia i funkcje maszyny wirtualnej platformy Azure dla systemu Windows](features-windows.md).  
+* Aby zainstalować agenta gościa systemu Windows, zobacz [Omówienie agenta maszyny wirtualnej systemu Windows Azure](agent-windows.md).  
+* Aby zainstalować agenta systemu Linux, zobacz [Omówienie agenta maszyny wirtualnej z systemem Linux](agent-linux.md).  
 

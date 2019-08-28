@@ -7,18 +7,17 @@ author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: daddb859c6bfc6309ef833c6c6c3ea43c70f1889
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d16c5b6304f598440fe4d70648dd652f0dcf06ec
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60362292"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089931"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Nie można wykonać protokołu RDP na maszynach wirtualnych platformy Azure, ponieważ usługa klienta DHCP jest wyłączona
 
@@ -29,13 +28,13 @@ W tym artykule opisano problem, w którym nie jest możliwe pulpitu zdalnego do 
 ## <a name="symptoms"></a>Objawy
 Nie można wprowadzać z połączeniem RDP maszyny Wirtualnej na platformie Azure, ponieważ usługa klienta DHCP jest wyłączona na maszynie wirtualnej. Podczas ewidencjonowania zrzucie ekranu [diagnostykę rozruchu](../troubleshooting/boot-diagnostics.md) w witrynie Azure portal, zostanie wyświetlony wykonać normalnego rozruchu maszyny Wirtualnej i czeka na poświadczenia na ekranie logowania. Zdalne wyświetlanie dzienników zdarzeń maszyny wirtualnej za pomocą Podglądu zdarzeń. Zobaczysz, że usługa klienta DHCP nie jest uruchomiona lub nie została uruchomiona. Następujące przykładowe dziennika:
 
-**Rejestrowanie nazwy**: System </br>
-**Źródło**: Menedżer sterowania usługami </br>
-**Data**: 2015-12-16 11:19:36: 00 </br>
+**Nazwa dziennika**: System </br>
+**Źródło**: Menedżer kontroli usług </br>
+**Data**: 12/16/2015 11:19:36 AM </br>
 **Identyfikator zdarzenia**: 7022 </br>
-**Zadanie kategorii**: Brak </br>
+**Kategoria zadania**: Brak </br>
 **Poziom**: Błąd </br>
-**Keywords**: Wdrożenie klasyczne</br>
+**Keywords**: Klasyczny</br>
 **Użytkownik**: ND </br>
 **Komputer**: myvm.cosotos.com</br>
 **Opis**: Usługa klienta DHCP zawiesiła się podczas uruchamiania.</br>

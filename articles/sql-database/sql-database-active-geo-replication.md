@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 131333f140518f6fb2f63f17d0aa72692dc7d49a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: c1f50dfb499c220a4e13f043438798c556319ddf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935067"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092812"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Tworzenie i używanie aktywnej replikacji geograficznej
 
@@ -106,6 +106,10 @@ Aby osiągnąć prawdziwą ciągłość biznesową, Dodawanie nadmiarowości baz
 ## <a name="preparing-secondary-database-for-failover"></a>Przygotowywanie pomocniczej bazy danych do pracy w trybie failover
 
 Aby mieć pewność, że aplikacja będzie mogła natychmiast uzyskać dostęp do nowego elementu podstawowego po przejściu w tryb failover, upewnij się, że wymagania dotyczące uwierzytelniania dla serwera pomocniczego i bazy danych są prawidłowo skonfigurowane. Aby uzyskać szczegółowe informacje, zobacz [SQL Database zabezpieczenia po odzyskiwaniu po awarii](sql-database-geo-replication-security-config.md). Aby zagwarantować zgodność po przejściu w tryb failover, należy się upewnić, że zasady przechowywania kopii zapasowych w pomocniczej bazie danych są zgodne z serwerem podstawowym. Te ustawienia nie są częścią bazy danych i nie są replikowane. Domyślnie dla elementu pomocniczego zostanie skonfigurowany domyślny okres przechowywania kopie wynoszący siedem dni. Aby uzyskać szczegółowe informacje, zobacz [SQL Database zautomatyzowane kopie zapasowe](sql-database-automated-backups.md).
+
+> [!IMPORTANT]
+> Jeśli baza danych jest członkiem grupy trybu failover, nie można zainicjować jej trybu failover za pomocą polecenia faiover replikacji geograficznej. Rozważ użycie polecenia trybu failover dla grupy. Jeśli musisz przełączyć się do trybu failover dla pojedynczej bazy danych, musisz najpierw usunąć ją z grupy trybu failover. Aby uzyskać szczegółowe informacje, zobacz [grupy trybu failover](sql-database-auto-failover-group.md) . 
+
 
 ## <a name="configuring-secondary-database"></a>Konfigurowanie pomocniczej bazy danych
 

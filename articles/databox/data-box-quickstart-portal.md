@@ -6,21 +6,43 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 08/27/2019
 ms.author: alkohli
-ms.openlocfilehash: bd591ff30755fd68bb2dc673899d0ac993215e68
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6e9854bf46de40cc288a04ac67beb48e8a4fb959
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405568"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098781"
 ---
+::: zone target="docs"
+
 # <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Szybki start: wdrażanie usługi Azure Data Box za pomocą witryny Azure Portal
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Wprowadzenie do Azure Data Box Disk przy użyciu Azure Portal
+
+::: zone-end
+
+::: zone target="docs"
 
 W tym przewodniku Szybki start opisano sposób wdrażania usługi Azure Data Box przy użyciu witryny Azure Portal. Przedstawiono między innymi czynności podłączania i konfigurowania urządzenia Data Box oraz kopiowania na nie danych do przekazania na platformę Azure. Czynności opisane w przewodniku Szybki start należy wykonać w witrynie Azure Portal oraz w lokalnym internetowym interfejsie użytkownika na urządzeniu.
 
 Aby zyskać szczegółowe instrukcje dotyczące wdrażania i śledzenia krok po kroku, zobacz [Samouczek: zamawianie urządzenia Azure Data Box](data-box-deploy-ordered.md)
 
+::: zone-end 
+
+::: zone target="chromeless"
+
+W tym przewodniku opisano sposób wdrażania Azure Data Box przy użyciu Azure Portal. Kroki obejmują przeglądanie wymagań wstępnych, kabli i połączenia urządzenia oraz kopiowanie danych do urządzenia w celu przekazywania ich do platformy Azure.
+
+::: zone-end
+
+::: zone target="docs"
+ 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem:
@@ -41,6 +63,31 @@ Przed rozpoczęciem:
     - Jeden kabel sieciowy RJ-45 CAT 6 (do użytku z interfejsem sieciowym MGMT)
     - Jeden kabel sieciowy RJ-45 CAT 6A lub RJ-45 CAT 6 (do użytku z interfejsem sieciowym DATA 3 skonfigurowanym odpowiednio dla przepływności 10 GB/s lub 1 GB/s)
 
+::: zone-end 
+
+::: zone target="chromeless"
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Przed rozpoczęciem upewnij się, że:
+
+1. [Ukończono samouczek: zamawianie urządzenia Azure Data Box](data-box-deploy-ordered.md).
+2. Otrzymano urządzenie Data Box i zostanie **dostarczony**stan zamówienia w portalu. 
+3. Przegląd [wytycznych dotyczących bezpieczeństwa urządzenie Data Box](data-box-safety.md).
+4. Odebrano jeden uziemiony przewód zasilający używany z urządzeniem magazynującym 100 TB.
+5. Dostęp do komputera-hosta zawierającego dane, które mają zostać skopiowane do urządzenie Data Box. Na komputerze hosta wymagane jest:
+    - Korzystanie z [obsługiwanego systemu operacyjnego](data-box-system-requirements.md).
+    - Połączenie z siecią o dużej szybkości. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE. Jeśli połączenie 10 GbE nie jest dostępne, można użyć połączenia danych 1 GbE, ale będzie miało to wpływ na szybkość kopiowania. 
+6. Dostęp do płaskiej powierzchni w celu umieszczenia urządzenie Data Box. Aby urządzenie było płaskie lub pionowe w standardowym półce stojaka, potrzebne jest gniazdo 7U w stojaku.
+7. Pozyskasz następujące kable, aby połączyć urządzenie Data Box z komputerem hosta.
+    - Co najmniej jeden kabel miedziany SFP+ Twinax 10 GbE lub kable światłowodowe SFP+ (do użytku z interfejsami sieciowymi DATA 1 i DATA 2). Aby uzyskać więcej informacji, zobacz [listę obsługiwanych kabli i przełączników z karty Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf) , które są zgodne z kartami mellanox ConnectX®-3 Pro pl Dual-port 10GBase-T z interfejsem sieciowym PCI Express 3,0.
+    - Jeden kabel sieciowy RJ-45 CAT 6 (do użytku z interfejsem sieciowym MGMT)
+    - Jeden kabel sieciowy RJ-45 CAT 6A lub RJ-45 CAT 6 (do użytku z interfejsem sieciowym DATA 3 skonfigurowanym odpowiednio dla przepływności 10 GB/s lub 1 GB/s)
+
+::: zone-end
+
+::: zone target="docs"
+
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
@@ -55,6 +102,8 @@ Ten krok zajmuje około 5 minut.
 4. Wprowadź szczegóły zamówienia i informacje dotyczące wysyłki. Jeśli ta usługa jest dostępna w Twoim regionie, podaj adresy e-mail na potrzeby powiadomień, zapoznaj się z podsumowaniem i utwórz zamówienie.
 
 Po utworzeniu zamówienia urządzenie zostanie przygotowane do wysłania.
+
+
 
 ## <a name="cable"></a>Podłączenie 
 
@@ -82,7 +131,7 @@ Po otrzymaniu urządzenia Data Box wykonaj następujące czynności w celu podł
     4. Włącz urządzenie. Przycisk zasilania znajduje się na panelu przednim urządzenia.
 
 
-## <a name="connect"></a>Połączenie
+## <a name="connect"></a>Połącz
 
 Ten krok zajmuje około 5–7 minut.
 
@@ -91,7 +140,7 @@ Ten krok zajmuje około 5–7 minut.
 3. Zaloguj się przy użyciu hasła uzyskanego z witryny Azure Portal. Zostanie wyświetlony komunikat o błędzie, informujący o problemie z certyfikatem zabezpieczeń witryny internetowej. Postępuj zgodnie z instrukcjami dotyczącymi używanej przeglądarki, aby przejść do odpowiedniej strony internetowej.
 4. Domyślne ustawienie sieci dla interfejsu 10 Gb/s (lub 1 Gb/s) to DHCP. Jeśli jest taka potrzeba, można skonfigurować interfejs jako statyczny i podać adres IP. 
 
-## <a name="copy-data"></a>Kopiowanie danych
+## <a name="copy-data"></a>Kopiuj dane
 
 Czas wymagany do ukończenia tej operacji zależy od rozmiaru danych i prędkości połączenia sieciowego.
  
@@ -126,11 +175,13 @@ Ten krok zajmuje około 2–3 minut.
 
 - Możesz usunąć zamówienie, gdy jego stan w witrynie Azure Portal to **Ukończono** lub **Anulowano**. Aby usunąć zamówienie, w sekcji **Przegląd** kliknij pozycję **Usuń** na pasku poleceń.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Podczas pracy z tym przewodnikiem Szybki start wdrożono usługę Azure Data Box w celu zaimportowania danych na platformę Azure. Aby dowiedzieć się więcej na temat zarządzania usługą Azure Data Box, przejdź do kolejnego samouczka: 
 
 > [!div class="nextstepaction"]
 > [Use the Azure portal to administer Data Box (Administrowanie usługą Data Box w witrynie Azure Portal)](data-box-portal-admin.md)
+
+::: zone-end
 
 

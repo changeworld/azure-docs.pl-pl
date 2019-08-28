@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie wzajemnego uwierzytelniania protokołu TLS — usługa Azure App Service
-description: Dowiedz się, jak skonfigurować aplikację do używania uwierzytelniania certyfikatu klienta na TLS.
+title: Konfigurowanie wzajemnego uwierzytelniania TLS — Azure App Service
+description: Dowiedz się, jak skonfigurować aplikację do używania uwierzytelniania certyfikatu klienta w protokole TLS.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -10,29 +10,28 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 5702362add6a50f2f4525afbd3649f083f34b6fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4e97a96687e5fa1d934ab8c0317b52cb753f72c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60852452"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088172"
 ---
-# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurowanie wzajemnego uwierzytelniania protokołu TLS dla usługi Azure App Service
+# <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurowanie wzajemnego uwierzytelniania TLS dla Azure App Service
 
-Możesz ograniczyć dostęp do aplikacji usługi Azure App Service, włączając różnego rodzaju uwierzytelniania dla niego. Jednym ze sposobów, aby to zrobił jest żądania certyfikatu klienta, gdy żądanie klienta znajduje się nad protokołów TLS/SSL i weryfikacji certyfikatu. Mechanizm ten nosi nazwę wzajemnego uwierzytelniania protokołu TLS lub uwierzytelnianie certyfikatu klienta. W tym artykule pokazano, jak skonfigurować aplikację, aby użyć uwierzytelniania certyfikatu klienta.
+Możesz ograniczyć dostęp do aplikacji Azure App Service, włączając dla niej różne typy uwierzytelniania. Jednym ze sposobów jest zażądanie certyfikatu klienta, gdy żądanie klienta dotyczy protokołu TLS/SSL i zweryfikowania certyfikatu. Mechanizm ten jest nazywany uwierzytelnianiem obustronnym protokołu TLS lub uwierzytelnianiem certyfikatu klienta. W tym artykule pokazano, jak skonfigurować aplikację do korzystania z uwierzytelniania za pomocą certyfikatu klienta.
 
 > [!NOTE]
-> Jeśli uzyskujesz dostęp do witryny za pośrednictwem protokołu HTTP, a nie HTTPS, nie otrzymasz żadnych certyfikatu klienta. Dlatego jeśli aplikacja wymaga certyfikatów klienta, nie należy zezwalać żądania do aplikacji za pośrednictwem protokołu HTTP.
+> Jeśli uzyskujesz dostęp do witryny za pośrednictwem protokołu HTTP, a nie HTTPS, nie otrzymasz żadnych certyfikatów klienta. Dlatego jeśli aplikacja wymaga certyfikatów klienta, nie należy zezwalać na żądania do aplikacji za pośrednictwem protokołu HTTP.
 >
 
-## <a name="enable-client-certificates"></a>Włącz certyfikaty klienta
+## <a name="enable-client-certificates"></a>Włączanie certyfikatów klienta
 
-Aby skonfigurować aplikację, aby wymagać certyfikaty klienta, należy ustawić `clientCertEnabled` ustawienie aplikacji `true`. Aby skonfigurować ustawienie, uruchom następujące polecenie [Cloud Shell](https://shell.azure.com).
+Aby skonfigurować aplikację tak, aby wymagała certyfikatów klienta, należy ustawić `clientCertEnabled` ustawienie dla aplikacji na. `true` Aby ustawić ustawienie, uruchom następujące polecenie w [Cloud Shell](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
@@ -40,13 +39,13 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 ## <a name="access-client-certificate"></a>Dostęp do certyfikatu klienta
 
-W usłudze App Service kończenie żądań SSL żądania odbywa się na frontonu modułu równoważenia obciążenia. Podczas przekazywania żądania do kodu aplikacji przy użyciu [włączone certyfikaty klienta](#enable-client-certificates), wprowadza usługi App Service `X-ARR-ClientCert` nagłówek żądania przy użyciu certyfikatu klienta. Usługa App Service nie działa z tym certyfikatem klienta inne niż przekazywania go do swojej aplikacji. Kod aplikacji jest odpowiada za weryfikację certyfikatu klienta.
+W App Service zakończenie żądania protokołu SSL w usłudze równoważenia obciążenia frontonu odbywa się. Podczas przekazywania żądania do kodu aplikacji z włączonymi [certyfikatami klienta](#enable-client-certificates)App Service `X-ARR-ClientCert` wprowadza nagłówek żądania z certyfikatem klienta. App Service nie robi niczego z certyfikatem klienta innego niż przesłanie go do aplikacji. Kod aplikacji jest odpowiedzialny za Weryfikowanie certyfikatu klienta.
 
-W technologii ASP.NET, certyfikat klienta jest dostępna za pośrednictwem **HttpRequest.ClientCertificate** właściwości.
+W przypadku ASP.NET certyfikat klienta jest dostępny za pomocą właściwości **HttpRequest. ClientCertificate** .
 
-Dla innych stosów aplikacji (Node.js, PHP, itp.), certyfikat klienta jest dostępny w swojej aplikacji za pomocą wartości zakodowane w formacie base64 w `X-ARR-ClientCert` nagłówek żądania.
+W przypadku innych stosów aplikacji (Node. js, php itp.) certyfikat klienta jest dostępny w aplikacji za pomocą zakodowanej wartości Base64 w `X-ARR-ClientCert` nagłówku żądania.
 
-## <a name="aspnet-sample"></a>Przykład programu ASP.NET
+## <a name="aspnet-sample"></a>Przykład ASP.NET
 
 ```csharp
     using System;
@@ -170,9 +169,9 @@ Dla innych stosów aplikacji (Node.js, PHP, itp.), certyfikat klienta jest dost�
     }
 ```
 
-## <a name="nodejs-sample"></a>Przykładu środowiska node.js
+## <a name="nodejs-sample"></a>Przykład środowiska Node. js
 
-Następujący przykładowy kod Node.js pobiera `X-ARR-ClientCert` nagłówek i używa [forge węzła](https://github.com/digitalbazaar/forge) konwersji ciągu PEM algorytmem base64 na obiekt certyfikatu i zweryfikuje go:
+Poniższy przykładowy kod w języku Node. js pobiera `X-ARR-ClientCert` nagłówek i używa [fałszowania węzła](https://github.com/digitalbazaar/forge) , aby przekonwertować ciąg PEM zakodowany algorytmem Base64 na obiekt certyfikatu i sprawdzić jego poprawność:
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';
@@ -190,7 +189,7 @@ export class AuthorizationHandler {
             const incomingCert: pki.Certificate = pki.certificateFromPem(pem);
 
             // Validate certificate thumbprint
-            const fingerPrint = md.sha1.create().update(asn1.toDer((pki as any).certificateToAsn1(incomingCert)).getBytes()).digest().toHex();
+            const fingerPrint = md.sha1.create().update(asn1.toDer(pki.certificateToAsn1(incomingCert)).getBytes()).digest().toHex();
             if (fingerPrint.toLowerCase() !== 'abcdef1234567890abcdef1234567890abcdef12') throw new Error('UNAUTHORIZED');
 
             // Validate time validity

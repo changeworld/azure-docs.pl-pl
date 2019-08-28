@@ -1,6 +1,6 @@
 ---
-title: Migrowanie z usług AWS i innych platform do usługi Managed Disks na platformie Azure | Dokumentacja firmy Microsoft
-description: Tworzenie maszyn wirtualnych na platformie Azure przy użyciu wirtualnych dysków twardych przekazany z innych chmur, takich jak usługi AWS lub innych platform wirtualizacji i korzystać z zalet usługi Azure Managed Disks.
+title: Migrowanie z AWS i innych platform do Managed Disks na platformie Azure | Microsoft Docs
+description: Twórz maszyny wirtualne na platformie Azure przy użyciu wirtualnych dysków twardych, takich jak AWS lub inne platformy wirtualizacji, i korzystaj z Managed Disks platformy Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: roygara
@@ -11,74 +11,73 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2017
 ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 42ad7bc10cb7b93bd4db9260f950ae4ca12aba44
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4611efa8767094ea8f92dac584a5610811947620
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61126899"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102585"
 ---
-# <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrowanie z usług Amazon Web Services (AWS) i innych platform do usługi Managed Disks na platformie Azure
+# <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrowanie z Amazon Web Services (AWS) i innych platform do Managed Disks na platformie Azure
 
-Możesz przekazać pliki VHD z rozwiązania do wirtualizacji usług AWS lub lokalnych na platformę Azure do tworzenia maszyn wirtualnych, które korzystają z dysków zarządzanych. Usługa Azure Managed Disks eliminuje konieczność zarządzania kontami magazynu maszyn wirtualnych IaaS platformy Azure. Należy tylko określić typ (Premium lub standardowa) i rozmiar dysku należy i platforma Azure utworzy i zarządza dysku. 
+Możesz przekazać pliki VHD z AWS lub lokalnych rozwiązań do wirtualizacji na platformę Azure, aby utworzyć maszyny wirtualne wykorzystujące Managed Disks. Usługa Azure Managed Disks eliminuje konieczność zarządzania kontami magazynu dla maszyn wirtualnych usługi Azure IaaS. Należy określić tylko typ (Premium lub standard) i wymagany rozmiar dysku, a platforma Azure utworzy dysk i będzie nim zarządzać. 
 
-Możesz przekazać uogólniony, wyspecjalizowana wirtualnych dysków twardych. 
-- **Uogólniony wirtualny dysk twardy** -miał wszystkie informacje osobiste Konto usunięte za pomocą programu Sysprep. 
-- **Wyspecjalizowane wirtualnego dysku twardego** — przechowuje konta użytkowników, aplikacji i innych danych o stanie z oryginalną maszynę Wirtualną. 
+Można przekazać uogólnione i wyspecjalizowane dyski VHD. 
+- **Uogólniony wirtualny dysk twardy** — wszystkie informacje o koncie osobistym zostały usunięte przy użyciu programu Sysprep. 
+- **Wyspecjalizowany wirtualny dysk twardy** — obsługuje konta użytkowników, aplikacje i inne dane stanu z oryginalnej maszyny wirtualnej. 
 
 > [!IMPORTANT]
-> Przed przekazaniem jakiegokolwiek dysku VHD na platformie Azure, należy przestrzegać [przygotowanie Windows dysku VHD lub VHDX można przekazać na platformę Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+> Przed przekazaniem dowolnego wirtualnego dysku twardego na platformę Azure należy wykonać następujące czynności [Przygotuj plik VHD lub VHDX systemu Windows w celu przekazania go do platformy Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 >
 >
 
 
 | Scenariusz                                                                                                                         | Dokumentacja                                                                                                                       |
 |----------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
-| Masz istniejące wystąpienia usługi EC2 usług AWS, które chcesz przeprowadzić migrację do maszyn wirtualnych platformy Azure, które korzystają z dysków zarządzanych                              | [Przenoszenie maszyny Wirtualnej z usług Amazon Web Services (AWS) na platformie Azure](aws-to-azure.md)                           |
-| Masz maszynę Wirtualną z innej platformy wirtualizacji, który chcesz użyć jako obraz do tworzenia wielu maszyn wirtualnych platformy Azure. | [Przekazywanie uogólnionego wirtualnego dysku twardego i użyć go do utworzenia nowej maszyny Wirtualnej na platformie Azure](upload-generalized-managed.md) |
-| Masz jednoznacznie dostosowane maszynę Wirtualną, który chcesz ponownie utworzyć na platformie Azure.                                                      | [Przekazywanie wyspecjalizowanego wirtualnego dysku twardego do systemu Azure i Utwórz nową maszynę Wirtualną](create-vm-specialized.md)         |
+| Masz istniejące wystąpienia AWS EC2, które chcesz migrować do maszyn wirtualnych platformy Azure przy użyciu usługi Managed disks                              | [Przenoszenie maszyny wirtualnej z Amazon Web Services (AWS) na platformę Azure](aws-to-azure.md)                           |
+| Masz maszynę wirtualną z innej platformy wirtualizacji, która ma być używana jako obraz do tworzenia wielu maszyn wirtualnych platformy Azure. | [Przekaż uogólniony wirtualny dysk twardy i użyj go do utworzenia nowej maszyny wirtualnej na platformie Azure](upload-generalized-managed.md) |
+| Masz unikatową dostosowaną maszynę wirtualną, którą chcesz odtworzyć na platformie Azure.                                                      | [Przekaż wyspecjalizowany wirtualny dysk twardy do platformy Azure i Utwórz nową maszynę wirtualną](create-vm-specialized.md)         |
 
 
-## <a name="overview-of-managed-disks"></a>Omówienie dysków zarządzanych
+## <a name="overview-of-managed-disks"></a>Omówienie Managed Disks
 
-Usługa Azure Managed Disks upraszcza zarządzanie maszyną Wirtualną, usuwając konieczność zarządzania kontami magazynu. Usługa Managed Disks również korzyści z większą niezawodność, maszyn wirtualnych w zestawie dostępności. Zapewnia, że dyski różnych maszyn wirtualnych w zestawie dostępności są wystarczająco odizolowane od siebie, aby uniknąć pojedynczego punktu awarii. Automatycznie przełącza dyski różnych maszyn wirtualnych w zestawie dostępności w różnych jednostkach skalowania magazynu (sygnatury) co ogranicza wpływ błędy jednostki skali magazynu w jednym spowodowany sprzętu i oprogramowania błędów.
-Zgodnie z potrzebami, można wybierać spośród czterech typy opcji magazynu. Informacje na temat typów dostępnego miejsca na dysku znajdują się w artykule naszych [wybierz typ dysku](disks-types.md).
+Usługa Azure Managed Disks upraszcza zarządzanie MASZYNami wirtualnymi, eliminując konieczność zarządzania kontami magazynu. Managed Disks również zwiększyć niezawodność maszyn wirtualnych w zestawie dostępności. Gwarantuje to, że dyski różnych maszyn wirtualnych w zestawie dostępności są wystarczająco odizolowane od siebie, aby uniknąć single point of failure. Automatycznie umieszcza dyski różnych maszyn wirtualnych w zestawie dostępności w różnych jednostkach skalowania magazynu (sygnatury), które ograniczają wpływ awarii jednostek skalowania pojedynczego magazynu spowodowanych awariami sprzętu i oprogramowania.
+Na podstawie Twoich potrzeb można wybierać spośród czterech typów opcji magazynu. Aby dowiedzieć się więcej o dostępnych typach dysków, zapoznaj się z artykułem [Wybierz typ dysku](disks-types.md).
 
-## <a name="plan-for-the-migration-to-managed-disks"></a>Planowanie migracji do usługi Managed Disks
+## <a name="plan-for-the-migration-to-managed-disks"></a>Zaplanuj migrację do Managed Disks
 
-Ta sekcja ułatwia najlepszych decyzji o typach maszyn wirtualnych i dysków.
+Ta sekcja ułatwia podejmowanie najlepszej decyzji na temat maszyn wirtualnych i typów dysków.
 
-Jeśli planowane jest na temat migracji z dysków niezarządzanych do dysków zarządzanych, należy mieć świadomość, że użytkownicy z [Współautor maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) roli nie będzie można zmienić rozmiar maszyny Wirtualnej (tak jak byłoby to możliwe wstępne konwersji). Jest to spowodowane maszyny wirtualne z dyskami zarządzanymi wymagają użytkownik musi mieć uprawnienie Microsoft.Compute/disks/write na dyskach systemu operacyjnego.
+Jeśli planujesz migrację z dysków niezarządzanych do usługi Managed disks, należy pamiętać, że użytkownicy z rolą [współautor maszyny wirtualnej](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) nie będą mogli zmienić rozmiaru maszyny wirtualnej (ponieważ mogą one zostać przebudowane). Wynika to z faktu, że maszyny wirtualne z dyskami zarządzanymi wymagają, aby użytkownik miał uprawnienie Microsoft. COMPUTE/disks/Write na dyskach systemu operacyjnego.
 
-### <a name="location"></a>Lokalizacja
+### <a name="location"></a>Location
 
-Wybierz lokalizację, w której są dostępne usługi Azure Managed Disks. Jeśli użytkownik migruje do usługi Premium Managed Disks, upewnij się również Premium storage jest dostępna w regionie, w którym jest planowana migracja do. Zobacz [usług platformy Azure według regionu](https://azure.microsoft.com/regions/#services) dla aktualnych informacji o dostępnych lokalizacji.
+Wybierz lokalizację, w której usługa Azure Managed Disks jest dostępna. W przypadku migrowania do Managed Disks Premium należy również upewnić się, że Usługa Premium Storage jest dostępna w regionie, w którym planujesz przeprowadzić migrację. Zobacz [usługi platformy Azure według regionów,](https://azure.microsoft.com/regions/#services) Aby uzyskać aktualne informacje dotyczące dostępnych lokalizacji.
 
 ### <a name="vm-sizes"></a>Rozmiary maszyn wirtualnych
 
-Jeśli użytkownik migruje do usługi Premium Managed Disks, musi być aktualizowana rozmiar maszyny Wirtualnej do magazynu w warstwie Premium stanie rozmiaru dostępne w regionie, w którym znajduje się maszyna wirtualna. Przejrzyj rozmiarów maszyn wirtualnych, które są zdolne do magazynu w warstwie Premium. Specyfikacje rozmiaru maszyny Wirtualnej platformy Azure są wymienione w [rozmiary maszyn wirtualnych](sizes.md).
-Sprawdź charakterystyki wydajności maszyn wirtualnych, które współpracują z magazynu w warstwie Premium i wybierz odpowiedni rozmiar maszyny Wirtualnej, najlepiej pasujące do obciążenia. Upewnij się, że jest dostępna wystarczająca przepustowość na maszynie Wirtualnej do kierowania ruchu dysku.
+W przypadku migrowania do Managed Disks w warstwie Premium należy zaktualizować rozmiar maszyny wirtualnej w celu Premium Storage dostępnej w regionie, w którym znajduje się maszyna wirtualna. Przejrzyj rozmiary maszyn wirtualnych, które są Premium Storage obsługują. Specyfikacje rozmiaru maszyny wirtualnej platformy Azure są wymienione w obszarze [rozmiary maszyn wirtualnych](sizes.md).
+Zapoznaj się z charakterystyką wydajności maszyn wirtualnych, które działają z Premium Storage i wybierz najbardziej odpowiedni rozmiar maszyny wirtualnej, który najlepiej odpowiada Twojemu obciążeniu. Upewnij się, że na maszynie wirtualnej jest dostępna wystarczająca przepustowość do obsługi ruchu na dysku.
 
 ### <a name="disk-sizes"></a>Rozmiary dysków
 
-**Premium Managed Disks**
+**Managed Disks Premium**
 
-Istnieje siedem typów dysków zarządzanych w warstwie premium, które mogą być używane z maszyny Wirtualnej i każdy z nich ma określone operacje We/Wy i przepływność limitów. Wziąć pod uwagę te limity Wybieranie typu dysku Premium dla swojej maszyny Wirtualnej odpowiednio do potrzeb aplikacji pod względem wydajności, wydajność, skalowalność, gdy ładuje szczytowego.
+Istnieje siedem typów dysków zarządzanych w warstwie Premium, które mogą być używane z maszyną wirtualną, a każda z nich ma określone limity IOPs i przepływności. Należy wziąć pod uwagę te limity podczas wybierania typu dysku Premium dla maszyny wirtualnej na podstawie potrzeb aplikacji w zakresie pojemności, wydajności, skalowalności i szczytowych obciążeń.
 
-| Typ magazynu dysków Premium  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
+| Typ dysków w warstwie Premium  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
 | Rozmiar dysku           | 32 GB| 64 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
 | Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500   | 1100  |2300              | 5000              | 7500              | 7500              | 
 | Przepływność na dysk | 25 MB na sekundę  | 50 MB na sekundę  | 100 MB na sekundę | 125 MB na sekundę |150 MB na sekundę | 200 MB na sekundę | 250 MB na sekundę | 250 MB na sekundę |
 
-**Dyski zarządzane w warstwie standardowa**
+**Standardowa Managed Disks**
 
-Istnieje siedem Typy standardowe dyski zarządzane, które mogą być używane z maszyny Wirtualnej. Każdy z nich mają innej pojemności, ale mają limity przepływności i tej samej operacji We/Wy. Wybierz typ Standardowy Managed disks, które są oparte na potrzeby aplikacji związane z pojemnością.
+Istnieje siedem typów dysków zarządzanych w warstwie Standardowa, które mogą być używane z maszyną wirtualną. Każdy z nich ma różną pojemność, ale ma te same limity IOPS i przepływności. Wybierz typ dysków zarządzanych w warstwie Standardowa na podstawie potrzeb związanych z pojemnością aplikacji.
 
 | Typ dysku standardowego  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
 |---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------| 
@@ -88,15 +87,15 @@ Istnieje siedem Typy standardowe dyski zarządzane, które mogą być używane z
 
 ### <a name="disk-caching-policy"></a>Zasady buforowania dysku 
 
-**Premium Managed Disks**
+**Managed Disks Premium**
 
-Domyślnie zasady buforowania dysku jest *tylko do odczytu* wszystkich dysków w warstwie Premium danych, a *odczytu i zapisu* dla dysku systemu operacyjnego w warstwie Premium dołączonych do maszyny Wirtualnej. To ustawienie konfiguracji jest zalecane, aby osiągnąć optymalną wydajność dla aplikacji systemu IOs. Dla dysków z danymi zapisu przy odczycie czy tylko do zapisu (takich jak pliki dziennika programu SQL Server) należy wyłączyć buforowanie dysku, dzięki czemu można osiągnąć lepszą wydajność aplikacji.
+Domyślnie zasady buforowania dysku są tylko do *odczytu* dla wszystkich dysków danych w warstwie Premium oraz do *odczytu i zapisu* dla dysku systemu operacyjnego Premium dołączonego do maszyny wirtualnej. To ustawienie konfiguracji jest zalecane, aby osiągnąć optymalną wydajność aplikacji dla systemu IOs. W przypadku dysków z danymi zapisu lub zapisu (takich jak SQL Server plików dziennika) należy wyłączyć buforowanie dysków, aby zapewnić lepszą wydajność aplikacji.
 
 ### <a name="pricing"></a>Cennik
 
-Przegląd [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/). Cennik dysków Premium Managed Disks jest taka sama jak dysków niezarządzanych w warstwie Premium. Jednak ceny dysków zarządzanych w warstwie standardowa jest inne niż standardowe dyski niezarządzane.
+Zapoznaj się z [cennikiem Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/). Cennik Managed Disks w warstwie Premium jest taki sam jak w przypadku dysków niezarządzanych w warstwie Premium. Jednak Cennik Managed Disks standardowego różni się od standardowych dysków niezarządzanych.
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Przed przekazaniem jakiegokolwiek dysku VHD na platformie Azure, należy przestrzegać [przygotowanie Windows dysku VHD lub VHDX można przekazać na platformę Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- Przed przekazaniem dowolnego wirtualnego dysku twardego na platformę Azure należy wykonać następujące czynności [Przygotuj plik VHD lub VHDX systemu Windows w celu przekazania go do platformy Azure](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

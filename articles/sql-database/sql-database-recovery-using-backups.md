@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 04/30/2019
-ms.openlocfilehash: 55d60ec332515fcfa3deb565a4a770027681537a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/27/2019
+ms.openlocfilehash: 00982ea837783a7e7a9dca257f04c77d48aceef2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566981"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103121"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL Database przy użyciu zautomatyzowanych kopii zapasowych bazy danych
 
@@ -37,7 +37,7 @@ W przypadku korzystania z warstwy usługi w warstwie Standardowa lub Premium prz
 - Przywracanie P11 – P15 do S4-S12 lub P1 – P6, jeśli maksymalny rozmiar bazy danych jest większy niż 500 GB.
 - Przywrócenie P1 – P6 do S4-S12, jeśli maksymalny rozmiar bazy danych jest większy niż 250 GB.
 
-Dodatkowy koszt jest icurred, gdy maksymalny rozmiar przywróconej bazy danych jest większy niż ilość miejsca do magazynowania dołączona do warstwy usługi i poziomu wydajności docelowej bazy danych. Dodatkowy magazyn, który został zainicjowany powyżej uwzględnionej kwoty, jest obciążany opłatami dodatkowymi. Szczegóły cennika dodatkowego magazynu znajdują się na [stronie cennika SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). Jeśli rzeczywista ilość zajętego miejsca jest mniejsza niż ilość dostępnego magazynu, możesz uniknąć tego dodatkowego kosztu, ustawiając wartość w polu Maksymalny rozmiar bazy danych na uwzględnioną kwotę.
+Dodatkowy koszt jest naliczany, gdy maksymalny rozmiar przywróconej bazy danych jest większy niż ilość miejsca do magazynowania dołączona do warstwy usługi i poziomu wydajności docelowej bazy danych. Dodatkowy magazyn, który został zainicjowany powyżej uwzględnionej kwoty, jest obciążany opłatami dodatkowymi. Szczegóły cennika dodatkowego magazynu znajdują się na [stronie cennika SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). Jeśli rzeczywista ilość zajętego miejsca jest mniejsza niż ilość dostępnego magazynu, możesz uniknąć tego dodatkowego kosztu, ustawiając wartość w polu Maksymalny rozmiar bazy danych na uwzględnioną kwotę.
 
 > [!NOTE]
 > [Automatyczne kopie zapasowe bazy danych](sql-database-automated-backups.md) są używane podczas tworzenia [kopii bazy danych](sql-database-copy.md).
@@ -113,7 +113,7 @@ Aby odzyskać usuniętą bazę danych przy użyciu Azure Portal, Otwórz stronę
 
 Bazę danych SQL można przywrócić na dowolnym serwerze w dowolnym regionie świadczenia usługi Azure z najnowszych kopii zapasowych replikowanych geograficznie. Przywracanie geograficzne używa kopii zapasowej replikowanej geograficznie jako źródła. Można je żądać nawet wtedy, gdy baza danych lub Datacenter są niedostępne z powodu przestoju.
 
-Przywracanie geograficzne jest domyślną opcją odzyskiwania, gdy baza danych jest niedostępna z powodu zdarzenia w regionie hostingu. Bazę danych można przywrócić na serwerze w dowolnym innym regionie. Istnieje opóźnienie między wykonaniem kopii zapasowej a replikacją geograficzną do obiektu blob platformy Azure w innym regionie. W związku z tym przywrócona baza danych może należeć do jednej godziny w bazie danych orignal. Na poniższej ilustracji przedstawiono przywracanie bazy danych z ostatniej dostępnej kopii zapasowej w innym regionie.
+Przywracanie geograficzne jest domyślną opcją odzyskiwania, gdy baza danych jest niedostępna z powodu zdarzenia w regionie hostingu. Bazę danych można przywrócić na serwerze w dowolnym innym regionie. Istnieje opóźnienie między wykonaniem kopii zapasowej a replikacją geograficzną do obiektu blob platformy Azure w innym regionie. W związku z tym przywrócona baza danych może należeć do jednej godziny w stosunku do oryginalnej bazy danych. Na poniższej ilustracji przedstawiono przywracanie bazy danych z ostatniej dostępnej kopii zapasowej w innym regionie.
 
 ![Przywracanie geograficzne](./media/sql-database-geo-restore/geo-restore-2.png)
 
@@ -127,7 +127,7 @@ Przywracanie do punktu w czasie na poziomie geograficznym nie jest obecnie obsł
 
 ### <a name="geo-restore-using-the-azure-portal"></a>Przywracanie geograficzne przy użyciu Azure Portal
 
-Aby przywrócić bazę danych do lokalizacji geograficznej w ramach [okresu przechowywania modelu opartego na](sql-database-service-tiers-dtu.md) jednostkach DTU lub [okresu przechowywania modelu opartego na rdzeń wirtualny](sql-database-service-tiers-vcore.md) przy użyciu Azure Portal, Otwórz stronę bazy danych SQL, a następnie kliknij przycisk **Dodaj**. W polu tekstowym **Wybierz źródło** wybierz pozycję **kopia zapasowa**. Określ kopię zapasową, z której ma zostać wykonane odzyskiwanie w regionie i na wybranym przez siebie serwerze.
+Aby przywrócić bazę danych przy użyciu Azure Portal, Otwórz stronę bazy danych SQL, a następnie kliknij przycisk **Dodaj**. W polu tekstowym **Wybierz źródło** wybierz pozycję **kopia zapasowa**. Określ kopię zapasową, z której ma zostać wykonane odzyskiwanie w regionie i na wybranym przez siebie serwerze.
 
 > [!Note]
 > Przywracanie geograficzne przy użyciu Azure Portal nie jest dostępne w wystąpieniu zarządzanym. Zamiast tego użyj programu PowerShell.

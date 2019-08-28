@@ -1,72 +1,71 @@
 ---
-title: Model działania platformy SAP Hana na platformie Azure (duże wystąpienia) | Dokumentacja firmy Microsoft
-description: Model działania platformy SAP HANA na platformie Azure (duże wystąpienia).
+title: Model operacji SAP HANA na platformie Azure (duże wystąpienia) | Microsoft Docs
+description: Model operacji SAP HANA na platformie Azure (duże wystąpienia).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: da033232209c304e82f3fbe7dac164bd7222f557
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9a8ea845dd53048766abc337a1351a408ea7f1bb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707370"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099688"
 ---
 # <a name="operations-model-and-responsibilities"></a>Model działania i obowiązki
 
-Usługi za pomocą platformy SAP HANA na platformie Azure (duże wystąpienia) jest powiązana z usługami IaaS platformy Azure. Uzyskasz wystąpienie oprogramowania HANA, duże wystąpienie z zainstalowanym systemem operacyjnym, który jest zoptymalizowany pod kątem oprogramowania SAP HANA. Przy użyciu maszyn wirtualnych IaaS platformy Azure, większość zadań wzmacniania ochrony systemu operacyjnego, instalowania dodatkowego oprogramowania, instalowanie oprogramowania HANA, obsługi systemu operacyjnego i platformy HANA i aktualizowanie systemu operacyjnego i platformy HANA jest odpowiedzialny za. Microsoft nie siły aktualizacje systemu operacyjnego lub aktualizacje oprogramowania HANA należy.
+Usługa udostępniona z SAP HANA na platformie Azure (duże wystąpienia) jest wyrównana z usługami Azure IaaS Services. Występuje wystąpienie dużego wystąpienia HANA z zainstalowanym systemem operacyjnym, który jest zoptymalizowany pod kątem SAP HANA. Podobnie jak w przypadku maszyn wirtualnych usługi Azure IaaS, większość zadań związanych z wzmacnianiem systemu operacyjnego, Instalowanie dodatkowego oprogramowania, instalowanie platformy HANA, eksploatacja systemów operacyjnych i HANA oraz aktualizowanie systemów operacyjnych i HANA jest odpowiedzialna. Firma Microsoft nie wymusza na użytkownikach aktualizacji systemu operacyjnego lub platformy HANA.
 
-![Obowiązki platformy SAP HANA na platformie Azure (duże wystąpienia)](./media/hana-overview-architecture/image2-responsibilities.png)
+![Obowiązki SAP HANA na platformie Azure (duże wystąpienia)](./media/hana-overview-architecture/image2-responsibilities.png)
 
-Jak pokazano na diagramie, SAP HANA na platformie Azure (duże wystąpienia) to wielodostępne, które oferują IaaS. W większości przypadków podział odpowiedzialności jest na granicy infrastruktury systemu operacyjnego. Firma Microsoft jest odpowiedzialna za wszystkimi aspektami usługi pod linią systemu operacyjnego. Odpowiedzialność za wszystkie aspekty usługi powyżej wiersza. System operacyjny jest odpowiedzialny za. Można nadal używać najnowszej metody w środowisku lokalnym, które mogą stosować zgodności, zabezpieczeń, zarządzanie aplikacjami, podstawy i systemu operacyjnego zarządzania. Systemy są wyświetlane, tak jakby znajdują się w Twojej sieci w odniesieniu do wszystkich.
+Jak pokazano na diagramie, SAP HANA na platformie Azure (duże wystąpienia) to wielodostępna oferta IaaS. W większości przypadków dział odpowiedzialności znajduje się na granicy infrastruktury systemu operacyjnego. Firma Microsoft jest odpowiedzialna za wszystkie aspekty usługi poniżej wiersza systemu operacyjnego. Użytkownik jest odpowiedzialny za wszystkie aspekty usługi powyżej wiersza. Jesteś odpowiedzialny za system operacyjny. Można nadal korzystać z większości bieżących metod lokalnych, które mogą być stosowane w celu zapewnienia zgodności, bezpieczeństwa, zarządzania aplikacjami, podstaw i zarządzania systemem operacyjnym. Systemy wyglądają tak, jakby znajdowały się w sieci.
 
-Ta usługa jest zoptymalizowany do platformy SAP HANA, istnieje więc obszary, w których trzeba pracować z firma Microsoft ma wysyłać podstawowych możliwości infrastruktury w celu uzyskania najlepszych wyników.
+Ta usługa jest zoptymalizowana pod kątem SAP HANA, więc istnieją obszary, w których należy współpracować z firmą Microsoft w celu korzystania z podstawowych funkcji infrastruktury w celu uzyskania najlepszych wyników.
 
-Poniższa lista zawiera więcej szczegółów dotyczących każdej z warstw i Twoich obowiązkach:
+Poniższa lista zawiera więcej szczegółów na temat poszczególnych warstw i obowiązków:
 
-**Sieć**: Wszystkie sieci wewnętrzne dla sygnatury duże wystąpienie uruchamiania oprogramowania SAP HANA. Odpowiedzialny za obejmuje dostęp do przechowywania danych, łączność między wystąpień (dla skalowalnego w poziomie i inne funkcje), łączność krajobrazu i połączeń z platformą Azure, w którym jest hostowana warstwa aplikacji SAP na maszynach wirtualnych. Zawiera on również połączenia z siecią WAN między centrami danych platformy Azure do replikacji celów odzyskiwania po awarii. Wszystkie sieci są partycjonowane na podstawie dzierżawy, a jakość usługi stosowane.
+**Sieć**: Wszystkie sieci wewnętrzne dla sygnatury dużego wystąpienia z uruchomioną SAP HANA. Odpowiedzialność obejmuje dostęp do magazynu, połączenia między wystąpieniami (w przypadku funkcji skalowania w poziomie i innych), łączności z poziomą i łącznością z platformą Azure, w której warstwa aplikacji SAP jest hostowana na maszynach wirtualnych. Obejmuje ona również łączność sieci WAN między centrami danych platformy Azure na potrzeby replikacji celów odzyskiwania po awarii. Wszystkie sieci są podzielone na partycje przez dzierżawcę i mają zastosowana jakość usług.
 
-**Magazyn**: Zwirtualizowany podzielone na partycje magazynu dla wszystkich woluminów wymagane przez serwery SAP HANA, a także migawki. 
+**Magazyn**: Zwirtualizowany magazyn partycjonowany dla wszystkich woluminów wymaganych przez serwery SAP HANA, a także dla migawek. 
 
-**Serwery**: Dedykowanych serwerów fizycznych do uruchamiania bazy danych SAP HANA jest przypisany do dzierżawcy. Serwery typu I klasy jednostek SKU są sprzętowe wyodrębnione. Za pomocą następujących typów serwerów konfiguracji serwera są zbierane i przechowywane w profilach, mogą zostać przeniesione z jednego fizycznego sprzętu do innego sprzętu fizycznego. Takie (ręczne) przeniesienie profilu przez operacje można porównać coś do naprawianiem usług platformy Azure. Serwery jednostek SKU typu II klasy nie oferuje taką funkcję.
+**Serwery**: Dedykowane serwery fizyczne do uruchamiania SAP HANA baz danych przypisane do dzierżawców. Serwery typu I klasy SKU są abstrakcyjne sprzętowo. W przypadku tych typów serwerów konfiguracja serwera jest zbierana i utrzymywana w profilach, które można przenieść z jednego sprzętu fizycznego na inny sprzęt fizyczny. Takie (ręczne) Przenoszenie profilu według operacji można porównać z bitem do naprawy usługi platformy Azure. Serwery SKU klasy typu II nie oferują takiej możliwości.
 
-**SDDC**: Oprogramowanie do zarządzania, który służy do zarządzania danymi centra jako jednostki zdefiniowanych przez oprogramowanie. Umożliwia firmy Microsoft do puli zasobów w celu zapewnienia skalowalności, dostępności i ze względu na wydajność.
+**SDDC**: Oprogramowanie do zarządzania służące do zarządzania centrami danych jako jednostkami zdefiniowanymi programowo. Pozwala ona firmie Microsoft na pule zasobów w celu skalowania, dostępności i wydajności.
 
-**O/S**: System operacyjny, możesz wybrać (SUSE Linux lub systemie Red Hat Linux) uruchomionego na serwerze. Obrazy systemu operacyjnego, które są dostarczane z dostarczonych przez indywidualne dostawcę systemu Linux do firmy Microsoft uruchamiania oprogramowania SAP HANA. Musi mieć subskrypcję u dostawcy systemu Linux dla określonego obrazu zoptymalizowane pod kątem oprogramowania SAP HANA. Ponosisz odpowiedzialność za zarejestrowanie obrazy z dostawcą systemu operacyjnego. 
+**O/S**: Wybrany system operacyjny (SUSE Linux lub Red Hat Linux), który jest uruchomiony na serwerach. Dostarczone przez siebie obrazy systemu operacyjnego zostały dostarczone przez dostawcę z systemem Linux do firmy Microsoft w celu uruchomienia SAP HANA. Musisz mieć subskrypcję z dostawcą systemu Linux dla określonego obrazu zoptymalizowanego pod kątem SAP HANA. Użytkownik jest odpowiedzialny za zarejestrowanie obrazów u dostawcy systemu operacyjnego. 
 
-Od momentu przekazania przez firmę Microsoft odpowiedzialność za wszelkie dalsze stosowanie poprawek systemu operacyjnego Linux. Tej poprawki, które obejmuje dodatkowych pakietów, która może być konieczne do pomyślnej instalacji oprogramowania SAP HANA i które nie zostały zawarte przez określonego dostawcę systemu Linux w ich platformy SAP HANA zoptymalizowanych obrazów systemu operacyjnego. (Aby uzyskać więcej informacji, zobacz dokumentacji instalacji oprogramowania HANA SAP i SAP Notes). 
+Od momentu przekazują przez firmę Microsoft użytkownik jest odpowiedzialny za wszelkie dalsze poprawki systemu operacyjnego Linux. Ta poprawka obejmuje dodatkowe pakiety, które mogą być niezbędne do pomyślnej instalacji SAP HANA i nie zostały uwzględnione przez określonego dostawcę systemu Linux w SAP HANA zoptymalizowanych obrazów systemów operacyjnych. (Aby uzyskać więcej informacji, zobacz dokumentację dotyczącą instalacji oprogramowania SAP i uwagi dotyczące oprogramowania SAP). 
 
-Odpowiedzialność za stosowania poprawek systemu operacyjnego z powodu nieprawidłowego działania lub Optymalizacja systemu operacyjnego i jego sterowniki względem sprzętu określonego serwera. Możesz również są odpowiedzialne za bezpieczeństwo lub funkcjonalności stosowanie poprawek systemu operacyjnego. 
+Użytkownik jest odpowiedzialny za stosowanie poprawek systemu operacyjnego z powodu nieprawidłowego działania lub optymalizacji systemu operacyjnego i jego sterowników względem określonego sprzętu serwera. Użytkownik jest odpowiedzialny za bezpieczeństwo lub stosowanie poprawek funkcjonalnych systemu operacyjnego. 
 
-Odpowiedzialny za zawiera także monitorowania i planowania wydajności:
+Odpowiedzialność obejmuje również monitorowanie i planowanie pojemności:
 
-- Użycie zasobów Procesora.
-- Zużycie pamięci.
-- Ilość wolnego miejsca, operacje We/Wy i opóźnienia związane z woluminami.
-- Wolumin ruchem sieciowym między dużych wystąpień HANA i warstwy aplikacji SAP.
+- Użycie zasobów procesora CPU.
+- Użycie pamięci.
+- Woluminy dyskowe związane z wolnym miejscem, operacjami IOPS i opóźnieniem.
+- Ruch sieciowy na woluminie między dużym wystąpieniem HANA a warstwą aplikacji SAP.
 
-Podstawowa infrastruktura dużych wystąpień HANA oferuje funkcję tworzenia kopii zapasowych i przywracanie woluminu systemu operacyjnego. Za pomocą tej funkcji jest również odpowiedzialny za.
+Podstawowa infrastruktura usługi HANA duże wystąpienie zapewnia funkcję tworzenia kopii zapasowych i przywracania woluminu systemu operacyjnego. Korzystanie z tej funkcji jest również obowiązkiem użytkownika.
 
-**Oprogramowanie pośredniczące**: SAP HANA wystąpienia przede wszystkim. Administracja, operacji i monitorowania, spoczywa wyłącznie usługi. Funkcjonalność podana służy do użycia magazynu migawek dla celów odzyskiwania kopii zapasowej i przywracanie i odzyskiwanie po awarii. Te możliwości są zapewniane przez infrastrukturę. Twoje obowiązki obejmują również projektowania stopnia dostępności i odzyskiwania po awarii dzięki takim funkcjom korzystanie z nich i monitorowania w celu określenia, czy migawek magazynu wykonany pomyślnie.
+**Oprogramowanie pośredniczące**: Wystąpienie SAP HANA, głównie. Odpowiedzialność za administrację, operacje i monitorowanie. Przy użyciu podanych funkcji można korzystać z migawek magazynu na potrzeby tworzenia kopii zapasowych i przywracania oraz odzyskiwania po awarii. Te możliwości są udostępniane przez infrastrukturę. Obowiązki obejmują również projektowanie wysokiej dostępności i odzyskiwania po awarii dzięki tym funkcjom, ich wykorzystanie i monitorowanie w celu ustalenia, czy migawki magazynu zostały wykonane pomyślnie.
 
-**Dane**: Dane zarządzane przez platformę SAP HANA i inne dane, takie jak tworzenie kopii zapasowych udziałów plików znajdujących się na woluminach lub pliku. Twoje obowiązki obejmują monitorowania wolnego miejsca na dysku i zarządzania zawartością w woluminach. Możesz również są odpowiedzialne za monitorowanie pomyślne wykonanie kopii zapasowych woluminów dysków i migawek magazynu. Pomyślne wykonanie replikacji danych do lokacji odzyskiwania po awarii jest odpowiedzialność firmy Microsoft.
+**Dane**: Dane zarządzane przez SAP HANA i inne dane, takie jak kopie zapasowe plików znajdujące się na woluminach lub udziałach plików. Obowiązki obejmują monitorowanie wolnego miejsca na dysku i zarządzanie zawartością na woluminach. Użytkownik jest odpowiedzialny za monitorowanie pomyślnego wykonania kopii zapasowych woluminów dyskowych i migawek magazynu. Pomyślne wykonanie replikacji danych do lokacji odzyskiwania po awarii jest odpowiedzialne za firmę Microsoft.
 
-**Aplikacje:** Wystąpienia aplikacji SAP lub, w przypadku aplikacji innych niż SAP, warstwy aplikacji w tych aplikacjach. Twoje obowiązki obejmują wdrażania, administrowania, operacji i monitorowania tych aplikacji. Odpowiedzialność za planowanie pojemności zużycia zasobów procesora CPU, użycie pamięci, użycie usługi Azure Storage i zużycie przepustowości sieci w ramach sieci wirtualnej. Możesz również odpowiadają za planowanie pojemności dla zużycia zasobów z sieci wirtualnych do platformy SAP HANA na platformie Azure (duże wystąpienia).
+**Zastosowania** Wystąpienia aplikacji SAP lub, w przypadku aplikacji innych niż SAP, warstwa aplikacji tych aplikacji. Twoje obowiązki obejmują wdrażanie, administrację, operacje i monitorowanie tych aplikacji. Użytkownik jest odpowiedzialny za planowanie pojemności procesora CPU, użycie pamięci, użycie usługi Azure Storage i wykorzystanie przepustowości sieci w sieciach wirtualnych. Użytkownik jest odpowiedzialny za planowanie pojemności dla wykorzystania zasobów z sieci wirtualnych do SAP HANA na platformie Azure (duże wystąpienia).
 
-**Sieci WAN**: Połączenia nawiązywane ze środowiska lokalnego do wdrożeń platformy Azure dla obciążeń. Wszyscy klienci z dużych wystąpień HANA usługa Azure ExpressRoute dla łączności. To połączenie nie jest częścią platformy SAP HANA na platformie Azure (duże wystąpienia) rozwiązanie. Odpowiedzialność za instalację tego połączenia.
+Sieci **WAN**: Połączenia nawiązane z lokalnego wdrożenia platformy Azure dla obciążeń. Wszyscy klienci z dużym wystąpieniem HANA używają usługi Azure ExpressRoute do łączności. To połączenie nie jest częścią SAP HANA na platformie Azure (duże wystąpienia). Użytkownik jest odpowiedzialny za instalację tego połączenia.
 
-**Archiwum**: Można wybrać do archiwizacji kopii danych przy użyciu własnych metod w ramach kont magazynu. Archiwizacja wymaga zarządzania, zgodności, koszty i operacji. Odpowiedzialność za Generowanie archiwum i kopii zapasowych na platformie Azure i przechowywania ich w sposób zgodny z.
+**Archiwizuj**: Możesz chcieć archiwizować kopie danych przy użyciu własnych metod na kontach magazynu. Archiwizowanie wymaga zarządzania, zgodności, kosztów i operacji. Użytkownik jest odpowiedzialny za generowanie kopii archiwalnych i kopii zapasowych na platformie Azure i przechowywanie ich w sposób zgodny.
 
-Zobacz [umowa SLA dla oprogramowania SAP HANA na platformie Azure (duże wystąpienia)](https://azure.microsoft.com/support/legal/sla/sap-hana-large/).
+Zobacz umowę [SLA dotyczącą SAP HANA na platformie Azure (duże wystąpienia)](https://azure.microsoft.com/support/legal/sla/sap-hana-large/).
 
 **Następne kroki**
-- Zapoznaj się [architektura SAP HANA (duże wystąpienia) na platformie Azure](hana-architecture.md)
+- Rozpoznaj [architekturę SAP HANA (duże wystąpienia) na platformie Azure](hana-architecture.md)

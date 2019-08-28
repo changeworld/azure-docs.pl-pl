@@ -1,6 +1,6 @@
 ---
-title: Tworzenie aplikacji internetowej w środowisku App Service Environment v1 — Azure
-description: Informacje o sposobie tworzenia aplikacji sieci web i aplikacji planów usług w środowisku App Service Environment w wersji 1
+title: Tworzenie aplikacji sieci Web w App Service Environment V1 — Azure
+description: Dowiedz się, jak tworzyć aplikacje sieci Web i plany usługi App Service w App Service Environment v1
 services: app-service
 documentationcenter: ''
 author: ccompy
@@ -10,94 +10,93 @@ ms.assetid: 983ba055-e9e4-495a-9342-fd3708dcc9ac
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3e7db670a125f3c5f308107aabfbbab9301b7561
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc40c2296e583ab93a7c34d709cfbf1334ae3926
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60765169"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069848"
 ---
-# <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Tworzenie aplikacji internetowej w środowisku App Service Environment w wersji 1
+# <a name="create-a-web-app-in-an-app-service-environment-v1"></a>Tworzenie aplikacji sieci Web w App Service Environment v1
 
 > [!NOTE]
-> Ten artykuł dotyczy środowiska App Service Environment w wersji 1.  Istnieje nowsza wersja usługi App Service Environment jest łatwiejszy w obsłudze, która działa na bardziej zaawansowanych infrastruktury. Aby dowiedzieć się więcej na temat nowej wersji rozpoczynać [wprowadzenie do usługi App Service Environment](intro.md).
+> Ten artykuł dotyczy App Service Environment v1.  Istnieje nowsza wersja App Service Environment ułatwiająca korzystanie z bardziej wydajną infrastrukturą. Aby dowiedzieć się więcej o nowej wersji, Zacznij od [wprowadzenia do App Service Environment](intro.md).
 > 
 
 ## <a name="overview"></a>Omówienie
-W tym samouczku przedstawiono sposób tworzenia aplikacji sieci web i planów usługi App Service w [środowiska App Service Environment v1](app-service-app-service-environment-intro.md) (ASE). 
+W tym samouczku przedstawiono sposób tworzenia aplikacji sieci Web i planów App Service w [App Service Environment V1](app-service-app-service-environment-intro.md) (ASE). 
 
 > [!NOTE]
-> Jeśli chcesz dowiedzieć się, jak utworzyć aplikację sieci web, ale nie trzeba to zrobić w środowisku usługi App Service, zobacz [tworzenie aplikacji sieci web platformy .NET](../app-service-web-get-started-dotnet.md) lub jednego z powiązanych samouczków w przypadku pozostałych języków i struktur.
+> Jeśli chcesz dowiedzieć się, jak utworzyć aplikację sieci Web, ale nie musisz jej robić w App Service Environment, zobacz [Tworzenie aplikacji sieci Web platformy .NET](../app-service-web-get-started-dotnet.md) lub jednego z pokrewnych samouczków dla innych języków i struktur.
 > 
 > 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym samouczku przyjęto założenie, że utworzono środowiska usługi App Service. Jeśli użytkownik jeszcze nie, zobacz [tworzenie środowiska usługi App Service](app-service-web-how-to-create-an-app-service-environment.md). 
+W tym samouczku przyjęto założenie, że utworzono App Service Environment. Jeśli jeszcze tego nie zrobiono, zobacz [tworzenie App Service Environment](app-service-web-how-to-create-an-app-service-environment.md). 
 
-## <a name="create-a-web-app"></a>Tworzenie aplikacji internetowej
-1. W [witryny Azure Portal](https://portal.azure.com/), kliknij przycisk **Utwórz zasób > Sieć Web i mobilność > Aplikacja sieci Web**. 
+## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
+1. W [witrynie Azure Portal](https://portal.azure.com/)kliknij pozycję **utwórz zasób > sieć Web + aplikacje mobilne > aplikacji sieci Web**. 
    
     ![][1]
 2. Wybierz subskrypcję.  
    
-    Jeśli masz wiele subskrypcji, należy pamiętać, że aby utworzyć aplikację w środowisku usługi App Service, należy użyć tej samej subskrypcji, która została użyta podczas tworzenia środowiska. 
+    Jeśli masz wiele subskrypcji, które należy wziąć pod uwagę, aby utworzyć aplikację w App Service Environment, musisz użyć tej samej subskrypcji, która została użyta podczas tworzenia środowiska. 
 3. Wybierz lub utwórz grupę zasobów.
    
-    *Grupy zasobów* umożliwiają zarządzanie powiązanych zasobów platformy Azure jako jednostki i są przydatne podczas ustanawiania *kontroli dostępu opartej na rolach* reguł (RBAC) dla aplikacji. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager][ResourceGroups]. 
+    *Grupy zasobów* umożliwiają zarządzanie powiązanymi zasobami platformy Azure jako jednostką i są przydatne podczas ustanawiania reguł *kontroli dostępu opartej na rolach* (RBAC) dla aplikacji. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Resource Manager][ResourceGroups]. 
 4. Wybierz lub utwórz plan usługi App Service.
    
-    *Plany usługi App Service* to zarządzane zestawy aplikacji sieci web.  Zwykle po wybraniu przycisku ceny naliczana cena jest stosowany do planu usługi App Service, a nie do poszczególnych aplikacji. W środowisku ASE płacisz za wystąpienia obliczeniowe przydzielone do środowiska ASE zamiast został zgłoszony przez z strona ASP.  Skalowanie w górę liczbę wystąpień aplikacji sieci web, którą można skalować w górę wystąpienia usługi App Service plan i ma wpływ na wszystkie aplikacje sieci web w tym planie.  Niektóre funkcje, takie jak gniazd witryny lub Integracja z siecią Wirtualną obowiązują również ograniczenia ilość w ramach planu.  Aby uzyskać więcej informacji, zobacz [omówienie planów usługi Azure App Service](../overview-hosting-plans.md)
+    *Plany App Service* są zarządzanymi zestawami aplikacji sieci Web.  Zwykle w przypadku wybrania cennika opłata naliczana jest stosowana do planu App Service, a nie do poszczególnych aplikacji. W środowisku ASE płacisz za wystąpienia obliczeniowe przydzieloną do środowiska ASE, a nie elementy wyświetlane na stronie ASP.  Skalowanie w górę liczby wystąpień aplikacji sieci Web pozwala skalować wystąpienia planu App Service i ma wpływ na wszystkie aplikacje sieci Web w tym planie.  Niektóre funkcje, takie jak gniazda witryny lub Integracja z siecią wirtualną, mają także ograniczenia dotyczące ilości w ramach planu.  Aby uzyskać więcej informacji, zobacz [Azure App Service planów — Omówienie](../overview-hosting-plans.md)
    
-    Plany usługi App Service w środowisku ASE można zidentyfikować przez wyszukiwanie w lokalizacji, która została przedstawiona w obszarze nazwy planu.  
+    Możesz zidentyfikować App Service plany w środowisku ASE, przeglądając lokalizację zanotowaną pod nazwą planu.  
    
     ![][5]
    
-    Jeśli chcesz użyć plan usługi App Service, która już istnieje w środowisku App Service Environment, wybierz tego planu. Jeśli chcesz utworzyć nowy plan usługi App Service, zobacz następujące części tego samouczka [Utwórz plan usługi App Service w środowisku usługi App Service](#createplan).
-5. Wprowadź nazwę aplikacji sieci web, a następnie kliknij przycisk **Utwórz**. 
+    Jeśli chcesz użyć planu App Service, który już istnieje w App Service Environment, wybierz ten plan. Jeśli chcesz utworzyć nowy plan App Service, zapoznaj się z sekcją w tym samouczku, aby [utworzyć plan App Service w App Service Environment](#createplan).
+5. Wprowadź nazwę aplikacji sieci Web, a następnie kliknij przycisk **Utwórz**. 
    
-    Jeśli środowisko ASE używa zewnętrznego wirtualnego adresu IP jest adres URL aplikacji w środowisku ASE: [*sitename*]. [ *Nazwa środowiska App Service Environment*]. p.azurewebsites.net zamiast [*sitename*]. azurewebsites.net
+    Jeśli środowisko ASE używa zewnętrznego adresu VIP, adres URL aplikacji w środowisku ASE to: [*sitename*]. [*nazwa App Service Environment*]. p.azurewebsites.NET zamiast [sitename]. azurewebsites.NET
    
-    Jeśli środowisko ASE używa adresu VIP wewnętrznego, a następnie adres URL aplikacji, w tym środowisku ASE jest: [*sitename*]. [ *poddomeny określone podczas tworzenia środowiska ASE*]   
-    Po wybraniu strona ASP podczas tworzenia środowiska ASE zobaczysz poddomeny, zaktualizuj poniżej **nazwy**
+    Jeśli środowisko ASE używa wewnętrznego adresu VIP, adres URL aplikacji w tym środowisku ASE to: [*sitename*]. [*poddomena określona podczas tworzenia środowiska ASE*]   
+    Po wybraniu programu ASP podczas tworzenia środowiska ASE zostanie wyświetlona **Nazwa** poddomeny aktualizacji poniżej
 
-## <a name="createplan"></a> Tworzenie planu usługi App Service
-Po utworzeniu planu usługi App Service w środowisku usługi App Service, wybór procesów roboczych różnią się, jak istnieją nie udostępnionego procesów roboczych w środowisku ASE.  Procesy robocze, które muszą zostać użyte są tymi, które zostały przydzielone do środowiska ASE przez administratora.  Oznacza to, że aby utworzyć nowy plan, musisz procesów roboczych przydzielonych do środowiska ASE puli procesów roboczych niż łączna liczba wystąpień dla wszystkich planów już w puli procesów roboczych.  Jeśli nie masz wystarczającej liczby pracowników w swoje środowiska ASE puli procesów roboczych do utworzenia planu należy się z administratorem środowiska ASE można następnie dodać je pobrać.
+## <a name="createplan"></a>Utwórz plan App Service
+Po utworzeniu planu App Service w App Service Environment opcje procesu roboczego różnią się w zależności od tego, czy w środowisku ASE nie ma udostępnionych procesów roboczych.  Pracownicy, których zamierzasz używać, to te, które zostały przydzielone do środowiska ASE przez administratora.  Oznacza to, że aby utworzyć nowy plan, należy mieć więcej procesów roboczych przydzielonych do puli procesu roboczego środowiska ASE niż łączna liczba wystąpień we wszystkich planach, które znajdują się już w tej puli procesów roboczych.  Jeśli w puli procesów roboczych środowiska ASE nie masz wystarczającej liczby pracowników do utworzenia planu, musisz skontaktować się z administratorem środowiska ASE, aby je dodać.
 
-Inna różnica z planami usługi App Service, obsługiwanych przez usługę App Service Environment jest brak cenowej.  Jeśli masz środowisko usługi App Service płatność za zasoby obliczeniowe używane przez system i nie masz dodano opłatach za plany w tym środowisku.  Zwykle po utworzeniu planu usługi App Service możesz wybrać planu cenowego, który określa rozliczeniami.  Środowisko usługi App Service jest zasadniczo lokalizacji prywatnej umożliwiającego utworzenie zawartości.  Płacisz tylko dla środowiska i nie można hostować swoją zawartość.
+Kolejną różnicą w przypadku planów App Service hostowanych przez App Service Environment jest brak wyboru cen.  Jeśli masz App Service Environment płacisz za zasoby obliczeniowe używane przez system i nie dodaliśmy opłat za plany w tym środowisku.  Zwykle podczas tworzenia planu App Service należy wybrać plan cenowy, który określa rozliczenia.  App Service Environment jest w zasadzie lokalizacją prywatną, w której można utworzyć zawartość.  Płacisz za środowisko i nie będzie hostować zawartości.
 
-Poniższe instrukcje przedstawiają sposób tworzenia planu usługi App Service podczas tworzenia aplikacji sieci web, zgodnie z opisem w poprzedniej części samouczka.
+Poniższe instrukcje pokazują, jak utworzyć plan App Service podczas tworzenia aplikacji sieci Web zgodnie z opisem w poprzedniej sekcji tego samouczka.
 
-1. Kliknij przycisk **Utwórz nowy** w zaplanować wybór interfejsu użytkownika i podaj nazwę dla planu, tak jak zwykle poza środowisko ASE.
-2. Wybierz środowisko ASE, którą chcesz korzystać z usługi selektora lokalizacji.
+1. Kliknij pozycję **Utwórz nowy** w interfejsie użytkownika wyboru planu i podaj nazwę planu tak samo, jak na ogół poza środowiskiem ASE.
+2. Wybierz środowisko ASE, którego chcesz używać z poziomu selektora lokalizacji.
    
-    Ponieważ środowisko App Service jest zasadniczo lokalizacji prywatne wdrożenie, pokazuje znajdujące się w lokalizacji. 
+    Ponieważ App Service Environment jest zasadniczo lokalizacją prywatnego wdrożenia, zostanie ona wyświetlona w obszarze Lokalizacja. 
    
     ![][2]
    
-    Po zaznaczeniu środowisko ASE w selektorze lokalizacji Tworzenie planu usługi App Service aktualizacje interfejsu użytkownika.  Lokalizacja jest teraz wyświetlana nazwa systemu środowiska ASE i regionu znajduje się w a cenową próbnika plan jest zastępowany przy użyciu selektora puli procesów roboczych.  
+    Po wybraniu środowiska ASE w selektorze lokalizacji aktualizacje interfejsu użytkownika tworzenia planu App Service.  Lokalizacja zawiera teraz nazwę systemu ASE i region, w którym znajduje się, a selektor planu cenowego jest zastępowany selektorem puli procesów roboczych.  
    
     ![][3]
 
-### <a name="selecting-a-worker-pool"></a>Wybranie puli procesów roboczych
-Zwykle w usłudze Azure App Service i poza środowisku usługi App Service, istnieją 3 rozmiarów wystąpień obliczeniowych, które są dostępne z opcją plan cenowy dedykowanych.  W podobny sposób za środowisko ASE można zdefiniować maksymalnie 3 pule procesów roboczych i określ rozmiar obliczeń, który jest używany dla tej puli procesów roboczych.  Co to oznacza dla dzierżawcy środowisku ASE jest, to zamiast wybierania planu cenowego przy użyciu rozmiaru obliczeń dla planu usługi App Service, możesz wybrać, co jest nazywane *puli procesów roboczych*.  
+### <a name="selecting-a-worker-pool"></a>Wybieranie puli procesów roboczych
+Zwykle w Azure App Service i poza App Service Environment, dostępne są 3 rozmiary obliczeniowe z wyborem dedykowanego planu cenowego.  W podobny sposób, dla środowiska ASE można zdefiniować maksymalnie 3 pule procesów roboczych, a także określić rozmiar obliczeń używany dla tej puli.  Znaczenie dla dzierżawców środowiska ASE polega na tym, że zamiast wybierać plan cenowy z rozmiarem obliczeniowym dla planu App Service, należy wybrać element, który jest nazywany *pulą procesów roboczych*.  
 
-Wybór puli procesów roboczych interfejsu użytkownika pokazano rozmiaru obliczeń dla tej puli procesów roboczych poniżej nazwy.  Dostępna ilość odnosi się do obliczeń ile wystąpień są dostępne w tej puli.  Całkowitej puli faktycznie może mieć więcej wystąpień niż ta liczba, ale ta wartość dotyczy po prostu liczby nie są używane.  Jeśli wymagane jest dostosowanie środowiska App Service, aby dodać więcej zasobów obliczeniowych, zobacz [Konfigurowanie środowiska App Service Environment](app-service-web-configure-an-app-service-environment.md).
+Interfejs użytkownika wyboru puli procesów roboczych pokazuje rozmiar obliczeń używany dla tej puli procesów roboczych poniżej nazwy.  Dostępna ilość odnosi się do liczby wystąpień obliczeniowych dostępnych do użycia w tej puli.  Całkowita liczba wystąpień w puli może być większa niż ta liczba, ale ta wartość określa, jak wiele nie jest w użyciu.  Jeśli musisz dostosować App Service Environment, aby dodać więcej zasobów obliczeniowych, zobacz [konfigurowanie App Service Environment](app-service-web-configure-an-app-service-environment.md).
 
 ![][4]
 
-W tym przykładzie można zobaczyć tylko dwa dostępne pule procesów roboczych. To, ponieważ administrator środowiska ASE przydzielone tylko hosty w tych pulach dwóch procesów roboczych.  Trzeci będą wyświetlane, gdy na maszynach wirtualnych przydzielonych do niego.  
+W tym przykładzie widoczne są tylko dwie dostępne pule procesów roboczych. Wynika to z faktu, że administrator ASE przydzielił tylko hosty do tych dwóch pul procesów roboczych.  Trzecia wartość zostanie wyświetlona w przypadku przydzielenia maszyn wirtualnych.  
 
-## <a name="after-web-app-creation"></a>Po utworzeniu aplikacji sieci web
-Istnieje kilka istotnych kwestii do uruchamiania aplikacji sieci web i zarządzania planów usługi App Service w środowisku ASE, które mają być brane pod uwagę.  
+## <a name="after-web-app-creation"></a>Po utworzeniu aplikacji sieci Web
+Istnieje kilka kwestii dotyczących uruchamiania aplikacji sieci Web i zarządzania planami App Service w środowisku ASE, które należy wziąć pod uwagę.  
 
-Jak wspomniano wcześniej, właściciel środowiska ASE jest odpowiedzialny za rozmiar systemu, a w rezultacie są one również odpowiedzialny za zapewnienie, że pojemność sieci jest wystarczająca do obsługi żądane plany usługi App Service. Jeśli nie ma żadnych dostępnych procesów roboczych, nie można utworzyć planu usługi App Service.  Dotyczy to również wartość true, skalowanie w górę aplikacji sieci web.  Jeśli potrzebujesz większej liczby wystąpień będzie mieć uzyskać administrator środowiska App Service Environment, aby dodać więcej pracowników.
+Jak wspomniano wcześniej, właściciel środowiska ASE jest odpowiedzialny za rozmiar systemu i w związku z tym jest odpowiedzialny za zapewnienie wystarczającej pojemności do hostowania żądanych planów App Service. Jeśli nie ma żadnych dostępnych procesów roboczych, nie będziesz w stanie utworzyć planu App Service.  Jest to również prawdziwe skalowanie aplikacji sieci Web.  Jeśli potrzebujesz więcej wystąpień, musisz uzyskać App Service Environment administratora, aby dodać więcej procesów roboczych.
 
-Po utworzeniu aplikacji internetowej i planu usługi App Service jest dobrym pomysłem jest skalowanie w górę.  W środowisku ASE zawsze musi być co najmniej 2 wystąpienia planu usługi App Service w celu zapewnienia odporności na uszkodzenia dla aplikacji.  Skalowanie planu usługi App Service w środowisku ASE jest taka sama, jak zwykle za pośrednictwem planu usługi App Service interfejsu użytkownika.  Aby uzyskać więcej informacji na temat skalowania [jak skalować aplikację sieci web w środowisku usługi App Service](app-service-web-scale-a-web-app-in-an-app-service-environment.md)
+Po utworzeniu aplikacji internetowej i zaplanowaniu App Service warto ją skalować w górę.  W środowisku ASE zawsze musisz mieć co najmniej 2 wystąpienia planu App Service, aby zapewnić odporność na uszkodzenia dla aplikacji.  Skalowanie planu App Service w środowisku ASE jest takie samo jak normalne za pomocą interfejsu użytkownika planu App Service.  Aby uzyskać więcej informacji na temat skalowania, [Jak skalować aplikację sieci Web w App Service Environment](app-service-web-scale-a-web-app-in-an-app-service-environment.md)
 
 <!--Image references-->
 [1]: ./media/app-service-web-how-to-create-a-web-app-in-an-ase/createaspnewwebapp.png

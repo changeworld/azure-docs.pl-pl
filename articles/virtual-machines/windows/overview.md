@@ -11,17 +11,16 @@ ms.assetid: fbae9c8e-2341-4ed0-bb20-fd4debb2f9ca
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7bb87713f1f7d1f41f68f3743b2504784b37bb23
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 47ad2346f4574b10d12c46c1f72394225e014854
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723051"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102563"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Omówienie maszyn wirtualnych z systemem Windows na platformie Azure
 
@@ -103,11 +102,11 @@ Zasoby wymienione w tej tabeli są używane przez maszynę wirtualną i muszą i
 
 | Zasób | Wymagane | Opis |
 | --- | --- | --- |
-| [Grupa zasobów](../../azure-resource-manager/resource-group-overview.md) |Yes |Maszyna wirtualna musi być zawarta w grupie zasobów. |
+| [Grupa zasobów](../../azure-resource-manager/resource-group-overview.md) |Tak |Maszyna wirtualna musi być zawarta w grupie zasobów. |
 | [Konto magazynu](../../storage/common/storage-create-storage-account.md) |Tak |Maszyna wirtualna wymaga konta magazynu do przechowywania wirtualnych dysków twardych. |
-| [Sieć wirtualna](../../virtual-network/virtual-networks-overview.md) |Yes |Maszyna wirtualna musi należeć do sieci wirtualnej. |
+| [Sieć wirtualna](../../virtual-network/virtual-networks-overview.md) |Tak |Maszyna wirtualna musi należeć do sieci wirtualnej. |
 | [Publiczny adres IP](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |Nie |Maszyna wirtualna może mieć przypisany publiczny adres IP umożliwiający uzyskiwanie do niej dostępu zdalnego. |
-| [Interfejs sieciowy](../../virtual-network/virtual-network-network-interface.md) |Yes |Maszyna wirtualna wymaga interfejsu sieciowego do komunikacji w sieci. |
+| [Interfejs sieciowy](../../virtual-network/virtual-network-network-interface.md) |Tak |Maszyna wirtualna wymaga interfejsu sieciowego do komunikacji w sieci. |
 | [Dyski danych](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |Nie |Maszyna wirtualna może zawierać dyski danych zwiększające jej pojemność. |
 
 ## <a name="how-do-i-create-my-first-vm"></a>Jak utworzyć maszynę wirtualną?

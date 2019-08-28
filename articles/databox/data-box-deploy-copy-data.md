@@ -1,21 +1,33 @@
 ---
-title: Samouczek, aby skopiować dane za pośrednictwem protokołu SMB na platformie Azure Data Box | Dokumentacja firmy Microsoft
+title: Samouczek do kopiowania danych za pośrednictwem protokołu SMB na Azure Data Box | Microsoft Docs
 description: Dowiedz się, jak skopiować dane na urządzenie Azure Data Box za pośrednictwem protokołu SMB
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 08/27/2019
 ms.author: alkohli
-ms.openlocfilehash: 6b2a0655173405008e0bccf3e31a8db391da6127
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 9f5ccc255310ca42ef39586860c0861b945ac6e9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496292"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098882"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>Samouczek: Kopiowanie danych na urządzenie Azure Data Box Disk za pośrednictwem protokołu SMB
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="copy-data-to-azure-data-box"></a>Kopiuj dane do Azure Data Box
+
+::: zone-end
+
+::: zone target="docs"
 
 W tym samouczku opisano sposób nawiązywania połączenia i kopiowania danych z komputera-hosta za pomocą lokalnego internetowego interfejsu użytkownika.
 
@@ -41,8 +53,8 @@ Przed rozpoczęciem upewnij się, że:
 
 W zależności od wybranego konta magazynu dla urządzenia Data Box są tworzone następujące elementy:
 - Maksymalnie trzy udziały dla każdego skojarzonego konta magazynu (GPv1 i GPv2).
-- Jeden udział dla usługi premium storage.
-- Jeden udział dla konta usługi blob storage.
+- Jeden udział w usłudze Premium Storage.
+- Jeden udział dla konta usługi BLOB Storage.
 
 W obszarze udziałów blokowych obiektów blob i stronicowych obiektów blob jednostki pierwszego poziomu są kontenerami, a jednostki drugiego poziomu są obiektami blob. W obszarze udziałów dla usługi Azure Files jednostki pierwszego poziomu są udziałami, a jednostki drugiego poziomu są plikami.
 
@@ -132,7 +144,7 @@ Po nawiązaniu połączenia z udziałem SMB rozpocznij kopiowanie danych. Do kop
 |/z    | Kopiuje pliki w trybie ponownego uruchomienia. Użyj tego atrybutu w przypadku niestabilnego środowiska. Ta opcja powoduje zmniejszenie przepływności ze względu na dodatkowe rejestrowanie.      |
 | /zb     | Używa trybu ponownego uruchomienia. W przypadku odmowy dostępu ta opcja używa trybu tworzenia kopii zapasowej. Ta opcja powoduje zmniejszenie przepływności ze względu na tworzenie punktów kontrolnych.         |
 |/efsraw     | Kopiuje wszystkie zaszyfrowane pliki w surowym trybie EFS. Używaj tej opcji tylko względem zaszyfrowanych plików.         |
-|Dziennik +:\<pliku dziennika >| Dołącza dane wyjściowe do istniejącego pliku dziennika.|    
+|log +:\<plik_dziennika >| Dołącza dane wyjściowe do istniejącego pliku dziennika.|    
  
 Poniższy przykład przedstawia dane wyjściowe polecenia kopiowania plików na urządzenie Data Box za pomocą narzędzia Robocopy.
     
@@ -202,15 +214,70 @@ Aby zoptymalizować wydajność, użyj poniższych parametrów polecenia robocop
 
 Aby uzyskać więcej informacji na temat polecenia Robocopy, przejdź do artykułu [Robocopy and a few examples](https://social.technet.microsoft.com/wiki/contents/articles/1073.robocopy-and-a-few-examples.aspx) (Polecenie Robocopy i kilka przykładów).
 
-Otwórz folder docelowy, aby wyświetlić i zweryfikować skopiowane pliki. Jeśli podczas procesu kopiowania wystąpiły jakiekolwiek błędy, pobierz pliki z błędami, które pomogą w rozwiązywaniu problemów. Aby uzyskać więcej informacji, zobacz [wyświetlić dzienniki błędów podczas kopiowania danych do urządzenia Data Box](data-box-logs.md#view-error-log-during-data-copy). Aby uzyskać szczegółową listę błędów podczas kopiowania danych, zobacz [wystawia Rozwiązywanie problemów z urządzenia Data Box](data-box-troubleshoot.md).
+Otwórz folder docelowy, aby wyświetlić i zweryfikować skopiowane pliki. Jeśli podczas procesu kopiowania wystąpiły jakiekolwiek błędy, pobierz pliki z błędami, które pomogą w rozwiązywaniu problemów. Aby uzyskać więcej informacji, zobacz [Wyświetlanie dzienników błędów podczas kopiowania danych do urządzenie Data Box](data-box-logs.md#view-error-log-during-data-copy). Aby uzyskać szczegółową listę błędów podczas kopiowania danych, zobacz [Rozwiązywanie problemów z urządzenie Data Box](data-box-troubleshoot.md).
 
 W celu zapewnienia integralności danych podczas kopiowania obliczana jest suma kontrolna. Po zakończeniu kopiowania sprawdź ilość używanego i wolnego miejsca na urządzeniu.
     
    ![Sprawdzanie wolnego i używanego miejsca na pulpicie nawigacyjnym](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
+::: zone-end
+
+::: zone target="chromeless"
+
+Dane z serwera źródłowego można kopiować do urządzenie Data Box za pośrednictwem protokołu SMB, systemu plików NFS, REST, usługi kopiowania danych lub do dysków zarządzanych.
+
+W każdym przypadku upewnij się, że nazwy udziału i folderu oraz rozmiar danych są zgodne z wskazówkami opisanymi w [limitach usługi Azure Storage i urządzenie Data Box](data-box-limits.md).
+
+## <a name="copy-data-via-smb"></a>Kopiowanie danych za pośrednictwem protokołu SMB
+
+1. Jeśli używasz hosta z systemem Windows, użyj następującego polecenia, aby nawiązać połączenie z udziałami SMB:
+
+    `\\<IP address of your device>\ShareName`
+
+2. Aby uzyskać poświadczenia dostępu do udziału, przejdź do strony **Connect & copy** (Połączenie i kopiowanie) w lokalnym internetowym interfejsie użytkownika urządzenia Data Box.
+3. Użyj narzędzia do kopiowania plików zgodnego z protokołem SMB, takiego jak Robocopy, aby skopiować dane do udziałów. 
+
+Aby uzyskać instrukcje krok po kroku, przejdź do [samouczka: Skopiuj dane do Azure Data Box za pośrednictwem protokołu SMB](data-box-deploy-copy-data.md).
+
+## <a name="copy-data-via-nfs"></a>Kopiowanie danych za pośrednictwem sieciowego systemu plików
+
+1. W przypadku korzystania z hosta NFS Użyj następującego polecenia, aby zainstalować udziały NFS na urządzenie Data Box:
+
+    `sudo mount <Data Box device IP>:/<NFS share on Data Box device> <Path to the folder on local Linux computer>`
+
+2. Aby uzyskać poświadczenia dostępu do udziału, przejdź do strony **Connect & copy** (Połączenie i kopiowanie) w lokalnym internetowym interfejsie użytkownika urządzenia Data Box.
+3. Użyj `cp` polecenia `rsync` lub, aby skopiować dane.
+
+Aby uzyskać instrukcje krok po kroku, przejdź do [samouczka: Skopiuj dane do Azure Data Box za pośrednictwem systemu plików NFS](data-box-deploy-copy-data-via-nfs.md).
+
+## <a name="copy-data-via-rest"></a>Kopiuj dane za pomocą REST
+
+1. Aby skopiować dane przy użyciu urządzenie Data Box usługi BLOB Storage za pośrednictwem interfejsów API REST, można nawiązać połączenie za pośrednictwem *protokołu HTTP* lub *https*.
+2. Aby skopiować dane do urządzenie Data Box magazynu obiektów blob, można użyć programu AzCopy.
+
+Aby uzyskać instrukcje krok po kroku, przejdź do [samouczka: Skopiuj dane do Azure Data Box magazynu obiektów BLOB za pośrednictwem interfejsów API](data-box-deploy-copy-data-via-nfs.md)Rest.
+
+## <a name="copy-data-via-data-copy-service"></a>Kopiowanie danych za pośrednictwem usługi kopiowania danych
+
+1. Aby skopiować dane przy użyciu usługi kopiowania danych, należy utworzyć zadanie. W lokalnym interfejsie użytkownika sieci Web urządzenie Data Box przejdź do pozycji **zarządzaj > Kopiuj dane > Utwórz**. 
+2. Wypełnij parametry i Utwórz zadanie.
+
+Aby uzyskać instrukcje krok po kroku, przejdź do [samouczka: Użyj usługi kopiowania danych do kopiowania danych do Azure Data Box](data-box-deploy-copy-data-via-copy-service.md).
+
+## <a name="copy-data-to-managed-disks"></a>Kopiuj dane do dysków zarządzanych
+
+1. Podczas zamawiania urządzenia urządzenie Data Box należy wybrać opcję dyski zarządzane jako miejsce docelowe magazynu.
+2. Możesz połączyć się z urządzenie Data Box za pośrednictwem udziałów SMB lub NFS.
+3. Następnie można skopiować dane za pomocą narzędzi SMB lub NFS.
+
+Aby uzyskać instrukcje krok po kroku, przejdź do [samouczka: Użyj urządzenie Data Box, aby zaimportować dane jako dyski zarządzane na](data-box-deploy-copy-data-from-vhds.md)platformie Azure.
+
+::: zone-end
 
 
-## <a name="next-steps"></a>Kolejne kroki
+::: zone target="docs"
+
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące usługi Azure Data Box, takie jak:
 
@@ -224,4 +291,6 @@ Przejdź do następnego samouczka, aby dowiedzieć się, jak odesłać urządzen
 
 > [!div class="nextstepaction"]
 > [Wysyłka urządzenia Azure Data Box do firmy Microsoft](./data-box-deploy-picked-up.md)
+
+::: zone-end
 

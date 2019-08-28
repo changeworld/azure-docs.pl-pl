@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z narzędzi automatyzacji infrastruktury dla maszyn wirtualnych Windows na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać narzędzi automatyzacji infrastruktury, takich jak DSC programu PowerShell, Ansible, Chef, Puppet i usługi Azure Automation do tworzenia i zarządzania maszynami wirtualnymi Windows na platformie Azure
+title: Korzystanie z narzędzi do automatyzacji infrastruktury dla maszyn wirtualnych z systemem Windows na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak korzystać z narzędzi do automatyzacji infrastruktury, takich jak PowerShell DSC, rozwiązania ansible, Chef, Puppet i Azure Automation, aby tworzyć maszyny wirtualne z systemem Windows i zarządzać nimi na platformie Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,17 +9,16 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 11c7d22e694c8f19a73e6e6fe3e4b6de2ff5e9e7
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 372cbd7efecb5b741fcb501ae6189b8c47968467
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722606"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103152"
 ---
 [!INCLUDE [virtual-machines-common-infrastructure-automation](../../../includes/virtual-machines-common-infrastructure-automation.md)]

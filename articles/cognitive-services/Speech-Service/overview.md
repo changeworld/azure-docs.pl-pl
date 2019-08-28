@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: da88c6d0195236a6f93f81d3296e4624228125f2
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0aa4286d8cb630f221613bebd13f7ea722224ac6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624262"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068843"
 ---
 # <a name="what-are-the-speech-services"></a>Co to są usługi mowy?
 
@@ -84,12 +84,10 @@ Przykładowy kod jest dostępny w witrynie GitHub dla każdej usługi Azure Spee
 
 Usługi Azure Speech Services dobrze sprawdzają się w połączeniu z wbudowanymi modelami, ale warto dodatkowo dostosowywać i dostrajać środowisko dla danego produktu lub środowiska. Opcje dostosowania przestają być od modelu akustycznego na unikatowe czcionki głosowe dla marki. Po skompilowaniu modelu niestandardowego można go używać z dowolnymi usługami Azure Speech.
 
-| Usługa rozpoznawania mowy | Modelowanie | Opis |
-|----------------|-------|-------------|
-| Zamiana mowy na tekst | [Model akustyczny](how-to-customize-acoustic-models.md) | Utwórz niestandardowy model akustyczny dla aplikacji, narzędzi lub urządzeń używanych w określonych środowiskach, takich jak samochód lub piętro fabryki, z których każdy ma określone warunki rejestrowania. Przykłady obejmują akcentowanie mowy, konkretne zakłócenia w tle lub użycie określonego mikrofonu do nagrywania. |
-| | [Model językowy](how-to-customize-language-model.md) | Utwórz niestandardowy model języka w celu usprawnienia transkrypcji słownictwa i gramatyki związanej z polami, takich jak Terminologia medyczna lub żargon IT. |
-| | [Model wymowy](how-to-customize-pronunciation.md) | Przy użyciu niestandardowego modelu wymowy można zdefiniować formularz fonetyczny i wyświetlić wyraz lub termin. Jest to przydatne do obsługi warunki niestandardowe, takie jak nazwy produktów lub akronimów. Wszystko, czego potrzebujesz do rozpoczęcia jest plikiem Wymowa — plik prosty txt. |
-| Zamiana tekstu na mowę | [Czcionka głosowa](how-to-customize-voice-font.md) | Niestandardowe czcionki głosowe umożliwiają utworzenie rozpoznawalnego, jednoczęściowego głosu dla marki. Rozpoczęcie pracy wymaga jedynie niewielkiej ilości danych. Im więcej danych zapewniasz, tym bardziej naturalna i przypominająca Twoja czcionka głosu będzie dźwiękowa. |
+| Usługa rozpoznawania mowy | Platforma | Opis |
+|----------------|-------------|-------------|
+| Zamiana mowy na tekst | [Custom Speech](https://aka.ms/customspeech) | Dostosuj modele rozpoznawania mowy do Twoich potrzeb i dostępnych danych. Pokonaj bariery rozpoznawania mowy, takie jak styl wypowiedzi, słownictwo i hałas w tle. |
+| Zamiana tekstu na mowę | [Niestandardowy głos](https://aka.ms/customvoice) | Tworzenie rozpoznawalnego, jednoczęściowego głosu dla aplikacji zamiany tekstu na mowę z dostępnymi danymi głosu. Można dokładniej dostosować dane wyjściowe głosu przez dostosowanie zestawu parametrów głosowych. |
 
 ## <a name="reference-docs"></a>Dokumentacja
 

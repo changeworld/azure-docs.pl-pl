@@ -1,102 +1,101 @@
 ---
-title: Optymalizuj wydajność na maszynach wirtualnych platformy Azure serii Lsv2 - Storage | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zoptymalizować wydajność rozwiązania jest wyświetlany na maszynach wirtualnych serii Lsv2.
+title: Optymalizacja wydajności na maszynach wirtualnych z serii Lsv2 systemu Azure — magazyn | Microsoft Docs
+description: Dowiedz się, jak zoptymalizować wydajność rozwiązania na maszynach wirtualnych z serii Lsv2.
 services: virtual-machines-windows
 author: laurenhughes
 manager: gwallace
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: 7e96fb6fc7b3e581d058ef0f96124959189d0f4e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 5728afe8195a8f25e5aafcb815b0c61558b32547
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709802"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101781"
 ---
-# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optymalizuj wydajność na maszynach wirtualnych serii Lsv2
+# <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optymalizacja wydajności na maszynach wirtualnych z serii Lsv2
 
-Maszyny wirtualne serii Lsv2 obsługi różnych obciążeń wymagających wysokiej operacji We/Wy i przepływność lokalnego magazynu w szerokim zakresie aplikacji i branżach każdego typu.  Seria Lsv2 idealnie nadaje się do obsługi dużych ilości danych, SQL, NoSQL baz danych, magazynowanie danych i dużych transakcyjnych baz danych, w tym Cassandra, MongoDB, Cloudera i Redis.
+Maszyny wirtualne z serii Lsv2 obsługują różnorodne obciążenia, które wymagają wysokiego wejścia/wyjścia i przepływności w lokalnym magazynie dla szerokiego zakresu aplikacji i branż.  Seria Lsv2 doskonale nadaje się do obsługi danych Big Data, baz danych SQL, NoSQL, magazynów danych i dużych transakcyjnych baz danych, w tym Cassandra, MongoDB, Cloudera i Redis.
 
-Projekt maszyny wirtualne serii Lsv2 (VM) maksymalizuje procesora AMD EPYC™ 7551, aby zapewnić najlepszą wydajność, od procesora, pamięci, NVMe urządzeń i maszyn wirtualnych. Oprócz maksymalizowanie wydajności sprzętu, maszyny wirtualne z serii Lsv2 zostały zaprojektowane do pracy z potrzebami systemów operacyjnych Windows i Linux w celu zapewnienia lepszej wydajności sprzętu i oprogramowania.
+Projekt Virtual Machines serii Lsv2 (VM) maksymalizuje procesor AMD EPYC™ 7551, aby zapewnić najlepszą wydajność między procesorem, pamięcią, urządzeniami interfejsu NVMe i maszynami wirtualnymi. Oprócz maksymalizowania wydajności sprzętu maszyny wirtualne z serii Lsv2 są przeznaczone do pracy z wymaganiami systemów operacyjnych Windows i Linux w celu zapewnienia lepszej wydajności przy użyciu sprzętu i oprogramowania.
 
-Dostrojenie sprzętu i oprogramowania spowodowało zoptymalizowana wersja [systemie Windows Datacenter 2019](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview), wydanej w 2018 r. grudnia w portalu Azure Marketplace, który obsługuje maksymalną wydajność urządzenia NVMe w serii Lsv2 Maszyny wirtualne.
+Dostrojenie oprogramowania i sprzętu w zoptymalizowanej wersji [systemu Windows Server 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)wydanej na początku grudnia 2018 do portalu Azure Marketplace, który obsługuje maksymalną wydajność na urządzeniach interfejsu NVMe w maszynach wirtualnych z serii Lsv2.
 
-Ten artykuł zawiera porady i sugestie, aby upewnić się, obciążenia i aplikacje osiągnąć maksymalną wydajność, zaprojektowane do maszyn wirtualnych. Informacje na tej stronie jest uaktualniany po dodaniu więcej Lsv2 zoptymalizowane pod kątem obrazów w portalu Azure Marketplace.
+Ten artykuł zawiera wskazówki i sugestie dotyczące zapewnienia, że obciążenia i aplikacje osiągają maksymalną wydajność zaprojektowaną na maszynach wirtualnych. Informacje na tej stronie będą stale aktualizowane, gdy więcej Lsv2 zoptymalizowanych obrazów zostanie dodanych do portalu Azure Marketplace.
 
 ## <a name="amd-eypc-chipset-architecture"></a>Architektura mikroukładu AMD EYPC™
 
-Maszyny wirtualne z serii Lsv2 używają procesorów serwera AMD EYPC™, oparte na mikroarchitektury Zen. AMD opracowanych nieskończoności sieci szkieletowej (jeśli jest) dla EYPC™ jako skalowalne połączeń swój model NUMA, który może służyć do komunikacji na struktury, -package i wielu pakietów. W porównaniu z QPI (ścieżka szybkiego łączenia) i zaległej płatności za przedmiot (połączenie Ultra-Path) używane w nowoczesnych procesorów monolityczne struktury firmy Intel, firmy AMD NUMA wielu małych struktury architektury, mogą powodować korzyści obu wydajności oraz trudności. Rzeczywisty wpływ ograniczenia przepustowości i opóźnienia pamięci mogą być różne w zależności od typu obciążeń.
+Maszyny wirtualne z serii Lsv2 korzystają z procesorów AMD EYPC™ Server opartych na mikroarchitekturze Zen. Sieć szkieletowa AMD opracowała nieskończoność (jeśli) dla EYPC™ jako skalowalne połączenie z modelem NUMA, która może być używana do komunikacji w ramach platformy, w pakiecie i na wiele pakietów. W porównaniu z QPI (połączenie Quick-Path) i UPI (połączenie z Ultra-ścieżką) używane w przypadku procesorów Intel Modern monolitycznych o architekturze wieloarchitekturowej (AMD), architektura międzyplatformowych technologii NUMA z wieloma procesorami może przynieść korzyści dotyczące wydajności, a także wyzwania. Faktyczny wpływ przepustowości pamięci i ograniczeń opóźnienia może się różnić w zależności od typu wykonywanych obciążeń.
 
-## <a name="tips-for-maximizing-performance"></a>Porady dotyczące maksymalizowanie wydajności
+## <a name="tips-for-maximizing-performance"></a>Porady dotyczące maksymalizowania wydajności
 
-* Sprzęt, na której działają maszyny wirtualne z serii Lsv2 korzysta z urządzenia NVMe z ośmiu s pary kolejek operacji We/Wy (QP). Każdej kolejki We/Wy urządzenia NVMe jest w rzeczywistości parą: kolejki przesyłania i kolejki ukończenia. Sterownik NVMe jest ustawiane, aby zoptymalizować wykorzystanie tych osiem operacji We/Wy liczby zapytań na sekundę, dystrybucja I / zaplanować O w działanie okrężne. Aby uzyskać maksymalną wydajność, należy uruchomić osiem zadań na urządzeniu, aby dopasować.
+* Sprzęt obsługujący maszyny wirtualne z serii Lsv2 korzysta z urządzeń interfejsu NVMe z ośmiu parami kolejki we/wy (wyciąganie) s. Każda kolejka we/wy urządzenia interfejsu NVMe jest w rzeczywistości parą: kolejką przesłania i kolejką ukończenia. Sterownik interfejsu NVMe został skonfigurowany tak, aby zoptymalizować wykorzystanie tych ośmiu zapytań we/wy przez dystrybuowanie operacji wejścia/wyjścia w harmonogramie okrężnym. Aby uzyskać maksymalną wydajność, należy uruchomić osiem zadań na urządzenie w celu dopasowania.
 
-* Należy unikać mieszania NVMe polecenia administratora (na przykład NVMe INTELIGENTNE zapytanie info, itp.) za pomocą poleceń NVMe operacji We/Wy podczas aktywne obciążenia. Urządzenia Lsv2 NVMe są wspierane przez technologii bezpośredniego NVMe funkcji Hyper-V, przełączyć się do "powolne tryb" zawsze wtedy, gdy trwa dowolne polecenia administratora NVMe. Lsv2 użytkowników można uzyskać znaczne wydajności, Porzuć wydajność We/Wy NVMe, jeśli tak się stanie.
+* Unikaj mieszania poleceń administratora interfejsu NVMe (na przykład zapytania o informacje inteligentne interfejsu NVMe itp.) przy użyciu poleceń we/wy interfejsu NVMe podczas aktywnych obciążeń. Urządzenia Lsv2 NVMe są obsługiwane przez technologię funkcji Hyper-V interfejsu NVMe Direct, która przełącza się w tryb wolny, za każdym razem, gdy wszystkie polecenia administratora interfejsu NVMe są w stanie oczekiwania. W takim przypadku użytkownicy Lsv2 mogą zobaczyć znaczną wydajność w przypadku operacji we/wy interfejsu NVMe.
 
-* Użytkownicy Lsv2 nie należy polegać na NUMA informacje o urządzeniu (wszystkie 0) zgłoszone w ramach maszyny Wirtualnej dla dysków z danymi, aby określić koligację z architektury NUMA dla swoich aplikacji. Zalecaną metodą zapewnienia lepszej wydajności jest Rozkładaj obciążenia między procesorów CPU, jeśli jest to możliwe. 
+* Lsv2 użytkownicy nie mogą polegać na informacjach NUMA urządzenia (wszystkie 0) raportowanych z poziomu maszyny wirtualnej dla dysków danych w celu podjęcia decyzji o koligacji NUMA dla swoich aplikacji. Zalecanym sposobem zapewnienia lepszej wydajności jest rozłożenie obciążeń między procesorami, jeśli to możliwe. 
 
-* Głębokość maksymalnej obsługiwanej kolejki, na pary kolejki operacji We/Wy dla urządzenia NVMe maszyny Wirtualnej Lsv2 wynosi 1024 (vs. Amazon i3 32 głębokość kolejki limit). Użytkownicy Lsv2 należy ograniczyć swoje (syntetyczne) porównawczych obciążenia na głębokości kolejki, co najmniej 1024 niższych w celu uniknięcia wyzwalania warunkach pełnej kolejki, które może zmniejszyć wydajność.
+* Maksymalna obsługiwana głębokość kolejki dla pary kolejek we/wy dla Lsv2 maszyny wirtualnej interfejsu NVMe to 1024 (a Limit i3 głębokość kolejki 32). Lsv2 użytkownicy powinni ograniczyć liczbę (syntetyczne) testu porównawczego do głębokości kolejki 1024 lub niższej, aby uniknąć wyzwalania pełnych warunków kolejki, co może zmniejszyć wydajność.
 
-## <a name="utilizing-local-nvme-storage"></a>Korzystanie z magazynu lokalnego NVMe
+## <a name="utilizing-local-nvme-storage"></a>Korzystanie z lokalnego magazynu interfejsu NVMe
 
-Lokalny magazyn na dysku NVMe 1.92 TB na wszystkich maszynach wirtualnych Lsv2 jest tymczasowych. Podczas pomyślnego standardowa ponowny rozruch maszyny wirtualnej zostanie utrzymany danych na dysku lokalnym NVMe. Dane nie zostanie utrzymany na NVMe, jeśli maszyna wirtualna zostanie ponownego wdrożenia, cofać przydziału lub usunięty. Dane nie zostanie utrzymany, jeśli inny problem powoduje, że maszyna wirtualna lub sprzętu, na którym jest uruchomiona, aby stać się złej kondycji. W takim przypadku wszystkie dane na starym hosta jest bezpiecznie wymazywane.
+Magazyn lokalny na dysku interfejsu NVMe 1,92 TB na wszystkich maszynach wirtualnych Lsv2 jest nieulotny. Podczas pomyślnego standardowego ponownego uruchomienia maszyny wirtualnej dane na lokalnym dysku interfejsu NVMe będą utrwalane. Dane nie zostaną zachowane w programie NVMe, jeśli maszyna wirtualna zostanie ponownie wdrożona, cofnięta lub usunięta. Dane nie będą utrwalane, jeśli inny problem spowoduje wystąpienie problemu z maszyną wirtualną lub sprzęt, na którym działa, aby stał się w złej kondycji. W takim przypadku wszystkie dane na Starym hoście są bezpiecznie wymazane.
 
-Będą również przypadki, gdy maszyna wirtualna wymaga zostanie przeniesiony na inny komputer hosta, na przykład podczas operacji zaplanowanej konserwacji. Operacje planowanej konserwacji i niektóre awarie sprzętowe, można oczekiwać z [Scheduled Events](scheduled-events.md). Scheduled Events powinna służyć do bądź na bieżąco na dostęp do przewidywanych konserwacji i operacje odzyskiwania.
+Zdarza się również, że maszyna wirtualna musi zostać przeniesiona na inną maszynę hosta, na przykład podczas zaplanowanej operacji konserwacji. Planowane operacje konserwacji i niektóre błędy sprzętu mogą być przewidywane w [Scheduled Events](scheduled-events.md). Scheduled Events należy używać do aktualizowania wszelkich przewidywanych operacji konserwacji i odzyskiwania.
 
-W tym przypadku zdarzenie planowanej konserwacji wymaga maszyna wirtualna może być odtworzona na nowy host z pustych dysków lokalnych danych należy ponownie zsynchronizowane (ponownie, przy użyciu dowolnych danych w starej hosta jest bezpiecznie wymazywane). Dzieje się tak, ponieważ maszyny wirtualne z serii Lsv2 aktualnie nie obsługuje migracji na żywo na dysku lokalnym NVMe.
+W przypadku, gdy planowane zdarzenie konserwacji wymaga odtworzenia maszyny wirtualnej na nowym hoście z pustymi dyskami lokalnymi, należy ponownie zsynchronizować dane (z wszelkimi danymi na Starym hoście). Dzieje się tak, ponieważ maszyny wirtualne z serii Lsv2 nie obsługują obecnie migracji na żywo na lokalnym dysku interfejsu NVMe.
 
 Istnieją dwa tryby planowanej konserwacji.
 
-### <a name="standard-vm-customer-controlled-maintenance"></a>Standardowa konserwacji kontrolowane przez klienta maszyny Wirtualnej
+### <a name="standard-vm-customer-controlled-maintenance"></a>Standardowa maszyna wirtualna z obsługą kontroli klienta
 
-- Maszyna wirtualna jest przenoszona na hoście zaktualizowanym przedziale 30-dniowego.
-- Mogą zostać utracone, Lsv2 lokalnego magazynu danych, dlatego zaleca się tworzenia kopii zapasowych danych przed zdarzeniem.
+- Maszyna wirtualna zostanie przeniesiona na zaktualizowany host w oknie 30-dniowym.
+- Dane magazynu lokalnego Lsv2 mogły zostać utracone, dlatego zaleca się wykonanie kopii zapasowej danych przed zdarzeniem.
 
-### <a name="automatic-maintenance"></a>Automatycznej konserwacji
+### <a name="automatic-maintenance"></a>Automatyczna konserwacja
 
-- Występuje, gdy klient nie jest wykonywane konserwacji kontrolowane przez klienta lub w przypadku procedur awaryjnych, takich jak zdarzenia zabezpieczeń zero day.
-- Zachowaj dane klienta, ale do małych ryzyko blokowanie maszyny Wirtualnej lub ponowne uruchomienie komputera.
-- Mogą zostać utracone, Lsv2 lokalnego magazynu danych, dlatego zaleca się tworzenia kopii zapasowych danych przed zdarzeniem.
+- Występuje, gdy klient nie wykonuje konserwacji kontrolowanej przez klienta lub w przypadku procedur awaryjnych, takich jak wydarzenie o wartości zero.
+- Przeznaczone do zachowywania danych klienta, ale istnieje niewielkie ryzyko zablokowania lub ponownego uruchomienia maszyny wirtualnej.
+- Dane magazynu lokalnego Lsv2 mogły zostać utracone, dlatego zaleca się wykonanie kopii zapasowej danych przed zdarzeniem.
 
-Wszystkie zdarzenia usługi, która umożliwia wybierz czas na najbardziej odpowiednim dla aktualizacji proces konserwacji kontrolowany. Przed zdarzeniem możesz utworzyć kopię zapasową danych w usłudze premium storage. Po zakończeniu zdarzenia konserwacji, można zwrócić danych do odświeżenia maszyn wirtualnych Lsv2 NVMe magazynu lokalnego.
+W przypadku dowolnych nadchodzących zdarzeń usługi należy użyć kontrolowanego procesu konserwacji, aby wybrać najbardziej odpowiedni czas dla aktualizacji. Przed wydarzeniem możesz utworzyć kopię zapasową danych w usłudze Premium Storage. Po zakończeniu zdarzenia konserwacji można zwrócić dane do odświeżonego lokalnego magazynu maszyn wirtualnych Lsv2.
 
-Scenariusze, Obsługa danych na dyskach lokalnych NVMe, które obejmują:
+Scenariusze, które utrzymują dane na lokalnych dyskach interfejsu NVMe, obejmują:
 
-- Maszyna wirtualna jest uruchomiona i działa prawidłowo.
-- Maszyna wirtualna jest uruchomiona ponownie w miejscu (przez Ciebie lub Azure).
-- Maszyna wirtualna jest wstrzymana (zatrzymane bez dezalokacji).
-- Większość planowanej konserwacji operacji obsługi.
+- Maszyna wirtualna jest uruchomiona i jest w dobrej kondycji.
+- Maszyna wirtualna jest uruchamiana ponownie w miejscu (przez użytkownika lub na platformie Azure).
+- Maszyna wirtualna jest wstrzymana (zatrzymana bez alokacji).
+- Większość planowanych operacji obsługi konserwacji.
 
-Scenariusze, które bezpiecznie wymazać dane klienta obejmują:
+Scenariusze, które umożliwiają bezpieczne wymazywanie danych w celu ochrony klienta, obejmują:
 
-- Maszyna wirtualna jest ponownie wdrażana, zatrzymana (cofnięty przydział) lub usuniesz ().
-- Maszyna wirtualna staje się nieprawidłowy i ma usługą poprawianie do innego węzła z powodu problemu ze sprzętem.
-- Niewielka liczba planowanej konserwacji operacji obsługi, które wymaga maszyny Wirtualnej, zostają przeniesione na innego hosta do obsługi.
+- Maszyna wirtualna zostanie ponownie wdrożona, zatrzymana (cofnięta alokacja) lub usunięta (przez użytkownika).
+- Maszyna wirtualna przechodzi w stan złej kondycji i musi zaistnieć w innym węźle, z powodu problemu ze sprzętem.
+- Niewielka liczba planowanych operacji obsługi konserwacji, które wymagają, aby maszyna wirtualna została ponownie przypisana do innego hosta w celu obsługi.
 
-Aby dowiedzieć się więcej o opcjach wykonywania kopii zapasowych danych w magazynie lokalnym, zobacz [kopia zapasowa i odzyskiwanie po awarii dla dysków Azure IaaS](backup-and-disaster-recovery-for-azure-iaas-disks.md).
+Aby dowiedzieć się więcej na temat opcji tworzenia kopii zapasowych danych w magazynie lokalnym, zobacz [Tworzenie kopii zapasowych i odzyskiwanie po awarii dla dysków usługi Azure IaaS](backup-and-disaster-recovery-for-azure-iaas-disks.md).
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-* **Jak uruchomić wdrażanie maszyn wirtualnych z serii Lsv2**  
-   Podobnie jak każdej innej maszyny Wirtualnej, należy użyć [Portal](quick-create-portal.md), [wiersza polecenia platformy Azure](quick-create-cli.md), lub [PowerShell](quick-create-powershell.md) utworzyć maszynę Wirtualną.
+* **Jak mogę rozpocząć wdrażanie maszyn wirtualnych z serii Lsv2?**  
+   Podobnie jak w przypadku każdej innej maszyny wirtualnej, można utworzyć maszynę wirtualną za pomocą [portalu](quick-create-portal.md), [interfejsu wiersza polecenia platformy Azure](quick-create-cli.md)lub [programu PowerShell](quick-create-powershell.md) .
 
-* **Pojedynczego uszkodzenia dysku NVMe spowoduje wszystkich maszyn wirtualnych na hoście nie powiedzie się?**  
-   W przypadku wykrycia awarii dysku w węźle sprzętu, sprzęt jest w stanie niepowodzenia. W takiej sytuacji wszystkie maszyny wirtualne w węźle są cofać przydziału i automatycznie przeniesiona do węzła dobrej kondycji. Dla maszyn wirtualnych z serii Lsv2 oznacza to, czy danych klienta w węźle niepowodzenie jest również bezpiecznie wymazywane i musi zostać ponownie utworzone przez klienta w nowym węźle. Jak wspomniano, zanim migracji na żywo staje się dostępny dla Lsv2, w węźle niepowodzenie będą aktywnie przenieść dane z maszyn wirtualnych jak są przenoszone do innego węzła.
+* **Czy awaria jednego dysku interfejsu NVMe spowoduje niepowodzenie wszystkich maszyn wirtualnych na hoście?**  
+   Jeśli na węźle sprzęt zostanie wykryta awaria dysku, sprzęt jest w stanie awarii. W takim przypadku wszystkie maszyny wirtualne w węźle są automatycznie cofane i przenoszone do węzła w dobrej kondycji. W przypadku maszyn wirtualnych z serii Lsv2 oznacza to, że dane klienta w niepowodzeniem węźle są również bezpiecznie wymazane i konieczne będzie ich odtworzenie przez klienta w nowym węźle. Jak wspomniano, przed rozpoczęciem migracji na żywo w witrynie Lsv2, dane w węźle, który uległ awarii, zostaną aktywnie przeniesione z maszynami wirtualnymi w miarę ich przenoszenia do innego węzła.
 
-* **Należy wprowadzić korekty sondowania w Windows w systemie Windows Server 2012 lub Windows Server 2016?**  
-   NVMe sondowania jest dostępna tylko na 2019 serwera systemu Windows na platformie Azure.  
+* **Czy muszę wykonać korekty sondowania w systemie Windows w systemie Windows Server 2012 lub Windows Server 2016?**  
+   Sondowanie interfejsu NVMe jest dostępne tylko w systemie Windows Server 2019 na platformie Azure.  
 
-* **Czy mogę przełączać do modelu tradycyjnym przerwania usług rutynowych (ISR)?**  
-   Maszyny wirtualne z serii Lsv2 są zoptymalizowane dla NVMe sondowania. Aktualizacje ciągle są przekazywane do zwiększenia wydajności sondowania.
+* **Czy mogę wrócić do tradycyjnego modelu procedury usługi przerwania (ISR)?**  
+   Maszyny wirtualne z serii Lsv2 są zoptymalizowane pod kątem sondowania interfejsu NVMe. Aktualizacje są stale udostępniane, aby zwiększyć wydajność sondowania.
 
-* **Czy można dostosować ustawienia sondowania w 2019 r Server systemu Windows?**  
-   Ustawienia sondowania nie są zmieniane użytkownika.
+* **Czy można dostosować ustawienia sondowania w systemie Windows Server 2019?**  
+   Ustawienia sondowania nie są dostosowywane do użytkownika.
    
 ## <a name="next-steps"></a>Następne kroki
 
-* Zobacz specyfikacje dotyczące wszystkich [maszyny wirtualne zoptymalizowane pod kątem wydajności pamięci masowej](sizes-storage.md) na platformie Azure
+* Zobacz specyfikacje dla wszystkich [maszyn wirtualnych zoptymalizowanych pod kątem wydajności magazynu](sizes-storage.md) na platformie Azure

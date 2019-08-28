@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą RightAnswers | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i RightAnswers.
+title: 'Samouczek: Azure Active Directory integrację z usługą RightAnswers | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i RightAnswers.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 5f083178ca7e28831bf4f60940c3ced73a427dda
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f242b2e33b50aa955446ae2b1f62421d39e58418
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092779"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098900"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą RightAnswers
+# <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>Samouczek: Integracja Azure Active Directory z usługą RightAnswers
 
-W tym samouczku dowiesz się, jak zintegrować RightAnswers w usłudze Azure Active Directory (Azure AD).
-Integrowanie RightAnswers z usługą Azure AD zapewnia następujące korzyści:
+W tym samouczku dowiesz się, jak zintegrować usługę RightAnswers z usługą Azure Active Directory (Azure AD).
+Integracja RightAnswers z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do RightAnswers.
-* Aby umożliwić użytkownikom można automatycznie zalogowany do RightAnswers (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
+* Możesz kontrolować usługę Azure AD, która ma dostęp do usługi RightAnswers.
+* Możesz pozwolić użytkownikom na automatyczne logowanie do RightAnswers (Logowanie jednokrotne) przy użyciu kont usługi Azure AD.
 * Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -36,20 +36,20 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą RightAnswers, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z usługą RightAnswers, potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
-* RightAnswers pojedynczego logowania jednokrotnego włączonych subskrypcji
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/)
+* Subskrypcja z włączonym logowaniem jednokrotnym w RightAnswers
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Obsługuje RightAnswers **SP** jednokrotne logowanie inicjowane przez
+* RightAnswers obsługuje logowanie jednokrotne w usłudze **SP**
 
 ## <a name="adding-rightanswers-from-the-gallery"></a>Dodawanie RightAnswers z galerii
 
-Aby skonfigurować integrację RightAnswers w usłudze Azure AD, należy dodać RightAnswers z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację programu RightAnswers z usługą Azure AD, musisz dodać RightAnswers z galerii do listy zarządzanych aplikacji SaaS.
 
 **Aby dodać RightAnswers z galerii, wykonaj następujące czynności:**
 
@@ -65,31 +65,31 @@ Aby skonfigurować integrację RightAnswers w usłudze Azure AD, należy dodać 
 
     ![Nowy przycisk aplikacji](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **RightAnswers**, wybierz opcję **RightAnswers** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **RightAnswers**, wybierz pozycję **RightAnswers** from panel wyników, a następnie kliknij przycisk **Dodaj** , aby dodać aplikację.
 
      ![RightAnswers na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
-W tej sekcji, konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą RightAnswers w oparciu o użytkownika testu o nazwie **Britta Simon**.
-Dla logowania jednokrotnego do pracy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w RightAnswers musi zostać ustanowione.
+Ta sekcja umożliwia skonfigurowanie i przetestowanie logowania jednokrotnego usługi Azure AD za pomocą RightAnswers na podstawie użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w RightAnswers.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą RightAnswers, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi RightAnswers, należy wykonać następujące bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Konfigurowanie RightAnswers logowania jednokrotnego](#configure-rightanswers-single-sign-on)**  — Aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+2. **[Skonfiguruj logowanie](#configure-rightanswers-single-sign-on)** jednokrotne w usłudze RightAnswers, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Tworzenie użytkownika testowego RightAnswers](#create-rightanswers-test-user)**  — aby odpowiednikiem Britta Simon w RightAnswers połączonego z usługi Azure AD reprezentacja użytkownika.
+5. **[Utwórz użytkownika testowego RightAnswers](#create-rightanswers-test-user)** , aby uzyskać odpowiednik Britta Simon w RightAnswers, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować usługę Azure AD logowanie jednokrotne z RightAnswers, wykonaj następujące czynności:
+Aby skonfigurować Logowanie jednokrotne usługi Azure AD za pomocą RightAnswers, wykonaj następujące czynności:
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **RightAnswers** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **RightAnswers** wybierz pozycję **Logowanie**jednokrotne.
 
     ![Skonfigurować łącze rejestracji jednokrotnej](common/select-sso.png)
 
@@ -103,20 +103,20 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z RightAnswers, wykon
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![RightAnswers domena i adresy URL pojedynczego logowania jednokrotnego informacji](common/sp-identifier.png)
+    ![RightAnswers domenę i adresy URL Logowanie jednokrotne](common/sp-identifier.png)
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.rightanswers.com/portal/ss/`
 
     b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.rightanswers.com:<identifier>/portal`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta RightAnswers](https://www.rightanswers.com/contact-us/) do uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem obsługi klienta RightAnswers](https://support.rightanswers.com) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
     ![Link pobierania certyfikatu](common/metadataxml.png)
 
-6. Na **Konfigurowanie RightAnswers** sekcji, skopiuj odpowiednie adresy URL, zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie RightAnswers** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -126,12 +126,12 @@ Aby skonfigurować usługę Azure AD logowanie jednokrotne z RightAnswers, wykon
 
     c. Adres URL wylogowywania
 
-### <a name="configure-rightanswers-single-sign-on"></a>Konfigurowanie RightAnswers logowanie jednokrotne
+### <a name="configure-rightanswers-single-sign-on"></a>Konfigurowanie logowania jednokrotnego RightAnswers
 
-Aby skonfigurować logowanie jednokrotne na **RightAnswers** stronie, musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowany adresy URL z portalu Azure w celu [RightAnswers zespołu pomocy technicznej ](https://www.rightanswers.com/contact-us/). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować Logowanie jednokrotne na stronie **RightAnswers** , musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej RightAnswers](https://support.rightanswers.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 > [!NOTE]
-> Z zespołem pomocy technicznej RightAnswers ma na celu rzeczywistą konfigurację logowania jednokrotnego. Gdy logowanie jednokrotne zostanie włączone dla Twojej subskrypcji, otrzymasz o tym powiadomienie.
+> Zespół pomocy technicznej RightAnswers musi wykonać rzeczywistą konfigurację logowania jednokrotnego. Gdy logowanie jednokrotne zostanie włączone dla Twojej subskrypcji, otrzymasz o tym powiadomienie.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -151,7 +151,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`  
+    b. W polu **Nazwa użytkownika** wpisz`brittasimon@yourcompanydomain.extension`  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
@@ -160,13 +160,13 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do RightAnswers.
+W tej sekcji Britta Simon do korzystania z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi RightAnswers.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**, a następnie wybierz **RightAnswers**.
+1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, wybierz pozycję **wszystkie aplikacje**, a następnie wybierz pozycję **RightAnswers**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz **RightAnswers**.
+2. Na liście Aplikacje wybierz pozycję **RightAnswers**.
 
     ![Link RightAnswers na liście aplikacji](common/all-applications.png)
 
@@ -184,20 +184,20 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-rightanswers-test-user"></a>Tworzenie użytkownika testowego RightAnswers
+### <a name="create-rightanswers-test-user"></a>Utwórz użytkownika testowego RightAnswers
 
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do RightAnswers, musi być obsługiwana w RightAnswers. Gdy RightAnswers, inicjowanie obsługi administracyjnej jest zadania automatycznego, więc nie ma żadnych akcji elementu dla Ciebie.
+Aby umożliwić użytkownikom usługi Azure AD logowanie się w usłudze RightAnswers, muszą one być obsługiwane w usłudze RightAnswers. Gdy RightAnswers, Inicjowanie obsługi jest zadaniem zautomatyzowanym, więc nie ma żadnego elementu akcji.
 
-Użytkownicy są tworzone automatycznie w razie potrzeby podczas pierwszej pojedynczego logowania jednokrotnego próby.
+Użytkownicy są automatycznie tworzeniu w razie potrzeby podczas pierwszej próby logowania jednokrotnego.
 
 > [!NOTE]
-> Można użyć jakichkolwiek innych RightAnswers użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez RightAnswers do aprowizacji kont użytkowników usługi AAD.
+> Do aprowizacji kont użytkowników usługi AAD można używać innych narzędzi do tworzenia kont użytkowników RightAnswers i interfejsów API dostarczonych przez RightAnswers.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka RightAnswers w panelu dostępu, powinien zostać automatycznie zarejestrowaniu w usłudze RightAnswers, dla którego skonfigurować logowanie Jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka RightAnswers w panelu dostępu należy automatycznie zalogować się do RightAnswers, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
@@ -205,4 +205,4 @@ Po kliknięciu kafelka RightAnswers w panelu dostępu, powinien zostać automaty
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

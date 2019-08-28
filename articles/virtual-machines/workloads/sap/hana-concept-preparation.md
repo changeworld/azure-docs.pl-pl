@@ -1,110 +1,109 @@
 ---
-title: Zasady odzyskiwania po awarii i przygotowania na platformie SAP HANA na platformie Azure (duże wystąpienia) | Dokumentacja firmy Microsoft
-description: Zasady odzyskiwania po awarii i przygotowania na platformie SAP HANA na platformie Azure (duże wystąpienia)
+title: Zasady odzyskiwania po awarii i przygotowanie do SAP HANA na platformie Azure (duże wystąpienia) | Microsoft Docs
+description: Zasady odzyskiwania po awarii i przygotowanie do SAP HANA na platformie Azure (duże wystąpienia)
 services: virtual-machines-linux
 documentationcenter: ''
 author: saghorpa
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cb1ed063cb11a82d786badd3f63b2d4b6932ce13
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 33d52f871de75a7f7d34016b040e44d6f1623fd8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709731"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101259"
 ---
 # <a name="disaster-recovery-principles"></a>Zasady odzyskiwania po awarii
 
-Dużych wystąpień HANA oferuje funkcje odzyskiwania po awarii, między sygnatury duże wystąpienie oprogramowania HANA w różnych regionach platformy Azure. Na przykład w przypadku wdrożenia jednostek duże wystąpienie oprogramowania HANA w regionie zachodnie stany USA Azure służy jednostki duże wystąpienie oprogramowania HANA w regionie wschodnie stany USA jako jednostka odzyskiwania po awarii. Jak wspomniano wcześniej, odzyskiwania po awarii nie jest konfigurowana automatycznie, ponieważ wymaga ona płacisz z inną jednostką duże wystąpienie oprogramowania HANA w regionie odzyskiwania po awarii. Instalator odzyskiwania po awarii działa dla ustawień skalowania w górę, a także skalowania w poziomie. 
+Duże wystąpienia HANA oferują funkcjonalność odzyskiwania po awarii między sygnaturami dużych wystąpień usługi HANA w różnych regionach platformy Azure. Na przykład w przypadku wdrażania jednostek usługi HANA o dużych wystąpieniach w regionie zachodnie stany USA platformy Azure można użyć jednostek z dużymi wystąpieniami HANA w regionie Wschodnie stany USA jako jednostki odzyskiwania po awarii. Jak wspomniano wcześniej, odzyskiwanie po awarii nie jest konfigurowane automatycznie, ponieważ wymaga uregulowania innej jednostki dużego wystąpienia HANA w regionie DR. Konfiguracja odzyskiwania po awarii działa w przypadku skalowania w górę oraz ustawień skalowania w poziomie. 
 
-W scenariuszach wdrożone do tej pory klientów jednostka jest używana w regionie odzyskiwania po awarii do uruchamiania systemów nieprodukcyjnych, które używają zainstalowanego wystąpienia platformy HANA. Jednostka dużych wystąpień HANA musi mieć tej samej jednostki SKU jako jednostki SKU, używane do celów produkcyjnych. Na poniższej ilustracji przedstawiono konfigurację dysku od jednostki serwera w regionie platformy Azure środowiska produkcyjnego i regionie odzyskiwania po awarii wygląda następująco:
+W scenariuszach wdrożonych do tej pory klienci używają jednostki w regionie DR do uruchamiania systemów nieprodukcyjnych, które używają zainstalowanego wystąpienia platformy HANA. Jednostka dużej instancji HANA musi być tą samą jednostką SKU jak jednostka SKU używana do celów produkcyjnych. Na poniższej ilustracji przedstawiono, jak Konfiguracja dysku między jednostką serwera w regionie produkcyjnym platformy Azure a regionem odzyskiwania po awarii wygląda następująco:
 
-![W konfiguracji odzyskiwania po awarii z punktu widzenia dysku](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_setup.PNG)
+![Konfiguracja instalacji DR z punktu widzenia dysku](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_setup.PNG)
 
-Jak pokazano na poniższej ilustracji — omówienie, należy następnie kolejność drugi zestaw woluminów dysku. Woluminy dysku docelowego są dostępne w taki sam rozmiar jak wielkości produkcji dla wystąpienia produkcyjnego w jednostkach odzyskiwania po awarii. Te woluminy dysku są skojarzone z jednostki serwera duże wystąpienie oprogramowania HANA w lokacji odzyskiwania po awarii. Następujące woluminy są replikowane z regionu produkcji do lokacji odzyskiwania po awarii:
+Jak pokazano na tej grafice przeglądu, należy zastanowić się nad drugim zestawem woluminów dysku. Woluminy dysku docelowego są takie same jak woluminy produkcyjne dla wystąpienia produkcyjnego w jednostkach odzyskiwania po awarii. Te woluminy dysków są skojarzone z jednostką serwera dużego wystąpienia HANA w lokacji odzyskiwania po awarii. Następujące woluminy są replikowane z regionu produkcji do lokacji DR:
 
 - /hana/data
-- / hana/logbackups 
-- /Hana/Shared (obejmuje/usr/sap)
+- /hana/logbackups 
+- /Hana/Shared (łącznie z/usr/SAP)
 
-Wolumin /hana/log nie jest replikowana, ponieważ dziennik transakcji platformy SAP HANA nie jest potrzebna w taki sposób, który odbywa się przywracanie z tych woluminów. 
+Wolumin/Hana/log nie jest replikowany, ponieważ dziennik transakcji SAP HANA nie jest wymagany w sposób, w jaki wykonywane jest przywracanie z tych woluminów. 
 
-Podstawy funkcji odzyskiwania po awarii oferowana jest funkcje replikacji magazynu oferowana przez infrastrukturę dużych wystąpień HANA. Funkcje, które jest używane po stronie magazynu nie jest stały strumień zmiany, które są replikowane w sposób asynchroniczny, ponieważ wprowadzenia zmiany do woluminu magazynu. Zamiast tego jest mechanizm, który opiera się na fakcie, że migawki te woluminy są tworzone na bieżąco. Różnica między już replikowanych migawki i nową migawkę, która nie została jeszcze zreplikowana jest następnie przekazywane do lokacji odzyskiwania po awarii na woluminy dysku docelowego.  Te migawki są przechowywane w woluminach, a w przypadku trybu failover odzyskiwania po awarii trzeba przywrócić na tych woluminach.  
+Podstawą oferowanej funkcji odzyskiwania po awarii jest funkcja replikacji magazynu oferowana przez infrastrukturę dużych wystąpień platformy HANA. Funkcja, która jest używana na stronie magazynu, nie jest stałym strumieniem zmian, które są replikowane w sposób asynchroniczny w miarę dokonywania zmian w woluminie magazynu. Zamiast tego jest mechanizmem, który polega na tym, że migawki tych woluminów są tworzone w regularnych odstępach czasu. Różnica między już replikowaną migawką a nową migawką, która nie została jeszcze zreplikowana, jest następnie przekazywana do lokacji odzyskiwania po awarii do woluminów na dysku docelowym.  Te migawki są przechowywane na woluminach, a w przypadku trybu failover odzyskiwania po awarii należy przywrócić te woluminy.  
 
-Pierwszy transfer pełnych danych woluminu powinien być przed ilość danych staje się mniejszy niż różnic między migawkami. Z tego powodu woluminy w lokacji odzyskiwania po awarii zawierają każdy jeden migawek woluminu wykonywane w lokacji produkcyjnej. Po pewnym czasie można użyć tego systemu odzyskiwania po awarii można pobrać stanu starszych odzyskać utracone dane, bez wycofywania w systemie produkcyjnym.
+Pierwszy transfer kompletnych danych woluminu powinien być wcześniejszy niż różnica między migawkami. W związku z tym woluminy w lokacji DR zawierają co najmniej jedną migawkę woluminu wykonywaną w lokacji produkcyjnej. Na koniec można użyć tego systemu, aby przejść do wcześniejszego stanu w celu odzyskania utraconych danych bez wycofywania systemu produkcyjnego.
 
-W przypadku wdrożenia usługi MCOD wielu wystąpieniom niezależnie od oprogramowania SAP HANA w jednej jednostce dużych wystąpień HANA oczekuje się, że wszystkie wystąpienia oprogramowania SAP HANA otrzymują magazynu replikowane do odzyskiwania po awarii.
+Jeśli istnieje wdrożenie MCOD z wieloma niezależnymi wystąpieniami SAP HANA w jednej jednostce o dużej instancji HANA, oczekuje się, że wszystkie wystąpienia SAP HANA będą pobierać magazyn replikowany na stronie DR.
 
-W przypadku których pełnić funkcji wysokiej dostępności replikacji systemu HANA w przypadku witryn produkcyjnych i używane replikacji na podstawie magazynu dla danej lokacji odzyskiwania po awarii ilości oba węzły w lokacji głównej do wystąpienia usługi odzyskiwania po awarii są replikowane. Należy zakupić dodatkowy magazyn (ten sam rozmiar od węzła podstawowego) w lokacji odzyskiwania po awarii, aby pomieścić replikacji z podstawowego i pomocniczego do odzyskiwania po awarii. 
+W przypadku korzystania z replikacji systemu HANA jako funkcji wysokiej dostępności w lokacji produkcyjnej i używania replikacji opartej na magazynie dla lokacji DR są replikowane woluminy obu węzłów z lokacji głównej do wystąpienia usługi DR. Należy zakupić dodatkowy magazyn (ten sam rozmiar jak węzeł podstawowy) w lokacji DR, aby uwzględnić replikację zarówno z podstawowego, jak i pomocniczego do odzyskiwania po awarii. 
 
 
 
 >[!NOTE]
->Funkcje replikacji magazynu dużych wystąpień HANA jest dublowania i replikacji migawek magazynu. Jeśli nie wykonasz migawek magazynu wprowadzonego w kopii zapasowej i przywracania sekcji tego artykułu, nie może być dowolnym replikacji do lokacji odzyskiwania po awarii. Wykonanie migawki magazynu to warunek wstępny do magazynu replikacji do lokacji odzyskiwania po awarii.
+>Funkcja replikacji magazynu dużych wystąpień platformy HANA to dublowanie i replikowanie migawek magazynu. Jeśli nie wykonasz migawek magazynu wprowadzonych w sekcji Tworzenie kopii zapasowych i przywracanie tego artykułu, nie można przeprowadzić replikacji do lokacji odzyskiwania po awarii. Wykonanie migawki magazynu jest wymaganiem wstępnym do replikacji magazynu do lokacji odzyskiwania po awarii.
 
 
 
-## <a name="preparation-of-the-disaster-recovery-scenario"></a>Przygotowywanie scenariusza odzyskiwania po awarii
-W tym scenariuszu masz systemu produkcyjnego w dużych wystąpieniach HANA w regionie platformy Azure w środowisku produkcyjnym. Aby uzyskać instrukcje, które należy wykonać, załóżmy, że identyfikator SID tego systemu HANA jest "PRD" i że masz systemu nieprodukcyjnych w dużych wystąpieniach HANA w regionie odzyskiwania po awarii Azure. W ostatniej Załóżmy, że jego identyfikator SID jest "TST." Na poniższej ilustracji przedstawiono tę konfigurację:
+## <a name="preparation-of-the-disaster-recovery-scenario"></a>Przygotowanie scenariusza odzyskiwania po awarii
+W tym scenariuszu w środowisku produkcyjnym platformy Azure jest uruchomiony system produkcyjny w dużych wystąpieniach HANA. W przypadku kroków, które należy wykonać, Załóżmy, że identyfikator SID tego systemu HANA to "PRD" i że masz system nieprodukcyjny działający w dużych wystąpieniach HANA w regionie platformy Azure. Załóżmy, że jego identyfikator SID to "TST". Na poniższej ilustracji przedstawiono tę konfigurację:
 
-![Początek konfiguracji odzyskiwania po awarii](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start1.PNG)
+![Rozpoczęcie instalacji programu DR](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start1.PNG)
 
-Jeśli wystąpienie serwera nie ma jeszcze nie zostało uporządkowane z zestawem woluminu dodatkowego miejsca do magazynowania, SAP HANA na dołącza usługi Azure Service Management dodatkowego zestawu woluminów jako element docelowy dla repliki produkcji do jednostki dużych wystąpień HANA, na którym jest uruchomiony TST Wystąpienie oprogramowania HANA. W tym celu należy podać identyfikator SID wystąpienie oprogramowania HANA produkcji. Po oprogramowanie SAP HANA na usługi Azure Service Management załącznika tych woluminów, musisz zainstalować tych woluminów do jednostki dużych wystąpień HANA.
+Jeśli wystąpienie serwera nie zostało jeszcze uporządkowane z dodatkowym zestawem woluminów magazynu, SAP HANA w usłudze Azure Service Management dołącza dodatkowy zestaw woluminów jako element docelowy dla repliki produkcyjnej do jednostki usługi HANA o dużym wystąpieniu, w której uruchomiono TST Wystąpienie HANA. W tym celu należy podać identyfikator SID wystąpienia produkcyjnego platformy HANA. Po SAP HANA w usłudze Azure Service Management potwierdzi załącznik tych woluminów, należy zainstalować te woluminy w jednostce dużego wystąpienia HANA.
 
-![Następnym krokiem konfiguracji odzyskiwania po awarii](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start2.PNG)
+![Następny krok instalatora DR](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start2.PNG)
 
-Następnym krokiem jest dla Ciebie zainstalować drugie wystąpienie SAP HANA w jednostce duże wystąpienie oprogramowania HANA w regionie odzyskiwania po awarii platformy Azure, w którym jest uruchamiane wystąpienie oprogramowania HANA TST. Nowo zainstalowane wystąpienie SAP HANA musi mieć ten sam identyfikator SID. Użytkownicy utworzeni konieczne tych samych identyfikatorów UID i identyfikator grupy, który zawiera wystąpienie produkcyjne. Odczyt [kopii zapasowej i przywracania](hana-backup-restore.md) Aby uzyskać szczegółowe informacje. Jeśli instalacja się powiodła, należy:
+Następnym krokiem jest zainstalowanie drugiego wystąpienia SAP HANA w jednostce usługi HANA duże wystąpienie w regionie platformy Azure, w którym jest uruchamiane wystąpienie TST HANA. Nowo zainstalowane wystąpienie SAP HANA musi mieć ten sam identyfikator SID. Utworzony użytkownicy muszą mieć ten sam identyfikator UID i grupy, które ma wystąpienie produkcyjne. Aby uzyskać szczegółowe informacje, przeczytaj temat [wykonywanie kopii zapasowej i przywracanie](hana-backup-restore.md) . Jeśli instalacja zakończyła się pomyślnie, musisz:
 
-- Wykonaj krok 2 przygotowania migawki magazynu, które są opisane w [kopii zapasowej i przywracania](hana-backup-restore.md).
-- Utwórz klucz publiczny dla jednostki odzyskiwania po awarii w dużych wystąpień HANA jednostki, jeśli nie zostały jeszcze zrobione. Zobacz krok 3 Przygotowanie migawek magazynu, które są opisane w [kopii zapasowej i przywracania](hana-backup-restore.md).
-- Obsługa *HANABackupCustomerDetails.txt* nowe wystąpienie oprogramowania HANA i testów czy łączność w magazynie działa prawidłowo.  
-- Zatrzymaj nowo zainstalowane wystąpienie SAP HANA w jednostce duże wystąpienie oprogramowania HANA w regionie odzyskiwania po awarii platformy Azure.
-- Odinstaluj woluminy te PRD i skontaktuj się z oprogramowania SAP HANA na zarządzanie usługami platformy Azure. Woluminy nie może pozostać zainstalowanego do jednostki, ponieważ nie mogą być dostępne podczas działania jako cel replikacji magazynu.  
+- Wykonaj krok 2 przygotowania migawki magazynu opisanego w temacie [Tworzenie kopii zapasowych i przywracanie](hana-backup-restore.md).
+- Utwórz klucz publiczny dla jednostki usługi DR o dużej instancji platformy HANA, jeśli jeszcze tego nie zrobiono. Zobacz Krok 3 przygotowania migawki magazynu opisanego w temacie [Tworzenie kopii zapasowych i przywracanie](hana-backup-restore.md).
+- Zachowaj *HANABackupCustomerDetails. txt* z nowym wystąpieniem platformy Hana i sprawdź, czy połączenie z magazynem działa poprawnie.  
+- Zatrzymaj nowo zainstalowane wystąpienie SAP HANA w jednostce usługi HANA duże wystąpienie w regionie odzyskiwania po awarii.
+- Odinstaluj te woluminy PRD i skontaktuj się SAP HANA w usłudze Azure Service Management. Woluminy nie mogą pozostać zainstalowane w jednostce, ponieważ nie mogą być dostępne podczas działania jako cel replikacji magazynu.  
 
-![Krok instalacji odzyskiwania po awarii przed nawiązaniem replikacji](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
+![Krok instalacji DR przed ustanowieniem replikacji](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start3.PNG)
 
-Zespół operacyjny ustanawia relację replikacji między woluminy PRD w regionie platformy Azure w środowisku produkcyjnym, a woluminy PRD w regionie odzyskiwania po awarii platformy Azure.
+Zespół operacyjny ustanawia relację replikacji między woluminami PRD w regionie produkcyjnym platformy Azure i woluminami PRD w regionie odzyskiwania po awarii.
 
 >[!IMPORTANT]
->Wolumin /hana/log nie jest replikowana, ponieważ nie jest konieczne przywrócenie zreplikowanej bazy danych SAP HANA do spójnego stanu w lokacji odzyskiwania po awarii.
+>Wolumin/Hana/log nie jest replikowany, ponieważ nie jest konieczne przywrócenie zreplikowanej bazy danych SAP HANA do stanu spójnego w lokacji odzyskiwania po awarii.
 
-Następnie należy skonfigurować lub dostosować harmonogram tworzenia kopii zapasowych migawki magazynu, aby przejść do swojej RTO i RPO w przypadku awarii. Aby zminimalizować cel punktu odzyskiwania, należy ustawić następujący interwały replikacji w usłudze dużych wystąpień HANA:
-- W przypadku woluminów objętych połączone migawki (typ migawki **hana**), zestawu do replikowania co 15 minut do celów woluminu magazynu równoważne w lokacji odzyskiwania po awarii.
-- Na woluminie kopii zapasowej dziennika transakcji (typ migawki **dzienniki**), zestawu do replikowania co 3 minuty do celów woluminu magazynu równoważne w lokacji odzyskiwania po awarii.
+Następnie skonfiguruj lub Dostosuj harmonogram tworzenia kopii zapasowych migawek magazynu, aby uzyskać dostęp do RTO i punktu odzyskiwania w przypadku awarii. Aby zminimalizować cel punktu odzyskiwania, należy ustawić następujące Interwały replikacji w usłudze w dużym wystąpieniu usługi HANA:
+- Dla woluminów objętych połączoną migawką (Snapshot Type)Ustaw replikację co 15 minut do odpowiadającego miejsca docelowego woluminu magazynu w lokacji odzyskiwania po awarii.
+- W przypadku woluminu kopii zapasowej dziennika transakcji ( **dzienniki**typu migawek), ustawione na replikację co 3 minuty do odpowiadającego miejsca docelowego woluminu magazynu w lokacji odzyskiwania po awarii.
 
-Aby zminimalizować cel punktu odzyskiwania, wprowadź następujące ustawienia:
-- Wykonaj **hana** typu magazynu migawek (zobacz "krok 7: Wykonywanie migawek") co 30 minut do 1 godziny.
-- Wykonaj kopie zapasowe dziennika transakcji platformy SAP HANA co 5 minut.
-- Wykonaj **dzienniki** typu magazynu migawek co 5 – 15 minut. Za pomocą tego okresu interwał osiągasz RPO około 15 25 minut.
+Aby zminimalizować cel punktu odzyskiwania, skonfiguruj następujące elementy:
+- Wykonaj migawkę magazynu typu **Hana** (zobacz sekcję "krok 7: Wykonaj migawki ") co 30 minut do 1 godziny.
+- Wykonaj kopie zapasowe dziennika transakcji SAP HANA co 5 minut.
+- Wykonaj **dzienniki** typ migawki magazyn co 5-15 minut. W tym okresie można osiągnąć cel punktu odzyskiwania około 15-25 minut.
 
-Dzięki tej opcji instalacji, sekwencji, kopie zapasowe dziennika transakcji, magazynu migawek i replikacji transakcji HANA Zaloguj się dane kopii zapasowej woluminu i/hana/i /hana/shared (obejmuje/usr/sap), może wyglądać dane wyświetlane na poniższej ilustracji:
+W przypadku tej konfiguracji sekwencja kopii zapasowych dziennika transakcji, migawek magazynu i replikacji woluminu kopii zapasowej dziennika transakcji HANA oraz/Hana/Data oraz/Hana/Shared (zawiera/usr/SAP) może wyglądać jak dane wyświetlane na tej ilustracji:
 
- ![Relacja między migawki kopii zapasowej dziennika transakcji i dublowanie przystawki na osi czasu](./media/hana-overview-high-availability-disaster-recovery/snapmirror.PNG)
+ ![Relacja między migawką kopii zapasowej dziennika transakcji i duplikatem przyciągania na osi czasu](./media/hana-overview-high-availability-disaster-recovery/snapmirror.PNG)
 
-Aby osiągnąć jeszcze lepszy cel punktu odzyskiwania w przypadku odzyskiwania po awarii, możesz skopiować kopie zapasowe dziennika transakcji HANA z platformą SAP HANA na platformie Azure (duże wystąpienia) do innego regionu platformy Azure. Aby osiągnąć ten dalsze obniżenie cel punktu odzyskiwania, należy wykonać następujące czynności:
+Aby osiągnąć jeszcze lepszy cel punktu odzyskiwania po awarii, można skopiować kopie zapasowe dziennika transakcji HANA z SAP HANA na platformie Azure (duże wystąpienia) do innych regionów świadczenia usługi Azure. Aby osiągnąć dalsze zmniejszenie punktu odzyskiwania, wykonaj następujące czynności:
 
-1. Tworzenie kopii zapasowych transakcji HANA dziennika tak często, jak to tylko możliwe /hana/logbackups.
-1. Aby skopiować kopie zapasowe dziennika transakcji systemu plików NFS hostowanych udziału maszyn wirtualnych platformy Azure, należy użyć polecenia rsync. Maszyny wirtualne znajdują się w sieciach wirtualnych platformy Azure w regionie platformy Azure środowiska produkcyjnego i regionu odzyskiwania po awarii. Należy połączyć obie sieci wirtualne platformy Azure z obwodem łączenia dużych wystąpień HANA w środowisku produkcyjnym na platformie Azure. Zobacz grafikę w [sieci zagadnienia dotyczące odzyskiwania po awarii przy użyciu dużych wystąpień HANA](#Network-considerations-for-disaster recovery-with-HANA-Large-Instances) sekcji. 
-1. Zachowaj kopie zapasowe dziennika transakcji w regionie na maszynie wirtualnej jest dołączony do systemu plików NFS wyeksportowane magazynu.
-1. W przypadku trybu failover po awarii należy uzupełnić kopie zapasowe dziennika transakcji, dostępne na woluminie /hana/logbackups więcej ostatnio wykonane kopie zapasowe dziennika transakcji na systemu plików NFS udostępniania w lokacji odzyskiwania po awarii. 
-1. Uruchom kopię zapasową dziennika transakcji w celu przywrócenia najnowszej kopii zapasowej, który może zostać zapisany w regionie odzyskiwania po awarii.
+1. Utwórz kopię zapasową dziennika transakcji HANA tak często, jak to możliwe, aby/Hana/logbackups.
+1. Użyj rsync, aby skopiować kopie zapasowe dziennika transakcji do maszyn wirtualnych platformy Azure hostowanych przez udziały NFS. Maszyny wirtualne znajdują się w sieciach wirtualnych platformy Azure w regionie produkcyjnym platformy Azure i w regionach odzyskiwania po awarii. Musisz połączyć sieci wirtualne platformy Azure z obwodem łączącym duże wystąpienia produkcji HANA z platformą Azure. Zapoznaj się z grafiką w sekcji [uwagi dotyczące sieci dotyczącej odzyskiwania po awarii przy użyciu dużych wystąpień platformy Hana](#Network-considerations-for-disaster recovery-with-HANA-Large-Instances) . 
+1. Przechowuj kopie zapasowe dziennika transakcji w regionie na maszynie wirtualnej podłączonej do magazynu wyeksportowanego systemu plików NFS.
+1. W przypadku trybu failover w przypadku awarii należy uzupełnić kopie zapasowe dziennika transakcji, które znajdują się na woluminie/Hana/logbackups z ostatnio przetworzonymi kopiami zapasowymi dziennika transakcji w udziale NFS w lokacji odzyskiwania po awarii. 
+1. Rozpocznij tworzenie kopii zapasowej dziennika transakcji, aby przywrócić najnowszą kopię zapasową, która może zostać zapisana w regionie odzyskiwania po awarii.
 
-Podczas operacji dużych wystąpień HANA upewnij się, Instalator relacji replikacji i Rozpocznij kopie zapasowe migawek magazynu wykonywania, rozpoczyna się replikacja danych.
+Podczas operacji dużego wystąpienia HANA należy potwierdzić konfigurację relacji replikacji i rozpocząć tworzenie kopii zapasowych migawek magazynu wykonywania, replikacja danych rozpoczyna się.
 
-![Krok instalacji odzyskiwania po awarii przed nawiązaniem replikacji](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start4.PNG)
+![Krok instalacji DR przed ustanowieniem replikacji](./media/hana-overview-high-availability-disaster-recovery/disaster_recovery_start4.PNG)
 
-Zgodnie z postępów replikacji migawek na woluminach PRD w regionach Azure odzyskiwania po awarii nie są przywracane. Tylko są one przechowywane. Jeśli woluminy są instalowane w taki stan, stanowią one stan, w którym możesz odinstalować tych woluminów po zainstalowaniu wystąpienie PRD SAP HANA w jednostce serwera w regionie odzyskiwania po awarii platformy Azure. Reprezentują one magazynu kopii zapasowych, które nie zostały jeszcze przywrócone.
+W miarę postępów replikacji migawki na woluminach PRD w regionach platformy Azure odzyskiwania po awarii nie są przywracane. Są one przechowywane. Jeśli woluminy są zainstalowane w takim stanie, reprezentują stan, w którym zostały odinstalowane te woluminy po zainstalowaniu wystąpienia SAP HANA PRD w jednostce serwerowej w regionie usługi odzyskiwania po awarii. Reprezentują one również kopie zapasowe magazynu, które nie zostały jeszcze przywrócone.
 
-W przypadku przejścia w tryb failover, również można przywrócić starsze migawkę pamięci masowej zamiast najnowszą migawkę pamięci masowej.
+W przypadku przejścia w tryb failover można również przywrócić starszą migawkę magazynu zamiast najnowszej migawki magazynu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zapoznaj się [procedurę trybu failover odzyskiwania po awarii](hana-failover-procedure.md).
+- Zapoznaj się z [procedurą trybu failover odzyskiwania po awarii](hana-failover-procedure.md).

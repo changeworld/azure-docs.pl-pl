@@ -1,6 +1,6 @@
 ---
-title: Migrowanie maszyn wirtualnych do usługi Azure Premium Storage | Dokumentacja firmy Microsoft
-description: Migrowanie istniejących maszyn wirtualnych do usługi Azure Premium Storage. Usługa Premium Storage oferuje obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach dla wyjścia — dużych obciążeń wejścia/uruchomione na maszynach wirtualnych platformy Azure.
+title: Migrowanie maszyn wirtualnych do usługi Azure Premium Storage | Microsoft Docs
+description: Migruj istniejące maszyny wirtualne do Premium Storage platformy Azure. Premium Storage oferuje wysoką wydajność, obsługę dysków o niskich opóźnieniach dla obciążeń intensywnie korzystających z operacji we/wy działających na platformie Azure Virtual Machines.
 services: storage
 author: roygara
 ms.service: storage
@@ -9,122 +9,122 @@ ms.date: 06/27/2017
 ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 6b6e442ff3333a7fd085f8e452ae056e7daaba8c
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 90cd079ebc82e8231b052f65156f85d612592ad2
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565513"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114736"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrowanie do usługi Azure Premium Storage (dyski niezarządzane)
 
 > [!NOTE]
-> W tym artykule omówiono sposób migrowania maszyny Wirtualnej, która używa standardowych dysków niezarządzanych do maszyny Wirtualnej, która korzysta z dysków niezarządzanych w warstwie premium. Firma Microsoft zaleca używanie usługi Azure Managed Disks dla nowych maszyn wirtualnych i przekonwertowanie wcześniej używanych dysków niezarządzanych do dysków zarządzanych. Zarządzany uchwyt dyski podstawowe konta magazynu, więc nie trzeba. Aby uzyskać więcej informacji, zobacz nasze [Omówienie usługi Managed Disks](../../virtual-machines/windows/managed-disks-overview.md).
+> W tym artykule omówiono sposób migrowania maszyny wirtualnej korzystającej z niezarządzanych dysków standardowych do maszyny wirtualnej korzystającej z niezarządzanych dysków Premium. Zalecamy używanie Managed Disks platformy Azure dla nowych maszyn wirtualnych i konwertowanie wcześniejszych dysków niezarządzanych na dyski zarządzane. Managed Disks obsłużyć podstawowe konta magazynu, aby nie było konieczne. Aby uzyskać więcej informacji, zobacz nasze [omówienie Managed disks](../../virtual-machines/windows/managed-disks-overview.md).
 >
 
-Usługa Azure Premium Storage zapewnia obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach dla maszyn wirtualnych z systemem wyjścia — dużych obciążeń wejścia /. Przy użyciu funkcji migracji dysków maszyn wirtualnych aplikacji do usługi Azure Premium Storage może korzystać z szybkości i wydajności tych dysków.
+Usługa Azure Premium Storage zapewnia obsługę dysków o wysokiej wydajności i małych opóźnieniach dla maszyn wirtualnych z intensywnymi obciążeniami we/wy. Aby skorzystać z szybkości i wydajności tych dysków, można przeprowadzić migrację dysków maszyny wirtualnej aplikacji do usługi Azure Premium Storage.
 
-Ten przewodnik ma na celu pomóc nowych użytkowników usługi Azure Premium Storage jest lepiej przygotować się do płynne przejście z bieżącego systemu do usługi Premium Storage. Przewodnik dotyczy trzy najważniejsze składniki w ramach tego procesu:
+Celem tego przewodnika jest ułatwienie nowym użytkownikom platformy Azure Premium Storage lepszego przygotowania do zapewnienia sprawnego przejścia od bieżącego systemu do Premium Storage. Przewodnik dotyczy trzech najważniejszych składników w tym procesie:
 
-* [Planowanie migracji do usługi Premium Storage](#plan-the-migration-to-premium-storage)
-* [Przygotowywanie, a następnie skopiuj wirtualne dyski twarde (VHD) do usługi Premium Storage](#prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage)
-* [Tworzenie maszyny wirtualnej platformy Azure przy użyciu usługi Premium Storage](#create-azure-virtual-machine-using-premium-storage)
+* [Zaplanuj migrację do Premium Storage](#plan-the-migration-to-premium-storage)
+* [Przygotuj i skopiuj wirtualne dyski twarde (VHD) do Premium Storage](#prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage)
+* [Tworzenie maszyny wirtualnej platformy Azure przy użyciu Premium Storage](#create-azure-virtual-machine-using-premium-storage)
 
-Można migrować maszyny wirtualne z innych platform do usługi Azure Premium Storage lub Migrowanie istniejących maszyn wirtualnych platformy Azure z magazynu Standard Storage do usługi Premium Storage. Ten przewodnik obejmuje kroki zarówno w przypadku dwóch scenariuszy. Wykonaj kroki określone w odpowiedniej sekcji w zależności od scenariusza.
+Możesz migrować maszyny wirtualne z innych platform do platformy Azure Premium Storage lub migrować istniejące maszyny wirtualne platformy Azure z magazynu w warstwie Standardowa do Premium Storage. Ten przewodnik obejmuje kroki dla obu dwóch scenariuszy. Wykonaj kroki określone w odpowiedniej sekcji w zależności od danego scenariusza.
 
 > [!NOTE]
-> Omówienie funkcji i cen dysków premium SSD w można znaleźć: [Wybierz typ dysku dla maszyn wirtualnych IaaS](../../virtual-machines/windows/disks-types.md#premium-ssd). Zalecamy przeprowadzenie migracji dowolnego dysku maszyny wirtualnej, wymagających wysokiej operacje We/Wy do magazynu Azure Premium Storage uzyskać najlepszą wydajność aplikacji. Jeśli dysk nie wymaga wysokiego operacje We/Wy, można ograniczyć koszty dzięki przechowywaniu go w magazynie Standard Storage, która przechowuje dane dysku maszyny wirtualnej na dyski twarde (HDD) zamiast dysków SSD.
+> Przegląd funkcji i Cennik usługi Premium dysków SSD można znaleźć w: [Wybierz typ dysku dla maszyn wirtualnych IaaS](../../virtual-machines/windows/disks-types.md#premium-ssd). Zalecamy Migrowanie dowolnego dysku maszyny wirtualnej wymagającego dużej liczby operacji we/wy na platformie Azure Premium Storage w celu uzyskania najlepszej wydajności aplikacji. Jeśli dysk nie wymaga dużej liczby operacji we/wy na sekundę, możesz ograniczyć koszty, utrzymując je w magazynie w warstwie Standardowa, która przechowuje dane dysku maszyny wirtualnej na dyskach twardych (HDD) zamiast dysków SSD.
 >
 
-Kończenie procesu migracji w całości może wymagać dodatkowych akcji przed i po wykonaniu kroków podanych w tym przewodniku. Przykłady obejmują konfigurowanie sieci wirtualnych lub punkty końcowe i zmian kodu samej aplikacji, które mogą wymagać pewien przestój w aplikacji. Te akcje są unikatowe dla każdej aplikacji i należy je ukończyć wraz z kroków podanych w tym przewodniku do pełnego przechodzenia do usługi Premium Storage jako Bezproblemowa, jak to możliwe.
+Ukończenie procesu migracji w całości może wymagać dodatkowych akcji zarówno przed, jak i po wykonaniu czynności opisanych w tym przewodniku. Przykłady obejmują Konfigurowanie sieci wirtualnych lub punktów końcowych lub wprowadzanie zmian w kodzie samej aplikacji, co może wymagać pewnego przestoju w aplikacji. Te akcje są unikatowe dla każdej aplikacji i należy je wykonać wraz z krokami podanymi w tym przewodniku, aby zapewnić bezproblemowy przechodzenie do Premium Storage jak najszybciej.
 
-## <a name="plan-the-migration-to-premium-storage"></a>Planowanie migracji do usługi Premium Storage
-W tej sekcji gwarantuje, że są gotowe do wykonania tych kroków migracji, w tym artykule i ułatwia najlepszych decyzji o typach maszyn wirtualnych i dysków.
+## <a name="plan-the-migration-to-premium-storage"></a>Zaplanuj migrację do Premium Storage
+Ta sekcja zapewnia gotowość do wykonania kroków migracji opisanych w tym artykule i pomaga w podejmowaniu najlepszej decyzji na temat maszyn wirtualnych i typów dysków.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-* Będzie niezbędna jest subskrypcja platformy Azure. Jeśli nie masz, możesz utworzyć jeden miesiąc [bezpłatna wersja próbna](https://azure.microsoft.com/pricing/free-trial/) subskrypcji, lub odwiedź [cennika systemu Azure](https://azure.microsoft.com/pricing/) więcej opcji.
-* Do wykonania polecenia cmdlet programu PowerShell, konieczne będzie modułu Microsoft Azure PowerShell. Aby uzyskać informacje o punkcie instalacji oraz instrukcje dotyczące instalacji, zobacz [How to install and configure Azure PowerShell](/powershell/azure/overview) (Jak zainstalować i skonfigurować program Azure PowerShell).
-* Jeśli planujesz używać maszyn wirtualnych platformy Azure w systemie magazynu w warstwie Premium, musisz użyć zdolne do maszyn wirtualnych usługi Premium Storage. Za pomocą dysków w warstwach Standard i Premium Storage zdolne do maszyn wirtualnych usługi Premium Storage. Dyski magazynu Premium będą dostępne z większej liczby typów maszyn wirtualnych w przyszłości. Aby uzyskać więcej informacji na temat wszystkich dostępnych typów dysków maszyny Wirtualnej platformy Azure i rozmiarów, zobacz [rozmiary maszyn wirtualnych](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) i [rozmiary usług Cloud Services](../../cloud-services/cloud-services-sizes-specs.md).
+* Potrzebna jest subskrypcja platformy Azure. Jeśli go nie masz, możesz utworzyć miesięczną subskrypcję bezpłatnej [wersji próbnej](https://azure.microsoft.com/pricing/free-trial/) lub zapoznaj się z [cennikiem platformy Azure](https://azure.microsoft.com/pricing/) , aby uzyskać więcej opcji.
+* Do wykonywania poleceń cmdlet programu PowerShell potrzebny jest moduł Microsoft Azure PowerShell. Aby uzyskać informacje o punkcie instalacji oraz instrukcje dotyczące instalacji, zobacz [How to install and configure Azure PowerShell](/powershell/azure/overview) (Jak zainstalować i skonfigurować program Azure PowerShell).
+* Planując korzystanie z maszyn wirtualnych platformy Azure działających na Premium Storage, musisz użyć maszyn wirtualnych z Premium Storage. Można używać zarówno dysków standardowych, jak i Premium Storage z maszynami wirtualnymi Premium Storage. Dyski Premium Storage będą dostępne z większą liczbą typów maszyn wirtualnych w przyszłości. Aby uzyskać więcej informacji na temat wszystkich dostępnych typów i rozmiarów dysków maszyn wirtualnych platformy Azure, zobacz [rozmiary maszyn wirtualnych](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) i [rozmiarów Cloud Services](../../cloud-services/cloud-services-sizes-specs.md).
 
 ### <a name="considerations"></a>Zagadnienia do rozważenia
-Maszynę wirtualną platformy Azure obsługuje dołączanie kilka dysków usługi Premium Storage, aby Twoje aplikacje mogą mieć maksymalnie 256 TB magazynu na maszynę Wirtualną. Dzięki usłudze Premium Storage aplikacje mogą osiągać 80 000 (operacje wejścia/wyjścia na sekundę) na maszynie Wirtualnej i 2000 MB na drugim przepływność dysków na maszynę Wirtualną z tym bardzo małe wartości opóźnienia operacji odczytu. Dostępne są opcje w różnych maszyn wirtualnych i dysków. Ta sekcja dotyczy ułatwiających znajdowanie opcję najlepiej pasującą do obciążenia.
+Maszyna wirtualna platformy Azure obsługuje dołączanie kilku dysków Premium Storage, dzięki czemu aplikacje mogą mieć do 256 TB magazynu na maszynę wirtualną. Dzięki Premium Storage Twoje aplikacje mogą osiągnąć 80 000 operacji we/wy na sekundę na maszynę wirtualną oraz przepływność dysku 2000 MB na sekundę na maszynę wirtualną z bardzo niskimi opóźnieniami operacji odczytu. Dostępne są różne opcje różnych maszyn wirtualnych i dysków. Ta sekcja zawiera informacje ułatwiające znalezienie opcji, która najlepiej odpowiada Twojemu obciążeniu.
 
 #### <a name="vm-sizes"></a>Rozmiary maszyn wirtualnych
-Specyfikacje rozmiaru maszyny Wirtualnej platformy Azure są wymienione w [rozmiary maszyn wirtualnych](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Sprawdź charakterystyki wydajności maszyn wirtualnych, które współpracują z magazynu w warstwie Premium i wybierz odpowiedni rozmiar maszyny Wirtualnej, najlepiej pasujące do obciążenia. Upewnij się, że jest dostępna wystarczająca przepustowość na maszynie Wirtualnej do kierowania ruchu dysku.
+Specyfikacje rozmiaru maszyny wirtualnej platformy Azure są wymienione w obszarze [rozmiary maszyn wirtualnych](../../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Zapoznaj się z charakterystyką wydajności maszyn wirtualnych, które działają z Premium Storage i wybierz najbardziej odpowiedni rozmiar maszyny wirtualnej, który najlepiej odpowiada Twojemu obciążeniu. Upewnij się, że na maszynie wirtualnej jest dostępna wystarczająca przepustowość do obsługi ruchu na dysku.
 
 #### <a name="disk-sizes"></a>Rozmiary dysków
-Istnieje pięć typów dysków, które mogą być używane z maszyny Wirtualnej, a każdy z nich ma określone operacje We/Wy i przepływność limitów. Wziąć pod uwagę te limity Wybieranie typu dysku dla maszyny Wirtualnej odpowiednio do potrzeb aplikacji pod względem wydajności, wydajność, skalowalność, gdy ładuje szczytowego.
+Istnieje pięć typów dysków, które mogą być używane z maszyną wirtualną, a każda z nich ma określone limity IOPs i przepływności. Należy wziąć pod uwagę te limity podczas wybierania typu dysku dla maszyny wirtualnej na podstawie potrzeb aplikacji w zakresie pojemności, wydajności, skalowalności i szczytowych obciążeń.
 
-| Typ magazynu dysków Premium  | P10   | P20   | P30            | P40            | P50            | 
+| Typ dysków w warstwie Premium  | P10   | P20   | P30            | P40            | P50            | 
 |:-------------------:|:-----:|:-----:|:--------------:|:--------------:|:--------------:|
 | Rozmiar dysku           | 128 GB| 512 GB| 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
 | Liczba operacji wejścia/wyjścia na sekundę na dysk       | 500   | 2300  | 5000           | 7500           | 7500           | 
 | Przepływność na dysk | 100 MB na sekundę | 150 MB na sekundę | 200 MB na sekundę | 250 MB na sekundę | 250 MB na sekundę |
 
-W zależności od obciążenia należy sprawdzić, czy dyski dodatkowe dane są niezbędne dla maszyny Wirtualnej. Można dołączyć kilka dysków danych trwałych do maszyny Wirtualnej. Jeśli to konieczne, można stripe na dyskach w celu zwiększenia pojemności i wydajności woluminu. (Zobacz, co jest rozkładanie [tutaj](../../virtual-machines/windows/premium-storage-performance.md#disk-striping).) Jeśli stripe dysków z danymi usługi Premium Storage przy użyciu [miejsca do magazynowania][4], należy ją skonfigurować z jedną kolumnę dla każdego dysku, który jest używany. W przeciwnym razie ogólną wydajność rozłożone wolumin może być mniejszy niż oczekiwano z powodu nierówna Dystrybucja ruchu między dyskami. W przypadku maszyn wirtualnych systemu Linux można użyć *mdadm* narzędzie, aby osiągnąć takie same. Zobacz artykuł [konfigurowanie macierzy RAID oprogramowania w systemie Linux](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Aby uzyskać szczegółowe informacje.
+W zależności od obciążenia Ustal, czy dodatkowe dyski danych są niezbędne dla maszyny wirtualnej. Do maszyny wirtualnej można dołączyć kilka dysków danych trwałych. W razie potrzeby można rozdzielić dyski, aby zwiększyć pojemność i wydajność woluminu. (Zobacz, co to jest rozłożenie dysku w [tym miejscu](../../virtual-machines/windows/premium-storage-performance.md#disk-striping)). W przypadku rozłożenia dysków danych Premium Storage przy użyciu funkcji [miejsca do magazynowania][4]należy skonfigurować ją z jedną kolumną dla każdego używanego dysku. W przeciwnym razie ogólna wydajność woluminu rozłożonego może być niższa niż oczekiwano z powodu nierównomiernego rozkładu ruchu na dyskach. W przypadku maszyn wirtualnych z systemem Linux można użyć narzędzia *mdadm* do osiągnięcia tego samego. Aby uzyskać szczegółowe informacje, zobacz artykuł [Konfigurowanie oprogramowania RAID w systemie Linux](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
 
 #### <a name="storage-account-scalability-targets"></a>Cele skalowalności konta magazynu
-Kont usługi Premium Storage ma następujące cele skalowalności, oprócz [usługi Azure Storage dotyczące skalowalności i cele wydajności](storage-scalability-targets.md). Wymagania aplikacji przekroczy cele skalowalności konta magazynu w jednym, tworzenie aplikacji na używanie wielu kont magazynu, a partycjonowanie danych na tych kontach magazynu.
+Poniżej znajdują się następujące elementy docelowe skalowalności [i wydajności usługi Azure Storage](storage-scalability-targets.md). Premium Storage Jeśli wymagania dotyczące aplikacji przekraczają tarcze skalowalności pojedynczego konta magazynu, należy skompilować aplikację w celu korzystania z wielu kont magazynu i podzielić dane na te konta magazynu.
 
-| Łączna liczba kont pojemności | Całkowitej przepustowości dla konta magazynu lokalnie nadmiarowego |
+| Łączna pojemność konta | Łączna przepustowość dla lokalnego nadmiarowego konta magazynu |
 |:--- |:--- |
-| Pojemność dysku: 35TB<br />Pojemność migawki: 10 TB |Maksymalnie 50 gigabity na sekundę dla ruchu przychodzącego i ruchu wychodzącego |
+| Pojemność dysku: 35TB<br />Pojemność migawki: 10 TB |Do 50 Gigabit na sekundę dla ruchu przychodzącego i wychodzącego |
 
-Aby uzyskać więcej informacji o specyfikacjach usługi Premium Storage, zapoznaj się [cele dotyczące skalowalności i wydajności usługi Azure Storage](storage-scalability-targets.md#premium-performance-storage-account-scale-limits).
+Aby uzyskać więcej informacji na temat specyfikacji Premium Storage, zapoznaj się z tematem [cele dotyczące skalowalności i wydajności usługi Azure Storage](storage-scalability-targets.md#premium-performance-storage-account-scale-limits).
 
 #### <a name="disk-caching-policy"></a>Zasady buforowania dysku
-Domyślnie zasady buforowania dysku jest *tylko do odczytu* wszystkich dysków w warstwie Premium danych, a *odczytu i zapisu* dla dysku systemu operacyjnego w warstwie Premium dołączonych do maszyny Wirtualnej. To ustawienie konfiguracji jest zalecane, aby osiągnąć optymalną wydajność dla aplikacji systemu IOs. Dla dysków z danymi zapisu przy odczycie czy tylko do zapisu (takich jak pliki dziennika programu SQL Server) należy wyłączyć buforowanie dysku, dzięki czemu można osiągnąć lepszą wydajność aplikacji. Ustawienia pamięci podręcznej dla istniejących dysków z danymi można zaktualizować przy użyciu [witryny Azure portal](https://portal.azure.com) lub *- HostCaching* parametru *AzureDataDisk zestaw* polecenia cmdlet.
+Domyślnie zasady buforowania dysku są tylko do *odczytu* dla wszystkich dysków danych w warstwie Premium oraz do *odczytu i zapisu* dla dysku systemu operacyjnego Premium dołączonego do maszyny wirtualnej. To ustawienie konfiguracji jest zalecane, aby osiągnąć optymalną wydajność aplikacji dla systemu IOs. W przypadku dysków z danymi zapisu lub zapisu (takich jak SQL Server plików dziennika) należy wyłączyć buforowanie dysków, aby zapewnić lepszą wydajność aplikacji. Ustawienia pamięci podręcznej dla istniejących dysków z danymi można aktualizować za pomocą [Azure Portal](https://portal.azure.com) lub parametru *-HostCaching* polecenia cmdlet *Set-AzureDataDisk* .
 
 #### <a name="location"></a>Location
-Wybierz lokalizację, w których usługi Azure Premium Storage jest dostępna. Zobacz [usług platformy Azure według regionu](https://azure.microsoft.com/regions/#services) dla aktualnych informacji o dostępnych lokalizacji. Maszyny wirtualne znajdujące się w tym samym regionie co konto magazynu, że dyski maszyny Wirtualnej będzie sklepy znacznie lepszą wydajność niż jeśli znajdują się w oddzielnych regionach.
+Wybierz lokalizację, w której usługa Azure Premium Storage jest dostępna. Zobacz [usługi platformy Azure według regionów,](https://azure.microsoft.com/regions/#services) Aby uzyskać aktualne informacje dotyczące dostępnych lokalizacji. Maszyny wirtualne znajdujące się w tym samym regionie co konto magazynu, w którym są przechowywane dyski dla maszyny wirtualnej, zapewniają znacznie lepszą wydajność niż w przypadku, gdy znajdują się w osobnych regionach.
 
-#### <a name="other-azure-vm-configuration-settings"></a>Inne ustawienia konfiguracji maszyny Wirtualnej platformy Azure
-Podczas tworzenia maszyny Wirtualnej platformy Azure, poprosimy Cię o Konfigurowanie niektórych ustawień maszyny Wirtualnej. Należy pamiętać, że kilka ustawień zostały naprawione dla okresu istnienia maszyny wirtualnej, podczas gdy można zmodyfikować lub dodać inne później. Przejrzyj te ustawienia konfiguracji maszyny Wirtualnej platformy Azure i upewnij się, że te są skonfigurowane odpowiednio do wymagań obciążenia.
+#### <a name="other-azure-vm-configuration-settings"></a>Inne ustawienia konfiguracji maszyny wirtualnej platformy Azure
+Podczas tworzenia maszyny wirtualnej platformy Azure zostanie wyświetlony monit o skonfigurowanie niektórych ustawień maszyny wirtualnej. Należy pamiętać, że niektóre ustawienia są rozwiązane przez okres istnienia maszyny wirtualnej, podczas gdy można modyfikować lub dodawać inne osoby później. Przejrzyj te ustawienia konfiguracji maszyny wirtualnej platformy Azure i upewnij się, że są one odpowiednio skonfigurowane do wymagań związanych z obciążeniem.
 
 ### <a name="optimization"></a>Optymalizacja
-[Azure Premium Storage: Projektowanie pod kątem wysokiej wydajności](../../virtual-machines/windows/premium-storage-performance.md) zawiera wytyczne dotyczące tworzenia aplikacji o wysokiej wydajności przy użyciu usługi Azure Premium Storage. Możesz wykonać wytycznych w połączeniu z najlepsze rozwiązania w zakresie wydajności mające zastosowanie do technologii wykorzystywanych przez aplikację.
+[Azure Premium Storage: Projektowanie pod kątem wysokiej](../../virtual-machines/windows/premium-storage-performance.md) wydajności zawiera wskazówki dotyczące tworzenia aplikacji o wysokiej wydajności przy użyciu usługi Azure Premium Storage. Można przestrzegać wytycznych związanych z najlepszymi rozwiązaniami dotyczącymi wydajności, które dotyczą technologii używanych przez aplikację.
 
-## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>Przygotowywanie, a następnie skopiuj wirtualne dyski twarde (VHD) do usługi Premium Storage
-W poniższej sekcji przedstawiono wskazówki dotyczące przygotowywania wirtualnych dysków twardych na podstawie maszyny Wirtualnej i kopiowanie wirtualnych dysków twardych do usługi Azure Storage.
+## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>Przygotuj i skopiuj wirtualne dyski twarde (VHD) do Premium Storage
+W poniższej sekcji przedstawiono wskazówki dotyczące przygotowywania dysków VHD z maszyny wirtualnej i kopiowania dysków VHD do usługi Azure Storage.
 
-* [Scenariusz 1: "Migruję istniejących maszyn wirtualnych platformy Azure do usługi Azure Premium Storage."](#scenario1)
-* [Scenariusz 2: "Migruję maszyn wirtualnych z innych platform do usługi Azure Premium Storage."](#scenario2)
+* [Scenariusz 1: "Migrujem istniejące maszyny wirtualne platformy Azure do usługi Azure Premium Storage".](#scenario1)
+* [Scenariusz 2: "Przeprowadzam Migrowanie maszyn wirtualnych z innych platform do usługi Azure Premium Storage".](#scenario2)
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-Aby przygotować dyski VHD do migracji, będą potrzebne:
+Aby przygotować wirtualne dyski twarde do migracji, potrzebne są:
 
-* Subskrypcja platformy Azure, konta magazynu i kontener na tym koncie magazynu, do którego można skopiować wirtualnego dysku twardego. Należy pamiętać, że docelowe konto magazynu może być kontem Standard lub Premium Storage, w zależności od wymagań.
-* Narzędzie do uogólnienia wirtualny dysk twardy, jeśli planowane jest tworzenie wielu wystąpień maszyny Wirtualnej z niego. Na przykład, program sysprep dla Windows lub virt programu sysprep dla systemu Ubuntu.
-* Narzędzie do przekazania pliku VHD na koncie magazynu. Zobacz [Transfer danych za pomocą wiersza polecenia Azcopy](storage-use-azcopy.md) lub użyj [Eksplorator usługi Azure storage](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx). W tym przewodniku opisano kopiowania wirtualnego dysku twardego za pomocą narzędzia AzCopy.
+* Subskrypcja platformy Azure, konto magazynu i kontener na tym koncie magazynu, do którego można skopiować dysk VHD. Należy pamiętać, że docelowe konto magazynu może być kontem standardowym lub Premium Storage, w zależności od wymagań.
+* Narzędzie służące do uogólniania dysku VHD, jeśli planujesz utworzyć wiele wystąpień maszyn wirtualnych. Na przykład program Sysprep dla systemu Windows lub virt — Sysprep dla Ubuntu.
+* Narzędzie do przekazywania pliku VHD do konta magazynu. Zobacz [transfer danych za pomocą narzędzia wiersza polecenia AzCopy](storage-use-azcopy.md) lub [Eksploratora usługi Azure Storage](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/03/11/windows-azure-storage-explorers-2014.aspx). W tym przewodniku opisano kopiowanie wirtualnego dysku twardego za pomocą narzędzia AzCopy.
 
 > [!NOTE]
-> Jeśli wybierzesz opcję Kopia synchroniczna za pomocą narzędzia AzCopy, aby uzyskać optymalną wydajność, należy skopiować wirtualnego dysku twardego, uruchamiając jeden z tych narzędzi z maszyny Wirtualnej platformy Azure, która znajduje się w tym samym regionie co konto magazynu docelowego. Jeśli kopiujesz dysk VHD maszyny wirtualnej platformy Azure w innym regionie, wydajność może przebiegać wolniej.
+> Jeśli wybierzesz opcję kopiowania synchronicznego z AzCopy, aby uzyskać optymalną wydajność, Skopiuj wirtualny dysk twardy przez uruchomienie jednego z tych narzędzi z maszyny wirtualnej platformy Azure, która znajduje się w tym samym regionie co docelowe konto magazynu. Jeśli kopiujesz dysk VHD z maszyny wirtualnej platformy Azure w innym regionie, wydajność może być mniejsza.
 >
-> W przypadku kopiowania dużych ilości danych w ramach ograniczonej przepustowości, rozważ [przy użyciu usługi Azure Import/Export do przesyłania danych do magazynu obiektów Blob](../storage-import-export-service.md); dzięki temu można przenieść dane przez wysyłanie dysków twardych do centrum danych platformy Azure. Usługa Azure Import/Export umożliwia kopiowanie danych na koncie magazynu w warstwie standardowa. Gdy dane znajdują się na koncie magazynu w warstwie standardowa, możesz użyć albo [API obiektu Blob kopiowania](https://msdn.microsoft.com/library/azure/dd894037.aspx) lub narzędzia AzCopy do transferu danych do konta usługi premium storage.
+> W przypadku kopiowania dużej ilości danych za pośrednictwem ograniczonej przepustowości należy rozważyć [użycie usługi Azure Import/Export do transferowania danych do BLOB Storage](../storage-import-export-service.md); pozwala to na przeniesienie danych przez wysyłkę dysków twardych do centrum danych platformy Azure. Możesz użyć usługi Azure Import/Export, aby skopiować dane tylko do konta magazynu w warstwie Standardowa. Gdy dane są na koncie magazynu w warstwie Standardowa, możesz użyć [interfejsu API kopiowania obiektu BLOB](https://msdn.microsoft.com/library/azure/dd894037.aspx) lub AzCopy do transferowania danych do konta magazynu w warstwie Premium.
 >
-> Należy pamiętać, że platforma Microsoft Azure obsługuje tylko pliki wirtualnego dysku twardego o stałym rozmiarze. Pliki VHDX lub dynamicznych wirtualnych dysków twardych nie są obsługiwane. W przypadku dynamicznego wirtualnego dysku twardego można przekonwertować go do korzystania z o stałym rozmiarze [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) polecenia cmdlet.
+> Należy pamiętać, że Microsoft Azure obsługuje tylko pliki VHD o stałym rozmiarze. Pliki VHDX lub dynamiczne wirtualne dyski twarde nie są obsługiwane. Jeśli masz dynamiczny dysk VHD, możesz go przekonwertować na stały rozmiar przy użyciu polecenia cmdlet [convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) .
 >
 >
 
-### <a name="scenario1"></a>Scenariusz 1: "Migruję istniejących maszyn wirtualnych platformy Azure do usługi Azure Premium Storage."
-W przypadku migracji istniejących maszyn wirtualnych platformy Azure, Zatrzymaj maszynę Wirtualną, wirtualne dyski twarde dla typu wirtualnego dysku twardego, należy przygotować, a następnie skopiuj wirtualny dysk twardy za pomocą narzędzia AzCopy lub programu PowerShell.
+### <a name="scenario1"></a>Scenariusz 1: "Migrujem istniejące maszyny wirtualne platformy Azure do usługi Azure Premium Storage".
+W przypadku migrowania istniejących maszyn wirtualnych platformy Azure Zatrzymaj maszynę wirtualną, przygotuj wirtualne dyski twarde na żądany typ wirtualnego dysku twardego, a następnie skopiuj dysk VHD za pomocą AzCopy lub PowerShell.
 
-Maszyna wirtualna musi być całkowicie w dół do migracji stanu czystego. Nastąpi Przestój, do momentu ukończenia migracji.
+Aby przeprowadzić migrację czystego stanu, maszyna wirtualna musi zostać całkowicie wyłączona. Zostanie wydłużony przestój do momentu zakończenia migracji.
 
-#### <a name="step-1-prepare-vhds-for-migration"></a>Krok 1. Przygotuj wirtualnych dysków twardych do migracji
-W przypadku migracji istniejących maszyn wirtualnych platformy Azure do usługi Premium Storage może być wirtualnego dysku twardego:
+#### <a name="step-1-prepare-vhds-for-migration"></a>Krok 1. Przygotowanie dysków VHD do migracji
+W przypadku migrowania istniejących maszyn wirtualnych platformy Azure do programu Premium Storage wirtualny dysk twardy może być:
 
-* Obraz systemu operacyjnego uogólnionego
-* Dysk systemu operacyjnego
+* Uogólniony obraz systemu operacyjnego
+* Unikatowy dysk systemu operacyjnego
 * Dysk z danymi
 
-Poniżej omówimy nielicznych 3 w przypadku przygotowywania wirtualnego dysku twardego.
+Poniżej opisano trzy scenariusze przygotowywania wirtualnego dysku twardego.
 
-##### <a name="use-a-generalized-operating-system-vhd-to-create-multiple-vm-instances"></a>Użyj uogólnionego wirtualnego dysku twardego systemu operacyjnego, aby utworzyć wiele wystąpień maszyny Wirtualnej
-Podczas przekazywania wirtualnego dysku twardego, która będzie służyć do tworzenia wielu ogólnych wystąpień maszyny Wirtualnej platformy Azure, musisz najpierw generalize dysku VHD za pomocą narzędzia sysprep. Dotyczy to do wirtualnego dysku twardego, który działa lokalnie lub w chmurze. Narzędzie Sysprep usuwa wszystkie informacje dotyczące komputera z dysku VHD.
+##### <a name="use-a-generalized-operating-system-vhd-to-create-multiple-vm-instances"></a>Tworzenie wielu wystąpień maszyn wirtualnych za pomocą uogólnionego wirtualnego dysku twardego systemu operacyjnego
+W przypadku przekazywania dysku VHD, który będzie używany do tworzenia wielu ogólnych wystąpień maszyn wirtualnych platformy Azure, należy najpierw uogólnić dysk VHD przy użyciu narzędzia Sysprep. Dotyczy to wirtualnego dysku twardego, który jest lokalnie lub w chmurze. Program Sysprep usuwa wszystkie informacje specyficzne dla komputera z dysku VHD.
 
 > [!IMPORTANT]
-> Tworzenie migawki lub utworzyć kopię zapasową maszyny Wirtualnej przed uogólnieniem go. Uruchamianie programu sysprep spowoduje zatrzymanie i cofnięcie przydziału wystąpienia maszyny Wirtualnej. Wykonaj kroki przedstawione poniżej Sysprep wirtualny dysk twardy systemu Windows. Należy pamiętać, że uruchamianie polecenia Sysprep konieczne będzie można zamknąć maszyny wirtualnej. Aby uzyskać więcej informacji na temat narzędzia Sysprep, zobacz [Omówienie programu Sysprep](https://technet.microsoft.com/library/hh825209.aspx) lub [techniczne dotyczące narzędzia Sysprep](https://technet.microsoft.com/library/cc766049.aspx).
+> Utwórz migawkę lub Utwórz kopię zapasową maszyny wirtualnej przed jej uogólnieniem. Uruchomienie narzędzia Sysprep spowoduje zatrzymanie i cofnięcie alokacji wystąpienia maszyny wirtualnej. Wykonaj poniższe czynności, aby użyć programu Sysprep dla wirtualnego dysku twardego systemu operacyjnego Windows. Należy pamiętać, że uruchomienie polecenia Sysprep wymaga wyłączenia maszyny wirtualnej. Aby uzyskać więcej informacji o programie Sysprep, zobacz [Omówienie narzędzia Sysprep](https://technet.microsoft.com/library/hh825209.aspx) lub [Informacje techniczne dotyczące programu Sysprep](https://technet.microsoft.com/library/cc766049.aspx).
 >
 >
 
@@ -135,64 +135,64 @@ Podczas przekazywania wirtualnego dysku twardego, która będzie służyć do tw
     %windir%\system32\sysprep\sysprep.exe
     ```
 
-3. Narzędzie przygotowania systemu wybierz środowisko systemu wprowadź Out-of-Box (OOBE), zaznacz pole wyboru Generalize, wybierz **zamknięcia**, a następnie kliknij przycisk **OK**, jak pokazano na poniższej ilustracji. Narzędzie Sysprep będzie uogólnienia systemu operacyjnego i zamykania systemu.
+3. W narzędziu Przygotowywanie systemu wybierz pozycję Wprowadź system out-of-Box Experience (OOBE), zaznacz pole wyboru generalize, wybierz pozycję **Zamknij**, a następnie kliknij przycisk **OK**, jak pokazano na poniższej ilustracji. Program Sysprep przeprowadzi uogólnienie systemu operacyjnego i zamknie system.
 
     ![][1]
 
-Dla maszyny Wirtualnej systemu Ubuntu należy użyć narzędzia sysprep virt, aby osiągnąć takie same. Zobacz [virt sysprep](https://manpages.ubuntu.com/manpages/precise/man1/virt-sysprep.1.html) Aby uzyskać więcej informacji. Zobacz też niektóre "open source" [rozbudowy serwerów Linux oprogramowania](https://www.cyberciti.biz/tips/server-provisioning-software.html) dla innych systemów operacyjnych Linux.
+W przypadku maszyny wirtualnej Ubuntu Użyj narzędzia virt-Sysprep, aby osiągnąć ten sam sposób. Aby uzyskać więcej informacji, zobacz [virt-Sysprep](https://manpages.ubuntu.com/manpages/precise/man1/virt-sysprep.1.html) . Zapoznaj się również z oprogramowaniem typu open source systemu [Linux Server aprowizacji](https://www.cyberciti.biz/tips/server-provisioning-software.html) dla innych systemów operacyjnych Linux.
 
-##### <a name="use-a-unique-operating-system-vhd-to-create-a-single-vm-instance"></a>Użyj unikatowy wirtualnego dysku twardego systemu operacyjnego, aby utworzyć pojedyncze wystąpienie maszyny Wirtualnej
-W przypadku aplikacji uruchomionej na maszynie Wirtualnej, która wymaga określonych danych maszyny nie generalize wirtualnego dysku twardego. Uogólniony wirtualny dysk twardy może służyć do tworzenia unikatowego wystąpienia maszyny Wirtualnej platformy Azure. Na przykład jeśli masz kontrolera domeny na wirtualnego dysku twardego, wykonywanie programu sysprep, spowoduje to nieefektywne jako kontroler domeny. Przejrzyj aplikacje uruchomione na maszynie Wirtualnej i wpływ na nich uruchomiona narzędzia sysprep przed uogólnieniem wirtualnego dysku twardego.
+##### <a name="use-a-unique-operating-system-vhd-to-create-a-single-vm-instance"></a>Tworzenie pojedynczego wystąpienia maszyny wirtualnej przy użyciu unikatowego wirtualnego dysku twardego systemu operacyjnego
+Jeśli na maszynie wirtualnej jest uruchomiona aplikacja, która wymaga danych specyficznych dla komputera, nie należy uogólniać dysku VHD. Nieuogólniony wirtualny dysk twardy można użyć do utworzenia unikatowego wystąpienia maszyny wirtualnej platformy Azure. Na przykład jeśli masz kontroler domeny na wirtualnym dysku twardym, wykonanie narzędzia Sysprep spowoduje jego nieskuteczną obsługę jako kontroler domeny. Przed uogólnieniem dysku VHD Przejrzyj aplikacje działające na maszynie wirtualnej i wpływ na ich uruchamianie programu Sysprep.
 
-##### <a name="register-data-disk-vhd"></a>Zarejestruj dysków Twardych z danymi
-Jeśli masz dyski z danymi na platformie Azure do migracji, upewnij się, że maszyny wirtualne, które korzystają z tych dysków danych są zamykane.
+##### <a name="register-data-disk-vhd"></a>Rejestruj dysk VHD z danymi
+Jeśli masz dyski danych na platformie Azure do migracji, musisz upewnić się, że maszyny wirtualne korzystające z tych dysków danych są zamknięte.
 
-Wykonaj kroki opisane poniżej, aby skopiować wirtualny dysk twardy do usługi Azure Premium Storage i zarejestruj go jako dysk z danymi elastycznie.
+Wykonaj kroki opisane poniżej, aby skopiować wirtualny dysk twardy do platformy Azure Premium Storage i zarejestrować go jako dysk danych aprowizacji.
 
 #### <a name="step-2-create-the-destination-for-your-vhd"></a>Krok 2. Utwórz miejsce docelowe dla wirtualnego dysku twardego
-Utwórz konto magazynu, obsługę sieci wirtualnych dysków twardych. Podczas planowania miejsca przechowywania Twoje dyski VHD, należy wziąć pod uwagę następujące kwestie:
+Utwórz konto magazynu do obsługi wirtualnych dysków twardych. Planując lokalizację przechowywania wirtualnych dysków twardych, należy wziąć pod uwagę następujące kwestie:
 
-* Miejsce docelowe konto magazynu Premium storage.
-* Lokalizacja konta magazynu musi być taki sam jak magazyn w warstwie Premium stanie maszyn wirtualnych platformy Azure utworzonego w ostatnim etapie. Można skopiować do nowego konta magazynu lub planujesz jej używać tego samego konta magazynu, w zależności od potrzeb.
-* Skopiuj i Zapisz klucz konta magazynu docelowego konta magazynu do kolejnego etapu.
+* Docelowe konto magazynu w warstwie Premium.
+* Lokalizacja konta magazynu musi być taka sama jak Premium Storage maszyn wirtualnych platformy Azure, które zostaną utworzone w końcowym etapie. Możesz skopiować do nowego konta magazynu lub zaplanować użycie tego samego konta magazynu na podstawie Twoich potrzeb.
+* Skopiuj i Zapisz klucz konta magazynu docelowego konta magazynu dla kolejnego etapu.
 
-W przypadku dysków danych można wybrać zachować niektóre dyski danych na koncie magazynu w warstwie standardowa (na przykład, dyski, na których chłodniejszej magazynu), ale zdecydowanie zalecamy przeniesienie wszystkich danych dla obciążenia produkcyjnego do użycia magazynu w warstwie premium.
+W przypadku dysków z danymi można wybrać opcję przechowywania niektórych dysków z danymi na koncie magazynu w warstwie Standardowa (na przykład na dyskach z magazynem chłodnicy), ale zdecydowanie zalecamy przeniesienie wszystkich danych na potrzeby obciążenia produkcyjnego w celu korzystania z usługi Premium Storage.
 
-#### <a name="copy-vhd-with-azcopy-or-powershell"></a>Krok 3. Skopiuj wirtualny dysk twardy za pomocą narzędzia AzCopy lub programu PowerShell
-Musisz znaleźć usługi kontenera ścieżki i klucza konta magazynu do jednej z tych dwóch opcji przetwarzania. Kontener ścieżki i klucza konta magazynu można znaleźć w **witryny Azure Portal** > **magazynu**. Kontener, adres URL będzie miał takie jak "https:\//myaccount.blob.core.windows.net/mycontainer/".
+#### <a name="copy-vhd-with-azcopy-or-powershell"></a>Krok 3. Kopiowanie dysku VHD za pomocą AzCopy lub programu PowerShell
+Musisz znaleźć ścieżkę kontenera i klucz konta magazynu, aby przetworzyć jedną z tych dwóch opcji. Ścieżkę kontenera i klucz konta magazynu znajdują się w**magazynie**w **witrynie Azure Portal** > . Adres URL kontenera będzie wyglądać podobnie do "https\/:/MyAccount.blob.Core.Windows.NET/mycontainer/".
 
-##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Opcja 1: Skopiuj wirtualny dysk twardy za pomocą narzędzia AzCopy (kopia asynchroniczny)
-Przy użyciu narzędzia AzCopy, można łatwo przekazywać wirtualny dysk twardy za pośrednictwem Internetu. W zależności od rozmiaru wirtualnych dysków twardych to może potrwać. Pamiętaj sprawdzić ruch przychodzący i wychodzący limity konta magazynu przy użyciu tej opcji. Zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](storage-scalability-targets.md) Aby uzyskać szczegółowe informacje.
+##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Option 1: Kopiowanie dysku VHD z AzCopy (kopia asynchroniczna)
+Za pomocą AzCopy można łatwo przekazać wirtualny dysk twardy za pośrednictwem Internetu. W zależności od rozmiaru dysków VHD może to zająć trochę czasu. Należy pamiętać o sprawdzeniu limitów ruchu przychodzącego/wychodzącego kont magazynu przy użyciu tej opcji. Aby uzyskać szczegółowe informacje [, zobacz cele dotyczące skalowalności i wydajności usługi Azure Storage](storage-scalability-targets.md) .
 
-1. Pobierz i zainstaluj narzędzie AzCopy w tym miejscu: [Najnowszą wersję programu AzCopy](https://aka.ms/downloadazcopy)
-2. Otwórz program Azure PowerShell i przejdź do folderu, w którym zainstalowano narzędzia AzCopy.
-3. Użyj następującego polecenia, aby skopiować plik wirtualnego dysku twardego z "Źródło" do "Miejsce docelowe".
+1. Pobierz i zainstaluj AzCopy z tego miejsca: [Najnowsza wersja AzCopy](https://aka.ms/downloadazcopy)
+2. Otwórz Azure PowerShell i przejdź do folderu, w którym zainstalowano AzCopy.
+3. Użyj poniższego polecenia, aby skopiować plik VHD z lokalizacji "source" do "Destination".
 
-    ```azcopy
-    AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
-    ```
+   ```azcopy
+   AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
+   ```
 
     Przykład:
 
     ```azcopy
     AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /Pattern:abc.vhd
-        ```
+    ```
 
-    Here are descriptions of the parameters used in the AzCopy command:
+   Poniżej przedstawiono opisy parametrów używanych w AzCopy polecenia:
 
-   * **/Source: _&lt;source&gt;:_** Location of the folder or storage container URL that contains the VHD.
-   * **/SourceKey: _&lt;source-account-key&gt;:_** Storage account key of the source storage account.
-   * **/Dest: _&lt;destination&gt;:_** Storage container URL to copy the VHD to.
-   * **/DestKey: _&lt;dest-account-key&gt;:_** Storage account key of the destination storage account.
-   * **/Pattern: _&lt;file-name&gt;:_** Specify the file name of the VHD to copy.
+   * **/Source:** _Źródło:&gt; &lt;_ Lokalizacja folderu lub adresu URL kontenera magazynu zawierającego dysk VHD.
+   * **/SourceKey:** klucz konta źródłowego:  _&lt;&gt;_ Klucz konta magazynu dla konta magazynu źródłowego.
+   * **/Dest:** _miejscedocelowe&gt;: &lt;_ Adres URL kontenera magazynu, do którego ma zostać skopiowany dysk VHD.
+   * **/DestKey:** klucz konta docelowego:  _&lt;&gt;_ Klucz konta magazynu docelowego konta magazynu.
+   * **/Pattern:** _nazwapliku&gt;: &lt;_ Określ nazwę pliku wirtualnego dysku twardego do skopiowania.
 
-For details on using AzCopy tool, see [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md).
+Aby uzyskać szczegółowe informacje na temat korzystania z narzędzia AzCopy, zobacz [transfer danych za pomocą narzędzia wiersza polecenia AzCopy](storage-use-azcopy.md).
 
-##### Option 2: Copy a VHD with PowerShell (Synchronized copy)
+##### <a name="option-2-copy-a-vhd-with-powershell-synchronized-copy"></a>Opcja 2: Kopiowanie dysku VHD za pomocą programu PowerShell (kopia zsynchronizowana)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-You can also copy the VHD file using the PowerShell cmdlet Start-AzStorageBlobCopy. Use the following command on Azure PowerShell to copy VHD. Replace the values in <> with corresponding values from your source and destination storage account. To use this command, you must have a container called vhds in your destination storage account. If the container doesn't exist, create one before running the command.
+Możesz również skopiować plik VHD przy użyciu polecenia cmdlet programu PowerShell Start-AzStorageBlobCopy. Użyj następującego polecenia na Azure PowerShell, aby skopiować dysk VHD. Zastąp wartości w < > odpowiednimi wartościami z konta magazynu źródłowego i docelowego. Aby użyć tego polecenia, musisz mieć kontener o nazwie VHD na docelowym koncie magazynu. Jeśli kontener nie istnieje, utwórz go przed uruchomieniem polecenia.
 
 ```powershell
 $sourceBlobUri = <source-vhd-uri>
@@ -216,54 +216,54 @@ C:\PS> $destinationContext = New-AzStorageContext  –StorageAccountName "destac
 C:\PS> Start-AzStorageBlobCopy -srcUri $sourceBlobUri -SrcContext $sourceContext -DestContainer "vhds" -DestBlob "myvhd.vhd" -DestContext $destinationContext
 ```
 
-### <a name="scenario2"></a>Scenariusz 2: "Migruję maszyn wirtualnych z innych platform do usługi Azure Premium Storage."
-W przypadku migracji wirtualnego dysku twardego z innych niż - Azure magazynu w chmurze na platformie Azure, możesz wyeksportować wirtualnego dysku twardego do katalogu lokalnego. Ma ścieżkę źródłową pełny katalog lokalny wirtualny dysk twardy przechowywania wygodny, a następnie przekaż go do usługi Azure Storage przy użyciu narzędzia AzCopy.
+### <a name="scenario2"></a>Scenariusz 2: "Przeprowadzam Migrowanie maszyn wirtualnych z innych platform do usługi Azure Premium Storage".
+W przypadku migrowania wirtualnego dysku twardego z magazynu w chmurze spoza platformy Azure do platformy Azure należy najpierw wyeksportować dysk VHD do katalogu lokalnego. Pełna ścieżka źródłowa katalogu lokalnego, w którym jest przechowywany dysk VHD, a następnie użycie AzCopy do przekazania go do usługi Azure Storage.
 
-#### <a name="step-1-export-vhd-to-a-local-directory"></a>Krok 1. Eksportuj wirtualnego dysku twardego do katalogu lokalnego
-##### <a name="copy-a-vhd-from-aws"></a>Skopiuj wirtualny dysk twardy od usług AWS
-1. Jeśli używasz usługi AWS należy wyeksportować wystąpienia usługi EC2 do wirtualnego dysku twardego w zasobniku Amazon S3. Wykonaj kroki opisane w dokumentacji Amazon eksportowanie wystąpień usługi EC2 Amazon zainstalować narzędzie interfejsu wiersza polecenia (CLI) usługi Amazon EC2, a następnie uruchom polecenie export zadanie, tworzenie wystąpień w — Aby wyeksportować wystąpienia usługi EC2 pliku wirtualnego dysku twardego. Należy użyć **wirtualnego dysku twardego** dysku&#95;obraz&#95;zmiennej formatu podczas uruchamiania **Tworzenie wystąpienia — export zadań** polecenia. Wyeksportowany plik wirtualnego dysku twardego jest zapisywany w zasobniku Amazon S3, wyznaczonego podczas tego procesu.
+#### <a name="step-1-export-vhd-to-a-local-directory"></a>Krok 1. Eksportowanie wirtualnego dysku twardego do katalogu lokalnego
+##### <a name="copy-a-vhd-from-aws"></a>Kopiowanie wirtualnego dysku twardego z AWS
+1. Jeśli używasz AWS, wyeksportuj wystąpienie usługi EC2 do dysku VHD w zasobniku usługi Amazon S3. Wykonaj kroki opisane w dokumentacji usługi Amazon, aby wyeksportować wystąpienia usługi Amazon EC2 w celu zainstalowania narzędzia interfejsu wiersza polecenia Amazon EC2 (CLI), a następnie uruchom polecenie CREATE-instance-Export-Task, aby wyeksportować wystąpienie EC2 do pliku VHD. Użyj **dysku VHD** dla zmiennej format obrazu&#95;&#95;dysku podczas uruchamiania polecenia **Create-instance-Export-Task** . Wyeksportowany plik VHD zostanie zapisany w zasobniku Amazon S3 wyznaczonym podczas tego procesu.
 
     ```
     aws ec2 create-instance-export-task --instance-id ID --target-environment TARGET_ENVIRONMENT \
       --export-to-s3-task DiskImageFormat=DISK_IMAGE_FORMAT,ContainerFormat=ova,S3Bucket=BUCKET,S3Prefix=PREFIX
     ```
 
-2. Pobierz plik wirtualnego dysku twardego z przedział S3. Wybierz plik wirtualnego dysku twardego, a następnie **akcje** > **Pobierz**.
+2. Pobierz plik VHD z zasobnika S3. Wybierz plik VHD, a następnie polecenie**Pobierz** **Akcje** > .
 
     ![][3]
 
-##### <a name="copy-a-vhd-from-other-non-azure-cloud"></a>Skopiuj wirtualny dysk twardy z innych chmur spoza platformy Azure
-W przypadku migracji wirtualnego dysku twardego z innych niż - Azure magazynu w chmurze na platformie Azure, możesz wyeksportować wirtualnego dysku twardego do katalogu lokalnego. Skopiuj ścieżkę źródłową pełną katalogu lokalnego, gdzie znajduje się wirtualny dysk twardy.
+##### <a name="copy-a-vhd-from-other-non-azure-cloud"></a>Kopiowanie wirtualnego dysku twardego z innej chmury spoza platformy Azure
+W przypadku migrowania wirtualnego dysku twardego z magazynu w chmurze spoza platformy Azure do platformy Azure należy najpierw wyeksportować dysk VHD do katalogu lokalnego. Skopiuj pełną ścieżkę źródłową katalogu lokalnego, w którym jest przechowywany dysk VHD.
 
-##### <a name="copy-a-vhd-from-on-premises"></a>Skopiuj wirtualny dysk twardy ze środowiska lokalnego
-Jeśli wirtualny dysk twardy są migrowane ze środowiska lokalnego, konieczne będzie ścieżki źródłowej pełną, gdzie znajduje się wirtualny dysk twardy. Ścieżka źródłowa może być serwerem lokalizacji lub w udziale plików.
+##### <a name="copy-a-vhd-from-on-premises"></a>Kopiowanie wirtualnego dysku twardego z lokalnego
+W przypadku migrowania wirtualnego dysku twardego z środowiska lokalnego potrzebna będzie pełna ścieżka źródłowa, w której jest przechowywany dysk VHD. Ścieżka źródłowa może być lokalizacją serwera lub udziałem plików.
 
 #### <a name="step-2-create-the-destination-for-your-vhd"></a>Krok 2. Utwórz miejsce docelowe dla wirtualnego dysku twardego
-Utwórz konto magazynu, obsługę sieci wirtualnych dysków twardych. Podczas planowania miejsca przechowywania Twoje dyski VHD, należy wziąć pod uwagę następujące kwestie:
+Utwórz konto magazynu do obsługi wirtualnych dysków twardych. Planując lokalizację przechowywania wirtualnych dysków twardych, należy wziąć pod uwagę następujące kwestie:
 
-* Docelowe konto magazynu może być standardowa lub premium storage w zależności od wymagań aplikacji.
-* Region konta magazynu musi być taki sam jak magazyn w warstwie Premium stanie maszyn wirtualnych platformy Azure utworzonego w ostatnim etapie. Można skopiować do nowego konta magazynu lub planujesz jej używać tego samego konta magazynu, w zależności od potrzeb.
-* Skopiuj i Zapisz klucz konta magazynu docelowego konta magazynu do kolejnego etapu.
+* Docelowe konto magazynu może być magazynem w warstwie Standardowa lub Premium, w zależności od wymagań aplikacji.
+* Region konta magazynu musi być taki sam jak Premium Storage maszyn wirtualnych platformy Azure, które zostaną utworzone w końcowym etapie. Możesz skopiować do nowego konta magazynu lub zaplanować użycie tego samego konta magazynu na podstawie Twoich potrzeb.
+* Skopiuj i Zapisz klucz konta magazynu docelowego konta magazynu dla kolejnego etapu.
 
-Zdecydowanie zalecamy przeniesienie wszystkich danych dla obciążenia produkcyjnego do użycia magazynu w warstwie premium.
+Zdecydowanie zalecamy przeniesienie wszystkich danych dla obciążenia produkcyjnego w celu korzystania z usługi Premium Storage.
 
 #### <a name="step-3-upload-the-vhd-to-azure-storage"></a>Krok 3. Przekazywanie wirtualnego dysku twardego do usługi Azure Storage
-Teraz, gdy masz wirtualnego dysku twardego w katalogu lokalnym, można użyć narzędzia AzCopy lub AzurePowerShell przekazać plik VHD do usługi Azure Storage. Obie opcje są dostępne tutaj:
+Teraz, gdy masz wirtualny dysk twardy w katalogu lokalnym, możesz użyć AzCopy lub AzurePowerShell, aby przekazać plik VHD do usługi Azure Storage. Obie opcje są dostępne tutaj:
 
-##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>Opcja 1: Przekazywanie pliku VHD za pomocą programu PowerShell Azure Add-AzureVhd
+##### <a name="option-1-using-azure-powershell-add-azurevhd-to-upload-the-vhd-file"></a>Option 1: Przekazywanie pliku VHD przy użyciu polecenia Azure PowerShell Add-AzureVhd
 
 ```powershell
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 ```
 
-Przykład \<Uri > musi być  ** _"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"_** . Przykład \<FileInfo > może być  ** _"C:\path\to\upload.vhd"_** .
+Przykładem \<identyfikatora URI > może **_być https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd""_** . Przykładem \<FileInfo > może być **_"C:\path\to\upload.VHD"_** .
 
-##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Opcja 2: Przekazywanie pliku VHD za pomocą narzędzia AzCopy
-Przy użyciu narzędzia AzCopy, można łatwo przekazywać wirtualny dysk twardy za pośrednictwem Internetu. W zależności od rozmiaru wirtualnych dysków twardych to może potrwać. Pamiętaj sprawdzić ruch przychodzący i wychodzący limity konta magazynu przy użyciu tej opcji. Zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](storage-scalability-targets.md) Aby uzyskać szczegółowe informacje.
+##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Opcja 2: Przekazywanie pliku VHD przy użyciu AzCopy
+Za pomocą AzCopy można łatwo przekazać wirtualny dysk twardy za pośrednictwem Internetu. W zależności od rozmiaru dysków VHD może to zająć trochę czasu. Należy pamiętać o sprawdzeniu limitów ruchu przychodzącego/wychodzącego kont magazynu przy użyciu tej opcji. Aby uzyskać szczegółowe informacje [, zobacz cele dotyczące skalowalności i wydajności usługi Azure Storage](storage-scalability-targets.md) .
 
-1. Pobierz i zainstaluj narzędzie AzCopy w tym miejscu: [Najnowszą wersję programu AzCopy](https://aka.ms/downloadazcopy)
-2. Otwórz program Azure PowerShell i przejdź do folderu, w którym zainstalowano narzędzia AzCopy.
-3. Użyj następującego polecenia, aby skopiować plik wirtualnego dysku twardego z "Źródło" do "Miejsce docelowe".
+1. Pobierz i zainstaluj AzCopy z tego miejsca: [Najnowsza wersja AzCopy](https://aka.ms/downloadazcopy)
+2. Otwórz Azure PowerShell i przejdź do folderu, w którym zainstalowano AzCopy.
+3. Użyj poniższego polecenia, aby skopiować plik VHD z lokalizacji "source" do "Destination".
 
     ```azcopy
     AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
@@ -273,93 +273,93 @@ Przy użyciu narzędzia AzCopy, można łatwo przekazywać wirtualny dysk twardy
 
     ```azcopy
     AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /BlobType:page /Pattern:abc.vhd
-        ```
+    ```
 
-    Here are descriptions of the parameters used in the AzCopy command:
+   Poniżej przedstawiono opisy parametrów używanych w AzCopy polecenia:
 
-   * **/Source: _&lt;source&gt;:_** Location of the folder or storage container URL that contains the VHD.
-   * **/SourceKey: _&lt;source-account-key&gt;:_** Storage account key of the source storage account.
-   * **/Dest: _&lt;destination&gt;:_** Storage container URL to copy the VHD to.
-   * **/DestKey: _&lt;dest-account-key&gt;:_** Storage account key of the destination storage account.
-   * **/BlobType: page:** Specifies that the destination is a page blob.
-   * **/Pattern: _&lt;file-name&gt;:_** Specify the file name of the VHD to copy.
+   * **/Source:** _Źródło:&gt; &lt;_ Lokalizacja folderu lub adresu URL kontenera magazynu zawierającego dysk VHD.
+   * **/SourceKey:** klucz konta źródłowego:  _&lt;&gt;_ Klucz konta magazynu dla konta magazynu źródłowego.
+   * **/Dest:** _miejscedocelowe&gt;: &lt;_ Adres URL kontenera magazynu, do którego ma zostać skopiowany dysk VHD.
+   * **/DestKey:** klucz konta docelowego:  _&lt;&gt;_ Klucz konta magazynu docelowego konta magazynu.
+   * **/BlobType: Strona:** Określa, że miejsce docelowe jest stronicowym obiektem BLOB.
+   * **/Pattern:** _nazwapliku&gt;: &lt;_ Określ nazwę pliku wirtualnego dysku twardego do skopiowania.
 
-For details on using AzCopy tool, see [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md).
+Aby uzyskać szczegółowe informacje na temat korzystania z narzędzia AzCopy, zobacz [transfer danych za pomocą narzędzia wiersza polecenia AzCopy](storage-use-azcopy.md).
 
-##### Other options for uploading a VHD
-You can also upload a VHD to your storage account using one of the following means:
+##### <a name="other-options-for-uploading-a-vhd"></a>Inne opcje przekazywania dysku VHD
+Możesz również przekazać dysk VHD do konta magazynu przy użyciu jednego z następujących sposobów:
 
-* [Azure Storage Copy Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
-* [Azure Storage Explorer Uploading Blobs](https://azurestorageexplorer.codeplex.com/)
-* [Storage Import/Export Service REST API Reference](https://msdn.microsoft.com/library/dn529096.aspx)
-
-> [!NOTE]
-> We recommend using Import/Export Service if estimated uploading time is longer than 7 days. You can use [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) to estimate the time from data size and transfer unit.
->
-> Import/Export can be used to copy to a standard storage account. You will need to copy from standard storage to premium storage account using a tool like AzCopy.
->
->
-
-## <a name="create-azure-virtual-machine-using-premium-storage"></a>Create Azure VMs using Premium Storage
-After the VHD is uploaded or copied to the desired storage account, follow the instructions in this section to register the VHD as an OS image, or OS disk depending on your scenario and then create a VM instance from it. The data disk VHD can be attached to the VM once it is created.
-A sample migration script is provided at the end of this section. This simple script does not match all scenarios. You may need to update the script to match with your specific scenario. To see if this script applies to your scenario, see below [A Sample Migration Script](#a-sample-migration-script).
-
-### Checklist
-1. Wait until all the VHD disks copying is complete.
-2. Make sure Premium Storage is available in the region you are migrating to.
-3. Decide the new VM series you will be using. It should be a Premium Storage capable, and the size should be depending on the availability in the region and based on your needs.
-4. Decide the exact VM size you will use. VM size needs to be large enough to support the number of data disks you have. E.g. if you have 4 data disks, the VM must have 2 or more cores. Also, consider processing power, memory and network bandwidth needs.
-5. Create a Premium Storage account in the target region. This is the account you will use for the new VM.
-6. Have the current VM details handy, including the list of disks and corresponding VHD blobs.
-
-Prepare your application for downtime. To do a clean migration, you have to stop all the processing in the current system. Only then you can get it to consistent state which you can migrate to the new platform. Downtime duration will depend on the amount of data in the disks to migrate.
+* [Interfejs API kopiowania obiektów BLOB usługi Azure Storage](https://msdn.microsoft.com/library/azure/dd894037.aspx)
+* [Eksplorator usługi Azure Storage przekazywanie obiektów BLOB](https://azurestorageexplorer.codeplex.com/)
+* [Dokumentacja interfejsu API REST usługi Magazyn importowania/eksportowania](https://msdn.microsoft.com/library/dn529096.aspx)
 
 > [!NOTE]
-> If you are creating an Azure Resource Manager VM from a specialized VHD Disk, please refer to [this template](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) for deploying Resource Manager VM using existing disk.
+> Zalecamy korzystanie z usługi Import/Export, jeśli szacowany czas przekazywania jest dłuższy niż 7 dni. Możesz użyć [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) , aby oszacować czas od rozmiaru danych i jednostki transferu.
+>
+> Za pomocą importu/eksportu można kopiować do konta magazynu w warstwie Standardowa. Należy skopiować ze standardowego magazynu do konta magazynu w warstwie Premium przy użyciu narzędzia, takiego jak AzCopy.
 >
 >
 
-### Register your VHD
-To create a VM from OS VHD or to attach a data disk to a new VM, you must first register them. Follow steps below depending on your VHD's scenario.
+## <a name="create-azure-virtual-machine-using-premium-storage"></a>Tworzenie maszyn wirtualnych platformy Azure przy użyciu Premium Storage
+Po przekazaniu lub skopiowaniu wirtualnego dysku twardego do żądanego konta magazynu postępuj zgodnie z instrukcjami w tej sekcji, aby zarejestrować dysk VHD jako obraz systemu operacyjnego lub dysk systemu operacyjnego w zależności od danego scenariusza, a następnie utwórz z niego wystąpienie maszyny wirtualnej. Dysk VHD dysku danych można dołączyć do maszyny wirtualnej po jej utworzeniu.
+Przykładowy skrypt migracji znajduje się na końcu tej sekcji. Ten prosty skrypt nie jest zgodny ze wszystkimi scenariuszami. Może być konieczne zaktualizowanie skryptu w celu dopasowania go do danego scenariusza. Aby sprawdzić, czy ten skrypt ma zastosowanie do danego scenariusza, zobacz poniżej [przykładowego skryptu migracji](#a-sample-migration-script).
 
-#### Generalized Operating System VHD to create multiple Azure VM instances
-After generalized OS image VHD is uploaded to the storage account, register it as an **Azure VM Image** so that you can create one or more VM instances from it. Use the following PowerShell cmdlets to register your VHD as an Azure VM OS image. Provide the complete container URL where VHD was copied to.
+### <a name="checklist"></a>Lista kontrolna
+1. Poczekaj na ukończenie wszystkich kopii dysków VHD.
+2. Upewnij się, że Premium Storage jest dostępny w regionie, do którego chcesz przeprowadzić migrację.
+3. Wybierz nową serię maszyn wirtualnych, która będzie używana. Powinno to być możliwe Premium Storage, a rozmiar powinien być zależny od dostępności w regionie i zależnie od potrzeb.
+4. Określ dokładny rozmiar maszyny wirtualnej, który będzie używany. Rozmiar maszyny wirtualnej musi być wystarczająco duży, aby można było obsługiwać liczbę posiadanych dysków z danymi. Na przykład Jeśli masz 4 dyski danych, maszyna wirtualna musi mieć co najmniej 2 rdzenie. Należy również wziąć pod uwagę wymagania dotyczące mocy obliczeniowej, pamięci i przepustowości sieci.
+5. Utwórz konto Premium Storage w regionie docelowym. Jest to konto, które będzie używane dla nowej maszyny wirtualnej.
+6. Szczegóły bieżącej maszyny wirtualnej są przydatne, w tym listę dysków i odpowiadające im obiekty blob wirtualnego dysku twardego.
+
+Przygotuj swoją aplikację do przestoju. W celu przeprowadzenia czystej migracji należy zatrzymać wszystkie procesy w bieżącym systemie. Dopiero wtedy można uzyskać spójny stan, który można migrować do nowej platformy. Czas przestoju będzie zależeć od ilości danych na dyskach do migracji.
+
+> [!NOTE]
+> Jeśli tworzysz maszynę wirtualną Azure Resource Manager z wyspecjalizowanego dysku VHD, zapoznaj się z [tym szablonem](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) , aby wdrożyć maszynę wirtualną Menedżer zasobów przy użyciu istniejącego dysku.
+>
+>
+
+### <a name="register-your-vhd"></a>Rejestrowanie wirtualnego dysku twardego
+Aby utworzyć maszynę wirtualną na podstawie wirtualnego dysku twardego systemu operacyjnego lub dołączyć dysk danych do nowej maszyny wirtualnej, należy najpierw zarejestrować ją. Wykonaj poniższe czynności w zależności od scenariusza wirtualnego dysku twardego.
+
+#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Uogólniony wirtualny dysk twardy systemu operacyjnego do tworzenia wielu wystąpień maszyn wirtualnych platformy Azure
+Po przekazaniu uogólnionego dysku VHD obrazu systemu operacyjnego do konta magazynu zarejestruj go jako **obraz maszyny wirtualnej platformy Azure** , aby można było utworzyć co najmniej jedno wystąpienie maszyny wirtualnej. Użyj następujących poleceń cmdlet programu PowerShell do zarejestrowania wirtualnego dysku twardego jako obrazu systemu operacyjnego maszyny wirtualnej platformy Azure. Podaj pełny adres URL kontenera, do którego skopiowano wirtualny dysk twardy.
 
 ```powershell
 Add-AzureVMImage -ImageName "OSImageName" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/osimage.vhd" -OS Windows
 ```
 
-Skopiuj i Zapisz nazwę tego nowego obrazu maszyny Wirtualnej platformy Azure. W powyższym przykładzie jest *OSImageName*.
+Skopiuj i Zapisz nazwę tego nowego obrazu maszyny wirtualnej platformy Azure. W powyższym przykładzie jest to *OSImageName*.
 
-#### <a name="unique-operating-system-vhd-to-create-a-single-azure-vm-instance"></a>Unikatowe wirtualnego dysku twardego systemu operacyjnego do utworzenia pojedynczego wystąpienia maszyny Wirtualnej platformy Azure
-Unikatowe wirtualnego dysku twardego systemu operacyjnego przekazane do konta magazynu należy zarejestrować go jako **dysku systemu operacyjnego Azure** tak, aby z niego, można utworzyć wystąpienie maszyny Wirtualnej. Użyj tych poleceń cmdlet programu PowerShell, aby zarejestrować wirtualnego dysku twardego jako dysk systemu operacyjnego platformy Azure. Podaj adres URL pełną kontenera, w której wirtualny dysk twardy został skopiowany do.
+#### <a name="unique-operating-system-vhd-to-create-a-single-azure-vm-instance"></a>Unikatowy wirtualny dysk twardy systemu operacyjnego do utworzenia pojedynczego wystąpienia maszyny wirtualnej platformy Azure
+Po przekazaniu unikatowego wirtualnego dysku twardego systemu operacyjnego do konta magazynu zarejestruj go jako **dysk systemu operacyjnego Azure** , aby można było utworzyć wystąpienie maszyny wirtualnej. Użyj tych poleceń cmdlet programu PowerShell, aby zarejestrować dysk VHD jako dysk systemu operacyjnego Azure. Podaj pełny adres URL kontenera, do którego skopiowano wirtualny dysk twardy.
 
 ```powershell
 Add-AzureDisk -DiskName "OSDisk" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd" -Label "My OS Disk" -OS "Windows"
 ```
 
-Skopiuj i Zapisz nazwę tego nowego dysku systemu operacyjnego platformy Azure. W powyższym przykładzie jest *OSDisk*.
+Skopiuj i Zapisz nazwę tego nowego dysku systemu operacyjnego Azure. W powyższym przykładzie jest to *OSDisk*.
 
-#### <a name="data-disk-vhd-to-be-attached-to-new-azure-vm-instances"></a>Dane wirtualny dysk twardy dołączony do nowego wystąpienia maszyny Wirtualnej platformy Azure
-Po przekazaniu danych dysku VHD do konta magazynu, zarejestruj go jako dysk danych platformy Azure, dzięki czemu będzie można dołączyć do nowego serii DS, DSv2 serii lub wystąpienia maszyny Wirtualnej platformy Azure serii GS.
+#### <a name="data-disk-vhd-to-be-attached-to-new-azure-vm-instances"></a>Dysk VHD z danymi do dołączenia do nowych wystąpień maszyn wirtualnych platformy Azure
+Po przekazaniu dysku VHD z danymi do konta magazynu zarejestruj go jako dysk danych platformy Azure, aby można było go dołączyć do nowej serii DS, serii DSv2 lub wystąpienia maszyn wirtualnych platformy Azure z serii GS.
 
-Użyj tych poleceń cmdlet programu PowerShell, aby zarejestrować wirtualnego dysku twardego jako dysk danych platformy Azure. Podaj adres URL pełną kontenera, w której wirtualny dysk twardy został skopiowany do.
+Użyj tych poleceń cmdlet programu PowerShell, aby zarejestrować dysk VHD jako dysk danych platformy Azure. Podaj pełny adres URL kontenera, do którego skopiowano wirtualny dysk twardy.
 
 ```powershell
 Add-AzureDisk -DiskName "DataDisk" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/datadisk.vhd" -Label "My Data Disk"
 ```
 
-Skopiuj i Zapisz nazwę tego nowy dysk danych platformy Azure. W powyższym przykładzie jest *DataDisk*.
+Skopiuj i Zapisz nazwę tego nowego dysku danych platformy Azure. W powyższym przykładzie jest to *dysk*danych.
 
-### <a name="create-a-premium-storage-capable-vm"></a>Tworzenie maszyny Wirtualnej zdolne do magazynu w warstwie Premium
-Gdy obraz systemu operacyjnego lub dysk systemu operacyjnego są rejestrowane, tworzenie nowej serii DS, dsv2 lub maszyny Wirtualnej serii GS. Używany będzie obraz systemu operacyjnego lub nazwa dysku systemu operacyjnego, który został zarejestrowany. Wybierz typ maszyny Wirtualnej z warstwy Premium Storage. W poniższym przykładzie użyto *Standard_DS2* rozmiar maszyny Wirtualnej.
+### <a name="create-a-premium-storage-capable-vm"></a>Tworzenie maszyny wirtualnej z możliwością Premium Storage
+Po zarejestrowaniu obrazu systemu operacyjnego lub dysku systemu operacyjnego Utwórz nową maszynę wirtualną serii DS, DSv2 lub GS. Będziesz używać zarejestrowanego obrazu systemu operacyjnego lub nazwy dysku systemu operacyjnego. Wybierz typ maszyny wirtualnej z warstwy Premium Storage. W poniższym przykładzie używamy rozmiaru maszyny wirtualnej *Standard_DS2* .
 
 > [!NOTE]
-> Zaktualizuj rozmiaru dysku, upewnij się, że jest on zgodny z pojemnością i wymagania dotyczące wydajności i rozmiary dysku platformy Azure.
+> Zaktualizuj rozmiar dysku, aby upewnić się, że spełnia on wymagania dotyczące pojemności i wydajności oraz dostępne rozmiary dysku platformy Azure.
 >
 >
 
-Postępuj zgodnie z poleceń cmdlet programu PowerShell krok po kroku, które są poniżej, aby utworzyć nową maszynę Wirtualną. Najpierw ustaw parametry wspólne:
+Postępuj zgodnie z poleceniami cmdlet programu PowerShell krok po kroku, aby utworzyć nową maszynę wirtualną. Najpierw ustaw wspólne parametry:
 
 ```powershell
 $serviceName = "yourVM"
@@ -371,16 +371,16 @@ $vmName ="yourVM"
 $vmSize = "Standard_DS2"
 ```
 
-Najpierw Utwórz usługę w chmurze w którym będzie obsługiwać nowe maszyny wirtualne.
+Najpierw Utwórz usługę w chmurze, w której będziesz obsługiwać nowe maszyny wirtualne.
 
 ```powershell
 New-AzureService -ServiceName $serviceName -Location $location
 ```
 
-Następnie w zależności od scenariusza, należy utworzyć wystąpienie maszyny Wirtualnej platformy Azure z obrazu systemu operacyjnego lub dysk systemu operacyjnego, który został zarejestrowany.
+Następnie w zależności od scenariusza Utwórz wystąpienie maszyny wirtualnej platformy Azure z poziomu zarejestrowanego obrazu systemu operacyjnego lub dysku systemu operacyjnego.
 
-#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Uogólniony wirtualny dysk twardy systemu operacyjnego, umożliwiająca utworzenie wielu wystąpień maszyny Wirtualnej platformy Azure
-Utwórz jeden lub więcej nowych maszyn wirtualnych platformy Azure serii DS wystąpienia przy użyciu **obrazu systemu operacyjnego Azure** zarejestrowaną. Określ nazwę tego obrazu systemu operacyjnego w konfiguracji maszyny Wirtualnej, podczas tworzenia nowej maszyny Wirtualnej, jak pokazano poniżej.
+#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>Uogólniony wirtualny dysk twardy systemu operacyjnego do tworzenia wielu wystąpień maszyn wirtualnych platformy Azure
+Utwórz co najmniej jedno nowe wystąpienie maszyny wirtualnej platformy Azure z serii DS za pomocą zarejestrowanego **obrazu systemu operacyjnego Azure** . Podaj nazwę tego obrazu systemu operacyjnego w konfiguracji maszyny wirtualnej podczas tworzenia nowej maszyny wirtualnej, jak pokazano poniżej.
 
 ```powershell
 $OSImage = Get-AzureVMImage –ImageName "OSImageName"
@@ -392,8 +392,8 @@ Add-AzureProvisioningConfig -Windows –AdminUserName $adminUser -Password $admi
 New-AzureVM -ServiceName $serviceName -VM $vm
 ```
 
-#### <a name="unique-operating-system-vhd-to-create-a-single-azure-vm-instance"></a>Unikatowe wirtualnego dysku twardego systemu operacyjnego do utworzenia pojedynczego wystąpienia maszyny Wirtualnej platformy Azure
-Utwórz nowy DS serii maszyny Wirtualnej platformy Azure wystąpienia przy użyciu **dysku systemu operacyjnego Azure** zarejestrowaną. Określ nazwę tego dysku systemu operacyjnego w konfiguracji maszyny Wirtualnej, podczas tworzenia nowej maszyny Wirtualnej, jak pokazano poniżej.
+#### <a name="unique-operating-system-vhd-to-create-a-single-azure-vm-instance"></a>Unikatowy wirtualny dysk twardy systemu operacyjnego do utworzenia pojedynczego wystąpienia maszyny wirtualnej platformy Azure
+Utwórz nowe wystąpienie maszyny wirtualnej platformy Azure z serii DS przy użyciu zarejestrowanego **dysku systemu operacyjnego Azure** . Określ nazwę dysku systemu operacyjnego w konfiguracji maszyny wirtualnej podczas tworzenia nowej maszyny wirtualnej, jak pokazano poniżej.
 
 ```powershell
 $OSDisk = Get-AzureDisk –DiskName "OSDisk"
@@ -403,12 +403,12 @@ $vm = New-AzureVMConfig -Name $vmName -InstanceSize $vmSize -DiskName $OSDisk.Di
 New-AzureVM -ServiceName $serviceName –VM $vm
 ```
 
-Określ inne informacje maszyny Wirtualnej platformy Azure, takich jak usługi w chmurze, region, konto magazynu, zestaw dostępności i zasad buforowania. Należy zauważyć, że wystąpienia maszyny Wirtualnej musi być kolokowany z skojarzone systemu operacyjnego ani dysków z danymi, więc wybrana chmura usługi, region i konto magazynu muszą być w tej samej lokalizacji co podstawowe wirtualne dyski twarde w tych dysków.
+Określ inne informacje o maszynie wirtualnej platformy Azure, takie jak usługa w chmurze, region, konto magazynu, zestaw dostępności i zasady buforowania. Należy pamiętać, że wystąpienie maszyny wirtualnej musi znajdować się wspólnie z skojarzonym systemem operacyjnym lub dyskami z danymi, więc wybrana usługa w chmurze, region i konto magazynu muszą znajdować się w tej samej lokalizacji co bazowe dyski VHD tych dysków.
 
 ### <a name="attach-data-disk"></a>Dołączanie dysku danych
-Ponadto jeśli zarejestrowano dysk VHD z danymi, dołącz je do nowego magazynu w warstwie Premium stanie maszyny Wirtualnej platformy Azure.
+Wreszcie, jeśli masz zarejestrowane dyski VHD z danymi, Dołącz je do nowej maszyny wirtualnej platformy Azure z możliwością Premium Storage.
 
-Skorzystaj z następujących poleceń cmdlet programu PowerShell do dołączenia dysku danych do nowej maszyny Wirtualnej i określanie zasad pamięci podręcznej. W poniższym przykładzie ustawiono zasady buforowania *tylko do odczytu*.
+Użyj następującego polecenia cmdlet programu PowerShell, aby dołączyć dysk danych do nowej maszyny wirtualnej i określić zasady buforowania. W przykładzie poniżej zasad buforowania ustawiono wartość tylko do *odczytu*.
 
 ```powershell
 $vm = Get-AzureVM -ServiceName $serviceName -Name $vmName
@@ -419,27 +419,27 @@ Update-AzureVM  -VM $vm
 ```
 
 > [!NOTE]
-> Mogą istnieć dodatkowe kroki niezbędne do obsługi aplikacji, który jest nie być dostępne w tym przewodniku.
+> Może być konieczne wykonanie dodatkowych czynności w celu obsługi aplikacji, które nie są objęte tym przewodnikiem.
 >
 >
 
-### <a name="checking-and-plan-backup"></a>Sprawdzanie i Planowanie kopii zapasowych
-Gdy nowa maszyna wirtualna jest uruchomiona, dostęp do niego przy użyciu tego samego identyfikatora logowania i hasło jako oryginalnej maszyny Wirtualnej i sprawdź, czy wszystko działa zgodnie z oczekiwaniami. Wszystkie ustawienia, w tym woluminy rozłożone będzie znajdować się w nowej maszyny Wirtualnej.
+### <a name="checking-and-plan-backup"></a>Sprawdzanie i Planowanie kopii zapasowej
+Gdy nowa maszyna wirtualna jest uruchomiona, uzyskuj dostęp do niej przy użyciu tego samego identyfikatora logowania i hasła jako oryginalnej maszyny wirtualnej i sprawdź, czy wszystko działa zgodnie z oczekiwaniami. Wszystkie ustawienia, w tym woluminy rozłożone, będą obecne w nowej maszynie wirtualnej.
 
-Ostatnim krokiem jest zaplanowanie kopia zapasowa i harmonogram konserwacji dla nowej maszyny Wirtualnej odpowiednio do potrzeb aplikacji.
+Ostatnim krokiem jest zaplanowanie harmonogramu tworzenia kopii zapasowych i konserwacji dla nowej maszyny wirtualnej w zależności od potrzeb aplikacji.
 
 ### <a name="a-sample-migration-script"></a>Przykładowy skrypt migracji
-Jeśli masz wiele maszyn wirtualnych do migracji, automatyzacja za pośrednictwem skryptów programu PowerShell będą przydatne. Poniżej przedstawiono przykładowy skrypt, który automatyzuje migracja maszyny Wirtualnej. Uwaga poniżej skrypt jest tylko przykładem, a kilka założeń dotyczących bieżącego dysków maszyny Wirtualnej. Może być konieczne zaktualizowanie skryptów do pasowania do określonego scenariusza.
+Jeśli masz wiele maszyn wirtualnych do migracji, będzie przydatne Automatyzacja za pośrednictwem skryptów programu PowerShell. Poniżej znajduje się przykładowy skrypt, który automatyzuje migrację maszyny wirtualnej. Należy zauważyć, że Poniższy skrypt jest tylko przykładem i istnieje kilka założeń dotyczących bieżących dysków maszyny wirtualnej. Może być konieczne zaktualizowanie skryptu w celu dopasowania go do danego scenariusza.
 
-Dostępne są następujące założenia:
+Założenia są następujące:
 
-* Tworzysz klasycznych maszyn wirtualnych platformy Azure.
-* Dyski systemu operacyjnego źródłowej i dysków danych źródłowych znajdują się w tym samym koncie magazynu i tym samym kontenerze. Dyski systemu operacyjnego i dyski danych nie są w tym samym miejscu, można skopiować wirtualne dyski twarde za pośrednictwem konta magazynu i kontenerów można użyć narzędzia AzCopy lub programu Azure PowerShell. Można znaleźć w poprzednim kroku: [Skopiuj wirtualny dysk twardy za pomocą narzędzia AzCopy lub programu PowerShell](#copy-vhd-with-azcopy-or-powershell). Edytowanie tego skryptu w celu spełnienia danego scenariusza jest inną możliwością, ale zalecamy używanie narzędzia AzCopy lub programu PowerShell, ponieważ jest łatwiejsze i szybsze.
+* Tworzysz klasyczne maszyny wirtualne platformy Azure.
+* Źródłowe dyski systemu operacyjnego i dyski danych źródłowych znajdują się na tym samym koncie magazynu i w tym samym kontenerze. Jeśli dyski systemu operacyjnego i dyski z danymi nie znajdują się w tym samym miejscu, możesz użyć AzCopy lub Azure PowerShell do kopiowania dysków VHD za pośrednictwem kont magazynu i kontenerów. Zapoznaj się z poprzednim krokiem: [Skopiuj dysk VHD za pomocą AzCopy lub PowerShell](#copy-vhd-with-azcopy-or-powershell). Edytowanie tego skryptu w celu spełnienia Twojego scenariusza jest kolejnym wyborem, ale zalecamy korzystanie z programu AzCopy lub PowerShell, ponieważ jest to łatwiejsze i szybsze.
 
-Skrypt automatyzacji znajduje się poniżej. Zamień tekst informacje, a następnie zaktualizować ten skrypt, aby dopasować przy użyciu określonego scenariusza.
+Skrypt automatyzacji jest przedstawiony poniżej. Zastąp tekst informacjami i zaktualizuj skrypt tak, aby był zgodny z konkretnym scenariuszem.
 
 > [!NOTE]
-> Przy użyciu istniejącego skryptu nie zostaną zachowane konfiguracji sieci źródłowa maszyna wirtualna. Konieczne będzie ponownej konfiguracji ustawień sieciowych na maszynach wirtualnych migrowanych.
+> Użycie istniejącego skryptu nie zachowuje konfiguracji sieci źródłowej maszyny wirtualnej. Należy ponownie zmienić konfigurację ustawień sieciowych na zmigrowanych maszynach wirtualnych.
 >
 >
 
@@ -737,32 +737,32 @@ Skrypt automatyzacji znajduje się poniżej. Zamień tekst informacje, a następ
 ```
 
 #### <a name="optimization"></a>Optymalizacja
-Bieżąca konfiguracja maszyny Wirtualnej można dostosować specjalnie do sprawnej współpracy z dysków w warstwie standardowa. Na przykład aby zwiększyć wydajność przy użyciu wielu dysków w woluminu rozłożonego. Na przykład zamiast 4 dyski oddzielnie w magazynie Premium Storage, można zoptymalizować koszty dzięki jednego dysku. Optymalizacje, takie jak konieczność obsługi na podstawie przypadku i wymagają niestandardowych krokach po zakończeniu migracji. Należy również zauważyć, że ten proces nie może również działać dla baz danych i aplikacji, które są zależne od układu dysku zdefiniowany w ustawieniach.
+Bieżącą konfigurację maszyny wirtualnej można dostosować w taki sposób, aby działała prawidłowo z dyskami standardowymi. Na przykład, aby zwiększyć wydajność przy użyciu wielu dysków w woluminie rozłożonym. Na przykład zamiast korzystania z 4 dysków oddzielnie na Premium Storage, można zoptymalizować koszty, korzystając z jednego dysku. Optymalizacje podobne do tego muszą być obsługiwane w przypadku wielkości liter i wymagają wykonania niestandardowych czynności po migracji. Należy również pamiętać, że ten proces może nie współpracować z bazami danych i aplikacjami, które są zależne od układu dysku zdefiniowanego w instalatorze.
 
 ##### <a name="preparation"></a>Przygotowanie
-1. Wykonaj proste migracji, zgodnie z opisem we wcześniejszej sekcji. Optymalizacje odbędzie się w nowej maszyny Wirtualnej po zakończeniu migracji.
-2. Zdefiniuj nowe rozmiary dysków niezbędne do skonfigurowania zoptymalizowane.
-3. Należy określić mapowanie bieżącego dysków/woluminów do specyfikacji nowego dysku.
+1. Wykonaj prostą migrację zgodnie z opisem w poprzedniej sekcji. Optymalizacje zostaną wykonane na nowej maszynie wirtualnej po migracji.
+2. Zdefiniuj nowe rozmiary dysków, które są odpowiednie dla zoptymalizowanej konfiguracji.
+3. Określ mapowanie bieżących dysków/woluminów na nowe specyfikacje dysków.
 
-##### <a name="execution-steps"></a>Wykonanie czynności
-1. Utwórz nowe dyski o odpowiednim rozmiarze na maszynie Wirtualnej z magazynu Premium.
-2. Zaloguj się do maszyny Wirtualnej i kopiowania danych z bieżącego woluminu na nowy dysk, który jest mapowany do tego woluminu. W tym wszystkie woluminy bieżącego potrzebnych do mapowania na nowy dysk.
-3. Następnie zmień ustawienia aplikacji, aby przełączyć się na nowe dyski i odłączyć starych woluminów.
+##### <a name="execution-steps"></a>Kroki wykonywania
+1. Utwórz nowe dyski o odpowiednich rozmiarach na maszynie wirtualnej Premium Storage.
+2. Zaloguj się do maszyny wirtualnej i skopiuj dane z bieżącego woluminu na nowy dysk, który jest mapowany na ten wolumin. Zrób to dla wszystkich bieżących woluminów, które muszą być mapowane na nowy dysk.
+3. Następnie zmień ustawienia aplikacji, aby przełączyć się na nowe dyski i odłączyć stare woluminy.
 
-Dostrajanie aplikacji w celu zapewnienia lepszej wydajności dysków, można znaleźć w sekcji Optymalizacja wydajności aplikacji z naszych [projektowanie pod kątem wysokiej wydajności](../../virtual-machines/windows/premium-storage-performance.md) artykułu.
+Aby dostroić aplikację w celu uzyskania lepszej wydajności dysku, zapoznaj się z sekcją Optymalizacja wydajności aplikacji w artykule [projektowanie pod kątem wysokiej wydajności](../../virtual-machines/windows/premium-storage-performance.md) artykułu.
 
-### <a name="application-migrations"></a>Migracja aplikacji
-Baz danych i innych złożone aplikacje mogą wymagać specjalne kroki zgodnie z definicją dostawcy aplikacji, w związku z migracją. Zapoznaj się z dokumentacją odpowiedniej aplikacji. Na przykład Zazwyczaj można migrować bazy danych przy użyciu kopii zapasowej i przywracania.
+### <a name="application-migrations"></a>Migracje aplikacji
+Bazy danych i inne złożone aplikacje mogą wymagać specjalnych kroków określonych przez dostawcę aplikacji do migracji. Zapoznaj się z dokumentacją odpowiedniej aplikacji. Na przykład zazwyczaj bazy danych można migrować poprzez wykonywanie kopii zapasowych i przywracanie.
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz następujące zasoby dla konkretnych scenariuszy do migrowania maszyn wirtualnych:
+## <a name="next-steps"></a>Następne kroki
+Zapoznaj się z następującymi zasobami dla konkretnych scenariuszy migrowania maszyn wirtualnych:
 
-* [Migrowanie maszyn wirtualnych platformy Azure między kontami magazynu](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
-* [Tworzenie i przekazywanie wirtualnego dysku twardego systemu Windows Server na platformie Azure.](../../virtual-machines/windows/upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Tworzenie i przekazywanie wirtualnego dysku twardego systemu Linux na platformie Azure](../../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Migrowanie maszyn wirtualnych ze środowiska Amazon AWS na platformę Microsoft Azure](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
+* [Migrowanie Virtual Machines platformy Azure między kontami magazynu](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
+* [Utwórz i przekaż wirtualny dysk twardy systemu Windows Server na platformę Azure.](../../virtual-machines/windows/upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Tworzenie i przekazywanie wirtualnego dysku twardego z systemem Linux do platformy Azure](../../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Migrowanie Virtual Machines z usługi Amazon AWS do Microsoft Azure](https://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
-Zobacz też następujące zasoby, aby dowiedzieć się więcej na temat usługi Azure Storage i Azure Virtual Machines:
+Zobacz też następujące zasoby, aby dowiedzieć się więcej na temat usługi Azure Storage i platformy Azure Virtual Machines:
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Usługa Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
