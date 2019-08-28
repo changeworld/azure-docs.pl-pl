@@ -9,16 +9,16 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: sstein, bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: 5a09b8e589b0d4ae9daa3bbd32c38f4946d16d0e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 133110d015ac7a26f18f14f6ff957729a4f079b5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567617"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060659"
 ---
-# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połącz aplikację z wystąpieniem zarządzanym usługi Azure SQL Database
+# <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połącz aplikację z Azure SQL Database wystąpieniem zarządzanym
 
 Dzisiaj możesz wybrać wiele opcji podczas decydowania, jak i gdzie hostować aplikację.
 
@@ -143,7 +143,7 @@ Następujące minimalne wersje narzędzi i sterowników są zalecane, jeśli chc
 |Sterownik ODBC| v17 |
 |Sterownik PHP| 5.2.0 |
 |Sterownik JDBC| 6.4.0 |
-|Sterownik środowiska Node. js| 2.1.1 |
+|Sterownik Node.js| 2.1.1 |
 |Sterownik OLEDB| 18.0.2.0 |
 |SSMS| 18,0 lub [więcej](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) |
 |[SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [150](https://www.nuget.org/packages/Microsoft.SqlServer.SqlManagementObjects) lub więcej |

@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 08/13/2019
 ms.author: bwren
-ms.openlocfilehash: d50b3ab68b406db47a4cc8fec081b2fc076071d1
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 3818547eee05a1d6f8cf84ccb0f5f4ecb44a9ab3
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741659"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061594"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania pakietem Office 365 na platformie Azure (wersja zapoznawcza)
 
@@ -72,7 +72,7 @@ W obszarze roboczym Log Analytics:
 
 Z subskrypcji pakietu Office 365:
 
-- Nazwa użytkownika: Adres e-mail konta administracyjnego.
+- Uż Adres e-mail konta administracyjnego.
 - Identyfikator dzierżawy: Unikatowy identyfikator subskrypcji pakietu Office 365.
 - Identyfikator klienta: 16-znakowy ciąg, który reprezentuje klienta pakietu Office 365.
 - Wpis tajny klienta: Zaszyfrowany ciąg niezbędny do uwierzytelnienia.
@@ -83,45 +83,46 @@ Pierwszym krokiem jest utworzenie aplikacji w Azure Active Directory, która bę
 
 1. Zaloguj się do witryny Azure Portal na stronie [https://portal.azure.com](https://portal.azure.com/).
 1. Wybierz **Azure Active Directory** a następnie **rejestracje aplikacji**.
-1. Kliknij pozycję **Rejestrowanie nowej aplikacji**.
+1. Kliknij pozycję **Nowa rejestracja**.
 
     ![Dodaj rejestrację aplikacji](media/solution-office-365/add-app-registration.png)
-1. Wprowadź **nazwę** aplikacji i **adres URL logowania**.  Nazwa powinna być opisowa.  Użyj `http://localhost` adresu URL i Zachowaj _aplikację sieci Web/interfejs API_ dla **typu aplikacji**
+1. Wprowadź **nazwę**aplikacji. Wybierz **konta w dowolnym katalogu organizacyjnym (dowolny katalog usługi Azure AD — wielodostępny)** dla **obsługiwanych typów kont**.
     
     ![Utwórz aplikację](media/solution-office-365/create-application.png)
-1. Kliknij przycisk **Utwórz** i sprawdź poprawność informacji o aplikacji.
+1. Kliknij pozycję **zarejestruj** i sprawdź poprawność informacji o aplikacji.
 
     ![Zarejestrowana aplikacja](media/solution-office-365/registered-app.png)
 
 ### <a name="configure-application-for-office-365"></a>Konfigurowanie aplikacji dla pakietu Office 365
 
-1. Kliknij pozycję **Ustawienia** , aby otworzyć menu **Ustawienia** .
-1. Wybierz **właściwości**. Zmień wartość **wiele dzierżawców** na _tak_.
+1. Wybierz pozycję **uwierzytelnianie** i sprawdź, czy w obszarze **obsługiwane typy kont**są wybrane **konta w dowolnym katalogu organizacyjnym (w katalogu usługi Azure AD — wielodostępny)** .
 
     ![Ustawienia wielodostępne](media/solution-office-365/settings-multitenant.png)
 
-1. W menu **Ustawienia** wybierz pozycję **wymagane uprawnienia** , a następnie kliknij przycisk **Dodaj**.
-1. Kliknij pozycję **Wybierz interfejs API** , a następnie **interfejsy API zarządzania pakietu Office 365**. Kliknij pozycję **interfejsy API zarządzania pakietu Office 365**. Kliknij przycisk **wybierz**.
+1. Wybierz pozycję **uprawnienia interfejsu API** , a następnie **Dodaj uprawnienie**.
+1. Kliknij pozycję **interfejsy API zarządzania pakietu Office 365**. 
 
     ![Wybierz interfejs API](media/solution-office-365/select-api.png)
 
-1. W obszarze **Wybierz uprawnienia** wybierz następujące opcje **uprawnień aplikacji** i delegowane **uprawnienia**:
-   - Odczytuj informacje o kondycji usług dla organizacji
-   - Odczytaj dane aktywności dla Twojej organizacji
-   - Odczytuj raporty aktywności dotyczące organizacji
+1. W obszarze **jakiego typu uprawnienia aplikacja jest wymagana?** wybierz następujące opcje **uprawnień aplikacji** i **delegowane uprawnienia**:
+   - Odczytaj informacje o kondycji usługi dla Twojej organizacji
+   - Odczytaj dane działania organizacji
+   - Odczytaj raporty dotyczące działań dla Twojej organizacji
 
-     ![Wybierz interfejs API](media/solution-office-365/select-permissions.png)
+     ![Wybierz interfejs API](media/solution-office-365/select-permissions-01.png)![Wybierz interfejs API](media/solution-office-365/select-permissions-02.png)
 
-1. Kliknij przycisk **Wybierz** , a następnie pozycję **gotowe**.
-1. Kliknij pozycję **Udziel uprawnień** , a następnie kliknij przycisk **tak** po wyświetleniu monitu o weryfikację.
+1. Kliknij przycisk **Dodaj uprawnienia**.
+1. Kliknij pozycję **Udziel zgody administratora** , a następnie kliknij przycisk **tak** po wyświetleniu monitu o weryfikację.
 
-    ![Udzielenie uprawnień](media/solution-office-365/grant-permissions.png)
 
-### <a name="add-a-key-for-the-application"></a>Dodaj klucz dla aplikacji
+### <a name="add-a-secret-for-the-application"></a>Dodawanie wpisu tajnego dla aplikacji
 
-1. Wybierz pozycję **klucze** w menu **Ustawienia** .
+1. Wybierz pozycję **certyfikaty &** wpisy tajne, a następnie **nowy klucz tajny klienta**.
+
+    ![Klucze](media/solution-office-365/secret.png)
+ 
 1. Wpisz **Opis** i **czas trwania** nowego klucza.
-1. Kliknij przycisk **Zapisz** , a następnie skopiuj wygenerowaną **wartość** .
+1. Kliknij przycisk **Dodaj** , a następnie skopiuj wygenerowaną **wartość** .
 
     ![Klucze](media/solution-office-365/keys.png)
 
@@ -750,7 +751,7 @@ Poniższa tabela zawiera przykładowe wyszukiwania w dzienniku dotyczące rekord
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Użyj [zapytań dzienników w Azure monitor](../log-query/log-query-overview.md) , aby wyświetlić szczegółowe dane aktualizacji.
 * [Utwórz własne pulpity nawigacyjne](../learn/tutorial-logs-dashboards.md) , aby wyświetlić ulubione zapytania wyszukiwania pakietu Office 365.

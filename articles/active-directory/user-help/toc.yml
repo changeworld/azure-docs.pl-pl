@@ -1,5 +1,5 @@
 - name: Dokumentacja z pomocą dla użytkowników
-  href: index.md
+  href: index.yml
 - name: Pomoc dotycząca weryfikacji dwuetapowej
   items:
     - name: Omówienie

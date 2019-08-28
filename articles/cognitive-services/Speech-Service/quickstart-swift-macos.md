@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/28/2019
 ms.author: cbasoglu
-ms.openlocfilehash: c1407e8a133013054ef33d4fe55fb8ecb46de654
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 64f02a33a3aeecddf751b8293542776bf5819574
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035716"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061902"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-macos-using-the-speech-sdk"></a>Szybki start: Rozpoznawanie mowy w programie SWIFT w systemie macOS przy użyciu zestawu Speech SDK
 
@@ -65,16 +65,22 @@ W kolejnych oknach dialogowych wybierz następujące opcje:
 
 ## <a name="add-the-sample-code"></a>Dodawanie przykładowego kodu
 
-1. Umieść nowy plik nagłówkowy o nazwie `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` `helloworld` w katalogu w projekcie HelloWorld i wklej do niego następujący kod:[!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
+1. Umieść nowy plik nagłówkowy o nazwie `MicrosoftCognitiveServicesSpeech-Bridging-Header.h` `helloworld` w katalogu w projekcie HelloWorld i wklej do niego następujący kod:
+
+   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h#code)]
 1. Dodaj ścieżkę `helloworld/MicrosoftCognitiveServicesSpeech-Bridging-Header.h` względną do nagłówka mostkowania do ustawień projektu SWIFT dla elementu docelowego HelloWorld w obszarze właściwości ![nagłówka *mostkowania "cel-C"* .](media/sdk/qs-swift-macos-bridging-header.png)
-1. Zastąp zawartość automatycznie generowanego `AppDelegate.swift` pliku przez:[!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/helloworld/AppDelegate.swift#code)]
+1. Zastąp zawartość automatycznie wygenerowanego pliku `AppDelegate.swift` następującą zawartością:
+
+   [!code-swift[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/helloworld/AppDelegate.swift#code)]
 1. W `AppDelegate.swift`programie Zamień ciąg `YourSubscriptionKey` na klucz subskrypcji.
 1. Zastąp ciąg `YourServiceRegion` w regionie skojarzonym z subskrypcją (na `westus` przykład w przypadku subskrypcji bezpłatnej wersji próbnej).
 
 ## <a name="install-the-sdk-as-a-cocoapod"></a>Zainstaluj zestaw SDK jako CocoaPod
 
 1. Zainstaluj Menedżera zależności CocoaPod zgodnie z opisem w [instrukcje dotyczące instalacji](https://guides.cocoapods.org/using/getting-started.html).
-1. Przejdź do katalogu aplikacji przykładowej (`helloworld`). Umieść plik tekstowy o nazwie `Podfile` i następującej zawartości w tym katalogu:[!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/Podfile)]
+1. Przejdź do katalogu aplikacji przykładowej (`helloworld`). Umieść plik tekstowy o nazwie `Podfile` i następującej zawartości w tym katalogu:
+
+   [!code-ruby[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/swift-macos/helloworld/Podfile)]
 1. Przejdź do `helloworld` katalogu w terminalu i uruchom polecenie `pod install`. Spowoduje to wygenerowanie `helloworld.xcworkspace` obszaru roboczego Xcode zawierającego zarówno przykładową aplikację, jak i zestaw mowy SDK jako zależność. Ten obszar roboczy zostanie użyty w poniższej tabeli.
 
 ## <a name="build-and-run-the-sample"></a>Kompilowanie i uruchamianie przykładu

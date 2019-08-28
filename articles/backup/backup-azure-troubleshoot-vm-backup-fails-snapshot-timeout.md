@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 54b83df4c0ad68c9bd6b39d39926657395c48f3e
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 391ad5c6535d457c2df988cd29d21e481310b17f
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615874"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061762"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z błędem Azure Backup: Problemy z agentem lub rozszerzeniem
 
@@ -22,17 +22,15 @@ W tym artykule opisano kroki rozwiązywania problemów, które mogą pomóc w ro
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-
-
 ## <a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable — Agent maszyny wirtualnej nie może komunikować się z Azure Backup
 
 **Kod błędu**: UserErrorGuestAgentStatusUnavailable <br>
 **Komunikat o błędzie**: Agent maszyny wirtualnej nie może komunikować się z Azure Backup<br>
 
 Agent maszyny wirtualnej platformy Azure może zostać zatrzymany, nieaktualny, w stanie niespójnym lub nie został zainstalowany i uniemożliwiał Azure Backup usługę do wyzwalania migawek.  
-    
-- Jeśli Agent maszyny wirtualnej został zatrzymany lub jest w stanie niespójnym, **Uruchom go ponownie** , a następnie spróbuj ponownie wykonać operację tworzenia kopii zapasowej (spróbuj utworzyć kopię zapasową ad hoc). Aby uzyskać instrukcje dotyczące ponownego uruchomienia agenta, zobacz maszyny [wirtualne z systemem Windows](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) lub [maszyny wirtualne](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)z systemem Linux. 
-- Jeśli Agent maszyny wirtualnej nie został zainstalowany lub jest przestarzały, zainstaluj/zaktualizuj agenta maszyny wirtualnej i spróbuj ponownie wykonać operację tworzenia kopii zapasowej. Aby uzyskać instrukcje dotyczące instalowania/aktualizowania agenta, zobacz maszyny [wirtualne z systemem Windows](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) lub [maszyny wirtualne](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)z systemem Linux.  
+
+- Jeśli Agent maszyny wirtualnej został zatrzymany lub jest w stanie niespójnym, **Uruchom go ponownie** , a następnie spróbuj ponownie wykonać operację tworzenia kopii zapasowej (spróbuj utworzyć kopię zapasową ad hoc). Aby uzyskać instrukcje dotyczące ponownego uruchomienia agenta, zobacz maszyny [wirtualne z systemem Windows](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) lub [maszyny wirtualne](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)z systemem Linux.
+- Jeśli Agent maszyny wirtualnej nie został zainstalowany lub jest przestarzały, zainstaluj/zaktualizuj agenta maszyny wirtualnej i spróbuj ponownie wykonać operację tworzenia kopii zapasowej. Aby uzyskać instrukcje dotyczące instalowania/aktualizowania agenta, zobacz maszyny [wirtualne z systemem Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) lub [maszyny wirtualne](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)z systemem Linux.  
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError — nie można skomunikować się z agentem maszyny wirtualnej w celu uzyskania stanu migawki
 
@@ -40,17 +38,22 @@ Agent maszyny wirtualnej platformy Azure może zostać zatrzymany, nieaktualny, 
 **Komunikat o błędzie**: Nie można nawiązać komunikacji z agentem maszyny wirtualnej w celu uzyskania stanu migawki <br>
 
 Po zarejestrowaniu i zaplanowaniu maszyny wirtualnej dla usługi Azure Backup backup inicjuje zadanie, komunikując się z rozszerzeniem kopii zapasowej maszyny wirtualnej w celu przeprowadzenia migawki w danym momencie. Jeden z następujących warunków może uniemożliwić wyzwolenie migawki. Jeśli migawka nie zostanie wyzwolona, może wystąpić błąd kopii zapasowej. Wykonaj następujące kroki rozwiązywania problemów w podanej kolejności, a następnie ponów próbę wykonania operacji:  
+
 **Przyczyna 1: [Agent jest zainstalowany na maszynie wirtualnej, ale nie odpowiada (dla maszyn wirtualnych z systemem Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**Przyczyna 2: [Agent zainstalowany na maszynie wirtualnej jest nieaktualny (dla maszyn wirtualnych z systemem Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Przyczyna 3: [Nie można pobrać stanu migawki lub nie można wykonać migawki](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**     
-**Przyczyna 4: [Aktualizacja lub załadowanie rozszerzenia kopii zapasowej nie powiodło się](#the-backup-extension-fails-to-update-or-load)** 
+
+**Przyczyna 2: [Agent zainstalowany na maszynie wirtualnej jest nieaktualny (dla maszyn wirtualnych z systemem Linux)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+
+**Przyczyna 3: [Nie można pobrać stanu migawki lub nie można wykonać migawki](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**
+
+**Przyczyna 4: [Aktualizacja lub załadowanie rozszerzenia kopii zapasowej nie powiodło się](#the-backup-extension-fails-to-update-or-load)**
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached — Osiągnięto maksymalny limit kolekcji punktów przywracania
 
 **Kod błędu**: UserErrorRpCollectionLimitReached <br>
 **Komunikat o błędzie**: Osiągnięto maksymalny limit kolekcji punktów przywracania. <br>
-* Ten problem może wystąpić, jeśli w grupie zasobów punktu odzyskiwania istnieje blokada uniemożliwiająca automatyczne czyszczenie punktu odzyskiwania.
-* Ten problem może również wystąpić w przypadku wyzwolenia wielu kopii zapasowych dziennie. Obecnie zalecamy tylko jedną kopię zapasową dziennie, ponieważ natychmiastowe punkty przywracania są przechowywane przez 1-5 dni zgodnie ze skonfigurowanym przechowywaniem migawek, a tylko 18 RPS pliku można skojarzyć z maszyną wirtualną w danym momencie. <br>
+
+- Ten problem może wystąpić, jeśli w grupie zasobów punktu odzyskiwania istnieje blokada uniemożliwiająca automatyczne czyszczenie punktów odzyskiwania.
+- Ten problem może również wystąpić w przypadku wyzwolenia wielu kopii zapasowych dziennie. Obecnie zalecamy tylko jedną kopię zapasową dziennie, ponieważ natychmiastowe punkty przywracania są zachowywane przez 1-5 dni na skonfigurowane przechowywanie migawek i tylko 18 RPS pliku można skojarzyć z maszyną wirtualną w danym momencie. <br>
 
 Zalecana akcja:<br>
 Aby rozwiązać ten problem, Usuń blokadę z grupy zasobów maszyny wirtualnej, a następnie ponów operację, aby wyzwolić czyszczenie.
@@ -72,7 +75,8 @@ Aby operacja tworzenia kopii zapasowej zakończyła się pomyślnie na zaszyfrow
 **Kod błędu**: ExtensionSnapshotFailedNoNetwork<br>
 **Komunikat o błędzie**: Nie można wykonać operacji migawki z powodu braku łączności z siecią na maszynie wirtualnej<br>
 
-Po zarejestrowaniu i zaplanowaniu maszyny wirtualnej dla usługi Azure Backup backup inicjuje zadanie, komunikując się z rozszerzeniem kopii zapasowej maszyny wirtualnej w celu przeprowadzenia migawki w danym momencie. Jeden z następujących warunków może uniemożliwić wyzwolenie migawki. Jeśli migawka nie zostanie wyzwolona, może wystąpić błąd kopii zapasowej. Wykonaj następujące kroki rozwiązywania problemów w podanej kolejności, a następnie ponów próbę wykonania operacji:    
+Po zarejestrowaniu i zaplanowaniu maszyny wirtualnej dla usługi Azure Backup backup inicjuje zadanie, komunikując się z rozszerzeniem kopii zapasowej maszyny wirtualnej w celu przeprowadzenia migawki w danym momencie. Jeden z następujących warunków może uniemożliwić wyzwolenie migawki. Jeśli migawka nie zostanie wyzwolona, może wystąpić błąd kopii zapasowej. Wykonaj następujące kroki rozwiązywania problemów w podanej kolejności, a następnie ponów próbę wykonania operacji:
+
 **Przyczyna 1: [Nie można pobrać stanu migawki lub nie można wykonać migawki](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **Przyczyna 2: [Aktualizacja lub załadowanie rozszerzenia kopii zapasowej nie powiodło się](#the-backup-extension-fails-to-update-or-load)**  
 **Przyczyna 3: [Maszyna wirtualna nie ma dostępu do Internetu](#the-vm-has-no-internet-access)**
@@ -101,12 +105,12 @@ Po zarejestrowaniu i zaplanowaniu maszyny wirtualnej dla usługi Azure Backup ba
 **Przyczyna 5: Usługa kopii zapasowej nie ma uprawnień do usuwania starych punktów przywracania z powodu blokady grupy zasobów** <br>
 **Przyczyna 6: [Maszyna wirtualna nie ma dostępu do Internetu](#the-vm-has-no-internet-access)**
 
-## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-4095gb"></a>UserErrorUnsupportedDiskSize — obecnie Azure Backup nie obsługuje dysków o rozmiarach większych niż 4095 GB
+## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-4095-gb"></a>UserErrorUnsupportedDiskSize — obecnie Azure Backup nie obsługuje dysków o rozmiarze większym niż 4095 GB.
 
 **Kod błędu**: UserErrorUnsupportedDiskSize <br>
-**Komunikat o błędzie**: Obecnie Azure Backup nie obsługuje dysków o rozmiarach większych niż 4095 GB <br>
+**Komunikat o błędzie**: Obecnie Azure Backup nie obsługuje dysków o rozmiarze większym niż 4095 GB. <br>
 
-Operacja tworzenia kopii zapasowej może zakończyć się niepowodzeniem podczas tworzenia kopii zapasowej maszyny wirtualnej o rozmiarze dysku większym niż 4 095 GB. Aby zarejestrować się w celu uzyskania ograniczonej publicznej wersji zapoznawczej Azure Backup dużych dyskach o rozmiarze większym niż 4 TB i maksymalnie 30 TB, zapoznaj [](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)się z tym artykułem.
+Operacja tworzenia kopii zapasowej może zakończyć się niepowodzeniem podczas tworzenia kopii zapasowej maszyny wirtualnej o rozmiarze dysku większym niż 4095 GB. Aby zarejestrować się w celu uzyskania ograniczonej publicznej wersji zapoznawczej Azure Backup dużych dyskach o rozmiarze większym niż 4 TB i maksymalnie 30 TB, zapoznaj [](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)się z tym artykułem.
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress — nie można zainicjować kopii zapasowej, ponieważ trwa inna operacja tworzenia kopii zapasowej
 
@@ -115,47 +119,52 @@ Operacja tworzenia kopii zapasowej może zakończyć się niepowodzeniem podczas
 
 Ostatnie zadanie tworzenia kopii zapasowej nie powiodło się, ponieważ istnieje zadanie tworzenia kopii zapasowej w toku. Nie można rozpocząć nowego zadania tworzenia kopii zapasowej, dopóki nie zakończy się bieżące zadanie. Upewnij się, że operacja tworzenia kopii zapasowej jest w toku, przed wyzwoleniem lub zaplanowaniem innej operacji tworzenia kopii zapasowej. Aby sprawdzić stan zadań tworzenia kopii zapasowej, wykonaj poniższe kroki:
 
-1. Zaloguj się do witryny Azure Portal, kliknij pozycję **Wszystkie usługi**. Wpisz ciąg Recovery Services i kliknij pozycję **Magazyny usługi Recovery Services**. Zostanie wyświetlona lista magazynów usługi Recovery Services.
+1. Zaloguj się do Azure Portal, kliknij pozycję **wszystkie usługi**. Wpisz ciąg Recovery Services i kliknij pozycję **Magazyny usługi Recovery Services**. Zostanie wyświetlona lista magazynów usługi Recovery Services.
 2. Z listy magazynów usługi Recovery Services wybierz magazyn, w którym jest skonfigurowana kopia zapasowa.
 3. W menu pulpitu nawigacyjnego magazynu kliknij pozycję **zadania tworzenia kopii zapasowej** , aby wyświetlić wszystkie zadania tworzenia kopii zapasowej.
 
-    * Jeśli zadanie tworzenia kopii zapasowej jest w toku, poczekaj na jego zakończenie lub Anuluj zadanie tworzenia kopii zapasowej.
-        * Aby anulować zadanie tworzenia kopii zapasowej, kliknij prawym przyciskiem myszy zadanie tworzenia kopii zapasowej, a następnie kliknij przycisk **Anuluj** lub Użyj [programu PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
-    * Jeśli ponownie skonfigurowano kopię zapasową w innym magazynie, upewnij się, że w starym magazynie nie są uruchomione żadne zadania tworzenia kopii zapasowej. Jeśli istnieje, Anuluj zadanie tworzenia kopii zapasowej.
-        * Aby anulować zadanie tworzenia kopii zapasowej, kliknij prawym przyciskiem myszy zadanie tworzenia kopii zapasowej i kliknij przycisk **Anuluj** lub Użyj [programu PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0) .
+- Jeśli zadanie tworzenia kopii zapasowej jest w toku, poczekaj na jego zakończenie lub Anuluj zadanie tworzenia kopii zapasowej.
+  - Aby anulować zadanie tworzenia kopii zapasowej, kliknij prawym przyciskiem myszy zadanie tworzenia kopii zapasowej, a następnie kliknij przycisk **Anuluj** lub Użyj [programu PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0).
+- Jeśli ponownie skonfigurowano kopię zapasową w innym magazynie, upewnij się, że w starym magazynie nie są uruchomione żadne zadania tworzenia kopii zapasowej. Jeśli istnieje, Anuluj zadanie tworzenia kopii zapasowej.
+  - Aby anulować zadanie tworzenia kopii zapasowej, kliknij prawym przyciskiem myszy na zadanie tworzenia kopii zapasowej, a następnie kliknij pozycję **Anuluj** lub użyj programu [PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0)
+
 4. Spróbuj ponownie wykonać operację tworzenia kopii zapasowej.
 
-Jeśli operacja zaplanowanej kopii zapasowej trwa dłużej w konflikcie z kolejną konfiguracją kopii zapasowej, [](backup-azure-vms-introduction.md#best-practices)należy zapoznać się z najlepszymi rozwiązaniami, [wydajnością kopii zapasowej](backup-azure-vms-introduction.md#backup-performance) i przywróceniu. [](backup-azure-vms-introduction.md#backup-and-restore-considerations)
-
+Jeśli operacja zaplanowanej kopii zapasowej trwa dłużej, konflikt z kolejną konfiguracją kopii zapasowej, a następnie zapoznaj się z najlepszymi rozwiązaniami, [wydajnością kopii zapasowej](backup-azure-vms-introduction.md#backup-performance)i zagadnieniami [dotyczącymi](backup-azure-vms-introduction.md#best-practices) [przywracania](backup-azure-vms-introduction.md#backup-and-restore-considerations).
 
 ## <a name="causes-and-solutions"></a>Przyczyny i rozwiązania
 
 ### <a name="the-vm-has-no-internet-access"></a>Maszyna wirtualna nie ma dostępu do Internetu
+
 Na potrzeby wdrożenia maszyna wirtualna nie ma dostępu do Internetu. Mogą też istnieć ograniczenia, które uniemożliwiają dostęp do infrastruktury platformy Azure.
 
 Aby prawidłowo działać, rozszerzenie kopii zapasowej wymaga łączności z publicznymi adresami IP platformy Azure. Rozszerzenie wysyła polecenia do punktu końcowego usługi Azure Storage (adres URL HTTPs) do zarządzania migawkami maszyny wirtualnej. Jeśli rozszerzenie nie ma dostępu do publicznego Internetu, wykonanie kopii zapasowej kończy się niepowodzeniem.
 
-####  <a name="solution"></a>Rozwiązanie
+#### <a name="solution"></a>Rozwiązanie
+
 Aby rozwiązać problem z siecią, zobacz [ustanawianie łączności sieciowej](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Agent jest zainstalowany na maszynie wirtualnej, ale nie odpowiada (dla maszyn wirtualnych z systemem Windows)
 
 #### <a name="solution"></a>Rozwiązanie
+
 Agent maszyny wirtualnej mógł zostać uszkodzony lub usługa mogła zostać zatrzymana. Ponowne zainstalowanie agenta maszyny wirtualnej pomoże uzyskać najnowszą wersję. Pomaga również w ponownym uruchomieniu komunikacji z usługą.
 
-1. Ustal, czy usługa agenta gościa systemu Windows Azure jest uruchomiona w usługach VM Services (Services. msc). Spróbuj ponownie uruchomić usługę agenta gościa systemu Windows Azure i zainicjuj wykonywanie kopii zapasowej.    
+1. Ustal, czy usługa agenta gościa systemu Windows Azure jest uruchomiona w usługach VM Services (Services. msc). Spróbuj ponownie uruchomić usługę agenta gościa systemu Windows Azure i zainicjuj wykonywanie kopii zapasowej.
 2. Jeśli usługa agenta gościa platformy Microsoft Azure nie jest widoczna w obszarze usługi, w panelu sterowania przejdź do pozycji **programy i funkcje** , aby określić, czy zainstalowano usługę agenta gościa systemu Windows Azure.
-4. Jeśli w aplecie **programy i funkcje**zostanie wyświetlony Agent gościa platformy Microsoft Azure, Odinstaluj agenta gościa platformy Microsoft Azure.
-5. Pobierz i zainstaluj [najnowszą wersję pliku msi agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Aby ukończyć instalację, musisz mieć uprawnienia administratora.
-6. Sprawdź, czy usługi agenta gościa systemu Windows Azure są widoczne w obszarze usługi.
-7. Uruchom kopię zapasową na żądanie:
-    * W portalu wybierz pozycję **Utwórz kopię zapasową teraz**.
+3. Jeśli w aplecie **programy i funkcje**zostanie wyświetlony Agent gościa platformy Microsoft Azure, Odinstaluj agenta gościa platformy Microsoft Azure.
+4. Pobierz i zainstaluj [najnowszą wersję pliku msi agenta](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Aby ukończyć instalację, musisz mieć uprawnienia administratora.
+5. Sprawdź, czy usługi agenta gościa systemu Windows Azure są widoczne w obszarze usługi.
+6. Uruchom kopię zapasową na żądanie:
+
+- W portalu wybierz pozycję **Utwórz kopię zapasową teraz**.
 
 Sprawdź również, czy na maszynie wirtualnej zainstalowano [Microsoft .NET 4,5](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) . Do komunikacji agenta maszyny wirtualnej z usługą jest wymagany program .NET 4,5.
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Agent zainstalowany na maszynie wirtualnej jest nieaktualny (dla maszyn wirtualnych z systemem Linux)
 
 #### <a name="solution"></a>Rozwiązanie
+
 Większość błędów związanych z agentami lub rozszerzeniami dla maszyn wirtualnych z systemem Linux jest spowodowana przez problemy, które mają wpływ na nieaktualny Agent maszyny wirtualnej. Aby rozwiązać ten problem, postępuj zgodnie z następującymi ogólnymi wskazówkami:
 
 1. Postępuj zgodnie z instrukcjami dotyczącymi [aktualizowania agenta maszyny wirtualnej z systemem Linux](../virtual-machines/linux/update-agent.md).
@@ -167,26 +176,28 @@ Większość błędów związanych z agentami lub rozszerzeniami dla maszyn wirt
 
    Jeśli proces nie jest uruchomiony, uruchom go ponownie przy użyciu następujących poleceń:
 
-   * Dla Ubuntu:`service walinuxagent start`
-   * W przypadku innych dystrybucji:`service waagent start`
+   - Dla Ubuntu:`service walinuxagent start`
+   - W przypadku innych dystrybucji:`service waagent start`
 
 3. [Skonfiguruj agenta](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash)autostartu.
 4. Uruchom nową testową kopię zapasową. Jeśli błąd będzie się utrzymywał, Zbierz następujące dzienniki z maszyny wirtualnej:
 
-   * /var/lib/waagent/*.xml
-   * /var/log/waagent.log
-   * /var/log/azure/*
+   - /var/lib/waagent/*.xml
+   - /var/log/waagent.log
+   - /var/log/azure/*
 
-Jeśli wymagamy pełnego rejestrowania dla programu waagent, wykonaj następujące kroki:
+Jeśli potrzebujesz pełnego rejestrowania dla programu waagent, wykonaj następujące kroki:
 
 1. W pliku/etc/waagent.conf znajdź następujący wiersz: **Włącz pełne rejestrowanie (t | n)**
 2. Zmień wartość **dzienników. verbose** z *n* na *y*.
 3. Zapisz zmiany, a następnie uruchom ponownie program waagent, wykonując kroki opisane wcześniej w tej sekcji.
 
-###  <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Nie można pobrać stanu migawki lub nie można wykonać migawki
+### <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Nie można pobrać stanu migawki lub nie można wykonać migawki
+
 Kopia zapasowa maszyny wirtualnej polega na wystawieniu polecenia migawki na bazowe konto magazynu. Tworzenie kopii zapasowej może zakończyć się niepowodzeniem, ponieważ nie ma dostępu do konta magazynu, lub ponieważ wykonywanie zadania migawki jest opóźnione.
 
 #### <a name="solution"></a>Rozwiązanie
+
 Następujące warunki mogą spowodować niepowodzenie zadania migawki:
 
 | Przyczyna | Rozwiązanie |
@@ -195,6 +206,7 @@ Następujące warunki mogą spowodować niepowodzenie zadania migawki:
 | Maszyna wirtualna nie może pobrać adresu hosta ani sieci szkieletowej z serwera DHCP. | Aby tworzenie kopii zapasowej maszyny wirtualnej IaaS było możliwe, należy włączyć protokół DHCP wewnątrz gościa. Jeśli maszyna wirtualna nie może pobrać adresu hosta lub sieci szkieletowej z odpowiedzi DHCP 245, nie można pobrać ani uruchomić żadnych rozszerzeń. Jeśli potrzebujesz statycznego prywatnego adresu IP, należy go skonfigurować za pomocą **Azure Portal** lub **PowerShell** i upewnić się, że opcja DHCP wewnątrz maszyny wirtualnej jest włączona. [Dowiedz się więcej](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) o konfigurowaniu statycznego adresu IP za pomocą programu PowerShell.
 
 ### <a name="the-backup-extension-fails-to-update-or-load"></a>Aktualizacja lub załadowanie rozszerzenia kopii zapasowej nie powiodło się
+
 Jeśli nie można załadować rozszerzeń, wykonywanie kopii zapasowej nie powiedzie się, ponieważ nie można wykonać migawki.
 
 #### <a name="solution"></a>Rozwiązanie
@@ -214,6 +226,7 @@ W przypadku maszyny wirtualnej z systemem Linux, jeśli rozszerzenie VMSnapshot 
 Wykonanie tych kroków powoduje ponowne zainstalowanie rozszerzenia podczas kolejnej kopii zapasowej.
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Usuń blokadę z grupy zasobów punktu odzyskiwania
+
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Przejdź do **opcji wszystkie zasoby**, wybierz grupę zasobów kolekcji punktów przywracania w następującym formacie AzureBackupRG_`<Geo>`_.`<number>`
 3. W sekcji **Ustawienia** wybierz pozycję **blokady** , aby wyświetlić blokady.
@@ -222,12 +235,15 @@ Wykonanie tych kroków powoduje ponowne zainstalowanie rozszerzenia podczas kole
     ![Usuń blokadę](./media/backup-azure-arm-vms-prepare/delete-lock.png)
 
 ### <a name="clean_up_restore_point_collection"></a>Wyczyść kolekcję punktów przywracania
+
 Po usunięciu blokady punkty przywracania muszą zostać oczyszczone. Aby wyczyścić punkty przywracania, wykonaj dowolną z następujących metod:<br>
-* [Czyszczenie kolekcji punktów przywracania przez uruchomienie kopii zapasowej ad hoc](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
-* [Wyczyść kolekcję punktów przywracania z Azure Portal](#clean-up-restore-point-collection-from-azure-portal)<br>
+
+- [Czyszczenie kolekcji punktów przywracania przez uruchomienie kopii zapasowej ad hoc](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
+- [Wyczyść kolekcję punktów przywracania z Azure Portal](#clean-up-restore-point-collection-from-azure-portal)<br>
 
 #### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>Czyszczenie kolekcji punktów przywracania przez uruchomienie kopii zapasowej ad hoc
-Po usunięciu blokady Wyzwól tworzenie kopii zapasowej ad hoc lub ręcznie. Dzięki temu punkty przywracania zostaną automatycznie oczyszczone. Należy oczekiwać, że ta operacja w trybie failover nie powiedzie się po raz pierwszy; jednak zapewni to automatyczne czyszczenie zamiast ręcznego usuwania punktów przywracania. Po oczyszczeniu Następna zaplanowana kopia zapasowa powinna zakończyć się powodzeniem.
+
+Po usunięciu blokady Wyzwalaj tworzenie kopii zapasowej ad hoc/ręcznie. Dzięki temu punkty przywracania zostaną automatycznie oczyszczone. Należy oczekiwać, że ta operacja w trybie ad hoc nie powiedzie się po raz pierwszy; jednak zapewni to automatyczne czyszczenie zamiast ręcznego usuwania punktów przywracania. Po oczyszczeniu Następna zaplanowana kopia zapasowa powinna zakończyć się powodzeniem.
 
 > [!NOTE]
 > Automatyczne czyszczenie zostanie wykonane po kilku godzinach wyzwalania tworzenia kopii zapasowej ad hoc/ręcznej. Jeśli zaplanowana kopia zapasowa nadal kończy się niepowodzeniem, spróbuj ręcznie usunąć kolekcję punktów przywracania, wykonując kroki opisane [tutaj](#clean-up-restore-point-collection-from-azure-portal).
@@ -235,6 +251,7 @@ Po usunięciu blokady Wyzwól tworzenie kopii zapasowej ad hoc lub ręcznie. Dzi
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Wyczyść kolekcję punktów przywracania z Azure Portal <br>
 
 Aby ręcznie wyczyścić kolekcję punktów przywracania, która nie została wyczyszczona ze względu na blokadę grupy zasobów, spróbuj wykonać następujące czynności:
+
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. W menu **centrum** kliknij pozycję **wszystkie zasoby**, wybierz grupę zasobów o następującym formacie AzureBackupRG_`<Geo>`_`<number>` , gdzie znajduje się Twoja maszyna wirtualna.
 
@@ -245,8 +262,8 @@ Aby ręcznie wyczyścić kolekcję punktów przywracania, która nie została wy
 
     ![Usuń blokadę](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 
-5. Kliknij przycisk **Usuń**, aby wyczyścić kolekcję punktów przywracania.
+5. Kliknij przycisk **Usuń** , aby wyczyścić kolekcję punktów przywracania.
 6. Spróbuj ponownie wykonać operację tworzenia kopii zapasowej.
 
 > [!NOTE]
- >Jeśli zasób (kolekcja RP) ma dużą liczbę punktów przywracania, usunięcie tego samego z portalu może przekroczyć limit czasu i zakończyć się niepowodzeniem. Jest to znany problem CRP, w którym wszystkie punkty przywracania nie są usuwane w określonym czasie, a operacja przekracza limit czasu; Jednak operacja usuwania zazwyczaj kończy się powodzeniem po 2 lub 3 próbach.
+ >Jeśli zasób (kolekcja RP) ma dużą liczbę punktów przywracania, usunięcie ich z portalu może przekroczyć limit czasu i zakończyć się niepowodzeniem. Jest to znany problem CRP, w którym wszystkie punkty przywracania nie są usuwane w określonym czasie, a operacja przekracza limit czasu; Jednak operacja usuwania zazwyczaj kończy się powodzeniem po 2 lub 3 próbach.

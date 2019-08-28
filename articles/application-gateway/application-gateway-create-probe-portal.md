@@ -1,6 +1,6 @@
 ---
-title: Tworzenie niestandardowej sondy — Azure Application Gateway — witryna Azure Portal | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak tworzenie niestandardowej sondy dla bramy aplikacji przy użyciu portalu
+title: Tworzenie niestandardowej sondy — Azure Application Gateway — Azure Portal | Microsoft Docs
+description: Dowiedz się, jak utworzyć niestandardową sondę dla Application Gateway przy użyciu portalu
 services: application-gateway
 documentationcenter: na
 author: vhorne
@@ -15,69 +15,69 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: 90d576fd00a39f7e871cbe0922ce131dfbe38ff0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b92b9d953b6dd941b8b5f445ad64059f557c2980
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122391"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061789"
 ---
-# <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Tworzenie niestandardowej sondy dla bramy aplikacji przy użyciu portalu
+# <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Tworzenie niestandardowej sondy dla Application Gateway przy użyciu portalu
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](application-gateway-create-probe-portal.md)
 > * [Azure Resource Manager — program PowerShell](application-gateway-create-probe-ps.md)
 > * [Klasyczny portal Azure — program PowerShell](application-gateway-create-probe-classic-ps.md)
 
-W tym artykule niestandardowej sondy jest dodać do istniejącej bramy aplikacji za pośrednictwem witryny Azure portal. Niestandardowe sondy są przydatne w przypadku aplikacji używających konkretnej strony kontroli kondycji lub dla aplikacji, które nie są oferowane pomyślnej odpowiedzi na domyślnej aplikacji sieci web.
+W tym artykule opisano Dodawanie niestandardowej sondy do istniejącej bramy aplikacji za pomocą Azure Portal. Niestandardowe sondy są przydatne w przypadku aplikacji, które mają konkretną kontrolę kondycji lub dla aplikacji, które nie zapewniają prawidłowej odpowiedzi w domyślnej aplikacji sieci Web.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Jeśli nie masz już bramę aplikacji, odwiedź stronę [utworzyć bramę aplikacji](application-gateway-create-gateway-portal.md) do utworzenia bramy aplikacji do pracy z.
+Jeśli nie masz jeszcze bramy aplikacji, odwiedź stronę [tworzenie Application Gateway](application-gateway-create-gateway-portal.md) , aby utworzyć bramę aplikacji do pracy.
 
 ## <a name="createprobe"></a>Tworzenie sondy
 
-Sondy są konfigurowane w dwuetapowy proces za pośrednictwem portalu. Pierwszym krokiem jest, aby utworzyć sondę. W drugim kroku dodasz sondy do ustawienia http zaplecza bramy aplikacji.
+Sondy są konfigurowane w procesie dwuetapowym za pomocą portalu. Pierwszym krokiem jest utworzenie sondy. W drugim kroku należy dodać sondę do ustawień protokołu HTTP zaplecza bramy aplikacji.
 
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com). Jeśli nie masz jeszcze konta, możesz zarejestrować się w celu [bezpłatnej miesięcznej wersji próbnej](https://azure.microsoft.com/free)
+1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com). Jeśli nie masz jeszcze konta, możesz zarejestrować się w celu uzyskania bezpłatnej [miesięcznej wersji próbnej](https://azure.microsoft.com/free)
 
-1. W okienku Azure Ulubione portalu kliknij pozycję wszystkie zasoby. Kliknij przycisk application gateway w bloku wszystkie zasoby. Jeśli wybrana subskrypcja zawiera kilka zasobów, możesz wprowadzić "partners.contoso.NET" w polu Filtruj według nazwy... aby łatwo uzyskać dostęp do bramy aplikacji.
+1. W okienku Ulubione Azure Portal kliknij pozycję wszystkie zasoby. Kliknij pozycję Brama aplikacji w bloku wszystkie zasoby. Jeśli wybrana subskrypcja zawiera kilka zasobów, możesz wpisać partners.contoso.net w polu Filtruj według nazwy... aby łatwo uzyskać dostęp do bramy aplikacji.
 
-1. Kliknij przycisk **sondy** i kliknij przycisk **Dodaj** przycisk, aby dodać sondy.
+1. Kliknij pozycję sondy i kliknij przycisk **Dodaj** , aby dodać sondę.
 
-   ![Dodawanie sondy bloku z informacjami o wypełnione][1]
+   ![Dodaj blok sondy z informacjami wypełnionymi][1]
 
-1. Na **Dodaj sondę kondycji** bloku, podać wymagane informacje dla sondy, a po zakończeniu kliknij przycisk **OK**.
+1. W bloku **Dodawanie sondy kondycji** wprowadź wymagane informacje dotyczące sondy, a po zakończeniu kliknij przycisk **OK**.
 
    |**Ustawienie** | **Wartość** | **Szczegóły**|
    |---|---|---|
-   |**Nazwa**|customProbe|Ta wartość jest przyjazna nazwa sondy, który jest dostępny w portalu.|
-   |**Protokół**|HTTP lub HTTPS | Protokół, który używa sondy kondycji.|
-   |**Host**|i.e contoso.com|Ta wartość jest nazwę hosta, który jest używany dla sondy. Dotyczy tylko wtedy, gdy połączenia obejmujące wiele lokacji jest skonfigurowany w usłudze Application Gateway, w przeciwnym razie użyj "127.0.0.1". Ta wartość jest inna niż nazwa hosta maszyny Wirtualnej.|
-   |**Path**|/ lub inną ścieżkę|W pozostałej części pełny adres url dla niestandardowej sondy. Nieprawidłowa ścieżka zaczyna się od "/". Domyślne ścieżki http:\//contoso.com po prostu użyj "/" |
-   |**Interwał (w sekundach)**|30|Jak często sondy jest uruchamiany pod kątem kondycji. Nie zaleca się ustawić niższy niż 30 sekund.|
-   |**Limit czasu (w sekundach)**|30|Ilość czasu sondy czeka przed przekroczeniem limitu czasu. Interwał limitu czasu musi być wystarczająco wysoka, że wywołania http może również upewnić się, że strona kondycji wewnętrznej bazy danych jest dostępna.|
-   |**Próg złej kondycji**|3|Liczba nieudanych prób jest uznawana za złą. Próg 0 oznacza, że jeśli kontrola kondycji nie powiedzie się zapleczem jest określana złej kondycji od razu.|
+   |**Nazwa**|customProbe|Ta wartość jest przyjazną nazwą sondy, która jest dostępna w portalu.|
+   |**Protokół**|HTTP lub HTTPS | Protokół używany przez sondę kondycji.|
+   |**Host**|co contoso.com|Ta wartość jest nazwą hosta używaną dla sondy. Dotyczy tylko sytuacji, gdy wiele witryn jest skonfigurowanych na Application Gateway, w przeciwnym razie użyj "127.0.0.1". Ta wartość różni się od nazwy hosta maszyny wirtualnej.|
+   |**Path**|/lub inną ścieżkę|Pozostała część pełnego adresu URL dla sondy niestandardowej. Prawidłowa ścieżka zaczyna się od znaku "/". Dla domyślnej ścieżki http:\//contoso.com samo użycie "/" |
+   |**Interwał (s)**|30|Częstotliwość uruchamiania sondy w celu sprawdzenia kondycji. Nie zaleca się ustawiania wartości mniejszej niż 30 sekund.|
+   |**Limit czasu (w sekundach)**|30|Czas, przez jaki sonda czeka przed upływem limitu czasu. Interwał limitu czasu musi być wystarczająco duży, aby można było wykonać wywołanie http, aby zapewnić dostępność strony kondycji zaplecza.|
+   |**Próg złej kondycji**|3|Liczba nieudanych prób, które mają być uznawane za złej kondycji. Próg można ustawić na wartość 1 lub większą.|
 
    > [!IMPORTANT]
-   > Nazwa hosta nie jest taka sama jak nazwa serwera. Ta wartość jest nazwą hosta wirtualnego uruchomiony na serwerze aplikacji. Sonda jest wysyłana do http://(host name):(port from httpsetting)/urlPath
+   > Nazwa hosta nie jest taka sama jak nazwa serwera. Ta wartość jest nazwą hosta wirtualnego uruchomionego na serwerze aplikacji. Sonda jest wysyłana do http://(nazwa hosta):(port z httpsetting)/urlPath
 
 ## <a name="add-probe-to-the-gateway"></a>Dodawanie sondy do bramy
 
-Teraz, gdy została utworzona Sonda jest czas, aby dodać go do bramy. Ustawienia sondowania są ustawiane w ustawieniach protokołu http zaplecza bramy aplikacji.
+Teraz, gdy sonda została utworzona, należy ją dodać do bramy. Ustawienia sondy są ustawiane w ustawieniach protokołu HTTP zaplecza bramy aplikacji.
 
-1. Kliknij przycisk **ustawienia HTTP** w usłudze application gateway, wyświetlenie bloku kliknij pozycję Konfiguracja zaplecza bieżącego ustawienia http wymienionych w oknie.
+1. Kliknij pozycję **Ustawienia http** w bramie aplikacji, aby wyświetlić blok konfiguracja, a następnie kliknij bieżące ustawienia protokołu HTTP zaplecza wymienione w oknie.
 
-   ![okno Ustawienia protokołu HTTPS][2]
+   ![okno ustawień https][2]
 
-1. Na **appGatewayBackEndHttpSettings** bloku ustawienia wyboru **użycia niestandardowej sondy** pole wyboru i wybierz sondę utworzoną w [Utwórz sondę](#createprobe) sekcji  **Niestandardowe sondy** listy rozwijanej...
-   Po zakończeniu kliknij przycisk **Zapisz** i ustawienia są stosowane.
+1. W bloku ustawienia **appGatewayBackEndHttpSettings** zaznacz pole wyboru **Użyj sondy niestandardowej** i wybierz sondę utworzoną w sekcji [Tworzenie sondy](#createprobe) na liście rozwijanej **sonda** niestandardowa.
+   Po zakończeniu kliknij przycisk **Zapisz** , a ustawienia zostaną zastosowane.
 
-Domyślnej funkcji badania sprawdza, czy dostęp do domyślnej aplikacji sieci web. Teraz, niestandardowe sondy został utworzony, bramy application gateway używa niestandardową ścieżkę, zdefiniowane w celu monitorowania kondycji dla serwerów zaplecza. Na podstawie kryteriów, które zostało zdefiniowane, bramy application gateway sprawdza, czy ścieżka określona w sondy. Jeśli wywołanie host: Port / ścieżki nie może zwracać HTTP 200-399 stanu odpowiedzi, serwer jest wykluczana z rotacji, po osiągnięciu progu złej kondycji. Sondowanie jest kontynuowane po wystąpieniu złej kondycji do określania, kiedy dobrej kondycji zostanie ponownie. Po wystąpieniu jest dodawany do puli serwerów w dobrej kondycji, ruch, który rozpoczyna się przepływać do niej ponownie, a badania do wystąpienia jest kontynuowane po użytkownik określonym przedziale czasu, jak zwykle.
+Sonda domyślna sprawdza domyślny dostęp do aplikacji sieci Web. Po utworzeniu niestandardowej sondy Brama aplikacji korzysta ze ścieżki niestandardowej zdefiniowanej do monitorowania kondycji serwerów wewnętrznej bazy danych. Na podstawie zdefiniowanych kryteriów Brama aplikacji sprawdza ścieżkę określoną w sondie. Jeśli wywołanie hosta: Port/ścieżka nie zwróci odpowiedzi o stanie HTTP 200-399, po osiągnięciu progu złej kondycji serwer jest wyłączany. Sondowanie jest kontynuowane w wystąpieniu złej kondycji, aby określić, kiedy znów stanie się w dobrej kondycji. Po dodaniu wystąpienia z powrotem do odpowiedniej puli serwerów, ruch przychodzący do niego ponownie i sondowanie do wystąpienia jest kontynuowane przez określony przez użytkownika interwał jako normalny.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak skonfigurować odciążanie protokołu SSL za pomocą usługi Azure Application Gateway, zobacz [skonfigurować odciążanie protokołu SSL](application-gateway-ssl-portal.md)
+Aby dowiedzieć się, jak skonfigurować odciążanie protokołu SSL za pomocą usługi Azure Application Gateway, zobacz [Konfigurowanie odciążania protokołu SSL](application-gateway-ssl-portal.md)
 
 [1]: ./media/application-gateway-create-probe-portal/figure1.png
 [2]: ./media/application-gateway-create-probe-portal/figure2.png

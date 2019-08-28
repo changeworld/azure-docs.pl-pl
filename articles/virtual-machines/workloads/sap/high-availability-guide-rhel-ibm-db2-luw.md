@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/10/2019
 ms.author: juergent
-ms.openlocfilehash: c649b93284a48df705d389f4de728d83f793af04
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: bed56f169e2a985b23b3bca96c32f7caba596432
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036646"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061501"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -517,15 +517,19 @@ W przypadku wykonania instalacji przed utworzeniem konfiguracji programu DB2 HAD
 Użyj narzędzia konfiguracji J2EE, aby sprawdzić lub zaktualizować adres URL JDBC. Ponieważ narzędzie konfiguracji J2EE jest narzędziem graficznym, musisz mieć zainstalowany serwer X:
  
 1. Zaloguj się do podstawowego serwera aplikacji wystąpienia J2EE i wykonaj następujące operacje:
-     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
-1.W lewej ramce wybierz pozycję **Magazyn zabezpieczeń**.
-1.W prawej ramce wybierz pozycję Key JDBC/Pool/\<SAPSID>/URL.
-1.Zmień nazwę hosta w adresie URL JDBC na nazwę hosta wirtualnego.
-     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
-1.Wybierz pozycję **Dodaj**.
-1.Aby zapisać zmiany, wybierz ikonę dysku w lewym górnym rogu.
-1.Zamknij narzędzie konfiguracji.
-1.Uruchom ponownie wystąpienie środowiska Java.
+    
+    <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
+    
+1. W lewej ramce wybierz pozycję **Magazyn zabezpieczeń**.
+1. W prawej ramce wybierz klucz `jdbc/pool/\<SAPSID>/url`.
+1. Zmień nazwę hosta w adresie URL JDBC na nazwę hosta wirtualnego.
+    
+    <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
+    
+1. Wybierz pozycję **Dodaj**.
+1. Aby zapisać zmiany, wybierz ikonę dysku w lewym górnym rogu.
+1. Zamknij narzędzie konfiguracji.
+1. Uruchom ponownie wystąpienie środowiska Java.
 
 ## <a name="configure-log-archiving-for-hadr-setup"></a>Konfigurowanie archiwizacji dzienników dla Instalatora HADR Cluster
 Aby skonfigurować funkcję archiwizowania dziennika bazy danych DB2 dla Instalatora HADR Cluster, zaleca się skonfigurowanie zarówno podstawowej, jak i w stanie gotowości do automatycznego pobierania dzienników ze wszystkich lokalizacji archiwum dzienników. Zarówno podstawowa, jak i zapasowa baza danych muszą mieć możliwość pobierania plików archiwum dzienników ze wszystkich lokalizacji archiwum dzienników, do których jeden z wystąpień bazy danych może archiwizować pliki dziennika. 

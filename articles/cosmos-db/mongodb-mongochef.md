@@ -1,7 +1,7 @@
 ---
-title: Łączenie do interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB przy użyciu z programu Studio 3T
+title: Nawiązywanie połączenia z interfejsem API Azure Cosmos DB MongoDB za pomocą programu Studio 3T
 titleSuffix: Azure Cosmos DB
-description: Dowiedz się, jak połączyć się z usługi Cosmos DB korzystanie z programu Studio 3T i interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
+description: Dowiedz się, jak nawiązać połączenie z usługą Cosmos DB przy użyciu interfejsu API programu Studio 3T i Azure Cosmos DB dla usługi MongoDB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
@@ -9,57 +9,60 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 9b0a6393d2372c831fdc964dee18acbccfd39a77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46cac6720bbef133d6b3f7a269cf97a81cddd0c5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61332047"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70062121"
 ---
-# <a name="connect-to-cosmos-account-using-studio-3t"></a>Łączenie się z kontem Cosmos korzystanie z programu Studio 3T
+# <a name="connect-to-cosmos-account-using-studio-3t"></a>Nawiązywanie połączenia z kontem usługi Cosmos przy użyciu programu Studio 3T
 
-Aby nawiązać połączenie konta usługi Cosmos przy użyciu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB, musisz mieć:
+Aby nawiązać połączenie z kontem usługi Cosmos przy użyciu interfejsu API Azure Cosmos DB dla MongoDB, należy:
 
-* Pobierz i zainstaluj [z programu Studio 3T](https://studio3t.com/)
-* Masz usługi Cosmos DB [parametry połączenia](connect-mongodb-account.md) informacji
+* Pobieranie i Instalowanie programu [Studio 3T](https://studio3t.com/)
+* Cosmos DB informacje o [parametrach połączenia](connect-mongodb-account.md)
+
+> [!NOTE]
+> Obecnie Robo 3T v 1.2 i Lower są obsługiwane z interfejsem API Cosmos DB dla MongoDB. 
 
 ## <a name="create-the-connection-in-studio-3t"></a>Tworzenie połączenia w z programu Studio 3T
-Aby dodać swoje konto Cosmos Menedżera połączeń z programu 3T Studio, wykonaj następujące kroki:
+Aby dodać konto usługi Cosmos do Menedżera połączeń programu Studio 3T, wykonaj następujące czynności:
 
-1. Pobierz informacje o połączeniu dla konta usługi Cosmos skonfigurowane za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB, zgodnie z instrukcjami przedstawionymi w [połączyć aplikację MongoDB w usłudze Azure Cosmos DB](connect-mongodb-account.md) artykułu.
+1. Pobierz informacje o połączeniu dla konta usługi Cosmos, które skonfigurowano za pomocą interfejsu API Azure Cosmos DB dla MongoDB, przy użyciu instrukcji w temacie [Connect a MongoDB Application to Azure Cosmos DB](connect-mongodb-account.md) article.
 
     ![Zrzut ekranu strony parametrów połączenia](./media/mongodb-mongochef/ConnectionStringBlade.png)
 2. Kliknij przycisk **Connect** , aby otworzyć Menedżera połączeń, a następnie przycisk **nowe połączenie**
 
-    ![Zrzut ekranu przedstawiający Menedżera połączeń z programu 3T Studio](./media/mongodb-mongochef/ConnectionManager.png)
+    ![Zrzut ekranu Menedżera połączeń programu Studio 3T](./media/mongodb-mongochef/ConnectionManager.png)
 3. W **nowe połączenie** okna na **serwera** wprowadź hosta (FQDN) konta usługi Azure Cosmos DB i numer portu.
 
-    ![Zrzut ekranu przedstawiający kartę Studio z programu 3T połączenie Menedżera serwera](./media/mongodb-mongochef/ConnectionManagerServerTab.png)
+    ![Zrzut ekranu przedstawiający kartę serwer Menedżera połączeń programu Studio 3T](./media/mongodb-mongochef/ConnectionManagerServerTab.png)
 4. W **nowe połączenie** okna na **uwierzytelniania** karty, wybierz tryb uwierzytelniania **Basic (CR bazy danych MONGODB lub SCARM-SHA-1)** i wprowadź nazwę użytkownika i hasło.  Zaakceptuj uwierzytelniania domyślnej bazy danych (Administrator) lub podać własne wartości.
 
-    ![Zrzut ekranu przedstawiający kartę uwierzytelnianie Menedżera połączeń z programu 3T Studio](./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png)
+    ![Zrzut ekranu karty uwierzytelnianie Menedżera połączeń programu Studio 3T](./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png)
 5. W **nowe połączenie** okna na **SSL** karcie wyboru **Użyj protokołu SSL do łączenia z** pole wyboru i **akceptować certyfikaty SSL z podpisem własnym serwera**  przycisku radiowego.
 
-    ![Zrzut ekranu przedstawiający kartę SSL Menedżera połączenie z programu 3T Studio](./media/mongodb-mongochef/ConnectionManagerSSLTab.png)
+    ![Zrzut ekranu przedstawiający kartę SSL Menedżera połączeń programu Studio 3T](./media/mongodb-mongochef/ConnectionManagerSSLTab.png)
 6. Kliknij przycisk **Testuj połączenie** przycisk, aby zweryfikować informacje o połączeniu, kliknij przycisk **OK** wróć do okna nowe połączenie, a następnie kliknij przycisk **Zapisz**.
 
-    ![Zrzut ekranu z programu Studio 3T przetestować okno połączenia](./media/mongodb-mongochef/TestConnectionResults.png)
+    ![Zrzut ekranu przedstawiający okno połączenia testowego programu Studio 3T](./media/mongodb-mongochef/TestConnectionResults.png)
 
 ## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>Umożliwia tworzenie bazy danych, kolekcji i dokumentów z programu Studio 3T
 Aby utworzyć bazę danych, kolekcję i dokumenty przy użyciu z programu Studio 3T, wykonaj następujące czynności:
 
 1. W **Menedżera połączeń**, zaznacz połączenie i kliknij **Connect**.
 
-    ![Zrzut ekranu przedstawiający Menedżera połączeń z programu 3T Studio](./media/mongodb-mongochef/ConnectToAccount.png)
+    ![Zrzut ekranu Menedżera połączeń programu Studio 3T](./media/mongodb-mongochef/ConnectToAccount.png)
 2. Kliknij prawym przyciskiem myszy hosta, a następnie wybierz **Dodaj bazę danych**.  Podaj nazwę bazy danych, a następnie kliknij przycisk **OK**.
 
-    ![Zrzut ekranu przedstawiający opcję Dodaj bazę danych z programu 3T Studio](./media/mongodb-mongochef/AddDatabase1.png)
+    ![Zrzut ekranu opcji Dodaj bazę danych programu Studio 3T](./media/mongodb-mongochef/AddDatabase1.png)
 3. Kliknij prawym przyciskiem myszy bazę danych, a następnie wybierz **Dodaj kolekcję**.  Podaj nazwę kolekcji, a następnie kliknij przycisk **Utwórz**.
 
-    ![Zrzut ekranu przedstawiający opcję Dodaj kolekcję z programu 3T Studio](./media/mongodb-mongochef/AddCollection.png)
+    ![Zrzut ekranu przedstawiający opcję dodawania kolekcji programu Studio 3T](./media/mongodb-mongochef/AddCollection.png)
 4. Kliknij przycisk **kolekcji** menu elementów, następnie kliknij przycisk **Dodawanie dokumentu**.
 
-    ![Zrzut ekranu przedstawiający element menu Dodaj dokument z programu 3T programu Studio](./media/mongodb-mongochef/AddDocument1.png)
+    ![Zrzut ekranu przedstawiający element menu Dodawanie dokumentu programu Studio 3T](./media/mongodb-mongochef/AddDocument1.png)
 5. W oknie dialogowym Dodawanie dokumentu, wklej następujący kod, a następnie kliknij przycisk **Dodawanie dokumentu**.
 
         {
@@ -107,9 +110,9 @@ Aby utworzyć bazę danych, kolekcję i dokumenty przy użyciu z programu Studio
         }
 7. Wykonywanie przykładowego zapytania. Na przykład wyszukaj rodziny o nazwisku "Andersen" i zwrócić pól Stan i elementy nadrzędne.
 
-    ![Zrzut ekranu Mongo Chef wyników zapytania](./media/mongodb-mongochef/QueryDocument1.png)
+    ![Zrzut ekranu przedstawiający wyniki zapytania Mongo Chef](./media/mongodb-mongochef/QueryDocument1.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [korzystać z programu Robo 3T](mongodb-robomongo.md) za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
 - Eksploruj [przykłady](mongodb-samples.md) bazy danych MongoDB za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.

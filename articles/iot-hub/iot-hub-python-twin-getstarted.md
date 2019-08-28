@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: 62385f4bd07f4b80dc3d571d409e16c7e0dca205
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: c720dfe7aeaa39a1717362b040b5548e116cc246
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667853"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70062088"
 ---
 # <a name="get-started-with-device-twins-python"></a>Rozpoczynanie pracy z usługą Device bliźniaczych reprezentacji (Python)
 
@@ -49,11 +49,15 @@ Poniżej przedstawiono instrukcje instalacji dotyczące wymagań wstępnych.
 
 W tej sekcji utworzysz aplikację konsolową w języku Python, która dodaje metadane lokalizacji do sznurka urządzenia skojarzonego z Twoim programem **{ID urządzenia}** . Następnie wysyła zapytanie do bliźniaczych reprezentacji urządzenia przechowywanego w usłudze IoT Hub, wybierając urządzenia znajdujące się w Redmond, a następnie te, które zgłaszają połączenie komórkowe.
 
-1. Otwórz wiersz polecenia i zainstaluj **zestaw SDK usługi Azure IoT Hub dla języka Python**. Zamknij wiersz polecenia po zainstalowaniu zestawu SDK.
+1. W katalogu roboczym Otwórz wiersz polecenia i zainstaluj **zestaw SDK usługi Azure IoT Hub dla języka Python**.
 
-   ```
+   ```cmd/sh
    pip install azure-iothub-service-client
    ```
+
+   > [!NOTE]
+   > Pakiety PIP dla usług Azure-iothub-Service-Client i Azure-iothub-Device-Client są obecnie dostępne tylko dla systemu operacyjnego Windows. W przypadku systemu Linux/Mac OS zapoznaj się z sekcjami dotyczącymi systemu Linux i Mac OS w sekcji [przygotowanie środowiska programistycznego dla języka Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) .
+   >
 
 2. Za pomocą edytora tekstów Utwórz nowy plik **AddTagsAndQuery.py** .
 
@@ -66,7 +70,7 @@ W tej sekcji utworzysz aplikację konsolową w języku Python, która dodaje met
    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
    ```
 
-4. Dodaj następujący kod, zastępując symbol zastępczy `[IoTHub Connection String]` `[Device Id]` parametrami połączenia dla Centrum IoT Hub i identyfikatorem urządzenia utworzonym w poprzednich sekcjach.
+4. Dodaj następujący kod. Zamień `[IoTHub Connection String]` na parametry połączenia usługi IoT Hub skopiowane w polu [Pobierz parametry połączenia usługi IoT Hub](#get-the-iot-hub-connection-string). Zastąp `[Device Id]` wartość identyfikatorem urządzenia zarejestrowanym w temacie [Rejestrowanie nowego urządzenia w usłudze IoT Hub](#register-a-new-device-in-the-iot-hub).
   
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -80,7 +84,7 @@ W tej sekcji utworzysz aplikację konsolową w języku Python, która dodaje met
 
 5. Dodaj następujący kod do pliku **AddTagsAndQuery.py** :
 
-     ```python
+    ```python
     def iothub_service_sample_run():
         try:
             iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
@@ -143,7 +147,7 @@ W tej sekcji utworzysz aplikację konsolową w języku Python, która dodaje met
 
     Powinno zostać wyświetlone jedno urządzenie w wynikach zapytania z pytaniem o wszystkie urządzenia znajdujące się w **Redmond43** i brak dla zapytania, które ogranicza wyniki do urządzeń korzystających z sieci komórkowej.
 
-    ![pierwsze zapytanie pokazujące wszystkie urządzenia w Redmond](./media/iot-hub-python-twin-getstarted/1-device-twins-python-service-sample.png)
+    ![pierwsze zapytanie pokazujące wszystkie urządzenia w Redmond](./media/iot-hub-python-twin-getstarted/service-1.png)
 
 W następnej sekcji utworzysz aplikację urządzenia, która zgłosi informacje o łączności i zmieni wynik zapytania w poprzedniej sekcji.
 
@@ -151,11 +155,15 @@ W następnej sekcji utworzysz aplikację urządzenia, która zgłosi informacje 
 
 W tej sekcji utworzysz aplikację konsolową w języku Python, która łączy się z centrum jako **identyfikatorem {Device ID}** , a następnie aktualizuje raportowane właściwości z użyciem sznurka urządzenia, aby zawierała informacje, które są połączone z siecią komórkową.
 
-1. Otwórz wiersz polecenia i zainstaluj **zestaw SDK usługi Azure IoT Hub dla języka Python**. Zamknij wiersz polecenia po zainstalowaniu zestawu SDK.
+1. W wierszu polecenia w katalogu roboczym zainstaluj **zestaw SDK usługi Azure IoT Hub dla języka Python**:
 
-    ```
+    ```cmd/sh
     pip install azure-iothub-device-client
     ```
+
+   > [!NOTE]
+   > Pakiety PIP dla usług Azure-iothub-Service-Client i Azure-iothub-Device-Client są obecnie dostępne tylko dla systemu operacyjnego Windows. W przypadku systemu Linux/Mac OS zapoznaj się z sekcjami dotyczącymi systemu Linux i Mac OS w sekcji [przygotowanie środowiska programistycznego dla języka Python](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md) .
+   >
 
 2. Za pomocą edytora tekstów Utwórz nowy plik **ReportConnectivity.py** .
 
@@ -167,7 +175,7 @@ W tej sekcji utworzysz aplikację konsolową w języku Python, która łączy si
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError
     ```
 
-4. Dodaj następujący kod, zastępując symbol zastępczy `[IoTHub Device Connection String]` parametrami połączenia dla urządzenia IoT Hub utworzonego w poprzednich sekcjach.
+4. Dodaj następujący kod. Zastąp wartość [](#register-a-new-device-in-the-iot-hub) symboluzastępczegoparametramipołączeniaurządzenia,którezostałyskopiowanepodczasrejestrowanianowegourządzeniawusłudzeIoT`[IoTHub Device Connection String]` Hub.
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
@@ -227,7 +235,7 @@ W tej sekcji utworzysz aplikację konsolową w języku Python, która łączy si
             return
         except KeyboardInterrupt:
             print ( "IoTHubClient sample stopped" )
-     ```
+    ```
 
     Obiekt **Client** uwidacznia wszystkie metody wymagane do współpracy z urządzeniem bliźniaczych reprezentacji z urządzenia. Poprzedni kod, po zainicjowaniu obiektu **klienta** , pobiera sznurki urządzenia dla urządzenia i aktualizuje swoją raportowaną Właściwość informacjami o łączności.
 
@@ -248,7 +256,7 @@ W tej sekcji utworzysz aplikację konsolową w języku Python, która łączy si
 
     Powinno zostać wyświetlone potwierdzenie, że bliźniaczych reprezentacji urządzenia zostały zaktualizowane.
 
-    ![Aktualizacja bliźniaczych reprezentacji](./media/iot-hub-python-twin-getstarted/2-python-client-sample.png)
+    ![Aktualizacja bliźniaczych reprezentacji](./media/iot-hub-python-twin-getstarted/device-1.png)
 
 8. Teraz, gdy urządzenie zgłosiło swoje informacje o łączności, powinno być wyświetlane w obu zapytaniach. Wróć i ponownie uruchom zapytania:
 
@@ -258,7 +266,7 @@ W tej sekcji utworzysz aplikację konsolową w języku Python, która łączy si
 
     Tym razem, gdy **{ID urządzenia}** powinien pojawić się w obu wynikach zapytania.
 
-    ![drugie zapytanie](./media/iot-hub-python-twin-getstarted/3-device-twins-python-service-sample.png)
+    ![drugie zapytanie](./media/iot-hub-python-twin-getstarted/service-2.png)
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 5257724add570be480063ab776248a8fd1d944c7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: c3d5bb58989fe87ddf9a185dbae926a71edf1590
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034755"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061559"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>Informacje o działaniu narzędzia migracji
 
@@ -36,7 +36,7 @@ Mimo że narzędzie może migrować niemal wszystkie [klasyczne reguły alertów
 - Reguły klasycznego alertu dotyczące niektórych metryk Cosmos DB. Zobacz [szczegóły](#cosmos-db-metrics) w dalszej części tego artykułu.
 - Klasyczne reguły alertów dla wszystkich klasycznych maszyn wirtualnych i metryk usług Cloud Services (Microsoft. ClassicCompute/virtualMachines i Microsoft. ClassicCompute/domainNames/Slots/role). Zobacz [szczegóły](#classic-compute-metrics) w dalszej części tego artykułu.
 
-Jeśli Twoja subskrypcja ma takie reguły klasyczne, należy przeprowadzić migrację ręcznie. Ze względu na to, że nie możemy zapewnić automatycznej migracji, wszystkie istniejące, klasyczne alerty metryk tego typu będą nadal działały do 2020 czerwca. To rozszerzenie zapewnia czas na przejście do nowych alertów. Jednak po 2019 sierpnia nie można utworzyć nowych alertów klasycznych.
+Jeśli Twoja subskrypcja ma takie reguły klasyczne, należy przeprowadzić migrację ręcznie. Ze względu na to, że nie możemy zapewnić automatycznej migracji, wszystkie istniejące, klasyczne alerty metryk tego typu będą nadal działały do 2020 czerwca. To rozszerzenie zapewnia czas na przejście do nowych alertów. Możesz również nadal tworzyć nowe alerty klasyczne na powyższych wymienionych wyjątkach do czerwca 2020. Jednak dla wszystkiego innego nie można utworzyć nowych alertów klasycznych po 2019 sierpnia.
 
 > [!NOTE]
 > Poza wymienionymi wyjątkami, jeśli klasyczne reguły alertów są nieprawidłowe, tj. na [przestarzałe metryki](#classic-alert-rules-on-deprecated-metrics) lub zasoby, które zostały usunięte, nie będą migrowane podczas dobrowolnej migracji. Wszystkie takie nieprawidłowe reguły alertów klasycznych zostaną usunięte podczas migracji automatycznej.

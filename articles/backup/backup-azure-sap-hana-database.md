@@ -5,21 +5,21 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: a11d454feb965907f3bd4e994c0916eeb7236fa7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6ac15e042f93befe406553d622c790eeabad7c2c
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034569"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70060706"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>Tworzenie kopii zapasowej bazy danych SAP HANA na platformie Azure
 
 [Azure Backup](backup-overview.md) obsługuje tworzenie kopii zapasowych baz danych SAP HANA na platformie Azure.
 
 > [!NOTE]
-> Ta funkcja jest obecnie w publicznej wersji zapoznawczej. Obecnie nie jest ona gotowa do produkcji i nie ma gwarantowanej umowy SLA. 
+> Ta funkcja jest obecnie w publicznej wersji zapoznawczej. Obecnie nie jest ona gotowa do produkcji i nie ma gwarantowanej umowy SLA.
 
 ## <a name="scenario-support"></a>Obsługa scenariuszy
 
@@ -32,8 +32,11 @@ ms.locfileid: "70034569"
 ### <a name="current-limitations"></a>Bieżące ograniczenia
 
 - Można tworzyć kopie zapasowe baz danych SAP HANA uruchomionych na maszynach wirtualnych platformy Azure.
-- SAP HANA kopii zapasowej można skonfigurować tylko w Azure Portal. Nie można skonfigurować funkcji przy użyciu programu PowerShell, interfejsu wiersza polecenia lub interfejsu API REST.
-- Można tworzyć kopie zapasowe baz danych tylko w trybie skalowania w górę.
+- Można tworzyć kopie zapasowe tylko SAP HANA wystąpienia uruchomionego na jednej maszynie wirtualnej platformy Azure. Wiele wystąpień HANA na tej samej maszynie wirtualnej platformy Azure nie jest obecnie obsługiwane.
+- Można tworzyć kopie zapasowe baz danych tylko w trybie skalowania w górę. Skalowanie w poziomie, czyli wystąpienie HANA na wielu maszynach wirtualnych platformy Azure, nie jest obecnie obsługiwane w przypadku tworzenia kopii zapasowych.
+- Nie można utworzyć kopii zapasowej wystąpienia SAP HANA z obsługą dynamicznych warstw na rozszerzonym serwerze, tj. dynamiczną warstwą obecną w innym węźle. Jest to zasadniczo skalowanie, co nie jest obsługiwane.
+- Nie można utworzyć kopii zapasowej wystąpienia SAP HANA z włączoną obsługą dynamicznych warstw na tym samym serwerze. Dynamiczne warstwowe nie są obecnie obsługiwane.
+- SAP HANA kopii zapasowej można skonfigurować tylko w Azure Portal. Nie można skonfigurować funkcji przy użyciu programu PowerShell, interfejsu wiersza polecenia.
 - Można utworzyć kopię zapasową dzienników bazy danych co 15 minut. Kopie zapasowe dzienników zaczynają przepływać dopiero po pomyślnym wykonaniu pełnej kopii zapasowej bazy danych.
 - Możesz tworzyć pełne i różnicowe kopie zapasowe. Przyrostowa kopia zapasowa nie jest obecnie obsługiwana.
 - Nie można zmodyfikować zasad tworzenia kopii zapasowych po zastosowaniu ich do SAP HANA kopii zapasowych. Jeśli chcesz utworzyć kopię zapasową przy użyciu różnych ustawień, Utwórz nowe zasady lub Przypisz inne zasady.
@@ -44,23 +47,16 @@ ms.locfileid: "70034569"
 
 Przed skonfigurowaniem kopii zapasowych należy wykonać następujące czynności:
 
-1. Na maszynie wirtualnej z uruchomioną SAP HANA bazą danych Zainstaluj oficjalny pakiet [środowiska uruchomieniowego Microsoft .NET Core 2,1](https://dotnet.microsoft.com/download/linux-package-manager/sles/runtime-current) . Należy pamiętać o następujących kwestiach:
-    - Wymagany jest tylko pakiet **dotnet-Runtime-2,1** . Nie potrzebujesz **aspnetcore-Runtime-2,1**.
-    - Jeśli maszyna wirtualna nie ma dostępu do Internetu, dublowanie lub dostarcz pamięć podręczną w trybie offline dla programu dotnet-Runtime-2,1 (i wszystkich zależnych pakiety RPM) z kanału informacyjnego pakietu Microsoft określonego na stronie.
-    - Podczas instalacji pakietu może zostać wyświetlony monit o określenie opcji. Jeśli tak, określ **rozwiązanie 2**.
-
-        ![Opcja instalacji pakietu](./media/backup-azure-sap-hana-database/hana-package.png)
-
-2. Na maszynie wirtualnej Zainstaluj i włącz pakiety sterowników ODBC z oficjalnego pakietu SLES/nośnika przy użyciu użyciu narzędzia zypper w następujący sposób:
+1. Na maszynie wirtualnej z uruchomioną SAP HANA bazą danych Zainstaluj i włącz pakiety sterowników ODBC z oficjalnego pakietu SLES/nośnika przy użyciu użyciu narzędzia zypper w następujący sposób:
 
     ```unix
     sudo zypper update
     sudo zypper install unixODBC
     ```
 
-3. Zezwalaj na połączenie z poziomu maszyny wirtualnej z Internetem, aby można było uzyskać dostęp do platformy Azure, zgodnie z opisem w [poniższej](#set-up-network-connectivity)procedurze.
+2. Zezwalaj na połączenie z poziomu maszyny wirtualnej z Internetem, aby można było uzyskać dostęp do platformy Azure, zgodnie z opisem w [poniższej](#set-up-network-connectivity)procedurze.
 
-4. Uruchom skrypt poprzedzający rejestrację na maszynie wirtualnej, na której jest zainstalowany system HANA jako użytkownik główny. Skrypt jest dostępny [w portalu](#discover-the-databases) w przepływie i jest wymagany do skonfigurowania [odpowiednich uprawnień](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions).
+3. Uruchom skrypt poprzedzający rejestrację na maszynie wirtualnej, na której jest zainstalowany system HANA jako użytkownik główny. Skrypt jest dostępny [w portalu](#discover-the-databases) w przepływie i jest wymagany do skonfigurowania [odpowiednich uprawnień](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions).
 
 ### <a name="set-up-network-connectivity"></a>Konfigurowanie łączności sieciowej
 
@@ -68,6 +64,7 @@ W przypadku wszystkich operacji maszyna wirtualna SAP HANA wymaga łączności z
 
 - Możesz pobrać [zakresy adresów IP](https://www.microsoft.com/download/details.aspx?id=41653) dla centrów danych platformy Azure, a następnie zezwolić na dostęp do tych adresów IP.
 - Jeśli używasz sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń), możesz użyć [znacznika usługi](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) AzureCloud, aby zezwolić na wszystkie publiczne adresy IP platformy Azure. Aby zmodyfikować reguły sieciowej grupy zabezpieczeń, można użyć [polecenia cmdlet Set-AzureNetworkSecurityRule](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurenetworksecurityrule?view=azuresmps-4.0.0) .
+- port 443 powinien być listy dozwolonych, ponieważ transport odbywa się za pośrednictwem protokołu HTTPS.
 
 ## <a name="onboard-to-the-public-preview"></a>Dołączanie do publicznej wersji zapoznawczej
 
@@ -79,8 +76,6 @@ Dołączanie do publicznej wersji zapoznawczej w następujący sposób:
     ```powershell
     PS C:>  Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
     ```
-
-
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -182,6 +177,15 @@ Jeśli chcesz utworzyć lokalną kopię zapasową bazy danych, której kopia zap
     - Ustaw **log_backup_using_backint** na **wartość true**.
 
 
+## <a name="upgrading-protected-10-dbs-to-20"></a>Uaktualnianie chronionego 1,0 baz danych do 2,0
+
+Jeśli chronisz SAP HANA 1,0 baz danych i chcesz przeprowadzić uaktualnienie do wersji 2,0, wykonaj czynności opisane poniżej.
+
+- Zatrzymaj ochronę z zachowaniem Zachowaj dane dla starego SDC DB.
+- Uruchom skrypt poprzedzający rejestrację z prawidłowymi szczegółami (SID i MDC). 
+- Ponownie zarejestruj rozszerzenie (szczegóły widoku > kopii zapasowej — > wybierz odpowiednią pozycję Azure VM-> reregister). 
+- Kliknij przycisk ponownie odkryj baz danych dla tej samej maszyny wirtualnej. Powinno to spowodować wyświetlenie nowego baz danych w kroku 2 z prawidłowymi szczegółami (SYSTEMDB i dzierżawcą bazy danych, a nie SDC). 
+- Chroń te nowe bazy danych.
 
 ## <a name="next-steps"></a>Następne kroki
 

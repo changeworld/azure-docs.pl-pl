@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/27/2019
 ms.author: jingwang
-ms.openlocfilehash: bf28fb69d35256d65fdfd2c092ad48d0ad1281f9
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5920fe4a1addd2188f53a15c1d2232f505009087
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985997"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061497"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Table Storage przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -221,10 +221,8 @@ Aby skopiować dane do i z tabeli platformy Azure, ustaw właściwość Type zes
 
 W przypadku magazynów danych bez schematu, takich jak Azure Table, Data Factory wnioskuje schemat w jeden z następujących sposobów:
 
-* Jeśli określisz struktury danych przy użyciu **struktury** właściwości w definicji zestawu danych usługi Data Factory honoruje tej struktury Schema. W takim przypadku, jeśli wiersz nie zawiera wartości dla kolumny, zostanie dla niego podana wartość null.
-* Jeśli nie określisz struktury danych przy użyciu właściwości **Structure** w definicji zestawu danych, Data Factory zawnioskuje schemat przy użyciu pierwszego wiersza w danych. W takim przypadku, jeśli pierwszy wiersz nie zawiera pełnego schematu, niektóre kolumny zostaną pominięte w wyniku operacji kopiowania.
-
-W przypadku źródeł danych bez schematu najlepszym rozwiązaniem jest określenie struktury danych przy użyciu właściwości **Structure** .
+* Jeśli określisz Mapowanie kolumn w działaniu kopiowania, Data Factory Użyj listy kolumn po stronie źródłowej, aby pobrać dane. W takim przypadku, jeśli wiersz nie zawiera wartości dla kolumny, zostanie dla niego podana wartość null.
+* Jeśli nie określisz mapowania kolumn w działaniu kopiowania, Data Factory wnioskuje schemat przy użyciu pierwszego wiersza w danych. W tym przypadku, jeśli pierwszy wiersz nie zawiera pełnego schematu (np. niektóre kolumny mają wartość null), niektóre kolumny są pominięte w wyniku operacji kopiowania.
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 

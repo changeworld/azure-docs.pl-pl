@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 024cc18f537334a4e9fb260864b13ac027af582f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: aaeaed22b1e09556452a49d7fc63c15ef0c7fcdb
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982683"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061331"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Rozwiązywanie problemów z Update Management
 
@@ -278,6 +278,7 @@ Kliknij dwukrotnie wyjątek wyświetlany na czerwono, aby wyświetlić cały kom
 |`0x8024001E`| Operacja aktualizacji nie została ukończona, ponieważ trwa zamykanie usługi lub systemu.|
 |`0x8024002E`| Usługa Windows Update jest wyłączona.|
 |`0x8024402C`     | W przypadku korzystania z serwera programu WSUS upewnij się, że wartości rejestru dla `WUServer` i `WUStatusServer` w kluczu `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` rejestru mają prawidłowy serwer WSUS.        |
+|`0x80072EE2`|Problem z połączeniem sieciowym lub problem z rozmową ze skonfigurowanym serwerem WSUS. Sprawdź ustawienia usług WSUS i upewnij się, że jest dostępny z poziomu klienta.|
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Upewnij się, że usługa Windows Update (wuauserv) jest uruchomiona i nie jest wyłączona.        |
 |Każdy inny wyjątek ogólny     | Wykonaj wyszukiwanie w Internecie w poszukiwaniu możliwych rozwiązań i pracuj z lokalną pomocą techniczną IT.         |
 

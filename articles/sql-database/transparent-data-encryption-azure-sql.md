@@ -10,19 +10,20 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-ms.date: 08/12/2019
-ms.openlocfilehash: 07fcd0f1ec33aa9a7520e35eb7e53a76295009ba
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.date: 08/27/2019
+ms.openlocfilehash: 9261bae0d2bee990a5048cb87a863d96e1854d00
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967900"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061940"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Przezroczyste szyfrowanie danych dla SQL Database i magazynu danych
 
 Usługa transparent Data Encryption (TDE) pomaga chronić Azure SQL Database, wystąpienie zarządzane Azure SQL i magazyn danych Azure przed zagrożeniem złośliwego działania w trybie offline przez szyfrowanie danych przechowywanych w spoczynku. Wykonuje szyfrowanie i odszyfrowywanie bazy danych, skojarzonych kopii zapasowych i plików dziennika transakcji w czasie rzeczywistym bez konieczności wprowadzania zmian w aplikacji. Domyślnie TDE jest włączony dla wszystkich nowo wdrożonych baz danych SQL Azure. Nie można użyć TDE do szyfrowania logicznej **głównej** bazy danych w SQL Database.  Baza danych **Master** zawiera obiekty, które są konieczne do wykonywania operacji TDE w bazach danych użytkowników.
 
-TDE musi być ręcznie włączona dla wystąpienia zarządzanego usługi Azure SQL, starszych baz danych programu Azure SQL Database lub Azure SQL Data Warehouse.  
+TDE musi być ręcznie włączona dla starszych baz danych Azure SQL Database, wystąpienia zarządzanego Azure SQL lub Azure SQL Data Warehouse.
+Zarządzane bazy danych wystąpień utworzonych za pośrednictwem przywracania dziedziczą stan szyfrowania ze źródłowej bazy danych.
 
 Przezroczyste szyfrowanie danych szyfruje magazyn całej bazy danych przy użyciu klucza symetrycznego zwanego kluczem szyfrowania bazy danych. Ten klucz szyfrowania bazy danych jest chroniony przez funkcję ochrony przezroczystego szyfrowania danych. Funkcja ochrony jest certyfikatem zarządzanym przez usługę (niejawnym szyfrowaniem danych zarządzanym przez usługę) lub kluczem asymetrycznym przechowywanym w Azure Key Vault (Bring Your Own Key). Należy ustawić funkcję ochrony przezroczystego szyfrowania danych na poziomie serwera dla Azure SQL Database i magazynu danych oraz poziomu wystąpienia dla wystąpienia zarządzanego Azure SQL. Termin " *serwer* " dotyczy zarówno serwera, jak i wystąpienia w tym dokumencie, chyba że określono inaczej.
 

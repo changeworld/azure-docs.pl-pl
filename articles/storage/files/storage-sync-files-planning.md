@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bd587bfed7fcfea8e8cd99ca155ee9d86222ae3d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 9c46181d5ab449d28c2e2e93cc583a3551f114bc
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013536"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061746"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -245,7 +245,7 @@ Azure File Sync jest dostępna tylko w następujących regionach:
 |--------|---------------------|
 | Australia Wschodnia | Nowa Południowa Walia |
 | Australia Południowo-Wschodnia | Wiktoria |
-| Brazylia Południowa | Stan Paoloi Wyspy Świętego |
+| Brazylia Południowa | Sao Paulo (stan) |
 | Kanada Środkowa | Toronto |
 | Kanada Wschodnia | Miasto Quebec |
 | Indie Środkowe | Pune |

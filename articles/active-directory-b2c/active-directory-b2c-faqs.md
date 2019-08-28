@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c84f68a9af855f61523919069e1947e051b130b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: e5ceb53cb0fcce40d779bd516fa4cebac6d11209
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622267"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061376"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Często zadawane pytania
 
@@ -43,11 +43,9 @@ Konta użytkowników dla aplikacji muszą być zawsze tworzone za pośrednictwem
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Którzy dostawcy tożsamości społecznościowej są obecnie obsługiwani? Które z nich planujesz obsługiwać w przyszłości?
 
-Obecnie obsługujemy usługi Facebook, Google +, LinkedIn, Amazon, Twitter (wersja zapoznawcza), WeChat (wersja zapoznawcza), Weibo (wersja zapoznawcza) i QQ (wersja zapoznawcza). Dodamy obsługę innych popularnych dostawców tożsamości społecznościowych na podstawie popytu klientów.
+Obecnie obsługujemy kilka dostawców tożsamości społecznościowych, takich jak Amazon, Facebook, GitHub (wersja zapoznawcza), Google, LinkedIn, konto Microsoft (MSA), QQ (wersja zapoznawcza), Twitter, WeChat (wersja zapoznawcza) i Weibo (w wersji zapoznawczej). Ocenimy Dodawanie obsługi dla innych popularnych dostawców tożsamości społecznościowych na podstawie popytu klientów.
 
-Azure AD B2C dodano również obsługę [zasad niestandardowych](active-directory-b2c-overview-custom.md). Te zasady niestandardowe umożliwiają deweloperowi tworzenie własnych zasad przy użyciu dowolnego dostawcy tożsamości, który obsługuje [OpenID Connect Connect](https://openid.net/specs/openid-connect-core-1_0.html) lub SAML.
-
-Rozpocznij pracę z zasadami niestandardowymi, sprawdzając nasz [pakiet dla zasad niestandardowych](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack).
+Azure AD B2C obsługuje również [zasady niestandardowe](active-directory-b2c-overview-custom.md). Zasady niestandardowe umożliwiają tworzenie własnych zasad dla dowolnego dostawcy tożsamości, który obsługuje [OpenID Connect Connect](https://openid.net/specs/openid-connect-core-1_0.html) lub SAML. Rozpocznij pracę z zasadami niestandardowymi, sprawdzając nasz [pakiet dla zasad niestandardowych](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack).
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Czy mogę skonfigurować zakresy, aby zebrać więcej informacji o konsumentach od różnych dostawców tożsamości społecznościowych?
 

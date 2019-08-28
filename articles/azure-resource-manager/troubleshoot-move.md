@@ -4,14 +4,14 @@ description: Umożliwia przenoszenie zasobów do nowej grupy zasobów lub subskr
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/19/2019
+ms.date: 08/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: b688218b871a5f652e7f4de172d23f1b1fb0aa5c
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: d56f6a5ffe01540b9ce1e5a20ec628a90da594c6
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035521"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061782"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Rozwiązywanie problemów z przeniesieniem zasobów platformy Azure do nowej grupy zasobów lub subskrypcji
 
@@ -43,9 +43,11 @@ Jeśli to możliwe, podział dużych przenosi do operacji przenoszenia oddzielne
 
 ## <a name="resource-not-in-succeeded-state"></a>Zasób nie jest w stanie pomyślnym
 
-Gdy zostanie wyświetlony komunikat o błędzie informujący o tym, że nie można przenieść zasobu, ponieważ nie jest on w stanie "powodzenie", może to być zależny zasób, który blokuje przeniesienie.
+Gdy zostanie wyświetlony komunikat o błędzie informujący o tym, że nie można przenieść zasobu, ponieważ nie jest on w stanie "powodzenie", może to być zależny zasób, który blokuje przeniesienie. Zazwyczaj kod błędu to **MoveCannotProceedWithResourcesNotInSucceededState**.
 
-Jeśli źródłowa lub docelowa Grupa zasobów zawiera sieć wirtualną, Stany wszystkich zasobów zależnych dla sieci wirtualnej są sprawdzane podczas przenoszenia. Jeśli którykolwiek z tych zasobów jest w stanie niepowodzenia, przeniesienie jest zablokowane. Na przykład jeśli maszyna wirtualna, która używa sieci wirtualnej, zakończyła się niepowodzeniem, przenoszenie jest zablokowane. Przenoszenie jest blokowane nawet wtedy, gdy maszyna wirtualna nie jest jednym z przenoszonych zasobów i nie znajduje się w jednej z grup zasobów dla przeniesienia. Aby uniknąć tego problemu, Przenieś zasoby do grupy zasobów, która nie ma sieci wirtualnej.
+Jeśli źródłowa lub docelowa Grupa zasobów zawiera sieć wirtualną, Stany wszystkich zasobów zależnych dla sieci wirtualnej są sprawdzane podczas przenoszenia. Kontrola obejmuje te zasoby bezpośrednio i pośrednio zależne od sieci wirtualnej. Jeśli którykolwiek z tych zasobów jest w stanie niepowodzenia, przeniesienie jest zablokowane. Na przykład jeśli maszyna wirtualna, która używa sieci wirtualnej, zakończyła się niepowodzeniem, przenoszenie jest zablokowane. Przenoszenie jest blokowane nawet wtedy, gdy maszyna wirtualna nie jest jednym z przenoszonych zasobów i nie znajduje się w jednej z grup zasobów dla przeniesienia.
+
+Po otrzymaniu tego błędu dostępne są dwie opcje. Przenieś zasoby do grupy zasobów, która nie ma sieci wirtualnej, lub [skontaktuj się z pomocą techniczną](../azure-supportability/how-to-create-azure-support-request.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

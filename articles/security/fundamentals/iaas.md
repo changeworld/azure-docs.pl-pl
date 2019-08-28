@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/05/2019
+ms.date: 08/26/2019
 ms.author: barclayn
-ms.openlocfilehash: 0e8be1675dd2b400f89ab17fe85c037066302409
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 1f662c34f557d382b3d6181bac18a6402b233412
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906016"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061914"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące zabezpieczeń dla obciążeń IaaS na platformie Azure
 W tym artykule opisano najlepsze rozwiązania w zakresie zabezpieczeń dotyczące maszyn wirtualnych i systemów operacyjnych.
@@ -70,7 +70,7 @@ Administratorzy subskrypcji i współadministratorzy mogą zmienić to ustawieni
 Organizacje kontrolujące dostęp do maszyn wirtualnych i Instalatora ulepszają ogólne zabezpieczenia maszyn wirtualnych.
 
 ## <a name="use-multiple-vms-for-better-availability"></a>Korzystanie z wielu maszyn wirtualnych w celu zapewnienia lepszej dostępności
-Jeśli maszyna wirtualna uruchamia krytyczne aplikacje, które muszą mieć wysoką dostępność, zdecydowanie zalecamy użycie wielu maszyn wirtualnych. Aby zapewnić lepszą dostępność, użyj [zestawu dostępności](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
+Jeśli maszyna wirtualna uruchamia krytyczne aplikacje, które muszą mieć wysoką dostępność, zdecydowanie zalecamy użycie wielu maszyn wirtualnych. Aby zapewnić lepszą dostępność, użyj [zestawu dostępności](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) lub [stref](../../availability-zones/az-overview.md)dostępności.
 
 Zestaw dostępności jest grupą logiczną, której można użyć na platformie Azure, aby upewnić się, że zasoby maszyny wirtualnej, które znajdują się w niej, są od siebie odizolowane, gdy zostaną wdrożone w centrum danych platformy Azure. System Azure zapewnia, że maszyny wirtualne, które są umieszczane w zestawie dostępności, są uruchamiane na wielu serwerach fizycznych, w stojakach obliczeniowych, jednostkach magazynowych i przełącznikach sieciowych. Jeśli wystąpi awaria sprzętu lub oprogramowania platformy Azure, ma to zastosowanie tylko do podzbioru maszyn wirtualnych, a ogólna aplikacja będzie nadal dostępna dla klientów. Zestawy dostępności są istotną funkcją do tworzenia niezawodnych rozwiązań w chmurze.
 

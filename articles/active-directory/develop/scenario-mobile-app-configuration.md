@@ -15,16 +15,16 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bdf9210eb88b2057cf861b208f19d3e6f562e9a
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 8ebf524d932322fa08729f229a451afe656900d5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414852"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061404"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Aplikacja mobilna, która wywołuje interfejsy API sieci Web — konfiguracja kodu
 
-Po utworzeniu aplikacji dowiesz się, jak skonfigurować kod z parametrów aplikacji uzyskanych podczas rejestracji aplikacji. Aplikacje mobilne mają również pewne złożone informacje, które należy wykonać, aby korzystać z dołączania do struktury używanej do kompilowania tych aplikacji
+Po utworzeniu aplikacji dowiesz się, jak skonfigurować kod przy użyciu parametrów rejestracji aplikacji. Aplikacje mobilne mają również pewne złożone informacje, które należy wykonać, aby korzystać z dołączania do struktury używanej do kompilowania tych aplikacji
 
 ## <a name="msal-libraries-supporting-mobile-apps"></a>Biblioteki MSAL obsługujące aplikacje mobilne
 
@@ -38,7 +38,7 @@ Biblioteki firmy Microsoft obsługujące aplikacje mobilne to:
 
 ## <a name="configuring-the-application"></a>Konfigurowanie aplikacji
 
-Aplikacje mobilne używają `PublicClientApplication` klasy MSAL. Oto jak utworzyć jego wystąpienie:
+Aplikacje mobilne używają `PublicClientApplication` klasy. Oto jak utworzyć jego wystąpienie:
 
 ### <a name="android"></a>Android
 
@@ -68,7 +68,7 @@ W poniższym akapicie wyjaśniono, jak skonfigurować kod aplikacji dla platform
 
 #### <a name="instantiating-the-application"></a>Tworzenie wystąpienia aplikacji
 
-W środowisku Xamarin lub platformy UWP Najprostszym sposobem tworzenia wystąpienia aplikacji jest następujące, gdzie `ClientId` jest identyfikator GUID aplikacji jako zarejestrowany.
+W środowisku Xamarin lub platformy UWP Najprostszym sposobem tworzenia wystąpienia aplikacji jest następująca, gdzie `ClientId` jest identyfikator GUID zarejestrowanej aplikacji.
 
 ```CSharp
 var app = PublicClientApplicationBuilder.Create(clientId)
@@ -87,7 +87,7 @@ IPublicClientApplication application = PublicClientApplicationBuilder.Create(cli
   .Build();
 ```
 
-W systemie Android zalecamy korzystanie z tego `CurrentActivityPlugin` [miejsca](https://github.com/jamesmontemagno/CurrentActivityPlugin).  Następnie kod `PublicClientApplication` konstruktora będzie wyglądać następująco:
+W systemie Android zalecamy korzystanie z tego okna `CurrentActivityPlugin` . [](https://github.com/jamesmontemagno/CurrentActivityPlugin)  Następnie kod `PublicClientApplication` konstruktora będzie wyglądać następująco:
 
 ```CSharp
 // Requires MSAL.NET 4.2 or above
@@ -128,7 +128,7 @@ Wreszcie istnieją pewne specyficzne informacje o przeglądarkach w systemie And
 
 #### <a name="uwp-specific-considerations"></a>Zagadnienia dotyczące platformy UWP
 
-W systemie platformy UWP można używać sieci firmowych. Aby uzyskać informacje o specyficznych platformy UWPach, zobacz [zagadnienia specyficzne dla platforma uniwersalna systemu Windows z MSAL.NET](msal-net-uwp-considerations.md).
+W systemie platformy UWP można używać sieci firmowych. Aby uzyskać dodatkowe informacje na temat korzystania z biblioteki MSAL z platformy UWP, zobacz [zagadnienia specyficzne dla platforma uniwersalna systemu Windows przy użyciu MSAL.NET](msal-net-uwp-considerations.md).
 
 ## <a name="configuring-the-application-to-use-the-broker"></a>Konfigurowanie aplikacji do korzystania z brokera
 
@@ -186,7 +186,7 @@ Ta metoda jest wywoływana za każdym razem, gdy aplikacja jest uruchamiana i s�
 
 #### <a name="step-3-set-a-uiviewcontroller"></a>Krok 3: Ustaw UIViewController ()
 
-W przypadku platformy Xamarin iOS zwykle nie trzeba ustawiać okna obiektu, ale w tym przypadku można wysyłać i odbierać odpowiedzi z brokera. Nadal w `AppDelegate.cs`, Ustaw plik viewcontroller.
+W przypadku platformy Xamarin iOS zazwyczaj nie trzeba ustawiać okna obiektu, ale w tym przypadku można wysyłać i odbierać odpowiedzi z brokera. Nadal w `AppDelegate.cs`, Ustaw plik viewcontroller.
 
 Aby ustawić okno obiektu, wykonaj następujące czynności:
 
