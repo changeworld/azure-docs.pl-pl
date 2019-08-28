@@ -72,8 +72,8 @@
       items:
         - name: .NET
           items:
-            - name: Dokumentacja zestawu SDK dla programu .NET
-              href: 'https://go.microsoft.com/fwlink/?linkid=2092353'
+            - name: Dokumentacja
+              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/personalizer?view=azure-dotnet'
             - name: Pakiet NuGet
               href: 'https://go.microsoft.com/fwlink/?linkid=2092272'
         - name: Przejdź

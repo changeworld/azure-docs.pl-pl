@@ -9,17 +9,16 @@ editor: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 04/03/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 15a1e388b17a66bf22fc0fd51744cb0aaa1b36d4
-ms.sourcegitcommit: 300cd05584101affac1060c2863200f1ebda76b7
+ms.openlocfilehash: f44c7a66b6d8fe7ed6ad114ea176c84351ac6493
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65415524"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071516"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>Migrowanie aplikacji ASP.NET do usługi Azure App Service za pomocą kontenera Windows (wersja zapoznawcza)
 
@@ -34,7 +33,7 @@ W celu ukończenia tego samouczka:
 - <a href="https://hub.docker.com/" target="_blank">Załóż konto usługi Docker Hub</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Zainstaluj program Docker for Windows</a>.
 - <a href="https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Przełącz platformę Docker na potrzeby uruchamiania kontenerów systemu Windows</a>.
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">Instalowanie programu Visual Studio 2019</a> z **ASP.NET i tworzenie aplikacji internetowych** i **programowanie na platformie Azure** obciążeń. Jeśli masz już zainstalowaną 2019 usługi Visual Studio:
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">Zainstaluj program Visual Studio 2019</a> przy użyciu obciążeń **ASP.NET oraz tworzenia aplikacji sieci Web** i **platformy Azure** . Jeśli zainstalowano już program Visual Studio 2019:
     - Zainstaluj najnowsze aktualizacje w programie Visual Studio, klikając pozycje **Pomoc** > **Sprawdź aktualizacje**.
     - Dodaj pakiety robocze w programie Visual Studio, klikając pozycje **Narzędzia** > **Pobierz narzędzia i funkcje**.
 
@@ -117,11 +116,11 @@ W oknie dialogowym **Utwórz nowy rejestr Azure Container Registry** wybierz poz
 
 Skonfiguruj nowy rejestr kontenerów, korzystając z sugerowanych wartości z poniższej tabeli. Po zakończeniu kliknij pozycję **Gotowe**.
 
-| Ustawienie  | Sugerowana wartość | Aby uzyskać więcej informacji |
+| Ustawienie  | Sugerowana wartość | Więcej informacji |
 | ----------------- | ------------ | ----|
 |**Prefiks DNS**| Zachowaj wygenerowaną nazwę rejestru lub zmień ją na inną unikatową nazwę. |  |
 |**Grupa zasobów**| Kliknij pozycję **Nowy**, wpisz **myResourceGroup** i kliknij przycisk **OK**. |  |
-|**SKU**| Podstawowy | [Warstwy cenowe](https://azure.microsoft.com/pricing/details/container-registry/)|
+|**SKU**| Podstawowa | [Warstwy cenowe](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**Lokalizacja rejestru**| Europa Zachodnia | |
 
 ![Konfigurowanie rejestru kontenerów platformy Azure](./media/app-service-web-tutorial-windows-containers-custom-fonts/configure-registry.png)
@@ -132,7 +131,7 @@ Zostanie otwarte okno terminalu z wyświetlonym postępem wdrażania obrazu. Zac
 
 Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
-## <a name="create-a-web-app"></a>Utwórz aplikację internetową
+## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
 
 Z menu po lewej stronie wybierz kolejno pozycje **Utwórz zasób** > **Internet** > **Web App for Containers**.
 
@@ -140,7 +139,7 @@ Z menu po lewej stronie wybierz kolejno pozycje **Utwórz zasób** > **Internet*
 
 W interfejsie tworzenia skonfiguruj ustawienia zgodnie z poniższą tabelą:
 
-| Ustawienie  | Sugerowana wartość | Aby uzyskać więcej informacji |
+| Ustawienie  | Sugerowana wartość | Więcej informacji |
 | ----------------- | ------------ | ----|
 |**Nazwa aplikacji**| Wpisz unikatową nazwę. | Adres URL aplikacji internetowej to `http://<app_name>.azurewebsites.net`, gdzie `<app_name>` to nazwa aplikacji. |
 |**Grupa zasobów**| Wybierz pozycję **Użyj istniejącej** i wpisz **myResourceGroup**. |  |

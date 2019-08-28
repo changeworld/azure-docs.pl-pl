@@ -10,17 +10,16 @@ ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c103e6cb3626750414ee5083dad3e34b6be4986c
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 989bff7d8be5c234d9536afa8afc0beb6870807e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408944"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071661"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Tworzenie aplikacji internetowej Node.js na platformie Azure
 
@@ -54,7 +53,7 @@ const port = process.env.PORT || 1337;
 
 Usługa App Service wprowadza zmienną process.env.PORT do aplikacji, a kod wykorzystuje tę zmienną do określenia, którego portu należy nasłuchiwać. 
 
-W oknie terminalu przejdź do **katalog główny** przykładowego projektu Node.js (katalog, który zawiera _index.js_).
+W oknie terminalu przejdź do **katalogu głównego** przykładowego projektu Node. js (katalog zawierający _indeks. js_).
 
 ## <a name="run-the-app-locally"></a>Lokalne uruchamianie aplikacji
 
@@ -77,7 +76,7 @@ W oknie terminalu naciśnij kombinację klawiszy **Ctrl + C**, aby zamknąć ser
 
 ## <a name="create-a-project-zip-file"></a>Tworzenie pliku ZIP projektu
 
-Upewnij się, że jesteś nadal w **katalog główny** przykładowego projektu (katalog, który zawiera _index.js_). Utwórz archiwum ZIP z wszystkimi elementami w projekcie. Następujące polecenie używa domyślnego narzędzia w terminalu:
+Upewnij się, że nadal znajduje się w **katalogu głównym** przykładowego projektu (katalog zawierający _indeks. js_). Utwórz archiwum ZIP z wszystkimi elementami w projekcie. Następujące polecenie używa domyślnego narzędzia w terminalu:
 
 ```
 # Bash
@@ -95,7 +94,7 @@ Później przekaż ten plik ZIP do platformy Azure i wdróż go w usłudze App S
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan-scus.md)] 
 
-## <a name="create-a-web-app"></a>Utwórz aplikację internetową
+## <a name="create-a-web-app"></a>Tworzenie aplikacji sieci web
 
 W usłudze Cloud Shell utwórz aplikację internetową w planie usługi App Service `myAppServicePlan` za pomocą polecenia [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create). 
 
@@ -165,7 +164,7 @@ Za pomocą edytora tekstów otwórz plik `index.js` w aplikacji Node.js i wprowa
 response.end("Hello Azure!");
 ```
 
-W oknie terminala lokalnego przejdź do swojej aplikacji **katalog główny** (katalog, który zawiera _index.js_), Utwórz nowy plik ZIP dla zaktualizowanego projektu.
+W oknie terminalu lokalnego przejdź do **katalogu głównego** aplikacji (katalogu zawierającego plik _index. js_), a następnie utwórz nowy pliku ZIP dla zaktualizowanego projektu.
 
 ```azurecli-interactive
 # Bash
@@ -197,7 +196,7 @@ Menu po lewej stronie zawiera różne strony służące do konfigurowania aplika
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Środowisko Node.js z bazą danych MongoDB](app-service-web-tutorial-nodejs-mongodb-app.md)

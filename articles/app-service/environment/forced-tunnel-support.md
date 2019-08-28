@@ -9,23 +9,22 @@ ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 36324ccd9b6e9470c93949efed6c29a9b8d3ab61
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e80c0e4e57f8af067c17d0dcfefd26ce7ce8255f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60764743"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069448"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>Konfigurowanie wymuszonego tunelowania środowiska App Service Environment
 
 Środowisko Azure App Service Environment (ASE) to wdrożenie usługi Azure App Service w sieci Azure Virtual Network klienta. Wielu klientów konfiguruje sieci wirtualne platformy Azure jako rozszerzenia sieci lokalnych za pomocą sieci VPN lub połączeń usługi Azure ExpressRoute. Wymuszone tunelowanie ma miejsce podczas przekierowywania ruchu powiązanego z Internetem do sieci VPN lub urządzenia wirtualnego. Urządzenia wirtualne są często używane w celu sprawdzania i inspekcji wychodzącego ruchu sieciowego. 
 
-Środowisko ASE jest zależne od szeregu elementów zewnętrznych, które opisano w dokumencie [App Service Environment network architecture][network] (Architektura sieci w środowisku App Service Environment). Zwykle cały ruch wychodzący zależności środowiska ASE musi przechodzić przez wirtualny adres IP, dla którego zainicjowano obsługę tego środowiska. Jeśli zmienisz routing ruchu do lub ze środowiska ASE bez przestrzegania poniższych informacji, Twoje środowisko ASE przestanie działać.
+Środowisko ASE ma wiele zależności zewnętrznych, które opisano w dokumencie [App Service Environment architektury sieci][network] . Zwykle cały ruch wychodzący zależności środowiska ASE musi przechodzić przez wirtualny adres IP, dla którego zainicjowano obsługę tego środowiska. Jeśli zmienisz routing ruchu do lub ze środowiska ASE bez przestrzegania poniższych informacji, Twoje środowisko ASE przestanie działać.
 
 W sieci wirtualnej platformy Azure routing odbywa się na podstawie najdłuższego dopasowania prefiksu (LPM, Longest Prefix Match). Jeśli istnieje więcej niż jedna trasa z tym samym dopasowaniem LPM, wybór trasy odbywa się według następującej kolejności:
 
@@ -33,7 +32,7 @@ W sieci wirtualnej platformy Azure routing odbywa się na podstawie najdłuższe
 * Trasa protokołu BGP (jeśli używane są połączenia ExpressRoute)
 * Trasa systemowa
 
-Aby dowiedzieć się więcej na temat routingu w sieci wirtualnej, zobacz [User-defined routes and IP forwarding][routes] (Trasy zdefiniowane przez użytkownika i przesyłanie dalej pakietów IP). 
+Aby dowiedzieć się więcej na temat routingu w sieci wirtualnej, Odczytaj [trasy zdefiniowane przez użytkownika i przekazywanie adresów IP][routes]. 
 
 Jeśli chcesz skierować ruch wychodzący środowiska ASE gdzieś indziej niż bezpośrednio do Internetu, dostępne są następujące opcje:
 
@@ -67,7 +66,7 @@ Można skonfigurować podsieć środowiska ASE tak, aby były w niej ignorowane 
 Aby skonfigurować ignorowanie tras protokołu BGP w podsieci środowiska ASE:
 
 * Utwórz trasę zdefiniowaną przez użytkownika i przypisz ją do podsieci środowiska ASE (jeśli taka trasa jeszcze nie istnieje).
-* W witrynie Azure Portal otwórz interfejs użytkownika tabeli tras przypisanej do podsieci środowiska ASE.  Wybierz pozycję Konfiguracja.  Wyłącz propagację tras protokołu BGP.  Kliknij pozycję Zapisz. Informacje o wyłączaniu tej funkcji znajdziesz w dokumencie [Create a route table][routetable] (Tworzenie tabeli tras).
+* W witrynie Azure Portal otwórz interfejs użytkownika tabeli tras przypisanej do podsieci środowiska ASE.  Wybierz pozycję Konfiguracja.  Wyłącz propagację tras protokołu BGP.  Kliknij pozycję Zapisz. Ta dokumentacja dotycząca wyłączenia programu znajduje się w dokumencie [Tworzenie tabeli tras][routetable] .
 
 Po skonfigurowaniu ignorowania wszystkich tras protokołu BGP w podsieci środowiska ASE aplikacje nie będą mogły nawiązywać połączenia ze środowiskiem lokalnym. Aby umożliwić aplikacjom uzyskiwanie dostępu do zasobów lokalnych, zmodyfikuj trasę zdefiniowaną przez użytkownika przypisaną do podsieci środowiska ASE, dodając trasy dla lokalnych zakresów adresów. Należy wybrać opcję Brama sieci wirtualnej jako Typ następnego przeskoku. 
 
@@ -76,13 +75,13 @@ Po skonfigurowaniu ignorowania wszystkich tras protokołu BGP w podsieci środow
 
 Aby przekierować cały ruch wychodzący ze środowiska ASE, z wyjątkiem tego wychodzącego do usług Azure SQL i Azure Storage, wykonaj następujące czynności:
 
-1. Utwórz tabelę tras i przypisz ją do podsieci środowiska ASE. Aby znaleźć adresy zgodne z Twoim regionem, zobacz [App Service Environment management addresses][management] (Adresy zarządzania środowiska App Service Environment). Utwórz trasy dla tych adresów z następnym przeskokiem do Internetu. Te trasy są niezbędne, ponieważ ruch przychodzący zarządzania środowiska App Service Environment musi udzielać odpowiedzi z tego samego adresu, na który został wysłany.   
+1. Utwórz tabelę tras i przypisz ją do podsieci środowiska ASE. Znajdź w tym miejscu adresy zgodne z Twoim regionem [App Service Environment adresy zarządzania][management]. Utwórz trasy dla tych adresów z następnym przeskokiem do Internetu. Te trasy są niezbędne, ponieważ ruch przychodzący zarządzania środowiska App Service Environment musi udzielać odpowiedzi z tego samego adresu, na który został wysłany.   
 
 2. Włączanie punktów końcowych w usługach Azure SQL i Azure Storage dla podsieci środowiska ASE.  Po wykonaniu tego kroku można skonfigurować sieć wirtualną przy użyciu wymuszonego tunelowania.
 
-Aby utworzyć środowisko ASE w sieci wirtualnej, która została już skonfigurowana do kierowania ruchu lokalnie, należy utworzyć środowisko ASE przy użyciu szablonu usługi Resource Manager.  Środowiska ASE nie można utworzyć przy użyciu portalu we wcześniej istniejącej podsieci.  W przypadku wdrażania środowiska ASE w sieci wirtualnej, która została już skonfigurowana do lokalnego kierowania ruchu wychodzącego, należy utworzyć środowisko ASE przy użyciu szablonu usługi Resource Manager, który nie zezwala na wybranie wcześniej istniejącej podsieci. Szczegółowe informacje o wdrażaniu środowiska ASE przy użyciu szablonu można znaleźć w temacie [Tworzenie środowiska App Service Environment przy użyciu szablonu][template].
+Aby utworzyć środowisko ASE w sieci wirtualnej, która została już skonfigurowana do kierowania ruchu lokalnie, należy utworzyć środowisko ASE przy użyciu szablonu usługi Resource Manager.  Środowiska ASE nie można utworzyć przy użyciu portalu we wcześniej istniejącej podsieci.  W przypadku wdrażania środowiska ASE w sieci wirtualnej, która została już skonfigurowana do lokalnego kierowania ruchu wychodzącego, należy utworzyć środowisko ASE przy użyciu szablonu usługi Resource Manager, który nie zezwala na wybranie wcześniej istniejącej podsieci. Aby uzyskać szczegółowe informacje na temat wdrażania środowiska ASE z szablonem, przeczytaj artykuł [tworzenie App Service Environment przy użyciu szablonu][template].
 
-Punkty końcowe usługi pozwalają ograniczyć dostęp do usług wielodostępnych do zestawu sieci wirtualnych i podsieci platformy Azure. Więcej informacji na temat punktów końcowych usługi zawiera dokumentacja [punktów końcowych usługi dla sieci wirtualnej][serviceendpoints]. 
+Punkty końcowe usługi pozwalają ograniczyć dostęp do usług wielodostępnych do zestawu sieci wirtualnych i podsieci platformy Azure. Więcej informacji na temat punktów końcowych usługi można znaleźć w dokumentacji [punktów końcowych usługi Virtual Network][serviceendpoints] . 
 
 Po włączeniu punktów końcowych usługi w zasobie niektóre trasy są utworzone z wyższym priorytetem niż wszystkie inne trasy. Jeśli używasz punktów końcowych usługi w środowisku ASE z wymuszonym tunelowaniem, ruch związany z zarządzaniem usługami Azure SQL i Azure Storage nie będzie tunelowany w sposób wymuszony. Tunelowanie pozostałego ruchu zależności środowiska ASE jest wymuszane i nie może on zostać utracony, ponieważ w przeciwnym razie środowisko ASE nie będzie działać prawidłowo.
 
@@ -96,7 +95,7 @@ Jeśli konfigurujesz wymuszone tunelowanie przy użyciu urządzenia filtru sieci
 
 Aby tunelować cały ruch wychodzący ze środowiska ASE, z wyjątkiem tego wychodzącego do usługi Azure Storage, wykonaj następujące czynności:
 
-1. Utwórz tabelę tras i przypisz ją do podsieci środowiska ASE. Aby znaleźć adresy zgodne z Twoim regionem, zobacz [App Service Environment management addresses][management] (Adresy zarządzania środowiska App Service Environment). Utwórz trasy dla tych adresów z następnym przeskokiem do Internetu. Te trasy są niezbędne, ponieważ ruch przychodzący zarządzania środowiska App Service Environment musi udzielać odpowiedzi z tego samego adresu, na który został wysłany. 
+1. Utwórz tabelę tras i przypisz ją do podsieci środowiska ASE. Znajdź w tym miejscu adresy zgodne z Twoim regionem [App Service Environment adresy zarządzania][management]. Utwórz trasy dla tych adresów z następnym przeskokiem do Internetu. Te trasy są niezbędne, ponieważ ruch przychodzący zarządzania środowiska App Service Environment musi udzielać odpowiedzi z tego samego adresu, na który został wysłany. 
 
 2. Włączanie punktów końcowych w usłudze Azure Storage dla podsieci środowiska ASE
 
@@ -108,7 +107,7 @@ Aby tunelować cały ruch wychodzący ze środowiska ASE, z wyjątkiem tego wych
 
    Wybierz pozycję **PUT** u góry. Ta opcja wyzwala operację skalowania środowiska App Service Environment i dostosowanie zapory.
 
-_Aby utworzyć środowisko ASE z adresami ruchu wychodzącego_: postępuj zgodnie z instrukcjami podanymi w temacie [Create an App Service Environment with a template][template] (Tworzenie środowiska App Service Environment przy użyciu szablonu) i uzyskaj odpowiedni szablon.  Edytuj sekcję „zasoby” w pliku azuredeploy.json, ale nie w bloku „properties”, i dołącz wiersz dla elementu **userWhitelistedIpRanges** z własnymi wartościami.
+_Aby utworzyć środowisko ASE z adresami ruchu wychodzącego_: Postępuj zgodnie z instrukcjami w temacie [tworzenie App Service Environment z szablonem][template] i ściąganie odpowiedniego szablonu.  Edytuj sekcję „zasoby” w pliku azuredeploy.json, ale nie w bloku „properties”, i dołącz wiersz dla elementu **userWhitelistedIpRanges** z własnymi wartościami.
 
     "resources": [
       {

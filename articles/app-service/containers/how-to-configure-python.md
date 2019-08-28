@@ -10,29 +10,28 @@ ms.assetid: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.author: cephalin
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: fb90122f7277687886a6579fdb729b7f91660ed6
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 8563e0ac060e5cce6853472dfb1c51c6c2c36a4d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67617272"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071087"
 ---
-# <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurowanie aplikacji w języku Python w systemie Linux dla usługi Azure App Service
+# <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurowanie aplikacji systemu Linux w języku Python dla Azure App Service
 
-W tym artykule opisano, jak usługa [Azure App Service](app-service-linux-intro.md) uruchamia aplikacje języka Python i jak można dostosować zachowanie usługi App Service w razie potrzeby. Aplikacji w języku Python musi zostać wdrożony w przypadku wszystkich wymaganych [pip](https://pypi.org/project/pip/) modułów.
+W tym artykule opisano, jak usługa [Azure App Service](app-service-linux-intro.md) uruchamia aplikacje języka Python i jak można dostosować zachowanie usługi App Service w razie potrzeby. Aplikacje języka Python muszą zostać wdrożone ze wszystkimi wymaganymi modułami [PIP](https://pypi.org/project/pip/) .
 
-Aparat wdrażania usługi App Service automatycznie aktywuje środowisku wirtualnym i działa `pip install -r requirements.txt` dla Ciebie podczas wdrażania [repozytorium Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json), lub [spakowany pakiet](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) z procesami kompilacji, włączone.
+Aparat wdrażania App Service automatycznie aktywuje środowisko wirtualne i jest uruchamiany `pip install -r requirements.txt` podczas wdrażania [repozytorium git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)lub [pakiet ZIP](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) z procesami kompilacji, które zostały włączone.
 
-Ten przewodnik zawiera podstawowe pojęcia i instrukcje dla programistów używających języka Python, którzy korzystają z wbudowanych kontenera systemu Linux w usłudze App Service. Jeśli nie znasz usługi Azure App Service, należy przestrzegać [Szybki Start języka Python](quickstart-python.md) i [Python z PostgreSQL samouczek](tutorial-python-postgresql-app.md) pierwszy.
+Ten przewodnik zawiera najważniejsze pojęcia i instrukcje dla deweloperów języka Python, którzy używają wbudowanego kontenera systemu Linux w App Service. Jeśli nie korzystasz z Azure App Service, musisz najpierw wykonać samouczek [przewodnika Szybki Start](quickstart-python.md) i [Python z programem PostgreSQL](tutorial-python-postgresql-app.md) .
 
 > [!NOTE]
-> Linux obecnie jest to zalecana opcja, do uruchamiania aplikacji w języku Python w usłudze App Service. Aby uzyskać informacje na temat opcji Windows, zobacz [językiem Python w wersji Windows App Service](https://docs.microsoft.com/visualstudio/python/managing-python-on-azure-app-service).
+> System Linux jest obecnie zalecaną opcją uruchamiania aplikacji w języku Python w App Service. Aby uzyskać informacje na temat opcji systemu Windows, zobacz [Python w systemie windows App Service](https://docs.microsoft.com/visualstudio/python/managing-python-on-azure-app-service).
 >
 
 ## <a name="show-python-version"></a>Wyświetlanie wersji języka Python
@@ -114,13 +113,13 @@ Jeśli usługa App Service nie znajdzie polecenia niestandardowego, aplikacji Dj
 
 ## <a name="customize-startup-command"></a>Dostosowywanie polecenia uruchamiania
 
-Aby kontrolować zachowanie kontenera podczas uruchamiania, możesz podać niestandardowe polecenie uruchamiania serwera Gunicorn. Aby to zrobić, uruchamiając następujące polecenie [Cloud Shell](https://shell.azure.com):
+Aby kontrolować zachowanie kontenera podczas uruchamiania, możesz podać niestandardowe polecenie uruchamiania serwera Gunicorn. W tym celu należy uruchomić następujące polecenie w [Cloud Shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-Na przykład, jeśli masz aplikację Flask którego moduł główny jest *hello.py* i nosi nazwę obiektu aplikację Flask, w tym pliku `myapp`, następnie  *\<polecenia niestandardowego >* jest następująca:
+Na przykład jeśli masz aplikację z kolbą, której moduł główny to *Hello.py* , a w tym pliku znajduje się obiekt aplikacji do `myapp`kolby o nazwie,  *\<> polecenie niestandardowe* jest następujące:
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -132,9 +131,9 @@ Jeśli moduł główny znajduje się w podfolderze, takim jak `website`, określ
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-Możesz również dodać wszelkie dodatkowe argumenty dla Gunicorn do  *\<polecenia niestandardowego >* , takich jak `--workers=4`. Aby uzyskać więcej informacji, zobacz [Running Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (Uruchamianie serwera Gunicorn) (docs.gunicorn.org).
+Można również dodać wszelkie dodatkowe argumenty dla Gunicorn do  *\<polecenia Custom->* , `--workers=4`na przykład. Aby uzyskać więcej informacji, zobacz [Running Gunicorn](https://docs.gunicorn.org/en/stable/run.html) (Uruchamianie serwera Gunicorn) (docs.gunicorn.org).
 
-Aby użyć serwera bez Gunicorn, takich jak [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), możesz zastąpić  *\<polecenia niestandardowego >* z podobny do poniższego:
+Aby użyć serwera innego niż Gunicorn, takiego jak [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), można zamienić  *\<polecenie niestandardowe >* na podobne do tego:
 
 ```bash
 python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -145,7 +144,7 @@ python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
 
 ## <a name="access-environment-variables"></a>Uzyskiwanie dostępu do zmiennych środowiskowych
 
-W usłudze App Service możesz [określić ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) poza kodu aplikacji. Następnie można uzyskiwać do nich dostęp przy użyciu standardowego wzorca [os.environ](https://docs.python.org/3/library/os.html#os.environ). Aby na przykład uzyskać dostęp do ustawienia aplikacji o nazwie `WEBSITE_SITE_NAME`, użyj następującego kodu:
+W App Service można [ustawić ustawienia aplikacji](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) poza kodem aplikacji. Następnie można uzyskiwać do nich dostęp przy użyciu standardowego wzorca [os.environ](https://docs.python.org/3/library/os.html#os.environ). Aby na przykład uzyskać dostęp do ustawienia aplikacji o nazwie `WEBSITE_SITE_NAME`, użyj następującego kodu:
 
 ```python
 os.environ['WEBSITE_SITE_NAME']
@@ -180,15 +179,15 @@ Popularne platformy internetowe umożliwiają dostęp do informacji `X-Forwarded
 - **W przeglądarce jest wyświetlany komunikat „Usługa niedostępna”.** W przeglądarce upłynął limit czasu oczekiwania na odpowiedź usługi App Service, co wskazuje, że usługa App Service uruchomiła serwer Gunicorn, ale argumenty określające kod aplikacji są niepoprawne.
 - Odśwież okno przeglądarki, zwłaszcza jeśli korzystasz z niższych warstw cenowych w planie usługi App Service. Na przykład podczas korzystania z warstw bezpłatnych aplikacja może być uruchamiana dłużej i zacznie odpowiadać po odświeżeniu okna przeglądarki.
 - Sprawdź, czy aplikacja ma strukturę zgodną z oczekiwaniami usługi App Service dla platformy [Django](#django-app) lub [Flask](#flask-app), albo użyj [niestandardowego polecenia uruchamiania](#customize-startup-command).
-- [Dostęp do strumienia dziennika](#access-diagnostic-logs).
+- [Dostęp do strumienia dzienników](#access-diagnostic-logs).
 
-## <a name="next-steps"></a>Kolejne kroki
-
-> [!div class="nextstepaction"]
-> [Samouczek: Aplikację w języku Python z bazą danych PostgreSQL](tutorial-python-postgresql-app.md)
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek: Wdrażanie z repozytorium prywatnego kontenerów](tutorial-custom-docker-image.md)
+> [Samouczek: Aplikacja języka Python z PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [App Service dla systemu Linux — często zadawane pytania](app-service-linux-faq.md)
+> [Samouczek: Wdróż z repozytorium prywatnego kontenera](tutorial-custom-docker-image.md)
+
+> [!div class="nextstepaction"]
+> [App Service Linux — często zadawane pytania](app-service-linux-faq.md)
