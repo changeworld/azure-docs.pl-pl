@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: def218564511b65809e776f97d0962b72f72adc2
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 17e27fcbd0e31c8602869be3d884888fe4fe7db0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898134"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095828"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>Samouczek: Korzystanie z kontroli kondycji w usłudze Azure Menedżer wdrażania (publiczna wersja zapoznawcza)
 
@@ -235,8 +235,8 @@ Ta sekcja zawiera informacje na temat sposobu dołączania kroku sprawdzania kon
 
 Aby uprościć samouczek, szablon topologii i artefakty są udostępniane w następujących lokalizacjach, dzięki czemu nie musisz przygotowywać własnej kopii. Jeśli chcesz użyć własnych, postępuj zgodnie z instrukcjami podanymi [w samouczku: Użyj Menedżer wdrażania platformy Azure z szablonami](./deployment-manager-tutorial.md)Menedżer zasobów.
 
-* Szablon topologii:\\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json)
-* Magazyn artefaktów:\\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
+* Szablon topologii: https\/:/armtutorials.blob.Core.Windows.NET/admtutorial/ADMTemplates/CreateADMServiceTopology.JSON
+* Magazyn artefaktów: https\/:/armtutorials.blob.Core.Windows.NET/admtutorial/ArtifactStore
 
 Aby wdrożyć topologię, wybierz **ją** , aby otworzyć usługę Cloud Shell, a następnie wklej skrypt programu PowerShell.
 
@@ -265,8 +265,8 @@ Opcja **Pokaż ukryte typy** musi być zaznaczona, aby wyświetlić zasoby.
 
 Aby uprościć samouczek, poprawiony szablon wdrożenia jest udostępniany w następujących lokalizacjach, aby nie trzeba było przygotowywać własnej kopii. Jeśli chcesz użyć własnych, postępuj zgodnie z instrukcjami podanymi [w samouczku: Użyj Menedżer wdrażania platformy Azure z szablonami](./deployment-manager-tutorial.md)Menedżer zasobów.
 
-* Szablon topologii:\\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json)
-* Magazyn artefaktów:\\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
+* Szablon topologii: https\/:/armtutorials.blob.Core.Windows.NET/admtutorial/ADMTemplatesHC/CreateADMRollout.JSON
+* Magazyn artefaktów: https\/:/armtutorials.blob.Core.Windows.NET/admtutorial/ArtifactStore
 
 Użyj adresu URL stanu złej kondycji utworzonego w temacie [Tworzenie symulatora usługi sprawdzania kondycji](#create-a-health-check-service-simulator). Aby uzyskać **managedIdentityID**, zobacz [Tworzenie tożsamości zarządzanej przypisanej przez użytkownika](./deployment-manager-tutorial.md#create-the-user-assigned-managed-identity).
 

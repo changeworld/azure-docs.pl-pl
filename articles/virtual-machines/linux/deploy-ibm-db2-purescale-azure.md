@@ -11,16 +11,15 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: edprice
-ms.openlocfilehash: 68fde09b1ee5f18aa784793cc19e9f547b19ed43
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 8eb8075454dc3a49e9525d566c34c64bab8be5a0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871876"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083444"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>Wdrażanie programu IBM DB2 pureScale na platformie Azure
 
@@ -78,7 +77,7 @@ Repozytorium GitHub zawiera plik odpowiedzi DB2server. rsp, odpowiedź (. RSP), 
 > [!NOTE]
 > Przykładowy plik odpowiedzi DB2server. rsp znajduje się w repozytorium [DB2onAzure](https://aka.ms/db2onazure) w witrynie GitHub. Jeśli używasz tego pliku, musisz go zmodyfikować, zanim będzie można go użyć w Twoim środowisku.
 
-| Nazwa ekranu               | Pole                                        | Wartość                                                                                                 |
+| Nazwa ekranu               | Pole                                        | Value                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | Witaj                   |                                              | Nowa instalacja                                                                                           |
 | Wybierz produkt          |                                              | 11.1.3.3 wersja programu DB2. Wersje serwera z programem DB2 pureScale                                              |

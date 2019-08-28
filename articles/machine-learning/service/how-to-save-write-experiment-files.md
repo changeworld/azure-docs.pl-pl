@@ -1,6 +1,7 @@
 ---
-title: Zapobiegaj ograniczeniom magazynu i opóźnieniu eksperymentu za pomocą katalogów wejściowych i wyjściowych
-description: W tym artykule dowiesz się, gdzie zapisywać pliki wejściowe eksperymentu i gdzie zapisywać pliki wyjściowe, aby zapobiec błędom ograniczenia magazynu i opóźnieniu eksperymentów.
+title: Miejsce zapisania plików eksperymentu & zapisu
+titleSuffix: Azure Machine Learning service
+description: Dowiedz się, gdzie zapisywać pliki wejściowe eksperymentu i gdzie zapisywać pliki wyjściowe, aby zapobiec błędom ograniczenia magazynu i opóźnieniu eksperymentów.
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,12 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: ea820536d93ec095f6f2929a9dc3b38d92779a58
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7d5e147173e766d0da54aa3422faef4b6035b914
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856050"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114511"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Miejsce zapisywania i zapisywania plików do Azure Machine Learning eksperymentów
 
@@ -71,7 +72,7 @@ Jeśli nie jest wymagane przechowywanie danych, Zapisz pliki w `./outputs` folde
 
 * **Aby zapisać zapisany plik jako dzienniki w historii uruchamiania,** Zapisz pliki w `./logs` folderze. Dzienniki są przekazywane w czasie rzeczywistym, więc ta metoda jest odpowiednia do przesyłania strumieniowego aktualizacji na żywo z przebiegu zdalnego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Dowiedz się więcej o [uzyskiwaniu dostępu do danych z Twoich magazynów](how-to-access-data.md).
 

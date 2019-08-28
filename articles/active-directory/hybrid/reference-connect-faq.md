@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0442b987c502533bfbd55990f201a5c02b119804
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 70f0badc170c65b11bc244b5ed4ec2f9a205c72d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011294"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084877"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect — często zadawane pytania
 
@@ -273,4 +273,4 @@ Jeśli potrzebujesz pomocy w uaktualnieniu do nowszej wersji Azure AD Connect, O
 
 **Pyt.: Dlaczego widzę zdarzenia 6311 i 6401 występują po błędach kroków synchronizacji?**
 
-Zdarzenia 6311- **Serwer napotkał nieoczekiwany błąd podczas wykonywania wywołania zwrotnego** i 6401- **kontroler agenta zarządzania napotkał nieoczekiwany błąd** — są zawsze rejestrowane po błędzie kroku synchronizacji. Aby rozwiązać te błędy, należy wyczyścić błędy kroków synchronizacji.  Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów podczas synchronizacji](tshoot-connect-sync-errors.md) i [Rozwiązywanie problemów z synchronizacją obiektów przy użyciu synchronizacji Azure AD Connect](/tshoot-connect-objectsync.md)
+Zdarzenia 6311- **Serwer napotkał nieoczekiwany błąd podczas wykonywania wywołania zwrotnego** i 6401- **kontroler agenta zarządzania napotkał nieoczekiwany błąd** — są zawsze rejestrowane po błędzie kroku synchronizacji. Aby rozwiązać te błędy, należy wyczyścić błędy kroków synchronizacji.  Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów podczas synchronizacji](tshoot-connect-sync-errors.md) i [Rozwiązywanie problemów z synchronizacją obiektów przy użyciu synchronizacji Azure AD Connect](tshoot-connect-objectsync.md)

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 07/01/2019
+ms.date: 08/27/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 260d2774eecb42d0234c33e40b4f10680a4fbfbd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ebb6c05645a991d22ac30ee013e5a51007994eb6
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932230"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073864"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co to są usługi Azure Analysis Services?
 
@@ -67,6 +67,8 @@ Ta warstwa jest najlepszym rozwiązaniem w przypadku aplikacji produkcyjnych o k
 |S4    |    400     |    100     |
 |S8*    |    320     |    200     |
 |S9*    |    640    |    400     |
+|S8v2*    |    640     |    200     |
+|S9v2*    |    1280    |    400     |
 
 \* Niedostępna we wszystkich regionach.  
 
@@ -82,34 +84,35 @@ Usługa Azure Analysis Services jest obsługiwana w regionach na całym świecie
 |Kanada Środkowa    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |East US     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |Wschodnie stany USA 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Wschodnie stany USA 2     |     S8, S9   |    1    |
+|Wschodnie stany USA 2     |     S8, S9, S8v2, S9v2   |    1    |
 |Środkowo-północne stany USA     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Środkowe stany USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Środkowo-południowe stany USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Środkowo-zachodnie stany USA   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |Zachodnie stany USA     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
-|Zachodnie stany USA     |    S8, S9   |    2  |
+|Zachodnie stany USA     |    S8, S9, S8v2, S9v2   |    2  |
 |Zachodnie stany USA 2    |    B1, B2, S0, S1, S2, S4, D1    |    3   |
-|Zachodnie stany USA 2    |    S8, S9  |    1     |
+|Zachodnie stany USA 2    |    S8, S9, S8v2, S9v2  |    1     |
 
 ### <a name="europe"></a>Europa
 
 |Region  | Obsługiwane plany | Repliki zapytania (tylko plany Standard) |
 |---------|---------|:---------:|
 |Europa Północna     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
+|Europa Północna     |    S8v2, S9v2      |    3     |
 |Południowe Zjednoczone Królestwo     |    B1, B2, S0, S1, S2, S4, D1      |     1    |
 |Europa Zachodnia     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
-|Europa Zachodnia    |   S8, S9  |  1  |
+|Europa Zachodnia    |   S8, S9, S8v2, S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>Azja i Pacyfik 
 
 |Region  | Obsługiwane plany | Repliki zapytania (tylko plany Standard) |
 |---------|---------|:---------:|
 |Australia Wschodnia     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Australia Wschodnia     |    S8, S9    |    1     |
+|Australia Wschodnia     |    S8, S9, S8v2, S9v2    |    1     |
 |Australia Południowo-Wschodnia     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japonia Wschodnia     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Azja Południowo-Wschodnia     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   1      |
+|Azja Południowo-Wschodnia     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
 |Indie Zachodnie     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>Skalowanie zgodnie z potrzebami
@@ -246,7 +249,7 @@ W dokumentacji dotyczącej usługi Azure Analysis Services są używane równie�
 
 ## <a name="blogs"></a>Blogi
 
-Wszystko zmienia się tak szybko. Najnowsze informacje można uzyskać w [blogu zespołu usługi Analysis Services](https://blogs.msdn.microsoft.com/analysisservices/) i [blogu platformy Azure](https://azure.microsoft.com/blog/).
+Wszystko zmienia się tak szybko. Pobierz najnowsze informacje na [blogu Power BI](https://powerbi.microsoft.com/blog/category/analysis-services/) i [blogu platformy Azure](https://azure.microsoft.com/blog/).
 
 ## <a name="community"></a>Społeczność
 

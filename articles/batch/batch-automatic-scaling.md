@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: c624cdfc-c5f2-4d13-a7d7-ae080833b779
 ms.service: batch
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 431212b2b0ac7bba209130e511e3510e3008a6c4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2014b00a82a6d56bf58b471336c6d809721abea9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68500040"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095433"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Utwórz formułę skalowania automatycznego do skalowania węzłów obliczeniowych w puli usługi Batch
 
@@ -456,7 +455,7 @@ response = batch_service_client.pool.enable_auto_scale(pool_id, auto_scale_formu
 
 ## <a name="enable-autoscaling-on-an-existing-pool"></a>Włącz Skalowanie automatyczne w istniejącej puli
 
-Każdy zestaw SDK w usłudze Batch umożliwia włączenie skalowania automatycznego. Przykład:
+Każdy zestaw SDK w usłudze Batch umożliwia włączenie skalowania automatycznego. Na przykład:
 
 * [BatchClient. PoolOperations. EnableAutoScaleAsync][net_enableautoscaleasync] (Batch .NET)
 * [Włącz automatyczne skalowanie w puli][rest_enableautoscale] (INTERFEJS API REST)
@@ -470,7 +469,7 @@ Po włączeniu skalowania automatycznego w istniejącej puli należy pamiętać 
   * W przypadku pominięcia formuły automatycznego skalowania lub interwału oceny usługa Batch będzie używać bieżącej wartości tego ustawienia.
 
 > [!NOTE]
-> Jeśli określono wartości parametrów *targetDedicatedNodes* lub *targetLowPriorityNodes* **metody tworzenia** puli w programie .NET lub dla porównywalnych parametrów w innym języku, te wartości są ignorowany, gdy jest szacowana formuła skalowania automatycznego.
+> Jeśli określono wartości parametrów *targetDedicatedNodes* lub *targetLowPriorityNodes* metody tworzenia puli w programie .NET lub dla porównywalnych parametrów w innym języku, te wartości są ignorowany, gdy jest szacowana formuła skalowania automatycznego.
 >
 >
 
@@ -714,7 +713,7 @@ string formula = string.Format(@"
     ", now, 4);
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * [Maksymalizuj Azure Batch użycie zasobów obliczeniowych za pomocą współbieżnych zadań węzłów](batch-parallel-node-tasks.md) zawiera szczegółowe informacje na temat sposobu wykonywania wielu zadań jednocześnie w węzłach obliczeniowych w puli. Oprócz skalowania automatycznego ta funkcja może pomóc w obniżeniu czasu trwania zadań w przypadku niektórych obciążeń, co pozwala zaoszczędzić pieniądze.
 * W przypadku innego detonatora wydajności upewnij się, że aplikacja usługi Batch wyśle do niej zapytanie w najbardziej optymalny sposób. Zobacz [wydajną pracę usługi Azure Batch,](batch-efficient-list-queries.md) aby dowiedzieć się, jak ograniczyć ilość danych przekreślonych w czasie wykonywania zapytania o stan potencjalnie tysięcy węzłów obliczeniowych lub zadań.
 

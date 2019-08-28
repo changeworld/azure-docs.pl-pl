@@ -14,12 +14,12 @@ ms.date: 08/13/2019
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a9d997f9ced0fbd921abfb13cda5a4845eb3763
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: fc6f6f7b02db664ca6cd62dc7aad61baf5f132fa
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616291"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088403"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Zarządzanie hasłami aplikacji w celu weryfikacji dwuetapowej
 
@@ -47,7 +47,7 @@ Hasła aplikacji można tworzyć i usuwać w zależności od sposobu korzystania
 
 - **Twoja organizacja używa weryfikacji dwuskładnikowej i dodatkowej strony weryfikacji zabezpieczeń.** Jeśli używasz konta służbowego (np alain@contoso.com.) w ramach weryfikacji dwuskładnikowej w organizacji, możesz zarządzać hasłami aplikacji na [stronie dodatkowej weryfikacji zabezpieczeń](https://account.activedirectory.windowsazure.com/Proofup.aspx). Aby uzyskać szczegółowe instrukcje, zobacz [Tworzenie i usuwanie haseł aplikacji przy użyciu strony dodatkowej weryfikacji zabezpieczeń](#create-and-delete-app-passwords-from-the-additional-security-verification-page) w tym artykule.
 
-- **Twoja organizacja używa weryfikacji dwuskładnikowej i portalu Office 365.** Jeśli używasz konta służbowego (takiego jak, alain@contoso.com), weryfikacji dwuskładnikowej i aplikacji pakietu Office 365 w organizacji, możesz zarządzać hasłami aplikacji ze [strony portalu pakietu Office 365](https://office.portal.com). Aby uzyskać szczegółowe instrukcje, zobacz [Tworzenie i usuwanie haseł aplikacji przy użyciu portalu Office 365](#create-and-delete-app-passwords-using-the-office-365-portal) w tym artykule.
+- **Twoja organizacja używa weryfikacji dwuskładnikowej i portalu Office 365.** Jeśli używasz konta służbowego (takiego jak, alain@contoso.com), weryfikacji dwuskładnikowej i aplikacji pakietu Office 365 w organizacji, możesz zarządzać hasłami aplikacji ze [strony portalu pakietu Office 365](https://www.office.com). Aby uzyskać szczegółowe instrukcje, zobacz [Tworzenie i usuwanie haseł aplikacji przy użyciu portalu Office 365](#create-and-delete-app-passwords-using-the-office-365-portal) w tym artykule.
 
 - **Korzystasz z weryfikacji dwuetapowej z konto Microsoft osobistym.** Jeśli używasz osobistego konto Microsoft (na przykład, alain@outlook.com) z weryfikacją dwuskładnikową, możesz zarządzać hasłami aplikacji ze [strony podstawy zabezpieczeń](https://account.microsoft.com/security/). Aby uzyskać szczegółowe instrukcje, zobacz [Używanie haseł aplikacji z aplikacjami, które nie obsługują weryfikacji](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification)dwuetapowej.
 

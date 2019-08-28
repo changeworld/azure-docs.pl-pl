@@ -1,6 +1,6 @@
 ---
-title: Azure ograniczone rozmiary procesora wirtualnego vCPU - Linux | Dokumentacja firmy Microsoft
-description: Wyświetla listę rozmiarów maszyn wirtualnych, które są w stanie konieczności liczba procesorów wirtualnych ograniczone.
+title: Ograniczone rozmiary usługi Azure vCPU — system Linux | Microsoft Docs
+description: Wyświetla listę rozmiarów maszyn wirtualnych, które mogą mieć ograniczoną liczbę vCPU.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -9,26 +9,25 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: jonbeck
-ms.openlocfilehash: e05346e16315dfdeca926e6db87e6d5f2252e227
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 473db3ad0a31e66c6b8f148d5756978dab44ed27
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67668098"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091963"
 ---
-# <a name="constrained-vcpu-capable-vm-sizes"></a>Rozmiary maszyn wirtualnych z możliwością ograniczonego procesorów wirtualnych
+# <a name="constrained-vcpu-capable-vm-sizes"></a>Ograniczone rozmiary maszyn wirtualnych z ograniczeniami vCPU
 
 
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-constrained-vcpu.md)]
 
 
-## <a name="other-sizes"></a>O innych rozmiarach
+## <a name="other-sizes"></a>Inne rozmiary
 - [Optymalizacja pod kątem obliczeń](../windows/sizes-compute.md)
 - [Optymalizacja pod kątem pamięci](sizes-memory.md)
 - [Optymalizacja pod kątem magazynu](sizes-storage.md)
@@ -36,5 +35,5 @@ ms.locfileid: "67668098"
 - [Obliczenia o wysokiej wydajności](sizes-hpc.md)
 
 ## <a name="next-steps"></a>Następne kroki
-Dowiedz się więcej o tym, jak [usługi Azure compute jednostki (ACU)](acu.md) pozwalają porównać wydajności obliczeń w jednostkach SKU platformy Azure.
+Dowiedz się więcej o tym, jak [usługa Azure COMPUTE units (ACU)](acu.md) może pomóc w porównaniu wydajności obliczeniowej w ramach jednostek SKU platformy Azure.
 

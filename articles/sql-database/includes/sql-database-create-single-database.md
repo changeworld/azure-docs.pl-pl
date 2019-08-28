@@ -5,12 +5,12 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: d19e21edd31be461ba30e8985e80c4651bbbb02d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d4c426c5fe31f8fc2bfaf4697c05456124cafcb1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69894088"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099131"
 ---
 W tym kroku utworzysz Azure SQL Database pojedynczą bazę danych. 
 
@@ -23,7 +23,7 @@ W tym kroku utworzysz Azure SQL Database pojedynczą bazę danych.
 
 Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu Azure Portal.
 
-1. Wybierz pozycję **Azure SQL** w menu po lewej stronie Azure Portal. Jeśli na liście nie ma **usługi Azure SQL** , wybierz pozycję **wszystkie usługi**, a następnie wpisz *SQL Azure* w polu wyszukiwania.
+1. Wybierz pozycję **Azure SQL** w menu po lewej stronie [Azure Portal](https://portal.azure.com). Jeśli na liście nie ma **usługi Azure SQL** , wybierz pozycję **wszystkie usługi**, a następnie wpisz *SQL Azure* w polu wyszukiwania. Obowiązkowe Wybierz gwiazdkę obok pozycji **Azure SQL** , aby ją dodać do ulubionych, i Dodaj ją jako element w nawigacji po lewej stronie. 
 2. Wybierz pozycję **+ Dodaj** , aby otworzyć stronę **Wybieranie opcji wdrożenia SQL** . Aby wyświetlić dodatkowe informacje o różnych bazach danych, wybierz pozycję **Pokaż szczegóły** na kafelku **bazy danych** .
 3. Wybierz pozycję **Utwórz**:
 
@@ -43,7 +43,7 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu Azure Portal.
        - **Nazwa serwera**: Typ `mysqlserver`; wraz z liczbami unikatowymi.
        - **Identyfikator logowania administratora serwera**: Wpisz polecenie `azureuser`.
        - **Hasło**: Wpisz złożone hasło spełniające wymagania dotyczące haseł.
-       - **Lokalizacja**: Wybierz lokalizację z listy rozwijanej, na przykład `West US 2`.
+       - **Lokalizacja**: Wybierz lokalizację z listy rozwijanej, na przykład `West US`.
 
          ![Nowy serwer](../media/sql-database-get-started-portal/new-server.png)
 
@@ -86,7 +86,7 @@ Utwórz grupę zasobów i pojedynczą bazę danych przy użyciu programu PowerSh
    # Set variables for your server and database
    $subscriptionId = '<SubscriptionID>'
    $resourceGroupName = "myResourceGroup-$(Get-Random)"
-   $location = "West US 2"
+   $location = "West US"
    $adminLogin = "azureuser"
    $password = "PWD27!"+(New-Guid).Guid
    $serverName = "mysqlserver-$(Get-Random)"

@@ -1,6 +1,6 @@
 ---
-title: Desired State Configuration dla platformy Azure — omówienie
-description: Dowiedz się, jak używać programu obsługi rozszerzenia Microsoft Azure dla programu PowerShell Desired State Configuration (DSC). Artykuł zawiera wymagania wstępne, architektury oraz poleceń cmdlet.
+title: Konfiguracja żądanego stanu na platformie Azure — omówienie
+description: Dowiedz się, jak używać programu obsługi rozszerzeń Microsoft Azure dla konfiguracji żądanego stanu (DSC) programu PowerShell. Artykuł zawiera wymagania wstępne, architekturę i polecenia cmdlet.
 services: virtual-machines-windows
 documentationcenter: ''
 author: bobbytreed
@@ -10,113 +10,112 @@ tags: azure-resource-manager
 keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 410990ecdca8a94be9c7c3d0b48a5092fcaa6060
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c759567e4d8c183452eccbbdca8459c8993d1361
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66515902"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092417"
 ---
-# <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Wprowadzenie do procedury obsługi rozszerzenia Azure Desired State Configuration
+# <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Wprowadzenie do programu obsługi rozszerzenia konfiguracji żądanego stanu platformy Azure
 
-Agent maszyny Wirtualnej platformy Azure i skojarzonych rozszerzeń są częścią usługi infrastruktury Microsoft Azure. Składniki oprogramowania, które rozszerzyć funkcjonalność maszyny Wirtualnej i uprościć różnych operacji zarządzania maszyny Wirtualnej są rozszerzenia maszyny Wirtualnej.
+Agent maszyny wirtualnej platformy Azure i powiązane rozszerzenia są częścią usług infrastruktury Microsoft Azure. Rozszerzenia maszyn wirtualnych to składniki oprogramowania, które rozszerzają funkcjonalność maszyny wirtualnej i upraszczają różne operacje zarządzania MASZYNami wirtualnymi.
 
-Główny przypadek użycia, rozszerzenie Azure Desired State Configuration (DSC) jest uruchomienie maszyny Wirtualnej w celu [usługi Azure Automation stanu Configuration (DSC)](../../automation/automation-dsc-overview.md).
-Usługa zapewnia [korzyści](/powershell/dsc/metaconfig#pull-service) zawierające bieżące zarządzanie konfiguracji maszyny Wirtualnej i integracji z innymi narzędziami operacyjne, takie jak monitorowania platformy Azure.
-Przy użyciu rozszerzenia można zarejestrować maszyny Wirtualnej z usługą zapewnia elastyczne rozwiązanie, które działa to również między subskrypcjami platformy Azure.
+Podstawowym przypadkiem użycia dla rozszerzenia konfiguracji żądanego stanu (DSC) platformy Azure jest uruchomienie maszyny wirtualnej do [usługi konfiguracji stanu Azure Automation (DSC)](../../automation/automation-dsc-overview.md).
+Usługa oferuje [korzyści](/powershell/dsc/metaconfig#pull-service) , które obejmują bieżące zarządzanie konfiguracją maszyny wirtualnej i integrację z innymi narzędziami operacyjnymi, takimi jak monitorowanie platformy Azure.
+Korzystanie z rozszerzenia do rejestrowania maszyn wirtualnych w usłudze zapewnia elastyczne rozwiązanie, które nawet działa w ramach subskrypcji platformy Azure.
 
-Można użyć rozszerzenia DSC, niezależnie od usługi Automation DSC.
-Jednak to tylko wypchnie konfiguracji do maszyny Wirtualnej.
-Bez ciągłego raportowania jest dostępna, innym niż lokalnie na maszynie Wirtualnej.
+Można użyć rozszerzenia DSC niezależnie od usługi Automation DSC.
+Jednak spowoduje to wypchnięcie konfiguracji tylko do maszyny wirtualnej.
+Żadne bieżące raporty nie są dostępne, inne niż lokalnie na maszynie wirtualnej.
 
-Ten artykuł zawiera informacje o obu scenariuszach: za pomocą rozszerzenia DSC do dołączenia do usługi Automation, a za pomocą rozszerzenia DSC jako narzędzie do przypisywania konfiguracje do maszyn wirtualnych przy użyciu zestawu Azure SDK.
+Ten artykuł zawiera informacje o obu scenariuszach: przy użyciu rozszerzenia DSC na potrzeby dołączania do usługi Automation oraz przy użyciu rozszerzenia DSC jako narzędzia do przypisywania konfiguracji do maszyn wirtualnych przy użyciu zestawu Azure SDK.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **Maszyna lokalna**: Aby wchodzić w interakcje z rozszerzeniem maszyny Wirtualnej platformy Azure, należy użyć witryny Azure portal lub programu Azure PowerShell SDK.
-- **Agent gościa**: Maszyny Wirtualnej platformy Azure, który jest skonfigurowany za pomocą konfiguracji DSC musi być system operacyjny obsługujący zarządzania Windows Framework (WMF) 4.0 lub nowszy. Aby uzyskać pełną listę obsługiwanych wersji systemu operacyjnego, zobacz [historię wersji rozszerzenia DSC](/powershell/dsc/azuredscexthistory).
+- **Komputer lokalny**: Aby móc korzystać z rozszerzenia maszyny wirtualnej platformy Azure, musisz użyć Azure Portal lub zestawu Azure PowerShell SDK.
+- **Agent gościa**: Maszyna wirtualna platformy Azure skonfigurowana za pomocą konfiguracji DSC musi być systemem operacyjnym, który obsługuje system Windows Management Framework (WMF) 4,0 lub nowszy. Aby zapoznać się z pełną listą obsługiwanych wersji systemu operacyjnego, zobacz [historię wersji rozszerzenia DSC](/powershell/dsc/azuredscexthistory).
 
-## <a name="terms-and-concepts"></a>Terminy i pojęcia
+## <a name="terms-and-concepts"></a>Warunki i pojęcia
 
 W tym przewodniku założono znajomość następujących pojęć:
 
 - **Konfiguracja**: Dokument konfiguracji DSC.
-- **Węzeł**: Obiekt docelowy dla konfiguracji DSC. W tym dokumencie *węzła* zawsze odwołuje się do maszyny Wirtualnej platformy Azure.
-- **Dane konfiguracji**: Plik psd1, który ma wpływ dane konfiguracji.
+- **Węzeł**: Obiekt docelowy konfiguracji DSC. W tym dokumencie *węzeł* zawsze odwołuje się do maszyny wirtualnej platformy Azure.
+- **Dane konfiguracji**: Plik. psd1, który zawiera dane dotyczące środowiska konfiguracji.
 
 ## <a name="architecture"></a>Architektura
 
-Rozszerzenie DSC usługi Azure używa framework agenta maszyny Wirtualnej platformy Azure do dostarczania, wprowadź w życie i sporządzić raport na temat konfiguracji DSC uruchomionych na maszynach wirtualnych platformy Azure. Rozszerzenie DSC akceptuje dokumentu konfiguracji, jak i zestaw parametrów. Jeśli plik nie zostanie podany, [domyślne skryptu konfiguracji](#default-configuration-script) jest osadzony z rozszerzeniem. Skrypt konfiguracji domyślnej jest używana tylko po to, aby ustawić metadanych w [Local Configuration Manager](/powershell/dsc/metaconfig).
+Rozszerzenie Azure DSC korzysta z platformy agenta maszyny wirtualnej platformy Azure w celu dostarczania, przyjęcia i raportowania konfiguracji DSC działających na maszynach wirtualnych platformy Azure. Rozszerzenie DSC akceptuje dokument konfiguracji i zestaw parametrów. Jeśli nie podano pliku, [domyślny skrypt konfiguracji](#default-configuration-script) jest osadzony z rozszerzeniem. Domyślny skrypt konfiguracji służy tylko do ustawiania metadanych w [lokalnej Configuration Manager](/powershell/dsc/metaconfig).
 
-Gdy rozszerzenia jest wywoływana po raz pierwszy, instaluje wersję platformy WMF za pomocą następujących reguł:
+Gdy rozszerzenie jest wywoływane po raz pierwszy, instaluje wersję programu WMF przy użyciu następującej logiki:
 
-- System operacyjny maszyny Wirtualnej platformy Azure w przypadku systemu Windows Server 2016, nie podjęto żadnej akcji. System Windows Server 2016 ma już najnowszą wersję programu PowerShell jest zainstalowane.
-- Jeśli **wmfVersion** właściwość zostanie określona, tej wersji programu WMF jest zainstalowany, chyba że ta wersja jest niezgodna z systemem operacyjnym maszyny Wirtualnej.
-- Jeśli nie **wmfVersion** właściwość zostanie określona, jest zainstalowany najnowszy odpowiedniej wersji programu WMF.
+- Jeśli system operacyjny maszyny wirtualnej platformy Azure to Windows Server 2016, nie jest podejmowana żadna akcja. System Windows Server 2016 ma już zainstalowaną najnowszą wersję programu PowerShell.
+- Jeśli zostanie określona właściwość **wmfVersion** , jest zainstalowana ta wersja programu WMF, chyba że ta wersja jest niezgodna z systemem operacyjnym maszyny wirtualnej.
+- Jeśli właściwość **wmfVersion** nie zostanie określona, zostanie zainstalowana najnowsza odpowiednia wersja programu WMF.
 
-Instalowanie programu WMF wymaga ponownego uruchomienia komputera. Po ponownym uruchomieniu komputera, rozszerzenie pliki do pobrania pliku zip, który jest określony w **modulesUrl** właściwość, jeśli podano. Jeśli ta lokalizacja znajduje się w usłudze Azure Blob storage, możesz określić token sygnatury dostępu Współdzielonego w **sasToken** właściwości dostępu do tego pliku. Po pobraniu i rozpakowania .zip, funkcja konfiguracji jest zdefiniowany w **configurationFunction** przebiegów, aby wygenerować plik MOF. Następnie rozszerzenie uruchamia `Start-DscConfiguration -Force` przy użyciu pliku MOF wygenerowany. Rozszerzenie przechwytuje dane wyjściowe i zapisuje go w kanale stanu platformy Azure.
+Instalowanie pakietu WMF wymaga ponownego uruchomienia. Po ponownym uruchomieniu rozszerzenie pobiera plik zip, który jest określony we właściwości **modulesUrl** , jeśli został podany. Jeśli ta lokalizacja znajduje się w usłudze Azure Blob Storage, możesz określić token SAS we właściwości **sasToken** , aby uzyskać dostęp do pliku. Po pobraniu i rozpakowaniu pliku zip funkcja konfiguracji zdefiniowana w **configurationFunction** uruchamia się w celu wygenerowania plik MOF. Rozszerzenie zostanie uruchomione `Start-DscConfiguration -Force` przy użyciu wygenerowanego pliku MOF. Rozszerzenie przechwytuje dane wyjściowe i zapisuje je w kanale stanu platformy Azure.
 
-### <a name="default-configuration-script"></a>Skrypt konfiguracji domyślnej
+### <a name="default-configuration-script"></a>Domyślny skrypt konfiguracji
 
-Rozszerzenie DSC usługi Azure zawiera domyślny skrypt konfiguracyjny, który ma być używany podczas Ci przy dołączeniu maszyny Wirtualnej do usługi Azure Automation DSC. Parametry skryptu są wyrównane konfigurowalne właściwości [Local Configuration Manager](/powershell/dsc/metaconfig). Aby uzyskać Parametry skryptu, zobacz [domyślne skryptu konfiguracji](dsc-template.md#default-configuration-script) w [Desired State Configuration rozszerzenia z szablonami usługi Azure Resource Manager](dsc-template.md). Aby uzyskać pełny skrypt, zobacz [szablonu szybkiego startu platformy Azure w usłudze GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
+Rozszerzenie Azure DSC zawiera domyślny skrypt konfiguracji, który jest przeznaczony do użycia podczas dołączania maszyny wirtualnej do usługi Azure Automation DSC. Parametry skryptu są wyrównane z konfigurowalnymi właściwościami [Configuration Manager lokalnego](/powershell/dsc/metaconfig). Aby poznać parametry skryptu, zobacz [domyślny skrypt konfiguracji](dsc-template.md#default-configuration-script) w [rozszerzeniu konfiguracji żądanego stanu z szablonami Azure Resource Manager](dsc-template.md). Aby zapoznać się z pełnym skryptem, zobacz [szablon szybkiego startu platformy Azure w usłudze GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
 
-## <a name="information-for-registering-with-azure-automation-state-configuration-dsc-service"></a>Informacje dotyczące rejestrowania w usłudze Azure Automation stanu Configuration (DSC)
+## <a name="information-for-registering-with-azure-automation-state-configuration-dsc-service"></a>Informacje dotyczące rejestrowania w usłudze Azure Automation State Configuration (DSC)
 
-Za pomocą rozszerzenia DSC zarejestrowania węzła w usłudze konfiguracji stanu, trzy wartości będą musieli podać.
+W przypadku korzystania z rozszerzenia DSC w celu zarejestrowania węzła z usługą konfiguracji stanu należy podać trzy wartości.
 
-- RegistrationUrl — z adresu https konto usługi Azure Automation
-- RegistrationKey — wspólne hasło używane do rejestrowania węzłów z usługą
-- NodeConfigurationName — nazwa dla węzła konfiguracji (MOF) do ściągania z usługi, aby skonfigurować rolę serwera
+- RegistrationUrl — adres https konta Azure Automation
+- RegistrationKey — wspólny klucz tajny używany do rejestrowania węzłów w usłudze
+- NodeConfigurationName — nazwa konfiguracji węzła (MOF) do ściągnięcia z usługi w celu skonfigurowania roli serwera
 
-Te informacje są widoczne w [witryny Azure portal](../../automation/automation-dsc-onboarding.md#azure-portal) lub użyć programu PowerShell.
+Te informacje mogą być widoczne w [Azure Portal](../../automation/automation-dsc-onboarding.md#azure-portal) lub można użyć programu PowerShell.
 
 ```powershell
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).Endpoint
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
 ```
 
-Nazwa konfiguracji węzła upewnij się, że istnieje konfiguracja węzła w konfiguracji stanu platformy Azure.  Jeśli tak nie jest dostępne, wdrożenie rozszerzenie zwróci błąd.  Upewnij się, czy przy użyciu nazwy również *konfiguracji węzła* i nie konfiguracji.
-Konfiguracja jest zdefiniowany w skrypcie, który jest używany [do kompilacji konfiguracji węzła (plik MOF)](https://docs.microsoft.com/azure/automation/automation-dsc-compile).
-Nazwa będzie zawsze konfiguracji następuje kropka `.` i `localhost` lub określonej nazwy komputera.
+W polu Nazwa konfiguracji węzła upewnij się, że konfiguracja węzła istnieje w obszarze Konfiguracja stanu platformy Azure.  Jeśli tak nie jest, wdrożenie rozszerzenia zwróci błąd.  Upewnij się również, że używasz nazwy *konfiguracji węzła* , a nie konfiguracji.
+Konfiguracja jest definiowana w skrypcie, który jest używany [do kompilowania konfiguracji węzła (plik MOF)](https://docs.microsoft.com/azure/automation/automation-dsc-compile).
+Nazwa będzie zawsze konfiguracją, po której następuje okres `.` i albo `localhost` określona nazwa komputera.
 
-## <a name="dsc-extension-in-resource-manager-templates"></a>Rozszerzenie DSC w szablonach usługi Resource Manager
+## <a name="dsc-extension-in-resource-manager-templates"></a>Rozszerzenie DSC w szablonach Menedżer zasobów
 
-W większości przypadków szablony wdrażania usługi Resource Manager są oczekiwane sposób pracy z rozszerzeniem DSC. Aby uzyskać więcej informacji i przykłady, które mają zostać objęte rozszerzenia DSC szablony wdrażania usługi Resource Manager, zobacz [Desired State Configuration rozszerzenia z szablonami usługi Azure Resource Manager](dsc-template.md).
+W większości scenariuszy Menedżer zasobów szablony wdrażania są oczekiwanym sposobem pracy z rozszerzeniem DSC. Aby uzyskać więcej informacji i zapoznać się z przykładami dotyczącymi sposobu uwzględniania rozszerzenia DSC w szablonach wdrażania Menedżer zasobów, zobacz [rozszerzenie konfiguracji żądanego stanu z szablonami Azure Resource Manager](dsc-template.md).
 
-## <a name="dsc-extension-powershell-cmdlets"></a>Rozszerzenie DSC poleceń cmdlet programu PowerShell
+## <a name="dsc-extension-powershell-cmdlets"></a>Polecenia cmdlet programu PowerShell dla rozszerzenia DSC
 
-Polecenia cmdlet programu PowerShell, które są używane do zarządzania rozszerzenie DSC najlepiej sprawdzają się w interaktywne rozwiązywania problemów i scenariuszy zbierania informacji. Można użyć poleceń cmdlet pakietu, opublikować i monitorować wdrożenia rozszerzenia DSC. Polecenia cmdlet dla rozszerzenia DSC nie są jeszcze zaktualizowane do pracy z [domyślne skryptu konfiguracji](#default-configuration-script).
+Polecenia cmdlet programu PowerShell, które są używane do zarządzania rozszerzeniem DSC, najlepiej używać w scenariuszach interaktywnego rozwiązywania problemów i zbierania informacji. Za pomocą poleceń cmdlet można spakować, opublikować i monitorować wdrożenia rozszerzenia DSC. Polecenia cmdlet dla rozszerzenia DSC nie zostały jeszcze zaktualizowane do pracy z [domyślnym skryptem konfiguracji](#default-configuration-script).
 
-**AzVMDscConfiguration Publikuj** polecenie cmdlet przyjmuje w pliku konfiguracji, szuka zależnych zasobów DSC, a następnie tworzy plik zip. Plik zip zawiera plik konfiguracji i zasobów DSC, które są wymagane do konfiguracji wprowadź w życie. Polecenia cmdlet można również utworzyć pakiet lokalnie, używając *- OutputArchivePath* parametru. W przeciwnym razie polecenie cmdlet publikuje pliku .zip do magazynu obiektów blob i zabezpiecza go przy użyciu tokenu sygnatury dostępu Współdzielonego.
+Polecenie cmdlet **Publish-AzVMDscConfiguration** pobiera plik konfiguracji, skanuje go pod kątem zależnych zasobów DSC, a następnie tworzy plik. zip. Plik. zip zawiera konfigurację i zasoby DSC, które są konieczne do przekonfigurowania. Polecenie cmdlet może również utworzyć pakiet lokalnie za pomocą parametru *-OutputArchivePath* . W przeciwnym razie polecenie cmdlet opublikuje plik zip w usłudze BLOB Storage, a następnie zabezpieczy go za pomocą tokenu SAS.
 
-Skrypt konfiguracyjny ps1, który tworzy polecenie cmdlet znajduje się w pliku zip w katalogu głównym folderu archiwum. Folder modułu jest umieszczana w folderze archiwum w ramach zasobów.
+Skrypt konfiguracji. ps1 tworzony przez polecenie cmdlet znajduje się w pliku zip w folderze głównym folderu archiwum. Folder modułu zostanie umieszczony w folderze Archiwum w obszarze zasoby.
 
-**AzVMDscExtension zestaw** polecenia cmdlet wprowadza ustawienia, które wymaga rozszerzenia DSC programu PowerShell do obiektu konfiguracji maszyny Wirtualnej.
+Polecenie cmdlet **Set-AzVMDscExtension** wprowadza ustawienia wymagane przez rozszerzenie DSC programu PowerShell do obiektu konfiguracji maszyny wirtualnej.
 
-**Get AzVMDscExtension** polecenie cmdlet pobiera stan rozszerzenia DSC określonej maszyny Wirtualnej.
+Polecenie cmdlet **Get-AzVMDscExtension** Pobiera stan rozszerzenia DSC dla określonej maszyny wirtualnej.
 
-**Get AzVMDscExtensionStatus** polecenie cmdlet pobiera stan konfiguracji DSC, która jest wprowadzany przez program obsługi rozszerzenia DSC. Tę akcję można wykonać na jednej maszynie Wirtualnej lub grupy maszyn wirtualnych.
+Polecenie cmdlet **Get-AzVMDscExtensionStatus** Pobiera stan konfiguracji DSC, który został wdrożony przez procedurę obsługi rozszerzenia DSC. Tę akcję można wykonać na jednej maszynie wirtualnej lub w grupie maszyn wirtualnych.
 
-**AzVMDscExtension Usuń** polecenie cmdlet usuwa procedury obsługi rozszerzenia z określonej maszyny Wirtualnej. To polecenie cmdlet jest *nie* usunąć konfigurację, odinstaluj program WMF lub zmienić ustawienia zastosowane na maszynie Wirtualnej. Powoduje tylko usunięcie procedury obsługi rozszerzenia. 
+Polecenie cmdlet **Remove-AzVMDscExtension** usuwa procedurę obsługi rozszerzenia z określonej maszyny wirtualnej. To polecenie cmdlet nie powoduje usunięcia konfiguracji, odinstalowania programu WMF lub zmiany ustawień zastosowanych na maszynie wirtualnej. Powoduje tylko usunięcie procedury obsługi rozszerzenia. 
 
-Ważne informacje na temat poleceń cmdlet rozszerzenia DSC usługi Resource Manager:
+Ważne informacje dotyczące Menedżer zasobów poleceń cmdlet rozszerzenia DSC:
 
-- Polecenia cmdlet usługi Azure Resource Manager są synchroniczne.
-- *ResourceGroupName*, *VMName*, *ArchiveStorageAccountName*, *wersji*, i *lokalizacji*wszystkich wymaganych parametrów.
-- *ArchiveResourceGroupName* jest parametrem opcjonalnym. Ten parametr można określić, kiedy konta magazynu należy do innej grupie zasobów niż ta, której tworzona jest maszyna wirtualna.
-- Użyj **AutoUpdate** przełącznika do automatycznego aktualizowania procedury obsługi rozszerzenia do najnowszej wersji, gdy będzie ona dostępna. Ten parametr może potencjalnie spowodować ponowne uruchomienie na maszynie Wirtualnej, po wydaniu nowej wersji programu WMF.
+- Polecenia cmdlet Azure Resource Manager są synchroniczne.
+- Parametry *ResourceGroupName*, *VMName*, *ArchiveStorageAccountName*, *Version*i *Location* są wymagane.
+- *ArchiveResourceGroupName* jest opcjonalnym parametrem. Ten parametr można określić, jeśli konto magazynu należy do innej grupy zasobów niż ta, w której utworzono maszynę wirtualną.
+- Użyj przełącznika **autoaktualizacje** , aby automatycznie zaktualizować procedurę obsługi rozszerzenia do najnowszej wersji, gdy jest ona dostępna. Ten parametr może spowodować ponowne uruchomienie maszyny wirtualnej po wydaniu nowej wersji programu WMF.
 
 ### <a name="get-started-with-cmdlets"></a>Wprowadzenie do poleceń cmdlet
 
-Rozszerzenie DSC usługi Azure może być bezpośrednio skonfigurować maszyn wirtualnych platformy Azure podczas wdrażania dokumentów konfiguracji DSC. Ten krok nie Zarejestruj węzeł do automatyzacji. Ten węzeł jest *nie* centralnie zarządzanych.
+Rozszerzenie DSC platformy Azure może używać dokumentów konfiguracji DSC do bezpośredniego konfigurowania maszyn wirtualnych platformy Azure podczas wdrażania. Ten krok nie rejestruje węzła do automatyzacji. Węzeł *nie* jest zarządzany centralnie.
 
-Poniższy przykład pokazuje prosty przykład konfiguracji. Zapisz konfigurację lokalnie jako IisInstall.ps1.
+Poniższy przykład pokazuje prosty przykład konfiguracji. Zapisz konfigurację lokalnie jako IisInstall. ps1.
 
 ```powershell
 configuration IISInstall
@@ -132,7 +131,7 @@ configuration IISInstall
 }
 ```
 
-Następujące polecenia umieścić skrypt IisInstall.ps1 na określoną maszynę Wirtualną. Polecenia również wykonać konfiguracji, a następnie raportować o stanie.
+Poniższe polecenia umieszczają skrypt IisInstall. ps1 na określonej maszynie wirtualnej. Polecenia również wykonują konfigurację, a następnie raportują stan ponownie.
 
 ```powershell
 $resourceGroup = 'dscVmDemo'
@@ -146,9 +145,9 @@ Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $
 
 ## <a name="azure-cli-deployment"></a>Wdrażania interfejs wiersza polecenia platformy Azure
 
-Interfejs wiersza polecenia platformy Azure może służyć do wdrażania rozszerzenia DSC do istniejącej maszyny wirtualnej.
+Przy użyciu interfejsu wiersza polecenia platformy Azure można wdrożyć rozszerzenie DSC na istniejącej maszynie wirtualnej.
 
-Dla maszyny wirtualnej z systemem Windows:
+W przypadku maszyny wirtualnej z systemem Windows:
 
 ```azurecli
 az vm extension set \
@@ -160,7 +159,7 @@ az vm extension set \
   --settings '{}'
 ```
 
-Dla maszyny wirtualnej z systemem Linux:
+W przypadku maszyny wirtualnej z systemem Linux:
 
 ```azurecli
 az vm extension set \
@@ -172,40 +171,40 @@ az vm extension set \
   --settings '{}'
 ```
 
-## <a name="azure-portal-functionality"></a>Funkcjonalność portalu platformy Azure
+## <a name="azure-portal-functionality"></a>Funkcja Azure Portal
 
-Aby zdefiniować DSC w portalu
+Aby skonfigurować DSC w portalu:
 
-1. Przejdź do maszyny Wirtualnej.
+1. Przejdź do maszyny wirtualnej.
 2. W obszarze **Ustawienia** wybierz pozycję **Rozszerzenia**.
-3. Nowa strona jest tworzona, wybierz **+ Dodaj**, a następnie wybierz pozycję **PowerShell Desired State Configuration**.
-4. Kliknij przycisk **Utwórz** w dolnej części strony informacji rozszerzenia.
+3. Na utworzonej nowej stronie wybierz pozycję **+ Dodaj**, a następnie wybierz pozycję **Konfiguracja żądanego stanu programu PowerShell**.
+4. Kliknij pozycję **Utwórz** w dolnej części strony informacje o rozszerzeniu.
 
 Portal zbiera następujące dane wejściowe:
 
-- **Moduły konfiguracji lub skrypt**: To pole jest obowiązkowe (formularza nie zostało zaktualizowane dla [domyślne skryptu konfiguracji](#default-configuration-script)). Konfiguracja modułów i skryptów wymagają pliku .ps1, który zawiera skrypt konfiguracji lub plik zip ze skryptem konfiguracji .ps1 w katalogu głównym. Jeśli używasz pliku zip, wszystkimi zasobami zależnymi musi zawierać moduł folderów .zip. Można utworzyć pliku .zip, za pomocą **Publish AzureVMDscConfiguration - OutputArchivePath** polecenia cmdlet, który znajduje się w zestawie SDK programu PowerShell platformy Azure. Plik zip jest przekazywane do magazynu obiektów blob użytkownika i chronione przez tokenu sygnatury dostępu Współdzielonego.
+- **Moduły lub skrypty konfiguracyjne**: To pole jest obowiązkowe (formularz nie został zaktualizowany dla [domyślnego skryptu konfiguracji](#default-configuration-script)). Moduły konfiguracji i skrypty wymagają pliku. ps1, który ma skrypt konfiguracji lub plik zip z skryptem konfiguracyjnym. ps1 w katalogu głównym. Jeśli używasz pliku. zip, wszystkie zasoby zależne muszą być dołączone do folderów modułów w pliku zip. Plik zip można utworzyć za pomocą polecenia cmdlet **Publish-AzureVMDscConfiguration-OutputArchivePath** , które jest zawarte w zestawie SDK Azure PowerShell. Plik zip jest przekazywany do magazynu obiektów BLOB użytkownika i zabezpieczony za pomocą tokenu SAS.
 
-- **Nazwy konfiguracji**: Może zawierać wiele funkcji konfiguracji w pliku .ps1. Wprowadź nazwę skryptu .ps1 konfiguracji, a następnie \\ i nazwą funkcji konfiguracji. Na przykład, jeśli skryptu .ps1 ma configuration.ps1 nazwy i konfiguracji jest **IisInstall**, wprowadź **configuration.ps1\IisInstall**.
+- **Kwalifikowana nazwa modułu konfiguracji**: W pliku. ps1 można uwzględnić wiele funkcji konfiguracyjnych. Wprowadź nazwę skryptu Configuration. ps1, \\ a następnie nazwę funkcji konfiguracji. Na przykład jeśli skrypt. ps1 ma nazwę Configuration. ps1, a konfiguracja to **IisInstall**, wprowadź polecenie **Configuration. ps1\IisInstall**.
 
-- **Argumenty konfiguracji**: Jeśli funkcja Konfiguracja przyjmuje argumenty, należy wprowadzić je w tym miejscu w formacie **argumentName1 = wartość1, argumentName2 = wartość2**. Ten format jest inny format, w której argumenty konfiguracji są akceptowane w poleceń cmdlet programu PowerShell lub szablonów usługi Resource Manager.
+- **Argumenty konfiguracji**: Jeśli funkcja konfiguracji przyjmuje argumenty, wprowadź je w tym miejscu w formacie **argumentName1 = wartość1, argumentName2 = wartość2**. Ten format jest innym formatem, w którym argumenty konfiguracji są akceptowane w poleceniach cmdlet programu PowerShell lub szablonach Menedżer zasobów.
 
-- **Plik PSD1 danych konfiguracji**: To pole jest opcjonalne. Jeśli konfiguracja wymaga pliku danych konfiguracji w psd1, to pole służy do wybierz pole danych, a następnie przekaż go do magazynu obiektów blob użytkownika. Plik danych konfiguracji jest zabezpieczony przez tokenu sygnatury dostępu Współdzielonego w magazynie obiektów blob.
+- **Plik PSD1 danych konfiguracji**: To pole jest opcjonalne. Jeśli konfiguracja wymaga pliku danych konfiguracji w programie. psd1, użyj tego pola, aby wybrać pole danych i przekazać je do magazynu obiektów BLOB użytkownika. Plik danych konfiguracji jest zabezpieczony przez token sygnatury dostępu współdzielonego w magazynie obiektów BLOB.
 
-- **Wersja WMF**: Określa wersję programu Windows Management Framework (WMF), ma być zainstalowany na maszynie Wirtualnej. Ustawienie tej właściwości najnowsze instaluje najnowszą wersję programu WMF. Obecnie jedyną możliwą wartości dla tej właściwości są 4.0, 5.0, 5.1 i najnowszych. Te wartości możliwe jest zależna od aktualizacji. Wartość domyślna to **najnowsze**.
+- **Wersja WMF**: Określa wersję programu Windows Management Framework (WMF), która powinna zostać zainstalowana na maszynie wirtualnej. Ustawienie tej właściwości na Najnowsza spowoduje zainstalowanie najnowszej wersji programu WMF. Obecnie jedyne możliwe wartości tej właściwości to 4,0, 5,0, 5,1 i najnowsze. Te możliwe wartości podlegają aktualizacjom. Wartość domyślna to **Najnowsza**.
 
-- **Zbieranie danych**: Określa, jeśli rozszerzenie zbierać dane telemetryczne. Aby uzyskać więcej informacji, zobacz [zbierania danych rozszerzenia DSC usługi Azure](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/).
+- **Zbieranie danych**: Określa, czy rozszerzenie będzie zbierać dane telemetryczne. Aby uzyskać więcej informacji, zobacz [zbieranie danych rozszerzenia DSC platformy Azure](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/).
 
-- **Wersja**: Określa wersję rozszerzenia DSC do zainstalowania. Aby uzyskać informacje o wersji, zobacz [historię wersji rozszerzenia DSC](/powershell/dsc/azuredscexthistory).
+- **Wersja**: Określa wersję rozszerzenia DSC do zainstalowania. Aby uzyskać informacje na temat wersji, zobacz [historia wersji rozszerzenia DSC](/powershell/dsc/azuredscexthistory).
 
-- **Automatyczne uaktualnienie wersji pomocniczej**: To pole mapuje **AutoUpdate** przełącznika w poleceniach cmdlet i umożliwia rozszerzenie Aby automatycznie zaktualizowana do najnowszej wersji podczas instalacji. **Tak** zleca procedury obsługi rozszerzenia do użycia najnowszej dostępnej wersji i **nie** wymusi **wersji** określony do zainstalowania. Wybieranie ani **tak** ani **nie** jest taka sama, jak wybór **nie**.
+- **Wersja pomocnicza autouaktualnia**: To pole mapuje do przełącznika Autoaktualizacja w poleceniach cmdlet i włącza rozszerzenie do automatycznej aktualizacji do najnowszej wersji podczas instalacji. **Tak** nakazuje programowi obsługi rozszerzenia użycie najnowszej dostępnej wersji, a wartość **nie** spowoduje wymuszenie instalacji określonej **wersji** . Wybranie opcji **tak** nie jest tak samo, jak w przypadku wybrania opcji **nie**.
 
 ## <a name="logs"></a>Dzienniki
 
-Dzienniki dla rozszerzenia są przechowywane w następującej lokalizacji: `C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
+Dzienniki rozszerzenia są przechowywane w następującej lokalizacji:`C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać więcej informacji na temat programu PowerShell DSC, przejdź do [Centrum dokumentacji programu PowerShell](/powershell/dsc/overview).
-- Sprawdź [szablonu usługi Resource Manager dla rozszerzenia DSC](dsc-template.md).
-- Przeglądaj więcej funkcji, w którym można zarządzać za pomocą programu PowerShell DSC, a inne zasoby DSC, [galerii programu PowerShell](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
-- Aby uzyskać szczegółowe informacje o przekazywaniu parametrów poufnych w konfiguracji, zobacz [Zarządzanie poświadczeniami w bezpieczny sposób za pomocą procedury obsługi rozszerzenia DSC](dsc-credentials.md).
+- Aby uzyskać więcej informacji na temat programu PowerShell DSC, przejdź do [centrum dokumentacji programu PowerShell](/powershell/dsc/overview).
+- Zapoznaj się z [szablonem Menedżer zasobów dla rozszerzenia DSC](dsc-template.md).
+- Aby uzyskać więcej funkcji, którymi można zarządzać za pomocą programu PowerShell DSC i więcej zasobów DSC, przejrzyj [galerię programu PowerShell](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
+- Aby uzyskać szczegółowe informacje o przekazywaniu poufnych parametrów do konfiguracji, zobacz [Zarządzanie poświadczeniami bezpiecznie przy użyciu programu obsługi rozszerzeń DSC](dsc-credentials.md).

@@ -1,6 +1,6 @@
 ---
-title: Wymuszanie zabezpieczeń przy użyciu zasad na maszynach wirtualnych z systemem Linux na platformie Azure | Dokumentacja firmy Microsoft
-description: Jak zastosować zasady do Menedżera zasobów systemu Linux maszyny wirtualnej platformy Azure
+title: Wymuszanie zabezpieczeń przy użyciu zasad na maszynach wirtualnych z systemem Linux na platformie Azure | Microsoft Docs
+description: Jak zastosować zasady do maszyny wirtualnej z systemem Azure Resource Manager Linux
 services: virtual-machines-linux
 documentationcenter: ''
 author: singhkays
@@ -11,24 +11,23 @@ ms.assetid: 06778ab4-f8ff-4eed-ae10-26a276fc3faa
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: 0c7b1488921e0708a71caade4599cef367b4b3eb
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: c0399044e1776d10a70cf4bcb1dca8d87e4981c7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667232"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091593"
 ---
-# <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Stosowanie zasad do maszyn wirtualnych systemu Linux przy użyciu usługi Azure Resource Manager
-Za pomocą zasad, organizacja może wymusić różnych konwencji i reguł w całym przedsiębiorstwie. Wymuszanie żądane zachowanie może pomóc w zmniejszeniu ryzyka, przyczyniając się do sukcesu organizacji. W tym artykule opisano sposób można użyć zasad usługi Azure Resource Manager do definiowania żądane zachowanie w przypadku maszyn wirtualnych w organizacji.
+# <a name="apply-policies-to-linux-vms-with-azure-resource-manager"></a>Stosowanie zasad do maszyn wirtualnych z systemem Linux przy użyciu Azure Resource Manager
+Korzystając z zasad, organizacja może wymusić różne konwencje i reguły w całym przedsiębiorstwie. Wymuszanie żądanego zachowania może pomóc w ograniczeniu ryzyka, a tym samym sukcesem organizacji. W tym artykule opisano sposób użycia zasad Azure Resource Managerymi w celu zdefiniowania żądanego zachowania Virtual Machines organizacji.
 
-Wprowadzenie do zasad, zobacz [co to jest usługa Azure Policy?](../../governance/policy/overview.md).
+Aby zapoznać się z wprowadzeniem do zasad, zobacz [co to jest Azure Policy?](../../governance/policy/overview.md).
 
-## <a name="permitted-virtual-machines"></a>Dozwolone maszyn wirtualnych
-Aby upewnić się, że maszyny wirtualne na potrzeby Twojej organizacji są zgodne z aplikacji, można ograniczyć dozwolone systemów operacyjnych. W poniższym przykładzie zasad możesz zezwolić tylko Ubuntu 14.04.2-LTS maszyn wirtualnych ma zostać utworzony.
+## <a name="permitted-virtual-machines"></a>Dozwolone Virtual Machines
+Aby upewnić się, że maszyny wirtualne w organizacji są zgodne z aplikacją, można ograniczyć dozwolone systemy operacyjne. W poniższym przykładzie zasad zezwala się na tworzenie tylko Ubuntu 14.04.2-Virtual Machines LTS.
 
 ```json
 {
@@ -80,7 +79,7 @@ Aby upewnić się, że maszyny wirtualne na potrzeby Twojej organizacji są zgod
 }
 ```
 
-Aby zmodyfikować poprzedni zasady umożliwiające dowolny obraz Ubuntu LTS, należy użyć symbolu wieloznacznego: 
+Użyj symbolu wieloznacznego, aby zmodyfikować powyższe zasady, aby zezwalały na dowolny obraz Ubuntu LTS: 
 
 ```json
 {
@@ -89,11 +88,11 @@ Aby zmodyfikować poprzedni zasady umożliwiające dowolny obraz Ubuntu LTS, nal
 }
 ```
 
-Aby uzyskać informacji o polach zasad, zobacz [aliasy zasad](../../governance/policy/concepts/definition-structure.md#aliases).
+Aby uzyskać informacje o polach zasad, zobacz [aliasy zasad](../../governance/policy/concepts/definition-structure.md#aliases).
 
 ## <a name="managed-disks"></a>Dyski zarządzane
 
-Aby korzystają z dysków zarządzanych, należy użyć następujących zasad:
+Aby wymagać korzystania z dysków zarządzanych, należy użyć następujących zasad:
 
 ```json
 {
@@ -139,11 +138,11 @@ Aby korzystają z dysków zarządzanych, należy użyć następujących zasad:
 }
 ```
 
-## <a name="images-for-virtual-machines"></a>Obrazy maszyn wirtualnych
+## <a name="images-for-virtual-machines"></a>Obrazy dla Virtual Machines
 
-Ze względów bezpieczeństwa może wymagać, że tylko obrazy zatwierdzone przez niestandardowe są wdrażane w środowisku. Można określić albo grupę zasobów, która zawiera obrazy zatwierdzone lub zatwierdzona obrazów.
+Ze względów bezpieczeństwa można wymagać, aby w środowisku wdrożono tylko zatwierdzone obrazy niestandardowe. Można określić grupę zasobów zawierającą zatwierdzone obrazy lub określone zatwierdzone obrazy.
 
-Poniższy przykład wymaga obrazów z grupy zasobów zatwierdzone:
+W poniższym przykładzie są wymagane obrazy z zatwierdzonej grupy zasobów:
 
 ```json
 {
@@ -170,7 +169,7 @@ Poniższy przykład wymaga obrazów z grupy zasobów zatwierdzone:
 } 
 ```
 
-W poniższym przykładzie określono identyfikatorów zatwierdzonym obrazie:
+W poniższym przykładzie określono zatwierdzone identyfikatory obrazu:
 
 ```json
 {
@@ -179,9 +178,9 @@ W poniższym przykładzie określono identyfikatorów zatwierdzonym obrazie:
 }
 ```
 
-## <a name="virtual-machine-extensions"></a>Rozszerzenia maszyn wirtualnych
+## <a name="virtual-machine-extensions"></a>Rozszerzenia maszyny wirtualnej
 
-Możesz chcieć zabraniają użycie niektórych rodzajów rozszerzeń. Na przykład rozszerzenie nie może być zgodne z niektórych obrazy niestandardowych maszyn wirtualnych. Poniższy przykład pokazuje, jak zablokować określone rozszerzenie. Aby określić, które rozszerzenia, aby zablokować używa wydawcy i typu.
+Możesz chcieć zabronić użycia niektórych typów rozszerzeń. Na przykład rozszerzenie może być niezgodne z niektórymi niestandardowymi obrazami maszyn wirtualnych. Poniższy przykład pokazuje, jak zablokować określone rozszerzenie. Używa wydawcy i typu w celu określenia rozszerzenia, które ma zostać zablokowane.
 
 ```json
 {
@@ -210,6 +209,6 @@ Możesz chcieć zabraniają użycie niektórych rodzajów rozszerzeń. Na przyk�
 
 
 ## <a name="next-steps"></a>Następne kroki
-* Po zdefiniowaniu regułę zasad (jak pokazano w poprzednich przykładach), musisz utworzyć definicję zasad i przypisać je do zakresu. Zakres może być subskrypcji, grupy zasobów lub zasobu. Aby przypisać zasady, zobacz [użycia Azure portal, aby przypisać i zarządzaniu zasadami zasobów](../../governance/policy/assign-policy-portal.md), [Użyj programu PowerShell, aby przypisać zasady](../../governance/policy/assign-policy-powershell.md), lub [interfejsu wiersza polecenia użyj Azure, aby przypisać zasady](../../governance/policy/assign-policy-azurecli.md).
-* Wprowadzenie do zasad zasobów, zobacz [co to jest usługa Azure Policy?](../../governance/policy/overview.md).
+* Po zdefiniowaniu reguły zasad (jak pokazano w poprzednich przykładach) należy utworzyć definicję zasad i przypisać ją do zakresu. Zakresem może być subskrypcja, Grupa zasobów lub zasób. Aby przypisać zasady, zobacz [używanie Azure Portal do przypisywania zasad zasobów i zarządzania nimi](../../governance/policy/assign-policy-portal.md), [Używanie programu PowerShell do przypisywania zasad](../../governance/policy/assign-policy-powershell.md)lub [Używanie interfejsu wiersza polecenia platformy Azure do przypisywania zasad](../../governance/policy/assign-policy-azurecli.md).
+* Aby zapoznać się z wprowadzeniem do zasad zasobów, zobacz [co to jest Azure Policy?](../../governance/policy/overview.md).
 * Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).

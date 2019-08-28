@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f97cce2d1a8b2de5634215629ddb997dc8f7196a
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 02dcb7174dd9cb2926ef2fafda4b521b939ae68a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68235199"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70077982"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Grupy umieszczania w pobliżu na platformie Azure w celu zapewnienia optymalnego opóźnienia sieci dla aplikacji SAP
 Aplikacje SAP oparte na architekturze SAP NetWeaver lub SAP S/4HANA są wrażliwe na opóźnienie sieci między warstwą aplikacji SAP a warstwą bazy danych SAP. Powodem tej czułości tych architektur jest odblokowanie w przypadku, gdy większość logiki biznesowej jest wykonywana w warstwie aplikacji. W wyniku wykonania logiki biznesowej warstwa aplikacji SAP wystawia zapytania do warstwy bazy danych o wysokiej częstotliwości tysięcy i dziesiątki tysięcy na sekundę. W większości przypadków charakter tych zapytań jest prosty. Często można je wykonywać w warstwie bazy danych w mniej niż 500 mikrosekundach lub nawet mniej. Czas spędzony na sieci do wysłania takiego zapytania z warstwy aplikacji do warstwy bazy danych i otrzymania z powrotem zestawu wyników z warstwy bazy danych ma znaczny wpływ na czas potrzebny na wykonanie procesów biznesowych. Ta czułość na opóźnienie sieci to czas, jaki należy spełnić w projektach wdrożenia SAP w celu uzyskania optymalnego opóźnienia sieci. W [programie SAP Uwaga #1100926 — często zadawane pytania: Wydajność](https://launchpad.support.sap.com/#/notes/1100926/E)sieci, system SAP opublikował niektóre wskazówki dotyczące klasyfikowania opóźnień sieci.

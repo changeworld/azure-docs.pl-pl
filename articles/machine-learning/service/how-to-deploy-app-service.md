@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 07/01/2019
-ms.openlocfilehash: ada2a19de12c2f3f6b23fcc3d759afb0c747d37d
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 08/27/2019
+ms.openlocfilehash: 889158aeb40cfcbc69291845acfee833af0930b6
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897415"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114294"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Wdróż model uczenia maszynowego w Azure App Service (wersja zapoznawcza)
 
@@ -38,6 +38,7 @@ Aby uzyskać więcej informacji na temat funkcji zapewnianych przez Azure App Se
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Obszar roboczy usługi Azure Machine Learning. Aby uzyskać więcej informacji, zobacz artykuł [Tworzenie obszaru roboczego](how-to-manage-workspace.md) .
+* [Wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Model uczenia maszynowego zarejestrowany w Twoim obszarze roboczym. Jeśli nie masz modelu, Skorzystaj z [samouczka klasyfikacji obrazów: uczenie modelu](tutorial-train-models-with-aml.md) do uczenia i zarejestrowania go.
 
     > [!IMPORTANT]
@@ -97,34 +98,151 @@ Aby uzyskać więcej informacji na temat konfiguracji wnioskowania, zobacz [Wdra
 
 Aby utworzyć obraz platformy Docker wdrożony w Azure App Service, użyj [modelu model. Package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-). Poniższy fragment kodu przedstawia sposób tworzenia nowego obrazu z konfiguracji modelu i wnioskowania:
 
+> [!NOTE]
+> W fragmencie kodu założono `model` , że zawiera zarejestrowany model `inference_config` i zawiera konfigurację środowiska wnioskowania. Aby uzyskać więcej informacji, zobacz [Wdrażanie modeli za pomocą usługi Azure Machine Learning](how-to-deploy-and-where.md).
+
 ```python
+from azureml.core import Model
+
 package = Model.package(ws, [model], inference_config)
 package.wait_for_creation(show_output=True)
+# Display the package location/ACR path
+print(package.location)
 ```
 
-Gdy `show_output=True`są wyświetlane dane wyjściowe procesu kompilacji platformy Docker. Po zakończeniu procesu obraz został utworzony w Azure Container Registry dla obszaru roboczego.
+Gdy `show_output=True`są wyświetlane dane wyjściowe procesu kompilacji platformy Docker. Po zakończeniu procesu obraz został utworzony w Azure Container Registry dla obszaru roboczego. Po skompilowaniu obrazu zostanie wyświetlona lokalizacja w Azure Container Registry. Zwrócona Lokalizacja ma format `<acrinstance>.azurecr.io/package:<imagename>`. Na przykład `myml08024f78fd10.azurecr.io/package:20190827151241`.
+
+> [!IMPORTANT]
+> Zapisz informacje o lokalizacji, ponieważ są używane podczas wdrażania obrazu.
 
 ## <a name="deploy-image-as-a-web-app"></a>Wdrażanie obrazu jako aplikacji sieci Web
 
-1. Na [Azure Portal](https://portal.azure.com)wybierz obszar roboczy Azure Machine Learning. W sekcji __Przegląd__ Użyj linku __rejestru__ , aby uzyskać dostęp do Azure Container Registry obszaru roboczego.
+1. Użyj poniższego polecenia, aby uzyskać poświadczenia logowania dla Azure Container Registry zawierającej obraz. Zamień `<acrinstance>` na wartość e zwracaną wcześniej z `package.location`: 
 
-    [![Zrzut ekranu przedstawiający przegląd obszaru roboczego](media/how-to-deploy-app-service/workspace-overview.png)](media/how-to-deploy-app-service/workspace-overview-expanded.png)
+    ```azurecli-interactive
+    az acr credential show --name <myacr>
+    ```
 
-2. Z Azure Container Registry wybierz pozycję __repozytoria__, a następnie wybierz __nazwę obrazu__ , który chcesz wdrożyć. Dla wersji, którą chcesz wdrożyć, wybierz pozycję __...__ , a następnie __Wdróż ją w aplikacji sieci Web__.
+    Dane wyjściowe tego polecenia są podobne do następującego dokumentu JSON:
 
-    [![Zrzut ekranu przedstawiający wdrażanie z ACR do aplikacji sieci Web](media/how-to-deploy-app-service/deploy-to-web-app.png)](media/how-to-deploy-app-service/deploy-to-web-app-expanded.png)
+    ```json
+    {
+    "passwords": [
+        {
+        "name": "password",
+        "value": "Iv0lRZQ9762LUJrFiffo3P4sWgk4q+nW"
+        },
+        {
+        "name": "password2",
+        "value": "=pKCxHatX96jeoYBWZLsPR6opszr==mg"
+        }
+    ],
+    "username": "myml08024f78fd10"
+    }
+    ```
 
-3. Aby utworzyć aplikację sieci Web, podaj nazwę witryny, subskrypcję, grupę zasobów, a następnie wybierz pozycję plan/Lokalizacja usługi App Service. Na koniec wybierz pozycję __Utwórz__.
+    Zapisz wartość dla __nazwy użytkownika__ i jednego z __haseł__.
 
-    ![Zrzut ekranu przedstawiający okno dialogowe Nowa aplikacja sieci Web](media/how-to-deploy-app-service/web-app-for-containers.png)
+1. Jeśli nie masz jeszcze grupy zasobów lub planu usługi App Service do wdrożenia usługi, następujące polecenia pokazują, jak utworzyć obie:
+
+    ```azurecli-interactive
+    az group create --name myresourcegroup --location "West Europe"
+    az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
+    ```
+
+    W tym przykładzie jest używana __podstawowa__ warstwa cenowa`--sku B1`().
+
+    > [!IMPORTANT]
+    > Obrazy utworzone przez usługę Azure Machine Learning korzystają z systemu Linux, dlatego należy użyć `--is-linux` parametru.
+
+1. Aby utworzyć aplikację sieci Web, użyj następującego polecenia. Zamień `<app-name>` na nazwę, której chcesz użyć. Zamień `<acrinstance>` `package.location` i `<imagename>` na wartości zwracane wcześniej:
+
+    ```azurecli-interactive
+    az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
+    ```
+
+    To polecenie zwraca informacje podobne do następującego dokumentu JSON:
+
+    ```json
+    { 
+    "adminSiteName": null,
+    "appServicePlanName": "myplanname",
+    "geoRegion": "West Europe",
+    "hostingEnvironmentProfile": null,
+    "id": "/subscriptions/0000-0000/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/myplanname",
+    "kind": "linux",
+    "location": "West Europe",
+    "maximumNumberOfWorkers": 1,
+    "name": "myplanname",
+    < JSON data removed for brevity. >
+    "targetWorkerSizeId": 0,
+    "type": "Microsoft.Web/serverfarms",
+    "workerTierName": null
+    }
+    ```
+
+    > [!IMPORTANT]
+    > W tym momencie aplikacja sieci Web została utworzona. Jednak ponieważ nie podano poświadczeń do Azure Container Registry, które zawierają obraz, aplikacja sieci Web nie jest aktywna. W następnym kroku podajesz informacje o uwierzytelnianiu dla rejestru kontenerów.
+
+1. Aby zapewnić aplikacji sieci Web poświadczenia potrzebne do uzyskania dostępu do rejestru kontenerów, użyj następującego polecenia. Zamień `<app-name>` na nazwę, której chcesz użyć. Zamień `<acrinstance>` `package.location` i `<imagename>` na wartości zwracane wcześniej. Zamień `<username>` i`<password>` na pobrane wcześniej informacje logowania ACR:
+
+    ```azurecli-interactive
+    az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
+    ```
+
+    To polecenie zwraca informacje podobne do następującego dokumentu JSON:
+
+    ```json
+    [
+    {
+        "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
+        "slotSetting": false,
+        "value": "false"
+    },
+    {
+        "name": "DOCKER_REGISTRY_SERVER_URL",
+        "slotSetting": false,
+        "value": "https://myml08024f78fd10.azurecr.io"
+    },
+    {
+        "name": "DOCKER_REGISTRY_SERVER_USERNAME",
+        "slotSetting": false,
+        "value": "myml08024f78fd10"
+    },
+    {
+        "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
+        "slotSetting": false,
+        "value": null
+    },
+    {
+        "name": "DOCKER_CUSTOM_IMAGE_NAME",
+        "value": "DOCKER|myml08024f78fd10.azurecr.io/package:20190827195524"
+    }
+    ]
+    ```
+
+W tym momencie aplikacja sieci Web rozpocznie ładowanie obrazu.
+
+> [!IMPORTANT]
+> Załadowanie obrazu może potrwać kilka minut. Aby monitorować postęp, użyj następującego polecenia:
+>
+> ```azurecli-interactive
+> az webapp log tail --name <app-name> --resource-group myresourcegroup
+> ```
+>
+> Po załadowaniu obrazu, gdy lokacja jest aktywna, w dzienniku zostanie wyświetlony komunikat z informacją `Container <container name> for site <app-name> initialized successfully and is ready to serve requests`o stanie.
+
+Po wdrożeniu obrazu można znaleźć nazwę hosta za pomocą następującego polecenia:
+
+```azurecli-interactive
+az webapp show --name <app-name> --resource-group myresourcegroup
+```
+
+To polecenie zwraca informacje podobne do następującej nazwy hosta `<app-name>.azurewebsites.net`. Użyj tej wartości jako części __podstawowego adresu URL__ usługi.
 
 ## <a name="use-the-web-app"></a>Korzystanie z aplikacji sieci Web
 
-W [Azure Portal](https://portal.azure.com)wybierz aplikację sieci Web utworzoną w poprzednim kroku. W sekcji __Przegląd__ Skopiuj __adres URL__. Ta wartość jest __podstawowym adresem URL__ usługi.
-
-[![Zrzut ekranu przedstawiający przegląd aplikacji sieci Web](media/how-to-deploy-app-service/web-app-overview.png)](media/how-to-deploy-app-service/web-app-overview-expanded.png)
-
-Usługa sieci Web, która przekazuje żądania do modelu, znajduje się `{baseurl}/score`w lokalizacji. Na przykład `https://mywebapp.azurewebsites.net/score`. Poniższy kod w języku Python pokazuje, jak przesłać dane do adresu URL i wyświetlić odpowiedź:
+Usługa sieci Web, która przekazuje żądania do modelu, znajduje się `{baseurl}/score`w lokalizacji. Na przykład `https://<app-name>.azurewebsites.net/score`. Poniższy kod w języku Python pokazuje, jak przesłać dane do adresu URL i wyświetlić odpowiedź:
 
 ```python
 import requests
@@ -134,8 +252,6 @@ scoring_uri = "https://mywebapp.azurewebsites.net/score"
 
 headers = {'Content-Type':'application/json'}
 
-print(headers)
-    
 test_sample = json.dumps({'data': [
     [1,2,3,4,5,6,7,8,9,10],
     [10,9,8,7,6,5,4,3,2,1]

@@ -7,19 +7,18 @@ author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 01001336e166d5eb2c7dff845b80da2174225a25
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 24404d6b55f83f96d8e2601afd35b2dec00cc7e9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234428"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099731"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>Architektura sieci SAP HANA (duże wystąpienia)
 
@@ -76,7 +75,7 @@ Różnice dotyczące wdrożeń SAP na platformie Azure:
 
 W przypadku poprawki 3 sygnatury dużych wystąpień platformy HANA opóźnienie sieci między maszynami wirtualnymi i jednostkami dużych wystąpień platformy HANA może być większe niż typowe opóźnienie rundy sieci maszyny wirtualnej na maszynę wirtualną. W zależności od regionu świadczenia usługi Azure mierzone wartości mogą przekroczyć czas oczekiwania na 0,7 MS, sklasyfikowany poniżej poniżej średniej [w programie SAP Uwaga #1100926 — często zadawane pytania: Wydajność](https://launchpad.support.sap.com/#/notes/1100926/E)sieci. Zależnie od regionu i narzędzia platformy Azure do mierzenia opóźnienia sieci między MASZYNami wirtualnymi platformy Azure i jednostką dużego wystąpienia HANA mierzone opóźnienie może wynosić maksymalnie 2 milisekund. Niemniej jednak klienci wdrażają aplikacje SAP oparte na SAP HANA na SAP HANA dużym wystąpieniu. Pamiętaj o gruntownym przetestowaniu procesów firmy w dużym wystąpieniu platformy Azure HANA. Nowe funkcje, o nazwie ExpressRoute Fast Path, umożliwiają zredukowanie opóźnienia sieci między dużymi wystąpieniami i maszynami wirtualnymi aplikacji platformy Azure w znacznym stopniu (patrz poniżej). 
 
-W przypadku poprawki 4 sygnatur dużego wystąpienia usługi Hana opóźnienie sieci między maszynami wirtualnymi platformy Azure wdrożonymi w sąsiedztwie z sygnaturą dużego wystąpienia Hana jest zgodne ze średnią lub lepszą niż średnia klasyfikacja, jak [opisano w temacie SAP Note # 1100926 — CZĘSTO ZADAWANE PYTANIA: Wydajność](https://launchpad.support.sap.com/#/notes/1100926/E) sieci w przypadku skonfigurowania szybkiej ścieżki usługi Azure ExpressRoute (patrz poniżej). Aby można było wdrażać maszyny wirtualne platformy Azure w pobliżu jednostek z dużą ilością wystąpień w wersji HANA 4, należy skorzystać z [grup umieszczania usługi Azure zbliżeniowe](https://docs.microsoft.com/azure/virtual-machines/linux/co-location). Sposób, w jaki można używać grup umieszczania zbliżeniowe do lokalizowania warstwy aplikacji SAP w tym samym centrum danych platformy Azure, ponieważ wersja 4 hostowanych jednostek dużego wystąpienia HANA jest opisana w [grupach umieszczania bliskości platformy Azure w celu uzyskania optymalnego opóźnienia sieci przy użyciu aplikacji SAP ](sap-proximity-placement-scenarios.md).
+W przypadku poprawki 4 sygnatury dużych wystąpień usługi Hana opóźnienie sieci między maszynami wirtualnymi platformy Azure wdrożonymi w sąsiedztwie z sygnaturą dużego wystąpienia Hana jest zgodne ze średnią lub lepszą niż średnia Klasyfikacja zgodnie [z opisem w temacie SAP Uwaga #1100926 — CZĘSTO ZADAWANE PYTANIA: Wydajność](https://launchpad.support.sap.com/#/notes/1100926/E) sieci w przypadku skonfigurowania szybkiej ścieżki usługi Azure ExpressRoute (patrz poniżej). Aby można było wdrażać maszyny wirtualne platformy Azure w pobliżu jednostek z dużą ilością wystąpień w wersji HANA 4, należy skorzystać z [grup umieszczania usługi Azure zbliżeniowe](https://docs.microsoft.com/azure/virtual-machines/linux/co-location). Sposób, w jaki można używać grup umieszczania zbliżeniowe do lokalizowania warstwy aplikacji SAP w tym samym centrum danych platformy Azure, ponieważ wersja 4 hostowanych jednostek dużego wystąpienia HANA jest opisana w [grupach umieszczania bliskości platformy Azure w celu uzyskania optymalnego opóźnienia sieci przy użyciu aplikacji SAP ](sap-proximity-placement-scenarios.md).
 
 Aby zapewnić niejednoznaczne opóźnienie sieci między maszynami wirtualnymi i usługą HANA, wybór jednostki SKU bramy ExpressRoute jest istotny. W przeciwieństwie do wzorców ruchu między środowiskiem lokalnym i maszynami wirtualnymi, wzorzec ruchu między maszynami wirtualnymi i dużym wystąpieniem HANA może tworzyć małe, ale wysokie obciążenia żądań i woluminów danych do przesłania. W celu obsługi takich serii zdecydowanie zalecamy użycie jednostki SKU bramy UltraPerformance. W przypadku klasy typu II jednostek SKU o dużej instancji HANA użycie jednostki SKU bramy UltraPerformance jako bramy ExpressRotue jest obowiązkowe.
 
@@ -173,7 +172,7 @@ Aby uzyskać więcej informacji na temat pobierania ExpressRoute Global Reach, P
 
 
 ## <a name="internet-connectivity-of-hana-large-instance"></a>Łączność internetowa z dużym wystąpieniem HANA
-Duże wystąpienie HANA nie *ma* bezpośredniej łączności z Internetem. To ograniczenie może na przykład ograniczyć możliwość rejestrowania obrazu systemu operacyjnego bezpośrednio z dostawcą systemu operacyjnego. Może być konieczne skontaktowanie się z lokalnym serwerem narzędzi do zarządzania subskrypcjami SUSE Linux Enterprise Server lub Red Hat Enterprise Linux.
+Duże wystąpienie HANA nie ma bezpośredniej łączności z Internetem. To ograniczenie może na przykład ograniczyć możliwość rejestrowania obrazu systemu operacyjnego bezpośrednio z dostawcą systemu operacyjnego. Może być konieczne skontaktowanie się z lokalnym serwerem narzędzi do zarządzania subskrypcjami SUSE Linux Enterprise Server lub Red Hat Enterprise Linux.
 
 ## <a name="data-encryption-between-vms-and-hana-large-instance"></a>Szyfrowanie danych między maszynami wirtualnymi i dużym wystąpieniem HANA
 Dane przesyłane między dużymi wystąpieniami HANA i maszynami wirtualnymi nie są szyfrowane. Jednak w przypadku wymiany między aplikacjami platformy HANA DBMS i JDBC/ODBC można włączyć szyfrowanie ruchu. Aby uzyskać więcej informacji, zobacz [tę dokumentację w systemie SAP](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false).
