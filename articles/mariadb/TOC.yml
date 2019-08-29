@@ -89,6 +89,10 @@
           href: concepts-read-replicas.md
 - name: Przewodniki z instrukcjami
   items:
+    - name: Zarządzanie serwerem
+      items:
+        - name: Portal Azure
+          href: howto-create-manage-server-portal.md
     - name: Reguły zapory
       items:
         - name: Portal Azure
@@ -123,6 +127,8 @@
       items:
         - name: Portal Azure
           href: howto-auto-grow-storage-portal.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: howto-auto-grow-storage-cli.md
     - name: Dzienniki dostępu serwera
       items:
         - name: Dzienniki wolnych zapytań

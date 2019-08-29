@@ -127,8 +127,6 @@
           href: security-center-install-endpoint-protection.md
         - name: Funkcja oceny luk w zabezpieczeniach nie jest zainstalowana
           href: security-center-vulnerability-assessment-recommendations.md
-        - name: Włączanie sieciowych grup zabezpieczeń
-          href: security-center-enable-network-security-groups.md
         - name: Raporty na temat zagrożeń
           href: security-center-threat-report.md
         - name: Alerty niestandardowe
@@ -143,8 +141,6 @@
           href: security-center-investigation-user-data.md
         - name: Elementy playbook usługi Logic Apps
           href: security-center-playbooks.md
-        - name: Wyświetlanie zdarzeń
-          href: security-center-events-dashboard.md
         - name: Wyszukiwanie
           href: security-center-search.md
         - name: Planowanie i operacje
