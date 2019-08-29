@@ -1,6 +1,6 @@
 ---
-title: Tworzenie nazwy FQDN dla maszyny Wirtualnej z systemem Windows w witrynie Azure portal | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć w pełni kwalifikowaną nazwę domeny lub nazwę FQDN dla Menedżera zasobów na podstawie maszyny wirtualnej w witrynie Azure portal.
+title: Tworzenie nazwy FQDN dla maszyny wirtualnej z systemem Windows w Azure Portal | Microsoft Docs
+description: Informacje na temat tworzenia w pełni kwalifikowanej nazwy domeny lub nazwy FQDN dla Menedżer zasobów maszyny wirtualnej opartej na Azure Portal.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -9,33 +9,32 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: a2ae5887-76df-485e-ae19-0efd96df8600
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48ad63cb39218f099d9128dae379c7df105764b9
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: c86e2739efd951ad9274f2fa0829b9fd7e13e3e5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723027"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102597"
 ---
-# <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>Tworzenie w pełni kwalifikowanej nazwy domeny w witrynie Azure portal dla maszyny Wirtualnej z systemem Windows
+# <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>Tworzenie w pełni kwalifikowanej nazwy domeny w Azure Portal dla maszyny wirtualnej z systemem Windows
 
-Po utworzeniu maszyny wirtualnej (VM) w [witryny Azure portal](https://portal.azure.com), zasób publicznego adresu IP dla maszyny wirtualnej jest tworzony automatycznie. Ten adres IP umożliwia zdalny dostęp do maszyny Wirtualnej. Mimo że nie tworzy portalu [w pełni kwalifikowaną nazwę domeny](https://en.wikipedia.org/wiki/Fully_qualified_domain_name), lub w pełni kwalifikowaną nazwę domeny, możesz utworzyć je po utworzeniu maszyny Wirtualnej. W tym artykule przedstawiono kroki, aby utworzyć nazwę DNS lub nazwę FQDN.
+Podczas tworzenia maszyny wirtualnej w [Azure Portal](https://portal.azure.com)zostanie automatycznie utworzony publiczny zasób IP dla maszyny wirtualnej. Ten adres IP jest używany do zdalnego uzyskiwania dostępu do maszyny wirtualnej. Mimo że portal nie tworzy w [pełni kwalifikowanej nazwy domeny](https://en.wikipedia.org/wiki/Fully_qualified_domain_name)lub nazwy FQDN, można utworzyć jedną po utworzeniu maszyny wirtualnej. W tym artykule przedstawiono procedurę tworzenia nazwy DNS lub FQDN.
 
-## <a name="create-a-fqdn"></a>Tworzenie nazwy FQDN
-W tym artykule założono, że już utworzono Maszynę wirtualną. Jeśli to konieczne, możesz [Utwórz Maszynę wirtualną w portalu](quick-create-portal.md) lub [przy użyciu programu Azure PowerShell](quick-create-powershell.md). Gdy maszyna wirtualna jest uruchomiona, wykonaj następujące kroki:
+## <a name="create-a-fqdn"></a>Utwórz nazwę FQDN
+W tym artykule przyjęto założenie, że maszyna wirtualna została już utworzona. W razie konieczności można [utworzyć maszynę wirtualną w portalu](quick-create-portal.md) lub [za pomocą Azure PowerShell](quick-create-powershell.md). Wykonaj następujące kroki, gdy maszyna wirtualna jest uruchomiona:
 
 [!INCLUDE [virtual-machines-common-portal-create-fqdn](../../../includes/virtual-machines-common-portal-create-fqdn.md)]
 
-Zapewnia teraz możliwość połączenia zdalne z maszyną wirtualną przy użyciu tej nazwy DNS takich jak dla protokołu RDP (Remote Desktop).
+Teraz można połączyć się zdalnie z maszyną wirtualną przy użyciu tej nazwy DNS, takiej jak dla Remote Desktop Protocol (RDP).
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz, że maszyna wirtualna ma nazwę publicznego adresu IP i systemu DNS, można wdrożyć typowych struktur aplikacji lub usług, takich jak usługi IIS, SQL lub programu SharePoint.
+Teraz, gdy maszyna wirtualna ma publiczny adres IP i nazwę DNS, można wdrażać typowe struktury aplikacji lub usługi, takie jak IIS, SQL lub SharePoint.
 
-Można również poczytać więcej o [przy użyciu usługi Resource Manager](../../azure-resource-manager/resource-group-overview.md) zawiera porady na temat tworzenia wdrożeń platformy Azure.
+Więcej informacji na temat korzystania z [Menedżer zasobów](../../azure-resource-manager/resource-group-overview.md) można znaleźć w tematach dotyczących tworzenia wdrożeń platformy Azure.
 

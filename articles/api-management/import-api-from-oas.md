@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: apimpm
-ms.openlocfilehash: a2d71330dcdac7054b20e0a6222b542fd8815705
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: b96cfe9813eef9caf1f1f21e43470a23c7032cb1
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849557"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072125"
 ---
 # <a name="import-an-openapi-specification"></a>Importowanie specyfikacji interfejsu OpenAPI
 
@@ -62,13 +61,13 @@ Wykonaj procedury przedstawione w następującym przewodniku Szybki start: [Twor
 4. Wybierz pozycję **Utwórz**.
 
 > [!NOTE]
-> Ograniczenia importu interfejsu API są udokumentowane w artykule [inny artykuł](api-management-api-import-restrictions.md).
+> Ograniczenia importu interfejsu API są udokumentowane w [innym artykule](api-management-api-import-restrictions.md).
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Testowanie nowego interfejsu API usługi APIM w witrynie Azure Portal
 
 Operacje mogą być wywoływane bezpośrednio z witryny Azure Portal, która zapewnia wygodny sposób wyświetlania i testowania operacji interfejsu API.
 
-![Testowanie interfejsu API](./media/api-management-get-started/01-import-first-api-01.png)
+![Testuj interfejs API](./media/api-management-get-started/01-import-first-api-01.png)
 
 1. Wybierz interfejs API utworzony w poprzednim kroku.
 2. Naciśnij kartę **Test**.
@@ -103,7 +102,7 @@ Operacje mogą być również wywoływane z **portalu dla deweloperów** w celu 
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Przekształcanie i ochrona opublikowanego interfejsu API](transform-api.md)

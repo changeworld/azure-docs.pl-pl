@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: eff827937adbae7cfdfdd86392593df8d698053c
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 134483764ffcb012ece0769a514683fc9487887f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241819"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073626"
 ---
 # <a name="create-and-publish-a-product"></a>Tworzenie i publikowanie produktu  
 
@@ -48,17 +47,17 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
     Podczas dodawania produktu należy podać następujące informacje: 
 
-    | Name (Nazwa)                     | Opis                                                                                                                                                                                                                                                                                                             |
+    | Name                     | Opis                                                                                                                                                                                                                                                                                                             |
     |--------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | `Display name`             | Nazwa, która ma być wyświetlana w **portalu deweloperów**.                                                                                                                                                                                                                                                        |
-    | Name (Nazwa)                     | Opisowa nazwa produktu.                                                                                                                                                                                                                                                                                      |
+    | Nazwa wyświetlana             | Nazwa, która ma być wyświetlana w **portalu deweloperów**.                                                                                                                                                                                                                                                        |
+    | Name                     | Opisowa nazwa produktu.                                                                                                                                                                                                                                                                                      |
     | Opis              | W polu **Opis** możliwe jest podanie szczegółów dotyczących produktu, takich jak jego przeznaczenie, interfejsy API, do których zapewnia dostęp, oraz innych przydatnych informacji.                                                                                                                                               |
-    | Stan                    | Naciśnij pozycję **Opublikowano**, jeśli chcesz opublikować produkt. Aby możliwe było wywołanie interfejsów API w produkcie, produkt musi zostać najpierw opublikowany. Domyślnie nowe produkty są nieopublikowane i widoczne tylko dla użytkowników w grupie **Administratorzy**.                                                                                      |
+    | State                    | Naciśnij pozycję **Opublikowano**, jeśli chcesz opublikować produkt. Aby możliwe było wywołanie interfejsów API w produkcie, produkt musi zostać najpierw opublikowany. Domyślnie nowe produkty są nieopublikowane i widoczne tylko dla użytkowników w grupie **Administratorzy**.                                                                                      |
     | Wymaga subskrypcji    | Zaznacz pole wyboru **Wymaga subskrypcji**, jeśli do używania produktu wymagane jest, aby użytkownik przeprowadził subskrypcję.                                                                                                                                                                                                                                   |
     | Wymaga zatwierdzenia        | Zaznacz pole wyboru **Wymagaj zatwierdzenia**, jeśli chcesz, aby administrator przeglądał i akceptował lub odrzucał próby subskrypcji tego produktu. Jeśli to pole wyboru nie jest zaznaczone, próby subskrypcji będą zatwierdzane automatycznie.                                                                                                                         |
     | Limit liczby subskrypcji | Aby ograniczyć liczby wielu równoczesnych subskrypcji, wprowadź limit subskrypcji.                                                                                                                                                                                                                                |
     | Postanowienia prawne              | Możesz uwzględnić warunki użytkowania produktu, które jego subskrybenci muszą zaakceptować, aby z niego korzystać.                                                                                                                                                                                                             |
-    | Interfejsy API                     | Produkty to skojarzenia co najmniej jednego interfejsu API. Możesz uwzględnić wiele interfejsów API i zaoferować je deweloperom za pośrednictwem portalu deweloperów. <br/> Podczas tworzenia produktu możesz dodać istniejący interfejs API. Interfejs API możesz dodać do produktu później — z poziomu strony **Ustawienia** produktów lub podczas jego tworzenia. |
+    | interfejsy API                     | Produkty to skojarzenia co najmniej jednego interfejsu API. Możesz uwzględnić wiele interfejsów API i zaoferować je deweloperom za pośrednictwem portalu deweloperów. <br/> Podczas tworzenia produktu możesz dodać istniejący interfejs API. Interfejs API możesz dodać do produktu później — z poziomu strony **Ustawienia** produktów lub podczas jego tworzenia. |
 
 3. Kliknij pozycję **Utwórz**, aby utworzyć nowy produkt.
 
@@ -88,7 +87,7 @@ Przed uzyskaniem dostępu do interfejsu API deweloperzy muszą najpierw zasubskr
 > [!TIP]
 > Można utworzyć lub zaktualizować subskrypcję użytkownika do poziomu *produktu* przy użyciu niestandardowych kluczy subskrypcji [za pośrednictwem interfejsu API REST](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/subscription/createorupdate) lub polecenia programu PowerShell.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

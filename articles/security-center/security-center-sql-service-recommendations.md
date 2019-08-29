@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 0704db7444756fb44c5587ae8e8e743f671c9dcc
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 5f34f5e0c622ff107da880d9a4a77c63568b63b0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907948"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100939"
 ---
 # <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Ochrona usług Azure Data and Storage w Azure Security Center
 W tym temacie pokazano, jak wyświetlać i implementować zalecenia dotyczące zabezpieczeń danych i zasobów magazynu. Azure Security Center te zalecenia podczas analizowania stanu zabezpieczeń zasobów platformy Azure.
@@ -78,7 +78,6 @@ Na tej stronie można:
 Aby dowiedzieć się więcej o zaleceniach dotyczących innych typów zasobów platformy Azure, zobacz następujące tematy:
 
 * [Ochrona maszyn i aplikacji w usłudze Azure Security Center](security-center-virtual-machine-protection.md)
-* [Ochrona aplikacji w usłudze Azure Security Center](security-center-application-recommendations.md)
 * [Ochrona sieci w usłudze Azure Security Center](security-center-network-recommendations.md)
 
 Aby dowiedzieć się więcej na temat Security Center, zobacz następujące tematy:

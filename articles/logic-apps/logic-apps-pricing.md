@@ -9,12 +9,12 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: e1285f6bc3bd081eae03cf1e5a124a86cac7a2ae
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 62b96fa8722408aed81e87cb31218140fa4f5da8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335993"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099410"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Model cen dla Azure Logic Apps
 
@@ -61,7 +61,7 @@ Dowiedz się więcej o tym, jak rozliczenia działają dla [wyzwalaczy](#trigger
 
   * **Jednostka SKU dla deweloperów**: Maksymalnie 4 więcej kont standardowych lub maksymalnie 5 standardowych kont Standard. Brak kont podstawowych.
 
-Aby uzyskać więcej informacji na temat limitów kont integracji, zobacz [Logic Apps limity i konfiguracja](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Więcej informacji na temat [warstw kont integracji i ich modelu cen](#integration-accounts) można znaleźć w dalszej części tego tematu. 
+Aby uzyskać więcej informacji na temat limitów kont integracji, zobacz [Logic Apps limity i konfiguracja](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Więcej informacji na temat [warstw kont integracji i ich modelu cen](#integration-accounts) można znaleźć w dalszej części tego tematu.
 
 W przypadku jednostki SKU ISE Premium jednostka podstawowa ma stałą pojemność, więc jeśli potrzebujesz większej przepływności, możesz [dodać więcej jednostek skalowania](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)podczas tworzenia lub później. Jednostka SKU ISE dewelopera nie ma możliwości dodawania większej liczby jednostek skalowania. Aplikacje logiki, które działają w ISE, nie wiążą się z kosztami przechowywania danych.
 
@@ -142,9 +142,9 @@ Aby ułatwić monitorowanie użycia magazynu aplikacji logiki, możesz:
 
 1. W Azure Portal Znajdź i Otwórz aplikację logiki.
 
-1. Z menu aplikacji logiki w obszarze **monitorowanie**wybierz pozycję metryki .
+1. Z menu aplikacji logiki w obszarze **monitorowanie**wybierz pozycję metryki.
 
-1. W okienku po prawej stronie w obszarze **tytuł wykresu**z listy Metryka  wybierz pozycję **użycie rozliczenia dla wykonań zużycia magazynu**.
+1. W okienku po prawej stronie w obszarze **tytuł wykresu**z listy Metryka wybierz pozycję **użycie rozliczenia dla wykonań zużycia magazynu**.
 
    Ta Metryka zapewnia liczbę jednostek zużycia magazynu w GB miesięcznie, w których są naliczane opłaty.
 

@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/28/2018
+ms.date: 08/29/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: df57faad770b252228b6c55d4caff775acfe3594
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f0a58382b9825a7b32aee69c00b9801d1c77251a
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60192939"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114632"
 ---
 # <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Samouczek: Filtrowanie ruchu przychodzącego za pomocą funkcji DNAT usługi Azure Firewall przy użyciu witryny Azure Portal
 
@@ -42,7 +42,7 @@ W tym samouczku utworzysz dwie sieci wirtualne połączone przy użyciu komunika
 3. W polu **Nazwa grupy zasobów** wpisz **RG-DNAT-Test**.
 4. W polu **Subskrypcja** wybierz subskrypcję.
 5. W polu **Lokalizacja grupy zasobów** wybierz lokalizację. Wszystkie kolejne zasoby, które utworzysz, muszą znajdować się w tej samej lokalizacji.
-6. Kliknij pozycję **Utwórz**.
+6. Kliknij przycisk **Utwórz**.
 
 ## <a name="set-up-the-network-environment"></a>Konfigurowanie środowiska sieciowego
 
@@ -52,7 +52,7 @@ Najpierw utwórz sieci wirtualne, a następnie połącz je przy użyciu komunika
 
 1. Na stronie głównej witryny Azure Portal kliknij pozycję **Wszystkie usługi**.
 2. W obszarze **Sieć** kliknij pozycję **Sieci wirtualne**.
-3. Kliknij pozycję **Add** (Dodaj).
+3. Kliknij przycisk **Dodaj**.
 4. W polu **Nazwa** wpisz wartość **VN-Hub**.
 5. W polu **Przestrzeń adresowa** wpisz wartość **10.0.0.0/16**.
 6. W polu **Subskrypcja** wybierz subskrypcję.
@@ -62,15 +62,16 @@ Najpierw utwórz sieci wirtualne, a następnie połącz je przy użyciu komunika
 
      Zapora będzie znajdować się w tej podsieci, a nazwą podsieci **musi** być AzureFirewallSubnet.
      > [!NOTE]
-     > Minimalny rozmiar podsieci AzureFirewallSubnet to /26.
-10. W polu **Zakres adresów** wpisz wartość **10.0.1.0/24**.
+     > Rozmiar podsieci AzureFirewallSubnet to/26. Aby uzyskać więcej informacji o rozmiarze podsieci, zobacz [często zadawane pytania dotyczące zapory platformy Azure](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+
+10. W obszarze **zakres adresów**wpisz **10.0.1.0/26**.
 11. Użyj innych domyślnych ustawień, a następnie kliknij przycisk **Utwórz**.
 
 ### <a name="create-a-spoke-vnet"></a>Tworzenie sieci wirtualnej będącej szprychą
 
 1. Na stronie głównej witryny Azure Portal kliknij pozycję **Wszystkie usługi**.
 2. W obszarze **Sieć** kliknij pozycję **Sieci wirtualne**.
-3. Kliknij pozycję **Add** (Dodaj).
+3. Kliknij przycisk **Dodaj**.
 4. W polu **Nazwa** wpisz wartość **VN-Spoke**.
 5. W polu **Przestrzeń adresowa** wpisz wartość **192.168.0.0/16**.
 6. W polu **Subskrypcja** wybierz subskrypcję.
@@ -90,7 +91,7 @@ Teraz połącz sieci wirtualne przy użyciu komunikacji równorzędnej.
 
 1. Kliknij sieć wirtualną **VN-Hub**.
 2. W obszarze **Ustawienia** kliknij przycisk **Komunikacje równorzędne**.
-3. Kliknij pozycję **Add** (Dodaj).
+3. Kliknij przycisk **Dodaj**.
 4. Jako nazwę wpisz **Peer-HubSpoke**.
 5. Jako sieć wirtualną wybierz **VN-Spoke**.
 6. Kliknij przycisk **OK**.
@@ -99,13 +100,13 @@ Teraz połącz sieci wirtualne przy użyciu komunikacji równorzędnej.
 
 1. Kliknij sieć wirtualną **VN-Spoke**.
 2. W obszarze **Ustawienia** kliknij przycisk **Komunikacje równorzędne**.
-3. Kliknij pozycję **Add** (Dodaj).
+3. Kliknij przycisk **Dodaj**.
 4. Jako nazwę wpisz **Peer-SpokeHub**.
 5. Jako sieć wirtualną wybierz **VN-Hub**.
 6. Kliknij pozycję **Zezwalaj na ruch przesłany dalej**.
 7. Kliknij przycisk **OK**.
 
-## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
+## <a name="create-a-virtual-machine"></a>Utwórz maszynę wirtualną
 
 Utwórz maszynę wirtualną obciążenia i umieść ją w podsieci **SN-Workload**.
 
@@ -125,7 +126,7 @@ Utwórz maszynę wirtualną obciążenia i umieść ją w podsieci **SN-Workload
 **Rozmiar**
 
 1. Wybierz odpowiedni rozmiar dla testowej maszyny wirtualnej z systemem Windows Server. Na przykład **B2ms** (8 GB pamięci RAM, 16 GB magazynu).
-2. Kliknij pozycję **Wybierz**.
+2. Kliknij przycisk **wybierz**.
 
 **Ustawienia**
 
@@ -150,11 +151,11 @@ Po zakończeniu wdrożenia zanotuj prywatny adres IP maszyny wirtualnej. Posłu�
 
    |Ustawienie  |Wartość  |
    |---------|---------|
-   |Name (Nazwa)     |FW-DNAT-test|
-   |Subskrypcja     |\<Twoja subskrypcja\>|
-   |Grupa zasobów     |**Użyj istniejącej**: RG DNAT testu |
-   |Lokalizacja     |Wybierz tę samą lokalizację, której użyto poprzednio|
-   |Wybieranie sieci wirtualnej     |**Użyj istniejącej**: VN-Hub|
+   |Name     |FW-DNAT-test|
+   |Subscription     |\<Twoja subskrypcja\>|
+   |Resource group     |**Użyj istniejącej**: RG-DNAT-test |
+   |Location     |Wybierz tę samą lokalizację, której użyto poprzednio|
+   |Wybierz sieć wirtualną     |**Użyj istniejącej**: VN — Hub|
    |Publiczny adres IP     |**Utwórz nową**. Publiczny adres IP musi mieć typ Standardowa jednostka SKU.|
 
 5. Kliknij pozycję **Przegląd + utwórz**.
@@ -170,12 +171,12 @@ Na potrzeby podsieci **SN-Workload** skonfiguruj trasę domyślną ruchu wychodz
 
 1. Na stronie głównej witryny Azure Portal kliknij pozycję **Wszystkie usługi**.
 2. W obszarze **Sieć** kliknij pozycję **Tabele tras**.
-3. Kliknij pozycję **Add** (Dodaj).
+3. Kliknij przycisk **Dodaj**.
 4. W polu **Nazwa** wpisz **RT-FWroute**.
 5. W polu **Subskrypcja** wybierz subskrypcję.
 6. W obszarze **Grupa zasobów** wybierz pozycję **Użyj istniejącej**, a następnie wybierz pozycję **RG-DNAT-Test**.
 7. W polu **Lokalizacja** wybierz tę samą lokalizację, która była używana poprzednio.
-8. Kliknij pozycję **Utwórz**.
+8. Kliknij przycisk **Utwórz**.
 9. Kliknij pozycję **Odśwież**, a następnie kliknij tabelę tras **RT-FWroute**.
 10. Kliknij pozycję **Podsieci**, a następnie kliknij pozycję **Skojarz**.
 11. Kliknij pozycję **Sieć wirtualna**, a następnie wybierz pozycję **VN-Spoke**.
@@ -204,7 +205,7 @@ Na potrzeby podsieci **SN-Workload** skonfiguruj trasę domyślną ruchu wychodz
 10. W polu **Porty docelowe** wpisz **3389**. 
 11. W polu **Przekształcony adres** wpisz prywatny adres IP maszyny wirtualnej Srv-Workload. 
 12. W polu **Przekształcony port** wpisz **3389**. 
-13. Kliknij pozycję **Add** (Dodaj). 
+13. Kliknij przycisk **Dodaj**. 
 
 ## <a name="test-the-firewall"></a>Testowanie zapory
 
@@ -215,7 +216,7 @@ Na potrzeby podsieci **SN-Workload** skonfiguruj trasę domyślną ruchu wychodz
 
 Możesz zachować zasoby zapory na potrzeby kolejnego samouczka, a jeśli nie będą już potrzebne, możesz usunąć grupę zasobów **RG-DNAT-Test**, aby usunąć wszystkie zasoby związane z zaporą.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

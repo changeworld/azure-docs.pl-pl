@@ -3,15 +3,15 @@ title: Wykonywanie zapytań dla kontenerów w usłudze Azure Cosmos DB
 description: Dowiedz się, jak wykonywać zapytania dla kontenerów w usłudze Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: cf14e005de3710f26bfdbab7cc0dac87e0cf000e
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 799fa43ad6ff12e5fa84326cbb41842e76daff12
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243750"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092966"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Wykonywanie zapytania dotyczącego kontenera usługi Azure Cosmos
 
@@ -32,7 +32,7 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
 
 Poniższe zapytanie nie ma filtra klucza partycji (`DeviceId`) i jest rozsyłane do wszystkich partycji, w których jest uruchamiane względem indeksu partycji. Aby uruchomić zapytanie w partycjach, ustaw `EnableCrossPartitionQuery` na wartość true (lub `x-ms-documentdb-query-enablecrosspartition` w interfejsie API REST).
 
-Właściwość EnableCrossPartitionQuery przyjmuje wartość logiczną. Jeśli zapytanie nie ma klucza partycji, to — w przypadku ustawienia wartości true — usługa Azure Cosmos DB przekazuje zapytanie do partycji. Pojedyncze zapytania są wysyłane do wszystkich partycji. Można odczytać wyników zapytania, aplikacje klienckie powinny używać wyników z FeedResponse, a następnie wyszukaj właściwość ContinuationToken. Aby odczytać wszystkie wyniki, należy przeprowadzać iteracje na danych do momentu przybrania wartości null przez właściwość ContinuationToken. 
+Właściwość EnableCrossPartitionQuery przyjmuje wartość logiczną. Jeśli zapytanie nie ma klucza partycji, to — w przypadku ustawienia wartości true — usługa Azure Cosmos DB przekazuje zapytanie do partycji. Pojedyncze zapytania są wysyłane do wszystkich partycji. Aby odczytać wyniki zapytania, aplikacje klienckie powinny używać wyników z FeedResponse i sprawdzać właściwość ContinuationToken. Aby odczytać wszystkie wyniki, należy przeprowadzać iteracje na danych do momentu przybrania wartości null przez właściwość ContinuationToken. 
 
 ```csharp
 // Query across partition keys into a class called, DeviceReading
@@ -65,7 +65,7 @@ Możesz zarządzać równoległym wykonywaniem zapytań przez dostrojenie nastę
 
 Jeśli kolekcja ma taki sam stan, zapytanie równoległe zwraca wyniki w tej samej kolejności jak wykonanie szeregowe. W przypadku wykonywania zapytań między partycjami, które uwzględniają operatory sortowania (ORDER BY, TOP), zestaw SDK usługi Azure Cosmos DB uruchamia zapytanie równolegle w partycjach. Powoduje to scalenie częściowo posortowanych wyników po stronie klienta w celu wygenerowania globalnie uporządkowanych wyników.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zobacz następujące artykuły, aby dowiedzieć się więcej na temat partycjonowania w usłudze Azure Cosmos DB:
 

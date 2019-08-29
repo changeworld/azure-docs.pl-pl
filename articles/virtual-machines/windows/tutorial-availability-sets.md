@@ -11,17 +11,16 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d9e3fc52b9cdf5126cb8d58778a59b8e8691f80a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b943a4476a6b0d639353816337deea96eb14fe24
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708148"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101701"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Samouczek: tworzenie i wdrażanie maszyn wirtualnych o wysokiej dostępności za pomocą programu Azure PowerShell
 
@@ -38,7 +37,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="availability-set-overview"></a>Zestaw dostępności — omówienie
 
-Zestaw dostępności to funkcja grupowania logicznego izolowania zasoby maszyn wirtualnych od siebie, gdy są one wdrażane. Platforma Azure zapewnia, że maszyny wirtualne umieszczone w zestawie dostępności korzystają z wielu serwerów fizycznych, regałów obliczeniowych, jednostek magazynowych i przełączników sieciowych. Ewentualna awaria sprzętu lub oprogramowania ma wpływ tylko na podzestaw maszyn wirtualnych, a całe rozwiązanie nadal działa. Zestawy dostępności są niezbędne do tworzenia niezawodnych rozwiązań w chmurze.
+Zestaw dostępności to logiczna funkcja grupowania umożliwiająca izolowanie zasobów maszyn wirtualnych od siebie podczas ich wdrażania. Platforma Azure zapewnia, że maszyny wirtualne umieszczone w zestawie dostępności korzystają z wielu serwerów fizycznych, regałów obliczeniowych, jednostek magazynowych i przełączników sieciowych. Ewentualna awaria sprzętu lub oprogramowania ma wpływ tylko na podzestaw maszyn wirtualnych, a całe rozwiązanie nadal działa. Zestawy dostępności są niezbędne do tworzenia niezawodnych rozwiązań w chmurze.
 
 Rozważmy typowe rozwiązanie z użyciem maszyn wirtualnych, obejmujące cztery serwery internetowe frontonu oraz 2 maszyny wirtualne zaplecza. Przed wdrożeniem maszyn wirtualnych na platformie Azure należałoby w takim przypadku zdefiniować dwa zestawy dostępności: jeden dla warstwy internetowej, a drugi dla warstwy zaplecza. Podczas tworzenia nowej maszyny wirtualnej należy określić zestaw dostępności jako parametr. Platforma Azure zapewnia, że maszyny wirtualne są izolowane na wielu fizycznych zasobach sprzętowych. W przypadku problemu ze sprzętem fizycznym, na którym uruchomiono jeden z serwerów, masz pewność, że pozostałe wystąpienia serwerów będą nadal działać, ponieważ korzystają z innego sprzętu.
 
@@ -129,7 +128,7 @@ Możesz także uzyskać dodatkowe informacje na temat sposobów poprawy dostępn
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com), wybierz pozycję **Wszystkie usługi**, a następnie wpisz **Advisor**. Pulpit nawigacyjny usługi Advisor będzie zawierać spersonalizowane zalecenia dotyczące wybranej subskrypcji. Aby uzyskać więcej informacji, zobacz [Wprowadzenie do usługi Azure Advisor](../../advisor/advisor-get-started.md).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

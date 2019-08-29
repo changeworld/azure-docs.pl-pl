@@ -1,6 +1,6 @@
 ---
-title: Przykład zasad zarządzania Azure interfejsu API — ustaw czas odpowiedzi w pamięci podręcznej | Dokumentacja firmy Microsoft
-description: Przykład zasady zarządzania Azure interfejsu API — pokazuje, jak ustawić czas trwania pamięci podręcznej odpowiedź przy użyciu wartości maxAge w nagłówku Cache-Control wysłane przez wewnętrznej bazy danych...
+title: Przykładowy czas trwania pamięci podręcznej odpowiedzi dla zasad usługi Azure API Management Microsoft Docs
+description: Przykład zasad usługi Azure API Management — pokazuje, jak ustawić czas trwania pamięci podręcznej odpowiedzi przy użyciu wartości maxAge w nagłówku kontroli pamięci podręcznej wysłanej przez zaplecze.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,30 +9,29 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 042fab72da2d4b890314b6ee9c7237241b492fba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67d2f334e2088d96543fabd3b99cac71d95630eb
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859162"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071970"
 ---
-# <a name="set-response-cache-duration"></a>Ustaw czas buforowania odpowiedzi
+# <a name="set-response-cache-duration"></a>Ustaw czas trwania pamięci podręcznej odpowiedzi
 
-W tym artykule przedstawiono przykładowy zasady zarządzania interfejsem API usługi Azure, który demonstruje, jak ustawić czas trwania pamięci podręcznej odpowiedź przy użyciu wartości maxAge w nagłówku Cache-Control wysłane przez zaplecze. Można ustawiać lub edytować kod zasad, wykonaj czynności opisane w [zestawu lub Edytuj zasady](../set-edit-policies.md). Aby wyświetlić inne przykłady, zobacz [Przykłady zasad](../policy-samples.md).
+W tym artykule przedstawiono przykład zasad usługi Azure API Management, który pokazuje, jak ustawić czas trwania pamięci podręcznej odpowiedzi przy użyciu wartości maxAge w nagłówku kontroli pamięci podręcznej wysłanej przez zaplecze. Aby ustawić lub edytować kod zasad, wykonaj kroki opisane w sekcji [Ustawianie lub edytowanie zasad](../set-edit-policies.md). Aby zapoznać się z innymi przykładami, zobacz [przykłady zasad](../policy-samples.md).
 
 ## <a name="policy"></a>Zasady
 
-Wklej kod do **dla ruchu przychodzącego** bloku.
+Wklej kod do bloku **przychodzącego** .
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Set cache duration using response cache control header.policy.xml)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat usługi APIM zasad:
+Dowiedz się więcej na temat zasad APIMymi:
 
 + [Zasady transformacji](../api-management-transformation-policies.md)
 + [Przykłady zasad](../policy-samples.md)

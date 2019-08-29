@@ -1,6 +1,6 @@
 ---
-title: Hosting o dużej gęstości za pomocą aplikacji skalowanie — w usłudze Azure App Service | Dokumentacja firmy Microsoft
-description: Hosting o dużej gęstości w usłudze Azure App Service
+title: Hosting o wysokiej gęstości przy użyciu skalowania dla aplikacji — Azure App Service | Microsoft Docs
+description: Hosting o dużej gęstości na Azure App Service
 author: btardif
 manager: erikre
 editor: ''
@@ -10,37 +10,36 @@ ms.assetid: a903cb78-4927-47b0-8427-56412c4e3e64
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 824abbdfd1b3980b419e6d6c46814bb0318adf13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7130c9547e0778ce40a0ad1c1ea41607a02df23e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602334"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088102"
 ---
-# <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Hosting o dużej gęstości w usłudze Azure App Service przy użyciu skalowania dla aplikacji
+# <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Hosting o dużej gęstości na Azure App Service przy użyciu skalowania dla aplikacji
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Korzystając z usługi App Service, możesz skalować swoje aplikacje przy użyciu skalowania [planu usługi App Service](overview-hosting-plans.md) działają one na. Gdy wiele aplikacji są uruchamiane w tym samym planie usługi App Service, każdego wystąpienia skalowanego uruchamia wszystkie aplikacje w planie.
+W przypadku korzystania z App Service można skalować aplikacje, skalowanie [App Service planu](overview-hosting-plans.md) , w którym są uruchamiane. Gdy wiele aplikacji jest uruchomionych w tym samym planie App Service, każde wystąpienie skalowane w poziomie uruchamia wszystkie aplikacje w planie.
 
-*Skalowanie aplikacji* można włączyć na poziomie plan usługi App Service umożliwia skalowanie aplikacji niezależnie od planu usługi App Service, który ją obsługuje. W ten sposób można skalować do 10 wystąpień planu usługi App Service, ale można ustawić aplikację do używania tylko pięciu.
+*Skalowanie dla aplikacji* można włączyć na poziomie planu App Service, aby umożliwić skalowanie aplikacji niezależnie od planu App Service, który go obsługuje. W ten sposób plan App Service można skalować do 10 wystąpień, ale aplikacja może być ustawiona tak, aby korzystała tylko z pięciu.
 
 > [!NOTE]
-> Skalowanie aplikacji jest dostępna tylko w przypadku **standardowa**, **Premium**, **warstwa Premium V2** i **izolowany** warstw cenowych.
+> Skalowanie dla aplikacji jest dostępne tylko dla warstwy cenowej **standardowa**, **Premium**, **Premium v2** i **izolowanych** .
 >
 
-Aplikacje są przydzielane do dostępnych planu usługi App Service przy użyciu najlepszym rozwiązaniem nakład pracy równe rozproszenie w wystąpieniach. Podczas dystrybucji nie ma żadnej gwarancji, platformy będzie upewnij się, że dwa wystąpienia tej samej aplikacji nie będą obsługiwane przez to samo wystąpienie planu usługi App Service.
+Aplikacje są przydzieleni do dostępnego planu App Service przy użyciu najlepszego podejścia do równomiernego rozkładu między wystąpieniami. Chociaż dystrybucja parzysta nie jest gwarantowana, platforma sprawdzi, czy dwa wystąpienia tej samej aplikacji nie będą hostowane w tym samym wystąpieniu App Serviceego planu.
 
-Platforma nie zależą od metryki, aby decyzję w sprawie alokacji procesu roboczego. Aplikacje są ponownie zbilansowana tylko wtedy, gdy wystąpienia są dodawane lub usuwane z planu usługi App Service.
+Platforma nie polega na metrykach, które decydują o alokacji procesów roboczych. Aplikacje są ponownie rozbilansowane tylko wtedy, gdy wystąpienia są dodawane lub usuwane z planu App Service.
 
-## <a name="per-app-scaling-using-powershell"></a>Dla aplikacji, skalowanie przy użyciu programu PowerShell
+## <a name="per-app-scaling-using-powershell"></a>Skalowanie na aplikację przy użyciu programu PowerShell
 
-Tworzenie planu z poszczególnych aplikacji skalowania, przekazując ```-PerSiteScaling $true``` parametr ```New-AzAppServicePlan``` polecenia cmdlet.
+Utwórz plan z skalowaniem dla aplikacji, przekazując ```-PerSiteScaling $true``` parametr ```New-AzAppServicePlan``` do polecenia cmdlet.
 
 ```powershell
 New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
@@ -49,7 +48,7 @@ New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
                             -NumberofWorkers 5 -PerSiteScaling $true
 ```
 
-Włącz Skalowanie z istniejący Plan usługi App Service przez przekazanie aplikacji `-PerSiteScaling $true` parametr ```Set-AzAppServicePlan``` polecenia cmdlet.
+Włącz skalowanie dla aplikacji za pomocą istniejącego planu App Service, przekazując `-PerSiteScaling $true` parametr ```Set-AzAppServicePlan``` do polecenia cmdlet.
 
 ```powershell
 # Enable per-app scaling for the App Service Plan using the "PerSiteScaling" parameter.
@@ -57,9 +56,9 @@ Set-AzAppServicePlan -ResourceGroupName $ResourceGroup `
    -Name $AppServicePlan -PerSiteScaling $true
 ```
 
-Na poziomie aplikacji skonfiguruj liczbę wystąpień, które aplikacja może używać w ramach planu usługi App Service.
+Na poziomie aplikacji Skonfiguruj liczbę wystąpień, z których aplikacja może korzystać w planie App Service.
 
-W poniższym przykładzie aplikacja jest ograniczona do dwóch wystąpień, niezależnie od tego, ile wystąpień podstawowy plan usługi app service, skaluje się.
+W poniższym przykładzie aplikacja jest ograniczona do dwóch wystąpień, niezależnie od liczby wystąpień, do których jest skalowany plan usługi App Service.
 
 ```powershell
 # Get the app we want to configure to use "PerSiteScaling"
@@ -73,16 +72,16 @@ Set-AzWebApp $newapp
 ```
 
 > [!IMPORTANT]
-> `$newapp.SiteConfig.NumberOfWorkers` różni się od `$newapp.MaxNumberOfWorkers`. Używa skalowania dla aplikacji `$newapp.SiteConfig.NumberOfWorkers` do określania cech skalowania aplikacji.
+> `$newapp.SiteConfig.NumberOfWorkers`różni się od `$newapp.MaxNumberOfWorkers`. Skalowanie dla aplikacji używa `$newapp.SiteConfig.NumberOfWorkers` do określania charakterystyki skali aplikacji.
 
-## <a name="per-app-scaling-using-azure-resource-manager"></a>Skalowanie poszczególnych aplikacji, za pomocą usługi Azure Resource Manager
+## <a name="per-app-scaling-using-azure-resource-manager"></a>Skalowanie dla aplikacji za pomocą Azure Resource Manager
 
-Tworzy następującego szablonu usługi Azure Resource Manager:
+Poniższy szablon Azure Resource Manager tworzy:
 
-- Plan usługi App Service, która będzie skalowana w poziomie do 10 wystąpień
-- Aplikacja, która jest skonfigurowana do skalowania do maksymalnie pięć wystąpień.
+- Plan App Service, który jest skalowany do 10 wystąpień
+- aplikacja, która jest skonfigurowana do skalowania do maksymalnie pięciu wystąpień.
 
-Plan usługi App Service jest ustawienie **PerSiteScaling** właściwości na wartość true `"perSiteScaling": true`. Aplikacja jest ustawienie **liczba procesów roboczych** służące do 5 `"properties": { "numberOfWorkers": "5" }`.
+W planie App Service jest ustawiana wartość true `"perSiteScaling": true`dla właściwości PerSiteScaling. Aplikacja ustawia **liczbę procesów roboczych** , które mają być używane do 5 `"properties": { "numberOfWorkers": "5" }`.
 
 ```json
 {
@@ -131,21 +130,21 @@ Plan usługi App Service jest ustawienie **PerSiteScaling** właściwości na wa
 }
 ```
 
-## <a name="recommended-configuration-for-high-density-hosting"></a>Zalecana konfiguracja hosting o dużej gęstości
+## <a name="recommended-configuration-for-high-density-hosting"></a>Zalecana konfiguracja dla hostingu o wysokiej gęstości
 
-Na skalowanie aplikacji to funkcja, która jest włączona w obu globalnych regionów platformy Azure i [środowisk usługi App Service](environment/app-service-app-service-environment-intro.md). Jednak zalecaną strategią jest korzystanie z zalet ich zaawansowane funkcje i większą pojemność planu usługi App Service przy użyciu środowisk usługi App Service.  
+Skalowanie na aplikację to funkcja, która jest włączona zarówno w globalnych regionach platformy Azure, jak i w [środowiskach App Service](environment/app-service-app-service-environment-intro.md). Jednak zalecaną strategią jest korzystanie z App Service środowiska, aby korzystać z zaawansowanych funkcji i większych App Service planu.  
 
-Wykonaj następujące kroki, aby skonfigurować hosting o dużej gęstości dla aplikacji:
+Wykonaj następujące kroki, aby skonfigurować hosting o wysokiej gęstości dla aplikacji:
 
-1. Wyznaczanie plan usługi App Service o wysokiej gęstości planu i skalować ją na żądaną wydajność.
-1. Ustaw `PerSiteScaling` flagi na wartość true w planie usługi App Service.
-1. Nowe aplikacje zostały utworzone i przypisane do tego planu usługi App Service przy użyciu **numberOfWorkers** właściwością **1**.
-   - Za pomocą tej konfiguracji daje najwyższy gęstość możliwe.
-1. Liczba procesów roboczych, które można niezależnie konfigurować na aplikację, aby udzielić dodatkowych zasobów, zgodnie z potrzebami. Na przykład:
-   - Można ustawić aplikacji obciążonym **numberOfWorkers** do **3** zapewnienie większej pojemności przetwarzania dla danej aplikacji.
-   - Ustawiał niskiego użycia aplikacje **numberOfWorkers** do **1**.
+1. Wyznacz plan App Service jako plan o wysokiej gęstości i Skaluj go do żądanej pojemności.
+1. `PerSiteScaling` Ustaw flagę na wartość true w planie App Service.
+1. Nowe aplikacje są tworzone i przypisywane do tego planu App Service z właściwością **numberOfWorkers** ustawioną na **1**.
+   - Użycie tej konfiguracji daje najwyższą możliwą gęstość.
+1. Liczbę procesów roboczych można skonfigurować niezależnie dla każdej aplikacji, aby udzielić dodatkowych zasobów zgodnie z wymaganiami. Na przykład:
+   - Aplikacja o wysokiej wydajności może ustawić **numberOfWorkers** na **3** w celu zapewnienia większej pojemności przetwarzania dla tej aplikacji.
+   - Aplikacje o niskim użyciu spowodują ustawienie **numberOfWorkers** na **1**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Szczegółowe omówienie planów usługi Azure App Service](overview-hosting-plans.md)
+- [Szczegółowe omówienie planów Azure App Service](overview-hosting-plans.md)
 - [Wprowadzenie do usługi App Service Environment](environment/app-service-app-service-environment-intro.md)

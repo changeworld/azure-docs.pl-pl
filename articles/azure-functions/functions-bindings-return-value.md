@@ -1,36 +1,35 @@
 ---
-title: Przy użyciu wartości zwracanej z funkcji platformy Azure
-description: Dowiedz się, jak zarządzać wartości zwracane dla usługi Azure Functions
+title: Używanie wartości zwracanej z funkcji platformy Azure
+description: Dowiedz się, jak zarządzać zwracanymi wartościami dla Azure Functions
 services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 03cf85ab12a8f64d639c09db5ea75002b258aa84
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1ea7ec0444ba80d3494afba77ad9d7fdabd5f982
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480280"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086425"
 ---
-# <a name="using-the-azure-function-return-value"></a>Przy użyciu wartości zwracanej funkcji platformy Azure
+# <a name="using-the-azure-function-return-value"></a>Korzystanie z wartości zwracanej przez funkcję platformy Azure
 
-W tym artykule opisano sposób zwrócenia wartości pracy wewnątrz funkcji.
+W tym artykule opisano sposób działania zwracanych wartości wewnątrz funkcji.
 
-W przypadku języków, które mają wartość zwracaną można powiązać funkcji [powiązania danych wyjściowych](./functions-triggers-bindings.md#binding-direction) zwracaną wartość:
+W językach, które mają wartość zwracaną, można powiązać [powiązanie danych wyjściowych](./functions-triggers-bindings.md#binding-direction) funkcji z wartością zwracaną:
 
-* W języku C# biblioteki klas należy zastosować atrybut wiązania danych wyjściowych na wartość zwracaną metody.
-* W innych językach, należy ustawić `name` właściwość *function.json* do `$return`.
+* W bibliotece C# klas zastosuj atrybut wynik powiązania do wartości zwracanej przez metodę.
+* W innych językach Ustaw `name` właściwość w *Function. JSON* na. `$return`
 
-W przypadku wielu powiązania danych wyjściowych, użyj wartości zwracanej tylko dla jednego z nich.
+Jeśli istnieje wiele powiązań wyjściowych, użyj wartości zwracanej tylko dla jednego z nich.
 
-W języku C# i skrypt języka C#, są alternatywne sposoby wysyłania danych do powiązania danych wyjściowych `out` parametrów i [obiektów modułu zbierającego](functions-reference-csharp.md#writing-multiple-output-values).
+W C# skryptach i C# alternatywnym sposobem wysyłania danych do powiązania wyjściowego są `out` parametry i [obiekty modułów zbierających](functions-reference-csharp.md#writing-multiple-output-values).
 
-Zobacz przykład specyficzny dla języka, przedstawiający użycie zwracanej wartości:
+Zobacz przykład specyficzny dla języka przedstawiający użycie wartości zwracanej:
 
 * [C#](#c-example)
 * [Skryptu C# (csx)](#c-script-example)
@@ -38,9 +37,9 @@ Zobacz przykład specyficzny dla języka, przedstawiający użycie zwracanej war
 * [JavaScript](#javascript-example)
 * [Python](#python-example)
 
-## <a name="c-example"></a>Przykład w języku C#
+## <a name="c-example"></a>C#przyklad
 
-W tym C# kod, który używa wartość zwracaną dla powiązania danych wyjściowych, następuje przykład async:
+Tutaj można C# znaleźć kod, który używa wartości zwracanej dla powiązania danych wyjściowych, po którym następuje asynchroniczny przykład:
 
 ```cs
 [FunctionName("QueueTrigger")]
@@ -64,9 +63,9 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-## <a name="c-script-example"></a>Przykładowy skrypt w języku C#
+## <a name="c-script-example"></a>C#przykład skryptu
 
-Oto powiązania danych wyjściowych w *function.json* pliku:
+Oto powiązanie danych wyjściowych w pliku *Function. JSON* :
 
 ```json
 {
@@ -77,7 +76,7 @@ Oto powiązania danych wyjściowych w *function.json* pliku:
 }
 ```
 
-Poniżej przedstawiono kod C# script, następuje przykład async:
+Oto kod C# skryptu, po którym następuje asynchroniczny przykład:
 
 ```cs
 public static string Run(WorkItem input, ILogger log)
@@ -97,9 +96,9 @@ public static Task<string> Run(WorkItem input, ILogger log)
 }
 ```
 
-## <a name="f-example"></a>F#przykład
+## <a name="f-example"></a>F#przyklad
 
-Oto powiązania danych wyjściowych w *function.json* pliku:
+Oto powiązanie danych wyjściowych w pliku *Function. JSON* :
 
 ```json
 {
@@ -121,7 +120,7 @@ let Run(input: WorkItem, log: ILogger) =
 
 ## <a name="javascript-example"></a>Przykład JavaScript
 
-Oto powiązania danych wyjściowych w *function.json* pliku:
+Oto powiązanie danych wyjściowych w pliku *Function. JSON* :
 
 ```json
 {
@@ -132,7 +131,7 @@ Oto powiązania danych wyjściowych w *function.json* pliku:
 }
 ```
 
-W języku JavaScript, zwracana wartość znajduje się w drugi parametr dla `context.done`:
+W języku JavaScript wartość zwracana jest w drugim parametrze dla `context.done`:
 
 ```javascript
 module.exports = function (context, input) {
@@ -142,9 +141,9 @@ module.exports = function (context, input) {
 }
 ```
 
-## <a name="python-example"></a>Przykładem w języku Python
+## <a name="python-example"></a>Przykład języka Python
 
-Oto powiązania danych wyjściowych w *function.json* pliku:
+Oto powiązanie danych wyjściowych w pliku *Function. JSON* :
 
 ```json
 {
@@ -154,7 +153,7 @@ Oto powiązania danych wyjściowych w *function.json* pliku:
     "path": "output-container/{id}"
 }
 ```
-Poniżej przedstawiono kod języka Python:
+Oto kod języka Python:
 
 ```python
 def main(input: azure.functions.InputStream) -> str:
@@ -165,7 +164,7 @@ def main(input: azure.functions.InputStream) -> str:
     })
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Obsługa błędów powiązań usługi Azure Functions](./functions-bindings-errors.md)
+> [Obsługa błędów powiązań Azure Functions](./functions-bindings-errors.md)

@@ -8,18 +8,18 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: dff15deaefba728bad76965a186dd2f245ea5854
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 021341406f1a7269aadf18eb3a748e539cbb5bf5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019848"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086960"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Zarządzanie IoT Central z poziomu interfejsu wiersza polecenia platformy Azure
 
 [!INCLUDE [iot-central-selector-manage](../../includes/iot-central-selector-manage.md)]
 
-Zamiast tworzyć aplikacje IoT Central i zarządzać nimi ze strony IoT Central [Application Manager](https://aka.ms/iotcentral) , możesz użyć [interfejsu wiersza polecenia platformy Azure](/cli/azure/) do zarządzania aplikacjami.
+Zamiast tworzyć aplikacje IoT Central i zarządzać nimi w witrynie sieci Web programu [azure IoT Central Application Manager](https://aka.ms/iotcentral) , możesz użyć [interfejsu wiersza polecenia platformy Azure](/cli/azure/) do zarządzania aplikacjami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -84,7 +84,7 @@ az iotcentral app update --name myiotcentralapp \
 
 ## <a name="remove-an-application"></a>Usuwanie aplikacji
 
-Użyj polecenia [AZ iotcentral App Delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) , aby usunąć aplikację IoT Central. Przykład:
+Użyj polecenia [AZ iotcentral App Delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) , aby usunąć aplikację IoT Central. Na przykład:
 
 ```azurecli-interactive
 az iotcentral app delete --name myiotcentralapp \

@@ -1,6 +1,6 @@
 ---
-title: Pobieranie szablonu dla maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft
-description: Pobierz templatefor maszyny Wirtualnej w celu automatyzacji wdrożeń w modelu wdrażania usługi Resource Manager
+title: Pobieranie szablonu dla maszyny wirtualnej platformy Azure | Microsoft Docs
+description: Pobierz templatefor maszynę wirtualną, aby pomóc w automatyzowaniu wdrożeń w modelu wdrażania Menedżer zasobów
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,44 +11,43 @@ ms.assetid: 51ef4f51-0942-4249-afea-4a3f87ce1ff8
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: b001f8b3fd9c7be19431304b4106d0912181c07e
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 37e833e5ba2fcbc9fcfe0a27d5b607a5c6cdd55b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718647"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079529"
 ---
 # <a name="download-the-template-for-a-vm"></a>Pobieranie szablonu dla maszyny wirtualnej
-Podczas tworzenia maszyny Wirtualnej na platformie Azure przy użyciu portalu lub programu PowerShell, szablon usługi Resource Manager jest tworzony automatycznie dla Ciebie. Ten szablon umożliwia szybkie duplikowanie wdrożenia. Szablon zawiera informacje o wszystkich zasobów w grupie zasobów. Dla maszyny wirtualnej oznacza to, że szablon zawiera wszystko, co jest tworzony w odniesieniu do maszyny Wirtualnej w tej grupie zasobów, łącznie z zasobami sieciowymi.
+Podczas tworzenia maszyny wirtualnej na platformie Azure przy użyciu portalu lub programu PowerShell automatycznie tworzony jest szablon Menedżer zasobów. Możesz użyć tego szablonu, aby szybko zduplikować wdrożenie. Szablon zawiera informacje na temat wszystkich zasobów w grupie zasobów. W przypadku maszyny wirtualnej oznacza to, że szablon zawiera wszystkie elementy, które są tworzone w ramach obsługi maszyny wirtualnej w tej grupie zasobów, w tym zasoby sieciowe.
 
-## <a name="download-the-template-using-the-portal"></a>Pobierz szablon przy użyciu portalu
+## <a name="download-the-template-using-the-portal"></a>Pobieranie szablonu przy użyciu portalu
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
-2. Menu po lewej stronie, należy wybrać **maszyn wirtualnych**.
+2. Jedno z menu po lewej stronie, wybierz pozycję **Virtual Machines**.
 3. Wybierz maszynę wirtualną z listy.
-4. Wybierz **Eksportuj szablon**.
-5. Wybierz **Pobierz** menu u góry, a następnie zapisz plik zip na komputer lokalny.
-6. Otwórz plik zip i wyodrębnić pliki do folderu. Plik zip zawiera plik:
+4. Wybierz pozycję **Eksportuj szablon**.
+5. Wybierz pozycję **Pobierz** z menu u góry i Zapisz plik zip na komputerze lokalnym.
+6. Otwórz plik zip i Wyodrębnij pliki do folderu. Plik. zip zawiera:
    
-   * deploy.ps1
-   * Deploy.sh 
-   * deployer.RB
+   * Wdróż. ps1
+   * deploy.sh 
+   * Deployer. RB
    * DeploymentHelper.cs
-   * parameters.json
+   * Parameters. JSON
    * template.json
 
-Plik template.json jest szablon.
+Plik Template. JSON jest szablonem.
 
-## <a name="download-the-template-using-powershell"></a>Pobierz szablon przy użyciu programu PowerShell
-Możesz również pobrać JSON szablonu plików przy użyciu [AzResourceGroup eksportu](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) polecenia cmdlet. Możesz użyć `-path` parametru, aby podać nazwę pliku i ścieżkę pliku JSON. W tym przykładzie pokazano, jak pobrać szablon dla grupy zasobów o nazwie **myResourceGroup** do **C:\users\public\downloads** folderu na komputerze lokalnym.
+## <a name="download-the-template-using-powershell"></a>Pobieranie szablonu przy użyciu programu PowerShell
+Plik szablonu JSON można także pobrać przy użyciu polecenia cmdlet [Export-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/export-azresourcegroup) . Możesz użyć `-path` parametru, aby podać nazwę pliku i ścieżkę pliku. JSON. Ten przykład pokazuje, jak pobrać szablon dla grupy zasobów o nazwie Moja **zasobów** do folderu **C:\users\public\downloads** na komputerze lokalnym.
 
 ```powershell
     Export-AzResourceGroup -ResourceGroupName "myResourceGroup" -Path "C:\users\public\downloads"
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Aby dowiedzieć się więcej na temat wdrażania zasobów za pomocą szablonów, zobacz [Przewodnik po szablonie usługi Resource Manager](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Aby dowiedzieć się więcej o wdrażaniu zasobów przy użyciu szablonów, zobacz [Przewodnik po szablonach Menedżer zasobów](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 

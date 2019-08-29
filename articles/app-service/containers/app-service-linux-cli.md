@@ -1,7 +1,7 @@
 ---
-title: Zarządzanie aplikacją internetową dla kontenerów za pomocą narzędzia wiersza polecenia platformy Azure — usłudze Azure App Service | Dokumentacja firmy Microsoft
-description: Zarządzanie aplikacją internetową dla kontenerów za pomocą narzędzia wiersza polecenia platformy Azure.
-keywords: Usługa Azure app service, aplikacji sieci web, interfejsu wiersza polecenia, linux, oss
+title: Zarządzanie Web App for Containers przy użyciu interfejsu wiersza polecenia platformy Azure — Azure App Service | Microsoft Docs
+description: Zarządzanie Web App for Containers przy użyciu interfejsu wiersza polecenia platformy Azure.
+keywords: Azure App Service, Web App, CLI, Linux, OSS
 services: app-service
 documentationCenter: ''
 author: ahmedelnably
@@ -11,102 +11,101 @@ ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 21f6963fbaada4524f27602454d38e7252a5e8b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5481e9f28d8fc47936ad62bd8d974beb5ca85fcd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60850088"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071310"
 ---
-# <a name="manage-web-app-for-containers-using-azure-cli"></a>Zarządzanie aplikacją internetową dla kontenerów za pomocą narzędzia wiersza polecenia platformy Azure
+# <a name="manage-web-app-for-containers-using-azure-cli"></a>Zarządzanie Web App for Containers przy użyciu interfejsu wiersza polecenia platformy Azure
 
-Za pomocą poleceń, w tym artykule, których można tworzyć i zarządzać nimi Web App for Containers przy użyciu wiersza polecenia platformy Azure.
-Można uruchomić przy użyciu nowej wersji interfejsu wiersza polecenia na dwa sposoby:
+Za pomocą poleceń w tym artykule można tworzyć Web App for Containers i zarządzać nimi za pomocą interfejsu wiersza polecenia platformy Azure.
+Możesz rozpocząć korzystanie z nowej wersji interfejsu wiersza polecenia na dwa sposoby:
 
-* [Instalowanie interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) na swojej maszynie.
-* Za pomocą [usługi Azure Cloud Shell (wersja zapoznawcza)](../../cloud-shell/overview.md)
+* [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) na komputerze.
+* Korzystanie z [Azure Cloud Shell (wersja zapoznawcza)](../../cloud-shell/overview.md)
 
-## <a name="create-a-linux-app-service-plan"></a>Tworzenie planu usługi App Service w systemie Linux
+## <a name="create-a-linux-app-service-plan"></a>Tworzenie planu App Service systemu Linux
 
-Aby utworzyć Linux Plan usługi App Service, służy następujące polecenie:
+Aby utworzyć plan App Service systemu Linux, można użyć następującego polecenia:
 
 ```azurecli-interactive
 az appservice plan create -n appname -g rgname --is-linux -l "South Central US" --sku S1 --number-of-workers 1
 ```
 
-## <a name="create-a-custom-docker-container-web-app"></a>Tworzenie niestandardowego kontenera Docker aplikacji sieci Web
+## <a name="create-a-custom-docker-container-web-app"></a>Tworzenie niestandardowej aplikacji sieci Web kontenera platformy Docker
 
-Aby utworzyć aplikację sieci web i skonfigurowania go do uruchamiania niestandardowego kontenera Docker, służy następujące polecenie:
+Aby utworzyć aplikację sieci Web i skonfigurować ją do uruchamiania niestandardowego kontenera platformy Docker, można użyć następującego polecenia:
 
 ```azurecli-interactive
 az webapp create -n sname -g rgname -p pname -i elnably/dockerimagetest
 ```
 
-## <a name="activate-the-docker-container-logging"></a>Aktywuj rejestrowanie kontenerów Docker
+## <a name="activate-the-docker-container-logging"></a>Aktywuj rejestrowanie kontenerów platformy Docker
 
-Aby aktywować rejestrowanie kontenerów Docker, służy następujące polecenie:
+Aby aktywować rejestrowanie kontenerów platformy Docker, można użyć następującego polecenia:
 
 ```azurecli-interactive
 az webapp log config -n sname -g rgname --web-server-logging filesystem
 ```
 
-## <a name="change-the-custom-docker-container-for-an-existing-web-app-for-containers-app"></a>Zmiany niestandardowego kontenera Docker do istniejącej aplikacji sieci Web dla aplikacji kontenerów
+## <a name="change-the-custom-docker-container-for-an-existing-web-app-for-containers-app"></a>Zmienianie niestandardowego kontenera platformy Docker dla istniejącej aplikacji Web App for Containers
 
-Aby zmienić wcześniej utworzoną aplikację, z bieżącego obrazu platformy Docker do nowego obrazu, służy następujące polecenie:
+Aby zmienić utworzoną wcześniej aplikację z bieżącego obrazu platformy Docker na nowy obraz, można użyć następującego polecenia:
 
 ```azurecli-interactive
 az webapp config container set -n sname -g rgname -c apurvajo/mariohtml5
 ```
 
-## <a name="using-docker-images-from-a-private-registry"></a>Przy użyciu obrazów platformy Docker z rejestru prywatnego
+## <a name="using-docker-images-from-a-private-registry"></a>Używanie obrazów platformy Docker z rejestru prywatnego
 
-Można skonfigurować aplikację tak, aby używać obrazów z rejestru prywatnego. Musisz podać adres url dla rejestru, nazwa użytkownika i hasło. Można to osiągnąć, używając następującego polecenia:
+Aplikację można skonfigurować tak, aby korzystała z obrazów z prywatnego rejestru. Musisz podać adres URL rejestru, nazwę użytkownika i hasło. Można to osiągnąć przy użyciu następującego polecenia:
 
 ```azurecli-interactive
 az webapp config container set -n sname1 -g rgname -c <container name> -r <server url> -u <username> -p <password>
 ```
 
-## <a name="enable-continuous-deployments-for-custom-docker-images"></a>Włącz ciągłe wdrażanie niestandardowych obrazów platformy Docker
+## <a name="enable-continuous-deployments-for-custom-docker-images"></a>Włącz ciągłe wdrożenia dla niestandardowych obrazów platformy Docker
 
-Za pomocą następującego polecenia można włączyć funkcji ciągłego Dostarczania i uzyskać adres url elementu webhook. Ten adres url można skonfigurować repozytoriów witryny DockerHub lub usługi Azure Container Registry.
+Za pomocą następującego polecenia można włączyć funkcję CD i uzyskać adres URL elementu webhook. Ten adres URL może służyć do konfigurowania repozytoriów DockerHub lub Azure Container Registry.
 
 ```azurecli-interactive
 az webapp deployment container config -n sname -g rgname -e true
 ```
 
-## <a name="create-a-web-app-for-containers-app-using-one-of-our-built-in-runtime-frameworks"></a>Tworzenie aplikacji internetowej dla kontenerów aplikacji przy użyciu jednego z naszych platform wbudowane środowisko uruchomieniowe
+## <a name="create-a-web-app-for-containers-app-using-one-of-our-built-in-runtime-frameworks"></a>Tworzenie aplikacji Web App for Containers przy użyciu jednej z naszych wbudowanych platform środowiska uruchomieniowego
 
-Utworzyć aplikację sieci Web PHP 5.6 dla kontenerów aplikacji, można użyć następującego polecenia.
+Aby utworzyć aplikację Web App for Containers w języku PHP 5,6, możesz użyć poniższego polecenia.
 
 ```azurecli-interactive
 az webapp create -n sname -g rgname -p pname -r "php|5.6"
 ```
 
-## <a name="change-framework-version-for-an-existing-web-app-for-containers-app"></a>Zmień wersję framework dla istniejącej aplikacji sieci Web dla aplikacji kontenerów
+## <a name="change-framework-version-for-an-existing-web-app-for-containers-app"></a>Zmień wersję platformy dla istniejącej aplikacji Web App for Containers
 
-Aby zmienić wcześniej utworzoną aplikację, z bieżącej wersji framework Node.js 6.11, służy następujące polecenie:
+Aby zmienić utworzoną wcześniej aplikację z bieżącej wersji platformy na Node. js 6,11, można użyć następującego polecenia:
 
 ```azurecli-interactive
 az webapp config set -n sname -g rgname --linux-fx-version "node|6.11"
 ```
 
-## <a name="set-up-git-deployments-for-your-web-app"></a>Konfigurowanie wdrożenia Git dla aplikacji sieci Web
+## <a name="set-up-git-deployments-for-your-web-app"></a>Konfigurowanie wdrożeń usługi git dla aplikacji sieci Web
 
-Aby skonfigurować wdrożenia Git dla aplikacji, służy następujące polecenie:
+Aby skonfigurować wdrożenie narzędzia Git dla aplikacji, można użyć następującego polecenia:
 
 ```azurecli-interactive
 az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> --branch <branch>
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Co to jest Azure App Service w systemie Linux?](app-service-linux-intro.md)
 * [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli)
-* [Usługi Azure Cloud Shell (wersja zapoznawcza)](../../cloud-shell/overview.md)
+* [Azure Cloud Shell (wersja zapoznawcza)](../../cloud-shell/overview.md)
 * [Konfigurowanie środowisk przejściowych w usłudze Azure App Service](../../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [Ciągłe wdrażanie za pomocą aplikacji Web App for Containers](app-service-linux-ci-cd.md)
+* [Ciągłe wdrażanie za pomocą Web App for Containers](app-service-linux-ci-cd.md)

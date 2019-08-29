@@ -1,65 +1,64 @@
 ---
-title: Wskazówki dotyczące wdrażania aplikacji za pomocą szablonów — w usłudze Azure App Service | Dokumentacja firmy Microsoft
-description: Zalecenia dotyczące tworzenia szablonów usługi Azure Resource Manager do wdrażania aplikacji sieci web.
+title: Wskazówki dotyczące wdrażania aplikacji za pomocą szablonów — Azure App Service | Microsoft Docs
+description: Zalecenia dotyczące tworzenia Azure Resource Manager szablonów do wdrażania aplikacji sieci Web.
 services: app-service
 documentationcenter: app-service
 author: tfitzmac
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: d8fa8b216ca6044adefe1398b58f5d14630540e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 196aeb69a1948a44afb8170fa5f48d42b978854d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66137158"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070453"
 ---
-# <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Wskazówki dotyczące wdrażania aplikacji sieci web przy użyciu szablonów usługi Azure Resource Manager
+# <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Wskazówki dotyczące wdrażania aplikacji sieci Web za pomocą szablonów Azure Resource Manager
 
-Ten artykuł zawiera zalecenia dotyczące tworzenia szablonów usługi Azure Resource Manager, aby wdrożyć rozwiązania w usłudze Azure App Service. Te zalecenia mogą pomóc w uniknięciu typowych problemów.
+W tym artykule przedstawiono zalecenia dotyczące tworzenia Azure Resource Manager szablonów do wdrażania rozwiązań Azure App Service. Te zalecenia mogą pomóc uniknąć typowych problemów.
 
 ## <a name="define-dependencies"></a>Definiowanie zależności
 
-Definiowanie zależności dla aplikacji sieci web wymaga zrozumienia sposobu interakcji dla zasobów w ramach aplikacji sieci web. Jeśli określisz zależności nieprawidłowa kolejność, może spowodować błędy związane z wdrażaniem, lub Utwórz wyścigu, która wpłynie wdrożenia.
+Definiowanie zależności dla aplikacji sieci Web wymaga poznania sposobu działania zasobów w aplikacji internetowej. W przypadku określenia zależności w niepoprawnej kolejności mogą wystąpić błędy wdrażania lub utworzyć sytuację wyścigu, która blokuje wdrożenie.
 
 > [!WARNING]
-> Jeśli dołączysz rozszerzenie witryny MSDeploy w szablonie wszystkie zasoby konfiguracji należy ustawić jako zależny od zasobu MSDeploy. Zmiany konfiguracji powodują witryny ponownie uruchomić asynchronicznie. Zasoby konfiguracji wprowadzania zależne od MSDeploy, gwarantuje, że MSDeploy zakończy się przed ponownym uruchomieniem lokacji. Bez tych zależności witryna może zostać ponownie uruchomiony w procesie wdrażania elementu MSDeploy. Aby uzyskać przykładowy szablon, zobacz [szablonu WordPress w sieci Web wdrażanie zależności](https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/WordpressTemplateWebDeployDependency.json).
+> Jeśli w szablonie dołączysz rozszerzenie witryny MSDeploy, należy ustawić wszystkie zasoby konfiguracji zależne od zasobu MSDeploy. Zmiany w konfiguracji powodują, że lokacja jest uruchamiana asynchronicznie. Przez udostępnienie zasobów konfiguracji zależnych od MSDeploy upewnij się, że program MSDeploy zakończy działanie przed ponownym uruchomieniem lokacji. Bez tych zależności lokacja może zostać ponownie uruchomiona podczas procesu wdrażania programu MSDeploy. Aby zapoznać się z przykładowym szablonem, zobacz [szablon WordPress z zależnością Web Deploy](https://github.com/davidebbo/AzureWebsitesSamples/blob/master/ARMTemplates/WordpressTemplateWebDeployDependency.json).
 
-Na poniższej ilustracji przedstawiono kolejność zależności dla różnych zasobów usługi App Service:
+Na poniższej ilustracji przedstawiono kolejność zależności dla różnych App Service zasobów:
 
 ![Zależności aplikacji sieci Web](media/web-sites-rm-template-guidance/web-dependencies.png)
 
-Możesz wdrożyć zasoby w następującej kolejności:
+Zasoby są wdrażane w następującej kolejności:
 
 **Warstwa 1**
-* Plan usługi App Service.
+* App Service plan.
 * Wszystkie inne powiązane zasoby, takie jak bazy danych lub konta magazynu.
 
-**Tier 2**
-* Web app — zależy od planu usługi App Service.
-* Wystąpienie usługi Application Insights platformy Azure, który jest przeznaczony dla farmy serwerów — zależy od planu usługi App Service.
+**Warstwa 2**
+* Aplikacja sieci Web — zależy od planu App Service.
+* Wystąpienie usługi Azure Application Insights, które jest przeznaczone dla farmy serwerów — zależy od planu App Service.
 
 **Warstwa 3**
-* Kontrola — źródła zależy od aplikacji sieci web.
-* Rozszerzenie witryny MSDeploy — zależy od aplikacji sieci web.
-* Wystąpienie usługi Application Insights przeznaczonego dla farmy serwerów — zależy od aplikacji sieci web.
+* Kontrola źródła — zależy od aplikacji sieci Web.
+* Rozszerzenie witryny MSDeploy — zależy od aplikacji sieci Web.
+* Wystąpienie Application Insights, które jest przeznaczone dla farmy serwerów — zależy od aplikacji sieci Web.
 
-**Warstwy 4**
-* Certyfikat usługi App Service — zależy od kontroli źródła lub MSDeploy, jeśli jest obecny. W przeciwnym razie to zależy od aplikacji sieci web.
-* Ustawienia konfiguracji (parametry połączenia, wartości w pliku web.config, ustawienia aplikacji) — zależy od kontroli źródła lub MSDeploy Jeśli albo jest obecny. W przeciwnym razie to zależy od aplikacji sieci web.
+**Warstwa 4**
+* Certyfikat App Service — zależy od kontroli źródła lub MSDeploy, jeśli jest obecny. W przeciwnym razie zależy od aplikacji sieci Web.
+* Ustawienia konfiguracji (wartości parametrów połączeń, Web. config, ustawienia aplikacji) — są zależne od kontroli źródła lub MSDeploy, jeśli są obecne. W przeciwnym razie zależy od aplikacji sieci Web.
 
-**Tier 5**
-* Hosta powiązania nazwy — zależy od certyfikatu, jeśli jest obecny. W przeciwnym razie to zależy od zasobu wyższego poziomu.
-* Rozszerzenia — lokacji zależy od ustawień konfiguracji, jeśli jest obecny. W przeciwnym razie to zależy od zasobu wyższego poziomu.
+**Warstwa 5**
+* Powiązania nazw hostów — są zależne od certyfikatu, jeśli jest obecny. W przeciwnym razie zależy od zasobu wyższego poziomu.
+* Rozszerzenia lokacji — zależy od ustawień konfiguracji, jeśli są obecne. W przeciwnym razie zależy od zasobu wyższego poziomu.
 
-Zazwyczaj Twoje rozwiązanie zawiera tylko niektóre z tych zasobów i warstw. W przypadku warstw brakuje zasobów niższy są mapowane na dalej wyższej warstwy.
+Zazwyczaj rozwiązanie obejmuje tylko niektóre z tych zasobów i warstw. W przypadku brakujących warstw Mapuj mniejsze zasoby na następną wyższą warstwę.
 
-Poniższy przykład przedstawia szablon. Wartość konfiguracji ciąg połączenia jest zależna od rozszerzenia MSDeploy. Rozszerzenie MSDeploy zależy od aplikacji sieci web i bazy danych. 
+Poniższy przykład przedstawia część szablonu. Wartość konfiguracji parametrów połączenia zależy od rozszerzenia MSDeploy. Rozszerzenie MSDeploy zależy od aplikacji sieci Web i bazy danych. 
 
 ```json
 {
@@ -88,19 +87,19 @@ Poniższy przykład przedstawia szablon. Wartość konfiguracji ciąg połączen
 }
 ```
 
-Przykładowy gotowe do uruchomienia, który używa powyższy kod, [szablonu: Tworzenie prostej aplikacji sieci Web Umbraco](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple).
+Aby uzyskać gotowy do uruchomienia przykład, który używa powyższego kodu, zobacz [szablon: Utwórz prostą aplikację](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple)sieci Web Umbraco.
 
-## <a name="find-information-about-msdeploy-errors"></a>Informacje o błędach MSDeploy
+## <a name="find-information-about-msdeploy-errors"></a>Znajdowanie informacji o błędach MSDeploy
 
-Jeśli szablon usługi Resource Manager korzysta z narzędzia MSDeploy, komunikaty o błędach wdrożenia może być trudne do zrozumienia. Aby uzyskać więcej informacji po wdrożenie nie powiodło się, spróbuj wykonać następujące kroki:
+Jeśli szablon Menedżer zasobów używa MSDeploy, komunikaty o błędach wdrożenia mogą być trudne do zrozumienia. Aby uzyskać więcej informacji po nieudanym wdrożeniu, spróbuj wykonać następujące czynności:
 
-1. Przejdź do witryny [konsoli Kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console).
-2. Przejdź do folderu na D:\home\LogFiles\SiteExtensions\MSDeploy.
-3. Wyszukaj pliki appManagerStatus.xml i appManagerLog.xml. Pierwszy plik rejestruje stan. Drugi plik rejestruje informacje o tym błędzie. Jeśli ten błąd nie jest jasne do Ciebie, można dołączyć podczas masz pytania, aby uzyskać pomoc na forum.
+1. Przejdź do [konsoli kudu](https://github.com/projectkudu/kudu/wiki/Kudu-console)lokacji.
+2. Przejdź do folderu pod adresem D:\home\LogFiles\SiteExtensions\MSDeploy.
+3. Wyszukaj pliki appManagerStatus. XML i appManagerLog. XML. Pierwszy plik rejestruje stan. Drugi plik rejestruje informacje o błędzie. Jeśli błąd nie jest oczywisty, możesz dołączyć go, gdy zostanie wyświetlony monit o pomoc na forum.
 
-## <a name="choose-a-unique-web-app-name"></a>Wybierz nazwę aplikacji sieci web unikatowy
+## <a name="choose-a-unique-web-app-name"></a>Wybierz unikatową nazwę aplikacji sieci Web
 
-Nazwa aplikacji sieci web musi być globalnie unikatowa. Można użyć konwencji nazewnictwa może być unikatowy, lub możesz użyć [funkcja uniqueString](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) na potrzeby generuje unikatową nazwę.
+Nazwa aplikacji sieci Web musi być globalnie unikatowa. Można użyć konwencji nazewnictwa, która może być unikatowa lub można użyć [funkcji uniqueString](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) , aby ułatwić generowanie unikatowej nazwy.
 
 ```json
 {
@@ -111,13 +110,13 @@ Nazwa aplikacji sieci web musi być globalnie unikatowa. Można użyć konwencji
 }
 ```
 
-## <a name="deploy-web-app-certificate-from-key-vault"></a>Wdróż certyfikat aplikacji internetowej z usługi Key Vault
+## <a name="deploy-web-app-certificate-from-key-vault"></a>Wdróż certyfikat aplikacji sieci Web na podstawie Key Vault
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Jeśli szablon zawiera [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates) zasobu na potrzeby powiązania SSL i certyfikat są przechowywane w usłudze Key Vault, należy upewnić się, że tożsamość usługi App Service mogą uzyskiwać dostęp do certyfikatu.
+Jeśli szablon zawiera zasób [Microsoft. Web/Certificates](/azure/templates/microsoft.web/certificates) dla powiązania SSL, a certyfikat jest przechowywany w Key Vault, należy się upewnić, że App Service tożsamość może uzyskać dostęp do certyfikatu.
 
-Na platformie Azure globalne nazwy głównej usługi App Service ma identyfikator **abfa0a7c-a6b6-4736-8310-5855508787cd**. Aby udzielić dostępu do usługi Key Vault dla jednostki usługi App Service, należy użyć:
+Na platformie Azure globalna jednostka usługi App Service ma identyfikator **abfa0a7c-a6b6-4736-8310-5855508787cd**. Aby udzielić dostępu do Key Vault dla jednostki usługi App Service, użyj:
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy `
@@ -127,17 +126,17 @@ Set-AzKeyVaultAccessPolicy `
   -PermissionsToCertificates get
 ```
 
-Na platformie Azure Government, jednostka usługi App Service ma identyfikator **6a02c803-dafd-4136-b4c3-5a6f318b4714**. W poprzednim przykładzie, należy użyć tego Identyfikatora.
+W Azure Government jednostka usługi App Service ma identyfikator **6a02c803-dafd-4136-b4c3-5a6f318b4714**. Użyj tego identyfikatora w poprzednim przykładzie.
 
-W usłudze Key Vault wybierz **certyfikaty** i **Generuj/Import** można przekazać certyfikatu.
+W Key Vault wybierz pozycję **Certyfikaty** i **Wygeneruj/Importuj** , aby przekazać certyfikat.
 
-![Importowanie certyfikatu](media/web-sites-rm-template-guidance/import-certificate.png)
+![Importuj certyfikat](media/web-sites-rm-template-guidance/import-certificate.png)
 
-W szablonie, podaj nazwę certyfikatu na potrzeby `keyVaultSecretName`.
+W szablonie Podaj nazwę certyfikatu `keyVaultSecretName`.
 
-Aby uzyskać przykładowy szablon, zobacz [Wdróż certyfikat aplikacji internetowej z wpisu tajnego usługi Key Vault i użyć jej do tworzenia powiązania SSL](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault).
+Aby zapoznać się z przykładowym szablonem, zobacz [Wdrażanie certyfikatu aplikacji sieci Web z poziomu wpisu tajnego Key Vault i używanie go do tworzenia powiązania SSL](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Samouczek dotyczący wdrażania aplikacji sieci web za pomocą szablonu, zobacz [Aprowizowanie i wdrażanie mikrousług przewidywalny na platformie Azure](deploy-complex-application-predictably.md).
-* Aby dowiedzieć się więcej na temat składni JSON i właściwości dla typów zasobów w szablonach, zobacz [odwołanie do szablonu usługi Azure Resource Manager](/azure/templates/).
+* Aby zapoznać się z samouczkiem dotyczącym wdrażania aplikacji sieci Web za pomocą szablonu, zobacz [udostępnianie i wdrażanie mikrousług na platformie Azure](deploy-complex-application-predictably.md).
+* Aby dowiedzieć się więcej o składni i właściwościach JSON dla typów zasobów w szablonach, zobacz [Azure Resource Manager dokumentacja szablonu](/azure/templates/).

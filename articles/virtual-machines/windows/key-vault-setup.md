@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie klucza magazynu dla Windows maszyn wirtualnych w usłudze Azure Resource Manager | Dokumentacja firmy Microsoft
-description: Jak skonfigurować magazyn kluczy do użycia z maszyną wirtualną usługi Azure Resource Manager.
+title: Skonfiguruj Key Vault dla maszyn wirtualnych z systemem Windows w Azure Resource Manager | Microsoft Docs
+description: Jak skonfigurować Key Vault do użycia z Azure Resource Manager maszyną wirtualną.
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
@@ -11,53 +11,52 @@ ms.assetid: 33a483e2-cfbc-4c62-a588-5d9fd52491e2
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: 671d825300581796320542e09b8c9c4562097eb0
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: e92ccacbcdc49ae5ea9496c9c8ac7fa90a05e20c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722556"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079228"
 ---
-# <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Konfigurowanie usługi Key Vault dla maszyn wirtualnych w usłudze Azure Resource Manager
+# <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Konfigurowanie Key Vault dla maszyn wirtualnych w programie Azure Resource Manager
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-rm-include.md)]
 
-W stosie usługi Azure Resource Manager wpisów tajnych/certyfikaty są modelowane jako zasoby, które są dostarczane przez dostawcę zasobów usługi Key Vault. Aby dowiedzieć się więcej o usłudze Key Vault, zobacz [co to jest usługa Azure Key Vault?](../../key-vault/key-vault-whatis.md)
+W Azure Resource Manager stosy klucze tajne/certyfikaty są modelowane jako zasoby dostarczone przez dostawcę zasobów Key Vault. Aby dowiedzieć się więcej na temat Key Vault, zobacz [co to jest Azure Key Vault?](../../key-vault/key-vault-whatis.md)
 
 > [!NOTE]
-> 1. Aby usługi Key Vault do użycia z maszynami wirtualnymi usługi Azure Resource Manager **EnabledForDeployment** właściwość usługi Key Vault musi być ustawiona na wartość true. Można to zrobić w różnych klientów.
-> 2. Key Vault musi być utworzone w tej samej subskrypcji i lokalizacji co maszyna wirtualna.
+> 1. Aby Key Vault były używane z maszynami wirtualnymi Azure Resource Manager, właściwość **EnabledForDeployment** w Key Vault musi mieć wartość true. Można to zrobić na różnych klientach.
+> 2. Key Vault należy utworzyć w tej samej subskrypcji i lokalizacji co maszyna wirtualna.
 >
 >
 
-## <a name="use-powershell-to-set-up-key-vault"></a>Konfigurowanie usługi Key Vault przy użyciu programu PowerShell
-Aby utworzyć magazyn kluczy przy użyciu programu PowerShell, zobacz [zestawu i pobierania klucza tajnego z usługi Azure Key Vault przy użyciu programu PowerShell](../../key-vault/quick-create-powershell.md).
+## <a name="use-powershell-to-set-up-key-vault"></a>Konfigurowanie Key Vault przy użyciu programu PowerShell
+Aby utworzyć magazyn kluczy przy użyciu programu PowerShell, zobacz [Ustawianie i pobieranie klucza tajnego z Azure Key Vault przy użyciu programu PowerShell](../../key-vault/quick-create-powershell.md).
 
-Dla nowych magazynów kluczy można użyć tego polecenia cmdlet programu PowerShell:
+W przypadku nowych magazynów kluczy można użyć tego polecenia cmdlet programu PowerShell:
 
     New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
 
-Dla istniejących magazynów kluczy można użyć tego polecenia cmdlet programu PowerShell:
+W przypadku istniejących magazynów kluczy można użyć tego polecenia cmdlet programu PowerShell:
 
     Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
-## <a name="use-cli-to-set-up-key-vault"></a>Skonfigurować usługi Key Vault za pomocą interfejsu wiersza polecenia
-Aby utworzyć magazyn kluczy przy użyciu interfejsu wiersza polecenia (CLI), zobacz [Zarządzanie Key Vault przy użyciu interfejsu wiersza polecenia](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault).
+## <a name="use-cli-to-set-up-key-vault"></a>Użyj interfejsu wiersza polecenia, aby skonfigurować Key Vault
+Aby utworzyć magazyn kluczy za pomocą interfejsu wiersza polecenia (CLI), zobacz [Manage Key Vault using CLI](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault).
 
-Dla interfejsu wiersza polecenia należy utworzyć magazyn kluczy przed przypisaniem zasady wdrażania. Możesz to zrobić za pomocą następującego polecenia:
+W przypadku interfejsu wiersza polecenia należy utworzyć magazyn kluczy przed przypisaniem zasad wdrażania. Możesz to zrobić za pomocą następującego polecenia:
 
     az keyvault create --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --location "EastAsia"
     
-Następnie Aby włączyć usługi Key Vault do użytku z wdrożenia szablonu, uruchom następujące polecenie:
+Następnie aby włączyć Key Vault do użycia z wdrożeniem szablonów, uruchom następujące polecenie:
 
     az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGroup" --enabled-for-deployment "true"
 
-## <a name="use-templates-to-set-up-key-vault"></a>Konfigurowanie usługi Key Vault przy użyciu szablonów
-Gdy używasz szablonu, musisz ustawić `enabledForDeployment` właściwość `true` dla zasobu usługi Key Vault.
+## <a name="use-templates-to-set-up-key-vault"></a>Użyj szablonów, aby skonfigurować Key Vault
+Gdy używasz szablonu, musisz ustawić `enabledForDeployment` właściwość na `true` dla zasobu Key Vault.
 
     {
       "type": "Microsoft.KeyVault/vaults",
@@ -71,4 +70,4 @@ Gdy używasz szablonu, musisz ustawić `enabledForDeployment` właściwość `tr
       }
     }
 
-Aby uzyskać inne opcje, które można skonfigurować podczas tworzenia magazynu kluczy przy użyciu szablonów, zobacz [Tworzenie magazynu kluczy](https://azure.microsoft.com/documentation/templates/101-key-vault-create/).
+Aby poznać inne opcje, które można skonfigurować podczas tworzenia magazynu kluczy za pomocą szablonów, zobacz [Tworzenie magazynu kluczy](https://azure.microsoft.com/documentation/templates/101-key-vault-create/).

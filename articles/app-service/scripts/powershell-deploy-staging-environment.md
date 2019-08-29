@@ -10,17 +10,16 @@ tags: azure-service-management
 ms.assetid: 27cf0680-c3a9-4a58-9f71-6dec09f6b874
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 79d5efc9e30bd5bd12e8ea89da942fd0b5ad160c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7d65a5977ff8db8d31fe7a46d4f99569a8c2270a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136420"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087615"
 ---
 # <a name="create-a-web-app-and-deploy-code-to-a-staging-environment"></a>Tworzenie aplikacji internetowej i wdrażanie kodu w środowisku przejściowym
 
@@ -56,7 +55,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | Modyfikuje zasób w grupie zasobów. |
 | [Switch-AzWebAppSlot](/powershell/module/az.websites/switch-azwebappslot) | Zamienia miejsce wdrożenia aplikacji internetowej na środowisko produkcyjne. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

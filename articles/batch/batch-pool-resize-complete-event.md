@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: c2544bd2be683b731c3dac0bea651d4b64dff75e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a11dec8998a77153cd10b6caf72f5885c69b70c3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323206"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094764"
 ---
 # <a name="pool-resize-complete-event"></a>Zdarzenie zakończenia zmiany rozmiaru puli
 
@@ -42,13 +41,13 @@ ms.locfileid: "68323206"
 
 |Element|Type|Uwagi|
 |-------------|----------|-----------|
-|id|Ciąg|Identyfikator puli.|
+|id|String|Identyfikator puli.|
 |nodeDeallocationOption|String|Określa, kiedy węzły mogą zostać usunięte z puli, jeśli rozmiar puli zmniejsza się.<br /><br /> Możliwe wartości to:<br /><br /> **Kolejka** — kończy wykonywanie zadań i umieszcza je w kolejce. Zadania zostaną uruchomione ponownie, gdy zadanie zostanie włączone. Usuń węzły zaraz po zakończeniu zadań.<br /><br /> **Przerwij** — kończy wykonywanie zadań. Zadania nie zostaną uruchomione ponownie. Usuń węzły zaraz po zakończeniu zadań.<br /><br /> **taskcompletion** — umożliwia wykonywanie obecnie uruchomionych zadań. Zaplanuj brak nowych zadań podczas oczekiwania. Usuń węzły po zakończeniu wszystkich zadań.<br /><br /> **Retaineddata** — Zezwalaj na wykonywanie aktualnie uruchomionych zadań, a następnie zaczekaj na wygaśnięcie wszystkich okresów przechowywania danych zadań. Zaplanuj brak nowych zadań podczas oczekiwania. Usuń węzły po wygaśnięciu wszystkich okresów przechowywania zadań.<br /><br /> Wartość domyślna to requeue.<br /><br /> W przypadku zwiększenia rozmiaru puli wartość jest ustawiana jako **nieprawidłowa**.|
 |currentDedicated|Int32|Liczba węzłów obliczeniowych aktualnie przypisanych do puli.|
 |targetDedicated|Int32|Liczba węzłów obliczeniowych, które są żądane dla puli.|
 |enableAutoScale|Bool|Określa, czy rozmiar puli automatycznie dostosowuje się w miarę upływu czasu.|
 |isAutoPool|Bool|Określa, czy pula została utworzona za pomocą mechanizmu autopuli zadań.|
-|startTime|Datetime|Godzina, o której zmiana rozmiaru puli została rozpoczęta.|
-|endTime|Datetime|Godzina, o której zmiana rozmiaru puli została zakończona.|
-|resultCode|Ciąg|Wynik zmiany rozmiaru.|
+|startTime|DateTime|Godzina, o której zmiana rozmiaru puli została rozpoczęta.|
+|endTime|DateTime|Godzina, o której zmiana rozmiaru puli została zakończona.|
+|resultCode|String|Wynik zmiany rozmiaru.|
 |resultMessage|String|Błąd zmiany rozmiaru zawiera szczegóły wyniku.<br /><br /> Jeśli zmiana rozmiaru została zakończona pomyślnie, stwierdza, że operacja powiodła się.|

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: ad80b738058b4048fa1a51144a37eb4f62b538c0
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: e3050d189396a797dbc0980e06e11533b9de977e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "67616024"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098609"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Ręczne tworzenie i używanie woluminu z udziałem Azure Files w usłudze Azure Kubernetes Service (AKS)
 
@@ -71,7 +71,7 @@ kubectl create secret generic azure-secret --from-literal=azurestorageaccountnam
 
 ## <a name="mount-the-file-share-as-a-volume"></a>Instalowanie udziału plików jako woluminu
 
-Aby zainstalować udział Azure Files w obszarze, skonfiguruj wolumin w specyfikacji kontenera. Utwórz nowy plik o nazwie `azure-files-pod.yaml` z następującą zawartością. Jeśli zmieniono nazwę udziału plików lub nazwy wpisu tajnego, zaktualizuj wartości ShareName  i secretname . W razie potrzeby zaktualizuj `mountPath`ścieżkę, która jest ścieżką, w której udział plików jest instalowany w obszarze. W przypadku kontenerów systemu Windows Server (obecnie w wersji zapoznawczej w AKS) Określ *mountPath* przy użyciu konwencji ścieżki systemu Windows, takiej jak *'d: '* .
+Aby zainstalować udział Azure Files w obszarze, skonfiguruj wolumin w specyfikacji kontenera. Utwórz nowy plik o nazwie `azure-files-pod.yaml` z następującą zawartością. Jeśli zmieniono nazwę udziału plików lub nazwy wpisu tajnego, zaktualizuj wartości ShareName i secretname. W razie potrzeby zaktualizuj `mountPath`ścieżkę, która jest ścieżką, w której udział plików jest instalowany w obszarze. W przypadku kontenerów systemu Windows Server (obecnie w wersji zapoznawczej w AKS) Określ *mountPath* przy użyciu konwencji ścieżki systemu Windows, takiej jak *'d: '* .
 
 ```yaml
 apiVersion: v1
@@ -135,7 +135,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Opcje instalacji
 
-Wartości  domyślne parametrów FileMode i *dirMode* różnią się od wersji Kubernetes, zgodnie z opisem w poniższej tabeli.
+Wartości domyślne parametrów FileMode i *dirMode* różnią się od wersji Kubernetes, zgodnie z opisem w poniższej tabeli.
 
 | version | value |
 | ---- | ---- |
@@ -159,7 +159,7 @@ spec:
     - ReadWriteMany
   azureFile:
     secretName: azure-secret
-    shareName: azurefile
+    shareName: aksshare
     readOnly: false
   mountOptions:
   - dir_mode=0777

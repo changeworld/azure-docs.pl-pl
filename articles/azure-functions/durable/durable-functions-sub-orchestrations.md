@@ -1,33 +1,32 @@
 ---
-title: Podrzędne mechanizmów dla funkcje trwałe - Azure
-description: Jak wywołać aranżacji z mechanizmów w rozszerzenia funkcji trwałych dla usługi Azure Functions.
+title: Podaranżacje dla Durable Functions — Azure
+description: Jak wywoływać aranżacje z aranżacji w rozszerzeniu Durable Functions Azure Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1ab9a5714a7ef24b51957bd48b1b67240cf13adb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 868efad58e14fd817729f0aa9ac785bc0f960867
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730246"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087033"
 ---
-# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Podrzędne aranżacji w funkcje trwałe (usługa Azure Functions)
+# <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Organizowanie podrzędne w Durable Functions (Azure Functions)
 
-Oprócz wywoływanie funkcji działania, funkcje programu orchestrator może wywoływać innych funkcji programu orchestrator. Można na przykład, utworzyć większy aranżacji poza bibliotekę funkcji programu orchestrator. Lub można uruchomić wiele wystąpień funkcji orkiestratora równolegle.
+Oprócz wywoływania funkcji działania, funkcje programu Orchestrator mogą wywoływać inne funkcje programu Orchestrator. Można na przykład utworzyć większą organizację poza biblioteką funkcji programu Orchestrator. Można też uruchomić wiele wystąpień funkcji programu Orchestrator równolegle.
 
-Funkcja programu orchestrator może wywołać inną funkcję programu orchestrator, wywołując [CallSubOrchestratorAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) lub [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) metod na platformie .NET, lub `callSubOrchestrator` lub `callSubOrchestratorWithRetry` metod w języku JavaScript. [Obsługa błędów i rekompensaty](durable-functions-error-handling.md#automatic-retry-on-failure) artykuł zawiera więcej informacji na temat automatycznego ponawiania prób.
+Funkcja programu Orchestrator może wywoływać inną funkcję programu Orchestrator, wywołując metody [CallSubOrchestratorAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorAsync_) lub [CallSubOrchestratorWithRetryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallSubOrchestratorWithRetryAsync_) w programie .NET albo `callSubOrchestrator` metody lub `callSubOrchestratorWithRetry` w języku JavaScript. W artykule dotyczącym [obsługi błędów & wynagrodzenie](durable-functions-error-handling.md#automatic-retry-on-failure) zawiera więcej informacji na temat automatycznego ponawiania próby.
 
-Podrzędne orchestrator funkcje zachowują się podobnie jak funkcje działań z punktu widzenia obiektu wywołującego. Funkcje te mogą zwracać wartości, zgłoszenie wyjątku i może być oczekiwana przez nadrzędne funkcję programu orchestrator.
+Funkcje programu sub-Orchestrator zachowują się podobnie jak funkcje działania z perspektywy obiektu wywołującego. Mogą zwrócić wartość, zgłosić wyjątek i może oczekiwać przez nadrzędną funkcję programu Orchestrator.
 
 ## <a name="example"></a>Przykład
 
-W poniższym przykładzie pokazano scenariusz IoT ("Internet rzeczy") w przypadku, gdy istnieje wiele urządzeń, które należy aprowizować. Brak określonego aranżacji, który musi zostać przeprowadzona dla wszystkich urządzeń, które może wyglądać następująco:
+Poniższy przykład ilustruje scenariusz IoT ("Internet rzeczy"), w którym istnieje wiele urządzeń, które muszą być obsługiwane. Istnieje określona aranżacja, która musi mieć miejsce dla każdego z urządzeń, co może wyglądać następująco:
 
 ### <a name="c"></a>C#
 
@@ -50,7 +49,7 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -71,9 +70,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Ta funkcja programu orchestrator może służyć jako — jest dla urządzenia jednorazowe Inicjowanie obsługi administracyjnej lub może być częścią większej aranżacji. W tym ostatnim przypadku funkcji programu orchestrator nadrzędnej można zaplanować wystąpień `DeviceProvisioningOrchestration` przy użyciu `CallSubOrchestratorAsync` (C#) lub `callSubOrchestrator` (JavaScript) interfejsu API.
+Ta funkcja programu Orchestrator może być używana jako — dla jednorazowej aprowizacji urządzeń lub może być częścią większej aranżacji. W tym drugim przypadku nadrzędna funkcja programu Orchestrator może planować wystąpienia `DeviceProvisioningOrchestration` `CallSubOrchestratorAsync` przy użyciu interfejsuC#API ( `callSubOrchestrator` ) lub (JavaScript).
 
-Oto przykład pokazujący sposób równoległego uruchamiania wielu funkcji programu orchestrator.
+Oto przykład, w którym pokazano, jak uruchomić wiele funkcji programu Orchestrator równolegle.
 
 ### <a name="c"></a>C#
 
@@ -98,7 +97,7 @@ public static async Task ProvisionNewDevices(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -119,7 +118,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, czym są koncentratory zadań i sposobach ich konfigurowania](durable-functions-task-hubs.md)
+> [Dowiedz się, jakie centra zadań są i jak je skonfigurować](durable-functions-task-hubs.md)

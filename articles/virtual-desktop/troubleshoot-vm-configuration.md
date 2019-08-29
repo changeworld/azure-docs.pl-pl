@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 0e32c81f37a8b81511cd009dfddbcc546aee1797
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f797d3ee525806d8002b19edb1378d0376508b08
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876753"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073931"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tworzenie dzierżawy i puli hosta
 
@@ -34,39 +34,45 @@ Postępuj zgodnie z tymi instrukcjami, jeśli masz problemy z przyłączaniem ma
 
 **Może** Wystąpił błąd podczas wprowadzania poświadczeń w ramach poprawek do interfejsu szablonu Azure Resource Manager.
 
-**Wiązane** Postępuj zgodnie z tymi instrukcjami, aby poprawić poświadczenia.
+**Wiązane** Wykonaj jedną z następujących czynności, aby rozwiązać ten problem.
 
-1. Ręcznie Dodaj maszyny wirtualne do domeny.
-2. Wdróż ponownie po potwierdzeniu poświadczeń. Zobacz [Tworzenie puli hostów przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
-3. Przyłączanie maszyn wirtualnych do domeny przy użyciu szablonu z przyłączaniem [istniejącej maszyny wirtualnej z systemem Windows do domeny usługi AD](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
+- Ręcznie Dodaj maszyny wirtualne do domeny.
+- Wdróż ponownie szablon po potwierdzeniu poświadczeń. Zobacz [Tworzenie puli hostów przy użyciu programu PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+- Przyłączanie maszyn wirtualnych do domeny przy użyciu szablonu z przyłączaniem [istniejącej maszyny wirtualnej z systemem Windows do domeny usługi AD](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/).
 
 ### <a name="error-timeout-waiting-for-user-input"></a>Błąd: Przekroczono limit czasu oczekiwania na dane wejściowe użytkownika
 
 **Może** Konto używane do dołączania do domeny może mieć uwierzytelnianie wieloskładnikowe (MFA).
 
-**Wiązane** Postępuj zgodnie z tymi instrukcjami, aby zakończyć przyłączanie do domeny.
+**Wiązane** Wykonaj jedną z następujących czynności, aby rozwiązać ten problem.
 
-1. Tymczasowe usuwanie usługi MFA dla konta.
-2. Użyj konta usługi.
+- Tymczasowe usuwanie usługi MFA dla konta.
+- Użyj konta usługi.
 
 ### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>Błąd: Konto używane podczas aprowizacji nie ma uprawnień do ukończenia operacji
 
 **Może** Używane konto nie ma uprawnień do przyłączania maszyn wirtualnych do domeny ze względu na zgodność i regulacje.
 
-**Wiązane** Postępuj zgodnie z tymi instrukcjami.
+**Wiązane** Wykonaj jedną z następujących czynności, aby rozwiązać ten problem.
 
-1. Użyj konta, które jest członkiem grupy Administratorzy.
-2. Przyznaj odpowiednie uprawnienia do używanego konta.
+- Użyj konta, które jest członkiem grupy Administratorzy.
+- Przyznaj odpowiednie uprawnienia do używanego konta.
 
 ### <a name="error-domain-name-doesnt-resolve"></a>Błąd: Nazwa domeny nie jest rozpoznawana
 
-**Przyczyna 1:** Maszyny wirtualne znajdują się w grupie zasobów, która nie jest skojarzona z siecią wirtualną (VNET), w której znajduje się domena.
+**Przyczyna 1:** Maszyny wirtualne znajdują się w sieci wirtualnej, która nie jest skojarzona z siecią wirtualną (VNET), w której znajduje się domena.
 
 **Poprawka 1:** Utwórz sieć równorzędną sieci wirtualnej między siecią wirtualną, w której zainicjowano maszyny wirtualne i sieć wirtualną, w której jest uruchomiony kontroler domeny. Zobacz [Tworzenie komunikacji równorzędnej sieci wirtualnej — Menedżer zasobów, różne subskrypcje](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions).
 
-**Przyczyna 2:** W przypadku korzystania z AadService (AADS) nie ustawiono wpisów DNS.
+**Przyczyna 2:** W przypadku korzystania z Azure Active Directory Domain Services (Azure AD DS) sieć wirtualna nie ma zaktualizowanych ustawień serwera DNS w celu wskazywania zarządzanych kontrolerów domeny.
 
-**Poprawka 2:** Aby ustawić usługi domenowe, zobacz [Enable Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-dns).
+**Poprawka 2:** Aby zaktualizować ustawienia DNS dla sieci wirtualnej zawierającej AD DS platformy Azure, zobacz temat [Aktualizowanie ustawień DNS dla sieci wirtualnej platformy Azure](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network).
+
+**Przyczyna 3:** Ustawienia serwera DNS interfejsu sieciowego nie wskazują odpowiedniego serwera DNS w sieci wirtualnej.
+
+**Poprawka 3:** Wykonaj jedną z następujących czynności, aby rozwiązać ten problem, wykonując czynności opisane w temacie [Change DNS Servers].
+- Zmień ustawienia serwera DNS interfejsu sieciowego na **niestandardowe** , wykonując czynności opisane w części [Zmienianie serwerów DNS](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers) i określ prywatne adresy IP serwerów DNS w sieci wirtualnej.
+- Zmień ustawienia serwera DNS interfejsu sieciowego, aby **dziedziczyć z sieci wirtualnej** z procedurami [zmiany serwerów DNS](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers), a następnie zmień ustawienia serwera DNS sieci wirtualnej na kroki z sekcji [zmiana serwerów DNS](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers).
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Nie zainstalowano programu Windows Virtual Desktop Agent i modułu ładującego rozruchu pulpitu wirtualnego systemu Windows
 

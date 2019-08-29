@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie rozwiązania SAP S/4HANA lub BW/4HANA na Maszynie wirtualnej platformy Azure | Dokumentacja firmy Microsoft
-description: Wdrażanie rozwiązania SAP S/4HANA lub BW/4HANA na Maszynie wirtualnej platformy Azure
+title: Wdrażanie oprogramowania SAP S/4HANA lub BW/4HANA na maszynie wirtualnej platformy Azure | Microsoft Docs
+description: Wdrażanie oprogramowania SAP S/4HANA lub BW/4HANA na maszynie wirtualnej platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
@@ -10,157 +10,156 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 44bbd2b6-a376-4b5c-b824-e76917117fa9
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 65643352a269796fc5353ff4cd0cb15d5f1502ec
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2fa68d9dc3052263b5354086ee802cc31fa35ace
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707477"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101445"
 ---
-# <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Wdrażanie rozwiązania SAP S/4HANA lub BW/4HANA na platformie Azure
-W tym artykule opisano sposób wdrażania oprogramowania S/4HANA na platformie Azure przy użyciu biblioteki SAP Cloud Appliance Library (SAP CAL) 3.0. Aby wdrożyć innych rozwiązań opartych na oprogramowanie SAP HANA, takich jak BW/4HANA, wykonaj te same czynności.
+# <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Wdrażanie oprogramowania SAP S/4HANA lub BW/4HANA na platformie Azure
+W tym artykule opisano sposób wdrażania usługi S/4HANA na platformie Azure przy użyciu biblioteki urządzeń SAP Cloud (SAP CAL) 3,0. W celu wdrożenia innych rozwiązań opartych na SAP HANA, takich jak BW/4HANA, wykonaj te same czynności.
 
 > [!NOTE]
-> Aby uzyskać więcej informacji na temat SAP CAL, przejdź do [SAP Cloud Appliance Library](https://cal.sap.com/) witryny sieci Web. Firma SAP ma również blog o [SAP Cloud Appliance biblioteki 3.0](https://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience).
+> Aby uzyskać więcej informacji na temat platformy SAP CAL, przejdź do witryny sieci Web z [biblioteką urządzeń SAP Cloud](https://cal.sap.com/) . W oprogramowaniu SAP znajduje się również Blog dotyczący [biblioteki urządzenia SAP Cloud Library 3,0](https://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience).
 > 
 > [!NOTE]
-> Od 29 maja 2017 r. modelu wdrażania usługi Azure Resource Manager, oprócz preferowane mniej klasycznego modelu wdrażania można użyć do wdrożenia SAP CAL. Firma Microsoft zaleca użycie nowego modelu wdrażania usługi Resource Manager, a następnie pominąć klasycznego modelu wdrażania.
+> Od 29 maja 2017, można użyć modelu wdrażania Azure Resource Manager oprócz niepreferowanego klasycznego modelu wdrażania do wdrożenia SAP CAL. Zalecamy używanie nowego modelu wdrażania Menedżer zasobów i pomijanie klasycznego modelu wdrażania.
 
-## <a name="step-by-step-process-to-deploy-the-solution"></a>Instrukcje krok po kroku proces wdrażania rozwiązania
+## <a name="step-by-step-process-to-deploy-the-solution"></a>Proces krok po kroku dotyczący wdrażania rozwiązania
 
-Poniższa sekwencja zrzuty ekranu pokazuje, jak wdrażanie oprogramowania S/4HANA na platformie Azure przy użyciu SAP CAL. Proces działa tak samo dla innych rozwiązań, takich jak BW/4HANA.
+Poniższa sekwencja zrzutów ekranu pokazuje, jak wdrożyć usługę S/4HANA na platformie Azure przy użyciu licencji SAP CAL. Proces działa tak samo jak w przypadku innych rozwiązań, takich jak BW/4HANA.
 
-**Rozwiązania** strona zawiera niektóre z dostępnych rozwiązań opartych na SAP CAL HANA na platformie Azure. **Oprogramowanie SAP S/4HANA 1610 FPS01, Fully-Activated urządzenia** znajduje się w środkowym rzędzie:
+Na stronie **rozwiązania** są wyświetlane niektóre rozwiązania SAP cal Hana dostępne na platformie Azure. Rozwiązanie **SAP S/4HANA 1610 FPS01, w pełni aktywowane urządzenie** znajduje się w środkowym wierszu:
 
-![Rozwiązania programu SAP CAL](./media/cal-s4h/s4h-pic-1c.png)
+![Rozwiązania SAP CAL](./media/cal-s4h/s4h-pic-1c.png)
 
-### <a name="create-an-account-in-the-sap-cal"></a>Tworzenie konta usługi w SAP CAL
-1. Aby zalogować się do SAP CAL po raz pierwszy, użyj SAP S-użytkownika lub inny użytkownik zarejestrowany z oprogramowaniem SAP. Następnie zdefiniuj SAP CAL konta, które jest używane przez SAP CAL do wdrażania urządzeń na platformie Azure. W definicji konta należy:
+### <a name="create-an-account-in-the-sap-cal"></a>Utwórz konto w licencji SAP CAL
+1. Aby zalogować się do licencji SAP CAL po raz pierwszy, użyj użytkownika SAP S lub innego użytkownika zarejestrowanego w oprogramowaniu SAP. Następnie Zdefiniuj konto SAP CAL, które jest używane przez SAP CAL do wdrożenia urządzeń na platformie Azure. W definicji konta należy:
 
-    a. Wybierz model wdrażania na platformie Azure (Resource Manager lub model klasyczny).
+    a. Wybierz model wdrażania na platformie Azure (Menedżer zasobów lub klasyczny).
 
-    b. Wprowadź swoją subskrypcję platformy Azure. Konto SAP CAL można przypisać do tylko jednej subskrypcji. Jeśli potrzebujesz więcej niż jedną subskrypcję, musisz utworzyć nowe konto SAP CAL.
+    b. Wprowadź subskrypcję platformy Azure. Konto SAP CAL może być przypisane tylko do jednej subskrypcji. Jeśli potrzebujesz więcej niż jednej subskrypcji, musisz utworzyć inne konto SAP CAL.
 
     c. Nadaj uprawnienia SAP CAL do wdrożenia w ramach subskrypcji platformy Azure.
 
    > [!NOTE]
-   >  Następne kroki pokazują jak utworzyć konto SAP CAL dla wdrożeń usługi Resource Manager. Jeśli masz już konto SAP CAL, który jest połączony z klasycznego modelu wdrażania, możesz *muszą* wykonaj następujące kroki, aby utworzyć nowe konto SAP CAL. Nowe konto SAP CAL musi wdrożyć w modelu usługi Resource Manager.
+   >  W następnych krokach pokazano, jak utworzyć konto SAP CAL dla wdrożeń Menedżer zasobów. Jeśli masz już konto SAP CAL, które jest połączone z klasycznym modelem wdrażania, musisz wykonać następujące kroki, aby utworzyć nowe konto SAP cal. Nowe konto SAP CAL musi zostać wdrożone w modelu Menedżer zasobów.
 
-1. Utwórz nowe konto SAP CAL. **Kont** strona zawiera trzy opcje dla platformy Azure: 
+1. Utwórz nowe konto SAP CAL. Na stronie **konta** są wyświetlane trzy opcje platformy Azure: 
 
-    a. **Microsoft Azure (wersja klasyczna)** jest klasycznego modelu wdrażania i preferowana.
+    a. **Microsoft Azure (klasyczny)** to klasyczny model wdrażania i nie jest już preferowany.
 
-    b. **Microsoft Azure** jest nowy model wdrażania usługi Resource Manager.
+    b. **Microsoft Azure** jest nowym Menedżer zasobów modelem wdrażania.
 
-    c. **Windows Azure, obsługiwana przez firmę 21Vianet** jest opcją w Chinach, który używa klasycznego modelu wdrażania.
+    c. **Platforma Microsoft Azure obsługiwana przez firmę 21Vianet** jest opcją w Chinach, która korzysta z klasycznego modelu wdrażania.
 
-    Aby wdrożyć w modelu usługi Resource Manager, wybierz **Microsoft Azure**.
+    Aby wdrożyć w modelu Menedżer zasobów, wybierz pozycję **Microsoft Azure**.
 
-    ![Szczegóły konta CAL SAP](./media/cal-s4h/s4h-pic-2a.png)
+    ![Szczegóły konta SAP CAL](./media/cal-s4h/s4h-pic-2a.png)
 
-1. Wprowadź Azure **identyfikator subskrypcji** znajdującymi się w witrynie Azure portal.
+1. Wprowadź **Identyfikator subskrypcji** platformy Azure, który można znaleźć na Azure Portal.
 
-   ![SAP CAL, kont](./media/cal-s4h/s4h-pic3c.png)
+   ![Konta SAP CAL](./media/cal-s4h/s4h-pic3c.png)
 
-1. Aby autoryzować SAP CAL do wdrożenia w subskrypcji platformy Azure zdefiniowany, kliknij przycisk **Autoryzuj**. Na karcie przeglądarki zostanie wyświetlona następująca strona:
+1. Aby autoryzować licencję SAP CAL do wdrożenia w zdefiniowanej subskrypcji platformy Azure, kliknij przycisk **Autoryzuj**. Na karcie Przeglądarka zostanie wyświetlona następująca strona:
 
-   ![Usługi w chmurze programu Internet Explorer Zaloguj się](./media/cal-s4h/s4h-pic4c.png)
+   ![Logowanie do usług w chmurze programu Internet Explorer](./media/cal-s4h/s4h-pic4c.png)
 
-1. Jeśli więcej niż jeden użytkownik ma na liście, wybierz konto Microsoft, które jest połączone współadministrator subskrypcji platformy Azure, które wybrano. Na karcie przeglądarki zostanie wyświetlona następująca strona:
+1. Jeśli na liście znajduje się więcej niż jeden użytkownik, wybierz konto Microsoft, który jest powiązany z tym współadministratorem wybranej subskrypcji platformy Azure. Na karcie Przeglądarka zostanie wyświetlona następująca strona:
 
    ![Potwierdzenie usług w chmurze programu Internet Explorer](./media/cal-s4h/s4h-pic5a.png)
 
-1. Kliknij przycisk **zaakceptować**. Autoryzacja zakończy się pomyślnie, definicja konta SAP CAL zostanie ponownie wyświetla. Po pewnym czasie wyświetli się komunikat potwierdzający, że proces autoryzacji zakończyło się pomyślnie.
+1. Kliknij przycisk **zaakceptować**. Jeśli autoryzacja zakończyła się pomyślnie, definicja konta SAP CAL zostanie wyświetlona ponownie. Po krótkim czasie komunikat potwierdza, że proces autoryzacji zakończył się pomyślnie.
 
-1. Aby przypisać nowo utworzonego konta SAP CAL na użytkownika, wprowadź swoje **identyfikator użytkownika** w polu tekstowym z prawej strony i kliknij przycisk **Dodaj**.
+1. Aby przypisać nowo utworzone konto SAP CAL do użytkownika, wprowadź swój **Identyfikator użytkownika** w polu tekstowym po prawej stronie, a następnie kliknij przycisk **Dodaj**.
 
-   ![Konta do skojarzenia użytkownika](./media/cal-s4h/s4h-pic8a.png)
+   ![Skojarzenie konta z użytkownikiem](./media/cal-s4h/s4h-pic8a.png)
 
-1. Aby skojarzyć swoje konto użytkownika, którego używasz do logowania się na SAP CAL, kliknij przycisk **przeglądu**. 
+1. Aby skojarzyć konto z użytkownikiem, którego używasz do logowania się do platformy SAP CAL, kliknij przycisk **Przeglądaj**. 
  
-1. Aby utworzyć skojarzenie między użytkownika a nowo utworzonego konta SAP CAL, kliknij przycisk **Utwórz**.
+1. Aby utworzyć skojarzenie między użytkownikiem i nowo utworzonym kontem SAP CAL, kliknij przycisk **Utwórz**.
 
-   ![Użytkownikowi na skojarzenie konta SAP CAL](./media/cal-s4h/s4h-pic9b.png)
+   ![Skojarzenie użytkownika z kontem SAP CAL](./media/cal-s4h/s4h-pic9b.png)
 
-Pomyślnie utworzono konto SAP CAL, który jest w stanie:
+Pomyślnie utworzono konto SAP CAL, które jest w stanie:
 
-- Przy użyciu modelu wdrażania usługi Resource Manager.
-- Wdrażanie systemów SAP w ramach subskrypcji platformy Azure.
+- Użyj Menedżer zasobów model wdrażania.
+- Wdróż systemy SAP w ramach subskrypcji platformy Azure.
 
-Teraz możesz rozpocząć wdrażanie oprogramowania S/4HANA w ramach subskrypcji użytkownika na platformie Azure.
+Teraz możesz rozpocząć wdrażanie S/4HANA w ramach subskrypcji użytkownika na platformie Azure.
 
 > [!NOTE]
-> Przed kontynuowaniem należy ustalić, czy limity przydziału procesorów wirtualnych platformy Azure dla maszyn wirtualnych serii H platformy Azure. W chwili do wdrażania, niektóre z rozwiązań opartych na oprogramowanie SAP HANA SAP CAL korzysta serii H maszyn wirtualnych platformy Azure. Twoja subskrypcja platformy Azure może nie mieć żadnych limity przydziału procesorów wirtualnych serii H serii H. Jeśli tak, może być konieczne skontaktuj się z działem pomocy technicznej platformy Azure można pobrać limitu przydziału w co najmniej 16 procesorów wirtualnych serii H.
+> Przed kontynuowaniem Ustal, czy masz przydziały platformy Azure vCPU dla maszyn wirtualnych z serii H platformy Azure. W tej chwili licencja SAP CAL używa maszyn wirtualnych serii H platformy Azure do wdrażania niektórych rozwiązań opartych na SAP HANA. Twoja subskrypcja platformy Azure może nie mieć żadnych przydziałów vCPU serii H dla serii H. Jeśli tak, może być konieczne skontaktowanie się z pomocą techniczną platformy Azure w celu uzyskania przydziału co najmniej 16 procesorów wirtualnych vCPU serii H.
 > 
 > [!NOTE]
-> Gdy wdrażasz rozwiązania na platformie Azure w SAP CAL, może się okazać, które można wybrać tylko jeden region platformy Azure. Do wdrożenia w regionach platformy Azure w innym niż zaproponowana przez SAP CAL, należy zakupić subskrypcję licencji CAL programu SAP. Ponadto konieczne może być Otwórz wiadomość z oprogramowaniem SAP Twojego konta CAL włączone, aby dostarczyć do regionów platformy Azure innych niż początkowo zalecane.
+> Po wdrożeniu rozwiązania na platformie Azure w systemie SAP CAL może się okazać, że można wybrać tylko jeden region świadczenia usługi Azure. Aby wdrożyć w regionach platformy Azure innych niż sugerowane przez SAP CAL, należy zakupić subskrypcję z licencją CAL od platformy SAP. Może być również konieczne otwarcie komunikatu przy użyciu SAP, aby konto CAL mogło dostarczyć do regionów platformy Azure innych niż te, które zostały początkowo zasugerowane.
 
-### <a name="deploy-a-solution"></a>Wdrażanie rozwiązania
+### <a name="deploy-a-solution"></a>Wdróż rozwiązanie
 
-Zajmijmy się wdrożeniem rozwiązania z **rozwiązania** strony SAP CAL. SAP CAL ma dwie sekwencje do wdrożenia:
+Wdróżmy rozwiązanie na stronie **rozwiązania** SAP cal. System SAP CAL ma dwie sekwencje do wdrożenia:
 
-- Podstawowe sekwencji, który używa jednej strony, aby zdefiniować wdrożenie systemu
-- Zaawansowane sekwencji, która zawiera niektóre opcje dotyczące rozmiarów maszyn wirtualnych 
+- Podstawowa sekwencja korzystająca z jednej strony do definiowania systemu do wdrożenia
+- Zaawansowana sekwencja, która zapewnia pewne opcje dotyczące rozmiarów maszyn wirtualnych 
 
-Pokażemy, podstawowe ścieżki do wdrożenia w tym miejscu.
+W tym miejscu zademonstrowano ścieżkę podstawową do wdrożenia.
 
-1. Na **szczegóły konta** strony, należy:
+1. Na stronie **szczegóły konta** należy:
 
-    a. Wybierz konto SAP CAL. (Użyj konta, które jest skojarzone do wdrożenia przy użyciu modelu wdrażania usługi Resource Manager).
+    a. Wybierz konto SAP CAL. (Użyj konta, które jest skojarzone do wdrożenia z modelem wdrażania Menedżer zasobów).
 
-    b. Wprowadź wystąpienie **nazwa**.
+    b. Wprowadź **nazwę**wystąpienia.
 
-    c. Wybierz platformę Azure **Region**. SAP CAL sugeruje region. Jeśli potrzebujesz innego regionu platformy Azure i nie masz subskrypcji SAP CAL, należy zamówić subskrypcję z oprogramowaniem SAP CAL.
+    c. Wybierz **region**platformy Azure. System SAP CAL sugeruje region. Jeśli potrzebujesz innego regionu platformy Azure i nie masz subskrypcji SAP CAL, musisz zamówić subskrypcję z licencją CAL przy użyciu oprogramowania SAP.
 
-    d. Wprowadź wzorzec **hasło** rozwiązania ośmiu lub dziewięciu znaków. Hasło jest używane dla administratorów różnych składników.
+    d. Wprowadź **hasło** główne dla rozwiązania składającego się z ośmiu lub dziewięciu znaków. Hasło jest używane dla administratorów różnych składników programu.
 
-   ![SAP CAL Basic tryb: Tworzenie wystąpienia](./media/cal-s4h/s4h-pic10a.png)
+   ![Tryb podstawowy SAP CAL: Utwórz wystąpienie](./media/cal-s4h/s4h-pic10a.png)
 
-1. Kliknij przycisk **Utwórz**i w wyświetlonym oknie komunikatu kliknij **OK**.
+1. Kliknij przycisk **Utwórz**, a następnie w wyświetlonym oknie komunikatu kliknij przycisk **OK**.
 
-   ![SAP CAL obsługiwane rozmiary maszyn wirtualnych](./media/cal-s4h/s4h-pic10b.png)
+   ![Obsługiwane rozmiary maszyn wirtualnych SAP CAL](./media/cal-s4h/s4h-pic10b.png)
 
-1. W **klucza prywatnego** okno dialogowe, kliknij przycisk **Store** przechowywanie klucza prywatnego w SAP CAL. Aby użyć hasło ochrony klucza prywatnego, kliknij **Pobierz**. 
+1. W oknie dialogowym **klucz prywatny** kliknij pozycję **Zapisz** , aby zapisać klucz prywatny w licencji SAP cal. Aby użyć ochrony hasłem dla klucza prywatnego, kliknij pozycję **Pobierz**. 
 
-   ![Klucz prywatny CAL SAP](./media/cal-s4h/s4h-pic10c.png)
+   ![Klucz prywatny SAP CAL](./media/cal-s4h/s4h-pic10c.png)
 
-1. Przeczytaj SAP CAL **ostrzeżenie** wiadomości, a następnie kliknij przycisk **OK**.
+1. Przeczytaj komunikat ostrzegawczy SAP cal, a następnie kliknij przycisk **OK**.
 
-   ![Ostrzeżenie o SAP CAL](./media/cal-s4h/s4h-pic10d.png)
+   ![Ostrzeżenie SAP CAL](./media/cal-s4h/s4h-pic10d.png)
 
-    Teraz wdrażanie odbywa się. Po pewnym czasie w zależności od rozmiaru i złożoność rozwiązania (SAP CAL zapewnia oszacowanie), zostanie wyświetlony stan jako aktywne i gotowe do użycia.
+    Wdrażanie odbywa się teraz. Po pewnym czasie, w zależności od rozmiaru i złożoności rozwiązania (system SAP CAL zawiera oszacowanie), stan jest pokazywany jako aktywny i gotowy do użycia.
 
-1. Aby znaleźć maszyny wirtualne, zebrane ze skojarzonymi zasobami w jednej grupie zasobów, przejdź do witryny Azure portal: 
+1. Aby znaleźć maszyny wirtualne zebrane z innymi skojarzonymi zasobami w jednej grupie zasobów, przejdź do Azure Portal: 
 
    ![Obiekty SAP CAL wdrożone w nowym portalu](./media/cal-s4h/sapcaldeplyment_portalview.png)
 
-1. W portalu SAP CAL stan jest wyświetlany jako **Active**. Aby połączyć się z rozwiązaniem, kliknij **Connect**. Inne opcje, aby nawiązać połączenie z różnych składników są wdrażane w ramach tego rozwiązania.
+1. W portalu SAP CAL stan jest wyświetlany jako **aktywny**. Aby nawiązać połączenie z rozwiązaniem, kliknij przycisk **Połącz**. Różne opcje łączenia się z różnymi składnikami są wdrażane w ramach tego rozwiązania.
 
    ![Wystąpienia SAP CAL](./media/cal-s4h/active_solution.png)
 
-1. Zanim użyjesz jedną z opcji, aby nawiązać połączenie wdrożonych systemów, kliknij przycisk **Getting Started Guide**. 
+1. Aby można było użyć jednej z opcji nawiązywania połączenia ze wdrożonymi systemami, kliknij opcję **przewodnik wprowadzenie**. 
 
-   ![Połącz z wystąpieniem programu](./media/cal-s4h/connect_to_solution.png)
+   ![Połącz z wystąpieniem](./media/cal-s4h/connect_to_solution.png)
 
-    Dokumentacja nazwy użytkowników dla wszystkich metod łączności. Hasło główne, zdefiniowanych na początku procesu wdrażania można ustawić hasła dla tych użytkowników. W dokumentacji innym użytkownikom bardziej funkcjonalnego są wyświetlane z haseł, których można użyć do logowania się na wdrożonym systemie. 
+    Dokumentacja nazywa użytkowników dla każdej z metod łączności. Hasła dla tych użytkowników są ustawiane na hasło główne zdefiniowane na początku procesu wdrażania. W dokumentacji znajdują się inni użytkownicy o większej funkcjonalności z hasłami, których można użyć do zalogowania się do wdrożonego systemu. 
 
-    Na przykład jeśli używasz SAP graficznego interfejsu użytkownika, który jest wstępnie zainstalowane na komputerze Windows pulpitu zdalnego systemu S/4 może wyglądać następująco:
+    Jeśli na przykład korzystasz z graficznego interfejsu użytkownika SAP, który jest wstępnie zainstalowany na komputerze z systemem Windows Pulpit zdalny, system S/4 może wyglądać następująco:
 
-   ![SM50 w wstępnie zainstalowane oprogramowanie SAP graficznego interfejsu użytkownika](./media/cal-s4h/gui_sm50.png)
+   ![SM50 w preinstalowanym graficznym interfejsie użytkownika SAP](./media/cal-s4h/gui_sm50.png)
 
     Lub jeśli używasz DBACockpit, wystąpienie może wyglądać następująco:
 
-   ![SM50 w interfejsie GUI SAP DBACockpit](./media/cal-s4h/dbacockpit.png)
+   ![SM50 w interfejsie GUI DBACockpit SAP](./media/cal-s4h/dbacockpit.png)
 
-W ciągu kilku godzin dobrej kondycji urządzenia SAP S/4 jest wdrażana na platformie Azure.
+W ciągu kilku godzin prawidłowe urządzenie SAP S/4 zostanie wdrożone na platformie Azure.
 
-Jeśli zakupiono subskrypcję SAP CAL, SAP w pełni obsługuje wdrożenia za pośrednictwem SAP CAL na platformie Azure. Kolejka pomocy technicznej jest BC-VCM-licencji CAL.
+W przypadku zakupu subskrypcji SAP CAL system SAP w pełni obsługuje wdrożenia za pomocą SAP CAL na platformie Azure. Kolejka pomocy technicznej to BC-VCM-CAL.
 
 
 

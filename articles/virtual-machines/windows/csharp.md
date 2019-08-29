@@ -11,16 +11,15 @@ ms.assetid: 87524373-5f52-4f4b-94af-50bf7b65c277
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: b88bade886bf8cf22387e8733b8710414c944988
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: c6d092889deec934f1db1f1c93c06aa0dc217df5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361138"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079606"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi na platformie Azure za pomocąC# #
 
@@ -41,7 +40,7 @@ Wykonanie tych kroków trwa około 20 minut.
 
 1. Jeśli jeszcze tego nie zrobiono, zainstaluj [program Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Wybierz pozycję **Programowanie aplikacji klasycznych platformy .NET** na stronie obciążenia, a następnie kliknij przycisk **Zainstaluj**. W podsumowaniu można zobaczyć, że **.NET Framework narzędzia deweloperskie 4-4,6** są automatycznie wybierane. Jeśli masz już zainstalowany program Visual Studio, możesz dodać obciążenie .NET przy użyciu programu uruchamiania programu Visual Studio.
 2. W programie Visual Studio kliknij kolejno pozycje **Plik** > **Nowy** > **Projekt**.
-3. W  > obszarze**Visual C#** templates **(szablony) wybierz pozycję Aplikacja konsoli (.NET Framework)** , wprowadź *myDotnetProject* jako nazwę projektu, wybierz lokalizację projektu, a następnie kliknij przycisk **OK**.
+3. W > obszarze**Visual C#** templates **(szablony) wybierz pozycję Aplikacja konsoli (.NET Framework)** , wprowadź *myDotnetProject* jako nazwę projektu, wybierz lokalizację projektu, a następnie kliknij przycisk **OK**.
 
 ## <a name="install-the-package"></a>Zainstaluj pakiet
 

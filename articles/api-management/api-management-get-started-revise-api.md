@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 757c710ddca72ec6a1383b51a8b536d196e6cb8c
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: dd591f18ad2abb8603270f4c570c7ef311bdadae
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203588"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072561"
 ---
 # <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Bezpieczne wprowadzanie zmian niepowodujących niezgodności przy użyciu poprawek
 Gdy interfejs API jest gotowy i zaczyna być używany przez deweloperów, zazwyczaj musisz wprowadzać zmiany w tym interfejsie API i jednocześnie nie zakłócać pracy wywołującym interfejs API. Ponadto warto poinformować deweloperów o wprowadzanych zmianach. Możemy to zrobić w usłudze Azure API Management przy użyciu **poprawek**. Aby uzyskać więcej informacji, zobacz [Wersje i poprawki](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) oraz [Przechowywanie wersji interfejsu API w usłudze Azure API Management](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/).
@@ -84,7 +83,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 2. Otwórz menu kontekstowe ( **...** ) dla poprawki **Poprawka 2**.
 3. Wybierz opcję **Ustaw jako bieżącą**.
-4. Zaznacz pole **Publikuj w publicznym dzienniku zmian tego interfejsu API**, jeśli chcesz publikować uwagi dotyczące tej zmiany. Podaj opis zmiany, który zobaczą deweloperzy, na przykład: **Testowanie poprawek. Dodano nową operację „test”.**
+4. Zaznacz pole **Publikuj w publicznym dzienniku zmian tego interfejsu API**, jeśli chcesz publikować uwagi dotyczące tej zmiany. Podaj opis zmiany widocznej dla deweloperów, na przykład: **Testowanie poprawek. Dodano nową operację „test”.**
 5. **Poprawka 2** jest teraz bieżącą poprawką.
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>Przeglądanie portalu dla deweloperów w celu wyświetlenia zmian i dziennika zmian
@@ -96,9 +95,9 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 5. Wybierz opcję **Historia zmian interfejsu API** pod nazwą interfejsu API.
 6. Zauważ, że na liście pojawia się wpis dziennika zmian.
 
-    ![Portal dla deweloperów](media/api-management-getstarted-revise-api/developer_portal.PNG)
+    ![Portal deweloperów](media/api-management-getstarted-revise-api/developer_portal.PNG)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

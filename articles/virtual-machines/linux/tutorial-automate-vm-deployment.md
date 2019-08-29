@@ -1,6 +1,6 @@
 ---
 title: Samouczek — dostosowywanie maszyny wirtualnej z systemem Linux za pomocą pakietu cloud-init na platformie Azure | Microsoft Docs
-description: W tym samouczku dowiesz się, jak dostosować maszyn wirtualnych systemu Linux podczas pierwszego rozruchu na platformie Azure za pomocą pakietu cloud-init oraz usługi Key Vault
+description: W tym samouczku dowiesz się, jak za pomocą funkcji Cloud-init i Key Vault dostosować maszyny wirtualne z systemem Linux podczas pierwszego rozruchu na platformie Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d56aa1c9b86542df3c2a7154669856686823e1dd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7215a8f169a878b10663347cf9560d822c6aa7e1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708605"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081779"
 ---
 # <a name="tutorial---how-to-use-cloud-init-to-customize-a-linux-virtual-machine-in-azure-on-first-boot"></a>Samouczek — dostosowywanie maszyny wirtualnej z systemem Linux na platformie Azure podczas pierwszego rozruchu za pomocą pakietu cloud-init
 
@@ -47,11 +46,11 @@ Wraz z partnerami pracujemy nad tym, aby pakiet cloud-init był uwzględniany i 
 
 | Alias | Wydawca | Oferta | SKU | Version |
 |:--- |:--- |:--- |:--- |:--- |
-| UbuntuLTS |Canonical |UbuntuServer |16.04-LTS |latest |
-| UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |latest |
-| CoreOS |CoreOS |CoreOS |Stable |latest |
-| | OpenLogic | CentOS | 7-CI | latest |
-| | RedHat | RHEL | 7-RAW-CI | latest |
+| UbuntuLTS |Canonical |UbuntuServer |16.04-LTS |najnowsza |
+| UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |najnowsza |
+| CoreOS |CoreOS |CoreOS |Stable |najnowsza |
+| | OpenLogic | CentOS | 7-CI | najnowsza |
+| | RedHat | RHEL | 7-RAW-CI | najnowsza |
 
 
 ## <a name="create-cloud-init-config-file"></a>Tworzenie pliku konfiguracji cloud-init
@@ -131,7 +130,7 @@ az vm open-port --port 80 --resource-group myResourceGroupAutomate --name myVM
 ```
 
 ## <a name="test-web-app"></a>Testowanie aplikacji internetowej
-Teraz możesz otworzyć przeglądarkę sieci web i wprowadź *http:\/\/\<publiczny adres IP >* na pasku adresu. Podaj własny publiczny adres IP z procesu tworzenia maszyny wirtualnej. Aplikacja Node.js jest wyświetlana jak w poniższym przykładzie:
+Teraz możesz otworzyć przeglądarkę internetową i wprowadzić *http:\/\/\<publicIpAddress >* na pasku adresu. Podaj własny publiczny adres IP z procesu tworzenia maszyny wirtualnej. Aplikacja Node.js jest wyświetlana jak w poniższym przykładzie:
 
 ![Wyświetlanie uruchomionej witryny serwera NGINX](./media/tutorial-automate-vm-deployment/nginx.png)
 
@@ -262,7 +261,7 @@ az vm open-port \
 ```
 
 ### <a name="test-secure-web-app"></a>Testowanie bezpiecznej aplikacji internetowej
-Teraz możesz otworzyć przeglądarkę sieci web i wprowadź *https:\/\/\<publiczny adres IP >* na pasku adresu. Podaj własny publiczny adres IP, widoczny w danych wyjściowych poprzedniego procesu tworzenia maszyny wirtualnej. Jeśli został użyty certyfikat z podpisem własnym, zaakceptuj ostrzeżenie dotyczące zabezpieczeń:
+Teraz możesz otworzyć przeglądarkę internetową i wprowadzić wartość *https:\/\/\<publicIpAddress >* na pasku adresu. Podaj własny publiczny adres IP, widoczny w danych wyjściowych poprzedniego procesu tworzenia maszyny wirtualnej. Jeśli został użyty certyfikat z podpisem własnym, zaakceptuj ostrzeżenie dotyczące zabezpieczeń:
 
 ![Akceptowanie ostrzeżenia dotyczącego zabezpieczeń w przeglądarce sieci Web](./media/tutorial-automate-vm-deployment/browser-warning.png)
 
@@ -271,7 +270,7 @@ Zostanie wyświetlona zabezpieczona witryna serwera NGINX oraz aplikacja Node.js
 ![Wyświetlanie uruchomionej zabezpieczonej witryny serwera NGINX](./media/tutorial-automate-vm-deployment/secured-nginx.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym samouczku skonfigurowano maszyny wirtualne podczas pierwszego rozruchu przy użyciu pakietu cloud-init. W tym samouczku omówiono:
 
 > [!div class="checklist"]

@@ -1,39 +1,38 @@
 ---
-title: Czasomierze w funkcje trwałe - Azure
-description: Dowiedz się, jak wdrożyć czasomierzy trwałe w rozszerzenia funkcji trwałych dla usługi Azure Functions.
+title: Czasomierze w Durable Functions — Azure
+description: Dowiedz się, jak zaimplementować trwałe czasomierze w rozszerzeniu Durable Functions dla Azure Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a05f75a7e38ee7cd4dc056629d9acaacad875e08
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 11edfc11fc1e54684a99774c21517d4c322348b1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730229"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087041"
 ---
-# <a name="timers-in-durable-functions-azure-functions"></a>Czasomierze w funkcje trwałe (usługa Azure Functions)
+# <a name="timers-in-durable-functions-azure-functions"></a>Czasomierze w Durable Functions (Azure Functions)
 
-[Trwałe funkcje](durable-functions-overview.md) zapewnia *trwałe czasomierzy* do użytku w funkcjach programu orchestrator do zaimplementowania opóźnienia lub skonfigurować przekroczeń limitu czasu na operacje asynchroniczne. Czasomierze trwałe powinien być używany w funkcji programu orchestrator, zamiast `Thread.Sleep` i `Task.Delay` (C#) lub `setTimeout()` i `setInterval()` (JavaScript).
+[Durable Functions](durable-functions-overview.md) zapewnia *trwałe czasomierze* do użycia w funkcjach programu Orchestrator do implementowania opóźnień lub skonfigurowania limitów czasu dla akcji asynchronicznych. Trwałe czasomierze powinny być używane w funkcjach programu `Thread.Sleep` Orchestrator `Task.Delay` zamiastC#i () `setTimeout()` , `setInterval()` lub i (JavaScript).
 
-Tworzenie trwałych czasomierza, wywołując [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) metody [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) na platformie .NET, lub `createTimer` metody `DurableOrchestrationContext` w języku JavaScript. Metoda zwraca klasę task, która zostanie wznowione od określonej daty i godziny.
+Aby utworzyć trwały czasomierz [](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) `createTimer` , należy wywołać metodę [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) w programie .NET lub metodę `DurableOrchestrationContext` języka JavaScript. Metoda zwraca zadanie, które wznawia działanie w określonym dniu i o określonej godzinie.
 
 ## <a name="timer-limitations"></a>Ograniczenia czasomierza
 
-Podczas tworzenia czasomierza, która wygaśnie po o 4:30 pm, podstawowej umieszczeniu trwałe Framework zadań wiadomość, która staje się widoczna tylko na 4:30 pm. Podczas pracy w planie zużycie usługi Azure Functions, komunikat widoczny nowo czasomierza będzie upewnić się, że aplikacji funkcji pobiera aktywowana na odpowiednią maszynę Wirtualną.
+Podczas tworzenia czasomierza, który wygaśnie o 4:30 PM, podstawowa infrastruktura zadań trwałych enqueues komunikat, który zostanie widoczny tylko na 4:30 PM. Po uruchomieniu w planie zużycia Azure Functions, nowo widoczny komunikat czasomierza zapewni, że aplikacja funkcji zostanie aktywowana na odpowiedniej maszynie wirtualnej.
 
 > [!NOTE]
-> * Czasomierze trwałe nie wystarczą na dłużej, niż 7 dni, ze względu na ograniczenia w usłudze Azure Storage. Firma Microsoft pracuje nad [żądanie funkcji, aby rozszerzyć czasomierzy dłużej niż 7 dni](https://github.com/Azure/azure-functions-durable-extension/issues/14).
-> * Zawsze używaj [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) zamiast `DateTime.UtcNow` na platformie .NET i `currentUtcDateTime` zamiast `Date.now` lub `Date.UTC` w języku JavaScript, jak pokazano na poniższych przykładów, podczas obliczania względne ostatecznym terminem przypadającym trwałe czasomierza .
+> * Trwałe czasomierze nie mogą trwać dłużej niż 7 dni ze względu na ograniczenia w usłudze Azure Storage. Pracujemy nad [żądaniem funkcji, aby rozciągnąć czasomierze dłużej niż 7 dni](https://github.com/Azure/azure-functions-durable-extension/issues/14).
+> * Zawsze używaj [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) zamiast `DateTime.UtcNow` programu `currentUtcDateTime` .NET i zamiast `Date.now`językaJavaScript , jak pokazano w poniższych przykładach podczas obliczania względnego terminu trwałego czasomierza. `Date.UTC`
 
-## <a name="usage-for-delay"></a>Użycie dla opóźnienia
+## <a name="usage-for-delay"></a>Użycie opóźnienia
 
-Poniższy przykład ilustruje sposób używania trwałe czasomierzy do opóźniania wykonania. Przykład wysyła powiadomienie rozliczeń codziennie przez dziesięć dni.
+Poniższy przykład ilustruje sposób użycia trwałych czasomierzy do opóźnienia wykonywania. Przykład wysyła powiadomienie o rozliczeniach codziennie przez dziesięć dni.
 
 ### <a name="c"></a>C#
 
@@ -51,7 +50,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```js
 const df = require("durable-functions");
@@ -68,11 +67,11 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!WARNING]
-> Należy unikać pętli nieskończonej w funkcjach programu orchestrator. Aby dowiedzieć się, jak bezpiecznie i wydajnie Implementowanie scenariuszy nieskończoną pętlę, zobacz [Orkiestracje](durable-functions-eternal-orchestrations.md).
+> Unikaj nieskończonych pętli w funkcjach programu Orchestrator. Aby dowiedzieć się, jak bezpiecznie i efektywnie zaimplementować nieskończone scenariusze pętli, zobacz [Eternal aranżacji](durable-functions-eternal-orchestrations.md).
 
 ## <a name="usage-for-timeout"></a>Użycie limitu czasu
 
-Ten przykład ilustruje sposób używania trwałe czasomierzy do zaimplementowania przekroczeń limitu czasu.
+Ten przykład ilustruje sposób używania trwałych czasomierzy do implementowania limitów czasu.
 
 ### <a name="c"></a>C#
 
@@ -105,7 +104,7 @@ public static async Task<bool> Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```js
 const df = require("durable-functions");
@@ -132,13 +131,13 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!WARNING]
-> Użyj `CancellationTokenSource` do anulowania trwałe czasomierza (C#) lub wywołania `cancel()` na zwracanego `TimerTask` (JavaScript), jeśli kod nie będzie czekać na jego zakończenie. Trwałe Framework zadania nie ulegnie zmianie aranżacji stan "ukończone", dopóki wszystkie oczekujące zadania zostały ukończone lub anulowane.
+> Użyj, `CancellationTokenSource` aby anulować trwały czasomierz (C#) lub wywoływać `cancel()` zwracaną `TimerTask` wartość (JavaScript), jeśli kod nie będzie oczekiwał na jego zakończenie. W przypadku trwałej struktury zadań nie zostanie zmieniony stan aranżacji na "ukończone", dopóki wszystkie zaległe zadania nie zostaną ukończone lub anulowane.
 
-Ten mechanizm faktycznie kończy działanie w trakcie wykonywania funkcji. Przeciwnie po prostu umożliwia funkcję programu orchestrator, aby zignorować wynik i przejść. Jeśli aplikacja funkcji korzysta z planu zużycie, będą nadal opłata dowolnej godzinie i pamięci używane przez funkcję opuszczoną działania. Domyślnie funkcje działające w ramach planu zużycie mają limit czasu równy pięć minut. W przypadku przekroczenia tego limitu hosta usługi Azure Functions jest przetworzony ponownie, aby zatrzymać wykonywanie wszystkich i zapobiec braków sytuacji rozliczeń. [Limit czasu funkcji jest konfigurowany](../functions-host-json.md#functiontimeout).
+Ten mechanizm nie kończy w rzeczywistości wykonywania funkcji działania w toku. Zamiast tego po prostu umożliwia funkcji programu Orchestrator ignorowanie wyniku i przejście. Jeśli aplikacja funkcji korzysta z planu zużycia, opłaty są naliczane za dowolny czas i ilość pamięci zużytą przez zaniechaną funkcję działania. Domyślnie funkcje działające w ramach planu zużycia mają limit czasu równy pięć minut. W przypadku przekroczenia tego limitu Host Azure Functions zostanie odtworzony w celu zatrzymania całego wykonywania i uniemożliwienia rozliczenia. [Limit czasu funkcji można skonfigurować](../functions-host-json.md#functiontimeout).
 
-Więcej informacji na temat przykład implementacji przekroczeń limitu czasu w funkcjach programu orchestrator, zobacz [z reakcji człowieka i limity czasu — Weryfikacja telefonu](durable-functions-phone-verification.md) wskazówki.
+Aby zapoznać się z bardziej szczegółowym przykładem implementacji limitów czasu w funkcjach programu Orchestrator, zobacz temat [interakcja ludzka & limity czasu — Przewodnik weryfikacji telefonu](durable-functions-phone-verification.md) .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak podnieść i obsługiwać zdarzenia zewnętrzne](durable-functions-external-events.md)
+> [Dowiedz się, jak podnieść i obsłużyć zdarzenia zewnętrzne](durable-functions-external-events.md)

@@ -1,6 +1,6 @@
 ---
-title: Szczegóły konfiguracji sieci dla usługi Azure ExpressRoute — usługa App Service
-description: Szczegóły konfiguracji sieci dla środowiska App Service Environment dla usługi PowerApps w sieciach wirtualnych połączonych z obwodem usługi ExpressRoute platformy Azure.
+title: Szczegóły konfiguracji sieci dla usługi Azure ExpressRoute — App Service
+description: Szczegóły konfiguracji sieci dla App Service Environment w usłudze PowerApps w sieciach wirtualnych połączonych z obwodem usługi Azure ExpressRoute.
 services: app-service
 documentationcenter: ''
 author: stefsch
@@ -10,145 +10,144 @@ ms.assetid: 34b49178-2595-4d32-9b41-110c96dde6bf
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: e0fa87facec73efdfff1a9908dcba92838215425
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b10bd15538ecca7934a397ca63db1150a0bfc32c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130674"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070035"
 ---
-# <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Szczegóły konfiguracji sieci dla środowiska App Service Environment dla usługi PowerApps z usługą Azure ExpressRoute
+# <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Szczegóły konfiguracji sieci dla App Service Environment dla usługi PowerApps z usługą Azure ExpressRoute
 
-Klienci mogą się łączyć [usługi Azure ExpressRoute] [ ExpressRoute] obwodu ich infrastruktury sieci wirtualnej, aby rozszerzyć ich w sieci lokalnej na platformę Azure. Środowisko usługi App Service jest tworzony w podsieci [sieci wirtualnej] [ virtualnetwork] infrastruktury. Aplikacje działające w środowisku App Service Environment ustanawiać bezpieczne połączenia z zasobami zaplecza, które są dostępne tylko za pośrednictwem połączenia usługi ExpressRoute.  
+Klienci mogą połączyć obwód [usługi Azure ExpressRoute][ExpressRoute] z infrastrukturą sieci wirtualnej, aby zwiększyć możliwości sieci lokalnej na platformę Azure. App Service Environment jest tworzony w podsieci infrastruktury [sieci wirtualnej][virtualnetwork] . Aplikacje działające na App Service Environment ustanawiają bezpieczne połączenia z zasobami zaplecza, które są dostępne tylko za pośrednictwem połączenia ExpressRoute.  
 
-Środowisko App Service Environment można utworzyć w następujących scenariuszach:
-- Sieci wirtualne platformy Azure Resource Manager.
-- Sieci wirtualne modelu wdrożenia klasycznego.
-- Sieci wirtualne, które używają zakresów adresów publicznych lub RFC1918 przestrzenie adresowe (czyli prywatnych adresów). 
+App Service Environment można utworzyć w następujących scenariuszach:
+- Azure Resource Manager sieci wirtualnych.
+- Sieci wirtualne klasycznego modelu wdrażania.
+- Sieci wirtualne korzystające z zakresów adresów publicznych lub przestrzeni adresów RFC1918 (czyli adresów prywatnych). 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="required-network-connectivity"></a>Połączenie sieciowe wymagane
+## <a name="required-network-connectivity"></a>Wymagana łączność sieciowa
 
-Środowisko usługi App Service ma wymagań dotyczących łączności sieciowej, które początkowo nie mogą zostać spełnione w sieci wirtualnej, która jest połączona z usługą ExpressRoute.
+App Service Environment ma wymagania dotyczące łączności sieciowej, które początkowo mogą nie zostać spełnione w sieci wirtualnej, która jest połączona z usługą ExpressRoute.
 
-Środowiska App Service Environment wymaga następujących ustawienia łączności sieciowej do poprawnego działania:
+App Service Environment wymaga poprawnego działania następujących ustawień łączności sieciowej:
 
-* Połączenia sieciowego ruchu wychodzącego do usługi Azure Storage punktów końcowych na całym świecie na porcie 80 i portu 443. Te punkty końcowe znajdują się w tym samym regionie, co środowisko usługi App Service, a także do innych regionów platformy Azure. Punkty końcowe usługi Azure Storage rozwiązania w ramach następujących domen DNS: table.core.windows.net, blob.core.windows.net, queue.core.windows.net i file.core.windows.net.  
+* Wychodząca łączność sieciowa z punktami końcowymi usługi Azure Storage na całym świecie na portach 80 i 443. Punkty końcowe znajdują się w tym samym regionie co App Service Environment, a także w innych regionach świadczenia usługi Azure. Punkty końcowe usługi Azure Storage są rozwiązywane w następujących domenach DNS: table.core.windows.net, blob.core.windows.net, queue.core.windows.net i file.core.windows.net.  
 
-* Połączenia sieciowego ruchu wychodzącego do usługi Azure Files na porcie 445.
+* Wychodząca łączność sieciowa z usługą Azure Files na porcie 445.
 
-* Połączenia sieciowego ruchu wychodzącego do punktów końcowych usługi Azure SQL Database, które znajdują się w tym samym regionie, co środowisko App Service Environment. Punkty końcowe bazy danych SQL rozwiązanie w domenie database.windows.net, co wymaga otwartego dostępu do portów 1433, 11000 11999 i 14000 14999. Aby uzyskać szczegółowe informacje na temat użycia portów SQL Database V12, zobacz [portów wyższych niż 1433 dla platformy ADO.NET 4.5](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).
+* Wychodząca łączność sieciowa z punktami końcowymi Azure SQL Database, które znajdują się w tym samym regionie co App Service Environment. SQL Database punkty końcowe są rozwiązywane w domenie database.windows.net, która wymaga otwartego dostępu do portów 1433, 11000-11999 i 14000-14999. Aby uzyskać szczegółowe informacje na temat użycia portów SQL Database V12, zobacz [porty powyżej 1433 dla ADO.NET 4,5](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).
 
-* Połączenia sieciowego ruchu wychodzącego do płaszczyzny zarządzania punkty końcowe platformy Azure (klasycznego modelu wdrażania platformy i punktów końcowych usługi Azure Resource Manager). Łączność z tymi punktami końcowymi obejmuje domen management.core.windows.net i management.azure.com. 
+* Wychodząca łączność sieciowa z punktami końcowymi płaszczyzny zarządzania platformy Azure (klasycznym modelem wdrażania platformy Azure i Azure Resource Manager punktami końcowymi). Łączność z tymi punktami końcowymi obejmuje domeny management.core.windows.net i management.azure.com. 
 
-* Połączenia sieciowego ruchu wychodzącego do domen ocsp.msocsp.com mscrl.microsoft.com i crl.microsoft.com. Łączność z tych domen jest potrzebny do obsługi funkcji protokołu SSL.
+* Wychodząca łączność sieciowa z domenami ocsp.msocsp.com, mscrl.microsoft.com i crl.microsoft.com. Do obsługi funkcji SSL jest wymagana łączność z tymi domenami.
 
-* Konfiguracja DNS dla sieci wirtualnej musi mieć możliwość rozpoznania wszystkie punkty końcowe i domen wymienionych w tym artykule. Nie można rozpoznać punkty końcowe, tworzenie środowiska App Service Environment nie powiedzie się. Wszelkie istniejące środowisko usługi App Service jest oznaczony jako w złej kondycji.
+* Konfiguracja systemu DNS dla sieci wirtualnej musi być w stanie rozpoznać wszystkie punkty końcowe i domeny wymienione w tym artykule. Jeśli nie można rozpoznać punktów końcowych, tworzenie App Service Environment nie powiedzie się. Wszystkie istniejące App Service Environment są oznaczone jako w złej kondycji.
 
-* Dostęp ruchu wychodzącego przez port 53 jest wymagany do komunikacji przy użyciu serwerów DNS.
+* Dostęp wychodzący na porcie 53 jest wymagany do komunikacji z serwerami DNS.
 
-* Jeśli niestandardowego serwera DNS znajduje się na drugiej stronie bramy sieci VPN, serwer DNS musi być dostępny z poziomu podsieci zawierającej środowisko App Service Environment. 
+* Jeśli na drugim końcu bramy sieci VPN istnieje niestandardowy serwer DNS, serwer DNS musi być dostępny z podsieci zawierającej App Service Environment. 
 
-* Ścieżka sieciowego ruchu wychodzącego nie może przechodzić przez wewnętrzny firmowych serwerów proxy i nie można wymusić tunelowania w środowisku lokalnym. Te akcje zmienić skuteczne adresów NAT ruchu wychodzącego ruchu sieciowego ze środowiska App Service Environment. Zmiany adresów NAT wychodzącego ruchu sieciowego w środowisku App Service Environment powodować błędy łączności do wielu punktów końcowych. Tworzenie środowiska usługi App Service zakończy się niepowodzeniem. Wszelkie istniejące środowisko usługi App Service jest oznaczony jako w złej kondycji.
+* Wychodząca ścieżka sieciowa nie może przechodzić przez wewnętrzne serwery proxy firmy i nie może być wymuszana w środowisku lokalnym. Te akcje zmieniają obowiązujący adres NAT ruchu sieciowego wychodzącego z App Service Environment. Zmiany w adresie NAT App Service Environment wychodzącego ruchu sieciowego powodują błędy łączności z wieloma punktami końcowymi. Tworzenie App Service Environment nie powiedzie się. Wszystkie istniejące App Service Environment są oznaczone jako w złej kondycji.
 
-* Dostęp do sieci dla ruchu przychodzącego do wymagane porty dla środowiska App Service Environment muszą być dozwolone. Aby uzyskać więcej informacji, zobacz [jak kontrolować ruch przychodzący do środowiska App Service Environment][requiredports].
+* Przychodzący dostęp sieciowy do wymaganych portów dla App Service Environment musi być dozwolony. Aby uzyskać szczegółowe informacje, zobacz [jak kontrolować ruch przychodzący do App Service Environment][requiredports].
 
-Aby spełnić wymagania dotyczące usługi DNS, upewnij się, prawidłowy infrastruktura DNS jest konfigurowane i obsługiwane dla sieci wirtualnej. Zmiana konfiguracji DNS po utworzeniu środowiska App Service Environment deweloperów można wymusić środowiska App Service Environment w celu zastosowania nowej konfiguracji DNS. Możesz wyzwolić stopniowe ponowny rozruch środowiska za pomocą **ponowne uruchomienie** ikonę w obszarze zarządzania środowiska App Service Environment w [witryny Azure portal][NewPortal]. Ponowne uruchomienie powoduje, że do środowiska, aby wczytać nowej konfiguracji DNS.
+Aby spełnić wymagania systemu DNS, upewnij się, że skonfigurowano prawidłową infrastrukturę DNS i jest ona utrzymywana dla sieci wirtualnej. Jeśli konfiguracja DNS zostanie zmieniona po utworzeniu App Service Environment, deweloperzy mogą wymusić App Service Environment, aby pobrać nową konfigurację DNS. Stopniowe ponowne uruchomienie środowiska można wyzwolić, korzystając z ikony **ponownego uruchamiania** w obszarze App Service Environment zarządzanie w [Azure Portal][NewPortal]. Ponowne uruchomienie powoduje, że środowisko pobiera nową konfigurację DNS.
 
-Aby spełnić wymagania dotyczące dostępu do sieci dla ruchu przychodzącego, należy skonfigurować [sieciowej grupy zabezpieczeń (NSG)] [ NetworkSecurityGroups] w podsieci środowiska App Service Environment. Sieciowa grupa zabezpieczeń zezwala na dostęp wymagany [kontrolować ruch przychodzący do środowiska App Service Environment][requiredports].
+Aby spełnić wymagania dotyczące dostępu do sieci przychodzącej, należy skonfigurować [sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń)][NetworkSecurityGroups] w podsieci App Service Environment. SIECIOWEJ grupy zabezpieczeń umożliwia wymagany dostęp [do kontroli ruchu przychodzącego do App Service Environment][requiredports].
 
-## <a name="outbound-network-connectivity"></a>Połączenia sieciowego ruchu wychodzącego
+## <a name="outbound-network-connectivity"></a>Wychodząca łączność sieciowa
 
-Domyślnie nowo utworzony obwód usługi ExpressRoute anonsuje trasę domyślną, umożliwiająca wychodzące połączenie internetowe. Środowisko usługi App Service można użyć tej konfiguracji, połączyć się z innymi punkty końcowe platformy Azure.
+Domyślnie nowo utworzony obwód usługi ExpressRoute anonsuje trasę domyślną, która umożliwia wychodzące połączenie z Internetem. App Service Environment może użyć tej konfiguracji do nawiązania połączenia z innymi punktami końcowymi platformy Azure.
 
-Typowa konfiguracja klienta jest definiowanie własnych trasy domyślnej (0.0.0.0/0), która wymusza ruch wychodzący z Internetu do przepływu w środowisku lokalnym. Ten przepływ ruchu przerywa niezmiennie środowiska App Service Environment. Ruch wychodzący jest zablokowane w środowisku lokalnym lub translatora adresów Sieciowych będzie nierozpoznawalną zbiór adresów, które nie będą działać z różnymi punkty końcowe platformy Azure.
+Typową konfiguracją klienta jest zdefiniowanie własnej trasy domyślnej (0.0.0.0/0), która wymusza ruch z Internetu do przepływu lokalnego. Ten przepływ ruchu niezmiennie przerwań w App Service Environment. Ruch wychodzący jest blokowany lokalnie lub NAT na nierozpoznawalny zbiór adresów, które nie działają już z różnymi punktami końcowymi platformy Azure.
 
-To rozwiązanie jest zdefiniować jedną (lub więcej) tras zdefiniowanych przez użytkownika (Udr) dla podsieci zawierającej środowisko App Service Environment. Trasa zdefiniowana przez użytkownika definiuje trasy specyficzne dla podsieci, które są uznawane zamiast trasy domyślnej.
+Rozwiązanie polega na zdefiniowaniu co najmniej jednej trasy zdefiniowanej przez użytkownika (UDR) w podsieci zawierającej App Service Environment. UDR definiuje trasy specyficzne dla podsieci, które są honorowane zamiast trasy domyślnej.
 
-Jeśli to możliwe użyj następującej konfiguracji:
+Jeśli to możliwe, należy użyć następującej konfiguracji:
 
-* Konfiguracji usługi ExpressRoute anonsuje 0.0.0.0/0. Domyślnie uruchomionego z wymuszeniem konfiguracji tuneli całego ruchu wychodzącego środowiska lokalnego.
-* Trasa zdefiniowana przez użytkownika zastosowane do podsieci zawierającej środowisko App Service Environment definiuje 0.0.0.0/0 z typem następnego przeskoku Internet. Przykładem tę konfigurację opisano w dalszej części tego artykułu.
+* Konfiguracja ExpressRoute anonsuje 0.0.0.0/0. Domyślnie tunel wymusza cały ruch wychodzący w środowisku lokalnym.
+* UDR zastosowana do podsieci, która zawiera App Service Environment definiuje 0.0.0.0/0 z typem następnego przeskoku Internet. Przykład tej konfiguracji przedstawiono w dalszej części tego artykułu.
 
-Połączone ta konfiguracja powoduje, że trasa zdefiniowana przez użytkownika w poziomie w podsieci ma pierwszeństwo przed tunelowania wymuszonego usługi ExpressRoute. Ruch wychodzący do Internetu z środowiska App Service Environment jest gwarantowana.
+Połączony efekt tej konfiguracji polega na tym, że UDR poziomu podsieci ma pierwszeństwo przed tunelowaniem wymuszonym ExpressRoute. Zapewnianie wychodzącego dostępu do Internetu z App Service Environment jest gwarantowane.
 
 > [!IMPORTANT]
-> Trasy zdefiniowane przez użytkownika muszą być wystarczająco szczegółowe, pierwszeństwo względem wszelkich tras, które są anonsowane przez konfigurację usługi ExpressRoute. W przykładzie, opisane w następnej sekcji użyto szerokiego zakresu adresów 0.0.0.0/0. Ten zakres przypadkowo mogą być zastąpione przez anonsy tras, korzystających z bardziej szczegółowymi zakresami adresów.
+> Trasy zdefiniowane w UDR muszą być wystarczająco odpowiednie, aby mieć pierwszeństwo przed wszelkimi trasami anonsowanymi przez konfigurację ExpressRoute. W przykładzie opisanym w następnej sekcji jest stosowany szeroki zakres adresów 0.0.0.0/0. Ten zakres może być przypadkowo przesłonięty przez anonse trasy, które używają bardziej szczegółowych zakresów adresów.
 > 
-> Środowisko usługi App Service nie jest obsługiwana za pomocą konfiguracji usługi ExpressRoute z anonsowaniem krzyżowym tras ze ścieżki publicznej komunikacji równorzędnej do ścieżki prywatnej komunikacji równorzędnej. Konfiguracje usługi ExpressRoute, które mają skonfigurowaną publiczną komunikacją równorzędną otrzymują anonsy tras od firmy Microsoft dla duży zestaw zakresów adresów IP platformy Microsoft Azure. Jeśli te zakresy adresów anonsowania krzyżowego ścieżką prywatnej sieci równorzędnej, wszystkie pakiety sieciowe wychodzące z podsieci środowiska App Service Environment są wymuszony tunelowane do infrastruktury sieci lokalnej klienta. Ten przepływ sieciowy nie jest obecnie obsługiwane za pomocą środowiska App Service Environment. Jednym rozwiązaniem jest zatrzymanie anonsowania krzyżowego tras ze ścieżki publicznej komunikacji równorzędnej do ścieżki prywatnej komunikacji równorzędnej.
+> App Service Environment nie jest obsługiwana w przypadku konfiguracji ExpressRoute, które przesyłają krzyżowo trasy z publicznej ścieżki komunikacji równorzędnej do ścieżki prywatnej komunikacji równorzędnej. Konfiguracje ExpressRoute, które mają skonfigurowaną publiczną komunikację równorzędną, odbierają Anonsy tras od firmy Microsoft w ramach dużego zestawu Microsoft Azure zakresów adresów IP. Jeśli te zakresy adresów są anonsowane krzyżowo w ścieżce prywatnej komunikacji równorzędnej, wszystkie pakiety sieciowe wychodzące z podsieci App Service Environment są Wymuszone tunelowanie do lokalnej infrastruktury sieciowej klienta. Ten przepływ sieciowy nie jest obecnie obsługiwany w App Service Environment. Jednym z rozwiązań jest zatrzymanie tras krzyżowego anonsowania od publicznej ścieżki komunikacji równorzędnej do ścieżki prywatnej komunikacji równorzędnej.
 > 
 > 
 
-Aby uzyskać ogólne informacje o trasach definiowanych przez użytkownika, zobacz [routing ruchu w sieci wirtualnej][UDROverview].  
+Aby uzyskać ogólne informacje dotyczące tras zdefiniowanych przez użytkownika, zobacz [routing ruchu w sieci wirtualnej][UDROverview].  
 
-Aby dowiedzieć się, jak utworzyć i skonfigurować trasy zdefiniowane przez użytkownika, zobacz [kierowanie ruchu sieciowego z tabelą tras przy użyciu programu PowerShell][UDRHowTo].
+Aby dowiedzieć się, jak tworzyć i konfigurować trasy zdefiniowane przez użytkownika, zobacz temat [kierowanie ruchu sieciowego za pomocą tabeli tras przy użyciu programu PowerShell][UDRHowTo].
 
-## <a name="udr-configuration"></a>Konfiguracja trasy zdefiniowanej przez użytkownika
+## <a name="udr-configuration"></a>Konfiguracja UDR
 
-W tej sekcji przedstawiono przykładową konfigurację trasy zdefiniowanej przez użytkownika dla środowiska App Service Environment.
+W tej sekcji przedstawiono przykładową konfigurację UDR dla App Service Environment.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-* Instalowanie programu Azure PowerShell z [strony plików do pobrania Azure][AzureDownloads]. Wybierz dostępny do pobrania z datą, czerwiec 2015 lub nowszego. W obszarze **narzędzia wiersza polecenia** > **programu Windows PowerShell**, wybierz opcję **zainstalować** zainstalować najnowsze polecenia cmdlet programu PowerShell.
+* Zainstaluj Azure PowerShell ze [strony plików do pobrania platformy Azure][AzureDownloads]. Wybierz pobieranie z datą 2015 czerwca lub nowszą. W obszarze >  **narzędzia wiersza polecenia** **programu Windows PowerShell**wybierz pozycję **Zainstaluj** , aby zainstalować najnowsze polecenia cmdlet programu PowerShell.
 
-* Tworzenie unikatowej podsieci do wyłącznego użytku przez usługę App Service Environment. Unikatowej podsieci zapewnia, że stosowane do podsieci Otwórz ruchu wychodzącego dla środowiska App Service Environment tylko tras zdefiniowanych przez użytkownika.
+* Utwórz unikatową podsieć do wyłącznego użytku przez App Service Environment. Unikatowa podsieć zapewnia, że UDR zastosowana do podsieci otwiera ruch wychodzący tylko dla App Service Environment.
 
 > [!IMPORTANT]
-> App Service Environment należy wdrażać tylko po wykonaniu kroków konfiguracji. Czynności upewnij się, że połączenia sieciowego ruchu wychodzącego jest dostępna, przed podjęciem próby wdrożenia środowiska App Service Environment.
+> Wdrażaj App Service Environment tylko po wykonaniu czynności konfiguracyjnych. Przed podjęciem próby wdrożenia App Service Environment upewnij się, że jest dostępna wychodząca łączność sieciowa.
 
 ### <a name="step-1-create-a-route-table"></a>Krok 1: Tworzenie tabeli tras
 
-Utwórz tabelę tras o nazwie **DirectInternetRouteTable** w regionie zachodnie stany USA Azure, jak pokazano w tym fragmencie kodu:
+Utwórz tabelę tras o nazwie **DirectInternetRouteTable** w regionie platformy Azure zachodnie stany USA, jak pokazano w tym fragmencie kodu:
 
 `New-AzureRouteTable -Name 'DirectInternetRouteTable' -Location uswest`
 
 ### <a name="step-2-create-routes-in-the-table"></a>Krok 2: Tworzenie tras w tabeli
 
-Dodawanie tras do tabeli tras, aby umożliwić ruch wychodzący do Internetu.  
+Dodaj trasy do tabeli tras, aby włączyć wychodzący dostęp do Internetu.  
 
-Konfigurowanie wychodzącego dostępu do Internetu. Należy zdefiniować trasę dla 0.0.0.0/0, jak pokazano w tym fragmencie kodu:
+Skonfiguruj dostęp wychodzący do Internetu. Zdefiniuj trasę dla 0.0.0.0/0, jak pokazano w tym fragmencie kodu:
 
 `Get-AzureRouteTable -Name 'DirectInternetRouteTable' | Set-AzureRoute -RouteName 'Direct Internet Range 0' -AddressPrefix 0.0.0.0/0 -NextHopType Internet`
 
-0.0.0.0/0 jest zakresem adresów szerokiego. Zakres jest zastępowany przez anonsowane przez usługę ExpressRoute zakresów adresów, które są bardziej szczegółowe. Trasa zdefiniowana przez użytkownika trasa 0.0.0.0/0 należy używać w połączeniu z konfiguracją usługi ExpressRoute, który anonsuje tylko 0.0.0.0/0. 
+0.0.0.0/0 jest szerokim zakresem adresów. Zakres jest przesłonięty przez zakresy adresów anonsowane przez ExpressRoute, które są bardziej szczegółowe. UDR z trasą 0.0.0.0/0 należy używać w połączeniu z konfiguracją ExpressRoute, która anonsuje tylko 0.0.0.0/0. 
 
-Jako alternatywę Pobierz bieżący, wszechstronnymi listę zakresy CIDR używane przez platformę Azure. Plik XML dla wszystkich zakresów adresów IP platformy Azure jest dostępna z [Microsoft Download Center][DownloadCenterAddressRanges].  
+Alternatywnie można pobrać bieżącą, kompleksową listę zakresów CIDR używanych przez platformę Azure. Plik XML dla wszystkich zakresów adresów IP platformy Azure jest dostępny w [Centrum pobierania Microsoft][DownloadCenterAddressRanges].  
 
 > [!NOTE]
 >
-> Zmień zakresy adresów IP platformy Azure wraz z upływem czasu. Trasy zdefiniowane przez użytkownika muszą okresowo ręczne aktualizacje, aby zachować synchronizację.
+> Zakresy adresów IP platformy Azure zmieniają się z upływem czasu. Trasy zdefiniowane przez użytkownika wymagają okresowego ręcznego aktualizowania, aby zachować synchronizację.
 >
-> Pojedynczy trasy zdefiniowanej przez użytkownika ma domyślne górny limit 100 tras. Musisz "Podsumowanie" zakresy adresów IP platformy Azure, aby mieściły się w limicie limit 100 tras. Trasy zdefiniowane przez użytkownika muszą być bardziej szczegółowe niż trasy, które są anonsowane przez połączenie usługi ExpressRoute.
+> Pojedynczy UDR ma domyślny górny limit 100 tras. Należy "podsumować" zakresy adresów IP platformy Azure, aby mieściły się w limicie 100-trasie. Trasy zdefiniowane przez UDR muszą być bardziej specyficzne niż trasy anonsowane przez połączenie ExpressRoute.
 > 
 
-### <a name="step-3-associate-the-table-to-the-subnet"></a>Krok 3: Kojarzenie tabeli do podsieci
+### <a name="step-3-associate-the-table-to-the-subnet"></a>Krok 3: Skojarz tabelę z podsiecią
 
-Kojarzenie tabeli tras do podsieci, których zamierzasz wdrożyć środowisko App Service Environment. To polecenie powoduje skojarzenie **DirectInternetRouteTable** do tabeli **ASESubnet** podsieci, która będzie zawierać środowiska App Service Environment.
+Skojarz tabelę tras z podsiecią, w której zamierzasz wdrożyć App Service Environment. To polecenie kojarzy tabelę **DirectInternetRouteTable** z podsiecią **ASESubnet** , która będzie zawierać App Service Environment.
 
 `Set-AzureSubnetRouteTable -VirtualNetworkName 'YourVirtualNetworkNameHere' -SubnetName 'ASESubnet' -RouteTableName 'DirectInternetRouteTable'`
 
-### <a name="step-4-test-and-confirm-the-route"></a>Krok 4: Testowanie i upewnij się, trasy
+### <a name="step-4-test-and-confirm-the-route"></a>Krok 4: Testowanie i Potwierdzanie trasy
 
-Po tabelę tras jest powiązana z podsiecią, testowanie i upewnij się, trasy.
+Po powiązaniu tabeli tras z podsiecią Przetestuj i Potwierdź trasę.
 
-Wdrażanie maszyny wirtualnej w podsieci i upewnij się, te warunki:
+Wdróż maszynę wirtualną w podsieci i Potwierdź następujące warunki:
 
-* Ruch wychodzący do platformy Azure i punktów końcowych spoza platformy Azure opisanych w tym artykule jest **nie** zstępują w dół obwód usługi ExpressRoute. Jeśli ruch wychodzący z podsieci jest życie tunelowany w środowisku lokalnym, tworzenie środowiska App Service Environment zawsze kończy się niepowodzeniem.
-* Wyszukiwanie DNS dla punktów końcowych, które opisano w tym artykule wszystkie rozwiązania prawidłowo. 
+* Ruch wychodzący do punktów końcowych platformy Azure i spoza platformy Azure opisany w tym artykule **nie** przepływa w dół obwodu usługi ExpressRoute. Jeśli ruch wychodzący z podsieci jest wymuszany w środowisku lokalnym, tworzenie App Service Environment zawsze kończy się niepowodzeniem.
+* Wyszukiwania DNS dla punktów końcowych opisanych w tym artykule wszystkie rozwiązują się prawidłowo. 
 
-Po ukończeniu czynności konfiguracyjnych i upewnij się, trasy, należy usunąć maszynę wirtualną. Podsieć musi być "puste", po utworzeniu środowiska App Service Environment.
+Po wykonaniu kroków konfiguracji i zatwierdzeniu trasy Usuń maszynę wirtualną. Po utworzeniu App Service Environment podsieć musi być pusta.
 
-Teraz można przystąpić do wdrażania środowiska App Service Environment!
+Teraz wszystko jest gotowe do wdrożenia App Service Environment!
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby rozpocząć pracę z środowisko usługi App Service w usłudze PowerApps, zobacz [wprowadzenie do środowiska App Service Environment][IntroToAppServiceEnvironment].
+Aby rozpocząć pracę z usługą App Service Environment dla usługi PowerApps, zobacz [wprowadzenie do App Service Environment][IntroToAppServiceEnvironment].
 
 <!-- LINKS -->
 [virtualnetwork]: https://azure.microsoft.com/services/virtual-network/ 

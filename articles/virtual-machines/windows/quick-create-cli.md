@@ -1,6 +1,6 @@
 ---
-title: Szybki start — tworzenie maszyny wirtualnej z systemem Windows za pomocą programu Azure PowerShell | Microsoft Docs
-description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć maszynę wirtualną z systemem Windows za pomocą programu Azure PowerShell
+title: Szybki Start — Tworzenie maszyny wirtualnej z systemem Windows przy użyciu interfejsu wiersza polecenia platformy Azure | Microsoft Docs
+description: W tym przewodniku szybki start dowiesz się, jak utworzyć maszynę wirtualną z systemem Windows przy użyciu interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/02/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d50c3cc59bffba1c9124c59bbd6ed197025dabc8
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: e6709a6efff80df01d7504db8b39f8ff5c2c5e49
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67723002"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088855"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-with-the-azure-cli"></a>Szybki start: Tworzenie maszyny wirtualnej z systemem Windows za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -33,7 +32,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. 
 
-Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w oddzielnej karcie przeglądarki, przechodząc do strony [https://shell.azure.com/bash](https://shell.azure.com/bash). Wybierz **kopiowania** do skopiowania bloki kodu, wklej go w usłudze Cloud Shell, a następnie naciśnij klawisz **Enter** do jej uruchomienia.
+Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w oddzielnej karcie przeglądarki, przechodząc do strony [https://shell.azure.com/bash](https://shell.azure.com/bash). Wybierz pozycję **Kopiuj** , aby skopiować bloki kodu, wkleić je do Cloud Shell i naciśnij klawisz **Enter** , aby go uruchomić.
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -45,10 +44,10 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). W poniższym przykładzie utworzono maszynę wirtualną o nazwie *myVM*. W tym przykładzie użyto *azureuser* nazwa użytkownika administracyjnego. 
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). W poniższym przykładzie utworzono maszynę wirtualną o nazwie *myVM*. W tym przykładzie używa się *azureuser* dla nazwy użytkownika administracyjnego. 
 
-Należy zmienić wartość `--admin-password` zakończy się niepowodzeniem. Zmień go na hasło, które spełnia [wymagań dotyczących haseł dla maszyn wirtualnych platformy Azure](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
-). Nazwa użytkownika i hasło posłuży później, po nawiązaniu połączenia z maszyną wirtualną.
+Należy zmienić wartość parametru `--admin-password` lub nie powiedzie się. Zmień go na hasło spełniające [wymagania dotyczące haseł dla maszyn wirtualnych](/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm
+)platformy Azure. Nazwa użytkownika i hasło będą później używane podczas nawiązywania połączenia z maszyną wirtualną.
 
 ```azurecli-interactive
 az vm create \
@@ -116,7 +115,7 @@ Gdy grupa zasobów, maszyna wirtualna i wszystkie pokrewne zasoby nie będą ju�
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start wdrożono prostą maszynę wirtualną, otwarto port sieciowy na ruch internetowy oraz zainstalowano podstawowy serwer internetowy. Aby dowiedzieć się więcej o maszynach wirtualnych platformy Azure, przejdź do samouczka dla maszyn wirtualnych z systemem Windows.
 

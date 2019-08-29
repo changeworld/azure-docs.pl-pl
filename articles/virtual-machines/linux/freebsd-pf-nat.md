@@ -1,6 +1,6 @@
 ---
-title: Używanie filtru pakietów systemu FreeBSD, aby utworzyć zaporę na platformie Azure | Dokumentacja firmy Microsoft
-description: Informacje o sposobie wdrażania zapory NAT za pomocą FreeBSD PF w systemie Azure.
+title: Używanie filtru pakietów FreeBSD do tworzenia zapory na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak wdrożyć zaporę NAT przy użyciu funkcji PF FreeBSD na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: KylieLiang
@@ -9,39 +9,38 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 03ef1ad3f81cfe7b11f74ace9ff2992535d5aad6
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 8f06762fd84767ac4c6dfce67d547a1f311afcba
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667638"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083236"
 ---
-# <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Jak utworzyć zaporę na bezpiecznej platformie Azure za pomocą filtru pakietów systemu FreeBSD
-W tym artykule przedstawiono sposób wdrażania zapory NAT za pomocą filtru usługi Packer FreeBSD przy użyciu szablonu usługi Azure Resource Manager dla typowego scenariusza serwera sieci web.
+# <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Jak utworzyć bezpieczną zaporę na platformie Azure przy użyciu filtru pakietów FreeBSD
+W tym artykule przedstawiono sposób wdrażania zapory NAT przy użyciu filtru Azure Resource Manager Pack dla wspólnego scenariusza serwera sieci Web.
 
 ## <a name="what-is-pf"></a>Co to jest PF?
-PF (filtr pakietów również zapisywane pf) jest filtr pakietów licencjonowane BSD, Centralna część oprogramowanie zapory. PF, ponieważ powstała szybko i ma kilka zalet w stosunku do innych zapór dostępne. Translacji adresów sieciowych (NAT) znajduje się w pliku PF od pierwszego dnia, a następnie Harmonogram pakietów i kolejki active management zostały zintegrowane z programem PF, przez integrowanie ALTQ i co można skonfigurować za pomocą pliku PF w konfiguracji. Funkcje, takie jak pfsync i protokołu CARP dla trybu failover i nadmiarowość, authpf dla sesji uwierzytelniania i serwer proxy ftp do jej obsługi ułatwiają realizację zapory trudne protokołu FTP, również rozszerzono PF. Krótko mówiąc PF to zaawansowane i bogate Zapora. 
+PF (filtr pakietów, również zapisany PF) to filtr pakietów stanowych z licencją BSD, centralne oprogramowanie do obsługi zapór. PF został szybko rozwijający i ma kilka zalet w porównaniu do innych dostępnych zapór. Translator adresów sieciowych (NAT) jest w wersji PF od pierwszego dnia, a następnie usługa Harmonogram pakietów i zarządzanie kolejkami aktywnymi została zintegrowana z PF, przez integrację ALTQ i Konfigurowanie jej przy użyciu konfiguracji PF. Funkcje, takie jak pfsync i KARPia na potrzeby przełączania do trybu failover i nadmiarowości, authpf do uwierzytelniania sesji i FTP-proxy w celu ułatwienia zapory dla trudnego protokołu FTP, również rozszerzonego programu PF. W skrócie PF to zaawansowane i bogate w funkcje zapory. 
 
 ## <a name="get-started"></a>Wprowadzenie
-Jeśli interesują Cię konfigurowania zapory bezpieczne w chmurze na potrzeby serwerów sieci web, zaczynajmy. Można także zastosować skrypty użytych w tym szablonie usługi Azure Resource Manager, aby skonfigurować topologii sieci.
-Szablon usługi Azure Resource Manager, skonfiguruj FreeBSD maszyny wirtualnej, który wykonuje /redirection translatora adresów Sieciowych przy użyciu pliku PF i dwie maszyny wirtualne FreeBSD z serwera internetowego Nginx, zainstalowany i skonfigurowany. Oprócz wykonywania translatora adresów Sieciowych za ruch wychodzący web dwa serwery, maszyny wirtualnej translatora adresów Sieciowych/przekierowanie przechwytuje żądania HTTP i przekierowywać je do serwerów internetowych dwa w okrężne. Sieci wirtualnej używa 10.0.0.2/24 prywatnych przestrzeni adresów bez obsługi routingu IP, a następnie można zmodyfikować parametry szablonu. Szablon usługi Azure Resource Manager definiuje również tabelę tras dla całej sieci wirtualnej, który jest kolekcją indywidualnych tras, które umożliwiają zastępują trasy domyślne systemu Azure, w oparciu o docelowy adres IP. 
+Jeśli chcesz skonfigurować bezpieczną zaporę w chmurze dla serwerów sieci Web, zacznijmy pracę. Można również zastosować skrypty używane w tym Azure Resource Manager szablonu do skonfigurowania topologii sieci.
+Szablon Azure Resource Manager skonfiguruje maszynę wirtualną FreeBSD, która wykonuje translację NAT/Redirection przy użyciu PF i dwóch maszyn wirtualnych FreeBSD z zainstalowanym i skonfigurowanym serwerem sieci Web Nginx. Oprócz wykonywania translacji adresów sieciowych dla dwóch serwerów sieci Web ruch wychodzący, maszyna wirtualna NAT/przekierowanie przechwytuje żądania HTTP i przekierowuje je do dwóch serwerów sieci Web w sposób okrężny. Sieć wirtualna korzysta z prywatnej przestrzeni adresowej IP bez obsługi routingu 10.0.0.2/24 i można modyfikować parametry szablonu. Szablon Azure Resource Manager definiuje również tabelę tras dla całej sieci wirtualnej, która jest kolekcją pojedynczych tras służących do przesłaniania domyślnych tras platformy Azure na podstawie docelowego adresu IP. 
 
 ![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
     
-### <a name="deploy-through-azure-cli"></a>Wdrażanie przy użyciu wiersza polecenia platformy Azure
-Potrzebujesz najnowszej [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index). Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Poniższy przykład tworzy nazwę grupy zasobów `myResourceGroup` w `West US` lokalizacji.
+### <a name="deploy-through-azure-cli"></a>Wdrażanie za pomocą interfejsu wiersza polecenia platformy Azure
+Potrzebujesz najnowszego [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) , który zalogował się na konto platformy Azure za pomocą polecenia [AZ login](/cli/azure/reference-index). Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Poniższy przykład tworzy nazwę `myResourceGroup` grupy zasobów `West US` w lokalizacji.
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-Następnie Wdróż szablon [pf freebsd skonfigurowania](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) z [Utwórz wdrożenie grupy az](/cli/azure/group/deployment). Pobierz [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) w tej samej ścieżce i zdefiniować własne wartości zasobów, takich jak `adminPassword`, `networkPrefix`, i `domainNamePrefix`. 
+Następnie wdróż szablon [PF-FreeBSD-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) za pomocą polecenie [AZ Group Deployment Create](/cli/azure/group/deployment). Pobierz [azuredeploy. Parameters. JSON](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) w tej samej ścieżce i zdefiniuj własne wartości zasobów, takie jak `adminPassword`, `networkPrefix`, i `domainNamePrefix`. 
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeploymentName \
@@ -49,15 +48,15 @@ az group deployment create --resource-group myResourceGroup --name myDeploymentN
     --parameters '@azuredeploy.parameters.json' --verbose
 ```
 
-Po około pięciu minut, otrzymasz informacje o `"provisioningState": "Succeeded"`. Następnie możesz ssh do frontonu maszyn wirtualnych (NAT) lub dostęp do serwera internetowego Nginx w przeglądarce, za pomocą publicznego adresu IP lub nazwa FQDN maszyny Wirtualnej (NAT) serwera sieci Web. Poniższy przykład wyświetla nazwy FQDN i publiczny adres IP przypisany do maszyny Wirtualnej (NAT) serwera sieci Web w `myResourceGroup` grupy zasobów. 
+Po około pięciu minutach uzyskasz informacje `"provisioningState": "Succeeded"`o programie. Następnie można użyć protokołu SSH na serwerze sieci Web frontonu (NAT) lub dostępu Nginx w przeglądarce przy użyciu publicznego adresu IP lub nazwy FQDN maszyny wirtualnej frontonu (NAT). Poniższy przykład zawiera listę nazw FQDN i publicznych adresów IP przypisanych do maszyny wirtualnej frontonu (NAT) `myResourceGroup` w grupie zasobów. 
 
 ```azurecli
 az network public-ip list --resource-group myResourceGroup
 ```
     
 ## <a name="next-steps"></a>Następne kroki
-Czy chcesz skonfigurować własny Translator adresów Sieciowych na platformie Azure? Oprogramowanie typu Open Source, bezpłatne, ale zaawansowane? Następnie PF jest dobrym rozwiązaniem. Przy użyciu szablonu [pf freebsd skonfigurowania](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup), wystarczy pięć minut skonfigurować zapory NAT za pomocą działania okrężnego równoważenia przy użyciu FreeBSD użytkownika PF na platformie Azure dla typowego scenariusza serwera sieci web. 
+Czy chcesz skonfigurować własny translator adresów sieciowych na platformie Azure? Bezpłatnie i wydajnie korzystać z funkcji Open Source? Następnie PF to dobry wybór. Za pomocą szablonu [PF-FreeBSD-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup)wystarczy pięć minut, aby skonfigurować zaporę NAT z równoważeniem obciążenia z działaniem okrężnym przy użyciu funkcji PF FreeBSD na platformie Azure dla wspólnego scenariusza serwera sieci Web. 
 
-Aby dowiedzieć się, oferty FreeBSD na platformie Azure, zapoznaj się [wprowadzenie do systemu FreeBSD na platformie Azure](freebsd-intro-on-azure.md).
+Jeśli chcesz poznać ofertę FreeBSD na platformie Azure, zapoznaj się z artykułem [wprowadzenie do FreeBSD na platformie Azure](freebsd-intro-on-azure.md).
 
-Aby dowiedzieć się więcej na temat PF, zapoznaj się [poradnik FreeBSD](https://www.freebsd.org/doc/handbook/firewalls-pf.html) lub [PF User Guide](https://www.freebsd.org/doc/handbook/firewalls-pf.html).
+Jeśli chcesz dowiedzieć się więcej o PF, zapoznaj się z tematem podręcznika [FreeBSD](https://www.freebsd.org/doc/handbook/firewalls-pf.html) lub [podręcznika użytkownika](https://www.freebsd.org/doc/handbook/firewalls-pf.html).

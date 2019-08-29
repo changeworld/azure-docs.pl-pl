@@ -1,32 +1,31 @@
 ---
-title: Obsługa zewnętrznych zdarzeń w funkcje trwałe - Azure
-description: Dowiedz się, jak obsługiwać zdarzenia zewnętrzne w rozszerzenia funkcji trwałych dla usługi Azure Functions.
+title: Obsługa zdarzeń zewnętrznych w Durable Functions — Azure
+description: Dowiedz się, jak obsługiwać zdarzenia zewnętrzne w rozszerzeniu Durable Functions Azure Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: eb024e11b78d13d5ab4544c634acef2ade8141c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d9c546064589e82cfef367978ebea98c2c202307
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730790"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087302"
 ---
-# <a name="handling-external-events-in-durable-functions-azure-functions"></a>Obsługa zdarzeń zewnętrznych w funkcje trwałe (usługi Azure Functions)
+# <a name="handling-external-events-in-durable-functions-azure-functions"></a>Obsługa zdarzeń zewnętrznych w Durable Functions (Azure Functions)
 
-Funkcje programu orchestrator może poczekać i nasłuchiwać zdarzeń zewnętrznych. Ta funkcja [funkcje trwałe](durable-functions-overview.md) jest często przydatny w przypadku obsługi z reakcji człowieka lub innych zewnętrznych wyzwalaczy.
+Funkcje programu Orchestrator mają możliwość oczekiwania i nasłuchiwania zdarzeń zewnętrznych. Ta funkcja [Durable Functions](durable-functions-overview.md) jest często przydatna do obsługi interakcji człowieka lub innych zewnętrznych wyzwalaczy.
 
 > [!NOTE]
-> Wydarzenia zewnętrzne, które są jednokierunkowe operacji asynchronicznych. Nie są one odpowiednie w sytuacjach, w których klient wysyła zdarzenia wymaga synchronicznej odpowiedzi z funkcji programu orchestrator.
+> Zdarzenia zewnętrzne to jednokierunkowe operacje asynchroniczne. Nie są odpowiednie do sytuacji, w których klient wysyłający zdarzenie potrzebuje synchronicznej odpowiedzi z funkcji programu Orchestrator.
 
-## <a name="wait-for-events"></a>Oczekiwanie na zdarzenia
+## <a name="wait-for-events"></a>Zaczekaj na zdarzenia
 
-[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) metoda umożliwia korzystanie z funkcji programu orchestrator asynchronicznie poczekać i nasłuchiwania na zdarzenie zewnętrzne. Deklaruje nasłuchiwania funkcja orkiestratora *nazwa* zdarzenia i *kształtu danych* oczekuje otrzymać.
+Metoda [WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) umożliwia asynchroniczne oczekiwanie i nasłuchiwanie zdarzeń zewnętrznych przez funkcję programu Orchestrator. Funkcja programu Orchestrator nasłuchiwanie deklaruje *nazwę* zdarzenia i *kształt danych* , które oczekuje na odebranie.
 
 ### <a name="c"></a>C#
 
@@ -47,7 +46,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -62,9 +61,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Poprzedni przykład nasłuchuje określonej pojedyncze zdarzenie i podejmuje działania, po odebraniu.
+Poprzedni przykład nasłuchuje określonego pojedynczego zdarzenia i podejmuje akcję po odebraniu.
 
-Może nasłuchiwać wielu zdarzeń jednocześnie, jak pokazano w poniższym przykładzie czeka na jedno z trzech powiadomienia o zdarzeniach możliwe.
+Można nasłuchiwać wielu zdarzeń współbieżnie, takich jak w poniższym przykładzie, które czeka na jedno z trzech możliwych powiadomień o zdarzeniach.
 
 #### <a name="c"></a>C#
 
@@ -93,7 +92,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -114,7 +113,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Poprzedni przykład nasłuchuje *wszelkie* wielu zdarzeń. Istnieje również możliwość oczekiwania *wszystkich* zdarzenia.
+Poprzedni przykład nasłuchuje dla *dowolnego* z wielu zdarzeń. Istnieje również możliwość poczekania na *wszystkie* zdarzenia.
 
 #### <a name="c"></a>C#
 
@@ -136,7 +135,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -155,18 +154,18 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) przez czas nieokreślony oczekuje na dane wejściowe.  Aplikacja funkcji może być bezpiecznie zwolniona podczas oczekiwania. Jeśli odebraniu zdarzenia dla tego wystąpienia orchestration jest wznowione automatycznie i natychmiast przetwarza zdarzenia.
+[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) czeka na nieokreślony czas w przypadku niektórych danych wejściowych.  Aplikacja funkcji może zostać bezpiecznie zwolniona z ładowania podczas oczekiwania. Jeśli i po nadejściu zdarzenia dla tego wystąpienia aranżacji zostanie ono automatycznie wznowione i natychmiast przetworzy zdarzenie.
 
 > [!NOTE]
-> Jeśli aplikacja funkcji korzysta z Plan zużycie, nie rozliczeń są naliczane opłaty, gdy funkcja orkiestratora oczekuje na zadanie z `WaitForExternalEvent` (.NET) lub `waitForExternalEvent` (JavaScript), niezależnie od tego, jak długo czekać.
+> Jeśli aplikacja funkcji korzysta z planu zużycia, nie są naliczane opłaty za rozliczanie, gdy funkcja programu Orchestrator oczekuje na `WaitForExternalEvent` zadanie z (.NET `waitForExternalEvent` ) lub (JavaScript), niezależnie od tego, jak długo czeka.
 
-Na platformie .NET, jeśli ładunek zdarzenia nie można przekonwertować na typ oczekiwany `T`, zgłaszany jest wyjątek.
+W programie .NET, jeśli nie można przekonwertować ładunku zdarzenia na oczekiwany typ `T`, zostanie zgłoszony wyjątek.
 
 ## <a name="send-events"></a>Wysyłanie zdarzeń
 
-[RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) metody [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) klasy wysyła zdarzenia `WaitForExternalEvent` (.NET) lub `waitForExternalEvent` czeka (JavaScript).  `RaiseEventAsync` Metoda przyjmuje *eventName* i *eventData* jako parametry. Dane zdarzenia musi być możliwy do serializacji JSON.
+Metoda [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) klasy [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) wysyła zdarzenia, które `WaitForExternalEvent` (.NET) lub `waitForExternalEvent` (JavaScript) czeka na.  Metoda `RaiseEventAsync` przyjmuje wartość *EventName* i *eventData* jako parametry. Dane zdarzenia muszą być serializowane w formacie JSON.
 
-Poniżej przedstawiono przykład wyzwalanej przez kolejkę funkcja, która wysyła zdarzenie "Zatwierdzenie" na wystąpienie funkcji programu orchestrator. Identyfikator wystąpienia aranżacji pochodzą z treści komunikatu w kolejce.
+Poniżej znajduje się przykładowa funkcja wyzwalana przez kolejki, która wysyła zdarzenie "zatwierdzenie" do wystąpienia funkcji programu Orchestrator. Identyfikator wystąpienia aranżacji pochodzi z treści komunikatu w kolejce.
 
 ### <a name="c"></a>C#
 
@@ -180,7 +179,7 @@ public static async Task Run(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -191,21 +190,21 @@ module.exports = async function(context, instanceId) {
 };
 ```
 
-Wewnętrznie `RaiseEventAsync` (.NET) lub `raiseEvent` umieszczeniu (JavaScript) komunikat, który pobiera pobierane przez funkcję programu orchestrator oczekiwania. Jeśli wystąpienie nie oczekuje na określonym *Nazwa zdarzenia* komunikat o zdarzeniu zostanie dodany do kolejki w pamięci. Jeśli wystąpienie aranżacji później zaczyna nasłuchiwanie, *Nazwa zdarzenia* będzie sprawdzał, kolejki komunikatów o zdarzeniach.
+Wewnętrznie, `RaiseEventAsync` (.NET) lub `raiseEvent` (JavaScript) enqueues komunikat, który jest pobierany przez oczekiwaną funkcję programu Orchestrator. Jeśli wystąpienie nie oczekuje na określoną *nazwę zdarzenia,* komunikat o zdarzeniu zostanie dodany do kolejki w pamięci. Jeśli wystąpienie aranżacji rozpocznie nasłuchiwanie dla tej *nazwy zdarzenia,* sprawdza kolejkę komunikatów o zdarzeniach.
 
 > [!NOTE]
-> Jeśli żadne wystąpienie aranżacji z określonym *identyfikator wystąpienia*, komunikat o zdarzeniu zostanie odrzucony. Aby uzyskać więcej informacji na temat tego zachowania, zobacz [problem w usłudze GitHub](https://github.com/Azure/azure-functions-durable-extension/issues/29). 
+> Jeśli nie istnieje wystąpienie aranżacji o określonym IDENTYFIKATORze *wystąpienia*, komunikat o zdarzeniu zostanie odrzucony. Aby uzyskać więcej informacji na temat tego zachowania, zobacz problem z usługą [GitHub](https://github.com/Azure/azure-functions-durable-extension/issues/29). 
 
 > [!WARNING]
-> Wdrażając aplikacje lokalnie w języku JavaScript, musisz ustawić zmienną środowiskową `WEBSITE_HOSTNAME` do `localhost:<port>`, np. `localhost:7071` na korzystanie z metod `DurableOrchestrationClient`. Aby uzyskać więcej informacji na temat tego wymagania, zobacz [problem w usłudze GitHub](https://github.com/Azure/azure-functions-durable-js/issues/28).
+> Podczas tworzenia lokalnie w języku JavaScript należy ustawić zmienną `WEBSITE_HOSTNAME` środowiskową na `localhost:<port>`, np. `localhost:7071`Aby użyć metod w `DurableOrchestrationClient`. Aby uzyskać więcej informacji na temat tego wymagania, zobacz artykuł dotyczący usługi [GitHub](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
-## <a name="next-steps"></a>Kolejne kroki
-
-> [!div class="nextstepaction"]
-> [Dowiedz się, jak skonfigurować orkiestracje nieustanne](durable-functions-eternal-orchestrations.md)
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Uruchamianie przykładu, który czeka, aż zdarzenia zewnętrzne](durable-functions-phone-verification.md)
+> [Dowiedz się, jak skonfigurować aranżacje Eternal](durable-functions-eternal-orchestrations.md)
 
 > [!div class="nextstepaction"]
-> [Uruchamianie przykładu, która czeka z reakcji człowieka](durable-functions-phone-verification.md)
+> [Uruchamianie przykładu, który czeka na zdarzenia zewnętrzne](durable-functions-phone-verification.md)
+
+> [!div class="nextstepaction"]
+> [Uruchamianie przykładu, który czeka na interakcję człowieka](durable-functions-phone-verification.md)

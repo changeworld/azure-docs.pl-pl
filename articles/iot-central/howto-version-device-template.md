@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c718794528989fbc46b404617f16d3a91ade6011
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 155f392410c5722a28ba09acafc1480e72586773
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877306"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100903"
 ---
 # <a name="create-a-new-device-template-version"></a>Utwórz nową wersję szablonu urządzenia
 
@@ -50,7 +50,7 @@ Poniższa lista zawiera opis akcji użytkownika, które mogą wymagać nowej wer
 
 Co się stanie z regułami i pulpitami nawigacyjnymi urządzeń w przypadku zmiany wersji?
 
-**Reguły** mogą zawierać warunki, które są zależne od właściwości. Jeśli usunięto jedną lub więcej z tych właściwości, te reguły mogą zostać przerwane w nowej wersji szablonu urządzenia. Możesz przejść do tych konkretnych reguł i zaktualizować warunki, aby naprawić te reguły. Reguły poprzedniej wersji powinny funkcjonować bez wpływu.
+**Reguły** w poprzedniej wersji szablonu urządzenia nadal pracują bez zmian. Reguły nie są automatycznie migrowane do nowej wersji szablonu urządzenia. Możesz tworzyć reguły dla nowej wersji szablonu w zwykły sposób. Aby uzyskać więcej informacji, zobacz artykuł dotyczący [tworzenia reguły telemetrii i konfigurowania powiadomień w aplikacji IoT Central platformy Azure](howto-create-telemetry-rules.md) .
 
 **Pulpity nawigacyjne urządzeń** mogą zawierać kilka typów kafelków. Niektóre kafelki mogą zawierać ustawienia i właściwości. Gdy właściwość lub ustawienie użyte w kafelku zostanie usunięte, kafelek jest całkowicie lub częściowo uszkodzony. Możesz przejść do kafelka i rozwiązać problem, usuwając kafelek lub aktualizując zawartość kafelka.
 

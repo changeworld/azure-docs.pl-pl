@@ -1,6 +1,6 @@
 ---
-title: Dostosowywanie portalu deweloperów usługi API Management przy użyciu szablonów — Azure | Dokumentacja firmy Microsoft
-description: Informacje o sposobie dostosowywania portalu deweloperów usługi Azure API Management przy użyciu szablonów.
+title: Dostosowywanie portalu deweloperów API Management przy użyciu szablonów — Azure | Microsoft Docs
+description: Dowiedz się, jak dostosować Portal deweloperów API Management platformy Azure przy użyciu szablonów.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,60 +10,59 @@ ms.assetid: a195675b-f7d0-4fc9-90bf-860e6f17ccf7
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 00d5e3df78e85d19a519786dad1a1b176ad7fa08
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8b250c45716146c505a803046b18bf5d05cf116
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837235"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073775"
 ---
-# <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Dostosowywanie portalu dla deweloperów usługi Azure API Management przy użyciu szablonów
+# <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Jak dostosować Portal deweloperów API Management platformy Azure przy użyciu szablonów
 
 Istnieją trzy podstawowe sposoby dostosowywania portalu deweloperów w usłudze Azure API Management:
 
 * [Edycja zawartości stron statycznych i elementów układu strony][modify-content-layout]
-* [Aktualizacja stylów używanych dla elementów strony w portalu deweloperów][customize-styles]
-* [Modyfikowanie szablonów używanych dla stron wygenerowanych przez portal] [ portal-templates] (opisana w tym przewodniku)
+* [Aktualizowanie stylów używanych dla elementów strony w portalu dla deweloperów][customize-styles]
+* [Modyfikowanie szablonów używanych dla stron wygenerowanych przez portal][portal-templates] (wyjaśniono w tym przewodniku)
 
-Szablony są używane, aby dostosować zawartość generowanych przez system portalu dla deweloperów (na przykład dokumentacji interfejsu API, produktów, uwierzytelniania użytkowników itp.). Za pomocą [DotLiquid](http://dotliquidmarkup.org/) składni i podany zbiór zasobów zlokalizowanych ciągów, ikon i formantów strony masz dużą elastyczność konfigurowania zawartości stron, zgodnie z potrzebami.
+Szablony służą do dostosowywania zawartości stron portalu deweloperów generowanych przez system (na przykład dokumentacji interfejsu API, produktów, uwierzytelniania użytkowników itp.). Za pomocą składni [DotLiquid](http://dotliquidmarkup.org/) i dostępnego zestawu zlokalizowanych zasobów ciągów, ikon i kontrolek stron, masz doskonałą elastyczność konfigurowania zawartości stron zgodnie z oczekiwaniami.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
 ## <a name="developer-portal-templates-overview"></a>Omówienie szablonów portalu dla deweloperów
 
-Edytowanie szablonów odbywa się z **portalu dla deweloperów** przy użyciu konta administratora. Do niego przejść, otwórz Azure Portal, a następnie kliknij przycisk **portalu dla deweloperów** na pasku narzędzi wystąpienia usługi API Management.
+Edytowanie szablonów odbywa się z poziomu **portalu dla deweloperów** , podczas gdy użytkownik jest zalogowany jako administrator. Aby najpierw uzyskać dostęp do witryny Azure Portal, kliknij pozycję **Portal dla deweloperów** na pasku narzędzi wystąpienia usługi API Management.
 
-Aby uzyskać dostęp do szablonów portalu dla deweloperów, kliknij ikonę Dostosuj po lewej stronie, aby wyświetlić menu dostosowywania, a następnie kliknij przycisk **szablony**.
+Aby uzyskać dostęp do szablonów portalu dla deweloperów, kliknij ikonę Dostosuj po lewej stronie, aby wyświetlić menu Dostosowywanie, a następnie kliknij pozycję **Szablony**.
 
-![Szablonów portalu dla deweloperów][api-management-customize-menu]
+![Szablony portalu dla deweloperów][api-management-customize-menu]
 
-Na liście szablony zostaną wyświetlone różne kategorie szablonów obejmujących różne strony w portalu dla deweloperów. Każdy szablon jest inna, ale kroki, aby je edytować, a następnie opublikować zmiany są takie same. Aby edytować szablon, kliknij nazwę szablonu.
+Lista szablonów zawiera kilka kategorii szablonów obejmujących różne strony w portalu dla deweloperów. Każdy szablon jest różny, ale czynności do edycji i publikowania zmian są takie same. Aby edytować szablon, kliknij nazwę szablonu.
 
-![Szablonów portalu dla deweloperów][api-management-templates-menu]
+![Szablony portalu dla deweloperów][api-management-templates-menu]
 
-Kliknij szablon spowoduje przejście do strony portalu dla deweloperów, który można dostosować za pomocą tego szablonu. W tym przykładzie **lista produktów** szablon jest wyświetlany. **Lista produktów** szablon określa obszar ekranu wskazywanym przez czerwony prostokąt.
+Kliknięcie szablonu spowoduje przejście do strony portalu dla deweloperów, którą można dostosować za pomocą tego szablonu. W tym przykładzie zostanie wyświetlony szablon **Lista produktów** . Szablon **Lista produktów** steruje obszarem ekranu wskazywanym przez czerwony prostokąt.
 
 ![Szablon listy produktów][api-management-developer-portal-templates-overview]
 
-Niektóre szablony, takie jak **profilu użytkownika** szablonów, dostosować różnych części tej samej stronie.
+Niektóre szablony, takie jak szablony **profilów użytkowników** , dostosowują różne części tej samej strony.
 
-![Szablony profilu użytkownika][api-management-user-profile-templates]
+![Szablony profilów użytkowników][api-management-user-profile-templates]
 
-Edytor dla każdego szablonu portalu dla deweloperów zawiera dwie sekcje wyświetlane u dołu strony. Lewa strona wyświetla okienka edycji szablonu, a po prawej stronie zawiera model danych dla szablonu.
+Edytor dla każdego szablonu portalu dla deweloperów ma dwie sekcje wyświetlane w dolnej części strony. Po lewej stronie zostanie wyświetlone okienko edycji szablonu, a po prawej stronie zostanie wyświetlony model danych dla szablonu.
 
-Szablon do edycji okienko zawiera kod znaczników, który kontroluje wygląd i zachowanie odpowiadającej mu stronie w portalu dla deweloperów. Używa znaczników w szablonie [DotLiquid](http://dotliquidmarkup.org/) składni. Jeden z popularnych edytorem DotLiquid jest [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). Wszelkie zmiany wprowadzone podczas edycji szablonu są wyświetlane w czasie rzeczywistym w przeglądarce, ale nie są widoczne dla klientów do momentu [Zapisz](#to-save-a-template) i [publikowania](#to-publish-a-template) szablonu.
+Okienko edycji szablonu zawiera znacznik, który kontroluje wygląd i zachowanie odpowiedniej strony w portalu dla deweloperów. Znaczniki w szablonie używają składni [DotLiquid](http://dotliquidmarkup.org/) . Jeden z popularnych edytorów dla DotLiquid jest [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). Wszystkie zmiany wprowadzone w szablonie podczas edytowania są wyświetlane w czasie rzeczywistym w przeglądarce, ale nie są widoczne dla klientów do momentu [zapisania](#to-save-a-template) i opublikowanie szablonu [](#to-publish-a-template) .
 
-![Oznaczenia szablonu][api-management-template]
+![Znaczniki szablonu][api-management-template]
 
-**Danych szablonu** okienko zawiera przewodnik do modelu danych jednostek, które są dostępne do użycia w określonym szablonie. Ten przewodnik zapewnia za pomocą wyświetlania danych na żywo, które są aktualnie wyświetlane w portalu dla deweloperów. Można rozwinąć okienka szablon, klikając pozycję prostokąt w prawym górnym rogu **danych szablonu** okienka.
+Okienko **dane szablonu** zawiera Przewodnik dotyczący modelu danych dla jednostek, które są dostępne do użycia w konkretnym szablonie. Ten przewodnik zawiera informacje na temat wyświetlania danych na żywo, które są aktualnie wyświetlane w portalu dla deweloperów. Okienka szablonu można rozwinąć, klikając prostokąt w prawym górnym rogu okienka **dane szablonu** .
 
-![Szablon modelu danych][api-management-template-data]
+![Model danych szablonu][api-management-template-data]
 
-W poprzednim przykładzie, istnieją dwa produkty wyświetlane w portalu dla deweloperów, które zostały pobrane z danym wyświetlanym w **danych szablonu** okienko, jak pokazano w poniższym przykładzie:
+W poprzednim przykładzie w portalu deweloperów są wyświetlane dwa produkty, które zostały pobrane z danych wyświetlanych w okienku **dane szablonu** , jak pokazano w następującym przykładzie:
 
 ```json
 {
@@ -101,7 +100,7 @@ W poprzednim przykładzie, istnieją dwa produkty wyświetlane w portalu dla dew
 }
 ```
 
-Kod znaczników w **lista produktów** szablonu przetwarza dane w celu dostarczania żądanego wyniku, iteracji w kolekcji produktów, aby wyświetlić informacje i łącza do każdego produktu. Uwaga `<search-control>` i `<page-control>` elementy w znaczniku. Te kontrolują wyświetlanie wyszukiwanie i stronicowanie formantów na stronie. `ProductsStrings|PageTitleProducts` jest to odwołanie zlokalizowany ciąg, który zawiera `h2` tekst nagłówka dla strony. Aby uzyskać listę zasobów ciągów, formantów strony i ikon, dostępny do użytku w szablonów portalu dla deweloperów, zobacz [dokumentacja szablonów portalu dla deweloperów usługi API Management](api-management-developer-portal-templates-reference.md).
+Znaczniki w szablonie **listy produktów** przetwarzają dane w celu zapewnienia żądanych danych wyjściowych przez iterację kolekcji produktów do wyświetlania informacji oraz łącza do poszczególnych produktów. Zanotuj elementy `<page-control>`iw znaczniku. `<search-control>` Kontrolują one wyświetlanie kontrolek wyszukiwania i stronicowania na stronie. `ProductsStrings|PageTitleProducts`to zlokalizowane odwołanie do ciągu, które zawiera `h2` tekst nagłówka strony. Listę zasobów ciągów, kontrolek stron i ikon dostępnych do użycia w szablonach portalu deweloperów można znaleźć w temacie [API Management dokumentacja szablonów portalu dla deweloperów](api-management-developer-portal-templates-reference.md).
 
 ```html
 <search-control></search-control>
@@ -130,61 +129,61 @@ Kod znaczników w **lista produktów** szablonu przetwarza dane w celu dostarcza
 ```
 
 ## <a name="to-save-a-template"></a>Aby zapisać szablon
-Aby zapisać szablon, kliknij przycisk Zapisz w edytorze szablonu.
+Aby zapisać szablon, kliknij przycisk Zapisz w edytorze szablonów.
 
-![Zapisywanie szablonu][api-management-save-template]
+![Zapisz szablon][api-management-save-template]
 
-Zapisano zmiany nie są na żywo w portalu dla deweloperów, dopóki nie zostaną opublikowane.
+Zapisane zmiany nie są aktywne w portalu dla deweloperów, dopóki nie zostaną opublikowane.
 
 ## <a name="to-publish-a-template"></a>Aby opublikować szablon
-Zapisane szablony można publikować indywidualnie lub wszystko ze sobą. Aby opublikować szablon osobno, kliknij przycisk Publikuj w edytorze szablonu.
+Zapisane szablony mogą być publikowane pojedynczo lub wspólnie. Aby opublikować pojedynczy szablon, kliknij przycisk Publikuj w edytorze szablonów.
 
 ![Publikowanie szablonu][api-management-publish-template]
 
-Kliknij przycisk **tak** aby potwierdzić, a następnie udostępnić szablon na żywo w portalu dla deweloperów.
+Kliknij przycisk **tak** , aby potwierdzić i utworzyć szablon na żywo w portalu dla deweloperów.
 
-![Upewnij się, Publikuj][api-management-publish-template-confirm]
+![Potwierdź opublikowanie][api-management-publish-template-confirm]
 
-Aby opublikować wszystkie wersje obecnie nieopublikowane szablonu, kliknij przycisk **Publikuj** z listy szablonów. Cofnięto publikowanie szablonów są oznaczane gwiazdką po nazwie szablonu. W tym przykładzie **lista produktów** i **produktu** szablony są publikowane.
+Aby opublikować wszystkie aktualnie nieopublikowane wersje szablonów, kliknij przycisk **Publikuj** na liście szablonów. Nieopublikowane szablony są oznaczone gwiazdką poniżej nazwy szablonu. W tym przykładzie jest publikowana **Lista produktów** i szablony **produktów** .
 
 ![Publikowanie szablonów][api-management-publish-templates]
 
-Kliknij przycisk **Publikuj dostosowania** o potwierdzenie.
+Kliknij przycisk **Publikuj dostosowania** w celu potwierdzenia.
 
-![Upewnij się, Publikuj][api-management-publish-customizations]
+![Potwierdź opublikowanie][api-management-publish-customizations]
 
-Nowo opublikowana szablonów zaczynają obowiązywać natychmiast w portalu dla deweloperów.
+Nowo opublikowane szablony zaczynają obowiązywać natychmiast w portalu dla deweloperów.
 
-## <a name="to-revert-a-template-to-the-previous-version"></a>Aby szablon z poprzednią wersją
-Aby szablon do poprzedniej wersji opublikowanej, kliknij przycisk Przywróć w edytorze szablonu.
+## <a name="to-revert-a-template-to-the-previous-version"></a>Aby przywrócić poprzednią wersję szablonu
+Aby przywrócić szablon do poprzedniej opublikowanej wersji, kliknij przycisk Przywróć w edytorze szablonów.
 
-![Przywróć szablonu][api-management-revert-template]
+![Przywróć szablon][api-management-revert-template]
 
 Kliknij przycisk **Tak**, aby potwierdzić.
 
 ![Potwierdź][api-management-revert-template-confirm]
 
-Poprzednio opublikowanej wersji szablonu jest aktywna w portalu dla deweloperów, po zakończeniu operacji przywracania.
+Wcześniej opublikowana wersja szablonu znajduje się w portalu dla deweloperów po zakończeniu operacji przywracania.
 
-## <a name="to-restore-a-template-to-the-default-version"></a>Aby przywrócić domyślną wersję szablonu
-Przywracanie szablonów do ich wersja domyślna jest procesem dwuetapowym. Najpierw musi zostać przywrócona szablonów i przywrócony wersji musi być następnie publikowane.
+## <a name="to-restore-a-template-to-the-default-version"></a>Aby przywrócić wersję domyślną szablonu
+Przywracanie szablonów do ich domyślnej wersji jest procesem dwuetapowym. Najpierw należy przywrócić szablony, a następnie przywrócić przywrócone wersje.
 
-Aby przywrócić jednego szablonu do domyślnej wersji, kliknij przycisk przywracania w edytorze szablonu.
+Aby przywrócić domyślną wersję jednego szablonu, kliknij przycisk Przywróć w edytorze szablonów.
 
-![Przywróć szablonu][api-management-reset-template]
+![Przywróć szablon][api-management-reset-template]
 
 Kliknij przycisk **Tak**, aby potwierdzić.
 
 ![Potwierdź][api-management-reset-template-confirm]
 
-Aby przywrócić wszystkie szablony do ich wersji domyślnej, kliknij przycisk **Przywracanie domyślnych szablonów** na liście szablonów.
+Aby przywrócić domyślne wersje wszystkich szablonów, kliknij przycisk **Przywróć domyślne szablony** na liście szablonów.
 
-![Przywróć szablonów][api-management-restore-templates]
+![Przywracanie szablonów][api-management-restore-templates]
 
-Szablony przywróconej musi być następnie publikowane indywidualnie lub w całości wykonując kroki opisane w [publikowania szablonu](#to-publish-a-template).
+Przywrócone szablony należy następnie opublikować pojedynczo lub wszystkie jednocześnie, wykonując czynności opisane w sekcji [Aby opublikować szablon](#to-publish-a-template).
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać informacje referencyjne dotyczące szablonów portalu dla deweloperów, zasoby w postaci ciągów, ikon i formantów strony, zobacz [dokumentacja szablonów portalu dla deweloperów usługi API Management](api-management-developer-portal-templates-reference.md).
+## <a name="next-steps"></a>Następne kroki
+Informacje referencyjne dotyczące szablonów portalu deweloperów, zasobów ciągów, ikon i kontrolek strony znajdują się w temacie [API Management dokumentacja szablonów portalu dla deweloperów](api-management-developer-portal-templates-reference.md).
 
 [modify-content-layout]: api-management-modify-content-layout.md
 [customize-styles]: api-management-customize-styles.md

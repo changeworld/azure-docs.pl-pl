@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 60e5e6cc6fdd839c8bbe44d8e1d2e794e7afb34d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 5909bf2a41745162902911aa31a9bce07d36135b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323056"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094576"
 ---
 # <a name="task-complete-event"></a>Zdarzenie ukończenia zadania
 
@@ -86,8 +85,8 @@ ms.locfileid: "68323056"
 
 |Nazwa elementu|Type|Uwagi|
 |------------------|----------|-----------|
-|startTime|Datetime|Godzina, o której uruchomiono zadanie. "Uruchomiona" odpowiada stanie **uruchomienia** , więc jeśli zadanie Określa pliki zasobów lub pakiety aplikacji, czas rozpoczęcia odzwierciedla czas, w którym zadanie rozpoczęło pobieranie lub wdrażanie.  Jeśli zadanie zostało ponownie uruchomione lub ponowione, jest to Ostatnia godzina, o której uruchomiono zadanie.|
-|endTime|Datetime|Godzina ukończenia zadania.|
+|startTime|DateTime|Godzina, o której uruchomiono zadanie. "Uruchomiona" odpowiada stanie **uruchomienia** , więc jeśli zadanie Określa pliki zasobów lub pakiety aplikacji, czas rozpoczęcia odzwierciedla czas, w którym zadanie rozpoczęło pobieranie lub wdrażanie.  Jeśli zadanie zostało ponownie uruchomione lub ponowione, jest to Ostatnia godzina, o której uruchomiono zadanie.|
+|endTime|DateTime|Godzina ukończenia zadania.|
 |exitCode|Int32|Kod zakończenia zadania.|
 |retryCount|Int32|Liczba ponownych prób wykonania zadania przez usługę Batch. Zadanie zostanie ponowione, jeśli zostanie zakończone z niezerowym kodem zakończenia, do określonego MaxTaskRetryCount.|
 |requeueCount|Int32|Liczba uruchomień zadania w kolejce przez usługę Batch w wyniku żądania użytkownika.<br /><br /> Gdy użytkownik usuwa węzły z puli (zmieniając rozmiar lub zmniejszając pulę) lub gdy zadanie jest wyłączone, użytkownik może określić, że uruchomione zadania w węzłach będą ponownie umieszczane w kolejce do wykonania. Ta liczba śledzi, ile razy zadanie zostało ponownie poddane kolejce z tych przyczyn.|

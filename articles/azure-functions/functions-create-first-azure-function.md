@@ -1,5 +1,5 @@
 ---
-title: Tworzenie pierwszej funkcji w witrynie Azure portal | Dokumentacja firmy Microsoft
+title: Tworzenie pierwszej funkcji z poziomu Azure Portal | Microsoft Docs
 description: Dowiedz się, jak utworzyć pierwszą funkcję platformy Azure do wykonywania bezserwerowego przy użyciu witryny Azure Portal.
 services: functions
 documentationcenter: na
@@ -7,28 +7,27 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: 96cf87b9-8db6-41a8-863a-abb828e3d06d
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: 4a49cb3de2dc36dcd933a0b31b6a55b838eb1336
-ms.sourcegitcommit: 4c2b9bc9cc704652cc77f33a870c4ec2d0579451
+ms.openlocfilehash: 93b3f34b78710b18b6ff95f91b3eeda09e9e73e1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2019
-ms.locfileid: "65864608"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097001"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Tworzenie pierwszej funkcji w witrynie Azure Portal
 
-Usługa Azure Functions umożliwia wykonywanie kodu w środowisku [bezserwerowym](https://azure.microsoft.com/solutions/serverless/) bez konieczności uprzedniego tworzenia maszyny wirtualnej lub publikowania aplikacji internetowej. W tym artykule Dowiedz się, jak za pomocą funkcji w celu utworzenia funkcji "hello world" w witrynie Azure portal.
+Usługa Azure Functions umożliwia wykonywanie kodu w środowisku [bezserwerowym](https://azure.microsoft.com/solutions/serverless/) bez konieczności uprzedniego tworzenia maszyny wirtualnej lub publikowania aplikacji internetowej. W tym artykule dowiesz się, jak za pomocą funkcji utworzyć funkcję "Hello World" w Azure Portal.
 
 ![Tworzenie aplikacji funkcji w witrynie Azure Portal](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!NOTE]
-> C#Deweloperzy należy wziąć pod uwagę [tworzenie pierwszej funkcji w programie Visual Studio 2019](functions-create-your-first-function-visual-studio.md) zamiast w portalu. 
+> C#Deweloperzy powinni rozważyć [utworzenie pierwszej funkcji w programie Visual Studio 2019](functions-create-your-first-function-visual-studio.md) zamiast w portalu. 
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
@@ -46,7 +45,7 @@ Następnie należy utworzyć funkcję w nowej aplikacji funkcji.
 
 1. Rozwiń nową aplikację funkcji, a następnie wybierz przycisk **+** obok opcji **Functions**, wybierz opcję **W portalu** i wybierz opcję **Kontynuuj**.
 
-    ![Funkcje Przewodnik Szybki Start dotyczące wybierania platformy.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+    ![Funkcje — szybki start do wybierania platformy.](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
 
 1. Wybierz opcję **Element WebHook + interfejs API**, a następnie wybierz opcję **Utwórz**.
 
@@ -58,7 +57,7 @@ Możesz teraz uruchomić nową funkcję, wysyłając żądanie HTTP.
 
 ## <a name="test-the-function"></a>Testowanie funkcji
 
-1. W nowej funkcji kliknij pozycję **</> Pobierz adres URL funkcji** w prawym górnym rogu, wybierz pozycję **domyślne (klawisz funkcji)**, a następnie kliknij pozycję **Kopiuj**. 
+1. W nowej funkcji kliknij pozycję **</> Pobierz adres URL funkcji** w prawym górnym rogu, wybierz pozycję **domyślne (klawisz funkcji)** , a następnie kliknij pozycję **Kopiuj**. 
 
     ![Kopiowanie adresu URL funkcji z witryny Azure Portal](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
@@ -78,7 +77,7 @@ Możesz teraz uruchomić nową funkcję, wysyłając żądanie HTTP.
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Utworzono aplikację funkcji z prostą funkcją wyzwalaną przez protokół HTTP.  
 

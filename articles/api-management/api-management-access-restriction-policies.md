@@ -10,16 +10,15 @@ ms.assetid: 034febe3-465f-4840-9fc6-c448ef520b0f
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 4f06e579e8548f4220d8f3fb4b618902f18b538e
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: cfb4bda597b2b7ab4658244c46253f5118723402
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774803"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073806"
 ---
 # <a name="api-management-access-restriction-policies"></a>Zasady ograniczeń dostępu API Management
 
@@ -61,19 +60,19 @@ Ten temat zawiera informacje dotyczące następujących zasad API Management. Ab
 
 ### <a name="elements"></a>Elementy
 
-| Name (Nazwa)         | Opis                                                                                                                                   | Wymagane |
+| Name         | Opis                                                                                                                                   | Wymagane |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| check-header | Element główny.                                                                                                                                 | Yes      |
+| check-header | Element główny.                                                                                                                                 | Tak      |
 | value        | Dozwolona wartość nagłówka HTTP. Gdy określono wiele elementów wartości, sprawdzanie jest uznawane za sukces, jeśli jedna z wartości jest zgodna. | Nie       |
 
 ### <a name="attributes"></a>Atrybuty
 
-| Name (Nazwa)                       | Opis                                                                                                                                                            | Wymagane | Domyślny |
+| Name                       | Opis                                                                                                                                                            | Wymagane | Domyślny |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
 | failed-check-error-message | Komunikat o błędzie do zwrócenia w treści odpowiedzi HTTP, jeśli nagłówek nie istnieje lub ma nieprawidłową wartość. Ten komunikat musi mieć poprawnie zmienione znaki specjalne. | Tak      | ND     |
 | failed-check-httpcode      | Kod stanu HTTP do zwrócenia, jeśli nagłówek nie istnieje lub ma nieprawidłową wartość.                                                                                        | Tak      | ND     |
 | Nazwa nagłówka                | Nazwa nagłówka HTTP do sprawdzenia.                                                                                                                                  | Tak      | ND     |
-| Ignoruj wielkość liter                | Można ustawić na wartość true lub false. Jeśli jest ustawiona na wartość true Case, jest ignorowana, gdy wartość nagłówka jest porównywana z zestawem akceptowalnych wartości.                                    | Yes      | ND     |
+| Ignoruj wielkość liter                | Można ustawić na wartość true lub false. Jeśli jest ustawiona na wartość true Case, jest ignorowana, gdy wartość nagłówka jest porównywana z zestawem akceptowalnych wartości.                                    | Tak      | ND     |
 
 ### <a name="usage"></a>Użycie
 
@@ -121,15 +120,15 @@ Tych zasad można używać w następujących sekcjach i [](https://azure.microso
 
 ### <a name="elements"></a>Elementy
 
-| Name (Nazwa)      | Opis                                                                                                                                                                                                                                                                                              | Wymagane |
+| Name      | Opis                                                                                                                                                                                                                                                                                              | Wymagane |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| set-limit | Element główny.                                                                                                                                                                                                                                                                                            | Yes      |
+| set-limit | Element główny.                                                                                                                                                                                                                                                                                            | Tak      |
 | interfejs API       | Dodaj co najmniej jeden z tych elementów, aby nałożyć limit liczby wywołań na interfejsy API w ramach produktu. Limity szybkości wywołań produktu i interfejsu API są stosowane niezależnie. Do interfejsu API można odwoływać `name` się `id`za pośrednictwem lub. Jeśli podano oba atrybuty, `id` zostaną one użyte i `name` zostaną zignorowane.                    | Nie       |
 | operation | Dodaj jeden lub więcej z tych elementów, aby nałożyć limit liczby wywołań na operacje w interfejsie API. Limity szybkości wywołań produktu, interfejsu API i operacji są stosowane niezależnie. Operacji można przywoływać za `name` pośrednictwem `id`lub. Jeśli podano oba atrybuty, `id` zostaną one użyte i `name` zostaną zignorowane. | Nie       |
 
 ### <a name="attributes"></a>Atrybuty
 
-| Name (Nazwa)           | Opis                                                                                           | Wymagane | Domyślny |
+| Name           | Opis                                                                                           | Wymagane | Domyślny |
 | -------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | name           | Nazwa interfejsu API, dla którego ma zostać zastosowany limit szybkości.                                                | Tak      | ND     |
 | wywołania          | Maksymalna całkowita liczba wywołań dozwolona w przedziale czasu określonym w `renewal-period`. | Tak      | ND     |
@@ -186,13 +185,13 @@ W poniższym przykładzie Limit szybkości jest poprzedzony przez adres IP obiek
 
 ### <a name="elements"></a>Elementy
 
-| Name (Nazwa)      | Opis   | Wymagane |
+| Name      | Opis   | Wymagane |
 | --------- | ------------- | -------- |
 | set-limit | Element główny. | Tak      |
 
 ### <a name="attributes"></a>Atrybuty
 
-| Name (Nazwa)                | Opis                                                                                           | Wymagane | Domyślny |
+| Name                | Opis                                                                                           | Wymagane | Domyślny |
 | ------------------- | ----------------------------------------------------------------------------------------------------- | -------- | ------- |
 | wywołania               | Maksymalna całkowita liczba wywołań dozwolona w przedziale czasu określonym w `renewal-period`. | Tak      | ND     |
 | klucz licznika         | Klucz, który ma być używany na potrzeby zasad limitu szybkości.                                                             | Tak      | ND     |
@@ -233,7 +232,7 @@ W poniższym przykładzie zasada zezwala tylko na żądania pochodzące z pojedy
 
 ### <a name="elements"></a>Elementy
 
-| Name (Nazwa)                                      | Opis                                         | Wymagane                                                       |
+| Name                                      | Opis                                         | Wymagane                                                       |
 | ----------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------- |
 | ip-filter                                 | Element główny.                                       | Tak                                                            |
 | adres                                   | Określa pojedynczy adres IP, na który ma zostać przefiltrowany.   | Co najmniej jeden `address` `address-range` element jest wymagany. |
@@ -241,10 +240,10 @@ W poniższym przykładzie zasada zezwala tylko na żądania pochodzące z pojedy
 
 ### <a name="attributes"></a>Atrybuty
 
-| Name (Nazwa)                                      | Opis                                                                                 | Wymagane                                           | Domyślny |
+| Name                                      | Opis                                                                                 | Wymagane                                           | Domyślny |
 | ----------------------------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------- | ------- |
 | zakres adresów od = "Address" do = "Address" | Zakres adresów IP, dla których ma być dozwolony lub zablokowany dostęp.                                        | Wymagane, `address-range` gdy element jest używany. | ND     |
-| IP-Filter Action = "Zezwalaj &#124; na Zabroń"    | Określa, czy wywołania powinny być dozwolone czy nie dla określonych adresów IP i zakresów. | Yes                                                | ND     |
+| IP-Filter Action = "Zezwalaj &#124; na Zabroń"    | Określa, czy wywołania powinny być dozwolone czy nie dla określonych adresów IP i zakresów. | Tak                                                | ND     |
 
 ### <a name="usage"></a>Użycie
 
@@ -288,7 +287,7 @@ Tych zasad można używać w następujących sekcjach i [](https://azure.microso
 
 ### <a name="elements"></a>Elementy
 
-| Name (Nazwa)      | Opis                                                                                                                                                                                                                                                                                  | Wymagane |
+| Name      | Opis                                                                                                                                                                                                                                                                                  | Wymagane |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | quota     | Element główny.                                                                                                                                                                                                                                                                                | Tak      |
 | interfejs API       | Dodaj jeden lub więcej z tych elementów, aby nałożyć przydział wywołań na interfejsy API w ramach produktu. Przydziały wywołań produktu i interfejsu API są stosowane niezależnie. Do interfejsu API można odwoływać `name` się `id`za pośrednictwem lub. Jeśli podano oba atrybuty, `id` zostaną one użyte i `name` zostaną zignorowane.                    | Nie       |
@@ -296,7 +295,7 @@ Tych zasad można używać w następujących sekcjach i [](https://azure.microso
 
 ### <a name="attributes"></a>Atrybuty
 
-| Name (Nazwa)           | Opis                                                                                               | Wymagane                                                         | Domyślny |
+| Name           | Opis                                                                                               | Wymagane                                                         | Domyślny |
 | -------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | name           | Nazwa interfejsu API lub operacji, dla której ma zastosowanie przydział.                                             | Tak                                                              | ND     |
 | bandwidth      | Maksymalna łączna liczba kilobajtów dozwolona w przedziale czasu określonym w `renewal-period`. | `calls` Należy`bandwidth`określić oba jednocześnie. | ND     |
@@ -350,13 +349,13 @@ W poniższym przykładzie limit przydziału jest poprzedzony przez adres IP obie
 
 ### <a name="elements"></a>Elementy
 
-| Name (Nazwa)  | Opis   | Wymagane |
+| Name  | Opis   | Wymagane |
 | ----- | ------------- | -------- |
 | quota | Element główny. | Tak      |
 
 ### <a name="attributes"></a>Atrybuty
 
-| Name (Nazwa)                | Opis                                                                                               | Wymagane                                                         | Domyślny |
+| Name                | Opis                                                                                               | Wymagane                                                         | Domyślny |
 | ------------------- | --------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- | ------- |
 | bandwidth           | Maksymalna łączna liczba kilobajtów dozwolona w przedziale czasu określonym w `renewal-period`. | `calls` Należy`bandwidth`określić oba jednocześnie. | ND     |
 | wywołania               | Maksymalna całkowita liczba wywołań dozwolona w przedziale czasu określonym w `renewal-period`.     | `calls` Należy`bandwidth`określić oba jednocześnie. | ND     |
@@ -534,7 +533,7 @@ Ten przykład pokazuje, jak używać zasad [weryfikacji tokenu JWT](api-manageme
 
 ### <a name="attributes"></a>Atrybuty
 
-| Name (Nazwa)                            | Opis                                                                                                                                                                                                                                                                                                                                                                                                                                            | Wymagane                                                                         | Domyślny                                                                           |
+| Name                            | Opis                                                                                                                                                                                                                                                                                                                                                                                                                                            | Wymagane                                                                         | Domyślny                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | przechylenie zegara                      | Czasu. Użyj, aby określić maksymalną oczekiwaną różnicę czasu między zegarami systemowymi wystawcy tokenów a wystąpieniem API Management.                                                                                                                                                                                                                                                                                                               | Nie                                                                               | 0 sekund                                                                         |
 | failed-validation-error-message | Komunikat o błędzie do zwrócenia w treści odpowiedzi HTTP, jeśli token JWT nie przeszedł walidacji. Ten komunikat musi mieć poprawnie zmienione znaki specjalne.                                                                                                                                                                                                                                                                                                 | Nie                                                                               | Domyślny komunikat o błędzie zależy od problemu ze sprawdzaniem poprawności, na przykład "nieobecność tokenu JWT". |
@@ -548,7 +547,7 @@ Ten przykład pokazuje, jak używać zasad [weryfikacji tokenu JWT](api-manageme
 | Wymagaj-schemat                  | Nazwa schematu tokenów, np. "Bearer". Gdy ten atrybut jest ustawiony, zasady zapewnią, że określony schemat jest obecny w wartości nagłówka autoryzacji.                                                                                                                                                                                                                                                                                    | Nie                                                                               | ND                                                                               |
 | Wymagaj-podpisane-tokeny           | Typu. Określa, czy token musi być podpisany.                                                                                                                                                                                                                                                                                                                                                                                           | Nie                                                                               | true                                                                              |
 | rozdzielając                       | Parametry. Określa separator (np. ","), który będzie używany do wyodrębniania zestawu wartości z roszczeń wielowartościowych.                                                                                                                                                                                                                                                                                                                                          | Nie                                                                               | ND                                                                               |
-| url                             | Otwórz adres URL punktu końcowego konfiguracji identyfikatora, z którego można uzyskać metadane konfiguracji otwartego identyfikatora. Odpowiedź powinna być zgodna ze specyfikacją zdefiniowaną w adresie URL`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`:. W przypadku Azure Active Directory użyj następującego adresu URL `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` : podstawianie nazwy dzierżawy katalogu, `contoso.onmicrosoft.com`np. | Yes                                                                              | ND                                                                               |
+| url                             | Otwórz adres URL punktu końcowego konfiguracji identyfikatora, z którego można uzyskać metadane konfiguracji otwartego identyfikatora. Odpowiedź powinna być zgodna ze specyfikacją zdefiniowaną w adresie URL`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`:. W przypadku Azure Active Directory użyj następującego adresu URL `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` : podstawianie nazwy dzierżawy katalogu, `contoso.onmicrosoft.com`np. | Tak                                                                              | ND                                                                               |
 Output-token-Variable-Name|Parametry. Nazwa zmiennej kontekstowej, która będzie otrzymywać wartość tokenu jako obiekt typu [`Jwt`](api-management-policy-expressions.md) po pomyślnym sprawdzeniu tokenu|Nie|ND
 
 ### <a name="usage"></a>Użycie

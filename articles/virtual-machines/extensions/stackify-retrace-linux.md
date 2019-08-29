@@ -1,6 +1,6 @@
 ---
-title: Stackify odtwarzanie rozszerzenia agenta systemu Linux platformy Azure | Dokumentacja firmy Microsoft
-description: Wdróż Stackify odtwarzanie agenta systemu Linux na maszynie wirtualnej systemu Linux.
+title: Rozwiązania Stackify retrace rozszerzenie agenta systemu Linux platformy Azure | Microsoft Docs
+description: Wdróż agenta ponownego śledzenia rozwiązania Stackify na maszynie wirtualnej z systemem Linux.
 services: virtual-machines-linux
 documentationcenter: ''
 author: darinhoward
@@ -8,61 +8,60 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: roiyz
-ms.openlocfilehash: ca3232dc3862cffb67d396b3ec2333fdc28dbb65
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 6db152394a8e57689b34436b48dbcb4ecdc58b5a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706638"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084308"
 ---
-# <a name="stackify-retrace-linux-agent-extension"></a>Stackify odtwarzanie rozszerzenia agenta systemu Linux
+# <a name="stackify-retrace-linux-agent-extension"></a>Rozwiązania Stackify retrace rozszerzenie agenta systemu Linux
 
 ## <a name="overview"></a>Omówienie
 
-Stackify zawiera produkty, które śledzą szczegółowe informacje o aplikacji w taki sposób, aby ułatwić znajdowanie i szybkie rozwiązywanie problemów. Dla zespołów deweloperów odtwarzanie jest wydajność administratorami w pełni zintegrowanego środowiska wielu aplikacji. Łączy kilka narzędzi, czego potrzebuje każdy zespół programistów.
+Rozwiązania Stackify zawiera produkty, które śledzą szczegółowe informacje o aplikacji, aby ułatwić szybkie znajdowanie i rozwiązywanie problemów. W przypadku zespołów deweloperów, retrace to w pełni zintegrowana, wielośrodowiskowa, niewydajna wydajność aplikacji. Łączy on kilka narzędzi, których potrzebuje każdy zespół programistyczny.
 
-Odtwarzanie to narzędzie tylko, która udostępnia wszystkie następujące funkcje we wszystkich środowiskach w ramach jednej platformy.
+Retrace to JEDYNe narzędzie, które zapewnia wszystkie poniższe możliwości we wszystkich środowiskach na jednej platformie.
 
 * Zarządzanie wydajnością aplikacji (APM)
-* Rejestrowanie serwera i aplikacji
-* Monitorowanie i śledzenie błędów
-* Serwer, aplikacji i metryki niestandardowe
+* Rejestrowanie aplikacji i serwera
+* Śledzenie i monitorowanie błędów
+* Serwer, aplikacja i metryki niestandardowe
 
-**Około Stackify rozszerzenia agenta systemu Linux**
+**Informacje o rozszerzeniu agenta rozwiązania Stackify Linux**
 
-To rozszerzenie zapewnia ścieżkę instalacji dla agenta systemu Linux dla odtwarzanie. 
+To rozszerzenie zapewnia ścieżkę instalacji agenta systemu Linux do ponownego śledzenia. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="operating-system"></a>System operacyjny 
 
-Odtwarzanie agenta mogą być uruchamiane względem tych dystrybucje systemu Linux
+Agenta ponownego śledzenia można uruchomić w odniesieniu do tych dystrybucji systemu Linux.
 
 | Dystrybucja | Version |
 |---|---|
-| Ubuntu | 16.04 LTS, 14.04 LTS 16.10 i 17.04 |
+| Ubuntu | 16,04 LTS, 14,04 LTS, 16,10 i 17,04 |
 | Debian | 7,9 + i 8.2 +, 9 |
-| Red Hat | 6.7+, 7.1+ |
-| CentOS | 6.3+, 7.0+ |
+| Red Hat | 6.7 +, 7.1 + |
+| CentOS | 6.3 +, 7.0 + |
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
 
-Rozszerzenie Stackify agenta dla systemu Linux wymaga, że docelowej maszyny wirtualnej jest połączony z Internetem. 
+Rozszerzenie agenta rozwiązania Stackify dla systemu Linux wymaga, aby docelowa maszyna wirtualna była połączona z Internetem. 
 
-Może być konieczne dostosowanie konfigurację sieci, aby zezwolić na połączenia z rozwiązania Stackify, zobacz https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall. 
+Może być konieczne dostosowanie konfiguracji sieci w celu umożliwienia połączeń z usługą rozwiązania Stackify, zobacz https://support.stackify.com/hc/en-us/articles/207891903-Adding-Exceptions-to-a-Firewall. 
 
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
 ---
 
-Następujący kod JSON zawiera schemat dla rozszerzenia Stackify odtwarzanie agenta. Rozszerzenie wymaga `environment` i `activationKey`.
+Poniższy kod JSON przedstawia schemat rozszerzenia agenta retrace rozwiązania Stackify. Rozszerzenie wymaga `environment` i `activationKey`.
 
 ```json
     {
@@ -90,11 +89,11 @@ Następujący kod JSON zawiera schemat dla rozszerzenia Stackify odtwarzanie age
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu 
 
-Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON szczegółowo opisane w poprzedniej sekcji może służyć w szablonie usługi Azure Resource Manager do uruchomienia rozszerzenia Stackify odtwarzanie agenta systemu Linux podczas wdrażania szablonu usługi Azure Resource Manager.  
+Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Schemat JSON opisany w poprzedniej sekcji można użyć w szablonie Azure Resource Manager, aby uruchomić rozszerzenie rozwiązania Stackify retrace agenta systemu Linux podczas wdrażania szablonu Azure Resource Manager.  
 
-Kod JSON dla rozszerzenia maszyny wirtualnej mogą być zagnieżdżone wewnątrz zasobu maszyny wirtualnej lub umieszczone w katalogu głównego lub najwyższego poziomu szablon JSON usługi Resource Manager. Rozmieszczanie za pomocą pliku JSON ma wpływ na wartości nazwy i typu zasobu. Aby uzyskać więcej informacji zobacz Nazwa zestawu i typu dla zasobów podrzędnych.
+KOD JSON rozszerzenia maszyny wirtualnej może być zagnieżdżony w obrębie zasobu maszyny wirtualnej lub umieszczony na głównym lub najwyższym poziomie szablonu JSON Menedżer zasobów. Położenie pliku JSON wpływa na wartość nazwy zasobu i typu. Aby uzyskać więcej informacji, zobacz Ustawianie nazwy i typu dla zasobów podrzędnych.
 
-W poniższym przykładzie założono, że rozszerzenia Stackify odtwarzanie systemu Linux jest zagnieżdżona w obrębie zasobu maszyny wirtualnej. Podczas zagnieżdżania rozszerzenia zasobu, za pomocą pliku JSON jest umieszczane w "zasoby": obiekt [] maszyny wirtualnej.
+W poniższym przykładzie przyjęto założenie, że rozszerzenie rozwiązania Stackify retrace systemu Linux jest zagnieżdżone w ramach zasobu maszyny wirtualnej. Podczas zagnieżdżania zasobu rozszerzenia kod JSON jest umieszczany w obiekcie "Resources": [] maszyny wirtualnej.
 
 Rozszerzenie wymaga `environment` i `activationKey`.
 
@@ -149,9 +148,9 @@ Podczas umieszczania rozszerzenia JSON w katalogu głównym szablonu, nazwa zaso
 ```
 
 
-## <a name="powershell-deployment"></a>Wdrożenie programu PowerShell
+## <a name="powershell-deployment"></a>Wdrażanie programu PowerShell
 
-`Set-AzVMExtension` Polecenie może służyć do wdrażania agenta systemu Linux odtwarzanie Stackify rozszerzenie maszyny wirtualnej na istniejącej maszyny wirtualnej. Przed uruchomieniem polecenia, konfiguracje publicznymi i prywatnymi muszą być przechowywane w tabeli wyznaczania wartości skrótu programu PowerShell.
+Za `Set-AzVMExtension` pomocą polecenia można wdrożyć rozszerzenie maszyny wirtualnej agenta rozwiązania Stackify ponownego śledzenia dla istniejącej maszyny wirtualnej. Przed uruchomieniem polecenia należy zapisać konfigurację publiczną i prywatną w tabeli skrótów programu PowerShell.
 
 Rozszerzenie wymaga `environment` i `activationKey`.
 
@@ -172,7 +171,7 @@ Set-AzVMExtension -ExtensionName "Stackify.LinuxAgent.Extension" `
 
 ## <a name="azure-cli-deployment"></a>Wdrażania interfejs wiersza polecenia platformy Azure 
 
-Narzędzie wiersza polecenia platformy Azure może służyć do wdrażania agenta systemu Linux odtwarzanie Stackify rozszerzenie maszyny wirtualnej na istniejącej maszyny wirtualnej.  
+Narzędzia interfejsu wiersza polecenia platformy Azure można użyć do wdrożenia rozszerzenia maszyny wirtualnej rozwiązania Stackify retrace agenta systemu Linux na istniejącej maszynie wirtualnej.  
 
 Rozszerzenie wymaga `environment` i `activationKey`.
 
@@ -184,19 +183,19 @@ az vm extension set --publisher 'Stackify.LinuxAgent.Extension' --version 1.0 --
 
 ### <a name="error-codes"></a>Kody błędów
 
-| Kod błędu | Znaczenie | Możliwe działania |
+| Kod błędu | Znaczenie | Możliwa akcja |
 | :---: | --- | --- |
-| 10 | Błąd instalacji | wymagana jest wget |
-| 20 | Błąd instalacji | język Python jest wymagana |
-| 30 | Błąd instalacji | "sudo" jest wymagana |
-| 40 | Błąd instalacji | klucz activationKey jest wymagana |
-| 51 | Błąd instalacji | Dystrybucja systemu operacyjnego nie jest obsługiwane |
+| 10 | Błąd instalacji | wget jest wymagany |
+| 20 | Błąd instalacji | wymagany jest język Python |
+| 30 | Błąd instalacji | sudo jest wymagany |
+| 40 | Błąd instalacji | activationKey jest wymagany |
+| 51 | Błąd instalacji | Dystrybucji systemu operacyjnego nie jest obsługiwana |
 | 60 | Błąd instalacji | środowisko jest wymagane |
 | 70 | Błąd instalacji | Nieznane |
-| 80 | Włącz błędów | Ustawienia usługi nie powiodło się |
-| 90 | Włącz błędów | Uruchamianie usługi nie powiodło się |
-| 100 | Wyłącz błąd | Zatrzymywanie usługi nie powiodło się |
-| 110 | Wyłącz błąd | Usunięcie usługi nie powiodło się |
-| 120 | Błąd dezinstalacji | Zatrzymywanie usługi nie powiodło się |
+| 80 | Włącz błąd | Instalacja usługi nie powiodła się |
+| 90 | Włącz błąd | Uruchamianie usługi nie powiodło się |
+| 100 | Wyłącz błąd | Zatrzymanie usługi nie powiodło się |
+| 110 | Wyłącz błąd | Usuwanie usługi nie powiodło się |
+| 120 | Błąd dezinstalacji | Zatrzymanie usługi nie powiodło się |
 
-Jeśli potrzebujesz więcej pomocy możesz skontaktować się ze rozwiązania Stackify pomocy technicznej związanej z https://support.stackify.com.
+Jeśli potrzebujesz więcej pomocy, możesz skontaktować się z pomocą https://support.stackify.com techniczną rozwiązania Stackify.

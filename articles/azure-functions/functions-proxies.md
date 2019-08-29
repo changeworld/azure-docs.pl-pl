@@ -6,16 +6,15 @@ author: alexkarcher-msft
 manager: jeconnoc
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 2fbf29385b9a14cf5d4a9df621f0767a32079587
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e5f856bbd8f6fdec46d947a4c726024a08a2b6e9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61020997"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096051"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Praca z serwerów proxy usługi Azure Functions
 
@@ -47,13 +46,13 @@ Za pomocą usługi Azure Functions Proxies można modyfikować żądań i odpowi
 
 Domyślnie żądania zaplecza jest inicjowany jako kopię oryginalne żądanie. Oprócz skonfigurowania adresu URL zaplecza, można wprowadzić zmiany do metody HTTP, nagłówki i parametry ciągu zapytania. Zmodyfikowane wartości może odwoływać się [ustawienia aplikacji] i [Parametry z oryginalne żądanie klienta].
 
-Żądania zaplecza można modyfikować w portalu, rozwijając *przesłonięcie żądania* sekcji na stronie szczegółów serwera proxy. 
+Żądania zaplecza można modyfikować w portalu, rozszerzając sekcję przesłonięcie *żądania* na stronie szczegółów serwera proxy. 
 
 ### <a name="modify-response"></a>Modyfikowanie odpowiedzi
 
 Domyślnie odpowiedź klienta jest inicjowany jako kopię odpowiedzi zaplecza. Można wprowadzić zmiany, aby kod stanu odpowiedzi, frazę przyczyny, nagłówki i treść. Zmodyfikowane wartości może odwoływać się [ustawienia aplikacji], [Parametry z oryginalne żądanie klienta], i [Parametry z odpowiedzi zaplecza].
 
-Żądania zaplecza można modyfikować w portalu, rozwijając *przesłonięcie odpowiedzi* sekcji na stronie szczegółów serwera proxy. 
+Żądania zaplecza można modyfikować w portalu, rozszerzając sekcję przesłonięcie *odpowiedzi* na stronie szczegółów serwera proxy. 
 
 ## <a name="using-variables"></a>Używanie zmiennych
 
@@ -80,17 +79,17 @@ Na przykład, jeśli serwer proxy ma szablon trasy, takie jak `/pets/{petId}`, a
 #### <a name="additional-request-parameters"></a>Dodatkowe parametry żądania
 Oprócz parametrów szablonu trasy następujące wartości może służyć w wartości konfiguracji:
 
-* **{request.method}** : Metoda HTTP, która jest używana na oryginalne żądanie.
-* **{request.headers. \<HeaderName\>}** : Nagłówek, który może zostać odczytany z oryginalnego żądania. Zastąp *\<HeaderName\>* o nazwie nagłówka, który chcesz odczytać. Jeśli nagłówek nie jest uwzględniony w żądaniu, wartość będzie pusty ciąg.
-* **{request.querystring.\<ParameterName\>}** : Parametr ciągu zapytania, który może zostać odczytany z oryginalnego żądania. Zastąp *\<ParameterName\>* o nazwie parametru, który chcesz odczytać. Jeśli parametr nie jest uwzględniony w żądaniu, wartość będzie pusty ciąg.
+* **{Request. Method}** : Metoda HTTP, która jest używana w oryginalnym żądaniu.
+* **{Request. Heads\< . Nagłówekname\>}** : Nagłówek, który można odczytać z oryginalnego żądania. Zastąp *\<HeaderName\>* o nazwie nagłówka, który chcesz odczytać. Jeśli nagłówek nie jest uwzględniony w żądaniu, wartość będzie pusty ciąg.
+* **{Request. QueryString.\< Parametrname\>}** : Parametr ciągu zapytania, który może zostać odczytany z oryginalnego żądania. Zastąp *\<ParameterName\>* o nazwie parametru, który chcesz odczytać. Jeśli parametr nie jest uwzględniony w żądaniu, wartość będzie pusty ciąg.
 
 ### <a name="response-parameters"></a>Parametry odpowiedzi zaplecza odwołania
 
 Parametrów odpowiedzi może służyć jako część modyfikowania odpowiedzi do klienta. Następujące wartości może służyć w wartości konfiguracji:
 
-* **{backend.response.statusCode}** : Kod stanu HTTP, który jest zwracany w odpowiedzi zaplecza.
-* **{backend.response.statusReason}** : Fraza przyczyny HTTP, który jest zwracany w odpowiedzi zaplecza.
-* **{backend.response.headers.\<HeaderName\>}** : Nagłówek, który może zostać odczytany z odpowiedzi zaplecza. Zastąp *\<HeaderName\>* o nazwie nagłówka chcesz odczytać. Jeśli nagłówek nie jest uwzględniony w odpowiedzi, wartość będzie pusty ciąg.
+* **{backend.response.statusCode}** : Kod stanu HTTP zwracany w odpowiedzi wewnętrznej bazy danych.
+* **{zaplecze. Response. statusReason}** : Fraza przyczyny HTTP, która jest zwracana w odpowiedzi wewnętrznej bazy danych.
+* **{zaplecze. Response. Heads.\< Nagłówekname\>}** : Nagłówek, który można odczytać z odpowiedzi wewnętrznej bazy danych. Zastąp *\<HeaderName\>* o nazwie nagłówka chcesz odczytać. Jeśli nagłówek nie jest uwzględniony w odpowiedzi, wartość będzie pusty ciąg.
 
 ### <a name="use-appsettings"></a>Dokumentacja ustawień aplikacji
 
@@ -139,19 +138,19 @@ Serwery proxy, które można skonfigurować, są przechowywane w *proxies.json* 
 
 Każdy serwer proxy ma przyjazną nazwę, taką jak *proxy1* w poprzednim przykładzie. Odpowiedni obiekt serwera proxy w definicji jest definiowany przez następujące właściwości:
 
-* **matchCondition**: Wymagane — obiekt definiujący żądań, które wywołać ich wykonanie tego serwera proxy. Zawiera on dwie właściwości, które są współużytkowane z [wyzwalaczy HTTP]:
-    * _metody_: Tablica metod HTTP, które odpowiada serwera proxy. Jeśli nie zostanie określony, serwer proxy odpowiada na wszystkich metod HTTP na trasie.
-    * _trasy_: Wymagane — definiuje szablon trasy kontrolowanie, które adresów URL żądań na serwerze proxy odpowiada. W odróżnieniu od w wyzwalaczy HTTP ma wartości domyślnej.
-* **backendUri**: Adres URL zasobu zaplecza, do której żądanie powinno być serwerem proxy. Ta wartość może przywoływać ustawień aplikacji i parametry, z oryginalnego żądania klienta. Jeśli ta właściwość nie jest dołączony, usługi Azure Functions odpowiada za pomocą protokołu HTTP 200 OK.
-* **requestOverrides**: Obiekt, który definiuje przekształcenia na żądanie zaplecza. Zobacz [Zdefiniuj obiekt requestOverrides].
-* **responseOverrides**: Obiekt, który definiuje przekształcenia odpowiedzi klienta. Zobacz [Zdefiniuj obiekt responseOverrides].
+* **matchCondition**: Wymagane — obiekt definiujący żądania, które wyzwalają wykonywanie tego serwera proxy. Zawiera on dwie właściwości, które są współużytkowane z [wyzwalaczy HTTP]:
+    * _metody_: Tablica metod HTTP, na które odpowiada serwer proxy. Jeśli nie zostanie określony, serwer proxy odpowiada na wszystkich metod HTTP na trasie.
+    * _trasa_: Wymagane — definiuje szablon trasy, kontrolujący adresy URL, na które żąda serwer proxy. W odróżnieniu od w wyzwalaczy HTTP ma wartości domyślnej.
+* **backendUri**: Adres URL zasobu zaplecza, do którego należy serwer proxy żądania. Ta wartość może przywoływać ustawień aplikacji i parametry, z oryginalnego żądania klienta. Jeśli ta właściwość nie jest dołączony, usługi Azure Functions odpowiada za pomocą protokołu HTTP 200 OK.
+* **requestOverrides**: Obiekt definiujący przekształcenia do żądania zaplecza. Zobacz [Zdefiniuj obiekt requestOverrides].
+* **responseOverrides**: Obiekt, który definiuje przekształcenia do odpowiedzi klienta. Zobacz [Zdefiniuj obiekt responseOverrides].
 
 > [!NOTE] 
 > *Trasy* właściwości w usłudze Azure Functions Proxies nie uznaje *routePrefix* właściwość konfiguracji hosta aplikacji funkcji. Jeśli chcesz uwzględnić prefiks takie jak `/api`, muszą być zawarte w *trasy* właściwości.
 
 ### <a name="disableProxies"></a> Wyłączyć poszczególne serwery proxy
 
-Można wyłączyć poszczególne serwery proxy, dodając `"disabled": true` serwer proxy w `proxies.json` pliku. To spowoduje, że wszelkie żądania spotkania matchCondition zwrócić kod 404.
+Można wyłączyć poszczególne serwery proxy, dodając `"disabled": true` serwer proxy w `proxies.json` pliku. Spowoduje to, że wszystkie żądania, które spełniają matchCondition, zwracają 404.
 ```json
 {
     "$schema": "http://json.schemastore.org/proxies",
@@ -176,7 +175,7 @@ Zachowanie serwera proxy mogą być kontrolowane przez kilka ustawień aplikacji
 
 ### <a name="reservedChars"></a> Zastrzeżone znaki (formatowanie ciągu)
 
-Serwery proxy odczytywać wszystkie ciągi poza JSON plików, przy użyciu \ jako symbol ucieczki. Serwery proxy również interpretowania nawiasów klamrowych. Zobacz pełny zestaw poniższych przykładach.
+Serwery proxy odczytują wszystkie ciągi z pliku JSON przy użyciu znaku \ jako symbolu ucieczki. Serwery proxy interpretują również nawiasy klamrowe. Zapoznaj się z pełnym zestawem przykładów poniżej.
 
 |Znak|Znak ucieczki|Przykład|
 |-|-|-|
@@ -188,9 +187,9 @@ Serwery proxy odczytywać wszystkie ciągi poza JSON plików, przy użyciu \ jak
 
 Obiekt requestOverrides definiuje zmiany wprowadzone do żądania, gdy wywoływana jest zasobów zaplecza. Obiekt jest zdefiniowany przez następujące właściwości:
 
-* **backend.Request.Method**: Metoda HTTP, która służy do wywoływania zaplecza.
-* **backend.request.querystring.\<ParameterName\>** : Parametr ciągu zapytania, który można ustawić dla wywołania do zaplecza. Zastąp *\<ParameterName\>* o nazwie parametru, który chcesz ustawić. Jeśli podano pusty ciąg, parametr nie jest uwzględniony w żądaniu zaplecza.
-* **backend.request.headers.\<HeaderName\>** : Nagłówek, który można ustawić dla wywołania do zaplecza. Zastąp *\<HeaderName\>* o nazwie nagłówka, który chcesz ustawić. Jeśli podasz pusty ciąg, nagłówka nie jest uwzględniony w żądaniu zaplecza.
+* **wewnętrzna. Request. Method. Metoda**: Metoda HTTP, która jest używana do wywoływania zaplecza.
+* **backend.request.querystring.\<ParameterName\>** : Parametr ciągu zapytania, który można ustawić dla wywołania zaplecza. Zastąp *\<ParameterName\>* o nazwie parametru, który chcesz ustawić. Jeśli podano pusty ciąg, parametr nie jest uwzględniony w żądaniu zaplecza.
+* **zaplecze. Request. Heads. Nagłówek :\<\>** Nagłówek, który można ustawić dla wywołania zaplecza. Zastąp *\<HeaderName\>* o nazwie nagłówka, który chcesz ustawić. Jeśli podasz pusty ciąg, nagłówka nie jest uwzględniony w żądaniu zaplecza.
 
 Wartości może przywoływać ustawień aplikacji i parametry, z oryginalnego żądania klienta.
 
@@ -219,10 +218,10 @@ Przykładowa konfiguracja może wyglądać następująco:
 
 Obiekt requestOverrides definiuje zmiany wprowadzone do odpowiedzi, który jest przekazywany z powrotem do klienta. Obiekt jest zdefiniowany przez następujące właściwości:
 
-* **response.statusCode**: Kod stanu HTTP zwracany do klienta.
-* **response.statusReason**: Fraza przyczyny HTTP do zwrócenia do klienta.
-* **response.body**: Ciąg reprezentujący treść do zwrócenia do klienta.
-* **response.headers.\<HeaderName\>** : Nagłówek, który może być ustawiona dla odpowiedzi do klienta. Zastąp *\<HeaderName\>* o nazwie nagłówka, który chcesz ustawić. Jeśli podasz pusty ciąg, nagłówka nie znajduje się w odpowiedzi.
+* **odpowiedź. StatusCode**: Kod stanu HTTP do zwrócenia klientowi.
+* **odpowiedź. statusReason**: Fraza przyczyny HTTP, która ma zostać zwrócona do klienta.
+* **response.body**: Ciąg reprezentujący treść, która ma zostać zwrócona do klienta.
+* **Response. Heads. Nagłówek :\<\>** Nagłówek, który można ustawić dla odpowiedzi dla klienta. Zastąp *\<HeaderName\>* o nazwie nagłówka, który chcesz ustawić. Jeśli podasz pusty ciąg, nagłówka nie znajduje się w odpowiedzi.
 
 Wartości można odwoływać się ustawienia aplikacji, parametrami oryginalne żądanie klienta i parametry, z odpowiedzi zaplecza.
 

@@ -1,64 +1,63 @@
 ---
-title: Niebieski błędy podczas rozruchu maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozwiązać ten problem, błękitny ekran jest błąd podczas rozruchu | Dokumentacja firmy Microsoft
+title: Błędy niebieskiego ekranu podczas uruchamiania maszyny wirtualnej platformy Azure | Microsoft Docs
+description: Dowiedz się, jak rozwiązywać problemy z komunikatem o błędzie niebieskiego ekranu podczas rozruchu | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: 26306489b11e24ab50f0ae893f11137d279c6127
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 397f9f4de21ecb27435c132d80074ed442202448
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719794"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089968"
 ---
-# <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows pokazuje błękitny ekran błędu podczas rozruchu maszyny Wirtualnej platformy Azure
-W tym artykule opisano niebieskich ekranów, które można napotkać podczas rozruchu Windows maszyn wirtualnych (VM) w systemie Microsoft Azure. Zapewnia kroki ułatwiające zbieranie danych dla biletu pomocy technicznej. 
+# <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>System Windows wyświetla błąd niebieskiego ekranu podczas uruchamiania maszyny wirtualnej platformy Azure
+W tym artykule opisano błędy niebieskiego ekranu, które mogą wystąpić podczas uruchamiania maszyny wirtualnej z systemem Windows w Microsoft Azure. Zawiera instrukcje ułatwiające zbieranie danych dla biletu pomocy technicznej. 
 
 > [!NOTE] 
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano użycie modelu wdrażania Menedżer zasobów, którego zalecamy używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
 
 ## <a name="symptom"></a>Objaw 
 
-Nie zaczyna się maszyny Wirtualnej z systemem Windows. Podczas ewidencjonowania zrzuty ekranu rozruchu [diagnostykę rozruchu](./boot-diagnostics.md), zostanie wyświetlony jeden z następujących komunikatów o błędach w błękitny ekran:
+Nie uruchomiono maszyny wirtualnej z systemem Windows. Po sprawdzeniu zrzutów ekranu rozruchowego w ramach [diagnostyki rozruchu](./boot-diagnostics.md)zobaczysz jeden z następujących komunikatów o błędach na niebieskim ekranie:
 
-- nasz komputer napotkał problem i musi ponownie uruchomić. Trwa zbieranie danych tylko niektóre informacje o błędzie, a następnie uruchomisz ponownie.
-- Komputer PC napotkał problem i musi ponownie uruchomić.
+- Wystąpił problem z naszym komputerem i wymaga ponownego uruchomienia. Właśnie zbieramy pewne informacje o błędzie, a następnie można uruchomić ponownie.
+- KOMPUTER napotkał problem i wymaga ponownego uruchomienia.
 
-W tej sekcji przedstawiono typowe komunikaty o błędach, które można napotkać podczas zarządzania maszynami wirtualnymi:
+W tej sekcji wymieniono typowe komunikaty o błędach, które można napotkać podczas zarządzania maszynami wirtualnymi:
 
 ## <a name="cause"></a>Przyczyna
 
-Może istnieć kilka przyczyn jako Dlaczego otrzymamy błędu zatrzymania. Najbardziej typowe przyczyny są następujące:
+Może istnieć wiele powodów, dla których wystąpił błąd zatrzymania. Najczęstszymi przyczynami są:
 
-- Problem ze sterownikiem
-- Uszkodzeniem systemu plików lub ilości pamięci
-- Aplikacja uzyskuje dostęp do zabronione sektora pamięci
+- Problem z sterownikiem
+- Uszkodzony plik lub pamięć systemowa
+- Aplikacja uzyskuje dostęp do niedozwolonego sektora pamięci
 
-## <a name="collect-memory-dump-file"></a>Zbieranie pliku zrzutu pamięci
+## <a name="collect-memory-dump-file"></a>Zbierz plik zrzutu pamięci
 
-Aby rozwiązać ten problem, będziesz potrzebować pierwszy do gromadzenia plik zrzutu na potrzeby tej awarii, a następnie skontaktuj się z pomocą techniczną przy użyciu pliku zrzutu. Aby zebrać plik zrzutu, wykonaj następujące kroki:
+Aby rozwiązać ten problem, należy najpierw zebrać plik zrzutu dla awarii i skontaktować się z pomocą techniczną pliku zrzutu. Aby zebrać plik zrzutu, wykonaj następujące kroki:
 
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania
 
-1. Utworzenie migawki dysku systemu operacyjnego, których to dotyczy maszyny wirtualnej służy do przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
+1. Utwórz migawkę dysku systemu operacyjnego z zaatakowaną maszyną wirtualną jako kopię zapasową. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
 2. [Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania](../windows/troubleshoot-recovery-disks-portal.md). 
-3. Pulpit zdalny dla maszyny Wirtualnej odzyskiwania.
+3. Pulpit zdalny do maszyny wirtualnej odzyskiwania.
 
-### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Zlokalizuj plik zrzutu i Wyślij bilet pomocy technicznej
+### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Lokalizowanie pliku zrzutu i przesyłanie biletu pomocy technicznej
 
-1. Na maszynie Wirtualnej odzyskiwania przejdź do folderu systemu windows w dołączonym dysku systemu operacyjnego. Litera sterownika, która jest przypisana do dołączonym dysku systemu operacyjnego jest F, musisz przejść do F:\Windows.
-2. Znajdź plik memory.dmp, a następnie [Wyślij bilet pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) przy użyciu pliku zrzutu. 
+1. Na maszynie wirtualnej odzyskiwania przejdź do folderu systemu Windows na dołączonym dysku systemu operacyjnego. Jeśli litera sterownika, która jest przypisana do dołączonego dysku systemu operacyjnego, to F, należy przejść do F:\Windows.
+2. Zlokalizuj plik Memory. dmp, a następnie [Prześlij bilet pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) przy użyciu pliku zrzutu. 
 
-Jeśli nie można odnaleźć pliku zrzutu, Przenieś do następnego kroku, aby włączyć dziennik zrzutu i konsoli szeregowej.
+Jeśli nie możesz znaleźć pliku zrzutu, przejdź do następnego kroku, aby włączyć dziennik zrzutów i konsolę seryjną.
 
 ### <a name="enable-dump-log-and-serial-console"></a>Włącz dziennik zrzutu i konsoli szeregowej
 
@@ -67,7 +66,7 @@ Aby włączyć dziennik zrzutu i konsoli szeregowej, uruchom następujący skryp
 1. Otwórz sesję wiersza polecenia z podwyższonym poziomem uprawnień (Uruchom jako administrator).
 2. Uruchom następujący skrypt:
 
-    W tym skrypcie przyjęto założenie, że litery dysku, która jest przypisana do dołączonym dysku systemu operacyjnego jest F.  Zastąp go odpowiednią wartość w maszynie Wirtualnej.
+    W tym skrypcie Załóżmy, że litera dysku przypisana do dołączonego dysku systemu operacyjnego to F.  Zastąp ją odpowiednią wartością na maszynie wirtualnej.
 
     ```powershell
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -91,8 +90,8 @@ Aby włączyć dziennik zrzutu i konsoli szeregowej, uruchom następujący skryp
     reg unload HKLM\BROKENSYSTEM
     ```
 
-    1. Upewnij się, że jest wystarczająca ilość miejsca na dysku przydzielić tak dużej ilości pamięci jako pamięci RAM, która zależy od rozmiaru, który wybierasz dla tej maszyny Wirtualnej.
-    2. Jeśli nie ma wystarczającej ilości miejsca lub jest to duży rozmiar maszyn wirtualnych (serii G i GS E), można następnie zmienić lokalizację, w którym ten plik zostanie utworzony i które dotyczą innych dysków danych, który jest dołączony do maszyny Wirtualnej. Aby to zrobić, należy zmienić następującego klucza:
+    1. Upewnij się, że na dysku jest wystarczająca ilość miejsca, aby przydzielić pamięć jako pamięć RAM, która zależy od rozmiaru wybieranego dla tej maszyny wirtualnej.
+    2. Jeśli nie ma wystarczającej ilości miejsca lub jest to maszyna wirtualna o dużej wielkości (G, GS lub E), możesz zmienić lokalizację, w której ten plik zostanie utworzony, i odnieść się do dowolnego innego dysku z danymi, który jest dołączony do maszyny wirtualnej. W tym celu należy zmienić następujący klucz:
 
             reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
@@ -101,9 +100,9 @@ Aby włączyć dziennik zrzutu i konsoli szeregowej, uruchom następujący skryp
 
             reg unload HKLM\BROKENSYSTEM
 
-3. [Odłącz dysk systemu operacyjnego, a następnie ponownie Dołącz dysk systemu operacyjnego, do których to dotyczy maszyny Wirtualnej](../windows/troubleshoot-recovery-disks-portal.md).
-4. Uruchom maszynę Wirtualną do odtworzenia problemu, a następnie zostanie wygenerowany plik zrzutu.
-5. Dołącz dysk systemu operacyjnego do odzyskiwania maszyny Wirtualnej, plik zrzutu zbieranie, a następnie [Wyślij bilet pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) przy użyciu pliku zrzutu.
+3. [Odłącz dysk systemu operacyjnego, a następnie ponownie Dołącz dysk systemu operacyjnego do maszyny wirtualnej, której to dotyczy](../windows/troubleshoot-recovery-disks-portal.md).
+4. Uruchom maszynę wirtualną, aby odtworzyć problem, a następnie wygenerowany plik zrzutu.
+5. Dołącz dysk systemu operacyjnego do maszyny wirtualnej odzyskiwania, Zbierz plik zrzutu, a następnie [Prześlij bilet pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) z plikiem zrzutu.
 
 
 

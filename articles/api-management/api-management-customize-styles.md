@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 4ea64b16a9a581683d3b7a44b4b331af435db22c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 047e724fe3e1c2e4738e5964326bf7719281f4af
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60658113"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073709"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>Dostosowywanie stylu stron portalu deweloperów
 
@@ -57,11 +56,11 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
     Na stronie zostaną wyświetlone wszystkie elementy, które można dostosować za pomocą **stylów**
 5. Wprowadź wartość „headings-color” w polu **Change variable values to customize developer portal appearance:** (Zmień wartości zmiennych w celu dostosowania wyglądu portalu dla deweloperów:).
 
-    **\@Kolor nagłówki** element jest wyświetlany na stronie. Ta zmienna steruje kolorem tekstu.
+    Na stronie pojawi się element  **nagłówki—kolor.\@** Ta zmienna steruje kolorem tekstu.
 
     ![Dostosowywanie stylu](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. Kliknij pole  **\@kolor nagłówki** zmiennej. 
+6. Kliknij pole dla  **\@zmiennej nagłówki i kolor** . 
     
     Zostanie otwarta lista rozwijana selektora kolorów.
 7. Wybierz nowy kolor z listy rozwijanej selektora kolorów.
@@ -77,7 +76,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 1. Przejdź do portalu deweloperów.
 2. Wprowadzone zmiany będą widoczne.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

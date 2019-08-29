@@ -7,19 +7,18 @@ author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5bfbf995b67ac49cf169565046daa2887a57e476
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 58174704051709a720950ac51591a1d53b9d01bb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846151"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100564"
 ---
 # <a name="use-the-azure-cli-to-configure-an-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure w celu skonfigurowania zawsze włączonej grupy dostępności dla SQL Server na maszynie wirtualnej platformy Azure
 W tym artykule opisano, jak za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/sql/vm?view=azure-cli-latest/) wdrożyć klaster trybu failover systemu Windows, dodać SQL Server maszyny wirtualne do klastra i utworzyć wewnętrzny moduł równoważenia obciążenia i odbiornik dla zawsze włączonej grupy dostępności. Wdrożenie zawsze włączonych grup dostępności jest nadal wykonywane ręcznie za pomocą narzędzia SQL Server Management Studio (SSMS). 

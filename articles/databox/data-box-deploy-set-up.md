@@ -1,21 +1,33 @@
 ---
-title: Samouczek, aby skonfigurować urządzenia Azure Data Box | Dokumentacja firmy Microsoft
+title: Samouczek dotyczący konfigurowania Azure Data Box | Microsoft Docs
 description: Dowiedz się, jak podłączyć kable do urządzenia Azure Data Box i nawiązać z nim połączenie
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 08/27/2019
 ms.author: alkohli
-ms.openlocfilehash: 6a725784c419b67f7738b70ad867d2d6ef8b0785
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 4e997998c345e1cbd6ff784aaf84bc9f605f691c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795973"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098642"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Samouczek: Podłączanie kabli do urządzenia Azure Data Box i nawiązywanie z nim połączenia
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="cable-and-connect-to-your-device"></a>Kabel i połączenie z urządzeniem
+
+::: zone-end
+
+::: zone target="docs"
 
 W tym samouczku opisano, jak podłączyć kable do urządzenia Azure Data Box Disk, włączyć je i nawiązać z nim połączenie.
 
@@ -40,7 +52,7 @@ Przed rozpoczęciem upewnij się, że:
     - Połączenie z siecią o dużej szybkości. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE. Jeśli połączenie 10 GbE nie jest dostępne, można użyć połączenia danych 1 GbE, ale będzie miało to wpływ na szybkość kopiowania. 
 6. Należy mieć dostęp do płaskiej powierzchni, na której można umieścić urządzenie Data Box. Jeśli chcesz umieścić urządzenie na standardowej półce na stojaku, na stojaku centrum danych potrzebne jest gniazdo 7U. Urządzenie możesz umieścić na stojaku płasko lub pionowo.
 7. Należy zapewnić następujące kable w celu podłączenia urządzenia Data Box do komputera hosta.
-    - Co najmniej jeden kabel miedziany SFP+ Twinax 10 GbE lub kable światłowodowe SFP+ (do użytku z interfejsami sieciowymi DATA 1 i DATA 2). Urządzenie Data Box jest wyposażone w karty Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T z interfejsem sieciowym PCI Express 3.0, więc kable, które są zgodne z tym interfejsem, powinny działać. Na przykład CISCO SFP-H10GB-CU3M 10GBASE CU TWINMAX SFP + 3 M kabel został użyty do testowania w firmie. Aby uzyskać więcej informacji, zobacz [listę obsługiwanych kabli i przełączników z Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
+    - Co najmniej jeden kabel miedziany SFP+ Twinax 10 GbE lub kable światłowodowe SFP+ (do użytku z interfejsami sieciowymi DATA 1 i DATA 2). Urządzenie Data Box jest wyposażone w karty Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T z interfejsem sieciowym PCI Express 3.0, więc kable, które są zgodne z tym interfejsem, powinny działać. Na przykład kabel CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP + 3M został użyty do testowania wewnętrznego. Aby uzyskać więcej informacji, zobacz [listę obsługiwanych kabli i przełączników z Mellanox](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf).
     - Jeden kabel sieciowy RJ-45 CAT 6 (do użytku z interfejsem sieciowym MGMT)
     - Jeden kabel sieciowy RJ-45 CAT 6A lub RJ-45 CAT 6 (do użytku z interfejsem sieciowym DATA 3 skonfigurowanym odpowiednio dla przepływności 10 GB/s lub 1 GB/s)
 
@@ -63,6 +75,38 @@ Wykonaj poniższe kroki, aby podłączyć kable do urządzenia.
 4. Znajdź przycisk zasilania na przednim panelu operacyjnym urządzenia. Włącz urządzenie.
 
     ![Przycisk zasilania urządzenia Data Box](media/data-box-deploy-set-up/data-box-powered-door-open.png)
+
+::: zone-end
+
+::: zone target="chromeless"
+
+Po odebraniu urządzenia należy podłączyć urządzenie do sieci i połączyć się z nim. 
+
+## <a name="cable-your-device"></a>Podłączanie kabli do urządzenia
+
+1. Jeśli urządzenie nosi jakiekolwiek oznaki uszkodzenia lub naruszenia, nie wykonuj dalszych czynności. Skontaktuj się z działem pomocy technicznej firmy Microsoft, aby otrzymać urządzenie zamienne.
+2. Przed podłączeniem przewodów do urządzenia sprawdź, czy masz następujące przewody:
+    
+    - (Dołączony) Przewód zasilający z uziemieniem przeznaczony do prądu co najmniej 10 A, ze złączem typu IEC60320 C-13 po jednej stronie, umożliwiającym podłączenie do urządzenia.
+    - Jeden kabel sieciowy RJ-45 CAT 6 (do użytku z interfejsem sieciowym MGMT)
+    - Dwa kable miedziane SFP+ Twinax 10 GbE (do użytku z interfejsami sieciowymi DATA 1 i DATA 2 o przepustowości 10 Gb/s)
+    - Jeden kabel sieciowy RJ-45 CAT 6A lub RJ-45 CAT 6 (do użytku z interfejsem sieciowym DATA 3 skonfigurowanym odpowiednio dla przepływności 10 GB/s lub 1 GB/s)
+
+3. Wyjmij urządzenie i umieść je na płaskiej powierzchni. 
+    
+4. Podłącz przewody do urządzenia tak, jak pokazano poniżej.  
+
+    ![Płyta montażowa urządzenia Data Box z podłączonymi kablami](media/data-box-deploy-set-up/data-box-cabled-dhcp.png)  
+
+    1. Podłącz kabel zasilający do urządzenia.
+    2. Użyj kabla sieciowego RJ-45 CAT 6, aby podłączyć komputer hosta do portu zarządzania (MGMT) na urządzeniu. 
+    3. Użyj kabla miedzianego SFP+ Twinax, aby podłączyć co najmniej jeden interfejs sieciowy 10 Gb/s (wersja preferowana, ale możliwe również użycie interfejsu 1 Gb/s), DATA 1 lub DATA 2, do przesyłu danych. 
+    4. Włącz urządzenie. Przycisk zasilania znajduje się na panelu przednim urządzenia.
+
+::: zone-end
+
+::: zone target="docs"
+
 
 ## <a name="connect-to-your-device"></a>Podłączanie urządzenia
 
@@ -92,7 +136,23 @@ Po skonfigurowaniu sieciowych interfejsów danych można też uzyskać dostęp d
 
 Po zakończeniu konfiguracji urządzenia możesz połączyć się z udziałami na urządzeniu i skopiować dane z komputera na urządzenie. 
 
-## <a name="next-steps"></a>Kolejne kroki
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="connect-your-device"></a>Połącz urządzenie
+
+1. Aby uzyskać hasło urządzenia, przejdź do pozycji **Ogólne > Szczegóły urządzenia** w witrynie [Azure Portal](https://portal.azure.com).
+2. Przypisz statyczny adres IP 192.168.100.5 i podsieć 255.255.255.0 do karty Ethernet na komputerze używanym do nawiązania połączenia z urządzeniem Data Box. Uzyskaj dostęp do lokalnego internetowego interfejsu użytkownika urządzenia pod adresem `https://192.168.100.10`. Nawiązywanie połączenia może potrwać do 5 minut po włączeniu urządzenia. 
+3. Zaloguj się przy użyciu hasła uzyskanego z witryny Azure Portal. Zostanie wyświetlony komunikat o błędzie, informujący o problemie z certyfikatem zabezpieczeń witryny internetowej. Postępuj zgodnie z instrukcjami dotyczącymi używanej przeglądarki, aby przejść do odpowiedniej strony internetowej.
+4. Domyślne ustawienie sieci dla interfejsu 10 Gb/s (lub 1 Gb/s) to DHCP. Jeśli jest taka potrzeba, można skonfigurować interfejs jako statyczny i podać adres IP. 
+
+::: zone-end
+
+
+::: zone target="docs"
+
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące usługi Azure Data Box, takie jak:
 
@@ -104,4 +164,6 @@ Przejdź do następnego samouczka, aby dowiedzieć się, jak skopiować dane na 
 
 > [!div class="nextstepaction"]
 > [Kopiowanie danych na urządzenie Azure Data Box](./data-box-deploy-copy-data.md)
+
+::: zone-end
 

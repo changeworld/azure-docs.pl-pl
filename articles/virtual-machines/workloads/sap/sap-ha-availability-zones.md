@@ -10,19 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 887caaec-02ba-4711-bd4d-204a7d16b32b
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ead1dfdce4bf3a803eee46a536dc7062626640d9
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 3f5186f456003c341af41fc6067f3b5c08acb2b4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234236"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078884"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfiguracje obciążenia SAP ze strefami dostępności platformy Azure
 [Strefy dostępności platformy Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) to jedna z funkcji wysokiej dostępności udostępniana przez platformę Azure. Użycie Strefy dostępności zwiększa ogólną dostępność obciążeń SAP na platformie Azure. Ta funkcja jest już dostępna w niektórych [regionach świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/regions/). W przyszłości będzie ona dostępna w większej liczbie regionów.
@@ -113,7 +112,7 @@ W tej konfiguracji są stosowane następujące zagadnienia:
   - W przypadku systemu Windows rozwiązanie klastra korzystające z usługi oprogramowanie SIOS DataKeeper, zgodnie z opisem w [klastrze, wystąpienia SAP ASCS/SCS w klastrze trybu failover systemu Windows przy użyciu udostępnionego dysku klastra na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
   - W przypadku systemu SUSE Linux udział NFS, który jest skompilowany jako opisany w [wysokiej dostępności dla systemu plików NFS na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
     
-    Obecnie rozwiązanie, w którym jest używany serwer plików skalowalny w poziomie firmy Microsoft, zgodnie z opisem w temacie [Przygotowanie infrastruktury platformy Azure do usługi SAP High Availability przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień oprogramowania SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), nie jest obsługiwane w różnych strefach.
+    Obecnie rozwiązanie korzystające z programu Microsoft Serwer plików skalowalny w poziomie, zgodnie z opisem w temacie [Przygotowanie infrastruktury platformy Azure do obsługi oprogramowania SAP wysokiej dostępności przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), nie jest obsługiwane w różnych strefach.
 - Trzecia Strefa jest używana do hostowania urządzenia SBD na wypadek skompilowania [klastra systemu SUSE Linux Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) lub dodatkowych wystąpień aplikacji.
 - Aby osiągnąć spójność czasu wykonywania dla krytycznych procesów firmy, możesz spróbować skierować określone zadania usługi Batch i użytkowników do wystąpień aplikacji znajdujących się w strefie z aktywnym wystąpieniem DBMS przy użyciu grup serwera SAP Batch, grup logowania SAP lub grup RFC. Jednak w przypadku trybu failover strefy należy ręcznie przenieść te grupy do wystąpień uruchomionych na maszynach wirtualnych, które znajdują się w strefie z maszyną wirtualną usługi Active DB.  
 - Możesz chcieć wdrożyć nieaktywne wystąpienia okna dialogowego w każdej z tych stref. Jest to umożliwienie natychmiastowego powrotu do dawnej pojemności zasobów, jeśli strefa używana przez część wystąpień aplikacji jest poza usługą.
@@ -138,7 +137,7 @@ W tej konfiguracji są stosowane następujące zagadnienia:
     - W przypadku systemu Windows rozwiązanie klastra korzystające z usługi oprogramowanie SIOS DataKeeper, zgodnie z opisem w [klastrze, wystąpienia SAP ASCS/SCS w klastrze trybu failover systemu Windows przy użyciu udostępnionego dysku klastra na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
     - W przypadku systemu SUSE Linux udział NFS, który jest skompilowany jako opisany w [wysokiej dostępności dla systemu plików NFS na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
     
-  Obecnie rozwiązanie, w którym jest używany serwer plików skalowalny w poziomie firmy Microsoft, zgodnie z opisem w temacie [Przygotowanie infrastruktury platformy Azure do usługi SAP High Availability przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień oprogramowania SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), nie jest obsługiwane w różnych strefach.
+  Obecnie rozwiązanie korzystające z programu Microsoft Serwer plików skalowalny w poziomie, zgodnie z opisem w temacie [Przygotowanie infrastruktury platformy Azure do obsługi oprogramowania SAP wysokiej dostępności przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), nie jest obsługiwane w różnych strefach.
 - Trzecia Strefa jest używana do hostowania urządzenia SBD na wypadek skompilowania [klastra systemu SUSE Linux Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) lub dodatkowych wystąpień aplikacji.
 - Należy wdrożyć nieaktywne maszyny wirtualne w strefie pasywnej (z punktu widzenia systemu DBMS), aby umożliwić uruchamianie zasobów aplikacji w przypadku awarii strefy.
     - [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) nie jest obecnie w stanie replikować aktywnych maszyn wirtualnych do nieaktywnych maszyn wirtualnych między strefami. 
@@ -168,7 +167,7 @@ W tej konfiguracji są stosowane następujące zagadnienia:
     - W przypadku systemu Windows rozwiązanie klastra korzystające z usługi oprogramowanie SIOS DataKeeper, zgodnie z opisem w [klastrze, wystąpienia SAP ASCS/SCS w klastrze trybu failover systemu Windows przy użyciu udostępnionego dysku klastra na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
     - W przypadku systemu SUSE Linux udział NFS, który jest skompilowany jako opisany w [wysokiej dostępności dla systemu plików NFS na maszynach wirtualnych platformy Azure na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
 
-  Obecnie rozwiązanie, w którym jest używany serwer plików skalowalny w poziomie firmy Microsoft, zgodnie z opisem w temacie [Przygotowanie infrastruktury platformy Azure do usługi SAP High Availability przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień oprogramowania SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), nie jest obsługiwane w różnych strefach.
+  Obecnie rozwiązanie korzystające z programu Microsoft Serwer plików skalowalny w poziomie, zgodnie z opisem w temacie [Przygotowanie infrastruktury platformy Azure do obsługi oprogramowania SAP wysokiej dostępności przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), nie jest obsługiwane w różnych strefach.
 - Trzecia Strefa jest używana do hostowania urządzenia SBD na wypadek skompilowania [klastra systemu SUSE Linux Pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) lub dodatkowych wystąpień aplikacji.
 
 

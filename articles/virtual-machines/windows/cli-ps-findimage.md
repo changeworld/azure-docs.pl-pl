@@ -1,6 +1,6 @@
 ---
-title: Wybieranie obrazów maszyn wirtualnych Windows na platformie Azure | Dokumentacja firmy Microsoft
-description: Użyj programu Azure PowerShell, aby określić wydawcy, oferty, jednostki SKU i wersji dla obrazów maszyn wirtualnych w portalu Marketplace.
+title: Wybieranie obrazów maszyn wirtualnych z systemem Windows na platformie Azure | Microsoft Docs
+description: Użyj Azure PowerShell, aby określić wydawcę, ofertę, jednostkę SKU i wersję dla obrazów maszyn wirtualnych z witryny Marketplace.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -9,57 +9,56 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 188b8974-fabd-4cd3-b7dc-559cbb86b98a
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: eb8feb13caebc938d9b56a985c07ceb06e211b24
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 645d969d71a0b8707d7969f4bf68a07ab0211d0a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719177"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080025"
 ---
-# <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Znajdowanie obrazów maszyn wirtualnych Windows w witrynie Azure Marketplace przy użyciu programu Azure PowerShell
+# <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Znajdź obrazy maszyn wirtualnych z systemem Windows w witrynie Azure Marketplace przy użyciu Azure PowerShell
 
-W tym artykule opisano, jak znajdowanie obrazów maszyn wirtualnych w witrynie Azure Marketplace przy użyciu programu Azure PowerShell. Następnie można określić obrazu z witryny Marketplace, gdy programowo utworzyć Maszynę wirtualną przy użyciu programu PowerShell, szablony usługi Resource Manager lub innych narzędzi.
+W tym artykule opisano, jak używać Azure PowerShell do znajdowania obrazów maszyn wirtualnych w portalu Azure Marketplace. Następnie można określić obraz z witryny Marketplace podczas programistycznego tworzenia maszyny wirtualnej przy użyciu programu PowerShell, szablonów Menedżer zasobów lub innych narzędzi.
 
-Można również przeglądać dostępne obrazy i ofert przy użyciu [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/) storefront, [witryny Azure portal](https://portal.azure.com), lub [wiersza polecenia platformy Azure](../linux/cli-ps-findimage.md). 
+Dostępne obrazy i oferty można także przeglądać za pomocą [witryny Azure Marketplace](https://azuremarketplace.microsoft.com/) , [Azure Portal](https://portal.azure.com)lub [interfejsu wiersza polecenia platformy Azure](../linux/cli-ps-findimage.md). 
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
-## <a name="table-of-commonly-used-windows-images"></a>Tabela najczęściej używanych obrazów Windows
+## <a name="table-of-commonly-used-windows-images"></a>Tabela często używanych obrazów systemu Windows
 
-W poniższej tabeli przedstawiono podzbioru dostępnych jednostek SKU dla wskazanych wydawców i ofert.
+W tej tabeli przedstawiono podzestaw dostępnych jednostek SKU dla wskazanych wydawców i ofert.
 
-| Wydawca | Oferta | SKU |
+| Wydawca | Oferta | Numer SKU |
 |:--- |:--- |:--- |
-| MicrosoftWindowsServer |WindowsServer |2019-Datacenter |
-| MicrosoftWindowsServer |WindowsServer |2019-Datacenter-Core |
-| MicrosoftWindowsServer |WindowsServer |2019 centrum danych za pomocą kontenerów |
-| MicrosoftWindowsServer |WindowsServer |2016-Datacenter |
+| MicrosoftWindowsServer |WindowsServer |2019 — centrum danych |
+| MicrosoftWindowsServer |WindowsServer |2019 — centrum danych — rdzeń |
+| MicrosoftWindowsServer |WindowsServer |2019 — Datacenter-with-Containers |
+| MicrosoftWindowsServer |WindowsServer |2016 — centrum danych |
 | MicrosoftWindowsServer |WindowsServer |2016-Datacenter-Server-Core |
-| MicrosoftWindowsServer |WindowsServer |2016 centrum danych za pomocą kontenerów |
+| MicrosoftWindowsServer |WindowsServer |2016 — Datacenter-with-Containers |
 | MicrosoftWindowsServer |WindowsServer |2012-R2-Datacenter |
 | MicrosoftWindowsServer |WindowsServer |2012-Datacenter |
 | MicrosoftDynamicsNAV |DynamicsNAV |2017 |
 | MicrosoftSharePoint |MicrosoftSharePointServer |2019 |
 | MicrosoftSQLServer |SQL2019-WS2016 |Enterprise |
-| MicrosoftRServer |RServer-WS2016 |Enterprise |
+| MicrosoftRServer |RServer — WS2016 |Enterprise |
 
-## <a name="navigate-the-images"></a>Nawigować po obrazach
+## <a name="navigate-the-images"></a>Nawigowanie po obrazach
 
-Jednym sposobem, aby znaleźć obrazu w lokalizacji jest uruchomienie [Get AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher), [Get AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer), i [Get AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) poleceń cmdlet w kolejności:
+Jednym ze sposobów znalezienia obrazu w lokalizacji jest uruchomienie poleceń cmdlet [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher), [Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer)i [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) w kolejności:
 
 1. Wyświetl listę wydawców obrazów.
 2. Dla danego wydawcy wyświetl listę ofert.
 3. Dla danej oferty wyświetl listę wersji SKU.
 
-Dla wybranej jednostki SKU, uruchom [Get AzVMImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimage) Aby wyświetlić listę wersji do wdrożenia.
+Następnie dla wybranej jednostki SKU Uruchom polecenie [Get-AzVMImage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimage) , aby wyświetlić listę wersji do wdrożenia.
 
 1. Wyświetl listę wydawców:
 
@@ -68,30 +67,30 @@ Dla wybranej jednostki SKU, uruchom [Get AzVMImage](https://docs.microsoft.com/p
     Get-AzVMImagePublisher -Location $locName | Select PublisherName
     ```
 
-2. Wprowadź nazwę wybranego wydawcy i oferty listy:
+2. Wypełnij wybraną nazwę wydawcy i Wyświetl listę ofert:
 
     ```powershell
     $pubName="<publisher>"
     Get-AzVMImageOffer -Location $locName -PublisherName $pubName | Select Offer
     ```
 
-3. Wprowadź nazwę wybranej oferty i wyświetlić listę jednostek SKU:
+3. Wypełnij wybraną nazwę oferty i Wyświetl listę jednostek SKU:
 
     ```powershell
     $offerName="<offer>"
     Get-AzVMImageSku -Location $locName -PublisherName $pubName -Offer $offerName | Select Skus
     ```
 
-4. Wprowadź nazwę wybranej jednostki SKU i Pobierz wersję obrazu:
+4. Wypełnij wybraną nazwę jednostki SKU i Pobierz wersję obrazu:
 
     ```powershell
     $skuName="<SKU>"
     Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
     ```
     
-Z danych wyjściowych `Get-AzVMImage` polecenia, można wybrać obraz wersji, aby wdrożyć nową maszynę wirtualną.
+Na podstawie danych wyjściowych `Get-AzVMImage` polecenia można wybrać obraz wersji do wdrożenia nowej maszyny wirtualnej.
 
-Poniższy kod przedstawia pełny kolejność poleceń i ich dane wyjściowe:
+Poniższy przykład przedstawia pełną sekwencję poleceń i ich dane wyjściowe:
 
 ```powershell
 $locName="West US"
@@ -122,7 +121,7 @@ advantys
 ...
 ```
 
-Aby uzyskać *MicrosoftWindowsServer* wydawcy:
+Dla wydawcy *MicrosoftWindowsServer* :
 
 ```powershell
 $pubName="MicrosoftWindowsServer"
@@ -139,7 +138,7 @@ WindowsServer
 WindowsServerSemiAnnual
 ```
 
-Aby uzyskać *WindowsServer* oferty:
+W przypadku oferty *WindowsServer* :
 
 ```powershell
 $offerName="WindowsServer"
@@ -170,24 +169,24 @@ Skus
 ...
 ```
 
-Następnie dla *2019-Datacenter* jednostki SKU:
+Następnie dla jednostki SKU *2019-Datacenter* :
 
 ```powershell
 $skuName="2019-Datacenter"
 Get-AzVMImage -Location $locName -PublisherName $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 
-Teraz można połączyć wybranego wydawcy, oferty, jednostki SKU i wersji, które znajdują się w URN (wartości rozdzielone:). Przekaż ten URN z `--image` parametru podczas tworzenia maszyny Wirtualnej z [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) polecenia cmdlet. Można opcjonalnie zastąpić numer wersji w URN "najnowszej"wersji, aby uzyskać najnowszą wersję obrazu.
+Teraz można połączyć wybranego wydawcy, oferty, jednostki SKU i wersji na nazwę URN (wartości rozdzielone:). Przekaż tę nazwę URN z `--image` parametrem podczas tworzenia maszyny wirtualnej za pomocą polecenia cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) . Opcjonalnie możesz zamienić numer wersji w nazwie URN na "Najnowsza", aby uzyskać najnowszą wersję obrazu.
 
-Jeśli wdrożysz maszynę Wirtualną przy użyciu szablonu usługi Resource Manager, a następnie parametry obrazu będzie ustawić indywidualnie w `imageReference` właściwości. Zobacz [dokumentację szablonu](/azure/templates/microsoft.compute/virtualmachines).
+W przypadku wdrożenia maszyny wirtualnej z szablonem Menedżer zasobów, parametry obrazu są ustawiane indywidualnie we `imageReference` właściwościach. Zobacz [dokumentację szablonu](/azure/templates/microsoft.compute/virtualmachines).
 
 [!INCLUDE [virtual-machines-common-marketplace-plan](../../../includes/virtual-machines-common-marketplace-plan.md)]
 
 ### <a name="view-plan-properties"></a>Wyświetl właściwości planu
 
-Aby wyświetlić informacje o planu zakupu z obrazu, uruchom `Get-AzVMImage` polecenia cmdlet. Jeśli `PurchasePlan` właściwość w danych wyjściowych jest `null`, obraz, który ma warunki muszą zaakceptować przed przystąpieniem do wdrożenia programowego.  
+Aby wyświetlić informacje o planie zakupu obrazu, uruchom `Get-AzVMImage` polecenie cmdlet. Jeśli właściwość w danych wyjściowych nie `null`jest, obraz zawiera warunki, które należy zaakceptować przed wdrożeniem programistycznym. `PurchasePlan`  
 
-Na przykład *systemu Windows Server 2016 Datacenter* obraz nie ma dodatkowe postanowienia, więc `PurchasePlan` informacje są `null`:
+Na przykład obraz *systemu Windows Server 2016 Datacenter* nie ma dodatkowych warunków, więc `PurchasePlan` dostępne są `null`następujące informacje:
 
 ```powershell
 $version = "2016.127.20170406"
@@ -213,7 +212,7 @@ DataDiskImages   : []
 
 ```
 
-W poniższym przykładzie pokazano polecenie podobne do *maszyna wirtualna do nauki o danych — Windows 2016* obrazu, który ma `PurchasePlan` właściwości: `name`, `product`, i `publisher`. Niektóre obrazy również mieć `promotion code` właściwości. Aby wdrożyć ten obraz, zobacz następujące sekcje, aby zaakceptować warunki i włączyć wdrożenia programowe.
+W poniższym przykładzie pokazano podobne polecenie dla obrazu *Data Science Virtual Machine-Windows 2016* , który ma następujące `PurchasePlan` właściwości: `name`, `product`, i `publisher`. Niektóre obrazy mają `promotion code` również właściwość. Aby wdrożyć ten obraz, zapoznaj się z następującymi sekcjami, aby zaakceptować warunki i włączyć wdrażanie programistyczne.
 
 ```powershell
 Get-AzVMImage -Location "westus" -PublisherName "microsoft-ads" -Offer "windows-data-science-vm" -Skus "windows2016" -Version "0.2.02"
@@ -244,7 +243,7 @@ DataDiskImages   : []
 
 ### <a name="accept-the-terms"></a>Zaakceptuj warunki
 
-Aby wyświetlić postanowienia licencyjne, użyj [Get AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms) polecenia cmdlet i przekaż zakupu planu parametrów. Dane wyjściowe zawiera również link do ze wszystkimi postanowieniami dotyczącymi obrazu z witryny Marketplace i pokazuje, czy wcześniej zaakceptowane warunki. Należy używać małych liter w wartości parametrów.
+Aby wyświetlić postanowienia licencyjne, użyj polecenia cmdlet [Get-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms) i przekaż parametry planu zakupu. Dane wyjściowe zawierają link do warunków dla obrazu z witryny Marketplace i pokazują, czy zostały wcześniej zaakceptowane warunki. Upewnij się, że w wartości parametrów są używane wszystkie małe litery.
 
 ```powershell
 Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
@@ -263,7 +262,7 @@ Accepted          : False
 Signdate          : 1/25/2019 7:43:00 PM
 ```
 
-Użyj [AzMarketplaceterms zestaw](https://docs.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms) polecenia cmdlet, aby zaakceptować lub odrzucić warunki. Musisz zaakceptować warunki raz na subskrypcję dla obrazu. Należy używać małych liter w wartości parametrów. 
+Użyj polecenia cmdlet [Set-AzMarketplaceterms](https://docs.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms) , aby zaakceptować lub odrzucić warunki. Musisz tylko raz zaakceptować warunki dla każdej subskrypcji obrazu. Upewnij się, że w wartości parametrów są używane wszystkie małe litery. 
 
 ```powershell
 $agreementTerms=Get-AzMarketplaceterms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
@@ -287,7 +286,7 @@ Signdate          : 2/23/2018 7:49:31 PM
 
 ### <a name="deploy-using-purchase-plan-parameters"></a>Wdrażanie przy użyciu parametrów planu zakupu
 
-Po zaakceptowaniu warunków dla obrazu, możesz wdrożyć Maszynę wirtualną w tej subskrypcji. Jak pokazano w poniższym fragmencie kodu, należy użyć [AzVMPlan zestaw](https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan) polecenia cmdlet można ustawić informacji o planie witryny Marketplace dla obiektu maszyny Wirtualnej. Aby uzyskać kompletny skrypt utworzyć ustawienia sieci dla maszyny Wirtualnej i ukończyć wdrażanie, zobacz [przykłady skryptów programu PowerShell](powershell-samples.md).
+Po zaakceptowaniu postanowień dotyczących obrazu można wdrożyć maszynę wirtualną w tej subskrypcji. Jak pokazano w poniższym fragmencie kodu, użyj polecenia cmdlet [Set-AzVMPlan](https://docs.microsoft.com/powershell/module/az.compute/set-azvmplan) , aby ustawić informacje o planie witryny Marketplace dla obiektu maszyny wirtualnej. Aby uzyskać kompletny skrypt służący do tworzenia ustawień sieci dla maszyny wirtualnej i dokończyć wdrożenie, zobacz [przykłady skryptów programu PowerShell](powershell-samples.md).
 
 ```powershell
 ...
@@ -319,13 +318,13 @@ $version = "19.01.14"
 $vmConfig = Set-AzVMSourceImage -VM $vmConfig -PublisherName $publisherName -Offer $offerName -Skus $skuName -Version $version
 ...
 ```
-Będzie następnie przekazać konfiguracji maszyny Wirtualnej wraz z obiektami konfiguracji sieci, aby `New-AzVM` polecenia cmdlet.
+Następnie można przekazać konfigurację maszyny wirtualnej wraz z obiektami konfiguracji sieci do `New-AzVM` polecenia cmdlet.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby utworzyć maszynę wirtualną, szybko `New-AzVM` polecenia cmdlet przy użyciu obrazu podstawowego informacji, zobacz [Utwórz maszynę wirtualną Windows przy użyciu programu PowerShell](quick-create-powershell.md).
+Aby szybko `New-AzVM` utworzyć maszynę wirtualną za pomocą polecenia cmdlet przy użyciu podstawowych informacji o obrazie, zobacz [Tworzenie maszyny wirtualnej z systemem Windows przy użyciu programu PowerShell](quick-create-powershell.md).
 
 
-Przykładowy skrypt programu PowerShell, aby zobaczyć [tworzenie w pełni skonfigurowanej maszyny wirtualnej](../scripts/virtual-machines-windows-powershell-sample-create-vm.md).
+Zobacz przykład skryptu programu PowerShell, aby [utworzyć w pełni skonfigurowaną maszynę wirtualną](../scripts/virtual-machines-windows-powershell-sample-create-vm.md).
 
 

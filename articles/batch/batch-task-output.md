@@ -7,19 +7,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b5fe15b36913106692377c483110cce2c0418a3f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d03fd754e5a8e2872063b8a10bd1293b94d8f3b6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322857"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094427"
 ---
 # <a name="persist-job-and-task-output"></a>Utrwalanie danych wyjściowych zadań i zadań podrzędnych
 
@@ -85,7 +84,7 @@ Podczas projektowania rozwiązania do przetwarzania wsadowego należy wziąć po
 
 - **Wyświetlanie danych wyjściowych**: Gdy przejdziesz do zadania wsadowego w Azure Portal i wybierzesz pozycję **pliki w węźle**, zostaną wyświetlone wszystkie pliki skojarzone z zadaniem, a nie tylko pliki wyjściowe, które Cię interesują. Ponownie pliki w węzłach obliczeniowych są dostępne tylko wtedy, gdy węzeł istnieje i tylko w czasie przechowywania pliku ustawionym dla zadania. Aby wyświetlić dane wyjściowe zadania, które zostały utrwalone w usłudze Azure Storage, możesz użyć Azure Portal lub aplikacji klienckiej usługi Azure Storage, takiej jak [Eksplorator usługi Azure Storage][storage_explorer]. Aby wyświetlić dane wyjściowe w usłudze Azure Storage przy użyciu portalu lub innego narzędzia, należy znać lokalizację pliku i przejść bezpośrednio do niego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Skorzystaj z nowych funkcji w interfejsie API usługi Batch, aby utrwalać dane zadań w usłudze [Azure Storage za pomocą interfejsu API usługi Batch](batch-task-output-files.md).
 - Dowiedz się więcej o korzystaniu z biblioteki Konwencji plików wsadowych dla platformy .NET w temacie [utrwalanie danych zadań i zadań w usłudze Azure Storage za pomocą biblioteki Konwencji plików wsadowych dla platformy .NET](batch-task-output-file-conventions.md).

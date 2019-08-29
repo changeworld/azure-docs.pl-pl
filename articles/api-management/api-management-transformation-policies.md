@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: b55502bbc24868b6d8b0352f581bbf4adc81e53a
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 4f57f7cbc4e93f8a98b64b31ca51e0f1e32c375c
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442248"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073295"
 ---
 # <a name="api-management-transformation-policies"></a>Zasady transformacji API Management
 Ten temat zawiera informacje dotyczące następujących zasad API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasady w API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -70,15 +69,15 @@ Ten temat zawiera informacje dotyczące następujących zasad API Management. Ab
 
 ### <a name="elements"></a>Elementy
 
-|Name (Nazwa)|Opis|Wymagane|
+|Name|Opis|Wymagane|
 |----------|-----------------|--------------|
 |JSON-to-XML|Element główny.|Tak|
 
 ### <a name="attributes"></a>Atrybuty
 
-|Name (Nazwa)|Opis|Wymagane|Domyślny|
+|Name|Opis|Wymagane|Domyślny|
 |----------|-----------------|--------------|-------------|
-|zastosuj|Atrybut musi być ustawiony na jedną z następujących wartości.<br /><br /> -zawsze-zawsze stosuje konwersję.<br />-Content-Type-JSON — Konwertuj tylko w przypadku, gdy w nagłówku Content-Type jest obecność JSON.|Yes|ND|
+|zastosuj|Atrybut musi być ustawiony na jedną z następujących wartości.<br /><br /> -zawsze-zawsze stosuje konwersję.<br />-Content-Type-JSON — Konwertuj tylko w przypadku, gdy w nagłówku Content-Type jest obecność JSON.|Tak|ND|
 |consider-accept-header|Atrybut musi być ustawiony na jedną z następujących wartości.<br /><br /> -true — Zastosuj konwersję, jeśli żądanie JSON jest wymagane w nagłówku akceptowania żądania.<br />-false — zawsze stosuj konwersję.|Nie|true|
 |Analiza — Data|Gdy ustawienia `false` wartości dat są po prostu kopiowane podczas transformacji|Nie|true|
 
@@ -114,13 +113,13 @@ Ten temat zawiera informacje dotyczące następujących zasad API Management. Ab
 
 ### <a name="elements"></a>Elementy
 
-|Name (Nazwa)|Opis|Wymagane|
+|Name|Opis|Wymagane|
 |----------|-----------------|--------------|
-|xml-to-json|Element główny.|Yes|
+|xml-to-json|Element główny.|Tak|
 
 ### <a name="attributes"></a>Atrybuty
 
-|Name (Nazwa)|Opis|Wymagane|Domyślny|
+|Name|Opis|Wymagane|Domyślny|
 |----------|-----------------|--------------|-------------|
 |Natur|Atrybut musi być ustawiony na jedną z następujących wartości.<br /><br /> -przyjazny dla języka JavaScript — przekonwertowany kod JSON ma postać przyjazną dla deweloperów języka JavaScript.<br />-Direct — przekonwertowane dane JSON odzwierciedlają strukturę oryginalnego dokumentu XML.|Tak|ND|
 |zastosuj|Atrybut musi być ustawiony na jedną z następujących wartości.<br /><br /> -zawsze Konwertuj zawsze.<br />-Content-Type-XML-Convert tylko wtedy, gdy w nagłówku Content-Type (odpowiedź) wskazuje obecność XML.|Tak|ND|
@@ -150,15 +149,15 @@ Ten temat zawiera informacje dotyczące następujących zasad API Management. Ab
 
 ### <a name="elements"></a>Elementy
 
-|Name (Nazwa)|Opis|Wymagane|
+|Name|Opis|Wymagane|
 |----------|-----------------|--------------|
 |Znajdź i Zamień|Element główny.|Tak|
 
 ### <a name="attributes"></a>Atrybuty
 
-|Name (Nazwa)|Opis|Wymagane|Domyślny|
+|Name|Opis|Wymagane|Domyślny|
 |----------|-----------------|--------------|-------------|
-|from|Ciąg do wyszukania.|Yes|ND|
+|from|Ciąg do wyszukania.|Tak|ND|
 |to|Ciąg zastępczy. Określ ciąg zastępczy o zerowej długości, aby usunąć ciąg wyszukiwania.|Tak|ND|
 
 ### <a name="usage"></a>Użycie
@@ -188,7 +187,7 @@ Ten temat zawiera informacje dotyczące następujących zasad API Management. Ab
 
 ### <a name="elements"></a>Elementy
 
-|Name (Nazwa)|Opis|Wymagane|
+|Name|Opis|Wymagane|
 |----------|-----------------|--------------|
 |redirect-content-urls|Element główny.|Tak|
 
@@ -261,13 +260,13 @@ W tym przykładzie zasady kierują żądanie do zaplecza usługi Service Fabric 
 
 ### <a name="elements"></a>Elementy
 
-|Name (Nazwa)|Opis|Wymagane|
+|Name|Opis|Wymagane|
 |----------|-----------------|--------------|
-|Konfiguracja zaplecza — usługa|Element główny.|Yes|
+|Konfiguracja zaplecza — usługa|Element główny.|Tak|
 
 ### <a name="attributes"></a>Atrybuty
 
-|Name (Nazwa)|Opis|Wymagane|Domyślny|
+|Name|Opis|Wymagane|Domyślny|
 |----------|-----------------|--------------|-------------|
 |podstawowy adres URL|Nowy podstawowy adres URL usługi zaplecza.|Jeden z `base-url` lub `backend-id` musi być obecny.|ND|
 |Identyfikator zaplecza|Identyfikator zaplecza do skierowania do. (Jednostki zaplecza są zarządzane za pośrednictwem [interfejsu API](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend) i [programu PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)).|Jeden z `base-url` lub `backend-id` musi być obecny.|ND|
@@ -397,13 +396,13 @@ Zasady można skonfigurować tak, aby używały języka Liquid tworzenia szablon
 
 ### <a name="elements"></a>Elementy
 
-|Name (Nazwa)|Opis|Wymagane|
+|Name|Opis|Wymagane|
 |----------|-----------------|--------------|
 |Ustaw treść|Element główny. Zawiera tekst treści lub wyrażenia zwracające treść.|Tak|
 
 ### <a name="properties"></a>Właściwości
 
-|Name (Nazwa)|Opis|Wymagane|Domyślny|
+|Name|Opis|Wymagane|Domyślny|
 |----------|-----------------|--------------|-------------|
 |Szablon|Służy do zmiany trybu tworzenia szablonów, w którym będą uruchamiane zasady zestawu treści. Obecnie jedyną obsługiwaną wartością jest:<br /><br />-Liquid-zasady dotyczące zestawu treści będą używać aparatu ciekłej tworzenia szablonów |Nie||
 
@@ -504,14 +503,14 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elementy
 
-|Name (Nazwa)|Opis|Wymagane|
+|Name|Opis|Wymagane|
 |----------|-----------------|--------------|
 |set-header|Element główny.|Tak|
-|value|Określa wartość nagłówka, który ma zostać ustawiony. Dla wielu nagłówków o tej samej nazwie Dodaj dodatkowe `value` elementy.|Tak|
+|value|Określa wartość nagłówka, która ma zostać ustawiona. Dla wielu nagłówków o tej samej nazwie Dodaj dodatkowe `value` elementy.|Tak|
 
 ### <a name="properties"></a>Właściwości
 
-|Name (Nazwa)|Opis|Wymagane|Domyślny|
+|Name|Opis|Wymagane|Domyślny|
 |----------|-----------------|--------------|-------------|
 |Istnieje — akcja|Określa akcję, która ma zostać podjęta, gdy nagłówek jest już określony. Ten atrybut musi mieć jedną z następujących wartości.<br /><br /> -override — zastępuje wartość istniejącego nagłówka.<br />-Skip — nie zastępuje istniejącej wartości nagłówka.<br />-Append-dołącza wartość do istniejącej wartości nagłówka.<br />-DELETE — usuwa nagłówek z żądania.<br /><br /> Gdy ustawione na `override` rejestrowanie wielu wpisów o tej samej nazwie powoduje, że nagłówek jest ustawiany zgodnie ze wszystkimi wpisami (które zostaną wyświetlone wiele razy); w wyniku zostaną ustawione tylko wartości wyświetlane.|Nie|mapowań|
 |name|Określa nazwę nagłówka, który ma zostać ustawiony.|Tak|ND|
@@ -564,17 +563,17 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elementy
 
-|Name (Nazwa)|Opis|Wymagane|
+|Name|Opis|Wymagane|
 |----------|-----------------|--------------|
 |Set-Query-Parameter|Element główny.|Tak|
 |value|Określa wartość parametru zapytania, który ma zostać ustawiony. Dla wielu parametrów zapytania o tej samej nazwie Dodaj dodatkowe `value` elementy.|Tak|
 
 ### <a name="properties"></a>Właściwości
 
-|Name (Nazwa)|Opis|Wymagane|Domyślny|
+|Name|Opis|Wymagane|Domyślny|
 |----------|-----------------|--------------|-------------|
 |Istnieje — akcja|Określa akcję, która ma zostać podjęta, gdy parametr zapytania jest już określony. Ten atrybut musi mieć jedną z następujących wartości.<br /><br /> -override — zastępuje wartość istniejącego parametru.<br />-Skip — nie zastępuje istniejącej wartości parametru zapytania.<br />-Append-dołącza wartość do istniejącej wartości parametru zapytania.<br />-DELETE — Usuwa parametr zapytania z żądania.<br /><br /> Gdy ustawione na `override` rejestrowanie wielu wpisów o tej samej nazwie powoduje, że parametr zapytania jest ustawiany zgodnie ze wszystkimi wpisami (które zostaną wyświetlone wiele razy); w wyniku zostaną ustawione tylko wartości wyświetlane.|Nie|mapowań|
-|name|Określa nazwę parametru zapytania, który ma zostać ustawiony.|Yes|ND|
+|name|Określa nazwę parametru zapytania, który ma zostać ustawiony.|Tak|ND|
 
 ### <a name="usage"></a>Użycie
  Tych zasad można używać w następujących sekcjach i [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) zakresach [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zasad.
@@ -643,9 +642,9 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elementy
 
-|Name (Nazwa)|Opis|Wymagane|
+|Name|Opis|Wymagane|
 |----------|-----------------|--------------|
-|ponowne zapisywanie — identyfikator URI|Element główny.|Yes|
+|ponowne zapisywanie — identyfikator URI|Element główny.|Tak|
 
 ### <a name="attributes"></a>Atrybuty
 
@@ -712,11 +711,11 @@ OriginalUrl.
 
 ### <a name="elements"></a>Elementy
 
-|Name (Nazwa)|Opis|Wymagane|
+|Name|Opis|Wymagane|
 |----------|-----------------|--------------|
-|przekształcenia XSL|Element główny.|Yes|
+|przekształcenia XSL|Element główny.|Tak|
 |parametr|Używane do definiowania zmiennych używanych w przekształceniu|Nie|
-|xsl: stylesheet|Główny element arkusza stylów. Wszystkie elementy i atrybuty zdefiniowane w ramach standardowej [specyfikacji XSLT](https://www.w3.org/TR/xslt)|Yes|
+|xsl: stylesheet|Główny element arkusza stylów. Wszystkie elementy i atrybuty zdefiniowane w ramach standardowej [specyfikacji XSLT](https://www.w3.org/TR/xslt)|Tak|
 
 ### <a name="usage"></a>Użycie
  Tych zasad można używać w następujących sekcjach i [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) zakresach [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zasad.
@@ -725,7 +724,7 @@ OriginalUrl.
 
 -   **Zakresy zasad:** wszystkie zakresy
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Więcej informacji znajduje się w następujących tematach:
 

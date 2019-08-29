@@ -5,18 +5,17 @@ services: virtual-machines-linux
 author: laurenhughes
 manager: gwallace
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/05/2019
 ms.author: joelpell
-ms.openlocfilehash: a06ae79181c70f1cb8519f703cb42a3d699bebf3
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ea64a4274eda947aebf0f693657c17a120bec560
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828381"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081800"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>Optymalizacja wydajności na maszynach wirtualnych z serii Lsv2
 
@@ -109,6 +108,6 @@ Aby dowiedzieć się więcej na temat opcji tworzenia kopii zapasowych danych w 
 
    Należy również pamiętać, że najlepszą wydajność uzyskuje się, gdy we/wy jest wykonywane bezpośrednio na wszystkich urządzeniach interfejsu NVMe bez partycjonowania, brak systemów plików, brak konfiguracji RAID 0 itd. Przed rozpoczęciem sesji testowania upewnij się, że konfiguracja jest w znanym stanie świeżym/czystym, uruchamiając `blkdiscard` polecenie na każdym z urządzeń interfejsu NVMe.
    
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Zobacz specyfikacje dla wszystkich [maszyn wirtualnych zoptymalizowanych pod kątem wydajności magazynu](sizes-storage.md) na platformie Azure

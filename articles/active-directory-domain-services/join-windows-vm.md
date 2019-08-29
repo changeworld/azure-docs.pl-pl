@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: iainfou
-ms.openlocfilehash: c3c3252ec2fd850a763bbbf089d470df5173843f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 86e0f09e957df308f3af868d9590951f29d226b1
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612387"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073890"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Samouczek: Przyłączanie maszyny wirtualnej z systemem Windows Server do domeny zarządzanej
 
@@ -153,15 +153,23 @@ Po utworzeniu maszyny wirtualnej i nawiązaniu połączenia RDP przystąpi teraz
 1. Aby ukończyć proces przyłączenia do domeny zarządzanej usługi Azure AD DS, uruchom ponownie maszynę wirtualną.
 
 > [!TIP]
-> Można także przyłączyć do domeny maszynę wirtualną przy użyciu programu PowerShell z poleceniem cmdlet [Add-Computer][add-computer] . Poniższy przykład dołącza do domeny *contoso* , a następnie ponownie uruchamia maszynę wirtualną. Po wyświetleniu monitu wprowadź poświadczenia dla użytkownika, który należy do grupy *administratorów DC usługi Azure AD* :
+> Można przyłączyć do domeny maszynę wirtualną przy użyciu programu PowerShell przy użyciu polecenia cmdlet [Add-Computer][add-computer] . Poniższy przykład dołącza do domeny *contoso* , a następnie ponownie uruchamia maszynę wirtualną. Po wyświetleniu monitu wprowadź poświadczenia dla użytkownika, który należy do grupy *administratorów DC usługi Azure AD* :
 >
 > `Add-Computer -DomainName CONTOSO -Restart`
+>
+> Aby przyłączyć do domeny maszynę wirtualną bez nawiązywania z nią połączenia i ręcznie skonfigurować połączenie, można również poznać korzystanie z polecenia cmdlet [Set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell.
 
 Po ponownym uruchomieniu maszyny wirtualnej z systemem Windows Server wszystkie zasady zastosowane w domenie zarządzanej usługi Azure AD DS są wypychane do maszyny wirtualnej. Teraz możesz także zalogować się do maszyny wirtualnej z systemem Windows Server przy użyciu odpowiednich poświadczeń domeny.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 W następnym samouczku użyjesz tej maszyny wirtualnej z systemem Windows Server, aby zainstalować narzędzia do zarządzania, które umożliwiają administrowanie domeną zarządzaną platformy Azure AD DS. Jeśli nie chcesz kontynuować tej serii samouczków, zapoznaj się z poniższymi krokami czyszczenia, aby [wyłączyć protokół RDP](#disable-rdp) lub [usunąć maszynę wirtualną](#delete-the-vm). W przeciwnym razie [Przejdź do następnego samouczka](#next-steps).
+
+### <a name="un-join-the-vm-from-azure-ad-ds-managed-domain"></a>Odłączanie maszyny wirtualnej od domeny zarządzanej AD DS platformy Azure
+
+Aby usunąć maszynę wirtualną z domeny zarządzanej AD DS platformy Azure, wykonaj kroki ponownie, aby [dołączyć maszynę wirtualną do domeny](#join-the-vm-to-the-azure-ad-ds-managed-domain). Zamiast przyłączać się do domeny zarządzanej AD DS platformy Azure, wybierz opcję dołączenia do grupy roboczej, takiej jak domyślna *Grupa robocza*. Po ponownym uruchomieniu maszyny wirtualnej obiekt komputera zostanie usunięty z domeny zarządzanej AD DS platformy Azure.
+
+Jeśli [usuniesz maszynę wirtualną](#delete-the-vm) bez rozłączenia z domeną, obiekt oddzielony komputer zostanie pozostawiony na platformie Azure AD DS.
 
 ### <a name="disable-rdp"></a>Wyłącz protokół RDP
 
@@ -231,3 +239,4 @@ Aby administrować domeną zarządzaną platformy Azure AD DS, skonfiguruj maszy
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
 [jit-access]: ../security-center/security-center-just-in-time.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
+[set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

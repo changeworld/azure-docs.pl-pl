@@ -3,15 +3,15 @@ title: Dowiedz się, jak skonfigurować czas wygaśnięcia w usłudze Azure Cosm
 description: Dowiedz się, jak skonfigurować czas wygaśnięcia w usłudze Azure Cosmos DB i jak nim zarządzać
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 618e7e19b20f361aa0a8c668e9621a29db43772d
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: bb67e6e4fbef51a0fbd26efd2618be8cc9896beb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797754"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092984"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Konfigurowanie czasu wygaśnięcia w usłudze Azure Cosmos DB
 
@@ -37,9 +37,9 @@ Wykonaj następujące czynności, aby włączyć czas wygaśnięcia dla kontener
    ![Konfigurowanie czasu wygaśnięcia w witrynie Azure Portal](./media/how-to-time-to-live/how-to-time-to-live-portal.png)
 
 
-- Gdy DefaultTimeToLive ma wartość null, a następnie czas wygaśnięcia jest wyłączona
-- Gdy DefaultTimeToLive jest wartość -1, a następnie czas wprowadzenia na żywo ustawienie znajduje się na (Brak wartości domyślnej)
-- Gdy DefaultTimeToLive ma inną wartość Int (oprócz 0) czas wprowadzenia na żywo ustawienie znajduje się na
+- Gdy DefaultTimeToLive ma wartość null, czas wygaśnięcia jest wyłączony
+- Gdy DefaultTimeToLive ma wartość-1, ustawienie czasu wygaśnięcia jest włączone (bez domyślnego)
+- Gdy DefaultTimeToLive ma inną wartość int (z wyjątkiem 0), ustawienie czasu wygaśnięcia jest włączone
 
 ## <a name="enable-time-to-live-on-a-container-using-sdk"></a>Włączanie czasu wygaśnięcia dla kontenera za pomocą zestawu SDK
 
@@ -103,7 +103,7 @@ Oprócz skonfigurowania domyślnego czasu wygaśnięcia dla kontenera możesz us
 
 ### <a id="portal-set-ttl-item"></a>Azure Portal
 
-Aby włączyć czas wygaśnięcia elementu, użyj następujących kroków:
+Wykonaj następujące kroki, aby włączyć czas wygaśnięcia dla elementu:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
@@ -115,10 +115,10 @@ Aby włączyć czas wygaśnięcia elementu, użyj następujących kroków:
 
    * Otwórz okno **Skalowanie i ustawienia**.
    * W obszarze **Ustawienia** znajdź pozycję **Czas wygaśnięcia**.
-   * Wybierz **na (Brak wartości domyślnej)** lub wybierz **na** i ustaw wartość czasu wygaśnięcia. 
+   * Wybierz opcję **włączone (brak wartości domyślnej)** lub wybierz opcję **włączone** i ustaw wartość TTL. 
    * Kliknij przycisk **Zapisz**, aby zapisać zmiany.
 
-5. Następnie przejdź do elementu, dla którego chcesz ustawić czas na żywo, dodawanie `ttl` właściwości i wybierz pozycję **aktualizacji**. 
+5. Następnie przejdź do elementu, dla którego chcesz ustawić czas wygaśnięcia, Dodaj `ttl` Właściwość i wybierz pozycję **Aktualizuj**. 
 
    ```json
    {
@@ -208,7 +208,7 @@ response = await client.ReplaceDocumentAsync(readDocument);
 
 ## <a name="disable-time-to-live"></a>Wyłączanie czasu wygaśnięcia
 
-Aby wyłączyć czas wygaśnięcia dla kontenera i zatrzymać proces w tle sprawdzający, czy elementy wygasły, należy usunąć właściwość `DefaultTimeToLive` z kontenera. Usunięcie tej właściwości ma inne skutki niż ustawienie jej na –1. Jeśli wartość właściwości zostanie ustawiona na –1, nowe elementy dodawane do kontenera nie będą wygasały, ale można będzie zastąpić tę wartość w przypadku wybranych elementów w kontenerze. Po usunięciu właściwości TTL z kontenera elementy nigdy nie wygasa, nawet jeśli są jawnie przesłaniane poprzedniego wartość domyślna czasu wygaśnięcia.
+Aby wyłączyć czas wygaśnięcia dla kontenera i zatrzymać proces w tle sprawdzający, czy elementy wygasły, należy usunąć właściwość `DefaultTimeToLive` z kontenera. Usunięcie tej właściwości ma inne skutki niż ustawienie jej na –1. Jeśli wartość właściwości zostanie ustawiona na –1, nowe elementy dodawane do kontenera nie będą wygasały, ale można będzie zastąpić tę wartość w przypadku wybranych elementów w kontenerze. Po usunięciu właściwości TTL z kontenera elementy będą nigdy nie wygasną, nawet jeśli istnieją jawnie zastąpione poprzednią domyślną wartością czasu wygaśnięcia.
 
 ### <a id="dotnet-disable-ttl"></a>.NET SDK
 

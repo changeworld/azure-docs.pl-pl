@@ -1,6 +1,6 @@
 ---
-title: Instalowanie bazy danych MongoDB na Windows maszyny Wirtualnej na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zainstalować bazę danych MongoDB na maszynie Wirtualnej platformy Azure z systemem Windows Server 2012 R2 przy użyciu modelu wdrażania usługi Resource Manager.
+title: Instalowanie MongoDB na maszynie wirtualnej z systemem Windows na platformie Azure | Microsoft Docs
+description: Dowiedz się, jak zainstalować MongoDB na maszynie wirtualnej platformy Azure z systemem Windows Server 2012 R2 utworzonym przy użyciu modelu wdrażania Menedżer zasobów.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -10,121 +10,120 @@ ms.assetid: 53faf630-8da5-4955-8d0b-6e829bf30cba
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 1436eadace2ff57bde9d67201d6b38d4aee8f523
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 3cf1e6ba574fdafd8150212688475450e4cc2379
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722666"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103129"
 ---
-# <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Instalowanie i Konfigurowanie bazy danych MongoDB na maszynie Wirtualnej Windows na platformie Azure
-[Bazy danych MongoDB](https://www.mongodb.org) to popularne typu open source, wysokiej wydajności baza danych NoSQL. Ten artykuł przeprowadzi Cię przez proces instalowania i konfigurowania bazy danych MongoDB na maszynie wirtualnej systemu Windows Server 2016 (VM) na platformie Azure. Możesz również [zainstalować bazę danych MongoDB na maszynie Wirtualnej systemu Linux na platformie Azure](../linux/install-mongodb.md).
+# <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Instalowanie i Konfigurowanie MongoDB na maszynie wirtualnej z systemem Windows na platformie Azure
+[MongoDB](https://www.mongodb.org) to popularna baza danych NoSQL typu open source o wysokiej wydajności. Ten artykuł przeprowadzi Cię przez proces instalowania i konfigurowania MongoDB na maszynie wirtualnej z systemem Windows Server 2016 na platformie Azure. Możesz również [zainstalować MongoDB na maszynie wirtualnej z systemem Linux na platformie Azure](../linux/install-mongodb.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed zainstalowaniem i Konfigurowanie bazy danych MongoDB, musisz utworzyć Maszynę wirtualną, a w idealnym przypadku dodania dysku danych do niego. Zobacz następujące artykuły, aby utworzyć Maszynę wirtualną i Dodaj dysk danych:
+Przed zainstalowaniem i skonfigurowaniem programu MongoDB należy utworzyć maszynę wirtualną i najlepiej dodać do niej dysk danych. Zapoznaj się z następującymi artykułami, aby utworzyć maszynę wirtualną i dodać dysk z danymi:
 
-* Tworzenie maszyny Wirtualnej z systemem Windows Server przy użyciu [witryny Azure portal](quick-create-portal.md) lub [programu Azure PowerShell](quick-create-powershell.md).
-* Dołączanie dysku danych do maszyny Wirtualnej z systemem Windows Server za pomocą [witryny Azure portal](attach-managed-disk-portal.md) lub [programu Azure PowerShell](attach-disk-ps.md).
+* Utwórz maszynę wirtualną z systemem Windows Server przy użyciu [Azure Portal](quick-create-portal.md) lub [Azure PowerShell](quick-create-powershell.md).
+* Dołączanie dysku danych do maszyny wirtualnej z systemem Windows Server przy użyciu [Azure Portal](attach-managed-disk-portal.md) lub [Azure PowerShell](attach-disk-ps.md).
 
-Aby rozpocząć instalowanie i Konfigurowanie bazy danych MongoDB, [Zaloguj się do maszyny Wirtualnej z systemem Windows Server](connect-logon.md) przy użyciu pulpitu zdalnego.
+Aby rozpocząć instalowanie i Konfigurowanie MongoDB, [Zaloguj się do maszyny wirtualnej z systemem Windows Server](connect-logon.md) przy użyciu pulpit zdalny.
 
 ## <a name="install-mongodb"></a>Instalowanie bazy danych MongoDB
 > [!IMPORTANT]
-> Funkcje zabezpieczeń bazy danych MongoDB, takie jak uwierzytelnianie i powiązanie adresu IP, nie są domyślnie włączone. Funkcje zabezpieczeń powinien być włączony przed wdrożeniem usługi MongoDB w środowisku produkcyjnym. Aby uzyskać więcej informacji, zobacz [zabezpieczeń bazy danych MongoDB i uwierzytelniania](https://www.mongodb.org/display/DOCS/Security+and+Authentication).
+> Funkcje zabezpieczeń MongoDB, takie jak uwierzytelnianie i powiązania adresów IP, nie są domyślnie włączone. Funkcje zabezpieczeń należy włączyć przed wdrożeniem MongoDB w środowisku produkcyjnym. Aby uzyskać więcej informacji, zobacz [MongoDB Security and Authentication](https://www.mongodb.org/display/DOCS/Security+and+Authentication).
 
 
-1. Po nawiązaniu połączenia z maszyną wirtualną przy użyciu pulpitu zdalnego, Otwórz program Internet Explorer z paska zadań.
-2. Wybierz **Użyj zalecanych ustawień zabezpieczeń, ochrony prywatności i zgodności** po programu Internet Explorer najpierw zostanie otwarty i kliknij przycisk **OK**.
-3. Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer jest włączona domyślnie. Dodaj witrynę sieci Web bazy danych MongoDB do listy dozwolonych witryn:
+1. Po nawiązaniu połączenia z maszyną wirtualną przy użyciu Pulpit zdalny Otwórz program Internet Explorer z paska zadań.
+2. Wybierz opcję **Użyj zalecanych zabezpieczeń, ochrony prywatności i ustawień zgodności** podczas pierwszego otwarcia programu Internet Explorer, a następnie kliknij przycisk **OK**.
+3. Konfiguracja zwiększonych zabezpieczeń programu Internet Explorer jest domyślnie włączona. Dodaj witrynę sieci Web MongoDB do listy dozwolonych witryn:
    
-   * Wybierz **narzędzia** ikonę w prawym górnym rogu.
-   * W **Opcje internetowe**, wybierz opcję **zabezpieczeń** , a następnie wybierz pozycję **Zaufane witryny** ikony.
-   * Kliknij przycisk **witryn** przycisku. Dodaj *https://\*. mongodb.com* do listy zaufanych witryn, a następnie zamknij okno dialogowe.
+   * Wybierz ikonę **Narzędzia** w prawym górnym rogu.
+   * W **Opcje internetowe**, wybierz kartę **zabezpieczenia** , a następnie wybierz ikonę **Zaufane witryny** .
+   * Kliknij przycisk **Lokacje** . Dodaj *https://\*. MongoDB.com* do listy zaufanych witryn, a następnie zamknij okno dialogowe.
      
-     ![Konfiguruj ustawienia zabezpieczeń programu Internet Explorer](./media/install-mongodb/configure-internet-explorer-security.png)
-4. Przejdź do [MongoDB — pliki do pobrania](https://www.mongodb.com/downloads) strony (https://www.mongodb.com/downloads).
-5. Jeśli to konieczne, zaznacz **Community Server** wersji, a następnie wybierz pozycję, najnowsza wersja stabilna bieżące wersji*systemu Windows Server 2008 R2 64-bitowych lub nowszy*. Aby pobrać Instalatora, kliknij przycisk **pobierania (msi)** .
+     ![Konfigurowanie ustawień zabezpieczeń programu Internet Explorer](./media/install-mongodb/configure-internet-explorer-security.png)
+4. Przejdź do strony [MongoDB — pliki do pobrania](https://www.mongodb.com/downloads) (https://www.mongodb.com/downloads).
+5. W razie potrzeby wybierz wersję **serwer Community** , a następnie wybierz najnowszą bieżącą, stabilną wersję dla*systemu Windows Server 2008 R2 64-bit i nowszego*. Aby pobrać Instalatora, kliknij pozycję **Pobierz (msi)** .
    
-    ![Pobierz Instalator bazy danych MongoDB](./media/install-mongodb/download-mongodb.png)
+    ![Pobierz instalatora MongoDB](./media/install-mongodb/download-mongodb.png)
    
-    Po zakończeniu pobierania, uruchom Instalatora.
-6. Przeczytaj i zaakceptuj umowę licencyjną. Po wyświetleniu monitu wybierz **Complete** instalacji.
-7. Jeśli to konieczne, można także zainstalować Compass, interfejs graficzny dla bazy danych MongoDB.
-8. Na ostatnim ekranie kliknij **zainstalować**.
+    Po zakończeniu pobierania uruchom Instalatora.
+6. Przeczytaj i zaakceptuj umowę licencyjną. Po wyświetleniu monitu wybierz pozycję **Ukończ** instalację.
+7. W razie potrzeby można również zainstalować kompas, interfejs graficzny dla MongoDB.
+8. Na ostatnim ekranie kliknij przycisk **Instaluj**.
 
-## <a name="configure-the-vm-and-mongodb"></a>Konfigurowanie maszyny Wirtualnej i bazy danych MongoDB
-1. Zmienne ścieżek nie są aktualizowane przez Instalatora bazy danych MongoDB. Bez bazy danych MongoDB `bin` lokalizacji w zmiennej path, należy określić pełną ścieżkę w każdym użyciu wykonywalnej bazy danych MongoDB. Aby dodać lokalizację do zmiennej path:
+## <a name="configure-the-vm-and-mongodb"></a>Skonfiguruj maszynę wirtualną i MongoDB
+1. Zmienne ścieżki nie są aktualizowane przez Instalatora MongoDB. Bez lokalizacji MongoDB `bin` w zmiennej PATH należy określić pełną ścieżkę za każdym razem, gdy używasz pliku wykonywalnego MongoDB. Aby dodać lokalizację do zmiennej PATH:
    
-   * Kliknij prawym przyciskiem myszy **Start** menu, a następnie wybierz **systemu**.
-   * Kliknij przycisk **Zaawansowane ustawienia systemu**, a następnie kliknij przycisk **zmienne środowiskowe**.
-   * W obszarze **zmiennych systemowych**, wybierz opcję **ścieżki**, a następnie kliknij przycisk **Edytuj**.
+   * Kliknij prawym przyciskiem myszy menu **Start** , a następnie wybierz pozycję **system**.
+   * Kliknij pozycję **Zaawansowane ustawienia systemu**, a następnie kliknij pozycję **zmienne środowiskowe**.
+   * W obszarze **zmienne systemowe**wybierz pozycję **ścieżka**, a następnie kliknij przycisk **Edytuj**.
      
-     ![Skonfiguruj zmienne ŚCIEŻEK](./media/install-mongodb/configure-path-variables.png)
+     ![Konfiguruj zmienne ścieżki](./media/install-mongodb/configure-path-variables.png)
      
-     Dodaj ścieżkę do swojej bazy danych MongoDB `bin` folderu. Bazy danych MongoDB jest zwykle instalowany w *C:\Program Files\MongoDB*. Sprawdź, czy ścieżka instalacji na maszynie Wirtualnej. W poniższym przykładzie dodano domyślnej lokalizacji, do instalacji bazy danych MongoDB `PATH` zmiennej:
+     Dodaj ścieżkę do folderu MongoDB `bin` . MongoDB jest zazwyczaj instalowany w *katalogu C:\Program Files\MongoDB*. Sprawdź ścieżkę instalacji na maszynie wirtualnej. Poniższy przykład dodaje domyślną lokalizację instalacji MongoDB do `PATH` zmiennej:
      
      ```
      ;C:\Program Files\MongoDB\Server\3.6\bin
      ```
      
      > [!NOTE]
-     > Pamiętaj dodać wiodącego średnika (`;`) do wskazania, czy dodajesz lokalizację w której Twoje `PATH` zmiennej.
+     > Pamiętaj, aby dodać wiodący średnik (`;`), aby wskazać, że dodajesz lokalizację `PATH` do zmiennej.
 
-2. Tworzenie katalogów danych i dziennika bazy danych MongoDB na dysku danych. Z **Start** menu, wybierz opcję **polecenia**. Poniższe przykłady tworzą katalogi na napęd F:
+2. Utwórz MongoDB danych i katalogów dzienników na dysku z danymi. Z menu **Start** wybierz **polecenie Wiersz polecenia**. Poniższe przykłady tworzą katalogi na dysku F:
    
     ```
     mkdir F:\MongoData
     mkdir F:\MongoLogs
     ```
-3. Uruchom wystąpienie bazy danych MongoDB za pomocą następującego polecenia, dostosowując ścieżka do danych i dziennika odpowiednio katalogi:
+3. Uruchom wystąpienie MongoDB za pomocą następującego polecenia, dostosowując ścieżkę do danych i katalogów dzienników odpowiednio:
    
     ```
     mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log
     ```
    
-    Może upłynąć kilka minut, zanim bazy danych MongoDB do przydzielania plików dziennika i rozpocząć nasłuchiwania połączeń. Wszystkie komunikaty dziennika są kierowane do *F:\MongoLogs\mongolog.log* plik jako `mongod.exe` server rozpoczyna się i przydziela plików dziennika.
+    Przydzielenie plików dziennika przez MongoDB może potrwać kilka minut i rozpocząć nasłuchiwanie połączeń. Wszystkie komunikaty dziennika są kierowane do pliku *F:\MongoLogs\mongolog.log* , gdy `mongod.exe` serwer zostanie uruchomiony i przydzieli pliki dziennika.
    
    > [!NOTE]
-   > Wiersz polecenia pozostaje koncentruje się na to zadanie, gdy wystąpienie bazy danych MongoDB jest uruchomiona. Pozostaw okno wiersza polecenia otwarte, aby kontynuować uruchamianie bazy danych MongoDB. Lub Zainstaluj bazę danych MongoDB jako usługa, zgodnie z opisem w następnym kroku.
+   > Wiersz polecenia pozostaje skoncentrowany na tym zadaniu, gdy wystąpienie MongoDB jest uruchomione. Pozostaw otwarte okno wiersza polecenia, aby kontynuować działanie MongoDB. Lub zainstaluj MongoDB jako usługę, jak opisano w następnym kroku.
 
-4. Bardziej niezawodne środowisko pracy bazy danych MongoDB, należy zainstalować `mongod.exe` jako usługa. Tworzenie usługi oznacza, że nie potrzebujesz pozostawić uruchamianiu za każdym razem, którego chcesz użyć bazy danych MongoDB wiersza polecenia. Tworzenie usługi w następujący sposób, w związku z tym Dopasowywanie ścieżki do katalogów danych i dziennika:
+4. Aby uzyskać bardziej niezawodne środowisko MongoDB, zainstaluj je `mongod.exe` jako usługę. Tworzenie usługi oznacza, że nie musisz opuszczać wiersza polecenia uruchamianego za każdym razem, gdy chcesz użyć MongoDB. Utwórz usługę w następujący sposób, dostosowując ścieżkę do danych i katalogów dzienników odpowiednio:
    
     ```
     mongod --dbpath F:\MongoData\ --logpath F:\MongoLogs\mongolog.log --logappend  --install
     ```
    
-    Poprzednie polecenie tworzy usługi o nazwie bazy danych MongoDB, opis "Mongo DB". Są również określić następujące parametry:
+    Poprzednie polecenie tworzy usługę o nazwie MongoDB, z opisem "Mongo DB". Określono również następujące parametry:
    
    * `--dbpath` Opcja określa lokalizację katalogu danych.
-   * `--logpath` Opcji należy używać do określenia pliku dziennika, ponieważ uruchomionej usługi nie ma okno polecenia, aby wyświetlić dane wyjściowe.
-   * `--logappend` Opcja określa, że ponowne uruchomienie usługi powoduje, że dane wyjściowe dołączyć do istniejącego pliku dziennika.
+   * `--logpath` Opcja musi być użyta do określenia pliku dziennika, ponieważ uruchomiona usługa nie ma okna polecenia, aby wyświetlić dane wyjściowe.
+   * `--logappend` Opcja określa, że ponowne uruchomienie usługi powoduje dołączenie danych wyjściowych do istniejącego pliku dziennika.
    
-   Aby uruchomić usługę bazy danych MongoDB, uruchom następujące polecenie:
+   Aby uruchomić usługę MongoDB, uruchom następujące polecenie:
    
     ```
     net start MongoDB
     ```
    
-    Aby uzyskać więcej informacji na temat tworzenia usługi bazy danych MongoDB, zobacz [skonfigurować usługę Windows dla programu MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#mongodb-as-a-windows-service).
+    Aby uzyskać więcej informacji na temat tworzenia usługi MongoDB, zobacz [Konfigurowanie usługi systemu Windows dla MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/#mongodb-as-a-windows-service).
 
-## <a name="test-the-mongodb-instance"></a>Testowe wystąpienie bazy danych MongoDB
-Bazy danych MongoDB, uruchomione jako pojedyncze wystąpienie lub zainstalowany jako usługa można teraz rozpocząć tworzenie i korzystanie z baz danych. Aby uruchomić administracyjne powłoki bazy danych MongoDB, Otwórz inne okno wiersza polecenia z **Start** menu, a następnie wprowadź następujące polecenie:
+## <a name="test-the-mongodb-instance"></a>Testowanie wystąpienia MongoDB
+Dzięki MongoDB uruchomionemu jako pojedynczemu wystąpieniu lub zainstalowanemu jako usługa możesz teraz zacząć tworzyć i korzystać z baz danych. Aby uruchomić powłokę administracyjną MongoDB, Otwórz inne okno wiersza polecenia z menu **Start** , a następnie wprowadź następujące polecenie:
 
 ```
 mongo  
 ```
 
-Możesz wyświetlić listę baz danych przy użyciu `db` polecenia. Wstaw dowolne dane w następujący sposób:
+Możesz wyświetlić listę baz danych za pomocą `db` polecenia. Wstaw dane w następujący sposób:
 
 ```
 db.foo.insert( { a : 1 } )
 ```
 
-Wyszukiwanie danych w następujący sposób:
+Wyszukaj dane w następujący sposób:
 
 ```
 db.foo.find()
@@ -136,14 +135,14 @@ Dane wyjściowe są podobne do poniższego przykładu:
 { "_id" : "ObjectId("57f6a86cee873a6232d74842"), "a" : 1 }
 ```
 
-Zakończ `mongo` konsoli w następujący sposób:
+`mongo` Zamknij konsolę w następujący sposób:
 
 ```
 exit
 ```
 
-## <a name="configure-firewall-and-network-security-group-rules"></a>Konfigurowanie zapory i reguły sieciowej grupy zabezpieczeń
-Teraz, bazy danych MongoDB jest zainstalowana i uruchomiona, należy otworzyć port w Zaporze Windows zdalnie do połączenia się z bazą danych MongoDB. Aby utworzyć nową regułę ruchu przychodzącego zezwalająca na porcie TCP 27017, otwórz administracyjny wiersz polecenia PowerShell i wpisz następujące polecenie:
+## <a name="configure-firewall-and-network-security-group-rules"></a>Konfigurowanie reguł zapory i sieciowych grup zabezpieczeń
+Teraz, gdy MongoDB jest zainstalowana i uruchomiona, otwórz port w zaporze systemu Windows, aby umożliwić zdalne nawiązywanie połączenia z MongoDB. Aby utworzyć nową regułę ruchu przychodzącego zezwalającą na port TCP 27017, Otwórz wiersz administracyjny programu PowerShell i wprowadź następujące polecenie:
 
 ```powerahell
 New-NetFirewallRule `
@@ -154,14 +153,14 @@ New-NetFirewallRule `
     -Action Allow
 ```
 
-Można również utworzyć reguły, używając **Zapora Windows z zabezpieczeniami zaawansowanymi** graficzne narzędzie do zarządzania. Utwórz nową regułę ruchu przychodzącego zezwalająca na porcie TCP 27017.
+Regułę można także utworzyć przy użyciu narzędzia do zarządzania w trybie graficznym **zapory systemu Windows z zabezpieczeniami zaawansowanymi** . Utwórz nową regułę ruchu przychodzącego zezwalającą na port TCP 27017.
 
-Jeśli to konieczne, Utwórz regułę sieciowej grupy zabezpieczeń, aby zezwalać na dostęp do bazy danych MongoDB z poza istniejącej podsieci sieci wirtualnej platformy Azure. Reguły sieciowej grupy zabezpieczeń można utworzyć przy użyciu [witryny Azure portal](nsg-quickstart-portal.md) lub [programu Azure PowerShell](nsg-quickstart-powershell.md). Podobnie jak w przypadku zasad zapory Windows Zezwalaj na porcie TCP 27017 do interfejsu sieci wirtualnej maszyny wirtualnej bazy danych MongoDB.
+W razie potrzeby utwórz regułę sieciowej grupy zabezpieczeń, aby zezwolić na dostęp do MongoDB spoza istniejącej podsieci sieci wirtualnej platformy Azure. Reguły sieciowej grupy zabezpieczeń można utworzyć przy użyciu [Azure Portal](nsg-quickstart-portal.md) lub [Azure PowerShell](nsg-quickstart-powershell.md). Podobnie jak w przypadku reguł zapory systemu Windows, Zezwól na port TCP 27017 do interfejsu sieci wirtualnej maszyny wirtualnej MongoDB.
 
 > [!NOTE]
-> TCP port 27017 jest domyślnym portem używanym przez bazy danych MongoDB. Ten port można zmienić za pomocą `--port` parametru podczas uruchamiania `mongod.exe` ręcznie lub przy użyciu usługi. Jeśli zmienisz numer portu, upewnij się zaktualizować reguły zapory Windows i sieciowej grupy zabezpieczeń, w poprzednich krokach.
+> Port TCP 27017 jest domyślnym portem używanym przez MongoDB. Można zmienić ten port przy użyciu `--port` parametru podczas ręcznego uruchamiania `mongod.exe` lub z usługi. Jeśli zmienisz port, pamiętaj o zaktualizowaniu zasad zapory systemu Windows i sieciowych grup zabezpieczeń w powyższych krokach.
 
 
 ## <a name="next-steps"></a>Następne kroki
-W tym samouczku przedstawiono sposób instalowania i konfigurowania bazy danych MongoDB na maszynie Wirtualnej Windows. Możesz teraz uzyskiwać dostęp bazy danych MongoDB na maszynie Wirtualnej Windows, wykonując poniższe tematy Zaawansowane w [dokumentacją usługi MongoDB](https://docs.mongodb.com/manual/).
+W tym samouczku przedstawiono sposób instalowania i konfigurowania MongoDB na maszynie wirtualnej z systemem Windows. Teraz możesz uzyskiwać dostęp do MongoDB na maszynie wirtualnej z systemem Windows, wykonując instrukcje zaawansowane w [dokumentacji MongoDB](https://docs.mongodb.com/manual/).
 

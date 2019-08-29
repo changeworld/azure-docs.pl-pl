@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure konsoli szeregowej wywołań SysRq i NMI | Dokumentacja firmy Microsoft
-description: Za pomocą konsoli szeregowej SysRq i NMI wywołuje w maszynach wirtualnych platformy Azure.
+title: Usługa Azure serial Console dla wywołań SysRq i NMI | Microsoft Docs
+description: Korzystanie z konsoli szeregowej dla wywołań SysRq i NMI w usłudze Azure Virtual Machines.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -8,128 +8,127 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 79729cf222c208a78a2eac430e51b996cddb4e78
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d5c647bac2bc6abc85a74531e052f0f3a54b2047
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710540"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090093"
 ---
-# <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Użyj konsoli szeregowej wywołań SysRq i NMI
+# <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Korzystanie z konsoli szeregowej dla wywołań SysRq i NMI
 
-## <a name="system-request-sysrq"></a>Żądanie systemu (SysRq)
-SysRq jest sekwencją kluczy rozpoznawane przez jądro systemu Linux operacji, które mogą wyzwalać zestaw predefiniowanych akcji. Te polecenia są często używane w przypadku maszyny wirtualnej rozwiązywania problemów lub odzyskiwania nie można wykonać przy użyciu tradycyjnych administracyjnej (na przykład, jeśli nie odpowiada maszynie Wirtualnej). Za pomocą funkcji SysRq konsoli szeregowej Azure przypominające naciśnięcie klucza SysRq i znaki wprowadzone na klawiaturze fizycznych.
+## <a name="system-request-sysrq"></a>Żądanie systemowe (SysRq)
+SysRq to sekwencja kluczy zrozumiała dla jądra systemu operacyjnego Linux, która może wyzwalać zestaw wstępnie zdefiniowanych akcji. Te polecenia są często używane, gdy nie można przeprowadzić rozwiązywania problemów lub odzyskiwania maszyny wirtualnej za pomocą tradycyjnego administrowania (na przykład jeśli maszyna wirtualna nie odpowiada). Użycie funkcji SysRq usługi Azure serial Console spowoduje naśladowanie nacisku klawisza SysRq i znaków wprowadzonych na fizycznej klawiaturze.
 
-Po sekwencji SysRq zostało dostarczone, konfiguracji jądra kontrolować, jak zachowuje się system. Aby uzyskać informacji na temat włączania i wyłączania SysRq, zobacz *podręczniku administratora SysRq* [tekstu](https://aka.ms/kernelorgsysreqdoc) | [języka znaczników markdown](https://aka.ms/linuxsysrq).  
+Po dostarczeniu sekwencji SysRq Konfiguracja jądra będzie kontrolować sposób reagowania systemu. Aby uzyskać informacje na temat włączania i wyłączania usługi SysRq, zobacz [tekst](https://aka.ms/kernelorgsysreqdoc) |  *przewodnika administratora sysrq* .[](https://aka.ms/linuxsysrq)  
 
-Konsoli szeregowej Azure może służyć do wysyłania SysRq na maszynie wirtualnej platformy Azure przy użyciu ikonę klawiatury na pasku poleceń, pokazano poniżej.
+Konsoli szeregowej platformy Azure można użyć do wysyłania SysRq do maszyny wirtualnej platformy Azure przy użyciu ikony klawiatury na pasku poleceń przedstawionym poniżej.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
-Polecenie "Wyślij SysRq" zostanie otwarte okno dialogowe, które zapewniają typowe opcje SysRq, lub zaakceptować sekwencji poleceń SysRq wprowadzane do okna dialogowego.  Dzięki temu dla serii SysRq do wykonywania operacji wysokiego poziomu, takie jak przy użyciu bezpiecznego rozruchu: `REISUB`.
+Wybranie polecenia "Wyślij SysRq polecenie" spowoduje otwarcie okna dialogowego, w którym będą dostępne typowe opcje SysRq lub zaakceptowania sekwencji poleceń SysRq wprowadzonych w oknie dialogowym.  Dzięki temu w serii SysRq można wykonywać operacje wysokiego poziomu, takie jak bezpieczny ponowny rozruch przy użyciu: `REISUB`.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
-Nie można użyć polecenia SysRq na maszynach wirtualnych, które zostały zatrzymane lub których jądra jest w stanie przestanie odpowiadać. (na przykład jądra).
+Nie można użyć polecenia SysRq na maszynach wirtualnych, które są zatrzymane lub których jądro jest w stanie innym niż odpowiada. (na przykład awaryjnego jądra).
 
 ### <a name="enable-sysrq"></a>Włącz SysRq 
-Zgodnie z opisem w *podręczniku administratora SysRq* powyżej SysRq można skonfigurować tak, aby wszystkie, none lub tylko niektórych poleceń, które są dostępne. Możesz włączyć wszystkie polecenia SysRq przy użyciu poniższego kroku, ale nie będą obowiązywać po ponownym uruchomieniu:
+Zgodnie z opisem w powyższym *podręczniku administratora sysrq* , sysrq można skonfigurować tak, aby nie były dostępne tylko niektóre polecenia. Wszystkie polecenia SysRq można włączyć za pomocą poniższego kroku, ale nie spowoduje to ponownego uruchomienia:
 ```
 echo "1" >/proc/sys/kernel/sysrq
 ```
-Aby konfiguracja SysReq uzyskania trwałego, należy wykonać następujące polecenie, aby włączyć wszystkie polecenia SysRq
-1. Dodanie tego wiersza, aby */etc/sysctl.conf* <br>
+Aby konfiguracja SysReq trwała, można wykonać następujące czynności, aby włączyć wszystkie polecenia SysRq
+1. Dodawanie tego wiersza do */etc/sysctl.conf* <br>
     `kernel.sysrq = 1`
-1. Ponowne uruchamianie lub aktualizowanie sysctl, uruchamiając <br>
+1. Ponowne uruchamianie lub aktualizowanie sysctl przez uruchomienie <br>
     `sysctl -p`
 
-### <a name="command-keys"></a>Polecenia klawiszy 
-W powyższym podręczniku administratora SysRq:
+### <a name="command-keys"></a>Klucze poleceń 
+W podręczniku administratora SysRq powyżej:
 
 |Polecenie| Funkcja
 | ------| ----------- |
-|``b``  |   System natychmiast zostanie uruchomiony bez synchronizacji lub odinstalowywania dysków.
-|``c``  |   Będzie wykonywać awarii systemu przez wskaźnik NULL wyłuskania. Zrzutu awaryjnego zostaną wykonane, jeśli skonfigurowane.
-|``d``  |   Przedstawia wszystkie blokady, które są wstrzymane.
+|``b``  |   Natychmiast ponownie uruchomi system bez synchronizowania lub odinstalowywania dysków.
+|``c``  |   Przeprowadzi awarię systemu przez odwołanie do PUSTEgo wskaźnika. W przypadku skonfigurowania zrzutu awaryjnego zostanie wykonane.
+|``d``  |   Pokazuje wszystkie blokady, które są przechowywane.
 |``e``  |   Wyślij SIGTERM do wszystkich procesów, z wyjątkiem init.
-|``f``  |   Wywoła identyfikatory za mało pamięci do kończenia procesu świń pamięci, ale nie awaryjnego, jeśli nic nie może zostać zakończona.
-|``g``  |   Używane przez kgdb (debuger jądra)
-|``h``  |   Zostanie wyświetlona Pomoc (dowolny klawisz, niż te wymienione w tym miejscu będą również wyświetlane, aby uzyskać pomoc, ale ``h`` jest łatwa do zapamiętania :-)
+|``f``  |   Wywoła OOM killer, aby skasować proces Hog pamięci, ale nie awaryjnego, jeśli nic nie może zostać zabite.
+|``g``  |   Używane przez KGDB (debuger jądra)
+|``h``  |   Wyświetla pomoc (wszystkie inne klucze niż wymienione w tym miejscu również wyświetlą pomoc, ale ``h`` łatwą do zapamiętania:-)
 |``i``  |    Wyślij SIGKILL do wszystkich procesów, z wyjątkiem init.
-|``j``  |    Wymuś "Po prostu odblokuj go" - zamrożony przez FIFREEZE ioctl systemy plików.
-|``k``  |    Bezpieczny dostęp do klucza SAK kasuje wszystkich programów znajdujących się w bieżącej konsoli wirtualnego. UWAGA: Zobacz ważne uwagi poniżej w sekcji SAK.
-|``l``  |    Przedstawia backtrace stosu dla wszystkich aktywnych procesorów CPU.
-|``m``  |    Będzie zrzutu bieżące informacje o pamięci do konsoli.
-|``n``  |    Używane do tworzenia zadań RT nieuprzywilejowany stanie
-|``o``  |    Wyłączy systemu (jeśli jest skonfigurowane i obsługiwane).
-|``p``  |    Będzie zrzutu bieżącej rejestrów i flagi do konsoli.
-|``q``  |    Będzie zrzutu dla procesora CPU listę wszystkich hrtimers zbrojnych (, ale nie czasomierzy regularne timer_list) i szczegółowe informacje o wszystkich urządzeniach clockevent.
-|``r``  |    Wyłącza tryb pierwotne klawiatury i ustawia ją na XLATE.
-|``s``  |    Będzie podejmować próby synchronizacji wszystkich zainstalowanych systemów plików.
-|``t``  |    Będzie zrzutu listę bieżących zadań i ich do konsoli.
-|``u``  |    Podejmie próbę ponownego instalowania wszystkich zainstalowanych systemów plików tylko do odczytu.
-|``v``  |    Wymuszone przywraca konsoli bufor ramki
-|``v``  |    Powoduje, że zrzutu buforu ETM ARM na specyficznych.
-|``w``  |    Zrzuca zadania, które są w stanie (zablokowane) urządzenia UPS.
-|``x``  |    Używana przez interfejs xmon na platformach do ppc/powerpc. Pokaż rejestruje PMU globalnej, wybierz sparc64. Zrzuć wszystkie wpisy TLB na MIPS.
-|``y``  |    Pokaż globalnego rejestry Procesora [64 procesorami SPARC określonych]
-|``z``  |    Bufor ftrace zrzutu
-|``0``-``9`` | Ustawia poziom dziennika konsoli, kontrolowanie, które komunikaty jądra będą wypisywane w konsoli programu. (``0``, na przykład spowodowałoby, że tak, aby tylko awaryjnego wiadomości, takich jak rozruchem lub OOPSes spowodowałoby, że do konsoli.)
+|``j``  |    Wymuś "po prostu rozmrożenie" — system plików zamrożony przez polecenie IOCTL FIFREEZE.
+|``k``  |    Klucz dostępu Secure (SAK) kasuje wszystkie programy w bieżącej konsoli wirtualnej. UWAGA: Zobacz ważne komentarze poniżej w sekcji SAK.
+|``l``  |    Pokazuje ślad stosu dla wszystkich aktywnych procesorów CPU.
+|``m``  |    Spowoduje zrzut informacji o bieżącej pamięci do konsoli programu.
+|``n``  |    Służy do zwiększania możliwości zadań RT
+|``o``  |    Program zamknie system (jeśli jest skonfigurowany i obsługiwany).
+|``p``  |    Spowoduje zrzut bieżących rejestrów i flag do konsoli programu.
+|``q``  |    Spowoduje zrzut na listę wszystkich procesorów hrtimers (ale nie zwykłych czasomierzy timer_list) i szczegółowe informacje o wszystkich urządzeniach clockevent.
+|``r``  |    Wyłącza tryb RAW klawiatury i ustawia go na XLATE.
+|``s``  |    Spróbuje zsynchronizować wszystkie zainstalowane systemy plików.
+|``t``  |    Spowoduje zrzut listy bieżących zadań i ich informacji do konsoli programu.
+|``u``  |    Spróbuje ponownie zainstalować wszystkie zainstalowane systemy plików tylko do odczytu.
+|``v``  |    Wymuszone przywrócenie konsoli bufor ramki
+|``v``  |    Powoduje zrzut bufora ETM [specyficzne dla ARM]
+|``w``  |    Zrzuca zadania, które są w stanie niedostępnym (zablokowanym).
+|``x``  |    Używany przez interfejs xmon na platformach PPC/PowerPC. Pokaż globalne rejestry PMU na sparc64. Zrzuć wszystkie wpisy TLB na MIPS.
+|``y``  |    Pokaż globalne rejestry procesora [SPARC-64 specyficzne]
+|``z``  |    Zrzuć bufor ftrace
+|``0``-``9`` | Ustawia poziom rejestrowania konsoli, kontrolując, które komunikaty jądra będą drukowane w konsoli programu. (``0``na przykład może to spowodować, że tylko wiadomości awaryjne, takie jak rozruchem lub zostałyby wprowadzone do konsoli).
 
-### <a name="distribution-specific-documentation"></a>Dystrybucja dokumentacji ###
-Dokumentację specyficzne dla dystrybucji na SysRq i kroki, aby skonfigurować Linux do utworzenia zrzutu awaryjnego, gdy odbierze polecenie "Awarii" SysRq na ten temat można znaleźć w poniższych linków:
+### <a name="distribution-specific-documentation"></a>Dokumentacja dotycząca dystrybucji ###
+Aby uzyskać dokumentację dotyczącą dystrybucji na SysRq i kroki konfigurowania systemu Linux w celu utworzenia zrzutu awaryjnego, gdy odbierze polecenie SysRq "Crash", zobacz poniższe linki:
 
 #### <a name="ubuntu"></a>Ubuntu ####
  - [Zrzut awaryjny jądra](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
 #### <a name="red-hat"></a>Red Hat ####
-- [Co to jest funkcji SysRq i jak go używać?](https://access.redhat.com/articles/231663)
-- [Jak używać funkcji SysRq do zbierania informacji z serwera systemu RHEL](https://access.redhat.com/solutions/2023)
+- [Co to jest obiekt SysRq i jak go używać?](https://access.redhat.com/articles/231663)
+- [Jak zbierać informacje z serwera RHEL przy użyciu funkcji SysRq](https://access.redhat.com/solutions/2023)
 
 #### <a name="suse"></a>SUSE ####
-- [Konfigurowanie funkcji przechwytywania zrzutu core jądra](https://www.suse.com/support/kb/doc/?id=3374462)
+- [Konfigurowanie przechwytywania zrzutu rdzeni jądra](https://www.suse.com/support/kb/doc/?id=3374462)
 
 #### <a name="coreos"></a>CoreOS ####
 - [Zbieranie dzienników awarii](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
-## <a name="non-maskable-interrupt-nmi"></a>Niemaskowalnego przerwania (NMI) 
-Niemaskowalnego przerwania (NMI) jest przeznaczone do tworzenia sygnał, który nie zignoruje oprogramowania na maszynie wirtualnej. W przeszłości NMIs zostały użyte w celu monitorowania problemów ze sprzętem w systemach, które są wymagane określone czasy.  Dzisiaj, programistów i system Administratorzy często używają NMI jako mechanizm do debugowania i rozwiązywanie problemów z systemów, które nie odpowiadają.
+## <a name="non-maskable-interrupt-nmi"></a>Przerwanie z maską (NMI) 
+Przerwanie z maską (NMI) zostało zaprojektowane w celu utworzenia sygnału, że oprogramowanie na maszynie wirtualnej nie zostanie zignorowane. W przeszłości NMIs zostały użyte w celu monitorowania problemów ze sprzętem w systemach, które są wymagane określone czasy.  Obecnie programiści i Administratorzy systemu często używają NMI jako mechanizmu debugowania lub rozwiązywania problemów z nieodpowiadającymi systemami.
 
-Konsoli szeregowej może służyć do wysyłania NMI na maszynie wirtualnej platformy Azure przy użyciu ikonę klawiatury na pasku poleceń, pokazano poniżej. Po NMI zostało dostarczone, konfiguracja maszyny wirtualnej będzie kontrolować, jak zachowuje się system.  Linux systemów operacyjnych można skonfigurować do awarii i Utwórz zrzut pamięci systemu operacyjnego odbiera NMI.
+Konsola szeregowa może służyć do wysyłania NMI do maszyny wirtualnej platformy Azure przy użyciu ikony klawiatury na pasku poleceń przedstawionym poniżej. Po dostarczeniu NMI konfiguracja maszyny wirtualnej będzie kontrolować sposób reagowania systemu.  Systemy operacyjne Linux można skonfigurować w taki sposób, aby awaria i utworzyć zrzut pamięci system operacyjny odbiera NMI.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
 ### <a name="enable-nmi"></a>Włącz NMI
-W systemach Linux, które obsługują sysctl konfigurowania jądra parametry można włączyć alarm, po odebraniu tego NMI przy użyciu następujących czynności:
-1. Dodanie tego wiersza, aby */etc/sysctl.conf* <br>
+W przypadku systemów Linux, które obsługują sysctl do konfigurowania parametrów jądra, można włączyć awaryjnego podczas uzyskiwania tego NMI za pomocą następującego polecenia:
+1. Dodawanie tego wiersza do */etc/sysctl.conf* <br>
     `kernel.panic_on_unrecovered_nmi=1`
-1. Ponowne uruchamianie lub aktualizowanie sysctl, uruchamiając <br>
+1. Ponowne uruchamianie lub aktualizowanie sysctl przez uruchomienie <br>
     `sysctl -p`
 
-Aby uzyskać więcej informacji na temat konfiguracje jądra systemu Linux, w tym `unknown_nmi_panic`, `panic_on_io_nmi`, i `panic_on_unrecovered_nmi`, zobacz: [Dokumentacja/proc/sys/jądra / *](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Dokumentację specyficzne dla dystrybucji na NMI i kroki, aby skonfigurować Linux do utworzenia zrzutu awaryjnego, gdy odbierze NMI na ten temat można znaleźć w poniższych linków:
+Aby uzyskać więcej informacji na temat konfiguracji jądra systemu `unknown_nmi_panic`Linux `panic_on_io_nmi`, w `panic_on_unrecovered_nmi`tym,, i, zobacz: [Dokumentacja programu/proc/sys/kernel/*](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Aby uzyskać dokumentację dotyczącą dystrybucji na NMI i kroki konfigurowania systemu Linux w celu utworzenia zrzutu awaryjnego po odebraniu NMI, zobacz poniższe linki:
  
 ### <a name="ubuntu"></a>Ubuntu 
  - [Zrzut awaryjny jądra](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)
 
 ### <a name="red-hat"></a>Red Hat 
- - [Co to jest NMI i co może służyć?](https://access.redhat.com/solutions/4127)
- - [Jak można skonfigurować system awarię wypchnięcie przełącznika NMI?](https://access.redhat.com/solutions/125103)
- - [Awaria zrzutu Podręcznik administratora](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/pdf/kernel_crash_dump_guide/kernel-crash-dump-guide.pdf)
+ - [Co to jest NMI i czego można z niej korzystać?](https://access.redhat.com/solutions/4127)
+ - [Jak skonfigurować system do awarii, gdy przełącznik NMI jest wypychany?](https://access.redhat.com/solutions/125103)
+ - [Podręcznik administratora zrzutu awaryjnego](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/pdf/kernel_crash_dump_guide/kernel-crash-dump-guide.pdf)
 
 ### <a name="suse"></a>SUSE 
-- [Konfigurowanie funkcji przechwytywania zrzutu core jądra](https://www.suse.com/support/kb/doc/?id=3374462)
+- [Konfigurowanie przechwytywania zrzutu rdzeni jądra](https://www.suse.com/support/kb/doc/?id=3374462)
 
 ### <a name="coreos"></a>CoreOS 
 - [Zbieranie dzienników awarii](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="next-steps"></a>Następne kroki
-* Znajduje się Strona główna dokumentacji Serial konsoli systemu Linux [tutaj](serial-console-linux.md).
-* Rozruch za pomocą konsoli szeregowej [CHODNIKÓW i wprowadzić w trybie jednego użytkownika](serial-console-grub-single-user-mode.md)
-* Jest również dostępny dla konsoli szeregowej [Windows](serial-console-windows.md) maszyn wirtualnych
-* Dowiedz się więcej o [diagnostykę rozruchu](boot-diagnostics.md)
+* Główna strona dokumentacji systemu Linux w konsoli szeregowej znajduje się [tutaj](serial-console-linux.md).
+* Używanie konsoli szeregowej do rozruchu w [grub i wprowadzania trybu pojedynczego użytkownika](serial-console-grub-single-user-mode.md)
+* Konsola szeregowa jest również dostępna dla maszyn wirtualnych z [systemem Windows](serial-console-windows.md)
+* Dowiedz się więcej na temat [diagnostyki rozruchu](boot-diagnostics.md)

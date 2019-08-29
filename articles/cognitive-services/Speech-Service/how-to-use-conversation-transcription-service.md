@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 8c4ecc017d058900297f2220173e064700e7051b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5ad912b1cee5495e18a5eb2da4d981eadd74dd7d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559461"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066431"
 ---
 # <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Transkrypcja konwersacji wielouczestnikowych przy użyciu zestawu Speech SDK
 
@@ -25,7 +25,9 @@ Interfejs API **ConversationTranscriber** zestawu mowy SDK umożliwia transkrypc
 
 * Transcriber konwersacji jest obsługiwana dla C++systemów C#, i Java w systemach Windows, Linux i Android.
 * ROOBO DevKit to obsługiwane środowisko sprzętowe do tworzenia transkrypcji konwersacji, co zapewnia cykliczną tablicę z wielomikrofonem, którą można wydajnie wykorzystać do identyfikacji osoby mówiącej. [Aby uzyskać więcej informacji, zobacz zestaw SDK urządzeń usługi Speech](speech-devices-sdk.md).
-* Obsługa zestawu Speech SDK na potrzeby transkrypcji konwersacji jest ograniczona do użycia strumieni ściągania i wypychania audio przy użyciu ośmiu kanałów dla 16-bitowego 16 kHz audio PCM.
+* Obsługa zestawu Speech SDK na potrzeby transkrypcji konwersacji jest ograniczona do strumieni trybu ściągania i wypychania audio z 8 kanałów dla 16-bitowego 16 kHz audio PCM. Obecnie tylko te zestawy są obsługiwane w przypadku 8-kanałowego przechwytywania audio:
+   * [ROOBO inteligentny dźwięk cykliczny 7-MIC DK](https://ddk.roobo.com/)
+   * [Azure urządzenia Kinect DK](https://azure.microsoft.com/en-in/services/kinect-dk/)
 * Transkrypcja konwersacji jest obecnie dostępna w językach "en-US" i "zh-CN" w następujących regionach: środkowe i eastasia.
 
 ## <a name="prerequisites"></a>Wymagania wstępne

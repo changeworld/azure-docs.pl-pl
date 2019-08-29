@@ -1,86 +1,85 @@
 ---
-title: Metadanych interfejsu OpenAPI w usłudze Azure Functions | Dokumentacja firmy Microsoft
-description: Omówienie obsługi interfejsu OpenAPI w usłudze Azure Functions
+title: OpenAPI metadanych w Azure Functions | Microsoft Docs
+description: Omówienie obsługi OpenAPI w Azure Functions
 services: functions
 author: alexkarcher-msft
 manager: jeconnoc
 ms.assetid: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: 1bc53fadfb622794703deaff560c9083ca6a1a10
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 00dedd069914384a1883a54bfb433857286fb49c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67656832"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097574"
 ---
-# <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Obsługa metadanych interfejsu OpenAPI 2.0 w usłudze Azure Functions (wersja zapoznawcza)
-Standard OpenAPI 2.0 (dawniej Swagger) Obsługa metadanych w usłudze Azure Functions jest funkcją w wersji zapoznawczej, która służy do pisania definicji interfejsu OpenAPI 2.0 w aplikacji funkcji. Ten plik może być następnie hostować przy użyciu aplikacji funkcji.
+# <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Obsługa metadanych OpenAPI 2,0 w Azure Functions (wersja zapoznawcza)
+Obsługa metadanych w programie OpenAPI 2,0 (dawniej Swagger) w Azure Functions jest funkcją w wersji zapoznawczej, której można użyć do zapisania definicji OpenAPI 2,0 w aplikacji funkcji. Następnie można hostować ten plik za pomocą aplikacji funkcji.
 
 > [!IMPORTANT]
 > Funkcja interfejsu OpenAPI w wersji zapoznawczej jest obecnie dostępna tylko w środowisku uruchomieniowym w wersji 1.x. Informacje na temat tworzenia aplikacji funkcji w wersji 1.x [można znaleźć tutaj](./functions-versions.md#creating-1x-apps).
 
-[Metadanych interfejsu OpenAPI](https://swagger.io/) umożliwia funkcji, który jest hostem interfejsu API REST do użycia przez cały szereg innych programów. Oprogramowanie zawiera oferty firmy Microsoft, takich jak usługi PowerApps i [funkcji API Apps w usłudze Azure App Service](../app-service/overview.md), narzędzi deweloperskich innych firm, takich jak [Postman](https://www.getpostman.com/docs/importing_swagger), i [wiele innych pakietów](https://swagger.io/tools/).
+[Metadane openapi](https://swagger.io/) umożliwiają funkcję, która obsługuje interfejs API REST do użycia przez szeroką gamę innych programów. To oprogramowanie obejmuje oferty firmy Microsoft, takie jak PowerApps i [API Apps funkcja Azure App Service](../app-service/overview.md), narzędzia deweloperskie innych firm, [](https://www.getpostman.com/docs/importing_swagger)takie jak program Poster i [wiele innych pakietów](https://swagger.io/tools/).
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 >[!TIP]
->Zalecamy rozpoczęcie od [Wprowadzenie — samouczek](./functions-api-definition-getting-started.md) a następnie powrotu do tego dokumentu, aby dowiedzieć się więcej na temat określonych funkcji.
+>Zalecamy rozpoczęcie od samouczka [wprowadzającego](./functions-api-definition-getting-started.md) , a następnie powrót do tego dokumentu, aby dowiedzieć się więcej o konkretnych funkcjach.
 
-## <a name="enable"></a>Włącz obsługę definicji interfejsu OpenAPI
-Można skonfigurować wszystkie ustawienia interfejsu OpenAPI na **definicji interfejsu API** strony w aplikacji funkcji **funkcje platformy**.
+## <a name="enable"></a>Włącz obsługę definicji OpenAPI
+Wszystkie ustawienia OpenAPI można skonfigurować na stronie **definicji interfejsu API** w **funkcjach platformy**aplikacji funkcji.
 
 > [!NOTE]
-> Funkcja definicji interfejsu API nie jest obecnie obsługiwana dla środowiska uruchomieniowego w wersji beta.
+> Funkcja definicji interfejsu API funkcji nie jest obecnie obsługiwana w przypadku środowiska uruchomieniowego beta.
 
-Aby umożliwić wygenerowanie dyrektyw hostowanej definicji interfejsu OpenAPI i definicję przewodnika Szybki Start, należy ustawić **źródło definicji interfejsu API** do **— funkcja (wersja zapoznawcza)** . **Zewnętrzny adres URL** umożliwia funkcję, aby użyć definicji interfejsu OpenAPI, która ma hostowaną w innym miejscu.
+Aby włączyć generowanie definicji hostowanej OpenAPI i definicji szybkiego startu, ustaw **źródło definicji interfejsu API** na **funkcję (wersja zapoznawcza)** . **Zewnętrzny adres URL** umożliwia funkcji używanie definicji openapi, która jest hostowana w innym miejscu.
 
-## <a name="generate-definition"></a>Generuj szkielet struktury Swagger z metadanych funkcji
-Szablon może pomóc rozpocząć pisanie pierwszego definicja interfejsu OpenAPI. Funkcja szablonu definicji tworzy rozrzedzoną definicję interfejsu OpenAPI za pomocą wszystkie metadane w pliku function.json dla poszczególnych funkcji wyzwalacza HTTP. Musisz podać więcej informacji na temat interfejsu API z [specyfikacji interfejsu OpenAPI](https://swagger.io/specification/), takie jak szablony żądań i odpowiedzi.
+## <a name="generate-definition"></a>Generuj szkielet struktury Swagger na podstawie metadanych funkcji
+Szablon może ułatwić rozpoczęcie pisania pierwszej definicji OpenAPI. Funkcja szablonu definicji tworzy rozrzedzoną definicję OpenAPI przy użyciu wszystkich metadanych w pliku Function. JSON dla każdej funkcji wyzwalacza HTTP. Musisz podać więcej informacji na temat interfejsu API ze [specyfikacji openapi](https://swagger.io/specification/), takich jak szablony żądań i odpowiedzi.
 
-Aby uzyskać instrukcje krok po kroku, zobacz [Wprowadzenie — samouczek](./functions-api-definition-getting-started.md).
+Aby uzyskać instrukcje krok po kroku, zobacz [samouczek wprowadzający](./functions-api-definition-getting-started.md).
 
 ### <a name="templates"></a>Dostępne szablony
 
-|Name (Nazwa)| Opis |
+|Name| Opis |
 |:-----|:-----|
-|Wygenerowaną definicję|Definicji interfejsu OpenAPI z maksymalną ilością informacji, które można wywnioskować na podstawie istniejących metadanych funkcji.|
+|Wygenerowana definicja|Definicja OpenAPI z maksymalną ilością informacji, które można wywnioskować na podstawie istniejących metadanych funkcji.|
 
-### <a name="quickstart-details"></a>Metadane uwzględnione w wygenerowanym definicji
+### <a name="quickstart-details"></a>Uwzględnione metadane w wygenerowanej definicji
 
-Poniższa tabela reprezentuje ustawienia portalu Azure i odpowiadające im dane w function.json, ponieważ jest on zamapowany do wygenerowany szkielet struktury Swagger.
+Poniższa tabela przedstawia ustawienia Azure Portal i odpowiadające im dane w funkcji Function. JSON, ponieważ są one mapowane do wygenerowanego szkieletu struktury Swagger.
 
-|Swagger.json|Portal UI|Function.json|
+|Swagger.json|Interfejs użytkownika portalu|Function.json|
 |:----|:-----|:-----|
-|[Host](https://swagger.io/specification/#fixed-fields-15)|**Ustawienia aplikacji funkcji** > **ustawień usługi App Service** > **Przegląd** > **adresu URL**|*Nie istnieje*
-|[Ścieżki](https://swagger.io/specification/#paths-object-29)|**Integracja** > **wybrane metody HTTP**|Powiązania: Trasa
-|[Ścieżka elementu](https://swagger.io/specification/#path-item-object-32)|**Integracja** > **szablon trasy**|Powiązania: Metody
-|[Zabezpieczenia](https://swagger.io/specification/#security-scheme-object-112)|**klucze**|*Nie istnieje*|
-|operationID *|**Trasy + dozwolone czasowniki**|Trasy i dozwolonych poleceń|
+|[Host](https://swagger.io/specification/#fixed-fields-15)|**Ustawienia** >  >  aplikacji funkcji App Service — adres URL przeglądu ustawień > |*Nieobecne*
+|[Ścieżki](https://swagger.io/specification/#paths-object-29)|Integruj > **wybrane metody http**|Powiązań Trasa
+|[Element ścieżki](https://swagger.io/specification/#path-item-object-32)|**Integrowanie** > **szablonu trasy**|Powiązań Metody
+|[Zabezpieczenia](https://swagger.io/specification/#security-scheme-object-112)|**Ponownie**|*Nieobecne*|
+|operationId|**Trasy + dozwolone czasowniki**|Trasy + dozwolone czasowniki|
 
-\*Identyfikator operacji jest wymagany tylko w celu integracji z usługami PowerApps i Flow.
+\*Identyfikator operacji jest wymagany tylko w przypadku integracji z usługą PowerApps i przepływem.
 > [!NOTE]
-> Rozszerzenia x-ms-summary zawiera nazwę wyświetlaną w aplikacji logiki, PowerApps i Flow.
+> Rozszerzenie x-MS-Summary zawiera nazwę wyświetlaną w Logic Apps, PowerApps i Flow.
 >
-> Aby dowiedzieć się więcej, zobacz [Dostosowywanie definicji Swagger w usłudze PowerApps](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/).
+> Aby dowiedzieć się więcej, zobacz [Dostosowywanie definicji struktury Swagger dla usługi powerapps](https://powerapps.microsoft.com/tutorials/customapi-how-to-swagger/).
 
-## <a name="CICD"></a>Użyj ciągłej integracji/ciągłego wdrażania, aby ustawić definicji interfejsu API
+## <a name="CICD"></a>Używanie ciągłej integracji/ciągłego ustawiania definicji interfejsu API
 
- Należy włączyć definicji interfejsu API hostingu w portalu, przed włączeniem kontroli źródła zmodyfikować definicję interfejsu API z poziomu kontroli źródła. Wykonaj te instrukcje:
+ Należy włączyć hosting definicji interfejsu API w portalu przed włączeniem kontroli źródła w celu zmodyfikowania definicji interfejsu API z kontroli źródła. Wykonaj następujące instrukcje:
 
 1. Przejdź do **definicji interfejsu API (wersja zapoznawcza)** w ustawieniach aplikacji funkcji.
-   1. Ustaw **źródło definicji interfejsu API** do **funkcja**.
-   1. Kliknij przycisk **szablon definicji interfejsu API z Generowanie** i następnie **Zapisz** do tworzenia definicji szablonu do modyfikowania później.
-   1. Należy pamiętać, adres URL definicji interfejsu API i klucz.
-1. [Konfigurowanie ciągłej integracji/ciągłego wdrażania (CI/CD)](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#requirements-for-continuous-deployment).
-2. Modyfikowanie swagger.json w kontroli źródła pod \site\wwwroot\.azurefunctions\swagger\swagger.json.
+   1. Ustaw **źródło definicji interfejsu API** do **działania**.
+   1. Kliknij pozycję **Generuj szablon definicji interfejsu API** , a następnie **Zapisz** , aby utworzyć definicję szablonu do modyfikacji później.
+   1. Zanotuj adres URL definicji interfejsu API i klucz.
+1. [Konfigurowanie ciągłej integracji/ciągłego wdrażania (Ci/CD)](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#requirements-for-continuous-deployment).
+2. Modyfikuj plik Swagger. JSON w kontroli źródła pod\.adresem \site\wwwroot azurefunctions\swagger\swagger.JSON.
 
-Teraz, zmiany swagger.json w repozytorium są obsługiwane przez aplikację funkcji w interfejsie API adres URL definicji i klucz, który zanotowaną w kroku 1.c.
+Teraz zmiany w pliku Swagger. JSON w repozytorium są hostowane przez aplikację funkcji w adresie URL definicji interfejsu API i kluczem zanotowanym w kroku 1. c.
 
-## <a name="next-steps"></a>Kolejne kroki
-* [Wprowadzenie — samouczek](functions-api-definition-getting-started.md). Wypróbuj nasze wskazówki, aby zobaczyć definicję interfejsu OpenAPI w działaniu.
-* [Repozytorium github usługi funkcje Azure](https://github.com/Azure/Azure-Functions/). Zapoznaj się z repozytorium funkcji, aby przesłać nam swoją opinię w definicji interfejsu API pomocy technicznej (wersja zapoznawcza). Należy problem w usłudze GitHub dla wszystkich elementów, które chcesz zobaczyć zaktualizowane.
-* [Dokumentacja dla deweloperów usługi Azure Functions](functions-reference.md). Więcej informacji na temat kodowania funkcji oraz definiowania wyzwalaczy i powiązań.
+## <a name="next-steps"></a>Następne kroki
+* [Samouczek](functions-api-definition-getting-started.md)z wprowadzeniem. Wypróbuj nasze wskazówki, aby zobaczyć definicję OpenAPI w akcji.
+* [Azure Functions repozytorium GitHub](https://github.com/Azure/Azure-Functions/). Zapoznaj się z repozytorium funkcji, aby przekazać nam swoją opinię na temat obsługi definicji interfejsu API w wersji zapoznawczej. Zapoznaj się z tematem problemu z usługą GitHub, który ma zostać zaktualizowany.
+* [Azure Functions Dokumentacja dla deweloperów](functions-reference.md). Dowiedz się więcej o funkcjach kodowania i definiowaniu wyzwalaczy i powiązań.

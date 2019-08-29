@@ -1,6 +1,6 @@
 ---
-title: Zmień zestaw dostępności maszyn wirtualnych | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zmienić zestawu dostępności dla maszyn wirtualnych przy użyciu programu Azure PowerShell i modelu wdrażania usługi Resource Manager.
+title: Zmiana zestawu dostępności maszyn wirtualnych | Microsoft Docs
+description: Dowiedz się, jak zmienić zestaw dostępności dla maszyn wirtualnych przy użyciu Azure PowerShell i Menedżer zasobów model wdrażania.
 keywords: ''
 services: virtual-machines-windows
 documentationcenter: ''
@@ -11,27 +11,26 @@ tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 9e3aa213b2ba58e2a09e0364ab6cd9bc42d131d8
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 0a91a80c18b04e257daa9a42fd7933351fe3a35c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719259"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080151"
 ---
-# <a name="change-the-availability-set-for-a-windows-vm"></a>Zmienianie zestawu dostępności dla maszyny Wirtualnej z systemem Windows
-Poniżej opisano sposób zmiany zestawu dostępności maszyny wirtualnej przy użyciu programu Azure PowerShell. Maszynę wirtualną można dodać tylko zestaw dostępności podczas jego tworzenia. Aby zmienić dostępności należy ustawić, należy usunąć i ponownie utworzyć maszynę wirtualną. 
+# <a name="change-the-availability-set-for-a-windows-vm"></a>Zmiana zestawu dostępności dla maszyny wirtualnej z systemem Windows
+W poniższych krokach opisano, jak zmienić zestaw dostępności maszyny wirtualnej przy użyciu Azure PowerShell. Maszynę wirtualną można dodać do zestawu dostępności tylko podczas jego tworzenia. Aby zmienić zestaw dostępności, należy usunąć i ponownie utworzyć maszynę wirtualną. 
 
-W tym artykule ostatniego testowania przy użyciu 2/12/2019 [usługi Azure Cloud Shell](https://shell.azure.com/powershell) i [modułu Az PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) wersji 1.2.0 lub nowszej.
+Ten artykuł został ostatnio przetestowany w dniu 2/12/2019 przy użyciu [Azure Cloud Shell](https://shell.azure.com/powershell) i [AZ PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps) Version 1.2.0.
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="change-the-availability-set"></a>Zmień zestaw dostępności 
 
-Poniższy skrypt zawiera przykład zbieranie wymaganych informacji, usuwanie oryginalnej maszyny Wirtualnej i odtworzenia go w nowy zestaw dostępności.
+Poniższy skrypt zawiera przykład zbierania wymaganych informacji, usuwania oryginalnej maszyny wirtualnej, a następnie tworzenia jej ponownie w nowym zestawie dostępności.
 
 ```powershell
 # Set variables
@@ -109,7 +108,7 @@ Poniższy skrypt zawiera przykład zbieranie wymaganych informacji, usuwanie ory
        -DisableBginfoExtension
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dodaj dodatkowy magazyn do maszyny Wirtualnej przez dodanie dodatkowego [dysk z danymi](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Dodaj dodatkowy magazyn do maszyny wirtualnej, dodając dodatkowy [dysk danych](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
