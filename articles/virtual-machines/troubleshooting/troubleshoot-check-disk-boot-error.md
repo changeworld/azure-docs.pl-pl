@@ -1,49 +1,48 @@
 ---
-title: Sprawdzanie systemu plików, podczas rozruchu maszyny Wirtualnej platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozwiązać ten problem, czy maszyna wirtualna Pokaż sprawdzanie systemu plików, podczas rozruchu | Dokumentacja firmy Microsoft
+title: Sprawdzanie systemu plików podczas uruchamiania maszyny wirtualnej platformy Azure | Microsoft Docs
+description: Dowiedz się, jak rozwiązać problem polegający na tym, że maszyna wirtualna pokazuje sprawdzanie systemu plików podczas rozruchu | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: 51a97443f6b9ba2a37fa2db708b8520a9c450000
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ad4053c2dda50598853528bb6e8b3441c455fbba
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60594802"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080225"
 ---
-# <a name="windows-shows-checking-file-system-when-booting-an-azure-vm"></a>Pokazuje Windows "Sprawdzanie systemu plików" podczas rozruchu maszyny Wirtualnej platformy Azure
+# <a name="windows-shows-checking-file-system-when-booting-an-azure-vm"></a>W systemie Windows jest wyświetlany komunikat "sprawdzanie systemu plików" podczas uruchamiania maszyny wirtualnej platformy Azure
 
-W tym artykule opisano błędu "Sprawdzanie systemu plików", które można napotkać podczas rozruchu Windows maszyn wirtualnych (VM) w systemie Microsoft Azure.
+W tym artykule opisano błąd "sprawdzanie systemu plików", który może wystąpić podczas uruchamiania maszyny wirtualnej z systemem Windows w Microsoft Azure.
 
 > [!NOTE] 
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano użycie modelu wdrażania Menedżer zasobów, którego zalecamy używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
 
 ## <a name="symptom"></a>Objaw 
 
-Nie zaczyna się maszyny Wirtualnej z systemem Windows. Podczas ewidencjonowania zrzuty ekranu rozruchu [diagnostykę rozruchu](boot-diagnostics.md), zobaczysz, że proces Sprawdź dysk (chkdsk.exe) jest uruchomiony przy użyciu jednego z następujących komunikatów:
+Nie uruchomiono maszyny wirtualnej z systemem Windows. Po sprawdzeniu zrzutów ekranu rozruchowego w ramach [diagnostyki rozruchu](boot-diagnostics.md)zobaczysz, że proces sprawdzania dysku (chkdsk. exe) jest uruchomiony przy użyciu jednego z następujących komunikatów:
 
-- Skanowania i naprawy dysku (C:)
+- Skanowanie i naprawa dysku (C:)
 - Sprawdzanie systemu plików na dysku C:
 
 ## <a name="cause"></a>Przyczyna
 
-Jeśli zostanie znaleziony błąd systemu plików NTFS w systemie plików, Windows będzie sprawdzania i naprawiania spójność dysku przy następnym ponownym uruchomieniu. Zwykle dzieje się tak, czy maszyna wirtualna ma wszelkie nieoczekiwane ponowne uruchomienie, czy procesu zamykania maszyny Wirtualnej zostało nagle przerwane.
+Jeśli w systemie plików zostanie znaleziony błąd systemu plików NTFS, system Windows sprawdzi i naprawi spójność dysku przy następnym ponownym uruchomieniu. Zwykle zdarza się to, gdy maszyna wirtualna miała jakiekolwiek nieoczekiwane ponowne uruchomienie lub jeśli proces zamykania maszyny wirtualnej został nagle przerwany.
 
 ## <a name="solution"></a>Rozwiązanie 
 
-Windows będzie normalny rozruch po ukończeniu procesu sprawdzanie dysku. Jeśli maszyna wirtualna utkwiła w procesie sprawdzanie dysku, spróbuj uruchomić sprawdzanie dysku na maszynie Wirtualnej w trybie offline:
-1.  Utworzenie migawki dysku systemu operacyjnego, których to dotyczy maszyny wirtualnej służy do przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
+System Windows będzie uruchamiany normalnie po zakończeniu procesu sprawdzania dysku. Jeśli maszyna wirtualna jest zablokowana w procesie sprawdzania dysku, spróbuj uruchomić polecenie Sprawdź dysk w maszynie wirtualnej w trybie offline:
+1.  Utwórz migawkę dysku systemu operacyjnego z zaatakowaną maszyną wirtualną jako kopię zapasową. Aby uzyskać więcej informacji, zobacz [Tworzenie migawki dysku](../windows/snapshot-copy-managed-disk.md).
 2.  [Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania](troubleshoot-recovery-disks-portal-windows.md).  
-3.  Na maszynie Wirtualnej odzyskiwania należy uruchomić sprawdzanie dysku na dołączonym dysku systemu operacyjnego. W poniższym przykładzie literę z dołączonym dysku systemu operacyjnego jest E: 
+3.  Na maszynie wirtualnej odzyskiwania Uruchom polecenie Sprawdź dysk na dołączonym dysku systemu operacyjnego. W poniższym przykładzie litera sterownika dołączonego dysku systemu operacyjnego jest w wersji E: 
         
         chkdsk E: /f
-4.  Po zakończeniu sprawdź dysk, Odłącz dysk od maszyny Wirtualnej odzyskiwania, a następnie ponownie Dołącz dysku, do których to dotyczy maszyny Wirtualnej jako dysk systemu operacyjnego. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z maszyny Wirtualnej z systemem Windows, dołączając dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania](troubleshoot-recovery-disks-portal-windows.md).
+4.  Po zakończeniu sprawdzania dysku Odłącz dysk od maszyny wirtualnej odzyskiwania, a następnie ponownie podłącz dysk do maszyny wirtualnej, której to dotyczy, jako dysku systemu operacyjnego. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z maszyną wirtualną z systemem Windows przez dołączenie dysku systemu operacyjnego do maszyny wirtualnej odzyskiwania](troubleshoot-recovery-disks-portal-windows.md).

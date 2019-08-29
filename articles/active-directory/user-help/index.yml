@@ -12,12 +12,12 @@ metadata:
   author: eross-msft
   ms.author: lizross
   ms.date: 08/26/2019
-  ms.openlocfilehash: 687ae4b276b4e975c9b9de9d688f23180deaeebc
-  ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+  ms.openlocfilehash: 168c8ad8acd1734aa06be111f42f4c0b2da92d3e
+  ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 08/27/2019
-  ms.locfileid: "70062209"
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70072666"
 landingContent:
 - title: Konfigurowanie aplikacji Microsoft Authenticator używanie jej
   linkLists:
@@ -35,7 +35,7 @@ landingContent:
       url: user-help-auth-app-backup-recovery.md
     - text: Logowanie się za pomocą aplikacji
       url: user-help-auth-app-sign-in.md
-- title: Konfigurowanie i używanie weryfikacji dwuetapowej
+- title: Wybieranie metod weryfikacji dwuetapowej
   linkLists:
   - linkListType: overview
     links:
@@ -49,7 +49,7 @@ landingContent:
       url: multi-factor-authentication-end-user-manage-settings.md
     - text: Uzyskiwanie pomocy
       url: multi-factor-authentication-end-user-troubleshoot.md
-- title: Konfigurowanie i używanie portalu Moje aplikacje
+- title: Aktualizowanie informacji w portalu Moje aplikacje
   linkLists:
   - linkListType: overview
     links:
@@ -61,7 +61,7 @@ landingContent:
       url: my-apps-portal-end-user-update-profile.md
     - text: Uzyskiwanie pomocy
       url: my-apps-portal-end-user-troubleshoot.md
-- title: Konfigurowanie i używanie informacji zabezpieczających (wersja zapoznawcza)
+- title: Konfigurowanie informacji zabezpieczających (wersja zapoznawcza) i zarządzanie nimi
   linkLists:
   - linkListType: overview
     links:
@@ -73,7 +73,7 @@ landingContent:
       url: security-info-add-update-methods-overview.md
     - text: Dodawanie informacji podczas logowania
       url: security-info-setup-signin.md
-- title: Konfigurowanie i używanie portalu Mój profil (wersja zapoznawcza)
+- title: Zarządzanie informacjami w portalu Mój profil (wersja zapoznawcza)
   linkLists:
   - linkListType: overview
     links:

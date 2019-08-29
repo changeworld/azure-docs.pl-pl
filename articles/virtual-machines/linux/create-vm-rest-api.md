@@ -1,6 +1,6 @@
 ---
-title: Utwórz maszynę wirtualną systemu Linux przy użyciu interfejsu API REST platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć maszynę wirtualną z systemem Linux na platformie Azure, która korzysta z uwierzytelniania Managed Disks i ustawieniami SSH przy użyciu interfejsu API REST platformy Azure.
+title: Tworzenie maszyny wirtualnej z systemem Linux przy użyciu interfejsu API REST platformy Azure | Microsoft Docs
+description: Dowiedz się, jak utworzyć maszynę wirtualną z systemem Linux na platformie Azure, która używa Managed Disks i uwierzytelniania SSH przy użyciu interfejsu API REST platformy Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -9,70 +9,69 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: a7f624bc85d35048a8f9afa0f527ae592a24fbf1
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 9851305bdaa2f214e0d00eda3235068cac2ea980
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667944"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083472"
 ---
-# <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Utwórz maszynę wirtualną systemu Linux, która korzysta z uwierzytelniania SSH przy użyciu interfejsu API REST
+# <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>Tworzenie maszyny wirtualnej z systemem Linux korzystającej z uwierzytelniania SSH przy użyciu interfejsu API REST
 
-Linux maszyny wirtualnej (VM) na platformie Azure składa się z różnych zasobów, takich jak dyski i interfejsów sieci i definiuje parametry, takie jak ustawienia umiejscowienie, rozmiar i systemu operacyjnego obrazu i uwierzytelniania.
+Maszyna wirtualna z systemem Linux na platformie Azure składa się z różnych zasobów, takich jak dyski i interfejsy sieciowe, oraz definiuje parametry, takie jak lokalizacja, rozmiar i obraz systemu operacyjnego oraz ustawienia uwierzytelniania.
 
-Możesz utworzyć Maszynę wirtualną systemu Linux w witrynie Azure portal, Azure CLI 2.0, wiele zestawów SDK usługi Azure, szablony usługi Azure Resource Manager i wiele narzędzi innych firm, takich jak Ansible lub Terraform. Te narzędzia ostatecznie Użyj interfejsu API REST do utworzenia maszyny Wirtualnej systemu Linux.
+Możesz utworzyć maszynę wirtualną z systemem Linux za pomocą Azure Portal, interfejsu wiersza polecenia platformy Azure 2,0, wielu zestawów SDK platformy Azure, szablonów Azure Resource Manager i wielu narzędzi innych firm, takich jak rozwiązania ansible lub Terraform. Wszystkie te narzędzia ostatecznie używają interfejsu API REST w celu utworzenia maszyny wirtualnej z systemem Linux.
 
-W tym artykule pokazano, jak używać interfejsu API REST do tworzenia maszyny Wirtualnej systemu Linux z systemem Ubuntu 18.04-LTS z dysków zarządzanych i uwierzytelniania SSH.
+W tym artykule pokazano, jak za pomocą interfejsu API REST utworzyć maszynę wirtualną z systemem Linux Ubuntu 18,04-LTS z użyciem dysków zarządzanych i uwierzytelniania SSH.
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
-Aby utworzyć i przesłać żądanie, potrzebne są:
+Przed utworzeniem i przesłaniem żądania należy:
 
-* `{subscription-id}` Dla Twojej subskrypcji
+* `{subscription-id}` Dla subskrypcji
   * Jeśli masz wiele subskrypcji, zobacz [Praca z wieloma subskrypcjami](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest)
-* Element `{resourceGroupName}` został utworzony wcześniej
-* A [interfejs sieci wirtualnej](../../virtual-network/virtual-network-network-interface.md) w tej samej grupie zasobów
-* Pary kluczy SSH (możesz [wygenerować nowy](mac-create-ssh-keys.md) Jeśli go masz)
+* `{resourceGroupName}` Utworzony wcześniej czas
+* [Interfejs sieci wirtualnej](../../virtual-network/virtual-network-network-interface.md) w tej samej grupie zasobów
+* Para kluczy SSH (możesz [wygenerować nowe](mac-create-ssh-keys.md) , jeśli nie masz takiego)
 
-## <a name="request-basics"></a>Podstawowe informacje dotyczące żądania
+## <a name="request-basics"></a>Podstawowe informacje o żądaniach
 
-Aby utworzyć lub zaktualizować maszyny wirtualnej, należy użyć następującego *umieścić* operacji:
+Aby utworzyć lub zaktualizować maszynę wirtualną, należy użyć następującej operacji *Put* :
 
 ``` http
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2017-12-01
 ```
 
-Oprócz `{subscription-id}` i `{resourceGroupName}` parametrów, należy określić `{vmName}` (`api-version` jest opcjonalny, ale w tym artykule został przetestowany przy użyciu `api-version=2017-12-01`)
+`{subscription-id}` Oprócz parametrów i `{resourceGroupName}` należy określić `{vmName}` `api-version=2017-12-01`(`api-version` jest opcjonalne, ale ten artykuł został przetestowany przy użyciu)
 
 Wymagane są następujące nagłówki:
 
 | Nagłówek żądania   | Opis |
 |------------------|-----------------|
-| *Content-Type:*  | Wymagany. Ustaw `application/json`. |
-| *Authorization:* | Wymagana. Ustawić prawidłową `Bearer` [token dostępu](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
+| *Content-Type:*  | Wymagane. Ustaw wartość `application/json`. |
+| *Authorization:* | Wymagana. Ustaw prawidłowy `Bearer` [token dostępu](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |
 
-Aby uzyskać ogólne informacje na temat pracy z żądań interfejsu API REST, zobacz [składniki żądania/odpowiedzi interfejsu API REST](/rest/api/azure/#components-of-a-rest-api-requestresponse).
+Aby uzyskać ogólne informacje na temat pracy z żądaniami interfejsu API REST, zobacz [składniki żądania/odpowiedzi interfejsu API REST](/rest/api/azure/#components-of-a-rest-api-requestresponse).
 
 ## <a name="create-the-request-body"></a>Tworzenie treści żądania
 
-Następujące typowe definicje są używane do tworzenia treści żądania:
+Następujące typowe definicje są używane do kompilowania treści żądania:
 
-| Name (Nazwa)                       | Wymagane | Typ                                                                                | Opis  |
+| Name                       | Wymagane | Typ                                                                                | Opis  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | Prawda     | ciąg                                                                              | Lokalizacja zasobu. |
 | name                       |          | ciąg                                                                              | Nazwa maszyny wirtualnej. |
-| properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Określa ustawienia sprzętu dla maszyny wirtualnej. |
-| properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Określa ustawienia przechowywania dla dysków maszyny wirtualnej. |
+| properties.hardwareProfile |          | [— Obiekt hardwareprofile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | Określa ustawienia sprzętu dla maszyny wirtualnej. |
+| properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | Określa ustawienia magazynu dla dysków maszyny wirtualnej. |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | Określa ustawienia systemu operacyjnego dla maszyny wirtualnej. |
 | properties.networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | Określa interfejsy sieciowe maszyny wirtualnej. |
 
-Treść żądania przykład znajduje się poniżej. Upewnij się, należy określić nazwę maszyny Wirtualnej w `{computerName}` i `{name}` parametrów, nazwa interfejsu sieciowego utworzonego w ramach `networkInterfaces`, swoją nazwę użytkownika w `adminUsername` i `path`i *publicznego*część swojej para kluczy SSH (na przykład znajduje się w `~/.ssh/id_rsa.pub`) w `keyData`. Inne parametry, możesz chcieć zmodyfikować to `location` i `vmSize`.  
+Przykładowa treść żądania jest poniżej. Upewnij się, że nazwa maszyny wirtualnej została określona `{computerName}` w `{name}` parametrach i, nazwa `networkInterfaces`interfejsu sieciowego, który został utworzony w programie, nazwa użytkownika `adminUsername` w `path`i i *publiczna* część Twojego SSH para kluczy (na przykład `~/.ssh/id_rsa.pub`) w. `keyData` Inne parametry, które warto zmodyfikować, obejmują `location` i `vmSize`.  
 
 ```json
 {
@@ -127,22 +126,22 @@ Treść żądania przykład znajduje się poniżej. Upewnij się, należy okreś
 }
 ```
 
-Aby uzyskać pełną listę dostępnych definicji w treści żądania, zobacz [maszyn wirtualnych, Utwórz lub zaktualizuj definicje treść żądania](/rest/api/compute/virtualmachines/createorupdate#definitions).
+Aby uzyskać pełną listę dostępnych definicji w treści żądania, zobacz temat [maszyny wirtualne Tworzenie lub aktualizowanie definicji treści żądania](/rest/api/compute/virtualmachines/createorupdate#definitions).
 
-## <a name="sending-the-request"></a>Wysyła żądanie
+## <a name="sending-the-request"></a>Wysyłanie żądania
 
-Można użyć klienta z preferencjami do wysłania tego żądania HTTP. Można także użyć [narzędzia w przeglądarce](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) , klikając **wypróbuj** przycisku.
+Aby wysłać to żądanie HTTP, można użyć klienta z preferencją. Możesz również użyć [Narzędzia w przeglądarce](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate) , klikając przycisk **Wypróbuj** .
 
 ### <a name="responses"></a>Responses
 
-Istnieją dwa pomyślne odpowiedzi dla operacji, które można utworzyć lub zaktualizować maszyny wirtualnej:
+Istnieją dwie Pomyślne odpowiedzi na operację tworzenia lub aktualizowania maszyny wirtualnej:
 
-| Name (Nazwa)        | Typ                                                                              | Opis |
+| Name        | Typ                                                                              | Opis |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
-| 201 utworzono | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Utworzono     |
+| 201 Utworzono | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Utworzono     |
 
-Skrócone *201 utworzono* odpowiedź z treści żądania przykład poprzedniej, która umożliwia utworzenie maszyny Wirtualnej wskazuje *vmId* przypisano i *provisioningState* jest *Tworzenie*:
+W przypadku zmniejszonej *201* odpowiedzi z poprzedniej przykładowej treści żądania, która tworzy maszynę wirtualną, zostanie przypisany *Identyfikator maszyny* wirtualnej, a *provisioningState* jest *tworzony*:
 
 ```json
 {
@@ -151,13 +150,13 @@ Skrócone *201 utworzono* odpowiedź z treści żądania przykład poprzedniej, 
 }
 ```
 
-Aby uzyskać więcej informacji na temat odpowiedzi interfejsu API REST, zobacz [przetworzyć komunikatu odpowiedzi](/rest/api/azure/#process-the-response-message).
+Aby uzyskać więcej informacji na temat odpowiedzi interfejsu API REST, zobacz [Przetwarzanie komunikatu odpowiedzi](/rest/api/azure/#process-the-response-message).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat interfejsów API REST platformy Azure lub narzędzi do zarządzania, takich jak wiersza polecenia platformy Azure lub programu Azure PowerShell zobacz następujące tematy:
+Aby uzyskać więcej informacji na temat interfejsów API REST platformy Azure lub innych narzędzi do zarządzania, takich jak interfejs wiersza polecenia platformy Azure lub Azure PowerShell, zobacz następujące tematy:
 
-- [Dostawca usługi Azure Compute interfejsu API REST](/rest/api/compute/)
+- [Interfejs API REST dostawcy obliczeń platformy Azure](/rest/api/compute/)
 - [Wprowadzenie do interfejsu API REST platformy Azure](/rest/api/azure/)
 - [Interfejs wiersza polecenia platformy Azure](/cli/azure/)
-- [Moduł programu Azure PowerShell](/powershell/azure/overview)
+- [Moduł Azure PowerShell](/powershell/azure/overview)

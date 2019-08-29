@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: b7b003c588d7b079823bb046676a1226828fcae2
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: e6b5c8c2f734a12fe246a82ce1aa1dc53893ab64
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249857"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072374"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Jak autoryzować konta dewelopera przy użyciu protokołu OAuth 2,0 na platformie Azure API Management
 
@@ -97,7 +96,7 @@ W tym przewodniku pokazano, jak skonfigurować wystąpienie usługi API Manageme
 
 Po skonfigurowaniu serwera autoryzacji OAuth 2,0 i skonfigurowaniu interfejsu API do korzystania z tego serwera można go przetestować, przechodząc do portalu dla deweloperów i wywołując interfejs API.  Kliknij przycisk **Portal dla deweloperów** w górnym menu na stronie **Przegląd** wystąpienia usługi Azure API Management.
 
-![Portal dla deweloperów][api-management-developer-portal-menu]
+![Portal deweloperów][api-management-developer-portal-menu]
 
 Kliknij pozycję **interfejsy API** w górnym menu i wybierz pozycję **echo API**.
 
@@ -123,7 +122,7 @@ Po zalogowaniu **nagłówki żądań** są wypełniane `Authorization : Bearer` 
 
 W tym momencie można skonfigurować odpowiednie wartości dla pozostałych parametrów i przesłać żądanie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat korzystania z protokołu OAuth 2,0 i API Management, zobacz następujący film wideo i towarzyszący [artykuł](api-management-howto-protect-backend-with-aad.md).
 

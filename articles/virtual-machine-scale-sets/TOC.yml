@@ -240,6 +240,8 @@
           href: virtual-machine-scale-sets-automatic-upgrade.md
         - name: Ochrona wystąpień (wersja zapoznawcza)
           href: virtual-machine-scale-sets-instance-protection.md
+        - name: Powiadomienie o przerwaniu po usunięciu (wersja zapoznawcza)
+          href: virtual-machine-scale-sets-terminate-notification.md
         - name: Udostępnione galerie obrazów
           items:
             - name: Omówienie

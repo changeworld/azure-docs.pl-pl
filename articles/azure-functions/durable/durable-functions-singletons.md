@@ -1,29 +1,28 @@
 ---
-title: Wzorce Singleton dla funkcje trwałe - Azure
-description: Jak używać pojedynczych elementów w rozszerzenia funkcji trwałych dla usługi Azure Functions.
+title: Pojedyncze dla Durable Functions — Azure
+description: Jak użyć pojedynczych w rozszerzeniu Durable Functions Azure Functions.
 services: functions
 author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c032ba046668310ff71d067d22a805fc6446667c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d9bf9687f60e649fee98869ef263117177ad5efd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683804"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097933"
 ---
-# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Pojedyncze orkiestratorów w funkcje trwałe (usługi Azure Functions)
+# <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Pojedyncze Koordynatory w Durable Functions (Azure Functions)
 
-Zadania w tle, które często zachodzi potrzeba upewnij się, że tylko jedno wystąpienie określonego programu orchestrator uruchamiane w danym momencie. Można to zrobić [funkcje trwałe](durable-functions-overview.md) , przypisując określony identyfikator wystąpienia do programu orchestrator po jej utworzeniu.
+W przypadku zadań w tle często trzeba upewnić się, że tylko jedno wystąpienie określonego programu Orchestrator działa w danym momencie. Można to zrobić w [Durable Functions](durable-functions-overview.md) przez przypisanie określonego identyfikatora wystąpienia do koordynatora podczas jego tworzenia.
 
-## <a name="singleton-example"></a>Przykład pojedyncze
+## <a name="singleton-example"></a>Pojedynczy przykład
 
-Następujące C# i JavaScript przykładach funkcję wyzwalacza HTTP, która tworzy pojedyncze tła zadania aranżacji. Kod daje pewność, że to tylko jedno wystąpienie istnieje dla identyfikatora określonego wystąpienia.
+Poniższe C# przykłady i JavaScript przedstawiają funkcję wyzwalacza http, która tworzy pojedynczą aranżację zadań w tle. Kod gwarantuje, że istnieje tylko jedno wystąpienie dla określonego identyfikatora wystąpienia.
 
 ### <a name="c"></a>C#
 
@@ -56,7 +55,7 @@ public static async Task<HttpResponseMessage> RunSingle(
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 Poniżej przedstawiono plik function.json:
 ```json
@@ -112,17 +111,17 @@ module.exports = async function(context, req) {
 };
 ```
 
-Domyślnie wystąpienie, które identyfikatory są losowo generowany identyfikatorów GUID. Ale w tym przypadku identyfikator wystąpienia jest przekazywany w danych trasy z adresu URL. Kod wywołuje [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) (C#) lub `getStatus` (JavaScript), aby sprawdzić, czy wystąpienie o określonym identyfikatorze jest już uruchomiona. Jeśli nie, wystąpienie jest tworzone za pomocą tego identyfikatora.
+Domyślnie identyfikatory wystąpień są losowo generowanymi identyfikatorami GUID. Jednak w tym przypadku identyfikator wystąpienia jest przesyłany w danych trasy z adresu URL. Kod wywołuje [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetStatusAsync_) (C#) lub `getStatus` (JavaScript), aby sprawdzić, czy wystąpienie o określonym identyfikatorze jest już uruchomione. Jeśli nie, tworzone jest wystąpienie o tym IDENTYFIKATORze.
 
 > [!WARNING]
-> Wdrażając aplikacje lokalnie w języku JavaScript, musisz ustawić zmienną środowiskową `WEBSITE_HOSTNAME` do `localhost:<port>`, np. `localhost:7071` na korzystanie z metod `DurableOrchestrationClient`. Aby uzyskać więcej informacji na temat tego wymagania, zobacz [problem w usłudze GitHub](https://github.com/Azure/azure-functions-durable-js/issues/28).
+> Podczas tworzenia lokalnie w języku JavaScript należy ustawić zmienną `WEBSITE_HOSTNAME` środowiskową na `localhost:<port>`, np. `localhost:7071`Aby użyć metod w `DurableOrchestrationClient`. Aby uzyskać więcej informacji na temat tego wymagania, zobacz artykuł dotyczący usługi [GitHub](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
 > [!NOTE]
-> W tym przykładzie jest potencjalnych sytuacji wyścigu. Jeśli dwa wystąpienia **HttpStartSingle** wykonania jednocześnie, oba wywołania funkcji zakomunikuje sukces, ale faktycznie rozpocznie aranżacji tylko jedno wystąpienie. W zależności od wymagań może mieć niepożądane skutki uboczne. Z tego powodu należy upewnić się, że ma dwóch żądań można wykonać tej funkcji wyzwalacza jednocześnie.
+> W tym przykładzie istnieje potencjalny warunek wyścigu. Jeśli dwa wystąpienia **HttpStartSingle** wykonywane współbieżnie, oba wywołania funkcji będą zgłaszać sukces, ale w rzeczywistości zostanie uruchomione tylko jedno wystąpienie aranżacji. W zależności od wymagań może to mieć niepożądane skutki uboczne. Z tego powodu ważne jest, aby upewnić się, że żadne dwa żądania nie mogą wykonać tej funkcji wyzwalacza współbieżnie.
 
-Szczegóły implementacji funkcji programu orchestrator nie faktycznie znaczenia. Może to być funkcja regularne programu orchestrator, która zostanie uruchomione i zakończy, lub może być taki, który działa w nieskończoność (czyli [Eternal aranżacji](durable-functions-eternal-orchestrations.md)). Istotną kwestią jest dostępne tylko w przypadku kiedykolwiek jedno wystąpienie, które działa w danym momencie.
+Szczegóły implementacji funkcji programu Orchestrator nie mają znaczenia. Może to być zwykła funkcja programu Orchestrator, która uruchamia się i kończy, lub może być taka, która działa w nieskończoność (czyli [aranżacja Eternal](durable-functions-eternal-orchestrations.md)). Ważnym punktem jest to, że w danym momencie jest uruchomione tylko jedno wystąpienie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak wywołać podrzędnych aranżacji](durable-functions-sub-orchestrations.md)
+> [Informacje o sposobie wywoływania podaranżacji](durable-functions-sub-orchestrations.md)

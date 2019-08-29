@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Dokumentacja maszyn wirtualnych do nauki o danych platformy Azure
+title: Dokumentacja dotycząca środowiska Data Science Virtual Machine na platformie Azure
 metadata:
-  title: Dokumentacja maszyn wirtualnych do nauki o danych — Azure
-  description: 'Dowiedz się, jak używać środowiska Data Science Virtual Machine, eksperymentalnego środowiska w chmurze Azure utworzonego na potrzeby nauki o danych. Popularne narzędzia do nauki o danych i inne narzędzia są wstępnie zainstalowane i wstępnie skonfigurowane, co umożliwia szybkie rozpoczęcie tworzenia inteligentnych aplikacji służących do zaawansowanej analizy.'
+  title: Dokumentacja dotycząca środowiska Data Science Virtual Machine — platforma Azure
+  description: 'Dowiedz się, jak używać środowiska Data Science Virtual Machine, eksperymentalnego środowiska w chmurze platformy Azure utworzonego na potrzeby nauki o danych. Popularne narzędzia do nauki o danych i uczenia maszynowego są wstępnie zainstalowane i skonfigurowane. Ten projekt daje przewagę podczas tworzenia inteligentnych aplikacji do zaawansowanej analizy.'
   services: machine-learning
   author: vijetajo
   ms.service: machine-learning
@@ -14,12 +14,12 @@ metadata:
   ms.date: 08/19/2019
   ms.author: vijetaj
 abstract:
-  description: Środowisko Azure Data Science Virtual Machine (DSVM) to dostosowany obraz maszyny wirtualnej zawierający narzędzia do nauki o danych i uczenia maszynowego. Za pomocą tej maszyny wirtualnej możesz tworzyć inteligentne aplikacje do zaawansowanej analizy. <a href="overview.md">Dowiedz się więcej...</a>
+  description: Środowisko Azure Data Science Virtual Machine (DSVM) to dostosowany obraz maszyny wirtualnej zawierający narzędzia do nauki o danych i uczenia maszynowego. Za pomocą tej maszyny wirtualnej możesz tworzyć inteligentne aplikacje do zaawansowanej analizy. <a href="overview.md">Dowiedz się więcej</a>.
 sections:
   - title: 5-minutowe przewodniki Szybki start
     items:
       - type: paragraph
-        text: 'Dowiedz się, jak skonfigurować maszynę wirtualną do nauki o danych opartą na systemie Windows lub Linux:'
+        text: 'Dowiedz się, jak skonfigurować środowisko Data Science Virtual Machine oparte na systemie Windows lub Linux:'
       - type: paragraph
         text: <b>Maszyna DSVM z systemem Windows</b>
       - type: list

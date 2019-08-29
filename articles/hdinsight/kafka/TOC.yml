@@ -181,6 +181,8 @@
               href: ../hdinsight-hadoop-collect-debug-heap-dump-linux.md?toc=/azure/hdinsight/kafka/toc.json&bc=/azure/hdinsight/kafka/breadcrumb/toc.json
 - name: Dokumentacja
   items:
+    - name: Obsługiwane konfiguracje węzłów
+      href: ../hdinsight-supported-node-configuration.md
     - name: Przykłady kodu
       href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: Azure PowerShell

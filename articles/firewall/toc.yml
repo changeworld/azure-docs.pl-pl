@@ -10,7 +10,7 @@
     - name: Wdrażanie i konfigurowanie
       href: tutorial-firewall-deploy-portal.md
     - name: Wdrażanie w sieci hybrydowej
-      href: tutorial-hybrid-ps.md
+      href: tutorial-hybrid-portal.md
     - name: Filtrowanie ruchu przychodzącego ruchu przy użyciu DNAT
       href: tutorial-firewall-dnat.md
     - name: Monitorowanie dzienników diagnostycznych
@@ -39,6 +39,8 @@
   items:
     - name: Wdrażanie przy użyciu programu Azure PowerShell
       href: deploy-ps.md
+    - name: Wdrażanie w sieci hybrydowej — program PowerShell
+      href: tutorial-hybrid-ps.md
     - name: Wdrażanie przy użyciu interfejsu wiersza polecenia platformy Azure
       href: deploy-cli.md
     - name: Wdrażanie przy użyciu szablonu

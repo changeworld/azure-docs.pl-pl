@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: b451769f5f98bf64ca340504c983f16d1db36647
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: a844d28067fc0851760849317160d5902918252e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991553"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074391"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie składniki Apache Hadoop i wersje są dostępne w usłudze HDInsight?
 
@@ -177,63 +177,7 @@ Sekcja zawiera linki do informacji o wersji dla dystrybucji platform danych Hort
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Domyślna konfiguracja węzła i rozmiary maszyn wirtualnych dla klastrów
 
-W poniższej tabeli wymieniono domyślne rozmiary maszyn wirtualnych dla klastrów usługi HDInsight.  Ten wykres jest konieczny, aby zrozumieć rozmiary maszyn wirtualnych używane podczas tworzenia skryptów programu PowerShell lub interfejsu wiersza polecenia platformy Azure w celu wdrożenia klastrów usługi HDInsight.
-
-> [!NOTE]
-> Jedynymi typami klastrów z dyskami danych są klastry Kafka i HBase z włączoną funkcją przyspieszonego zapisywania. Usługa HDInsight obsługuje rozmiary dysków P30 i S30 w tych scenariuszach.
-
-> [!IMPORTANT]  
-> Jeśli potrzebujesz więcej niż 32 węzłów procesu roboczego w klastrze, musisz wybrać rozmiar węzła głównego z co najmniej 8 rdzeniami i 14 GB pamięci RAM.
-
-* Wszystkie obsługiwane regiony, z wyjątkiem Brazylii Południowe i Japonia Zachodnia:
-
-|Typ klastra|Hadoop|HBase|Zapytanie interakcyjne|Storm|platforma Spark|ML Server|Kafka|
-|---|---|---|---|---|---|---|---|
-|Nagłówek: domyślny rozmiar maszyny wirtualnej|D12 v2|D12 v2|D13 v2|A3|D12 v2|D12 v2|D3v2|
-|Główna: zalecane rozmiary maszyn wirtualnych|D3 v2|D3 v2|D13|A4 v2|D12 v2|D12 v2|A2M v2|
-||D4 v2|D4 v2|D14|A8 v2|D13 v2|D13 v2|D3 v2|
-||D12 v2|D12 v2|E16 v3|A2m v2|D14 v2|D14 v2|D4 v2|
-||E4 v3|E4 v3|E32 v3|E4 v3|E4 v3|E4 v3|D12 v2|
-|Proces roboczy: domyślny rozmiar maszyny wirtualnej|D4 v2|D4 v2|D14 v2|D3 v2|D13 v2|D4 v2|4 D12v2 z 2 dyskami S30 na brokera|
-|Proces roboczy: zalecane rozmiary maszyn wirtualnych|D3 v2|D3 v2|D13|D3 v2|D4 v2|D4 v2|D13 v2|
-||D4 v2|D4 v2|D14|D4 v2|D12 v2|D12 v2|DS12 v2|
-||D12 v2|D12 v2|E16 v3|D12 v2|D13 v2|D13 v2|DS13 v2|
-||E4 v3|E4 v3|E20 v3|E4 v3|D14 v2|D14 v2|E4 v3|
-||||E32 v3||E16 v3|E16 v3|ES4 v3|
-||||E64 v3||E20 v3|E20 v3|E8 v3|
-||||||E32 v3|E32 v3|ES8 v3|
-||||||E64 v3|E64 v3||
-|Dozorcy: domyślny rozmiar maszyny wirtualnej||A4 v2|A4 v2|A4 v2||A2 v2|D3v2|
-|Dozorcy: zalecane rozmiary maszyn wirtualnych||A4 v2||A2 v2|||A2M v2|
-|||A8 v2||A4 v2|||D3 v2|
-|||A2m v2||A8 v2|||E8 v3|
-|Usługi ML: domyślny rozmiar maszyny wirtualnej||||||D4 v2||
-|Usługi w usłudze ML: zalecany rozmiar maszyny wirtualnej||||||D4 v2||
-|||||||D12 v2||
-|||||||D13 v2||
-|||||||D14 v2||
-|||||||E16 v3||
-|||||||E20 v3||
-|||||||E32 v3||
-|||||||E64 v3||
-
-* Brazylia Południowa i Japonia Zachodnia (bez rozmiarów v2):
-
-  | Typ klastra | Hadoop | HBase | Zapytanie interakcyjne |Storm | platforma Spark | ML Services |
-  | --- | --- | --- | --- | --- | --- | --- |
-  | Nagłówek: domyślny rozmiar maszyny wirtualnej |D12 |D12  | D13 |A3 |D12 |D12 |
-  | Główna: zalecane rozmiary maszyn wirtualnych |D3<br/> D4<br/> D12 |D3<br/> D4<br/> D12  | D13<br/> D14 |A3<br/> KART<br/> A5 |D12<br/> D13<br/> D14 |D12<br/> D13<br/> D14 |
-  | Proces roboczy: domyślny rozmiar maszyny wirtualnej |D4 |D4  |  D14 |D3 |D13 |D4 |
-  | Proces roboczy: zalecane rozmiary maszyn wirtualnych |D3<br/> D4<br/> D12 |D3<br/> D4<br/> D12  | D13<br/> D14 |D3<br/> D4<br/> D12 |D4<br/> D12<br/> D13<br/> D14 | D4<br/> D12<br/> D13<br/> D14 |
-  | Dozorcy: domyślny rozmiar maszyny wirtualnej | |A4 v2 | A4 v2| A4 v2 | | A2 v2|
-  | Dozorcy: zalecane rozmiary maszyn wirtualnych | |A2<br/> A3<br/> A4 | |A2<br/> A3<br/> A4 | | |
-  | Usługi ML: domyślne rozmiary maszyn wirtualnych | | | | | |D4 |
-  | Usługi w usłudze ML: zalecane rozmiary maszyn wirtualnych | | | | | |D4<br/> D12<br/> D13<br/> D14 |
-
-> [!NOTE]
-> - Nagłówek jest znany jako *Nimbus* dla typu klastra burza.
-> - Proces roboczy jest znany jako *opiekun* dla typu klastra burza.
-> - Proces roboczy jest znany jako *region* dla typu klastra HBase.
+Aby uzyskać więcej informacji na temat jednostek SKU maszyn wirtualnych do wybrania dla klastra, zobacz [szczegóły konfiguracji klastra usługi Azure HDInsight](hdinsight-supported-node-configuration.md).
 
 ## <a name="next-steps"></a>Następne kroki
 - [Konfiguracja klastra dla Apache Hadoop, Spark i nie tylko w usłudze HDInsight](hdinsight-hadoop-provision-linux-clusters.md)

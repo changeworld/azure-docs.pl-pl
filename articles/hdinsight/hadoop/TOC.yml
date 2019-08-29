@@ -381,6 +381,8 @@
           href: apache-hadoop-debug-jobs.md
 - name: Dokumentacja
   items:
+    - name: Obsługiwane konfiguracje węzłów
+      href: ../hdinsight-supported-node-configuration.md
     - name: Przykłady kodu
       href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
     - name: Azure PowerShell

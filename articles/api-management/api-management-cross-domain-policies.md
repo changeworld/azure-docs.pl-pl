@@ -10,16 +10,15 @@ ms.assetid: 7689d277-8abe-472a-a78c-e6d4bd43455d
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 86c61679a73f03f7e54bba746107685796ec07c9
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: db64a2f64c592a62f621355047a7bc9844d66457
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442313"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073718"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Zasady usługi API Management obejmujące różne domeny)
 Ten temat zawiera informacje dotyczące następujących zasad API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasady w API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -54,7 +53,7 @@ Ten temat zawiera informacje dotyczące następujących zasad API Management. Ab
 
 ### <a name="elements"></a>Elementy
 
-|Name (Nazwa)|Opis|Wymagane|
+|Name|Opis|Wymagane|
 |----------|-----------------|--------------|
 |między domenami|Element główny. Elementy podrzędne muszą być zgodne ze [specyfikacją pliku zasad między domenami Adobe](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html).|Tak|
 
@@ -123,11 +122,11 @@ W tym przykładzie pokazano, jak obsługiwać żądania przed inspekcją, takie 
 
 ### <a name="elements"></a>Elementy
 
-|Name (Nazwa)|Opis|Wymagane|Domyślny|
+|Name|Opis|Wymagane|Domyślny|
 |----------|-----------------|--------------|-------------|
-|specyfikacji|Element główny.|Yes|ND|
+|specyfikacji|Element główny.|Tak|ND|
 |dozwolone źródła|Zawiera `origin` elementy, które opisują dozwolone źródła dla żądań międzydomenowych. `allowed-origins`może zawierać pojedynczy `origin` element, który określa `*` , aby zezwolić na dowolne Źródło lub jeden lub więcej `origin` elementów, które zawierają identyfikator URI.|Tak|ND|
-|źródło|Wartość może być `*` równa, aby zezwolić na wszystkie źródła lub identyfikator URI, który określa pojedyncze źródło. Identyfikator URI musi zawierać schemat, hosta i port.|Yes|Jeśli port zostanie pominięty w identyfikatorze URI, port 80 jest używany dla protokołu HTTP, a port 443 jest używany w przypadku protokołu HTTPS.|
+|źródło|Wartość może być `*` równa, aby zezwolić na wszystkie źródła lub identyfikator URI, który określa pojedyncze źródło. Identyfikator URI musi zawierać schemat, hosta i port.|Tak|Jeśli port zostanie pominięty w identyfikatorze URI, port 80 jest używany dla protokołu HTTP, a port 443 jest używany w przypadku protokołu HTTPS.|
 |dozwolone — metody|Ten element jest wymagany, jeśli dozwolone są metody inne niż GET lub POST. Zawiera `method` elementy, które określają obsługiwane zlecenia http.|Nie|Jeśli ta sekcja nie jest obecna, obsługiwane są pozycje GET i POST.|
 |— metoda|Określa czasownik HTTP.|Jeśli sekcja jest `method` obecna, `allowed-methods` wymagany jest co najmniej jeden element.|ND|
 |dozwolone — nagłówki|Ten element zawiera `header` elementy określające nazwy nagłówków, które mogą zostać uwzględnione w żądaniu.|Nie|ND|
@@ -136,7 +135,7 @@ W tym przykładzie pokazano, jak obsługiwać żądania przed inspekcją, takie 
 
 ### <a name="attributes"></a>Atrybuty
 
-|Name (Nazwa)|Opis|Wymagane|Domyślny|
+|Name|Opis|Wymagane|Domyślny|
 |----------|-----------------|--------------|-------------|
 |Zezwalaj — poświadczenia|W `Access-Control-Allow-Credentials` nagłówku odpowiedzi na inspekcję wstępną zostanie ustawiona wartość tego atrybutu i będzie ona mieć wpływ na zdolność klienta do przesyłania poświadczeń w żądaniach międzydomenowych.|Nie|false|
 |preflight-result-max-age|`Access-Control-Max-Age` Nagłówek w odpowiedzi na inspekcję wstępną zostanie ustawiony na wartość tego atrybutu i będzie miał wpływ na zdolność agenta użytkownika do buforowania przed lotem odpowiedzi.|Nie|0|
@@ -168,13 +167,13 @@ Dodanie parametru `?cb=XXX` wywołania zwrotnego spowoduje zwrócenie wyniku JSO
 
 ### <a name="elements"></a>Elementy
 
-|Name (Nazwa)|Opis|Wymagane|
+|Name|Opis|Wymagane|
 |----------|-----------------|--------------|
 |JSONP|Element główny.|Tak|
 
 ### <a name="attributes"></a>Atrybuty
 
-|Name (Nazwa)|Opis|Wymagane|Domyślny|
+|Name|Opis|Wymagane|Domyślny|
 |----------|-----------------|--------------|-------------|
 |callback-parameter-name|Międzydomenowe wywołanie funkcji JavaScript poprzedzone prefiksem w pełni kwalifikowanej nazwy domeny, w której znajduje się funkcja.|Tak|ND|
 
@@ -184,7 +183,7 @@ Tych zasad można używać w następujących sekcjach i [](https://azure.microso
 - **Sekcje zasad:** wychodzące
 - **Zakresy zasad:** wszystkie zakresy
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat pracy z zasadami, zobacz:
 

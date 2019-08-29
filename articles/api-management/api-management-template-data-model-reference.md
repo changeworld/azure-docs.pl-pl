@@ -1,6 +1,6 @@
 ---
-title: Danych szablonu usługi Azure API Management modelu odniesienia | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat reprezentacji jednostek i typów dla wspólne elementy używane w ramach modeli danych dla szablonów portalu dla deweloperów w usłudze Azure API Management.
+title: Dokumentacja modelu danych szablonu API Management platformy Azure | Microsoft Docs
+description: Dowiedz się więcej o jednostkach i typach reprezentacji dla typowych elementów używanych w modelach danych dla szablonów portalu dla deweloperów w usłudze Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,357 +10,356 @@ ms.assetid: b0ad7e15-9519-4517-bb73-32e593ed6380
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 3c2384b536235554fed7c1cf1a08b7c665f513a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 323b3effb4c4a63d03ab7ea5251e0d59271d9dcd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61094526"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072139"
 ---
-# <a name="azure-api-management-template-data-model-reference"></a>Dokumentacja modelu danych szablonu usługi Azure API Management
-W tym temacie opisano reprezentacji jednostek i typów dla wspólne elementy używane w ramach modeli danych dla szablonów portalu dla deweloperów w usłudze Azure API Management.  
+# <a name="azure-api-management-template-data-model-reference"></a>Dokumentacja modelu danych szablonu API Management platformy Azure
+W tym temacie opisano reprezentacje jednostek i typów dla typowych elementów używanych w modelach danych dla szablonów portalu dla deweloperów w usłudze Azure API Management.  
   
- Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [Dostosowywanie portalu dla deweloperów usługi API Management przy użyciu szablonów](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+ Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [How to dostosowywanie portalu deweloperów API Management przy użyciu szablonów](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-Portalu dla deweloperów, nie jest dostępne w warstwie zużycia.
+Portal dla deweloperów nie jest dostępny w warstwie zużycia.
 
 ## <a name="reference"></a>Tematy pomocy
 
 -   [Interfejs API](#API)  
 -   [Podsumowanie interfejsu API](#APISummary)  
 -   [Aplikacja](#Application)  
--   [Załącznik](#Attachment)  
+-   [Umieszczenie](#Attachment)  
 -   [Przykładowy kod](#Sample)  
--   [Komentarz](#Comment)  
+-   [Komentować](#Comment)  
 -   [Filtrowanie](#Filtering)  
 -   [Nagłówek](#Header)  
 -   [Żądanie HTTP](#HTTPRequest)  
 -   [Odpowiedź HTTP](#HTTPResponse)  
--   [Problem](#Issue)  
+-   [Wykonaj](#Issue)  
 -   [Operacja](#Operation)  
--   [Operacja menu](#Menu)  
--   [Operacja elementu menu.](#MenuItem)  
+-   [Menu operacje](#Menu)  
+-   [Element menu operacji](#MenuItem)  
 -   [Stronicowania](#Paging)  
 -   [Parametr](#Parameter)  
--   [Produkt](#Product)  
+-   [Iloczyn](#Product)  
 -   [Dostawca](#Provider)  
--   [Reprezentacja](#Representation)  
+-   [Reprezentowana](#Representation)  
 -   [Subskrypcja](#Subscription)  
 -   [Podsumowanie subskrypcji](#SubscriptionSummary)  
 -   [Informacje o koncie użytkownika](#UserAccountInfo)  
 -   [Logowanie użytkownika](#UseSignIn)  
--   [Utwórz konto użytkownika](#UserSignUp)  
+-   [Rejestracja użytkownika](#UserSignUp)  
   
-##  <a name="API"></a> INTERFEJS API  
+##  <a name="API"></a>INTERFEJSU API  
  `API` Jednostka ma następujące właściwości:  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`id`|string|Identyfikator zasobu. Jednoznacznie identyfikuje interfejs API w ramach bieżącego wystąpienia usługi API Management. Wartość jest prawidłowym względnym adresem URL w formacie `apis/{id}` gdzie `{id}` jest to identyfikator interfejsu API. Ta właściwość jest tylko do odczytu.|  
-|`name`|string|Nazwa interfejsu API. Nie może być pusta. Maksymalna długość wynosi 100 znaków.|  
-|`description`|string|Opis interfejsu API. Nie może być pusta. Może obejmować formatowanie tagów HTML. Maksymalna długość wynosi 1000 znaków.|  
-|`serviceUrl`|string|Bezwzględny adres URL usługi zaplecza, implementacja tego interfejsu API.|  
-|`path`|string|Względny adres URL, który unikatowo identyfikuje ten interfejs API i wszystkie jego ścieżki zasobów w ramach wystąpienia usługi API Management. Jest ona dołączana do interfejsu API punktu końcowego podstawowego adresu URL określona podczas tworzenia wystąpienia usługi w celu utworzenia publicznego adresu URL dla tego interfejsu API.|  
-|`protocols`|tablica liczb|W tym artykule opisano, na których protokołów można wywołać operacji w tym interfejsie API. Dozwolone wartości to `1 - http` i `2 - https`, lub obu.|  
-|`authenticationSettings`|[Ustawienia uwierzytelniania serwera autoryzacji](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Kolekcja ustawień uwierzytelniania zawarte w tym interfejsie API.|  
-|`subscriptionKeyParameterNames`|obiekt|Opcjonalna właściwość, która może służyć do określania niestandardowych nazw parametrów zapytania i/lub nagłówka zawierający klucz subskrypcji. Gdy ta właściwość jest obecny, musi zawierać co najmniej jeden z dwóch następujących właściwości.<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
+|`id`|ciąg|Identyfikator zasobu. Jednoznacznie identyfikuje interfejs API w bieżącym wystąpieniu usługi API Management. Wartość jest prawidłowym względnym adresem URL w formacie `apis/{id}` gdzie `{id}` jest identyfikatorem interfejsu API. Ta właściwość jest tylko do odczytu.|  
+|`name`|ciąg|Nazwa interfejsu API. Nie może być pusty. Maksymalna długość to 100 znaków.|  
+|`description`|ciąg|Opis interfejsu API. Nie może być pusty. Może zawierać Tagi formatowania HTML. Maksymalna długość to 1000 znaków.|  
+|`serviceUrl`|ciąg|Bezwzględny adres URL usługi wewnętrznej bazy danych implementującej ten interfejs API.|  
+|`path`|ciąg|Względny adres URL, który jednoznacznie identyfikuje ten interfejs API i wszystkie jego ścieżki zasobów w ramach wystąpienia usługi API Management. Jest dołączany do podstawowego adresu URL punktu końcowego interfejsu API określonego podczas tworzenia wystąpienia usługi, aby utworzyć publiczny adres URL dla tego interfejsu API.|  
+|`protocols`|tablica liczb|Opisuje protokoły, w których można wywołać operacje w tym interfejsie API. Dozwolone wartości to `1 - http` i `2 - https`i.|  
+|`authenticationSettings`|[Ustawienia uwierzytelniania serwera autoryzacji](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#AuthenticationSettings)|Kolekcja ustawień uwierzytelniania uwzględnionych w tym interfejsie API.|  
+|`subscriptionKeyParameterNames`|object|Opcjonalna właściwość, która może służyć do określania nazw niestandardowych dla parametrów zapytania i/lub nagłówka zawierających klucz subskrypcji. Gdy ta właściwość jest obecna, musi zawierać co najmniej jedną z dwóch następujących właściwości.<br /><br /> `{   "subscriptionKeyParameterNames":   {     "query": “customQueryParameterName",     "header": “customHeaderParameterName"   } }`|  
   
-##  <a name="APISummary"></a> Podsumowanie interfejsu API  
+##  <a name="APISummary"></a>Podsumowanie interfejsu API  
  `API summary` Jednostka ma następujące właściwości:  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`id`|string|Identyfikator zasobu. Jednoznacznie identyfikuje interfejs API w ramach bieżącego wystąpienia usługi API Management. Wartość jest prawidłowym względnym adresem URL w formacie `apis/{id}` gdzie `{id}` jest to identyfikator interfejsu API. Ta właściwość jest tylko do odczytu.|  
-|`name`|string|Nazwa interfejsu API. Nie może być pusta. Maksymalna długość wynosi 100 znaków.|  
-|`description`|string|Opis interfejsu API. Nie może być pusta. Może obejmować formatowanie tagów HTML. Maksymalna długość wynosi 1000 znaków.|  
+|`id`|ciąg|Identyfikator zasobu. Jednoznacznie identyfikuje interfejs API w bieżącym wystąpieniu usługi API Management. Wartość jest prawidłowym względnym adresem URL w formacie `apis/{id}` gdzie `{id}` jest identyfikatorem interfejsu API. Ta właściwość jest tylko do odczytu.|  
+|`name`|ciąg|Nazwa interfejsu API. Nie może być pusty. Maksymalna długość to 100 znaków.|  
+|`description`|ciąg|Opis interfejsu API. Nie może być pusty. Może zawierać Tagi formatowania HTML. Maksymalna długość to 1000 znaków.|  
   
-##  <a name="Application"></a> Aplikacja  
+##  <a name="Application"></a>Aplikacja  
  `application` Jednostka ma następujące właściwości:  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`Id`|string|Unikatowy identyfikator aplikacji.|  
-|`Title`|string|Tytuł aplikacji.|  
-|`Description`|string|Opis aplikacji.|  
-|`Url`|Identyfikator URI|Identyfikator URI dla aplikacji.|  
-|`Version`|string|Informacje o wersji dla aplikacji.|  
-|`Requirements`|string|Opis wymagań aplikacji.|  
-|`State`|numer|Bieżący stan aplikacji.<br /><br /> -0 - zarejestrowany<br /><br /> -1 - przesłane<br /><br /> -2 - opublikowane<br /><br /> -3 - odrzucone<br /><br /> -4 - nieopublikowane|  
-|`RegistrationDate`|DateTime|Data i godzina, których aplikacja została zarejestrowana.|  
-|`CategoryId`|numer|Do kategorii aplikacji (finanse, rozrywka itp.)|  
-|`DeveloperId`|string|Unikatowy identyfikator dla deweloperów, który przesłany aplikacji.|  
-|`Attachments`|Kolekcja [załącznika](#Attachment) jednostek.|Wszystkie załączniki dla aplikacji, takie jak zrzuty ekranu lub ikony.|  
-|`Icon`|[Załącznik](#Attachment)|Ikona dla aplikacji.|  
+|`Id`|ciąg|Unikatowy identyfikator aplikacji.|  
+|`Title`|ciąg|Tytuł aplikacji.|  
+|`Description`|ciąg|Opis aplikacji.|  
+|`Url`|Identyfikator URI|Identyfikator URI aplikacji.|  
+|`Version`|ciąg|Informacje o wersji aplikacji.|  
+|`Requirements`|ciąg|Opis wymagań aplikacji.|  
+|`State`|numer|Bieżący stan aplikacji.<br /><br /> -0-zarejestrowano<br /><br /> -1-przesłane<br /><br /> -2 — Opublikowano<br /><br /> -3 — odrzucono<br /><br /> -4 — nieopublikowany|  
+|`RegistrationDate`|DateTime|Data i godzina zarejestrowania aplikacji.|  
+|`CategoryId`|numer|Kategoria aplikacji (Finanse, rozrywka itp.)|  
+|`DeveloperId`|ciąg|Unikatowy identyfikator dewelopera, który przesłał aplikację.|  
+|`Attachments`|Kolekcja jednostek [załączników](#Attachment) .|Wszystkie załączniki dla aplikacji, takie jak zrzuty ekranu lub ikony.|  
+|`Icon`|[Umieszczenie](#Attachment)|Ikona dla aplikacji.|  
   
-##  <a name="Attachment"></a> Załącznik  
+##  <a name="Attachment"></a>Umieszczenie  
  `attachment` Jednostka ma następujące właściwości:  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`UniqueId`|string|Unikatowy identyfikator dla załącznika.|  
-|`Url`|string|Adres URL zasobu.|  
-|`Type`|string|Typ załącznika.|  
-|`ContentType`|string|Typ nośnika załącznika.|  
+|`UniqueId`|ciąg|Unikatowy identyfikator załącznika.|  
+|`Url`|ciąg|Adres URL zasobu.|  
+|`Type`|ciąg|Typ załącznika.|  
+|`ContentType`|ciąg|Typ nośnika załącznika.|  
   
-##  <a name="Sample"></a> Przykładowy kod  
+##  <a name="Sample"></a>Przykładowy kod  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`title`|string|Nazwa operacji.|  
-|`snippet`|string|Ta właściwość jest przestarzała i nie powinna być używana.|  
-|`brush`|string|Składni kodu kolorowania szablon, który będzie używany podczas wyświetlania przykładowy kod. Dozwolone wartości to `plain`, `php`, `java`, `xml`, `objc`, `python`, `ruby`, i `csharp`.|  
-|`template`|string|Nazwa tego kodu przykładowego szablonu.|  
-|`body`|string|Symbol zastępczy dla określonej części przykładowy kod fragmentu kodu.|  
-|`method`|string|Metoda HTTP operacji.|  
-|`scheme`|string|Protokół do użycia dla żądania operacji.|  
-|`path`|string|Ścieżka operacji.|  
-|`query`|string|Przykład zdefiniowanych parametrów ciągu zapytania.|  
-|`host`|string|Adres URL bramy usługi API Management dla interfejsu API, który zawiera tę operację.|  
-|`headers`|Kolekcja [nagłówka](#Header) jednostek.|Nagłówki dla tej operacji.|  
-|`parameters`|Kolekcja [parametru](#Parameter) jednostek.|Parametry, które są zdefiniowane dla tej operacji.|  
+|`title`|ciąg|Nazwa operacji.|  
+|`snippet`|ciąg|Ta właściwość jest przestarzała i nie powinna być używana.|  
+|`brush`|ciąg|Który szablon kolorowania składni kodu ma być używany podczas wyświetlania przykładu kodu. Dozwolone wartości to `plain`, `php` `java` ,`objc` ,,`csharp`,, i. `xml` `python` `ruby`|  
+|`template`|ciąg|Nazwa tego szablonu przykładowego kodu.|  
+|`body`|ciąg|Symbol zastępczy fragmentu kodu.|  
+|`method`|ciąg|Metoda HTTP operacji.|  
+|`scheme`|ciąg|Protokół, który ma być używany dla żądania operacji.|  
+|`path`|ciąg|Ścieżka operacji.|  
+|`query`|ciąg|Przykład ciągu zapytania ze zdefiniowanymi parametrami.|  
+|`host`|ciąg|Adres URL bramy usługi API Management dla interfejsu API, który zawiera tę operację.|  
+|`headers`|Kolekcja jednostek [nagłówka](#Header) .|Nagłówki dla tej operacji.|  
+|`parameters`|Kolekcja jednostek [parametrów](#Parameter) .|Parametry, które są zdefiniowane dla tej operacji.|  
   
-##  <a name="Comment"></a> Komentarz  
+##  <a name="Comment"></a>Komentować  
  `API` Jednostka ma następujące właściwości:  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
 |`Id`|numer|Identyfikator komentarza.|  
-|`CommentText`|string|Treść komentarza. Może obejmować HTML.|  
-|`DeveloperCompany`|string|Nazwa firmy dewelopera.|  
-|`PostedOn`|DateTime|Data i godzina, którego ten komentarz został opublikowany.|  
+|`CommentText`|ciąg|Treść komentarza. Może zawierać kod HTML.|  
+|`DeveloperCompany`|ciąg|Nazwa firmy dewelopera.|  
+|`PostedOn`|DateTime|Data i godzina opublikowania komentarza.|  
   
-##  <a name="Issue"></a> Problem  
+##  <a name="Issue"></a>Wykonaj  
  `issue` Jednostka ma następujące właściwości.  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`Id`|string|Unikatowy identyfikator problemu.|  
-|`ApiID`|string|Identyfikator interfejsu API, dla którego ten problem został zgłoszony.|  
-|`Title`|string|Tytuł problemu.|  
-|`Description`|string|Opis problemu.|  
-|`SubscriptionDeveloperName`|string|Imię dewelopera, który zgłosił problem.|  
-|`IssueState`|string|Bieżący stan problemu. Możliwe wartości to proponowane, Opened, zamknięte.|  
-|`ReportedOn`|DateTime|Data i godzina, który został zgłoszony problem.|  
-|`Comments`|Kolekcja [komentarz](#Comment) jednostek.|Komentarze dotyczące tego problemu.|  
-|`Attachments`|Kolekcja [załącznika](api-management-template-data-model-reference.md#Attachment) jednostek.|Załączniki do tego problemu.|  
-|`Services`|Kolekcja [API](#API) jednostek.|Interfejsy API subskrybowana przez użytkownika, który zgłosić problem.|  
+|`Id`|ciąg|Unikatowy identyfikator problemu.|  
+|`ApiID`|ciąg|Identyfikator interfejsu API, dla którego zgłoszono ten problem.|  
+|`Title`|ciąg|Tytuł problemu.|  
+|`Description`|ciąg|Opis problemu.|  
+|`SubscriptionDeveloperName`|ciąg|Imię i nazwisko dewelopera, który zgłosił problem.|  
+|`IssueState`|ciąg|Bieżący stan problemu. Możliwe wartości są proponowane, otwarte i zamknięte.|  
+|`ReportedOn`|DateTime|Data i godzina zgłoszenia problemu.|  
+|`Comments`|Kolekcja jednostek [komentarzy](#Comment) .|Komentarze dotyczące tego problemu.|  
+|`Attachments`|Kolekcja jednostek [załączników](api-management-template-data-model-reference.md#Attachment) .|Dowolnych załączników do problemu.|  
+|`Services`|Kolekcja jednostek [interfejsu API](#API) .|Interfejsy API subskrybowane przez użytkownika, który zgłosił problem.|  
   
-##  <a name="Filtering"></a> Filtrowanie  
+##  <a name="Filtering"></a>Identyfikatorów  
  `filtering` Jednostka ma następujące właściwości:  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`Pattern`|string|Bieżący wyszukiwany termin; lub `null` Jeśli brak wyszukiwanego terminu.|  
-|`Placeholder`|string|Tekst do wyświetlenia w polu wyszukiwania, gdy jest brak wyszukiwanego terminu określony.|  
+|`Pattern`|ciąg|Bieżący termin wyszukiwania; lub `null` Jeśli nie ma wyszukiwanego terminu.|  
+|`Placeholder`|ciąg|Tekst, który ma być wyświetlany w polu wyszukiwania, gdy nie określono terminu wyszukiwania.|  
   
-##  <a name="Header"></a> Nagłówek  
- W tej sekcji opisano `parameter` reprezentacji.  
+##  <a name="Header"></a>Nagłówki  
+ W `parameter` tej sekcji opisano reprezentację.  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|-----------------|----------|  
-|`name`|string|Nazwa parametru.|  
-|`description`|string|Opis parametru.|  
-|`value`|string|Wartość nagłówka.|  
-|`typeName`|string|Typ danych wartości nagłówka.|  
-|`options`|string|Opcje.|  
-|`required`|wartość logiczna|Czy nagłówka jest wymagana.|  
-|`readOnly`|wartość logiczna|Czy nagłówek jest tylko do odczytu.|  
+|`name`|ciąg|Nazwa parametru.|  
+|`description`|ciąg|Opis parametru.|  
+|`value`|ciąg|Wartość nagłówka.|  
+|`typeName`|ciąg|Typ danych wartości nagłówka.|  
+|`options`|ciąg|Opcje.|  
+|`required`|boolean|Określa, czy nagłówek jest wymagany.|  
+|`readOnly`|boolean|Czy nagłówek jest tylko do odczytu.|  
   
-##  <a name="HTTPRequest"></a> Żądanie HTTP  
- W tej sekcji opisano `request` reprezentacji.  
+##  <a name="HTTPRequest"></a>Żądanie HTTP  
+ W `request` tej sekcji opisano reprezentację.  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`description`|string|Opis żądania operacji.|  
-|`headers`|Tablica [nagłówka](#Header) jednostek.|Nagłówki żądania.|  
-|`parameters`|Tablica [parametru](#Parameter)|Kolekcja parametrów żądania operacji.|  
-|`representations`|Tablica [reprezentacji](#Representation)|Kolekcja reprezentacje żądania operacji.|  
+|`description`|ciąg|Opis żądania operacji.|  
+|`headers`|Tablica jednostek [nagłówka](#Header) .|Nagłówki żądania.|  
+|`parameters`|Tablica [parametrów](#Parameter)|Kolekcja parametrów żądania operacji.|  
+|`representations`|Tablica [reprezentacji](#Representation)|Kolekcja reprezentacji żądań operacji.|  
   
-##  <a name="HTTPResponse"></a> Odpowiedź HTTP  
- W tej sekcji opisano `response` reprezentacji.  
+##  <a name="HTTPResponse"></a>Odpowiedź HTTP  
+ W `response` tej sekcji opisano reprezentację.  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`statusCode`|dodatnia liczba całkowita|Kod statusu odpowiedzi operacji.|  
-|`description`|string|Opis odpowiedzi operacji.|  
-|`representations`|Tablica [reprezentacji](#Representation)|Kolekcja reprezentacje odpowiedzi operacji.|  
+|`statusCode`|dodatnia liczba całkowita|Kod stanu odpowiedzi operacji.|  
+|`description`|ciąg|Opis odpowiedzi operacji.|  
+|`representations`|Tablica [reprezentacji](#Representation)|Kolekcja reprezentacji odpowiedzi operacji.|  
   
-##  <a name="Operation"></a> Operacja  
+##  <a name="Operation"></a>Operacje  
  `operation` Jednostka ma następujące właściwości:  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`id`|string|Identyfikator zasobu. Jednoznacznie identyfikuje operacji w ciągu bieżącego wystąpienia usługi API Management. Wartość jest prawidłowym względnym adresem URL w formacie `apis/{aid}/operations/{id}` gdzie `{aid}` jest to identyfikator interfejsu API i `{id}` jest identyfikatorem operacji. Ta właściwość jest tylko do odczytu.|  
-|`name`|string|Nazwa operacji. Nie może być pusta. Maksymalna długość wynosi 100 znaków.|  
-|`description`|string|Opis operacji. Nie może być pusta. Może obejmować formatowanie tagów HTML. Maksymalna długość wynosi 1000 znaków.|  
-|`scheme`|string|W tym artykule opisano, na których protokołów można wywołać operacji w tym interfejsie API. Dozwolone wartości to `http`, `https`, i / lub `http` i `https`.|  
-|`uriTemplate`|string|Względna szablon adres URL identyfikujący zasób docelowy dla tej operacji. Może zawierać parametrów. Przykład: `customers/{cid}/orders/{oid}/?date={date}`|  
-|`host`|string|URL bramy usługi API Management udostępnia interfejs API.|  
-|`httpMethod`|string|Metoda operacji HTTP.|  
-|`request`|[Żądanie HTTP](#HTTPRequest)|Jednostki zawierające szczegóły żądania.|  
-|`responses`|Tablica [odpowiedzi HTTP](#HTTPResponse)|Szereg operacji [odpowiedź HTTP](#HTTPResponse) jednostek.|  
+|`id`|ciąg|Identyfikator zasobu. Unikatowa identyfikacja operacji w ramach bieżącego wystąpienia usługi API Management. Wartość jest prawidłowym względnym adresem URL w formacie `apis/{aid}/operations/{id}` , gdzie `{aid}` jest identyfikatorem interfejsu API i `{id}` jest identyfikatorem operacji. Ta właściwość jest tylko do odczytu.|  
+|`name`|ciąg|Nazwa operacji. Nie może być pusty. Maksymalna długość to 100 znaków.|  
+|`description`|ciąg|Opis operacji. Nie może być pusty. Może zawierać Tagi formatowania HTML. Maksymalna długość to 1000 znaków.|  
+|`scheme`|ciąg|Opisuje protokoły, w których można wywołać operacje w tym interfejsie API. Dozwolone wartości to `http`, `https`, lub `http` i `https`.|  
+|`uriTemplate`|ciąg|Szablon względnego adresu URL identyfikujący zasób docelowy dla tej operacji. Może zawierać parametry. Przykład: `customers/{cid}/orders/{oid}/?date={date}`|  
+|`host`|ciąg|Adres URL bramy API Management, który hostuje interfejs API.|  
+|`httpMethod`|ciąg|Metoda HTTP operacji.|  
+|`request`|[Żądanie HTTP](#HTTPRequest)|Jednostka zawierająca szczegóły żądania.|  
+|`responses`|Tablica [odpowiedzi HTTP](#HTTPResponse)|Tablica obiektów [odpowiedzi HTTP](#HTTPResponse) operacji.|  
   
-##  <a name="Menu"></a> Operacja menu  
+##  <a name="Menu"></a>Menu operacje  
  `operation menu` Jednostka ma następujące właściwości:  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`ApiId`|string|Identyfikator bieżącego interfejsu API.|  
-|`CurrentOperationId`|string|Identyfikator bieżącej operacji.|  
-|`Action`|string|Typ menu.|  
-|`MenuItems`|Kolekcja [element menu operacji](#MenuItem) jednostek.|Operacje dla bieżącego interfejsu API.|  
+|`ApiId`|ciąg|Identyfikator bieżącego interfejsu API.|  
+|`CurrentOperationId`|ciąg|Identyfikator bieżącej operacji.|  
+|`Action`|ciąg|Typ menu.|  
+|`MenuItems`|Kolekcja jednostek [elementów menu operacji](#MenuItem) .|Operacje dla bieżącego interfejsu API.|  
   
-##  <a name="MenuItem"></a> Operacja elementu menu.  
+##  <a name="MenuItem"></a>Element menu operacji  
  `operation menu item` Jednostka ma następujące właściwości:  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`Id`|string|Identyfikator operacji.|  
-|`Title`|string|Opis operacji.|  
-|`HttpMethod`|string|Metoda Http operacji.|  
+|`Id`|ciąg|Identyfikator operacji.|  
+|`Title`|ciąg|Opis operacji.|  
+|`HttpMethod`|ciąg|Metoda http operacji.|  
   
-##  <a name="Paging"></a> Stronicowania  
+##  <a name="Paging"></a>Stronicowania  
  `paging` Jednostka ma następujące właściwości:  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
 |`Page`|numer|Numer bieżącej strony.|  
 |`PageSize`|numer|Maksymalna liczba wyników do wyświetlenia na jednej stronie.|  
 |`TotalItemCount`|numer|Liczba elementów do wyświetlenia.|  
-|`ShowAll`|wartość logiczna|Określa, czy Pokaż wszystkie wyniki na jednej stronie.|  
+|`ShowAll`|boolean|Czy wszystkie wyniki mają być pożądane na jednej stronie.|  
 |`PageCount`|numer|Liczba stron wyników.|  
   
-##  <a name="Parameter"></a> Parametr  
- W tej sekcji opisano `parameter` reprezentacji.  
+##  <a name="Parameter"></a>Konstruktora  
+ W `parameter` tej sekcji opisano reprezentację.  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|-----------------|----------|  
-|`name`|string|Nazwa parametru.|  
-|`description`|string|Opis parametru.|  
-|`value`|string|Wartość parametru.|  
+|`name`|ciąg|Nazwa parametru.|  
+|`description`|ciąg|Opis parametru.|  
+|`value`|ciąg|Wartość parametru.|  
 |`options`|tablica ciągów|Wartości zdefiniowane dla wartości parametrów zapytania.|  
-|`required`|wartość logiczna|Określa, czy parametr jest wymagany.|  
-|`kind`|numer|Czy ten parametr jest to parametr ścieżki (1) lub parametr querystring (2).|  
-|`typeName`|string|Typ parametru.|  
+|`required`|boolean|Określa, czy parametr jest wymagany, czy nie.|  
+|`kind`|numer|Określa, czy ten parametr jest parametrem ścieżki (1), czy parametrem QueryString (2).|  
+|`typeName`|ciąg|Typ parametru.|  
   
-##  <a name="Product"></a> Produkt  
+##  <a name="Product"></a>Iloczyn  
  `product` Jednostka ma następujące właściwości:  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`Id`|string|Identyfikator zasobu. Jednoznacznie identyfikuje produkt w ciągu bieżącego wystąpienia usługi API Management. Wartość jest prawidłowym względnym adresem URL w formacie `products/{pid}` gdzie `{pid}` to identyfikator produktu. Ta właściwość jest tylko do odczytu.|  
-|`Title`|string|Nazwa produktu. Nie może być pusta. Maksymalna długość wynosi 100 znaków.|  
-|`Description`|string|Opis produktu. Nie może być pusta. Może obejmować formatowanie tagów HTML. Maksymalna długość wynosi 1000 znaków.|  
-|`Terms`|string|Produkt z warunkami użytkowania. Deweloperzy próbuje subskrybować produkt będą prezentowane i trzeba je zaakceptować przed ukończeniem procesu subskrypcji.|  
-|`ProductState`|numer|Określa, czy produkt jest publikowany czy nie. Opublikowane produkty są wykrywane przez deweloperów w portalu dla deweloperów. Opublikowane przez inne niż produkty są widoczne tylko dla administratorów.<br /><br /> Dopuszczalne wartości dla stanu produktu są:<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
-|`AllowMultipleSubscriptions`|wartość logiczna|Określa, czy użytkownik może mieć wiele subskrypcji tego produktu, w tym samym czasie.|  
-|`MultipleSubscriptionsCount`|numer|Maksymalna liczba subskrypcji dla tego produktu użytkownik może mieć w tym samym czasie.|  
+|`Id`|ciąg|Identyfikator zasobu. Unikatowy identyfikator produktu w ramach bieżącego wystąpienia usługi API Management. Wartość jest prawidłowym względnym adresem URL w formacie `products/{pid}` , gdzie `{pid}` jest identyfikatorem produktu. Ta właściwość jest tylko do odczytu.|  
+|`Title`|ciąg|Nazwa produktu. Nie może być pusty. Maksymalna długość to 100 znaków.|  
+|`Description`|ciąg|Opis produktu. Nie może być pusty. Może zawierać Tagi formatowania HTML. Maksymalna długość to 1000 znaków.|  
+|`Terms`|ciąg|Warunki użytkowania produktu. Deweloperzy próbujący subskrybować produkt będą przedstawiani i zobowiązani do zaakceptowania tych warunków przed ukończeniem procesu subskrypcji.|  
+|`ProductState`|numer|Określa, czy produkt jest publikowany, czy nie. Opublikowane produkty są odnajdywane przez deweloperów w portalu dla deweloperów. Nieopublikowane produkty są widoczne tylko dla administratorów.<br /><br /> Dopuszczalne wartości dla stanu produktu to:<br /><br /> - `0 - Not Published`<br /><br /> - `1 - Published`<br /><br /> - `2 - Deleted`|  
+|`AllowMultipleSubscriptions`|boolean|Określa, czy użytkownik może jednocześnie korzystać z wielu subskrypcji tego produktu.|  
+|`MultipleSubscriptionsCount`|numer|Maksymalna liczba subskrypcji tego produktu, które może mieć użytkownik, w tym samym czasie.|  
   
-##  <a name="Provider"></a> Dostawcy  
+##  <a name="Provider"></a>Dostawcy  
  `provider` Jednostka ma następujące właściwości:  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`Properties`|Słownik ciągu|Właściwości dla tego dostawcy uwierzytelniania.|  
-|`AuthenticationType`|string|Typ dostawcy. (Usługa azure Active Directory, logowania do usługi Facebook, konta Google, Microsoft Account, Twitter).|  
-|`Caption`|string|Nazwa wyświetlana dostawcy.|  
+|`Properties`|słownik ciągów|Właściwości tego dostawcy uwierzytelniania.|  
+|`AuthenticationType`|ciąg|Typ dostawcy. (Azure Active Directory, logowanie do serwisu Facebook, konto Google, konto Microsoft, Twitter).|  
+|`Caption`|ciąg|Nazwa wyświetlana dostawcy.|  
   
-##  <a name="Representation"></a> Reprezentacja  
- W tej sekcji opisano `representation`.  
+##  <a name="Representation"></a>Reprezentowana  
+ W tej sekcji opisano `representation`a.  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`contentType`|string|Na przykład określa zarejestrowane lub niestandardowy typ zawartości to reprezentacja `application/xml`.|  
-|`sample`|string|Przykład reprezentacji.|  
+|`contentType`|ciąg|Określa zarejestrowany lub niestandardowy typ zawartości dla tej reprezentacji, na przykład `application/xml`.|  
+|`sample`|ciąg|Przykład reprezentacji.|  
   
-##  <a name="Subscription"></a> Subskrypcja  
+##  <a name="Subscription"></a>Ramach  
  `subscription` Jednostka ma następujące właściwości:  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`Id`|string|Identyfikator zasobu. Jednoznacznie identyfikuje subskrypcji w ramach bieżącego wystąpienia usługi API Management. Wartość jest prawidłowym względnym adresem URL w formacie `subscriptions/{sid}` gdzie `{sid}` jest identyfikatorem subskrypcji. Ta właściwość jest tylko do odczytu.|  
-|`ProductId`|string|Identyfikator zasobu produktu subskrybowanego produktu. Wartość jest prawidłowym względnym adresem URL w formacie `products/{pid}` gdzie `{pid}` to identyfikator produktu.|  
-|`ProductTitle`|string|Nazwa produktu. Nie może być pusta. Maksymalna długość wynosi 100 znaków.|  
-|`ProductDescription`|string|Opis produktu. Nie może być pusta. Może obejmować formatowanie tagów HTML. Maksymalna długość wynosi 1000 znaków.|  
-|`ProductDetailsUrl`|string|Względny adres URL do szczegółów produktu.|  
-|`state`|string|Stan subskrypcji. Możliwe stany to:<br /><br /> - `0 - suspended` — subskrypcji jest zablokowane i subskrybenta nie można wywołać dowolnych interfejsów API produktu.<br /><br /> - `1 - active` — Subskrypcja jest aktywna.<br /><br /> - `2 - expired` — Subskrypcja osiągnęła daty wygaśnięcia i zostało zdezaktywowane.<br /><br /> - `3 - submitted` — Żądanie subskrypcji przez deweloperów, ale ma nie została jeszcze zatwierdzeniu lub odrzuceniu.<br /><br /> - `4 - rejected` — Żądanie subskrypcji zostało odrzucone przez administratora.<br /><br /> - `5 - cancelled` — Subskrypcja została anulowana przez dewelopera lub administratora.|  
-|`DisplayName`|string|Nazwa wyświetlana subskrypcji.|  
-|`CreatedDate`|Data i godzina|Data subskrypcja została utworzona, w formacie ISO 8601: `2014-06-24T16:25:00Z`.|  
-|`CanBeCancelled`|wartość logiczna|Czy można anulować subskrypcji przez bieżącego użytkownika.|  
-|`IsAwaitingApproval`|wartość logiczna|Czy subskrypcji oczekuje na zatwierdzenie.|  
-|`StartDate`|Data i godzina|Data rozpoczęcia subskrypcji, w formacie ISO 8601: `2014-06-24T16:25:00Z`.|  
-|`ExpirationDate`|Data i godzina|Data wygaśnięcia subskrypcji, w formacie ISO 8601: `2014-06-24T16:25:00Z`.|  
-|`NotificationDate`|Data i godzina|Data powiadomień dla subskrypcji, w formacie ISO 8601: `2014-06-24T16:25:00Z`.|  
-|`primaryKey`|string|Klucz podstawowy subskrypcji. Maksymalna długość wynosi 256 znaków.|  
-|`secondaryKey`|string|Klucz pomocniczy subskrypcji. Maksymalna długość wynosi 256 znaków.|  
-|`CanBeRenewed`|wartość logiczna|Czy subskrypcję można odnowić przez bieżącego użytkownika.|  
-|`HasExpired`|wartość logiczna|Czy subskrypcja wygasła.|  
-|`IsRejected`|wartość logiczna|Czy żądanie subskrypcji zostało odrzucone.|  
-|`CancelUrl`|string|Względny adres Url do anulowania subskrypcji.|  
-|`RenewUrl`|string|Względny adres Url do odnowienia subskrypcji.|  
+|`Id`|ciąg|Identyfikator zasobu. Jednoznacznie identyfikuje subskrypcję w ramach bieżącego wystąpienia usługi API Management. Wartość jest prawidłowym względnym adresem URL w formacie `subscriptions/{sid}` gdzie `{sid}` jest Identyfikator subskrypcji. Ta właściwość jest tylko do odczytu.|  
+|`ProductId`|ciąg|Identyfikator zasobu produktu subskrybowanego produktu. Wartość jest prawidłowym względnym adresem URL w formacie `products/{pid}` , gdzie `{pid}` jest identyfikatorem produktu.|  
+|`ProductTitle`|ciąg|Nazwa produktu. Nie może być pusty. Maksymalna długość to 100 znaków.|  
+|`ProductDescription`|ciąg|Opis produktu. Nie może być pusty. Może zawierać Tagi formatowania HTML. Maksymalna długość to 1000 znaków.|  
+|`ProductDetailsUrl`|ciąg|Względny adres URL do szczegółowych informacji o produkcie.|  
+|`state`|ciąg|Stan subskrypcji. Możliwe stany to:<br /><br /> - `0 - suspended`— subskrypcja została zablokowana i subskrybent nie może wywołać żadnych interfejsów API produktu.<br /><br /> - `1 - active`— subskrypcja jest aktywna.<br /><br /> - `2 - expired`— subskrypcja osiągnęła swoją datę wygaśnięcia i została zdezaktywowana.<br /><br /> - `3 - submitted`— żądanie subskrypcji zostało wykonane przez dewelopera, ale jeszcze nie zostało zatwierdzone lub odrzucone.<br /><br /> - `4 - rejected`— żądanie subskrypcji zostało odrzucone przez administratora.<br /><br /> - `5 - cancelled`— subskrypcja została anulowana przez dewelopera lub administratora.|  
+|`DisplayName`|ciąg|Nazwa wyświetlana subskrypcji.|  
+|`CreatedDate`|Data i godzina|Data utworzenia subskrypcji w formacie ISO 8601: `2014-06-24T16:25:00Z`.|  
+|`CanBeCancelled`|boolean|Czy subskrypcja może zostać anulowana przez bieżącego użytkownika.|  
+|`IsAwaitingApproval`|boolean|Czy subskrypcja oczekuje na zatwierdzenie.|  
+|`StartDate`|Data i godzina|Data rozpoczęcia subskrypcji w formacie ISO 8601: `2014-06-24T16:25:00Z`.|  
+|`ExpirationDate`|Data i godzina|Data wygaśnięcia subskrypcji w formacie ISO 8601: `2014-06-24T16:25:00Z`.|  
+|`NotificationDate`|Data i godzina|Data powiadomienia dla subskrypcji w formacie ISO 8601: `2014-06-24T16:25:00Z`.|  
+|`primaryKey`|ciąg|Klucz subskrypcji podstawowej. Maksymalna długość to 256 znaków.|  
+|`secondaryKey`|ciąg|Pomocniczy klucz subskrypcji. Maksymalna długość to 256 znaków.|  
+|`CanBeRenewed`|boolean|Czy subskrypcja może zostać odnowiona przez bieżącego użytkownika.|  
+|`HasExpired`|boolean|Czy subskrypcja wygasła.|  
+|`IsRejected`|boolean|Czy żądanie subskrypcji zostało odrzucone.|  
+|`CancelUrl`|ciąg|Względny adres URL, aby anulować subskrypcję.|  
+|`RenewUrl`|ciąg|Względny adres URL do odnowienia subskrypcji.|  
   
-##  <a name="SubscriptionSummary"></a> Podsumowanie subskrypcji  
+##  <a name="SubscriptionSummary"></a>Podsumowanie subskrypcji  
  `subscription summary` Jednostka ma następujące właściwości:  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`Id`|string|Identyfikator zasobu. Jednoznacznie identyfikuje subskrypcji w ramach bieżącego wystąpienia usługi API Management. Wartość jest prawidłowym względnym adresem URL w formacie `subscriptions/{sid}` gdzie `{sid}` jest identyfikatorem subskrypcji. Ta właściwość jest tylko do odczytu.|  
-|`DisplayName`|string|Nazwa wyświetlana subskrypcji|  
+|`Id`|ciąg|Identyfikator zasobu. Jednoznacznie identyfikuje subskrypcję w ramach bieżącego wystąpienia usługi API Management. Wartość jest prawidłowym względnym adresem URL w formacie `subscriptions/{sid}` gdzie `{sid}` jest Identyfikator subskrypcji. Ta właściwość jest tylko do odczytu.|  
+|`DisplayName`|ciąg|Nazwa wyświetlana subskrypcji|  
   
-##  <a name="UserAccountInfo"></a> Informacje o koncie użytkownika  
+##  <a name="UserAccountInfo"></a>Informacje o koncie użytkownika  
  `user account info` Jednostka ma następujące właściwości:  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`FirstName`|string|Imię. Nie może być pusta. Maksymalna długość wynosi 100 znaków.|  
-|`LastName`|string|Nazwisko. Nie może być pusta. Maksymalna długość wynosi 100 znaków.|  
-|`Email`|string|Adres e-mail. Nie może być pusta i musi być unikatowa w obrębie wystąpienia usługi. Maksymalna długość to 254 znaków.|  
-|`Password`|string|Hasło konta użytkownika.|  
-|`NameIdentifier`|string|Identyfikator konta, taki sam jak adres e-mail użytkownika.|  
-|`ProviderName`|string|Nazwa dostawcy uwierzytelniania.|  
-|`IsBasicAccount`|wartość logiczna|Wartość true, jeśli to konto został zarejestrowany za pomocą poczty e-mail i hasło; wartość false, jeśli konto zostało zarejestrowane przy użyciu dostawcy.|  
+|`FirstName`|ciąg|Imię. Nie może być pusty. Maksymalna długość to 100 znaków.|  
+|`LastName`|ciąg|Nazwisko. Nie może być pusty. Maksymalna długość to 100 znaków.|  
+|`Email`|ciąg|Adres e-mail. Nie może być pusta i musi być unikatowa w obrębie wystąpienia usługi. Maksymalna długość to 254 znaków.|  
+|`Password`|ciąg|Hasło konta użytkownika.|  
+|`NameIdentifier`|ciąg|Identyfikator konta, taki sam jak adres e-mail użytkownika.|  
+|`ProviderName`|ciąg|Nazwa dostawcy uwierzytelniania.|  
+|`IsBasicAccount`|boolean|Prawda, jeśli to konto zostało zarejestrowane przy użyciu poczty e-mail i hasła; wartość false, jeśli konto zostało zarejestrowane przy użyciu dostawcy.|  
   
-##  <a name="UseSignIn"></a> Logowanie użytkownika  
+##  <a name="UseSignIn"></a>Logowanie użytkownika  
  `user sign in` Jednostka ma następujące właściwości:  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`Email`|string|Adres e-mail. Nie może być pusta i musi być unikatowa w obrębie wystąpienia usługi. Maksymalna długość to 254 znaków.|  
-|`Password`|string|Hasło konta użytkownika.|  
-|`ReturnUrl`|string|Adres URL strony, gdy użytkownik kliknął element Zaloguj się.|  
-|`RememberMe`|wartość logiczna|Określa, czy można zapisać informacji o bieżącym użytkowniku.|  
-|`RegistrationEnabled`|wartość logiczna|Włączenie rejestracji.|  
-|`DelegationEnabled`|wartość logiczna|Czy delegowanego logowania jest włączona.|  
-|`DelegationUrl`|string|Delegowane znak w adresie url, jeśli włączona.|  
-|`SsoSignUpUrl`|string|Pojedynczy adres URL logowania dla użytkownika, jeśli jest obecny.|  
-|`AuxServiceUrl`|string|Jeśli bieżący użytkownik jest administratorem, to łącze do wystąpienia usługi w witrynie Azure portal.|  
-|`Providers`|Kolekcja [dostawcy](#Provider) jednostek|Dostawcy uwierzytelniania dla tego użytkownika.|  
-|`UserRegistrationTerms`|string|Warunki, które użytkownik musi zaakceptować przed zalogowaniem się.|  
-|`UserRegistrationTermsEnabled`|wartość logiczna|Czy warunki są włączone.|  
+|`Email`|ciąg|Adres e-mail. Nie może być pusta i musi być unikatowa w obrębie wystąpienia usługi. Maksymalna długość to 254 znaków.|  
+|`Password`|ciąg|Hasło konta użytkownika.|  
+|`ReturnUrl`|ciąg|Adres URL strony, na której użytkownik kliknął przycisk Zaloguj.|  
+|`RememberMe`|boolean|Czy zapisać informacje o bieżącym użytkowniku.|  
+|`RegistrationEnabled`|boolean|Czy rejestracja jest włączona.|  
+|`DelegationEnabled`|boolean|Czy delegowane logowanie jest włączone.|  
+|`DelegationUrl`|ciąg|Delegowany adres URL logowania, jeśli jest włączony.|  
+|`SsoSignUpUrl`|ciąg|Adres URL logowania jednokrotnego dla użytkownika, jeśli jest obecny.|  
+|`AuxServiceUrl`|ciąg|Jeśli bieżący użytkownik jest administratorem, jest to link do wystąpienia usługi w Azure Portal.|  
+|`Providers`|Kolekcja jednostek [dostawcy](#Provider)|Dostawcy uwierzytelniania dla tego użytkownika.|  
+|`UserRegistrationTerms`|ciąg|Warunki, które użytkownik musi wyrazić zgodę przed zalogowaniem się.|  
+|`UserRegistrationTermsEnabled`|boolean|Czy warunki są włączone.|  
   
-##  <a name="UserSignUp"></a> Rejestracja użytkownika  
+##  <a name="UserSignUp"></a>Rejestracja użytkownika  
  `user sign up` Jednostka ma następujące właściwości:  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`PasswordConfirm`|wartość logiczna|Wartość używana przez [rejestracji](api-management-page-controls.md#sign-up)kontroli rejestracji.|  
-|`Password`|string|Hasło konta użytkownika.|  
-|`PasswordVerdictLevel`|numer|Wartość używana przez [rejestracji](api-management-page-controls.md#sign-up)kontroli rejestracji.|  
-|`UserRegistrationTerms`|string|Warunki, które użytkownik musi zaakceptować przed zalogowaniem się.|  
-|`UserRegistrationTermsOptions`|numer|Wartość używana przez [rejestracji](api-management-page-controls.md#sign-up)kontroli rejestracji.|  
-|`ConsentAccepted`|wartość logiczna|Wartość używana przez [rejestracji](api-management-page-controls.md#sign-up)kontroli rejestracji.|  
-|`Email`|string|Adres e-mail. Nie może być pusta i musi być unikatowa w obrębie wystąpienia usługi. Maksymalna długość to 254 znaków.|  
-|`FirstName`|string|Imię. Nie może być pusta. Maksymalna długość wynosi 100 znaków.|  
-|`LastName`|string|Nazwisko. Nie może być pusta. Maksymalna długość wynosi 100 znaków.|  
-|`UserData`|string|Wartość używana przez [rejestracji](api-management-page-controls.md#sign-up) kontroli.|  
-|`NameIdentifier`|string|Wartość używana przez [rejestracji](api-management-page-controls.md#sign-up)kontroli rejestracji.|  
-|`ProviderName`|string|Nazwa dostawcy uwierzytelniania.|
+|`PasswordConfirm`|boolean|Wartość używana przez formant rejestracji w celu zarejestrowania [się](api-management-page-controls.md#sign-up).|  
+|`Password`|ciąg|Hasło konta użytkownika.|  
+|`PasswordVerdictLevel`|numer|Wartość używana przez formant rejestracji w celu zarejestrowania [się](api-management-page-controls.md#sign-up).|  
+|`UserRegistrationTerms`|ciąg|Warunki, które użytkownik musi wyrazić zgodę przed zalogowaniem się.|  
+|`UserRegistrationTermsOptions`|numer|Wartość używana przez formant rejestracji w celu zarejestrowania [się](api-management-page-controls.md#sign-up).|  
+|`ConsentAccepted`|boolean|Wartość używana przez formant rejestracji w celu zarejestrowania [się](api-management-page-controls.md#sign-up).|  
+|`Email`|ciąg|Adres e-mail. Nie może być pusta i musi być unikatowa w obrębie wystąpienia usługi. Maksymalna długość to 254 znaków.|  
+|`FirstName`|ciąg|Imię. Nie może być pusty. Maksymalna długość to 100 znaków.|  
+|`LastName`|ciąg|Nazwisko. Nie może być pusty. Maksymalna długość to 100 znaków.|  
+|`UserData`|ciąg|Wartość używana przez formant [rejestracji](api-management-page-controls.md#sign-up) .|  
+|`NameIdentifier`|ciąg|Wartość używana przez formant rejestracji w celu zarejestrowania [się](api-management-page-controls.md#sign-up).|  
+|`ProviderName`|ciąg|Nazwa dostawcy uwierzytelniania.|
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [Dostosowywanie portalu dla deweloperów usługi API Management przy użyciu szablonów](api-management-developer-portal-templates.md).
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [How to dostosowywanie portalu deweloperów API Management przy użyciu szablonów](api-management-developer-portal-templates.md).
