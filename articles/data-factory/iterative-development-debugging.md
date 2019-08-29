@@ -1,6 +1,6 @@
 ---
-title: Debugowanie w usłudze Azure Data Factory i programowanie iteracyjne | Dokumentacja firmy Microsoft
-description: Informacje o sposobie tworzenia i debugowania potoków usługi Data Factory iteracyjne w witrynie Azure portal.
+title: Iteracyjne programowanie i debugowanie w Azure Data Factory | Microsoft Docs
+description: Informacje o sposobach tworzenia i debugowania potoków Data Factory w Azure Portal.
 ms.date: 09/26/2018
 ms.topic: conceptual
 ms.service: data-factory
@@ -8,67 +8,67 @@ services: data-factory
 documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: a8028fdde93d06f7b25bf9bd8b4ed5a560a35f83
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: afc51735fcbd8f4131b2a4066a0fc4adbb8f1a41
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60686311"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142333"
 ---
-# <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteracyjne projektowanie i debugowania przy użyciu usługi Azure Data Factory
+# <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteracyjne programowanie i debugowanie za pomocą Azure Data Factory
 
-Usługa Azure Data Factory umożliwia iteracyjne tworzenia i debugowania potoków usługi Data Factory.
+Azure Data Factory umożliwia iteracyjne opracowywanie i debugowanie potoków Data Factory.
 
-Wprowadzenie minutę 8 i pokaz działania tej funkcji Obejrzyj poniższy film wideo:
+Aby uzyskać 8-minutowy wprowadzenie i demonstrację tej funkcji, Obejrzyj następujące wideo:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Iterative-development-and-debugging-with-Azure-Data-Factory/player]
 
-## <a name="iterative-debugging-features"></a>Iteracyjne funkcji debugowania
-Tworzenie potoków i testowanie przebiegów przy użyciu **debugowania** możliwości na kanwie potoku, bez konieczności pisania nawet jednego wiersza kodu.
+## <a name="iterative-debugging-features"></a>Funkcje debugowania iteracyjnego
+Tworzenie potoków i uruchamianie testów przy użyciu możliwości **debugowania** na kanwie potoku bez pisania pojedynczego wiersza kodu.
 
-![Debugowanie funkcji na kanwie potoku](media/iterative-development-debugging/iterative-development-image1.png)
+![Możliwość debugowania na kanwie potoku](media/iterative-development-debugging/iterative-development-image1.png)
 
-Wyświetl wyniki testu, który jest uruchamiany w **dane wyjściowe** okna na kanwie potoku.
+Wyniki przebiegów testów są wyświetlane w oknie **dane wyjściowe** kanwy potoku.
 
-![Okno danych wyjściowych na kanwie potoku](media/iterative-development-debugging/iterative-development-image2.png)
+![Okno dane wyjściowe kanwy potoku](media/iterative-development-debugging/iterative-development-image2.png)
 
-Po pomyślnym przebiegu testowego, Dodaj więcej działań do potoku i Kontynuuj debugowanie w sposób iteracyjny. Możesz również **anulować** testu, gdy jest w toku.
+Po pomyślnym uruchomieniu testu Dodaj więcej działań do potoku i Kontynuuj debugowanie w sposób iteracyjny. Możesz również **anulować** przebieg testu, gdy jest w toku.
 
-![Anuluj przebieg testu](media/iterative-development-debugging/iterative-development-image3.png)
+![Anulowanie przebiegu testowego](media/iterative-development-debugging/iterative-development-image3.png)
 
-Podczas przebiegów testów, nie trzeba opublikować zmiany w usłudze data factory, przed wybraniem **debugowania**. Ta funkcja jest przydatne w scenariuszach, w którym chcesz upewnić się, czy zmiany działają zgodnie z oczekiwaniami, przed uaktualnieniem przepływ fabryki danych.
+Po uruchomieniu testów nie trzeba publikować zmian w fabryce danych przed wybraniem opcji **Debuguj**. Ta funkcja jest przydatna w scenariuszach, w których należy upewnić się, że zmiany działają zgodnie z oczekiwaniami przed aktualizacją przepływu pracy fabryki danych.
 
 > [!IMPORTANT]
-> Wybieranie **debugowania** faktycznie uruchamia potok. Tak na przykład jeśli potok zawiera działanie kopiowania, przebieg testu kopiuje dane ze źródła do miejsca docelowego. Dlatego zaleca się używać foldery testowego w swoje działania kopiowania i innych działań, podczas debugowania. Po już debugowany potoku, przełącz się do rzeczywiste foldery, w których chcesz użyć w normalnych operacji.
+> Wybranie pozycji **Debuguj** powoduje rzeczywiste uruchomienie potoku. Tak więc, na przykład, jeśli potok zawiera działanie kopiowania, przebieg testu kopiuje dane ze źródła do miejsca docelowego. W związku z tym zalecamy korzystanie z folderów testowych w działaniach kopiowania i innych działaniach podczas debugowania. Po debugowaniu potoku przejdź do folderów rzeczywistych, które mają być używane w normalnych operacjach.
 
-## <a name="visualizing-debug-runs"></a>Uruchamia wizualizowania debugowania
+## <a name="visualizing-debug-runs"></a>Wizualizacja przebiegów debugowania
 
-Możesz wizualizować wszystkie przebiegi debugowania, które są w toku dla fabryki danych w jednym miejscu. Wybierz **uruchamia widoku debugowania** w prawym górnym rogu strony. Ta funkcja jest przydatne w scenariuszach, gdzie masz wzorca potoki uruchamiania debugowania uruchomień potoków podrzędnych, i chcesz, aby pojedynczy widok, aby wyświetlić uruchomienia aktywnego debugowania.
+Można wizualizować wszystkie przebiegi debugowania, które są w toku dla fabryki danych w jednym miejscu. Wybierz pozycję **Wyświetl debugowanie przebiega** w prawym górnym rogu strony. Ta funkcja jest przydatna w scenariuszach, w których potoki główne uruchamiają uruchomienia debugowania dla potoków podrzędnych, i chcesz, aby jeden widok widział wszystkie aktywne uruchomienia debugowania.
 
-![Wybierz ikonę przebiegi debugowania aktywnego widoku](media/iterative-development-debugging/view-debug-runs-image1.png)
+![Wybierz ikonę Wyświetl aktywne uruchomienia debugowania](media/iterative-development-debugging/view-debug-runs-image1.png)
 
-![Lista przykładów przebiegów aktywnego debugowania](media/iterative-development-debugging/view-debug-runs-image2.png)
+![Przykładowa lista aktywnych przebiegów debugowania](media/iterative-development-debugging/view-debug-runs-image2.png)
 
-## <a name="monitoring-debug-runs"></a>Monitorowanie debugowanie jest uruchamiane
+## <a name="monitoring-debug-runs"></a>Monitorowanie przebiegów debugowania
 
-Inicjowane z przebiegów testowych **debugowania** możliwości nie są dostępne na liście **Monitor** kartę. Możesz tylko Zobacz uruchamia wyzwalane za pomocą **Wyzwól teraz**, **harmonogram**, lub **okno wirowania** Wyzwalacze w **Monitor** kartę. Możesz zobaczyć ostatnie testu inicjowane za pomocą **debugowania** możliwości są dostępne w **dane wyjściowe** okna na kanwie potoku.
+Przebiegi testowe zainicjowane z możliwością **debugowania** nie są dostępne na liście na karcie **monitor** . Tylko uruchomienia wyzwalane przez wyzwalacze okna **Wyzwalanie teraz**, **harmonogram**lub **wirowania** można zobaczyć na karcie **monitorowanie** . Można zobaczyć ostatni przebieg testu zainicjowany z możliwością **debugowania** w oknie **danych wyjściowych** kanwy potoku.
 
-## <a name="setting-breakpoints-for-debugging"></a>Ustawianie punktów przerwania do debugowania
+## <a name="setting-breakpoints-for-debugging"></a>Ustawianie punktów przerwania na potrzeby debugowania
 
-Fabryka danych umożliwia również debugowanie aż danego działania na kanwę potoku. Po prostu umieść punkt przerwania w działaniu, do której chcesz przetestować, a następnie wybierz pozycję **debugowania**. Data Factory zapewnia uruchamia test tylko do punktu przerwania działania na kanwę potoku. To *debugowania do czasu* funkcja jest przydatna, gdy nie chcesz przetestować cały potok, ale tylko podzbiór działań w potoku.
+Data Factory umożliwia również debugowanie do momentu osiągnięcia określonego działania na kanwie potoku. Po prostu umieść punkt przerwania dla działania, do którego chcesz przeprowadzić test, a następnie wybierz pozycję **Debuguj**. Data Factory zapewnia, że test będzie wykonywany tylko do działania punktu przerwania na kanwie potoku. Ten *Debuguj do momentu* , gdy nie chcesz testować całego potoku, ale tylko podzbiór działań w potoku.
 
 ![Punkty przerwania na kanwie potoku](media/iterative-development-debugging/iterative-development-image4.png)
 
-Aby ustawić punkt przerwania, wybierz element na kanwę potoku. A *debugowania do czasu* opcja jest wyświetlana jako pusta czerwone kółko w prawym górnym rogu elementu.
+Aby ustawić punkt przerwania, wybierz element na kanwie potoku. Opcja *Debuguj do momentu* pojawi się jako puste czerwone koło w prawym górnym rogu elementu.
 
-![Przed rozpoczęciem punkt przerwania na wybrany element](media/iterative-development-debugging/iterative-development-image5.png)
+![Przed ustawieniem punktu przerwania dla wybranego elementu](media/iterative-development-debugging/iterative-development-image5.png)
 
-Po wybraniu *debugowania do czasu* opcji zmienia się na wypełnionego okręgu czerwony, aby wskazać punkt przerwania jest włączony.
+Po wybraniu opcji *Debuguj* do momentu zostanie ona zmieniona na wypełniony czerwony okrąg, aby wskazać, że punkt przerwania jest włączony.
 
 ![Po ustawieniu punktu przerwania dla wybranego elementu](media/iterative-development-debugging/iterative-development-image6.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-[Ciągła integracja i wdrażanie w usłudze Azure Data Factory](continuous-integration-deployment.md)
+## <a name="next-steps"></a>Następne kroki
+[Ciągła integracja i wdrażanie w Azure Data Factory](continuous-integration-deployment.md)

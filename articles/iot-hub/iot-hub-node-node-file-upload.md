@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.openlocfilehash: da97dde43a6ef13db204f1d3be1229a0dfc30af5
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 8747111921df494b8d5618dc8d6ece99fa821e47
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668035"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147629"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-nodejs"></a>Przekazywanie plików z urządzenia do chmury przy użyciu IoT Hub (Node. js)
 
@@ -44,9 +44,9 @@ Na końcu tego samouczka uruchomisz dwie aplikacje konsolowe środowiska Node. j
 > [!NOTE]
 > IoT Hub obsługuje wiele platform i języków urządzeń (w tym C, .NET, JavaScript, Python i Java) za pomocą zestawów SDK urządzeń usługi Azure IoT. Zapoznaj się z artykułem [Azure IoT Developer Center], aby uzyskać instrukcje krok po kroku dotyczące sposobu łączenia urządzenia z usługą Azure IoT Hub.
 
-Do wykonania kroków tego samouczka niezbędne są następujące elementy:
+## <a name="prerequisites"></a>Wymagania wstępne
 
-* Node. js w wersji 10.0. x lub nowszej.
+* Node. js w wersji 10.0. x lub nowszej. [Przygotuj środowisko programistyczne](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) , w którym opisano sposób instalowania środowiska Node. js na potrzeby tego samouczka w systemie Windows lub Linux.
 
 * Aktywne konto platformy Azure. (Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut).
 

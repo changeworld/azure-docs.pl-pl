@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57ec69f4bc2e73bfb390a6b23b1da627d77f9b5e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 8cfefe02b8c9325a2d501289b10b09bc153b0593
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874248"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135753"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kody błędów uwierzytelniania i autoryzacji
 
@@ -194,6 +194,7 @@ Szukasz informacji o kodach błędów AADSTS, które są zwracane z usługi toke
 | AADSTS90019 | MissingTenantRealm — usługa Azure AD nie mogła określić identyfikatora dzierżawy z żądania. |
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat — format nazwy głównej jest nieprawidłowy lub nie jest zgodny z oczekiwanym `name[/host][@realm]` formatem. Nazwa główna jest wymagana, Host i obszar są opcjonalne i mogą być ustawione na wartość null. |
 | AADSTS90023 | InvalidRequest — żądanie usługi uwierzytelniania jest nieprawidłowe. |
+| AADSTS9002313 | InvalidRequest — żądanie jest źle sformułowane lub nieprawidłowe. — Ten problem występuje, ponieważ wystąpił problem z żądaniem do określonego punktu końcowego. Sugestia tego problemu polega na uzyskaniu programu Fiddler śledzenia błędu i przejrzeniu, czy żądanie jest właściwie sformatowane. |
 | AADSTS90024 | RequestBudgetExceededError — Wystąpił błąd przejściowy. Spróbuj ponownie. |
 | AADSTS90033 | MsodsServiceUnavailable — usługa Katalog online firmy Microsoft (MSODS) nie jest dostępna. |
 | AADSTS90036 | MsodsServiceUnretryableFailure — wystąpił nieoczekiwany błąd, którego nie można ponownie ponowić z usługi WCF hostowanej przez MSODS. [Otwórz bilet pomocy technicznej](../fundamentals/active-directory-troubleshooting-support-howto.md), aby uzyskać więcej informacji na temat błędu. |

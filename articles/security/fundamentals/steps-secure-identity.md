@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martinco
-ms.openlocfilehash: 80c1ffd27b0668f19fd87e7eda62e578c861ba64
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fb17d1b95d74a67f220651cf198f367bdd31f19f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934614"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129314"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pięć kroków do zabezpieczania infrastruktury tożsamości
 
@@ -42,7 +42,7 @@ Zalecenia zawarte w tym dokumencie są wyrównane z [wynikiem bezpiecznego tożs
 
 Przed rozpoczęciem korzystania z tej listy kontrolnej upewnij się, że nie nastąpiło naruszenie zabezpieczeń podczas odczytywania tej listy kontrolnej. Najpierw musisz chronić Twoje konta uprzywilejowane.
 
-Osoby atakujące, które uzyskują kontrolę nad kontami uprzywilejowanymi, mogą mieć ogromne szkody, dlatego należy zapewnić ochronę tych kont jako pierwsze. Włącz i wymagaj uwierzytelniania wieloskładnikowego (MFA) w [usłudze Azure](../../active-directory/authentication/multi-factor-authentication.md) dla wszystkich administratorów w organizacji przy użyciu [ochrony linii bazowej](../../active-directory/conditional-access/baseline-protection.md). Jeśli nie zaimplementowano usługi MFA, zrób to teraz! Jest to ważne.
+Osoby atakujące, które uzyskują kontrolę nad kontami uprzywilejowanymi, mogą mieć ogromne szkody, dlatego należy zapewnić ochronę tych kont jako pierwsze. Włącz i wymagaj [usługi Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) dla wszystkich administratorów w organizacji przy użyciu [ochrony linii bazowej](../../active-directory/conditional-access/baseline-protection.md). Jeśli nie zaimplementowano usługi MFA, zrób to teraz! Jest to ważne.
 
 Czy wszystko jest ustawione? Zacznijmy od listy kontrolnej.
 
@@ -53,7 +53,7 @@ Większość naruszeń zabezpieczeń przedsiębiorstwa pochodzi z konta złamane
 
 ### <a name="make-sure-your-organization-use-strong-authentication"></a>Upewnij się, że Twoja organizacja używa silnego uwierzytelniania
 
-Uwzględniając częstotliwość, w której hasła są naliczane, phishing, skradziony i złośliwe oprogramowanie, ma krytyczne znaczenie dla hasła przy użyciu jakiejś formy silnego poświadczenia — Dowiedz się więcej na temat [usługi Azure](../../active-directory/authentication/multi-factor-authentication.md)MFA.
+Uwzględniając częstotliwość, w której hasła są zgadywanie, phishing, skradziony i złośliwe oprogramowanie, ma krytyczne znaczenie dla hasła przy użyciu jakiejś formy silnego poświadczenia — Dowiedz się więcej o [usłudze Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md).
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>Zacznij zakazywanie często zaatakowane hasła i Wyłącz tradycyjną złożoność oraz reguły wygasania.
 
@@ -130,7 +130,7 @@ Azure Active Directory ma wiele funkcji, które automatycznie przechwytuje ataki
 
 ### <a name="implement-user-risk-security-policy-using-azure-ad-identity-protection"></a>Implementowanie zasad zabezpieczeń dotyczących ryzyka użytkownika przy użyciu Azure AD Identity Protection
 
-Ryzyko użytkownika wskazuje prawdopodobieństwo naruszenia bezpieczeństwa tożsamości użytkownika i jest obliczana na podstawie [zdarzeń ryzyka użytkownika](../../active-directory/identity-protection/overview.md) , które są skojarzone z tożsamością użytkownika. Zasady ryzyka dla użytkowników to zasady dostępu warunkowego, które szacują poziom ryzyka dla określonego użytkownika lub grupy. W oparciu o niski, średni i wysoki poziom ryzyka zasady można skonfigurować w taki sposób, aby blokować dostęp lub wymagały bezpiecznej zmiany hasła przy użyciu usługi uwierzytelniania wieloskładnikowego. Zalecenie firmy Microsoft to wymaganie bezpiecznej zmiany hasła dla użytkowników na wysokim ryzyku.
+Ryzyko związane z użytkownikiem wskazuje, że prawdopodobieństwo naruszenia tożsamości użytkownika zostało naruszone i jest obliczane na podstawie [wykrycia ryzyka użytkownika](../../active-directory/identity-protection/overview.md) , które są skojarzone z tożsamością użytkownika. Zasady ryzyka dla użytkowników to zasady dostępu warunkowego, które szacują poziom ryzyka dla określonego użytkownika lub grupy. W oparciu o niski, średni i wysoki poziom ryzyka zasady można skonfigurować w taki sposób, aby blokować dostęp lub wymagały bezpiecznej zmiany hasła przy użyciu usługi uwierzytelniania wieloskładnikowego. Zalecenie firmy Microsoft to wymaganie bezpiecznej zmiany hasła dla użytkowników na wysokim ryzyku.
 
 ![Użytkownicy oflagowani w związku z ryzykiem](./media/steps-secure-identity/azure-ad-sec-steps1.png)
 
@@ -156,7 +156,7 @@ Usługi Microsoft Azure i funkcje udostępniają konfigurowalne opcje inspekcji 
 
 ### <a name="monitor-azure-ad-identity-protection-events"></a>Monitorowanie zdarzeń Azure AD Identity Protection
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) to narzędzie do powiadamiania, monitorowania i raportowania, których można użyć do wykrywania potencjalnych luk w zabezpieczeniach, które mają wpływ na tożsamości w organizacji. Wykrywa zdarzenia dotyczące ryzyka, takie jak nieujawnione poświadczenia, niemożliwa podróż i logowania z zainfekowanych urządzeń, anonimowe adresy IP, adresy IP skojarzone z podejrzanymi działaniami oraz nieznane lokalizacje. Włącz alerty powiadomień, aby otrzymywać wiadomości e-mail użytkowników z ryzykiem i/lub tygodniową pocztą e-mail.
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) to narzędzie do powiadamiania, monitorowania i raportowania, których można użyć do wykrywania potencjalnych luk w zabezpieczeniach, które mają wpływ na tożsamości w organizacji. Wykrywa ona wykrywanie ryzyka, takie jak nieujawnione poświadczenia, niemożliwa podróż i logowania z zainfekowanych urządzeń, anonimowe adresy IP, adresy IP skojarzone z podejrzanymi działaniami oraz nieznane lokalizacje. Włącz alerty powiadomień, aby otrzymywać wiadomości e-mail użytkowników z ryzykiem i/lub tygodniową pocztą e-mail.
 
 Azure AD Identity Protection oferuje dwa ważne raporty, które należy monitorować codziennie:
 1. Ryzykowne raporty logowania to działania związane z logowaniem użytkownika, które należy zbadać, ale uprawniony właściciel może nie wykonać logowania.

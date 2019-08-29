@@ -1,7 +1,7 @@
 ---
-title: 'Ręcznie wprowadź dane jednostki: Odwołania do modułu'
+title: 'Wprowadź dane ręcznie: Dokumentacja modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać modułu ręcznie wprowadź dane w usłudze Azure Machine Learning w celu utworzenia małego zestawu danych, wpisując wartości. Zestaw danych może mieć wiele kolumn.
+description: Dowiedz się, jak używać modułu wprowadzanie danych ręcznie w usłudze Azure Machine Learning, aby utworzyć mały zestaw danych, wpisując wartości. Zestaw danych może mieć wiele kolumn.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,61 +9,60 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: ee15b6fb7160ece907d55e790b0ae38ee458ab96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d7e6cede12f5a348f59db83b31b19c89266dfdf7
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028608"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128842"
 ---
-# <a name="enter-data-manually-module"></a>Wprowadź dane ręcznie modułu
+# <a name="enter-data-manually-module"></a>Wprowadź ręcznie moduł danych
 
-W tym artykule opisano moduł interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Ten moduł służy do tworzenia małego zestawu danych, wpisując wartości. Zestaw danych może mieć wiele kolumn.
+Ten moduł służy do tworzenia małego zestawu danych przez wpisanie wartości. Zestaw danych może mieć wiele kolumn.
   
-Ten moduł może być przydatne w scenariuszach takich jak te:  
+Ten moduł może być przydatny w następujących scenariuszach:  
   
-- Generowanie niewielki zestaw wartości do testowania  
+- Generowanie małego zestawu wartości do testowania  
   
-- Tworzenie krótką listę etykiet
+- Tworzenie krótkiej listy etykiet
   
-- Wpisując listę nazw kolumn do wstawienia w zestawie danych
+- Wpisywanie listy nazw kolumn do wstawienia w zestawie danych
 
 ## <a name="enter-data-manually"></a>Ręczne wprowadzanie danych 
   
-1.  Dodaj [ręcznie wprowadź dane](./enter-data-manually.md) modułu do eksperymentu. Możesz znaleźć tego modułu w **danych wejściowych i wyjściowych** kategorii w usłudze Azure Machine Learning. 
+1.  Dodaj moduł [Wprowadź dane ręcznie](./enter-data-manually.md) do swojego eksperymentu. Ten moduł można znaleźć w kategorii dane **wejściowe i wyjściowe** w Azure Machine Learning. 
   
-2.  Aby uzyskać **DataFormat**, wybierz jedną z następujących opcji. Te opcje określają, jak można przeanalizować dane, które należy podać. Wymagania dotyczące poszczególnych formatów się znacznie różnić, dlatego należy przeczytać tematy pokrewne.  
+2.  W polu **Format**danych wybierz jedną z następujących opcji. Te opcje określają sposób, w jaki podane dane powinny być analizowane. Wymagania dotyczące każdego formatu różnią się znacznie, dlatego pamiętaj, aby przeczytać tematy pokrewne.  
   
-    -   **ARFF**. Relacja atrybutu format pliku, używane przez Weka.   
+    -   **ARFF**. Format pliku relacji atrybutu używany przez Weka.   
   
-    -   **CSV**. Format wartości rozdzielanych przecinkami. Aby uzyskać więcej informacji, zobacz [Konwertuj do formatu CSV](./convert-to-csv.md).  
+    -   **WOLUMIN CSV**. Format wartości rozdzielanych przecinkami. Aby uzyskać więcej informacji, zobacz [konwertowanie do formatu CSV](./convert-to-csv.md).  
   
-    -   **SVMLight**. Format używany przez Vowpal Wabbit i innych platform uczenia maszynowego.  
+    -   **SVMLight**. Format używany przez Vowpal Wabbit i inne platformy uczenia maszynowego.  
   
-    -   **TSV**. Format wartości rozdzielane znakami tabulacji.
+    -   **TSV**. Format wartości rozdzielanych znakami tabulacji.
 
-     Jeśli wybierz format i nie zostaną określone dane, które spełniają specyfikacji formatu, wystąpi błąd czasu wykonywania.
+     Jeśli wybierzesz format i nie podasz danych, które spełniają wymagania formatu, wystąpi błąd w czasie wykonywania.
   
-3.  Kliknij wewnątrz **danych** pole tekstowe, aby rozpocząć wprowadzanie danych. Następujące formaty wymagają specjalnej uwagi:  
+3.  Kliknij wewnątrz pola tekstowego **dane** , aby rozpocząć wprowadzanie danych. Następujące formaty wymagają szczególnej uwagi:  
   
-    - **CSV**:  Aby utworzyć wiele kolumn, wklej tekst rozdzielany przecinkami lub wpisz wiele kolumn, rozdzielając między polami.
+    - **WOLUMIN CSV**:  Aby utworzyć wiele kolumn, Wklej w tekście rozdzielanym przecinkami lub wpisz wiele kolumn, używając przecinków między polami.
   
-        Jeśli wybierzesz **HasHeader** opcji pierwszego wiersza wartości można użyć jako nagłówek kolumny.  
+        W przypadku wybrania opcji **HasHeader** można użyć pierwszego wiersza wartości jako nagłówka kolumny.  
   
-        Jeśli wyłączysz tę opcję, nazw kolumn, Col1, Col2 i tak dalej, są używane. Można dodać lub zmienić kolumny nazwy później za pomocą [edytować metadane](./edit-metadata.md).  
+        Jeśli zaznaczysz tę opcję, używane są nazwy kolumn, Kol1, Col2 i tak dalej. Nazwy kolumn można dodawać lub zmieniać później za pomocą polecenia [Edytuj metadane](./edit-metadata.md).  
   
-    - **TSV**: Aby utworzyć wiele kolumn, Wklej znakami tabulacji tekst lub wpisz wiele kolumn przy użyciu kart między polami.  
+    - **TSV**: Aby utworzyć wiele kolumn, Wklej w tekście rozdzielanym tabulatorami lub wpisz wiele kolumn, używając kart między polami.  
   
-        Jeśli wybierzesz **HasHeader** opcji pierwszego wiersza wartości można użyć jako nagłówek kolumny.  
+        W przypadku wybrania opcji **HasHeader** można użyć pierwszego wiersza wartości jako nagłówka kolumny.  
   
-        Jeśli wyłączysz tę opcję, nazw kolumn, Col1, Col2 i tak dalej, są używane. Można dodać lub zmienić kolumny nazwy później za pomocą [edytować metadane](./edit-metadata.md).  
+        Jeśli zaznaczysz tę opcję, używane są nazwy kolumn, Kol1, Col2 i tak dalej. Nazwy kolumn można dodawać lub zmieniać później za pomocą polecenia [Edytuj metadane](./edit-metadata.md).  
   
-    -   **ARFF**:  Wklej istniejący plik formatu ARFF. Wpisywania wartości bezpośrednio, należy dodać opcjonalne nagłówki i pola wymaganego atrybutu na początku danych. 
+    -   **ARFF**:  Wklej w istniejącym pliku formatu ARFF. W przypadku wpisywania wartości bezpośrednio należy pamiętać o dodaniu opcjonalnego nagłówka i wymaganych pól atrybutów na początku danych. 
     
-        Na przykład następujący wiersz nagłówka i atrybutu można dodać do prostej listy. Nagłówek kolumny będą `SampleText`.
+        Na przykład następujące wiersze nagłówka i atrybutu można dodać do prostej listy. Nagłówek `SampleText`kolumny.
     
         ```text
         % Title: SampleText.ARFF  
@@ -73,9 +72,9 @@ Ten moduł może być przydatne w scenariuszach takich jak te:
         \<type first data row here>  
         ```
 
-    -   **SVMLight**: Wpisz lub Wklej w formacie SVMLight wartości.  
+    -   **SVMLight**: Wpisz lub wklej wartość w wartościach przy użyciu formatu SVMLight.  
   
-        Na przykład poniższy przykład przedstawia pierwszych wierszy kilka darowizn krwi zestawu danych, a w formacie SVMight:  
+        Na przykład poniższy przykład reprezentuje pierwsze kilka wierszy zestawu danych darowizny krwi w formacie SVMight:  
   
         ```text  
         # features are [Recency], [Frequency], [Monetary], [Time]  
@@ -83,24 +82,24 @@ Ten moduł może być przydatne w scenariuszach takich jak te:
         1 1:0 2:13 3:3250 4:28   
         ```  
   
-        Po uruchomieniu [ręcznie wprowadź dane](./enter-data-manually.md) modułu, te wiersze są konwertowane na zestaw kolumn i indeks wartości w następujący sposób:  
+        Po uruchomieniu modułu [wprowadzanie danych ręcznie](./enter-data-manually.md) te wiersze są konwertowane na zestaw danych kolumn i wartości indeksów w następujący sposób:  
   
         |Col1|Col2|Col3|Col4|Etykiety|  
         |-|-|-|-|-|  
-        |0.00016|0.004|0.999961|0.00784|1|  
-        |0|0.004|0.999955|0.008615|1|  
+        |0,00016|0,004|0,999961|0,00784|1|  
+        |0|0,004|0,999955|0,008615|1|  
   
 4.  Naciśnij klawisz ENTER po każdym wierszu, aby rozpocząć nowy wiersz.  
   
-     **Należy koniecznie naciśnij klawisz ENTER po ostatnim wierszu.** 
+     **Pamiętaj, aby nacisnąć klawisz ENTER po ostatnim wierszu.** 
      
-     Jeśli użytkownik naciśnie klawisz ENTER wiele razy, aby dodać wiele pusty końcowe wiersze, ostatnim pusty wiersz jest usuwany przycięty, ale inne puste wiersze są traktowane jako brakujące wartości.  
+     Po naciśnięciu klawisza ENTER wiele razy, aby dodać wiele pustych wierszy końcowych, ostatni pusty wiersz zostanie usunięty przycięty, ale inne puste wiersze są traktowane jako brakujące wartości.  
   
-     Jeśli tworzysz wiersze z brakującymi wartościami, można zawsze odfiltrować je później.  
+     W przypadku tworzenia wierszy z brakującymi wartościami można zawsze odfiltrować je w późniejszym czasie.  
   
-5.  Kliknij prawym przyciskiem myszy moduł, a następnie wybierz pozycję **Uruchom wybrane** do analizowania danych i ładuje je do obszaru roboczego jako zestaw danych.  
+5.  Kliknij prawym przyciskiem myszy moduł i wybierz pozycję **Uruchom wybrane** , aby przeanalizować dane i załadować je do obszaru roboczego jako zestaw danych.  
   
-     Aby wyświetlić zestaw danych, kliknij port wyjściowy i wybierz **Visualize**.  
-## <a name="next-steps"></a>Kolejne kroki
+     Aby wyświetlić zestaw danych, kliknij port wyjściowy i wybierz polecenie **Wizualizuj**.  
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [zestaw dostępnych modułów](module-reference.md) do usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 

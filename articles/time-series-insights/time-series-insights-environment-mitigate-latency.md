@@ -1,6 +1,6 @@
 ---
-title: Jak monitorować i zmniejszyć ograniczanie żądań w usłudze Azure Time Series Insights | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak monitorowanie, diagnozowanie i rozwiązać problemy z wydajnością, które powodują opóźnienia i ograniczania przepustowości w usłudze Azure Time Series Insights.
+title: Jak monitorować i zmniejszać ograniczenia w Azure Time Series Insights | Microsoft Docs
+description: W tym artykule opisano sposób monitorowania, diagnozowania i rozwiązywania problemów z wydajnością, które powodują opóźnienia i ograniczanie przepustowości w Azure Time Series Insights.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -10,78 +10,90 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 05/07/2019
+ms.date: 08/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 129476c833e596d40daa7081e23c0fd6d1b93b30
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 275eff59c56229f45a131e107668b8fefab24536
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165762"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70123779"
 ---
-# <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorowanie i minimalizowanie ograniczania w celu zmniejszenia opóźnienia w usłudze Azure Time Series Insights
+# <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorowanie i ograniczanie ograniczania przepustowości w celu zmniejszenia opóźnień w Azure Time Series Insights
 
-Gdy ilość danych przychodzących przekroczy konfiguracji w danym środowisku, mogą wystąpić opóźnienia lub ograniczanie żądań w usłudze Azure Time Series Insights.
+Gdy ilość danych przychodzących przekroczy konfigurację środowiska, może wystąpić opóźnienie lub ograniczenie w Azure Time Series Insights.
 
-Możesz uniknąć opóźnienia i ograniczania przepustowości odpowiednio konfigurując środowiska ilości danych, które mają być analizowane.
+Można uniknąć opóźnień i ograniczania przepustowości przez prawidłowe skonfigurowanie środowiska pod kątem ilości danych, które mają być analizowane.
 
-Możesz z największym prawdopodobieństwem mogą wystąpić opóźnienia i ograniczania przepustowości, kiedy użytkownik:
+Najprawdopodobniej napotkasz opóźnienia i ograniczanie przepustowości, gdy:
 
-- Dodawanie źródła zdarzeń, który zawiera stare dane, które może być dłuższe niż szybkość transferu danych przychodzących w wyznaczonym (usługi Time Series Insights będzie trzeba zapoznać się z nimi).
-- Dodaj więcej źródeł zdarzeń do środowiska, wynikiem kolekcji z dodatkowych zdarzeń, (które może przekraczać pojemność w danym środowisku).
-- Wypchnij dużych ilości zdarzeń historycznych do źródła zdarzenia skutkuje to opóźnienie (usługi Time Series Insights będzie trzeba zapoznać się z nimi).
-- Dołącz do danymi referencyjnymi przy użyciu telemetrii, co skutkuje większym rozmiarze zdarzenia.  Z punktu widzenia ograniczania pakiet ingressed danych o rozmiarze pakietów wynosi 32 KB jest traktowane jako 32 zdarzenia, każdy o rozmiarze 1 KB. Maksymalny dozwolony rozmiar zdarzenia wynosi 32 KB; pakiety danych większe niż 32 KB są obcinane.
+- Dodaj źródło zdarzenia, które zawiera stare dane, które mogą przekroczyć przydzieloną stawkę za ruch przychodzący (Time Series Insights będzie musiał wychwycić).
+- Dodaj więcej źródeł zdarzeń do środowiska, co spowodowało skok z dodatkowych zdarzeń (co może przekroczyć pojemność środowiska).
+- Wypchnij duże ilości zdarzeń historycznych do źródła zdarzeń, co spowodowało zwłokę (Time Series Insights będzie konieczne przechwycenie).
+- Dołącz dane referencyjne do telemetrii, co skutkuje większym rozmiarem zdarzenia.  Z punktu widzenia ograniczenia przepustowości pakiet danych ingressed o rozmiarze pakietu 32 KB jest traktowany jako zdarzenia 32 o wielkości 1 KB. Maksymalny dozwolony rozmiar zdarzenia to 32 KB; pakiety danych o rozmiarze większym niż 32 KB są obcinane.
 
 ## <a name="video"></a>Połączenia wideo
 
-### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Więcej informacji na temat zachowania w zakresie transferu danych przychodzących usługi Time Series Insights danych oraz sposobu planowania dla niego.</br>
+### <a name="learn-about-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>Dowiedz się więcej na temat Time Series Insights zachowania związanego z transferem danych przychodzących i sposobu ich planowania.</br>
 
 > [!VIDEO https://www.youtube.com/embed/npeZLAd9lxo]
 
-## <a name="monitor-latency-and-throttling-with-alerts"></a>Monitorowanie opóźnienia i ograniczania przepustowości z alertami
+## <a name="monitor-latency-and-throttling-with-alerts"></a>Monitoruj opóźnienia i ograniczanie przepustowości przy użyciu alertów
 
-Alerty mogą ułatwić zdiagnozować i rozwiązać problemy z opóźnienia spowodowane przez środowiska.
+Alerty mogą ułatwić diagnozowanie i łagodzenie problemów z opóźnieniami spowodowanych przez środowisko.
 
-1. W witrynie Azure portal wybierz **metryki**.
+1. W Azure Portal wybierz pozycję **alerty**.
 
-   [![Metryki](media/environment-mitigate-latency/add-metrics.png)](media/environment-mitigate-latency/add-metrics.png#lightbox)
+   [![Alerty](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
 
-1. Wybierz pozycję **Dodaj alert dotyczący metryki**.  
+1. Zostanie wyświetlony panel **Utwórz regułę** . Wybierz pozycję **Dodaj** w obszarze **warunek**.
 
-   [![Dodaj alert metryki](media/environment-mitigate-latency/add-metric-alert.png)](media/environment-mitigate-latency/add-metric-alert.png#lightbox)
+   [![Dodawanie alertu](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
 
-Z tego miejsca można skonfigurować alertów za pomocą następujących metryk:
+1. Następnie skonfiguruj dokładne warunki logiki sygnału.
 
-|Metryka  |Opis  |
-|---------|---------|
-|**Ruch przychodzący odebrały bajty**     | Liczba bajtów raw odczytywane z źródła zdarzeń. Liczba nieprzetworzonych zwykle obejmuje nazwy i wartości właściwości.  |  
-|**Ruch przychodzący Odebrano nieprawidłowy komunikaty**     | Liczba komunikatów nieprawidłowy odczytu ze wszystkich źródeł zdarzeń usługi Azure Event Hubs lub usługi Azure IoT Hub.      |
-|**Ruch przychodzący odebranych komunikatów**   | Liczba komunikatów są odczytywane z źródła zdarzeń wszystkie centra zdarzeń lub centra IoT Hub.        |
-|**Ruch przychodzący przechowywane bajtów**     | Całkowity rozmiar zdarzenia zapisane i dostępne dla zapytania. Rozmiar jest obliczana tylko na wartości właściwości.        |
-|**Ruch przychodzący przechowywanych zdarzeń**     |   Liczba zdarzeń spłaszczonych przechowywane i dostępne dla zapytania.      |
-|**Opóźnienie czasowe odebranego komunikatu przychodzącego**    |  Różnica w sekundach między czasem, że wiadomość jest dodawanych do kolejki zdarzeń źródła i czasu, gdy są przetwarzane w transferu danych przychodzących.      |
-|**Ruch przychodzący Odebrano Lag liczba komunikatów**    |  Różnica między liczba sekwencji ostatniej wiadomości w kolejce w zdarzeniu źródła partycji i numer sekwencji przetwarzanego w ruchu przychodzącego komunikatu.      |
+   [![Konfiguruj logikę sygnału](media/environment-mitigate-latency/configure-alert-rule.png)](media/environment-mitigate-latency/configure-alert-rule.png#lightbox)
 
-![Opóźnienie](media/environment-mitigate-latency/latency.png)
+   W tym miejscu możesz skonfigurować alerty przy użyciu następujących warunków:
 
-* Jeśli użytkownik są ograniczane, zobaczysz wartość *ruch przychodzący Odebrano komunikat zwłokę czasową obowiązującą*, informujące o liczbę sekund za usługi TSI pochodzi z rzeczywisty czas komunikat trafienia źródło zdarzenia (z wyjątkiem indeksowania czas appx. 30 – 60 sekund).  *Opóźnienie liczby komunikatów odebranych ruch przychodzący* również powinien mieć wartość, co pozwala określić, ile komunikatów za Tobą są.  Najprostszym sposobem aktualizować jest zwiększenie pojemności Twojego środowiska do rozmiar, który umożliwi przezwyciężyć różnica.  
+   |Metryka  |Opis  |
+   |---------|---------|
+   |**Bajty odebrane z ruchu przychodzącego**     | Liczba nieprzetworzonych bajtów odczytanych ze źródeł zdarzeń. Licznik nieprzetworzony zazwyczaj zawiera nazwę właściwości i wartość.  |  
+   |**Odebrano nieprawidłowe komunikaty dotyczące transferu danych przychodzących**     | Liczba nieprawidłowych komunikatów odczytywanych ze wszystkich Event Hubs platformy Azure lub źródeł zdarzeń platformy Azure IoT Hub.      |
+   |**Odebrane komunikaty transferu danych przychodzących**   | Liczba komunikatów odczytywanych ze wszystkich Event Hubs lub źródeł zdarzeń usługi IoT Hub.        |
+   |**Bajty przechowywane w ruchu przychodzącym**     | Łączny rozmiar zdarzeń przechowywanych i dostępnych dla zapytania. Rozmiar jest obliczany tylko na wartości właściwości.        |
+   |**Zdarzenia związane** z transferem danych przychodzących    |   Liczba zdarzeń spłaszczonych przechowywanych i dostępnych dla kwerendy.      |
+   |**Zwłoka czasu odbierania komunikatu przychodzącego**   |  Różnica w sekundach między upływem czasu, w którym komunikat jest przełączany w źródle zdarzenia i czas przetwarzania w danych wejściowych.      |
+   |**Opóźnienie liczby komunikatów odebranych** przez ruch przychodzący   |  Różnica między numerem sekwencyjnym ostatnio zarejestrowanego komunikatu w partycji źródłowej zdarzenia i numerem sekwencyjnym komunikatu przetwarzanego w ramach ruchu przychodzącego.      |
 
-  Na przykład w środowisku jednej jednostki S1 i jest to opóźnienie 5 000 000 wiadomości, można zwiększyć rozmiar środowiska do 6 jednostek wokół jeden dzień można aktualizować.  Użytkownik może zwiększyć nawet bardziej efektywnej się szybciej. Okres zapoznać się ze zmianami często dochodzi podczas początkowego inicjowania obsługi administracyjnej środowiska, szczególnie w przypadku, gdy połączysz ze źródłem zdarzeń, które zawiera zdarzenia w nim lub zbiorcze przekazywanie dużej ilości danych historycznych.
+   Wybierz pozycję **Done** (Gotowe).
 
-* Inna technika polega na ustawieniu **przyjętych zdarzeń przechowywanych** alert > = Próg nieco poniżej środowiska całkowitej pojemności dla okresu 2 godzin.  Ten alert może ułatwić zrozumienie, jeśli stale się w pojemności, co oznacza wysokie prawdopodobieństwo opóźnienia. 
+1. Po skonfigurowaniu żądanej logiki sygnałów Przejrzyj wybraną regułę alertów wizualnie.
 
-  Na przykład, jeśli masz trzech jednostek S1 wykorzystanych (lub 2100 zdarzeń na pojemność zdarzeń przychodzących minuty), można ustawić **przyjętych zdarzeń przechowywanych** alert dotyczący > = 1900 zdarzeń przez 2 godziny. Jeśli są stale powyżej wartości progowej, a w związku z tym, wyzwalania alertu, są prawdopodobnie w obszarze aprowizowano.  
+   [![Ruch przychodzący](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
 
-* Jeśli podejrzewasz, możesz są ograniczane, można porównać z **transferu danych przychodzących komunikatów odebranych** za pomocą zdarzenia źródło użytkownika egressed wiadomości.  Jeśli ruch przychodzący do Centrum zdarzeń jest większa niż Twoje **transferu danych przychodzących komunikatów odebranych**, prawdopodobnie są ograniczane usługi Time Series Insights.
+## <a name="throttling-and-ingress-management"></a>Ograniczanie i zarządzanie ruchem przychodzącym
+
+* W przypadku ograniczania przepustowości zostanie wyświetlona wartość *opóźnienia czasu komunikatu*związanego z transferem danych przychodzących, informujący o tym, ile sekund jest w czasie rzeczywistym, gdy komunikat trafi do źródła zdarzenia (z wyłączeniem czasu indeksowania modułu APPX). 30-60 sekund).  
+
+  *Opóźnienie liczby przychodzących komunikatów* przychodzących powinno również mieć wartość, co pozwala określić liczbę komunikatów znajdujących się za Ciebie.  Najprostszym sposobem na przezwyciężenie jest zwiększenie pojemności środowiska do rozmiaru, który umożliwi pokonanie różnic.  
+
+  Na przykład jeśli masz pojedyncze, jednostkowe środowisko S1 i widzisz, że występuje opóźnienie komunikatów 5 000 000, możesz zwiększyć rozmiar środowiska do sześciu jednostek przez około jednego dnia, aby przechwycić.  Możesz jeszcze bardziej zwiększyć szybkość przechwytywania. Okres przechwytywania jest typowym wystąpieniem podczas wstępnej aprowizacji środowiska, szczególnie w przypadku łączenia go ze źródłem zdarzeń, które zawiera już zdarzenia w nim lub w przypadku zbiorczego przekazywania wielu danych historycznych.
+
+* Inną techniką jest ustawienie alertu dotyczącego **zdarzeń związanych** z transferem danych przychodzących > = próg nieco niższy od całkowitej pojemności środowiska przez okres 2 godzin.  Ten alert może pomóc w zrozumieniu, czy ma on ciągle pojemność, co oznacza wysokie prawdopodobieństwo opóźnienia. 
+
+  Na przykład jeśli masz trzy jednostki S1 z obsługą administracyjną (lub 2100 zdarzeń na minutę), możesz ustawić alert dotyczący **zdarzeń** związanych z transferem danych przychodzących dla zdarzeń > = 1900 przez 2 godziny. W przypadku ciągłego przekraczania tego progu, w związku z czym wyzwalany jest alert, jest to najkorzystniej obsługiwane.  
+
+* Jeśli podejrzewasz, że masz ograniczenie przepustowości, możesz porównać odebrane **komunikaty przychodzące** z komunikatami egressed źródła zdarzeń.  Jeśli ruch przychodzący do centrum zdarzeń jest większy niż **odebrane komunikaty**transferu danych przychodzących, prawdopodobnie Time Series Insights są ograniczone.
 
 ## <a name="improving-performance"></a>Poprawianie wydajności
 
-Aby zmniejszyć ograniczania przepływności lub występują opóźnienia, najlepszym sposobem, aby go poprawić, jest zwiększenie pojemności w danym środowisku.
+Aby zmniejszyć ograniczenia przepustowości lub opóźnienia, najlepszym sposobem na jego poprawienie jest zwiększenie wydajności środowiska.
 
-Możesz uniknąć opóźnienia i ograniczania przepustowości odpowiednio konfigurując środowiska ilości danych, które mają być analizowane. Aby uzyskać więcej informacji o sposobie dodawania pojemności dla danego środowiska, zobacz [Skalowanie środowiska](time-series-insights-how-to-scale-your-environment.md).
+Można uniknąć opóźnień i ograniczania przepustowości przez prawidłowe skonfigurowanie środowiska pod kątem ilości danych, które mają być analizowane. Aby uzyskać więcej informacji o sposobach dodawania pojemności do środowiska, zobacz [skalowanie środowiska](time-series-insights-how-to-scale-your-environment.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Aby uzyskać dodatkowe kroki rozwiązywania problemów [diagnozowanie i rozwiązywanie problemów w danym środowisku usługi Time Series Insights](time-series-insights-diagnose-and-solve-problems.md).
+- Dodatkowe kroki rozwiązywania problemów, [diagnozowania i rozwiązywania problemów w środowisku Time Series Insights](time-series-insights-diagnose-and-solve-problems.md).
 
-- Aby uzyskać dodatkową pomoc, Rozpocznij konwersację na [forum MSDN dotyczącym](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) lub [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). Możesz również skontaktować się ze [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) opcji asystowanej pomocy technicznej.
+- Aby uzyskać dodatkową pomoc, Rozpocznij KONWERSACJĘ na [forum MSDN](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights) lub [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights). Możesz również skontaktować się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/options/) , aby uzyskać pomoc techniczną.

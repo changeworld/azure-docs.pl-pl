@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 08/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 9664fd35462ab6084b203fe4ccd3c10435d64991
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: cbc55433517174c8080b941ca8526e5a4fd3427d
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035636"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126014"
 ---
 ::: zone target="docs"
 
@@ -24,7 +24,7 @@ ms.locfileid: "70035636"
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Wprowadzenie do Azure Data Box Disk przy użyciu Azure Portal
+## <a name="get-started-with-azure-data-box-disk"></a>Wprowadzenie do Azure Data Box Disk 
 
 ::: zone-end
 
@@ -40,7 +40,7 @@ Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://
 
 ::: zone target="chromeless"
 
-W tym przewodniku Szybki start opisano sposób wdrażania usługi Azure Data Box Disk przy użyciu witryny Azure Portal. Kroki obejmują przegląd wymagań wstępnych, odblokowywanie dysków, łączenie i kopiowanie danych na dyskach w celu przekazywania ich do platformy Azure.
+W tym przewodniku opisano sposób wdrażania Azure Data Box Disk w Azure Portal. Kroki obejmują przegląd wymagań wstępnych, odblokowywanie dysków oraz łączenie i kopiowanie danych na dyskach w celu przekazywania ich do platformy Azure.
 
 ::: zone-end
 
@@ -60,7 +60,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://aka.ms/azuredataboxfro
 
 ::: zone target="chromeless"
 
-## <a name="prerequisites"></a>Wymagania wstępne
+### <a name="prerequisites"></a>Wymagania wstępne
 
 - Zamówienie zostało złożone dla Data Box Disk przy użyciu [samouczka: zamawianie urządzenia Azure Data Box Disk](data-box-disk-deploy-ordered.md).
 - Dyski zostały do Ciebie dostarczone, a stan zadania w portalu zmienił się na **Dostarczono**.

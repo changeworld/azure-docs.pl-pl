@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: fa3aedf138564fedafe555adfbaf6c56efc1813e
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 9bb53a8e68866e2ed346277171e2706f5907e8af
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360842"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141907"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Jak używać kolejek Service Bus przy użyciu języka Python
 
@@ -30,13 +30,13 @@ W ramach tego samouczka nauczysz się tworzyć aplikacje języka Python do wysy�
 ## <a name="prerequisites"></a>Wymagania wstępne
 1. Subskrypcja platformy Azure. Do ukończenia tego samouczka jest potrzebne konto platformy Azure. Możesz aktywować korzyści dla [subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 2. Wykonaj czynności opisane w [Azure Portal Użyj, aby utworzyć artykuł kolejki Service Bus](service-bus-quickstart-portal.md) .
-    1. Zapoznaj się  z krótkim omówieniem **kolejek**Service Bus. 
+    1. Zapoznaj się z krótkim omówieniem **kolejek**Service Bus. 
     2. Utwórz **przestrzeń nazw**Service Bus. 
     3. Pobierz **Parametry połączenia**. 
 
         > [!NOTE]
-        > W tym samouczku  utworzysz kolejkę w przestrzeni nazw Service Bus przy użyciu języka Python. 
-1. Zainstaluj Język Python lub [pakiet Azure Service Bus Python][Python Azure Service Bus package], zapoznaj się z [Podręcznikiem instalacji języka Python](../python-how-to-install.md). Zapoznaj się z pełną dokumentacją Service Bus Python SDK [tutaj](/python/api/overview/azure/servicebus?view=azure-python).
+        > W tym samouczku utworzysz kolejkę w przestrzeni nazw Service Bus przy użyciu języka Python. 
+1. Zainstaluj Język Python lub [pakiet Azure Service Bus Python][Python Azure Service Bus package], zapoznaj się z [Podręcznikiem instalacji języka Python](/azure/python/python-sdk-azure-install). Zapoznaj się z pełną dokumentacją Service Bus Python SDK [tutaj](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="create-a-queue"></a>Tworzenie kolejki
 Obiekt **ServiceBusClient** umożliwia korzystanie z kolejek. Dodaj następujący kod w górnej części każdego pliku języka Python, do którego chcesz programowo uzyskać dostęp Service Bus:
@@ -112,7 +112,7 @@ Komunikaty są usuwane z kolejki, ponieważ są odczytywane, gdy parametr `peek_
 
 Zachowanie odczytu i usunięcia komunikatu w ramach operacji odbierania jest najprostszym modelem i najlepiej sprawdza się w scenariuszach, w których aplikacja może tolerować nieprzetwarzanie komunikatu w przypadku awarii. Aby to zrozumieć, rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Ponieważ Service Bus oznaczył komunikat jako używany, a następnie aplikacja zostanie ponownie uruchomiona i rozpocznie korzystanie z komunikatów, zostanie pominięta wiadomość, która była używana przed awarią.
 
-Jeśli parametr ma wartość true, odbieranie staje się operacją dwuetapową, co umożliwia obsługę aplikacji, które nie mogą tolerować brakujących komunikatów.  `peek_lock` Gdy usługa Service Bus odbiera żądanie, znajduje następny komunikat do wykorzystania, blokuje go w celu uniemożliwienia innym klientom odebrania go i zwraca go do aplikacji. Gdy aplikacja zakończy przetwarzanie komunikatu (lub zapisuje ją w sposób niegodny w przyszłości), kończy drugi etap procesu odbierania przez wywołanie metody **delete** dla obiektu **Message** . Metoda **delete** oznaczy komunikat jako używany i usuń go z kolejki.
+Jeśli parametr ma wartość true, odbieranie staje się operacją dwuetapową, co umożliwia obsługę aplikacji, które nie mogą tolerować brakujących komunikatów. `peek_lock` Gdy usługa Service Bus odbiera żądanie, znajduje następny komunikat do wykorzystania, blokuje go w celu uniemożliwienia innym klientom odebrania go i zwraca go do aplikacji. Gdy aplikacja zakończy przetwarzanie komunikatu (lub zapisuje ją w sposób niegodny w przyszłości), kończy drugi etap procesu odbierania przez wywołanie metody **delete** dla obiektu **Message** . Metoda **delete** oznaczy komunikat jako używany i usuń go z kolejki.
 
 ```python
 msg.delete()
@@ -128,7 +128,7 @@ W przypadku awarii aplikacji po przetworzeniu komunikatu, ale przed wywołaniem 
 > [!NOTE]
 > Za pomocą [eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/)można zarządzać zasobami Service Bus. Eksplorator Service Bus umożliwia użytkownikom łączenie się z przestrzenią nazw Service Bus i administrowanie jednostkami obsługi komunikatów w prosty sposób. Narzędzie zapewnia zaawansowane funkcje, takie jak funkcja importowania/eksportowania lub możliwość testowania tematów, kolejek, subskrypcji, usług przekazywania, centrów powiadomień i centrów zdarzeń. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Teraz, gdy znasz już podstawy Service Busych kolejek, zobacz te artykuły, aby dowiedzieć się więcej.
 
 * [Kolejki, tematy i subskrypcje][Queues, topics, and subscriptions]

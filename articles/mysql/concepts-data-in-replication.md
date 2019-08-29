@@ -1,44 +1,48 @@
 ---
-title: Replikuj dane do usługi Azure Database for MySQL.
-description: W tym artykule opisano danych replikacji dla usługi Azure Database for MySQL.
+title: Replikowanie danych do Azure Database for MySQL.
+description: W tym artykule opisano replikację danych w Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: f91a6da9a305c6620e4e01ab7aa3c554374cb5d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 889c2e75e9eee0586c709b032dbb6d1c58d45102
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60996826"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142055"
 ---
-# <a name="replicate-data-into-azure-database-for-mysql"></a>Replikuj dane do usługi Azure Database for MySQL
+# <a name="replicate-data-into-azure-database-for-mysql"></a>Replikowanie danych do Azure Database for MySQL
 
-Replikacji danych umożliwia synchronizowanie danych z zewnętrznego serwera MySQL do usługi Azure Database for MySQL usługi. Zewnętrznego serwera może być lokalnie w maszynach wirtualnych lub usługa bazy danych, pracujących w chmurze innych dostawców. W danych replikacji jest oparty na dziennik binarny (binlog) na podstawie pozycji replikacji plików natywnej do bazy danych MySQL. Aby dowiedzieć się więcej na temat replikacji binlog, zobacz [Omówienie replikacji usługi MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
+Replikacja typu data-in pozwala synchronizować dane z zewnętrznego serwera MySQL do usługi Azure Database for MySQL. Serwer zewnętrzny może być lokalny, w maszynach wirtualnych lub w usłudze bazy danych hostowanej przez innych dostawców chmury. Replikacja typu data-in jest wykonywana za pomocą technologii replikacji opartej na pozycji w pliku dziennika binarnego (binlog) natywnej dla programu MySQL. Aby dowiedzieć się więcej na temat replikacji binlog, zobacz [Omówienie replikacji MySQL binlog](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
 
-## <a name="when-to-use-data-in-replication"></a>Kiedy należy używać replikacji danych
-Główne scenariusze, warto rozważyć użycie replikacji danych są następujące:
+## <a name="when-to-use-data-in-replication"></a>Kiedy używać replikacja typu data-in
+Główne scenariusze, które należy wziąć pod uwagę przy użyciu replikacja typu data-in są następujące:
 
-- **Synchronizacja danych hybrydowych:** Za pomocą replikacji danych możesz przechowywać dane synchronizowane między serwerami lokalnymi i usługi Azure Database for MySQL. Wykonanie synchronizacji jest przydatne podczas tworzenia aplikacji hybrydowych. Ta metoda jest atrakcyjne, gdy masz istniejącego serwera lokalnej bazy danych, ale chcesz przenieść dane do regionu bliżej użytkowników końcowych.
-- **Synchronizacja wielu chmur:** Złożonych rozwiązań w chmurze umożliwia synchronizowanie danych między Azure Database for MySQL i różnych dostawców w chmurze, łącznie z maszynami wirtualnymi i usługami bazy danych hostowanej w tych chmurach replikacji danych.
+- **Synchronizacja danych hybrydowych:** Za pomocą replikacja typu data-in można zachować synchronizację danych między serwerami lokalnymi i Azure Database for MySQL. Ta synchronizacja jest przydatna do tworzenia aplikacji hybrydowych. Ta metoda jest atrakcyjna, gdy masz istniejący lokalny serwer baz danych, ale chcesz przenieść dane do regionu bliżej użytkowników końcowych.
+- **Synchronizacja z obsługą kilku chmur:** W przypadku złożonych rozwiązań w chmurze Użyj replikacja typu data-in do synchronizowania danych między Azure Database for MySQL i różnymi dostawcami chmury, w tym maszyn wirtualnych i usług baz danych hostowanych w tych chmurach.
 
 ## <a name="limitations-and-considerations"></a>Ograniczenia i zagadnienia
 
-### <a name="data-not-replicated"></a>Dane nie są replikowane
-[ *Bazy danych mysql systemu* ](https://dev.mysql.com/doc/refman/5.7/en/system-database.html) nie jest replikowana na serwerze głównym. Nie są replikowane zmiany konta i uprawnienia na serwerze głównym. Jeśli utworzysz konto na serwerze głównym, a to konto musi mieć dostęp do serwera repliki, należy ręcznie utworzyć tego samego konta po stronie serwera repliki. Aby zrozumieć, jakie tabele są zawarte w systemowej bazie danych, zobacz [MySQL manual](https://dev.mysql.com/doc/refman/5.7/en/system-database.html).
+### <a name="data-not-replicated"></a>Dane nie zostały zreplikowane
+[*Baza danych systemu MySQL*](https://dev.mysql.com/doc/refman/5.7/en/system-database.html) na serwerze głównym nie jest replikowana. Zmiany kont i uprawnień na serwerze głównym nie są replikowane. Jeśli utworzysz konto na serwerze głównym, a to konto musi uzyskać dostęp do serwera repliki, ręcznie Utwórz to samo konto na stronie serwera repliki. Aby zrozumieć, jakie tabele są zawarte w systemowej bazie danych, zobacz [Podręcznik programu MySQL](https://dev.mysql.com/doc/refman/5.7/en/system-database.html).
 
 ### <a name="requirements"></a>Wymagania
-- Wersja serwera głównego musi wynosić co najmniej MySQL w wersji 5.6. 
-- Wersje serwera głównego i replika musi być taka sama. Na przykład obie wartości muszą być MySQL w wersji 5.6 lub obie wartości muszą być MySQL w wersji 5.7.
+- Wersja serwera głównego musi być nowsza niż wersja 5,6. 
+- Wersje serwerów głównych i replik muszą być takie same. Na przykład oba muszą być w wersji 5,6 lub muszą mieć wersję MySQL w wersji 5,7.
 - Każda tabela musi mieć klucz podstawowy.
-- Główny serwer powinien używać aparat MySQL InnoDB.
-- Użytkownik musi mieć uprawnienia do konfigurowania rejestrowania binarnego i tworzenia nowych użytkowników na serwerze głównym.
+- Serwer główny powinien korzystać z aparatu programu MySQL InnoDB.
+- Użytkownik musi mieć uprawnienia do konfigurowania rejestrowania plików binarnych i tworzenia nowych użytkowników na serwerze głównym.
+- Jeśli na serwerze głównym jest włączony protokół SSL, upewnij się, że certyfikat urzędu certyfikacji SSL podany dla domeny został uwzględniony w `mysql.az_replication_change_master` procedurze składowanej. Zapoznaj się z [](https://docs.microsoft.com/azure/mysql/howto-data-in-replication#link-master-and-replica-servers-to-start-data-in-replication) poniższymi przykładami i `master_ssl_ca` parametrem.
+- Upewnij się, że adres IP serwera głównego został dodany do reguł zapory serwera repliki usługi Azure Database for MySQL. Zaktualizuj reguły zapory za pomocą [witryny Azure Portal](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal) lub [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-cli).
+- Upewnij się, że maszyna hostująca serwer główny zezwala na ruch przychodzący i wychodzący na porcie 3306.
+- Upewnij się, że serwer główny ma **publiczny adres IP** lub że system DNS jest dostępny publicznie.
 
 ### <a name="other"></a>Inne
-- Replikacji danych jest tylko do ogólnie rzecz biorąc obsługiwana przeznaczenia i zoptymalizowana pod kątem pamięci, warstw cenowych.
-- Identyfikatory transakcji globalnej (GTID) nie są obsługiwane.
+- Replikacja danych jest obsługiwana tylko w warstwach cenowych Ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
+- Globalne identyfikatory transakcji (GTID) nie są obsługiwane.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się, jak [Konfigurowanie replikacji danych](howto-data-in-replication.md)
-- Dowiedz się więcej o [replikowanie na platformie Azure przy użyciu odczytu replik](concepts-read-replicas.md)
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się, jak [skonfigurować replikację danych](howto-data-in-replication.md)
+- Więcej informacji [na temat replikowania na platformie Azure przy użyciu replik odczytu](concepts-read-replicas.md)

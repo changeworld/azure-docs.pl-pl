@@ -17,14 +17,18 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 719939b393b01938a4d4faa41a5dca163b2a8949
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 611947c8c1d202cf4abf4222dfe0072aced58507
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834703"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135724"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autoryzowanie dostępu do aplikacji internetowych usługi Azure Active Directory przy użyciu przepływu udzielania kodu OAuth 2.0
+
+> [!NOTE]
+>  Jeśli nie poinformujesz serwera o zasobach, które zamierzasz wywołać, serwer nie wyzwoli zasad dostępu warunkowego dla tego zasobu. Aby móc korzystać z wyzwalacza usługi MFA, należy uwzględnić zasób w adresie URL. 
+>
 
 Azure Active Directory (Azure AD) korzysta z protokołu OAuth 2,0, aby umożliwić autoryzowanie dostępu do aplikacji sieci Web i interfejsów API sieci Web w dzierżawie usługi Azure AD. Ten przewodnik jest niezależny od języka i opisuje, jak wysyłać i odbierać komunikaty HTTP bez używania [bibliotek typu open-source](active-directory-authentication-libraries.md).
 
@@ -278,6 +282,8 @@ Specyfikacja RFC 6750 definiuje następujące błędy dla zasobów, które używ
 Tokeny dostępu są krótkotrwałe i muszą być odświeżane po wygaśnięciu, aby nadal uzyskiwać dostęp do zasobów. Można `access_token` odświeżyć przez przesłanie kolejnego `POST` żądania do `/token` punktu końcowego, `code`ale tym razem `refresh_token` zamiast.  Tokeny odświeżania są prawidłowe dla wszystkich zasobów, do których klient wyraził zgodę na dostęp — w tym celu token odświeżania wystawiony na żądanie `resource=https://graph.microsoft.com` może służyć do żądania nowego tokenu dostępu dla. `resource=https://contoso.com/api` 
 
 Tokeny odświeżania nie mają określonych okresów istnienia. Zwykle okresy istnienia tokenów odświeżania są stosunkowo długie. Jednak w niektórych przypadkach tokeny odświeżania wygasną, są odwoływane lub nie ma wystarczających uprawnień do żądanej akcji. Aplikacja musi oczekiwać i obsłużyć błędy zwrócone przez punkt końcowy wystawiania tokenów.
+
+[!NOTE] Okresy istnienia tokenu dostępu można znaleźć tutaj: https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-configurable-token-lifetimes#configurable-token-lifetime-properties Domyślnie tokeny dostępu to 1 godzina, a wartość domyślna dla tokenów odświeżania to 90 dni. Te okresy istnienia można zmienić, konfigurując odpowiednio okresy istnienia tokenu. 
 
 Po otrzymaniu odpowiedzi z błędem tokenu odświeżania Odrzuć bieżący token odświeżania i zażądaj nowego kodu autoryzacji lub tokenu dostępu. W szczególności w przypadku używania tokenu odświeżania w przepływie przydzielenia kodu autoryzacji, jeśli otrzymasz odpowiedź z `interaction_required` kodami błędów lub `invalid_grant` , Odrzuć token odświeżenia i zażądaj nowego kodu autoryzacji.
 

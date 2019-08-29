@@ -1,7 +1,7 @@
 ---
-title: 'Edytowanie metadanych: Dokumentacja modułu'
+title: 'Edytuj metadane: Dokumentacja modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak użyć modułu programu edytować metadane w usłudze Azure Machine Learning, aby zmienić metadane, która jest skojarzona z kolumn w zestawie danych.
+description: Informacje dotyczące zmiany metadanych skojarzonych z kolumnami w zestawie danych przy użyciu modułu Edytuj metadane w usłudze Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,94 +9,93 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 282652adb917450c262e08bf10c3c6e537b829e7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 642b2a038ec434584c8af6dd72d58810e136ed57
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072717"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128866"
 ---
 # <a name="edit-metadata-module"></a>Edytuj moduł metadanych
 
-W tym artykule opisano moduł interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Aby zmienić metadane, która jest skojarzona z kolumn w zestawie danych, należy skorzystać z modułu edytowanie danych. Po użyciu modułu edytować metadane zmieni się wartość i typ danych zestawu danych.
+Użyj modułu Edytuj dane, aby zmienić metadane skojarzone z kolumnami w zestawie danych. Wartość i typ danych zestawu danych zmienią się po użyciu modułu Edytowanie metadanych.
 
-Typowe metadanych zmiany mogą być następujące:
+Typowe zmiany metadanych mogą obejmować:
   
-+ Traktowanie kolumn logiczną lub liczbowego jako wartości podzielonych na kategorie.
++ Traktowanie kolumn logicznych lub liczbowych jako wartości kategorii.
   
-+ Wskazujący, która kolumna zawiera **klasy** etykiety lub zawiera wartości, aby kategoryzować lub przewidzieć.
++ Wskazuje, która kolumna zawiera etykietę **klasy** lub zawiera wartości, które mają zostać skategoryzowane lub przewidywalne.
   
 + Oznaczanie kolumn jako funkcji.
   
-+ Zmiana wartości daty/godziny na wartości liczbowe lub na odwrót.
++ Zmiana wartości daty/godziny na wartości liczbowe lub odwrotnie.
   
-+ Zmienianie nazw kolumn.
++ Zmiana nazw kolumn.
   
- Użyj edytować metadane w dowolnym momencie należy zmodyfikować definicję kolumny, zazwyczaj pod kątem wymagań dla modułu podrzędnego. Na przykład niektóre moduły działają tylko z konkretnych typów danych lub wymaga flagi w kolumnach, takich jak `IsFeature` lub `IsCategorical`.  
+ W każdej chwili należy zmodyfikować definicję kolumny, zazwyczaj w celu spełnienia wymagań dotyczących modułu podrzędnego. Na przykład niektóre moduły działają tylko z określonymi typami danych lub wymagają flag w kolumnach, takich jak `IsFeature` lub. `IsCategorical`  
   
- Po wykonaniu operacji wymagane, możesz zresetować metadanych do stanu pierwotnego.
+ Po wykonaniu wymaganej operacji możesz zresetować metadane do jego oryginalnego stanu.
   
-## <a name="configure-edit-metadata"></a>Konfigurowanie Edytuj metadane
+## <a name="configure-edit-metadata"></a>Konfiguruj Edytowanie metadanych
   
-1. W usłudze Azure Machine Learning Dodaj moduł edytować metadane do eksperymentu i połącz zestaw danych, które chcesz zaktualizować. Można znaleźć zestawu danych w ramach **przekształcania danych** w **manipulowanie** kategorii.
+1. W Azure Machine Learning Dodaj moduł Edytuj metadane do eksperymentu i Połącz zestaw danych, który chcesz zaktualizować. Zestaw danych można znaleźć w obszarze **Przekształcanie danych** w kategorii manipulowanie.
   
-1. Wybierz **uruchamianie selektora kolumn** i wybierz kolumny lub zestaw kolumn, które chcesz pracować. Można wybrać kolumny indywidualnie według nazwy lub indeksu, lub możesz wybrać grupę kolumn według typu.  
+1. Wybierz pozycję **Uruchom selektor kolumny** i wybierz kolumnę lub zestaw kolumn, z którymi chcesz współpracować. Możesz wybrać kolumny osobno według nazwy lub indeksu lub wybrać grupę kolumn według typu.  
   
-1. Wybierz **— typ danych** opcję, jeśli trzeba przypisać różne typy danych w wybranych kolumnach. Konieczne może być zmiana typu danych dla niektórych operacji. Na przykład jeśli źródłowy zestaw danych zawiera numery obsługiwane jako tekst, użytkownik musi je zmienić na dane typu liczbowego przed rozpoczęciem korzystania z operacji matematycznych.
+1. Wybierz opcję **Typ danych** , jeśli musisz przypisać inny typ danych do wybranych kolumn. Może zajść potrzeba zmiany typu danych dla niektórych operacji. Na przykład, Jeśli źródłowy zestaw danych zawiera liczby obsługiwane jako tekst, należy zmienić je na typ danych liczbowych przed użyciem operacji matematycznych.
 
-    + Obsługiwane typy danych są **ciąg**, **całkowitą**, **Double**, **logiczna**, i **daty/godziny**.
+    + Obsługiwane typy danych to **String**, **Integer**, **Double**, **Boolean**i **DateTime**.
 
-    + Jeśli wybierzesz wiele kolumn, należy zastosować zmiany metadanych *wszystkich* wybrane kolumny. Załóżmy na przykład, że możesz wybrać dwie lub trzy kolumny liczbowe. Można je zmienić, wszystko na string, typ danych i zmień je w ramach jednej operacji. Jednak nie możesz zmienić jedną kolumnę na typ danych ciągu, a inna kolumna z liczba zmiennoprzecinkowa na liczbę całkowitą.
+    + W przypadku wybrania wielu kolumn należy zastosować zmiany metadanych do *wszystkich* zaznaczonych kolumn. Załóżmy na przykład, że wybierasz dwie lub trzy kolumny liczbowe. Wszystkie te elementy można zmienić na dane typu String i zmienić ich nazwy w jednej operacji. Nie można jednak zmienić jednej kolumny na typ danych ciągu i innej kolumny z wartości zmiennoprzecinkowej na liczbę całkowitą.
   
-    + Metadane kolumn nie są bez zmian, jeśli nie określisz nowy typ danych.
+    + Jeśli nie określisz nowego typu danych, metadane kolumn nie ulegają zmianie.
 
-    + Typ kolumny i wartości zmieni się po wykonaniu operacji edycji metadanych. Oryginalnego typu danych można odzyskać w dowolnej chwili za pomocą edycji metadanych można zresetować typ danych kolumny.  
+    + Typ kolumny i jej wartości zmienią się po wykonaniu operacji Edytuj metadane. Możesz w dowolnym momencie odzyskać oryginalny typ danych za pomocą polecenia Edytuj metadane, aby zresetować typ danych kolumny.  
 
     > [!NOTE]
-    > W przypadku zmiany dowolnego typu liczby do **daty/godziny** wpisz, pozostaw **formacie daty/godziny** pole puste. Obecnie nie można określić format danych docelowych.  
+    > W przypadku zmiany dowolnego typu liczby na typ **DateTime** pozostaw pole **format DateTime** puste. Obecnie nie można określić docelowego formatu danych.  
 
-1. Wybierz **podzielone** opcję, aby określić, że wartości w zaznaczonych kolumnach powinny być traktowane jako kategorie.
+1. Wybierz opcję **kategorii** , aby określić, że wartości w wybranych kolumnach mają być traktowane jako kategorie.
 
-    Na przykład możesz mieć kolumnę zawierającą liczby 0, 1 i 2, ale wiedzieć, że numery faktycznie oznacza "Smoker", "Non-smoker" i "Nieznany". W takiej sytuacji, oznaczając flagą tej kolumny jako podzielonych na kategorie kolumny możesz upewnij się, że wartości są używane tylko do grupowania danych, a nie w obliczeniach liczbowych.
+    Na przykład może być kolumną zawierającą liczby 0, 1 i 2, ale wiadomo, że cyfry rzeczywiście oznaczają "dym", "non-dym" i "nieznany". W takim przypadku przez Oflagowanie kolumny jako kategorii upewnij się, że wartości są używane tylko do grupowania danych, a nie do obliczeń liczbowych.
   
-1. Użyj **pola** opcję, jeśli chcesz zmienić sposób, że usługa Azure Machine Learning korzysta z danych w modelu.
+1. Użyj opcji **pola** , jeśli chcesz zmienić sposób, w jaki Azure Machine Learning używa danych w modelu.
 
-    + **Funkcja**: Użyj tej opcji do kolumny jako funkcję w modułach, które działają tylko w kolumnach funkcji. Domyślnie wszystkie kolumny początkowo są traktowane jako funkcje.  
+    + **Funkcja**: Użyj tej opcji, aby oflagować kolumnę jako funkcję w modułach, które działają tylko w kolumnach funkcji. Domyślnie wszystkie kolumny są początkowo traktowane jako funkcje.  
   
-    + **Etykieta**: Użyj tej opcji, aby oznaczyć etykiety, który jest również nazywany przewidywalne zmiennej atrybutu lub elementu docelowego. Wiele modułów wymaga tej kolumny dokładnie jednej etykiety jest obecny w zestawie danych.
+    + **Etykieta**: Użyj tej opcji, aby oznaczyć etykietę, która jest również znana jako atrybut przewidywalny lub zmienna docelowa. Wiele modułów wymaga, aby dokładnie jedna kolumna etykiety znajdowała się w zestawie danych.
 
-        W wielu przypadkach usługi Azure Machine Learning można wywnioskować, że kolumna zawiera etykietę klasy. Ustawiając te metadane, można zagwarantować, że kolumna jest prawidłowo zidentyfikowany. Ustawienie tej opcji nie powoduje zmiany wartości danych. Zmienia sposób, że niektóre algorytmów uczenia maszynowego obsługi danych.
+        W wielu przypadkach Azure Machine Learning może wnioskować, że kolumna zawiera etykietę klasy. Ustawiając te metadane, można upewnić się, że kolumna jest poprawnie identyfikowana. Ustawienie tej opcji nie powoduje zmiany wartości danych. Zmiana ta zmienia się tylko w sposób, w jaki niektóre algorytmy uczenia maszynowego obsługują dane.
   
     > [!TIP]
-    > Czy masz dane, które nie pasuje do tych kategorii? Na przykład zestaw danych może zawierać wartości, takich jak unikatowe identyfikatory, które nie są przydatne jako zmienne. Czasami takie identyfikatory może spowodować problemy, gdy są używane w modelu.
+    > Czy masz dane, które nie mieszczą się w tych kategoriach? Na przykład zestaw danych może zawierać wartości, takie jak unikatowe identyfikatory, które nie są przydatne jako zmienne. Czasami takie identyfikatory mogą spowodować problemy, gdy są używane w modelu.
     >
-    > Na szczęście usługi Azure Machine Learning przechowuje wszystkie dane, dzięki czemu nie trzeba Usuń takie kolumny z zestawu danych. Gdy trzeba wykonywać operacje na niektóre specjalnego zestawu kolumn, wystarczy usunąć inne kolumny tymczasowo przy użyciu [Select Columns in Dataset](select-columns-in-dataset.md) modułu. Później można scalać kolumny do zestawu danych za pomocą [Dodaj kolumny](add-columns.md) modułu.  
+    > Na szczęście Azure Machine Learning utrzymuje wszystkie dane, dzięki czemu nie trzeba usuwać takich kolumn z zestawu danych. Gdy konieczne jest wykonanie operacji na niektórych specjalnych zestawach kolumn, wystarczy usunąć wszystkie inne kolumny tymczasowo przy użyciu modułu [SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych](select-columns-in-dataset.md) ). Później można scalić kolumny z powrotem do zestawu danych przy użyciu modułu [Dodaj kolumny](add-columns.md) .  
   
-1. Aby wyczyścić poprzednich wyborów i przywrócić metadanych do wartości domyślnych, należy użyć następujących opcji.  
+1. Użyj następujących opcji, aby wyczyścić poprzednie wybory i przywrócić metadane do wartości domyślnych.  
   
-    + **Wyczyść funkcji**: Opcja ta służy do usuwania flagi funkcji.  
+    + **Wyczyść funkcję**: Użyj tej opcji, aby usunąć flagę funkcji.  
   
-         Wszystkie kolumny początkowo są traktowane jako funkcje. Dla modułów, które wykonują operacje matematyczne może być konieczne użycie tę opcję, aby zapobiec kolumny liczbowe są traktowane jako zmienne.
+         Wszystkie kolumny są początkowo traktowane jako funkcje. W przypadku modułów wykonujących operacje matematyczne może być konieczne użycie tej opcji w celu uniemożliwienia traktowania kolumn liczbowych jako zmiennych.
   
-    + **Wyczyść etykiety**: Użyj tej opcji, aby usunąć **etykiety** metadanych z określonej kolumny.  
+    + **Wyczyść etykietę**: Użyj tej opcji, aby usunąć metadane **etykiet** z określonej kolumny.  
   
-    + **Wyczyść wynik**: Użyj tej opcji, aby usunąć **wynik** metadanych z określonej kolumny.  
+    + **Wyczyść ocenę**: Użyj tej opcji, aby usunąć metadane **oceny** z określonej kolumny.  
   
-         Obecnie nie można jawnie oznaczyć kolumny jako wynik w usłudze Azure Machine Learning. Jednak niektóre operacje spowodować kolumny są oznaczone jako wynik wewnętrznie. Ponadto niestandardowego modułu R może być danych wyjściowych wartości wyniku.
+         Obecnie nie można jawnie oznaczyć kolumny jako wyniku w Azure Machine Learning. Jednak niektóre operacje powodują, że kolumna jest oflagowana jako wynik wewnętrznie. Ponadto niestandardowy moduł języka R może wyprowadzać wartości wyniku.
 
-1. Aby uzyskać **nowych nazw kolumn**, wprowadź nową nazwę wybranej kolumny lub kolumn.  
+1. Dla **nowych nazw kolumn**wprowadź nową nazwę zaznaczonej kolumny lub kolumny.  
   
-    + Nazwy kolumn, można użyć tylko te znaki, które są obsługiwane przez UTF-8 kodowania. Puste ciągi, wartości null lub nazwy, składać się wyłącznie z miejsc do magazynowania, które nie są dozwolone.  
+    + Nazwy kolumn mogą zawierać tylko znaki obsługiwane przez kodowanie UTF-8. Puste ciągi, wartości null lub nazwy składające się wyłącznie z spacji nie są dozwolone.  
   
-    + Aby zmienić nazwę wiele kolumn, należy wprowadzić nazwy jako rozdzielaną przecinkami listę w kolejności indeksy kolumn.  
+    + Aby zmienić nazwę wielu kolumn, wprowadź nazwy jako listę rozdzieloną przecinkami w kolejności indeksów kolumn.  
   
-    + Można zmienić nazwy wszystkich zaznaczonych kolumn. Nie można pominąć lub pominąć kolumn.  
+    + Należy zmienić nazwę wszystkich wybranych kolumn. Nie można pominąć ani pominąć kolumn.  
   
 1. Uruchom eksperyment.  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [zestaw dostępnych modułów](module-reference.md) do usługi Azure Machine Learning.
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) dla usługi Azure Machine Learning.

@@ -1,7 +1,7 @@
 ---
-title: 'Konwertuj do formatu CSV: Odwołania do modułu'
+title: 'Konwertuj na CSV: Dokumentacja modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać Konwertuj na moduł CSV w usłudze Azure Machine Learning można przekonwertować zestawu danych do formatu CSV, który może być pobrany, eksportowania lub udostępniania z modułami skryptu języka R lub Python.
+description: Dowiedz się, jak za pomocą modułu konwersji do woluminów CSV w usłudze Azure Machine Learning skonwertować zestaw danych do formatu CSV, który można pobrać, wyeksportować lub udostępnić za pomocą modułów skryptów języka R lub Python.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,52 +9,51 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 8b8b6758cc2df7a092ce36e9507f84ac534d0e3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b8f235014efe440e518f1f9c4d0d454f6918955
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028728"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128909"
 ---
 # <a name="convert-to-csv-module"></a>Konwertuj na moduł CSV
 
-W tym artykule opisano moduł interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Ten moduł służy do konwertowania zestawu danych do formatu CSV, które mogą być pobierane, wyeksportować lub udostępnione moduły skryptów języka R lub Python.
+Ten moduł służy do konwertowania zestawu danych w formacie CSV, który można pobrać, wyeksportować lub udostępnić za pomocą modułów skryptów języka R lub Python.
 
-### <a name="more-about-the-csv-format"></a>Więcej informacji na temat formatu CSV 
+### <a name="more-about-the-csv-format"></a>Więcej informacji o formacie CSV 
 
-Format CSV, który oznacza "CSV", jest to format pliku używany przez wiele narzędzi do uczenia maszynowego zewnętrznych. CSV to popularny format wymiany podczas pracy z języków open source, takich jak R lub Python.
+Format CSV, który oznacza "wartości rozdzielane przecinkami", jest formatem pliku używanym przez wiele zewnętrznych narzędzi uczenia maszynowego. Plik CSV jest typowym formatem wymiany podczas pracy z językami typu open source, takimi jak R lub Python.
 
-Nawet jeśli to zrobisz, większość pracy w usłudze Azure Machine Learning, istnieją czasy, kiedy może okazać się przydatna można przekonwertować zestawu danych do pliku CSV do użycia w zewnętrznych narzędzi. Na przykład:
+Nawet w przypadku wykonywania większości zadań w Azure Machine Learning mogą wystąpić sytuacje, w których może być przydatne przekonwertowanie zestawu danych do pliku CSV w celu użycia w zewnętrznych narzędziach. Na przykład:
 
-+ Pobierz plik CSV, aby otworzyć go za pomocą programu Excel lub zaimportować go do relacyjnej bazy danych.  
-+ Zapisz plik CSV w magazynie w chmurze i połączyć je z usługi Power BI do tworzenia wizualizacji.  
-+ Użyj formatu CSV, aby przygotować dane do użycia w języków R i Python. Po prostu kliknij prawym przyciskiem myszy dane wyjściowe z modułu do generowania kodu, na potrzeby dostępu do danych bezpośrednio z poziomu języka Python lub notesu programu Jupyter. 
++ Pobierz plik CSV, aby otworzyć go w programie Excel, lub zaimportuj go do relacyjnej bazy danych.  
++ Zapisz plik CSV w magazynie w chmurze i Połącz się z nim z Power BI, aby tworzyć wizualizacje.  
++ Użyj formatu CSV, aby przygotować dane do użycia w języku R i Python. Po prostu kliknij prawym przyciskiem myszy dane wyjściowe modułu, aby wygenerować kod wymagany do uzyskania dostępu do danych bezpośrednio z poziomu środowiska Python lub notesu Jupyter. 
 
-Podczas konwersji zestawu danych do formatu CSV, plik jest zapisany w obszarze roboczym usługi Azure ML. Narzędzia usługi Azure storage służy do otwierania i używania pliku bezpośrednio lub kliknij prawym przyciskiem myszy danych wyjściowych modułu i Pobierz plik CSV do komputera lub użyć go w kodzie R lub Python.  
+Podczas konwertowania zestawu danych do formatu CSV plik jest zapisywany w obszarze roboczym usługi Azure ML. Możesz użyć narzędzia usługi Azure Storage, aby otworzyć plik i użyć go bezpośrednio, lub kliknąć prawym przyciskiem myszy dane wyjściowe modułu i pobrać plik CSV na komputer lub użyć go w kodzie języka R lub Python.  
 
-## <a name="how-to-configure-convert-to-csv"></a>Jak skonfigurować Konwertuj do formatu CSV
+## <a name="how-to-configure-convert-to-csv"></a>Jak skonfigurować konwertowanie do formatu CSV
 
-1.  Dodaj [Konwertuj do formatu CSV](./convert-to-csv.md) modułu do eksperymentu. Możesz znaleźć tego modułu w **konwersje formatu danych** grupy w interfejsie. 
+1.  Dodaj do eksperymentu moduł [konwersji do woluminu CSV](./convert-to-csv.md) . Ten moduł można znaleźć w grupie **konwersje formatu danych** w interfejsie. 
 
-2. Podłącz je do każdego modułu, który wyprowadza zestawu danych.   
+2. Połącz ją z dowolnym modułem, który wyprowadza zestaw danych.   
   
 3.  Uruchom eksperyment.
 
 ### <a name="results"></a>Wyniki
   
 
-Kliknij dwukrotnie dane wyjściowe [Konwertuj do formatu CSV](./convert-to-csv.md)i wybierz jedną z tych opcji.  
+Kliknij dwukrotnie dane wyjściowe [konwersji do CSV](./convert-to-csv.md), a następnie wybierz jedną z tych opcji.  
 
- + **Zestaw wyników danych -> Pobierz**: Natychmiast otwiera kopii danych w formacie CSV, który można zapisać w folderze lokalnym. Jeśli folder nie jest określony, domyślna nazwa pliku jest stosowana, a pliku CSV są zapisywane w lokalnym **pliki do pobrania** biblioteki.
+ + **Zestaw danych wyników — pobieranie >** : Natychmiast otwiera kopię danych w formacie CSV, który można zapisać w folderze lokalnym. Jeśli nie określisz folderu, zostanie zastosowana domyślna nazwa pliku, a plik CSV zostanie zapisany w lokalnej bibliotece **pobierania** .
 
 
- + **Zestaw wyników danych -> Zapisz jako zestaw danych**: Zapisuje plik CSV do obszaru roboczego usługi uczenie Maszynowe Azure jako oddzielny zestaw danych.
+ + **Zestaw danych wyników — > Zapisz jako zestaw danych**: Zapisuje plik CSV z powrotem do obszaru roboczego Azure ML jako oddzielnego zestawu danych.
 
- + **Generuj kod dostępu do danych**: Uczenie Maszynowe systemu Azure generuje dwa rodzaje kodu, które umożliwiają dostęp do danych, przy użyciu języka Python lub przy użyciu języka R. Dostęp do danych, należy skopiować fragment kodu do aplikacji. (*Generuj kod dostępu do danych pojawią się wkrótce.* )
+ + **Generuj kod dostępu do danych**: Usługa Azure ML generuje dwa zestawy kodu, aby uzyskać dostęp do danych przy użyciu języka Python lub w języku R. Aby uzyskać dostęp do danych, skopiuj fragment kodu do aplikacji. (*Generowanie kodu dostępu do danych będzie wkrótce dostępne).*
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [zestaw dostępnych modułów](module-reference.md) do usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 

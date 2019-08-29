@@ -1,42 +1,43 @@
 ---
-title: Duże pole danych platformy Azure ogranicza | Dokumentacja firmy Microsoft
-description: Opis ograniczeń systemowych i zalecane rozmiary dla połączeń i Microsoft Azure Data Box dużych składników.
+title: Limity Azure Data Box Heavy | Microsoft Docs
+description: Opisuje limity systemu i zalecane rozmiary Microsoft Azure Data Box Heavy składników i połączeń.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: article
-ms.date: 07/03/2019
+ms.date: 08/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 021aedc94b59f73e18679783cfc8b981924769c3
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 76e543a5bec749db55eb77649d2f6e0526f2cb1d
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592359"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126120"
 ---
-# <a name="azure-data-box-heavy-limits"></a>Limity duże pole danych platformy Azure
+# <a name="azure-data-box-heavy-limits"></a>Limity Azure Data Box Heavy
 
-Te limity wziąć pod uwagę wdrażania i obsługi urządzenia Azure Data Box duże. W poniższej tabeli opisano limity dla pola danych.
+Te limity należy wziąć pod uwagę podczas wdrażania i obsługi urządzenia Azure Data Box Heavy. W poniższej tabeli opisano te limity dla urządzenie Data Box.
 
 
-## <a name="data-box-heavy-service-limits"></a>Duże pole ograniczenia usługi danych
+## <a name="data-box-heavy-service-limits"></a>Limity usługi Data Box Heavy
 
 [!INCLUDE [data-box-service-limits](../../includes/data-box-service-limits.md)]
 
-## <a name="data-box-heavy-limits"></a>Limity duże pole danych
+## <a name="data-box-heavy-limits"></a>Limity Data Box Heavy
 
-- Urządzenie Data Box można przechowywać maksymalnie 1 miliard pliki na węzeł.
+- Data Box Heavy może przechowywać maksymalnie 1 000 000 000 plików na węzeł.
+- Data Box Heavy obsługuje maksymalnie 512 kontenerów lub udziałów na węzeł w chmurze. Katalogi najwyższego poziomu w udziale użytkownika stają się kontenerami lub udziałami plików platformy Azure w chmurze.
 
 ## <a name="azure-storage-limits"></a>Limity usługi Azure Storage
 
 [!INCLUDE [data-box-storage-limits](../../includes/data-box-storage-limits.md)]
 
-## <a name="data-upload-caveats"></a>Przekazywanie danych do zastrzeżenia
+## <a name="data-upload-caveats"></a>Zastrzeżenia przekazywania danych
 
 [!INCLUDE [data-box-data-upload-caveats](../../includes/data-box-data-upload-caveats.md)]
 
-## <a name="azure-storage-account-size-limits"></a>Limity rozmiaru konta usługi Azure storage
+## <a name="azure-storage-account-size-limits"></a>Limity rozmiaru konta usługi Azure Storage
 
 [!INCLUDE [data-box-storage-account-size-limits](../../includes/data-box-storage-account-size-limits.md)]
 
@@ -44,6 +45,6 @@ Te limity wziąć pod uwagę wdrażania i obsługi urządzenia Azure Data Box du
 
 [!INCLUDE [data-box-object-size-limits](../../includes/data-box-object-size-limits.md)]
 
-## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Azure blokowych obiektów blob, stronicowych obiektów blob i konwencje nazewnictwa plików
+## <a name="azure-block-blob-page-blob-and-file-naming-conventions"></a>Blokowe obiekty blob platformy Azure, stronicowe obiekty blob i konwencje nazewnictwa plików
 
 [!INCLUDE [data-box-naming-conventions](../../includes/data-box-naming-conventions.md)]

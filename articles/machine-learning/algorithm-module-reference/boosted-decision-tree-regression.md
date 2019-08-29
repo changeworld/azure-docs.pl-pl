@@ -1,7 +1,7 @@
 ---
-title: 'Regresja wzmocnionego drzewa decyzyjnego: Odwołania do modułu'
+title: 'Regresja drzewa decyzyjnej podwyższania: Dokumentacja modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać modułu wzmocnione regresji drzewa decyzyjnego w usłudze Azure Machine Learning w celu utworzenia zespołu drzew regresji przy użyciu zwiększania wyniku.
+description: Dowiedz się, w jaki sposób użyć modułu regresja drzewa decyzyjnego w usłudze Azure Machine Learning, aby utworzyć kompletną liczbę drzew regresji przy użyciu zwiększania.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,80 +9,79 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 67e54f10074ee566ce974dbd27485904bfe0a653
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de4135c2e516eb7f26e1b99a22a60501f4577cce
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411546"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128953"
 ---
-# <a name="boosted-decision-tree-regression-module"></a>Zwiększona modułu regresji drzewa decyzyjnego
+# <a name="boosted-decision-tree-regression-module"></a>Moduł regresji drzewa decyzyjnego
 
-W tym artykule opisano moduł interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Ten moduł służy do tworzenia zespołu drzew regresji przy użyciu zwiększania wyniku. *Ulepszanie* oznacza, że każdego drzewa jest zależny od wcześniejszego drzewa. Algorytm uczy się przez dopasowanie pozostały drzewa, które go poprzedzał. W związku z tym zwiększania wyniku w zespołu drzewa decyzyjnego zwykle zwiększyć dokładność z pewne ryzyko małych, mniej pokrycia.  
+Ten moduł służy do tworzenia kompletu drzew regresji przy użyciu zwiększania. *Zwiększenie wydajności* oznacza, że każde drzewo jest zależne od wcześniejszych drzew. Algorytm uczy się, instalując resztę drzew, które je poprzedza. W tym celu zwiększenie dokładności w drzewie decyzyjnym pozwala zwiększyć dokładność z mniejszym ryzykiem.  
   
-Ta metoda regresji jest metodą uczenia nadzorowanego i dlatego wymaga *etykietą zestawu danych*. Kolumna etykieta musi zawierać wartości liczbowe.  
+Ta metoda regresji jest metodą uczenia nadzorowanego i dlatego wymaga *oznaczonego zestawu danych*. Kolumna Label musi zawierać wartości numeryczne.  
 
 > [!NOTE]
-> Ten moduł służy tylko w przypadku zestawów danych, które są używane wartości liczbowych zmienne.  
+> Tego modułu należy używać tylko z zestawami danych, które używają zmiennych liczbowych.  
 
-Po zdefiniowaniu modelu nauczenia go za pomocą [uczenie modelu](./train-model.md).
+Po zdefiniowaniu modelu nauczenie go przy użyciu [modelu uczenia](./train-model.md).
 
 > [!TIP]
-> Chcesz dowiedzieć się więcej o drzewa, które zostały utworzone? Po model jest uczony, kliknij prawym przyciskiem myszy dane wyjściowe [Train Model](./train-model.md) modułu, a następnie wybierz pozycję **Visualize** się drzewa, który został utworzony w każdej iteracji. Możesz przejść do dzieli dane dla każdego drzewa i Zobacz reguły dla każdego węzła.  
+> Chcesz dowiedzieć się więcej na temat utworzonych drzew? Po przeszkoleniu modelu kliknij prawym przyciskiem myszy dane wyjściowe modułu [uczenie modelu](./train-model.md) i wybierz polecenie **Wizualizacja** , aby zobaczyć drzewo, które zostało utworzone w każdej iteracji. Możesz przejść do szczegółów podziałów dla każdego drzewa i wyświetlić reguły dla każdego węzła.  
   
-## <a name="more-about-boosted-regression-trees"></a>Więcej informacji na temat Regresja wzmocnionego drzewa  
+## <a name="more-about-boosted-regression-trees"></a>Więcej informacji o wzmocnionych drzewach regresji  
 
-Ulepszanie jest jednym z kilku metod klasycznego do tworzenia modeli zespołu, wraz z workowania, losowych lasów i tak dalej.  W usłudze Azure Machine Learning drzewa decyzyjnego Użyj wydajne implementacji gradientu SKŁADNICY zwiększania wyniku algorytmu. Ulepszanie gradientu jest techniką problemów regresji uczenia maszynowego. Zbudował każdego drzewa regresji, w sposób stopniowy do pomiaru błędów w każdym kroku i popraw go w ciągu następnych przy użyciu funkcji utraty wstępnie zdefiniowane. Tak więc model predykcyjny jest faktycznie zespołu słabszy modele predykcyjne.  
+Zwiększenie wydajności jest jedną z wielu metod klasycznych do tworzenia modeli zestawów, a także do worków, losowych lasów i tak dalej.  W Azure Machine Learning, podwyższane drzewa decyzyjne wykorzystują wydajną implementację algorytmu zwiększania gradientów SKŁADNI. Zwiększanie gradientu jest techniką uczenia maszynowego w przypadku problemów z regresją. Kompiluje Każde drzewo regresji w sposób funkcjonalny, przy użyciu wstępnie zdefiniowanej funkcji utraty do pomiaru błędu w każdym kroku i poprawnego dla niego w następnym. W ten sposób model przewidywania jest w rzeczywistości integralną częścią modeli predykcyjnych.  
   
-Problemy z regresji zwiększania wyniku tworzy szereg drzew w sposób stopniowy, a następnie wybiera optymalną drzewa, przy użyciu dowolnego differentiable utraty funkcji.  
+W przypadku problemów z regresją zwiększenie wydajności kompiluje szereg drzew w sposób krokowy, a następnie wybiera optymalne drzewo przy użyciu dowolnej funkcji differentiable strat.  
   
-Aby uzyskać dodatkowe informacje zobacz następujące artykuły:  
+Aby uzyskać dodatkowe informacje, zobacz następujące artykuły:  
   
 + [https://wikipedia.org/wiki/Gradient_boosting#Gradient_tree_boosting](https://wikipedia.org/wiki/Gradient_boosting)
 
-    Tego artykułu w Wikipedii na ulepszanie gradientu zawiera podstawowe informacje dotyczące wzmocnionego drzewa. 
+    Ten artykuł w witrynie Wikipedia na temat zwiększania gradientów zawiera niektóre w tle dla podwyższających drzew. 
   
 -  [https://research.microsoft.com/apps/pubs/default.aspx?id=132652](https://research.microsoft.com/apps/pubs/default.aspx?id=132652)  
 
-    Microsoft Research: Z RankNet do LambdaRank do LambdaMART: Przegląd. By J.C. Burges.
+    Microsoft Research: Od RankNet do LambdaRank do LambdaMART: Przegląd. Według J.C. Burges.
 
-Gradient zwiększania wyniku metody można także klasyfikacji problemów zmniejszając ich regresji przy użyciu funkcji odpowiednie utraty. Aby uzyskać więcej informacji na temat implementacji wzmocnionego drzewa dla zadań klasyfikacji zobacz [Two-Class Boosted Decision drzewa](./two-class-boosted-decision-tree.md).  
+Metodę zwiększania gradientu można również użyć w przypadku problemów z klasyfikacją przez zredukowanie ich do regresji przy użyciu odpowiedniej funkcji strat. Aby uzyskać więcej informacji na temat wdrażania podwyższanych drzew dla zadań klasyfikacji, zobacz dwuklasowe [drzewo decyzyjne](./two-class-boosted-decision-tree.md).  
 
-## <a name="how-to-configure-boosted-decision-tree-regression"></a>Jak skonfigurować wzmocnione regresji drzewa decyzyjnego
+## <a name="how-to-configure-boosted-decision-tree-regression"></a>Jak skonfigurować regresję drzewa decyzyjnej podwyższania
 
-1.  Dodaj **wzmocnione drzewo decyzyjne** modułu do eksperymentu. Można znaleźć w tym module w ramach **uczenia maszynowego**, **zainicjować**w obszarze **regresji** kategorii. 
+1.  Dodaj do eksperymentu moduł podwyższający **decyzje** . Ten moduł można znaleźć w obszarze **Machine Learning**, **zainicjować**, w kategorii **regresja** . 
   
-2.  Określ, jak model, który ma być uczony, ustawiając **trybie trainer tworzenia** opcji.  
+2.  Określ, w jaki sposób ma być szkolony model, ustawiając opcję **tworzenia trybu Trainer** .  
   
-    -   **Pojedynczy parametr**: Wybierz tę opcję, jeśli wiesz, jak chcesz skonfigurować model i zapewnić określony zbiór wartości jako argumenty.  
+    -   **Pojedynczy parametr**: Wybierz tę opcję, Jeśli wiesz, jak chcesz skonfigurować model i udostępnić określony zestaw wartości jako argumenty.  
    
   
-3. **Maksymalna liczba pozostawia na drzewie**: Wskazuje maksymalną liczbę węzłów końcowych (liści) utworzone w dowolnym drzewa.  
+3. **Maksymalna liczba liści na drzewo**: Określ maksymalną liczbę węzłów terminalu, które można utworzyć w dowolnym drzewie.  
 
-    Zwiększenie tej wartości, możesz potencjalnie zwiększyć rozmiar drzewa i uzyskać lepszą dokładności, ryzyko overfitting i już szkolenia czasu.  
+    Zwiększając tę wartość, można zwiększyć rozmiar drzewa i uzyskać lepszą precyzję w przypadku ryzyka przekroczenia i dłuższego czasu uczenia się.  
 
-4. **Minimalna liczba próbek na węzeł liścia**: Wskazać minimalną liczbę przypadków wymaganych do utworzenia dowolnego węzła w terminalu (liść) w drzewie.
+4. **Minimalna liczba próbek na węzeł liścia**: Wskaż minimalną liczbę przypadków potrzebną do utworzenia dowolnego węzła terminalu (liścia) w drzewie.
 
-    Zwiększenie tej wartości, można zwiększyć wartość progową do tworzenia nowych zasad. Na przykład wartość domyślną 1, jeden przypadek może spowodować nową regułę, która ma zostać utworzony. Jeśli zwiększysz wartość 5 dane szkoleniowe musi zawierać co najmniej 5 przypadki, które spełniają warunki tego samego.
+    Zwiększenie tej wartości spowoduje zwiększenie wartości progowej tworzenia nowych reguł. Na przykład, z wartością domyślną 1, nawet pojedynczy przypadek może spowodować utworzenie nowej reguły. W przypadku zwiększenia wartości do 5 dane szkoleniowe muszą zawierać co najmniej 5 przypadków, które spełniają te same warunki.
 
-5. **Nauka współczynnik**: Wpisz liczbę od 0 do 1, który definiuje rozmiar kroku podczas nauki. Tempo uczenia Określa, jak szybko lub wolno uczeń zbieżna dla wartości na optymalne rozwiązanie. Jeśli rozmiar kroku jest zbyt duży, może być przekroczeń optymalne rozwiązanie. Jeśli rozmiar kroku jest zbyt mały, szkolenie dłużej zbieżne najlepsze rozwiązanie.
+5. **Stawka szkoleniowa**: Wpisz liczbę z zakresu od 0 do 1, która definiuje rozmiar kroku podczas uczenia się. Szybkość uczenia określa, jak szybko lub wolno dowiedzieć się zbieżność z optymalnym rozwiązaniem. Jeśli rozmiar tego kroku jest zbyt duży, można przekroczyć optymalne rozwiązanie. Jeśli rozmiar tego kroku jest zbyt mały, szkolenie trwa dłużej niż w przypadku najlepszego rozwiązania.
 
-6. **Liczba drzew skonstruowany**: Wskazywać sumę drzewa decyzyjne, które można utworzyć w zespole. Tworząc więcej drzewa decyzyjne, mogą potencjalnie uzyskać lepszego pokrycia, ale zwiększa czasu szkoleń.
+6. **Liczba skonstruowanych drzew**: Wskaż łączną liczbę drzew decyzyjnych do utworzenia w całości. Przez utworzenie większej liczby drzew decyzyjnych można potencjalnie uzyskać lepszy zakres, ale wydłużyć czas uczenia.
 
-    Ta wartość kontroluje również liczbę drzew wyświetlane, gdy wizualizacja uczonego modelu. Jeśli chcesz wyświetlić lub wydrukować drzewo Pojedyn, wartość można ustawić na 1; jednak jest generowany tylko jeden drzewa (drzewo za pomocą początkowego zestawu parametrów) i są wykonywane nie dalsze iteracji.
+    Ta wartość kontroluje również liczbę drzew wyświetlanych podczas wizualizacji przeszkolonego modelu. Jeśli chcesz zobaczyć lub wydrukować drzewo Ingle, możesz ustawić wartość 1. jednak tworzone jest tylko jedno drzewo (drzewo z początkowym zestawem parametrów) i nie są wykonywane żadne dalsze iteracje.
 
-7. **Inicjator losowy numer**: Wpisz opcjonalny nieujemną liczbę całkowitą jako wartość losowa. Określając inicjator zapewnia odtwarzaniem we wszystkich przebiegach aktualizacji, które mają tych samych danych i parametry.
+7. **Inicjator liczb losowych**: Wpisz opcjonalną nieujemną liczbę całkowitą do użycia jako losową wartość inicjatora. Określenie inicjatora zapewnia odtwarzalność w przebiegach, które mają te same dane i parametry.
 
-    Domyślnie Inicjator losowy jest równa 0, co oznacza, że wartości początkowej są uzyskiwane z zegara systemowego.
+    Domyślnie losowy inicjator jest ustawiony na 0, co oznacza, że początkowa wartość inicjatora jest uzyskiwana z zegara systemowego.
   
-8. **Zezwalaj na nieznane poziomy podzielonych na kategorie**: Wybierz tę opcję, aby utworzyć grupę dla nieznanego wartości w zestawach szkolenia i sprawdzania poprawności. Jeśli wyłączysz tę opcję, model może zaakceptować tylko wartości, które są zawarte w danych szkoleniowych. Model może być mniej dokładny w przypadku znanych wartości, ale funkcja ta może zapewnić lepszą prognoz dotyczących nowych wartości (nieznany).
+8. **Zezwalaj na nieznane poziomy kategorii**: Wybierz tę opcję, aby utworzyć grupę dla nieznanych wartości w zestawach szkoleń i walidacji. W przypadku zaznaczenia tej opcji model może akceptować tylko wartości, które są zawarte w danych szkoleniowych. Model może być mniej dokładny dla znanych wartości, ale może zapewnić lepsze przewidywania dla nowych wartości (nieznanych).
 
-9. Dodaj zestaw danych szkoleniowych i jeden z modułów szkolenia:
+9. Dodaj zestaw danych szkoleniowych i jeden z modułów szkoleniowych:
 
-    - Jeśli ustawisz **trybie trainer tworzenia** opcję **pojedynczy parametr**, użyj [Train Model](train-model.md) modułu.  
+    - Jeśli ustawisz opcję **tworzenia trybu Trainer** na **pojedynczy parametr**, użyj modułu [uczenie modelu](train-model.md) .  
   
     
 
@@ -92,14 +91,14 @@ Gradient zwiększania wyniku metody można także klasyfikacji problemów zmniej
 
 Po zakończeniu szkolenia:
 
-+ Aby wyświetlić drzewa, który został utworzony w każdej iteracji, kliknij prawym przyciskiem myszy dane wyjściowe [Train Model](train-model.md) modułu, a następnie wybierz pozycję **Visualize**.
++ Aby zobaczyć drzewo, które zostało utworzone w każdej iteracji, kliknij prawym przyciskiem myszy dane wyjściowe modułu [uczenie modelu](train-model.md) i wybierz polecenie **Wizualizuj**.
   
-     Kliknij każdy drzewo, aby przejść do dzieli dane i wyświetlić reguły dla każdego węzła.  
+     Kliknij każde drzewo, aby przejść do szczegółów i wyświetlić reguły dla każdego węzła.  
 
-+ Do korzystania z modelu do oceniania, połącz go [Score Model](./score-model.md)w celu prognozowania wartości dla nowe przykłady danych wejściowych.
++ Aby użyć modelu do oceniania, połącz go z [modelem oceny](./score-model.md), aby przewidzieć wartości dla nowych przykładów wejściowych.
 
-+ Aby zapisać migawkę trenowanego modelu, kliknij prawym przyciskiem myszy **modelu Trained** dane wyjściowe z modułu szkolenia i wybierz pozycję **Zapisz jako**. Kopiuj trenowanego modelu, który można zapisać nie jest aktualizowany na kolejnych przebiegów eksperymentu.
++ Aby zapisać migawkę przeszkolonego modelu, kliknij prawym przyciskiem myszy **przeszkolony model** danych wyjściowych modułu szkoleniowego i wybierz polecenie **Zapisz jako**. Kopia przeszkolonego modelu, który jest zapisywany, nie jest aktualizowana po kolejnych uruchomieniach eksperymentu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [zestaw dostępnych modułów](module-reference.md) do usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 

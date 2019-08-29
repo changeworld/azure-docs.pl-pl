@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: 1c6a0ce3e4e8d098d2bc048a331b0ae0cb5c6b13
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: bb28171ceca9861fb5cc0b7be1db9ab58ef72a1b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881385"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124117"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelacja telemetrii w Application Insights
 
@@ -258,6 +258,7 @@ Czasami można dostosować sposób wyświetlania nazw składników na [mapie apl
 ## <a name="next-steps"></a>Następne kroki
 
 - Napisz [](../../azure-monitor/app/api-custom-events-metrics.md)niestandardową telemetrię.
+- Aby uzyskać zaawansowane scenariusze korelacji w ASP.NET Core i ASP.NET, zapoznaj się z artykułem [śledzenie niestandardowych operacji](custom-operations-tracking.md) .
 - Dowiedz się więcej o [ustawianiu cloud_RoleName](../../azure-monitor/app/app-map.md#set-cloud-role-name) dla innych zestawów SDK.
 - Dołączanie wszystkich składników mikrousługi na Application Insights. Zapoznaj się [](../../azure-monitor/app/platforms.md)z obsługiwanymi platformami.
 - Zobacz [model danych](../../azure-monitor/app/data-model.md) dla typów Application Insights.

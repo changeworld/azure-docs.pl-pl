@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 4b24805cd59d1eb9d28591749d5169486e54d506
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 3fa485c9fb2835b8270cb35fc75b57251476005f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68250115"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141776"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Naliczanie opłat za pomocą usługi pomiaru Marketplace
 
@@ -73,7 +73,7 @@ Wymiary rozliczeń są współużytkowane przez wszystkie plany oferty.  Niektó
 Atrybuty definiujące sam wymiar są współużytkowane przez wszystkie plany oferty.  Przed opublikowaniem oferty zmiany wprowadzone do tych atrybutów z kontekstu dowolnego planu wpłyną na definicję wymiaru we wszystkich planach.  Po opublikowaniu oferty te atrybuty nie będą już edytowalne.  Te atrybuty są następujące:
 
 * Identyfikator
-* Name (Nazwa)
+* Name
 * Jednostka miary
 
 Inne atrybuty wymiaru są specyficzne dla każdego planu i mogą mieć różne wartości z planu do zaplanowania.  Przed opublikowaniem planu można edytować te wartości, których dotyczy tylko ten plan.  Po opublikowaniu planu te atrybuty nie będą już edytowalne.  Te atrybuty są następujące:
@@ -84,7 +84,7 @@ Inne atrybuty wymiaru są specyficzne dla każdego planu i mogą mieć różne w
 
 Wymiary mają również dwie specjalne koncepcje: "Enabled" i "Infinite".
 
-* **Włączone** wskazuje, że ten plan uczestniczy w tym wymiarze.  Możesz pozostawić tę niesprawdzoną wartość, jeśli tworzysz nowy plan, który nie wysyła zdarzeń użycia na podstawie tego wymiaru.  Ponadto wszystkie nowe wymiary dodane po pierwszym opublikowaniu planu będą wyświetlane jako "niewłączone" w już opublikowanym planie.  Wyłączony wymiar będzie teraz widoczny na wszystkich listach wymiarów dla planu widocznego dla klientów.
+* **Włączone** wskazuje, że ten plan uczestniczy w tym wymiarze.  Możesz pozostawić tę niesprawdzoną wartość, jeśli tworzysz nowy plan, który nie wysyła zdarzeń użycia na podstawie tego wymiaru.  Ponadto wszystkie nowe wymiary dodane po pierwszym opublikowaniu planu będą wyświetlane jako "niewłączone" w już opublikowanym planie.  Wyłączony wymiar nie będzie widoczny na żadnych listach wymiarów dla planu widocznego dla klientów.
 * **Nieskończona**, reprezentowana przez symbol nieskończoności "∞" wskazuje, że ten plan uczestniczy w tym wymiarze, ale nie zlicza użycia względem tego wymiaru.  Jeśli chcesz wskazać swoim klientom, że funkcjonalność reprezentowana przez ten wymiar jest uwzględniona w planie, ale bez limitu użycia.  Wymiar z nieskończonym użyciem będzie widoczny na listach wymiarów dla planu widocznego dla klientów, ze wskazaniem, że nigdy nie będzie naliczana opłata za ten plan.
 
 >[!Note] 
@@ -103,7 +103,7 @@ Ponieważ wymiar używany z usługą pomiaru w portalu Marketplace reprezentuje 
 Po opublikowaniu oferty z wymiarem nie można już zmieniać szczegółów na poziomie oferty dla tego wymiaru:
 
 * Identyfikator
-* Name (Nazwa)
+* Name
 * Jednostka miary
 
 Po opublikowaniu planu nie można już zmieniać szczegółów na poziomie planu:

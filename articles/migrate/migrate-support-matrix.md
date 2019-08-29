@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 08/29/2019
 ms.author: raynew
-ms.openlocfilehash: 49bd193303255cdf7d18fd5da9dec8d84c50a829
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 99ef5c8a4a4291dd1b9d047da9006623dacd0b53
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019187"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147878"
 ---
 # <a name="azure-migrate-support-matrix"></a>Macierz obsługi Azure Migrate
 
@@ -31,10 +31,10 @@ Istnieją dwie wersje usługi Azure Migrate:
 
 W tabeli zestawiono obsługiwane scenariusze migracji.
 
-**Wdrożenie** | **Uzyskać*** 
+**Wdrożenie** | **Szczegóły** 
 --- | --- 
 **Ocena lokalna** | Oceniaj obciążenia lokalne i dane uruchomione na maszynach wirtualnych VMware i maszynach wirtualnych funkcji Hyper-V. Oceń przy użyciu Azure Migrate oceny i Microsoft Data Migration Assistant (DMA), a także narzędzi innych firm, które obejmują Cloudamize, telenajmu i platforma turbonomic Server.
-**Migracja lokalna na platformę Azure** | Migruj obciążenia i dane uruchomione na serwerach fizycznych, maszynach wirtualnych VMware, maszynach wirtualnych funkcji Hyper-V i w wystąpieniach AWS/GCP na platformę Azure. Migruj przy użyciu narzędzia do oceny i Azure Database Migration Service Azure Migrate Server (DMS) oraz narzędzi innych firm, które zawierają Carbonite i CorentTech.
+**Migracja lokalna na platformę Azure** | Migrowanie obciążeń i danych działających na serwerach fizycznych, maszynach wirtualnych VMware, maszynach wirtualnych funkcji Hyper-V, serwerach fizycznych i maszynach wirtualnych opartych na chmurze na platformie Azure. Migruj przy użyciu narzędzia do oceny i Azure Database Migration Service Azure Migrate Server (DMS) oraz narzędzi innych firm, które zawierają Carbonite i CorentTech.
 
 Pomoc dotycząca określonego narzędzia jest podsumowana w następujący sposób.
 
@@ -53,7 +53,7 @@ CorentTech | Migracja | [Dowiedz się więcej](https://www.corenttech.com/).
 
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
-Subscription | W ramach subskrypcji można korzystać z pojedynczego projektu Azure Migrate.
+Subscription | W ramach subskrypcji można mieć wiele projektów Azure Migrate.
 Uprawnienia platformy Azure | Aby utworzyć projekt Azure Migrate, musisz mieć uprawnienia współautora lub właściciela w ramach subskrypcji.
 Maszyny wirtualne VMware  | Oceń do 35 000 maszyn wirtualnych VMware w jednym projekcie.
 Maszyny wirtualne funkcji Hyper-V | Oceń do 10 000 maszyn wirtualnych funkcji Hyper-V w jednym projekcie.

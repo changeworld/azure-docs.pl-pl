@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 509bd472fe5f930ac830b8b4016129f8acb67324
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 80bc5ef78a73430dea23bdd644767d9fa9b3c9a8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612886"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124677"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Często zadawane pytania
 Ta strona zawiera odpowiedzi na często zadawane pytania dotyczące Azure Active Directory Domain Services. Kontynuuj sprawdzanie aktualizacji.
@@ -61,6 +61,9 @@ Nie. Domena udostępniona przez Azure AD Domain Services jest domeną zarządzan
 
 ### <a name="can-guest-users-invited-to-my-directory-use-azure-ad-domain-services"></a>Czy użytkownicy-Goście zaproszeni do mojego katalogu używają Azure AD Domain Services?
 Nie. Użytkownicy-Goście zaproszeni do katalogu usługi Azure AD przy użyciu procesu zapraszania [B2B usługi Azure AD](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md) są synchronizowane w Azure AD Domain Services domenie zarządzanej. Jednak hasła dla tych użytkowników nie są przechowywane w katalogu usługi Azure AD. W związku z tym Azure AD Domain Services nie ma możliwości synchronizacji skrótów NTLM i Kerberos dla tych użytkowników w domenie zarządzanej. W związku z tym użytkownicy nie mogą zalogować się do domeny zarządzanej ani przyłączyć komputerów do domeny zarządzanej.
+
+### <a name="can-i-move-an-existing-azure-ad-domain-services-managed-domain-to-a-different-subscription-resource-group-region-or-virtual-network"></a>Czy można przenieść istniejącą Azure AD Domain Servicesą domenę zarządzaną do innej subskrypcji, grupy zasobów, regionu lub sieci wirtualnej?
+Nie. Po utworzeniu domeny zarządzanej Azure AD Domain Services nie można przenieść wystąpienia do innej grupy zasobów, sieci wirtualnej, subskrypcji itd. Podczas wdrażania wystąpienia usługi Azure AD DS należy zadbać o wybranie najbardziej odpowiedniej subskrypcji, grupy zasobów, regionu i sieci wirtualnej.
 
 ## <a name="administration-and-operations"></a>Administracja i operacje
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Czy można połączyć się z kontrolerem domeny dla mojej domeny zarządzanej przy użyciu Pulpit zdalny?

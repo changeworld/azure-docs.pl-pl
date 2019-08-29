@@ -3,16 +3,16 @@ title: Omówienie usługi Azure Blueprints
 description: Dowiedz się, w jaki sposób usługa Azure Plans umożliwia tworzenie, Definiowanie i wdrażanie artefaktów w środowisku platformy Azure.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/08/2019
+ms.date: 08/26/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: be7e3043172f988a429bbf02dec08bfbbc1a70b7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 631aa956573fd611988030af8ea7e34c6c266045
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848435"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146098"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Omówienie usługi Azure Plans
 
@@ -106,21 +106,30 @@ Aby użytkownik mógł przypisywać strategie lub anulować ich przypisanie, jeg
 > [!NOTE]
 > Przypisania strategii są tworzone w ramach subskrypcji, dlatego uprawnienia przypisywania strategii lub anulowania takiego przypisania muszą zostać przyznane w zakresie subskrypcji bądź muszą być dziedziczone w zakresie subskrypcji.
 
-Wszystkie powyższe uprawnienia są uwzględnione w roli **Właściciel**. Rola **Współautor** ma uprawnienia do tworzenia i usuwania uprawnień planu, ale nie ma uprawnień do przypisywania planu. Jeśli te wbudowane role nie spełniają wymagań dotyczących zabezpieczeń, należy rozważyć utworzenie [roli niestandardowej](../../role-based-access-control/custom-roles.md).
+Dostępne są następujące wbudowane role:
+
+|Rola RBAC | Opis |
+|-|-|
+|[Właściciel](../../role-based-access-control/built-in-roles.md#owner) | Oprócz innych uprawnień program zawiera wszystkie Azure Blueprint powiązane uprawnienia. |
+|[Współautor](../../role-based-access-control/built-in-roles.md#contributor) | Oprócz innych uprawnień program może tworzyć i usuwać definicje planów, ale nie ma uprawnień do przypisywania strategii. |
+|[Współautor planu](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | Może zarządzać definicjami planu, ale nie należy ich przypisywać. |
+|[Operator planu](../../role-based-access-control/built-in-roles.md#blueprint-operator) | Może przypisywać istniejące opublikowane plany, ale nie może tworzyć nowych definicji planu. Przypisanie strategii działa tylko wtedy, gdy przypisanie zostało wykonane przy użyciu tożsamości zarządzanej przypisanej przez użytkownika. |
+
+Jeśli te wbudowane role nie spełniają wymagań dotyczących zabezpieczeń, należy rozważyć utworzenie [roli niestandardowej](../../role-based-access-control/custom-roles.md).
 
 > [!NOTE]
 > W przypadku korzystania z tożsamości zarządzanej przypisanej do systemu jednostka usługi dla planów platformy Azure wymaga roli **właściciela** w przypisanej subskrypcji, aby można było włączyć wdrożenie. W przypadku korzystania z portalu ta rola jest automatycznie przyznawana i odwoływana dla wdrożenia. W przypadku korzystania z interfejsu API REST ta rola musi zostać ręcznie przyznana, ale jest automatycznie odwoływana po zakończeniu wdrożenia. Jeśli jest używana tożsamość zarządzana przypisana przez użytkownika, tylko użytkownik tworzący przypisanie planu wymaga uprawnień **właściciela** .
 
 ## <a name="naming-limits"></a>Limity nazewnictwa
 
-Poniżej znajduje się lista ograniczeń istniejących dla niektórych pól:
+Dla niektórych pól istnieją następujące ograniczenia:
 
 |Object|Pole|Dozwolone znaki|Maksymalnie z Długość|
 |-|-|-|-|
-|Plan|Name (Nazwa)|litery, cyfry, łączniki i kropki|48|
+|Plan|Name|litery, cyfry, łączniki i kropki|48|
 |Plan|Version|litery, cyfry, łączniki i kropki|20|
-|Przypisanie strategii|Name (Nazwa)|litery, cyfry, łączniki i kropki|90|
-|Artefakt planu|Name (Nazwa)|litery, cyfry, łączniki i kropki|48|
+|Przypisanie strategii|Name|litery, cyfry, łączniki i kropki|90|
+|Artefakt planu|Name|litery, cyfry, łączniki i kropki|48|
 
 ## <a name="video-overview"></a>Omówienie wideo
 

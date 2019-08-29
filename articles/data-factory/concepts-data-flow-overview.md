@@ -1,29 +1,50 @@
 ---
-title: Mapowanie Przegląd przepływu danych w usłudze Azure Data Factory
-description: Mapowanie przepływu danych w usłudze Azure Data Factory wyjaśnienie — omówienie
+title: Azure Data Factory mapowanie przepływu danych — omówienie
+description: Omówienie mapowania przepływów danych w Azure Data Factory
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 051886f98d6d35594336291bbb2defb2a4acdfc5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f4c124c59584c8538d85ac61650661ae559a77b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233048"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70123922"
 ---
-# <a name="what-are-mapping-data-flows"></a>Co to jest mapowanie przepływu danych?
+# <a name="what-are-mapping-data-flows"></a>Co to jest mapowanie przepływów danych?
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Mapowanie dane przepływają są Przekształcanie zaprojektować wizualnie danych w usłudze Azure Data Factory. Przepływy danych umożliwiają inżynierom danych tworzenie logiki przekształcania danych graficznych, bez konieczności pisania kodu. Wynikowy przepływów danych są wykonywane jako działań w ramach potoki fabryki danych Azure przy użyciu klastrów usługi Azure Databricks skalowanych w poziomie.
+Mapowanie przepływów danych to wizualnie zaprojektowana transformacja danych w Azure Data Factory. Przepływy danych umożliwiają inżynierom danych Tworzenie logiki transformacji danych graficznych bez pisania kodu. Wyniki przepływów danych są wykonywane jako działania w ramach potoków Azure Data Factory przy użyciu klastrów Azure Databricks skalowanych w poziomie.
 
-Celem przepływu danych fabryki danych Azure jest zapewnienie w pełni wygląd bez konieczności kodowania. Przepływu danych zostaną wykonane zgodnie z własnego klastra wykonywania, przetwarzanie danych skalowanych w poziomie. Usługa Azure Data Factory obsługuje wszystkie translacji kodu, optymalizacja ścieżki i wykonanie zadań przepływu danych.
+Zamiarem przepływu danych Azure Data Factory jest zapewnienie w pełni wizualizacji, bez konieczności kodowania. Przepływy danych będą wykonywane na własnym klastrze wykonawczym na potrzeby przetwarzania danych skalowanych w poziomie. Azure Data Factory obsługuje wszystkie tłumaczenia kodu, optymalizację ścieżki i wykonywanie zadań przepływu danych.
 
-Rozpocznij od utworzenia przepływów danych w trybie debugowania, dzięki czemu można sprawdzić poprawność logiki przekształcania interaktywnie. Następnie Dodaj działanie przepływu danych do potoku do wykonania i test dane przepływu w potoku debugowania lub za pomocą "Wyzwól teraz" w potoku przetestowanie przepływu danych z potokiem działania.
+Zacznij od utworzenia przepływów danych w trybie debugowania, aby umożliwić interaktywną weryfikację logiki transformacji. Następnie Dodaj do potoku działanie przepływu danych w celu wykonania i przetestowania przepływu danych w debugowaniu potoku lub użyj "Wyzwól teraz" w potoku, aby przetestować przepływ danych z działania potoku.
 
-A następnie będzie planowanie i monitorowanie działań przepływu danych przy użyciu potoków usługi Azure Data Factory, które są wykonywane działania przepływu danych.
+Następnie można zaplanować i monitorować działania przepływu danych przy użyciu potoków Azure Data Factory, które wykonują działanie przepływu danych.
 
-Przełącznik tryb debugowania na powierzchni projektowej przepływ danych umożliwia tworzenie interaktywnych przekształcenia danych. Tryb debugowania udostępnia środowisko przygotowywania danych do tworzenia przepływu danych.
+Przełącznik tryb debugowania na powierzchni projektowej przepływu danych umożliwia interaktywne Kompilowanie transformacji danych. Tryb debugowania zapewnia przygotowanie danych i środowisko podglądu danych dla konstruowania przepływu danych.
+
+## <a name="begin-building-your-data-flow-logical-graph"></a>Rozpocznij budowanie wykresu logicznego przepływu danych
+
+Rozpocznij Kompilowanie przepływów danych przy użyciu znaku + w obszarze zasoby fabryki, aby utworzyć nowy przepływ danych.
+
+![Nowy przepływ danych](media/data-flow/newdataflow2.png "Nowy przepływ danych")
+
+Zacznij od skonfigurowania transformacji źródłowej, a następnie Dodaj transformację danych do każdego kolejnego kroku przy użyciu znaku +. Podczas tworzenia grafu logicznego można przełączać się między trybami grafu i konfiguracji przy użyciu przycisku "Pokaż graf" i "Ukryj wykres".
+
+![Pokaż wykres](media/data-flow/showg.png "Pokaż wykres")
+
+## <a name="configure-transformation-logic"></a>Konfigurowanie logiki transformacji
+
+![Ukryj wykres](media/data-flow/hideg.png "Ukryj wykres")
+
+Ukrycie wykresu pozwoli na przechodzenie przez węzły transformacji w późniejszym czasie.
+
+![Przejdź](media/data-flow/showhide.png "Przejdź")
+
+## <a name="next-steps"></a>Następne kroki
+
+* [Rozpocznij od transformacji źródłowej](data-flow-source.md)

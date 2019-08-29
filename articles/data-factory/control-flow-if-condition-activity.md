@@ -1,25 +1,24 @@
 ---
-title: Jeśli warunek działania w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
-description: Działanie If Condition umożliwia sterowanie przepływem przetwarzania na podstawie warunku.
+title: Działanie if Condition w Azure Data Factory | Microsoft Docs
+description: Działanie if Condition umożliwia sterowanie przepływem przetwarzania na podstawie warunku.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: 52f96b8fc2a1288c652169817a3a73d7b26caac9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fc6318b5033ff1297f917ab95b28f8ed9285e930
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153472"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142490"
 ---
-# <a name="if-condition-activity-in-azure-data-factory"></a>Jeśli warunek działania w usłudze Azure Data Factory
+# <a name="if-condition-activity-in-azure-data-factory"></a>Działanie if Condition w Azure Data Factory
 Działanie If Condition pełni taką samą rolę, co instrukcja if w językach programowania. Powoduje ono obliczenie zestawu działań, gdy warunek zostanie obliczony na wartość `true`, oraz innego zestawu działań, gdy warunek zostanie obliczony na wartość `false`. 
 
 ## <a name="syntax"></a>Składnia
@@ -66,19 +65,19 @@ Działanie If Condition pełni taką samą rolę, co instrukcja if w językach p
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-name | Nazwa działania warunku if. | String | Tak
-type | Musi być równa **IfCondition** | String | Yes
-expression | Wyrażenie musi zwrócić wartość true lub false | Wyrażenia z wyniku typu boolean | Tak
-ifTrueActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `true`. | Array | Tak
-ifFalseActivities | Zestaw działań, które są wykonywane, gdy wyrażenie ma `false`. | Array | Tak
+name | Nazwa działania if-Condition. | String | Tak
+type | Musi być ustawiona na **IfCondition** | String | Tak
+wyrażenia | Wyrażenie, które musi oszacować do wartości true lub false. | Wyrażenie z typem wyniku Boolean | Tak
+ifTrueActivities | Zestaw działań, które są wykonywane, gdy wynikiem `true`wyrażenia jest wyrażenie. | Array | Tak
+ifFalseActivities | Zestaw działań, które są wykonywane, gdy wynikiem `false`wyrażenia jest wyrażenie. | Array | Tak
 
 ## <a name="example"></a>Przykład
-Potok w tym przykładzie kopiuje dane z folderu wejściowego do folderu wyjściowego. Folder wyjściowy jest określana przez wartość parametru potoku: routeSelection. Jeśli wartość routeSelection jest spełniony, dane są kopiowane do outputPath1. Ponadto jeśli wartość routeSelection ma wartość false, dane są kopiowane do outputPath2. 
+Potok w tym przykładzie kopiuje dane z folderu wejściowego do folderu wyjściowego. Folder wyjściowy jest określany przez wartość parametru potoku: routeSelection. Jeśli wartość routeSelection ma wartość true, dane są kopiowane do outputPath1. A jeśli wartością routeSelection jest false, dane są kopiowane do outputPath2. 
 
 > [!NOTE]
-> Ta sekcja zawiera definicje JSON i przykładowe polecenia programu PowerShell, aby uruchomić potok. Aby uzyskać wskazówki krok po kroku instrukcje tworzenia potoku usługi Data Factory przy użyciu definicji JSON i programu Azure PowerShell, zobacz [samouczek: tworzenie fabryki danych przy użyciu programu Azure PowerShell](quickstart-create-data-factory-powershell.md).
+> Ta sekcja zawiera definicje JSON i przykładowe polecenia programu PowerShell umożliwiające uruchomienie potoku. Aby zapoznać się z instrukcjami krok po kroku dotyczącymi tworzenia potoku Data Factory przy użyciu definicji Azure PowerShell i JSON, zobacz [Samouczek: Tworzenie fabryki danych przy użyciu Azure PowerShell](quickstart-create-data-factory-powershell.md).
 
-### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>Potok z działaniem w warunku IF (Adfv2QuickStartPipeline.json)
+### <a name="pipeline-with-if-condition-activity-adfv2quickstartpipelinejson"></a>Potok z działaniem IF-Condition (Adfv2QuickStartPipeline. JSON)
 
 ```json
 {
@@ -179,7 +178,7 @@ Potok w tym przykładzie kopiuje dane z folderu wejściowego do folderu wyjścio
 }
 ```
 
-Inny przykład, wyrażenie jest: 
+Innym przykładem dla wyrażenia jest: 
 
 ```json
 "expression":  {
@@ -189,7 +188,7 @@ Inny przykład, wyrażenie jest:
 ```
 
 
-### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Połączona usługa Azure Storage (AzureStorageLinkedService.json)
+### <a name="azure-storage-linked-service-azurestoragelinkedservicejson"></a>Połączona usługa Azure Storage (AzureStorageLinkedService. JSON)
 
 ```json
 {
@@ -206,8 +205,8 @@ Inny przykład, wyrażenie jest:
 }
 ```
 
-### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Sparametryzowany zestaw danych obiektów Blob platformy Azure (BlobDataset.json)
-Ustawia potoku **folderPath** wartości albo **outputPath1** lub **outputPath2** parametr w potoku. 
+### <a name="parameterized-azure-blob-dataset-blobdatasetjson"></a>Sparametryzowany zestaw danych obiektów blob platformy Azure (BlobDataset. JSON)
+Potok ustawia **folderPath** na wartość **outputPath1** lub **outputPath2** parametru potoku. 
 
 ```json
 {
@@ -233,7 +232,7 @@ Ustawia potoku **folderPath** wartości albo **outputPath1** lub **outputPath2**
 }
 ```
 
-### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Parametr potoku JSON (PipelineParameters.json)
+### <a name="pipeline-parameter-json-pipelineparametersjson"></a>Plik JSON parametru potoku (PipelineParameters. JSON)
 
 ```json
 {
@@ -248,7 +247,7 @@ Ustawia potoku **folderPath** wartości albo **outputPath1** lub **outputPath2**
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Tych poleceniach założono, zapisane pliki w formacie JSON w folderze: C:\ADF. 
+W tych poleceniach przyjęto założenie, że pliki JSON zostały zapisane w folderze: C:\ADF. 
 
 ```powershell
 Connect-AzAccount
@@ -289,11 +288,11 @@ Write-Host "\nActivity 'Error' section:" -foregroundcolor "Yellow"
 $result.Error -join "`r`n"
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne działania przepływu sterowania obsługiwanych przez usługę Data Factory: 
+## <a name="next-steps"></a>Następne kroki
+Zobacz inne działania przepływu sterowania obsługiwane przez Data Factory: 
 
 - [Działanie Execute Pipeline](control-flow-execute-pipeline-activity.md)
 - [Dla każdego działania](control-flow-for-each-activity.md)
 - [Działanie GetMetadata](control-flow-get-metadata-activity.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
-- [Działanie internetowe](control-flow-web-activity.md)
+- [Aktywność sieci Web](control-flow-web-activity.md)

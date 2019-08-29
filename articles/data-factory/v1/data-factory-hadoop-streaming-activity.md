@@ -1,32 +1,31 @@
 ---
-title: Przekształcanie danych za pomocą działania przesyłania strumieniowego usługi Hadoop — Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak użyć działania przesyłania strumieniowego usługi Hadoop w usłudze Azure data factory do przekształcania danych, uruchamiając programy przesyłania strumieniowego usługi Hadoop na — żądanie/swój własny klaster HDInsight.
+title: Przekształcanie danych za pomocą działania Hadoop Streaming — Azure | Microsoft Docs
+description: Dowiedz się, jak używać działania przesyłania strumieniowego Hadoop w usłudze Azure Data Factory w celu przekształcania danych przez uruchamianie programów przesyłania strumieniowego Hadoop na żądanie/własny klaster usługi HDInsight.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: 4c3ff8f2-2c00-434e-a416-06dfca2c41ec
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: dd00c0a2998009ce6c39ca19abb25a2548682cee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fd9512f4ede8d9b8b1a8fd69b7120303fe6a0ad5
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486349"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139547"
 ---
-# <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Przekształcanie danych za pomocą działania przesyłania strumieniowego usługi Hadoop w usłudze Azure Data Factory
-> [!div class="op_single_selector" title1="Działania przekształcania"]
-> * [Działanie technologii hive](data-factory-hive-activity.md) 
-> * [Działania technologii pig](data-factory-pig-activity.md)
-> * [Działania technologii MapReduce](data-factory-map-reduce.md)
-> * [Działania przesyłania strumieniowego usługi Hadoop](data-factory-hadoop-streaming-activity.md)
-> * [Działania platformy Spark](data-factory-spark.md)
+# <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Przekształcanie danych przy użyciu działania usługi Hadoop streaming w Azure Data Factory
+> [!div class="op_single_selector" title1="Działania transformacji"]
+> * [Działanie Hive](data-factory-hive-activity.md) 
+> * [Aktywność trzody chlewnej](data-factory-pig-activity.md)
+> * [Działanie MapReduce](data-factory-map-reduce.md)
+> * [Działanie przesyłania strumieniowego Hadoop](data-factory-hadoop-streaming-activity.md)
+> * [Działanie platformy Spark](data-factory-spark.md)
 > * [Działanie wykonywania wsadowego w usłudze Machine Learning](data-factory-azure-ml-batch-execution-activity.md)
 > * [Działania aktualizowania zasobów w usłudze Machine Learning](data-factory-azure-ml-update-resource-activity.md)
 > * [Działania procedur składowanych](data-factory-stored-proc-activity.md)
@@ -34,18 +33,18 @@ ms.locfileid: "60486349"
 > * [Niestandardowe działanie platformy .NET](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [przekształcania danych za pomocą usługi Hadoop, przesyłanie strumieniowe działania w usłudze Data Factory](../transform-data-using-hadoop-streaming.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [Przekształć dane przy użyciu działania Hadoop streaming w Data Factory](../transform-data-using-hadoop-streaming.md).
 
 
-Można użyć działania HDInsightStreamingActivity wywołania zadania przesyłania strumieniowego usługi Hadoop z potoku usługi Azure Data Factory. Poniższy fragment kodu JSON przedstawiono składnię za pomocą HDInsightStreamingActivity w pliku JSON potoku. 
+Za pomocą działania HDInsightStreamingActivity można wywołać zadanie przesyłania strumieniowego Hadoop z potoku Azure Data Factory. Poniższy fragment kodu JSON przedstawia składnię używania HDInsightStreamingActivity w pliku JSON potoku. 
 
-Działania przesyłania strumieniowego HDInsight w usłudze Data Factory [potoku](data-factory-create-pipelines.md) wykonuje programy przesyłania strumieniowego usługi Hadoop na [własne](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) lub [na żądanie](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) klastra HDInsight z systemem Windows/Linux. W tym artykule opiera się na [działania przekształcania danych](data-factory-data-transformation-activities.md) artykułu, który przedstawia ogólny przegląd działań przekształcania obsługiwanych i przekształcania danych.
+Działanie przesyłania strumieniowego usługi HDInsight w [potoku](data-factory-create-pipelines.md) Data Factory wykonuje programy przesyłania strumieniowego Hadoop [](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) we [własnym lub lokalnym klastrze usługi](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) HDInsight opartym na systemie Windows/Linux. W tym artykule przedstawiono artykuł [działania przekształcania danych](data-factory-data-transformation-activities.md) , który zawiera ogólne omówienie transformacji danych i obsługiwanych działań transformacji.
 
 > [!NOTE] 
-> Jeśli jesteś nowym użytkownikiem usługi Azure Data Factory, zapoznaj się z artykułem [wprowadzenie do usługi Azure Data Factory](data-factory-introduction.md) i wykonać instrukcje z samouczka: [Tworzenie pierwszego potoku danych](data-factory-build-your-first-pipeline.md) przed przeczytaniem tego artykułu. 
+> Jeśli jesteś nowym do Azure Data Factory, przeczytaj artykuł [wprowadzenie do Azure Data Factory](data-factory-introduction.md) i wykonaj samouczek: [Utwórz pierwszy potok danych](data-factory-build-your-first-pipeline.md) przed przeczytaniem tego artykułu. 
 
-## <a name="json-sample"></a>Przykładowy kod JSON
-Klaster HDInsight zostanie automatycznie wypełniona programów przykład (wc.exe i cat.exe) i danych (davinci.txt). Domyślnie nazwa kontenera, który jest używany przez klaster HDInsight jest nazwą klastra. Na przykład jeśli nazwa klastra jest myhdicluster, nazwa kontenera obiektów blob skojarzony będzie myhdicluster. 
+## <a name="json-sample"></a>Przykład JSON
+Klaster usługi HDInsight jest automatycznie wypełniany przy użyciu przykładowych programów (z. exe i Cat. exe) oraz danych (DaVinci. txt). Domyślnie nazwa kontenera, który jest używany przez klaster usługi HDInsight, jest nazwą klastra. Na przykład jeśli nazwa klastra to myhdicluster, nazwa skojarzonego kontenera obiektów BLOB byłaby myhdicluster. 
 
 ```JSON
 {
@@ -95,28 +94,28 @@ Klaster HDInsight zostanie automatycznie wypełniona programów przykład (wc.ex
 
 Pamiętaj o następujących kwestiach:
 
-1. Ustaw **linkedServiceName** do nazwy połączonej usługi, która wskazuje usługi HDInsight cluster uruchamiania zadania mapreduce przesyłania strumieniowego.
-2. Ustaw typ działania, aby **HDInsightStreaming**.
-3. Aby uzyskać **mapowania** właściwości, określ nazwę pliku wykonywalnego mapowania. W tym przykładzie cat.exe jest mapowania pliku wykonywalnego.
-4. Aby uzyskać **reduktor** właściwości, określ nazwę pliku wykonywalnego reduktor. W tym przykładzie wc.exe jest reduktor pliku wykonywalnego.
-5. Aby uzyskać **wejściowych** właściwość typu, określ plik wejściowy (w tym lokalizację) dla mapowania. W przykładzie: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample jest kontener obiektów blob, przykład/data/Gutenberg to folder, a davinci.txt jest obiekt blob.
-6. Aby uzyskać **dane wyjściowe** właściwość typu, określ plik wyjściowy (w tym lokalizację) reduktor. Dane wyjściowe zadania przesyłania strumieniowego usługi Hadoop jest zapisywany w lokalizacji określonej dla tej właściwości.
-7. W **filePaths** sekcji, określ ścieżki dla plików wykonywalnych mapowania i reduktor. W przykładzie: "adfsample/example/apps/wc.exe" adfsample jest kontener obiektów blob, przykładowe/aplikacje jest folder i wc.exe jest plik wykonywalny.
-8. Aby uzyskać **fileLinkedService** właściwości, określ połączoną usługę Azure Storage reprezentujący magazynu platformy Azure, który zawiera pliki określone w sekcji filePaths.
-9. Aby uzyskać **argumenty** właściwości określenie argumentów dla zadania przesyłania strumieniowego.
-10. **Getdebuginfo —** właściwości jest elementem opcjonalnym. Jeśli ustawiono błędów, dzienniki są pobierane tylko w przypadku niepowodzenia. Jeśli ustawiono zawsze, dzienniki będą pobierane zawsze niezależnie od stanu wykonywania.
+1. Ustaw **linkedServiceName** na nazwę połączonej usługi, która wskazuje na klaster HDInsight, na którym uruchamiane jest zadanie przesyłania strumieniowego MapReduce.
+2. Ustaw typ działania na **HDInsightStreaming**.
+3. Dla właściwości **Mapowanie** Określ nazwę pliku wykonywalnego mapowania. W przykładzie Cat. exe jest plikiem wykonywalnym mapowania.
+4. Dla właściwości **Redukuj** Określ nazwę pliku wykonywalnego. W przykładzie plik. exe jest plikiem wykonywalnym.
+5. Dla właściwości Typ **danych wejściowych** Określ plik wejściowy (łącznie z lokalizacją) dla mapowania. W przykładzie: `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt`: adfsample jest kontenerem obiektów blob, przykładem/danymi/Gutenberg jest folder, a DaVinci. txt jest obiektem BLOB.
+6. Dla właściwości Typ **danych wyjściowych** Określ plik wyjściowy (łącznie z lokalizacją) dla elementu zmniejszającego liczbę. Dane wyjściowe zadania przesyłania strumieniowego Hadoop są zapisywane w lokalizacji określonej dla tej właściwości.
+7. W sekcji **filePaths** Określ ścieżki dla plików wykonywalnych mapowania i redukcji. W przykładzie: "adfsample/example/Apps/w pliku. exe", adfsample jest kontenerem obiektów blob, przykładem/aplikacjami jest folder, a plik. exe jest plikiem wykonywalnym.
+8. Dla właściwości **fileLinkedService** Określ połączoną usługę Azure Storage, która reprezentuje magazyn platformy Azure, który zawiera pliki określone w sekcji filePaths.
+9. Dla właściwości **argumenty** określ argumenty zadania przesyłania strumieniowego.
+10. Właściwość **GetDebugInfo —** jest elementem opcjonalnym. Jeśli jest ustawiona na niepowodzenie, dzienniki są pobierane tylko w przypadku niepowodzenia. Gdy ustawienie ma wartość zawsze, dzienniki są zawsze pobierane niezależnie od stanu wykonania.
 
 > [!NOTE]
-> Jak pokazano w przykładzie, podajesz wyjściowy zestaw danych w działaniu przesyłania strumieniowego usługi Hadoop dla **generuje** właściwości. Ten zestaw danych jest po prostu fikcyjnego zestawu danych, który jest wymagany do harmonogramu potoku. Nie należy określić wszystkie wejściowy zestaw danych dla działania dotyczące **dane wejściowe** właściwości.  
+> Jak pokazano w przykładzie, należy określić wyjściowy zestaw danych dla działania Hadoop przesyłania strumieniowego dla właściwości Outputs. Ten zestaw danych jest tylko fikcyjnym zestawem danych, który jest wymagany do przekierowania harmonogramu potoku. Nie trzeba określać żadnego wejściowego zestawu danych dla działania dla właściwości **dane wejściowe** .  
 > 
 > 
 
 ## <a name="example"></a>Przykład
-Potok w tym przewodniku uruchamia program Map/Reduce przesyłania strumieniowego wyrazów w klastrze Azure HDInsight. 
+Potok w tym instruktażu uruchamia mapę przesyłania strumieniowego programu Word Count/Zmniejsz program w klastrze usługi Azure HDInsight. 
 
 ### <a name="linked-services"></a>Połączone usługi
 #### <a name="azure-storage-linked-service"></a>Połączona usługa Azure Storage
-Najpierw utworzysz połączoną usługę służącą do połączenia magazynu platformy Azure, w którym jest używany przez klaster usługi Azure HDInsight w usłudze Azure data factory. Jeśli kopiujesz/wklejasz następujący kod, nie zapomnij zastąpić nazwę konta i klucz konta za pomocą nazwy i klucza usługi Azure Storage. 
+Najpierw Utwórz połączoną usługę, aby połączyć magazyn platformy Azure używany przez klaster usługi Azure HDInsight z fabryką danych Azure. Jeśli skopiujesz/wkleisz Poniższy kod, nie zapomnij zastąpić nazwy konta i klucza konta nazwą i kluczem usługi Azure Storage. 
 
 ```JSON
 {
@@ -130,8 +129,8 @@ Najpierw utworzysz połączoną usługę służącą do połączenia magazynu pl
 }
 ```
 
-#### <a name="azure-hdinsight-linked-service"></a>Usługa Azure HDInsight połączone
-Następnie utworzysz połączoną usługę służącą do łączenie klastra usługi Azure HDInsight w usłudze Azure data factory. Jeśli kopiujesz/wklejasz następujący kod, zastąp nazwę klastra HDInsight z nazwą klastra usługi HDInsight, a następnie zmień wartości nazwy i hasła użytkownika. 
+#### <a name="azure-hdinsight-linked-service"></a>Połączona usługa Azure HDInsight
+Następnie utworzysz połączoną usługę, aby połączyć klaster usługi Azure HDInsight z fabryką danych Azure. Jeśli skopiujesz/wkleisz Poniższy kod, zastąp nazwę klastra usługi HDInsight nazwą klastra HDInsight i zmień wartości nazwy użytkownika i hasła. 
 
 ```JSON
 {
@@ -150,7 +149,7 @@ Następnie utworzysz połączoną usługę służącą do łączenie klastra us�
 
 ### <a name="datasets"></a>Zestawy danych
 #### <a name="output-dataset"></a>Wyjściowy zestaw danych
-Potok w tym przykładzie nie przyjmuje żadnych danych wejściowych. Wyjściowy zestaw danych należy określić dla działania przesyłania strumieniowego HDInsight. Ten zestaw danych jest po prostu fikcyjnego zestawu danych, który jest wymagany do harmonogramu potoku. 
+Potok w tym przykładzie nie przyjmuje żadnych danych wejściowych. Należy określić wyjściowy zestaw danych dla działania przesyłania strumieniowego usługi HDInsight. Ten zestaw danych jest tylko fikcyjnym zestawem danych, który jest wymagany do przekierowania harmonogramu potoku. 
 
 ```JSON
 {
@@ -175,9 +174,9 @@ Potok w tym przykładzie nie przyjmuje żadnych danych wejściowych. Wyjściowy 
 ```
 
 ### <a name="pipeline"></a>Potok
-Potok w tym przykładzie ma tylko jedno działanie, którego typ jest: **HDInsightStreaming**. 
+Potok w tym przykładzie ma tylko jedno działanie, którego typem jest: **HDInsightStreaming**. 
 
-Klaster HDInsight zostanie automatycznie wypełniona programów przykład (wc.exe i cat.exe) i danych (davinci.txt). Domyślnie nazwa kontenera, który jest używany przez klaster HDInsight jest nazwą klastra. Na przykład jeśli nazwa klastra jest myhdicluster, nazwa kontenera obiektów blob skojarzony będzie myhdicluster.  
+Klaster usługi HDInsight jest automatycznie wypełniany przy użyciu przykładowych programów (z. exe i Cat. exe) oraz danych (DaVinci. txt). Domyślnie nazwa kontenera, który jest używany przez klaster usługi HDInsight, jest nazwą klastra. Na przykład jeśli nazwa klastra to myhdicluster, nazwa skojarzonego kontenera obiektów BLOB byłaby myhdicluster.  
 
 ```JSON
 {
@@ -224,9 +223,9 @@ Klaster HDInsight zostanie automatycznie wypełniona programów przykład (wc.ex
 }
 ```
 ## <a name="see-also"></a>Zobacz też
-* [Działanie technologii hive](data-factory-hive-activity.md)
-* [Działania technologii pig](data-factory-pig-activity.md)
-* [Działania technologii MapReduce](data-factory-map-reduce.md)
+* [Działanie Hive](data-factory-hive-activity.md)
+* [Aktywność trzody chlewnej](data-factory-pig-activity.md)
+* [Działanie MapReduce](data-factory-map-reduce.md)
 * [Wywoływanie programów platformy Spark](data-factory-spark.md)
 * [Wywoływanie skryptów języka R](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
 

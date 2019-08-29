@@ -1,7 +1,7 @@
 ---
-title: 'Las decyzyjny z regresji: Odwołania do modułu'
+title: 'Regresja lasu decyzyjnego: Dokumentacja modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak użyć modułu regresji lasu decyzji w usłudze Azure Machine Learning, aby utworzyć model regresji, w oparciu o zespołu drzewa decyzyjne.
+description: Dowiedz się, jak utworzyć model regresji na podstawie kompletu drzew decyzyjnych za pomocą modułu regresja lasu decyzyjnego w usłudze Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,77 +9,76 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: d372adf75d46fdedb7a6f2b17e47822475d1f155
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8bb3285aecb6aff399606e6263f014027a86581
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65442360"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128889"
 ---
-# <a name="decision-forest-regression-module"></a>Las decyzyjny z regresji modułu
+# <a name="decision-forest-regression-module"></a>Moduł regresji lasu decyzyjnego
 
-W tym artykule opisano moduł interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Używaj tego modułu, aby utworzyć model regresji, w oparciu o zespołu drzewa decyzyjne.
+Użyj tego modułu, aby utworzyć model regresji na podstawie kompletu drzew decyzyjnych.
 
-Po skonfigurowaniu modelu musi nauczenia modelu używając etykietami zestawu danych i [uczenie modelu](./train-model.md) modułu.  Następnie można uczonego modelu do przewidywania przyszłych zdarzeń. 
+Po skonfigurowaniu modelu należy przeprowadzić uczenie modelu przy użyciu zestawu danych z etykietami i modułu [uczenie modelu](./train-model.md) .  Model przeszkolony może być następnie używany do prognozowania. 
 
 ## <a name="how-it-works"></a>Jak to działa
 
-Drzewa decyzyjne są-parametrycznych dla modeli, które wykonują sekwencję proste testy dla każdego wystąpienia struktury drzewa danych binarnych przechodzenie, aż do osiągnięcia węzeł liścia (decyzja).
+Drzewa decyzyjne są modelami nieparametrycznymi, które wykonują sekwencję prostych testów dla każdego wystąpienia, przechodząc do struktury danych drzewa binarnego do momentu osiągnięcia węzła liścia (decyzja).
 
-Drzewa decyzyjne ma następujące zalety:
+Drzewa decyzyjne mają następujące zalety:
 
-- Są wydajne zarówno obliczeń, jak i użycie pamięci podczas uczenia i przewidywania.
+- Są one wydajne w przypadku obliczeń i wykorzystania pamięci podczas uczenia i przewidywania.
 
-- Mogą one reprezentować granice nieliniowych decyzji.
+- Mogą reprezentować granice decyzyjne nieliniowe.
 
-- One zintegrowaną funkcją wyboru i klasyfikacji i odporności obecności funkcje generujące dużo alertów.
+- Zapewniają one zintegrowane Wybieranie funkcji i klasyfikację i są odporne na obecność funkcji szumów.
 
-Ten model regresji składa się z zespołu drzewa decyzyjne. Każdy drzewa w las decyzyjny regresji generuje dystrybucji gaussowskie jako prognozę. Agregacja odbywa się za pośrednictwem zespołu drzew odnaleźć dystrybucji gaussowskie najbliżej rozkład połączony dla wszystkich drzew w modelu.
+Ten model regresji składa się z kompletów drzew decyzyjnych. Każde drzewo w lesie z decyzją regresji wyprowadza rozkład gaussowskie jako prognozowanie. Agregacja jest wykonywana w ramach zestawu drzew, aby znaleźć rozkład gaussowskie najbliżej połączonej dystrybucji dla wszystkich drzew w modelu.
 
-Aby uzyskać więcej informacji na temat teoretycznych struktury do tego algorytmu i jego wdrożenie znajduje się w artykule: [Lasy decyzji: Ujednolicona struktura klasyfikacji, regresji, Szacowanie gęstość kolektora uczenia i uczenia nadzorowanego częściową](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+Aby uzyskać więcej informacji na temat teoretycznej struktury tego algorytmu i jego implementacji, zobacz ten artykuł: [Lasy decyzyjne: Ujednolicona platforma do klasyfikowania, regresji, oszacowania gęstości, uczenie kolektora i uczenie częściowo nadzorowane](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
-## <a name="how-to-configure-decision-forest-regression-model"></a>Jak skonfigurować Model regresji lasu decyzji
+## <a name="how-to-configure-decision-forest-regression-model"></a>Konfigurowanie modelu regresji lasu decyzyjnego
 
-1. Dodaj **regresji lasu decyzji** modułu do eksperymentu. Można znaleźć modułu w interfejsie, w obszarze **uczenia maszynowego**, **zainicjować modelu**, i **regresji**.
+1. Dodaj do eksperymentu moduł **regresji lasu** . Moduł można znaleźć w interfejsie w obszarze **Machine Learning**, **zainicjuj model**i **regresja**.
 
-2. Otwórz właściwości modułu i **próbkowanie metoda**, wybierz metodę używaną do tworzenia indywidualnych drzewa.  Możesz wybrać spośród **pakowanie** lub **replikować**.
+2. Otwórz właściwości modułu i dla **metody ponownej próbkowania**wybierz metodę użytą do utworzenia poszczególnych drzew.  Możesz wybrać jedną z opcji Working lub **replikacja**.
 
-    - **Pakowanie**: Skrót workowania *bootstrap agregowania*. Każdy drzewa w las decyzyjny regresji generuje dystrybucji gaussowskie za pomocą prognozy. Agregacji ma na celu znalezienie gaussowskie, w której pierwsze dwa momenty dopasowania chwil mieszanki Gaussians podane, łącząc wszystkie Gaussians zwróconych przez poszczególne drzewa.
+    - **Working**: Working jest również nazywane *agregacją Bootstrap*. Każde drzewo w lesie z decyzją regresji wyprowadza rozkład gaussowskie w drodze przewidywania. Agregacją jest znalezienie gaussowskie, którego pierwsze dwa momenty są zgodne z chwilą mieszaniny gaussowskie podaną przez połączenie wszystkich gaussowskie zwracanych przez poszczególne drzewa.
 
-         Aby uzyskać więcej informacji, zobacz wpis Wikipedia dla [Bootstrap agregowania](https://wikipedia.org/wiki/Bootstrap_aggregating).
+         Aby uzyskać więcej informacji, zobacz wpis Wikipedia na potrzeby [agregowania Bootstrap](https://wikipedia.org/wiki/Bootstrap_aggregating).
 
-    - **Replikowanie**: W przypadku replikacji każdego drzewa jest uczony w dokładnie tymi samymi danymi wejściowymi. Określenie, które podziału predykatem, po którym jest używane dla każdego węzła drzewa pozostaje losowe drzew. zostanie ona zróżnicowany.
+    - **Replikacja**: W replikacji Każde drzewo jest przeszkolone dokładnie na te same dane wejściowe. Określenie, który predykat Split jest używany dla każdego węzła drzewa, pozostaje losowy, a drzewa będą różne.
 
-         Aby uzyskać więcej informacji na temat procesu uczenia z **replikować** opcji, zobacz [lasy decyzji dla przetwarzania obrazów i analizy medycznej obrazu. Criminisi i J. Shotton. Springer 2013. ](https://research.microsoft.com/projects/decisionforests/).
+         Aby uzyskać więcej informacji na temat procesu szkolenia z opcją **replikacja** , zobacz [lasy decyzyjne dla przetwarzanie obrazów i analizy obrazu medycznego. Criminisi i J. Shotton. Springer 2013. ](https://research.microsoft.com/projects/decisionforests/).
 
-3. Określ, jak model, który ma być uczony, ustawiając **trybie trainer tworzenia** opcji.
+3. Określ, w jaki sposób ma być szkolony model, ustawiając opcję **tworzenia trybu Trainer** .
 
-    - **Jeden parametr**
+    - **Pojedynczy parametr**
 
-      Jeśli wiesz, jak chcesz skonfigurować modelu, możesz podać określonych wartości jako argumenty. Może mieć wartości te rozpoznawane przez eksperymentowanie w usłudze lub ich odebrania jako wskazówki.
+      Jeśli wiesz, jak chcesz skonfigurować model, możesz podać określony zestaw wartości jako argumenty. Te wartości mogą być uzyskane przez eksperymentowanie lub otrzymywanie jako wskazówki.
 
 
 
-4. Aby uzyskać **numer drzewa decyzyjne**, wskazywać sumę drzewa decyzyjne, które można utworzyć w zespole. Tworząc więcej drzewa decyzyjne, mogą potencjalnie uzyskać lepszego pokrycia, ale wypoczynkowych więc ceny wzrosną.
+4. W przypadku **liczby drzew decyzyjnych**należy wskazać łączną liczbę drzew decyzyjnych do utworzenia w całości. Przez utworzenie większej liczby drzew decyzyjnych można potencjalnie uzyskać lepszy zakres, ale zwiększy się czas uczenia.
 
     > [!TIP]
-    > Ta wartość kontroluje również liczbę drzew wyświetlane, gdy wizualizacja uczonego modelu. Jeśli chcesz wyświetlić lub wydrukować jedno drzewo, wartość można ustawić na 1; oznacza to jednak tylko jeden tree będzie generowany (drzewo za pomocą początkowego zestawu parametrów), a zostaną wykonane nie dalsze iteracji.
+    > Ta wartość kontroluje również liczbę drzew wyświetlanych podczas wizualizacji przeszkolonego modelu. Jeśli chcesz zobaczyć lub wydrukować pojedyncze drzewo, możesz ustawić wartość 1. oznacza to jednak, że zostanie utworzone tylko jedno drzewo (drzewo z początkowym zestawem parametrów) i żadna kolejna iteracja nie zostanie wykonana.
 
-5. Aby uzyskać **maksymalną głębokość drzewa decyzyjne**, wpisz liczbę aby ograniczać maksymalną głębokość wszelkie drzewa decyzyjnego. Zwiększenie Głębokość drzewa może zwiększyć dokładność ryzyko chwilę szkolenia overfitting i zwiększenia.
+5. W celu uzyskania **maksymalnej głębokości drzew decyzyjnych**wpisz liczbę, aby ograniczyć maksymalną głębokość każdego drzewa decyzyjnego. Zwiększenie głębokości drzewa może zwiększyć precyzję w przypadku ryzyka pewnego przekroczenia i zwiększenia czasu uczenia się.
 
-6. Aby uzyskać **liczby losowe dzieli dane na węzeł**, wpisz liczbę dzieli dane do użycia podczas tworzenia każdego węzła drzewa. A *podziału* losowo dzielą oznacza, że funkcje w każdym poziomie drzewa (node).
+6. Dla **liczby losowych podziałów na węzeł**wpisz liczbę podziałów, która ma być używana podczas kompilowania każdego węzła drzewa. *Podział* oznacza, że funkcje na każdym poziomie drzewa (węzeł) są losowo podzielone.
 
-7. Aby uzyskać **minimalna liczba próbek na węzeł liścia**, wskazać minimalną liczbę przypadków, które są wymagane do utworzenia dowolnego węzła w terminalu (liść) w drzewie.
+7. Dla **minimalnej liczby próbek na węzeł liścia**wskaż minimalną liczbę przypadków, które są wymagane do utworzenia dowolnego węzła terminalu (liścia) w drzewie.
 
-     Zwiększenie tej wartości, można zwiększyć wartość progową do tworzenia nowych zasad. Na przykład wartość domyślną 1, jeden przypadek może spowodować nową regułę, która ma zostać utworzony. Jeśli zwiększysz wartość 5 dane szkoleniowe musi zawierać co najmniej pięć przypadki, które spełniają te same warunki.
+     Zwiększenie tej wartości spowoduje zwiększenie wartości progowej tworzenia nowych reguł. Na przykład, z wartością domyślną 1, nawet pojedynczy przypadek może spowodować utworzenie nowej reguły. W przypadku zwiększenia wartości do 5 dane szkoleniowe muszą zawierać co najmniej pięć przypadków, które spełniają te same warunki.
 
 
-9. Łączą z etykietami zestawu danych, wybierz kolumnę pojedynczej etykiecie, zawierającą nie więcej niż dwie sytuacje i [Train Model](./train-model.md).
+9. Połącz zestaw danych z etykietą, wybierz jedną kolumnę etykiety zawierającą nie więcej niż dwa wyniki, a następnie połącz się z [modelem uczenia](./train-model.md).
 
-    - Jeśli ustawisz **trybie trainer tworzenia** opcję **pojedynczy parametr**, uczenie modelu przy użyciu [uczenie modelu](./train-model.md) modułu.
+    - Jeśli ustawisz opcję **tworzenia trybu Trainer** na **pojedynczy parametr**, nauczenie modelu przy użyciu modułu [uczenie modelu](./train-model.md) .
 
    
 
@@ -89,12 +88,12 @@ Aby uzyskać więcej informacji na temat teoretycznych struktury do tego algoryt
 
 Po zakończeniu szkolenia:
 
-+ Aby wyświetlić drzewa, który został utworzony w każdej iteracji, kliknij prawym przyciskiem myszy dane wyjściowe modułu szkolenia, a następnie wybierz pozycję **Visualize**.
++ Aby zobaczyć drzewo, które zostało utworzone w każdej iteracji, kliknij prawym przyciskiem myszy dane wyjściowe modułu szkoleń i wybierz polecenie **Wizualizuj**.
 
-+ Aby wyświetlić zasady dla każdego węzła, kliknij pozycję w każdym drzewie i przejść do dzieli dane.
++ Aby wyświetlić reguły dla każdego węzła, kliknij każde drzewo i przejdź do szczegółów.
 
-+ Aby zapisać migawkę trenowanego modelu, kliknij prawym przyciskiem myszy dane wyjściowe modułu szkolenia, a następnie wybierz pozycję **zapisania Trenowanego modelu**. Ta kopia modelu nie jest aktualizowany na kolejnych przebiegów eksperymentu. 
++ Aby zapisać migawkę przeszkolonego modelu, kliknij prawym przyciskiem myszy dane wyjściowe modułu szkoleń i wybierz polecenie **Zapisz jako przeszkolony model**. Ta kopia modelu nie jest aktualizowana po kolejnych uruchomieniach eksperymentu. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [zestaw dostępnych modułów](module-reference.md) do usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 

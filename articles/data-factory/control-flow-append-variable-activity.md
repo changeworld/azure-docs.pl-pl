@@ -1,38 +1,38 @@
 ---
-title: Dołącz działania zmiennej w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować działanie Dołącz do zmiennej, aby dodać wartość do istniejącej zmiennej tablicy zdefiniowanych w potoku usługi fabryka danych
+title: Działanie dołączania zmiennej w Azure Data Factory | Microsoft Docs
+description: Dowiedz się, jak ustawić działanie Dołącz zmienną, aby dodać wartość do istniejącej zmiennej tablicowej zdefiniowanej w potoku Data Factory
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.date: 10/09/2018
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: a5efe946000eb00e65d314ae53d7136761e2109d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24808c9ed4bda5e8d3b0ce23ab93bc59eb260374
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60557226"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141724"
 ---
-# <a name="append-variable-activity-in-azure-data-factory"></a>Dołącz działania zmiennej w usłudze Azure Data Factory
+# <a name="append-variable-activity-in-azure-data-factory"></a>Działanie dołączania zmiennej w Azure Data Factory
 
-Działanie Dołącz zmienna służy do Dodaj wartość istniejącej zmiennej tablicy zdefiniowanych w potoku usługi fabryka danych.
+Użyj działania Dołącz zmienną, aby dodać wartość do istniejącej zmiennej tablicowej zdefiniowanej w potoku Data Factory.
 
 ## <a name="type-properties"></a>Właściwości typu
 
 Właściwość | Opis | Wymagane
 -------- | ----------- | --------
 name | Nazwa działania w potoku | Tak
-description | Tekst opisujący, co działanie robi | nie
-type | Typ działania jest AppendVariable | tak
-value | Ciąg literału lub wyrażenie wartości obiektu używane do dołączenia do określonej zmiennej | tak
-nazwa_zmiennej | Nazwa zmiennej, która będzie modyfikowana przez działanie, zmienna musi być typu "Array" | tak
+description | Tekst opisujący działanie działania | nie
+type | Typ działania to AppendVariable | tak
+value | Literał ciągu lub wartość obiektu Expression użyta do dołączenia do określonej zmiennej | tak
+variableName | Nazwa zmiennej, która zostanie zmodyfikowana przez działanie, zmienna musi być typu "Array" | tak
 
-## <a name="next-steps"></a>Kolejne kroki
-Więcej informacji na temat obsługiwanych przez usługę Data Factory działanie przepływu sterowania pokrewne: 
+## <a name="next-steps"></a>Następne kroki
+Informacje na temat działania związanego z przepływem sterowania obsługiwanego przez Data Factory: 
 
-- [Ustaw działania zmiennej](control-flow-set-variable-activity.md)
+- [Działanie ustawiania zmiennej](control-flow-set-variable-activity.md)

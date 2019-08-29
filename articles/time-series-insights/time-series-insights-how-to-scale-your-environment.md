@@ -1,6 +1,6 @@
 ---
-title: Jak skalować środowiska usługi Azure Time Series Insights | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób skalowania środowiska Azure Time Series Insights. Aby zwiększyć lub zmniejszyć pojemność w ramach cen jednostki SKU, należy użyć witryny Azure portal.
+title: Jak skalować środowisko Azure Time Series Insights | Microsoft Docs
+description: W tym artykule opisano sposób skalowania środowiska Azure Time Series Insightsowego. Użyj Azure Portal, aby dodać lub odjąć pojemność w ramach jednostki SKU cenowej.
 ms.service: time-series-insights
 services: time-series-insights
 author: ashannon7
@@ -10,55 +10,55 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 04/30/2019
+ms.date: 08/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: ce29336c6e5dc187eb2ef713cd5dfeafdc8a003f
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 13fa2b892013cf4a3fb96220c901030c6b0aee0b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165648"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129110"
 ---
-# <a name="how-to-scale-your-time-series-insights-environment"></a>Jak skalować środowiska usługi Time Series Insights
+# <a name="how-to-scale-your-time-series-insights-environment"></a>Jak skalować środowisko Time Series Insights
 
-W tym artykule opisano, jak w celu zmiany pojemności środowiska środowiska usługi Time Series Insights przy użyciu witryny Azure portal. Pojemność jest mnożnik stosowane do szybkości transferu danych przychodzących, pojemność i koszt związany z wybranej jednostki SKU.
+W tym artykule opisano sposób zmiany pojemności środowiska Time Series Insights środowiska przy użyciu Azure Portal. Pojemność to mnożnik stosowany do szybkości transferu danych przychodzących, pojemności magazynu i kosztu związanego z wybraną jednostką SKU.
 
-Aby zwiększyć lub zmniejszyć pojemność w ramach danej jednostki SKU cen, można użyć witryny Azure portal.
+Za pomocą Azure Portal można zwiększyć lub zmniejszyć pojemność w ramach danej jednostki SKU cenowej.
 
-Jednak zmiana warstwy cenowej jednostki SKU jest niedozwolona. Na przykład w środowisku zawierającym S1, w jednostce SKU wyceny nie można przekonwertować w wersji S2 lub na odwrót.
+Jednak zmiana jednostki SKU warstwy cenowej jest niedozwolona. Na przykład środowisko z jednostką SKU cen S1 nie może być konwertowane na S2 lub odwrotnie.
 
-## <a name="s1-sku-ingress-rates-and-capacities"></a>Stawki transferu danych przychodzących S1 SKU usługi i pojemności
+## <a name="s1-sku-ingress-rates-and-capacities"></a>Szybkość i pojemność jednostki SKU w warstwie S1
 
-| S1 Pojemność jednostki SKU | Szybkość transferu danych przychodzących | Maksymalna pojemność magazynu
+| Pojemność jednostki SKU S1 | Szybkość transferu danych przychodzących | Maksymalna pojemność magazynu
 | --- | --- | --- |
-| 1 | 1 GB (1 milion zdarzeń) | 30 GB (30 mln zdarzeń) na miesiąc |
-| 10 | 10 GB (10 milionów zdarzeń) | 300 GB (300 milionów zdarzeń) na miesiąc |
+| 1 | 1 GB (1 000 000 zdarzeń) | 30 GB (30 000 000 zdarzeń) miesięcznie |
+| 10 | 10 GB (10 000 000 zdarzeń) | 300 GB (zdarzenia 300 000 000) miesięcznie |
 
-## <a name="s2-sku-ingress-rates-and-capacities"></a>Stawki transferu danych przychodzących s2 SKU i pojemności
+## <a name="s2-sku-ingress-rates-and-capacities"></a>Szybkość i pojemność ruchu przychodzącego jednostki SKU
 
-| S2 Pojemność jednostki SKU | Szybkość transferu danych przychodzących | Maksymalna pojemność magazynu
+| Pojemność jednostki SKU S2 | Szybkość transferu danych przychodzących | Maksymalna pojemność magazynu
 | --- | --- | --- |
-| 1 | 10 GB (10 milionów zdarzeń) | 300 GB (300 milionów zdarzeń) na miesiąc |
-| 10 | 100 GB (100 milionów zdarzeń) | 3 TB (3 MLD zdarzeń) na miesiąc |
+| 1 | 10 GB (10 000 000 zdarzeń) | 300 GB (zdarzenia 300 000 000) miesięcznie |
+| 10 | 100 GB (zdarzenia 100 000 000) | 3 TB (3 000 000 000 zdarzeń) miesięcznie |
 
-Możliwości jest skalowane liniowo, więc S1 SKU usługi o pojemności 2 obsługuje 2 GB (2 mln) zdarzeń na szybkość transferu danych przychodzących dnia i 60 GB (60 milionów zdarzeń) na miesiąc.
+Pojemności są skalowane liniowie, więc jednostka SKU S1 z pojemnością 2 obsługuje 2 GB (2 000 000) zdarzeń na dzień i 60 GB (60 000 000 zdarzeń) miesięcznie.
 
-## <a name="change-the-capacity-of-your-environment"></a>Zmienianie pojemności środowiska
+## <a name="change-the-capacity-of-your-environment"></a>Zmień pojemność środowiska
 
-1. W witrynie Azure portal zlokalizuj i wybierz środowisko usługi Time Series Insights.
+1. W Azure Portal Znajdź i wybierz środowisko Time Series Insights.
 
-1. Wybierz z menu dla danego środowiska usługi Time Series Insights **Konfiguruj**.
+1. W menu środowiska Time Series Insights wybierz pozycję **Konfiguruj**.
 
-   [![configure.png](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
+   [![Konfiguruj plik PNG](media/scale-your-environment/configure.png)](media/scale-your-environment/configure.png#lightbox)
 
-1. Dostosuj **pojemności** suwak, aby wybrać pojemność, który spełnia wymagania ceny transferu danych przychodzących i pojemność magazynu. Zwróć uwagę **szybkość transferu danych przychodzących**, **pojemność magazynu**, i **szacowany koszt** aktualizacji dynamicznej, aby pokazać wpływ zmiany.
+1. Dostosuj suwak **pojemności** , aby wybrać pojemność, która spełnia wymagania dotyczące stawek za transfer danych przychodzących i pojemności magazynu. Zwróć uwagę, że **szybkość**transferu danych przychodzących, **pojemność magazynu**i **Szacowana** aktualizacja kosztu są dynamiczne, aby pokazać wpływ zmiany.
 
-   [![Suwak](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
+   [![Skakując](media/scale-your-environment/slider.png)](media/scale-your-environment/slider.png#lightbox)
 
-   Alternatywnie możesz wpisać numer mnożnik pojemności w polu tekstowym z prawej strony suwaka.
+   Alternatywnie można wpisać liczbę mnożnika pojemności do pola tekstowego po prawej stronie suwaka.
 
-1. Wybierz **Zapisz** Skalowanie środowiska. Wskaźnik postępu jest wyświetlany, dopóki zmiana zostaje zatwierdzona, chwilowo.
+1. Wybierz pozycję **Zapisz** , aby skalować środowisko. Wskaźnik postępu jest wyświetlany do momentu, aż zmiana zostanie zatwierdzona.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Sprawdź, czy jest nową pojemność [wystarczające, aby zapobiec ograniczania](time-series-insights-diagnose-and-solve-problems.md).
+- Sprawdź, czy nowa pojemność jest [wystarczająca, aby zapobiec ograniczaniu wydajności](time-series-insights-diagnose-and-solve-problems.md).

@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 287dbd3d6da4aa2bf5bd1da652cdeaeda3136321
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 5bd34edd07622af90bd897b6640c2c16da5c9ac0
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907727"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147666"
 ---
 # <a name="get-started-with-device-management-python"></a>Wprowadzenie do zarządzania urządzeniami (Python)
 
@@ -35,7 +35,7 @@ Na końcu tego samouczka masz dwie aplikacje konsolowe języka Python:
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-Poniżej przedstawiono instrukcje instalacji dotyczące wymagań wstępnych.
+## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 

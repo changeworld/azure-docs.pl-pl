@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17cea353df0337b062b89cd440f79f7869450f8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9289bfe9e90186896a753e5853d81d2f06669917
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113205"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125174"
 ---
-# <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>Samouczek: wyzwalanie uwierzytelniania wieloskładnikowego i zmiany hasła przy użyciu zdarzeń o podwyższonym ryzyku
+# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>Samouczek: Wykrywanie zmian Multi-Factor Authentication i haseł przy użyciu wykrywania ryzyka
 
 W tym samouczku włączysz funkcje usługi Azure Active Directory (Azure AD) Identity Protection, funkcję usługi Azure AD w warstwie Premium P2, która jest więcej niż tylko narzędziem do monitorowania i raportowania. Aby chronić tożsamości w organizacji, można skonfigurować zasady oparte na ryzykach, które reagują automatycznie na ryzykowne zachowania. Te zasady mogą automatycznie stosować blokadę lub inicjować rozwiązanie problemu, w tym wymaganie zmiany hasła lub wymuszanie uwierzytelniania wieloskładnikowego.
 
-Zasady usługi Azure AD Identity Protection może służyć oprócz istniejących zasad dostępu warunkowego jako dodatkową warstwę ochrony. Użytkownicy być może nigdy nie wyzwolą ryzykownego zachowania wymagającego zastosowania jednej z tych zasad, ale jako administrator będziesz wiedzieć, że są chronieni.
+Zasad Azure AD Identity Protection można używać oprócz istniejących zasad dostępu warunkowego jako dodatkowej warstwy ochrony. Użytkownicy być może nigdy nie wyzwolą ryzykownego zachowania wymagającego zastosowania jednej z tych zasad, ale jako administrator będziesz wiedzieć, że są chronieni.
 
-Do elementów, które mogą wyzwolić zdarzenie o podwyższonym ryzyku, należą m.in.:
+Niektóre elementy, które mogą wyzwolić wykrywanie ryzyka, obejmują:
 
 * Użytkownicy z ujawnionymi poświadczeniami
 * Logowania z anonimowych adresów IP
@@ -59,9 +59,9 @@ Usługa Azure AD Identity Protection zawiera domyślne zasady, które ułatwiaj�
 1. Kliknij pozycję **Rejestracja w usłudze MFA**.
 1. Dla opcji Wymuś zasady ustaw wartość **Włączone**.
    1. Ustawienie tych zasad spowoduje, że wszyscy użytkownicy będą musieli zarejestrować metody w celu przygotowania ich do używania w usłudze Multi-Factor Authentication.
-1. Kliknij pozycję **Zapisz**.
+1. Kliknij polecenie **Zapisz**.
 
-   ![Wymagaj od użytkowników rejestracji uwierzytelniania Wieloskładnikowego podczas logowania](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
+   ![Wymagaj od użytkowników zarejestrowania się na potrzeby uwierzytelniania wieloskładnikowego podczas logowania](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
 
 ### <a name="enable-risk-based-password-changes"></a>Włączanie zmiany haseł opartej na ryzykach
 

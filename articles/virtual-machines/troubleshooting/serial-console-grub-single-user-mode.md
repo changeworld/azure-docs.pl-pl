@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: alsin
-ms.openlocfilehash: 73bf7424e7c1aedff271ed3653592d174416003c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
-ms.translationtype: HT
+ms.openlocfilehash: 1bd850fe2cac7194d78005f4c0a57523bc8323c6
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090193"
+ms.locfileid: "70124486"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Używanie konsoli szeregowej do uzyskiwania dostępu do GRUB i trybu jednego użytkownika
 GRUB to wielkie ujednolicone program inicjujący, który jest prawdopodobnie pierwszym elementem podczas uruchamiania maszyny wirtualnej. Ponieważ jest ona wyświetlana przed uruchomieniem systemu operacyjnego, nie jest dostępna za pośrednictwem protokołu SSH. Z usługi GRUB można zmodyfikować konfigurację rozruchową, aby przeprowadzić rozruch w trybie jednego użytkownika między innymi.
@@ -58,9 +58,24 @@ Gdy jesteś w trybie jednego użytkownika, wykonaj następujące czynności, aby
 RHEL powróci do trybu jednego użytkownika automatycznie, jeśli nie będzie można normalnie przeprowadzić rozruch. Niemniej jednak, jeśli nie skonfigurowano dostępu głównego do trybu jednego użytkownika, nie będziesz mieć hasła głównego i nie będzie można się zalogować. Istnieje obejście problemu (zobacz sekcję "ręczne wprowadzanie trybu pojedynczego użytkownika"), ale sugestia polega na wstępnym skonfigurowaniu dostępu do katalogu głównego.
 
 ### <a name="grub-access-in-rhel"></a>GRUB dostęp w RHEL
-RHEL jest GRUB z włączoną obsługą pola. Aby wprowadzić grub, uruchom ponownie maszynę `sudo reboot` wirtualną za pomocą i naciśnij dowolny klawisz. Zostanie wyświetlony ekran GRUB.
+RHEL jest GRUB z włączoną obsługą pola. Aby wprowadzić grub, uruchom ponownie maszynę `sudo reboot` wirtualną za pomocą i naciśnij dowolny klawisz. Zostanie wyświetlony ekran GRUB. Jeśli nie jest wyświetlana, upewnij się, że w pliku GRUB są obecne następujące wiersze (`/etc/default/grub`):
 
-> Uwaga: W Red Hat dostępna jest również dokumentacja dotycząca rozruchu w trybie ratowniczym, tryb awaryjny, tryb debugowania i resetowanie hasła głównego. [Kliknij tutaj, aby uzyskać do niego dostęp](https://aka.ms/rhel7grubterminal).
+#### <a name="rhel-8"></a>RHEL 8:
+```
+GRUB_TIMEOUT=5
+GRUB_TERMINAL="serial console"
+GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0 earlyprintk=ttyS0 rootdelay=300"
+```
+
+#### <a name="rhel-7"></a>RHEL 7:
+```
+GRUB_TIMEOUT=5
+GRUB_TERMINAL_OUTPUT="serial console"
+GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300 net.ifnames=0"
+```
+
+> [!NOTE]
+> W Red Hat dostępna jest również dokumentacja dotycząca rozruchu w trybie ratowniczym, tryb awaryjny, tryb debugowania i resetowanie hasła głównego. [Kliknij tutaj, aby uzyskać do niego dostęp](https://aka.ms/rhel7grubterminal).
 
 ### <a name="set-up-root-access-for-single-user-mode-in-rhel"></a>Konfigurowanie dostępu głównego do trybu jednego użytkownika w RHEL
 Tryb pojedynczego użytkownika w RHEL wymaga włączenia użytkownika root, który jest domyślnie wyłączony. Jeśli musisz włączyć tryb pojedynczego użytkownika, Skorzystaj z następujących instrukcji:
@@ -193,7 +208,7 @@ Jeśli SLES nie będzie można normalnie uruchomić, zostanie automatycznie porz
 Podobnie jak Red Hat Enterprise Linux, tryb jednego użytkownika w Oracle Linux wymaga włączenia GRUB oraz użytkownika root.
 
 ### <a name="grub-access-in-oracle-linux"></a>Dostęp GRUB w Oracle Linux
-Oracle Linux jest dostępna z włączonym GRUB. Aby wprowadzić grub, uruchom ponownie maszynę `sudo reboot` wirtualną za pomocą i naciśnij klawisz "Esc". Zostanie wyświetlony ekran GRUB. Jeśli nie widzisz grub, upewnij się, że wartość `GRUB_TERMINAL` wiersza zawiera "Konsola szeregowa", np.:. `GRUB_TERMINAL="serial console"`
+Oracle Linux jest dostępna z włączonym GRUB. Aby wprowadzić grub, uruchom ponownie maszynę `sudo reboot` wirtualną za pomocą i naciśnij klawisz "Esc". Zostanie wyświetlony ekran GRUB. Jeśli nie widzisz grub, upewnij się, że wartość `GRUB_TERMINAL` wiersza zawiera "Konsola szeregowa", np.:. `GRUB_TERMINAL="serial console"` Kompiluj ponownie GRUB `grub2-mkconfig -o /boot/grub/grub.cfg`z.
 
 ### <a name="single-user-mode-in-oracle-linux"></a>Tryb pojedynczego użytkownika w Oracle Linux
 Postępuj zgodnie z instrukcjami RHEL powyżej, aby włączyć tryb pojedynczego użytkownika w Oracle Linux.

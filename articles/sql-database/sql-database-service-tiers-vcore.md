@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: a23f71a38324d9751846f1308f79d3a4e746fd85
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c35863ed1d564adf4190efa1888d24f4f4f68ddf
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637283"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147853"
 ---
 # <a name="choose-among-the-vcore-service-tiers-and-migrate-from-the-dtu-service-tiers"></a>Wybierz spośród warstw usług rdzeń wirtualny i Przeprowadź migrację z warstw usług DTU
 
@@ -43,7 +43,7 @@ W poniższej tabeli opisano różnice między tymi trzema warstwami:
 ||**Zastosowania ogólne**|**Krytyczne dla działania firmy**|**Hiperskali**|
 |---|---|---|---|
 |Najlepsza dla|Większość obciążeń firmowych. Oferuje zorientowane na budżety, zrównoważone i skalowalne Opcje obliczeniowe i magazynowe.|Aplikacje biznesowe o wysokich wymaganiach we/wy. Oferuje największą odporność na błędy przy użyciu kilku izolowanych replik.|Większość obciążeń firmowych z wysoce skalowalnym magazynem i wymaganiami dotyczącymi skali odczytu.|
-|Wystąpienia obliczeniowe|**Zainicjowane obliczenie**:<br/>Obliczenia od 1 do 24 rdzeni wirtualnych<br/>5 rdzeń od 2 do 80 rdzeni wirtualnych<br/>**Obliczenia**bezserwerowe:<br/>5 rdzeń 0,5 – 4 rdzeni wirtualnych|**Zainicjowane obliczenie**:<br/>Obliczenia od 1 do 24 rdzeni wirtualnych<br/>5 rdzeń od 2 do 80 rdzeni wirtualnych|**Zainicjowane obliczenie**:<br/>Obliczenia od 1 do 24 rdzeni wirtualnych<br/>5 rdzeń od 2 do 80 rdzeni wirtualnych|
+|Wystąpienia obliczeniowe|**Zainicjowane obliczenie**:<br/>Obliczenia od 1 do 24 rdzeni wirtualnych<br/>5 rdzeń od 2 do 80 rdzeni wirtualnych<br/>**Obliczenia**bezserwerowe:<br/>5 rdzeń 0,5 – 16 rdzeni wirtualnych|**Zainicjowane obliczenie**:<br/>Obliczenia od 1 do 24 rdzeni wirtualnych<br/>5 rdzeń od 2 do 80 rdzeni wirtualnych|**Zainicjowane obliczenie**:<br/>Obliczenia od 1 do 24 rdzeni wirtualnych<br/>5 rdzeń od 2 do 80 rdzeni wirtualnych|
 |Memory (Pamięć)|**Zainicjowane obliczenie**:<br/>Obliczenia 7 GB na rdzeń wirtualny<br/>5 rdzeń 5,1 GB na rdzeń wirtualny<br/>**Obliczenia**bezserwerowe:<br/>5 rdzeń 3 GB na rdzeń wirtualny|**Zainicjowane obliczenie**:<br/>Obliczenia 7 GB na rdzeń wirtualny<br/>5 rdzeń 5,1 GB na rdzeń wirtualny |**Zainicjowane obliczenie**:<br/>Obliczenia 7 GB na rdzeń wirtualny<br/>5 rdzeń 5,1 GB na rdzeń wirtualny|
 |Magazyn|Używa magazynu zdalnego.<br/>**Obsługiwane obliczenia pojedynczej bazy danych**:<br/>5 GB – 4 TB<br/>**Obliczenia bezserwerowe z pojedynczą bazą danych**:<br/>5 GB — 1 TB<br/>**Wystąpienie zarządzane**: 32 GB — 8 TB |Używa lokalnego magazynu SSD.<br/>**Obsługiwane obliczenia pojedynczej bazy danych**:<br/>5 GB – 4 TB<br/>**Wystąpienie zarządzane**:<br/>32 GB — 4 TB |Elastyczna automatyczne zwiększanie magazynu zgodnie z wymaganiami. Obsługuje do 100 TB pamięci masowej. Używa lokalnego magazynu SSD dla lokalnej pamięci podręcznej puli buforów i lokalnego magazynu danych. Używa magazynu zdalnego platformy Azure jako końcowego długoterminowego magazynu danych. |
 |Przepływność we/wy (przybliżona)|**Pojedyncza baza danych**: 500 operacji we/wy na sekundę rdzeń wirtualny z 7000 maksymalną liczbą IOPS.<br/>**Wystąpienie zarządzane**: Zależy od [rozmiaru pliku](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 operacji we/wy na rdzeń z maksymalną liczbą IOPS 200 000|Skalowanie jest architekturą wielowarstwową z buforowaniem na wielu poziomach. Efektywne operacje we/wy będą zależeć od obciążenia.|

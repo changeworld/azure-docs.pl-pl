@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 33e29b02adfccf94da84dd99451117485b892ba3
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
-ms.translationtype: HT
+ms.openlocfilehash: c6b9c0a8615960772ccac824c293b5f4ea6cfe55
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072909"
+ms.locfileid: "70129190"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Użyj Azure File Sync, aby scentralizować udziały plików w organizacji w Azure Files, utrzymując elastyczność, wydajność i zgodność lokalnego serwera plików. Funkcja Azure File Sync przekształca system Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego protokołu, który jest dostępny w systemie Windows Server, aby uzyskać dostęp do danych lokalnie, w tym SMB, NFS i FTPS. Na całym świecie możesz mieć dowolną liczbę pamięci podręcznych.
@@ -717,7 +717,7 @@ Ten błąd występuje, ponieważ konto magazynu zostało przełączone w tryb fa
 | **Ciąg błędu** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
 | **Wymagana korekta** | Nie |
 
-Ten błąd występuje z powodu wewnętrznego problemu z bazą danych synchronizacji. Ten błąd zostanie automatycznie rozwiązany, gdy Azure File Sync przy ponownych próbach synchronizacji. Jeśli ten błąd będzie nadal trwać przez dłuższy czas, Utwórz żądanie pomocy technicznej, a my skontaktujemy się z Tobą, aby pomóc w rozwiązaniu tego problemu.
+Ten błąd występuje z powodu wewnętrznego problemu z bazą danych synchronizacji. Ten błąd zostanie automatycznie rozwiązany po ponownych próbach synchronizacji. Jeśli ten błąd będzie nadal trwać przez dłuższy czas, Utwórz żądanie pomocy technicznej, a my skontaktujemy się z Tobą, aby pomóc w rozwiązaniu tego problemu.
 
 <a id="-2134364024"></a>**Synchronizacja nie powiodła się z powodu zmiany w dzierżawie Azure Active Directory**  
 

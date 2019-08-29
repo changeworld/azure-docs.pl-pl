@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 10/03/2018
+ms.date: 08/28/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2f7e26e2f32ba02db9afc0676a99003717ff585
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 3129027da0f28d9c89f7afe75d9531df9bae499e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991073"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125639"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Co to jest Azure Active Directory Identity Protection (odświeżone)?
 
@@ -42,17 +42,17 @@ Azure AD Identity Protection to funkcja Azure Active Directory — wersja Premiu
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWsS6Q]
 
-## <a name="risk-events"></a>Zdarzenia o podwyższonym ryzyku
+## <a name="risk-detections"></a>Wykrywanie ryzyka
 
-Azure AD Identity Protection wykrywa następujące zdarzenia dotyczące ryzyka: 
+Azure AD Identity Protection wykrywa następujące wykrycia ryzyka: 
 
-| Typ zdarzenia o podwyższonym ryzyku | Opis | Typ wykrywania |
+| Typ wykrywania ryzyka | Opis | Typ wykrywania |
 | --- | --- | --- |
 | Nietypowa podróż | Zaloguj się z nietypowej lokalizacji na podstawie ostatnich logowań użytkownika. | W trybie offline |
 | Anonimowy adres IP | Zaloguj się przy użyciu anonimowego adresu IP (na przykład: Przeglądarka tor, Anonymizer sieci VPN). | W czasie rzeczywistym |
 | Nieznane właściwości logowania | Zaloguj się przy użyciu właściwości, które nie były ostatnio widziane dla danego użytkownika. | W czasie rzeczywistym |
 | Adres IP połączony ze złośliwym oprogramowaniem | Zaloguj się przy użyciu połączonego adresu IP złośliwego oprogramowania | W trybie offline |
-| Nieujawnione poświadczenia | To zdarzenie ryzyka wskazuje, że nieprawidłowe poświadczenia użytkownika zostały ujawnione | W trybie offline |
+| Nieujawnione poświadczenia | To wykrywanie ryzyka wskazuje, że nieprawidłowe poświadczenia użytkownika zostały ujawnione | W trybie offline |
 
 ## <a name="types-of-risk"></a>Rodzaje ryzyka 
 
@@ -80,7 +80,7 @@ Ryzyko użytkownika reprezentuje prawdopodobieństwo naruszenia bezpieczeństwa 
 Ryzyko użytkownika jest obliczane przez uwzględnienie wszystkich zagrożeń związanych z użytkownikiem:
 
 - Wszystkie ryzykowne logowania
-- Wszystkie zdarzenia ryzyka, które nie są powiązane z logowaniem
+- Wszystkie wykrycia ryzyka, które nie są połączone z logowaniem
 - Ryzyko bieżącego użytkownika
 - Wszelkie działania zaradcze lub odrzucające ryzyko wykonywane na użytkownikach do daty
 
@@ -88,7 +88,7 @@ Ryzyko użytkownika jest obliczane przez uwzględnienie wszystkich zagrożeń zw
 
 Usługa Azure AD korzysta z uczenia maszynowego do wykrywania anomalii i podejrzanych działań przy użyciu obu sygnałów wykrytych w czasie rzeczywistym podczas logowania, a także sygnałów nieprawdziwych związanych z użytkownikami i ich działaniami związanymi z logowaniem. Przy użyciu tych danych Ochrona tożsamości oblicza ryzyko związane z logowaniem w czasie rzeczywistym za każdym razem, gdy użytkownik się uwierzytelnia, a także określa ogólny poziom ryzyka użytkownika dla każdego użytkownika. Program Identity Protection umożliwia automatyczne podejmowanie działań związanych z wykrywaniem ryzyka przez skonfigurowanie ryzyka użytkownika ochrony tożsamości i zasad dotyczących ryzyka związanego z logowaniem.  
 
-Aby zrozumieć, jak Ochrona tożsamości wykrywa ryzyko, istnieją dwie ważne pojęcia: ryzyko związane z ryzykiem i ryzyko związane z logowaniem. Ryzyko związane z logowaniem odzwierciedla prawdopodobieństwo, że dane żądanie uwierzytelnienia nie jest autoryzowane przez właściciela tożsamości. Istnieją dwa typy zagrożeń związanych z logowaniem: w czasie rzeczywistym i łącznie. Ryzyko związane z logowaniem w czasie rzeczywistym jest wykrywane podczas próby logowania (na przykład logowania z anonimowych adresów IP). Całkowite ryzyko związane z logowaniem to zagregowana liczba wykrytych zagrożeń związanych z logowaniem w czasie rzeczywistym, a także wszelkie kolejne zdarzenia niezwiązane z ryzykiem w czasie rzeczywistym skojarzone z logowaniem użytkownika (na przykład niemożliwym podróżem). Ryzyko użytkownika odzwierciedla ogólne prawdopodobieństwo naruszenia przez zły aktora danej tożsamości. Ryzyko użytkownika zawiera wszystkie działania związane z ryzykiem dla danego użytkownika, w tym:
+Aby zrozumieć, jak Ochrona tożsamości wykrywa ryzyko, istnieją dwie ważne pojęcia: ryzyko związane z ryzykiem i ryzyko związane z logowaniem. Ryzyko związane z logowaniem odzwierciedla prawdopodobieństwo, że dane żądanie uwierzytelnienia nie jest autoryzowane przez właściciela tożsamości. Istnieją dwa typy zagrożeń związanych z logowaniem: w czasie rzeczywistym i łącznie. Ryzyko związane z logowaniem w czasie rzeczywistym jest wykrywane podczas próby logowania (na przykład logowania z anonimowych adresów IP). Całkowite ryzyko związane z logowaniem to zagregowana liczba wykrytych zagrożeń związanych z logowaniem w czasie rzeczywistym, a także wszelkie kolejne wykrycia ryzyka niezwiązanego z logowaniem użytkownika (na przykład niemożliwa podróż). Ryzyko użytkownika odzwierciedla ogólne prawdopodobieństwo naruszenia przez zły aktora danej tożsamości. Ryzyko użytkownika zawiera wszystkie działania związane z ryzykiem dla danego użytkownika, w tym:
 
 - Ryzyko związane z logowaniem w czasie rzeczywistym
 - Kolejne ryzyko związane z logowaniem
@@ -102,7 +102,7 @@ W powyższej grafice zostanie podsumowany przepływ linii bazowej na potrzeby wy
 
 Przyjrzyjmy się przykładowi pracownika firmy Contoso. 
 
-1. Pracownik próbuje zalogować się do usługi Exchange Online z przeglądarki sieci Tor. W momencie logowania usługa Azure AD wykrywa zdarzenia ryzyka w czasie rzeczywistym. 
+1. Pracownik próbuje zalogować się do usługi Exchange Online z przeglądarki sieci Tor. W momencie logowania usługa Azure AD wykrywa wykrycia ryzyka w czasie rzeczywistym. 
 2. Usługa Azure AD wykryje, że pracownik loguje się z anonimowego adresu IP, wyzwalając średni poziom ryzyka związanego z logowaniem. 
 3. Pracownik jest monitowany przez wiersz polecenia usługi MFA, ponieważ administrator IT firmy Contoso skonfigurował zasady dostępu warunkowego dotyczące ryzyka logowania do usługi Identity Protection. Zasady wymagają uwierzytelniania wieloskładnikowego dla ryzyka związanego z logowaniem średnim lub wyższym. 
 4. Pracownik przeszedł monit usługi MFA i uzyskuje dostęp do programu Exchange Online, a poziom ryzyka użytkownika nie jest zmieniany. 
@@ -115,20 +115,20 @@ Ale co zrobić, jeśli pracownik nie był przy próbie zalogowania?
 2. Usługa Azure AD wykryje, że próba logowania pochodzi z anonimowego adresu IP, wyzwalając ryzyko związane z logowaniem w czasie rzeczywistym. 
 3. Złośliwy aktor jest zakwestionowana przez wiersz polecenia usługi MFA, ponieważ administrator IT firmy Contoso skonfigurował zasady dostępu warunkowego dotyczącego logowania do usługi Identity Protection, aby wymagać uwierzytelniania wieloskładnikowego w przypadku, gdy ryzyko związane z logowaniem ma wartość średnią lub wyższą. 
 4. Złośliwy aktor kończy się niepowodzeniem żądania MFA i nie może uzyskać dostępu do konta usługi Exchange Online pracownika. 
-5. Niepowodzenie monitu usługi MFA wyzwoliło zdarzenie ryzyka, które ma zostać zarejestrowane, przez zwiększenie ryzyka dla użytkowników w przypadku przyszłych logowań. 
+5. Niepowodzenie monitu usługi MFA wyzwala wykrycie ryzyka, które ma zostać zarejestrowane, przez zwiększenie ryzyka użytkownika do użycia w przyszłości. 
 
 Teraz, gdy złośliwy aktor próbował uzyskać dostęp do konta Sarah, zobaczymy, co się stanie przy następnym zalogowaniu pracownika. 
 
-1. Pracownik próbuje zalogować się do usługi Exchange Online z programu Outlook. W momencie logowania usługa Azure AD wykrywa zdarzenia ryzyka w czasie rzeczywistym, a także każde wcześniejsze ryzyko związane z użytkownikiem. 
+1. Pracownik próbuje zalogować się do usługi Exchange Online z programu Outlook. W momencie logowania usługa Azure AD wykrywa wykrycia ryzyka w czasie rzeczywistym, a także każde wcześniejsze ryzyko związane z użytkownikiem. 
 2. Usługa Azure AD nie wykrywa żadnego ryzyka związanego z logowaniem w czasie rzeczywistym, ale wykrywa duże ryzyko związane z ryzykiem w poprzednich scenariuszach.  
 3. Pracownik jest wyzwaniem monitu o zresetowanie hasła, ponieważ administrator IT firmy Contoso skonfigurował zasady ryzyka użytkownika ochrony tożsamości, aby wymagać zmiany hasła podczas logowania użytkownika. 
 4. Od momentu zarejestrowania pracownika na potrzeby usługi SSPR i MFA pomyślnie zresetowano hasło. 
 5. Przez zresetowanie hasła pracownika nie są już naruszone i ich tożsamość powraca do stanu bezpiecznego. 
-6. Są rozwiązane zdarzenia poprzedniego pracownika, a poziom ryzyka użytkownika jest automatycznie resetowany jako odpowiedź w celu ograniczenia naruszenia bezpieczeństwa poświadczeń. 
+6. Są rozwiązywane wcześniejsze wykrycia ryzyka pracownika i poziom ryzyka użytkownika jest automatycznie resetowany jako odpowiedź w celu ograniczenia naruszenia bezpieczeństwa poświadczeń. 
 
 ## <a name="how-do-i-configure-identity-protection"></a>Jak mogę skonfigurować ochronę tożsamości? 
 
-Aby rozpocząć pracę z usługą Identity Protection, najpierw Skonfiguruj zasady ryzyka dla użytkowników i zasady dotyczące ryzyka związanego z logowaniem. Po skonfigurowaniu i zastosowaniu tych zasad do grupy testów można symulować zdarzenia ryzyka, aby zrozumieć, w jaki sposób Ochrona tożsamości będzie odpowiadać w danym środowisku. Poniższe przewodniki szybki start zawierają wskazówki dotyczące konfigurowania wyżej wymienionych zasad i testów w środowisku. 
+Aby rozpocząć pracę z usługą Identity Protection, najpierw Skonfiguruj zasady ryzyka dla użytkowników i zasady dotyczące ryzyka związanego z logowaniem. Po skonfigurowaniu tych zasad i zastosowaniu ich do grupy testowej można symulować wykrywanie ryzyka, aby zrozumieć, w jaki sposób Ochrona tożsamości będzie reagować w danym środowisku. Poniższe przewodniki szybki start zawierają wskazówki dotyczące konfigurowania wyżej wymienionych zasad i testów w środowisku. 
 
 Usługa Identity Protection obsługuje trzy role w usłudze Azure AD w celu zrównoważenia działań związanych z zarządzaniem w ramach wdrożenia: 
 
@@ -149,7 +149,7 @@ Aby uzyskać więcej informacji, zobacz [Przypisywanie ról administratorów w A
 | --- | --- | --- | --- | --- |
 | Zasady dotyczące ryzyka | Zasady ryzyka użytkownika (za pośrednictwem ochrony tożsamości) | Tak | Nie | Nie |
 | Zasady dotyczące ryzyka | Zasady dotyczące ryzyka związanego z logowaniem (za pośrednictwem funkcji ochrony tożsamości lub dostępu warunkowego) | Tak | Nie | Nie |
-| Raporty dotyczące zabezpieczeń | Omówienie | Tak | Nie | Nie |
+| Raporty dotyczące zabezpieczeń | Przegląd | Tak | Nie | Nie |
 | Raporty dotyczące zabezpieczeń | Ryzykowni użytkownicy | Pełny dostęp | Ograniczone informacje | Ograniczone informacje |
 | Raporty dotyczące zabezpieczeń | Ryzykowne logowania | Pełny dostęp | Ograniczone informacje | Ograniczone informacje |
 | Raporty dotyczące zabezpieczeń | Wykrywanie ryzyka | Pełny dostęp | Ograniczone informacje | Nie |

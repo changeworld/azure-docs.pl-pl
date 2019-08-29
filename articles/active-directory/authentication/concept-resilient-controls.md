@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9be48d8f403d3ddde993ebdcf0142b55e52afce
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 675e970bbdaeb035273eb87394dda610e070aa39
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779671"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125109"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Utwórz odporną strategię zarządzania kontrolą dostępu za pomocą Azure Active Directory
 
@@ -80,12 +80,12 @@ Ten przykładowy zestaw zasad będzie przyznawać wybranym użytkownikom w **App
 * Zasady 1: Blokuj dostęp do osób poza grupami docelowymi
   * Użytkownicy i grupy: Uwzględnij wszystkich użytkowników. Wyklucz AppUsers, CoreAdmins i EmergencyAccess
   * Aplikacje w chmurze: Uwzględnij wszystkie aplikacje
-  * Przyczyn (brak)
+  * Przyczyn Dawaj
   * Udziel kontroli: Blokuj
 * Zasady 2: Udziel dostępu do AppUsers wymagającego uwierzytelniania wieloskładnikowego lub zaufanego urządzenia.
   * Użytkownicy i grupy: Uwzględnij AppUsers. Wyklucz CoreAdmins i EmergencyAccess
   * Aplikacje w chmurze: Uwzględnij wszystkie aplikacje
-  * Przyczyn (brak)
+  * Przyczyn Dawaj
   * Udziel kontroli: Udziel dostępu, wymagaj uwierzytelniania wieloskładnikowego, wymaganie, aby urządzenie było zgodne. Dla wielu formantów: Wymagaj jednej z wybranych kontrolek.
 
 ### <a name="contingencies-for-user-lockout"></a>Sytuacje awaryjne dla blokady użytkownika
@@ -117,7 +117,7 @@ Zasady awaryjnego dostępu warunkowego to **wyłączone zasady** , które pomija
 * Skonfiguruj zestaw zasad powrotu, jeśli zakłócenia w jednym typie poświadczeń lub jeden mechanizm kontroli dostępu ma wpływ na dostęp do aplikacji. Skonfiguruj zasady w stanie wyłączonym, które wymagają przyłączenia do domeny jako kontrolki jako kopii zapasowej aktywnej zasady, która wymaga dostawcy MFA innej firmy.
 * Ogranicz ryzyko nieprawidłowych uczestników odgadnąć hasła, gdy uwierzytelnianie wieloskładnikowe nie jest wymagane, postępując zgodnie z zasadami zawartymi w dokumencie [wytyczne dotyczące haseł](https://aka.ms/passwordguidance) .
 * Wdróż funkcję samoobsługowego [resetowania haseł (SSPR) usługi Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr) i [Ochrona hasłem w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-deploy) , aby upewnić się, że użytkownicy nie używają typowych haseł i postanowień do zaświadczenia.
-* Użyj zasad, które ograniczają dostęp w aplikacjach, jeśli nie zostanie osiągnięty określony poziom uwierzytelniania zamiast po prostu z powrotem do pełnego dostępu. Przykład:
+* Użyj zasad, które ograniczają dostęp w aplikacjach, jeśli nie zostanie osiągnięty określony poziom uwierzytelniania zamiast po prostu z powrotem do pełnego dostępu. Na przykład:
   * Skonfiguruj zasady tworzenia kopii zapasowych, które wysyłają do programów Exchange i SharePoint żądania ograniczonej sesji.
   * Jeśli Twoja organizacja używa Microsoft Cloud App Security, rozważ powracanie do zasad, które angażują MCAS, a następnie MCAS zezwala na dostęp tylko do odczytu, ale nie do przekazywania.
 * Nazwij swoje zasady, aby upewnić się, że można je łatwo znaleźć w trakcie przerw w działaniu. Uwzględnij następujące elementy w nazwie zasad:
@@ -232,7 +232,7 @@ W zależności od tego, które środki zaradcze lub sytuacje awaryjne są używa
 1. W ramach strategii kontroli zmian należy udokumentować każdą zmianę i poprzedni stan, aby móc wycofać wszystkie sytuacje awaryjne, które zostały wdrożone natychmiast po w pełni funkcjonalnej kontroli dostępu.
 2. Załóżmy, że złośliwe osoby będą próbować zebrać hasła przy użyciu napylania hasła lub ataków wyłudzania podczas wyłączania usługi MFA. W przypadku nieprawidłowych aktorów mogą już znajdować się hasła, które wcześniej nie miały dostępu do żadnych zasobów, które mogą być podejmowane w tym oknie. W przypadku użytkowników o znaczeniu krytycznym, takich jak kierownicy, można częściowo wyeliminować to zagrożenie przez zresetowanie haseł przed wyłączeniem uwierzytelniania MFA.
 3. Archiwizuj wszystkie działania związane z logowaniem, aby identyfikować, kto ma dostęp do tego, co w czasie została wyłączona.
-4. [Klasyfikacja wszystkie zdarzenia dotyczące ryzyka zgłoszone](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) w tym oknie.
+4. [Klasyfikacja wszystkie wykrycia ryzyka zgłoszone](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) w tym oknie.
 
 ## <a name="after-a-disruption"></a>Po przerwie
 
@@ -242,7 +242,7 @@ Cofnij zmiany wprowadzone w ramach aktywowanego planu awaryjnego po przywróceni
 2. Wyłącz zasady awaryjne. 
 3. Wycofaj wszystkie inne zmiany wprowadzone i udokumentowane podczas przerw w działaniu.
 4. Jeśli używasz konta dostępu awaryjnego, pamiętaj, aby ponownie wygenerować poświadczenia i fizycznie zabezpieczyć szczegóły nowych poświadczeń w ramach procedur konta dostępu awaryjnego.
-5. Kontynuuj [Klasyfikacja wszystkie zdarzenia dotyczące ryzyka zgłoszone](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) po przerwie dla podejrzanych działań.
+5. Kontynuuj [Klasyfikacja wszystkie wykrycia ryzyka zgłoszone](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins) po przerwie dla podejrzanych działań.
 6. Odwołaj wszystkie tokeny odświeżania, które zostały wystawione [przy użyciu programu PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) , aby wskazać zestaw użytkowników. Odwoływanie wszystkich tokenów odświeżania jest ważne dla kont uprzywilejowanych używanych w trakcie przerw w działaniu, co spowoduje wymuszenie ponownego uwierzytelnienia i spełnienia kontroli przywróconych zasad.
 
 ## <a name="emergency-options"></a>Opcje awaryjne
@@ -254,7 +254,7 @@ Jeśli Twoja organizacja korzysta ze starszych zasad usługi MFA dla użytkownik
    1. Jeśli nie masz spisu wychodzących adresów IP lub musisz włączyć dostęp wewnątrz i na zewnątrz sieci firmowej, możesz dodać całą przestrzeń adresową IPv4 jako zaufane adresy IP, określając 0.0.0.0/1 i 128.0.0.0/1.
 
 >[!IMPORTANT]
- > W przypadku rozszerzenia zaufanych adresów IP w celu odblokowania dostępu zdarzenia dotyczące ryzyka skojarzone z adresami IP (na przykład niemożliwa podróż lub nieznane lokalizacje) nie zostaną wygenerowane.
+ > W przypadku rozszerzenia zaufanych adresów IP w celu odblokowania dostępu, wykrywanie ryzyka skojarzone z adresami IP (na przykład niemożliwa podróż lub nieznane lokalizacje) nie zostaną wygenerowane.
 
 >[!NOTE]
  > Konfigurowanie [zaufanych adresów IP](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings) dla usługi Azure MFA jest możliwe tylko przy użyciu [licencji Azure AD — wersja Premium](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing).

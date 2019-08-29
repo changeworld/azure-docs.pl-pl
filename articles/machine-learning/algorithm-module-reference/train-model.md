@@ -1,7 +1,7 @@
 ---
-title: 'Uczenie modelu: Odwołania do modułu'
+title: 'Model uczenia: Dokumentacja modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać **uczenie modelu** modułu w usłudze Azure Machine Learning to w opracowywaniu model klasyfikacji lub regresji.
+description: Dowiedz się, jak korzystać z modułu **uczenie modelu** w usłudze Azure Machine Learning, aby szkolić model klasyfikacji lub regresji.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,73 +9,72 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 29d0f698456b83c1520a92bc7df47b26540325f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 08b551e766632949db350478fa8d3725906c8af8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028113"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128445"
 ---
 # <a name="train-model-module"></a>Train Model modułu
 
-W tym artykule opisano moduł interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Ten moduł służy do nauczenia model klasyfikacji lub regresji. Szkolenie odbywa się po zdefiniowany model i ustaw jego parametrów i wymaga danych oznakowanych. Można również użyć **Train Model** doskonalenie istniejącego modelu przy użyciu nowych danych. 
+Ten moduł służy do uczenia modelu klasyfikacji lub regresji. Szkolenia odbywają się po zdefiniowaniu modelu i ustawieniu jego parametrów i wymaganiu oznakowanych danych. Możesz również użyć **modelu uczenia** , aby ponownie szkolić istniejący model przy użyciu nowych danych. 
 
-## <a name="how-the-training-process-works"></a>Jak działa proces szkolenia
+## <a name="how-the-training-process-works"></a>Jak działa proces uczenia
 
-W usłudze Azure Machine Learning tworzenie i używanie modelu usługi machine learning jest zwykle trzy kroki proces. 
+W Azure Machine Learning tworzenie i Używanie modelu uczenia maszynowego jest zwykle procesem dwuetapowym. 
 
-1. Model, należy skonfigurować, wybierając określonego typu algorytmów i zdefiniowanie jego parametrów lub hiperparametrów. Wybierz dowolną z następujących typów modelu: 
+1. Należy skonfigurować model, wybierając konkretny typ algorytmu i definiując jego parametry lub parametr. Wybierz dowolny z następujących typów modeli: 
 
-    + **Klasyfikacja** modeli, w oparciu o sieci neuronowych, drzewa decyzyjne i decyzji lasów i inne algorytmy.
-    + **Regresja** modeli, które mogą obejmować standardowa regresji liniowej, lub które wykorzystują inne algorytmy, w tym sieci neuronowe i regresji Bayesowskie.  
+    + Modele **klasyfikacji** w oparciu o sieci neuronowych, drzewa decyzyjne i lasy decyzyjne oraz inne algorytmy.
+    + Modele regresji, które mogą uwzględniać standardowe regresję liniową lub które używają innych algorytmów, w tym sieci neuronowych i regresji bayesowskie.  
 
-2. Zapewnia zestaw danych jest oznaczona etykietą, która jest zgodna z algorytmem danych. Łączenie danych i modelu, który ma **Train Model**.
+2. Podaj zestaw danych, który ma etykietę i zawiera dane zgodne z algorytmem. Połącz zarówno dane, jak i model, aby **szkolić model**.
 
-    Jakie szkolenia jest tworzony jest określonym formacie binarnym iLearner, hermetyzujący statystyczne wzorce przedstawiono w danych. Nie można bezpośrednio modyfikować ani odczytać ten format; jednak inne moduły można użyć tego uczonego modelu. 
+    Co to jest konkretny format binarny, iLearner, który hermetyzuje wzorce statystyczne uzyskane z danych. Nie można bezpośrednio zmodyfikować ani odczytać tego formatu; Jednak inne moduły mogą korzystać z tego przeszkolonego modelu. 
     
-    Można również wyświetlić właściwości modelu. Aby uzyskać więcej informacji zobacz sekcję wyników.
+    Możesz również wyświetlić właściwości modelu. Aby uzyskać więcej informacji, zobacz sekcję wyniki.
 
-3. Po zakończeniu szkolenia za pomocą uczonego modelu jednej z [oceniania modułów](./score-model.md), jak tworzyć prognozy na nowych danych.
+3. Po zakończeniu szkolenia Użyj modelu przeszkolonego z jednym z [modułów oceniania](./score-model.md), aby tworzyć przewidywania dotyczące nowych danych.
 
-## <a name="how-to-use-train-model"></a>Jak używać **Train Model**  
+## <a name="how-to-use-train-model"></a>Jak używać **modelu uczenia**  
   
-1.  W usłudze Azure Machine Learning skonfiguruj model klasyfikacji lub modelu regresji.
+1.  W Azure Machine Learning Skonfiguruj model klasyfikacji lub model regresji.
     
-2. Dodaj **Train Model** modułu do eksperymentu.  Można znaleźć w tym module w ramach **uczenia maszynowego** kategorii. Rozwiń **Train**, a następnie przeciągnij **Train Model** modułu do eksperymentu.
+2. Dodaj moduł **uczenie modelu** do eksperymentu.  Ten moduł można znaleźć pod kategorią **Machine Learning** . Rozwińwęzeł uczenie, a następnie przeciągnij moduł **uczenie modelu** do eksperymentu.
   
-3.  W danych wejściowych po lewej stronie Dołącz nieprzeszkolonych trybu. Dołącz zestaw danych szkoleniowych do wprowadzania po prawej stronie **Train Model**.
+3.  Z lewej strony Dołącz tryb niepociąg. Dołącz zestaw danych szkoleniowych do prawego wejścia **modelu uczenia**.
 
-    Zestaw danych szkoleniowych musi zawierać kolumnę etykiety. Wszystkie wiersze bez etykiet są ignorowane.
+    Zestaw danych szkoleniowych musi zawierać kolumnę Label. Wszystkie wiersze bez etykiet są ignorowane.
   
-4.  Dla **etykiety kolumn**, kliknij przycisk **uruchamianie selektora kolumn**i wybierz pojedynczy kolumnę, która zawiera wyniki modelu można użyć do trenowania.
+4.  Dla **kolumny etykieta**kliknij pozycję **Uruchom selektor kolumny**i wybierz pojedynczą kolumnę zawierającą wyniki, które będą używane przez model do szkoleń.
   
-    - W przypadku problemów z klasyfikacji kolumnie Etykieta musi zawierać albo **podzielonych na kategorie** wartości lub **dyskretnych** wartości. Niektóre przykłady może być oceny tak/nie, kod klasyfikacji choroby lub nazwa lub grupę przychodów.  W przypadku wybrania kolumny noncategorical, moduł zwróci błąd podczas szkolenia.
+    - W przypadku problemów z klasyfikacją kolumna Label musi zawierać wartości **kategorii** lub wartości **dyskretnych** . Niektóre przykłady mogą być klasyfikacją tak/bez, kodem klasyfikacji lub grupą przychodów.  W przypadku wybrania kolumny noncategorical moduł zwróci błąd podczas szkolenia.
   
-    -   W przypadku problemów z regresji kolumna etykieta musi zawierać **liczbowych** danych, który reprezentuje zmienną odpowiedzi. W idealnym dane liczbowe reprezentuje ciągłe skali. 
+    -   W przypadku problemów z regresją kolumna etykieta musi zawierać dane **liczbowe** reprezentujące zmienną odpowiedzi. Najlepiej, gdy dane liczbowe reprezentują ciągłą skalę. 
     
-    Przykłady może być środki ocenę ryzyka, przewidywany czas na awarie dysku twardego lub prognozowanych liczbę wywołań do Centrum telefonicznej w danym dniu lub czas.  Jeśli nie zostanie wybrane kolumny liczbowej, możesz otrzymać błąd.
+    Przykładami mogą być oceny ryzyka kredytowego, przewidywany czas do niepowodzenia na dysku twardym lub prognozowaną liczbę wywołań do centrum wywołania w danym dniu lub godzinie.  Jeśli nie wybierzesz kolumny liczbowej, może wystąpić błąd.
   
-    -   Jeśli nie określisz etykiety kolumn do użycia, usługi Azure Machine Learning podejmie próbę wywnioskować, czyli kolumny odpowiednią etykietę, posługując się metadanymi zestawu danych. Jeśli go wybierze niewłaściwej kolumnie, należy użyć selektora kolumn go poprawić.
+    -   Jeśli nie określisz, której kolumny etykiety użyć, Azure Machine Learning próbuje wnioskować, która jest odpowiednią kolumną etykiety, przy użyciu metadanych zestawu danych. W przypadku pobrania niewłaściwej kolumny Użyj selektora kolumn, aby je poprawić.
   
     > [!TIP] 
-    > Jeśli masz problemy z używaniem selektora kolumn, zobacz artykuł [Select Columns in Dataset](./select-columns-in-dataset.md) porady. Opisuje niektóre typowe scenariusze i wskazówki dotyczące korzystania z **przy użyciu reguł** i **według nazwy** opcje.
+    > Jeśli masz problemy z użyciem selektora kolumn, zobacz artykuł [Wybieranie kolumn w zestawie danych](./select-columns-in-dataset.md) , aby uzyskać porady. Opisano niektóre typowe scenariusze i porady dotyczące korzystania **z reguł with** i **według nazwy** .
   
-5.  Uruchom eksperyment. Jeśli masz dużą ilość danych, to może chwilę potrwać.
+5.  Uruchom eksperyment. W przypadku dużej ilości danych może to chwilę potrwać.
 
-## <a name="bkmk_results"></a> wyniki
+## <a name="bkmk_results"></a>Uzyskane
 
-Po model jest uczony:
+Po przeszkoleniu modelu:
 
-+ Aby wyświetlić parametry modelu i wagi funkcji, kliknij prawym przyciskiem myszy dane wyjściowe, a następnie wybierz pozycję **Visualize**.
-+ Do korzystania z modelu w innych eksperymentów, kliknij prawym przyciskiem myszy model, a następnie wybierz **Zapisywanie modelu**. Wpisz nazwę modelu. 
++ Aby wyświetlić parametry modelu i wagi funkcji, kliknij prawym przyciskiem myszy dane wyjściowe i wybierz polecenie **Wizualizuj**.
++ Aby użyć modelu w innych eksperymentach, kliknij prawym przyciskiem myszy Model i wybierz pozycję **Zapisz model**. Wpisz nazwę modelu. 
 
-    Spowoduje to zapisanie modelu jako migawkę, który nie jest aktualizowany przez powtarzanych przebiegów eksperymentu.
-+ Aby użyć modelu w przewidywaniu nowe wartości, połącz go [Score Model](./score-model.md) moduł wraz z nowe dane wejściowe.
+    Spowoduje to zapisanie modelu jako migawki, która nie jest aktualizowana przez powtarzające się uruchomienia eksperymentu.
++ Aby użyć modelu w celu przewidywania nowych wartości, połącz go z modułem [modelu oceny](./score-model.md) wraz z nowymi danymi wejściowymi.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [zestaw dostępnych modułów](module-reference.md) do usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 

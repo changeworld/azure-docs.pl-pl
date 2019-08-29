@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 88fd480f87c3a33af1d16e57d6687d739dc1ec7d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b5d0807fb03c8518286a369f50df62f0ec0b23c2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66123421"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140780"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Zbiorcze kopiowanie wielu tabel przy użyciu usługi Azure Data Factory
 W tym samouczku przedstawiono **kopiowanie wielu tabel z bazy danych Azure SQL Database do usługi Azure SQL Data Warehouse**. Tego samego wzorca można użyć także w innych scenariuszach kopiowania. Na przykład kopiowanie tabel z programu SQL Server/Oracle do usługi Azure SQL Database/Data Warehouse/Azure Blob, kopiowanie różnych ścieżek z obiektów blob do tabeli bazy danych Azure SQL Database.
@@ -92,7 +91,7 @@ Zarówno dla bazy SQL Database, jak i dla magazynu SQL Data Warehouse, zezwól u
     ```powershell
     Select-AzSubscription -SubscriptionId "<SubscriptionId>"
     ```
-2. Uruchom **AzDataFactoryV2 zestaw** polecenia cmdlet, aby utworzyć fabrykę danych. Przed uruchomieniem polecenia zastąp symbole zastępcze własnymi wartościami. 
+2. Uruchom polecenie cmdlet **Set-AzDataFactoryV2** , aby utworzyć fabrykę danych. Przed uruchomieniem polecenia zastąp symbole zastępcze własnymi wartościami. 
 
     ```powershell
     $resourceGroupName = "<your resource group to create the factory>"
@@ -139,7 +138,7 @@ W tym samouczku utworzysz trzy połączone usługi dla źródłowego, ujścioweg
 
 2. W programie **Azure PowerShell** przejdź do folderu **ADFv2TutorialBulkCopy**.
 
-3. Uruchom **AzDataFactoryV2LinkedService zestaw** polecenia cmdlet, aby utworzyć połączoną usługę: **AzureSqlDatabaseLinkedService**. 
+3. Uruchom polecenie cmdlet **Set-AzDataFactoryV2LinkedService** , aby utworzyć połączoną usługę: **AzureSqlDatabaseLinkedService**. 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
@@ -176,7 +175,7 @@ W tym samouczku utworzysz trzy połączone usługi dla źródłowego, ujścioweg
     }
     ```
 
-2. Aby utworzyć połączoną usługę: **AzureSqlDWLinkedService**Uruchom **AzDataFactoryV2LinkedService zestaw** polecenia cmdlet.
+2. Aby utworzyć połączoną usługę: **AzureSqlDWLinkedService**Uruchom polecenie cmdlet **Set-AzDataFactoryV2LinkedService** .
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWLinkedService" -File ".\AzureSqlDWLinkedService.json"
@@ -215,7 +214,7 @@ W tym samouczku magazyn obiektów blob platformy Azure służy jako obszar przej
     }
     ```
 
-2. Aby utworzyć połączoną usługę: **AzureStorageLinkedService**Uruchom **AzDataFactoryV2LinkedService zestaw** polecenia cmdlet.
+2. Aby utworzyć połączoną usługę: **AzureStorageLinkedService**Uruchom polecenie cmdlet **Set-AzDataFactoryV2LinkedService** .
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -254,7 +253,7 @@ W tym samouczku utworzysz zestawy danych źródła i ujścia, określające loka
     }
     ```
 
-2. Aby utworzyć zestaw danych: **AzureSqlDatabaseDataset**Uruchom **AzDataFactoryV2Dataset zestaw** polecenia cmdlet.
+2. Aby utworzyć zestaw danych: **AzureSqlDatabaseDataset**Uruchom polecenie cmdlet **Set-AzDataFactoryV2Dataset** .
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseDataset" -File ".\AzureSqlDatabaseDataset.json"
@@ -298,7 +297,7 @@ W tym samouczku utworzysz zestawy danych źródła i ujścia, określające loka
     }
     ```
 
-2. Aby utworzyć zestaw danych: **AzureSqlDWDataset**Uruchom **AzDataFactoryV2Dataset zestaw** polecenia cmdlet.
+2. Aby utworzyć zestaw danych: **AzureSqlDWDataset**Uruchom polecenie cmdlet **Set-AzDataFactoryV2Dataset** .
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWDataset" -File ".\AzureSqlDWDataset.json"
@@ -390,7 +389,7 @@ Ten potok pobiera listę tabel jako parametr. Dla każdej tabeli na liście kopi
     }
     ```
 
-2. Aby utworzyć potok: **IterateAndCopySQLTables**Uruchom **AzDataFactoryV2Pipeline zestaw** polecenia cmdlet.
+2. Aby utworzyć potok: **IterateAndCopySQLTables**Uruchom polecenie cmdlet **Set-AzDataFactoryV2Pipeline** .
 
     ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IterateAndCopySQLTables" -File ".\IterateAndCopySQLTables.json"
@@ -466,7 +465,7 @@ Ten potok wykonuje dwie czynności:
     }
     ```
 
-2. Aby utworzyć potok: **GetTableListAndTriggerCopyData**Uruchom **AzDataFactoryV2Pipeline zestaw** polecenia cmdlet.
+2. Aby utworzyć potok: **GetTableListAndTriggerCopyData**Uruchom polecenie cmdlet **Set-AzDataFactoryV2Pipeline** .
 
     ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "GetTableListAndTriggerCopyData" -File ".\GetTableListAndTriggerCopyData.json"

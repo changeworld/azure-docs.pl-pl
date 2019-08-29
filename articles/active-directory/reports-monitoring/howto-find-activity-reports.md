@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356412bfca19e72d09338faf8c8bcac5ec8f273a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 13f1746b710acd24316de3d294c1822ba108a378
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988283"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127389"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Znajdź raporty aktywności w Azure Portal
 
@@ -112,29 +112,29 @@ Możesz użyć raportu logowania, aby wyświetlić szczegółowe informacje o u�
 
 ### <a name="anomalous-activity-reports"></a>Raporty o nietypowych działaniach
 
-Raporty o nietypowych działaniach zawierają informacje o zdarzeniach związanych z zabezpieczeniami, które mogą być wykrywane i raportowane przez usługę Azure AD.
+Raporty o nietypowych działaniach zawierają informacje dotyczące wykrywania zagrożeń związanych z zabezpieczeniami, które usługa Azure AD może wykrywać i raportować.
 
-W poniższej tabeli wymieniono raporty zabezpieczeń działania anomalii usługi Azure AD oraz odpowiednie typy zdarzeń ryzyka w Azure Portal. Aby uzyskać więcej informacji, zobacz [Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory](concept-risk-events.md).  
+W poniższej tabeli przedstawiono raporty o nietypowych działaniach związanych z usługą Azure AD oraz odpowiednie typy wykrywania ryzyka w Azure Portal. Aby uzyskać więcej informacji, zobacz [Azure Active Directory wykrywania zagrożeń](concept-risk-events.md).  
 
 
-| Raport o nietypowej aktywności usługi Azure AD |  Typ zdarzenia ryzyka ochrony tożsamości|
+| Raport o nietypowej aktywności usługi Azure AD |  Typ wykrywania ryzyka ochrony tożsamości|
 | :--- | :--- |
 | Użytkownicy z ujawnionymi poświadczeniami | Ujawnione poświadczenia |
 | Nieregularne działania związane z logowaniem | Niemożliwa podróż do nietypowych lokalizacji |
 | Logowania z urządzeń, które mogą być zainfekowane | Logowania z zainfekowanych urządzeń|
 | Logowania z nieznanych źródeł | Logowania z anonimowych adresów IP |
-| Logowania z adresów IP z podejrzaną aktywnością | Logowania z adresów IP z podejrzaną aktywnością |
+| Logowania z adresów IP związanych z podejrzanymi działaniami | Logowania z adresów IP związanych z podejrzanymi działaniami |
 | - | Logowania z nieznanych lokalizacji |
 
-Następujące raporty o zabezpieczeniach nietypowej aktywności usługi Azure AD nie są uwzględniane jako zdarzenia ryzyka w Azure Portal:
+Następujące raporty o zabezpieczeniach nietypowej aktywności usługi Azure AD nie są uwzględniane podczas wykrywania ryzyka w Azure Portal:
 
 * Logowania po wielokrotnych niepowodzeniach
 * Logowania z wielu lokalizacji geograficznych
 
 
-### <a name="detected-risk-events"></a>Zdarzenia wykrytego ryzyka
+### <a name="detected-risk-detections"></a>Wykryte wykrycia ryzyka
 
-Możesz uzyskać dostęp do raportów o wykrytych zdarzeniach o podwyższonym ryzyku w sekcji **zabezpieczenia** w bloku **Azure Active Directory** w [Azure Portal](https://portal.azure.com). Zdarzenia wykrytego ryzyka są śledzone w następujących raportach:   
+Można uzyskać dostęp do raportów dotyczących wykrywania wykrytych zagrożeń w sekcji **zabezpieczenia** w bloku **Azure Active Directory** w [Azure Portal](https://portal.azure.com). Wykryte wykrywania ryzyka są śledzone w następujących raportach:   
 
 - [Narażeni użytkownicy](concept-user-at-risk.md)
 - [Ryzykowne logowania](concept-risky-sign-ins.md)

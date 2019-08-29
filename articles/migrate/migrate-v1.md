@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ad321dfa3db69c89b8da080673cb3bab02e4af66
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: b3607f0b462efceab322e6eaf616268a34b02fb0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905220"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142081"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Pracuj z poprzednią wersją Azure Migrate
 
@@ -201,7 +201,7 @@ Aby użyć wizualizacji zależności, należy skojarzyć obszar roboczy Log Anal
 1. Aby dołączyć Log Analytics obszar roboczy do projektu, w obszarze **omówienie**> **Essentials**kliknij pozycję **wymaga konfiguracji**.
 2. Można utworzyć nowy obszar roboczy lub dołączyć istniejący:
   - Aby utworzyć nowy obszar roboczy, określ nazwę. Obszar roboczy jest tworzony w regionie w tej samej lokalizacji [geograficznej platformy Azure](https://azure.microsoft.com/global-infrastructure/geographies/) co projekt migracji.
-  - Po dołączeniu istniejącego obszaru roboczego możesz wybrać wszystkie dostępne obszary robocze w tej samej subskrypcji co projekt migracji. Na liście są wyświetlane tylko te obszary robocze, które zostały utworzone w [obsługiwanym Service map regionie](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-configure#supported-azure-regions). Aby dołączyć obszar roboczy, upewnij się, że masz dostęp do obszaru roboczego "czytelnik".
+  - Po dołączeniu istniejącego obszaru roboczego możesz wybrać wszystkie dostępne obszary robocze w tej samej subskrypcji co projekt migracji. Na liście są wyświetlane tylko te obszary robocze, które zostały utworzone w [obsługiwanym Service map regionie](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites). Aby dołączyć obszar roboczy, upewnij się, że masz dostęp do obszaru roboczego "czytelnik".
 
 > [!NOTE]
 > Nie można zmienić obszaru roboczego skojarzonego z projektem migracji.

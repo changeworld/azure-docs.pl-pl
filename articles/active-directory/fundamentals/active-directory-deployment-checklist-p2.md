@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 767e3caf577bc1b7a49bd56570b8aeedbe307edc
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 7b5678fb0edcecae9ffa6a3c27f3dc6334ecf505
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693890"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125339"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Przewodnik wdrażania funkcji Azure Active Directory
 
@@ -37,7 +37,7 @@ Dodatkowe informacje na temat licencjonowania można znaleźć na następującyc
 * [Enterprise Mobility + Security](https://www.microsoft.com/en-us/licensing/product-licensing/enterprise-mobility-security)
 * [Wskazówki dotyczące licencjonowania B2B usługi Azure AD](../b2b/licensing-guidance.md)
 
-## <a name="phase-1-build-a-foundation-of-security"></a>Faza 1: Tworzenie podstawy zabezpieczeń
+## <a name="phase-1-build-a-foundation-of-security"></a>Etap 1: Tworzenie podstawy zabezpieczeń
 
 W tej fazie Administratorzy mogą włączyć podstawowe funkcje zabezpieczeń, aby zapewnić bezpieczniejsze i łatwe korzystanie z programu Foundation w usłudze Azure AD przed zaimportowaniem lub utworzeniem normalnych kont użytkowników. Ta faza podstawowa gwarantuje, że jest to bardziej bezpieczny stan od początku i że użytkownicy końcowi muszą tylko wprowadzać nowe koncepcje.
 
@@ -53,12 +53,12 @@ W tej fazie Administratorzy mogą włączyć podstawowe funkcje zabezpieczeń, a
 | [Wyłącz resetowanie haseł okresowych dla kont użytkowników opartych na chmurze](../authentication/concept-sspr-policy.md#set-a-password-to-never-expire) | Okresowe resetowanie haseł zachęca użytkowników do zwiększania istniejących haseł. Skorzystaj z wytycznych zawartych w dokumencie wskazówki dotyczące haseł w firmie Microsoft i podublowania zasad lokalnych w przypadku użytkowników korzystających tylko z chmury. | Usługa Azure AD — warstwa Bezpłatna |
 | [Dostosowywanie inteligentnego blokowania Azure Active Directory](../authentication/howto-password-smart-lockout.md) | Zatrzymywanie blokowania od użytkowników w chmurze przed replikacją do lokalnych Active Directory użytkowników | |
 | [Włącz inteligentną blokadę ekstranetu dla AD FS](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS blokada ekstranetu chroni przed atakami polegającymi na odzgadywaniu hasła, jednocześnie umożliwiając prawidłowym AD FS użytkownikom nadal korzystanie z ich kont. | |
-| [Wdrażanie uwierzytelniania wieloskładnikowego usługi Azure AD przy użyciu zasad dostępu warunkowego](../authentication/howto-mfa-getstarted.md) | Wymaganie od użytkowników weryfikacji dwuetapowej podczas uzyskiwania dostępu do poufnych aplikacji przy użyciu zasad dostępu warunkowego. | Usługa Azure AD — warstwa Premium P1 |
+| [Wdrażanie Multi-Factor Authentication usługi Azure AD przy użyciu zasad dostępu warunkowego](../authentication/howto-mfa-getstarted.md) | Wymaganie od użytkowników weryfikacji dwuetapowej podczas uzyskiwania dostępu do poufnych aplikacji przy użyciu zasad dostępu warunkowego. | Usługa Azure AD — warstwa Premium P1 |
 | [Włączanie usługi Azure Active Directory Identity Protection](../identity-protection/enable.md) | Włącz śledzenie ryzykownych logowań i zagrożonych poświadczeń dla użytkowników w organizacji. | Usługa Azure AD — warstwa Premium P2 |
-| [Używanie zdarzeń ryzyka do wyzwalania zmian związanych z uwierzytelnianiem wieloskładnikowym i hasłami](../authentication/tutorial-risk-based-sspr-mfa.md) | Włącz automatyzację, która może wyzwalać zdarzenia, takie jak uwierzytelnianie wieloskładnikowe, Resetowanie hasła i blokowanie logowania na podstawie ryzyka. | Usługa Azure AD — warstwa Premium P2 |
-| [Włącz konwergentnej rejestracji samoobsługowego resetowania haseł i uwierzytelniania wieloskładnikowego w usłudze Azure AD (wersja zapoznawcza)](../authentication/concept-registration-mfa-sspr-converged.md) | Zezwól użytkownikom na rejestrację z jednego typowego środowiska w przypadku uwierzytelniania wieloskładnikowego platformy Azure i samoobsługowego resetowania hasła. | Usługa Azure AD — warstwa Premium P1 |
+| [Korzystanie z wykrywania ryzyka w celu wyzwalania zmian związanych z uwierzytelnianiem wieloskładnikowym i hasłami](../authentication/tutorial-risk-based-sspr-mfa.md) | Włącz automatyzację, która może wyzwalać zdarzenia, takie jak uwierzytelnianie wieloskładnikowe, Resetowanie hasła i blokowanie logowania na podstawie ryzyka. | Usługa Azure AD — warstwa Premium P2 |
+| [Włącz konwergentnej rejestracji samoobsługowego resetowania haseł i uwierzytelniania wieloskładnikowego w usłudze Azure AD (wersja zapoznawcza)](../authentication/concept-registration-mfa-sspr-converged.md) | Zezwól użytkownikom na rejestrację z jednego typowego środowiska dla usługi Azure Multi-Factor Authentication i samoobsługowego resetowania hasła. | Usługa Azure AD — warstwa Premium P1 |
 
-## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>Faza 2: Importowanie użytkowników, Włączanie synchronizacji i zarządzanie urządzeniami
+## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>Etap 2: Importowanie użytkowników, Włączanie synchronizacji i zarządzanie urządzeniami
 
 Następnie dodamy do podstawy ustalonej w fazie 1 przez zaimportowanie naszych użytkowników i włączenie synchronizacji, zaplanowanie dostępu gościa i przygotowanie do obsługi dodatkowych funkcji.
 
@@ -74,7 +74,7 @@ Następnie dodamy do podstawy ustalonej w fazie 1 przez zaimportowanie naszych u
 | [Wdróż usługę Windows Hello dla firm w organizacji](/windows/security/identity-protection/hello-for-business/hello-manage-in-organization) | Przygotowywanie do uwierzytelniania bezhaseł przy użyciu funkcji Windows Hello | |
 | [Wdróż metody uwierzytelniania bezhasło dla użytkowników](../authentication/concept-authentication-passwordless.md) | Udostępnianie użytkownikom wygodnych metod uwierzytelniania bez hasła | Usługa Azure AD — warstwa Premium P1 |
 
-## <a name="phase-3-manage-applications"></a>Faza 3: Zarządzaj aplikacjami
+## <a name="phase-3-manage-applications"></a>Etap 3: Zarządzaj aplikacjami
 
 W miarę dalszego kompilowania w poprzednich fazach zidentyfikujemy aplikacje kandydujące do migracji i integracji z usługą Azure AD oraz ukończą konfigurację tych aplikacji.
 
@@ -84,7 +84,7 @@ W miarę dalszego kompilowania w poprzednich fazach zidentyfikujemy aplikacje ka
 | [Integruj obsługiwane aplikacje SaaS w galerii](../manage-apps/add-application-portal.md) | Usługa Azure AD zawiera galerię zawierającą tysiące wstępnie zintegrowanych aplikacji. Niektóre aplikacje używane przez organizację są prawdopodobnie dostępne w galerii bezpośrednio z Azure Portal. | Usługa Azure AD — warstwa Bezpłatna |
 | [Integracja aplikacji lokalnych przy użyciu serwera proxy aplikacji](../manage-apps/application-proxy-add-on-premises-application.md) | Serwer proxy aplikacji umożliwia użytkownikom dostęp do aplikacji lokalnych przez zalogowanie się przy użyciu konta usługi Azure AD. | |
 
-## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>Faza 4: Inspekcja tożsamości uprzywilejowanych, Kończenie przeglądu dostępu i zarządzanie cyklem życia użytkowników
+## <a name="phase-4-audit-privileged-identities-complete-an-access-review-and-manage-user-lifecycle"></a>Etap 4: Inspekcja tożsamości uprzywilejowanych, Kończenie przeglądu dostępu i zarządzanie cyklem życia użytkowników
 
 Faza 4 widzi administratorów egzekwowania najniższych zasad uprawnień do administrowania, wykonywania pierwszej oceny dostępu i włączania automatyzacji typowych zadań związanych z cyklem życia użytkownika.
 

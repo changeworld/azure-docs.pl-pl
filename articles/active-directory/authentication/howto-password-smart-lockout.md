@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8df01c204a6893f4e2ff1c2ff22fa337d77c519b
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a762009a7aaf1a965333ac573efe55d792c3f04b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69637591"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125019"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory inteligentnego blokowania
 
@@ -45,7 +45,7 @@ W przypadku korzystania z [uwierzytelniania przekazywanego](../hybrid/how-to-con
 * Wartość progowa blokady usługi Azure AD jest **mniejsza** niż wartość progowa blokady konta Active Directory. Ustaw wartości tak, aby wartość progowa blokady konta Active Directory wynosić co najmniej dwa lub trzy razy dłużej niż wartość progowa blokady usługi Azure AD. 
 * Czas trwania blokady usługi Azure AD musi być ustawiony na wartość większą niż Active Directory Resetuj licznik blokady konta po czasie trwania. Należy pamiętać, że czas trwania usługi Azure AD jest ustawiony w sekundach, podczas gdy czas trwania usługi AD jest ustawiany w minutach. 
 
-Na przykład jeśli chcesz, aby licznik usługi Azure AD miał wartość większą niż AD, usługa Azure AD będzie 120 sekund (2 minuty), a w usłudze Premium AD jest ustawiona na 1 minutę (60 s).
+Na przykład jeśli chcesz, aby licznik usługi Azure AD miał wartość większą niż AD, usługa Azure AD będzie 120 sekund (2 minuty), a w lokalnej usłudze AD jest ustawiona na 1 minutę (60 s).
 
 > [!IMPORTANT]
 > Obecnie administrator nie może odblokować kont w chmurze użytkowników, jeśli zostały one zablokowane przez funkcję inteligentnej blokady. Administrator musi poczekać na wygaśnięcie czasu trwania blokady. Użytkownik może jednak odblokować przy użyciu funkcji samoobsługowego resetowania hasła (SSPR) z zaufanego urządzenia lub lokalizacji.
@@ -67,7 +67,7 @@ W zależności od wymagań organizacyjnych może być konieczne dostosowanie war
 
 Aby sprawdzić lub zmodyfikować wartości blokady inteligentnej dla organizacji, wykonaj następujące czynności:
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com)i kliknij przycisk **Azure Active Directory**, a następnie pozycję **metody uwierzytelniania**.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com) i przejdź do **Azure Active Directory** > **metodami** > uwierzytelniania**Ochrona hasłem**.
 1. Ustaw **próg blokady**w zależności od liczby nieudanych logowań dozwolonych na koncie przed pierwszym zablokowaniem. Wartość domyślna to 10.
 1. Ustaw **czas trwania blokady (w sekundach**) na długość w sekundach każdej blokady. Wartość domyślna to 60 sekund (jedna minuta).
 

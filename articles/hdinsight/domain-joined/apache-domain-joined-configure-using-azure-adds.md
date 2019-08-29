@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 300fd31632a6b3c9043c19dd9b47f40258080261
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1165cbeff1144567e43f408c0866c0b8a571882d
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614206"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125592"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra usługi HDInsight z pakietem Enterprise Security przy użyciu usług Azure Active Directory Domain Services
 
@@ -22,12 +22,12 @@ Klastry pakiet Enterprise Security (ESP) zapewniają dostęp przez wiele użytko
 W tym artykule dowiesz się, jak skonfigurować klaster usługi HDInsight za pomocą protokołu ESP przy użyciu Azure Active Directory Domain Services (Azure AD-DS).
 
 > [!NOTE]  
-> Protokół ESP jest ogólnie dostępny w usłudze HDInsight 3,6 i 4,0 dla typów klastrów: Apache Spark, Interactive, Apache Hadoop i HBase. Typ klastra ESP dla Apache Kafka jest w wersji zapoznawczej.
+> Protokół ESP jest ogólnie dostępny w usłudze HDInsight 3,6 i 4,0 dla typów klastrów: Apache Spark, Interactive, Hadoop i HBase. ESP dla typu klastra Apache Kafka jest w wersji zapoznawczej z najlepszą obsługą. Klastry ESP utworzone przed datą "ESP" (1 października 2018) nie są obsługiwane.
 
 ## <a name="enable-azure-ad-ds"></a>Włączanie usługi Azure AD — DS
 
 > [!NOTE]  
-> Tylko Administratorzy dzierżawy mają uprawnienia do włączania usługi Azure AD — DS. Jeśli magazyn klastra jest Azure Data Lake Storage (ADLS) Gen1 lub Gen2, należy wyłączyć uwierzytelnianie wieloskładnikowe (MFA) tylko dla użytkowników, którzy będą musieli uzyskać dostęp do klastra przy użyciu podstawowych uwierzytelnień Kerberos. Za pomocą [zaufanych adresów](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) IP lub [dostępu warunkowego](../../active-directory/conditional-access/overview.md) można wyłączyć uwierzytelnianie wieloskładnikowe dla określonych użytkowników tylko wtedy, gdy uzyskują dostęp do zakresu adresów IP sieci wirtualnej klastra usługi HDInsight. W przypadku korzystania z dostępu warunkowego upewnij się, że punkt końcowy usługi AD jest włączony w sieci wirtualnej HDInsight.
+> Tylko Administratorzy dzierżawy mają uprawnienia do włączania usługi Azure AD — DS. Jeśli magazyn klastra jest Azure Data Lake Storage (ADLS) Gen1 lub Gen2, należy wyłączyć Multi-Factor Authentication (MFA) tylko dla użytkowników, którzy będą musieli uzyskać dostęp do klastra przy użyciu podstawowych uwierzytelnień Kerberos. Za pomocą [zaufanych adresów](../../active-directory/authentication/howto-mfa-mfasettings.md#trusted-ips) IP lub [dostępu warunkowego](../../active-directory/conditional-access/overview.md) można wyłączyć uwierzytelnianie wieloskładnikowe dla określonych użytkowników tylko wtedy, gdy uzyskują dostęp do zakresu adresów IP sieci wirtualnej klastra usługi HDInsight. W przypadku korzystania z dostępu warunkowego upewnij się, że punkt końcowy usługi AD jest włączony w sieci wirtualnej HDInsight.
 >
 > Jeśli magazyn klastra to Azure Blob Storage (WASB), nie należy wyłączać usługi MFA.
 

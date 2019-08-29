@@ -1,26 +1,25 @@
 ---
-title: Działania elementu Webhook w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
-description: Działania elementu Webhook nie kontynuacja wykonywania potoku sprawdza poprawność dołączonych zestaw danych o określone kryteria, określonego przez użytkownika.
+title: Działanie elementu webhook w Azure Data Factory | Microsoft Docs
+description: Działanie elementu webhook nie kontynuuje wykonywania potoku do momentu zweryfikowania dołączonego zestawu danych z określonymi kryteriami, które użytkownik określi.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/25/2019
-ms.author: shlo
-ms.openlocfilehash: 6ec43b06ce266b9ceaddb5dd21cbf52f509d6596
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c11fb800dba06ab5566647489f020f727860a7ff
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764309"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142405"
 ---
-# <a name="webhook-activity-in-azure-data-factory"></a>Działania elementu Webhook w usłudze Azure Data Factory
-Działanie punktu zaczepienia sieci web umożliwia kontrolować wykonywanie potoków poprzez kod niestandardowy. Przy użyciu działania elementu webhook, klienci mogą wywołać punkt końcowy i przekazać adres URL wywołania zwrotnego. Uruchomienie potoku czeka, aż wywołanie zwrotne do wywołania przed przejściem do następnego działania.
+# <a name="webhook-activity-in-azure-data-factory"></a>Działanie elementu webhook w Azure Data Factory
+Możesz użyć działania elementu webhook, aby kontrolować wykonywanie potoków za pomocą kodu niestandardowego. Korzystając z działania elementu webhook, klienci mogą wywołać punkt końcowy i przekazać adres URL wywołania zwrotnego. Uruchomienie potoku oczekuje na wywołanie wywołania zwrotnego przed przejściem do następnego działania.
 
 ## <a name="syntax"></a>Składnia
 
@@ -56,28 +55,28 @@ Działanie punktu zaczepienia sieci web umożliwia kontrolować wykonywanie poto
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-name | Nazwa działania punktu zaczepienia sieci web | String | Tak |
-type | Musi być równa **elementu WebHook**. | String | Tak |
-method | Metoda interfejsu API REST dla docelowego punktu końcowego. | ciąg. Obsługiwane typy: 'POST' | Tak |
-url | Docelowy punkt końcowy i ścieżki | Ciąg lub wyrażenie obiektu resultType ciągu. | Tak |
-Nagłówki | Nagłówki, które są wysyłane do żądania. Na przykład, aby ustawić język i typ żądania: "nagłówki": {"Accept-Language": "en-us", "Content-Type": "application/json"}. | Ciąg (lub wyrażenie obiektu resultType ciągu) | Tak, wymagany jest nagłówek Content-type. "headers":{ "Content-Type":"application/json"} |
-Treść | Reprezentuje ładunek, które są wysyłane do punktu końcowego. | Treść przekazywany z powrotem do wywołania zwrotne URI powinien być prawidłowym kodem JSON. Wyświetlić schemat ładunek żądania w [schematu ładunku żądania](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23request-payload-schema&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=ljUZv5csQQux2TT3JtTU9ZU8e1uViRzuX5DSNYkL0uE%3D&amp;reserved=0) sekcji. | Tak |
-uwierzytelnianie | Metoda uwierzytelniania do wywoływania punktu końcowego. Obsługiwane typy to "Basic" lub "ClientCertificate." Aby uzyskać więcej informacji, zobacz [uwierzytelniania](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23authentication&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=GdA1%2Fh2pAD%2BSyWJHSW%2BSKucqoAXux%2F4L5Jgndd3YziM%3D&amp;reserved=0) sekcji. Jeśli uwierzytelnianie nie jest wymagane, należy wykluczyć tej właściwości. | Ciąg (lub wyrażenie obiektu resultType ciągu) | Nie |
-timeout | Jak długo będzie czekać działania &#39;element callBackUri&#39; do wywołania. Jak długo działanie będzie czekać "element callBackUri" do wywołania. Wartość domyślna to 10mins ("00: 10:00"). Format jest przedział czasu, czyli d.hh:mm:ss | String | Nie |
+name | Nazwa działania elementu webhook | String | Tak |
+type | Musi być ustawiona na **element webhook**. | String | Tak |
+— metoda | Metoda interfejsu API REST dla docelowego punktu końcowego. | Parametry. Obsługiwane typy: POUBOJOWEGO | Tak |
+url | Docelowy punkt końcowy i ścieżka | Ciąg (lub wyrażenie z typem ResultType ciągu). | Tak |
+nagłówka | Nagłówki wysyłane do żądania. Na przykład, aby ustawić język i typ dla żądania: "heads": {"Accept-Language": "en-us", "Content-Type": "Application/JSON"}. | Ciąg (lub wyrażenie z typem ResultType ciągu) | Tak, nagłówek Content-Type jest wymagany. "headers":{ "Content-Type":"application/json"} |
+treść | Reprezentuje ładunek, który jest wysyłany do punktu końcowego. | Treść przeniesiona z powrotem do identyfikatora URI wywołania zwrotnego powinna być prawidłowym kodem JSON. Zobacz schemat ładunku żądania w sekcji [schematu ładunku żądania](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23request-payload-schema&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=ljUZv5csQQux2TT3JtTU9ZU8e1uViRzuX5DSNYkL0uE%3D&amp;reserved=0) . | Tak |
+uwierzytelnianie | Metoda uwierzytelniania używana do wywoływania punktu końcowego. Obsługiwane typy to "podstawowa" lub "ClientCertificate". Aby uzyskać więcej informacji, zobacz sekcję [uwierzytelnianie](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23authentication&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=GdA1%2Fh2pAD%2BSyWJHSW%2BSKucqoAXux%2F4L5Jgndd3YziM%3D&amp;reserved=0) . Jeśli uwierzytelnianie nie jest wymagane, Wyklucz tę właściwość. | Ciąg (lub wyrażenie z typem ResultType ciągu) | Nie |
+limit czasu | Jak długo działanie będzie oczekiwać na wywołanie &#39;callBackUri.&#39; Jak długo działanie będzie oczekiwać na wywołanie elementu "callBackUri". Wartość domyślna to 10mins ("00:10:00"). Format to TimeSpan, np. hh: mm: SS | String | Nie |
 
-## <a name="additional-notes"></a>Uwagi dodatkowe
+## <a name="additional-notes"></a>Dodatkowe uwagi
 
-Usługa Azure Data Factory zostanie przekazany dodatkowa właściwość "element callBackUri" w treści do punktu końcowego adresu url i będzie oczekiwać ten identyfikator uri do wywołania przed określona wartość limitu czasu. Identyfikator uri nie zostanie wywołany, działanie zakończy się niepowodzeniem ze stanem "Upłynął limit czasu".
+Azure Data Factory przekaże dodatkową właściwość "callBackUri" w treści do punktu końcowego adresu URL i będzie oczekiwać, że ten identyfikator URI będzie wywoływany przed określoną wartością limitu czasu. Jeśli identyfikator URI nie zostanie wywołany, działanie zakończy się niepowodzeniem ze stanem "TimedOut".
 
-Działania w sieci web hook kończy się niepowodzeniem, tylko jeśli wywołanie do niestandardowego punktu końcowego nie powiedzie się. Wszelkie komunikaty o błędach mogą być dodawane do treści wywołania zwrotnego lub używane w kolejnych działań.
+Działanie elementu webhook nie powiedzie się tylko wtedy, gdy wywołanie niestandardowego punktu końcowego zakończy się niepowodzeniem. Dowolny komunikat o błędzie może zostać dodany do treści wywołania zwrotnego i użyty w kolejnym działaniu.
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne działania przepływu sterowania obsługiwanych przez usługę Data Factory:
+## <a name="next-steps"></a>Następne kroki
+Zobacz inne działania przepływu sterowania obsługiwane przez Data Factory:
 
 - [Działanie If Condition](control-flow-if-condition-activity.md)
 - [Działanie Execute Pipeline](control-flow-execute-pipeline-activity.md)
 - [Dla każdego działania](control-flow-for-each-activity.md)
 - [Działanie GetMetadata](control-flow-get-metadata-activity.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
-- [Działanie internetowe](control-flow-web-activity.md)
+- [Aktywność sieci Web](control-flow-web-activity.md)
 - [Działanie Until](control-flow-until-activity.md)

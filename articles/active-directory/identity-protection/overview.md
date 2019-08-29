@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99a542d3208d5871d88c966fffc65cf16e0fbeee
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 8b89cab41061376fc1d8b4cbffc8fe87b9677688
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335394"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125671"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Co to jest Azure Active Directory Identity Protection?
 
@@ -45,10 +45,10 @@ Azure Active Directory Identity Protection jest więcej niż narzędzie do monit
 - Obliczanie poziomów ryzyka związanego z logowaniem
 - Obliczanie poziomów ryzyka użytkownika
 
-**Badanie zdarzeń o podwyższonym ryzyku:**
+**Badanie wykrywania ryzyka:**
 
-- Wysyłanie powiadomień dla zdarzeń o podwyższonym ryzyku
-- Badanie zdarzeń o podwyższonym ryzyku przy użyciu odpowiednich i kontekstowych informacji
+- Wysyłanie powiadomień dotyczących wykrywania ryzyka
+- Badanie wykrywania ryzyka przy użyciu odpowiednich i kontekstowych informacji
 - Zapewnianie podstawowych przepływów pracy do śledzenia dochodzeń
 - Zapewnianie łatwego dostępu do akcji korygowania, takich jak resetowanie hasła
 
@@ -76,10 +76,10 @@ Aby uzyskać więcej informacji, zobacz [Przypisywanie ról administratorów w A
 
 Azure Active Directory Identity Protection analizuje konfigurację i wykrywa luki w zabezpieczeniach, które mogą mieć wpływ na tożsamości użytkownika. Aby uzyskać więcej informacji, zobacz [luki w zabezpieczeniach wykryte przez Azure Active Directory Identity Protection](vulnerabilities.md).
 
-### <a name="risk-events"></a>Zdarzenia o podwyższonym ryzyku
+### <a name="risk-detections"></a>Wykrywanie ryzyka
 
-Azure Active Directory używa adaptacyjnych algorytmów uczenia maszynowego i heurystyki do wykrywania podejrzanych działań, które są związane z tożsamościami użytkownika. System tworzy rekord dla każdej wykrytej podejrzanej akcji. Te rekordy są również znane jako zdarzenia ryzyka.  
-Aby uzyskać więcej informacji, zobacz [Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory](../active-directory-identity-protection-risk-events.md).
+Azure Active Directory używa adaptacyjnych algorytmów uczenia maszynowego i heurystyki do wykrywania podejrzanych działań, które są związane z tożsamościami użytkownika. System tworzy rekord dla każdej wykrytej podejrzanej akcji. Te rekordy są również znane jako wykrywania ryzyka.  
+Aby uzyskać więcej informacji, zobacz [Azure Active Directory wykrywania zagrożeń](../active-directory-identity-protection-risk-events.md).
 
 ## <a name="investigation"></a>Badanie
 
@@ -89,10 +89,10 @@ Twoja podróż przez usługę Identity Protection zazwyczaj rozpoczyna się od p
 
 Pulpit nawigacyjny zapewnia dostęp do następujących elementów:
 
-- Raporty, takie jak **Użytkownicy oflagowani w związku z ryzykiem**, **zdarzenia ryzyka** i **luki** w zabezpieczeniach
+- Raporty, takie jak **Użytkownicy oflagowani w związku z ryzykiem**, **wykrywanie ryzyka** i **luki** w zabezpieczeniach
 - Ustawienia, takie jak konfiguracja **zasad zabezpieczeń**, **powiadomienia** i rejestracja w usłudze **uwierzytelniania** wieloskładnikowego
 
-Zwykle jest to punkt początkowy do badania, który jest procesem przeglądania działań, dzienników i innych istotnych informacji związanych ze zdarzeniem ryzyka w celu podjęcia decyzji o tym, czy kroki zaradcze lub zaradcze są niezbędne oraz jak tożsamość była naruszone i zapoznaj się z używaniem złamanej tożsamości.
+Zwykle jest to punkt początkowy do badania, który jest procesem przeglądania działań, dzienników i innych istotnych informacji związanych z wykrywaniem ryzyka w celu podjęcia decyzji o tym, czy kroki zaradcze lub zaradcze są niezbędne oraz jak tożsamość była naruszone i zapoznaj się z używaniem złamanej tożsamości.
 
 Możesz powiązać działania dochodzeniowe z powiadomieniami Azure Active Directory [powiadomień](notifications.md) wysyłanych na adres e-mail.
 
@@ -108,7 +108,7 @@ Aby zaimplementować automatyczne odpowiedzi, Azure Active Directory Identity Pr
 
 [!INCLUDE [Active Directory P2 license](../../../includes/active-directory-p2-license.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Kanał 9: Usługa Azure AD i tożsamość show: Wersja zapoznawcza programu Identity Protection](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 - [Włączanie Azure Active Directory Identity Protection](enable.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: 7ff4db2e349d0da811ef262e308477bde3b27a3c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ac9a62a810a957c67d9c24063d01eff822c8294f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934598"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129295"
 ---
 # <a name="azure-security-technical-capabilities"></a>Techniczne funkcje zabezpieczeń platformy Azure
 Ten artykuł zawiera wprowadzenie do usług zabezpieczeń na platformie Azure, które ułatwiają ochronę danych, zasobów i aplikacji w chmurze oraz zaspokajanie potrzeb firmy.
@@ -61,7 +61,7 @@ Zalety zabezpieczeń Azure Active Directory (Azure AD) obejmują:
 
 - Zapewniaj Logowanie jednokrotne do swoich aplikacji, w tym tysiące wstępnie zintegrowanych aplikacji SaaS.
 
-- Włącz zabezpieczenia dostępu do aplikacji, wymuszając uwierzytelnianie wieloskładnikowe oparte na regułach zarówno dla aplikacji lokalnych, jak i w chmurze.
+- Włącz zabezpieczenia dostępu do aplikacji, wymuszając Multi-Factor Authentication oparte na regułach zarówno dla aplikacji lokalnych, jak i w chmurze.
 
 - Zapewnij bezpieczny dostęp zdalny do lokalnych aplikacji sieci Web za pomocą usługi Azure serwer proxy aplikacji usługi Azure AD.
 
@@ -97,7 +97,7 @@ Nie tylko użytkownicy nie muszą zarządzać wieloma zestawami nazw użytkownik
 
 #### <a name="multi-factor-authentication"></a>Uwierzytelnianie wieloskładnikowe
 
-[Uwierzytelnianie wieloskładnikowe systemu Azure (MFA)](../../active-directory/authentication/multi-factor-authentication.md) to metoda uwierzytelniania, która wymaga użycia więcej niż jednej metody weryfikacji i dodaje krytyczną drugą warstwę zabezpieczeń do logowania i transakcji użytkownika. Usługa [MFA pomaga](../../active-directory/authentication/concept-mfa-howitworks.md) w zabezpieczeniu dostępu do danych i aplikacji, a jednocześnie spełnia wymagania użytkowników dotyczące prostego procesu logowania. Zapewnia silne uwierzytelnianie dzięki szerokiemu zakresowi opcji weryfikacji — połączenie telefoniczne, wiadomość SMS lub powiadomienie aplikacji mobilnej lub kod weryfikacyjny oraz tokeny OAuth innych firm.
+[Azure Multi-Factor Authentication (MFA)](../../active-directory/authentication/multi-factor-authentication.md) to metoda uwierzytelniania, która wymaga użycia więcej niż jednej metody weryfikacji i dodaje krytyczną drugą warstwę zabezpieczeń do logowania i transakcji użytkownika. Usługa [MFA pomaga](../../active-directory/authentication/concept-mfa-howitworks.md) w zabezpieczeniu dostępu do danych i aplikacji, a jednocześnie spełnia wymagania użytkowników dotyczące prostego procesu logowania. Zapewnia silne uwierzytelnianie dzięki szerokiemu zakresowi opcji weryfikacji — połączenie telefoniczne, wiadomość SMS lub powiadomienie aplikacji mobilnej lub kod weryfikacyjny oraz tokeny OAuth innych firm.
 
 #### <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Monitorowanie zabezpieczeń, alerty i raporty oparte na uczeniu maszynowym
 
@@ -147,7 +147,7 @@ Azure AD Privileged Identity Management pozwala:
 
 #### <a name="identity-protection"></a>Ochrona tożsamości
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) to usługa zabezpieczeń, która zapewnia skonsolidowany wgląd w zdarzenia o podwyższonym ryzyku i potencjalne luki w zabezpieczeniach wpływających na tożsamości w organizacji. Usługa Identity Protection używa istniejących funkcji wykrywania anomalii w Azure Active Directory (dostępnych za pośrednictwem raportów o nietypowych działaniach w usłudze Azure AD) i wprowadza nowe typy zdarzeń ryzyka, które mogą wykrywać anomalie w czasie rzeczywistym.
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) to usługa zabezpieczeń, która zapewnia skonsolidowany wgląd w wykrywanie ryzyka i potencjalne luki w zabezpieczeniach wpływających na tożsamości organizacji. Usługa Identity Protection używa istniejących funkcji wykrywania anomalii w Azure Active Directory (dostępnych za pośrednictwem raportów o nietypowych działaniach w usłudze Azure AD) i wprowadza nowe typy wykrywania ryzyka, które mogą wykrywać anomalie w czasie rzeczywistym.
 
 ## <a name="secure-resource-access"></a>Bezpieczny dostęp do zasobów
 
@@ -194,7 +194,7 @@ Celem szyfrowania w czasie spoczynku jest zaszyfrowanie wszystkich danych. Wykon
 > [!Note]
 > Nie tylko "dane aplikacji" lub "OSOBowe", ale wszelkie dane dotyczące aplikacji, w tym metadane konta (mapowania subskrypcji, informacje o kontrakcie, dane OSOBowe).
 
-Zastanów się, które sklepy są używane do przechowywania danych. Przykład:
+Zastanów się, które sklepy są używane do przechowywania danych. Na przykład:
 
 - Magazyn zewnętrzny (na przykład SQL Azure, baza danych dokumentów, HDInsight, Data Lake itd.)
 
@@ -386,7 +386,7 @@ Ponadto lista kontrolna:
 
 ![Weryfikacja zabezpieczeń (wykrywanie)](./media/technical-capabilities/azure-security-technical-capabilities-fig7.png)
 
-Usługa Azure Operational Security jest oparta na architekturze, która obejmuje wiedzę uzyskaną za pomocą różnych możliwości, które są unikatowe dla firmy Microsoft, w tym Microsoft Security Development (SDL), programu Microsoft Security Response Centre i szczegółowa świadomość cyberbezpieczeństwa zagrożeń.
+Zabezpieczenia operacyjne platformy Azure są oparte na strukturze, która obejmuje wiedzę uzyskaną za pomocą różnych funkcji, które są unikatowe dla firmy Microsoft, w tym Microsoft Security Development Lifecycle (SDL), programu Microsoft Security Response Centre i szczegółowa świadomość cyberbezpieczeństwa zagrożeń.
 
 ### <a name="microsoft-azure-monitor"></a>Microsoft Azure Monitor
 

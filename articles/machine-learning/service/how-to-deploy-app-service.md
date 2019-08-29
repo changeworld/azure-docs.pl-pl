@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 889158aeb40cfcbc69291845acfee833af0930b6
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 20a90a70c66310f6838b41a40aa945308bf338d4
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114294"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147907"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Wdróż model uczenia maszynowego w Azure App Service (wersja zapoznawcza)
 
@@ -265,8 +265,8 @@ print(response.json())
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby uzyskać więcej informacji na temat konfigurowania aplikacji sieci Web, zapoznaj się z dokumentacją [App Service w systemie Linux](/azure/app-service/containers/) .
-* Aby uzyskać więcej informacji na temat skalowania, zobacz [Rozpoczynanie pracy z funkcją automatycznego skalowania na platformie Azure](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json).
-* Aby uzyskać więcej informacji na temat obsługi protokołu SSL, zobacz [Używanie certyfikatu SSL w Azure App Service](/azure/app-service/app-service-web-ssl-cert-load).
-* Aby uzyskać więcej informacji na temat uwierzytelniania, zobacz [Konfigurowanie aplikacji App Service do korzystania z Azure Active Directory logowania](/azure/app-service/configure-authentication-provider-aad).
+* Dowiedz się, jak skonfigurować aplikację sieci Web w [App Service w](/azure/app-service/containers/) dokumentacji systemu Linux.
+* Dowiedz się więcej na temat skalowania w temacie [wprowadzenie do automatycznego skalowania na platformie Azure](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json).
+* [Użyj certyfikatu SSL w Azure App Service](/azure/app-service/app-service-web-ssl-cert-load).
+* [Skonfiguruj aplikację App Service, aby używała Azure Active Directory logowania](/azure/app-service/configure-authentication-provider-aad).
 * [Korzystanie z modelu uczenia Maszynowego, wdrożyć jako usługę sieci web](how-to-consume-web-service.md)

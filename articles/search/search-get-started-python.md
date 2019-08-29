@@ -1,7 +1,7 @@
 ---
 title: 'Przewodnik Szybki Start dotyczący języka Python: Tworzenie, ładowanie i wykonywanie zapytań względem indeksów przy użyciu interfejsów API REST — Azure Search'
 description: Wyjaśnia, jak utworzyć indeks, załadować dane i uruchamiać zapytania przy użyciu języka Python, notesów Jupyter oraz interfejsu API REST Azure Search.
-ms.date: 07/11/2019
+ms.date: 08/28/2019
 author: heidisteen
 manager: nitinme
 ms.author: heidist
@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.openlocfilehash: 308e296ba5306949e87e68f14c8c219b85825af4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 352d26a1f3e781f7dbb6e502caea44bdb45b398a
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656789"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129402"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>Szybki start: Tworzenie indeksu Azure Search w języku Python przy użyciu notesów Jupyter
 > [!div class="op_single_selector"]
@@ -71,6 +71,8 @@ W tym zadaniu Uruchom Notes Jupyter i sprawdź, czy możesz nawiązać połącze
    headers = {'Content-Type': 'application/json',
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
+
+   W przypadku uzyskania ConnectionError `"Failed to establish a new connection"`upewnij się, że klucz API-Key jest podstawowym lub pomocniczym kluczem administratora i że wszystkie`?` znaki `/`wiodące i końcowe są używane.
 
 1. W trzeciej komórce należy sformułować żądanie. To żądanie GET odwołuje się do kolekcji indeksów usługi wyszukiwania i wybiera Właściwość Name istniejących indeksów.
 

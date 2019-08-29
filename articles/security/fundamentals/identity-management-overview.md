@@ -1,6 +1,6 @@
 ---
 title: Funkcje zabezpieczeń platformy Azure, które pomagają zarządzać tożsamościami | Microsoft Docs
-description: " Ten artykuł zawiera omówienie podstawowych funkcji zabezpieczeń platformy Azure, które ułatwiają zarządzanie tożsamościami. Rozwiązania do zarządzania tożsamościami i dostępem firmy Microsoft ułatwiają ochronę dostępu do aplikacji i zasobów w centrum danych firmy oraz w chmurze, co pozwala na dodatkowe poziomy weryfikacji, takie jak uwierzytelnianie wieloskładnikowe i dostęp warunkowy. jazd. "
+description: " Ten artykuł zawiera omówienie podstawowych funkcji zabezpieczeń platformy Azure, które ułatwiają zarządzanie tożsamościami. Rozwiązania do zarządzania tożsamościami i dostępem firmy Microsoft pomagają chronić dostęp do aplikacji i zasobów w centrum danych firmy oraz w chmurze, co pozwala na dodatkowe poziomy weryfikacji, takie jak Multi-Factor Authentication i dostęp warunkowy. jazd. "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -16,22 +16,22 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 1081fa8c9c7cc64418515aabbb755ecf056196ca
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 021767aa20dc35459c68fead674ff00510af2538
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826288"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129358"
 ---
 # <a name="azure-identity-management-security-overview"></a>Omówienie zabezpieczeń usługi Azure Identity Management
 
- Zarządzanie tożsamościami to proces uwierzytelniania i autoryzacji [podmiotów zabezpieczeń](/windows/security/identity-protection/access-control/security-principals). Obejmuje również kontrolowanie informacji o tych podmiotach zabezpieczeń (tożsamości). Podmioty zabezpieczeń (tożsamości) mogą obejmować usługi, aplikacje, użytkowników, grupy itp. Rozwiązania do zarządzania tożsamościami i dostępem firmy Microsoft pomagają chronić dostęp do aplikacji i zasobów w centrum danych firmy oraz w chmurze. Taka ochrona umożliwia korzystanie z dodatkowych poziomów walidacji, takich jak uwierzytelnianie wieloskładnikowe i zasady dostępu warunkowego. Monitorowanie podejrzanych działań poprzez zaawansowane raportowanie zabezpieczeń, inspekcje i alerty pomaga ograniczyć potencjalne problemy z zabezpieczeniami. [Azure Active Directory — wersja Premium](/azure/active-directory/active-directory-editions) zapewnia Logowanie jednokrotne (SSO) do tysięcy aplikacji w chmurze jako usługi (SaaS) oraz dostęp do aplikacji sieci Web uruchamianych lokalnie.
+ Zarządzanie tożsamościami to proces uwierzytelniania i autoryzacji [podmiotów zabezpieczeń](/windows/security/identity-protection/access-control/security-principals). Obejmuje również kontrolowanie informacji o tych podmiotach zabezpieczeń (tożsamości). Podmioty zabezpieczeń (tożsamości) mogą obejmować usługi, aplikacje, użytkowników, grupy itp. Rozwiązania do zarządzania tożsamościami i dostępem firmy Microsoft pomagają chronić dostęp do aplikacji i zasobów w centrum danych firmy oraz w chmurze. Taka ochrona umożliwia stosowanie dodatkowych poziomów walidacji, takich jak Multi-Factor Authentication i zasady dostępu warunkowego. Monitorowanie podejrzanych działań poprzez zaawansowane raportowanie zabezpieczeń, inspekcje i alerty pomaga ograniczyć potencjalne problemy z zabezpieczeniami. [Azure Active Directory — wersja Premium](/azure/active-directory/active-directory-editions) zapewnia Logowanie jednokrotne (SSO) do tysięcy aplikacji w chmurze jako usługi (SaaS) oraz dostęp do aplikacji sieci Web uruchamianych lokalnie.
  
 Korzystając z zalet korzyści z używania Azure Active Directory (Azure AD), możesz:
 
 * Utwórz pojedynczą tożsamość dla każdego użytkownika w przedsiębiorstwie hybrydowym, aby zachować synchronizację użytkowników, grup i urządzeń. 
 * Zapewnianie dostępu logowania jednokrotnego do aplikacji, w tym tysięcy wstępnie zintegrowanych aplikacji SaaS.
-* Włącz zabezpieczenia dostępu do aplikacji, wymuszając uwierzytelnianie wieloskładnikowe oparte na regułach zarówno dla aplikacji lokalnych, jak i w chmurze.
+* Włącz zabezpieczenia dostępu do aplikacji, wymuszając Multi-Factor Authentication oparte na regułach zarówno dla aplikacji lokalnych, jak i w chmurze.
 * Zapewnij bezpieczny dostęp zdalny do lokalnych aplikacji sieci Web za pomocą usługi Azure serwer proxy aplikacji usługi Azure AD.
 
 Celem tego artykułu jest przedstawienie omówienia podstawowych funkcji zabezpieczeń platformy Azure, które pomagają zarządzać tożsamościami. Udostępniamy również linki do artykułów, które zawierają szczegółowe informacje o każdej z tych funkcji, aby dowiedzieć się więcej.  
@@ -60,7 +60,7 @@ Usługa Azure AD rozszerza lokalne środowiska Active Directory do chmury, umoż
 
 Nie tylko użytkownicy, którzy nie muszą zarządzać wieloma zestawami nazw użytkowników i haseł, mogą udostępniać lub cofać dostęp do aplikacji automatycznie w oparciu o ich grupy organizacyjne i ich stan pracownika. Usługa Azure AD wprowadza zabezpieczenia i kontroli dostępu, za pomocą których można centralnie zarządzać dostępem użytkowników w aplikacjach SaaS.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Przegląd rejestracji jednokrotnej](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../../active-directory/manage-apps/what-is-single-sign-on.md)
@@ -70,7 +70,7 @@ Dowiedz się więcej:
 
 Usługa Azure serwer proxy aplikacji usługi Azure AD umożliwia publikowanie aplikacji lokalnych, takich jak witryny [programu SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) , [aplikacja sieci Web programu Outlook](https://technet.microsoft.com/library/jj657718.aspx)i aplikacje oparte na [usługach IIS](https://www.iis.net/)w sieci prywatnej i zapewnia bezpieczny dostęp użytkownikom spoza sieci. Serwer proxy aplikacji zapewnia dostęp zdalny i logowanie jednokrotne dla wielu typów lokalnych aplikacji sieci Web z tysiącami aplikacji SaaS obsługiwanych przez usługę Azure AD. Pracownicy mogą zalogować się do aplikacji z domu na swoich urządzeniach i uwierzytelniać się za pośrednictwem tego serwera proxy opartego na chmurze.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Włączanie usługi Azure serwer proxy aplikacji usługi Azure AD](/azure/active-directory/manage-apps/application-proxy-enable)
 * [Publikowanie aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](/azure/active-directory/active-directory-application-proxy-publish)
@@ -79,19 +79,19 @@ Dowiedz się więcej:
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Uwierzytelnianie wieloskładnikowe systemu Azure to metoda uwierzytelniania, która wymaga użycia więcej niż jednej metody weryfikacji i dodaje krytyczną drugą warstwę zabezpieczeń do logowania i transakcji użytkownika. Usługa uwierzytelnianie wieloskładnikowe pomaga w zabezpieczeniu dostępu do danych i aplikacji, a jednocześnie spełnia wymagania użytkowników dotyczące prostego procesu logowania. Zapewnia silne uwierzytelnianie za pomocą różnych opcji weryfikacji: połączeń telefonicznych, wiadomości SMS lub powiadomień aplikacji mobilnej oraz kodów weryfikacyjnych i tokenów OAuth innych firm.
+Azure Multi-Factor Authentication to metoda uwierzytelniania, która wymaga użycia więcej niż jednej metody weryfikacji i dodaje krytyczną drugą warstwę zabezpieczeń do logowania i transakcji użytkownika. Multi-Factor Authentication pomaga chronić dostęp do danych i aplikacji, a jednocześnie spełnia wymagania użytkowników dotyczące prostego procesu logowania. Zapewnia silne uwierzytelnianie za pomocą różnych opcji weryfikacji: połączeń telefonicznych, wiadomości SMS lub powiadomień aplikacji mobilnej oraz kodów weryfikacyjnych i tokenów OAuth innych firm.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
 * [Co to jest usługa Multi-Factor Authentication platformy Azure?](/azure/active-directory/authentication/multi-factor-authentication)
-* [Jak działa usługa Azure MFA Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Jak działa usługa Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="rbac"></a>Kontrola dostępu oparta na rolach
 
 RBAC to system autoryzacji oparty na Azure Resource Manager, który zapewnia precyzyjne zarządzanie dostępem do zasobów na platformie Azure. RBAC pozwala na szczegółowe kontrolowanie poziomu dostępu, który ma użytkownicy. Można na przykład ograniczyć użytkownika do zarządzania sieciami wirtualnymi i innym użytkownikom w celu zarządzania wszystkimi zasobami w grupie zasobów. Platforma Azure zawiera kilka wbudowanych ról, których można użyć. Poniżej wymieniono cztery podstawowe role wbudowane. Pierwsze trzy są stosowane do wszystkich typów zasobów.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Czym jest kontrola dostępu oparta na rolach (RBAC)?](/azure/role-based-access-control/overview)
 * [Wbudowane role dla zasobów platformy Azure](/azure/role-based-access-control/built-in-roles)
@@ -108,7 +108,7 @@ W Azure Portal raporty należą do następujących kategorii:
 * **Raporty specyficzne dla użytkownika**: Wyświetl dane działania dotyczącego logowania urządzenia dla określonego użytkownika.
 * **Dzienniki aktywności**: Zawiera rekord wszystkich zdarzeń poddawanych inspekcji w ciągu ostatnich 24 godzin, ostatnich 7 dni lub ostatnich 30 dni, a także zmiany działania grupy oraz działania związane z resetowaniem i rejestracją.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Wyświetlanie raportów dostępu i użycia](/azure/active-directory/active-directory-view-access-usage-reports)
 * [Wprowadzenie do raportowania Azure Active Directory](/azure/active-directory/active-directory-reporting-getting-started)
@@ -122,7 +122,7 @@ W przeszłości deweloperzy aplikacji, którzy chcieli utworzyć konto w celu za
 
 W przypadku korzystania z Azure AD B2C klienci mogą zarejestrować się w aplikacjach przy użyciu istniejących kont społecznościowych (Facebook, Google, Amazon, LinkedIn) lub tworząc nowe poświadczenia (adres e-mail i hasło albo nazwę użytkownika i hasło).
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Co to jest usługa Azure Active Directory B2C?](https://azure.microsoft.com/services/active-directory-b2c/)
 * [Wersja zapoznawcza Azure Active Directory B2C: Rejestrowanie i Logowanie użytkowników w aplikacjach](../../active-directory-b2c/active-directory-b2c-overview.md)
@@ -134,7 +134,7 @@ Rejestracja urządzeń w usłudze Azure AD jest podstawą dla scenariuszy [dost�
 
 W połączeniu z rozwiązaniem do zarządzania urządzeniami przenośnymi, takim jak usługa Intune, atrybuty urządzenia w usłudze Azure AD są aktualizowane przy użyciu dodatkowych informacji o urządzeniu. Następnie można utworzyć reguły dostępu warunkowego, które wymuszają dostęp z urządzeń, aby spełniały standardy zabezpieczeń i zgodności.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Wprowadzenie do rejestracji urządzeń w usłudze Azure AD](/azure/active-directory/active-directory-conditional-access-device-registration-overview)
 * [Automatyczna rejestracja urządzeń w usłudze Azure AD dla urządzeń przyłączonych do domeny systemu Windows](/azure/active-directory/active-directory-conditional-access-automatic-device-registration)
@@ -153,16 +153,16 @@ Za pomocą Azure AD Privileged Identity Management można:
 * Otrzymuj raporty o historii dostępu administratora i zmianach w przypisaniach administratorów.
 * Otrzymuj alerty dotyczące dostępu do roli uprzywilejowanej.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Co to jest Azure AD Privileged Identity Management?](../../active-directory/privileged-identity-management/pim-configure.md)
 * [Przypisywanie ról katalogu usługi Azure AD w usłudze PIM](../../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
 ## <a name="identity-protection"></a>Ochrona tożsamości
 
-Azure AD Identity Protection to usługa zabezpieczeń, która zapewnia skonsolidowany wgląd w zdarzenia o podwyższonym ryzyku i potencjalne luki w zabezpieczeniach, które wpływają na tożsamość w organizacji. Funkcja ochrony tożsamości korzysta z istniejących funkcji wykrywania anomalii usługi Azure AD, które są dostępne za pomocą raportów anomalii związanych z usługą Azure AD. W ramach ochrony tożsamości wprowadzono również nowe typy zdarzeń ryzyka, które mogą wykrywać anomalie w czasie rzeczywistym.
+Azure AD Identity Protection to usługa zabezpieczeń, która zapewnia skonsolidowany wgląd w wykrywanie ryzyka i potencjalne luki w zabezpieczeniach, które mają wpływ na tożsamości w organizacji. Funkcja ochrony tożsamości korzysta z istniejących funkcji wykrywania anomalii usługi Azure AD, które są dostępne za pomocą raportów anomalii związanych z usługą Azure AD. W ramach programu Identity Protection wprowadzono również nowe typy wykrywania ryzyka, które mogą wykrywać anomalie w czasie rzeczywistym.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Azure AD Identity Protection](/azure/active-directory/identity-protection/overview)
 * [Kanał 9: Usługa Azure AD i tożsamość show: Wersja zapoznawcza programu Identity Protection](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
@@ -176,7 +176,7 @@ Rozwiązania firmy Microsoft do obsługi tożsamości obejmują zarówno funkcje
 * Przekazuj uwierzytelnianie
 * Monitorowanie kondycji
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Oficjalny dokument tożsamości hybrydowej](https://download.microsoft.com/download/D/B/A/DBA9E313-B833-48EE-998A-240AA799A8AB/Hybrid_Identity_White_Paper.pdf)
 * [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)
@@ -186,7 +186,7 @@ Dowiedz się więcej:
 
 Przeglądy dostępu w usłudze Azure Active Directory (Azure AD) pozwalają organizacjom efektywnie zarządzać członkostwem w grupach, dostępem do aplikacji przedsiębiorstwa i przypisaniami ról uprzywilejowanych.
 
-Dowiedz się więcej:
+Więcej informacji:
 
 * [Przeglądy dostępu w usłudze Azure AD](../../active-directory/governance/access-reviews-overview.md)
 * [Zarządzanie dostępem użytkowników za pomocą przeglądów dostępu w usłudze Azure AD](../../active-directory/governance/access-reviews-overview.md)

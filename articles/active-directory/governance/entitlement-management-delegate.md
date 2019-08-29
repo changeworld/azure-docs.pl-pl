@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4430e2115e4282ba7bb618184139a845547a06ed
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 064724b3c6a5faa485850ecdfa3d3759d3631be0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967096"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124909"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Delegowanie zadań w usłudze Azure AD uprawnień zarządzanie (wersja zapoznawcza)
 
@@ -30,13 +30,15 @@ ms.locfileid: "68967096"
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone.
 > Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Domyślnie Administratorzy globalni i Administratorzy użytkowników mogą tworzyć wszystkie aspekty zarządzania prawami usługi Azure AD i zarządzać nimi. Jednak użytkownicy z tych ról mogą nie wiedzieć o wszystkich scenariuszach, w których wymagane są pakiety dostępu. Zazwyczaj są to użytkownicy w działach, którzy wiedzą, kto musi współpracować.
+Domyślnie Administratorzy globalni i Administratorzy użytkowników mogą tworzyć wszystkie aspekty zarządzania prawami usługi Azure AD i zarządzać nimi. Jednak użytkownicy z tych ról mogą nie wiedzieć o wszystkich scenariuszach, w których wymagane są pakiety dostępu. Zazwyczaj są to użytkownicy w działach, którzy wiedzą, kto musi współpracować. 
 
-Zamiast udzielania nieograniczonych uprawnień administratorom niebędącym administratorami, można udzielić użytkownikom najniższych uprawnień, których potrzebują do wykonywania swoich zadań, i uniknąć tworzenia sprzecznych lub nieodpowiednich praw dostępu. W tym artykule opisano role, które można przypisać w celu delegowania różnych zadań w usłudze zarządzania uprawnieniami.
+Zamiast udzielania nieograniczonych uprawnień administratorom niebędącym administratorami, można udzielić użytkownikom najniższych uprawnień, których potrzebują do wykonywania swoich zadań, i uniknąć tworzenia sprzecznych lub nieodpowiednich praw dostępu. W tym artykule opisano role, które można przypisać w celu delegowania różnych zadań w usłudze zarządzania uprawnieniami. 
 
 ## <a name="delegate-example-for-departmental-adoption"></a>Przykład delegata dla przyjęcia działu
 
-Aby zrozumieć, jak można delegować zadania w usłudze zarządzania uprawnieniami, warto rozważyć przykład. Załóżmy, że Twoja organizacja ma pięć następujących użytkowników:
+Aby zrozumieć, jak można delegować zadania w usłudze zarządzania uprawnieniami, warto rozważyć przykład. 
+
+Załóżmy, że Twoja organizacja ma pięć następujących użytkowników:
 
 | Użytkownik | Dział | Uwagi |
 | --- | --- | --- |
@@ -59,6 +61,7 @@ Działy badawcze i marketingowe chcą korzystać z zarządzania prawami dla swoi
 Teraz działy badawcze i marketingowe mogą korzystać z zarządzania prawami. Robert, Karoliny, Dave i ELISA mogą tworzyć i zarządzać pakietami dostępu w odpowiednich katalogach.
 
 ![Przykład delegata zarządzania uprawnieniami](./media/entitlement-management-delegate/elm-delegate.png)
+
 
 ## <a name="entitlement-management-roles"></a>Role zarządzania uprawnieniami
 
@@ -113,6 +116,7 @@ Użytkownik, który nie jest administratorem globalnym lub administratorem użyt
 | [Administrator aplikacji](../users-groups-roles/directory-assign-admin-roles.md) | Właściciel katalogu |  |  | :heavy_check_mark: |  |
 | [Administrator aplikacji w chmurze](../users-groups-roles/directory-assign-admin-roles.md) | Właściciel katalogu |  |  | :heavy_check_mark: |  |
 | Użytkownik | Właściciel katalogu | Tylko wtedy, gdy właściciel grupy | Tylko wtedy, gdy właściciel grupy | Tylko wtedy, gdy właściciel aplikacji |  |
+
 
 ## <a name="add-a-catalog-creator"></a>Dodaj twórcę katalogu
 

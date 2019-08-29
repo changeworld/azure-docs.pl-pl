@@ -15,26 +15,26 @@ ms.date: 01/17/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 950d0dc2f4a1a88e0c317b3398c7492cc6c52e2a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 3e6b79c7d5c2ed9744dc00eb1588c35f8ea94a76
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989834"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127651"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Użytkownicy oflagowani w związku z raportem dotyczącym narażonych użytkowników w witrynie Azure Portal
 
-Usługa Azure Active Directory (Azure AD) wykrywa podejrzane akcje powiązane z kontami użytkowników. Dla każdej wykrytej akcji jest tworzony wpis nazywany [zdarzeniem o podwyższonym ryzyku](concept-risk-events.md).
+Usługa Azure Active Directory (Azure AD) wykrywa podejrzane akcje powiązane z kontami użytkowników. Dla każdej wykrytej akcji tworzony jest rekord nazywany [wykryciem ryzyka](concept-risk-events.md) .
 
 Dostęp do raportów zabezpieczeń można uzyskać z poziomu witryny [Azure Portal](https://portal.azure.com), wybierając blok **Azure Active Directory**, a następnie przechodząc do sekcji **Zabezpieczenia**. 
 
-Za pomocą wykrytych zdarzeń o podwyższonym ryzyku obliczane są:
+Wykryte wykrywania ryzyka są używane do obliczania:
 
 - **Ryzykowne logowania** — ryzykowne logowanie jest wskaźnikiem próby logowania, które mogło zostać wykonane przez osobę, która nie jest prawowitym właścicielem konta użytkownika. 
 
 - **Użytkownicy oflagowani w związku z ryzykiem** — ryzykowny użytkownik jest wskaźnikiem konta użytkownika, którego bezpieczeństwo mogło zostać naruszone. 
 
-Aby dowiedzieć się, jak skonfigurować zasady powodujące wyzwalanie tych zdarzeń o podwyższonym ryzyku, zobacz [Sposób konfigurowania zasad ryzyka użytkowników](../identity-protection/howto-user-risk-policy.md). 
+Aby dowiedzieć się, jak skonfigurować zasady wyzwalające te wykrycia ryzyka, zobacz [jak skonfigurować zasady ryzyka dla użytkowników](../identity-protection/howto-user-risk-policy.md). 
 
 ![Ryzykowne logowania](./media/concept-user-at-risk/10.png)
 
@@ -45,9 +45,9 @@ Wszystkie wersje usługi Azure Active Directory zapewniają dostęp do raportów
 
 - W **usłudze Azure Active Directory w wersji Bezpłatna i Podstawowa** masz dostęp do listy użytkowników oflagowanych w związku z ryzykiem. 
 
-- Wersja **Azure Active Directory Premium 1** umożliwia ponadto badanie niektórych podstawowych zdarzeń związanych z ryzykiem, które uwzględniono w poszczególnych raportach. 
+- Ponadto wersja **Azure Active Directory — wersja Premium 1** umożliwia sprawdzenie niektórych podstawowych wykryć ryzyka, które zostały wykryte dla każdego raportu. 
 
-- Wersja **Azure Active Directory Premium 2** oferuje najbardziej szczegółowe informacje na temat wszystkich zdarzeń o podwyższonym ryzyku i umożliwia konfigurowanie zasad zabezpieczeń, które automatycznie reagują na wystąpienie skonfigurowanych poziomów ryzyka.
+- Wersja **Azure Active Directory — wersja Premium 2** zapewnia najbardziej szczegółowe informacje na temat wszystkich wykrytych zagrożeń, a także umożliwia konfigurowanie zasad zabezpieczeń, które automatycznie reagują na skonfigurowane poziomy ryzyka.
 
 
 ## <a name="users-at-risk-report-for-azure-ad-free-and-basic-editions"></a>Raport dotyczący narażonych użytkowników dla usługi Azure AD w wersji Bezpłatna i Podstawowa
@@ -73,7 +73,7 @@ Raport dotyczący użytkowników oflagowanych w związku z ryzykiem w usłudze A
 
 - Lista kont użytkowników, których bezpieczeństwo mogło zostać naruszone 
 
-- Zagregowane informacje o wykrytych [typach zdarzeń o podwyższonym ryzyku](concept-risk-events.md)
+- Zagregowane informacje o wykrytych [typach wykrycia ryzyka](concept-risk-events.md)
 
 - Opcja pobrania raportu
 
@@ -87,13 +87,13 @@ Po wybraniu użytkownika jest dla niego wyświetlany szczegółowy widok raportu
 
 - Resetowanie hasła użytkownika.
 
-- Odrzucanie wszystkich zdarzeń.
+- Odrzuć wszystkie zdarzenia
 
-- Badanie zgłoszonych zdarzeń o podwyższonym ryzyku dla użytkownika. 
+- Zbadaj zgłoszone wykrywania ryzyka dla użytkownika. 
 
 ![Ryzykowne logowania](./media/concept-user-at-risk/324.png)
 
-Aby zbadać zdarzenia o podwyższonym ryzyku, wybierz zdarzenie z listy w celu otwarcia bloku **Szczegóły** dla tego zdarzenia o podwyższonym ryzyku. W bloku **Szczegóły** jest opcja ręcznego zamknięcia zdarzenia o podwyższonym ryzyku lub ponownego aktywowania ręcznie zamkniętego zdarzenia o podwyższonym ryzyku. 
+Aby zbadać wykrywanie ryzyka, wybierz jeden z listy, aby otworzyć blok **szczegóły** tego wykrywania ryzyka. W bloku **szczegóły** jest dostępna opcja ręcznego zamknięcia wykrywania ryzyka lub ponownego aktywowania ręcznie zamkniętego wykrywania ryzyka. 
 
 ![Ryzykowne logowania](./media/concept-user-at-risk/325.png)
 

@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2019
 ms.author: spelluru
-ms.openlocfilehash: bcdb549ce5b522b2d456e2cbeb5471b9df984514
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 945afd4f0a5049985955bbc71bbf6b2250f68d2a
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774411"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129035"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>Rozwiązywanie problemów dotyczących maszyn wirtualnych i błędów tworzenia środowiska w Azure DevTest Labs
 DevTest Labs zawiera ostrzeżenia, jeśli nazwa komputera jest nieprawidłowa lub jeśli zamierzasz naruszać zasady laboratorium. Czasami zobaczysz czerwoną `X` pozycję na maszynie wirtualnej laboratorium lub w stanie środowiska, która informuje o niepowodzeniu.  Ten artykuł zawiera kilka lew, których można użyć w celu znalezienia podstawowego problemu i miejmy nadzieję, aby uniknąć problemu w przyszłości.
 
 ## <a name="portal-notifications"></a>Powiadomienia portalu
-Jeśli używasz Azure Portal, pierwsze miejsce, do którego chcesz się zapoznać, jest **panel powiadomień**.  Panel powiadomień, dostępny na głównym pasku poleceń, klikając **ikonę dzwonka**, poinformuje użytkownika o tym, czy maszyna wirtualna lub Tworzenie środowiska laboratorium zakończyło się powodzeniem.  Jeśli wystąpił błąd, zostanie wyświetlony komunikat o błędzie skojarzony z błędem tworzenia. Szczegóły często zawierają dodatkowe informacje pomocne w rozwiązaniu problemu. W poniższym przykładzie Tworzenie maszyny wirtualnej nie powiodło się z powodu braku rdzeni. Szczegółowy komunikat informuje, jak rozwiązać problem i zażądać wzrostu przydziału rdzeni.
+Jeśli używasz Azure Portal, pierwsze miejsce, do którego chcesz się zapoznać, jest **panel powiadomień**.  Panel powiadomień, dostępny na głównym pasku poleceń, klikając **ikonę dzwonka**, poinformuje użytkownika o tym, czy maszyna wirtualna lub Tworzenie środowiska laboratorium zakończyło się powodzeniem.  Jeśli wystąpił błąd, zostanie wyświetlony komunikat o błędzie skojarzony z błędem tworzenia. Szczegóły często zawierają dodatkowe informacje pomocne w rozwiązaniu problemu. W poniższym przykładzie Tworzenie maszyny wirtualnej nie powiodło się z powodu braku rdzeni. Szczegółowy komunikat informuje, jak rozwiązać problem i zażądać wzrostu przydziału rdzeni.
 
 ![Powiadomienie Azure Portal](./media/troubleshoot-vm-environment-creation-failures/portal-notification.png)
 

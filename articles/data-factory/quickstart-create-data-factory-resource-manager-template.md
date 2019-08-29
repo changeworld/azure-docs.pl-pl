@@ -8,19 +8,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 02/20/2019
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 2b25dff29563dcf44077465f3e563d04f04b3119
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7826d34b3489fce9d71da051345cf066b756ef8b
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66157074"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140982"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Samouczek: tworzenie fabryki danych na platformie Azure przy użyciu szablonu usługi Azure Resource Manager
 
-> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
 > * [Wersja 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Bieżąca wersja](quickstart-create-data-factory-resource-manager-template.md)
 
@@ -275,7 +275,7 @@ Utwórz plik JSON o nazwie **ADFTutorialARM-Parameters.json** zawierający param
 
 > [!IMPORTANT]
 > - Określ nazwę i klucz konta usługi Azure Storage w pliku parametrów za pomocą parametrów **storageAccountName** i **storageAccountKey**. W tym magazynie obiektów blob platformy Azure utworzono kontener adftutorial i przekazano przykładowy plik (emp.txt) do folderu wejściowego.
-> - Za pomocą parametru **dataFactoryName** określ nazwę fabryki danych unikatową w skali globalnej, Na przykład: ARMTutorialFactoryJohnDoe11282017.
+> - Za pomocą parametru **dataFactoryName** określ nazwę fabryki danych unikatową w skali globalnej, Przykład: ARMTutorialFactoryJohnDoe11282017.
 > - Za pomocą parametru **triggerStartTime** podaj bieżący dzień w formacie: `2017-11-28T00:00:00`.
 > - Za pomocą parametru **triggerEndTime** podaj kolejny dzień w formacie: `2017-11-29T00:00:00`. Możesz również sprawdzić bieżącą godzinę w strefie UTC i określić czas zakończenia za godzinę lub dwie. Jeśli na przykład bieżąca godzina w strefie UTC to 1:32, podaj wartość `2017-11-29:03:00:00` jako czas zakończenia. W tym przypadku wyzwalacz uruchomi potok dwukrotnie (o godz. 2:00 i 3:00).
 
@@ -369,9 +369,9 @@ Szablon umożliwia wdrożenie następujących jednostek usługi Data Factory:
 - Potok z działaniem kopiowania
 - Wyzwalacz potoku
 
-Wdrożony wyzwalacz jest w stanie zatrzymanym. Jedną z metod Uruchom wyzwalacz jest użycie **Start AzDataFactoryV2Trigger** polecenia cmdlet programu PowerShell. Poniższa procedura zawiera szczegółowy opis kroków:
+Wdrożony wyzwalacz jest w stanie zatrzymanym. Jednym z metod uruchomienia wyzwalacza jest użycie polecenia cmdlet **Start-AzDataFactoryV2Trigger** programu PowerShell. Poniższa procedura zawiera szczegółowy opis kroków:
 
-1. W oknie programu PowerShell utwórz zmienną do przechowywania nazwy grupy zasobów. Skopiuj poniższe polecenie do okna programu PowerShell i naciśnij klawisz ENTER. Jeśli podano inną nazwę grupy zasobów dla polecenia New-AzResourceGroupDeployment, zaktualizuj tę wartość.
+1. W oknie programu PowerShell utwórz zmienną do przechowywania nazwy grupy zasobów. Skopiuj poniższe polecenie do okna programu PowerShell i naciśnij klawisz ENTER. Jeśli podano inną nazwę grupy zasobów dla polecenia New-AzResourceGroupDeployment, zaktualizuj wartość w tym miejscu.
 
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
@@ -417,7 +417,7 @@ Wdrożony wyzwalacz jest w stanie zatrzymanym. Jedną z metod Uruchom wyzwalacz 
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
     True
     ```
-6. Upewnij się, że wyzwalacz został uruchomiony za pomocą polecenia Get-AzDataFactoryV2Trigger ponownie.
+6. Upewnij się, że wyzwalacz został uruchomiony, ponownie uruchamiając polecenie Get-AzDataFactoryV2Trigger.
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
@@ -605,7 +605,7 @@ Należy zdefiniować potok, który kopiuje dane z jednego zestawu danych obiekt�
 
 #### <a name="trigger"></a>Wyzwalacz
 
-Należy zdefiniować wyzwalacz, który uruchamia potok co godzinę. Wdrożony wyzwalacz jest w stanie zatrzymanym. Uruchom wyzwalacz za pomocą **Start AzDataFactoryV2Trigger** polecenia cmdlet. Więcej informacji na temat wyzwalaczy zawiera artykuł [Wyzwalacze i wykonywanie potoku](concepts-pipeline-execution-triggers.md#triggers).
+Należy zdefiniować wyzwalacz, który uruchamia potok co godzinę. Wdrożony wyzwalacz jest w stanie zatrzymanym. Uruchom wyzwalacz za pomocą polecenia cmdlet **Start-AzDataFactoryV2Trigger** . Więcej informacji na temat wyzwalaczy zawiera artykuł [Wyzwalacze i wykonywanie potoku](concepts-pipeline-execution-triggers.md#triggers).
 
 ```json
 {
@@ -659,6 +659,6 @@ Należy zauważyć, że pierwsze polecenie używa pliku parametrów dla środowi
 
 Można także ponownie użyć szablonu do wykonywania powtarzających się zadań. Na przykład może być potrzebne utworzenie wielu fabryk danych z co najmniej jednym potokiem, które implementują tę samą logikę, lecz każda fabryka danych używa innego konta magazynu platformy Azure. W tym scenariuszu do tworzenia fabryk danych jest używany ten sam szablon w tym samym środowisku (programistycznym, testowym lub produkcyjnym) w połączeniu z różnymi plikami parametrów.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji w usłudze Azure Blob Storage. Zapoznaj się z [samouczkami](tutorial-copy-data-dot-net.md), aby dowiedzieć się więcej o korzystaniu z usługi Data Factory w dalszych scenariuszach.

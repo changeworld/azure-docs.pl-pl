@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 11/29/2018
 ms.author: sngun
-ms.openlocfilehash: ed90c22fa8c5b94567a9886ca71c9b35fbb103f0
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 6bc636b751d12bdb576e54f26536ac0045839229
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624621"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137336"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK dla interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -145,7 +145,12 @@ Nowe funkcje i funkcje i optymalizacje są dodawane tylko do bieżącego zestawu
 Wszystkie żądania Cosmos DB korzystania z wycofanego zestawu SDK są odrzucane przez usługę.
 
 > [!WARNING]
-> Wszystkie wersje zestawu SDK usługi Azure SQL dla języka Python wcześniejszymi niż wersja **1.0.0** zostały wycofane z dniem **do 29 lutego 2016 r**. 
+> Wszystkie wersje zestawu SDK języka Python dla interfejsu API SQL w wersji starszej niż **1.0.0** zostały wycofane **29 lutego 2016**. 
+> 
+> 
+
+> [!WARNING]
+> Wszystkie wersje 1. x i 2. x zestawu SDK języka Python dla interfejsu API SQL zostaną wycofane **30 sierpnia 2020**. 
 > 
 > 
 
@@ -155,27 +160,27 @@ Wszystkie żądania Cosmos DB korzystania z wycofanego zestawu SDK są odrzucane
 | --- | --- | --- |
 | [3.0.2](#3.0.2) |LIS 15, 2018 |--- |
 | [3.0.1](#3.0.1) |04, 2018 |--- |
-| [2.3.3](#2.3.3) |Września 08, 2018 |--- |
-| [2.3.2](#2.3.2) |Maja 08, 2018 |--- |
-| [2.3.1](#2.3.1) |21 grudnia 2017 |--- |
-| [2.3.0](#2.3.0) |10 listopada 2017 r. |--- |
-| [2.2.1](#2.2.1) |29 wrz 2017 |--- |
-| [2.2.0](#2.2.0) |10 maja 2017 |--- |
-| [2.1.0](#2.1.0) |01 maja, 2017 |--- |
-| [2.0.1](#2.0.1) |30 października 2016 r. |--- |
-| [2.0.0](#2.0.0) |29 września, 2016 |--- |
-| [1.9.0](#1.9.0) |07 lipca 2016 |--- |
-| [1.8.0](#1.8.0) |14 czerwca 2016 r. |--- |
-| [1.7.0](#1.7.0) |26 kwietnia 2016 |--- |
-| [1.6.1](#1.6.1) |08 kwietnia, 2016 |--- |
-| [1.6.0](#1.6.0) |29 marca 2016 r. |--- |
-| [1.5.0](#1.5.0) |03, 2016 |--- |
-| [1.4.2](#1.4.2) |06, 2015 |--- |
-| 1.4.1 |06, 2015 |--- |
-| [1.2.0](#1.2.0) |06 sierpnia 2015 |--- |
-| [1.1.0](#1.1.0) |09 lipca 2015 r. |--- |
-| [1.0.1](#1.0.1) |25 maja 2015 |--- |
-| [1.0.0](#1.0.0) |07 kwietnia 2015 r. |--- |
+| [2.3.3](#2.3.3) |Września 08, 2018 |30 sierpnia 2020 |
+| [2.3.2](#2.3.2) |Maja 08, 2018 |30 sierpnia 2020 |
+| [2.3.1](#2.3.1) |21 grudnia 2017 |30 sierpnia 2020 |
+| [2.3.0](#2.3.0) |10 listopada 2017 r. |30 sierpnia 2020 |
+| [2.2.1](#2.2.1) |29 wrz 2017 |30 sierpnia 2020 |
+| [2.2.0](#2.2.0) |10 maja 2017 |30 sierpnia 2020 |
+| [2.1.0](#2.1.0) |01 maja, 2017 |30 sierpnia 2020 |
+| [2.0.1](#2.0.1) |30 października 2016 r. |30 sierpnia 2020 |
+| [2.0.0](#2.0.0) |29 września, 2016 |30 sierpnia 2020 |
+| [1.9.0](#1.9.0) |07 lipca 2016 |30 sierpnia 2020 |
+| [1.8.0](#1.8.0) |14 czerwca 2016 r. |30 sierpnia 2020 |
+| [1.7.0](#1.7.0) |26 kwietnia 2016 |30 sierpnia 2020 |
+| [1.6.1](#1.6.1) |08 kwietnia, 2016 |30 sierpnia 2020 |
+| [1.6.0](#1.6.0) |29 marca 2016 r. |30 sierpnia 2020 |
+| [1.5.0](#1.5.0) |03, 2016 |30 sierpnia 2020 |
+| [1.4.2](#1.4.2) |06, 2015 |30 sierpnia 2020 |
+| 1.4.1 |06, 2015 |30 sierpnia 2020 |
+| [1.2.0](#1.2.0) |06 sierpnia 2015 |30 sierpnia 2020 |
+| [1.1.0](#1.1.0) |09 lipca 2015 r. |30 sierpnia 2020 |
+| [1.0.1](#1.0.1) |25 maja 2015 |30 sierpnia 2020 |
+| [1.0.0](#1.0.0) |07 kwietnia 2015 r. |30 sierpnia 2020 |
 | 0.9.4-prelease |14 stycznia 2015 |29 lutego 2016 r. |
 | 0.9.3-prelease |09, 2014 |29 lutego 2016 r. |
 | 0.9.2-prelease |25 listopada 2014 |29 lutego 2016 r. |

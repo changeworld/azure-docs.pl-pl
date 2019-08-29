@@ -6,14 +6,14 @@ author: laurenhughes
 manager: gwallace
 ms.service: batch
 ms.topic: article
-ms.date: 08/14/2019
+ms.date: 08/28/2019
 ms.author: lahugh
-ms.openlocfilehash: 00da17512cbc2e713955ea83c7d9fa7517958169
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3c2213c25a8fdc6d6545711bd2af9b94662ee609
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036690"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141821"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-pool"></a>Tworzenie puli za pomocą galerii obrazów udostępnionych
 
@@ -23,7 +23,7 @@ Podczas tworzenia puli Azure Batch przy użyciu konfiguracji maszyny wirtualnej 
 
 Gdy używasz galerii obrazów udostępnionych dla niestandardowego obrazu, masz kontrolę nad typem i konfiguracją systemu operacyjnego, a także typem dysków danych. Udostępniony obraz może zawierać aplikacje i dane referencyjne, które stają się dostępne we wszystkich węzłach puli partii, gdy tylko zostaną zainicjowane.
 
-Istnieje również możliwość użycia wielu wersji obrazu w zależności od potrzeb danego środowiska. W przypadku tworzenia maszyny wirtualnej przy użyciu wersji obrazu, wersja obrazu służy do tworzenia nowych dysków dla maszyny wirtualnej. 
+Istnieje również możliwość użycia wielu wersji obrazu w zależności od potrzeb danego środowiska. W przypadku tworzenia maszyny wirtualnej przy użyciu wersji obrazu, wersja obrazu służy do tworzenia nowych dysków dla maszyny wirtualnej.
 
 Za pomocą udostępnionego obrazu można zaoszczędzić czas podczas przygotowywania węzłów obliczeniowych puli do uruchamiania obciążenia usługi Batch. Istnieje możliwość użycia obrazu portalu Azure Marketplace i zainstalowania oprogramowania w każdym węźle obliczeniowym po zainicjowaniu obsługi, ale użycie obrazu udostępnionego jest zwykle bardziej wydajne. Dodatkowo można określić wiele replik dla obrazu udostępnionego, tak aby podczas tworzenia pul z wieloma maszynami wirtualnymi (więcej niż 600 maszyn wirtualnych) zaoszczędzić czas podczas tworzenia puli.
 
@@ -91,6 +91,19 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
     ...
 }
 ```
+
+## <a name="create-a-pool-from-a-shared-image-using-the-azure-portal"></a>Tworzenie puli na podstawie udostępnionego obrazu przy użyciu Azure Portal
+
+Wykonaj następujące kroki, aby utworzyć pulę z udostępnionego obrazu w Azure Portal.
+
+1. Otwórz [portal Azure](https://portal.azure.com).
+1. Przejdź do pozycji **konta wsadowe** i wybierz swoje konto.
+1. Wybierz pozycję **Pule** , a następnie **Dodaj** , aby utworzyć nową pulę.
+1. W sekcji **Typ obrazu** wybierz pozycję **Galeria obrazów udostępnionych**.
+1. Wypełnij pozostałe sekcje informacjami o zarządzanym obrazie.
+1. Kliknij przycisk **OK**.
+
+![Utwórz pulę przy użyciu udostępnionego obrazu z portalem.](media/batch-custom-images/create-custom-pool.png)
 
 ## <a name="considerations-for-large-pools"></a>Zagadnienia dotyczące dużych pul
 

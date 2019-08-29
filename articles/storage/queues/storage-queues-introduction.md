@@ -8,23 +8,16 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: overview
 ms.reviewer: cbrooks
-ms.openlocfilehash: 67e4874fcca93633140b7630ceadd273d1646f86
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 86bbff167a2653fd8d89b566b551c4c53dd3614e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721170"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124561"
 ---
-# <a name="what-are-azure-queues"></a>Co to jest Azure Queues?
+# <a name="what-are-azure-queues"></a>Co to są kolejki platformy Azure?
 
-Azure queue storage to usługa służąca do przechowywania dużej liczby komunikatów. Użytkownik uzyskuje dostęp do komunikatów z dowolnego miejsca na świecie za pośrednictwem uwierzytelnionych połączeń przy użyciu protokołu HTTP lub HTTPS. Komunikat w kolejce może mieć rozmiar do 64 KB. Kolejka może zawierać miliony komunikatów, do łącznego limitu pojemności konta magazynu.
-
-## <a name="common-uses"></a>Typowe zastosowania
-
-Najczęstsze zastosowania usługi Queue Storage obejmują:
-
-* Tworzenie zaległości pracy do przetwarzania asynchronicznego
-* Przekazywanie komunikatów z roli sieci Web platformy Azure do roli procesu roboczego platformy Azure
+Azure Queue Storage to usługa do przechowywania dużej liczby komunikatów. Użytkownik uzyskuje dostęp do komunikatów z dowolnego miejsca na świecie za pośrednictwem uwierzytelnionych połączeń przy użyciu protokołu HTTP lub HTTPS. Komunikat w kolejce może mieć rozmiar do 64 KB. Kolejka może zawierać miliony komunikatów, do łącznego limitu pojemności konta magazynu. Kolejki są często używane do tworzenia zaległości prac do przetwarzania asynchronicznego.
 
 ## <a name="queue-service-concepts"></a>Koncepcje usługa kolejki
 

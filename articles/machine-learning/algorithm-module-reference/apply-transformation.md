@@ -1,7 +1,7 @@
 ---
-title: 'Zastosuj przekształcenia: Odwołania do modułu'
+title: 'Zastosuj transformację: Dokumentacja modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak Użyj modułu Zastosuj przekształcenie w usłudze Azure Machine Learning, aby zmodyfikować wejściowego zestawu danych oparte na wcześniej obliczanej transformacji.
+description: Dowiedz się, jak zmodyfikować wejściowy zestaw danych na podstawie wcześniej obliczonego przekształcenia przy użyciu modułu Zastosuj przekształcenie w usłudze Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,42 +9,41 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 810f375642af49814049589cb83ad17fea578b13
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b4ec9e71d9ce932a7b206467db91760f4a4fc47
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028713"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128978"
 ---
 # <a name="apply-transformation-module"></a>Zastosuj przekształcenie modułu
 
-W tym artykule opisano moduł interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Ten moduł służy do modyfikowania wejściowego zestawu danych oparte na wcześniej obliczanej transformacji.  
+Ten moduł służy do modyfikowania wejściowego zestawu danych na podstawie wcześniej obliczonego przekształcenia.  
   
-Na przykład w przypadku korzystania z wyniki do normalizacji danych szkoleniowych przy użyciu **normalizacji danych** modułu, czy chcesz użyć została obliczona wartość wyniku z szkolenia w fazie oceny także. W usłudze Azure Machine Learning można zapisać jako przekształcenia, a następnie za pomocą metody normalizacji **Zastosuj przekształcenie** dotyczą wynik z danych wejściowych przed oceniania.
+Na przykład jeśli zostały użyte wyniki z przeznaczeniem do normalizacji danych szkoleniowych przy użyciu modułu **normalizowanie danych** , warto użyć wartości z-Score, która została obliczona dla szkolenia w fazie oceniania. W Azure Machine Learning można zapisać metodę normalizacji jako transformację, a następnie za pomocą **zastosowania przekształcenia zastosować** wynikowe dane wejściowe przed oceną.
   
-Usługa Azure Machine Learning zapewnia obsługę tworzenia, a następnie zastosowanie wielu różnych rodzajów niestandardowe przekształcenia. Na przykład możesz chcieć Zapisz, a następnie ponowne używanie przekształceń w celu:  
+Azure Machine Learning zapewnia obsługę tworzenia i stosowania wielu różnych rodzajów niestandardowych transformacji. Na przykład możesz chcieć zapisać, a następnie ponownie użyć transformacji, aby:  
   
-- Usuń lub Zamień brakujące wartości, przy użyciu **Clean Missing Data**
-- Normalizacji danych za pomocą **normalizacji danych**
+- Usuń lub Zastąp brakujące wartości, używając **czystego brakujących danych**
+- Normalizowanie danych przy użyciu **normalizacji danych**
   
 
-## <a name="how-to-use-apply-transformation"></a>Jak używać Zastosuj przekształcenia  
+## <a name="how-to-use-apply-transformation"></a>Jak używać transformacji zastosowania  
   
-1. Dodaj **Zastosuj przekształcenie** modułu do eksperymentu. Można znaleźć w tym module w ramach **uczenia maszynowego**w **wynik** kategorii. 
+1. Dodaj do eksperymentu moduł **Zastosuj transformację** . Ten moduł można znaleźć w obszarze **Machine Learning**, w kategorii **wynik** . 
   
-2. Zlokalizuj istniejący przekształcenie do użycia jako dane wejściowe.  Przekształcenia zapisane wcześniej, można znaleźć w **przekształca** grupy w okienku nawigacji po lewej stronie.  
+2. Znajdź istniejącą transformację do użycia jako dane wejściowe.  Wcześniej zapisane przekształcenia można znaleźć w grupie **transformacje** w okienku nawigacji po lewej stronie.  
   
    
   
-3. Połącz z zestawu danych, który chcesz przekształcić. Zestaw danych powinien mieć dokładnie ten sam schemat (liczba kolumn, nazwy kolumn i typy danych) jako zestawu danych, dla którego pierwotnie opracowano transformacji.  
+3. Połącz zestaw danych, który ma zostać przekształcony. Zestaw danych powinien mieć dokładnie ten sam schemat (liczbę kolumn, nazwy kolumn, typy danych) jako zestaw danych, dla którego przekształcenie zostało po raz pierwszy zaprojektowane.  
   
-4. Żadne inne parametry należy ustawić, ponieważ wszystkie dostosowania odbywa się podczas definiowania transformacji.  
+4. Nie trzeba ustawiać innych parametrów, ponieważ podczas definiowania transformacji jest wykonywane wszystkie dostosowania.  
   
-5. Aby zastosować przekształcenie do nowego zestawu danych, uruchamianie eksperymentu.  
+5. Aby zastosować transformację do nowego zestawu danych, uruchom eksperyment.  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [zestaw dostępnych modułów](module-reference.md) do usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 

@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cf5770cf052a478ea56f906efc19698554a1cd0
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: cd3907231ce3963d43fa8279039a736b63fc2043
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989717"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127275"
 ---
 # <a name="what-are-azure-active-directory-reports"></a>Co to są raporty usługi Azure Active Directory?
 
@@ -54,9 +54,9 @@ Wszystkie wersje usługi Azure AD zapewniają dostęp do raportów użytkownikó
 
 - W **usłudze Azure Active Directory w wersji Bezpłatna i Podstawowa** masz dostęp do listy użytkowników oflagowanych w związku z ryzykiem i ryzykownych logowań. 
 
-- Wersja **Azure Active Directory Premium 1** rozszerza ten model, umożliwiając również badanie niektórych podstawowych zdarzeń związanych z ryzykiem, które uwzględniono w poszczególnych raportach. 
+- Wersja **Azure Active Directory — wersja Premium 1** rozszerza ten model, umożliwiając także sprawdzenie niektórych podstawowych wykryć ryzyka, które zostały wykryte dla każdego raportu. 
 
-- Wersja **Azure Active Directory Premium 2** oferuje najbardziej szczegółowe informacje na temat zdarzeń związanych z ryzykiem i umożliwia również konfigurowanie zasad zabezpieczeń, które automatycznie reagują na wystąpienie skonfigurowanych poziomów ryzyka.
+- Wersja **Azure Active Directory — wersja Premium 2** zapewnia najbardziej szczegółowe informacje na temat podstawowych wykryć ryzyka, a także umożliwia konfigurowanie zasad zabezpieczeń, które automatycznie reagują na skonfigurowane poziomy ryzyka.
 
 
 ## <a name="activity-reports"></a>Raporty dotyczące działań

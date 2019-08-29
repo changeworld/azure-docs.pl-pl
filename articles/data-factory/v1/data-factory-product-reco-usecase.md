@@ -1,61 +1,60 @@
 ---
-title: Przypadek użycia fabryki danych — rekomendacje produktów
-description: Więcej informacji na temat przypadek użycia implementowane przy użyciu usługi Azure Data Factory razem z innymi usługami.
+title: Data Factory przypadku użycia — zalecenia dotyczące produktu
+description: Dowiedz się więcej na temat przypadku użycia zaimplementowanego przy użyciu Azure Data Factory wraz z innymi usługami.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.assetid: 6f1523c7-46c3-4b8d-9ed6-b847ae5ec4ae
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 4a3d1c513bcfb6449ca73d873c0dd9831c6fe01d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 49ad9be7c70602132436b14234f01a4086d8e1fe
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60605704"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139136"
 ---
 # <a name="use-case---product-recommendations"></a>Przypadek użycia — rekomendacje produktów
-Usługa Azure Data Factory jest jednym z wielu usług, używaną do zaimplementowania pakietu Cortana Intelligence z akceleratorami rozwiązań.  Zobacz [pakietu Cortana Intelligence](https://www.microsoft.com/cortanaanalytics) strony, aby uzyskać szczegółowe informacje na temat tego pakietu. W tym dokumencie opisano typowy przypadek użycia, w których użytkownicy platformy Azure już rozwiązanie zaimplementowane przy użyciu usługi Azure Data Factory i innych usług składników pakietu Cortana Intelligence.
+Azure Data Factory jest jedną z wielu usług służących do implementowania Cortana Intelligence Suite akceleratorów rozwiązań.  Aby uzyskać szczegółowe informacje o tym zestawie, zobacz stronę [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) . W tym dokumencie opisano typowy przypadek użycia, który użytkownicy platformy Azure już rozwiązany i zaimplementowali przy użyciu Azure Data Factory i innych usług składników Cortana Intelligence.
 
 ## <a name="scenario"></a>Scenariusz
-Sprzedawcy internetowi często mają być zachęcić ich klientom nabywać produkty, prezentując z produktami, które są najbardziej prawdopodobne zainteresować i w związku z tym najbardziej prawdopodobne kupić. Aby to osiągnąć, sprzedawcy internetowi muszą dostosować swoje użytkownika w trybie online przy użyciu spersonalizowanych rekomendacji produktu dla tego określonego użytkownika. Te spersonalizowane zalecenia są dokonywane na podstawie na ich bieżące i historyczne dane dotyczące zachowania, informacji o produkcie, nowo wprowadzonych marek i produktu i segmentacji danych klientów na zakupy.  Ponadto może zapewnić rekomendacje produktów użytkownika na podstawie analizy ogólnym zachowaniom użycia od wszystkich użytkowników w połączeniu.
+Sprzedawcy detaliczni zwykle chcą zachęcić klientów do kupowania produktów przez przedstawienie im produktów, które najprawdopodobniej interesują się, i z tego powodu najprawdopodobniej kupimy. Aby to osiągnąć, detaliczne sprzedawcy muszą dostosować środowisko online użytkownika, korzystając z spersonalizowanych zaleceń dla danego użytkownika. Te spersonalizowane zalecenia są podejmowane w oparciu o bieżące i historyczne dane dotyczące zachowań zakupów, informacje o produktach, nowo wprowadzone marki oraz dane dotyczące produktów i segmentacji klientów.  Ponadto mogą zapewnić zalecenia dotyczące produktu użytkownika w oparciu o analizę ogólnego zachowania użytkowania ze wszystkich użytkowników połączonych.
 
-Celem tych sprzedawców detalicznych jest Optymalizuj dla użytkownika kliknij przycisk do sprzedaży konwersji i Uzyskaj wyższe przychody ze sprzedaży.  Osiągną tę konwersję, zapewniając rekomendacje produktów kontekstowych, oparte na zachowanie, na podstawie zainteresowań klientów i akcji. Dla tego przypadku użycia używamy sprzedawcy internetowi jako przykład firm, które ma być optymalizowany dla swoich klientów. Jednak te zasady mają zastosowanie w przypadku każdej firmy, które chcą angażować swoich klientów na całym jego towarów i usług i poprawić funkcjonalność z perspektywy zakupu swoich klientów za pomocą spersonalizowanych rekomendacji produktu.
+Celem tych sprzedawców detalicznych jest zoptymalizowanie pod kątem konwersji typu "kliknięcie do sprzedaży" i zdobycie większego przychodu sprzedaży.  Osiągają one tę konwersję, dostarczając kontekstowe zalecenia dotyczące produktu oparte na zachowaniu w zależności od zainteresowań i akcji klienta. W przypadku tego przypadku użycia detalicznych detalistów używamy jako przykładu firm, które chcą zoptymalizować dla swoich klientów. Jednak te zasady mają zastosowanie do wszystkich firm, które chcą angażować swoich klientów w swoje rzeczy i usługi, a także zwiększyć możliwości kupowania klientów przy użyciu spersonalizowanych zaleceń dotyczących produktów.
 
 ## <a name="challenges"></a>Wyzwania
-Istnieje wiele wyzwań napotykane przez sprzedawcy internetowi podczas próby wykonania tego rodzaju przypadek użycia. 
+Istnieje wiele wyzwań, które są dostępne dla detalistów internetowych podczas próby wdrożenia tego typu przypadku użycia. 
 
-Po pierwsze, dane z różnych rozmiarów i kształtów muszą być pozyskiwane z wielu źródeł danych, zarówno lokalnie i w chmurze. Te dane obejmują dane produktów, historycznych zachowanie danych klientów i dane użytkowników, jak użytkownik będzie przeglądać witryny detalicznego handlu online. 
+Najpierw dane o różnych rozmiarach i kształtach muszą być pozyskiwane z wielu źródeł danych, zarówno lokalnych, jak i w chmurze. Te dane obejmują dane produktu, historyczne dane dotyczące zachowań klienta oraz dane użytkowników, gdy użytkownik przegląda witrynę sieci sprzedaży online. 
 
-Rekomendacje produktów w drugim, spersonalizowane musi być rozsądnie oraz dokładne wykonanie obliczane przewidzieć. Oprócz produktów, markę i dane zachowanie a przeglądarką klienta sprzedawcy internetowi również musi zawierać opinie klientów na zakupy w ciągu ostatnich wziąć pod uwagę przy określaniu najlepsze rekomendacje produktów dla użytkownika. 
+Druga, spersonalizowane zalecenia dotyczące produktu muszą być odpowiednio i dokładne, obliczane i przewidywalne. Oprócz zachowania produktu, marki i klienta oraz danych przeglądarki, sprzedawcy online muszą również uwzględniać opinie klientów na temat zakupów w przeszłości, aby wyznaczyć najlepsze zalecenia dotyczące produktu dla użytkownika. 
 
-Trzeci musi być natychmiast wynajmowania użytkownikowi, aby zapewnić bezproblemowe przeglądanie i kupowanie środowisko i przedstawić zalecenia w zakresie najnowszego i odpowiednie zalecenia. 
+Po trzecie zalecenia muszą mieć natychmiastowy dostęp do użytkownika w celu zapewnienia bezproblemowego przeglądania i kupowania oraz zapewnienia najnowszych i odpowiednich zaleceń. 
 
-Na koniec sprzedawcy detaliczni, muszą Zmierz efektywność swojego podejścia, śledząc ogólną dodatkowej i wiązanej sukcesów sprzedaży kliknij do konwersji i dostosowują się do ich zaleceń na przyszłość.
+Poza tym detaliści muszą mierzyć skuteczność podejścia przez śledzenie całkowitej liczby sukcesów sprzedaży do samosprzedaży i rozliczeń, które można zastosować, i dostosować je do przyszłych zaleceń.
 
-## <a name="solution-overview"></a>Omówienie rozwiązania
-Ten przypadek użycia przykład został rozwiązany i implementowany przez użytkowników rzeczywiste platformy Azure przy użyciu usługi Azure Data Factory i innymi usługami składników pakietu Cortana Intelligence, w tym [HDInsight](https://azure.microsoft.com/services/hdinsight/) i [usługi Power BI](https://powerbi.microsoft.com/).
+## <a name="solution-overview"></a>Przegląd rozwiązania
+Ten przykładowy przypadek użycia został rozwiązany i wdrożony przez prawdziwych użytkowników platformy Azure przy użyciu Azure Data Factory i innych usług składników Cortana Intelligence, w tym [HDInsight](https://azure.microsoft.com/services/hdinsight/) i [Power BI](https://powerbi.microsoft.com/).
 
-Sprzedawca online korzysta z magazynu obiektów Blob platformy Azure, programu SQL server w środowisku lokalnym, bazy danych SQL Azure i składnicy danych relacyjnych jako opcje przechowywania ich danych w całym przepływie pracy.  Magazyn obiektów blob zawiera informacje o klientach, dane zachowanie klienta i danych informacji o produkcie. Danych informacji produktu obejmuje informacje o produkcie marki i produktu przechowywane lokalnie w usłudze SQL data warehouse w katalogu. 
+Detaliczny detalista używa magazynu obiektów blob platformy Azure, lokalnego programu SQL Server, bazy danych SQL Azure i składni danych relacyjnych jako opcji przechowywania danych w ramach przepływu pracy.  Magazyn obiektów BLOB zawiera informacje o klientach, dane dotyczące zachowania klienta i dane o produkcie. Dane o produkcie zawierają informacje o marce produktu i katalog produktów przechowywane lokalnie w usłudze SQL Data Warehouse. 
 
-Wszystkie dane są połączone i przekazywane do system rekomendacji produktów do dostarczania spersonalizowanych zaleceń na podstawie interesów klientów i akcji, gdy użytkownik przegląda produktów w wykazie w witrynie internetowej. Klientów, zobacz też produktów, które są powiązane z produktu, który jest wyświetlany na podstawie ogólnej witryny sieci Web wzorców użycia, które nie są powiązane z żadnym użytkownikiem jeden.
+Wszystkie dane są łączone i przekazywane do systemu rekomendacji produktów w celu dostarczenia spersonalizowanych zaleceń w oparciu o zainteresowania i akcje klienta, podczas gdy użytkownik przegląda produkty w katalogu w witrynie sieci Web. Klienci widzą również produkty, które są związane z tym produktem, na podstawie ogólnych wzorców użycia witryny sieci Web, które nie są powiązane z żadnym użytkownikiem.
 
 ![Diagram przypadków użycia](./media/data-factory-product-reco-usecase/diagram-1.png)
 
-Gigabajty web pierwotne pliki dziennika są generowane raz dziennie z witryny sieci Web w trybie online dla sprzedawców detalicznych jako pliki z częściową strukturą. Pliki dziennika raw sieci web i informacje katalogu klienta i produkt regularnie pobieranym do usługi Azure Blob storage za pomocą usługi Data Factory, przenoszenia globalnie wdrożonych danych jako usługa. Pierwotnych plików dziennika na ten dzień są podzielone na partycje (przez rok i miesiąc) w usłudze blob storage do przechowywania długoterminowego.  [Usługa Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) służy do partycjonowania pierwotnych plików dziennika w magazynie obiektów blob i przetwarzać odebrane dzienniki na dużą skalę za pomocą skryptów Hive i Pig. Partycjonowane sieci web rejestruje dane są następnie przetwarzane w celu wyodrębnienia wymagane dane wejściowe dla usługi machine learning zalecenie systemu do generowania spersonalizowanych rekomendacji produktu.
+Gigabajty nieprzetworzonych plików dziennika sieci Web są generowane codziennie od witryny internetowej sprzedawcy detalicznego w postaci plików z częściową strukturą. Pierwotne pliki dziennika sieci Web oraz informacje o klientach i katalogach produktów są regularnie pozyskiwane w usłudze Azure Blob Storage za pomocą Data Factory globalnie wdrożonych przepływów danych jako usługi. Surowe pliki dziennika dla tego dnia są podzielone na partycje (według roku i miesiąca) w usłudze BLOB Storage w celu przechowywania długoterminowego.  [Usługa Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) służy do partycjonowania nieprzetworzonych plików dziennika w magazynie obiektów blob i przetwarzania pozyskanych dzienników na dużą skalę przy użyciu skryptów Hive i świńskiej. Podzielone na partycje dane dzienników sieci Web są następnie przetwarzane w celu wyodrębnienia wymaganych wejść dla systemu rekomendacji usługi Machine Learning w celu wygenerowania spersonalizowanych zaleceń dotyczących produktów.
 
-System zalecenie, używane do uczenia maszynowego w tym przykładzie jest uczenia platforma zalecenie maszynowego typu open source [Apache Mahout](https://mahout.apache.org/).  Wszelkie [usługi Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) lub utworzyć niestandardowy model może odnosić się do scenariusza.  Mahout model służy do prognozowania podobieństwa między elementami w witrynie sieci Web, na podstawie ogólnej wzorców użycia i generowanie spersonalizowanych zaleceń na podstawie poszczególnych użytkownika.
+System rekomendacji używany na potrzeby uczenia maszynowego w tym przykładzie jest platformą rekomendacji "Open Source Machine Learning" z usługi [Apache Mahout](https://mahout.apache.org/).  Do scenariusza można zastosować dowolny [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) lub niestandardowy model.  Model Mahout służy do przewidywania podobieństwa między elementami w witrynie sieci Web na podstawie ogólnych wzorców użycia oraz do generowania spersonalizowanych rekomendacji na podstawie poszczególnych użytkowników.
 
-Na koniec zestawu wyników spersonalizowanych rekomendacji produktu jest przenoszony do składnicy danych relacyjnych do użycia w witrynie sprzedaży detalicznej.  Zestaw wyników również może być dostępne bezpośrednio z usługi blob storage przez inną aplikację lub przeniesiona do dodatkowego magazynów dla innych użytkowników i przypadkami użycia.
+Na koniec zestaw wyników spersonalizowanych rekomendacji dotyczących produktów jest przenoszony do składni danych relacyjnych w celu użycia przez witrynę sieci Web sprzedawcy detalicznego.  Zestaw wyników może być również dostępny bezpośrednio z usługi BLOB Storage przez inną aplikację lub przeniesiony do dodatkowych magazynów dla innych odbiorców i przypadków użycia.
 
 ## <a name="benefits"></a>Korzyści
-Optymalizacja ich strategii rekomendacji produktów i dostosowanie jej cele biznesowe, rozwiązanie spełnione promocji online sprzedaży detalicznej i celów marketingowych. Ponadto mieli operacjonalizacji i zarządzanie przepływem pracy z rekomendacji produktów w sposób wydajny, niezawodny i ekonomiczne. To podejście łatwe ich aktualizowanie ich modelu i dostosowywanie jej efektywność na podstawie miar sales sukcesów kliknij do konwersji. Za pomocą usługi Azure Data Factory, byli w stanie Porzuć ich funkcji zarządzania zasobami czasochłonne i kosztowne ręczne chmury, a następnie przejść do zarządzania zasobami chmury na żądanie. W związku z tym mieli zaoszczędzić czas i pieniądze i skrócić czas ich wdrożenia rozwiązania. Widoki pochodzenie danych i kondycji operacyjnej usług stało się ułatwia wizualizowanie i rozwiązywanie problemów przy użyciu intuicyjnego monitorowania usługi fabryka danych i zarządzania interfejsu użytkownika dostępnych w witrynie Azure portal. Można teraz zaplanowane swoje rozwiązanie i zarządzane tak, aby gotowych danych jest niezawodny sposób będą generowane i dostarczane do użytkowników oraz danych i przetwarzania zależności są zarządzane automatycznie bez interwencji człowieka.
+Przez optymalizację strategii zaleceń dotyczących produktów i dostosowanie jej do celów gospodarczych, rozwiązanie spełnia cele marketingowe i docelowe sprzedaży w trybie online. Ponadto mogli operacjonalizować i zarządzać przepływem pracy zaleceń dotyczących produktu w sposób efektywny, niezawodny i ekonomiczny. Podejście ułatwiające aktualizowanie modelu i dostosowanie jego skuteczności w oparciu o miary sukcesów operacji kliknięcia i konwersji sprzedaży. Korzystając z Azure Data Factory, mogli porzucić czasochłonne i kosztowne ręczne zarządzanie zasobami w chmurze oraz przejść na żądanie zarządzania zasobami w chmurze. W związku z tym mogły zaoszczędzić czas, pieniądze i skrócić czas wdrożenia rozwiązania. Widoki i kondycja usługi operacyjnej danych były łatwe do wizualizacji i rozwiązywania problemów przy użyciu intuicyjnego interfejsu użytkownika Data Factory monitorowania i zarządzania dostępnego z Azure Portal. Rozwiązanie może być teraz zaplanowane i zarządzane, aby gotowe dane były niezawodne i dostarczane do użytkowników, a zależności między danymi i przetwarzaniem są automatycznie zarządzane bez interwencji człowieka.
 
-Dostarczając to spersonalizowanego środowiska zakupowego, online sprzedaży detalicznej, utworzony klient zwiększają konkurencyjność, atrakcyjnych środowisko i w związku z tym zwiększyć zadowolenie klientów sprzedaży i ogólnej.
+Dzięki udostępnieniu tego spersonalizowanego środowiska sprzedaży detalicznej sprzedaż w trybie online stworzyła bardziej konkurencyjne, atrakcyjne środowisko klienta i w związku z tym zwiększają sprzedaż i ogólną zadowolenie klientów.
 

@@ -1,7 +1,7 @@
 ---
-title: 'Importuj dane: Odwołania do modułu'
+title: 'Importuj dane: Dokumentacja modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać modułu importu danych w usłudze Azure Machine Learning do ładowania danych do eksperymentu usługi machine learning, z istniejącymi usługami danych w chmurze.
+description: Dowiedz się, jak używać modułu Importuj dane w usłudze Azure Machine Learning do ładowania danych do eksperymentu uczenia maszynowego z istniejących usług danych w chmurze.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,80 +9,79 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: ed51c4e7b6c7d226c7827d1ba00bc96a7be1e6b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8522c759efb0cc599bbcf8e7569f6045da571a8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028308"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128781"
 ---
-# <a name="import-data-module"></a>Zaimportuj moduł danych
+# <a name="import-data-module"></a>Importuj moduł danych
 
-W tym artykule opisano moduł interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Ten moduł służy do ładowania danych do eksperymentu usługi machine learning, z istniejącymi usługami danych w chmurze.  
-Moduł zawiera teraz kreatora, aby pomóc Ci opcję magazynu, a następnie wybierz istniejące subskrypcje i konta, aby szybko skonfigurować wszystkie opcje. Należy zmodyfikować istniejące połączenie z danymi? Żaden problem; Kreator ładuje wszystkie poprzednie szczegółów konfiguracji, dzięki czemu nie trzeba ponownie uruchomić od podstaw. 
+Ten moduł służy do ładowania danych do eksperymentu uczenia maszynowego z istniejących usług danych w chmurze.  
+Moduł teraz zawiera kreatora, który pomaga wybrać opcję magazynu i wybrać spośród istniejących subskrypcji i kont, aby szybko skonfigurować wszystkie opcje. Chcesz edytować istniejące połączenie danych? Nie ma problemu; Kreator ładuje wszystkie poprzednie szczegóły konfiguracji, aby nie trzeba było ich uruchamiać od zera. 
   
-Po zdefiniowaniu dane i połączyć się ze źródłem [importu danych](./import-data.md) wnioskuje typ danych w każdej kolumnie na podstawie wartości zawiera i służy do ładowania danych do obszaru roboczego usługi Azure Machine Learning. Dane wyjściowe [importu danych](./import-data.md) jest zestawem danych, które mogą być używane z dowolnym eksperymentu.
+Po zdefiniowaniu danych, które chcesz połączyć ze źródłem, [Importowanie danych](./import-data.md) powoduje, że dane są uwzględniane w poszczególnych kolumnach, na podstawie wartości, które zawiera, i ładowania danych do obszaru roboczego Azure Machine Learning. Dane wyjściowe [importu](./import-data.md) są zestawem danych, który może być używany z dowolnym eksperymentem.
 
   
-Jeśli źródło danych zmienia się, możesz odświeżyć zestaw danych i dodawać nowe dane, uruchamiając [importu danych](./import-data.md). Jeśli nie chcesz ponownie odczytywana ze źródła z każdym przy uruchamianiu eksperymentu, jednak wybrać **użycia pamięci podręcznej wyniki** opcji na wartość TRUE. Po wybraniu tej opcji moduł sprawdza, czy eksperymentu zostało uruchomione poprzednio przy użyciu tego samego źródła i te same opcje danych wejściowych. Jeśli zostanie znaleziony poprzedniego uruchomienia, dane w pamięci podręcznej jest używany, zamiast ponownie załadowanie danych ze źródła.
+Jeśli dane źródłowe zmienią się, można odświeżyć zestaw danych i dodać nowe dane przez ponowne uruchomienie [importowania danych](./import-data.md). Jeśli jednak nie chcesz powtarzać odczytu ze źródła przy każdym uruchomieniu eksperymentu, wybierz opcję **Użyj wyników z pamięci** podręcznej na wartość true. Gdy ta opcja jest zaznaczona, moduł sprawdza, czy eksperyment został uruchomiony wcześniej przy użyciu tych samych danych źródłowych i tych samych opcji. W przypadku znalezienia poprzedniego przebiegu dane w pamięci podręcznej są używane zamiast ponownego ładowania danych ze źródła.
  
 
 ## <a name="data-sources"></a>Źródła danych
 
-Modułu importu danych obsługuje następujące źródła danych. Kliknij łącza, aby uzyskać szczegółowe instrukcje i przykłady użycia każdego źródła danych. 
+Moduł Importuj dane obsługuje następujące źródła danych. Kliknij linki, aby uzyskać szczegółowe instrukcje i przykłady użycia każdego źródła danych. 
  
-Jeśli nie masz pewności, jak i gdzie należy przechowywać dane, zobacz ten przewodnik do typowych scenariuszy danych w procesie nauki o danych:  [Scenariusze zaawansowanej analizy w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-plan-sample-scenarios). 
+Jeśli nie masz pewności, jak lub gdzie należy przechowywać dane, zapoznaj się z tym przewodnikiem, aby zapoznać się z typowymi scenariuszami danych w procesie nauki o danych:  [Scenariusze dotyczące zaawansowanej analizy w programie Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-plan-sample-scenarios). 
 
 
-|Źródło danych| Za pomocą|
+|Źródło danych| Używanie z|
 |-----------|-----------|  
-|[Adres URL sieci Web za pośrednictwem protokołu HTTP](./import-from-web-url-via-http.md)|Pobieranie danych, który znajduje się na adres URL sieci web używającej protokołu HTTP i że zostało podane w formacie CSV, TSV, ARFF lub SvmLight|  
-|[Importuj z usługi Azure Blob Storage](./import-from-azure-blob-storage.md) |Pobierz dane są przechowywane w usłudze obiektów blob platformy Azure|  
+|[Adres URL sieci Web za pośrednictwem protokołu HTTP](./import-from-web-url-via-http.md)|Pobierz dane hostowane w adresie URL sieci Web, który używa protokołu HTTP i który został udostępniony w formatach CSV, TSV, ARFF lub SvmLight|  
+|[Importuj z usługi Azure Blob Storage](./import-from-azure-blob-storage.md) |Pobieranie danych przechowywanych w usłudze Azure Blob Service|  
 
 ## <a name="how-to-use-import-data"></a>Jak używać importu danych
  
-1. Dodaj **importu danych** modułu do eksperymentu. Możesz znaleźć tego modułu w **danych wejściowych i wyjściowych** kategorii w interfejsie.
+1. Dodaj moduł **Import danych** do eksperymentu. Ten moduł można znaleźć w kategorii dane **wejściowe i wyjściowe** w interfejsie.
 
-2. Kliknij przycisk **Uruchom Kreatora importu danych** Konfigurowanie źródła danych przy użyciu kreatora.
+2. Kliknij przycisk **Uruchom Kreatora importu danych** , aby skonfigurować źródło danych za pomocą kreatora.
 
-    Kreator pobiera nazwę konta i poświadczenia i skonfigurować inne opcje pomocy. Jeśli edytujesz istniejącej konfiguracji ładuje bieżące wartości najpierw.
+    Kreator pobiera nazwę i poświadczenia konta oraz ułatwia konfigurowanie innych opcji. Jeśli edytujesz istniejącą konfigurację, najpierw ładuje bieżące wartości.
 
-3. Jeśli nie chcesz używać kreatora, kliknij przycisk **źródła danych**i wybierz typ podczas odczytu z magazynu w chmurze. 
+3. Jeśli nie chcesz używać kreatora, kliknij pozycję **Źródło danych**, a następnie wybierz typ magazynu opartego na chmurze, z którego korzystasz. 
 
-    Dodatkowe ustawienia są zależne od typu magazynu, możesz wybrać, i czy magazyn jest zabezpieczony, czy nie. Należy podać nazwę konta, typu pliku lub poświadczenia. Niektóre źródła nie wymagają uwierzytelniania dla innych użytkowników może być konieczne znać nazwę konta, klucza lub nazwę kontenera.
+    Dodatkowe ustawienia zależą od wybranego typu magazynu i od tego, czy magazyn jest zabezpieczony, czy nie. Może być konieczne podanie nazwy konta, typu pliku lub poświadczeń. Niektóre źródła nie wymagają uwierzytelniania; dla innych osób może być konieczne poznanie nazwy konta, klucza lub nazwy kontenera.
 
-4. Wybierz **użycia pamięci podręcznej wyniki** opcję, jeśli chcesz buforować zestawu danych do ponownego użycia w kolejnych przebiegów.
+4. Wybierz opcję **Użyj zbuforowanych wyników** , jeśli chcesz buforować zestaw danych do ponownego użycia przy kolejnych uruchomieniach.
 
-    Przy założeniu, że nie było żadnych innych zmian, aby parametry modułu, eksperymentu ładuje czasu danych tylko pierwszy moduł jest uruchamiany, a następnie używa zbuforowaną wersję zestawu danych.
+    Przy założeniu, że nie zostały wprowadzone żadne inne zmiany parametrów modułu, eksperyment ładuje dane tylko przy pierwszym uruchomieniu modułu, a następnie używa buforowanej wersji zestawu danych.
 
-    Wyłącz tę opcję, jeśli chcesz załadować dane za każdym razem, gdy uruchomienie eksperymentu.
+    Usuń zaznaczenie tej opcji, jeśli konieczne jest ponowne załadowanie danych przy każdym uruchomieniu eksperymentu.
 
 5. Uruchom eksperyment.
 
-    Podczas importowania danych służy do ładowania danych w interfejsie, jego wnioskuje typ danych w każdej z kolumn na podstawie wartości w nim wartości liczbowych lub podzielonych na kategorie.
+    W przypadku zaimportowania danych do interfejsu program wnioskuje typ danych każdej kolumny w oparciu o zawarte w niej wartości, wartość numeryczną lub kategorii.
 
-    - Jeśli istnieje nagłówek, nagłówek jest używany do nazywania kolumny zestawu danych wyjściowych.
+    - Jeśli nagłówek jest obecny, nagłówek jest używany do nazwy kolumn wyjściowego zestawu danych.
 
-    - W przypadku istniejących nagłówków kolumn w danych, nowych nazw kolumn są generowane przy użyciu col1 format, col2... , coln *.
+    - Jeśli w danych nie ma nagłówków istniejących kolumn, nowe nazwy kolumn są generowane przy użyciu formatu Kol1, Col2,... , coln*.
 
 ## <a name="results"></a>Wyniki
 
-Po zakończeniu importowania, kliknij wyjściowy zestaw danych i wybierz pozycję **Visualize** aby zobaczyć, jeśli dane zostały pomyślnie zaimportowane.
+Po zakończeniu importu kliknij wyjściowy zestaw danych i wybierz polecenie **Wizualizuj** , aby sprawdzić, czy dane zostały zaimportowane pomyślnie.
 
-Jeśli chcesz zapisać dane do ponownego użycia, zamiast importowania nowy zestaw danych przy każdym uruchomieniu eksperymentu, kliknij prawym przyciskiem myszy dane wyjściowe, a następnie wybierz **Zapisz jako zestaw danych**. Wybierz nazwę dla zestawu danych. Zapisany zestaw danych zachowuje te dane w czasie zapisywania i danych nie jest aktualizowany podczas ponownego uruchomienia eksperymentu, nawet w przypadku zmiany zestawu danych w eksperymencie. Może to być przydatne do rzucenia migawki danych.
+Jeśli chcesz zapisać dane do ponownego użycia zamiast zaimportować nowy zestaw danych przy każdym uruchomieniu eksperymentu, kliknij prawym przyciskiem myszy dane wyjściowe i wybierz polecenie **Zapisz jako zestaw danych**. Wybierz nazwę dla zestawu danych. Zapisany zestaw danych zachowuje dane podczas zapisywania, a dane nie są aktualizowane po ponownym uruchomieniu eksperymentu, nawet jeśli zestaw danych w eksperymentie ulegnie zmianie. Może to być przydatne do tworzenia migawek danych.
 
-Po zaimportowaniu danych, może być konieczne pewne dodatkowe przygotowania do modelowania i analiz:
+Po zaimportowaniu danych może zajść potrzeba przeprowadzenia pewnych dodatkowych przygotowań do modelowania i analizy:
 
 
-- Użyj [edytować metadane](./edit-metadata.md) można zmienić nazwy kolumn, do obsługi kolumnę jako innego typu danych lub do wskazania, że niektóre kolumny są etykiet lub funkcji.
+- Użyj opcji [Edytuj metadane](./edit-metadata.md) , aby zmienić nazwy kolumn, obsłużyć kolumnę jako inny typ danych lub wskazać, że niektóre kolumny są etykietami lub funkcjami.
 
-- Użyj [Select Columns in Dataset](./select-columns-in-dataset.md) można wybrać podzestaw kolumn, aby przekształcić lub użyj w modelowania. Po przekształceniu lub usuniętych kolumn można łatwo zostać ponownie przyłączone do oryginalnego zestawu danych za pomocą [Dodaj kolumny](./add-columns.md) modułu.  
+- Użyj [opcji wybierz kolumny w zestawie danych](./select-columns-in-dataset.md) , aby wybrać podzbiór kolumn do przekształcenia lub użycia podczas modelowania. Kolumny przekształcone lub usunięte można łatwo ponownie przyłączyć do oryginalnego zestawu danych przy użyciu modułu [Dodaj kolumny](./add-columns.md) .  
 
-- Użyj [partycja i próbka](./partition-and-sample.md) dzielenia zestawu danych, przeprowadzić próbkowania lub uzyskaj pierwszych n wierszy.
+- Użyj [partycji i przykładu](./partition-and-sample.md) , aby podzielić zestaw danych, wykonać próbkowanie lub pobrać pierwsze n wierszy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [zestaw dostępnych modułów](module-reference.md) do usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 

@@ -11,16 +11,17 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/26/2019
+ms.date: 08/28/2019
 ms.author: bwren
-ms.openlocfilehash: 397272c3a47aca2aa73394f443d76dead66308e0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9ecae51d996e2e065b15d1fa70bdaf796f8f197b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68555331"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124124"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Niestandardowe dzienniki w Azure Monitor
+
 Źródło danych dzienników niestandardowych w Azure Monitor umożliwia zbieranie zdarzeń z plików tekstowych na komputerach z systemem Windows i Linux. Wiele aplikacji rejestruje informacje w plikach tekstowych zamiast standardowych usługach rejestrowania, takich jak dziennik zdarzeń systemu Windows lub system plików dziennika. Po zebraniu można przeanalizować dane do poszczególnych pól w zapytaniach lub wyodrębnić dane podczas zbierania do poszczególnych pól.
 
 ![Niestandardowa kolekcja dzienników](media/data-sources-custom-logs/overview.png)
@@ -46,6 +47,9 @@ Pliki dziennika do zebrania muszą być zgodne z następującymi kryteriami.
 > * Maksymalna liczba znaków w nazwie kolumny to 500. 
 >
 
+>[!IMPORTANT]
+>Niestandardowa kolekcja dzienników wymaga, aby aplikacja, która piszą plik dziennika, opróżnia zawartość dziennika na dysk okresowo. Wynika to z faktu, że niestandardowe kolekcje dzienników opierają się na powiadomieniach o zmianach systemu plików dla śledzonego pliku dziennika.
+
 ## <a name="defining-a-custom-log"></a>Definiowanie dziennika niestandardowego
 Aby zdefiniować niestandardowy plik dziennika, należy wykonać czynności opisane w poniższej procedurze.  Przewiń do końca tego artykułu, aby zapoznać się z przykładem dodawania dziennika niestandardowego.
 
@@ -64,7 +68,6 @@ Zacznij od przekazania przykładu dziennika niestandardowego.  Kreator przeanali
 
 Jeśli jest używany ogranicznik sygnatury czasowej, właściwość TimeGenerated każdego rekordu przechowywanego w Azure Monitor zostanie wypełniona datą/godziną określoną dla tego wpisu w pliku dziennika.  Jeśli jest używany nowy ogranicznik wiersza, TimeGenerated jest wypełniany datą i godziną, która Azure Monitor zebrania wpisu.
 
-
 1. Kliknij przycisk **Przeglądaj** i przejdź do pliku przykładowego.  Należy zauważyć, że może to być przycisk z etykietą **Wybierz plik** w niektórych przeglądarkach.
 2. Kliknij przycisk **Dalej**.
 3. Kreator dziennika niestandardowego przekaże plik i wyświetli listę rekordów, które identyfikuje.
@@ -75,7 +78,6 @@ Jeśli jest używany ogranicznik sygnatury czasowej, właściwość TimeGenerate
 Należy zdefiniować co najmniej jedną ścieżkę w agencie, w której można zlokalizować dziennik niestandardowy.  Możesz podać konkretną ścieżkę i nazwę pliku dziennika lub określić ścieżkę z symbolem wieloznacznym dla nazwy. Obsługuje to aplikacje, które tworzą nowy plik każdego dnia lub gdy jeden plik osiągnie określony rozmiar. Istnieje również możliwość udostępnienia wielu ścieżek dla jednego pliku dziennika.
 
 Na przykład aplikacja może utworzyć plik dziennika codziennie o dacie zawartej w nazwie w log20100316. txt. Wzorzec dla takiego dziennika może być *\*dziennik. txt* , który powinien zostać zastosowany do każdego pliku dziennika, zgodnie ze schematem nazewnictwa aplikacji.
-
 
 Poniższa tabela zawiera przykłady prawidłowych wzorców do określenia różnych plików dziennika.
 
@@ -105,7 +107,6 @@ Gdy Azure Monitor rozpoczyna zbieranie danych z dziennika niestandardowego, jego
 > [!NOTE]
 > Jeśli w zapytaniu brakuje właściwości RawData, może być konieczne zamknięcie i ponowne otwarcie przeglądarki.
 
-
 ### <a name="step-6-parse-the-custom-log-entries"></a>Krok 6. Analizowanie niestandardowych wpisów dziennika
 Cały wpis dziennika zostanie zapisany w pojedynczej właściwości o nazwie **rawData**.  Najprawdopodobniej chcesz oddzielić różne fragmenty informacji w każdym wpisie do poszczególnych właściwości dla każdego rekordu. Zapoznaj się z tematem analizowanie [danych tekstowych w Azure monitor](../log-query/parse-text.md) , aby uzyskać opcje analizowania **rawData** na wiele właściwości.
 
@@ -114,7 +115,6 @@ Użyj następującego procesu w Azure Portal, aby usunąć wcześniej zdefiniowa
 
 1. Z menu **dane** w obszarze **Ustawienia zaawansowane** dla obszaru roboczego wybierz pozycję **dzienniki niestandardowe** , aby wyświetlić listę wszystkich dzienników niestandardowych.
 2. Kliknij przycisk **Usuń** obok dziennika niestandardowego do usunięcia.
-
 
 ## <a name="data-collection"></a>Zbieranie danych
 Azure Monitor będzie zbierać nowe wpisy z każdego dziennika niestandardowego co 5 minut.  Agent będzie rejestrował swoje miejsce w każdym pliku dziennika, z którego zbiera dane.  Jeśli Agent przejdzie w tryb offline przez pewien czas, Azure Monitor będzie zbierać wpisy z miejsca, w którym został on ostatnio pozostawiony, nawet jeśli te wpisy zostały utworzone, gdy agent był w trybie offline.
@@ -135,11 +135,11 @@ Niestandardowe rekordy dziennika mają typ o podanej nazwie dziennika i właści
 ## <a name="sample-walkthrough-of-adding-a-custom-log"></a>Przykładowe wskazówki dotyczące dodawania dziennika niestandardowego
 W poniższej sekcji omówiono przykład tworzenia dziennika niestandardowego.  Zbierany dziennik przykładowy zawiera pojedynczy wpis w każdym wierszu, zaczynając od daty i godziny, a następnie pola rozdzielane przecinkami dla kodu, stanu i wiadomości.  Poniżej przedstawiono kilka przykładowych wpisów.
 
-    2016-03-10 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
-    2016-03-10 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
-    2016-03-10 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
-    2016-03-10 01:38:22 302,Error,Application could not connect to database
-    2016-03-10 01:31:34 303,Error,Application lost connection to database
+    2019-08-27 01:34:36 207,Success,Client 05a26a97-272a-4bc9-8f64-269d154b0e39 connected
+    2019-08-27 01:33:33 208,Warning,Client ec53d95c-1c88-41ae-8174-92104212de5d disconnected
+    2019-08-27 01:35:44 209,Success,Transaction 10d65890-b003-48f8-9cfc-9c74b51189c8 succeeded
+    2019-08-27 01:38:22 302,Error,Application could not connect to database
+    2019-08-27 01:31:34 303,Error,Application lost connection to database
 
 ### <a name="upload-and-parse-a-sample-log"></a>Przekazywanie i analizowanie przykładowego dziennika
 Udostępniamy jeden z plików dziennika i widzisz zdarzenia, które będą zbierane.  W tym przypadku nowy wiersz jest wystarczającym ogranicznikiem.  Jeśli pojedynczy wpis w dzienniku może obejmować wiele wierszy, należy użyć ogranicznika sygnatury czasowej.
@@ -157,14 +157,10 @@ Użyjemy nazwy *MyApp_CL* i wpisz **Opis**.
 ![Nazwa dziennika](media/data-sources-custom-logs/log-name.png)
 
 ### <a name="validate-that-the-custom-logs-are-being-collected"></a>Sprawdź, czy dzienniki niestandardowe są zbierane
-Do zwrócenia wszystkich rekordów z zebranego dziennika używamy zapytania *typu = MyApp_CL* .
+Używamy prostego zapytania o *MyApp_CL* , aby zwrócić wszystkie rekordy z zebranych dzienników.
 
 ![Zapytanie dziennika bez pól niestandardowych](media/data-sources-custom-logs/query-01.png)
 
-### <a name="parse-the-custom-log-entries"></a>Analizowanie niestandardowych wpisów dziennika
-Używamy pól niestandardowych do definiowania pól *EventTime*, *Code*, *status*i *Message* , a my zobaczymy różnicę w rekordach, które są zwracane przez zapytanie.
-
-![Zapytanie dziennika z polami niestandardowymi](media/data-sources-custom-logs/query-02.png)
 
 ## <a name="alternatives-to-custom-logs"></a>Alternatywy dla dzienników niestandardowych
 Dzienniki niestandardowe są przydatne, jeśli dane są zgodne z kryteriami na liście, ale istnieją przypadki takie jak następujące, w których jest potrzebna inna strategia:

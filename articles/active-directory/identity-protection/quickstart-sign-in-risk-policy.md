@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bb1e29735a860f5dc3b6ce8996af9fcd4962871
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: ed5e5e26a27e13ba09ffcc97e0b2b0f1b37bc8bd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335306"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127701"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Szybki start: Blokuj dostęp w przypadku wykrycia ryzyka sesji z Azure Active Directory Identity Protection  
 
@@ -34,7 +34,7 @@ Do ukończenia scenariusza z tego samouczka są potrzebne następujące elementy
 
 - **Dostęp do Azure AD — wersja Premium P2 Edition** — Azure AD Identity Protection jest funkcją Azure AD — wersja Premium P2. 
 - **Ochrona tożsamości** — scenariusz w tym przewodniku Szybki Start wymaga włączenia ochrony tożsamości. Jeśli nie wiesz, jak włączyć ochronę tożsamości, zobacz [włączanie Azure Active Directory Identity Protection](../identity-protection/enable.md).
-- **Przeglądarka sieci Tor** — [przeglądarka tor](https://www.torproject.org/projects/torbrowser.html.en) została zaprojektowana tak, aby pomóc zachować prywatność w trybie online. Ochrona tożsamości wykrywa logowanie z przeglądarki tor jako **logowania z anonimowych adresów IP**, które mają poziom ryzyka średniego. Aby uzyskać więcej informacji, zobacz [Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory](../reports-monitoring/concept-risk-events.md).  
+- **Przeglądarka sieci Tor** — [przeglądarka tor](https://www.torproject.org/projects/torbrowser.html.en) została zaprojektowana tak, aby pomóc zachować prywatność w trybie online. Ochrona tożsamości wykrywa logowanie z przeglądarki tor jako **logowania z anonimowych adresów IP**, które mają poziom ryzyka średniego. Aby uzyskać więcej informacji, zobacz [Azure Active Directory wykrywania zagrożeń](../reports-monitoring/concept-risk-events.md).  
 - **Konto testowe o nazwie Alain Charon** — Jeśli nie wiesz, jak utworzyć konto testowe, zobacz [Dodawanie nowego użytkownika](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 ## <a name="test-your-sign-in"></a>Testowanie logowania 
@@ -48,7 +48,7 @@ Celem tego kroku jest upewnienie się, że konto testowe może uzyskać dostęp 
 
 ## <a name="create-your-conditional-access-policy"></a>Tworzenie zasad dostępu warunkowego 
 
-Scenariusz w tym przewodniku szybki start używa logowania z przeglądarki Tor w celu wygenerowania wykrytych logowań **z poziomu zdarzenia anonimowych adresów IP** . Poziomem ryzyka tego zdarzenia jest średnie. Aby odpowiedzieć na to zdarzenie związane z ryzykiem, należy ustawić wartość średni warunek ryzyka logowania. 
+Scenariusz w tym przewodniku szybki start używa logowania z przeglądarki Tor w celu wygenerowania wykrytych logowań **z anonimowych adresów IP** . Poziom ryzyka tego wykrywania ryzyka to średni. Aby odpowiedzieć na wykrycie tego ryzyka, należy ustawić wartość średni warunek ryzyka logowania. 
 
 W tej sekcji przedstawiono sposób tworzenia wymaganych zasad dostępu warunkowego dotyczącego ryzyka związanego z logowaniem. W zasadach ustaw następujące ustawienia:
 
@@ -73,7 +73,7 @@ W tej sekcji przedstawiono sposób tworzenia wymaganych zasad dostępu warunkowe
 9. Na stronie **warunki** kliknij pozycję **ryzyko związane**z logowaniem.
 10. Na stronie **ryzyko związane** z logowaniem wybierz pozycję **średni i powyżej**, a następnie kliknij pozycję **Wybierz**. 
 11. Na stronie **warunki** kliknij przycisk **gotowe**.
-12. Na stronie zasady w sekcji kontrolki  kliknij pozycję **dostęp**.
+12. Na stronie zasady w sekcji kontrolki kliknij pozycję **dostęp**.
 13. Na stronie **dostęp** kliknij pozycję **Zezwalaj na dostęp**, wybierz pozycję **Wymagaj uwierzytelniania**wieloskładnikowego, a następnie kliknij pozycję **Wybierz**.
 14. Na stronie zasady kliknij przycisk **Zapisz**.  
 

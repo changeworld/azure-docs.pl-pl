@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/09/2018
 ms.author: sngun
-ms.openlocfilehash: 4380bf81d05aa5247b57605b2aa53d24a73a0f68
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 431ede41e115c82c877041da4a0eb93eacf83cbd
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638577"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142659"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK dla interfejsu API SQL: Informacje dotyczące pobierania i zwalniania
 > [!div class="op_single_selector"]
@@ -377,6 +377,10 @@ Nowe funkcje i funkcje i optymalizacje są dodawane tylko do bieżącego zestawu
 
 Wszystkie żądania do Azure Cosmos DB za pomocą wycofanego zestawu SDK są odrzucane przez usługę.
 
+> [!WARNING]
+> Wszystkie wersje **1. x** zestawu .NET SDK dla interfejsu API SQL zostaną wycofane **30 sierpnia 2020**.
+> 
+>
 <br/>
 
 | Version | Data wydania | Data wygaśnięcia |
@@ -394,52 +398,52 @@ Wszystkie żądania do Azure Cosmos DB za pomocą wycofanego zestawu SDK są odr
 | [2.1.1](#2.1.1) |27 września 2018 r. |--- |
 | [2.1.0](#2.1.0) |21 września 2018 r. |--- |
 | [2.0.0](#2.0.0) |07 września 2018 r. |--- |
-| [1.22.0](#1.22.0) |19 kwietnia 2018 r. |--- |
-| [1.21.1](#1.20.1) |09 marca 2018 r. |--- |
-| [1.20.2](#1.20.1) |21 lutego 2018 r. |--- |
-| [1.20.1](#1.20.1) |05 lutego 2018 r. |--- |
-| [1.19.1](#1.19.1) |16 listopada 2017 r. |--- |
-| [1.19.0](#1.19.0) |10 listopada 2017 r. |--- |
-| [1.18.1](#1.18.1) |07, 2017 |--- |
-| [1.18.0](#1.18.0) |17 października 2017 r. |--- |
-| [1.17.0](#1.17.0) |10 sierpnia 2017 r. |--- |
-| [1.16.1](#1.16.1) |07 sierpnia 2017 r. |--- |
-| [1.16.0](#1.16.0) |02 sierpnia 2017 r. |--- |
-| [1.15.0](#1.15.0) |30 czerwca 2017 |--- |
-| [1.14.1](#1.14.1) |23 maja 2017 r. |--- |
-| [1.14.0](#1.14.0) |10 maja 2017 |--- |
-| [1.13.4](#1.13.4) |09 maja 2017 |--- |
-| [1.13.3](#1.13.3) |06, 2017 |--- |
-| [1.13.2](#1.13.2) |19 kwietnia 2017 r. |--- |
-| [1.13.1](#1.13.1) |29 marca 2017 r. |--- |
-| [1.13.0](#1.13.0) |24 marca 2017 |--- |
-| [1.12.2](#1.12.2) |20 marca 2017 r. |--- |
-| [1.12.1](#1.12.1) |14 marca 2017 r. |--- |
-| [1.12.0](#1.12.0) |15 lutego 2017 |--- |
-| [1.11.4](#1.11.4) |06, 2017 |--- |
-| [1.11.3](#1.11.3) |26 stycznia 2017 |--- |
-| [1.11.1](#1.11.1) |21 grudnia 2016 r. |--- |
-| [1.11.0](#1.11.0) |08, 2016 |--- |
-| [1.10.0](#1.10.0) |27 września, 2016 |--- |
-| [1.9.5](#1.9.5) |01, 2016 |--- |
-| [1.9.4](#1.9.4) |24 sierpnia 2016 |--- |
-| [1.9.3](#1.9.3) |15 sierpnia 2016 |--- |
-| [1.9.2](#1.9.2) |23 lipca 2016 |--- |
-| [1.8.0](#1.8.0) |14 czerwca 2016 r. |--- |
-| [1.7.1](#1.7.1) |06, 2016 |--- |
-| [1.7.0](#1.7.0) |26 kwietnia 2016 |--- |
-| [1.6.3](#1.6.3) |08 kwietnia, 2016 |--- |
-| [1.6.2](#1.6.2) |29 marca 2016 r. |--- |
-| [1.5.3](#1.5.3) |19 lutego 2016 |--- |
-| [1.5.2](#1.5.2) |14 grudnia 2015 |--- |
-| [1.5.1](#1.5.1) |23 listopada, 2015 |--- |
-| [1.5.0](#1.5.0) |05 października 2015 r. |--- |
-| [1.4.1](#1.4.1) |25 sierpnia 2015 |--- |
-| [1.4.0](#1.4.0) |13 sierpnia 2015 |--- |
-| [1.3.0](#1.3.0) |05 sierpnia 2015 r. |--- |
-| [1.2.0](#1.2.0) |06, 2015 |--- |
-| [1.1.0](#1.1.0) |30 kwietnia 2015 |--- |
-| [1.0.0](#1.0.0) |08 kwietnia, 2015 |--- |
+| [1.22.0](#1.22.0) |19 kwietnia 2018 r. | 30 sierpnia 2020 |
+| [1.21.1](#1.20.1) |09 marca 2018 r. |30 sierpnia 2020 |
+| [1.20.2](#1.20.1) |21 lutego 2018 r. |30 sierpnia 2020 |
+| [1.20.1](#1.20.1) |05 lutego 2018 r. |30 sierpnia 2020 |
+| [1.19.1](#1.19.1) |16 listopada 2017 r. |30 sierpnia 2020 |
+| [1.19.0](#1.19.0) |10 listopada 2017 r. |30 sierpnia 2020 |
+| [1.18.1](#1.18.1) |07, 2017 |30 sierpnia 2020 |
+| [1.18.0](#1.18.0) |17 października 2017 r. |30 sierpnia 2020 |
+| [1.17.0](#1.17.0) |10 sierpnia 2017 r. |30 sierpnia 2020 |
+| [1.16.1](#1.16.1) |07 sierpnia 2017 r. |30 sierpnia 2020 |
+| [1.16.0](#1.16.0) |02 sierpnia 2017 r. |30 sierpnia 2020 |
+| [1.15.0](#1.15.0) |30 czerwca 2017 |30 sierpnia 2020 |
+| [1.14.1](#1.14.1) |23 maja 2017 r. |30 sierpnia 2020 |
+| [1.14.0](#1.14.0) |10 maja 2017 |30 sierpnia 2020 |
+| [1.13.4](#1.13.4) |09 maja 2017 |30 sierpnia 2020 |
+| [1.13.3](#1.13.3) |06, 2017 |30 sierpnia 2020 |
+| [1.13.2](#1.13.2) |19 kwietnia 2017 r. |30 sierpnia 2020 |
+| [1.13.1](#1.13.1) |29 marca 2017 r. |30 sierpnia 2020 |
+| [1.13.0](#1.13.0) |24 marca 2017 |30 sierpnia 2020 |
+| [1.12.2](#1.12.2) |20 marca 2017 r. |30 sierpnia 2020 |
+| [1.12.1](#1.12.1) |14 marca 2017 r. |30 sierpnia 2020 |
+| [1.12.0](#1.12.0) |15 lutego 2017 |30 sierpnia 2020 |
+| [1.11.4](#1.11.4) |06, 2017 |30 sierpnia 2020 |
+| [1.11.3](#1.11.3) |26 stycznia 2017 |30 sierpnia 2020 |
+| [1.11.1](#1.11.1) |21 grudnia 2016 r. |30 sierpnia 2020 |
+| [1.11.0](#1.11.0) |08, 2016 |30 sierpnia 2020 |
+| [1.10.0](#1.10.0) |27 września, 2016 |30 sierpnia 2020 |
+| [1.9.5](#1.9.5) |01, 2016 |30 sierpnia 2020 |
+| [1.9.4](#1.9.4) |24 sierpnia 2016 |30 sierpnia 2020 |
+| [1.9.3](#1.9.3) |15 sierpnia 2016 |30 sierpnia 2020 |
+| [1.9.2](#1.9.2) |23 lipca 2016 |30 sierpnia 2020 |
+| [1.8.0](#1.8.0) |14 czerwca 2016 r. |30 sierpnia 2020 |
+| [1.7.1](#1.7.1) |06, 2016 |30 sierpnia 2020 |
+| [1.7.0](#1.7.0) |26 kwietnia 2016 |30 sierpnia 2020 |
+| [1.6.3](#1.6.3) |08 kwietnia, 2016 |30 sierpnia 2020 |
+| [1.6.2](#1.6.2) |29 marca 2016 r. |30 sierpnia 2020 |
+| [1.5.3](#1.5.3) |19 lutego 2016 |30 sierpnia 2020 |
+| [1.5.2](#1.5.2) |14 grudnia 2015 |30 sierpnia 2020 |
+| [1.5.1](#1.5.1) |23 listopada, 2015 |30 sierpnia 2020 |
+| [1.5.0](#1.5.0) |05 października 2015 r. |30 sierpnia 2020 |
+| [1.4.1](#1.4.1) |25 sierpnia 2015 |30 sierpnia 2020 |
+| [1.4.0](#1.4.0) |13 sierpnia 2015 |30 sierpnia 2020 |
+| [1.3.0](#1.3.0) |05 sierpnia 2015 r. |30 sierpnia 2020 |
+| [1.2.0](#1.2.0) |06, 2015 |30 sierpnia 2020 |
+| [1.1.0](#1.1.0) |30 kwietnia 2015 |30 sierpnia 2020 |
+| [1.0.0](#1.0.0) |08 kwietnia, 2015 | 30 sierpnia 2020 |
 
 
 ## <a name="faq"></a>Często zadawane pytania

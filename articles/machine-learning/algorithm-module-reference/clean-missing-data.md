@@ -1,7 +1,7 @@
 ---
-title: 'Czyszczenie brakujących danych: Odwołania do modułu'
+title: 'Wyczyść brakujące dane: Dokumentacja modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak użyć modułu Clean Missing Data w usłudze Azure Machine Learning w celu usuwanie, zastępowanie lub wywnioskować brakujące wartości.
+description: Dowiedz się, jak usunąć, zamienić lub wywnioskować brakujące wartości przy użyciu modułu czyste brakujące dane w usłudze Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,141 +9,140 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: de81204219a102734f1820258a3c32e59a64c685
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a65e8224b00bb592d6e0e42abdd304cf325d4412
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028788"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128932"
 ---
-# <a name="clean-missing-data-module"></a>Clean Missing Data modułu
+# <a name="clean-missing-data-module"></a>Wyczyść nieobecny moduł danych
 
-W tym artykule opisano moduł interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Ten moduł służy do usuwanie, zastępowanie lub wywnioskować brakujące wartości. 
+Ten moduł służy do usuwania, zastępowania lub wnioskowania brakujących wartości. 
 
-Analitycy danych często sprawdza dane dla brakujących wartości i wykonywać różne operacje, aby określić dane, lub Wstaw nowe wartości. Celem takiego działania mające jest zapobieganie problemom spowodowanym brakujące dane, które mogą wystąpić podczas uczenia modelu. 
+Analityki danych często sprawdzają dane pod kątem brakujących wartości, a następnie wykonują różne operacje, aby naprawić dane lub wstawić nowe wartości. Celem takich operacji czyszczenia jest zapobieganie problemom spowodowanym brakiem danych, które mogą wystąpić podczas uczenia modelu. 
 
-Ten moduł obsługuje wiele typów operacji "czyszczenie" brakujące wartości, w tym:
+Ten moduł obsługuje wiele typów operacji w przypadku braku wartości "czyszczących", w tym:
 
-+ Zastępowanie brakujące wartości przy użyciu symbolu zastępczego, średnia lub inne wartości
-+ Całkowite usuwanie wierszy i kolumn, które nie mają wartości
-+ Wnioskowanie wartości w oparciu o metody statystyczne
++ Zastępowanie brakujących wartości symbolem zastępczym, średnim lub inną wartością
++ Całkowite usuwanie wierszy i kolumn, które mają brakujące wartości
++ Wnioskowanie wartości na podstawie metod statystycznych
 
 
-Za pomocą tego modułu nie zmienia źródłowego zestawu danych. Zamiast tego tworzy nowy zestaw danych, w obszarze roboczym używanego w kolejnych przepływu pracy. Można również zapisać nowe, oczyszczony zestaw danych do ponownego wykorzystania.
+Użycie tego modułu nie powoduje zmiany źródłowego zestawu danych. Zamiast tego tworzy nowy zestaw danych w obszarze roboczym, którego można użyć w kolejnym przepływie pracy. Można również zapisać nowy, oczyszczony zestaw danych do ponownego użycia.
 
-Ten moduł generuje również definicji transformacji używane do czyszczenia brakujące wartości. Można ponownie użyć tej transformacji, w innych zestawach danych, które mają ten sam schemat, za pomocą [Zastosuj przekształcenie](./apply-transformation.md) modułu.  
+Ten moduł również wyprowadza definicję przekształcenia użytego do oczyszczenia brakujących wartości. Można ponownie użyć tej transformacji na innych zestawach danych, które mają ten sam schemat, przy użyciu modułu [zastosowania przekształcenia](./apply-transformation.md) .  
 
-## <a name="how-to-use-clean-missing-data"></a>Jak używać Clean Missing Data
+## <a name="how-to-use-clean-missing-data"></a>Jak używać czystego brakujących danych
 
-Ten moduł pozwala zdefiniować operację czyszczenia. Można także zapisać operacji czyszczenia, tak, aby stosować go później do nowych danych. Skorzystaj z następujących linków, aby uzyskać opis sposobu utworzyć i zapisać proces czyszczenia: 
+Ten moduł umożliwia zdefiniowanie operacji czyszczenia. Możesz również zapisać operację czyszczenia, aby później można było zastosować ją do nowych danych. Aby uzyskać opis sposobu tworzenia i zapisywania procesu czyszczenia, zobacz następujące linki: 
  
 + Aby zastąpić brakujące wartości
   
-+ Aby zastosować przekształcenie czyszczenia do nowych danych
++ Aby zastosować transformację czyszczącą do nowych danych
  
 > [!IMPORTANT]
-> Metoda czyszczenia, używanej do obsługi brakujące wartości znacznie może mieć wpływ na wyniki. Zalecamy wypróbowanie dostosowań za pomocą różnych metod. Należy wziąć pod uwagę zarówno uzasadnienie użyj konkretnej metody i jakość wyników.
+> Metoda czyszcząca używana do obsługi brakujących wartości może znacząco wpłynąć na wyniki. Zalecamy, aby eksperymentować z różnymi metodami. Rozważ zarówno uzasadnienie użycia określonej metody, jak i jakość wyników.
 
-### <a name="replace-missing-values"></a>Zastąp wartości Brak  
+### <a name="replace-missing-values"></a>Zamień brakujące wartości  
 
-Za każdym razem, należy zastosować [Clean Missing Data](./clean-missing-data.md) modułu do zestawu danych, tę samą operację czyszczenia jest stosowany do wszystkich kolumn, które można wybrać. W związku z tym wyczyścić różnych kolumn przy użyciu różnych metod, należy użyć osobnych wystąpień modułu.
+Za każdym razem, gdy moduł [czystych danych](./clean-missing-data.md) nie zostanie zastosowany do zestawu danych, ta sama operacja czyszczenia jest stosowana do wszystkich zaznaczonych kolumn. W związku z tym, jeśli chcesz wyczyścić różne kolumny przy użyciu różnych metod, użyj oddzielnych wystąpień modułu.
 
-1.  Dodaj [Clean Missing Data](./clean-missing-data.md) modułu do eksperymentu i Połącz z zestawu danych, który ma brakujące wartości.  
+1.  Dodaj nieczysty moduł [danych](./clean-missing-data.md) do eksperymentu i Połącz zestaw danych, który ma brakujące wartości.  
   
-2.  Aby uzyskać **kolumn należy wyczyścić**, wybierz kolumny, które zawierają brakujące wartości, które chcesz zmienić. Możesz wybrać wiele kolumn, ale należy użyć tej samej metody zastąpienie wszystkich zaznaczonych kolumn. W związku z tym zazwyczaj należy wyczyścić kolumny ciągów i kolumnach liczbowych oddzielnie.
+2.  Aby **wyczyścić kolumny**, wybierz kolumny zawierające brakujące wartości, które chcesz zmienić. Można wybrać wiele kolumn, ale należy użyć tej samej metody zastępczej we wszystkich zaznaczonych kolumnach. W związku z tym zazwyczaj należy czyścić kolumny ciągów i kolumny liczbowe osobno.
 
-    Na przykład, aby sprawdzić, czy brakuje wartości we wszystkich kolumnach liczbowych:
+    Na przykład, aby sprawdzić brakujące wartości we wszystkich kolumnach liczbowych:
 
-    1. Otwórz selektor kolumn, a następnie wybierz pozycję **przy użyciu reguł**.
-    2. Dla **rozpocząć z**, wybierz opcję **kolumny nr**.
+    1. Otwórz selektor kolumny i wybierz pozycję **z regułami**.
+    2. W obszarze **Rozpocznij**od wybierz pozycję **brak kolumn**.
 
-        Można również uruchomić ze wszystkimi KOLUMNAMI, a następnie Wyklucz kolumny. Początkowo reguły nie są wyświetlane pierwsze kliknięcie **wszystkie kolumny**, ale możesz kliknąć pozycję **kolumny nr** a następnie kliknij przycisk **wszystkie kolumny** ponownie, aby uruchomić ze wszystkimi kolumnami, a następnie przeprowadź filtrowanie limit kolumn (wyklucz) na podstawie nazwy, typ danych, lub indeks kolumny.
+        Możesz również zacząć od wszystkich kolumn, a następnie wykluczać kolumny. Początkowo reguły nie są wyświetlane, jeśli najpierw klikniesz pozycję **wszystkie kolumny**, ale możesz kliknąć opcję **brak kolumn** , a następnie ponownie kliknąć pozycję **wszystkie kolumny** , aby rozpocząć od wszystkich kolumn, a następnie odfiltrować (Wyklucz) kolumny na podstawie nazwy, typu danych lub indeksu kolumn.
 
-    3. Dla **Include**, wybierz opcję **typ kolumny** z listy rozwijanej, a następnie wybierz **liczbowych**, lub bardziej specyficznego typu liczbowego. 
+    3. Wpolu Uwzględnij wybierz pozycję **Typ kolumny** na liście rozwijanej, a następnie wybierz wartość **numeryczną**lub bardziej konkretny typ liczbowy. 
   
-    Wszelkie czyszczenia lub wymiany wybranej metody muszą mieć zastosowanie do **wszystkich** kolumn w zaznaczeniu. Jeśli dane w dowolnej kolumnie nie jest zgodna z określoną operacją, moduł zwraca błąd i zatrzymuje eksperymentu.
+    Wszystkie wybrane metody czyszczenia lub zamiany muszą być stosowane do **wszystkich** kolumn w zaznaczeniu. Jeśli dane w dowolnej kolumnie są niezgodne z określoną operacją, moduł zwróci błąd i zatrzyma eksperyment.
   
-3.  Aby uzyskać **Brak stosunek wartości co najmniej**, określ minimalną liczbę brakujących wartości wymaganych dla operacji do wykonania.  
+3.  Aby uzyskać **minimalny współczynnik braku wartości**, Określ minimalną liczbę brakujących wartości wymaganych do wykonania operacji.  
   
-    Użyj tej opcji w połączeniu z **maksymalny stosunek wartości Brak** do definiowania warunków, w jakich operacji czyszczenia odbywa się w zestawie danych. W przypadku zbyt wiele lub zbyt małej liczby wierszy, których brakuje wartości nie można wykonać operacji. 
+    Tej opcji należy użyć w połączeniu z **maksymalnym współczynnikem braku wartości** , aby zdefiniować warunki, w których operacja czyszczenia jest wykonywana na zestawie danych. Jeśli istnieje zbyt wiele lub zbyt mało wierszy, w których brakuje wartości, nie można wykonać operacji. 
   
-    Liczba, która reprezentuje **współczynnik** brakujących wartości do wszystkich wartości w kolumnie. Domyślnie **Minimum brakujące wartości współczynnika** właściwość jest ustawiona na 0. Oznacza to, że brakuje wartości zostały wyczyszczone, nawet jeśli dostępny jest tylko jedna wartość Brak. 
+    Wprowadzony numer reprezentuje **stosunek** brakujących wartości do wszystkich wartości w kolumnie. Domyślnie właściwość **współczynnik braku wartości** jest równa 0. Oznacza to, że brakujące wartości są czyszczone nawet wtedy, gdy istnieje tylko jedna wartość. 
 
     > [!WARNING]
-    > Ten warunek, muszą być spełnione przez każdej kolumny w kolejności dla określonej operacji zastosować. Załóżmy na przykład wybrano trzy kolumny, a następnie ustaw minimalny współczynnik brakujące wartości od.2 (20%), ale tylko jedna kolumna została rzeczywiście brakujące wartości 20%. W takim przypadku operacja czyszczenia czy dotyczą tylko kolumny z ponad 20% brakuje wartości. W związku z tym inne kolumny będzie bez zmian.
+    > Ten warunek musi być spełniony przez każdą kolumnę, aby można było zastosować określoną operację. Załóżmy na przykład, że wybrano trzy kolumny, a następnie ustawisz minimalny współczynnik brakujących wartości .2 (20%), ale tylko jedna kolumna ma w rzeczywistości 20% brakujących wartości. W takim przypadku operacja oczyszczania będzie miała zastosowanie tylko do kolumny z ponad 20% brakującymi wartościami. W związku z tym inne kolumny byłyby niezmienione.
     > 
-    > Jeśli masz jakiekolwiek wątpliwości dotyczące tego, czy zostały zmienione brakujące wartości, wybierz opcję, **Generowanie brakującej kolumnie Wskaźnik wartości**. Kolumna jest dołączany do zestawu danych, aby wskazać, czy każda kolumna spełnione określone kryteria dla zakresów minimalną i maksymalną.  
+    > Jeśli masz jakiekolwiek wątpliwości dotyczące tego, czy brakujące wartości zostały zmienione, zaznacz opcję, **Generuj kolumnę wskaźnik braku wartości**. Kolumna jest dołączana do zestawu danych, aby wskazać, czy każda kolumna spełnia określone kryteria dla minimalnych i maksymalnych zakresów.  
   
-4. Aby uzyskać **maksymalny stosunek wartości Brak**, określ maksymalną liczbę brakujących wartości, które mogą być obecne na można wykonać operacji.   
+4. W przypadku **maksymalnego współczynnika braku wartości**Określ maksymalną liczbę brakujących wartości, które mogą być obecne dla operacji do wykonania.   
   
-    Na przykład możesz chcieć wykonać podstawiania wartości Brak, tylko wtedy, gdy 30% lub mniej wierszy zawierają brakujące wartości, ale pozostaw wartości jako — jest przypadek, więcej niż 30% wierszy brakuje wartości.  
+    Na przykład może być konieczne wykonanie podstawienia braku wartości tylko wtedy, gdy 30% lub mniej wierszy zawiera brakujące wartości, ale pozostaw wartości jako-is, jeśli w więcej niż 30% wierszy brakuje wartości.  
   
-    Możesz zdefiniować liczbę jako stosunek brakujące wartości, aby wszystkie wartości w kolumnie. Domyślnie **maksymalny stosunek wartości Brak** jest ustawiona na 1. Oznacza to, że brakuje wartości zostały wyczyszczone, nawet jeśli brakuje 100% wartości w kolumnie.  
+    Należy zdefiniować liczbę jako stosunek brakujących wartości do wszystkich wartości w kolumnie. Domyślnie **maksymalny współczynnik braku wartości** jest ustawiony na 1. Oznacza to, że brakujące wartości są czyszczone nawet wtedy, gdy brakuje 100% wartości w kolumnie.  
   
    
   
-5. Aby uzyskać **tryb czyszczenia**, wybierz jedną z następujących opcji dla zastępowanie lub usuwanie brakujących wartości:  
+5. W obszarze **Tryb czyszczenia**wybierz jedną z następujących opcji zastępowania lub usuwania brakujących wartości:  
   
   
-    + **Wartości niestandardowe podstawienia**: Użyj tej opcji, aby określić wartość symbolu zastępczego (np. wartość 0 lub brak), która ma zastosowanie do wszystkich brakujących wartości. Wartość można określić jako zamiennika musi być zgodny z typem danych kolumny.
+    + **Niestandardowa wartość podstawienia**: Użyj tej opcji, aby określić wartość symbolu zastępczego (na przykład 0 lub NA), która ma zastosowanie do wszystkich brakujących wartości. Wartość określona jako zamiennik musi być zgodna z typem danych kolumny.
   
-    + **Zamień na średnią**: Oblicza średnią kolumny i wykorzystuje średnią jako wartość zastąpienia dla każdej brakujących wartości w kolumnie.  
+    + **Zamień na średnią**: Oblicza średnią kolumny i używa jako wartości zastępczej dla każdej brakującej wartości w kolumnie.  
   
-        Ma zastosowanie tylko do kolumn zawierających liczby całkowitej, Double lub typy danych logicznych.  
+        Dotyczy tylko kolumn, które mają typ danych Integer, Double lub Boolean.  
   
-    + **Zamień mediana**: Oblicza wartość mediany kolumny i wykorzystuje wartość mediany zastępuje wszelkie brakujące wartości w kolumnie.  
+    + **Zamień na medianę**: Oblicza wartość mediany kolumny i używa wartości mediana jako zamiennika dla dowolnej brakującej wartości w kolumnie.  
   
-        Ma zastosowanie tylko do kolumn zawierających liczby całkowitej lub podwójnej precyzji typów danych. 
+        Dotyczy tylko kolumn, które mają typy danych Integer lub Double. 
   
-    + **Zamień na tryb**: Oblicza tryb kolumny i korzysta z trybu jako wartość zastąpienia dla każdej brakujących wartości w kolumnie.  
+    + **Zamień na tryb**: Oblicza tryb dla kolumny i używa trybu jako wartości zastępczej dla każdej brakującej wartości w kolumnie.  
   
-        Stosuje się do kolumn, które mają typ danych Integer, Double, Boolean lub podzielone. 
+        Dotyczy kolumn, które mają typy danych Integer, Double, Boolean lub kategorii. 
   
-    + **Usuń cały wiersz**: Całkowicie usunie wszystkie wiersze w zestawie danych, który ma co najmniej jedną wartość Brak. Jest to przydatne, jeśli brak wartości mogą być uważane za losowo Brak.  
+    + **Usuń cały wiersz**: Całkowicie usuwa wszystkie wiersze w zestawie danych, które mają co najmniej jedną brakującą wartość. Jest to przydatne, jeśli brakująca wartość może być uważana za losową.  
   
-    + **Usuń całą kolumnę**: Powoduje całkowite usunięcie dowolnej kolumny w zestawie danych, który ma co najmniej jedną wartość Brak.  
+    + **Usuń całą kolumnę**: Całkowicie usuwa wszystkie kolumny w zestawie danych, które mają co najmniej jedną brakującą wartość.  
   
     
   
-6. Opcja **wartość zastąpienia** jest dostępna w przypadku wybrania opcji **wartość podstawienia niestandardowego**. Wpisz nową wartość do użycia jako wartość zastąpienia dla wszystkich brakujących wartości w kolumnie.  
+6. **Wartość zastępcza** opcji jest dostępna w przypadku wybrania opcji, **niestandardowej wartości podstawienia**. Wpisz nową wartość, która będzie używana jako wartość zastępcza dla wszystkich brakujących wartości w kolumnie.  
   
-    Należy pamiętać, że można użyć tej opcji tylko w kolumnach, które mają typ danych Integer, Double, atrybut typu wartość logiczna lub data. Dla kolumn daty na wartość zastępczą można również wprowadzić jako liczbę 100-nanosekundowych znaczników od 1/1/0001 12:00:00  
+    Należy pamiętać, że można użyć tej opcji tylko w kolumnach, które mają typy danych Integer, Double, Boolean lub Date. W przypadku kolumn dat wartość zastępcza może być również wprowadzana jako liczba taktów 100-nanosekund od 1/1/0001 12:00 rano  
   
-7. **Generowanie brakującej kolumnie Wskaźnik wartości**: Wybierz tę opcję, aby dane wyjściowe niektóre wskazania tego, czy wartości w kolumnie spełnione kryteria dla wartości Brak czyszczenia. Ta opcja jest szczególnie przydatne podczas konfigurowania nowej operacji czyszczenia i upewnić się, że działa zgodnie z założeniami.
+7. **Generuj kolumnę wskaźnika brakującej wartości**: Wybierz tę opcję, jeśli chcesz, aby dane wyjściowe wskazywały, czy wartości w kolumnie spełniały kryteria czyszczenia wartości brakujące. Ta opcja jest szczególnie przydatna podczas konfigurowania nowej operacji czyszczenia i upewnienia się, że działa ona zgodnie z założeniami.
   
 8. Uruchom eksperyment.
 
 ### <a name="results"></a>Wyniki
 
-Moduł zwraca dane wyjściowe dwa:  
+Moduł zwraca dwa dane wyjściowe:  
 
--   **Oczyszczony zestaw danych**: Zestaw składa się z wybranych kolumn, z brakującymi wartościami obsługiwane w określony sposób, wraz z kolumną wskaźnika w przypadku wybrania tej opcji.  
+-   **Oczyszczony zestaw danych**: Zestaw danych składający się z wybranych kolumn, z brakującymi wartościami obsługiwanymi w określony sposób, wraz z kolumną wskaźnika, jeśli wybrano tę opcję.  
 
-    Nie wybrano czyszczenia kolumn są również "przekazane".  
+    Kolumny niewybrane do czyszczenia są również "przenoszone przez".  
   
--  **Czyszczenie przekształcania**: Przekształcanie danych używane do czyszczenia, które mogą być zapisywane w obszarze roboczym i stosowane do nowych danych później.
+-  **Przekształcanie czyszczenia**: Transformacja danych służąca do czyszczenia, która może zostać zapisana w obszarze roboczym i później zastosowana do nowych danych.
 
-### <a name="apply-a-saved-cleaning-operation-to-new-data"></a>Zastosuj zapisanej operacji czyszczenia do nowych danych  
+### <a name="apply-a-saved-cleaning-operation-to-new-data"></a>Stosowanie zapisanej operacji czyszczenia do nowych danych  
 
-Jeśli potrzebujesz często powtarzania operacji czyszczenia, zaleca się zapisywania swoje przepis na czyszczenia danych jako *Przekształcanie*, aby ponownie użyć tego samego zestawu danych. Zapisywanie czyszczenia transformacji jest szczególnie przydatne, jeśli należy ponownie zaimportować często, a następnie wyczyszczenie danych, który ma ten sam schemat.  
+Jeśli trzeba często powtarzać operacje czyszczenia, zalecamy zapisanie przepisu do czyszczenia danych w formie *przekształcenia*, aby ponownie użyć tego samego zestawu danych. Zapisywanie transformacji czyszczącej jest szczególnie przydatne, jeśli konieczne jest częste ponowne importowanie, a następnie czyszczenie danych, które mają ten sam schemat.  
       
-1.  Dodaj [Zastosuj przekształcenie](./apply-transformation.md) modułu do eksperymentu.  
+1.  Dodaj do eksperymentu moduł [Zastosuj transformację](./apply-transformation.md) .  
   
-2.  Dodaj zestaw danych, które chcesz wyczyścić, a następnie nawiązać połączenie po prawej stronie portu wejściowego zestawu danych.  
+2.  Dodaj zestaw danych, który chcesz wyczyścić, i Połącz zestaw danych z portem wejściowym z prawej strony.  
   
-3.  Rozwiń **przekształca** grupy w okienku po lewej stronie interfejsu. Znajdź zapisany transformacji i przeciągnij je do eksperymentu.  
+3.  Rozwiń grupę **przekształcenia** w okienku po lewej stronie interfejsu. Znajdź zapisaną transformację i przeciągnij ją do eksperymentu.  
   
-4.  Zapisane przekształcania nawiązać połączenie z lewym portem wejściowym [Zastosuj przekształcenie](./apply-transformation.md). 
+4.  Połącz zapisaną transformację z lewym portem wejściowym [zastosowania transformacji](./apply-transformation.md). 
 
-    Po zastosowaniu zapisane transformacji nie można wybrać kolumny, do których są stosowane transformacji. Wynika to z transformacji został już zdefiniowany i automatycznie stosuje się do kolumny określone w operacji pierwotnej.
+    W przypadku zastosowania zapisanej transformacji nie można wybrać kolumn, do których zastosowano transformację. Wynika to z faktu, że transformacja została już zdefiniowana i automatycznie stosowana do kolumn określonych w pierwotnej operacji.
 
-    Jednak Załóżmy, że utworzono transformacji dla podzestawu kolumn liczbowych. Ta transformacja można zastosować do zestaw kolumn mieszane typy bez zgłaszania błędu, ponieważ brakujące wartości zostaną zmienione tylko w pasujących kolumn liczbowych.
+    Załóżmy jednak, że utworzono transformację dla podzestawu kolumn liczbowych. Można zastosować tę transformację do zestawu danych typów kolumn mieszanych bez zgłaszania błędu, ponieważ brakujące wartości są zmieniane tylko w pasujących kolumnach liczbowych.
 
 6.  Uruchom eksperyment.  
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [zestaw dostępnych modułów](module-reference.md) do usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 

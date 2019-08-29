@@ -3,21 +3,20 @@ title: Rozgałęzianie w potoku usługi Azure Data Factory | Microsoft Docs
 description: W tym artykule przedstawiono sposób sterowania przepływem danych w usłudze Azure Data Factory przez rozgałęzianie działań i tworzenie łańcuchów działań.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
-ms.author: shlo
-ms.openlocfilehash: 9a03094683a973db16aa949f0610bc7f9914be45
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 264d8e049cc7b714e00aaa77441cdc81a1e0a0c9
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61457035"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140731"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Rozgałęzianie działań i tworzenie łańcuchów działań w potoku usługi Data Factory
 
@@ -46,7 +45,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 * **Konto usługi Azure Storage**. Magazyn obiektów blob jest używany jako **źródłowy** magazyn danych. Jeśli nie masz konta usługi Azure Storage, utwórz je, wykonując czynności przedstawione w artykule [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md).
 * **Usługa Azure SQL Database**. Baza danych jest używana jako magazyn danych **ujścia**. Jeśli nie masz bazy danych Azure SQL Database, utwórz ją, wykonując czynności przedstawione w artykule [Create an Azure SQL database (Tworzenie bazy danych Azure SQL Database)](../sql-database/sql-database-get-started-portal.md).
 * Program **Visual Studio** w wersji 2013, 2015 lub 2017. W przewodniku w tym artykule jest używany program Visual Studio 2017.
-* **Pobierz i zainstaluj zestaw [Azure .NET SDK](https://azure.microsoft.com/downloads/)**.
+* **Pobierz i zainstaluj zestaw [Azure .NET SDK](https://azure.microsoft.com/downloads/)** .
 * **Utwórz aplikację w usłudze Azure Active Directory**, wykonując [te instrukcje](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application). Zapisz następujące wartości, których użyjesz w kolejnych krokach: **identyfikator aplikacji**, **klucz uwierzytelniania** i **identyfikator dzierżawy**. Przypisz aplikację do roli „**Współautor**”, wykonując instrukcje przedstawione w tym samym artykule.
 
 ### <a name="create-blob-table"></a>Tworzenie tabeli obiektów blob
@@ -66,7 +65,7 @@ Za pomocą programu Visual Studio 2015/2017 utwórz aplikację konsolową .NET C
 
 1. Uruchom program **Visual Studio**.
 2. Kliknij pozycję **Plik**, wskaż polecenie **Nowy** i kliknij pozycję **Projekt**. Wymagana jest platforma .NET w wersji 4.5.2 lub nowszej.
-3. Wybierz pozycję **Visual C#** -> **Aplikacja konsolowa (.NET Framework)** z listy typów projektów po prawej stronie.
+3. Wybierz pozycję **Visual C#**  -> **Aplikacja konsolowa (.NET Framework)** z listy typów projektów po prawej stronie.
 4. Wprowadź nazwę **ADFv2BranchTutorial**.
 5. Kliknij przycisk **OK**, aby utworzyć projekt.
 
@@ -757,7 +756,7 @@ Checking copy activity run details...
 Press any key to exit...
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W ramach tego samouczka wykonano następujące procedury: 
 

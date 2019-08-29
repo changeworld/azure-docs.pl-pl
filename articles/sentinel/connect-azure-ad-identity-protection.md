@@ -1,6 +1,6 @@
 ---
-title: Połączenie danych usługi Azure AD Identity Protection przez wartownika platformy Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak nawiązać połączenie z danych usługi Azure AD Identity Protection przez wartownika platformy Azure.
+title: Łączenie danych Azure AD Identity Protection z wersją zapoznawczą platformy Azure Microsoft Docs
+description: Dowiedz się, jak połączyć Azure AD Identity Protection dane z platformą Azure — wskaźnikiem.
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -15,42 +15,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: c88c157c5f37bb0bd1e82225bdacfbd60806bbf8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 7478e5a5ec2260760bb6ddb1a90a66e3acdf2201
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620639"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129256"
 ---
-# <a name="connect-data-from-azure-ad-identity-protection"></a>Połącz dane z usługi Azure AD Identity Protection
+# <a name="connect-data-from-azure-ad-identity-protection"></a>Łączenie danych z Azure AD Identity Protection
 
 > [!IMPORTANT]
-> Wartownik platformy Azure jest obecnie dostępna w publicznej wersji zapoznawczej.
+> W publicznej wersji zapoznawczej jest obecnie dostępna usługa Azure.
 > Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Można przesyłać strumieniowo dzienniki z [usługi Azure AD Identity Protection](https://docs.microsoft.com/azure/information-protection/reports-aip) do platformy Azure przez wartownika strumienia alertów do platformy Azure przez wartownika wyświetlanie pulpitów nawigacyjnych, tworzyć niestandardowe alerty i lepsze badanie. Usługa Azure Active Directory Identity Protection udostępnia skonsolidowany widok narażonych użytkowników, zdarzeń o podwyższonym ryzyku i luk w zabezpieczeniach, z możliwością natychmiastowego eliminowania ryzyka i ustawienia zasad w celu automatycznego korygowania przyszłych zdarzeń. Usługa jest oparta na doświadczeniu firmy Microsoft w ochronie tożsamości klientów i uzyskuje ogromną dokładność z sygnałów z ponad 13 miliardów log-ins dziennie. 
+Można przesyłać strumieniowo dzienniki z [Azure AD Identity Protection](https://docs.microsoft.com/azure/information-protection/reports-aip) do usługi Azure wskaźnikowego, aby przesyłać strumieniowo alerty do usługi Azure wskaźnikowego, aby wyświetlać pulpity nawigacyjne, tworzyć niestandardowe alerty i ulepszać badanie. Azure Active Directory Identity Protection zapewnia skonsolidowany widok narażonych użytkowników, wykrywanie ryzyka i luki w zabezpieczeniach, z możliwością natychmiastowego korygowania ryzyka i ustawiania zasad automatycznego korygowania przyszłych zdarzeń. Usługa jest oparta na doświadczeniu firmy Microsoft chroniącym tożsamości klientów i uzyskuje ogromną dokładność od sygnału od ponad 13 000 000 000 logowań dziennie. 
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Konieczne jest posiadanie [licencji usługi Azure Active Directory Premium P1 lub P2](https://azure.microsoft.com/pricing/details/active-directory/)
-- Użytkownik z administratorem globalnym lub uprawnienia administratora zabezpieczeń
+- Wymagana jest licencja na [Azure Active Directory — wersja Premium P1 lub P2](https://azure.microsoft.com/pricing/details/active-directory/)
+- Użytkownik z uprawnieniami administratora globalnego lub administratora zabezpieczeń
 
 
-## <a name="connect-to-azure-ad-identity-protection"></a>Łączenie usługi Azure AD Identity Protection
+## <a name="connect-to-azure-ad-identity-protection"></a>Połącz z Azure AD Identity Protection
 
-Jeśli masz już usługę Azure AD Identity Protection, upewnij się, że jest [włączone w sieci](../active-directory/identity-protection/enable.md).
-Jeśli wdrożono usługę Azure AD Identity Protection i pobieranie danych, dane alertu można łatwo przesyłane strumieniowo do usługi Azure przez wartownika.
-
-
-1. Na platformie Azure przez wartownika, wybierz **łączników danych** a następnie kliknij przycisk **usługi Azure AD Identity Protection** kafelka.
-
-2. Kliknij przycisk **Connect** aby rozpocząć przesyłanie strumieniowe zdarzeń usługi Azure AD Identity Protection do platformy Azure przez wartownika.
+Jeśli masz już Azure AD Identity Protection, upewnij się, że jest [włączona w sieci](../active-directory/identity-protection/enable.md).
+Jeśli Azure AD Identity Protection jest wdrożona i pobiera dane, dane alertów można łatwo przesłać strumieniowo do usługi Azure wskaźnikowej.
 
 
-6. Aby użyć odpowiednich schematu w usłudze Log Analytics dla alertów usługi Azure AD Identity Protection, możesz wyszukać **IdentityProtectionLogs_CL**.
+1. W obszarze wskaźnik platformy Azure wybierz pozycję **Łączniki danych** , a następnie kliknij kafelek **Azure AD Identity Protection** .
+
+2. Kliknij przycisk **Połącz** , aby rozpocząć przesyłanie strumieniowe zdarzeń Azure AD Identity Protection do usługi Azure wskaźnikowej.
+
+
+6. Aby użyć odpowiedniego schematu w Log Analytics dla alertów Azure AD Identity Protection, Wyszukaj pozycję **IdentityProtectionLogs_CL**.
 
 ## <a name="next-steps"></a>Następne kroki
-W tym dokumencie przedstawiono sposób nawiązać połączenie z usługi Azure AD Identity Protection przez wartownika platformy Azure. Aby dowiedzieć się więcej na temat platformy Azure przez wartownika, zobacz następujące artykuły:
-- Dowiedz się, jak [Uzyskaj wgląd w dane i potencjalne zagrożenia](quickstart-get-visibility.md).
-- Rozpoczynanie pracy [wykrywanie zagrożeń za pomocą platformy Azure przez wartownika](tutorial-detect-threats.md).
+W tym dokumencie przedstawiono sposób nawiązywania połączenia Azure AD Identity Protection z platformą Azure — wskaźnikiem. Aby dowiedzieć się więcej na temat platformy Azure, zobacz następujące artykuły:
+- Dowiedz się [, jak uzyskać wgląd w dane oraz potencjalne zagrożenia](quickstart-get-visibility.md).
+- Rozpocznij [wykrywanie zagrożeń za pomocą platformy Azure — wskaźnik](tutorial-detect-threats.md).

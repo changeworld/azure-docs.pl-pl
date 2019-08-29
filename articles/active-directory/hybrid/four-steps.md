@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d4eb5b4c634fe495a0ed149016d862defc2eb45
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 36433aef75d38418cb74fcd195dc1e9e902f24a8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532447"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124926"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Cztery kroki do silnej wersji programu Identity Foundation z Azure Active Directory
 
@@ -71,7 +71,7 @@ Usługa Azure serwer proxy aplikacji usługi Azure AD oferuje następujące korz
 
 * Rozszerzanie usługi Azure AD do zasobów lokalnych
   * Zabezpieczenia i ochrona w skali chmury
-  * Funkcje, takie jak dostęp warunkowy i uwierzytelnianie wieloskładnikowe, które można łatwo włączyć
+  * Funkcje, takie jak dostęp warunkowy i Multi-Factor Authentication, które można łatwo włączyć
 * Brak składników w sieci obwodowej, takich jak sieci VPN i tradycyjne zwrotne rozwiązania serwera proxy
 * Nie są wymagane żadne połączenia przychodzące
 * Logowanie jednokrotne (SSO) między urządzeniami, zasobami i aplikacjami w chmurze i lokalnie
@@ -141,7 +141,7 @@ Domyślnie usługa Azure AD odblokowuje konta, gdy wykonuje Resetowanie hasła. 
 
 Platforma Azure udostępnia raporty, które mogą być używane przez Ciebie i Twoją organizację w celu zapewnienia, że użytkownicy są zarejestrowani do usługi MFA i SSPR. Użytkownicy, którzy nie zostali zarejestrowani, mogą wymagać przeprowadzenie procesu.
 
-[Raport logowania](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) usługi MFA zawiera informacje na temat użycia usługi MFA i zapewnia wgląd w sposób działania usługi MFA w organizacji. Posiadanie dostępu do działania związanego z logowaniem (oraz inspekcjami i zdarzeniami związanymi z ryzykiem) dla usługi Azure AD ma kluczowe znaczenie dla rozwiązywania problemów, analizy użycia i badań dowodowych.
+[Raport logowania](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting) usługi MFA zawiera informacje na temat użycia usługi MFA i zapewnia wgląd w sposób działania usługi MFA w organizacji. Posiadanie dostępu do działań związanych z logowaniem (oraz inspekcjami i wykrywaniem ryzyka) dla usługi Azure AD ma kluczowe znaczenie dla rozwiązywania problemów, analizy użycia i badań dowodowych.
 
 Podobnie można użyć [raportu](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting) samoobsługowego zarządzania hasłami, aby określić, kto ma (lub nie) zarejestrowany dla SSPR.
 

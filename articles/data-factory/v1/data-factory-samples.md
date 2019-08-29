@@ -1,78 +1,76 @@
 ---
-title: Usługa Azure Data Factory — przykłady
-description: Szczegółowe informacje dotyczące przykładów, które są dostarczane za pomocą usługi Azure Data Factory.
+title: Azure Data Factory — przykłady
+description: Zawiera szczegółowe informacje na temat przykładów dostarczanych z usługą Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: c0538b90-2695-4c4c-a6c8-82f59111f4ab
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: f7ebc57e09691af1583815ae9672e1afb820145b
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 63db1810cbdd2133bc0577530325351997b31f30
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462078"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139258"
 ---
-# <a name="azure-data-factory---samples"></a>Usługa Azure Data Factory — przykłady
+# <a name="azure-data-factory---samples"></a>Azure Data Factory — przykłady
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [przykłady programu PowerShell w usłudze Data Factory](../samples-powershell.md) i [przykładów w galerii przykładów kodu usługi Azure kodu](https://azure.microsoft.com/resources/samples/?service=data-factory).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącej wersji usługi Data Factory, zobacz [przykłady programu PowerShell w Data Factory](../samples-powershell.md) i [przykłady kodu w galerii przykładów kodu platformy Azure](https://azure.microsoft.com/resources/samples/?service=data-factory).
 
 
 ## <a name="samples-on-github"></a>Przykłady w serwisie GitHub
-[Repozytorium GitHub Azure-DataFactory](https://github.com/azure/azure-datafactory) zawiera kilka przykładów, które ułatwiają szybkie zwiększania obciążenia za pomocą usługi Azure Data Factory (lub) zmodyfikowanie skryptów i używać go w własnych aplikacji. Samples\JSON folder zawiera fragmenty JSON dla typowych scenariuszy.
+[Repozytorium GitHub Azure-DataFactory](https://github.com/azure/azure-datafactory) zawiera kilka przykładów, które ułatwiają szybkie podwyższenie poziomu usługi Azure Data Factory (lub) modyfikowanie skryptów i używanie ich w aplikacji. Folder Samples\JSON zawiera fragmenty kodu JSON dla typowych scenariuszy.
 
-| Sample | Opis |
+| Próbka | Opis |
 |:--- |:--- |
-| [Przewodnik usługi ADF](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFWalkthrough) |W tym przykładzie zawiera przewodnik end-to-end do przetwarzania plików dziennika przy użyciu usługi Azure Data Factory, aby przekształcać dane z plików dziennika w celu szczegółowych informacji. <br/><br/>W tym przewodniku potoku usługi fabryka danych umożliwia zbieranie informacji o przykładowe Dzienniki procesów uzupełnia dane z dzienników z danymi referencyjnymi i przekształca dane oceny skuteczności kampanii marketingowej, która została ostatnio uruchomiona. |
-| [Przykłady kodu JSON](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |W tym przykładzie zawiera przykłady JSON dla typowych scenariuszy. |
-| [Przykładowe narzędzie do pobierania danych http](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |Ten przykład prezentuje pobierania danych z punktu końcowego HTTP do usługi Azure Blob Storage przy użyciu niestandardowe działanie platformy .NET. |
-| [Przykładowe działanie netto kropka AppDomain Cross](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |W tym przykładzie można tworzyć niestandardowe działanie platformy .NET, która nie jest ograniczony do wersji zestawu posługują się uruchamiania usługi ADF (na przykład 4.3.0 WindowsAzure.Storage, Newtonsoft.Json v6.0.x itp.). |
-| [Uruchom skrypt języka R](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |W tym przykładzie zawiera niestandardowe działanie usługi Data Factory, który może służyć do wywołania Rscript.exe.{0}nie. Ten przykład działa tylko w przypadku własny klaster HDInsight (nie na żądanie), który jest już zainstalowana R na nim. |
-| [Wywoływanie zadań platformy Spark w klastrze usługi HDInsight Hadoop](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |Ten przykład pokazuje, jak użyć działania MapReduce, aby wywołać program platformy Spark. Program platformy spark tylko kopiuje dane z jednego kontenera obiektów Blob platformy Azure do innego. |
-| [Analiza przy użyciu Machine Learning wsadowego oceniania działanie usługi Azure w usłudze Twitter](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |W tym przykładzie pokazano, jak za pomocą elementu AzureMLBatchScoringActivity wywołania modelu usługi Azure Machine Learning, które przeprowadza analizę tonacji twitter, oceniania i prognozowania itp. |
-| [Analiza przy użyciu działań niestandardowych w usłudze Twitter](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Ten przykład pokazuje, jak niestandardowe działanie platformy .NET umożliwia wywoływanie modelu usługi Azure Machine Learning, które przeprowadza analizę tonacji twitter, oceniania i prognozowania itp. |
-| [Sparametryzowany potoki pod kątem usługi Azure Machine Learning](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |Przykład zawiera end-to-end C# kod, aby wdrożyć potoki N oceniania i ponownego trenowania każdego z parametrem inny region, skąd pochodzą z listy regionów na parameters.txt pliku, który jest dołączony do tego przykładu. |
-| [Odwołanie do odświeżania danych dla zadań usługi Azure Stream Analytics](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |W tym przykładzie pokazano, jak za pomocą usługi Azure Data Factory i Azure Stream Analytics razem uruchamiać je z danymi referencyjnymi i skonfigurować odświeżanie danych referencyjnych, zgodnie z harmonogramem. |
-| [Hybrydowe potoku za pomocą lokalnej usługi Hadoop z Hortonworks](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HybridPipelineWithOnPremisesHortonworksHadoop) |W przykładzie użyto lokalnego klastra usługi Hadoop jako cel obliczenia dotyczące uruchamiania zadań w usłudze Data Factory, tak samo, jak należy dodać inne obliczeniowych elementów docelowych, takich jak HDInsight na podstawie klaster Hadoop w chmurze. |
-| [Narzędzie do konwersji JSON](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSONConversionTool) |To narzędzie umożliwia konwertowanie JSON Smb1sessionsetup w wersji wcześniejszej niż 2015-07-01-preview najnowsze lub 2015-07-01-preview (ustawienie domyślne). |
-| [Plik wejściowy przykładowy języka U-SQL](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/U-SQL%20Sample%20Input%20File) |Ten plik jest przykładowy plik używany przez działanie U-SQL. |
-| [Usuń plik obiektów blob](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity) | W tym przykładzie przedstawiono C# pliku, który może służyć jako część usługi ADF niestandardowe działanie platformy .net do usuwania plików ze źródła lokalizacji obiektu Blob platformy Azure, skopiowania plików.|
+| [Przewodnik po podajniku APD](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFWalkthrough) |Ten przykład zawiera kompleksowy przewodnik dotyczący przetwarzania plików dzienników przy użyciu Azure Data Factory do przekształcania danych z plików dziennika w szczegółowe informacje. <br/><br/>W tym instruktażu potok Data Factory zbiera przykładowe dzienniki, przetwarza i wzbogaca dane z dzienników o dane referencyjne i przekształca je w celu ocenienia skuteczności kampanii marketingowej, która była ostatnio uruchomiona. |
+| [Przykłady JSON](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |Ten przykład zawiera przykłady JSON dla typowych scenariuszy. |
+| [Przykład pobierania danych http](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HttpDataDownloaderSample) |Ten przykład przedstawia pobieranie danych z punktu końcowego HTTP do usługi Azure Blob Storage przy użyciu niestandardowego działania programu .NET. |
+| [Przykład działania z kropką NET w wielu domenach](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/CrossAppDomainDotNetActivitySample) |Ten przykład umożliwia utworzenie niestandardowego działania platformy .NET, które nie jest ograniczone do wersji zestawu używanych przez program do uruchamiania ADF (na przykład WindowsAzure. Storage v 4.3.0, Newtonsoft. JSON v 6.0. x itp.). |
+| [Uruchom skrypt języka R](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/RunRScriptUsingADFSample) |Ten przykład obejmuje niestandardowe działanie Data Factory, które może służyć do wywoływania RScript. exe. Ten przykład działa tylko z własnym klastrem usługi HDInsight (nie na żądanie), na którym jest już zainstalowany język R. |
+| [Wywoływanie zadań platformy Spark w klastrze usługi HDInsight Hadoop](https://docs.microsoft.com/azure/data-factory/tutorial-transform-data-spark-portal) |Ten przykład pokazuje, jak używać działania MapReduce do wywołania programu Spark. Program Spark kopiuje dane z jednego kontenera obiektów blob platformy Azure do innego. |
+| [Analiza usługi Twitter przy użyciu działania oceniania usługi Batch Azure Machine Learning](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-AzureMLBatchScoringActivity) |Ten przykład pokazuje, jak używać elementu AzureMLBatchScoringActivity do wywołania modelu Azure Machine Learning, który wykonuje analizę tonacji, ocenianie, prognozowanie itp. |
+| [Analiza usługi Twitter przy użyciu działania niestandardowego](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TwitterAnalysisSample-CustomC%23Activity) |Ten przykład pokazuje, jak używać niestandardowego działania platformy .NET do wywołania modelu Azure Machine Learning, który wykonuje analizę tonacji, ocenianie, prognozowanie itp. |
+| [Potoki sparametryzowane dla Azure Machine Learning](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ParameterizedPipelinesForAzureML) |Przykład zapewnia kompleksowy C# kod umożliwiający wdrożenie N potoków do oceniania i przeszkolenie każdego z parametrów regionu, w którym lista regionów pochodzi z pliku Parameters. txt, który jest dołączony do tego przykładu. |
+| [Odświeżanie danych referencyjnych dla zadań Azure Stream Analytics](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ReferenceDataRefreshForASAJobs) |Ten przykład pokazuje, jak używać Azure Data Factory i Azure Stream Analytics razem do uruchamiania zapytań z danymi referencyjnymi i konfigurowania odświeżania dla danych referencyjnych zgodnie z harmonogramem. |
+| [Potok hybrydowy z lokalną usługą Hortonworks Hadoop](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/HybridPipelineWithOnPremisesHortonworksHadoop) |Przykład używa lokalnego klastra usługi Hadoop jako obiektu docelowego obliczeń do uruchamiania zadań w Data Factory tak samo jak w przypadku klastra Hadoop opartego na usłudze HDInsight w chmurze. |
+| [Narzędzie konwersji JSON](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSONConversionTool) |To narzędzie umożliwia konwertowanie notacji JSON z wersji wcześniejszej niż 2015-07-01 — wersja zapoznawcza do najnowszej lub 2015-07-01 — wersja zapoznawcza (wartość domyślna). |
+| [Przykładowy plik wejściowy języka U-SQL](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/U-SQL%20Sample%20Input%20File) |Ten plik jest przykładowym plikiem używanym przez działanie języka U-SQL. |
+| [Usuń plik BLOB](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/DeleteBlobFileFolderCustomActivity) | Ten przykład przedstawia C# plik, którego można użyć jako części niestandardowego działania programu .NET ADF do usuwania plików z lokalizacji źródłowej obiektu blob platformy Azure po skopiowaniu plików.|
 
 ## <a name="azure-resource-manager-templates"></a>Szablony usługi Azure Resource Manager
-Następujące szablony usługi Azure Resource Manager można znaleźć w usłudze Data Factory w witrynie GitHub.
+Poniższe szablony Azure Resource Manager dla Data Factory można znaleźć w witrynie GitHub.
 
 | Szablon | Opis |
 | --- | --- |
-| [Kopiowanie z usługi Azure Blob Storage do usługi Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Wdrażanie ten szablon tworzy usługi Azure data factory z potokiem, który kopiuje dane z określonej usługi Azure blob storage do bazy danych Azure SQL |
-| [Skopiuj z usług Salesforce do usługi Azure Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |Ten szablon wdrażania tworzy usługi Azure data factory z potokiem, który kopiuje dane z określonego konta usługi Salesforce do usługi Azure blob storage. |
-| [Przekształcanie danych, uruchamiając skrypt Hive w klastrze usługi Azure HDInsight](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation) |Ten szablon wdrażania tworzy usługi Azure data factory z potokiem, który przekształca dane, uruchamiając przykładowy skrypt programu Hive w klastrze usługi Azure HDInsight Hadoop. |
+| [Kopiuj z usługi Azure Blob Storage do Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Wdrożenie tego szablonu powoduje utworzenie usługi Azure Data Factory z potokiem, który kopiuje dane z określonego magazynu obiektów blob platformy Azure do bazy danych Azure SQL. |
+| [Kopiuj z witryny Salesforce do usługi Azure Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |Wdrożenie tego szablonu powoduje utworzenie usługi Azure Data Factory z potokiem, który kopiuje dane z określonego konta usług Salesforce do magazynu obiektów blob platformy Azure. |
+| [Przekształcanie danych przez uruchomienie skryptu programu Hive w klastrze usługi Azure HDInsight](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation) |Wdrożenie tego szablonu powoduje utworzenie usługi Azure Data Factory z potokiem, który przekształca dane przez uruchomienie przykładowego skryptu Hive w klastrze Azure HDInsight Hadoop. |
 
-## <a name="samples-in-azure-portal"></a>Przykłady w witrynie Azure portal
-Możesz użyć **przykładowe potoki** kafelka na stronie głównej fabryki danych, aby wdrożyć przykładowe potoki i ich skojarzone jednostki (zestawy danych i połączone usługi) w z fabryką danych.
+## <a name="samples-in-azure-portal"></a>Przykłady w Azure Portal
+Możesz użyć kafelka **przykładowe potoki** na stronie głównej fabryki danych, aby wdrożyć przykładowe potoki i powiązane z nimi jednostki (zestawy danych i połączone usługi) w usłudze Data Factory.
 
-1. Utwórz fabrykę danych lub Otwórz istniejącą fabrykę danych. Zobacz [kopiowanie danych z magazynu obiektów Blob do usługi SQL Database przy użyciu usługi Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) kroki utworzyć fabrykę danych.
-2. W **usługi DATA FACTORY** bloku fabryka danych kliknij **przykładowe potoki** kafelka.
+1. Utwórz fabrykę danych lub Otwórz istniejącą fabrykę danych. Aby utworzyć fabrykę danych, zobacz [Kopiowanie danych z BLOB Storage do SQL Database przy użyciu Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) .
+2. W bloku **Fabryka danych** dla fabryki danych kliknij kafelek **przykładowe potoki** .
 
-    ![Przykładowe potoki kafelka](./media/data-factory-samples/SamplePipelinesTile.png)
-3. W **przykładowe potoki** bloku kliknij **przykładowe** , którą chcesz wdrożyć.
+    ![Kafelek przykładowe potoki](./media/data-factory-samples/SamplePipelinesTile.png)
+3. W bloku **przykładowe potoki** kliknij próbkę, którą chcesz wdrożyć.
 
-    ![Przykładowe potoki bloku](./media/data-factory-samples/SampleTile.png)
-4. Określ ustawienia konfiguracji dla przykładu. Na przykład usługi Azure konta nazwy i klucza konta magazynu, nazwy serwera Azure SQL, bazy danych, identyfikator użytkownika i hasło itp.
+    ![Blok przykładowych potoków](./media/data-factory-samples/SampleTile.png)
+4. Określ ustawienia konfiguracji dla przykładu. Na przykład nazwa konta usługi Azure Storage i klucz konta, nazwa programu Azure SQL Server, baza danych, identyfikator użytkownika i hasło itp.
 
     ![Przykładowy blok](./media/data-factory-samples/SampleBlade.png)
-5. Po wykonaniu Określanie ustawień konfiguracji, kliknij przycisk **Utwórz** do tworzenia/wdrożyć przykładowe potoki i usług/tabel połączonych posługują się potoków.
-6. Zostanie wyświetlony stan wdrożenia na kafelku przykładowe wcześniej kliknięta **przykładowe potoki** bloku.
+5. Po określeniu ustawień konfiguracji kliknij pozycję **Utwórz** , aby utworzyć/wdrożyć przykładowe potoki i połączone usługi/tabele używane przez potoki.
+6. Zobaczysz stan wdrożenia na kafelku przykładowym, który został kliknięty wcześniej w bloku **przykładowe potoki** .
 
     ![Stan wdrożenia](./media/data-factory-samples/DeploymentStatus.png)
-7. Po wyświetleniu **wdrażanie zakończyło się pomyślnie** wiadomości na kafelku dla przykładu, Zamknij **przykładowe potoki** bloku.  
-8. Na **usługi DATA FACTORY** wyświetlony blok usługi połączone, zestawy danych i potoki są dodawane do usługi data factory.  
+7. Gdy na kafelku przykładu zostanie wyświetlony komunikat **wdrażanie zakończyło się pomyślnie** , Zamknij blok **przykładowe potoki** .  
+8. W bloku **Fabryka danych** zobaczysz, że połączone usługi, zestawy danych i potoki są dodawane do fabryki danych.  
 
     ![Blok Fabryka danych](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
@@ -82,34 +80,34 @@ Na komputerze muszą być zainstalowane następujące elementy:
 
 * Visual Studio 2013 lub Visual Studio 2015
 * Pobierz zestaw Azure SDK dla programu Visual Studio 2013 lub Visual Studio 2015. Przejdź do [strony plików do pobrania Azure](https://azure.microsoft.com/downloads/) i kliknij pozycję **VS 2013** lub **VS 2015** w sekcji **.NET**.
-* Pobierz najnowszą wtyczkę usługi Azure Data Factory dla programu Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) lub [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Jeśli używasz programu Visual Studio 2013, możesz także zaktualizować wtyczkę, wykonując następujące czynności: W menu kliknij kolejno opcje **Narzędzia** -> **Rozszerzenia i aktualizacje** -> **Online** -> **Galeria Visual Studio** -> **Narzędzia usługi Fabryka danych Microsoft Azure dla programu Visual Studio** -> **Aktualizuj**.
+* Pobierz najnowszą wtyczkę usługi Azure Data Factory dla programu Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) lub [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Jeśli używasz Visual Studio 2013, możesz także zaktualizować wtyczkę, wykonując następujące czynności: W menu kliknij kolejno opcje **Narzędzia** -> **Rozszerzenia i aktualizacje** -> **Online** -> **Galeria Visual Studio** -> **Narzędzia usługi Fabryka danych Microsoft Azure dla programu Visual Studio** -> **Aktualizuj**.
 
-### <a name="use-data-factory-templates"></a>Korzystanie z szablonów fabryki danych
-1. Kliknij przycisk **pliku** menu, wskaż polecenie **New**i kliknij przycisk **projektu**.
+### <a name="use-data-factory-templates"></a>Korzystanie z szablonów Data Factory
+1. Kliknij menu **plik** , wskaż polecenie **Nowy**, a następnie kliknij pozycję **projekt**.
 2. W oknie dialogowym **Nowy projekt** wykonaj następujące kroki:
 
-   1. Wybierz **DataFactory** w obszarze **szablony**.
-   2. Wybierz **szablony fabryki danych** w okienku po prawej stronie.
+   1. Wybierz pozycję DataFactory w obszarze **Szablony**.
+   2. W okienku po prawej stronie wybierz pozycję **szablony Data Factory** .
    3. Wprowadź **nazwę** dla projektu.
-   4. Wybierz **lokalizacji** dla projektu.
+   4. Wybierz **lokalizację** dla projektu.
    5. Kliknij przycisk **OK**.
 
       ![Okno dialogowe Nowy projekt](./media/data-factory-samples/vs-new-project-adf-templates.png)
-3. W **szablony fabryki danych** okna dialogowego Wybierz przykładowy szablon z **przypadek użycia szablonów** sekcji, a następnie kliknij przycisk **dalej**. W poniższych krokach objaśniono możesz za pośrednictwem przy użyciu **profilowania klientów** szablonu. Kroki są podobne do innych próbek.
+3. W oknie dialogowym **Data Factory szablonów** wybierz przykładowy szablon z sekcji **Używanie szablonów przypadków użycia** , a następnie kliknij przycisk **dalej**. Poniższe kroki przeprowadzą Cię przez proces korzystania z szablonu **profilowania klienta** . Kroki są podobne do innych przykładów.
 
-    ![Okno dialogowe Szablony fabryki danych](./media/data-factory-samples/vs-data-factory-templates-dialog.png)
-4. W **konfiguracją usługi Data Factory** okno dialogowe, kliknij przycisk **dalej** na **podstawy fabryki danych** strony.
-5. Na **Konfigurowanie fabryki danych** wykonaj następujące czynności:
-   1. Wybierz **Tworzenie nowej fabryki danych**. Możesz również wybrać **Użyj istniejącej fabryki danych**.
-   2. Wprowadź **nazwa** fabryki danych.
-   3. Wybierz **subskrypcji platformy Azure** , w której chcesz utworzyć fabrykę danych.
-   4. Wybierz **grupy zasobów** fabryki danych.
-   5. Wybierz **zachodnie stany USA**, **wschodnie stany USA**, lub **Europa Północna** dla **region**.
+    ![Okno dialogowe szablony Data Factory](./media/data-factory-samples/vs-data-factory-templates-dialog.png)
+4. W oknie dialogowym **konfiguracja Data Factory** kliknij przycisk **dalej** na stronie **podstawowe informacje dotyczące Data Factory** .
+5. Na stronie **Konfigurowanie fabryki danych** wykonaj następujące czynności:
+   1. Wybierz pozycję **Utwórz nowe Data Factory**. Możesz również wybrać opcję **Użyj istniejącej fabryki danych**.
+   2. Wprowadź **nazwę** fabryki danych.
+   3. Wybierz **subskrypcję platformy Azure** , w której chcesz utworzyć fabrykę danych.
+   4. Wybierz **grupę zasobów** dla fabryki danych.
+   5. Wybierz region **zachodnie stany USA**, **Wschodnie stany USA**i **Europa Północna** dla **regionu**.
    6. Kliknij przycisk **Dalej**.
-6. W **Konfigurowanie magazynów danych** Określ istniejącą, **bazy danych Azure SQL** i **konta usługi Azure storage** (lub) Utwórz bazy danych/magazyn i kliknij przycisk Dalej.
-7. W **Konfigurowanie obliczeń** strony, wybierz ustawienia domyślne, a następnie kliknij przycisk **dalej**.
-8. W **Podsumowanie** strony, przejrzyj wszystkie ustawienia, a następnie kliknij przycisk **dalej**.
-9. W **stan wdrożenia** strony, poczekaj na zakończenie wdrożenia, a następnie kliknij przycisk **Zakończ**.
+6. Na stronie **Konfigurowanie magazynów danych** Określ istniejącą **bazę danych Azure SQL Database** i **konto usługi Azure Storage** (lub) Utwórz bazę danych/magazyn, a następnie kliknij przycisk Dalej.
+7. Na stronie **Konfigurowanie obliczeń** wybierz pozycję domyślne, a następnie kliknij przycisk **dalej**.
+8. Na stronie **Podsumowanie** Przejrzyj wszystkie ustawienia, a następnie kliknij przycisk **dalej**.
+9. Na stronie **stan wdrożenia** poczekaj na zakończenie wdrażania, a następnie kliknij przycisk **Zakończ**.
 10. Kliknij prawym przyciskiem myszy projekt w Eksploratorze rozwiązań, a następnie kliknij polecenie **Publikuj**.
 11. Jeśli zostanie wyświetlone okno dialogowe **Logowanie na koncie Microsoft** wprowadź poświadczenia dla konta z subskrypcją Azure i kliknij przycisk **Zaloguj**.
 12. Powinno zostać wyświetlone następujące okno dialogowe:
@@ -117,11 +115,11 @@ Na komputerze muszą być zainstalowane następujące elementy:
     ![Okno dialogowe publikowania](./media/data-factory-build-your-first-pipeline-using-vs/publish.png)
 13. Na stronie **konfigurowania fabryki danych** wykonaj następujące czynności:
 
-    1. Upewnij się, że **Użyj istniejącej fabryki danych** opcji.
-    2. Wybierz **usługi data factory** wcześniejszego wybierz przy użyciu szablonu.
+    1. Upewnij się, że opcja **Użyj istniejącej fabryki danych** .
+    2. Wybierz **fabrykę danych** wybraną podczas korzystania z szablonu.
     3. Kliknij przycisk **Dalej**, aby przejść na stronę **Publikowanie elementów**. (Naciśnij przycisk **TAB**, aby wyjść z pola nazwy, jeśli przycisk **Dalej** jest wyłączony).
 14. Na stronie **Publikowanie elementów** upewnij się, że wszystkie jednostki usługi Fabryka danych zostały wybrane, i kliknij przycisk **Dalej**, aby przejść na stronę **Podsumowanie**.     
 15. Przejrzyj podsumowanie i kliknij przycisk **Dalej**, aby rozpocząć proces wdrożenia oraz wyświetlić stronę **Stan wdrożenia**.
 16. Na stronie **Stan wdrożenia** powinien zostać wyświetlony stan procesu wdrożenia. Po zakończeniu wdrożenia kliknij przycisk Zakończ.
 
-Zobacz [tworzenie pierwszej fabryki danych (Visual Studio)](data-factory-build-your-first-pipeline-using-vs.md) szczegółowe informacje na temat tworzenia jednostek usługi Data Factory przy użyciu programu Visual Studio i publikując je w usłudze Azure.          
+Zobacz [Tworzenie pierwszej fabryki danych (Visual Studio)](data-factory-build-your-first-pipeline-using-vs.md) , aby uzyskać szczegółowe informacje o używaniu programu Visual Studio do tworzenia jednostek Data Factory i publikowania ich na platformie Azure.          

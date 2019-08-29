@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abaf8c910710000930f4e0ab6200d0ebd75b8d46
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ca82efbd4e26ccb8a169c84332e3d24196fae95e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835196"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135852"
 ---
 # <a name="national-clouds"></a>Chmury narodowe
 
@@ -69,9 +69,6 @@ Możesz tworzyć żądania do autoryzacji usługi Azure AD lub punktów końcowy
 
 W przypadku aplikacji z jedną dzierżawą Zastąp wartość "Common" w poprzednich adresach URL IDENTYFIKATORem dzierżawy lub nazwą. Może to być na przykład `https://login.microsoftonline.de/contoso.com`.
 
-> [!NOTE]
-> Punkty końcowe autoryzacji i tokenu usługi [Azure AD v 2.0]( https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview) są dostępne tylko dla usługi globalnej. Nie są one obsługiwane w przypadku wdrożeń w chmurze krajowej.
-
 ## <a name="microsoft-graph-api"></a>Interfejs API Microsoft Graph
 
 Aby dowiedzieć się, jak wywołać interfejsy API Microsoft Graph w środowisku chmury krajowej, przejdź do [Microsoft Graph w obszarze wdrożenia w chmurze krajowej](https://developer.microsoft.com/graph/docs/concepts/deployments).
@@ -81,7 +78,7 @@ Aby dowiedzieć się, jak wywołać interfejsy API Microsoft Graph w środowisku
 
 Aby dowiedzieć się, jak utworzyć aplikację za pomocą platformy tożsamości firmy Microsoft, postępuj zgodnie z [samouczkiem Microsoft Authentication Library (MSAL)](msal-national-cloud.md). W tej aplikacji zostanie zalogowany użytkownik i otrzymasz token dostępu w celu wywołania interfejsu API Microsoft Graph.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o usługach:
 

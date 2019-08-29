@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 56cb9a17054faace65ae1b65ed0ddbedf1e8af99
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 7fa2a5088e2eae039d43ecf0db080190f74cd772
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011372"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125216"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Samouczek: Utwórz i skonfiguruj wystąpienie Azure Active Directory Domain Services
 
@@ -43,6 +43,9 @@ Do ukończenia tego samouczka potrzebne są następujące zasoby i uprawnienia:
 * Aby włączyć usługę Azure AD DS, musisz mieć uprawnienia *administratora globalnego* w dzierżawie usługi Azure AD.
 * Aby utworzyć wymagane zasoby usługi Azure AD DS, musisz mieć uprawnienia współautora w ramach subskrypcji platformy Azure.
 * Dzierżawa usługi Azure AD musi być [skonfigurowana do][configure-sspr]samoobsługowego resetowania hasła.
+
+> [!IMPORTANT]
+> Po utworzeniu domeny zarządzanej AD DS platformy Azure nie można przenieść wystąpienia do innej grupy zasobów, sieci wirtualnej, subskrypcji itd. Podczas wdrażania wystąpienia usługi Azure AD DS należy zadbać o wybranie najbardziej odpowiedniej subskrypcji, grupy zasobów, regionu i sieci wirtualnej.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 

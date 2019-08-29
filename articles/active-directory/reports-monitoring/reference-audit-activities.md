@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a687823d1344ca11864523cb9187f48d7373fd41
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 56a94ef3f6ea5737b629efe44bd3e1cc1f36a693
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989633"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127144"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Informacje o działaniach inspekcji usługi Azure AD
 
@@ -65,11 +65,11 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Kontrole uprawnień dostępu|Odłączanie kontroli programu|
 |Kontrole uprawnień dostępu|Aktualizowanie przeglądu dostępu|
 |Kontrole uprawnień dostępu|Aktualizowanie stanu dołączania przeglądów usługi Azure AD|
-|Kontrole uprawnień dostępu|Aktualizuj ustawienia powiadomień e-mail dla kontroli uprawnień dostępu|
+|Kontrole uprawnień dostępu|Aktualizowanie ustawień powiadomień e-mail dla przeglądu dostępu|
 |Kontrole uprawnień dostępu|Aktualizuj ustawienie liczby cykli przeglądu dostępu|
-|Kontrole uprawnień dostępu|Aktualizuj ustawienie czasu trwania (w dniach) cyklu przeglądu dostępu|
+|Kontrole uprawnień dostępu|Aktualizowanie ustawienia czasu trwania cyklu przeglądu dostępu w dniach|
 |Kontrole uprawnień dostępu|Aktualizuj ustawienie typu zakończenia cyklu przeglądu dostępu|
-|Kontrole uprawnień dostępu|Aktualizuj ustawienie typu cyklu przeglądu dostępu|
+|Kontrole uprawnień dostępu|Aktualizowanie ustawienia typu cyklu przeglądu dostępu|
 |Kontrole uprawnień dostępu|Aktualizuj ustawienia przypomnień dla kontroli uprawnień dostępu|
 |Kontrole uprawnień dostępu|Aktualizowanie programu|
 |Kontrole uprawnień dostępu|Aktualizowanie zatwierdzenia żądania|
@@ -348,10 +348,10 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 
 |Kategorii inspekcji|Działanie|
 |---|---|
-|Zarządzanie jednostkami administracyjnymi|Pobieranie pojedynczego typu zdarzenia o podwyższonym ryzyku|
+|Zarządzanie jednostkami administracyjnymi|Pobierz typ wykrywania pojedynczego ryzyka|
 |Zarządzanie jednostkami administracyjnymi|Pobieranie administratorów i stanu zgody na podsumowanie tygodniowe|
-|Zarządzanie jednostkami administracyjnymi|Pobieranie wszystkich typów zdarzeń o podwyższonym ryzyku|
-|Zarządzanie jednostkami administracyjnymi|Pobieranie zdarzeń o podwyższonym ryzyku dla użytkowników wersji bezpłatnych|
+|Zarządzanie jednostkami administracyjnymi|Pobierz wszystkie typy wykrywania ryzyka|
+|Zarządzanie jednostkami administracyjnymi|Pobierz bezpłatne wykrycia ryzyka dla użytkowników|
 |Zarządzanie jednostkami administracyjnymi|Pobieranie użytkowników oflagowanych w związku z ryzykiem|
 |Zarządzanie aplikacjami|Przetworzone zaproszenia zbiorcze|
 |Zarządzanie aplikacjami|Przekazane zaproszenia zbiorcze|
@@ -517,11 +517,11 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |---|---|
 |Zarządzanie grupami|Przeglądanie żądania zatwierdzenia żądania|
 |Zarządzanie grupami|Aktualizowanie przeglądu dostępu|
-|Zarządzanie grupami|Aktualizuj ustawienia powiadomień e-mail dla kontroli uprawnień dostępu|
+|Zarządzanie grupami|Aktualizowanie ustawień powiadomień e-mail dla przeglądu dostępu|
 |Zarządzanie grupami|Aktualizuj ustawienie liczby cykli przeglądu dostępu|
-|Zarządzanie grupami|Aktualizuj ustawienie czasu trwania (w dniach) cyklu przeglądu dostępu|
+|Zarządzanie grupami|Aktualizowanie ustawienia czasu trwania cyklu przeglądu dostępu w dniach|
 |Zarządzanie użytkownikami|Aktualizuj ustawienie typu zakończenia cyklu przeglądu dostępu|
-|Zarządzanie użytkownikami|Aktualizuj ustawienie typu cyklu przeglądu dostępu|
+|Zarządzanie użytkownikami|Aktualizowanie ustawienia typu cyklu przeglądu dostępu|
 
 
 

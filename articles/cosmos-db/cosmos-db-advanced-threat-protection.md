@@ -4,15 +4,15 @@ description: Dowiedz się, jak Azure Cosmos DB zapewnia szyfrowanie danych w sta
 author: monhaber
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 08/21/2019
 ms.author: v-mohabe
 ms.custom: seodec18
-ms.openlocfilehash: e22e05618c8b8977ba8b03afd3b654d27d4fa6bd
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 035c7e9ed5ab33c89a2a55b1133294db434bfe81
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981731"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70123902"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Zaawansowana ochrona przed zagrożeniami dla Azure Cosmos DB
 
@@ -56,6 +56,31 @@ Użyj następujących poleceń cmdlet programu PowerShell:
 * [Włącz zaawansowaną ochronę przed zagrożeniami](https://go.microsoft.com/fwlink/?linkid=2099607&clcid=0x409)
 * [Uzyskaj zaawansowaną ochronę przed zagrożeniami](https://go.microsoft.com/fwlink/?linkid=2099608&clcid=0x409)
 * [Wyłącz zaawansowaną ochronę przed zagrożeniami](https://go.microsoft.com/fwlink/?linkid=2099709&clcid=0x409)
+
+### <a name="using-azure-resource-manager-templates"></a>Korzystanie z szablonów Azure Resource Manager
+
+Użyj szablonu Azure Resource Manager, aby skonfigurować Cosmos DB z włączoną funkcją zaawansowanej ochrony przed zagrożeniami.
+Aby uzyskać więcej informacji, zobacz [Tworzenie konta CosmosDB z zaawansowaną ochroną przed zagrożeniami](https://azure.microsoft.com/en-us/resources/templates/201-cosmosdb-advanced-threat-protection-create-account/).
+
+### <a name="using-azure-policy"></a>Używanie Azure Policy
+
+Użyj Azure Policy, aby włączyć zaawansowaną ochronę przed zagrożeniami dla Cosmos DB.
+
+1. Uruchom stronę **definicje zasad** platformy Azure i Wyszukaj zasady **Wdróż zaawansowaną ochronę przed zagrożeniami dla Cosmos DB** .
+
+    ![Zasady wyszukiwania](./media/cosmos-db-advanced-threat-protection/cosmos-db.png) 
+
+1. Kliknij pozycję **Wdróż zaawansowaną ochronę przed zagrożeniami dla programu CosmosDB** , a następnie kliknij pozycję **Przypisz**.
+
+    ![Wybierz subskrypcję lub grupę](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png)
+
+
+1. W polu **zakres** kliknij trzy kropki, wybierz subskrypcję platformy Azure lub grupę zasobów, a następnie kliknij pozycję **Wybierz**.
+
+    ![Strona definicji zasad](./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png)
+
+
+1. Wprowadź inne parametry, a następnie kliknij przycisk **Przypisz**.
 
 ## <a name="manage-atp-security-alerts"></a>Zarządzanie alertami zabezpieczeń ATP
 

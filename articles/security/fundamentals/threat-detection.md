@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 86b17efdb811e9e4040b8b267c161b950f6de5fd
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 6278e848a82fb31939117fa9b916a92a2fb74a3e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036175"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129280"
 ---
 # <a name="azure-advanced-threat-detection"></a>Zaawansowane wykrywanie zagrożeń na platformie Azure
 
@@ -30,13 +30,13 @@ System Azure oferuje szeroką gamę opcji konfigurowania i dostosowywania zabezp
 
 ## <a name="azure-active-directory-identity-protection"></a>Ochrona tożsamości w usłudze Azure Active Directory
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) to funkcja [Azure Active Directory — wersja Premium P2](../../active-directory/active-directory-whatis.md) Edition, która oferuje przegląd zdarzeń ryzyka i potencjalnych luk w zabezpieczeniach, które mogą wpływać na tożsamość organizacji. Funkcja ochrony tożsamości korzysta z istniejących funkcji wykrywania anomalii usługi Azure AD, które są dostępne za pośrednictwem [raportów anomalii dotyczących aktywności usługi Azure AD](../../active-directory/active-directory-reporting-azure-portal.md), i wprowadza nowe typy zdarzeń ryzyka, które mogą wykrywać anomalie w czasie rzeczywistym.
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) to funkcja [Azure Active Directory — wersja Premium P2](../../active-directory/active-directory-whatis.md) Edition, która oferuje przegląd wykrywania ryzyka i potencjalnych luk w zabezpieczeniach, które mogą wpływać na tożsamość organizacji. Funkcja ochrony tożsamości korzysta z istniejących funkcji wykrywania anomalii usługi Azure AD, które są dostępne za pośrednictwem [raportów anomalii dotyczących aktywności usługi Azure AD](../../active-directory/active-directory-reporting-azure-portal.md), i wprowadza nowe typy wykrywania ryzyka, które mogą wykrywać anomalie w czasie rzeczywistym.
 
 ![Diagram Azure AD Identity Protection](./media/threat-detection/azure-threat-detection-fig1.png)
 
-Ochrona tożsamości używa adaptacyjnych algorytmów uczenia maszynowego i heurystycznych, aby wykrywać anomalie i zdarzenia ryzyka, które mogą wskazywać na naruszenie bezpieczeństwa tożsamości. Przy użyciu tych danych Ochrona tożsamości generuje raporty i alerty, aby można było zbadać te zdarzenia ryzyka i podjąć odpowiednie działania naprawcze lub zaradcze.
+Program Identity Protection używa adaptacyjnych algorytmów uczenia maszynowego i heurystycznych do wykrywania anomalii i wykrywania ryzyka, które mogą wskazywać na naruszenie bezpieczeństwa tożsamości. Przy użyciu tych danych Ochrona tożsamości generuje raporty i alerty, aby można było zbadać te wykrycia ryzyka i podjąć odpowiednie działania naprawcze lub zaradcze.
 
-Azure Active Directory Identity Protection jest więcej niż narzędzie do monitorowania i raportowania. Na podstawie zdarzeń o podwyższonym ryzyku Ochrona tożsamości oblicza poziom ryzyka użytkownika dla każdego użytkownika, dzięki czemu można skonfigurować zasady oparte na ryzyku, aby automatycznie chronić tożsamości organizacji.
+Azure Active Directory Identity Protection jest więcej niż narzędzie do monitorowania i raportowania. W oparciu o wykrywanie ryzyka, Ochrona tożsamości oblicza poziom ryzyka użytkownika dla każdego użytkownika, dzięki czemu można skonfigurować zasady oparte na ryzyku, aby automatycznie chronić tożsamości organizacji.
 
 Te zasady oparte na ryzyku, oprócz innych [kontroli dostępu warunkowego](../../active-directory/active-directory-conditional-access-azure-portal.md) , które są udostępniane przez Azure Active Directory i [EMS](../../active-directory/active-directory-conditional-access-azure-portal.md), mogą automatycznie blokować lub oferować akcje adaptacyjnego korygowania, które obejmują resetowanie haseł i wieloskładnikowe Wymuszanie uwierzytelniania.
 
@@ -46,14 +46,14 @@ Azure Active Directory Identity Protection jest więcej niż narzędzie do monit
 
 Przykłady niektórych sposobów, w których usługa Azure Identity Protection, może pomóc w zabezpieczaniu Twoich kont i tożsamości:
 
-[Wykrywanie zdarzeń ryzyka i ryzykownych kont](../../active-directory/identity-protection/overview.md)
--   Wykrywaj sześć typów zdarzeń ryzyka przy użyciu uczenia maszynowego i reguł heurystycznych.
+[Wykrywanie wykrywania ryzyka i ryzykownych kont](../../active-directory/identity-protection/overview.md)
+-   Wykrywaj sześć typów wykrywania ryzyka przy użyciu funkcji uczenia maszynowego i reguł heurystycznych.
 -   Oblicz poziomy ryzyka użytkownika.
 -   Zapewnianie niestandardowych zaleceń w celu poprawy ogólnej stan zabezpieczeń poprzez wyróżnienie luk w zabezpieczeniach.
 
-[Badanie zdarzeń ryzyka](../../active-directory/identity-protection/overview.md)
--   Wysyłaj powiadomienia dla zdarzeń o podwyższonym ryzyku.
--   Zbadaj zdarzenia dotyczące ryzyka, korzystając z odpowiednich i kontekstowych informacji.
+[Badanie wykrywania ryzyka](../../active-directory/identity-protection/overview.md)
+-   Wysyłaj powiadomienia o wykryciu ryzyka.
+-   Zbadaj wykryte zagrożenia przy użyciu odpowiednich i kontekstowych informacji.
 -   Zapewniają podstawowe przepływy pracy do śledzenia dochodzeń.
 -   Zapewnianie łatwego dostępu do akcji korygowania, takich jak resetowanie hasła.
 

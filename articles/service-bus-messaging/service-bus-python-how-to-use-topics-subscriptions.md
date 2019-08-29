@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: d294ceaaf77175a3010131b18864b71c7b26b88b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: ef0237b38c8f640c0fc4b1b1788215c8804a5cd4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360835"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141899"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Jak używać tematów Service Bus i subskrypcji w języku Python
 
@@ -39,7 +39,7 @@ W tym artykule opisano sposób używania tematów i subskrypcji usługi Service 
 
     > [!NOTE]
     > W tym przewodniku szybki start utworzysz **temat** i **subskrypcję** tematu przy użyciu języka **Python** . 
-3. Zainstaluj [pakiet platformy Azure][Azure Python package]w języku Python. Zobacz [Przewodnik instalacji języka Python](../python-how-to-install.md).
+3. Zainstaluj [pakiet platformy Azure][Azure Python package]w języku Python. Zobacz [Przewodnik instalacji języka Python](/azure/python/python-sdk-azure-install).
 
 ## <a name="create-a-topic"></a>Tworzenie tematu
 
@@ -117,7 +117,7 @@ bus_service.create_rule('mytopic', 'HighMessages', 'HighMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'HighMessages', DEFAULT_RULE_NAME)
 ```
 
-Podobnie Poniższy przykład tworzy subskrypcję o nazwie `LowMessages` przy użyciu sqlfilter, który wybiera tylko  `messagenumber` komunikaty o właściwości mniejszej lub równej 3:
+Podobnie Poniższy przykład tworzy subskrypcję o nazwie `LowMessages` przy użyciu sqlfilter, który wybiera tylko `messagenumber` komunikaty o właściwości mniejszej lub równej 3:
 
 ```python
 bus_service.create_subscription('mytopic', 'LowMessages')
@@ -161,7 +161,7 @@ Komunikaty są usuwane z subskrypcji, ponieważ są odczytywane, gdy parametr `p
 
 Zachowanie odczytu i usunięcia komunikatu w ramach operacji odbierania jest najprostszym modelem i najlepiej sprawdza się w scenariuszach, w których aplikacja może tolerować nieprzetwarzanie komunikatu w przypadku wystąpienia błędu. Aby zrozumieć to zachowanie, rozważ scenariusz, w którym odbiorca wystawia żądanie odebrania, a następnie ulega awarii przed jego przetworzeniem. Ponieważ Service Bus oznaczył komunikat jako używany, wtedy, gdy aplikacja zostanie ponownie uruchomiona i rozpocznie korzystanie z komunikatów, zostanie pominięty komunikat, który był używany przed awarią.
 
-Jeśli parametr ma wartość true, odbieranie staje się operacją dwuetapową, co umożliwia obsługę aplikacji, które nie mogą tolerować brakujących komunikatów.  `peek_lock` Gdy usługa Service Bus odbiera żądanie, znajduje następny komunikat do wykorzystania, blokuje go w celu uniemożliwienia innym klientom odebrania go i zwraca go do aplikacji. Gdy aplikacja zakończy przetwarzanie komunikatu (lub zapisuje ją w sposób niegodny w przyszłości), kończy drugi etap procesu odbierania przez wywołanie `delete` metody dla obiektu **Message** . `delete` Metoda oznacza komunikat jako używany i usuwa go z subskrypcji.
+Jeśli parametr ma wartość true, odbieranie staje się operacją dwuetapową, co umożliwia obsługę aplikacji, które nie mogą tolerować brakujących komunikatów. `peek_lock` Gdy usługa Service Bus odbiera żądanie, znajduje następny komunikat do wykorzystania, blokuje go w celu uniemożliwienia innym klientom odebrania go i zwraca go do aplikacji. Gdy aplikacja zakończy przetwarzanie komunikatu (lub zapisuje ją w sposób niegodny w przyszłości), kończy drugi etap procesu odbierania przez wywołanie `delete` metody dla obiektu **Message** . `delete` Metoda oznacza komunikat jako używany i usuwa go z subskrypcji.
 
 ```python
 msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lock=True)
