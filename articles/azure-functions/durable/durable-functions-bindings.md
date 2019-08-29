@@ -1,33 +1,32 @@
 ---
-title: Powiązania trwałe funkcje — Azure
-description: Jak użyć wyzwalaczy i powiązań dla rozszerzenia funkcji trwałych dla usługi Azure Functions.
+title: Powiązania dla Durable Functions — Azure
+description: Jak używać wyzwalaczy i powiązań dla rozszerzenia Durable Functions Azure Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 678e370977cadae642207f91a02136404fb6c34e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fbd645ef9f5e687e71ce110fc84b8342e31defed
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60710547"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087539"
 ---
-# <a name="bindings-for-durable-functions-azure-functions"></a>Powiązania dla funkcje trwałe (usługa Azure Functions)
+# <a name="bindings-for-durable-functions-azure-functions"></a>Powiązania dla Durable Functions (Azure Functions)
 
-[Funkcje trwałe](durable-functions-overview.md) rozszerzenia wprowadzono dwa nowe powiązania wyzwalacza, które kontrolują wykonanie funkcji programu orchestrator i działania. Przedstawia on również powiązania danych wyjściowych, który działa jako klient przez środowisko uruchomieniowe funkcji trwałe.
+Rozszerzenie [Durable Functions](durable-functions-overview.md) wprowadza dwa nowe powiązania wyzwalacza kontrolujące wykonywanie funkcji Orchestrator i Functions. Wprowadza również powiązanie danych wyjściowych, które działa jako klient dla środowiska uruchomieniowego Durable Functions.
 
 ## <a name="orchestration-triggers"></a>Wyzwalacze aranżacji
 
-Wyzwalacz orchestration umożliwia tworzenie funkcje trwałe programu orchestrator. Ten wyzwalacz obsługuje uruchomienia nowych wystąpień funkcji programu orchestrator i wznawianie istniejących wystąpień funkcji programu orchestrator, oczekujące "na" zadanie.
+Wyzwalacz aranżacji umożliwia tworzenie trwałych funkcji programu Orchestrator. Ten wyzwalacz obsługuje uruchamianie nowych wystąpień funkcji programu Orchestrator i wznawianie istniejących wystąpień funkcji programu Orchestrator, które oczekują na zadanie.
 
-Korzystając z programu Visual Studio tools dla usługi Azure Functions, wyzwalacz orchestration jest skonfigurowany przy użyciu [OrchestrationTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationTriggerAttribute.html) atrybut platformy .NET.
+W przypadku korzystania z narzędzi Visual Studio Tools for Azure Functions wyzwalacz aranżacji jest konfigurowany przy użyciu atrybutu platformy .NET [OrchestrationTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationTriggerAttribute.html) .
 
-Podczas wpisywania funkcje programu orchestrator w językach skryptów (na przykład, JavaScript lub C# skryptów), wyzwalacz orchestration jest definiowany przez następujący obiekt JSON w `bindings` tablicę *function.json* Plik:
+Podczas pisania funkcji programu Orchestrator w językach skryptów (na przykład JavaScript lub C# skrypty) wyzwalacz aranżacji jest definiowany przez następujący obiekt JSON w `bindings` tablicy pliku *Function. JSON* :
 
 ```json
 {
@@ -38,35 +37,35 @@ Podczas wpisywania funkcje programu orchestrator w językach skryptów (na przyk
 }
 ```
 
-* `orchestration` jest nazwą aranżacji. Jest to wartość, która klienci muszą używać, jeśli chcą uruchomienie nowych wystąpień tej funkcji programu orchestrator. Ta właściwość jest opcjonalna. Jeśli nie zostanie określony, nazwa funkcji jest używana.
+* `orchestration`jest nazwą aranżacji. Jest to wartość, której klienci muszą używać, gdy chcą uruchamiać nowe wystąpienia tej funkcji programu Orchestrator. Ta właściwość jest opcjonalna. Jeśli nie zostanie określony, zostanie użyta nazwa funkcji.
 
-Wewnętrznie tego powiązania wyzwalacza sonduje szereg kolejek domyślne konto magazynu dla aplikacji funkcji. Te kolejki są szczegóły wewnętrznej implementacji rozszerzenie, dlatego nie są one jawnie skonfigurowane we właściwościach wiązania.
+Wewnętrznie to powiązanie wyzwalacza sonduje serię kolejek w domyślnym koncie magazynu dla aplikacji funkcji. Te kolejki są wewnętrznymi szczegółami implementacji rozszerzenia, dlatego nie są one jawnie skonfigurowane we właściwościach powiązania.
 
-### <a name="trigger-behavior"></a>Zachowanie wyzwalacza
+### <a name="trigger-behavior"></a>Zachowanie wyzwalania
 
-Poniżej przedstawiono kilka uwag o wyzwalacz orchestration:
+Poniżej znajdują się pewne uwagi dotyczące wyzwalacza aranżacji:
 
-* **Wątkowość pojedynczego** -Wątek dyspozytora pojedynczego jest używany dla wszystkich wykonywania funkcji programu orchestrator w wystąpieniu jednego hosta. Z tego powodu jest ważne upewnić się, że kod funkcji programu orchestrator jest wydajny i nie wykonuje żadnych operacji We/Wy. Jest również ważne, aby upewnić się, że ten wątek wykonać wszelkie prace asynchronicznej, z wyjątkiem sytuacji, gdy oczekując na trwałe funkcje specyficzne dla typów zadań.
-* **Obsługa komunikatów poison** — nie obsługuje zarządzanie skażonymi komunikatami w wyzwalaczach aranżacji.
-* **Komunikat o widoczności** -wiadomości wyzwalaczy aranżacji są usuwane z kolejki i przechowywane niewidoczne przez wartość typu duration można skonfigurować. Widoczność tych komunikatów jest odnawiany automatycznie, tak długo, jak aplikacja funkcji jest uruchomiony i działa prawidłowo.
-* **Wartości zwracane** — zwracane wartości są serializować do notacji JSON i utrwalone w tabeli historii aranżacji w usłudze Azure Table storage. Te wartości zwracane mogą być przeszukiwane przez klienta orkiestracji powiązania, opisanym w dalszej części.
-
-> [!WARNING]
-> Funkcje programu orchestrator nigdy nie może używać żadnych danych wejściowych ani danych wyjściowych powiązania innych niż aranżacji wyzwolić powiązania. Ten sposób może potencjalnie spowodować problemy z rozszerzeniem trwałe zadania, ponieważ te powiązania nie może być przestrzegają wątków w jednym i reguł we/wy.
+* Jednowątkowy — pojedynczy wątek dyspozytora jest używany dla wszystkich wykonań funkcji programu Orchestrator na jednym wystąpieniu hosta. Z tego powodu ważne jest, aby upewnić się, że kod funkcji programu Orchestrator jest wydajny i nie wykonuje żadnych operacji we/wy. Ważne jest również, aby upewnić się, że ten wątek nie wykonuje żadnych działań asynchronicznych, z wyjątkiem przypadków, gdy oczekuje na Durable Functions typów zadań.
+* **Obsługa komunikatów trujących** — nie istnieje Trująca obsługa komunikatów w wyzwalaczach aranżacji.
+* **Widoczność komunikatów** — komunikaty wyzwalacza aranżacji są dekolejkowane i niewidoczne przez konfigurowalny czas trwania. Widoczność tych komunikatów jest odnawiana automatycznie, o ile aplikacja funkcji jest uruchomiona i w dobrej kondycji.
+* **Zwracane wartości** — zwracane wartości są serializowane do formatu JSON i utrwalane w tabeli historii aranżacji w usłudze Azure Table Storage. Te zwracane wartości mogą być badane przez powiązanie klienta aranżacji opisane w dalszej części.
 
 > [!WARNING]
-> Funkcje programu orchestrator JavaScript nigdy nie powinny być zadeklarowane `async`.
+> Funkcje programu Orchestrator nigdy nie powinny używać żadnych powiązań wejściowych ani wyjściowych innych niż powiązanie wyzwalacza aranżacji. Takie działanie może spowodować problemy z rozszerzeniem zadania trwałego, ponieważ te powiązania mogą nie przestrzegać reguł jednowątkowych i operacji we/wy.
+
+> [!WARNING]
+> Funkcje programu Orchestrator w języku JavaScript nigdy `async`nie powinny być deklarowane.
 
 ### <a name="trigger-usage-net"></a>Użycie wyzwalacza (.NET)
 
-Wyzwalacz aranżacji powiązanie obsługuje danych wejściowych i danych wyjściowych. Oto kilka rzeczy, aby wiedzieć o danych wejściowych i wyjściowych obsługi:
+Powiązanie wyzwalacza aranżacji obsługuje dane wejściowe i wyjściowe. Oto kilka rzeczy, które należy wiedzieć na temat obsługi danych wejściowych i wyjściowych:
 
-* **dane wejściowe** — .NET aranżacji funkcje obsługują tylko [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) jako parametr typu. Deserializacja danych wejściowych bezpośrednio w sygnaturze funkcji nie jest obsługiwane. Należy użyć kodu [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1)(.NET) lub `getInput` — metoda (JavaScript), można pobrać dane wejściowe funkcji programu orchestrator. Te dane wejściowe muszą być typów możliwych do serializacji JSON.
-* **dane wyjściowe** -wyzwalacze aranżacji obsługują wartości danych wyjściowych, a także dane wejściowe. Wartość zwracana przez funkcję jest używany do przypisywania wartości danych wyjściowych i musi być możliwy do serializacji JSON. Jeśli funkcja .NET zwraca `Task` lub `void`, `null` wartość zostanie zapisana jako dane wyjściowe.
+* **wejścia** — funkcje aranżacji platformy .NET obsługują tylko [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) jako typ parametru. Deserializacja danych wejściowych bezpośrednio w sygnaturze funkcji nie jest obsługiwana. Aby można było pobrać dane wejściowe funkcji programu Orchestrator, kod musi `getInput` używać metody [getinput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1)(.NET) lub (JavaScript). Te dane wejściowe muszą być typami możliwymi do serializacji JSON.
+* generowanie danych wyjściowych — wyzwalacze aranżacji obsługują wartości wyjściowe oraz dane wejściowe. Wartość zwracana funkcji służy do przypisywania wartości wyjściowej i musi być możliwa do serializacji JSON. Jeśli funkcja .NET zwraca `Task` lub `void`, `null` wartość zostanie zapisana jako dane wyjściowe.
 
-### <a name="trigger-sample"></a>Przykładowy wyzwalacz
+### <a name="trigger-sample"></a>Przykład wyzwalacza
 
-Poniżej znajduje się przykład jak może wyglądać najprostszym funkcji orkiestratora "Hello World":
+Poniżej przedstawiono przykład sposobu, w jaki najprostsza funkcja programu Orchestrator "Hello world" może wyglądać następująco:
 
 #### <a name="c"></a>C#
 
@@ -79,7 +78,7 @@ public static string Run([OrchestrationTrigger] DurableOrchestrationContext cont
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -91,12 +90,12 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!NOTE]
-> `context` Obiektu w języku JavaScript nie reprezentuje DurableOrchestrationContext, ale [kontekście funkcji jako całości.](../functions-reference-node.md#context-object). Możesz uzyskać dostęp metod organizowania za pośrednictwem `context` obiektu `df` właściwości.
+> Obiekt w języku JavaScript nie reprezentuje DurableOrchestrationContext, ale [kontekst funkcji jako całości..](../functions-reference-node.md#context-object) `context` Dostęp do metod aranżacji można uzyskać za `context` pomocą `df` właściwości obiektu.
 
 > [!NOTE]
-> Skorzystaj z koordynatorów JavaScript `return`. `durable-functions` Biblioteki dba o wywoływania `context.done` metody.
+> Koordynator JavaScript powinien używać `return`. Biblioteka zajmuje się `context.done` wywołaniem metody. `durable-functions`
 
-Większość funkcji programu orchestrator wywołania funkcji działań, Oto przykład "Hello World", który pokazuje, jak wywołać funkcję działania:
+Większość funkcji działania wywoływanych przez program Orchestrator ma w tym miejscu następujący przykład "Hello world", który pokazuje, jak wywołać funkcję działania:
 
 #### <a name="c"></a>C#
 
@@ -111,7 +110,7 @@ public static async Task<string> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -123,13 +122,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-## <a name="activity-triggers"></a>Wyzwalacze działania
+## <a name="activity-triggers"></a>Wyzwalacze aktywności
 
-Wyzwalacz działanie umożliwia tworzenie funkcji, które są wywoływane przez funkcje programu orchestrator.
+Wyzwalacz działania umożliwia tworzenie funkcji, które są wywoływane przez funkcje programu Orchestrator.
 
-Jeśli używasz programu Visual Studio wyzwalacza działania jest skonfigurowany przy użyciu [ActivityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) atrybut platformy .NET.
+Jeśli używasz programu Visual Studio, wyzwalacz aktywności jest konfigurowany przy użyciu atrybutu [ActivityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) .NET.
 
-Jeśli używasz programu VS Code lub w portalu Azure do tworzenia aplikacji wyzwalacza działania jest definiowany przez następujący obiekt JSON w `bindings` tablicę *function.json*:
+Jeśli używasz vs Code lub Azure Portal do programowania, wyzwalacz aktywności jest definiowany przez następujący obiekt JSON w `bindings` tablicy *Function. JSON*:
 
 ```json
 {
@@ -140,33 +139,33 @@ Jeśli używasz programu VS Code lub w portalu Azure do tworzenia aplikacji wyzw
 }
 ```
 
-* `activity` to nazwa działania. Jest to wartość, która umożliwia Wywołaj tę funkcję działania funkcji programu orchestrator. Ta właściwość jest opcjonalna. Jeśli nie zostanie określony, nazwa funkcji jest używana.
+* `activity`to nazwa działania. Jest to wartość, której funkcje programu Orchestrator używają do wywołania tej funkcji działania. Ta właściwość jest opcjonalna. Jeśli nie zostanie określony, zostanie użyta nazwa funkcji.
 
-Wewnętrznie tego powiązania wyzwalacza sonduje kolejkę w domyślne konto magazynu dla aplikacji funkcji. Kolejka ta jest szczegółowo opisuje implementacja wewnętrzny rozszerzenia, dlatego nie jest jawnie skonfigurowane we właściwościach wiązania.
+Wewnętrznie to powiązanie wyzwalacza sonduje kolejkę w domyślnym koncie magazynu dla aplikacji funkcji. Ta kolejka jest wewnętrznymi szczegółami implementacji rozszerzenia, dlatego nie jest on jawnie skonfigurowany we właściwościach powiązania.
 
-### <a name="trigger-behavior"></a>Zachowanie wyzwalacza
+### <a name="trigger-behavior"></a>Zachowanie wyzwalania
 
-Poniżej przedstawiono niektóre uwagi dotyczące działania wyzwalacza:
+Poniżej przedstawiono niektóre uwagi dotyczące wyzwalacza działania:
 
-* **Wątkowość** — w przeciwieństwie do wyzwalacza aranżacji wyzwalaczy działania nie mają zastosowanie jakiekolwiek ograniczenia wokół wątkowości lub we/wy. Mogą one być traktowane funkcji regularnych.
-* **Obsługa komunikatów poison** — nie obsługuje zarządzanie skażonymi komunikatami w wyzwalaczach działania.
-* **Komunikat o widoczności** -działania wyzwalacza wiadomości są usuwane z kolejki i przechowywane niewidoczne czas można skonfigurować. Widoczność tych komunikatów jest odnawiany automatycznie, tak długo, jak aplikacja funkcji jest uruchomiony i działa prawidłowo.
-* **Wartości zwracane** — zwracane wartości są serializować do notacji JSON i utrwalone w tabeli historii aranżacji w usłudze Azure Table storage.
+* **Wątkowość** — w przeciwieństwie do wyzwalacza aranżacji, wyzwalacze aktywności nie mają żadnych ograniczeń dotyczących wątków lub operacji we/wy. Mogą być traktowane jak regularne funkcje.
+* **Obsługa komunikatów trujących** — w wyzwalaczach aktywności nie ma obsługi skażonych komunikatów.
+* **Widoczność komunikatów** — komunikaty wyzwalacza aktywności są dekolejkowane i niewidoczne przez konfigurowalny czas trwania. Widoczność tych komunikatów jest odnawiana automatycznie, o ile aplikacja funkcji jest uruchomiona i w dobrej kondycji.
+* **Zwracane wartości** — zwracane wartości są serializowane do formatu JSON i utrwalane w tabeli historii aranżacji w usłudze Azure Table Storage.
 
 > [!WARNING]
-> Wewnętrznej bazy danych magazynu dla funkcji działań jest szczegółowo opisuje implementacja i kod użytkownika nie może mieć interakcji z tymi jednostkami magazynu bezpośrednio.
+> Zaplecze magazynu dla funkcji działania to szczegóły implementacji, a kod użytkownika nie powinien bezpośrednio korzystać z tych jednostek magazynu.
 
 ### <a name="trigger-usage-net"></a>Użycie wyzwalacza (.NET)
 
-Wyzwalacz działanie obsługuje powiązanie danych wejściowych i danych wyjściowych, podobnie jak wyzwalacz aranżacji. Oto kilka rzeczy, aby wiedzieć o danych wejściowych i wyjściowych obsługi:
+Powiązanie wyzwalacza działania obsługuje dane wejściowe i wyjściowe, podobnie jak wyzwalacz aranżacji. Oto kilka rzeczy, które należy wiedzieć na temat obsługi danych wejściowych i wyjściowych:
 
-* **dane wejściowe** — natywne korzystanie z funkcji działań .NET [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako parametr typu. Alternatywnie funkcję działania mogą być deklarowane przy użyciu dowolnego typu parametru, który jest możliwy do serializacji JSON. Kiedy używasz `DurableActivityContext`, można wywołać [GetInput\<T >](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html#Microsoft_Azure_WebJobs_DurableActivityContext_GetInput__1) do pobrania i deserializować funkcja działanie danych wejściowych.
-* **dane wyjściowe** — działanie funkcji obsługi wartości danych wyjściowych, a także dane wejściowe. Wartość zwracana przez funkcję jest używany do przypisywania wartości danych wyjściowych i musi być możliwy do serializacji JSON. Jeśli funkcja .NET zwraca `Task` lub `void`, `null` wartość zostanie zapisana jako dane wyjściowe.
-* **metadane** — funkcje działań platformy .NET można powiązać `string instanceId` parametru, aby pobrać identyfikator wystąpienia aranżacji nadrzędnej.
+* **wejścia** — funkcje działania .NET natywnie używają [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) jako typu parametru. Alternatywnie można zadeklarować funkcję działania z dowolnym typem parametru, który jest możliwy do serializacji notacji JSON. [\<](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html#Microsoft_Azure_WebJobs_DurableActivityContext_GetInput__1) Gdy używasz `DurableActivityContext`, możesz wywołać metodę getinput T >, aby pobrać i zdeserializować dane wejściowe funkcji działania.
+* funkcje danych wyjściowych obsługują wartości wyjściowe oraz dane wejściowe. Wartość zwracana funkcji służy do przypisywania wartości wyjściowej i musi być możliwa do serializacji JSON. Jeśli funkcja .NET zwraca `Task` lub `void`, `null` wartość zostanie zapisana jako dane wyjściowe.
+* **metadane** — funkcje działania .NET można powiązać z `string instanceId` parametrem w celu uzyskania identyfikatora wystąpienia aranżacji nadrzędnej.
 
-### <a name="trigger-sample"></a>Przykładowy wyzwalacz
+### <a name="trigger-sample"></a>Przykład wyzwalacza
 
-Poniżej znajduje się przykład jak może wyglądać prostej funkcji "Hello World" działania:
+Poniżej przedstawiono przykład prostej funkcji działania "Hello world", która może wyglądać następująco:
 
 #### <a name="c"></a>C#
 
@@ -179,7 +178,7 @@ public static string SayHello([ActivityTrigger] DurableActivityContext helloCont
 }
 ```
 
-Domyślny typ parametru dla platformy .NET `ActivityTriggerAttribute` powiązanie jest `DurableActivityContext`. Jednak .NET działania wyzwalaczy również obsługę wiązanie bezpośrednio do JSON serializeable typów (w tym typów pierwotnych), tę samą funkcję można uproszczenie jako następująco:
+Domyślny typ parametru dla powiązania .NET `ActivityTriggerAttribute` to. `DurableActivityContext` Jednak wyzwalacze aktywności .NET obsługują również powiązanie bezpośrednio z typami serializowanych JSON (w tym typami pierwotnymi), dzięki czemu ta sama funkcja może być uproszczona w następujący sposób:
 
 ```csharp
 [FunctionName("SayHello")]
@@ -189,7 +188,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 module.exports = async function(context) {
@@ -197,7 +196,7 @@ module.exports = async function(context) {
 };
 ```
 
-Powiązania JavaScript może zostać przekazany w jako parametry dodatkowe, tak samo można uproszczony w następujący sposób:
+Powiązania języka JavaScript mogą być również przesyłane jako dodatkowe parametry, dlatego ta sama funkcja może być uproszczona w następujący sposób:
 
 ```javascript
 module.exports = async function(context, name) {
@@ -207,9 +206,9 @@ module.exports = async function(context, name) {
 
 ### <a name="passing-multiple-parameters"></a>Przekazywanie wielu parametrów
 
-Nie jest możliwe do przekazania wiele parametrów do funkcji działania bezpośrednio. W tym przypadku zaleca, aby przekazać tablicę obiektów lub użyć [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) obiektów na platformie .NET.
+Nie jest możliwe bezpośrednie przekazywanie wielu parametrów do funkcji działania. Zalecenie w tym przypadku jest przekazywane do tablicy obiektów lub do używania obiektów [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) w programie .NET.
 
-Poniższy przykład korzysta z nowych funkcji [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) dodane za pomocą [C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples):
+Poniższy przykład korzysta z nowych funkcji [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) dodanych z [ C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples):
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -243,19 +242,19 @@ public static async Task<dynamic> Mapper([ActivityTrigger] DurableActivityContex
 }
 ```
 
-## <a name="orchestration-client"></a>Klient orkiestracji
+## <a name="orchestration-client"></a>Klient aranżacji
 
-Klient orkiestracji powiązanie umożliwia pisanie funkcji, które wchodzić w interakcje z funkcjami programu orchestrator. Na przykład którymi można pracować w wystąpieniach aranżacji w następujący sposób:
+Powiązanie klienta aranżacji pozwala pisać funkcje, które współdziałają z funkcjami programu Orchestrator. Na przykład można działać na wystąpieniach aranżacji w następujący sposób:
 
-* Uruchom je.
-* Badać ich stan.
-* Je zakończyć.
-* Wysyłanie zdarzeń do nich, gdy są one uruchamiane.
-* Wyczyść historię wystąpienia.
+* Je uruchomić.
+* Zbadaj ich stan.
+* Zakończyć te działania.
+* Wysyłaj do nich zdarzenia, gdy są one uruchomione.
+* Przeczyść historię wystąpień.
 
-Jeśli używasz programu Visual Studio, można powiązać klient orkiestracji przy użyciu [OrchestrationClientAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) atrybut platformy .NET.
+Jeśli używasz programu Visual Studio, możesz powiązać się z klientem aranżacji przy użyciu atrybutu [OrchestrationClientAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) .NET.
 
-Jeśli używasz języków skryptów (np. *csx* lub *js* plików) na potrzeby programowania dla wyzwalacza orchestration jest definiowany przez następujący obiekt JSON w `bindings` tablicę  *Function.JSON*:
+Jeśli używasz języków skryptów (np. *CSX* lub *. js* ) do programowania, wyzwalacz aranżacji jest definiowany przez następujący `bindings` obiekt JSON w tablicy *Function. JSON*:
 
 ```json
 {
@@ -267,15 +266,15 @@ Jeśli używasz języków skryptów (np. *csx* lub *js* plików) na potrzeby pro
 }
 ```
 
-* `taskHub` -Używane w sytuacjach, gdy wiele aplikacji funkcyjnych udostępnianie tego samego konta magazynu, ale muszą być izolowane od siebie nawzajem. Jeśli nie zostanie określony, wartością domyślną z `host.json` jest używany. Ta wartość musi odpowiadać wartości przez funkcje programu orchestrator docelowej.
-* `connectionName` — Nazwa ustawienia aplikacji zawierającego parametry połączenia konta magazynu. Reprezentowane przez te parametry połączenia konta magazynu musi być taka sama, używany przez funkcje programu orchestrator docelowej. Jeśli nie zostanie określony, używany jest domyślne parametry połączenia konta magazynu dla aplikacji funkcji.
+* `taskHub`— Używane w scenariuszach, w których wiele aplikacji funkcji współużytkuje to samo konto magazynu, ale musi być od siebie odizolowane. Jeśli nie zostanie określony, zostanie użyta `host.json` wartość domyślna od. Ta wartość musi być zgodna z wartością używaną przez docelowe funkcje programu Orchestrator.
+* `connectionName`— Nazwa ustawienia aplikacji, które zawiera parametry połączenia konta magazynu. Konto magazynu reprezentowane przez te parametry połączenia musi być takie samo, jak używane przez docelowe funkcje programu Orchestrator. Jeśli nie zostanie określony, używane są domyślne parametry połączenia konta magazynu dla aplikacji funkcji.
 
 > [!NOTE]
-> W większości przypadków zaleca się, Pomiń te właściwości i Polegaj na zachowaniu domyślnym.
+> W większości przypadków zaleca się pominięcie tych właściwości i zagwarantowanie zachowania domyślnego.
 
 ### <a name="client-usage"></a>Użycie klienta
 
-W przypadku funkcji .NET zazwyczaj powiąże z `DurableOrchestrationClient`, który daje pełny dostęp do wszystkich klientów obsługiwanych przez funkcje trwałe interfejsów API. W języku JavaScript, tych samych interfejsów API są udostępniane przez `DurableOrchestrationClient` obiekt zwracany z `getClient`. Interfejsy API w obiekcie klienta obejmują:
+W programie .NET Functions zwykle wiąże `DurableOrchestrationClient`się z, który zapewnia pełny dostęp do wszystkich interfejsów API klienta obsługiwanych przez Durable Functions. W języku JavaScript te same interfejsy API są uwidaczniane `DurableOrchestrationClient` przez obiekt zwrócony `getClient`z. Interfejsy API w obiekcie klienta obejmują:
 
 * [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)
 * [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_)
@@ -283,16 +282,16 @@ W przypadku funkcji .NET zazwyczaj powiąże z `DurableOrchestrationClient`, kt�
 * [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_)
 * [PurgeInstanceHistoryAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_PurgeInstanceHistoryAsync_) (obecnie tylko platforma .NET)
 
-Alternatywnie można powiązać funkcji .NET `IAsyncCollector<T>` gdzie `T` jest [StartOrchestrationArgs](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.StartOrchestrationArgs.html) lub `JObject`.
+Alternatywnie funkcje programu .NET mogą wiązać się `IAsyncCollector<T>` z `T` miejscem, gdzie `JObject`jest [StartOrchestrationArgs](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.StartOrchestrationArgs.html) lub.
 
-Zobacz [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) dokumentacji interfejsu API, aby uzyskać więcej informacji na temat tych operacji.
+Dodatkowe szczegóły dotyczące tych operacji można znaleźć w dokumentacji interfejsu API [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) .
 
 > [!WARNING]
-> Wdrażając aplikacje lokalnie w języku JavaScript, musisz ustawić zmienną środowiskową `WEBSITE_HOSTNAME` do `localhost:<port>`, np. `localhost:7071` na korzystanie z metod `DurableOrchestrationClient`. Aby uzyskać więcej informacji na temat tego wymagania, zobacz [problem w usłudze GitHub](https://github.com/Azure/azure-functions-durable-js/issues/28).
+> Podczas tworzenia lokalnie w języku JavaScript należy ustawić zmienną `WEBSITE_HOSTNAME` środowiskową na `localhost:<port>`, np. `localhost:7071`Aby użyć metod w `DurableOrchestrationClient`. Aby uzyskać więcej informacji na temat tego wymagania, zobacz artykuł dotyczący usługi [GitHub](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
-### <a name="client-sample-visual-studio-development"></a>Przykładem klienta (Tworzenie aplikacji programu Visual Studio)
+### <a name="client-sample-visual-studio-development"></a>Przykład klienta (Programowanie Visual Studio)
 
-Oto przykład wyzwalanej przez kolejkę funkcja, która rozpoczyna się aranżacji "nazwę HelloWorld".
+Oto przykład funkcji wyzwalanej przez kolejkę, która uruchamia organizację "HelloWorld".
 
 ```csharp
 [FunctionName("QueueStart")]
@@ -305,9 +304,9 @@ public static Task Run(
 }
 ```
 
-### <a name="client-sample-not-visual-studio"></a>Przykładem klienta (nie w programie Visual Studio)
+### <a name="client-sample-not-visual-studio"></a>Przykład klienta (nie Visual Studio)
 
-Jeśli nie używasz programu Visual Studio do tworzenia aplikacji, możesz utworzyć następujące *function.json* pliku. Ten przykład przedstawia sposób konfigurowania funkcji wyzwalanej przez kolejkę, które używa klienta orkiestracji trwałe powiązania:
+Jeśli nie używasz programu Visual Studio do tworzenia aplikacji, możesz utworzyć następujący plik *Function. JSON* . Ten przykład przedstawia sposób konfigurowania funkcji wyzwalanej przez kolejkę, która używa powiązania klienta trwałej aranżacji:
 
 ```json
 {
@@ -327,11 +326,11 @@ Jeśli nie używasz programu Visual Studio do tworzenia aplikacji, możesz utwor
 }
 ```
 
-Poniżej przedstawiono przykłady specyficzny dla języka, które uruchomienie nowych wystąpień funkcji programu orchestrator.
+Poniżej przedstawiono przykłady charakterystyczne dla języka, które uruchamiają nowe wystąpienia funkcji programu Orchestrator.
 
 #### <a name="c-sample"></a>Przykładowy języka C#
 
-Poniższy przykład pokazuje, jak używać klienta aranżacji trwałe powiązanie, aby rozpocząć nowe wystąpienie funkcji od funkcji skryptu języka C#:
+Poniższy przykład pokazuje, jak używać trwałego powiązania klienta aranżacji do uruchomienia nowego wystąpienia funkcji z funkcji C# skryptu:
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -344,7 +343,7 @@ public static Task<string> Run(string input, DurableOrchestrationClient starter)
 
 #### <a name="javascript-sample"></a>Przykład JavaScript
 
-Poniższy przykład pokazuje, jak używać klienta aranżacji trwałe powiązanie, aby uruchomić nowe wystąpienie funkcji z funkcji języka JavaScript:
+Poniższy przykład pokazuje, jak używać trwałego powiązania klienta aranżacji do uruchomienia nowego wystąpienia funkcji z funkcji JavaScript:
 
 ```javascript
 const df = require("durable-functions");
@@ -355,7 +354,7 @@ module.exports = async function (context) {
 };
 ```
 
-Szczegółowe informacje na temat uruchamiania wystąpienia można znaleźć w [wystąpienia zarządzania](durable-functions-instance-management.md).
+Więcej informacji o wystąpieniach początkowych można znaleźć w temacie [Zarządzanie wystąpieniami](durable-functions-instance-management.md).
 
 <a name="host-json"></a>
 
@@ -363,7 +362,7 @@ Szczegółowe informacje na temat uruchamiania wystąpienia można znaleźć w [
 
 [!INCLUDE [durabletask](../../../includes/functions-host-json-durabletask.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Więcej informacji na temat zachowań punkt kontrolny i powtarzanie](durable-functions-checkpointing-and-replay.md)
+> [Dowiedz się więcej na temat punktów kontrolnych i zachowań powtarzania](durable-functions-checkpointing-and-replay.md)

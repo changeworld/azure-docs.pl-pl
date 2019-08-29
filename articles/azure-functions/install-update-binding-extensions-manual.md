@@ -1,54 +1,53 @@
 ---
-title: Ręczne instalowanie lub aktualizowanie rozszerzeń powiązania usługi Azure Functions
-description: Dowiedz się, jak instalowanie lub aktualizowanie rozszerzeń powiązania usługi Azure Functions dla aplikacji wdrożonych funkcji.
+title: Ręczne instalowanie lub aktualizowanie rozszerzeń powiązań Azure Functions
+description: Dowiedz się, jak zainstalować lub zaktualizować rozszerzenia Azure Functions powiązań dla wdrożonych aplikacji funkcji.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-keywords: Usługa Azure functions, funkcje i aktualizacje rozszerzeń NuGet, powiązań
+keywords: usługa Azure Functions, funkcje, rozszerzenia powiązań, NuGet, aktualizacje
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/26/2018
 ms.author: glenga
-ms.openlocfilehash: cda977ba59070c3ddaac05784277d6c0b5109f0f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7686a9b2df6df6b54851e9c9957186f76be3fafd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61035750"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085054"
 ---
-# <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Ręczne instalowanie lub aktualizowanie rozszerzeń powiązania usługi Azure Functions z poziomu portalu
+# <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Ręczne instalowanie lub aktualizowanie Azure Functions powiązań z poziomu portalu
 
-Środowisko uruchomieniowe usługi Azure Functions w wersji 2.x używa rozszerzeń powiązania do implementacji kodu dla wyzwalaczy i powiązań. Rozszerzeń powiązania znajdują się w pakietach NuGet. Aby zarejestrować rozszerzenie, zasadniczo zainstalować pakiet. Podczas tworzenia funkcji, sposobem instalowania rozszerzeń powiązania zależy od środowiska projektowego. Aby uzyskać więcej informacji, zobacz [zarejestrować rozszerzeń powiązania](./functions-bindings-register.md) wyzwalaczy i powiązań artykułu.
+Środowisko uruchomieniowe Azure Functions w wersji 2. x używa rozszerzeń powiązań do implementowania kodu dla wyzwalaczy i powiązań. Rozszerzenia powiązań są udostępniane w pakietach NuGet. Aby zarejestrować rozszerzenie, należy zasadniczo zainstalować pakiet. Podczas opracowywania funkcji, sposób instalacji rozszerzeń powiązań zależy od środowiska programistycznego. Aby uzyskać więcej informacji, zobacz [Rejestrowanie rozszerzeń powiązań](./functions-bindings-register.md) w artykule wyzwalacze i powiązania.
 
-Czasami zachodzi potrzeba ręcznego zainstalowania lub zaktualizowania rozszerzenia powiązania w witrynie Azure portal. Może na przykład może być konieczne zaktualizowanie zarejestrowanych powiązania do nowszej wersji. Może trzeba będzie również zarejestrować obsługiwane powiązanie, której nie można zainstalować w **integracja** karty w portalu.
+Czasami trzeba ręcznie zainstalować lub zaktualizować rozszerzenia powiązań w Azure Portal. Na przykład może być konieczne zaktualizowanie zarejestrowanego powiązania do nowszej wersji. Może być również konieczne zarejestrowanie obsługiwanego powiązania, którego nie można zainstalować na karcie **integracja** w portalu.
 
 ## <a name="install-a-binding-extension"></a>Zainstaluj rozszerzenie powiązania
 
 Wykonaj następujące kroki, aby ręcznie zainstalować lub zaktualizować rozszerzenia z portalu.
 
-1. W [witryny Azure portal](https://portal.azure.com), Wyszukaj aplikację funkcji i wybierz ją. Wybierz **Przegląd** kartę, a następnie wybierz pozycję **zatrzymać**.  Zatrzymywanie aplikacji funkcji odblokowuje plików, tak, aby wprowadzić zmiany.
+1. W [Azure Portal](https://portal.azure.com)Znajdź aplikację funkcji i wybierz ją. Wybierz kartę **Przegląd** i wybierz pozycję **Zatrzymaj**.  Zatrzymanie blokowania plików przez aplikację funkcji, aby można było wprowadzać zmiany.
 
-1. Wybierz **funkcje platformy** kartę i w obszarze **narzędzia programistyczne** wybierz **Narzędzia zaawansowane (Kudu)** . Punkt końcowy aparat Kudu (`https://<APP_NAME>.scm.azurewebsites.net/`) jest otwarty w nowym oknie.
+1. Wybierz kartę **funkcje platformy** i w obszarze **Narzędzia deweloperskie** wybierz pozycję **Narzędzia zaawansowane (kudu)** . Punkt końcowy kudu (`https://<APP_NAME>.scm.azurewebsites.net/`) jest otwarty w nowym oknie.
 
-1. W oknie narzędzia Kudu wybierz **konsoli debugowania** > **CMD**.  
+1. W oknie kudu wybierz polecenie **Debuguj konsolę** > **cmd**.  
 
-1. W oknie wiersza polecenia przejdź do `D:\home\site\wwwroot` i wybierz ikonę Usuń `bin` można usunąć folderu. Wybierz **OK** o potwierdzenie usunięcia.
+1. W oknie wiersza polecenia przejdź do `D:\home\site\wwwroot` i wybierz ikonę Usuń `bin` obok pozycji Usuń folder. Wybierz **przycisk OK** , aby potwierdzić usunięcie.
 
-1. Wybierz ikonę edycji obok `extensions.csproj` pliku, który definiuje rozszerzeń powiązania dla aplikacji funkcji. Plik projektu jest otwarty w edytorze online.
+1. Wybierz ikonę edycji obok `extensions.csproj` pliku, który definiuje rozszerzenia powiązań dla aplikacji funkcji. Plik projektu jest otwierany w edytorze online.
 
-1. Upewnij się, wymagane dodatki i aktualizacje **PackageReference** elementy w **ItemGroup**, a następnie wybierz **Zapisz**. Bieżącą listę pakietów obsługiwanych wersji można znaleźć w [pakietów, które są potrzebne?](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) artykule o wiki. Wszystkie trzy powiązania magazynu platformy Azure wymagają pakietu Microsoft.Azure.WebJobs.Extensions.Storage.
+1. Wprowadź wymagane Dodatki i aktualizacje elementów **PackageReference** w **elemencie Items**, a następnie wybierz pozycję **Zapisz**. Aktualną listę obsługiwanych wersji pakietu można znaleźć w temacie [jakie pakiety są potrzebne?](https://github.com/Azure/azure-functions-host/wiki/Updating-your-function-app-extensions#what-nuget-packages-do-i-need) artykuł wiki. Wszystkie trzy powiązania usługi Azure Storage wymagają pakietu Microsoft. Azure. WebJobs. Extensions. Storage.
 
-1. Z `wwwroot` folder, uruchom następujące polecenie, aby odbudować zestawy występujące w odwołaniach w `bin` folderu.
+1. W folderze Uruchom następujące polecenie, aby ponownie skompilować przywoływane zestawy w folderze.`bin` `wwwroot`
 
     ```cmd
     dotnet build extensions.csproj -o bin --no-incremental --packages D:\home\.nuget
     ```
 
-1. Ponownie **Przegląd** karta w portalu, wybierz **Start** ponowne uruchomienie aplikacji funkcji.
+1. Z powrotem na karcie **Przegląd** w portalu wybierz pozycję **Rozpocznij** , aby ponownie uruchomić aplikację funkcji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)

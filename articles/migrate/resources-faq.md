@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 96fde6ade45bb92036fbc9ac803eebd50640bf85
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: af95ad892b62cb5d8bece554d6026525d9279777
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013442"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102870"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Migrate: Często zadawane pytania
 
@@ -157,7 +157,7 @@ Aby można było używać wizualizacji zależności, należy pobrać i zainstalo
 
 Na każdej maszynie należy zainstalować następujących agentów:
 - [Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows).
-- [Agent zależności](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure).
+- [Agent zależności](../azure-monitor/platform/agents-overview.md#dependency-agent).
 - Jeśli masz maszyny bez łączności z Internetem, musisz pobrać i zainstalować bramę Log Analytics na nich.
 
 Te agenci nie są potrzebne, chyba że używasz wizualizacji zależności.

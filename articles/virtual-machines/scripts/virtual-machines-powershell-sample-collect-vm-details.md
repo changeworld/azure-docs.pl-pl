@@ -1,6 +1,6 @@
 ---
-title: Zbieraj szczegółowe informacje o wszystkich maszyn wirtualnych w subskrypcji przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
-description: Zbieraj szczegółowe informacje o wszystkich maszyn wirtualnych w subskrypcji przy użyciu programu PowerShell
+title: Zbieranie szczegółowych informacji o wszystkich maszynach wirtualnych w ramach subskrypcji przy użyciu programu PowerShell | Microsoft Docs
+description: Zbieranie szczegółowych informacji o wszystkich maszynach wirtualnych w ramach subskrypcji przy użyciu programu PowerShell
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: v-miegge
@@ -9,23 +9,22 @@ editor: v-miegge
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/01/2019
 ms.author: v-miegge
 ms.custom: mvc
-ms.openlocfilehash: b4828b34a089a59e630aaaf7652e8623b3e2c7b8
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: b51c0f7a9fbeadfd0ff79e4578bddad052466b13
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659712"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090787"
 ---
-# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>Zbieraj szczegółowe informacje o wszystkich maszyn wirtualnych w subskrypcji przy użyciu programu PowerShell
+# <a name="collect-details-about-all-vms-in-a-subscription-with-powershell"></a>Zbieranie szczegółowych informacji o wszystkich maszynach wirtualnych w ramach subskrypcji przy użyciu programu PowerShell
 
-Ten skrypt umożliwia utworzenie pliku csv, który zawiera nazwę nazwę maszyny Wirtualnej, grupy zasobów, Region, sieci wirtualnej, podsieci, prywatny adres IP, typ systemu operacyjnego i publiczny adres IP maszyny wirtualne w podanej subskrypcji.
+Ten skrypt tworzy plik CSV, który zawiera nazwę maszyny wirtualnej, nazwę grupy zasobów, region, Virtual Network, podsieć, prywatny adres IP, typ systemu operacyjnego i publiczny adres IP maszyn wirtualnych w podanej subskrypcji.
 
 Jeśli nie masz [subskrypcji platformy Azure](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing), przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
 
@@ -71,11 +70,11 @@ $report | Export-CSV "$home/$reportName"
 ```
 
 ## <a name="script-explanation"></a>Objaśnienia dla skryptu
-Ten skrypt używa poniższych poleceń do utworzenia eksportu pliku csv, szczegóły maszyny wirtualne w ramach subskrypcji. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
+Ten skrypt używa następujących poleceń w celu utworzenia eksportu CSV szczegółów dotyczących maszyn wirtualnych w ramach subskrypcji. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
 
 |Polecenie|Uwagi|
 |-|-|
-|[Select-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|Ustawienie dzierżawy, subskrypcji i środowisko dla poleceń cmdlet do użycia w bieżącej sesji.|
+|[SELECT-AzSubscription](https://docs.microsoft.com/powershell/module/Az.Accounts/Set-AzContext)|Ustawia dzierżawcę, subskrypcję i środowisko dla poleceń cmdlet, które mają być używane w bieżącej sesji.|
 |[Get-AzVM](https://docs.microsoft.com/powershell/module/Az.Compute/Get-AzVM)|Pobiera właściwości maszyny wirtualnej.|
 |[Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzPublicIpAddress)|Pobiera publiczny adres IP.|
 |[Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/Az.Network/Get-AzNetworkInterface)|Pobiera interfejs sieciowy.|

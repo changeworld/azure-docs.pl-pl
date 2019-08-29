@@ -7,20 +7,21 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
-ms.date: 03/22/2019
-ms.openlocfilehash: f2b57aa517c1518929b857eff6aed2ef4e0d8ca1
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.date: 08/22/2019
+ms.openlocfilehash: 5aaad8c44328e1cc2aeb7729e3e221665823a467
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018967"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072982"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Klasyfikacja & Azure SQL Database i SQL Data Warehouse odnajdywania danych
 
 Funkcja odnajdywania danych & zapewnia zaawansowane funkcje wbudowane w Azure SQL Databasedo odnajdywania, klasyfikowania & i etykietowania**ochrony** poufnych danych w bazach danych.
+
 Odnajdywanie i klasyfikowanie najbardziej poufnych danych (biznes, finanse, opieka, dane osobowe) i tak dalej.) może odgrywać rolę przestawną w schemacieie ochrony informacji organizacji. Może to być infrastruktura dla:
 
 - Pomóc spełnić standardy prywatności danych i wymagania dotyczące zgodności z przepisami.

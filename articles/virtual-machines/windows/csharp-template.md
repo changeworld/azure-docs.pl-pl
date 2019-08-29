@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie maszyny Wirtualnej przy użyciu języka C# i szablonu usługi Resource Manager | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wdrożyć Maszynę wirtualną platformy Azure za pomocą języka C# i szablonu usługi Resource Manager.
+title: Wdróż maszynę wirtualną C# przy użyciu Menedżer zasobów szablonu | Microsoft Docs
+description: Dowiedz się, jak C# używać programu i szablonu Menedżer zasobów, aby wdrożyć maszynę wirtualną platformy Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,53 +11,52 @@ ms.assetid: bfba66e8-c923-4df2-900a-0c2643b81240
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: cynthn
-ms.openlocfilehash: a798f4b90057cd4220467cec4756ddda10fe456e
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 65ce7711786e15a5455d91ce829a3bc0bdf4317d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718724"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103226"
 ---
-# <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Wdróż maszynę wirtualną platformy Azure przy użyciu języka C# i szablonu usługi Resource Manager
+# <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>Wdróż maszynę wirtualną platformy Azure C# przy użyciu programu i szablonu Menedżer zasobów
 
-W tym artykule przedstawiono sposób wdrażania szablonu usługi Azure Resource Manager przy użyciu języka C#. Tworzony szablon wdraża pojedynczej maszyny wirtualnej z systemem Windows Server w nowej sieci wirtualnej z jedną podsiecią.
+W tym artykule opisano sposób wdrażania szablonu Azure Resource Manager przy użyciu programu C#. Tworzony szablon wdraża pojedynczą maszynę wirtualną z systemem Windows Server w nowej sieci wirtualnej z jedną podsiecią.
 
-Aby uzyskać szczegółowy opis zasobu maszyny wirtualnej, zobacz [maszyn wirtualnych w szablonie usługi Azure Resource Manager](template-description.md). Aby uzyskać więcej informacji na temat wszystkich zasobów w szablonie, zobacz [Przewodnik po szablonie usługi Azure Resource Manager](../../azure-resource-manager/resource-manager-template-walkthrough.md).
+Aby uzyskać szczegółowy opis zasobu maszyny wirtualnej, zobacz [maszyny wirtualne w szablonie Azure Resource Manager](template-description.md). Aby uzyskać więcej informacji na temat wszystkich zasobów w szablonie, zobacz [Przewodnik po szablonach Azure Resource Manager](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 
-Wykonaj te czynności trwa około 10 minut.
+Wykonanie tych kroków trwa około 10 minut.
 
 ## <a name="create-a-visual-studio-project"></a>Tworzenie projektu programu Visual Studio
 
-W tym kroku, należy upewnić się, że jest zainstalowany program Visual Studio i Utwórz aplikację konsolową używane do wdrożenia szablonu.
+W tym kroku upewnij się, że program Visual Studio jest zainstalowany i utworzysz aplikację konsolową służącą do wdrażania szablonu.
 
-1. Jeśli jeszcze nie, zainstaluj [programu Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Wybierz **programowanie aplikacji klasycznych dla platformy .NET** na stronie obciążeń, a następnie kliknij **zainstalować**. Podsumowując, możesz zobaczyć, że **narzędzi programistycznych .NET Framework 4 4.6** jest automatycznie wybrana. Jeśli zainstalowano już program Visual Studio, możesz dodać obciążenia platformy .NET, przy użyciu Uruchom okno programu Visual Studio.
+1. Jeśli jeszcze tego nie zrobiono, zainstaluj [program Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Wybierz pozycję **Programowanie aplikacji klasycznych platformy .NET** na stronie obciążenia, a następnie kliknij przycisk **Zainstaluj**. W podsumowaniu można zobaczyć, że **.NET Framework narzędzia deweloperskie 4-4,6** są automatycznie wybierane. Jeśli masz już zainstalowany program Visual Studio, możesz dodać obciążenie .NET przy użyciu programu uruchamiania programu Visual Studio.
 2. W programie Visual Studio kliknij kolejno pozycje **Plik** > **Nowy** > **Projekt**.
-3. W **szablony** > **Visual C#** , wybierz opcję **Aplikacja konsoli (.NET Framework)** , wprowadź *myDotnetProject* dla nazwy Projekt, wybierz lokalizację projektu, a następnie kliknij **OK**.
+3. W > obszarze**Visual C#** templates **(szablony) wybierz pozycję Aplikacja konsoli (.NET Framework)** , wprowadź *myDotnetProject* jako nazwę projektu, wybierz lokalizację projektu, a następnie kliknij przycisk **OK**.
 
 ## <a name="install-the-packages"></a>Zainstaluj pakiety
 
-Pakiety NuGet są najprostszym sposobem zainstalowania bibliotek, które należy zakończyć te kroki. Aby uzyskać bibliotek, które należy w programie Visual Studio, wykonaj następujące kroki:
+Pakiety NuGet to najprostszy sposób instalacji bibliotek, które należy wykonać, aby zakończyć te kroki. Aby uzyskać biblioteki, które są potrzebne w programie Visual Studio, wykonaj następujące czynności:
 
-1. Kliknij przycisk **narzędzia** > **Menedżera pakietów Nuget**, a następnie kliknij przycisk **Konsola Menedżera pakietów**.
-2. W konsoli, wpisz następujące polecenia:
+1. Kliknij kolejno pozycje **Narzędzia** > **Menedżer pakietów NuGet**, a następnie kliknij pozycję **konsola Menedżera pakietów**.
+2. Wpisz następujące polecenia w konsoli programu:
 
     ```powershell
     Install-Package Microsoft.Azure.Management.Fluent
     Install-Package WindowsAzure.Storage
     ```
 
-## <a name="create-the-files"></a>Tworzenie plików
+## <a name="create-the-files"></a>Utwórz pliki
 
-W tym kroku utworzysz plik szablonu, który służy do wdrażania zasobów i plik parametrów, który dostarcza wartości parametrów do szablonu. Możesz również utworzyć plik autoryzacji, który służy do wykonywania operacji usługi Azure Resource Manager.
+W tym kroku utworzysz plik szablonu służący do wdrażania zasobów i pliku parametrów, które dostarczają wartości parametrów do szablonu. Tworzony jest również plik autoryzacji służący do wykonywania Azure Resource Manager operacji.
 
 ### <a name="create-the-template-file"></a>Utwórz plik szablonu
 
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy *myDotnetProject* > **Dodaj** > **nowy element**, a następnie wybierz pozycję **plik tekstowy** w *elementy Visual C#* . Nadaj plikowi nazwę *CreateVMTemplate.json*, a następnie kliknij przycisk **Dodaj**.
-2. Dodaj ten kod JSON do pliku, który został utworzony:
+1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy pozycję *myDotnetProject* > **Dodaj** > **nowy element**, a następnie wybierz pozycję **plik tekstowy** w *pozycji elementy wizualne C#* . Nazwij plik *CreateVMTemplate. JSON*, a następnie kliknij przycisk **Dodaj**.
+2. Dodaj ten kod JSON do utworzonego pliku:
 
     ```json
     {
@@ -162,14 +161,14 @@ W tym kroku utworzysz plik szablonu, który służy do wdrażania zasobów i pli
     }
     ```
 
-3. Zapisz plik CreateVMTemplate.json.
+3. Zapisz plik CreateVMTemplate. JSON.
 
-### <a name="create-the-parameters-file"></a>Tworzenie pliku parametrów
+### <a name="create-the-parameters-file"></a>Utwórz plik parametrów
 
-Aby określić wartości parametrów zasobów w szablonie, należy utworzyć plik parametrów, który zawiera wartości.
+Aby określić wartości parametrów zasobów w szablonie, należy utworzyć plik parametrów zawierający wartości.
 
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy *myDotnetProject* > **Dodaj** > **nowy element**, a następnie wybierz pozycję **plik tekstowy** w *elementy Visual C#* . Nadaj plikowi nazwę *Parameters.json*, a następnie kliknij przycisk **Dodaj**.
-2. Dodaj ten kod JSON do pliku, który został utworzony:
+1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy pozycję *myDotnetProject* > **Dodaj** > **nowy element**, a następnie wybierz pozycję **plik tekstowy** w *pozycji elementy wizualne C#* . Nazwij plik *Parameters. JSON*, a następnie kliknij przycisk **Dodaj**.
+2. Dodaj ten kod JSON do utworzonego pliku:
 
     ```json
     {
@@ -182,13 +181,13 @@ Aby określić wartości parametrów zasobów w szablonie, należy utworzyć pli
     }
     ```
 
-4. Zapisywanie pliku Parameters.json.
+4. Zapisz plik Parameters. JSON.
 
 ### <a name="create-the-authorization-file"></a>Utwórz plik autoryzacji
 
-Zanim będzie można wdrożyć szablon, upewnij się, że masz dostęp do [jednostki usługi Active Directory](../../active-directory/develop/howto-authenticate-service-principal-powershell.md). Z jednostki usługi, należy uzyskać token do uwierzytelniania żądań do usługi Azure Resource Manager. Należy również zarejestrować identyfikator aplikacji, klucz uwierzytelniania i identyfikator dzierżawy, który należy w pliku autoryzacji.
+Przed wdrożeniem szablonu upewnij się, że masz dostęp do jednostki [usługi Active Directory](../../active-directory/develop/howto-authenticate-service-principal-powershell.md). Z jednostki usługi uzyskuje się token do uwierzytelniania żądań do Azure Resource Manager. Należy również zarejestrować identyfikator aplikacji, klucz uwierzytelniania i identyfikator dzierżawy, które są potrzebne w pliku autoryzacji.
 
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy *myDotnetProject* > **Dodaj** > **nowy element**, a następnie wybierz pozycję **plik tekstowy** w *elementy Visual C#* . Nadaj plikowi nazwę *azureauth.properties*, a następnie kliknij przycisk **Dodaj**.
+1. W Eksplorator rozwiązań kliknij prawym przyciskiem myszy pozycję *myDotnetProject* > **Dodaj** > **nowy element**, a następnie wybierz pozycję **plik tekstowy** w *pozycji elementy wizualne C#* . Nazwij plik *azureauth. Properties*, a następnie kliknij przycisk **Dodaj**.
 2. Dodaj następujące właściwości autoryzacji:
 
     ```
@@ -202,10 +201,10 @@ Zanim będzie można wdrożyć szablon, upewnij się, że masz dostęp do [jedno
     graphURL=https://graph.windows.net/
     ```
 
-    Zastąp **&lt;identyfikator subskrypcji&gt;** przy użyciu identyfikatora subskrypcji **&lt;identyfikator aplikacji&gt;** z aplikacją usługi Active Directory Identyfikator **&lt;klucz uwierzytelniania&gt;** z kluczem aplikacji i **&lt;identyfikator dzierżawy&gt;** z identyfikatorem dzierżawy.
+    Zastąp  **&lt;identyfikator Subscription&gt; ID** identyfikatorem subskrypcji,  **&lt;identyfikatorem&gt; aplikacji** Active Directory identyfikatorem aplikacji, **&lt;kluczem uwierzytelniania przy&gt;** użyciu klucza aplikacji i  **&lt;identyfikatora&gt; dzierżawy** z identyfikatorem dzierżawy.
 
-3. Zapisz plik azureauth.properties.
-4. Ustaw zmienną środowiskową w Windows o nazwie AZURE_AUTH_LOCATION pełną ścieżkę do pliku autoryzacji, który został utworzony, na przykład można użyć następującego polecenia programu PowerShell:
+3. Zapisz plik azureauth. Properties.
+4. Ustaw zmienną środowiskową w systemie Windows o nazwie AZURE_AUTH_LOCATION z pełną ścieżką do pliku autoryzacji, który został utworzony, na przykład możesz użyć następującego polecenia programu PowerShell:
 
     ```powershell
     [Environment]::SetEnvironmentVariable("AZURE_AUTH_LOCATION", "C:\Visual Studio 2019\Projects\myDotnetProject\myDotnetProject\azureauth.properties", "User")
@@ -215,7 +214,7 @@ Zanim będzie można wdrożyć szablon, upewnij się, że masz dostęp do [jedno
 
 ## <a name="create-the-management-client"></a>Tworzenie klienta zarządzania
 
-1. Otwórz plik Program.cs w projekcie, który został utworzony. Następnie dodaj je za pomocą instrukcji do istniejących instrukcji w górnej części pliku:
+1. Otwórz plik Program.cs dla utworzonego projektu. Następnie Dodaj te instrukcje przy użyciu instrukcji do istniejących instrukcji w górnej części pliku:
 
     ```csharp
     using Microsoft.Azure.Management.Compute.Fluent;
@@ -227,7 +226,7 @@ Zanim będzie można wdrożyć szablon, upewnij się, że masz dostęp do [jedno
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
 
-2. Aby utworzyć klienta zarządzania, Dodaj następujący kod do metody Main:
+2. Aby utworzyć klienta zarządzania programu, Dodaj następujący kod do metody Main:
 
     ```csharp
     var credentials = SdkContext.AzureCredentialsFactory
@@ -255,7 +254,7 @@ var resourceGroup = azure.ResourceGroups.Define(groupName)
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Szablon i parametry są wdrażane z konta magazynu na platformie Azure. W tym kroku możesz utworzyć konto i przekazać pliki. 
+Szablon i parametry są wdrażane na podstawie konta magazynu na platformie Azure. W tym kroku utworzysz konto i przekażesz pliki. 
 
 Aby utworzyć konto, Dodaj następujący kod do metody Main:
 
@@ -295,7 +294,7 @@ paramblob.UploadFromFileAsync("..\\..\\Parameters.json").Result();
 
 ## <a name="deploy-the-template"></a>Wdrożenie szablonu
 
-Wdróż szablon i parametry, z konta magazynu, który został utworzony. 
+Wdróż szablon i parametry z utworzonego konta magazynu. 
 
 Aby wdrożyć szablon, Dodaj następujący kod do metody Main:
 
@@ -314,7 +313,7 @@ Console.ReadLine();
 
 ## <a name="delete-the-resources"></a>Usuń zasoby
 
-Ponieważ opłaty są naliczane za zasoby używane w systemie Azure, zawsze jest dobrą praktyką, aby usunąć zasoby, które nie są już potrzebne. Nie trzeba usuwać poszczególne zasoby osobno z grupy zasobów. Usuń grupę zasobów i wszystkie jej zasoby są automatycznie usuwane. 
+Ze względu na to, że opłaty są naliczone za zasoby używane na platformie Azure, zawsze warto usunąć zasoby, które nie są już potrzebne. Nie trzeba usuwać poszczególnych zasobów oddzielnie z grupy zasobów. Usunięcie grupy zasobów i wszystkich jej zasobów zostanie automatycznie usunięte. 
 
 Aby usunąć grupę zasobów, Dodaj następujący kod do metody Main:
 
@@ -324,13 +323,13 @@ azure.ResourceGroups.DeleteByName(groupName);
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-Aby zakończyć powinno zająć około pięciu minut, zanim ta aplikacja konsoli uruchomić zupełnie od początku. 
+Ukończenie działania tej aplikacji konsolowej od początku do końca trwa około pięciu minut. 
 
-1. Aby uruchomić aplikację konsoli, kliknij przycisk **Start**.
+1. Aby uruchomić aplikację konsolową, kliknij przycisk **Uruchom**.
 
-2. Przed naciśnięciem **Enter** zacząć usuwanie zasobów może potrwać kilka minut na sprawdzenie tworzeniem zasobów w witrynie Azure portal. Kliknij stan wdrożenia, aby wyświetlić informacje o wdrożeniu.
+2. Przed naciśnięciem klawisza **Enter** w celu rozpoczęcia usuwania zasobów można sprawdzić poprawność tworzenia zasobów w Azure Portal. Kliknij stan wdrożenia, aby wyświetlić informacje o wdrożeniu.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Jeśli wystąpiły problemy dotyczące wdrożenia, następnym krokiem powinno być Przyjrzyj się [Rozwiązywanie typowych problemów wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
-* Dowiedz się, jak wdrożyć maszynę wirtualną i zasoby pomocnicze, przeglądając [wdrażania Azure maszyny wirtualnej przy użyciu języka C#](csharp.md).
+* Jeśli wystąpiły problemy ze wdrożeniem, następnym krokiem jest zapoznaj się z tematem [Rozwiązywanie typowych błędów wdrażania platformy Azure przy użyciu Azure Resource Manager](../../resource-manager-common-deployment-errors.md).
+* Dowiedz się, jak wdrożyć maszynę wirtualną i jej zasoby pomocnicze, przeglądając artykuł [Wdrażanie maszyny C#wirtualnej platformy Azure przy użyciu programu ](csharp.md).

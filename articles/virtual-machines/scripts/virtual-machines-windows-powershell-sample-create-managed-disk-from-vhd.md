@@ -9,18 +9,17 @@ editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/05/2017
 ms.author: ramankum
-ms.openlocfilehash: 4ddfd7ac0ce17115d3e2852cefeec5a5fc2068e4
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 7420b1e9e03395644cb24135257fafad12b2ec61
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66727998"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081002"
 ---
 # <a name="create-a-managed-disk-from-a-vhd-file-in-a-storage-account-in-same-or-different-subscription-with-powershell"></a>Tworzenie dysku zarządzanego na podstawie pliku VHD na koncie magazynu w ramach tej samej lub innej subskrypcji za pomocą programu PowerShell
 
@@ -48,7 +47,7 @@ Ten skrypt używa poniższych poleceń w celu utworzenia dysku zarządzanego na 
 | [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzDiskConfig) | Tworzy konfigurację dysku, która jest używana do tworzenia dysku. Zawiera ona typ magazynu, lokalizację, identyfikator zasobu konta magazynu, w którym przechowywany jest nadrzędny wirtualny dysk twardy, oraz identyfikator URI nadrzędnego wirtualnego dysku twardego. |
 | [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Tworzy dysk przy użyciu konfiguracji dysku, nazwy dysku i nazwy grupy zasobów, przekazanych jako parametry. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Tworzenie maszyny wirtualnej przez dołączenie dysku zarządzanego jako dysku systemu operacyjnego](./virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 

@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/02/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a27d4b4d6cfcbe235774335080593a9b9a1f0996
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3ec9431fc9aac1678d143f0378bc14e9c134beb3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695957"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080739"
 ---
 # <a name="create-a-fully-configured-virtual-machine-with-powershell"></a>Tworzenie w pełni skonfigurowanej maszyny wirtualnej za pomocą programu PowerShell
 
@@ -63,7 +62,7 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) | Tworzy maszynę wirtualną. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

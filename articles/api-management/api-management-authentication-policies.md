@@ -10,16 +10,15 @@ ms.assetid: 061702a7-3a78-472b-a54a-f3b1e332490d
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: bd31d711c58a63b5c15712c1774d48433c62f18d
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 69584b434ac0442df48dcdea2a7d9f2aca9c1ccd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774974"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073736"
 ---
 # <a name="api-management-authentication-policies"></a>Zasady uwierzytelniania API Management
 Ten temat zawiera informacje dotyczące następujących zasad API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasady w API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -49,16 +48,16 @@ Ten temat zawiera informacje dotyczące następujących zasad API Management. Ab
 
 ### <a name="elements"></a>Elementy
 
-|Name (Nazwa)|Opis|Wymagane|
+|Name|Opis|Wymagane|
 |----------|-----------------|--------------|
-|Uwierzytelnianie — podstawowe|Element główny.|Yes|
+|Uwierzytelnianie — podstawowe|Element główny.|Tak|
 
 ### <a name="attributes"></a>Atrybuty
 
-|Name (Nazwa)|Opis|Wymagane|Domyślny|
+|Name|Opis|Wymagane|Domyślny|
 |----------|-----------------|--------------|-------------|
 |username|Określa nazwę użytkownika poświadczeń podstawowych.|Tak|ND|
-|password|Określa hasło poświadczeń podstawowych.|Yes|ND|
+|password|Określa hasło poświadczeń podstawowych.|Tak|ND|
 
 ### <a name="usage"></a>Użycie
  Tych zasad można używać w następujących sekcjach i [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) zakresach [](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zasad.
@@ -89,13 +88,13 @@ Ten przykładowy certyfikat klienta jest identyfikowany według nazwy zasobu.
 
 ### <a name="elements"></a>Elementy  
   
-|Name (Nazwa)|Opis|Wymagane|  
+|Name|Opis|Wymagane|  
 |----------|-----------------|--------------|  
 |Uwierzytelnianie — certyfikat|Element główny.|Tak|  
   
 ### <a name="attributes"></a>Atrybuty  
   
-|Name (Nazwa)|Opis|Wymagane|Domyślny|  
+|Name|Opis|Wymagane|Domyślny|  
 |----------|-----------------|--------------|-------------|  
 |thumbprint|Odcisk palca certyfikatu klienta.|Albo `thumbprint`musibyćobecny `certificate-id` .|ND|  
 |Identyfikator certyfikatu|Nazwa zasobu certyfikatu.|Albo `thumbprint`musibyćobecny `certificate-id` .|ND|  
@@ -133,15 +132,15 @@ Ten przykładowy certyfikat klienta jest identyfikowany według nazwy zasobu.
 
 ### <a name="elements"></a>Elementy  
   
-|Name (Nazwa)|Opis|Wymagane|  
+|Name|Opis|Wymagane|  
 |----------|-----------------|--------------|  
 |Uwierzytelnianie — tożsamość zarządzana |Element główny.|Tak|  
   
 ### <a name="attributes"></a>Atrybuty  
   
-|Name (Nazwa)|Opis|Wymagane|Domyślny|  
+|Name|Opis|Wymagane|Domyślny|  
 |----------|-----------------|--------------|-------------|  
-|resource|Parametry. Identyfikator URI aplikacji docelowego internetowego interfejsu API (zabezpieczony zasób) w Azure Active Directory.|Yes|ND|  
+|resource|Parametry. Identyfikator URI aplikacji docelowego internetowego interfejsu API (zabezpieczony zasób) w Azure Active Directory.|Tak|ND|  
 |Output-token-Variable-Name|Parametry. Nazwa zmiennej kontekstowej, która będzie otrzymywać wartość tokenu jako typ `string`obiektu. |Nie|ND|  
 |Ignoruj-błąd|Typu. W przypadku wybrania opcji `true`potok zasad będzie nadal wykonywany nawet wtedy, gdy nie zostanie uzyskany token dostępu.|Nie|false|  
   

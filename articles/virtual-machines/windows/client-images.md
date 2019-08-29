@@ -1,6 +1,6 @@
 ---
-title: Korzystanie z obrazów klientów Windows na platformie Azure | Dokumentacja firmy Microsoft
-description: Jak wdrożyć Windows 7, Windows 8 lub Windows 10 na platformie Azure dla scenariuszy deweloperskich lub testowych za pomocą korzyści z subskrypcji programu Visual Studio
+title: Korzystanie z obrazów klienta systemu Windows na platformie Azure | Microsoft Docs
+description: Jak korzystać z zalet subskrypcji programu Visual Studio do wdrażania systemów Windows 7, Windows 8 lub Windows 10 na platformie Azure na potrzeby scenariuszy tworzenia i testowania
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -8,61 +8,60 @@ manager: gwallace
 editor: ''
 ms.assetid: 91c3880a-cede-44f1-ae25-f8f9f5b6eaa4
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: fcd97b07416526d71d5bee9bc198eb0d912e1c55
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: dbb771351ee774a7fea33e5aaad3ae4d0c70f8b1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719152"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079904"
 ---
-# <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Używać klienta Windows na platformie Azure na potrzeby scenariuszy tworzenia i testowania
-Możesz użyć Windows 7, Windows 8 lub Windows 10 Enterprise (x64) na platformie Azure na potrzeby scenariuszy deweloperskich/testowych, pod warunkiem, że masz odpowiednią subskrypcję programu Visual Studio (dawniej MSDN). W tym artykule opisano wymagania kwalifikacyjne dotyczące uruchamiania Windows 7, Windows 8.1, Windows 10 Enterprise na platformie Azure i korzystania z następujących obrazów w galerii platformy Azure.
+# <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Korzystanie z klienta systemu Windows na platformie Azure na potrzeby scenariuszy tworzenia i testowania
+Możesz użyć systemu Windows 7, Windows 8 lub Windows 10 Enterprise (x64) na platformie Azure na potrzeby scenariuszy tworzenia i testowania, pod warunkiem że masz odpowiednią subskrypcję programu Visual Studio (dawniej MSDN). W tym artykule opisano wymagania dotyczące uprawnień do uruchamiania systemu Windows 7, Windows 8.1, Windows 10 Enterprise na platformie Azure i korzystania z następujących obrazów galerii platformy Azure.
 
-![Szczegółowe informacje dotyczące obrazu z witryny Azure portal](./media/client-images/windows-client-msdn-images.png) 
+![Szczegóły obrazu z Azure Portal](./media/client-images/windows-client-msdn-images.png) 
 
 > [!NOTE]
-> Windows 10 Pro i Windows 10 Pro N obraz w galerii systemu Azure, można znaleźć na stronie [sposób wdrażania systemu Windows 10 na platformie Azure z praw hostingu wielodostępnej](windows-desktop-multitenant-hosting-deployment.md)
->![szczegółów Pro obrazu z witryny Azure portal](./media/client-images/windows-client-pro-images.png) 
+> W przypadku systemu Windows 10 Pro i Windows 10 Pro N Image w galerii platformy Azure Zapoznaj się z artykułem [jak wdrożyć system Windows 10 na platformie Azure z informacjami o](windows-desktop-multitenant-hosting-deployment.md)
+>wielodostępnym obrazie programu Pro z prawami![hostingu z Azure Portal](./media/client-images/windows-client-pro-images.png) 
 >
 
-## <a name="subscription-eligibility"></a>Uprawnień do subskrypcji
-Aktywni subskrybenci programu Visual Studio (osób nabyło licencji subskrypcji programu Visual Studio), można użyć klienta Windows do programowania i testowania. Można użyć klienta Windows własnego sprzętu oraz maszyn wirtualnych platformy Azure w dowolnym rodzaju subskrypcji platformy Azure. Klienta Windows może nie być wdrożone używane na platformie Azure do użytku produkcyjnego normalne lub używane przez osoby, które nie są aktywni subskrybenci programu Visual Studio.
+## <a name="subscription-eligibility"></a>Uprawnienie do subskrypcji
+Aktywni subskrybenci programu Visual Studio (osoby, które uzyskały licencję na subskrypcję programu Visual Studio) mogą używać klienta systemu Windows do celów deweloperskich i testowych. Klienta systemu Windows można używać na własnym sprzęcie i maszynach wirtualnych platformy Azure działających w dowolnym typie subskrypcji platformy Azure. Klienta systemu Windows nie można wdrożyć ani używać na platformie Azure do normalnego korzystania z produkcji ani używać przez osoby, które nie są aktywnymi subskrybentami programu Visual Studio.
 
-Dla Twojej wygody niektórych obrazów systemu Windows 10 są dostępne w galerii platformy Azure w ramach [kwalifikujących się ofertach tworzenia i testowania](#eligible-offers). Subskrybenci programu Visual Studio w ramach dowolnego typu oferty, może również [odpowiednio przygotowywanie i tworzenie](prepare-for-upload-vhd-image.md) 64-bitowy obraz Windows 7, Windows 8 lub Windows 10 i następnie [przekazać na platformę Azure](upload-generalized-managed.md). Użycie pozostaje ograniczony do tworzenia i testowania aktywnych subskrybentów programu Visual Studio.
+Dla wygody niektóre obrazy systemu Windows 10 są dostępne w galerii platformy Azure w ramach [kwalifikujących się ofert tworzenia i testowania](#eligible-offers). Subskrybenci programu Visual Studio w ramach dowolnego typu oferty mogą również [odpowiednio przygotować i utworzyć](prepare-for-upload-vhd-image.md) 64-bitową wersję obrazu systemu Windows 7, Windows 8 lub Windows 10, a następnie [przekazać do platformy Azure](upload-generalized-managed.md). Użycie pozostaje ograniczone do tworzenia i testowania przez aktywnych subskrybentów programu Visual Studio.
 
-## <a name="eligible-offers"></a>Kwalifikujących się ofert
-W poniższej tabeli przedstawiono oferty identyfikatorów, które kwalifikują się do wdrażania systemu Windows 10 za pośrednictwem galerii systemu Azure. Obrazy systemu Windows 10 są widoczne tylko dla następujących ofert. Subskrybenci programu Visual Studio potrzebujących umożliwiającym uruchomienie klienta Windows w typie inną ofertę wymagają [odpowiednio przygotowywanie i tworzenie](prepare-for-upload-vhd-image.md) 64-bitowy obraz Windows 7, Windows 8 lub Windows 10 i [następnie przekazać na platformę Azure](upload-generalized-managed.md).
+## <a name="eligible-offers"></a>Kwalifikujące się oferty
+W poniższej tabeli przedstawiono identyfikatory oferty kwalifikujące się do wdrożenia systemu Windows 10 za pomocą galerii platformy Azure. Obrazy systemu Windows 10 są widoczne tylko dla następujących ofert. Subskrybenci programu Visual Studio, którzy muszą uruchamiać klienta systemu Windows w ramach innego typu oferty, wymagają [odpowiedniego przygotowania i utworzenia](prepare-for-upload-vhd-image.md) obrazu 64-bitowego systemu Windows 7, Windows 8 lub Windows 10, a [następnie przekazania do platformy Azure](upload-generalized-managed.md).
 
-| Nazwa oferty | Numer oferty | Obrazy dostępne klienta |
+| Nazwa oferty | Numer oferty | Dostępne obrazy klienta |
 |:--- |:---:|:---:|
-| [Płatność za rzeczywiste użycie, tworzenie i testowanie](https://azure.microsoft.com/offers/ms-azr-0023p/) |0023P |Windows 10 |
-| [Subskrybenci programu Visual Studio Enterprise (MPN)](https://azure.microsoft.com/offers/ms-azr-0029p/) |0029P |Windows 10 |
-| [Subskrybenci programu Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/) |0059P |Windows 10 |
-| [Subskrybenci programu Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/) |0060P |Windows 10 |
-| [Visual Studio Premium z subskrypcją MSDN (korzyści)](https://azure.microsoft.com/offers/ms-azr-0061p/) |0061P |Windows 10 |
-| [Subskrybenci programu Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) |0063P |Windows 10 |
-| [Subskrybenci programu Visual Studio Enterprise (BizSpark)](https://azure.microsoft.com/offers/ms-azr-0064p/) |0064P |Windows 10 |
+| [Płatność zgodnie z rzeczywistym użyciem — tworzenie i testowanie](https://azure.microsoft.com/offers/ms-azr-0023p/) |0023P |Windows 10 |
+| [Subskrybenci Visual Studio Enterprise (MPN)](https://azure.microsoft.com/offers/ms-azr-0029p/) |0029P |Windows 10 |
+| [Subskrybenci Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/) |0059P |Windows 10 |
+| [Subskrybenci Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/) |0060P |Windows 10 |
+| [Visual Studio Premium z subskrypcją MSDN (korzyść)](https://azure.microsoft.com/offers/ms-azr-0061p/) |0061P |Windows 10 |
+| [Subskrybenci Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) |0063P |Windows 10 |
+| [Subskrybenci Visual Studio Enterprise (BizSpark)](https://azure.microsoft.com/offers/ms-azr-0064p/) |0064P |Windows 10 |
 | [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/) |0148P |Windows 10 |
 
 ## <a name="check-your-azure-subscription"></a>Sprawdź swoją subskrypcję platformy Azure
-Jeśli nie znasz Identyfikatora oferty, możesz uzyskać go w witrynie Azure portal w jednym z następujących dwóch sposobów:  
+Jeśli nie znasz identyfikatora oferty, możesz uzyskać go za pomocą Azure Portal na jeden z następujących sposobów:  
 
-- Na *subskrypcje* okna:
+- W oknie *subskrypcje* :
 
-  ![Szczegóły Identyfikatora oferty w witrynie Azure portal](./media/client-images/offer-id-azure-portal.png) 
+  ![Szczegóły identyfikatora oferty z Azure Portal](./media/client-images/offer-id-azure-portal.png) 
 
-- Ewentualnie kliknij przycisk **rozliczeń** a następnie kliknij przycisk identyfikatora subskrypcji. Oferta identyfikator, który będzie widoczny w *rozliczeń* okna.
+- Lub kliknij pozycję **rozliczenia** , a następnie kliknij swój identyfikator subskrypcji. W oknie rozliczania zostanie wyświetlony identyfikator oferty.
 
-Można również wyświetlić Identyfikatora oferty z [kartę "Subskrypcje"](https://account.windowsazure.com/Subscriptions) w portalu konta platformy Azure:
+Identyfikator oferty można także wyświetlić na [karcie "subskrypcje"](https://account.windowsazure.com/Subscriptions) portalu konta platformy Azure:
 
-![Szczegóły Identyfikatora oferty w portalu konta usługi Azure](./media/client-images/offer-id-azure-account-portal.png) 
+![Szczegóły identyfikatora oferty z portalu konta platformy Azure](./media/client-images/offer-id-azure-account-portal.png) 
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz można wdrożyć maszyny wirtualne przy użyciu [PowerShell](quick-create-powershell.md), [szablonów usługi Resource Manager](ps-template.md), lub [programu Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+Teraz możesz wdrażać maszyny wirtualne przy użyciu [programu PowerShell](quick-create-powershell.md), [szablonów Menedżer zasobów](ps-template.md)lub [programu Visual Studio](../../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 

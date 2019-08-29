@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: d8ef524121f41129d842cfdf9822fe6a19c71810
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 3d0b67227c8e80f23f111ec889f8cb1541b15f94
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709551"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100766"
 ---
 # <a name="tutorial-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Samouczek: Budowanie infrastruktury tworzenia aplikacji na maszynie wirtualnej systemu Linux na platformie Azure przy użyciu usługi Jenkins, GitHub i Docker
 
@@ -247,7 +246,7 @@ Teraz wprowadź kolejną modyfikację pliku *index.js* w usłudze GitHub i zatwi
 ![Uruchamianie aplikacji Node.js po kolejnym zatwierdzeniu GitHub](media/tutorial-jenkins-github-docker-cicd/another_running_nodejs_app.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym samouczku skonfigurowano usługę GitHub do uruchomienia zadania kompilacji usługi Jenkins przy każdym zatwierdzeniu kodu, a następnie wdrożono kontener platformy Docker w celu testowania aplikacji. W tym samouczku omówiono:
 
 > [!div class="checklist"]

@@ -1,6 +1,6 @@
 ---
-title: Zasady — usługi Azure Active Directory resetowania haseł usługi Azure AD samoobsługi
-description: Skonfiguruj opcje zasad resetowania haseł usługi Azure AD
+title: Zasady samoobsługowego resetowania hasła w usłudze Azure AD — Azure Active Directory
+description: Skonfiguruj opcje zasad samoobsługowego resetowania hasła w usłudze Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,128 +11,128 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f32952dff8f09db5b790818a5f98c527a04c2ef5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8f5371334fb383b15514c879ceb262fa78d7fca
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65823406"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084956"
 ---
-# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady dotyczące haseł i ograniczenia dotyczące usługi Azure Active Directory
+# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zasady i ograniczenia haseł w Azure Active Directory
 
-W tym artykule opisano zasady haseł i wymagań dotyczących złożoności skojarzone z kontami użytkowników w dzierżawie usługi Azure Active Directory (Azure AD).
+W tym artykule opisano zasady haseł i wymagania dotyczące złożoności skojarzone z kontami użytkowników w dzierżawie usługi Azure Active Directory (Azure AD).
 
-## <a name="administrator-reset-policy-differences"></a>Administrator zresetować różnice zasad
+## <a name="administrator-reset-policy-differences"></a>Zasady resetowania ustawień administratora
 
-**Firma Microsoft wymusza silne domyślne *dwóch bram* zasady dla dowolnej roli administratora platformy Azure resetowania hasła** te zasady mogą być inne niż ten, który zostały zdefiniowane dla użytkowników i nie można zmienić. Należy zawsze przetestować funkcji resetowania hasła jako użytkownik bez żadnych przypisanych ról administratora platformy Azure.
+**Firma Microsoft wymusza silne domyślne zasady dwubramowego resetowania hasła dla dowolnej roli administratora platformy Azure** , ponieważ te zasady mogą się różnić od tych, które zostały zdefiniowane dla użytkowników i nie można ich zmienić. Należy zawsze testować funkcję resetowania hasła jako użytkownik bez przypisanych ról administratora platformy Azure.
 
-Za pomocą zasad dwóch bram **administratorzy nie mają możliwość Użyj pytań zabezpieczających**.
+W przypadku zasad dwubramowych **administratorzy nie mogą korzystać z pytań zabezpieczających**.
 
-Zasada dwóch bram wymaga dwóch rodzajów danych uwierzytelniania, takich jak **adres e-mail**, **aplikacji authenticator**, lub **numer telefonu**. Zasada dwóch bram ma zastosowanie w następujących okolicznościach:
+Zasady dwóch bram wymagają dwóch danych uwierzytelniania, takich jak **adres e-mail**, **aplikacja uwierzytelniania**lub **numer telefonu**. Zasady dwóch bram są stosowane w następujących okolicznościach:
 
-* Uwzględnione są następujące role administratora platformy Azure:
+* Dotyczy to wszystkich następujących ról administratora platformy Azure:
   * Administrator pomocy technicznej
   * Administrator pomocy technicznej usługi
   * Administrator rozliczeń
   * Pomoc techniczna dla partnerów (warstwa 1)
   * Pomoc techniczna dla partnerów (warstwa 2)
   * Administrator programu Exchange
-  * Skype dla firm administratora
-  * Administrator użytkowników
+  * Administrator programu Skype dla firm
+  * Administrator użytkownika
   * Zapisywanie katalogów
   * Administrator globalny lub administrator firmy
   * Administrator programu SharePoint
-  * Administrator do spraw zgodności
+  * Administrator zgodności
   * Administrator aplikacji
   * Administrator zabezpieczeń
-  * Administrator roli uprzywilejowanej
+  * Administrator ról uprzywilejowanych
   * Administrator usługi Intune
   * Administrator usługi serwera proxy aplikacji
-  * Dynamics 365 administratora
-  * Administrator usługi Power BI
+  * Administrator usługi Dynamics 365
+  * usługa Power BI administrator
   * Administrator uwierzytelniania
-  * Administrator uprzywilejowanych uwierzytelniania
+  * Administrator uprzywilejowanego uwierzytelniania
 
-* Po upływie 30 dni w ramach wersji próbnej subskrypcji; lub
-* Domena jest obecny, np. contoso.com; lub
-* Usługa Azure AD Connect synchronizuje tożsamości z katalogu lokalnego
+* W przypadku upływu 30 dni od subskrypcji próbnej oraz
+* Domena znaczącym jest obecna, na przykład contoso.com; oraz
+* Azure AD Connect synchronizuje tożsamości z katalogu lokalnego
 
 ### <a name="exceptions"></a>Wyjątki
 
-Zasada jednej bramy wymaga jednego elementu danych uwierzytelniania, takich jak adres e-mail *lub* numer telefonu. Zasada jednej bramy ma zastosowanie w następujących okolicznościach:
+Zasady pojedynczej bramy wymagają jednej części danych uwierzytelniania, takich jak adres e-mail *lub* numer telefonu. Zasady pojedynczej bramy są stosowane w następujących okolicznościach:
 
-* Znajduje się w 30-dniowego okresu próbnego subskrypcji; lub
-* Domena nie jest obecny (*. onmicrosoft.com); i
-* Program Azure AD Connect nie jest synchronizowanie tożsamości
+* Jest to w ciągu pierwszych 30 dni subskrypcji wersji próbnej; oraz
+* Domena znaczącym nie jest obecna (*. onmicrosoft.com); lub
+* Azure AD Connect nie synchronizuje tożsamości
 
-## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName zasady, które są stosowane do wszystkich kont użytkowników
+## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>Zasady UserPrincipalName mające zastosowanie do wszystkich kont użytkowników
 
-Każdego konta użytkownika, który musi się zalogować do usługi Azure AD musi mieć wartość atrybutu unikatowego użytkownika głównej nazwy (UPN) skojarzonych z ich kontem. W poniższej tabeli przedstawiono zasady, które dotyczą zarówno lokalnych kont użytkowników Active Directory, które są synchronizowane z chmurą oraz do kont użytkowników tylko w chmurze:
+Każde konto użytkownika, które musi zalogować się do usługi Azure AD, musi mieć unikatową wartość atrybutu nazwy głównej użytkownika (UPN) skojarzoną z danym kontem. Poniższa tabela zawiera opis zasad dotyczących zarówno Active Directory lokalnych kont użytkowników, które są synchronizowane z chmurą, jak i konta użytkowników tylko w chmurze:
 
-| Właściwość | Wymagania dotyczące UserPrincipalName |
+| Właściwość | Wymagania UserPrincipalName |
 | --- | --- |
-| Dozwolona liczba znaków |<ul> <li>A – Z</li> <li>z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
-| Znaki nie są dozwolone |<ul> <li>Wszelkie "\@ \" znak, który nie jest oddzielenie nazwy użytkownika z domeny.</li> <li>Nie może zawierać znaku kropki "." bezpośrednio przed "\@ \" symboli</li></ul> |
-| Ograniczenia długości |<ul> <li>Łączna długość nie może zawierać znaków 113</li><li>Może to być maksymalnie 64 znaków przed "\@ \" symboli</li><li>Może istnieć maksymalnie 48 znaków po "\@ \" symboli</li></ul> |
+| Dozwolone znaki |<ul> <li>A – Z</li> <li>a – z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
+| Znaki nie są dozwolone |<ul> <li>Dowolny "\@ \" znak, który nie oddziela nazwy użytkownika z domeny.</li> <li>Nie może zawierać znaku kropki "." bezpośrednio poprzedzającego\@ "\" symbol</li></ul> |
+| Ograniczenia długości |<ul> <li>Łączna długość nie może przekraczać 113 znaków</li><li>Przed "symbolem"\@ \" może znajdować się maksymalnie 64 znaków</li><li>Po "symbolu"\@ \" może znajdować się maksymalnie 48 znaków</li></ul> |
 
-## <a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Zasady haseł, które mają zastosowanie tylko do kont użytkowników w chmurze
+## <a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Zasady dotyczące haseł mające zastosowanie tylko do kont użytkowników w chmurze
 
-W poniższej tabeli opisano ustawienia zasad haseł, które są stosowane do kont użytkowników, które są tworzone i zarządzane w usłudze Azure AD:
+W poniższej tabeli opisano ustawienia zasad haseł stosowane do kont użytkowników, które są tworzone i zarządzane w usłudze Azure AD:
 
 | Właściwość | Wymagania |
 | --- | --- |
-| Dozwolona liczba znaków |<ul><li>A – Z</li><li>z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \` ~ " ( ) ;</li> <li>puste miejsce</li></ul> |
-| Znaki nie są dozwolone |<ul><li>Znaki Unicode.</li><li> Nie może zawierać znaku kropki "." bezpośrednio przed "\@ \" symbol".</li></ul> |
-| Ograniczenia haseł |<ul><li>Co najmniej 8 znaków i nie więcej niż 256 znaków.</li><li>Wymaga trzech spośród czterech z następujących czynności:<ul><li>Małe litery.</li><li>Wielkie litery.</li><li>Cyfry (0 – 9).</li><li>Symbole (patrz poprzednie ograniczenia haseł).</li></ul></li></ul> |
-| Okres wygasania haseł |<ul><li>Wartość domyślna: **90** dni.</li><li>Wartość jest konfigurowane za pomocą `Set-MsolPasswordPolicy` polecenia cmdlet usługi Azure Active Directory modułu dla Windows PowerShell.</li></ul> |
-| Powiadomienie o wygaśnięciu hasła |<ul><li>Wartość domyślna: **14** dni (po których wygasa hasło).</li><li>Wartość jest konfigurowane za pomocą `Set-MsolPasswordPolicy` polecenia cmdlet.</li></ul> |
-| Wygaśnięcia hasła |<ul><li>Wartość domyślna: **false** dni (wskazuje, że wygaśnięcie hasła jest włączona).</li><li>Wartość można skonfigurować dla poszczególnych kont użytkowników przy użyciu `Set-MsolUser` polecenia cmdlet.</li></ul> |
-| Historię zmian haseł |Ostatnie hasło *nie* można użyć ponownie, gdy użytkownik zmieni hasło. |
-| Historia resetowania hasła | Ostatnie hasło *można* można użyć ponownie, gdy użytkownik resetuje zapomniane hasło. |
-| Blokada konta |Po 10 nieudanych prób logowania przy użyciu nieprawidłowego hasła użytkownik jest zablokowany przez jedną minutę. Dodatkowo nieprawidłowe próby logowania blokady użytkownika dla zwiększenia czasów trwania czasu. [Blokada Smart](howto-password-smart-lockout.md) śledzi ostatnie trzy skróty nieprawidłowego hasła, aby uniknąć zwiększenie licznika blokady dla tego samego hasła. Jeśli ktoś wprowadzi nieprawidłowe hasło wiele razy, to zachowanie nie spowoduje konta do blokady. |
+| Dozwolone znaki |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / \`~ " ( ) ;</li> <li>puste miejsce</li></ul> |
+| Znaki nie są dozwolone | Znaki Unicode. |
+| Ograniczenia dotyczące haseł |<ul><li>Co najmniej 8 znaków i maksymalnie 256 znaków.</li><li>Wymaga trzech z czterech następujących elementów:<ul><li>Małe litery.</li><li>Wielkie litery.</li><li>Liczby (0-9).</li><li>Symbole (zobacz poprzednie ograniczenia dotyczące haseł).</li></ul></li></ul> |
+| Czas wygaśnięcia hasła (maksymalny wiek hasła) |<ul><li>Wartość domyślna: **90** dni.</li><li>Wartość można skonfigurować za pomocą `Set-MsolPasswordPolicy` polecenia cmdlet z modułu Azure Active Directory programu Windows PowerShell.</li></ul> |
+| Powiadomienie o wygaśnięciu hasła (gdy użytkownicy będą powiadamiani o wygaśnięciu hasła) |<ul><li>Wartość domyślna: **14** dni (przed wygaśnięciem hasła).</li><li>Wartość można skonfigurować przy użyciu `Set-MsolPasswordPolicy` polecenia cmdlet.</li></ul> |
+| Wygaśnięcie hasła (przed wygaśnięciem hasła) |<ul><li>Wartość domyślna: **false** dni (wskazuje, że wygasa hasło jest włączone).</li><li>Wartość można skonfigurować dla poszczególnych kont użytkowników przy użyciu `Set-MsolUser` polecenia cmdlet.</li></ul> |
+| Historia zmian haseł | *Nie* można ponownie użyć ostatniego hasła, gdy użytkownik zmieni hasło. |
+| Historia resetowania hasła | Ostatniego hasła *można* użyć ponownie, gdy użytkownik resetuje zapomniane hasło. |
+| Blokada konta | Po 10 nieudanych próbach logowania z nieprawidłowym hasłem użytkownik jest blokowany przez jedną minutę. Więcej nieprawidłowych prób logowania Zablokuj użytkownika w celu zwiększenia czasu trwania. [Inteligentna blokada](howto-password-smart-lockout.md) śledzi ostatnie trzy niewłaściwe skróty haseł, aby uniknąć zwiększenia licznika blokady dla tego samego hasła. Jeśli ktoś wprowadzi to samo złe hasło wielokrotnie, to zachowanie nie spowoduje zablokowania konta. |
 
-## <a name="set-password-expiration-policies-in-azure-ad"></a>Konfigurowanie zasad wygasania haseł w usłudze Azure AD
+## <a name="set-password-expiration-policies-in-azure-ad"></a>Ustawianie zasad wygasania haseł w usłudze Azure AD
 
-Administrator globalny lub administrator użytkowników dla usługi w chmurze firmy Microsoft można użyć modułu Microsoft Azure AD dla programu Windows PowerShell można ustawić hasła użytkowników, aby nie wygaśnie. Można również użyć poleceń cmdlet programu Windows PowerShell do usunięcia nigdy nie — wygasa konfiguracji lub aby zobaczyć, który użytkownik hasła są ustawione na nigdy nie wygasa. 
+Administrator globalny lub administrator użytkownika usługi firmy Microsoft w chmurze może użyć Moduł Microsoft Azure AD dla Windows PowerShell, aby ustawić hasła użytkowników, które nie wygasną. Można również użyć poleceń cmdlet programu Windows PowerShell, aby usunąć konfigurację nigdy nie wygasa lub zobaczyć, które hasła użytkowników są ustawione na nigdy nie wygasają. 
 
-Niniejsze wytyczne mają zastosowanie do innych dostawców, takich jak usługi Intune i Office 365, które polegają również na usłudze Azure AD dla tożsamości i usługi katalogowe. Wygaśnięcie hasła jest tylko część zasady, które mogą być zmieniane.
+Te wskazówki odnoszą się do innych dostawców, takich jak usługa Intune i pakiet Office 365, które również polegają na usłudze Azure AD na potrzeby tożsamości i usług katalogowych. Wygaśnięcie hasła jest jedyną częścią zasad, które można zmienić.
 
 > [!NOTE]
-> Tylko hasła dla kont użytkowników, które nie są synchronizowane za pomocą synchronizacji katalogów można skonfigurować nie wygaśnie. Aby uzyskać więcej informacji na temat synchronizacji katalogów, zobacz [AD z usługą Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
+> Tylko hasła kont użytkowników, które nie są synchronizowane za poorednictwem synchronizacji katalogów, można skonfigurować tak, aby nie wygaśnie. Aby uzyskać więcej informacji na temat synchronizacji katalogów, zobacz [łączenie usługi AD z usługą Azure AD](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
 
-## <a name="set-or-check-the-password-policies-by-using-powershell"></a>Ustaw lub sprawdź zasady haseł za pomocą programu PowerShell
+## <a name="set-or-check-the-password-policies-by-using-powershell"></a>Ustawianie lub sprawdzanie zasad haseł przy użyciu programu PowerShell
 
-Aby rozpocząć pracę, musisz [Pobierz i zainstaluj moduł programu Azure AD PowerShell](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0). Po instalacji, można użyć następujące kroki konfigurowania poszczególnych pól.
+Aby rozpocząć, musisz [pobrać i zainstalować moduł Azure AD PowerShell](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0). Po zainstalowaniu programu można skonfigurować każde pole przy użyciu poniższych kroków.
 
-### <a name="check-the-expiration-policy-for-a-password"></a>Sprawdzanie zasad wygasania haseł
+### <a name="check-the-expiration-policy-for-a-password"></a>Sprawdź zasady wygasania hasła
 
-1. Łączenie z programu Windows PowerShell, za pomocą użytkownika administratora sieci lub poświadczenia administratora przedsiębiorstwa.
-1. Wykonaj jedną z następujących poleceń:
+1. Nawiązywanie połączenia z programem Windows PowerShell przy użyciu poświadczeń administratora użytkownika lub administratora firmy.
+1. Wykonaj jedno z następujących poleceń:
 
-   * Aby zobaczyć, jeśli ustawiono pojedynczego użytkownika, hasło nigdy nie wygasa, uruchom następujące polecenie cmdlet przy użyciu nazwy UPN (na przykład *aprilr\@contoso.onmicrosoft.com*) lub identyfikator użytkownika ma być sprawdzana:
+   * Aby sprawdzić, czy hasło jednego użytkownika jest ustawione na nigdy nie wygasa, uruchom następujące polecenie cmdlet przy użyciu nazwy UPN (na przykład *\@contoso.onmicrosoft.com*) lub identyfikatora użytkownika, który chcesz sprawdzić:
 
    ```powershell
    Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
    ```
 
-   * Aby wyświetlić **hasło nigdy nie wygasa** ustawienia dla wszystkich użytkowników, uruchom następujące polecenie cmdlet:
+   * Aby wyświetlić ustawienie **hasło nigdy nie wygasa** dla wszystkich użytkowników, uruchom następujące polecenie cmdlet:
 
    ```powershell
    Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}
    ```
 
-### <a name="set-a-password-to-expire"></a>Ustaw hasło wygaśnie
+### <a name="set-a-password-to-expire"></a>Ustaw hasło na wygasające
 
-1. Łączenie z programu Windows PowerShell, za pomocą użytkownika administratora sieci lub poświadczenia administratora przedsiębiorstwa.
-1. Wykonaj jedną z następujących poleceń:
+1. Nawiązywanie połączenia z programem Windows PowerShell przy użyciu poświadczeń administratora użytkownika lub administratora firmy.
+1. Wykonaj jedno z następujących poleceń:
 
-   * Konfigurowanie hasła jednego użytkownika i hasło wygaśnie, należy uruchomić następujące polecenie cmdlet przy użyciu nazwy UPN lub identyfikator użytkownika, użytkownik:
+   * Aby ustawić hasło jednego użytkownika w taki sposób, aby hasło wygasło, uruchom następujące polecenie cmdlet przy użyciu nazwy UPN lub identyfikatora użytkownika użytkownika:
 
    ```powershell
    Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None
    ```
 
-   * Aby ustawić hasła wszystkich użytkowników w organizacji tak, aby wygasną, należy użyć następującego polecenia cmdlet:
+   * Aby ustawić hasła wszystkich użytkowników w organizacji w taki sposób, aby wygaśnie, użyj następującego polecenia cmdlet:
 
    ```powershell
    Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None
@@ -140,25 +140,25 @@ Aby rozpocząć pracę, musisz [Pobierz i zainstaluj moduł programu Azure AD Po
 
 ### <a name="set-a-password-to-never-expire"></a>Ustaw hasło nigdy nie wygasa
 
-1. Łączenie z programu Windows PowerShell, za pomocą użytkownika administratora sieci lub poświadczenia administratora przedsiębiorstwa.
-1. Wykonaj jedną z następujących poleceń:
+1. Nawiązywanie połączenia z programem Windows PowerShell przy użyciu poświadczeń administratora użytkownika lub administratora firmy.
+1. Wykonaj jedno z następujących poleceń:
 
-   * Aby ustawić hasło jeden użytkownik nigdy nie wygasa, uruchom następujące polecenie cmdlet przy użyciu nazwy UPN lub identyfikator użytkownika, użytkownik:
+   * Aby ustawić hasło jednego użytkownika tak, aby nigdy nie wygasło, uruchom następujące polecenie cmdlet przy użyciu nazwy UPN lub identyfikatora użytkownika użytkownika:
 
    ```powershell
    Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration
    ```
 
-   * Aby ustawić hasła wszystkich użytkowników w organizacji nigdy nie wygasa, uruchom następujące polecenie cmdlet:
+   * Aby ustawić hasła wszystkich użytkowników w organizacji, aby nigdy nie wygasnąć, uruchom następujące polecenie cmdlet:
 
    ```powershell
    Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration
    ```
 
    > [!WARNING]
-   > Wartość hasła `-PasswordPolicies DisablePasswordExpiration` nadal wieku na podstawie `pwdLastSet` atrybutu. Jeśli zostały ustawione haseł użytkowników, nigdy nie wygasa, a następnie Przejdź ponad 90 dni, wygaśnięcia hasła. Na podstawie `pwdLastSet` atrybutu, jeśli zmienisz wygaśnięcia do `-PasswordPolicies None`, wszystkie hasła, które mają `pwdLastSet` starsze niż 90 dni, aby użytkownik musiał je zmienić przy następnym zalogowaniu. Ta zmiana może wpływać na dużą liczbę użytkowników.
+   > Hasła są ustawione `-PasswordPolicies DisablePasswordExpiration` na wartość okres ważności na `pwdLastSet` podstawie atrybutu. Jeśli ustawisz hasła użytkowników, aby nigdy nie wygasnąć, a następnie po 90 dniach zostanie wystawione hasło. W oparciu o `pwdLastSet` atrybut, jeśli zmienisz datę wygaśnięcia na `-PasswordPolicies None`, `pwdLastSet` wszystkie hasła, które mają starszą niż 90 dni, wymagają od użytkownika zmiany ich przy następnym logowaniu. Ta zmiana może mieć wpływ na dużą liczbę użytkowników.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Poniższe artykuły zawierają dodatkowe informacje na temat resetowania haseł za pomocą usługi Azure AD:
 

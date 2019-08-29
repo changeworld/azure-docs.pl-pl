@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: c47cc49a8e81b44a4529f8f82954797e2648c938
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: c2aad97cea39221da56666dbeff72ce56fcb2a22
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69983090"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113696"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Konfigurowanie klastrów w usłudze HDInsight przy użyciu Apache Hadoop, Apache Spark, Apache Kafka i innych
 
@@ -83,7 +83,7 @@ Nazwy klastrów usługi HDInsight mają następujące ograniczenia:
 - Dozwolone znaki: a-z, 0-9, A-Z 
 - Maksymalna długość: 59
 - Zastrzeżone nazwy: aplikacje
-- Musi być unikatowy
+- Zakres nazewnictwa klastrów dotyczy wszystkich subskrypcji platformy Azure. Nazwa klastra musi być unikatowa na całym świecie.
 - Pierwsze 6 znaków musi być unikatowe w obrębie sieci wirtualnej
 
 ## <a name="cluster-login-and-ssh-username"></a>Logowanie do klastra i nazwa użytkownika SSH

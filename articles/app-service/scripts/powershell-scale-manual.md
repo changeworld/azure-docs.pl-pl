@@ -9,19 +9,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: de5d4285-9c7d-4735-a695-288264047375
 ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 03/20/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 44bc78ee0e9d3fddf91aaeb677c53716c2ce2597
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d740dbfb1b5d16d84872ef183a52454549be617e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136363"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098215"
 ---
 # <a name="scale-a-web-app-manually-using-powershell"></a>Ręczne skalowanie aplikacji internetowej przy użyciu programu PowerShell
 
@@ -54,7 +53,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Tworzy aplikację internetową. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Modyfikuje konfigurację aplikacji internetowej. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

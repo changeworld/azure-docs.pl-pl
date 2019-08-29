@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: 5169fe5eef416812c399b421f59305f6cb1e7b62
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 3e5b96cf4227e933aa99b37469410276a775dbed
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035780"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103078"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Samouczek: Dodawanie SQL Database wystąpienia zarządzanego do grupy trybu failover
 
@@ -40,13 +40,15 @@ Aby ukończyć kroki tego samouczka, upewnij się, że dysponujesz następujący
 - Subskrypcję platformy Azure, [Utwórz bezpłatne konto](https://azure.microsoft.com/free/) , jeśli jeszcze go nie masz. 
 
 
-## <a name="1----create-resource-group-and-primary-managed-instance"></a>1 — Tworzenie grupy zasobów i podstawowego wystąpienia zarządzanego
+## <a name="1---create-resource-group-and-primary-managed-instance"></a>1 — Tworzenie grupy zasobów i podstawowego wystąpienia zarządzanego
 W tym kroku utworzysz grupę zasobów i podstawowe wystąpienie zarządzane dla grupy trybu failover przy użyciu Azure Portal. 
 
-1. Zaloguj się do [Azure Portal](https://portal.azure.com). 
-1. Wybierz, aby **utworzyć zasób** w lewym górnym rogu Azure Portal. 
-1. Wpisz `managed instance` w polu wyszukiwania i wybierz opcję wystąpienia zarządzanego Azure SQL. 
-1. Wybierz pozycję **Utwórz** , aby uruchomić stronę tworzenia **wystąpienia zarządzanego SQL** . 
+1. Wybierz pozycję **Azure SQL** w menu po lewej stronie Azure Portal. Jeśli na liście nie ma **usługi Azure SQL** , wybierz pozycję **wszystkie usługi**, a następnie wpisz SQL Azure w polu wyszukiwania. Obowiązkowe Wybierz gwiazdkę obok pozycji **Azure SQL** , aby ją dodać do ulubionych, i Dodaj ją jako element w nawigacji po lewej stronie. 
+1. Wybierz pozycję **+ Dodaj** , aby otworzyć stronę **Wybieranie opcji wdrożenia SQL** . Aby wyświetlić dodatkowe informacje o różnych bazach danych, wybierz pozycję Pokaż szczegóły na kafelku bazy danych.
+1. Wybierz pozycję **Utwórz** na kafelku **wystąpienia zarządzane SQL** . 
+
+    ![Wybierz wystąpienie zarządzane](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+
 1. Na stronie **tworzenie Azure SQL Database wystąpienia zarządzanego** na karcie **podstawowe**
     1. W obszarze **szczegóły projektu**wybierz **subskrypcję** z listy rozwijanej, a następnie wybierz opcję **Utwórz nową** grupę zasobów. Wpisz nazwę grupy zasobów, `myResourceGroup`na przykład. 
     1. W obszarze **szczegóły wystąpienia zarządzanego**Podaj nazwę wystąpienia zarządzanego oraz region, w którym chcesz wdrożyć wystąpienie zarządzane. Pozostaw wartości domyślne w obszarze **obliczenia i magazyn** . 
@@ -98,8 +100,12 @@ Drugie wystąpienie zarządzane musi:
 
 Aby utworzyć dodatkowe wystąpienie zarządzane, wykonaj następujące kroki: 
 
-1. W [Azure Portal](https://portal.azure.com)wybierz pozycję **Utwórz zasób** i Wyszukaj *wystąpienie zarządzane Azure SQL*. 
-1. Wybierz opcję **wystąpienia zarządzanego Azure SQL** opublikowaną przez firmę Microsoft, a następnie wybierz pozycję **Utwórz** na następnej stronie.
+1. Wybierz pozycję **Azure SQL** w menu po lewej stronie Azure Portal. Jeśli na liście nie ma **usługi Azure SQL** , wybierz pozycję **wszystkie usługi**, a następnie wpisz SQL Azure w polu wyszukiwania. Obowiązkowe Wybierz gwiazdkę obok pozycji **Azure SQL** , aby ją dodać do ulubionych, i Dodaj ją jako element w nawigacji po lewej stronie. 
+1. Wybierz pozycję **+ Dodaj** , aby otworzyć stronę **Wybieranie opcji wdrożenia SQL** . Aby wyświetlić dodatkowe informacje o różnych bazach danych, wybierz pozycję Pokaż szczegóły na kafelku bazy danych.
+1. Wybierz pozycję **Utwórz** na kafelku **wystąpienia zarządzane SQL** . 
+
+    ![Wybierz wystąpienie zarządzane](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+
 1. Na karcie **podstawy** na stronie **Tworzenie Azure SQL Database wystąpienia zarządzanego** wprowadź wymagane pola, aby skonfigurować dodatkowe wystąpienie zarządzane. 
 
    W poniższej tabeli przedstawiono wartości niezbędne do pomocniczego wystąpienia zarządzanego:
@@ -209,9 +215,8 @@ Aby skonfigurować połączenie, wykonaj następujące kroki:
 ## <a name="7---create-a-failover-group"></a>7\. Tworzenie grupy trybu failover
 W tym kroku utworzysz grupę trybu failover i dodasz do niej oba wystąpienia zarządzane. 
 
-1. W [Azure Portal](https://portal.azure.com)przejdź do pozycji **wszystkie usługi** , `managed instance` a następnie wpisz w polu wyszukiwania. 
-1. Obowiązkowe Wybierz gwiazdkę obok pozycji **wystąpienia zarządzane SQL** , aby dodać wystąpienia zarządzane jako skrót do paska nawigacyjnego po lewej stronie. 
-1. Wybierz pozycję **wystąpienia zarządzane SQL** i wybierz swoje podstawowe wystąpienie zarządzane, na `sql-mi-primary`przykład. 
+1. Wybierz pozycję **Azure SQL** w menu po lewej stronie [Azure Portal](https://portal.azure.com). Jeśli na liście nie ma **usługi Azure SQL** , wybierz pozycję **wszystkie usługi**, a następnie wpisz SQL Azure w polu wyszukiwania. Obowiązkowe Wybierz gwiazdkę obok pozycji **Azure SQL** , aby ją dodać do ulubionych, i Dodaj ją jako element w nawigacji po lewej stronie. 
+1. Wybierz główne wystąpienie zarządzane utworzone w pierwszej sekcji, na przykład `sql-mi-primary`. 
 1. W obszarze **Ustawienia**przejdź do pozycji **grupy trybu failover wystąpienia** , a następnie wybierz pozycję **Dodaj grupę** , aby otworzyć stronę **Grupa trybu failover wystąpienia** . 
 
    ![Dodawanie grupy trybu failover](media/sql-database-managed-instance-failover-group-tutorial/add-failover-group.png)

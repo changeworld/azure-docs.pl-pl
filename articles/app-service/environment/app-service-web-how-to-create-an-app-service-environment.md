@@ -1,6 +1,6 @@
 ---
-title: Tworzenie usługi App Service Environment w wersji 1 - Azure
-description: Tworzenie opisu przepływu app service environment w wersji 1
+title: Jak utworzyć App Service Environment V1 — Azure
+description: Opis przepływu tworzenia dla środowiska usługi App Service w wersji 1
 services: app-service
 documentationcenter: ''
 author: ccompy
@@ -10,72 +10,71 @@ ms.assetid: 81bd32cf-7ae5-454b-a0d2-23b57b51af47
 ms.service: app-service
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9bc796c4d0d449f72dc3234bc2825554eafaf77f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 017c79ec1341c85f3bd08393dd5553f90a2f6cef
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62128890"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069738"
 ---
-# <a name="how-to-create-an-app-service-environment-v1"></a>Tworzenie usługi App Service Environment w wersji 1 
+# <a name="how-to-create-an-app-service-environment-v1"></a>Jak utworzyć App Service Environment v1 
 
 > [!NOTE]
-> Ten artykuł dotyczy środowiska App Service Environment w wersji 1. Istnieje nowsza wersja usługi App Service Environment jest łatwiejszy w obsłudze, która działa na bardziej zaawansowanych infrastruktury. Aby dowiedzieć się więcej na temat nowej wersji rozpoczynać [wprowadzenie do usługi App Service Environment](intro.md).
+> Ten artykuł dotyczy App Service Environment v1. Istnieje nowsza wersja App Service Environment ułatwiająca korzystanie z bardziej wydajną infrastrukturą. Aby dowiedzieć się więcej o nowej wersji, Zacznij od [wprowadzenia do App Service Environment](intro.md).
 > 
 
 ### <a name="overview"></a>Omówienie
-App Service Environment (ASE) to opcja Premium usługi Azure App Service, która dostarcza możliwości rozszerzonej konfiguracji, która nie jest dostępna w sygnatury wielodostępu. Funkcja środowiska ASE zasadniczo wdraża w usłudze Azure App Service w sieci wirtualnej klienta. Aby uzyskać lepsze zrozumienie możliwości oferowane przez odczyt środowisk App Service Environment [co to jest środowisko usługi App Service] [ WhatisASE] dokumentacji.
+App Service Environment (ASE) to opcja usługi Premium Azure App Service, która zapewnia rozszerzoną funkcję konfiguracji, która nie jest dostępna w sygnaturach z wieloma dzierżawcami. Funkcja ASE zasadniczo wdraża Azure App Service w sieci wirtualnej klienta. Aby uzyskać lepsze zrozumienie możliwości oferowanych przez App Service środowiska, przeczytaj artykuł [co to jest App Service Environment][WhatisASE] dokumentacja.
 
-### <a name="before-you-create-your-ase"></a>Przed przystąpieniem do tworzenia środowiska ASE
-Należy mieć świadomość rzeczy, które nie można zmienić. Te aspekty, których nie można zmienić dotyczących środowiska ASE, po jego utworzeniu są następujące:
+### <a name="before-you-create-your-ase"></a>Przed utworzeniem środowiska ASE
+Ważne jest, aby mieć świadomość, że nie można zmienić. Te aspekty nie mogą ulec zmianie po utworzeniu środowiska ASE:
 
-* Lokalizacja
-* Subskrypcja
+* Location
+* Subscription
 * Grupa zasobów
-* Używane w sieci wirtualnej
-* Podsieć używana 
+* Użyta Sieć wirtualna
+* Używana podsieć 
 * Rozmiar podsieci
 
-Po wybraniu sieci wirtualnej i określania podsieci, upewnij się, jest wystarczająco duży, aby uwzględnienie przyszłego rozwoju. 
+Podczas wybierania sieci wirtualnej i określania podsieci upewnij się, że jest wystarczająco duża, aby pomieścić przyszłe przyrosty. 
 
-### <a name="creating-an-app-service-environment-v1"></a>Tworzenie aplikacji usługi Environment w wersji 1
-Aby utworzyć środowisko App Service Environment w wersji 1, możesz wyszukiwać w portalu Azure Marketplace ***środowiska App Service Environment v1***, lub przejść przez **Utwórz zasób** -> **sieci Web i mobilność**  ->  **Środowiska app Service Environment**. Aby utworzyć środowiska ASEv1:
+### <a name="creating-an-app-service-environment-v1"></a>Tworzenie App Service Environment v1
+Aby utworzyć App Service Environment V1, możesz przeszukać witrynę Azure Marketplace pod kątem ***App Service Environment V1***lub przejść przez polecenie **Utwórz zasób** -> **Sieć Web + aplikacje mobilne** -> **App Service Environment**. Aby utworzyć środowiska asev1:
 
-1. Podaj nazwę środowiska ASE. Nazwa określona dla środowiska ASE będzie używany w przypadku aplikacji tworzonych w środowisku ASE. Jeśli nazwa środowiska ASE jest appsvcenvdemo, nazwy domeny podrzędnej będzie: *appsvcenvdemo.p.azurewebsites.net*. Jeśli ten sposób utworzono aplikację o nazwie *MojaAplikacja*, byłoby adresowalnych na *mytestapp.appsvcenvdemo.p.azurewebsites.net*. Nie można użyć biały znak, nazwę środowiska ASE. Użycie wielkich liter w nazwie, nazwa domeny będzie całkowita wersję o takiej nazwie. Jeśli korzystasz z wewnętrznym modułem równoważenia obciążenia, nazwa środowiska ASE nie jest używany w Twojej domeny podrzędnej, ale zamiast tego jest jasno określone podczas tworzenia środowiska ASE.
+1. Podaj nazwę środowiska ASE. Nazwa określona dla środowiska ASE zostanie użyta dla aplikacji utworzonych w środowisku ASE. Jeśli nazwa środowiska ASE to appsvcenvdemo, nazwą domeny podrzędnej byłaby: *appsvcenvdemo.p.azurewebsites.NET*. Jeśli w ten sposób utworzysz aplikację o nazwie *MojaAplikacja*, będzie ona adresować w *mytestapp.appsvcenvdemo.p.azurewebsites.NET*. Nie można użyć odstępu w nazwie środowiska ASE. Jeśli w nazwie używane są wielkie litery, nazwa domeny będzie sumą małych liter tej nazwy. Jeśli używasz ILB, Nazwa środowiska ASE nie zostanie użyta w poddomenie, ale zamiast tego zostanie jawnie określona podczas tworzenia środowiska ASE.
    
     ![][1]
-2. Wybierz subskrypcję. Subskrypcję, której używasz środowiska ASE zostaną również zastosowane do wszystkich aplikacji, który zostanie utworzony w tym środowisku ASE. Środowisko ASE nie można umieścić w sieci wirtualnej, która znajduje się w innej subskrypcji.
-3. Wybierz lub określ nową grupę zasobów. Grupę zasobów używaną dla środowiska ASE musi być taka sama, używany dla sieci wirtualnej. Wybranie wcześniej istniejącej sieci wirtualnej wybranej grupy zasobów dla środowiska ASE zostanie zaktualizowany w celu odzwierciedlenia zmiany sieci wirtualnej.
+2. Wybierz subskrypcję. Subskrypcja używana dla środowiska ASE również będzie miała zastosowanie do wszystkich aplikacji tworzonych w tym środowisku ASE. Nie można umieścić środowiska ASE w sieci wirtualnej, która znajduje się w innej subskrypcji.
+3. Wybierz lub określ nową grupę zasobów. Grupa zasobów używana dla środowiska ASE musi być taka sama, jak w przypadku sieci wirtualnej. W przypadku wybrania istniejącej sieci wirtualnej wybór grupy zasobów dla środowiska ASE zostanie zaktualizowany w celu odzwierciedlenia tej sieci wirtualnej.
    
     ![][2]
-4. Wybierz odpowiednie opcje sieci wirtualnej i lokalizacji. Można utworzyć nową sieć wirtualną lub wybierz wstępnie istniejącej sieci wirtualnej. Jeśli wybierzesz nową sieć wirtualną, możesz określić nazwę i lokalizację. Nową sieć wirtualną, będzie miał 192.168.250.0/23 zakres adresów i podsieć o nazwie **domyślne** który jest zdefiniowany jako 192.168.250.0/24. Możesz też po prostu wybrać istniejące klasyczne lub siecią wirtualną Menedżera zasobów. Typ adresu VIP ten wybór decyduje, czy Twoje środowisko ASE są bezpośrednio dostępne z Internetu (zewnętrzny), czy używa wewnętrznego modułu równoważenia obciążenia (ILB). Aby dowiedzieć się więcej o nich odczytać [przy użyciu wewnętrznego modułu równoważenia obciążenia w środowisku usługi App Service][ILBASE]. Wybierz typ adresu VIP, zewnętrznych można wybrać system jest tworzony z celów IPSSL ile zewnętrzne adresy IP. Jeśli wybierzesz wewnętrzne następnie należy określić domenę podrzędną, która będzie używana w środowisku ASE. Za pomocą środowisk ASE można wdrożyć w sieciach wirtualnych, które używają *albo* zakresów adresów publicznych *lub* przestrzeni adresowych RFC1918 (czyli prywatnych adresów). Aby można było używać sieci wirtualnej z zakresem adresów publicznych, należy utworzyć sieć wirtualną wcześniej. Po wybraniu wstępnie istniejącej sieci wirtualnej należy utworzyć nowej podsieci podczas tworzenia środowiska ASE. **Nie można użyć wstępnie utworzonej podsieci, w portalu. Jeśli tworzysz środowisko ASE przy użyciu szablonu usługi resource manager, możesz utworzyć środowisko ASE przy użyciu wcześniej istniejącej podsieci.** Aby utworzyć środowisko ASE przed użyciem szablonu informacje w tym miejscu [tworzenie środowiska usługi App Service za pomocą szablonu] [ ILBAseTemplate] i w tym miejscu [tworzenie środowiska App Service Environment wewnętrznego modułu równoważenia obciążenia z szablonu] [ASEfromTemplate].
+4. Zmień wybór Virtual Network i lokalizacji. Można utworzyć nową sieć wirtualną lub wybrać istniejącą wcześniej sieć wirtualną. W przypadku wybrania nowej sieci wirtualnej można określić nazwę i lokalizację. Nowa sieć wirtualna będzie miała zakres adresów 192.168.250.0/23 i podsieć o nazwie **default** , która jest zdefiniowana jako 192.168.250.0/24. Możesz również po prostu wybrać istniejącą wcześniej sieć wirtualną lub Menedżer zasobów sieci wirtualnej. Wybór typu adresu VIP określa, czy do środowiska ASE można uzyskać dostęp bezpośrednio z Internetu (zewnętrznego) czy też używa wewnętrznego Load Balancer (ILB). Aby dowiedzieć się więcej na temat odczytu [przy użyciu wewnętrznego Load Balancer z App Service Environment][ILBASE]. W przypadku wybrania typu adresu VIP zewnętrznego można wybrać liczbę zewnętrznych adresów IP, z których system zostanie utworzony w celu IPSSL. W przypadku wybrania opcji wewnętrzne należy określić poddomenę, która będzie używana przez środowisko ASE. Środowisk ASE można wdrożyć w sieciach wirtualnych korzystających z zakresów adresów publicznych *lub* przestrzeni adresów RFC1918 (np. adresów prywatnych). Aby można było używać sieci wirtualnej z zakresem adresów publicznych, należy najpierw utworzyć sieć wirtualną przed czasem. Po wybraniu istniejącej sieci wirtualnej należy utworzyć nową podsieć podczas tworzenia środowiska ASE. **Nie można użyć wstępnie utworzonej podsieci w portalu. Jeśli tworzysz środowisko ASE przy użyciu szablonu usługi Resource Manager, możesz utworzyć środowisko ASE z istniejącą podsiecią.** Aby utworzyć środowisko ASE na podstawie szablonu, użyj tutaj informacji, [tworząc App Service Environment z szablonu][ILBAseTemplate] i w tym miejscu, [tworząc App Service Environment ILB z szablonu][ASEfromTemplate].
 
 ### <a name="details"></a>Szczegóły
-Środowisko ASE jest tworzony przy użyciu 2 Frontony i 2 procesy robocze. Frontonów działanie jako punktów końcowych HTTP/HTTPS i wysyłania ruchu do pracowników, które są role, które hostują swoje aplikacje. Można dostosować ilość po utworzeniu środowiska ASE i może nawet skonfigurować reguły skalowania automatycznego na tych pul zasobów. Aby uzyskać więcej informacji dotyczących skalowanie ręczne zarządzania i monitorowania środowiska usługi App Service tutaj: [Jak skonfigurować środowisko usługi App Service][ASEConfig] 
+Środowisko ASE jest tworzone za pomocą 2 frontonów i 2 procesów roboczych. Frontony działają jako punkty końcowe protokołu HTTP/HTTPS i wysyłają ruch do pracowników, którzy są rolami obsługującymi Twoje aplikacje. Możesz dostosować ilość po utworzeniu środowiska ASE i nawet skonfigurować reguły skalowania automatycznego dla tych pul zasobów. Aby uzyskać więcej informacji na temat ręcznego skalowania, zarządzania i monitorowania App Service Environment przejdź tutaj: [Jak skonfigurować App Service Environment][ASEConfig] 
 
-Tylko jednego środowiska ASE może znajdować się w podsieci używane przez środowisko ASE. Nie można użyć tej podsieci coś innego niż środowiska ASE
+Tylko jeden ASE może istnieć w podsieci używanej przez środowisko ASE. Podsieci nie można używać dla elementów innych niż środowisko ASE
 
-### <a name="after-app-service-environment-v1-creation"></a>Po utworzeniu v1 środowiska App Service Environment
+### <a name="after-app-service-environment-v1-creation"></a>Po utworzeniu App Service Environment v1
 Po utworzeniu środowiska ASE można dostosować:
 
-* Ilość Frontony (minimalna: 2)
-* Liczba procesów roboczych (minimalna: 2)
-* Liczba adresów IP dostępnych dla protokołu IP SSL
-* Obliczenia rozmiarów zasobów, które posługują się Frontony i procesy robocze (fronton minimalny rozmiar to P2)
+* Liczba frontonów (minimum: 2)
+* Liczba procesów roboczych (minimum: 2)
+* Liczba adresów IP dostępnych dla Połączenie SSL z adresu IP
+* Rozmiary zasobów obliczeniowych używane przez frontony i procesy robocze (minimalny rozmiar frontonu to P2)
 
-Dostępne są szczegółowe informacje dotyczące ręczne skalowanie, zarządzanie i monitorowanie środowisk usługi App Service w tym miejscu: [Jak skonfigurować środowisko usługi App Service][ASEConfig] 
+Poniżej znajdują się szczegółowe informacje dotyczące ręcznego skalowania, zarządzania i monitorowania środowisk App Serviceych: [Jak skonfigurować App Service Environment][ASEConfig] 
 
-Instrukcje dotyczące skalowania automatycznego jest przewodnik tutaj: [Jak skonfigurować automatyczne skalowanie dla środowiska usługi App Service][ASEAutoscale]
+Aby uzyskać informacje na temat automatycznego skalowania, w tym miejscu znajdziesz przewodnik: [Jak skonfigurować Skalowanie automatyczne dla App Service Environment][ASEAutoscale]
 
-Istnieją dodatkowe zależności, które nie są możliwe do dostosowania, takie jak bazy danych i magazyn. Te są obsługiwane przez platformę Azure i dołączone do systemu. Magazyn systemu obsługuje maksymalnie 500 GB dla całej usługi App Service Environment i bazy danych jest uwzględniany przez platformę Azure, odpowiednio do potrzeb skalowania systemu.
+Istnieją dodatkowe zależności, które nie są dostępne do dostosowania, takie jak baza danych i magazyn. Są one obsługiwane przez platformę Azure i są dołączone do systemu. Magazyn systemowy obsługuje do 500 GB dla całego App Service Environment i baza danych jest dostosowywana przez platformę Azure, zgodnie z wymaganiami skalowania systemu.
 
 ## <a name="getting-started"></a>Wprowadzenie
-Wprowadzenie do środowiska App Service Environment w wersji 1, zobacz [wprowadzenie do środowiska App Service Environment w wersji 1][WhatisASE]
+Aby rozpocząć pracę z App Service Environment V1, zobacz [wprowadzenie do App Service Environment V1][WhatisASE]
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

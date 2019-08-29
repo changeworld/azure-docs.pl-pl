@@ -6,19 +6,18 @@ author: laurenhughes
 manager: gwallace
 editor: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 03/05/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: c113521a1828a27ce9454ea142cb1708b7c5a1b6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e4a2af09b432961211a5f38ecd2d9dacd89d3868
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68322844"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094454"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Utrwalanie danych zadań w usłudze Azure Storage za pomocą interfejsu API usługi Batch
 
@@ -188,7 +187,7 @@ Przykładowy projekt [PersistOutputs][github_persistoutputs] jest jednym z [przy
 6. Po wyświetleniu monitu o wybranie technologii trwałości do uruchomienia przykładu wprowadź wartość **2** , aby uruchomić przykład za pomocą interfejsu API usługi Batch, aby utrzymać dane wyjściowe zadania.
 7. W razie potrzeby uruchom ponownie próbkę, wprowadzając wartość **3** w celu utrwalenia danych wyjściowych za pomocą interfejsu API usługi Batch, a także Nadaj nazwę kontenerowi docelowemu i ścieżce obiektu BLOB zgodnie z standardem Konwencji plików.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby uzyskać więcej informacji na temat utrwalania danych wyjściowych zadań przy użyciu biblioteki Konwencji plików dla platformy .NET, zobacz [trwałe dane zadania i zadania do usługi Azure Storage za pomocą biblioteki Konwencji plików wsadowych dla platformy .NET](batch-task-output-file-conventions.md).
 - Aby uzyskać informacje na temat innych metod utrwalania danych wyjściowych w Azure Batch, zobacz [utrwalanie zadań i zadań wyjściowych w usłudze Azure Storage](batch-task-output.md).

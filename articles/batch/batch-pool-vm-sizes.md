@@ -10,17 +10,16 @@ ms.assetid: ''
 ms.service: batch
 ms.workload: ''
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: fd88f8e9b32b3fe5a0d7ab0caf233098ea19fde0
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: f894a7438c56c3830eb62c516447195f10fc3b76
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323102"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094665"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Wybieranie rozmiaru maszyny wirtualnej dla węzłów obliczeniowych w puli Azure Batch
 
@@ -44,25 +43,25 @@ Wszystkie rozmiary maszyn wirtualnych promocyjnych i w wersji zapoznawczej nie s
 | Podstawowa seria A | Wszystkie rozmiary *z wyjątkiem* Basic_A0 (a0) | Any |
 | Seria A | Wszystkie rozmiary *z wyjątkiem* Standard_A0 | Any |
 | Seria Av2 | Wszystkie rozmiary | Any |
-| Seria B | Brak | Niedostępne |
-| Seria DC | Brak | Niedostępne |
+| Seria B | Brak | Niedostępny |
+| Seria DC | Brak | Niedostępny |
 | Dv2, Dsv2 — seria | Wszystkie rozmiary | Any |
 | Dv3, Dsv3 — seria | Wszystkie rozmiary | Any |
-| [Rozmiary zoptymalizowane pod kątem pamięci](../virtual-machines/linux/sizes-memory.md) | Brak | Niedostępne |
+| [Rozmiary zoptymalizowane pod kątem pamięci](../virtual-machines/linux/sizes-memory.md) | Brak | Niedostępny |
 | Seria Fsv2 | Wszystkie rozmiary | Any |
 | Seria H | Wszystkie rozmiary | Any |
 | HB-seria<sup>2</sup> | Wszystkie rozmiary | Any |
 | HC — seria<sup>2</sup> | Wszystkie rozmiary | Any |
 | Seria Ls | Wszystkie rozmiary | Any |
-| Seria Lsv2 | Brak | Niedostępne |
+| Seria Lsv2 | Brak | Niedostępny |
 | Seria M | Standard_M64ms (tylko niski priorytet), Standard_M128s (tylko niski priorytet) | Any |  
 | NCv2 — seria<sup>2</sup> | Wszystkie rozmiary | Any |
 | Seria NCV3 — seria<sup>2</sup> | Wszystkie rozmiary | Any |
 | ND — seria<sup>2</sup> | Wszystkie rozmiary | Any |
 | Seria NDv2 | Wszystkie rozmiary | Tryb subskrypcji użytkownika |
 | Seria NV | Wszystkie rozmiary | Any |
-| Seria NVv3 | Brak | Niedostępne |
-| SAP HANA | Brak | Niedostępne |
+| Seria NVv3 | Brak | Niedostępny |
+| SAP HANA | Brak | Niedostępny |
 
 <sup>1</sup> niektóre nowsze serie maszyn wirtualnych są początkowo obsługiwane częściowo. Te serie maszyn wirtualnych można przydzielić przez konta usługi Batch z **trybem alokacji puli** ustawionym na **subskrypcję użytkownika**. Zobacz [Zarządzanie kontami usługi Batch](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) , aby uzyskać więcej informacji na temat konfiguracji konta usługi Batch. Zobacz [przydziały i limity](batch-quota-limit.md) , aby dowiedzieć się, jak zażądać limitu przydziału dla tych częściowo obsługiwanych serii maszyn wirtualnych dla kont usługi Batch **subskrypcji użytkowników** .  
 

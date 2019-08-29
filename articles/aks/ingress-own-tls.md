@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
 ms.openlocfilehash: 2b30ade9971ede6f9544b618504033553392e9bd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/28/2019
 ms.locfileid: "67615435"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Tworzenie kontrolera protokołu HTTPS dla ruchu przychodzącego i korzystanie z własnych certyfikatów TLS w usłudze Azure Kubernetes Service (AKS)
@@ -289,7 +289,7 @@ Na koniec można usunąć samą przestrzeń nazw. `kubectl delete` Użyj polecen
 kubectl delete namespace ingress-basic
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule uwzględniono niektóre składniki zewnętrzne do AKS. Aby dowiedzieć się więcej o tych składnikach, zobacz następujące strony projektu:
 

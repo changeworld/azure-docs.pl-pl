@@ -7,18 +7,17 @@ author: genlin
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
-ms.openlocfilehash: 8fd2f997bd5d5156616b5aad70a3460f64e774bc
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: d1b76479c17a9b1ace149334c7bb451c7bf2cc45
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997874"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103350"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Rozwiązywanie problemów z maszyną wirtualną z systemem Windows przez dołączenie dysku systemu operacyjnego do maszyny wirtualnej odzyskiwania przy użyciu Azure Portal
 Jeśli maszyna wirtualna z systemem Windows na platformie Azure napotyka błąd rozruchu lub dysku, może być konieczne wykonanie kroków rozwiązywania problemów dotyczących wirtualnego dysku twardego. Typowym przykładem może być niepowodzenie aktualizacji aplikacji, która uniemożliwia pomyślne uruchomienie maszyny wirtualnej. W tym artykule szczegółowo opisano sposób używania Azure Portal do łączenia wirtualnego dysku twardego z inną maszyną wirtualną z systemem Windows w celu usunięcia błędów, a następnie ponownego utworzenia oryginalnej maszyny wirtualnej. 

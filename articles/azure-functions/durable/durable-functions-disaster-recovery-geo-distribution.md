@@ -1,93 +1,92 @@
 ---
-title: Odzyskiwanie po awarii i dystrybucja geograficzna w funkcje trwałe - Azure
-description: Więcej informacji na temat odzyskiwania po awarii i dystrybucja geograficzna w funkcje trwałe.
+title: Odzyskiwanie po awarii i dystrybucja geograficzna w Durable Functions na platformie Azure
+description: Informacje na temat odzyskiwania po awarii i dystrybucji geograficznej w Durable Functions.
 services: functions
 author: MS-Santi
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1363dd3c620789b9f3c8ce1dbe0892ee61d66051
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f242a16bc89e6b229efa42b88ebd20ca174e2516
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60741382"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098071"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>Odzyskiwanie po awarii i dystrybucja geograficzna
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-W przypadku funkcji trwałych wszystkie stany są utrwalane w usłudze Azure Storage. A [Centrum zadań](durable-functions-task-hubs.md) to kontener logiczny dla zasobów usługi Azure Storage, które są używane do aranżacji. Funkcje programu orchestrator i działanie tylko można ze sobą współdziałać, jeśli należą do tego samego Centrum zadania.
-Opisane scenariusze zaproponować opcjami wdrożenia w celu zwiększenia dostępności i skrócić czas przestoju podczas działania odzyskiwania po awarii.
+W Durable Functions wszystkie stany są utrwalane w usłudze Azure Storage. [Centrum zadań](durable-functions-task-hubs.md) jest kontenerem logicznym dla zasobów usługi Azure Storage, które są używane dla aranżacji. Funkcje programu Orchestrator i Activity mogą współdziałać ze sobą tylko wtedy, gdy należą do tego samego centrum zadań.
+Opisane scenariusze umożliwiają zaproponowanie opcji wdrożenia w celu zwiększenia dostępności i zminimalizowania przestojów podczas działania odzyskiwania po awarii.
 
-Należy zauważyć, że te scenariusze są oparte na konfiguracji aktywne-pasywne, ponieważ są one sterowana przez użycie usługi Azure Storage. Ten wzorzec polega na wdrożeniu aplikacji funkcji wykonywania kopii zapasowej (pasywnego) w innym regionie. Usługi Traffic Manager będzie monitorować aplikację podstawową funkcją (aktywny) dla dostępności. Zakończy się niepowodzeniem przez aplikację funkcji tworzenia kopii zapasowej w przypadku niepowodzenia podstawowego. Aby uzyskać więcej informacji, zobacz [usługi Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)firmy [metody rozsyłania ruchu priorytetu.](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)
+Należy zauważyć, że te scenariusze są oparte na konfiguracjach pasywnych, ponieważ są one objęte użyciem usługi Azure Storage. Ten wzorzec składa się z wdrażania aplikacji funkcji Backup (pasywnej) w innym regionie. Traffic Manager będzie monitorować podstawową (aktywną) aplikację funkcji pod kątem dostępności. Jeśli podstawowy zakończy się niepowodzeniem, nastąpi przełączenie w tryb failover do aplikacji funkcji Backup. Aby uzyskać więcej informacji, [](https://azure.microsoft.com/services/traffic-manager/)Zobacz Traffic Manager [priorytetowa Metoda routingu.](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)
 
 >[!NOTE]
 >
-> - Proponowane konfiguracji aktywne-pasywne gwarantuje, czy klient zawsze jest w stanie do wyzwolenia nowych mechanizmów za pośrednictwem protokołu HTTP. Jednak dzięki dwóm aplikacjom funkcji, udostępnianie tego samego magazynu, w wyniku przetwarzania w tle będą dystrybuowane między obie z nich, rywalizując o wiadomości w tej samej kolejki. Ta konfiguracja jest naliczana opłata w kosztach dodano ruchu wychodzącego dla aplikacji funkcji pomocniczej.
-> - Podstawowe Centrum konta i zadania magazynu są tworzone w regionie podstawowym, a są współużytkowane przez obie aplikacje funkcji.
-> - Wszystkie aplikacje funkcji, które są wdrażane nadmiarowo, muszą współużytkować tych samych kluczy dostępu do funkcji w przypadku aktywowania za pośrednictwem protokołu HTTP. Środowisko uruchomieniowe usługi Functions udostępnia [interfejsu API zarządzania](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) , który umożliwia klientom programowe Dodawanie, usuwanie i aktualizowanie klawiszy funkcyjnych.
+> - Proponowana konfiguracja aktywna-pasywna gwarantuje, że klient będzie zawsze mógł wyzwolić nowe aranżacje za pośrednictwem protokołu HTTP. Jednak w związku z tym, że dwie aplikacje funkcji współużytkują ten sam magazyn, przetwarzanie w tle będzie dystrybuowane między nimi, konkurując w przypadku komunikatów w tych samych kolejkach. Ta konfiguracja wiąże się z dodatkowymi kosztami ruchu wychodzącego dla aplikacji funkcji pomocniczej.
+> - Podstawowe konto magazynu i centrum zadań są tworzone w regionie podstawowym i są współużytkowane przez obie aplikacje funkcji.
+> - Wszystkie aplikacje funkcji, które są wdrażane nadmiarowo, muszą współużytkować te same klucze dostępu do funkcji w przypadku aktywowania za pośrednictwem protokołu HTTP. Środowisko uruchomieniowe funkcji udostępnia [interfejs API zarządzania](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) , który umożliwia konsumentom programistyczne Dodawanie, usuwanie i aktualizowanie kluczy funkcji.
 
-## <a name="scenario-1---load-balanced-compute-with-shared-storage"></a>Scenariusz 1 — obliczeniowe przy użyciu magazynu udostępnionego ze zrównoważonym obciążeniem
+## <a name="scenario-1---load-balanced-compute-with-shared-storage"></a>Scenariusz 1 — Równoważenie obciążenia z magazynem udostępnionym
 
-W przypadku awarii infrastruktury obliczeniowej na platformie Azure aplikacji funkcji mogą stać się niedostępne. Aby zminimalizować możliwości taki Przestój, w tym scenariuszu dwie aplikacje funkcji wdrożone w różnych regionach.
-Usługa Traffic Manager jest skonfigurowana do wykrywania problemów w aplikacji funkcji podstawowej i automatyczne przekierowywanie ruchu do aplikacji funkcji w regionie pomocniczym. Tej aplikacji funkcji udostępnia Centrum zadań i tego samego konta usługi Azure Storage. W związku z tym stan aplikacji funkcji nie zostanie utracony i zwykle wznowić pracę. Po przywróceniu kondycji do regionu podstawowego usługi Azure Traffic Manager zostanie automatycznie uruchomiony kierowania żądań do tej aplikacji funkcji.
+Jeśli infrastruktura obliczeniowa na platformie Azure ulegnie awarii, aplikacja funkcji może stać się niedostępna. Aby zminimalizować prawdopodobieństwo takiego przestoju, w tym scenariuszu są stosowane dwie aplikacje funkcji wdrożone w różnych regionach.
+Traffic Manager jest skonfigurowany do wykrywania problemów w podstawowej aplikacji funkcji i automatycznego przekierowania ruchu do aplikacji funkcji w regionie pomocniczym. Ta aplikacja funkcji udostępnia to samo konto usługi Azure Storage i centrum zadań. W związku z tym stan aplikacji funkcji nie zostanie utracony, a działanie można wznowić w zwykły sposób. Gdy kondycja zostanie przywrócona do regionu podstawowego, usługa Azure Traffic Manager będzie automatycznie uruchamiać żądania routingu do tej aplikacji funkcji.
 
-![Diagram przedstawiający Scenariusz 1.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario01.png)
+![Diagram przedstawiający scenariusz 1.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario01.png)
 
-Istnieje kilka korzyści, korzystając z tego scenariusza wdrażania:
+Korzystanie z tego scenariusza wdrażania wiąże się z kilkoma korzyściami:
 
-- W przypadku niepowodzenia infrastrukturę obliczeniową pracy można wznowić w pracy nad regionu bez utraty stanu.
-- Usługa Traffic Manager zajmuje się automatycznie z automatycznej pracy awaryjnej do aplikacji funkcji w dobrej kondycji.
-- Usługa Traffic Manager automatycznie ponownie nawiązuje ruch do aplikacji głównej funkcji po awarii została poprawiona.
+- W przypadku niepowodzenia infrastruktury obliczeniowej można wznowić pracę w regionie pracy awaryjnej bez utraty stanu.
+- Traffic Manager automatycznie działa w trybie failover w aplikacji funkcji w dobrej kondycji.
+- Traffic Manager automatycznie przyłączyć ruch do podstawowej aplikacji funkcji po rozwiązaniu awarii.
 
-Jednak w tym scenariuszu należy wziąć pod uwagę:
+Jednak w tym scenariuszu należy wziąć pod uwagę następujące zagadnienia:
 
-- Jeśli aplikacja funkcji jest wdrażany za pomocą dedykowanego planu usługi App Service, replikowanie infrastrukturę obliczeniową w pracy za pośrednictwem centrum danych zwiększa koszty.
-- Ten scenariusz obejmuje awarii na infrastrukturę obliczeniową, ale konto magazynu w dalszym ciągu być pojedynczym punktem awarii dla aplikacji funkcji. W przypadku awarii magazynu aplikacji wystąpi Przestój.
-- Jeśli aplikacja funkcji jest w trybie Failover, powoduje to zwiększenie opóźnienia, ponieważ system będzie dostępu do jego konta magazynu w regionach.
-- Uzyskiwanie dostępu do usługi storage w innym regionie, gdzie jest zlokalizowany spowoduje naliczenie wyższych kosztów ze względu na ruch wychodzący w sieci.
-- W tym scenariuszu zależy od tego w usłudze Traffic Manager. Biorąc pod uwagę [jak działa usługa Traffic Manager](../../traffic-manager/traffic-manager-how-it-works.md), być może trochę czasu, aż aplikacja kliencka, która wykorzystuje funkcję trwałego musi ponownie zapytanie adres aplikacji funkcji z usługi Traffic Manager.
+- Jeśli aplikacja funkcji jest wdrażana przy użyciu dedykowanego planu App Service, replikowanie infrastruktury obliczeniowej w centrum danych w trybie failover zwiększy koszty.
+- Ten scenariusz obejmuje awarię infrastruktury obliczeniowej, ale konto magazynu jest nadal single point of failure dla aplikacji funkcji. Jeśli wystąpi awaria magazynu, aplikacja ponosi przestoje.
+- Jeśli aplikacja funkcji zostanie przełączona w tryb failover, nastąpi zwiększenie opóźnienia, ponieważ będzie miało dostęp do konta magazynu w różnych regionach.
+- Uzyskiwanie dostępu do usługi magazynu z innego regionu, w którym się znajduje, jest w większym zakresie ze względu na ruch wychodzący z sieci.
+- Ten scenariusz zależy od Traffic Manager. Biorąc pod uwagę [sposób działania Traffic Manager](../../traffic-manager/traffic-manager-how-it-works.md), może to być czasochłonne, dopóki aplikacja kliencka korzystająca z funkcji trwałej nie musi ponownie wykonać zapytania dotyczącego adresu aplikacji funkcji z Traffic Manager.
 
-## <a name="scenario-2---load-balanced-compute-with-regional-storage"></a>Scenariusz 2 — obliczeniowe przy użyciu magazynu regionalnego ze zrównoważonym obciążeniem
+## <a name="scenario-2---load-balanced-compute-with-regional-storage"></a>Scenariusz 2 — zrównoważone obciążenie obliczeniowe z magazynem regionalnym
 
-Poprzedni scenariusz dotyczy tylko w przypadku awarii w infrastrukturze obliczeniowej. W przypadku awarii usługi magazynu spowoduje awarię aplikacji funkcji.
-W celu zapewnienia nieprzerwanego działania funkcje trwałe, w tym scenariuszu użyto konta lokalnego magazynu w każdym regionie, do której są wdrażane aplikacje funkcji.
+Poprzedni scenariusz dotyczy tylko przypadku awarii w infrastrukturze obliczeniowej. Jeśli usługa magazynu ulegnie awarii, spowoduje to awarię aplikacji funkcji.
+Aby zapewnić ciągłą eksploatację trwałych funkcji, w tym scenariuszu jest stosowane konto magazynu lokalnego w każdym regionie, w którym są wdrażane aplikacje funkcji.
 
-![Diagram przedstawiający Scenariusz 2.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario02.png)
+![Diagram przedstawiający scenariusz 2.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario02.png)
 
-Takie podejście wprowadza ulepszenia w poprzednim scenariuszu:
+Takie podejście dodaje ulepszenia w poprzednim scenariuszu:
 
-- Jeśli aplikacja funkcji nie powiedzie się, usługa Traffic Manager dba o przechodzenie w tryb failover do regionu pomocniczego. Jednakże ponieważ aplikacja funkcji opiera się na swoje własne konta magazynu, trwałe funkcje kontynuować pracę.
-- Podczas pracy awaryjnej istnieje nie dodatkowe opóźnienie w pracy w regionie, ponieważ aplikacja funkcji i konta magazynu mają wspólną lokalizację.
-- Błąd warstwy magazynu spowoduje błędy w funkcje trwałe, które z kolei spowoduje wyzwolenie przekierowanie do pracy nad regionu. Ponownie ponieważ aplikacja funkcji i magazynu są izolowane na regiony, funkcje trwałe będą nadal działać.
+- Jeśli aplikacja funkcji ulegnie awarii, Traffic Manager zajmie przechodzenie w tryb failover do regionu pomocniczego. Jednak ponieważ aplikacja funkcji korzysta z własnego konta magazynu, funkcje trwałe nadal działają.
+- W przypadku przełączenia w tryb failover nie ma dodatkowych opóźnień w regionie przełączenia w tryb failover, ponieważ aplikacja funkcji i konto magazynu znajdują się na tym samym miejscu.
+- Awaria warstwy magazynu spowoduje błędy w funkcjach trwałych, co z kolei spowoduje wyzwolenie przekierowania do regionu trybu failover w trybie failover. Ponownie, ponieważ aplikacja i magazyn funkcji są izolowane dla każdego regionu, funkcje trwałe będą nadal działać.
 
-Istotne zagadnienia dotyczące tego scenariusza:
+Ważne zagadnienia dotyczące tego scenariusza:
 
-- Jeśli aplikacja funkcji jest wdrażany za pomocą dedykowanego planu usługi App Service, replikowanie infrastrukturę obliczeniową w pracy za pośrednictwem centrum danych zwiększa koszty.
-- Bieżący stan nie jest w trybie Failover, co oznacza, że wykonywanie i utworzono punkt kontrolny funkcji zakończy się niepowodzeniem. To Ty aplikacji klienckiej ponawiania/ponowne uruchomienie pracy.
+- Jeśli aplikacja funkcji jest wdrażana przy użyciu dedykowanego planu AppService, replikowanie infrastruktury obliczeniowej w centrum danych w trybie failover zwiększy koszty.
+- Bieżący stan nie przejdzie w tryb failover, co oznacza, że wykonywanie i funkcje z punktami kontrolnymi zakończą się niepowodzeniem. Do aplikacji klienckiej można ponowić próbę wykonania operacji lub uruchomić ją ponownie.
 
-## <a name="scenario-3---load-balanced-compute-with-grs-shared-storage"></a>Scenariusz 3 - obliczeniowe przy użyciu magazynu GRS udostępnionych ze zrównoważonym obciążeniem
+## <a name="scenario-3---load-balanced-compute-with-grs-shared-storage"></a>Scenariusz 3 — przetwarzanie z równoważeniem obciążenia z magazynem udostępnionym GRS
 
-Ten scenariusz jest modyfikacja za pośrednictwem pierwszego scenariusza, wykonania na koncie magazynu udostępnionego. Główną różnicą, że konto magazynu jest tworzone z włączoną replikacją geograficzną.
-Funkcjonalnie w tym scenariuszu zapewnia te same zalety co scenariusza 1, ale umożliwia korzyści odzyskiwania dodatkowe dane:
+Ten scenariusz jest modyfikacją w pierwszym scenariuszu, implementując konto magazynu udostępnionego. Główna różnica polega na tym, że konto magazynu jest tworzone z włączoną replikacją geograficzną.
+Funkcjonalnie ten scenariusz zapewnia takie same zalety jak scenariusz 1, ale zapewnia dodatkowe korzyści z odzyskiwania danych:
 
-- Magazyn geograficznie nadmiarowy (GRS) i GRS dostęp do odczytu (RA-GRS) maksymalizację dostępności dla konta magazynu.
-- W przypadku awarii region, usługi magazynu jest jedną z możliwości, operacji w centrum danych określić, że magazyn należy przełączone w tryb failover w regionie pomocniczym. W tym przypadku dostępu do konta magazynu zostanie przekierowany przezroczyste replikacją geograficzną kopię na koncie magazynu bez interwencji użytkownika.
-- W takim przypadku stan funkcje trwałe zostaną zachowane aż ostatniej replikacji konta magazynu, co kilka minut.
+- Magazyn Geograficznie nadmiarowy (GRS) oraz dostęp do odczytu (RA-GRS) dla konta magazynu.
+- W przypadku awarii regionu usługi magazynu jedna z możliwości polega na tym, że operacje w centrum danych określają, że magazyn musi być przełączona w tryb failover do regionu pomocniczego. W takim przypadku dostęp do konta magazynu zostanie przekierowany w sposób niewidoczny do replikowanej geograficznie kopii konta magazynu bez interwencji użytkownika.
+- W takim przypadku stan funkcji trwałych zostanie zachowany do ostatniej replikacji konta magazynu, co kilka minut.
 
-Podobnie jak w innych scenariuszach, istnieją ważne kwestie:
+Podobnie jak w przypadku innych scenariuszy, istnieją ważne zagadnienia:
 
-- Tryb failover do repliki jest wykonywane przez operatorów centrów danych i może upłynąć trochę czasu. Do tego czasu aplikacja funkcji będzie niekorzystnie wpłynąć na awarię.
-- Istnieje zwiększona koszt używania kont magazynu z replikacją geograficzną.
-- GRS występuje asynchronicznie. Niektóre z najnowszych transakcji mogą zostać utracone z powodu opóźnienia proces replikacji.
+- Przełączenie w tryb failover do repliki odbywa się za pomocą operatorów centrów danych. może to zająć trochę czasu. Do tego czasu aplikacja funkcji pozostanie nieprzerwana.
+- Istnieje zwiększony koszt korzystania z kont magazynu replikowanych geograficznie.
+- GRS odbywa się asynchronicznie. Niektóre z najnowszych transakcji mogą zostać utracone z powodu opóźnienia procesu replikacji.
 
 ![Diagram przedstawiający Scenariusz 3.](./media/durable-functions-disaster-recovery-geo-distribution/durable-functions-geo-scenario03.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Przeczytaj więcej o [projektowanie wysoko dostępnych aplikacji przy użyciu RA-GRS](../../storage/common/storage-designing-ha-apps-with-ragrs.md)
+Więcej informacji na temat [projektowania aplikacji o wysokiej dostępności przy użyciu usługi RA-GRS](../../storage/common/storage-designing-ha-apps-with-ragrs.md)

@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 7ab921d889c48ccd8be469328e2690cb1cb2d8b2
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 7dba929101a928f0bbcb8553d6dd3b3043d74853
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050044"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114848"
 ---
 # <a name="install-and-run-face-containers"></a>Instalowanie i uruchamianie kontenerów frontu
 
@@ -150,7 +150,6 @@ Aby uzyskać więcej informacji o tych opcjach, zobacz [skonfigurować kontenery
 
 W tym artykule przedstawiono koncepcje i przepływ pracy dotyczące pobierania, instalowania i uruchamiania kontenerów interfejs API rozpoznawania twarzy. Podsumowanie:
 
-* Interfejs API rozpoznawania twarzy udostępnia trzy kontenery systemu Linux dla platformy Docker, które zapewniają wyodrębnianie kluczowych fraz, wykrywanie języka i analizę tonacji.
 * Obrazy kontenerów są pobierane z Azure Container Registry.
 * Obrazy kontenera Uruchom na platformie Docker.
 * Można użyć interfejsu API REST lub zestawu SDK do wywoływania operacji w kontenerach interfejs API rozpoznawania twarzy, określając identyfikator URI hosta kontenera.

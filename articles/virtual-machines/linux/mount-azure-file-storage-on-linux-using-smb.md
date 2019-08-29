@@ -1,6 +1,6 @@
 ---
-title: Instalowanie usługi Azure File storage na maszynach wirtualnych systemu Linux przy użyciu protokołu SMB | Dokumentacja firmy Microsoft
-description: Jak zainstalować usługę Azure File storage na maszynach wirtualnych systemu Linux przy użyciu protokołu SMB przy użyciu wiersza polecenia platformy Azure
+title: Instalowanie usługi Azure File Storage na maszynach wirtualnych z systemem Linux przy użyciu protokołu SMB | Microsoft Docs
+description: Jak zainstalować usługę Azure File Storage na maszynach wirtualnych z systemem Linux przy użyciu protokołu SMB i interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: cynthn
@@ -8,33 +8,32 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: 9ca58bbc6f7b983ff545eb2dca6240359637e214
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: c394b013b057a78e99cafc0adde9727d0a75a87c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671225"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091826"
 ---
-# <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Instalowanie usługi Azure File storage na maszynach wirtualnych systemu Linux przy użyciu protokołu SMB
+# <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>Instalowanie usługi Azure File Storage na maszynach wirtualnych z systemem Linux przy użyciu protokołu SMB
 
-W tym artykule pokazano, jak używać usługi Azure File storage na maszynie Wirtualnej z systemem Linux przy użyciu protokołu SMB instalacji z wiersza polecenia platformy Azure. Usługa Azure File storage oferuje udziały plików w chmurze przy użyciu standardowego protokołu SMB. 
+W tym artykule pokazano, jak używać usługi Azure File Storage na maszynie wirtualnej z systemem Linux przy użyciu instalacji protokołu SMB z interfejsem wiersza polecenia platformy Azure. Usługa Azure File Storage oferuje udziały plików w chmurze przy użyciu standardowego protokołu SMB. 
 
-Usługa File storage oferuje udziały plików w chmurze, korzystające ze standardowego protokołu SMB. Można zainstalować udział plików z dowolnego systemu operacyjnego, który obsługuje protokół SMB 3.0. Gdy używasz instalacji SMB w systemie Linux, można korzystać łatwe tworzenie kopii zapasowych niezawodne, trwały archiwizacji lokalizację magazynu, który jest obsługiwany przez umowy SLA.
+Usługa File Storage oferuje udziały plików w chmurze, które używają standardowego protokołu SMB. Udział plików można zainstalować z dowolnego systemu operacyjnego, który obsługuje protokół SMB 3,0. W przypadku korzystania z instalacji SMB w systemie Linux można łatwo tworzyć kopie zapasowe w niezawodnej, trwałej lokalizacji magazynu, która jest obsługiwana przez umowę SLA.
 
-Przenoszenie plików z maszyny Wirtualnej do instalacji SMB, który znajduje się File Storage jest doskonałym sposobem debugowania dzienniki. Ten sam udział SMB mogą być instalowane lokalnie na swojej stacji roboczej Mac, Linux lub Windows. Protokół SMB jest najlepsze rozwiązanie do przesyłania strumieniowego systemu Linux lub dzienniki aplikacji w czasie rzeczywistym, ponieważ protokół SMB nie został opracowany pod kątem obsługi tych obowiązków mocno rejestrowania. Narzędzia warstwy rejestrowania dedykowaną, ujednolicone, takiego jak Fluentd będzie lepszym rozwiązaniem niż SMB zbierania systemu Linux i aplikacji, rejestrowanie danych wyjściowych.
+Przeniesienie plików z maszyny wirtualnej do instalacji SMB, która jest hostowana w usłudze File Storage, to doskonały sposób na Debugowanie dzienników. Ten sam udział SMB można zainstalować lokalnie na komputerze Mac, w systemie Linux lub na stacji roboczej z systemem Windows. Protokół SMB nie jest najlepszym rozwiązaniem do przesyłania strumieniowego dzienników systemu Linux lub aplikacji w czasie rzeczywistym, ponieważ nie jest on zbudowany w celu obsługi takich dużych obowiązków rejestrowania. Dedykowane, ujednolicone narzędzie do warstwy rejestrowania, takie jak Fluent, będzie lepszym rozwiązaniem niż SMB do zbierania danych wyjściowych systemu Linux i rejestrowania aplikacji.
 
-Ten przewodnik wymaga, że korzystasz z wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby odnaleźć wersję, uruchom polecenie **az --version**. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
+Ten przewodnik wymaga uruchomienia interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby odnaleźć wersję, uruchom polecenie **az --version**. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
 
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów o nazwie *myResourceGroup* w *wschodnie stany USA* lokalizacji.
+Utwórz grupę zasobów o nazwie moja resourceName w lokalizacji *Wschodnie stany USA* .
 
 ```bash
 az group create --name myResourceGroup --location eastus
@@ -42,7 +41,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Utwórz nowe konto magazynu w grupie zasobów, które zostały utworzone za pomocą [Tworzenie konta magazynu az](/cli/azure/storage/account). W tym przykładzie tworzone jest konto magazynu o nazwie *mySTORAGEACCT\<losową liczbę >* i umieszczenie nazwy tego konta magazynu w zmiennej **STORAGEACCT**. Nazwy kont magazynu muszą być unikatowe, za pomocą `$RANDOM` dołącza numer-to-end, aby była unikatowa.
+Utwórz nowe konto magazynu w utworzonej grupie zasobów przy użyciu polecenia [AZ Storage account Create](/cli/azure/storage/account). Ten przykład tworzy konto magazynu o nazwie *ciąg mystorageacct\<liczba losowa >* i umieszcza nazwę tego konta magazynu w zmiennej **STORAGEACCT**. Nazwy kont magazynu muszą być unikatowe, korzystając `$RANDOM` z dołączania liczby do końca, aby uczynić ją unikatową.
 
 ```bash
 STORAGEACCT=$(az storage account create \
@@ -55,9 +54,9 @@ STORAGEACCT=$(az storage account create \
 
 ## <a name="get-the-storage-key"></a>Pobieranie klucza magazynu
 
-Podczas tworzenia konta magazynu, klucze konta są tworzone w parach, dzięki czemu można obracać bez żadnych zakłóceń. Po przełączeniu się do drugiego klucza w parze, utworzysz nową parę kluczy. Nowe klucze konta magazynu są zawsze tworzone w parach, dzięki czemu zawsze mieć co najmniej jeden klucz konta magazynu nieużywane gotowe przełączyć się do.
+Podczas tworzenia konta magazynu klucze konta są tworzone w parach, aby można było je obrócić bez przerwy w działaniu usługi. Po przełączeniu do drugiego klucza w parze należy utworzyć nową parę kluczy. Nowe klucze konta magazynu są zawsze tworzone w parach, więc zawsze masz co najmniej jeden nieużywany klucz konta magazynu gotowy do przełączenia się do.
 
-Wyświetl klucze konta magazynu przy użyciu [listy kluczy kont magazynu az](/cli/azure/storage/account/keys). W tym przykładzie przechowuje wartość klucz 1 w **atrybutu STORAGEKEY** zmiennej.
+Wyświetl klucze konta magazynu za pomocą polecenia [AZ Storage account Keys list](/cli/azure/storage/account/keys). W tym przykładzie wartość klucza 1 jest przechowywana w zmiennej **STORAGEKEY** .
 
 ```bash
 STORAGEKEY=$(az storage account keys list \
@@ -68,11 +67,11 @@ STORAGEKEY=$(az storage account keys list \
 
 ## <a name="create-a-file-share"></a>Tworzenie udziału plików
 
-Utwórz plik magazynu udziału za pomocą [Utwórz udział magazynu az](/cli/azure/storage/share). 
+Utwórz udział magazynu plików za pomocą polecenia [AZ Storage Share Create](/cli/azure/storage/share). 
 
-Nazwy udziałów muszą być małe litery, cyfry i pojedyncze łączniki, ale nie może zaczynać się łącznikiem. Szczegółowe informacje o nazwach plików i udziałów plików można znaleźć w temacie [Nazywanie i odwoływanie się do udziałów, katalogów, plików i metadanych](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
+Nazwy udziałów muszą składać się z małych liter, cyfr i pojedynczych łączników, ale nie mogą rozpoczynać się od łącznika. Szczegółowe informacje o nazwach plików i udziałów plików można znaleźć w temacie [Nazywanie i odwoływanie się do udziałów, katalogów, plików i metadanych](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata).
 
-W tym przykładzie tworzy udział o nazwie *myshare* z limitem przydziału 10 GiB. 
+W tym przykładzie tworzony jest udział o nazwie GIB z limitem przydziału 10. 
 
 ```bash
 az storage share create --name myshare \
@@ -83,38 +82,38 @@ az storage share create --name myshare \
 
 ## <a name="create-a-mount-point"></a>Utwórz punkt instalacji
 
-Aby zainstalować udział plików platformy Azure na komputer z systemem Linux, należy się upewnić, że masz **cifs utils** zainstalowany pakiet. Aby uzyskać instrukcje dotyczące instalacji, zobacz [zainstaluj pakiet cifs utils dla dystrybucji systemu Linux](../../storage/files/storage-how-to-use-files-linux.md#install-cifs-utils).
+Aby zainstalować udział plików platformy Azure na komputerze z systemem Linux, należy upewnić się, że jest zainstalowany pakiet **CIFS-** narzędzia. Aby uzyskać instrukcje dotyczące instalacji, zobacz [Instalowanie pakietu CIFS-narzędzia dla dystrybucji systemu Linux](../../storage/files/storage-how-to-use-files-linux.md#install-cifs-utils).
 
-Usługa Azure Files korzysta z protokołu SMB, który komunikuje się za pośrednictwem portu TCP 445.  Jeśli występują problemy z instalowania udziału plików platformy Azure, upewnij się, że Zapora nie blokuje portu TCP 445.
+Azure Files używa protokołu SMB, który komunikuje się za pośrednictwem portu TCP 445.  Jeśli masz problemy z instalowaniem udziału plików platformy Azure, upewnij się, że Zapora nie blokuje portu TCP 445.
 
 
 ```bash
 mkdir -p /mnt/MyAzureFileShare
 ```
 
-## <a name="mount-the-share"></a>Instalowanie udziału
+## <a name="mount-the-share"></a>Zainstaluj udział
 
-Instalowanie udziału plików platformy Azure do katalogu lokalnego. 
+Zainstaluj udział plików platformy Azure w katalogu lokalnym. 
 
 ```bash
 sudo mount -t cifs //$STORAGEACCT.file.core.windows.net/myshare /mnt/MyAzureFileShare -o vers=3.0,username=$STORAGEACCT,password=$STORAGEKEY,dir_mode=0777,file_mode=0777,serverino
 ```
 
-Powyższe polecenie używa [instalacji](https://linux.die.net/man/8/mount) polecenie, aby zainstalować udział plików platformy Azure i opcje specyficzne dla [cifs](https://linux.die.net/man/8/mount.cifs). W szczególności file_mode i dir_mode opcje zestawu plików i katalogów do uprawnień `0777`. `0777` Umożliwia uprawnień odczytu, zapisu i wykonywania uprawnień dla wszystkich użytkowników. Te uprawnienia można zmienić, zastępując wartości z innymi [uprawnienia chmod](https://en.wikipedia.org/wiki/Chmod). Można również użyć innych [cifs](https://linux.die.net/man/8/mount.cifs) opcje, takie jak identyfikator GID dostępu lub identyfikatora uid. 
+Powyższe polecenie używa polecenia [Mount](https://linux.die.net/man/8/mount) do zainstalowania udziału plików platformy Azure i opcji specyficznych dla protokołu [CIFS](https://linux.die.net/man/8/mount.cifs). W odniesieniu do opcji file_mode i dir_mode można ustawić pliki i `0777`katalogi na uprawnienia. `0777` Uprawnienie przyznaje uprawnienia Odczyt, zapis i wykonywanie wszystkim użytkownikom. Te uprawnienia można zmienić, zastępując wartości innymi [uprawnieniami chmod](https://en.wikipedia.org/wiki/Chmod). Można również użyć innych opcji [CIFS](https://linux.die.net/man/8/mount.cifs) , takich jak gid lub UID. 
 
 
 ## <a name="persist-the-mount"></a>Utrwalanie instalacji
 
-Po ponownym uruchomieniu maszyny Wirtualnej systemu Linux podczas zamykania jest odinstalowane zainstalowanego udziału SMB. Aby ponownie zainstalować udziału SMB podczas rozruchu, dodanie wiersza do/etc/fstab w systemie Linux. Linux używa pliku fstab, aby wyświetlić listę systemów plików, których potrzebuje do zainstalowania podczas procesu rozruchu. Dodawanie udziału SMB zapewnia udział usługi File storage trwale zainstalowany system plików dla maszyny Wirtualnej systemu Linux. Dodawanie usługi File storage udziału SMB do nowej maszyny Wirtualnej jest możliwe w przypadku, gdy korzystasz z pakietu cloud-init.
+Po ponownym uruchomieniu maszyny wirtualnej z systemem Linux zainstalowany udział SMB zostanie odinstalowany podczas zamykania. Aby ponownie zainstalować udział SMB przy rozruchu, Dodaj wiersz do katalogu/etc/fstab. systemu Linux System Linux używa pliku fstab, aby wyświetlić listę systemów plików, które muszą zostać zainstalowane podczas procesu rozruchu. Dodanie udziału SMB gwarantuje, że udział magazynu plików jest trwale zainstalowanym systemem plików dla maszyny wirtualnej z systemem Linux. Dodawanie udziału SMB magazynu plików do nowej maszyny wirtualnej jest możliwe w przypadku korzystania z funkcji Cloud-init.
 
 ```bash
 //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountpoint cifs vers=3.0,username=mystorageaccount,password=myStorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
 ```
-Aby zwiększyć bezpieczeństwo w środowiskach produkcyjnych należy przechowywać swoje poświadczenia poza fstab.
+W celu zwiększenia bezpieczeństwa w środowiskach produkcyjnych należy przechowywać swoje poświadczenia poza programem fstab.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Dostosowywanie maszyny Wirtualnej z systemem Linux podczas tworzenia za pomocą pakietu cloud-init](using-cloud-init.md)
+- [Dostosowywanie maszyny wirtualnej z systemem Linux podczas tworzenia przy użyciu funkcji Cloud-init](using-cloud-init.md)
 - [Dodawanie dysku do maszyny wirtualnej z systemem Linux](add-disk.md)
-- [Szyfrowanie dysków na maszynie Wirtualnej z systemem Linux przy użyciu wiersza polecenia platformy Azure](encrypt-disks.md)
+- [Szyfrowanie dysków na maszynie wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure](encrypt-disks.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Wystawiać szablonów w usłudze Azure API Management | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dostosować zawartość strony problem w portalu dla deweloperów w usłudze Azure API Management.
+title: Szablony problemów na platformie Azure API Management | Microsoft Docs
+description: Dowiedz się, jak dostosować zawartość stron problemu w portalu dla deweloperów w usłudze Azure API Management.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -10,33 +10,32 @@ ms.assetid: 47da4bb2-426e-4e53-8fa7-214ee2e3ab37
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: c70e88a572bc261ad9d25f9a742b1987d0c19b44
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 93681062b325756f720f6fe8280ee6b874fea284
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60656717"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072255"
 ---
-# <a name="issue-templates-in-azure-api-management"></a>Szablony problem w usłudze Azure API Management
-Usługa Azure API Management zapewnia możliwość dostosować zawartość portalu dla deweloperów przy użyciu zestawu szablonów, które ich zawartość. Przy użyciu [DotLiquid](http://dotliquidmarkup.org/) składni i Edytor wybranych przez użytkownika, takich jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i zlokalizowanych podany zbiór [zasoby ciągu](api-management-template-resources.md#strings), [symbol zasoby](api-management-template-resources.md#glyphs), i [stronie kontrolki](api-management-page-controls.md), masz dużą elastyczność konfigurowania zawartości stron, zgodnie z potrzebami przy użyciu tych szablonów.  
+# <a name="issue-templates-in-azure-api-management"></a>Szablony problemów na platformie Azure API Management
+Usługa Azure API Management umożliwia dostosowanie zawartości stron portalu dla deweloperów przy użyciu zestawu szablonów, które konfigurują ich zawartość. Korzystając z składni [DotLiquid](http://dotliquidmarkup.org/) i wybranego edytora, takiego jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i dostępnego zestawu zlokalizowanych [zasobów ciągów](api-management-template-resources.md#strings), [zasobów symboli](api-management-template-resources.md#glyphs)i [kontrolek stron](api-management-page-controls.md), masz doskonałą elastyczność konfigurowania zawartość stron wyświetlanych w postaci dopasowania przy użyciu tych szablonów.  
   
- Szablony w tej sekcji umożliwiają dostosowanie zawartości stron problem w portalu dla deweloperów.  
+ Szablony w tej sekcji umożliwiają dostosowanie zawartości stron problemu w portalu dla deweloperów.  
   
 -   [Lista problemów](#IssueList)  
   
 > [!NOTE]
->  Przykładowe szablony domyślne są uwzględnione w poniższej dokumentacji, ale mogą ulec zmianie ze względu na stałe udoskonalenia. Szablony domyślne na żywo można wyświetlić w portalu dla deweloperów, przechodząc do żądanego szablony osobno. Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [Dostosowywanie portalu dla deweloperów usługi API Management przy użyciu szablonów](api-management-developer-portal-templates.md).  
+>  Przykładowe szablony domyślne są zawarte w poniższej dokumentacji, ale mogą ulec zmianie ze względu na ciągłe ulepszenia. Możesz wyświetlić szablony domyślne na żywo w portalu dla deweloperów, przechodząc do żądanych poszczególnych szablonów. Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [How to dostosowywanie portalu deweloperów API Management przy użyciu szablonów](api-management-developer-portal-templates.md).  
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="IssueList"></a> Lista problemów  
- **Lista problemów** szablon umożliwia dostosowanie treści na stronie listy problem w portalu dla deweloperów.  
+##  <a name="IssueList"></a>Lista problemów  
+ Szablon **Lista problemów** umożliwia dostosowanie treści strony Lista problemów w portalu dla deweloperów.  
   
- ![Portalu dla deweloperów listy wystawiania](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "portalu dla deweloperów systemu usługi APIM, oznacza problem z listy")  
+ ![Portal dla deweloperów listy problemów](./media/api-management-issue-templates/APIM-Issue-List-Developer-Portal.png "Portal dla deweloperów listy problemów APIM")  
   
 ### <a name="default-template"></a>Szablon domyślny  
   
@@ -90,20 +89,20 @@ Usługa Azure API Management zapewnia możliwość dostosować zawartość porta
 </div>
 ```
   
-### <a name="controls"></a>Kontrolki  
- `Issue list` Szablonu może korzystać z następujących [stronie kontrolki](api-management-page-controls.md).  
+### <a name="controls"></a>Formanty  
+ Szablon może korzystać z następujących [kontrolek strony.](api-management-page-controls.md) `Issue list`  
   
 -   [paging-control](api-management-page-controls.md#paging-control)  
   
 ### <a name="data-model"></a>Model danych  
   
-|Właściwość|Typ|Opis|  
+|Właściwość|Type|Opis|  
 |--------------|----------|-----------------|  
-|`Issues`|Kolekcja [problem](api-management-template-data-model-reference.md#Issue) jednostek.|Problemy widoczne dla bieżącego użytkownika.|  
-|`Paging`|[Stronicowanie](api-management-template-data-model-reference.md#Paging) jednostki.|Informacje o stronicowania dla kolekcji.|  
-|`IsAuthenticated`|wartość logiczna|Czy bieżący użytkownik jest zalogowany do portalu dla deweloperów.|  
-|`CanReportIssues`|wartość logiczna|Czy bieżący użytkownik ma uprawnienia do pliku wystąpił problem.|  
-|`Search`|string|Ta właściwość jest przestarzała i nie powinna być używana.|  
+|`Issues`|Kolekcja jednostek [problemu](api-management-template-data-model-reference.md#Issue) .|Problemy widoczne dla bieżącego użytkownika.|  
+|`Paging`|[](api-management-template-data-model-reference.md#Paging) Jednostka stronicowania.|Informacje o stronicowaniu dla kolekcji aplikacji.|  
+|`IsAuthenticated`|boolean|Czy bieżący użytkownik jest zalogowany do portalu dla deweloperów.|  
+|`CanReportIssues`|boolean|Czy bieżący użytkownik ma uprawnienia do pliku problemu.|  
+|`Search`|ciąg|Ta właściwość jest przestarzała i nie powinna być używana.|  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  
   
@@ -136,5 +135,5 @@ Usługa Azure API Management zapewnia możliwość dostosować zawartość porta
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [Dostosowywanie portalu dla deweloperów usługi API Management przy użyciu szablonów](api-management-developer-portal-templates.md).
+## <a name="next-steps"></a>Następne kroki
+Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [How to dostosowywanie portalu deweloperów API Management przy użyciu szablonów](api-management-developer-portal-templates.md).

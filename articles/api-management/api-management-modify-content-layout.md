@@ -10,23 +10,22 @@ ms.assetid: 186128fe-41c0-4efb-9efe-2478ad4d103f
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: vlvinogr
-ms.openlocfilehash: fd9902a83a813daffc52e089e6e8bfc4137c5b8f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0a333b1fac78889b61829b869c23efea5e312adf
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60656649"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072261"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Modyfikowanie zawartości i układu stron w portalu deweloperów w usłudze Azure API Management
 Istnieją trzy podstawowe sposoby dostosowywania portalu deweloperów w usłudze Azure API Management:
 
-* [Edycja zawartości stron statycznych i elementów układu strony][modify-content-layout] (opisana w tym przewodniku)
-* [Aktualizacja stylów używanych dla elementów strony w portalu deweloperów][customize-styles]
-* [Modyfikowanie szablonów używanych dla stron wygenerowanych przez portal][portal-templates] (na przykład dokumentacji interfejsu API, produktów, uwierzytelniania użytkowników itp.)
+* [Edycja zawartości stron statycznych i elementów układu strony][modify-content-layout] (wyjaśniono w tym przewodniku)
+* [Aktualizowanie stylów używanych dla elementów strony w portalu dla deweloperów][customize-styles]
+* [Modyfikowanie szablonów używanych dla stron wygenerowanych przez portal][portal-templates] (na przykład dokumentacja interfejsu API, produkty, uwierzytelnianie użytkowników itp.)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -56,8 +55,8 @@ Portal deweloperów jest dostępny z poziomu witryny Azure Portal.
 Teraz nowy nagłówek powinien być widoczny na każdej stronie portalu dla deweloperów.
 
 ## <a name="next-steps"> </a>Następne kroki
-* [Aktualizacja stylów używanych dla elementów strony w portalu deweloperów][customize-styles]
-* [Modyfikowanie szablonów używanych dla stron wygenerowanych przez portal][portal-templates] (na przykład dokumentacji interfejsu API, produktów, uwierzytelniania użytkowników itp.)
+* [Aktualizowanie stylów używanych dla elementów strony w portalu dla deweloperów][customize-styles]
+* [Modyfikowanie szablonów używanych dla stron wygenerowanych przez portal][portal-templates] (na przykład dokumentacja interfejsu API, produkty, uwierzytelnianie użytkowników itp.)
 
 [Structure of developer portal pages]: #page-structure
 [Modifying the contents of a layout widget]: #modify-layout-widget

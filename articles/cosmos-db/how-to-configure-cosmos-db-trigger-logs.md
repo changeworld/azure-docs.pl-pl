@@ -3,15 +3,15 @@ title: Konfigurowanie i odczytywanie dzienników przy użyciu wyzwalacza Azure F
 description: Dowiedz się, jak uwidocznić dzienniki w potoku rejestrowania Azure Functions podczas korzystania z wyzwalacza Azure Functions dla Cosmos DB
 author: ealsur
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: ad53762ad490c5e8feedb83007b8721fe4883806
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 17b2d4854e3222e5bdb607c6c80b0ec5ed6177d3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334518"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093594"
 ---
 # <a name="how-to-configure-and-read-the-logs-when-using-azure-functions-trigger-for-cosmos-db"></a>Sposób konfigurowania i odczytywania dzienników przy użyciu wyzwalacza Azure Functions dla Cosmos DB
 

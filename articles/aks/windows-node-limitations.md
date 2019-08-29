@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 501aeb60eba1d94b4c5882a7c6cbfa8d0359e44d
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c2c9e3d29ced5f75873656e253ecdbab5efe7df8
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033912"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114402"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Bieżące ograniczenia dotyczące pul węzłów systemu Windows Server i obciążeń aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -28,7 +28,7 @@ W tym artykule opisano niektóre ograniczenia i koncepcje systemu operacyjnego d
 
 ## <a name="limitations-for-windows-server-in-kubernetes"></a>Ograniczenia dotyczące systemu Windows Server w Kubernetes
 
-Kontenery systemu Windows Server muszą działać na hoście kontenera z systemem Windows. Aby uruchomić kontenery systemu Windows Server w AKS, można [utworzyć pulę węzłów z systemem Windows Server][windows-node-cli] jako system operacyjny gościa. Obsługa puli węzłów serwera okna zawiera pewne ograniczenia, które są częścią nadrzędnego serwera systemu Windows w projekcie Kubernetes. Te ograniczenia nie są specyficzne dla AKS. Aby uzyskać więcej informacji o tej obsłudze nadrzędnej dla systemu Windows Server w Kubernetes, zobacz [kontenery systemu Windows Server w ograniczeniach Kubernetes](https://docs.microsoft.com/azure/aks/windows-node-limitations).
+Kontenery systemu Windows Server muszą działać na hoście kontenera z systemem Windows. Aby uruchomić kontenery systemu Windows Server w AKS, można [utworzyć pulę węzłów z systemem Windows Server][windows-node-cli] jako system operacyjny gościa. Obsługa puli węzłów serwera okna zawiera pewne ograniczenia, które są częścią nadrzędnego serwera systemu Windows w projekcie Kubernetes. Te ograniczenia nie są specyficzne dla AKS. Aby uzyskać więcej informacji o tej obsłudze nadrzędnej dla systemu Windows Server w Kubernetes, zobacz [kontenery systemu Windows Server w ograniczeniach Kubernetes](https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations).
 
 Następujące ograniczenia nadrzędne dla kontenerów systemu Windows Server w programie Kubernetes są istotne dla AKS:
 

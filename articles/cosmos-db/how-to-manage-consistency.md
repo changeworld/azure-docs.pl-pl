@@ -3,15 +3,15 @@ title: Dowiedz się, jak zarządzać spójnością w usłudze Azure Cosmos DB
 description: Dowiedz się, jak zarządzać spójnością w usłudze Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: mjbrown
-ms.openlocfilehash: 2617aba0d790209d83f410ee632ffad43c952d55
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: bc5554e2d56987e969894ba57052d548e1499938
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356422"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093301"
 ---
 # <a name="manage-consistency-levels-in-azure-cosmos-db"></a>Zarządzanie poziomami spójności w usłudze Azure Cosmos DB
 
@@ -236,7 +236,7 @@ Jak ostateczna jest spójność ostateczna? W przypadku średniego przypadku mo�
 ![Wykres PBS w witrynie Azure Portal](./media/how-to-manage-consistency/pbs-metric.png)
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej o zarządzaniu konfliktami danych lub przejdź do następnej kluczowej koncepcji w usłudze Azure Cosmos DB. Zobacz następujące artykuły:
 

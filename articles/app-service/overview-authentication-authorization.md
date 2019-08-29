@@ -10,18 +10,17 @@ ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: d01994dc4d01baed71bb3de56e069fac5597dc77
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: e308b44fffff451daa92cbf19209a1bcbfd4bff6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030854"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087981"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Uwierzytelnianie i autoryzacja w usłudze Azure App Service
 
@@ -109,7 +108,7 @@ W poniższej tabeli przedstawiono kroki przepływu uwierzytelniania.
 | Krok | Bez zestawu SDK dostawcy | Z zestawem SDK dostawcy |
 | - | - | - |
 | 1. Logowanie użytkownika | Przekierowuje klienta do programu `/.auth/login/<provider>`. | Kod klienta podpisuje użytkownika bezpośrednio przy użyciu zestawu SDK dostawcy i odbiera token uwierzytelniania. Aby uzyskać więcej informacji, zobacz dokumentację dostawcy. |
-| 2. Uwierzytelnianie końcowe | Dostawca przekierowuje klienta do programu `/.auth/login/<provider>/callback`. | Kod klienta [zapisuje token od dostawcy](app-service-authentication-how-to.md#validate-tokens-from-providers) do `/.auth/login/<provider>` walidacji. |
+| 2. Po uwierzytelnieniu | Dostawca przekierowuje klienta do programu `/.auth/login/<provider>/callback`. | Kod klienta [zapisuje token od dostawcy](app-service-authentication-how-to.md#validate-tokens-from-providers) do `/.auth/login/<provider>` walidacji. |
 | 3. Ustanów sesję uwierzytelnioną | App Service dodaje uwierzytelniony plik cookie do odpowiedzi. | App Service zwraca swój własny token uwierzytelniania do kodu klienta. |
 | 4. Obsługuj uwierzytelnioną zawartość | Klient zawiera plik cookie uwierzytelniania w kolejnych żądaniach (automatycznie obsłużonych przez przeglądarkę). | Kod klienta przedstawia token uwierzytelniania w `X-ZUMO-AUTH` nagłówku (automatycznie obsłużony przez Mobile Apps zestawy SDK klienta). |
 
@@ -125,7 +124,7 @@ W [Azure Portal](https://portal.azure.com)można skonfigurować autoryzację App
 
 Poniższe nagłówki opisują opcje.
 
-### <a name="allow-anonymous-requests-no-action"></a>Zezwalaj na żądania anonimowe (brak działania)
+### <a name="allow-anonymous-requests-no-action"></a>Zezwalaj na żądania anonimowe (bez akcji)
 
 Ta opcja umożliwia rozliczanie autoryzacji nieuwierzytelnionego ruchu do kodu aplikacji. W przypadku żądań uwierzytelnionych App Service również przekazuje informacje o uwierzytelnianiu w nagłówkach HTTP. 
 

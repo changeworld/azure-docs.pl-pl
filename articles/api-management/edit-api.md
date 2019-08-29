@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/08/2017
 ms.author: apimpm
-ms.openlocfilehash: 6f1a0cf6025cb3a398ab93320c6fcb69b1e62429
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6be36493fabce07838991c789e111e918a9a826d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60558095"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072151"
 ---
 # <a name="edit-an-api"></a>Edytowanie interfejsu API
 
@@ -62,7 +61,7 @@ Możesz zaktualizować interfejs API zaplecza w witrynie Azure Portal, wykonują
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Przykłady zasad usługi APIM](policy-samples.md)

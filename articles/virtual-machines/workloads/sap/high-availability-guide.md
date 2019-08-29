@@ -1,6 +1,6 @@
 ---
-title: Azure maszyny wirtualne wysokiej dostępności dla oprogramowania SAP NetWeaver | Dokumentacja firmy Microsoft
-description: Przewodnik wysokiej dostępności dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure
+title: Azure Virtual Machines wysoka dostępność dla oprogramowania SAP NetWeaver | Microsoft Docs
+description: Przewodnik wysokiej dostępności dla oprogramowania SAP NetWeaver na platformie Azure Virtual Machines
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: msjuergent
@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 226986fb7c41c19b58f0163414628ad08ddeda15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a76515fdeb7d812c42a83d8a53fb83ac71407a2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409967"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099778"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure
 
@@ -292,7 +291,7 @@ ms.locfileid: "65409967"
 [sap-ha-guide-10.2]:high-availability-guide.md#5e959fa9-8fcd-49e5-a12c-37f6ba07b916
 [sap-ha-guide-10.3]:high-availability-guide.md#755a6b93-0099-4533-9f6d-5c9a613878b5
 
-[sap-ha-multi-sid-guide]:high-availability-multi-sid.md (Konfiguracja wysokiej dostępności — wiele identyfikatorów SID SAP)
+[sap-ha-multi-sid-guide]:high-availability-multi-sid.md (Konfiguracja wysokiej dostępności dla oprogramowania SAP)
 
 
 [sap-ha-guide-figure-1000]:media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -365,7 +364,7 @@ ms.locfileid: "65409967"
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
-[sap-pam]: https://support.sap.com/pam (Macierz dostępności produktów SAP)
+[sap-pam]: https://support.sap.com/pam (Macierz dostępności produktu SAP)
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
@@ -436,1042 +435,1042 @@ ms.locfileid: "65409967"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
 
-Usługa Azure Virtual Machines to rozwiązanie dla organizacji, które potrzebują obliczeń, magazynu i zasobów sieciowych w krótkim czasie i bez wydłużonych cykli. Azure Virtual Machines umożliwia wdrażanie klasycznych aplikacji opartych na oprogramowanie SAP NetWeaver ABAP, Java i stosu ABAP + Java. Rozszerz niezawodność i dostępność bez dodatkowych zasobów lokalnych. Maszyny wirtualne platformy Azure obsługuje łączność między wieloma lokalizacjami, dzięki czemu możesz zintegrować usługę Azure Virtual Machines domen lokalnych w organizacji, chmur prywatnych i środowisko systemu SAP.
+Usługa Azure Virtual Machines to rozwiązanie dla organizacji, które potrzebują zasobów obliczeniowych, magazynu i sieci, w minimalnym czasie i bez długotrwałych cykli zakupów. Za pomocą usługi Azure Virtual Machines można wdrażać aplikacje klasyczne, takie jak SAP NetWeaver-based ABAP, Java i ABAP + Java. Zwiększ niezawodność i dostępność bez dodatkowych zasobów lokalnych. Usługa Azure Virtual Machines obsługuje łączność między środowiskami lokalnymi, dzięki czemu możesz zintegrować usługę Azure Virtual Machines z domenami lokalnymi organizacji, chmurami prywatnymi i systemem SAP system.
 
-W tym artykule omówione są kroki, które można wykonać w celu wdrażania systemów SAP o wysokiej dostępności na platformie Azure za pomocą modelu wdrażania usługi Azure Resource Manager. W jaki sposób można za pomocą tych głównych zadań:
+W tym artykule opisano kroki, które należy wykonać w celu wdrożenia systemów SAP o wysokiej dostępności na platformie Azure przy użyciu modelu wdrażania Azure Resource Manager. Przeprowadzimy Cię przez następujące główne zadania:
 
-* Znajdź odpowiednie SAP Notes i przewodników po instalacji, na liście [zasobów] [ sap-ha-guide-2] sekcji. Ten artykuł stanowi uzupełnienie dokumentacji instalacji SAP i SAP Notes, które są podstawowe zasoby, które mogą pomóc Ci instalować i wdrażać oprogramowanie SAP na określonych platformach.
-* Dowiedz się, różnice w modelu wdrażania usługi Azure Resource Manager i modelem klasycznym wdrożeniu platformy Azure.
-* Więcej informacji na temat trybów kworum klastra trybu Failover w systemie Windows Server, można wybrać model, który jest odpowiedni dla danego wdrożenia platformy Azure.
-* Więcej informacji na temat systemu Windows Server Failover Clustering udostępnionego magazynu z usługami platformy Azure.
-* Dowiedz się, jak chronić pojedynczego punktu z awarii składników takich jak Advanced Business Application programowania (ABAP) SAP Central Services (ASCS) / SAP Central Services (SCS) i systemy zarządzania bazami danych (DBMS) oraz nadmiarowych elementów, takich jak aplikacji SAP Serwer, na platformie Azure.
-* Wykonaj przykład krok po kroku instalacji i konfiguracji systemu SAP o wysokiej dostępności w klastrze systemu Windows Server Failover Clustering na platformie Azure przy użyciu usługi Azure Resource Manager.
-* Poznaj dodatkowe kroki wymagane do użycia w systemie Windows Server Failover Clustering w Azure, ale nie są wymagane we wdrożeniu w środowisku lokalnym.
+* Znajdź odpowiednie informacje i wskazówki dotyczące oprogramowania SAP, wymienione w sekcji [][sap-ha-guide-2] Resources. W tym artykule opisano dokumentację instalacji SAP oraz uwagi SAP, które są zasobami podstawowymi, które mogą pomóc w instalacji i wdrożeniu oprogramowania SAP na określonych platformach.
+* Poznaj różnice między modelem wdrażania Azure Resource Manager i klasycznym modelem wdrażania platformy Azure.
+* Dowiedz się więcej na temat trybów kworum usługi Windows Server Failover Clustering, aby wybrać model odpowiedni dla danego wdrożenia platformy Azure.
+* Dowiedz się więcej o magazynie udostępnionym usługi Windows Server Failover Clustering w usługach platformy Azure.
+* Dowiedz się, jak chronić składniki pojedynczego punktu awarii, takie jak zaawansowane Programowanie aplikacji biznesowej (ABAP) SAP Central Services (ASCS)/SAP Central Services (SCS) i systemy zarządzania bazami danych (DBMS) oraz nadmiarowe składniki, takie jak aplikacja SAP Serwer na platformie Azure.
+* Wykonaj krok po kroku instalację i konfigurację systemu SAP o wysokiej dostępności w klastrze usługi Windows Server Failover Clustering na platformie Azure przy użyciu Azure Resource Manager.
+* Zapoznaj się z dodatkowymi krokami wymaganymi do korzystania z klastra trybu failover systemu Windows Server na platformie Azure, ale które nie są wymagane w przypadku wdrożenia lokalnego.
 
-Aby uprościć wdrażanie i konfigurację, w tym artykule używamy szablonów usługi Resource Manager SAP trójwarstwowej wysokiej dostępności. Szablony Automatyzowanie wdrażania całej infrastruktury niezbędnych do systemu SAP o wysokiej dostępności. Infrastruktura obsługuje również zmianę rozmiaru SAP aplikacji wydajności Standard (protokoły SAP) systemu SAP.
+Aby uprościć wdrażanie i konfigurację, w tym artykule używamy szablonów Menedżer zasobów o wysokiej dostępności w oprogramowaniu SAP. Szablony automatyzują wdrażanie całej infrastruktury niezbędnej dla systemu SAP o wysokiej dostępności. Infrastruktura obsługuje również ustalanie rozmiarów systemu SAP przez oprogramowanie SAP Application Performance Standard (soki).
 
 ## <a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a> Wymagania wstępne
-Przed rozpoczęciem upewnij się, że spełniają wymagania wstępne, które są opisane w poniższych sekcjach. Ponadto należy koniecznie sprawdzić wszystkich zasobów wymienionych w [zasobów] [ sap-ha-guide-2] sekcji.
+Przed rozpoczęciem upewnij się, że spełniasz wymagania wstępne opisane w poniższych sekcjach. Upewnij się również, że wszystkie zasoby wymienione w sekcji Resources są zaznaczone. [][sap-ha-guide-2]
 
-W tym artykule używamy szablonów usługi Azure Resource Manager dla [trójwarstwowej oprogramowanie SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image/). Omówienie przydatne szablonów, zobacz [SAP usługi Azure Resource Manager](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
+W tym artykule używamy szablonów Azure Resource Manager dla [trzech warstw SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image/). Aby zapoznać się z przydatnym omówieniem szablonów, zobacz [szablony Azure Resource Manager SAP](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
 
-## <a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a> Zasoby
-Artykuły te obejmują wdrożenia SAP na platformie Azure:
+## <a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a>Produkcyjnych
+Te artykuły obejmują wdrożenia oprogramowania SAP na platformie Azure:
 
-* [Azure Virtual Machines, planowania i implementacji środowiska SAP NetWeaver][planning-guide]
-* [Wdrażania maszyn wirtualnych platformy Azure dla oprogramowania SAP NetWeaver][deployment-guide]
-* [Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure dla oprogramowania SAP NetWeaver][dbms-guide]
-* [Azure maszyny wirtualne wysokiej dostępności dla oprogramowania SAP NetWeaver (w tym przewodniku)][sap-ha-guide]
+* [Planowanie i wdrażanie Virtual Machines platformy Azure dla oprogramowania SAP NetWeaver][planning-guide]
+* [Wdrożenie Virtual Machines platformy Azure dla oprogramowania SAP NetWeaver][deployment-guide]
+* [Wdrożenie systemu Azure Virtual Machines DBMS dla oprogramowania SAP NetWeaver][dbms-guide]
+* [Azure Virtual Machines wysoka dostępność dla oprogramowania SAP NetWeaver (ten przewodnik)][sap-ha-guide]
 
 > [!NOTE]
-> Jeśli to możliwe, udostępniamy łącze odwołujący się Podręcznik instalacji SAP (zobacz [przewodników po instalacji SAP][sap-installation-guides]). Wymagania wstępne i informacje o procesie instalacji jest dobry pomysł, aby uważnie przeczytaj przewodników po instalacji SAP NetWeaver. W tym artykule opisano tylko określone zadania dla systemów opartych na oprogramowanie SAP NetWeaver, których można użyć z usługą Azure Virtual Machines.
+> Jeśli to możliwe, udostępniamy link do przewodnika instalacji oprogramowania SAP (Zobacz przewodniki [instalacji SAP][sap-installation-guides]). Aby uzyskać wymagania wstępne i informacje o procesie instalacji, warto uważnie przeczytać przewodniki instalacji oprogramowania SAP NetWeaver. W tym artykule omówiono tylko określone zadania dla systemów opartych na systemie SAP NetWeaver, których można używać z usługą Azure Virtual Machines.
 >
 >
 
-Te informacje SAP są związane z tym tematem SAP na platformie Azure:
+Te uwagi SAP są powiązane z tematem SAP na platformie Azure:
 
-| Numer | Stanowisko |
+| Numer notatki | Tytuł |
 | --- | --- |
-| [1928533] |Aplikacje środowiska SAP na platformie Azure: Obsługiwane produkty i zmianę rozmiaru |
-| [2015553] |SAP na platformie Microsoft Azure: Wymagania wstępne dotyczące obsługi |
-| [1999351] |Ulepszone monitorowania platformy Azure dla rozwiązania SAP |
-| [2178632] |Klucz metryki monitorowania dla rozwiązania SAP na platformie Microsoft Azure |
-| [1999351] |Wirtualizacja na Windows: Rozszerzone monitorowanie |
-| [2243692] |Korzystanie z usługi Azure Premium Storage SSD dla systemu SAP DBMS wystąpienia |
+| [1928533] |Aplikacje SAP na platformie Azure: Obsługiwane produkty i rozmiary |
+| [2015553] |System SAP na Microsoft Azure: Wymagania wstępne dotyczące obsługi |
+| [1999351] |Ulepszone monitorowanie platformy Azure dla oprogramowania SAP |
+| [2178632] |Metryki monitorowania kluczy dla SAP na Microsoft Azure |
+| [1999351] |Wirtualizacja w systemie Windows: Ulepszone monitorowanie |
+| [2243692] |Korzystanie z usługi Azure SSD w warstwie Premium Storage dla wystąpienia SAP DBMS |
 
-Dowiedz się więcej o [ograniczenia subskrypcji platformy Azure][azure-subscription-service-limits-subscription], w tym domyślne ogólne ograniczenia i ograniczenia maksymalnej.
+Dowiedz się więcej o [ograniczeniach subskrypcji platformy Azure][azure-subscription-service-limits-subscription], w tym ogólnych ograniczeniach i maksymalnych ograniczeniach.
 
-## <a name="42156640c6-01cf-45a9-b225-4baa678b24f1"></a>SAP o wysokiej dostępności przy użyciu usługi Azure Resource Manager i modelem klasycznym wdrożeniu platformy Azure
-Usługi Azure Resource Manager i modeli klasycznym wdrożeniu platformy Azure różnią się w następujących obszarach:
+## <a name="42156640c6-01cf-45a9-b225-4baa678b24f1"></a>Rozwiązanie SAP o wysokiej dostępności z Azure Resource Manager a klasycznym modelem wdrażania platformy Azure
+Azure Resource Manager i klasyczny model wdrażania platformy Azure różnią się w następujących obszarach:
 
 - Grupy zasobów
-- Zależności usługi równoważenia obciążenia wewnętrznego platformy Azure w grupie zasobów platformy Azure
-- Obsługa scenariuszy z wieloma identyfikatorami SID SAP
+- Zależność wewnętrznego modułu równoważenia obciążenia platformy Azure w grupie zasobów platformy Azure
+- Obsługa scenariuszy obejmujących wiele identyfikatorów SID SAP
 
-### <a name="f76af273-1993-4d83-b12d-65deeae23686"></a> Grupy zasobów
-W usłudze Azure Resource Manager, można użyć grup zasobów do zarządzania wszystkimi zasobami aplikacji w ramach subskrypcji platformy Azure. Zintegrowanego podejścia, w grupie zasobów, wszystkie zasoby mają ten sam cykl życia. Na przykład wszystkie zasoby są tworzone w tym samym czasie i są usuwane w tym samym czasie. Dowiedz się więcej o [grupach zasobów](../../../azure-resource-manager/resource-group-overview.md#resource-groups).
+### <a name="f76af273-1993-4d83-b12d-65deeae23686"></a>Grupy zasobów
+W Azure Resource Manager można używać grup zasobów do zarządzania wszystkimi zasobami aplikacji w ramach subskrypcji platformy Azure. Zintegrowane podejście, w grupie zasobów, wszystkie zasoby mają ten sam cykl życia. Na przykład wszystkie zasoby są tworzone w tym samym czasie i są usuwane w tym samym czasie. Dowiedz się więcej o [grupach zasobów](../../../azure-resource-manager/resource-group-overview.md#resource-groups).
 
-### <a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a> Zależności usługi równoważenia obciążenia wewnętrznego platformy Azure w grupie zasobów platformy Azure
+### <a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a>Zależność wewnętrznego modułu równoważenia obciążenia platformy Azure w grupie zasobów platformy Azure
 
-W modelu klasycznym wdrożeniu platformy Azure istnieje zależność między Azure wewnętrznego modułu równoważenia obciążenia (usługa Azure Load Balancer) a grupą usługi w chmurze. Co wewnętrznego modułu równoważenia obciążenia wymaga jednej grupy usługi w chmurze.
+W klasycznym modelu wdrażania platformy Azure istnieje zależność między wewnętrznym modułem równoważenia obciążenia platformy Azure (Azure Load Balancer usługą) i grupą usług w chmurze. Każdy wewnętrzny moduł równoważenia obciążenia potrzebuje jednej grupy usług w chmurze.
 
-W usłudze Azure Resource Manager, nie trzeba grupę zasobów platformy Azure przy użyciu modułu równoważenia obciążenia platformy Azure. Środowisko jest prostszy i bardziej elastycznym.
+W Azure Resource Manager nie potrzebujesz grupy zasobów platformy Azure do korzystania z Azure Load Balancer. Środowisko jest prostsze i bardziej elastyczne.
 
-### <a name="support-for-sap-multi-sid-scenarios"></a>Obsługa scenariuszy z wieloma identyfikatorami SID SAP
+### <a name="support-for-sap-multi-sid-scenarios"></a>Obsługa scenariuszy obejmujących wiele identyfikatorów SID SAP
 
-W usłudze Azure Resource Manager można zainstalować wiele systemu identyfikator (SID) ASCS/SCS wystąpieniami platformy SAP w jednym klastrze. — Wiele identyfikatorów SID jest możliwe dzięki obsłudze wielu adresów IP dla każdej platformy Azure wewnętrznego modułu równoważenia obciążenia.
+W Azure Resource Manager można zainstalować wiele wystąpień ASCS/SCS identyfikatora systemu SAP w jednym klastrze. Wystąpienia wielu identyfikatorów SID są możliwe z powodu obsługi wielu adresów IP dla każdego wewnętrznego modułu równoważenia obciążenia platformy Azure.
 
-Aby użyć modelu klasycznym wdrożeniu platformy Azure, wykonaj procedury opisane w temacie [oprogramowanie SAP NetWeaver na platformie Azure: Klastrowanie wystąpienia SAP ASCS/SCS przy użyciu systemu Windows Server Failover Clustering na platformie Azure przy użyciu oprogramowanie SIOS DataKeeper](https://go.microsoft.com/fwlink/?LinkId=613056).
+Aby użyć klasycznego modelu wdrażania platformy Azure, postępuj zgodnie z [procedurami opisanymi w SAP NetWeaver na platformie Azure: Klastrowanie wystąpień oprogramowania SAP ASCS/SCS przy użyciu funkcji Windows Server Failover Clustering na platformie Azure](https://go.microsoft.com/fwlink/?LinkId=613056)z usługą oprogramowanie SIOS DataKeeper.
 
 > [!IMPORTANT]
-> Zdecydowanie zalecamy użycie modelu wdrażania usługi Azure Resource Manager dla instalacji SAP. Oferuje wiele korzyści, które nie są dostępne w klasycznym modelu wdrażania. Dowiedz się więcej o usłudze Azure [modeli wdrażania][virtual-machines-azure-resource-manager-architecture-benefits-arm].   
+> Zdecydowanie zalecamy używanie Azure Resource Manager model wdrażania dla instalacji SAP. Oferuje wiele korzyści, które nie są dostępne w klasycznym modelu wdrażania. Dowiedz się więcej o [modelach wdrażania][virtual-machines-azure-resource-manager-architecture-benefits-arm] platformy Azure.   
 >
 >
 
-## <a name="8ecf3ba0-67c0-4495-9c14-feec1a2255b7"></a> Windows Server Failover Clustering
-Windows Server Failover Clustering jest podstawą SAP ASCS/SCS instalacji o wysokiej dostępności i systemu DBMS na platformie Windows.
+## <a name="8ecf3ba0-67c0-4495-9c14-feec1a2255b7"></a>Klaster trybu failover z systemem Windows Server
+Klaster pracy awaryjnej systemu Windows Server to podstawa instalacji oprogramowania SAP ASCS/SCS o wysokiej dostępności w systemie Windows.
 
-Klaster trybu failover to grupa 1 + n niezależnych serwerów (węzłów), które współpracują ze sobą, aby zwiększyć dostępność aplikacji i usług. Jeśli wystąpi awaria węzła, Windows Server Failover Clustering oblicza liczbę błędów, które mogą wystąpić przy zachowaniu dobrej kondycji klastra, aby zapewnić aplikacji i usług. Istnieje możliwość z trybów kworum różnych osiągnąć klastra trybu failover.
+Klaster trybu failover jest grupą serwerów niezależnych od 1 + n (węzłów), które współpracują ze sobą w celu zwiększenia dostępności aplikacji i usług. Jeśli wystąpi awaria węzła, klaster trybu failover systemu Windows Server oblicza liczbę błędów, które mogą wystąpić podczas utrzymywania prawidłowego klastra w celu dostarczania aplikacji i usług. Możesz wybrać inny tryb kworum, aby osiągnąć klaster trybu failover.
 
-### <a name="1a3c5408-b168-46d6-99f5-4219ad1b1ff2"></a> Trybów kworum
-Korzystając z systemu Windows Server Failover Clustering, można wybrać z czterech trybów kworum:
+### <a name="1a3c5408-b168-46d6-99f5-4219ad1b1ff2"></a>Tryby kworum
+Korzystając z klastra trybu failover systemu Windows Server, można wybrać jeden z czterech trybów kworum:
 
-* **Większość węzłów**. Głosować na każdym węźle klastra. Klaster działa tylko z większością głosów, oznacza to, z ponad połowę głosów. Zaleca się tej opcji w przypadku klastrów nieparzysta liczba węzłów. Na przykład trzy węzły w klastrze z siedmiu węzłów może zakończyć się niepowodzeniem, a aparaturze klastra pozwala uzyskać większość i kontynuuje działanie.  
-* **Większość węzłów i dysków**. Każdy węzeł i wyznaczonym dysku (monitorem dysku) w magazynie klastra głosować gdy są one dostępne i komunikacji. Klaster działa tylko z większością głosów, oznacza to, z ponad połowę głosów. W tym trybie ma sens w środowisku klastra z parzystą liczbą węzłów. Jeśli połowa węzłów i dysków są w trybie online, klaster będzie pozostawał w dobrej kondycji.
-* **Węzeł i udziału plików większość**. Każdy węzeł, a także udziału plików wyznaczonym (monitora udziału plików), który administrator tworzy głosować, niezależnie od tego, czy są dostępne węzły i udziału plików i komunikacji. Klaster działa tylko z większością głosów, oznacza to, z ponad połowę głosów. W tym trybie ma sens w środowisku klastra z parzystą liczbą węzłów. Jest on podobny do trybu Większość węzłów i dysków, ale używa monitora udziału plików zamiast dysku monitora. Ten tryb jest łatwy do wdrożenia, ale jeśli udział plików nie jest sam o wysokiej dostępności, mogą stać się pojedynczym punktem awarii.
-* **Bez większości: Tylko dysk**. Klaster ma kworum, jeśli jeden węzeł jest dostępny i komunikuje się z określonym dyskiem w magazynie klastra. Tylko węzły, które są także komunikuje się z tym dysku mogą dołączyć do klastra. Zaleca się, że nie należy używać tego trybu.
+* **Większość węzłów**. Każdy węzeł klastra może głosować. Klaster działa tylko z większością głosów, czyli z więcej niż połowa głosów. Zalecamy korzystanie z tej opcji w przypadku klastrów, które mają nieparzystą liczbę węzłów. Na przykład trzy węzły w klastrze z siedmiu węzłami mogą kończyć się niepowodzeniem, a klaster nadal osiąga większość i nadal działa.  
+* **Większość węzłów i dysków**. Każdy węzeł i wydzielony dysk (Monitor dysku) w magazynie klastra mogą głosować, gdy są dostępne i w komunikacji. Klaster działa tylko z większością głosów, czyli z więcej niż połowa głosów. Ten tryb ma sens w środowisku klastra z parzystą liczbą węzłów. Jeśli połowa węzłów i dysku są w trybie online, klaster pozostaje w dobrej kondycji.
+* **Większość węzłów i udziałów plików**. Każdy węzeł oraz wytworzony udział plików (Monitor udostępniania plików), który może zostać zagłosowany przez administratora, bez względu na to, czy węzły i udziały plików są dostępne i w komunikacji. Klaster działa tylko z większością głosów, czyli z więcej niż połowa głosów. Ten tryb ma sens w środowisku klastra z parzystą liczbą węzłów. Jest to podobne do trybu większość węzłów i dysków, ale używa udziału plików monitora zamiast dysku monitora. Ten tryb jest łatwy do zaimplementowania, ale jeśli sam udział plików nie ma wysokiej dostępności, może stać się single point of failure.
+* **Bez większości: Tylko**dysk. Klaster ma kworum, jeśli jeden węzeł jest dostępny i w komunikacji z określonym dyskiem w magazynie klastra. Tylko węzły, które również komunikują się z tym dyskiem, mogą dołączyć do klastra. Zalecamy, aby nie korzystać z tego trybu.
 
-## <a name="fdfee875-6e66-483a-a343-14bbaee33275"></a> Windows Server Failover Clustering w środowisku lokalnym
-Rysunek 1 pokazuje klastra z dwoma węzłami. Jeśli mają połączenie sieciowe między węzłami kończy się niepowodzeniem i zarówno pobytu węzłów w górę i uruchomiona, dysku kworum lub pliku Określa, który węzeł będzie w dalszym ciągu usługi i aplikacje klastra. Węzeł, który ma dostęp do udziału pliku lub dysku kworum jest węzeł, który zapewnia, że usługi.
+## <a name="fdfee875-6e66-483a-a343-14bbaee33275"></a>Lokalne usługi Windows Server Failover Clustering
+Rysunek 1 przedstawia klaster dwóch węzłów. Jeśli połączenie sieciowe między węzłami zakończy się niepowodzeniem, a oba węzły zostaną uruchomione, dysk kworum lub udział plików określa, który węzeł będzie kontynuował udostępnianie aplikacji i usług klastra. Węzeł, który ma dostęp do dysku kworum lub udziału plików, jest węzłem, który gwarantuje, że usługi będą kontynuowane.
 
-Ponieważ w tym przykładzie użyto dwa węzły klastra, używamy Tryb kworum Większość węzłów i plików udziału. Większość węzłów i dysków również jest prawidłową opcją. W środowisku produkcyjnym zaleca się, że używasz dysku kworum. Za pomocą technologii systemu i sieciowych o wysokiej dostępności.
+Ponieważ w tym przykładzie użyto klastra z dwoma węzłami, używany jest tryb kworum większość węzłów i udziałów plików. Większość węzłów i dysków jest również prawidłową opcją. W środowisku produkcyjnym zalecamy używanie dysku kworum. Aby zapewnić wysoką dostępność, można użyć technologii systemu sieci i magazynu.
 
-![Rysunek 1: Przykład konfiguracji systemu Windows Server Failover Clustering for SAP ASCS/SCS na platformie Azure][sap-ha-guide-figure-1000]
+![Rysunek 1. Przykład konfiguracji klastra trybu failover systemu Windows Server dla oprogramowania SAP ASCS/SCS na platformie Azure][sap-ha-guide-figure-1000]
 
-_**Rysunek 1:** Przykład konfiguracji systemu Windows Server Failover Clustering for SAP ASCS/SCS na platformie Azure_
+_**Rysunek 1.** Przykład konfiguracji klastra trybu failover systemu Windows Server dla oprogramowania SAP ASCS/SCS na platformie Azure_
 
-### <a name="be21cf3e-fb01-402b-9955-54fbecf66592"></a> Magazyn udostępniony
-Rysunek 1 pokazuje również klastra magazynu udostępnionego z dwoma węzłami. W klastrze magazynu udostępnionego w środowisku lokalnym wszystkie węzły w klastrze wykryć magazynu udostępnionego. Mechanizm blokowania chroni dane przed uszkodzeniem. Wszystkie węzły może wykryć, jeśli inny węzeł nie powiedzie się. Jeśli jeden węzeł ulegnie awarii, drugi węzeł przejmuje na własność zasobów magazynu i zapewnia dostępność usług.
+### <a name="be21cf3e-fb01-402b-9955-54fbecf66592"></a>Magazyn udostępniony
+Rysunek 1 przedstawia także klaster magazynu udostępnionego z dwoma węzłami. W lokalnym klastrze magazynu udostępnionego wszystkie węzły w klastrze wykrywają magazyn udostępniony. Mechanizm blokowania chroni dane przed uszkodzeniem. Wszystkie węzły mogą wykryć, czy inny węzeł ulegnie awarii. Jeśli jeden węzeł ulegnie awarii, pozostały węzeł przejmuje własność zasobów magazynu i zapewnia dostępność usług.
 
 > [!NOTE]
-> Nie trzeba udostępnionych dysków w celu zapewnienia wysokiej dostępności z niektórymi aplikacjami systemu DBMS, takich jak program SQL Server. SQL Server Always On replikuje plików danych i dziennika systemu DBMS na dysku lokalnym, w jednym węźle klastra, na lokalny dysk w innym węźle klastra. W takim przypadku konfiguracji klastra Windows nie wymaga udostępnionego dysku.
+> Dyski udostępnione nie są potrzebne w celu zapewnienia wysokiej dostępności w niektórych aplikacjach DBMS, takich jak SQL Server. SQL Server zawsze w przypadku replikowania danych i plików dziennika systemu DBMS z dysku lokalnego jednego węzła klastra na dysk lokalny innego węzła klastra. W takim przypadku Konfiguracja klastra systemu Windows nie wymaga dysku udostępnionego.
 >
 >
 
-### <a name="ff7a9a06-2bc5-4b20-860a-46cdb44669cd"></a> Sieć i rozpoznawanie nazw
-Komputery klienckie dotrzeć do klastra za pośrednictwem wirtualnego adresu IP i nazwę hosta wirtualnego, który zapewnia serwer DNS. Węzły lokalne i serwer DNS może obsługiwać wiele adresów IP.
+### <a name="ff7a9a06-2bc5-4b20-860a-46cdb44669cd"></a>Rozpoznawanie sieci i nazw
+Komputery klienckie docierają do klastra za pośrednictwem wirtualnego adresu IP i nazwy hosta wirtualnego, który zapewnia serwer DNS. Węzły lokalne i serwer DNS mogą obsługiwać wiele adresów IP.
 
-W przypadku typowej instalacji można użyć co najmniej dwóch połączeń sieciowych:
+W typowej konfiguracji należy użyć co najmniej dwóch połączeń sieciowych:
 
 * Dedykowane połączenie z magazynem
-* Połączenie sieci wewnętrznej klastra dla pulsu
-* Sieć publiczna, używanego przez klientów do łączenia z klastrem
+* Klaster — wewnętrzne połączenie sieciowe dla pulsu
+* Sieć publiczna używana przez klientów do łączenia się z klastrem
 
-## <a name="2ddba413-a7f5-4e4e-9a51-87908879c10a"></a> Windows Server Failover Clustering na platformie Azure
-W porównaniu do bez wdrożenia systemu operacyjnego lub prywatnej chmury, maszyn wirtualnych platformy Azure wymaga dodatkowych kroków, aby skonfigurować systemu Windows Server Failover Clustering. W przypadku tworzenia dysku udostępnionego klastra, musisz ustawić kilka adresów IP i nazwy hostów wirtualnych na potrzeby wystąpienia SAP ASCS/SCS.
+## <a name="2ddba413-a7f5-4e4e-9a51-87908879c10a"></a>Klaster trybu failover z systemem Windows Server na platformie Azure
+W porównaniu z wdrożeniami w chmurze bez systemu operacyjnego usługa Azure Virtual Machines wymaga dodatkowych kroków, aby skonfigurować klaster trybu failover systemu Windows Server. Podczas tworzenia udostępnionego dysku klastra należy ustawić kilka adresów IP i nazw hostów wirtualnych dla wystąpienia SAP ASCS/SCS.
 
-W tym artykule omówiono kluczowe założenia i dodatkowe kroki wymagane do utworzenia klastra usług o wysokiej dostępności centralne SAP na platformie Azure. Firma Microsoft dowiesz się, jak skonfigurować narzędzia innej firmy, oprogramowanie SIOS DataKeeper i sposobie konfigurowania Azure wewnętrznego modułu równoważenia obciążenia. Te narzędzia można użyć do utworzenia klastra pracy awaryjnej Windows za pomocą monitora udziału plików na platformie Azure.
+W tym artykule omówiono kluczowe pojęcia i dodatkowe kroki wymagane do utworzenia klastra usług centralnych o wysokiej dostępności SAP na platformie Azure. Pokazujemy, jak skonfigurować narzędzie innej firmy oprogramowanie SIOS DataKeeper i jak skonfigurować wewnętrzny moduł równoważenia obciążenia platformy Azure. Za pomocą tych narzędzi można utworzyć klaster trybu failover systemu Windows przy użyciu monitora udostępniania plików na platformie Azure.
 
-![Rysunek 2: Windows Server Failover Clustering konfiguracji na platformie Azure, bez udostępnionego dysku][sap-ha-guide-figure-1001]
+![Rysunek 2. Konfiguracja klastra trybu failover systemu Windows Server na platformie Azure bez dysku udostępnionego][sap-ha-guide-figure-1001]
 
-_**Rysunek 2:** Windows Server Failover Clustering konfiguracji na platformie Azure, bez udostępnionego dysku_
+_**Rysunek 2.** Konfiguracja klastra trybu failover systemu Windows Server na platformie Azure bez dysku udostępnionego_
 
-### <a name="1a464091-922b-48d7-9d08-7cecf757f341"></a> Oprogramowanie SIOS DataKeeper udostępniony dysk na platformie Azure
-Potrzebujesz klastra magazynu udostępnionego dla wystąpienia SAP ASCS/SCS wysokiej dostępności. Od września 2016 r. platforma Azure nie oferuje magazyn udostępniony, który można użyć do utworzenia klastra magazynu udostępnionego. Za pomocą oprogramowania innych firm oprogramowanie SIOS DataKeeper Cluster Edition utworzyć dublowany magazynu, która symuluje sieć magazynu udostępnionego klastra. Rozwiązanie oprogramowanie SIOS udostępnia w czasie rzeczywistym synchronicznej replikacji danych. Jest to, jak można utworzyć zasobu udostępnionego dysku dla klastra:
+### <a name="1a464091-922b-48d7-9d08-7cecf757f341"></a>Dysk udostępniony na platformie Azure z usługą oprogramowanie SIOS DataKeeper
+Magazyn udostępniony klastra jest potrzebny do wystąpienia usługi SAP ASCS/SCS o wysokiej dostępności. Od września 2016 Platforma Azure nie oferuje magazynu udostępnionego, którego można użyć do utworzenia klastra magazynu udostępnionego. Aby utworzyć dublowany magazyn, który symuluje magazyn udostępniony klastra, można użyć oprogramowania oprogramowanie SIOS DataKeeper klastra. Rozwiązanie oprogramowanie SIOS zapewnia synchroniczną replikację danych w czasie rzeczywistym. Oto jak można utworzyć zasób dysku udostępnionego dla klastra:
 
-1. Dołącz dodatkowe Azure wirtualnego dysku twardego (VHD) do wszystkich maszyn wirtualnych (VM) w konfiguracji klastra Windows.
-2. Uruchom oprogramowanie SIOS DataKeeper Cluster Edition na obu węzłach maszyny wirtualnej.
-3. Oprogramowanie SIOS DataKeeper Cluster Edition należy skonfigurować tak, aby go odzwierciedla zawartość dodatkowe wolumin wirtualny dysk twardy dołączony ze źródłowej maszyny wirtualnej do wirtualnego dysku twardego dołączone dodatkowe ilości docelowej maszyny wirtualnej. Oprogramowanie SIOS DataKeeper przenosi źródłowe i docelowe woluminy lokalne, a następnie wyświetla je do systemu Windows Server Failover Clustering jako jeden dysk udostępniony.
+1. Dołącz dodatkowy wirtualny dysk twardy (VHD) platformy Azure do każdej maszyny wirtualnej w konfiguracji klastra systemu Windows.
+2. Uruchom oprogramowanie SIOS DataKeeper Cluster Edition w obu węzłach maszyn wirtualnych.
+3. Skonfiguruj program oprogramowanie SIOS DataKeeper Cluster w taki sposób, aby dziedziczył zawartość dodatkowego woluminu dołączonego dysku VHD ze źródłowej maszyny wirtualnej do dodatkowego woluminu dołączonego wirtualnego dysku twardego dla docelowej maszyny wirtualnej. OPROGRAMOWANIE SIOS DataKeeper abstrakcyjne źródłowe i docelowe woluminy lokalne, a następnie prezentuje je do klastra trybu failover systemu Windows Server jako jednego dysku udostępnionego.
 
-Uzyskaj więcej informacji o [oprogramowanie SIOS DataKeeper](https://us.sios.com/products/datakeeper-cluster/).
+Uzyskaj więcej informacji na temat [oprogramowanie SIOS](https://us.sios.com/products/datakeeper-cluster/)DataKeeper.
 
-![Rysunek 3: Windows Server Failover Clustering konfiguracji na platformie Azure przy użyciu oprogramowanie SIOS DataKeeper][sap-ha-guide-figure-1002]
+![Rysunek 3. Konfiguracja klastra trybu failover systemu Windows Server na platformie Azure z usługą oprogramowanie SIOS DataKeeper][sap-ha-guide-figure-1002]
 
-_**Rysunek 3:** Windows Server Failover Clustering konfiguracji na platformie Azure przy użyciu oprogramowanie SIOS DataKeeper_
+_**Rysunek 3.** Konfiguracja klastra trybu failover systemu Windows Server na platformie Azure z usługą oprogramowanie SIOS DataKeeper_
 
 > [!NOTE]
-> Udostępnione dyski nie ma potrzeby wysokiej dostępności przy użyciu niektórych produktów systemu DBMS, takich jak program SQL Server. SQL Server Always On replikuje plików danych i dziennika systemu DBMS na dysku lokalnym, w jednym węźle klastra, na lokalny dysk w innym węźle klastra. W tym przypadku konfiguracji klastra Windows nie wymaga udostępnionego dysku.
+> Dyski udostępnione nie są potrzebne, aby zapewnić wysoką dostępność w przypadku niektórych produktów DBMS, takich jak SQL Server. SQL Server zawsze w przypadku replikowania danych i plików dziennika systemu DBMS z dysku lokalnego jednego węzła klastra na dysk lokalny innego węzła klastra. W takim przypadku Konfiguracja klastra systemu Windows nie wymaga dysku udostępnionego.
 >
 >
 
-### <a name="44641e18-a94e-431f-95ff-303ab65e0bcb"></a> Rozpoznawanie nazw na platformie Azure
-Platforma usług w chmurze platformy Azure nie oferuje opcję, aby skonfigurować wirtualne adresy IP, takie jak adresy IP zmiennoprzecinkowy. Należy skonfigurować wirtualny adres IP, aby dotrzeć do zasobu klastra w chmurze alternatywnym rozwiązaniem.
-Platforma Azure oferuje wewnętrznego modułu równoważenia obciążenia w usłudze Azure Load Balancer. Przy użyciu wewnętrznego modułu równoważenia obciążenia klienci dotrzeć do klastra za pośrednictwem wirtualnego adresu IP klastra.
-Należy wdrożyć wewnętrzny moduł równoważenia obciążenia w grupie zasobów, która zawiera węzły klastra. Następnie należy skonfigurować wszystkie niezbędne portu reguły przekazywania za pomocą sondy porty wewnętrznego modułu równoważenia obciążenia.
-Klienci mogą łączyć się za pomocą nazwy hosta wirtualnego. Serwer DNS jest rozpoznawana jako adres IP klastra i port uchwyty modułu równoważenia obciążenia wewnętrznego, przekazywania do aktywnego węzła klastra.
+### <a name="44641e18-a94e-431f-95ff-303ab65e0bcb"></a>Rozpoznawanie nazw na platformie Azure
+Platforma Azure Cloud Platform nie oferuje opcji konfigurowania wirtualnych adresów IP, takich jak zmiennoprzecinkowe adresy IP. Do skonfigurowania wirtualnego adresu IP w celu uzyskania dostępu do zasobu klastra w chmurze potrzebne jest alternatywne rozwiązanie.
+Platforma Azure ma wewnętrzny moduł równoważenia obciążenia w usłudze Azure Load Balancer. W przypadku wewnętrznego modułu równoważenia obciążenia klienci docierają do klastra za pośrednictwem wirtualnego adresu IP klastra.
+Należy wdrożyć wewnętrzny moduł równoważenia obciążenia w grupie zasobów zawierającej węzły klastra. Następnie należy skonfigurować wszystkie niezbędne reguły przekazywania portów z portami sondowania wewnętrznego modułu równoważenia obciążenia.
+Klienci mogą łączyć się za pośrednictwem nazwy hosta wirtualnego. Serwer DNS rozpoznaje adres IP klastra, a wewnętrzny moduł równoważenia obciążenia obsługuje przekazywanie portów do aktywnego węzła klastra.
 
-## <a name="2e3fec50-241e-441b-8708-0b1864f66dfa"></a> SAP NetWeaver wysokiej dostępności w Azure infrastruktury as-a-Service (IaaS)
-Aby osiągnąć wysoką dostępność aplikacji SAP, takich jak dla składników oprogramowania SAP, należy chronić następujące składniki:
+## <a name="2e3fec50-241e-441b-8708-0b1864f66dfa"></a>Rozwiązanie SAP NetWeaver o wysokiej dostępności w infrastrukturze platformy Azure jako usługi (IaaS)
+Aby zapewnić wysoką dostępność aplikacji SAP, na przykład dla składników oprogramowania SAP, należy chronić następujące składniki:
 
 * Wystąpienie serwera aplikacji SAP
-* Wystąpienia SAP ASCS/SCS
-* Serwer systemu DBMS
+* Wystąpienie SAP ASCS/SCS
+* Serwer DBMS
 
-Aby uzyskać więcej informacji o ochronie składniki SAP w scenariuszach wysokiej dostępności, zobacz [planowanie maszyn wirtualnych platformy Azure i wdrażanie środowiska SAP NetWeaver](planning-guide.md).
+Aby uzyskać więcej informacji na temat ochrony składników SAP w scenariuszach wysokiej dostępności, zobacz temat [Azure Virtual Machines Planning and implementation for SAP NetWeaver](planning-guide.md).
 
-### <a name="93faa747-907e-440a-b00a-1ae0a89b1c0e"></a> Serwer aplikacji SAP o wysokiej dostępności
-Zazwyczaj nie trzeba konkretnego rozwiązania o wysokiej dostępności dla wystąpienia serwera aplikacji SAP i okno dialogowe. Uzyskiwanie wysokiej dostępności dzięki nadmiarowości i należy skonfigurować wiele wystąpień okna dialogowego w różnych wystąpieniach maszyn wirtualnych platformy Azure. Należy mieć co najmniej dwa wystąpienia aplikacji SAP, zainstalowane w dwa wystąpienia maszyn wirtualnych platformy Azure.
+### <a name="93faa747-907e-440a-b00a-1ae0a89b1c0e"></a>Serwer aplikacji SAP o wysokiej dostępności
+Zwykle nie jest potrzebne konkretne rozwiązanie wysokiej dostępności dla serwera aplikacji SAP i wystąpień okna dialogowego. Wysoką dostępność można osiągnąć dzięki nadmiarowości i można skonfigurować wiele wystąpień okna dialogowego w różnych wystąpieniach Virtual Machines platformy Azure. W dwóch wystąpieniach usługi Azure Virtual Machines należy zainstalować co najmniej dwa wystąpienia aplikacji SAP.
 
-![Rysunek 4: Serwer aplikacji SAP o wysokiej dostępności][sap-ha-guide-figure-2000]
+![Rysunek 4. Serwer aplikacji SAP o wysokiej dostępności][sap-ha-guide-figure-2000]
 
-_**Rysunek 4:** Serwer aplikacji SAP o wysokiej dostępności_
+_**Rysunek 4.** Serwer aplikacji SAP o wysokiej dostępności_
 
-Należy umieścić wszystkie maszyny wirtualne, które ustawione wystąpień serwera aplikacji SAP hosta, w tym samym dostępności platformy Azure. Zestawu dostępności platformy Azure zapewnia, że:
+Wszystkie maszyny wirtualne obsługujące wystąpienia serwera aplikacji SAP należy umieścić w tym samym zestawie dostępności platformy Azure. Zestaw dostępności platformy Azure gwarantuje, że:
 
-* Wszystkie maszyny wirtualne są częścią tej samej domenie uaktualnienia. Domeny uaktualnienia, na przykład sprawia, że się upewnić, że maszyny wirtualne nie zostaną zaktualizowane w tym samym czasie podczas planowanej konserwacji przestojów.
-* Wszystkie maszyny wirtualne są częścią tej samej domenie błędów. Domeny błędów, na przykład sprawia, że się upewnić, że maszyny wirtualne są wdrażane tak, aby żadnego pojedynczego punktu awarii wpływa na dostępność maszyn wirtualnych.
+* Wszystkie maszyny wirtualne są częścią tej samej domeny uaktualnienia. Na przykład domena uaktualnienia gwarantuje, że maszyny wirtualne nie są aktualizowane w tym samym czasie podczas planowanego przestoju konserwacji.
+* Wszystkie maszyny wirtualne są częścią tej samej domeny błędów. Domena błędów, na przykład, sprawdza, czy maszyny wirtualne są wdrożone, tak aby żadna single point of failure nie miała wpływu na dostępność wszystkich maszyn wirtualnych.
 
-Dowiedz się więcej na temat [Zarządzanie dostępnością maszyn wirtualnych][virtual-machines-manage-availability].
+Dowiedz się więcej na temat [zarządzania dostępnością maszyn wirtualnych][virtual-machines-manage-availability].
 
-Ponieważ konto usługi Azure storage jest potencjalnym pojedynczym punktem awarii, należy mieć co najmniej dwa konta magazynu platformy Azure, w których co najmniej dwie maszyny wirtualne są rozproszone. W idealnym konfiguracji dysków w każdej maszyny wirtualnej, na którym jest uruchomione wystąpienie okna dialogowego SAP będzie można wdrożyć w innego konta magazynu.
+Ponieważ konto usługi Azure Storage jest potencjalnym single point of failure, ważne jest posiadanie co najmniej dwóch kont usługi Azure Storage, w których dystrybuowane są co najmniej dwie maszyny wirtualne. W idealnym instalacji dyski każdej maszyny wirtualnej, na której działa wystąpienie okna dialogowego SAP, zostaną wdrożone na innym koncie magazynu.
 
-### <a name="f559c285-ee68-4eec-add1-f60fe7b978db"></a> Wystąpienia SAP ASCS/SCS wysokiej dostępności
-Rysunek 5 jest przykładem wystąpienia SAP ASCS/SCS wysokiej dostępności.
+### <a name="f559c285-ee68-4eec-add1-f60fe7b978db"></a>Wystąpienie środowiska SAP ASCS/SCS o wysokiej dostępności
+Rysunek 5 to przykład wystąpienia o wysokiej dostępności SAP ASCS/SCS.
 
-![Rysunek 5: Wystąpienia SAP ASCS/SCS wysokiej dostępności][sap-ha-guide-figure-2001]
+![Rysunek 5. Wystąpienie środowiska SAP ASCS/SCS o wysokiej dostępności][sap-ha-guide-figure-2001]
 
-_**Rysunek 5:** Wystąpienia SAP ASCS/SCS wysokiej dostępności_
+_**Rysunek 5.** Wystąpienie środowiska SAP ASCS/SCS o wysokiej dostępności_
 
-#### <a name="b5b1fd0b-1db4-4d49-9162-de07a0132a51"></a> Wystąpienia SAP ASCS/SCS wysokiej dostępności z systemu Windows Server Failover Clustering na platformie Azure
-W porównaniu do bez wdrożenia systemu operacyjnego lub prywatnej chmury, maszyn wirtualnych platformy Azure wymaga dodatkowych kroków, aby skonfigurować systemu Windows Server Failover Clustering. Aby utworzyć klaster pracy awaryjnej Windows, należy udostępnionym dysku klastra, kilka adresów IP, nazwy hostów wirtualnych kilka i Azure wewnętrznego modułu równoważenia obciążenia dla klastra wystąpienie SAP ASCS/SCS. Omówimy to bardziej szczegółowo w dalszej części tego artykułu.
+#### <a name="b5b1fd0b-1db4-4d49-9162-de07a0132a51"></a>Wysoka dostępność wystąpienia oprogramowania SAP ASCS/SCS z funkcją klaster trybu failover systemu Windows Server na platformie Azure
+W porównaniu z wdrożeniami w chmurze bez systemu operacyjnego usługa Azure Virtual Machines wymaga dodatkowych kroków, aby skonfigurować klaster trybu failover systemu Windows Server. Aby zbudować klaster trybu failover systemu Windows, potrzebny jest udostępniony dysk klastra, kilka adresów IP, kilka nazw hostów wirtualnych i wewnętrzny moduł równoważenia obciążenia platformy Azure do klastrowania wystąpienia SAP ASCS/SCS. Omawiamy to bardziej szczegółowo w dalszej części artykułu.
 
-![Rysunek 6: Windows Server Failover Clustering dla konfiguracji SAP ASCS/SCS na platformie Azure przy użyciu oprogramowanie SIOS DataKeeper][sap-ha-guide-figure-1002]
+![Rysunek 6. Klaster trybu failover systemu Windows Server dla konfiguracji oprogramowania SAP ASCS/SCS na platformie Azure przy użyciu funkcji oprogramowanie SIOS DataKeeper][sap-ha-guide-figure-1002]
 
-_**Rysunek 6:** Windows Server Failover Clustering konfiguracji SAP ASCS/SCS na platformie Azure przy użyciu oprogramowanie SIOS DataKeeper_
+_**Rysunek 6.** Klaster trybu failover systemu Windows Server dla konfiguracji oprogramowania SAP ASCS/SCS na platformie Azure z usługą oprogramowanie SIOS DataKeeper_
 
-### <a name="ddd878a0-9c2f-4b8e-8968-26ce60be1027"></a>Wystąpienie DBMS wysokiej dostępności
-Systemu DBMS również jest pojedynczym punktem kontaktu w systemie SAP. Należy chronić go przy użyciu rozwiązania wysokiej dostępności. Rysunek nr 7 przedstawia rozwiązania o wysokiej dostępności programu SQL Server Always On na platformie Azure, za pomocą systemu Windows Server Failover Clustering i Azure wewnętrznego modułu równoważenia obciążenia. SQL Server Always On replikuje DBMS danych i plików dziennika przy użyciu funkcji replikacji swój własny system DBMS. W tym przypadku możesz nie muszą klastra udostępnione dyski, który upraszcza całą konfigurację.
+### <a name="ddd878a0-9c2f-4b8e-8968-26ce60be1027"></a>Wystąpienie systemu DBMS o wysokiej dostępności
+System DBMS również jest pojedynczym punktem kontaktu w systemie SAP. Należy chronić je za pomocą rozwiązania o wysokiej dostępności. Na rysunku nr 7 SQL Server przedstawiono na platformie Azure rozwiązanie o wysokiej dostępności, z funkcją klaster trybu failover systemu Windows Server i wewnętrznym modułem równoważenia obciążenia platformy Azure. SQL Server zawsze w przypadku replikowania danych i plików dziennika systemu DBMS przy użyciu własnej replikacji w systemie DBMS. W takim przypadku nie są wymagane dyski udostępnione klastra, co upraszcza całą konfigurację.
 
-![Rysunek 7: Przykład wysokiej dostępności SAP DBMS przy użyciu programu SQL Server Always On][sap-ha-guide-figure-2003]
+![Rysunek 7. Przykładem rozwiązania SAP DBMS o wysokiej dostępności z funkcją SQL Server Always On][sap-ha-guide-figure-2003]
 
-_**Rysunek 7:** Przykład wysokiej dostępności SAP DBMS przy użyciu programu SQL Server Always On_
+_**Rysunek 7.** Przykładem rozwiązania SAP DBMS o wysokiej dostępności z funkcją SQL Server Always On_
 
-Aby uzyskać więcej informacji na temat klastrów programu SQL Server na platformie Azure przy użyciu modelu wdrażania usługi Azure Resource Manager zobacz następujące artykuły:
+Aby uzyskać więcej informacji na temat klastrowania SQL Server na platformie Azure przy użyciu modelu wdrażania Azure Resource Manager, zobacz następujące artykuły:
 
-* [Konfigurowanie zawsze włączonej grupy dostępności w usłudze Azure Virtual Machines ręcznie przy użyciu usługi Resource Manager][virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]
-* [Konfigurowanie usługi Azure wewnętrznego modułu równoważenia obciążenia dla zawsze włączonej grupy dostępności na platformie Azure][virtual-machines-windows-portal-sql-alwayson-int-listener]
+* [Ręcznie skonfiguruj grupę dostępności na platformie Azure Virtual Machines przy użyciu Menedżer zasobów][virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]
+* [Konfigurowanie wewnętrznego modułu równoważenia obciążenia platformy Azure dla zawsze włączonych grup dostępności na platformie Azure][virtual-machines-windows-portal-sql-alwayson-int-listener]
 
-## <a name="045252ed-0277-4fc8-8f46-c5a29694a816"></a> Scenariusze end-to-end wysokiej dostępności wdrażania
+## <a name="045252ed-0277-4fc8-8f46-c5a29694a816"></a>Kompleksowe scenariusze wdrażania wysokiej dostępności
 
-### <a name="deployment-scenario-using-architectural-template-1"></a>Scenariusz wdrożenia przy użyciu architektury 1 szablonu
+### <a name="deployment-scenario-using-architectural-template-1"></a>Scenariusz wdrażania przy użyciu szablonu architektury 1
 
-Rysunek 8 przedstawiono przykładową architekturę wysokiej dostępności oprogramowanie SAP NetWeaver na platformie Azure **jeden** systemu SAP. Ten scenariusz jest skonfigurowane w następujący sposób:
+Na rysunku nr 8 przedstawiono przykład architektury wysokiej dostępności SAP NetWeaver na platformie Azure dla **jednego** systemu SAP. Ten scenariusz jest ustawiany w następujący sposób:
 
-- Jeden klaster dedykowanych jest używany na potrzeby wystąpienia SAP ASCS/SCS.
-- Jeden klaster dedykowany jest używany w ramach wystąpienia systemu DBMS.
-- Wystąpień serwera aplikacji SAP są wdrażane w ich własnych dedykowanych maszyn wirtualnych.
+- Jeden dedykowany klaster jest używany dla wystąpienia SAP ASCS/SCS.
+- Dla wystąpienia systemu DBMS jest używany jeden dedykowany klaster.
+- Wystąpienia serwera aplikacji SAP są wdrażane na własnych dedykowanych maszynach wirtualnych.
 
-![Rysunek 8: SAP o wysokiej dostępności architektury szablon 1, za pomocą dedykowanego klastra ASCS/SCS i DBMS][sap-ha-guide-figure-2004]
+![Rysunek 8. Szablon architektoniczny wysokiej dostępności SAP z dedykowanym klastrem dla systemów ASCS/SCS i DBMS][sap-ha-guide-figure-2004]
 
-_**Rysunek 8:** SAP 1 szablonu architektury wysokiej dostępności, dedykowane klastry ASCS/SCS i DBMS_
+_**Rysunek 8.** Szablon architektoniczny o wysokiej dostępności SAP — dedykowane klastry dla systemów ASCS/SCS i DBMS_
 
-### <a name="deployment-scenario-using-architectural-template-2"></a>Scenariusz wdrażania przy użyciu architektury 2 szablonu
+### <a name="deployment-scenario-using-architectural-template-2"></a>Scenariusz wdrażania przy użyciu szablonu architektury 2
 
-Rysunek 9 przedstawiono architekturę wysokiej dostępności oprogramowanie SAP NetWeaver na platformie Azure **jeden** systemu SAP. Ten scenariusz jest skonfigurowane w następujący sposób:
+Na rysunku nr 9 przedstawiono przykład architektury wysokiej dostępności SAP NetWeaver na platformie Azure dla **jednego** systemu SAP. Ten scenariusz jest ustawiany w następujący sposób:
 
-- Jeden klaster dedykowanych służy do **zarówno** wystąpienia SAP ASCS/SCS i systemu DBMS.
-- Wystąpień serwera aplikacji SAP są wdrażane w własnej dedykowanych maszyn wirtualnych.
+- Jeden dedykowany klaster jest używany **zarówno** w przypadku wystąpienia SAP ASCS/SCS, jak i w systemie DBMS.
+- Wystąpienia serwera aplikacji SAP są wdrażane na własnych dedykowanych maszynach wirtualnych.
 
-![Rysunek 9: SAP o wysokiej dostępności architektury szablon 2, z klastrem dedykowany dla ASCS/SCS i klastrem dedykowany dla systemu DBMS][sap-ha-guide-figure-2005]
+![Rysunek 9. Szablon architektoniczny wysokiej dostępności SAP z dedykowanym klastrem dla ASCS/SCS i dedykowany klaster dla systemu DBMS][sap-ha-guide-figure-2005]
 
-_**Rysunek 9:** SAP o wysokiej dostępności architektury szablon 2, z klastrem dedykowany dla ASCS/SCS i klastrem dedykowany dla systemu DBMS_
+_**Rysunek 9.** Szablon architektoniczny wysokiej dostępności SAP z dedykowanym klastrem dla ASCS/SCS i dedykowany klaster dla systemu DBMS_
 
-### <a name="deployment-scenario-using-architectural-template-3"></a>Scenariusz wdrażania przy użyciu architektury 3 szablonu
+### <a name="deployment-scenario-using-architectural-template-3"></a>Scenariusz wdrażania przy użyciu szablonu architektury 3
 
-Na rysunku nr 10 przedstawiono przykładową architekturę wysokiej dostępności oprogramowanie SAP NetWeaver na platformie Azure **dwóch** SAP systemów, za pomocą &lt;SID1&gt; i &lt;SID2&gt;. Ten scenariusz jest skonfigurowane w następujący sposób:
+Na rysunku nr 10 przedstawiono przykład architektury wysokiej dostępności SAP NetWeaver na platformie Azure dla **dwóch** systemów &lt;SAP z SID1&gt; i &lt;SID2&gt;. Ten scenariusz jest ustawiany w następujący sposób:
 
-- Jeden klaster dedykowanych służy do **zarówno** wystąpienia SAP ASCS/SCS SID1 *i* wystąpienia SAP ASCS/SCS SID2 (jeden klaster).
-- Jeden klaster dedykowanych służy do DBMS SID1 i inny dedykowany klaster jest używany dla systemu DBMS SID2 (dwóch klastrach).
-- Wystąpień serwera aplikacji SAP w systemie SAP SID1 ma swoje własne dedykowane maszyny wirtualne.
-- Wystąpień serwera aplikacji SAP w systemie SAP SID2 ma swoje własne dedykowane maszyny wirtualne.
+- Jeden dedykowany klaster jest używany dla wystąpienia SID1 SAP ASCS/SCS *i* wystąpienia SAP ASCS/SCS SID2 (jeden klaster).
+- Jeden dedykowany klaster jest używany w systemie DBMS SID1, a inny dedykowany klaster jest używany dla systemu DBMS SID2 (dwa klastry).
+- Wystąpienia serwera aplikacji SAP dla systemu SAP SID1 mają własne dedykowane maszyny wirtualne.
+- Wystąpienia serwera aplikacji SAP dla systemu SAP SID2 mają własne dedykowane maszyny wirtualne.
 
-![Rysunek 10. SAP o wysokiej dostępności — architektury szablon 3, z klastrem dedykowany dla różnych wystąpień ASCS/SCS][sap-ha-guide-figure-6003]
+![Rysunek 10. Szablon architektoniczny wysokiej dostępności SAP z dedykowanym klastrem dla różnych wystąpień ASCS/SCS][sap-ha-guide-figure-6003]
 
-_**Rysunek 10.** SAP o wysokiej dostępności — architektury szablon 3, z klastrem dedykowany dla różnych wystąpień ASCS/SCS_
+_**Rysunek 10.** Szablon architektoniczny wysokiej dostępności SAP z dedykowanym klastrem dla różnych wystąpień ASCS/SCS_
 
-## <a name="78092dbe-165b-454c-92f5-4972bdbef9bf"></a> Przygotowywanie infrastruktury
+## <a name="78092dbe-165b-454c-92f5-4972bdbef9bf"></a>Przygotowywanie infrastruktury
 
-### <a name="prepare-the-infrastructure-for-architectural-template-1"></a>Przygotowywanie infrastruktury dla architektury 1 szablonu
-Szablony usługi Azure Resource Manager dla programu SAP ułatwiają wdrażanie wymaganych zasobów.
+### <a name="prepare-the-infrastructure-for-architectural-template-1"></a>Przygotowywanie infrastruktury dla szablonu architektury 1
+Szablony Azure Resource Manager dla oprogramowania SAP upraszczają wdrażanie wymaganych zasobów.
 
-Trójwarstwowa szablonów usługi Azure Resource Manager obsługują także scenariuszy wysokiej dostępności, takich jak architektury 1 szablon, który ma dwa klastry. Każdy klaster jest SAP pojedynczego punktu awarii SAP ASCS/SCS i DBMS.
+Szablony trzech warstw w Azure Resource Manager obsługują również scenariusze wysokiej dostępności, takie jak szablon architektury 1, który ma dwa klastry. Każdy klaster jest single point of failure SAP dla oprogramowania SAP ASCS/SCS i DBMS.
 
-Poniżej przedstawiono, gdzie można uzyskać szablony usługi Azure Resource Manager przykładowy scenariusz, który opisano w tym artykule:
+Oto, gdzie można uzyskać Azure Resource Manager szablonów dla przykładowego scenariusza opisywanego w tym artykule:
 
 * [Azure Marketplace image](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
 * [Obraz niestandardowy](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
 
-Aby przygotować infrastrukturę do architektury 1 szablonu:
+Aby przygotować infrastrukturę dla szablonu architektury 1:
 
-- W witrynie Azure portal na **parametry** bloku, w **SYSTEMAVAILABILITY** wybierz opcję **HA**.
+- W Azure Portal w bloku **Parametry** w polu **SYSTEMAVAILABILITY** wybierz pozycję **ha**.
 
-  ![Rysunek 11: Ustaw parametry programu SAP o wysokiej dostępności usługi Azure Resource Manager][sap-ha-guide-figure-3000]
+  ![Rysunek 11. Ustaw Azure Resource Manager parametry wysokiej dostępności SAP][sap-ha-guide-figure-3000]
 
-_**Rysunek 11:** Ustaw parametry programu SAP o wysokiej dostępności usługi Azure Resource Manager_
+_**Rysunek 11.** Ustaw Azure Resource Manager parametry wysokiej dostępności SAP_
 
 
-  Utwórz szablony:
+  Szablony tworzą:
 
   * **Maszyny wirtualne**:
-    * Maszyny wirtualne serwera aplikacji SAP: <*SAPSystemSID*> - di - <*numer*>
-    * ASCS/SCS klastra maszyn wirtualnych: <*SAPSystemSID*> - ascs — <*numer*>
-    * Klaster systemu DBMS: <*SAPSystemSID*> - db - <*numer*>
+    * Maszyny wirtualne serwera aplikacji SAP: <*SAPSystemSID*>-di-<*Number*>
+    * Maszyny wirtualne klastra ASCS/SCS: <*SAPSystemSID*>-ASCS-<*Number*>
+    * Klaster DBMS: <*SAPSystemSID*>-db-<*Number*>
 
-  * **Karty dla wszystkich maszyn wirtualnych za pomocą adresów IP skojarzone sieciowe**:
-    * <*SAPSystemSID*> - nic - di - <*numer*>
+  * **Karty sieciowe dla wszystkich maszyn wirtualnych ze skojarzonymi adresami IP**:
+    * <*SAPSystemSID*>-karta sieciowa-di <*numer*>
     * <*SAPSystemSID*>-nic-ascs-<*Number*>
-    * <*SAPSystemSID*> - nic - db - <*numer*>
+    * <*SAPSystemSID*>-nic-db-<*Number*>
 
-  * **Konta usługi Azure storage**
+  * **Konta usługi Azure Storage**
 
   * **Grupy dostępności** dla:
-    * Maszyny wirtualne serwera aplikacji SAP: <*SAPSystemSID*> - avset - di
-    * SAP ASCS/SCS klastra maszyn wirtualnych: <*SAPSystemSID*> - avset - ascs
-    * System DBMS klastra maszyn wirtualnych: <*SAPSystemSID*> - avset - db
+    * Maszyny wirtualne serwera aplikacji SAP: <*SAPSystemSID*>-avset-di
+    * Maszyny wirtualne w klastrze SAP ASCS/SCS: <*SAPSystemSID*>-avset-ASCS
+    * Maszyny wirtualne klastra DBMS: <*SAPSystemSID*>-avset-DB
 
-  * **Usługa Azure wewnętrznego modułu równoważenia obciążenia**:
-    * Z wszystkimi portami dla wystąpienia ASCS/SCS i adresu IP <*SAPSystemSID*> - lb - ascs
-    * Z wszystkimi portami dla adresu IP i bazami danych programu SQL Server <*SAPSystemSID*> - lb - db
+  * **Wewnętrzny moduł równoważenia obciążenia platformy Azure**:
+    * Ze wszystkimi portami wystąpienia ASCS/SCS i adresem IP <*SAPSystemSID*>-lb-ASCS
+    * Ze wszystkimi portami dla SQL Server systemie DBMS i adresem IP <*SAPSystemSID*>-lb-DB
 
-  * **Sieciowa grupa zabezpieczeń**: <*SAPSystemSID*> - nsg - ascs-0  
-    * Za pomocą zewnętrznego otwartego portu protokołu RDP (Remote Desktop) do <*SAPSystemSID*> - ascs - 0, maszyny wirtualnej
-
-> [!NOTE]
-> Wszystkie adresy IP kart sieciowych i Azure wewnętrznych modułów równoważenia obciążenia są **dynamiczne** domyślnie. Zmień ich **statyczne** adresów IP. Opisano, jak to zrobić w dalszej części tego artykułu.
->
->
-
-### <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a> Wdrażanie maszyn wirtualnych z połączeniem sieci firmowej (cross-premises) do użycia w środowisku produkcyjnym
-Dla systemów SAP w środowisku produkcyjnym, wdrażanie maszyn wirtualnych platformy Azure za pomocą [łączności sieci firmowej (cross-premises)] [ planning-guide-2.2] przy użyciu usługi Azure Site-to-Site VPN lub usługi Azure ExpressRoute.
+  * **Sieciowa Grupa zabezpieczeń**: <*SAPSystemSID*>-sieciowej grupy zabezpieczeń-ASCS-0  
+    * Z otwartym portem zewnętrznym Remote Desktop Protocol (RDP) na maszynie wirtualnej <*SAPSystemSID*>-ASCS-0
 
 > [!NOTE]
-> Możesz użyć swojego wystąpienia usługi Azure Virtual Network. Sieć wirtualną i podsieć już zostały utworzone i przygotowane.
+> Wszystkie adresy IP kart sieciowych i wewnętrznych modułów równoważenia obciążenia platformy Azure są domyślnie **dynamiczne** . Zmień je na **statyczne** adresy IP. Opisujemy, jak to zrobić w dalszej części artykułu.
 >
 >
 
-1. W witrynie Azure portal na **parametry** bloku, w **NEWOREXISTINGSUBNET** wybierz opcję **istniejących**.
-2. W **SUBNETID** Dodaj pełny ciąg sieci platformy Azure przygotowany SubnetID, w którym planujesz wdrożyć usługi Azure virtual machines.
-3. Aby uzyskać listę wszystkich podsieci w sieci platformy Azure, uruchom następujące polecenie programu PowerShell:
+### <a name="c87a8d3f-b1dc-4d2f-b23c-da4b72977489"></a>Wdrażanie maszyn wirtualnych z łącznością sieci firmowej (między różnymi lokalizacjami) do użycia w środowisku produkcyjnym
+W przypadku produkcyjnych systemów SAP Wdróż maszyny wirtualne platformy Azure z [łącznością sieci firmowej (wiele lokalizacji)][planning-guide-2.2] za pomocą sieci VPN typu lokacja-lokacja lub Azure ExpressRoute.
+
+> [!NOTE]
+> Możesz użyć wystąpienia usługi Azure Virtual Network. Sieć wirtualna i podsieć została już utworzona i przygotowana.
+>
+>
+
+1. W Azure Portal, w bloku **Parametry** , w polu **NEWOREXISTINGSUBNET** wybierz pozycję **istniejące**.
+2. W polu **SUBNETID** Dodaj pełny ciąg przygotowanych SUBNETID sieci platformy Azure, w którym planujesz wdrożyć maszyny wirtualne platformy Azure.
+3. Aby uzyskać listę wszystkich podsieci sieciowych platformy Azure, Uruchom to polecenie programu PowerShell:
 
    ```PowerShell
    (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets
    ```
 
-   **Identyfikator** pola pokazuje **SUBNETID**.
-4. Aby uzyskać listę wszystkich **SUBNETID** wartości, uruchom następujące polecenie programu PowerShell:
+   Pole **ID** wskazuje **SUBNETID**.
+4. Aby uzyskać listę wszystkich wartości **SUBNETID** , uruchom następujące polecenie programu PowerShell:
 
    ```PowerShell
    (Get-AzureRmVirtualNetwork -Name <azureVnetName>  -ResourceGroupName <ResourceGroupOfVNET>).Subnets.Id
    ```
 
-   **SUBNETID** wygląda podobnie do następującego:
+   **SUBNETID** wygląda następująco:
 
    ```
    /subscriptions/<SubscriptionId>/resourceGroups/<VPNName>/providers/Microsoft.Network/virtualNetworks/azureVnet/subnets/<SubnetName>
    ```
 
-### <a name="7fe9af0e-3cce-495b-a5ec-dcb4d8e0a310"></a> Wdrożenie oparte tylko na chmurze wystąpień SAP na potrzeby pokazu i testowania
-Możesz wdrożyć systemu SAP o wysokiej dostępności w modelu wdrażania tylko w chmurze. Tego rodzaju wdrożenia przede wszystkim jest przydatne w przypadku pokaz i testowania przypadków użycia. Nie jest odpowiedni dla produkcyjne przypadki użycia.
+### <a name="7fe9af0e-3cce-495b-a5ec-dcb4d8e0a310"></a>Wdrażaj wystąpienia SAP tylko w chmurze dla testów i demonstracji
+System SAP o wysokiej dostępności można wdrożyć w modelu wdrażania tylko w chmurze. Ten rodzaj wdrożenia jest przydatny w przypadku demonstracji i testowania przypadków użycia. Nie jest to odpowiednie dla przypadków użycia w środowisku produkcyjnym.
 
-- W witrynie Azure portal na **parametry** bloku, w **NEWOREXISTINGSUBNET** wybierz opcję **nowe**. Pozostaw **SUBNETID** pole puste.
+- W Azure Portal, w bloku **Parametry** , w polu **NEWOREXISTINGSUBNET** wybierz pozycję **Nowy**. Pozostaw puste pole **SUBNETID** .
 
-  Szablon SAP usługi Azure Resource Manager automatycznie tworzy sieć wirtualną platformy Azure i podsieć.
+  Szablon Azure Resource Manager SAP automatycznie tworzy sieć wirtualną i podsieć platformy Azure.
 
 > [!NOTE]
-> Należy również wdrożyć co najmniej jedną specjalną maszynę wirtualną dla usługi Active Directory i DNS w tym samym wystąpieniu usługi Azure Virtual Network. Szablon nie tworzy tych maszyn wirtualnych.
+> Należy również wdrożyć co najmniej jedną dedykowaną maszynę wirtualną dla Active Directory i DNS w tym samym wystąpieniu usługi Azure Virtual Network. Szablon nie tworzy tych maszyn wirtualnych.
 >
 >
 
 
-### <a name="prepare-the-infrastructure-for-architectural-template-2"></a>Przygotowywanie infrastruktury dla architektury 2 szablonu
+### <a name="prepare-the-infrastructure-for-architectural-template-2"></a>Przygotowywanie infrastruktury dla szablonu architektury 2
 
-Można użyć tego szablonu usługi Azure Resource Manager dla rozwiązania SAP na celu uproszczenie wdrażania zasobów wymaganej infrastruktury SAP architektury szablon 2.
+Za pomocą tego szablonu Azure Resource Manager dla oprogramowania SAP można uprościć wdrażanie wymaganych zasobów infrastruktury dla szablonu architektury SAP Architecture 2.
 
-Poniżej przedstawiono, gdzie można uzyskać szablony usługi Azure Resource Manager, w tym scenariuszu wdrażania:
+Oto, gdzie można uzyskać Azure Resource Manager szablonów dla tego scenariusza wdrażania:
 
 * [Azure Marketplace image](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
 * [Obraz niestandardowy](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
 
 
-### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>Przygotowywanie infrastruktury dla architektury 3 szablonu
+### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>Przygotowywanie infrastruktury dla szablonu architektury 3
 
-Można przygotować infrastrukturę i skonfigurować SAP dla **— wiele identyfikatorów SID**. Na przykład można dodać dodatkowego wystąpienia SAP ASCS/SCS do *istniejących* konfiguracji klastra. Aby uzyskać więcej informacji, zobacz [Konfigurowanie dodatkowego wystąpienia SAP ASCS/SCS do istniejącej konfiguracji klastra do utworzenia konfiguracji usługi SAP — wiele identyfikatorów SID w usłudze Azure Resource Manager][sap-ha-multi-sid-guide].
+Możesz przygotować infrastrukturę i skonfigurować rozwiązanie SAP dla usługi **wiele identyfikatorów SID**. Można na przykład dodać do *istniejącej* konfiguracji klastra dodatkowe wystąpienie SAP ASCS/SCS. Aby uzyskać więcej informacji, zobacz [Konfigurowanie dodatkowego wystąpienia SAP ASCS/SCS w istniejącej konfiguracji klastra w celu utworzenia konfiguracji protokołu SAP dla wielu identyfikatorów SID w Azure Resource Manager][sap-ha-multi-sid-guide].
 
-Jeśli chcesz utworzyć nowy klaster — wiele identyfikatorów SID, możesz użyć wieloma identyfikatorami SID [szablony szybkiego startu w usłudze GitHub](https://github.com/Azure/azure-quickstart-templates).
-Do utworzenia nowego klastra z wieloma identyfikatorami SID, należy wdrożyć trzy następujące szablony:
+Jeśli chcesz utworzyć nowy klaster z obsługą identyfikatorów SID, możesz użyć [szablonów szybkiego startu o](https://github.com/Azure/azure-quickstart-templates)wiele identyfikatorów SID w serwisie GitHub.
+Aby utworzyć nowy klaster z obsługą wiele identyfikatorów SID, należy wdrożyć następujące trzy szablony:
 
 * [Szablon ASCS/SCS](#ASCS-SCS-template)
-* [Baza danych szablonów](#database-template)
+* [Szablon bazy danych](#database-template)
 * [Szablon serwerów aplikacji](#application-servers-template)
 
-Poniższe sekcje mają więcej szczegółów na temat szablonów oraz parametry, które należy podać w szablonach.
+Poniższe sekcje zawierają więcej szczegółów na temat szablonów i parametrów, które należy podać w szablonach.
 
-#### <a name="ASCS-SCS-template"></a> Szablon ASCS/SCS
+#### <a name="ASCS-SCS-template"></a>Szablon ASCS/SCS
 
-Szablon ASCS/SCS umożliwia wdrożenie dwóch maszyn wirtualnych, które służą do tworzenia klastra trybu failover systemu Windows Server, który obsługuje wiele wystąpień ASCS/SCS.
+Szablon ASCS/SCS wdraża dwie maszyny wirtualne, których można użyć do utworzenia klastra trybu failover systemu Windows Server, który hostuje wiele wystąpień ASCS/SCS.
 
-Aby skonfigurować szablon — wiele identyfikatorów SID ASCS/SCS, w [szablonu — wiele identyfikatorów SID ASCS/SCS][sap-templates-3-tier-multisid-xscs-marketplace-image], wprowadź wartości dla następujących parametrów:
+Aby skonfigurować szablon wieloidentyfikatorowy ASCS/SCS, w [szablonie ASCS/SCS wiele identyfikatorów SID][sap-templates-3-tier-multisid-xscs-marketplace-image]wprowadź wartości dla następujących parametrów:
 
-  - **Prefiks zasobów**.  Ustaw prefiks zasobu, który służy jako prefiks wszystkie zasoby, które są tworzone podczas wdrażania. Ponieważ zasoby, które nie należą do tylko jednego systemu SAP, prefiks zasobu nie jest identyfikator SID jednego systemu SAP.  Prefiks musi należeć do zakresu od **trzy do sześciu znaków**.
-  - **Stos typu**. Wybierz typ stosu systemu SAP. W zależności od typu stosu usługi Azure Load Balancer ma jedną (ABAP lub tylko dla środowiska Java) lub dwóch (ABAP + Java) prywatnych adresów IP na systemie SAP.
+  - **Prefiks zasobu**.  Ustaw prefiks zasobu, który jest używany do prefiksowania wszystkich zasobów utworzonych podczas wdrażania. Ponieważ zasoby nie należą tylko do jednego systemu SAP, prefiks zasobu nie jest identyfikatorem SID jednego systemu SAP.  Prefiks musi zawierać od **3 do 6 znaków**.
+  - **Typ stosu**. Wybierz typ stosu systemu SAP. W zależności od typu stosu Azure Load Balancer ma jeden (tylko ABAP lub Java) lub dwa (ABAP + Java) prywatnych adresów IP na system SAP.
   -  **Typ systemu operacyjnego**. Wybierz system operacyjny maszyn wirtualnych.
-  -  **Liczba systemów SAP**. Wybierz liczbę systemów SAP, który chcesz zainstalować w tym klastrze.
-  -  **Dostępność systemu**. Wybierz **HA**.
-  -  **Nazwa użytkownika administratora i hasło administratora**. Utwórz nowego użytkownika, który może służyć do logowania się na tym komputerze.
-  -  **Nowej lub istniejącej podsieci**. Określanie, czy należy utworzyć nową sieć wirtualną i podsieć lub używać istniejącej podsieci. Jeśli masz już sieć wirtualną, która jest połączona z siecią lokalną, wybierz opcję **istniejących**.
-  -  **Identyfikator podsieci**. Jeśli chcesz wdrożyć maszynę Wirtualną w istniejącej sieci wirtualnej, w którym masz zdefiniowanej podsieci maszyny Wirtualnej powinien być przypisany do nazwy identyfikator odpowiednią podsieć. Identyfikator zwykle wygląda następująco: /subscriptions/ <*identyfikator subskrypcji*> /resourceGroups/ <*nazwy grupy zasobów*> /providers/Microsoft.Network/virtualNetworks/ < *Nazwa sieci wirtualnej*> /subnets/ <*Nazwa podsieci*>
+  -  **Liczba systemów SAP**. Wybierz liczbę systemów SAP, które chcesz zainstalować w tym klastrze.
+  -  **Dostępność systemu**. Wybierz pozycję **ha**.
+  -  **Nazwa użytkownika administratora i hasło administratora**. Utwórz nowego użytkownika, którego można użyć do zalogowania się na komputerze.
+  -  **Nowa lub istniejąca podsieć**. Określ, czy należy utworzyć nową sieć wirtualną i podsieć, czy powinna być używana istniejąca podsieć. Jeśli masz już sieć wirtualną, która jest połączona z siecią lokalną, wybierz pozycję **istniejące**.
+  -  **Identyfikator podsieci**. Jeśli chcesz wdrożyć maszynę wirtualną w istniejącej sieci wirtualnej, w której zdefiniowano podsieć, należy przypisać do niej identyfikator tej konkretnej podsieci. Ten identyfikator zwykle wygląda następująco:/subscriptions/<*Identyfikator subskrypcji*>/resourceGroups/<*nazwa grupy zasobów*>/Providers/Microsoft.Network/virtualNetworks/<*nazwa sieci wirtualnej*>/Subnets/<*podsieć Nazwa*>
 
-Ten szablon wdraża jedno wystąpienie usługi Azure Load Balancer, która obsługuje wiele systemów SAP.
+Szablon wdraża jedno Azure Load Balancer wystąpienie, które obsługuje wiele systemów SAP.
 
-- Wystąpienia ASCS powinny być skonfigurowane dla liczby wystąpień 00, 10, 20...
-- Wystąpienia usług SCS powinny być skonfigurowane dla liczby wystąpień 01, 11, 21...
-- Wystąpienia ASCS umieścić w kolejce replikacji serwera (Wywołujących) (tylko system Linux) powinny być skonfigurowane dla liczby wystąpień 02, 12, 22...
-- Wystąpienia usług SCS Wywołujących (tylko system Linux) powinny być skonfigurowane dla liczby wystąpień 03, 13, 23...
+- Wystąpienia ASCS są konfigurowane dla wystąpienia o numerze 00, 10, 20...
+- Wystąpienia SCS są konfigurowane dla wystąpienia numer 01, 11, 21...
+- Serwer replikacji ASCS (tylko system wykres WYWOŁUJĄCYCH) (tylko system Linux) jest konfigurowany dla wystąpienia o numerze 02, 12, 22...
+- Wystąpienia SCS wykres WYWOŁUJĄCYCH (tylko system Linux) są konfigurowane dla wystąpienia o numerze 03, 13, 23...
 
-Moduł równoważenia obciążenia zawiera 1 (2 dla systemu Linux) VIP(s), 1 x dla ASCS/SCS i 1 x adresów VIP dla Wywołujących (tylko system Linux).
+Moduł równoważenia obciążenia zawiera adresy VIP: 1 (2 dla systemu Linux), adres VIP 1x dla ASCS/SCS i 1x VIP dla wykres WYWOŁUJĄCYCH (tylko system Linux).
 
-Poniższa lista zawiera wszystkie reguły, o których (gdzie x jest numer systemu SAP, na przykład 1, 2, 3...) równoważenia obciążenia:
-- Porty Windows specyficznych dla wszystkich systemów SAP: 445, 5985
-- Porty ASCS (liczba wystąpień x0): 32 x 0, 36 x 0, 39 x 0, 81 x 0, 5 x 013, 5 x 014, 5 x 016
-- Porty SCS (liczba wystąpień x1): 32 x 1, 33 x 1, 39 x 1, 81 x 1, 5 x 113, 5 x 114, 5 x 116
-- Porty ASCS Wywołujących w systemie Linux (liczba wystąpień x2): 33 x 2, 5 x 213, 5 x 214, 5 x 216
-- Porty SCS Wywołujących w systemie Linux (liczba wystąpień x3): 33 x 3, 5 x 313, 5 x 314, 5 x 316
+Poniższa lista zawiera wszystkie reguły równoważenia obciążenia (gdzie x jest numerem systemu SAP, na przykład 1, 2, 3...):
+- Porty specyficzne dla systemu Windows dla każdego systemu SAP: 445, 5985
+- Porty ASCS (numer wystąpienia x0): 32x0, 36x0, 39x0, 81x0, 5x013, 5x014, 5x016
+- Porty SCS (numer wystąpienia x1): 32x1, 33x1, 39x1, 81x1, 5x113, 5x114, 5x116
+- Porty ASCS wykres WYWOŁUJĄCYCH w systemie Linux (numer wystąpienia X2): 33x2, 5x213, 5x214, 5x216
+- Porty SCS wykres WYWOŁUJĄCYCH w systemie Linux (numer wystąpienia x3): 33x3, 5x313, 5x314, 5x316
 
-Moduł równoważenia obciążenia jest skonfigurowany do używania następujące porty sondy (gdzie x jest numer systemu SAP, na przykład 1, 2, 3...):
-- Port sondy modułu równoważenia obciążenia wewnętrznego ASCS/SCS: 620x0
-- Wewnętrzny Wywołujących obciążenia równoważenia porcie sondowania (tylko system Linux): 621x2
+Moduł równoważenia obciążenia jest skonfigurowany do używania następujących portów sondowania (gdzie x jest numerem systemu SAP, na przykład 1, 2, 3...):
+- Port sondy wewnętrznego modułu równoważenia obciążenia ASCS/SCS: 620x0
+- Port sondy wewnętrznego modułu równoważenia obciążenia wykres WYWOŁUJĄCYCH (tylko system Linux): 621x2
 
-#### <a name="database-template"></a> Baza danych szablonów
+#### <a name="database-template"></a>Szablon bazy danych
 
-Szablon bazy danych umożliwia wdrożenie co najmniej dwóch maszyn wirtualnych, które można użyć, aby zainstalować system zarządzania relacyjnymi bazami (danych RDBMS) dla jednego systemu SAP. Na przykład jeśli wdrożono szablon pięć systemów SAP ASCS/SCS, należy wdrożyć ten szablon pięć razy.
+Szablon bazy danych wdraża jedną lub dwie maszyny wirtualne, których można użyć do zainstalowania systemu zarządzania relacyjnymi bazami danych (RDBMS) dla jednego systemu SAP. Na przykład w przypadku wdrażania szablonu ASCS/SCS dla pięciu systemów SAP należy wdrożyć ten szablon pięć razy.
 
-Aby skonfigurować szablon — wiele identyfikatorów SID bazy danych, w [bazy danych — wiele identyfikatorów SID szablonu][sap-templates-3-tier-multisid-db-marketplace-image], wprowadź wartości dla następujących parametrów:
+Aby skonfigurować szablon wieloidentyfikatorowego bazy danych, w [szablonie WIELOidentyfikatorowym bazy danych][sap-templates-3-tier-multisid-db-marketplace-image]wprowadź wartości dla następujących parametrów:
 
-- **Identyfikator systemu SAP**. Wprowadź identyfikator systemu SAP systemu SAP, w którym chcesz zainstalować. Identyfikator będzie służyć jako prefiks dla zasobów, które są wdrażane.
+- **Identyfikator systemu SAP**. Wprowadź identyfikator systemu SAP systemu SAP, który chcesz zainstalować. Identyfikator będzie używany jako prefiks dla wdrożonych zasobów.
 - **Typ systemu operacyjnego**. Wybierz system operacyjny maszyn wirtualnych.
-- **Atrybut DbType**. Wybierz typ bazy danych, które chcesz zainstalować w klastrze. Wybierz **SQL** Jeśli chcesz zainstalować program Microsoft SQL Server. Wybierz **HANA** Jeśli planowane jest instalowanie platformy SAP HANA na maszynach wirtualnych. Upewnij się, że wybrano prawidłowy typ systemu operacyjnego: Wybierz **Windows** dotyczącymi usług SQL i wybierz opcję dystrybucji systemu Linux dla platformy HANA. Usługi Azure Load Balancer jest podłączonych do maszyn wirtualnych zostanie skonfigurowana do obsługi typu wybranej bazy danych:
-  * **SQL**. Moduł równoważenia obciążenia będzie równoważyć obciążenie portu 1433. Upewnij się, że ten port jest używany do instalacji programu SQL Server Always On.
-  * **HANA**. Moduł równoważenia obciążenia będzie równoważyć obciążenie porty 35015 i 35017. Upewnij się, że instalowanie platformy SAP HANA z liczbą wystąpień **50**.
-  Moduł równoważenia obciążenia będzie używać port sondy 62550.
-- **Rozmiar systemu SAP**. Ustaw liczbę protokoły SAP zapewni nowego systemu. Jeśli nie wiadomo jak wiele protokoły SAP, będą wymagać systemu, zapytaj partnerów technologicznych SAP lub integratora systemów.
-- **Dostępność systemu**. Wybierz **HA**.
-- **Nazwa użytkownika administratora i hasło administratora**. Utwórz nowego użytkownika, który może służyć do logowania się na tym komputerze.
-- **Identyfikator podsieci**. Wprowadź identyfikator podsieci, które były używane podczas wdrażania szablonu ASCS/SCS lub identyfikator podsieci, który został utworzony jako część wdrożenia szablonu ASCS/SCS.
+- **DbType**. Wybierz typ bazy danych, którą chcesz zainstalować w klastrze. Wybierz pozycję **SQL** , jeśli chcesz zainstalować Microsoft SQL Server. Wybierz pozycję **Hana** , jeśli planujesz zainstalować SAP HANA na maszynach wirtualnych. Upewnij się, że wybrano poprawny typ systemu operacyjnego: wybierz pozycję Windows for SQL i wybierz dystrybucję **systemu** Linux dla platformy Hana. Azure Load Balancer, która jest połączona z maszynami wirtualnymi, zostanie skonfigurowany do obsługi wybranego typu bazy danych:
+  * **SQL**. Moduł równoważenia obciążenia będzie równoważyć obciążenie portu 1433. Upewnij się, że ten port jest używany do SQL Server zawsze w instalacji.
+  * **HANA**. Moduł równoważenia obciążenia będzie obciążany portami 35015 i 35017. Upewnij się, że SAP HANA jest zainstalowana z numerem wystąpienia **50**.
+  Moduł równoważenia obciążenia będzie używać portu sondy 62550.
+- **Rozmiar systemu SAP**. Ustaw liczbę punktów SAP udostępnianych przez nowy system. Jeśli nie masz pewności, ile punktów SAP wymaga system, skontaktuj się z partnerem technologii SAP lub integratorem systemu.
+- **Dostępność systemu**. Wybierz pozycję **ha**.
+- **Nazwa użytkownika administratora i hasło administratora**. Utwórz nowego użytkownika, którego można użyć do zalogowania się na komputerze.
+- **Identyfikator podsieci**. Wprowadź identyfikator podsieci, która była używana podczas wdrażania szablonu ASCS/SCS, lub identyfikator podsieci, która została utworzona w ramach wdrożenia szablonu ASCS/SCS.
 
-#### <a name="application-servers-template"></a> Szablon serwerów aplikacji
+#### <a name="application-servers-template"></a>Szablon serwerów aplikacji
 
-Szablon serwerów aplikacji umożliwia wdrożenie co najmniej dwóch maszyn wirtualnych, które może służyć jako wystąpień serwera aplikacji SAP dla jednego systemu SAP. Na przykład jeśli wdrożono szablon pięć systemów SAP ASCS/SCS, należy wdrożyć ten szablon pięć razy.
+Szablon serwery aplikacji wdraża co najmniej dwie maszyny wirtualne, które mogą być używane jako wystąpienia serwera aplikacji SAP dla jednego systemu SAP. Na przykład w przypadku wdrażania szablonu ASCS/SCS dla pięciu systemów SAP należy wdrożyć ten szablon pięć razy.
 
-Aby skonfigurować szablon — wiele identyfikatorów SID serwerów aplikacji, w [szablon — wiele identyfikatorów SID serwerów aplikacji][sap-templates-3-tier-multisid-apps-marketplace-image], wprowadź wartości dla następujących parametrów:
+Aby skonfigurować szablon wiele identyfikatorów SID dla serwerów aplikacji, w [szablonie wiele identyfikatorów SID serwerów aplikacji][sap-templates-3-tier-multisid-apps-marketplace-image]wprowadź wartości dla następujących parametrów:
 
-  -  **Identyfikator systemu SAP**. Wprowadź identyfikator systemu SAP systemu SAP, w którym chcesz zainstalować. Identyfikator będzie służyć jako prefiks dla zasobów, które są wdrażane.
+  -  **Identyfikator systemu SAP**. Wprowadź identyfikator systemu SAP systemu SAP, który chcesz zainstalować. Identyfikator będzie używany jako prefiks dla wdrożonych zasobów.
   -  **Typ systemu operacyjnego**. Wybierz system operacyjny maszyn wirtualnych.
-  -  **Rozmiar systemu SAP**. Liczba protokoły SAP zapewni nowego systemu. Jeśli nie wiadomo jak wiele protokoły SAP, będą wymagać systemu, zapytaj partnerów technologicznych SAP lub integratora systemów.
-  -  **Dostępność systemu**. Wybierz **HA**.
-  -  **Nazwa użytkownika administratora i hasło administratora**. Utwórz nowego użytkownika, który może służyć do logowania się na tym komputerze.
-  -  **Identyfikator podsieci**. Wprowadź identyfikator podsieci, które były używane podczas wdrażania szablonu ASCS/SCS lub identyfikator podsieci, który został utworzony jako część wdrożenia szablonu ASCS/SCS.
+  -  **Rozmiar systemu SAP**. Liczba punktów SAP udostępnianych przez nowy system. Jeśli nie masz pewności, ile punktów SAP wymaga system, skontaktuj się z partnerem technologii SAP lub integratorem systemu.
+  -  **Dostępność systemu**. Wybierz pozycję **ha**.
+  -  **Nazwa użytkownika administratora i hasło administratora**. Utwórz nowego użytkownika, którego można użyć do zalogowania się na komputerze.
+  -  **Identyfikator podsieci**. Wprowadź identyfikator podsieci, która była używana podczas wdrażania szablonu ASCS/SCS, lub identyfikator podsieci, która została utworzona w ramach wdrożenia szablonu ASCS/SCS.
 
 
-### <a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a> Usługa Azure virtual network
-W naszym przykładzie przestrzeni adresowej sieci wirtualnej platformy Azure to 10.0.0.0/16. Istnieje jedna podsieć o nazwie **podsieci**, przy użyciu zakresu adresów 10.0.0.0/24. Wszystkich maszyn wirtualnych i wewnętrznych modułów równoważenia obciążenia są wdrażane w tej sieci wirtualnej.
+### <a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a>Usługa Azure Virtual Network
+W naszym przykładzie przestrzeń adresowa sieci wirtualnej platformy Azure to 10.0.0.0/16. Istnieje jedna podsieć o nazwie **Subnet**z zakresem adresów 10.0.0.0/24. Wszystkie maszyny wirtualne i wewnętrzne moduły równoważenia obciążenia są wdrażane w tej sieci wirtualnej.
 
 > [!IMPORTANT]
-> Nie wprowadzaj żadnych zmian, ustawienia sieciowe w systemie operacyjnym gościa. W tym adresy IP, serwery DNS i podsieci. Konfigurowanie ustawień sieciowych na platformie Azure. Usługa dynamicznej konfiguracji hosta (DHCP, Dynamic Host Configuration Protocol) propaguje ustawienia.
+> Nie wprowadzaj żadnych zmian w ustawieniach sieci w systemie operacyjnym gościa. Obejmuje to adresy IP, serwery DNS i podsieć. Skonfiguruj wszystkie ustawienia sieci na platformie Azure. Usługa Dynamic Host Configuration Protocol (DHCP) propaguje Twoje ustawienia.
 >
 >
 
-### <a name="b22d7b3b-4343-40ff-a319-097e13f62f9e"></a> Adresy IP serwera DNS
+### <a name="b22d7b3b-4343-40ff-a319-097e13f62f9e"></a>Adresy IP DNS
 
-Aby ustawić wymagany adres IP DNS adresy, wykonaj następujące czynności.
+Aby ustawić wymagane adresy IP DNS, wykonaj następujące czynności.
 
-1. W witrynie Azure portal na **serwerów DNS** bloku, upewnij się, że Twoja sieć wirtualna **serwerów DNS** opcja jest ustawiona na **niestandardowych serwerów DNS**.
-2. Wybierz ustawienia, na podstawie typu sieci, do których masz. Więcej informacji zawierają następujące zasoby:
-   * [Łączność sieci firmowej (cross-premises)][planning-guide-2.2]: Dodaj adresy IP serwerów DNS w środowisku lokalnym.  
-   Możesz rozszerzyć lokalne serwery DNS do maszyn wirtualnych, które działają na platformie Azure. W tym scenariuszu można dodać adresy IP maszyn wirtualnych platformy Azure, na których uruchomiono usługę DNS.
-   * W przypadku wdrożeń odizolowane na platformie Azure: Należy wdrożyć dodatkowe maszyny wirtualnej, w tym samym wystąpieniu sieci wirtualnej, która służy jako serwer DNS. Dodaj adresy IP maszyn wirtualnych platformy Azure, które zostały skonfigurowane do uruchamiania usługi DNS.
+1. W Azure Portal w bloku **serwery DNS** upewnij się, że opcja **serwery DNS** sieci wirtualnej jest ustawiona na wartość **niestandardowy DNS**.
+2. Wybierz swoje ustawienia w zależności od typu sieci. Aby uzyskać więcej informacji, zobacz następujące zasoby:
+   * [Łączność sieci firmowej (między różnymi][planning-guide-2.2]lokalizacjami): Dodaj adresy IP lokalnych serwerów DNS.  
+   Lokalne serwery DNS można rozłożyć na maszyny wirtualne, które są uruchomione na platformie Azure. W tym scenariuszu można dodać adresy IP maszyn wirtualnych platformy Azure, na których jest uruchomiona usługa DNS.
+   * W przypadku wdrożeń izolowanych na platformie Azure: Wdróż dodatkową maszynę wirtualną w tym samym wystąpieniu Virtual Network, które służy jako serwer DNS. Dodaj adresy IP maszyn wirtualnych platformy Azure, które zostały skonfigurowane do uruchamiania usługi DNS.
 
-   ![Ilustracja 12 Konfigurowanie serwerów DNS dla sieci wirtualnej platformy Azure][sap-ha-guide-figure-3001]
+   ![Rysunek 12. Konfigurowanie serwerów DNS dla Virtual Network platformy Azure][sap-ha-guide-figure-3001]
 
-   _**Ilustracja 12** Konfigurowanie serwerów DNS dla sieci wirtualnej platformy Azure_
+   _**Rysunek 12.** Konfigurowanie serwerów DNS dla Virtual Network platformy Azure_
 
    > [!NOTE]
-   > W przypadku zmiany adresów IP serwerów DNS, konieczne jest ponowne uruchomienie maszyn wirtualnych platformy Azure, aby zastosować zmiany i propagowanie nowych serwerów DNS.
+   > W przypadku zmiany adresów IP serwerów DNS należy ponownie uruchomić maszyny wirtualne platformy Azure, aby zastosować zmianę i propagować nowe serwery DNS.
    >
    >
 
-W naszym przykładzie usługa DNS jest zainstalowany i skonfigurowany na tych maszynach wirtualnych Windows:
+W naszym przykładzie usługa DNS jest zainstalowana i skonfigurowana na tych maszynach wirtualnych z systemem Windows:
 
-| Roli maszyny wirtualnej | Nazwa hosta maszyny wirtualnej | Nazwa karty sieciowej | Statyczny adres IP |
+| Rola maszyny wirtualnej | Nazwa hosta maszyny wirtualnej | Nazwa karty sieciowej | Statyczny adres IP |
 | --- | --- | --- | --- |
 | Pierwszy serwer DNS |domcontr-0 |pr1-nic-domcontr-0 |10.0.0.10 |
 | Drugi serwer DNS |domcontr-1 |pr1-nic-domcontr-1 |10.0.0.11 |
 
-### <a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a> Nazwy hostów i statyczne adresy IP dla klastrowanego wystąpienia SAP ASCS/SCS i klastrowane wystąpienie systemu DBMS
+### <a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a>Nazwy hostów i statyczne adresy IP dla wystąpienia klastrowanego SAP ASCS/SCS i wystąpienia klastrowanego DBMS
 
-Do wdrożenia w środowisku lokalnym należy te hosta zastrzeżonych nazw i adresów IP:
+W przypadku wdrożenia lokalnego wymagane są następujące zastrzeżone nazwy hostów i adresy IP:
 
-| Rola nazwy hostów wirtualnych | Nazwa hosta wirtualnego | Wirtualne statyczny adres IP |
+| Rola nazwy hosta wirtualnego | Nazwa hosta wirtualnego | Wirtualny statyczny adres IP |
 | --- | --- | --- |
-| SAP ASCS/SCS klaster wirtualny host na imię (w przypadku klastra zarządzania) |pr1-ascs-vir |10.0.0.42 |
+| Nazwa hosta wirtualnego SAP ASCS/SCS pierwszego klastra (do zarządzania klastrami) |pr1-ascs-vir |10.0.0.42 |
 | Nazwa hosta wirtualnego wystąpienia SAP ASCS/SCS |pr1-ascs-sap |10.0.0.43 |
-| Nazwa systemu SAP DBMS do hostów wirtualnych drugiego klastra (Zarządzanie klastrem) |pr1-dbms-vir |10.0.0.32 |
+| Nazwa hosta wirtualnego SAP DBMS drugiego klastra (Zarządzanie klastrem) |pr1-dbms-vir |10.0.0.32 |
 
-Podczas tworzenia klastra, można utworzyć nazwy hostów wirtualnych **pr1-ascs-vir** i **pr1-dbms-vir** i skojarzony adresy IP, które zarządzania klastrem. Aby dowiedzieć się, jak to zrobić, zobacz [zbieranie węzłów klastra w konfiguracji klastra][sap-ha-guide-8.12.1].
+Podczas tworzenia klastra utwórz nazwy hostów wirtualnych **PR1-ASCS-Vir** i **PR1-DBMS-Vir** oraz skojarzone adresy IP zarządzające klastrem. Aby uzyskać informacje o tym, jak to zrobić, zobacz [zbieranie węzłów klastra w konfiguracji klastra][sap-ha-guide-8.12.1].
 
-Pozostałe dwie nazwy hostów wirtualnych, można ręcznie utworzyć **pr1 ascs sap** i **pr1 dbms sap**i skojarzony adresy IP na serwerze DNS. Dzięki tym zasobom, wystąpienie SAP ASCS/SCS klastra i klastrowanego wystąpienia systemu DBMS. Aby dowiedzieć się, jak to zrobić, zobacz [Utwórz nazwę hosta wirtualnego klastrowanego wystąpienia SAP ASCS/SCS][sap-ha-guide-9.1.1].
+Można ręcznie utworzyć pozostałe dwie nazwy hostów wirtualnych, **PR1-ASCS-SAP** i **PR1-DBMS-SAP**oraz skojarzone adresy IP na serwerze DNS. W klastrowanym wystąpieniu SAP ASCS/SCS i klastrowanym wystąpieniu systemu DBMS są używane te zasoby. Aby uzyskać informacje o tym, jak to zrobić, zobacz [Tworzenie nazwy wirtualnego hosta dla klastrowanego wystąpienia SAP ASCS/SCS][sap-ha-guide-9.1.1].
 
-### <a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a> Ustawianie statycznych adresów IP dla maszyn wirtualnych SAP
-Po wdrożeniu maszyn wirtualnych do użycia w klastrze, należy ustawić statycznych adresów IP dla wszystkich maszyn wirtualnych. W tym w konfiguracji usługi Azure Virtual Network, a nie w systemie operacyjnym gościa.
+### <a name="84c019fe-8c58-4dac-9e54-173efd4b2c30"></a>Ustaw statyczne adresy IP dla maszyn wirtualnych SAP
+Po wdrożeniu maszyn wirtualnych do użycia w klastrze należy ustawić statyczne adresy IP dla wszystkich maszyn wirtualnych. Zrób to w konfiguracji Virtual Network platformy Azure, a nie w systemie operacyjnym gościa.
 
-1. W witrynie Azure portal wybierz **grupy zasobów** > **karty sieciowej** > **ustawienia** > **adresu IP**.
-2. Na **adresów IP** bloku, w obszarze **przypisania**, wybierz opcję **statyczne**. W **adresu IP** wprowadź adres IP, który chcesz użyć.
+1. W Azure Portal wybierz pozycję **Grupa** > zasobów**Ustawienia** > **karta** > sieciowa**adres IP**.
+2. W bloku **adresy IP** w obszarze **przypisanie**wybierz pozycję **statyczny**. W polu **adres IP** wprowadź adres IP, którego chcesz użyć.
 
    > [!NOTE]
-   > Jeśli zmienisz adres IP karty sieciowej, musisz ponownie uruchomić maszyn wirtualnych platformy Azure, aby zastosować zmiany.  
+   > Jeśli zmienisz adres IP karty sieciowej, musisz ponownie uruchomić maszyny wirtualne platformy Azure, aby zastosować tę zmianę.  
    >
    >
 
-   ![Ilustracja 13 Ustawianie statycznych adresów IP dla każdej maszyny wirtualnej karty sieciowej][sap-ha-guide-figure-3002]
+   ![Rysunek 13: Ustaw statyczne adresy IP dla karty sieciowej każdej maszyny wirtualnej][sap-ha-guide-figure-3002]
 
-   _**Ilustracja 13** Ustawianie statycznych adresów IP dla każdej maszyny wirtualnej karty sieciowej_
+   _**Rysunek 13:** Ustaw statyczne adresy IP dla karty sieciowej każdej maszyny wirtualnej_
 
-   Powtórz ten krok dla wszystkich interfejsów sieciowych, dla wszystkich maszyn wirtualnych, włącznie ze maszyn wirtualnych, które chcesz użyć dla usługi/DNS usługi Active Directory.
+   Powtórz ten krok dla wszystkich interfejsów sieciowych, czyli dla wszystkich maszyn wirtualnych, w tym maszyn wirtualnych, które mają być używane dla usługi Active Directory/DNS.
 
-W tym przykładzie mamy tych maszyn wirtualnych i statyczne adresy IP:
+W naszym przykładzie mamy te maszyny wirtualne i statyczne adresy IP:
 
-| Roli maszyny wirtualnej | Nazwa hosta maszyny wirtualnej | Nazwa karty sieciowej | Statyczny adres IP |
+| Rola maszyny wirtualnej | Nazwa hosta maszyny wirtualnej | Nazwa karty sieciowej | Statyczny adres IP |
 | --- | --- | --- | --- |
-| Pierwsze wystąpienie serwera aplikacji SAP |PR1-di-0 |PR1-karta sieciowa di-0 |10.0.0.50 |
-| Drugie wystąpienie serwera aplikacji SAP |pr1-di-1 |PR1-karta sieciowa di-1 |10.0.0.51 |
+| Pierwsze wystąpienie serwera aplikacji SAP |PR1-di-0 |PR1-nic-di-0 |10.0.0.50 |
+| Drugie wystąpienie serwera aplikacji SAP |PR1-di-1 |PR1-nic-di-1 |10.0.0.51 |
 | Przyciski ... |Przyciski ... |Przyciski ... |Przyciski ... |
-| Ostatnie wystąpienie serwera aplikacji SAP |PR1-di-5 |PR1-karta sieciowa di-5 |10.0.0.55 |
-| Pierwszym węźle klastra na potrzeby wystąpienia ASCS/SCS |pr1-ascs-0 |pr1-nic-ascs-0 |10.0.0.40 |
-| Drugim węźle klastra na potrzeby wystąpienia ASCS/SCS |pr1-ascs-1 |pr1-nic-ascs-1 |10.0.0.41 |
-| Pierwszym węźle klastra dla wystąpienia systemu DBMS |pr1-db-0 |pr1-nic-db-0 |10.0.0.30 |
-| Drugim węźle klastra dla wystąpienia systemu DBMS |pr1-db-1 |pr1-nic-db-1 |10.0.0.31 |
+| Ostatnie wystąpienie serwera aplikacji SAP |PR1-di-5 |PR1-nic-di-5 |10.0.0.55 |
+| Pierwszy węzeł klastra dla wystąpienia ASCS/SCS |pr1-ascs-0 |pr1-nic-ascs-0 |10.0.0.40 |
+| Drugi węzeł klastra dla wystąpienia ASCS/SCS |PR1-ASCS-1 |pr1-nic-ascs-1 |10.0.0.41 |
+| Pierwszy węzeł klastra dla wystąpienia DBMS |PR1-DB-0 |pr1-nic-db-0 |10.0.0.30 |
+| Drugi węzeł klastra dla wystąpienia DBMS |pr1-db-1 |pr1-nic-db-1 |10.0.0.31 |
 
-### <a name="7a8f3e9b-0624-4051-9e41-b73fff816a9e"></a> Ustawianie statycznego adresu IP dla modułu równoważenia obciążenia wewnętrznego platformy Azure
+### <a name="7a8f3e9b-0624-4051-9e41-b73fff816a9e"></a>Ustawianie statycznego adresu IP dla wewnętrznego modułu równoważenia obciążenia platformy Azure
 
-Szablon SAP usługi Azure Resource Manager umożliwia utworzenie Azure wewnętrznego modułu równoważenia obciążenia używanego dla wystąpienia SAP ASCS/SCS i klastrze DBMS.
+Szablon Azure Resource Manager SAP służy do tworzenia wewnętrznego modułu równoważenia obciążenia platformy Azure, który jest używany przez klaster wystąpienia SAP ASCS/SCS i klaster DBMS.
 
 > [!IMPORTANT]
-> Adres IP, nazwy hostów wirtualnych SAP ASCS/SCS jest taki sam jak adres IP modułu równoważenia obciążenia wewnętrznego SAP ASCS/SCS: **pr1-lb-ascs**.
-> Adres IP, nazwy wirtualnego systemu DBMS jest taki sam jak adres IP modułu równoważenia obciążenia wewnętrznego systemu DBMS: **pr1-lb-dbms**.
+> Adres IP nazwy hosta wirtualnego SAP ASCS/SCS jest taki sam jak adres IP wewnętrznego modułu równoważenia obciążenia SAP ASCS/SCS: **PR1-lb-ASCS**.
+> Adres IP nazwy wirtualnej systemu DBMS jest taki sam jak adres IP wewnętrznego modułu równoważenia obciążenia systemu DBMS: **PR1-lb-DBMS**.
 >
 >
 
-Aby ustawić statyczny adres IP dla modułu równoważenia obciążenia wewnętrznego platformy Azure:
+Aby ustawić statyczny adres IP dla wewnętrznego modułu równoważenia obciążenia platformy Azure:
 
-1. Początkowe wdrożenie ustawia adres IP modułu równoważenia obciążenia wewnętrznego **dynamiczne**. W witrynie Azure portal na **adresów IP** bloku, w obszarze **przypisania**, wybierz opcję **statyczne**.
-2. Ustaw adres IP wewnętrznego modułu równoważenia obciążenia **pr1-lb-ascs** adres IP, nazwy hostów wirtualnych wystąpienia SAP ASCS/SCS.
-3. Ustaw adres IP wewnętrznego modułu równoważenia obciążenia **pr1-lb-dbms** adres IP, nazwy hostów wirtualnych wystąpienia systemu DBMS.
+1. Początkowe wdrożenie ustawia adres IP wewnętrznego modułu równoważenia obciążenia na **dynamiczny**. W Azure Portal w bloku **adresy IP** w obszarze **przypisanie**wybierz pozycję statyczny.
+2. Ustaw adres IP wewnętrznego modułu równoważenia obciążenia **PR1-lb-ASCS** na adres IP nazwy hosta wirtualnego wystąpienia SAP ASCS/SCS.
+3. Ustaw adres IP wewnętrznego modułu równoważenia obciążenia **PR1-lb-DBMS** na adres IP nazwy hosta wirtualnego systemu DBMS.
 
-   ![Ilustracja 14 Ustawianie statycznych adresów IP dla wewnętrznego modułu równoważenia obciążenia na potrzeby wystąpienia SAP ASCS/SCS][sap-ha-guide-figure-3003]
+   ![Ilustracja 14. Ustaw statyczne adresy IP dla wewnętrznego modułu równoważenia obciążenia dla wystąpienia SAP ASCS/SCS][sap-ha-guide-figure-3003]
 
-   _**Ilustracja 14** Ustawianie statycznych adresów IP dla wewnętrznego modułu równoważenia obciążenia na potrzeby wystąpienia SAP ASCS/SCS_
+   _**Ilustracja 14.** Ustaw statyczne adresy IP dla wewnętrznego modułu równoważenia obciążenia dla wystąpienia SAP ASCS/SCS_
 
-W tym przykładzie mamy dwóch Azure wewnętrznych modułów równoważenia obciążenia, które mają te statyczne adresy IP:
+W naszym przykładzie mamy dwa wewnętrzne moduły równoważenia obciążenia platformy Azure, które mają następujące statyczne adresy IP:
 
-| Rola modułu równoważenia obciążenia wewnętrznego platformy Azure | Nazwa modułu równoważenia obciążenia wewnętrznego platformy Azure | Statyczny adres IP |
+| Rola wewnętrznego modułu równoważenia obciążenia platformy Azure | Nazwa wewnętrznego modułu równoważenia obciążenia platformy Azure | Statyczny adres IP |
 | --- | --- | --- |
-| SAP ASCS/SCS wystąpienia wewnętrznego modułu równoważenia obciążenia |pr1-lb-ascs |10.0.0.43 |
-| Systemu SAP DBMS wewnętrznego modułu równoważenia obciążenia |pr1-lb-dbms |10.0.0.33 |
+| Wewnętrzny moduł równoważenia obciążenia wystąpienia oprogramowania SAP ASCS/SCS |PR1-lb-ASCS |10.0.0.43 |
+| Wewnętrzny moduł równoważenia obciążenia SAP DBMS |PR1-lb-DBMS |10.0.0.33 |
 
 
-### <a name="f19bd997-154d-4583-a46e-7f5a69d0153c"></a> Domyślne ASCS/SCS reguł równoważenia obciążenia dla platformy Azure wewnętrznego modułu równoważenia obciążenia
+### <a name="f19bd997-154d-4583-a46e-7f5a69d0153c"></a>Domyślne reguły równoważenia obciążenia ASCS/SCS dla wewnętrznego modułu równoważenia obciążenia platformy Azure
 
-Szablon SAP usługi Azure Resource Manager umożliwia utworzenie porty, które są potrzebne:
-* Wystąpienie ABAP ASCS o numerze wystąpienia domyślnego **00**
-* Wystąpienie usług SCS Java, przy użyciu domyślnej liczby wystąpień **01**
+Szablon Azure Resource Manager SAP tworzy wymagane porty:
+* Wystąpienie ABAP ASCS z domyślnym wystąpieniem numer **00**
+* Wystąpienie środowiska Java SCS z domyślnym numerem wystąpienia **01**
 
-Po zainstalowaniu wystąpienia usługi SAP ASCS/SCS, należy użyć domyślnej liczby wystąpień **00** wystąpienia ABAP ASCS i numer wystąpienia domyślnego **01** wystąpienia SCS języka Java.
+W przypadku instalowania wystąpienia oprogramowania SAP ASCS/SCS należy użyć domyślnego wystąpienia o numerze **00** dla wystąpienia ASCS ABAP i domyślnego numeru wystąpienia **01** dla wystąpienia języka Java SCS.
 
-Następnie należy utworzyć wymagane wewnętrznego równoważenia obciążenia, punkty końcowe dla portów oprogramowanie SAP NetWeaver.
+Następnie utwórz wymagane punkty końcowe wewnętrznego równoważenia obciążenia dla portów SAP NetWeaver.
 
-Aby utworzyć wymagane wewnętrznego równoważenia obciążenia, punktów końcowych, najpierw utwórz tych końcowych dla portów SAP NetWeaver ABAP ASCS równoważenia obciążenia:
+Aby utworzyć wymagane punkty końcowe wewnętrznego równoważenia obciążenia, należy najpierw utworzyć te punkty końcowe równoważenia obciążenia dla portów SAP NetWeaver ABAP ASCS:
 
-| Nazwa reguły z równoważenia obciążenia/usługi | Domyślne numery portów | Konkretnych portów dla (ASCS wystąpienia o numerze wystąpienia 00) (Wywołujących z 10) |
+| Nazwa reguły równoważenia obciążenia/usługi | Domyślne numery portów | Konkretne porty dla (wystąpienie ASCS z numerem wystąpienia 00) (wykres WYWOŁUJĄCYCH z 10) |
 | --- | --- | --- |
-| Enqueue Server / *lbrule3200* |32 <*Numerwystąpienia*> |3200 |
-| ABAP Message Server / *lbrule3600* |36 <*Numerwystąpienia*> |3600 |
-| Internal ABAP Message / *lbrule3900* |39 <*Numerwystąpienia*> |3900 |
-| Serwer HTTP komunikatów / *Lbrule8100* |81 <*Numerwystąpienia*> |8100 |
-| SAP Start Service ASCS HTTP / *Lbrule50013* |5 <*Numerwystąpienia*> 13 |50013 |
-| SAP Start Service ASCS HTTPS / *Lbrule50014* |5 <*Numerwystąpienia*> 14 |50014 |
-| Umieścić w kolejce replikacji / *Lbrule50016* |5 <*Numerwystąpienia*> 16 |50016 |
-| SAP uruchamiania usługi Wywołujących HTTP *Lbrule51013* |5 <*Numerwystąpienia*> 13 |51013 |
-| SAP uruchamiania usługi Wywołujących HTTP *Lbrule51014* |5 <*Numerwystąpienia*> 14 |51014 |
-| Win RM *Lbrule5985* | |5985 |
-| Udział plików *Lbrule445* | |445 |
+| Serwer/ *lbrule3200* |32 <*numerwystąpienia*> |3200 |
+| Serwer komunikatów ABAP/ *lbrule3600* |36 <*numerwystąpienia*> |3600 |
+| Wewnętrzny komunikat ABAP/ *lbrule3900* |39 <*numerwystąpienia*> |3900 |
+| Serwer komunikatów HTTP/ *Lbrule8100* |81 <*numerwystąpienia*> |8100 |
+| Usługa SAP — uruchamianie usługi ASCS HTTP/ *Lbrule50013* |5 <*numerwystąpienia*> 13 |50013 |
+| Usługa SAP Start ASCS HTTPS/ *Lbrule50014* |5 <*numerwystąpienia*> 14 |50014 |
+| Replikacja/ *Lbrule50016* w kolejce |5 <*numerwystąpienia*> 16 |50016 |
+| Usługa SAP Start wykres WYWOŁUJĄCYCH HTTP *Lbrule51013* |5 <*numerwystąpienia*> 13 |51013 |
+| Usługa SAP Start wykres WYWOŁUJĄCYCH HTTP *Lbrule51014* |5 <*numerwystąpienia*> 14 |51014 |
+| *LBRULE5985* zasobów systemu Windows | |5985 |
+| *Lbrule445* udziału plików | |445 |
 
-_**Tabela 1:** Numery portów wystąpień oprogramowania SAP NetWeaver ABAP ASCS_
+_**Tabela 1:** Numery portów wystąpień programu SAP NetWeaver ABAP ASCS_
 
-Następnie utwórz tych końcowych dla portów SAP NetWeaver Java SCS równoważenia obciążenia:
+Następnie utwórz te punkty końcowe równoważenia obciążenia dla portów SAP NetWeaver Java SCS:
 
-| Nazwa reguły z równoważenia obciążenia/usługi | Domyślne numery portów | Konkretnych portów dla (SCS wystąpienia o numerze wystąpienia 01) (Wywołujących z 11) |
+| Nazwa reguły równoważenia obciążenia/usługi | Domyślne numery portów | Konkretne porty dla (wystąpienie SCS z numerem wystąpienia 01) (wykres WYWOŁUJĄCYCH z 11) |
 | --- | --- | --- |
-| Enqueue Server / *lbrule3201* |32 <*Numerwystąpienia*> |3201 |
-| Serwer bramy / *lbrule3301* |33 <*Numerwystąpienia*> |3301 |
-| Java Message Server / *lbrule3900* |39 <*Numerwystąpienia*> |3901 |
-| Serwer HTTP komunikatów / *Lbrule8101* |81 <*Numerwystąpienia*> |8101 |
-| SAP Start usług SCS HTTP / *Lbrule50113* |5 <*Numerwystąpienia*> 13 |50113 |
-| SAP Start Service SCS HTTPS / *Lbrule50114* |5 <*Numerwystąpienia*> 14 |50114 |
-| Umieścić w kolejce replikacji / *Lbrule50116* |5 <*Numerwystąpienia*> 16 |50116 |
-| SAP uruchamiania usługi Wywołujących HTTP *Lbrule51113* |5 <*Numerwystąpienia*> 13 |51113 |
-| SAP uruchamiania usługi Wywołujących HTTP *Lbrule51114* |5 <*Numerwystąpienia*> 14 |51114 |
-| Win RM *Lbrule5985* | |5985 |
-| Udział plików *Lbrule445* | |445 |
+| Serwer/ *lbrule3201* |32 <*numerwystąpienia*> |3201 |
+| Serwer bramy/ *lbrule3301* |33 <*numerwystąpienia*> |3301 |
+| Serwer wiadomości Java/ *lbrule3900* |39 <*numerwystąpienia*> |3901 |
+| Serwer komunikatów HTTP/ *Lbrule8101* |81 <*numerwystąpienia*> |8101 |
+| Usługa SAP — uruchamianie usługi SCS HTTP/ *Lbrule50113* |5 <*numerwystąpienia*> 13 |50113 |
+| Usługa SAP Start SCS HTTPS/ *Lbrule50114* |5 <*numerwystąpienia*> 14 |50114 |
+| Replikacja/ *Lbrule50116* w kolejce |5 <*numerwystąpienia*> 16 |50116 |
+| Usługa SAP Start wykres WYWOŁUJĄCYCH HTTP *Lbrule51113* |5 <*numerwystąpienia*> 13 |51113 |
+| Usługa SAP Start wykres WYWOŁUJĄCYCH HTTP *Lbrule51114* |5 <*numerwystąpienia*> 14 |51114 |
+| *LBRULE5985* zasobów systemu Windows | |5985 |
+| *Lbrule445* udziału plików | |445 |
 
-_**Tabela 2:** Numery portów wystąpień SAP NetWeaver Java SCS_
+_**Tabela 2:** Numery portów wystąpień programu SAP NetWeaver Java SCS_
 
-![Ilustracja 15 Domyślne ASCS/SCS reguł równoważenia obciążenia dla platformy Azure wewnętrznego modułu równoważenia obciążenia][sap-ha-guide-figure-3004]
+![Ilustracja 15. Domyślne reguły równoważenia obciążenia ASCS/SCS dla wewnętrznego modułu równoważenia obciążenia platformy Azure][sap-ha-guide-figure-3004]
 
-_**Ilustracja 15** Domyślne ASCS/SCS reguł równoważenia obciążenia dla platformy Azure wewnętrznego modułu równoważenia obciążenia_
+_**Ilustracja 15.** Domyślne reguły równoważenia obciążenia ASCS/SCS dla wewnętrznego modułu równoważenia obciążenia platformy Azure_
 
-Ustaw adres IP modułu równoważenia obciążenia **pr1-lb-dbms** adres IP, nazwy hostów wirtualnych wystąpienia systemu DBMS.
+Ustaw adres IP modułu równoważenia obciążenia **PR1-lb-DBMS** na adres IP nazwy hosta wirtualnego systemu DBMS.
 
-### <a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> Zmień ASCS/SCS domyślne reguł równoważenia obciążenia dla platformy Azure wewnętrznego modułu równoważenia obciążenia
+### <a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a>Zmiana reguł domyślnego równoważenia obciążenia ASCS/SCS dla wewnętrznego modułu równoważenia obciążenia platformy Azure
 
-Jeśli chcesz użyć innej liczby wystąpień SAP ASCS lub SCS, możesz zmienić nazwy i wartości ich portów z wartościami domyślnymi.
+Jeśli chcesz użyć różnych numerów dla wystąpień SAP ASCS lub SCS, należy zmienić nazwy i wartości ich portów z wartości domyślnych.
 
-1. W witrynie Azure portal wybierz  **< *SID*> moduł równoważenia obciążenia ascs - lb -**  > **załadować reguł równoważenia**.
-2. W przypadku reguł, które należą do wystąpienia SAP ASCS lub SCS równoważenia obciążenia wszystkie zmieniać tych wartości:
+1. W Azure Portal wybierz pozycję >   **< *SID*>-lb-ASCS** **reguły równoważenia obciążenia**usługi równoważenia obciążenia.
+2. Dla wszystkich reguł równoważenia obciążenia należących do wystąpienia SAP ASCS lub SCS Zmień następujące wartości:
 
-   * Name (Nazwa)
+   * Name
    * Port
    * Port zaplecza
 
-   Na przykład jeśli chcesz zmienić domyślny numer wystąpienia ASCS z zakresu od 00 do 31, musisz wprowadzić zmiany dla wszystkich portów wymienionych w tabeli 1.
+   Na przykład jeśli chcesz zmienić domyślną liczbę wystąpień ASCS z 00 na 31, musisz wprowadzić zmiany dla wszystkich portów wymienionych w tabeli 1.
 
-   Oto przykład aktualizacji dla portu *lbrule3200*.
+   Oto przykład aktualizacji *lbrule3200*portu.
 
-   ![Ilustracja 16 Zmień ASCS/SCS domyślne reguł równoważenia obciążenia dla platformy Azure wewnętrznego modułu równoważenia obciążenia][sap-ha-guide-figure-3005]
+   ![Rysunek 16. Zmiana reguł domyślnego równoważenia obciążenia ASCS/SCS dla wewnętrznego modułu równoważenia obciążenia platformy Azure][sap-ha-guide-figure-3005]
 
-   _**Ilustracja 16** Zmień ASCS/SCS domyślne reguł równoważenia obciążenia dla platformy Azure wewnętrznego modułu równoważenia obciążenia_
+   _**Rysunek 16.** Zmiana reguł domyślnego równoważenia obciążenia ASCS/SCS dla wewnętrznego modułu równoważenia obciążenia platformy Azure_
 
-### <a name="e69e9a34-4601-47a3-a41c-d2e11c626c0c"></a> Dodawanie maszyn wirtualnych Windows do domeny
+### <a name="e69e9a34-4601-47a3-a41c-d2e11c626c0c"></a>Dodawanie maszyn wirtualnych z systemem Windows do domeny
 
-Po przypisaniu statycznego adresu IP do maszyn wirtualnych, należy dodać maszyn wirtualnych do domeny.
+Po przypisaniu statycznego adresu IP do maszyn wirtualnych należy dodać maszyny wirtualne do domeny.
 
-![Ilustracja 17 Dodaj maszynę wirtualną do domeny][sap-ha-guide-figure-3006]
+![Ilustracja 17. Dodawanie maszyny wirtualnej do domeny][sap-ha-guide-figure-3006]
 
-_**Ilustracja 17** Dodaj maszynę wirtualną do domeny_
+_**Ilustracja 17.** Dodawanie maszyny wirtualnej do domeny_
 
-### <a name="661035b2-4d0f-4d31-86f8-dc0a50d78158"></a> Dodawanie wpisów rejestru na obu węzłach klastra wystąpienia SAP ASCS/SCS
+### <a name="661035b2-4d0f-4d31-86f8-dc0a50d78158"></a>Dodaj wpisy rejestru na obu węzłach klastra wystąpienia SAP ASCS/SCS
 
-Usługa Azure Load Balancer ma wewnętrznego modułu równoważenia obciążenia, zamyka połączeń w przypadku połączeń są w stanie bezczynności pewien okres czasu (limit czasu bezczynności). Procesy robocze SAP w oknie dialogowym wystąpień otwartych połączeń można umieścić w kolejce SAP przetwarzać tak szybko, jak pierwszy dodawania/usuwania z kolejki żądania musi być wysyłane. Te połączenia zazwyczaj pozostaje ustanowionych do procesu roboczego lub ponowne uruchomienie procesu umieścić w kolejce. Jednakże jeśli połączenie jest bezczynne na pewien okres czasu, Azure wewnętrznego modułu równoważenia obciążenia zamyka połączenia. Nie stanowi problemu, ponieważ proces roboczy SAP przywraca połączenie do procesu umieścić w kolejce, jeśli już nie istnieje. Te działania są udokumentowane w śladach projektanta procesów SAP, ale mogą tworzyć dużą ilością dodatkowa zawartość w tych śladów. To dobry pomysł, aby zmienić TCP/IP `KeepAliveTime` i `KeepAliveInterval` na obu węzłach klastra. Połącz te zmiany w parametrach TCP/IP z parametrami profilu SAP, opisane w dalszej części tego artykułu.
+Azure Load Balancer ma wewnętrzny moduł równoważenia obciążenia, który zamyka połączenia, gdy połączenia są bezczynne przez określony czas (limit czasu bezczynności). Procesy robocze SAP w wystąpieniach okna dialogowego otwierają połączenia z procesem dodawania do kolejki SAP zaraz po wysłaniu pierwszego żądania kolejki/usuwania kolejki. Te połączenia zwykle pozostają ustanowione do momentu ponownego uruchomienia procesu pracy lub kolejki. Jeśli jednak połączenie jest w stanie bezczynności przez określony czas, wewnętrzny moduł równoważenia obciążenia platformy Azure zamknie połączenia. Nie jest to problem, ponieważ proces roboczy SAP ponownie nawiązuje połączenie z procesem dodawania do kolejki, jeśli już nie istnieje. Te działania są udokumentowane w śladach dla deweloperów procesów SAP, ale w tych śladach tworzą dużą ilość dodatkowej zawartości. Dobrym pomysłem jest zmiana protokołu TCP/IP `KeepAliveTime` i `KeepAliveInterval` obu węzłów klastra. Połącz te zmiany w parametrach TCP/IP z parametrami profilu SAP opisanymi w dalszej części artykułu.
 
-Aby dodać wpisy rejestru na obu węzłach klastra wystąpienia SAP ASCS/SCS, najpierw dodaj te wpisy rejestru Windows na obu węzłach klastra Windows SAP ASCS/SCS programu:
+Aby dodać wpisy rejestru na obu węzłach klastra wystąpienia SAP ASCS/SCS, należy najpierw dodać te wpisy rejestru systemu Windows na obu węzłach klastra systemu Windows dla oprogramowania SAP ASCS/SCS:
 
-| Ścieżka | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Nazwa zmiennej |`KeepAliveTime` |
 | Typ zmiennej |REG_DWORD (Decimal) |
-| Wartość |120000 |
+| Value |120000 |
 | Link do dokumentacji |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
-_**Tabela 3:** Zmień pierwszy parametr TCP/IP_
+_**Tabela 3:** Zmiana pierwszego parametru TCP/IP_
 
-Następnie należy dodać wpisy rejestru w tym Windows na obu węzłach klastra Windows SAP ASCS/SCS programu:
+Następnie Dodaj te wpisy rejestru systemu Windows na obu węzłach klastra systemu Windows dla oprogramowania SAP ASCS/SCS:
 
-| Ścieżka | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | Nazwa zmiennej |`KeepAliveInterval` |
 | Typ zmiennej |REG_DWORD (Decimal) |
-| Wartość |120000 |
+| Value |120000 |
 | Link do dokumentacji |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 _**Tabela 4:** Zmień drugi parametr TCP/IP_
 
-**Aby zastosować zmiany, ponownie uruchom oba węzły klastra**.
+**Aby zastosować zmiany, uruchom ponownie oba węzły klastra**.
 
-### <a name="0d67f090-7928-43e0-8772-5ccbf8f59aab"></a> Konfigurowanie klastra systemu Windows Server Failover Clustering dla wystąpienia SAP ASCS/SCS
+### <a name="0d67f090-7928-43e0-8772-5ccbf8f59aab"></a>Konfigurowanie klastra usługi Windows Server Failover Clustering dla wystąpienia SAP ASCS/SCS
 
-Konfigurowanie klastra systemu Windows Server Failover Clustering dla wystąpienia SAP ASCS/SCS obejmuje następujące zadania:
+Konfigurowanie klastra usługi Windows Server Failover Clustering dla wystąpienia SAP ASCS/SCS obejmuje następujące zadania:
 
 - Zbieranie węzłów klastra w konfiguracji klastra
-- Konfigurowanie monitora udostępniania plików klastra
+- Konfigurowanie monitora udziału plików klastra
 
-#### <a name="5eecb071-c703-4ccc-ba6d-fe9c6ded9d79"></a> Zbieraj węzłów klastra w konfiguracji klastra
+#### <a name="5eecb071-c703-4ccc-ba6d-fe9c6ded9d79"></a>Zbieranie węzłów klastra w konfiguracji klastra
 
-1. Dodawanie roli i funkcje kreatora Dodaj klaster do obu węzłów klastra trybu failover.
-2. Konfigurowanie klastra trybu failover przy użyciu Menedżera klastra trybu Failover. W Menedżerze klastra trybu Failover wybierz **tworzenia klastrów**, a następnie dodaj tylko nazwę pierwszego klastra węzeł A. Nie należy dodawać drugiego węzła jeszcze; należy dodać drugi węzeł w późniejszym kroku.
+1. W Kreatorze dodawania ról i funkcji Dodaj klaster trybu failover do obu węzłów klastra.
+2. Skonfiguruj klaster trybu failover za pomocą Menedżer klastra trybu failover. W Menedżer klastra trybu failover wybierz pozycję **Utwórz klaster**, a następnie Dodaj tylko nazwę pierwszego klastra, węzeł A. Nie należy jeszcze dodawać drugiego węzła; drugi węzeł zostanie dodany w późniejszym kroku.
 
-   ![Ilustracja 18 Dodaj nazwę serwera lub maszyny wirtualnej w pierwszym węźle klastra][sap-ha-guide-figure-3007]
+   ![Ilustracja 18. Dodaj nazwę serwera lub maszyny wirtualnej pierwszego węzła klastra][sap-ha-guide-figure-3007]
 
-   _**Ilustracja 18** Dodaj nazwę serwera lub maszyny wirtualnej w pierwszym węźle klastra_
+   _**Ilustracja 18.** Dodaj nazwę serwera lub maszyny wirtualnej pierwszego węzła klastra_
 
-3. Wprowadź nazwę sieci (nazwa hosta wirtualnego) klastra.
+3. Wprowadź nazwę sieci (nazwę hosta wirtualnego) klastra.
 
-   ![Ilustracja 19 Wprowadź nazwę klastra][sap-ha-guide-figure-3008]
+   ![Rysunek 19. Wprowadź nazwę klastra][sap-ha-guide-figure-3008]
 
-   _**Ilustracja 19** Wprowadź nazwę klastra_
+   _**Rysunek 19.** Wprowadź nazwę klastra_
 
-4. Po utworzeniu klastra, uruchom test sprawdzania poprawności klastra.
+4. Po utworzeniu klastra uruchom test weryfikacji klastra.
 
-   ![Ilustracja 20 Uruchom sprawdzenie poprawności klastra][sap-ha-guide-figure-3009]
+   ![Ilustracja 20. Uruchom sprawdzanie poprawności klastra][sap-ha-guide-figure-3009]
 
-   _**Ilustracja 20** Uruchom sprawdzenie poprawności klastra_
+   _**Ilustracja 20.** Uruchom sprawdzanie poprawności klastra_
 
-   Możesz zignorować ostrzeżenia dotyczące dysków na tym etapie w procesie. Należy dodać monitora udostępniania plików i oprogramowanie SIOS udostępnionych dysków później. Na tym etapie nie trzeba martwić o kworum.
+   Można zignorować ostrzeżenia dotyczące dysków w tym momencie w procesie. W późniejszym czasie dodasz monitor udostępniania plików i dyski udostępnione oprogramowanie SIOS. Na tym etapie nie trzeba martwić się o posiadanie kworum.
 
-   ![Ilustracja 21 Nie dysku kworum zostanie znaleziony.][sap-ha-guide-figure-3010]
+   ![Rysunek 21. Nie znaleziono dysku kworum][sap-ha-guide-figure-3010]
 
-   _**Ilustracja 21** Nie dysku kworum zostanie znaleziony._
+   _**Rysunek 21.** Nie znaleziono dysku kworum_
 
-   ![Ilustracja 22 Zasób klastra Core wymaga nowego adresu IP][sap-ha-guide-figure-3011]
+   ![Ilustracja 22: Podstawowy zasób klastra wymaga nowego adresu IP][sap-ha-guide-figure-3011]
 
-   _**Ilustracja 22** Zasób klastra Core wymaga nowego adresu IP_
+   _**Ilustracja 22:** Podstawowy zasób klastra wymaga nowego adresu IP_
 
-5. Zmień adres IP podstawowej usługi klastra. Klaster nie można uruchomić, dopóki nie zmieni adres IP podstawowej usługi klastra, ponieważ adres IP serwera wskazuje na jednym z węzłów maszyny wirtualnej. To zrobić na **właściwości** strony podstawowej usługi klastrowania zasób adresu IP.
+5. Zmień adres IP podstawowej usługi klastra. Nie można uruchomić klastra, dopóki nie zmienisz adresu IP podstawowej usługi klastra, ponieważ adres IP serwera wskazuje jeden z węzłów maszyny wirtualnej. Zrób to na stronie **Właściwości** zasobu adresu IP podstawowej usługi klastra.
 
-   Na przykład, należy przypisać adres IP (w naszym przykładzie **10.0.0.42**) dla nazwy hosta wirtualnego klastra **pr1-ascs-vir**.
+   Na przykład musimy przypisać adres IP (w naszym przykładzie **10.0.0.42**) dla nazwy hosta wirtualnego klastra **PR1-ASCS-Vir**.
 
-   ![Ilustracja 23: W oknie dialogowym właściwości zmiana adresu IP][sap-ha-guide-figure-3012]
+   ![Rysunek 23. W oknie dialogowym właściwości Zmień adres IP][sap-ha-guide-figure-3012]
 
-   _**Ilustracja 23:** W **właściwości** okna dialogowego pola, zmiana adresu IP_
+   _**Rysunek 23.** W oknie dialogowym **Właściwości** Zmień adres IP_
 
-   ![Rysunek 24: Przypisanie adresu IP, która jest zarezerwowana dla klastra][sap-ha-guide-figure-3013]
+   ![Rysunek 24. Przypisywanie adresu IP zastrzeżonego dla klastra][sap-ha-guide-figure-3013]
 
-   _**Rysunek 24:** Przypisanie adresu IP, która jest zarezerwowana dla klastra_
+   _**Rysunek 24.** Przypisywanie adresu IP zastrzeżonego dla klastra_
 
-6. Przenieś nazwę hosta wirtualnego klastra online.
+6. Wprowadź nazwę wirtualnego hosta klastra w trybie online.
 
-   ![Rysunek 25: Usługa core klastrowania jest uruchomiona i działa i poprawne IP adresów][sap-ha-guide-figure-3014]
+   ![Ilustracja 25: Usługa podstawowe klastra jest uruchomiona i ma prawidłowy adres IP][sap-ha-guide-figure-3014]
 
-   _**Rysunek 25:** Usługa core klastrowania jest uruchomiona i działa i poprawne IP adresów_
+   _**Ilustracja 25:** Usługa podstawowe klastra jest uruchomiona i ma prawidłowy adres IP_
 
 7. Dodaj drugi węzeł klastra.
 
-   Teraz, że podstawowa usługa klastrowania jest uruchomiona, można dodać drugi węzeł klastra.
+   Teraz, gdy podstawowa usługa klastra jest uruchomiona, można dodać drugi węzeł klastra.
 
-   ![Ilustracja 26 Dodaj drugi węzeł klastra][sap-ha-guide-figure-3015]
+   ![Rysunek 26: Dodaj drugi węzeł klastra][sap-ha-guide-figure-3015]
 
-   _**Ilustracja 26** Dodaj drugi węzeł klastra_
+   _**Rysunek 26:** Dodaj drugi węzeł klastra_
 
-8. Wprowadź nazwę dla drugiego hosta węzła klastra.
+8. Wprowadź nazwę drugiego hosta węzła klastra.
 
-   ![Ilustracja 27 Wprowadź nazwę hosta drugiego węzła klastra][sap-ha-guide-figure-3016]
+   ![Rysunek 27: Wprowadź drugą nazwę hosta węzła klastra][sap-ha-guide-figure-3016]
 
-   _**Ilustracja 27** Wprowadź nazwę hosta drugiego węzła klastra_
+   _**Rysunek 27:** Wprowadź drugą nazwę hosta węzła klastra_
 
    > [!IMPORTANT]
-   > Upewnij się, że **Dodaj wszystkie odpowiednie magazyny do klastra** pole wyboru jest **nie** wybrane.  
+   > Upewnij się, że pole wyboru **Dodaj wszystkie odpowiednie magazyny do klastra** **nie** jest zaznaczone.  
    >
    >
 
-   ![Ilustracja 28 Nie zaznaczaj pola wyboru][sap-ha-guide-figure-3017]
+   ![Ilustracja 28. Nie zaznaczaj pola wyboru][sap-ha-guide-figure-3017]
 
-   _**Ilustracja 28** Czy **nie** zaznacz pole wyboru_
+   _**Ilustracja 28.** **Nie** zaznaczaj pola wyboru_
 
-   Możesz zignorować ostrzeżenia dotyczące kworum i dysków. Można ustawić kworum i później współużytkować dysku, zgodnie z opisem w [instalacji oprogramowanie SIOS DataKeeper Cluster Edition dla dysku udział klastra SAP ASCS/SCS][sap-ha-guide-8.12.3].
+   Można zignorować ostrzeżenia dotyczące kworum i dysków. Należy ustawić kworum i udostępnić dysk później, zgodnie z opisem w temacie [Installing oprogramowanie SIOS DataKeeper Cluster Edition for SAP ASCS/SCS Cluster Share Disk][sap-ha-guide-8.12.3].
 
-   ![Ilustracja 29 Ignoruj ostrzeżenia dotyczące dysku kworum][sap-ha-guide-figure-3018]
+   ![Rysunek 29: Ignoruj ostrzeżenia dotyczące kworum dysku][sap-ha-guide-figure-3018]
 
-   _**Ilustracja 29** Ignoruj ostrzeżenia dotyczące dysku kworum_
+   _**Rysunek 29:** Ignoruj ostrzeżenia dotyczące kworum dysku_
 
 
-#### <a name="e49a4529-50c9-4dcf-bde7-15a0c21d21ca"></a> Konfigurowanie monitora udziału plików klastra
+#### <a name="e49a4529-50c9-4dcf-bde7-15a0c21d21ca"></a>Konfigurowanie monitora udziału plików klastra
 
-Konfigurowanie monitora udostępniania plików klastra obejmuje następujące zadania:
+Konfigurowanie monitora udziału plików klastra obejmuje następujące zadania:
 
 - Tworzenie udziału plików
-- Ustawienia kworum monitora udziału plików w Menedżerze klastra trybu Failover
+- Ustawianie kworum monitora udziału plików w Menedżer klastra trybu failover
 
-##### <a name="06260b30-d697-4c4d-b1c9-d22c0bd64855"></a> Utwórz udział plików
+##### <a name="06260b30-d697-4c4d-b1c9-d22c0bd64855"></a>Tworzenie udziału plików
 
-1. Wybierz monitor udziału plików, zamiast dysku kworum. Oprogramowanie SIOS DataKeeper obsługuje tę opcję.
+1. Wybierz monitor udziału plików zamiast dysku kworum. OPROGRAMOWANIE SIOS DataKeeper obsługuje tę opcję.
 
-   W przykładach w tym artykule monitora udostępniania plików znajduje się na serwerze/DNS usługi Active Directory, który działa w systemie Azure. Monitor udziału plików jest nazywany **domcontr 0**. Czy skonfigurować połączenia sieci VPN na platformie Azure (za pośrednictwem sieci VPN typu lokacja-lokacja lub ExpressRoute systemu Azure), monitor udostępniania swojej/DNS usługi Active Directory w środowisku lokalnym i usługi nie jest odpowiednia do uruchamiania pliku.
+   W przykładach w tym artykule monitor udziału plików znajduje się na serwerze Active Directory/DNS działającym na platformie Azure. Monitor udziału plików ma nazwę **domcontr-0**. Ze względu na to, że skonfigurowano połączenie sieci VPN z platformą Azure (za pośrednictwem sieci VPN typu lokacja-lokacja lub Azure ExpressRoute), usługa Active Directory/DNS jest lokalna i nie jest odpowiednia do uruchamiania monitora udostępniania plików.
 
    > [!NOTE]
-   > Jeśli usługa/DNS usługi Active Directory działa tylko w środowisku lokalnym, nie należy konfigurować usługi monitora udziału plików w systemie operacyjnym Windows usługi Active Directory/DNS, który jest uruchomiony w środowisku lokalnym. Opóźnienie sieci między węzłami klastra z systemem Azure i/DNS usługi Active Directory w lokalnym programie może być za duży i spowodować problemy z połączeniem. Pamiętaj skonfigurować monitor udostępniania plików na maszynie wirtualnej platformy Azure, które jest uruchamiane w pobliżu węzła klastra.  
+   > Jeśli usługa Active Directory/DNS działa tylko lokalnie, nie należy konfigurować monitora udostępniania plików w systemie operacyjnym Windows Active Directory/DNS działającym lokalnie. Opóźnienie sieci między węzłami klastra działającymi na platformie Azure i lokalnymi Active Directory/DNS może być zbyt duże i powodować problemy z łącznością. Należy pamiętać, aby skonfigurować Monitor udostępniania plików na maszynie wirtualnej platformy Azure, która działa blisko węzła klastra.  
    >
    >
 
-   Dysku kworum wymaga przynajmniej 1024 MB wolnego miejsca na dysku. Zaleca się 2048 MB wolnego miejsca na dysku kworum.
+   Dysk kworum wymaga co najmniej 1 024 MB wolnego miejsca. Zalecamy 2 048 MB wolnego miejsca na dysku kworum.
 
 2. Dodaj obiekt nazwy klastra.
 
-   ![Ilustracja 30 Przypisz uprawnienia w udziale obiektu nazwy klastra][sap-ha-guide-figure-3019]
+   ![Rysunek 30: Przypisz uprawnienia do udziału dla obiektu nazwy klastra][sap-ha-guide-figure-3019]
 
-   _**Ilustracja 30** Przypisz uprawnienia w udziale obiektu nazwy klastra_
+   _**Rysunek 30:** Przypisz uprawnienia do udziału dla obiektu nazwy klastra_
 
-   Pamiętaj, że uprawnienia obejmują uprawnień do zmiany danych w udziale dla obiektu nazwy klastra (w naszym przykładzie **pr1-ascs-vir$** ).
+   Upewnij się, że uprawnienia obejmują urząd do zmiany danych w udziale dla obiektu nazwy klastra (w naszym przykładzie **PR1-ASCS-Vir $** ).
 
-3. Aby dodać obiekt nazwy klastra, do listy, wybierz **Dodaj**. Zmień filtr, aby wyszukać obiekty komputerów, oprócz tych pokazano na rysunku 31.
+3. Aby dodać obiekt nazwy klastra do listy, wybierz pozycję **Dodaj**. Zmień filtr, aby wyszukiwać obiekty komputerów, a także te, które przedstawiono na rysunku 31.
 
-   ![Ilustracja 31 Zmień typy obiektów, aby uwzględnić komputery][sap-ha-guide-figure-3020]
+   ![Rysunek 31. Zmień typy obiektów w celu uwzględnienia komputerów][sap-ha-guide-figure-3020]
 
-   _**Ilustracja 31** Zmień typy obiektów, aby uwzględnić komputery_
+   _**Rysunek 31.** Zmień typy obiektów w celu uwzględnienia komputerów_
 
-   ![Ilustracja 32 Zaznacz pole wyboru komputerów][sap-ha-guide-figure-3021]
+   ![Rysunek 32: Zaznacz pole wyboru komputery][sap-ha-guide-figure-3021]
 
-   _**Ilustracja 32** Wybierz **komputerów** pola wyboru_
+   _**Rysunek 32:** Zaznacz pole wyboru **komputery**_
 
 4. Wprowadź obiekt nazwy klastra, jak pokazano na rysunku 31. Ponieważ rekord został już utworzony, można zmienić uprawnienia, jak pokazano na rysunku 30.
 
-5. Wybierz **zabezpieczeń** na karcie udziału, a następnie ustaw bardziej szczegółowe uprawnienia dla obiektu nazwy klastra.
+5. Wybierz kartę **zabezpieczenia** udziału, a następnie ustaw bardziej szczegółowe uprawnienia dla obiektu nazwa klastra.
 
-   ![Ilustracja 33 Ustaw atrybuty zabezpieczeń dla obiektu nazwy klastra w kworum udziału plików][sap-ha-guide-figure-3022]
+   ![Rysunek 33: Ustawianie atrybutów zabezpieczeń obiektu nazwa klastra na kworum udziałów plików][sap-ha-guide-figure-3022]
 
-   _**Ilustracja 33** Ustaw atrybuty zabezpieczeń dla obiektu nazwy klastra w kworum udziału plików_
+   _**Rysunek 33:** Ustawianie atrybutów zabezpieczeń obiektu nazwa klastra na kworum udziałów plików_
 
-##### <a name="4c08c387-78a0-46b1-9d27-b497b08cac3d"></a> Ustaw kworum monitora udziału plików w Menedżerze klastra trybu Failover
+##### <a name="4c08c387-78a0-46b1-9d27-b497b08cac3d"></a>Ustaw kworum monitora udziału plików w Menedżer klastra trybu failover
 
-1. Otwórz kworum ustawienia kreatora konfiguracji.
+1. Otwórz Kreatora konfiguracji ustawienia kworum.
 
-   ![Ilustracja 34 Uruchamianie Kreatora ustawienie Konfigurowanie kworum klastra][sap-ha-guide-figure-3023]
+   ![Rysunek 34: Uruchom Kreatora konfigurowania ustawień kworum klastra][sap-ha-guide-figure-3023]
 
-   _**Ilustracja 34** Uruchamianie Kreatora ustawienie Konfigurowanie kworum klastra_
+   _**Rysunek 34:** Uruchom Kreatora konfigurowania ustawień kworum klastra_
 
-2. Na **wybierz konfigurację kworum** wybierz **Wybieranie monitora kworum**.
+2. Na stronie **wybierz konfigurację kworum** wybierz pozycję **Wybierz monitor kworum**.
 
-   ![Ilustracja 35 Konfiguracji kworum, w których mogą wybierać][sap-ha-guide-figure-3024]
+   ![Rysunek 35: Konfiguracje kworum, z których można wybierać][sap-ha-guide-figure-3024]
 
-   _**Ilustracja 35** Konfiguracji kworum, w których mogą wybierać_
+   _**Rysunek 35:** Konfiguracje kworum, z których można wybierać_
 
-3. Na **Wybieranie monitora kworum** wybierz **Konfigurowanie monitora udziału plików**.
+3. Na stronie **Wybieranie monitora kworum** wybierz opcję **Konfiguruj Monitor udziału plików**.
 
-   ![Ilustracja 36 Wybierz monitor udziału plików][sap-ha-guide-figure-3025]
+   ![Rysunek 36: Wybierz monitor udziału plików][sap-ha-guide-figure-3025]
 
-   _**Ilustracja 36** Wybierz monitor udziału plików_
+   _**Rysunek 36:** Wybierz monitor udziału plików_
 
-4. Wprowadź ścieżkę UNC do udziału plików (w naszym przykładzie \\domcontr 0\FSW). Aby wyświetlić listę wprowadzania zmian, wybierz **dalej**.
+4. Wprowadź ścieżkę UNC do udziału plików (w naszym przykładzie \\domcontr-0\FSW). Aby wyświetlić listę zmian, które można wprowadzić, wybierz pozycję **dalej**.
 
-   ![Ilustracja 37 Zdefiniuj lokalizację udziału plików monitora udziału][sap-ha-guide-figure-3026]
+   ![Rysunek 37: Zdefiniuj lokalizację udziału plików dla udziału monitora][sap-ha-guide-figure-3026]
 
-   _**Ilustracja 37** Zdefiniuj lokalizację udziału plików monitora udziału_
+   _**Rysunek 37:** Zdefiniuj lokalizację udziału plików dla udziału monitora_
 
-5. Wybierz zmiany, a następnie wybierz **dalej**. Należy pomyślnie ponownie skonfigurować konfigurację klastra, jak pokazano na rysunku 38.  
+5. Wybierz żądane zmiany, a następnie wybierz przycisk **dalej**. Należy pomyślnie ponownie skonfigurować konfigurację klastra, jak pokazano na rysunku 38.  
 
-   ![Ilustracja 38 Potwierdzenie, że został ponownie skonfigurowany klaster][sap-ha-guide-figure-3027]
+   ![Rysunek 38: Potwierdzenie, że klaster został ponownie skonfigurowany][sap-ha-guide-figure-3027]
 
-   _**Ilustracja 38** Potwierdzenie, że został ponownie skonfigurowany klaster_
+   _**Rysunek 38:** Potwierdzenie, że klaster został ponownie skonfigurowany_
 
-Po zainstalowaniu klastra pracy awaryjnej Windows pomyślnie, zmiany trzeba dokonać niektóre wartości progowe w celu dostosowania trybu failover wykrywania warunków na platformie Azure. Parametry, które mają być zmienione są opisane w tym blogu: [ https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834 ](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834). Przy założeniu, że usługi dwie maszyny wirtualne, które są kompilowane w konfiguracji klastra Windows for ASCS/SCS znajdują się w tej samej podsieci, należy można zmienić tych wartości następujących parametrów:  
+Po pomyślnym zainstalowaniu klastra trybu failover systemu Windows należy wprowadzić zmiany w niektórych progach w celu dostosowania wykrywania trybu failover do warunków na platformie Azure. Parametry, które mają zostać zmienione, są udokumentowane w [https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834](https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834)tym blogu:. Przy założeniu, że dwie maszyny wirtualne, które tworzą konfigurację klastra systemu Windows dla ASCS/SCS znajdują się w tej samej podsieci, należy zmienić następujące parametry na następujące wartości:  
 - SameSubNetDelay = 2000  
 - SameSubNetThreshold = 15  
 - RoutingHistoryLength = 30  
 
-Te ustawienia zostały przetestowane z klientami i podano dobre naruszenia zabezpieczeń, aby była odporna na jednej stronie. Z drugiej strony te ustawienia zostały materiały szybkiego wystarczająco dużo pracy awaryjnej w warunkach rzeczywistych błędu w przypadku awarii oprogramowania lub węzeł/maszyna wirtualna SAP. 
+Te ustawienia zostały przetestowane przez klientów i zapewniono dobry kompromis, który jest wystarczająco odporny na jedną stronę. Z drugiej strony te ustawienia zapewniają szybką pracę w trybie failover w rzeczywistych warunkach błędu w przypadku awarii oprogramowania SAP lub węzła/maszyny wirtualnej. 
 
-### <a name="5c8e5482-841e-45e1-a89d-a05c0907c868"></a> Zainstaluj oprogramowanie SIOS DataKeeper Cluster Edition dla udziału dysk klastrowy SAP ASCS/SCS
+### <a name="5c8e5482-841e-45e1-a89d-a05c0907c868"></a>Zainstaluj oprogramowanie SIOS DataKeeper Cluster Edition dla dysku udziału klastra SAP ASCS/SCS
 
-Masz teraz działającą konfiguracji systemu Windows Server Failover Clustering na platformie Azure. Jednak, aby zainstalować wystąpienie SAP ASCS/SCS, zasób udostępniony dysk. Nie można utworzyć współużytkowane zasoby dyskowe potrzebne na platformie Azure. Oprogramowanie SIOS DataKeeper Cluster Edition jest rozwiązań innych firm, których można używać do tworzenia współużytkowane zasoby dyskowe.
+Masz już działającą konfigurację klastra trybu failover systemu Windows Server na platformie Azure. Jednak w celu zainstalowania wystąpienia oprogramowania SAP ASCS/SCS potrzebny jest zasób dysku udostępnionego. Nie można utworzyć udostępnionych zasobów dyskowych na platformie Azure. OPROGRAMOWANIE SIOS DataKeeper Cluster Edition to rozwiązanie innej firmy, którego można użyć do tworzenia udostępnionych zasobów dyskowych.
 
-Instalowanie oprogramowanie SIOS DataKeeper Cluster Edition dla udziału dysk klastrowy SAP ASCS/SCS obejmuje następujące zadania:
+Instalowanie oprogramowanie SIOS DataKeeper Cluster w przypadku dysku udziału klastra SAP ASCS/SCS obejmuje następujące zadania:
 
-- Dodawanie programu .NET Framework 3.5
-- Instalowanie oprogramowanie SIOS DataKeeper
-- Konfigurowanie oprogramowanie SIOS DataKeeper
+- Dodawanie .NET Framework 3,5
+- Instalowanie składnika oprogramowanie SIOS DataKeeper
+- Konfigurowanie oprogramowanie SIOS
 
-#### <a name="1c2788c3-3648-4e82-9e0d-e058e475e2a3"></a> Dodawanie programu .NET Framework 3.5
-Microsoft .NET Framework 3.5 nie jest automatycznie aktywowane lub zainstalowane w systemie Windows Server 2012 R2. Ponieważ oprogramowanie SIOS DataKeeper wymaga programu .NET Framework na wszystkie węzły, które należy zainstalować na DataKeeper, należy zainstalować program .NET Framework 3.5 w systemie operacyjnym gościa wszystkich maszyn wirtualnych w klastrze.
+#### <a name="1c2788c3-3648-4e82-9e0d-e058e475e2a3"></a>Dodaj .NET Framework 3,5
+Microsoft .NET Framework 3,5 nie jest automatycznie aktywowany ani instalowany w systemie Windows Server 2012 R2. Ponieważ oprogramowanie SIOS DataKeeper wymaga, aby .NET Framework znajdować się we wszystkich węzłach, w których zainstalowano program DataKeeper, należy zainstalować .NET Framework 3,5 w systemie operacyjnym gościa wszystkich maszyn wirtualnych w klastrze.
 
-Istnieją dwa sposoby dodawania programu .NET Framework 3.5:
+Istnieją dwa sposoby dodawania .NET Framework 3,5:
 
-- Użyj funkcji Kreatora dodawania ról i w Windows, jak pokazano na rysunku 39.
+- Użyj Kreatora dodawania ról i funkcji w systemie Windows, jak pokazano na rysunku 39.
 
-  ![Ilustracja 39 Instalowanie programu .NET Framework 3.5 przy użyciu Dodaj role i funkcje kreatora][sap-ha-guide-figure-3028]
+  ![Rysunek 39: Zainstaluj .NET Framework 3,5 przy użyciu Kreatora dodawania ról i funkcji][sap-ha-guide-figure-3028]
 
-  _**Ilustracja 39** Instalowanie programu .NET Framework 3.5 przy użyciu Dodaj role i funkcje kreatora_
+  _**Rysunek 39:** Zainstaluj .NET Framework 3,5 przy użyciu Kreatora dodawania ról i funkcji_
 
-  ![Ilustracja 40 Postęp instalacji pasek po zainstalowaniu programu .NET Framework 3.5 przy użyciu Dodaj role i funkcje kreatora][sap-ha-guide-figure-3029]
+  ![Rysunek 40: Pasek postępu instalacji podczas instalowania .NET Framework 3,5 przy użyciu Kreatora dodawania ról i funkcji][sap-ha-guide-figure-3029]
 
-  _**Ilustracja 40** Postęp instalacji pasek po zainstalowaniu programu .NET Framework 3.5 przy użyciu Dodaj role i funkcje kreatora_
+  _**Rysunek 40:** Pasek postępu instalacji podczas instalowania .NET Framework 3,5 przy użyciu Kreatora dodawania ról i funkcji_
 
-- Za pomocą dism.exe narzędzie wiersza polecenia. Ten typ instalacji musisz uzyskać dostęp do katalogu SxS, na nośniku instalacyjnym programu Windows. W wierszu polecenia z podwyższonym poziomem uprawnień wpisz polecenie:
+- Użyj narzędzia wiersza polecenia Dism. exe. W przypadku tego typu instalacji należy uzyskać dostęp do katalogu SxS na nośniku instalacyjnym systemu Windows. W wierszu polecenia z podwyższonym poziomem uprawnień wpisz:
 
   ```
   Dism /online /enable-feature /featurename:NetFx3 /All /Source:installation_media_drive:\sources\sxs /LimitAccess
   ```
 
-#### <a name="dd41d5a2-8083-415b-9878-839652812102"></a> Zainstaluj oprogramowanie SIOS DataKeeper
+#### <a name="dd41d5a2-8083-415b-9878-839652812102"></a>Zainstaluj program oprogramowanie SIOS DataKeeper
 
-Zainstaluj oprogramowanie SIOS DataKeeper Cluster Edition w każdym węźle w klastrze. Aby utworzyć wirtualny magazynu udostępnionego z oprogramowanie SIOS DataKeeper, utworzyć duplikat zsynchronizowane, a następnie symulować magazyn udostępniony klastra.
+Zainstaluj program oprogramowanie SIOS DataKeeper Cluster Edition na każdym węźle w klastrze. Aby utworzyć wirtualny magazyn udostępniony z oprogramowanie SIOS DataKeeper, Utwórz zsynchronizowane dublowanie i Symuluj magazyn udostępniony klastra.
 
-Przed zainstalowaniem oprogramowania oprogramowanie SIOS należy utworzyć użytkownika domeny **DataKeeperSvc**.
+Przed zainstalowaniem oprogramowania oprogramowanie SIOS Utwórz **DataKeeperSvc**użytkownika domeny.
 
 > [!NOTE]
-> Dodaj **DataKeeperSvc** użytkownikowi **administratora lokalnego** grupy na obu węzłach klastra.
+> Dodaj użytkownika **DataKeeperSvc** do lokalnej grupy **administratorów** na obu węzłach klastra.
 >
 >
 
-Aby zainstalować oprogramowanie SIOS DataKeeper:
+Aby zainstalować program oprogramowanie SIOS DataKeeper:
 
 1. Zainstaluj oprogramowanie oprogramowanie SIOS na obu węzłach klastra.
 
-   ![Oprogramowanie SIOS Instalatora][sap-ha-guide-figure-3030]
+   ![Instalator oprogramowanie SIOS][sap-ha-guide-figure-3030]
 
-   ![Ilustracja 41 Pierwsza strona instalacji oprogramowanie SIOS DataKeeper][sap-ha-guide-figure-3031]
+   ![Rysunek 41: Pierwsza strona instalacji elementu oprogramowanie SIOS DataKeeper][sap-ha-guide-figure-3031]
 
-   _**Ilustracja 41** Pierwsza strona instalacji oprogramowanie SIOS DataKeeper_
+   _**Rysunek 41:** Pierwsza strona instalacji elementu oprogramowanie SIOS DataKeeper_
 
-2. W oknie dialogowym pokazano na rysunku 42 wybierz **tak**.
+2. W oknie dialogowym pokazanym na rysunku 42 wybierz pozycję **tak**.
 
-   ![Ilustracja 42 DataKeeper informuje, że usługa zostanie wyłączona][sap-ha-guide-figure-3032]
+   ![Rysunek 42: Element informuje, że usługa zostanie wyłączona][sap-ha-guide-figure-3032]
 
-   _**Ilustracja 42** DataKeeper informuje, że usługa zostanie wyłączona_
+   _**Rysunek 42:** Element informuje, że usługa zostanie wyłączona_
 
-3. W oknie dialogowym pokazano na rysunku 43 zaleca się wybranie **konta domeny lub serwer**.
+3. W oknie dialogowym przedstawionym na rysunku 43 zalecamy wybranie **konta domeny lub serwera**.
 
-   ![Ilustracja 43 Oprogramowanie SIOS DataKeeper wybór użytkownika][sap-ha-guide-figure-3033]
+   ![Rysunek 43: Wybór użytkownika dla elementu oprogramowanie SIOS DataKeeper][sap-ha-guide-figure-3033]
 
-   _**Ilustracja 43** Oprogramowanie SIOS DataKeeper wybór użytkownika_
+   _**Rysunek 43:** Wybór użytkownika dla elementu oprogramowanie SIOS DataKeeper_
 
-4. Wprowadź nazwę użytkownika konta domeny i hasła, które utworzono dla oprogramowanie SIOS DataKeeper.
+4. Wprowadź nazwę użytkownika i hasło konta domeny, które zostały utworzone dla oprogramowanie SIOS DataKeeper.
 
-   ![Ilustracja 44 Wprowadź nazwę użytkownika domeny i hasło dla instalacji oprogramowanie SIOS DataKeeper][sap-ha-guide-figure-3034]
+   ![Rysunek 44: Wprowadź nazwę użytkownika domeny i hasło dla instalacji oprogramowanie SIOS DataKeeper][sap-ha-guide-figure-3034]
 
-   _**Ilustracja 44** Wprowadź nazwę użytkownika domeny i hasło dla instalacji oprogramowanie SIOS DataKeeper_
+   _**Rysunek 44:** Wprowadź nazwę użytkownika domeny i hasło dla instalacji oprogramowanie SIOS DataKeeper_
 
-5. Zainstaluj klucz licencji dla swojego wystąpienia oprogramowanie SIOS DataKeeper, jak pokazano na rysunku 45.
+5. Zainstaluj klucz licencji dla wystąpienia oprogramowanie SIOS DataKeeper, jak pokazano na rysunku 45.
 
-   ![Ilustracja 45 Podaj klucz licencji na oprogramowanie SIOS DataKeeper][sap-ha-guide-figure-3035]
+   ![Rysunek 45: Wprowadź klucz licencji oprogramowanie SIOS DataKeeper][sap-ha-guide-figure-3035]
 
-   _**Ilustracja 45** Podaj klucz licencji na oprogramowanie SIOS DataKeeper_
+   _**Rysunek 45:** Wprowadź klucz licencji oprogramowanie SIOS DataKeeper_
 
 6. Po wyświetleniu monitu uruchom ponownie maszynę wirtualną.
 
-#### <a name="d9c1fc8e-8710-4dff-bec2-1f535db7b006"></a> Skonfiguruj oprogramowanie SIOS DataKeeper
+#### <a name="d9c1fc8e-8710-4dff-bec2-1f535db7b006"></a>Skonfiguruj oprogramowanie SIOScy
 
-Po zainstalowaniu oprogramowanie SIOS DataKeeper na obu węzłach, należy uruchomić konfigurację. Celem konfiguracji jest synchronicznej replikacji danych między dodatkowe dyski VHD dołączone do wszystkich maszyn wirtualnych.
+Po zainstalowaniu usługi oprogramowanie SIOS DataKeeper na obu węzłach należy uruchomić konfigurację. Celem konfiguracji jest posiadanie synchronicznej replikacji danych między dodatkowymi dyskami VHD dołączonymi do każdej maszyny wirtualnej.
 
-1. Uruchom narzędzie DataKeeper zarządzania i konfiguracji, a następnie wybierz **Połącz serwerem**. (Rysunek 46 — w tej opcji jest zakreślony na czerwono.)
+1. Uruchom narzędzie do zarządzania i konfiguracji programu DataKeeper, a następnie wybierz pozycję **Połącz serwer**. (Na rysunku 46 ta opcja jest zakreślona czerwonym kolorem).
 
-   ![Ilustracja 46 Oprogramowanie SIOS DataKeeper zarządzania i konfiguracji narzędzia][sap-ha-guide-figure-3036]
+   ![Rysunek 46: Narzędzie do zarządzania i konfiguracji oprogramowanie SIOSer][sap-ha-guide-figure-3036]
 
-   _**Ilustracja 46** Oprogramowanie SIOS DataKeeper zarządzania i konfiguracji narzędzia_
+   _**Rysunek 46:** Narzędzie do zarządzania i konfiguracji oprogramowanie SIOSer_
 
-2. Wprowadź nazwę lub adres TCP/IP pierwszego węzła, w których narzędzie zarządzania i konfiguracji należy połączenia oraz, w drugim kroku drugiego węzła.
+2. Wprowadź nazwę lub adres TCP/IP pierwszego węzła, z którym narzędzie do zarządzania i konfiguracji ma nawiązać połączenie, i w drugim kroku drugi węzeł.
 
-   ![Ilustracja 47 Wstaw nazwę lub adres TCP/IP pierwszego węzła zarządzania i narzędzia do konfiguracji należy łączyć, a w drugim kroku drugiego węzła][sap-ha-guide-figure-3037]
+   ![Rysunek 47: Wstaw nazwę lub adres TCP/IP pierwszego węzła, z którym narzędzie do zarządzania i konfiguracji ma nawiązać połączenie, i w drugim kroku drugi węzeł][sap-ha-guide-figure-3037]
 
-   _**Ilustracja 47** Wstaw nazwę lub adres TCP/IP pierwszego węzła zarządzania i narzędzia do konfiguracji należy łączyć, a w drugim kroku drugiego węzła_
+   _**Rysunek 47:** Wstaw nazwę lub adres TCP/IP pierwszego węzła, z którym narzędzie do zarządzania i konfiguracji ma nawiązać połączenie, i w drugim kroku drugi węzeł_
 
 3. Utwórz zadanie replikacji między dwoma węzłami.
 
-   ![Ilustracja 48 Tworzenie zadania replikacji][sap-ha-guide-figure-3038]
+   ![Rysunek 48: Tworzenie zadania replikacji][sap-ha-guide-figure-3038]
 
-   _**Ilustracja 48** Tworzenie zadania replikacji_
+   _**Rysunek 48:** Tworzenie zadania replikacji_
 
-   Kreator prowadzi przez proces tworzenia zadania replikacji.
+   Kreator przeprowadzi Cię przez proces tworzenia zadania replikacji.
 4. Zdefiniuj nazwę, adres TCP/IP i wolumin dysku węzła źródłowego.
 
    ![Rysunek 49: Zdefiniuj nazwę zadania replikacji][sap-ha-guide-figure-3039]
 
    _**Rysunek 49:** Zdefiniuj nazwę zadania replikacji_
 
-   ![50 rysunku: Zdefiniuj dane podstawowe dla węzła, który powinien być bieżącego węzła źródłowego][sap-ha-guide-figure-3040]
+   ![Rysunek 50: Zdefiniuj dane podstawowe dla węzła, które powinny być bieżącym węzłem źródłowym][sap-ha-guide-figure-3040]
 
-   _**50 rysunku:** Zdefiniuj dane podstawowe dla węzła, który powinien być bieżącego węzła źródłowego_
+   _**Rysunek 50:** Zdefiniuj dane podstawowe dla węzła, które powinny być bieżącym węzłem źródłowym_
 
 5. Zdefiniuj nazwę, adres TCP/IP i wolumin dysku węzła docelowego.
 
-   ![Ilustracja 51 Zdefiniuj dane podstawowe dla węzła, który powinien być bieżącego węzła docelowego][sap-ha-guide-figure-3041]
+   ![Rysunek 51: Zdefiniuj dane podstawowe dla węzła, który powinien być bieżącym węzłem docelowym][sap-ha-guide-figure-3041]
 
-   _**Ilustracja 51** Zdefiniuj dane podstawowe dla węzła, który powinien być bieżącego węzła docelowego_
+   _**Rysunek 51:** Zdefiniuj dane podstawowe dla węzła, który powinien być bieżącym węzłem docelowym_
 
-6. Zdefiniuj algorytmy kompresji. W tym przykładzie firma Microsoft zaleca kompresowania strumienia replikacji. Szczególnie w sytuacjach, podczas ponownej synchronizacji Kompresja strumienia replikacji znacznie skraca czas ponownej synchronizacji. Należy zauważyć, że kompresja używa zasobów procesora CPU i pamięci RAM maszyny wirtualnej. W miarę zwiększania szybkości kompresji, co powoduje woluminów używanych zasobów procesora CPU. Możesz również dostosować to ustawienie, później.
+6. Zdefiniuj algorytmy kompresji. W naszym przykładzie zalecamy kompresję strumienia replikacji. W szczególności w sytuacjach ponownych synchronizacji kompresja strumienia replikacji znacznie skraca czas ponownej synchronizacji. Należy pamiętać, że kompresja korzysta z zasobów procesora i pamięci RAM maszyny wirtualnej. Szybkość kompresji zwiększa się, więc ilość używanych zasobów procesora CPU. Możesz również dostosować to ustawienie później.
 
-7. Inne ustawienie, które należy sprawdzić to, czy replikacja jest wykonywana asynchronicznie lub synchronicznie. *W przypadku ochrony konfiguracji SAP ASCS/SCS, należy użyć Replikacja synchroniczna*.  
+7. Innym ustawieniem należy sprawdzić, czy replikacja odbywa się asynchronicznie czy synchronicznie. *W przypadku ochrony konfiguracji oprogramowania SAP ASCS/SCS należy użyć replikacji synchronicznej*.  
 
-   ![Ilustracja 52: Zdefiniuj szczegóły replikacji][sap-ha-guide-figure-3042]
+   ![Rysunek 52: Zdefiniuj Szczegóły replikacji][sap-ha-guide-figure-3042]
 
-   _**Ilustracja 52:** Zdefiniuj szczegóły replikacji_
+   _**Rysunek 52:** Zdefiniuj Szczegóły replikacji_
 
-8. Zdefiniuj, czy wolumin, który jest replikowany za zadanie replikacji powinny być reprezentowane w konfiguracji klastra z systemem Windows Server Failover Clustering jako udostępniony dysk. W przypadku konfiguracji SAP ASCS/SCS wybierz **tak** tak, aby klastra Windows uznaje replikowanego woluminu dysku udostępnionego, który można użyć jako woluminu klastra.
+8. Zdefiniuj, czy wolumin replikowany przez zadanie replikacji ma być reprezentowany przez konfigurację klastra usługi Windows Server Failover Clustering jako dysk udostępniony. W przypadku konfiguracji SAP ASCS/SCS wybierz opcję **tak** , aby klaster systemu Windows widział wolumin replikowany jako dysk udostępniony, który może być używany jako wolumin klastra.
 
-   ![Ilustracja 53 Wybierz pozycję Tak, aby ustawić replikowanego woluminu jako woluminu klastra][sap-ha-guide-figure-3043]
+   ![Rysunek 53: Wybierz pozycję tak, aby ustawić wolumin replikowany jako wolumin klastra][sap-ha-guide-figure-3043]
 
-   _**Ilustracja 53** Wybierz **tak** można ustawić replikowanego woluminu jako woluminu klastra_
+   _**Rysunek 53:** Wybierz pozycję **tak** , aby ustawić wolumin replikowany jako wolumin klastra_
 
-   Po jego utworzeniu, narzędzie DataKeeper zarządzania i konfiguracji pokazuje, że zadanie replikacji jest aktywne.
+   Po utworzeniu woluminu narzędzie zarządzania i konfiguracji programu DataManagement wskazuje, że zadanie replikacji jest aktywne.
 
-   ![Ilustracja 54 DataKeeper synchronicznego duplikowania dysku udziału SAP ASCS/SCS jest aktywny][sap-ha-guide-figure-3044]
+   ![Rysunek 54: Funkcja dublowania synchronicznego dla dysku udziału SAP ASCS/SCS jest aktywna][sap-ha-guide-figure-3044]
 
-   _**Ilustracja 54** DataKeeper synchronicznego duplikowania dysku udziału SAP ASCS/SCS jest aktywny_
+   _**Rysunek 54:** Funkcja dublowania synchronicznego dla dysku udziału SAP ASCS/SCS jest aktywna_
 
-   Menedżer klastra trybu failover jest teraz wyświetlana dysku jako dysku DataKeeper, jak pokazano na rysunku 55.
+   Menedżer klastra trybu failover teraz przedstawia dysk jako dysk programu do przechowywania danych, jak pokazano na rysunku 55.
 
-   ![Ilustracja 55 Menedżer klastra trybu failover zawiera dysk czy DataKeeper zreplikowane][sap-ha-guide-figure-3045]
+   ![Rysunek 55: Menedżer klastra trybu failover pokazuje dysk, który jest replikowany przez plik][sap-ha-guide-figure-3045]
 
-   _**Ilustracja 55** Menedżer klastra trybu failover zawiera dysk czy DataKeeper zreplikowane_
+   _**Rysunek 55:** Menedżer klastra trybu failover pokazuje dysk, który jest replikowany przez plik_
 
-## <a name="a06f0b49-8a7a-42bf-8b0d-c12026c5746b"></a> Instalowanie systemu SAP NetWeaver
+## <a name="a06f0b49-8a7a-42bf-8b0d-c12026c5746b"></a>Zainstaluj system SAP NetWeaver
 
-Nie będzie opisujemy Instalatora systemu DBMS, ponieważ ustawienia różnią się w zależności od używanego systemu DBMS Jednak przyjęto założenie, że problemów o wysokiej dostępności z systemu DBMS są adresowane za pomocą funkcji, które różnych dostawców DBMS pomoc techniczna systemu Azure. Na przykład AlwaysOn lub dublowania bazy danych SQL Server i Oracle Data Guard dla baz danych Oracle. W tym scenariuszu, których używamy w tym artykule firma Microsoft nie został dodany zwiększa ochronę dla systemu DBMS.
+Konfiguracja systemu DBMS nie zostanie opisywana, ponieważ konfiguracje różnią się w zależności od używanej przez Ciebie system DBMS. Jednak założono, że problemy z wysoką dostępnością w systemie DBMS są rozwiązywane z tymi funkcjami, które są obsługiwane przez różnych dostawców systemów DBMS przez platformę Azure. Na przykład zawsze włączone lub dublowania baz danych dla SQL Server i Oracle Data Guard dla baz danych Oracle. W scenariuszu używanym w tym artykule nie Dodaliśmy więcej ochrony do systemu DBMS.
 
-Istnieją uwzględniać żadnych szczególnych kwestii, gdy różne usługi systemu DBMS na interakcję z tego rodzaju konfiguracji SAP ASCS/SCS klastra na platformie Azure.
+Nie ma specjalnych zagadnień, w przypadku których różne usługi DBMS współpracują z tym rodzajem klastrowanej konfiguracji oprogramowania SAP ASCS/SCS na platformie Azure.
 
 > [!NOTE]
-> Procedury instalacji systemów SAP NetWeaver ABAP, Java i systemów ABAP + Java są niemal identyczne. Najbardziej znaczący różnica polega na tym, że system SAP ABAP zawiera jedno wystąpienie ASCS. System SAP języka Java zawiera jedno wystąpienie usług SCS. System SAP ABAP + Java zawiera jedno wystąpienie ASCS i jedno wystąpienie usług SCS uruchomione w tej samej grupie klastra trybu failover firmy Microsoft. Różnice instalacji dla poszczególnych stosów instalacji oprogramowania SAP NetWeaver jawnie wymienione. Można zakładać, że inne części są takie same.  
+> Procedury instalacji systemów SAP NetWeaver ABAP, systemów Java i ABAP + w systemach Java są prawie identyczne. Najbardziej znaczącą różnicą jest to, że system SAP ABAP ma jedno wystąpienie ASCS. System SAP Java ma jedno wystąpienie SCS. System SAP ABAP + Java ma jedno wystąpienie ASCS i jedno wystąpienie SCS uruchomione w tej samej grupie klastrów trybu failover firmy Microsoft. Wszystkie różnice instalacji dla każdego stosu instalacji oprogramowania SAP NetWeaver są jawnie wymienione. Można założyć, że wszystkie inne części są takie same.  
 >
 >
 
-### <a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a> Instalowanie SAP za pomocą wystąpienia ASCS/SCS wysokiej dostępności
+### <a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a>Instalowanie oprogramowania SAP z wystąpieniem ASCS o wysokiej dostępności
 
 > [!IMPORTANT]
-> Pamiętaj, aby nie umieszczenia pliku stronicowania na woluminach DataKeeper dublowanych. DataKeeper nie obsługuje woluminy dublowane. Można pozostawić pliku stronicowania na tymczasowym dysku D maszynie wirtualnej platformy Azure, co jest ustawieniem domyślnym. Jeśli nie jest już istnieje, należy przenieść plik stronicowania Windows na dysku D maszyn wirtualnych.
+> Upewnij się, że plik stronicowania nie jest umieszczony na woluminach dublowanych danych. Usługa DataKeeper nie obsługuje dublowanych woluminów. Możesz pozostawić plik stronicowania na tymczasowym dysku D maszyny wirtualnej platformy Azure, co jest ustawieniem domyślnym. Jeśli jeszcze tego nie zrobiono, Przenieś plik strony systemu Windows na dysk D maszyny wirtualnej platformy Azure.
 >
 >
 
-Instalowanie SAP za pomocą wystąpienia ASCS/SCS wysokiej dostępności obejmuje następujące zadania:
+Instalowanie oprogramowania SAP z wystąpieniem ASCS/SCS o wysokiej dostępności obejmuje następujące zadania:
 
-- Tworzenie nazwę hosta wirtualnego klastrowanego wystąpienia SAP ASCS/SCS
-- Instalowanie na pierwszym węźle klastra SAP
-- Modyfikowanie profilu SAP ASCS/SCS wystąpienia
-- Dodawanie port sondy
-- Otwieranie portu sondy zapory Windows
+- Tworzenie nazwy wirtualnego hosta dla klastrowanego wystąpienia SAP ASCS/SCS
+- Instalowanie pierwszego węzła klastra SAP
+- Modyfikowanie profilu SAP wystąpienia ASCS/SCS
+- Dodawanie portu sondy
+- Otwieranie portu sondowania zapory systemu Windows
 
-#### <a name="a97ad604-9094-44fe-a364-f89cb39bf097"></a> Utwórz nazwę hosta wirtualnego klastrowanego wystąpienia SAP ASCS/SCS
+#### <a name="a97ad604-9094-44fe-a364-f89cb39bf097"></a>Utwórz nazwę wirtualnego hosta dla klastrowanego wystąpienia SAP ASCS/SCS
 
-1. W Menedżerze Windows DNS utworzyć wpis DNS dla nazwy hosta wirtualnego wystąpienia ASCS/SCS.
+1. W Menedżerze DNS systemu Windows Utwórz wpis DNS dla nazwy hosta wirtualnego wystąpienia ASCS/SCS.
 
    > [!IMPORTANT]
-   > Adres IP, który zostanie przypisany do nazwy hosta wirtualnego wystąpienia ASCS/SCS musi być taka sama, jak adres IP, która została przypisana do usługi Azure Load Balancer ( **<*SID*> - lb - ascs**).  
+   > Adres IP przypisany do nazwy hosta wirtualnego wystąpienia ASCS/SCS musi być taki sam jak adres IP przypisany do Azure Load Balancer ( **<*SID*>-lb-ASCS**).  
    >
    >
 
-   Adres IP, nazwy wirtualnego hosta SAP ASCS/SCS (**pr1 ascs sap**) jest taka sama jak adres IP modułu równoważenia obciążenia platformy Azure (**pr1-lb-ascs**).
+   Adres IP nazwy hosta wirtualnej SAP ASCS/SCS (**PR1-ASCS-SAP**) jest taki sam jak adres IP Azure Load Balancer (**PR1-lb-ASCS**).
 
-   ![Ilustracja 56 Zdefiniuj wpis DNS dla nazwy wirtualnego klastra SAP ASCS/SCS i adresu TCP/IP][sap-ha-guide-figure-3046]
+   ![Rysunek 56: Zdefiniuj wpis DNS dla nazwy wirtualnej klastra SAP ASCS/SCS i adresu TCP/IP][sap-ha-guide-figure-3046]
 
-   _**Ilustracja 56** Zdefiniuj wpis DNS dla nazwy wirtualnego klastra SAP ASCS/SCS i adresu TCP/IP_
+   _**Rysunek 56:** Zdefiniuj wpis DNS dla nazwy wirtualnej klastra SAP ASCS/SCS i adresu TCP/IP_
 
-2. Aby zdefiniować adres IP przypisany do nazwy hostów wirtualnych, wybierz **Menedżera DNS** > **domeny**.
+2. Aby zdefiniować adres IP przypisany do nazwy hosta wirtualnego, wybierz pozycję**domena** **Menedżera** > DNS.
 
-   ![Rysunek 57: Nowa nazwa wirtualnego i adresu TCP/IP dla konfiguracji klastra SAP ASCS/SCS][sap-ha-guide-figure-3047]
+   ![Rysunek 57: Nowa nazwa wirtualna i adres TCP/IP dla konfiguracji klastra SAP ASCS/SCS][sap-ha-guide-figure-3047]
 
-   _**Rysunek 57:** Nowa nazwa wirtualnego i adresu TCP/IP dla konfiguracji klastra SAP ASCS/SCS_
+   _**Rysunek 57:** Nowa nazwa wirtualna i adres TCP/IP dla konfiguracji klastra SAP ASCS/SCS_
 
-#### <a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a> Zainstaluj oprogramowanie SAP pierwszym węźle klastra
+#### <a name="eb5af918-b42f-4803-bb50-eff41f84b0b0"></a>Instalowanie pierwszego węzła klastra SAP
 
-1. Wykonanie pierwszej opcji węzła klastra w węźle klastra A. Na przykład na **pr1 ascs 0** hosta.
-2. Aby pozostawić domyślne porty dla platformy Azure wewnętrznego modułu równoważenia obciążenia, wybierz:
+1. Wykonaj pierwszy węzeł klastra opcja w węźle klastra A. Na przykład na hoście **PR1-ASCS-0** .
+2. Aby zachować domyślne porty dla wewnętrznego modułu równoważenia obciążenia platformy Azure, wybierz:
 
-   * **ABAP system**: **ASCS** numer wystąpienia **00**
-   * **Java system**: **SCS** numer wystąpienia **01**
-   * **System ABAP + Java**: **ASCS** numer wystąpienia **00** i **SCS** numer wystąpienia **01**
+   * **System ABAP**: **ASCS** wystąpienie numer **00**
+   * **System Java**: Numer wystąpienia SCS **01**
+   * **ABAP + system Java**: **ASCS** wystąpienie numer **00** i **SCS** wystąpienie numer **01**
 
-   Aby użyć wystąpienia liczb innych niż 00 wystąpienie ABAP ASCS i 01 dla wystąpienia Java SCS, najpierw należy zmienić reguły, opisane w równoważenia obciążenia domyślnego modułu równoważenia obciążenia wewnętrznego platformy Azure [zmienić ASCS/SCS domyślne reguł równoważenia obciążenia dla Usługa Azure wewnętrznego modułu równoważenia obciążenia][sap-ha-guide-8.9].
+   Aby użyć numeru wystąpienia innego niż 00 dla wystąpienia ABAP ASCS i 01 dla wystąpienia SCS Java, najpierw należy zmienić domyślne reguły równoważenia obciążenia platformy Azure, zgodnie z opisem w artykule [zmiana zasad domyślnego równoważenia obciążenia w ASCS/SCS dla platformy Azure wewnętrzny moduł równoważenia obciążenia][sap-ha-guide-8.9].
 
-Dalej kilka zadań nie są opisane w standardowych dokumentacji instalacji SAP.
+Kolejne kilka zadań nie są opisane w standardowej dokumentacji instalacji SAP.
 
 > [!NOTE]
-> Dokumentacji instalacji SAP w tym artykule opisano sposób instalowania pierwszego węzła klastra ASCS/SCS.
+> W dokumentacji instalacji SAP opisano, jak zainstalować pierwszy węzeł klastra ASCS/SCS.
 >
 >
 
-#### <a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a> Modyfikowanie profilu SAP ASCS/SCS wystąpienia
+#### <a name="e4caaab2-e90f-4f2c-bc84-2cd2e12a9556"></a>Modyfikowanie profilu SAP wystąpienia ASCS/SCS
 
-Należy dodać nowy parametr profilu. Parametr profilu uniemożliwia zamknięcie, gdy są one bezczynne zbyt długo połączenia między procesów roboczych SAP i serwerem umieścić w kolejce. Wspomnieliśmy scenariusz problemu w [dodania wpisów rejestru na obu węzłach klastra wystąpienia SAP ASCS/SCS][sap-ha-guide-8.11]. W tej sekcji także wprowadziliśmy dwie zmiany do niektórych podstawowych parametrów połączenia TCP/IP. W drugim kroku, należy ustawić serwera umieścić w kolejce do wysłania `keep_alive` sygnał, tak aby połączenia nie trafień Próg bezczynności modułu równoważenia obciążenia wewnętrznego platformy Azure.
+Musisz dodać nowy parametr profilu. Parametr profil uniemożliwia zamknięcie połączeń między procesami roboczymi SAP a serwerem z kolejki, gdy są one w stanie bezczynności przez zbyt długi czas. Scenariusz problemu został opisany w temacie [Dodawanie wpisów rejestru na obu węzłach klastra wystąpienia SAP ASCS/SCS][sap-ha-guide-8.11]. W tej sekcji wprowadzono również dwie zmiany w przypadku niektórych podstawowych parametrów połączenia TCP/IP. W drugim kroku należy ustawić serwer kolejki, aby wysyłał `keep_alive` sygnał, aby nie osiągnęły progu bezczynności wewnętrznego modułu równoważenia obciążenia platformy Azure.
 
-Aby zmodyfikować profil SAP ASCS/SCS wystąpienie:
+Aby zmodyfikować profil SAP wystąpienia ASCS/SCS:
 
-1. Dodaj parametr ten profil do profilu wystąpienia SAP ASCS/SCS:
+1. Dodaj ten parametr profilu do profilu wystąpienia SAP ASCS/SCS:
 
    ```
    enque/encni/set_so_keepalive = true
    ```
-   W naszym przykładzie ścieżka jest:
+   W naszym przykładzie ścieżka:
 
    `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_ASCS00_pr1-ascs-sap`
 
-   Na przykład aby profil wystąpienia SAP SCS i odpowiednie ścieżki:
+   Na przykład, do profilu wystąpienia SAP SCS i odpowiedniej ścieżki:
 
    `<ShareDisk>:\usr\sap\PR1\SYS\profile\PR1_SCS01_pr1-ascs-sap`
 
-2. Aby zastosować zmiany, ponownie uruchom wystąpienie SAP ASCS /SCS.
+2. Aby zastosować zmiany, uruchom ponownie wystąpienie SAP ASCS/SCS.
 
-#### <a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a> Dodaj port sondy
+#### <a name="10822f4f-32e7-4871-b63a-9b86c76ce761"></a>Dodaj port sondy
 
-Przy użyciu funkcji sondy modułu równoważenia obciążenia wewnętrznego konfigurację cały klaster pracy za pomocą usługi Azure Load Balancer. Azure wewnętrznego modułu równoważenia obciążenia dystrybuuje zwykle przychodzące obciążenie równo między uczestniczących w programie maszyn wirtualnych. Jednak to nie będzie działać w niektórych konfiguracjach klastra, ponieważ tylko jedno wystąpienie jest aktywny. Inne wystąpienie jest w stanie pasywnym i nie akceptuje dowolne obciążenie. Funkcja sondy pomaga w Azure wewnętrznego modułu równoważenia obciążenia przypisuje pracy tylko do aktywnego wystąpienia. Dzięki funkcji sondy wewnętrznego modułu równoważenia obciążenia może wykryć, które wystąpienia są aktywne, a następnie wskazać tylko wystąpienia z obciążeniem.
+Korzystając z funkcji sondowania wewnętrznego modułu równoważenia obciążenia, można sprawić, aby cała Konfiguracja klastra działała z Azure Load Balancer. Wewnętrzny moduł równoważenia obciążenia platformy Azure zwykle dystrybuuje przychodzące obciążenie równo między uczestniczącymi maszynami wirtualnymi. Nie będzie to jednak działało w niektórych konfiguracjach klastra, ponieważ aktywne jest tylko jedno wystąpienie. Drugie wystąpienie jest pasywne i nie może akceptować żadnego obciążenia. Funkcja sondowania pomaga, gdy wewnętrzny moduł równoważenia obciążenia platformy Azure przypisuje działania tylko do aktywnego wystąpienia. Korzystając z funkcji sondowania, wewnętrzny moduł równoważenia obciążenia może wykryć, które wystąpienia są aktywne, a następnie wskazać tylko wystąpienie z obciążeniem.
 
 Aby dodać port sondy:
 
-1. Sprawdź bieżące **ProbePort** ustawienie, uruchamiając następujące polecenie programu PowerShell. Wykonaj go z jednej z maszyn wirtualnych w konfiguracji klastra.
+1. Sprawdź bieżące ustawienie **ProbePort** , uruchamiając następujące polecenie programu PowerShell. Wykonaj ją z poziomu jednej z maszyn wirtualnych w konfiguracji klastra.
 
    ```PowerShell
    $SAPSID = "PR1"     # SAP <SID>
@@ -1480,15 +1479,15 @@ Aby dodać port sondy:
    Get-ClusterResource $SAPNetworkIPClusterName | Get-ClusterParameter
    ```
 
-2. Zdefiniuj port sondy. Domyślny numer portu sondy to **0**. W naszym przykładzie używamy port sondy **62000**.
+2. Zdefiniuj port sondy. Domyślny numer portu sondy to **0**. W naszym przykładzie używany jest port sondy **62000**.
 
-   ![Ilustracja 58: Port sondy konfiguracji klastra jest równa 0, domyślnie][sap-ha-guide-figure-3048]
+   ![Rysunek 58: Domyślnie port sondy konfiguracji klastra to 0][sap-ha-guide-figure-3048]
 
-   _**Ilustracja 58:** Domyślny port sondy konfiguracji klastra ma wartość 0_
+   _**Rysunek 58:** Domyślny port sondy konfiguracji klastra to 0_
 
-   Numer portu jest zdefiniowana w systemie SAP usługi Azure Resource Manager. Można przypisać numer portu w programie PowerShell.
+   Numer portu jest zdefiniowany w szablonach Azure Resource Manager SAP. Numer portu można przypisać w programie PowerShell.
 
-   Aby ustawić nową wartość ProbePort **SAP <*SID*> IP** zasób klastra, uruchom następujący skrypt programu PowerShell. Zaktualizuj zmienne programu PowerShell dla danego środowiska. Po uruchomieniu skryptu zostanie wyświetlony monit o ponowne uruchomienie Grupa klastra SAP do aktywowania zmian.
+   Aby ustawić nową wartość ProbePort dla ***identyfikatora SID*< protokołu SAP >** zasobu klastra IP, uruchom następujący skrypt programu PowerShell. Zaktualizuj zmienne programu PowerShell dla danego środowiska. Po uruchomieniu skryptu zostanie wyświetlony monit o ponowne uruchomienie grupy klastra SAP w celu aktywowania zmian.
 
    ```PowerShell
    $SAPSID = "PR1"      # SAP <SID>
@@ -1556,13 +1555,13 @@ Aby dodać port sondy:
 
    ```
 
-   ![Ilustracja 59 Sonda portu klastra, po ustawieniu nowej wartości][sap-ha-guide-figure-3049]
+   ![Rysunek 59: Sondowanie portu klastra po ustawieniu nowej wartości][sap-ha-guide-figure-3049]
 
-   _**Ilustracja 59** Sonda portu klastra, po ustawieniu nowej wartości_
+   _**Rysunek 59:** Sondowanie portu klastra po ustawieniu nowej wartości_
 
-#### <a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a> Otwórz port sondy zapory Windows
+#### <a name="4498c707-86c0-4cde-9c69-058a7ab8c3ac"></a>Otwórz port sondowania zapory systemu Windows
 
-Musisz otworzyć port sondy zapory Windows na obu węzłach klastra. Użyj następującego skryptu, aby otworzyć port sondy zapory Windows. Zaktualizuj zmienne programu PowerShell dla danego środowiska.
+Należy otworzyć port sondy zapory systemu Windows na obu węzłach klastra. Użyj poniższego skryptu, aby otworzyć port sondowania zapory systemu Windows. Zaktualizuj zmienne programu PowerShell dla danego środowiska.
 
   ```PowerShell
   $ProbePort = 62000   # ProbePort of the Azure Internal Load Balancer
@@ -1570,59 +1569,59 @@ Musisz otworzyć port sondy zapory Windows na obu węzłach klastra. Użyj nast�
   New-NetFirewallRule -Name AzureProbePort -DisplayName "Rule for Azure Probe Port" -Direction Inbound -Action Allow -Protocol TCP -LocalPort $ProbePort
   ```
 
-**ProbePort** ustawiono **62000**. Teraz można uzyskać dostęp do udziału plików  **\\\ascsha-clsap\sapmnt** od innych hostów, takie jak z **przetwarzający ascsha**.
+**ProbePort** jest ustawiona na **62000**. Teraz możesz uzyskać dostęp do udziału  **\\plików \ascsha-clsap\sapmnt** z innych hostów, takich jak z **ascsha-przetwarzający**.
 
-### <a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a> Zainstaluj wystąpienie bazy danych
+### <a name="85d78414-b21d-4097-92b6-34d8bcb724b7"></a>Instalowanie wystąpienia bazy danych
 
-Aby zainstalować wystąpienie bazy danych, wykonaj proces opisany w dokumentacji instalacji SAP.
+Aby zainstalować wystąpienie bazy danych, postępuj zgodnie z procesem opisanym w dokumentacji instalacji SAP.
 
-### <a name="8a276e16-f507-4071-b829-cdc0a4d36748"></a> Zainstaluj na drugim węźle klastra
+### <a name="8a276e16-f507-4071-b829-cdc0a4d36748"></a>Zainstaluj drugi węzeł klastra
 
-Aby zainstalować drugi klaster, postępuj zgodnie z instrukcjami w przewodniku instalacji SAP.
+Aby zainstalować drugi klaster, wykonaj kroki opisane w przewodniku instalacji SAP.
 
-### <a name="094bc895-31d4-4471-91cc-1513b64e406a"></a> Zmień typ uruchomienia wystąpienia usługi Windows Wywołujących SAP
+### <a name="094bc895-31d4-4471-91cc-1513b64e406a"></a>Zmień typ uruchomienia wystąpienia usługi SAP wykres WYWOŁUJĄCYCH systemu Windows
 
-Zmień typ uruchomienia usługi Windows Wywołujących SAP **automatycznie (opóźnione uruchomienie)** na obu węzłach klastra.
+Zmień typ uruchomienia usługi SAP wykres WYWOŁUJĄCYCH systemu Windows na **Automatyczne (opóźnione uruchomienie)** na obu węzłach klastra.
 
-![Ilustracja 60 Zmień typ usługi dla wystąpienia SAP Wywołujących opóźnione automatycznie][sap-ha-guide-figure-3050]
+![Rysunek 60: Zmień typ usługi dla wystąpienia SAP wykres WYWOŁUJĄCYCH na opóźniony automatyczny][sap-ha-guide-figure-3050]
 
-_**Ilustracja 60** Zmień typ usługi dla wystąpienia SAP Wywołujących opóźnione automatycznie_
+_**Rysunek 60:** Zmień typ usługi dla wystąpienia SAP wykres WYWOŁUJĄCYCH na opóźniony automatyczny_
 
-### <a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a> Instalowanie serwera podstawowego aplikacji SAP
+### <a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a>Zainstaluj podstawowy serwer aplikacji SAP
 
-Zainstaluj wystąpienie serwera aplikacji głównej (PAS) <*SID*> - di - 0 na maszynie wirtualnej, który został wybrany do hostowania PAS. Nie występują żadne zależności na temat platformy Azure lub DataKeeper określonych ustawień.
+Zainstaluj wystąpienie serwera aplikacji podstawowej (PAS) <*Identyfikator SID*>-di-0 na maszynie wirtualnej, która została wyznaczyna do hostowania tego pas. Nie ma żadnych zależności dotyczących ustawień platformy Azure lub usługi DataKeeper.
 
-### <a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a> Instalowanie serwera dodatkowych aplikacji SAP
+### <a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a>Zainstaluj dodatkowy serwer aplikacji SAP
 
-Zainstaluj oprogramowanie SAP dodatkowych aplikacji serwera (AAS) na wszystkich maszynach wirtualnych, które zostały oznaczone do hostowania wystąpienia serwera aplikacji SAP. Na przykład w <*SID*> - di - 1 do <*SID*> - di -&lt;n&gt;.
+Zainstaluj dodatkowy serwer aplikacji SAP (AAS) na wszystkich maszynach wirtualnych, które zostały wskazane do hostowania wystąpienia serwera aplikacji SAP. Na przykład na <*Identyfikator SID*>-di-1 w celu <*identyfikatora SID*>-&lt;di&gt;-n.
 
 > [!NOTE]
-> Spowoduje to zakończenie instalacji systemu SAP NetWeaver wysokiej dostępności. Następnie należy kontynuować testowanie trybu failover.
+> Spowoduje to zakończenie instalacji systemu SAP NetWeaver o wysokiej dostępności. Następnie kontynuuj Testowanie pracy w trybie failover.
 >
 
 
-## <a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a> Testowanie trybu failover wystąpienia SAP ASCS/SCS i oprogramowanie SIOS replikacji
-Jest łatwy do testowania i monitorowania usługi SAP ASCS/SCS wystąpienia w tryb failover i oprogramowanie SIOS replikacji dysku przy użyciu narzędzia Menedżera klastra trybu Failover i oprogramowanie SIOS DataKeeper zarządzania i konfiguracji.
+## <a name="18aa2b9d-92d2-4c0e-8ddd-5acaabda99e9"></a>Testowanie trybu failover wystąpienia SAP ASCS/SCS i replikacji oprogramowanie SIOS
+Można łatwo testować i monitorować wystąpienie usługi SAP ASCS/SCS w trybie failover oraz replikację dysków oprogramowanie SIOS za pomocą Menedżer klastra trybu failover oraz narzędzia do zarządzania i konfigurowania danych programu oprogramowanie SIOS.
 
-### <a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a> Wystąpienia SAP ASCS/SCS jest uruchomiona w węźle klastra, A
+### <a name="65fdef0f-9f94-41f9-b314-ea45bbfea445"></a>Wystąpienie SAP ASCS/SCS jest uruchomione w węźle klastra A
 
-**SAP PR1** grupy klastra jest uruchomiona w węźle klastra A. Na przykład na **pr1 ascs 0**. Przypisywanie udostępnionego dysku S, który jest częścią programu **SAP PR1** Grupa klastra i który używa wystąpienia ASCS/SCS, do klastra węzeł A.
+Grupa klastra **SAP PR1** jest uruchomiona w węźle klastra A. Na przykład na **PR1-ASCS-0**. Przypisz udostępnione dyski S, które są częścią grupy klastra **SAP PR1** , a których wystąpienie ASCS/SCS używa, do węzła klastra A.
 
-![Ilustracja 61 Menedżer klastra trybu failover: SAP < SID > grupy klastra jest uruchomiona w węźle klastra, A][sap-ha-guide-figure-5000]
+![Rysunek 61: Menedżer klastra trybu failover: Identyfikator SID > < w usłudze SAP jest uruchomiony w węźle klastra A][sap-ha-guide-figure-5000]
 
-_**Ilustracja 61** Menedżer klastra trybu failover: SAP <*SID*> grupy klastra jest uruchomiona w węźle klastra, A_
+_**Rysunek 61:** Menedżer klastra trybu failover: *Identyfikator SID*> < w usłudze SAP jest uruchomiony w węźle klastra A_
 
-W narzędziu oprogramowanie SIOS DataKeeper zarządzania i konfiguracji możesz zobaczyć, czy udostępniony dysk synchronicznie replikacji danych z dysku woluminu źródłowego S w węźle klastra, A na dysku woluminu docelowego S w węźle klastra B. Na przykład jest replikowany z **pr1 ascs 0 [10.0.0.40]** do **pr1 ascs 1 [10.0.0.41]** .
+W narzędziu do zarządzania i konfiguracji usługi oprogramowanie SIOS DataKeeper można zobaczyć, że dane udostępnionego dysku są synchronicznie replikowane z dysku woluminu źródłowego w węźle klastra A na wolumin docelowy dysku S w węźle klastra B. Na przykład jest replikowana z **PR1-ASCS-0 [10.0.0.40]** do **PR1-ASCS-1 [10.0.0.41]** .
 
-![Ilustracja 62 W oprogramowanie SIOS DataKeeper replikowania woluminu lokalnego z węzła klastra, A do węzła klastra B][sap-ha-guide-figure-5001]
+![Rysunek 62: W oprogramowanie SIOS DataKeeper, Replikuj wolumin lokalny z węzła klastra A do węzła klastra B][sap-ha-guide-figure-5001]
 
-_**Ilustracja 62** W oprogramowanie SIOS DataKeeper replikowania woluminu lokalnego z węzła klastra, A do węzła klastra B_
+_**Rysunek 62:** W oprogramowanie SIOS DataKeeper, Replikuj wolumin lokalny z węzła klastra A do węzła klastra B_
 
-### <a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a> Tryb failover z węzła A węźle B
+### <a name="5e959fa9-8fcd-49e5-a12c-37f6ba07b916"></a>Tryb failover z węzła A do węzła B
 
-1. Wybierz jedną z tych opcji, aby zainicjować trybu failover SAP <*SID*> Grupa klastra z węzła klastra, A do węzła klastra B:
-   - Menedżer klastra trybu Failover  
-   - Za pomocą programu PowerShell klastra trybu Failover
+1. Wybierz jedną z tych opcji, aby zainicjować tryb failover <*identyfikatora SID*SAP > grupy klastra z węzła klastra a na węzeł klastra B:
+   - Użyj Menedżer klastra trybu failover  
+   - Korzystanie z programu PowerShell klastra trybu failover
 
    ```PowerShell
    $SAPSID = "PR1"     # SAP <SID>
@@ -1631,18 +1630,18 @@ _**Ilustracja 62** W oprogramowanie SIOS DataKeeper replikowania woluminu lokaln
    Move-ClusterGroup -Name $SAPClusterGroup
 
    ```
-2. Uruchom ponownie element węzła klastra w systemie operacyjnym gościa Windows (spowoduje to zainicjowanie automatycznej pracy awaryjnej programu SAP <*SID*> Grupa klastra z węzła A węzłem B).  
-3. Uruchom ponownie element węzła klastra w witrynie Azure portal (spowoduje to zainicjowanie automatycznej pracy awaryjnej programu SAP <*SID*> Grupa klastra z węzła A węzłem B).  
-4. Uruchom ponownie element węzła klastra za pomocą programu Azure PowerShell (spowoduje to zainicjowanie automatycznej pracy awaryjnej programu SAP <*SID*> Grupa klastra z węzła A węzłem B).
+2. Uruchom ponownie węzeł klastra A w systemie operacyjnym gościa systemu Windows (spowoduje to zainicjowanie automatycznej pracy awaryjnej usługi SAP <*Identyfikator SID*> grupy klastra z węzła A do węzła B).  
+3. Uruchom ponownie węzeł klastra A z Azure Portal (spowoduje to zainicjowanie automatycznej pracy awaryjnej usługi SAP <*SID*> grupie klastra z węzła A do węzła B).  
+4. Uruchom ponownie węzeł klastra A przy użyciu Azure PowerShell (spowoduje to zainicjowanie automatycznej pracy awaryjnej usługi SAP <*SID*> grupie klastra z węzła A do węzła B).
 
-   Po przejściu w tryb failover SAP <*SID*> grupy klastra jest uruchomiona w węźle klastra B. Na przykład, jest uruchomiona na **pr1 ascs 1**.
+   Po przejściu w tryb failover w węźle klastra B zostanie uruchomiona <*Identyfikator SID*>j grupy klastrów. Na przykład jest uruchomiona w systemie **PR1-ASCS-1**.
 
-   ![Ilustracja 63 W Menedżerze klastra trybu Failover SAP < SID > grupy klastra jest uruchomiona w węźle klastra B][sap-ha-guide-figure-5002]
+   ![Rysunek 63: W Menedżer klastra trybu failover, identyfikator SID < protokołu SAP > jest uruchomiona w węźle klastra B][sap-ha-guide-figure-5002]
 
-   _**Rysunek 63**: W Menedżerze klastra trybu Failover, SAP <*SID*> grupy klastra jest uruchomiona w węźle klastra B_
+   _**Rysunek 63**: W Menedżer klastra trybu failover,*Identyfikator SID*< protokołu SAP > jest uruchomiona w węźle klastra B_
 
-   Udostępniony dysk jest teraz zainstalowany w klastrze węzła B. oprogramowanie SIOS DataKeeper jest replikowanie danych z dysku woluminu źródłowego S w węźle klastra B na dysku woluminu docelowego S w węźle klastra A. Na przykład jest replikowany z **pr1 ascs 1 [10.0.0.41]** do **pr1 ascs 0 [10.0.0.40]** .
+   Udostępniony dysk jest teraz zainstalowany w węźle klastra B. oprogramowanie SIOS DataKeeper replikuje dane z woluminu źródłowego dysku S w węźle klastra B do docelowego dysku woluminu w węźle klastra A. Na przykład replikacja z **PR1-ASCS-1 [10.0.0.41]** do **PR1-ASCS-0 [10.0.0.40]** .
 
-   ![Ilustracja 64 Oprogramowanie SIOS DataKeeper replikuje woluminu lokalnego z węzła klastra B do A węzłem klastra][sap-ha-guide-figure-5003]
+   ![Rysunek 64: OPROGRAMOWANIE SIOS DataKeeper replikuje wolumin lokalny z węzła klastra B do węzła klastra A][sap-ha-guide-figure-5003]
 
-   _**Ilustracja 64** Oprogramowanie SIOS DataKeeper replikuje woluminu lokalnego z węzła klastra B do A węzłem klastra_
+   _**Rysunek 64:** OPROGRAMOWANIE SIOS DataKeeper replikuje wolumin lokalny z węzła klastra B do węzła klastra A_

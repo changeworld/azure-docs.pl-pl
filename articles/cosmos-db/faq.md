@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 93b00aec868cf947b67329934c703f5d1b774426
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: cb2b3246264d04ce97c45dff58979079a731998e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615387"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066095"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 
@@ -31,6 +31,12 @@ Każdy kontener usługi Azure Cosmos można skonfigurować przy użyciu alokowan
 Klucz/wartość (tabela), kolumnowy, dokumentów i danych wykresu, który modeli są natywnie obsługiwane ze względu na ARS (atomów, rekordów i sekwencji) projektowania, że usługi Azure Cosmos DB zaprojektowano. Atomów, rekordów i sekwencji umożliwia łatwe mapowane i zaprojektowana różne modele danych. Interfejsy API dla podzestawu modeli są dostępne teraz (SQL, MongoDB, Table i Gremlin), a inne specyficzne dla dodatkowych modeli danych będą dostępne w przyszłości.
 
 Usługa Azure Cosmos DB ma schemat niezależny od aparatu indeksowania która może automatycznie indeksować wszystkie dane, które które pozyska, bez wymagania żadnych schematów ani indeksów pomocniczych od dewelopera. Aparat opiera się na zestaw układów logicznych indeksu (odwrócona, kolumnowy, drzewo), które rozdzielenie układ magazynu z indeksem i podsystemy przetwarzania zapytań. Usługa cosmos DB ma również możliwość obsługi zestawu o komunikacji sieciowej protokołów i interfejsów API w sposób rozszerzalny i wydajnie tłumaczyć je do modelu danych podstawowych (1) i układów logicznych indeksu, (2) co jednoznacznie może obsługiwać więcej niż jeden model danych natywnie.
+
+### <a name="can-i-use-multiple-apis-to-access-my-data"></a>Czy można używać wielu interfejsów API do uzyskiwania dostępu do danych?
+
+Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. W przypadku, gdy wiele modeli oznacza, Azure Cosmos DB obsługuje wiele interfejsów API i wielu modeli danych, różne interfejsy API używają różnych formatów danych dla magazynu i protokołu przewodowego. Na przykład SQL używa JSON, MongoDB używa BSON, tabela używa modelu EDM, Cassandra używa CQL, Gremlin używa GraphSON. W związku z tym zalecamy używanie tego samego interfejsu API do uzyskiwania dostępu do danych w danym koncie.
+
+Każdy interfejs API działa niezależnie, z wyjątkiem interfejsu API Gremlin i SQL, które są współobsługiwane.
 
 ### <a name="is-azure-cosmos-db-hipaa-compliant"></a>Azure Cosmos DB HIPAA jest zgodne?
 

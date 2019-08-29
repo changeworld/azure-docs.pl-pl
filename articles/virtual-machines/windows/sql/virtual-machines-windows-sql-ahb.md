@@ -8,19 +8,18 @@ manager: jroth
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fb13cd65142214ccf852c591ae081e7e633e1a4d
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 2cce369f6a0670790ede7367609f87c18672ddd5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935327"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100611"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Zmień model licencji dla SQL Server maszyny wirtualnej na platformie Azure
 W tym artykule opisano, jak zmienić model licencji dla SQL Server maszyny wirtualnej (VM) na platformie Azure przy użyciu nowego dostawcy zasobów maszyny wirtualnej SQL, **Microsoft. SqlVirtualMachine**.
@@ -88,7 +87,7 @@ Poniższy fragment kodu umożliwia przełączenie modelu "Przenieś własną lic
 az sql vm update -n <VMName> -g <ResourceGroupName> --license-type PAYG
 ```
 
-# <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 Aby zmienić model licencji, możesz użyć programu PowerShell.
 
 Poniższy fragment kodu zmienia model licencji z płatność zgodnie z rzeczywistym użyciem, aby zapewnić własną licencję (lub za pomocą Korzyść użycia hybrydowego platformy Azure):

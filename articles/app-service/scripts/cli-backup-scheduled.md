@@ -9,18 +9,17 @@ editor: ''
 tags: azure-service-management
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 48ac455da32084f0ea2c5cf4f9f8b2d2cdc09719
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: c16a5c3cb51ab8ca571eb99acbe6a3034cb8ee21
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613499"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088125"
 ---
 # <a name="create-a-scheduled-backup-for-an-app-service-app-using-cli"></a>Tworzenie zaplanowanej kopii zapasowej aplikacji usługi App Service przy użyciu interfejsu wiersza polecenia
 
@@ -54,7 +53,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [`az webapp config backup show`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-show) | Wyświetla harmonogram tworzenia kopii zapasowej aplikacji usługi App Service. |
 | [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | Pobiera listę kopii zapasowych dla aplikacji usługi App Service. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).
 

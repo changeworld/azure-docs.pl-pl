@@ -1,6 +1,6 @@
 ---
-title: Tworzenie subskrypcji usługi Azure API Management | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć subskrypcje usługi Azure API Management.
+title: Tworzenie subskrypcji na platformie Azure API Management | Microsoft Docs
+description: Dowiedz się, jak tworzyć subskrypcje na platformie Azure API Management.
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -9,45 +9,44 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: bc791fea1dfd184749e84cb7b7a912972c6a9f12
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f8b2238eb0fab9aeeb42d11b4176c0d681b5f8e5
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60657628"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073537"
 ---
-# <a name="create-subscriptions-in-azure-api-management"></a>Tworzenie subskrypcji usługi Azure API Management
+# <a name="create-subscriptions-in-azure-api-management"></a>Tworzenie subskrypcji na platformie Azure API Management
 
-Podczas publikowania interfejsów API za pomocą usługi Azure API Management jest prosta i wspólne dla bezpiecznego dostępu do tych interfejsów API przy użyciu kluczy subskrypcji. Aplikacje klienckie, które muszą korzystać z opublikowanych interfejsów API musi zawierać klucz ważnej subskrypcji w żądaniach HTTP, w momencie wywołania tych interfejsów API. Aby uzyskać klucz subskrypcji do uzyskiwania dostępu do interfejsów API, wymagana jest subskrypcja. Aby uzyskać więcej informacji o subskrypcjach, zobacz [subskrypcji w usłudze Azure API Management](api-management-subscriptions.md).
+Po opublikowaniu interfejsów API za pomocą usługi Azure API Management jest to łatwe i powszechne do zabezpieczenia dostępu do tych interfejsów API przy użyciu kluczy subskrypcji. Aplikacje klienckie, które muszą używać opublikowanych interfejsów API, muszą zawierać prawidłowy klucz subskrypcji w żądaniach HTTP podczas wykonywania wywołań do tych interfejsów API. Aby uzyskać klucz subskrypcji do uzyskiwania dostępu do interfejsów API, wymagana jest subskrypcja. Aby uzyskać więcej informacji o subskrypcjach, zobacz [subskrypcje na platformie Azure API Management](api-management-subscriptions.md).
 
-W tym artykule przedstawiono procedurę tworzenia subskrypcji w witrynie Azure portal.
+W tym artykule omówiono procedurę tworzenia subskrypcji w Azure Portal.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby wykonać kroki opisane w tym artykule, wymagania wstępne są następujące:
 
-+ [Tworzenie wystąpienia usługi API Management](get-started-create-service-instance.md).
-+ Zrozumienie [subskrypcji w usłudze API Management](api-management-subscriptions.md).
++ [Utwórz wystąpienie API Management](get-started-create-service-instance.md).
++ Informacje [o subskrypcjach w API Management](api-management-subscriptions.md).
 
 ## <a name="create-a-new-subscription"></a>Utwórz nową subskrypcję
 
-1. Wybierz **subskrypcje** w menu po lewej stronie.
-2. Wybierz **Dodaj subskrypcję**.
-3. Podaj nazwę subskrypcji, a następnie wybierz zakres.
-4. Opcjonalnie wybierz opcję, jeśli subskrypcja powinna być skojarzona z użytkownikiem.
+1. Wybierz pozycję **subskrypcje** w menu po lewej stronie.
+2. Wybierz pozycję **Dodaj subskrypcję**.
+3. Podaj nazwę subskrypcji i wybierz zakres.
+4. Opcjonalnie możesz wybrać, czy subskrypcja ma być skojarzona z użytkownikiem.
 5. Wybierz pozycję **Zapisz**.
 
-![Elastyczne subskrypcji](./media/api-management-subscriptions/flexible-subscription.png)
+![Elastyczne subskrypcje](./media/api-management-subscriptions/flexible-subscription.png)
 
-Po utworzeniu subskrypcji dostęp do interfejsów API znajdują się dwa klucze interfejsu API. Jeden klucz jest kluczem podstawowym, a jeden to dodatkowa baza danych. 
+Po utworzeniu subskrypcji są udostępniane dwa klucze interfejsu API w celu uzyskania dostępu do interfejsów API. Jeden klucz jest podstawowy, a drugi to pomocniczy. 
 
-## <a name="next-steps"></a>Kolejne kroki
-Uzyskaj więcej informacji na temat usługi API Management:
+## <a name="next-steps"></a>Następne kroki
+Uzyskaj więcej informacji na API Management:
 
-+ Dowiedz się, inne [pojęcia](api-management-terminology.md) w usłudze API Management.
-+ Postępuj zgodnie z naszym [samouczki](import-and-publish.md) Aby dowiedzieć się więcej o usłudze API Management.
-+ Sprawdź nasze [z często Zadawanymi pytaniami](api-management-faq.md) dla często zadawane pytania.
++ Zapoznaj [](api-management-terminology.md) się z innymi pojęciami w API Management.
++ Postępuj [](import-and-publish.md) zgodnie z naszymi samouczkami, aby dowiedzieć się więcej o API Management.
++ Zapoznaj się z naszą [stroną często](api-management-faq.md) zadawanych pytań.

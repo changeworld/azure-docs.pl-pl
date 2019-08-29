@@ -9,16 +9,15 @@ keywords: usługa Azure Functions, funkcje, architektura bezserwerowa, infrastru
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.service: azure-functions
 ms.server: functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
-ms.openlocfilehash: f84bc92f51f8d6d7700cb15accb4b1282c97a37b
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 3d60e5e4aae3457ae04cd7e4ecfe4f9253a04751
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562889"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085400"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatyzowanie wdrażania zasobów dla aplikacji funkcji w Azure Functions
 

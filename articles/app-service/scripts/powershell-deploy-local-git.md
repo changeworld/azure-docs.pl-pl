@@ -10,17 +10,16 @@ tags: azure-service-management
 ms.assetid: 5a927f23-8e70-45fd-9aae-980d4e7a007d
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 80d1b295db7d1eb1e0ea0dda9522aa3875ea882d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 670660c3618124339c6d6ab416aa9baa4d5ca2ca
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136443"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098338"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>Tworzenie aplikacji internetowej i wdrażanie kodu z lokalnego repozytorium Git
 
@@ -50,7 +49,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 |---|---|
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Tworzy aplikację internetową z niezbędną grupą zasobów i grupą usługi App Service. Jeśli bieżący katalog zawiera repozytorium Git, dodaj również zdalny element `azure`. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

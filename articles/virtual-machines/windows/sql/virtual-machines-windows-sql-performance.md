@@ -9,19 +9,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: a0c85092-2113-4982-b73a-4e80160bac36
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d81c1941f114efbfd4ede559152317e907edeaea
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 6a386096d8a94c240e9a00457d87d04254e02920
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882385"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102005"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Wskazówki dotyczące wydajności SQL Server na platformie Azure Virtual Machines
 
@@ -196,7 +195,7 @@ Jeśli używasz funkcji miejsca do magazynowania, podczas dodawania węzłów do
 
 Jeśli używasz funkcji miejsca do magazynowania i nie zaznaczaj **żadnych opcji Dodaj wszystkie odpowiednie magazyny do klastra**, system Windows odłącza dyski wirtualne podczas procesu klastrowania. W związku z tym nie są one wyświetlane w Menedżerze dysków ani w Eksploratorze, dopóki nie zostaną usunięte miejsca do magazynowania z klastra i ponownie dołączone przy użyciu programu PowerShell. Funkcja miejsca do magazynowania grupuje wiele dysków w puli magazynów. Aby uzyskać więcej informacji, zobacz [miejsca do magazynowania](/windows-server/storage/storage-spaces/overview).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat magazynu i wydajności, zobacz [wskazówki dotyczące konfiguracji magazynu dla SQL Server na maszynie wirtualnej platformy Azure](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/)
 

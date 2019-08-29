@@ -10,16 +10,15 @@ ms.assetid: ea160028-fc04-4782-aa26-4b8329df3448
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a42028891f0a8677127221c8ed4cff73a22103a
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: fa5e84ba62896969458b84cf014e2b35ee869df7
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498533"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072167"
 ---
 # <a name="api-management-policy-expressions"></a>Wyrażenia zasad API Management
 W tym artykule omówiono składnię wyrażeń C# zasad to 7. Każde wyrażenie ma dostęp do niejawnie podanej zmiennej [kontekstowej](api-management-policy-expressions.md#ContextVariables) i dozwolone podzbiór typów .NET Framework. [](api-management-policy-expressions.md#CLRTypes)
@@ -156,7 +155,7 @@ Poniższa tabela zawiera listę typów .NET Framework i ich elementów członkow
 |System.Security.Cryptography.SymmetricAlgorithm|Wszyscy|
 |System.Security.Cryptography.X509Certificates.PublicKey|Wszyscy|
 |System.Security.Cryptography.X509Certificates.RSACertificateExtensions|Wszyscy|
-|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Name (Nazwa)|
+|System.Security.Cryptography.X509Certificates.X500DistinguishedName|Name|
 |System.Security.Cryptography.X509Certificates.X509Certificate|Wszyscy|
 |System.Security.Cryptography.X509Certificates.X509Certificate2|Wszyscy|
 |System.Security.Cryptography.X509Certificates.X509ContentType|Wszyscy|
@@ -210,18 +209,18 @@ Zmienna o nazwie `context` jest niejawnie dostępna w każdym [wyrażeniu](api-m
 
 |Zmienna kontekstowa|Dozwolone metody, właściwości i wartości parametrów|
 |----------------------|-------------------------------------------------------|
-|context|[Interfejs API](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Wdrożenie](#ref-context-deployment)<br /><br /> Który upłynął Przedział czasu w czasie między wartością sygnatury czasowej a bieżącym czasem<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [Operacja](#ref-context-operation)<br /><br /> [Iloczyn](#ref-context-product)<br /><br /> [Żądanie](#ref-context-request)<br /><br /> RequestId: Identyfikator GUID — unikatowy identyfikator żądania<br /><br /> [Odpowiedź](#ref-context-response)<br /><br /> [Subskrypcja](#ref-context-subscription)<br /><br /> Sygnatura czasowa: Data i godzina odebrania żądania<br /><br /> Śledzenie: bool-wskazuje, czy śledzenie jest włączone, czy wyłączone <br /><br /> [Użytkownicy](#ref-context-user)<br /><br /> [Zmienne](#ref-context-variables): IReadOnlyDictionary < ciąg, obiekt ><br /><br /> void Trace (Message: String)|
+|context|[Interfejs API](#ref-context-api): [IApi](#ref-iapi)<br /><br /> [Wdrożenie](#ref-context-deployment)<br /><br /> Który upłynął Przedział czasu w czasie między wartością sygnatury czasowej a bieżącym czasem<br /><br /> [LastError](#ref-context-lasterror)<br /><br /> [Operacja](#ref-context-operation)<br /><br /> [Iloczyn](#ref-context-product)<br /><br /> [Żądanie](#ref-context-request)<br /><br /> RequestId: Identyfikator GUID — unikatowy identyfikator żądania<br /><br /> [Odpowiedź](#ref-context-response)<br /><br /> [Subskrypcja](#ref-context-subscription)<br /><br /> Znacznik czasu Data i godzina odebrania żądania<br /><br /> Śledzenie: bool-wskazuje, czy śledzenie jest włączone, czy wyłączone <br /><br /> [Użytkownicy](#ref-context-user)<br /><br /> [Zmienne](#ref-context-variables): IReadOnlyDictionary < ciąg, obiekt ><br /><br /> void Trace (Message: String)|
 |<a id="ref-context-api"></a>Context. Interfejsu API|ID: ciąg<br /><br /> IsCurrentRevision: bool<br /><br />  Name: ciąg<br /><br /> Ścieżka: ciąg<br /><br /> Poprawka: ciąg<br /><br /> ServiceUrl [IUrl](#ref-iurl)<br /><br /> Wersja: ciąg |
 |<a id="ref-context-deployment"></a>Context. Mieszczeniu|Region: ciąg<br /><br /> ServiceName: ciąg<br /><br /> Przystawki IReadOnlyDictionary < ciąg X509Certificate2 >|
 |<a id="ref-context-lasterror"></a>context.LastError|Źródło: ciąg<br /><br /> Przyczyna: ciąg<br /><br /> Komunikat: ciąg<br /><br /> Zakres: ciąg<br /><br /> Sekcja: ciąg<br /><br /> Ścieżka: ciąg<br /><br /> PolicyId: ciąg<br /><br /> Aby uzyskać więcej informacji o kontekście. LastError, zobacz [Obsługa błędów](api-management-error-handling-policies.md).|
 |<a id="ref-context-operation"></a>Context. Operacje|ID: ciąg<br /><br /> Metoda: ciąg<br /><br /> Name: ciąg<br /><br /> UrlTemplate: ciąg|
-|<a id="ref-context-product"></a>Context. Iloczyn|Programowania Interfejs IEnumerable <[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: bool<br /><br /> Grupy: Interfejs IEnumerable <[IGroup](#ref-igroup)\><br /><br /> ID: ciąg<br /><br /> Name: ciąg<br /><br /> State: Wyliczenie ProductState {NotPublished, opublikowano}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: bool|
-|<a id="ref-context-request"></a>Context. Żądając|Treść: [IMessageBody](#ref-imessagebody) lub `null` Jeśli żądanie nie ma treści.<br /><br /> Certyfikat: System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [Nagłówki](#ref-context-request-headers): IReadOnlyDictionary < ciąg, ciąg [] ><br /><br /> IpAddress: ciąg<br /><br /> MatchedParameters: IReadOnlyDictionary < ciąg, ciąg ><br /><br /> Metoda: ciąg<br /><br /> OriginalUrl: [IUrl](#ref-iurl)<br /><br /> Adres URL: [IUrl](#ref-iurl)|
+|<a id="ref-context-product"></a>Context. Iloczyn|Programowania Interfejs IEnumerable <[IApi](#ref-iapi)\><br /><br /> ApprovalRequired: bool<br /><br /> Grupowania Interfejs IEnumerable <[IGroup](#ref-igroup)\><br /><br /> ID: ciąg<br /><br /> Name: ciąg<br /><br /> State: Wyliczenie ProductState {NotPublished, opublikowano}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: bool|
+|<a id="ref-context-request"></a>Context. Żądając|Jednostce [IMessageBody](#ref-imessagebody) lub `null` Jeśli żądanie nie ma treści.<br /><br /> Certyfikatu System.Security.Cryptography.X509Certificates.X509Certificate2<br /><br /> [Nagłówki](#ref-context-request-headers): IReadOnlyDictionary < ciąg, ciąg [] ><br /><br /> IpAddress: ciąg<br /><br /> MatchedParameters: IReadOnlyDictionary < ciąg, ciąg ><br /><br /> Metoda: ciąg<br /><br /> OriginalUrl: [IUrl](#ref-iurl)<br /><br /> Adres URL: [IUrl](#ref-iurl)|
 |<a id="ref-context-request-headers"></a>kontekst ciągu. Request. Headers. GetValueOrDefault (headerName: String, DefaultValue: String)|headerName: ciąg<br /><br /> DefaultValue: ciąg<br /><br /> Zwraca wartości nagłówka żądania oddzielone przecinkami `defaultValue` lub jeśli nagłówek nie zostanie znaleziony.|
-|<a id="ref-context-response"></a>Context. Reakcji|Treść: [IMessageBody](#ref-imessagebody)<br /><br /> [Nagłówki](#ref-context-response-headers): IReadOnlyDictionary < ciąg, ciąg [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: ciąg|
+|<a id="ref-context-response"></a>Context. Reakcji|Jednostce [IMessageBody](#ref-imessagebody)<br /><br /> [Nagłówki](#ref-context-response-headers): IReadOnlyDictionary < ciąg, ciąg [] ><br /><br /> StatusCode: int<br /><br /> StatusReason: ciąg|
 |<a id="ref-context-response-headers"></a>kontekst ciągu. Response. Headers. GetValueOrDefault (headerName: String, DefaultValue: String)|headerName: ciąg<br /><br /> DefaultValue: ciąg<br /><br /> Zwraca wartości nagłówka odpowiedzi rozdzielane przecinkami `defaultValue` lub nie można znaleźć nagłówka.|
-|<a id="ref-context-subscription"></a>Context. Ramach|CreatedTime: Datetime<br /><br /> EndDate Datę?<br /><br /> ID: ciąg<br /><br /> Klucz: ciąg<br /><br /> Name: ciąg<br /><br /> PrimaryKey: ciąg<br /><br /> SecondaryKey: ciąg<br /><br /> StartDate Datę?|
-|<a id="ref-context-user"></a>Context. Użytkownicy|Adres e-mail: ciąg<br /><br /> FirstName: ciąg<br /><br /> Grupy: Interfejs IEnumerable <[IGroup](#ref-igroup)\><br /><br /> ID: ciąg<br /><br /> Osob Interfejs IEnumerable <[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: ciąg<br /><br /> Uwaga: ciąg<br /><br /> RegistrationDate: Datetime|
+|<a id="ref-context-subscription"></a>Context. Ramach|CreatedTime: DateTime<br /><br /> EndDate Datę?<br /><br /> ID: ciąg<br /><br /> Klucz: ciąg<br /><br /> Name: ciąg<br /><br /> PrimaryKey: ciąg<br /><br /> SecondaryKey: ciąg<br /><br /> StartDate Datę?|
+|<a id="ref-context-user"></a>Context. Użytkownicy|Adres e-mail: ciąg<br /><br /> FirstName: ciąg<br /><br /> Grupowania Interfejs IEnumerable <[IGroup](#ref-igroup)\><br /><br /> ID: ciąg<br /><br /> Osob Interfejs IEnumerable <[IUserIdentity](#ref-iuseridentity)\><br /><br /> LastName: ciąg<br /><br /> Uwaga: ciąg<br /><br /> RegistrationDate: DateTime|
 |<a id="ref-iapi"></a>IApi|ID: ciąg<br /><br /> Name: ciąg<br /><br /> Ścieżka: ciąg<br /><br /> Protokołów Ciąg < IEnumerable\><br /><br /> ServiceUrl [IUrl](#ref-iurl)<br /><br /> SubscriptionKeyParameterNames: [ISubscriptionKeyParameterNames](#ref-isubscriptionkeyparameternames)|
 |<a id="ref-igroup"></a>IGroup|ID: ciąg<br /><br /> Name: ciąg|
 |<a id="ref-imessagebody"></a>IMessageBody|Jako < T\>(preserveContent: bool = false): Gdzie T: String, Byte [], JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Metody `context.Request.Body.As<T>` `T`i `context.Response.Body.As<T>` są używane do odczytywania treści żądania i odpowiedzi w określonym typie. Domyślnie metoda używa oryginalnego strumienia treści wiadomości i renderuje go po powrocie. Aby uniknąć tego, że metoda operuje na kopii strumienia treści, ustaw `preserveContent` parametr na. `true` Przejdź [tutaj](api-management-transformation-policies.md#SetBody) , aby zobaczyć przykład.|

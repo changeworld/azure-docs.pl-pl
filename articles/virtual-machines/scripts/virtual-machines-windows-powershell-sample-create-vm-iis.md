@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0910b9c4f69f08647501b4ec34774e91b414a41d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: a72584cfe2b113fdf9eef9323dae6b0096e3f192
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67696069"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090607"
 ---
 # <a name="create-an-iis-vm-with-powershell"></a>Tworzenie maszyny wirtualnej usług IIS przy użyciu programu PowerShell
 
@@ -54,7 +53,7 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 | [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) | Dodaje rozszerzenie do maszyny wirtualnej. W tym przykładzie do instalowania usług IIS jest używane rozszerzenie skryptu niestandardowego. |
 |[Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

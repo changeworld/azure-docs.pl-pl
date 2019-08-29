@@ -1,116 +1,115 @@
 ---
-title: Funkcja łańcucha w funkcje trwałe - Azure
-description: Dowiedz się, jak uruchomić przykładowe funkcje trwałe, wykonującą sekwencję funkcji.
+title: Łańcuch funkcji w Durable Functions — Azure
+description: Dowiedz się, jak uruchomić próbkę Durable Functions, która wykonuje sekwencję funkcji.
 services: functions
 author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4657bd136592c66b5dab9a712f5f1d6df898876c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1168963c0698c6bdafe20babe2e5143585bf90a8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60730547"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087121"
 ---
-# <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Funkcja łańcucha w funkcje trwałe — przykładowy sekwencja Hello
+# <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Łańcuch funkcji w Durable Functions-Hello Sequence przykład
 
-Funkcja łańcucha odnosi się do wzorca wykonywanie sekwencji funkcji w określonej kolejności. Często dane wyjściowe jedna funkcja musi zostać zastosowana na dane wejściowe innej funkcji. W tym artykule opisano łańcucha sekwencji, utworzony po ukończeniu tego przewodnika Szybki Start funkcje trwałe ([ C# ](durable-functions-create-first-csharp.md) lub [JavaScript](quickstart-js-vscode.md)). Aby uzyskać więcej informacji na temat funkcje trwałe, zobacz [wzorce funkcje trwałe i zagadnienia techniczne](durable-functions-concepts.md).
+Łańcuch funkcji odnosi się do wzorca wykonywania sekwencji funkcji w określonej kolejności. Często dane wyjściowe jednej funkcji muszą zostać zastosowane do danych wejściowych innej funkcji. W tym artykule opisano sekwencję łańcucha utworzoną podczas wykonywania Durable Functions przewodnika Szybki Start ([C#](durable-functions-create-first-csharp.md) lub [JavaScript](quickstart-js-vscode.md)). Aby uzyskać więcej informacji na temat Durable Functions, zobacz [wzorce Durable Functions i koncepcje techniczne](durable-functions-concepts.md).
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
 ## <a name="the-functions"></a>Funkcje
 
-W tym artykule opisano następujące funkcje w przykładowej aplikacji:
+W tym artykule wyjaśniono następujące funkcje w przykładowej aplikacji:
 
-* `E1_HelloSequence`: Funkcja orkiestratora, która wywołuje `E1_SayHello` wiele razy w sekwencji. Przechowuje dane wyjściowe z `E1_SayHello` wywołuje i rejestruje wyniki.
-* `E1_SayHello`: Funkcja działanie, która dołącza ciąg "Hello".
+* `E1_HelloSequence`: Funkcja programu Orchestrator, która `E1_SayHello` wywołuje wiele razy w sekwencji. Zapisuje dane wyjściowe `E1_SayHello` wywołań i rejestruje wyniki.
+* `E1_SayHello`: Funkcja działania, która dołącza ciąg z "Hello".
 
-W poniższych sekcjach opisano konfigurację i kod, które są używane dla skryptów języka C# i JavaScript. Kod dla rozwoju programu Visual Studio jest wyświetlany na końcu tego artykułu.
+W poniższych sekcjach opisano konfigurację i kod, które są używane C# do obsługi skryptów i języka JavaScript. Kod dla projektowania programu Visual Studio znajduje się na końcu artykułu.
 
 > [!NOTE]
-> Trwałe funkcje języka JavaScript są dostępne dla funkcji Środowisko uruchomieniowe 2.x tylko.
+> Durable Functions JavaScript są dostępne tylko w przypadku środowiska uruchomieniowego usługi Functions 2. x.
 
-## <a name="e1hellosequence"></a>E1_HelloSequence
+## <a name="e1_hellosequence"></a>E1_HelloSequence
 
-### <a name="functionjson-file"></a>Plik Function.JSON
+### <a name="functionjson-file"></a>Function. JSON — plik
 
-Jeśli używasz programu Visual Studio Code lub w portalu Azure do tworzenia aplikacji, w tym miejscu znajduje się odpowiednia zawartość z *function.json* plików dla funkcji programu orchestrator. Większość orchestrator *function.json* pliki wyglądał prawie dokładnie tak jak poniżej.
+Jeśli używasz Visual Studio Code lub Azure Portal do programowania, poniżej przedstawiono zawartość pliku *Function. JSON* dla funkcji programu Orchestrator. Większość plików *JSON funkcji* programu Orchestrator wygląda niemal dokładnie tak samo.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E1_HelloSequence/function.json)]
 
-Ważne jest `orchestrationTrigger` typ powiązania. Wszystkie funkcje programu orchestrator, należy użyć tego typu wyzwalacza.
+Istotną kwestią jest `orchestrationTrigger` typ powiązania. Wszystkie funkcje programu Orchestrator muszą używać tego typu wyzwalacza.
 
 > [!WARNING]
-> Przestrzeganie zasad "nie we/wy" funkcje programu orchestrator, nie wszystkie dane wejściowe używane lub powiązania danych wyjściowych, korzystając z `orchestrationTrigger` wyzwolić powiązania.  Jeśli inne dane wejściowe lub powiązania danych wyjściowych są potrzebne, zamiast tego powinny być używane w kontekście `activityTrigger` funkcji, które są wywoływane przez koordynatora.
+> Aby przestrzegać reguły "No we/wy" funkcji programu Orchestrator, nie używaj żadnych powiązań wejściowych ani wyjściowych w `orchestrationTrigger` przypadku używania powiązania wyzwalacza.  Jeśli wymagane są inne powiązania wejściowe lub wyjściowe, powinny one być używane w kontekście `activityTrigger` funkcji, które są wywoływane przez program Orchestrator.
 
-### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>Skrypt języka C# (kod przykładowy portal programu Visual Studio Code i platformy Azure)
+### <a name="c-script-visual-studio-code-and-azure-portal-sample-code"></a>C#skrypt (kod przykładowy Visual Studio Code i Azure Portal)
 
-Poniżej przedstawiono kod źródłowy:
+Oto kod źródłowy:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E1_HelloSequence/run.csx)]
 
-Wszystkie funkcje języka C# aranżacji musi mieć parametr typu `DurableOrchestrationContext`, w którym występuje `Microsoft.Azure.WebJobs.Extensions.DurableTask` zestawu. Jeśli używasz skrypt języka C#, zestaw może znajdować się za pomocą `#r` notacji. Tego obiektu kontekstu pozwala wywoływać innych *działania* funkcje i przekaż parametry wejściowe za pomocą jego [CallActivityAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_) metody.
+Wszystkie C# funkcje aranżacji muszą mieć parametr typu `DurableOrchestrationContext`, `Microsoft.Azure.WebJobs.Extensions.DurableTask` który istnieje w zestawie. Jeśli używasz C# skryptu, zestaw może być przywoływany przy użyciu `#r` notacji. Ten obiekt kontekstu umożliwia wywoływanie innych funkcji *działania* i przekazywanie parametrów wejściowych przy użyciu metody [CallActivityAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_) .
 
-Kod wywołuje `E1_SayHello` trzy razy w sekwencji z wartościami różnych parametrów. Wartość zwracana przez każde wywołanie jest dodawany do `outputs` listę, która jest zwracana na końcu funkcji.
+Kod wywołuje `E1_SayHello` trzy razy sekwencję z różnymi wartościami parametrów. Wartość zwracana każdego wywołania jest dodawana do `outputs` listy, która jest zwracana na końcu funkcji.
 
 ### <a name="javascript"></a>Javascript
 
-Poniżej przedstawiono kod źródłowy:
+Oto kod źródłowy:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_HelloSequence/index.js)]
 
-Musi zawierać wszystkie funkcje aranżacji JavaScript [ `durable-functions` modułu](https://www.npmjs.com/package/durable-functions). Jest to biblioteka, która umożliwia zapisanie trwałe funkcje w języku JavaScript. Istnieją trzy znaczne różnice między funkcją aranżacji i inne funkcje języka JavaScript:
+Wszystkie funkcje aranżacji języka JavaScript muszą zawierać [ `durable-functions` moduł](https://www.npmjs.com/package/durable-functions). To jest biblioteka, która umożliwia pisanie Durable Functions w języku JavaScript. Istnieją trzy znaczące różnice między funkcją aranżacji i innymi funkcjami języka JavaScript:
 
-1. Funkcja jest [funkcja generatora.](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)
-2. Funkcja jest opakowywany w wywołaniu `durable-functions` modułu `orchestrator` — metoda (w tym miejscu `df`).
-3. Funkcja musi być synchroniczne. Ponieważ metoda "orchestrator" obsługuje wywoływania context.done, funkcja należy po prostu "return".
+1. Funkcja jest [funkcją generatora.](https://docs.microsoft.com/scripting/javascript/advanced/iterators-and-generators-javascript)
+2. Funkcja jest opakowana w wywołaniu `durable-functions` `orchestrator` metody modułu (tutaj `df`).
+3. Funkcja musi być synchroniczna. Ponieważ metoda "Orchestrator" obsługuje wywoływanie elementu "Context. Done", funkcja powinna po prostu zwracać.
 
-`context` Obiekt zawiera `df` obiekt umożliwia wywoływanie innych *działania* funkcje i przekaż parametry wejściowe za pomocą jego `callActivity` metody. Kod wywołuje `E1_SayHello` trzy razy w sekwencji z wartościami różnych parametrów, za pomocą `yield` do wskazania wykonywania powinien zaczekać na wywołania funkcji działań asynchronicznych do zwrócenia. Wartość zwracana przez każde wywołanie jest dodawany do `outputs` listę, która jest zwracana na końcu funkcji.
+Obiekt zawiera obiekt umożliwia wywoływanie innych `callActivity` funkcji działania i przekazywanie parametrów wejściowych przy użyciu metody. `context` `df` Kod wywołuje `E1_SayHello` trzy razy sekwencję z różnymi wartościami parametrów, przy użyciu `yield` do wskazania, że wykonanie powinno oczekiwać na zwrócenie wywołania funkcji działania asynchronicznego. Wartość zwracana każdego wywołania jest dodawana do `outputs` listy, która jest zwracana na końcu funkcji.
 
-## <a name="e1sayhello"></a>E1_SayHello
+## <a name="e1_sayhello"></a>E1_SayHello
 
-### <a name="functionjson-file"></a>Plik Function.JSON
+### <a name="functionjson-file"></a>Function. JSON — plik
 
-*Function.json* plików dla funkcji działań `E1_SayHello` jest podobny do `E1_HelloSequence` z tą różnicą, że używa `activityTrigger` powiązania zamiast `orchestrationTrigger` typ powiązania.
+Plik *Function. JSON* dla funkcji `E1_SayHello` Activity jest podobny do tego, z `E1_HelloSequence` wyjątkiem tego, że `orchestrationTrigger` używa `activityTrigger` typu powiązania zamiast typu powiązania.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E1_SayHello/function.json)]
 
 > [!NOTE]
-> Należy użyć dowolnej funkcji wywoływanych przez funkcję aranżacji `activityTrigger` powiązania.
+> Każda funkcja wywołana przez funkcję aranżacji musi używać `activityTrigger` powiązania.
 
-Implementacja `E1_SayHello` jest stosunkowo prosta ciągiem formatowania operacji.
+Implementacja `E1_SayHello` jest stosunkowo prostej operacji formatowania ciągu.
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E1_SayHello/run.csx)]
 
-Funkcja ta ma parametr typu [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html), która jest używana, aby uzyskać dane wejściowe, która została przekazana przez wywołanie funkcji programu orchestrator [ `CallActivityAsync<T>` ](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_).
+Ta funkcja ma parametr typu [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html), który jest używany w celu uzyskania danych wejściowych, które zostały do niego przesłane przez wywołanie funkcji programu Orchestrator do [`CallActivityAsync<T>`](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_).
 
 ### <a name="javascript"></a>JavaScript
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E1_SayHello/index.js)]
 
-W przeciwieństwie do funkcji aranżacji JavaScript funkcja działania wymaga nie specjalnej konfiguracji. Dane wejściowe przekazane do niej przy użyciu funkcji programu orchestrator znajduje się na `context.bindings` obiektu pod nazwą `activityTrigger` powiązania — w tym przypadku `context.bindings.name`. Nazwa powiązania można ustawić jako parametr wyeksportowanej funkcji i uzyskać dostęp bezpośredni, czyli co to jest przykładowy kod.
+W przeciwieństwie do funkcji aranżacji języka JavaScript funkcja działania nie wymaga żadnej specjalnej konfiguracji. Dane wejściowe przesłane przez funkcję programu Orchestrator znajdują się na `context.bindings` obiekcie pod nazwą `activityTrigger` powiązania `context.bindings.name`— w tym przypadku. Nazwę powiązania można ustawić jako parametr funkcji wyeksportowanej i uzyskać do niej dostęp bezpośrednio, czyli do czego służy przykładowy kod.
 
 ## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
 
-Aby wykonać `E1_HelloSequence` aranżacji, Wyślij żądanie następujących HTTP POST.
+Aby wykonać `E1_HelloSequence` aranżację, wyślij następujące żądanie HTTP POST.
 
 ```
 POST http://{host}/orchestrators/E1_HelloSequence
 ```
 
 > [!NOTE]
-> W poprzednim fragmencie kodu HTTP przyjęto założenie, istnieje wpis w `host.json` pliku, co spowoduje usunięcie domyślnie `api/` prefiks z wszystkie adresy URL funkcji wyzwalacza HTTP. Znaczniki można znaleźć w tej konfiguracji w `host.json` pliku w przykładach.
+> W poprzednim fragmencie kodu http założono, że w `host.json` pliku znajduje się wpis, który usuwa prefiks domyślny `api/` ze wszystkich adresów URL funkcji wyzwalacza http. Znaczniki tej konfiguracji można znaleźć w `host.json` pliku w przykładach.
 
-Na przykład jeśli korzystasz z przykładu w aplikacji funkcji o nazwie "myfunctionapp", Zamień "{host}" "myfunctionapp.azurewebsites.net".
+Jeśli na przykład używasz przykładu w aplikacji funkcji o nazwie "myfunctionapp", Zastąp ciąg "{host}" opcją "myfunctionapp.azurewebsites.net".
 
-Wynik jest odpowiedź HTTP 202 następująco (spacje dla zwięzłości):
+Wynikiem jest odpowiedź HTTP 202, na przykład (przycięty do zwięzłości):
 
 ```
 HTTP/1.1 202 Accepted
@@ -121,13 +120,13 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/96924899
 (...trimmed...)
 ```
 
-W tym momencie orchestration jest umieszczone w kolejce i rozpoczyna się natychmiast. Adres URL w `Location` nagłówek może służyć do sprawdzania stanu wykonywania.
+W tym momencie aranżacja została umieszczona w kolejce i rozpocznie się natychmiastowo. Aby sprawdzić stan wykonania `Location` , można użyć adresu URL w nagłówku.
 
 ```
 GET http://{host}/admin/extensions/DurableTaskExtension/instances/96924899c16d43b08a536de376ac786b?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 ```
 
-Wynik jest stan aranżacji. Uruchamia i kończy się szybko, dzięki czemu można przeglądać *Ukończono* stanu odpowiedzi, które wyglądają następująco (spacje dla zwięzłości):
+Wynikiem jest stan aranżacji. Jest ona uruchamiana i trwa szybko, więc zobaczysz ją w stanie *ukończenia* z odpowiedzią, która wygląda następująco (przycięty do zwięzłości):
 
 ```
 HTTP/1.1 200 OK
@@ -137,22 +136,22 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":null,"output":["Hello Tokyo!","Hello Seattle!","Hello London!"],"createdTime":"2017-06-29T05:24:57Z","lastUpdatedTime":"2017-06-29T05:24:59Z"}
 ```
 
-Jak widać, `runtimeStatus` wystąpienia jest *Ukończono* i `output` zawiera wynik wykonania funkcji programu orchestrator serializacji JSON.
+Jak widać, `runtimeStatus` wystąpienie jest `output` *zakończone* i zawiera wynik Zserializowany notacją JSON wykonywania funkcji programu Orchestrator.
 
 > [!NOTE]
-> Punkt końcowy HTTP POST, który uruchomiona funkcja orkiestratora jest zaimplementowana w przykładowej aplikacji jako HTTP wyzwalanie funkcji o nazwie "HttpStart". Jak zaimplementować podobnej logiki początkowy dla innych typów wyzwalaczy `queueTrigger`, `eventHubTrigger`, lub `timerTrigger`.
+> Punkt końcowy POST protokołu HTTP, który uruchomił funkcję programu Orchestrator, jest implementowany w przykładowej aplikacji jako funkcja wyzwalacza HTTP o nazwie "HttpStart". Możesz zaimplementować podobną, rozglądającą logikę dla innych `queueTrigger`typów `eventHubTrigger`wyzwalaczy, `timerTrigger`takich jak,, lub.
 
-Sprawdź dzienniki wykonywania funkcji. `E1_HelloSequence` Funkcji i kończy się wiele razy ze względu na zachowanie powtarzania opisane w [Przegląd](durable-functions-concepts.md). Z drugiej strony, było tylko dla trzech wykonaniami `E1_SayHello` od czasu wykonania tych funkcji nie uzyskać odtwarzany.
+Sprawdź dzienniki wykonywania funkcji. Funkcja została uruchomiona i wykonana wiele razy z powodu zachowania powtarzania opisanego w przeglądzie. [](durable-functions-concepts.md) `E1_HelloSequence` Z drugiej strony istniały tylko trzy wykonania `E1_SayHello` , ponieważ te wykonania funkcji nie są odtwarzane.
 
-## <a name="visual-studio-sample-code"></a>Kod przykładowy w usłudze Visual Studio
+## <a name="visual-studio-sample-code"></a>Przykładowy kod programu Visual Studio
 
-Oto aranżacji jako pojedynczy plik języka C# w projekcie programu Visual Studio:
+Oto aranżacja jako pojedynczy C# plik w projekcie programu Visual Studio:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przykładzie wykazała prostego organizowania łańcucha funkcji. Następny przykład pokazuje, jak zaimplementować wzorzec fan-wyjściowego/fan-w.
+Ten przykład pokazuje prostą aranżację łańcucha funkcji. Następny przykład pokazuje, jak zaimplementować wzorzec wentylatorów/wentylatorów.
 
 > [!div class="nextstepaction"]
-> [Uruchamianie aplikacji przykładowej Fan-wyjściowego/fan-w](durable-functions-cloud-backup.md)
+> [Uruchamianie przykładowego Wentylatoru/wentylatoru](durable-functions-cloud-backup.md)

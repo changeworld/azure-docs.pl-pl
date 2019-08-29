@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 17ae6dc8d1d583e5223a64ee079731fa5d9dc63c
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 03d67249ef1d74844a7e9019e90f6331ecfdf0c3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69902314"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102974"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Konfigurowanie zarządzania liderem dla usługi Dynamics 365 na potrzeby zaangażowania klienta
 
@@ -97,7 +97,7 @@ Wykonaj następujące kroki, aby skonfigurować Azure Active Directory dla progr
 
     ![Dodaj uprawnienia](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
 
-14. Po wykonaniu kroków 1-13 na Azure Portal przejdź do wystąpienia usługi Dynamics 365 for Customer Engagement, przechodząc do adresu URL ( https://tenant.crm.dynamics.com) na przykład.
+14. Po wykonaniu kroków 1-13 na Azure Portal przejdź do wystąpienia usługi Dynamics 365 for Customer Engagement, przechodząc do adresu URL (na `https://tenant.crm.dynamics.com`przykład).
 15. Ustawienia dostępu, wybierając ikonę koła zębatego i **Ustawienia zaawansowane** na górnym pasku nawigacyjnym.
 16. Na stronie Ustawienia dostęp do menu Ustawienia na górnym pasku nawigacyjnym i wybierz pozycję **zabezpieczenia**.
 17. Na stronie Zabezpieczenia wybierz pozycję **Użytkownicy**.  Na stronie użytkownicy wybierz listę rozwijaną "włączone użytkownicy", aby przełączyć się do opcji **Użytkownicy aplikacji**.

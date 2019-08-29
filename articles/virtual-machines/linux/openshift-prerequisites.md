@@ -1,5 +1,5 @@
 ---
-title: OpenShift w sekcji wymagania wstępne platformy Azure | Dokumentacja firmy Microsoft
+title: OpenShift w wymaganiach wstępnych platformy Azure | Microsoft Docs
 description: Wymagania wstępne dotyczące wdrażania OpenShift na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -9,69 +9,68 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 834484278bb597bba4a5e1821d0b6572913a761d
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.openlocfilehash: ab8814f1620cc019a0bee872c7b8f42cbb427365
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147002"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70091737"
 ---
-# <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Typowe wymagania wstępne dotyczące wdrażania OpenShift na platformie Azure
+# <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Wspólne wymagania wstępne dotyczące wdrażania OpenShift na platformie Azure
 
-W tym artykule opisano typowe wymagania wstępne dotyczące wdrażania, OpenShift Container Platform lub OKD na platformie Azure.
+W tym artykule opisano typowe wymagania wstępne dotyczące wdrażania platformy kontenerów OpenShift lub OKD na platformie Azure.
 
-Instalacja platformy OpenShift korzysta z elementów playbook rozwiązania Ansible. Rozwiązanie Ansible używa protokołu Secure Shell (SSH) do łączenia dla wszystkich hostów klastra, aby wykonać kroki instalacji.
+Instalacja programu OpenShift powoduje użycie rozwiązania ansible elementy PlayBook. Rozwiązania ansible używa Secure Shell (SSH) do łączenia się ze wszystkimi hostami klastra w celu ukończenia kroków instalacji.
 
-Po rozwiązaniu ansible sprawia, że połączenia SSH do hostów zdalnych, nie można go wprowadzić hasło. Z tego powodu klucz prywatny nie może mieć (hasło) skojarzone z nim hasło lub wdrożenie zakończy się niepowodzeniem.
+Gdy rozwiązania ansible nawiązuje połączenie SSH z hostami zdalnymi, nie może wprowadzić hasła. Z tego powodu klucz prywatny nie może być skojarzony z hasłem (hasło) lub wdrożenie nie powiedzie się.
 
-Ponieważ maszyny wirtualne (VM) wdrażanie przy użyciu szablonów usługi Azure Resource Manager, sam klucz publiczny jest używany do uzyskiwania dostępu do wszystkich maszyn wirtualnych. Odpowiedni klucz prywatny musi być na maszynie Wirtualnej, który jest wykonywany wszystkich elementów playbook także. Aby bezpiecznie wykonać tę akcję, usługi Azure key vault jest używany do przekazania klucza prywatnego do maszyny Wirtualnej.
+Ponieważ maszyny wirtualne są wdrażane za pomocą szablonów Azure Resource Manager, ten sam klucz publiczny jest używany do uzyskiwania dostępu do wszystkich maszyn wirtualnych. Odpowiedni klucz prywatny musi znajdować się na maszynie wirtualnej, która również wykonuje wszystkie elementy PlayBook. Aby bezpiecznie wykonać tę akcję, Magazyn kluczy platformy Azure jest używany do przekazywania klucza prywatnego do maszyny wirtualnej.
 
-W przypadku konieczności skorzystania z magazynu trwałego dla kontenerów woluminów trwałego są wymagane. OpenShift obsługuje Azure wirtualnych dysków twardych (VHD) dla trwałego woluminów, ale Azure musi być skonfigurowany jako dostawcy chmury.
+Jeśli istnieje potrzeba trwałego magazynowania dla kontenerów, wymagane są woluminy trwałe. Program OpenShift obsługuje wirtualne dyski twarde (VHD) platformy Azure dla woluminów trwałych, ale najpierw należy skonfigurować platformę Azure jako dostawcę chmury.
 
 W tym modelu OpenShift:
 
-- Tworzy obiekt wirtualnego dysku twardego w konto magazynu platformy Azure lub dysku zarządzanego.
-- Instaluje dysk VHD do maszyny Wirtualnej i sformatowanie woluminu.
-- Instaluje woluminu, który ma pod.
+- Tworzy obiekt VHD na koncie usługi Azure Storage lub dysku zarządzanym.
+- Instaluje wirtualny dysk twardy na maszynie wirtualnej i sformatuje wolumin.
+- Instaluje wolumin pod.
 
-W przypadku tej konfiguracji do pracy OpenShift wymaga uprawnień do wykonywania tych zadań na platformie Azure. Jednostka usługi jest używana w tym celu. Nazwa główna usługi jest kontem zabezpieczeń w usłudze Azure Active Directory, któremu przyznano uprawnienia do zasobów.
+Aby ta konfiguracja działała, OpenShift musi mieć uprawnienia do wykonywania tych zadań na platformie Azure. W tym celu jest używana jednostka usługi. Nazwa główna usługi jest kontem zabezpieczeń w Azure Active Directory przyznano uprawnienia do zasobów.
 
-Jednostka usługi musi mieć dostęp do konta magazynu i maszyn wirtualnych, które tworzą klaster. Jeśli wszystkie zasoby klastra OpenShift wdrożyć pojedynczą grupę zasobów, nazwy głównej usługi można udzielić uprawnienia do tej grupy zasobów.
+Nazwa główna usługi musi mieć dostęp do kont magazynu i maszyn wirtualnych tworzących klaster. Jeśli wszystkie zasoby klastra OpenShift są wdrażane w pojedynczej grupie zasobów, można przyznać jednostce usługi uprawnienia do tej grupy zasobów.
 
-Ten przewodnik opisuje sposób tworzenia artefaktów związanych z wymagań wstępnych.
+W tym przewodniku opisano sposób tworzenia artefaktów skojarzonych z wymaganiami wstępnymi.
 
 > [!div class="checklist"]
-> * Tworzenie magazynu kluczy, aby zarządzać kluczami SSH dla klastra OpenShift.
-> * Tworzenie jednostki usługi do użytku przez dostawcę chmury platformy Azure.
+> * Utwórz magazyn kluczy, aby zarządzać kluczami SSH dla klastra OpenShift.
+> * Utwórz nazwę główną usługi do użycia przez dostawcę chmury platformy Azure.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure 
-Zaloguj się do subskrypcji platformy Azure za pomocą [az login](/cli/azure/reference-index) polecenia i postępuj zgodnie z wyświetlanymi na ekranie instrukcjami lub kliknij przycisk **wypróbuj** do użycia w usłudze Cloud Shell.
+Zaloguj się do subskrypcji platformy Azure za pomocą polecenia [AZ login](/cli/azure/reference-index) i postępuj zgodnie z instrukcjami wyświetlanymi na ekranie lub kliknij przycisk **Wypróbuj** , aby użyć Cloud Shell.
 
 ```azurecli 
 az login
 ```
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Dedykowana grupa zasobów należy używać do hostowania usługi key vault. Ta grupa jest oddzielony od grupy zasobów, do którego wdrażanie platformy OpenShift zasobów klastra.
+Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Należy użyć dedykowanej grupy zasobów, aby hostować Magazyn kluczy. Ta grupa jest oddzielona od grupy zasobów, w której wdrożone są zasoby klastra OpenShift.
 
-Poniższy przykład tworzy grupę zasobów o nazwie *keyvaultrg* w *eastus* lokalizacji:
+Poniższy przykład tworzy grupę zasobów o nazwie *keyvaultrg* w lokalizacji *Wschodnie* :
 
 ```azurecli 
 az group create --name keyvaultrg --location eastus
 ```
 
 ## <a name="create-a-key-vault"></a>Tworzenie magazynu kluczy
-Tworzenie magazynu kluczy do przechowywania kluczy SSH dla klastra przy użyciu [tworzenie az keyvault](/cli/azure/keyvault) polecenia. Nazwa magazynu kluczy musi być globalnie unikatowa i musi być włączona dla wdrożenia szablonu lub wdrożenie zakończy się niepowodzeniem z powodu błędu "KeyVaultParameterReferenceSecretRetrieveFailed".
+Utwórz magazyn kluczy, w którym mają zostać zapisane klucze SSH dla klastra za pomocą polecenia [AZ Key magazynu Create](/cli/azure/keyvault) . Nazwa magazynu kluczy musi być globalnie unikatowa i musi być włączona dla wdrożenia szablonu lub wdrożenie zakończy się niepowodzeniem z powodu błędu "KeyVaultParameterReferenceSecretRetrieveFailed".
 
-Poniższy przykład obejmuje tworzenie usługi key vault o nazwie *keyvault* w *keyvaultrg* grupy zasobów:
+W poniższym przykładzie tworzony jest magazyn kluczy o nazwie *Magazyn* klucza w grupie zasobów *keyvaultrg* :
 
 ```azurecli 
 az keyvault create --resource-group keyvaultrg --name keyvault \
@@ -80,30 +79,30 @@ az keyvault create --resource-group keyvaultrg --name keyvault \
 ```
 
 ## <a name="create-an-ssh-key"></a>Tworzenie klucza SSH 
-Klucz SSH jest wymagane do bezpiecznego dostępu do klastra platformy OpenShift. Tworzenie pary kluczy SSH przy użyciu `ssh-keygen` polecenia (w systemie Linux lub macOS):
+Do zabezpieczenia dostępu do klastra OpenShift jest wymagany klucz SSH. Utwórz parę kluczy SSH przy użyciu `ssh-keygen` polecenia (w systemie Linux lub macOS):
  
  ```bash
 ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
 ```
 
 > [!NOTE]
-> Pary kluczy SSH nie może zawierać hasła / hasła.
+> Para kluczy SSH nie może mieć hasła lub hasło.
 
-Aby uzyskać więcej informacji na temat kluczy SSH w Windows, zobacz [sposób tworzenia SSH keys na Windows](/azure/virtual-machines/linux/ssh-from-windows). Pamiętaj wyeksportować klucz prywatny w formacie OpenSSH.
+Aby uzyskać więcej informacji na temat kluczy SSH w systemie Windows, zobacz [jak utworzyć klucze SSH w systemie Windows](/azure/virtual-machines/linux/ssh-from-windows). Pamiętaj, aby wyeksportować klucz prywatny w formacie OpenSSH.
 
-## <a name="store-the-ssh-private-key-in-azure-key-vault"></a>Store prywatny klucz SSH w usłudze Azure Key Vault
-Wdrażanie platformy OpenShift używa klucza SSH, utworzonego do bezpiecznego dostępu do poziomu głównego OpenShift. Aby umożliwić wdrożenie, bezpieczne pobieranie klucza SSH, należy przechowywać klucz w usłudze Key Vault przy użyciu następującego polecenia:
+## <a name="store-the-ssh-private-key-in-azure-key-vault"></a>Przechowuj klucz prywatny SSH w Azure Key Vault
+Wdrożenie OpenShift korzysta z utworzonego klucza SSH w celu zabezpieczenia dostępu do głównego serwera OpenShift. Aby umożliwić wdrożenie w celu bezpiecznego pobrania klucza SSH, Zapisz klucz w Key Vault przy użyciu następującego polecenia:
 
 ```azurecli
 az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/openshift_rsa
 ```
 
 ## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi 
-OpenShift komunikuje się z platformą Azure przy użyciu nazwy użytkownika i hasło lub jednostki usługi. Jednostka usługi platformy Azure to tożsamość zabezpieczeń korzystających z aplikacji, usług i narzędzia automatyzacji, takie jak OpenShift. Ty określasz i zdefiniować uprawnienia, aby operacje nazwy głównej usługi można wykonać na platformie Azure. Zaleca się określić zakres uprawnień jednostki do określonych grup zasobów usługi, a nie całej subskrypcji.
+OpenShift komunikuje się z platformą Azure przy użyciu nazwy użytkownika i hasła lub nazwy głównej usługi. Jednostka usługi platformy Azure to tożsamość zabezpieczeń, której można używać z aplikacjami, usługami i narzędziami automatyzacji, takimi jak OpenShift. Użytkownik kontroluje i definiuje uprawnienia do działania, które może wykonywać jednostka usługi na platformie Azure. Najlepszym rozwiązaniem jest zakres uprawnień nazwy głównej usługi do określonych grup zasobów, a nie całej subskrypcji.
 
-Tworzenie usługi podmiotu zabezpieczeń za pomocą [az ad sp create-for-rbac](/cli/azure/ad/sp) i dane wyjściowe poświadczenia, których potrzebuje OpenShift.
+Utwórz nazwę główną usługi za pomocą polecenia [AZ AD Sp Create-for-RBAC](/cli/azure/ad/sp) i Wyprowadź wymagane przez OpenShift poświadczenia.
 
-Poniższy przykład tworzy usługę podmiotu zabezpieczeń i przypisuje mu uprawnienia współautora do grupy zasobów o nazwie openshiftrg.
+Poniższy przykład tworzy nazwę główną usługi i przypisuje uprawnienia współautora do grupy zasobów o nazwie openshiftrg.
 
 Najpierw utwórz grupę zasobów o nazwie openshiftrg:
 
@@ -111,7 +110,7 @@ Najpierw utwórz grupę zasobów o nazwie openshiftrg:
 az group create -l eastus -n openshiftrg
 ```
 
-Tworzenie jednostki usługi:
+Utwórz nazwę główną usługi:
 
 ```azurecli
 scope=`az group show --name openshiftrg --query id`
@@ -119,9 +118,9 @@ az ad sp create-for-rbac --name openshiftsp \
       --role Contributor --password {Strong Password} \
       --scopes $scope
 ```
-Jeśli używasz programu Windows, wykonaj ```az group show --name openshiftrg --query id``` i użyć danych wyjściowych zamiast $scope.
+Jeśli używasz systemu Windows, wykonaj ```az group show --name openshiftrg --query id``` i Użyj danych wyjściowych zamiast $Scope.
 
-Zwróć uwagę na właściwość appId zwróconym w poleceniu:
+Zanotuj Właściwość appId zwracaną z polecenia:
 ```json
 {
   "appId": "11111111-abcd-1234-efgh-111111111111",
@@ -132,45 +131,45 @@ Zwróć uwagę na właściwość appId zwróconym w poleceniu:
 }
 ```
  > [!WARNING] 
- > Pamiętaj utworzyć bezpieczne hasło. Postępuj zgodnie ze wskazówkami zawartymi w [ograniczeniach i regułach dotyczących hasła usługi Azure AD](/azure/active-directory/active-directory-passwords-policy).
+ > Należy pamiętać o utworzeniu bezpiecznego hasła. Postępuj zgodnie ze wskazówkami zawartymi w [ograniczeniach i regułach dotyczących hasła usługi Azure AD](/azure/active-directory/active-directory-passwords-policy).
 
-Aby uzyskać więcej informacji na temat nazw głównych usług, zobacz [Tworzenie jednostki usługi platformy Azure przy użyciu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
+Aby uzyskać więcej informacji o jednostkach usługi, zobacz [Tworzenie jednostki usługi platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
 
-## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Wymagania wstępne dotyczy tylko szablonu usługi Resource Manager
+## <a name="prerequisites-applicable-only-to-resource-manager-template"></a>Wymagania wstępne dotyczące Menedżer zasobów szablonu
 
-Hasła będą musieli można utworzyć klucza prywatnego SSH (**sshPrivateKey**), klucz tajny klienta usługi Azure AD (**aadClientSecret**), hasło administratora OpenShift (**openshiftPassword** ) i Red Hat subskrypcji Menedżera haseł lub aktywacji klucza (**rhsmPasswordOrActivationKey**).  Ponadto, jeśli używane są niestandardowe certyfikaty SSL, następnie sześć dodatkowe wpisy tajne będzie muszą zostać utworzone - **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**, i **masterkeyfile**.  Te parametry zostaną wyjaśnione bardziej szczegółowo.
+Należy utworzyć wpisy tajne dla prywatnego klucza SSH (**sshPrivateKey**), wpisu tajnego klienta usługi Azure AD (**AadClientSecret**), OpenShift administratora hasła (**OpenshiftPassword**) oraz hasła Menedżera subskrypcji Red Hat lub klucza aktywacji ( **rhsmPasswordOrActivationKey**).  Ponadto jeśli są używane niestandardowe certyfikaty SSL, należy utworzyć sześć dodatkowych kluczy tajnych — **routingcafile**, **routingcertfile**, **routingkeyfile**, **mastercafile**, **mastercertfile**i  **masterkeyfile**.  Te parametry zostaną omówione bardziej szczegółowo.
 
-Szablon odwołuje się do określonych nazw kluczy tajnych więc możesz **musi** Użyj nazwy pogrubiony wymienione powyżej (z uwzględnieniem wielkości liter).
+Szablon odwołuje się do określonych nazw wpisów tajnych, więc **należy** użyć pogrubionych nazw wymienionych powyżej (z uwzględnieniem wielkości liter).
 
 ### <a name="custom-certificates"></a>Certyfikaty niestandardowe
 
-Domyślnie szablon umożliwia wdrożenie klastra usługi OpenShift przy użyciu certyfikatów z podpisem własnym dla konsoli sieci web platformy OpenShift i domeny routingu. Jeśli chcesz używać niestandardowych certyfikatów protokołu SSL, ustaw "routingCertType" do "custom" i "masterCertType" do "custom".  Będą potrzebne dla certyfikatów urzędu certyfikacji, certyfikatu i klucza pliki w formacie PEM.  Jest możliwe użycie niestandardowych certyfikatów dla jednego, ale nie drugiej.
+Domyślnie szablon wdraża klaster OpenShift przy użyciu certyfikatów z podpisem własnym dla konsoli sieci Web OpenShift i domeny routingu. Jeśli chcesz użyć niestandardowych certyfikatów SSL, ustaw wartość "routingCertType" na "Custom" i "masterCertType" na "Custom".  W przypadku certyfikatów będziesz potrzebować plików urzędu certyfikacji, certyfikatu i kluczy w formacie PEM.  Istnieje możliwość użycia certyfikatów niestandardowych dla jednego, ale nie drugiego.
 
-Należy zapisać te pliki w wpisy tajne usługi Key Vault.  Użyj tej samej usługi Key Vault, jak użyć klucza prywatnego.  Zamiast wymagać 6 dodatkowe dane wejściowe dla nazw kluczy tajnych, szablon jest ustalony używać określonych nazw kluczy tajnych dla każdego z plików certyfikatów SSL.  Store danych certyfikatu, korzystając z informacji w poniższej tabeli.
+Te pliki muszą być przechowywane w Key Vault Secret.  Użyj tego samego Key Vault jak używany dla klucza prywatnego.  Zamiast wymagać 6 dodatkowych danych wejściowych dla nazw wpisów tajnych, szablon jest zakodowany do używania określonych nazw wpisów tajnych dla każdego z plików certyfikatu SSL.  Przechowuj dane certyfikatu, korzystając z informacji podanych w poniższej tabeli.
 
 | Nazwa wpisu tajnego      | Plik certyfikatu   |
 |------------------|--------------------|
-| mastercafile     | plik główny urząd certyfikacji     |
-| mastercertfile   | pliku certyfikatu głównego   |
-| masterkeyfile    | Plik klucza głównego    |
-| routingcafile    | Plik routingu urzędu certyfikacji    |
-| routingcertfile  | Plik routingu certyfikat  |
-| routingkeyfile   | Plik klucza routingu   |
+| mastercafile     | główny plik urzędu certyfikacji     |
+| mastercertfile   | główny plik certyfikatu   |
+| masterkeyfile    | plik klucza głównego    |
+| routingcafile    | Routing pliku urzędu certyfikacji    |
+| routingcertfile  | plik certyfikatu routingu  |
+| routingkeyfile   | plik klucza routingu   |
 
-Utwórz wpisy tajne przy użyciu wiersza polecenia platformy Azure. Poniżej znajduje się przykład.
+Utwórz wpisy tajne przy użyciu interfejsu wiersza polecenia platformy Azure. Poniżej znajduje się przykład.
 
 ```bash
 az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certificates/masterca.pem
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule opisano następujące tematy:
+W tym artykule omówiono następujące tematy:
 > [!div class="checklist"]
-> * Tworzenie magazynu kluczy, aby zarządzać kluczami SSH dla klastra OpenShift.
-> * Tworzenie jednostki usługi do użytku przez dostawcy rozwiązań w chmurze platformy Azure.
+> * Utwórz magazyn kluczy, aby zarządzać kluczami SSH dla klastra OpenShift.
+> * Utwórz nazwę główną usługi do użycia przez dostawcę rozwiązań w chmurze platformy Azure.
 
-Następnie można wdrożyć klaster usługi OpenShift:
+Następnie wdróż klaster OpenShift:
 
-- [Wdrażanie rozwiązania OpenShift Container Platform](./openshift-container-platform.md)
-- [Wdrażanie oferty Samozarządzanej portalu Marketplace platformy kontenera OpenShift](./openshift-marketplace-self-managed.md)
+- [Wdróż platformę kontenera OpenShift](./openshift-container-platform.md)
+- [Wdróż niezarządzaną ofertę portalu OpenShift platformy kontenera](./openshift-marketplace-self-managed.md)

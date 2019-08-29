@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/02/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 43184c8f8d4757431f2282e5f7086ec4807ac32d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 245a98a3e7d4e8b365f1eedd20f45daaf6e23891
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695899"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080688"
 ---
 # <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>Przykładowy skrypt do przekazania wirtualnego dysku twardego na platformę Azure i utworzenia nowej maszyny wirtualnej
 
@@ -153,7 +152,7 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 | [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm)                                                 | Tworzy maszynę wirtualną.                                                                                                                                                            |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup)                     | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte.                                                                                                                         |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

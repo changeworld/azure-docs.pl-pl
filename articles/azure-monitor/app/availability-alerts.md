@@ -1,5 +1,5 @@
 ---
-title: Skonfigurować alerty dotyczące dostępności za pomocą usługi Azure Application Insights | Dokumentacja firmy Microsoft
+title: Konfigurowanie alertów dostępności przy użyciu usługi Azure Application Insights | Microsoft Docs
 description: Konfigurowanie testów sieci Web w usłudze Application Insights. Otrzymywanie alertów, kiedy witryna sieci Web staje się niedostępna lub wolno odpowiada.
 services: application-insights
 documentationcenter: ''
@@ -13,66 +13,69 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: cc022f91d4b4fec42929769df8c979320548a1f9
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 1d7527d6f52235c6b95ad2e336ea9f9ba85d6344
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304910"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114392"
 ---
 # <a name="availability-alerts"></a>Alerty dostępności
 
-Usługa [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) wysyła żądania sieci Web do aplikacji w regularnych odstępach czasu z punktów na całym świecie. Go może generować alerty, jeśli aplikacja nie odpowiada lub zbyt wolno odpowiada.
+Usługa [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) wysyła żądania sieci Web do aplikacji w regularnych odstępach czasu z punktów na całym świecie. Może to być alert, jeśli aplikacja nie odpowiada, lub jeśli reaguje zbyt wolno.
 
-## <a name="enable-alerts"></a>Włączanie alertów
+## <a name="enable-alerts"></a>Włącz alerty
 
-Alerty są teraz automatycznie domyślnie włączone, ale w celu skonfigurowania pełni alert najpierw trzeba utworzyć test dostępności.
+Alerty są teraz automatycznie włączane domyślnie, ale w celu pełnego skonfigurowania alertu musisz najpierw utworzyć swój Test dostępności.
 
-![Utwórz środowisko](./media/availability-alerts/create-test.png)
+![Tworzenie środowiska](./media/availability-alerts/create-test.png)
 
 > [!NOTE]
->  Za pomocą [nowe alerty ujednoliconego](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), preferencje ważność i powiadomień regułę alertu z [grup akcji](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) **musi być** skonfigurowane w środowisko alertów. Bez wykonać następujące kroki subskrybent otrzyma tylko powiadomienia w portalu.
+>  Dzięki [nowym ujednoliconym alertom](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)ważność reguły alertu i preferencje powiadamiania z [grupami akcji](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) **musi być** skonfigurowana w środowisku alertów. Bez poniższych kroków będziesz otrzymywać tylko powiadomienia w portalu.
 
-1. Po zapisaniu test dostępności, w szczegółach karty kliknij wielokropek przez test, która właśnie wykonana. Kliknij "Edytuj alert".
+1. Po zapisaniu testu dostępności na karcie Szczegóły kliknij wielokropek przez właśnie wykonany test. Kliknij pozycję "Edytuj Alert".
 
    ![Edytuj po zapisaniu](./media/availability-alerts/edit-alert.png)
 
-2. Ustaw poziom ważności, opis reguły, a co najważniejsze — grupę akcji, która ma preferencje powiadamiania, którego chcesz użyć dla tej reguły alertu.
+2. Ustaw żądany poziom ważności, opis reguły i najważniejsze — grupy akcji z preferencjami powiadomień, których chcesz użyć dla tej reguły alertu.
 
    ![Edytuj po zapisaniu](./media/availability-alerts/set-action-group.png)
 
-### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Alert po wystąpieniu X z Y lokalizacji, raportowanie błędów
+### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Alert dotyczący niepowodzeń zgłaszania lokalizacji X poza Y
 
-X z Y lokalizacji, reguła alertu jest domyślnie włączone w [nowe alerty ujednolicone środowisko](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), podczas tworzenia nowego testu dostępności. Możesz zrezygnować z przez wybranie opcji "klasyczny" lub wyłączenie reguły alertu.
+Reguła alertu dotyczącego liczby lokalizacji X poza Y jest domyślnie włączona w [nowym środowisku ujednoliconych alertów](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)podczas tworzenia nowego testu dostępności. Możesz zrezygnować z wyboru opcji "klasyczny" lub wybrać wyłączenie reguły alertu.
 
 > [!NOTE]
-> Konfigurowanie grup akcji, aby otrzymywać powiadomienia po wyzwoleniu alertu, wykonując kroki opisane powyżej. Bez tego kroku subskrybent otrzyma tylko powiadomienia w portalu po wyzwoleniu reguły.
+> Skonfiguruj grupy akcji, aby otrzymywać powiadomienia o alertach, które są wyzwalane przez wykonanie powyższych kroków. Bez tego kroku powiadomienia w portalu będą odbierane tylko wtedy, gdy reguła jest wyzwalana.
 >
 
-### <a name="alert-on-availability-metrics"></a>Alert po wystąpieniu metryki dostępności
+### <a name="alert-on-availability-metrics"></a>Alert dotyczący metryk dostępności
 
-Za pomocą [nowe alerty ujednoliconego](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), można alert po wystąpieniu segmentowanych dostępności agregacji i testowania oraz metryki czasu trwania:
+Przy użyciu [nowych ujednoliconych alertów](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)można generować alerty dotyczące metryk zagregowanych dostępności i testów oraz czasu trwania testu:
 
-1. Wybierz zasób usługi Application Insights w środowisku metryki, a następnie wybierz metrykę dostępności:
+1. Wybierz zasób Application Insights w środowisku metryk i wybierz metrykę dostępności:
 
-    ![Wybór metryki dostępności](./media/availability-alerts/select-metric.png)
+    ![Wybór metryk dostępności](./media/availability-alerts/select-metric.png)
 
-2. Konfigurowanie alertów, którą opcję z menu spowoduje przejście do nowego środowiska którym można wybrać określonych testów lub lokalizacji, aby skonfigurować reguły alertu dotyczącego. Można również skonfigurować grupy akcji dla tej reguły alertu, w tym miejscu.
+2. Opcja Konfigurowanie alertów w menu spowoduje przejście do nowego środowiska, w którym można wybrać określone testy lub lokalizacje w celu skonfigurowania reguły alertu. W tym miejscu możesz również skonfigurować grupy akcji dla tej reguły alertu.
 
-### <a name="alert-on-custom-analytics-queries"></a>Alert po wystąpieniu zapytań analitycznych niestandardowe
+### <a name="alert-on-custom-analytics-queries"></a>Alert dotyczący niestandardowych zapytań analitycznych
 
-Za pomocą [nowe alerty ujednoliconego](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), może generować alerty na [dzienników niestandardowych kwerend](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log). Za pomocą niestandardowych zapytań może generować alerty na dowolny warunek, który pomoże Ci w uzyskaniu najbardziej niezawodny sygnał problemy z dostępnością. Dotyczy to również szczególnie ma to zastosowanie, w przypadku wysyłania wyniki dostępności niestandardowych przy użyciu zestawu SDK TrackAvailability. 
+Przy użyciu [nowych ujednoliconych alertów](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)można generować alerty dotyczące [niestandardowych zapytań dzienników](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log). Za pomocą zapytań niestandardowych można otrzymywać alerty dotyczące dowolnego dowolnego warunku, który pomaga uzyskać najbardziej niezawodny sygnał związany z dostępnością. Ma to zastosowanie również w przypadku wysyłania niestandardowych wyników dostępności przy użyciu zestawu SDK TrackAvailability.
 
 > [!Tip]
-> Metryki dotyczące dostępności danych obejmują żadnych wyników dostępności niestandardowych, które mogą przesyłać przez wywołanie metody nasz zestaw SDK TrackAvailability. Możesz użyć alertów dotyczących obsługi różnych metryk w ramach alertu wyniki dostępności niestandardowych.
+> Metryki dotyczące danych dostępności obejmują wszystkie niestandardowe wyniki dostępności, które mogą być przesyłane przez wywołanie naszego zestawu SDK TrackAvailability. Możesz użyć alertu dotyczącego obsługi metryk, aby otrzymywać alerty dotyczące niestandardowych wyników dostępności.
 >
+
+## <a name="automate-alerts"></a>Automatyzowanie alertów
+
+Aby zautomatyzować ten proces za pomocą szablonów Azure Resource Manager, zapoznaj się z dokumentacją dotyczącą [tworzenia alertu metryki z szablonem Menedżer zasobów](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-availability-test-along-with-availability-test-alert) .
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-W wersji dedykowanej [artykule dotyczącym rozwiązywania problemów](troubleshoot-availability.md).
+Dedykowany artykuł dotyczący [rozwiązywania problemów](troubleshoot-availability.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Wieloetapowy test witryny](availability-multistep.md)
-* [Testy sieci web ping adresu URL](monitor-web-app-availability.md)
-
+* [Wieloetapowe testy sieci Web](availability-multistep.md)
+* [Testy sieci Web ping dla adresu URL](monitor-web-app-availability.md)

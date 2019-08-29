@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: c31fa96457a3945c39fcc34770cb6783af3b81e8
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: d89e8f174c7006c1a0f771dd4dfaa816ded3698c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049119"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100986"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-that-send-notifications"></a>Zwiększ IoT Central platformy Azure za pomocą reguł niestandardowych wysyłających powiadomienia
 
@@ -36,7 +36,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ### <a name="iot-central-application"></a>Aplikacja IoT Central
 
-Utwórz aplikację IoT Central na stronie [usługi Azure IoT Central — moje aplikacje](https://aka.ms/iotcentral) , używając następujących ustawień:
+Utwórz aplikację IoT Central w witrynie programu [Azure IoT Central Application Manager](https://aka.ms/iotcentral) przy użyciu następujących ustawień:
 
 | Ustawienie | Value |
 | ------- | ----- |
@@ -305,7 +305,7 @@ To rozwiązanie używa zapytania Stream Analytics w celu wykrycia, kiedy urządz
 
 ## <a name="configure-export-in-iot-central"></a>Konfigurowanie eksportu w IoT Central
 
-Przejdź do [aplikacji IoT Central](https://aka.ms/iotcentral) utworzonej na podstawie szablonu contoso. W tej sekcji skonfigurujesz aplikację do przesyłania strumieniowego danych telemetrycznych z symulowanych urządzeń do centrum zdarzeń. Aby skonfigurować eksport:
+W witrynie sieci Web programu [Azure IoT Central Application Manager](https://aka.ms/iotcentral) przejdź do aplikacji IoT Central utworzonej na podstawie szablonu contoso. W tej sekcji skonfigurujesz aplikację do przesyłania strumieniowego danych telemetrycznych z symulowanych urządzeń do centrum zdarzeń. Aby skonfigurować eksport:
 
 1. Przejdź do strony **eksport danych ciągłych** , wybierz pozycję **+ Nowy**, a następnie opcję **Azure Event Hubs**.
 1. Aby skonfigurować eksport, użyj następujących ustawień, a następnie wybierz pozycję **Zapisz**:

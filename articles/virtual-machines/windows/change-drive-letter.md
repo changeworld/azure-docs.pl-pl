@@ -1,6 +1,6 @@
 ---
-title: 'Wprowadź dysku D: dysku danych maszyny wirtualnej | Dokumentacja firmy Microsoft'
-description: 'Zawiera opis sposobu zmiany litery dysku dla maszyny Wirtualnej z systemem Windows, dzięki czemu możesz użyć dysku D: jako dysku danych.'
+title: 'Tworzenie dysku D: dysku z danymi na maszynie wirtualnej | Microsoft Docs'
+description: 'Opisuje sposób zmiany liter dysku dla maszyny wirtualnej z systemem Windows, aby można było używać dysku D: jako dysku danych.'
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,58 +11,57 @@ ms.assetid: 0867a931-0055-4e31-8403-9b38a3eeb904
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 12986068a761b92611c557a0dfcf08905283b8bd
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 846bb7a5ea6c3f363a2811cf3feb30e37ff30504
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719241"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079873"
 ---
-# <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Użycie dysku D: jako dysku danych na maszyny Wirtualnej z systemem Windows
-Jeśli Twoja aplikacja potrzebuje do skorzystania z dysku D do przechowywania danych, wykonaj te instrukcje, aby użyć innej litery dysku dla dysków tymczasowych. Nigdy nie należy używać dysku tymczasowego do przechowywania danych, który chcesz zachować.
+# <a name="use-the-d-drive-as-a-data-drive-on-a-windows-vm"></a>Używanie dysku D: jako dysku z danymi na maszynie wirtualnej z systemem Windows
+Jeśli aplikacja musi używać dysku D do przechowywania danych, postępuj zgodnie z tymi instrukcjami, aby użyć innej litery dysku dla dysku tymczasowego. Nie należy używać dysku tymczasowego do przechowywania danych, które należy zachować.
 
-Jeżeli zmienisz rozmiar lub **Stop (Deallocate)** maszyny wirtualnej może spowodować umieszczania maszyny wirtualnej do nowych funkcji hypervisor. Planowanego lub nieplanowanego zdarzenia konserwacji mogą również wyzwalać to umieszczania. W tym scenariuszu dysk tymczasowy zostanie ponownie przypisane pierwszą dostępną literę dysku. Jeśli masz aplikację, która wymaga specjalnie dysku D:, należy wykonać następujące kroki, aby tymczasowo przenieść pagefile.sys, dołączyć nowy dysk danych i przypisać jej literę D i następnie przenieść pagefile.sys z powrotem do dysku tymczasowego. Po wykonaniu tych czynności, Azure nie wycofania D: Jeśli maszyna wirtualna przechodzi do innej funkcji hypervisor.
+Jeśli zmienisz rozmiar lub zatrzymasz **(Cofnij przydział)** maszyny wirtualnej, może to spowodować umieszczenie maszyny wirtualnej w nowej funkcji hypervisor. Planowane lub nieplanowane zdarzenie konserwacji może również spowodować wyzwolenie tego położenia. W tym scenariuszu dysk tymczasowy zostanie ponownie przypisany do pierwszej dostępnej litery dysku. Jeśli masz aplikację, która odpowiednio wymaga dysku D:, należy wykonać następujące kroki, aby tymczasowo przenieść plik pagefile. sys, dołączyć nowy dysk z danymi i przypisać go literę D, a następnie przenieść plik pagefile. sys z powrotem do dysku tymczasowego. Po zakończeniu platforma Azure nie przejdzie z powrotem D: Jeśli maszyna wirtualna przejdzie do innej funkcji hypervisor.
 
-Aby uzyskać więcej informacji o używaniu platformy Azure na dysk tymczasowy, zobacz [opis dysku tymczasowego na Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
+Aby uzyskać więcej informacji na temat sposobu korzystania z dysku tymczasowego przez platformę Azure, zobacz [opis dysku tymczasowego na Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
-## <a name="attach-the-data-disk"></a>Dołączanie dysku danych
-Najpierw należy dołączyć dysk danych do maszyny wirtualnej. Aby to zrobić za pomocą portalu, zobacz [jak dołączyć dysk danych zarządzanych w witrynie Azure portal](attach-managed-disk-portal.md).
+## <a name="attach-the-data-disk"></a>Dołącz dysk z danymi
+Najpierw należy dołączyć dysk danych do maszyny wirtualnej. Aby to zrobić przy użyciu portalu, zobacz [jak dołączyć dysk danych zarządzanych w Azure Portal](attach-managed-disk-portal.md).
 
-## <a name="temporarily-move-pagefilesys-to-c-drive"></a>Tymczasowo przenieść pagefile.sys na dysku c.
+## <a name="temporarily-move-pagefilesys-to-c-drive"></a>Tymczasowo Przenieś plik pagefile. sys do dysku C
 1. Nawiąż połączenie z maszyną wirtualną. 
-2. Kliknij prawym przyciskiem myszy **Start** menu, a następnie wybierz **systemu**.
-3. W menu po lewej stronie wybierz **Zaawansowane ustawienia systemu**.
-4. W **wydajności** zaznacz **ustawienia**.
-5. Wybierz **zaawansowane** kartę.
-6. W **pamięci wirtualnej** zaznacz **zmiany**.
-7. Wybierz **C** dysku, a następnie kliknij przycisk **System zarządzany rozmiar** a następnie kliknij przycisk **ustaw**.
-8. Wybierz **D** dysku, a następnie kliknij przycisk **plik stronicowania nie** a następnie kliknij przycisk **ustaw**.
-9. Kliknij przycisk Zastosuj. Zostanie wyświetlone ostrzeżenie, czy komputer wymaga ponownego uruchomienia, aby zmiany zostały wprowadzone.
+2. Kliknij prawym przyciskiem myszy menu **Start** i wybierz pozycję **system**.
+3. W menu po lewej stronie wybierz pozycję **Zaawansowane ustawienia systemu**.
+4. W sekcji **wydajność** wybierz pozycję **Ustawienia**.
+5. Wybierz kartę **Zaawansowane** .
+6. W sekcji **pamięć wirtualna** wybierz pozycję **Zmień**.
+7. Wybierz dysk **C** , a następnie kliknij pozycję **rozmiar zarządzany przez system** , a następnie kliknij pozycję **Ustaw**.
+8. Wybierz dysk **D** , a następnie kliknij pozycję **Brak pliku stronicowania** , a następnie kliknij pozycję **Ustaw**.
+9. Kliknij przycisk Zastosuj. Zostanie wyświetlone ostrzeżenie, że należy ponownie uruchomić komputer, aby zmiany zostały zastosowane.
 10. Uruchom ponownie maszynę wirtualną.
 
 ## <a name="change-the-drive-letters"></a>Zmień litery dysku
-1. Po ponownym uruchomieniu maszyny Wirtualnej, zaloguj się ponownie do maszyny Wirtualnej.
-2. Kliknij przycisk **Start** menu i wpisz **diskmgmt.msc** i naciśnij klawisz Enter. Rozpocznie się Zarządzanie dyskami.
-3. Kliknij prawym przyciskiem myszy **D**, dysku magazynu tymczasowego, a następnie wybierz **Zmień literę dysku i ścieżki**.
-4. W obszarze literę dysku, wybierz nowy dysk takich jak **T** a następnie kliknij przycisk **OK**. 
-5. Kliknij prawym przyciskiem myszy na dysku danych, a następnie wybierz pozycję **Zmień literę dysku i ścieżki**.
-6. W obszarze literę dysku, należy wybrać dysk **D** a następnie kliknij przycisk **OK**. 
+1. Po ponownym uruchomieniu maszyny wirtualnej Zaloguj się ponownie do maszyny wirtualnej.
+2. Kliknij menu **Start** i wpisz **diskmgmt. msc** i naciśnij klawisz ENTER. Zarządzanie dyskami rozpocznie się.
+3. Kliknij prawym przyciskiem myszy pozycję **D**, tymczasowy dysk magazynu i wybierz polecenie **Zmień literę dysku i ścieżki**.
+4. W obszarze litera dysku wybierz nowy dysk, taki jak **T** , a następnie kliknij przycisk **OK**. 
+5. Kliknij prawym przyciskiem myszy dysk danych i wybierz polecenie **Zmień literę dysku i ścieżki**.
+6. W obszarze litera dysku wybierz pozycję dysk **D** , a następnie kliknij przycisk **OK**. 
 
-## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>Wróć pagefile.sys dysku magazynu tymczasowego
-1. Kliknij prawym przyciskiem myszy **Start** menu, a następnie wybierz **systemu**
-2. W menu po lewej stronie wybierz **Zaawansowane ustawienia systemu**.
-3. W **wydajności** zaznacz **ustawienia**.
-4. Wybierz **zaawansowane** kartę.
-5. W **pamięci wirtualnej** zaznacz **zmiany**.
-6. Wybierz dysk systemu operacyjnego **C** i kliknij przycisk **plik stronicowania nie** a następnie kliknij przycisk **ustaw**.
-7. Wybierz dysk magazynu tymczasowego **T** a następnie kliknij przycisk **System zarządzany rozmiar** a następnie kliknij przycisk **ustaw**.
-8. Kliknij przycisk **zastosować**. Zostanie wyświetlone ostrzeżenie, czy komputer wymaga ponownego uruchomienia, aby zmiany zostały wprowadzone.
+## <a name="move-pagefilesys-back-to-the-temporary-storage-drive"></a>Przenoszenie pliku Pagefile. sys z powrotem do tymczasowego dysku magazynu
+1. Kliknij prawym przyciskiem myszy menu **Start** i wybierz pozycję **system**
+2. W menu po lewej stronie wybierz pozycję **Zaawansowane ustawienia systemu**.
+3. W sekcji **wydajność** wybierz pozycję **Ustawienia**.
+4. Wybierz kartę **Zaawansowane** .
+5. W sekcji **pamięć wirtualna** wybierz pozycję **Zmień**.
+6. Wybierz dysk systemu operacyjnego **C** i kliknij opcję **Brak pliku stronicowania** , a następnie kliknij przycisk **Ustaw**.
+7. Wybierz dysk magazynu tymczasowego **T** , a następnie kliknij pozycję **rozmiar zarządzany przez system** , a następnie kliknij pozycję **Ustaw**.
+8. Kliknij przycisk **zastosować**. Zostanie wyświetlone ostrzeżenie, że należy ponownie uruchomić komputer, aby zmiany zostały zastosowane.
 9. Uruchom ponownie maszynę wirtualną.
 
 ## <a name="next-steps"></a>Następne kroki
-* Możesz zwiększyć dostępny magazyn do maszyny wirtualnej przez [dołączanie dysku danych dodatkowych](attach-managed-disk-portal.md).
+* Można zwiększyć ilość miejsca dostępnego dla maszyny wirtualnej przez dołączenie [dodatkowego dysku z danymi](attach-managed-disk-portal.md).
 

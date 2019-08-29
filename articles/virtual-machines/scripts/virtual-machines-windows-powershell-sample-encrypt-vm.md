@@ -9,18 +9,17 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
-ms.openlocfilehash: d50c5fe6fba9f3d1e41a017a24da48de34b1eefa
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c21eb56369bf9d709a1708ee72a5e090168c58f6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695889"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090633"
 ---
 # <a name="encrypt-a-windows-virtual-machine-with-azure-powershell"></a>Szyfrowanie maszyny wirtualnej z systemem Windows przy użyciu programu Azure PowerShell
 
@@ -59,7 +58,7 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 | [Get-AzVmDiskEncryptionStatus](https://docs.microsoft.com/powershell/module/az.compute/get-azvmdiskencryptionstatus) | Wyświetla stan procesu szyfrowania maszyny wirtualnej. |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

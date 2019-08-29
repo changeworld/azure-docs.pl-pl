@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-service
 ms.topic: article
-ms.date: 08/08/2018
+ms.date: 08/27/2019
 ms.author: danlep
-ms.openlocfilehash: 9690f900b6fe8d81fbebc3fcf5b7022b12bc3b96
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: f80956ec401737766f7a85540e90be70b9d621e7
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310257"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114703"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Uwierzytelnianie za pomocą Azure Container Registry z usługi Azure Kubernetes
 
@@ -21,7 +21,7 @@ W przypadku korzystania z Azure Container Registry (ACR) z usługą Azure Kubern
 
 Wystarczy tylko skonfigurować jedną z tych metod uwierzytelniania. Najbardziej typowym podejściem jest [przyznanie dostępu przy użyciu nazwy głównej usługi AKS](#grant-aks-access-to-acr). Jeśli masz określone potrzeby, możesz opcjonalnie [udzielić dostępu przy użyciu wpisów tajnych Kubernetes](#access-with-kubernetes-secret).
 
-W tym artykule przyjęto założenie, że klaster AKS został już utworzony i można uzyskać dostęp do klastra przy `kubectl` użyciu wiersza polecenia.
+W tym artykule przyjęto założenie, że klaster AKS został już utworzony i można uzyskać dostęp do klastra przy `kubectl` użyciu wiersza polecenia. Jeśli zamiast tego chcesz utworzyć klaster i skonfigurować dostęp do rejestru kontenerów podczas tworzenia klastra, zobacz [samouczek: Wdróż klaster](../aks/tutorial-kubernetes-deploy-cluster.md) AKS lub [Uwierzytelnij się za pomocą Azure Container Registry z usługi Azure Kubernetes Service (wersja zapoznawcza)](../aks/cluster-container-registry-integration.md).
 
 ## <a name="grant-aks-access-to-acr"></a>Przyznaj AKS dostęp do ACR
 

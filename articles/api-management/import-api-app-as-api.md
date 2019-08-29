@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/22/2017
 ms.author: apimpm
-ms.openlocfilehash: 120fe358e5c8afe63e98038ad353d5ebc45a1937
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 484621668b582953d49c366336a49970d82c3fbf
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60255903"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073261"
 ---
 # <a name="import-an-api-app-as-an-api"></a>Importowanie aplikacji interfejsu API jako interfejsu API
 
@@ -91,7 +90,7 @@ Operacje mogą być również wywoływane z **portalu dla deweloperów** w celu 
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Przekształcanie i ochrona opublikowanego interfejsu API](transform-api.md)

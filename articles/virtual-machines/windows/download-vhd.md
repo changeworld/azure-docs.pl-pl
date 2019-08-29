@@ -11,16 +11,15 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: ebcc8301fa3693880974e45b594be218905e8311
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: c1c09382102045dd248b6771d8d0ea1ef090b6eb
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775409"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70079617"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Pobieranie wirtualnego dysku twardego systemu Windows z platformy Azure
 
@@ -73,7 +72,7 @@ Aby pobrać plik VHD, należy wygenerować adres URL sygnatury [dostępu współ
 
     ![Kliknij przycisk Zapisz w przeglądarce](./media/download-vhd/export-save.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się, jak [przekazać plik VHD na platformę Azure](upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
 - [Utwórz dyski zarządzane na podstawie dysków niezarządzanych na koncie magazynu](attach-disk-ps.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

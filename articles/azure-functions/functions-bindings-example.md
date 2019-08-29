@@ -1,29 +1,28 @@
 ---
-title: Przykład usłudze Azure Functions wyzwalacz i powiązania
+title: Przykład Azure Functions wyzwalacza i powiązania
 description: Dowiedz się, jak skonfigurować powiązania funkcji platformy Azure
 services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: bced6dc71063b6be68d739ef67fb5ec46c3d1be6
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: d1959792823e04cf34d65ab775ae8c51e741e293
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480435"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097466"
 ---
-# <a name="azure-functions-trigger-and-binding-example"></a>Przykład usłudze Azure Functions wyzwalacz i powiązania
+# <a name="azure-functions-trigger-and-binding-example"></a>Przykład Azure Functions wyzwalacza i powiązania
 
-W tym artykule przedstawiono sposób konfigurowania [wyzwalacz i powiązania](./functions-triggers-bindings.md) w funkcji platformy Azure.
+W tym artykule pokazano, jak skonfigurować [wyzwalacz i powiązania](./functions-triggers-bindings.md) w funkcji platformy Azure.
 
-Załóżmy, że chcesz napisać nowy wiersz do usługi Azure Table storage, zawsze wtedy, gdy nowy komunikat pojawi się w usłudze Azure Queue storage. W tym scenariuszu można zaimplementować przy użyciu usługi Azure Queue wyzwalacz usługi storage i Azure Table storage powiązania danych wyjściowych. 
+Załóżmy, że chcesz napisać nowy wiersz do usługi Azure Table Storage za każdym razem, gdy w usłudze Azure queue storage zostanie wyświetlony nowy komunikat. Ten scenariusz można zaimplementować przy użyciu wyzwalacza usługi Azure queue storage i powiązania danych wyjściowych usługi Azure Table Storage. 
 
-Oto *function.json* pliku, w tym scenariuszu. 
+Oto plik *Function. JSON* dla tego scenariusza. 
 
 ```json
 {
@@ -46,18 +45,18 @@ Oto *function.json* pliku, w tym scenariuszu.
 }
 ```
 
-Pierwszy element w `bindings` tablica jest wyzwalacz magazynu kolejki. `type` i `direction` właściwości określenie wyzwalacza. `name` Właściwość identyfikuje parametru funkcji, który odbiera zawartość komunikatu w kolejce. Nazwa kolejki do monitorowania jest `queueName`, oraz parametry połączenia są identyfikowane za pomocą ustawienia aplikacji `connection`.
+Pierwszy element w `bindings` tablicy jest wyzwalaczem magazynu kolejki. Właściwości `type` i`direction` identyfikują wyzwalacz. `name` Właściwość identyfikuje parametr funkcji, który odbiera zawartość komunikatu w kolejce. Nazwa kolejki do monitorowania znajduje się w `queueName`, a parametry połączenia są w ustawieniu aplikacji identyfikowanym przez. `connection`
 
-Drugi element `bindings` tablica jest usługa Azure Table Storage powiązania danych wyjściowych. `type` i `direction` właściwości identyfikacji powiązania. `name` Właściwość określa, jak funkcja zapewnia nowy wiersz w tabeli, w tym przypadku za pomocą funkcji zwraca wartość. Nazwa tabeli jest `tableName`, oraz parametry połączenia są identyfikowane za pomocą ustawienia aplikacji `connection`.
+Drugi element w `bindings` tablicy to powiązanie danych wyjściowych usługi Azure Table Storage. Właściwości `type` i`direction` identyfikują powiązanie. `name` Właściwość określa, jak funkcja udostępnia nowy wiersz tabeli, w tym przypadku przy użyciu wartości zwracanej funkcji. Nazwa tabeli znajduje się w `tableName`, a parametry połączenia są w ustawieniu aplikacji identyfikowanym przez. `connection`
 
-Możesz wyświetlać i edytować zawartość *function.json* w witrynie Azure portal kliknij pozycję **edytor zaawansowany** opcja **integracja** kartę funkcji.
+Aby wyświetlić i edytować zawartość *funkcji Function. JSON* w Azure Portal, kliknij opcję **Edytor zaawansowany** na karcie **integracja** funkcji.
 
 > [!NOTE]
-> Wartość `connection` to nazwa ustawienia aplikacji zawierającego parametry połączenia, a nie parametry połączenia, sam. Powiązania używanie połączenia ciągów przechowywanych w ustawieniach aplikacji, aby wymusić najlepsze rozwiązaniem, które *function.json* nie zawiera wpisy tajne usługi.
+> Wartość `connection` to nazwa ustawienia aplikacji, które zawiera parametry połączenia, a nie same parametry połączenia. Powiązania używają parametrów połączenia przechowywanych w ustawieniach aplikacji, aby wymusić najlepsze rozwiązanie, że *Funkcja Function. JSON* nie zawiera wpisów tajnych usługi.
 
-## <a name="c-script-example"></a>Przykładowy skrypt w języku C#
+## <a name="c-script-example"></a>C#przykład skryptu
 
-Oto C# kod skryptu, który współdziała z tego wyzwalacza i powiązania. Należy zauważyć, że nazwa parametru, który udostępnia zawartość komunikatu w kolejce jest `order`; ta nazwa jest wymagana, ponieważ `name` wartości właściwości w *function.json* jest `order` 
+Kod C# skryptu, który działa z tym wyzwalaczem i powiązaniem. Należy zauważyć, że nazwa parametru dostarczającego zawartość komunikatu kolejki to `order`; ta nazwa jest wymagana, `name` ponieważ wartość właściwości w *funkcji Function. JSON* jest`order` 
 
 ```cs
 #r "Newtonsoft.Json"
@@ -87,7 +86,7 @@ public class Person
 
 ## <a name="javascript-example"></a>Przykład JavaScript
 
-Taki sam *function.json* plik może być używany z funkcją JavaScript:
+Ten sam plik *Function. JSON* może być używany z funkcją języka JavaScript:
 
 ```javascript
 // From an incoming queue message that is a JSON object, add fields and write to Table Storage
@@ -107,7 +106,7 @@ function generateRandomId() {
 
 ## <a name="class-library-example"></a>Przykład biblioteki klas
 
-Biblioteka klas, jeden wyzwalacz i informacje o powiązaniu &mdash; nazwy kolejki i tabeli konta magazynu funkcji parametry wejściowe i wyjściowe &mdash; są dostarczane przez atrybuty zamiast pliku function.json. Oto przykład:
+W bibliotece klas ten sam wyzwalacz i kolejka informacji o &mdash; powiązaniu i nazwa tabeli, konta magazynu i parametry funkcji dla danych wejściowych &mdash; i wyjściowych są udostępniane przez atrybuty zamiast pliku Function. JSON. Oto przykład:
 
 ```csharp
 public static class QueueTriggerTableOutput
@@ -135,9 +134,9 @@ public class Person
 }
 ```
 
-Funkcja pracy, która jest wywoływana za pomocą kolejki platformy Azure i wysyła dane do usługi Azure Table storage jest teraz dostępna.
+Masz teraz działającą funkcję, która jest wyzwalana przez kolejkę platformy Azure i wyprowadza dane z usługi Azure Table Storage.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Usługa Azure Functions powiązania wzorców wyrażeń](./functions-bindings-expressions-patterns.md)
+> [Wzorce wyrażeń powiązań Azure Functions](./functions-bindings-expressions-patterns.md)

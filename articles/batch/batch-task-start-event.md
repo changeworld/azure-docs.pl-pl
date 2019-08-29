@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 76100f1457123ac88055fddd55eb22a102201adf
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: efad9e71b986156c6d8e95208d50ac8d5a4d7e7f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322802"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094362"
 ---
 # <a name="task-start-event"></a>Zdarzenie rozpoczęcia zadania
 
@@ -50,7 +49,7 @@ ms.locfileid: "68322802"
 
 |Nazwa elementu|Type|Uwagi|
 |------------------|----------|-----------|
-|jobId|Ciąg|Identyfikator zadania zawierającego zadanie.|
+|jobId|String|Identyfikator zadania zawierającego zadanie.|
 |id|String|Identyfikator zadania.|
 |taskType|String|Typ zadania. Może to być "JobManager" wskazujący, że jest to zadanie Menedżera zadań lub "użytkownika" wskazujące, że nie jest to zadanie Menedżera zadań.|
 |systemTaskVersion|Int32|Jest to wewnętrzny licznik ponownych prób dla zadania. Wewnętrznie usługa Batch może ponowić zadanie, aby uwzględnić przejściowe problemy. Te problemy mogą obejmować wewnętrzne błędy planowania lub próby odzyskania z węzłów obliczeniowych w nieprawidłowym stanie.|
@@ -63,7 +62,7 @@ ms.locfileid: "68322802"
 
 |Nazwa elementu|Type|Uwagi|
 |------------------|----------|-----------|
-|poolId|Ciąg|Identyfikator puli, w której uruchomiono zadanie.|
+|poolId|String|Identyfikator puli, w której uruchomiono zadanie.|
 |nodeId|String|Identyfikator węzła, w którym uruchomiono zadanie.|
 
 ###  <a name="multiInstanceSettings"></a>multiInstanceSettings

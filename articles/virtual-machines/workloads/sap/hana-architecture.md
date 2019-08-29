@@ -1,65 +1,64 @@
 ---
-title: Architektura środowiska SAP Hana na platformie Azure (duże wystąpienia) | Dokumentacja firmy Microsoft
-description: Architektura sposób wdrażania oprogramowania SAP HANA na platformie Azure (duże wystąpienia).
+title: Architektura SAP HANA na platformie Azure (duże wystąpienia) | Microsoft Docs
+description: Architektura wdrażania SAP HANA na platformie Azure (duże wystąpienia).
 services: virtual-machines-linux
 documentationcenter: ''
 author: RicksterCDN
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/25/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f322ddab19a8c8635009d2e2b7e7e748fb1e73ab
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 1373221502db5b2d511bc6f32bd529090caa9e60
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709755"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101294"
 ---
 # <a name="sap-hana-large-instances-architecture-on-azure"></a>Architektura SAP HANA (duże wystąpienia) na platformie Azure
 
-Na wysokim poziomie SAP HANA na platformie Azure (duże wystąpienia) rozwiązanie ma warstwy aplikacji SAP znajdującej się na maszynach wirtualnych. Warstwa bazy danych znajduje się na sprzęcie skonfigurowane SAP TDI, znajduje się w sygnaturze dużych wystąpień, w tym samym regionie platformy Azure, która jest połączona z infrastrukturą IaaS usługi Azure.
+Na wysokim poziomie rozwiązanie SAP HANA na platformie Azure (duże wystąpienia) zawiera warstwę aplikacji SAP na maszynach wirtualnych. Warstwa bazy danych znajduje się na sprzęcie skonfigurowanym przez środowisko SAP w ramach dużej instancji w tym samym regionie świadczenia usługi Azure, który jest połączony z usługą Azure IaaS.
 
 > [!NOTE]
-> Wdróż warstwę aplikacji SAP, w tym samym regionie platformy Azure jako warstwa SAP DBMS. Ta reguła jest dobrze udokumentowana w opublikowanych informacji na temat obciążeń SAP na platformie Azure. 
+> Wdróż warstwę aplikacji SAP w tym samym regionie świadczenia usługi Azure, w której znajduje się warstwa SAP DBMS. Ta zasada jest dobrze udokumentowana w opublikowanych informacjach o obciążeniach SAP na platformie Azure. 
 
-Ogólna Architektura środowiska SAP Hana na platformie Azure (duże wystąpienia) udostępnia konfigurację sprzęt z certyfikatem TDI i SAP, czyli poziomie wirtualizacji, komputerach bez systemu operacyjnego, serwer o wysokiej wydajności dla bazy danych SAP HANA. Zapewnia również możliwość i elastyczność platformy Azure, skalować zasoby warstwy aplikacji SAP do własnych potrzeb.
+Ogólna architektura SAP HANA na platformie Azure (duże wystąpienia) zapewnia konfigurację sprzętową z certyfikatem TDI protokołu SAP, która jest niezwirtualizowanym serwerem o wysokiej wydajności dla SAP HANA bazy danych. Zapewnia również możliwość i elastyczność platformy Azure do skalowania zasobów dla warstwy aplikacji SAP, aby spełniały Twoje potrzeby.
 
-![Omówienie architektury oprogramowania SAP Hana na platformie Azure (duże wystąpienia)](./media/hana-overview-architecture/image1-architecture.png)
+![Omówienie architektury SAP HANA na platformie Azure (duże wystąpienia)](./media/hana-overview-architecture/image1-architecture.png)
 
-Architektura, wyświetlane jest podzielony na trzy sekcje:
+Pokazana architektura jest podzielona na trzy sekcje:
 
-- **prawy**: Pokazuje infrastruktury lokalnej, uruchamianego z różnych aplikacji w danych centra tak, aby użytkownicy końcowi mogą uzyskiwać dostęp LOB aplikacji, takich jak SAP. W idealnym przypadku tej lokalnej infrastruktury jest połączony z platformą Azure za pomocą [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
+- **Prawo**: Pokazuje infrastrukturę lokalną, która uruchamia różne aplikacje w centrach danych, dzięki czemu użytkownicy końcowi mogą uzyskiwać dostęp do aplikacji biznesowych, takich jak SAP. W idealnym przypadku ta infrastruktura lokalna jest połączona z platformą Azure za pomocą usługi [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
-- **Centrum**: Pokazuje IaaS platformy Azure i, w tym przypadku korzystanie z maszyn wirtualnych w celu hostowania SAP lub inne aplikacje korzystające z platformy SAP HANA jako DBMS system. Mniejsze wystąpień HANA, które funkcją pamięci, które maszyny wirtualne są wdrażane na maszynach wirtualnych wraz z ich warstwy aplikacji. Aby uzyskać więcej informacji na temat maszyn wirtualnych, zobacz [maszyn wirtualnych](https://azure.microsoft.com/services/virtual-machines/).
+- **Wyśrodkuj**: Pokazuje usługę Azure IaaS i, w tym przypadku, używanie maszyn wirtualnych do hostowania oprogramowania SAP lub innych aplikacji, które używają SAP HANA jako systemu DBMS. Mniejsze wystąpienia HANA działające z pamięcią dostarczaną przez maszyny wirtualne są wdrażane na maszynach wirtualnych razem z ich warstwami aplikacji. Aby uzyskać więcej informacji o maszynach wirtualnych, zobacz [maszyny wirtualne](https://azure.microsoft.com/services/virtual-machines/).
 
-   Usługi sieci platformy Azure są używane do grupowania systemów SAP wraz z innych aplikacji w sieciach wirtualnych. Te sieci wirtualne nawiązać połączenie systemów lokalnych, jak również do platformy SAP HANA na platformie Azure (duże wystąpienia).
+   Usługi sieciowe platformy Azure są używane do grupowania systemów SAP wraz z innymi aplikacjami w sieciach wirtualnych. Te sieci wirtualne łączą się z systemami lokalnymi, a także SAP HANA na platformie Azure (duże wystąpienia).
 
-   Oprogramowanie SAP NetWeaver aplikacje i bazy danych, które są obsługiwane na platformie Azure, zobacz [SAP pomocy technicznej Uwaga #1928533 — aplikacje środowiska SAP na platformie Azure: Obsługiwane produkty i typy maszyn wirtualnych platformy Azure](https://launchpad.support.sap.com/#/notes/1928533). Aby uzyskać dokumentację na temat wdrażania rozwiązań SAP na platformie Azure zobacz:
+   W przypadku aplikacji SAP NetWeaver i baz danych, które są obsługiwane do uruchamiania na [platformie Azure, zobacz uwagi dotyczące pomocy technicznej SAP #1928533 — aplikacje SAP na platformie Azure: Obsługiwane produkty i typy](https://launchpad.support.sap.com/#/notes/1928533)maszyn wirtualnych platformy Azure. Aby uzyskać dokumentację dotyczącą sposobu wdrażania rozwiązań SAP na platformie Azure, zobacz:
 
-  -  [Używanie SAP na maszynach wirtualnych Windows](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  -  [Korzystanie z oprogramowania SAP na maszynach wirtualnych z systemem Windows](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
   -  [Korzystanie z rozwiązań SAP na maszynach wirtualnych platformy Azure](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-- **po lewej stronie**: Zawiera sprzęt z certyfikatem TDI i programu SAP HANA w sygnaturze dużego wystąpienia platformy Azure. Jednostki dużych wystąpień HANA są połączone z sieciami wirtualnymi w subskrypcji platformy Azure przy użyciu tej samej technologii co łączność ze środowiska lokalnego na platformę Azure. Począwszy od maja 2019 optymalizacji stało się wprowadzono umożliwiający komunikację między jednostkami dużych wystąpień HANA i maszyn wirtualnych platformy Azure bez angażowania bramę usługi ExpressRoute. Tego rodzaju optymalizacji, o nazwie Path szybkie usługi ExpressRoute jest wyświetlany w tej architekturze (czerwone linie). 
+- Z **lewej**: Przedstawia sprzęt z certyfikatem TDI SAP HANA w sygnaturze dużej instancji platformy Azure. Jednostki dużego wystąpienia HANA są połączone z sieciami wirtualnymi subskrypcji platformy Azure za pomocą tej samej technologii, co łączność ze stanem lokalnym z platformą Azure. Od maja 2019 wprowadzono optymalizację umożliwiającą komunikację między jednostkami dużej instancji HANA i maszynami wirtualnymi platformy Azure bez udziału bramy ExpressRoute. Ta optymalizacja o nazwie ExpressRoute Fast jest wyświetlana w tej architekturze (czerwona linia). 
 
-Sygnatura dużego wystąpienia platformy Azure, sama obejmuje następujące składniki:
+Sygnatura dużego wystąpienia platformy Azure łączy następujące składniki:
 
-- **Przetwarzanie**: Serwery, które są oparte na różnych generacji najnowszych procesorów Intel Xeon zapewniają wymagane możliwości obliczeniowych, które zostały SAP HANA z certyfikatem platformy.
-- **Sieć**: Ujednolicone szybkich sieci szkieletowej, łączącym obliczeń, magazynu i składniki sieci LAN.
-- **Magazyn**: Infrastruktura magazynu, która jest dostępna za pośrednictwem jednolitego sieci szkieletowej. Określonej pojemności, który znajduje się zależy od określonego oprogramowania SAP HANA na konfiguracji platformy Azure (duże wystąpienia), który jest wdrożony. Większa pojemność magazynu jest dostępna za dodatkową opłatą miesięcznych.
+- **Obliczanie**: Serwery, które są oparte na różnych generacjach procesorów Intel Xeon, które zapewniają niezbędną możliwość obliczeniową i są SAP HANA certyfikowane.
+- **Sieć**: Zunifikowana Sieć szkieletowa o dużej szybkości, która umożliwia łączenie składników obliczeniowych, magazynu i sieci LAN.
+- **Magazyn**: Infrastruktura magazynu, do której dostęp odbywa się za pomocą ujednoliconej sieci szkieletowej. Określona pojemność magazynu zależy od konkretnej SAP HANA w ramach wdrożonej konfiguracji platformy Azure (duże wystąpienia). Większa pojemność magazynu jest dostępna z dodatkowym miesięcznym kosztem.
 
-W ramach infrastruktury wielodostępnych sygnatury dużych wystąpień klienci są wdrażane jako dzierżaw izolowane. Podczas wdrażania dzierżawy nadaj nazwę subskrypcji platformy Azure w ramach rejestracji na platformie Azure. Tej subskrypcji platformy Azure jest rozliczany w dużych wystąpień HANA. Te dzierżawy mają relację 1:1 z subskrypcją platformy Azure. Dla sieci jest możliwe uzyskanie dostępu Jednostka dużych wystąpień HANA wdrożony w jednej dzierżawy w jednym regionie platformy Azure z różnych sieci wirtualnych, które należą do różnych subskrypcji platformy Azure. Te subskrypcje platformy Azure muszą należeć do tej samej rejestracji na platformie Azure. 
+W ramach infrastruktury wielodostępnej sygnatury dużego wystąpienia klienci są wdrażani jako izolowane dzierżawy. Podczas wdrażania dzierżawy należy nazwać subskrypcję platformy Azure w ramach rejestracji na platformie Azure. Ta subskrypcja platformy Azure jest rozliczana z dużym wystąpieniem usługi HANA. Dzierżawcy mają 1:1 relacje z subskrypcją platformy Azure. W przypadku sieci można uzyskać dostęp do jednostki dużego wystąpienia HANA wdrożonej w jednej dzierżawie w jednym regionie świadczenia usługi Azure z różnych sieci wirtualnych należących do różnych subskrypcji platformy Azure. Te subskrypcje platformy Azure muszą należeć do tej samej rejestracji platformy Azure. 
 
-Podobnie jak w przypadku maszyn wirtualnych, SAP HANA na platformie Azure (duże wystąpienia) jest oferowana w wielu regionach platformy Azure. Aby zaoferować awarii funkcje odzyskiwania, można zgodzić się na. Różnych sygnaturach duże wystąpienie w ramach jednego regionu polityczne geograficznej są połączone ze sobą. Na przykład HANA duże wystąpienia sygnatury w zachodnich stanach USA i wschodnie stany USA są połączone za pośrednictwem dedykowanej sieci łącza replikacji odzyskiwania po awarii. 
+Podobnie jak w przypadku maszyn wirtualnych, SAP HANA na platformie Azure (duże wystąpienia) są oferowane w wielu regionach świadczenia usługi Azure. Aby zaoferować możliwości odzyskiwania po awarii, możesz wybrać opcję wyboru. Różne sygnatury dużych wystąpień w jednym regionie geograficznym są połączone ze sobą. Na przykład sygnatury dużych wystąpień HANA w zachodnich stanach USA i Wschodnie stany USA są połączone za pomocą dedykowanego linku sieciowego do replikacji odzyskiwania po awarii. 
 
-Tak samo, jak można wybrać między różnymi typami maszyny Wirtualnej z usługą Azure Virtual Machines, możesz wybrać różne jednostki SKU z platformy HANA duże wystąpienie, które są dostosowane do typów różnych obciążeń SAP Hana. SAP dotyczy stosunek pamięci do procesorów gniazda dla różnych obciążeń, oparte na generacje procesor Intel. W poniższej tabeli przedstawiono oferowanych typów jednostek SKU.
+Podobnie jak można wybrać różne typy maszyn wirtualnych za pomocą usługi Azure Virtual Machines, można wybrać różne jednostki SKU z dużego wystąpienia HANA, które są dostosowane do różnych typów obciążeń SAP HANA. SAP stosuje stosunek pamięci do procesora dla różnych obciążeń na podstawie generacji procesorów firmy Intel. W poniższej tabeli przedstawiono oferowane typy jednostek SKU.
 
-Możesz znaleźć dostępne jednostki SKU [jednostki SKU dostępne dla HLI](hana-available-skus.md).
+Dostępne jednostki SKU dostępne w jednostkach SKU można znaleźć [dla elementu HLI](hana-available-skus.md).
 
 **Następne kroki**
-- Zapoznaj się [architekturę sieci typu platformy SAP HANA (duże wystąpienia)](hana-network-architecture.md)
+- [SAP HANA (duże wystąpienia) Architektura sieci](hana-network-architecture.md)

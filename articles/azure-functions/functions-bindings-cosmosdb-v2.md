@@ -7,16 +7,15 @@ author: craigshoemaker
 manager: gwallace
 keywords: usługi Azure functions, funkcje, przetwarzanie zdarzeń, obliczanie dynamiczne, architektura bez serwera
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 67b70a67065bfc66639b0f6911f66111829c9a0f
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 419241bf1e8511dd6015cd3f791099d6959c3e34
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774922"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086755"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Powiązania Azure Cosmos DB dla Azure Functions 2. x
 
@@ -566,6 +565,9 @@ namespace CosmosDBSamplesV2
 #### <a name="http-trigger-get-multiple-docs-using-documentclient-c"></a>HTTP wyzwalacza, Uzyskaj dokumentację wielu, za pomocą DocumentClient (C#)
 
 W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) , który pobiera listę dokumentów. Funkcja jest wyzwalana przez żądanie HTTP. Kod używa `DocumentClient` podanego przez powiązanie usługi Azure Cosmos DB można odczytać listy dokumentów wystąpienia. `DocumentClient` Wystąpienia może również służyć do operacji zapisu.
+
+> [!NOTE]
+> Aby ułatwić testowanie, można również użyć interfejsu [IDocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.idocumentclient?view=azure-dotnet) .
 
 ```cs
 using Microsoft.AspNetCore.Http;

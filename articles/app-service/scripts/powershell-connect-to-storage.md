@@ -9,19 +9,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: e4831bdc-2068-4883-9474-0b34c2e3e255
 ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: a4c0e2b5cfb73613ab349b827e429062c6237681
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1eae5c4b94a59b09e73454fdfcea4e9f041652f2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136496"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098357"
 ---
 # <a name="connect-an-app-service-app-to-a-storage-account"></a>Łączenie aplikacji usługi App Service z kontem magazynu
 
@@ -56,7 +55,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | Pobiera klucze dostępu dla konta usługi Azure Storage. |
 | [Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) | Modyfikuje konfigurację aplikacji usługi App Service. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

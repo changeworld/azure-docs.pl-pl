@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 5e041ae2-25af-4882-a79e-3aa63c4bfb20
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bb4c71f2c7f42ef599796bc380bb7a9f35b8c64e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 60662e723a55c969fdd4b70e732303c90bbf9e8b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322773"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094336"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Korzystanie z szablonów projektów programu Visual Studio do szybkiego uruchamiania rozwiązań wsadowych
 
@@ -385,7 +384,7 @@ Wszystkie informacje zwrócone przez wyjątki są zapisywane w plikach stdout. t
 ### <a name="client-considerations"></a>Uwagi dotyczące klienta
 **Poświadczenia magazynu**
 
-Jeśli procesor zadań używa magazynu obiektów blob platformy Azure do utrwalania danych wyjściowych, na przykład przy użyciu biblioteki pomocnika Konwencji plików,  musi mieć dostęp do poświadczeń konta magazynu w chmurze *lub* do adresu URL kontenera obiektów blob, który zawiera dostęp współużytkowany Sygnatura (SAS). Szablon obejmuje obsługę udostępniania poświadczeń za pomocą wspólnych zmiennych środowiskowych. Klient może przekazać poświadczenia magazynu w następujący sposób:
+Jeśli procesor zadań używa magazynu obiektów blob platformy Azure do utrwalania danych wyjściowych, na przykład przy użyciu biblioteki pomocnika Konwencji plików, musi mieć dostęp do poświadczeń konta magazynu w chmurze *lub* do adresu URL kontenera obiektów blob, który zawiera dostęp współużytkowany Sygnatura (SAS). Szablon obejmuje obsługę udostępniania poświadczeń za pomocą wspólnych zmiennych środowiskowych. Klient może przekazać poświadczenia magazynu w następujący sposób:
 
 ```csharp
 job.CommonEnvironmentSettings = new [] {
@@ -435,7 +434,7 @@ Parameters. JSON i jeśli został znaleziony, ładuje go jako słownik parametr�
 > 
 > 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 ### <a name="persist-job-and-task-output-to-azure-storage"></a>Utrwalanie danych wyjściowych zadania i zadania w usłudze Azure Storage
 Innym przydatnym narzędziem do tworzenia rozwiązań wsadowych jest [Azure Batch Konwencji plików][nuget_package]. Ta biblioteka klas .NET (obecnie dostępna w wersji zapoznawczej) w aplikacjach wsadowych platformy .NET umożliwia łatwe przechowywanie i pobieranie danych wyjściowych zadań do i z usługi Azure Storage. [Utrwalaj Azure Batch zadanie i dane wyjściowe zadania](batch-task-output.md) zawierają pełną dyskusję biblioteki i jej użycia.
 

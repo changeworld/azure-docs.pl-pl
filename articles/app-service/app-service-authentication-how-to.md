@@ -9,17 +9,16 @@ editor: ''
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b4b70a45758f697c469895bcef6ea8d203065e26
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: ee8d8c54bd618780e00d9975f2fc6950cd795d44
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67853975"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098544"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Zaawansowane użycie uwierzytelniania i autoryzacji w Azure App Service
 
@@ -43,7 +42,7 @@ Najpierw na stronie **uwierzytelnianie/autoryzacja** w Azure Portal Skonfiguruj 
 
 W obszarze **Akcja do wykonania, gdy żądanie nie zostanie uwierzytelnione**, wybierz opcję **Zezwalaj na żądania anonimowe (bez akcji)** .
 
-Na stronie logowania lub na pasku nawigacyjnym lub w dowolnej innej lokalizacji aplikacji Dodaj łącze logowania do każdego z włączonych dostawców (`/.auth/login/<provider>`). Na przykład:
+Na stronie logowania lub na pasku nawigacyjnym lub w dowolnej innej lokalizacji aplikacji Dodaj łącze logowania do każdego z włączonych dostawców (`/.auth/login/<provider>`). Przykład:
 
 ```HTML
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -117,7 +116,7 @@ Oto proste łącze do wylogowywania na stronie sieci Web:
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Domyślnie pomyślne wylogowanie przekierowuje klienta do adresu URL `/.auth/logout/done`. Można zmienić stronę przekierowywanie po wylogowaniu, dodając `post_logout_redirect_uri` parametr zapytania. Przykład:
+Domyślnie pomyślne wylogowanie przekierowuje klienta do adresu URL `/.auth/logout/done`. Można zmienić stronę przekierowywanie po wylogowaniu, dodając `post_logout_redirect_uri` parametr zapytania. Na przykład:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -186,7 +185,7 @@ Gdy token dostępu dostawcy (nie [token sesji](#extend-session-token-expiration-
 - **Konto Microsoft**: Podczas [konfigurowania ustawień uwierzytelniania konta Microsoft](configure-authentication-provider-microsoft.md), wybierz `wl.offline_access` zakres.
 - **Azure Active Directory**: W [https://resources.azure.com](https://resources.azure.com)programie wykonaj następujące czynności:
     1. W górnej części strony wybierz pozycję **Odczyt/zapis**.
-    2. W lewej przeglądarce przejdź do subskrypcji **subskrypcje** >  ** _\<\_nazwa_**  >  **** resourceGroups >  **_Grupa zasobów\<\_ >\_nazwy_** **** **_dostawcy nazw aplikacjiMicrosoft.\<Web Sites > config\__** **** **** ****  >  >   >  >  >  >  **authsettings**. 
+    2. W lewej przeglądarce przejdź do subskrypcji **subskrypcje** >  **_\<\_nazwa_**  > resourceGroups >  **_Grupa zasobów\<\_ >\_nazwy_** **_dostawcy nazw aplikacjiMicrosoft.\<Web Sites > config\__**  >  >   >  >  >  >  **authsettings**. 
     3. Kliknij pozycję **Edytuj**.
     4. Zmodyfikuj następującą właściwość. Zastąp  _\<\_identyfikator App >_ identyfikatorem aplikacji Azure Active Directory usługi, do której chcesz uzyskać dostęp.
 
@@ -233,7 +232,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Zarówno konto Microsoft, jak i Azure Active Directory umożliwiają logowanie się z wielu domen. Na przykład konto Microsoft umożliwia korzystanie z kont _Outlook.com_, _Live.com_i _hotmail.com_ . Azure Active Directory zezwala na dowolną liczbę domen niestandardowych dla kont logowania. Takie zachowanie może być niepożądane w przypadku aplikacji wewnętrznej, do której nie ma dostępu każda osoba mająca konto _Outlook.com_ . Aby ograniczyć nazwę domeny kont logowania, wykonaj następujące kroki.
 
-W [https://resources.azure.com](https://resources.azure.com)programie **Przejdź** >  do >  **** subskrypcji subskrypcji nazwa resourceGroupszasób >  ** _\<\__** ** _\<\_ Nazwa\_ grupy >_** **** **** **_dostawcy nazwaaplikacji\_ Microsoft.\<_** **** Web >  sites> >  >  >  >  **Konfiguracja**  >  **authsettings**. 
+W [https://resources.azure.com](https://resources.azure.com)programiePrzejdź >  do >  subskrypcjisubskrypcjinazwa resourceGroupszasób **_\<\__**  >  **_\<\_ Nazwa\_ grupy >_** **_dostawcy nazwaaplikacji\_ Microsoft.\<_** Web >  sites> >  >  >  >  **Konfiguracja**  >  **authsettings**. 
 
 Kliknij przycisk **Edytuj**, zmodyfikuj następującą właściwość, a następnie kliknij przycisk **Put**. Pamiętaj, aby zastąpić  _\<nazwę\_domeny >_ domeną, której chcesz użyć.
 

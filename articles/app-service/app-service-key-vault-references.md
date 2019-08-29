@@ -1,60 +1,59 @@
 ---
-title: Odwołania do usługi Key Vault — usłudze Azure App Service | Dokumentacja firmy Microsoft
-description: Koncepcyjny Przewodnik instalacji i odwołania dla odwołania do usługi Azure Key Vault w usłudze Azure App Service i Azure Functions
+title: Odwołania Key Vault-Azure App Service | Microsoft Docs
+description: Dokumentacja koncepcyjna i przewodnik konfigurowania dla Azure Key Vault odwołań w Azure App Service i Azure Functions
 services: app-service
 author: mattchenderson
 manager: jeconnoc
 editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: e7a049c8def0a5014aeb8a0e7a16aaa8def28009
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 30bd7c68ae1c88aba288b515d0ec32581f90b868
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705695"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70088184"
 ---
-# <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Użyj odwołania do usługi Key Vault dla usługi App Service i Azure Functions (wersja zapoznawcza)
+# <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Użyj Key Vault odwołań dla App Service i Azure Functions (wersja zapoznawcza)
 
 > [!NOTE] 
-> Odwołania do usługi Key Vault są obecnie dostępne w wersji zapoznawczej.
+> Odwołania Key Vault są obecnie dostępne w wersji zapoznawczej.
 
-W tym temacie dowiesz się, jak pracować z wpisy tajne z usługi Azure Key Vault w aplikacji usługi App Service lub Azure Functions bez żadnych zmian w kodzie. [Usługa Azure Key Vault](../key-vault/key-vault-overview.md) to usługa, która umożliwia zarządzanie scentralizowane wpisów tajnych, z pełną kontrolą nad Historia zasad i inspekcja dostępu.
+W tym temacie przedstawiono sposób pracy z wpisami tajnymi Azure Key Vault w App Service lub Azure Functions aplikacji bez konieczności wprowadzania jakichkolwiek zmian w kodzie. [Azure Key Vault](../key-vault/key-vault-overview.md) to usługa zapewniająca scentralizowane zarządzanie kluczami tajnymi z pełną kontrolą nad zasadami dostępu i historią inspekcji.
 
-## <a name="granting-your-app-access-to-key-vault"></a>Udzielanie dostępu do usługi Key Vault
+## <a name="granting-your-app-access-to-key-vault"></a>Udzielanie aplikacji dostępu do Key Vault
 
-Aby przeczytać wpisy tajne z magazynu Key Vault, musisz mieć utworzony magazyn i zezwolić aplikacji na dostęp do niego.
+Aby można było odczytać wpisy tajne z Key Vault, należy utworzyć magazyn i nadać aplikacji uprawnienia dostępu do niej.
 
-1. Tworzenie magazynu kluczy, postępując zgodnie z [szybkiego startu usługi Key Vault](../key-vault/quick-create-cli.md).
+1. Utwórz magazyn kluczy, postępując zgodnie z [przewodnikiem Szybki start Key Vault](../key-vault/quick-create-cli.md).
 
-1. Tworzenie [przypisany systemowo tożsamości zarządzanej](overview-managed-identity.md) dla aplikacji.
+1. Utwórz skojarzoną z [systemem tożsamość zarządzaną](overview-managed-identity.md) dla aplikacji.
 
    > [!NOTE] 
-   > Usługa Key Vault odwołuje się do aktualnie tylko przypisana przez system obsługi tożsamości zarządzanej. Nie można używać tożsamości przypisanych przez użytkownika.
+   > Odwołania Key Vault obecnie obsługują tylko tożsamości zarządzane przypisane do systemu. Nie można używać tożsamości przypisanych do użytkownika.
 
-1. Tworzenie [zasady w usłudze Key Vault dostępu](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) tożsamości aplikacji została utworzona wcześniej. Włącz uprawnienie wpisu tajnego "Get" te zasady. Nie należy konfigurować "uprawnienia aplikacji" lub `applicationId` ustawienia, ponieważ nie jest zgodny z tożsamości zarządzanej.
+1. Utwórz [zasady dostępu w Key Vault](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies) dla utworzonej wcześniej tożsamości aplikacji. Włącz uprawnienie "Pobieranie" klucza tajnego dla tych zasad. Nie należy konfigurować "autoryzowanej aplikacji" ani `applicationId` ustawień, ponieważ nie są one zgodne z zarządzaną tożsamością.
 
-    Udzielanie dostępu do aplikacji tożsamości w usłudze key vault jest to jednorazowa operacja i pozostaną takie same dla wszystkich subskrypcji platformy Azure. Służy on do wdrożenia dowolną liczbę certyfikatów, jak chcesz. 
+    Przyznanie dostępu do tożsamości aplikacji w magazynie kluczy jest operacją jednorazowej, która pozostanie taka sama dla wszystkich subskrypcji platformy Azure. Można go użyć do wdrożenia dowolnej liczby certyfikatów. 
 
 ## <a name="reference-syntax"></a>Składnia odwołania
 
-Dokumentacja usługi Key Vault ma postać `@Microsoft.KeyVault({referenceString})`, gdzie `{referenceString}` jest zastępowany przez jedną z następujących opcji:
+Odwołanie Key Vault ma postać `@Microsoft.KeyVault({referenceString})`, gdzie `{referenceString}` jest zastępowana jedną z następujących opcji:
 
 > [!div class="mx-tdBreakAll"]
 > | Ciąg odwołania                                                            | Opis                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri=_secretUri_                                                       | **SecretUri** powinien być identyfikator URI danych płaszczyzna klucz tajny w usłudze Key Vault, łącznie z wersją, np. https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
-> | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | **VaultName** powinien nazwę zasobu usługi Key Vault. **SecretName** powinien zawierać nazwę docelowego wpisu tajnego. **SecretVersion** powinna mieć taką wersję wpisu tajnego do użycia. |
+> | SecretUri=_secretUri_                                                       | **SecretUri** powinien być pełnym identyfikatorem URI płaszczyzny danych klucza tajnego w Key Vault, w tym wersji, np. https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931  |
+> | VaultName=_vaultName_;SecretName=_secretName_;SecretVersion=_secretVersion_ | Nazwa **magazynu** powinna być nazwą zasobu Key Vault. **Wpis tajny** musi być nazwą docelowego wpisu tajnego. **Wersjawpisutajnego** powinna być wersją klucza tajnego do użycia. |
 
 > [!NOTE] 
-> W bieżącej wersji zapoznawczej wersje są wymagane. W przypadku rotacji kluczy tajnych, należy zaktualizować wersję w konfiguracji aplikacji.
+> W bieżącej wersji zapoznawczej wymagania są wymagane. W przypadku rotacji kluczy tajnych należy zaktualizować wersję w konfiguracji aplikacji.
 
-Na przykład pełną dokumentację powinien wyglądać następująco:
+Na przykład kompletne odwołanie będzie wyglądać następująco:
 
 ```
 @Microsoft.KeyVault(SecretUri=https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931)
@@ -67,20 +66,20 @@ Alternatywnie:
 ```
 
 
-## <a name="source-application-settings-from-key-vault"></a>Ustawienia aplikacji źródłowej z usługi Key Vault
+## <a name="source-application-settings-from-key-vault"></a>Ustawienia aplikacji źródłowej z Key Vault
 
-Odwołania do usługi Key Vault może służyć jako wartości [ustawienia aplikacji](configure-common.md#configure-app-settings), dzięki czemu można zachować wpisy tajne w usłudze Key Vault, zamiast konfiguracji witryny. Ustawienia aplikacji są bezpiecznie szyfrowane w stanie spoczynku, ale jeśli potrzebujesz możliwości zarządzania wpisami tajnymi, należy przejść do usługi Key Vault.
+Odwołania Key Vault mogą być używane jako wartości [ustawień aplikacji](configure-common.md#configure-app-settings), co pozwala zachować wpisy tajne w Key Vault zamiast konfiguracji lokacji. Ustawienia aplikacji są bezpiecznie szyfrowane w stanie spoczynku, ale jeśli potrzebujesz funkcji tajnego zarządzania, należy przejść do Key Vault.
 
-Aby użyć odwołanie do usługi Key Vault dla ustawienia aplikacji, ustaw odwołanie jako wartość ustawienia. Aplikacja odwoływać się do klucza tajnego za pomocą jego klucza, jak zwykle. Wymagane są bez zmian w kodzie.
+Aby użyć odwołania Key Vault dla ustawienia aplikacji, należy ustawić odwołanie jako wartość ustawienia. Twoja aplikacja może odwoływać się do klucza tajnego za pomocą jego klucza jako normalnego. Nie są wymagane żadne zmiany w kodzie.
 
 > [!TIP]
-> Większość ustawień aplikacji za pomocą usługi Key Vault odwołania powinien być oznaczony jako ustawienia gniazda, jak powinny mieć osobne magazynów dla każdego środowiska.
+> Większość ustawień aplikacji używających odwołań Key Vault powinna być oznaczona jako ustawienia miejsca, ponieważ dla każdego środowiska należy mieć oddzielne magazyny.
 
 ### <a name="azure-resource-manager-deployment"></a>Wdrożenie usługi Azure Resource Manager
 
-Podczas automatyzacji wdrożenia zasobów za pomocą szablonów usługi Azure Resource Manager, może być konieczne sekwencji zależności w określonej kolejności, aby ta funkcja mogła działać. Uwaga: musisz ustawienia aplikacji jest definiowana jako ich własnych zasobów zamiast używania `siteConfig` właściwości w definicji witryny. Jest to spowodowane lokacji musi być definiowana jako pierwsza, tak aby tożsamości przypisanych przez system jest tworzony z nim i mogą być używane w zasadach dostępu.
+W przypadku automatyzowania wdrożeń zasobów za pomocą szablonów Azure Resource Manager może być konieczne sekwencjonowanie zależności w określonej kolejności, aby ta funkcja działała. Pamiętaj, że musisz zdefiniować ustawienia aplikacji jako własny zasób zamiast używać `siteConfig` właściwości w definicji lokacji. Wynika to z faktu, że lokacja musi być zdefiniowana jako pierwsza, aby można było utworzyć tożsamość przypisaną do systemu i użyć jej w zasadach dostępu.
 
-Przykład psuedo szablonów dla aplikacji funkcji może wyglądać następująco:
+Przykład psuedo-Template dla aplikacji funkcji może wyglądać następująco:
 
 ```json
 {
@@ -184,4 +183,4 @@ Przykład psuedo szablonów dla aplikacji funkcji może wyglądać następująco
 ```
 
 > [!NOTE] 
-> W tym przykładzie wdrożenia kontroli źródła zależy od ustawień aplikacji. Jest to zwykle niebezpieczne zachowania, ponieważ aktualizacja ustawień aplikacji zachowuje się asynchronicznie. Jednakże ponieważ wprowadzono `WEBSITE_ENABLE_SYNC_UPDATE_SITE` aplikacji ustawienia aktualizacji jest synchroniczne. Oznacza to, że wdrożenia kontroli źródła tylko rozpocznie się po w pełni zaktualizowano ustawienia aplikacji.
+> W tym przykładzie wdrożenie kontroli źródła zależy od ustawień aplikacji. Jest to zwykle niebezpieczne zachowanie, ponieważ aktualizacja ustawienia aplikacji zachowuje się asynchronicznie. Jednak ze względu na `WEBSITE_ENABLE_SYNC_UPDATE_SITE` to, że zostało dołączone ustawienie aplikacji, aktualizacja jest synchroniczna. Oznacza to, że wdrożenie kontroli źródła rozpocznie się dopiero po całkowitym zaktualizowaniu ustawień aplikacji.

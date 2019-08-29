@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 444e64488b185b1ff2aa7cc63fbeffafc591dbfe
-ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
+ms.openlocfilehash: 69c63d4eb2e0bfd04bb232cb0cf39965a5b77193
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68319977"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70104278"
 ---
 ## <a name="benefits-of-managed-disks"></a>Zalety dysków zarządzanych
 
@@ -53,7 +53,7 @@ Dyski zarządzane oferują dwa różne rodzaje szyfrowania. Pierwszy jest szyfro
 
 ### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
 
-Azure Disk Encryption pozwala na szyfrowanie dysków systemu operacyjnego i danych używanych przez maszynę wirtualną IaaS. To szyfrowanie obejmuje dyski zarządzane. W przypadku systemu Windows dyski są szyfrowane przy użyciu standardowej technologii szyfrowania funkcji BitLocker. W przypadku systemu Linux dyski są szyfrowane przy użyciu technologii DM-Crypt. Proces szyfrowania jest zintegrowany z Azure Key Vault, aby umożliwić kontrolowanie kluczy szyfrowania dysków i zarządzanie nimi. Aby uzyskać więcej informacji, zobacz [Azure Disk Encryption dla maszyn wirtualnych IaaS](../articles/security/azure-security-disk-encryption-overview.md).
+Azure Disk Encryption pozwala na szyfrowanie dysków systemu operacyjnego i danych używanych przez maszynę wirtualną IaaS. To szyfrowanie obejmuje dyski zarządzane. W przypadku systemu Windows dyski są szyfrowane przy użyciu standardowej technologii szyfrowania funkcji BitLocker. W przypadku systemu Linux dyski są szyfrowane przy użyciu technologii DM-Crypt. Proces szyfrowania jest zintegrowany z usługą Azure Key Vault, aby umożliwić kontrolowanie kluczy szyfrowania dysków i zarządzanie nimi. Aby uzyskać więcej informacji, zobacz [Azure Disk Encryption dla maszyn wirtualnych IaaS](../articles/security/azure-security-disk-encryption-overview.md).
 
 ## <a name="disk-roles"></a>Role dysków
 
@@ -77,7 +77,9 @@ Każda maszyna wirtualna zawiera dysk tymczasowy, który nie jest dyskiem zarzą
 
 ## <a name="managed-disk-snapshots"></a>Migawki dysków zarządzanych
 
-Migawka dysku zarządzanego jest tylko do odczytu pełna kopia dysku zarządzanego, która jest domyślnie przechowywana jako standardowy dysk zarządzany. Za pomocą migawek można tworzyć kopie zapasowe dysków zarządzanych w dowolnym momencie. Te migawki istnieją niezależnie od dysku źródłowego i mogą być używane do tworzenia nowych dysków zarządzanych. Opłaty są naliczane na podstawie użytego rozmiaru. Na przykład, jeśli utworzysz migawkę dysku zarządzanego o pojemności 64 GiB i rzeczywistej używanej wielkości danych wynoszącej 10 GiB, ta migawka jest naliczana tylko za użyty rozmiar danych wynoszący 10 GiB.  
+Migawka dysku zarządzanego jest tylko do odczytu pełna kopia dysku zarządzanego, która jest domyślnie przechowywana jako standardowy dysk zarządzany. Za pomocą migawek można tworzyć kopie zapasowe dysków zarządzanych w dowolnym momencie. Te migawki istnieją niezależnie od dysku źródłowego i mogą być używane do tworzenia nowych dysków zarządzanych. 
+
+Migawki są rozliczane na podstawie użytego rozmiaru. Na przykład, jeśli utworzysz migawkę dysku zarządzanego o pojemności 64 GiB i rzeczywistej używanej wielkości danych wynoszącej 10 GiB, ta migawka jest naliczana tylko za użyty rozmiar danych wynoszący 10 GiB. Używany rozmiar migawek można zobaczyć, przeglądając [raport użycia platformy Azure](https://docs.microsoft.com/en-us/azure/billing/billing-understand-your-bill). Na przykład jeśli używany rozmiar danych migawki to 10 GiB, raport użycia będzie zawierał 10 GiB/(31 dni x 24 godziny) = 0,013441 GiB jako ilość zużytą.
 
 Aby dowiedzieć się więcej na temat tworzenia migawek z dyskami zarządzanymi, zobacz następujące zasoby:
 
@@ -117,6 +119,6 @@ Platforma Azure używa priorytetowego kanału sieciowego dla ruchu dyskowego, kt
 
 Zapoznaj się z naszym [projektem w celu uzyskania wysokiej wydajności](../articles/virtual-machines/windows/premium-storage-performance.md) artykułu, aby poznać najlepsze rozwiązania dotyczące optymalizowania konfiguracji maszyn wirtualnych i dysków, dzięki czemu można osiągnąć żądaną wydajność
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się więcej na temat poszczególnych typów dysków oferowanych przez platformę Azure, które są odpowiednie dla Twoich potrzeb, i poznaj ich cele wydajności w naszym artykule na temat typów dysków.

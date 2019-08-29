@@ -10,17 +10,16 @@ tags: azure-service-management
 ms.assetid: ebcadb49-755d-4202-a5eb-f211827a9168
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: dbe8417e8a26cb222fe52ac7c0284b3956ed65fb
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9b9a6ecc93489c6690e0128ef9129c480f506b31
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136630"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098423"
 ---
 # <a name="delete-a-backup-for-a-web-using-azure-powershell"></a>Usuwanie kopii zapasowej aplikacji internetowej przy użyciu programu Azure PowerShell
 
@@ -51,7 +50,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Pobiera listę kopii zapasowych dla aplikacji internetowej. |
 | [Remove-AzWebAppBackup](/powershell/module/az.websites/remove-azwebappbackup) | Usuwa określoną kopię zapasową aplikacji internetowej. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

@@ -1,6 +1,6 @@
 ---
-title: Omówienie agenta maszyny Wirtualnej systemu Linux platformy Azure | Dokumentacja firmy Microsoft
-description: Informacje o sposobie instalowania i konfigurowania agenta systemu Linux (waagent) do zarządzania interakcją maszyny wirtualnej z kontrolerem sieci szkieletowej Azure.
+title: Omówienie agenta maszyny wirtualnej platformy Azure z systemem Linux | Microsoft Docs
+description: Dowiedz się, jak zainstalować i skonfigurować agenta systemu Linux (waagent) w celu zarządzania interakcją maszyny wirtualnej z kontrolerem sieci szkieletowej Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: roiyz-msft
@@ -11,129 +11,128 @@ ms.assetid: e41de979-6d56-40b0-8916-895bf215ded6
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 59a0cdd29e50501f023faf323948a400f325df0b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: acb6e14845beb4c947992e63f1984c072ba9f59f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706154"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084817"
 ---
-# <a name="understanding-and-using-the-azure-linux-agent"></a>Znajomość i wykorzystanie agenta systemu Linux dla platformy Azure
+# <a name="understanding-and-using-the-azure-linux-agent"></a>Zrozumienie i używanie agenta systemu Linux platformy Azure
 
-Linux Agent usług Microsoft Azure (waagent) zarządza systemu Linux i FreeBSD inicjowania obsługi administracyjnej i interakcji maszyny Wirtualnej z kontrolerem sieci szkieletowej platformy Azure. Oprócz agenta systemu Linux, dostarczanie funkcji inicjowania obsługi administracyjnej system Azure oferuje możliwość korzystania z pakietu cloud-init do niektórych systemów operacyjnych Linux. Agent systemu Linux udostępnia następujące funkcje dla systemów Linux i FreeBSD IaaS wdrożeń:
+Agent Microsoft Azure Linux (waagent) zarządza obsługą systemu Linux & FreeBSD, a interakcja maszyny wirtualnej z kontrolerem sieci szkieletowej Azure. Oprócz agenta systemu Linux dostarczającego funkcje inicjowania obsługi, platforma Azure udostępnia również opcję korzystania z usługi Cloud-init dla niektórych systemów operacyjnych systemu Linux. Agent systemu Linux zapewnia następujące funkcje wdrożeń systemu Linux i FreeBSD IaaS:
 
 > [!NOTE]
-> Aby uzyskać więcej informacji, zobacz [README](https://github.com/Azure/WALinuxAgent/blob/master/README.md).
+> Aby uzyskać więcej informacji, zobacz [plik Readme](https://github.com/Azure/WALinuxAgent/blob/master/README.md).
 > 
 > 
 
-* **Udostępnianie obrazów**
+* **Inicjowanie obsługi obrazu**
   
   * Tworzenie konta użytkownika
   * Konfigurowanie typów uwierzytelniania SSH
-  * Wdrożenie par kluczy i kluczy publicznych SSH
+  * Wdrażanie kluczy publicznych SSH i par kluczy
   * Ustawianie nazwy hosta
-  * Publikowanie nazwy hosta do korzystania z platformy DNS
-  * Raportowanie odcisk palca klucza hosta SSH dla platformy
+  * Publikowanie nazwy hosta na platformie DNS platformy
+  * Raportowanie odcisku palca klucza hosta SSH do platformy
   * Zarządzanie dyskami zasobów
-  * Formatowanie i zainstalować dysku zasobów
+  * Formatowanie i Instalowanie dysku zasobów
   * Konfigurowanie obszaru wymiany
 * **Sieć**
   
-  * Zarządza trasy, aby zwiększyć zgodność z serwerów DHCP platformy
-  * Zapewnia stabilność Nazwa interfejsu sieciowego
+  * Zarządza trasami w celu poprawy zgodności z serwerami DHCP platformy
+  * Zapewnia stabilność nazwy interfejsu sieciowego
 * **Kernel**
   
-  * Konfiguruje wirtualną architekturę NUMA (Wyłącz dla jądra <`2.6.37`)
-  * Wykorzystuje entropii funkcji Hyper-V dla /dev/random
-  * Konfiguruje SCSI przekroczeń limitu czasu dla głównego urządzenia, (która może być zdalne)
+  * Konfiguruje wirtualną architekturę NUMA (Wyłącz`2.6.37`dla jądra <)
+  * Zużywa entropię funkcji Hyper-V dla/dev/Random
+  * Konfiguruje limity czasu SCSI dla urządzenia głównego (co może być zdalne)
 * **Diagnostyka**
   
-  * Przekierowywanie konsoli do portu szeregowego
-* **Wdrożenia programu SCVMM**
+  * Przekierowanie konsoli do portu szeregowego
+* **Wdrożenia SCVMM**
   
-  * Wykrywa i używa do ładowania agenta programu VMM dla systemu Linux podczas pracy w środowisku programu System Center Virtual Machine Manager 2012 R2
-* **Rozszerzenie maszyny Wirtualnej**
+  * Wykrywa i uruchamia Bootstrap agenta programu VMM dla systemu Linux w przypadku uruchamiania w środowisku System Center Virtual Machine Manager 2012 R2
+* **Rozszerzenie maszyny wirtualnej**
   
-  * Wstrzykiwanie składnika opracowane przez firmę Microsoft i partnerów do maszyny Wirtualnej systemu Linux (IaaS) umożliwiające oprogramowania i konfiguracji usługi automation
-  * Implementacja referencyjna rozszerzenia maszyny Wirtualnej na [https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
+  * Wsuń składnik utworzony przez firmę Microsoft i partnerów na maszynę wirtualną z systemem Linux (IaaS) w celu umożliwienia automatyzacji oprogramowania i konfiguracji
+  * Implementacja odwołania do rozszerzenia maszyny wirtualnej na[https://github.com/Azure/azure-linux-extensions](https://github.com/Azure/azure-linux-extensions)
 
 ## <a name="communication"></a>Komunikacja
-Przepływ informacji z platformą do agenta odbywa się za pośrednictwem dwóch kanałów:
+Przepływ informacji z platformy do agenta odbywa się za pośrednictwem dwóch kanałów:
 
-* Czas rozruchu dołączonych dysków DVD dla wdrożeń rozwiązań IaaS. Ten dysk DVD obejmuje CLS OVF pliku konfiguracji, który zawiera wszystkie informacje o udostępnianiu niż rzeczywista keypairs SSH.
-* Punkt końcowy protokołu TCP, udostępnianie interfejsu API REST używany można uzyskać, wdrażania i konfiguracji topologii.
+* Dysk DVD z dołączonym czasem rozruchu dla wdrożeń IaaS. Ten dysk DVD zawiera plik konfiguracji zgodny z OVF, który zawiera wszystkie informacje o aprowizacji inne niż rzeczywiste pary kluczy SSH.
+* Punkt końcowy TCP uwidaczniający interfejs API REST używany do uzyskiwania konfiguracji wdrożenia i topologii.
 
 ## <a name="requirements"></a>Wymagania
-Poniższe systemy zostały przetestowane i znane pracy z agentem systemu Linux platformy Azure:
+Następujące systemy zostały przetestowane i wiadomo, że współpracują z agentem systemu Azure Linux:
 
 > [!NOTE]
-> Ta lista może różnić się od oficjalną listę obsługiwanych systemów na platformie Microsoft Azure, tak jak opisano tutaj: [https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
+> Ta lista może się różnić od oficjalnej listy obsługiwanych systemów na platformie Microsoft Azure, zgodnie z opisem w tym miejscu:[https://support.microsoft.com/kb/2805216](https://support.microsoft.com/kb/2805216)
 > 
 > 
 
 * CoreOS
 * CentOS 6.3+
 * Red Hat Enterprise Linux 6.7+
-* Debian 7.0+
+* Debian 7.0 +
 * Ubuntu 12.04+
 * openSUSE 12.3+
 * SLES 11 SP3+
-* Oracle Linux 6.4+
+* Oracle Linux 6.4 +
 
 Inne obsługiwane systemy:
 
-* FreeBSD 10 + (Agent systemu Linux platformy Azure v2.0.10 i nowsze)
+* FreeBSD 10 + (Azure Linux Agent v 2.0.10 +)
 
-Agent systemu Linux jest zależna od niektórych pakietów systemu w celu poprawnego:
+Agent systemu Linux zależy od niektórych pakietów systemowych w celu poprawnego działania:
 
 * Python 2.6+
 * OpenSSL 1.0+
 * OpenSSH 5.3+
-* Filesystem utilities: sfdisk, fdisk, mkfs, parted
-* Narzędzia hasło: chpasswd, "sudo"
-* Narzędzia do przetwarzania tekstu: sed, grep
-* Narzędzia sieci: trasy ip
-* Jądra obsługuje instalowanie systemów plików funkcji zdefiniowanej przez użytkownika.
+* Narzędzia systemu plików: sfdisk, fdisk, mkfs, częściowo
+* Narzędzia do haseł: chpasswd, sudo
+* Narzędzia do przetwarzania tekstu: SED, grep
+* Narzędzia sieciowe: trasa IP
+* Obsługa jądra na potrzeby instalowania systemów plików UDF.
 
 ## <a name="installation"></a>Instalacja
-Instalację przy użyciu RPM lub DEB pakietu z repozytorium pakietów w Twojej dystrybucji jest preferowaną metodą instalacji i uaktualniania agenta systemu Linux dla platformy Azure. Wszystkie [zatwierdzonego dla dostawców dystrybucji](../linux/endorsed-distros.md) Zintegruj pakiet Azure Linux agent repozytoriów i obrazów.
+Instalacja przy użyciu programu RPM lub pakietu DEB z repozytorium pakietu dystrybucji jest preferowaną metodą instalowania i uaktualniania agenta systemu Azure Linux. Wszyscy [pozatwierdzeni dostawcy dystrybucji](../linux/endorsed-distros.md) integrują pakiet agenta platformy Azure z systemem Linux z obrazami i repozytoriami.
 
-Zapoznaj się z dokumentacją w [repozytorium agenta systemu Linux platformy Azure w serwisie GitHub](https://github.com/Azure/WALinuxAgent) dla zaawansowane opcje instalacji, takich jak instalowanie ze źródła lub niestandardowe lokalizacje lub prefiksy.
+Zapoznaj się z dokumentacją w [repozytorium agenta systemu Azure Linux w witrynie GitHub](https://github.com/Azure/WALinuxAgent) w celu uzyskania zaawansowanych opcji instalacji, takich jak instalowanie ze źródła lub do lokalizacji niestandardowych lub prefiksów.
 
 ## <a name="command-line-options"></a>Opcje wiersza polecenia
 ### <a name="flags"></a>flagi
-* verbose: Zwiększ poziom szczegółowości określone polecenie
-* Wymuś: Pomiń interaktywne potwierdzenie dla niektórych poleceń
+* pełne Zwiększ poziom szczegółowości określonego polecenia
+* moc Pomiń interaktywne potwierdzenie niektórych poleceń
 
 ### <a name="commands"></a>Polecenia
-* Pomoc: Wyświetla listę obsługiwanych poleceń i flagi.
-* Anulowanie aprowizacji: Spróbuj wyczyścić systemu i odpowiednie do reprovisioning. Następujące usuwa operacji:
+* Pomoc: Wyświetla listę obsługiwanych poleceń i flag.
+* Anulowanie aprowizacji Podjęto próbę wyczyszczenia systemu i upewnienia się, że jest on odpowiedni do ponownego inicjowania obsługi administracyjnej. Następująca operacja usuwa:
   
-  * Wszystkich kluczy hostów SSH (jeśli Provisioning.RegenerateSshHostKeyPair "y" w pliku konfiguracji)
-  * Konfiguracja serwera nazw w /etc/resolv.conf
-  * Hasło główne od użytkownika (jeśli Provisioning.DeleteRootPassword "y" w pliku konfiguracji)
-  * Buforowanych dzierżaw klientów DHCP
+  * Wszystkie klucze hosta SSH (jeśli inicjowanie obsługi. RegenerateSshHostKeyPair ma wartość "y" w pliku konfiguracyjnym)
+  * Konfiguracja serwer nazw w/etc/resolv.conf
+  * Hasło główne z/etc/shadow (jeśli inicjowanie obsługi. DeleteRootPassword ma wartość "y" w pliku konfiguracyjnym)
+  * Buforowane dzierżawy klientów DHCP
   * Zresetowanie nazwy hosta na wartość localhost.localdomain
 
 > [!WARNING]
-> Anulowanie aprowizacji nie gwarantuje, że obraz jest wyczyszczone wszystkie informacje poufne i nadaje się do ponownej dystrybucji.
+> Anulowanie aprowizacji nie gwarantuje, że obraz jest czyszczony z uwzględnieniem wszystkich poufnych informacji i odpowiednich do ponownej dystrybucji.
 > 
 > 
 
-* Anulowanie aprowizacji i użytkownika: Wszystko, co wykonuje w - deprovision (powyżej) i również usuwa ostatnie aprowizowane konto użytkownika (uzyskana z /var/lib/waagent) i skojarzone dane. Ten parametr jest podczas anulowania obsługi obrazu, który został wcześniej aprowizacji na platformie Azure, dzięki czemu mogą być przechwytywane i ponownie.
+* Cofanie aprowizacji i użytkownika: Wykonuje wszystkie czynności w ramach zastrzegania (powyżej), a także usuwa ostatnio zainicjowane konto użytkownika (uzyskane z/var/lib/waagent) i powiązane dane. Ten parametr jest niezależny od zainicjowania obsługi obrazu, który został wcześniej zainicjowany na platformie Azure, aby można go było przechwycić i ponownie użyć.
 * Wersja: Wyświetla wersję waagent
-* serialconsole: Konfiguruje CHODNIKÓW, aby oznaczyć ttyS0 (pierwszy port szeregowy) jako konsola rozruchu. Gwarantuje to, że dzienniki rozruchu jądra są wysyłane do portu szeregowego i udostępnione do debugowania.
-* daemon: Uruchomiono agenta waagent jako demon do zarządzania interakcją z platformą. Ten argument zostanie określony do waagent w skrypcie inicjowania waagent.
-* Początek: Uruchomiono agenta waagent jako proces w tle
+* serialconsole: Konfiguruje GRUB, aby oznaczyć ttyS0 (pierwszy port szeregowy) jako konsolę rozruchową. Dzięki temu dzienniki rozruchu jądra są wysyłane do portu szeregowego i udostępniane do debugowania.
+* Demon Uruchom waagent jako demona, aby zarządzać interakcją z platformą. Ten argument jest określony do waagent w skrypcie init waagent.
+* Start Uruchom waagent jako proces w tle
 
 ## <a name="configuration"></a>Konfigurowanie
-Plik konfiguracji (/ etc/waagent.conf) Określa akcje waagent. Poniżej przedstawiono przykładowy plik konfiguracji:
+Plik konfiguracji (/etc/waagent.conf) kontroluje akcje waagent. Poniżej przedstawiono przykładowy plik konfiguracji:
 
     ```
     Provisioning.Enabled=y
@@ -161,17 +160,17 @@ Plik konfiguracji (/ etc/waagent.conf) Określa akcje waagent. Poniżej przedsta
     AutoUpdate.Enabled=y
     ```
 
-Następujące czynności, które opisano różne opcje konfiguracji. Opcje konfiguracji są trzy typy; Atrybut typu wartość logiczna, ciąg lub liczba całkowita. Opcje konfiguracji logiczną, można określić jako "y" lub "n". Specjalne przez Ciebie słowo kluczowe "None" może być używany dla niektórych wpisów konfiguracji typu ciąg jako następujące informacje:
+Opisane są następujące różne opcje konfiguracji. Opcje konfiguracji są trzy typy: Wartość logiczna, String lub Integer. Opcje konfiguracji wartości logicznych można określić jako "y" lub "n". Specjalne słowo kluczowe "none" może być używane dla niektórych wpisów konfiguracji typu String jako następujące szczegóły:
 
-**Provisioning.Enabled:**  
+**Inicjowanie obsługi administracyjnej. włączone:**  
 ```
 Type: Boolean  
 Default: y
 ```
-Dzięki temu użytkownikowi na włączanie lub wyłączanie funkcji inicjowania obsługi administracyjnej w agencie. Prawidłowe wartości to "y" lub "n". Jeśli Inicjowanie obsługi administracyjnej jest wyłączone, klucze hosta i użytkownika SSH na ilustracji są zachowywane i określona na platformie Azure aprowizujący interfejs API konfiguracja jest ignorowana.
+Dzięki temu użytkownik może włączyć lub wyłączyć funkcję aprowizacji w agencie. Prawidłowe wartości to "y" lub "n". Jeśli Inicjowanie obsługi jest wyłączone, hosty SSH i klucze użytkownika w obrazie są zachowywane i jakakolwiek konfiguracja określona w interfejsie API aprowizacji platformy Azure zostanie zignorowana.
 
 > [!NOTE]
-> `Provisioning.Enabled` Domyślnych wartości parametrów do "n" na obrazy systemu Ubuntu w chmurze, korzystających z pakietu cloud-init do inicjowania obsługi.
+> `Provisioning.Enabled` Parametr domyślnie ma wartość "n" w obrazach w chmurze Ubuntu, które korzystają z usługi Cloud-init na potrzeby aprowizacji.
 > 
 > 
 
@@ -180,104 +179,104 @@ Dzięki temu użytkownikowi na włączanie lub wyłączanie funkcji inicjowania 
 Type: Boolean  
 Default: n
 ```
-Jeśli zestaw, hasła głównego w pliku/etc/w tle są usuwane podczas procesu inicjowania obsługi administracyjnej.
+Jeśli ta wartość jest ustawiona, hasło główne w pliku/etc/shadow zostanie wymazane podczas procesu aprowizacji.
 
 **Provisioning.RegenerateSshHostKeyPair:**  
 ```
 Type: Boolean  
 Default: y
 ```
-Jeśli zestawu i wszystkich hostów par kluczy SSH (ecdsa, dsa lub rsa) zostaną usunięte podczas procesu inicjowania obsługi administracyjnej z/etc/ssh /. I jest generowany przez pojedynczego nowej pary kluczy.
+Jeśli ta wartość jest ustawiona, wszystkie pary kluczy hosta SSH (ECDSA, DSA i RSA) są usuwane podczas procesu aprowizacji z/etc/ssh/. I generowana jest pojedyncza para kluczy.
 
-Konfiguruje we wpisie Provisioning.SshHostKeyPairType się typ szyfrowania dla nowej pary kluczy. Niektóre dystrybucji ponownie utworzyć par kluczy SSH dla wszelkich brakujących typów szyfrowania, po ponownym uruchomieniu demon SSH (na przykład po ponownym rozruchu).
+Typ szyfrowania pary kluczy można skonfigurować przy użyciu wpisu aprowizacji. SshHostKeyPairType. Niektóre dystrybucje ponownie tworzą pary kluczy SSH dla wszelkich brakujących typów szyfrowania po ponownym uruchomieniu demona SSH (na przykład po ponownym uruchomieniu).
 
 **Provisioning.SshHostKeyPairType:**  
 ```
 Type: String  
 Default: rsa
 ```
-Może być równa typ algorytmu szyfrowania, który jest obsługiwany przez demon SSH na maszynie wirtualnej. Zwykle obsługiwane wartości to "rsa", "dsa" i "ecdsa". "putty.exe" w Windows obsługuje tylko "ecdsa". Tak Jeśli zamierzasz użyć putty.exe w Windows, aby nawiązać połączenie z wdrożenia systemu Linux, użyj "rsa" lub "dsa".
+Można ustawić ten typ algorytmu szyfrowania, który jest obsługiwany przez demona SSH na maszynie wirtualnej. Zazwyczaj obsługiwane są wartości "RSA", "DSA" i "ECDSA". "w systemie Windows" nie obsługuje "ECDSA". Tak więc, jeśli zamierzasz użyć w systemie Windows programu w celu nawiązania połączenia z wdrożeniem systemu Linux, użyj "RSA" lub "DSA".
 
 **Provisioning.MonitorHostName:**  
 ```
 Type: Boolean  
 Default: y
 ```
-Jeśli zestaw, waagent monitoruje maszyny wirtualnej systemu Linux, zmiany nazwy hosta (jak zwracany przez polecenie "hostname") i automatycznie zaktualizować konfiguracji sieci w obrazie w celu odzwierciedlenia zmiany. Aby wypchnąć zmiany nazwy do serwerów DNS, sieci zostanie ponownie uruchomiona na maszynie wirtualnej. W skrócie powoduje utratę łączności z Internetem.
+Jeśli ta wartość jest ustawiona, waagent monitoruje maszynę wirtualną z systemem Linux pod kątem zmian nazw hostów (zwracanych przez polecenie "hostname") i automatycznie aktualizuje konfigurację sieci w obrazie, aby odzwierciedlić zmianę. Aby można było wypchnąć zmianę nazwy na serwery DNS, Sieć jest ponownie uruchamiana na maszynie wirtualnej. Powoduje to krótką utratę łączności z Internetem.
 
 **Provisioning.DecodeCustomData**  
 ```
 Type: Boolean  
 Default: n
 ```
-Jeśli zestaw, waagent dekoduje CustomData z formatu Base64.
+Jeśli jest ustawiona, waagent dekoduje CustomData z base64.
 
 **Provisioning.ExecuteCustomData**  
 ```
 Type: Boolean  
 Default: n
 ```
-Jeśli zestaw, waagent wykonuje CustomData po zainicjowaniu obsługi administracyjnej.
+Jeśli ta wartość jest ustawiona, waagent wykonuje CustomData po aprowizacji.
 
-**Provisioning.AllowResetSysUser**
+**Inicjowanie obsługi administracyjnej. AllowResetSysUser**
 ```
 Type: Boolean
 Default: n
 ```
-Ta opcja umożliwia hasło dla użytkownika sys zerującego; Domyślnie jest wyłączona.
+Ta opcja umożliwia resetowanie hasła dla użytkownika sys; wartość domyślna jest wyłączona.
 
 **Provisioning.PasswordCryptId**  
 ```
 Type: String  
 Default: 6
 ```
-Algorytm używany przez crypt podczas generowania skrótów haseł.  
+Algorytm używany przez Crypt podczas generowania skrótu hasła.  
  1 - MD5  
- 2a - Blowfish  
- 5 — ALGORYTM SHA-256  
- 6 - SHA-512  
+ 2a — Blowfish  
+ 5 — SHA-256  
+ 6 — SHA-512  
 
 **Provisioning.PasswordCryptSaltLength**  
 ```
 Type: String  
 Default: 10
 ```
-Długość losowego ziarna używane podczas generowania skrótów haseł.
+Długość losowej soli używanej podczas generowania skrótu hasła.
 
-**ResourceDisk.Format:**  
+**ResourceDisk. Format:**  
 ```
 Type: Boolean  
 Default: y
 ```
-Jeśli ustawiona, dysk zasobów dostarczonego przez platformę jest sformatowany i zainstalowanych w wyniku waagent, jeśli typ systemu plików, żądane przez użytkownika w "ResourceDisk.Filesystem" jest inna niż "systemu plików ntfs". Jedna partycja typu systemu Linux (83) jest udostępniane na dysku. Ta partycja nie jest sformatowany, jeśli można zainstalować pomyślnie.
+Jeśli ta wartość jest ustawiona, dysk zasobów dostarczony przez platformę jest sformatowany i instalowany przez waagent, jeśli typ systemu plików żądany przez użytkownika w "ResourceDisk. FileSystem" jest inny niż "NTFS". Na dysku są udostępniane pojedynczej partycji typu Linux (83). Ta partycja nie jest sformatowana, jeśli może zostać pomyślnie zainstalowana.
 
 **ResourceDisk.Filesystem:**  
 ```
 Type: String  
 Default: ext4
 ```
-Określa typ systemu plików dla dysku zasobów. Obsługiwane wartości zależą od dystrybucji systemu Linux. Jeśli ciąg jest X, a następnie mkfs. X powinny znajdować się na obrazie systemu Linux. SLES 11 obrazów zwykle należy używać "ext3". FreeBSD obrazów należy używać "ufs2" w tym miejscu.
+Określa typ systemu plików dla dysku zasobu. Obsługiwane wartości różnią się w zależności od dystrybucji systemu Linux. Jeśli ciąg to X, a następnie mkfs. Symbol X powinien być obecny w obrazie systemu Linux. Obrazy SLES 11 powinny zwykle korzystać z "ext3". W tym miejscu obrazy FreeBSD powinny używać "UFS2".
 
 **ResourceDisk.MountPoint:**  
 ```
 Type: String  
 Default: /mnt/resource 
 ```
-To ustawienie określa ścieżkę, w którym jest zainstalowany dysk zasobów. Dysk zasobów jest *tymczasowe* dysku i może opróżnić, gdy maszyna wirtualna jest anulowanie aprowizacji.
+Określa ścieżkę, w której zainstalowano dysk zasobu. Dysk zasobu jest dyskiem *tymczasowym* i może zostać opróżniony w przypadku anulowania aprowizacji maszyny wirtualnej.
 
 **ResourceDisk.MountOptions**  
 ```
 Type: String  
 Default: None
 ```
-Określa opcje instalacji dysku, które zostaną przekazane do polecenia -o instalacji. Jest to rozdzielana przecinkami lista wartości, np. "nodev, nosuid". Zobacz mount(8), aby uzyskać szczegółowe informacje.
+Określa opcje instalacji dysków, które mają zostać przesłane do polecenia instalacji-o. Jest to rozdzielona przecinkami lista wartości, np. 'nodev,nosuid'. Aby uzyskać szczegółowe informacje, zobacz Instalowanie (8).
 
 **ResourceDisk.EnableSwap:**  
 ```
 Type: Boolean  
 Default: n
 ```
-Jeśli ustawiona pliku wymiany (/ swapfile) jest tworzone na dysku zasobów i dodane do obszaru wymiany w systemie.
+Jeśli ta wartość jest ustawiona, plik wymiany (/swapfile) jest tworzony na dysku zasobu i dodawany do obszaru wymiany w systemie.
 
 **ResourceDisk.SwapSizeMB:**  
 ```
@@ -286,55 +285,55 @@ Default: 0
 ```
 Rozmiar pliku wymiany w megabajtach.
 
-**Logs.Verbose:**  
+**Logs. verbose:**  
 ```
 Type: Boolean  
 Default: n
 ```
-Jeśli wzmocnione to zestaw, poziom szczegółowości dziennika. Waagent rejestruje /var/log/waagent.log i korzysta z funkcji logrotate systemu, aby obrócić dzienniki.
+W przypadku ustawienia opcji szczegółowości dziennika jest zwiększana. Waagent dzienniki do/var/log/waagent.log i wykorzystuje funkcjonalność System logrotate do rotacji dzienników.
 
 **OS.EnableRDMA**  
 ```
 Type: Boolean  
 Default: n
 ```
-Jeśli zestaw, agent próbuje zainstalować, a następnie załadować sterownik jądra RDMA, które odpowiadają wersji oprogramowania układowego na bazowego sprzętu.
+Jeśli ta wartość jest ustawiona, Agent podejmie próbę instalacji, a następnie załadowania sterownika jądra RDMA zgodnego z wersją oprogramowania układowego na źródłowym sprzęcie.
 
 **OS.RootDeviceScsiTimeout:**  
 ```
 Type: Integer  
 Default: 300
 ```
-To ustawienie określa limit czasu SCSI, w ciągu kilku sekund na dyskach systemu operacyjnego dysku i danych. Jeśli nie jest ustawiona, system, które są używane wartości domyślne.
+To ustawienie umożliwia skonfigurowanie limitu czasu interfejsu SCSI w sekundach na dysku systemu operacyjnego i na dyskach danych. Jeśli nie zostanie ustawiona, są używane wartości domyślne systemu.
 
 **OS.OpensslPath:**  
 ```
 Type: String  
 Default: None
 ```
-To ustawienie umożliwia określenie alternatywnej ścieżki dla biblioteki openssl binarne do użycia dla operacji kryptograficznych.
+Tego ustawienia można użyć do określenia alternatywnej ścieżki pliku binarnego OpenSSL, który ma być używany na potrzeby operacji kryptograficznych.
 
 **HttpProxy.Host, HttpProxy.Port**  
 ```
 Type: String  
 Default: None
 ```
-Jeśli zestaw, agent używa ten serwer proxy dostępu do Internetu. 
+W przypadku ustawienia agent używa tego serwera proxy w celu uzyskania dostępu do Internetu. 
 
-**AutoUpdate.Enabled**
+**Funkcja Aktualizacje automatyczne. włączona**
 ```
 Type: Boolean
 Default: y
 ```
-Włącz lub wyłącz automatyczne aktualizowanie stanie celem przetwarzania; Domyślnie włączone.
+Włącza lub wyłącza funkcję autoaktualizowania dla przetwarzania stanu celu. wartość domyślna jest włączona.
 
 
 
 ## <a name="ubuntu-cloud-images"></a>Ubuntu Cloud Images
-Korzystanie z obrazów w chmurze systemu Ubuntu [pakietu cloud-init](https://launchpad.net/ubuntu/+source/cloud-init) do wykonywania wielu zadań konfiguracji, które w przeciwnym razie będą zarządzane przez agenta systemu Linux dla platformy Azure. Stosuje się następujące różnice:
+Obrazy w chmurze Ubuntu wykorzystują funkcję [Cloud-init](https://launchpad.net/ubuntu/+source/cloud-init) do wykonywania wielu zadań konfiguracyjnych, które w przeciwnym razie byłyby zarządzane przez agenta systemu Linux platformy Azure. Obowiązują następujące różnice:
 
-* **Provisioning.Enabled** wartość domyślna to "n" na obrazy systemu Ubuntu w chmurze, korzystających z pakietu cloud-init do wykonywania zadań inicjowania obsługi administracyjnej.
-* Następujące parametry konfiguracji nie mają wpływu na obrazy systemu Ubuntu w chmurze, korzystających z pakietu cloud-init do zarządzania dyskami zasobów i obszar wymiany:
+* **Inicjowanie obsługi administracyjnej. włączono** domyślnie dla "n" obrazów w chmurze Ubuntu, które używają funkcji Cloud-init do wykonywania zadań aprowizacji.
+* Następujące parametry konfiguracji nie mają wpływu na obrazy w chmurze Ubuntu korzystające z usługi Cloud-init do zarządzania dyskami zasobów i przestrzenią wymiany:
   
   * **ResourceDisk.Format**
   * **ResourceDisk.Filesystem**
@@ -342,8 +341,8 @@ Korzystanie z obrazów w chmurze systemu Ubuntu [pakietu cloud-init](https://lau
   * **ResourceDisk.EnableSwap**
   * **ResourceDisk.SwapSizeMB**
 
-* Aby uzyskać więcej informacji zobacz następujące zasoby do konfigurowania punktu instalacji dysku zasobów, a następnie zamienić miejsca na obrazy systemu Ubuntu w chmurze podczas inicjowania obsługi:
+* Aby uzyskać więcej informacji, zapoznaj się z poniższymi zasobami w celu skonfigurowania punktu instalacji dysku zasobu i zamiany miejsca na obrazy w chmurze Ubuntu podczas aprowizacji:
   
-  * [Ubuntu Witryna typu Wiki: Konfigurowanie partycji wymiany](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
-  * [Wstawianie danych niestandardowych do maszyny wirtualnej platformy Azure](../windows/classic/inject-custom-data.md)
+  * [Ubuntu wiki: Konfigurowanie partycji wymiany](https://go.microsoft.com/fwlink/?LinkID=532955&clcid=0x409)
+  * [Wprowadzanie danych niestandardowych do maszyny wirtualnej platformy Azure](../windows/classic/inject-custom-data.md)
 

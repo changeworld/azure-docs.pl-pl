@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: 65debc8c65752150651d00d84eeff469cefbc268
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1459b6fc45bb3d875b4869d1dcb4302dec21eb96
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68311870"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114801"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatyzowanie kompilacji i konserwacji obrazów kontenerów za pomocą zadań ACR
 
@@ -56,7 +56,7 @@ Dowiedz się, jak używać szybkich zadań w pierwszym samouczku ACR Tasks, [two
 
 ## <a name="automatic-build-on-source-code-commit"></a>Automatyczne Kompilowanie przy zatwierdzaniu kodu źródłowego
 
-Użyj zadań ACR do automatycznego wyzwalania kompilacji obrazu kontenera, gdy kod zostanie przekazany do repozytorium git. Zadania kompilacji, konfigurowalne przy użyciu interfejsu wiersza polecenia platformy Azure [AZ ACR Task][az-acr-task], umożliwiają określenie repozytorium Git oraz opcjonalnego rozgałęzienia i pliku dockerfile. Gdy zespół zatwierdzi kod w repozytorium, ACR zadania webhook wyzwalają kompilację obrazu kontenera zdefiniowanego w repozytorium.
+Za pomocą zadań ACR automatycznie Wyzwól kompilację obrazu kontenera, gdy kod zostanie przekazany do repozytorium Git w serwisie GitHub lub Azure DevOps. Zadania kompilacji, konfigurowalne przy użyciu interfejsu wiersza polecenia platformy Azure [AZ ACR Task][az-acr-task], umożliwiają określenie repozytorium Git oraz opcjonalnego rozgałęzienia i pliku dockerfile. Gdy zespół zatwierdzi kod w repozytorium, ACR zadania webhook wyzwalają kompilację obrazu kontenera zdefiniowanego w repozytorium.
 
 > [!IMPORTANT]
 > Jeśli wcześniej utworzono zadania w wersji zapoznawczej przy `az acr build-task` użyciu polecenia, należy ponownie utworzyć te zadania za pomocą polecenia [AZ ACR Task][az-acr-task] .
@@ -73,10 +73,14 @@ W przypadku aktualizowania obrazu systemu operacyjnego lub aplikacji w ramach ut
 
 Ponieważ zadania ACR dynamicznie odnajdują zależności obrazu podstawowego podczas kompilowania obrazu kontenera, może wykryć, kiedy obraz podstawowy obrazu aplikacji zostanie zaktualizowany. Po jednym wstępnie skonfigurowanym [zadaniu kompilacji](container-registry-tutorial-base-image-update.md#create-a-task)ACR zadania **automatycznie ponownie kompilują każdy obraz aplikacji** . Dzięki temu automatycznemu wykrywaniu i odbudowywaniu ACR zadania oszczędzają czas i nakłady pracy, które są zwykle wymagane do ręcznego śledzenia i aktualizowania każdego obrazu aplikacji, do którego odwołuje się zaktualizowany obraz podstawowy.
 
-Dowiedz się więcej o poprawkach systemów operacyjnych i struktur w trzecim samouczku ACR zadania, [automatyzując kompilacje obrazów w podstawowej aktualizacji obrazu przy użyciu Azure Container Registry zadań](container-registry-tutorial-base-image-update.md).
+Zadanie ACR śledzi podstawową aktualizację obrazu, gdy podstawowy obraz znajduje się w jednej z następujących lokalizacji:
 
-> [!NOTE]
-> Obecnie wyzwalacz aktualizacji obrazu podstawowego kompiluje się tylko wtedy, gdy zarówno obrazy podstawowe, jak i aplikacje znajdują się w tym samym rejestrze kontenerów platformy Azure, lub baza jest w publicznym centrum Docker lub w repozytorium Microsoft Container Registry.
+* Ten sam rejestr kontenerów platformy Azure, w którym uruchomiono zadanie
+* Inna usługa Azure Container Registry w tym samym regionie 
+* Repozytorium publiczne w usłudze Docker Hub
+* Repozytorium publiczne w programie Microsoft Container Registry
+
+Dowiedz się więcej o poprawkach systemów operacyjnych i struktur w trzecim samouczku ACR zadania, [automatyzując kompilacje obrazów w podstawowej aktualizacji obrazu przy użyciu Azure Container Registry zadań](container-registry-tutorial-base-image-update.md).
 
 ## <a name="multi-step-tasks"></a>Zadania wieloetapowe
 
@@ -99,7 +103,7 @@ Więcej informacji o zadaniach wieloetapowych w uruchamianiu wieloetapowych [zad
 
 Każde uruchomienie zadania generuje dane wyjściowe dziennika, które można sprawdzić, aby określić, czy kroki zadania zostały wykonane pomyślnie. W przypadku użycia polecenia [AZ ACR Build](/cli/azure/acr#az-acr-build), [AZ ACR Run](/cli/azure/acr#az-acr-run)lub [AZ ACR Task Run](/cli/azure/acr/task#az-acr-task-run) , aby wyzwolić zadanie, dane wyjściowe dziennika dla uruchomienia zadania są przesyłane strumieniowo do konsoli programu, a także przechowywane do późniejszego pobrania. Wyświetl dzienniki dla zadania uruchomionego w Azure Portal lub użyj polecenia [AZ ACR Task Logs](/cli/azure/acr/task#az-acr-task-logs) .
 
-Począwszy od lipca 2019, dane i dzienniki uruchamiania zadań w rejestrze będą przechowywane domyślnie przez 30 dni, a następnie automatycznie przeczyszczane. Jeśli chcesz zarchiwizować dane do uruchomienia zadania, Włącz archiwizowanie przy użyciu polecenia [AZ ACR Task Update-Run](/cli/azure/acr/task#az-acr-task-update-run) . Poniższy przykład umożliwia archiwizowanie dla zadania uruchamiania *CF11* w rejestrze *rejestru.*
+Począwszy od lipca 2019, dane i dzienniki uruchamiania zadań w rejestrze będą przechowywane domyślnie przez 30 dni, a następnie automatycznie przeczyszczane. Jeśli chcesz zarchiwizować dane do uruchomienia zadania, Włącz archiwizowanie przy użyciu polecenia [AZ ACR Task Update-Run](/cli/azure/acr/task#az-acr-task-update-run) . Poniższy przykład umożliwia archiwizowanie dla zadania uruchamiania *CF11* w rejestrze rejestru.
 
 ```azurecli
 az acr task update-run --registry myregistry --run-id cf11 --no-archive false

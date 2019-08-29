@@ -10,16 +10,15 @@ ms.assetid: 8b7ad5ee-a873-4966-a400-7e508bbbe158
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: cd7b2cecce443e821e233d97a260b7dfb3471752
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 63ff91c6b4db351e5ec72973874466cff74432b5
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667219"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073444"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Jak delegować rejestrację użytkownika i subskrypcję produktu
 
@@ -116,7 +115,7 @@ Następnie upewnij się, że punkt końcowy delegowania wykonuje następujące c
      * "Anuluj subskrypcję": żądanie anulowania subskrypcji użytkownika z produktu
      * "Odnów": żądanie odnowienia subskrypcji (na przykład może wygasnąć)
    * **ProductID**: Identyfikator produktu, którego użytkownik zażądał subskrybowania
-   * Identyfikator **subskrypcji: po**anulowaniu *subskrypcji* i *odnowieniu* identyfikatora
+   * Identyfikator subskrypcji: po *anulowaniu subskrypcji* i *odnowieniu* identyfikatora
    * **userId**: identyfikator użytkownika, dla którego wykonano żądanie
    * **sól**: specjalny ciąg soli używany do obliczania skrótu zabezpieczeń
    * **SIG**: obliczony skrót zabezpieczeń, który ma być używany do porównania z własnym obliczanym skrótem
@@ -175,7 +174,7 @@ var digest = hmac.update(salt + '\n' + returnUrl).digest();
 var signature = digest.toString('base64');
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji na temat delegowania, zobacz następujące wideo:
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Delegating-User-Authentication-and-Product-Subscription-to-a-3rd-Party-Site/player]

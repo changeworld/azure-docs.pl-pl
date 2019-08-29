@@ -3,19 +3,19 @@ title: Tworzenie kontenera w usłudze Azure Cosmos DB
 description: Dowiedz się, jak utworzyć kontener w usłudze Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: 7768f94051c6882f08dce360e35bf673c7b1103d
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: a88d8f33624278ac6e70b918cec7cef133fe4b34
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66241020"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093475"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Tworzenie kontenera usługi Azure Cosmos
 
-W tym artykule opisano różne sposoby tworzenia kontenera usługi Azure Cosmos (kolekcja, tabela lub wykres). Za pomocą witryny Azure portal, interfejsu wiersza polecenia platformy Azure, lub obsługiwanych zestawów SDK, w tym. W tym artykule pokazano, jak utworzyć kontener, określić klucz partycji i aprowizować przepływność.
+W tym artykule opisano różne sposoby tworzenia kontenera usługi Azure Cosmos (kolekcji, tabeli lub grafów). W tym celu można użyć Azure Portal, interfejsu wiersza polecenia platformy Azure lub obsługiwanych zestawów SDK. W tym artykule pokazano, jak utworzyć kontener, określić klucz partycji i aprowizować przepływność.
 
 ## <a name="create-a-container-using-azure-portal"></a>Tworzenie kontenera przy użyciu witryny Azure Portal
 
@@ -23,14 +23,14 @@ W tym artykule opisano różne sposoby tworzenia kontenera usługi Azure Cosmos 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-1. [Utwórz nowe konto usługi Azure Cosmos](create-sql-api-dotnet.md#create-account), lub wybierz istniejące konto.
+1. [Utwórz nowe konto usługi Azure Cosmos](create-sql-api-dotnet.md#create-account)lub Wybierz istniejące konto.
 
 1. Otwórz okienko **Data Explorer** i wybierz pozycję **Nowa kolekcja**. Następnie podaj następujące szczegóły:
 
    * Wskaż, czy tworzysz nową bazę danych, czy używasz istniejącej.
    * Wprowadź identyfikator kolekcji.
    * Wprowadź klucz partycji.
-   * Wprowadź przepustowość do udostępnienia (na przykład 1000 jednostek RU).
+   * Wprowadź przepływność, która ma zostać zainicjowana (na przykład 1000 jednostek ru).
    * Kliknij przycisk **OK**.
 
 ![Zrzut ekranu okienka usługi Data Explorer z wyróżnioną pozycją Nowa kolekcja](./media/how-to-create-container/partitioned-collection-create-sql.png)
@@ -39,14 +39,14 @@ W tym artykule opisano różne sposoby tworzenia kontenera usługi Azure Cosmos 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-1. [Utwórz nowe konto usługi Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account), lub wybierz istniejące konto.
+1. [Utwórz nowe konto usługi Azure Cosmos](create-mongodb-dotnet.md#create-a-database-account)lub Wybierz istniejące konto.
 
 1. Otwórz okienko **Data Explorer** i wybierz pozycję **Nowa kolekcja**. Następnie podaj następujące szczegóły:
 
    * Wskaż, czy tworzysz nową bazę danych, czy używasz istniejącej.
    * Wprowadź identyfikator kolekcji.
    * Wprowadź klucz fragmentu.
-   * Wprowadź przepustowość do udostępnienia (na przykład 1000 jednostek RU).
+   * Wprowadź przepływność, która ma zostać zainicjowana (na przykład 1000 jednostek ru).
    * Kliknij przycisk **OK**.
 
 ![Zrzut ekranu interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB, okno dialogowe Dodawanie kolekcji](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
@@ -55,14 +55,14 @@ W tym artykule opisano różne sposoby tworzenia kontenera usługi Azure Cosmos 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-1. [Utwórz nowe konto usługi Azure Cosmos](create-cassandra-dotnet.md#create-a-database-account), lub wybierz istniejące konto.
+1. [Utwórz nowe konto usługi Azure Cosmos](create-cassandra-dotnet.md#create-a-database-account)lub Wybierz istniejące konto.
 
 1. Otwórz okienko **Data Explorer** i wybierz pozycję **Nowa tabela**. Następnie podaj następujące szczegóły:
 
    * Wskaż, czy tworzysz nową przestrzeń kluczy, czy używasz istniejącej.
    * Wprowadź nazwę tabeli.
    * Wprowadź właściwości i określ klucz podstawowy.
-   * Wprowadź przepustowość do udostępnienia (na przykład 1000 jednostek RU).
+   * Wprowadź przepływność, która ma zostać zainicjowana (na przykład 1000 jednostek ru).
    * Kliknij przycisk **OK**.
 
 ![Zrzut ekranu interfejsu API Cassandra, okno dialogowe Dodawanie tabeli](./media/how-to-create-container/partitioned-collection-create-cassandra.png)
@@ -74,15 +74,15 @@ W tym artykule opisano różne sposoby tworzenia kontenera usługi Azure Cosmos 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-1. [Utwórz nowe konto usługi Azure Cosmos](create-graph-dotnet.md#create-a-database-account), lub wybierz istniejące konto.
+1. [Utwórz nowe konto usługi Azure Cosmos](create-graph-dotnet.md#create-a-database-account)lub Wybierz istniejące konto.
 
 1. Otwórz okienko **Data Explorer** i wybierz pozycję **Nowy graf**. Następnie podaj następujące szczegóły:
 
    * Wskaż, czy tworzysz nową bazę danych, czy używasz istniejącej.
-   * Wprowadź identyfikator wykresu.
+   * Wprowadź identyfikator grafu.
    * Wybierz pojemność magazynu **Bez ograniczeń**.
    * Wprowadź klucz partycji dla wierzchołków.
-   * Wprowadź przepustowość do udostępnienia (na przykład 1000 jednostek RU).
+   * Wprowadź przepływność, która ma zostać zainicjowana (na przykład 1000 jednostek ru).
    * Kliknij przycisk **OK**.
 
 ![Zrzut ekranu interfejsu API Gremlin, okno dialogowe Dodawanie grafu](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
@@ -91,12 +91,12 @@ W tym artykule opisano różne sposoby tworzenia kontenera usługi Azure Cosmos 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-1. [Utwórz nowe konto usługi Azure Cosmos](create-table-dotnet.md#create-a-database-account), lub wybierz istniejące konto.
+1. [Utwórz nowe konto usługi Azure Cosmos](create-table-dotnet.md#create-a-database-account)lub Wybierz istniejące konto.
 
 1. Otwórz okienko **Data Explorer** i wybierz pozycję **Nowa tabela**. Następnie podaj następujące szczegóły:
 
    * Wprowadź identyfikator tabeli.
-   * Wprowadź przepustowość do udostępnienia (na przykład 1000 jednostek RU).
+   * Wprowadź przepływność, która ma zostać zainicjowana (na przykład 1000 jednostek ru).
    * Kliknij przycisk **OK**.
 
 ![Zrzut ekranu interfejsu API tabel, okno dialogowe Dodawanie tabeli](./media/how-to-create-container/partitioned-collection-create-table.png)
@@ -172,9 +172,9 @@ az cosmosdb collection create \
     --throughput 400
 ```
 
-## <a name="create-a-container-using-powershell"></a>Utwórz kontener przy użyciu programu PowerShell
+## <a name="create-a-container-using-powershell"></a>Tworzenie kontenera przy użyciu programu PowerShell
 
-Poniższe przykłady przedstawiono tworzenie pomocnicze zasoby potrzebne do obsługi administracyjnej zasobów na poziomie kontenera, w usłudze Azure Cosmos DB
+Poniższe przykłady pokazują, jak utworzyć wszystkie zasoby pomocnicze potrzebne do aprowizacji zasobów na poziomie kontenera w Azure Cosmos DB
 
 ### <a id="ps-sql"></a>Interfejs API SQL
 
@@ -497,7 +497,7 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 ```
 
 > [!Note]
-> Protokół przewodowy MongoDB nie rozumiesz koncepcję [jednostek żądań](request-units.md). Aby utworzyć nową kolekcję z aprowizowaną przepływność na nim, należy użyć witryny Azure portal lub zestawów SDK, Cosmos DB dla interfejsu API SQL.
+> Protokół MongoDB Wire nie rozumie koncepcji [jednostek żądania](request-units.md). Aby utworzyć nową kolekcję z zainicjowaną przepływność, użyj Azure Portal lub Cosmos DB zestawów SDK dla interfejsu API SQL.
 
 ### <a id="dotnet-cassandra"></a>Interfejs API rozwiązania Cassandra
 
@@ -509,9 +509,9 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
     lastName text) WITH cosmosdb_provisioned_throughput=1000);
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Partitioning in Azure Cosmos DB (Partycjonowanie w usłudze Azure Cosmos DB)](partitioning-overview.md)
-- [Jednostki żądań w usłudze Azure Cosmos DB](request-units.md)
-- [Aprowizowanie przepływności na kontenerach i baz danych](set-throughput.md)
-- [Praca z konta usługi Azure Cosmos](account-overview.md)
+- [Jednostki żądania w usłudze Azure Cosmos DB](request-units.md)
+- [Obsługa przepływności na kontenerach i bazach danych](set-throughput.md)
+- [Współpraca z kontem usługi Azure Cosmos](account-overview.md)

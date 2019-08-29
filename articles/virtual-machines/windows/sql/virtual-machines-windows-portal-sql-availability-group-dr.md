@@ -1,6 +1,6 @@
 ---
-title: Odzyskiwanie po awarii — usługa Azure Virtual Machines — grup dostępności serwera SQL | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania grupy dostępności programu SQL Server na maszynach wirtualnych Azure z repliką w innym regionie.
+title: SQL Server grupy dostępności — Azure Virtual Machines — odzyskiwanie po awarii | Microsoft Docs
+description: W tym artykule wyjaśniono, jak skonfigurować SQL Server grupę dostępności na maszynach wirtualnych platformy Azure z repliką w innym regionie.
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
@@ -9,124 +9,123 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: f9e31ac7685d597c741033bc165c6a51280e3d72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f74f9ba55f3593ed31994b83bb9bda1501445e0a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571730"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100665"
 ---
-# <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Konfigurowanie zawsze włączonej grupy dostępności na maszynach wirtualnych platformy Azure w różnych regionach
+# <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Skonfiguruj zawsze włączona Grupa dostępności na maszynach wirtualnych platformy Azure w różnych regionach
 
-W tym artykule opisano sposób konfigurowania programu SQL Server Always On repliki grupy dostępności na maszynach wirtualnych platformy Azure w zdalnej lokalizacji platformy Azure. Użyj tej konfiguracji w ramach obsługi odzyskiwania po awarii.
+W tym artykule wyjaśniono, jak skonfigurować usługę SQL Server zawsze włączona replika grupy dostępności na maszynach wirtualnych platformy Azure w zdalnej lokalizacji platformy Azure. Ta konfiguracja służy do obsługi odzyskiwania po awarii.
 
-Ten artykuł ma zastosowanie do maszyn wirtualnych platformy Azure w trybie usługi Resource Manager.
+Ten artykuł ma zastosowanie do usługi Azure Virtual Machines w trybie Menedżer zasobów.
 
 Na poniższej ilustracji przedstawiono typowe wdrożenie grupy dostępności na maszynach wirtualnych platformy Azure:
 
    ![Grupa dostępności](./media/virtual-machines-windows-portal-sql-availability-group-dr/00-availability-group-basic.png)
 
-W tym wdrożeniu wszystkie maszyny wirtualne znajdują się w jednym regionie platformy Azure. Repliki grupy dostępności może mieć zatwierdzania synchronicznego automatyczny tryb failover na SQL-1 i 2 dla programu SQL. Aby skompilować tej architektury, zobacz [szablonu grupy dostępności lub samouczku](virtual-machines-windows-portal-sql-availability-group-overview.md).
+W tym wdrożeniu wszystkie maszyny wirtualne znajdują się w jednym regionie platformy Azure. Repliki grupy dostępności mogą mieć zatwierdzenie synchroniczne z automatycznym trybem failover w przypadku wersji SQL-1 i SQL-2. Aby skompilować tę architekturę, zobacz [szablon lub samouczek grupy dostępności](virtual-machines-windows-portal-sql-availability-group-overview.md).
 
-Ta architektura jest narażony na czas przestoju, gdy region platformy Azure stanie się niedostępna. Aby wyeliminować tę lukę w zabezpieczeniach, należy dodać repliki w innym regionie platformy Azure. Na poniższym diagramie przedstawiono, jak będzie wyglądać nowej architektury:
+Ta architektura jest narażona na przestoje w przypadku niedostępności regionu platformy Azure. Aby wyeliminować tę lukę w zabezpieczeniach, Dodaj replikę w innym regionie świadczenia usługi Azure. Na poniższym diagramie przedstawiono sposób, w jaki będzie wyglądać Nowa architektura:
 
-   ![Grupa dostępności odzyskiwania po awarii](./media/virtual-machines-windows-portal-sql-availability-group-dr/00-availability-group-basic-dr.png)
+   ![Grupa dostępności — DR](./media/virtual-machines-windows-portal-sql-availability-group-dr/00-availability-group-basic-dr.png)
 
-Na powyższym diagramie przedstawiono nową maszynę wirtualną o nazwie SQL-3. SQL 3 jest w innym regionie platformy Azure. SQL 3 zostanie dodany do klastra trybu Failover systemu Windows Server. SQL 3 może hostować replika grupy dostępności. Na koniec Zwróć uwagę, że region platformy Azure dla programu SQL 3 zawiera nowe równoważenia obciążenia platformy Azure.
+Poprzedni diagram przedstawia nową maszynę wirtualną o nazwie SQL-3. SQL-3 znajduje się w innym regionie świadczenia usługi Azure. Do klastra trybu failover systemu Windows Server jest dodawana wartość SQL-3. Program SQL-3 może obsługiwać replikę grupy dostępności. Na koniec należy zauważyć, że region platformy Azure dla programu SQL-3 ma nowy moduł równoważenia obciążenia platformy Azure.
 
 >[!NOTE]
-> Zestawu dostępności platformy Azure jest wymagana, gdy więcej niż jedna maszyna wirtualna znajduje się w tym samym regionie. Jeśli jedna maszyna wirtualna jest tylko w regionie, zestaw dostępności nie jest wymagana. Tylko można umieścić maszyny wirtualnej w zestawie w czasie tworzenia dostępności. Jeśli maszyna wirtualna już znajduje się w zestawie dostępności, możesz dodać później dodatkowe repliki maszyny wirtualnej.
+> Zestaw dostępności platformy Azure jest wymagany, gdy więcej niż jedna maszyna wirtualna znajduje się w tym samym regionie. Jeśli w regionie znajduje się tylko jedna maszyna wirtualna, zestaw dostępności nie jest wymagany. Maszynę wirtualną można umieścić w zestawie dostępności w czasie jego tworzenia. Jeśli maszyna wirtualna jest już w zestawie dostępności, można później dodać maszynę wirtualną do dodatkowej repliki.
 
-W tej architekturze replik w regionie zdalnego zwykle skonfigurowano tryb dostępności zatwierdzania asynchronicznego i ręczny tryb pracy awaryjnej.
+W tej architekturze replika w regionie zdalnym jest zwykle konfigurowana z trybem dostępności zatwierdzania asynchronicznego i trybem ręcznej pracy awaryjnej.
 
-W przypadku repliki grupy dostępności na maszynach wirtualnych platformy Azure w różnych regionach platformy Azure, wymaga każdego regionu:
+Gdy repliki grup dostępności znajdują się na maszynach wirtualnych platformy Azure w różnych regionach świadczenia usługi Azure, każdy region wymaga:
 
 * Brama sieci wirtualnej
-* Połączenia bramy sieci wirtualnej
+* Połączenie bramy sieci wirtualnej
 
-Na poniższym diagramie przedstawiono, jak komunikować się sieci między centrami danych.
+Na poniższym diagramie przedstawiono, jak sieci komunikują się między centrami danych.
 
    ![Grupa dostępności](./media/virtual-machines-windows-portal-sql-availability-group-dr/01-vpngateway-example.png)
 
 >[!IMPORTANT]
->Ta architektura spowoduje naliczenie opłaty za wychodzący danych dla danych replikowanych między regionami platformy Azure. Zobacz [cen przepustowości](https://azure.microsoft.com/pricing/details/bandwidth/).  
+>Ta architektura wiąże się z opłatami za dane wychodzące dla danych replikowanych między regionami platformy Azure. Zobacz [Cennik przepustowości](https://azure.microsoft.com/pricing/details/bandwidth/).  
 
-## <a name="create-remote-replica"></a>Tworzenie zdalnej repliki
+## <a name="create-remote-replica"></a>Utwórz replikę zdalną
 
-Aby utworzyć replikę w centrum danych zdalnego, wykonaj następujące czynności:
+Aby utworzyć replikę w zdalnym centrum danych, wykonaj następujące czynności:
 
-1. [Tworzenie sieci wirtualnej w nowym regionie](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network).
+1. [Utwórz sieć wirtualną w nowym regionie](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network).
 
-1. [Konfigurowanie połączenia sieć wirtualna-sieć wirtualna za pomocą witryny Azure portal](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
+1. [Skonfiguruj połączenie między sieciami wirtualnymi przy użyciu Azure Portal](../../../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md).
 
    >[!NOTE]
-   >W niektórych przypadkach może być konieczne do utworzenia połączenia sieć wirtualna-sieć wirtualna za pomocą programu PowerShell. Na przykład jeśli używasz różnych kont platformy Azure w portalu nie można skonfigurować połączenie. W tym przypadku znajduje się pozycja [Konfigurowanie połączenia sieć wirtualna-sieć wirtualna za pomocą witryny Azure portal](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
+   >W niektórych przypadkach może być konieczne użycie programu PowerShell do utworzenia połączenia między sieciami wirtualnymi. Jeśli na przykład używasz różnych kont platformy Azure, nie możesz skonfigurować połączenia w portalu. W takim przypadku zobacz [Konfigurowanie połączenia między sieciami wirtualnymi przy użyciu Azure Portal](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md).
 
-1. [Tworzenie kontrolera domeny w nowym regionie](../../../active-directory/active-directory-new-forest-virtual-machine.md).
+1. [Utwórz kontroler domeny w nowym regionie](../../../active-directory/active-directory-new-forest-virtual-machine.md).
 
-   Ten kontroler domeny umożliwia uwierzytelnianie, jeśli kontroler domeny w lokacji głównej nie jest dostępna.
+   Ten kontroler domeny zapewnia uwierzytelnianie, Jeśli kontroler domeny w lokacji głównej jest niedostępny.
 
-1. [Utwórz maszynę wirtualną programu SQL Server w nowym regionie](virtual-machines-windows-portal-sql-server-provision.md).
+1. [Utwórz SQL Server maszynę wirtualną w nowym regionie](virtual-machines-windows-portal-sql-server-provision.md).
 
-1. [Tworzenie modułu równoważenia obciążenia platformy Azure w sieci w nowym regionie](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer).
+1. [Utwórz moduł równoważenia obciążenia platformy Azure w sieci w nowym regionie](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer).
 
    Ten moduł równoważenia obciążenia musi:
 
-   - Znajdować się w tej samej sieci i podsieci, co nowej maszyny wirtualnej.
-   - Ma statyczny adres IP dla odbiornika grupy dostępności.
-   - Obejmują puli zaplecza, składający się z tylko maszyny wirtualne w tym samym regionie co moduł równoważenia obciążenia.
-   - Użyj określonego adresu IP sondy portu TCP.
-   - Mają reguły specyficzne dla programu SQL Server, w tym samym regionie równoważenia obciążenia.  
-   - Jeśli maszyny wirtualne w puli zaplecza nie są częścią pojedynczym zestawie dostępności lub zestawie skalowania maszyn wirtualnych, należy być standardowego modułu równoważenia obciążenia. Aby uzyskać dodatkowe informacje, przejrzyj [Omówienie usługi Azure Load Balancer w warstwie standardowa](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
+   - Należy do tej samej sieci i podsieci co Nowa maszyna wirtualna.
+   - Mieć statyczny adres IP dla odbiornika grupy dostępności.
+   - Uwzględnij pulę zaplecza składającą się tylko z maszyn wirtualnych znajdujących się w tym samym regionie co moduł równoważenia obciążenia.
+   - Użyj sondy portu TCP określonego dla adresu IP.
+   - Mieć regułę równoważenia obciążenia specyficzną dla SQL Server w tym samym regionie.  
+   - Usługa Load Balancer w warstwie Standardowa, jeśli maszyny wirtualne w puli zaplecza nie są częścią pojedynczego zestawu dostępności lub zestawu skalowania maszyn wirtualnych. Aby uzyskać więcej informacji, zobacz [standardowe omówienie Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview).
 
-1. [Dodaj funkcję Klaster trybu Failover na nowy serwer SQL](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-clustering-features-to-both-sql-server-vms).
+1. [Dodaj funkcję Klaster trybu failover do nowej SQL Server](virtual-machines-windows-portal-sql-availability-group-prereq.md#add-failover-clustering-features-to-both-sql-server-vms).
 
-1. [Dołącz nowy program SQL Server do domeny](virtual-machines-windows-portal-sql-availability-group-prereq.md#joinDomain).
+1. [Dołącz do domeny nowe SQL Server](virtual-machines-windows-portal-sql-availability-group-prereq.md#joinDomain).
 
-1. [Ustaw nowe konto usługi programu SQL Server do używania konta domeny](virtual-machines-windows-portal-sql-availability-group-prereq.md#setServiceAccount).
+1. [Ustaw nowe konto usługi SQL Server, aby korzystało z konta domeny](virtual-machines-windows-portal-sql-availability-group-prereq.md#setServiceAccount).
 
-1. [Dodaj nowy program SQL Server do klastra trybu Failover systemu Windows Server](virtual-machines-windows-portal-sql-availability-group-tutorial.md#addNode).
+1. [Dodaj nowe SQL Server do klastra trybu failover z systemem Windows Server](virtual-machines-windows-portal-sql-availability-group-tutorial.md#addNode).
 
 1. Utwórz zasób adresu IP w klastrze.
 
-   W Menedżerze klastra trybu Failover można utworzyć zasobu adresu IP. Kliknij prawym przyciskiem myszy rolę grupy dostępności, kliknij przycisk **Dodaj zasób**, **więcej zasobów**i kliknij przycisk **adresu IP**.
+   Zasób adresu IP można utworzyć w Menedżer klastra trybu failover. Kliknij prawym przyciskiem myszy rolę grupy dostępności, kliknij pozycję **Dodaj zasób**, **więcej zasobów**, a następnie kliknij pozycję **adres IP**.
 
    ![Utwórz adres IP](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
 
    Skonfiguruj ten adres IP w następujący sposób:
 
-   - Użyj sieci z centrum danych zdalnego.
-   - Przypisanie adresu IP z nowego modułu równoważenia obciążenia platformy Azure. 
+   - Użyj sieci z zdalnego centrum danych.
+   - Przypisz adres IP z nowego modułu równoważenia obciążenia platformy Azure. 
 
-1. Na nowym serwerze SQL w programie SQL Server Configuration Manager [Włącz zawsze włączone grupy dostępności](https://msdn.microsoft.com/library/ff878259.aspx).
+1. Na nowych SQL Server w SQL Server Configuration Manager [Włącz zawsze włączone grupy dostępności](https://msdn.microsoft.com/library/ff878259.aspx).
 
-1. [Otwórz porty zapory na nowy serwer SQL](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall).
+1. [Otwórz porty zapory na nowym SQL Server](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall).
 
-   Numery portów, które należy otworzyć zależą od środowiska. Otwieranie portów dla punktu końcowego dublowania i Azure obciążenia sonda kondycji modułu równoważenia.
+   Numery portów, które należy otworzyć, zależą od danego środowiska. Otwórz porty dla punktu końcowego dublowania i sondy kondycji modułu równoważenia obciążenia platformy Azure.
 
-1. [Dodaj replikę grupy dostępności na nowym serwerze SQL](https://msdn.microsoft.com/library/hh213239.aspx).
+1. [Dodaj replikę do grupy dostępności na nowym SQL Server](https://msdn.microsoft.com/library/hh213239.aspx).
 
-   Dla repliki odległym regionie platformy Azure ustaw ją na replikację asynchroniczną za pomocą ręcznej pracy awaryjnej.  
+   W przypadku repliki w zdalnym regionie świadczenia usługi Azure ustaw ją na replikację asynchroniczną z ręcznym trybem failover.  
 
-1. Dodaj zasób adresu IP jako zależność dla klastra (Nazwa sieciowa) punktu dostępu klienta odbiornika.
+1. Dodaj zasób adresu IP jako zależność dla klastra punktu dostępu klienta odbiornika (nazwy sieciowej).
 
-   Poniższy zrzut ekranu przedstawia prawidłowo skonfigurowane zasobu adresu IP klastra:
+   Poniższy zrzut ekranu przedstawia prawidłowo skonfigurowany zasób klastra adresów IP:
 
    ![Grupa dostępności](./media/virtual-machines-windows-portal-sql-availability-group-dr/50-configure-dependency-multiple-ip.png)
 
    >[!IMPORTANT]
-   >Grupa zasobów klastra zawiera oba adresy IP. Oba adresy IP są zależności dla odbiornika punktu dostępu klienta. Użyj **lub** operatora w konfiguracji klastra zależności.
+   >Grupa zasobów klastra obejmuje oba adresy IP. Oba adresy IP są zależnościami od punktu dostępu klienta odbiornika. Użyj operatora **or** w konfiguracji zależności klastra.
 
-1. [Ustawianie parametrów klastra w programie PowerShell](virtual-machines-windows-portal-sql-availability-group-tutorial.md#setparam).
+1. [Ustaw parametry klastra w programie PowerShell](virtual-machines-windows-portal-sql-availability-group-tutorial.md#setparam).
 
-Uruchom skrypt programu PowerShell przy użyciu nazwy sieciowej klastra, adres IP i port sondy, który został skonfigurowany w module równoważenia obciążenia w nowym regionie.
+Uruchom skrypt programu PowerShell z nazwą sieci klastra, adresem IP i portem sondy skonfigurowanym w module równoważenia obciążenia w nowym regionie.
 
    ```powershell
    $ClusterNetworkName = "<MyClusterNetworkName>" # The cluster name for the network in the new region (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name).
@@ -139,45 +138,45 @@ Uruchom skrypt programu PowerShell przy użyciu nazwy sieciowej klastra, adres I
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
 
-## <a name="set-connection-for-multiple-subnets"></a>Ustaw połączenie do wielu podsieci
+## <a name="set-connection-for-multiple-subnets"></a>Ustaw połączenie dla wielu podsieci
 
-Repliki w centrum danych zdalnych jest częścią grupy dostępności, ale jest w innej podsieci. Jeśli replika stanie się repliką podstawową, może wystąpić limity czasu połączenia w aplikacji. To zachowanie jest takie same jak w środowisku lokalnym grupy dostępności w ramach wdrożenia wielu podsieci. Umożliwia nawiązywanie połączeń z klienta aplikacji, zaktualizuj połączenie klienta lub skonfigurowanie rozpoznawania nazw, buforowanie od zasobu nazwy sieciowej klastra.
+Replika w zdalnym centrum danych jest częścią grupy dostępności, ale znajduje się w innej podsieci. Jeśli replika zostanie repliką podstawową, mogą wystąpić limity czasu połączenia aplikacji. Takie zachowanie jest takie samo jak lokalna Grupa dostępności w ramach wdrożenia z obsługą kilku podsieci. Aby zezwolić na połączenia z aplikacji klienckich, zaktualizuj połączenie klienta lub skonfiguruj buforowanie rozpoznawania nazw dla zasobu Nazwa sieciowa klastra.
 
-Najlepiej, zaktualizuj ciągi połączeń klienta, aby ustawić `MultiSubnetFailover=Yes`. Zobacz [połączenie z usługą MultiSubnetFailover](https://msdn.microsoft.com/library/gg471494#Anchor_0).
+Najlepiej zaktualizować parametry połączenia klienta, aby ustawić `MultiSubnetFailover=Yes`. Zobacz [nawiązywanie połączenia z usługą MultiSubnetFailover](https://msdn.microsoft.com/library/gg471494#Anchor_0).
 
-Jeśli nie można zmodyfikować parametry połączenia, można skonfigurować buforowanie rozpoznawania nazw. Zobacz [błędem przekroczenia limitu czasu i nie można nawiązać połączenia odbiornika grupy dostępności AlwaysOn programu SQL Server 2012, w środowisku obejmującym wiele podsieci](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av).
+Jeśli nie można zmodyfikować parametrów połączenia, można skonfigurować buforowanie rozpoznawania nazw. Zobacz [błąd limitu czasu i nie można nawiązać połączenia z odbiornikiem grupy dostępności funkcji AlwaysOn SQL Server 2012 w środowisku z obsługą kilku podsieci](https://support.microsoft.com/help/2792139/time-out-error-and-you-cannot-connect-to-a-sql-server-2012-alwayson-av).
 
-## <a name="fail-over-to-remote-region"></a>Do zdalnego regionu pracy awaryjnej
+## <a name="fail-over-to-remote-region"></a>Przechodzenie w tryb failover do zdalnego regionu
 
-Aby przetestować łączność odbiornika do zdalnego regionu, możesz przełączać awaryjnie repliki do zdalnego regionu. Replika jest asynchroniczne, pracy awaryjnej jest narażony na ryzyko utraty danych. Do trybu failover bez utraty danych, Zmień tryb dostępności na synchroniczne i ustaw tryb pracy awaryjnej na tryb automatyczny. Wykonaj następujące czynności:
+Aby przetestować łączność odbiornika z regionem zdalnym, można przełączyć replikę w tryb failover do regionu zdalnego. Gdy replika jest asynchroniczna, tryb failover jest narażony na potencjalną utratę danych. Aby przełączyć się do trybu failover bez utraty danych, Zmień tryb dostępności na synchroniczny i ustaw tryb pracy awaryjnej na automatyczny. Wykonaj następujące czynności:
 
-1. W **Eksplorator obiektów**, połącz się z wystąpieniem programu SQL Server, który obsługuje replikę podstawową.
-1. W obszarze **zawsze włączonych grup dostępności**, **grup dostępności**, kliknij prawym przyciskiem myszy grupy dostępności i kliknij przycisk **właściwości**.
-1. Na **ogólne** w obszarze **replik dostępności**, ustaw repliki pomocniczej w lokacji odzyskiwania po awarii, aby użyć **zatwierdzania synchronicznego** tryb dostępności i  **Automatyczne** tryb pracy awaryjnej.
-1. W przypadku repliki pomocniczej w tej samej lokacji co swoje repliki podstawowej w celu zapewnienia wysokiej dostępności, wartość ta replika **zatwierdzania asynchronicznego** i **ręczne**.
+1. W **Eksplorator obiektów**Połącz się z wystąpieniem SQL Server, które obsługuje replikę podstawową.
+1. W obszarze **zawsze włączone grupy dostępności**, **grupy dostępności**, kliknij prawym przyciskiem myszy grupę dostępności, a następnie kliknij pozycję **Właściwości**.
+1. Na stronie **Ogólne** w obszarze **repliki dostępności**Ustaw replikę pomocniczą w lokacji odzyskiwania w taki sposób, aby korzystała z synchronicznego trybu dostępności **zatwierdzania** i trybu **automatycznego** trybu failover.
+1. Jeśli istnieje replika pomocnicza w tej samej lokacji co replika podstawowa w celu zapewnienia wysokiej dostępności, ustaw tę replikę na **asynchroniczne zatwierdzenie** i **ręcznie**.
 1. Kliknij przycisk OK.
-1. W **Eksplorator obiektów**, kliknij prawym przyciskiem myszy grupę dostępności, a kliknij **wyświetlić pulpit nawigacyjny**.
-1. Na pulpicie nawigacyjnym Sprawdź, czy synchronizacji repliki w lokacji odzyskiwania po awarii.
-1. W **Eksplorator obiektów**, kliknij prawym przyciskiem myszy grupę dostępności, a kliknij **trybu Failover...** . SQL Server Management Studio zostanie otwarty Kreator do trybu failover programu SQL Server.  
-1. Kliknij przycisk **dalej**i wybierz wystąpienie programu SQL Server w lokacji odzyskiwania po awarii. Kliknij przycisk **dalej** ponownie.
-1. Połącz się z wystąpieniem programu SQL Server w lokacji odzyskiwania po awarii, a następnie kliknij przycisk **dalej**.
-1. Na **Podsumowanie** strony, sprawdź ustawienia i kliknij przycisk **Zakończ**.
+1. W **Eksplorator obiektów**kliknij prawym przyciskiem myszy grupę dostępności, a następnie kliknij pozycję **Pokaż pulpit nawigacyjny**.
+1. Na pulpicie nawigacyjnym Sprawdź, czy replika w witrynie DR jest synchronizowana.
+1. W **Eksplorator obiektów**kliknij prawym przyciskiem myszy grupę dostępności, a następnie kliknij pozycję **tryb failover...** . SQL Server Management Studios otwiera kreatora w celu przełączenia w tryb failover SQL Server.  
+1. Kliknij przycisk **dalej**, a następnie wybierz wystąpienie SQL Server w witrynie Dr. Kliknij ponownie przycisk **dalej** .
+1. Połącz się z wystąpieniem SQL Server w lokacji DR i kliknij przycisk **dalej**.
+1. Na stronie **Podsumowanie** Sprawdź ustawienia i kliknij przycisk **Zakończ**.
 
-Po zakończeniu testowania łączności przenieść podstawową replikę z powrotem do głównego centrum danych i ustaw tryb dostępności do ustawień normalnego działania. W poniższej tabeli przedstawiono normalne ustawienia robocze dotyczące architektury opisanej w tym dokumencie:
+Po przetestowaniu łączności należy przenieść replikę podstawową z powrotem do głównego centrum danych i ustawić tryb dostępności z powrotem na normalne ustawienia operacyjne. W poniższej tabeli przedstawiono normalne ustawienia operacyjne dla architektury opisanej w tym dokumencie:
 
-| Lokalizacja | Wystąpienie serwera | Rola | Tryb dostępności | Tryb pracy awaryjnej
+| Location | Wystąpienie serwera | Role | Tryb dostępności | Tryb pracy awaryjnej
 | ----- | ----- | ----- | ----- | -----
-| Podstawowe centrum danych | SQL-1 | Podstawowy | Synchroniczne | Automatyczne
-| Podstawowe centrum danych | SQL-2 | Pomocniczy | Synchroniczne | Automatyczne
-| Centrum danych w dodatkowej lub zdalnym | SQL-3 | Pomocniczy | Asynchroniczne | Ręcznie
+| Podstawowe centrum danych | SQL-1 | Podstawowy | Wykonywane | Automatyczne
+| Podstawowe centrum danych | SQL-2 | Pomocnicza | Wykonywane | Automatyczne
+| Pomocnicze lub zdalne centrum danych | SQL-3 | Pomocnicza | Komunikacji | Ręczne
 
 
-### <a name="more-information-about-planned-and-forced-manual-failover"></a>Więcej informacji na temat planowanych i wymuszonego ręcznego przełączania trybu failover
+### <a name="more-information-about-planned-and-forced-manual-failover"></a>Więcej informacji o planowanym i wymuszonym ręcznym przejściu w tryb failover
 
 Więcej informacji znajduje się w następujących tematach:
 
-- [Wykonaj planowane ręczna praca awaryjna grupy dostępności (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
-- [Wykonać wymuszone ręczna praca awaryjna grupy dostępności (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
+- [Wykonaj zaplanowaną ręczną pracę awaryjną grupy dostępności (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
+- [Wykonaj wymuszoną ręczną pracę awaryjną grupy dostępności (SQL Server)](https://msdn.microsoft.com/library/ff877957.aspx)
 
 ## <a name="additional-links"></a>Dodatkowe linki
 

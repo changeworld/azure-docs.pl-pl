@@ -10,17 +10,16 @@ tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 11/21/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: fe1ac9f445434507c65f87fcd423eccb1a4ffacc
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 85cbcb4b01161e0004d38f08ae8c30fd398727ff
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136608"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087894"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-azure-powershell"></a>Przywracanie aplikacji internetowej z kopii zapasowej przy użyciu programu Azure PowerShell
 
@@ -51,7 +50,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Pobiera listę kopii zapasowych dla aplikacji internetowej. |
 | [Restore-AzWebAppBackup](/powershell/module/az.websites/restore-azwebappbackup) | Przywraca aplikację internetową z utworzonej wcześniej kopii zapasowej. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

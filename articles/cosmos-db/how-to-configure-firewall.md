@@ -3,15 +3,15 @@ title: Skonfiguruj zaporę IP dla konta usługi Azure Cosmos DB
 description: Dowiedz się, jak skonfigurować zasady kontroli dostępu do adresów IP na potrzeby obsługi zapory na kontach usługi Azure Cosmos.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: ee9a686060fd712e9a1f14058ce7db325aaedffd
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 534f64b19adb29a0ff7811c50c9698ca33d6966f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615363"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093539"
 ---
 # <a name="configure-ip-firewall-in-azure-cosmos-db"></a>Konfigurowanie zapory IP w Azure Cosmos DB
 

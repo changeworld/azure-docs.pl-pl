@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
-ms.openlocfilehash: 7aaf29ddf52fb07524aa972f12ca18c235a40928
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 30dfd864c6c237024c72325da813691ac5043bd0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68351322"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072094"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>Nie można zaktualizować nazw hostów usługi API Management
 
@@ -54,7 +53,7 @@ Aby rozwiązać ten problem, wykonaj poniższe czynności:
 
 Sprawdź, czy problem został rozwiązany. W tym celu spróbuj utworzyć domenę niestandardową w usłudze API Management przy użyciu certyfikatu Key Vault.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Dowiedz się więcej o usłudze API Management:
 
 - Poznaj więcej [filmów wideo](https://azure.microsoft.com/documentation/videos/index/?services=api-management) dotyczących API Management.

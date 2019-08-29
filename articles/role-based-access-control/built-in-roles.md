@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/02/2019
+ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 776b8303e3454b40979691ea32fdcca11be4fa71
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: fb1007929a26384da60e542865c750fd1d642440
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013376"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114672"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role dla zasobów platformy Azure
 
@@ -70,6 +70,8 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 | [Czytnik rozliczeń](#billing-reader) | Zezwala na dostęp do odczytu do danych rozliczeniowych |
 | [BizTalk Contributor](#biztalk-contributor) | Umożliwia zarządzanie usługami BizTalk Services, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Dostęp do węzła elementu członkowskiego łańcucha bloków (wersja zapoznawcza)](#blockchain-member-node-access-preview) | Zezwala na dostęp do węzłów składowych łańcucha bloków |
+| [Współautor planu](#blueprint-contributor) | Może zarządzać definicjami planu, ale nie należy ich przypisywać. |
+| [Operator planu](#blueprint-operator) | Może przypisywać istniejące opublikowane plany, ale nie może tworzyć nowych planów. Uwaga: to działanie działa tylko wtedy, gdy przypisanie zostało wykonane przy użyciu tożsamości zarządzanej przypisanej przez użytkownika. |
 | [Współautor punktu końcowego usługi CDN](#cdn-endpoint-contributor) | Może zarządzać punktami końcowymi usługi CDN, ale nie może udzielić dostępu innym użytkownikom. |
 | [Czytnik punktu końcowego usługi CDN](#cdn-endpoint-reader) | Może wyświetlać punkty końcowe usługi CDN, ale nie może wprowadzać zmian. |
 | [Współautor profilu CDN](#cdn-profile-contributor) | Może zarządzać profilami sieci CDN i ich punktami końcowymi, ale nie może udzielać dostępu innym użytkownikom. |
@@ -948,6 +950,44 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | **NotDataActions** |  |
 > | *dawaj* |  |
 
+## <a name="blueprint-contributor"></a>Współautor planu
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Może zarządzać definicjami planu, ale nie należy ich przypisywać. |
+> | **Identyfikator** | 41077137-e803-4205-871c-5a86e6a753b4 |
+> | **Akcje** |  |
+> | Microsoft.Authorization/*/read | Odczytuj role i przypisania ról |
+> | Microsoft. plan/plany/* | Twórz definicje planów lub artefakty planów i zarządzaj nimi. |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera lub wyświetla listę grup zasobów. |
+> | Microsoft. resources/Deployments/* | Tworzenie wdrożeń grup zasobów i zarządzanie nimi |
+> | Microsoft.Support/* | Tworzenie biletów pomocy technicznej i zarządzanie nimi |
+> | **Nonaruszone** |  |
+> | *dawaj* |  |
+> | **Akcje dataactions** |  |
+> | *dawaj* |  |
+> | **NotDataActions** |  |
+> | *dawaj* |  |
+
+## <a name="blueprint-operator"></a>Operator planu
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Może przypisywać istniejące opublikowane plany, ale nie może tworzyć nowych planów. Uwaga: to działanie działa tylko wtedy, gdy przypisanie zostało wykonane przy użyciu tożsamości zarządzanej przypisanej przez użytkownika. |
+> | **Identyfikator** | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
+> | **Akcje** |  |
+> | Microsoft.Authorization/*/read | Odczytuj role i przypisania ról |
+> | Microsoft. plan/blueprintAssignments/* | Utwórz przypisania planu i zarządzaj nimi. |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera lub wyświetla listę grup zasobów. |
+> | Microsoft. resources/Deployments/* | Tworzenie wdrożeń grup zasobów i zarządzanie nimi |
+> | Microsoft.Support/* | Tworzenie biletów pomocy technicznej i zarządzanie nimi |
+> | **Nonaruszone** |  |
+> | *dawaj* |  |
+> | **Akcje dataactions** |  |
+> | *dawaj* |  |
+> | **NotDataActions** |  |
+> | *dawaj* |  |
+
 ## <a name="cdn-endpoint-contributor"></a>Współautor punktu końcowego usługi CDN
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1268,7 +1308,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | **Akcje** |  |
 > | Microsoft. zużycie/* |  |
 > | Microsoft.CostManagement/* |  |
-> | Microsoft. rozliczenia/billingPeriods/odczyt | Wyświetla listę dostępnych okresów rozliczeniowych |
+> | Microsoft. rozliczenia/billingPeriods/odczyt |  |
 > | Microsoft. resources/subscriptions/Read | Pobiera listę subskrypcji. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera lub wyświetla listę grup zasobów. |
 > | Microsoft.Support/* | Tworzenie biletów pomocy technicznej i zarządzanie nimi |
@@ -1291,7 +1331,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | **Akcje** |  |
 > | Microsoft.Consumption/*/read |  |
 > | Microsoft.CostManagement/*/read |  |
-> | Microsoft. rozliczenia/billingPeriods/odczyt | Wyświetla listę dostępnych okresów rozliczeniowych |
+> | Microsoft. rozliczenia/billingPeriods/odczyt |  |
 > | Microsoft. resources/subscriptions/Read | Pobiera listę subskrypcji. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera lub wyświetla listę grup zasobów. |
 > | Microsoft.Support/* | Tworzenie biletów pomocy technicznej i zarządzanie nimi |
@@ -1899,6 +1939,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | Microsoft.Insights/Register/Action | Zarejestruj dostawcę usługi Microsoft Insights |
 > | Microsoft.Insights/scheduledqueryrules/* |  |
 > | Microsoft.Insights/webtests/* | Odczytaj/Zapisz/Usuń Application Insights testy sieci Web. |
+> | Microsoft. Insights/skoroszyty/* |  |
 > | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | Odczytaj/Zapisz/Usuń pakiety rozwiązań usługi log Analytics. |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* | Odczyt/zapis/usuwanie zapisanych wyszukiwań usługi log Analytics. |
 > | Microsoft.OperationalInsights/workspaces/search/action | Wykonuje zapytanie wyszukiwania |
@@ -2474,6 +2515,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | Microsoft. SQL/managedInstances/Databases/sensitivityLabels/* |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/managedInstances/securityAlertPolicies/* |  |
+> | Microsoft. SQL/managedInstances/Databases/transparentDataEncryption/* |  |
 > | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | Tworzenie zasad inspekcji programu SQL Server i zarządzanie nimi |
 > | Microsoft.Sql/servers/auditingSettings/* | Tworzenie ustawień inspekcji programu SQL Server i zarządzanie nimi |
@@ -2494,6 +2536,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 > | Microsoft.Sql/servers/databases/securityAlertPolicies/* | Tworzenie zasad alertów zabezpieczeń bazy danych programu SQL Server i zarządzanie nimi |
 > | Microsoft.Sql/servers/databases/securityMetrics/* | Tworzenie metryk zabezpieczeń bazy danych programu SQL Server i zarządzanie nimi |
 > | Microsoft.Sql/servers/databases/sensitivityLabels/* |  |
+> | Microsoft. SQL/serwery/bazy danych/transparentDataEncryption/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |

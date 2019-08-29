@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 8934306efadc4ec732afbb658c081ada30f232cd
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 4b6a140ec428ce3b053c41074f02f65f19b8dc72
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68312220"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102893"
 ---
 # <a name="dependency-visualization"></a>Wizualizacja zależności
 
@@ -20,7 +20,7 @@ Azure Migrate: Ocena serwera ocenia grupy maszyn lokalnych pod kątem migracji n
 > [!NOTE]
 > Funkcja wizualizacji zależności nie jest dostępna na platformie Azure Government.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
 Wizualizacja zależności w ramach oceny serwera umożliwia tworzenie grup o wysokim poziomie pewności na potrzeby oceny migracji. Za pomocą wizualizacji zależności można wyświetlać zależności sieci maszyn i identyfikować powiązane maszyny, które muszą zostać zmigrowane razem z platformą Azure. Ta funkcja jest przydatna w scenariuszach, w których nie są w pełni świadomi maszyn, które stanowią aplikację i muszą zostać zmigrowane razem z platformą Azure.
 
@@ -28,7 +28,7 @@ Wizualizacja zależności w ramach oceny serwera umożliwia tworzenie grup o wys
 
 - Upewnij się, że [utworzono](how-to-add-tool-first-time.md) projekt Azure Migrate.
 - Jeśli projekt został już utworzony, upewnij się, że [dodano](how-to-assess.md) Azure Migrate: Narzędzie do oceny serwera.
-- Upewnij się, że maszyny zostały odnalezione w Azure Migrate; w tym celu można skonfigurować urządzenie Azure Migrate dla oprogramowania [VMware](how-to-set-up-appliance-vmware.md) lub [funkcji Hyper-V](how-to-set-up-appliance-hyper-v.md). Urządzenie odnajduje maszyny lokalne i wysyła metadane i dane wydajności do Azure Migrate: Ocena serwera. [Dowiedz się więcej](migrate-appliance.md).
+- Upewnij się, że maszyny zostały odnalezione w Azure Migrate; w tym celu można skonfigurować urządzenie Azure Migrate dla oprogramowania [VMware](how-to-set-up-appliance-vmware.md) lub [funkcji Hyper-V](how-to-set-up-appliance-hyper-v.md). Urządzenie odnajduje maszyny lokalne i wysyła metadane i dane wydajności do Azure Migrate: Server Assessment. [Dowiedz się więcej](migrate-appliance.md).
 
 ## <a name="how-does-it-work"></a>Jak to działa?
 
@@ -55,11 +55,11 @@ Azure Migrate używa rozwiązania [Service map](../operations-management-suite/o
 
     ![Nawigowanie Log Analytics obszarze roboczym](./media/concepts-dependency-visualization/oms-workspace.png)
 
-Aby można było używać wizualizacji zależności, należy pobrać i zainstalować agentów na każdej maszynie lokalnej, która ma zostać przeanalizowana.  
+Aby można było używać wizualizacji zależności, należy pobrać i zainstalować agenty na każdej maszynie lokalnej, która ma zostać przeanalizowana.  
 
 - [Program Microsoft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows) musi zostać zainstalowany na każdej maszynie. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-mma) na temat sposobu instalowania agenta MMA.
-- [Agent zależności](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure) musi być zainstalowany na każdej maszynie. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent) na temat sposobu instalowania agenta zależności.
-- Ponadto, jeśli masz maszyny bez łączności z Internetem, musisz pobrać i zainstalować bramę Log Analytics na nich.
+- [Agent zależności](../azure-monitor/platform/agents-overview.md#dependency-agent) musi być zainstalowany na każdej maszynie. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#install-the-dependency-agent) na temat sposobu instalowania agenta zależności.
+- Ponadto w przypadku maszyn, które nie są połączone z Internetem, należy pobrać i zainstalować na nich bramę usługi Log Analytics.
 
 Te agenci nie są potrzebne na maszynach, które chcesz ocenić, chyba że używasz wizualizacji zależności.
 
@@ -85,6 +85,6 @@ Możesz użyć obszaru roboczego Log Analytics poza Azure Migrate. Nie jest on u
 
 Nie usuwaj obszaru roboczego utworzonego przez Azure Migrate, chyba że usuniesz Azure Migrate projekt. Jeśli to zrobisz, funkcja wizualizacji zależności nie będzie działać zgodnie z oczekiwaniami.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 - [Grupowanie maszyn przy użyciu zależności maszyn](how-to-create-group-machine-dependencies.md)
 - [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization) na temat często zadawanych pytań dotyczących wizualizacji zależności.

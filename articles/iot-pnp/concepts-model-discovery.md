@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: e4ab1d45e27762ef05ab7ec74c98ab0b0b934cbf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c37446fd5a0cdc986044405a9aa3da32462d9c04
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69880555"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114274"
 ---
 # <a name="implement-iot-plug-and-play-preview-model-discovery-in-an-iot-solution"></a>Wdrażanie odnajdywania modelu Plug and Play IoT w wersji zapoznawczej w rozwiązaniu IoT
 
@@ -69,9 +69,9 @@ Po otrzymaniu przez rozwiązanie powiadomienia o nowym połączeniu z urządzeni
 1. Odczytaj komunikat Telemetria odnajdowania, aby pobrać identyfikatory modelu możliwości i interfejsów zaimplementowane przez urządzenie.
 1. Dla każdego identyfikatora Przeczytaj pełny plik JSON, aby znaleźć możliwości urządzenia.
 1. Sprawdź, czy każdy interfejs jest obecny w każdej pamięci podręcznej skompilowanej do przechowywania plików JSON pobranych wcześniej przez rozwiązanie.
-1. Następnie sprawdź, czy interfejs o tym IDENTYFIKATORze znajduje się w repozytorium modelu globalnego. Aby uzyskać więcej informacji, zobacz [Global model Repository](howto-manage-models.md).
-1. Jeśli interfejs nie znajduje się w repozytorium modelu globalnego, spróbuj wyszukać go w dowolnym repozytoriu modelu prywatnego znanym dla Twojego rozwiązania. Do uzyskania dostępu do repozytorium modelu prywatnego potrzebne są parametry połączenia. Aby uzyskać więcej informacji, zobacz [repozytorium modelu prywatnego](howto-manage-models.md).
-1. Jeśli nie możesz znaleźć wszystkich interfejsów w repozytorium modelu globalnego lub w repozytorium modelu prywatnego, możesz sprawdzić, czy urządzenie może zapewnić definicję interfejsu. Urządzenie może zaimplementować standardowy interfejs [ModelDefinition](concepts-common-interfaces.md) do publikowania informacji na temat sposobu pobierania plików interfejsu za pomocą polecenia.
+1. Następnie sprawdź, czy interfejs o tym IDENTYFIKATORze znajduje się w repozytorium modelu publicznego. Aby uzyskać więcej informacji, zobacz [repozytorium modelu publicznego](howto-manage-models.md).
+1. Jeśli interfejs nie znajduje się w repozytorium modelu publicznego, spróbuj poszukać go w dowolnych repozytoriach modelu firmy znanych dla Twojego rozwiązania. Do uzyskania dostępu do repozytorium modelu firmy potrzebne są parametry połączenia. Aby uzyskać więcej informacji, zobacz [repozytorium modelu firmy](howto-manage-models.md).
+1. Jeśli nie możesz znaleźć wszystkich interfejsów w repozytorium modelu publicznego lub w repozytorium modelu firmy, możesz sprawdzić, czy urządzenie może zapewnić definicję interfejsu. Urządzenie może zaimplementować standardowy interfejs [ModelDefinition](concepts-common-interfaces.md) do publikowania informacji na temat sposobu pobierania plików interfejsu za pomocą polecenia.
 1. W przypadku znalezienia plików JSON dla każdego interfejsu zaimplementowanego przez urządzenie można wyliczyć możliwości urządzenia. Użyj wcześniej napisanej logiki, aby umożliwić użytkownikom współpracującie z urządzeniem.
 1. W dowolnym momencie można wywołać interfejs API Digital bliźniaczych reprezentacji, aby pobrać identyfikator modelu możliwości i identyfikatory interfejsów dla urządzenia.
 

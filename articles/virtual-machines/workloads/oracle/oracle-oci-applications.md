@@ -7,19 +7,18 @@ author: romitgirdhar
 manager: gwallace
 tags: ''
 ms.service: virtual-machines
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/18/2019
 ms.author: rogirdh
 ms.custom: ''
-ms.openlocfilehash: ca16dceae9ab1afab17b2893b61f6a1c3309cf93
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: b183a4d4922c89f60ccb19b3e3e978216f33cc9a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361585"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100083"
 ---
 # <a name="architectures-to-deploy-oracle-applications-on-azure"></a>Architektury do wdrażania aplikacji Oracle na platformie Azure
 
@@ -190,7 +189,7 @@ Klient PeopleTools służy do wykonywania działań administracyjnych, takich ja
 
 [!INCLUDE [virtual-machines-oracle-applications-identity](../../../../includes/virtual-machines-oracle-applications-identity.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Używaj [skryptów Terraform](https://github.com/microsoft/azure-oracle) do konfigurowania aplikacji Oracle na platformie Azure i ustanawiania łączności między chmurą za pomocą OCI.
 

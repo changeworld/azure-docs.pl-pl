@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: anroth
-ms.openlocfilehash: 37921c655cc3c5de5c3c5079eda47fb7513fdf9f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 878e2b03e21c18ef4ee845251e91642037c6c5ff
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560946"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114647"
 ---
 # <a name="limits-and-quotas"></a>Limity przydziału i ograniczenia
 
@@ -37,7 +37,13 @@ Liczba obrazów szkoleniowych na projekt i Tagi dla projektu powinna wzrosnąć 
 |Operacje [przewidywania](https://go.microsoft.com/fwlink/?linkid=865445) bez magazynu (transakcje na sekundę)|2|20|
 |[TrainProject](https://go.microsoft.com/fwlink/?linkid=865446) (Wywołania interfejsu API na sekundę)|2|10|
 |[Inne wywołania interfejsu API](https://go.microsoft.com/fwlink/?linkid=865446) (Liczba transakcji na sekundę:)|10|10|
+|Akceptowane typy obrazów|jpg, PNG, BMP, GIF|jpg, PNG, BMP, GIF|
+|Minimalna wysokość/szerokość obrazu w pikselach|256 (patrz Uwaga)|256 (patrz Uwaga)|
+|Maksymalna wysokość/szerokość obrazu (w pikselach)|nieograniczone|nieograniczone|
 |Maksymalny rozmiar obrazu (przekazywanie obrazów szkoleniowych) |6 MB|6 MB|
 |Maksymalny rozmiar obrazu (przewidywanie)|4 MB|4 MB|
 |Obraz szkoleń dotyczących liczby regionów na wykrycie obiektu|200|200|
 |Maksymalna liczba tagów na obraz klasyfikacji|30|30|
+
+> [!NOTE]
+> Obrazy o rozmiarze mniejszym niż 256 pikseli zostaną zaakceptowane, ale przeskalowane.

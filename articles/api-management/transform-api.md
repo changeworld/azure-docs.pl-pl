@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 68c516ee7ca2d76339760ce0ad95590686250603
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5dec08bd4bc0a63a419d2bdc63383348a69b02db
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60861726"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067466"
 ---
 # <a name="transform-and-protect-your-api"></a>Przekształcanie i ochrona interfejsu API
 
@@ -75,13 +74,13 @@ Oryginalna odpowiedź powinna wyglądać następująco:
 1. Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
 2. W górnej części ekranu wybierz kartę **Projektowanie**.
 3. Wybierz opcję **Wszystkie operacje**.
-4. W sekcji **Przetwarzanie danych wychodzących** kliknij ikonę **</>**.
-5. Umieść kursor wewnątrz elementu **&lt;outbound&gt;**.
+4. W sekcji **Przetwarzanie danych wychodzących** kliknij ikonę **</>** .
+5. Umieść kursor wewnątrz elementu **&lt;outbound&gt;** .
 6. W okienku po prawej stronie w obszarze **Zasady przekształcania** kliknij dwukrotnie opcję **+ Ustaw nagłówek HTTP** (aby wstawić dwa fragmenty kodu zasad).
 
    ![Zasady](./media/transform-api/transform-api.png)
 
-7. Zmodyfikuj swoje  **\<wychodzącego >** kod, aby wyglądał jak poniżej:
+7. Zmodyfikuj kod **> wychodzącego,abywyglądaćnastępująco:\<**
 
        <set-header name="X-Powered-By" exists-action="delete" />
        <set-header name="X-AspNet-Version" exists-action="delete" />
@@ -112,10 +111,10 @@ Aby zobaczyć oryginalną odpowiedź:
 1.  Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
 2.  Wybierz opcję **Wszystkie operacje**.
 3.  W górnej części ekranu wybierz kartę **Projektowanie**.
-4.  W sekcji **Przetwarzanie danych wychodzących** kliknij ikonę **</>**.
-5.  Umieść kursor wewnątrz elementu **&lt;outbound&gt;**.
+4.  W sekcji **Przetwarzanie danych wychodzących** kliknij ikonę **</>** .
+5.  Umieść kursor wewnątrz elementu **&lt;outbound&gt;** .
 6.  W oknie po prawej stronie w obszarze **Zasady przekształcania** kliknij opcję **+ Znajdź i zastąp ciąg w treści**.
-7.  Zmodyfikuj kod **find-and-replace** (w elemencie **\<outbound\>**), aby zastąpić adres URL i dopasować go do bramy APIM. Na przykład:
+7.  Zmodyfikuj kod **find-and-replace** (w elemencie **\<outbound\>** ), aby zastąpić adres URL i dopasować go do bramy APIM. Przykład:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
@@ -128,10 +127,10 @@ W tej sekcji przedstawiono sposób dodawania zabezpieczeń do interfejsu API zap
 1.  Wybierz pozycję **Wersja demonstracyjna interfejsu API Conference**.
 2.  Wybierz opcję **Wszystkie operacje**.
 3.  W górnej części ekranu wybierz kartę **Projektowanie**.
-4.  W sekcji **Przetwarzanie danych przychodzących** kliknij ikonę **</>**.
-5.  Umieść kursor wewnątrz elementu **&lt;inbound&gt;**.
+4.  W sekcji **Przetwarzanie danych przychodzących** kliknij ikonę **</>** .
+5.  Umieść kursor wewnątrz elementu **&lt;inbound&gt;** .
 6.  W oknie po prawej stronie w obszarze **Zasady ograniczeń dostępu** kliknij opcję **+ Ogranicz liczbę wywołań na klucz**.
-7.  Zmodyfikuj kod **rate-limit-by-key** (w elemencie **\<inbound\>**) do następującego:
+7.  Zmodyfikuj kod **rate-limit-by-key** (w elemencie **\<inbound\>** ) do następującego:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 
@@ -200,7 +199,7 @@ Pozostała część tej sekcji testuje przekształcenia zasad ustawione w tym ar
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

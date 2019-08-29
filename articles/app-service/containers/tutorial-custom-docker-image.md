@@ -11,17 +11,16 @@ ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 6ef739b61c07dae1631a704a70a3a5543d9d8a3d
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 07d5b718cb96a938cb6e796e1cf4864851433516
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015600"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070934"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Samouczek: Tworzenie obrazu niestandardowego i uruchamianie go w App Service z rejestru prywatnego
 
@@ -155,7 +154,7 @@ Upewnij się, że logowanie powiedzie się.
 
 ### <a name="push-image-to-azure-container-registry"></a>Wypychanie obrazu do usługi Azure Container Registry
 
-Oznacz obraz lokalny dla Azure Container Registry. Przykład:
+Oznacz obraz lokalny dla Azure Container Registry. Na przykład:
 ```bash
 docker tag mydockerimage <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
 ```

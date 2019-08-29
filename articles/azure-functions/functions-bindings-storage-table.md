@@ -7,16 +7,15 @@ author: craigshoemaker
 manager: gwallace
 keywords: usługi Azure functions, funkcje, przetwarzanie zdarzeń, obliczanie dynamiczne, architektura bez serwera
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 5c3049b5f9f7607b9b75f3bee48b6ccd44601b15
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: d647a643dafe50a5768261c2b09bf8c4154be469
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68254753"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086242"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Powiązania usługi Azure Table Storage dla Azure Functions
 
@@ -507,7 +506,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**tableName** | **TableName** | Nazwa tabeli.| 
 |**partitionKey** | **PartitionKey** |Opcjonalny. Klucz partycji jednostki tabeli do odczytania. Zapoznaj się z sekcją [użycie](#input---usage) , aby uzyskać wskazówki dotyczące sposobu korzystania z tej właściwości.| 
 |**rowKey** |**RowKey** | Opcjonalny. Klucz wiersza jednostki tabeli, który ma zostać odczytany. Zapoznaj się z sekcją [użycie](#input---usage) , aby uzyskać wskazówki dotyczące sposobu korzystania z tej właściwości.| 
-|**czasochłonn** |**Take** | Opcjonalny. Maksymalna liczba jednostek do odczytania w języku JavaScript. Zapoznaj się z sekcją [użycie](#input---usage) , aby uzyskać wskazówki dotyczące sposobu korzystania z tej właściwości.| 
+|**take** |**Take** | Opcjonalny. Maksymalna liczba jednostek do odczytania w języku JavaScript. Zapoznaj się z sekcją [użycie](#input---usage) , aby uzyskać wskazówki dotyczące sposobu korzystania z tej właściwości.| 
 |**filtru** |**Filtr** | Opcjonalna. Wyrażenie filtru OData dla danych wejściowych tabeli w języku JavaScript. Zapoznaj się z sekcją [użycie](#input---usage) , aby uzyskać wskazówki dotyczące sposobu korzystania z tej właściwości.| 
 |**połączenia** |**połączenia** | Nazwa ustawienia aplikacji, które zawiera parametry połączenia magazynu, które będą używane dla tego powiązania. Jeśli nazwa ustawienia aplikacji zaczyna się od "AzureWebJobs", w tym miejscu możesz określić tylko resztę nazwy. Jeśli na przykład ustawisz `connection` opcję "Moja magazyn", środowisko uruchomieniowe funkcji wyszukuje ustawienie aplikacji o nazwie "AzureWebJobsMyStorage". Jeśli pozostawisz `connection` puste, środowisko uruchomieniowe funkcji używa domyślnych parametrów połączenia magazynu w ustawieniu aplikacji o nazwie `AzureWebJobsStorage`.|
 

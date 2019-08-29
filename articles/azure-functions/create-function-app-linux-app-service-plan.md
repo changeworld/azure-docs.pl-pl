@@ -1,26 +1,25 @@
 ---
-title: Tworzenie aplikacji funkcji w systemie Linux w witrynie Azure portal | Dokumentacja firmy Microsoft
+title: Tworzenie aplikacji funkcji w systemie Linux z poziomu Azure Portal | Microsoft Docs
 description: Dowiedz się, jak utworzyć pierwszą funkcję platformy Azure do wykonywania bezserwerowego przy użyciu witryny Azure Portal.
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: glenga
 ms.custom: ''
-ms.openlocfilehash: f7fa1d58c21ea0ed457cc5987d7823fad68d554f
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a612505acdc37591377eebf290365b65cc3836cd
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65153815"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098290"
 ---
-# <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Tworzenie aplikacji funkcji w systemie Linux w ramach planu usługi Azure App Service
+# <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Tworzenie aplikacji funkcji w systemie Linux w planie Azure App Service
 
-Usługa Azure Functions umożliwia obsługę funkcji w systemie Linux w domyślnym kontenerze usługi Azure App Service. Tym artykule przedstawiono sposób użycia [witryny Azure portal](https://portal.azure.com) do tworzenia aplikacji hostowanych w systemie Linux — funkcja, która działa w [planu usługi App Service](functions-scale.md#app-service-plan). Możesz również [skorzystać z własnego kontenera niestandardowego](functions-create-function-linux-custom-image.md).
+Usługa Azure Functions umożliwia obsługę funkcji w systemie Linux w domyślnym kontenerze usługi Azure App Service. W tym artykule przedstawiono sposób użycia [Azure Portal](https://portal.azure.com) do utworzenia aplikacji funkcji hostowanej w systemie Linux, która jest uruchamiana w [planie App Service](functions-scale.md#app-service-plan). Możesz również [skorzystać z własnego kontenera niestandardowego](functions-create-function-linux-custom-image.md).
 
 ![Tworzenie aplikacji funkcji w witrynie Azure Portal](./media/create-function-app-linux-app-service-plan/function-app-in-portal-editor.png)
 
@@ -32,9 +31,9 @@ Zaloguj się do witryny Azure Portal pod adresem <https://portal.azure.com> przy
 
 ## <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
-Do obsługi wykonywania funkcji w systemie Linux potrzebna jest aplikacja funkcji. Aplikacja funkcji zapewnia środowisko do wykonywania kodu funkcji. Umożliwia ona grupowanie funkcji w ramach jednostki logicznej, co ułatwia wdrażanie i udostępnianie zasobów oraz zarządzanie nimi. W tym artykule umożliwiają utworzenie planu usługi App Service podczas tworzenia aplikacji funkcji.
+Do obsługi wykonywania funkcji w systemie Linux potrzebna jest aplikacja funkcji. Aplikacja funkcji zapewnia środowisko do wykonywania kodu funkcji. Umożliwia ona grupowanie funkcji w ramach jednostki logicznej, co ułatwia wdrażanie i udostępnianie zasobów oraz zarządzanie nimi. W tym artykule opisano tworzenie planu App Service podczas tworzenia aplikacji funkcji.
 
-1. Wybierz **Utwórz zasób** znajdujący się w lewym górnym rogu witryny Azure portal, następnie wybierz opcję **obliczenia** > **aplikacji funkcji**.
+1. Wybierz przycisk **Utwórz zasób** znajdujący się w lewym górnym rogu Azure Portal, a następnie wybierz pozycję obliczeniowe > **aplikacja funkcji**.
 
     ![Tworzenie aplikacji funkcji w witrynie Azure Portal](./media/create-function-app-linux-app-service-plan/function-app-create-flow.png)
 
@@ -48,12 +47,12 @@ Do obsługi wykonywania funkcji w systemie Linux potrzebna jest aplikacja funkcj
     | **Subskrypcja** | Twoja subskrypcja | Subskrypcja, w ramach której jest tworzona ta nowa aplikacja funkcji. | 
     | **[Grupa zasobów](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Nazwa nowej grupy zasobów, w której ma zostać utworzona aplikacja funkcji. |
     | **OS** | Linux | Aplikacja funkcji jest uruchamiana w systemie Linux. |
-    | **Publikowanie** | Kod | Domyślny kontener systemu Linux dla Twojego **stosu środowiska uruchomieniowego** jest używany. To wszystko, czego potrzebujesz, aby zapewnić kodu projektu aplikacji funkcji. Innym rozwiązaniem jest publikowanie niestandardowego [obrazu platformy Docker](functions-create-function-linux-custom-image.md). |
-    | **[Plan hostingu](functions-scale.md)** | Plan usługi App Service | Plan hostingu określający sposób przydzielania zasobów do aplikacji funkcji. Po uruchomieniu w ramach planu usługi App Service, możesz kontrolować [skalowanie aplikacji funkcji](functions-scale.md).  |
-    | **Plan usługi App Service/lokalizacja** | Tworzenie planu | Wybierz **Utwórz nową** i podaj **planu usługi App Service** nazwy. Wybierz **lokalizacji** w [region](https://azure.microsoft.com/regions/) okolicy lub w pobliżu innych usług Twoje funkcje uzyskują dostęp. Wybierz odpowiednie  **[warstwa cenowa](https://azure.microsoft.com/pricing/details/app-service/linux/)**. <br/>Nie można uruchomić aplikacji funkcji z systemem Linux i Windows, w tym samym planie usługi App Service. |
-    | **Stos środowiska uruchomieniowego** | Preferowany język | Wybierz środowisko uruchomieniowe, które obsługuje ulubiony język programowania funkcji. Wybierz **.NET** dla funkcji w językach C# i F#. [Obsługa języka Python](functions-reference-python.md) znajduje się w tej chwili w wersji zapoznawczej. |
+    | **Publikowanie** | Kod | Używany jest domyślny kontener systemu Linux dla **stosu środowiska uruchomieniowego** . Wszystko, co musisz podać, to kod projektu aplikacji funkcji. Innym rozwiązaniem jest opublikowanie niestandardowego [obrazu platformy Docker](functions-create-function-linux-custom-image.md). |
+    | **[Plan hostingu](functions-scale.md)** | Plan usługi App Service | Plan hostingu określający sposób przydzielania zasobów do aplikacji funkcji. Po uruchomieniu w planie App Service można kontrolować [skalowanie aplikacji funkcji](functions-scale.md).  |
+    | **App Service plan/lokalizacja** | Utwórz plan | Wybierz pozycję **Utwórz nową** i podaj nazwę **planu App Service** . Wybierz **lokalizację** w [regionie](https://azure.microsoft.com/regions/) blisko siebie lub w niemal innych usługach, do których dostęp ma funkcja. Wybierz żądaną **[warstwę cenową](https://azure.microsoft.com/pricing/details/app-service/linux/)** . <br/>W tym samym planie App Service nie można uruchamiać aplikacji funkcji systemu Linux ani Windows. |
+    | **Stos środowiska uruchomieniowego** | Preferowany język | Wybierz środowisko uruchomieniowe, które obsługuje ulubiony język programowania funkcji. Wybierz **.NET** dla funkcji w językach C# i F#. [Obsługa języka Python](functions-reference-python.md) jest w tej chwili w wersji zapoznawczej. |
     | **[Storage](../storage/common/storage-quickstart-create-account.md)** |  Nazwa unikatowa w skali globalnej |  Utwórz konto magazynu używane przez aplikację funkcji. Nazwy kont usługi Storage muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery. Możesz również użyć istniejącego konta, które musi spełniać [wymagania dotyczące konta magazynu](functions-scale.md#storage-account-requirements). |
-    | **[Application Insights](functions-monitoring.md)** | Enabled (Włączony) | Usługa Application Insights jest domyślnie wyłączona. Firma Microsoft zaleca włączenie teraz Integracja usługi Application Insights i Wybieranie lokalizacji hostowania w pobliżu danej lokalizacji planu usługi App Service. Jeśli chcesz zrobić to później, zobacz [monitora usługi Azure Functions](functions-monitoring.md).  |
+    | **[Application Insights](functions-monitoring.md)** | Włączono | Application Insights jest domyślnie wyłączona. Zalecamy włączenie integracji Application Insights teraz i wybranie lokalizacji hostingu w najbliższej lokalizacji planu App Service. Jeśli chcesz to zrobić później, zobacz [Azure Functions monitorowania](functions-monitoring.md).  |
 
 3. Wybierz pozycję **Utwórz**, aby zaaprowizować aplikację funkcji i wdrożyć ją.
 
@@ -63,22 +62,22 @@ Do obsługi wykonywania funkcji w systemie Linux potrzebna jest aplikacja funkcj
 
 5. Wybierz pozycję **Przejdź do zasobu**, aby wyświetlić nową aplikację funkcji.
 
-Następnie należy utworzyć funkcję w nowej aplikacji funkcji. Mimo aplikacja funkcji jest dostępna, może upłynąć kilka minut, aby być w pełni zainicjowane.
+Następnie należy utworzyć funkcję w nowej aplikacji funkcji. Nawet po udostępnieniu aplikacji funkcji może upłynąć kilka minut, aby można było w pełni zainicjować.
 
 ## <a name="create-function"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP
 
-W tej sekcji przedstawiono sposób tworzenia funkcji w nowej aplikacji funkcji w portalu.
+W tej sekcji pokazano, jak utworzyć funkcję w nowej aplikacji funkcji w portalu.
 
 > [!NOTE]
-> Środowisko programistyczne portalu może być przydatne do wypróbowania usługi Azure Functions. W większości przypadków należy wziąć pod uwagę opracowywania funkcji lokalnie i publikowania projektu do aplikacji funkcji przy użyciu [programu Visual Studio Code](functions-create-first-function-vs-code.md#create-an-azure-functions-project) lub [podstawowych narzędzi usługi Azure Functions](functions-run-local.md#create-a-local-functions-project).  
+> Środowisko programistyczne portalu może być przydatne podczas próby wypróbowania Azure Functions. W przypadku większości scenariuszy Rozważ możliwość lokalnego tworzenia funkcji i publikowania projektu w aplikacji funkcji przy użyciu [Visual Studio Code](functions-create-first-function-vs-code.md#create-an-azure-functions-project) lub [Azure Functions Core Tools](functions-run-local.md#create-a-local-functions-project).  
 
-1. W nowej aplikacji funkcji, wybierz **Przegląd** kartę, a po jego załadowaniu całkowicie wybierz **+ nowa funkcja**.
+1. W nowej aplikacji funkcji wybierz kartę **Przegląd** i po jej załadowaniu całkowicie wybierz pozycję **+ Nowa funkcja**.
 
     ![Utwórz nową funkcję na karcie Przegląd](./media/create-function-app-linux-app-service-plan/overview-create-function.png)
 
-1. W **Szybki Start** kartę, wybrać **w portalu**i wybierz **Kontynuuj**.
+1. Na karcie **Szybki Start** wybierz pozycję **w portalu**, a następnie wybierz pozycję **Kontynuuj**.
 
-    ![Wybierz własną platformę deweloperską funkcji.](./media/create-function-app-linux-app-service-plan/function-app-quickstart-choose-portal.png)
+    ![Wybierz platformę do programowania funkcji.](./media/create-function-app-linux-app-service-plan/function-app-quickstart-choose-portal.png)
 
 1. Wybierz opcję **Element WebHook + interfejs API**, a następnie wybierz opcję **Utwórz**.
 
@@ -90,7 +89,7 @@ Możesz teraz uruchomić nową funkcję, wysyłając żądanie HTTP.
 
 ## <a name="test-the-function"></a>Testowanie funkcji
 
-1. W nowej funkcji kliknij pozycję **</> Pobierz adres URL funkcji** w prawym górnym rogu, wybierz pozycję **domyślne (klawisz funkcji)**, a następnie kliknij pozycję **Kopiuj**. 
+1. W nowej funkcji kliknij pozycję **</> Pobierz adres URL funkcji** w prawym górnym rogu, wybierz pozycję **domyślne (klawisz funkcji)** , a następnie kliknij pozycję **Kopiuj**. 
 
     ![Kopiowanie adresu URL funkcji z witryny Azure Portal](./media/create-function-app-linux-app-service-plan/function-app-develop-tab-testing.png)
 
@@ -110,7 +109,7 @@ Możesz teraz uruchomić nową funkcję, wysyłając żądanie HTTP.
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Utworzono aplikację funkcji z prostą funkcją wyzwalaną przez protokół HTTP.  
 

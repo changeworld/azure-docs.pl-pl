@@ -1,5 +1,5 @@
 ---
-title: Występuje błąd wewnętrzny podczas tworzenia połączenia RDP na maszynach wirtualnych platformy Azure | Dokumentacja firmy Microsoft
+title: Wystąpił błąd wewnętrzny podczas nawiązywania połączenia RDP z platformą Azure Virtual Machines | Microsoft Docs
 description: Dowiedz się, jak rozwiązywać problemy z błędami wewnętrzny protokołu RDP w systemie Microsoft Azure. | Dokumentacja firmy Microsoft
 services: virtual-machines-windows
 documentationCenter: ''
@@ -7,18 +7,17 @@ author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 4476e4732dfcf8d79c9678a7ff4719eba10e48f3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8fa00a5b65b0e337c47ca1fa892b8958f0bd2232
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60319432"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089822"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Występuje błąd wewnętrzny podczas próby połączenia z Maszyną wirtualną platformy Azure za pośrednictwem pulpitu zdalnego
 
@@ -55,7 +54,7 @@ Aby rozwiązać ten problem, należy użyć konsoli szeregowej lub [napraw maszy
 Połączyć się z [konsoli szeregowej i otwórz wystąpienie programu PowerShell](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Jeśli na maszynie Wirtualnej nie włączono konsoli szeregowej, przejdź do strony [napraw maszynę Wirtualną w tryb offline](#repair-the-vm-offline) sekcji.
 
-#### <a name="step-1-check-the-rdp-port"></a>Krok: 1 Sprawdź portów protokołu RDP
+#### <a name="step-1-check-the-rdp-port"></a>Czynności 1 Sprawdź port RDP
 
 1. W wystąpieniu programu PowerShell, użyj [NETSTAT](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
 ) do sprawdzenia, czy port 8080 jest używany przez inne aplikacje:
@@ -87,7 +86,7 @@ Połączyć się z [konsoli szeregowej i otwórz wystąpienie programu PowerShel
 
     3. [Aktualizowanie sieciowej grupy zabezpieczeń dla nowego portu](../../virtual-network/security-overview.md) w portalu Azure portem RDP.
 
-#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Krok 2: Ustaw uprawnienia poprawny certyfikat z podpisem własnym protokołu RDP
+#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Krok 2: Ustawianie prawidłowych uprawnień dla certyfikatu z podpisem własnym protokołu RDP
 
 1.  W wystąpieniu programu PowerShell uruchom następujące polecenia pojedynczo, aby odnowić certyfikat z podpisem własnym protokołu RDP:
 

@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d64fe6c244ffcb6da2926dfea6efaa6da315727
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 3c14ff9c4f6d2bc2b1a62d1874d01950d09491c0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234466"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099813"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Sterowania oprogramowaniem Azure HANA — duże wystąpienia za pośrednictwem witryny Azure Portal
 W tym dokumencie opisano sposób, w jaki są prezentowane [duże wystąpienia usługi Hana](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) w [Azure Portal](https://portal.azure.com) i jakie działania mogą być wykonywane za pomocą Azure Portal z jednostkami dużej liczby wystąpień usługi Hana wdrożonych dla Ciebie. Widoczność dużych wystąpień usługi HANA w Azure Portal jest udostępniana przez dostawcę zasobów platformy Azure dla dużych wystąpień HANA, które są obecnie dostępne w publicznej wersji zapoznawczej
@@ -93,7 +92,7 @@ Inne bardzo ważne informacje znajdują się w prawym dolnym rogu omówienia z n
 Dodatkowe pole w prawej kolumnie nagłówka informuje o stanie mocy jednostki dużego wystąpienia HANA.
 
 > [!NOTE]
-> Stan zasilania opisuje, czy jednostka sprzętowa jest włączona, czy wyłączona. Nie zawiera on informacji o tym, że system operacyjny jest uruchomiony. Po ponownym uruchomieniu jednostki dużego wystąpienia platformy HANA wystąpi niewielki czas, w którym stan jednostki zostanie zmieniony **, aby rozpocząć** pracę w stanie **uruchomienia**. Stan rozpoczęty oznacza,  że system operacyjny jest uruchamiany lub że system operacyjny został całkowicie uruchomiony. W związku z tym po ponownym uruchomieniu jednostki nie można spodziewać się natychmiastowego zalogowania się do jednostki, gdy stan zostanie **uruchomiony**.
+> Stan zasilania opisuje, czy jednostka sprzętowa jest włączona, czy wyłączona. Nie zawiera on informacji o tym, że system operacyjny jest uruchomiony. Po ponownym uruchomieniu jednostki dużego wystąpienia platformy HANA wystąpi niewielki czas, w którym stan jednostki zostanie zmieniony, aby rozpocząć pracę w stanie **uruchomienia**. Stan rozpoczęty oznacza, że system operacyjny jest uruchamiany lub że system operacyjny został całkowicie uruchomiony. W związku z tym po ponownym uruchomieniu jednostki nie można spodziewać się natychmiastowego zalogowania się do jednostki, gdy stan zostanie **uruchomiony**.
 > 
 
 W przypadku naciśnięcia przycisku "Zobacz więcej" są wyświetlane dodatkowe informacje. W ramach jednej z dodatkowych informacji jest wyświetlana poprawka sygnatury dużego wystąpienia HANA, a jednostka została wdrożona w. Zapoznaj się z artykułem [co to jest SAP HANA na platformie Azure (duże wystąpienia)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) , aby poznać różne wersje sygnatur dużych wystąpień usługi Hana
@@ -118,7 +117,7 @@ Sekcja **Właściwości** zawiera ważne informacje, które można uzyskać, gdy
 
 ![Górna część właściwości elementu HLI w Azure Portal](./media/hana-li-portal/portal-properties-top.png)
 
-Pierwsze kilka elementów danych zostało już wykorzystanych na ekranie przeglądu. Jednak ważną częścią danych jest Identyfikator obwodu ExpressRoute, który uzyskano jako pierwsze wdrożone jednostki. W niektórych przypadkach pomocy technicznej może zostać wyświetlony monit o podanie tych danych. W dolnej części zrzutu ekranu jest wyświetlany ważny wpis danych. Wyświetlane dane to adres IP nagłówka magazynu NFS, który izoluje magazyn do dzierżawy w stosie  dużych wystąpień platformy Hana. Ten adres IP jest również wymagany podczas edytowania [pliku konfiguracji kopii zapasowych migawek magazynu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore#set-up-storage-snapshots). 
+Pierwsze kilka elementów danych zostało już wykorzystanych na ekranie przeglądu. Jednak ważną częścią danych jest Identyfikator obwodu ExpressRoute, który uzyskano jako pierwsze wdrożone jednostki. W niektórych przypadkach pomocy technicznej może zostać wyświetlony monit o podanie tych danych. W dolnej części zrzutu ekranu jest wyświetlany ważny wpis danych. Wyświetlane dane to adres IP nagłówka magazynu NFS, który izoluje magazyn do dzierżawy w stosie dużych wystąpień platformy Hana. Ten adres IP jest również wymagany podczas edytowania [pliku konfiguracji kopii zapasowych migawek magazynu](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore#set-up-storage-snapshots). 
 
 Przewinięcie w dół w okienku właściwości umożliwia uzyskanie dodatkowych danych, takich jak unikatowy identyfikator zasobu dla jednostki dużego wystąpienia usługi HANA, lub identyfikatora subskrypcji, który został przypisany do wdrożenia.
 
@@ -130,7 +129,7 @@ Po zainicjowaniu ponownego uruchomienia systemu operacyjnego Linux istniały ró
 Po naciśnięciu przycisku Uruchom ponownie zostanie wyświetlony monit z pytaniem, czy na pewno chcesz ponownie uruchomić jednostkę. Po potwierdzeniu naciśnięcia przycisku "tak" jednostka zostanie ponownie uruchomiona.
 
 > [!NOTE]
-> W procesie ponownego uruchamiania wystąpi niewielki czas, w którym stan jednostki zostanie zmieniony **, aby rozpocząć** przejście do stanu **uruchomienia**. Stan rozpoczęty oznacza,  że system operacyjny jest uruchamiany lub że system operacyjny został całkowicie uruchomiony. W związku z tym po ponownym uruchomieniu jednostki nie można spodziewać się natychmiastowego zalogowania się do jednostki, gdy stan zostanie **uruchomiony**.
+> W procesie ponownego uruchamiania wystąpi niewielki czas, w którym stan jednostki zostanie zmieniony, aby rozpocząć przejście do stanu **uruchomienia**. Stan rozpoczęty oznacza, że system operacyjny jest uruchamiany lub że system operacyjny został całkowicie uruchomiony. W związku z tym po ponownym uruchomieniu jednostki nie można spodziewać się natychmiastowego zalogowania się do jednostki, gdy stan zostanie **uruchomiony**.
 
 > [!IMPORTANT]
 > Zależnie od ilości pamięci w jednostce duże wystąpienie wystąpienia HANA, ponowne uruchomienie i ponowne uruchomienie sprzętu i systemu operacyjnego może trwać do godziny.
@@ -156,7 +155,7 @@ W ramach każdego z różnych typów problemów oferowany jest wybór podtypów 
 
 Po udzieleniu odpowiedzi na pytania i dostarczeniu dodatkowych szczegółów możesz przejść do następnego kroku, aby przejrzeć żądanie pomocy technicznej i przesłać je.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Jak monitorować SAP HANA (duże wystąpienia) na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
 - [Monitorowanie i rozwiązywanie problemów ze strony oprogramowania HANA](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-monitor-troubleshoot)

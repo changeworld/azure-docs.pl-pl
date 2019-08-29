@@ -8,18 +8,17 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
-ms.devlang: na
 ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
-ms.openlocfilehash: 6ae14edb7fa6b44f7c3bb961ffbcceb26eb9dee3
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: db1c6e8e4f1e98db08d5f7ff0ef218fa42d25860
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875455"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103298"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Rozwiązywanie problemów z błędami ograniczania interfejsu API 
 
@@ -99,6 +98,6 @@ Polecenia cmdlet programu PowerShell używają interfejsu API usługi REST, któ
 - Jeśli kod klienta wymaga maszyn wirtualnych, dysków i migawek z określonej lokalizacji platformy Azure, użyj formularza opartego na lokalizacji zapytania zamiast zapytania o wszystkie maszyny wirtualne subskrypcji, a następnie Przefiltruj według lokalizacji na stronie `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` klienta: zapytanie do dostawcy zasobów obliczeniowych w regionie regionalnym punktów końcowych. 
 -   W przypadku tworzenia lub aktualizowania zasobów interfejsu API w określonych maszynach wirtualnych i zestawach skalowania maszyn wirtualnych jest znacznie bardziej wydajna śledzenie zwracanej asynchronicznej operacji do ukończenia niż sondowanie samego adresu URL zasobu (na `provisioningState`podstawie).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat wskazówek dotyczących ponownych prób dla innych usług na platformie Azure, zobacz [wskazówki dotyczące ponawiania prób dla określonych usług](https://docs.microsoft.com/azure/architecture/best-practices/retry-service-specific)

@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: na
 ms.topic: article
 ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 5e5ed8a69d5140814899c24e96eded6dc61e5908
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 4733cf1a83bec472baae42f2ac29636bff5fc324
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323671"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095310"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Użyj Azure Batch szablonów interfejsu wiersza polecenia i transferu plików
 
@@ -25,7 +24,7 @@ Korzystając z rozszerzenia Azure Batch w interfejsie wiersza polecenia platform
 
 Twórz i używaj plików szablonów JSON przy użyciu interfejsu wiersza polecenia platformy Azure, aby tworzyć pule, zadania i zadania usługi Batch. Użyj poleceń rozszerzenia interfejsu wiersza polecenia, aby łatwo przekazywać pliki wejściowe zadań do konta magazynu skojarzonego z kontem wsadowym, a następnie pobierać pliki wyjściowe zadania.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Rozszerzenie interfejsu wiersza polecenia platformy Azure umożliwia kompleksowe przetwarzanie wsadowe przez użytkowników, którzy nie są deweloperami. Korzystając tylko z poleceń interfejsu wiersza polecenia, można utworzyć pulę, przekazać dane wejściowe, utworzyć zadania i skojarzone zadania i pobrać wynikowe dane wyjściowe. Żaden dodatkowy kod nie jest wymagany. Bezpośrednie uruchamianie poleceń interfejsu wiersza polecenia lub integrowanie ich ze skryptami.
 

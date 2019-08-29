@@ -8,19 +8,18 @@ editor: ''
 tags: ''
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 93b3004303dd1587340b467c2fd52cb7233c95fd
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 820e979c41ddc1c1cf14456ed77a4a55e353ab12
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322699"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094277"
 ---
 > [!NOTE] 
 > Konta użytkowników omówione w tym artykule różnią się od kont użytkowników używanych dla Remote Desktop Protocol (RDP) lub Secure Shell (SSH) ze względów bezpieczeństwa. 
@@ -60,7 +59,7 @@ Aby uzyskać więcej informacji na temat uzyskiwania dostępu do plików i katal
 
 Poziom podniesienia uprawnień konta użytkownika wskazuje, czy zadanie jest uruchamiane z podniesionymi uprawnieniami dostępu. Zarówno konto użytkownika, jak i nazwane konto użytkownika mogą działać z podwyższonym dostępem. Dostępne są dwie opcje poziomu podniesienia uprawnień:
 
-- **NonAdmin** Zadanie jest uruchamiane jako użytkownik standardowy bez podwyższonego poziomu dostępu. Domyślny poziom podniesienia uprawnień dla konta użytkownika usługi Batch jest zawsze nieadministracyjny.
+- **NonAdmin** Zadanie jest uruchamiane jako użytkownik standardowy bez podwyższonego poziomu dostępu. Domyślny poziom podniesienia uprawnień dla konta użytkownika usługi Batch jestzawsze nieadministracyjny.
 - **Administrator:** Zadanie jest uruchamiane jako użytkownik z podwyższonym poziomem dostępu i działa z pełnymi uprawnieniami administratora. 
 
 ## <a name="auto-user-accounts"></a>Konta użytkowników

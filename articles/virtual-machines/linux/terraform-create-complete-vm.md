@@ -9,20 +9,19 @@ editor: na
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2017
 ms.author: gwallace
-ms.openlocfilehash: be8bfd8b6a0ba8afa43869366b4482e1b202727f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 83fba1ae29c2912e440f8983ded844414443a1a7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876330"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100801"
 ---
-# <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Tworzenie kompletnej infrastruktury maszyn wirtualnych z systemem Linux na platformie Azure przy użyciu usługi Terraform
+# <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Tworzenie kompletnej infrastruktury maszyny wirtualnej z systemem Linux na platformie Azure z użyciem technologii Terraform
 
 Terraform umożliwia definiowanie i Tworzenie pełnych wdrożeń infrastruktury na platformie Azure. Szablony Terraform można tworzyć w formacie czytelnym dla człowieka, który umożliwia tworzenie i Konfigurowanie zasobów platformy Azure w spójny, powtarzalny sposób. W tym artykule opisano sposób tworzenia kompletnego środowiska systemu Linux i obsługi zasobów przy użyciu programu Terraform. Możesz również dowiedzieć się, jak [zainstalować i skonfigurować Terraform](terraform-install-configure.md).
 
@@ -76,7 +75,7 @@ resource "azurerm_virtual_network" "myterraformnetwork" {
 }
 ```
 
-W poniższej sekcji przedstawiono Tworzenie podsieci o  nazwie Moja podsieć w sieci wirtualnej *myVnet* :
+W poniższej sekcji przedstawiono Tworzenie podsieci o nazwie Moja podsieć w sieci wirtualnej *myVnet* :
 
 ```tf
 resource "azurerm_subnet" "myterraformsubnet" {
@@ -88,7 +87,7 @@ resource "azurerm_subnet" "myterraformsubnet" {
 ```
 
 
-## <a name="create-public-ip-address"></a>Utwórz publiczny adres IP
+## <a name="create-public-ip-address"></a>Tworzenie publicznego adresu IP
 Aby uzyskać dostęp do zasobów za pośrednictwem Internetu, Utwórz i przypisz publiczny adres IP do maszyny wirtualnej. W poniższej sekcji został utworzony publiczny adres IP o nazwie *myPublicIP*:
 
 ```tf

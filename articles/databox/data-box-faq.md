@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: f1a1a8a6b32567a1571c70e76a4ae6c570d27ca5
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 287fd07f170ec85b07b75e1823cbb67d462004f6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900566"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098796"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Często zadawane pytania
 
@@ -159,7 +159,7 @@ A.  Aby przyspieszyć proces kopiowania:
 - Użyj wielu strumieni kopiowania danych. Na przykład w narzędziu Robocopy włącz opcję kopiowania wielowątkowego. Aby uzyskać więcej informacji na temat konkretnego polecenia, zobacz [Samouczek: kopiowanie danych na urządzenie Azure Data Box i ich weryfikacja](data-box-deploy-copy-data.md).
 - Użyj wielu sesji.
 - Zamiast kopiować za pośrednictwem udziału sieciowego (gdzie szybkość sieci może narzucać ograniczenia), upewnij się, że dane znajdują się lokalnie na komputerze, do którego podłączono urządzenie Data Box.
-- Wykonaj test porównawczy wydajności komputera używanego do kopiowania danych. Pobierz [narzędzie Bluestop FIO](https://bluestop.org/fio/) i za jego pomocą przeprowadź test porównawczy wydajności sprzętu serwera.
+- Wykonaj test porównawczy wydajności komputera używanego do kopiowania danych. Pobierz [narzędzie Bluestop FIO](https://ci.appveyor.com/project/axboe/fio) i za jego pomocą przeprowadź test porównawczy wydajności sprzętu serwera. Wybierz najnowszą kompilację x86 lub x64, wybierz kartę **artefakty** i Pobierz plik msi.
 
 <!--### Q. How to speed up the data copy if the source data has small files (KBs or few MBs)?
 A.  To speed up the copy process:

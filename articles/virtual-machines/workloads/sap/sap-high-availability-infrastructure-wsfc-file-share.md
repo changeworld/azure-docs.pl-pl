@@ -1,6 +1,6 @@
 ---
-title: Przygotowywanie infrastruktury platformy Azure w celu zapewnienia wysokiej dostępności SAP przy użyciu klastra pracy awaryjnej Windows i udział plików dla wystąpienia SAP ASCS/SCS | Dokumentacja firmy Microsoft
-description: Przygotowywanie infrastruktury platformy Azure w celu zapewnienia wysokiej dostępności SAP przy użyciu klastra pracy awaryjnej Windows i udział plików dla wystąpienia SAP ASCS/SCS
+title: Przygotowanie infrastruktury platformy Azure pod kątem wysokiej dostępności SAP przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień SAP ASCS/SCS | Microsoft Docs
+description: Przygotowanie infrastruktury platformy Azure pod kątem wysokiej dostępności SAP przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień oprogramowania SAP ASCS/SCS
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -10,21 +10,20 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 2ce38add-1078-4bb9-a1da-6f407a9bc910
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3577128e66112bda5a5e3e08097d14604043cbd
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: f9b7ac97cb190073966f9be450e9f9e04014fbd7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708994"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078057"
 ---
-# <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Przygotowywanie infrastruktury platformy Azure SAP wysokiej dostępności przy użyciu Windows trybu failover klastra i udział plików dla wystąpień SAP ASCS/SCS
+# <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Przygotowanie infrastruktury platformy Azure pod kątem wysokiej dostępności SAP przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień oprogramowania SAP ASCS/SCS
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -100,7 +99,7 @@ ms.locfileid: "67708994"
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfiguracja wysokiej dostępności — wiele identyfikatorów SID SAP)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfiguracja wysokiej dostępności dla oprogramowania SAP)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -208,73 +207,73 @@ ms.locfileid: "67708994"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-W tym artykule opisano kroki przygotowania infrastruktury platformy Azure, które są potrzebne, aby zainstalować i skonfigurować wysoką dostępność systemów SAP w klastrze systemu Windows Server Failover Clustering (WSFC), przy użyciu udziału plików skalowalnego w poziomie jako opcja do klastrowania SAP ASCS/SCS wystąpienia.
+W tym artykule opisano kroki związane z infrastrukturą platformy Azure, które są niezbędne do zainstalowania i skonfigurowania systemów SAP o wysokiej dostępności w klastrze usługi Windows Server Failover Clustering (WSFC), przy użyciu udziału plików skalowalnego w poziomie jako opcji dla klastra SAP ASCS/SCS Liczba.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
-Przed rozpoczęciem instalacji, przejrzyj następujący artykuł:
+Przed rozpoczęciem instalacji zapoznaj się z następującym artykułem:
 
-* [Przewodnik dotyczący architektury: Wystąpienia SAP ASCS/SCS klastra w klastrze pracy awaryjnej Windows przy użyciu udziału plików][sap-high-availability-guide-wsfc-file-share]
+* [Przewodnik po architekturze: Klastrowe wystąpienia SAP ASCS/SCS w klastrze trybu failover systemu Windows przy użyciu udziału plików][sap-high-availability-guide-wsfc-file-share]
 
 
-## <a name="host-names-and-ip-addresses"></a>Nazwy hostów i adresów IP
+## <a name="host-names-and-ip-addresses"></a>Nazwy hostów i adresy IP
 
-| Rola nazwy hostów wirtualnych | Nazwa hosta wirtualnego | Statyczny adres IP | Zestaw dostępności |
+| Rola nazwy hosta wirtualnego | Nazwa hosta wirtualnego | Statyczny adres IP | Zestaw dostępności |
 | --- | --- | --- | --- |
-| Pierwszy klaster ASCS/SCS węzła klastra | ascs-1 | 10.0.6.4 | ascs-as |
-| Druga klastra ASCS/SCS węzłów klastra | ascs-2 | 10.0.6.5 | ascs-as |
-| Nazwa sieciowa klastra |ascs-cl | 10.0.6.6 | Nie dotyczy |
-| Nazwa sieciowa klastra PR1 ASCS SAP |PR1 ascs | 10.0.6.7 | Nie dotyczy |
+| Pierwszy węzeł klastra ASCS/SCS klaster | ascs-1 | 10.0.6.4 | ASCS — as |
+| Drugi węzeł klastra ASCS/SCS klaster | ASCS-2 | 10.0.6.5 | ASCS — as |
+| Nazwa sieci klastra |ASCS — CL | 10.0.6.6 | Nie dotyczy |
+| Nazwa sieci klastra SAP PR1 ASCS |PR1 — ASCS | 10.0.6.7 | Nie dotyczy |
 
 
-**Tabela 1**: Klastra ASCS/SCS
+**Tabela 1**: Klaster ASCS/SCS
 
 | SAP \<SID> | Numer wystąpienia SAP ASCS/SCS |
 | --- | --- |
 | PR1 | 00 |
 
-**Tabela 2**: Szczegóły wystąpienia SAP ASCS/SCS
+**Tabela 2**: Szczegóły wystąpienia oprogramowania SAP ASCS/SCS
 
 
-| Rola nazwy hostów wirtualnych | Nazwa hosta wirtualnego | Statyczny adres IP | Zestaw dostępności |
+| Rola nazwy hosta wirtualnego | Nazwa hosta wirtualnego | Statyczny adres IP | Zestaw dostępności |
 | --- | --- | --- | --- |
-| Pierwszym węźle klastra | 1 serwer sofs | 10.0.6.10 | sofs-as |
-| Drugim węźle klastra | sofs-2 | 10.0.6.11 | sofs-as |
-| Trzeci węzła klastra | sofs-3 | 10.0.6.12 | sofs-as |
-| Nazwa sieciowa klastra | sofs cl | 10.0.6.13 | Nie dotyczy |
-| Nazwa hosta globalnego SAP | sapglobal | Użyj adresów IP wszystkich węzłów klastra | Nie dotyczy |
+| Pierwszy węzeł klastra | SOFS-1 | 10.0.6.10 | SOFS — as |
+| Drugi węzeł klastra | SOFS-2 | 10.0.6.11 | SOFS — as |
+| Trzeci węzeł klastra | SOFS-3 | 10.0.6.12 | SOFS — as |
+| Nazwa sieci klastra | SOFS — CL | 10.0.6.13 | Nie dotyczy |
+| Nazwa hosta globalnego SAP | sapglobal | Używaj adresów IP wszystkich węzłów klastra | Nie dotyczy |
 
-**Tabela 3**: Klaster serwera plików skalowalnego w poziomie
+**Tabela 3**: Klaster Serwer plików skalowalny w poziomie
 
 
-## <a name="deploy-vms-for-an-sap-ascsscs-cluster-a-database-management-system-dbms-cluster-and-sap-application-server-instances"></a>Wdrażanie maszyn wirtualnych dla klastra usługi SAP ASCS/SCS, klaster systemu zarządzania bazy danych (DBMS) i wystąpień serwera aplikacji SAP
+## <a name="deploy-vms-for-an-sap-ascsscs-cluster-a-database-management-system-dbms-cluster-and-sap-application-server-instances"></a>Wdrażanie maszyn wirtualnych dla klastra SAP ASCS/SCS, klastra systemu zarządzania bazami danych (DBMS) i wystąpień serwera aplikacji SAP
 
 Aby przygotować infrastrukturę platformy Azure, wykonaj następujące czynności:
 
-* [Przygotowywanie infrastruktury dla architektury szablonów, 1, 2 i 3][sap-high-availability-infrastructure-wsfc-shared-disk].
+* [Przygotuj infrastrukturę dla szablonów architektury 1, 2 i 3][sap-high-availability-infrastructure-wsfc-shared-disk].
 
-* [Tworzenie sieci wirtualnej platformy Azure][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network].
+* [Utwórz sieć wirtualną platformy Azure][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network].
 
-* [Ustawić wymagany adres IP DNS adresy][sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip].
+* [Ustaw wymagane adresy IP DNS][sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip].
 
-* [Ustawianie statycznych adresów IP dla maszyn wirtualnych SAP][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip].
+* [Ustaw statyczne adresy IP dla maszyn wirtualnych SAP][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip].
 
-* [Ustawianie statycznego adresu IP dla platformy Azure wewnętrznego modułu równoważenia obciążenia][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb].
+* [Ustaw statyczny adres IP dla wewnętrznego modułu równoważenia obciążenia platformy Azure][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb].
 
-* [Ustawianie domyślnego Równoważenie obciążenia ASCS/SCS reguł dla platformy Azure wewnętrznego modułu równoważenia obciążenia][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules].
+* [Ustaw domyślne reguły równoważenia obciążenia ASCS/SCS dla wewnętrznego modułu równoważenia obciążenia platformy Azure][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules].
 
-* [Zmiana reguł dla modułu równoważenia obciążenia platformy Azure wewnętrznego równoważenia obciążenia domyślne ASCS/SCS][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules].
+* [Zmień domyślne reguły równoważenia obciążenia ASCS/SCS dla wewnętrznego modułu równoważenia obciążenia platformy Azure][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules].
 
-* [Dodawanie maszyn wirtualnych Windows do domeny][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
+* [Dodaj maszyny wirtualne z systemem Windows do domeny][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
 
-* [Dodawanie wpisów rejestru na obu węzłach klastra wystąpienia SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
+* [Dodaj wpisy rejestru na obu węzłach klastra wystąpienia SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
 
-* Korzystasz z systemu Windows Server 2016, zaleca się skonfigurowanie [monitora w chmurze Azure][deploy-cloud-witness].
+* W przypadku korzystania z systemu Windows Server 2016 zalecamy skonfigurowanie [monitora chmury platformy Azure][deploy-cloud-witness].
 
 
-## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Ręczne wdrażanie klastra serwera plików skalowalnego w poziomie 
+## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Wdróż ręcznie klaster Serwer plików skalowalny w poziomie 
 
-Klaster serwera plików skalowalnego w poziomie firmy Microsoft można wdrożyć ręcznie, zgodnie z opisem w blogu [bezpośrednimi miejscami do magazynowania w systemie Azure][ms-blog-s2d-in-azure], wykonując następujący kod:  
+Klaster Serwer plików skalowalny w poziomie firmy Microsoft można wdrożyć ręcznie, zgodnie z opisem w blogu [bezpośrednie miejsca do magazynowania na platformie Azure][ms-blog-s2d-in-azure], wykonując następujący kod:  
 
 
 ```powershell
@@ -307,52 +306,52 @@ $SAPGlobalHostName = "sapglobal"
 Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 ```
 
-## <a name="deploy-scale-out-file-server-automatically"></a>Automatyczne wdrażanie serwera plików skalowalnego w poziomie
+## <a name="deploy-scale-out-file-server-automatically"></a>Wdróż Serwer plików skalowalny w poziomie automatycznie
 
-Możesz też zautomatyzować wdrażanie serwera plików skalowalnego w poziomie przy użyciu szablonów usługi Azure Resource Manager w środowisku usługi Active Directory i istniejącej sieci wirtualnej.
+Wdrożenie Serwer plików skalowalny w poziomie można także zautomatyzować, używając Azure Resource Manager szablonów w istniejącej sieci wirtualnej i środowiska Active Directory.
 
 > [!IMPORTANT]
-> Zaleca się, czy masz co najmniej trzema węzłami klastra serwera plików skalowalnego w poziomie z dublowania trzystopniowego.
+> Firma Microsoft zaleca, aby dla Serwer plików skalowalny w poziomie ze dublowaniem trójwymiarowym mieć co najmniej trzy węzły klastra.
 >
-> W szablonie Menedżera zasobów serwera plików skalowalnego w poziomie, interfejs użytkownika musisz określić liczbę maszyn wirtualnych.
+> W interfejsie użytkownika Serwer plików skalowalny w poziomie szablonu Menedżer zasobów należy określić liczbę maszyn wirtualnych.
 >
 
-### <a name="use-managed-disks"></a>Użyj usługi managed disks
+### <a name="use-managed-disks"></a>Użyj dysków zarządzanych
 
-Szablon usługi Azure Resource Manager do wdrażania serwera plików skalowalnego w poziomie z bezpośrednimi miejscami do magazynowania i usługi Azure Managed Disks jest dostępna na [GitHub][arm-sofs-s2d-managed-disks].
+Szablon Azure Resource Manager wdrażania Serwer plików skalowalny w poziomie za pomocą Bezpośrednie miejsca do magazynowania i platformy Azure Managed Disks jest dostępny w witrynie [GitHub][arm-sofs-s2d-managed-disks].
 
-Zaleca się, że używasz dysków Managed Disks.
+Zalecamy używanie Managed Disks.
 
-![Rysunek 1: Ekran interfejsu użytkownika dla szablonu Menedżera zasobów serwera plików skalowalnego w poziomie z dyskami zarządzanymi][sap-ha-guide-figure-8010]
+![Rysunek 1. Ekran interfejsu użytkownika dla szablonu Serwer plików skalowalny w poziomie Menedżer zasobów z dyskami zarządzanymi][sap-ha-guide-figure-8010]
 
-_**Rysunek 1**: Ekran interfejsu użytkownika dla szablonu Menedżera zasobów serwera plików skalowalnego w poziomie z dyskami zarządzanymi_
+_**Rysunek 1**. Ekran interfejsu użytkownika dla szablonu Serwer plików skalowalny w poziomie Menedżer zasobów z dyskami zarządzanymi_
 
 W szablonie wykonaj następujące czynności:
-1. W **liczba maszyn wirtualnych** wprowadź minimalną liczbę **2**.
-2. W **liczba dysków maszyny wirtualnej** wprowadź dysku minimalną liczbę **3** (dyski 2 + 1 dysk zapasowy = 3 dyskami).
-3. W **nazwa serwera Sofs** wprowadź nazwę sieci globalnej hosta SAP, **sapglobalhost**.
-4. W **nazwa udziału** wprowadź nazwę udziału plików **sapmnt**.
+1. W polu **Liczba maszyn wirtualnych** wprowadź minimalną liczbę wynoszącą **2**.
+2. W polu **liczba dysków maszyny wirtualnej** wprowadź minimalną liczbę dysków wynoszącą **3** (2 dyski + 1 dysk zapasowy = 3 dyski).
+3. W polu **Nazwa SOFS** wprowadź nazwę sieci globalnej hosta SAP, **sapglobalhost**.
+4. W polu **Nazwa udziału** wpisz nazwę udziału plików, **sapmnt**.
 
-### <a name="use-unmanaged-disks"></a>Korzystać z dysków niezarządzanych
+### <a name="use-unmanaged-disks"></a>Korzystanie z dysków niezarządzanych
 
-Szablon usługi Azure Resource Manager do wdrażania serwera plików skalowalnego w poziomie z bezpośrednimi miejscami do magazynowania i dysków niezarządzanych na platformie Azure jest dostępna na [GitHub][arm-sofs-s2d-non-managed-disks].
+Szablon Azure Resource Manager wdrażania Serwer plików skalowalny w poziomie za pomocą Bezpośrednie miejsca do magazynowania i dysków niezarządzanych platformy Azure jest dostępny w witrynie [GitHub][arm-sofs-s2d-non-managed-disks].
 
-![Rysunek 2: Ekran interfejsu użytkownika dla szablonu Menedżera zasobów platformy Azure z serwera plików skalowalnego w poziomie, bez użycia dysków zarządzanych][sap-ha-guide-figure-8011]
+![Rysunek 2. Ekran interfejsu użytkownika dla szablonu Azure Resource Manager Serwer plików skalowalny w poziomie bez dysków zarządzanych][sap-ha-guide-figure-8011]
 
-_**Rysunek 2**: Ekran interfejsu użytkownika dla szablonu Menedżera zasobów platformy Azure z serwera plików skalowalnego w poziomie, bez użycia dysków zarządzanych_
+_**Rysunek 2**. Ekran interfejsu użytkownika dla szablonu Azure Resource Manager Serwer plików skalowalny w poziomie bez dysków zarządzanych_
 
-W **typ konta magazynu** wybierz opcję **usługi Premium Storage**. Wszystkie inne ustawienia są takie same jak ustawienia dla dysków zarządzanych.
+W polu **Typ konta magazynu** wybierz pozycję **Premium Storage**. Wszystkie inne ustawienia są takie same jak ustawienia dla dysków zarządzanych.
 
 ## <a name="adjust-cluster-timeout-settings"></a>Dostosuj ustawienia limitu czasu klastra
 
-Po zainstalowaniu klastra serwera plików skalowalnego w poziomie Windows, należy dostosować progi limitu czasu dla trybu failover wykrywania warunków na platformie Azure. Parametry, które mają być zmienione są udokumentowane w artykule [dostrajania progów sieci klastra trybu failover][tuning-failover-cluster-network-thresholds]. Przy założeniu, że klastrowane maszyny wirtualne znajdują się w tej samej podsieci, Zmień te wartości następujących parametrów:
+Po pomyślnym zainstalowaniu klastra Windows Serwer plików skalowalny w poziomie należy dostosować progi limitu czasu dla wykrywania trybu failover do warunków na platformie Azure. Parametry, które mają zostać zmienione, są udokumentowane w obszarze [progi sieci klastra trybu failover dostrajania][tuning-failover-cluster-network-thresholds]. Przy założeniu, że klastrowane maszyny wirtualne znajdują się w tej samej podsieci, Zmień następujące parametry na te wartości:
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15
 - RoutingHistoryLength = 30
 
-Te ustawienia zostały przetestowane z klientami i oferuje dobry kompromis. Są one wystarczająco odporne, ale również zapewniają szybkie wystarczająco dużo pracy awaryjnej w warunków prawdziwy błąd lub awaria maszyny Wirtualnej.
+Te ustawienia zostały przetestowane przez klientów i oferują dobry kompromis. Są one wystarczająco odporne, ale zapewniają również szybką pracę w trybie failover w rzeczywistych warunkach błędów lub awariach maszyny wirtualnej.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Zainstaluj oprogramowanie SAP NetWeaver wysokiej dostępności na Windows trybu failover klastra i udział plików dla wystąpień SAP ASCS/SCS][sap-high-availability-installation-wsfc-file-share]
+* [Instalowanie rozwiązania SAP NetWeaver o wysokiej dostępności w klastrze trybu failover systemu Windows i udziału plików dla wystąpień oprogramowania SAP ASCS/SCS][sap-high-availability-installation-wsfc-file-share]

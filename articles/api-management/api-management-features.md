@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: apimpm
-ms.openlocfilehash: c06e297d3d81623b7224082cb66f8faa6879205d
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: bc5eab6bb5044e474c386d3e5771d8517e6ba9cf
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774949"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072530"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Porównanie warstw API Management platformy Azure oparte na funkcjach
 
@@ -29,7 +28,7 @@ Każda [warstwa cenowa](https://aka.ms/apimpricing) API Management oferuje odrę
 
 | Cecha                                                                                      | Zużycie | Deweloper      | Podstawowa          | Standardowa (Standard)       | Premium        |
 | -------------------------------------------------------------------------------------------- | ----------------------------- | -------------- | -------------- | -------------- | -------------- |
-| Integracja z usługą Azure AD<sup>1</sup>                                                             | Nie                            | Yes            | Nie             | Yes            | Yes            |
+| Integracja z usługą Azure AD<sup>1</sup>                                                             | Nie                            | Yes            | Nie             | Yes            | Tak            |
 | Obsługa Virtual Network (VNet)                                                               | Nie                            | Yes            | Nie             | Nie             | Tak            |
 | Wdrażanie w wielu regionach                                                                      | Nie                            | Nie             | Nie             | Nie             | Tak            |
 | Wiele niestandardowych nazw domen                                                                 | Nie                            | Nie             | Nie             | Nie             | Tak            |
@@ -38,11 +37,11 @@ Każda [warstwa cenowa](https://aka.ms/apimpricing) API Management oferuje odrę
 | Wbudowane narzędzia do analityki                                                                           | Nie                            | Yes            | Yes            | Yes            | Tak            |
 | [Ustawienia protokołu SSL](api-management-howto-manage-protocols-ciphers.md)                             | Tak                            | Yes            | Yes            | Yes            | Tak            |
 | [Zewnętrzna pamięć podręczna](https://aka.ms/apimbyoc)                                                    | Tak                           | Yes            | Yes            | Yes            | Tak            |
-| [Uwierzytelnianie certyfikatu klienta](api-management-howto-mutual-certificates-for-clients.md) | Yes                | Yes            | Yes            | Yes            | Yes            |
+| [Uwierzytelnianie certyfikatu klienta](api-management-howto-mutual-certificates-for-clients.md) | Tak                | Yes            | Yes            | Yes            | Tak            |
 | [Tworzenie kopii zapasowej i przywracanie](api-management-howto-disaster-recovery-backup-restore.md)               | Nie                            | Yes            | Yes            | Yes            | Tak            |
-| [Zarządzanie za pośrednictwem usługi git](api-management-configuration-repository-git.md)                        | Nie                            | Yes            | Yes            | Yes            | Yes            |
+| [Zarządzanie za pośrednictwem usługi git](api-management-configuration-repository-git.md)                        | Nie                            | Yes            | Yes            | Yes            | Tak            |
 | Interfejs API zarządzania bezpośredniego                                                                        | Nie                            | Yes            | Yes            | Yes            | Tak            |
-| Azure Monitor dzienników i metryk                                                               | Nie                | Yes            | Yes            | Yes            | Yes            |
+| Azure Monitor dzienników i metryk                                                               | Nie                | Yes            | Yes            | Yes            | Tak            |
 | Statyczny adres IP                                                               | Nie                | Yes            | Yes            | Yes            | Tak            |
 
 <sup>1</sup> umożliwia korzystanie z usługi Azure AD (i Azure AD B2C) jako dostawcy tożsamości na potrzeby logowania użytkownika w portalu dla deweloperów.<br/>

@@ -10,16 +10,15 @@ tags: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 26301e9a8aef29f1ff786f4fcd28b806eb10b8df
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: eace9c196ebd9f71b7a6f2bac7a59f581e6f313f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846796"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70090458"
 ---
 # <a name="how-to-use-perfinsights"></a>Korzystanie z narzędzia PerfInsights
 
@@ -107,24 +106,24 @@ Zbierane są informacje o konfiguracji maszyn wirtualnych systemu Windows, dysk�
 |                               | Analiza szybkiej wydajności | Benchmarking | Analiza wydajności | Analiza Azure Files | Zaawansowana analiza wydajności |
 | Informacje z dzienników zdarzeń       | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
 | Informacje o systemie                | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Mapa woluminów                        | Tak                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Mapa dysku                          | Tak                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Uruchamianie zadań                     | Tak                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Liczniki niezawodności magazynu      | Yes                        | Yes                                | Yes                      | Yes                  | Yes                  |
-| Informacje dotyczące magazynu               | Yes                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Fsutil Output                     | Tak                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Mapa woluminów                        | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Mapa dysku                          | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Uruchamianie zadań                     | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Liczniki niezawodności magazynu      | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Informacje dotyczące magazynu               | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Fsutil Output                     | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
 | Informacje o sterowniku filtru                | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Dane wyjściowe polecenia netstat                    | Yes                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Dane wyjściowe polecenia netstat                    | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
 | Konfiguracja sieci             | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
 | Konfiguracja zapory            | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Konfiguracja SQL Server          | Yes                        | Yes                                | Yes                      | Yes                  | Tak                  |
-| Ślady diagnostyki wydajności *  | Tak                        | Yes                                | Yes                      | Yes                  | Yes                  |
+| Konfiguracja SQL Server          | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
+| Ślady diagnostyki wydajności *  | Tak                        | Yes                                | Yes                      | Yes                  | Tak                  |
 | Śledzenie licznika wydajności * *      |                            |                                    | Tak                      |                      | Tak                  |
-| Śledzenie licznika SMB * *              |                            |                                    |                          | Yes                  |                      |
+| Śledzenie licznika SMB * *              |                            |                                    |                          | Tak                  |                      |
 | Śledzenie licznika SQL Server * *       |                            |                                    | Tak                      |                      | Tak                  |
-| Śledzenie Xperf                       |                            |                                    |                          |                      | Yes                  |
+| Śledzenie Xperf                       |                            |                                    |                          |                      | Tak                  |
 | Ślad StorPort                    |                            |                                    |                          |                      | Tak                  |
-| Śledzenie sieci                     |                            |                                    |                          | Yes                  | Tak                  |
+| Śledzenie sieci                     |                            |                                    |                          | Tak                  | Tak                  |
 | Śledzenie testu porównawczego narzędzia diskspd * * *       |                            | Tak                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 

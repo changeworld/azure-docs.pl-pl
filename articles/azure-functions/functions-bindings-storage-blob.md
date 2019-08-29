@@ -7,16 +7,15 @@ author: craigshoemaker
 manager: gwallace
 keywords: usługi Azure functions, funkcje, przetwarzanie zdarzeń, obliczanie dynamiczne, architektura bez serwera
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: e970afbfd9c302dc95667a7c356e95824838e9b4
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 84e4cc69d173fd37ecd15f537feadf19c275ef34
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636476"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086211"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Powiązania magazynu obiektów blob platformy Azure dla Azure Functions
 
@@ -392,7 +391,7 @@ Jeśli obiekt BLOB ma `name` nazwę  *{20140101}-soundfile. mp3*, wartość zmie
 
 Wyzwalacz obiektów BLOB zawiera kilka właściwości metadanych. Te właściwości może służyć jako część wyrażenia wiązania w pozostałych powiązaniach lub jako parametry w kodzie. Te wartości mają tę samą semantykę co typ [polecenia cloudblob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) .
 
-|Właściwość  |Typ  |Opis  |
+|Właściwość  |Type  |Opis  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|Ścieżka do wyzwalającego obiektu BLOB.|
 |`Uri`|`System.Uri`|Identyfikator URI obiektu BLOB dla lokalizacji podstawowej.|

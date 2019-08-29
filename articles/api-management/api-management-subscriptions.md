@@ -1,5 +1,5 @@
 ---
-title: Subskrypcje w usłudze Azure API Management | Dokumentacja firmy Microsoft
+title: Subskrypcje na platformie Azure API Management | Microsoft Docs
 description: Dowiedz się więcej na temat koncepcji subskrypcji w usłudze Azure API Management.
 services: api-management
 documentationcenter: ''
@@ -9,60 +9,59 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: afd43bbf6f52f498ad8f56d5a48b960d45d84137
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9144af131e1427d0b3226655c871921ac1d91665
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243264"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073423"
 ---
-# <a name="subscriptions-in-azure-api-management"></a>Subskrypcje w usłudze Azure API Management
+# <a name="subscriptions-in-azure-api-management"></a>Subskrypcje na platformie Azure API Management
 
-Subskrypcje są bardzo ważnym pojęciem w usłudze Azure API Management. Są one najbardziej popularny sposób interfejsu API w konsumentach napisanych w celu uzyskania dostępu do interfejsów API opublikowane za pośrednictwem wystąpienia usługi API Management. Ten artykuł zawiera omówienie koncepcji.
+Subskrypcje są ważnym pojęciem w usłudze Azure API Management. Są one Najpopularniejszym sposobem uzyskiwania dostępu do interfejsów API publikowanych za pomocą wystąpienia API Management przez odbiorców interfejsu API. Ten artykuł zawiera omówienie koncepcji.
 
-## <a name="what-are-subscriptions"></a>Czym są subskrypcje?
+## <a name="what-are-subscriptions"></a>Co to są subskrypcje?
 
-Podczas publikowania interfejsów API za pomocą usługi API Management jest prosta i wspólne dla bezpiecznego dostępu do tych interfejsów API przy użyciu kluczy subskrypcji. Deweloperzy, którzy muszą korzystać z opublikowanych interfejsów API musi zawierać klucz ważnej subskrypcji w żądaniach HTTP, w momencie wywołania tych interfejsów API. W przeciwnym razie wywołania są odrzucane od razu przez bramę usługi API Management. Nie są one przekazywane do usług zaplecza.
+Przy publikowaniu interfejsów API za pomocą API Management, jest to łatwe i powszechne do zabezpieczenia dostępu do tych interfejsów API przy użyciu kluczy subskrypcji. Deweloperzy, którzy muszą korzystać z opublikowanych interfejsów API, muszą uwzględnić prawidłowy klucz subskrypcji w żądaniach HTTP, gdy wykonują wywołania do tych interfejsów API. W przeciwnym razie wywołania są odrzucane natychmiast przez bramę API Management. Nie są one przekazywane do usług zaplecza.
 
-Aby uzyskać klucz subskrypcji do uzyskiwania dostępu do interfejsów API, wymagana jest subskrypcja. Subskrypcja stanowi nazwane kontener dla pary kluczy subskrypcji. Deweloperzy, którzy muszą korzystać z opublikowanych interfejsów API można uzyskać subskrypcji. I nie wymagają zatwierdzenia od wydawcy interfejsów API. Wydawcy interfejsów API można również tworzyć subskrypcje bezpośrednio dla klientów interfejsu API.
+Aby uzyskać klucz subskrypcji do uzyskiwania dostępu do interfejsów API, wymagana jest subskrypcja. Subskrypcja jest zasadniczo nazwą kontenera dla pary kluczy subskrypcji. Deweloperzy, którzy muszą korzystać z opublikowanych interfejsów API, mogą uzyskać subskrypcje. Nie potrzebują oni jednak zatwierdzania od wydawców interfejsu API. Wydawcy interfejsu API mogą również tworzyć subskrypcje bezpośrednio dla użytkowników interfejsu API.
 
 > [!TIP]
-> Usługa API Management obsługuje również inne mechanizmy do zabezpieczania dostępu do interfejsów API, w tym w następujących przykładach:
+> API Management obsługuje również inne mechanizmy zabezpieczania dostępu do interfejsów API, w tym następujące przykłady:
 > - [OAuth2.0](api-management-howto-protect-backend-with-aad.md)
 > - [Certyfikaty klienta](api-management-howto-mutual-certificates-for-clients.md)
-> - [Listy dozwolonych adresów IP](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
+> - [Listy dozwolonych IP](https://docs.microsoft.com/azure/api-management/api-management-access-restriction-policies#RestrictCallerIPs)
 
 ## <a name="scope-of-subscriptions"></a>Zakres subskrypcji
 
-Subskrypcje można skojarzyć z różnych zakresów: produkt, wszystkie interfejsy API lub poszczególnych interfejsu API.
+Subskrypcje można kojarzyć z różnymi zakresami: produkt, wszystkie interfejsy API lub pojedynczy interfejs API.
 
-### <a name="subscriptions-for-a-product"></a>Subskrypcji dla produktu
+### <a name="subscriptions-for-a-product"></a>Subskrypcje dla produktu
 
-Tradycyjnie subskrypcji w usłudze API Management zawsze były skojarzone z pojedynczym [oferowanego interfejsu API](api-management-terminology.md) zakresu. Deweloperzy znaleźć listę produktów w portalu dla deweloperów. Następnie będzie przesyłają oni żądania subskrypcji dla produktów, że użytkownik chce używać. Po zatwierdzeniu żądania subskrypcji automatycznie lub przez wydawców interfejsów API, deweloper służy kluczy w nim dostęp do wszystkich interfejsów API w produkcie. Obecnie portal dla deweloperów wyświetlane są tylko subskrypcje w zakresie produktu w ramach sekcji profilu użytkownika. 
+Tradycyjnie subskrypcje w API Management były zawsze skojarzone z jednym zakresem [produktu interfejsu API](api-management-terminology.md) . Deweloperzy znalazły listę produktów w portalu dla deweloperów. Następnie przesyłają żądania subskrypcji dla produktów, których chcą używać. Gdy żądanie subskrypcji zostanie zatwierdzone automatycznie lub przez wydawców interfejsu API, programista może użyć tych kluczy w celu uzyskania dostępu do wszystkich interfejsów API w produkcie. W tej chwili Portal deweloperów pokazuje tylko subskrypcje należące do zakresu produktu w sekcji profil użytkownika. 
 
-![Subskrypcje produktów](./media/api-management-subscriptions/product-subscription.png)
+![Subskrypcje produktu](./media/api-management-subscriptions/product-subscription.png)
 
 > [!TIP]
-> W niektórych scenariuszach może być publikowanie produktu interfejsu API publicznie bez wymogu subskrypcji wydawcy interfejsów API. Można usunąć zaznaczenie **wymagają subskrypcji** opcja **ustawienia** stronę produktu w witrynie Azure portal. W rezultacie wszystkie interfejsy API w ramach produktu są dostępne bez klucza API.
+> W niektórych scenariuszach wydawcy interfejsu API mogą chcieć opublikować produkt interfejsu API publicznie bez wymogu subskrypcji. Mogą oni usunąć zaznaczenie opcji **Wymagaj subskrypcji** na stronie **ustawienia** produktu w Azure Portal. W związku z tym wszystkie interfejsy API w ramach produktu są dostępne bez klucza interfejsu API.
 
-### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>Subskrypcje dla wszystkich interfejsów API lub poszczególnych interfejsu API
+### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>Subskrypcje dla wszystkich interfejsów API lub pojedynczego interfejsu API
 
-Kiedy wdrożyliśmy [zużycie](https://aka.ms/apimconsumptionblog) warstwy interfejsu API zarządzania, wprowadziliśmy kilka zmian, aby usprawnić zarządzanie kluczami:
-- Po pierwsze, dodaliśmy dwa więcej zakresów subskrypcji: wszystkie interfejsy API i jednego interfejsu API. Zakres subskrypcji nie jest już ograniczona do produktu interfejsu API. Teraz jest możliwa do tworzenia kluczy określającymi udzielenie dostępu do interfejsu API lub wszystkie interfejsy API w ramach wystąpienia usługi API Management, bez konieczności tworzenia produktu i najpierw Dodaj interfejsy API do niego. Ponadto każde wystąpienie usługi API Management zawiera teraz niezmienne, interfejsy API wszystkich subskrypcji. Ta subskrypcja umożliwia łatwiejsze i bardziej bezpośredni, testowanie i debugowanie interfejsów API w konsoli testów.
+Po wprowadzeniu warstwy [zużycia](https://aka.ms/apimconsumptionblog) API Management wprowadziliśmy kilka zmian w celu usprawnienia zarządzania kluczami:
+- Najpierw dodaliśmy dwa dodatkowe zakresy subskrypcji: wszystkie interfejsy API i jeden interfejs API. Zakres subskrypcji nie jest już ograniczony do produktu interfejsu API. Teraz można utworzyć klucze zezwalające na dostęp do interfejsu API lub wszystkich interfejsów API w wystąpieniu API Management, bez konieczności tworzenia produktu i dodawania do nich interfejsów API. Ponadto każde wystąpienie API Management jest teraz z niemodyfikowalną subskrypcją wszystkie interfejsy API. Ta subskrypcja ułatwia testowanie i debugowanie interfejsów API w konsoli testowej.
 
-- Po drugie, usługa API Management umożliwia teraz **autonomiczny** subskrypcji. Subskrypcje nie muszą być skojarzone z kontem dewelopera. Ta funkcja jest przydatne w scenariuszach, takich jak po kilku deweloperów i zespołów udostępnianie subskrypcji.
+- Następnie API Management umożliwia teraz korzystanie z subskrypcji autonomicznych. Subskrypcje nie są już wymagane do skojarzenia z kontem dewelopera. Ta funkcja jest przydatna w scenariuszach, na przykład gdy kilku deweloperów lub zespołów współużytkuje subskrypcję.
 
-- Na koniec wydawcy interfejsów API można teraz [tworzyć subskrypcje](api-management-howto-create-subscriptions.md) bezpośrednio w witrynie Azure portal:
+- Na koniec wydawcy interfejsu API mogą teraz [tworzyć subskrypcje](api-management-howto-create-subscriptions.md) bezpośrednio w Azure Portal:
 
-    ![Elastyczne subskrypcji](./media/api-management-subscriptions/flexible-subscription.png)
+    ![Elastyczne subskrypcje](./media/api-management-subscriptions/flexible-subscription.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-Uzyskaj więcej informacji na temat usługi API Management:
+## <a name="next-steps"></a>Następne kroki
+Uzyskaj więcej informacji na API Management:
 
-+ Dowiedz się, inne [pojęcia](api-management-terminology.md) w usłudze API Management.
-+ Postępuj zgodnie z naszym [samouczki](import-and-publish.md) Aby dowiedzieć się więcej o usłudze API Management.
-+ Sprawdź nasze [z często Zadawanymi pytaniami](api-management-faq.md) dla często zadawane pytania.
++ Zapoznaj [](api-management-terminology.md) się z innymi pojęciami w API Management.
++ Postępuj [](import-and-publish.md) zgodnie z naszymi samouczkami, aby dowiedzieć się więcej o API Management.
++ Zapoznaj się z naszą [stroną często](api-management-faq.md) zadawanych pytań.

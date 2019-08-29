@@ -9,19 +9,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: cd66dfb1-0e9b-4fb0-a471-9deaf4ab4ab8
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 04/30/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e7de54f7da8cef5942a8d8f41031eaf3e2565580
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: cad70169e88e1fafa129c02f30d5288d39e30a9c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846239"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102149"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Konfigurowanie integracji Azure Key Vault SQL Server na platformie Azure Virtual Machines (Menedżer zasobów)
 
@@ -29,7 +28,7 @@ ms.locfileid: "68846239"
 > * [Resource Manager](virtual-machines-windows-ps-sql-keyvault.md)
 > * [Wdrożenie klasyczne](../sqlclassic/virtual-machines-windows-classic-ps-sql-keyvault.md)
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Istnieje wiele funkcji szyfrowania SQL Server, takich jak [przezroczyste szyfrowanie danych (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [szyfrowanie na poziomie kolumny (cle)](https://msdn.microsoft.com/library/ms173744.aspx)i [szyfrowanie kopii zapasowych](https://msdn.microsoft.com/library/dn449489.aspx). Te formy szyfrowania wymagają zarządzania kluczami kryptograficznymi używanymi do szyfrowania i ich przechowywania. Usługa Azure Key Vault (AKV) została zaprojektowana w celu poprawy bezpieczeństwa i zarządzania tymi kluczami w bezpiecznej i wysoce dostępnej lokalizacji. [SQL Server Connector](https://www.microsoft.com/download/details.aspx?id=45344) umożliwia SQL Server Korzystanie z tych kluczy z Azure Key Vault.
 
 W przypadku uruchamiania SQL Server z maszynami lokalnymi istnieją [kroki, które można wykonać, aby uzyskać dostęp do Azure Key Vault z lokalnej maszyny SQL Server](https://msdn.microsoft.com/library/dn198405.aspx). Jednak w przypadku SQL Server na maszynach wirtualnych platformy Azure można zaoszczędzić czas, korzystając z funkcji *integracji Azure Key Vault* .

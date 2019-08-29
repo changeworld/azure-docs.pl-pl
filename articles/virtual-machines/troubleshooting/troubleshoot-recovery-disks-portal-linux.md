@@ -7,18 +7,17 @@ author: genlin
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/19/2019
 ms.author: genli
-ms.openlocfilehash: 0e5669e32f01a260b5a260b548cfe508ad47cf11
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 2dcd2009d93fdf39d1221f2a2f5354fe68658077
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997984"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103362"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Rozwiązywanie problemów z maszyną wirtualną z systemem Linux przez dołączenie dysku systemu operacyjnego do maszyny wirtualnej odzyskiwania przy użyciu Azure Portal
 Jeśli maszyna wirtualna z systemem Linux napotyka błąd rozruchu lub dysku, może być konieczne wykonanie kroków rozwiązywania problemów na wirtualnym dysku twardym. Typowym przykładem może być nieprawidłowy wpis w `/etc/fstab` programie, który uniemożliwia pomyślne uruchomienie maszyny wirtualnej. W tym artykule szczegółowo opisano sposób używania Azure Portal do łączenia wirtualnego dysku twardego z inną maszyną wirtualną z systemem Linux w celu usunięcia błędów, a następnie ponownego utworzenia oryginalnej maszyny wirtualnej.

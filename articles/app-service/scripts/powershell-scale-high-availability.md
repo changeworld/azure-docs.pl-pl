@@ -9,19 +9,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 470f0129-1efe-462c-a029-5c66e04158a8
 ms.service: app-service
-ms.devlang: multiple
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 1591cf379c21c660df429dc7abb27ecd828a2ea9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 02f1d063f8dfcc21e076296676700a5cb11be55c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136386"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098265"
 ---
 # <a name="scale-a-web-app-worldwide-with-a-high-availability-architecture"></a>Skalowanie aplikacji internetowej na całym świecie przy użyciu architektury wysokiej dostępności
 
@@ -55,7 +54,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Tworzy aplikację internetową. |
 | [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) | Tworzy punkt końcowy w profilu usługi Traffic Manager. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

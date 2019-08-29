@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: apimpm
-ms.openlocfilehash: 0e104f4cbdef7edc5c109781509e3924400e5ba4
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 6a1ae2966e8d5535a5fd9aeffb5ddc3a788f85ee
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62123522"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072105"
 ---
 # <a name="import-and-publish-your-first-api"></a>Importowanie i publikowanie pierwszego interfejsu API 
 
@@ -95,7 +94,7 @@ Operacje mogą być również wywoływane z **portalu dla deweloperów** w celu 
 
 1. Przejdź do **portalu dla deweloperów**.
 
-    ![Portal dla deweloperów](./media/api-management-get-started/developer-portal.png)
+    ![Portal deweloperów](./media/api-management-get-started/developer-portal.png)
 
 2. Wybierz pozycję **Interfejsy API**, kliknij interfejs **Wersja demonstracyjna interfejsu API Conference**, a następnie pozycję **GetSpeakers**.
 

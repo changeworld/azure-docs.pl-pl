@@ -8,16 +8,15 @@ manager: gwallace
 keywords: usługi Azure functions, funkcje, przetwarzanie zdarzeń, obliczanie dynamiczne, architektura bez serwera
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 3d5b2afd642a7eb042b2e6e07ef93a505f6b9648
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: f2bdfab82e1b9fb05d74f69536ec672a4b18a4bf
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774696"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114377"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Usługa Azure powiązania usługi Service Bus dla usługi Azure Functions
 
@@ -367,7 +366,7 @@ Można `maxAutoRenewDuration` go skonfigurować w pliku *host. JSON*, który jes
 
 Wyzwalacz usługi Service Bus udostępnia wiele [właściwości metadanych](./functions-bindings-expressions-patterns.md#trigger-metadata). Te właściwości może służyć jako część wyrażenia wiązania w pozostałych powiązaniach lub jako parametry w kodzie. Są to właściwości [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) klasy.
 
-|Właściwość|Typ|Opis|
+|Właściwość|Type|Opis|
 |--------|----|-----------|
 |`DeliveryCount`|`Int32`|Liczba dostarczeń.|
 |`DeadLetterSource`|`string`|Źródło utraconych wiadomości.|
@@ -715,14 +714,19 @@ W języku C# i skrypt języka C# można użyć następujących typów parametró
 * `out T paramName` - `T` mogą być dowolnego typu serializacji JSON. Jeśli wartość parametru ma wartość null, jeśli funkcja kończy działanie, funkcje tworzy komunikat z obiektem o wartości null.
 * `out string` — Jeśli wartość parametru ma wartość null, jeśli funkcja kończy działanie, funkcje nie powoduje utworzenia wiadomości.
 * `out byte[]` — Jeśli wartość parametru ma wartość null, jeśli funkcja kończy działanie, funkcje nie powoduje utworzenia wiadomości.
-* `out BrokeredMessage` — Jeśli wartość parametru ma wartość null, jeśli funkcja kończy działanie, funkcje nie powoduje utworzenia wiadomości.
+* `out BrokeredMessage`-Jeśli wartość parametru ma wartość null, gdy funkcja zostanie zakończona, funkcja nie tworzy komunikatu (dla funkcji 1. x)
+* `out Message`-Jeśli wartość parametru ma wartość null, gdy funkcja zostanie zakończona, funkcja nie tworzy komunikatu (dla funkcji 2. x)
 * `ICollector<T>` lub `IAsyncCollector<T>` — w przypadku tworzenia wielu wiadomości. Komunikat jest tworzone, gdy wywołujesz `Add` metody.
 
-W funkcji asynchronicznej, użyj wartości zwracanej lub `IAsyncCollector` zamiast `out` parametru.
+Podczas pracy z C# funkcjami:
 
-Parametry te dotyczą usługi Azure Functions w wersji 1.x; w przypadku 2.x, użyj [ `Message` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) zamiast `BrokeredMessage`.
+* Funkcje asynchroniczne wymagają wartości zwracanej lub `IAsyncCollector` zamiast `out` parametru.
 
-W języku JavaScript, dostęp do kolejki lub tematu przy użyciu `context.bindings.<name from function.json>`. Ciąg, tablica bajtów lub obiekt Javascript (przeprowadzona deserializacja JSON) można przypisać do `context.binding.<name>`.
+* Aby uzyskać dostęp do identyfikatora sesji, powiąż [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) z typem i `sessionId` Użyj właściwości.
+
+W języku JavaScript, dostęp do kolejki lub tematu przy użyciu `context.bindings.<name from function.json>`. Do `context.binding.<name>`programu można przypisać ciąg, tablicę bajtową lub obiekt JavaScript (deserializowany w formacie JSON).
+
+Aby wysłać komunikat do kolejki z obsługą sesji wC# języku innym niż język, użyj [zestawu SDK Azure Service Bus](https://docs.microsoft.com/azure/service-bus-messaging) , a nie wbudowanego powiązania danych wyjściowych.
 
 ## <a name="exceptions-and-return-codes"></a>Wyjątki i kody powrotne
 

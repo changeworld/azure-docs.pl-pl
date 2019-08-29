@@ -10,27 +10,25 @@ tags: azure-service-management
 ms.assetid: 42f901f8-02f7-4869-b22d-d99ef59f874c
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: d60fc1afbd129471ba56dddb6e2d5beba5ca2330
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc8be33ede80070b8e9928e01d07b6066f1c887c
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136483"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113574"
 ---
 # <a name="create-a-web-app-with-continuous-deployment-from-github"></a>Tworzenie aplikacji internetowej z ciągłym wdrażaniem z repozytorium GitHub
 
-Ten przykładowy skrypt tworzy aplikację internetową w usłudze App Service z powiązanymi zasobami, a następnie konfiguruje ciągłe wdrażanie z repozytorium GitHub. Aby uzyskać więcej informacji na temat wdrożenia z repozytorium GitHub bez ciągłego wdrażania, zobacz [Create a web app and deploy code from GitHub (Tworzenie aplikacji internetowej i wdrażanie kodu z repozytorium GitHub)](powershell-deploy-github.md).
+Ten przykładowy skrypt tworzy aplikację internetową w App Service z jej powiązanymi zasobami, a następnie konfiguruje [ciągłe wdrażanie](../deploy-continuous-deployment.md) z repozytorium GitHub. Aby uzyskać więcej informacji na temat wdrożenia z repozytorium GitHub bez ciągłego wdrażania, zobacz [Create a web app and deploy code from GitHub (Tworzenie aplikacji internetowej i wdrażanie kodu z repozytorium GitHub)](powershell-deploy-github.md).
 
 W razie potrzeby zainstaluj program Azure PowerShell, korzystając z instrukcji w [przewodniku programu Azure PowerShell](/powershell/azure/overview), a następnie uruchom polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure. Ponadto upewnij się, że:
 
-- Utworzono połączenie z platformą Azure za pomocą polecenia `az login`.
-- Kod aplikacji znajduje się w publicznym lub prywatnym repozytorium GitHub, którego jesteś właścicielem.
-- Został [utworzony token dostępu na koncie usługi GitHub](https://help.github.com/articles/creating-an-access-token-for-command-line-use/).
+- Kod aplikacji znajduje się w publicznym lub prywatnym repozytorium GitHub, którego jesteś właścicielem. Aby uzyskać kompilacje automatyczne, należy przeprowadzić strukturę repozytorium zgodnie z tabelą [Przygotowanie repozytorium](../deploy-continuous-deployment.md#prepare-your-repository) .
+- [W Twoim koncie usługi GitHub został utworzony osobisty token dostępu](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line).
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
@@ -57,7 +55,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Tworzy aplikację internetową. |
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | Modyfikuje zasób w grupie zasobów. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

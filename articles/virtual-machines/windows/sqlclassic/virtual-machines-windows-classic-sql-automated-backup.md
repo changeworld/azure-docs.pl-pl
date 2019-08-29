@@ -1,6 +1,6 @@
 ---
-title: Zautomatyzowane tworzenie kopii zapasowej dla maszyn wirtualnych programu SQL Server (klasyczny) | Dokumentacja firmy Microsoft
-description: 'W tym artykule wyjaśniono funkcja automatycznych kopii zapasowych programu SQL Server uruchomionego na maszynach wirtualnych platformy Azure przy użyciu usługi Resource Manager. '
+title: Automatyczne kopie zapasowe Virtual Machines SQL Server (klasyczne) | Microsoft Docs
+description: 'W tym artykule wyjaśniono funkcję automatycznego tworzenia kopii zapasowych SQL Server uruchamianej na platformie Azure Virtual Machines przy użyciu Menedżer zasobów. '
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -9,34 +9,33 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 3333e830-8a60-42f5-9f44-8e02e9868d7b
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: aeb97d661d330ed6afb3ca5e5e1eb924dacc4024
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: da40b635b0fc094275d8d46b8c5ad6d3d90bea24
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60607697"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101825"
 ---
-# <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Zautomatyzowane tworzenie kopii zapasowej programu SQL Server na maszynach wirtualnych platformy Azure (wersja klasyczna)
+# <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Automatyczne tworzenie kopii zapasowych SQL Server na platformie Azure Virtual Machines (wersja klasyczna)
 > [!div class="op_single_selector"]
 > * [Resource Manager](../sql/virtual-machines-windows-sql-automated-backup.md)
 > * [Wdrożenie klasyczne](../classic/sql-automated-backup.md)
 > 
 > 
 
-Zautomatyzowane tworzenie kopii zapasowej automatycznie konfiguruje [zarządzanej kopii zapasowej programu Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) dla wszystkich istniejących i nowych baz danych na Maszynie wirtualnej platformy Azure z programu SQL Server 2014 Standard lub Enterprise. Dzięki temu można skonfigurować kopie zapasowe zwykłej bazy danych, które wykorzystują trwałe usługi Azure blob storage. Zautomatyzowane tworzenie kopii zapasowej jest zależna od [rozszerzenie agenta IaaS programu SQL Server](../classic/sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+Automatyczna kopia zapasowa automatycznie konfiguruje [zarządzaną kopię zapasową do Microsoft Azure](https://msdn.microsoft.com/library/dn449496.aspx) dla wszystkich istniejących i nowych baz danych na maszynie wirtualnej platformy Azure z systemem SQL Server 2014 Standard lub Enterprise. Dzięki temu można konfigurować regularne kopie zapasowe bazy danych korzystające z trwałego magazynu obiektów blob platformy Azure. Automatyczne tworzenie kopii zapasowej zależy od [rozszerzenia agenta SQL Server IaaS](../classic/sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
 > [!IMPORTANT] 
-> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Usługi Resource Manager i Model Klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Aby wyświetlić wersję tego artykułu w zakresie usługi Resource Manager, zobacz [automatyczne kopie zapasowe dla programu SQL Server w usłudze Azure Virtual Machines Resource Manager](../sql/virtual-machines-windows-sql-automated-backup.md).
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Menedżer zasobów i klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano korzystanie z klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager. Aby wyświetlić wersję Menedżer zasobów tego artykułu, zobacz [Automatyczne tworzenie kopii zapasowych dla SQL Server na platformie Azure Virtual Machines Menedżer zasobów](../sql/virtual-machines-windows-sql-automated-backup.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby korzystać z automatycznych kopii zapasowych, należy wziąć pod uwagę następujące wymagania wstępne:
+Aby korzystać z zautomatyzowanej kopii zapasowej, należy wziąć pod uwagę następujące wymagania wstępne:
 
 **System operacyjny**:
 
@@ -44,41 +43,41 @@ Aby korzystać z automatycznych kopii zapasowych, należy wziąć pod uwagę nas
 * Windows Server 2012 R2
 * Windows Server 2016
 
-**Wersją programu SQL Server**:
+**Wersja SQL Server/Edition**:
 
 * SQL Server 2014 Standard
 * SQL Server 2014 Enterprise
 
 > [!NOTE]
-> Zautomatyzowane tworzenie kopii zapasowej dla programu SQL Server 2016 jest obsługiwana na maszynach wirtualnych usługi Resource Manager. Aby uzyskać więcej informacji, zobacz [automatyczne kopie zapasowe w wersji 2 dla programu SQL Server 2016 platformy Azure maszyn wirtualnych (Resource Manager)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2).
+> Zautomatyzowana kopia zapasowa dla SQL Server 2016 jest obsługiwana w przypadku Menedżer zasobów maszyn wirtualnych. Aby uzyskać więcej informacji, zobacz [zautomatyzowane kopie zapasowe v2 dla SQL Server 2016 Virtual Machines Azure (Menedżer zasobów)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2).
 
 **Konfiguracja bazy danych**:
 
-* Docelowa baza danych musi używać modelu odzyskiwania pełnego.
+* Docelowe bazy danych muszą używać modelu odzyskiwania pełnego.
 
 **Azure PowerShell**:
 
-* [Zainstaluj najnowsze polecenia programu Azure PowerShell](/powershell/azure/overview).
+* [Zainstaluj najnowsze polecenia Azure PowerShell](/powershell/azure/overview).
 
-**Rozszerzenie programu SQL Server IaaS**:
+**SQL Server rozszerzenie IaaS**:
 
-* [Zainstaluj rozszerzenie IaaS programu SQL Server](../classic/sql-server-agent-extension.md).
+* [Zainstaluj rozszerzenie SQL Server IaaS](../classic/sql-server-agent-extension.md).
 
 ## <a name="settings"></a>Ustawienia
-W poniższej tabeli opisano opcje, które można skonfigurować do automatycznego tworzenia kopii zapasowych. Dla klasycznych maszyn wirtualnych należy skonfigurować te ustawienia za pomocą programu PowerShell.
+W poniższej tabeli opisano opcje, które można skonfigurować do automatycznego tworzenia kopii zapasowych. W przypadku klasycznych maszyn wirtualnych należy skonfigurować te ustawienia przy użyciu programu PowerShell.
 
-| Ustawienie | Zakres (ustawienie domyślne) | Opis |
+| Ustawienie | Zakres (wartość domyślna) | Opis |
 | --- | --- | --- |
-| **Automatyczne kopie zapasowe** |Włącz/Wyłącz (wyłączony) |Włącza lub wyłącza automatyczne kopie zapasowe maszyny wirtualnej platformy Azure z programu SQL Server 2014 Standard lub Enterprise. |
-| **Okres przechowywania** |1 – 30 dni (30 dni) |Liczba dni przechowywania kopii zapasowej. |
-| **Konto magazynu** |Konto usługi Azure storage (konto magazynu utworzone dla określonej maszyny Wirtualnej) |Konto magazynu platformy Azure do przechowywania automatycznych kopii zapasowych plików w magazynie obiektów blob. Kontener jest tworzony w tej lokalizacji, aby zapisać wszystkie pliki kopii zapasowej. Konwencja nazewnictwa pliku kopii zapasowej zawiera daty, godziny i nazwy komputera. |
-| **Szyfrowanie** |Włącz/Wyłącz (wyłączony) |Włącza lub wyłącza funkcję szyfrowania. Gdy jest włączone szyfrowanie, certyfikaty służące do przywrócenia kopii zapasowej znajdują się w podanego konta magazynu w tym samym kontenerze automaticbackup przy użyciu tej samej konwencji nazewnictwa. Zmiana hasła nowy certyfikat jest generowany przy użyciu tego hasła, ale stary certyfikat pozostanie do przywrócenia poprzednich kopii zapasowych. |
-| **Hasło** |Tekst hasła, (Brak) |Hasło kluczy szyfrowania. Jest to tylko wymagane, jeśli szyfrowanie jest włączone. Aby przywrócić szyfrowanej kopii zapasowej, musisz mieć prawidłowe hasło i powiązane certyfikat, który został użyty w tym czasie, na których wykonano kopię zapasową. |
-| **Bazy danych systemu tworzenia kopii zapasowych** | Włącz/Wyłącz (wyłączony) | Twórz pełne kopie zapasowe Master, Model i MSDB |
-| **Konfigurowanie harmonogramu tworzenia kopii zapasowych** | Ręczne/automatyczne (automatyczne) | Wybierz **automatyczne** do automatycznie twórz pełne kopie zapasowe w oparciu o wzrost dziennika dzienników. Wybierz **ręczne** Aby określić harmonogram dla pełnej i kopie zapasowe dzienników. |
+| **Automatyczne kopie zapasowe** |Włącz/Wyłącz (wyłączone) |Włącza lub wyłącza automatyczne tworzenie kopii zapasowej maszyny wirtualnej platformy Azure z systemem SQL Server 2014 Standard lub Enterprise. |
+| **Okres przechowywania** |1-30 dni (30 dni) |Liczba dni przechowywania kopii zapasowej. |
+| **Konto magazynu** |Konto usługi Azure Storage (konto magazynu utworzone dla określonej maszyny wirtualnej) |Konto usługi Azure Storage służące do przechowywania plików automatycznego tworzenia kopii zapasowych w usłudze BLOB Storage. W tej lokalizacji jest tworzony kontener służący do przechowywania wszystkich plików kopii zapasowej. Konwencja nazewnictwa plików kopii zapasowej obejmuje datę, godzinę i nazwę maszyny. |
+| **Szyfrowanie** |Włącz/Wyłącz (wyłączone) |Włącza lub wyłącza szyfrowanie. Po włączeniu szyfrowania certyfikaty używane do przywracania kopii zapasowej znajdują się na określonym koncie magazynu w tym samym kontenerze automaticbackup przy użyciu tej samej konwencji nazewnictwa. Jeśli hasło zostanie zmienione, zostanie wygenerowany nowy certyfikat z tym hasłem, ale stary certyfikat pozostaje przywrócony do przywrócenia poprzednich kopii zapasowych. |
+| **Hasło** |Tekst hasła (brak) |Hasło dla kluczy szyfrowania. Jest to wymagane tylko wtedy, gdy szyfrowanie jest włączone. Aby można było przywrócić zaszyfrowaną kopię zapasową, należy dysponować prawidłowym hasłem i powiązanym certyfikatem użytym w czasie wykonywania kopii zapasowej. |
+| **Tworzenie kopii zapasowych baz danych systemu** | Włącz/Wyłącz (wyłączone) | Twórz pełne kopie zapasowe bazy Master, model i MSDB |
+| **Konfiguruj harmonogram tworzenia kopii zapasowych** | Ręczne/automatyczne (zautomatyzowane) | Wybierz opcję **zautomatyzowany** , aby automatycznie przyjmować pełne kopie zapasowe i rejestrować je na podstawie przyrostu dziennika. Wybierz pozycję **ręcznie** , aby określić harmonogram pełnych i dzienników kopii zapasowych. |
 
 ## <a name="configuration-with-powershell"></a>Konfiguracja przy użyciu programu PowerShell
-W poniższym przykładzie programu PowerShell automatyczne kopie zapasowe jest skonfigurowany dla istniejącej maszyny Wirtualnej 2014 r. dla serwera SQL. **New AzureVMSqlServerAutoBackupConfig** polecenie konfiguruje ustawienia automatycznych kopii zapasowych w celu przechowywania kopii zapasowych w ramach konta usługi Azure storage określone przez zmienną $storageaccount. Te kopie zapasowe będą przechowywane przez 10 dni. **AzureVMSqlServerExtension zestaw** polecenie aktualizuje określoną maszynę Wirtualną platformy Azure przy użyciu tych ustawień.
+W poniższym przykładzie programu PowerShell jest konfigurowana automatyczna kopia zapasowa dla istniejącej maszyny wirtualnej SQL Server 2014. Polecenie **New-AzureVMSqlServerAutoBackupConfig** służy do konfigurowania ustawień automatycznego tworzenia kopii zapasowych w celu przechowywania kopii zapasowych na koncie usługi Azure Storage określonym przez zmienną $storageaccount. Te kopie zapasowe będą przechowywane przez 10 dni. Polecenie **Set-AzureVMSqlServerExtension** AKTUALIZUJE określoną maszynę wirtualną platformy Azure przy użyciu tych ustawień.
 
     $storageaccount = "<storageaccountname>"
     $storageaccountkey = (Get-AzureStorageKey -StorageAccountName $storageaccount).Primary
@@ -87,9 +86,9 @@ W poniższym przykładzie programu PowerShell automatyczne kopie zapasowe jest s
 
     Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoBackupSettings $autobackupconfig | Update-AzureVM
 
-Go może potrwać kilka minut, aby zainstalować i skonfigurować agenta IaaS programu SQL Server.
+Zainstalowanie i skonfigurowanie agenta SQL Server IaaS może potrwać kilka minut.
 
-Aby włączyć szyfrowanie, zmodyfikować poprzedni skrypt do przekazania parametrów EnableEncryption wraz z hasłem (bezpieczny ciąg) dla parametru CertificatePassword. Poniższy skrypt umożliwia ustawienia automatycznych kopii zapasowych w poprzednim przykładzie i dodaje szyfrowania.
+Aby włączyć szyfrowanie, zmodyfikuj poprzedni skrypt, aby przekazać parametr EnableEncryption wraz z hasłem (bezpieczny ciąg) dla parametru CertificatePassword. Poniższy skrypt włącza ustawienia zautomatyzowanej kopii zapasowej w poprzednim przykładzie i dodaje szyfrowanie.
 
     $storageaccount = "<storageaccountname>"
     $storageaccountkey = (Get-AzureStorageKey -StorageAccountName $storageaccount).Primary
@@ -100,19 +99,19 @@ Aby włączyć szyfrowanie, zmodyfikować poprzedni skrypt do przekazania parame
 
     Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -AutoBackupSettings $autobackupconfig | Update-AzureVM
 
-Aby wyłączyć automatyczne wykonywanie kopii zapasowej, uruchom ten sam skrypt bez **-Włącz** parametr **New AzureVMSqlServerAutoBackupConfig**. Podobnie jak w przypadku instalacji, może potrwać kilka minut, aby wyłączyć automatyczne kopie zapasowe.
+Aby wyłączyć automatyczne tworzenie kopii zapasowej, Uruchom ten sam skrypt bez parametru **-enable** dla **New-AzureVMSqlServerAutoBackupConfig**. Tak jak w przypadku instalacji, wyłączenie automatycznej kopii zapasowej może potrwać kilka minut.
 
 > [!NOTE]
-> Wyłączanie i odinstalowywanie agenta IaaS programu SQL Server nie powoduje usunięcia wcześniej skonfigurowanych ustawień zarządzanych kopii zapasowych. Przed przystąpieniem do wyłączenia lub odinstalowania agenta IaaS programu SQL Server, należy wyłączyć automatyczne kopie zapasowe.
+> Wyłączenie i odinstalowanie agenta SQL Server IaaS nie powoduje usunięcia wcześniej skonfigurowanych ustawień zarządzanej kopii zapasowej. Przed wyłączeniem lub odinstalowaniem SQL Server agenta IaaS należy wyłączyć automatyczne tworzenie kopii zapasowej.
 > 
 > 
 
-## <a name="next-steps"></a>Kolejne kroki
-Zautomatyzowane tworzenie kopii zapasowej konfiguruje zarządzanej kopii zapasowej na maszynach wirtualnych platformy Azure. Dlatego ważne jest, aby [zapoznaj się z dokumentacją dla zarządzanej kopii zapasowej](https://msdn.microsoft.com/library/dn449496.aspx) , aby zrozumieć zachowania i skutków.
+## <a name="next-steps"></a>Następne kroki
+Automatyczna kopia zapasowa konfiguruje zarządzaną kopię zapasową na maszynach wirtualnych Dlatego ważne jest zapoznanie się [z dokumentacją dotyczącą zarządzanej kopii zapasowej](https://msdn.microsoft.com/library/dn449496.aspx) w celu zrozumienia zachowania i konsekwencji.
 
-Można znaleźć dodatkowe kopii zapasowej i przywracanie wskazówki dotyczące programu SQL Server na maszynach wirtualnych platformy Azure w następującym temacie: [Kopia zapasowa i przywracanie programu SQL Server na maszynach wirtualnych platformy Azure](../sql/virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+Dodatkowe wskazówki dotyczące tworzenia kopii zapasowych i przywracania dla SQL Server na maszynach wirtualnych platformy Azure można znaleźć w następującym temacie: [Tworzenie kopii zapasowych i przywracanie SQL Server na platformie Azure Virtual Machines](../sql/virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 
-Aby uzyskać informacje o innych zadaniach automatyzacji dostępności, zobacz [rozszerzenie agenta IaaS programu SQL Server](../classic/sql-server-agent-extension.md).
+Aby uzyskać informacje o innych dostępnych zadaniach automatyzacji, zobacz [SQL Server rozszerzenia agenta IaaS](../classic/sql-server-agent-extension.md).
 
-Aby uzyskać więcej informacji na temat uruchamiania programu SQL Server na maszynach wirtualnych platformy Azure, zobacz [programu SQL Server na maszynach wirtualnych platformy Azure — omówienie](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Aby uzyskać więcej informacji na temat uruchamiania SQL Server na maszynach wirtualnych platformy Azure, zobacz [SQL Server na platformie Virtual Machines Azure — omówienie](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
 

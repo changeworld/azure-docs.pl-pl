@@ -1,6 +1,6 @@
 ---
-title: Rozmiary maszyn wirtualnych systemu Linux platformy Azure — poprzedniej generacji | Dokumentacja firmy Microsoft
-description: Wyświetla listę poprzednie generacje dostępnych rozmiarów maszyn wirtualnych systemu Linux na platformie Azure. Wyświetla informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także magazynu przepustowości przepływność i sieci dla rozmiarów w tej serii.
+title: Rozmiary maszyn wirtualnych z systemem Linux na platformie Azure — poprzednie generacji | Microsoft Docs
+description: Zawiera listę poprzednich generacji rozmiarów dostępnych dla maszyn wirtualnych z systemem Linux na platformie Azure. Wyświetla informacje o liczbie procesorów wirtualnych vCPU, dyskach danych i kartach sieciowych oraz o przepływności magazynu i przepustowości sieci dla rozmiarów w tej serii.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -9,30 +9,29 @@ editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: e20d351fa33ae432e184addcd1729b2663dbb490
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e56fb938ca8d45a148700a0a6b91e22a4f9034c3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708789"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100849"
 ---
-# <a name="previous-generations-of-virtual-machine-sizes"></a>Poprzednie generacje rozmiarów maszyn wirtualnych
+# <a name="previous-generations-of-virtual-machine-sizes"></a>Poprzednie generacji rozmiarów maszyn wirtualnych
 
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-sizes-previous-gen.md)]
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-## <a name="older-generations-of-virtual-machine-sizes"></a>Starszych generacjach rozmiarów maszyn wirtualnych
+## <a name="older-generations-of-virtual-machine-sizes"></a>Starsze generacji rozmiarów maszyn wirtualnych
 
 [!INCLUDE [virtual-machines-common-sizes-older](../../../includes/virtual-machines-common-sizes-older.md)]
 
-## <a name="other-sizes"></a>O innych rozmiarach
+## <a name="other-sizes"></a>Inne rozmiary
 
 - [Zastosowania ogólne](sizes-general.md)
 - [Optymalizacja pod kątem obliczeń](sizes-compute.md)
@@ -41,6 +40,6 @@ ms.locfileid: "67708789"
 - [Procesor GPU](sizes-gpu.md)
 - [Obliczenia o wysokiej wydajności](sizes-hpc.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o tym, jak [usługi Azure compute jednostki (ACU)](acu.md) pozwalają porównać wydajności obliczeń w jednostkach SKU platformy Azure.
+Dowiedz się więcej o tym, jak [usługa Azure COMPUTE units (ACU)](acu.md) może pomóc w porównaniu wydajności obliczeniowej w ramach jednostek SKU platformy Azure.

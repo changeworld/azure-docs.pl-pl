@@ -7,16 +7,15 @@ author: craigshoemaker
 manager: gwallace
 keywords: Azure funkcji, funkcje, przetwarzanie zdarzeń, elementy webhook, obliczanie dynamiczne, architektura bezserwerowa testowania
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 800c9db245007047b2dc17b3f270737254ed42d7
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 0bd6222a6f2a2582fb715dbaf364fe23e41630d5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479717"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085123"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie do testowania kodu w usłudze Azure Functions
 
@@ -29,7 +28,7 @@ Zawartość występującego jest podzielona na dwie różne sekcje przeznaczone 
 - [C#w programie Visual Studio w narzędziu xUnit](#c-in-visual-studio)
 - [Język JavaScript w programie VS Code z Jest](#javascript-in-vs-code)
 
-Przykładowe repozytorium jest dostępna w [GitHub](https://github.com/Azure-Samples/azure-functions-tests).
+Przykładowe repozytorium jest dostępne w witrynie [GitHub](https://github.com/Azure-Samples/azure-functions-tests).
 
 ## <a name="c-in-visual-studio"></a>C#w programie Visual Studio
 Poniższy przykład zawiera opis sposobu tworzenia C# aplikacji w programie Visual Studio funkcji i Uruchamianie testów za pomocą [xUnit](https://xunit.github.io).
@@ -43,8 +42,8 @@ Aby skonfigurować środowisko, Utwórz funkcję i testowanie aplikacji. Poniżs
 1. [Utwórz nową aplikację funkcji](./functions-create-first-azure-function.md) i nadaj mu nazwę *funkcji*
 2. [Tworzenie funkcji przez protokół HTTP na podstawie szablonu](./functions-create-first-azure-function.md) i nadaj mu nazwę *HttpTrigger*.
 3. [Tworzenie funkcji czasomierzem z szablonu](./functions-create-scheduled-function.md) i nadaj mu nazwę *TimerTrigger*.
-4. [Tworzenie aplikacji testu xUnit](https://xunit.github.io/docs/getting-started-dotnet-core) w programie Visual Studio, klikając **Plik > Nowy > Projekt > Visual C# > platformy .NET Core > Projekt testu xUnit** i nadaj mu nazwę *Functions.Test*. 
-5. Użyć Nuget, aby dodać odwołań z aplikacja testowa [Microsoft.AspNetCore.Mvc](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
+4. [Utwórz aplikację testową xUnit](https://xunit.github.io/docs/getting-started-dotnet-core) w programie Visual Studio, klikając pozycję **plik > nowy > project C# > Visual > .NET Core > xUnit test Project** i nazwij go *Functions. test*. 
+5. Użyj narzędzia NuGet, aby dodać odwołania z aplikacji testowej [Microsoft. AspNetCore. MVC](https://www.nuget.org/packages/Microsoft.AspNetCore.Mvc/)
 6. [Odwołanie *funkcje* aplikacji](https://docs.microsoft.com/visualstudio/ide/managing-references-in-a-project?view=vs-2017) z *Functions.Test* aplikacji.
 
 ### <a name="create-test-classes"></a>Tworzenie klas testowych
@@ -55,7 +54,7 @@ Każda funkcja przyjmuje wystąpienie klasy [ILogger](https://docs.microsoft.com
 
 `ListLogger` Klasa jest przeznaczona do implementowania `ILogger` interfejsu i przytrzymaj wewnętrzną listę komunikatów w wersji ewaluacyjnej podczas testu.
 
-**Kliknij prawym przyciskiem myszy** na *Functions.Test* aplikacji i wybierz **Dodaj > klasa**, nadaj jej nazwę **NullScope.cs** i wprowadź następujący kod:
+**Kliknij prawym przyciskiem myszy** aplikację *Functions. test* i wybierz polecenie **Dodaj > Class**, nadaj jej nazwę **NullScope.cs** i wprowadź następujący kod:
 
 ```csharp
 using System;
@@ -73,7 +72,7 @@ namespace Functions.Tests
 }
 ```
 
-Następnie **kliknij prawym przyciskiem myszy** na *Functions.Test* aplikacji i wybierz **Dodaj > klasa**, nadaj jej nazwę **ListLogger.cs** i wprowadź Poniższy kod:
+Następnie **kliknij prawym przyciskiem myszy** aplikację *Functions. test* , a następnie wybierz pozycję **Dodaj > Class**, nadaj jej nazwę **ListLogger.cs** i wprowadź następujący kod:
 
 ```csharp
 using Microsoft.Extensions.Logging;
@@ -111,11 +110,11 @@ namespace Functions.Tests
 
 `ListLogger` Klasa implementuje następujących elementów członkowskich, ponieważ zawarła umowę `ILogger` interfejsu:
 
-- **BeginScope**: Zakresy dodać kontekst do Twojej rejestracji. W tym przypadku testu po prostu wskazuje na wystąpienie statyczne na `NullScope` klasy w celu umożliwienia testu do funkcji.
+- **BeginScope**: Zakresy dodają kontekst do rejestrowania. W takim przypadku test tylko wskazuje na wystąpienie statyczne w klasie, `NullScope` aby zezwolić na działanie testu.
 
-- **IsEnabled**: Wartość domyślna `false` podano.
+- **IsEnabled**: Podano wartość `false` domyślną.
 
-- **Dziennik**: Ta metoda wykorzystuje podane `formatter` funkcji wiadomość w formacie, a następnie dodaje tekst wynikowy `Logs` kolekcji.
+- **Dziennik**: Ta metoda używa podanej `formatter` funkcji do formatowania komunikatu, a następnie dodaje tekst `Logs` do kolekcji.
 
 `Logs` Kolekcji jest wystąpieniem `List<string>` i jest inicjowana w konstruktorze.
 
@@ -196,13 +195,13 @@ namespace Functions.Tests
 ```
 `TestFactory` Klasa implementuje następujące elementy członkowskie:
 
-- **Dane**: Ta właściwość zwraca [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) kolekcję przykładowych danych. Pary klucz-wartość reprezentują wartości, które są przekazywane do ciągu zapytania.
+- **Dane**: Ta właściwość zwraca kolekcję [IEnumerable](https://docs.microsoft.com/dotnet/api/system.collections.ienumerable) przykładowych danych. Pary klucz-wartość reprezentują wartości, które są przekazywane do ciągu zapytania.
 
-- **Createdictionary —** : Ta metoda przyjmuje pary klucz/wartość jako argumenty i zwraca nowy `Dictionary` użyty do utworzenia `QueryCollection` do reprezentowania wartości ciągu zapytania.
+- **IsDictionary**: Ta metoda akceptuje parę klucz/wartość jako argumenty i zwraca nowy `Dictionary` użyty do utworzenia `QueryCollection` do reprezentowania wartości ciągu zapytania.
 
-- **CreateHttpRequest**: Ta metoda tworzy zainicjować za pomocą parametrów ciągu zapytania danego żądania HTTP.
+- Identyfikator **żądania**: Ta metoda tworzy żądanie HTTP zainicjowane przy użyciu podanym parametrów ciągu zapytania.
 
-- **CreateLogger**: Na podstawie rejestratora typu, Metoda ta zwraca klasę rejestratora, używany do testowania. `ListLogger` Śledzi informacje o zarejestrowanych komunikatów dostępnych do oceny w testach.
+- Wyrejestruj: Na podstawie typu rejestratora ta metoda zwraca klasę rejestratora używaną do testowania. `ListLogger` Śledzi informacje o zarejestrowanych komunikatów dostępnych do oceny w testach.
 
 Następnie **kliknij prawym przyciskiem myszy** na *Functions.Test* aplikacji i wybierz **Dodaj > klasa**, nadaj jej nazwę **FunctionsTests.cs** i wprowadź Poniższy kod:
 
@@ -247,13 +246,13 @@ namespace Functions.Tests
 ```
 Elementy członkowskie zaimplementowane w tej klasie są:
 
-- **Http_trigger_should_return_known_string**: Ten test tworzy żądanie z zapytaniem wartości ciągu `name=Bill` funkcji przez protokół HTTP i sprawdza, czy zwracana jest oczekiwana odpowiedź.
+- **Http_trigger_should_return_known_string**: Ten test tworzy żądanie z wartościami `name=Bill` ciągu zapytania do funkcji http i sprawdza, czy jest zwracana oczekiwana odpowiedź.
 
-- **Http_trigger_should_return_string_from_member_data**: Ten test używa atrybutów xUnit, aby zapewnić przykładowych danych, aby funkcja protokołu HTTP.
+- **Http_trigger_should_return_string_from_member_data**: Ten test używa atrybutów xUnit, aby zapewnić dane przykładowe do funkcji HTTP.
 
-- **Timer_should_log_message**: Ten test tworzy wystąpienie `ListLogger` i przekazuje je do funkcji czasomierza. Po jego uruchomieniu funkcji dziennika jest sprawdzany, aby upewnić się, że oczekiwany komunikat jest obecny.
+- **Timer_should_log_message**: Ten test tworzy wystąpienie `ListLogger` i przekazuje je do funkcji timer. Po jego uruchomieniu funkcji dziennika jest sprawdzany, aby upewnić się, że oczekiwany komunikat jest obecny.
 
-Jeśli chcesz uzyskać dostęp ustawienia aplikacji w testach, możesz użyć [o nazwie System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
+Jeśli chcesz uzyskać dostęp do ustawień aplikacji w testach, możesz użyć metody [System. Environment. GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables).
 
 ### <a name="run-tests"></a>Uruchom testy
 
@@ -377,6 +376,6 @@ Następnie ustaw punkt przerwania w testów i naciśnij klawisz **F5**.
 ## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, gdy wyjaśniono sposób pisania testów automatycznych dla funkcji, Kontynuuj przy użyciu tych zasobów:
-- [Ręcznie uruchomić bez funkcji wyzwalanej przez HTTP](./functions-manually-run-non-http.md)
+- [Ręcznie uruchom funkcję niewyzwalaną przez protokół HTTP](./functions-manually-run-non-http.md)
 - [Obsługa błędów w usłudze Azure Functions](./functions-bindings-error-pages.md)
 - [Debugowanie funkcji platformy Azure zdarzeń siatki wyzwalacza lokalnego](./functions-debug-event-grid-trigger-local.md)

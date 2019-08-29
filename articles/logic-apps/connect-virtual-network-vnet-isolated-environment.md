@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 7a3cdab8e05a873e67788a72350d1bf3fde3cd18
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 4865a2b3b02a1e7a6db19418122b66aeb79dd332
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018207"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099472"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Nawiązywanie połączenia z sieciami wirtualnymi platformy Azure z Azure Logic Apps przy użyciu środowiska usługi integracji (ISE)
 
@@ -88,7 +88,8 @@ W tej tabeli opisano porty w sieci wirtualnej używane przez ISE i miejsce, w kt
 | Komunikacja z Traffic Manager platformy Azure | Przychodzący | 443 | AzureTrafficManager | VirtualNetwork | |
 | Logic Apps Designer — właściwości dynamiczne | Przychodzący | 454 | Internet | VirtualNetwork | Żądania pochodzą z Logic Apps [adresów IP ruchu przychodzącego punktu końcowego dostępu w tym regionie](../logic-apps/logic-apps-limits-and-config.md#inbound). |
 | Zależność zarządzania App Service | Przychodzący | 454, 455 | AppServiceManagement | VirtualNetwork | |
-| Wdrożenie łącznika | Przychodzący | 454, 3443 | Internet | VirtualNetwork | Niezbędne do wdrażania i aktualizowania łączników. Zamknięcie lub zablokowanie tego portu powoduje, że wdrożenia ISE kończą się niepowodzeniem i uniemożliwiają aktualizacje lub poprawki łącznika. |
+| Wdrożenie łącznika | Przychodzący | 454 | AzureConnectors | VirtualNetwork | Niezbędne do wdrażania i aktualizowania łączników. Zamknięcie lub zablokowanie tego portu powoduje, że wdrożenia ISE kończą się niepowodzeniem i uniemożliwiają aktualizacje lub poprawki łącznika. |
+| Wdrożenie zasad łącznika | Przychodzący | 3443 | Internet | VirtualNetwork | Niezbędne do wdrażania i aktualizowania łączników. Zamknięcie lub zablokowanie tego portu powoduje, że wdrożenia ISE kończą się niepowodzeniem i uniemożliwiają aktualizacje lub poprawki łącznika. |
 | Zależność SQL platformy Azure | Wychodzące | 1433 | VirtualNetwork | SQL | |
 | Azure Resource Health | Wychodzące | 1886 | VirtualNetwork | AzureMonitor | Aby opublikować stan kondycji Resource Health |
 | Punkt końcowy zarządzania API Management | Przychodzący | 3443 | APIManagement | VirtualNetwork | |
@@ -139,7 +140,7 @@ W polu wyszukiwania wprowadź "środowisko usługi integracji" jako filtr.
 
    * Używa [formatu routingu bezklasowego (cidr)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) i przestrzeni adresowej klasy B.
 
-   * Program używa co najmniej `/27` 32 adresów w przestrzeni adresowej, ponieważ każda podsieć musi mieć minimalną *Długość* równą. Przykład:
+   * Program używa co najmniej `/27` 32 adresów w przestrzeni adresowej, ponieważ każda podsieć musi mieć minimalną *Długość* równą. Na przykład:
 
      * `10.0.0.0/27`ma 32 adresów, ponieważ 2<sup>(32-27)</sup> jest 2<sup>5</sup> lub 32.
 

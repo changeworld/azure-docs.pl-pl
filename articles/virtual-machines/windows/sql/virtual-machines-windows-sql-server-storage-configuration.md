@@ -8,18 +8,17 @@ manager: craigg
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: ninarn
-ms.openlocfilehash: 8d197bbf464038918dd083d14a1befa740c8ce0e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
-ms.translationtype: MT
+ms.openlocfilehash: 5a8b6c9885099ed549f7f29d7f2096de5983d9d0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68846101"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100399"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfiguracja magazynu dla maszyn wirtualnych SQL Server
 
@@ -150,6 +149,6 @@ W poniższej tabeli opisano trzy dostępne opcje typu obciążenia oraz ich odpo
 > [!NOTE]
 > Typ obciążenia można określić tylko podczas inicjowania obsługi administracyjnej maszyny wirtualnej SQL, wybierając ją w kroku konfiguracji magazynu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby poznać inne tematy związane z uruchamianiem SQL Server na maszynach wirtualnych platformy Azure, zobacz [SQL Server na platformie azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md).

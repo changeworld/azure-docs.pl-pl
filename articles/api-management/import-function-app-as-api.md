@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: apimpm
-ms.openlocfilehash: f9e5c531e387ba8d2c61c6d46b1e8935bc7d42cf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 7e9215d7250628ed9177e097d127a1554a1f0ea0
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67429044"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073349"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Importowanie aplikacji funkcji platformy Azure jako interfejsu API w usłudze Azure API Management
 
@@ -75,7 +74,7 @@ Aby utworzyć nowy interfejs API z poziomu aplikacji funkcji platformy Azure, wy
 
     ![Dodawanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/add-06.png)
 
-8. Kliknij pozycję **Utwórz**.
+8. Kliknij przycisk **Utwórz**.
 
 ## <a name="append-azure-function-app-to-api"></a> Dołączanie aplikacji funkcji platformy Azure do istniejącego interfejsu API
 
@@ -111,14 +110,14 @@ Aby dołączyć aplikację funkcji platformy Azure do istniejącego interfejsu A
 
     ![Dołączanie z poziomu aplikacji funkcji](./media/import-function-app-as-api/append-04.png)
 
-## <a name="authorization"></a> Autoryzacja
+## <a name="authorization"></a>Zgody
 
 Zaimportowanie aplikacji funkcji platformy Azure powoduje automatyczne wygenerowanie:
 
-* Klucz hosta w aplikacji funkcji przy użyciu nazwy usługi apim-{*nazwę wystąpienia usługi Azure API Management*},
-* Nazwanej wartości wewnątrz wystąpienia usługi Azure API Management o nazwie {*nazwą wystąpienia aplikacja funkcji platformy Azure*}-klucz, który zawiera klucz utworzono hosta.
+* Klucz hosta w aplikacja funkcji o nazwie APIM-{*Nazwa wystąpienia usługi API Management platformy Azure*},
+* Nazwana wartość w wystąpieniu API Management platformy Azure o nazwie {*Nazwa wystąpienia aplikacja funkcji platformy Azure*} — klucz, który zawiera utworzony klucz hosta.
 
-Interfejsy API utworzonych po 2019 4 kwietnia klucz hosta jest przekazywany w żądaniach HTTP z usługi API Management do aplikacji funkcji w nagłówku. Starszych interfejsów API przekazać klucz hosta jako [parametr zapytania](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization). To zachowanie może zostać zmieniona przez `PATCH Backend` [wywołania interfejsu API REST](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) na *zaplecza* jednostki skojarzone z aplikacją funkcji.
+W przypadku interfejsów API utworzonych po 4 kwietnia 2019 klucz hosta jest przesyłany w żądaniach HTTP od API Management do aplikacja funkcji w nagłówku. Starsze interfejsy API przekazują klucz hosta jako [parametr zapytania](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization). To zachowanie można zmienić za pomocą `PATCH Backend` [wywołania interfejsu API REST](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/backend/update#backendcredentialscontract) w jednostce *zaplecza* skojarzonej z aplikacja funkcji.
 
 > [!WARNING]
 > Usunięcie lub zmiana wartości klucza hosta aplikacji funkcji platformy Azure lub nazwanej wartości usługi Azure API Management spowoduje przerwanie komunikacji między usługami. Wartości nie są synchronizowane automatycznie.
@@ -181,7 +180,7 @@ Operacje można również wywoływać z portalu dla deweloperów w celu przetest
 
 [!INCLUDE [api-management-define-api-topics.md](../../includes/api-management-define-api-topics.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Przekształcanie i ochrona opublikowanego interfejsu API](transform-api.md)

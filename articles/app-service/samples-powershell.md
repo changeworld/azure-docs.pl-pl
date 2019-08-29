@@ -9,19 +9,18 @@ editor: ggailey777
 tags: azure-service-management
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.service: app-service
-ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: app-service
 ms.date: 03/08/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 69fd27785e5fc16a79fc23728b6d1e50a0a7b834
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 322820976f7f693ff09c071fc28f1ef3d1d472cf
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60835383"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074080"
 ---
 # <a name="powershell-samples-for-azure-app-service"></a>Przykłady dla programu Azure PowerShell — Azure App Service
 

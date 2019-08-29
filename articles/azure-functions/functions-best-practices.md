@@ -1,124 +1,123 @@
 ---
-title: Najlepsze rozwiązania dotyczące usługi Azure Functions | Dokumentacja firmy Microsoft
-description: Dowiedz się, najlepsze rozwiązania i wzorce dotyczące usługi Azure Functions.
+title: Najlepsze rozwiązania dotyczące Azure Functions | Microsoft Docs
+description: Poznaj najlepsze rozwiązania i wzorce Azure Functions.
 services: functions
 documentationcenter: na
 author: wesmc7777
 manager: jeconnoc
-keywords: Usługa Azure functions, wzorców, najlepszym rozwiązaniem, funkcje, przetwarzanie zdarzeń, elementy webhook, obliczanie dynamiczne, architektura bez serwera
+keywords: Azure Functions, wzorce, najlepsze rozwiązanie, funkcje, przetwarzanie zdarzeń, elementy webhook, dynamiczne obliczenia, architektura bezserwerowa
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30b187676f0c1fb03b7124d93b3991b0e32d61ae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 19e088eee878695d24678d1df17b2848a4be1e01
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104681"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70097535"
 ---
-# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optymalizuj wydajność i niezawodność usługi Azure Functions
+# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optymalizacja wydajności i niezawodności Azure Functions
 
-Ten artykuł zawiera wskazówki, aby zwiększyć wydajność i niezawodność usługi [bezserwerowe](https://azure.microsoft.com/solutions/serverless/) aplikacje funkcji. 
+Ten artykuł zawiera wskazówki dotyczące poprawy wydajności i niezawodności aplikacji funkcji bezserwerowych. [](https://azure.microsoft.com/solutions/serverless/) 
 
 ## <a name="general-best-practices"></a>Ogólne najlepsze rozwiązania
 
-Poniżej przedstawiono najlepsze rozwiązania dotyczące sposobu tworzenia i architektury bezserwerowe rozwiązania przy użyciu usługi Azure Functions.
+Poniżej przedstawiono najlepsze rozwiązania w zakresie kompilowania i tworzenia architektury rozwiązań bezserwerowych przy użyciu Azure Functions.
 
-### <a name="avoid-long-running-functions"></a>Należy unikać długo działających funkcji
+### <a name="avoid-long-running-functions"></a>Unikaj długotrwałych funkcji
 
-Duże, długo działających funkcji, mogą powodować problemy nieoczekiwany limitu czasu. Funkcja może stać się dużą ze względu na wiele zależności środowiska Node.js. Importowanie zależności może powodować zwiększone obciążenie prób spowodować nieoczekiwane przekroczeń limitu czasu. Zależności są ładowane, zarówno jawnie i niejawnie. Pojedynczy moduł ładowane przez Twój kod może spowodować załadowanie swój własny dodatkowych modułów.  
+Duże, długotrwałe funkcje mogą powodować nieoczekiwane problemy z przekroczeniem limitu czasu. Funkcja może być duża ze względu na wiele zależności Node. js. Importowanie zależności może być również przyczyną zwiększonych czasów ładowania, które powodują nieoczekiwane przekroczenie limitu czasu. Zależności są ładowane jawnie i niejawnie. Pojedynczy moduł załadowany przez kod może ładować własne dodatkowe moduły.  
 
-Zawsze, gdy jest to możliwe, Refaktoryzacja duże funkcje na mniejsze funkcja ustawia współpracujące ze sobą i szybko zwracania odpowiedzi. Na przykład element webhook lub funkcja wyzwalacza HTTP może wymagać odpowiedź potwierdzenia w określonym terminie. jest typowe dla elementów webhook wymagają natychmiastowej reakcji. Ładunek wyzwalacza HTTP można przekazać do kolejki do przetworzenia przez funkcję wyzwalacza kolejki. Takie podejście umożliwia odroczenie rzeczywistą pracę i zwracają natychmiastowej reakcji.
-
-
-### <a name="cross-function-communication"></a>Funkcja komunikacji między
-
-[Trwałe funkcje](durable/durable-functions-concepts.md) i [usługi Azure Logic Apps](../logic-apps/logic-apps-overview.md) zostały opracowane w celu zarządzania stanami i komunikacji między wiele funkcji.
-
-Jeśli nie używa trwałe Functions lub Logic Apps do integracji z wielu funkcji, jest zazwyczaj najlepszym rozwiązaniem, aby używać magazynu kolejek dla wielu funkcji komunikacji.  Głównym celem jest, że kolejki magazynu są tańsze i łatwiejsze do aprowizowania. 
-
-Poszczególne wiadomości w kolejce magazynu, są ograniczone w rozmiarze do 64 KB. Jeśli musisz przekazać większe komunikaty między funkcjami, kolejka może służyć do obsługi komunikatów usługi Azure Service Bus rozmiarów do 256 KB w warstwie standardowa i do 1 MB w warstwie Premium.
-
-Tematy usługi Service Bus są przydatne, jeśli potrzebujesz filtrowanie przed rozpoczęciem przetwarzania komunikatów.
-
-Usługa Event hubs są przydatne do obsługi komunikacji w dużych ilościach.
+Jeśli to możliwe, Refaktoryzacja duże funkcje do mniejszych zestawów funkcji, które współpracują i zwracają odpowiedzi szybko. Na przykład funkcja webhook lub wyzwalacz HTTP może wymagać odpowiedzi potwierdzenia w określonym limicie czasu; elementy webhook często wymagają natychmiastowej reakcji. Ładunek wyzwalacza HTTP można przekazać do kolejki w celu przetworzenia przez funkcję wyzwalacza kolejki. Takie podejście umożliwia odroczenie rzeczywistej pracy i zwrócenie natychmiastowej odpowiedzi.
 
 
-### <a name="write-functions-to-be-stateless"></a>Pisanie funkcji bezstanowe 
+### <a name="cross-function-communication"></a>Komunikacja między funkcjami
 
-Funkcje powinny być bezstanowe i idempotentne, jeśli jest to możliwe. Kojarzenie wszelkich informacji o stanie wymagane ze swoimi danymi. Na przykład zamówienie przetwarzany, prawdopodobnie będzie mają skojarzonego `state` elementu członkowskiego. Funkcja może przetworzyć zamówienie na podstawie tego stanu podczas gdy sama funkcja pozostaje bezstanowe. 
+[Durable Functions](durable/durable-functions-concepts.md) i [Azure Logic Apps](../logic-apps/logic-apps-overview.md) są kompilowane do zarządzania przejściami stanu i komunikacją między wieloma funkcjami.
 
-Funkcje Idempotentne są szczególnie zalecane przy użyciu wyzwalaczy czasomierza. Na przykład jeśli masz coś, co oczywiście należy uruchomić raz dziennie, zapisz je więc w żadnym momencie w ciągu dnia może działać przy użyciu tych samych wyników. Funkcję można zamknąć po żadnej pracy w danym dniu. Również Jeśli poprzednie uruchomienia nie można ukończyć, następnego uruchomienia powinien przejmą tam, gdzie ją przerwaliśmy.
+Jeśli nie korzystasz z Durable Functions lub Logic Apps do integracji z wieloma funkcjami, najlepszym rozwiązaniem jest użycie kolejek usługi Storage do komunikacji między funkcjami.  Głównym powodem jest to, że kolejki magazynu są tańsze i łatwiejsze do aprowizacji. 
+
+Rozmiar poszczególnych komunikatów w kolejce magazynu jest ograniczony do 64 KB. Jeśli konieczne jest przekazanie większych komunikatów między funkcjami, kolejka Azure Service Bus może służyć do obsługi rozmiaru wiadomości do 256 KB w warstwie Standardowa i do 1 MB w warstwie Premium.
+
+Tematy Service Bus są przydatne, jeśli wymagane jest filtrowanie komunikatów przed przetworzeniem.
+
+Centra zdarzeń są przydatne do obsługi komunikacji dużej ilości.
 
 
-### <a name="write-defensive-functions"></a>Pisanie funkcji obrony
+### <a name="write-functions-to-be-stateless"></a>Funkcje zapisu są bezstanowe 
 
-Przyjęto założenie, że funkcja może wystąpić wyjątek w dowolnym momencie. Projektowanie funkcji z możliwością kontynuować z poprzedniego punktu awarii podczas następnego wykonania. Rozważmy scenariusz, który wymaga następujących czynności:
+Funkcje powinny być bezstanowe i idempotentne, jeśli jest to możliwe. Skojarz wszystkie wymagane informacje o stanie z danymi. Na przykład przetworzone zamówienie prawdopodobnie ma skojarzony `state` element członkowski. Funkcja może przetwarzać zamówienie na podstawie tego stanu, gdy sama funkcja pozostaje bez zmian. 
 
-1. Zapytanie dla 10 000 wierszy w bazie danych.
-2. Utworzenia komunikatu w kolejce dla każdego z tych wierszy, do dalszego przetwarzania wiersz w dół.
+Funkcje idempotentne są szczególnie zalecane z wyzwalaczami czasomierza. Na przykład, jeśli masz coś, co bezwzględnie musi być uruchamiane raz dziennie, napisz je tak, aby można je było uruchomić w dowolnym momencie dnia z tymi samymi wynikami. Funkcja może wyjść, gdy nie ma pracy przez konkretny dzień. Ponadto jeśli poprzednie uruchomienie nie powiodło się, następne uruchomienie powinno zostać wznowione w miejscu, w którym zostało pozostawione.
+
+
+### <a name="write-defensive-functions"></a>Zapisz funkcje obronne
+
+Załóżmy, że funkcja może napotkać wyjątek w dowolnym momencie. Zaprojektuj funkcje z możliwością kontynuowania z poprzedniego punktu awarii podczas następnego wykonania. Rozważmy scenariusz, który wymaga następujących akcji:
+
+1. Zapytanie o 10 000 wierszy w bazie danych.
+2. Utwórz komunikat kolejki dla każdego z tych wierszy, aby przetworzyć kolejny wiersz.
  
-W zależności od złożoności systemu, może być: zachowuje się nieprawidłowo w inny sposób zaangażowane usługami podrzędnymi, przestojów sieci lub limitu przydziału ogranicza osiągnął itp. Wszystkie te mogą mieć wpływ na funkcję w dowolnym momencie. Należy projektować funkcje w taki sposób, aby móc go.
+W zależności od tego, jak skomplikowany jest system, może być: działania usług podrzędnych zachowuje się nieprawidłowo, awaria sieci lub osiągnięto limity przydziału itd. Wszystkie te funkcje mogą mieć wpływ na funkcję w dowolnym momencie. Musisz zaprojektować swoje funkcje, aby można je było przygotować.
 
-Jak kod reagowanie po wystąpieniu błędu po wstawieniu 5000 tych elementów w kolejce do przetworzenia? Śledzenie elementów w zestawie, który został ukończony. W przeciwnym razie może wstawić je ponownie przy następnym. Może to mieć poważny wpływ na Twój przepływ pracy. 
+Jak reaguje kod, jeśli wystąpi błąd po wstawieniu 5 000 elementów do kolejki w celu przetworzenia? Śledź elementy w zestawie, który został ukończony. W przeciwnym razie można je ponownie wstawić później. Może to mieć poważny wpływ na przepływ pracy. 
 
-Jeśli element kolejki został już przetworzony, Zezwalaj na funkcję, aby być pusta.
+Jeśli element kolejki został już przetworzony, zezwól funkcji na wartość No-op.
 
-Wykorzystaj środki obrony poprawiał dla składników, których używasz na platformie Azure Functions. Na przykład zobacz **obsługi komunikatów w kolejce skażone** w dokumentacji dotyczącej [usługi Azure Storage Queue wyzwalaczy i powiązań](functions-bindings-storage-queue.md#trigger---poison-messages). 
+Skorzystaj ze środków obronnych już dostarczonych dla składników, których używasz na platformie Azure Functions. Na przykład zobacz **Obsługa komunikatów trującej kolejki** w dokumentacji [wyzwalaczy i powiązań kolejki usługi Azure Storage](functions-bindings-storage-queue.md#trigger---poison-messages). 
 
-## <a name="scalability-best-practices"></a>Najlepsze rozwiązania w zakresie skalowalności
+## <a name="scalability-best-practices"></a>Najlepsze rozwiązania dotyczące skalowalności
 
-Istnieje wiele czynników, mogących mieć wpływ na sposób skalować wystąpienia aplikacji funkcji. Szczegółowe informacje znajdują się w dokumentacji dotyczącej [funkcja skalowania](functions-scale.md).  Poniżej przedstawiono niektóre najlepsze rozwiązania zapewniające optymalne skalowalność aplikacji funkcji.
+Istnieje wiele czynników, które mają wpływ na sposób skalowania aplikacji funkcji. Szczegółowe informacje znajdują się w dokumentacji dotyczącej [skalowania funkcji](functions-scale.md).  Poniżej przedstawiono niektóre najlepsze rozwiązania zapewniające optymalną skalowalność aplikacji funkcji.
 
 ### <a name="share-and-manage-connections"></a>Udostępnianie połączeń i zarządzanie nimi
 
-Ponowne używanie połączenia z zasobami zewnętrznymi, jeśli to możliwe.  Zobacz [sposób zarządzania połączeniami w usłudze Azure Functions](./manage-connections.md).
+Zawsze używaj połączeń z zasobami zewnętrznymi, gdy jest to możliwe.  Zobacz [jak zarządzać połączeniami w Azure Functions](./manage-connections.md).
 
-### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Nie można mieszać testowych i produkcyjnych kod w tej samej aplikacji funkcji
+### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Nie mieszaj kodu testowego i produkcyjnego w tej samej aplikacji funkcji
 
-Funkcje w ramach aplikacji funkcji udostępniania zasobów. Na przykład pamięć jest udostępniona. Jeśli używasz aplikacji funkcji w środowisku produkcyjnym, nie należy dodawać funkcje powiązane z testem i zasoby do niego. Podczas wykonywania kodu w środowisku produkcyjnym może spowodować nieoczekiwane koszty.
+Działa w ramach zasobów funkcji udział aplikacji. Na przykład pamięć jest udostępniona. Jeśli używasz aplikacji funkcji w środowisku produkcyjnym, nie dodawaj do niej funkcji i zasobów związanych z testami. Może to spowodować nieoczekiwane obciążenie podczas wykonywania kodu produkcyjnego.
 
-Należy zachować ostrożność ładowanie w aplikacjach funkcji w środowisku produkcyjnym. Pamięci są uśredniane dla każdej funkcji w aplikacji.
+Należy zachować ostrożność w aplikacjach funkcji produkcyjnych. Pamięć jest średnia dla każdej funkcji w aplikacji.
 
-Jeśli masz zestaw współużytkowany, do którego odwołuje się wiele funkcji platformy .NET, należy umieścić go we wspólnym folderze udostępnionym. Jeśli za pomocą skryptów języka C# (csx), należy odwoływać się do zestawu za pomocą instrukcji, które są podobne do poniższego przykładu: 
+Jeśli masz przywoływany zestaw współużytkowany w wielu funkcjach platformy .NET, umieść go w wspólnym folderze udostępnionym. Odwołuje się do zestawu za pomocą instrukcji podobnej do poniższego C# przykładu, jeśli używasz skryptów (. CSX): 
 
     #r "..\Shared\MyAssembly.dll". 
 
-W przeciwnym razie jest łatwe przypadkowo wdrożono wiele testów wersji tej samej binarne, które zachowują się inaczej między funkcjami.
+W przeciwnym razie można łatwo przypadkowo wdrożyć wiele wersji testowych tego samego pliku binarnego, które zachowują się inaczej między funkcjami.
 
-Nie należy używać pełnego rejestrowania w kodzie produkcyjnym. Ma negatywny wpływ na wydajność.
+Nie używaj pełnego rejestrowania w kodzie produkcyjnym. Ma negatywny wpływ na wydajność.
 
-### <a name="use-async-code-but-avoid-blocking-calls"></a>Kod asynchroniczny, ale unikania blokowania połączeń
+### <a name="use-async-code-but-avoid-blocking-calls"></a>Użyj kodu asynchronicznego, ale unikaj blokowania wywołań
 
-Programowanie asynchroniczne jest zalecanym najlepszym rozwiązaniem. Jednak zawsze unikać odwoływania się do `Result` właściwość lub wywołanie `Wait` metody `Task` wystąpienia. Takie podejście może prowadzić do wyczerpania wątku.
+Programowanie asynchroniczne jest zalecanym najlepszym rozwiązaniem. Jednak zawsze należy unikać odwoływania `Result` się do właściwości `Wait` lub metody wywołującej w `Task` wystąpieniu. Takie podejście może prowadzić do wyczerpania wątków.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-### <a name="receive-messages-in-batch-whenever-possible"></a>Odbieranie komunikatów w usłudze batch, jeśli to możliwe
+### <a name="receive-messages-in-batch-whenever-possible"></a>W miarę możliwości odbieraj komunikaty w usłudze Batch
 
-Niektórych wyzwalaczy, takich jak Centrum zdarzeń umożliwiają odbieranie wiadomości na pojedyncze wywołanie partii.  Tworzenie partii komunikatów ma znacznie lepszą wydajność.  Można skonfigurować rozmiar maksymalny partii w `host.json` plików zgodnie z opisem w [dokumentację referencyjną host.json](functions-host-json.md)
+Niektóre wyzwalacze, takie jak centrum zdarzeń, umożliwiają otrzymywanie wsadowych komunikatów na pojedynczym wywołaniu.  Przetwarzanie wsadowe komunikatów ma znacznie lepszą wydajność.  Maksymalny rozmiar wsadu można skonfigurować w `host.json` pliku zgodnie z opisem w [dokumentacji dotyczącej hosta. JSON.](functions-host-json.md)
 
-Dla funkcji języka C# można zmienić typ na silnie typizowaną tablicę.  Na przykład, zamiast z `EventData sensorEvent` podpis metody może być `EventData[] sensorEvent`.  W przypadku innych języków Musisz jawnie ustawić właściwość Kardynalność w swojej `function.json` do `many` w celu włączenia przetwarzania wsadowego [jak pokazano poniżej](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
+W C# przypadku funkcji można zmienić typ na tablicę o jednoznacznie określonym typie.  Na przykład zamiast `EventData sensorEvent` sygnatury metody może być `EventData[] sensorEvent`.  W przypadku innych języków należy jawnie ustawić właściwość Kardynalność w `function.json` do `many` , aby można było włączyć przetwarzanie wsadowe [, jak pokazano tutaj](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
 
-### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Konfigurowanie zachowania hosta, aby lepiej obsługiwać współbieżności
+### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Konfigurowanie zachowań hosta w celu lepszego obsłużenia współbieżności
 
-`host.json` Pliku w aplikacji funkcji umożliwia konfigurację zachowania środowiska uruchomieniowego i wyzwalacza hosta.  Oprócz partii zachowań, możesz zarządzać współbieżności wielu wyzwalaczy.  Często Dostosowywanie wartości w tych opcji może pomóc w każdej skali wystąpienia odpowiednio do potrzeb wywołanej funkcji.
+`host.json` Plik w aplikacji funkcji umożliwia konfigurację środowiska uruchomieniowego hosta i zachowań wyzwalających.  Oprócz zachowań wsadowych można zarządzać współbieżnością dla wielu wyzwalaczy.  Często dostosowanie wartości w tych opcjach może pomóc każdej skali wystąpienia odpowiednio do potrzeb wywołanych funkcji.
 
-Ustawienia w pliku hosts mają zastosowanie we wszystkich funkcji w ramach aplikacji w ramach *pojedyncze wystąpienie* funkcji. Na przykład jeśli masz aplikację funkcji przy użyciu 2 funkcje protokołu HTTP i wartość 25 współbieżnych żądań, żądanie albo wyzwalacza HTTP jest traktowany kierunku udostępnionego 25 współbieżnych żądań.  Ta aplikacja funkcji skalowania do 10 wystąpień, 2 funkcje efektywnie pozwoliłoby 250 równoczesnych żądań (10 wystąpień * 25 równoczesnych żądań na wystąpienie).
+Ustawienia w pliku hosts są stosowane dla wszystkich funkcji w aplikacji w ramach *jednego wystąpienia* funkcji. Jeśli na przykład aplikacja funkcji ma 2 funkcje HTTP i współbieżne żądania mają ustawioną wartość 25, żądanie do wyzwalacza HTTP będzie wliczane do współużytkowanych 25 współbieżnych żądań.  Jeśli ta aplikacja funkcji jest skalowana do 10 wystąpień, 2 funkcje byłyby efektywnie zezwalały na 250 współbieżnych żądań (10 wystąpień * 25 współbieżnych żądań na wystąpienie).
 
 **Opcje hosta współbieżności HTTP**
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-Inne opcje konfiguracji hosta można znaleźć [w dokumencie konfiguracji hosta](functions-host-json.md).
+Inne opcje konfiguracji hosta znajdują się [w dokumencie konfiguracji hosta](functions-host-json.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Więcej informacji zawierają następujące zasoby:
+Aby uzyskać więcej informacji, zobacz następujące zasoby:
 
-* [Sposób zarządzania połączeniami w usłudze Azure Functions](manage-connections.md)
-* [Najlepsze rozwiązania platformy Azure App Service](../app-service/app-service-best-practices.md)
+* [Jak zarządzać połączeniami w Azure Functions](manage-connections.md)
+* [Azure App Service najlepszych praktyk](../app-service/app-service-best-practices.md)

@@ -1,6 +1,6 @@
 ---
 title: Wdrażanie usługi Notification Hubs i zarządzanie nią przy użyciu programu PowerShell
-description: Jak tworzyć i zarządzać nimi przy użyciu programu PowerShell do automatyzacji w usłudze Notification Hubs
+description: Jak utworzyć Notification Hubs i zarządzać nimi za pomocą programu PowerShell dla usługi Automation
 services: notification-hubs
 documentationcenter: ''
 author: jwargo
@@ -14,44 +14,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 4dbbaeea736dd46478ad9992201ea28bd7bfc2ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2cff6ef25d0fe812cc6df26bf946daff29d37f84
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61457842"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102841"
 ---
-# <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Wdrażanie i zarządzanie nimi przy użyciu programu PowerShell w usłudze notification hubs
+# <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Wdrażanie centrów powiadomień i zarządzanie nimi przy użyciu programu PowerShell
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-W tym artykule przedstawiono sposób tworzenia i zarządzania usługi Azure Notification Hubs przy użyciu programu PowerShell. Następujące typowe zadania automatyzacji są wyświetlane w tym artykule.
+W tym artykule pokazano, jak używać usługi Azure Notification Hubs tworzenia i zarządzania nią przy użyciu programu PowerShell. W tym artykule przedstawiono następujące typowe zadania automatyzacji.
 
 - Tworzenie centrum powiadomień
 - Ustaw poświadczenia
 
-Jeśli musisz także utworzyć nowej przestrzeni nazw magistrali usług, do swojej usługi notification hubs, zobacz [zarządzania usługi Service Bus przy użyciu programu PowerShell](../service-bus-messaging/service-bus-powershell-how-to-provision.md).
+Jeśli trzeba również utworzyć nową przestrzeń nazw usługi Service Bus dla centrów powiadomień, zobacz [zarządzanie Service Bus przy użyciu programu PowerShell](../service-bus-messaging/service-bus-powershell-how-to-provision.md).
 
-Zarządzanie centra powiadomień nie jest obsługiwane bezpośrednio przez polecenia cmdlet, dołączone do programu Azure PowerShell. Najlepszym rozwiązaniem z poziomu programu PowerShell jest odwołać się do zestawu Microsoft.Azure.NotificationHubs.dll. Zestaw jest rozpowszechniana z [pakiet NuGet platformy Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Zarządzanie centrami powiadomień nie jest obsługiwane bezpośrednio przez polecenia cmdlet dołączone do Azure PowerShell. Najlepszym podejściem z programu PowerShell jest odwołanie do zestawu Microsoft. Azure. NotificationHubs. dll. Zestaw jest dystrybuowany z [pakietem NuGet Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Subskrypcja platformy Azure. Azure to platforma z subskrypcji. Aby uzyskać więcej informacji na temat uzyskiwania subskrypcji, zobacz [opcje zakupu], [oferty dla subskrybentów], lub [Bezpłatna wersja próbna].
-- Komputer z programem Azure PowerShell. Aby uzyskać instrukcje, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell].
-- Ogólna wiedza o skryptów programu PowerShell, pakietów NuGet i .NET Framework.
+- Subskrypcja platformy Azure. Azure to platforma z subskrypcji. Aby uzyskać więcej informacji na temat uzyskiwania subskrypcji, zobacz [opcje zakupu], [Oferty elementu członkowskiego], lub [Bezpłatna wersja próbna].
+- Komputer z Azure PowerShell. Aby uzyskać instrukcje, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell].
+- Ogólna znajomość skryptów programu PowerShell, pakietów NuGet i .NET Framework.
 
-## <a name="including-a-reference-to-the-net-assembly-for-service-bus"></a>Uwzględnienie odwołania do zestawu .NET dla usługi Service Bus
+## <a name="including-a-reference-to-the-net-assembly-for-service-bus"></a>Dołączenie odwołania do zestawu .NET dla Service Bus
 
-Zarządzanie usługi Azure Notification Hubs nie jest jeszcze dołączone do poleceń cmdlet programu PowerShell w programie Azure PowerShell. Aby udostępnić usługę notification hubs, można użyć klienta platformy .NET w [pakiet NuGet platformy Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+Zarządzanie usługą Azure Notification Hubs nie jest jeszcze dołączone do poleceń cmdlet programu PowerShell w programie Azure PowerShell. Aby udostępnić Centra powiadomień, można użyć klienta platformy .NET dostarczonego w [pakiecie NuGet Microsoft Azure Notification Hubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
 
-Najpierw upewnij się, można znaleźć skryptu **Microsoft.Azure.NotificationHubs.dll** zestawu, który jest instalowany jako pakiet NuGet w projekcie programu Visual Studio. Aby elastyczne skrypt wykonuje następujące czynności:
+Najpierw upewnij się, że skrypt może zlokalizować zestaw **Microsoft. Azure. NotificationHubs. dll** , który jest instalowany jako pakiet NuGet w projekcie programu Visual Studio. Aby zapewnić elastyczność, skrypt wykonuje następujące czynności:
 
-1. Określa ścieżkę, w którym została wywołana.
-2. Przechodzi przez ścieżkę, aż znajdzie folderem o nazwie `packages`. Ten folder jest tworzony podczas instalowania pakietów NuGet dla projektów programu Visual Studio.
-3. Rekursywnie wyszukuje `packages` folder zestaw o nazwie `Microsoft.Azure.NotificationHubs.dll`.
+1. Określa ścieżkę, w której został wywołany.
+2. Przechodzi ścieżką do momentu znalezienia folderu o nazwie `packages`. Ten folder jest tworzony podczas instalowania pakietów NuGet dla projektów programu Visual Studio.
+3. Rekursywnie wyszukuje `packages` folder dla zestawu o `Microsoft.Azure.NotificationHubs.dll`nazwie.
 4. Odwołuje się do zestawu, tak aby typy były dostępne do późniejszego użycia.
 
-Poniżej przedstawiono, jak te kroki są implementowane w skrypcie programu PowerShell:
+Oto, jak te kroki są zaimplementowane w skrypcie programu PowerShell:
 
 ``` powershell
 try
@@ -72,11 +72,11 @@ catch [System.Exception]
 }
 ```
 
-## <a name="create-the-namespacemanager-class"></a>Utwórz `NamespaceManager` klasy
+## <a name="create-the-namespacemanager-class"></a>`NamespaceManager` Utwórz klasę
 
-Aby udostępnić usługę Notification Hubs, Utwórz wystąpienie obiektu [NamespaceManager](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.namespacemanager.aspx) klasy z zestawu SDK.
+Aby zainicjować obsługę administracyjną Notification Hubs, Utwórz wystąpienie [](/dotnet/api/microsoft.servicebus.namespacemanager?view=azure-dotnet) klasy NamespaceManager z zestawu SDK.
 
-Możesz użyć [Get-AzureSBAuthorizationRule] polecenia cmdlet dołączone do programu Azure PowerShell można pobrać reguły autoryzacji, która służy do zapewnienia parametry połączenia. Odwołanie do `NamespaceManager` wystąpienie jest przechowywane w `$NamespaceManager` zmiennej. `$NamespaceManager` Służy do obsługi administracyjnej Centrum powiadomień.
+Za pomocą polecenia cmdlet [Get-AzureSBAuthorizationRule] dołączonego do Azure PowerShell można pobrać regułę autoryzacji używaną w celu podania parametrów połączenia. Odwołanie do `NamespaceManager` wystąpienia jest przechowywane `$NamespaceManager` w zmiennej. `$NamespaceManager`służy do aprowizacji centrum powiadomień.
 
 ``` powershell
 $sbr = Get-AzureSBAuthorizationRule -Namespace $Namespace
@@ -86,21 +86,21 @@ $NamespaceManager=[Microsoft.Azure.NotificationHubs.NamespaceManager]::CreateFro
 Write-Output "NamespaceManager object for the [$Namespace] namespace has been successfully created."
 ```
 
-## <a name="provisioning-a-new-notification-hub"></a>Aprowizacja nowego centrum powiadomień
+## <a name="provisioning-a-new-notification-hub"></a>Inicjowanie obsługi nowego centrum powiadomień
 
-Aby zainicjować obsługę nowego centrum powiadomień, należy użyć [interfejsu API .NET usługi Notification Hubs].
+Aby udostępnić nowe centrum powiadomień, użyj [interfejsu API .NET usługi Notification Hubs].
 
-Ta część skrypt służy do konfigurowania cztery zmienne lokalne.
+W tej części skryptu można skonfigurować cztery zmienne lokalne.
 
-1. `$Namespace`: Wartość nazwy obszaru nazw, gdzie chcesz utworzyć Centrum powiadomień.
-2. `$Path`: Ustaw tę ścieżkę do nazwy nowego centrum powiadomień.  Na przykład "MyHub".
-3. `$WnsPackageSid`: Ustaw tę opcję na identyfikator SID pakietu dla aplikacji Windows z [Centrum deweloperów Windows](https://developer.microsoft.com/en-us/windows).
-4. `$WnsSecretkey`: Ustaw tę wartość na klucz tajny dla aplikacji Windows za pomocą [Centrum deweloperów Windows](https://developer.microsoft.com/en-us/windows).
+1. `$Namespace`: Ustaw tę wartość na nazwę przestrzeni nazw, w której chcesz utworzyć centrum powiadomień.
+2. `$Path`: Ustaw tę ścieżkę na nazwę nowego centrum powiadomień.  Na przykład "MyHub".
+3. `$WnsPackageSid`: Ustaw tę wartość na identyfikator SID pakietu dla aplikacji systemu Windows z [Centrum deweloperów systemu Windows](https://developer.microsoft.com/en-us/windows).
+4. `$WnsSecretkey`: Ustaw tę wartość na klucz tajny aplikacji systemu Windows z [Centrum deweloperów systemu Windows](https://developer.microsoft.com/en-us/windows).
 
-Te zmienne są używane do nawiązywania połączeń do przestrzeni nazw i utworzyć nowe Centrum powiadomień konfigurowane do obsługi powiadomień usługi powiadomień Windows (WNS) przy użyciu poświadczeń usługi WNS dla aplikacji Windows. Aby uzyskać informacje dotyczące uzyskiwania pakietu identyfikator SID i wpisu tajnego klucza, zobacz temat [wprowadzenie do usługi Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) samouczka.
+Te zmienne są używane do nawiązywania połączenia z przestrzenią nazw i tworzenia nowego centrum powiadomień skonfigurowanego do obsługi powiadomień usługi Windows Notification Services (WNS) z poświadczeniami WNS dla aplikacji systemu Windows. Aby uzyskać informacje na temat uzyskiwania identyfikatora SID pakietu i klucza tajnego, zobacz [wprowadzenie z Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) samouczkiem.
 
-- Fragment kodu skryptu używa `NamespaceManager` obiektu, aby sprawdzić, w przypadku Centrum powiadomień jest identyfikowany przez `$Path` istnieje.
-- Jeśli nie istnieje, skrypt tworzy `NotificationHubDescription` za pomocą usługi WNS poświadczeń i przekazuje go do `NamespaceManager` klasy `CreateNotificationHub` metody.
+- Fragment skryptu używa `NamespaceManager` obiektu do sprawdzenia, czy centrum powiadomień identyfikowane przez `$Path` istnieje.
+- Jeśli nie istnieje, skrypt tworzy `NotificationHubDescription` przy użyciu poświadczeń WNS i przekazuje go `NamespaceManager` do metody klasy `CreateNotificationHub` .
 
 ``` powershell
 $Namespace = "<Enter your namespace>"
@@ -147,15 +147,15 @@ else
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
 - [Zarządzanie usługą Service Bus za pomocą programu PowerShell](../service-bus-messaging/service-bus-powershell-how-to-provision.md)
-- [Tworzenie kolejek, tematów i subskrypcji przy użyciu skryptu programu PowerShell usługi Service Bus](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-- [Jak utworzyć Namespace magistrali usług i Centrum zdarzeń za pomocą skryptu programu PowerShell](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+- [Jak utworzyć Service Bus kolejki, tematy i subskrypcje przy użyciu skryptu programu PowerShell](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
+- [Jak utworzyć Service Bus przestrzeni nazw i centrum zdarzeń przy użyciu skryptu programu PowerShell](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
 
-Kilka gotowych skryptów są również dostępne do pobrania:
+Niektóre gotowe skrypty są również dostępne do pobrania:
 
-- [Skrypty programu PowerShell usługi Service Bus](https://code.msdn.microsoft.com/windowsazure/Service-Bus-PowerShell-a46b7059)
+- [Skrypty Service Bus PowerShell](https://code.msdn.microsoft.com/windowsazure/Service-Bus-PowerShell-a46b7059)
 
 [Opcje zakupu]: https://azure.microsoft.com/pricing/purchase-options/
-[Oferty dla subskrybentów]: https://azure.microsoft.com/pricing/member-offers/
+[Oferty elementu członkowskiego]: https://azure.microsoft.com/pricing/member-offers/
 [Bezpłatna wersja próbna]: https://azure.microsoft.com/pricing/free-trial/
 [Instalowanie i konfigurowanie programu Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [interfejsu API .NET usługi Notification Hubs]: https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet

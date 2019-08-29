@@ -6,18 +6,17 @@ author: laurenhughes
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: a86ce329a19272eb83c431af395b330f75111361
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 083702a5340ed47370a8b4c7d64846848636ba30
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323292"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70094874"
 ---
 # <a name="pool-create-event"></a>Zdarzenie utworzenia puli
 
@@ -49,8 +48,8 @@ ms.locfileid: "68323292"
 
 |Element|Type|Uwagi|
 |-------------|----------|-----------|
-|id|Ciąg|Identyfikator puli.|
-|displayName|Ciąg|Nazwa wyświetlana puli.|
+|id|String|Identyfikator puli.|
+|displayName|String|Nazwa wyświetlana puli.|
 |vmSize|String|Rozmiar maszyn wirtualnych w puli. Wszystkie maszyny wirtualne w puli mają ten sam rozmiar. <br/><br/> Aby uzyskać informacje o dostępnych rozmiarach maszyn wirtualnych dla pul Cloud Services (pule utworzone za pomocą cloudServiceConfiguration), zobacz [rozmiary Cloud Services](https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/). Program Batch obsługuje wszystkie Cloud Services rozmiary maszyn `ExtraSmall`wirtualnych z wyjątkiem.<br/><br/> Aby uzyskać informacje o dostępnych rozmiarach maszyn wirtualnych dla pul przy użyciu obrazów z witryny Virtual Machines Marketplace (pule utworzone za pomocą virtualMachineConfiguration), zobacz [rozmiary Virtual Machines](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) lub [rozmiary dla Virtual Machines](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows). Usługa Batch obsługuje wszystkie rozmiary maszyn wirtualnych platformy Azure oprócz `STANDARD_A0` i maszyn z usługi Premium Storage (seria `STANDARD_GS`, `STANDARD_DS` i `STANDARD_DSV2`).|
 |[cloudServiceConfiguration](#bk_csconf)|Typ złożony|Konfiguracja usługi w chmurze dla puli.|
 |[virtualMachineConfiguration](#bk_vmconf)|Typ złożony|Konfiguracja maszyny wirtualnej dla puli.|
@@ -67,8 +66,8 @@ ms.locfileid: "68323292"
 
 |Nazwa elementu|Type|Uwagi|
 |------------------|----------|-----------|
-|Rodzina systemów operacyjnych|Ciąg|Rodzina systemów operacyjnych gościa platformy Azure do zainstalowania na maszynach wirtualnych w puli.<br /><br /> Możliwe wartości to:<br /><br /> **2** — Rodzina systemów operacyjnych 2, równoważna z systemem Windows Server 2008 R2 z dodatkiem SP1.<br /><br /> **3** — Rodzina systemów operacyjnych 3, równoważna z systemem Windows Server 2012.<br /><br /> **4** — Rodzina systemów operacyjnych 4, równoważna z systemem Windows Server 2012 R2.<br /><br /> Aby uzyskać więcej informacji, zobacz [wersje systemu operacyjnego gościa platformy Azure](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
-|targetOSVersion|Ciąg|Wersja systemu operacyjnego gościa platformy Azure do zainstalowania na maszynach wirtualnych w puli.<br /><br /> Wartość domyślna to **\*** określa najnowszą wersję systemu operacyjnego dla określonej rodziny.<br /><br /> Aby uzyskać inne dozwolone wartości, zobacz [wersje systemu operacyjnego gościa platformy Azure](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
+|Rodzina systemów operacyjnych|String|Rodzina systemów operacyjnych gościa platformy Azure do zainstalowania na maszynach wirtualnych w puli.<br /><br /> Możliwe wartości to:<br /><br /> **2** — Rodzina systemów operacyjnych 2, równoważna z systemem Windows Server 2008 R2 z dodatkiem SP1.<br /><br /> **3** — Rodzina systemów operacyjnych 3, równoważna z systemem Windows Server 2012.<br /><br /> **4** — Rodzina systemów operacyjnych 4, równoważna z systemem Windows Server 2012 R2.<br /><br /> Aby uzyskać więcej informacji, zobacz [wersje systemu operacyjnego gościa platformy Azure](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
+|targetOSVersion|String|Wersja systemu operacyjnego gościa platformy Azure do zainstalowania na maszynach wirtualnych w puli.<br /><br /> Wartość domyślna to **\*** określa najnowszą wersję systemu operacyjnego dla określonej rodziny.<br /><br /> Aby uzyskać inne dozwolone wartości, zobacz [wersje systemu operacyjnego gościa platformy Azure](https://azure.microsoft.com/documentation/articles/cloud-services-guestos-update-matrix/#releases).|
 
 ###  <a name="bk_vmconf"></a> virtualMachineConfiguration
 
@@ -84,7 +83,7 @@ ms.locfileid: "68323292"
 |------------------|----------|-----------|
 |publisher|String|Wydawca obrazu.|
 |sprzedaży|String|Oferta obrazu.|
-|sku|Ciąg|Jednostka SKU obrazu.|
+|sku|String|Jednostka SKU obrazu.|
 |version|String|Wersja obrazu.|
 
 ###  <a name="bk_winconf"></a>windowsConfiguration

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 05b761dbf9f58f6afca6459e28d2fecca9aa7b06
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0ae82f8980b995edab3419374e27a2cb905935d5
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878306"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099497"
 ---
 # <a name="create-an-azure-iot-central-application-preview-features"></a>Tworzenie aplikacji IoT Central platformy Azure (funkcje w wersji zapoznawczej)
 
@@ -27,7 +27,7 @@ Ten przewodnik Szybki Start przedstawia sposób tworzenia aplikacji IoT Central 
 
 ## <a name="create-an-application"></a>Tworzenie aplikacji
 
-Przejdź na stronę [Menedżer aplikacji](https://aka.ms/iotcentral) usługi Azure IoT Central. Następnie zaloguj się przy użyciu konta osobistego lub służbowego firmy Microsoft.
+Przejdź do witryny sieci Web programu [Azure IoT Central Application Manager](https://aka.ms/iotcentral) . Następnie zaloguj się przy użyciu konta osobistego lub służbowego firmy Microsoft.
 
 Aby rozpocząć tworzenie nowej aplikacji usługi Azure IoT Central, wybierz pozycję **Nowa aplikacja**. Ten link prowadzi do strony **Tworzenie aplikacji** .
 
@@ -55,4 +55,4 @@ Aby utworzyć nową aplikację usługi Azure IoT Central, która obejmuje funkcj
 W tym przewodniku szybki start utworzono aplikację IoT Central, która korzysta z funkcji w wersji zapoznawczej. Sugerowany następny krok to:
 
 > [!div class="nextstepaction"]
-> [Zapoznaj się z prezentacją usługi IoT Central](overview-iot-central-tour-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+> [Definiowanie nowego typu urządzenia w aplikacji IoT Central platformy Azure](./tutorial-define-device-type-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)

@@ -1,50 +1,49 @@
 ---
-title: Rejestrowanie rozszerzeń powiązania usługi Azure Functions
-description: Dowiedz się zarejestrować rozszerzenie usługi Azure Functions powiązania zależności od używanego środowiska.
+title: Rejestrowanie rozszerzeń powiązań Azure Functions
+description: Dowiedz się, jak zarejestrować rozszerzenie powiązania Azure Functions w oparciu o środowisko.
 services: functions
 documentationcenter: na
 author: craigshoemaker
 manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 5969c3e0d270b45347f8132b2d655ba2e56cb2c0
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 93ced443a73d5499d8b305770c3c866c26d540f0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67625893"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086462"
 ---
-# <a name="register-azure-functions-binding-extensions"></a>Rejestrowanie rozszerzeń powiązania usługi Azure Functions
+# <a name="register-azure-functions-binding-extensions"></a>Rejestrowanie rozszerzeń powiązań Azure Functions
 
-W usłudze Azure Functions w wersji 2.x, [powiązania](./functions-triggers-bindings.md) są dostępne jako oddzielne pakiety z środowisko uruchomieniowe usługi functions. Gdy funkcje .NET dostęp powiązania przy użyciu pakietów NuGet, pakietów rozszerzenia dostęp do innych funkcji wszystkie powiązania za pomocą ustawienia konfiguracji.
+W Azure Functions w wersji 2. x [powiązania](./functions-triggers-bindings.md) są dostępne jako oddzielne pakiety w środowisku uruchomieniowym funkcji. Chociaż usługa .NET Functions uzyskuje dostęp do powiązań za pomocą pakietów NuGet, zbiory rozszerzeń umożliwiają innym funkcjom dostęp do wszystkich powiązań za pomocą ustawienia konfiguracji.
 
-Należy wziąć pod uwagę następujące elementy związane z powiązań rozszerzenia:
+Należy wziąć pod uwagę następujące elementy związane z rozszerzeniami powiązań:
 
-- Rozszerzeń powiązania nie są jawnie zarejestrowane w funkcji 1.x, chyba że [tworzenia C# bibliotekę klasy przy użyciu programu Visual Studio](#local-csharp).
+- Rozszerzenia powiązań nie są jawnie zarejestrowane w funkcjach 1. x z wyjątkiem [tworzenia biblioteki C# klas przy użyciu programu Visual Studio](#local-csharp).
 
-- Wyzwalacze HTTP oraz czasomierzem są obsługiwane domyślnie i nie wymagają rozszerzenia.
+- Wyzwalacze protokołu HTTP i czasomierze są domyślnie obsługiwane i nie wymagają rozszerzenia.
 
-Poniższa tabela wskazuje, kiedy i jak należy zarejestrować powiązania.
+Poniższa tabela zawiera informacje o tym, kiedy i w jaki sposób rejestrujesz powiązania.
 
-| Środowisko deweloperskie |Rejestracja<br/> w przypadku funkcji 1.x  |Rejestracja<br/> w przypadku funkcji 2.x  |
+| Środowisko deweloperskie |Rejestracja<br/> w funkcjach 1. x  |Rejestracja<br/> w funkcjach 2. x  |
 |-------------------------|------------------------------------|------------------------------------|
 |Azure Portal|Automatyczne|Automatyczne|
-|Języki inne niż .NET lub lokalny rozwój podstawowych narzędzi usługi Azure|Automatyczne|[Podstawowe narzędzia usługi Azure Functions i pakietów rozszerzeń](#extension-bundles)|
-|C#Biblioteka klas przy użyciu programu Visual Studio|[Użyj narzędzia NuGet](#vs)|[Użyj narzędzia NuGet](#vs)|
-|Biblioteki klas C# za pomocą programu Visual Studio Code|ND|[Korzystanie z platformy .NET Core interfejsu wiersza polecenia](#vs-code)|
+|Programowanie w języku Non-.NET lub lokalne podstawowe narzędzia platformy Azure|Automatyczne|[Użyj Azure Functions Core Tools i pakietów rozszerzeń](#extension-bundles)|
+|C#Biblioteka klas przy użyciu programu Visual Studio|[Korzystanie z narzędzi NuGet](#vs)|[Korzystanie z narzędzi NuGet](#vs)|
+|C#Biblioteka klas przy użyciu Visual Studio Code|ND|[Użyj interfejs wiersza polecenia platformy .NET Core](#vs-code)|
 
-## <a name="extension-bundles"></a>Pakiety rozszerzeń dla wdrożenia lokalnego
+## <a name="extension-bundles"></a>Zestawy rozszerzeń do lokalnego tworzenia
 
-Pakiety rozszerzeń jest technologią rozwoju lokalnego środowisko uruchomieniowe 2.x wersji, które umożliwia dodanie zgodne zbiór funkcji do powiązania rozszerzenia do projektu aplikacji funkcji. Te pakiety rozszerzeń są włączone w pakiecie wdrożeniowym podczas wdrażania na platformie Azure. Pakiety sprawia, że wszystkie powiązania opublikowane przez firmę Microsoft jest dostępna za pośrednictwem ustawienia *host.json* pliku. Pakiety rozszerzeń zdefiniowanych w pakiecie są zgodne ze sobą, co pozwala uniknąć konfliktów między pakietami. Podczas tworzenia lokalnie, upewnij się, że używasz najnowszej wersji [podstawowych narzędzi usługi Azure Functions](functions-run-local.md#v2).
+Pakiety rozszerzeń to lokalna technologia programistyczna dla środowiska uruchomieniowego w wersji 2. x, która umożliwia dodawanie zgodnego zestawu funkcji powiązań dla projektu aplikacji funkcji. Te pakiety rozszerzeń są następnie dołączane do pakietu wdrożeniowego podczas wdrażania na platformie Azure. Zbiory udostępniają wszystkie powiązania opublikowane przez firmę Microsoft za pomocą ustawienia w pliku *host. JSON* . Pakiety rozszerzeń zdefiniowane w pakiecie są zgodne ze sobą, co pomaga uniknąć konfliktów między pakietami. Podczas programowania lokalnego upewnij się, że używasz najnowszej wersji [Azure Functions Core Tools](functions-run-local.md#v2).
 
-Użyj pakietów rozszerzeń dla wszystkich wdrożenia lokalnego przy użyciu podstawowych narzędzi usługi Azure Functions lub Visual Studio Code.
+Używaj pakietów rozszerzeń dla całego lokalnego tworzenia przy użyciu Azure Functions Core Tools lub Visual Studio Code.
 
-Jeśli nie używasz pakietów rozszerzeń, należy zainstalować platformy .NET Core SDK 2.x na komputerze lokalnym, przed zainstalowaniem jakichkolwiek rozszerzeń powiązania. Pakiety usuwa wymaganie rozwoju lokalnego. 
+Jeśli nie używasz zestawów rozszerzeń, przed zainstalowaniem rozszerzeń powiązań należy zainstalować zestaw SDK programu .NET Core 2. x na komputerze lokalnym. Pakiety usuwają ten wymóg dla lokalnego tworzenia. 
 
-Aby użyć pakietów rozszerzeń, należy zaktualizować *host.json* pliku, aby uwzględnić następujący wpis dotyczący `extensionBundle`:
+Aby użyć pakietów rozszerzeń, zaktualizuj plik *host. JSON* w taki sposób, aby zawierał następujący wpis `extensionBundle`:
 
 ```json
 {
@@ -60,46 +59,46 @@ Następujące właściwości są dostępne w `extensionBundle`:
 
 | Właściwość | Opis |
 | -------- | ----------- |
-| **`id`** | Przestrzeń nazw pakietów rozszerzeń usługi Microsoft Azure Functions. |
-| **`version`** | Wersja pakietu do zainstalowania. Środowisko uruchomieniowe usługi Functions zawsze wybiera maksymalna wersja dopuszczalna definiowane przez zakres wersji lub przy określonym interwale. Wartość wersji powyżej zezwala na wszystkie wersje pakietu z 1.0.0 maksymalnie z wyjątkiem 2.0.0. Aby uzyskać więcej informacji, zobacz [notacji interwału do określania zakresów wersji](https://docs.microsoft.com/nuget/reference/package-versioning#version-ranges-and-wildcards). |
+| **`id`** | Przestrzeń nazw dla pakietów rozszerzenia funkcji Microsoft Azure. |
+| **`version`** | Wersja pakietu do zainstalowania. Środowisko uruchomieniowe funkcji zawsze wybiera maksymalną dopuszczalną wersję zdefiniowaną przez zakres wersji lub interwał. Powyższa wartość wersji zezwala na wszystkie wersje pakietów z 1.0.0 do 2.0.0. Aby uzyskać więcej informacji, zobacz [notacja interwału określania zakresów wersji](https://docs.microsoft.com/nuget/reference/package-versioning#version-ranges-and-wildcards). |
 
-Inkrementacja wersje pakietu jako pakiety w zmiany pakietu. Wersja główna zmiany wystąpić, gdy pakiety w pakiecie zwiększenia wersję główną zwykle pokrywa się ze zmianą w wersji głównej środowisko uruchomieniowe usługi Functions.  
+Wersje pakietu zwiększają się wraz z pakietem w ramach zmiany pakietu. Zmiany wersji głównej są wykonywane, gdy pakiety w pakiecie są zwiększane za pomocą wersji głównej, która zwykle pokrywa się ze zmianą wersji głównej środowiska uruchomieniowego funkcji.  
 
-Bieżący zestaw zainstalowanych przez domyślny pakiet rozszerzeń są wyliczane w tym [pliku extensions.json](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json).
+Bieżący zestaw rozszerzeń instalowanych przez pakiet domyślny jest wyliczany w tym [pliku Extensions. JSON](https://github.com/Azure/azure-functions-extension-bundles/blob/master/src/Microsoft.Azure.Functions.ExtensionBundle/extensions.json).
 
 <a name="local-csharp"></a>
 
-## <a name="vs"></a> C\# biblioteki klas w programie Visual Studio
+## <a name="vs"></a>Biblioteka\# klas C z programem Visual Studio
 
-W **programu Visual Studio**, możesz zainstalować pakiety z konsoli Menedżera pakietów przy użyciu [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) polecenia, jak pokazano w poniższym przykładzie:
+W programie **Visual Studio**można zainstalować pakiety z konsoli Menedżera pakietów za pomocą polecenia [install-package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) , jak pokazano w następującym przykładzie:
 
 ```powershell
 Install-Package Microsoft.Azure.WebJobs.Extensions.ServiceBus -Version <TARGET_VERSION>
 ```
 
-Nazwa pakietu używanego do wiązania danej znajduje się w artykule dotyczącym struktury dla tego powiązania. Aby uzyskać przykład, zobacz [pakietów w dalszej części artykułu odwołanie powiązania usługi Service Bus](functions-bindings-service-bus.md#packages---functions-1x).
+Nazwa pakietu używana dla danego powiązania znajduje się w artykule referencyjnym dla tego powiązania. Aby zapoznać się z przykładem, zobacz [sekcję Packages artykułu dotyczącego powiązania Service Bus](functions-bindings-service-bus.md#packages---functions-1x).
 
-Zastąp `<TARGET_VERSION>` w przykładzie z określoną wersją pakietu, takich jak `3.0.0-beta5`. Prawidłowych wersji są wyświetlane na stronach poszczególnych pakietów w [NuGet.org](https://nuget.org). Wersji głównych, które odpowiadają środowisko uruchomieniowe 1.x i 2.x, które są określone w artykule odwołania dla wiązania.
+Zastąp `<TARGET_VERSION>` w przykładzie konkretną wersją pakietu, taką jak `3.0.0-beta5`. Prawidłowe wersje są wymienione na stronach poszczególnych pakietów w witrynie [NuGet.org](https://nuget.org). Wersje główne, które odnoszą się do środowiska uruchomieniowego Functions 1. x lub 2. x, są określone w artykule referencyjnym dla powiązania.
 
-Jeśli używasz `Install-Package` k odkazu powiązanie, nie trzeba używać [pakiety rozszerzeń](#extension-bundles). To podejście jest specyficzny dla bibliotek klas, utworzone w programie Visual Studio.
+Jeśli używasz `Install-Package` , aby odwołać się do powiązania, nie musisz używać [pakietów rozszerzeń](#extension-bundles). To podejście jest specyficzne dla bibliotek klas skompilowanych w programie Visual Studio.
 
-## <a name="vs-code"></a> Biblioteki klas C# za pomocą programu Visual Studio Code
+## <a name="vs-code"></a>C# Biblioteka klas z Visual Studio Code
 
 > [!NOTE]
-> Firma Microsoft zaleca używanie [pakiety rozszerzeń](#extension-bundles) zapewnienie funkcji automatycznej instalacji zgodnego zestawu powiązania pakiety rozszerzeń.
+> Zalecamy używanie [pakietów rozszerzeń](#extension-bundles) w celu automatycznego zainstalowania zgodnego zestawu pakietów rozszerzenia powiązania.
 
-W **programu Visual Studio Code**, zainstalowanie pakietów dla C# projekt biblioteki klas z wiersza polecenia przy użyciu [dotnet Dodaj pakiet](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) polecenia w interfejsie wiersza polecenia platformy .NET Core. W poniższym przykładzie pokazano, jak dodać powiązanie:
+W **Visual Studio Code**Zainstaluj pakiety dla projektu biblioteki C# klas z wiersza polecenia przy użyciu polecenia [dotnet Add Package](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) w interfejs wiersza polecenia platformy .NET Core. Poniższy przykład ilustruje sposób dodawania powiązania:
 
 ```terminal
 dotnet add package Microsoft.Azure.WebJobs.Extensions.<BINDING_TYPE_NAME> --version <TARGET_VERSION>
 ```
 
-.NET Core interfejsu wiersza polecenia należy używać tylko dla usługi Azure Functions 2.x rozwoju.
+Interfejs wiersza polecenia platformy .NET Core można używać tylko na potrzeby programowania Azure Functions 2. x.
 
-Zastąp `<BINDING_TYPE_NAME>` nazwą pakietu, dostępne w artykule dotyczącym struktury dla żądanego wiązania. Można znaleźć żądanego powiązania odwołanie do artykułu w [listę obsługiwanych powiązania](./functions-triggers-bindings.md#supported-bindings).
+Zamień `<BINDING_TYPE_NAME>` na nazwę pakietu podaną w artykule referencyjnym dla żądanego powiązania. Żądany artykuł referencyjny powiązania można znaleźć na [liście obsługiwanych powiązań](./functions-triggers-bindings.md#supported-bindings).
 
-Zastąp `<TARGET_VERSION>` w przykładzie z określoną wersją pakietu, takich jak `3.0.0-beta5`. Prawidłowych wersji są wyświetlane na stronach poszczególnych pakietów w [NuGet.org](https://nuget.org). Wersji głównych, które odpowiadają środowisko uruchomieniowe 1.x i 2.x, które są określone w artykule odwołania dla wiązania.
+Zastąp `<TARGET_VERSION>` w przykładzie konkretną wersją pakietu, taką jak `3.0.0-beta5`. Prawidłowe wersje są wymienione na stronach poszczególnych pakietów w witrynie [NuGet.org](https://nuget.org). Wersje główne, które odnoszą się do środowiska uruchomieniowego Functions 1. x lub 2. x, są określone w artykule referencyjnym dla powiązania.
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
-> [Usługa Azure przykład wyzwalacz i powiązania funkcji](./functions-bindings-example.md)
+> [Przykład wyzwalacza i powiązania funkcji platformy Azure](./functions-bindings-example.md)

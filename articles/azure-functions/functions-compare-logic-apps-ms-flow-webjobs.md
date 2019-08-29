@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 keywords: microsoft flow, flow, logic apps, azure functions, functions, azure webjobs, webjobs, event processing, dynamic compute, serverless architecture
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 7bfe586294aec5938e2245c38fbe88aa5e57a66c
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 9543e67d0f98836f760ac840fa12ec5718da037e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839501"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086040"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Co to są usługi Microsoft Flow, Logic Apps, Functions i WebJobs?
 
@@ -57,9 +56,9 @@ W przypadku usługi Azure Functions tworzenie aranżacji odbywa się przez pisan
 
 Można mieszać i dopasowywać usługi podczas tworzenia aranżacji, wywołując usługę Functions z usługi Logic Apps i na odwrót. Wybierz sposób tworzenia poszczególnych aranżacji na podstawie możliwości usług lub własnych preferencji. W poniższej tabeli wymieniono niektóre kluczowe różnice między tymi usługami:
  
-|  | Trwałe funkcje | Logic Apps |
+|  | Durable Functions | Logic Apps |
 | --- | --- | --- |
-| Opracowywanie zawartości | Najpierw kod (imperatywne) | Najpierw projektant (deklaratywne) |
+| Programowanie | Najpierw kod (imperatywne) | Najpierw projektant (deklaratywne) |
 | Łączność | [Około dwunastu wbudowanych typów powiązań](functions-triggers-bindings.md#supported-bindings), pisanie kodu dla powiązań niestandardowych | [Duża kolekcja łączników](../connectors/apis-list.md), [pakiet integracyjny dla przedsiębiorstw dla scenariuszy B2B](../logic-apps/logic-apps-enterprise-integration-overview.md), [tworzenie łączników niestandardowych](../logic-apps/custom-connector-overview.md) |
 | Akcje | Każde działanie jest funkcją platformy Azure; pisanie kodu dla funkcji działań |[Duża kolekcja gotowych do użycia akcji](../logic-apps/logic-apps-workflow-actions-triggers.md)|
 | Monitorowanie | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [witryna Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [dzienniki usługi Azure Monitor](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
@@ -124,7 +123,7 @@ Więcej informacji na temat tych usług integracji możesz uzyskać, korzystają
 * [Logic Apps — emisja internetowa na żywo](https://aka.ms/logicappslive)
 * [Microsoft Flow — często zadawane pytania](https://flow.microsoft.com/documentation/frequently-asked-questions/)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Rozpoczynanie pracy od utworzenia pierwszego przepływu, aplikacji logiki lub funkcji aplikacji. Wybierz dowolny z następujących linków:
 

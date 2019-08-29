@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: 0627361fdd4f94a329b08b184dbd542e1927af39
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 19aa0877c7c37083a6206e094aced40542d0ef72
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871924"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092682"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Monitorowanie metryk i dzienników przy użyciu rozszerzenia diagnostycznego systemu Linux
 
@@ -127,7 +127,7 @@ Ten zestaw informacji o konfiguracji zawiera poufne informacje, które powinny b
 }
 ```
 
-Name (Nazwa) | Wartość
+Name | Value
 ---- | -----
 storageAccountName | Nazwa konta magazynu, w którym dane są zapisywane przez rozszerzenie.
 storageAccountEndPoint | obowiązkowe Punkt końcowy identyfikujący chmurę, w której znajduje się konto magazynu. W przypadku braku tego ustawienia LAD domyślnie chmurę `https://core.windows.net`publiczną platformy Azure. Aby użyć konta magazynu na platformie Azure (Niemcy), Azure Government lub Chiny platformy Azure, ustaw tę wartość odpowiednio.
@@ -135,9 +135,7 @@ storageAccountSasToken | [Token sygnatury](https://azure.microsoft.com/blog/sas-
 mdsdHttpProxy | obowiązkowe Informacje serwera proxy HTTP, które są konieczne, aby umożliwić rozszerzeniu łączenie się z określonym kontem magazynu i punktem końcowym.
 sinksConfig | obowiązkowe Szczegóły alternatywnych miejsc docelowych, w których można dostarczyć metryki i zdarzenia. Szczegółowe informacje dotyczące każdego ujścia danych obsługiwanego przez rozszerzenie znajdują się w poniższych sekcjach.
 
-
-> [!NOTE]
-> Podczas wdrażania rozszerzenia przy użyciu szablonu wdrożenia platformy Azure należy najpierw utworzyć konto magazynu i token sygnatury dostępu współdzielonego, a następnie przesłać je do szablonu. Nie można wdrożyć maszyny wirtualnej, konta magazynu i skonfigurować rozszerzenia w jednym szablonie. Tworzenie tokenu sygnatury dostępu współdzielonego w ramach szablonu nie jest obecnie obsługiwane.
+Aby uzyskać token sygnatury dostępu współdzielonego w ramach szablonu Menedżer zasobów, użyj funkcji **listAccountSas** . Aby zapoznać się z przykładowym szablonem, zobacz [przykład funkcji list](../../azure-resource-manager/resource-group-template-functions-resource.md#list-example).
 
 Możesz łatwo skonstruować wymagany token sygnatury dostępu współdzielonego za pomocą Azure Portal.
 
@@ -252,12 +250,12 @@ Pozostałe elementy są szczegółowo opisane w poniższych sekcjach.
 
 Ta opcjonalna struktura kontroluje zbieranie metryk i dzienników na potrzeby dostarczania do usługi Azure Metrics oraz do innych obiektów ujścia danych. Należy określić jedną `performanceCounters` lub `syslogEvents` obie. Należy określić `metrics` strukturę.
 
-Element | Wartość
+Element | Value
 ------- | -----
 eventVolume | obowiązkowe Określa liczbę partycji utworzonych w tabeli magazynu. Musi być jednym z `"Large"`, `"Medium"`lub `"Small"`. Jeśli nie zostanie określony, wartość domyślna to `"Medium"`.
 sampleRateInSeconds | obowiązkowe Domyślny interwał między kolekcją nieprzetworzonych metryk (niezagregowanych). Najmniejszy obsługiwany częstotliwość próbkowania wynosi 15 sekund. Jeśli nie zostanie określony, wartość domyślna to `15`.
 
-#### <a name="metrics"></a>metrics
+#### <a name="metrics"></a>metryki
 
 ```json
 "metrics": {
@@ -384,7 +382,7 @@ Ta opcjonalna sekcja kontroluje wykonywanie dowolnych zapytań [OMI](https://git
 ]
 ```
 
-Element | Wartość
+Element | Value
 ------- | -----
 — przestrzeń nazw | obowiązkowe Przestrzeń nazw OMI, w której należy wykonać zapytanie. Jeśli nie zostanie określony, wartością domyślną jest "root/SCX" wdrożoną przez dostawców międzyplatformowych programu [System Center](https://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation).
 query | Zapytanie OMI, które ma zostać wykonane.
@@ -408,7 +406,7 @@ Steruje przechwytywaniem plików dziennika. LAD przechwytuje nowe wiersze tekstu
 ]
 ```
 
-Element | Wartość
+Element | Value
 ------- | -----
 plik | Pełna nazwa ścieżki pliku dziennika do obserwowania i przechwycenia. Nazwa ścieżki musi mieć nazwę pojedynczego pliku; nie może to być nazwa katalogu ani zawierać symboli wieloznacznych.
 table | obowiązkowe Tabela usługi Azure Storage w wyznaczonym koncie magazynu (zgodnie z konfiguracją chronioną), do której zapisywane są nowe wiersze z "ogona" pliku.

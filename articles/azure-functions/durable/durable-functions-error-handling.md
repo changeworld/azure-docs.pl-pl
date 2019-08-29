@@ -1,31 +1,30 @@
 ---
-title: Obsługa błędów w funkcje trwałe - Azure
-description: Informacje o sposobie obsługi błędów w rozszerzenia funkcji trwałych dla usługi Azure Functions.
+title: Obsługa błędów w Durable Functions — Azure
+description: Dowiedz się, jak obsłużyć błędy w rozszerzeniu Durable Functions Azure Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 79af90d1c2c5b698ee7394f7fb20486b3069038c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33d1b410119e631e0ccc9941beac1062d4ec30f9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66751944"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087333"
 ---
-# <a name="handling-errors-in-durable-functions-azure-functions"></a>Obsługa błędów w funkcje trwałe (usługi Azure Functions)
+# <a name="handling-errors-in-durable-functions-azure-functions"></a>Obsługa błędów w Durable Functions (Azure Functions)
 
-Trwałe aranżacji funkcji są implementowane w kodzie i skorzystać z możliwości obsługi błędów języka programowania. Pamiętając o tym tak naprawdę nie ma żadnych nowych pojęć, czego potrzebujesz, aby dowiedzieć się więcej o dołączaniu obsługi błędów i Kompensacja do Twojej aranżacji. Istnieją jednak kilka zachowań, które trzeba wiedzieć.
+Trwałe aranżacje funkcji są implementowane w kodzie i mogą korzystać z funkcji obsługi błędów w języku programowania. Z tego względu naprawdę nie ma żadnych nowych koncepcji, które należy poznać, aby dowiedzieć się, jak uwzględnić obsługę błędów i kompensację w swoich aranżacjach. Istnieje jednak kilka zachowań, z którymi należy się zapoznać.
 
-## <a name="errors-in-activity-functions"></a>Błędy w funkcji działań
+## <a name="errors-in-activity-functions"></a>Błędy w funkcjach działania
 
-Każdy wyjątek, który jest generowany w funkcji działania jest skierowany do funkcji programu orchestrator i zgłoszony jako `FunctionFailedException`. Można napisać kod obsługi i Kompensacja błędu, który odpowiada Twoim potrzebom w funkcji programu orchestrator.
+Każdy wyjątek, który jest generowany w funkcji działania, zostaje skierowany z powrotem do funkcji programu Orchestrator i zgłoszony jako `FunctionFailedException`. Można napisać obsługę błędów i kod kompensaty, który odpowiada Twoim potrzebom w funkcji programu Orchestrator.
 
-Na przykład rozważmy następującą funkcję programu orchestrator, który przenosi środków z jednego konta:
+Rozważmy na przykład następujące funkcje programu Orchestrator, które przesyłają fundusze z jednego konta do innego:
 
 ### <a name="c"></a>C#
 
@@ -66,7 +65,7 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -102,11 +101,11 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Jeśli wywołanie **CreditAccount** funkcja kończy się niepowodzeniem dla konta docelowego, funkcja orkiestratora kompensuje to przez dobro środków do konta źródłowego.
+Jeśli wywołanie funkcji **CreditAccount** zakończy się niepowodzeniem dla konta docelowego, funkcja programu Orchestrator będzie kompensować to za pomocą środków z powrotem na konto źródłowe.
 
-## <a name="automatic-retry-on-failure"></a>Automatyczne ponawiania prób w przypadku niepowodzenia
+## <a name="automatic-retry-on-failure"></a>Automatyczne ponawianie próby w przypadku niepowodzenia
 
-Po wywołaniu aranżacji podrzędne lub działanie funkcji, można określić zasady automatycznego ponawiania. Poniższy przykład próbuje wywołać funkcję maksymalnie trzy razy i czeka na 5 sekund między kolejnymi próbami:
+Podczas wywoływania funkcji działania lub funkcji organizowania podrzędnego można określić zasady automatycznego ponawiania. Poniższy przykład próbuje wywołać funkcję maksymalnie trzy razy i czeka 5 sekund między kolejnymi próbami:
 
 ### <a name="c"></a>C#
 
@@ -123,7 +122,7 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -137,20 +136,20 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-`CallActivityWithRetryAsync` (.NET) lub `callActivityWithRetry` przyjmuje (JavaScript) interfejsu API `RetryOptions` parametru. Suborchestration wywołań przy użyciu `CallSubOrchestratorWithRetryAsync` (.NET) lub `callSubOrchestratorWithRetry` (JavaScript) interfejsu API można używać tych tych samych zasad ponawiania prób.
+Interfejs API `callActivityWithRetry` (.NET`RetryOptions` ) lub (JavaScript) pobiera parametr. `CallActivityWithRetryAsync` Wywołania suborchestration przy użyciu `CallSubOrchestratorWithRetryAsync` interfejsu API (.NET) lub `callSubOrchestratorWithRetry` (JavaScript) mogą używać tych samych zasad ponawiania.
 
-Dostępnych jest kilka opcji dostosowywania zasady automatycznego ponawiania. Te kraje to:
+Istnieje kilka opcji dostosowywania zasad automatycznego ponawiania. Te kraje to:
 
 * **Maksymalna liczba prób**: Maksymalna liczba ponownych prób.
-* **Pierwszy interwał ponawiania próby**: Ilość czasu oczekiwania przed pierwszym ponowieniem próby.
-* **Współczynnik wycofywania**: Współczynnik używany do określenia tempo wzrostu wycofywania. Wartość domyślna to 1.
-* **Maksymalny interwał ponawiania**: Maksymalna ilość czasu oczekiwania między ponownymi próbami.
-* **Limitu czasu ponawiania próby**: Maksymalna ilość czasu na wykonanie tej ponawia próbę. Domyślnym zachowaniem jest aby ponowić próbę przez czas nieokreślony.
-* **Obsługa**: Określa, czy należy wykonać ponownie wywołania funkcji można określić wywołania zwrotnego użytkownika.
+* **Interwał pierwszego ponowienia próby**: Czas oczekiwania przed pierwszym ponowieniem próby.
+* **Współczynnik wycofywania**: Współczynnik używany do określania współczynnika wzrostu wycofywania. Wartość domyślna to 1.
+* **Maksymalny interwał ponawiania prób**: Maksymalna ilość czasu oczekiwania między ponownymi próbami.
+* **Limit czasu ponawiania**: Maksymalny czas poświęcany na wykonanie ponownych prób. Domyślne zachowanie polega na ponownym ponowieniu próby.
+* **Dojście**: Można określić zdefiniowane przez użytkownika wywołanie zwrotne, które określa, czy należy ponowić próbę wywołania funkcji.
 
-## <a name="function-timeouts"></a>Limity czasu — funkcja
+## <a name="function-timeouts"></a>Limity czasu funkcji
 
-Możesz chcieć abandon wywołania funkcji w ramach funkcji orkiestratora, jeśli trwa zbyt długo. Właściwy sposób, w tym celu już dziś jest utworzenie [trwałe czasomierza](durable-functions-timers.md) przy użyciu `context.CreateTimer` (.NET) lub `context.df.createTimer` (JavaScript) w połączeniu z `Task.WhenAny` (.NET) lub `context.df.Task.any` (JavaScript), jak w poniższym przykładzie:
+Możesz chcieć porzucić wywołanie funkcji w ramach funkcji programu Orchestrator, jeśli trwa zbyt długo. Aby to zrobić, należy utworzyć [trwały czasomierz](durable-functions-timers.md) przy użyciu `context.CreateTimer` (.NET) lub `context.df.createTimer` (JavaScript) w połączeniu z programem `Task.WhenAny` (.NET) lub `context.df.Task.any` (JavaScript), jak w poniższym przykładzie:
 
 ### <a name="c"></a>C#
 
@@ -181,7 +180,7 @@ public static async Task<bool> Run(DurableOrchestrationContext context)
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -206,13 +205,13 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!NOTE]
-> Ten mechanizm faktycznie kończy działanie w trakcie wykonywania funkcji. Przeciwnie po prostu umożliwia funkcję programu orchestrator, aby zignorować wynik i przejść. Aby uzyskać więcej informacji, zobacz [czasomierzy](durable-functions-timers.md#usage-for-timeout) dokumentacji.
+> Ten mechanizm nie kończy w rzeczywistości wykonywania funkcji działania w toku. Zamiast tego po prostu umożliwia funkcji programu Orchestrator ignorowanie wyniku i przejście. Aby uzyskać więcej informacji, zobacz [](durable-functions-timers.md#usage-for-timeout) dokumentację czasomierzy.
 
 ## <a name="unhandled-exceptions"></a>Nieobsługiwane wyjątki
 
-Jeśli funkcja orkiestratora zakończy się niepowodzeniem z powodu nieobsługiwanego wyjątku, szczegóły wyjątku są rejestrowane i zakończy się wystąpieniem `Failed` stanu.
+Jeśli funkcja programu Orchestrator zakończy się niepowodzeniem z powodu nieobsługiwanego wyjątku, szczegóły wyjątku są rejestrowane, a wystąpienie zostanie zakończone `Failed` ze stanem.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Dowiedz się, jak diagnozować problemy](durable-functions-diagnostics.md)
+> [Dowiedz się, jak zdiagnozować problemy](durable-functions-diagnostics.md)

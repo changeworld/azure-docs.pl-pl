@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 46f4e1b3df5f1c77a57d432297685d6d1a0a14a8
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: d71d71c4d289235e5b67a5201c1f7417274b8fca
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405803"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072324"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Jak używać nazwanych wartości w zasadach usługi Azure API Management
 
@@ -37,7 +36,7 @@ Każde wystąpienie usługi API Management ma kolekcję właściwości par klucz
 
 Nazwane wartości mogą zawierać ciągi literałów i [wyrażenia zasad](/azure/api-management/api-management-policy-expressions). Na przykład wartość `Expression` jest wyrażenie zasad, które zwraca ciąg zawierający bieżącą datę i godzinę. Nazwana wartość `Credential` jest oznaczona jako wpis tajny, więc jej wartość nie jest domyślnie wyświetlana.
 
-| Name (Nazwa)       | Value                      | Wpis tajny | `Tags`          |
+| Name       | Value                      | Wpis tajny | `Tags`          |
 | ---------- | -------------------------- | ------ | ------------- |
 | Value      | 42                         | False  | Najważniejsze wartości |
 | Poświadczenie | ••••••••••••••••••••••     | Prawda   | zabezpieczenia      |

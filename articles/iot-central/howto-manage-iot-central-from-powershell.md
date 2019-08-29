@@ -8,18 +8,18 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 23243324c64519094432ee0c80d3e0cad447ef8b
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: bfda4f4ebe8990a16853bdfe40065a7501de5275
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849056"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086887"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Zarządzanie usługą IoT Central z programu Azure PowerShell
 
 [!INCLUDE [iot-central-selector-manage](../../includes/iot-central-selector-manage.md)]
 
-Zamiast tworzyć aplikacje IoT Central i zarządzać nimi ze strony IoT Central [Application Manager](https://aka.ms/iotcentral) , możesz użyć [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) do zarządzania aplikacjami.
+Zamiast tworzyć aplikacje IoT Central i zarządzać nimi w witrynie sieci Web programu [Azure IoT Central Application Manager](https://aka.ms/iotcentral) , możesz użyć [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) do zarządzania aplikacjami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -67,9 +67,9 @@ Skrypt najpierw tworzy grupę zasobów w regionie Wschodnie stany USA dla aplika
 |------------------|------------|
 |ResourceGroupName |Grupa zasobów zawierająca aplikację. Ta grupa zasobów musi już istnieć w Twojej subskrypcji. |
 |Location |Domyślnie to polecenie cmdlet używa lokalizacji z grupy zasobów. Obecnie można utworzyć aplikację IoT Central w regionach **Wschodnie stany USA**, zachodnie **stany USA**, **Europa Północna**lub **Europa Zachodnia** . |
-|Name (Nazwa)              |Nazwa aplikacji w Azure Portal. |
-|Poddomeny         |Poddomena w adresie URL aplikacji. W tym przykładzie adres URL aplikacji to https://mysubdomain.azureiotcentral.com. |
-|SKU               |Obecnie jedyną wartością jest **S1** (warstwa standardowa). Zobacz [Cennik usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
+|Name              |Nazwa aplikacji w Azure Portal. |
+|Poddomena         |Poddomena w adresie URL aplikacji. W tym przykładzie adres URL aplikacji to https://mysubdomain.azureiotcentral.com. |
+|Numer SKU               |Obecnie jedyną wartością jest **S1** (warstwa standardowa). Zobacz [Cennik usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
 |Szablon          | Szablon aplikacji do użycia. Aby uzyskać więcej informacji, zobacz następującą tabelę: |
 |DisplayName       |Nazwa aplikacji wyświetlana w interfejsie użytkownika. |
 
@@ -97,7 +97,7 @@ Set-AzIotCentralApp -Name "myiotcentralapp" `
 
 ## <a name="remove-an-application"></a>Usuwanie aplikacji
 
-Użyj polecenia cmdlet [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) , aby usunąć aplikację IoT Central. Przykład:
+Użyj polecenia cmdlet [Remove-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/Remove-AzIotCentralApp) , aby usunąć aplikację IoT Central. Na przykład:
 
 ```powershell
 Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `

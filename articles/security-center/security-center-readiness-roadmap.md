@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 1527dbd1df3e4a10a68a5949d9e0bca11628bdd2
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 989d438ad2c5ec80b89540eb7ddfc80d69a9d0e6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781136"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100915"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Mapa gotowości usługi Azure Security Center
 Ten dokument zapewnia mapę gotowości, która będzie pomocna w rozpoczynaniu pracy z usługą Azure Security Center.
@@ -67,9 +67,8 @@ Użyj następujących zasobów, aby uzyskać pomoc w zarządzaniu alertami zabez
 
 Artykuły    
 * [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-monitoring)
-* [Ochrona maszyn wirtualnych w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-virtual-machine-recommendations)
+* [Ochrona maszyn i aplikacji w usłudze Azure Security Center](security-center-virtual-machine-protection.md)
 * [Ochrona sieci w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-network-recommendations)
-* [Ochrona aplikacji w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-application-recommendations)
 * [Ochrona usługi Azure SQL i danych w usłudze Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-sql-service-recommendations)
 
 

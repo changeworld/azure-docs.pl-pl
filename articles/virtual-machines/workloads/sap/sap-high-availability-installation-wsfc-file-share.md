@@ -1,6 +1,6 @@
 ---
-title: SAP NetWeaver instalacji o wysokiej dostępności na Windows trybu failover klastra i udział plików dla wystąpień SAP ASCS/SCS na platformie Azure | Dokumentacja firmy Microsoft
-description: SAP NetWeaver instalacji o wysokiej dostępności na Windows trybu failover klastra i udział plików dla wystąpień SAP ASCS/SCS
+title: Instalacja oprogramowania SAP NetWeaver o wysokiej dostępności w klastrze trybu failover systemu Windows i udziału plików dla wystąpień SAP ASCS/SCS na platformie Azure | Microsoft Docs
+description: Instalacja usługi SAP NetWeaver o wysokiej dostępności w klastrze trybu failover systemu Windows i udziału plików dla wystąpień oprogramowania SAP ASCS/SCS
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -10,21 +10,20 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: 71296618-673b-4093-ab17-b7a80df6e9ac
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0efb1ec30430a69563c61de667ad2568f2679a1b
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: b7bdd1e1922d9d8845a8187cabb3fd39af4694ab
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708976"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70077894"
 ---
-# <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Zainstaluj oprogramowanie SAP NetWeaver wysokiej dostępności na Windows trybu failover klastra i udział plików dla wystąpień SAP ASCS/SCS na platformie Azure
+# <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>Instalowanie rozwiązania SAP NetWeaver o wysokiej dostępności w klastrze trybu failover systemu Windows i udziału plików dla wystąpień SAP ASCS/SCS na platformie Azure
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -90,7 +89,7 @@ ms.locfileid: "67708976"
 
 [sap-official-ha-file-share-document]:https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfiguracja wysokiej dostępności — wiele identyfikatorów SID SAP)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (Konfiguracja wysokiej dostępności dla oprogramowania SAP)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -198,55 +197,55 @@ ms.locfileid: "67708976"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-W tym artykule opisano, jak zainstalować i skonfigurować system SAP o wysokiej dostępności na platformie Azure przy użyciu systemu Windows Server Failover klastra (WSFC) i serwera plików skalowalnego w poziomie jako opcja do klastrowania wystąpienia SAP ASCS/SCS.
+W tym artykule opisano sposób instalowania i konfigurowania systemu SAP o wysokiej dostępności na platformie Azure z systemem Windows Server Failover Clustering (WSFC) i Serwer plików skalowalny w poziomie jako opcja klastrowania wystąpień SAP ASCS/SCS.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed rozpoczęciem instalacji należy przejrzeć następujące artykuły:
+Przed rozpoczęciem instalacji zapoznaj się z następującymi artykułami:
 
-* [Przewodnik dotyczący architektury: Klaster wystąpienie SAP ASCS/SCS na klastrze pracy awaryjnej Windows przy użyciu udziału plików][sap-high-availability-guide-wsfc-file-share]
+* [Przewodnik po architekturze: Klastrowanie wystąpienia SAP ASCS/SCS w klastrze trybu failover systemu Windows przy użyciu udziału plików][sap-high-availability-guide-wsfc-file-share]
 
-* [Przygotowywanie infrastruktury platformy Azure SAP wysokiej dostępności przy użyciu Windows trybu failover klastra i udział plików dla wystąpień SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-file-share]
+* [Przygotowywanie wysokiej dostępności SAP infrastruktury platformy Azure przy użyciu klastra trybu failover systemu Windows i udziału plików dla wystąpień oprogramowania SAP ASCS/SCS][sap-high-availability-infrastructure-wsfc-file-share]
 
 * [Wysoka dostępność dla oprogramowania SAP NetWeaver na maszynach wirtualnych platformy Azure][high-availability-guide]
 
-Potrzebne są następujące plików wykonywalnych i bibliotek DLL programu SAP:
-* SAP Software inicjowania obsługi administracyjnej Menedżera (SWPM) wersja narzędzia instalacyjnego SPS25 lub nowszej.
-* Jądra SAP 7.49 lub nowszy
+W oprogramowaniu SAP potrzebne są następujące pliki wykonywalne i biblioteki dll:
+* Narzędzie instalacji Menedżera aprowizacji oprogramowania SAP (SWPM) w wersji SPS25 lub nowszej.
+* Jądro SAP 7,49 lub nowsze
 
 > [!IMPORTANT]
-> Klaster wystąpienia SAP ASCS/SCS przy użyciu udziału plików jest obsługiwany dla SAP NetWeaver 7.40 (i nowszych) przy użyciu 7.49 jądra SAP (i nowszych).
+> Klastrowanie wystąpień SAP ASCS/SCS za pomocą udziału plików jest obsługiwane w przypadku oprogramowania SAP NetWeaver 7,40 (i nowszych) przy użyciu jądra SAP 7,49 (i nowszych).
 >
 
 
-Firma Microsoft nie opisują Instalatora systemu zarządzania bazy danych (DBMS), ponieważ konfiguracje się różnić w zależności od systemu DBMS, możesz użyć. Jednak przyjęto założenie, że problemów o wysokiej dostępności z systemu DBMS są adresowane za pomocą funkcji, obsługujące przez różnych dostawców DBMS na platformie Azure. Takie funkcje obejmują AlwaysOn lub dublowania bazy danych SQL Server i Oracle Data Guard dla baz danych Oracle. W tym scenariuszu, których używamy w tym artykule firma Microsoft nie został dodany zwiększa ochronę dla systemu DBMS.
+Nie opisano konfiguracji systemu zarządzania bazami danych (DBMS), ponieważ konfiguracje różnią się w zależności od używanej w systemie DBMS. Jednak założono, że problemy z wysoką dostępnością w systemie DBMS są rozwiązywane z funkcjami, które są obsługiwane przez różnych dostawców systemów DBMS na platformie Azure. Takie funkcje obejmują funkcję AlwaysOn lub dublowanie baz danych dla SQL Server i Oracle Data Guard dla baz danych Oracle. W scenariuszu używanym w tym artykule nie Dodaliśmy więcej ochrony do systemu DBMS.
 
-Istnieją uwzględniać żadnych szczególnych kwestii, gdy różne usługi systemu DBMS na interakcję z tego rodzaju konfiguracji SAP ASCS/SCS klastra na platformie Azure.
+Nie ma specjalnych zagadnień, w przypadku których różne usługi DBMS współpracują z tym rodzajem klastrowanej konfiguracji oprogramowania SAP ASCS/SCS na platformie Azure.
 
 > [!NOTE]
-> Procedury instalacji systemów SAP NetWeaver ABAP, Java i systemów ABAP + Java są niemal identyczne. Najbardziej znaczący różnica polega na tym, że system SAP ABAP zawiera jedno wystąpienie ASCS. System SAP języka Java zawiera jedno wystąpienie usług SCS. System SAP ABAP + Java zawiera jedno wystąpienie ASCS i jedno wystąpienie usług SCS uruchomione w tej samej grupie klastra trybu failover firmy Microsoft. Różnice instalacji dla poszczególnych stosów instalacji oprogramowania SAP NetWeaver jawnie wymienione. Można zakładać, że inne części są takie same.  
+> Procedury instalacji systemów SAP NetWeaver ABAP, systemów Java i ABAP + w systemach Java są prawie identyczne. Najbardziej znaczącą różnicą jest to, że system SAP ABAP ma jedno wystąpienie ASCS. System SAP Java ma jedno wystąpienie SCS. System SAP ABAP + Java ma jedno wystąpienie ASCS i jedno wystąpienie SCS uruchomione w tej samej grupie klastrów trybu failover firmy Microsoft. Wszystkie różnice instalacji dla każdego stosu instalacji oprogramowania SAP NetWeaver są jawnie wymienione. Można założyć, że wszystkie inne części są takie same.  
 >
 >
 
-## <a name="prepare-an-sap-global-host-on-the-sofs-cluster"></a>Przygotowanie SAP, globalne hosta w klastrze SOFS
+## <a name="prepare-an-sap-global-host-on-the-sofs-cluster"></a>Przygotowywanie hosta globalnego SAP w klastrze SOFS
 
-Utwórz następujące woluminu i udział plików w klastrze SOFS:
+Utwórz następujący wolumin i udział plików w klastrze SOFS:
 
-* Plik SAP GLOBALHOST `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` struktury w klastrze SOFS udostępniony wolumin (CSV)
+* Struktura plików `C:\ClusterStorage\Volume1\usr\sap\<SID>\SYS\` SAP GLOBALHOST w udostępnionym woluminie klastra SOFS (CSV)
 
-* SAPMNT udziału plików
+* SAPMNT udział plików
 
-* Ustawienia zabezpieczeń na SAPMNT udziału plików i folderów z pełną kontrolę nad:
-    * \<Domeny > \SAP_\<SID > _GlobalAdmin grupy użytkowników
-    * SAP ASCS/SCS klastra obiekty komputerów węzła \<domeny > \ClusterNode1$ i \<domeny > \ClusterNode2$
+* Ustaw zabezpieczenia dla udziału plików SAPMNT i folderu z pełną kontrolą dla:
+    * Domena > \SAP_\<SID > grupy użytkowników _GlobalAdmin \<
+    * Węzeł \<klastra SAP ASCS/SCS w domenie > \ClusterNode1 $ i \<domena > \ClusterNode2 $
 
-Do utworzenia woluminu CSV o odporności dublowanej, wykonaj następujące polecenie cmdlet programu PowerShell na jednym z węzłów klastra serwerów SOFS:
+Aby utworzyć wolumin CSV z odpornością dublowania, należy wykonać następujące polecenie cmdlet programu PowerShell na jednym z węzłów klastra SOFS:
 
 
 ```powershell
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR1 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
-Aby utworzyć SAPMNT i ustawienia zabezpieczeń folderu i udziału, uruchom następujący skrypt programu PowerShell na jednym z węzłów klastra serwerów SOFS:
+Aby utworzyć SAPMNT i ustawić zabezpieczenia folderu i udostępnić, wykonaj następujący skrypt programu PowerShell na jednym z węzłów klastra SOFS:
 
 ```powershell
 # Create SAPMNT on file share
@@ -289,56 +288,56 @@ $Acl.SetAccessRule($Ar)
 Set-Acl $UsrSAPFolder $Acl -Verbose
  ```
 
-## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>Utwórz nazwę hosta wirtualnego klastrowanego wystąpienia SAP ASCS/SCS
+## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>Utwórz nazwę wirtualnego hosta dla klastrowanego wystąpienia SAP ASCS/SCS
 
-Tworzenie nazwy sieciowej klastra SAP ASCS/SCS (na przykład **pr1-ascs [10.0.6.7]** ), zgodnie z opisem w [Utwórz nazwę hosta wirtualnego klastrowanego wystąpienia SAP ASCS/SCS][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host].
+Utwórz nazwę sieci klastra SAP ASCS/SCS (na przykład **PR1-ASCS [10.0.6.7]** ), zgodnie z opisem w temacie [Tworzenie nazwy hosta wirtualnego dla klastrowanego wystąpienia SAP ASCS/SCS][sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host].
 
 
-## <a name="install-an-ascsscs-and-ers-instances-in-the-cluster"></a>Instalowanie wystąpienia ASCS/SCS i Wywołujących w klastrze
+## <a name="install-an-ascsscs-and-ers-instances-in-the-cluster"></a>Instalowanie wystąpień ASCS/SCS i wykres WYWOŁUJĄCYCH w klastrze
 
-### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>Instalowanie wystąpienia ASCS/SCS w pierwszym węźle klastra ASCS/SCS
+### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>Zainstaluj wystąpienie ASCS/SCS w pierwszym węźle klastra ASCS/SCS
 
-Zainstaluj wystąpienie SAP ASCS/SCS na pierwszym węźle klastra. Aby zainstalować wystąpienie usługi, w narzędziu SAP SWPM instalację, przejdź do:
+Zainstaluj wystąpienie SAP ASCS/SCS w pierwszym węźle klastra. Aby zainstalować wystąpienie, w narzędziu instalacji SAP SWPM przejdź do:
 
-**\<Produktu >**  >  **\<DBMS >**  > **instalacji** > **serwer aplikacji ABAP** () lub **Java**) > **System o wysokiej dostępności** > **wystąpienia ASCS/SCS** > **pierwszym węźle klastra**.
+**\<Produkt >**  > DBMS> > **instalacji** **aplikacji serwera ABAP** (lub **Java**) > **systemie wysokiej dostępności**  >  **\<**  >  **Wystąpienie ASCS/SCS** **Pierwszy węzeł klastra.**  > 
 
 ### <a name="add-a-probe-port"></a>Dodaj port sondy
 
-Zasób klastra SAP, SAP, identyfikator SID, IP port sondy, należy skonfigurować przy użyciu programu PowerShell. Wykonanie tej konfiguracji na jednym z węzłów klastra SAP ASCS/SCS, zgodnie z opisem [w tym artykule][sap-high-availability-installation-wsfc-shared-disk-add-probe-port].
+Skonfiguruj zasób klastra SAP, port sondy SAP-SID-IP przy użyciu programu PowerShell. Tę konfigurację należy wykonać na jednym z węzłów klastra SAP ASCS/SCS, zgodnie [z opisem w tym artykule][sap-high-availability-installation-wsfc-shared-disk-add-probe-port].
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>Instalowanie wystąpienia ASCS/SCS w drugim węźle klastra ASCS/SCS
 
-Zainstaluj wystąpienie SAP ASCS/SCS na drugim węźle klastra. Aby zainstalować wystąpienie usługi, w narzędziu SAP SWPM instalację, przejdź do:
+Zainstaluj wystąpienie SAP ASCS/SCS w drugim węźle klastra. Aby zainstalować wystąpienie, w narzędziu instalacji SAP SWPM przejdź do:
 
-**\<Produktu >**  >  **\<DBMS >**  > **instalacji** > **serwer aplikacji ABAP** () lub **Java**) > **System o wysokiej dostępności** > **wystąpienia ASCS/SCS** > **dodatkowym węźle klastra** .
+**\<Produkt >**  > DBMS> > **instalacji** **aplikacji serwera ABAP** (lub **Java**) > **systemie wysokiej dostępności**  >  **\<**  >  **Wystąpienie ASCS/SCS** **Dodatkowy węzeł klastra.**  > 
 
 
-## <a name="update-the-sap-ascsscs-instance-profile"></a>Aktualizuj profil wystąpienia SAP ASCS/SCS
+## <a name="update-the-sap-ascsscs-instance-profile"></a>Aktualizowanie profilu wystąpienia SAP ASCS/SCS
 
-Zaktualizuj parametry w profilu wystąpienia SAP ASCS/SCS \<SID >_ASCS/SCS\<Nr >_ \<Host >.
+Zaktualizuj parametry w identyfikatorze SID profilu \<wystąpienia SAP ASCS/SCS >_ASCS/\<SCS nr >_ \<hosta >.
 
 
 | Nazwa parametru | Wartość parametru |
 | --- | --- |
 | gw/netstat_once | **0** |
-| enque/encni/set_so_keepalive  | **true** |
+| umieścić/encni/set_so_keepalive  | **oznacza** |
 | service/ha_check_node | **1** |
 
-Ponownie uruchom wystąpienie SAP ASCS/SCS. Ustaw `KeepAlive` parametrów w obu węzłach klastra SAP ASCS/SCS postępuj zgodnie z instrukcjami, aby [Ustaw wpisy rejestru w węzłach klastra wystąpienia SAP ASCS/SCS][high-availability-guide]. 
+Uruchom ponownie wystąpienie SAP ASCS/SCS. Ustaw `KeepAlive` parametry w węzłach klastra SAP ASCS/SCS postępuj zgodnie z instrukcjami, aby [ustawić wpisy rejestru w węzłach klastra wystąpienia SAP ASCS/SCS][high-availability-guide]. 
 
-## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Zainstaluj wystąpienie DBMS i serwery aplikacji SAP
+## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Instalowanie wystąpienia systemu DBMS i serwerów aplikacji SAP
 
-Zakończ instalację systemu SAP, instalując:
+Zafinalizowanie instalacji systemu SAP przez zainstalowanie:
 * Wystąpienie systemu DBMS.
 * Podstawowy serwer aplikacji SAP.
 * Dodatkowy serwer aplikacji SAP.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Instalowanie wystąpienia ASCS/SCS w klastrze trybu failover z dysków — oficjalny SAP wytyczne dotyczące udziału plików o wysokiej dostępności][sap-official-ha-file-share-document]
+* [Instalowanie wystąpienia ASCS/SCS w klastrze trybu failover bez udostępnionych dysków — oficjalne wytyczne SAP dla udziału plików o wysokiej dostępności][sap-official-ha-file-share-document]
 
-* [Bezpośrednie miejsca do funkcji miejsca do magazynowania w systemie Windows Server 2016][s2d-in-win-2016]
+* [Bezpośrednie miejsca do magazynowania w systemie Windows Server 2016][s2d-in-win-2016]
 
-* [Serwer plików skalowalny w poziomie dla danych aplikacji — omówienie][sofs-overview]
+* [Serwer plików skalowalny w poziomie dla danych aplikacji — Omówienie][sofs-overview]
 
-* [What's new in magazynu w systemie Windows Server 2016][new-in-win-2016-storage]
+* [Co nowego w usłudze Storage w systemie Windows Server 2016][new-in-win-2016-storage]

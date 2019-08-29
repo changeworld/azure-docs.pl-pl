@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/17/2019
+ms.date: 08/28/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 0ad01d76e93c731ed5faed268a0537cada787952
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 1f7c212b7bb850816557feb53099973986bab587
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996810"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114490"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Samouczek: konfigurowanie protokołu HTTPS w domenie niestandardowej usługi Azure CDN
 
@@ -312,6 +312,9 @@ W poniższej tabeli przedstawiono postęp operacji w przypadku wyłączenia prot
 
     Istniejące domeny będą stopniowo migrowane do pojedynczego certyfikatu w ciągu najbliższych miesięcy, jeśli analiza przeprowadzona przez firmę Microsoft określi, że żądania skierowane do Twojej aplikacji wykonują tylko klienci SNI. Jeśli firma Microsoft wykryje żądania skierowane do aplikacji inne niż korzystające z rozszerzenia SNI, Twoje domeny będą w dalszym ciągu korzystać z certyfikatu SAN i protokołu TLS/SSL opartego na protokole IP. W każdym przypadku dostęp do Twojej usługi będzie odbywał się bez przestojów, a żądania klientów będą obsługiwane niezależnie od tego, czy korzystają z rozszerzenia SNI.
 
+7. *Jak działają odnowienia certyfikatów przy użyciu pakietu do przenoszenia własnego certyfikatu?*
+
+    Aby zapewnić, że nowszy certyfikat zostanie wdrożony w infrastrukturze PoP, po prostu Przekaż nowy certyfikat do magazynu kluczy platformy Azure, a następnie w ustawieniach protokołu SSL na Azure CDN wybierz najnowszą wersję certyfikatu i kliknij przycisk Zapisz. Azure CDN następnie propogate nowy zaktualizowany certyfikat. 
 
 ## <a name="next-steps"></a>Następne kroki
 

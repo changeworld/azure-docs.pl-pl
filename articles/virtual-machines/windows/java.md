@@ -1,6 +1,6 @@
 ---
-title: Tworzenie i zarządzanie nimi w maszynie wirtualnej platformy Azure przy użyciu języka Java | Dokumentacja firmy Microsoft
-description: Za pomocą języka Java i usługi Azure Resource Manager, aby wdrożyć maszynę wirtualną i wszystkie jej zasoby pomocnicze.
+title: Tworzenie maszyny wirtualnej platformy Azure i zarządzanie nią przy użyciu języka Java | Microsoft Docs
+description: Użyj języka Java i Azure Resource Manager, aby wdrożyć maszynę wirtualną i wszystkie jej zasoby pomocnicze.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -11,37 +11,36 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: b02fd8f012dee2436f4f276e05185428008508a1
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: fa6c5115663d770f561764356129448af878668b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722577"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103022"
 ---
-# <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Tworzenie i zarządzanie nimi Windows maszyn wirtualnych na platformie Azure przy użyciu języka Java
+# <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi na platformie Azure przy użyciu języka Java
 
-[Maszyny wirtualnej platformy Azure](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) wymaga kilku pomocnicze zasoby platformy Azure. W tym artykule opisano tworzenie i usuwanie zasobów maszyny Wirtualnej przy użyciu języka Java, zarządzanie nimi. Omawiane kwestie:
+[Maszyna wirtualna platformy Azure](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) wymaga kilku dodatkowych zasobów platformy Azure. W tym artykule opisano tworzenie i usuwanie zasobów maszyn wirtualnych oraz zarządzanie nimi przy użyciu języka Java. Omawiane kwestie:
 
 > [!div class="checklist"]
-> * Utwórz projekt narzędzia Maven
+> * Tworzenie projektu Maven
 > * Dodaj zależności
 > * Utwórz poświadczenia
-> * Tworzenie zasobów
+> * Utwórz zasoby
 > * Wykonywanie zadań zarządzania
 > * Usuwanie zasobów
 > * Uruchamianie aplikacji
 
-Wykonaj te czynności trwa około 20 minut.
+Wykonanie tych kroków trwa około 20 minut.
 
-## <a name="create-a-maven-project"></a>Utwórz projekt narzędzia Maven
+## <a name="create-a-maven-project"></a>Tworzenie projektu Maven
 
-1. Jeśli jeszcze tego nie zrobiono, zainstaluj [Java](https://aka.ms/azure-jdks).
+1. Jeśli jeszcze tego nie zrobiono, zainstaluj [środowisko Java](https://aka.ms/azure-jdks).
 2. Zainstaluj [Maven](https://maven.apache.org/download.cgi).
-3. Utwórz nowy folder i projektu:
+3. Utwórz nowy folder i projekt:
     
     ```
     mkdir java-azure-test
@@ -52,7 +51,7 @@ Wykonaj te czynności trwa około 20 minut.
 
 ## <a name="add-dependencies"></a>Dodaj zależności
 
-1. W obszarze `testAzureApp` folder, otwórz `pom.xml` pliku i Dodaj konfigurację kompilacji, aby &lt;projektu&gt; umożliwiające tworzenie aplikacji:
+1. W folderze Otwórz plik i Dodaj konfigurację kompilacji do &lt;projektu&gt; , aby umożliwić Kompilowanie aplikacji: `pom.xml` `testAzureApp`
 
     ```xml
     <build>
@@ -68,7 +67,7 @@ Wykonaj te czynności trwa około 20 minut.
     </build>
     ```
 
-2. Dodaj zależności, które są wymagane do dostępu do zestawu SDK Java usługi Azure.
+2. Dodaj zależności, które są konieczne, aby uzyskać dostęp do zestawu Azure Java SDK.
 
     ```xml
     <dependency>
@@ -117,11 +116,11 @@ Wykonaj te czynności trwa około 20 minut.
 
 ## <a name="create-credentials"></a>Utwórz poświadczenia
 
-Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do [jednostki usługi Active Directory](../../active-directory/develop/howto-create-service-principal-portal.md). W kolejnym kroku, należy zarejestrować identyfikator aplikacji, klucz uwierzytelniania i identyfikator dzierżawy, który należy.
+Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do jednostki [usługi Active Directory](../../active-directory/develop/howto-create-service-principal-portal.md). Należy również zarejestrować identyfikator aplikacji, klucz uwierzytelniania i identyfikator dzierżawy, które są potrzebne w późniejszym kroku.
 
 ### <a name="create-the-authorization-file"></a>Utwórz plik autoryzacji
 
-1. Utwórz plik o nazwie `azureauth.properties` i dodaj następujące właściwości do niego:
+1. Utwórz plik o nazwie `azureauth.properties` i Dodaj do niego następujące właściwości:
 
     ```
     subscription=<subscription-id>
@@ -134,20 +133,20 @@ Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do [jednostki usł
     graphURL=https://graph.windows.net/
     ```
 
-    Zastąp **&lt;identyfikator subskrypcji&gt;** przy użyciu identyfikatora subskrypcji **&lt;identyfikator aplikacji&gt;** z aplikacją usługi Active Directory Identyfikator **&lt;klucz uwierzytelniania&gt;** z kluczem aplikacji i **&lt;identyfikator dzierżawy&gt;** z identyfikatorem dzierżawy.
+    Zastąp  **&lt;identyfikator Subscription&gt; ID** identyfikatorem subskrypcji,  **&lt;identyfikatorem&gt; aplikacji** Active Directory identyfikatorem aplikacji, **&lt;kluczem uwierzytelniania przy&gt;** użyciu klucza aplikacji i  **&lt;identyfikatora&gt; dzierżawy** z identyfikatorem dzierżawy.
 
 2. Zapisz plik.
 3. Ustaw zmienną środowiskową o nazwie AZURE_AUTH_LOCATION w powłoce z pełną ścieżką do pliku uwierzytelniania.
 
 ### <a name="create-the-management-client"></a>Tworzenie klienta zarządzania
 
-1. Otwórz `App.java` plik `src\main\java\com\fabrikam` i upewnij się, ta instrukcja pakietu jest u góry:
+1. Otwórz plik w obszarze `src\main\java\com\fabrikam` i upewnij się, że ta instrukcja pakietu znajduje się na górze: `App.java`
 
     ```java
     package com.fabrikam.testAzureApp;
     ```
 
-2. W obszarze instrukcji pakietu, dodaj je zaimportować instrukcji:
+2. W obszarze Instrukcja pakietu Dodaj następujące instrukcje importu:
    
     ```java
     import com.microsoft.azure.management.Azure;
@@ -169,7 +168,7 @@ Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do [jednostki usł
     import java.util.Scanner;
     ```
 
-2. Aby utworzyć poświadczenia usługi Active Directory, które należy wprowadzić żądań, Dodaj następujący kod do głównej metody klasy aplikacji:
+2. Aby utworzyć Active Directory poświadczenia, które należy wykonać, Dodaj ten kod do metody Main klasy App:
    
     ```java
     try {
@@ -185,13 +184,13 @@ Przed rozpoczęciem tego kroku upewnij się, że masz dostęp do [jednostki usł
 
     ```
 
-## <a name="create-resources"></a>Tworzenie zasobów
+## <a name="create-resources"></a>Utwórz zasoby
 
 ### <a name="create-the-resource-group"></a>Tworzenie grupy zasobów
 
-Wszystkie zasoby muszą być zawarte w [grupy zasobów](../../azure-resource-manager/resource-group-overview.md).
+Wszystkie zasoby muszą być zawarte w [grupie zasobów](../../azure-resource-manager/resource-group-overview.md).
 
-Aby określić wartości dla aplikacji i Utwórz grupę zasobów, Dodaj następujący kod do bloku try w metodzie głównej:
+Aby określić wartości dla aplikacji i utworzyć grupę zasobów, Dodaj ten kod do bloku try w metodzie Main:
 
 ```java
 System.out.println("Creating resource group...");
@@ -203,9 +202,9 @@ ResourceGroup resourceGroup = azure.resourceGroups()
 
 ### <a name="create-the-availability-set"></a>Tworzenie zestawu dostępności
 
-[Zestawy dostępności](tutorial-availability-sets.md) ułatwienia obsługi maszyn wirtualnych używanych przez aplikację.
+[Zestawy dostępności](tutorial-availability-sets.md) ułatwiają zarządzanie maszynami wirtualnymi używanymi przez aplikację.
 
-Aby utworzyć zestaw dostępności, Dodaj następujący kod do bloku try w metodzie głównej:
+Aby utworzyć zestaw dostępności, Dodaj ten kod do bloku try w metodzie Main:
 
 ```java
 System.out.println("Creating availability set...");
@@ -218,9 +217,9 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 ```
 ### <a name="create-the-public-ip-address"></a>Tworzenie publicznego adresu IP
 
-A [publiczny adres IP](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) umożliwia komunikację z maszyną wirtualną.
+[Publiczny adres IP](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) jest wymagany do komunikowania się z maszyną wirtualną.
 
-Aby utworzyć publiczny adres IP dla maszyny wirtualnej, Dodaj następujący kod do bloku try w metodzie głównej:
+Aby utworzyć publiczny adres IP dla maszyny wirtualnej, Dodaj ten kod do bloku try w metodzie Main:
 
 ```java
 System.out.println("Creating public IP address...");
@@ -234,9 +233,9 @@ PublicIPAddress publicIPAddress = azure.publicIPAddresses()
 
 ### <a name="create-the-virtual-network"></a>Tworzenie sieci wirtualnej
 
-Maszyna wirtualna musi być w podsieci [sieć wirtualna](../../virtual-network/virtual-networks-overview.md).
+Maszyna wirtualna musi znajdować się w podsieci [sieci wirtualnej](../../virtual-network/virtual-networks-overview.md).
 
-Aby utworzyć podsieć i sieć wirtualną, Dodaj następujący kod do bloku try w metodzie głównej:
+Aby utworzyć podsieć i sieć wirtualną, Dodaj ten kod do bloku try w metodzie Main:
 
 ```java
 System.out.println("Creating virtual network...");
@@ -251,9 +250,9 @@ Network network = azure.networks()
 
 ### <a name="create-the-network-interface"></a>Utwórz interfejs sieciowy
 
-Maszyna wirtualna musi przejść do interfejsu sieciowego komunikacji w sieci wirtualnej.
+Maszyna wirtualna musi mieć interfejs sieciowy, aby komunikować się z siecią wirtualną.
 
-Aby utworzyć interfejs sieciowy, Dodaj następujący kod do bloku try w metodzie głównej:
+Aby utworzyć interfejs sieciowy, Dodaj ten kod do bloku try w metodzie Main:
 
 ```java
 System.out.println("Creating network interface...");
@@ -270,9 +269,9 @@ NetworkInterface networkInterface = azure.networkInterfaces()
 
 ### <a name="create-the-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-Teraz, gdy utworzono pomocnicze zasoby, możesz utworzyć maszynę wirtualną.
+Teraz, gdy wszystkie zasoby pomocnicze zostały utworzone, można utworzyć maszynę wirtualną.
 
-Aby utworzyć maszynę wirtualną, Dodaj następujący kod do bloku try w metodzie głównej:
+Aby utworzyć maszynę wirtualną, Dodaj ten kod do bloku try w metodzie Main:
 
 ```java
 System.out.println("Creating virtual machine...");
@@ -294,11 +293,11 @@ input.nextLine();
 ```
 
 > [!NOTE]
-> Ten samouczek umożliwia utworzenie maszyny wirtualnej z wersją systemu operacyjnego Windows Server. Aby dowiedzieć się więcej na temat wybierania obrazów innych, zobacz [wybierz obrazów maszyn wirtualnych platformy Azure za pomocą programu Windows PowerShell i wiersza polecenia platformy Azure i Navigate](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> Ten samouczek tworzy maszynę wirtualną z uruchomioną wersją systemu operacyjnego Windows Server. Aby dowiedzieć się więcej na temat wybierania innych obrazów, zobacz [nawigowanie i wybieranie obrazów maszyn wirtualnych platformy Azure za pomocą programu Windows PowerShell i interfejsu wiersza polecenia platformy Azure](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 >
 
-Jeśli chcesz użyć istniejącego dysku zamiast obrazu z witryny marketplace, należy użyć następującego kodu: 
+Jeśli chcesz użyć istniejącego dysku zamiast obrazu z witryny Marketplace, użyj tego kodu: 
 
 ```java
 ManagedDisk managedDisk = azure.disks.define("myosdisk")
@@ -321,17 +320,17 @@ azure.virtualMachines.define("myVM")
 
 ## <a name="perform-management-tasks"></a>Wykonywanie zadań zarządzania
 
-W trakcie cyklu życia maszyny wirtualnej można uruchamiać zadania zarządzania, takie jak uruchamianie, zatrzymywanie lub usuwanie maszyny wirtualnej. Ponadto można tworzyć kod, aby zautomatyzować powtarzalne lub złożone zadania.
+W trakcie cyklu życia maszyny wirtualnej można uruchamiać zadania zarządzania, takie jak uruchamianie, zatrzymywanie lub usuwanie maszyny wirtualnej. Ponadto możesz chcieć utworzyć kod w celu zautomatyzowania powtarzalnych lub złożonych zadań.
 
-Gdy trzeba wykonywać żadnych czynności z maszyną Wirtualną, należy uzyskać jego wystąpienie. Dodaj następujący kod do bloku try głównej metody:
+Jeśli chcesz zrobić coś z maszyną wirtualną, musisz uzyskać jego wystąpienie. Dodaj ten kod do bloku try metody Main:
 
 ```java
 VirtualMachine vm = azure.virtualMachines().getByResourceGroup("myResourceGroup", "myVM");
 ```
 
-### <a name="get-information-about-the-vm"></a>Uzyskaj informacje o maszynie Wirtualnej
+### <a name="get-information-about-the-vm"></a>Pobierz informacje o maszynie wirtualnej
 
-Aby uzyskać informacje o maszynie wirtualnej, Dodaj następujący kod do bloku try w metodzie głównej:
+Aby uzyskać informacje o maszynie wirtualnej, Dodaj ten kod do bloku try w metodzie Main:
 
 ```java
 System.out.println("hardwareProfile");
@@ -389,9 +388,9 @@ input.nextLine();
 
 ### <a name="stop-the-vm"></a>Zatrzymywanie maszyny wirtualnej
 
-Można zatrzymać maszynę wirtualną i zapewnić jej ustawienia, ale nadal będą naliczane opłaty dla niego lub można zatrzymać maszynę wirtualną i cofnąć jej przydział. Po cofnięciu przydziału maszyny wirtualnej, wszystkie zasoby skojarzone z nim są również zakończenia przydział zostanie cofnięty i rozliczeń dla niego.
+Można zatrzymać maszynę wirtualną i zachować wszystkie jej ustawienia, ale w dalszym ciągu korzystać z niej lub można zatrzymać maszynę wirtualną i cofnąć jej przydział. Po cofnięciu przydziału maszyny wirtualnej wszystkie skojarzone z nią zasoby są również cofane i rozliczane.
 
-Aby zatrzymać maszynę wirtualną bez cofnięcie jej przydziału, Dodaj następujący kod do bloku try w metodzie głównej:
+Aby zatrzymać maszynę wirtualną bez jej cofnięcia, Dodaj ten kod do bloku try w metodzie Main:
 
 ```java
 System.out.println("Stopping vm...");
@@ -400,7 +399,7 @@ System.out.println("Press enter to continue...");
 input.nextLine();
 ```
 
-Jeśli chcesz cofnąć alokację maszyny wirtualnej, należy zmienić wywołanie PowerOff ten kod:
+Jeśli chcesz cofnąć alokację maszyny wirtualnej, Zmień wywołanie wyłączenie na ten kod:
 
 ```java
 vm.deallocate();
@@ -408,7 +407,7 @@ vm.deallocate();
 
 ### <a name="start-the-vm"></a>Uruchamianie maszyny wirtualnej
 
-Można uruchomić maszyny wirtualnej, Dodaj następujący kod do bloku try w metodzie głównej:
+Aby uruchomić maszynę wirtualną, Dodaj ten kod do bloku try w metodzie Main:
 
 ```java
 System.out.println("Starting vm...");
@@ -417,11 +416,11 @@ System.out.println("Press enter to continue...");
 input.nextLine();
 ```
 
-### <a name="resize-the-vm"></a>Zmień rozmiar maszyny Wirtualnej
+### <a name="resize-the-vm"></a>Zmiana rozmiaru maszyny wirtualnej
 
-Wiele aspektów wdrożenia należy rozważyć podczas ustawiania rozmiaru maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych](sizes.md).  
+Podczas wybierania rozmiaru maszyny wirtualnej należy wziąć pod uwagę wiele aspektów wdrożenia. Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych](sizes.md).  
 
-Aby zmienić rozmiar maszyny wirtualnej, Dodaj następujący kod do bloku try w metodzie głównej:
+Aby zmienić rozmiar maszyny wirtualnej, Dodaj ten kod do bloku try w metodzie Main:
 
 ```java
 System.out.println("Resizing vm...");
@@ -432,9 +431,9 @@ System.out.println("Press enter to continue...");
 input.nextLine();
 ```
 
-### <a name="add-a-data-disk-to-the-vm"></a>Dodaj dysk danych do maszyny Wirtualnej
+### <a name="add-a-data-disk-to-the-vm"></a>Dodawanie dysku danych do maszyny wirtualnej
 
-Aby dodać dysk danych do maszyny wirtualnej, która ma 2 GB, rozmiar, ma numer LUN 0, lub typ pamięci podręcznej odczytu i zapisu, Dodaj następujący kod do bloku try w metodzie głównej:
+Aby dodać dysk danych do maszyny wirtualnej o rozmiarze 2 GB, ma numer LUN równy 0 i typ buforowania ReadWrite, Dodaj ten kod do bloku try w metodzie Main:
 
 ```java
 System.out.println("Adding data disk...");
@@ -447,9 +446,9 @@ input.nextLine();
 
 ## <a name="delete-resources"></a>Usuwanie zasobów
 
-Ponieważ opłaty są naliczane za zasoby używane w systemie Azure, zawsze jest dobrą praktyką, aby usunąć zasoby, które nie są już potrzebne. Jeśli chcesz usunąć maszyny wirtualne i wszystkie pomocnicze zasoby, trzeba będzie usunąć grupę zasobów.
+Ze względu na to, że opłaty są naliczone za zasoby używane na platformie Azure, zawsze warto usunąć zasoby, które nie są już potrzebne. Jeśli chcesz usunąć maszyny wirtualne i wszystkie zasoby pomocnicze, wystarczy usunąć grupę zasobów.
 
-1. Aby usunąć grupę zasobów, Dodaj następujący kod do bloku try w metodzie głównej:
+1. Aby usunąć grupę zasobów, Dodaj ten kod do bloku try w metodzie Main:
    
     ```java
     System.out.println("Deleting resources...");
@@ -460,17 +459,17 @@ Ponieważ opłaty są naliczane za zasoby używane w systemie Azure, zawsze jest
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 
-Aby zakończyć powinno zająć około pięciu minut, zanim ta aplikacja konsoli uruchomić zupełnie od początku.
+Ukończenie działania tej aplikacji konsolowej od początku do końca trwa około pięciu minut.
 
-1. Aby uruchomić aplikację, użyj tego polecenia narzędzia Maven:
+1. Aby uruchomić aplikację, użyj tego polecenia Maven:
 
     ```
     mvn compile exec:java
     ```
 
-2. Przed naciśnięciem **Enter** zacząć usuwanie zasobów może potrwać kilka minut na sprawdzenie tworzeniem zasobów w witrynie Azure portal. Kliknij stan wdrożenia, aby wyświetlić informacje o wdrożeniu.
+2. Przed naciśnięciem klawisza **Enter** w celu rozpoczęcia usuwania zasobów można sprawdzić poprawność tworzenia zasobów w Azure Portal. Kliknij stan wdrożenia, aby wyświetlić informacje o wdrożeniu.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej o korzystaniu z [bibliotek platformy Azure dla języka Java](https://docs.microsoft.com/java/azure/java-sdk-azure-overview).
 

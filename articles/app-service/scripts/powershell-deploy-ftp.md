@@ -10,17 +10,16 @@ tags: azure-service-management
 ms.assetid: b7d46d6f-44fd-454c-8008-87dab6eefbc1
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: c28fcff9b1910f2d6e86aee5b855d064bd2952fa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fa5bc2b05f4bf34bdefd2291f10e0f69d1cd634f
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136475"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098318"
 ---
 # <a name="upload-files-to-a-web-app-using-ftp"></a>Przekazywanie plików do aplikacji internetowej za pomocą protokołu FTP
 
@@ -53,7 +52,7 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Tworzy aplikację internetową. |
 | [Get-AzWebAppPublishingProfile](/powershell/module/az.websites/get-azwebapppublishingprofile) | Pobierz profil publikowania aplikacji internetowej. |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat modułu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](/powershell/azure/overview).
 

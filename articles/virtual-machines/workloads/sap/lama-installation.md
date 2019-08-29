@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 4a4421b87aa094306a42212f76f7590d4f139047
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 1b8297a797f83935f16365a15d100ce88cadca30
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68607981"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099538"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Łącznik SAP LaMa dla platformy Azure
 
@@ -99,9 +98,9 @@ Nazwa główna usługi nie ma uprawnień do dostępu do zasobów platformy Azure
 
 Otwórz witrynę sieci Web SAP LaMa i przejdź do infrastruktury. Przejdź do karty menedżerowie chmury i kliknij przycisk Dodaj. Wybierz Adapter chmury Microsoft Azure i kliknij przycisk Dalej. Wprowadź następujące informacje:
 
-* Etykieta: Wybierz nazwę wystąpienia łącznika
+* Oznakowan Wybierz nazwę wystąpienia łącznika
 * Nazwa użytkownika: Identyfikator aplikacji nazwy głównej usługi
-* Hasło: Klucz jednostki usługi/hasło
+* Hasło Klucz jednostki usługi/hasło
 * Adres URL: Zachowaj domyślne https://management.azure.com/
 * Interwał monitorowania (w sekundach): Powinna wynosić co najmniej 300
 * Identyfikator subskrypcji: Identyfikator subskrypcji platformy Azure
@@ -504,12 +503,12 @@ W *wystąpieniu podstawowego serwera aplikacji*okna dialogowego Użyj *AS1-di-0*
 ### <a name="errors-and-warnings-during-application-server-installation"></a>Błędy i ostrzeżenia podczas instalacji serwera aplikacji
 
 * Wystąpił błąd podczas wykonywania kroku SAPinst: getProfileDir
-  * BŁĄD: (Ostatni błąd zgłoszony przez krok: Przechwycono ESAPinstException w wywołaniu modułu: Moduł sprawdzania poprawności kroku "| NW_DI | IND | IND | IND | 0 | 0 | NW_GetSidFromProfiles | IND | IND | IND | getSid | 0 | NW_readProfileDir | IND | IND | IND | readProfile | 0 | getProfileDir ' zgłosił błąd: \As1-ascs\sapmnt\AS1\SYS\profile \\węzła nie istnieje. Uruchom SAPinst w trybie interaktywnym, aby rozwiązać ten problem)
+  * PORN (Ostatni błąd zgłoszony przez krok: Przechwycono ESAPinstException w wywołaniu modułu: Moduł sprawdzania poprawności kroku "| NW_DI | IND | IND | IND | 0 | 0 | NW_GetSidFromProfiles | IND | IND | IND | getSid | 0 | NW_readProfileDir | IND | IND | IND | readProfile | 0 | getProfileDir ' zgłosił błąd: \As1-ascs\sapmnt\AS1\SYS\profile \\węzła nie istnieje. Uruchom SAPinst w trybie interaktywnym, aby rozwiązać ten problem)
   * Rozwiązanie  
     Upewnij się, że SWPM jest uruchomiony z użytkownikiem, który ma dostęp do profilu. Ten użytkownik można skonfigurować w Kreatorze instalacji serwera aplikacji
 
 * Wystąpił błąd podczas wykonywania kroku SAPinst: askUnicode
-  * BŁĄD: (Ostatni błąd zgłoszony przez krok: Przechwycono ESAPinstException w wywołaniu modułu: Moduł sprawdzania poprawności kroku "| NW_DI | IND | IND | IND | 0 | 0 | NW_GetSidFromProfiles | IND | IND | IND | getSid | 0 | NW_getUnicode | IND | IND | IND | "Unicode | 0 | askUnicode" zgłosił błąd: Uruchom SAPinst w trybie interaktywnym, aby rozwiązać ten problem)
+  * PORN (Ostatni błąd zgłoszony przez krok: Przechwycono ESAPinstException w wywołaniu modułu: Moduł sprawdzania poprawności kroku "| NW_DI | IND | IND | IND | 0 | 0 | NW_GetSidFromProfiles | IND | IND | IND | getSid | 0 | NW_getUnicode | IND | IND | IND | "Unicode | 0 | askUnicode" zgłosił błąd: Uruchom SAPinst w trybie interaktywnym, aby rozwiązać ten problem)
   * Rozwiązanie  
     W przypadku korzystania z najnowszego jądra SAP SWPM nie może określić, czy system jest już systemem Unicode przy użyciu serwera komunikatów ASCS. Aby uzyskać więcej informacji, zobacz temat SAP Note [2445033] .  
     Ten problem zostanie rozwiązany w nowym pakiecie obsługi/poprawek oprogramowania SAP LaMa.  

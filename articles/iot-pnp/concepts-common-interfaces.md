@@ -7,16 +7,16 @@ ms.date: 07/16/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 848210509bf9ab0ffec35004cbb07e39d6de1bc0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 5a5aeac06ccf31e88a8ec670e57b22e753553ff5
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879606"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114264"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>Popularne interfejsy Plug and Play IoT
 
-Wszystkie urządzenia Plug and Play IoT powinny implementować niektóre typowe interfejsy. Popularne interfejsy korzystają z rozwiązań IoT, ponieważ zapewniają spójne funkcje. [Certyfikacja](tutorial-build-device-certification.md) wymaga, aby urządzenie zaimplementował kilka typowych interfejsów. Można pobrać typowe definicje interfejsów z repozytorium modelu globalnego.
+Wszystkie urządzenia Plug and Play IoT powinny implementować niektóre typowe interfejsy. Popularne interfejsy korzystają z rozwiązań IoT, ponieważ zapewniają spójne funkcje. [Certyfikacja](tutorial-build-device-certification.md) wymaga, aby urządzenie zaimplementował kilka typowych interfejsów. Można pobrać typowe definicje interfejsów z repozytorium modelu publicznego.
 
 ## <a name="summary-of-common-interfaces"></a>Podsumowanie typowych interfejsów
 
@@ -35,7 +35,7 @@ Wszystkie urządzenia Plug and Play IoT powinny implementować niektóre typowe 
 
 ### <a name="cli"></a>Interfejs wiersza polecenia
 
-Przy użyciu rozszerzenia Azure IoT dla interfejsu wiersza polecenia platformy Azure można pobrać typowe interfejsy z repozytorium modelu globalnego.
+Przy użyciu rozszerzenia Azure IoT dla interfejsu wiersza polecenia platformy Azure można pobrać typowe interfejsy z repozytorium modelu publicznego.
 
 ```cmd/sh
 az iot pnp interface show --interface {InterfaceID} --login {ModelRepoConnectionString}
@@ -49,9 +49,9 @@ az iot pnp model show --interface {InterfaceID} --login {ModelRepoConnectionStri
 
 1. **Naciśnij klawisze Ctrl + Shift + P** , aby otworzyć paletę poleceń.
 
-1. Wprowadź **Plug and Play** a następnie wybierz **Plug and Play IoT: Otwórz polecenie repozytorium** modeli. Wybierz pozycję **repozytorium modelu globalnego**. Repozytorium modelu globalnego zostanie otwarte w VS Code.
+1. Wprowadź **Plug and Play** a następnie wybierz **Plug and Play IoT: Otwórz polecenie repozytorium** modeli. Wybierz pozycję **repozytorium publiczne**. Repozytorium modelu publicznego zostanie otwarte w VS Code.
 
-1. W repozytorium modelu globalnego wprowadź nazwę interfejsu w polu wyszukiwania.
+1. W repozytorium modelu publicznego wprowadź nazwę interfejsu w polu wyszukiwania.
 
 1. Aby utworzyć lokalną kopię interfejsu, wybierz ją w wynikach wyszukiwania, a następnie wybierz pozycję **Pobierz**.
 

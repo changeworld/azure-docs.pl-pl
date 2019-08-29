@@ -3,15 +3,15 @@ title: Jak skonfigurować czas rozpoczęcia procesora dla kanału informacyjnego
 description: Dowiedz się, jak skonfigurować procesor kanału informacyjnego w celu rozpoczęcia odczytywania z określonego dnia i godziny
 author: ealsur
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: maquaran
-ms.openlocfilehash: 00b1553a018e816b4ec1672d27534d576e71a7f6
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 600556a06d3f58c4d2ec79a49fdee5e8e04d4036
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990764"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093642"
 ---
 # <a name="how-to-configure-the-change-feed-processor-start-time"></a>Jak skonfigurować czas rozpoczęcia procesora kanału informacyjnego zmiany
 

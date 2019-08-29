@@ -1,6 +1,6 @@
 ---
-title: Przykładowe zasady usługi Azure API management — Dodaj nagłówek przesłanym | Dokumentacja firmy Microsoft
-description: Przykład zasady zarządzania Azure interfejsu API — pokazuje, jak dodać nagłówek przekazane w żądanie przychodzące, aby umożliwić zaplecza interfejsu API, aby utworzyć odpowiednie adresy URL.
+title: Przykład zasad usługi Azure API Management — Dodawanie przekazanego nagłówka | Microsoft Docs
+description: Przykład zasad usługi Azure API Management — pokazuje, jak dodać przesłany dalej nagłówek w żądaniu przychodzącym, aby umożliwić interfejsowi API zaplecza konstruowanie odpowiednich adresów URL.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,30 +9,29 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: b857d1780e9734ce891ce2c0ce4bedf50dfe13e9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e525029ae8eab086d11126a4e18958423e207aa1
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859498"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70067500"
 ---
-# <a name="add-a-forwarded-header"></a>Dodaj nagłówek przekazane
+# <a name="add-a-forwarded-header"></a>Dodawanie przekazanego nagłówka
 
-W tym artykule przedstawiono przykładowy zasad zarządzania interfejsem API usługi Azure, który demonstruje, jak dodać nagłówek przekazane w żądanie przychodzące, aby umożliwić zaplecza interfejsu API, aby utworzyć odpowiednie adresy URL. Można ustawiać lub edytować kod zasad, wykonaj czynności opisane w [zestawu lub Edytuj zasady](../set-edit-policies.md). Aby wyświetlić inne przykłady, zobacz [Przykłady zasad](../policy-samples.md).
+W tym artykule przedstawiono przykład zasad usługi Azure API Management, który pokazuje, jak dodać przesłany dalej nagłówek do żądania przychodzącego, aby umożliwić interfejsowi API zaplecza konstruowanie prawidłowych adresów URL. Aby ustawić lub edytować kod zasad, wykonaj kroki opisane w sekcji [Ustawianie lub edytowanie zasad](../set-edit-policies.md). Aby zapoznać się z innymi przykładami, zobacz [przykłady zasad](../policy-samples.md).
 
 ## <a name="code"></a>Kod
 
-Wklej kod do **dla ruchu przychodzącego** bloku.
+Wklej kod do bloku **przychodzącego** .
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Forward gateway hostname to backend for generating correct urls in responses.policy.xml)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat usługi APIM zasad:
+Dowiedz się więcej na temat zasad APIMymi:
 
 + [Zasady transformacji](../api-management-transformation-policies.md)
 + [Przykłady zasad](../policy-samples.md)

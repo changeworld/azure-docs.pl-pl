@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 481e6c5f2271651627577af3d03f9dd4da725146
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 4bad9db6af6d368c943619bc2105f3fba0b7eb7b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949926"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096156"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Pracuj z Azure Functions Core Tools
 
@@ -315,12 +314,12 @@ func host start
 | **`--cors-credentials`** | Zezwalaj na żądania uwierzytelniane między źródłami (np. pliki cookie i nagłówek uwierzytelniania) tylko w wersji 2. x. |
 | **`--cors`** | Rozdzielana przecinkami lista źródeł CORS bez spacji. |
 | **`--language-worker`** | Argumenty umożliwiające skonfigurowanie procesu roboczego języka. Tylko wersja 2. x. |
-| **`--nodeDebugPort -n`** | Port do użycia przez debuger węzła. Domyślne: Wartość z pliku Launch. JSON lub 5858. Tylko wersja 1. x. |
+| **`--nodeDebugPort -n`** | Port do użycia przez debuger węzła. Wartooć Wartość z pliku Launch. JSON lub 5858. Tylko wersja 1. x. |
 | **`--password`** | Hasło lub plik zawierający hasło dla pliku PFX. Używany tylko z `--cert`. Tylko wersja 2. x. |
 | **`--port -p`** | Port lokalny, na którym nasłuchuje. Wartość domyślna: 7071. |
 | **`--pause-on-error`** | Wstrzymaj, aby uzyskać dodatkowe dane wejściowe przed wyjściem z procesu. Używane tylko w przypadku uruchamiania podstawowych narzędzi z zintegrowanego środowiska programistycznego (IDE).|
 | **`--script-root --prefix`** | Służy do określania ścieżki do katalogu głównego aplikacji funkcji, która ma być uruchamiana lub wdrażana. Służy do kompilowania projektów, które generują pliki projektu w podfolderze. Na przykład podczas kompilowania projektu biblioteki C# klas plik host. JSON, Local. Settings. JSON i Function. JSON jest generowany w podfolderze *głównym* o ścieżce podobnej `MyProject/bin/Debug/netstandard2.0`do. W takim przypadku należy ustawić prefiks jako `--script-root MyProject/bin/Debug/netstandard2.0`. Jest to katalog główny aplikacji funkcji w przypadku uruchamiania na platformie Azure. |
-| **`--timeout -t`** | Limit czasu uruchamiania hosta usługi Functions (w sekundach). Domyślne: 20 sekund.|
+| **`--timeout -t`** | Limit czasu uruchamiania hosta usługi Functions (w sekundach). Wartooć 20 sekund.|
 | **`--useHttps`** | Powiąż `https://localhost:{port}` z, a `http://localhost:{port}`nie z. Domyślnie ta opcja tworzy zaufany certyfikat na komputerze.|
 
 Po uruchomieniu hosta funkcji wyświetla adres URL funkcji wyzwalanych przez protokół HTTP:

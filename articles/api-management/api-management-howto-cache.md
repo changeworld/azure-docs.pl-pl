@@ -10,16 +10,15 @@ ms.assetid: 740f6a27-8323-474d-ade2-828ae0c75e7a
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: a0459eb67b5a79219e556cb03473a5ddf691b49d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 76a87d539e19acc30944a6a896cb0e01f431fa37
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60527438"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073562"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Dodawanie buforowania w celu poprawy wydajności usługi Azure API Management
 
@@ -89,7 +88,7 @@ Wywołaj operację z portalu dla deweloperów, aby sprawdzić działanie buforow
 6. Kliknij pozycję **Wyślij**.
 
 ## <a name="next-steps"> </a>Następne kroki
-* Aby uzyskać więcej informacji na temat zasad buforowania, zobacz [Caching policies][Caching policies] (Zasady buforowania) w artykule [API Management policy reference][API Management policy reference] (Dokumentacja zasad usługi API Management).
+* Więcej informacji na temat zasad buforowania, można znaleźć w temacie [Caching policies][Caching policies] (Zasady buforowania) w artykule [API Management policy reference][API Management policy reference] (Dokumentacja zasad usługi API Management).
 * Aby poznać informacje na temat buforowania elementów według kluczy przy użyciu wyrażeń zasad, zobacz artykuł [Custom caching in Azure API Management](api-management-sample-cache-by-key.md) (Niestandardowe buforowanie w usłudze Azure API Management).
 * Aby uzyskać więcej informacji o korzystaniu z zewnętrznej pamięci podręcznej Azure Cache for Redis, zobacz [Używanie zewnętrznej pamięci podręcznej Azure Cache for Redis w usłudze Azure API Management](api-management-howto-cache-external.md).
 

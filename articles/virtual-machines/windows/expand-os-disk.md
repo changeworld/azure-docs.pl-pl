@@ -1,6 +1,6 @@
 ---
-title: Rozwiń dysk systemu operacyjnego maszyny Wirtualnej z systemem Windows na platformie Azure | Dokumentacja firmy Microsoft
-description: Zwiększyć rozmiar dysku systemu operacyjnego maszyny wirtualnej przy użyciu programu Azure Powershell w modelu wdrażania usługi Resource Manager.
+title: Rozszerzanie dysku systemu operacyjnego maszyny wirtualnej z systemem Windows na platformie Azure | Microsoft Docs
+description: Zwiększ rozmiar dysku systemu operacyjnego maszyny wirtualnej przy użyciu programu Azure PowerShell w Menedżer zasobów model wdrażania.
 services: virtual-machines-windows
 documentationcenter: ''
 author: kirpasingh
@@ -9,32 +9,31 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: d9edfd9f-482f-4c0b-956c-0d2c2c30026c
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 81e6b5558ab90f154ebf121a558704b00b97444d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b22507796a9e614da780d25795bb7edf7094e935
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64684324"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70103200"
 ---
-# <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Sposobu rozszerzania dysku systemu operacyjnego maszyny wirtualnej
+# <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Jak rozszerzyć dysk systemu operacyjnego maszyny wirtualnej
 
-Po utworzeniu nowej maszyny wirtualnej (VM) w grupie zasobów przez wdrożenie obrazu z [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/), domyślny dysk systemu operacyjnego jest często 127 GB (niektóre obrazy mają mniejsze rozmiary dysku systemu operacyjnego domyślnie). Mimo iż możliwe jest dodawanie dysków danych do maszyny wirtualnej (ich liczba zależy od wybranej jednostki magazynowej), a ponadto zaleca się instalowanie aplikacji i obciążeń intensywnie wykorzystujących procesor CPU na tych dodatkowych dyskach, klienci często muszą rozszerzać dysk systemu operacyjnego w celu obsługi niektórych scenariuszy, takich jak następujące:
+Podczas tworzenia nowej maszyny wirtualnej w grupie zasobów przez wdrożenie obrazu z [portalu Azure Marketplace](https://azure.microsoft.com/marketplace/)domyślny dysk systemu operacyjnego jest często 127 GB (domyślnie niektóre obrazy mają mniejsze rozmiary dysków systemu operacyjnego). Mimo iż możliwe jest dodawanie dysków danych do maszyny wirtualnej (ich liczba zależy od wybranej jednostki magazynowej), a ponadto zaleca się instalowanie aplikacji i obciążeń intensywnie wykorzystujących procesor CPU na tych dodatkowych dyskach, klienci często muszą rozszerzać dysk systemu operacyjnego w celu obsługi niektórych scenariuszy, takich jak następujące:
 
 - Obsługa starszych aplikacji, które instalują składniki na dysku systemu operacyjnego.
 - Migrowanie fizycznego komputera lub maszyny wirtualnej ze środowiska lokalnego z większym dyskiem systemu operacyjnego.
 
 
 > [!IMPORTANT]
-> Zmiana rozmiaru dysku systemu operacyjnego dla maszyny wirtualnej platformy Azure spowoduje jej ponowne uruchomienie.
+> Zmianę rozmiarów dysku systemu operacyjnego maszyny wirtualnej platformy Azure spowoduje ponowne uruchomienie komputera.
 >
-> Po rozwinięciu na dyskach, należy [rozszerzyć woluminu w ramach systemu operacyjnego](#expand-the-volume-within-the-os) z zalet większy dysk.
+> Po rozwinięciu dysków należy [rozszerzyć wolumin w systemie operacyjnym](#expand-the-volume-within-the-os) , aby korzystać z większego dysku.
 > 
 
 
@@ -45,7 +44,7 @@ Po utworzeniu nowej maszyny wirtualnej (VM) w grupie zasobów przez wdrożenie o
 
 Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
 
-1. Zaloguj się do konta usługi Microsoft Azure w trybie zarządzania zasobami, a następnie wybierz swoją subskrypcję w następujący sposób:
+1. Zaloguj się do konta Microsoft Azure w trybie zarządzania zasobami i wybierz swoją subskrypcję w następujący sposób:
    
    ```powershell
    Connect-AzAccount
@@ -75,7 +74,7 @@ Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
    Update-AzDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
    ```   
    > [!WARNING]
-   > Nowy rozmiar powinien być większy niż istniejący rozmiar dysku. Maksymalna dozwolona wartość to 2048 GB dla dysków systemu operacyjnego. (Istnieje możliwość rozwinąć obiektu blob dysku VHD poza ten rozmiar, ale system operacyjny będzie można tylko do pracy z pierwszym 2048 GB miejsca).
+   > Nowy rozmiar powinien być większy niż istniejący rozmiar dysku. Maksymalna dozwolona liczba dysków systemu operacyjnego to 2048 GB. (Możliwe jest rozszerzenie obiektu BLOB dysku VHD poza ten rozmiar, ale system operacyjny będzie mógł działać tylko z pierwszym 2048 GB miejsca).
    > 
    > 
 6. Zaktualizowanie maszyny wirtualnej może potrwać kilka sekund. Po zakończeniu wykonywania polecenia uruchom ponownie maszynę wirtualną w następujący sposób:
@@ -86,11 +85,11 @@ Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
 
 To wszystko! Teraz połącz protokół RDP z maszyną wirtualną, otwórz okno Zarządzanie komputerem (lub Zarządzanie dyskiem) i rozszerz dysk przy użyciu nowo przydzielonego miejsca.
 
-## <a name="resize-an-unmanaged-disk"></a>Zmiana rozmiaru dysku niezarządzanego
+## <a name="resize-an-unmanaged-disk"></a>Zmień rozmiar dysku niezarządzanego
 
 Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
 
-1. Zaloguj się do konta usługi Microsoft Azure w trybie zarządzania zasobami, a następnie wybierz swoją subskrypcję w następujący sposób:
+1. Zaloguj się do konta Microsoft Azure w trybie zarządzania zasobami i wybierz swoją subskrypcję w następujący sposób:
    
    ```Powershell
    Connect-AzAccount
@@ -112,7 +111,7 @@ Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
     ```Powershell
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
-5. Ustaw rozmiar dysku niezarządzanego systemu operacyjnego na żądaną wartość i zaktualizuj maszynę Wirtualną w następujący sposób:
+5. Ustaw rozmiar niezarządzanego dysku systemu operacyjnego na żądaną wartość i zaktualizuj maszynę wirtualną w następujący sposób:
    
    ```Powershell
    $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
@@ -120,7 +119,7 @@ Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
    ```
    
    > [!WARNING]
-   > Nowy rozmiar powinien być większy niż istniejący rozmiar dysku. Maksymalna dozwolona wartość to 2048 GB dla dysków systemu operacyjnego. (Istnieje możliwość rozwinąć obiektu blob dysku VHD poza ten rozmiar, ale system operacyjny będzie można tylko do pracy z pierwszym 2048 GB miejsca).
+   > Nowy rozmiar powinien być większy niż istniejący rozmiar dysku. Maksymalna dozwolona liczba dysków systemu operacyjnego to 2048 GB. (Możliwe jest rozszerzenie obiektu BLOB dysku VHD poza ten rozmiar, ale system operacyjny będzie mógł działać tylko z pierwszym 2048 GB miejsca).
    > 
    > 
    
@@ -131,9 +130,9 @@ Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
    ```
 
 
-## <a name="scripts-for-os-disk"></a>Skrypty dla dysku systemu operacyjnego
+## <a name="scripts-for-os-disk"></a>Skrypty dysku systemu operacyjnego
 
-Oto kompletny skrypt, dla której można się odwołać w przypadku dysków zarządzanych i niezarządzanych:
+Poniżej znajduje się kompletny skrypt dotyczący odwołania zarówno dla dysków zarządzanych, jak i niezarządzanych:
 
 
 **Dyski zarządzane**
@@ -165,9 +164,9 @@ Update-AzVM -ResourceGroupName $rgName -VM $vm
 Start-AzVM -ResourceGroupName $rgName -Name $vmName
 ```
 
-## <a name="resizing-data-disks"></a>Zmienianie rozmiaru dysków z danymi
+## <a name="resizing-data-disks"></a>Zmienianie rozmiarów dysków z danymi
 
-Ten artykuł koncentruje się głównie na rozszerzeniu dysku systemu operacyjnego maszyny wirtualnej, ale skryptu można także rozszerzyć dyski danych dołączone do maszyny Wirtualnej. Aby na przykład rozszerzyć pierwszy dysk danych dołączony do maszyny wirtualnej, zamień obiekt `OSDisk` elementu `StorageProfile` na tablicę `DataDisks` i przy użyciu indeksu liczbowego uzyskaj odwołanie do pierwszego dołączonego dysku danych, jak pokazano poniżej:
+Ten artykuł koncentruje się głównie na rozszerzaniu dysku systemu operacyjnego maszyny wirtualnej, ale można również użyć tego skryptu do rozwinięcia dysków danych dołączonych do maszyny wirtualnej. Aby na przykład rozszerzyć pierwszy dysk danych dołączony do maszyny wirtualnej, zamień obiekt `OSDisk` elementu `StorageProfile` na tablicę `DataDisks` i przy użyciu indeksu liczbowego uzyskaj odwołanie do pierwszego dołączonego dysku danych, jak pokazano poniżej:
 
 **Dysk zarządzany**
 
@@ -185,7 +184,7 @@ $vm.StorageProfile.DataDisks[0].DiskSizeGB = 1023
 
 
 
-Podobnie możesz odwoływać się do innych dysków danych dołączonych do maszyny Wirtualnej, przy użyciu indeksu, jak pokazano powyżej lub **nazwa** właściwością dysku:
+Podobnie możesz odwoływać się do innych dysków z danymi dołączonymi do maszyny wirtualnej przy użyciu indeksu, jak pokazano powyżej, lub właściwość **Nazwa** dysku:
 
 
 **Dysk zarządzany**
@@ -200,21 +199,21 @@ Podobnie możesz odwoływać się do innych dysków danych dołączonych do masz
 ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'}).DiskSizeGB = 1023
 ```
 
-## <a name="expand-the-volume-within-the-os"></a>Zwiększanie pojemności w ramach systemu operacyjnego
+## <a name="expand-the-volume-within-the-os"></a>Rozwiń wolumin w systemie operacyjnym
 
-Po rozwinięciu dysku dla maszyny Wirtualnej, musisz przejść do systemu operacyjnego, a następnie rozwiń węzeł woluminu, który ma obejmować nowe miejsce. Istnieje kilka metod dotyczące rozszerzania partycji. W tej sekcji omówiono łączenie maszyn wirtualnych przy użyciu połączenia RDP, aby rozszerzyć za pomocą partycji **narzędzia DiskPart**.
+Po rozwinięciu dysku dla maszyny wirtualnej należy przejść do systemu operacyjnego i rozwinąć wolumin, aby obejmował nowe miejsce. Istnieje kilka metod rozszerzania partycji. Ta sekcja obejmuje łączenie maszyny wirtualnej przy użyciu połączenia RDP w celu rozszerzenia partycji za pomocą **narzędzia DiskPart**.
 
-1. Otwórz z połączeniem RDP z maszyną wirtualną.
+1. Otwórz połączenie RDP z maszyną wirtualną.
 
-2.  Otwórz wiersz polecenia i wpisz **narzędzia diskpart**.
+2.  Otwórz wiersz polecenia i wpisz **diskpart**.
 
-2.  W **narzędzia DISKPART** należy wpisać `list volume`. Zanotuj wolumin, który ma zostać rozszerzony.
+2.  W wierszu polecenia **narzędzia DiskPart** wpisz `list volume`polecenie. Zanotuj wolumin, który chcesz zwiększyć.
 
-3.  W **narzędzia DISKPART** należy wpisać `select volume <volumenumber>`. Spowoduje to wybranie woluminu *volumenumber* , którą chcesz rozszerzyć na ciągłe, puste miejsce na tym samym dysku.
+3.  W wierszu polecenia **narzędzia DiskPart** wpisz `select volume <volumenumber>`polecenie. Spowoduje to wybranie *volumenumber* woluminu, który ma zostać rozbudowany do ciągłego, pustego miejsca na tym samym dysku.
 
-4.  W **narzędzia DISKPART** należy wpisać `extend [size=<size>]`. Spowoduje to rozszerzenie wybranego woluminu przez *rozmiar* wyrażony w megabajtach (MB).
+4.  W wierszu polecenia **narzędzia DiskPart** wpisz `extend [size=<size>]`polecenie. Spowoduje to rozszerzenie wybranego woluminu o *rozmiar* w megabajtach (MB).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Można również dołączyć dyski przy użyciu [witryny Azure portal](attach-managed-disk-portal.md).
+Dyski można również dołączyć przy użyciu [Azure Portal](attach-managed-disk-portal.md).

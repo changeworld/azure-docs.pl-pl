@@ -7,19 +7,18 @@ author: MashaMSFT
 manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 69789f11cc0ab3702ebbc905ce86f9992868e259
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 69781b7c5187bd9166946a96a8b47233d0f77208
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64715470"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100690"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>Szybki start: Tworzenie maszyny wirtualnej z programem SQL Server 2017 i systemem Windows przy użyciu usługi Azure PowerShell
 
@@ -189,7 +188,7 @@ Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
 
 Możesz również trwale usunąć wszystkie zasoby skojarzone z maszyną wirtualną, korzystając z polecenia **Remove-AzResourceGroup**. Spowoduje to również trwałe usunięcie maszyny wirtualnej, dlatego tego polecenia należy używać z rozwagą.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku Szybki start utworzono maszynę wirtualną z programem SQL Server 2017 przy użyciu usługi Azure PowerShell. Aby dowiedzieć się więcej o sposobie przeprowadzania migracji danych do nowego serwera SQL Server, zobacz następujący artykuł.
 

@@ -1,31 +1,30 @@
 ---
-title: Stan niestandardowej aranżacji w funkcje trwałe - Azure
-description: Dowiedz się, jak skonfigurować i stan niestandardowej aranżacji na użytek funkcje trwałe.
+title: Stan aranżacji niestandardowej w Durable Functions — Azure
+description: Informacje na temat konfigurowania i używania niestandardowego stanu aranżacji dla Durable Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 8d36c797e80702302a1954d2f00e1e4daabcaa88
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b93b0cd5053db7d8a2b6aebd30d32f542670d90
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60710004"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098114"
 ---
-# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Stan niestandardowej aranżacji w funkcje trwałe (usługi Azure Functions)
+# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Stan aranżacji niestandardowej w Durable Functions (Azure Functions)
 
-Stan niestandardowej aranżacji pozwala ustawić wartość stanu niestandardowych dla funkcji programu orchestrator. Ten stan jest oferowana w ramach interfejsu API GetStatus protokołu HTTP lub `DurableOrchestrationClient.GetStatusAsync` interfejsu API.
+Stan aranżacji niestandardowej pozwala ustawić niestandardową wartość stanu dla funkcji programu Orchestrator. Ten stan jest dostarczany za pośrednictwem interfejsu API http GetStatus `DurableOrchestrationClient.GetStatusAsync` lub interfejsu API.
 
 ## <a name="sample-use-cases"></a>Przykładowe przypadki użycia
 
-### <a name="visualize-progress"></a>Wizualizacja postępu
+### <a name="visualize-progress"></a>Wizualizowanie postępu
 
-Klienci mogą sondować stan punktu końcowego i wyświetlanie postępu interfejsu użytkownika, która wizualizuje bieżący etap wykonywania. W poniższym przykładzie pokazano udostępnianie postępu:
+Klienci mogą sondować punkt końcowy stanu i wyświetlać interfejs użytkownika postępu, który wizualizuje bieżący etap wykonania. W poniższym przykładzie przedstawiono udostępnianie postępu:
 
 #### <a name="c"></a>C#
 
@@ -54,7 +53,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -80,7 +79,7 @@ module.exports = async function(context, name) {
 };
 ```
 
-A następnie klient otrzyma dane wyjściowe aranżacji tylko wtedy, gdy `CustomStatus` pole jest ustawione na "Londyn":
+A następnie klient otrzyma dane wyjściowe aranżacji tylko wtedy, gdy `CustomStatus` pole jest ustawione na wartość "Londyn":
 
 #### <a name="c"></a>C#
 
@@ -115,7 +114,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -145,14 +144,14 @@ module.exports = async function(context, req) {
 ```
 
 > [!NOTE]
-> W języku JavaScript `customStatus` pola będą ustawiane podczas następnego `yield` lub `return` zaplanowano akcji.
+> W języku JavaScript `customStatus` pole zostanie ustawione, gdy zostanie zaplanowana `return` Następna `yield` lub akcja.
 
 > [!WARNING]
-> Wdrażając aplikacje lokalnie w języku JavaScript, musisz ustawić zmienną środowiskową `WEBSITE_HOSTNAME` do `localhost:<port>`, np. `localhost:7071` na korzystanie z metod `DurableOrchestrationClient`. Aby uzyskać więcej informacji na temat tego wymagania, zobacz [problem w usłudze GitHub](https://github.com/Azure/azure-functions-durable-js/issues/28).
+> Podczas tworzenia lokalnie w języku JavaScript należy ustawić zmienną `WEBSITE_HOSTNAME` środowiskową na `localhost:<port>`, np. `localhost:7071`Aby użyć metod w `DurableOrchestrationClient`. Aby uzyskać więcej informacji na temat tego wymagania, zobacz artykuł dotyczący usługi [GitHub](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
-### <a name="output-customization"></a>Dostosowywanie danych wyjściowych
+### <a name="output-customization"></a>Dostosowanie danych wyjściowych
 
-Inny scenariusz interesujące jest segmentacji użytkowników, zwracając dostosowanych danych wyjściowych na podstawie unikatowych cechach systemu operacyjnego lub interakcji. Za pomocą stan niestandardowej aranżacji pozostaną ogólny kod po stronie klienta. Wszystkie modyfikacje głównego nastąpi po stronie serwera, jak pokazano w następującym przykładzie:
+Innym interesującym scenariuszem jest segmentacja użytkowników, zwracając dostosowane dane wyjściowe na podstawie unikatowych właściwości lub interakcji. Dzięki pomocy dotyczącej niestandardowego stanu aranżacji kod po stronie klienta pozostanie ogólny. Wszystkie podstawowe modyfikacje zostaną wykonane po stronie serwera, jak pokazano w następującym przykładzie:
 
 #### <a name="c"></a>C#
 
@@ -192,7 +191,7 @@ public static void Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -227,7 +226,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ### <a name="instruction-specification"></a>Specyfikacja instrukcji
 
-Koordynatora może zapewnić instrukcje unikatowy dla klientów za pośrednictwem stanów niestandardowych. Instrukcje stan niestandardowego będą mapowane z procedury opisanej w kodzie orchestration:
+Koordynator może zapewnić klientom unikatowe instrukcje za pośrednictwem stanu niestandardowego. Niestandardowe instrukcje stanu zostaną zamapowane na kroki w kodzie aranżacji:
 
 #### <a name="c"></a>C#
 
@@ -257,7 +256,7 @@ public static async Task<bool> Run(
 }
 ```
 
-#### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+#### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -284,9 +283,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-## <a name="sample"></a>Sample
+## <a name="sample"></a>Próbka
 
-W poniższym przykładzie ustawiono najpierw; stan niestandardowego
+W poniższym przykładzie stan niestandardowy jest ustawiony jako pierwszy;
 
 ### <a name="c"></a>C#
 
@@ -303,7 +302,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrati
 }
 ```
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 ```javascript
 const df = require("durable-functions");
@@ -319,14 +318,14 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Po uruchomieniu aranżacji klientów zewnętrznych można pobrać ten stan niestandardowy:
+Po uruchomieniu aranżacji klienci zewnętrzni mogą pobrać ten stan niestandardowy:
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 ```
 
-Klienci otrzymają następującą odpowiedź:
+Klienci otrzymają następujące odpowiedzi:
 
 ```http
 {
@@ -340,9 +339,9 @@ Klienci otrzymają następującą odpowiedź:
 ```
 
 > [!WARNING]
-> Stan niestandardowy ładunek jest ograniczony do 16 KB tekstu JSON UTF-16, ponieważ wymagane jest, aby mieściły się w kolumnie Azure Table Storage. Deweloperzy mogą używać magazynu zewnętrznego, gdy potrzebują większych ładunku.
+> Niestandardowy ładunek stanu jest ograniczony do 16 KB tekstu JSON w formacie UTF-16, ponieważ musi być w stanie zmieścić się w kolumnie Table Storage platformy Azure. Deweloperzy mogą korzystać z magazynu zewnętrznego, jeśli potrzebują większego ładunku.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Więcej informacji na temat interfejsów API protokołu HTTP w funkcje trwałe](durable-functions-http-api.md)
+> [Dowiedz się więcej na temat interfejsów API protokołu HTTP w Durable Functions](durable-functions-http-api.md)

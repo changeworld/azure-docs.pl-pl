@@ -1,118 +1,117 @@
 ---
-title: Monitory w funkcje trwałe - Azure
-description: Dowiedz się, jak zaimplementować Monitora stanu, za pomocą rozszerzenia funkcji trwałych dla usługi Azure Functions.
+title: Monitory w Durable Functions — Azure
+description: Dowiedz się, jak zaimplementować Monitor stanu przy użyciu rozszerzenia Durable Functions Azure Functions.
 services: functions
 author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9d5e06c3d72d87a87b41a52ed4df369ebc04dccd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae6c2bd27e9192966ecffb4d4296063201fca970
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66387091"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098016"
 ---
-# <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Monitorowanie scenariusza w funkcje trwałe — przykład obserwatora pogody
+# <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Scenariusz monitorowania w przykładowym monitorze Durable Functions-Pogoda
 
-Wzorzec monitora dotyczy elastyczne *cyklicznego* procesu w przepływie pracy — na przykład sondowania, dopóki nie zostaną spełnione określone warunki. W tym artykule opisano przykładowy, który używa [funkcje trwałe](durable-functions-overview.md) do zaimplementowania monitorowania.
+Wzorzec monitora odnosi się do elastycznego procesu *cyklicznego* w przepływie pracy — na przykład sondowania do momentu spełnienia określonych warunków. W tym artykule opisano przykład, który używa [Durable Functions](durable-functions-overview.md) do wdrożenia monitorowania.
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
 ## <a name="scenario-overview"></a>Omówienie scenariusza
 
-W tym przykładzie monitoruje warunki pogodowe z bieżącej lokalizacji i powiadamia użytkownika za pomocą programu SMS, gdy skies są jasno. Aby sprawdzić dane pogody i wysyłania alertów, można użyć regularnych funkcji wyzwalanej przez czasomierz. Jednak jeden problem tego podejścia jest **Zarządzanie okresem istnienia**. Jeśli tylko jeden alert powinny być przesyłane, monitor musi sam się wyłączy po wyczyść wykryciu o pogodzie. Wzorzec monitorowania może zakończyć swój własny wykonywania, pozwala między innymi:
+Ten przykład służy do monitorowania bieżących warunków pogodowych lokalizacji i powiadamiania użytkownika przez program SMS, gdy Skies są jasne. Aby sprawdzić Pogoda i wysyłać alerty, można użyć zwykłej funkcji wyzwalanej przez czasomierz. Jednak jeden problem z tym podejściem to **Zarządzanie okresem istnienia**. Jeśli należy wysłać tylko jeden alert, Monitor musi wyłączyć się po wykryciu jasnej pogody. Wzorzec monitorowania może zakończyć własne wykonywanie, między innymi korzyści:
 
-* Monitory, uruchom w odstępach czasu nie planuje: wyzwalacz czasomierza *uruchamia* co godzinę; monitor *czeka* jednej godziny między akcjami. Monitorowanie akcji zostanie nakłada się na o ile nie określono, które mogą być ważne w przypadku długotrwałych zadań.
-* Monitorami mogą być interwałów dynamiczne: czas oczekiwania, można zmienić w zależności od jakiegoś warunku.
-* Monitory można zakończyć, gdy jakiś warunek jest spełniony, lub zostać przerwane przez inny proces.
-* Monitory może przyjąć parametry. Przykład pokazuje, jak można zastosować ten sam proces monitorowania pogody do żądanej lokalizacji, a numer telefonu.
-* Monitory są skalowalne. Ponieważ każdy monitor jest wystąpieniem aranżacji, bez konieczności tworzenia nowych funkcji lub zdefiniuj więcej kodu można utworzyć wiele monitorów.
-* Monitory łatwo zintegrować większych przepływów pracy. Monitor może być jedną sekcję bardziej złożonych funkcji aranżacji, lub [podrzędnych aranżacji](durable-functions-sub-orchestrations.md).
+* Monitory są uruchamiane w odstępach czasu, a nie harmonogramy: wyzwalacz czasomierza *jest uruchamiany* co godzinę; Monitor *czeka* jedną godzinę między akcjami. Akcje monitora nie nakładają się, chyba że zostanie określony, co może być ważne w przypadku długotrwałych zadań.
+* Monitory mogą mieć dynamiczne interwały: czas oczekiwania można zmienić w zależności od pewnego warunku.
+* Monitory mogą kończyć się, gdy jakiś warunek zostanie spełniony lub zostanie przerwany przez inny proces.
+* Monitory mogą przyjmować parametry. W przykładzie pokazano, jak ten sam proces monitorowania pogody można zastosować do każdej żądanej lokalizacji i numeru telefonu.
+* Monitory są skalowalne. Ponieważ każdy monitor jest wystąpieniem aranżacji, można utworzyć wiele monitorów bez konieczności tworzenia nowych funkcji lub definiowania dalszych kodów.
+* Monitory można łatwo zintegrować z większymi przepływami pracy. Monitor może być jedną sekcją bardziej złożonej funkcji aranżacji lub aranżacją podrzędną [](durable-functions-sub-orchestrations.md).
 
-## <a name="configuring-twilio-integration"></a>Konfigurowanie integracji usługi Twilio
+## <a name="configuring-twilio-integration"></a>Konfigurowanie integracji Twilio
 
 [!INCLUDE [functions-twilio-integration](../../../includes/functions-twilio-integration.md)]
 
-## <a name="configuring-weather-underground-integration"></a>Konfigurowanie integracji podziemny pogody
+## <a name="configuring-weather-underground-integration"></a>Konfigurowanie integracji podziemnej pogody
 
-Ten przykład obejmuje przy użyciu podziemny interfejsu API pogody, aby sprawdzić bieżące warunki pogodowe dla lokalizacji.
+Ten przykład obejmuje użycie podziemnego interfejsu API Pogoda do sprawdzenia bieżących warunków pogodowych dla lokalizacji.
 
-Pierwszą rzeczą, jaką należy to konto pod ziemią o pogodzie. Utworzyć jedno za darmo na [ https://www.wunderground.com/signup ](https://www.wunderground.com/signup). Po utworzeniu konta usługi, należy uzyskać klucz interfejsu API. Możesz to zrobić, odwiedzając [ https://www.wunderground.com/weather/api ](https://www.wunderground.com/weather/api/?MR=1), a następnie wybierając pozycję Ustawienia klucza. Plan Stratus Developer jest programem bezpłatnym i wystarczające do uruchomienia tego przykładu.
+Pierwszym z nich jest konto podziemne. Możesz go utworzyć bezpłatnie o [https://www.wunderground.com/signup](https://www.wunderground.com/signup). Po utworzeniu konta należy uzyskać klucz interfejsu API. Możesz to zrobić, odwiedzając [https://www.wunderground.com/weather/api](https://www.wunderground.com/weather/api/?MR=1), a następnie wybierając pozycję Ustawienia klucza. Plan dewelopera Stratus jest bezpłatny i wystarczający do uruchomienia tego przykładu.
 
-Po utworzeniu klucza interfejsu API, Dodaj następujący kod **ustawienia aplikacji** do aplikacji funkcji.
+Gdy masz klucz interfejsu API, Dodaj następujące **ustawienie aplikacji** do aplikacji funkcji.
 
-| Nazwa ustawienia aplikacji | Wartość Opis |
+| Nazwa ustawienia aplikacji | Opis wartości |
 | - | - |
-| **WeatherUndergroundApiKey**  | Klucz podziemny interfejsu API pogody. |
+| **WeatherUndergroundApiKey**  | Klucz interfejsu API sieci podziemnej Pogoda. |
 
 ## <a name="the-functions"></a>Funkcje
 
-W tym artykule opisano następujące funkcje w przykładowej aplikacji:
+W tym artykule wyjaśniono następujące funkcje w przykładowej aplikacji:
 
-* `E3_Monitor`: Funkcja orkiestratora, która wywołuje `E3_GetIsClear` okresowo. Wywołuje `E3_SendGoodWeatherAlert` Jeśli `E3_GetIsClear` zwraca wartość true.
-* `E3_GetIsClear`: Funkcja działanie, która sprawdza, czy bieżące warunki pogodowe dla lokalizacji.
-* `E3_SendGoodWeatherAlert`: Funkcja działanie, która wysyła wiadomość SMS za pośrednictwem usługi Twilio.
+* `E3_Monitor`: Funkcja programu Orchestrator, która `E3_GetIsClear` okresowo wywołuje. Jest wywoływana `E3_SendGoodWeatherAlert` , `E3_GetIsClear` jeśli zwraca wartość true.
+* `E3_GetIsClear`: Funkcja działania, która sprawdza bieżące warunki pogodowe dla lokalizacji.
+* `E3_SendGoodWeatherAlert`: Funkcja działania, która wysyła wiadomość SMS za pośrednictwem Twilio.
 
-W poniższych sekcjach opisano konfigurację i kod, które są używane dla skryptów języka C# i JavaScript. Kod dla rozwoju programu Visual Studio jest wyświetlany na końcu tego artykułu.
+W poniższych sekcjach opisano konfigurację i kod, które są używane C# do obsługi skryptów i języka JavaScript. Kod dla projektowania programu Visual Studio znajduje się na końcu artykułu.
 
-## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Pogoda monitorowania aranżacji (kod przykładowy portal programu Visual Studio Code i platformy Azure)
+## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Aranżacja monitorowania pogody (Visual Studio Code i Azure Portal przykładowy kod)
 
-**E3_Monitor** funkcja używa standardowych *function.json* dla funkcji programu orchestrator.
+Funkcja **E3_Monitor** używa standardowego pliku *Function. JSON* dla funkcji programu Orchestrator.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E3_Monitor/function.json)]
 
-Poniżej przedstawiono kod, który implementuje funkcję:
+Oto kod implementujący funkcję:
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
-Ta funkcja programu orchestrator wykonuje następujące czynności:
+Ta funkcja programu Orchestrator wykonuje następujące akcje:
 
-1. Pobiera **MonitorRequest** składający się z *lokalizacji* do monitorowania i *numer telefonu* do którego wysyła wiadomość SMS z powiadomieniem.
-2. Określa czas wygaśnięcia monitora. W przykładzie użyto ustaloną wartość w celu skrócenia programu.
-3. Wywołania **E3_GetIsClear** ustalenie, czy istnieją wyraźne skies w żądanej lokalizacji.
-4. Jeśli nie zostanie zaznaczone dane pogody, wywołuje metodę **E3_SendGoodWeatherAlert** wysłać powiadomienie SMS pod numer telefonu żądanej.
-5. Tworzy trwałe czasomierza, aby wznowić aranżacji na kolejnego interwału sondowania. W przykładzie użyto ustaloną wartość w celu skrócenia programu.
-6. Będzie kontynuował działanie aż do [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (C#) lub `currentUtcDateTime` (JavaScript) kończy się powodzeniem czas wygaśnięcia monitora lub alertu SMS są wysyłane.
+1. Pobiera **MonitorRequest** składa się z *lokalizacji* do monitorowania oraz *numeru telefonu* , do którego wyśle powiadomienie SMS.
+2. Określa czas wygaśnięcia monitora. Przykład używa zakodowanej wartości zwięzłości.
+3. Wywołuje **E3_GetIsClear** , aby określić, czy w żądanym miejscu znajdują się jasne Skies.
+4. Jeśli pogoda jest jasne, program wywołuje **E3_SendGoodWeatherAlert** w celu wysłania powiadomienia SMS do żądanego numeru telefonu.
+5. Tworzy trwały czasomierz w celu wznowienia aranżacji przy następnym interwale sondowania. Przykład używa zakodowanej wartości zwięzłości.
+6. Kontynuuje działanie, [](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) dopóki CurrentUtcDateTimeC#() `currentUtcDateTime` lub (JavaScript) przejdzie do czasu wygaśnięcia monitora lub zostanie wysłany alert programu SMS.
 
-Można jednocześnie uruchomić wiele wystąpień programu orchestrator, wysyłając wielu **MonitorRequests**. Można określić lokalizacji do monitorowania i numer telefonu do wysyłania alertu SMS.
+Jednocześnie można uruchomić wiele wystąpień programu Orchestrator, wysyłając wiele **MonitorRequests**. Można określić lokalizację do monitorowania i numer telefonu, na który ma zostać wysłany alert programu SMS.
 
-## <a name="strongly-typed-data-transfer-net-only"></a>Transfer danych silnie typizowane (tylko platforma .NET)
+## <a name="strongly-typed-data-transfer-net-only"></a>Transfer danych o jednoznacznie określonym typie (tylko platforma .NET)
 
-Orchestrator wymaga wielu fragmentów danych, więc [udostępnionych obiektów POCO](../functions-reference-csharp.md#reusing-csx-code) są używane do transferu silnie typizowanych danych w języku C# i skrypt języka C#:  
+Program Orchestrator wymaga wielu fragmentów danych, więc [udostępnione obiekty poco](../functions-reference-csharp.md#reusing-csx-code) są używane do transferu danych z silną C# ilością C# w i skryptu:  
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/MonitorRequest.csx)]
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/shared/Location.csx)]
 
-Przykład JavaScript używa regularnego obiekty JSON jako parametry.
+Przykładowy kod JavaScript używa zwykłych obiektów JSON jako parametrów.
 
-## <a name="helper-activity-functions"></a>Pomocnik działania funkcji
+## <a name="helper-activity-functions"></a>Funkcje działania pomocnika
 
-Jak z innymi przykładami działania funkcji pomocnika funkcji regularnych, które używają `activityTrigger` wyzwolić powiązania. **E3_GetIsClear** funkcja pobiera bieżące warunki pogodowe przy użyciu interfejsu API pod ziemią pogody i określa, czy nie ma jest wyczyszczone. *Function.json* jest zdefiniowana w następujący sposób:
+Podobnie jak w przypadku innych próbek, funkcje działania pomocnika są regularnymi funkcjami `activityTrigger` , które używają powiązania wyzwalacza. Funkcja **E3_GetIsClear** pobiera bieżące warunki pogodowe przy użyciu podziemnego interfejsu API Pogoda i określa, czy ta wartość jest wyczyszczona. *Funkcja. JSON* jest definiowana w następujący sposób:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/function.json)]
 
-A Oto wdrożenia. POCOs używanej do transferu danych, np. logikę w celu obsługi interfejsu API wywołania i przeanalizować odpowiedzi, który JSON jest wyodrębniony do udostępnionego klasy w języku C#. Można je znaleźć w ramach [programu Visual Studio przykładowy kod](#run-the-sample).
+A oto implementacja. Podobnie jak w przypadku POCOs używanym do transferowania danych, logiki do obsługi wywołania interfejsu API i analizy JSON odpowiedzi jest abstrakcją klasy udostępnionej w C#. Można go znaleźć jako część [przykładowego kodu programu Visual Studio](#run-the-sample).
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
 
-**E3_SendGoodWeatherAlert** funkcja używa powiązania usługi Twilio, aby wysłać wiadomość SMS, powiadamianie użytkownika końcowego jest dobry moment na przeszukiwania. Jego *function.json* jest prosty:
+Funkcja **E3_SendGoodWeatherAlert** używa powiązania Twilio do wysyłania wiadomości SMS z powiadomieniem użytkownika końcowego, że jest to dobry czas na przeprowadzenie. Jego *Funkcja Function. JSON* jest prosta:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/function.json)]
 
@@ -122,13 +121,13 @@ A Oto kod, który wysyła wiadomość SMS:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (działa tylko 2.x)
+### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
 
 ## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
 
-Korzystając z funkcji wyzwalanej przez HTTP, zawarte w przykładzie, można uruchomić aranżacji, wysyłając następujące żądanie HTTP POST:
+Korzystając z funkcji wyzwalanych przez protokół HTTP zawartych w przykładzie, można uruchomić aranżację, wysyłając następujące żądanie HTTP POST:
 
 ```
 POST https://{host}/orchestrators/E3_Monitor
@@ -147,9 +146,9 @@ RetryAfter: 10
 {"id": "f6893f25acf64df2ab53a35c09d52635", "statusQueryGetUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "sendEventPostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/raiseEvent/{eventName}?taskHub=SampleHubVS&connection=Storage&code={systemKey}", "terminatePostUri": "https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason={text}&taskHub=SampleHubVS&connection=Storage&code={systemKey}"}
 ```
 
-**E3_Monitor** wystąpienie rozpoczyna się i wykonuje kwerendę bieżące warunki pogodowe dla żądanej lokalizacji. Jeśli pogody nie zostanie zaznaczone, wywołuje funkcję działania, by wysyłały alert; w przeciwnym wypadku ustawia czasomierz. Po upływie okresu działania czasomierza aranżacji zostanie wznowiona.
+Wystąpienie **E3_Monitor** uruchamia i bada bieżące warunki pogodowe dla żądanej lokalizacji. Jeśli pogoda jest jasne, wywołuje funkcję działania w celu wysłania alertu; w przeciwnym razie ustawia czasomierz. Gdy czasomierz wygaśnie, aranżacja zostanie wznowiona.
 
-Widać, że dzienniki aktywności aranżacji, analizując funkcji w portalu usługi Azure Functions.
+Działanie aranżacji można zobaczyć, przeglądając dzienniki funkcji w portalu Azure Functions.
 
 ```
 2018-03-01T01:14:41.649 Function started (Id=2d5fcadf-275b-4226-a174-f9f943c90cd1)
@@ -167,24 +166,24 @@ Widać, że dzienniki aktywności aranżacji, analizując funkcji w portalu usł
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-Orchestration będzie [zakończyć](durable-functions-instance-management.md) po jego limit czasu jest osiągnięto lub wyczyść pole wyboru skies są wykrywane. Można również użyć `TerminateAsync` (.NET) lub `terminate` (JavaScript) innej funkcji lub wywołaj **terminatePostUri** elementu webhook POST protokołu HTTP, do którego odwołuje się odpowiedzi 202 powyżej, zastępując `{text}` o przyczynie Zakończenie:
+Aranżacja zostanie [zakończona](durable-functions-instance-management.md) po osiągnięciu limitu czasu lub wykryciu Skies. Można również `TerminateAsync` użyć (.NET) `terminate` lub (JavaScript) wewnątrz innej funkcji lub wywołać element webhook **terminatePostUri** http, do którego odwołuje się powyżej 202 powyżej, `{text}` zastępując z powód zakończenia:
 
 ```
 POST https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}
 ```
 
-## <a name="visual-studio-sample-code"></a>Kod przykładowy w usłudze Visual Studio
+## <a name="visual-studio-sample-code"></a>Przykładowy kod programu Visual Studio
 
-Oto aranżacji jako pojedynczy plik języka C# w projekcie programu Visual Studio:
+Oto aranżacja jako pojedynczy C# plik w projekcie programu Visual Studio:
 
 > [!NOTE]
-> Musisz zainstalować `Microsoft.Azure.WebJobs.Extensions.Twilio` pakiet Nuget do uruchamiania kodu przykładu poniżej.
+> Musisz zainstalować `Microsoft.Azure.WebJobs.Extensions.Twilio` pakiet NuGet, aby uruchomić przykładowy kod poniżej.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Monitor.cs)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przykładzie ma pokazano sposób używania trwałe funkcje do monitorowania stanu zewnętrznego źródła przy użyciu [trwałe czasomierzy](durable-functions-timers.md) i logiki warunkowej. Następny przykład ilustruje sposób używania zdarzenia zewnętrzne i [trwałe czasomierzy](durable-functions-timers.md) do obsługi interakcji ludzkiej.
+Ten przykład pokazuje, jak używać Durable Functions do monitorowania stanu źródła zewnętrznego przy użyciu [trwałych czasomierzy](durable-functions-timers.md) i logiki warunkowej. Następny przykład pokazuje, jak używać zdarzeń zewnętrznych i [trwałych czasomierzy](durable-functions-timers.md) do obsługi interakcji człowieka.
 
 > [!div class="nextstepaction"]
-> [Uruchom aplikację przykładową z reakcji człowieka](durable-functions-phone-verification.md)
+> [Uruchamianie przykładu interakcji człowieka](durable-functions-phone-verification.md)

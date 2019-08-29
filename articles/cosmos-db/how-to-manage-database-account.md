@@ -3,15 +3,15 @@ title: Dowiedz się, jak zarządzać kontami bazy danych w usłudze Azure Cosmos
 description: Dowiedz się, jak zarządzać kontami bazy danych w usłudze Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: mjbrown
-ms.openlocfilehash: a5ba45fce2870b44a6ebb1be43cc1f36b3cda311
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: db7746bc91935c0385e97d494a45d34819665ced
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815168"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70093385"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Zarządzanie kontem usługi Azure Cosmos
 

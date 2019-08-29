@@ -1,6 +1,6 @@
 ---
-title: Za pomocą programu Visual Studio na maszynie wirtualnej platformy Azure | Dokumentacja firmy Microsoft
-description: Przy użyciu programu Visual Studio na maszynie wirtualnej platformy Azure.
+title: Korzystanie z programu Visual Studio na maszynie wirtualnej platformy Azure | Microsoft Docs
+description: Korzystanie z programu Visual Studio na maszynie wirtualnej platformy Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: PhilLee-MSFT
@@ -10,34 +10,33 @@ tags: azure-resource-manager
 ms.service: virtual-machines-windows
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.date: 06/24/2019
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 31b856b4f6937b57f0a2b82d94fc0fb02936f83f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b62e7e993ba4b5784e28dd9a36979640e2e37da6
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449372"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101535"
 ---
-# <a name="visual-studio-images-on-azure"></a>Obrazów programu Visual Studio w systemie Azure
+# <a name="visual-studio-images-on-azure"></a>Obrazy programu Visual Studio na platformie Azure
 Przy użyciu programu Visual Studio w wstępnie skonfigurowanych maszyn wirtualnych (VM) to szybki i łatwy sposób skalują się od pozycji środowisko projektowe w górę i uruchomiona. Obrazy systemu z różnymi konfiguracjami programu Visual Studio są dostępne w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure).
 
 Jesteś nowym użytkownikiem platformy Azure? [Utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free).
 
 ## <a name="what-configurations-and-versions-are-available"></a>Jakie konfiguracje i wersje są dostępne?
-Obrazy do najnowszej wersji głównych, 2019 usługi Visual Studio, Visual Studio 2017 i Visual Studio 2015 można znaleźć w witrynie Azure Marketplace.  Dla każdego wydania wersji głównej, zobacz pierwotnie "udostępnionego w sieci web" (RTW) wersji i najnowsze zaktualizowane wersje.  Każda z tych wersji oferuje wersje programu Visual Studio Community i program Visual Studio Enterprise.  Te obrazy są aktualizowane co miesiąc, obejmujący najnowsze aktualizacje programu Visual Studio i Windows.  Gdy nazwy obrazów pozostają takie same, każdy obraz w opisie wersję zainstalowanego produktu i "dzień" obraz.
+Obrazy dla najnowszych wersji głównych, Visual Studio 2019, Visual Studio 2017 i Visual Studio 2015 można znaleźć w witrynie Azure Marketplace.  Dla każdej wydanej wersji głównej zostanie wyświetlona oryginalna wersja "wydana do sieci Web" (RTW) i najnowsze zaktualizowane wersje.  Każda z tych wersji oferuje wersje programu Visual Studio Community i program Visual Studio Enterprise.  Te obrazy są aktualizowane co miesiąc, obejmujący najnowsze aktualizacje programu Visual Studio i Windows.  Gdy nazwy obrazów pozostają takie same, każdy obraz w opisie wersję zainstalowanego produktu i "dzień" obraz.
 
 | Wersja                                                                                                                                                | Wersje              | Wersja produktu   |
 |:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:---------------------:|:-----------------:|
-| [Visual Studio 2019: Najnowsze (wersja 16.1)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise, Community | Wersja 16.1.3    |
-| [Visual Studio 2019: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Enterprise, Community | Wersja 16.0.5    |
-| [Visual Studio 2017: Najnowsze (w wersji 15.9)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Enterprise, Community | Wersja 15.9.13   |
-| [Visual Studio 2017: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Enterprise, Community | Wersja 15.0.24   |
-| [Visual Studio 2015: Najnowsze (Aktualizacja 3)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)               | Enterprise, Community | Wersja 14.0.25431.01 |
+| [Visual Studio 2019: Najnowsze (wersja 16,1)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019latest?tab=Overview) | Enterprise, Community | 16.1.3 wersja    |
+| [Visual Studio 2019: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio2019?tab=Overview)                         | Enterprise, Community | 16.0.5 wersja    |
+| [Visual Studio 2017: Najnowsze (wersja 15,9)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)           | Enterprise, Community | 15.9.13 wersja   |
+| [Visual Studio 2017: RTW](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)                             | Enterprise, Community | 15.0.24 wersja   |
+| [Visual Studio 2015: Najnowsze (Aktualizacja Update 3)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftvisualstudio.visualstudio?tab=Overview)               | Enterprise, Community | Wersja 14.0.25431.01 |
 
 > [!NOTE]
 > Zgodnie z zasady obsługi firmy Microsoft pierwotnie (RTW) wersji programu Visual Studio 2015 zakończył się okres obsługi. Visual Studio 2015 Update 3 jest jedynie wersja pozostałe oferowana w przypadku linii produktów Visual Studio 2015.
@@ -53,7 +52,7 @@ Każdy obraz zawiera zalecane funkcji, ustaw dla tej wersji programu Visual Stud
 * Rozszerzenie GitHub dla programu Visual Studio
 * LINQ to SQL Tools
 
-Wiersz polecenia użyty do zainstalowania programu Visual Studio, podczas tworzenia obrazów jest następująca:
+Wiersz polecenia służący do instalowania programu Visual Studio jest następujący:
 
 ```
     vs_enterprise.exe --allWorkloads --includeRecommended --passive ^
@@ -95,9 +94,9 @@ Aby uzyskać więcej informacji, zobacz [Zaloguj się do programu Visual Studio]
 
 Spektrum środowisk deweloperskich jest bardzo duży i jest prawdziwy koszt związany z kompilowania bardziej złożonych środowiskach. Niezależnie od konfiguracji w danym środowisku można zapisać lub przechwycenia maszyny Wirtualnej skonfigurowanej jako "obrazu podstawowego" do użycia w przyszłości lub dla innych członków zespołu. Następnie podczas rozruchu nową maszynę Wirtualną, możesz aprowizować je z obrazu podstawowego zamiast obrazu z witryny Azure Marketplace.
 
-Krótkie podsumowanie: Za pomocą narzędzia przygotowywania systemu (Sysprep) i Zamknij uruchomioną maszynę Wirtualną, a następnie przechwycić *(rysunek 1)* maszynę Wirtualną jako obraz przy użyciu interfejsu użytkownika w witrynie Azure portal. Zapisuje Azure `.vhd` pliku zawierającego obraz wybrane na koncie magazynu. Nowy obraz następnie wyświetlany jako zasób obrazu w Twojej subskrypcji listy zasobów.
+Krótkie podsumowanie: Użyj narzędzia przygotowywania systemu (Sysprep) i Zamknij uruchomioną maszynę wirtualną, a następnie Przechwyć *(rysunek 1)* maszynę wirtualną jako obraz za pomocą interfejsu użytkownika w Azure Portal. Zapisuje Azure `.vhd` pliku zawierającego obraz wybrane na koncie magazynu. Nowy obraz następnie wyświetlany jako zasób obrazu w Twojej subskrypcji listy zasobów.
 
-<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center> *(Rysunek 1) Przechwycenie obrazu przy użyciu interfejsu użytkownika witryny Azure portal.* </center>
+<img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center> *(Rysunek 1) Przechwyć obraz za pomocą interfejsu użytkownika Azure Portal.* </center>
 
 Aby uzyskać więcej informacji, zobacz [utworzenie obrazu zarządzanego uogólnionej maszyny wirtualnej na platformie Azure](/azure/virtual-machines/windows/capture-image-resource).
 

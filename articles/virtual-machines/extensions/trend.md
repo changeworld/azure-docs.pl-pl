@@ -1,6 +1,6 @@
 ---
-title: Instalowanie oprogramowania Trend Micro Deep Security na maszynie Wirtualnej | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak zainstalować i skonfigurować Trend Micro zabezpieczeń na maszynie Wirtualnej utworzone za pomocą klasycznego modelu wdrażania na platformie Azure.
+title: Instalowanie Trend Micro głębokich zabezpieczeń na maszynie wirtualnej | Microsoft Docs
+description: W tym artykule opisano sposób instalowania i konfigurowania Trend Micro Security na maszynie wirtualnej utworzonej przy użyciu klasycznego modelu wdrażania na platformie Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: roiyz-msft
@@ -11,81 +11,80 @@ ms.assetid: e991b635-f1e2-483f-b7ca-9d53e7c22e2a
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: roiyz
-ms.openlocfilehash: 0e70bc692357e9db9fa02a2f210320507b1b5824
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ffbae90d60cb2dbc7a62b9e9745ed1c4020386ff
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705900"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092203"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Jak zainstalować i skonfigurować rozwiązanie Trend Micro Deep Security as a Service na maszynie wirtualnej systemu Windows
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
-W tym artykule pokazano, jak zainstalować i skonfigurować Trend Micro Deep Security as a Service, w nowej lub istniejącej maszyny wirtualnej (VM) systemem Windows Server. Deep Security jako usługi obejmuje ochronę chroniące przed złośliwym kodem, zapory, system zapobiegania włamaniom i monitorowania integralności.
+W tym artykule opisano sposób instalowania i konfigurowania Trend Micro głębokiego zabezpieczenia jako usługi na nowej lub istniejącej maszynie wirtualnej z systemem Windows Server. Głębokie zabezpieczenia jako usługa obejmują ochronę przed złośliwym oprogramowaniem, zaporę, system zapobiegania włamaniom i monitorowanie integralności.
 
-Klient jest instalowany jako rozszerzenie zabezpieczeń, za pośrednictwem agenta maszyny Wirtualnej. Na nowej maszyny wirtualnej należy zainstalować Deep Security Agent, ponieważ Agent maszyny Wirtualnej jest tworzony automatycznie w portalu Azure.
+Klient jest instalowany jako rozszerzenie zabezpieczeń za pośrednictwem agenta maszyny wirtualnej. Na nowej maszynie wirtualnej jest instalowany Agent zabezpieczeń głębokiej, ponieważ agent maszyny wirtualnej jest tworzony automatycznie przez Azure Portal.
 
-Istniejącej maszyny Wirtualnej utworzone za pomocą witryny Azure portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell może nie mieć agenta maszyny Wirtualnej. Dla istniejącej maszyny wirtualnej, która nie ma agenta maszyny Wirtualnej musisz pobrać i zainstalować ją najpierw. Ten artykuł dotyczy zarówno sytuacji.
+Istniejąca maszyna wirtualna utworzona przy użyciu Azure Portal, interfejsu wiersza polecenia platformy Azure lub programu PowerShell może nie mieć agenta maszyny wirtualnej. W przypadku istniejącej maszyny wirtualnej, która nie ma agenta maszyny wirtualnej, należy najpierw ją pobrać i zainstalować. W tym artykule opisano obie sytuacje.
 
-W przypadku bieżącej subskrypcji z Trend Micro rozwiązania w środowisku lokalnym, można użyć go w celu ochrony maszyn wirtualnych platformy Azure. Jeśli nie jesteś klientem jeszcze, możesz zarejestrować się w przypadku subskrypcji wersji próbnej. Aby uzyskać więcej informacji o tym rozwiązaniu, zobacz wpis w blogu Trend Micro [zabezpieczeń platformy Microsoft Azure VM Agent rozszerzenia dla głębokiego](https://go.microsoft.com/fwlink/p/?LinkId=403945).
+Jeśli masz bieżącą subskrypcję z usługi Trend Micro dla rozwiązania lokalnego, możesz użyć jej do ochrony maszyn wirtualnych platformy Azure. Jeśli nie jesteś jeszcze klientem, możesz zarejestrować się w celu uzyskania subskrypcji wersji próbnej. Aby uzyskać więcej informacji na temat tego rozwiązania, zobacz informacje o usłudze Trend Micro w blogu [Microsoft Azure rozszerzenia agenta maszyny wirtualnej na potrzeby głębokiego zabezpieczenia](https://go.microsoft.com/fwlink/p/?LinkId=403945).
 
-## <a name="install-the-deep-security-agent-on-a-new-vm"></a>Zainstaluj Deep Security Agent na utworzonej nowej maszynie Wirtualnej
+## <a name="install-the-deep-security-agent-on-a-new-vm"></a>Zainstaluj agenta zabezpieczeń szczegółowych na nowej maszynie wirtualnej
 
-[Witryny Azure portal](https://portal.azure.com) umożliwia zainstalowanie rozszerzenia zabezpieczeń Trend Micro, korzystając z obrazu z **Marketplace** do utworzenia maszyny wirtualnej. Jeśli tworzysz pojedynczej maszyny wirtualnej przy użyciu portalu to prosty sposób można dodawać ochronę z Trend Micro.
+[Azure Portal](https://portal.azure.com) pozwala zainstalować rozszerzenie Trend Micro Security w przypadku tworzenia maszyny wirtualnej przy użyciu obrazu z **portalu Marketplace** . Jeśli tworzysz pojedynczą maszynę wirtualną, korzystanie z portalu jest łatwym sposobem na dodanie ochrony z Trend Micro.
 
-Za pomocą wpisu z **Marketplace** Otwiera kreatora, który pomoże Ci skonfigurować maszynę wirtualną. Możesz użyć **ustawienia** bloku, trzeci panelu kreatora, można zainstalować rozszerzenia zabezpieczeń Trend Micro.  Aby uzyskać ogólne instrukcje, zobacz [tworzenie maszyny wirtualnej z systemem Windows w witrynie Azure portal](../windows/classic/tutorial.md).
+Przy użyciu wpisu z **portalu Marketplace** zostanie otwarty Kreator, który pomoże Ci skonfigurować maszynę wirtualną. Aby zainstalować rozszerzenie Trend Micro Security, należy użyć bloku **Ustawienia** , trzeciego panelu Kreatora.  Aby uzyskać ogólne instrukcje, zobacz temat [Tworzenie maszyny wirtualnej z systemem Windows w Azure Portal](../windows/classic/tutorial.md).
 
-Po przejściu do **ustawienia** bloku kreatora, wykonaj następujące czynności:
+Po przepoczęciu pracy z blokiem **Ustawienia** kreatora wykonaj następujące czynności:
 
-1. Kliknij przycisk **rozszerzenia**, następnie kliknij przycisk **Dodaj rozszerzenie** w kolejnym okienku.
+1. Kliknij pozycję **rozszerzenia**, a następnie kliknij pozycję **Dodaj rozszerzenie** w następnym okienku.
 
    ![Rozpocznij dodawanie rozszerzenia][1]
 
-2. Wybierz **Deep Security Agent** w **nowy zasób** okienka. W okienku Deep Security Agent kliknij **Utwórz**.
+2. Wybierz pozycję **Szczegółowa ochrona** w okienku **nowy zasób** . W okienku Agent zabezpieczeń głębokiej kliknij pozycję **Utwórz**.
 
-   ![Identyfikowanie Deep Security Agent][2]
+   ![Identyfikowanie agenta zabezpieczeń szczegółowych][2]
 
-3. Wprowadź **identyfikator dzierżawy** i **hasło aktywacyjne dzierżawy** dla rozszerzenia. Opcjonalnie można wprowadzić **identyfikator zasad zabezpieczeń**. Następnie kliknij przycisk **OK** do dodania klienta.
+3. Wprowadź **Identyfikator dzierżawy** i **hasło aktywacji dzierżawy** dla rozszerzenia. Opcjonalnie możesz wprowadzić **Identyfikator zasad zabezpieczeń**. Następnie kliknij przycisk **OK** , aby dodać klienta.
 
    ![Podaj szczegóły rozszerzenia][3]
 
-## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>Zainstaluj Deep Security Agent istniejącej maszyny wirtualnej
-Aby zainstalować agenta na istniejącej maszyny Wirtualnej, potrzebne są następujące elementy:
+## <a name="install-the-deep-security-agent-on-an-existing-vm"></a>Instalowanie agenta zabezpieczeń głębokiej na istniejącej maszynie wirtualnej
+Aby zainstalować agenta na istniejącej maszynie wirtualnej, potrzebne są następujące elementy:
 
-* Moduł Azure PowerShell, wersja 0.8.2 lub nowszej, zainstalowanych na komputerze lokalnym. Możesz sprawdzić wersję programu Azure PowerShell, który został zainstalowany przy użyciu **Get-Module azure | format-table wersji** polecenia. Aby uzyskać instrukcje i łącza do najnowszej wersji, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview). Zaloguj się do swojej subskrypcji platformy Azure za pomocą `Add-AzureAccount`.
-* Agent maszyny Wirtualnej, zainstalowane na docelowej maszynie wirtualnej.
+* Moduł Azure PowerShell w wersji 0.8.2 lub nowszej zainstalowany na komputerze lokalnym. Zainstalowaną wersję Azure PowerShell można sprawdzić za pomocą polecenia **Get-module platformy Azure | format-Table Version** . Instrukcje i link do najnowszej wersji znajdują się w temacie [How to Install and configure Azure PowerShell](/powershell/azure/overview). Zaloguj się do subskrypcji platformy Azure za `Add-AzureAccount`pomocą polecenia.
+* Agent maszyny wirtualnej zainstalowany na docelowej maszynie wirtualnej.
 
-Po pierwsze sprawdzenie, czy Agent maszyny Wirtualnej jest już zainstalowany. Wypełnij pola nazwy usługi w chmurze i Nazwa maszyny wirtualnej, a następnie uruchom następujące polecenia w wierszu polecenia programu Azure PowerShell z poziomu administratora. Zastąp wszystkie elementy w ramach oferty, w tym < a > znaków.
+Najpierw sprawdź, czy Agent maszyny wirtualnej jest już zainstalowany. Wypełnij pola Nazwa usługi w chmurze i nazwa maszyny wirtualnej, a następnie uruchom następujące polecenia w wierszu polecenia Azure PowerShell na poziomie administratora. Zamień wszystkie elementy w cudzysłowie, w tym znaki < i >.
 
     $CSName = "<cloud service name>"
     $VMName = "<virtual machine name>"
     $vm = Get-AzureVM -ServiceName $CSName -Name $VMName
     write-host $vm.VM.ProvisionGuestAgent
 
-Jeśli nie znasz usługi w chmurze i nazwy maszyny wirtualnej, uruchom **Get-AzureVM** do wyświetlenia informacji dla wszystkich maszyn wirtualnych w Twojej bieżącej subskrypcji.
+Jeśli nie znasz usługi w chmurze i nazwy maszyny wirtualnej, uruchom polecenie **Get-AzureVM** , aby wyświetlić te informacje dla wszystkich maszyn wirtualnych w bieżącej subskrypcji.
 
-Jeśli **zapisu hosta** polecenie **True**, jest zainstalowany Agent maszyny Wirtualnej. Jeśli zostanie zwrócona **False**, zobacz instrukcje i linkiem umożliwiającym pobranie wpis w blogu platformy Azure [VM Agent i rozszerzenia — część 2](https://go.microsoft.com/fwlink/p/?LinkId=403947).
+Jeśli polecenie **write-host** zwróci **wartość true**, Agent maszyny wirtualnej jest zainstalowany. Jeśli zwraca **wartość false**, zapoznaj się z instrukcjami i linkiem do pobrania w blogu usługi Azure post [VM Agent i Extensions-część 2](https://go.microsoft.com/fwlink/p/?LinkId=403947).
 
-Jeśli jest zainstalowany Agent maszyny Wirtualnej, uruchom następujące polecenia.
+Jeśli Agent maszyny wirtualnej jest zainstalowany, Uruchom te polecenia.
 
     $Agent = Get-AzureVMAvailableExtension TrendMicro.DeepSecurity -ExtensionName TrendMicroDSA
 
     Set-AzureVMExtension -Publisher TrendMicro.DeepSecurity –Version $Agent.Version -ExtensionName TrendMicroDSA -VM $vm | Update-AzureVM
 
-## <a name="next-steps"></a>Kolejne kroki
-Trwa kilka minut, zanim agenta aby rozpocząć uruchamianie po jej zainstalowaniu. Po tym musisz aktywować Deep Security na maszynie wirtualnej, aby można było zarządzać przez głębokiego Menedżera zabezpieczeń. Zobacz następujące artykuły, aby uzyskać dodatkowe informacje:
+## <a name="next-steps"></a>Następne kroki
+Uruchomienie agenta po jego zainstalowaniu może potrwać kilka minut. Po tym celu należy aktywować głębokie zabezpieczenia na maszynie wirtualnej, aby można było nimi zarządzać za pomocą głębokiego Menedżera zabezpieczeń. Dodatkowe instrukcje można znaleźć w następujących artykułach:
 
-* Trend w artykule o tym rozwiązaniu [Instant-On Cloud Security dla systemu Microsoft Azure](https://go.microsoft.com/fwlink/?LinkId=404101)
-* A [przykładowy skrypt programu Windows PowerShell](https://go.microsoft.com/fwlink/?LinkId=404100) można skonfigurować maszyny wirtualnej
-* [Instrukcje](https://go.microsoft.com/fwlink/?LinkId=404099) dla przykładu
+* Artykuł dotyczący trendu dotyczącego tego rozwiązania, [natychmiastowego zabezpieczenia w chmurze dla Microsoft Azure](https://go.microsoft.com/fwlink/?LinkId=404101)
+* [Przykładowy skrypt programu Windows PowerShell](https://go.microsoft.com/fwlink/?LinkId=404100) służący do konfigurowania maszyny wirtualnej
+* [Instrukcje](https://go.microsoft.com/fwlink/?LinkId=404099) dotyczące przykładu
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 [Jak zalogować się do maszyny wirtualnej z systemem Windows Server]
 
-[Rozszerzenia maszyn wirtualnych platformy Azure i funkcji]
+[Rozszerzenia i funkcje maszyny wirtualnej platformy Azure]
 
 <!-- Image references -->
 [1]: ./media/trend/new_vm_Blade3.png
@@ -94,4 +93,4 @@ Trwa kilka minut, zanim agenta aby rozpocząć uruchamianie po jej zainstalowani
 
 <!-- Link references -->
 [Jak zalogować się do maszyny wirtualnej z systemem Windows Server]:../windows/classic/connect-logon.md
-[Rozszerzenia maszyn wirtualnych platformy Azure i funkcji]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
+[Rozszerzenia i funkcje maszyny wirtualnej platformy Azure]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409

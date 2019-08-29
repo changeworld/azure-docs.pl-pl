@@ -3,15 +3,15 @@ title: Użyj kanału informacyjnego zmiany szacowania Azure Cosmos DB
 description: Dowiedz się, jak za pomocą szacowaniania zmian przeanalizować postęp procesora źródła zmian
 author: ealsur
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: maquaran
-ms.openlocfilehash: 82e5bb547d025d25aa6720d2b7a603d53a921c57
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 0023f68400b36b9abd3b9d4a789895e79f67aa03
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991955"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092948"
 ---
 # <a name="use-the-change-feed-estimator"></a>Korzystanie ze źródła zmian szacowania
 

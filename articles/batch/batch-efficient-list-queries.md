@@ -8,19 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: 031fefeb-248e-4d5a-9bc2-f07e46ddd30d
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 3bf9ba52bc4071755918b842da477384dcd38973
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 37d34267220cbb7ceabfc823f6facd651969fbd4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68323501"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095164"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Twórz zapytania umożliwiające wydajne wyświetlanie zasobów wsadowych
 
@@ -35,7 +34,7 @@ Niemal wszystkie aplikacje usługi Batch wymagają wykonania pewnego typu monito
 ## <a name="meet-the-detaillevel"></a>Zapoznaj się z DetailLevel
 W produkcyjnej aplikacji wsadowej jednostki takie jak zadania, zadania i węzły obliczeniowe mogą być liczbami w tysiącach. Gdy żądasz informacji o tych zasobach, potencjalnie dużą ilością danych musi być "krzyżowy" z usługi Batch do aplikacji w każdym zapytaniu. Ograniczając liczbę elementów i typ informacji zwracanych przez zapytanie, można zwiększyć szybkość zapytań i w związku z tym wydajność aplikacji.
 
-Ten fragment kodu interfejsu API usługi [Batch .NET][api_net] *zawiera listę* wszystkich zadań, które są skojarzone z zadaniem, wraz ze *wszystkimi* właściwościami każdego zadania:
+Ten fragment kodu interfejsu API usługi [Batch .NET][api_net] zawiera listę wszystkich zadań, które są skojarzone z zadaniem, wraz ze *wszystkimi* właściwościami każdego zadania:
 
 ```csharp
 // Get a collection of all of the tasks and all of their properties for job-001

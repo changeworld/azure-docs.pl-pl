@@ -1,6 +1,6 @@
 ---
-title: Przekazywania poświadczeń do platformy Azure przy użyciu Desired State Configuration
-description: Dowiedz się, jak bezpiecznie przekazywania poświadczeń do maszyn wirtualnych platformy Azure przy użyciu programu PowerShell Desired State Configuration (DSC).
+title: Przekazywanie poświadczeń do platformy Azure przy użyciu konfiguracji żądanego stanu
+description: Informacje o sposobie bezpiecznego przekazywania poświadczeń do usługi Azure Virtual Machines przy użyciu konfiguracji żądanego stanu (DSC) programu PowerShell.
 services: virtual-machines-windows
 documentationcenter: ''
 author: bobbytreed
@@ -10,32 +10,31 @@ tags: azure-resource-manager
 keywords: dsc
 ms.assetid: ea76b7e8-b576-445a-8107-88ea2f3876b9
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 723d0cfe6e292c4b8013de4da55779a6c675d610
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 38a302545f2dd46a8123816a41c97ae26ee4c260
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705928"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092506"
 ---
-# <a name="pass-credentials-to-the-azure-dscextension-handler"></a>Przekazywania poświadczeń do obsługi DSCExtension platformy Azure
+# <a name="pass-credentials-to-the-azure-dscextension-handler"></a>Przekaż poświadczenia do procedury obsługi usługi Azure DSCExtension
 
-W tym artykule opisano rozszerzenie Desired State Configuration (DSC) dla platformy Azure. Aby uzyskać przegląd procedury obsługi rozszerzenia DSC, zobacz [wprowadzenie do procedury obsługi rozszerzenia Azure Desired State Configuration](dsc-overview.md).
+Ten artykuł dotyczy rozszerzenia konfiguracji żądanego stanu (DSC) dla platformy Azure. Aby zapoznać się z omówieniem procedury obsługi rozszerzeń DSC, zobacz [wprowadzenie do programu obsługi rozszerzenia konfiguracji żądanego stanu platformy Azure](dsc-overview.md).
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="pass-in-credentials"></a>Przekazywanie poświadczeń
+## <a name="pass-in-credentials"></a>Poświadczenia przekazywania
 
-W ramach procesu konfiguracji może być potrzebujesz skonfigurować konta użytkowników, uzyskiwanie dostępu do usług lub zainstaluj program w kontekście użytkownika. Aby wykonać te czynności, musisz podać poświadczenia.
+W ramach procesu konfiguracji może być konieczne skonfigurowanie kont użytkowników, usług dostępu lub zainstalowanie programu w kontekście użytkownika. Aby wykonać te czynności, musisz podać poświadczenia.
 
-DSC służy do ustawiania konfiguracji sparametryzowanych. W konfiguracji sparametryzowane poświadczenia są przekazywane do konfiguracji i bezpiecznie przechowywane w plikach MOF. Obsługa rozszerzenia Azure upraszcza zarządzanie poświadczeniami, zapewniając automatyczne zarządzanie certyfikatami.
+Do konfigurowania konfiguracji sparametryzowanej można użyć DSC. W konfiguracji sparametryzowanej poświadczenia są przesyłane do konfiguracji i bezpiecznie przechowywane w plikach MOF. Program obsługi rozszerzeń platformy Azure upraszcza zarządzanie poświadczeniami, zapewniając automatyczne zarządzanie certyfikatami.
 
-Poniższy skrypt konfiguracji DSC tworzy konto użytkownika lokalnego przy użyciu podanego hasła:
+Następujący skrypt konfiguracji DSC tworzy konto użytkownika lokalnego z określonym hasłem:
 
 ```powershell
 configuration Main
@@ -61,13 +60,13 @@ configuration Main
 }
 ```
 
-Jest ważne uwzględnić **localhost węzła** jako część konfiguracji. Procedury obsługi rozszerzenia specjalnie szuka **localhost węzła** instrukcji. Poniższe kroki nie działają, jeśli brakuje tej instrukcji. Warto również uwzględnić typecast **[PsCredential]** . Określonego typu, wyzwala rozszerzenie Aby zaszyfrować poświadczenia.
+Ważne jest, aby dołączyć **węzeł localhost** w ramach konfiguracji. Procedura obsługi rozszerzeń szuka instrukcji **Node localhost** . W przypadku braku tej instrukcji nie działają następujące czynności. Ważne jest również uwzględnienie rzutowanie **[PsCredential]** . Ten konkretny typ wyzwala rozszerzenie w celu zaszyfrowania poświadczenia.
 
-Aby opublikować ten skrypt do usługi Azure Blob storage:
+Aby opublikować ten skrypt w usłudze Azure Blob Storage:
 
 `Publish-AzVMDscConfiguration -ConfigurationPath .\user_configuration.ps1`
 
-Aby ustawić rozszerzenie DSC usługi Azure i podaj poświadczenia:
+Aby ustawić rozszerzenie DSC platformy Azure i podać poświadczenia:
 
 ```powershell
 $configurationName = 'Main'
@@ -80,15 +79,15 @@ $vm = Set-AzVMDscExtension -VMName $vm -ConfigurationArchive $configurationArchi
 $vm | Update-AzVM
 ```
 
-## <a name="how-a-credential-is-secured"></a>Jak są zabezpieczone poświadczenia
+## <a name="how-a-credential-is-secured"></a>Jak jest zabezpieczone poświadczenie
 
-Uruchamiając ten kod wyświetla monit o podanie poświadczeń. Po poświadczenie jest warunkiem krótko jest przechowywany w pamięci. Po opublikowaniu przy użyciu poświadczeń **AzVMDscExtension zestaw** polecenia cmdlet, poświadczenia są przesyłane za pośrednictwem protokołu HTTPS do maszyny Wirtualnej. Na maszynie wirtualnej platformy Azure są przechowywane poświadczenia szyfrowane na dysku przy użyciu lokalnego certyfikatu maszyny Wirtualnej. Poświadczenie krótko zostaną odszyfrowane w pamięci, a następnie ponownie jest szyfrowany do przekazania go do DSC.
+Uruchomienie tego kodu powoduje wpisanie prośby o poświadczenie. Po podaniu poświadczeń zostanie ono krótko zapisane w pamięci. Po opublikowaniu poświadczenia za pomocą polecenia cmdlet **Set-AzVMDscExtension** poświadczenia są przesyłane za pośrednictwem protokołu HTTPS do maszyny wirtualnej. Na maszynie wirtualnej platforma Azure przechowuje poświadczenia zaszyfrowane na dysku przy użyciu lokalnego certyfikatu maszyny wirtualnej. Poświadczenie jest z chwilą odszyfrowywane w pamięci, a następnie ponownie szyfrowane w celu przekazania go do DSC.
 
-Ten proces różni się od [przy użyciu bezpiecznej konfiguracji bez obsługi rozszerzenia](/powershell/dsc/securemof). Środowisko platformy Azure zapewnia możliwość przesyłania danych konfiguracji w bezpieczny sposób za pomocą certyfikatów. Korzystając z obsługi rozszerzenia DSC, nie musisz podać **$CertificatePath** lub **$CertificateID**/  **$Thumbprint** wpis **ConfigurationData**.
+Ten proces różni się od [używania bezpiecznych konfiguracji bez obsługi rozszerzenia](/powershell/dsc/securemof). Środowisko platformy Azure umożliwia bezpieczne przesyłanie danych konfiguracji za pośrednictwem certyfikatów. W przypadku korzystania z programu obsługi rozszerzeń DSC nie trzeba podawać **$CertificatePath** ani **$CertificateID**/  **$Thumbprint** wpisów w **ConfigurationData**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Pobierz [wprowadzenie do procedury obsługi rozszerzenia DSC usługi Azure](dsc-overview.md).
-- Sprawdź [szablonu usługi Azure Resource Manager dla rozszerzenia DSC](dsc-template.md).
-- Aby uzyskać więcej informacji na temat programu PowerShell DSC, przejdź do [Centrum dokumentacji programu PowerShell](/powershell/dsc/overview).
-- Przeglądaj więcej funkcji, w którym można zarządzać za pomocą programu PowerShell DSC, a inne zasoby DSC, [galerii programu PowerShell](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).
+- Zapoznaj [się z wprowadzeniem do procedury obsługi rozszerzenia usługi Azure DSC](dsc-overview.md).
+- Zapoznaj się z [szablonem Azure Resource Manager dla rozszerzenia DSC](dsc-template.md).
+- Aby uzyskać więcej informacji na temat programu PowerShell DSC, przejdź do [centrum dokumentacji programu PowerShell](/powershell/dsc/overview).
+- Aby uzyskać więcej funkcji, którymi można zarządzać za pomocą programu PowerShell DSC i więcej zasobów DSC, przejrzyj [galerię programu PowerShell](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0).

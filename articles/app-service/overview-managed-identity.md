@@ -7,24 +7,23 @@ manager: cfowler
 editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: a2b8a4e496094c6275710328e70a09376ce0e5fc
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 16c65a98ca420a4b15281ee033ea7773197b5b2a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563030"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098467"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Jak używać tożsamości zarządzanych do App Service i Azure Functions
 
 > [!Important] 
 > Tożsamości zarządzane dla App Service i Azure Functions nie będą działać zgodnie z oczekiwaniami, jeśli Twoja aplikacja jest migrowana między subskrypcjami/dzierżawcami. Aplikacja będzie musiała uzyskać nową tożsamość, którą można wykonać, wyłączając i ponownie włączając funkcję. Zobacz [usuwanie tożsamości](#remove) poniżej. Zasoby podrzędne również muszą mieć zaktualizowane zasady dostępu do korzystania z nowej tożsamości.
 
-W tym temacie pokazano, jak utworzyć zarządzaną tożsamość dla App Service i Azure Functions aplikacji oraz jak używać jej do uzyskiwania dostępu do innych zasobów. Zarządzana tożsamość z Azure Active Directory umożliwia aplikacji łatwe uzyskiwanie dostępu do innych zasobów chronionych przez usługi AAD, takich jak Azure Key Vault. Tożsamość jest zarządzana przez platformę Azure i nie wymaga aprowizacji ani rotacji żadnych wpisów tajnych. Aby uzyskać więcej informacji o tożsamościach zarządzanych w usłudze AAD, zobacz [zarządzane tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md).
+W tym temacie pokazano, jak utworzyć zarządzaną tożsamość dla App Service i Azure Functions aplikacji oraz jak używać jej do uzyskiwania dostępu do innych zasobów. Tożsamość zarządzana z usługi Azure Active Directory umożliwia aplikacji łatwy dostęp do innych zasobów chronionych przez usługę AAD, takich jak usługa Azure Key Vault. Tożsamość jest zarządzana przez platformę Azure i nie wymaga aprowizacji ani rotacji żadnych wpisów tajnych. Aby uzyskać więcej informacji o tożsamościach zarządzanych w usłudze AAD, zobacz [zarządzane tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
 Aplikacja może mieć przyznane dwa typy tożsamości: 
 - **Tożsamość przypisana do systemu** jest powiązana z aplikacją i jest usuwana, jeśli aplikacja zostanie usunięta. Aplikacja może mieć tylko jedną tożsamość przypisaną do systemu.

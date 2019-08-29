@@ -1,6 +1,6 @@
 ---
-title: Jak wdrożyć system Windows 10 na platformie Azure dzięki wielodostępnej praw hostingu
-description: Dowiedz się, jak zmaksymalizować korzyści Windows Software Assurance użycie licencji lokalnych na platformie Azure
+title: Jak wdrożyć system Windows 10 na platformie Azure z wielodostępnymi prawami hostingu
+description: Dowiedz się, jak zmaksymalizować korzyści z pakietu Software Assurance dla systemu Windows, aby zapewnić lokalne licencje na platformę Azure
 services: virtual-machines-windows
 documentationcenter: ''
 author: xujing
@@ -8,46 +8,45 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: b99ae2abdc4e062588174b6d945b6592ae8e58ed
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 9ff8cc64266375a2d439763b222870843136f67a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707854"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101505"
 ---
-# <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Jak wdrożyć system Windows 10 na platformie Azure dzięki wielodostępnej praw hostingu 
-W przypadku klientów Windows 10 Enterprise E3/E5 dla poszczególnych użytkowników lub dostęp do usług pulpitu wirtualnego Windows na użytkownika (licencje subskrypcji użytkownika lub licencji subskrypcji użytkownika dodatku) wielodostępnej hostingu praw dla systemu Windows 10 umożliwia Przenieś licencje systemu Windows 10 do chmury i uruchamianie maszyn wirtualnych z systemem Windows 10 na platformie Azure bez konieczności płacenia za innej licencji. Aby uzyskać więcej informacji, zobacz [wielodostępnej Hosting w systemie Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
+# <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Jak wdrożyć system Windows 10 na platformie Azure z wielodostępnymi prawami hostingu 
+W przypadku klientów z systemem Windows 10 Enterprise E3/E5 na użytkownika lub dostęp do pulpitu wirtualnego systemu Windows dla użytkownika (licencje subskrypcyjne użytkownika lub licencje subskrypcyjne użytkownika dodatku), wielodostępne prawa hostingu dla systemu Windows 10 umożliwiają korzystanie z licencji systemu Windows 10 do chmury i uruchom system Windows 10 Virtual Machines na platformie Azure bez płacenia za inną licencję. Aby uzyskać więcej informacji, zobacz [Obsługa wielu dzierżawców dla systemu Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
 
 > [!NOTE]
-> W tym artykule dowiesz się, aby zaimplementować korzyść licencjonowania dla Windows 10 Pro obrazów w portalu Azure Marketplace.
-> - Windows 7, 8.1 i 10 obrazy Enterprise (x64) w portalu Azure Marketplace do subskrypcji MSDN, można znaleźć na stronie [klienta Windows na platformie Azure w scenariuszach tworzenia i testowania](client-images.md)
-> - Licencjonowanie korzyści z systemu Windows Server, można znaleźć na stronie [hybrydowego platformy Azure, użyj korzyści dla obrazów systemu Windows Server](hybrid-use-benefit-licensing.md).
+> W tym artykule pokazano, jak zaimplementować zalety licencjonowania dla obrazów komputerów stacjonarnych z systemem Windows 10 Pro w witrynie Azure Marketplace.
+> - W przypadku obrazów systemu Windows 7, 8,1, 10 Enterprise (x64) w witrynie Azure Marketplace dla subskrypcji MSDN zapoznaj się z [klientem systemu Windows na platformie Azure na potrzeby scenariuszy tworzenia i testowania](client-images.md)
+> - W przypadku korzyści z licencjonowania systemu Windows Server zapoznaj się z artykułem [korzyści z używania hybrydowej platformy Azure dla obrazów systemu Windows Server](hybrid-use-benefit-licensing.md).
 >
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Wdrażanie obrazu systemu Windows 10 z witryny Azure Marketplace 
-Dla wdrożeń szablonu programu Powershell, interfejsu wiersza polecenia i usługi Azure Resource Manager można znaleźć obrazu systemu Windows 10 za pomocą następujących nazwa_wydawcy, oferty, jednostki sku.
+W przypadku wdrożeń programu PowerShell, interfejsu wiersza polecenia i szablonów Azure Resource Manager można znaleźć obraz systemu Windows 10 z następującym wydawcą, ofertą i jednostką SKU.
 
-| OS  |      PublisherName      |  Oferta | SKU |
+| OS  |      PublisherName      |  Oferta | Numer SKU |
 |:----------|:-------------:|:------|:------|
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
+| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2 — Pro   |
+| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2  |
 | Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
 | Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
 
-## <a name="uploading-windows-10-vhd-to-azure"></a>Przekazywanie systemu Windows 10 wirtualnego dysku twardego na platformie Azure
-Podczas przekazywania wirtualnego dysku twardego uogólnionego systemu Windows 10, należy pamiętać, że system Windows 10 nie ma konta wbudowanego konta administratora, domyślnie włączone. Aby włączyć wbudowanego konta administratora, obejmują następujące polecenia jako część rozszerzenia niestandardowego skryptu.
+## <a name="uploading-windows-10-vhd-to-azure"></a>Przekazywanie wirtualnego dysku twardego z systemem Windows 10 na platformę Azure
+Jeśli przekazujesz uogólniony wirtualny dysk twardy z systemem Windows 10, Uwaga dla systemu Windows 10 nie włączono domyślnie wbudowanego konta administratora. Aby włączyć wbudowane konto administratora, należy uwzględnić następujące polecenie jako część niestandardowego rozszerzenia skryptu.
 
 ```powershell
 Net user <username> /active:yes
 ```
 
-Poniższy fragment kodu programu powershell jest do oznaczania wszystkich kont administratora jako aktywny, włącznie z wbudowanym kontem administratora. W tym przykładzie jest przydatne, jeśli nazwa wbudowanego konta administratora jest nieznany.
+Poniższy fragment kodu programu PowerShell oznacza, że wszystkie konta administratorów są oznaczone jako aktywne, w tym wbudowanego administratora. Ten przykład jest przydatny, jeśli wbudowana nazwa użytkownika administratora jest nieznana.
 ```powershell
 $adminAccount = Get-WmiObject Win32_UserAccount -filter "LocalAccount=True" | ? {$_.SID -Like "S-1-5-21-*-500"}
 if($adminAccount.Disabled)
@@ -57,12 +56,12 @@ if($adminAccount.Disabled)
 }
 ```
 Informacje dodatkowe: 
-* [Jak przekazać wirtualny dysk twardy na platformie Azure](upload-generalized-managed.md)
-* [Jak przygotować wirtualny dysk twardy Windows do przekazania na platformę Azure](prepare-for-upload-vhd-image.md)
+* [Jak przekazać dysk VHD na platformę Azure](upload-generalized-managed.md)
+* [Jak przygotować wirtualny dysk twardy systemu Windows do przekazania do platformy Azure](prepare-for-upload-vhd-image.md)
 
 
-## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>Wdrażanie systemu Windows 10 z praw hostingu wielodostępnego
-Upewnij się, że masz [zainstalowany i skonfigurowany najnowszą wersję programu Azure PowerShell](/powershell/azure/overview). Po przygotowaniu wirtualnego dysku twardego przekazanie dysku VHD do konta usługi Azure Storage za pomocą `Add-AzVhd` polecenia cmdlet w następujący sposób:
+## <a name="deploying-windows-10-with-multitenant-hosting-rights"></a>Wdrażanie systemu Windows 10 z wielodostępnymi prawami hostingu
+Upewnij się, że [zainstalowano i skonfigurowano najnowszą Azure PowerShell](/powershell/azure/overview). Po przygotowaniu wirtualnego dysku twardego Przekaż wirtualny dysk twardy do konta usługi Azure Storage za pomocą `Add-AzVhd` polecenia cmdlet w następujący sposób:
 
 ```powershell
 Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.vhd" `
@@ -70,7 +69,7 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 ```
 
 
-**Wdrażanie przy użyciu wdrażania usługi Azure Resource Manager szablon** w szablonach usługi Resource Manager, dodatkowy parametr dla `licenseType` może być określony. Przeczytaj więcej o [Tworzenie szablonów usługi Azure Resource Manager](../../resource-group-authoring-templates.md). Po utworzeniu wirtualnego dysku twardego przekazany na platformę Azure, Edytuj szablon usługi Resource Manager obejmują typ licencji w ramach dostawcy obliczeń i wdróż szablon, jak zwykle:
+**Wdrażanie przy użyciu wdrożenia szablonu Azure Resource Manager** W szablonach Menedżer zasobów można określić dodatkowy parametr dla `licenseType` . Więcej informacji na temat [tworzenia szablonów Azure Resource Manager](../../resource-group-authoring-templates.md). Po przekazaniu wirtualnego dysku twardego na platformę Azure Edytuj szablon Menedżer zasobów, aby uwzględnić typ licencji w ramach dostawcy obliczeń i wdrożyć szablon w zwykły sposób:
 ```json
 "properties": {
     "licenseType": "Windows_Client",
@@ -79,18 +78,18 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
     }
 ```
 
-**Wdrażanie przy użyciu programu PowerShell** podczas wdrażania maszyny Wirtualnej systemu Windows Server za pomocą programu PowerShell, ma dodatkowy parametr dla `-LicenseType`. Po utworzeniu wirtualnego dysku twardego przekazany na platformę Azure, możesz utworzyć maszynę Wirtualną przy użyciu `New-AzVM` i określić typ licencjonowania w następujący sposób:
+**Wdrażanie za pomocą programu PowerShell** W przypadku wdrażania maszyny wirtualnej z systemem Windows Server za pośrednictwem programu PowerShell masz `-LicenseType`dodatkowy parametr dla programu. Po przekazaniu wirtualnego dysku twardego na platformę Azure należy utworzyć maszynę wirtualną przy użyciu `New-AzVM` i określić typ licencjonowania w następujący sposób:
 ```powershell
 New-AzVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Client"
 ```
 
-## <a name="verify-your-vm-is-utilizing-the-licensing-benefit"></a>Upewnij się, że Twoja maszyna wirtualna wykorzystywanych korzyść z licencjonowania
-Po wdrożeniu maszyny Wirtualnej za pośrednictwem metody wdrażania programu PowerShell lub Menedżera zasobów Sprawdź typ licencji z `Get-AzVM` w następujący sposób:
+## <a name="verify-your-vm-is-utilizing-the-licensing-benefit"></a>Sprawdź, czy maszyna wirtualna korzysta z korzyści licencjonowania
+Po wdrożeniu maszyny wirtualnej za pomocą metody wdrażania programu PowerShell lub Menedżer zasobów należy sprawdzić typ `Get-AzVM` licencji w następujący sposób:
 ```powershell
 Get-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
 ```
 
-Rezultat jest podobny do poniższego przykładu w systemie Windows 10 z typem odpowiednią licencję:
+Dane wyjściowe są podobne do następującego przykładu dla systemu Windows 10 z prawidłowym typem licencji:
 
 ```powershell
 Type                     : Microsoft.Compute/virtualMachines
@@ -98,7 +97,7 @@ Location                 : westus
 LicenseType              : Windows_Client
 ```
 
-To różni się w danych wyjściowych za pomocą następujących maszyn wirtualnych wdrożyć bez Licencjonowanie korzyści z używania hybrydowej platformy Azure, takie jak maszyny Wirtualnej wdrożonej bezpośrednio z galerii platformy Azure:
+Ten wynik różni się od następującej maszyny wirtualnej wdrożonej bez licencjonowania korzyści z używania hybrydowej platformy Azure, takich jak maszyna wirtualna wdrożona bezpośrednio z galerii platformy Azure:
 
 ```powershell
 Type                     : Microsoft.Compute/virtualMachines
@@ -106,14 +105,14 @@ Location                 : westus
 LicenseType              :
 ```
 
-## <a name="additional-information-about-joining-azure-ad"></a>Dodatkowe informacje na temat dołączania usługi Azure AD
+## <a name="additional-information-about-joining-azure-ad"></a>Dodatkowe informacje na temat dołączania do usługi Azure AD
 >[!NOTE]
->Platforma Azure udostępnia wszystkie Windows maszyn wirtualnych przy użyciu wbudowanego konta administratora, którego nie można użyć do dołączenia do usługi AAD. Na przykład *Ustawienia > konta > dostęp do pracy lub nauki > i połącz* nie będzie działać. Należy utworzyć i zaloguj się jako drugiego konta administratora w celu ręcznego sprzężenia Azure AD. Można również skonfigurować usługi Azure AD przy użyciu pakietu aprowizacyjnego, użyj tego linku jest *następne kroki* sekcji, aby dowiedzieć się więcej.
+>Platforma Azure obsługuje wszystkie maszyny wirtualne z systemem Windows przy użyciu wbudowanego konta administratora, które nie może zostać użyte do przyłączenia do usługi AAD. Na przykład *ustawienia > konta > dostęp do pracy lub szkoły > + Connect* nie będą działały. Aby ręcznie dołączyć do usługi Azure AD, należy utworzyć i zalogować się jako drugie konto administratora. Możesz również skonfigurować usługę Azure AD przy użyciu pakietu aprowizacji. Aby dowiedzieć się więcej, Użyj linku do sekcji *następne kroki* .
 >
 >
 
 ## <a name="next-steps"></a>Następne kroki
-- Dowiedz się więcej o [Konfigurowanie VDA dla systemu Windows 10](https://docs.microsoft.com/windows/deployment/vda-subscription-activation)
-- Dowiedz się więcej o [wielodostępnej Hosting w systemie Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)
+- Dowiedz się więcej o [konfigurowaniu VDA dla systemu Windows 10](https://docs.microsoft.com/windows/deployment/vda-subscription-activation)
+- Dowiedz się więcej o [hostingu wielu dzierżawców dla systemu Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)
 
 

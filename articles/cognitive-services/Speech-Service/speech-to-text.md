@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 435de6e6516256d350ad93b121dd5a38d1512ddc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fa80ebea93ae897ba01ff54bdb797ed4194665cd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558856"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068858"
 ---
 # <a name="what-is-speech-to-text"></a>Co to jest zamiana mowy na tekst?
 
@@ -31,9 +31,9 @@ Poniżej przedstawiono funkcje dostępne za pośrednictwem zestawu Speech SDK i 
 
 | Przypadek użycia | SDK | REST |
 |----------|-----|------|
-| Transkrypcja Short wyrażenia długości (< 15 sekund). Obsługuje tylko końcowy wynik transkrypcji. | Yes | Tak |
-| Ciągła transkrypcja długich wyrażenia długości i przesyłania strumieniowego audio (> 15 sekund). Obsługuje tymczasowe i końcowe wyniki transkrypcji. | Yes | Nie |
-| Wyprowadzanie intencji z wyników rozpoznawania z [Luis](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis). | Yes | Brak\* |
+| Transkrypcja Short wyrażenia długości (< 15 sekund). Obsługuje tylko końcowy wynik transkrypcji. | Tak | Tak |
+| Ciągła transkrypcja długich wyrażenia długości i przesyłania strumieniowego audio (> 15 sekund). Obsługuje tymczasowe i końcowe wyniki transkrypcji. | Tak | Nie |
+| Wyprowadzanie intencji z wyników rozpoznawania z [Luis](https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis). | Tak | Brak\* |
 | Asynchroniczne transkrypcja plików audio. | Nie | Opcję\** |
 | Twórz modele mowy i zarządzaj nimi. | Nie | Opcję\** |
 | Twórz wdrożenia modelu niestandardowego i zarządzaj nimi. | Nie | Opcję\** |
@@ -63,13 +63,7 @@ Przykładowy kod dla zestawu Speech SDK jest dostępny w witrynie GitHub. Te prz
 
 ## <a name="customization"></a>Dostosowywanie
 
-Oprócz modelu uniwersalnego używanego przez usługi mowy, można utworzyć niestandardowe modele akustyczne, językowe i wymowy charakterystyczne dla Twojego środowiska. Oto lista opcji dostosowywania:
-
-| Modelowanie | Opis |
-|-------|-------------|
-| [Model akustyczny](how-to-customize-acoustic-models.md) | Tworzenie niestandardowego modelu akustycznego jest przydatne, jeśli aplikacja, narzędzia lub urządzenia są używane w konkretnym środowisku, na przykład w samochodowym lub fabryce, z określonymi warunkami rejestrowania. Przykłady obejmują akcentowaną mowę, specyficzne szumy w tle lub użycie konkretnego mikrofonu na potrzeby rejestrowania. |
-| [Model językowy](how-to-customize-language-model.md) | Utwórz niestandardowy model języka w celu usprawnienia transkrypcji słownictwa i gramatyki właściwych dla branży, takich jak Terminologia medyczna lub żargon IT. |
-| [Model wymowy](how-to-customize-pronunciation.md) | Przy użyciu niestandardowego modelu wymowy można zdefiniować formularz fonetyczny i wyświetlić wyraz lub termin. Jest to przydatne do obsługi warunki niestandardowe, takie jak nazwy produktów lub akronimów. Wszystko, czego potrzebujesz do rozpoczęcia jest plikiem Wymowa — plik prosty txt. |
+Oprócz standardowego modelu linii bazowej używanego przez usługi mowy, można dostosować modele do własnych potrzeb, korzystając z dostępnych danych, aby przezwyciężyć bariery rozpoznawania mowy, takie jak styl mowy, słownictwo i hałas w tle, zobacz [Custom Speech](how-to-custom-speech.md)
 
 > [!NOTE]
 > Opcje dostosowywania różnią się w zależności od języka/ustawień regionalnych (zobacz [obsługiwane języki](supported-languages.md)).

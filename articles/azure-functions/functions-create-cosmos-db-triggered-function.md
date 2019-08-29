@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 941a35084ba811e3bf9224087336db9abbd5b5d5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 9cd09349ae37d11e4d01bc308162512ebfa03dfc
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62104395"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70086357"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Tworzenie funkcji wyzwalanej przez usługę Azure Cosmos DB
 
@@ -60,7 +59,7 @@ Następnie należy utworzyć funkcję w nowej aplikacji funkcji.
 
 1. W polu wyszukiwania wpisz `cosmos`, a następnie wybierz szablon **Wyzwalacz usługi Azure Cosmos DB**.
 
-1. Po wyświetleniu monitu wybierz **zainstalować** można zainstalować rozszerzenia usługi Azure Cosmos DB w aplikacji funkcji. Po pomyślnym zakończeniu instalacji wybierz pozycję **Kontynuuj**.
+1. Jeśli zostanie wyświetlony monit, wybierz pozycję **Zainstaluj** , aby zainstalować rozszerzenie Azure Cosmos DB w aplikacji funkcji. Po pomyślnym zakończeniu instalacji wybierz pozycję **Kontynuuj**.
 
     ![Instalowanie rozszerzeń powiązania](./media/functions-create-cosmos-db-triggered-function/functions-create-cosmos-db-trigger-portal.png)
 
@@ -70,9 +69,9 @@ Następnie należy utworzyć funkcję w nowej aplikacji funkcji.
 
     | Ustawienie      | Sugerowana wartość  | Opis                                |
     | ------------ | ---------------- | ------------------------------------------ |
-    | **Nazwa** | Domyślne | Użyj domyślnej nazwy funkcji sugerowanej przez szablon.|
+    | **Nazwa** | Domyślny | Użyj domyślnej nazwy funkcji sugerowanej przez szablon.|
     | **Połączenie konta usługi Azure Cosmos DB** | Nowe ustawienie | Wybierz pozycję **Nowy**, swoją **subskrypcję**, utworzone wcześniej **konto bazy danych** i polecenie **Wybierz**. Spowoduje to utworzenie ustawienia aplikacji na potrzeby połączenia konta. To ustawienie jest używane przez powiązanie do nawiązywania połączenia z bazą danych. |
-    | **Nazwa kolekcji** | Items | Nazwa monitorowanej kolekcji. |
+    | **Nazwa kolekcji** | Elementy | Nazwa monitorowanej kolekcji. |
     | **Utwórz kolekcję dzierżaw, jeśli nie istnieje** | Zaznaczone | Kolekcja jeszcze nie istnieje, więc należy ją utworzyć. |
     | **Nazwa bazy danych** | Zadania | Nazwa bazy danych zawierającej monitorowaną kolekcję. |
 
@@ -105,7 +104,7 @@ Następnie należy połączyć się z kontem usługi Azure Cosmos DB i utworzyć
     | Ustawienie|Sugerowana wartość|Opis |
     | ---|---|--- |
     | **Identyfikator bazy danych** | Zadania |Nazwa nowej bazy danych. Musi być zgodna z nazwą zdefiniowaną w powiązaniu funkcji. |
-    | **Identyfikator kolekcji** | Items | Nazwa nowej kolekcji. Musi być zgodna z nazwą zdefiniowaną w powiązaniu funkcji.  |
+    | **Identyfikator kolekcji** | Elementy | Nazwa nowej kolekcji. Musi być zgodna z nazwą zdefiniowaną w powiązaniu funkcji.  |
     | **Pojemność magazynu** | Stała (10 GB)|Użyj wartości domyślnej. Ta wartość to pojemność magazynu bazy danych. |
     | **Przepływność** |400 RU| Użyj wartości domyślnej. Jeśli chcesz zmniejszyć opóźnienie, możesz później przeskalować przepływność w górę. |
     | **[Klucz partycji](../cosmos-db/partition-data.md)** | /category|Klucz partycji służący do równomiernego dystrybuowania danych do każdej partycji. Wybór odpowiedniego klucza partycji jest ważny w celu utworzenia wydajnej kolekcji. | 
@@ -138,7 +137,7 @@ Po utworzeniu kolekcji wskazanej w powiązaniu funkcji możesz przetestować fun
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Utworzono funkcję uruchamianą w przypadku dodania lub zmodyfikowania dokumentu w usłudze Azure Cosmos DB. Aby uzyskać więcej informacji na temat wyzwalaczy bazy danych Azure Cosmos DB, zobacz [Azure Cosmos DB bindings for Azure Functions](functions-bindings-cosmosdb.md) (Powiązania bazy danych Azure Cosmos DB na potrzeby usługi Azure Functions).
 

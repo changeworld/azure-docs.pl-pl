@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2c43a3c046243c4802fb433f3b755cee158002b6
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9d52526f87f20a855c045f4e565793ac29abf04a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950557"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101013"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integracja rozwiązań zabezpieczeń w usłudze Azure Security Center
 Ten dokument ułatwia zarządzanie rozwiązaniami zabezpieczeń już połączonymi z usługą Azure Security Center i dodawanie nowych.
@@ -34,7 +34,7 @@ Usługa Security Center ułatwia włączanie zintegrowanych rozwiązań zabezpie
 - **Zintegrowane wykrywanie**: Zdarzenia zabezpieczeń z rozwiązań partnerskich są automatycznie zbierane, agregowane i wyświetlane w ramach zdarzeń i alertów usługi Security Center. Te zdarzenia są także połączone z funkcjami wykrywania z innych źródeł, aby zapewnić zaawansowane możliwości w zakresie wykrywania zagrożeń.
 - **Ujednolicone monitorowanie kondycji i zarządzanie nimi**: Klienci mogą używać zintegrowanych zdarzeń kondycji w celu jednoczesnego monitorowania wszystkich rozwiązań partnerskich. Podstawowe funkcje zarządzania zapewniają łatwy dostęp do konfiguracji zaawansowanej przy użyciu rozwiązania partnerskiego.
 
-Obecnie zintegrowane rozwiązania zabezpieczeń obejmują ocenę luk w zabezpieczeniach przez [Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) i [Rapid7](https://www.rapid7.com/products/insightvm/) oraz zaporę aplikacji sieci Web firmy Microsoft Application Gateway.
+Obecnie zintegrowane rozwiązania zabezpieczeń obejmują ocenę luk w zabezpieczeniach przez [Qualys](https://www.qualys.com/public-cloud/#azure) i [Rapid7](https://www.rapid7.com/products/insightvm/) oraz zaporę aplikacji sieci Web firmy Microsoft Application Gateway.
 
 > [!NOTE]
 > Usługa Security Center nie może zainstalować programu Microsoft Monitoring Agent na wirtualnych urządzeniach partnera, ponieważ większość dostawców zabezpieczeń zabrania korzystania z zewnętrznych agentów na swoich urządzeniach.

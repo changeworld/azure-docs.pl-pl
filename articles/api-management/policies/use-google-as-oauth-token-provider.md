@@ -1,6 +1,6 @@
 ---
-title: Zasady usługi Azure API management przykładowy — autoryzować dostęp za pomocą protokołu Google OAuth token | Dokumentacja firmy Microsoft
-description: Przykład zasad zarządzania Azure interfejsu API — pokazuje, jak do autoryzowania dostępu do punktów końcowych przy użyciu Google jako dostawcę tokenu OAuth.
+title: Przykład zasad usługi Azure API Management — Autoryzuj dostęp przy użyciu tokenu Google OAuth | Microsoft Docs
+description: Przykład zasad zarządzania interfejsem API platformy Azure — pokazuje, jak autoryzować dostęp do punktów końcowych za pomocą usługi Google jako dostawcy tokenów OAuth.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -9,30 +9,29 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 430f9e57df163ad345f0740e5bd5beca6e892a4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7acc9071008937cd85c628878b385f1f53707e53
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859149"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70071922"
 ---
-# <a name="authorize-access-using-google-oauth-token"></a>Autoryzowanie dostępu za pomocą protokołu Google OAuth token
+# <a name="authorize-access-using-google-oauth-token"></a>Autoryzuj dostęp przy użyciu tokenu usługi Google OAuth
 
-W tym artykule przedstawiono przykładowy zasad zarządzania interfejsem API usługi Azure, który demonstruje sposób autoryzacji dostępu do punktów końcowych przy użyciu Google jako dostawcę tokenu OAuth. Można ustawiać lub edytować kod zasad, wykonaj czynności opisane w [zestawu lub Edytuj zasady](../set-edit-policies.md). Aby wyświetlić inne przykłady, zobacz [Przykłady zasad](../policy-samples.md).
+W tym artykule przedstawiono przykład zasad zarządzania interfejsem API platformy Azure, który pokazuje, jak autoryzować dostęp do punktów końcowych za pomocą usługi Google jako dostawcy tokenów OAuth. Aby ustawić lub edytować kod zasad, wykonaj kroki opisane w sekcji [Ustawianie lub edytowanie zasad](../set-edit-policies.md). Aby zapoznać się z innymi przykładami, zobacz [przykłady zasad](../policy-samples.md).
 
 ## <a name="policy"></a>Zasady
 
-Wklej kod do **dla ruchu przychodzącego** bloku.
+Wklej kod do bloku **przychodzącego** .
 
 [!code-xml[Main](../../../api-management-policy-samples/examples/Simple Google OAuth validate-jwt.policy.xml)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej na temat usługi APIM zasad:
+Dowiedz się więcej na temat zasad APIMymi:
 
 + [Zasady transformacji](../api-management-transformation-policies.md)
 + [Przykłady zasad](../policy-samples.md)

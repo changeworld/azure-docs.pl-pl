@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie maszyny wirtualnej platformy Azure przy użyciu programu Chef | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać programu Chef do wdrażania automatycznego maszyny wirtualnej i konfiguracji w systemie Microsoft Azure
+title: Wdrażanie maszyn wirtualnych platformy Azure przy użyciu usługi Chef | Microsoft Docs
+description: Dowiedz się, jak używać Chef do automatycznego wdrażania i konfigurowania maszyn wirtualnych na Microsoft Azure
 services: virtual-machines-windows
 documentationcenter: ''
 author: diegoviso
@@ -11,56 +11,55 @@ ms.assetid: 0b82ca70-89ed-496d-bb49-c04ae59b4523
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2019
 ms.author: diviso
-ms.openlocfilehash: 74b92c277b1d6eaa0984e55a70459bad59c2bf84
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 5cbf53da5a0af0a511350b9f30153e2fefe72dcf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719278"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70080079"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatyzowanie wdrażania maszyny wirtualnej platformy Azure przy użyciu narzędzia Chef
 
-Chef to doskonałe narzędzie do dostarczania automatyzacji i żądanego stanu konfiguracji.
+Chef to doskonałe narzędzie do dostarczania konfiguracji automatyzacji i żądanych stanów.
 
-Najnowsza wersja interfejsu API w chmurze Chef zapewnia bezproblemową integrację z platformą Azure, dzięki czemu możesz aprowizować i wdrażać stanami konfiguracji za pomocą jednego polecenia.
+Najnowsza wersja interfejsu API chmury Chef zapewnia bezproblemową integrację z platformą Azure, umożliwiając obsługę i wdrażanie Stanów konfiguracji za pomocą jednego polecenia.
 
-Ten artykuł służy do konfigurowania środowiska Chef do udostępniania maszyn wirtualnych platformy Azure i poznać dokładnie proces tworzenia zasad lub "Cookbook", a następnie wdrożenie ten podręcznik na maszynie wirtualnej platformy Azure.
+W tym artykule opisano Konfigurowanie środowiska Chef na potrzeby aprowizacji maszyn wirtualnych platformy Azure i instrukcje tworzenia zasad lub "Cookbook", a następnie wdrażania tego Cookbook na maszynie wirtualnej platformy Azure.
 
-## <a name="chef-basics"></a>Podstawy programu chef
-Przed przystąpieniem do wykonywania [zapoznaj się z podstawowymi informacjami dotyczącymi Chef](https://www.chef.io/chef).
+## <a name="chef-basics"></a>Chef — podstawy
+Przed rozpoczęciem [zapoznaj się z podstawowymi pojęciami](https://www.chef.io/chef)dotyczącymi Chef.
 
-Poniższy diagram przedstawia architekturę wysokiego poziomu Chef.
+Na poniższym diagramie przedstawiono architekturę Chef wysokiego poziomu.
 
 ![][2]
 
-Program chef ma trzy główne składniki architektury: Serwer programu chef, Chef klienta (node) i stacji roboczej programu Chef.
+Chef ma trzy główne składniki architektoniczne: Serwer Chef, klient Chef (Node) i Chef stacja robocza.
 
-Serwer programu Chef punkt zarządzania i dostępne są dwie opcje dla serwera programu Chef: hostowanego rozwiązania lub rozwiązaniem w firmie.
+Serwer Chef jest punktem zarządzania i dostępne są dwie opcje serwera Chef: rozwiązanie hostowane lub rozwiązanie lokalne.
 
-Klient programu Chef (node) jest agent, który znajduje się na serwerach, którymi zarządzasz.
+Klient Chef (węzeł) to Agent, który znajduje się na serwerach, którymi zarządzasz.
 
-Program Chef stacji roboczej, która jest nazwą zarówno przez administratora stacji roboczej, gdzie tworzenie zasad i wykonywania poleceń zarządzania i pakiet oprogramowania, narzędzi programu Chef.
+Stacja robocza Chef, która jest nazwą zarówno administracyjnej stacji roboczej, w której tworzysz zasady, jak i poleceniem wykonywania poleceń zarządzania oraz pakiet oprogramowania narzędzi Chef.
 
-Ogólnie rzecz biorąc, zobaczysz _stację roboczą_ jako lokalizacja, w którym należy wykonać czynności i _stacji roboczej Chef_ pakietu oprogramowania.
-Na przykład, konieczne będzie pobranie polecenia nóż jako część _stacji roboczej programu Chef_, ale polecenia nóż z _stację roboczą_ zarządzania infrastrukturą.
+Ogólnie rzecz biorąc, _stacja robocza_ będzie widoczna jako lokalizacja, w której wykonujesz akcje i _Chef stacji roboczej_ dla pakietu oprogramowania.
+Przykładowo pobierzesz polecenie nóż jako część _stacji roboczej Chef_, ale uruchamiasz polecenia nóż z _stacji roboczej_ , aby zarządzać infrastrukturą.
 
-Program chef korzysta z koncepcji "Podręczniki" i "Przepisów", które skutecznie są zasady, możemy zdefiniować i zastosować do serwerów.
+Chef używa również koncepcji "Podręczniki" i "przepisów", które są efektywnie zdefiniowanymi zasadami, które są stosowane do serwerów.
 
-## <a name="preparing-your-workstation"></a>Przygotowanie stacji roboczej
+## <a name="preparing-your-workstation"></a>Przygotowywanie stacji roboczej
 
-Po pierwsze przeznaczonego do przygotowania stację roboczą, tworząc katalog do przechowywania plików konfiguracyjnych programu Chef i podręczniki.
+Najpierw Utwórz katalog do przechowywania plików konfiguracji Chef i podręczniki.
 
 Utwórz katalog o nazwie C:\Chef.
 
-Pobierz i zainstaluj najnowszą wersję [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) wersji do stacji roboczej.
+Pobierz i zainstaluj najnowszą wersję [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) na stacji roboczej.
 
 ## <a name="configure-azure-service-principal"></a>Konfigurowanie jednostki usługi platformy Azure
 
-W najprostszej warunków i jednostki usługi platformy Azure jest konto usługi.   Firma Microsoft będzie używać nazwy głównej usługi Aby pomóc nam tworzenie zasobów platformy Azure ze stacji roboczej naszych Chef.  Aby utworzyć odpowiednie jednostki usługi z wymaganymi uprawnieniami, należy uruchomić następujące polecenia w programie PowerShell:
+W najprostszej terminologii, a nazwa główna usługi platformy Azure to konto usługi.   Będziemy używać nazwy głównej usługi, aby pomóc nam w tworzeniu zasobów platformy Azure z naszej stacji roboczej Chef.  Aby utworzyć odpowiednią jednostkę usługi z wymaganymi uprawnieniami, należy uruchomić następujące polecenia w programie PowerShell:
  
 ```powershell
 Login-AzureRmAccount
@@ -71,46 +70,46 @@ New-AzureRmADServicePrincipal -ApplicationId $myApplication.ApplicationId
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $myApplication.ApplicationId
 ```
 
-Prosimy o poświęcenie Zanotuj identyfikator subskrypcji, identyfikator dzierżawy, identyfikatora klienta i klucz tajny klienta (hasła, gdy ustawiasz powyżej), będzie on potrzebny później. 
+Zanotuj swój identyfikator subskrypcji, TenantID, ClientID i klucz tajny klienta (hasło ustawione powyżej). będzie on potrzebny później. 
 
-## <a name="setup-chef-server"></a>Konfigurowanie serwera programu Chef
+## <a name="setup-chef-server"></a>Skonfiguruj serwer Chef
 
-W tym przewodniku założono, że będzie zarejestrowaniu hostowany program Chef.
+W tym przewodniku przyjęto założenie, że zarejestrujesz się w usłudze hostowanej Chef.
 
-Jeśli jeszcze nie używasz serwera Chef, możesz to zrobić:
+Jeśli nie korzystasz jeszcze z serwera Chef, możesz:
 
-* Należy zasubskrybować [hostowany program Chef](https://manage.chef.io/signup), który jest najszybszym sposobem na rozpoczęcie pracy przy użyciu programu Chef.
-* Instalowanie autonomiczny serwer programu Chef na maszynie z opartą na systemie linux, zgodnie z [instrukcje dotyczące instalacji](https://docs.chef.io/install_server.html) z [dokumentacja programu Chef](https://docs.chef.io/).
+* Zarejestruj się w usłudze [hostowanej Chef](https://manage.chef.io/signup), która jest najszybszym sposobem na rozpoczęcie pracy z usługą Chef.
+* Zainstaluj autonomiczny serwer Chef na komputerze z systemem Linux, postępując zgodnie z [instrukcjami dotyczącymi instalacji](https://docs.chef.io/install_server.html) zawartymi w dokumentacji [Chef](https://docs.chef.io/).
 
-### <a name="creating-a-hosted-chef-account"></a>Tworzenie konta hostowany program Chef
+### <a name="creating-a-hosted-chef-account"></a>Tworzenie konta hostowanej Chef
 
-Załóż konto hostowane Chef [tutaj](https://manage.chef.io/signup).
+Utwórz konto hostowanej usługi Chef [tutaj](https://manage.chef.io/signup).
 
-W procesie rejestracji użytkownik jest proszony o Utwórz nową organizację.
+Podczas procesu rejestracji zostanie wyświetlony monit o utworzenie nowej organizacji.
 
 ![][3]
 
-Po utworzeniu Twojej organizacji, należy pobrać starter kit.
+Po utworzeniu organizacji Pobierz zestaw startowy.
 
 ![][4]
 
 > [!NOTE]
-> Jeśli zostanie wyświetlony monit, ostrzeżenie, klucze zostaną zresetowane, jest OK kontynuować, gdy będą dostępne nie istniejącej infrastruktury, jak jeszcze skonfigurowane.
+> Jeśli zostanie wyświetlony monit z ostrzeżeniem, że Twoje klucze zostaną zresetowane, nie będzie to możliwe, ponieważ nie skonfigurowano jeszcze istniejącej infrastruktury.
 >
 
-Ten plik zip zestawu starter zawiera pliki konfiguracji w organizacji i klucz użytkownika w `.chef` katalogu.
+Ten plik zip zestawu startowego zawiera pliki konfiguracji organizacji i klucz użytkownika w `.chef` katalogu.
 
-`organization-validator.pem` Należy go najpierw pobrać oddzielnie, ponieważ jest klucz prywatny i kluczy prywatnych nie powinien być przechowywany na serwerze programu Chef. Z [Zarządzanie Chef](https://manage.chef.io/), przejdź do sekcji Administracja i wybierz pozycję "Resetuj sprawdzania poprawności klucza", który zawiera plik do pobrania osobno. Zapisz plik c:\chef.
+`organization-validator.pem` Muszą być pobrane oddzielnie, ponieważ jest kluczem prywatnym, a klucze prywatne nie powinny być przechowywane na serwerze Chef. W obszarze [Zarządzanie Chef](https://manage.chef.io/)przejdź do sekcji Administracja i wybierz pozycję "Resetuj klucz weryfikacji", która udostępnia plik do pobrania osobno. Zapisz plik w c:\chef.
 
-### <a name="configuring-your-chef-workstation"></a>Konfigurowanie stacji roboczej programu Chef
+### <a name="configuring-your-chef-workstation"></a>Konfigurowanie stacji roboczej Chef
 
-Wyodrębnij zawartość starter.zip chef, aby c:\chef.
+Wyodrębnij zawartość pliku Chef-Starter. zip do c:\chef.
 
-Skopiuj wszystkie pliki w ramach programu chef starter\chef repozytorium\.chef z katalogiem c:\chef.
+Skopiuj wszystkie pliki w obszarze\.Chef-starter\chef-repo Chef do katalogu c:\chef.
 
-Kopiuj `organization-validator.pem` plik c:\chef, jeśli zostanie zapisany w c:\Downloads
+`organization-validator.pem` Skopiuj plik do c:\chef, jeśli jest zapisany w c:\Downloads
 
-Katalogu powinien teraz wyglądać jak w poniższym przykładzie.
+Katalog powinien teraz wyglądać podobnie do poniższego przykładu.
 
 ```powershell
     Directory: C:\Users\username\chef
@@ -128,13 +127,13 @@ d-----    12/6/2018   5:38 PM           roles
 -a----    12/6/2018   5:38 PM      2341 README.md
 ```
 
-Teraz masz pięć plików i katalogów cztery (w tym katalogu puste repozytorium firmy chef) w katalogu głównym c:\chef.
+Teraz należy mieć pięć plików i cztery katalogi (w tym pusty katalog Chef-repozytorium) w katalogu głównym c:\chef.
 
-### <a name="edit-kniferb"></a>Edytuj knife.rb
+### <a name="edit-kniferb"></a>Edytowanie nóż. RB
 
-Pliki PEM zawierają organizacji i administracyjnych kluczy prywatnych do komunikacji i plik knife.rb zawiera konfigurację Nóż. Konieczne będzie edytowanie pliku knife.rb.
+Pliki PEM zawierają Twoją organizację i administracyjne klucze prywatne do komunikacji, a plik nóż. RB zawiera konfigurację programu nóż. Będziemy musieli edytować plik nóż. RB.
 
-Otwórz plik knife.rb w wybranym edytorze. Niezmienione plik powinien wyglądać podobnie jak:
+Otwórz plik nóż. RB w wybranym edytorze. Niezmienionego pliku powinien wyglądać następująco:
 
 ```rb
 current_dir = File.dirname(__FILE__)
@@ -146,24 +145,24 @@ chef_server_url     "https://api.chef.io/organizations/myorg"
 cookbook_path       ["#{current_dir}/cookbooks"]
 ```
 
-Dodaj następujące informacje do swojej knife.rb:
+Dodaj następujące informacje do Twojego nóż. RB:
 
-validation_client_name "moduł sprawdzania myorg"
+validation_client_name "MyOrg-Walidator"
 
-validation_key           "#{current_dir}/myorg.pem"
+validation_key "#{current_dir}/myorg.pem"
 
-nóż [: azure_tenant_id] = "0000000-1111-aaaa-bbbb-222222222222"
+Nóż [: azure_tenant_id] = "0000000-1111-AAAA-bbbb-222222222222"
 
-nóż [: azure_subscription_id] = "11111111-bbbbb-cccc-1111-222222222222"
+Nóż [: azure_subscription_id] = "11111111-BBBBB-CCCC-1111-222222222222"
 
-knife[:azure_client_id] =         "11111111-bbbbb-cccc-1111-2222222222222"
+Nóż [: azure_client_id] = "11111111-BBBBB-CCCC-1111-2222222222222"
 
-knife[:azure_client_secret] =     "#1234p$wdchef19"
+Nóż [: azure_client_secret] = "#1234p $wdchef 19"
 
 
-Linie te zapewniają, że nóż odwołuje się do katalogu podręczniki, w obszarze c:\chef\cookbooks i używa wzorów jednostki usługi platformy Azure, który został utworzony podczas operacji na platformie Azure.
+Te linie zapewniają, że nóż odwołuje się do katalogu Podręczniki w obszarze c:\chef\cookbooks, a także używa jednostki usługi platformy Azure utworzonej podczas operacji platformy Azure.
 
-Plik knife.rb powinien teraz wyglądać podobnie do poniższego przykładu:
+Plik nóż. RB powinien teraz wyglądać podobnie do poniższego przykładu:
 
 ![][14]
 
@@ -189,14 +188,14 @@ knife[:azure_client_id] = "11111111-bbbbb-cccc-1111-2222222222222"
 knife[:azure_client_secret] = "#1234p$wdchef19"
 ```
 
-## <a name="install-chef-workstation"></a>Zainstaluj program Chef stacji roboczej
+## <a name="install-chef-workstation"></a>Zainstaluj stację roboczą Chef
 
-Następnie [Pobierz i zainstaluj](https://downloads.chef.io/chef-workstation/) stacji roboczej programu Chef.
-Zainstaluj Chef stacji roboczej domyślnej lokalizacji. Ta instalacja może potrwać kilka minut.
+Następnie [Pobierz i zainstaluj](https://downloads.chef.io/chef-workstation/) stację roboczą Chef.
+Zainstaluj stację roboczą Chef w domyślnej lokalizacji. Ta instalacja może potrwać kilka minut.
 
-Na komputerze stacjonarnym zobaczysz "efektywna PowerShell", który jest załadowany za pomocą narzędzia, które będą potrzebne do interakcji z produktów Chef środowiska. PowerShell efektywna udostępnia nowe polecenia ad-hoc, takich jak `chef-run` również jako tradycyjne CLI Chef, polecenia takie jak `chef`. Zobacz stacji roboczej programu Chef i narzędzia Chef z zainstalowaną wersją `chef -v`. Możesz również sprawdzić wersji stacji roboczej, wybierając pozycję "Dotyczące programu Chef stacji roboczej" z aplikacji stacji roboczej programu Chef.
+Na pulpicie zobaczysz "CW PowerShell", czyli środowisko załadowane za pomocą narzędzia potrzebnego do współdziałania z produktami Chef. W przypadku programu PowerShell dostępne są nowe polecenia ad hoc, takie `chef-run` jak, a także tradycyjne polecenia interfejsu CLI Chef, `chef`takie jak. Zapoznaj się z zainstalowaną wersją stacji roboczej Chef `chef -v`i narzędziami Chef w systemie. Możesz również sprawdzić wersję stacji roboczej, wybierając pozycję "informacje o Chef stacji roboczej" z aplikacji stacji roboczej Chef.
 
-`chef --version` powinny zostać zwrócone mniej więcej tak:
+`chef --version`powinien zwrócić podobny element:
 
 ```
 Chef Workstation: 0.4.2
@@ -209,51 +208,51 @@ Chef Workstation: 0.4.2
 ```
 
 > [!NOTE]
-> Ważna jest kolejność ścieżki! Jeśli Twoje ścieżki opscode nie znajdują się w odpowiedniej kolejności będziesz mieć problemy.
+> Kolejność ścieżki jest ważna. Jeśli ścieżki Opscode nie znajdują się w poprawnej kolejności, wystąpią problemy.
 >
 
-Uruchom ponownie stację roboczą, przed kontynuowaniem.
+Przed kontynuowaniem Uruchom ponownie stację roboczą.
 
-### <a name="install-knife-azure"></a>Zainstaluj nóż platformy Azure
+### <a name="install-knife-azure"></a>Zainstaluj program nóż Azure
 
-Ten samouczek zakłada, że używasz usługi Azure Resource Manager do interakcji z maszyną wirtualną.
+W tym samouczku założono, że używasz Azure Resource Manager do współpracy z maszyną wirtualną.
 
-Zainstaluj rozszerzenie Azure Nóż. Dzięki temu nóż za pomocą wtyczki"Azure".
+Zainstaluj rozszerzenie nóż platformy Azure. Zapewnia to nóż przy użyciu "wtyczki platformy Azure".
 
 Uruchom następujące polecenie.
 
     chef gem install knife-azure ––pre
 
 > [!NOTE]
-> Argument — wstępnie gwarantuje, że otrzymujesz najnowszej wersji RC nóż wtyczka platformy Azure, która zapewnia dostęp do najnowszych zestaw interfejsów API.
+> Argument – pre zapewnia otrzymywanie najnowszej wersji RC wtyczki programu nóż platformy Azure, która zapewnia dostęp do najnowszego zestawu interfejsów API.
 >
 >
 
-Istnieje prawdopodobieństwo, że liczba zależności, także zostaną zainstalowane w tym samym czasie.
+Prawdopodobnie zostanie również zainstalowana wiele zależności w tym samym czasie.
 
 ![][8]
 
-Aby upewnić się, że wszystko jest poprawnie skonfigurowane, uruchom następujące polecenie.
+Aby upewnić się, że wszystko jest prawidłowo skonfigurowane, uruchom następujące polecenie.
 
     knife azurerm server list
 
-Jeśli wszystko jest poprawnie skonfigurowane, zobaczysz listę przewijanie dostępne obrazy platformy Azure.
+Jeśli wszystko jest prawidłowo skonfigurowane, zostanie wyświetlona lista dostępnych obrazów platformy Azure.
 
-Gratulacje. Konfigurowanie stacji roboczej!
+Gratulacje. Stacja robocza została skonfigurowana!
 
-## <a name="creating-a-cookbook"></a>Podręcznik opisujący tworzenie
+## <a name="creating-a-cookbook"></a>Tworzenie Cookbook
 
-Podręcznik opisujący jest używany przez program Chef zdefiniować zestaw poleceń, które chcesz wykonać na komputerze klienckim zarządzanych. Podręcznik opisujący tworzenie jest proste, wystarczy użyć **chef Generowanie cookbook** polecenie, aby wygenerować szablonu Cookbook. Ten podręcznik jest dla serwera sieci web, która automatycznie wdraża usług IIS.
+Cookbook jest używany przez Chef do definiowania zestawu poleceń, które mają zostać wykonane na zarządzanym kliencie. Tworzenie Cookbook jest proste, po prostu Użyj polecenia **Chef Generate Cookbook** , aby wygenerować szablon Cookbook. Ten Cookbook dotyczy serwera sieci Web, który automatycznie wdraża usługi IIS.
 
-W katalogu C:\Chef uruchom następujące polecenie.
+W katalogu C:\Chef Uruchom następujące polecenie.
 
     chef generate cookbook webserver
 
-To polecenie generuje zestaw plików w katalogu C:\Chef\cookbooks\webserver. Następnie zdefiniuj zestaw poleceń do wykonania w zarządzanej maszyny wirtualnej przez klienta programu Chef.
+To polecenie generuje zestaw plików w katalogu C:\Chef\cookbooks\webserver. Następnie zdefiniuj zestaw poleceń dla klienta Chef do wykonania na zarządzanej maszynie wirtualnej.
 
-Polecenia są przechowywane w default.rb pliku. W tym pliku należy zdefiniować zestaw poleceń, który instaluje usługi IIS, uruchomienie usług IIS i kopiuje plik szablonu do folderu wwwroot.
+Polecenia są przechowywane w pliku default. RB. W tym pliku Zdefiniuj zestaw poleceń, które instalują usługi IIS, uruchamia usługi IIS i kopiuje plik szablonu do folderu wwwroot.
 
-Zmodyfikuj plik C:\chef\cookbooks\webserver\recipes\default.rb i dodaj następujące wiersze.
+Zmodyfikuj plik C:\chef\cookbooks\webserver\recipes\default.RB i Dodaj następujące wiersze.
 
     powershell_script 'Install IIS' do
          action :run
@@ -269,30 +268,30 @@ Zmodyfikuj plik C:\chef\cookbooks\webserver\recipes\default.rb i dodaj następuj
          rights :read, 'Everyone'
     end
 
-Gdy skończysz, Zapisz plik.
+Zapisz plik po zakończeniu.
 
 ## <a name="creating-a-template"></a>Tworzenie szablonu
-W tym kroku zostanie wygenerowany plik szablonu do używana jako strona default.html.
+W tym kroku zostanie wygenerowany plik szablonu, który będzie używany jako domyślna strona HTML.
 
-Uruchom następujące polecenie, aby wygenerować szablonu:
+Uruchom następujące polecenie, aby wygenerować szablon:
 
     chef generate template webserver Default.htm
 
-Przejdź do `C:\chef\cookbooks\webserver\templates\default\Default.htm.erb` pliku. Edytuj plik, dodając kilka prostych kodów "Hello World" HTML, a następnie zapisz plik.
+Przejdź do `C:\chef\cookbooks\webserver\templates\default\Default.htm.erb` pliku. Edytuj plik, dodając prosty kod HTML "Hello world", a następnie Zapisz plik.
 
-## <a name="upload-the-cookbook-to-the-chef-server"></a>Przekaż Cookbook na serwer programu Chef
-W tym kroku możesz utworzyć kopię Cookbook, które zostały utworzone na komputerze lokalnym i przekaż go do serwera hostowanej Chef. Po przekazaniu plików Cookbook pojawia się w obszarze **zasad** kartę.
+## <a name="upload-the-cookbook-to-the-chef-server"></a>Przekaż Cookbook do serwera Chef
+W tym kroku utworzysz kopię Cookbook utworzoną na komputerze lokalnym i przekażesz ją do hostowanego serwera Chef. Po przekazaniu Cookbook pojawia się na karcie **zasady** .
 
     knife cookbook upload webserver
 
 ![][9]
 
-## <a name="deploy-a-virtual-machine-with-knife-azure"></a>Wdrażanie maszyny wirtualnej z systemem Azure nóż
-Wdrażanie maszyny wirtualnej platformy Azure i stosowanie Cookbook "Serwer sieci Web", który instaluje usługi IIS sieci web usługi i domyślne strony sieci web.
+## <a name="deploy-a-virtual-machine-with-knife-azure"></a>Wdrażanie maszyny wirtualnej przy użyciu programu nóż platformy Azure
+Wdróż maszynę wirtualną platformy Azure i Zastosuj Cookbook "WebServer", który zainstaluje usługę sieci Web usług IIS i domyślną stronę sieci Web.
 
-Aby to zrobić, należy użyć **Tworzenie serwera usługi azurerm nóż** polecenia.
+Aby to zrobić, użyj polecenia **nóż azurerm Server Create** .
 
-Przykład polecenia pojawia się obok.
+Przykład polecenia pojawia się dalej.
 
     knife azurerm server create `
     --azure-resource-group-name rg-chefdeployment `
@@ -310,34 +309,34 @@ Przykład polecenia pojawia się obok.
     -r "recipe[webserver]"
 
 
-W powyższym przykładzie utworzy Standard_DS2_v2 maszyny wirtualnej z systemem Windows Server 2016 zainstalowany w regionie zachodnie stany USA. Zastąp określonego zmiennych i uruchom.
+W powyższym przykładzie zostanie utworzona maszyna wirtualna Standard_DS2_v2 z systemem Windows Server 2016 w regionie zachodnie stany USA. Zastąp określone zmienne i uruchom je.
 
 > [!NOTE]
-> Za pośrednictwem wiersza polecenia I jestem również Automatyzowanie reguł filtra punktu końcowego sieci przy użyciu parametru punkty końcowe — tcp. Czy mogę zostało otwarte porty 80 i 3389, aby zapewnić dostęp do stron sieci web i sesję RDP.
+> Za pomocą wiersza polecenia mam również zautomatyzować reguły filtru sieci punktu końcowego przy użyciu parametru – TCP-Endpoints. Otwarto porty 80 i 3389 w celu zapewnienia dostępu do strony sieci Web i sesji RDP.
 >
 >
 
-Po uruchomieniu polecenia, przejdź do witryny Azure portal, aby zobaczyć maszynie rozpocząć aprowizację.
+Po uruchomieniu polecenia przejdź do Azure Portal, aby zobaczyć, że komputer rozpoczął udostępnianie.
 
 ![][15]
 
-Pojawia się obok wiersza polecenia.
+Zostanie wyświetlony wiersz polecenia dalej.
 
 ![][16]
 
-Po zakończeniu wdrożenia publiczny adres IP nowej maszyny wirtualnej pojawi się po zakończeniu wdrożenia, możesz to skopiować i wkleić go do przeglądarki sieci web i wyświetlić witrynę sieci Web, która została wdrożona. Wdrożyliśmy maszyny wirtualnej możemy otworzyć port 80, dlatego powinien być dostępny zewnętrznie.   
+Po zakończeniu wdrażania, publiczny adres IP nowej maszyny wirtualnej będzie wyświetlany po zakończeniu wdrażania, można skopiować ten plik i wkleić go do przeglądarki internetowej i wyświetlić wdrożoną witrynę sieci Web. Po wdrożeniu maszyny wirtualnej, która otworzyła port 80, dlatego powinna być dostępna zewnętrznie.   
 
 ![][11]
 
-W tym przykładzie użyto creative kodu HTML.
+Ten przykład używa Creative kod HTML.
 
-Można również wyświetlić stan węzła [Zarządzanie Chef](https://manage.chef.io/). 
+Możesz również wyświetlić stan węzła [Chef zarządzanie](https://manage.chef.io/). 
 
 ![][17]
 
-Pamiętaj, że możesz również łączyć się za pośrednictwem sesji protokołu RDP w witrynie Azure portal za pośrednictwem portu 3389.
+Nie zapomnij, że można także nawiązać połączenie za pośrednictwem sesji RDP z Azure Portal za pośrednictwem portu 3389.
 
-Dziękuję! Go i Rozpocznij infrastruktury jako kodu pracy na platformie Azure już dzisiaj!
+Dziękuję! Zacznij pracę z infrastrukturą jako z platformą Azure już dzisiaj!
 
 <!--Image references-->
 [2]: media/chef-automation/2.png

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
 ms.openlocfilehash: 5a4a46b8384da46a95ef148bc9989749535ec811
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 08/28/2019
 ms.locfileid: "67615333"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Utwórz kontroler transferu danych przychodzących ze statycznym publicznym adresem IP w usłudze Azure Kubernetes Service (AKS)
@@ -386,7 +386,7 @@ Na koniec Usuń statyczny publiczny adres IP utworzony dla kontrolera transferu 
 az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule uwzględniono niektóre składniki zewnętrzne do AKS. Aby dowiedzieć się więcej o tych składnikach, zobacz następujące strony projektu:
 

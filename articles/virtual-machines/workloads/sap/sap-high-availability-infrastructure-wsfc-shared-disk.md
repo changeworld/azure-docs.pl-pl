@@ -10,19 +10,18 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: ec976257-396b-42a0-8ea1-01c97f820fa6
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b4e107da9d8e5019ba51769d283f3faa34839380
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 63a2a3a68adaa2e389cc2af173c8f75a18fbc36d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67709252"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078704"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Przygotowanie infrastruktury platformy Azure dla oprogramowania SAP HA przy użyciu klastra trybu failover systemu Windows i dysku udostępnionego dla oprogramowania SAP ASCS/SCS
 
@@ -525,7 +524,7 @@ Jeśli chcesz użyć różnych numerów dla wystąpień SAP ASCS lub SCS, należ
 1. W Azure Portal wybierz > kolejno  **\<pozycje\>SID-lb-ASCS** **reguły równoważenia obciążenia**.
 2. Dla wszystkich reguł równoważenia obciążenia należących do wystąpienia SAP ASCS lub SCS Zmień następujące wartości:
 
-   * Name (Nazwa)
+   * Name
    * Port
    * Port zaplecza
 

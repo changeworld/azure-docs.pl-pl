@@ -1,27 +1,27 @@
 ---
-title: Utwórz aplikację funkcji platformy Azure przy użyciu języka Java i środowiska Eclipse | Dokumentacja firmy Microsoft
-description: Przewodnik do tworzenia i publikowania prostego HTTP wyzwalane aplikacji bez użycia serwera za pomocą języka Java i Eclipse do usługi Azure Functions.
+title: Tworzenie aplikacji funkcji platformy Azure przy użyciu języka Java i przezaćmienie | Microsoft Docs
+description: Przewodnik po tworzeniu i publikowaniu prostej wyzwalanej przez protokół HTTP aplikacji bezserwerowej przy użyciu języka Java i przejściu do Azure Functions.
 services: functions
 documentationcenter: na
 author: jeffhollan
 manager: jpconnock
-keywords: Azure funkcji, funkcje, przetwarzanie zdarzeń, obliczeniowych, architektura bezserwerowa, języka java
+keywords: usługa Azure Functions, funkcje, przetwarzanie zdarzeń, obliczenia, architektura bezserwerowa, Java
 ms.service: azure-functions
-ms.devlang: java
 ms.topic: conceptual
+ms.devlang: java
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9dcc959e51aa42fd6ef3173dba2aec8d9970deb1
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: b2f5567e037c65d7650b3f95a2ee81b93ac987b7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67154597"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70085867"
 ---
-# <a name="create-your-first-function-with-java-and-eclipse"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i Eclipse 
+# <a name="create-your-first-function-with-java-and-eclipse"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i przezaćmienie 
 
-W tym artykule przedstawiono sposób tworzenia [bezserwerowe](https://azure.microsoft.com/solutions/serverless/) projektu funkcji za pomocą środowiska Eclipse IDE i narzędzia Apache Maven testowania i debugowania, a następnie wdrożyć go w usłudze Azure Functions. 
+W tym artykule pokazano, jak utworzyć projekt funkcji bez użycia [serwera](https://azure.microsoft.com/solutions/serverless/) za pomocą środowiska IDE i Apache Maven, przetestować go i debugować, a następnie wdrożyć go w Azure Functions. 
 
 <!-- TODO ![Access a Hello World function from the command line with cURL](media/functions-create-java-maven/hello-azure.png) -->
 
@@ -29,62 +29,62 @@ W tym artykule przedstawiono sposób tworzenia [bezserwerowe](https://azure.micr
 
 ## <a name="set-up-your-development-environment"></a>Konfigurowanie środowiska projektowego
 
-Aby opracować aplikacje funkcji przy użyciu języka Java i Eclipse, musi mieć zainstalowane następujące oprogramowanie:
+Aby opracować aplikację funkcji w języku Java i przezaćmieniu, musisz mieć zainstalowane następujące elementy:
 
 -  Zestaw [Java Developer Kit](https://www.azul.com/downloads/zulu/), wersja 8.
 -  Narzędzie [Apache Maven](https://maven.apache.org), wersja 3.0 lub nowsza.
--  [Eclipse](https://www.eclipse.org/downloads/packages/), za pomocą języka Java i Maven obsługuje.
+-  [](https://www.eclipse.org/downloads/packages/)Przezaćmienie z obsługą języka Java i Maven.
 -  [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure)
 
 > [!IMPORTANT] 
 > Aby wykonać wszystkie czynności opisane w tym przewodniku Szybki start, dla zmiennej środowiskowej JAVA_HOME należy ustawić lokalizację instalacji zestawu JDK.
 
-Zdecydowanie zalecane jest również instalowanie [funkcji podstawowych narzędzi usługi Azure, wersja 2](functions-run-local.md#v2), które zapewniają środowiska lokalnego do uruchamiania i debugowania usługi Azure Functions. 
+Zdecydowanie zaleca się także zainstalowanie [Azure Functions Core Tools w wersji 2](functions-run-local.md#v2), która zapewnia lokalne środowisko do uruchamiania i debugowania Azure Functions. 
 
 ## <a name="create-a-functions-project"></a>Tworzenie projektu funkcji
 
-1. W środowisku Eclipse wybierz **pliku** menu, następnie wybierz pozycję **New -&gt; Projekt narzędzia Maven**. 
-1. Zaakceptuj ustawienia domyślne w **nowy projekt narzędzia Maven** dialog i wybierz **dalej**.
-1. Wybierz **Dodaj Archetype** i Dodaj pozycje dla [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
-    - Identyfikator grupy archetype: com.microsoft.azure
-    - Archetype identyfikator artefaktu: azure-functions-archetype
-    - Wersja: Użyj najnowszej wersji **1.22** z [centralne repozytorium](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![tworzenie Maven środowiska Eclipse](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
-1. Kliknij przycisk **OK** a następnie kliknij przycisk **dalej** na wprowadzanie wartości, takich jak następującej migawki (Użyj różnych appName innych niż **fabrikam funkcja-20170920120101928**), i Po pewnym czasie **Zakończ**.
-    ![Create2 Maven w środowisku Eclipse](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
+1. W obszarze zaćmienie wybierz menu **plik** , a następnie wybierz polecenie **New&gt; -Maven Project**. 
+1. Zaakceptuj wartości domyślne w oknie dialogowym **Nowy projekt Maven** i wybierz pozycję **dalej**.
+1. Wybierz pozycję **Dodaj Archetype** i Dodaj wpisy dla [funkcji Azure-Functions-Archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype).
+    - Identyfikator grupy Archetype: com. Microsoft. Azure
+    - Identyfikator artefaktu Archetype: Azure-Functions-Archetype
+    - Wersja: Użyj najnowszej wersji **1,22** z [repozytorium](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    ![centralnego przezaćmienie Maven Create](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
+1. Kliknij przycisk **OK** , a następnie kliknij przycisk **dalej** , aby wprowadzić wartości takie jak następująca migawka (Użyj innego argumentu niż **Fabrikam-Function-20170920120101928**) i ostatecznie **Zakończ**.
+    ![Zaćmienie Maven create2](media/functions-create-first-java-eclipse/functions-create-eclipse2.png)  
 
-Narzędzie Maven tworzy pliki projektu w nowym folderze o nazwie wartości _artifactId_. Kod wygenerowany w projekcie jest prostą [wyzwalaną przez protokół HTTP](/azure/azure-functions/functions-bindings-http-webhook) funkcja, która zwraca treść wyzwalająca żądania HTTP.
+Narzędzie Maven tworzy pliki projektu w nowym folderze o nazwie wartości _artifactId_. Wygenerowany kod w projekcie jest prostą funkcją wyzwalaną przez [protokół http](/azure/azure-functions/functions-bindings-http-webhook) , która umożliwia echo treści wyzwalanego żądania HTTP.
 
-## <a name="run-functions-locally-in-the-ide"></a>Uruchom funkcje lokalnie w środowisku IDE
+## <a name="run-functions-locally-in-the-ide"></a>Uruchamianie funkcji lokalnie w środowisku IDE
 
 > [!NOTE]
-> [Podstawowe narzędzia usługi Azure Functions, wersja 2](functions-run-local.md#v2) musi być zainstalowany na uruchamianie i debugowanie funkcji lokalnie.
+> [Azure Functions Core Tools należy zainstalować wersję 2,](functions-run-local.md#v2) aby uruchamiać i debugować funkcje lokalnie.
 
-1. Kliknij prawym przyciskiem myszy na wygenerowanego projektu, a następnie wybierz **Uruchom jako** i **kompilacji narzędzia Maven**.
-1. W **Edycja konfiguracji** okno dialogowe, wprowadź `package` w **cele** i **nazwa** pól, następnie wybierz pozycję **Uruchom**. To skompiluje oraz pakiet kodu funkcji.
-1. Po zakończeniu kompilacji należy utworzyć inny konfiguracji Uruchom jak powyżej, za pomocą `azure-functions:run` jako cel i nazwa. Wybierz **Uruchom** do uruchomienia tej funkcji w środowisku IDE.
+1. Kliknij prawym przyciskiem myszy wygenerowany projekt, a następnie wybierz polecenie **Uruchom jako** i **Maven kompilację**.
+1. W oknie **dialogowym Edytowanie konfiguracji** wprowadź `package` wartość w polach **cele** i **Nazwa** , a następnie wybierz pozycję **Uruchom**. Spowoduje to skompilowanie i spakowanie kodu funkcji.
+1. Po zakończeniu kompilacji Utwórz inną konfigurację uruchomieniową jak powyżej, używając `azure-functions:run` jako celu i nazwy. Wybierz pozycję **Uruchom** , aby uruchomić funkcję w środowisku IDE.
 
-Zakończenie środowiska uruchomieniowego w oknie konsoli po zakończeniu testowania funkcji. Tylko jednej funkcji — host może być aktywny i działa lokalnie w danym momencie.
+Przerwij środowisko uruchomieniowe w oknie konsoli po zakończeniu testowania funkcji. Tylko jeden host funkcji może być aktywny i uruchamiany lokalnie.
 
-### <a name="debug-the-function-in-eclipse"></a>Debugowanie funkcji w środowisku Eclipse
+### <a name="debug-the-function-in-eclipse"></a>Debuguj funkcję w programie zaćmienie
 
-W swojej **Uruchom jako** w poprzednim kroku, a zmiana konfiguracji `azure-functions:run` do `azure-functions:run -DenableDebug` i uruchomić zaktualizowaną konfiguracją można uruchomić aplikacji funkcji w trybie debugowania.
+W ramach konfiguracji **Uruchom jako** skonfigurowanej w poprzednim kroku Zmień `azure-functions:run` na `azure-functions:run -DenableDebug` i uruchom zaktualizowaną konfigurację, aby uruchomić aplikację funkcji w trybie debugowania.
 
-Wybierz **Uruchom** menu i Otwórz **Debuguj konfiguracje**. Wybierz **zdalna aplikacja Java** i Utwórz nowe. Nadaj nazwę konfiguracji, a następnie wypełnij ustawienia. Port powinien być zgodny z portu debugowania otwierane przez hosta funkcji, która domyślnie jest `5005`. Po zakończeniu instalacji, kliknij pozycję `Debug` można rozpocząć debugowania.
+Wybierz menu **Uruchom** i Otwórz aplet **konfiguracje debugowania**. Wybierz pozycję **zdalna aplikacja Java** i Utwórz nową. Nadaj nazwę konfiguracji i wprowadź ustawienia. Port powinien być zgodny z portem debugowania otwartym przez hosta funkcji, który domyślnie jest `5005`. Po zakończeniu instalacji kliknij przycisk `Debug` Włącz, aby rozpocząć debugowanie.
 
-![Debugowanie funkcji w środowisku Eclipse](media/functions-create-first-java-eclipse/debug-configuration-eclipse.PNG)
+![Funkcje debugowania w programie zaćmienie](media/functions-create-first-java-eclipse/debug-configuration-eclipse.PNG)
 
-Ustaw punkty przerwania i zbadaj obiekty w funkcji za pomocą środowiska IDE. Po zakończeniu Zatrzymaj debuger i uruchamianie hosta funkcji. Tylko jednej funkcji — host może być aktywny i działa lokalnie w danym momencie.
+Ustaw punkty przerwania i sprawdź obiekty w funkcji przy użyciu środowiska IDE. Po zakończeniu Zatrzymaj debugera i działającego hosta funkcji. Tylko jeden host funkcji może być aktywny i uruchamiany lokalnie.
 
 ## <a name="deploy-the-function-to-azure"></a>Wdrażanie funkcji na platformie Azure
 
-Proces wdrażania w usłudze Azure Functions korzysta z poświadczeń konta z interfejsu wiersza polecenia platformy Azure. [Zaloguj się przy użyciu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) przed kontynuowaniem, przy użyciu wiersza polecenia na komputerze.
+Proces wdrażania w usłudze Azure Functions korzysta z poświadczeń konta z interfejsu wiersza polecenia platformy Azure. [Zaloguj się przy użyciu interfejsu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli?view=azure-cli-latest) przed kontynuowaniem korzystania z wiersza poleceń komputera.
 
 ```azurecli
 az login
 ```
 
-Wdróż swój kod w nowej funkcji aplikacji, używając `azure-functions:deploy` celem narzędzia Maven w nowym **Uruchom jako** konfiguracji.
+Wdróż swój kod w nowej aplikacji funkcji przy użyciu `azure-functions:deploy` celu Maven w nowej konfiguracji **Uruchom jako** .
 
 Po zakończeniu wdrażania zostanie wyświetlony adres URL umożliwiający uzyskanie dostępu do aplikacji funkcji platformy Azure:
 
@@ -96,7 +96,7 @@ Po zakończeniu wdrażania zostanie wyświetlony adres URL umożliwiający uzysk
 [INFO] ------------------------------------------------------------------------
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Zapoznaj się z [Przewodnikiem dewelopera po funkcjach języka Java](functions-reference-java.md), aby uzyskać więcej informacji na temat tworzenia funkcji języka Java.
 - Dodaj do swojego projektu kolejne funkcje z różnymi wyzwalaczami, używając elementu docelowego `azure-functions:add` narzędzia Maven.

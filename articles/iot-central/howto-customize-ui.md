@@ -3,17 +3,17 @@ title: Dostosowywanie interfejsu użytkownika usługi Azure IoT Central | Micros
 description: Jak dostosować motyw i linki pomocy dla aplikacji Azure IoT Central
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/25/2019
+ms.date: 08/26/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 28a0e91befb717882aa202a776e0b9cddb8fd390
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: faef72fc00727125eef3f98641754e0e78dde3e1
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876102"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068042"
 ---
 # <a name="customize-the-azure-iot-central-ui"></a>Dostosowywanie interfejsu użytkownika usługi Azure IoT Central
 
