@@ -1,6 +1,6 @@
 ---
-title: Prześlij opinię na temat zdarzeń o podwyższonym ryzyku w Azure AD Identity Protection-Azure Active Directory
-description: Jak i dlaczego należy przekazać informacje zwrotne o zdarzeniach dotyczących ryzyka związanego z ochroną tożsamości.
+title: Prześlij opinię na temat wykrywania ryzyka w Azure AD Identity Protection-Azure Active Directory
+description: Jak i dlaczego należy przekazać informacje zwrotne na temat wykrywania ryzyka ochrony tożsamości.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bd0984a78860192f507323491952e895c8de8bf
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 32480e66a71c9e706b1f3eee1a3d459737120c5c
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370200"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126326"
 ---
 # <a name="how-to-give-risk-feedback-in-azure-ad-identity-protection"></a>Instrukcje: Prześlij opinię na temat ryzyka w Azure AD Identity Protection
 
@@ -24,7 +24,7 @@ Azure AD Identity Protection pozwala przesłać opinię na temat oceny ryzyka. W
 
 ## <a name="what-is-a-detection"></a>Co to jest wykrywanie?
 
-Wykrywanie ochrony tożsamości jest wskaźnikiem podejrzanych działań z perspektywy ryzyka związanego z tożsamościami. Te podejrzane działania są nazywane zdarzeniami ryzyka. Te wykrywane tożsamości mogą opierać się na algorytmach heurystycznych, uczeniu maszynowym lub w produktach partnerskich. Te wykrycia służą do określania ryzyka związanego z logowaniem i ryzykiem użytkownika,
+Wykrywanie ochrony tożsamości jest wskaźnikiem podejrzanych działań z perspektywy ryzyka związanego z tożsamościami. Te podejrzane działania są nazywane wykryciami ryzyka. Te wykrywane tożsamości mogą opierać się na algorytmach heurystycznych, uczeniu maszynowym lub w produktach partnerskich. Te wykrycia służą do określania ryzyka związanego z logowaniem i ryzykiem użytkownika,
 
 * Ryzyko użytkownika reprezentuje prawdopodobieństwo naruszenia zabezpieczeń tożsamości.
 * Ryzyko związane z logowaniem reprezentuje prawdopodobieństwo naruszenia zabezpieczeń logowania (na przykład logowanie nie jest autoryzowane przez właściciela tożsamości).
@@ -49,15 +49,15 @@ Poniżej przedstawiono scenariusze i mechanizmy zapewniające zwrot informacji o
 | --- | --- | --- | --- |
 | **Logowanie nie zostało naruszone (Wynik fałszywie dodatni)** <br> Raport "ryzykowne logowania" pokazuje logowanie na ryzyko [stan ryzyka = zagrożone], ale nie naruszono naruszenia zabezpieczeń logowania. | Wybierz Logowanie i kliknij pozycję "Potwierdź bezpieczne logowanie". | Usługa Azure AD przeniesie zagregowane ryzyko związane z logowaniem do nie [stan ryzyka = potwierdzone bezpieczne; Poziom ryzyka (zagregowany) =-] i zmieni wpływ na ryzyko użytkownika. | Obecnie opcja "Potwierdź bezpieczne logowanie" jest dostępna tylko w raporcie "ryzykowne logowania". |
 | **Złamane logowanie (prawdziwe pozytywnie)** <br> Raport "ryzykowne logowania" pokazuje logowanie zagrożone ryzykiem [stan ryzyka = zagrożone] z niskim ryzykiem [poziom ryzyka (zagregowany) = niski], a zalogowanie zostało rzeczywiście naruszone. | Wybierz Logowanie i kliknij pozycję "Potwierdź naruszenie zabezpieczeń logowania". | Usługa Azure AD przeniesie zagregowane ryzyko związane z logowaniem i ryzyko dla użytkownika wysokie [stan ryzyka = potwierdzone zabezpieczenia; Poziom ryzyka = wysoki]. | Obecnie opcja "Potwierdź naruszenie zabezpieczeń logowania" jest dostępna tylko w raporcie "ryzykowne logowania". |
-| **Naruszone przez użytkownika (true pozytywna)** <br> Raport "ryzykowni użytkownicy" pokazuje użytkownika o podwyższonym ryzyku [stan ryzyka = zagrożone] z niskim ryzykiem [poziom ryzyka = niski] i ten użytkownik rzeczywiście naruszony. | Wybierz użytkownika i kliknij opcję "Potwierdź naruszenie zabezpieczeń przez użytkownika". | Usługa Azure AD przeniesie ryzyko użytkownika do wysokiego [stanu ryzyka = potwierdzone zabezpieczenia; Poziom ryzyka = wysoki] i zostanie dodany nowy wykrycie "Administrator potwierdził". | Obecnie opcja "Potwierdź złamany użytkownik" jest dostępna tylko w raporcie "ryzykowne użytkownicy". <br> Wykrywanie "zabezpieczenia potwierdzone przez administratora" zostało pokazane na karcie "zdarzenia ryzyka, które nie są powiązane z logowaniem" w raporcie "ryzykowne użytkownicy". |
+| **Naruszone przez użytkownika (true pozytywna)** <br> Raport "ryzykowni użytkownicy" pokazuje użytkownika o podwyższonym ryzyku [stan ryzyka = zagrożone] z niskim ryzykiem [poziom ryzyka = niski] i ten użytkownik rzeczywiście naruszony. | Wybierz użytkownika i kliknij opcję "Potwierdź naruszenie zabezpieczeń przez użytkownika". | Usługa Azure AD przeniesie ryzyko użytkownika do wysokiego [stanu ryzyka = potwierdzone zabezpieczenia; Poziom ryzyka = wysoki] i zostanie dodany nowy wykrycie "Administrator potwierdził". | Obecnie opcja "Potwierdź złamany użytkownik" jest dostępna tylko w raporcie "ryzykowne użytkownicy". <br> Wykrywanie "zabezpieczenia potwierdzone przez administratora" zostało pokazane na karcie "wykrycia ryzyka, które nie są połączone z logowaniem" w raporcie "ryzykowne użytkownicy". |
 | **Skorygowano użytkownika poza Azure AD Identity Protection (prawdziwe pozytywne + skorygowane)** <br> Raport "ryzykowni użytkownicy" pokazuje użytkownika o podwyższonym ryzyku, a następnie koryguje użytkownika poza Azure AD Identity Protection. | 1. Wybierz użytkownika i kliknij opcję "Potwierdź naruszenie zabezpieczeń przez użytkownika". (Ten proces umożliwia potwierdzenie, że użytkownik rzeczywiście naruszony usługi Azure AD). <br> 2. Poczekaj, aż użytkownik "poziom ryzyka" przejdzie do pozycji wysoki. (Ten czas umożliwia usłudze Azure AD konieczny czas na przejęcie powyższej opinii do aparatu ryzyka). <br> 3. Wybierz użytkownika, a następnie kliknij pozycję "Odrzuć ryzyko użytkownika". (Ten proces potwierdza, że usługa Azure AD nie jest już naruszona.) |  Usługa Azure AD przenosi ryzyko użytkownika na brak [stan ryzyka = odrzucone; Poziom ryzyka =-] i zamyka ryzyko związane ze wszystkimi istniejącymi logowaniami z aktywnym ryzykiem. | Kliknięcie przycisku "Odrzuć ryzyko użytkownika" spowoduje zamknięcie wszystkich zagrożeń dotyczących użytkownika i poprzednich logowań. Tej akcji nie można cofnąć. |
 | **Użytkownik nie został naruszony (fałszywie dodatni)** <br> Raport "ryzykowni użytkownicy" pojawia się na użytkowniku, ale nie został naruszony. | Wybierz użytkownika, a następnie kliknij pozycję "Odrzuć ryzyko użytkownika". (Ten proces służy do potwierdzenia, że użytkownik nie został naruszony, za pomocą usługi Azure AD). | Usługa Azure AD przenosi ryzyko użytkownika na brak [stan ryzyka = odrzucone; Poziom ryzyka =-]. | Kliknięcie przycisku "Odrzuć ryzyko użytkownika" spowoduje zamknięcie wszystkich zagrożeń dotyczących użytkownika i poprzednich logowań. Tej akcji nie można cofnąć. |
 | Chcę zamknąć ryzyko związane z użytkownikiem, ale nie mam pewności, czy użytkownik został złamany/bezpieczny. | Wybierz użytkownika, a następnie kliknij pozycję "Odrzuć ryzyko użytkownika". (Ten proces potwierdza, że usługa Azure AD nie jest już naruszona.) | Usługa Azure AD przenosi ryzyko użytkownika na brak [stan ryzyka = odrzucone; Poziom ryzyka =-]. | Kliknięcie przycisku "Odrzuć ryzyko użytkownika" spowoduje zamknięcie wszystkich zagrożeń dotyczących użytkownika i poprzednich logowań. Tej akcji nie można cofnąć. Zalecamy skorygowanie użytkownika, klikając pozycję "Resetuj hasło" lub poprosić użytkownika o bezpieczne zresetowanie/zmianę ich poświadczeń. |
 
-Opinie o zdarzeniach dotyczących ryzyka użytkownika w usłudze Identity Protection są przetwarzane w trybie offline i może upłynąć trochę czasu na aktualizację. Kolumna stan przetwarzania ryzyka zapewnia bieżący stan przetwarzania informacji zwrotnych.
+Opinie dotyczące wykrywania ryzyka użytkownika w usłudze Identity Protection są przetwarzane w trybie offline i może upłynąć trochę czasu na aktualizację. Kolumna stan przetwarzania ryzyka zapewnia bieżący stan przetwarzania informacji zwrotnych.
 
 ![Stan przetwarzania ryzyka dla ryzykownego raportu użytkownika](./media/howto-provide-risk-event-feedback/risky-users-provide-feedback.png)
 
 ## <a name="next-steps"></a>Następne kroki
 
-[Informacje o zdarzeniach dotyczących ryzyka Azure Active Directory Identity Protection](risk-events-reference.md)
+[Informacje dotyczące wykrywania ryzyka Azure Active Directory Identity Protection](risk-events-reference.md)

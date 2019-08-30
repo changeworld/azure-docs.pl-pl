@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 73cf6fd1c20f2e4208d1f7c28a756f28a2fad839
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: ce44be5bae5aaa8f86d04068cce1c4bc919b0893
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302569"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126972"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikacji: Klasyfikacja aplikacje rozproszone
 
@@ -58,7 +58,7 @@ Wybierz pozycję **Zbadaj błędy** , aby uruchomić okienko błędy.
 
 ![Zrzut ekranu przedstawiający środowisko błędów](media/app-map/failures.png)
 
-### <a name="investigate-performance"></a>Badanie wydajności
+### <a name="investigate-performance"></a>Zbadaj wydajność
 
 Aby rozwiązać problemy z wydajnością, wybierz pozycję **Zbadaj wydajność**.
 
@@ -74,7 +74,7 @@ Wybierz pozycję **Przejdź do szczegółów** , aby poznać kompleksowe środow
 
 ![Zrzut ekranu przedstawiający szczegółowe informacje o transakcji](media/app-map/end-to-end-transaction.png)
 
-### <a name="view-in-analytics"></a>Wyświetl w analizie
+### <a name="view-in-analytics"></a>Wyświetl w usłudze Analytics
 
 Aby kontynuować zapytania i zbadać dane aplikacji, kliknij przycisk **Wyświetl w analizie**.
 
@@ -272,4 +272,6 @@ Aby przekazać opinię, użyj opcji opinia.
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Zrozumienie korelacji](https://docs.microsoft.com/azure/application-insights/application-insights-correlation)
+* Aby dowiedzieć się więcej o tym, jak działa korelacja w Application Insights zapoznaj się https://docs.microsoft.com/azure/application-insights/application-insights-correlation) z [Artykuł korelacji telemetrii] (.
+* [Kompleksowa obsługa diagnostyki transakcji umożliwia](transaction-diagnostics.md) korelację danych telemetrycznych po stronie serwera między wszystkimi Application Insights monitorowanymi składnikami w jednym widoku.
+* Aby uzyskać zaawansowane scenariusze korelacji w ASP.NET Core i ASP.NET, zapoznaj się z artykułem [śledzenie niestandardowych operacji](custom-operations-tracking.md) .

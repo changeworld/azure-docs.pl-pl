@@ -16,12 +16,12 @@ ms.date: 06/12/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf6190ae35a573ab4b9a37f5cd1f2bd75f06ca46
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 3c6ad7e305958131c4f544dfa2022e7471e9adac
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667154"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147107"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Sprawdź stan aprowizacji użytkowników
 
@@ -62,7 +62,7 @@ Dzienniki inspekcji aprowizacji rejestruje wszystkie operacje wykonywane przez u
 Aby uzyskać więcej informacji na temat odczytywania dzienników inspekcji w Azure Portal, zobacz [Przewodnik po raportowaniu obsługi administracyjnej](check-status-user-account-provisioning.md).
 
 ## <a name="how-long-will-it-take-to-provision-users"></a>Jak długo trwa inicjowanie obsługi administracyjnej użytkowników?
-W przypadku korzystania z automatycznej aprowizacji użytkowników w aplikacji usługa Azure AD automatycznie inicjuje i aktualizuje konta użytkowników w aplikacji na podstawie takich elementów, jak [przypisywanie użytkowników i grup](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) w regularnych zaplanowanych odstępach czasu, zwykle co 10 minut.
+W przypadku korzystania z automatycznej aprowizacji użytkowników w aplikacji usługa Azure AD automatycznie inicjuje i aktualizuje konta użytkowników w aplikacji na podstawie takich elementów, jak [przypisywanie użytkowników i grup](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) w regularnych zaplanowanych odstępach czasu, zazwyczaj co 40 minut.
 
 Czas, w którym dany użytkownik ma zostać zainicjowany, zależy głównie od tego, czy zadanie aprowizacji korzysta z synchronizacji początkowej czy synchronizacji przyrostowej.
 

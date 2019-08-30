@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b062f484a48d8376bbbb8fa9dd5bd3e39bbba14f
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 15960c39878e0c8ae22f94197ed1937597f1ee02
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049979"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126131"
 ---
 ::: zone target="docs"
 
@@ -34,7 +34,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ::: zone target="chromeless"
 
-# <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>Rozpakowywanie, łączenie i odblokowywanie Azure Data Box Disk
+## <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>Rozpakowywanie, łączenie i odblokowywanie Azure Data Box Disk
 
 ::: zone-end
 
@@ -313,7 +313,9 @@ Jeśli podczas odblokowywania dysków wystąpią jakiekolwiek problemy, zobacz j
 
 Po odblokowaniu dysku można wyświetlić jego zawartość.
 
-Aby uzyskać więcej informacji na temat konfigurowania i odblokowywania dysków, przejdź do [samouczka: Rozpakowywanie, łączenie i odblokowywanie Azure Data Box Disk](data-box-disk-deploy-set-up.md).
+Aby uzyskać więcej informacji na temat konfigurowania dysków, przejdź do obszaru [rozpakowywanie Data Box Disk](data-box-disk-deploy-set-up.md#unpack-your-disks).
+
+Aby uzyskać więcej infomration na temat sposobu odblokowywania dysków, przejdź do pozycji Odblokuj [Data Box Disk w kliencie systemu Windows](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client).
 
 ::: zone-end
 

@@ -1,7 +1,7 @@
 ---
-title: 'Importuj z adresu URL sieci Web za pośrednictwem protokołu HTTP: Odwołania do modułu'
+title: 'Importuj z internetowego adresu URL za pośrednictwem protokołu HTTP: Dokumentacja modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak użyć Importuj z adresu URL sieci Web za pomocą modułu HTTP w usłudze Azure Machine Learning można odczytać danych z publicznej strony internetowej do użycia w eksperymentu uczenia maszynowego.
+description: Dowiedz się, jak używać funkcji importowania z internetowego adresu URL za pośrednictwem protokołu HTTP w usłudze Azure Machine Learning, aby czytać dane z publicznej strony internetowej na potrzeby eksperymentu uczenia maszynowego.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,74 +9,73 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: bff913efb38c9e5589c795386dfbbc480d799a37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 59b8e2e73b9904a503c16d8891e5a5bd771fc87f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65411444"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128754"
 ---
-# <a name="import-from-web-url-via-http-module"></a>Importuj z adresu URL sieci Web za pośrednictwem modułu HTTP
+# <a name="import-from-web-url-via-http-module"></a>Importuj z internetowego adresu URL za pośrednictwem modułu HTTP
 
-W tym artykule opisano moduł interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Ten moduł służy do odczytywania danych z publicznej strony internetowej do użycia w eksperymentu uczenia maszynowego.
+Ten moduł służy do odczytywania danych z publicznej strony internetowej na potrzeby eksperymentu uczenia maszynowego.
 
-Poniższe ograniczenia mają zastosowanie do danych na stronie sieci web:
+Następujące ograniczenia dotyczą danych opublikowanych na stronie sieci Web:
 
-- Dane muszą być w jednym z obsługiwanych formatów: CSV, TSV, ARFF lub SvmLight. Inne dane będą powodować błędy.
-- Uwierzytelnianie nie jest wymagane lub obsługiwany. Dane muszą być dostępne publicznie. 
+- Dane muszą być w jednym z obsługiwanych formatów: CSV, TSV, ARFF lub SvmLight. Inne dane spowodują błędy.
+- Uwierzytelnianie nie jest wymagane ani obsługiwane. Dane muszą być dostępne publicznie. 
 
-Istnieją dwa sposoby, aby uzyskać dane: Konfigurowanie źródła danych za pomocą kreatora lub ręcznie skonfigurować.
+Istnieją dwa sposoby pobierania danych: Użyj kreatora, aby skonfigurować źródło danych lub skonfigurować je ręcznie.
 
-## <a name="use-the-data-import-wizard"></a>Użyj Kreatora importu danych
+## <a name="use-the-data-import-wizard"></a>Korzystanie z Kreatora importu danych
 
-1. Dodaj **importu danych** modułu do eksperymentu. Moduł w interfejsie, można znaleźć w **danych wejściowych i wyjściowych** kategorii.
+1. Dodaj moduł **Import danych** do eksperymentu. Moduł można znaleźć w interfejsie, w kategorii dane **wejściowe i wyjściowe** .
 
 2. Kliknij przycisk **Uruchom Kreatora importu danych** i wybierz adres URL sieci Web za pośrednictwem protokołu HTTP.
 
-3. Wklej adres URL, a następnie wybierz format danych.
+3. Wklej w adresie URL i wybierz format danych.
 
-4. Jeśli konfiguracja zostanie zakończona.
+4. Po zakończeniu konfiguracji.
 
-Aby edytować istniejące połączenie z danymi, uruchom ponownie kreatora. Kreator ładuje wszystkie poprzednie szczegółów konfiguracji, dzięki czemu nie trzeba ponownie uruchomić od podstaw
+Aby edytować istniejące połączenie danych, ponownie uruchom kreatora. Kreator ładuje wszystkie poprzednie szczegóły konfiguracji, aby nie trzeba było ich uruchamiać od początku
 
-## <a name="manually-set-properties-in-the-import-data-module"></a>Ręcznie Ustaw właściwości modułu importu danych
+## <a name="manually-set-properties-in-the-import-data-module"></a>Ręczne ustawianie właściwości w module Importuj dane
 
-Poniżej opisano jak ręcznie skonfigurować źródło importu.
+W poniższych krokach opisano sposób ręcznego konfigurowania źródła importu.
 
-1. Dodaj [importu danych](import-data.md) modułu do eksperymentu. Moduł w interfejsie, można znaleźć w **danych wejściowych i wyjściowych** kategorii.
+1. Dodaj moduł [Import danych](import-data.md) do eksperymentu. Moduł można znaleźć w interfejsie, w kategorii dane **wejściowe i wyjściowe** .
 
-2. Aby uzyskać **źródła danych**, wybierz opcję **adres URL sieci Web za pośrednictwem protokołu HTTP**.
+2. W obszarze **Źródło danych**wybierz pozycję **adres URL sieci Web za pośrednictwem protokołu HTTP**.
 
-3. Aby uzyskać **adresu URL**wpisz lub Wklej pełny adres URL strony, która zawiera dane, których chcesz załadować.
+3. W polu **adres URL**wpisz lub wklej pełny adres URL strony zawierającej dane, które chcesz załadować.
 
-    Adres URL powinien zawierać pełną ścieżkę, z nazwą pliku i rozszerzenie do strony, która zawiera dane, które można załadować i adresem URL witryny.
+    Adres URL powinien zawierać adres URL witryny i pełną ścieżkę, z nazwą pliku i rozszerzeniem, do strony zawierającej dane do załadowania.
 
-    Na przykład następująca strona zawiera zestaw danych irysów z repozytorium uniwersytet kalifornijski Irvine uczenia maszynowego:
+    Na przykład następująca strona zawiera zestaw danych Iris z repozytorium uczenia maszynowego University of California, Irvine:
 
     `https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data`
 
-4. Aby uzyskać **format danych**, wybierz jedną z obsługiwanych danych formatów z listy.
+4. W polu **Format danych**wybierz jeden z obsługiwanych formatów danych z listy.
 
-    Firma Microsoft zaleca, Zawsze sprawdzaj wcześniej dane do określenia formatu. Na stronie UC Irvine używa formatu CSV. Inne formaty obsługiwane dane są TSV, ARFF i SvmLight.
+    Zalecane jest, aby zawsze sprawdzać dane, aby określić format. Strona UC Irvine używa formatu CSV. Inne obsługiwane formaty danych to TSV, ARFF i SvmLight.
 
-5. Jeśli dane są w formacie CSV lub TSV, użyj **plik ma wiersz nagłówka** opcję, aby wskazać, czy źródło danych zawiera wiersz nagłówka. Wiersz nagłówka służy do przypisywania nazw kolumn.
+5. Jeśli dane są w formacie CSV lub TSV, użyj pliku z opcją **wiersza nagłówka** , aby wskazać, czy dane źródłowe zawierają wiersz nagłówka. Wiersz nagłówka jest używany do przypisywania nazw kolumn.
 
-6. Wybierz **użycia pamięci podręcznej wyniki** opcji, jeśli nie będziesz już dane, aby zmienić wiele lub jeśli chcesz uniknąć ponownego ładowania danych każdego czasu uruchamiania eksperymentu.
+6. Wybierz opcję **Użyj buforowanych wyników** , jeśli nie spodziewasz się, że dane mają być zmieniane, lub jeśli chcesz uniknąć ponownego ładowania danych przy każdym uruchomieniu eksperymentu.
 
-    Gdy ta opcja jest zaznaczona, eksperymentu ładuje czasu danych pierwszy moduł jest uruchamiany, a następnie używa zbuforowaną wersję zestawu danych.
+    Gdy ta opcja jest zaznaczona, eksperyment ładuje dane przy pierwszym uruchomieniu modułu, a następnie używa buforowanej wersji zestawu danych.
 
-    Jeśli chcesz ponownie załadować zestaw danych w każdej iteracji eksperymentu zestawu danych, wyłącz opcję **użycia pamięci podręcznej wyniki** opcji. Wyniki są również ponownie załadowany w przypadku zmiany parametrów [importu danych](import-data.md).
+    Jeśli chcesz ponownie załadować zestaw danych dla każdej iteracji zestawu danych eksperymentu, usuń zaznaczenie opcji **Użyj wyników z pamięci** podręcznej. Wyniki są również ponownie ładowane, jeśli istnieją zmiany parametrów [importu danych](import-data.md).
 
 7. Uruchom eksperyment.
 
 ## <a name="results"></a>Wyniki
 
-Po zakończeniu kliknij wyjściowy zestaw danych i wybierz pozycję **Visualize** aby zobaczyć, jeśli dane zostały pomyślnie zaimportowane.
+Po zakończeniu kliknij wyjściowy zestaw danych i wybierz polecenie **Wizualizuj** , aby sprawdzić, czy dane zostały zaimportowane pomyślnie.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [zestaw dostępnych modułów](module-reference.md) do usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 

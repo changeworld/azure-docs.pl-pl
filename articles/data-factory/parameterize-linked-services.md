@@ -1,6 +1,6 @@
 ---
-title: Parametryzacja połączone usługi w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zdefiniować parametry połączone usługi w usłudze Azure Data Factory, a następnie przekazać wartości dynamicznych w czasie wykonywania.
+title: Sparametryzuj połączone usługi w Azure Data Factory | Microsoft Docs
+description: Dowiedz się, jak Sparametryzuj połączone usługi w Azure Data Factory i przekazywać wartości dynamiczne w czasie wykonywania.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -8,35 +8,35 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/18/2018
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: 0239c53f98fba201b6d70e1e2212eea36134e30d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 285b7c182fc218a590b7a3980e43175c76555106
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60635548"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140952"
 ---
-# <a name="parameterize-linked-services-in-azure-data-factory"></a>Parametryzacja połączone usługi w usłudze Azure Data Factory
+# <a name="parameterize-linked-services-in-azure-data-factory"></a>Sparametryzuj połączone usługi w Azure Data Factory
 
-Możesz teraz parametryzacja połączonej usługi i przekazać wartości dynamicznych w czasie wykonywania. Na przykład jeśli chcesz nawiązać połączenie z różnych baz danych na tym samym serwerze Azure SQL Database teraz parametryzuj Nazwa bazy danych w definicji połączonej usługi. Ten sposób można uniknąć konieczności tworzenia połączonej usługi dla każdej bazy danych na serwerze bazy danych Azure SQL. Możecie się inne właściwości w definicji usługi połączonej także — na przykład *nazwy użytkownika.*
+Teraz można Sparametryzuj połączonej usługi i przekazywać wartości dynamiczne w czasie wykonywania. Na przykład jeśli chcesz nawiązać połączenie z różnymi bazami danych na tym samym serwerze Azure SQL Database, możesz teraz Sparametryzuj nazwę bazy danych w definicji połączonej usługi. Zapobiega to konieczności tworzenia połączonej usługi dla każdej bazy danych na serwerze usługi Azure SQL Database. Można Sparametryzuj inne właściwości w definicji połączonej usługi, jak również na przykład *Nazwa użytkownika.*
 
-Interfejs użytkownika usługi Data Factory w witrynie Azure Portal lub interfejsu programowania można użyć próby parametryzacji połączonych usług.
+Aby Sparametryzuj połączone usługi, można użyć interfejsu użytkownika Data Factory w witrynie Azure Portal lub interfejsie programowania.
 
 > [!TIP]
-> Nie zaleca się parametryzacja hasła lub kluczy tajnych. Zamiast tego Store wszystkie parametry połączenia w usłudze Azure Key Vault i sparametryzuj *nazw klucz tajny*.
+> Nie zaleca się Sparametryzuj haseł ani wpisów tajnych. W zamian Przechowuj wszystkie parametry połączenia w Azure Key Vault i Sparametryzuj *nazwę klucza tajnego*.
 
-7 minutowym wprowadzenie i pokaz działania tej funkcji Obejrzyj poniższy film wideo:
+Aby zapoznać się z wprowadzeniem do siedmiu minut i demonstracją tej funkcji, Obejrzyj następujące wideo:
 
 > [!VIDEO https://channel9.msdn.com/shows/azure-friday/Parameterize-connections-to-your-data-stores-in-Azure-Data-Factory/player]
 
-## <a name="supported-data-stores"></a>Magazyny danych obsługiwanych
+## <a name="supported-data-stores"></a>Obsługiwane magazyny danych
 
-W tej chwili parametryzacji połączonej usługi jest obsługiwana w interfejs użytkownika usługi Data Factory w witrynie Azure portal, w którym są następujące magazyny danych. Dla wszystkich innych magazynów danych można parametryzacja połączonej usługi, wybierając **kodu** ikonę na **połączeń** kartę i za pomocą edytora JSON.
+W tej chwili parametryzacja połączonej usługi jest obsługiwany przez interfejs użytkownika Data Factory w Azure Portal dla następujących magazynów danych. W przypadku wszystkich innych magazynów danych można Sparametryzuj połączoną usługę, wybierając ikonę **kodu** na karcie **połączenia** i używając edytora JSON.
 - Azure SQL Database
 - Azure SQL Data Warehouse
-- Oprogramowanie SQL Server
+- SQL Server
 - Oracle
 - Cosmos DB
 - Amazon Redshift
@@ -45,7 +45,7 @@ W tej chwili parametryzacji połączonej usługi jest obsługiwana w interfejs u
 
 ## <a name="data-factory-ui"></a>Interfejs użytkownika usługi Data Factory
 
-![Dodaj zawartość dynamiczną do definicji usługi połączonej](media/parameterize-linked-services/parameterize-linked-services-image1.png)
+![Dodawanie zawartości dynamicznej do definicji połączonej usługi](media/parameterize-linked-services/parameterize-linked-services-image1.png)
 
 ![Tworzenie nowego parametru](media/parameterize-linked-services/parameterize-linked-services-image2.png)
 

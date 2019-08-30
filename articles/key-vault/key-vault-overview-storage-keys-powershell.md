@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: df377b19d78a63b3cfc57347fff00345a9c63ead
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 21b046a54c2fbe309113222f54dbad4405fc409d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562540"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70136578"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure Key Vault zarządzane konto magazynu — PowerShell
 
@@ -21,6 +21,7 @@ ms.locfileid: "69562540"
 > - Uwierzytelnianie aplikacji klienckiej przy użyciu tożsamości aplikacji lub użytkownika zamiast poświadczeń konta magazynu. 
 > - Użyj [tożsamości zarządzanej usługi Azure AD](/azure/active-directory/managed-identities-azure-resources/) w przypadku uruchamiania na platformie Azure. Tożsamości zarządzane usuwają potrzebę wszystkich jednocześnie uwierzytelniania klienta i przechowywania poświadczeń w aplikacji lub z aplikacją.
 > - Użyj Access Control opartej na rolach (RBAC) do zarządzania autoryzacją, która jest również obsługiwana przez Key Vault.
+> - Dostęp do konta magazynu w usłudze AAD nie działa w celu uzyskania dostępu do tabel.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -142,7 +143,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>Włącz ponowne generowanie klucza
 
-Jeśli chcesz, aby Key Vault okresowo generować ponownie klucze konta magazynu, możesz ustawić okres regeneracji. W poniższym przykładzie ustawimy okres regeneracji o trzy dni. Po upływie trzech dni Key Vault ponownie wygeneruje element "Klucz1" i zamianę aktywnego klucza z "klucz2" na "Klucz1".
+Jeśli chcesz, aby Key Vault okresowo generować ponownie klucze konta magazynu, możesz ustawić okres regeneracji. W poniższym przykładzie ustawimy okres regeneracji o trzy dni. Po upływie trzech dni Key Vault ponownie wygeneruje element "klucz2" i zamianę aktywnego klucza z "klucz2" na "Klucz1".
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)

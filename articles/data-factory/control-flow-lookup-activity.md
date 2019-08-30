@@ -1,34 +1,33 @@
 ---
-title: Działanie LOOKUP w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak Użyj działania Lookup do wyszukiwania wartości ze źródła zewnętrznego. Te dane wyjściowe mogą być dodatkowo przywoływane przez kolejne działania.
+title: Działanie Lookup w Azure Data Factory | Microsoft Docs
+description: Dowiedz się, jak używać działania Lookup do wyszukiwania wartości z zewnętrznego źródła. Do tych danych wyjściowych można uzyskać dalsze odwołania przez działania zakończone powodzeniem.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: shlo
-ms.openlocfilehash: 4f0662a71ee14af3c2c1aafee210641fc8b51f1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9658987092027b38ab0cab1feb3df4be0a91e350
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60768672"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141661"
 ---
-# <a name="lookup-activity-in-azure-data-factory"></a>Działanie LOOKUP w usłudze Azure Data Factory
+# <a name="lookup-activity-in-azure-data-factory"></a>Działanie Lookup w Azure Data Factory
 
-Działanie LOOKUP może pobrać zestawu danych z dowolnego źródła danych obsługiwane przez usługę Azure Data Factory. Użyj go w następującym scenariuszu:
-- Dynamiczne określanie obiekty, które do wykonywania operacji w kolejne działania, zamiast twardych kodowania nazwę obiektu. Niektóre przykłady obiektu są pliki i tabel.
+Działanie Lookup może pobrać zestaw danych z dowolnych ze źródeł danych obsługiwanych przez Azure Data Factory. Użyj go w następującym scenariuszu:
+- Dynamiczne określanie, które obiekty mają być używane w kolejnym działaniu, zamiast twardej kodowania nazwy obiektu. Niektóre przykłady obiektów to pliki i tabele.
 
-Działanie LOOKUP odczytuje i zwraca zawartość pliku konfiguracji lub tabeli. Zwraca wynik wykonania zapytań lub procedurze składowanej. Dane wyjściowe działania Lookup może służyć w kolejnych kopiowania lub działania przekształcania, jeśli jest to pojedyncza wartość. Dane wyjściowe może służyć w działaniu ForEach, jeśli jest to tablica atrybutów.
+Działanie Lookup odczytuje i zwraca zawartość pliku konfiguracji lub tabeli. Zwraca również wynik wykonania zapytania lub procedury składowanej. Wyniki działania Lookup można użyć w kolejnych działaniach kopiowania lub przekształcania, jeśli jest to wartość singleton. Dane wyjściowe mogą być używane w działaniu ForEach, jeśli jest tablicą atrybutów.
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Następujące źródła danych są obsługiwane dla działania Lookup. Największa liczba wierszy, które mogą być zwrócone przez działanie Lookup wynosi 5000, rozmiar do 2 MB. Obecnie najdłuższy czas trwania dla wyszukiwania działanie przed upływem limitu czasu wynosi godzinę.
+Dla działania Lookup są obsługiwane następujące źródła danych. Największa liczba wierszy, które mogą być zwracane przez działanie Lookup, to 5 000, o rozmiarze do 2 MB. Obecnie najdłuższy czas trwania działania wyszukiwania przed upływem limitu czasu wynosi godzinę.
 
 [!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-for-lookup-activity.md)]
 
@@ -54,23 +53,23 @@ Następujące źródła danych są obsługiwane dla działania Lookup. Najwięks
 
 ## <a name="type-properties"></a>Właściwości typu
 
-Name (Nazwa) | Opis | Typ | Wymagana?
+Name | Opis | Type | Wymagana?
 ---- | ----------- | ---- | --------
-Zestaw danych | Zawiera odwołanie do zestawu danych do wyszukiwania. Uzyskiwanie szczegółowych informacji z **właściwości zestawu danych** sekcji w każdym odpowiedni artykuł dotyczący łącznika. | Pary klucz/wartość | Tak
-source | Zawiera właściwości specyficzne dla zestawu danych źródła, taka sama jak źródło działania kopiowania. Uzyskiwanie szczegółowych informacji z **właściwości działania kopiowania** sekcji w każdym odpowiedni artykuł dotyczący łącznika. | Pary klucz/wartość | Tak
-firstRowOnly | Wskazuje, czy zwracać tylko pierwszy wiersz lub wszystkie wiersze. | Boolean | Nie. Wartość domyślna to `true`.
+zestawu | Zawiera odwołanie do zestawu danych dla wyszukiwania. Pobierz szczegóły z sekcji **Właściwości zestawu danych** w każdym odpowiednim artykule łącznika. | Para klucz/wartość | Tak
+source | Zawiera właściwości źródła specyficzne dla zestawu danych, takie same jak źródło działania kopiowania. Pobierz szczegóły z sekcji **właściwości działania kopiowania** w każdym odpowiednim artykule łącznika. | Para klucz/wartość | Tak
+firstRowOnly | Wskazuje, czy zwrócić tylko pierwszy wiersz, czy wszystkie wiersze. | Boolean | Nie. Wartość domyślna to `true`.
 
 > [!NOTE]
 > 
-> * Źródło kolumny z **ByteArray** typu nie są obsługiwane.
-> * **Struktura** nie jest obsługiwane w definicjach zestawów danych. Dla plików w formacie tekstowym Użyj wiersz nagłówka, aby podać nazwę kolumny.
-> * Jeśli źródłem wyszukiwania jest plikiem JSON `jsonPathDefinition` ustawienie dla ich modyfikowania obiektu JSON nie jest obsługiwane. Całe obiekty zostaną pobrane.
+> * Kolumny źródłowe z typem **ByteArray** nie są obsługiwane.
+> * **Struktura** nie jest obsługiwana w definicjach zestawu danych. W przypadku plików w formacie tekstowym Użyj wiersza nagłówka, aby podać nazwę kolumny.
+> * Jeśli źródłem wyszukiwania jest plik JSON, `jsonPathDefinition` ustawienie służące do przekształcania obiektu JSON nie jest obsługiwane. Zostaną pobrane wszystkie obiekty.
 
-## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Użyj działania Lookup doprowadzić kolejne działania
+## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>Użyj wyniku działania Lookup w kolejnym działaniu
 
-Wynik wyszukiwania jest zwracany w `output` sekcji uruchomienia działania.
+Wynik wyszukiwania jest zwracany w `output` sekcji wyniku uruchomienia działania.
 
-* **Gdy `firstRowOnly` ustawiono `true` (ustawienie domyślne)** , jest format danych wyjściowych, jak pokazano w poniższym kodzie. Wynik wyszukiwania znajduje się w stałym `firstRow` klucza. Aby użyć wyniku kolejne działania, użyj wzorca `@{activity('MyLookupActivity').output.firstRow.TableName}`.
+* **Gdy`firstRowOnly` jest ustawiona na `true` (domyślnie)** , format danych wyjściowych jest tak jak pokazano w poniższym kodzie. Wynik wyszukiwania jest pod stałym `firstRow` kluczem. Aby użyć wyniku w kolejnych działaniach, użyj wzorca `@{activity('MyLookupActivity').output.firstRow.TableName}`.
 
     ```json
     {
@@ -82,7 +81,7 @@ Wynik wyszukiwania jest zwracany w `output` sekcji uruchomienia działania.
     }
     ```
 
-* **Gdy `firstRowOnly` ustawiono `false`** , jest format danych wyjściowych, jak pokazano w poniższym kodzie. A `count` pole wskazuje, ile rekordy są zwracane. Szczegółowe wartości są wyświetlane w obszarze stałym `value` tablicy. W takim przypadku następuje działanie Lookup [działanie Foreach](control-flow-for-each-activity.md). Możesz przekazać `value` macierz działanie ForEach `items` pola przy użyciu wzorca `@activity('MyLookupActivity').output.value`. Do dostępu do elementów w `value` tablicy, należy użyć następującej składni: `@{activity('lookupActivity').output.value[zero based index].propertyname}`. Może to być na przykład `@{activity('lookupActivity').output.value[0].tablename}`.
+* **Gdy`firstRowOnly` jest ustawiona na `false`** , format danych wyjściowych jest tak jak pokazano w poniższym kodzie. Pole `count` wskazuje liczbę rekordów, które są zwracane. Szczegółowe wartości są wyświetlane pod stałą `value` tablicą. W takim przypadku działanie Lookup jest [wykonywane przez działanie foreach](control-flow-for-each-activity.md). Można przekazać `value` tablicę do pola działania `items` foreach przy użyciu wzorca `@activity('MyLookupActivity').output.value`. Aby uzyskać dostęp do elementów `value` w tablicy, użyj następującej składni: `@{activity('lookupActivity').output.value[zero based index].propertyname}`. Może to być na przykład `@{activity('lookupActivity').output.value[0].tablename}`.
 
     ```json
     {
@@ -101,15 +100,15 @@ Wynik wyszukiwania jest zwracany w `output` sekcji uruchomienia działania.
     ```
 
 ### <a name="copy-activity-example"></a>Przykład działania kopiowania
-W tym przykładzie działanie kopiowania kopiuje dane z tabeli SQL w wystąpieniu usługi Azure SQL Database do magazynu obiektów Blob platformy Azure. Nazwa tabeli SQL jest przechowywana w pliku JSON w usłudze Blob storage. Działanie Lookup wyszukuje nazwy tabeli w czasie wykonywania. JSON jest modyfikowana dynamicznie przy użyciu tej metody. Nie ma potrzeby ponownego wdrażania potoków ani zestawów danych. 
+W tym przykładzie działanie Copy kopiuje dane z tabeli SQL w wystąpieniu Azure SQL Database do usługi Azure Blob Storage. Nazwa tabeli SQL jest przechowywana w pliku JSON w usłudze BLOB Storage. Działanie Lookup wyszukuje nazwę tabeli w czasie wykonywania. Dane JSON są modyfikowane dynamicznie przy użyciu tego podejścia. Nie trzeba ponownie wdrażać potoków ani zestawów danych. 
 
-W tym przykładzie pokazano wyszukiwania dla pierwszego wiersza. Wyszukiwanie we wszystkich wierszach, a aby połączyć w łańcuch wyniki za pomocą działania ForEach, zobacz przykłady w [zbiorcze kopiowanie wielu tabel przy użyciu usługi Azure Data Factory](tutorial-bulk-copy.md).
+Ten przykład ilustruje wyszukiwanie tylko w pierwszym wierszu. W przypadku wyszukiwania dla wszystkich wierszy i łańcucha wyników za pomocą działania ForEach zapoznaj się z przykładami w artykule [kopiowanie wielu tabel luzem przy użyciu Azure Data Factory](tutorial-bulk-copy.md).
 
 ### <a name="pipeline"></a>Potok
-Ten potok zawiera dwa działania: Wyszukiwanie i kopiowania. 
+Ten potok zawiera dwa działania: Wyszukiwanie i kopiowanie. 
 
-- Działanie Lookup jest skonfigurowany do używania **LookupDataset**, która odnosi się do lokalizacji w usłudze Azure Blob storage. Działanie Lookup odczytuje Nazwa tabeli SQL z pliku JSON w tej lokalizacji. 
-- Działanie kopiowania używa danych wyjściowych działania Lookup, jest to nazwa tabeli SQL. **TableName** właściwość **SourceDataset** jest skonfigurowany do korzystania z danych wyjściowych działania Lookup. Skopiuj działanie kopiuje dane z tabeli SQL w lokalizacji w usłudze Azure Blob storage. Lokalizacja jest określona przez **SinkDataset** właściwości. 
+- Działanie Lookup jest skonfigurowane do korzystania z **LookupDataset**, które odwołuje się do lokalizacji w usłudze Azure Blob Storage. Działanie Lookup odczytuje nazwę tabeli SQL z pliku JSON w tej lokalizacji. 
+- Działanie kopiowania używa danych wyjściowych działania Lookup, które jest nazwą tabeli SQL. Właściwość **TableName** w **SourceDataset** jest skonfigurowana tak, aby korzystała z danych wyjściowych działania Lookup. Działanie kopiowania kopiuje dane z tabeli SQL do lokalizacji w usłudze Azure Blob Storage. Lokalizacja jest określana przez właściwość **SinkDataset** . 
 
 ```json
 {
@@ -166,7 +165,7 @@ Ten potok zawiera dwa działania: Wyszukiwanie i kopiowania.
 ```
 
 ### <a name="lookup-dataset"></a>Zestaw danych wyszukiwania
-**Wyszukiwania** zestaw danych jest **sourcetable.json** pliku w folderze wyszukiwanie usługi Azure Storage, określony przez **AzureStorageLinkedService** typu. 
+Zestaw danych **wyszukiwania** jest plikiem **sources. JSON** w folderze wyszukiwania usługi Azure Storage określonym przez typ **AzureStorageLinkedService** . 
 
 ```json
 {
@@ -189,8 +188,8 @@ Ten potok zawiera dwa działania: Wyszukiwanie i kopiowania.
 }
 ```
 
-### <a name="source-dataset-for-copy-activity"></a>**Źródło** zestawu danych działanie kopiowania
-**Źródła** zestaw danych korzysta z danych wyjściowych działania Lookup, jest to nazwa tabeli SQL. Skopiuj działanie kopiuje dane z tej tabeli SQL w lokalizacji w usłudze Azure Blob storage. Lokalizacja jest określona przez **ujścia** zestawu danych. 
+### <a name="source-dataset-for-copy-activity"></a>**Źródłowy** zestaw danych dla działania kopiowania
+**Źródłowy** zestaw danych używa danych wyjściowych działania Lookup, który jest nazwą tabeli SQL. Działanie kopiowania kopiuje dane z tej tabeli SQL do lokalizacji w usłudze Azure Blob Storage. Lokalizacja jest określana przez zestaw danych **ujścia** . 
 
 ```json
 {
@@ -208,8 +207,8 @@ Ten potok zawiera dwa działania: Wyszukiwanie i kopiowania.
 }
 ```
 
-### <a name="sink-dataset-for-copy-activity"></a>**Obiekt sink** zestawu danych działanie kopiowania
-Działanie kopiowania kopiuje dane z tabeli SQL w celu **filebylookup.csv** w pliku **csv** folderu w usłudze Azure Storage. Plik jest określona przez **AzureStorageLinkedService** właściwości. 
+### <a name="sink-dataset-for-copy-activity"></a>Zestaw danych **ujścia** dla działania kopiowania
+Działanie kopiowania kopiuje dane z tabeli SQL do pliku **filebylookup. csv** znajdującego się w folderze **CSV** w usłudze Azure Storage. Plik jest określany przez właściwość **AzureStorageLinkedService** . 
 
 ```json
 {
@@ -232,7 +231,7 @@ Działanie kopiowania kopiuje dane z tabeli SQL w celu **filebylookup.csv** w pl
 ```
 
 ### <a name="azure-storage-linked-service"></a>Połączona usługa Azure Storage
-To konto magazynu zawiera plik JSON o nazwach tabel SQL. 
+To konto magazynu zawiera plik JSON z nazwami tabel SQL. 
 
 ```json
 {
@@ -250,7 +249,7 @@ To konto magazynu zawiera plik JSON o nazwach tabel SQL.
 ```
 
 ### <a name="azure-sql-database-linked-service"></a>Połączona usługa Azure SQL Database
-To wystąpienie usługi Azure SQL Database zawiera dane, które mają być kopiowane do magazynu obiektów Blob. 
+To wystąpienie Azure SQL Database zawiera dane, które mają zostać skopiowane do magazynu obiektów BLOB. 
 
 ```json
 {
@@ -298,19 +297,19 @@ To wystąpienie usługi Azure SQL Database zawiera dane, które mają być kopio
 ]
 ```
 
-## <a name="limitations-and-workarounds"></a>Ograniczenia i rozwiązania
+## <a name="limitations-and-workarounds"></a>Ograniczenia i obejścia
 
-Poniżej przedstawiono pewne ograniczenia, działanie Lookup i sugerowane rozwiązania problemu.
+Poniżej przedstawiono niektóre ograniczenia działania wyszukiwania i sugerowanych obejść.
 
 | Ograniczenia | Obejście |
 |---|---|
-| Działanie Lookup ma więcej niż 5000 wierszy, a maksymalny rozmiar wynoszący 2 MB. | Zaprojektuj potoku dwupoziomowej, gdzie zewnętrzne potok wykonuje iterację na wewnętrzny potoku, który pobiera dane, które nie może przekraczać maksymalna liczba wierszy lub rozmiaru. |
+| Działanie Lookup ma maksymalnie 5 000 wierszy i ma maksymalny rozmiar wynoszący 2 MB. | Zaprojektuj potok dwupoziomowy, w którym potok zewnętrzny iteruje za pośrednictwem wewnętrznego potoku, który pobiera dane, które nie przekraczają maksymalnej liczby wierszy lub rozmiaru. |
 | | |
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne działania przepływu sterowania obsługiwanych przez usługę Data Factory: 
+## <a name="next-steps"></a>Następne kroki
+Zobacz inne działania przepływu sterowania obsługiwane przez Data Factory: 
 
-- [Działanie EXECUTE Pipeline](control-flow-execute-pipeline-activity.md)
+- [Działanie wykonywania potoku](control-flow-execute-pipeline-activity.md)
 - [Działanie ForEach](control-flow-for-each-activity.md)
 - [Działanie GetMetadata](control-flow-get-metadata-activity.md)
 - [Działanie Web](control-flow-web-activity.md)

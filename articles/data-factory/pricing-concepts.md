@@ -1,175 +1,176 @@
 ---
-title: Omówienie usługi Azure Data Factory ceny przykłady | Dokumentacja firmy Microsoft
-description: W tym artykule opisano i przedstawiono usługi Azure Data Factory, model o szczegółowe przykłady cen
+title: Informacje o cenach Azure Data Factory w ramach przykładów | Microsoft Docs
+description: W tym artykule opisano i przedstawiono Azure Data Factory model cenowy ze szczegółowymi przykładami
 documentationcenter: ''
-author: shlo
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/25/2018
-ms.author: shlo
-ms.openlocfilehash: a825982532047f6e311c5508394df243310f02ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f08dea90e7700082b6eeb708b576451060f81255
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233931"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140938"
 ---
-# <a name="understanding-data-factory-pricing-through-examples"></a>Informacje o przykładach ceny usługi Data Factory
+# <a name="understanding-data-factory-pricing-through-examples"></a>Informacje o cenach Data Factory w ramach przykładów
 
-W tym artykule opisano i przedstawiono usługi Azure Data Factory, model o szczegółowe przykłady cen.
+W tym artykule opisano i przedstawiono model cen Azure Data Factory ze szczegółowymi przykładami.
 
 > [!NOTE]
-> Ceny użyte w tych przykładach poniżej są hipotetyczny i nie powinny oznaczać rzeczywiste ceny.
+> Ceny używane w poniższych przykładach są hipotetyczne i nie są przeznaczone do oznaczania rzeczywistych cen.
 
-## <a name="copy-data-from-aws-s3-to-azure-blob-storage-hourly"></a>Kopiowanie danych z usługi AWS S3 do magazynu obiektów Blob platformy Azure co godzinę
+## <a name="copy-data-from-aws-s3-to-azure-blob-storage-hourly"></a>Co godzinę Kopiuj dane z AWS S3 do usługi Azure Blob Storage
 
-W tym scenariuszu chcesz skopiować dane z usługi AWS S3 do usługi Azure Blob storage w przypadku harmonogramu co godzinę.
+W tym scenariuszu chcesz skopiować dane z AWS S3 do magazynu obiektów blob platformy Azure zgodnie z harmonogramem godzinowym.
 
-Do wykonywania scenariusz, należy utworzyć potok z następującymi elementami:
+Aby zrealizować ten scenariusz, należy utworzyć potok z następującymi elementami:
 
-1. Działanie kopiowania, wejściowy zestaw danych dla danych, które mają być kopiowane z usługi AWS S3.
+1. Działanie kopiowania z wejściowym zestawem danych, które ma zostać skopiowane z AWS S3.
 
-2. Wyjściowy zestaw danych dla danych w usłudze Azure Storage.
+2. Wyjściowy zestaw danych w usłudze Azure Storage.
 
-3. Wyzwalacz harmonogramu można wykonać potok co godzinę.
+3. Wyzwalacz harmonogramu do wykonywania potoku co godzinę.
 
    ![Scenario1](media/pricing-concepts/scenario1.png)
 
 | **Operacje** | **Typy i jednostki** |
 | --- | --- |
-| Tworzenie usługi połączonej | 2 podmiot odczyt/zapis  |
-| Tworzenie zestawów danych | 4 jednostek odczytu/zapisu, (2 w celu utworzenia zestawu danych, 2 dla odwołania do połączonej usługi) |
-| Tworzenie potoku | 3 jednostki odczytu/zapisu (1 w celu utworzenia potoku, 2 dla odwołań do zestawu danych) |
-| Pobierz potoku | 1 jednostka odczytu/zapisu |
-| Uruchamianie potoku | 2 uruchomień działań (1 dla wyzwalacza Uruchom 1 w przypadku uruchomienia działania) |
-| Czas wykonywania kopii danych założeń: = 10 min | 10 \* 4 azure Integration Runtime (domyślne ustawienie DIU = 4) Aby uzyskać więcej informacji na temat jednostek integracji danych i optymalizowanie wydajności kopii, zobacz [w tym artykule](copy-activity-performance.md) |
-| Monitorowanie potoku założenia: Tylko 1 uruchomić wystąpił | 2 rekordy monitorowanie Uruchom ponowione (1-uruchomienie potoku, 1 w przypadku uruchomienia działania) |
+| Utwórz połączoną usługę | 2 jednostka do odczytu i zapisu  |
+| Tworzenie zestawów danych | 4 jednostki odczytu/zapisu (2 dla tworzenia zestawu danych, 2 dla odwołań połączonej usługi) |
+| Tworzenie potoku | 3 jednostki odczytu/zapisu (1 dla tworzenia potoku, 2 dla odwołań do zestawu danych) |
+| Pobierz potok | 1 jednostka odczytu/zapisu |
+| Uruchom potok | 2 uruchomienia działania (1 dla uruchomienia wyzwalacza, 1 dla uruchomień działania) |
+| Kopiowanie danych założeń: czas wykonywania = 10 min | 10 \* 4 Azure Integration Runtime (domyślne ustawienie DIU = 4) Aby uzyskać więcej informacji o jednostkach integracji danych i optymalizowaniu wydajności kopiowania, zobacz [ten artykuł](copy-activity-performance.md) . |
+| Monitorowanie założeń potoku: Wystąpił tylko 1 przebieg | 2 ponowione rekordy uruchomienia monitorowania (1 dla uruchomienia potoku, 1 dla uruchomienia działania) |
 
-**Łączna liczba scenariusz kalkulacji cen: $0.16811**
+**Łączny Cennik scenariusza: $0,16811**
 
-- Operacje na danych fabryki = **0,0001 USD**
-  - Odczyt/zapis = 10\*00001 0,0001 USD = [1 odczytu i zapisu = $ 0,50/50000 = 0,00001]
-  - Monitorowanie = 2\*000005 = $0,00001 [monitorowania 1 = $ 0,25/50000 = 0.000005]
-- Organizowanie potoku &amp; wykonywania = **0.168 $**
-  - Uruchomienia działania = 001\*2 = 0,002 [1, uruchom = 1/1000 USD = 0,001]
-  - Działania przenoszenia danych = $0.166 (Prorated przez 10 minut czasu wykonywania. 0,25 USD/godz. na platformie Azure Integration Runtime)
+- Operacje Data Factory = **$0,0001**
+  - Odczyt/zapis = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitorowanie = 2\*000005 = $0,00001 [1 Monitorowanie = $0,25/50000 = 0,000005]
+- &amp; Wykonywanie aranżacji potoku = **$0,168**
+  - Uruchomienia działania = 001\*2 = 0,002 [1 Run = $1/1000 = 0,001]
+  - Działania przenoszenia danych = $0,166 (proporcjonalnie do 10 minut czasu wykonywania. $0,25/godz. w Azure Integration Runtime)
 
-## <a name="copy-data-and-transform-with-azure-databricks-hourly"></a>Kopiowanie danych i transformacja dzięki usłudze Azure Databricks co godzinę
+## <a name="copy-data-and-transform-with-azure-databricks-hourly"></a>Kopiowanie danych i przekształcanie ich przy użyciu Azure Databricks co godzinę
 
-W tym scenariuszu, dla których chcesz skopiować dane z usługi AWS S3 do usługi Azure Blob storage i przekształcanie danych za pomocą usługi Azure Databricks w przypadku harmonogramu co godzinę.
+W tym scenariuszu chcesz skopiować dane z AWS S3 do magazynu obiektów blob platformy Azure i przekształcić dane przy użyciu Azure Databricks zgodnie z harmonogramem godzinowym.
 
-Do wykonywania scenariusz, należy utworzyć potok z następującymi elementami:
+Aby zrealizować ten scenariusz, należy utworzyć potok z następującymi elementami:
 
-1. Działanie kopiowania jeden wejściowy zestaw danych dla danych, które mają być kopiowane z usługi AWS S3 i wyjściowy zestaw danych dla danych w usłudze Azure storage.
-2. Jedno działanie usługi Azure Databricks dla transformacji danych.
-3. Wyzwalacz harmonogramu co do wykonania potok co godzinę.
+1. Jedno działanie kopiowania z wejściowym zestawem danych, które ma zostać skopiowane z AWS S3, oraz wyjściowy zestaw danych dla dane w usłudze Azure Storage.
+2. Jedno Azure Databricks działanie dla transformacji danych.
+3. Jeden wyzwalacz harmonogramu do uruchomienia potoku co godzinę.
 
 ![Scenario2](media/pricing-concepts/scenario2.png)
 
 | **Operacje** | **Typy i jednostki** |
 | --- | --- |
-| Tworzenie usługi połączonej | 3 podmiot odczyt/zapis  |
-| Tworzenie zestawów danych | 4 jednostek odczytu/zapisu, (2 w celu utworzenia zestawu danych, 2 dla odwołania do połączonej usługi) |
-| Tworzenie potoku | 3 jednostki odczytu/zapisu (1 w celu utworzenia potoku, 2 dla odwołań do zestawu danych) |
-| Pobierz potoku | 1 jednostka odczytu/zapisu |
-| Uruchamianie potoku | Uruchomienia działania 3 (1 dla wyzwalacza, uruchom 2 w przypadku uruchomienia działania) |
-| Czas wykonywania kopii danych założeń: = 10 min | 10 \* 4 azure Integration Runtime (domyślne ustawienie DIU = 4) Aby uzyskać więcej informacji na temat jednostek integracji danych i optymalizowanie wydajności kopii, zobacz [w tym artykule](copy-activity-performance.md) |
-| Monitorowanie potoku założenia: Tylko 1 uruchomić wystąpił | 3 rekordy monitorowanie Uruchom ponowione (1-uruchomienie potoku, 2 w przypadku uruchomienia działania) |
-| Wykonaj działania usługi Databricks założeń: czas wykonywania 10 min | Wykonania działania w potoku zewnętrzne 10 min |
+| Utwórz połączoną usługę | 3 jednostka do odczytu i zapisu  |
+| Tworzenie zestawów danych | 4 jednostki odczytu/zapisu (2 dla tworzenia zestawu danych, 2 dla odwołań połączonej usługi) |
+| Tworzenie potoku | 3 jednostki odczytu/zapisu (1 dla tworzenia potoku, 2 dla odwołań do zestawu danych) |
+| Pobierz potok | 1 jednostka odczytu/zapisu |
+| Uruchom potok | 3 uruchomienia działania (1 dla uruchomienia wyzwalacza, 2 dla uruchomień działania) |
+| Kopiowanie danych założeń: czas wykonywania = 10 min | 10 \* 4 Azure Integration Runtime (domyślne ustawienie DIU = 4) Aby uzyskać więcej informacji o jednostkach integracji danych i optymalizowaniu wydajności kopiowania, zobacz [ten artykuł](copy-activity-performance.md) . |
+| Monitorowanie założeń potoku: Wystąpił tylko 1 przebieg | 3 ponowione rekordy uruchomienia monitorowania (1 dla uruchomienia potoku, 2 dla uruchomienia działania) |
+| Założenie działania wykonywania elementów datakostki: czas wykonywania = 10 min | 10-minimalne wykonywanie działania zewnętrznego potoku |
 
-**Łączna liczba scenariusz kalkulacji cen: $0.16916**
+**Łączny Cennik scenariusza: $0,16916**
 
-- Operacje na danych fabryki = **0.00012 $**
-  - Odczyt/zapis = 11\*00001 = $0.00011 [1 odczytu i zapisu = $ 0,50/50000 = 0,00001]
-  - Monitorowanie = 3\*000005 = $0,00001 [monitorowania 1 = $ 0,25/50000 = 0.000005]
-- Organizowanie potoku &amp; wykonywania = **0.16904 $**
-  - Uruchomienia działania = 001\*3 = 0,003 [1, uruchom = 1/1000 USD = 0,001]
-  - Działania przenoszenia danych = $0.166 (Prorated przez 10 minut czasu wykonywania. 0,25 USD/godz. na platformie Azure Integration Runtime)
-  - Działania potoku zewnętrznego = $0.000041 (Prorated przez 10 minut czasu wykonywania. $0.00025/godz. na platformie Azure Integration Runtime)
+- Operacje Data Factory = **$0,00012**
+  - Odczyt/zapis = 11\*00001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitorowanie = 3\*000005 = $0,00001 [1 Monitorowanie = $0,25/50000 = 0,000005]
+- &amp; Wykonywanie aranżacji potoku = **$0,16904**
+  - Uruchomienia działania = 001\*3 = 0,003 [1 Run = $1/1000 = 0,001]
+  - Działania przenoszenia danych = $0,166 (proporcjonalnie do 10 minut czasu wykonywania. $0,25/godz. w Azure Integration Runtime)
+  - Działanie zewnętrznego potoku = $0,000041 (proporcjonalnie do 10 minut czasu wykonywania. $0.00025/godzinę w Azure Integration Runtime)
 
-## <a name="copy-data-and-transform-with-dynamic-parameters-hourly"></a>Kopiowanie danych i przekształcać z parametrami dynamicznymi co godzinę
+## <a name="copy-data-and-transform-with-dynamic-parameters-hourly"></a>Kopiowanie danych i przekształcanie ich z parametrami dynamicznymi co godzinę
 
-W tym scenariuszu chcesz skopiować dane z usługi AWS S3 do usługi Azure Blob storage i przekształcenia przy użyciu usługi Azure Databricks (przy użyciu parametrów dynamicznych w skrypcie) w przypadku harmonogramu co godzinę.
+W tym scenariuszu należy skopiować dane z AWS S3 do magazynu obiektów blob platformy Azure i przekształcić je za pomocą Azure Databricks (z parametrami dynamicznymi w skrypcie) zgodnie z harmonogramem godzinowym.
 
-Do wykonywania scenariusz, należy utworzyć potok z następującymi elementami:
+Aby zrealizować ten scenariusz, należy utworzyć potok z następującymi elementami:
 
-1. Jedno działanie kopiowania z wejściowego zestawu danych dla danych, które mają być kopiowane z usługi AWS S3, wyjściowy zestaw danych dla danych w usłudze Azure storage.
-2. Jedno działanie wyszukiwania dla dynamicznie przekazywanie parametrów do skryptu przekształcania.
-3. Jedno działanie usługi Azure Databricks dla transformacji danych.
-4. Wyzwalacz harmonogramu co do wykonania potok co godzinę.
+1. Jedno działanie kopiowania z wejściowym zestawem danych, które ma zostać skopiowane z AWS S3, wyjściowego zestawu danych dla dane w usłudze Azure Storage.
+2. Jedno działanie wyszukiwania do dynamicznego przekazywania parametrów do skryptu transformacji.
+3. Jedno Azure Databricks działanie dla transformacji danych.
+4. Jeden wyzwalacz harmonogramu do uruchomienia potoku co godzinę.
 
 ![Scenario3](media/pricing-concepts/scenario3.png)
 
 | **Operacje** | **Typy i jednostki** |
 | --- | --- |
-| Tworzenie usługi połączonej | 3 podmiot odczyt/zapis  |
-| Tworzenie zestawów danych | 4 jednostek odczytu/zapisu, (2 w celu utworzenia zestawu danych, 2 dla odwołania do połączonej usługi) |
-| Tworzenie potoku | 3 jednostki odczytu/zapisu (1 w celu utworzenia potoku, 2 dla odwołań do zestawu danych) |
-| Pobierz potoku | 1 jednostka odczytu/zapisu |
-| Uruchamianie potoku | Uruchomienia działania 4 (1 dla wyzwalacza uruchomiony, 3 dla uruchomienia działania) |
-| Czas wykonywania kopii danych założeń: = 10 min | 10 \* 4 azure Integration Runtime (domyślne ustawienie DIU = 4) Aby uzyskać więcej informacji na temat jednostek integracji danych i optymalizowanie wydajności kopii, zobacz [w tym artykule](copy-activity-performance.md) |
-| Monitorowanie potoku założenia: Tylko 1 uruchomić wystąpił | 4 rekordów monitorowanie Uruchom ponowione (1-uruchomienie potoku, 3 dla uruchomienia działania) |
-| Wykonaj działania Lookup założeń: czas wykonania = 1 min | 1 min wykonania działania potoku |
-| Wykonaj działania usługi Databricks założeń: czas wykonywania 10 min | 10-minutowy materiał wykonania zewnętrznego działania potoku |
+| Utwórz połączoną usługę | 3 jednostka do odczytu i zapisu  |
+| Tworzenie zestawów danych | 4 jednostki odczytu/zapisu (2 dla tworzenia zestawu danych, 2 dla odwołań połączonej usługi) |
+| Tworzenie potoku | 3 jednostki odczytu/zapisu (1 dla tworzenia potoku, 2 dla odwołań do zestawu danych) |
+| Pobierz potok | 1 jednostka odczytu/zapisu |
+| Uruchom potok | 4 uruchomienia działania (1 dla uruchomienia wyzwalacza, 3 dla uruchomień działania) |
+| Kopiowanie danych założeń: czas wykonywania = 10 min | 10 \* 4 Azure Integration Runtime (domyślne ustawienie DIU = 4) Aby uzyskać więcej informacji o jednostkach integracji danych i optymalizowaniu wydajności kopiowania, zobacz [ten artykuł](copy-activity-performance.md) . |
+| Monitorowanie założeń potoku: Wystąpił tylko 1 przebieg | 4 ponowione rekordy uruchomienia monitorowania (1 dla uruchomienia potoku, 3 dla uruchomienia działania) |
+| Założenie wykonania działania wyszukiwania: czas wykonywania = 1 min | 1 min wykonania działania potoku |
+| Założenie działania wykonywania elementów datakostki: czas wykonywania = 10 min | 10-minimalne wykonywanie działania zewnętrznego potoku |
 
-**Łączna liczba scenariusz kalkulacji cen: $0.17020**
+**Łączny Cennik scenariusza: $0,17020**
 
-- Operacje na danych fabryki = **0.00013 $**
-  - Odczyt/zapis = 11\*00001 = $0.00011 [1 odczytu i zapisu = $ 0,50/50000 = 0,00001]
-  - Monitorowanie = 4\*000005 = $0.00002 [monitorowania 1 = $ 0,25/50000 = 0.000005]
-- Organizowanie potoku &amp; wykonywania = **0.17007 $**
-  - Uruchomienia działania = 001\*4 = 0.004 [1, uruchom = 1/1000 USD = 0,001]
-  - Działania przenoszenia danych = $0.166 (Prorated przez 10 minut czasu wykonywania. 0,25 USD/godz. na platformie Azure Integration Runtime)
-  - Potok działania = $0.00003 (Prorated 1 minuty w czasie wykonywania. 0,002 USD za godzinę na platformie Azure Integration Runtime)
-  - Działania potoku zewnętrznego = $0.000041 (Prorated przez 10 minut czasu wykonywania. $0.00025/godz. na platformie Azure Integration Runtime)
+- Operacje Data Factory = **$0,00013**
+  - Odczyt/zapis = 11\*00001 = $0,00011 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitorowanie = 4\*000005 = $0,00002 [1 Monitorowanie = $0,25/50000 = 0,000005]
+- &amp; Wykonywanie aranżacji potoku = **$0,17007**
+  - Uruchomienia działania = 001\*4 = 0,004 [1 Run = $1/1000 = 0,001]
+  - Działania przenoszenia danych = $0,166 (proporcjonalnie do 10 minut czasu wykonywania. $0,25/godz. w Azure Integration Runtime)
+  - Działanie potoku = $0,00003 (proporcjonalnie do 1 minuty czasu wykonywania. $0.002/godzinę w Azure Integration Runtime)
+  - Działanie zewnętrznego potoku = $0,000041 (proporcjonalnie do 10 minut czasu wykonywania. $0.00025/godzinę w Azure Integration Runtime)
 
-## <a name="using-mapping-data-flow-debug-for-a-normal-workday-preview-pricing"></a>Za pomocą debugowania przepływu danych mapowania dla normalnej pracy (ceny dla wersji zapoznawczej)
+## <a name="using-mapping-data-flow-debug-for-a-normal-workday-preview-pricing"></a>Używanie debugowania przepływu danych mapowania dla normalnego produktu Workday (Cennik wersji zapoznawczej)
 
-Jako inżynier danych możesz odpowiadają za projektowanie, tworzenie i testowanie mapowanie przepływu danych każdego dnia. Zaloguj się do interfejsu użytkownika usługi ADF rano i włączyć tryb debugowania dla przepływu danych. Domyślny czas wygaśnięcia sesji debugowania jest 60 minut. Możesz pracować w ciągu dnia, przez 10 godzin, więc nigdy nie wygasa sesję debugowania. W związku z tym, Twoja opłata na ten dzień wyniesie:
+Jako inżynier danych jest odpowiedzialny za projektowanie, kompilowanie i testowanie danych mapowania w każdym dniu. Zaloguj się do interfejsu użytkownika usługi ADF w rano i Włącz tryb debugowania dla przepływów danych. Domyślny czas wygaśnięcia sesji debugowania to 60 minut. Pracujesz przez cały dzień przez 10 godzin, więc sesja debugowania nigdy nie wygasa. W związku z tym opłata za dzień będzie:
 
-**10 (godziny) x 8 (rdzenie) x $0.112 = 8.96 $**
+**10 (godz.) x 8 (rdzenie) x $0,112 = $8,96**
 
-## <a name="transform-data-in-blob-store-with-mapping-data-flows-preview-pricing"></a>Przekształcanie danych w magazynie obiektów blob za pomocą mapowania przepływów danych (ceny dla wersji zapoznawczej)
+## <a name="transform-data-in-blob-store-with-mapping-data-flows-preview-pricing"></a>Przekształcanie danych w magazynie obiektów BLOB przy użyciu mapowania przepływów danych (Cennik wersji zapoznawczej)
 
-W tym scenariuszu chcesz przekształcić dane obiektów Blob Store wizualne w usłudze ADF mapowanie przepływu danych w przypadku harmonogramu co godzinę.
+W tym scenariuszu chcesz przekształcać dane w magazynie obiektów BLOB wizualnie w przepływie danych w usłudze ADF na potrzeby mapowania godzinowego.
 
-Do wykonywania scenariusz, należy utworzyć potok z następującymi elementami:
+Aby zrealizować ten scenariusz, należy utworzyć potok z następującymi elementami:
 
-1. Przepływ danych działanie z logiką transformacji.
+1. Działanie przepływu danych z logiką transformacji.
 
-2. Wejściowy zestaw danych dla danych w usłudze Azure Storage.
+2. Zestaw danych wejściowych dla danych w usłudze Azure Storage.
 
-3. Wyjściowy zestaw danych dla danych w usłudze Azure Storage.
+3. Wyjściowy zestaw danych w usłudze Azure Storage.
 
-4. Wyzwalacz harmonogramu można wykonać potok co godzinę.
+4. Wyzwalacz harmonogramu do wykonywania potoku co godzinę.
 
 | **Operacje** | **Typy i jednostki** |
 | --- | --- |
-| Tworzenie usługi połączonej | 2 podmiot odczyt/zapis  |
-| Tworzenie zestawów danych | 4 jednostek odczytu/zapisu, (2 w celu utworzenia zestawu danych, 2 dla odwołania do połączonej usługi) |
-| Tworzenie potoku | 3 jednostki odczytu/zapisu (1 w celu utworzenia potoku, 2 dla odwołań do zestawu danych) |
-| Pobierz potoku | 1 jednostka odczytu/zapisu |
-| Uruchamianie potoku | 2 uruchomień działań (1 dla wyzwalacza Uruchom 1 w przypadku uruchomienia działania) |
-| Czas wykonywania założenia przepływu danych: = 10 min + 10-minutowy materiał czas wygaśnięcia | 10 \* 8 rdzeni obliczeniowych ogólne TTL 10 |
-| Monitorowanie potoku założenia: Tylko 1 uruchomić wystąpił | 2 rekordy monitorowanie Uruchom ponowione (1-uruchomienie potoku, 1 w przypadku uruchomienia działania) |
+| Utwórz połączoną usługę | 2 jednostka do odczytu i zapisu  |
+| Tworzenie zestawów danych | 4 jednostki odczytu/zapisu (2 dla tworzenia zestawu danych, 2 dla odwołań połączonej usługi) |
+| Tworzenie potoku | 3 jednostki odczytu/zapisu (1 dla tworzenia potoku, 2 dla odwołań do zestawu danych) |
+| Pobierz potok | 1 jednostka odczytu/zapisu |
+| Uruchom potok | 2 uruchomienia działania (1 dla uruchomienia wyzwalacza, 1 dla uruchomień działania) |
+| Założenia przepływu danych: czas wykonywania = 10 min + 10 min. TTL | 10 \* 8 rdzeni ogólnych obliczeń z wartością TTL 10 |
+| Monitorowanie założeń potoku: Wystąpił tylko 1 przebieg | 2 ponowione rekordy uruchomienia monitorowania (1 dla uruchomienia potoku, 1 dla uruchomienia działania) |
 
-**Łączna liczba scenariusz kalkulacji cen: $0.3011**
+**Łączny Cennik scenariusza: $0,3011**
 
-- Operacje na danych fabryki = **0,0001 USD**
-  - Odczyt/zapis = 10\*00001 0,0001 USD = [1 odczytu i zapisu = $ 0,50/50000 = 0,00001]
-  - Monitorowanie = 2\*000005 = $0,00001 [monitorowania 1 = $ 0,25/50000 = 0.000005]
-- Organizowanie potoku &amp; wykonywania = **0.301 $**
-  - Uruchomienia działania = 001\*2 = 0,002 [1, uruchom = 1/1000 USD = 0,001]
-  - Działania przepływu danych = $0.299 Prorated przez 20 minut (10 minut czasu wykonywania + 10 minut. czas wygaśnięcia). obliczenia 0.112 $/ godz. na platformie Azure Integration Runtime z 8 rdzeni, ogólne
+- Operacje Data Factory = **$0,0001**
+  - Odczyt/zapis = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]
+  - Monitorowanie = 2\*000005 = $0,00001 [1 Monitorowanie = $0,25/50000 = 0,000005]
+- &amp; Wykonywanie aranżacji potoku = **$0,301**
+  - Uruchomienia działania = 001\*2 = 0,002 [1 Run = $1/1000 = 0,001]
+  - Działania związane z przepływem danych = $0,299 proporcjonalnie do 20 minut (czas wykonywania w 10 minutach + 10 minut TTL). $0.112/godzinę w Azure Integration Runtime z 8 rdzeniami ogólnymi obliczeniowymi
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy już rozumiesz cennika usługi Azure Data Factory, możesz rozpocząć pracę!
+Teraz, gdy rozumiesz Cennik Azure Data Factory, możesz rozpocząć pracę.
 
-- [Tworzenie fabryki danych przy użyciu interfejsu użytkownika usługi Azure Data Factory](quickstart-create-data-factory-portal.md)
+- [Tworzenie fabryki danych przy użyciu interfejsu użytkownika Azure Data Factory](quickstart-create-data-factory-portal.md)
 
 - [Wprowadzenie do usługi Azure Data Factory](introduction.md)
 
-- [Wizualne Tworzenie usługi Azure Data Factory](author-visually.md)
+- [Tworzenie wizualne w Azure Data Factory](author-visually.md)

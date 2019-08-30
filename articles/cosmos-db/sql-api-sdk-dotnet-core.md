@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 58db76401439befd476bc78c1a1a20eeed5c2342
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1b1e9338f92aaefab8e7754139066ac03e8b8213
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779164"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142632"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Zestaw .NET Core SDK Azure Cosmos DB dla interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -251,9 +251,21 @@ Azure Cosmos DB platformy .NET Core w wersji zapoznawczej SDK ma równoważnośc
 
 Jeśli masz pytania związane z tym zestawem SDK, Opublikuj je w usłudze [StackOverflow](https://stackoverflow.com/questions/tagged/azure-documentdb)lub zageneruj problem w [repozytorium GitHub](https://github.com/Azure/azure-documentdb-dotnet/issues).
 
-## <a name="release--retirement-dates"></a>Wersja & dat wycofywania
+## <a name="release--retirement-dates"></a>Data wycofania &
+Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** przed WYCOFANIEM zestawu SDK w celu zapewnienia sprawnego przejścia do nowszej/obsługiwanej wersji.
 
-| Wersja | Data wydania | Data wygaśnięcia |
+Nowe funkcje i funkcje i optymalizacje są dodawane tylko do bieżącego zestawu SDK, dlatego zaleca się, aby zawsze uaktualnić do najnowszej wersji zestawu SDK tak szybko, jak to możliwe. 
+
+Wszystkie żądania do Azure Cosmos DB za pomocą wycofanego zestawu SDK są odrzucane przez usługę.
+
+> [!WARNING]
+> Wszystkie wersje **1. x** zestaw .NET Core SDK dla interfejsu API SQL zostaną wycofane **30 sierpnia 2020**.
+> 
+>
+<br/>
+
+
+| Version | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
 | [2.5.1](#2.5.1) |02 lipca 2019 |--- |
 | [2.4.1](#2.4.1) |20 czerwca 2019 |--- |
@@ -268,26 +280,26 @@ Jeśli masz pytania związane z tym zestawem SDK, Opublikuj je w usłudze [Stack
 | [2.1.1](#2.1.1) |27 września 2018 r. |--- |
 | [2.1.0](#2.1.0) |21 września 2018 r. |--- |
 | [2.0.0](#2.0.0) |07 września 2018 r. |--- |
-| [1.9.1](#1.9.1) |09 marca 2018 r. |--- |
-| [1.8.2](#1.8.2) |21 lutego 2018 r. |--- |
-| [1.8.1](#1.8.1) |05 lutego 2018 r. |--- |
-| [1.7.1](#1.7.1) |16 listopada 2017 r. |--- |
-| [1.7.0](#1.7.0) |10 listopada 2017 r. |--- |
-| [1.6.0](#1.6.0) |17 października 2017 r. |--- |
-| [1.5.1](#1.5.1) |02 października 2017 r. |--- |
-| [1.5.0](#1.5.0) |10 sierpnia 2017 r. |--- | 
-| [1.4.1](#1.4.1) |07 sierpnia 2017 r. |--- |
-| [1.4.0](#1.4.0) |02 sierpnia 2017 r. |--- |
-| [1.3.2](#1.3.2) |12 czerwca 2017 r. |--- |
-| [1.3.1](#1.3.1) |23 maja 2017 r. |--- |
-| [1.3.0](#1.3.0) |10 maja 2017 |--- |
-| [1.2.2](#1.2.2) |19 kwietnia 2017 r. |--- |
-| [1.2.1](#1.2.1) |29 marca 2017 r. |--- |
-| [1.2.0](#1.2.0) |25 marca 2017 r. |--- |
-| [1.1.2](#1.1.2) |20 marca 2017 r. |--- |
-| [1.1.1](#1.1.1) |14 marca 2017 r. |--- |
-| [1.1.0](#1.1.0) |16 lutego 2017 r. |--- |
-| [1.0.0](#1.0.0) |21 grudnia 2016 r. |--- |
+| [1.9.1](#1.9.1) |09 marca 2018 r. |30 sierpnia 2020 |
+| [1.8.2](#1.8.2) |21 lutego 2018 r. |30 sierpnia 2020 |
+| [1.8.1](#1.8.1) |05 lutego 2018 r. |30 sierpnia 2020 |
+| [1.7.1](#1.7.1) |16 listopada 2017 r. |30 sierpnia 2020 |
+| [1.7.0](#1.7.0) |10 listopada 2017 r. |30 sierpnia 2020 |
+| [1.6.0](#1.6.0) |17 października 2017 r. |30 sierpnia 2020 |
+| [1.5.1](#1.5.1) |02 października 2017 r. |30 sierpnia 2020 |
+| [1.5.0](#1.5.0) |10 sierpnia 2017 r. |30 sierpnia 2020 | 
+| [1.4.1](#1.4.1) |07 sierpnia 2017 r. |30 sierpnia 2020 |
+| [1.4.0](#1.4.0) |02 sierpnia 2017 r. |30 sierpnia 2020 |
+| [1.3.2](#1.3.2) |12 czerwca 2017 r. |30 sierpnia 2020 |
+| [1.3.1](#1.3.1) |23 maja 2017 r. |30 sierpnia 2020 |
+| [1.3.0](#1.3.0) |10 maja 2017 |30 sierpnia 2020 |
+| [1.2.2](#1.2.2) |19 kwietnia 2017 r. |30 sierpnia 2020 |
+| [1.2.1](#1.2.1) |29 marca 2017 r. |30 sierpnia 2020 |
+| [1.2.0](#1.2.0) |25 marca 2017 r. |30 sierpnia 2020 |
+| [1.1.2](#1.1.2) |20 marca 2017 r. |30 sierpnia 2020 |
+| [1.1.1](#1.1.1) |14 marca 2017 r. |30 sierpnia 2020 |
+| [1.1.0](#1.1.0) |16 lutego 2017 r. |30 sierpnia 2020 |
+| [1.0.0](#1.0.0) |21 grudnia 2016 r. |30 sierpnia 2020 |
 | [0.1.0-Preview](#0.1.0-preview) |15 listopada 2016 r. |Do 31 grudnia 2016 r. |
 
 ## <a name="see-also"></a>Zobacz też

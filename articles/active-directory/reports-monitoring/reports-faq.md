@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a9b1144e3ef1f1a49c39d694f465653da5881cb
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e8c3138b82c7dc4a7217e8cb67448a5d824398ba
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987923"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127023"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Często zadawane pytania dotyczące Azure Active Directory raportów
 
@@ -37,7 +37,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące raportowa
 
 **Pyt.: Obecnie używam `https://graph.windows.net/<tenant-name>/reports/` interfejsów API punktu końcowego do ściągania raportów zabezpieczeń usługi Azure AD (określonych typów wykryć, takich jak nieujawnione poświadczenia lub logowania z anonimowych adresów IP) w naszych systemach raportowania. Z czym mam się przełączyć?**
 
-**Odp.:** Za pomocą  [interfejsu API zdarzeń ochrony tożsamości](../identity-protection/graph-get-started.md)można uzyskiwać dostęp do wykrycia zabezpieczeń za pomocą Microsoft Graph. Ten nowy format zapewnia większą elastyczność w zakresie wykonywania zapytań dotyczących danych, z zaawansowanymi filtrowaniem, zaznaczaniem pól i wieloma innymi, a także standaryzacji zdarzeń ryzyka w jednym typie w celu łatwiejszej integracji z rozwiązań Siem i innymi narzędziami do zbierania danych. Ponieważ dane są w innym formacie, nie można zastąpić nowego zapytania dla starych zapytań. Jednak [Nowy interfejs API używa Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), który jest standardem firmy Microsoft dla takich interfejsów API jak O365 lub Azure AD. W związku z tym wymagana służba może rozciągnąć bieżące inwestycje programu MS Graph lub ułatwić rozpoczęcie przejścia do nowej platformy standardowej.
+**Odp.:** Korzystając z  [interfejsu API wykrywania ryzyka ochrony tożsamości](../identity-protection/graph-get-started.md), można uzyskać dostęp do wykrywania zabezpieczeń za pomocą Microsoft Graph. Ten nowy format zapewnia większą elastyczność w zakresie wykonywania zapytań dotyczących danych, z zaawansowanymi filtrowaniem, zaznaczaniem pól i wieloma innymi, a także umożliwia ujednolicenie wykrywania ryzyka w jednym typie w celu łatwiejszej integracji z rozwiązań Siem i innymi narzędziami zbierania danych. Ponieważ dane są w innym formacie, nie można zastąpić nowego zapytania dla starych zapytań. Jednak [Nowy interfejs API używa Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent), który jest standardem firmy Microsoft dla takich interfejsów API jak O365 lub Azure AD. W związku z tym wymagana służba może rozciągnąć bieżące inwestycje programu MS Graph lub ułatwić rozpoczęcie przejścia do nowej platformy standardowej.
 
 ---
 
@@ -107,7 +107,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące raportowa
 
 ## <a name="risky-sign-ins"></a>Ryzykowne logowania
 
-**Pyt.: Istnieje ryzyko związane z ochroną tożsamości, ale nie widzę odpowiedniego logowania w raporcie logowania. Czy jest to oczekiwane?**
+**Pyt.: Istnieje możliwość wykrywania zagrożeń w usłudze Identity Protection, ale nie widzę odpowiedniego logowania w raporcie logowania. Czy jest to oczekiwane?**
 
 **Odp.:** Tak, program Identity Protection szacuje ryzyko dla wszystkich przepływów uwierzytelniania niezależnie od tego, czy interaktywny, czy nieinteraktywny. Jednak wszystkie raporty dotyczące tylko logowania są wyświetlane tylko w przypadku logowania interakcyjnego.
 
@@ -115,7 +115,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące raportowa
 
 **Pyt.: Jak mogę wiedzieć, dlaczego zalogowanie lub użytkownik został oflagowany ryzykiem w Azure Portal?**
 
-**Odp.:** Jeśli masz subskrypcję **Azure AD — wersja Premium** , możesz dowiedzieć się więcej na temat podstawowych zdarzeń związanych z ryzykiem, wybierając użytkownika w **przypadku użytkowników oflagowanych w ramach ryzyka** lub wybierając rekord w raporcie **ryzykowne logowania** . Jeśli masz subskrypcję **bezpłatną** lub **podstawową** , możesz przeglądać użytkowników na ryzyko i ryzykowne raporty dotyczące logowania, ale nie widzisz podstawowych informacji o zagrożeniu ryzyka.
+**Odp.:** Jeśli masz subskrypcję usługi **Azure AD — wersja Premium** , możesz dowiedzieć się więcej na temat podstawowych wykryć ryzyka, wybierając użytkownika w **przypadku użytkowników oflagowanych w ramach ryzyka** lub wybierając rekord w raporcie ryzykowne **logowania** . Jeśli masz subskrypcję **bezpłatną** lub **podstawową** , możesz przeglądać użytkowników na ryzyko i ryzykowne raporty dotyczące logowania, ale nie widzisz podstawowych informacji o wykrywaniu ryzyka.
 
 ---
 
@@ -125,7 +125,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące raportowa
 
 ---
 
-**Pyt.: Co oznacza zdarzenie ryzyka "Logowanie się z dodatkowym ryzykiem" oznacza?**
+**Pyt.: Co oznacza wykrycie ryzyka "Logowanie z dodatkowym ryzykiem" oznacza?**
 
 **Odp.:** Aby uzyskać wgląd we wszystkie ryzykowne logowania w środowisku, "Zaloguj się z dodatkowym ryzykiem wykrytym" funkcji jako symbol zastępczy dla logowań do wykrycia, które są wyłączne dla subskrybentów Azure AD Identity Protection.
 

@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/29/2017
-ms.openlocfilehash: 5aff45b4a6b5da62569e0a39c13239a726e6b80b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 08/28/2019
+ms.openlocfilehash: 9a80cb7ba44c86d449e4ff4178a2982db302a717
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60884965"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138343"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Tworzenie zestawu skalowania maszyn wirtualnych platformy Azure z niestandardowego obrazu narzędzia Packer przy użyciu narzędzia Terraform
 
@@ -44,7 +44,7 @@ W pustym katalogu utwórz trzy nowe pliki o następujących nazwach:
 
 - ```variables.tf``` — ten plik zawiera wartości zmiennych używanych w szablonie.
 - ```output.tf``` — ten plik opisuje ustawienia, które są wyświetlane po wdrożeniu.
-- ```vmss.tf``` — ten plik zawiera kod wdrażanej infrastruktury.
+- ```vmss.tf```Ten plik zawiera kod infrastruktury, która jest wdrażana.
 
 ##  <a name="create-the-variables"></a>Tworzenie zmiennych 
 
@@ -124,7 +124,7 @@ resource "azurerm_public_ip" "vmss" {
   name                         = "vmss-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}"
 
   tags {
@@ -175,12 +175,12 @@ Postępuj zgodnie z samouczkiem, aby za pomocą zainstalowanego serwera NGINX ut
 ## <a name="edit-the-infrastructure-to-add-the-virtual-machine-scale-set"></a>Edytowanie infrastruktury w celu dodania zestawu skalowania maszyn wirtualnych
 
 W tym kroku we wdrożonej wcześniej sieci utworzysz następujące zasoby:
-- Moduł równoważenia obciążenia platformy Azure obsługujący aplikację i dołączający ją do publicznego adresu IP, który został wdrożony w kroku 4
+- Moduł równoważenia obciążenia platformy Azure do obciążania aplikacji i dołączenia go do wdrożonego wcześniej publicznego adresu IP.
 - Jeden moduł równoważenia obciążenia platformy Azure oraz reguły obsługi aplikacji i dołączania jej do skonfigurowanego wcześniej publicznego adresu IP
-- Pula adresów zaplecza platformy Azure i przypisywanie jej do modułu równoważenia obciążenia 
-- Port sondy kondycji używany przez aplikację i skonfigurowany w module równoważenia obciążenia 
-- Zestaw skalowania maszyn wirtualnych stojący za modułem równoważenia obciążenia, który jest uruchamiany we wdrożonej wcześniej sieci wirtualnej
-- Serwer [nginx](https://nginx.org/) na węzłach skalowania maszyn wirtualnych zainstalowany z niestandardowego obrazu
+- Pula adresów zaplecza platformy Azure i przypisz ją do modułu równoważenia obciążenia.
+- Port sondy kondycji używany przez aplikację i skonfigurowany w usłudze równoważenia obciążenia.
+- Zestaw skalowania maszyn wirtualnych znajduje się za modułem równoważenia obciążenia uruchomionym w ramach wdrożonej wcześniej sieci wirtualnej.
+- [Nginx](https://nginx.org/) na węzłach skali maszyny wirtualnej zainstalowanej z obrazu niestandardowego.
 
 
 Na końcu pliku `vmss.tf` dodaj poniższy kod.
@@ -290,6 +290,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
       name                                   = "IPConfiguration"
       subnet_id                              = "${azurerm_subnet.vmss.id}"
       load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.bpepool.id}"]
+      primary = true
     }
   }
   
@@ -355,7 +356,7 @@ resource "azurerm_public_ip" "jumpbox" {
   name                         = "jumpbox-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}-ssh"
 
   tags {
@@ -455,7 +456,7 @@ terraform destroy
 
 Po wyświetleniu monitu o potwierdzenie usunięcia zasobów wpisz polecenie `yes`. Proces niszczenia może potrwać kilka minut.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku za pomocą narzędzia Terraform został wdrożony zestaw skalowania maszyn wirtualnych i rampa na platformie Azure. W tym samouczku omówiono:
 

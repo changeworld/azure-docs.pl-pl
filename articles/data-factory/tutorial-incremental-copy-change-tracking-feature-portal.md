@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: 41f8769aea841e05887feb6a44511cbf444a7acf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a71c83a190bd7e88edd5008edef670b32905add
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66168945"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140806"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Przyrostowe ładowanie danych z bazy danych Azure SQL Database do magazynu Azure Blob Storage z użyciem informacji o śledzeniu zmian 
 W tym samouczku utworzysz fabrykę usługi Azure Data Factory z potokiem służącym do ładowania danych przyrostowych na podstawie informacji o **śledzeniu zmian** w źródłowej bazie danych Azure SQL Database do magazynu Azure Blob Storage.  
@@ -152,7 +151,7 @@ Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje po
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
 
 1. Uruchom przeglądarkę internetową **Microsoft Edge** lub **Google Chrome**. Obecnie interfejs użytkownika usługi Data Factory jest obsługiwany tylko przez przeglądarki internetowe Microsoft Edge i Google Chrome.
-1. W menu po lewej stronie wybierz **Utwórz zasób** > **dane + analiza** > **usługi Data Factory**: 
+1. W menu po lewej stronie wybierz pozycję **Utwórz zasób** > **dane + analiza** > **Data Factory**: 
    
    ![Wybór usługi Data Factory w okienku „Nowy”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -173,7 +172,7 @@ Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje po
 4. Wybierz wartość **V2 (wersja zapoznawcza)** dla **wersji**.
 5. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 6. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
-7. Kliknij pozycję **Utwórz**.      
+7. Kliknij przycisk **Utwórz**.      
 8. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem: **Wdrażanie fabryki danych**. 
 
     ![kafelek Wdrażanie fabryki danych](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
@@ -201,7 +200,7 @@ W tym kroku opisano łączenie konta usługi Azure Storage z fabryką danych.
 
     1. Wprowadź wartość **AzureStorageLinkedService** w polu **Nazwa**. 
     2. W polu **Nazwa konta magazynu** wybierz konto usługi Azure Storage. 
-    3. Kliknij pozycję **Zapisz**. 
+    3. Kliknij polecenie **Zapisz**. 
     
    ![Ustawienia konta usługi Azure Storage](./media/tutorial-incremental-copy-change-tracking-feature-portal/azure-storage-linked-service-settings.png)
 
@@ -261,7 +260,7 @@ W tym kroku utworzysz zestaw danych reprezentujący dane skopiowane z magazynu d
 
     1. Wybierz pozycję **AzureStorageLinkedService** w polu **Połączona usługa**.
     2. Wprowadź ciąg **adftutorial/incchgtracking** w części **folder** ścieżki **filePath**.
-    3. Wprowadź  **\@CONCAT (' przyrostowe-", pipeline(). RunId, '.txt')** dla **pliku** wchodzi w skład **filePath**.  
+    3. **Wprowadź\@concat ("Incremental-", Pipeline (). RunId, ". txt")** dla części **pliku** **FilePath**.  
 
        ![Zestaw danych będący ujściem — połączenie](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
@@ -294,7 +293,7 @@ W tym kroku utworzysz potok z działaniem kopiowania, które kopiuje wszystkie d
 5. Przejdź na kartę **Sink** i wybierz pozycję **SinkDataset** w polu **Zestaw danych będący ujściem**. 
 
     ![Działanie Copy (Kopiowanie) — ujście](./media/tutorial-incremental-copy-change-tracking-feature-portal/copy-activity-sink.png)
-6. Aby zweryfikować definicję potoku, kliknij pozycję **Weryfikuj** na pasku narzędzi. Potwierdź, że weryfikacja nie zwróciła błędu. Zamknij okno **Raport weryfikacji potoku**, klikając pozycję **>>**. 
+6. Aby zweryfikować definicję potoku, kliknij pozycję **Weryfikuj** na pasku narzędzi. Potwierdź, że weryfikacja nie zwróciła błędu. Zamknij okno **Raport weryfikacji potoku**, klikając pozycję **>>** . 
 
     ![Weryfikowanie potoku](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-validate.png)
 7. Aby opublikować jednostki (połączone usługi, zestawy danych i potoki), kliknij pozycję **Opublikuj**. Poczekaj na pomyślne zakończenie publikowania. 
@@ -414,16 +413,16 @@ W tym kroku utworzysz potok z następującymi działaniami, który będzie okres
     2. Wybierz pozycję **Importuj parametr**. 
     3. W sekcji **Parametry procedury składowanej** określ następujące wartości parametrów: 
 
-        | Name (Nazwa) | Typ | Wartość | 
+        | Name | Typ | Value | 
         | ---- | ---- | ----- | 
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
         | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
     
         ![Działanie Stored Procedure (Procedura składowana) — parametry](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-parameters.png)
-14. **Połącz działanie Copy (Kopiowanie) z działaniem Stored Procedure (Procedura składowana)**. Przeciągnij i upuść **zielony** przycisk dołączony do działania Copy (Kopiowanie) w obszarze działania Stored Procedure (Procedura składowana). 
+14. **Połącz działanie Copy (Kopiowanie) z działaniem Stored Procedure (Procedura składowana)** . Przeciągnij i upuść **zielony** przycisk dołączony do działania Copy (Kopiowanie) w obszarze działania Stored Procedure (Procedura składowana). 
 
     ![Łączenie działań Copy (Kopiowanie) i Stored Procedure (Procedura składowana)](./media/tutorial-incremental-copy-change-tracking-feature-portal/connect-copy-stored-procedure.png)
-15. Na pasku narzędzi kliknij pozycję **Weryfikuj**. Potwierdź, że weryfikacja nie zwróciła błędów. Zamknij okno **Raport weryfikacji potoku**, klikając pozycję **>>**. 
+15. Na pasku narzędzi kliknij pozycję **Weryfikuj**. Potwierdź, że weryfikacja nie zwróciła błędów. Zamknij okno **Raport weryfikacji potoku**, klikając pozycję **>>** . 
 
     ![Przycisk Weryfikuj](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
 16. Opublikuj jednostki (usługi połączone, zestawy danych i potoki) w usłudze Data Factory, klikając przycisk **Opublikuj wszystko**. Poczekaj na wyświetlenie komunikatu **Publikowanie powiodło się**. 
@@ -467,7 +466,7 @@ PersonID Name    Age    SYS_CHANGE_VERSION    SYS_CHANGE_OPERATION
 ```
 
     
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Przejdź do poniższego samouczka, aby dowiedzieć się więcej o kopiowaniu nowych i zmienionych plików tylko na podstawie ich daty ostatniej modyfikacji:
 
 > [!div class="nextstepaction"]

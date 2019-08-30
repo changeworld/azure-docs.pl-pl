@@ -3,28 +3,26 @@ title: Tworzenie pierwszej fabryki danych (REST) | Microsoft Docs
 description: W tym samouczku przedstawiono instrukcje tworzenia przykładowego potoku usługi Azure Data Factory przy użyciu interfejsu API REST usługi Data Factory.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 7e0a2465-2d85-4143-a4bb-42e03c273097
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 11/01/2017
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: ab36d475052aa71427427e1362c74abd031fa414
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 5fe554371e54c6f67ae714084f110319b43fe54c
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839457"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140441"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Samouczek: Tworzenie pierwszej fabryki danych Azure przy użyciu interfejsu API REST usługi Data Factory
 > [!div class="op_single_selector"]
 > * [Przegląd i wymagania wstępne](data-factory-build-your-first-pipeline.md)
 > * [Visual Studio](data-factory-build-your-first-pipeline-using-vs.md)
-> * [Program PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
+> * [PowerShell](data-factory-build-your-first-pipeline-using-powershell.md)
 > * [Szablon usługi Resource Manager](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 >
@@ -57,9 +55,9 @@ Potok w tym samouczku zawiera jedno działanie: **działanie technologii Hive w 
   4. Przypisanie aplikacji **ADFGetStartedApp** do roli **Współautor Data Factory**.
 * Zainstaluj program [Azure PowerShell](/powershell/azure/overview).
 * Uruchom program **PowerShell** i uruchom następujące polecenie. Nie zamykaj programu Azure PowerShell, zanim nie wykonasz wszystkich instrukcji z tego samouczka. Jeśli go zamkniesz i otworzysz ponownie, musisz uruchomić te polecenia jeszcze raz.
-  1. Uruchom **Connect AzAccount** i wprowadź nazwę użytkownika i hasło, którego używasz do logowania w witrynie Azure Portal.
-  2. Uruchom **Get AzSubscription** Aby wyświetlić wszystkie subskrypcje dla tego konta.
-  3. Uruchom **Get AzSubscription - SubscriptionName NameOfAzureSubscription | Zestaw AzContext** Wybierz subskrypcję, którą chcesz pracować. Zastąp ciąg **NameOfAzureSubscription** nazwą subskrypcji platformy Azure.
+  1. Uruchom **Connect-AzAccount** i wprowadź nazwę użytkownika i hasło, których używasz do logowania się do Azure Portal.
+  2. Uruchom **Get-AzSubscription** , aby wyświetlić wszystkie subskrypcje dla tego konta.
+  3. Uruchom **Get-AzSubscription-subscriptionname ciąg nameofazuresubscription nazwą | Set-AzContext** , aby wybrać subskrypcję, z którą chcesz współpracować. Zastąp ciąg **NameOfAzureSubscription** nazwą subskrypcji platformy Azure.
 * Utwórz grupę zasobów platformy Azure o nazwie **ADFTutorialResourceGroup** przez uruchomienie następującego polecenia w programie PowerShell:
 
     ```powershell
@@ -176,7 +174,7 @@ Poniższa tabela zawiera opis właściwości kodu JSON użytych w tym fragmencie
 | type |Pliki dziennika są w formacie tekstowym, więc używana jest wartość TextFormat. |
 | columnDelimiter |Kolumny w plikach dziennika są rozdzielane przecinkami (,) |
 | frequency/interval |Właściwość frequency (częstotliwość) jest ustawiona na wartość Month (Miesiąc), a wartość interwału wynosi 1, co oznacza, że wycinki wejściowe są dostępne co miesiąc. |
-| external |Ta właściwość ma wartość true (prawda), jeśli dane wejściowe nie są generowane przez usługę Fabryka danych. |
+| zewnętrzne |Ta właściwość ma wartość true (prawda), jeśli dane wejściowe nie są generowane przez usługę Fabryka danych. |
 
 ### <a name="outputdatasetjson"></a>outputdataset.json
 
@@ -485,7 +483,7 @@ W tym samouczku opisano tworzenie fabryki danych Azure do przetwarzania danych p
 3. Utworzyć dwa **zestawy danych** zawierające dane wejściowe i wyjściowe dla działania programu Hive w usłudze HDInsight w potoku.
 4. Utworzyć **potok** za pomocą działania **programu Hive w usłudze HDInsight**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym artykule opisano tworzenie potoku za pomocą działania przekształcania (działanie usługi HDInsight), które uruchamia skrypt programu Hive w klastrze usługi HDInsight platformy Azure na żądanie. Instrukcje dotyczące korzystania z działania kopiowania w celu kopiowania danych z magazynu obiektów blob Azure do usług SQL Azure znajdują się w artykule [Tutorial: Copy data from an Azure blob to Azure SQL](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) (Samouczek: kopiowanie danych z magazynu obiektów blob Azure do usług SQL Azure).
 
 ## <a name="see-also"></a>Zobacz też

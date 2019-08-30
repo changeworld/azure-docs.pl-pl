@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc02b8b5dccbec106e90430fc1714253df6ad847
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: e30f8264870272fc12dcb7e15b37e5fd30688bcb
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334018"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126525"
 ---
 # <a name="azure-active-directory-identity-protection-faq"></a>Azure Active Directory Identity Protection często zadawane pytania
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Identity Protection w Azure Active Directory (Azure AD). Aby uzyskać więcej informacji, zobacz [Azure Active Directory Identity Protection](../active-directory-identityprotection.md). 
 
-## <a name="why-do-some-risk-events-have-closed-system-status"></a>Dlaczego niektóre zdarzenia dotyczące ryzyka mają stan "zamknięte (system)"?
+## <a name="why-do-some-risk-detections-have-closed-system-status"></a>Dlaczego niektóre wykryte zagrożenia mają stan "zamknięte (system)"?
 
-**Odp.:** Te zdarzenia ryzyka zostały wykryte przez ochronę tożsamości i później zamknięte, ponieważ zdarzenia nie były już uznawane za ryzykowne. Te zdarzenia nie są wliczane do poziomu ryzyka użytkownika. 
+**Odp.:** Te wykrycia ryzyka zostały wykryte przez funkcję ochrony tożsamości i później zamknięte, ponieważ zdarzenia nie były już uważane za ryzykowne. Te zdarzenia nie są wliczane do poziomu ryzyka użytkownika. 
 
 ---
 

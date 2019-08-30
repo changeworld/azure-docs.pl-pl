@@ -1,6 +1,6 @@
 ---
-title: Przekształcanie danych za pomocą języka Python usługi Databricks — Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się sposób przetwarzania lub przekształcać dane, uruchamiając Python usługi Databricks.
+title: Przekształcanie danych za pomocą języka Python — platforma Azure | Microsoft Docs
+description: Dowiedz się, jak przetwarzać lub przekształcać dane, uruchamiając w języku Python.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -8,28 +8,28 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/15/2018
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 ms.reviewer: maghan
 manager: craigg
-ms.openlocfilehash: 3ab3ec5380fbc90dffd4f258073ad8b477e2318a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 02c4644c4440c3a00a21ef22674bcc0d00902ac2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002847"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140791"
 ---
-# <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Przekształcanie danych za pomocą działania języka Python w usłudze Azure Databricks
+# <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Przekształcanie danych przez uruchomienie działania języka Python w Azure Databricks
 
-Działania języka Python usługi Azure Databricks w [potoku usługi Data Factory](concepts-pipelines-activities.md) jest uruchamiany plik w języku Python w klastrze usługi Azure Databricks. W tym artykule opiera się na [działania przekształcania danych](transform-data.md) artykułu, który przedstawia ogólny przegląd działań przekształcania obsługiwanych i przekształcania danych. Usługa Azure Databricks to platforma zarządzanych dla platformy Apache Spark.
+Działanie języka Python Azure Databricks w [potoku Data Factory](concepts-pipelines-activities.md) uruchamia plik w języku Python w klastrze Azure Databricks. W tym artykule przedstawiono artykuł [działania](transform-data.md) przekształcania danych, który zawiera ogólne omówienie transformacji danych i obsługiwanych działań transformacji. Azure Databricks to zarządzana platforma do uruchamiania Apache Spark.
 
 Poniższy klip wideo zawiera jedenastominutowe wprowadzenie i demonstrację tej funkcji:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Execute-Jars-and-Python-scripts-on-Azure-Databricks-using-Data-Factory/player]
 
-## <a name="databricks-python-activity-definition"></a>Definicji działania usługi Databricks w języku Python
+## <a name="databricks-python-activity-definition"></a>Definicja działania w języku Python
 
-Oto przykład definicji JSON działania języka Python usługi Databricks:
+Poniżej znajduje się przykładowa definicja JSON działania w języku Python:
 
 ```json
 {
@@ -58,23 +58,23 @@ Oto przykład definicji JSON działania języka Python usługi Databricks:
 }
 ```
 
-## <a name="databricks-python-activity-properties"></a>Właściwości działania usługi Databricks w języku Python
+## <a name="databricks-python-activity-properties"></a>Właściwości działania Python dla elementów datakostek
 
-W poniższej tabeli opisano właściwości JSON używanych w definicji JSON:
+W poniższej tabeli opisano właściwości JSON używane w definicji JSON:
 
 |Właściwość|Opis|Wymagane|
 |---|---|---|
-|name|Nazwa działania w potoku.|Yes|
-|description|Tekst opisujący, co działanie robi.|Nie|
-|— typ|W przypadku działania języka Python usługi Databricks typ działania jest DatabricksSparkPython.|Tak|
-|linkedServiceName|Nazwa połączonej usługi, na którym działa działania języka Python usługi Databricks. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.|Tak|
-|pythonFile|Identyfikator URI pliku Python, do wykonania. Obsługiwane są tylko DBFS ścieżki.|Yes|
-|parameters|Parametry wiersza polecenia, które zostaną przekazane do pliku języka Python. Jest to tablica ciągów.|Nie|
-|Biblioteki|Lista bibliotek można zainstalować w klastrze, które spowodują wykonanie zadania. Może to być tablica < string, object >|Nie|
+|name|Nazwa działania w potoku.|Tak|
+|description|Tekst opisujący działanie działania.|Nie|
+|type|Dla działania języka Python dla elementów datakostks typem działania jest DatabricksSparkPython.|Tak|
+|linkedServiceName|Nazwa połączonej usługi datakostki, w której działa działanie języka Python. Aby dowiedzieć się więcej o tej połączonej usłudze, zobacz artykuł dotyczący [połączonych usług](compute-linked-services.md) obliczeniowych.|Tak|
+|pythonFile|Identyfikator URI pliku języka Python, który ma zostać wykonany. Obsługiwane są tylko ścieżki DBFS.|Tak|
+|parameters|Parametry wiersza polecenia, które zostaną przesłane do pliku języka Python. To jest tablica ciągów.|Nie|
+|bibliotece|Lista bibliotek do zainstalowania w klastrze, w którym będą wykonywane zadania. Może to być tablica < String, Object >|Nie|
 
-## <a name="supported-libraries-for-databricks-activities"></a>Biblioteki obsługiwanych dla działania usługi databricks
+## <a name="supported-libraries-for-databricks-activities"></a>Biblioteki obsługiwane dla działań datakostek
 
-W powyższej definicji działania usługi Databricks, należy określić te typy biblioteki: *jar*, *egg*, *maven*, *pypi*,  *cran*.
+W powyższej definicji działań datacegły należy określić następujące typy biblioteki: *jar*, *jaja*, *Maven*, *PyPi*, *Cran*.
 
 ```json
 {
@@ -108,18 +108,18 @@ W powyższej definicji działania usługi Databricks, należy określić te typy
 
 ```
 
-Aby uzyskać więcej informacji, zobacz [dokumentacja usługi Databricks](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) dla typów biblioteki.
+Aby uzyskać więcej szczegółowych informacji, zapoznaj się z [dokumentacją](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) dla typów bibliotek.
 
-## <a name="how-to-upload-a-library-in-databricks"></a>Jak przekazać biblioteki w usłudze Databricks
+## <a name="how-to-upload-a-library-in-databricks"></a>Jak przekazać bibliotekę w kostkach
 
-#### <a name="using-databricks-workspace-uihttpsdocsazuredatabricksnetuser-guidelibrarieshtmlcreate-a-library"></a>[Korzystanie z obszaru roboczego usługi Databricks interfejsu użytkownika](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
+#### <a name="using-databricks-workspace-uihttpsdocsazuredatabricksnetuser-guidelibrarieshtmlcreate-a-library"></a>[Korzystanie z interfejsu użytkownika obszaru roboczego](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
 
-Aby uzyskać ścieżkę dbfs biblioteki dodać za pomocą interfejsu użytkownika, można użyć [interfejsu wiersza polecenia Databricks (instalacja)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
+Aby uzyskać ścieżkę dBfs biblioteki dodanej przy użyciu interfejsu użytkownika, można użyć elementu [CLI (instalacja)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
 
-Zazwyczaj bibliotek Jar są przechowywane w dbfs: / FileStore/jars przy użyciu interfejsu użytkownika. Możesz wyświetlić listę wszystkich za pomocą interfejsu wiersza polecenia: *usługi databricks fs ls dbfs: / FileStore/plikach JAR* 
+Zazwyczaj biblioteki jar są przechowywane w obszarze dBfs:/FileStore/Jars przy użyciu interfejsu użytkownika. Wszystkie te listę można wyświetlić za pomocą interfejsu wiersza polecenia: datakosteks *FS LS dBfs:/FileStore/Jars* 
 
 
 
-#### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[Kopiuj bibliotekę przy użyciu interfejsu wiersza polecenia Databricks](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
+#### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[Kopiowanie biblioteki przy użyciu interfejsu wiersza polecenia datakosteks](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
 
-Przykład: *databricks fs cp dbfs SparkPi — zestawu 0.1.jar: / FileStore/plikach JAR*
+Przykład: *datakosteks FS CP sparkpi-Assembly-0,1. jar dBfs:/FileStore/Jars*

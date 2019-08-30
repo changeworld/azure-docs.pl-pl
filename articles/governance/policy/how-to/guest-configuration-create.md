@@ -7,12 +7,12 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 131d6865c47a32bbefbfbd397a5f0f88dedc9c35
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
-ms.translationtype: MT
+ms.openlocfilehash: 12b88e14ed1d20ad26c9c8832877da08d3d98523
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543515"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146122"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Jak utworzyć zasady konfiguracji gościa
 
@@ -142,7 +142,7 @@ W Azure Policy konfiguracji gościa najlepszym sposobem zarządzania kluczami ta
 Najpierw utwórz tożsamość zarządzaną przypisaną przez użytkownika na platformie Azure. Tożsamość jest używana przez maszyny wirtualne do uzyskiwania dostępu do wpisów tajnych przechowywanych w Key Vault. Aby uzyskać szczegółowe instrukcje, zobacz [Tworzenie, wyświetlanie listy lub usuwanie tożsamości zarządzanej przypisanej przez użytkownika przy użyciu Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
 Następnie Utwórz wystąpienie Key Vault. Aby uzyskać szczegółowe instrukcje, zobacz [Ustawianie i pobieranie wpisu tajnego — PowerShell](../../../key-vault/quick-create-powershell.md).
-Przypisz uprawnienia do wystąpienia, aby przyznać tożsamości przypisanej użytkownikowi dostęp do wpisów tajnych przechowywanych w Key Vault. Aby uzyskać szczegółowe instrukcje, zobacz [Ustawianie i pobieranie wpisu tajnego platformy .NET](../../../key-vault/quick-create-net.md#assign-permissions-to-your-application-to-read-secrets-from-key-vault).
+Przypisz uprawnienia do wystąpienia, aby przyznać tożsamości przypisanej użytkownikowi dostęp do wpisów tajnych przechowywanych w Key Vault. Aby uzyskać szczegółowe instrukcje, zobacz [Ustawianie i pobieranie wpisu tajnego platformy .NET](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
 
 Następnie przypisz tożsamość przypisaną do użytkownika do maszyny wirtualnej. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu programu PowerShell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
 Na dużą skalę Przypisz tę tożsamość przy użyciu Azure Resource Manager za pośrednictwem Azure Policy. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu szablonu](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
@@ -318,11 +318,11 @@ W przypadku definicji zasad i inicjatyw utworzonych na platformie Azure ostatni 
 
 Po opublikowaniu niestandardowego Azure Policy przy użyciu niestandardowego pakietu zawartości istnieją dwa pola, które należy zaktualizować, jeśli chcesz opublikować nową wersję.
 
-- **Wersja**: Po uruchomieniu polecenia cmdlet cmdlet `New-GuestConfigurationPolicy` należy określić numer wersji większy niż aktualnie opublikowany.  Spowoduje to zaktualizowanie wersji przypisania konfiguracji gościa w nowym pliku zasad, dzięki czemu rozszerzenie rozpozna, że pakiet został zaktualizowany.
-- **contentHash**: Ta aktualizacja jest automatycznie aktualizowana `New-GuestConfigurationPolicy` przez polecenie cmdlet.  Jest to wartość skrótu pakietu utworzonego przez `New-GuestConfigurationPackage`.  Ta wartość `.zip` musi być prawidłowa dla publikowanych plików.  Jeśli zostanie zaktualizowana tylko `contentUri` właściwość, na przykład w przypadku, gdy ktoś może ręcznie wprowadzić zmiany w definicji zasad z portalu, rozszerzenie nie zaakceptuje pakietu zawartości.
+- **Wersja**: Po uruchomieniu `New-GuestConfigurationPolicy` polecenia cmdlet należy określić numer wersji większy niż aktualnie opublikowany.  Właściwość aktualizuje wersję przypisania konfiguracji gościa w nowym pliku zasad, więc rozszerzenie rozpozna, że pakiet został zaktualizowany.
+- **contentHash**: Ta właściwość jest automatycznie aktualizowana przez `New-GuestConfigurationPolicy` polecenie cmdlet.  Jest to wartość skrótu pakietu utworzonego przez `New-GuestConfigurationPackage`.  Właściwość musi być poprawna dla `.zip` publikowanych plików.  Jeśli zostanie zaktualizowana tylko `contentUri` właściwość, na przykład w przypadku, gdy ktoś może wprowadzić ręczną zmianę definicji zasad z portalu, rozszerzenie nie zaakceptuje pakietu zawartości.
 
 Najprostszym sposobem zwolnienia zaktualizowanego pakietu jest powtórzenie procesu opisanego w tym artykule i udostępnienie zaktualizowanego numeru wersji.
-Spowoduje to zagwarantowanie, że wszystkie właściwości zostały prawidłowo zaktualizowane.
+Ten proces gwarantuje, że wszystkie właściwości zostały prawidłowo zaktualizowane.
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Konwertowanie zawartości systemu Windows zasady grupy na konfigurację Azure Policy gościa
 
@@ -330,7 +330,7 @@ Konfiguracja gościa podczas inspekcji maszyn z systemem Windows jest implementa
 Społeczność DSC opublikowała narzędzia do konwertowania wyeksportowanych szablonów zasady grupy w formacie DSC.
 Korzystając z tego narzędzia wraz z poleceniami cmdlet konfiguracji gościa opisanymi powyżej, można skonwertować zawartość systemu Windows zasady grupy i pakiet/opublikować ją Azure Policy do inspekcji.
 Aby uzyskać szczegółowe informacje na temat korzystania z tego narzędzia [, zobacz artykuł Szybki Start: Przekonwertuj zasady grupy na](/powershell/dsc/quickstarts/gpo-quickstart)DSC.
-Po przeprowadzeniu konwersji zawartości należy wykonać kroki opisane powyżej, aby utworzyć pakcage i opublikować ją jako Azure Policy będzie taka sama jak w przypadku dowolnej zawartości DSC.
+Po przeprowadzeniu konwersji zawartości należy wykonać kroki opisane powyżej, aby utworzyć pakiet i opublikować go jako Azure Policy będzie taka sama jak w przypadku dowolnej zawartości DSC.
 
 ## <a name="optional-signing-guest-configuration-packages"></a>OBOWIĄZKOWE Podpisywanie pakietów konfiguracji gościa
 

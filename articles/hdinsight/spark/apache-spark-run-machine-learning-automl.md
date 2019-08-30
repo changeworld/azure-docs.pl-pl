@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: ff6a071a2d157bf79ab27fcbf4f9753fdbcac118
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: a731d9e0c97cb8431b1294d961ad46ff324f32be
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68354859"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141179"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Uruchamianie obciążeń Azure Machine Learning przy użyciu automatycznego uczenia maszynowego (AutoML) na Apache Spark w usłudze Azure HDInsight
 
@@ -34,7 +34,7 @@ Możesz również użyć notesów Zeppelin, aby użyć AutoML.
 
 ## <a name="authentication-for-workspace"></a>Uwierzytelnianie dla obszaru roboczego
 
-Tworzenie obszaru roboczego i przesyłanie eksperymentu wymagają tokenu uwierzytelniania. Ten token może być wygenerowany przy użyciu [aplikacji usługi Azure AD](../../active-directory/develop/app-objects-and-service-principals.md). [Użytkownik usługi Azure AD](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python) może również użyć do wygenerowania wymaganego tokenu uwierzytelniania, jeśli na koncie nie jest włączone uwierzytelnianie wieloskładnikowe.  
+Tworzenie obszaru roboczego i przesyłanie eksperymentu wymagają tokenu uwierzytelniania. Ten token może być wygenerowany przy użyciu [aplikacji usługi Azure AD](../../active-directory/develop/app-objects-and-service-principals.md). [Użytkownik usługi Azure AD](/azure/python/python-sdk-azure-authenticate) może również użyć do wygenerowania wymaganego tokenu uwierzytelniania, jeśli na koncie nie jest włączone uwierzytelnianie wieloskładnikowe.  
 
 Poniższy fragment kodu tworzy token uwierzytelniania przy użyciu **aplikacji usługi Azure AD**.
 
@@ -55,7 +55,7 @@ credentials = UserPassCredentials('user@domain.com', 'my_smart_password')
 
 ## <a name="loading-dataset"></a>Ładowanie zestawu danych
 
-Automatyczne Uczenie maszynowe w usłudze Spark używa przepływów danych, które są oceniane przez opóźnieniem, niezmienne operacje na dane.  Przepływu danych może załadować zestaw danych z obiektu BLOB z dostępem do odczytu publicznego lub z adresu URL obiektu BLOB z tokenem SAS.
+Automatyczne Uczenie maszynowe wusłudze Spark używa przepływów danych, które są oceniane przez opóźnieniem, niezmienne operacje na dane.  Przepływu danych może załadować zestaw danych z obiektu BLOB z dostępem do odczytu publicznego lub z adresu URL obiektu BLOB z tokenem SAS.
 
 ```python
 import azureml.dataprep as dprep

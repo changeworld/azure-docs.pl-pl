@@ -1,34 +1,33 @@
 ---
-title: Tworzenie potoków danych przy użyciu zestawu Azure .NET SDK | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak programowo tworzyć, monitorować i zarządzać fabryki danych Azure przy użyciu zestawu SDK usługi Data Factory.
+title: Tworzenie potoków danych przy użyciu zestawu Azure .NET SDK | Microsoft Docs
+description: Dowiedz się, jak programowo tworzyć fabryki danych platformy Azure, monitorować je i zarządzać nimi za pomocą zestawu SDK Data Factory.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: b0a357be-3040-4789-831e-0d0a32a0bda5
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: ea0094624727ca1395a1276e7968ac1c74b750e7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11120a84f2796061d76d8d813ba906da073b57c6
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60487286"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140214"
 ---
-# <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Tworzenie, monitorowanie i zarządzanie fabryki danych platformy Azure przy użyciu zestawu SDK .NET usługi Azure Data Factory
+# <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Tworzenie i monitorowanie fabryk danych platformy Azure oraz zarządzanie nimi przy użyciu zestawu Azure Data Factory .NET SDK
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli korzystasz z bieżącej wersji usługi Data Factory, zobacz [samouczek dotyczący działania kopiowania](../quickstart-create-data-factory-dot-net.md). 
 
 ## <a name="overview"></a>Omówienie
-Można tworzyć, monitorować i zarządzać fabryki danych platformy Azure, programowo przy użyciu zestawu SDK .NET usługi Data Factory. Ten artykuł zawiera wskazówki, które można wykonać, aby utworzyć aplikację konsolową .NET próbki, które tworzy i monitoruje fabryki danych. 
+Fabryki danych platformy Azure można tworzyć, monitorować programowo i zarządzać nimi za pomocą Data Factory .NET SDK. Ten artykuł zawiera przewodnik, który można wykonać w celu utworzenia przykładowej aplikacji konsolowej .NET, która tworzy i monitoruje fabrykę danych. 
 
 > [!NOTE]
-> Ten artykuł nie obejmuje całego interfejsu API .NET usługi Data Factory. Zobacz [dokumentacja interfejsu API .NET usługi Data Factory](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) pełna dokumentacja dotycząca interfejsu API .NET usługi Data Factory. 
+> Ten artykuł nie obejmuje całego interfejsu API .NET usługi Data Factory. Aby uzyskać kompleksową dokumentację interfejsu API platformy .NET dla Data Factory, Data Factory Zobacz Dokumentacja [interfejsu API platformy .NET](/dotnet/api/index?view=azuremgmtdatafactories-4.12.1) . 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -106,7 +105,7 @@ Po wykonaniu tych kroków powinny być dostępne cztery następujące wartości:
 * Hasło (określone w pierwszym poleceniu)
 
 ## <a name="walkthrough"></a>Przewodnik
-W instruktażu należy utworzyć fabrykę danych przy użyciu potoku zawierającego działanie kopiowania. Działanie kopiowania kopiuje dane z folderu w usłudze Azure blob storage do innego folderu w tej samej usłudze blob storage. 
+W tym przewodniku utworzysz fabrykę danych z potokiem zawierającym działanie kopiowania. Działanie kopiowania kopiuje dane z folderu w usłudze Azure Blob Storage do innego folderu w tym samym magazynie obiektów BLOB. 
 
 Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Data Factory. Działanie jest obsługiwane przez globalnie dostępną usługę, która może kopiować dane między różnymi magazynami danych w sposób bezpieczny, niezawodny i skalowalny. Szczegółowe informacje dotyczące działania kopiowania znajdują się w artykule [Data Movement Activities](data-factory-data-movement-activities.md) (Działania przenoszenia danych).
 
@@ -122,7 +121,7 @@ Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Da
 3. W **konsoli menedżera pakietów** wykonaj następujące czynności:
    1. Uruchom następujące polecenie, aby zainstalować pakiet Fabryka danych: `Install-Package Microsoft.Azure.Management.DataFactories`
    2. Uruchom następujące polecenie, aby zainstalować pakiet Azure Active Directory (użyjesz interfejsu API usługi Active Directory w kodzie): `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213`
-4. Zastąp zawartość **App.config** pliku w projekcie o następującej zawartości: 
+4. Zastąp zawartość pliku **App. config** w projekcie następującą zawartością: 
     
     ```xml
     <?xml version="1.0" encoding="utf-8" ?>
@@ -139,8 +138,8 @@ Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Da
         </appSettings>
     </configuration>
     ```
-5. W pliku App.Config zaktualizuj wartości  **&lt;identyfikator aplikacji&gt;** ,  **&lt;hasło&gt;** ,  **&lt;subskrypcji Identyfikator&gt;** , i **&lt;identyfikator dzierżawy&gt;** własnymi wartościami.
-6. Dodaj następujący kod **przy użyciu** instrukcje **Program.cs** pliku w projekcie.
+5. W pliku App. config zaktualizuj wartości dla  **&lt;identyfikatora&gt;aplikacji**,  **&lt;hasła&gt;** ,  **&lt;identyfikatora&gt;subskrypcji**i **&lt;identyfikatora dzierżawy z&gt;** własnymi wartościami.
+6. Dodaj następujące instrukcje **using** do pliku **program.cs** w projekcie.
 
     ```csharp
     using System.Configuration;
@@ -178,7 +177,7 @@ Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Da
     ```
 
    > [!IMPORTANT]
-   > Zastąp wartość **resourceGroupName** nazwą grupy zasobów platformy Azure. Można utworzyć grupę zasobów za pomocą [New-AzureResourceGroup](/powershell/module/az.resources/new-azresourcegroup) polecenia cmdlet.
+   > Zastąp wartość **resourceGroupName** nazwą grupy zasobów platformy Azure. Grupę zasobów można utworzyć za pomocą polecenia cmdlet [New-AzureResourceGroup](/powershell/module/az.resources/new-azresourcegroup) .
    >
    > Zaktualizuj nazwę fabryki danych (dataFactoryName), aby była unikatowa. Nazwa fabryki danych musi być globalnie unikatowa. Artykuł [Data Factory — Naming Rules](data-factory-naming-rules.md) (Fabryka danych — zasady nazewnictwa) zawiera zasady nazewnictwa artefaktów usługi Fabryka danych.
 7. Dodaj następujący kod, który tworzy **fabrykę danych**, do metody **Main**.
@@ -222,9 +221,9 @@ Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Da
     ```
 9. Dodaj następujący kod, który tworzy **wejściowe i wyjściowe zestawy danych**, do metody **Main**.
 
-    **FolderPath** dla wejściowego obiektu blob jest ustawiony na **adftutorial /** gdzie **adftutorial** to nazwa kontenera w usłudze blob storage. Ten kontener nie istnieje w usłudze Azure blob storage, Utwórz kontener o tej nazwie: **adftutorial** i przekaż plik tekstowy do kontenera.
+    **FolderPath** dla wejściowego obiektu BLOB jest ustawiony na **adftutorial/** Where **adftutorial** jest nazwą kontenera w magazynie obiektów BLOB. Jeśli ten kontener nie istnieje w magazynie obiektów blob platformy Azure, Utwórz kontener o tej nazwie: **adftutorial** i Przekaż plik tekstowy do kontenera.
 
-    FolderPath dla obiektu blob danych wyjściowych jest równa: **adftutorial/apifactoryoutput / {Slice}** gdzie **wycinek** jest dynamicznie obliczana na podstawie wartości z **SliceStart** () Data / Godzina rozpoczęcia każdego wycinka.)
+    FolderPath dla wyjściowego obiektu BLOB jest ustawiony na: **adftutorial/apifactoryoutput/{Slice}** , gdzie **wycinek** jest dynamicznie obliczany na podstawie wartości **parametru slicestart** (Data rozpoczęcia-czas każdego wycinka).
 
     ```csharp
     // create input and output datasets
@@ -360,7 +359,7 @@ Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Da
         }
     });
     ```
-12. Dodaj następujący kod do metody **Main**, aby pobrać stan wycinka danych zestawu danych wyjściowych. Istnieje tylko jeden wycinek w tym przykładzie oczekiwany.
+12. Dodaj następujący kod do metody **Main**, aby pobrać stan wycinka danych zestawu danych wyjściowych. W tym przykładzie jest oczekiwany tylko jeden wycinek.
 
     ```csharp
     // Pulling status within a timeout threshold
@@ -395,7 +394,7 @@ Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Da
         }
     }
     ```
-13. **(opcjonalnie)**  Dodaj następujący kod, aby uzyskać szczegóły uruchomienia dla wycinka danych do **Main** metody.
+13. **(opcjonalnie)** Dodaj następujący kod, aby uzyskać szczegóły uruchomienia wycinka danych do metody **Main** .
 
     ```csharp
     Console.WriteLine("Getting run details of a data slice");
@@ -427,7 +426,7 @@ Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Da
     Console.WriteLine("\nPress any key to exit.");
     Console.ReadKey();
     ```
-14. Dodaj następującą metodę pomocnika używaną przez metodę **Main** do klasy **Program**. Metoda ta pojawia się okno dialogowe, która umożliwia dostarczanie **nazwa_użytkownika** i **hasło** używanego do logowania się w witrynie Azure portal.
+14. Dodaj następującą metodę pomocnika używaną przez metodę **Main** do klasy **Program**. Ta metoda oznacza okno dialogowe, w którym można podać **nazwę użytkownika** i **hasło** , których używasz do logowania się do Azure Portal.
 
     ```csharp
     public static async Task<string> GetAuthorizationHeader()
@@ -447,9 +446,9 @@ Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Da
     }
     ```
 
-15. W Eksploratorze rozwiązań rozwiń projekt: **DataFactoryAPITestApp**, kliknij prawym przyciskiem myszy **odwołania**i kliknij przycisk **Dodaj odwołanie**. Zaznacz pole wyboru `System.Configuration` zestaw i kliknij przycisk **OK**.
+15. W Eksplorator rozwiązań rozwiń projekt: **DataFactoryAPITestApp**, kliknij prawym przyciskiem myszy pozycję **odwołania**i kliknij polecenie **Dodaj odwołanie**. Zaznacz pole wyboru dla `System.Configuration` zestawu i kliknij przycisk **OK**.
 15. Skompiluj aplikację konsolową. Kliknij przycisk **Kompiluj** w menu i kliknij opcję **Kompiluj rozwiązanie**.
-16. Upewnij się, że istnieje co najmniej jeden plik w kontenerze adftutorial w magazynie obiektów blob platformy Azure. W przeciwnym razie utwórz plik Emp.txt w Notatniku o następującej zawartości i przekaż go do kontenera adftutorial.
+16. Upewnij się, że w usłudze Azure Blob Storage istnieje co najmniej jeden plik w kontenerze adftutorial. W przeciwnym razie Utwórz plik EMP. txt w programie Notepad z następującą zawartością i przekaż go do kontenera adftutorial.
 
     ```
     John, Doe
@@ -460,9 +459,9 @@ Działanie kopiowania wykonuje operację przenoszenia danych w usłudze Azure Da
     * Połączona usługa: **AzureStorageLinkedService**
     * Zestaw danych: **DatasetBlobSource** i **DatasetBlobDestination**.
     * Potok: **PipelineBlobSample**
-19. Sprawdź, czy plik wyjściowy został utworzony w **apifactoryoutput** folderu w **adftutorial** kontenera.
+19. Sprawdź, czy plik wyjściowy jest tworzony w folderze **apifactoryoutput** w kontenerze **adftutorial** .
 
-## <a name="get-a-list-of-failed-data-slices"></a>Pobierz listę wycinków danych nie powiodło się 
+## <a name="get-a-list-of-failed-data-slices"></a>Pobierz listę wycinków danych zakończonych niepowodzeniem 
 
 ```csharp
 // Parse the resource path
@@ -501,7 +500,7 @@ do
 while (response != null);
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz poniższy przykład do utworzenia potoku przy użyciu zestawu .NET SDK, który kopiuje dane z usługi Azure blob storage do usługi Azure SQL database: 
+## <a name="next-steps"></a>Następne kroki
+Zapoznaj się z poniższym przykładem tworzenia potoku przy użyciu zestawu .NET SDK, który kopiuje dane z usługi Azure Blob Storage do bazy danych Azure SQL: 
 
-- [Tworzenie potoku w celu skopiowania danych z magazynu obiektów Blob do bazy danych SQL](data-factory-copy-activity-tutorial-using-dotnet-api.md)
+- [Tworzenie potoku w celu skopiowania danych z Blob Storage do SQL Database](data-factory-copy-activity-tutorial-using-dotnet-api.md)

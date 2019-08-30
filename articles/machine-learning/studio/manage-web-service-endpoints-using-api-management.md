@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie usługami sieci web za pomocą usługi API Management
+title: Zarządzanie usługami sieci Web przy użyciu API Management
 titleSuffix: Azure Machine Learning Studio
 description: Przewodnik, w którym pokazano, jak zarządzać usługami sieci web Azure ml za pomocą usługi API Management. Zarządzanie punktami końcowymi usługi interfejsu API REST, definiując dostępu użytkownika, ograniczenie przepustowości i pulpit nawigacyjny monitorowania.
 services: machine-learning
@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 0d79bc167ea0416218a4d4822bcd6221699643ca
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8b424696c3350ff2592df9a97189dde3df57845f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60347259"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138558"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Zarządzanie za pomocą interfejsu API zarządzania usługami sieci web Azure Machine Learning Studio
 ## <a name="overview"></a>Przegląd
@@ -182,11 +182,11 @@ Zmień jej nazwę na **SimpleFeatureHashingExperiment**. Rozwiń **zapisane zest
 
 Rozwiń **przekształcania danych** i **manipulowania** i przeciągnij **Select Columns in Dataset** obszarze eksperymentu. Połącz **Zarezerwuj przeglądy ze środowiska Amazon** do **Wybieranie kolumn w zestawie danych**.
 
-![Łączenie modułu zestawu danych przeglądy książki modułu kolumny projektu](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
+![Łączenie modułu zestawu danych przeglądów książki z modułem kolumny projektu](./media/manage-web-service-endpoints-using-api-management/project-columns.png)
 
 Kliknij przycisk **Select Columns in Dataset** a następnie kliknij przycisk **uruchamianie selektora kolumn** i wybierz **Col2**. Kliknij znacznik wyboru, aby zastosować te zmiany.
 
-![Wybierz kolumny przy użyciu nazwy kolumn](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
+![Wybieranie kolumn przy użyciu nazw kolumn](./media/manage-web-service-endpoints-using-api-management/select-columns.png)
 
 Rozwiń **analizy tekstu** i przeciągnij **Tworzenie skrótu funkcji** na eksperyment. Połącz **Wybieranie kolumn w zestawie danych** do **Tworzenie skrótu funkcji**.
 
@@ -214,7 +214,7 @@ Kliknij przycisk **tak** publikowanie eksperymentu.
 ![tak publikowania](./media/manage-web-service-endpoints-using-api-management/yes-to-publish.png)
 
 ### <a name="test-the-web-service"></a>Test usługi sieci web
-Usługi sieci web Azure ml składa się z RSS (żądania/odpowiedzi usługi) i BES (batch wykonywania) punktom. Funkcja RSS jest synchronicznej. Usługi BES służy do wykonywania zadania asynchronicznego. Aby przetestować usługę sieci web z przykładowym źródle Python poniżej, konieczne może być Pobierz i zainstaluj zestaw Azure SDK dla języka Python (zobacz: [Jak zainstalować Python](../../python-how-to-install.md)).
+Usługi sieci web Azure ml składa się z RSS (żądania/odpowiedzi usługi) i BES (batch wykonywania) punktom. Funkcja RSS jest synchronicznej. Usługi BES służy do wykonywania zadania asynchronicznego. Aby przetestować usługę sieci Web za pomocą przykładowego źródła Python poniżej, może być konieczne pobranie i zainstalowanie zestawu Azure SDK dla języka Python (zobacz: [Jak zainstalować język Python](/azure/python/python-sdk-azure-install)).
 
 Należy również **obszaru roboczego**, **usługi**, i **api_key** eksperymentu źródła przykładowe poniżej. Obszar roboczy i usługi można znaleźć, klikając wartość **żądań/odpowiedzi** lub **wykonywanie wsadowe** swojego eksperymentu w pulpicie nawigacyjnym usługi sieci web.
 

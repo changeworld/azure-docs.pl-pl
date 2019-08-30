@@ -1,6 +1,6 @@
 ---
-title: 'Uwierzytelnianie użytkowników końcowych: Python za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak wykonać uwierzytelnianie użytkowników końcowych za pomocą usługi Azure Data Lake Storage Gen1 za pomocą usługi Azure Active Directory za pomocą języka Python
+title: 'Uwierzytelnianie użytkowników końcowych: Python z Azure Data Lake Storage Gen1 przy użyciu Azure Active Directory | Microsoft Docs'
+description: Dowiedz się, jak uzyskać uwierzytelnianie użytkowników końcowych za pomocą Azure Data Lake Storage Gen1 przy użyciu Azure Active Directory przy użyciu języka Python
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 8b72604d7e736230911d0a0987b88d372be4ddf3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 71ca7bec7f69007fd0290211fac308eb5f3983a7
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878054"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139049"
 ---
-# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Uwierzytelnianie użytkowników końcowych za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu języka Python
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Uwierzytelnianie użytkowników końcowych za pomocą Azure Data Lake Storage Gen1 przy użyciu języka Python
 > [!div class="op_single_selector"]
 > * [Korzystanie z języka Java](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [Korzystanie z zestawu SDK dla platformy .NET](data-lake-store-end-user-authenticate-net-sdk.md)
@@ -27,12 +27,12 @@ ms.locfileid: "60878054"
 > 
 > 
 
-Ten artykuł zawiera informacje o sposobie używania zestawu SDK języka Python w celu uwierzytelniania użytkowników końcowych za pomocą usługi Azure Data Lake Storage Gen1. Uwierzytelnianie użytkowników końcowych może zostać dalej podzielony na dwie kategorie:
+Ten artykuł zawiera informacje na temat używania zestawu SDK języka Python do uwierzytelniania użytkowników końcowych przy użyciu Azure Data Lake Storage Gen1. Uwierzytelnianie użytkowników końcowych można podzielić na dwie kategorie:
 
-* Uwierzytelnianie użytkowników końcowych bez usługi Multi-Factor authentication
+* Uwierzytelnianie użytkowników końcowych bez uwierzytelniania wieloskładnikowego
 * Uwierzytelnianie użytkowników końcowych przy użyciu uwierzytelniania wieloskładnikowego
 
-Obie te opcje są omówione w tym artykule. Do usługi do uwierzytelniania przy użyciu Data Lake Storage Gen1 przy użyciu języka Python, zobacz [uwierzytelniania Service to service za pomocą programu Data Lake Storage Gen1 przy użyciu języka Python](data-lake-store-service-to-service-authenticate-python.md).
+Obie te opcje zostały omówione w tym artykule. Aby uzyskać uwierzytelnianie między usługami i Data Lake Storage Gen1 przy użyciu języka Python, zobacz Uwierzytelnianie między usługami i [Data Lake Storage Gen1 przy użyciu języka Python](data-lake-store-service-to-service-authenticate-python.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -40,15 +40,15 @@ Obie te opcje są omówione w tym artykule. Do usługi do uwierzytelniania przy 
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Tworzenie aplikacji usługi Azure Active Directory "Natywnego"** . Zostały wykonane kroki opisane w [uwierzytelnianie użytkowników końcowych za pomocą programu Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
+* **Utwórz Azure Active Directory aplikację "native"** . Należy wykonać czynności opisane w temacie [uwierzytelnianie użytkowników końcowych z Data Lake Storage Gen1 przy użyciu Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
 ## <a name="install-the-modules"></a>Instalacja modułów
 
-Aby pracować z Data Lake Storage Gen1 przy użyciu języka Python, musisz zainstalować trzy moduły.
+Aby można było korzystać z Data Lake Storage Gen1 przy użyciu języka Python, należy zainstalować trzy moduły.
 
 * Moduł `azure-mgmt-resource`, który obejmuje moduły platformy Azure dla usługi Active Directory itp.
-* `azure-mgmt-datalake-store` Moduł, który obejmuje operacje zarządzania kontem usługi Azure Data Lake Storage Gen1. Aby uzyskać więcej informacji na temat tego modułu, zobacz [odwołania do modułu usługi Azure Data Lake magazynu Gen1 Management](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
-* `azure-datalake-store` Moduł, który obejmuje operacje systemu plików usługi Azure Data Lake Storage Gen1. Aby uzyskać więcej informacji na temat tego modułu, zobacz [dokumentację modułu systemu plików azure-datalake-store](https://azure-datalake-store.readthedocs.io/en/latest/).
+* `azure-mgmt-datalake-store` Moduł, który obejmuje operacje zarządzania kontem Azure Data Lake Storage Gen1. Aby uzyskać więcej informacji na temat tego modułu, zobacz [Azure Data Lake Storage Gen1 informacje dotyczące modułu zarządzania](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
+* `azure-datalake-store` Moduł, który obejmuje operacje systemu plików Azure Data Lake Storage Gen1. Aby uzyskać więcej informacji na temat tego modułu, zobacz artykuł dotyczący [modułu systemu plików Azure-datalake-Store](https://azure-datalake-store.readthedocs.io/en/latest/).
 
 Użyj następujących poleceń, aby zainstalować moduły.
 
@@ -60,7 +60,7 @@ pip install azure-datalake-store
 
 ## <a name="create-a-new-python-application"></a>Tworzenie nowej aplikacji w języku Python
 
-1. W ulubionego środowiska IDE, Utwórz nową aplikację języka Python, na przykład **mysample.py**.
+1. W wybranym środowisku IDE Utwórz nową aplikację w języku Python, na przykład **MySample.py**.
 
 2. Dodaj następujący fragment kodu, aby zaimportować wymagane moduły
 
@@ -88,9 +88,9 @@ pip install azure-datalake-store
 
 ## <a name="end-user-authentication-with-multi-factor-authentication"></a>Uwierzytelnianie użytkowników końcowych przy użyciu uwierzytelniania wieloskładnikowego
 
-### <a name="for-account-management"></a>Do zarządzania kontami
+### <a name="for-account-management"></a>Zarządzanie kontami
 
-Poniższy fragment kodu umożliwia uwierzytelnianie za pomocą usługi Azure AD dla operacji zarządzania kontem w konta Data Lake Storage Gen1. Poniższego fragmentu kodu można użyć do uwierzytelniania aplikacji za pomocą uwierzytelniania wieloskładnikowego. W artości poniżej istniejącej usługi Azure AD **natywnych** aplikacji.
+Poniższy fragment kodu służy do uwierzytelniania w usłudze Azure AD na potrzeby operacji zarządzania kontami na koncie Data Lake Storage Gen1. Poniższego fragmentu kodu można użyć do uwierzytelniania aplikacji za pomocą uwierzytelniania wieloskładnikowego. Podaj poniższe wartości dla istniejącej aplikacji natywnej usługi Azure AD.
 
     authority_host_url = "https://login.microsoftonline.com"
     tenant = "FILL-IN-HERE"
@@ -107,17 +107,17 @@ Poniższy fragment kodu umożliwia uwierzytelnianie za pomocą usługi Azure AD 
 
 ### <a name="for-filesystem-operations"></a>Dla operacji systemu plików
 
-Służy do uwierzytelniania w usłudze Azure AD dla operacji systemu plików na koncie Data Lake Storage Gen1. Poniższego fragmentu kodu można użyć do uwierzytelniania aplikacji za pomocą uwierzytelniania wieloskładnikowego. W artości poniżej istniejącej usługi Azure AD **natywnych** aplikacji.
+Służy do uwierzytelniania za pomocą usługi Azure AD dla operacji systemu plików na koncie Data Lake Storage Gen1. Poniższego fragmentu kodu można użyć do uwierzytelniania aplikacji za pomocą uwierzytelniania wieloskładnikowego. Podaj poniższe wartości dla istniejącej aplikacji natywnej usługi Azure AD.
 
     adlCreds = lib.auth(tenant_id='FILL-IN-HERE', resource = 'https://datalake.azure.net/')
 
-## <a name="end-user-authentication-without-multi-factor-authentication"></a>Uwierzytelnianie użytkowników końcowych bez usługi Multi-Factor authentication
+## <a name="end-user-authentication-without-multi-factor-authentication"></a>Uwierzytelnianie użytkowników końcowych bez uwierzytelniania wieloskładnikowego
 
-Ta opcja jest przestarzała. Aby uzyskać więcej informacji, zobacz [uwierzytelniania platformy Azure przy użyciu zestawu SDK języka Python](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python#mgmt-auth-token).
+Jest to przestarzałe. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie platformy Azure przy użyciu zestawu SDK języka Python](/azure/python/python-sdk-azure-authenticate).
    
-## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób uwierzytelniania za pomocą usługi Azure Data Lake Storage Gen1 za pomocą uwierzytelniania użytkowników końcowych przy użyciu języka Python. Możesz teraz przejrzeć następujące artykuły, które mówić o tym, jak używać języka Python do pracy z usługi Azure Data Lake Storage Gen1.
+## <a name="next-steps"></a>Następne kroki
+W tym artykule przedstawiono sposób użycia uwierzytelniania użytkownika końcowego do uwierzytelniania za pomocą Azure Data Lake Storage Gen1 przy użyciu języka Python. Teraz możesz zapoznać się z następującymi artykułami, które mówią, jak używać języka Python do pracy z Azure Data Lake Storage Gen1.
 
-* [Operacje zarządzania kontem w Data Lake Storage Gen1 przy użyciu języka Python](data-lake-store-get-started-python.md)
+* [Operacje zarządzania kontem na Data Lake Storage Gen1 przy użyciu języka Python](data-lake-store-get-started-python.md)
 * [Operacje na danych na Data Lake Storage Gen1 przy użyciu języka Python](data-lake-store-data-operations-python.md)
 

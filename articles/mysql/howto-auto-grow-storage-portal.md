@@ -1,45 +1,45 @@
 ---
-title: Automatyczne zwiększanie magazynu w usłudze Azure Database for MySQL za pomocą witryny Azure portal
-description: W tym artykule opisano, jak można włączyć automatycznego zwiększenia magazynu dla usługi Azure Database for MySQL za pomocą witryny Azure portal
+title: Powiększ magazyn w Azure Database for MySQL przy użyciu Azure Portal
+description: W tym artykule opisano sposób włączania magazynu z możliwością autowzrostu dla Azure Database for MySQL przy użyciu Azure Portal
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/29/2019
-ms.openlocfilehash: 5343475f38dd5389d6b0e266ff7167925cd38d71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 864bfaefba783d93e795e8780cc02dcf991e38f1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66676791"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142028"
 ---
-# <a name="auto-grow-storage-in-azure-database-for-mysql-using-the-azure-portal"></a>Automatyczne zwiększanie magazynu w usłudze Azure Database for MySQL za pomocą witryny Azure portal
-W tym artykule opisano sposób konfigurowania usługi Azure Database for MySQL — magazyn serwera można rozwijać bez wywierania wpływu na obciążenie pracą.
+# <a name="auto-grow-storage-in-azure-database-for-mysql-using-the-azure-portal"></a>Powiększ magazyn w Azure Database for MySQL przy użyciu Azure Portal
+W tym artykule opisano, jak można skonfigurować magazyn serwera Azure Database for MySQL do wzrostu bez wpływu na obciążenie.
 
-Gdy serwer osiągnie limit magazynowania przydzielone, serwer zostanie oznaczony jako tylko do odczytu. Jednak jeśli włączysz magazynu automatyczne zwiększanie, magazynu serwera wzrasta do pomieszczenia rosnącą danych. W przypadku serwerów z mniej niż 100 GB zainicjowano obsługę administracyjną magazynu rozmiar aprowizowanego magazynu jest zwiększana o 5 GB, jak ilość wolnego miejsca jest poniżej większą niż 1 GB lub 10% aprowizowanego magazynu. W przypadku serwerów z więcej niż 100 GB magazynu aprowizowanego rozmiaru aprowizowanego magazynu zwiększa się o 5% gdy ilość wolnego miejsca jest poniżej 5% rozmiaru aprowizowanego magazynu. Limity pamięci masowej w określonych [tutaj](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) zastosowania.
+Gdy serwer osiągnie przydzieloną liczbę magazynów, serwer jest oznaczony jako tylko do odczytu. Jeśli jednak włączysz funkcję autozwiększania magazynu, magazyn serwera zwiększy się, aby uwzględnić rosnące dane. W przypadku serwerów o rozmiarze mniejszym niż 100 GB zainicjowany magazyn jest zwiększany o 5 GB, gdy tylko ilość wolnego miejsca w magazynie jest mniejsza niż 1 GB lub 10% zainicjowanego magazynu. W przypadku serwerów mających więcej niż 100 GB zasobów magazynowych zainicjowany rozmiar magazynu jest zwiększany o 5%, gdy ilość wolnego miejsca w magazynie jest mniejsza od 5% rozmiaru magazynu. Obowiązują maksymalne limity magazynu określone w [tym miejscu](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers#storage) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby ukończyć ten przewodnik, potrzebne są:
-- [— Azure Database for MySQL server](quickstart-create-mysql-server-database-using-azure-portal.md)
+- [Serwer Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md)
 
-## <a name="enable-storage-auto-grow"></a>Włącz automatyczne magazynu rozwoju 
+## <a name="enable-storage-auto-grow"></a>Włącz funkcję autowzrostu magazynu 
 
-Wykonaj następujące kroki, aby ustawić MySQL server storage automatyczne zwiększanie:
+Wykonaj następujące kroki, aby ustawić funkcję autowzrostu magazynu serwera MySQL:
 
-1. W [witryny Azure portal](https://portal.azure.com/), Wybieranie usługi Azure Database for MySQL server.
+1. W [Azure Portal](https://portal.azure.com/)wybierz istniejący serwer Azure Database for MySQL.
 
-2. Na stronie serwer MySQL w obszarze **ustawienia** nagłówek, kliknij przycisk **warstwa cenowa** aby otworzyć stronę warstwa cenowa.
+2. Na stronie serwer MySQL w polu Nagłówek **ustawień** kliknij pozycję **warstwa cenowa** , aby otworzyć stronę warstwa cenowa.
 
-3. W sekcji automatycznie wzrost wybrać **tak** umożliwiające rozwój automatycznie magazynu.
+3. W sekcji autoprzyrost wybierz pozycję **tak** , aby włączyć funkcję automatycznego zwiększania rozmiaru magazynu.
 
-    ![Azure Database for MySQL - Settings_Pricing_tier - Auto wzrostu](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
+    ![Azure Database for MySQL-Settings_Pricing_tier — autowzrostu](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
 
 4. Kliknij przycisk **OK** , aby zapisać zmiany.
 
-5. Powiadomienie o potwierdzenie automatycznego wzrostu został pomyślnie włączony.
+5. Powiadomienie zostanie potwierdzone, że funkcja autozwiększania została pomyślnie włączona.
 
-    ![Azure Database for MySQL — Powodzenie automatycznego wzrostu](./media/howto-auto-grow-storage-portal/5-auto-grow-success.png)
+    ![Azure Database for MySQL — powodzenie automatycznego wzrostu](./media/howto-auto-grow-storage-portal/5-auto-grow-success.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [jak tworzenie alertów dotyczących metryk](howto-alert-on-metric.md).
+Dowiedz się więcej na temat [tworzenia alertów dotyczących metryk](howto-alert-on-metric.md).

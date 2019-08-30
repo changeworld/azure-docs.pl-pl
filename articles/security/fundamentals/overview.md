@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 2cc8f4f81ad95376dcbc10c2952c1b2ed95ffe42
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 30ec36067b4a047478abc294361b015d12d21319
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907914"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129349"
 ---
 # <a name="introduction-to-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Azure
 ## <a name="overview"></a>Przegląd
@@ -365,7 +365,7 @@ Firma Microsoft używa wielu rozwiązań w zakresie zabezpieczeń i usług w cel
 
 - [Cloud App Discovery](../../active-directory/cloudappdiscovery-get-started.md) to funkcja Premium Azure Active Directory, która pozwala identyfikować aplikacje w chmurze, które są używane przez pracowników w organizacji.
 
-- [Azure Active Directory Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) to usługa zabezpieczeń, która używa Azure Active Directory funkcji wykrywania anomalii, aby zapewnić skonsolidowany wgląd w zdarzenia o podwyższonym ryzyku i potencjalne luki w zabezpieczeniach, które mogą wpływać na organizację osob.
+- [Azure Active Directory Identity Protection](https://azure.microsoft.com/documentation/articles/active-directory-identityprotection/) to usługa zabezpieczeń, która używa Azure Active Directory funkcji wykrywania anomalii w celu zapewnienia skonsolidowanego widoku na potrzeby wykrywania ryzyka i potencjalnych luk w zabezpieczeniach, które mogą mieć wpływ na organizację osob.
 
 - [Azure Active Directory Domain Services](https://azure.microsoft.com/services/active-directory-ds/) umożliwia dołączanie maszyn wirtualnych platformy Azure do domeny bez konieczności wdrażania kontrolerów domeny. Użytkownicy logują się do tych maszyn wirtualnych przy użyciu poświadczeń firmowych Active Directory i mogą bezproblemowo uzyskiwać dostęp do zasobów.
 

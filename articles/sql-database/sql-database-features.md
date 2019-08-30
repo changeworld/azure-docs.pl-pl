@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 2a14140a395e8ccd2bf0092d5922d639914b01a7
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8640a283cf81ddafdb8402d9bdfc46f88b35fa45
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900419"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135286"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porównanie funkcji: Azure SQL Database a SQL Server
 
@@ -160,6 +160,16 @@ Usługa Azure SQL Database obsługuje różne narzędzia danych, które mogą po
 | [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Tak | Tak |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Nie — zobacz [zdarzenia rozszerzone](sql-database-xevent-db-diff-from-svr.md) | Tak |
 | [System Center Operations Manager — SCOM](https://docs.microsoft.com/system-center/scom/welcome) | [Tak](https://www.microsoft.com/download/details.aspx?id=38829) | Nie |
+
+## <a name="migration-methods"></a>Metody migracji
+
+Do przenoszenia danych między bazami danych SQL Server, pojedyncza baza danych i wystąpieniami zarządzanymi można używać różnych metod migracji. Niektóre metody są w **trybie online** i pobierają wszystkie zmiany wprowadzone w źródle podczas przeprowadzania migracji, natomiast w metodach **offline** należy zatrzymać obciążenie, które modyfikuje dane ze źródła, podczas gdy migracja jest w toku.
+
+| **Element źródłowy** | **Pojedyncza baza danych i Pula elastyczna** | **Wystąpienie zarządzane** |
+| --- | --- | --- |
+| SQL Server (Premium, AzureVM, Amazon RDS) | **Sieci** [Usługa migracji danych (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) <br/> **Stanie** [Plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp | **Sieci** [Usługa migracji danych (DMS)](https://docs.microsoft.com/sql/dma/dma-overview), [replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) <br/> **Stanie** Natywna kopia zapasowa/przywracanie, [plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp, [replikacja migawek](sql-database-managed-instance-transactional-replication.md) |
+| Pojedyncza baza danych | **Stanie** [Plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp | **Stanie** [Plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp |
+| Wystąpienie zarządzane | **Sieci** [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) <br/> **Stanie** [Plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp, [replikacja migawek](sql-database-managed-instance-transactional-replication.md) | **Sieci** [Replikacja transakcyjna](sql-database-managed-instance-transactional-replication.md) <br/> **Stanie** Przywracanie do punktu w czasie między wystąpieniami ([Azure PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase?#examples) lub [interfejs wiersza polecenia platformy Azure](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Cross-instance-point-in-time-restore-in-Azure-SQL-Database/ba-p/386208)), [natywne kopie zapasowe/przywracanie](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore), [plik BACPAC (import)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database), bcp, [replikacja migawek](sql-database-managed-instance-transactional-replication.md) |
 
 ## <a name="next-steps"></a>Następne kroki
 

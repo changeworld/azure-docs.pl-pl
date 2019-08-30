@@ -1,6 +1,6 @@
 ---
-title: 'Program Azure AD Connect: Projektowanie pojęcia | Dokumentacja firmy Microsoft'
-description: Ten temat wyszczególnia niektórych obszarach projektowania wdrożenia
+title: 'Program Azure AD Connect: Koncepcje projektowania | Microsoft Docs'
+description: W tym temacie szczegółowo opisano niektóre obszary projektowania implementacji
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -17,186 +17,185 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 311ba489073805fdb034b435ab9e5e1ddc2c4e3c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60382289"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135736"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Program Azure AD Connect: Zagadnienia dotyczące projektowania
-Ten dokument ma na celu opisania obszary, które należy uważać za pośrednictwem podczas projektu implementacji programu Azure AD Connect. Ten dokument jest uzyskać szczegółowe informacje dotyczące określonych obszarów i te pojęcia krótko opisano w innych dokumentów.
+Celem tego dokumentu jest opisywanie obszarów, które muszą być rozważane podczas projektowania implementacji Azure AD Connect. Ten dokument to głębokie szczegółowe w niektórych obszarach. te pojęcia są również krótko opisane w innych dokumentach.
 
 ## <a name="sourceanchor"></a>sourceAnchor
-Atrybut sourceAnchor jest zdefiniowany jako *atrybut niezmienialny w okresie istnienia obiektu*. Jednoznacznie identyfikuje obiekt jako ten sam obiekt w środowisku lokalnym i w usłudze Azure AD. Ten atrybut jest również nazywany **immutableId** i dwie nazwy są używane wymienne.
+Atrybut sourceAnchor jest definiowany jako *atrybut niezmienny w okresie istnienia obiektu*. Jednoznacznie identyfikuje obiekt jako ten sam obiekt w środowisku lokalnym i w usłudze Azure AD. Ten atrybut jest również nazywany **immutableId** , a dwie nazwy są używane zamiennie.
 
-Niezmienne, word, który jest "nie można zmienić", ważne jest, aby w tym dokumencie. Ponieważ wartość tego atrybutu nie można zmienić po jej ustawieniu, jest ważne, aby wybrać projekt, który obsługuje danego scenariusza.
+Wyraz niezmienny, czyli nie można zmienić, jest istotny dla tego dokumentu. Ponieważ wartości tego atrybutu nie można zmienić po jego ustawieniu, ważne jest, aby wybrać projekt, który obsługuje twój scenariusz.
 
 Ten atrybut jest używany w następujących scenariuszach:
 
-* Gdy nowy serwer aparatu synchronizacji jest wbudowane lub odbudować po scenariusza odzyskiwania po awarii, ten atrybut łączy istniejących obiektów w usłudze Azure AD za pomocą obiektów w środowisku lokalnym.
-* Po przełączeniu z tożsamości oparte tylko na chmurze modelu tożsamości zsynchronizowane następnie ten atrybut pozwala obiektów "twardych dopasowany" istniejących obiektów w usłudze Azure AD z obiektami w środowisku lokalnym.
-* Jeśli używasz Federacji, a następnie tego atrybutu w połączeniu z **userPrincipalName** jest używany w oświadczenie do unikatowego identyfikowania użytkownika.
+* Gdy nowy serwer aparatu synchronizacji jest skompilowany lub odbudowany po scenariuszu odzyskiwania po awarii, ten atrybut łączy istniejące obiekty w usłudze Azure AD z obiektami lokalnymi.
+* Jeśli przejdziesz z tożsamości tylko do chmury do zsynchronizowanego modelu tożsamości, ten atrybut umożliwia obiektom "twardą zgodność" istniejących obiektów w usłudze Azure AD z obiektami lokalnymi.
+* W przypadku korzystania z Federacji ten atrybut wraz z elementem **userPrincipalName** jest używany w ramach roszczeń do unikatowego identyfikowania użytkownika.
 
-W tym temacie opowiada sourceAnchor tylko w odniesieniu do użytkowników. Te same zasady mają zastosowanie do wszystkich typów obiektu, ale jest tylko dla użytkowników, że ten problem jest zazwyczaj problemem.
+Ten temat dotyczy tylko sourceAnchor w odniesieniu do użytkowników. Te same reguły mają zastosowanie do wszystkich typów obiektów, ale tylko dla użytkowników ten problem jest zwykle istotny.
 
-### <a name="selecting-a-good-sourceanchor-attribute"></a>Wybranie atrybutu sourceAnchor dobre
-Wartość atrybutu musi postępuj zgodnie z następującymi zasadami:
+### <a name="selecting-a-good-sourceanchor-attribute"></a>Wybieranie dobrego atrybutu sourceAnchor
+Wartość atrybutu musi być zgodna z następującymi regułami:
 
 * Mniej niż 60 znaków
-  * Znaki, które nie były a – z, A-Z lub 0-9 kodowania i wliczane do 3 znaków
-* Zawiera znaki specjalne: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > ( ) ' ; : , [ ] " \@ _
-* Musi być unikatowa w skali globalnej
-* Musi być ciąg, liczba całkowita lub dane binarne
-* Nie powinna być oparta na nazwę użytkownika, ponieważ mogą one zmienić
-* Nie powinny być uwzględniana wielkość liter i uniknąć wartości, które mogą się różnić w przypadku
-* Powinien być przypisany, gdy obiekt zostanie utworzony.
+  * Znaki, które nie są a-z, A-Z, lub 0-9 są kodowane i zliczane jako 3 znaki
+* Nie zawiera znaku specjalnego: &#92; ! # $ % & * + / = ? ^ &#96; { } | ~ < > () '; : , [ ] " \@ _
+* Musi być globalnie unikatowa
+* Musi to być ciąg, liczba całkowita lub wartość binarna
+* Nie powinna być oparta na nazwie użytkownika, ponieważ mogą one ulec zmianie
+* Nie należy uwzględniać wielkości liter i uniknąć wartości, które mogą się różnić w zależności od wielkości liter
+* Powinien być przypisywany po utworzeniu obiektu
 
-Jeśli wybrany sourceAnchor nie jest typu ciąg, następnie usługa Azure AD Connect Base64Encode wartość atrybutu, aby upewnić się, żadnych znaków specjalnych, są wyświetlane. Jeśli używasz innego serwera federacyjnego niż usługi AD FS, upewnij się, serwer może również Base64Encode atrybutu.
+Jeśli wybrany sourceAnchor nie jest typu String, Azure AD Connect Base64Encode wartość atrybutu, aby upewnić się, że nie są wyświetlane żadne znaki specjalne. Jeśli używasz innego serwera federacyjnego niż usług AD FS, upewnij się, że serwer może również Base64Encode atrybut.
 
-Atrybut sourceAnchor jest uwzględniana wielkość liter. Wartość "Jankowalski" nie jest taka sama jak "Jankowalski". Ale nie powinny mieć dwa różne obiekty z różnicą tylko w przypadku.
+W atrybucie sourceAnchor jest rozróżniana wielkość liter. Wartość "jankowalski" nie jest taka sama jak "jankowalski". Ale nie należy mieć dwóch różnych obiektów z tylko różnicą w przypadku.
 
-W przypadku pojedynczego lasu w środowisku lokalnym, następnie należy użyć atrybutu jest **objectGUID**. Dotyczy to również atrybut używany przy użyciu ustawień ekspresowych w usłudze Azure AD Connect, a także atrybut używane przez narzędzie DirSync.
+Jeśli masz pojedynczy las w środowisku lokalnym, wówczas atrybut, którego należy użyć, to **objectGUID**. Jest to również atrybut używany podczas używania ustawień ekspresowych w Azure AD Connect, a także atrybut używany przez narzędzie DirSync.
 
-Jeśli masz wiele lasów i nie przenoś użytkowników między lasami i domenami, następnie **objectGUID** jest właściwego atrybutu nawet w takim przypadku.
+Jeśli masz wiele lasów i nie przenosisz użytkowników między lasami i domenami, a następnie **objectGUID** jest dobrym atrybutem do użycia nawet w tym przypadku.
 
-Jeśli przeniesiesz użytkowników między lasami i domenami, a następnie należy znaleźć atrybut, który nie powoduje zmiany lub mogą zostać przeniesione z użytkownikami, podczas przenoszenia. Zalecanym podejściem jest wprowadzenie syntetycznych atrybutu. Atrybut, który można umieścić coś, wygląda na to odpowiednia może być identyfikatorem GUID. Podczas tworzenia obiektu nowy identyfikator GUID jest tworzony i sygnatury znajdują się na użytkownika. Reguły synchronizacji niestandardowe można tworzyć w serwer aparat synchronizacji, aby utworzyć tę wartość na podstawie **objectGUID** i aktualizowanie wybranego atrybutu w usłudze ADDS. Podczas przenoszenia obiektu, upewnij się, że także skopiować zawartość tej wartości.
+Jeśli przenosisz użytkowników między lasami i domenami, musisz znaleźć atrybut, który nie zmienia się ani nie może zostać przeniesiony do użytkowników podczas przenoszenia. Zalecanym podejściem jest wprowadzenie atrybutu syntetycznego. Atrybut, który może zawierać coś, który wygląda jak identyfikator GUID, będzie odpowiedni. Podczas tworzenia obiektu tworzony jest nowy identyfikator GUID i jest on stemplowany na użytkowniku. Niestandardowa reguła synchronizacji można utworzyć na serwerze aparatu synchronizacji, aby utworzyć tę wartość na podstawie właściwości **objectGUID** i zaktualizować wybrany atrybut w obszarze Dodawanie. Podczas przenoszenia obiektu upewnij się, że kopiujesz również zawartość tej wartości.
 
-Innym rozwiązaniem jest pobranie istniejącego atrybutu znanych nie zmienia się. Często używane atrybuty obejmują **employeeID**. Należy wziąć pod uwagę atrybut, który zawiera litery upewnij się, że można zmienić bez możliwości przypadek (wielkie i małe litery), wartość atrybutu. Nieprawidłowe atrybuty, które nie powinny być używane uwzględnić te atrybuty z nazwą użytkownika. W małżeństwa lub rozwodu nazwa powinien zmienić, co nie jest dozwolone dla tego atrybutu. Ta wartość jest także jednym z powodów dlaczego atrybuty takie jak **userPrincipalName**, **poczty**, i **targetAddress** nie są jeszcze można wybrać w instalacji programu Azure AD Connect Kreator. Zawierają również te atrybuty "\@" znak, który jest niedozwolony w sourceAnchor.
+Innym rozwiązaniem jest wybranie istniejącego atrybutu, który nie zmienia się. Najczęściej używane atrybuty obejmują **IDPracownika**. Jeśli rozważasz atrybut, który zawiera litery, upewnij się, że przypadek (wielkie litery a małe litery) może zmienić wartość atrybutu. Złe atrybuty, które nie powinny być używane, zawierają te atrybuty z nazwą użytkownika. W przypadku małżeństwa lub rozwodu nazwa powinna ulec zmianie, co nie jest dozwolone dla tego atrybutu. Jest to również powód, dlaczego atrybuty, takie jak **userPrincipalName**, **mail**i **targetAddress** , nie są jeszcze dostępne do wyboru w Kreatorze instalacji Azure AD Connect. Te atrybuty również zawierają znak "\@", który jest niedozwolony w sourceAnchor.
 
 ### <a name="changing-the-sourceanchor-attribute"></a>Zmiana atrybutu sourceAnchor
-Nie można zmienić wartości atrybutu sourceAnchor, po utworzeniu obiektu w usłudze Azure AD i tożsamość jest zsynchronizowana.
+Nie można zmienić wartości atrybutu sourceAnchor po utworzeniu obiektu w usłudze Azure AD, a tożsamość jest zsynchronizowana.
 
-Z tego powodu następujące ograniczenia mają zastosowanie do programu Azure AD Connect:
+Z tego powodu następujące ograniczenia mają zastosowanie do Azure AD Connect:
 
-* Atrybut sourceAnchor można ustawić tylko podczas instalacji początkowej. Jeśli uruchomisz Kreatora instalacji, ta opcja jest tylko do odczytu. Jeśli potrzebujesz zmienić to ustawienie, należy odinstalować i ponownie zainstalować.
-* Możesz zainstalować inny serwer program Azure AD Connect, musisz wybrać ten sam atrybut sourceAnchor wcześniej używane. Jeśli wcześniej została przy użyciu narzędzia DirSync i przenieść do usługi Azure AD Connect, a następnie należy użyć **objectGUID** ponieważ atrybut używany przez narzędzie DirSync.
-* Jeśli wartość sourceAnchor zostało zmienione po obiekcie zostały wyeksportowane do usługi Azure AD, a następnie program Azure AD Connect sync zgłasza błąd i nie zezwala na jakichkolwiek kolejnych zmian na obiekt, zanim problem został rozwiązany i sourceAnchor zmodyfikowaniu w źródłowej Dyrektor ds. y.
+* Atrybut sourceAnchor można ustawić tylko podczas początkowej instalacji. Jeśli ponownie uruchomisz kreatora instalacji, ta opcja jest tylko do odczytu. Jeśli trzeba zmienić to ustawienie, należy odinstalować i ponownie zainstalować program.
+* Jeśli zostanie zainstalowany inny serwer Azure AD Connect, należy wybrać ten sam atrybut sourceAnchor, jak poprzednio używany. Jeśli wcześniej korzystano z narzędzia DirSync i przejdziesz do Azure AD Connect, należy użyć **objectGUID** , ponieważ jest atrybutem używanym przez narzędzie DirSync.
+* Jeśli wartość sourceAnchor jest zmieniana po wyeksportowaniu obiektu do usługi Azure AD, Azure AD Connect Synchronize zgłasza błąd i nie będzie zezwalać na więcej zmian w tym obiekcie przed naprawieniem problemu i sourceAnchor zostanie zmieniony z powrotem w dyrektorze źródła t.
 
-## <a name="using-ms-ds-consistencyguid-as-sourceanchor"></a>Przy użyciu ms-DS-ConsistencyGuid jako sourceAnchor
-Domyślnie program Azure AD Connect (wersja 1.1.486.0 i starsze) używa objectGUID jako atrybutu sourceAnchor. ObjectGUID jest generowany przez system. Nie można określić wartość podczas tworzenia w środowisku lokalnym obiektami usługi AD. Zgodnie z opisem w sekcji [sourceAnchor](#sourceanchor), istnieją scenariusze, w którym należy określić wartość sourceAnchor. Scenariusze mają zastosowanie do użytkownika, należy użyć konfigurowalne atrybutu usługi AD (na przykład, ms-DS-ConsistencyGuid) jako atrybut sourceAnchor.
+## <a name="using-ms-ds-consistencyguid-as-sourceanchor"></a>Korzystanie z MS-DS-ConsistencyGuid jako sourceAnchor
+Domyślnie Azure AD Connect (wersja 1.1.486.0 i starsze) używa objectGUID jako atrybutu sourceAnchor. ObjectGUID jest generowany przez system. Nie można określić jej wartości podczas tworzenia lokalnych obiektów usługi AD. Jak wyjaśniono w sekcji [sourceAnchor](#sourceanchor), istnieją scenariusze, w których należy określić wartość sourceAnchor. Jeśli masz odpowiednie scenariusze, musisz użyć konfigurowalnego atrybutu AD (na przykład MS-DS-ConsistencyGuid) jako atrybutu sourceAnchor.
 
-Program Azure AD Connect (wersja w 1.1.524.0 oraz po) teraz ułatwia korzystanie z ms-DS-ConsistencyGuid jako atrybutu sourceAnchor. Podczas korzystania z tej funkcji Azure AD Connect automatycznie konfiguruje reguły synchronizacji:
+Azure AD Connect (wersja 1.1.524.0 i późniejsza) ułatwia teraz korzystanie z usługi MS-DS-ConsistencyGuid jako atrybutu sourceAnchor. W przypadku korzystania z tej funkcji Azure AD Connect automatycznie konfiguruje reguły synchronizacji w następujący sposób:
 
-1. Na użytek ms-DS-ConsistencyGuid jako atrybutu sourceAnchor obiektów użytkowników. ObjectGUID jest używana do innych obiektów.
+1. Użyj MS-DS-ConsistencyGuid jako atrybutu sourceAnchor dla obiektów użytkownika. ObjectGUID jest używany dla innych typów obiektów.
 
-2. Dla dowolnej podanej w środowisku lokalnym użytkownika AD obiektu, którego atrybut ms-DS-ConsistencyGuid nie jest wypełnione, Azure zapisów AD Connect, jego wartość objectGUID z powrotem do atrybutu ms-DS-ConsistencyGuid w usłudze Active Directory w środowisku lokalnym. Po wypełnieniu atrybutu ms-DS-ConsistencyGuid program Azure AD Connect eksportowany jest obiekt do usługi Azure AD.
+2. Dla każdego z danych lokalnego obiektu użytkownika usługi AD, którego atrybut MS-DS-ConsistencyGuid nie jest wypełniony, Azure AD Connect zapisuje jego wartość objectGUID z powrotem do atrybutu MS-DS-ConsistencyGuid w lokalnym Active Directory. Po wyAzure AD Connect pełnieniu atrybutu MS-DS-ConsistencyGuid wyeksportuj obiekt do usługi Azure AD.
 
 >[!NOTE]
-> Raz lokalnego obiektu usługi AD jest importowany do usługi Azure AD Connect (który jest importowany do obszaru łącznika usługi AD i odwzorowane w obiekcie Metaverse), nie można już zmienić wartością sourceAnchor. Aby określić wartość sourceAnchor dla podanej w środowisku lokalnym AD obiektu, skonfiguruj jego atrybut ms-DS-ConsistencyGuid, przed zaimportowaniem ich do usługi Azure AD Connect.
+> Gdy lokalny obiekt usługi AD zostanie zaimportowany do Azure AD Connect (to znaczy zaimportowany do obszaru łącznika usługi AD i jest rzutowany na obiekt Metaverse), nie można już zmienić jego wartości sourceAnchor. Aby określić wartość sourceAnchor dla danego lokalnego obiektu usługi AD, należy skonfigurować jego atrybut MS-DS-ConsistencyGuid przed jego zaimportowaniem do Azure AD Connect.
 
-### <a name="permission-required"></a>Wymagane jest uprawnienie
-Ta funkcja działała konto usług AD DS, używane do synchronizacji z usługą Active Directory w środowisku lokalnym musi otrzymać uprawnienia do zapisu do atrybutu ms-DS-ConsistencyGuid w usłudze Active Directory w środowisku lokalnym.
+### <a name="permission-required"></a>Wymagane uprawnienie
+Aby ta funkcja działała, konto AD DS używane do synchronizacji z lokalnym Active Directory musi mieć przyznane uprawnienie do zapisu dla atrybutu MS-DS-ConsistencyGuid w Active Directory lokalnym.
 
-### <a name="how-to-enable-the-consistencyguid-feature---new-installation"></a>Jak włączyć funkcję ConsistencyGuid — nowa instalacja
-Korzystanie z ConsistencyGuid jako sourceAnchor można włączyć podczas instalacji nowego. Ta sekcja obejmuje instalację zarówno Express, jak i niestandardowe, w szczegółach.
+### <a name="how-to-enable-the-consistencyguid-feature---new-installation"></a>Jak włączyć funkcję ConsistencyGuid — Nowa instalacja
+W trakcie nowej instalacji można włączyć funkcję ConsistencyGuid jako sourceAnchor. W tej sekcji opisano instalację ekspresowa i niestandardową.
 
   >[!NOTE]
-  > Tylko nowsze wersje programu Azure AD Connect (1.1.524.0 oraz po) obsługuje korzystanie z ConsistencyGuid jako sourceAnchor podczas instalacji nowego.
+  > Tylko nowsze wersje Azure AD Connect (1.1.524.0 i After) obsługują użycie ConsistencyGuid jako sourceAnchor podczas nowej instalacji.
 
 ### <a name="how-to-enable-the-consistencyguid-feature"></a>Jak włączyć funkcję ConsistencyGuid
-Obecnie tę funkcję można włączyć tylko podczas nowej instalacji usługi Azure AD Connect.
 
 #### <a name="express-installation"></a>Instalacja ekspresowa
-Instalując program Azure AD Connect z trybem Express, Kreator Azure AD Connect automatycznie określa najbardziej odpowiedniego atrybutu usługi AD do użycia jako atrybut sourceAnchor przy użyciu logiki poniższym:
+Podczas instalowania Azure AD Connect z trybem Express Kreator Azure AD Connect automatycznie określa najbardziej odpowiedni atrybut usługi AD, który będzie używany jako atrybut sourceAnchor, przy użyciu następującej logiki:
 
-* Po pierwsze Kreator Azure AD Connect wysyła zapytanie do dzierżawy usługi Azure AD do pobrania atrybutu usługi AD, używane jako atrybut sourceAnchor w poprzedniej instalacji program Azure AD Connect (jeśli istnieje). Jeśli ta informacja jest dostępna, program Azure AD Connect używa tego samego atrybutu usługi AD.
+* Najpierw Kreator Azure AD Connect wysyła zapytanie do dzierżawy usługi Azure AD, aby pobrać atrybut usługi AD używany jako atrybut sourceAnchor w poprzedniej instalacji Azure AD Connect (jeśli istnieje). Jeśli te informacje są dostępne, Azure AD Connect używa tego samego atrybutu usługi AD.
 
   >[!NOTE]
-  > Tylko nowsze wersje programu Azure AD Connect (1.1.524.0 oraz po) używany do przechowywania informacji w dzierżawie usługi Azure AD o atrybut sourceAnchor, podczas instalacji. Nie są starsze wersje programu Azure AD Connect.
+  > Tylko nowsze wersje Azure AD Connect (1.1.524.0 i After) przechowują informacje w dzierżawie usługi Azure AD o atrybucie sourceAnchor używanym podczas instalacji. Starsze wersje Azure AD Connect nie.
 
-* Jeśli informacje o atrybut sourceAnchor jest niedostępna, Kreator sprawdza stan atrybutu ms-DS-ConsistencyGuid w usłudze Active Directory w środowisku lokalnym. Jeśli ten atrybut nie jest skonfigurowany dla dowolnego obiektu w katalogu, kreator używa ms-DS-ConsistencyGuid jako atrybutu sourceAnchor. Jeśli ten atrybut jest skonfigurowana na jeden lub więcej obiektów w katalogu, Kreator stwierdza, ten atrybut jest używany przez inne aplikacje, a nie nadaje się jako atrybut sourceAnchor...
+* Jeśli informacje o używanym atrybucie sourceAnchor nie są dostępne, Kreator sprawdza stan atrybutu MS-DS-ConsistencyGuid w lokalnym Active Directory. Jeśli atrybut nie jest skonfigurowany dla żadnego obiektu w katalogu, Kreator użyje właściwości MS-DS-ConsistencyGuid jako atrybutu sourceAnchor. Jeśli atrybut jest skonfigurowany w co najmniej jednym obiekcie w katalogu, Kreator końcowy ten atrybut jest używany przez inne aplikacje i nie jest odpowiedni jako atrybut sourceAnchor...
 
-* W takim przypadku Kreator powraca do korzystania objectGUID jako atrybutu sourceAnchor.
+* W takim przypadku Kreator powraca do użycia objectGUID jako atrybut sourceAnchor.
 
-* Gdy atrybut sourceAnchor zostanie podjęta decyzja, kreator zapisuje informacje w dzierżawy usługi Azure AD. Informacje będą używane przez przyszłych instalację programu Azure AD Connect.
+* Po ustaleniu atrybutu sourceAnchor kreator zapisuje informacje w dzierżawie usługi Azure AD. Informacje będą używane podczas przyszłej instalacji Azure AD Connect.
 
-Po zakończeniu instalacji ekspresowej Kreator informuje użytkownika, który atrybut został wybrany jako atrybut zakotwiczenia źródła.
+Po zakończeniu instalacji ekspresowej Kreator informuje, który atrybut został wybrany jako atrybut zakotwiczenia źródła.
 
-![Kreator informuje atrybutu usługi AD wybrany na potrzeby sourceAnchor](./media/plan-connect-design-concepts/consistencyGuid-01.png)
+![Kreator informuje o pobraniu atrybutu AD dla sourceAnchor](./media/plan-connect-design-concepts/consistencyGuid-01.png)
 
 #### <a name="custom-installation"></a>Instalacja niestandardowa
-Instalując program Azure AD Connect przy użyciu trybu niestandardowego kreatora programu Azure AD Connect oferuje dwie opcje podczas konfigurowania atrybut sourceAnchor:
+Podczas instalowania Azure AD Connect z trybem niestandardowym Kreator Azure AD Connect udostępnia dwie opcje podczas konfigurowania atrybutu sourceAnchor:
 
-![Instalacja niestandardowa - sourceAnchor konfiguracji](./media/plan-connect-design-concepts/consistencyGuid-02.png)
+![Instalacja niestandardowa — konfiguracja sourceAnchor](./media/plan-connect-design-concepts/consistencyGuid-02.png)
 
 | Ustawienie | Opis |
 | --- | --- |
-| Pozwól, aby platforma Azure zarządzała zakotwiczeniem źródła | Wybierz tę opcję, jeśli chcesz, aby usługa Azure AD wybierała ten atrybut za Ciebie. Jeśli wybierzesz tę opcję, Kreator Azure AD Connect stosuje się takie same [logikę wyboru atrybutu sourceAnchor używany podczas instalacji ekspresowej](#express-installation). Podobnie jak Instalacja ekspresowa, Kreator informuje użytkownika, który atrybut został wybrany jako atrybut zakotwiczenia źródła po zakończeniu instalacji niestandardowej. |
+| Pozwól, aby platforma Azure zarządzała zakotwiczeniem źródła | Wybierz tę opcję, jeśli chcesz, aby usługa Azure AD wybierała ten atrybut za Ciebie. W przypadku wybrania tej opcji Kreator Azure AD Connect ma zastosowanie tej samej [logiki wyboru atrybutów sourceAnchor używanej podczas instalacji ekspresowej](#express-installation). Podobnie jak w przypadku instalacji ekspresowej, Kreator informuje, który atrybut został pobrany jako atrybut zakotwiczenia źródła po zakończeniu instalacji niestandardowej. |
 | Określony atrybut | Wybierz tę opcję, jeśli chcesz określić istniejący atrybut usługi AD jako atrybut sourceAnchor. |
 
-### <a name="how-to-enable-the-consistencyguid-feature---existing-deployment"></a>Jak włączyć funkcję ConsistencyGuid - istniejącego wdrożenia
-Za pomocą ConsistencyGuid zamiast tego można zmienić istniejącego wdrożenia usługi Azure AD Connect, który używa objectGUID jako atrybutu zakotwiczenia źródła.
+### <a name="how-to-enable-the-consistencyguid-feature---existing-deployment"></a>Jak włączyć funkcję ConsistencyGuid — istniejące wdrożenie
+Jeśli masz istniejące wdrożenie Azure AD Connect, które korzysta z objectGUID jako atrybutu kotwicy źródłowej, możesz zamiast tego przełączyć go do użycia ConsistencyGuid.
 
 >[!NOTE]
-> Tylko nowsze wersje programu Azure AD Connect (1.1.552.0 oraz po) obsługuje przełączania ObjectGuid ConsistencyGuid jako atrybutu zakotwiczenia źródła.
+> Tylko nowsze wersje Azure AD Connect (1.1.552.0 i After) obsługują przełączanie z elementu ObjectGuid do ConsistencyGuid jako atrybut kotwicy źródłowej.
 
-Aby przełączyć się z objectGUID ConsistencyGuid jako atrybutu zakotwiczenia źródła:
+Aby zmienić parametr objectGUID na ConsistencyGuid jako źródłowy atrybut zakotwiczenia:
 
-1. Uruchom Kreatora programu Azure AD Connect, a następnie kliknij przycisk **Konfiguruj** można przejść do ekranu zadania.
+1. Uruchom Kreatora Azure AD Connect i kliknij przycisk **Konfiguruj** , aby przejść do ekranu zadania.
 
-2. Wybierz **Konfiguruj zakotwiczenie źródła** zadań opcji, a następnie kliknij przycisk **dalej**.
+2. Wybierz opcję **Konfiguruj źródłową kotwicę** zadania i kliknij przycisk **dalej**.
 
    ![Włącz ConsistencyGuid dla istniejącego wdrożenia — krok 2](./media/plan-connect-design-concepts/consistencyguidexistingdeployment01.png)
 
 3. Wprowadź swoje poświadczenia administratora usługi Azure AD, a następnie kliknij przycisk **dalej**.
 
-4. Kreator Azure AD Connect analizuje stan atrybutu ms-DS-ConsistencyGuid w usłudze Active Directory w środowisku lokalnym. Jeśli ten atrybut nie jest skonfigurowany dla dowolnego obiektu w katalogu, program Azure AD Connect stwierdza, że żadna inna aplikacja używa obecnie atrybut i bezpiecznym rozwiązaniem jest użycie go jako atrybut zakotwiczenia źródła. Kliknij przycisk **dalej** aby kontynuować.
+4. Kreator Azure AD Connect analizuje stan atrybutu MS-DS-ConsistencyGuid w Active Directory lokalnym. Jeśli atrybut nie jest skonfigurowany na żadnym obiekcie w katalogu, Azure AD Connect stwierdza, że żadna inna aplikacja nie korzysta obecnie z atrybutu i jest bezpieczna do użycia jako atrybut zakotwiczenia źródła. Kliknij przycisk **dalej** , aby kontynuować.
 
    ![Włącz ConsistencyGuid dla istniejącego wdrożenia — krok 4](./media/plan-connect-design-concepts/consistencyguidexistingdeployment02.png)
 
-5. W **gotowe do konfiguracji** ekranu, kliknij przycisk **Konfiguruj** umożliwiają zmianę konfiguracji.
+5. Na ekranie **gotowy do skonfigurowania** kliknij pozycję **Konfiguruj** , aby wprowadzić zmiany w konfiguracji.
 
    ![Włącz ConsistencyGuid dla istniejącego wdrożenia — krok 5](./media/plan-connect-design-concepts/consistencyguidexistingdeployment03.png)
 
-6. Po zakończeniu konfiguracji kreatora oznacza, że jest teraz używany tego ms-DS-ConsistencyGuid jako atrybutu zakotwiczenia źródła.
+6. Po zakończeniu konfiguracji Kreator wskazuje, że usługa MS-DS-ConsistencyGuid jest teraz używana jako atrybut zakotwiczenia źródła.
 
    ![Włącz ConsistencyGuid dla istniejącego wdrożenia — krok 6](./media/plan-connect-design-concepts/consistencyguidexistingdeployment04.png)
 
-Podczas analizy (krok 4) Jeśli ten atrybut jest skonfigurowany na jeden lub więcej obiektów w katalogu, Kreator stwierdza, ten atrybut jest używany przez inną aplikację i zwraca błąd, jak pokazano na poniższym diagramie. Ten błąd może również wystąpić, jeśli włączono funkcję ConsistencyGuid na swojej głównej usługi Azure AD Connect serwer próbuje tym samym serwerze przejściowym.
+Podczas analizy (krok 4), jeśli atrybut jest skonfigurowany w co najmniej jednym obiekcie w katalogu, Kreator końcowy ten atrybut jest używany przez inną aplikację i zwraca błąd, jak pokazano na poniższym diagramie. Ten błąd może również wystąpić, jeśli wcześniej włączono funkcję ConsistencyGuid na serwerze podstawowym Azure AD Connect i podjęto próbę wykonania tego samego na serwerze tymczasowym.
 
 ![Włącz ConsistencyGuid dla istniejącego wdrożenia — błąd](./media/plan-connect-design-concepts/consistencyguidexistingdeploymenterror.png)
 
- Jeśli masz pewność, że atrybut nie jest używany przez inne istniejące aplikacje, można pominąć ten błąd, uruchamiając ponownie kreatora Azure AD Connect przy użyciu **/SkipLdapSearch** określony przełącznik. Aby to zrobić, uruchom następujące polecenie w wierszu polecenia:
+ Jeśli masz pewność, że atrybut nie jest używany przez inne istniejące aplikacje, możesz pominąć ten błąd przez ponowne uruchomienie Kreatora Azure AD Connect z określonym przełącznikiem **/SkipLdapSearch** . Aby to zrobić, uruchom następujące polecenie w wierszu polecenia:
 
 ```
 "c:\Program Files\Microsoft Azure Active Directory Connect\AzureADConnect.exe" /SkipLdapSearch
 ```
 
-### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>Wpływ na usług AD FS lub Konfiguracja Federacji innej firmy
-Jeśli używasz usługi Azure AD Connect do zarządzania lokalnego wdrożenia usług AD FS, Azure AD Connect automatycznie aktualizuje reguł oświadczeń, aby użyć tego samego atrybutu usługi AD jako sourceAnchor. Zapewnia to, że oświadczenia ImmutableID generowanych przez usługi AD FS jest zgodne z wartościami sourceAnchor wyeksportowane do usługi Azure AD.
+### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>Wpływ na konfigurację Federacji AD FS lub innej firmy
+Jeśli używasz Azure AD Connect do zarządzania wdrożeniem lokalnym AD FS, Azure AD Connect automatycznie aktualizuje reguły dotyczące roszczeń, aby używały tego samego atrybutu AD co sourceAnchor. Daje to pewność, że ImmutableID wygenerowane przez usługi AD FS będzie spójna z wartościami sourceAnchor wyeksportowanymi w usłudze Azure AD.
 
-Jeśli zarządzasz usług AD FS poza programem Azure AD Connect lub używasz serwery federacyjne innych firm do uwierzytelniania, należy ręcznie zaktualizować reguły oświadczeń na oświadczenia ImmutableID były zgodne z wartościami sourceAnchor wyeksportowane do usługi Azure AD, zgodnie z opisem w Artykuł sekcji [Modyfikuj usługi AD FS roszczenie reguł](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims). Po zakończeniu instalacji, Kreator wyświetli następujące ostrzeżenie:
+Jeśli zarządzasz AD FS poza Azure AD Connect lub używasz serwerów federacyjnych innych firm do uwierzytelniania, musisz ręcznie zaktualizować reguły dotyczące roszczeń ImmutableID, aby były zgodne z wartościami sourceAnchor wyeksportowanymi do usługi Azure AD, zgodnie z opisem w temacie. Sekcja artykułu [Modyfikuj reguły dotyczące AD FS](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-federation-management#modclaims). Po zakończeniu instalacji Kreator zwróci następujące ostrzeżenie:
 
 ![Konfiguracja Federacji innej firmy](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>Dodawanie nowych katalogów do istniejącego wdrożenia
-Załóżmy, że wdrożono program Azure AD Connect z włączoną funkcją ConsistencyGuid, a teraz chcesz dodać innego katalogu do wdrożenia. Podczas próby dodania katalogu, Kreator Azure AD Connect sprawdza stan atrybutu ms-DS-ConsistencyGuid w katalogu. Jeśli ten atrybut jest skonfigurowana na jeden lub więcej obiektów w katalogu, Kreator stwierdza, ten atrybut jest używany przez inne aplikacje i zwraca błąd, jak pokazano na poniższym diagramie. Jeśli masz pewność, że ten atrybut nie jest używane przez istniejące aplikacje, można pominąć ten błąd, uruchamiając ponownie kreatora Azure AD Connect przy użyciu **/SkipLdapSearch** przełącznika określony w opisany powyżej, lub skontaktuj się z działem Obsługa, aby uzyskać więcej informacji.
+Załóżmy, że wdrożono Azure AD Connect z włączoną funkcją ConsistencyGuid, a teraz chcesz dodać inny katalog do wdrożenia. Podczas próby dodania katalogu Kreator Azure AD Connect sprawdza stan atrybutu MS-DS-ConsistencyGuid w katalogu. Jeśli atrybut jest skonfigurowany w co najmniej jednym obiekcie w katalogu, Kreator końcowy ten atrybut jest używany przez inne aplikacje i zwraca błąd, jak pokazano na poniższym diagramie. Jeśli masz pewność, że atrybut nie jest używany przez istniejące aplikacje, możesz pominąć ten błąd przez ponowne uruchomienie Kreatora Azure AD Connect z przełącznikiem **/SkipLdapSearch** określonym powyżej lub należy skontaktować się z pomocą techniczną, aby uzyskać więcej informacji .
 
 ![Dodawanie nowych katalogów do istniejącego wdrożenia](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 
-## <a name="azure-ad-sign-in"></a>Usługa Azure AD logowania
-Podczas integracji katalogu lokalnego z usługą Azure AD, ważne jest, aby zrozumieć, jak ustawienia synchronizacji wpływa na sposób użytkownik jest uwierzytelniany. Usługa Azure AD używa userPrincipalName (UPN) do uwierzytelnienia użytkownika. Jednak po zsynchronizowaniu użytkowników, możesz wybrać atrybut, który ma być używany dla wartości userPrincipalName ostrożnie.
+## <a name="azure-ad-sign-in"></a>Logowanie za pomocą usługi Azure AD
+Podczas integrowania katalogu lokalnego z usługą Azure AD ważne jest, aby zrozumieć, w jaki sposób ustawienia synchronizacji mogą mieć wpływ na sposób uwierzytelniania użytkownika. Usługa Azure AD używa do uwierzytelniania użytkownika userPrincipalName (UPN). Jednak podczas synchronizowania użytkowników należy wybrać atrybut, który będzie używany w przypadku wartości userPrincipalName uważnie.
 
-### <a name="choosing-the-attribute-for-userprincipalname"></a>Wybieranie atrybut userPrincipalName
-Podczas wybierania atrybut zapewniające wartość nazwy UPN do użycia w jednej platformy Azure należy upewnić się
+### <a name="choosing-the-attribute-for-userprincipalname"></a>Wybieranie atrybutu dla elementu userPrincipalName
+Podczas wybierania atrybutu w celu podania wartości nazwy UPN używanej na platformie Azure należy zapewnić
 
-* Format nazwy użytkownika powinny być atrybutu wartości odpowiadają Składnia nazwy UPN (RFC 822), która jest\@domeny
-* Sufiks w wartościach pasuje do jednej z zweryfikowanym domenom niestandardowym w usłudze Azure AD
+* Wartości atrybutów są zgodne z składnią UPN (RFC 822), która powinna mieć format nazwa_użytkownika\@domena
+* Sufiks w wartości jest zgodny z jedną z zweryfikowanych domen niestandardowych w usłudze Azure AD
 
-W ustawieniach ekspresowych zakładanego dla atrybutu to userPrincipalName. Jeśli atrybut userPrincipalName nie zawiera wartości mają użytkownikom logowanie do platformy Azure, a następnie należy wybrać **Instalacja niestandardowa**.
+W ustawieniach ekspresowych założono wybór dla atrybutu jest userPrincipalName. Jeśli atrybut userPrincipalName nie zawiera wartości, na które użytkownicy mają logować się na platformie Azure, należy wybrać opcję **Instalacja**niestandardowa.
 
-### <a name="custom-domain-state-and-upn"></a>Stan domeny niestandardowe i UPN
-Należy upewnić się, że zweryfikowaną domeną sufiks głównej nazwy użytkownika.
+### <a name="custom-domain-state-and-upn"></a>Niestandardowy stan domeny i nazwa UPN
+Ważne jest, aby upewnić się, że istnieje zweryfikowana domena dla sufiksu nazwy UPN.
 
-John jest użytkownikiem w domenie contoso.com. Chcesz Jan używać Jan nazwy UPN w środowisku lokalnym\@domeny contoso.com Zaloguj się do platformy Azure, po zsynchronizowaniu użytkowników do usługi Azure AD directory contoso.onmicrosoft.com. Aby to zrobić, należy dodać i zweryfikować domeny contoso.com jako domeny niestandardowej w usłudze Azure AD przed rozpoczęciem synchronizowania użytkowników. Jeśli sufiks głównej nazwy użytkownika John, na przykład "contoso.com", nie jest zgodna zweryfikowanej domeny w usłudze Azure AD, następnie usługi Azure AD zastępuje sufiks nazwy UPN contoso.onmicrosoft.com.
+Jan jest użytkownikiem w contoso.com. Chcesz, aby Jan używał lokalnej nazwy UPN Jan\@contoso.com do logowania się do platformy Azure po zsynchronizowaniu użytkowników z katalogiem usługi Azure AD contoso.onmicrosoft.com. Aby to zrobić, należy dodać i zweryfikować contoso.com jako domenę niestandardową w usłudze Azure AD przed rozpoczęciem synchronizowania użytkowników. Jeśli sufiks nazwy UPN Jan, na przykład contoso.com, nie pasuje do zweryfikowanej domeny w usłudze Azure AD, usługa Azure AD zamieni sufiks nazwy UPN na contoso.onmicrosoft.com.
 
-### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>Bez obsługi routingu w domenach lokalnych i nazwy UPN w usłudze Azure AD
-Niektóre organizacje mają domen niepodlegających routingowi, np. contoso.local lub prostą nazwą domeny, np. contoso. Nie jest możliwe zweryfikować domenę bez obsługi routingu w usłudze Azure AD. Program Azure AD Connect można zsynchronizować do zweryfikowanej domeny w usłudze Azure AD. Podczas tworzenia katalogu usługi Azure AD tworzy Routing domeny, która stanie się domyślną domenę usługi Azure AD, np. contoso.onmicrosoft.com. W związku z tym staje się niezbędne do sprawdzenia innej domeny routingu w takiej sytuacji, w przypadku, gdy nie chcesz zsynchronizować z domyślnej domeny onmicrosoft.com.
+### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>Domeny lokalne bez routingu i nazwa UPN dla usługi Azure AD
+Niektóre organizacje mają domeny bez obsługi routingu, takie jak contoso. Local, lub proste domeny z pojedynczą etykietą, takie jak contoso. Nie można zweryfikować domeny bez obsługi routingu w usłudze Azure AD. Azure AD Connect można synchronizować tylko z zweryfikowaną domeną w usłudze Azure AD. Podczas tworzenia katalogu usługi Azure AD tworzy domenę routingu, która jest domeną domyślną dla usługi Azure AD na przykład contoso.onmicrosoft.com. W związku z tym, konieczna jest weryfikacja wszelkich innych domen routingu w taki scenariusz, jeśli nie chcesz synchronizować się z domyślną domeną onmicrosoft.com.
 
-Odczyt [Dodawanie niestandardowej nazwy domeny do usługi Azure Active Directory](../active-directory-domains-add-azure-portal.md) uzyskać więcej informacji dotyczących dodawania i weryfikowania domeny.
+Aby uzyskać więcej informacji na temat dodawania i weryfikowania domen, przeczytaj artykuł [Dodawanie niestandardowej nazwy domeny do Azure Active Directory](../active-directory-domains-add-azure-portal.md) .
 
-Program Azure AD Connect wykrywa, jeśli są uruchomione w środowisku domeny bez obsługi routingu i będzie odpowiednio ostrzega użytkownika z wyprzedzeniem, korzystając z ustawień ekspresowych. Jeśli pracujesz w domenie bez obsługi routingu, następnie prawdopodobnie nazwy UPN użytkowników, zbyt mieć sufiksy bez obsługi routingu. Na przykład, jeśli jest używane do uruchamiania contoso.local, program Azure AD Connect sugeruje przy użyciu ustawień niestandardowych, a nie przy użyciu ustawień ekspresowych. Za pomocą ustawień niestandardowych, jesteś w stanie określić atrybut, który powinien służyć jako głównej nazwy użytkownika do logowania się do platformy Azure, po zsynchronizowaniu użytkowników do usługi Azure AD.
+Azure AD Connect wykrywa, czy program jest uruchomiony w środowisku domeny bez obsługi routingu, a następnie ostrzega użytkownika o przejściu z ustawień ekspresowych. Jeśli pracujesz w domenie bez obsługi routingu, prawdopodobnie nazwy UPN użytkowników mają również sufiksy nieobsługujące routingu. Na przykład jeśli korzystasz z usługi contoso. Local, Azure AD Connect sugeruje użycie ustawień niestandardowych zamiast korzystania z ustawień ekspresowych. Za pomocą ustawień niestandardowych można określić atrybut, który ma być używany jako nazwa UPN do logowania się do platformy Azure po zsynchronizowaniu użytkowników z usługą Azure AD.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Dowiedz się więcej na temat [integrowania tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md).

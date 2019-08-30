@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38383685f74020f5208d42df4428f896931fbe2a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6dd50aa00368469a9c5b42c41826da28566268d4
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931782"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125414"
 ---
 # <a name="whats-new-for-authentication"></a>Co nowego w uwierzytelnianiu? 
 
@@ -41,7 +41,24 @@ System uwierzytelniania zmienia i dodaje funkcje na bieżąco w celu poprawy bez
 
 ## <a name="upcoming-changes"></a>Nadchodzące zmiany
 
-2019 sierpnia: Wymuś semantykę POST zgodnie z regułami analizowania adresów URL — zduplikowane parametry spowodują wyzwolenie błędu, cudzysłowy między parametrami nie będą już ignorowane, a [towar](https://www.w3.org/International/questions/qa-byte-order-mark) został zignorowany.
+2019 września: Dodatkowe wymuszanie semantyki POST zgodnie z regułami analizowania adresów URL — zduplikowane parametry spowodują wyzwolenie błędu i zignorowano [BOM](https://www.w3.org/International/questions/qa-byte-order-mark) .
+
+## <a name="august-2019"></a>2019 sierpnia
+
+### <a name="post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored"></a>Semantyka formularza POST zostanie wymuszona z większą ilością miejsc, a cudzysłowy zostaną zignorowane
+
+**Data wprowadzenia**: 2 września 2019
+
+**Wpływ na punkty końcowe**: Zarówno wersja 1.0, jak i 2.0
+
+**Wpływ na protokół**: WPIS wszędzie jest używany ([poświadczenia klienta](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow), [wykup kodu autoryzacji](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow), [ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc), [OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)i [wykup tokenów](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token))
+
+Począwszy od tygodnia 9/2, żądania uwierzytelniania używające metody POST będą weryfikowane przy użyciu bardziej rygorystycznych standardów protokołu HTTP.  W przypadku opcji spacje i podwójne cudzysłowy (") nie będą już usuwane z wartości formularza żądania. Te zmiany nie są oczekiwane w celu podziału istniejących klientów i zapewniają niezawodne Obsługiwanie żądań wysyłanych do usługi Azure AD za każdym razem. W przyszłości (Zobacz powyżej) planujemy dodatkowo odrzucanie zduplikowanych parametrów i ignorowanie BOM w ramach żądań. 
+
+Przykład:
+
+Dzisiaj jest `?e=    "f"&g=h` analizowane identycznie tak, jak `?e=f&g=h` to możliwe `e`  ==  `f`.  W przypadku tej zmiany teraz będzie ona analizowana w taki sposób `e`  ==  `    "f"` , aby nie był to prawidłowy argument, a żądanie mogłoby się nie powieść. 
+
 
 ## <a name="july-2019"></a>Lipiec 2019
 

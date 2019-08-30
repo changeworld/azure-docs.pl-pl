@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c28e30b8e44b6888cdb7416b9c7b563b955a68ce
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 4e3756435703c4e8c887a4e7b9d4f75a6701d840
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335381"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126253"
 ---
 # <a name="how-to-unblock-users"></a>Instrukcje: Odblokowywanie użytkowników
 
@@ -31,7 +31,7 @@ Możesz uzyskać typ zasad, które blokują użytkownika z nagłówka w oknie di
 
 | Zasady | Okno dialogowe użytkownika |
 | --- | --- |
-| Ryzyko logowania |![Zablokuj logowanie](./media/howto-unblock-user/02.png) |
+| Ryzyko związane z logowaniem |![Zablokuj logowanie](./media/howto-unblock-user/02.png) |
 | Ryzyko związane z użytkownikiem |![Zablokowane konto](./media/howto-unblock-user/104.png) |
 
 Użytkownik zablokowany przez:
@@ -52,7 +52,7 @@ Aby odblokować podejrzane logowanie, dostępne są następujące opcje:
 Aby odblokować konto na ryzyko, dostępne są następujące opcje:
 
 1. **Resetowanie hasła** — możesz zresetować hasło użytkownika. 
-2. **Odrzuć wszystkie zdarzenia dotyczące ryzyka** — zasady ryzyka dla użytkowników blokują użytkownika, jeśli osiągnięto skonfigurowany poziom ryzyka użytkownika na potrzeby blokowania dostępu. Poziom ryzyka użytkownika można zmniejszyć, ręcznie zamykając zgłaszane zdarzenia ryzyka. 
+2. **Odrzuć wszystkie wykrycia ryzyka** — zasady ryzyka dla użytkowników blokują użytkownika, jeśli osiągnięto skonfigurowany poziom ryzyka użytkownika na potrzeby blokowania dostępu. Poziom ryzyka użytkownika można zmniejszyć, ręcznie zamykając zgłoszone wykrycie zagrożeń. 
 3. **Wyklucz z zasad** — Jeśli uważasz, że Bieżąca konfiguracja zasad logowania powoduje problemy dla określonych użytkowników, możesz wykluczyć z niej użytkowników. Aby uzyskać więcej informacji, zobacz [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 4. **Wyłącz zasady** — Jeśli sądzisz, że konfiguracja zasad powoduje problemy dla wszystkich użytkowników, możesz wyłączyć zasady. Aby uzyskać więcej informacji, zobacz [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 

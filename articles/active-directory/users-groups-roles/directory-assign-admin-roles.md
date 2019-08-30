@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a228c0d349fd45f34923a64ef99dcfba50c4c548
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 93532b1b40dc138a234d5433591a2ba79167194e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034988"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135571"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w Azure Active Directory
 
@@ -123,7 +123,7 @@ Dostępne są następujące role administratorów:
 
 * **[Administrator urządzenia](#device-administrators)** : Ta rola jest dostępna do przypisania tylko jako dodatkowy administrator lokalny w [ustawieniach urządzenia](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Użytkownicy z tą rolą stają się administratorami maszyn lokalnych na wszystkich urządzeniach z systemem Windows 10, które są przyłączone do Azure Active Directory. Nie mają możliwości zarządzania obiektami obiektów w Azure Active Directory. 
 
-* **[Czytelnicy katalogów](#directory-readers)** : Jest to rola, która powinna być przypisana tylko do starszych aplikacji, które nie obsługują [struktury wyrażania zgody](../develop/quickstart-v1-integrate-apps-with-azure-ad.md). Nie przypisuj go do użytkowników.
+* **[Czytelnicy katalogów](#directory-readers)** : Jest to rola, która powinna być przypisana tylko do starszych aplikacji, które nie obsługują [struktury wyrażania zgody](../develop/quickstart-v1-integrate-apps-with-azure-ad.md). Użytkownicy w tej roli mogą odczytywać podstawowe informacje o katalogu. Ta rola powinna być używana na potrzeby: 1) udzielenie określonemu zestawowi użytkowników-Gościom dostępu do odczytu zamiast udzielania go wszystkim użytkownikom-Gościom. 2) przyznanie określonemu zestawowi użytkowników niebędących administratorami dostępu do witryny Azure Portal w przypadku wybrania opcji "Ogranicz dostęp do portalu usługi Azure AD tylko do administratorów" ma wartość "tak". 3) udzielenie podmiotom usługi dostępu do katalogu whereDirectory. Read. All nie jest opcją.
 
 * **[Konta synchronizacji katalogów](#directory-synchronization-accounts)** : Nie należy używać. Ta rola jest automatycznie przypisana do usługi Azure AD Connect i nie jest przeznaczona do użycia ani nie jest obsługiwana w żadnym innym przypadku.
 
@@ -284,7 +284,7 @@ Ponadto użytkownik może uzyskiwać dostęp do raportów związanych z wdrażan
   |<p>Dla wszystkich użytkowników, w tym wszystkich administratorów</p>|<p>Zarządzanie licencjami</p><p>Zarządzanie wszystkimi właściwościami użytkowników z wyjątkiem głównej nazwy użytkownika</p>
   |Tylko dla użytkowników, którzy nie są administratorami ani w ramach jednej z następujących ograniczonych ról administratora:<ul><li>Odczytywanie katalogów<li>Osoba zapraszająca gościa<li>Administrator pomocy technicznej<li>Czytelnik Centrum wiadomości<li>Czytelnik raportów<li>Administrator użytkowników|<p>Usuń i Przywróć</p><p>Wyłącz i Włącz</p><p>Unieważnianie tokenów odświeżania</p><p>Zarządzanie wszystkimi właściwościami użytkowników, w tym główną nazwą użytkownika</p><p>Resetowanie hasła</p><p>Aktualizuj klucze urządzeń (FIDO)</p>
   
-  <b>Ważne</b>: Użytkownicy z tą rolą mogą zmieniać hasła dla osób, które mogą mieć dostęp do poufnych lub prywatnych informacji lub konfiguracji krytycznej wewnątrz i na zewnątrz Azure Active Directory. Zmiana hasła użytkownika może oznaczać, że założono, że tożsamość i uprawnienia tego użytkownika. Na przykład:
+  <b>Ważne</b>: Użytkownicy z tą rolą mogą zmieniać hasła dla osób, które mogą mieć dostęp do poufnych lub prywatnych informacji lub konfiguracji krytycznej wewnątrz i na zewnątrz Azure Active Directory. Zmiana hasła użytkownika może oznaczać, że założono, że tożsamość i uprawnienia tego użytkownika. Przykład:
   * Rejestracja aplikacji i właściciele aplikacji przedsiębiorstwa, którzy mogą zarządzać poświadczeniami aplikacji, których są właścicielami. Aplikacje te mogą mieć uprawnienia uprzywilejowane w usłudze Azure AD, a w innym miejscu nie są przyznawane administratorom użytkowników. Za pomocą tej ścieżki administrator użytkownika może być w stanie założyć tożsamość właściciela aplikacji, a następnie ponownie założyć tożsamość aplikacji uprzywilejowanej przez zaktualizowanie poświadczeń dla aplikacji.
   * Właściciele subskrypcji platformy Azure, którzy mogą mieć dostęp do poufnych lub prywatnych informacji lub konfiguracji krytycznej na platformie Azure.
   * Grupa zabezpieczeń i właściciele grupy Office 365, którzy mogą zarządzać członkostwem w grupie. Te grupy mogą udzielić dostępu do poufnych lub prywatnych informacji lub konfiguracji krytycznej w usłudze Azure AD i w innym miejscu.
@@ -658,7 +658,7 @@ Użytkownicy przypisani do tej roli są dodawani do lokalnej grupy administrator
 | microsoft.aad.directory/groupSettingTemplates/basic/read | Zapoznaj się z podstawowymi właściwościami groupSettingTemplates w Azure Active Directory. |
 
 ### <a name="directory-readers"></a>Odczytywanie katalogów
-Może odczytywać podstawowe informacje o katalogu. Do udzielania dostępu do aplikacji nieprzeznaczonych dla użytkowników.
+Może odczytywać podstawowe informacje o katalogu. Użytkownicy w tej roli mogą odczytywać podstawowe informacje o katalogu. Ta rola powinna być używana na potrzeby: 1) udzielenie określonemu zestawowi użytkowników-Gościom dostępu do odczytu zamiast udzielania go wszystkim użytkownikom-Gościom. 2) przyznanie określonemu zestawowi użytkowników niebędących administratorami dostępu do witryny Azure Portal w przypadku wybrania opcji "Ogranicz dostęp do portalu usługi Azure AD tylko do administratorów" ma wartość "tak". 3) udzielenie podmiotom usługi dostępu do katalogu whereDirectory. Read. All nie jest opcją.
 
 | **Akcje** | **Opis** |
 | --- | --- |

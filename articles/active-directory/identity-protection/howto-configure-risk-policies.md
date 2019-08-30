@@ -11,29 +11,29 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ce4e2958978de9339f4340755e3740730025a5f
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: f244c28b99c429fef5641bb4fc399e09fd451069
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68334032"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126554"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Instrukcje: Konfigurowanie zasad ryzyka w programie Azure Active Directory Identity Protection (odświeżanie)
 
-Usługa Azure AD wykrywa zdarzenia ryzyka, które są wskaźnikami dla potencjalnie złamanych tożsamości. Konfigurując zasady dotyczące ryzyka, można definiować automatyczne odpowiedzi na wyniki wykrywania:
+Usługa Azure AD wykrywa wykryte zagrożenia, które są wskaźnikami dla potencjalnie złamanych tożsamości. Konfigurując zasady dotyczące ryzyka, można definiować automatyczne odpowiedzi na wyniki wykrywania:
 
-- Za pomocą zasad dotyczących ryzyka związanego z logowaniem można skonfigurować odpowiedź na zdarzenia ryzyka w czasie rzeczywistym, które zostały wykryte podczas logowania użytkownika. 
+- Korzystając z zasad dotyczących ryzyka związanego z logowaniem, można skonfigurować odpowiedź na wykrycie ryzyka w czasie rzeczywistym wykryte podczas logowania użytkownika. 
 - Korzystając z zasad ryzyka dla użytkowników, można skonfigurować odpowiedzi na wszystkie aktywne zagrożenia użytkownika, które zostały wykryte dla użytkownika w czasie.  
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
 ## <a name="what-is-the-sign-in-risk-policy"></a>Jakie są zasady dotyczące ryzyka związanego z logowaniem?
 
-Usługa Azure AD analizuje każdy zalogowanie użytkownika. Celem analizy jest wykrycie podejrzanych działań, które są związane z logowaniem. Na przykład czy logowanie odbywa się przy użyciu anonimowego adresu IP lub czy logowanie zostało zainicjowane z nieznanej lokalizacji? W usłudze Azure AD podejrzane działania wykrywane przez system są również znane jako zdarzenia ryzyka. W oparciu o zdarzenia ryzyka wykryte podczas logowania usługa Azure AD oblicza wartość. Wartość reprezentuje prawdopodobieństwo (niski, średni, wysoki), że logowanie nie jest wykonywane przez uprawnionego użytkownika. Prawdopodobieństwo jest nazywane **poziomem ryzyka logowania**.
+Usługa Azure AD analizuje każdy zalogowanie użytkownika. Celem analizy jest wykrycie podejrzanych działań, które są związane z logowaniem. Na przykład czy logowanie odbywa się przy użyciu anonimowego adresu IP lub czy logowanie zostało zainicjowane z nieznanej lokalizacji? W usłudze Azure AD podejrzane działania wykrywane przez system są również znane jako wykrywanie zagrożeń. Na podstawie wykrytych wykryć ryzyka podczas logowania usługa Azure AD oblicza wartość. Wartość reprezentuje prawdopodobieństwo (niski, średni, wysoki), że logowanie nie jest wykonywane przez uprawnionego użytkownika. Prawdopodobieństwo jest nazywane **poziomem ryzyka logowania**.
 
 Zasady dotyczące ryzyka związanego z logowaniem to zautomatyzowana odpowiedź, którą można skonfigurować dla określonego poziomu ryzyka związanego z logowaniem. W odpowiedzi można zablokować dostęp do zasobów lub wymagać przekazywania wyzwania uwierzytelniania wieloskładnikowego (MFA) w celu uzyskania dostępu.
 
-Gdy użytkownik pomyślnie ukończy monit usługi MFA wyzwalany przez zasady dotyczące ryzyka związanego z logowaniem, przekazuje informacje zwrotne do ochrony tożsamości, że logowanie pochodzi od uprawnionego użytkownika. Oznacza to, że zdarzenie związane z logowaniem, które wyzwoliło monit usługi MFA, zostanie automatycznie zamknięte, a Ochrona tożsamości nie będzie mogła przyczynić się do podniesienia ryzyka dla użytkownika. Włączenie zasad dotyczących ryzyka związanego z logowaniem może ograniczyć noisiness w widoku ryzykowne logowania, umożliwiając użytkownikom samodzielne korygowanie po wyświetleniu monitu dotyczącego usługi MFA, a następnie automatycznie zamykające skojarzone ryzykowne logowanie.
+Gdy użytkownik pomyślnie ukończy monit usługi MFA wyzwalany przez zasady dotyczące ryzyka związanego z logowaniem, przekazuje informacje zwrotne do ochrony tożsamości, że logowanie pochodzi od uprawnionego użytkownika. Oznacza to, że wykrywanie ryzyka logowania, które wyzwoliło monit usługi MFA, zostanie automatycznie zamknięte, a Ochrona tożsamości nie będzie mogła spowodować naruszenia ryzyka użytkownika. Włączenie zasad dotyczących ryzyka związanego z logowaniem może ograniczyć noisiness w widoku ryzykowne logowania, umożliwiając użytkownikom samodzielne korygowanie po wyświetleniu monitu dotyczącego usługi MFA, a następnie automatycznie zamykające skojarzone ryzykowne logowanie.
 
 ## <a name="how-do-i-access-the-sign-in-risk-policy"></a>Jak mogę uzyskać dostęp do zasad dotyczących ryzyka związanego z logowaniem?
    
@@ -51,7 +51,7 @@ Konfigurując zasady dotyczące ryzyka związanego z logowaniem, należy ustawi�
 
 - Poziom ryzyka logowania, który wyzwala zasady:
 
-   ![Poziom ryzyka logowania](./media/howto-configure-risk-policies/12.png)
+   ![Poziom ryzyka związanego z logowaniem](./media/howto-configure-risk-policies/12.png)
 
 - Typ dostępu, który ma zostać wymuszony po spełnieniu poziomu ryzyka związanego z logowaniem:  
 
@@ -93,9 +93,9 @@ Aby zapoznać się z omówieniem środowiska użytkownika powiązanego, zobacz:
 
 ## <a name="what-is-a-user-risk-policy"></a>Co to są zasady ryzyka dla użytkowników?
 
-Usługa Azure AD analizuje każdy zalogowanie użytkownika. Celem analizy jest wykrycie podejrzanych działań, które są związane z logowaniem. W usłudze Azure AD podejrzane działania wykrywane przez system są również znane jako zdarzenia ryzyka. Niektóre zdarzenia ryzyka mogą być wykrywane w czasie rzeczywistym, ale istnieją także zdarzenia wymagające więcej czasu. Na przykład w celu wykrycia niemożliwej podróży do nietypowych lokalizacji system wymaga początkowego okresu szkoleniowego 14 dni, aby poznać jego zwykłe zachowanie. Istnieje kilka opcji rozwiązywania wykrytych zdarzeń o podwyższonym ryzyku. Można na przykład ręcznie rozwiązać poszczególne zdarzenia związane z ryzykiem lub je rozwiązać przy użyciu ryzyka związanego z logowaniem lub zasad dostępu warunkowego do ryzyka użytkownika.
+Usługa Azure AD analizuje każdy zalogowanie użytkownika. Celem analizy jest wykrycie podejrzanych działań, które są związane z logowaniem. W usłudze Azure AD podejrzane działania wykrywane przez system są również znane jako wykrywanie zagrożeń. Niektóre wykryte zagrożenia mogą być wykrywane w czasie rzeczywistym, ale również wykrycia ryzyka wymagają więcej czasu. Na przykład w celu wykrycia niemożliwej podróży do nietypowych lokalizacji system wymaga początkowego okresu szkoleniowego 14 dni, aby poznać jego zwykłe zachowanie. Istnieje kilka opcji rozwiązywania wykrytych wykrywania zagrożeń. Można na przykład ręcznie rozwiązać poszczególne wykrycia ryzyka lub można je rozwiązać przy użyciu ryzyka związanego z logowaniem lub zasad dostępu warunkowego do ryzyka użytkownika.
 
-Wszystkie zdarzenia ryzyka, które zostały wykryte dla użytkownika i nie zostały rozpoznane, są znane jako aktywne zdarzenia ryzyka. Zdarzenia aktywnego ryzyka, które są skojarzone z użytkownikiem, są nazywane ryzykiem użytkownika. Na podstawie ryzyka związanego z użytkownikiem usługa Azure AD oblicza prawdopodobieństwo naruszenia bezpieczeństwa użytkownika. Prawdopodobieństwo jest nazywane poziomem ryzyka użytkownika.
+Wszystkie wykrycia ryzyka, które zostały wykryte dla użytkownika i nie zostały rozpoznane, są znane jako aktywne wykrycia ryzyka. Aktywne wykrywania ryzyka, które są skojarzone z użytkownikiem, są nazywane ryzykiem użytkownika. Na podstawie ryzyka związanego z użytkownikiem usługa Azure AD oblicza prawdopodobieństwo naruszenia bezpieczeństwa użytkownika. Prawdopodobieństwo jest nazywane poziomem ryzyka użytkownika.
 
 ![Czynniki ryzyka użytkownika](./media/howto-configure-risk-policies/11031.png)
 
@@ -139,8 +139,8 @@ Można ustawić zasady zabezpieczeń ryzyka dla użytkowników, aby blokować u�
 
 Blokowanie logowania:
 
-* Zapobiega generowaniu nowych zdarzeń ryzyka użytkownika dla danego użytkownika
-* Umożliwia administratorom ręczne korygowanie zdarzeń ryzyka mających wpływ na tożsamość użytkownika i przywrócenie go do stanu bezpiecznego
+* Zapobiega generowaniu nowych wykrycia ryzyka użytkownika dla danego użytkownika
+* Umożliwia administratorom ręczne korygowanie wykrywania ryzyka, które mają wpływ na tożsamość użytkownika, i przywrócenie go do stanu bezpiecznego
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
@@ -158,6 +158,6 @@ Podczas ustawiania zasad,
 
 Zalecanym ustawieniem domyślnym w przypadku większości organizacji jest skonfigurowanie reguły dla **średniego** progu w celu zrównoważenia równowagi między użytecznością a bezpieczeństwem.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
  [Kanał 9: Usługa Azure AD i tożsamość show: Wersja zapoznawcza programu Identity Protection](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)

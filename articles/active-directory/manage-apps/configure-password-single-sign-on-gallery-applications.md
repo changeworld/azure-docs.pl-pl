@@ -16,43 +16,43 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
 ROBOTS: NOINDEX
-ms.openlocfilehash: eb37fe247901b799a845ce75723a4a6b535cbb28
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 9fb33c4110a590539c85364885da9a27853f6bd0
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422583"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146883"
 ---
-# <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Jak skonfigurować Logowanie jednokrotne przy użyciu hasła dla aplikacji z galerii usługi Azure AD
+# <a name="configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Konfigurowanie logowania jednokrotnego przy użyciu hasła dla aplikacji z galerii usługi Azure AD
 
-Po dodaniu aplikacji z [galerii aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)możesz wybrać, jak użytkownicy mają logować się do tej aplikacji. Wybór można skonfigurować w dowolnym momencie, wybierając element nawigacji **logowania** jednokrotnego w aplikacji przedsiębiorstwa w [Azure Portal](https://portal.azure.com/).
+Po dodaniu aplikacji z [galerii aplikacji Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)możesz wybrać, w jaki sposób użytkownicy mają logować się do tej aplikacji. Wybór można skonfigurować w dowolnym momencie, wybierając pozycję **Logowanie** jednokrotne w aplikacji przedsiębiorstwa w [Azure Portal](https://portal.azure.com/).
 
-Jedną z dostępnych metod logowania jednokrotnego jest opcja [logowania](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) jednokrotnego opartego na hasłach. Jest to doskonały sposób, aby szybko rozpocząć Integrowanie aplikacji z usługą Azure AD, dzięki czemu można:
+Jedną z dostępnych opcji logowania jednokrotnego jest logowanie jednokrotne [oparte](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)na hasłach. Jest to doskonały sposób, aby szybko rozpocząć Integrowanie aplikacji z usługą Azure AD. Oferuje następujące elementy:
 
--   Włączanie **logowania jednokrotnego dla użytkowników** przez bezpieczne przechowywanie i odtwarzanie nazw użytkownika i haseł dla aplikacji zintegrowanej z usługą Azure AD
+-   Bezpieczne przechowywanie i odtwarzanie nazw użytkowników i haseł dla aplikacji zintegrowanej z usługą Azure AD
 
--   **Obsługa aplikacji, które wymagają wielu pól logowania** dla aplikacji, które wymagają więcej niż tylko nazwy użytkownika i hasła do logowania
+-   Zapewnia obsługę aplikacji, które wymagają wielu pól logowania poza polami username i Password
 
--   **Dostosuj etykiety** pól wprowadzania nazwy użytkownika i hasła, które użytkownicy widzą w [panelu dostępu do aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) po wprowadzeniu poświadczeń
+-   Umożliwia dostosowanie etykiet pól username i Password, które użytkownicy widzą w [panelu dostępu do aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) po wprowadzeniu poświadczeń
 
--   Zezwól **użytkownikom** na udostępnianie własnych nazw użytkowników i haseł dla wszystkich istniejących kont aplikacji, które są wpisywane ręcznie w [panelu dostępu do aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
+-   Umożliwia użytkownikom udostępnianie własnych nazw użytkowników i haseł dla wszystkich istniejących kont aplikacji, które wprowadzają ręcznie w [panelu dostępu do aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) .
 
--   Zezwól **członkowi grupy biznesowej** na określanie nazw użytkowników i haseł przypisanych do użytkownika przy użyciu funkcji samoobsługowego [dostępu do aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access)
+-   Umożliwia członkom grupy biznesowej korzystanie z funkcji samoobsługowego [dostępu do aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) w celu określenia nazw użytkowników i haseł przypisanych do użytkownika
 
--   Zezwalaj **administratorowi** na określanie nazw użytkowników i haseł przypisanych do użytkownika przy użyciu funkcji aktualizacji poświadczeń podczas przypisywania [użytkownika do aplikacji](#assign-a-user-to-an-application-directly)
+-   Umożliwia administratorom określanie nazw użytkowników i haseł przypisanych do użytkownika przy użyciu funkcji aktualizacji poświadczeń podczas przypisywania [użytkownika do aplikacji](#assign-a-user-to-an-application-directly) .
 
--   Zezwalaj **administratorowi** na określenie udostępnionej nazwy użytkownika lub hasła używanego przez grupę osób przy użyciu funkcji aktualizacji poświadczeń podczas przypisywania [grupy do aplikacji](#assign-an-application-to-a-group-directly)
+-   Umożliwia administratorowi użycie funkcji aktualizacji poświadczeń w celu określenia udostępnionej nazwy użytkownika lub hasła dla grupy osób, gdy [przypisze grupę do aplikacji](#assign-an-application-to-a-group-directly)
 
-W poniższej sekcji opisano sposób włączania [logowania](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) jednokrotnego opartego na hasłach w aplikacji, która znajduje się już w [galerii aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+W poniższej sekcji opisano, jak można włączyć [Logowanie](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) jednokrotne oparte na hasłach w aplikacji, która znajduje się już w [galerii aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
-## <a name="overview-of-steps-required"></a>Przegląd czynności wymaganych
-Aby skonfigurować aplikację z galerii usługi Azure AD, należy wykonać następujące:
+## <a name="overview-of-required-steps"></a>Przegląd wymaganych kroków
+Aby skonfigurować aplikację z galerii usługi Azure AD, musisz:
 
 -   [Dodawanie aplikacji z galerii usługi Azure AD](#add-an-application-from-the-azure-ad-gallery)
 
 -   [Konfigurowanie aplikacji do logowania jednokrotnego hasła](#configure-the-application-for-password-single-sign-on)
 
--   Przypisywanie aplikacji do użytkownika lub grupy
+-   Przypisz aplikację do użytkownika lub grupy:
 
     -   [Przypisywanie użytkownika do aplikacji bezpośrednio](#assign-a-user-to-an-application-directly)
 
@@ -62,23 +62,23 @@ Aby skonfigurować aplikację z galerii usługi Azure AD, należy wykonać nast�
 
 Aby dodać aplikację z galerii usługi Azure AD, wykonaj następujące kroki:
 
-1.  Otwórz [Azure Portal](https://portal.azure.com) i zaloguj się jako **administrator globalny** lub współadministrator
+1.  Otwórz [Azure Portal](https://portal.azure.com)i zaloguj się jako **administrator globalny** lub współadministrator.
 
-2.  Otwórz **rozszerzenie Azure Active Directory** , klikając pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie.
+2.  Otwórz **rozszerzenie Azure Active Directory** , wybierając pozycję **wszystkie usługi** w górnej części menu po lewej stronie.
 
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3.  W polu wyszukiwania wprowadź **usługę Azure Active Directory** , a następnie wybierz element **Azure Active Directory** .
 
-4.  Kliknij pozycję **aplikacje przedsiębiorstwa** w menu nawigacji po lewej stronie Azure Active Directory.
+4.  Wybierz pozycję **aplikacje dla przedsiębiorstw** w menu usługi Azure AD po lewej stronie.
 
-5.  Kliknij przycisk **Dodaj** w prawym górnym rogu w okienku aplikacje dla **przedsiębiorstw** .
+5.  Wybierz przycisk **Dodaj** w prawym górnym rogu okienka **aplikacje dla przedsiębiorstw** .
 
-6.  W polu tekstowym **Wprowadź nazwę** w sekcji **Dodaj z galerii** wpisz nazwę aplikacji.
+6.  W polu **Wprowadź nazwę** w sekcji **Dodaj z galerii** wprowadź nazwę aplikacji.
 
-7.  Wybierz aplikację, którą chcesz skonfigurować do logowania jednokrotnego.
+7.  Wybierz aplikację, którą chcesz skonfigurować do rejestracji jednokrotnej.
 
-8.  Przed dodaniem aplikacji można zmienić jej nazwę z pola tekstowego **Nazwa** .
+8.  Przed dodaniem aplikacji można zmienić jej nazwę w polu **Nazwa** .
 
-9.  Kliknij przycisk **Dodaj** , aby dodać aplikację.
+9.  Wybierz pozycję **Dodaj** , aby dodać aplikację.
 
 Po krótkim czasie zobaczysz okienko Konfiguracja aplikacji.
 
@@ -86,101 +86,101 @@ Po krótkim czasie zobaczysz okienko Konfiguracja aplikacji.
 
 Aby skonfigurować Logowanie jednokrotne dla aplikacji, wykonaj następujące kroki:
 
-1. Otwórz [**Azure Portal**](https://portal.azure.com/) i zaloguj się jako **administrator globalny** lub współadministrator **.**
+1. Otwórz [Azure Portal](https://portal.azure.com/) i zaloguj się jako **administrator globalny** lub współadministrator.
 
-2. Otwórz **rozszerzenie Azure Active Directory** , klikając pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenie Azure Active Directory** , wybierając pozycję **wszystkie usługi** w górnej części menu po lewej stronie.
 
-3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. W polu wyszukiwania wprowadź **usługę Azure Active Directory** , a następnie wybierz element **Azure Active Directory** .
 
-4. Kliknij pozycję **aplikacje przedsiębiorstwa** w menu nawigacji po lewej stronie Azure Active Directory.
+4. Wybierz pozycję **aplikacje dla przedsiębiorstw** z menu Azure Active Directory po lewej stronie.
 
-5. Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+5. Wybierz pozycję **wszystkie aplikacje** , aby wyświetlić listę wszystkich aplikacji.
 
-   * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
+   Jeśli nie widzisz aplikacji, którą chcesz umieścić w tym miejscu, użyj kontrolki **filtru** w górnej części **listy wszystkie aplikacje**, a następnie ustaw opcję **Pokaż** na **wszystkie aplikacje**.
 
-6. Wybierz aplikację, dla której chcesz skonfigurować Logowanie jednokrotne
+6. Wybierz aplikację, którą chcesz skonfigurować do rejestracji jednokrotnej.
 
-7. Po załadowaniu aplikacji kliknij pozycję **Logowanie** jednokrotne w menu nawigacji po lewej stronie aplikacji.
+7. Po załadowaniu aplikacji wybierz pozycję **Logowanie** jednokrotne w menu aplikacji po lewej stronie.
 
-8. Wybierz pozycję **Logowanie oparte na haśle.**
+8. Wybierz tryb **logowania opartego na hasłach** .
 
 9. [Przypisz użytkowników do aplikacji](#assign-a-user-to-an-application-directly).
 
-10. Dodatkowo można także podać poświadczenia w imieniu użytkownika, wybierając wiersze użytkowników i klikając opcję **zaktualizuj poświadczenia** i wprowadzając nazwę użytkownika i hasło w imieniu użytkowników. W przeciwnym razie użytkownicy otrzymają monit o wprowadzenie poświadczeń podczas uruchamiania.
+10. Możesz również podać poświadczenia w imieniu użytkowników, wybierając wiersz użytkownika, wybierając pozycję **Aktualizuj poświadczenia**, a następnie wprowadzając nazwę użytkownika i hasło. W przeciwnym razie użytkownicy są monitowani o wprowadzenie poświadczeń podczas uruchamiania aplikacji.
 
 ## <a name="assign-a-user-to-an-application-directly"></a>Przypisywanie użytkownika do aplikacji bezpośrednio
 
 Aby bezpośrednio przypisać jednego lub większą liczbę użytkowników do aplikacji, wykonaj następujące kroki:
 
-1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1. Otwórz [Azure Portal](https://portal.azure.com/) i zaloguj się jako **administrator globalny**.
 
-2. Otwórz **rozszerzenie Azure Active Directory** , klikając pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenie Azure Active Directory** , wybierając pozycję **wszystkie usługi** w górnej części menu po lewej stronie.
 
-3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. W polu wyszukiwania wprowadź **usługę Azure Active Directory** , a następnie wybierz element **Azure Active Directory** .
 
-4. Kliknij pozycję **aplikacje przedsiębiorstwa** w menu nawigacji po lewej stronie Azure Active Directory.
+4. Wybierz pozycję **aplikacje dla przedsiębiorstw** z menu Azure Active Directory po lewej stronie.
 
-5. Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+5. Wybierz pozycję **wszystkie aplikacje** , aby wyświetlić listę wszystkich aplikacji.
 
-   * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
+   Jeśli nie widzisz aplikacji, którą chcesz umieścić w tym miejscu, użyj kontrolki **filtru** w górnej części **listy wszystkie aplikacje**, a następnie ustaw opcję **Pokaż** na **wszystkie aplikacje**.
 
-6. Wybierz aplikację, którą chcesz przypisać do użytkownika z listy.
+6. Wybierz aplikację, do której chcesz przypisać użytkownika.
 
-7. Po załadowaniu aplikacji kliknij pozycję **Użytkownicy i grupy** w menu nawigacji po lewej stronie aplikacji.
+7. Po załadowaniu aplikacji wybierz pozycję **Użytkownicy i grupy** z menu aplikacji po lewej stronie.
 
-8. Kliknij przycisk **Dodaj** przycisk w górnej części **użytkowników i grup** liście, aby otworzyć **Dodaj przydziału** okienka.
+8. Wybierz przycisk **Dodaj** znajdujący się na górze listy **Użytkownicy i grupy** , aby otworzyć okienko **Dodaj przypisanie** .
 
-9. Kliknij przycisk **użytkowników i grup** selektor z **Dodaj przydziału** okienka.
+9. Wybierz pozycję **Użytkownicy i grupy** w okienku **Dodaj przypisanie** .
 
-10. Wpisz **Pełna nazwa** lub **adres e-mail** użytkownika, jesteś zainteresowany przypisywania do **wyszukiwanie według nazwy lub adresu e-mail** pola wyszukiwania.
+10. Wprowadź pełną nazwę lub adres e-mail użytkownika w polu **Wyszukaj według nazwy lub adresu e-mail** .
 
-11. Umieść kursor nad **użytkownika** na liście, aby wyświetlić **wyboru**. Kliknij pole wyboru obok logo, aby dodać użytkownika, aby lub zdjęcie w profilu użytkownika **wybrane** listy.
+11. Umieść kursor nad użytkownikiem na liście, a następnie zaznacz pole wyboru obok zdjęcia lub logo profilu użytkownika, aby dodać je do **wybranej** listy.
 
-12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika**, wpisz inną **pełną nazwę** lub **adres e-mail** w polu **Wyszukaj według nazwy lub adresu e-mail** , a następnie kliknij pole wyboru, aby dodać tego użytkownika do **wybranej** listy.
+12. Opcjonalnie: Jeśli chcesz dodać więcej niż jednego użytkownika, wprowadź kolejną pełną nazwę lub adres e-mail w polu **Wyszukaj według nazwy lub adresu e-mail** , a następnie zaznacz pole wyboru dla tego użytkownika, aby dodać je do **wybranej** listy.
 
-13. Gdy to zrobisz, Wybieranie użytkowników, kliknij przycisk **wybierz** przycisk, aby dodać je do listy użytkowników i grup do przypisania do aplikacji.
+13. Po zakończeniu wybierania użytkowników Użyj przycisku **Wybierz** , aby dodać je do listy użytkowników i grup, które mają być przypisane do aplikacji.
 
-14. **Opcjonalnie:** kliknij **wybierz rolę** selektorze **Dodaj przydziału** okienku wybierz rolę, aby przypisać użytkownikom wybrania.
+14. Opcjonalnie: Za pomocą polecenia **Wybierz rolę** w okienku **Dodaj przypisanie** wybierz rolę, która ma zostać przypisana do wybranych użytkowników.
 
-15. Kliknij przycisk **przypisać** przycisk, aby przypisać aplikację do wybranych użytkowników.
+15. Wybierz pozycję **Przypisz** , aby przypisać aplikację do wybranych użytkowników.
 
 ## <a name="assign-an-application-to-a-group-directly"></a>Bezpośrednie przypisywanie aplikacji do grupy
 
 Aby bezpośrednio przypisać jedną lub więcej grup do aplikacji, wykonaj następujące kroki:
 
-1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1. Otwórz [Azure Portal](https://portal.azure.com/) i zaloguj się jako **administrator globalny**.
 
-2. Otwórz **rozszerzenie Azure Active Directory** , klikając pozycję **wszystkie usługi** w górnej części menu nawigacji po lewej stronie.
+2. Otwórz **rozszerzenie Azure Active Directory** , wybierając pozycję **wszystkie usługi** w górnej części menu po lewej stronie.
 
-3. Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+3. W polu wyszukiwania wprowadź **usługę Azure Active Directory** , a następnie wybierz element **Azure Active Directory** .
 
-4. Kliknij pozycję **aplikacje przedsiębiorstwa** w menu nawigacji po lewej stronie Azure Active Directory.
+4. Wybierz pozycję **aplikacje dla przedsiębiorstw** z menu usługi Azure AD po lewej stronie.
 
-5. Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+5. Wybierz pozycję **wszystkie aplikacje** , aby wyświetlić listę wszystkich aplikacji.
 
-   * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
+   Jeśli nie widzisz aplikacji, którą chcesz umieścić w tym miejscu, użyj kontrolki **filtru** w górnej części **listy wszystkie aplikacje** i ustaw opcję **Pokaż** na **wszystkie aplikacje**.
 
-6. Wybierz aplikację, którą chcesz przypisać do użytkownika z listy.
+6. Wybierz aplikację, do której chcesz przypisać użytkownika.
 
-7. Po załadowaniu aplikacji kliknij pozycję **Użytkownicy i grupy** w menu nawigacji po lewej stronie aplikacji.
+7. Po załadowaniu aplikacji wybierz pozycję **Użytkownicy i grupy** z menu aplikacji po lewej stronie.
 
-8. Kliknij przycisk **Dodaj** przycisk w górnej części **użytkowników i grup** liście, aby otworzyć **Dodaj przydziału** okienka.
+8. Wybierz przycisk **Dodaj** znajdujący się u góry listy **Użytkownicy i grupy** , aby otworzyć okienko **Dodaj przypisanie** .
 
-9. Kliknij przycisk **użytkowników i grup** selektor z **Dodaj przydziału** okienka.
+9. Wybierz pozycję **Użytkownicy i grupy** w okienku **Dodaj przypisanie** .
 
-10. Wpisz **Nazwa grupy pełną** grupy osób zainteresowanych przypisywania do **wyszukiwanie według nazwy lub adresu e-mail** pola wyszukiwania.
+10. Wprowadź pełną nazwę grupy, którą chcesz przypisać, w polu Wyszukaj **według nazwy lub adresu e-mail** .
 
-11. Umieść kursor nad **grupy** na liście, aby wyświetlić **wyboru**. Kliknij pole wyboru obok zdjęcie w profilu lub logo, aby dodać użytkownika do grupy **wybrane** listy.
+11. Umieść kursor nad grupą na liście, a następnie zaznacz pole wyboru obok zdjęcia lub logo profilu grupy, aby dodać grupę do **wybranej** listy.
 
-12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jedną grupę**, wpisz inną **pełną nazwę grupy** w polu **Wyszukaj według nazwy lub adresu e-mail** , a następnie kliknij pole wyboru, aby dodać tę grupę do **wybranej** listy.
+12. Opcjonalnie: Jeśli chcesz dodać więcej niż jedną grupę, wprowadź kolejną pełną nazwę grupy w polu **Wyszukaj według nazwy lub adresu e-mail** , a następnie zaznacz odpowiednie pole wyboru, aby dodać tę grupę do **wybranej** listy.
 
-13. Po wybraniu grup kliknij **wybierz** przycisk, aby dodać je do listy użytkowników i grup do przypisania do aplikacji.
+13. Po zakończeniu wybierania grup Użyj przycisku **Wybierz** , aby dodać je do listy użytkowników i grup, które mają być przypisane do aplikacji.
 
-14. **Opcjonalnie:** kliknij **wybierz rolę** selektorze **Dodaj przydziału** okienku wybierz rolę do przypisania do wybranych grupach.
+14. Opcjonalnie: Za pomocą polecenia **Wybierz rolę** w okienku **Dodaj przypisanie** wybierz rolę, która ma zostać przypisana do wybranych grup.
 
-15. Kliknij przycisk **przypisać** przycisk, aby przypisać aplikację do wybranych grup.
+15. Wybierz pozycję **Przypisz** , aby przypisać aplikację do wybranych grup.
 
-Po krótkim czasie wybrane przez Ciebie użytkownicy będą mogli uruchamiać te aplikacje w panelu dostępu.
+Po krótkim czasie wybrane użytkownicy powinni mieć możliwość uruchamiania tych aplikacji z poziomu panelu dostępu.
 
 ## <a name="next-steps"></a>Następne kroki
-[Udostępnij logowanie jednokrotne do aplikacji serwera Proxy aplikacji](application-proxy-configure-single-sign-on-with-kcd.md)
+Zapewniaj Logowanie jednokrotne [do aplikacji przy użyciu serwera proxy aplikacji](application-proxy-configure-single-sign-on-with-kcd.md).

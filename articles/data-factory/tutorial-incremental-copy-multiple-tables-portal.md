@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: b9dafd31ed84298c97932b1cdb5593eb17769ef9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d46c460f7158635e520b47517fb3aab005af94a2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60582384"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140751"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Przyrostowe ładowanie danych z wielu tabel w programie SQL Server do bazy danych Azure SQL Database
 W tym samouczku utworzysz fabrykę danych Azure Data Factory z potokiem służącym do ładowania danych różnicowych z wielu tabel na lokalnym serwerze SQL Server do bazy danych Azure SQL Database.    
@@ -175,9 +174,9 @@ END
 ### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Tworzenie typów danych i dodatkowych procedur składowanych w bazie danych Azure SQL Database
 Uruchom następujące zapytanie, aby utworzyć dwie procedury składowane i dwa typy danych w bazie danych SQL. Służą one do scalania danych z tabel źródłowych w tabelach docelowych.
 
-Aby ułatwić podróży w zaczynać, firma Microsoft bezpośrednio korzystać z tych procedur składowanych, przekazując dane różnicowe w za pośrednictwem zmiennej tabeli, a następnie scalić je do docelowego magazynu. Należy zachować ostrożność, jego ma być przechowywany w zmiennej tabeli nie jest oczekiwane "large" Liczba zmian wierszy (ponad 100).  
+Aby ułatwić rozpoczęcie podróży, należy bezpośrednio użyć tych procedur składowanych przekazujących dane różnicowe za pośrednictwem zmiennej tabeli, a następnie scalić je z magazynem docelowym. Należy zachować ostrożność, ponieważ nie jest oczekiwana "duża liczba wierszy różnicowych (więcej niż 100), które mają być przechowywane w zmiennej tabeli.  
 
-Jeśli musisz scalić dużą liczbę wierszy delta Magazyn docelowy, sugerujemy przy użyciu działania kopiowania do skopiowania danych różnicowych do tabeli tymczasowej "tymczasową" w miejscu docelowym przechowywania pierwszy, a następnie kompilowany procedury przechowywanej bez użycia vari tabeli można scalić je z tabeli "tymczasową" do tabeli "final". 
+Jeśli konieczne jest scalenie dużej liczby wierszy różnicowych z magazynem docelowym, sugerujemy użycie działania kopiowania w celu skopiowania wszystkich danych różnicowych do tymczasowej tabeli "przemieszczania" w magazynie docelowym, a następnie skompilowania własnej procedury składowanej bez użycia tabeli Vari możliwość scalania ich z tabeli "przemieszczania" do tabeli "Final". 
 
 
 ```sql
@@ -251,7 +250,7 @@ END
 1. Wybierz wartość **V2 (wersja zapoznawcza)** dla **wersji**.
 1. Na liście **lokalizacja** wybierz lokalizację fabryki danych. Na liście rozwijanej są wyświetlane tylko obsługiwane lokalizacje. Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 1. Wybierz opcję **Przypnij do pulpitu nawigacyjnego**.     
-1. Kliknij pozycję **Utwórz**.      
+1. Kliknij przycisk **Utwórz**.      
 1. Na pulpicie nawigacyjnym jest widoczny następujący kafelek ze stanem: **Wdrażanie fabryki danych**. 
 
     ![kafelek Wdrażanie fabryki danych](media/tutorial-incremental-copy-multiple-tables-portal/deploying-data-factory.png)
@@ -305,7 +304,7 @@ W tym kroku połączysz lokalną bazę danych programu SQL Server z fabryką dan
     ![Przycisk Nowa połączona usługa](./media/tutorial-incremental-copy-multiple-tables-portal/new-sql-server-linked-service-button.png)
 1. W oknie **Nowa połączona usługa** wybierz pozycję **SQL Server**, a następnie kliknij pozycję **Kontynuuj**. 
 
-    ![Wybieranie pozycji SQL Server](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server.png)
+    ![Wybierz serwer SQL Server](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server.png)
 1. W oknie **Nowa połączona usługa** wykonaj następujące czynności:
 
     1. Wprowadź jako **nazwę** wartość **SqlServerLinkedService**. 
@@ -347,12 +346,12 @@ W tym kroku utworzysz zestawy danych reprezentujące źródło danych, docelową
 
 ### <a name="create-a-source-dataset"></a>Tworzenie zestawu danych źródłowych
 
-1. W lewym okienku kliknij pozycję **+ (plus)**, a następnie kliknij pozycję **Zestaw danych**.
+1. W lewym okienku kliknij pozycję **+ (plus)** , a następnie kliknij pozycję **Zestaw danych**.
 
    ![Menu Nowy zestaw danych](./media/tutorial-incremental-copy-multiple-tables-portal/new-dataset-menu.png)
 1. W oknie **Nowy zestaw danych** wybierz pozycję **SQL Server** i kliknij pozycję **Zakończ**. 
 
-   ![Wybieranie pozycji SQL Server](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server-for-dataset.png)
+   ![Wybierz serwer SQL Server](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server-for-dataset.png)
 1. W przeglądarce sieci Web zostanie otwarta nowa karta służąca do konfigurowania zestawu danych. Zostanie też wyświetlony zestaw danych w widoku drzewa. U dołu karty **Ogólne** w oknie właściwości wprowadź wartość **SourceDataset** w polu **Nazwa**. 
 
    ![Zestaw danych źródłowych — nazwa](./media/tutorial-incremental-copy-multiple-tables-portal/source-dataset-general.png)
@@ -362,7 +361,7 @@ W tym kroku utworzysz zestawy danych reprezentujące źródło danych, docelową
 
 
 ### <a name="create-a-sink-dataset"></a>Tworzenie ujścia zestawu danych
-1. W lewym okienku kliknij pozycję **+ (plus)**, a następnie kliknij pozycję **Zestaw danych**.
+1. W lewym okienku kliknij pozycję **+ (plus)** , a następnie kliknij pozycję **Zestaw danych**.
 
    ![Menu Nowy zestaw danych](./media/tutorial-incremental-copy-multiple-tables-portal/new-dataset-menu.png)
 1. W oknie **Nowy zestaw danych** wybierz pozycję **Azure SQL Database** i kliknij przycisk **Zakończ**. 
@@ -394,7 +393,7 @@ W tym kroku utworzysz zestawy danych reprezentujące źródło danych, docelową
 ### <a name="create-a-dataset-for-a-watermark"></a>Tworzenie zestawu danych dla limitu
 W tym kroku utworzysz zestaw danych do przechowywania wartości górnego limitu. 
 
-1. W lewym okienku kliknij pozycję **+ (plus)**, a następnie kliknij pozycję **Zestaw danych**.
+1. W lewym okienku kliknij pozycję **+ (plus)** , a następnie kliknij pozycję **Zestaw danych**.
 
    ![Menu Nowy zestaw danych](./media/tutorial-incremental-copy-multiple-tables-portal/new-dataset-menu.png)
 1. W oknie **Nowy zestaw danych** wybierz pozycję **Azure SQL Database** i kliknij przycisk **Zakończ**. 
@@ -421,7 +420,7 @@ Potok przyjmuje listę nazw tabel jako parametr. Działanie ForEach służy do p
 
 ### <a name="create-the-pipeline"></a>Tworzenie potoku
 
-1. W lewym okienku kliknij pozycję **+ (plus)**, a następnie kliknij pozycję **Potok**.
+1. W lewym okienku kliknij pozycję **+ (plus)** , a następnie kliknij pozycję **Potok**.
 
     ![Nowy potok — menu](./media/tutorial-incremental-copy-multiple-tables-portal/new-pipeline-menu.png)
 1. Na karcie **Ogólne** w oknie **Właściwości** wprowadź wartość **IncrementalCopyPipeline** w polu **Nazwa**. 
@@ -440,7 +439,7 @@ Potok przyjmuje listę nazw tabel jako parametr. Działanie ForEach służy do p
 1. Przejdź do karty **Ustawienia** w oknie **Właściwości** i wprowadź wartość `@pipeline().parameters.tableList` w polu **Elementy**. Działanie ForEach przeprowadza iterację po liście tabel i wykonuje operację kopiowania przyrostowego. 
 
     ![Działanie ForEach — ustawienia](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
-1. Wybierz działanie **ForEach** w potoku, jeśli jeszcze nie zostało wybrane. Kliknij przycisk **Edytuj (ikonę ołówka)**.
+1. Wybierz działanie **ForEach** w potoku, jeśli jeszcze nie zostało wybrane. Kliknij przycisk **Edytuj (ikonę ołówka)** .
 
     ![Działanie ForEach — edycja](./media/tutorial-incremental-copy-multiple-tables-portal/edit-foreach.png)
 1. W przyborniku **Działania** rozwiń pozycję **SQL Database**, przeciągnij i upuść działanie **Lookup** (Wyszukiwanie) na powierzchni projektanta potoku, a następnie wprowadź wartość **LookupOldWaterMarkActivity** w polu **Nazwa**.
@@ -493,9 +492,9 @@ Potok przyjmuje listę nazw tabel jako parametr. Działanie ForEach służy do p
     ![Działanie Copy (Kopiowanie) — ustawienia ujścia](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
 1. Wykonaj następujące czynności:
 
-    1. W **Dataset** właściwości dla **SinkTableName** parametrów, wprowadź `@{item().TABLE_NAME}`.
-    1. Aby uzyskać **Nazwa procedury składowanej** właściwości wprowadź `@{item().StoredProcedureNameForMergeOperation}`.
-    1. Aby uzyskać **typ tabeli** właściwości wprowadź `@{item().TableType}`.
+    1. We właściwości **DataSet** dla parametru **SinkTableName** wprowadź `@{item().TABLE_NAME}`.
+    1. Dla właściwości **nazwa procedury składowanej** wprowadź `@{item().StoredProcedureNameForMergeOperation}`.
+    1. W obszarze Właściwość **typu tabeli** wprowadź `@{item().TableType}`wartość.
 
 
         ![Działanie Copy — parametry](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
@@ -514,7 +513,7 @@ Potok przyjmuje listę nazw tabel jako parametr. Działanie ForEach służy do p
     1. Wybierz pozycję **Importuj parametr**. 
     1. Określ wartości następujących parametrów: 
 
-        | Name (Nazwa) | Typ | Wartość | 
+        | Name | Typ | Value | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
@@ -725,7 +724,7 @@ project_table   2017-10-01 00:00:00.000
 
 Należy zauważyć, że wartości limitu dla obu tabel zostały zaktualizowane.
      
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W ramach tego samouczka wykonano następujące procedury: 
 
 > [!div class="checklist"]

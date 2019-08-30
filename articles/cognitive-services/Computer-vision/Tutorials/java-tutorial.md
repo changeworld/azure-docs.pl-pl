@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.author: kefre
 ms.custom: seodec18
 ms.date: 04/30/2019
-ms.openlocfilehash: fc3a4bb1fad836d8f3dadd5a06169b705ef4d4fc
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4fdafee622a67582787829bb63331a8d0225506f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881254"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137489"
 ---
 # <a name="use-computer-vision-features-with-the-rest-api-and-java"></a>Korzystanie z funkcji przetwarzanie obrazów przy użyciu interfejsu API REST i środowiska Java
 
@@ -44,7 +44,7 @@ Ten samouczek opracowano przy użyciu środowiska NetBeans IDE. W szczególnośc
 
 ### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Subskrybowanie interfejsu API przetwarzania obrazów i uzyskanie klucza subskrypcji
 
-Przed utworzeniem przykładu musisz subskrybować interfejs API przetwarzania obrazów, który jest częścią usługi Azure Cognitive Services. Aby uzyskać szczegółowe informacje na temat subskrypcji i zarządzania kluczami, zobacz temat [Subskrypcje](https://azure.microsoft.com/try/cognitive-services/). Na potrzeby tego samouczka dopuszczalne są klucze podstawowe i pomocnicze.
+Przed utworzeniem tego przykładu musisz mieć klucz subskrypcji dla przetwarzanie obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Zanotuj również adres URL punktu końcowego usługi.
 
 ## <a name="acquire-incomplete-tutorial-project"></a>Pozyskiwanie niekompletnego projektu samouczka
 

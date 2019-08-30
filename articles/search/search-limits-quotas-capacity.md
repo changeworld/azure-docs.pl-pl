@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: 9ddc7ad8882b30a17be5820116da72c5ab32fad9
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 308eb90e7ae244442a603491044e90dc3b8d052a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640623"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141151"
 ---
 # <a name="service-limits-in-azure-search"></a>Limity usługi w Azure Search
 Maksymalne limity dotyczące magazynu, obciążeń i ilości indeksów, dokumentów i innych obiektów zależą od tego, czy zainicjowano [obsługę administracyjną Azure Search](search-create-service-portal.md) w warstwach **bezpłatna**, **podstawowa**, **standardowa**i **zoptymalizowana pod kątem magazynu** .
@@ -124,6 +124,15 @@ Maksymalne czasy działania są dostępne w celu zapewnienia równowagi i stabil
 <sup>4</sup> maksymalnie 30 umiejętności na zestawu umiejętności.
 
 <sup>5</sup> obciążeń wyszukiwania poznawczego i analizy obrazów w indeksie obiektów blob platformy Azure mają krótsze czasy działania niż zwykłe indeksowanie tekstu. Analiza obrazów i przetwarzanie języka naturalnego są intensywnie pracochłonne i zużywają nieproporcjonalne ilości dostępnej mocy obliczeniowej. Czas działania został zmniejszony w celu nadania innym zadania w kolejce możliwości uruchomienia.  
+
+## <a name="synonym-limits"></a>Limity synonimów
+
+Maksymalna liczba dozwolonych map synonimów jest różna w zależności od warstwy cenowej. Każda reguła może mieć do 20 rozszerzeń, gdzie rozwinięcie jest terminem equivalvent. Na przykład podaną "Cat", skojarzenie z "Kitty", "Feline" i "Felis" (rodzaj dla kotów) będzie liczona jako 3 rozszerzenia.
+
+| Resource | Wolne | Podstawowa | S1 | S2 | S3 | S3 — HD |L1 | PAMIĘCI PODRĘCZNEJ L2 |
+| -------- | -----|------ |----|----|----|-------|---|----|
+| Maksymalne mapy synonimów |3 |3|5 |10 |20 |20 | 10 | 10 |
+| Maksymalna liczba reguł na mapę |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
 
 ## <a name="queries-per-second-qps"></a>Zapytania na sekundę (zapytań)
 

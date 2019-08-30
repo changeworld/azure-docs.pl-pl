@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: d2f60b496594946e9175ecf5c1948b08c9065b1b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
-ms.translationtype: MT
+ms.openlocfilehash: 220f68461d47293e9f43a650e4fa5d1d59bce02f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848199"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128336"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -30,7 +30,7 @@ W poniższej tabeli przedstawiono wszystkie środowiska deweloperskie omówione 
 | [Środowisko lokalne](#local) | Pełna kontrola nad środowiskiem deweloperskim i zależnościami. Uruchamiaj przy użyciu dowolnego narzędzia kompilacji, środowiska lub IDE. | Rozpoczęcie pracy trwa dłużej. Wymagane pakiety SDK muszą być zainstalowane, a także należy zainstalować środowisko, jeśli jeszcze go nie masz. |
 | [Azure Databricks](#aml-databricks) | Idealne rozwiązanie do uruchamiania przepływów pracy uczenia maszynowego dużej skali na skalowalnej platformie Apache Spark. | Zbyt obszerne eksperymentalne Uczenie maszynowe, a także na mniejsze eksperymenty i przepływy pracy. Dodatkowe koszty poniesione przez Azure Databricks. Zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/databricks/). |
 | [Data Science Virtual Machine (DSVM)](#dsvm) | Podobnie jak w przypadku maszyn wirtualnych opartych na chmurze (Python i SDK są wstępnie zainstalowane), ale przy użyciu dodatkowych popularnych narzędzi do nauki o danych i uczenia maszynowego. Łatwe skalowanie i łączenie z innymi niestandardowymi narzędziami i przepływami pracy. | Wolniejsze środowisko uruchamiania w porównaniu z maszyną wirtualną w notesie opartym na chmurze. |
-| [Azure Notebooks](#aznotebooks) | Bezpłatne i jasne środowisko pracy z wprowadzeniem, przy użyciu języka Python i wstępnie zainstalowanego zestawu SDK. | Mniej wydajna maszyna wirtualna jest dostępna w porównaniu z maszyną wirtualną notesu w chmurze. Izolowany od obszaru roboczego i innych zasobów. |
+| [Azure Notebooks](#aznotebooks) | Bezpłatne i uproszczone środowisko do uruchamiania, w języku Python i wstępnie zainstalowanym zestawie SDK. | Mniej zaawansowane maszyny wirtualne dostępne w porównaniu z maszyną wirtualną notesu w chmurze. Izolowany od obszaru roboczego i innych zasobów. |
 
 Ten artykuł zawiera również dodatkowe wskazówki dotyczące użycia następujących narzędzi:
 
@@ -187,16 +187,21 @@ Jeśli używasz komputera lokalnego (który może być również zdalną maszyn�
 
     To polecenie instaluje podstawowy zestaw SDK Azure Machine Learning z dodatkiem Notes i automl. `automl` Dodatkowa jest duża instalacja i można ją usunąć z nawiasów, jeśli nie zamierzasz uruchamiać zautomatyzowanych eksperymentów w usłudze Machine Learning. `automl` Dodatkowo zawiera również zestaw SDK przygotowywania danych Azure Machine Learning.
 
-     ```shell
+    ```shell
     pip install azureml-sdk[notebooks,automl]
     ```
 
    > [!NOTE]
-   > Jeśli zostanie wyświetlony komunikat informujący o tym, że nie można odinstalować programu PyYAML, użyj następującego polecenia zamiast:
+   > * Jeśli zostanie wyświetlony komunikat informujący o tym, że nie można odinstalować programu PyYAML, użyj następującego polecenia zamiast:
    >
-   > `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
+   >   `pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML`
+   >
+   > * Począwszy od macOS Catalina, zsh (Z powłoką) jest domyślną powłoką logowania i interaktywną powłoką. W ZSH Użyj następującego polecenia, które wyprowadza nawiasy klamrowe z\\"" (ukośnik odwrotny):
+   >
+   >   `pip install --upgrade azureml-sdk\[notebooks,automl\]`
 
-   Zainstalowanie zestawu SDK potrwa kilka minut. Zobacz [Przewodnik instalacji](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) , aby uzyskać więcej informacji na temat opcji instalacji.
+
+   Zainstalowanie zestawu SDK potrwa kilka minut. Aby uzyskać więcej informacji na temat opcji instalacji, zobacz [Przewodnik instalacji](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
 
 1. Zainstaluj inne pakiety na potrzeby eksperymentowania w usłudze Machine Learning.
 
@@ -280,7 +285,7 @@ Aby użyć Visual Studio Code do opracowania, wykonaj następujące czynności:
 <a name="aml-databricks"></a>
 
 ## <a name="azure-databricks"></a>Azure Databricks
-Azure Databricks jest środowiskiem opartym na Apache Spark w chmurze platformy Azure. Zapewnia środowisko współpracy oparte na notesie z procesorem CPU lub procesorem GPU.
+Azure Databricks jest środowiskiem opartym na Apache Spark w chmurze platformy Azure. Udostępnia środowisko współpracy oparte na notesach z procesorem CPU lub klastrem obliczeniowym opartym na procesorach GPU.
 
 Jak Azure Databricks współpracuje z usługą Azure Machine Learning:
 + Możesz nauczyć model przy użyciu platformy Spark MLlib i wdrożyć model do ACI/AKS z poziomu Azure Databricks.
@@ -294,7 +299,7 @@ Utwórz [klaster datakostki](https://docs.microsoft.com/azure/azure-databricks/q
 
 Użyj tych ustawień:
 
-| Ustawienie |Stosuje się do| Wartość |
+| Ustawienie |Stosuje się do| Value |
 |----|---|---|
 | Nazwa klastra |zawsze| yourclustername |
 | Środowisko uruchomieniowe usługi Databricks |zawsze| Dowolne środowisko uruchomieniowe inne niż ML (nie ML 4. x, 5. x) |
@@ -329,10 +334,10 @@ Po uruchomieniu klastra [Utwórz bibliotekę](https://docs.databricks.com/user-g
    1. Na karcie **biblioteki** wybierz pozycję **Uruchom ponownie**.
 
    Rozważ również:
-   + W konfiguracji Automl podczas korzystania z Azure Databricks Dodaj następujące parametry:
+   + W konfiguracji AutoML podczas korzystania z Azure Databricks dodać następujące parametry:
        1. ```max_concurrent_iterations```jest oparty na liczbie węzłów procesu roboczego w klastrze.
         2. ```spark_context=sc```jest oparty na domyślnym kontekście Spark.
-   + Lub, jeśli masz starą wersję zestawu SDK, usuń zaznaczenie jej z zainstalowanego libs klastra i Przenieś do kosza. Zainstaluj nową wersję zestawu SDK i ponownie uruchom klaster. Jeśli wystąpi problem, odłącz i ponownie Dołącz klaster.
+   + Lub, jeśli masz starą wersję zestawu SDK, usuń zaznaczenie jej z zainstalowanego libs klastra i Przenieś do kosza. Zainstaluj nową wersję zestawu SDK i ponownie uruchom klaster. Jeśli po ponownym uruchomieniu wystąpi problem, odłącz i ponownie Dołącz klaster.
 
 Jeśli instalacja zakończyła się pomyślnie, zaimportowana biblioteka powinna wyglądać następująco:
 
@@ -403,7 +408,7 @@ Plik konfiguracji można utworzyć na trzy sposoby:
     Ten kod zapisuje plik konfiguracyjny w pliku *.*
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Uczenie modelu](tutorial-train-models-with-aml.md) na Azure Machine Learning z zestawem danych mnist ręcznie
 - Wyświetl informacje o [zestawie Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk)

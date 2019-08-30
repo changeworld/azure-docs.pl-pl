@@ -3,23 +3,20 @@ title: Tworzenie pierwszej fabryki danych (Azure Portal) | Microsoft Docs
 description: W tym samouczku przedstawiono instrukcje tworzenia przykładowego potoku usługi Azure Data Factory przy użyciu Edytora fabryki danych w witrynie Azure Portal.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: ''
-editor: ''
-ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 2a7e2f9e5018bdad2a1ed2c6edcb727a2ffdcddd
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: b60f6adf6c13bc86fb4c4604dda7d4b92963b7ca
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839115"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140570"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Samouczek: tworzenie pierwszej fabryki danych przy użyciu witryny Azure Portal
 > [!div class="op_single_selector"]
@@ -34,7 +31,7 @@ ms.locfileid: "67839115"
 > Ten artykuł dotyczy wersji 1 usługi Azure Data Factory, która jest ogólnie dostępna. Jeśli korzystasz z bieżącej wersji usługi Data Factory, zobacz [Szybki start: tworzenie fabryki danych w usłudze Data Factory](../quickstart-create-data-factory-dot-net.md).
 
 > [!WARNING]
-> Edytor JSON w witrynie Azure Portal do tworzenia i wdrażania usługi ADF w wersji 1 potoki będą wyłączone na 31 lipca 2019 r. Po 31 lipca 2019 r, będzie można kontynuować używanie [poleceń cmdlet programu Powershell w wersji 1 usługi ADF](https://docs.microsoft.com/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2), [v1 zestaw ADF .net SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet), [interfejsów API REST usługi ADF w wersji 1](https://docs.microsoft.com/rest/api/datafactory/) na tworzenie i wdrażanie usługi ADF w wersji 1 potoków.
+> Edytor JSON w witrynie Azure Portal na potrzeby tworzenia & wdrażania potoków w wersji 1 systemu APD zostanie wyłączony z 31 lipca 2019. Po 31 lipca 2019 można nadal korzystać z [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2)w usłudze ADF V1, [zestawu SDK programu .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet)ADF V1, a także do tworzenia & wdrażania potoków w wersji 1. [](https://docs.microsoft.com/rest/api/datafactory/)
 
 Ten artykuł zawiera instrukcje korzystania z witryny [Azure Portal](https://portal.azure.com/) w celu utworzenia pierwszej fabryki danych. Aby wykonać instrukcje z tego samouczka przy użyciu innych narzędzi/zestawów SDK, wybierz jedną z opcji z listy rozwijanej. 
 
@@ -211,7 +208,7 @@ W tym kroku opisano tworzenie zestawów danych do reprezentowania danych wejści
     ```
     Poniższa tabela zawiera opis właściwości JSON użytych w tym fragmencie kodu.
 
-   | Właściwość | Zagnieżdżony w | Opis |
+   | Właściwość | Zagnieżdżone w | Opis |
    |:--- |:--- |:--- |
    | type | properties |Właściwość type jest ustawiona na wartość **AzureBlob**, ponieważ dane znajdują się w magazynie obiektów blob. |
    | linkedServiceName | format |Odnosi się do utworzonego wcześniej elementu AzureStorageLinkedService. |
@@ -220,7 +217,7 @@ W tym kroku opisano tworzenie zestawów danych do reprezentowania danych wejści
    | type | format |Pliki dziennika są w formacie tekstowym, więc używana jest wartość **TextFormat**. |
    | columnDelimiter | format |Kolumny w plikach dziennika są rozdzielane przecinkami (`,`). |
    | frequency/interval | availability |Właściwość frequency (częstotliwość) jest ustawiona na wartość **Miesiąc**, a wartość interwału wynosi **1**, co oznacza, że wycinki wejściowe są dostępne co miesiąc. |
-   | external | properties | Ta właściwość ma wartość **true** (prawda), jeśli dane wejściowe nie są generowane przez ten potok. W tym samouczku plik input.log nie jest generowany w tym potoku, dlatego możemy ustawić właściwość na **true**. |
+   | zewnętrzne | properties | Ta właściwość ma wartość **true** (prawda), jeśli dane wejściowe nie są generowane przez ten potok. W tym samouczku plik input.log nie jest generowany w tym potoku, dlatego możemy ustawić właściwość na **true**. |
 
     Aby uzyskać więcej informacji o tych właściwościach JSON, zobacz [Łącznik obiektu blob platformy Azure](data-factory-azure-blob-connector.md#dataset-properties).
 
@@ -434,7 +431,7 @@ W tym samouczku opisano tworzenie fabryki danych do przetwarzania danych przez u
 * Utworzyć dwa zestawy danych zawierające dane wejściowe i wyjściowe dla działania programu Hive w usłudze HDInsight w potoku.
 * Utworzyć potok za pomocą działania programu Hive w usłudze HDInsight.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 W tym artykule opisano tworzenie potoku za pomocą działania przekształcenia (działanie usługi HDInsight), które uruchamia skrypt programu Hive w klastrze usługi HDInsight na żądanie. Aby dowiedzieć się, jak skopiować dane z magazynu obiektów blob do bazy danych SQL za pomocą działania kopiowania, zobacz [Tutorial: Copy data from Blob storage to SQL Database (Samouczek: kopiowanie danych z usługi Blob Storage do usługi SQL Database)](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="see-also"></a>Zobacz także

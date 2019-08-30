@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 04/30/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: df2aef9a6401d0a3a1807fb7e869f03f9b7bcd36
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 8b0c2f16a8492904c93b5c603e8084384496b2c4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881233"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141227"
 ---
 # <a name="use-computer-vision-features-with-the-rest-api-and-javascript"></a>Korzystanie z funkcji przetwarzanie obrazów przy użyciu interfejsu API REST i języka JavaScript
 
@@ -34,7 +34,7 @@ Kroki opisane w tym przewodniku można wykonać przy użyciu prostego edytora te
 
 ### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Subskrybowanie interfejsu API przetwarzania obrazów i uzyskanie klucza subskrypcji
 
-Przed utworzeniem przykładu musisz zasubskrybować interfejs API przetwarzania obrazów, który jest częścią usług Azure Cognitive Services. Aby uzyskać szczegółowe informacje na temat subskrypcji i zarządzania kluczami, zobacz temat [Subskrypcje](https://azure.microsoft.com/try/cognitive-services/). Zarówno klucz podstawowy, jak i pomocniczy są prawidłowe do użycia w tym przewodniku.
+Przed utworzeniem tego przykładu musisz mieć klucz subskrypcji dla przetwarzanie obrazów. Możesz uzyskać bezpłatny klucz wersji próbnej z usługi [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Lub postępuj zgodnie z instrukcjami w temacie [Tworzenie konta Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) , aby subskrybować przetwarzanie obrazów i uzyskać klucz. Zanotuj również adres URL punktu końcowego usługi.
 
 ## <a name="acquire-incomplete-tutorial-project"></a>Pozyskiwanie niekompletnego projektu samouczka
 

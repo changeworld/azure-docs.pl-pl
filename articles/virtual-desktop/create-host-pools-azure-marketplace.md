@@ -1,131 +1,131 @@
 ---
-title: Utwórz pulę hosta Windows wirtualnego pulpitu (wersja zapoznawcza) przy użyciu portalu Azure Marketplace — Azure
-description: Jak utworzyć pulę hosta Windows wirtualnego pulpitu (wersja zapoznawcza) przy użyciu portalu Azure Marketplace.
+title: Tworzenie puli hostów programu Windows Virtual Desktop w wersji zapoznawczej przy użyciu portalu Azure Marketplace — Azure
+description: Jak utworzyć pulę hostów dla systemu Windows Virtual Desktop w wersji zapoznawczej przy użyciu witryny Azure Marketplace.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: f692303140db1441aa34aacef62523d7f596dba1
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
-ms.translationtype: MT
+ms.openlocfilehash: 32628296c5d43a11371b486abc426da2e243d0a7
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204736"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70138225"
 ---
-# <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Samouczek: Tworzenie puli hosta przy użyciu portalu Azure Marketplace
+# <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Samouczek: Tworzenie puli hostów za pomocą witryny Azure Marketplace
 
-Pule hosta to zbiór przynajmniej jednej identycznych maszyn wirtualnych w środowiskach dzierżawy Windows wirtualnego Desktop w wersji zapoznawczej. Każda pula hosta może zawierać grupy aplikacji, które użytkownicy mogą korzystać z tak, jak w fizycznych pulpitu.
+Pule hostów to zbiór co najmniej jednej identycznej maszyny wirtualnej w środowiskach dzierżawy systemu Windows Virtual Desktop w wersji zapoznawczej. Każda pula hostów może zawierać grupę aplikacji, z którą użytkownicy mogą wchodzić w pracę, tak jak na pulpicie fizycznym.
 
-W tym samouczku opisano sposób tworzenia puli hosta w ramach dzierżawy Windows pulpitu wirtualnego przy użyciu oferty Microsoft Azure Marketplace. Zadania obejmują:
+W tym samouczku opisano sposób tworzenia puli hostów w ramach dzierżawy pulpitu wirtualnego systemu Windows przy użyciu oferty Microsoft Azure Marketplace. Zadania obejmują:
 
 > [!div class="checklist"]
-> * Utwórz pulę hosta w Windows pulpitu wirtualnego.
-> * Utwórz grupę zasobów z maszynami wirtualnymi w subskrypcji platformy Azure.
-> * Przyłączanie maszyn wirtualnych do domeny usługi Active Directory.
-> * Maszyny wirtualne można zarejestrować w usłudze Windows pulpitu wirtualnego.
+> * Utwórz pulę hostów w programie Virtual Desktop systemu Windows.
+> * Utwórz grupę zasobów z maszynami wirtualnymi w ramach subskrypcji platformy Azure.
+> * Dołącz maszyny wirtualne do domeny Active Directory.
+> * Zarejestruj maszyny wirtualne za pomocą pulpitu wirtualnego systemu Windows.
 
-Przed przystąpieniem do wykonywania [Pobierz i zaimportuj moduł programu PowerShell pulpitu wirtualnego Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) do użycia w sesji programu PowerShell, jeśli jeszcze go.
+Przed rozpoczęciem [Pobierz i zaimportuj moduł programu PowerShell dla pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , który ma być używany w sesji programu PowerShell, jeśli jeszcze tego nie zrobiono.
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Uruchom w portalu Azure Marketplace, oferty zainicjować obsługę nowej puli hosta
+## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Uruchamianie oferty portalu Azure Marketplace w celu aprowizacji nowej puli hostów
 
-Aby uruchomić w portalu Azure Marketplace, oferty zainicjować obsługę nowej puli hosta:
+Aby uruchomić ofertę Azure Marketplace w celu aprowizacji nowej puli hostów:
 
 1. Wybierz **+** lub **+ Utwórz zasób**.
-2. Wprowadź **pulpitu wirtualnego Windows** w oknie wyszukiwania portalu Marketplace.
-3. Wybierz **Windows pulpitu wirtualnego — Aprowizowanie puli hosta**, a następnie wybierz pozycję **Utwórz**.
+2. W oknie wyszukiwania portalu Marketplace wprowadź **Windows Virtual Desktop** .
+3. Wybierz pozycję **pulpit wirtualny systemu Windows — zapewnij pulę hostów**, a następnie wybierz pozycję **Utwórz**.
 
-Postępuj zgodnie ze wskazówkami, aby wprowadzić informacje dotyczące odpowiednich bloków.
+Postępuj zgodnie ze wskazówkami, aby wprowadzić informacje dla odpowiednich bloków.
 
-### <a name="basics"></a>Podstawy
+### <a name="basics"></a>Ustawienia podstawowe
 
-Oto co możesz zrobić **podstawy** bloku:
+Oto co należy zrobić w przypadku bloku **podstawy** :
 
-1. Wprowadź nazwę puli hosta, która jest unikatowa w ramach dzierżawy Windows pulpitu wirtualnego.
-2. Wybierz opcję odpowiednią dla osobisty pulpit. Jeśli wybierzesz **tak**, każdy użytkownik, który nawiązuje połączenie z tej puli hosta zostaną trwale przypisane do maszyny wirtualnej.
-3. Wprowadź rozdzielaną przecinkami listę użytkowników, którzy mogą zalogować się do klientów pulpitu wirtualnego Windows i dostęp do pulpitu, po zakończeniu oferty w portalu Azure Marketplace. Na przykład, jeśli chcesz przypisać user1@contoso.com i user2@contoso.com dostępu, wprowadź "user1@contoso.com,user2@contoso.com."
-4. Wybierz **Utwórz nową** i podaj nazwę dla nowej grupy zasobów.
-5. Aby uzyskać **lokalizacji**, wybrać tej samej lokalizacji co sieć wirtualna, która ma połączenie z serwerem usługi Active Directory.
+1. Wprowadź nazwę puli hostów, która jest unikatowa w ramach dzierżawy pulpitu wirtualnego systemu Windows.
+2. Wybierz odpowiednią opcję dla pulpitu osobistego. Jeśli wybierzesz opcję **tak**, każdy użytkownik łączący się z tą pulą hostów zostanie trwale przypisany do maszyny wirtualnej.
+3. Wprowadź rozdzieloną przecinkami listę użytkowników, którzy mogą logować się do klientów pulpitu wirtualnego systemu Windows i uzyskiwać dostęp do pulpitu po zakończeniu oferty portalu Azure Marketplace. Na przykład jeśli chcesz user1@contoso.com przypisać i user2@contoso.com uzyskać dostęp, wprowadź "user1@contoso.com,user2@contoso.com."
+4. Wybierz pozycję **Utwórz nowy** i podaj nazwę nowej grupy zasobów.
+5. W polu **Lokalizacja**wybierz tę samą lokalizację co sieć wirtualna, która ma łączność z serwerem Active Directory.
 6. Kliknij przycisk **OK**.
 
 ### <a name="configure-virtual-machines"></a>Konfigurowanie maszyn wirtualnych
 
-Aby uzyskać **Konfigurowanie maszyn wirtualnych** bloku:
+W bloku **Konfiguruj maszyny wirtualne** :
 
-1. Zaakceptuj wartości domyślne lub dostosować liczbę i rozmiar maszyn wirtualnych.
-2. Wprowadź prefiks dla nazwy maszyn wirtualnych. Na przykład jeśli wprowadzasz nazwę "prefiks", maszyn wirtualnych zostanie wywołana "prefiks-0," "prefiks-1" i tak dalej.
+1. Zaakceptuj wartości domyślne lub Dostosuj liczbę i rozmiar maszyn wirtualnych.
+2. Wprowadź prefiks nazw maszyn wirtualnych. Na przykład w przypadku wprowadzenia nazwy "prefiks" maszyny wirtualne będą nazywane "prefiksem-0", "prefiksem-1" i tak dalej.
 3. Kliknij przycisk **OK**.
 
 ### <a name="virtual-machine-settings"></a>Ustawienia maszyny wirtualnej
 
-Aby uzyskać **ustawienia maszyny wirtualnej** bloku:
+W bloku **ustawienia maszyny wirtualnej** :
 
 >[!NOTE]
-> Jeśli dołączasz maszyn wirtualnych w środowisku usługi Azure Active Directory Domain Services (Azure AD DS), upewnij się, że użytkowników przyłączanie do domeny również członkiem [grupy Administratorzy usługi AAD DC](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group).
+> W przypadku dołączania maszyn wirtualnych do środowiska Azure Active Directory Domain Services (Azure AD DS) Upewnij się, że użytkownik przyłączania do domeny jest również członkiem [grupy Administratorzy kontrolera domeny usługi AAD](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group).
 
-1. Aby uzyskać **źródło obrazu**, wybierz źródło i wprowadź odpowiednie informacje dotyczące sposobu znaleźć go i zapisz go. Jeśli zrezygnujesz z używania dysków zarządzanych, wybierz konto magazynu, który zawiera plik VHD.
-2. Wprowadź główną nazwę użytkownika i hasło dla konta domeny, do której zostaną dołączone maszyny wirtualne do domeny usługi Active Directory. Tej samej nazwy użytkownika i hasło zostaną utworzone na maszynach wirtualnych, jako konto lokalne. Później możesz zresetować te konta lokalnego.
-3. Wybierz sieć wirtualną, która ma połączenie z serwerem usługi Active Directory, a następnie wybierz podsieć do obsługi maszyn wirtualnych.
+1. W polu **Źródło obrazu**wybierz źródło i wprowadź odpowiednie informacje na temat sposobu ich znalezienia i sposobu ich przechowywania. W przypadku wybrania opcji nie używaj dysków zarządzanych wybierz konto magazynu zawierające plik VHD.
+2. Wprowadź główną nazwę użytkownika i hasło konta domeny, które będzie przyłączać maszyny wirtualne do domeny Active Directory. Ta sama nazwa użytkownika i hasło zostaną utworzone na maszynach wirtualnych jako konto lokalne. Możesz zresetować te konta lokalne później.
+3. Wybierz sieć wirtualną, która ma łączność z serwerem Active Directory, a następnie wybierz podsieć do hostowania maszyn wirtualnych.
 4. Kliknij przycisk **OK**.
 
-### <a name="windows-virtual-desktop-preview-tenant-information"></a>Informacje o dzierżawie Windows wirtualnego pulpitu (wersja zapoznawcza)
+### <a name="windows-virtual-desktop-preview-tenant-information"></a>Informacje o dzierżawie w wersji zapoznawczej pulpitu wirtualnego systemu Windows
 
-Aby uzyskać **informacji o dzierżawie pulpitu wirtualnego Windows** bloku:
+W bloku **Informacje o dzierżawie pulpitu wirtualnego systemu Windows** :
 
-1. Dla **Nazwa grupy dzierżawy pulpitu wirtualnego Windows**, wprowadź nazwę grupy dzierżawy, który zawiera Twojej dzierżawy. Pozostaw jako domyślny, chyba że podano określonej nazwy grupy dzierżawy.
-2. Aby uzyskać **nazwa dzierżawy pulpitu wirtualnego Windows**, wprowadź nazwę dzierżawy, w której zostanie utworzona ta pula hosta.
-3. Określ typ poświadczenia, których chcesz użyć do uwierzytelnienia się jako dzierżawy pulpitu wirtualnego Windows właściciela pulpitu zdalnego. Jeśli ukończono [tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell samouczka](./create-service-principal-role-powershell.md), wybierz opcję **nazwy głównej usługi**. Gdy **Identyfikatora dzierżawy usługi Azure AD** pojawi się, wprowadź identyfikator wystąpienia usługi Azure Active Directory, które zawiera nazwy głównej usługi.
-4. Wprowadź poświadczenia dla konta administratora dzierżawy. Obsługiwane są tylko jednostki usługi przy użyciu poświadczeń hasła.
+1. W polu **Nazwa grupy dzierżawy pulpitu wirtualnego systemu Windows**wprowadź nazwę grupy dzierżawców zawierającej dzierżawcę. Pozostaw to ustawienie domyślne, chyba że podano konkretną nazwę grupy dzierżawców.
+2. W polu **Nazwa dzierżawy pulpitu wirtualnego systemu Windows**wprowadź nazwę dzierżawy, w której chcesz utworzyć pulę hostów.
+3. Określ typ poświadczeń, które mają być używane do uwierzytelniania jako właściciel usług pulpitu wirtualnego systemu Windows. Jeśli ukończono tworzenie jednostek [usługi i przypisań ról przy użyciu programu PowerShell](./create-service-principal-role-powershell.md), wybierz pozycję Nazwa **główna usługi**. Gdy zostanie wyświetlony **Identyfikator dzierżawy usługi Azure AD** , wprowadź identyfikator wystąpienia Azure Active Directory, które zawiera jednostkę usługi.
+4. Wprowadź poświadczenia dla konta administratora dzierżawy. Obsługiwane są tylko jednostki usługi z poświadczeniami hasła.
 5. Kliknij przycisk **OK**.
 
-## <a name="complete-setup-and-create-the-virtual-machine"></a>Kończenie konfiguracji, a następnie utwórz maszynę wirtualną
+## <a name="complete-setup-and-create-the-virtual-machine"></a>Ukończ instalację i Utwórz maszynę wirtualną
 
 Dla ostatnich dwóch bloków:
 
-1. Na **Podsumowanie** bloku, przejrzyj informacje o instalacji. Jeśli potrzebujesz wprowadzić zmiany, wróć do bloku odpowiedniego i wprowadzić zmiany przed kontynuowaniem. Jeśli wydaje się odpowiednie informacje, wybierz **OK**.
-2. Na **Kup** bloku, przejrzyj dodatkowe informacje na temat zakupu w portalu Azure Marketplace.
-3. Wybierz **Utwórz** do wdrożenia hostów puli.
+1. W bloku **Podsumowanie** Przejrzyj informacje o instalacji. Jeśli musisz zmienić coś, Wróć do odpowiedniego bloku i wprowadź zmiany przed kontynuowaniem. Jeśli informacje wyglądają prawidłowo, wybierz przycisk **OK**.
+2. W bloku **kupowanie** zapoznaj się z dodatkowymi informacjami na temat zakupów w portalu Azure Marketplace.
+3. Wybierz pozycję **Utwórz** , aby wdrożyć pulę hostów.
 
-W zależności od liczby maszyn wirtualnych, tworzysz ten proces może potrwać 30 minut lub dłużej.
+W zależności od liczby tworzonych maszyn wirtualnych proces ten może potrwać 30 minut lub dłużej.
 
-## <a name="optional-assign-additional-users-to-the-desktop-application-group"></a>(Opcjonalnie) Przypisać użytkowników do grupy aplikacji klasycznej
+## <a name="optional-assign-additional-users-to-the-desktop-application-group"></a>Obowiązkowe Przypisywanie dodatkowych użytkowników do grupy aplikacji klasycznych
 
-Po portalu Azure Marketplace oferuje zostanie zakończone można przypisać większą liczbę użytkowników do grupy aplikacji pulpitu, przed rozpoczęciem testowania pulpity sesji pełną na maszynach wirtualnych. Jeśli dodano już domyślnych użytkowników w ramach oferty w portalu Azure Marketplace i nie chcesz dodać więcej, możesz pominąć tę sekcję.
+Po zakończeniu oferty portalu Azure Marketplace można przypisać większą liczbę użytkowników do grupy aplikacji klasycznych przed rozpoczęciem testowania pełnych pulpitów sesji na maszynach wirtualnych. Jeśli dodano już domyślnych użytkowników do oferty portalu Azure Marketplace i nie chcesz dodawać więcej, możesz pominąć tę sekcję.
 
-Aby przypisać użytkowników do grupy aplikacji klasycznej, możesz otworzyć okno programu PowerShell. Po tym należy wprowadzić następujące dwa polecenia cmdlet.
+Aby przypisać użytkowników do grupy aplikacji klasycznych, należy najpierw otworzyć okno programu PowerShell. Następnie musisz wprowadzić następujące dwa polecenia cmdlet.
 
-Uruchom następujące polecenie cmdlet, aby zalogować się do środowiska wirtualnego pulpitu Windows:
+Uruchom następujące polecenie cmdlet, aby zalogować się do środowiska pulpitu wirtualnego systemu Windows:
 
 ```powershell
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
-Dodawanie użytkowników do grupy aplikacji klasycznej przy użyciu tego polecenia cmdlet:
+Dodaj użytkowników do grupy aplikacji klasycznych za pomocą tego polecenia cmdlet:
 
 ```powershell
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
 ```
 
-Nazwa UPN użytkownika powinna być zgodna tożsamość użytkownika w usłudze Azure Active Directory (na przykład user1@contoso.com). Jeśli chcesz dodać wielu użytkowników, należy uruchomić to polecenie cmdlet dla każdego użytkownika.
+Nazwa UPN użytkownika powinna być zgodna z tożsamością użytkownika w Azure Active Directory (na przykład user1@contoso.com). Jeśli chcesz dodać wielu użytkowników, musisz uruchomić to polecenie cmdlet dla każdego użytkownika.
 
-Po wykonaniu tych czynności, dodano użytkowników do grupy aplikacji klasycznej można zalogować się do Windows pulpitu wirtualnego przy użyciu obsługiwanych klientów usług pulpitu zdalnego i zobacz zasób sesji komputerów stacjonarnych.
+Po wykonaniu tych kroków użytkownicy dodani do grupy aplikacji klasycznych mogą zalogować się do pulpitu wirtualnego systemu Windows z obsługiwanymi Pulpit zdalny klientami i zobaczyć zasób pulpitu sesji.
 
-Poniżej przedstawiono bieżąca liczba obsługiwanych klientów:
+Oto obecnie obsługiwani klienci:
 
-- [Klient pulpitu zdalnego dla Windows 7 i Windows 10](connect-windows-7-and-10.md)
-- [Klient sieci web Windows pulpitu wirtualnego](connect-web.md)
+- [Pulpit zdalny Client for Windows 7 i Windows 10](connect-windows-7-and-10.md)
+- [Klient sieci Web pulpitu wirtualnego systemu Windows](connect-web.md)
 
 >[!IMPORTANT]
->Aby zabezpieczyć środowisku pulpitu wirtualnego Windows na platformie Azure, zalecamy nie otwieraj portu wejściowego 3389 na maszynach wirtualnych. Pulpit wirtualny Windows nie wymaga otwartego portu dla ruchu przychodzącego 3389 dla użytkowników puli hosta maszyn wirtualnych. Jeśli musisz otworzyć port 3389 na potrzeby rozwiązywania problemów, zalecamy użycie [dostęp do maszyny Wirtualnej just-in-time](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
+>Aby zabezpieczyć środowisko pulpitu wirtualnego systemu Windows na platformie Azure, zalecamy, aby nie otwierać portu przychodzącego 3389 na maszynach wirtualnych. Pulpit wirtualny systemu Windows nie wymaga otwartego portu przychodzącego 3389 dla użytkowników w celu uzyskania dostępu do maszyn wirtualnych puli hostów. Jeśli musisz otworzyć port 3389 w celu rozwiązywania problemów, zalecamy użycie [dostępu just in Time do maszyny wirtualnej](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, po nawiązaniu hosta, puli i przypisanych użytkowników do jego pulpitu, możesz wypełnić puli hosta za pomocą programów RemoteApp. Aby dowiedzieć się więcej na temat sposobu zarządzania aplikacjami w Windows pulpitu wirtualnego, zobacz w tym samouczku:
+Teraz, po utworzeniu puli hostów i przypisaniu użytkownikom dostępu do jej pulpitu, można wypełnić pulę hostów za pomocą programów RemoteApp. Aby dowiedzieć się więcej na temat zarządzania aplikacjami w programie Virtual Desktop systemu Windows, zobacz ten samouczek:
 
 > [!div class="nextstepaction"]
-> [Zarządzać samouczek grup aplikacji](./manage-app-groups.md)
+> [Samouczek zarządzania grupami aplikacji](./manage-app-groups.md)

@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 27b548d03e6b05179da744e636a5c887e6b01ad5
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 4292b2e83c55ce62db777d846206e5857bf81ca7
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624677"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142573"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB zestawu SDK środowiska Node. js dla interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -409,49 +409,70 @@ Nie zawsze są to najbardziej widoczne zmiany, ale pomagają naszym zespołowi w
 ## <a name="release--retirement-dates"></a>Wersja & dat wycofywania
 Firma Microsoft zapewnia powiadomienie co najmniej **12 miesięcy** przed WYCOFANIEM zestawu SDK w celu zapewnienia sprawnego przejścia do nowszej/obsługiwanej wersji.
 
-Nowe funkcje i funkcjonalność i optymalizacje są dodawane tylko do bieżącego zestawu SDK, w związku z tym zalecane jest, zawsze uaktualnienie do najnowszej wersji zestawu SDK tak szybko, jak to możliwe.
+Nowe funkcje i funkcje i optymalizacje są dodawane tylko do bieżącego zestawu SDK, dlatego zaleca się, aby zawsze uaktualnić do najnowszej wersji zestawu SDK tak szybko, jak to możliwe.
 
 Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostanie odrzucone przez usługę.
 
+> [!WARNING]
+> Wszystkie wersje **1. x** zestawu SDK węzła dla interfejsu API SQL zostaną wycofane **30 sierpnia 2020**.
+> 
+>
 <br/>
 
-| Wersja | Data wydania | Data wygaśnięcia |
+| Version | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [3.1.0](#3.1.0) |26 lipca 2019 |--- |
+| [3.0.4](#3.0.4) |22 lipca 2019 r. |--- |
+| [3.0.3](#3.0.3) |17 lipca 2019 |--- |
+| [3.0.2](#3.0.2) |9 lipca 2019 |--- |
+| [3.0.0](#3.0.0) |28 czerwca 2019 |--- |
+| [ppkt](#2.1.5) |20 marca 2019 r. |--- |
+| [2.1.4](#2.1.4) |15 marca 2019 |--- |
+| [2.1.3](#2.1.3) |8 marca 2019 |--- |
+| [2.1.2](#2.1.2) |28 stycznia 2019 |--- |
+| [2.1.1](#2.1.1) |5 grudnia 2018 |--- |
+| [2.1.0](#2.1.0) |4 grudnia 2018 r. |--- |
+| [2.0.5](#2.0.5) |7 listopada 2018 |--- |
+| [2.0.4](#2.0.4) |30 października 2018 |--- |
+| [2.0.3](#2.0.3) |30 października 2018 |--- |
+| [2.0.2](#2.0.2) |10 października 2018 r. |--- |
+| [2.0.1](#2.0.1) |25 września, 2018 |--- |
+| [2.0.0](#2.0.0) |24 września 2018 r. |--- |
 | [2.0.0-3 (RC)](#2.0.0-3) |2 sierpnia 2018 r. |--- |
-| [1.14.4](#1.14.4) |03, 2018 |--- |
-| [1.14.3](#1.14.3) |03, 2018 |--- |
-| [1.14.2](#1.14.2) |21 grudnia 2017 |--- |
-| [1.14.1](#1.14.1) |10 listopada 2017 r. |--- |
-| [1.14.0](#1.14.0) |9 listopada, 2017 |--- |
-| [1.13.0](#1.13.0) |11 października 2017 r. |--- |
-| [1.12.2](#1.12.2) |10 sierpnia 2017 r. |--- |
-| [1.12.1](#1.12.1) |10 sierpnia 2017 r. |--- |
-| [1.12.0](#1.12.0) |10 maja 2017 |--- |
-| [1.11.0](#1.11.0) |16 marca 2017 r. |--- |
-| [1.10.2](#1.10.2) |27 stycznia 2017 |--- |
-| [1.10.1](#1.10.1) |22 grudnia, 2016 |--- |
-| [1.10.0](#1.10.0) |03 października 2016 r. |--- |
-| [1.9.0](#1.9.0) |07 lipca 2016 |--- |
-| [1.8.0](#1.8.0) |14 czerwca 2016 r. |--- |
-| [1.7.0](#1.7.0) |26 kwietnia 2016 |--- |
-| [1.6.0](#1.6.0) |29 marca 2016 r. |--- |
-| [1.5.6](#1.5.6) |08, 2016 |--- |
-| [1.5.5](#1.5.5) |02 lutego, 2016 |--- |
-| [1.5.4](#1.5.4) |01 lutego, 2016 |--- |
-| [1.5.2](#1.5.2) |26 stycznia 2016 |--- |
-| [1.5.2](#1.5.2) |22 stycznia 2016 |--- |
-| [1.5.1](#1.5.1) |4 stycznia 2016 |--- |
-| [1.5.0](#1.5.0) |Do 31 grudnia 2015 r. |--- |
-| [1.4.0](#1.4.0) |06, 2015 |--- |
-| [1.3.0](#1.3.0) |06, 2015 |--- |
-| [1.2.2](#1.2.2) |10 września 2015 |--- |
-| [1.2.1](#1.2.1) |15 sierpnia 2015 |--- |
-| [1.2.0](#1.2.0) |05 sierpnia 2015 r. |--- |
-| [1.1.0](#1.1.0) |09 lipca 2015 r. |--- |
-| [1.0.3](#1.0.3) |04, 2015 |--- |
-| [1.0.2](#1.0.2) |23 maja 2015 |--- |
-| [1.0.1](#1.0.1) |15 maja 2015 |--- |
-| [1.0.0](#1.0.0) |08 kwietnia, 2015 |--- |
+| [1.14.4](#1.14.4) |03, 2018 |30 sierpnia 2020 |
+| [1.14.3](#1.14.3) |03, 2018 |30 sierpnia 2020 |
+| [1.14.2](#1.14.2) |21 grudnia 2017 |30 sierpnia 2020 |
+| [1.14.1](#1.14.1) |10 listopada 2017 r. |30 sierpnia 2020 |
+| [1.14.0](#1.14.0) |9 listopada, 2017 |30 sierpnia 2020 |
+| [1.13.0](#1.13.0) |11 października 2017 r. |30 sierpnia 2020 |
+| [1.12.2](#1.12.2) |10 sierpnia 2017 r. |30 sierpnia 2020 |
+| [1.12.1](#1.12.1) |10 sierpnia 2017 r. |30 sierpnia 2020 |
+| [1.12.0](#1.12.0) |10 maja 2017 |30 sierpnia 2020 |
+| [1.11.0](#1.11.0) |16 marca 2017 r. |30 sierpnia 2020 |
+| [1.10.2](#1.10.2) |27 stycznia 2017 |30 sierpnia 2020 |
+| [1.10.1](#1.10.1) |22 grudnia, 2016 |30 sierpnia 2020 |
+| [1.10.0](#1.10.0) |03 października 2016 r. |30 sierpnia 2020 |
+| [1.9.0](#1.9.0) |07 lipca 2016 |30 sierpnia 2020 |
+| [1.8.0](#1.8.0) |14 czerwca 2016 r. |30 sierpnia 2020 |
+| [1.7.0](#1.7.0) |26 kwietnia 2016 |30 sierpnia 2020 |
+| [1.6.0](#1.6.0) |29 marca 2016 r. |30 sierpnia 2020 |
+| [1.5.6](#1.5.6) |08, 2016 |30 sierpnia 2020 |
+| [1.5.5](#1.5.5) |02 lutego, 2016 |30 sierpnia 2020 |
+| [1.5.4](#1.5.4) |01 lutego, 2016 |30 sierpnia 2020 |
+| [1.5.2](#1.5.2) |26 stycznia 2016 |30 sierpnia 2020 |
+| [1.5.2](#1.5.2) |22 stycznia 2016 |30 sierpnia 2020 |
+| [1.5.1](#1.5.1) |4 stycznia 2016 |30 sierpnia 2020 |
+| [1.5.0](#1.5.0) |Do 31 grudnia 2015 r. |30 sierpnia 2020 |
+| [1.4.0](#1.4.0) |06, 2015 |30 sierpnia 2020 |
+| [1.3.0](#1.3.0) |06, 2015 |30 sierpnia 2020 |
+| [1.2.2](#1.2.2) |10 września 2015 |30 sierpnia 2020 |
+| [1.2.1](#1.2.1) |15 sierpnia 2015 |30 sierpnia 2020 |
+| [1.2.0](#1.2.0) |05 sierpnia 2015 r. |30 sierpnia 2020 |
+| [1.1.0](#1.1.0) |09 lipca 2015 r. |30 sierpnia 2020 |
+| [1.0.3](#1.0.3) |04, 2015 |30 sierpnia 2020 |
+| [1.0.2](#1.0.2) |23 maja 2015 |30 sierpnia 2020 |
+| [1.0.1](#1.0.1) |15 maja 2015 |30 sierpnia 2020 |
+| [1.0.0](#1.0.0) |08 kwietnia, 2015 |30 sierpnia 2020 |
 
 ## <a name="faq"></a>Często zadawane pytania
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]

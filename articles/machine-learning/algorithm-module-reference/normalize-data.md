@@ -1,7 +1,7 @@
 ---
-title: 'Normalizacji danych: Odwołania do modułu'
+title: 'Normalizuj dane: Dokumentacja modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak użyć modułu normalizacji danych w usłudze Azure Machine Learning do przekształcania zestawu danych za pośrednictwem *normalizacji*...
+description: Dowiedz się, jak używać modułu normalizowanie danych w usłudze Azure Machine Learning do przekształcania zestawudanych za pomocą normalizacji.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,105 +9,104 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 95069bafa94770511c7ee40e82068960298fd6c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 504224ae586e18fc5bf9294b537e730da37a2423
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029448"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128565"
 ---
-# <a name="normalize-data-module"></a>Normalizuj modułu danych
+# <a name="normalize-data-module"></a>Normalizowanie modułu danych
 
-W tym artykule opisano moduł interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Ten moduł służy do przekształcania zestawu danych za pośrednictwem *normalizacji*.
+Użyj tego modułu do przekształcenia zestawu danych zapomocą normalizacji.
 
-Normalizacja jest techniką, często stosowane w ramach przygotowania danych dla usługi machine learning. Celem normalizacji jest w celu zmiany wartości kolumny liczbowe w zestawie danych, aby użyć wspólnej skali bez wypaczającym różnice w zakresach wartości lub utraty informacji. Normalizacja jest również wymagana dla niektórych algorytmów do modelu danych poprawnie.
+Normalizacja to technika często stosowana w ramach przygotowywania danych do uczenia maszynowego. Celem normalizacji jest zmiana wartości kolumn liczbowych w zestawie danych w celu użycia wspólnej skali bez zakłócania różnic między zakresami wartości ani utraty informacji. Normalizacja jest również wymagana w przypadku niektórych algorytmów w celu poprawnego modelowania danych.
 
-Załóżmy na przykład, że wejściowy zestaw danych zawiera jedną kolumnę z wartościami z zakresu od 0 do 1 i innej kolumny z wartościami z zakresu od 10 000 do 100 000. Wspaniałej różnica w *skalowania* liczb może powodować problemy podczas próby połączyć ze sobą wartości jako funkcje w procesie modelowania.
+Załóżmy na przykład, że wejściowy zestaw danych zawiera jedną kolumnę z wartościami z zakresu od 0 do 1 i inną kolumną z wartościami z zakresu od 10 000 do 100 000. Znacząca różnica w *skali* liczb może spowodować problemy podczas próby połączenia wartości jako funkcje podczas modelowania.
 
-*Normalizacja* pozwala uniknąć tych problemów, tworząc nowe wartości obsługujące GDR i współczynników w danych źródłowych, przy jednoczesnym zachowaniu wartości w skali, stosowane we wszystkich kolumnach liczbowych użyte w modelu.
+*Normalizacja* eliminuje te problemy, tworząc nowe wartości, które zachowują ogólną dystrybucję i współczynniki w danych źródłowych, przy jednoczesnym zachowaniu wartości w skali stosowanej we wszystkich kolumnach liczbowych używanych w modelu.
 
-Ten moduł oferuje kilka opcji do przekształcania danych liczbowych:
+Ten moduł oferuje kilka opcji przekształcania danych liczbowych:
 
-- Można zmienić wszystkie wartości na 0 – 1 skalowania lub przekształcania wartości wyrażając je jako percentyl szereguje zamiast wartości bezwzględne.
-- Normalizacja można zastosować do jednej kolumny lub do wielu kolumn w tym samym zestawie danych.
-- Jeśli potrzebujesz – powtarzanie eksperymentu, i Zastosuj te same kroki normalizacji z innymi danymi, można zapisać kroki jako przekształcenia normalizacji i zastosować je do innych zestawów danych, które mają ten sam schemat.
+- Można zmienić wszystkie wartości na skalę 0-1 lub przekształcić wartości, reprezentując je jako rangi percentyla, a nie wartości bezwzględne.
+- Można zastosować normalizację do pojedynczej kolumny lub do wielu kolumn w tym samym zestawie danych.
+- Jeśli trzeba powtórzyć eksperyment lub zastosować te same kroki normalizacji do innych danych, można zapisać kroki jako transformację normalizacji i zastosować je do innych zestawów danych, które mają ten sam schemat.
 
 > [!WARNING]
-> Niektóre algorytmy wymagają, że dane będą normalizowane przed uczenia modelu. Inne algorytmy wykonać swoje własne dane, skalowanie lub normalizacji. W związku z tym w przypadku wybrania algorytmu do użycia w tworzeniu predykcyjnych modeli uczenia maszynowego, należy przejrzeć wymagania dotyczące danych algorytmu przed zastosowaniem normalizacji danych szkoleniowych.
+> Niektóre algorytmy wymagają, aby dane były znormalizowane przed uczeniem modelu. Inne algorytmy wykonują własne skalowanie lub normalizację danych. Dlatego po wybraniu algorytmu uczenia maszynowego, który ma być używany podczas tworzenia modelu predykcyjnego, należy zapoznać się z wymaganiami dotyczącymi danych algorytmu przed zastosowaniem normalizacji do danych szkoleniowych.
 
-##  <a name="configure-normalize-data"></a>Konfigurowanie normalizacji danych
+##  <a name="configure-normalize-data"></a>Konfigurowanie danych normalizowania
 
-Za pomocą tego modułu, można zastosować tylko jedną metodę normalizacji. W związku z tym ten sam metoda normalizacji jest stosowana do wszystkich kolumn, które można wybierać. Aby użyć normalizacji różnych metod, użyj drugiego wystąpienia **normalizacji danych**.
+Przy użyciu tego modułu można zastosować tylko jedną metodę normalizacji. W związku z tym ta sama metoda normalizacji jest stosowana do wszystkich zaznaczonych kolumn. Aby użyć różnych metod normalizacji, użyj drugiego wystąpienia normalizacji **danych**.
 
-1. Dodaj **normalizacji danych** modułu do eksperymentu. Moduł w usłudze Azure Machine Learning można znaleźć w obszarze **przekształcania danych**w **skali i Zmniejsz** kategorii.
+1. Dodaj moduł **normalizowanie danych** do swojego eksperymentu. Moduł można znaleźć w Azure Machine Learning, w obszarze **Przekształcanie danych**, w kategorii **skalowanie i zmniejszanie** .
 
-2. Połącz z zestawu danych, który zawiera co najmniej jedną kolumnę wszystkich liczb.
+2. Połącz zestaw danych, który zawiera co najmniej jedną kolumnę zawierającą wszystkie liczby.
 
-3. Użyj selektora kolumn, aby wybrać kolumny liczbowe do normalizacji. Jeśli nie wybierzesz poszczególnych kolumn, domyślnie **wszystkich** kolumny typ liczbowy w danych wejściowych są uwzględnione i ten sam proces normalizacji jest stosowany do wszystkich zaznaczonych kolumn. 
+3. Użyj selektora kolumn, aby wybrać kolumny liczbowe do normalizacji. Jeśli nie wybierzesz pojedynczych kolumn, domyślnie zostaną uwzględnione **wszystkie** kolumny typu liczbowego w danych wejściowych, a ten sam proces normalizacji jest stosowany do wszystkich zaznaczonych kolumn. 
 
-    Może to prowadzić do wyników dziwne, Jeśli dołączysz kolumny liczbowe, które nie powinny być znormalizowane! Zawsze dokładnie sprawdzić kolumn.
+    Może to prowadzić do nieoczekiwanych wyników, jeśli dołączysz kolumny liczbowe, które nie powinny być znormalizowane! Zawsze sprawdzaj kolumny.
 
-    Jeśli zostaną wykryte nie kolumny liczbowe, sprawdź metadanych kolumn, aby sprawdzić, czy typ danych kolumny jest obsługiwanego typu liczbowego.
+    Jeśli nie wykryto żadnych kolumn liczbowych, sprawdź metadane kolumny, aby sprawdzić, czy typ danych kolumny jest obsługiwanym typem liczbowym.
 
     > [!TIP]
-    > Aby upewnić się, że kolumny o typie określonym są udostępniane jako dane wejściowe, spróbuj użyć [Select Columns in Dataset](./select-columns-in-dataset.md) moduł przed **normalizacji danych**.
+    > Aby upewnić się, że kolumny określonego typu są dostarczane jako dane wejściowe, spróbuj użyć modułu [SELECT Columns in DataSet (Wybieranie kolumn w zestawie danych](./select-columns-in-dataset.md) ), aby **znormalizować dane**.
 
-4. **Użycie wartości 0 dla stałej kolumn po zaznaczeniu tej opcji**:  Wybierz tę opcję, jeśli dowolnej kolumny liczbowej zawiera pojedynczą wartość niezmiennych. Daje to gwarancję, że takich kolumn nie są używane w operacjach normalizacji.
+4. **Po zaznaczeniu pola wyboru Użyj 0 dla stałych kolumn**:  Zaznacz tę opcję, jeśli dowolna kolumna liczbowa zawiera pojedynczą, niezmieniającą się wartość. Gwarantuje to, że takie kolumny nie będą używane w operacjach normalizacji.
 
-5. Z **metoda przekształcania** listy rozwijanej wybierz pojedynczej funkcji matematycznych, aby zastosować do wszystkich zaznaczonych kolumn. 
+5. Z listy rozwijanej **Metoda transformacji** wybierz pojedynczą funkcję matematyczną, która ma zostać zastosowana do wszystkich zaznaczonych kolumn. 
   
-    - **Zscore**: Konwertuje wszystkie wartości z wynikiem.
+    - **Zscore**: Konwertuje wszystkie wartości na wynik z.
     
-      Wartości w kolumnie są przekształcane, korzystając z następującego wzoru:  
+      Wartości w kolumnie są przekształcane przy użyciu następującej formuły:  
   
-      ![Korzystanie z normalizacji&#45;wyniki](media/module/aml-normalization-z-score.png)
+      ![Normalizacja przy użyciu&#45;wyników z](media/module/aml-normalization-z-score.png)
   
-      Średnie i standardowe odchylenie są obliczane osobno dla każdej kolumny. Odchylenie standardowe populacji jest używany.
+      Odchylenie średnie i standardowe są obliczane osobno dla każdej kolumny. Użyto odchylenia standardowego populacji.
   
-    - **MinMax**: Normalizer minimum maksimum ponowne liniowe skalowanie każdej funkcji interwale [0,1].
+    - **MinMax**: Normalizacja min-max skaluje liniowo każdą funkcję do interwału [0, 1].
     
-      Ponowne skalowanie do interwale [0,1] odbywa się przez przesunięcie wartości każdej funkcji, tak aby minimalnej wartości to 0, a następnie podzielenie przez nową wartość maksymalna (co różni się od oryginalnej wartości maksymalny i minimalny).
+      Ponowne skalowanie do [0, 1] interwału odbywa się przez przesunięcie wartości każdej funkcji tak, aby minimalna wartość wynosi 0, a następnie podzielenie przez nową wartość maksymalną (czyli różnicę między pierwotnymi wartościami maksymalnymi i minimalnymi).
       
-      Wartości w kolumnie są przekształcane, korzystając z następującego wzoru:  
+      Wartości w kolumnie są przekształcane przy użyciu następującej formuły:  
   
-      ![za pomocą minimalną wartość normalizacji&#45;maksymalnej liczby funkcji](media/module/aml-normalization-minmax.png "AML_normalization minmax")  
+      ![normalizacja przy użyciu funkcji&#45;min max](media/module/aml-normalization-minmax.png "AML_normalization — MinMax")  
   
-    - **Logistycznej**: Wartości w kolumnie są przekształcane, korzystając z następującego wzoru:
+    - **Logistyka**: Wartości w kolumnie są przekształcane przy użyciu następującej formuły:
 
-      ![Formuła dla normalizacji przez funkcję logistycznej](media/module/aml-normalization-logistic.png "logistycznej AML_normalization")  
+      ![formuła normalizacji przez funkcję logistyczną](media/module/aml-normalization-logistic.png "AML_normalization — logistyka")  
   
-    - **Logarytmiczno-normalny**: Ta opcja przeprowadza konwersję wszystkich wartości logarytmu naturalnego skalowania.
+    - **LOGARYTM logarytmiczny**: Ta opcja konwertuje wszystkie wartości na skalę logarytmiczną.
   
-      Wartości w kolumnie są przekształcane, korzystając z następującego wzoru:
+      Wartości w kolumnie są przekształcane przy użyciu następującej formuły:
   
-      ![formula log&#45;normal distribution](media/module/aml-normalization-lognormal.png "AML_normalization-lognormal")
+      ![rozkład normalny&#45;dziennika formuł](media/module/aml-normalization-lognormal.png "AML_normalization — LOGARYTM logarytmiczny")
     
-      W tym miejscu μ i σ są parametry dystrybucji obliczona empirically z danych jako maksymalną prawdopodobieństwo prognozy, dla każdej kolumny oddzielnie.  
+      Tu μ i σ to parametry dystrybucji, obliczone w sposób niezależny od danych jako maksymalne prawdopodobieństwo oszacowania dla każdej kolumny osobno.  
   
-    - **TanH**: Wszystkie wartości są konwertowane na tangens hiperboliczny.
+    - **Tanh**: Wszystkie wartości są konwertowane na tangens hiperboliczny.
     
-      Wartości w kolumnie są przekształcane, korzystając z następującego wzoru:
+      Wartości w kolumnie są przekształcane przy użyciu następującej formuły:
     
-      ![Normalizacja przy użyciu funkcji tanh](media/module/aml-normalization-tanh.png "AML_normalization tanh")
+      ![normalizacja przy użyciu funkcji tanh](media/module/aml-normalization-tanh.png "AML_normalization — tanh")
 
-6. Uruchom eksperyment, lub kliknij dwukrotnie **normalizacji danych** modułu, a następnie wybierz pozycję **Uruchom wybrane**. 
+6. Uruchom eksperyment lub kliknij dwukrotnie moduł **normalizowanie danych** i wybierz pozycję **Uruchom wybrane**. 
 
 ## <a name="results"></a>Wyniki
 
-**Normalizacji danych** moduł generuje dwa dane wyjściowe:
+Moduł **normalizowanie danych** generuje dwa dane wyjściowe:
 
-- Aby wyświetlić wartości przekształcone, kliknij prawym przyciskiem myszy moduł, wybierz **przekształcony zestaw danych**i kliknij przycisk **Visualize**.
+- Aby wyświetlić przekształcone wartości, kliknij prawym przyciskiem myszy moduł, wybierz pozycję **przekształcony zestaw danych**, a następnie kliknij polecenie **Wizualizuj**.
 
-    Domyślnie wartości są przekształcane w miejscu. Jeśli chcesz porównać przekształcone wartości do oryginalnych wartości, użyj [Dodaj kolumny](./add-columns.md) modułu, aby ponownie połączyć zestawy danych i wyświetlić kolumny obok siebie.
+    Domyślnie wartości są przekształcane na miejsce. Jeśli chcesz porównać przekształcone wartości z oryginalnymi wartościami, użyj modułu [dodawania kolumn](./add-columns.md) do łączenia zestawów danych i wyświetlania kolumn obok siebie.
 
-- Aby zapisać przekształcenie tej samej metody normalizacji można zastosować do innego podobnego zestawu danych, kliknij prawym przyciskiem myszy moduł, wybierz **funkcję przekształcenia**i kliknij przycisk **Zapisz jako przekształcenia**.
+- Aby zapisać transformację, aby można było zastosować tę samą metodę normalizacji do innego podobnego zestawu danych, kliknij prawym przyciskiem myszy moduł, wybierz pozycję **Funkcja transformacji**i kliknij polecenie **Zapisz jako Przekształć**.
 
-    Następnie możesz załadować zapisanych przekształcenia z **przekształca** grupy w okienku nawigacji po lewej stronie i zastosować je do zestawu danych za pomocą tego samego schematu za pomocą [. / zastosować przekształcenie](apply-transformation.md).  
+    Następnie można załadować zapisane przekształcenia z grupy transformacje w lewym okienku nawigacji i zastosować je do zestawu danych z tym samym schematem za pomocą [transformacji./Apply](apply-transformation.md).  
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [zestaw dostępnych modułów](module-reference.md) do usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 

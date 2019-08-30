@@ -1,26 +1,25 @@
 ---
-title: Działanie wykonywania potoku w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak umożliwia działanie potoku wykonywania wywołania jeden potok fabryki danych z poziomu innego potoku usługi fabryka danych.
+title: Działanie wykonywania potoku w Azure Data Factory | Microsoft Docs
+description: Dowiedz się, jak za pomocą działania Execute Pipeline wywołać jeden Data Factory potoku z innego potoku Data Factory.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: a0ece499262464bc28f55c37188698a3313e2c04
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1611f740f6b55ecf9f15ecd234d63b5e95baeba1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60808853"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141704"
 ---
-# <a name="execute-pipeline-activity-in-azure-data-factory"></a>Działanie wykonywania potoku w usłudze Azure Data Factory
-Działanie Execute Pipeline umożliwia potokowi usługi Data Factory wywoływanie innego potoku.
+# <a name="execute-pipeline-activity-in-azure-data-factory"></a>Działanie wykonywania potoku w Azure Data Factory
+Działanie Execute Pipeline umożliwia potokowi Data Factory wywoływanie innego potoku.
 
 ## <a name="syntax"></a>Składnia
 
@@ -62,19 +61,19 @@ Działanie Execute Pipeline umożliwia potokowi usługi Data Factory wywoływani
 
 Właściwość | Opis | Dozwolone wartości | Wymagane
 -------- | ----------- | -------------- | --------
-name | Nazwa działania potoku wykonywania. | String | Tak
-type | Musi być ustawione na: **ExecutePipeline**. | String | Tak
-Potok | Odwołanie do zależnego potoku, który wywołuje ten potok. Obiekt odwołania potoku ma dwie właściwości: **referenceName** i **typu**. Właściwość referenceName Określa nazwę potoku odwołania. Właściwość type musi być równa PipelineReference. | PipelineReference | Tak
-parameters | Parametry do przekazania do wywoływanej potoku | Obiekt JSON, który mapuje nazwy parametru wartości argumentów | Nie
-waitOnCompletion | Określa, czy wykonywania działania ma oczekiwać na wykonywanie potoku zależnych zakończyć. Wartość domyślna to false. | Boolean | Nie
+name | Nazwa działania wykonywania potoku. | String | Tak
+type | Musi być ustawiona na: **ExecutePipeline**. | String | Tak
+potok | Odwołanie do potoku do potoku zależnego, który wywołuje ten potok. Obiekt odwołania potoku ma dwie właściwości: **ReferenceName** i **Type**. Właściwość ReferenceName określa nazwę potoku odwołania. Właściwość Type musi być ustawiona na wartość PipelineReference. | PipelineReference | Tak
+parameters | Parametry, które mają zostać przesłane do wywoływanego potoku | Obiekt JSON, który mapuje nazwy parametrów na wartości argumentów | Nie
+waitOnCompletion | Określa, czy wykonanie działania czeka na zakończenie zależnego wykonania potoku. Wartość domyślna to false. | Boolean | Nie
 
-## <a name="sample"></a>Sample
-Ten scenariusz obejmuje dwa potoki:
+## <a name="sample"></a>Próbka
+Ten scenariusz ma dwa potoki:
 
-- **Potok wzorca** — ten potok ma jedno działanie Execute Pipeline, który wywołuje potok wywołana. Główny potok przyjmuje dwa parametry: `masterSourceBlobContainer`, `masterSinkBlobContainer`.
-- **Wywołany potok** — ten potok zawiera jedno działanie kopiowania kopiuje dane ze źródła obiektów Blob platformy Azure do ujścia obiektu Blob platformy Azure. Wywołany potok przyjmuje dwa parametry: `sourceBlobContainer`, `sinkBlobContainer`.
+- **Potok główny** — ten potok ma jedno działanie Execute Pipeline, które wywołuje wywoływany potok. Potok główny przyjmuje dwa parametry: `masterSourceBlobContainer`,. `masterSinkBlobContainer`
+- **Wywołano potok** — ten potok ma jedno działanie kopiowania, które kopiuje dane ze źródła obiektów blob platformy Azure do ujścia obiektów blob platformy Azure. Wywoływany potok przyjmuje dwa parametry: `sourceBlobContainer`, `sinkBlobContainer`.
 
-### <a name="master-pipeline-definition"></a>Definicję wzorca potoku
+### <a name="master-pipeline-definition"></a>Definicja potoku głównego
 
 ```json
 {
@@ -116,7 +115,7 @@ Ten scenariusz obejmuje dwa potoki:
 
 ```
 
-### <a name="invoked-pipeline-definition"></a>Potok wywołanej definicji
+### <a name="invoked-pipeline-definition"></a>Wywołana definicja potoku
 
 ```json
 {
@@ -178,7 +177,7 @@ Ten scenariusz obejmuje dwa potoki:
 }
 ```
 
-**Zestaw danych źródłowych**
+**Źródłowy zestaw danych**
 ```json
 {
     "name": "SourceBlobDataset",
@@ -199,7 +198,7 @@ Ten scenariusz obejmuje dwa potoki:
 }
 ```
 
-**Zestaw danych będący ujściem**
+**Zestaw danych ujścia**
 ```json
 {
     "name": "sinkBlobDataset",
@@ -221,7 +220,7 @@ Ten scenariusz obejmuje dwa potoki:
 
 ### <a name="running-the-pipeline"></a>Uruchamianie potoku
 
-Aby uruchomić główny potok w tym przykładzie, następujące wartości są przekazywane w celu masterSourceBlobContainer i masterSinkBlobContainer parametrów: 
+Do uruchomienia głównego potoku w tym przykładzie są przesyłane następujące wartości parametrów masterSourceBlobContainer i masterSinkBlobContainer: 
 
 ```json
 {
@@ -230,7 +229,7 @@ Aby uruchomić główny potok w tym przykładzie, następujące wartości są pr
 }
 ```
 
-Główny potoku przekazuje te wartości do potoku wywołana, jak pokazano w poniższym przykładzie: 
+Potok główny przekazuje te wartości do wywoływanego potoku, jak pokazano w następującym przykładzie: 
 
 ```json
 {
@@ -255,10 +254,10 @@ Główny potoku przekazuje te wartości do potoku wywołana, jak pokazano w poni
 }
 
 ```
-## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne działania przepływu sterowania obsługiwanych przez usługę Data Factory: 
+## <a name="next-steps"></a>Następne kroki
+Zobacz inne działania przepływu sterowania obsługiwane przez Data Factory: 
 
 - [Dla każdego działania](control-flow-for-each-activity.md)
 - [Działanie GetMetadata](control-flow-get-metadata-activity.md)
 - [Działanie Lookup](control-flow-lookup-activity.md)
-- [Działanie internetowe](control-flow-web-activity.md)
+- [Aktywność sieci Web](control-flow-web-activity.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: c53bc9527eeb6c7ca8194ef056177a79dd880957
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 2ba93ad347783d467d467b72cfa49ffccf309fa0
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874772"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147352"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Ujednolicone & monitorowania alertów w Azure Monitor zastępują klasyczne alerty & monitorowania
 
@@ -72,6 +72,10 @@ Na koniec sierpnia 2019 w Azure Monitor:
 > [!IMPORTANT]
 > Monitor Microsoft Azure został rozmieszczony w narzędziu faz [, aby wkrótce przeprowadzić migrację](alerts-using-migration-tool.md) swoich klasycznych reguł alertów na nową platformę. I uruchom ją przez wymuszenie dla wszystkich klasycznych reguł alertów, które nadal istnieją i można migrować, rozpoczynając od września 2019. Klienci będą musieli zapewnić, że Automatyzacja korzystający z klasycznej reguły alertów jest dostosowywana do obsługi nowego ładunku z [ujednoliconych metryk i alertów w Application Insights](#unified-metrics-and-alerts-in-application-insights) lub [ujednolicone metryki i alerty dla innych zasobów platformy Azure](#unified-metrics-and-alerts-for-other-azure-resources), po migracji klasycznych reguł alertów. Aby uzyskać więcej informacji, zobacz [Przygotowywanie do migracji klasycznej reguły alertów](alerts-prepare-migration.md)
 
+Ten artykuł będzie aktualizowany w sposób ciągły wraz z linkami & szczegóły dotyczące nowej funkcji alertów & monitorowania platformy Azure, a także dostępności narzędzi do ułatwienia użytkownikom wdrażania nowej platformy Azure Monitor.
+
+## <a name="pricing-for-migrated-alert-rules"></a>Cennik dla zmigrowanych reguł alertów
+
 Wdrażamy narzędzie do migracji w celu ułatwienia migracji Azure Monitor [klasycznych alertów](../../azure-monitor/platform/alerts-classic.overview.md) do nowego środowiska alertów. Zmigrowane reguły alertów i odpowiadające im zmigrowane grupy akcji (poczta e-mail, element webhook lub LogicApp) pozostaną bezpłatne. Funkcja z alertami klasycznymi, w tym możliwość edytowania progu, typu agregacji i stopnia szczegółowości agregacji, będzie nadal dostępna bezpłatnie z zmigrowanymi regułami alertów. Jednak w przypadku edytowania zmigrowanej reguły alertów w celu korzystania z dowolnej z nowych funkcji platformy alertów, powiadomień lub typów akcji zostanie naliczona odpowiednia opłata. Aby uzyskać więcej informacji na temat cen reguł alertów i powiadomień, zobacz [Azure monitor Cennik](https://azure.microsoft.com/pricing/details/monitor/).
 
 Poniżej przedstawiono przykłady sytuacji, w których nastąpi naliczanie opłat za regułę alertu:
@@ -82,9 +86,6 @@ Poniżej przedstawiono przykłady sytuacji, w których nastąpi naliczanie opła
 - Wszystkie metryki niestandardowe przechowywane poza bezpłatnymi jednostkami zawartymi w Azure Monitor
 - Wszystkie zmigrowane reguły alertów, które są edytowane w celu używania nowszych funkcji alertu metryki, takich jak częstotliwość, wiele zasobów/wymiary, [dynamiczne progi](alerts-dynamic-thresholds.md), zmiana zasobu/sygnał i tak dalej.
 - Wszystkie zmigrowane grupy akcji, które są edytowane w celu korzystania z nowszych powiadomień lub typy akcji, takich jak wiadomości SMS, połączenia głosowe i/lub integracja narzędzia ITSM.
-
-Ten artykuł będzie aktualizowany w sposób ciągły wraz z linkami & szczegóły dotyczące nowej funkcji alertów & monitorowania platformy Azure, a także dostępności narzędzi do ułatwienia użytkownikom wdrażania nowej platformy Azure Monitor.
-
 
 ## <a name="next-steps"></a>Następne kroki
 

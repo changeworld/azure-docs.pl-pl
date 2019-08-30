@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 7fed6caa719824dd51b19789a7066ffaea13d336
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
-ms.translationtype: MT
+ms.openlocfilehash: 82c2c6d7ac347949a7cf24226fdb0095313ee689
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907810"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147687"
 ---
 # <a name="get-started-with-device-management-java"></a>Wprowadzenie do zarządzania urządzeniami (Java)
 
@@ -52,8 +52,6 @@ Na końcu tego samouczka masz dwie aplikacje konsolowe Java:
 > Aby uzyskać informacje o zestawach SDK, których można użyć do kompilowania aplikacji do uruchamiania na urządzeniach i zaplecza rozwiązania, zobacz [zestawy SDK usługi Azure IoT](iot-hub-devguide-sdks.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-
-Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 * Java SE 8. [Przygotuj środowisko programistyczne](https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md) — opis sposobu instalowania języka Java na potrzeby tego samouczka w systemie Windows lub Linux.
 

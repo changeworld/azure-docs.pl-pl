@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: 0e26b9b5aee61f399a39c032cdbd2084884538c9
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 27b180d8d95d7dad967b8ac2495a795ed70836b9
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982711"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147224"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Obsługiwane wersje Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
@@ -49,13 +49,13 @@ Usługa AKS obsługuje cztery wersje pomocnicze platformy Kubernetes:
 
 Jest to tzw. "N-3" — (N (Najnowsza wersja) — 3 (wersje pomocnicze)).
 
-Na przykład jeśli AKS wprowadza *1.13. x* dzisiaj, pomoc techniczna jest świadczona dla następujących wersji:
+Na przykład jeśli AKS wprowadza *1.13. a* dzisiaj, pomoc techniczna jest świadczona dla następujących wersji:
 
 Nowa wersja pomocnicza    |    Lista obsługiwanych wersji
 -----------------    |    ----------------------
-1.13. x               |    1.12.a, 1.12.b, 1.11.a, 1.11.b, 1.10.a, 1.10.b
+1.13. a               |    1.12.a, 1.12.b, 1.11.a, 1.11.b, 1.10.a, 1.10.b
 
-Gdzie "x" i ". b" są reprezentatywnymi wersjami poprawek.
+Gdzie ". a" i ". b" są reprezentatywnymi wersjami poprawek ". element "from 1.13. a może się różnić od elementu 1.12. a. Na przykład 1.13.9 i 1.12.8.
 
 Aby uzyskać szczegółowe informacje na temat komunikacji dotyczącej zmian wersji i oczekiwań, zobacz "komunikacja" poniżej.
 
@@ -72,7 +72,7 @@ Po wprowadzeniu nowej wersji pomocniczej, najstarsza wersja pomocnicza i wersje 
 1.9.b
 ```
 
-I AKS wersje 1.13. x oznacza to, że wersje 1.9. x (wszystkie wersje 1,9) zostaną usunięte i nie będą obsługiwane.
+I AKS wersje 1,13. *oznacza to, że 1,9.* wersje (wszystkie wersje 1,9) zostaną usunięte i nie będą obsługiwane.
 
 > [!NOTE]
 > Należy pamiętać, że jeśli klienci korzystają z nieobsługiwanej wersji programu Kubernetes, zostanie poproszony o uaktualnienie w przypadku żądania pomocy technicznej dotyczącej klastra. Klastry z nieobsługiwanymi wersjami Kubernetes nie są objęte [zasadami obsługi AKS](https://docs.microsoft.com/azure/aks/support-policies).
@@ -126,7 +126,7 @@ Określone wersje poprawek mogą zostać pominięte lub przyspieszone wdrożenia
 
 ### <a name="azure-portal-and-cli-default-versions"></a>Azure Portal i domyślne wersje interfejsu wiersza polecenia
 
-W przypadku wdrażania klastra AKS w portalu lub za pomocą interfejsu wiersza polecenia platformy Azure klaster jest zawsze ustawiany jako wersja pomocnicza N-1 i Najnowsza poprawka. Na przykład jeśli AKS obsługuje *1.13. x*, *1.12. a* + *1.12. b*, *1.11* +  + . a*1.11. b*, *1.10*. a*b*, domyślna wersja dla nowych klastrów to *1.12. b* .
+W przypadku wdrażania klastra AKS w portalu lub za pomocą interfejsu wiersza polecenia platformy Azure klaster jest zawsze ustawiany jako wersja pomocnicza N-1 i Najnowsza poprawka. Na przykład, jeśli AKS obsługuje *1.13. a*, *1.12. a* + *1.12. b*, *1.11. a* + *1.11. b*, *1.10. a* + , wersja domyślna dla nowych klastrów to *1.12. b* .
 
 AKS domyślnie N-1 (pomocnicze. latestPatch, EG 1.12. b), aby zapewnić klientom domyślnie znaną, stabilną i zaznaczoną dla wersji wersję.
 
@@ -159,10 +159,10 @@ KubernetesVersion    Upgrades
 
 **Co się stanie, gdy klient uaktualnia klaster Kubernetes z nieobsługiwaną wersją pomocniczą?**
 
-Jeśli korzystasz z wersji *n-4* , jesteś poza pomocą techniczną i zostanie wyświetlony monit o uaktualnienie. Jeśli uaktualnienie z wersji n-4 do n-3 powiedzie się, jesteś teraz w naszych zasadach pomocy technicznej. Na przykład:
+Jeśli korzystasz z wersji *n-4* , jesteś poza pomocą techniczną i zostanie wyświetlony monit o uaktualnienie. Jeśli uaktualnienie z wersji n-4 do n-3 powiedzie się, jesteś teraz w naszych zasadach pomocy technicznej. Przykład:
 
-- Jeśli obsługiwane wersje AKS to *1.13. x*, *1.12. a* + *1.12. b*, *1.11. c* + *1.11 d*, i *1.10. e* + *1.10 f* i w dniu *1.9. g* lub *1.9. h*, jesteś poza pomocą techniczną.
-- Jeśli uaktualnienie z *1,9. g* lub *1.9. h* do *1.10. e* lub *1.10. f* powiedzie się, jesteś z powrotem w ramach naszych zasad pomocy technicznej.
+- Jeśli obsługiwane wersje programu AKS to *1.13. a*, *1.12. b* + *1.12. c*, *1.11. d* + *1.11. e*, i *1.10. f* + *1.10. g* i są one w *1.9. h* lub *1.9. i* , jesteś poza pomocą techniczną.
+- Jeśli uaktualnienie z programu *1.9. h* lub *1.9. i* do *1.10. f* lub *1.10. g* powiedzie się, nastąpi powrót do naszych zasad pomocy technicznej.
 
 Uaktualnienia do wersji starszych niż *n-4* nie są obsługiwane. W takich przypadkach zalecamy utworzenie nowych klastrów AKS i ponowne wdrożenie ich obciążeń.
 

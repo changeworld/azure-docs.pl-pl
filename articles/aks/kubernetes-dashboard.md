@@ -1,119 +1,136 @@
 ---
-title: Zarządzanie klastrem usługi Azure Kubernetes Service, korzystając z pulpitu nawigacyjnego sieci web
-description: Dowiedz się, jak wbudowany pulpit nawigacyjny interfejsu użytkownika sieci web rozwiązania Kubernetes umożliwiają zarządzanie klastrem usługi Azure Kubernetes Service (AKS)
+title: Zarządzanie klastrem usługi Azure Kubernetes Service przy użyciu pulpitu nawigacyjnego sieci Web
+description: Dowiedz się, jak za pomocą wbudowanego pulpitu nawigacyjnego interfejsu użytkownika sieci Web Kubernetes zarządzać klastrem usługi Azure Kubernetes Service (AKS)
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: mlearned
-ms.openlocfilehash: 0de2f285b5eca88a098a2d7cfe1608ad2f0db71b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 5aa8268fee7d43ad13ea8710760ba493683f502e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67615236"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126877"
 ---
-# <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Dostęp do pulpitu nawigacyjnego sieci web rozwiązania Kubernetes w usłudze Azure Kubernetes Service (AKS)
+# <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Dostęp do pulpitu nawigacyjnego sieci Web Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
-Kubernetes obejmuje pulpit nawigacyjny sieci web, który może służyć do podstawowych operacji zarządzania. Ten pulpit nawigacyjny pozwala wyświetlić stan kondycji podstawowych i metryk dla aplikacji, tworzenia i wdrażania usług i edytować istniejące aplikacje. W tym artykule pokazano, jak dostęp do pulpitu nawigacyjnego rozwiązania Kubernetes za pomocą wiersza polecenia platformy Azure, a następnie przeprowadzi Cię przez niektóre operacje podstawowe pulpitu nawigacyjnego.
+Kubernetes zawiera internetowy pulpit nawigacyjny, który może być używany do podstawowych operacji zarządzania. Ten pulpit nawigacyjny pozwala wyświetlić podstawowy stan kondycji i metryki dla aplikacji, utworzyć i wdrożyć usługi oraz edytować istniejące aplikacje. W tym artykule pokazano, jak uzyskać dostęp do pulpitu nawigacyjnego Kubernetes przy użyciu interfejsu wiersza polecenia platformy Azure, a następnie przeprowadzi Cię przez niektóre podstawowe operacje pulpitu nawigacyjnego.
 
-Aby uzyskać więcej informacji na temat pulpitu nawigacyjnego rozwiązania Kubernetes, zobacz [pulpit nawigacyjny interfejsu użytkownika sieci Web rozwiązania Kubernetes][kubernetes-dashboard].
+Aby uzyskać więcej informacji na temat pulpitu nawigacyjnego Kubernetes, zobacz [pulpit nawigacyjny interfejsu użytkownika sieci Web Kubernetes][kubernetes-dashboard].
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W krokach szczegółowo opisanych w tym dokumencie przyjęto założenie, został utworzony klaster usługi AKS i ustalonymi `kubectl` połączenia z klastrem. Jeśli musisz utworzyć klaster usługi AKS, zobacz [szybkiego startu usługi AKS][aks-quickstart].
+W krokach przedstawionych w tym dokumencie przyjęto założenie, że utworzono klaster AKS i `kubectl` nawiązano połączenie z klastrem. Jeśli musisz utworzyć klaster AKS, zapoznaj się z [przewodnikiem Szybki Start][aks-quickstart]dotyczącym AKS.
 
-Musisz również mieć zainstalowany i skonfigurowany interfejs wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom polecenie  `az --version` , aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj][install-azure-cli].
+Musisz również mieć zainstalowany i skonfigurowany interfejs wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom polecenie  `az --version` , aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
-## <a name="start-the-kubernetes-dashboard"></a>Rozpocznij pulpit nawigacyjny platformy Kubernetes
+## <a name="start-the-kubernetes-dashboard"></a>Uruchamianie pulpitu nawigacyjnego Kubernetes
 
-Aby uruchomić Pulpit nawigacyjny platformy Kubernetes, należy użyć [Przeglądaj az aks][az-aks-browse] polecenia. W poniższym przykładzie otwierany pulpit nawigacyjny klastra o nazwie *myAKSCluster* w grupie zasobów o nazwie *myResourceGroup*:
+Aby uruchomić Pulpit nawigacyjny Kubernetes, użyj polecenia [AZ AKS Browse][az-aks-browse] . W poniższym przykładzie zostanie otwarty pulpit nawigacyjny dla klastra o nazwie *myAKSCluster* w grupie zasobów o nazwie Moja *zasobów*:
 
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-To polecenie tworzy serwer proxy między systemu dla deweloperów i interfejsu API rozwiązania Kubernetes i otworzy w przeglądarce sieci web pulpitu nawigacyjnego platformy Kubernetes. Przeglądarki sieci web nie zostanie otwarta do pulpitu nawigacyjnego rozwiązania Kubernetes, skopiuj i wklej adres URL zanotowanym w wiersza polecenia platformy Azure, zwykle `http://127.0.0.1:8001`.
+To polecenie tworzy serwer proxy między systemem deweloperskim i interfejsem API Kubernetes, a następnie otwiera przeglądarkę internetową na pulpicie nawigacyjnym Kubernetes. Jeśli przeglądarka sieci Web nie jest otwarta na pulpicie nawigacyjnym Kubernetes, skopiuj i wklej adres URL zanotowany w interfejsie `http://127.0.0.1:8001`wiersza polecenia platformy Azure, zazwyczaj.
 
-![Na stronie Przegląd pulpitu nawigacyjnego sieci web rozwiązania Kubernetes](./media/kubernetes-dashboard/dashboard-overview.png)
+![Strona logowania na pulpicie nawigacyjnym sieci Web Kubernetes](./media/kubernetes-dashboard/dashboard-login.png)
 
-### <a name="for-rbac-enabled-clusters"></a>W przypadku klastrów z obsługą kontroli RBAC
+Dostępne są następujące opcje logowania do pulpitu nawigacyjnego klastra:
 
-Jeśli klaster AKS korzysta z funkcji RBAC, *ClusterRoleBinding* musi zostać utworzona zanim poprawnie możesz uzyskać dostęp do pulpitu nawigacyjnego. Domyślnie Pulpit nawigacyjny platformy Kubernetes jest wdrażany z minimalnym dostęp do odczytu i wyświetla błędy dostęp RBAC. Pulpit nawigacyjny platformy Kubernetes, nie obsługuje obecnie poświadczenia dostarczone przez użytkownika, aby określić poziom dostępu, a nie używa ról przypisywane do konta usługi. Administrator klastra może wybrać przyznanie dodatkowe prawa dostępu do *pulpit nawigacyjny platformy kubernetes* do konta usługi, jednak może to być wektor dla podwyższenie poziomu uprawnień. Można również zintegrować uwierzytelniania usługi Azure Active Directory, aby zapewnić bardziej szczegółowy poziom dostępu.
-
-Aby utworzyć powiązanie, użyj [kubectl tworzenie clusterrolebinding][kubectl-create-clusterrolebinding] polecenia, jak pokazano w poniższym przykładzie. 
+* [Plik kubeconfig][kubeconfig-file]. Plik kubeconfig można wygenerować za pomocą polecenia [AZ AKS Get-Credentials][az-aks-get-credentials].
+* Token, taki jak [token konta usługi][aks-service-accounts] lub token użytkownika. W klastrach z obsługą usługi [AAD][aad-cluster]token ten będzie tokenem usługi AAD. Możesz użyć `kubectl config view` , aby wyświetlić listę tokenów w pliku kubeconfig. Aby uzyskać więcej informacji na temat tworzenia tokenu usługi AAD do użycia z klastrem AKS [, zobacz integrowanie Azure Active Directory z usługą Azure Kubernetes przy użyciu interfejsu wiersza polecenia platformy Azure][aad-cluster].
+* Domyślne konto usługi pulpitu nawigacyjnego, które jest używane po kliknięciu przycisku *Pomiń*.
 
 > [!WARNING]
-> To powiązanie przykładowych nie obejmuje wszystkie składniki dodatkowego uwierzytelniania i może prowadzić do metody use niezabezpieczone. Pulpit nawigacyjny platformy Kubernetes jest otwarta dla każda osoba z dostępem do adresu URL. Nie ujawniaj pulpit nawigacyjny platformy Kubernetes publicznie.
+> Nigdy nie ujawniaj publicznie pulpitu nawigacyjnego Kubernetes niezależnie od używanej metody uwierzytelniania.
+> 
+> W przypadku konfigurowania uwierzytelniania dla pulpitu nawigacyjnego Kubernetes zaleca się użycie tokenu przez domyślne konto usługi pulpitu nawigacyjnego. Token umożliwia każdemu użytkownikowi korzystanie z własnych uprawnień. Użycie domyślnego konta usługi pulpitu nawigacyjnego może pozwolić użytkownikowi na pominięcie własnych uprawnień i użycie zamiast tego konta usługi.
+> 
+> W przypadku wybrania opcji używania domyślnego konta usługi pulpitu nawigacyjnego, gdy klaster AKS używa kontroli RBAC, należy utworzyć *ClusterRoleBinding* , aby można było prawidłowo uzyskać dostęp do pulpitu nawigacyjnego. Domyślnie pulpit nawigacyjny Kubernetes jest wdrażany z minimalnym dostępem do odczytu i wyświetla błędy dostępu RBAC. Administrator klastra może zdecydować się na przyznanie dodatkowego dostępu do konta usługi *Kubernetes-pulpitu nawigacyjnego* , jednak może to być wektor dla eskalacji uprawnień. Możesz także zintegrować Azure Active Directory uwierzytelnianie, aby zapewnić bardziej szczegółowy poziom dostępu.
 >
-> Aby uzyskać więcej informacji na temat korzystania z różnych metod uwierzytelniania, zobacz wiki pulpitu nawigacyjnego rozwiązania Kubernetes na [kontrole dostępu][dashboard-authentication].
+> Aby utworzyć powiązanie, użyj polecenia [polecenia kubectl Create clusterrolebinding][kubectl-create-clusterrolebinding] , jak pokazano w poniższym przykładzie. **To przykładowe powiązanie nie dotyczy żadnych dodatkowych składników uwierzytelniania i może prowadzić do niebezpiecznego użycia.**
+>
+> ```console
+> kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
+> ```
+> 
+> Teraz możesz uzyskać dostęp do pulpitu nawigacyjnego Kubernetes w klastrze z obsługą kontroli RBAC. Aby uruchomić Pulpit nawigacyjny Kubernetes, użyj polecenia [AZ AKS Browse][az-aks-browse] , zgodnie z opisem w poprzednim kroku.
+>
+> Jeśli klaster nie używa RBAC, nie zaleca się tworzenia *ClusterRoleBinding*.
+> 
+> Aby uzyskać więcej informacji na temat korzystania z różnych metod uwierzytelniania, zobacz wiki Kubernetes pulpitu nawigacyjnego na stronie [kontroli dostępu][dashboard-authentication].
 
-```console
-kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
-```
+Po wybraniu metody do zalogowania zostanie wyświetlony pulpit nawigacyjny Kubernetes. W przypadku wybrania opcji Użyj *tokenu* lub *Pomiń*pulpit nawigacyjny Kubernetes będzie używać uprawnień aktualnie zalogowanego użytkownika w celu uzyskania dostępu do klastra.
 
-Pulpit nawigacyjny rozwiązania Kubernetes można teraz uzyskać dostęp w klastrze z włączoną funkcją RBAC. Aby uruchomić Pulpit nawigacyjny platformy Kubernetes, należy użyć [Przeglądaj az aks][az-aks-browse] polecenia zgodnie z opisem w poprzednim kroku.
+![Strona przegląd pulpitu nawigacyjnego sieci Web Kubernetes](./media/kubernetes-dashboard/dashboard-overview.png)
 
 ## <a name="create-an-application"></a>Tworzenie aplikacji
 
-Aby zobaczyć, jak zmniejszyć złożoność zadania związane z zarządzaniem pulpit nawigacyjny platformy Kubernetes, Utwórzmy aplikację. Można utworzyć aplikację z poziomu pulpitu nawigacyjnego rozwiązania Kubernetes, zapewniając tekstowego, pliku YAML, lub za pomocą Kreatora graficznego.
+Aby zobaczyć, jak pulpit nawigacyjny Kubernetes może zmniejszyć złożoność zadań związanych z zarządzaniem, Utwórz aplikację. Możesz utworzyć aplikację z poziomu pulpitu nawigacyjnego Kubernetes, dostarczając tekst wejściowy, plik YAML lub za pośrednictwem graficznego kreatora.
 
 Aby utworzyć aplikację, wykonaj następujące czynności:
 
-1. Wybierz **Utwórz** przycisk w prawym górnym oknie po prawej stronie.
-1. Aby użyć graficznego kreatora, należy wybrać **tworzenie aplikacji**.
-1. Podaj nazwę dla wdrożenia, takich jak *serwera nginx*
-1. Wprowadź nazwę obrazu kontenera do użycia, taki jak *nginx:1.15.5*
-1. Aby uwidocznić port 80 dla ruchu w sieci web, należy utworzyć usługi Kubernetes. W obszarze **usługi**, wybierz opcję **zewnętrznych**, wprowadź **80** port i port docelowy.
-1. Gdy wszystko będzie gotowe, wybierz **Wdróż** do tworzenia aplikacji.
+1. Wybierz przycisk **Utwórz** w prawym górnym oknie.
+1. Aby użyć Kreatora graficznego, wybierz opcję **utworzenia aplikacji**.
+1. Podaj nazwę wdrożenia, na przykład *Nginx*
+1. Wprowadź nazwę obrazu kontenera, który ma być używany, na przykład *Nginx: 1.15.5*
+1. Aby udostępnić port 80 dla ruchu w sieci Web, należy utworzyć usługę Kubernetes. W obszarze **Usługa**wybierz opcję **zewnętrzny**, a następnie wprowadź **80** dla portu i portu docelowego.
+1. Gdy wszystko będzie gotowe, wybierz pozycję **Wdróż** , aby utworzyć aplikację.
 
-![Wdrażanie aplikacji na pulpicie nawigacyjnym w sieci web rozwiązania Kubernetes](./media/kubernetes-dashboard/create-app.png)
+![Wdrażanie aplikacji na pulpicie nawigacyjnym sieci Web Kubernetes](./media/kubernetes-dashboard/create-app.png)
 
-Trwa minutę lub dwie publiczny, zewnętrzny adres IP ma być przypisane do usługi Kubernetes. Rozmiaru po lewej stronie w obszarze **odnajdywania i równoważenie obciążenia** wybierz **usług**. Usługa aplikacji jest wyświetlane, w tym *zewnętrzne punkty końcowe*, jak pokazano w poniższym przykładzie:
+Aby można było przypisać publiczny zewnętrzny adres IP do usługi Kubernetes, trwa minutę lub dwie. W obszarze rozmiar po lewej stronie w obszarze **odnajdywanie i równoważenie obciążenia** wybierz pozycję **usługi**. Zostanie wyświetlona Usługa aplikacji, łącznie z *zewnętrznymi punktami końcowymi*, jak pokazano w następującym przykładzie:
 
 ![Wyświetl listę usług i punktów końcowych](./media/kubernetes-dashboard/view-services.png)
 
-Wybierz adres punktu końcowego, aby otworzyć okno przeglądarki sieci web, aby domyślna strona serwera NGINX:
+Wybierz adres punktu końcowego, aby otworzyć okno przeglądarki sieci Web na domyślnej stronie NGINX:
 
-![Wyświetlić domyślną stronę serwera NGINX wdrożonej aplikacji](./media/kubernetes-dashboard/default-nginx.png)
+![Wyświetlanie domyślnej strony NGINX wdrożonej aplikacji](./media/kubernetes-dashboard/default-nginx.png)
 
-## <a name="view-pod-information"></a>Wyświetlanie informacji pod
+## <a name="view-pod-information"></a>Wyświetl informacje pod
 
-Pulpit nawigacyjny platformy Kubernetes, może zapewnić podstawowe metryki monitorowania i informacje, takie jak dzienniki dotyczące rozwiązywania problemów.
+Pulpit nawigacyjny Kubernetes może zapewniać Podstawowe metryki monitorowania i informacje dotyczące rozwiązywania problemów, takie jak dzienniki.
 
-Aby wyświetlić więcej informacji na temat zasobników aplikacji, wybierz **zasobników** w menu po lewej stronie. Wyświetlana jest lista dostępnych zasobników. Wybierz swoje *nginx* zasobników, aby wyświetlić informacje, takie jak użycie zasobów:
+Aby wyświetlić więcej informacji o zasobnikach aplikacji, wybierz pozycję zasobniki w menu po lewej stronie. Zostanie wyświetlona lista dostępnych zasobników. Wybierz *Nginx* pod, aby wyświetlić informacje, takie jak użycie zasobów:
 
-![Wyświetlanie informacji pod](./media/kubernetes-dashboard/view-pod-info.png)
+![Wyświetl informacje pod](./media/kubernetes-dashboard/view-pod-info.png)
 
 ## <a name="edit-the-application"></a>Edytowanie aplikacji
 
-Oprócz tworzenia i wyświetlania aplikacji, pulpit nawigacyjny platformy Kubernetes, może służyć do edycji i aktualizacji wdrożeń aplikacji. Aby zapewnić dodatkowe nadmiarowość dla aplikacji, możemy zwiększyć liczbę replik NGINX.
+Oprócz tworzenia i wyświetlania aplikacji Pulpit nawigacyjny Kubernetes może służyć do edytowania i aktualizowania wdrożeń aplikacji. Aby zapewnić dodatkową nadmiarowość aplikacji, Zwiększmy liczbę replik NGINX.
 
-Aby edytować wdrożenia:
+Aby edytować wdrożenie:
 
-1. Wybierz **wdrożeń** w menu po lewej stronie, a następnie wybierz swoje *nginx* wdrożenia.
-1. Wybierz **Edytuj** na pasku nawigacyjnym po prawej stronie górnej.
-1. Znajdź `spec.replica` wartość, w całym wierszu 20. Aby zwiększyć liczbę replik dla aplikacji, należy zmienić wartość tego parametru *1* do *3*.
-1. Wybierz **aktualizacji** gdy będzie gotowe.
+1. Wybierz pozycję **wdrożenia** w menu po lewej stronie, a następnie wybierz wdrożenie *Nginx* .
+1. Wybierz pozycję **Edytuj** w prawym górnym pasku nawigacyjnym.
+1. `spec.replica` Znajdź wartość w około 20 wierszach. Aby zwiększyć liczbę replik dla aplikacji, należy zmienić tę wartość z *1* na *3*.
+1. Wybierz pozycję **Aktualizuj** , gdy wszystko będzie gotowe.
 
-![Edytuj wdrożenia w celu zaktualizowania liczba replik](./media/kubernetes-dashboard/edit-deployment.png)
+![Edytowanie wdrożenia w celu zaktualizowania liczby replik](./media/kubernetes-dashboard/edit-deployment.png)
 
-Może potrwać kilka minut w przypadku nowych zasobników, która ma zostać utworzony wewnątrz zestawu replik. W menu po lewej stronie wybierz **zestawów replik**, a następnie wybierz swoje *nginx* zestawu replik. Lista zasobników teraz odzwierciedla liczbę replik zaktualizowane, jak pokazano w następujących przykładowych danych wyjściowych:
+Utworzenie nowych wartości w zestawie replik trwa kilka minut. W menu po lewej stronie wybierz pozycję **zestawy replik**, a następnie wybierz zestaw replik *Nginx* . Lista zasobników odzwierciedla teraz zaktualizowaną liczbę replik, jak pokazano w następujących przykładowych danych wyjściowych:
 
-![Wyświetlanie informacji na temat zestawu replik](./media/kubernetes-dashboard/view-replica-set.png)
+![Wyświetl informacje o zestawie replik](./media/kubernetes-dashboard/view-replica-set.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat pulpitu nawigacyjnego rozwiązania Kubernetes, zobacz [pulpit nawigacyjny interfejsu użytkownika sieci Web rozwiązania Kubernetes][kubernetes-dashboard].
+Aby uzyskać więcej informacji na temat pulpitu nawigacyjnego Kubernetes, zobacz [pulpit nawigacyjny interfejsu użytkownika sieci Web Kubernetes][kubernetes-dashboard].
 
 <!-- LINKS - external -->
-[kubernetes-dashboard]: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 [dashboard-authentication]: https://github.com/kubernetes/dashboard/wiki/Access-control
+[kubeconfig-file]: https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/
 [kubectl-create-clusterrolebinding]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#-em-clusterrolebinding-em-
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
+[kubernetes-dashboard]: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/
 
 <!-- LINKS - internal -->
+[aad-cluster]: ./azure-ad-integration-cli.md
 [aks-quickstart]: ./kubernetes-walkthrough.md
-[install-azure-cli]: /cli/azure/install-azure-cli
+[aks-service-accounts]: ./concepts-identity.md#kubernetes-service-accounts
+[az-account-get-access-token]: /cli/azure/account?view=azure-cli-latest#az-account-get-access-token
 [az-aks-browse]: /cli/azure/aks#az-aks-browse
+[az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[install-azure-cli]: /cli/azure/install-azure-cli

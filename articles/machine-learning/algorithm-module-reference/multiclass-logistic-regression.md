@@ -1,7 +1,7 @@
 ---
-title: 'Wieloklasowej regresji logistycznej: Odwołania do modułu'
+title: 'Regresja logistyczna dla wieloklasy: Dokumentacja modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak użyć modułu kontra regresji logistycznej w usłudze Azure Machine Learning, aby utworzyć model regresji logistycznej, który może służyć do prognozowania wielu wartości.
+description: Dowiedz się, jak za pomocą wieloklasowego modułu regresji logistycznej w usłudze Azure Machine Learning utworzyć model regresji logistycznej, który może służyć do przewidywania wielu wartości.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,63 +9,62 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: ac4310e851808d6e6d89d1a2b506975eea3b1d69
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d51bc48944204b4c7c50790949927849869f26fc
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029328"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128636"
 ---
-# <a name="multiclass-logistic-regression-module"></a>Wieloklasowej regresji logistycznej modułu
+# <a name="multiclass-logistic-regression-module"></a>Wieloklasowy moduł regresji logistycznej
 
-W tym artykule opisano moduł interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Ten moduł służy do tworzenia modelu regresji logistycznej, który może służyć do prognozowania wielu wartości.
+Ten moduł służy do tworzenia modelu regresji logistycznej, który może służyć do przewidywania wielu wartości.
 
-Klasyfikacja za pomocą regresji logistycznej jest metodą uczenia nadzorowanego i dlatego wymaga etykietami zestawu danych. Uczenie modelu, takich jak podając modelu i etykietami zestawu danych jako dane wejściowe do modułu [uczenie modelu](./train-model.md). Następnie można uczonego modelu do prognozowania wartości dla nowe przykłady danych wejściowych.
+Klasyfikacja przy użyciu regresji logistycznej to nadzorowana Metoda uczenia i dlatego wymaga oznaczonego zestawu danych. Możesz nauczyć model, dostarczając model i oznaczony zestaw danych jako dane wejściowe do modułu, takiego jak uczenie [modelu](./train-model.md). Model przeszkolony może być następnie używany do przewidywania wartości nowych przykładów wejściowych.
 
-Usługa Azure Machine Learning udostępnia również [regresji logistycznej Two-Class](./two-class-logistic-regression.md) moduł, który jest odpowiedni dla klasyfikacji binarne lub dichotomous zmiennych.
+Azure Machine Learning udostępnia również moduł [regresji logistycznej z dwoma klasami](./two-class-logistic-regression.md) , który jest odpowiedni do klasyfikacji zmiennych binarnych lub dichotomous.
 
-## <a name="about-multiclass-logistic-regression"></a>Temat wieloklasowej regresji logistycznej
+## <a name="about-multiclass-logistic-regression"></a>Informacje o regresji logistycznej wieloklasowej
 
-Regresja logistyczna jest metodą dobrze znane w statystyce, która jest używana w celu przewidywania prawdopodobieństwa spisania wynik, te są popularne zadania klasyfikacji. Algorytm przewiduje prawdopodobieństwo wystąpienia zdarzenia, przybliżając dane logistyczne funkcji. 
+Regresja logistyczna to dobrze znana metoda w statystyce, która jest używana do przewidywania prawdopodobieństwa wyniku i jest popularna dla zadań klasyfikacji. Algorytm przewiduje prawdopodobieństwo wystąpienia zdarzenia przez dopasowanie danych do funkcji logistycznej. 
 
-W wieloklasowej regresji logistycznej klasyfikatora może służyć do prognozowania wielu wyników.
+W przypadku regresji logistycznej z wieloma klasami Klasyfikator może służyć do przewidywania wielu wyników.
 
 ## <a name="configure-a-multiclass-logistic-regression"></a>Konfigurowanie wieloklasowej regresji logistycznej
 
-1. Dodaj **regresji logistycznej kontra** modułu do eksperymentu.
+1. Dodaj do eksperymentu moduł regresji logistycznej dla wieloklasowego.
 
-2. Określ, jak model, który ma być uczony, ustawiając **trybie trainer tworzenia** opcji.
+2. Określ, w jaki sposób ma być szkolony model, ustawiając opcję **tworzenia trybu Trainer** .
 
-    + **Pojedynczy parametr**: Użyj tej opcji, jeśli wiesz, jak chcesz skonfigurować model i zapewnić określony zbiór wartości jako argumenty.
+    + **Pojedynczy parametr**: Użyj tej opcji, Jeśli wiesz, jak chcesz skonfigurować model i udostępnić określony zestaw wartości jako argumenty.
 
-    + **Parametr zakresu**: Użyj tej opcji, jeśli nie pewności najlepszych parametrów, a chcesz używać parametrów.
+    + **Zakres parametrów**: Użyj tej opcji, jeśli nie masz pewności co do najlepszych parametrów i chcesz użyć odchylenia parametrów.
 
-3. **Tolerancja optymalizacji**, określ wartość progowa zbieżności optymalizatora. Jeśli poprawy między poszczególnymi iteracjami jest poniżej progu, algorytm zatrzymuje i zwraca bieżącego modelu.
+3. **Tolerancja optymalizacji**, określ wartość progową zbieżności Optymalizatora. Jeśli poprawa między iteracjami jest mniejsza niż wartość progowa, algorytm zatrzyma się i zwróci bieżący model.
 
-4. **Waga uregulowania L1**, **wagi uregulowania L2**: Wpisz wartość, aby użyć parametrów uregulowania P1 i P2. Wartość niezerową jest zalecane dla obu.
+4. **Waga uregulowania L1**, **waga uregulowania L2**: Wpisz wartość, która ma być używana dla parametrów uregulowania L1 i L2. Dla obu tych zaleca się wartość różną od zera.
 
-    Uregulowania to metoda zapobieganie overfitting niedyskryminacyjną modeli przy użyciu wartości skrajnych współczynnik. Uregulowania działa przez dodanie spadek, skojarzony z wartości współczynnika błędu hipotezę. Dokładne modelu przy użyciu wartości skrajnych współczynnik będzie bardziej karane, ale mniej dokładne modelu przy użyciu wartości bardziej konserwatywnego będzie karane mniej.
+    Uregulowanie to metoda zapobiegania zastępowaniu poprzez nakładanie się modeli o wartości skrajnego współczynnika. Uregulowanie działa przez dodanie kary, która jest skojarzona z wartościami współczynnika, do błędu hipotezy. Dokładny model z wartościami współczynnika skrajnie byłby bardziej karany, ale mniej dokładny model z bardziej bardziej bardziej nieprawidłowymi wartościami byłyby mniejsze.
 
-     P1 i P2 uregulowania dają różne efekty i używa. L1 można zastosować do modeli rozrzedzonych, co jest przydatne podczas pracy z danymi o wielu wymiarach. Z kolei uregulowania L2 jest preferowane dla danych, który nie jest rozrzedzony.  Ten algorytm obsługuje liniowej kombinacja wartości uregulowania P1 i P2: oznacza to, jeśli `x = L1` i `y = L2`, `ax + by = c` definiuje zakres liniowy warunki uregulowania.
+     Uregulowanie L1 i L2 mają różne efekty i używa. L1 można zastosować do modeli rozrzedzonych, co jest przydatne podczas pracy z danymi o dużym wymiarze. Z kolei w przypadku danych, które nie są rozrzedzone, preferowane jest uregulowanie L2.  Ten algorytm obsługuje liniową kombinację wartości rozliczania L1 i L2: oznacza to, `x = L1` że `y = L2`Jeśli `ax + by = c` i, definiuje liniowy zakres warunków uregulowania.
 
-     Różne kombinacje liniowej P1 i P2 warunki mają został zaprojektowany dla modele regresji logistycznej, takich jak [elastycznej uregulowania netto](https://wikipedia.org/wiki/Elastic_net_regularization).
+     Dla modeli regresji logistycznej opracowano różne liniowe kombinacje warunków L1 i L2, takie jak [elastyczne uregulowanie netto](https://wikipedia.org/wiki/Elastic_net_regularization).
 
-6. **Inicjator losowy numer**: Wpisz wartość całkowitą służące jako inicjatora dla algorytmu, jeśli chcesz, aby wyniki, aby być powtarzalne za pośrednictwem przebiegów. W przeciwnym razie wartość Zegar systemu jest używana jako zalążek, które może wygenerować nieco różne wyniki w przebiegów eksperymentu tego samego.
+6. **Inicjator liczb losowych**: Wpisz wartość całkowitą, która ma być używana jako inicjator dla algorytmu, jeśli chcesz, aby wyniki były powtarzane. W przeciwnym razie wartość zegara systemowego jest używana jako inicjator, który może generować nieco różne wyniki w przebiegach tego samego eksperymentu.
 
-8. Połącz z etykietami zestawu danych, a jeden z modułów train:
+8. Połącz zestaw danych z etykietą i jeden z modułów uczenia:
 
-    + Jeśli ustawisz **trybie trainer tworzenia** do **pojedynczy parametr**, użyj [Train Model](./train-model.md) modułu.
+    + W przypadku ustawienia opcji **Utwórz tryb Trainer** na **pojedynczy parametr**Użyj modułu [uczenie modelu](./train-model.md) .
 
 9. Uruchom eksperyment.
 
 ## <a name="results"></a>Wyniki
 
-Po zakończeniu szkolenia można wyświetlić podsumowanie parametrów modelu, wraz z wagi funkcji z szkolenia, kliknij prawym przyciskiem myszy dane wyjściowe [Train Model](./train-model.md) modułu, a następnie wybierz **Visualize**.
+Po zakończeniu szkolenia zobaczysz podsumowanie parametrów modelu wraz z wagami funkcji uzyskanymi od szkoleń, kliknij prawym przyciskiem myszy dane wyjściowe modułu [uczenie modelu](./train-model.md) i wybierz polecenie **Wizualizuj**.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [zestaw dostępnych modułów](module-reference.md) do usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 

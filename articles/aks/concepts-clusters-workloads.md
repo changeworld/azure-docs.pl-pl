@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 5f387310e737982b824d0ac9662822d9a74f39e9
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: e606b4fee2c46f66f13c45586bcc25577bd90a1f
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67616018"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147199"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Podstawowe pojęcia Kubernetes dla usługi Azure Kubernetes Service (AKS)
 
@@ -100,6 +100,9 @@ Aby zapoznać się z najlepszymi rozwiązaniami, zobacz [najlepsze rozwiązania 
 ### <a name="node-pools"></a>Pule węzłów
 
 Węzły tej samej konfiguracji są pogrupowane w *Pule węzłów*. Klaster Kubernetes zawiera co najmniej jedną pulę węzłów. Początkowa liczba węzłów i rozmiar są definiowane podczas tworzenia klastra AKS, który tworzy *domyślną pulę węzłów*. Ta domyślna pula węzłów w AKS zawiera podstawowe maszyny wirtualne, na których są uruchomione węzły agentów. Obsługa wielu węzłów jest obecnie dostępna w wersji zapoznawczej w AKS.
+
+> [!NOTE]
+> Aby zapewnić niezawodne działanie klastra, należy uruchomić co najmniej 2 (dwa) węzły w domyślnej puli węzłów.
 
 Po skalowaniu lub uaktualnieniu klastra AKS akcja jest wykonywana względem domyślnej puli węzłów. Możesz również wybrać skalowanie lub uaktualnianie określonej puli węzłów. W przypadku operacji uaktualniania uruchomione kontenery są planowane w innych węzłach w puli węzłów do momentu, aż wszystkie węzły zostaną pomyślnie uaktualnione.
 

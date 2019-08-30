@@ -1,8 +1,8 @@
 ---
-title: Limity usługi Azure Blockchain
-description: Omówienie usługi i ograniczenia funkcjonalności w usłudze Azure Service łańcucha bloków
+title: Limity usługi Azure łańcucha bloków
+description: Omówienie limitów usługi i funkcjonalności w usłudze Azure łańcucha bloków Service
 services: azure-blockchain
-keywords: łańcuch bloków
+keywords: łańcucha bloków
 author: PatAltimore
 ms.author: patricka
 ms.date: 05/02/2019
@@ -10,58 +10,58 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 169ec7a8ef407af3f754046aa8e3b06793a7e962
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aeed84f19da3843d043eafef9d7444661901c53e
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65028173"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147144"
 ---
-# <a name="limits-in-azure-blockchain-service"></a>Limity usługi Azure Blockchain
+# <a name="limits-in-azure-blockchain-service"></a>Limity w usłudze Azure łańcucha bloków Service
 
-Usługa Azure Blockchain ma usługi i funkcjonalności limity, takie jak liczba węzłów, jaką może mieć elementu członkowskiego, konsorcjum ograniczenia i ilości magazynu.
+Usługa Azure łańcucha bloków ma limity usługi i funkcjonalne, takie jak liczba węzłów, które może mieć członek, ograniczenia konsorcjum i kwoty magazynu.
 
 ## <a name="pricing-tier"></a>Warstwa cenowa
 
-Maksymalny limit dla transakcji i węzły modułu sprawdzania poprawności zależą od tego, czy aprowizowanie usługi Azure Service łańcucha bloków w warstwie podstawowa lub standardowa warstw cenowych.
+Maksymalne limity dotyczące transakcji i węzłów modułu sprawdzania poprawności zależą od tego, czy usługa Azure łańcucha bloków jest udostępniana w warstwach cenowych w warstwie Podstawowa czy standardowa.
 
-| Warstwa cenowa | Maksymalna liczba transakcji węzłów | Maks. węzłów modułu sprawdzania poprawności |
+| Warstwa cenowa | Maksymalna liczba węzłów transakcji | Maksymalna liczba węzłów modułu sprawdzania poprawności |
 |:---|:---:|:---:|
 | Podstawowa | 10 | 1 |
 | Standardowa (Standard) | 10 | 2 |
 
-Zmiana warstwy cenowej między podstawowa i standardowa, po utworzeniu elementu członkowskiego nie jest obsługiwana.
+Zmiana warstwy cenowej między podstawowa i Standardowa po utworzeniu elementu członkowskiego nie jest obsługiwana.
 
 ## <a name="storage-capacity"></a>Pojemność magazynu
 
-Maksymalna ilość pamięci masowej, który może służyć za węzeł księgi danych i dzienników to 1 terabajt.
+Maksymalna ilość miejsca do magazynowania, która może być używana na węzeł dla danych i dzienników księgi, to 1,8 terabajtów.
 
-Zmniejsza rozmiar magazynu rejestr i dziennika nie jest obsługiwane.
+Zmniejszenie rozmiaru księgi i magazynu dzienników nie jest obsługiwane.
 
 ## <a name="consortium-limits"></a>Limity konsorcjum
 
-* **Konsorcjum i elementów członkowskich nazwy muszą być unikatowe** od nazw innych konsorcjum i elementów członkowskich w usłudze Azure Service łańcucha bloków.
+* **Nazwy konsorcjum i składowe muszą być unikatowe** z innych konsorcjów i nazw członków w usłudze Azure łańcucha bloków.
 
-* **Nie można zmienić nazwy elementu członkowskiego i konsorcjum**
+* **Nie można zmienić nazw członków i konsorcjum**
 
-* **Wszystkie elementy członkowskie do konsorcjum musi należeć do tej samej warstwie cenowej**
+* **Wszyscy członkowie konsorcjum muszą znajdować się w tej samej warstwie cenowej**
 
-* **Wszystkie elementy członkowskie, które uczestniczą w konsorcjum musi znajdować się w tym samym regionie**
+* **Wszyscy członkowie, którzy uczestniczą w konsorcjum, muszą znajdować się w tym samym regionie**
 
-    Pierwszy element członkowski, utworzone w konsorcjum decyduje o regionie. Zaproszonych członków do konsorcjum musi znajdować się w tym samym regionie jako pierwszego elementu członkowskiego. Ograniczanie wszystkie elementy członkowskie do tego samego regionu pomaga upewnić się, że consensus sieci nie ma negatywnego wpływu na.
+    Pierwszy członek utworzony w ramach konsorcjum wymusza region. Zaproszeni członkowie do konsorcjum muszą znajdować się w tym samym regionie co pierwszy członek. Ograniczenie wszystkich elementów członkowskich do tego samego regionu pomaga zapewnić, że konsensus nie wpłynie negatywnie na sieć.
 
 * **Konsorcjum musi mieć co najmniej jednego administratora**
 
-    Jeśli istnieje tylko jeden administrator konsorcjum, nie został usunięty z konsorcjum, lub usuń ich element członkowski, aż inny administrator jest dodawany lub promowany w konsorcjum.
+    Jeśli konsorcjum ma tylko jednego administratora, nie może usunąć siebie z konsorcjum ani usunąć ich członka do momentu dodania lub promocji innego administratora w ramach konsorcjum.
 
-* **Nie można ponownie dodać elementy członkowskie usunięte z konsorcjum**
+* **Nie można ponownie dodać członków usuniętych z konsorcjum**
 
-    Zamiast ich musi można go ponownie zaprosić do dołączania konsorcjum, a następnie utwórz nowy element członkowski. Ich istniejącego zasobu elementu członkowskiego nie są usuwane do zachowania transakcji historycznych.
+    Należy pamiętać, aby dołączyć do konsorcjum i utworzyć nowego członka. Istniejący zasób członkowski nie został usunięty, aby zachować historyczne transakcje.
 
-* **Wszystkie elementy członkowskie do konsorcjum muszą używać tej samej wersji księgi**
+* **Wszyscy członkowie w konsorcjum muszą używać tej samej wersji księgi**
 
-    Aby uzyskać więcej informacji na temat poprawek, aktualizacji i księgi wersje dostępne w usłudze Azure Service łańcucha bloków, zobacz [stosowanie poprawek, aktualizacji i wersje](ledger-versions.md).
+    Aby uzyskać więcej informacji na temat poprawek, aktualizacji i wersji księgi dostępnych w usłudze Azure łańcucha bloków, zobacz [poprawki, aktualizacje i wersje](ledger-versions.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Poprawki, aktualizacje i wersje](ledger-versions.md)

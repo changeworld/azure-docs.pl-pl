@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: raynew
-ms.openlocfilehash: fa1e7fcf89ccc06e429831191ba5dfce3cf33797
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 7fea6d16c8846909a8ce9bb33aae74ce343018fa
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828315"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142320"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -199,17 +199,17 @@ Niewspierany system operacyjny Linux | Maszyna może zaczynać się na platformi
 Nieznany system operacyjny | System operacyjny maszyny wirtualnej został określony jako "inny" w vCenter Server. To zachowanie uniemożliwia Azure Migrate weryfikacji gotowości maszyny wirtualnej platformy Azure. Przed przeprowadzeniem migracji maszyny upewnij się, że system operacyjny maszyny jest [obsługiwany](https://aka.ms/azureoslist) przez platformę Azure.
 Nieobsługiwany typ systemu operacyjnego (liczba bitów) | Maszyny wirtualne z 32-bitową wersją systemu operacyjnego mogą przeprowadzić rozruch na platformie Azure, ale zalecamy uaktualnienie systemu operacyjnego maszyny wirtualnej do wersji 64-bitowej przed migracją na platformę Azure.
 Wymaga subskrypcji Microsoft Visual Studio | Na maszynie jest uruchomiony system operacyjny klienta systemu Windows, który jest obsługiwany tylko przez subskrypcję programu Visual Studio.
-Nie znaleziono maszyny wirtualnej dla żądanej wartości wydajności magazynu | Wydajność magazynu (operacje wejścia/wyjścia na sekundę [IOPS] i przepływność) wymagane dla maszyny przekraczają obsługę maszyny wirtualnej platformy Azure. Przed migracją Zmniejsz wymagania dotyczące magazynu maszyny.
-Nie znaleziono maszyny wirtualnej dla żądanej wartości wydajności sieci | Wydajność sieci (WE/wychodzącej) wymagana przez maszynę przekracza obsługę maszyny wirtualnej platformy Azure. Zmniejsz wymagania dotyczące sieci dla maszyny.
+Nie znaleziono maszyny wirtualnej wymaganej wydajności magazynu | Wydajność magazynu (operacje wejścia/wyjścia na sekundę [IOPS] i przepływność) wymagane dla maszyny przekraczają obsługę maszyny wirtualnej platformy Azure. Przed migracją Zmniejsz wymagania dotyczące magazynu maszyny.
+Nie znaleziono maszyny wirtualnej dla wymaganej wydajności sieci | Wydajność sieci (WE/wychodzącej) wymagana przez maszynę przekracza obsługę maszyny wirtualnej platformy Azure. Zmniejsz wymagania dotyczące sieci dla maszyny.
 Nie znaleziono maszyny wirtualnej w określonej lokalizacji | Użyj innej lokalizacji docelowej przed migracją.
 Znaleziono co najmniej jeden nieodpowiedni dysk | Co najmniej jeden dysk dołączony do maszyny wirtualnej nie spełnia wymagań platformy Azure. Azure Migrate: Ocena serwera obecnie nie obsługuje SSD w warstwie Ultra dysków i ocenia dyski w oparciu o limity dysków dla dysków zarządzanych w warstwie Premium (32 TB).  Dla każdego dysku podłączonego do maszyny wirtualnej upewnij się, że rozmiar dysku jest < 64 TB (obsługiwane przez dyski SSD w warstwie Ultra), w przeciwnym razie Zmniejsz rozmiar dysku przed przeprowadzeniem migracji na platformę Azure lub Użyj wielu dysków na platformie [](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) Azure, aby uzyskać wyższe limity magazynu. Należy upewnić się, że wydajność (IOPS i przepustowość) wymagana przez poszczególne dyski są obsługiwane przez [maszyny wirtualne zarządzane](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits)przez platformę Azure.
 Co najmniej jedna nieodpowiednia karta sieciowa. | Przed migracją Usuń nieużywane karty sieciowe z maszyny.
 Liczba dysków przekracza limit | Usuń nieużywane dyski z maszyny przed migracją.
 Rozmiar dysku przekracza limit | Azure Migrate: Ocena serwera obecnie nie obsługuje SSD w warstwie Ultra dysków i ocenia dyski w oparciu o limity dysku Premium (32 TB). Platforma Azure obsługuje jednak dyski o rozmiarze do 64 TB (obsługiwane przez dyski SSD w warstwie Ultra). Zmniejsz liczbę dysków do mniej niż 64 TB przed migracją lub Użyj wielu dysków na platformie Azure i [Rozłącz je](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) , aby uzyskać wyższe limity magazynu.
 Dysk niedostępny w określonej lokalizacji | Przed przeprowadzeniem migracji upewnij się, że dysk znajduje się w lokalizacji docelowej.
-Brak dostępnych dysków dla określonej nadmiarowości | Dysk powinien używać typu magazynu nadmiarowości zdefiniowanego w ustawieniach oceny (domyślnie LRS).
+Dysk niedostępny dla określonej nadmiarowości | Dysk powinien używać typu magazynu nadmiarowości zdefiniowanego w ustawieniach oceny (domyślnie LRS).
 Nie można określić przydatności dysku z powodu błędu wewnętrznego | Spróbuj utworzyć nową ocenę dla grupy.
-Nie znaleziono maszyny wirtualnej o żądanej liczbie rdzeni i pamięci | Platforma Azure nie może znaleźć odpowiedniego typu maszyny wirtualnej. Przed migracją Zmniejsz ilość pamięci i liczbę rdzeni maszyny lokalnej.
+Nie znaleziono maszyny wirtualnej z wymaganymi rdzeniami i pamięcią | Platforma Azure nie może znaleźć odpowiedniego typu maszyny wirtualnej. Przed migracją Zmniejsz ilość pamięci i liczbę rdzeni maszyny lokalnej.
 Nie można określić przydatności maszyny wirtualnej z powodu błędu wewnętrznego | Spróbuj utworzyć nową ocenę dla grupy.
 Nie można określić przydatności dla co najmniej jednego dysku z powodu błędu wewnętrznego | Spróbuj utworzyć nową ocenę dla grupy.
 Nie można określić przydatności dla co najmniej jednej karty sieciowej z powodu błędu wewnętrznego | Spróbuj utworzyć nową ocenę dla grupy.
@@ -271,7 +271,7 @@ W przypadku maszyny wirtualnej z systemem Linux upewnij się, że polecenia inst
 
 ### <a name="what-operating-systems-does-the-dependency-agent-support"></a>Jakie systemy operacyjne obsługuje Agent zależności?
 
-[Poniżej znajduje się lista systemów operacyjnych Windows obsługiwanych przez agenta zależności](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems). [Poniżej znajduje się lista systemów operacyjnych Linux obsługiwanych przez agenta zależności](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
+[Poniżej znajduje się lista [systemów operacyjnych Windows i Linux obsługiwanych przez Azure monitor dla maszyn wirtualnych](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems).
 
 ### <a name="i-cant-visualize-dependencies-in-azure-migrate-for-more-than-a-one-hour-duration"></a>Nie można wizualizować zależności w Azure Migrate przez okres więcej niż jeden godzinę.
 W Azure Migrate można wizualizować zależności przez maksymalnie jedną godzinę. Chociaż Azure Migrate pozwala na powrót do określonej daty w ostatnim miesiącu, maksymalny czas trwania wizualizacji zależności wynosi godzinę.

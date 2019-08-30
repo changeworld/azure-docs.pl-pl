@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 97f061d94209d84b70626f8735d08f89870e7319
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9da58bf3152867bc13dd1879ec57a69b8bd38cb0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828726"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129328"
 ---
 # <a name="azure-operational-security-best-practices"></a>Najlepsze rozwiązania z zakresu zabezpieczeń operacyjnych platformy Azure
 Ten artykuł zawiera zestaw najlepszych rozwiązań operacyjnych dotyczących ochrony danych, aplikacji i innych zasobów na platformie Azure.
@@ -218,7 +218,7 @@ Aby uzyskać więcej informacji, zobacz [Tworzenie zasad i zarządzanie nimi w c
 **Szczegóły**: Mapowanie dokumentu w dokumentacji organizacji lub w samej zasadzie platformy Azure przez dodanie odwołania do zasad organizacyjnych w [opisie zasad](../../governance/policy/concepts/definition-structure.md#display-name-and-description) platformy Azure lub opis inicjatywy Azure Policy [Initiative](../../governance/policy/concepts/definition-structure.md#initiatives) .
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Monitorowanie raportów o ryzyku usługi Azure AD
-Większość naruszeń zabezpieczeń odbywa się, gdy osoby atakujące uzyskują dostęp do środowiska przez kradzież tożsamości użytkownika. Odnajdywanie zagrożonych tożsamości nie jest łatwe. Usługa Azure AD używa adaptacyjnych algorytmów uczenia maszynowego i heurystyki do wykrywania podejrzanych działań, które są związane z kontami użytkowników. Każda wykryta podejrzana akcja jest przechowywana w rekordzie o nazwie [zdarzenie](../../active-directory/reports-monitoring/concept-risk-events.md)o podwyższonym ryzyku. Zdarzenia o podwyższonym ryzyku są rejestrowane w raportach zabezpieczeń usługi Azure AD. Aby uzyskać więcej informacji, zapoznaj się z raportem o zabezpieczeniach dotyczący [użytkowników](../../active-directory/reports-monitoring/concept-user-at-risk.md) , a Raport [zabezpieczeń](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)dotyczący ryzykownych logowań.
+Większość naruszeń zabezpieczeń odbywa się, gdy osoby atakujące uzyskują dostęp do środowiska przez kradzież tożsamości użytkownika. Odnajdywanie zagrożonych tożsamości nie jest łatwe. Usługa Azure AD używa adaptacyjnych algorytmów uczenia maszynowego i heurystyki do wykrywania podejrzanych działań, które są związane z kontami użytkowników. Każda wykryte podejrzane działania są przechowywane w rekordzie nazywanym wykryciem [ryzyka](../../active-directory/reports-monitoring/concept-risk-events.md). Wykrywanie ryzyka są rejestrowane w raportach zabezpieczeń usługi Azure AD. Aby uzyskać więcej informacji, zapoznaj się z raportem o zabezpieczeniach dotyczący [użytkowników](../../active-directory/reports-monitoring/concept-user-at-risk.md) , a Raport [zabezpieczeń](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)dotyczący ryzykownych logowań.
 
 ## <a name="next-steps"></a>Następne kroki
 Zobacz [najlepsze rozwiązania i wzorce dotyczące zabezpieczeń platformy Azure](best-practices-and-patterns.md) , aby uzyskać więcej najlepszych rozwiązań w zakresie zabezpieczeń, które są używane podczas projektowania i wdrażania rozwiązań w chmurze oraz zarządzania nimi przy użyciu platformy Azure.

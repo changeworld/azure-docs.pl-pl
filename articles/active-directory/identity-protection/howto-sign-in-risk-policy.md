@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0645e01c8ad9c620b77abd9af6cf7fe7c26ab4ea
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: d00376c6689b6be773f24e8acd09c3697fb6a799
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335414"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126308"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>Instrukcje: Konfigurowanie zasad ryzyka logowania
 
-Azure Active Directory wykrywa [typy zdarzeń ryzyka](../reports-monitoring/concept-risk-events.md#risk-event-types) w czasie rzeczywistym i w trybie offline. Każde zdarzenie ryzyka wykryte w przypadku logowania użytkownika przyczynia się do logicznej koncepcji zwanej ryzykownym logowaniem. Ryzykowne logowanie jest wskaźnikiem próby logowania, które mogły nie zostać wykonane przez uprawnionego właściciela konta użytkownika.
+Azure Active Directory wykrywa [typy wykrywania ryzyka](../reports-monitoring/concept-risk-events.md#risk-detection-types) w czasie rzeczywistym i w trybie offline. Każde wykrywanie ryzyka wykryte w przypadku logowania użytkownika przyczynia się do logicznej koncepcji zwanej ryzykownym logowaniem. Ryzykowne logowanie jest wskaźnikiem próby logowania, które mogły nie zostać wykonane przez uprawnionego właściciela konta użytkownika.
 
 ## <a name="what-is-the-sign-in-risk-policy"></a>Jakie są zasady dotyczące ryzyka związanego z logowaniem?
 
-Usługa Azure AD analizuje każdy zalogowanie użytkownika. Celem analizy jest wykrycie podejrzanych działań, które są związane z logowaniem. Na przykład czy logowanie odbywa się przy użyciu anonimowego adresu IP lub czy logowanie zostało zainicjowane z nieznanej lokalizacji? W usłudze Azure AD podejrzane działania wykrywane przez system są również znane jako zdarzenia ryzyka. W oparciu o zdarzenia ryzyka wykryte podczas logowania usługa Azure AD oblicza wartość. Wartość reprezentuje prawdopodobieństwo (niski, średni, wysoki), że logowanie nie jest wykonywane przez uprawnionego użytkownika. Prawdopodobieństwo jest nazywane **poziomem ryzyka logowania**.
+Usługa Azure AD analizuje każdy zalogowanie użytkownika. Celem analizy jest wykrycie podejrzanych działań, które są związane z logowaniem. Na przykład czy logowanie odbywa się przy użyciu anonimowego adresu IP lub czy logowanie zostało zainicjowane z nieznanej lokalizacji? W usłudze Azure AD podejrzane działania wykrywane przez system są również znane jako wykrywanie zagrożeń. Na podstawie wykrytych wykryć ryzyka podczas logowania usługa Azure AD oblicza wartość. Wartość reprezentuje prawdopodobieństwo (niski, średni, wysoki), że logowanie nie jest wykonywane przez uprawnionego użytkownika. Prawdopodobieństwo jest nazywane **poziomem ryzyka logowania**.
 
 Zasady dotyczące ryzyka związanego z logowaniem to zautomatyzowana odpowiedź, którą można skonfigurować dla określonego poziomu ryzyka związanego z logowaniem. W odpowiedzi można zablokować dostęp do zasobów lub wymagać przekazywania wyzwania uwierzytelniania wieloskładnikowego (MFA) w celu uzyskania dostępu.
    
@@ -44,7 +44,7 @@ Konfigurując zasady dotyczące ryzyka związanego z logowaniem, należy ustawi�
 
 - Poziom ryzyka logowania, który wyzwala zasady:
 
-    ![Poziom ryzyka logowania](./media/howto-sign-in-risk-policy/12.png)
+    ![Poziom ryzyka związanego z logowaniem](./media/howto-sign-in-risk-policy/12.png)
 
 - Typ dostępu, który ma zostać wymuszony po spełnieniu poziomu ryzyka związanego z logowaniem:  
 

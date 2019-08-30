@@ -3,21 +3,20 @@ title: Zestawy danych w Azure Data Factory | Microsoft Docs
 description: Dowiedz się więcej o zestawach danych w Data Factory. Zestawy danych reprezentują dane wejściowe/wyjściowe.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: shlo
-ms.openlocfilehash: bbf7159abf88ce70cc62d202a8375aad302a0552
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 788fee724f381ab317b97a682aa21d17ec1ffa9d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019969"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137299"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Zestawy danych w Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -28,7 +27,7 @@ W tym artykule opisano zestawy danych, sposób ich definiowania w formacie JSON 
 
 Jeśli dopiero zaczynasz Data Factory, zobacz [wprowadzenie do Azure Data Factory](introduction.md) przegląd.
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 Fabryka danych może obejmować jeden lub wiele potoków. **Potok** jest logicznym grupą **działań** , które wspólnie wykonują zadanie. Działania w potoku definiują akcje do wykonania na danych. Teraz **zestaw** danych to nazwany widok zawierający dane, które po prostu wskazuje lub odwołuje się do danych, które mają być używane w działaniach jako dane wejściowe i wyjściowe. Zestawy danych identyfikują dane w różnych magazynach danych, takich jak tabele, pliki, foldery i dokumenty. Na przykład zestaw danych obiektów blob platformy Azure określa kontener obiektów blob i folder w usłudze Blob Storage, z których działanie ma odczytywać dane.
 
 Przed utworzeniem zestawu danych należy utworzyć [**połączoną usługę**](concepts-linked-services.md) , aby połączyć magazyn danych z fabryką danych. Połączone usługi działają podobnie do parametrów połączenia, umożliwiając definiowanie informacji wymaganych przez usługę Data Factory do nawiązywania połączeń z zasobami zewnętrznymi. Zastanów się to w ten sposób; DataSet reprezentuje strukturę danych w połączonych magazynach danych, a połączona usługa definiuje połączenie ze źródłem danych. Na przykład połączona usługa Azure Storage łączy konto magazynu z fabryką danych. Zestaw danych obiektów blob platformy Azure reprezentuje kontener obiektów blob i folder w ramach tego konta usługi Azure Storage, które zawiera wejściowe obiekty blob do przetworzenia.
@@ -147,9 +146,7 @@ Pamiętaj o następujących kwestiach:
 - linkedServiceName odwołuje się do połączonej usługi typu AzureSqlDatabase, która jest zdefiniowana w następnym fragmencie kodu JSON.
 
 ## <a name="dataset-type"></a>Typ zestawu danych
-Istnieje wiele różnych typów zestawów danych, w zależności od używanej pamięci. Listę magazynów danych obsługiwanych przez Data Factory można znaleźć w poniższej tabeli. Kliknij magazyn danych, aby dowiedzieć się, jak utworzyć połączoną usługę i zestaw danych dla tego magazynu danych.
-
-[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/connector-activity-support-matrix.md)]
+Istnieje wiele różnych typów zestawów danych, w zależności od używanej pamięci. Listę przechowywanych danych obsługiwanych przez Data Factory można znaleźć w artykule [Omówienie łączników](connector-overview.md) . Kliknij magazyn danych, aby dowiedzieć się, jak utworzyć połączoną usługę i zestaw danych dla tego magazynu danych.
 
 W przykładzie w poprzedniej sekcji Typ zestawu danych jest ustawiony na **wartość azuresqltable**. Podobnie w przypadku zestawu danych obiektów blob platformy Azure Typ zestawu danych jest ustawiany na **AzureBlob**, jak pokazano w poniższym kodzie JSON:
 

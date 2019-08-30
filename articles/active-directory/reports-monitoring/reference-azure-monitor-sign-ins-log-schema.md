@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a82cc4da3b9f4f0c654c95b9889a8bf73fd8ec5
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 4cc07ac2644ac9f97146e980a1961b9b84e7c561
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989621"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127049"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Interpretuj schemat dzienników logowania usługi Azure AD w Azure Monitor
 
@@ -154,11 +154,11 @@ W tym artykule opisano schemat dziennika logowania Azure Active Directory (Azure
 | Result | Wynik operacji logowania może być spowodowany sukcesem lub niepowodzeniem. | 
 | ResultSignature | Zawiera kod błędu (jeśli istnieje) dla operacji logowania. |
 | ResultDescription | Zawiera opis błędu dla operacji logowania. |
-| riskDetail | riskDetail | Zapewnia "powód" w odniesieniu do określonego stanu ryzykownego użytkownika, logowania lub zdarzenia związanego z ryzykiem. Możliwe `none`wartości to:, ,`adminConfirmedSigninSafe` ,,`aiConfirmedSigninSafe`,, ,`userPassedMFADrivenByRiskBasedPolicy`,, .`unknownFutureValue` `adminDismissedAllRiskForUser` `userPerformedSecuredPasswordChange` `adminGeneratedTemporaryPassword` `userPerformedSecuredPasswordReset` `adminConfirmedSigninCompromised` Wartość `none` oznacza, że nie wykonano żadnych akcji na użytkowniku lub logowanie do tej pory. <br>**Uwaga:** Szczegóły tej właściwości wymagają licencji na Azure AD — wersja Premium P2. Inne licencje zwracają wartość `hidden`. |
-| riskEventTypes | riskEventTypes | Typy zdarzeń ryzyka skojarzone z logowaniem. Możliwe `unlikelyTravel`wartości to:, ,`malwareInfectedIPAddress` ,,`investigationsThreatIntelligence`, ,`generic`,,, i`unknownFutureValue`. `maliciousIPAddress` `anonymizedIPAddress` `unfamiliarFeatures` `suspiciousIPAddress` `leakedCredentials` |
+| riskDetail | riskDetail | Zapewnia "powód" w odniesieniu do określonego stanu ryzykownego użytkownika, logowania lub wykrywania ryzyka. Możliwe `none`wartości to:, ,`adminConfirmedSigninSafe` ,,`aiConfirmedSigninSafe`,, ,`userPassedMFADrivenByRiskBasedPolicy`,, .`unknownFutureValue` `adminDismissedAllRiskForUser` `userPerformedSecuredPasswordChange` `adminGeneratedTemporaryPassword` `userPerformedSecuredPasswordReset` `adminConfirmedSigninCompromised` Wartość `none` oznacza, że nie wykonano żadnych akcji na użytkowniku lub logowanie do tej pory. <br>**Uwaga:** Szczegóły tej właściwości wymagają licencji na Azure AD — wersja Premium P2. Inne licencje zwracają wartość `hidden`. |
+| riskEventTypes | riskEventTypes | Typy wykrywania ryzyka skojarzone z logowaniem. Możliwe `unlikelyTravel`wartości to:, ,`malwareInfectedIPAddress` ,,`investigationsThreatIntelligence`, ,`generic`,,, i`unknownFutureValue`. `maliciousIPAddress` `anonymizedIPAddress` `unfamiliarFeatures` `suspiciousIPAddress` `leakedCredentials` |
 | riskLevelAggregated | riskLevel | Zagregowany poziom ryzyka. Możliwe wartości to: `none`, `low`, `medium` `high`,, i`unknownFutureValue`. `hidden` Wartość `hidden` oznacza, że użytkownik lub logowanie nie zostało włączone dla Azure AD Identity Protection. **Uwaga:** Szczegóły dotyczące tej właściwości są dostępne tylko dla klientów Azure AD — wersja Premium P2. Zostaną zwrócone `hidden`wszyscy klienci. |
 | riskLevelDuringSignIn | riskLevel | Poziom ryzyka podczas logowania. Możliwe wartości to: `none`, `low`, `medium` `high`,, i`unknownFutureValue`. `hidden` Wartość `hidden` oznacza, że użytkownik lub logowanie nie zostało włączone dla Azure AD Identity Protection. **Uwaga:** Szczegóły dotyczące tej właściwości są dostępne tylko dla klientów Azure AD — wersja Premium P2. Zostaną zwrócone `hidden`wszyscy klienci. |
-| riskState | riskState | Zgłasza stan ryzykownego użytkownika, logowania lub zdarzenia o podwyższonym ryzyku. Możliwe `none`wartości to:, `confirmedSafe`, `remediated` `dismissed` ,,`unknownFutureValue`, ,`confirmedCompromised`. `atRisk` |
+| riskState | riskState | Zgłasza stan ryzykownego użytkownika, logowania lub wykrywania ryzyka. Możliwe `none`wartości to:, `confirmedSafe`, `remediated` `dismissed` ,,`unknownFutureValue`, ,`confirmedCompromised`. `atRisk` |
 | Milisekundach) |  Ta wartość jest niezamapowana i można bezpiecznie zignorować to pole. |
 | CallerIpAddress | Adres IP klienta, który wykonał żądanie. | 
 | Identyfikator korelacji | Opcjonalny identyfikator GUID, który jest przesyłany przez klienta. Ta wartość może pomóc skorelować operacje po stronie klienta przy użyciu operacji po stronie serwera i jest przydatna podczas śledzenia dzienników obejmujących usługi. |

@@ -15,12 +15,12 @@ ms.date: 06/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 2ec3872b9e11830f7891e98f5fc0182b99e1586d
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 4bf2e057f4c5dad650834f9b42c75be3aedec46e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997347"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142841"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Opis definicji ról dla zasobów platformy Azure
 
@@ -165,7 +165,7 @@ Aby wyświetlać operacje na danych i korzystać z nich, należy dysponować pra
 | [Platforma Azure dla platformy .NET](/dotnet/azure/) | 2.8.0 — wersja zapoznawcza lub nowsza |
 | [Zestaw Azure SDK dla języka Go](/azure/go/azure-sdk-go-install) | 15.0.0 lub nowszy |
 | [Platforma Azure dla języka Java](/java/azure/) | 1.9.0 lub nowszy |
-| [Platforma Azure dla języka Python](/python/azure) | 0.40.0 lub nowszy |
+| [Platforma Azure dla języka Python](/azure/python/) | 0.40.0 lub nowszy |
 | [Zestaw Azure SDK dla środowiska Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 lub nowszy |
 
 Aby wyświetlić operacje na danych w interfejsie API REST i korzystać z nich, należy ustawić parametr **API-Version** w następującej wersji lub nowszej:

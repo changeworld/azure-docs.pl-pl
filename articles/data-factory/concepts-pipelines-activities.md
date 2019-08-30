@@ -3,21 +3,20 @@ title: Potoki i działania w usłudze Azure Data Factory | Microsoft Docs
 description: Informacje na temat potoków i działań w usłudze Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.author: shlo
-ms.openlocfilehash: 5e34dae5570c64ec2c9fdc478ba8ec1bf4bce9d2
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: c986b4efea905ce4e1d9ee6f08b688fe6ef6ef5e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976741"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142554"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Potoki i działania w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -173,8 +172,8 @@ Zasady wpływają na zachowanie działania w czasie wykonania, określając opcj
 Nazwa JSON | Opis | Dozwolone wartości | Wymagane
 --------- | ----------- | -------------- | --------
 limit czasu | Określa limit czasu pracy działania. | Timespan | Nie. Domyślny limit czasu wynosi 7 dni.
-retry | Maksymalna liczba ponownych prób | Liczba całkowita | Nie. Wartość domyślna to 0
-retryIntervalInSeconds | Opóźnienie między ponownymi próbami w sekundach | Liczba całkowita | Nie. Wartość domyślna to 30 sekund
+retry | Maksymalna liczba ponownych prób | Integer | Nie. Wartość domyślna to 0
+retryIntervalInSeconds | Opóźnienie między ponownymi próbami w sekundach | Integer | Nie. Wartość domyślna to 30 sekund
 secureOutput | W przypadku ustawienia wartości „true” dane wyjściowe działania są uznawane za bezpieczne i nie są rejestrowane w ramach monitorowania. | Boolean | Nie. Wartość domyślna to false.
 
 ### <a name="control-activity"></a>Działanie sterowania

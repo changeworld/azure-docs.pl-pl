@@ -1,7 +1,7 @@
 ---
-title: 'Maszyna wektor Two-Class pomocy technicznej: Odwołania do modułu'
+title: 'Maszyna wektorowa obsługująca dwie klasy: Dokumentacja modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać **Two-Class obsługuje Vector Machine** modułu w usłudze Azure Machine Learning, aby utworzyć model oparty na algorytm maszyny wektor pomocy technicznej.
+description: Dowiedz się, jak używać dwuklasowego modułu **maszyny wektorowego** w usłudze Azure Machine Learning, aby utworzyć model oparty na algorytmie maszyny wektorowej obsługi.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,63 +9,62 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: 2f076dd3a5b1ceb9e24548652a71fda5b9aa48b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23f5c638146472b72078e76745e557b6babe7a49
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027933"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128305"
 ---
-# <a name="two-class-support-vector-machine-module"></a>Moduł Two-Class pomocy technicznej wektor maszyny
+# <a name="two-class-support-vector-machine-module"></a>Moduł maszyny wektorowej obsługujący dwie klasy
 
-W tym artykule opisano moduł interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Ten moduł służy do tworzenia modelu, który jest oparty na algorytm maszyny wektor pomocy technicznej. 
+Ten moduł służy do tworzenia modelu opartego na algorytmie maszyny wektorowej obsługi. 
 
-Obsługa wektor maszyny (SVMs) są dobrze zbadane klas, metod uczenia nadzorowanego. Tej określonej implementacji nadaje się do prognozowania dwa możliwe wyniki na podstawie zmiennych ciągłych lub podzielonych na kategorie.
+Maszyny wektorowe obsługi (SVMs) to dobrze przeszukiwana Klasa metod uczenia nadzorowanego. Ta konkretna implementacja jest odpowiednia do przewidywania dwóch możliwych wyników na podstawie zmiennych ciągłych lub kategorii.
 
-Po zdefiniowaniu parametry modelu, uczenie modelu przy użyciu modułów szkolenia i podając *oznakowane dataset* zawierającej kolumnę etykiety lub wynik.
+Po zdefiniowaniu parametrów modelu należy nauczyć model przy użyciu modułów szkoleniowych i dostarczając znacznikowy *zestaw danych* , który zawiera etykietę lub kolumnę wyników.
 
-## <a name="about-support-vector-machines"></a>Informacje o maszynach wektor pomocy technicznej
+## <a name="about-support-vector-machines"></a>Informacje o obsłudze maszyn wektorowych
 
-Obsługa wektor maszyn są pomiędzy najwcześniejszym algorytmów uczenia maszynowego i modele SVM były używane w wielu aplikacjach z pobierania informacji z klasyfikacją tekstu i obrazów. SVMs może służyć do klasyfikacji i regresji zadań.
+Obsługa maszyn wektorowych jest Najwcześniejsza spośród algorytmów uczenia maszynowego, a modele SVM są używane w wielu aplikacjach, od pobierania informacji do klasyfikacji tekstu i obrazów. SVMs można użyć do zadań klasyfikacji i regresji.
 
-Ten model SVM jest model uczenia nadzorowanego, który wymaga etykietami danych. W procesie szkolenia algorytm analizuje dane wejściowe i rozpoznaje wzorce przestrzeni wielowymiarowych funkcji o nazwie *hyperplane*.  Wszystkie przykłady wejściowe są reprezentowane jako punkty, w tym miejscu i są mapowane na dane wyjściowe kategorie w taki sposób, że kategorie są podzielone według jako całej i wyczyść przerwa jak to możliwe.
+Ten model SVM to nadzorowany model uczenia, który wymaga danych z etykietami. W procesie szkoleń algorytm analizuje dane wejściowe i rozpoznaje wzorce w wielowymiarowym obszarze funkcji o nazwie " *Plan*".  Wszystkie przykłady danych wejściowych są reprezentowane jako punkty w tym miejscu i są mapowane na kategorie wyjściowe w taki sposób, że kategorie są podzielone na szeroką i wyznaczą odstępy.
 
-Algorytm SVM przewidywania, przypisuje nowe przykłady w jednej kategorii lub innych, mapując je do tego samego obszaru. 
+W przypadku przewidywania algorytm SVM przypisuje nowe przykłady do jednej kategorii lub drugiej, mapując je na takie same miejsce. 
 
 ## <a name="how-to-configure"></a>Jak skonfigurować 
 
-Dla tego typu modelu zalecane jest znormalizować zestawu danych przed użyciem w celu nauczenia klasyfikatora.
+W przypadku tego typu modelu zaleca się normalizowanie zestawu danych przed użyciem go do uczenia klasyfikatora.
   
-1.  Dodaj **Two-Class pomocy technicznej Vector Machine** modułu do eksperymentu.  
+1.  Dodaj do eksperymentu moduł **maszyny wektorowej obsługujący dwie klasy** .  
   
-2.  Określ, jak model, który ma być uczony, ustawiając **trybie trainer tworzenia** opcji.  
+2.  Określ, w jaki sposób ma być szkolony model, ustawiając opcję **tworzenia trybu Trainer** .  
   
-    -   **Pojedynczy parametr**: Jeśli wiesz, jak chcesz skonfigurować modelu, możesz podać określonych wartości jako argumenty.  
+    -   **Pojedynczy parametr**: Jeśli wiesz, jak chcesz skonfigurować model, możesz podać określony zestaw wartości jako argumenty.  
 
-3.  Aby uzyskać **liczby iteracji**, wpisz numer, który oznacza liczbę iteracji podczas tworzenia modelu.  
+3.  Dla **liczby iteracji**wpisz liczbę, która wskazuje liczbę iteracji użytych podczas kompilowania modelu.  
   
-     Ten parametr może służyć do kontrolowania kompromisu między szkolenia szybkość i dokładność.  
+     Ten parametr może służyć do kontroli handlu między szybkością uczenia i dokładnością.  
   
-4.  Aby uzyskać **Lambda**, wpisz wartość do użycia jako wagę L1 uregulowania.  
+4.  Dla **wyrażenia lambda**wpisz wartość, która ma być używana jako waga dla uregulowania L1.  
   
-     Współczynnika uregulowania można dostrajanie modelu. Większe wartości ukarania bardziej złożonych modeli.  
+     Ten współczynnik uregulowania może służyć do dostrajania modelu. Większe wartości karają bardziej złożone modele.  
   
-5.  Wybierz opcję **normalizacji funkcji**, jeśli chcesz znormalizować funkcji przed szkolenia.
+5.  Wybierz opcję normalizing **Features**, jeśli chcesz znormalizować funkcje przed szkoleniem.
   
-     Jeśli zastosujesz normalizacji przed szkolenia, punkty danych są skupia się na średnią i dostosowana tak, aby mieć jedną jednostkę odchylenia standardowego.
+     W przypadku zastosowania normalizacji przed szkoleniem punkty danych są wyśrodkowane w średniej i skalowane w celu uzyskania jednej jednostki odchylenia standardowego.
   
-6.  Wybierz opcję **projektu go na kulę jednostki**, aby znormalizować współczynniki.
+6.  Wybierz opcję **projekt do sfery jednostki**, aby znormalizować współczynniki.
   
-     Prognozowanie wartości do obszaru jednostki oznacza, że wyśrodkowany w lokalizacji 0 i dostosowana tak, aby mieć jedną jednostkę odchylenie standardowe przed szkolenia, punktów danych.
+     Projekcja wartości w przestrzeni jednostek oznacza, że przed szkoleniem punkty danych są wyśrodkowane w 0 i skalowane w celu uzyskania jednej jednostki odchylenia standardowego.
   
-7.  W **inicjatora liczb losowych**, wpisać wartość całkowitą do użycia jako inicjator, jeśli chcesz zapewnić odtwarzaniem we wszystkich przebiegach aktualizacji.  W przeciwnym razie wartość Zegar systemu jest używana jako zalążek, co może skutkować nieco różne wyniki we wszystkich przebiegach aktualizacji.
+7.  W obszarze **inicjator liczby losowej**wpisz wartość całkowitą, która ma być używana jako inicjator, jeśli chcesz zapewnić odtwarzalność między przebiegami.  W przeciwnym razie wartość zegara systemowego jest używana jako inicjator, co może spowodować nieco inne wyniki w przebiegu.
   
-9. Połącz etykietami zestawu danych, a jedna z [modułów szkoleniowych](module-reference.md):
+9. Połącz zestaw danych z etykietą i jeden z [modułów szkoleniowych](module-reference.md):
   
-    -   Jeśli ustawisz **trybie trainer tworzenia** do **pojedynczy parametr**, użyj [Train Model](train-model.md) modułu.
+    -   W przypadku ustawienia opcji **Utwórz tryb Trainer** na **pojedynczy parametr**Użyj modułu [uczenie modelu](train-model.md) .
   
 
 10. Uruchom eksperyment.
@@ -74,11 +73,11 @@ Dla tego typu modelu zalecane jest znormalizować zestawu danych przed użyciem 
 
 Po zakończeniu szkolenia:
 
-+ Aby wyświetlić podsumowanie parametrów modelu, wraz z wagi funkcji z szkolenia, kliknij prawym przyciskiem myszy dane wyjściowe [Train Model](./train-model.md)i wybierz **Visualize**.
++ Aby wyświetlić podsumowanie parametrów modelu wraz z wagami funkcji zdobywanymi od szkoleń, kliknij prawym przyciskiem myszy dane wyjściowe [modelu uczenia](./train-model.md)i wybierz polecenie **Wizualizuj**.
 
-+ Aby użyć uczone modele do prognozowania, należy połączyć nauczonemu modelowi w celu [Score Model](score-model.md) modułu.
++ Aby wykorzystać przeszkolone modele do prognozowania, Połącz model przeszkolony z modułem [modelu oceny](score-model.md) .
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [zestaw dostępnych modułów](module-reference.md) do usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 

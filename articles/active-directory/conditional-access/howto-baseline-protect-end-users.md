@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 131d38f6154e7a6e2f3175838b084e47e17ec582
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 0f1a2e0bad39b54edc153416e4120bbc6912578c
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532928"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125453"
 ---
 # <a name="baseline-policy-end-user-protection-preview"></a>Zasady linii bazowej: Ochrona użytkowników końcowych (wersja zapoznawcza)
 
@@ -24,7 +24,7 @@ Chcemy myśleć, że konta administratorów są jedynymi kontami, które wymagaj
 
 Aby zapewnić rozsądną równowagę w zakresie bezpieczeństwa i użyteczności, użytkownicy nie powinni otrzymywać monitów za każdym razem, gdy zalogują się. Żądania uwierzytelniania odzwierciedlające normalne zachowanie użytkowników, takie jak logowanie z tego samego urządzenia z tej samej lokalizacji, mają niewielki kompromis. Tylko logowania uznawane za ryzykowne i pokazujące właściwości niewłaściwego aktora powinny być monitowani z wyzwaniami MFA.
 
-Ochrona użytkowników końcowych jest [zasadami odniesienia](concept-baseline-protection.md) MFA opartymi na ryzyku, które chronią wszystkich użytkowników w katalogu, w tym wszystkich ról administratorów. Włączenie tych zasad wymaga, aby wszyscy użytkownicy rejestrowali się w usłudze MFA przy użyciu aplikacji Authenticator. Użytkownicy mogą zignorować monit rejestracji usługi MFA przez 14 dni, po upływie którego nie będzie można zalogować się do momentu zarejestrowania się w usłudze MFA. Po zarejestrowaniu usługi MFA zostanie wyświetlony monit dotyczący uwierzytelniania wieloskładnikowego tylko podczas ryzykownych prób logowania. Naruszone konta użytkowników są blokowane do momentu zresetowania hasła i odrzucenia zdarzeń o podwyższonym ryzyku.
+Ochrona użytkowników końcowych jest [zasadami odniesienia](concept-baseline-protection.md) MFA opartymi na ryzyku, które chronią wszystkich użytkowników w katalogu, w tym wszystkich ról administratorów. Włączenie tych zasad wymaga, aby wszyscy użytkownicy rejestrowali się w usłudze MFA przy użyciu aplikacji Authenticator. Użytkownicy mogą zignorować monit rejestracji usługi MFA przez 14 dni, po upływie którego nie będzie można zalogować się do momentu zarejestrowania się w usłudze MFA. Po zarejestrowaniu usługi MFA zostanie wyświetlony monit dotyczący uwierzytelniania wieloskładnikowego tylko podczas ryzykownych prób logowania. Naruszone konta użytkowników są blokowane do momentu zresetowania hasła i wykrycia ryzyka zostały odrzucone.
 
 > [!NOTE]
 > Te zasady mają zastosowanie do wszystkich użytkowników, w tym kont gościa, i zostaną ocenione podczas logowania do wszystkich aplikacji.
@@ -33,7 +33,7 @@ Ochrona użytkowników końcowych jest [zasadami odniesienia](concept-baseline-p
 
 Aby pomóc w ochronie naszych klientów, usługa nieujawniona poświadczeń firmy Microsoft znajduje publicznie dostępną parę nazw i haseł. Jeśli są one zgodne z jednym z naszych użytkowników, możemy bezpiecznie zabezpieczyć to konto. Użytkownicy zidentyfikowani jako mający ujawnione poświadczenia są potwierdzane. Użytkownicy będą mogli logować się do momentu zresetowania hasła.
 
-Użytkownicy, którym przypisano licencję Azure AD — wersja Premium, mogą przywrócić dostęp za pomocą funkcji samoobsługowego resetowania hasła (SSPR), jeśli ta funkcja jest włączona w swoim katalogu. Użytkownicy bez licencji Premium, która stanie się zablokowana, muszą skontaktować się z administratorem w celu przeprowadzenia ręcznego resetowania hasła i odrzucić zdarzenie o podwyższonym ryzyku użytkownika.
+Użytkownicy, którym przypisano licencję Azure AD — wersja Premium, mogą przywrócić dostęp za pomocą funkcji samoobsługowego resetowania hasła (SSPR), jeśli ta funkcja jest włączona w swoim katalogu. Użytkownicy bez licencji Premium, która stanie się zablokowana, muszą skontaktować się z administratorem w celu przeprowadzenia ręcznego resetowania hasła i odrzucić wykrywanie ryzyka przez oflagowane użytkownika.
 
 ### <a name="steps-to-unblock-a-user"></a>Procedura odblokowywania użytkownika
 

@@ -3,21 +3,20 @@ title: Monitorowanie fabryk danych przy użyciu Azure Monitor | Microsoft Docs
 description: Informacje na temat używania Azure Monitor do monitorowania potoków Data Factory przez włączenie dzienników diagnostycznych z informacjami z Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.author: shlo
-ms.openlocfilehash: 6bad74d33f5d50bb7a35de69927bf97daad07798
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 0614de8bbb1429c84bf5f2e55c1765f3e4863f3a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326874"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141127"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Generowanie alertów i monitorowanie fabryk danych przy użyciu Azure Monitor
 Aplikacje w chmurze są złożone z wieloma ruchomymi częściami. Monitorowanie zapewnia dane, aby upewnić się, że aplikacja będzie działać w dobrej kondycji. Pomaga również w staveniu potencjalnych problemów lub rozwiązywaniu problemów z poprzednimi. Ponadto możesz użyć monitorowania danych, aby uzyskać szczegółowe informacje o aplikacji. Ta wiedza może pomóc w zwiększeniu wydajności aplikacji lub utrzymaniu lub zautomatyzowaniu działań, które w przeciwnym razie wymagają ręcznej interwencji.
@@ -108,11 +107,11 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | storageAccountId |String | Identyfikator zasobu konta magazynu, do którego chcesz wysłać dzienniki diagnostyczne |
 | serviceBusRuleId |String | Identyfikator reguły usługi Service Bus w przestrzeni nazw usługi Service Bus, w której chcesz utworzyć Event Hubs dla dzienników diagnostycznych przesyłania strumieniowego. Identyfikator reguły ma format: "{Identyfikator zasobu usługi Service Bus}/authorizationrules/{Key Name}".|
 | workspaceId | Typ złożony | Tablica ziaren i ich zasad przechowywania. Obecnie ta właściwość jest pusta. |
-|metrics| Wartości parametrów przebiegu potoku do przekazanie do wywołanego potoku| Nazwy parametrów mapowania obiektu JSON na wartości argumentów |
+|metryki| Wartości parametrów przebiegu potoku do przekazanie do wywołanego potoku| Nazwy parametrów mapowania obiektu JSON na wartości argumentów |
 | logs| Typ złożony| Nazwa kategorii dziennika diagnostycznego dla typu zasobu. Aby uzyskać listę kategorii dzienników diagnostycznych dla zasobu, należy najpierw wykonać operację pobierania ustawień diagnostycznych. |
 | category| String| Tablica kategorii dzienników i ich zasad przechowywania |
 | timeGrain | String | Stopień szczegółowości metryk, które są przechwytywane w formacie czasu trwania ISO 8601. Musi być PT1M (jedna minuta)|
-| Dostępny| Boolean | Określa, czy dla tego zasobu jest włączona kolekcja tej kategorii metryki lub dziennika|
+| enabled| Boolean | Określa, czy dla tego zasobu jest włączona kolekcja tej kategorii metryki lub dziennika|
 | retentionPolicy| Typ złożony| Zawiera opis zasad przechowywania dla kategorii Metryka lub dziennik. Używany tylko dla opcji konto magazynu.|
 | days| Int| Liczba dni przechowywania metryk lub dzienników. Wartość 0 powoduje, że dzienniki są przechowywane przez czas nieokreślony. Używany tylko dla opcji konto magazynu. |
 

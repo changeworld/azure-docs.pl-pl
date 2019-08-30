@@ -1,7 +1,7 @@
 ---
-title: 'Las decyzyjny z regresji: Odwołania do modułu'
+title: 'Regresja lasu decyzyjnego: Dokumentacja modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak używać modułu Perceptron uśredniane Two-Class w usłudze Azure Machine Learning w celu utworzenia na podstawie algorytmu uśrednionej perceptron model uczenia maszynowego.
+description: Dowiedz się, jak utworzyć model uczenia maszynowego na podstawie średniego algorytmu Perceptron przy użyciu dwuklasowego modułu Perceptron w usłudze Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,57 +9,56 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: f0fec525ed87f91cf102053383b2934aac4b71c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f560923b0a5457ac5fd03c7f76fc4315c6ca08e8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029238"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128427"
 ---
-# <a name="two-class-averaged-perceptron-module"></a>Moduł Perceptron uśredniane Two-Class
+# <a name="two-class-averaged-perceptron-module"></a>Moduł Perceptron o średniej klasie
 
-W tym artykule opisano moduł interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Ten moduł służy do tworzenia na podstawie algorytmu uśrednionej perceptron model uczenia maszynowego.  
+Ten moduł służy do tworzenia modelu uczenia maszynowego na podstawie średniego algorytmu Perceptron.  
   
-Ten algorytm klasyfikacji, jest metodą uczenia nadzorowanego i wymaga *oznakowane zestawu danych*, która zawiera kolumnę etykiety. Można nauczenia modelu, zapewniając modelu i oznakowane zestawu danych jako dane wejściowe [uczenie modelu](./train-model.md). Następnie można uczonego modelu do prognozowania wartości dla nowe przykłady danych wejściowych.  
+Ten algorytm klasyfikacji to nadzorowana Metoda uczenia i wymaga *oznakowanego zestawu danych*, który zawiera kolumnę etykiet. Możesz nauczyć model, dostarczając model i otagowany zestaw danych jako dane wejściowe do [modelu uczenia](./train-model.md). Model przeszkolony może być następnie używany do przewidywania wartości dla nowych przykładów wejściowych.  
 
-### <a name="about-averaged-perceptron-models"></a>Modele uśrednionej perceptron — informacje
+### <a name="about-averaged-perceptron-models"></a>Informacje o średnich modelach Perceptron
 
-*Uśredniane metoda perceptron* to wersja wczesna i proste sieci neuronowych. W tym podejściu dane wejściowe są przydzielane do kilku możliwych danych wyjściowych oparte na liniowy funkcji, a następnie łączone z zestawem wagi, które są uzyskiwane z wektora funkcji — dlatego nazwy "perceptron."
+*Średnia Metoda Perceptron* to wczesna i prosta wersja sieci neuronowych. W tym podejściu dane wejściowe są klasyfikowane do kilku możliwych wyjść opartych na funkcji liniowej, a następnie połączone z zestawem wag, które pochodzą od wektora funkcji, dlatego nazwa "Perceptron".
 
-Prostsze modeli perceptron są odpowiednie do nauki wzorce oddzielenia liniowo, natomiast sieci neuronowych (szczególnie głębokich sieciach neuronowych) umożliwia modelowanie złożonych granice klasy. Jednak perceptrons są realizowane szybciej i ponieważ one przetwarzają przypadków szeregowo perceptrons mogą być używane z ciągłe szkolenia.
+Prostsze modele Perceptron są odpowiednie do uczenia się liniowo oddzielnych wzorców, natomiast sieci neuronowych (zwłaszcza głębokie sieci neuronowych) mogą modelować bardziej złożone granice klas. Perceptrons są jednak szybsze i ponieważ przetwarzają przypadki seryjnie, Perceptrons może być używany z ciągłym szkoleniem.
 
-## <a name="how-to-configure-two-class-averaged-perceptron"></a>Jak skonfigurować Perceptron uśredniane Two-Class
+## <a name="how-to-configure-two-class-averaged-perceptron"></a>Jak skonfigurować Perceptron średniej klasy dwuklasowej
 
-1.  Dodaj **Perceptron uśredniane Two-Class** modułu do eksperymentu.  
+1.  Dodaj do eksperymentu moduł **Perceptron o średniej klasie** .  
 
-2.  Określ, jak model, który ma być uczony, ustawiając **trybie trainer tworzenia** opcji.  
+2.  Określ, w jaki sposób ma być szkolony model, ustawiając opcję **tworzenia trybu Trainer** .  
   
-    -   **Pojedynczy parametr**: Jeśli wiesz, jak chcesz skonfigurować modelu, należy podać określonych wartości jako argumenty.
+    -   **Pojedynczy parametr**: Jeśli wiesz, jak chcesz skonfigurować model, podaj określony zestaw wartości jako argumenty.
   
-3.  Dla **uczenia współczynnik**, określ wartość dla *uczenia współczynnik*. Tempo uczenia wartości kontrolki rozmiar kroku, który jest używany w stochastycznego spadku gradientu każdorazowo modelu jest testowana i poprawić.
+3.  Wpolu Stawka szkoleniowa Określ wartość dla *stawki szkoleniowej*. Wartości współczynnika uczenia kontrolują rozmiar kroku, który jest używany w gradiencie stochastycznego przy każdym przetestowaniu i skorygowaniu modelu.
   
-     Podejmując szybkość, z mniejszych, można przetestować model częściej, o ryzyku, użytkownik może utknąć w lokalnych pułap możliwości. W kroku powiększania sześcianu, będzie możliwe dokonanie konwergencji szybciej, ryzyko przekroczenia minimalne wartość true.
+     Zmniejszając szybkość, można testować model częściej, z ryzykiem, który może zostać zablokowany w lokalnej Plateau. Dzięki powiększeniu tego kroku można szybciej łączyć się z ryzykiem w przypadku przekroczenia rzeczywistych wartości.
   
-4.  Aby uzyskać **maksymalna liczba iteracji**, wpisz numer razy ma algorytm zbadanie danych szkoleniowych.  
+4.  Dla **maksymalnej liczby iteracji**wpisz, ile razy algorytm ma przeanalizować dane szkoleniowe.  
   
-     Zatrzymywanie wcześnie często zapewnia lepsze generalizacji. Zwiększenie liczby iteracji zwiększa dopasowywania ryzyko overfitting.
+     Zatrzymywanie wczesne często zapewnia lepszy sposób uogólniania. Zwiększenie liczby iteracji usprawnia dopasowanie w przypadku naruszenia.
   
-5.  Dla **inicjatora liczb losowych**możesz wpisać wartość całkowitą jako inicjatora. Za pomocą inicjatora jest zalecane, jeśli chcesz upewnić się, że uruchomieniu odtwarzaniem doświadczenia w.  
+5.  W przypadku **liczby losowej inicjatora**opcjonalnie wpisz wartość całkowitą, która ma być używana jako inicjator. Użycie inicjatora jest zalecane, jeśli chcesz zapewnić odtwarzalność eksperymentu w ramach przebiegów.  
   
-1.  Połącz zestaw danych szkoleniowych i jeden z modułów szkolenia:
+1.  Połącz zestaw danych szkoleniowych i jeden z modułów szkoleniowych:
   
-    -   Jeśli ustawisz **trybie trainer tworzenia** do **pojedynczy parametr**, użyj [Train Model](train-model.md) modułu.
+    -   W przypadku ustawienia opcji **Utwórz tryb Trainer** na **pojedynczy parametr**Użyj modułu [uczenie modelu](train-model.md) .
 
 ## <a name="results"></a>Wyniki
 
 Po zakończeniu szkolenia:
 
-+ Aby wyświetlić podsumowanie parametrów modelu, wraz z wagi funkcji z szkolenia, kliknij prawym przyciskiem myszy dane wyjściowe [Train Model](./train-model.md).
++ Aby wyświetlić podsumowanie parametrów modelu wraz z wagami funkcji zdobywanymi od szkoleń, kliknij prawym przyciskiem myszy dane wyjściowe [modelu uczenia](./train-model.md).
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [zestaw dostępnych modułów](module-reference.md) do usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 

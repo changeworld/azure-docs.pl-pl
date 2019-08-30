@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: 8fffc74075abf6dcc4b5c293819f739a9725646b
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 7233bea4a030b814a5332284a80f07a71f288dba
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998172"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128216"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksowanie plików wideo  
 
@@ -30,15 +30,15 @@ W tym artykule pokazano, jak za pomocą interfejsu API [przekazywania pliku wide
 Po przekazaniu wideo Video Indexer opcjonalnie koduje wideo (omówione w artykule). Podczas tworzenia konta w usłudze Video Indexer można wybrać konto bezpłatnej wersji próbnej (w ramach którego otrzymuje się określoną liczbę bezpłatnych minut indeksowania) lub opcję płatną (w przypadku której nie ma ograniczeń przydziału). Usługa Video Indexer w bezpłatnej wersji próbnej udostępnia do 600 minut bezpłatnego indeksowania u użytkowników witryn internetowych oraz do 2400 minut bezpłatnego indeksowania u użytkowników interfejsów API. Opcja with płatna umożliwia utworzenie konta Video Indexer, które jest [połączone z subskrypcją platformy Azure i kontem Azure Media Services](connect-to-azure.md). Naliczane są opłaty za minuty indeksowania, a także opłaty powiązane z kontem usługi Media. 
 
 ## <a name="uploading-considerations"></a>Zagadnienia dotyczące przekazywania
-
-- W przypadku przekazywania pliku wideo na podstawie adresu URL (opcja preferowana) punkt końcowy musi być zabezpieczony za pomocą protokołu TLS 1.2 (lub nowszej wersji)
-- Rozmiar przekazywania z adresem URL jest ograniczony do 30 GB
-- Długość adresu URL żądania jest ograniczona do 2048 znaków
-- Rozmiar przekazywania z opcją tablicy bajtowej jest ograniczony do 2 GB
-- Opcja tablicy bajtowej jest przekreślania po 30 minutach
-- Adres URL podany w parametrze `videoURL` musi być zakodowany
-- Indeksowanie Media Services elementów zawartości ma takie samo ograniczenie jak indeksowanie z adresu URL
-- Video Indexer ma maksymalny limit czasu trwania wynoszący 4 godziny dla pojedynczego pliku
+ 
+- Podczas przekazywania wideo na podstawie adresu URL (preferowany) punkt końcowy musi być zabezpieczony przy użyciu protokołu TLS 1,2 (lub nowszego).
+- Rozmiar przekazywania z adresem URL jest ograniczony do 30 GB.
+- Długość adresu URL żądania jest ograniczona do 6144 znaków, w przypadku których długość adresu URL ciągu zapytania jest ograniczona do 4096 znaków.
+- Rozmiar przekazywania z opcją tablicy bajtowej jest ograniczony do 2 GB.
+- Opcja tablicy bajtowej jest przekreślania po 30 minutach.
+- Adres URL podany w `videoURL` parametrze param musi być zakodowany.
+- Indeksowanie Media Services elementów zawartości ma takie samo ograniczenie jak indeksowanie z adresu URL.
+- W przypadku pojedynczego pliku Video Indexer ma maksymalny limit czasu trwania wynoszący 4 godziny.
 
 > [!Tip]
 > Zalecane jest korzystanie z platformy .NET w wersji 4.6.2. lub nowszej, ponieważ starsze wersje platformy .NET nie obsługują domyślnie protokołu TLS 1.2.

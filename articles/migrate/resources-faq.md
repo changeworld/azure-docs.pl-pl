@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: af95ad892b62cb5d8bece554d6026525d9279777
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 03651ecb073d02a373c434b8cb55bdafec6d142a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102870"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142215"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Migrate: Często zadawane pytania
 
@@ -172,7 +172,7 @@ Nie, nie można wyeksportować wizualizacji zależności. Ale ponieważ Azure Mi
 
 ### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-the-dependency-agent"></a>Jak można zautomatyzować instalację Microsoft Monitoring Agent (MMA) i agenta zależności?
 
-Użyj tego [skryptu, aby zainstalować agentów](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples). Postępuj zgodnie [z tymi instrukcjami, aby zainstalować MMA](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) za pomocą wiersza polecenia lub automatyzacji. W przypadku MMA Użyj [tego skryptu](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
+Ten [skrypt służy do instalowania agenta zależności](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples). Postępuj zgodnie [z tymi instrukcjami, aby zainstalować MMA](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) za pomocą wiersza polecenia lub automatyzacji. W przypadku MMA Użyj [tego skryptu](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
 
 Oprócz skryptów można także użyć narzędzi wdrażania, takich jak System Center Configuration Manager i [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) , aby wdrożyć agentów.
 
@@ -183,8 +183,7 @@ Oprócz skryptów można także użyć narzędzi wdrażania, takich jak System C
 
 ### <a name="what-operating-systems-are-supported-by-the-dependency-agent"></a>Jakie systemy operacyjne są obsługiwane przez agenta zależności?
 
-- Wyświetl listę [systemów operacyjnych Windows obsługiwanych przez agenta zależności](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems).
-- Wyświetl listę [systemów operacyjnych Linux obsługiwanych przez agenta zależności](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
+Zapoznaj się z listą [systemów operacyjnych Windows i Linux obsługiwanych przez Azure monitor dla maszyn wirtualnych](../azure-monitor/insights/vminsights-enable-overview.md#supported-operating-systems).
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-an-hour"></a>Czy mogę wizualizować zależności w Azure Migrate przez więcej niż godzinę?
 Nie. Możesz wizualizować zależności przez maksymalnie godzinę. Można wrócić do konkretnej daty w historii, o ile nie jest to miesiąc, ale maksymalny czas trwania wizualizacji to godzina. Na przykład można użyć czasu trwania w mapie zależności, aby wyświetlić zależności dla wczoraj, ale można je wyświetlić tylko dla jednogodzinnego okna. Można jednak użyć dzienników Azure Monitor do [wykonywania zapytań o dane zależności](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) przez dłuższy czas.

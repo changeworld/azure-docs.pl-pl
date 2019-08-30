@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc7ea05497d69a7ca833cc783e7a2bc6bf1a8b07
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 92bfb921833d99a3538ffa8c4c5d16a9f0cd3acd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335435"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126282"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>Instrukcje: Konfigurowanie zasad ryzyka użytkowników
 
@@ -26,9 +26,9 @@ Ten artykuł zawiera informacje potrzebne do skonfigurowania zasad ryzyka dla u�
 
 ## <a name="what-is-a-user-risk-policy"></a>Co to są zasady ryzyka dla użytkowników?
 
-Usługa Azure AD analizuje każdy zalogowanie użytkownika. Celem analizy jest wykrycie podejrzanych działań, które są związane z logowaniem. W usłudze Azure AD podejrzane działania wykrywane przez system są również znane jako zdarzenia ryzyka. Niektóre zdarzenia ryzyka mogą być wykrywane w czasie rzeczywistym, ale istnieją także zdarzenia wymagające więcej czasu. Na przykład w celu wykrycia niemożliwej podróży do nietypowych lokalizacji system wymaga początkowego okresu szkoleniowego 14 dni, aby poznać jego zwykłe zachowanie. Istnieje kilka opcji rozwiązywania wykrytych zdarzeń o podwyższonym ryzyku. Można na przykład ręcznie rozwiązać poszczególne zdarzenia związane z ryzykiem lub je rozwiązać przy użyciu ryzyka związanego z logowaniem lub zasad dostępu warunkowego do ryzyka użytkownika.
+Usługa Azure AD analizuje każdy zalogowanie użytkownika. Celem analizy jest wykrycie podejrzanych działań, które są związane z logowaniem. W usłudze Azure AD podejrzane działania wykrywane przez system są również znane jako wykrywanie zagrożeń. Niektóre wykryte zagrożenia mogą być wykrywane w czasie rzeczywistym, ale również wykrycia ryzyka wymagają więcej czasu. Na przykład w celu wykrycia niemożliwej podróży do nietypowych lokalizacji system wymaga początkowego okresu szkoleniowego 14 dni, aby poznać jego zwykłe zachowanie. Istnieje kilka opcji rozwiązywania wykrytych wykrywania zagrożeń. Można na przykład ręcznie rozwiązać poszczególne wykrycia ryzyka lub można je rozwiązać przy użyciu ryzyka związanego z logowaniem lub zasad dostępu warunkowego do ryzyka użytkownika.
 
-Wszystkie zdarzenia ryzyka, które zostały wykryte dla użytkownika i nie zostały rozpoznane, są znane jako aktywne zdarzenia ryzyka. Zdarzenia aktywnego ryzyka, które są skojarzone z użytkownikiem, są nazywane ryzykiem użytkownika. Na podstawie ryzyka związanego z użytkownikiem usługa Azure AD oblicza prawdopodobieństwo naruszenia bezpieczeństwa użytkownika. Prawdopodobieństwo jest nazywane poziomem ryzyka użytkownika.
+Wszystkie wykrycia ryzyka, które zostały wykryte dla użytkownika i nie zostały rozpoznane, są znane jako aktywne wykrycia ryzyka. Aktywne wykrywania ryzyka, które są skojarzone z użytkownikiem, są nazywane ryzykiem użytkownika. Na podstawie ryzyka związanego z użytkownikiem usługa Azure AD oblicza prawdopodobieństwo naruszenia bezpieczeństwa użytkownika. Prawdopodobieństwo jest nazywane poziomem ryzyka użytkownika.
 
 ![Czynniki ryzyka użytkownika](./media/howto-user-risk-policy/1031.png)
 
@@ -72,8 +72,8 @@ Można ustawić zasady zabezpieczeń ryzyka dla użytkowników, aby blokować u�
 
 Blokowanie logowania:
 
-* Zapobiega generowaniu nowych zdarzeń ryzyka użytkownika dla danego użytkownika
-* Umożliwia administratorom ręczne korygowanie zdarzeń ryzyka mających wpływ na tożsamość użytkownika i przywrócenie go do stanu bezpiecznego
+* Zapobiega generowaniu nowych wykrycia ryzyka użytkownika dla danego użytkownika
+* Umożliwia administratorom ręczne korygowanie wykrywania ryzyka, które mają wpływ na tożsamość użytkownika, i przywrócenie go do stanu bezpiecznego
 
 ## <a name="best-practices"></a>Najlepsze praktyki
 
@@ -100,6 +100,6 @@ Aby zapoznać się z omówieniem środowiska użytkownika powiązanego, zobacz:
 
     ![Zasady ryzyka dla użytkowników](./media/howto-user-risk-policy/1009.png "Zasady ryzyka dla użytkowników")
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby zapoznać się z omówieniem Azure AD Identity Protection, zobacz [omówienie Azure AD Identity Protection](overview.md).

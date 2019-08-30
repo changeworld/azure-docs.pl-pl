@@ -1,45 +1,45 @@
 ---
-title: Automatyczne zwiększanie magazynu przy użyciu witryny Azure portal w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-description: W tym artykule opisano, jak można włączyć automatycznego zwiększenia magazynu w witrynie Azure portal w usłudze Azure Database dla PostegreSQL — pojedynczy serwer
+title: Powiększ magazyn przy użyciu Azure Portal w ramach Azure Database for PostgreSQL-pojedynczego serwera
+description: W tym artykule opisano sposób włączania magazynu z obsługą autowzrostu przy użyciu Azure Portal na pojedynczym serwerze Azure Database for PostgreSQL
 author: ambhatna
 ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/29/2019
-ms.openlocfilehash: 9f88fe3e8a30dd80c5331bd6c8ea7aec401c6fb9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d028093b030e1f2cf00ceae9297563c36c314c5
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66676761"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142877"
 ---
-# <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>Automatyczne zwiększanie magazynu przy użyciu witryny Azure portal w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-W tym artykule opisano sposób konfigurowania usługi Azure Database for postgresql — magazyn serwera można rozwijać bez wywierania wpływu na obciążenie pracą.
+# <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>Powiększ magazyn przy użyciu Azure Portal w ramach Azure Database for PostgreSQL-pojedynczego serwera
+W tym artykule opisano, jak można skonfigurować magazyn serwera Azure Database for PostgreSQL do wzrostu bez wpływu na obciążenie.
 
-Gdy serwer osiągnie limit magazynowania przydzielone, serwer zostanie oznaczony jako tylko do odczytu. Jednak jeśli włączysz magazynu automatyczne zwiększanie, magazynu serwera wzrasta do pomieszczenia rosnącą danych. W przypadku serwerów z mniej niż 100 GB zainicjowano obsługę administracyjną magazynu rozmiar aprowizowanego magazynu jest zwiększana o 5 GB, jak ilość wolnego miejsca jest poniżej większą niż 1 GB lub 10% aprowizowanego magazynu. W przypadku serwerów z więcej niż 100 GB magazynu aprowizowanego rozmiaru aprowizowanego magazynu zwiększa się o 5% gdy ilość wolnego miejsca jest poniżej 5% rozmiaru aprowizowanego magazynu. Limity pamięci masowej w określonych [tutaj](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage) zastosowania.
+Gdy serwer osiągnie przydzieloną liczbę magazynów, serwer jest oznaczony jako tylko do odczytu. Jeśli jednak włączysz funkcję autozwiększania magazynu, magazyn serwera zwiększy się, aby uwzględnić rosnące dane. W przypadku serwerów o rozmiarze mniejszym niż 100 GB zainicjowany magazyn jest zwiększany o 5 GB, gdy tylko ilość wolnego miejsca w magazynie jest mniejsza niż 1 GB lub 10% zainicjowanego magazynu. W przypadku serwerów mających więcej niż 100 GB zasobów magazynowych zainicjowany rozmiar magazynu jest zwiększany o 5%, gdy ilość wolnego miejsca w magazynie jest mniejsza od 5% rozmiaru magazynu. Obowiązują maksymalne limity magazynu określone w [tym miejscu](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#storage) .
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby ukończyć ten przewodnik, potrzebne są:
-- [— Azure Database for postgresql w warstwie serwera](quickstart-create-server-database-portal.md)
+- [Serwer Azure Database for PostgreSQL](quickstart-create-server-database-portal.md)
 
-## <a name="enable-storage-auto-grow"></a>Włącz automatyczne magazynu rozwoju 
+## <a name="enable-storage-auto-grow"></a>Włącz funkcję autowzrostu magazynu 
 
-Wykonaj następujące kroki, aby ustawić rosnąć automatycznie magazynu serwera PostgreSQL:
+Wykonaj następujące kroki, aby ustawić funkcję autowzrostu magazynu serwera PostgreSQL:
 
-1. W [witryny Azure portal](https://portal.azure.com/), Wybieranie usługi Azure Database for postgresql w warstwie serwera.
+1. W [Azure Portal](https://portal.azure.com/)wybierz istniejący serwer Azure Database for PostgreSQL.
 
-2. Na stronie serwera postgresql — w obszarze **ustawienia**, kliknij przycisk **warstwa cenowa** o otwarcie strony warstwy cenowej.
+2. Na stronie serwer PostgreSQL w obszarze **Ustawienia**kliknij pozycję **warstwa cenowa** , aby otworzyć stronę warstwa cenowa.
 
-3. W **automatycznego wzrostu** zaznacz **tak** umożliwiające rozwój automatycznie magazynu.
+3. W sekcji **autoprzyrost** wybierz pozycję **tak** , aby włączyć funkcję automatycznego zwiększania rozmiaru magazynu.
 
-    ![Azure Database for PostgreSQL - Settings_Pricing_tier - Auto wzrostu](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
+    ![Azure Database for PostgreSQL-Settings_Pricing_tier — autowzrostu](./media/howto-auto-grow-storage-portal/3-auto-grow.png)
 
 4. Kliknij przycisk **OK** , aby zapisać zmiany.
 
-5. Powiadomienie o potwierdzenie automatycznego wzrostu został pomyślnie włączony.
+5. Powiadomienie zostanie potwierdzone, że funkcja autozwiększania została pomyślnie włączona.
 
-    ![Azure Database for PostgreSQL — Powodzenie automatycznego wzrostu](./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png)
+    ![Azure Database for PostgreSQL — powodzenie automatycznego wzrostu](./media/howto-auto-grow-storage-portal/5-auto-grow-successful.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [jak tworzenie alertów dotyczących metryk](howto-alert-on-metric.md).
+Dowiedz się więcej na temat [tworzenia alertów dotyczących metryk](howto-alert-on-metric.md).

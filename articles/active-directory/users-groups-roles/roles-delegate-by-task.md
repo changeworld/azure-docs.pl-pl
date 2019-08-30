@@ -1,6 +1,6 @@
 ---
-title: Delegowanie najniższych uprawnieniach ról przez administratora zadań — Azure Active Directory | Dokumentacja firmy Microsoft
-description: Role do delegowania zadań tożsamości w usłudze Azure Active Directory
+title: Delegowanie najniższych ról uprzywilejowanych przez administratora zadania-Azure Active Directory | Microsoft Docs
+description: Role delegowania zadań związanych z tożsamościami w Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -15,335 +15,337 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21136046bad8cb58432de367f0de06d1d0457eec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 62814bb1e2934c406dc5fb1eb3b3bc3f3d2ee3b7
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083781"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135556"
 ---
-# <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role administratorów przez zadanie administratora w usłudze Azure Active Directory
+# <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role administratorów według zadania administratora w Azure Active Directory
 
-W tym artykule znajdziesz informacje wymagane do ograniczenia uprawnień administratora, przypisując najniższych uprawnieniach ról w usłudze Azure Active Directory (Azure AD). Można znaleźć zadania administratora uporządkowane według obszaru funkcji oraz rolę najniższych uprawnieniach wymaganych do wykonania każdego zadania oraz role dodatkowe bez uprawnień globalnego administratora, które można wykonać zadanie.
+W tym artykule można znaleźć informacje potrzebne do ograniczenia uprawnień administratora użytkownika przez przypisanie najmniej uprzywilejowanych ról w Azure Active Directory (Azure AD). Zadania administratora są organizowane przez obszar funkcji i najmniej uprzywilejowaną rolę wymaganą do wykonania każdego zadania, a także dodatkowe role administratora nieglobalne, które mogą wykonać zadanie.
 
 ## <a name="application-proxy"></a>Serwer proxy aplikacji
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Konfigurowanie aplikacji serwera proxy aplikacji | Administrator aplikacji | 
-Skonfigurować właściwości grupy łączników | Administrator aplikacji | 
-Utwórz rejestrację aplikacji, gdy możliwości jest wyłączony dla wszystkich użytkowników | Deweloper aplikacji | Administrator aplikacji w chmurze, Administrator aplikacji
-Tworzenie grupy łączników | Administrator aplikacji | 
-Usuwanie grupy łączników | Administrator aplikacji | 
-Wyłączanie serwera proxy aplikacji | Administrator aplikacji | 
+Konfigurowanie właściwości grupy łączników | Administrator aplikacji | 
+Utwórz rejestrację aplikacji, gdy możliwość jest wyłączona dla wszystkich użytkowników | Deweloper aplikacji | Administrator aplikacji w chmurze, administrator aplikacji
+Utwórz grupę łączników | Administrator aplikacji | 
+Usuń grupę łączników | Administrator aplikacji | 
+Wyłącz serwer proxy aplikacji | Administrator aplikacji | 
 Pobierz usługę łącznika | Administrator aplikacji | 
-Przeczytaj całą konfigurację | Administrator aplikacji | 
+Odczytaj całą konfigurację | Administrator aplikacji | 
 
 ## <a name="b2c"></a>B2C
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Tworzenie katalogów usługi Azure AD B2C | Wszyscy użytkownicy innego niż Gość ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
+Tworzenie katalogów Azure AD B2C | Wszyscy użytkownicy niebędący gośćmi ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Tworzenie aplikacji B2C | Administrator globalny | 
 Tworzenie aplikacji dla przedsiębiorstw | Administrator aplikacji w chmurze | Administrator aplikacji
-Tworzenie, Odczyt, aktualizowanie i usuwanie zasady usługi B2C | Administrator globalny | 
-Tworzenie, Odczyt, aktualizowanie i usuwanie dostawcy tożsamości | Administrator globalny | 
-Tworzenie, Odczyt, aktualizowanie i usuwanie przepływy użytkownika resetowania hasła | Administrator globalny | 
-Tworzenie, Odczyt, aktualizowanie i usuwanie profilu edycji przepływy użytkownika | Administrator globalny | 
-Tworzenia, odczytu, aktualizacji i usuwania przepływów użytkownika logowania | Administrator globalny | 
-Tworzenie, Odczyt, aktualizowanie i usuwanie przepływu użytkownika rejestracji |Administrator globalny | 
-Tworzenie, Odczyt, aktualizowanie i usuwanie atrybutów użytkownika | Administrator globalny | 
-Tworzenie, Odczyt, aktualizowanie i usuwanie użytkowników | Administrator globalny ([dokumentacji](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs))
-Przeczytaj całą konfigurację | Administrator globalny | 
-Dzienniki inspekcji B2C odczytu | Administrator globalny ([dokumentacji](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
+Tworzenie, odczytywanie, aktualizowanie i usuwanie zasad B2C | Administrator globalny | 
+Tworzenie, odczytywanie, aktualizowanie i usuwanie dostawców tożsamości | Administrator globalny | 
+Tworzenie, odczytywanie, aktualizowanie i usuwanie przepływów użytkownika resetowania haseł | Administrator globalny | 
+Tworzenie, odczytywanie, aktualizowanie i usuwanie profilu edytowanie przepływów użytkowników | Administrator globalny | 
+Tworzenie, odczytywanie, aktualizowanie i usuwanie przepływów użytkowników logowania | Administrator globalny | 
+Tworzenie, odczytywanie, aktualizowanie i usuwanie przepływu użytkownika przy rejestrowaniu |Administrator globalny | 
+Tworzenie, odczytywanie, aktualizowanie i usuwanie atrybutów użytkownika | Administrator globalny | 
+Tworzenie, odczytywanie, aktualizowanie i usuwanie użytkowników | Administrator globalny ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs))
+Odczytaj całą konfigurację | Administrator globalny | 
+Odczytaj dzienniki inspekcji B2C | Administrator globalny ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
 
 > [!NOTE]
-> Administratorzy globalni usługi Azure AD B2C nie mają takie same uprawnienia jak Administratorzy globalni usługi Azure AD. Jeśli masz uprawnienia administratora globalnego usługi Azure AD B2C, upewnij się, że znajdują się w katalogu usługi Azure AD B2C, a nie katalog usługi Azure AD.
+> Administratorzy globalni Azure AD B2C nie mają tych samych uprawnień co Administratorzy globalni usługi Azure AD. Jeśli masz Azure AD B2C uprawnienia administratora globalnego, upewnij się, że jesteś w katalogu Azure AD B2C, a nie w katalogu usługi Azure AD.
 
-## <a name="company-branding"></a>Oznaczanie marką firmy
+## <a name="company-branding"></a>Znakowanie firmowe
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Konfigurowanie oznaczenia marką firmy | Administrator globalny | 
-Przeczytaj całą konfigurację | Odczytywanie katalogów | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+Konfigurowanie znakowania firmowego | Administrator globalny | 
+Odczytaj całą konfigurację | Odczytywanie katalogów | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 
 ## <a name="company-properties"></a>Właściwości firmy
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Konfigurowanie właściwości firmy | Administrator globalny | 
 
-## <a name="connect"></a>Połączenie
+## <a name="connect"></a>Połącz
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Uwierzytelnianie przekazujących | Administrator globalny | 
-Przeczytaj całą konfigurację | Administrator globalny | 
+Przekazywanie uwierzytelniania | Administrator globalny | 
+Odczytaj całą konfigurację | Administrator globalny | 
 Bezproblemowe logowanie jednokrotne | Administrator globalny | 
 
 ## <a name="connect-health"></a>Connect Health
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Dodawanie lub usuwanie usługi | Właściciel ([dokumentacji](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations)) | 
-Zastosować poprawki do błąd synchronizacji | Współautor ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Właściciel
-Konfigurowanie powiadomień | Współautor ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Właściciel
-Konfigurowanie ustawień | Właściciel ([dokumentacji](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations)) | 
-Konfigurowanie powiadomień synchronizacji | Współautor ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Właściciel
-Raporty dotyczące zabezpieczeń AD FS odczytu | Czytelnik zabezpieczeń | Współautor, właściciel
-Przeczytaj całą konfigurację | Czytnik ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Współautor, właściciel
-Błędy synchronizacji odczytu | Czytnik ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Współautor, właściciel
-Usługi synchronizacji odczytu | Czytnik ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Współautor, właściciel
-Wyświetl metryki i alerty | Czytnik ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Współautor, właściciel
-Wyświetl metryki i alerty | Czytnik ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Współautor, właściciel
-Wyświetl metryki usługi synchronizacji i alerty | Czytnik ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Współautor, właściciel
+Dodawanie lub usuwanie usług | Owner ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations)) | 
+Zastosuj poprawki do błędu synchronizacji | Współautor ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Właściciel
+Konfigurowanie powiadomień | Współautor ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Właściciel
+Konfigurowanie ustawień | Owner ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations)) | 
+Konfigurowanie powiadomień dotyczących synchronizacji | Współautor ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Właściciel
+Przeczytaj raporty zabezpieczeń usług AD FS | Czytelnik zabezpieczeń | Współautor, właściciel
+Odczytaj całą konfigurację | Reader ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Współautor, właściciel
+Błędy synchronizacji odczytu | Reader ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Współautor, właściciel
+Odczytaj usługi synchronizacji | Reader ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Współautor, właściciel
+Wyświetlanie metryk i alertów | Reader ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Współautor, właściciel
+Wyświetlanie metryk i alertów | Reader ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Współautor, właściciel
+Wyświetl metryki i alerty usługi synchronizacji | Reader ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions?context=azure/active-directory/users-groups-roles/context/ugr-context)) | Współautor, właściciel
 
 
-## <a name="custom-domain-names"></a>Niestandardowe nazwy domen
+## <a name="custom-domain-names"></a>Nazwy domen niestandardowych
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Zarządzanie domenami | Administrator globalny | 
-Przeczytaj całą konfigurację | Odczytywanie katalogów | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+Odczytaj całą konfigurację | Odczytywanie katalogów | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 
 ## <a name="domain-services"></a>Domain Services
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Tworzenie wystąpienia usługi Azure AD Domain Services | Administrator globalny | 
-Wykonywanie wszystkich zadań usługi Azure AD Domain Services | Grupy Administratorzy kontrolera domeny usługi AD Azure ([dokumentacji](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-domain#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
-Przeczytaj całą konfigurację | Czytnika w subskrypcji platformy Azure zawierającej usługi AD DS | 
+Utwórz wystąpienie Azure AD Domain Services | Administrator globalny | 
+Wykonaj wszystkie zadania Azure AD Domain Services | Grupa administratorów kontrolera domeny usługi Azure AD ([Zobacz dokumentację](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-an-azure-ad-ds-managed-domain)) | 
+Odczytaj całą konfigurację | Czytelnik w ramach subskrypcji platformy Azure zawierającej usługę AD DS | 
 
 ## <a name="devices"></a>Urządzenia
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Wyłączenie urządzenia | Administrator urządzenia w chmurze | 
-Włącz urządzenie | Administrator urządzenia w chmurze | 
-Odczyt konfiguracji podstawowej | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
-Klucze funkcji BitLocker odczytu | Czytelnik zabezpieczeń | Hasło administratora, administrator zabezpieczeń
+Wyłączanie urządzenia | Administrator urządzeń w chmurze | 
+Włączanie urządzenia | Administrator urządzeń w chmurze | 
+Odczytaj konfigurację podstawową | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
+Odczytaj klucze funkcji BitLocker | Czytelnik zabezpieczeń | Administrator haseł, administrator zabezpieczeń
 
 ## <a name="enterprise-applications"></a>Aplikacje dla przedsiębiorstw
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Zgoda na wszelkie uprawnienia delegowane | Administrator aplikacji w chmurze | Administrator aplikacji
-Wyrazić zgodę na uprawnienia aplikacji, nie wliczając Microsoft Graph or Azure AD Graph | Administrator aplikacji w chmurze | Administrator aplikacji
-Wyrazić zgodę na uprawnienia aplikacji do programu Microsoft Graph lub programu Azure AD Graph | Administrator globalny | 
-Wyrazić zgodę na uzyskiwanie dostępu do danych własne aplikacje | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
+Wyrażanie zgody na uprawnienia delegowane | Administrator aplikacji w chmurze | Administrator aplikacji
+Wyrażanie zgody na uprawnienia aplikacji, które nie obejmują Microsoft Graph lub grafu usługi Azure AD | Administrator aplikacji w chmurze | Administrator aplikacji
+Wyrażanie zgody na uprawnienia aplikacji do Microsoft Graph lub grafu usługi Azure AD | Administrator globalny | 
+Wyrażanie zgody na aplikacje uzyskujące dostęp do danych | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 Tworzenie aplikacji dla przedsiębiorstw | Administrator aplikacji w chmurze | Administrator aplikacji
-Zarządzaj serwera Proxy aplikacji | Administrator aplikacji | 
+Zarządzanie serwerem proxy aplikacji | Administrator aplikacji | 
 Zarządzaj ustawieniami użytkownika | Administrator globalny | 
-Przejrzyj dostęp do odczytu grupę lub aplikację | Czytelnik zabezpieczeń | Administrator zabezpieczeń, Administrator użytkowników
-Przeczytaj całą konfigurację | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
-Aktualizowanie przypisań aplikacji przedsiębiorstwa | Właściciel aplikacji przedsiębiorstwa ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator aplikacji w chmurze, administrator aplikacji
-Aktualizuj właścicieli aplikacji przedsiębiorstwa | Właściciel aplikacji przedsiębiorstwa ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator aplikacji w chmurze, administrator aplikacji
-Aktualizacja właściwości aplikacji przedsiębiorstwa | Właściciel aplikacji przedsiębiorstwa ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator aplikacji w chmurze, administrator aplikacji
-Aktualizuj aprowizacja aplikacji przedsiębiorstwa | Właściciel aplikacji przedsiębiorstwa ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator aplikacji w chmurze, administrator aplikacji
-Aktualizuj aplikację przedsiębiorstwa samoobsługi | Właściciel aplikacji przedsiębiorstwa ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator aplikacji w chmurze, administrator aplikacji
-Aktualizowanie właściwości rejestracji jednokrotnej | Właściciel aplikacji przedsiębiorstwa ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator aplikacji w chmurze, administrator aplikacji
+Przegląd dostępu do odczytu grupy lub aplikacji | Czytelnik zabezpieczeń | Administrator zabezpieczeń, administrator użytkowników
+Odczytaj całą konfigurację | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
+Aktualizowanie przypisań aplikacji dla przedsiębiorstw | Właściciel aplikacji przedsiębiorstwa ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator aplikacji w chmurze, administrator aplikacji
+Aktualizowanie właścicieli aplikacji dla przedsiębiorstw | Właściciel aplikacji przedsiębiorstwa ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator aplikacji w chmurze, administrator aplikacji
+Aktualizowanie właściwości aplikacji dla przedsiębiorstw | Właściciel aplikacji przedsiębiorstwa ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator aplikacji w chmurze, administrator aplikacji
+Aktualizowanie aprowizacji aplikacji dla przedsiębiorstw | Właściciel aplikacji przedsiębiorstwa ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator aplikacji w chmurze, administrator aplikacji
+Aktualizacja samoobsługi aplikacji dla przedsiębiorstw | Właściciel aplikacji przedsiębiorstwa ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator aplikacji w chmurze, administrator aplikacji
+Aktualizowanie właściwości logowania jednokrotnego | Właściciel aplikacji przedsiębiorstwa ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator aplikacji w chmurze, administrator aplikacji
+
+
 
 ## <a name="groups"></a>Grupy
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Przypisywanie licencji | Administrator użytkowników | 
-Utwórz grupę | Administrator użytkowników | 
-Tworzenie, aktualizowanie lub usuwanie przeglądu dostępu grupy lub aplikacji | Administrator użytkowników | 
-Zarządzanie wygasaniem grupy | Administrator użytkowników | 
+Przypisywanie licencji | Administrator użytkownika | 
+Utwórz grupę | Administrator użytkownika | 
+Tworzenie, aktualizowanie i usuwanie przeglądu dostępu do grupy lub aplikacji | Administrator użytkownika | 
+Zarządzanie wygaśnięciem grupy | Administrator użytkownika | 
 Zarządzenie ustawieniami grup | Administrator globalny | 
-Przeczytaj całą konfigurację (z wyjątkiem ukrytych członkostwa) | Odczytywanie katalogów | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
-Odczytuj informacje o ukrytym członkostwie | Członek grupy | Właściciel grupy, hasło administratora, administrator programu Exchange, administrator programu SharePoint, zespoły administratora, administrator użytkowników
-Przeczytaj członkostwa w grupach z ukrytym członkostwie | Administrator pomocy technicznej | Administrator użytkowników, administrator zespołów
-Odwoływanie licencji | Administrator licencji | Administrator użytkowników
-Zaktualizuj członkostwo w grupie | Właściciel grupy ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkowników
-Właściciele grupy aktualizacji | Właściciel grupy ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkowników
-Właściwości grupy aktualizacji | Właściciel grupy ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkowników
+Odczytaj wszystkie konfiguracje (z wyjątkiem ukrytych członkostw) | Odczytywanie katalogów | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+Odczytaj ukryte członkostwo | Członek grupy | Właściciel grupy, administrator haseł, administrator serwera Exchange, administrator programu SharePoint, administrator zespołów, administrator użytkowników
+Odczytuj członkostwo grup z ukrytym członkostwem | Administrator pomocy technicznej | Administrator użytkowników, Administratorzy zespołów
+Odwołaj licencję | Administrator licencji | Administrator użytkownika
+Aktualizowanie członkostwa w grupie | Właściciel grupy ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkownika
+Aktualizowanie właścicieli grup | Właściciel grupy ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkownika
+Aktualizuj właściwości grupy | Właściciel grupy ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Administrator użytkownika
 
 ## <a name="identity-protection"></a>Identity Protection
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Konfigurowanie powiadomień o alertach| Administrator zabezpieczeń | 
-Konfigurowanie i włączanie lub wyłączanie zasad MFA| Administrator zabezpieczeń | 
-Konfigurowanie i włączanie lub wyłączanie zasad ryzyka logowania| Administrator zabezpieczeń | 
-Konfigurowanie i włączanie lub wyłączanie zasad ryzyka dla użytkownika | Administrator zabezpieczeń | 
-Konfigurowanie skróty co tydzień | Administrator zabezpieczeń| 
-Odrzuć wszystkie zdarzenia o podwyższonym ryzyku | Administrator zabezpieczeń | 
-Napraw lub odrzucić luk w zabezpieczeniach | Administrator zabezpieczeń | 
-Przeczytaj całą konfigurację | Czytelnik zabezpieczeń | 
-Odczyt wszystkich zdarzeń o podwyższonym ryzyku | Czytelnik zabezpieczeń | 
-Przeczytaj luk w zabezpieczeniach | Czytelnik zabezpieczeń | 
+Konfigurowanie i włączanie lub wyłączanie zasad usługi MFA| Administrator zabezpieczeń | 
+Skonfiguruj i Włącz lub wyłącz zasady dotyczące ryzyka związanego z logowaniem| Administrator zabezpieczeń | 
+Konfigurowanie i włączanie lub wyłączanie zasad ryzyka użytkownika | Administrator zabezpieczeń | 
+Skonfiguruj cotygodniowe skróty | Administrator zabezpieczeń| 
+Odrzuć wszystkie wykrycia ryzyka | Administrator zabezpieczeń | 
+Usuwanie lub odrzucanie luk w zabezpieczeniach | Administrator zabezpieczeń | 
+Odczytaj całą konfigurację | Czytelnik zabezpieczeń | 
+Odczytuj wszystkie wykrycia ryzyka | Czytelnik zabezpieczeń | 
+Przeczytaj luki | Czytelnik zabezpieczeń | 
 
 ## <a name="licenses"></a>Licencje
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Przypisywanie licencji | Administrator licencji | Administrator użytkowników
-Przeczytaj całą konfigurację | Odczytywanie katalogów | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
-Odwoływanie licencji | Administrator licencji | Administrator użytkowników
-Wypróbuj i Kup subskrypcję | Administrator rozliczeń | 
+Przypisywanie licencji | Administrator licencji | Administrator użytkownika
+Odczytaj całą konfigurację | Odczytywanie katalogów | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
+Odwołaj licencję | Administrator licencji | Administrator użytkownika
+Wypróbuj lub Kup subskrypcję | Administrator rozliczeń | 
 
 
 ## <a name="monitoring---audit-logs"></a>Monitorowanie — dzienniki inspekcji
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Odczytaj dzienniki inspekcji | Czytnik raportów | Czytelnik zabezpieczeń, administratora zabezpieczeń
+Odczyt dzienników inspekcji | Czytelnik raportów | Czytelnik zabezpieczeń, administrator zabezpieczeń
 
-## <a name="monitoring---sign-ins"></a>Monitorowanie — logowania
+## <a name="monitoring---sign-ins"></a>Monitorowanie — logowanie
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Odczytywania dzienników logowania | Czytnik raportów | Czytelnik zabezpieczeń, administratora zabezpieczeń
+Odczytuj dzienniki logowania | Czytelnik raportów | Czytelnik zabezpieczeń, administrator zabezpieczeń
 
 ## <a name="multi-factor-authentication"></a>Uwierzytelnianie wieloskładnikowe
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Usuń wszystkie istniejące hasła aplikacji wygenerowane przez wybranych użytkowników | Administrator globalny | 
-Wyłączanie usługi MFA | Administrator globalny | 
+Wyłącz usługę MFA | Administrator globalny | 
 Włączanie usługi MFA | Administrator globalny | 
-Zarządzaj ustawieniami usługi MFA | Administrator globalny | 
+Zarządzanie ustawieniami usługi MFA | Administrator globalny | 
 Wymagaj od wybranych użytkowników ponownego podania metod kontaktu | Administrator uwierzytelniania | 
-Przywróć uwierzytelnianie wieloskładnikowe na wszystkich zapamiętanych urządzeniach  | Administrator uwierzytelniania | 
+Przywracanie uwierzytelniania wieloskładnikowego na wszystkich zapamiętanych urządzeniach  | Administrator uwierzytelniania | 
 
 ## <a name="mfa-server"></a>Serwer MFA
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Blokowanie/odblokowywanie użytkowników | Administrator globalny | 
+Blokuj/Odblokuj użytkowników | Administrator globalny | 
 Konfigurowanie blokady konta | Administrator globalny | 
-Skonfiguruj reguły buforowania | Administrator globalny | 
-Skonfiguruj alert oszustwa | Administrator globalny
+Konfigurowanie reguł buforowania | Administrator globalny | 
+Konfigurowanie alertu oszustwa | Administrator globalny
 Konfigurowanie powiadomień | Administrator globalny | 
-Konfigurowanie jednorazowe obejście | Administrator globalny | 
+Skonfiguruj jednorazowe obejście | Administrator globalny | 
 Konfigurowanie ustawień połączenia telefonicznego | Administrator globalny | 
-Konfigurowanie dostawców | Administrator globalny | 
+Konfiguruj dostawców | Administrator globalny | 
 Konfigurowanie ustawień serwera | Administrator globalny | 
-Przeczytaj raport aktywności | Administrator globalny | 
-Przeczytaj całą konfigurację | Administrator globalny | 
+Odczytaj raport działania | Administrator globalny | 
+Odczytaj całą konfigurację | Administrator globalny | 
 Odczytaj stan serwera | Administrator globalny |  
 
 ## <a name="organizational-relationships"></a>Relacje w organizacji
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Zarządzaj dostawcami tożsamości | Administrator globalny | 
 Zarządzanie ustawieniami | Administrator globalny | 
-Zarządzaj warunkami użytkowania | Administrator globalny | 
-Przeczytaj całą konfigurację | Administrator globalny | 
+Zarządzanie warunkami użytkowania | Administrator globalny | 
+Odczytaj całą konfigurację | Administrator globalny | 
 
 ## <a name="password-reset"></a>Resetowanie hasła
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Konfigurowanie metod uwierzytelniania | Administrator globalny |
 Konfigurowanie dostosowywania | Administrator globalny |
-Konfigurowanie powiadomień | Administrator globalny |
-Konfigurowanie integracji środowiska lokalnego | Administrator globalny |
+Konfiguruj powiadomienie | Administrator globalny |
+Konfigurowanie integracji lokalnej | Administrator globalny |
 Konfigurowanie właściwości resetowania hasła | Administrator użytkowników | Administrator globalny
 Konfigurowanie rejestracji | Administrator globalny |
-Przeczytaj całą konfigurację | Administrator zabezpieczeń | Administrator użytkowników |
+Odczytaj całą konfigurację | Administrator zabezpieczeń | Administrator użytkowników |
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Przypisywanie użytkowników do ról | Administrator roli uprzywilejowanej | 
-Konfigurowanie ustawień roli | Administrator roli uprzywilejowanej | 
-Wyświetl działania inspekcji | Czytelnik zabezpieczeń | 
-Przeglądanie członkostwa w roli | Czytelnik zabezpieczeń | 
+Przypisywanie użytkowników do ról | Administrator ról uprzywilejowanych | 
+Konfigurowanie ustawień roli | Administrator ról uprzywilejowanych | 
+Wyświetl działanie inspekcji | Czytelnik zabezpieczeń | 
+Wyświetlanie członkostw ról | Czytelnik zabezpieczeń | 
 
-## <a name="roles-and-administrators"></a>Role i Administratorzy
+## <a name="roles-and-administrators"></a>Role i administratorzy
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Zarządzanie przypisaniami ról | Administrator roli uprzywilejowanej | 
-Przegląd dostępu do odczytu roli usługi Azure AD  | Czytelnik zabezpieczeń | Administrator zabezpieczeń, administratorem ról uprzywilejowanych
-Przeczytaj całą konfigurację | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
+Zarządzanie przypisaniami ról | Administrator ról uprzywilejowanych | 
+Przegląd dostępu do odczytu roli usługi Azure AD  | Czytelnik zabezpieczeń | Administrator zabezpieczeń, administrator ról uprzywilejowanych
+Odczytaj całą konfigurację | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | 
 
 ## <a name="security---authentication-methods"></a>Zabezpieczenia — metody uwierzytelniania
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
 Konfigurowanie metod uwierzytelniania | Administrator globalny | 
-Przeczytaj całą konfigurację | Administrator globalny | 
+Odczytaj całą konfigurację | Administrator globalny | 
 
 ## <a name="security---conditional-access"></a>Zabezpieczenia — dostęp warunkowy
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Skonfiguruj usługę MFA zaufanych adresów IP | Administrator dostępu warunkowego | 
-Tworzenie niestandardowych formantów | Administrator dostępu warunkowego | Administrator zabezpieczeń
-Tworzenie lokalizacji o nazwie | Administrator dostępu warunkowego | Administrator zabezpieczeń
+Konfigurowanie zaufanych adresów IP usługi MFA | Administrator dostępu warunkowego | 
+Tworzenie niestandardowych kontrolek | Administrator dostępu warunkowego | Administrator zabezpieczeń
+Utwórz nazwane lokalizacje | Administrator dostępu warunkowego | Administrator zabezpieczeń
 Tworzenie zasad | Administrator dostępu warunkowego | Administrator zabezpieczeń
 Tworzenie warunków użytkowania | Administrator dostępu warunkowego | Administrator zabezpieczeń
-Utwórz certyfikat z połączenia sieci VPN | Administrator dostępu warunkowego | Administrator zabezpieczeń
-Usuwanie zasad klasycznych | Administrator dostępu warunkowego | Administrator zabezpieczeń
-Usuwanie warunków użytkowania | Administrator dostępu warunkowego | Administrator zabezpieczeń
-Usuń certyfikat połączenia sieci VPN | Administrator dostępu warunkowego | Administrator zabezpieczeń
-Wyłączanie zasad klasycznych | Administrator dostępu warunkowego | Administrator zabezpieczeń
-Zarządzać kontrolkami niestandardowymi | Administrator dostępu warunkowego | Administrator zabezpieczeń
-Zarządzanie nazwane lokalizacje | Administrator dostępu warunkowego | Administrator zabezpieczeń
-Zarządzaj warunkami użytkowania | Administrator dostępu warunkowego | Administrator zabezpieczeń
-Przeczytaj całą konfigurację | Czytelnik zabezpieczeń | Administrator zabezpieczeń
-Lokalizacje z nazwą odczytu | Czytelnik zabezpieczeń | Administrator dostępu warunkowego, administratora zabezpieczeń
+Utwórz certyfikat łączności sieci VPN | Administrator dostępu warunkowego | Administrator zabezpieczeń
+Usuń zasady klasyczne | Administrator dostępu warunkowego | Administrator zabezpieczeń
+Usuń warunki użytkowania | Administrator dostępu warunkowego | Administrator zabezpieczeń
+Usuń certyfikat łączności sieci VPN | Administrator dostępu warunkowego | Administrator zabezpieczeń
+Wyłącz zasady klasyczne | Administrator dostępu warunkowego | Administrator zabezpieczeń
+Zarządzanie kontrolkami niestandardowymi | Administrator dostępu warunkowego | Administrator zabezpieczeń
+Zarządzaj nazwanymi lokalizacjami | Administrator dostępu warunkowego | Administrator zabezpieczeń
+Zarządzanie warunkami użytkowania | Administrator dostępu warunkowego | Administrator zabezpieczeń
+Odczytaj całą konfigurację | Czytelnik zabezpieczeń | Administrator zabezpieczeń
+Odczytuj nazwane lokalizacje | Czytelnik zabezpieczeń | Administrator dostępu warunkowego, administrator zabezpieczeń
 
-## <a name="security---identity-security-score"></a>Zabezpieczenia — ocena zabezpieczeń tożsamości
+## <a name="security---identity-security-score"></a>Zabezpieczenia — Ocena zabezpieczeń tożsamości
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role | 
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role | 
 ---- | --------------------- | ----------------
-Przeczytaj całą konfigurację | Czytelnik zabezpieczeń | Administrator zabezpieczeń
-Ocena bezpieczeństwa odczytu | Czytelnik zabezpieczeń | Administrator zabezpieczeń
+Odczytaj całą konfigurację | Czytelnik zabezpieczeń | Administrator zabezpieczeń
+Odczytaj ocenę zabezpieczeń | Czytelnik zabezpieczeń | Administrator zabezpieczeń
 Aktualizowanie stanu zdarzenia | Administrator zabezpieczeń | 
 
 ## <a name="security---risky-sign-ins"></a>Zabezpieczenia — ryzykowne logowania
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Przeczytaj całą konfigurację | Czytelnik zabezpieczeń | 
-Odczyt ryzykowne logowania | Czytelnik zabezpieczeń | 
+Odczytaj całą konfigurację | Czytelnik zabezpieczeń | 
+Odczytuj ryzykowne logowania | Czytelnik zabezpieczeń | 
 
-## <a name="security---users-flagged-for-risk"></a>Zabezpieczenia — użytkownicy oflagowani w związku z ryzykiem
+## <a name="security---users-flagged-for-risk"></a>Zabezpieczenia — użytkownicy oflagowani w celu ryzyka
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Odrzucanie wszystkich zdarzeń. | Administrator zabezpieczeń | 
-Przeczytaj całą konfigurację | Czytelnik zabezpieczeń | 
-Przeczytaj użytkowników oznaczonych flagą ryzyka | Czytelnik zabezpieczeń | 
+Odrzuć wszystkie zdarzenia | Administrator zabezpieczeń | 
+Odczytaj całą konfigurację | Czytelnik zabezpieczeń | 
+Odczytuj użytkowników oflagowanych w celu ryzyka | Czytelnik zabezpieczeń | 
 
 ## <a name="users"></a>Użytkownicy
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Dodawanie użytkownika do roli w katalogu | Administrator roli uprzywilejowanej | 
-Dodawanie użytkownika do grupy | Administrator użytkowników | 
-Przypisywanie licencji | Administrator licencji | Administrator użytkowników
-Tworzenie użytkownika-gościa | Osoba zapraszająca gości | Administrator użytkowników
-Tworzenie użytkownika | Administrator użytkowników | 
-Usuwanie użytkowników | Administrator użytkowników | 
-Unieważnienie tokenów odświeżania z administratorów z ograniczonymi uprawnieniami (patrz dokumentacja) | Administrator użytkowników | 
-Unieważnienie tokenów odświeżania dla użytkowników innych niż administratorzy (w dokumentacji) | Administrator haseł | Administrator użytkowników
-Unieważnienie tokenów odświeżania uprzywilejowanych administratorów (w dokumentacji) | Administrator globalny | 
-Odczyt konfiguracji podstawowej | Domyślna rola użytkownika ([dokumentacji](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions) | 
-Resetowanie hasła dla administratorów z ograniczonymi uprawnieniami (patrz dokumentacja) | Administrator użytkowników | 
-Resetowanie hasła użytkowników innych niż administratorzy (w dokumentacji) | Administrator haseł | Administrator użytkowników
-Resetuj hasło uprzywilejowanych administratorów | Administrator globalny | 
-Odwoływanie licencji | Administrator licencji | Administrator użytkowników
-Aktualizuj wszystkie właściwości, z wyjątkiem główna nazwa użytkownika | Administrator użytkowników | 
-Zaktualizuj główną nazwę użytkownika dla administratorów z ograniczonymi uprawnieniami (patrz dokumentacja) | Administrator użytkowników | 
-Zaktualizuj właściwość główną nazwę użytkownika w uprzywilejowanych administratorów (w dokumentacji) | Administrator globalny | 
+Dodawanie użytkownika do roli katalogu | Administrator ról uprzywilejowanych | 
+Dodaj użytkownika do grupy | Administrator użytkownika | 
+Przypisywanie licencji | Administrator licencji | Administrator użytkownika
+Utwórz użytkownika-gościa | Osoba zapraszająca gości | Administrator użytkownika
+Tworzenie użytkownika | Administrator użytkownika | 
+Usuwanie użytkowników | Administrator użytkownika | 
+Unieważnianie tokenów odświeżania ograniczonych administratorów (zobacz dokumentację) | Administrator użytkownika | 
+Unieważnij tokeny odświeżania nie będących administratorami (zobacz dokumentację) | Administrator haseł | Administrator użytkownika
+Unieważnianie tokenów odświeżania uprzywilejowanych administratorów (zobacz dokumentację) | Administrator globalny | 
+Odczytaj konfigurację podstawową | Domyślna rola użytkownika ([Zobacz dokumentację](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions) | 
+Resetowanie hasła dla ograniczonych administratorów (zobacz dokumentację) | Administrator użytkownika | 
+Zresetuj hasło niebędących administratorami (zobacz dokumentację) | Administrator haseł | Administrator użytkownika
+Resetowanie hasła administratorów uprzywilejowanych | Administrator globalny | 
+Odwołaj licencję | Administrator licencji | Administrator użytkownika
+Aktualizuj wszystkie właściwości z wyjątkiem nazwy głównej użytkownika | Administrator użytkownika | 
+Aktualizowanie głównej nazwy użytkownika dla ograniczonych administratorów (zobacz dokumentację) | Administrator użytkownika | 
+Zaktualizuj Właściwość głównej nazwy użytkownika dla administratorów uprzywilejowanych (zobacz dokumentację) | Administrator globalny | 
 Aktualizowanie ustawień użytkownika | Administrator globalny | 
 
 
 ## <a name="support"></a>Pomoc techniczna
 
-Zadanie | Najniższych uprawnieniach roli | Dodatkowe role
+Zadanie | Najmniejsza rola uprzywilejowana | Dodatkowe role
 ---- | --------------------- | ----------------
-Prześlij bilet pomocy technicznej | Administrator usługi | Administrator aplikacji Azure Administrator usługi Information Protection, rozliczeń administratora, Administrator aplikacji w chmurze zgodności Administrator, Administrator Dynamics 365, analizy pulpitu administratora, Administrator programu Exchange hasła Administrator, Administrator usługi Intune, usługi Skype dla administratora firmy, Power BI Administrator, uprzywilejowanego uwierzytelniania administratora, Administrator programu SharePoint, administratora komunikacji zespołów, zespoły administratora, Administrator użytkowników Administrator usługi Analytics w miejscu pracy
+Prześlij bilet pomocy technicznej | Administrator usługi | Administrator aplikacji, administrator Azure Information Protection, administrator rozliczeń, administrator aplikacji w chmurze, administrator zgodności, administrator Dynamics 365, administrator usługi Desktop Analytics, administrator programu Exchange i hasło Administrator, administrator usługi Intune, administrator usługi Skype dla firm, administrator Power BI, administrator uwierzytelniania uprzywilejowanego, administrator programu SharePoint, zespoły Administratorzy, Administratorzy zespołów, administrator użytkowników, Administrator Analytics w miejscu pracy
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Jak przypisać lub usunąć role administratora usługi azure AD](directory-manage-roles-portal.md)
-* [Odwołanie role administratora usługi Azure AD](directory-assign-admin-roles.md)
+* [Jak przypisać lub usunąć role administratorów usługi Azure AD](directory-manage-roles-portal.md)
+* [Informacje o rolach administratorów usługi Azure AD](directory-assign-admin-roles.md)

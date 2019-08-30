@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 2b835765bbd40ffbd4a5117f767a7ba163e41dda
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 293f2a704fecb04bc6b65e49743ea80905f2394f
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309286"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142674"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Często zadawane pytania dotyczące Azure Container Registry
 
@@ -31,7 +31,7 @@ W tym artykule opisano często zadawane pytania i znane problemy dotyczące Azur
 
 ### <a name="can-i-create-an-azure-container-registry-using-a-resource-manager-template"></a>Czy można utworzyć Azure Container Registry przy użyciu szablonu Menedżer zasobów?
 
-Tak. Oto [szablon](https://github.com/Azure/azure-cli/blob/master/src/command_modules/azure-cli-acr/azure/cli/command_modules/acr/template.json) , którego można użyć do utworzenia rejestru.
+Tak. Oto [szablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry) , którego można użyć do utworzenia rejestru.
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Czy istnieją luki w zabezpieczeniach dotyczące skanowania obrazów w ACR?
 
@@ -305,7 +305,7 @@ unauthorized: authentication required
 ```
 
 Aby rozwiązać ten problem:
-1. Dodaj opcję `--signature-verification=false` do pliku `/etc/sysconfig/docker`konfiguracji demona platformy Docker. Przykład:
+1. Dodaj opcję `--signature-verification=false` do pliku `/etc/sysconfig/docker`konfiguracji demona platformy Docker. Na przykład:
 
   ```
   OPTIONS='--selinux-enabled --log-driver=journald --live-restore --signature-verification=false'

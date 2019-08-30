@@ -11,33 +11,33 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 273a6aca2050676650b955ec078b47b2ffcfe319
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 7fcf24256634ef11b575348d9da7d6bbbab8b67c
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333929"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127764"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection element PlayBook
 
 Ta element PlayBook ułatwia:
 
-* Wypełniaj dane w środowisku ochrony tożsamości, symulując zdarzenia ryzyka i luki w zabezpieczeniach
+* Wypełnianie danych w środowisku ochrony tożsamości poprzez symulowanie wykrywania ryzyka i luk w zabezpieczeniach
 * Konfigurowanie zasad dostępu warunkowego opartego na ryzyku i testowanie wpływu tych zasad
 
-## <a name="simulating-risk-events"></a>Symulowanie zdarzeń ryzyka
+## <a name="simulating-risk-detections"></a>Symulowanie wykrywania ryzyka
 
-Ta sekcja zawiera kroki symulowania następujących typów zdarzeń ryzyka:
+Ta sekcja zawiera kroki umożliwiające symulowanie następujących typów wykrywania ryzyka:
 
 * Logowania z anonimowych adresów IP (łatwe)
 * Logowania z nieznanych lokalizacji (umiarkowanie)
 * Niemożliwa podróż do nietypowych lokalizacji (trudne)
 
-Inne zdarzenia ryzyka nie mogą być symulowane w sposób bezpieczny.
+Inne wykrycia ryzyka nie mogą być symulowane w sposób bezpieczny.
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>Logowania z anonimowych adresów IP
 
-Aby uzyskać więcej informacji na temat tego zdarzenia dotyczącego ryzyka, zobacz [logowania z anonimowych adresów IP](../reports-monitoring/concept-risk-events.md#sign-ins-from-anonymous-ip-addresses). 
+Aby uzyskać więcej informacji na temat tego wykrywania ryzyka, zobacz [logowania z anonimowych adresów IP](../reports-monitoring/concept-risk-events.md#sign-ins-from-anonymous-ip-addresses). 
 
 Wykonanie poniższej procedury wymaga zastosowania:
 
@@ -53,7 +53,7 @@ Logowanie zostanie wyświetlone na pulpicie nawigacyjnym ochrony tożsamości w 
 
 ### <a name="sign-ins-from-unfamiliar-locations"></a>Logowania z nieznanych lokalizacji
 
-Aby uzyskać więcej informacji na temat tego zdarzenia dotyczącego ryzyka, zobacz [logowania z nieznanych lokalizacji](../reports-monitoring/concept-risk-events.md#sign-in-from-unfamiliar-locations). 
+Aby uzyskać więcej informacji na temat tego wykrywania ryzyka, zobacz [logowania z nieznanych lokalizacji](../reports-monitoring/concept-risk-events.md#sign-in-from-unfamiliar-locations). 
 
 Aby symulować nieznane lokalizacje, musisz zalogować się z lokalizacji i urządzenia, z którego konto testowe nie zalogował się przed.
 
@@ -76,14 +76,14 @@ Logowanie zostanie wyświetlone na pulpicie nawigacyjnym ochrony tożsamości w 
 
 ### <a name="impossible-travel-to-atypical-location"></a>Niemożliwa podróż do nietypowej lokalizacji
 
-Aby uzyskać więcej informacji na temat tego zdarzenia dotyczącego ryzyka, zobacz [niemożliwa podróż do nietypowej lokalizacji](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations). 
+Aby uzyskać więcej informacji na temat tego wykrywania ryzyka, zobacz [niemożliwa podróż do nietypowej lokalizacji](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations). 
 
-Symulowanie niemożliwego stanu podróży jest trudne, ponieważ algorytm używa uczenia maszynowego do oddzielenia fałszywych wartości false, takich jak niemożliwa podróż ze znanych urządzeń lub logowania z sieci VPN używanych przez innych użytkowników w katalogu. Ponadto algorytm wymaga od 14 dni i 10 logowań użytkownika przed rozpoczęciem generowania zdarzeń o podwyższonym ryzyku. Ze względu na złożone modele uczenia maszynowego i powyższe reguły istnieje prawdopodobieństwo, że następujące kroki nie będą prowadzić do zdarzenia ryzyka. Aby opublikować to zdarzenie ryzyka, można wykonać replikację tych kroków dla wielu kont usługi Azure AD.
+Symulowanie niemożliwego stanu podróży jest trudne, ponieważ algorytm używa uczenia maszynowego do oddzielenia fałszywych wartości false, takich jak niemożliwa podróż ze znanych urządzeń lub logowania z sieci VPN używanych przez innych użytkowników w katalogu. Ponadto algorytm wymaga od 14 dni i 10 logowań użytkownika przed rozpoczęciem generowania wykrycia ryzyka. Ze względu na złożone modele uczenia maszynowego i powyższe reguły istnieje prawdopodobieństwo, że następujące kroki nie spowodują wykrycia ryzyka. Można wykonać replikację tych kroków dla wielu kont usługi Azure AD, aby opublikować to wykrywanie ryzyka.
 
 **W celu symulowania niemożliwej podróży do nietypowej lokalizacji wykonaj następujące czynności**:
 
 1. Korzystając z standardowej przeglądarki, przejdź do [https://myapps.microsoft.com](https://myapps.microsoft.com).  
-2. Wprowadź poświadczenia konta, dla którego chcesz wygenerować zdarzenie niemożliwego ryzyka podróży.
+2. Wprowadź poświadczenia konta, dla którego chcesz wygenerować niemożliwe wypróbowanie wyjazdu.
 3. Zmień agenta użytkownika. Możesz zmienić agenta użytkownika w programie Internet Explorer z usługi Narzędzia deweloperskie lub zmienić agenta użytkownika w przeglądarce Firefox lub Chrome przy użyciu dodatku User-Agent przełącznik.
 4. Zmień adres IP. Adres IP można zmienić przy użyciu sieci VPN, dodatku sieci Tor lub nowego komputera na platformie Azure w innym centrum danych.
 5. Zaloguj się, aby [https://myapps.microsoft.com](https://myapps.microsoft.com) korzystać z tych samych poświadczeń co poprzednio i w ciągu kilku minut od momentu wcześniejszego zalogowania.
@@ -93,7 +93,7 @@ Logowanie zostanie wyświetlone na pulpicie nawigacyjnym ochrony tożsamości w 
 ## <a name="simulating-vulnerabilities"></a>Symulowanie luk w zabezpieczeniach
 Luki w zabezpieczeniach są słabe w środowisku usługi Azure AD, które mogą być wykorzystywane przez zły aktora. Obecnie 3 typy luk w zabezpieczeniach są naAzure AD Identity Protection, które wykorzystują inne funkcje usługi Azure AD. Te luki w zabezpieczeniach zostaną wyświetlone na pulpicie nawigacyjnym ochrony tożsamości automatycznie po skonfigurowaniu tych funkcji.
 
-* [Uwierzytelnianie wieloskładnikowe](../authentication/multi-factor-authentication.md) usługi Azure AD
+* [Multi-Factor Authentication](../authentication/multi-factor-authentication.md) usługi Azure AD
 * [Cloud Discovery](https://docs.microsoft.com/cloud-app-security/)usługi Azure AD.
 * [Privileged Identity Management](../privileged-identity-management/pim-configure.md)usługi Azure AD. 
 
@@ -118,8 +118,8 @@ Aby uzyskać więcej informacji, zobacz temat [How To: Configure the user risk p
 
 5. W sekcji kontrolki wybierz żądaną kontrolę dostępu (np. Wymagaj zmiany hasła).
 5. Jako **Wymuszaj zasady**wybierz pozycję **wyłączone**.
-6. Podnieś ryzyko dla użytkownika konta testowego, na przykład symulując jedno z zdarzeń o podwyższonym ryzyku.
-7. Poczekaj kilka minut, a następnie sprawdź, czy poziom użytkownika dla użytkownika to średni. Jeśli nie, Symuluj więcej zdarzeń o podwyższonym ryzyku dla użytkownika.
+6. Podnieś poziom ryzyka dla użytkownika przy użyciu konta testowego, na przykład symulacja jednego z wykrycia ryzyka kilka razy.
+7. Poczekaj kilka minut, a następnie sprawdź, czy poziom użytkownika dla użytkownika to średni. Jeśli nie, Symuluj więcej wykryć ryzyka dla użytkownika.
 8. Jako **Wymuszaj zasady**wybierz pozycję **włączone**.
 9. Teraz można testować dostęp warunkowy oparty na ryzyku, logując się przy użyciu użytkownika z podwyższonym poziomem ryzyka.
 

@@ -1,6 +1,6 @@
 ---
-title: Użyj interfejsu API zarządzania usługami (Python) — Przewodnik po funkcjach usługi
-description: Dowiedz się, jak programowo wykonywać typowe zadania zarządzania usługą za pomocą języka Python.
+title: Korzystanie z interfejs API zarządzania usługami (Python) — Podręcznik funkcji
+description: Dowiedz się, jak programowo wykonywać typowe zadania związane z zarządzaniem usługami z poziomu języka Python.
 services: cloud-services
 documentationcenter: python
 author: lmazuel
@@ -14,49 +14,49 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: 573c6d3ded8fea58e0c9ba1afa7da2d8dd0fce91
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 50501413a63921a9a34be1c04ed259990922b686
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60525524"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141462"
 ---
-# <a name="use-service-management-from-python"></a>Użyj usługi zarządzania za pomocą języka Python
-Ten przewodnik pokazuje, jak programowo wykonywać typowe zadania zarządzania usługą za pomocą języka Python. **ServiceManagementService** klasy w [zestawu Azure SDK dla języka Python](https://github.com/Azure/azure-sdk-for-python) obsługuje dostęp programistyczny do większości funkcji związanych z zarządzaniem usługi, które są dostępne w [platformy Azure Portal][management-portal]. Ta funkcja umożliwia tworzenie, aktualizowanie i usuwanie usług w chmurze, wdrożeń, usług zarządzania danymi i maszyn wirtualnych. Ta funkcja może być przydatne w przypadku tworzenia aplikacji, które wymagają dostęp programistyczny do zarządzania usługami.
+# <a name="use-service-management-from-python"></a>Używanie zarządzania usługami w języku Python
+W tym przewodniku pokazano, jak programowo wykonywać typowe zadania związane z zarządzaniem usługami z poziomu języka Python. Klasa **ServiceManagementService** w [zestawie Azure SDK dla języka Python](https://github.com/Azure/azure-sdk-for-python) obsługuje programistyczny dostęp do większości funkcji związanych z zarządzaniem usługami, które są dostępne w [Azure Portal][management-portal]. Ta funkcja służy do tworzenia, aktualizowania i usuwania usług w chmurze, wdrożeń, usług zarządzania danymi i maszyn wirtualnych. Ta funkcja może być przydatna podczas tworzenia aplikacji, które potrzebują dostępu programistycznego do zarządzania usługami.
 
-## <a name="WhatIs"> </a>Co to jest zarządzanie usługą?
-Interfejs API zarządzania usługami platformy Azure zapewnia dostęp programistyczny do większości funkcjonalności zarządzania usługami dostępnej za pośrednictwem [witryny Azure portal][management-portal]. Zestaw Azure SDK dla języka Python można użyć do zarządzania usługami w chmurze i kont magazynu.
+## <a name="WhatIs"> </a>Co to jest zarządzanie usługami?
+Usługa Azure interfejs API zarządzania usługami zapewnia programistyczny dostęp do większości funkcji zarządzania usługami dostępnych za pomocą [Azure Portal][management-portal]. Możesz użyć zestawu Azure SDK dla języka Python, aby zarządzać usługami w chmurze i kontami magazynu.
 
-Aby korzystać z interfejsu API zarządzania usługami, musisz [utworzyć konto platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
+Aby użyć interfejs API zarządzania usługami, musisz [utworzyć konto platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="Concepts"> </a>Pojęcia
-Zestaw Azure SDK dla języka Python opakowuje [interfejsu API zarządzania usługami][svc-mgmt-rest-api], czyli interfejs API REST. Wszystkie operacje interfejsu API są realizowane poprzez protokół SSL i wzajemnie uwierzytelniana za pomocą certyfikatów X.509 v3. Składnik Usługa zarządzania jest możliwy z w ramach usługi działające na platformie Azure. On również możliwy bezpośrednio przez Internet z dowolnej aplikacji, który może wysyłać żądanie protokołu HTTPS i odbierać odpowiedź protokołu HTTPS.
+Zestaw Azure SDK dla języka Python otacza [interfejs API zarządzania usługami][svc-mgmt-rest-api], który jest interfejsem API REST. Wszystkie operacje interfejsu API są wykonywane za pośrednictwem protokołu SSL i uwierzytelniane obustronnie przy użyciu certyfikatów X. 509 v3. Dostęp do usługi zarządzania można uzyskać z poziomu usługi działającej na platformie Azure. Dostęp do niego można uzyskać również bezpośrednio przez Internet z dowolnej aplikacji, która może wysyłać żądanie HTTPS i odbierać odpowiedź HTTPS.
 
 ## <a name="Installation"> </a>Instalacja
-Wszystkie funkcje opisane w tym artykule są dostępne w `azure-servicemanagement-legacy` pakiet, który można zainstalować przy użyciu narzędzia pip. Aby uzyskać więcej informacji na temat instalacji (na przykład, jeśli jesteś nowym użytkownikiem Python), zobacz [zainstalowania języka Python i zestawu Azure SDK](../python-how-to-install.md).
+Wszystkie funkcje opisane w tym artykule są dostępne w `azure-servicemanagement-legacy` pakiecie, który można zainstalować za pomocą narzędzia PIP. Aby uzyskać więcej informacji na temat instalacji (na przykład jeśli jesteś nowym w języku Python), zobacz [Install Python and the Azure SDK](/azure/python/python-sdk-azure-install).
 
-## <a name="Connect"> </a>Łączenie do zarządzania usługami
-Aby połączyć się z punktem końcowym zarządzania usługi, należy swój identyfikator subskrypcji platformy Azure i prawidłowy certyfikat zarządzania. Możesz uzyskać identyfikator subskrypcji za pośrednictwem [witryny Azure portal][management-portal].
+## <a name="Connect"> </a>Łączenie z zarządzaniem usługami
+Aby nawiązać połączenie z punktem końcowym zarządzania usługami, musisz mieć identyfikator subskrypcji platformy Azure oraz prawidłowy certyfikat zarządzania. Identyfikator subskrypcji można uzyskać za pomocą [Azure Portal][management-portal].
 
 > [!NOTE]
-> Teraz można używać certyfikaty utworzone za pomocą biblioteki OpenSSL, gdy w systemie Windows. Python 2.7.4 lub nowszy jest wymagany. Zalecamy użycie biblioteki OpenSSL a nie .pfx, ponieważ obsługa certyfikatów PFX jest prawdopodobnie w przyszłości usunięte.
+> Teraz można używać certyfikatów utworzonych za pomocą OpenSSL podczas uruchamiania w systemie Windows. Wymagany jest język Python 2.7.4 lub nowszy. Zalecamy używanie OpenSSL zamiast PFX, ponieważ w przyszłości prawdopodobnie zostanie usunięta obsługa certyfikatów PFX.
 >
 >
 
-### <a name="management-certificates-on-windowsmaclinux-openssl"></a>Zarządzanie certyfikatami na Windows/Mac/Linux (OpenSSL)
-Możesz użyć [OpenSSL](https://www.openssl.org/) do utworzenia certyfikatu zarządzania. Należy utworzyć dwa certyfikaty, jeden dla serwera ( `.cer` pliku) i jeden dla klienta ( `.pem` pliku). Aby utworzyć `.pem` plików, należy wykonać:
+### <a name="management-certificates-on-windowsmaclinux-openssl"></a>Certyfikaty zarządzania w systemie Windows/Mac/Linux (OpenSSL)
+Można użyć [OpenSSL](https://www.openssl.org/) do utworzenia certyfikatu zarządzania. Należy utworzyć dwa certyfikaty, jeden dla serwera ( `.cer` plik) i jeden dla klienta `.pem` (plik). Aby utworzyć `.pem` plik, wykonaj następujące polecenie:
 
     openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
 
-Aby utworzyć `.cer` certyfikatów, należy wykonać:
+Aby utworzyć `.cer` certyfikat, wykonaj następujące polecenie:
 
     openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 
-Aby uzyskać więcej informacji o certyfikatach platformy Azure, zobacz [Omówienie certyfikatów usług Azure Cloud Services](cloud-services-certs-create.md). Aby uzyskać pełny opis parametrów biblioteki OpenSSL, zobacz dokumentację w [ https://www.openssl.org/docs/apps/openssl.html ](https://www.openssl.org/docs/apps/openssl.html).
+Aby uzyskać więcej informacji na temat certyfikatów platformy Azure, zobacz [Omówienie certyfikatów dla platformy azure Cloud Services](cloud-services-certs-create.md). Pełny opis parametrów OpenSSL można znaleźć w dokumentacji pod adresem [https://www.openssl.org/docs/apps/openssl.html](https://www.openssl.org/docs/apps/openssl.html).
 
-Po utworzeniu tych plików, należy przekazać `.cer` plików na platformę Azure. W [witryny Azure portal][management-portal]na **ustawienia** zaznacz **przekazywanie**. Uwaga, w której zapisano `.pem` pliku.
+Po utworzeniu tych plików Przekaż `.cer` plik na platformę Azure. W [Azure Portal][management-portal]na karcie **Ustawienia** wybierz pozycję **Przekaż**. Zanotuj miejsce zapisania `.pem` pliku.
 
-Po uzyskaniu identyfikator subskrypcji, należy utworzyć certyfikat i przekaż `.cer` plików na platformę Azure, nawiązać połączenie z punktem końcowym zarządzania platformy Azure. Łączenie, przekazując Identyfikatora subskrypcji oraz ścieżkę do `.pem` plik **ServiceManagementService**.
+Po uzyskaniu identyfikatora subskrypcji Utwórz certyfikat i przekaż `.cer` go na platformę Azure, a następnie połącz się z punktem końcowym zarządzania platformy Azure. Nawiąż połączenie, przekazując Identyfikator subskrypcji i ścieżkę do `.pem` pliku do **ServiceManagementService**.
 
     from azure import *
     from azure.servicemanagement import *
@@ -66,18 +66,18 @@ Po uzyskaniu identyfikator subskrypcji, należy utworzyć certyfikat i przekaż 
 
     sms = ServiceManagementService(subscription_id, certificate_path)
 
-W powyższym przykładzie `sms` jest **ServiceManagementService** obiektu. **ServiceManagementService** klasa jest klasą podstawowy używany do zarządzania usługami platformy Azure.
+W poprzednim przykładzie `sms` jest obiektem **ServiceManagementService** . Klasa **ServiceManagementService** jest klasą podstawową służącą do zarządzania usługami platformy Azure.
 
-### <a name="management-certificates-on-windows-makecert"></a>Zarządzanie certyfikatami na Windows (narzędzie MakeCert)
-Można utworzyć certyfikat zarządzania z podpisem własnym na komputerze przy użyciu `makecert.exe`. Otwórz **wiersz polecenia programu Visual Studio** jako **administratora** i należy użyć następującego polecenia, zastępując *AzureCertificate* o nazwie certyfikatu, którego chcesz użyć:
+### <a name="management-certificates-on-windows-makecert"></a>Certyfikaty zarządzania w systemie Windows (MakeCert)
+Na maszynie można utworzyć certyfikat zarządzania z podpisem własnym za pomocą programu `makecert.exe`. Otwórz **wiersz polecenia programu Visual Studio** jako **administrator** i użyj następującego polecenia, zastępując *AzureCertificate* nazwą certyfikatu, którego chcesz użyć:
 
     makecert -sky exchange -r -n "CN=AzureCertificate" -pe -a sha1 -len 2048 -ss My "AzureCertificate.cer"
 
-Polecenie tworzy `.cer` plików i instaluje je w **osobistych** magazynu certyfikatów. Aby uzyskać więcej informacji, zobacz [Omówienie certyfikatów usług Azure Cloud Services](cloud-services-certs-create.md).
+Polecenie tworzy `.cer` plik i instaluje go w osobistym magazynie certyfikatów. Aby uzyskać więcej informacji, zobacz [Omówienie certyfikatów dla platformy Azure Cloud Services](cloud-services-certs-create.md).
 
-Po utworzeniu certyfikatu należy przekazać `.cer` plików na platformę Azure. W [witryny Azure portal][management-portal]na **ustawienia** zaznacz **przekazywanie**.
+Po utworzeniu certyfikatu Przekaż `.cer` plik na platformę Azure. W [Azure Portal][management-portal]na karcie **Ustawienia** wybierz pozycję **Przekaż**.
 
-Po uzyskaniu identyfikator subskrypcji, należy utworzyć certyfikat i przekaż `.cer` plików na platformę Azure, nawiązać połączenie z punktem końcowym zarządzania platformy Azure. Łączenie, przekazując identyfikator subskrypcji i lokalizacji certyfikatu w Twojej **osobistych** magazyn certyfikatów **ServiceManagementService** (symbolu *AzureCertificate* o nazwie certyfikatu).
+Po uzyskaniu identyfikatora subskrypcji Utwórz certyfikat i przekaż `.cer` go na platformę Azure, a następnie połącz się z punktem końcowym zarządzania platformy Azure. Połącz się, przekazując Identyfikator subskrypcji i lokalizację certyfikatu w osobistym magazynie certyfikatów do **ServiceManagementService** (ponownie Zastąp *AzureCertificate* nazwą certyfikatu).
 
     from azure import *
     from azure.servicemanagement import *
@@ -87,10 +87,10 @@ Po uzyskaniu identyfikator subskrypcji, należy utworzyć certyfikat i przekaż 
 
     sms = ServiceManagementService(subscription_id, certificate_path)
 
-W powyższym przykładzie `sms` jest **ServiceManagementService** obiektu. **ServiceManagementService** klasa jest klasą podstawowy używany do zarządzania usługami platformy Azure.
+W poprzednim przykładzie `sms` jest obiektem **ServiceManagementService** . Klasa **ServiceManagementService** jest klasą podstawową służącą do zarządzania usługami platformy Azure.
 
-## <a name="ListAvailableLocations"> </a>Listę dostępnych lokalizacji
-Aby wyświetlić listę lokalizacji, które są dostępne dla usług hostingu, użyj **listy\_lokalizacje** metody.
+## <a name="ListAvailableLocations"> </a>Wyświetl dostępne lokalizacje
+Aby wyświetlić listę lokalizacji dostępnych dla usług hostingu, użyj metody **list\_Locations** .
 
     from azure import *
     from azure.servicemanagement import *
@@ -101,7 +101,7 @@ Aby wyświetlić listę lokalizacji, które są dostępne dla usług hostingu, u
     for location in result:
         print(location.name)
 
-Podczas tworzenia usługi w chmurze lub Usługa magazynu, musisz podać prawidłową lokalizację. **Listy\_lokalizacje** metoda zawsze zwraca aktualną listę dostępnych lokalizacji. W trakcie tworzenia tej dokumentacji dostępne lokalizacje to:
+Podczas tworzenia usługi w chmurze lub usługi magazynu należy podać prawidłową lokalizację. Metoda **lokalizacji\_listy** zawsze zwraca aktualną listę aktualnie dostępnych lokalizacji. W przypadku tego zapisu dostępne są następujące lokalizacje:
 
 * Europa Zachodnia
 * Europa Północna
@@ -111,15 +111,15 @@ Podczas tworzenia usługi w chmurze lub Usługa magazynu, musisz podać prawidł
 * Środkowo-północne stany USA
 * Południowo-środkowe stany USA
 * Zachodnie stany USA
-* Wschodnie stany USA
+* East US
 * Japonia Wschodnia
 * Japonia Zachodnia
 * Brazylia Południowa
 * Australia Wschodnia
 * Australia Południowo-Wschodnia
 
-## <a name="CreateCloudService"> </a>Utwórz usługę w chmurze
-Podczas tworzenia aplikacji i uruchom go na platformie Azure, kod i konfiguracja łącznie są nazywane platformy Azure [usługi w chmurze][cloud service]. (Była nazywana *usługi hostowanej* we wcześniejszych wersjach platformy Azure.) Możesz użyć **tworzenie\_hostowane\_usługi** metodę w celu utworzenia nowej usługi hostowanej. Utwórz usługę, podając nazwę usługi hostowanej (który musi być unikatowa na platformie Azure), etykietę (automatycznie kodowany w formacie base64), opis i lokalizacji.
+## <a name="CreateCloudService"> </a>Tworzenie usługi w chmurze
+Gdy tworzysz aplikację i uruchamiasz ją na platformie Azure, kod i konfiguracja są nazywane [usługą w chmurze][cloud service]platformy Azure. (Była znana jako *usługa hostowana* we wcześniejszych wersjach platformy Azure). Za pomocą metody **\_Create hostowanej\_usługi** można utworzyć nową usługę hostowaną. Utwórz usługę, podając nazwę usługi hostowanej (która musi być unikatowa na platformie Azure), etykietę (automatycznie zakodowaną w formacie base64), opis i lokalizację.
 
     from azure import *
     from azure.servicemanagement import *
@@ -133,7 +133,7 @@ Podczas tworzenia aplikacji i uruchom go na platformie Azure, kod i konfiguracja
 
     sms.create_hosted_service(name, label, desc, location)
 
-Możesz wyświetlić listę wszystkich usług hostowanych dla subskrypcji przy użyciu **listy\_hostowane\_usług** metody.
+Wszystkie usługi hostowane dla subskrypcji można wyświetlić za pomocą metody **\_list usług\_hostowanych** .
 
     result = sms.list_hosted_services()
 
@@ -143,7 +143,7 @@ Możesz wyświetlić listę wszystkich usług hostowanych dla subskrypcji przy u
         print('Location: ' + hosted_service.hosted_service_properties.location)
         print('')
 
-Aby uzyskać informacje dotyczące określonej usługi hostowanej, należy przekazać nazwę usługi hostowanej na **uzyskać\_hostowane\_usługi\_właściwości** metody.
+Aby uzyskać informacje dotyczące konkretnej usługi hostowanej, należy przekazać nazwę usługi hostowanej do metody **\_pobierania\_właściwości usługi\_hostowanej** .
 
     hosted_service = sms.get_hosted_service_properties('myhostedservice')
 
@@ -151,17 +151,17 @@ Aby uzyskać informacje dotyczące określonej usługi hostowanej, należy przek
     print('Management URL: ' + hosted_service.url)
     print('Location: ' + hosted_service.hosted_service_properties.location)
 
-Po utworzeniu usługi w chmurze, należy wdrożyć kod do usługi z **tworzenie\_wdrożenia** metody.
+Po utworzeniu usługi w chmurze Wdróż swój kod w usłudze przy użyciu metody **tworzenia\_wdrożenia** .
 
 ## <a name="DeleteCloudService"> </a>Usuwanie usługi w chmurze
-Można usunąć usługi w chmurze przez przekazanie nazwy usługi na **Usuń\_hostowane\_usługi** metody.
+Możesz usunąć usługę w chmurze, przekazując nazwę usługi do metody **\_Delete hostowanej\_usługi** .
 
     sms.delete_hosted_service('myhostedservice')
 
-Aby można było usunąć usługę, należy najpierw usunąć wszystkich wdrożeń usługi. Aby uzyskać więcej informacji, zobacz [usunąć wdrożenie](#DeleteDeployment).
+Aby można było usunąć usługę, należy najpierw usunąć wszystkie wdrożenia usługi. Aby uzyskać więcej informacji, zobacz [usuwanie wdrożenia](#DeleteDeployment).
 
 ## <a name="DeleteDeployment"> </a>Usuwanie wdrożenia
-Aby usunąć wdrożenie, użyj **Usuń\_wdrożenia** metody. Poniższy przykład pokazuje, jak usunąć wdrożenie o nazwie `v1`:
+Aby usunąć wdrożenie, należy użyć metody **usuwania\_wdrożenia** . Poniższy przykład pokazuje, jak usunąć wdrożenie o nazwie `v1`:
 
     from azure import *
     from azure.servicemanagement import *
@@ -170,8 +170,8 @@ Aby usunąć wdrożenie, użyj **Usuń\_wdrożenia** metody. Poniższy przykład
 
     sms.delete_deployment('myhostedservice', 'v1')
 
-## <a name="CreateStorageService"> </a>Tworzenie usługi storage
-A [usługi storage](../storage/common/storage-create-storage-account.md) zapewnia dostęp do usługi Azure [obiektów blob](../storage/blobs/storage-python-how-to-use-blob-storage.md), [tabel](../cosmos-db/table-storage-how-to-use-python.md), i [kolejek](../storage/queues/storage-python-how-to-use-queue-storage.md). Aby utworzyć usługę storage, należy nazwę usługi (od 3 do 24 małych liter i unikatowy w obrębie platformy Azure). Należy również opis etykiety (maksymalnie 100 znaków, automatycznie kodowane w formacie base64) i lokalizacji. Poniższy przykład pokazuje, jak utworzyć usługę magazynu, określając lokalizację:
+## <a name="CreateStorageService"> </a>Tworzenie usługi magazynu
+[Usługa magazynu](../storage/common/storage-create-storage-account.md) zapewnia dostęp do [obiektów BLOB](../storage/blobs/storage-python-how-to-use-blob-storage.md), [tabel](../cosmos-db/table-storage-how-to-use-python.md)i kolejek platformy [](../storage/queues/storage-python-how-to-use-queue-storage.md)Azure. Aby utworzyć usługę magazynu, musisz mieć nazwę usługi (od 3 do 24 małych liter i unikatowy na platformie Azure). Potrzebny jest również opis, etykieta (do 100 znaków, automatycznie zakodowana w formacie base64) i lokalizacja. Poniższy przykład pokazuje, jak utworzyć usługę magazynu, określając lokalizację:
 
     from azure import *
     from azure.servicemanagement import *
@@ -188,9 +188,9 @@ A [usługi storage](../storage/common/storage-create-storage-account.md) zapewni
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-W powyższym przykładzie stan **tworzenie\_magazynu\_konta** operacji mogą być pobierane przez przekazanie wynik zwracany przez **tworzenie\_magazynu\_ konto** do **uzyskać\_operacji\_stan** metody. 
+W poprzednim przykładzie stan operacji **\_tworzenia konta magazynu\_** można pobrać, przekazując wynik zwrócony przez polecenie **\_Utwórz konto magazynu\_** do elementu **get\_Metoda\_stanu operacji** . 
 
-Możesz wyświetlić listę swoich kont magazynu i ich właściwości, za pomocą **listy\_magazynu\_kont** metody.
+Możesz wyświetlić listę kont magazynu i ich właściwości przy użyciu metody **list\_\_accounts** .
 
     from azure import *
     from azure.servicemanagement import *
@@ -203,8 +203,8 @@ Możesz wyświetlić listę swoich kont magazynu i ich właściwości, za pomoc�
         print('Location: ' + account.storage_service_properties.location)
         print('')
 
-## <a name="DeleteStorageService"> </a>Usuwanie usługi storage
-Aby usunąć usługę storage, przekazać nazwę usługi magazynu do **Usuń\_magazynu\_konta** metody. Usunięcie usługi magazynu powoduje usunięcie wszystkich danych przechowywanych w usłudze (obiekty BLOB, tabele i kolejki).
+## <a name="DeleteStorageService"> </a>Usuwanie usługi magazynu
+Aby usunąć usługę magazynu, należy przekazać nazwę usługi magazynu do metody **\_usuwania konta magazynu\_** . Usunięcie usługi magazynu powoduje usunięcie wszystkich danych przechowywanych w usłudze (obiektów blob, tabel i kolejek).
 
     from azure import *
     from azure.servicemanagement import *
@@ -213,8 +213,8 @@ Aby usunąć usługę storage, przekazać nazwę usługi magazynu do **Usuń\_ma
 
     sms.delete_storage_account('mystorageaccount')
 
-## <a name="ListOperatingSystems"> </a>Listę dostępnych systemów operacyjnych
-Aby wyświetlić listę systemów operacyjnych, które są dostępne dla usług hostingu, należy użyć **listy\_operacyjnego\_systemów** metody.
+## <a name="ListOperatingSystems"> </a>Wyświetl dostępne systemy operacyjne
+Aby wyświetlić listę systemów operacyjnych, które są dostępne dla usług hostingu, użyj metody z **\_listą systemów operacyjnych\_** .
 
     from azure import *
     from azure.servicemanagement import *
@@ -228,7 +228,7 @@ Aby wyświetlić listę systemów operacyjnych, które są dostępne dla usług 
         print('Family: ' + os.family_label)
         print('Active: ' + str(os.is_active))
 
-Alternatywnie, można użyć **listy\_operacyjnego\_systemu\_rodzin** metody, która grupuje systemów operacyjnych według rodziny.
+Alternatywnie można użyć metody z **listą\_rodzin\_systemów\_operacyjnych** , która grupuje systemy operacyjne według rodziny.
 
     result = sms.list_operating_system_families()
 
@@ -241,7 +241,7 @@ Alternatywnie, można użyć **listy\_operacyjnego\_systemu\_rodzin** metody, kt
         print('')
 
 ## <a name="CreateVMImage"> </a>Tworzenie obrazu systemu operacyjnego
-Aby dodać obraz systemu operacyjnego do repozytorium obrazów, użyj **Dodaj\_os\_obraz** metody.
+Aby dodać obraz systemu operacyjnego do repozytorium obrazów, użyj metody **\_Dodawanie obrazu systemu operacyjnego\_** .
 
     from azure import *
     from azure.servicemanagement import *
@@ -258,7 +258,7 @@ Aby dodać obraz systemu operacyjnego do repozytorium obrazów, użyj **Dodaj\_o
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-Aby wyświetlić listę obrazów systemu operacyjnego, które są dostępne, należy użyć **listy\_os\_obrazów** metody. Zawiera wszystkie obrazy platformy i obrazów użytkowników.
+Aby wyświetlić listę dostępnych obrazów systemów operacyjnych, użyj metody **\_wyświetlania obrazów systemu operacyjnego\_** . Zawiera wszystkie obrazy platformy i obrazy użytkowników.
 
     result = sms.list_os_images()
 
@@ -273,7 +273,7 @@ Aby wyświetlić listę obrazów systemu operacyjnego, które są dostępne, nal
         print('')
 
 ## <a name="DeleteVMImage"> </a>Usuwanie obrazu systemu operacyjnego
-Aby usunąć obrazu użytkownika, użyj **Usuń\_os\_obrazu** metody.
+Aby usunąć obraz użytkownika, użyj metody **usuwania\_obrazu systemu\_operacyjnego** .
 
     from azure import *
     from azure.servicemanagement import *
@@ -285,8 +285,8 @@ Aby usunąć obrazu użytkownika, użyj **Usuń\_os\_obrazu** metody.
     operation_result = sms.get_operation_status(result.request_id)
     print('Operation status: ' + operation_result.status)
 
-## <a name="CreateVM"> </a>Utwórz maszynę wirtualną
-Aby utworzyć maszynę wirtualną, należy najpierw utworzyć [usługi w chmurze](#CreateCloudService). Następnie utwórz wdrożenie maszyny wirtualnej przy użyciu **tworzenie\_wirtualnego\_maszyny\_wdrożenia** metody.
+## <a name="CreateVM"> </a>Tworzenie maszyny wirtualnej
+Aby utworzyć maszynę wirtualną, należy najpierw utworzyć [usługę w chmurze](#CreateCloudService). Następnie Utwórz wdrożenie maszyny wirtualnej, korzystając z metody **tworzenia\_wdrożenia\_maszyny\_wirtualnej** .
 
     from azure import *
     from azure.servicemanagement import *
@@ -323,8 +323,8 @@ Aby utworzyć maszynę wirtualną, należy najpierw utworzyć [usługi w chmurze
         os_virtual_hard_disk=os_hd,
         role_size='Small')
 
-## <a name="DeleteVM"> </a>Usuń maszynę wirtualną
-Aby usunąć maszynę wirtualną, należy najpierw usunąć wdrożenie za pomocą **Usuń\_wdrożenia** metody.
+## <a name="DeleteVM"> </a>Usuwanie maszyny wirtualnej
+Aby usunąć maszynę wirtualną, należy najpierw usunąć wdrożenie przy użyciu metody **usuwania\_wdrożenia** .
 
     from azure import *
     from azure.servicemanagement import *
@@ -334,12 +334,12 @@ Aby usunąć maszynę wirtualną, należy najpierw usunąć wdrożenie za pomoc�
     sms.delete_deployment(service_name='myvm',
         deployment_name='myvm')
 
-Następnie można usunąć usługi w chmurze przy użyciu **Usuń\_hostowane\_usługi** metody.
+Usługę w chmurze można następnie usunąć przy użyciu metody **\_usuwania usługi\_hostowanej** .
 
     sms.delete_hosted_service(service_name='myvm')
 
-## <a name="create-a-virtual-machine-from-a-captured-virtual-machine-image"></a>Utwórz maszynę wirtualną z obrazu maszyny wirtualnej przechwycone
-Aby przechwycić obraz maszyny Wirtualnej, należy najpierw wywołać **przechwytywania\_maszyny wirtualnej\_obraz** metody.
+## <a name="create-a-virtual-machine-from-a-captured-virtual-machine-image"></a>Tworzenie maszyny wirtualnej na podstawie przechwyconego obrazu maszyny wirtualnej
+Aby przechwycić obraz maszyny wirtualnej, należy najpierw wywołać **metodę\_przechwytywania\_obrazu maszyny wirtualnej** .
 
     from azure import *
     from azure.servicemanagement import *
@@ -366,11 +366,11 @@ Aby przechwycić obraz maszyny Wirtualnej, należy najpierw wywołać **przechwy
             image
         )
 
-Aby pomyślnie przechwycono obrazu, użyj **listy\_maszyny wirtualnej\_obrazów** interfejsu API. Upewnij się, że obraz jest wyświetlany w wynikach.
+Aby upewnić się, że obraz został pomyślnie przechwycony, użyj **interfejsu\_API\_listy obrazów maszyn wirtualnych** . Upewnij się, że obraz jest wyświetlany w wynikach.
 
     images = sms.list_vm_images()
 
-Aby na koniec utwórz maszynę wirtualną przy użyciu przechwyconego obrazu, należy użyć **tworzenie\_wirtualnego\_maszyny\_wdrożenia** metodzie jak wcześniej, ale tym razem przekazać vm_image_name zamiast tego.
+Aby na koniec utworzyć maszynę wirtualną przy użyciu przechwyconego obrazu, **Użyj\_metody\_wdrożenia\_maszyny wirtualnej** tak jak wcześniej, ale ten czas zostanie przekazany w vm_image_name.
 
     from azure import *
     from azure.servicemanagement import *
@@ -395,12 +395,12 @@ Aby na koniec utwórz maszynę wirtualną przy użyciu przechwyconego obrazu, na
         role_size='Small',
         vm_image_name = image_name)
 
-Aby dowiedzieć się więcej o tym, jak przechwycić maszynę wirtualną systemu Linux w klasycznym modelu wdrażania, zobacz [przechwycić maszynę wirtualną z systemem Linux](../virtual-machines/linux/classic/capture-image-classic.md).
+Aby dowiedzieć się więcej o tym, jak przechwycić maszynę wirtualną z systemem Linux w klasycznym modelu wdrażania, zobacz [przechwytywanie maszyny wirtualnej z systemem Linux](../virtual-machines/linux/classic/capture-image-classic.md).
 
-Aby dowiedzieć się więcej o tym, jak przechwycić maszynę wirtualną Windows, w klasycznym modelu wdrażania, zobacz [przechwycić maszynę wirtualną Windows](../virtual-machines/windows/classic/capture-image-classic.md).
+Aby dowiedzieć się więcej o tym, jak przechwycić maszynę wirtualną z systemem Windows w klasycznym modelu wdrażania, zobacz [przechwytywanie maszyny wirtualnej z systemem Windows](../virtual-machines/windows/classic/capture-image-classic.md).
 
 ## <a name="What's Next"> </a>Następne kroki
-Teraz, kiedy znasz już podstawy usługi zarządzania, możesz uzyskać dostęp [dokumentację API kompletny zestaw Azure Python SDK](https://azure-sdk-for-python.readthedocs.org/) i wykonywać zadania złożone, łatwe do zarządzania aplikacją języka Python.
+Teraz, gdy znasz już podstawowe informacje dotyczące zarządzania usługami, możesz uzyskać dostęp do kompletnej dokumentacji dotyczącej [interfejsów API dla zestawu Azure Python SDK](https://azure-sdk-for-python.readthedocs.org/) i ułatwić wykonywanie złożonych zadań związanych z zarządzaniem aplikacją w języku Python.
 
 Więcej informacji możesz znaleźć w [Centrum deweloperów języka Python](https://azure.microsoft.com/develop/python/).
 

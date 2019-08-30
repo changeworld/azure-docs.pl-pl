@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 08/26/2019
 ms.author: diberry
-ms.openlocfilehash: df4aa2d6a3c4690fb1fc38b0f4f7d49afccdd657
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ba9c2cd5a85e02a7dd4b1091a050d76e94861964
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640479"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147087"
 ---
 # <a name="share-or-upgrade-your-qna-maker-service"></a>Udostępnianie lub uaktualnianie usługi QnA Maker
 Udostępnianie lub uaktualnianie usług QnA Maker w celu lepszego zarządzania zasobami. 
@@ -26,13 +26,14 @@ Po wstępnym utworzeniu można uaktualnić poszczególne składniki stosu QnA Ma
 
 QnA Maker tworzy kilka zasobów platformy Azure. Aby ograniczyć zarządzanie i korzystać z zalet udostępniania kosztów, Skorzystaj z poniższej tabeli, aby dowiedzieć się, co można i czego nie można udostępnić:
 
-|Usługa|Udostępnij|
-|--|--|
-|Cognitive Services|X|
-|Plan usługi aplikacji|✔|
-|App Service|X|
-|Application Insights|✔|
-|Usługa wyszukiwania|✔|
+|Usługa|Udostępnij|Reason|
+|--|--|--|
+|Cognitive Services|X|Niemożliwa przez projekt|
+|Plan usługi aplikacji|✔|Stałe miejsce na dysku przydzielono dla planu usługi App Service. W przypadku innych aplikacji, które współdzielą ten sam plan App Service, należy użyć znacznego miejsca na dysku, QnAMaker App Service spowoduje problemy.|
+|App Service|X|Niemożliwa przez projekt|
+|Application Insights|✔|Mogą być udostępniane|
+|Usługa wyszukiwania|✔|1. `testkb` jest zarezerwowaną nazwą usługi QnAMaker, nie może być używana przez inne osoby.<br>2. Mapa synonimów o nazwie `synonym-map` jest zarezerwowana dla usługi QnAMaker.<br>3. Liczba opublikowanych artykułów bazy wiedzy jest ograniczona przez warstwę usługi wyszukiwania. Jeśli dostępne są wolne indeksy, można z nich korzystać inne usługi.|
+
 
 ## <a name="upgrade-qna-maker-management-sku"></a>Uaktualnij jednostkę SKU zarządzania QnA Maker
 

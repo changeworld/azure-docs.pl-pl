@@ -17,12 +17,12 @@ ms.date: 05/13/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f57f09f146e542768c83fa034f0b4e65bc6b2ae
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: ce62a5059304fe83d933a46ae69f4b8e0c276ba7
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987936"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127034"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Czasy raportowania Azure Active Directory
 
@@ -64,11 +64,11 @@ W poniższej tabeli wymieniono informacje o opóźnieniu dla raportów zabezpiec
 | Narażeni użytkownicy          | 5 minut   | 15 minut  | 2 godziny  |
 | Ryzykowne logowania         | 5 minut   | 15 minut  | 2 godziny  |
 
-## <a name="risk-events"></a>Zdarzenia o podwyższonym ryzyku
+## <a name="risk-detections"></a>Wykrywanie ryzyka
 
-Usługa Azure AD używa adaptacyjnych algorytmów uczenia maszynowego i heurystyki do wykrywania podejrzanych działań, które są związane z kontami użytkowników. Każda wykryta podejrzana akcja jest przechowywana w rekordzie o nazwie **zdarzenie**o podwyższonym ryzyku.
+Usługa Azure AD używa adaptacyjnych algorytmów uczenia maszynowego i heurystyki do wykrywania podejrzanych działań, które są związane z kontami użytkowników. Każda wykryte podejrzane działania są przechowywane w rekordzie nazywanym wykryciem **ryzyka**.
 
-W poniższej tabeli wymieniono informacje o opóźnieniu dla zdarzeń o podwyższonym ryzyku.
+W poniższej tabeli wymieniono informacje o opóźnieniu dotyczące wykrywania zagrożeń.
 
 | Raport | Minimalne | Average | Maksimum |
 | :-- | --- | --- | --- |
@@ -77,11 +77,11 @@ W poniższej tabeli wymieniono informacje o opóźnieniu dla zdarzeń o podwyżs
 | Użytkownicy z ujawnionymi poświadczeniami |2 godziny |4 godziny |8 godzin |
 | Niemożliwa podróż do nietypowych lokalizacji |5 minut |1 godzina |8 godzin  |
 | Logowania z zainfekowanych urządzeń |2 godziny |4 godziny |8 godzin  |
-| Logowania z adresów IP z podejrzaną aktywnością |2 godziny |4 godziny |8 godzin  |
+| Logowania z adresów IP związanych z podejrzanymi działaniami |2 godziny |4 godziny |8 godzin  |
 
 
 ## <a name="next-steps"></a>Następne kroki
 
 * [Przegląd raportów usługi Azure AD](overview-reports.md)
 * [Programistyczny dostęp do raportów usługi Azure AD](concept-reporting-api.md)
-* [Zdarzenia o podwyższonym ryzyku usługi Azure Active Directory](concept-risk-events.md)
+* [Azure Active Directory wykrywania ryzyka](concept-risk-events.md)

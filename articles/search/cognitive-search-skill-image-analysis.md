@@ -7,22 +7,22 @@ author: luiscabrer
 ms.service: search
 ms.workload: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 08/28/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 8cf72ba2fff65cf3382344fd2851c9c6027676c2
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 2bdb65355f835eec232efd4f0493ecefbecfdd26
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635907"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128188"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Umiejętność analizy obrazów
 
 Umiejętność **analizy obrazów** wyodrębnia bogaty zestaw funkcji wizualnych opartych na zawartości obrazu. Na przykład można wygenerować podpis na podstawie obrazu, generować Tagi lub identyfikować osobistości i punkty orientacyjne. Ta umiejętność używa modeli uczenia maszynowego zapewnianych przez [Przetwarzanie obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) w Cognitive Services. 
 
 > [!NOTE]
-> Podczas rozszerzania zakresu przez zwiększenie częstotliwości przetwarzania, Dodawanie większej liczby dokumentów lub Dodawanie algorytmów AI, należy [dołączyć Cognitive Services rozliczanego zasobu](cognitive-search-attach-cognitive-services.md). Opłaty naliczane podczas wywoływania interfejsów API w Cognitive Services oraz do wyodrębniania obrazów w ramach etapu łamania dokumentu w Azure Search. Nie są naliczane opłaty za Wyodrębnianie tekstu z dokumentów.
+> Małe woluminy (w ramach 20 transakcji) można bezpłatnie wykonywać w Azure Search, ale większe obciążenia wymagają dołączenia [zasobu Cognitive Services do rozliczenia](cognitive-search-attach-cognitive-services.md). Opłaty naliczane podczas wywoływania interfejsów API w Cognitive Services oraz do wyodrębniania obrazów w ramach etapu łamania dokumentu w Azure Search. Nie są naliczane opłaty za Wyodrębnianie tekstu z dokumentów.
 >
 > Do wykonania wbudowanych umiejętności są naliczane opłaty za istniejące [Cognitive Services cena płatność zgodnie z rzeczywistym](https://azure.microsoft.com/pricing/details/cognitive-services/)użyciem. Cennik wyodrębniania obrazów został opisany na [stronie cennika Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400).
 
@@ -37,9 +37,8 @@ W parametrach jest rozróżniana wielkość liter.
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
 | defaultLanguageCode   |  Ciąg wskazujący język, który ma zostać zwrócony. Usługa zwraca wyniki rozpoznawania w określonym języku. Jeśli ten parametr nie jest określony, wartością domyślną jest "en". <br/><br/>Obsługiwane są następujące języki: <br/>*pl* — angielski (wartość domyślna) <br/> *zh* — chiński uproszczony|
-|visualFeatures |   Tablica ciągów wskazująca typy funkcji wizualizacji do zwrócenia. Prawidłowe typy funkcji wizualizacji to:  <ul><li> *Kategorie* — klasyfikuje zawartość obrazu zgodnie z taksonomią zdefiniowaną w [dokumentacji](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)Cognitive Services.</li><li> *znaczniki* — znaczniki obrazu ze szczegółową listą wyrazów związanych z zawartością obrazu.</li><li>*Opis* — opisuje zawartość obrazu za pomocą kompletnego zdania w języku angielskim.</li><li>*twarze* — wykrywa, czy twarze są obecne. Jeśli jest obecny, generuje współrzędne, płeć i wiek.</li><li> *ImageType* — wykrywa, czy obraz jest obiektem clipart czy rysowaniem linii.</li><li>  *Color* — określa kolor akcentu, kolor dominujący oraz to, czy obraz jest czarny & biały.</li><li>*osoba dorosła* — wykrywa, czy obraz jest pornograficznej w naturze (przedstawia nagość lub akt płci). Wykryto również zawartość z sugestią seksualną.</li></ul> Nazwy funkcji wizualnych są rozróżniane wielkości liter.|
-| details informacje   | Tablica ciągów wskazująca, które szczegóły dotyczące domeny mają być zwracane. Prawidłowe typy funkcji wizualizacji to: <ul><li>*osobistości* — identyfikuje osobistości, jeśli został wykryty w obrazie.</li><li>*punkty orientacyjne* — wskazuje punkty orientacyjne, jeśli zostały wykryte na obrazie.</li></ul>
- |
+|visualFeatures |   Tablica ciągów wskazująca typy funkcji wizualizacji do zwrócenia. Prawidłowe typy funkcji wizualizacji to:  <ul><li> *Kategorie* — klasyfikuje zawartość obrazu zgodnie z taksonomią zdefiniowaną w [dokumentacji przetwarzanie obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)Cognitive Services. </li><li> *znaczniki* — znaczniki obrazu ze szczegółową listą wyrazów związanych z zawartością obrazu.</li><li>*Opis* — opisuje zawartość obrazu za pomocą kompletnego zdania w języku angielskim.</li><li>*twarze* — wykrywa, czy twarze są obecne. Jeśli jest obecny, generuje współrzędne, płeć i wiek.</li><li>    *ImageType* — wykrywa, czy obraz jest obiektem clipart czy rysowaniem linii.</li><li>  *Color* — określa kolor akcentu, kolor dominujący oraz to, czy obraz jest czarny & biały.</li><li>*osoba dorosła* — wykrywa, czy obraz jest pornograficznej w naturze (przedstawia nagość lub akt płci). Wykryto również zawartość z sugestią seksualną.</li></ul> Nazwy funkcji wizualnych są rozróżniane wielkości liter.|
+| details informacje   | Tablica ciągów wskazująca, które szczegóły dotyczące domeny mają być zwracane. Prawidłowe typy funkcji wizualizacji to: <ul><li>*osobistości* — identyfikuje osobistości, jeśli został wykryty w obrazie.</li><li>*punkty orientacyjne* — wskazuje punkty orientacyjne, jeśli zostały wykryte na obrazie. </li></ul> |
 
 ## <a name="skill-inputs"></a>Dane wejściowe kwalifikacji
 
@@ -49,7 +48,8 @@ W parametrach jest rozróżniana wielkość liter.
 
 
 
-##  <a name="sample-definition"></a>Definicja Przykładowa
+##  <a name="sample-skill-definition"></a>Przykładowa definicja kwalifikacji
+
 ```json
         {
             "description": "Extract image analysis.",
@@ -316,7 +316,17 @@ W parametrach jest rozróżniana wielkość liter.
             "targetFieldName": "faces"
         }
 ```
+### <a name="variation-on-output-field-mappings-nested-properties"></a>Zmiana mapowań pól wyjściowych (właściwości zagnieżdżone)
 
+Można zdefiniować mapowania pól wyjściowych na właściwości niższego poziomu, takie jak tylko dzielnice lub osobistości. W takim przypadku upewnij się, że schemat indeksu ma pole, aby zawierało punkty orientacyjne.
+
+```json
+    "outputFieldMappings": [
+        {
+            "sourceFieldName": /document/normalized_images/*/categories/details/landmarks/*",
+            "targetFieldName": "landmarks"
+        }
+```
 ##  <a name="sample-input"></a>Przykładowe dane wejściowe
 
 ```json
@@ -493,6 +503,22 @@ W następujących przypadkach błędów nie są wyodrębniane żadne elementy.
 | NotSupportedVisualFeature  | Określony typ funkcji jest nieprawidłowy. |
 | NotSupportedImage | Nieobsługiwany obraz, na przykład pornografia podrzędna. |
 | InvalidDetails | Nieobsługiwany model specyficzny dla domeny. |
+
+Jeśli zostanie wyświetlony błąd podobny do `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"`, sprawdź ścieżkę. Zarówno osobistości, jak i punkty orientacyjne `detail`są właściwościami poniżej.
+
+```json
+"categories":[  
+      {  
+         "name":"building_",
+         "score":0.97265625,
+         "detail":{  
+            "landmarks":[  
+               {  
+                  "name":"Forbidden City",
+                  "confidence":0.92013400793075562
+               }
+            ]
+```
 
 ## <a name="see-also"></a>Zobacz także
 

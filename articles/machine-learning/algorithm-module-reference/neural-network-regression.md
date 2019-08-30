@@ -1,7 +1,7 @@
 ---
-title: 'Regresja sieci neuronowej: Odwołania do modułu'
+title: 'Regresja sieci neuronowych: Dokumentacja modułu'
 titleSuffix: Azure Machine Learning service
-description: Dowiedz się, jak użyć modułu neuronowych regresji sieci w usłudze Azure Machine Learning, aby utworzyć model regresji, przy użyciu algorytmu sieć neuronowa można dostosowywać...
+description: Dowiedz się, jak użyć modułu regresja sieci neuronowych w usłudze Azure Machine Learning, aby utworzyć model regresji przy użyciu dostosowywalnego algorytmu sieciowego neuronowych.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,81 +9,80 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: bc6a7505ab09e929e5add61eea687f871aedf242
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 93f27458a2571b2e26a090c06b01d8abe3e79c2a
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65029313"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70128590"
 ---
-# <a name="neural-network-regression-module"></a>Neuronowych modułu regresji sieci
+# <a name="neural-network-regression-module"></a>Moduł regresji sieci neuronowych
 
-*Tworzy model regresji, przy użyciu algorytmu sieć neuronowa*  
+*Tworzy model regresji przy użyciu algorytmu sieci neuronowych*  
   
- Kategoria: Uczenie maszynowe / zainicjować modelu / regresji
+ Kategorii Machine Learning/zainicjuj model/regresję
   
-## <a name="module-overview"></a>Omówienie modułu  
+## <a name="module-overview"></a>Przegląd modułu  
 
-W tym artykule opisano moduł interfejs graficzny (wersja zapoznawcza) dla usługi Azure Machine Learning.
+W tym artykule opisano moduł Visual Interface (wersja zapoznawcza) dla usługi Azure Machine Learning.
 
-Ten moduł służy do tworzenia modelu regresji przy użyciu algorytmu sieć neuronowa można dostosowywać.
+Ten moduł służy do tworzenia modelu regresji przy użyciu dostosowywalnego algorytmu sieci neuronowych.
   
- Sieci neuronowe na potrzeby uczenia głębokiego i modelowanie złożonych problemów, takich jak rozpoznawanie obrazów są powszechnie znane są one łatwo dostosować do problemów regresji. Każdej klasy modeli statystyczne można określane jako sieci neuronowych jeśli ich wagi adaptacyjne przybliżyć nieliniowych funkcji ich dane wejściowe. Ten sposób sieć neuronowa regresji nadaje się gdzie bardziej tradycyjnego modelu regresji nie mieści się w rozwiązaniu problemów.
+ Chociaż sieci neuronowych są szeroko znane do użycia w uczeniu głębokiego i modelowania złożonych problemów, takich jak rozpoznawanie obrazu, można je łatwo dostosować do problemów z regresją. Każda Klasa modeli statystycznych może być neuronowych sieci w przypadku używania wag adaptacyjnych i może przybliżać funkcje nieliniowe danych wejściowych. W ten sposób regresja sieci neuronowych jest przeznaczona do problemów, w których bardziej tradycyjny model regresji nie może pasować do rozwiązania.
   
- Sieć neuronowa regresji jest metodą uczenia nadzorowanego i dlatego wymaga *oznakowane zestawu danych*, który znajduje się kolumna etykiety. Ponieważ model regresji przewiduje wartość liczbową, kolumna etykiety musi być typu danych liczbowych.  
+ Neuronowych regresji sieci to nadzorowana Metoda uczenia i dlatego wymaga oznakowanego *zestawu danych*, który zawiera kolumnę etykieta. Ponieważ model regresji przewiduje wartość liczbową, kolumna etykiety musi być typem danych liczbowych.  
   
- Można nauczenia modelu, zapewniając modelu i oznakowane zestawu danych jako dane wejściowe [uczenie modelu](./train-model.md). Następnie można uczonego modelu do prognozowania wartości dla nowe przykłady danych wejściowych.  
+ Możesz nauczyć model, dostarczając model i otagowany zestaw danych jako dane wejściowe do [modelu uczenia](./train-model.md). Model przeszkolony może być następnie używany do przewidywania wartości dla nowych przykładów wejściowych.  
   
-## <a name="configure-neural-network-regression"></a>Konfigurowanie sieci neuronowych regresji 
+## <a name="configure-neural-network-regression"></a>Konfigurowanie regresji sieci neuronowych 
 
-Często można dostosować sieci neuronowych. W tej sekcji opisano sposób tworzenia modelu przy użyciu dwóch metod:
+Sieci neuronowych można dostosowywać w szerokim stopniu. W tej sekcji opisano sposób tworzenia modelu przy użyciu dwóch metod:
   
-+ [Tworzenie modelu sieci neuronowej przy użyciu architektury domyślne](#bkmk_DefaultArchitecture)  
++ [Tworzenie modelu sieci neuronowych przy użyciu architektury domyślnej](#bkmk_DefaultArchitecture)  
   
-    Jeśli zdecydujesz się zaakceptować domyślne architektury sieci neuronowych, użyj **właściwości** okienko, aby ustawić parametry, które kontrolują zachowanie sieci neuronowych, takie jak liczba węzłów w ukrytej warstwie według następującego, tempo uczenia i normalizacji.
+    Jeśli zaakceptujesz domyślną architekturę sieci neuronowych, użyj okienka **Właściwości** , aby ustawić parametry kontrolujące zachowanie sieci neuronowych, takie jak liczba węzłów w warstwie ukryta, szybkość uczenia i normalizacja.
 
-    Jeśli dopiero zaczynasz korzystać z sieci neuronowych, zacznij tutaj. Ten moduł umożliwia wielu dostosowań, a także modelu strojenia, bez dogłębnej wiedzy na temat sieci neuronowych. 
+    Zacznij tutaj, jeśli jesteś nowym neuronowych sieci. Moduł obsługuje wiele dostosowań, a także dostrajanie modelu bez dokładnej znajomości sieci neuronowych. 
 
-+ Zdefiniuj niestandardową architekturę sieci neuronowych 
++ Definiowanie niestandardowej architektury dla sieci neuronowych 
 
-    Użyj tej opcji, jeśli chcesz dodać dodatkowych ukrytych warstw, lub do pełnego dostosowania funkcje architektury, jego połączenia i aktywacji sieci.
+    Użyj tej opcji, jeśli chcesz dodać dodatkowe ukryte warstwy lub w pełni dostosować architekturę sieci, jej połączenia i funkcje aktywacji.
     
-    Ta opcja jest przydatna, jeśli znasz już nieco sieci neuronowych. Język Net # umożliwia definiowanie architektury sieci.  
+    Ta opcja jest Najlepsza, jeśli masz już doświadczenie w korzystaniu z sieci neuronowych. Język NET # jest używany do definiowania architektury sieci.  
 
-##  <a name="bkmk_DefaultArchitecture"></a> Tworzenie modelu sieci neuronowej przy użyciu architektury domyślne
+##  <a name="bkmk_DefaultArchitecture"></a>Tworzenie modelu sieci neuronowych przy użyciu architektury domyślnej
   
-1.  Dodaj **neuronowych regresji sieci** modułu do eksperymentu w interfejsie. Można znaleźć w tym module w ramach **uczenia maszynowego**, **zainicjować**w **regresji** kategorii. 
+1.  Dodaj moduł **regresji sieci neuronowych** do eksperymentu w interfejsie. Ten moduł można znaleźć w obszarze **Machine Learning**, **zainicjować**, w kategorii **regresja** . 
   
-2. Wskazać, jak model, który ma być uczony, ustawiając **trybie trainer tworzenia** opcji.  
+2. Wskaż, w jaki sposób ma być szkolony model, ustawiając opcję **tworzenia trybu Trainer** .  
   
-    -   **Pojedynczy parametr**: Wybierz tę opcję, jeśli wiesz już, jak chcesz skonfigurować modelu.  
+    -   **Pojedynczy parametr**: Wybierz tę opcję, Jeśli wiesz już, jak chcesz skonfigurować model.  
 
-3.  W **ukryte specyfikacji warstwy**, wybierz opcję **nawiązane pełne połączenie przypadek**. Ta opcja tworzy model przy użyciu domyślnego architektury sieci neuronowych, mającej modelu regresji sieci neuronowych, te atrybuty:  
+3.  W obszarze **Specyfikacja warstwy ukrytej**wybierz pozycję w **pełni połączony przypadek**. Ta opcja tworzy model przy użyciu domyślnej architektury sieci neuronowych, która dla modelu regresji sieci neuronowych ma następujące atrybuty:  
   
-    + Sieci ma dokładnie jednego ukrytej warstwie.
-    + Warstwa danych wyjściowych jest w pełni ukrytej warstwie według następującego oraz ukrytej warstwie według następującego jest w pełni podłączony do warstwy danych wejściowych.
-    + Liczbę węzłów w ukrytej warstwie według następującego mogą być ustawione przez użytkownika (wartość domyślna to 100).  
+    + Sieć ma dokładnie jedną ukrytą warstwę.
+    + Warstwa wyjściowa jest w pełni połączona z ukrytą warstwą, a Ukryta warstwa jest w pełni podłączona do warstwy wejściowej.
+    + Liczbę węzłów w warstwie Ukryta można ustawić przez użytkownika (wartość domyślna to 100).  
   
-    Ponieważ węzły w warstwie danych wejściowych jest określana przez liczbę funkcji dane szkoleniowe, w modelu regresji może istnieć tylko jeden węzeł w warstwie danych wyjściowych.  
+    Ponieważ liczba węzłów w warstwie wejściowej jest określana na podstawie liczby funkcji w danych szkoleniowych, w modelu regresji może istnieć tylko jeden węzeł w warstwie wyjściowej.  
   
-4. Aby uzyskać **Liczba ukrytych węzłów**, wpisz liczbę ukrytych węzłów. Wartość domyślna to jeden ukrytej warstwie według następującego ze 100 węzłów. (Ta opcja nie jest dostępna, jeśli zdefiniujesz niestandardową architekturę przy użyciu Net #)
+4. Dla **liczby ukrytych węzłów**wpisz liczbę ukrytych węzłów. Wartość domyślna to jedna ukryta warstwa z węzłami 100. (Ta opcja jest niedostępna, jeśli zdefiniujesz architekturę niestandardową przy użyciu programu NET #).
   
-5.  Aby uzyskać **tempo uczenia**, wpisz wartość, która definiuje kroku utworzono każdej iteracji, zanim korekty. Większe wartości zawierające współczynnik może spowodować modelu, który ma być zbieżna szybciej, ale jej przekroczenia minimalne lokalnego.
+5.  Wpolu Stawka szkoleniowa wpisz wartość określającą krok wykonany dla każdej iteracji przed poprawką. Większa wartość współczynnika uczenia może spowodować szybsze zbieżność modelu, ale może przekroczyć wartości minimalne.
 
-6.  Aby uzyskać **liczby iteracji uczenia**, określ maksymalną liczbę razy algorytm przetwarza przypadków szkoleniowych.
+6.  Dla **liczby iteracji uczenia**należy określić maksymalną liczbę przypadków, w których algorytm przetwarza przypadki szkoleniowe.
 
-7.  Aby uzyskać ** początkowej learning przeprowadzi średnicy, wpisz wartość, która określa wagi węzła na początku procesu uczenia.
+7.  Dla * * średnica początkowej wagi uczenia, wpisz wartość określającą wagi węzłów na początku procesu uczenia.
 
-8.  Aby uzyskać **tempa**, wpisz wartość do zastosowania podczas nauki jako wagi w węzłach z poprzednich iteracji.
+8.  Na czas **pędu**wpisz wartość, która ma zostać zastosowana podczas uczenia się jako waga na węzłach z poprzednich iteracji.
 
-10. Wybierz opcję **mieszania przykłady**, aby zmienić kolejność przypadków między poszczególnymi iteracjami. Jeśli wyłączysz tę opcję, przypadki są przetwarzane w dokładnie takiej samej kolejności każdorazowo, gdy uruchomienie eksperymentu.
+10. Wybierz opcję, **losowo przykłady**, aby zmienić kolejność przypadków między iteracjami. W przypadku zaznaczenia tej opcji przypadki są przetwarzane w dokładnie tym samym porządku przy każdym uruchomieniu eksperymentu.
   
-11. Aby uzyskać **inicjatora liczb losowych**, możesz opcjonalnie wpisać wartość do użycia jako inicjatora. Określanie inicjatora wartość przydaje się zapewnić powtarzalność we wszystkich przebiegach aktualizacji tym samym eksperymencie.
+11. W przypadku **liczby losowej inicjatora**można opcjonalnie wpisać wartość, która ma być używana jako inicjator. Określanie wartości inicjatora jest przydatne, gdy chcesz zapewnić powtarzalność między przebiegami tego samego eksperymentu.
   
 13. Połącz zestaw danych szkoleniowych i jeden z [modułów szkoleniowych](module-reference.md): 
   
-    -   Jeśli ustawisz **trybie trainer tworzenia** do **pojedynczy parametr**, użyj [Train Model](./train-model.md).  
+    -   W przypadku ustawienia opcji **Utwórz tryb Trainer** na **pojedynczy parametr**Użyj opcji [model uczenia](./train-model.md).  
   
    
 14. Uruchom eksperyment.  
@@ -92,11 +91,11 @@ Często można dostosować sieci neuronowych. W tej sekcji opisano sposób tworz
 
 Po zakończeniu szkolenia:
 
-+ Aby wyświetlić podsumowanie parametrów modelu, wraz z funkcji wagi z szkolenia i inne parametry sieci neuronowych, kliknij prawym przyciskiem myszy dane wyjściowe [Train Model](./train-model.md)i wybierz **Visualize**.  
++ Aby wyświetlić podsumowanie parametrów modelu wraz z wagami funkcji pochodzącymi z uczenia i innymi parametrami sieci neuronowych, kliknij prawym przyciskiem myszy dane wyjściowe [modelu uczenia](./train-model.md)i wybierz polecenie **Wizualizuj**.  
 
-+ Aby zapisać migawkę trenowanego modelu, kliknij prawym przyciskiem myszy **modelu Trained** danych wyjściowych, a następnie wybierz pozycję **zapisania Trenowanego modelu**. Ten model nie jest aktualizowany na kolejnych uruchomień tym samym eksperymencie.
++ Aby zapisać migawkę przeszkolonego modelu, kliknij prawym przyciskiem myszy **wyszkolony model** wyjściowy i wybierz pozycję **Zapisz jako model przeszkolony**. Ten model nie jest aktualizowany po kolejnych uruchomieniach tego samego eksperymentu.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Zobacz [zestaw dostępnych modułów](module-reference.md) do usługi Azure Machine Learning. 
+Zapoznaj się z [zestawem modułów dostępnych](module-reference.md) do Azure Machine Learning usługi. 

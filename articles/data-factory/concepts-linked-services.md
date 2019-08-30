@@ -3,21 +3,20 @@ title: Połączone usługi w Azure Data Factory | Microsoft Docs
 description: Dowiedz się więcej o połączonych usługach w Data Factory. Połączone usługi łączą magazyny obliczeniowe z danymi do fabryki danych.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: shlo
-ms.openlocfilehash: 904e063ae64a971de7f34fbfac63b7679f3bc363
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 80e9cee0d973dc8575e9645c537b6b69fbeef700
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019951"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137118"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Połączone usługi w Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -65,7 +64,7 @@ W poniższej tabeli opisano właściwości w powyższym kodzie JSON:
 Właściwość | Opis | Wymagane |
 -------- | ----------- | -------- |
 name | Nazwa połączonej usługi. Zobacz [reguły nazewnictwa Azure Data Factory](naming-rules.md). |  Tak |
-type | Typ połączonej usługi. Na przykład: AzureStorage (magazyn danych) lub AzureBatch (COMPUTE). Zobacz opis typeProperties. | Tak |
+type | Typ połączonej usługi. Przykład: AzureStorage (magazyn danych) lub AzureBatch (COMPUTE). Zobacz opis typeProperties. | Tak |
 typeProperties | Właściwości typu są różne dla poszczególnych magazynów danych lub obliczeń. <br/><br/> W przypadku obsługiwanych typów magazynów danych i ich właściwości typów zobacz tabelę [typów zestawu danych](concepts-datasets-linked-services.md#dataset-type) w tym artykule. Przejdź do artykułu łącznika magazynu danych, aby dowiedzieć się więcej o właściwościach typu specyficznych dla magazynu danych. <br/><br/> W przypadku obsługiwanych typów obliczeniowych i ich właściwości typu zobacz [połączone usługi obliczeniowe](compute-linked-services.md). | Tak |
 connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Możesz użyć Azure Integration Runtime lub samodzielnego Integration Runtime (Jeśli magazyn danych znajduje się w sieci prywatnej). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. | Nie
 
@@ -92,14 +91,11 @@ Następująca połączona usługa to połączona usługa Azure Storage. Należy 
 ```
 
 ## <a name="create-linked-services"></a>Tworzenie połączonych usług
+
 Połączone usługi można tworzyć przy użyciu jednego z tych narzędzi lub zestawów SDK: [interfejsów API platformy .NET](quickstart-create-data-factory-dot-net.md), [programu PowerShell](quickstart-create-data-factory-powershell.md), [interfejsu API REST](quickstart-create-data-factory-rest-api.md), Azure Resource Manager szablonu i Azure Portal
 
 ## <a name="data-store-linked-services"></a>Połączone usługi magazynu danych
-Łączenie z magazynami danych można znaleźć w naszych [obsługiwanych magazynach i formatach danych](copy-activity-overview.md#supported-data-stores-and-formats). Odwołuje się do listy dla określonych właściwości połączenia, które są zbędne dla różnych sklepów.
-
-## <a name="data-store-supported-activities"></a>Działania obsługiwane przez magazyn danych
-
-[!INCLUDE [Connector-activity support matrix](../../includes/connector-activity-support-matrix.md)]
+Listę przechowywanych danych obsługiwanych przez Data Factory można znaleźć w artykule [Omówienie łączników](copy-activity-overview.md#supported-data-stores-and-formats) . Kliknij magazyn danych, aby poznać obsługiwane właściwości połączenia.
 
 ## <a name="compute-linked-services"></a>Usługi połączone usługi Compute
 [Środowiska obliczeniowe](compute-linked-services.md) referencyjne obsługują szczegółowe informacje o różnych środowiskach obliczeniowych, z którymi można nawiązać połączenie z fabryki danych oraz w różnych konfiguracjach.

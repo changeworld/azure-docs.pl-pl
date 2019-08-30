@@ -1,0 +1,126 @@
+---
+title: Tworzenie serwera Azure Database for MariaDB i zarządzanie nim przy użyciu Azure Portal
+description: W tym artykule opisano, jak można szybko utworzyć nowy serwer Azure Database for MariaDB i zarządzać nim przy użyciu witryny Azure Portal.
+author: ambhatna
+ms.author: ambhatna
+ms.service: mariadb
+ms.topic: conceptual
+ms.date: 08/09/2019
+ms.openlocfilehash: 5aae3eb0582956ccb45cc41d8400f489f1077bad
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70143442"
+---
+# <a name="create-and-manage-azure-database-for-mariadb-server-using-azure-portal"></a>Tworzenie serwera Azure Database for MariaDB i zarządzanie nim przy użyciu Azure Portal
+W tym temacie opisano, jak można szybko utworzyć nowy serwer Azure Database for MariaDB. Zawiera również informacje dotyczące sposobu zarządzania serwerem za pomocą Azure Portal. Zarządzanie serwerem obejmuje wyświetlanie szczegółów i baz danych serwera, Resetowanie hasła, skalowanie zasobów i usuwanie serwera.
+
+## <a name="log-in-to-the-azure-portal"></a>Logowanie do witryny Azure Portal
+Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
+
+## <a name="create-an-azure-database-for-mariadb-server"></a>Tworzenie serwera usługi Azure Database for MariaDB
+Wykonaj następujące kroki, aby utworzyć serwer Azure Database for MariaDB o nazwie "mydemoserver".
+
+1. Kliknij przycisk **Utwórz zasób** znajdujący się w lewym górnym rogu Azure Portal.
+
+2. Na stronie nowy wybierz pozycję **bazy danych**, a następnie na stronie bazy danych wybierz pozycję **Azure Database for MariaDB**.
+
+    > Serwer Azure Database for MariaDB jest tworzony ze zdefiniowanym zestawem zasobów [obliczeniowych i magazynu](./concepts-pricing-tiers.md) . Baza danych jest tworzona w grupie zasobów platformy Azure i na serwerze Azure Database for MariaDB.
+
+   ![create-new-server](./media/howto-create-manage-server-portal/create-new-server.png)
+
+3. Wypełnij formularz Azure Database for MariaDB przy użyciu następujących informacji:
+
+    | **Pole formularza** | **Opis pola** |
+    |----------------|-----------------------|
+    | *Nazwa serwera* | mydemoserver (nazwa serwera jest globalnie unikatowa) |
+    | *Subskrypcja* | Moja subskrypcja (wybierz z menu rozwijanego) |
+    | *Grupa zasobów* | Grupa zasobów (Utwórz nową grupę zasobów lub Użyj istniejącej) |
+    | *Wybierz źródło* | Puste (Utwórz pusty serwer MariaDB) |
+    | *Identyfikator logowania administratora serwera* | myadmin (skonfiguruj nazwę konta administratora) |
+    | *Hasło* | Ustawianie hasła konta administratora |
+    | *Potwierdź hasło* | potwierdź hasło konta administratora |
+    | *Location* | Azja Południowo-Wschodnia (Wybierz między Europą Północna i zachodnie stany USA) |
+    | *Wersja* | 10,3 (Wybierz wersję serwera Azure Database for MariaDB) |
+
+   ![create-new-server](./media/howto-create-manage-server-portal/form-field.png)
+
+4. Kliknij pozycję **Konfiguruj serwer** , aby określić warstwę usługi i poziom wydajności dla nowego serwera. Wybierz kartę **ogólnego przeznaczenia** . Wartość domyślna dla **generacji obliczeń**, **rdzeń wirtualny**, **magazynu**i **okresu przechowywania kopii zapasowych**wynosi *5* *rdzeni wirtualnych*, *100 GB*i *7 dni* . Możesz pozostawić te suwaki, tak jak to możliwe. Aby włączyć kopie zapasowe serwera w magazynie geograficznie nadmiarowym, wybierz opcję **Geograficznie nadmiarowy** w pozycji **Opcje nadmiarowości kopii zapasowej**.
+
+   ![Tworzenie — warstwa cenowa](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
+
+5. Kliknij przycisk **Przegląd + Utwórz** , aby przejść do ekranu przegląd i sprawdzić wszystkie szczegóły. Kliknij przycisk **Utwórz**, aby aprowizować serwer. Aprowizacja zajmuje kilka minut.
+
+    > Wybierz opcję **Przypnij do pulpitu nawigacyjnego** , aby łatwo śledzić wdrożenia.
+
+## <a name="update-an-azure-database-for-mariadb-server"></a>Aktualizowanie serwera Azure Database for MariaDB
+Po aprowizacji nowego serwera użytkownik ma kilka opcji konfigurowania istniejącego serwera, w tym resetowania hasła administratora, zmiany warstwy cenowej i skalowania serwera w górę lub w dół przez zmianę rdzeń wirtualny lub magazynu.
+
+### <a name="change-the-administrator-user-password"></a>Zmiana hasła użytkownika administratora
+1. Na stronie **Przegląd**serwera kliknij pozycję **zresetuj hasło** , aby wyświetlić okno resetowania hasła.
+
+   ![omówienie](./media/howto-create-manage-server-portal/overview.png)
+
+2. Wprowadź nowe hasło i Potwierdź hasło w oknie, jak pokazano poniżej:
+
+   ![Resetowanie hasła](./media/howto-create-manage-server-portal/reset-password.png)
+
+3. Kliknij przycisk **OK** , aby zapisać nowe hasło.
+
+### <a name="change-the-pricing-tier"></a>Zmiana warstwy cenowej
+> [!NOTE]
+> Skalowanie jest obsługiwane tylko z Ogólnego przeznaczenia do warstw usług zoptymalizowanych pod kątem pamięci i na odwrót. Należy pamiętać, że zmiana na i z warstwy cenowej podstawowa po utworzeniu serwera nie jest obsługiwana w Azure Database for MariaDB.
+> 
+1. Kliknij **warstwę cenową**znajdującą się w obszarze **Ustawienia**.
+2. Wybierz **warstwę cenową** , do której chcesz zmienić.
+
+    ![zmiana ceny — warstwa](./media/howto-create-manage-server-portal/change-pricing-tier.png)
+
+4. Kliknij przycisk **OK**, aby zapisać zmiany. 
+
+### <a name="scale-vcores-updown"></a>Skalowanie rdzeni wirtualnych w górę/w dół
+
+1. Kliknij **warstwę cenową**znajdującą się w obszarze **Ustawienia**.
+
+2. Zmień ustawienie **rdzeń wirtualny** , przesuwając suwak do żądanej wartości.
+
+    ![Skalowanie — obliczenia](./media/howto-create-manage-server-portal/scale-compute.png)
+
+3. Kliknij przycisk **OK**, aby zapisać zmiany.
+
+### <a name="scale-storage-up"></a>Skalowanie w górę
+
+1. Kliknij **warstwę cenową**znajdującą się w obszarze **Ustawienia**.
+
+2. Zmień ustawienie **magazynu** , przesuwając suwak do żądanej wartości.
+
+    ![Skalowanie magazynu](./media/howto-create-manage-server-portal/scale-storage.png)
+
+3. Kliknij przycisk **OK**, aby zapisać zmiany.
+
+## <a name="delete-an-azure-database-for-mariadb-server"></a>Usuń serwer Azure Database for MariaDB
+
+1. Na serwerze programukliknij przycisk **Usuń** , aby otworzyć monit o potwierdzenie usunięcia.
+
+    ![usuwanie](./media/howto-create-manage-server-portal/delete.png)
+
+2. Wpisz nazwę serwera w polu wejściowym dla podwójnego potwierdzenia.
+
+    ![confirm-delete](./media/howto-create-manage-server-portal/confirm.png)
+
+3. Kliknij przycisk **Usuń** , aby potwierdzić usunięcie serwera. Poczekaj na wyświetlenie okna "pomyślnie usunięto serwer MariaDB" na pasku powiadomień.
+
+## <a name="list-the-azure-database-for-mariadb-databases"></a>Wyświetlanie listy baz danych Azure Database for MariaDB
+Na stronie **Przegląd**serwera przewiń w dół do momentu wyświetlenia kafelka bazy danych w dolnej części. Wszystkie bazy danych na serwerze są wymienione w tabeli.
+
+   ![Pokaż — bazy danych](./media/howto-create-manage-server-portal/show-databases.png)
+
+## <a name="show-details-of-an-azure-database-for-mariadb-server"></a>Pokaż szczegóły serwera Azure Database for MariaDB
+Kliknij pozycję **Właściwości**znajdującą się w obszarze **Ustawienia** , aby wyświetlić szczegółowe informacje o serwerze.
+
+![properties](./media/howto-create-manage-server-portal/properties.png)
+
+## <a name="next-steps"></a>Następne kroki
+
+[Szybki start: Utwórz serwer Azure Database for MariaDB przy użyciu Azure Portal](./quickstart-create-mariadb-server-database-using-azure-portal.md)

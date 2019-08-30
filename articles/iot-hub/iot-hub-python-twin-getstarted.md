@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: c720dfe7aeaa39a1717362b040b5548e116cc246
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: d729ab4b3f42f5d353309023cf07ae5e212e02ec
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70062088"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147595"
 ---
 # <a name="get-started-with-device-twins-python"></a>Rozpoczynanie pracy z usługą Device bliźniaczych reprezentacji (Python)
 
@@ -27,7 +27,7 @@ Na końcu tego samouczka będziesz mieć dwie aplikacje konsolowe języka Python
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-Poniżej przedstawiono instrukcje instalacji dotyczące wymagań wstępnych.
+## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 

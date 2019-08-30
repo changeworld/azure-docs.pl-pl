@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/26/2019
+ms.date: 08/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 1c102d05d4c570f9415fad18c004847de11d50cc
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: e58e33efebfe372bd5cacc45f0a8045cec18878d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035708"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135040"
 ---
 ::: zone target="chromeless"
 
-# <a name="return-azure-data-box-disk"></a>Zwróć Azure Data Box Disk 
+## <a name="return-azure-data-box-disk"></a>Zwróć Azure Data Box Disk 
 
 ::: zone-end
 
@@ -49,22 +49,9 @@ Przed rozpoczęciem upewnij się, że zostały wykonane kroki opisane w artykule
     - Zalecamy pakowanie dysków przy użyciu dobrze zabezpieczonego zawijania bąbelkowego.
     - Upewnij się, że dopasowanie jest Snug, aby zmniejszyć liczbę ruchów w polu.
 
-Następne kroki są określane przez miejsce zwrócenia urządzenia.
+Następne kroki są określane przez miejsce zwrócenia urządzenia. Instrukcje są różne dla Stanów Zjednoczonych/Kanady, Australii lub krajów w Azji.
 
-
-
-- Zaplanuj powracanie [za pomocą zasilacza UPS w przypadku powrotu urządzenia do Stanów Zjednoczonych i Kanady](data-box-disk-deploy-picked-up.md#pick-up-in-us-canada).
-- [Zaplanuj pobranie z DHL dla Europy](data-box-disk-deploy-picked-up.md#pick-up-in-europe) , odwiedzając swoją witrynę sieci Web i podając numer rachunku Airway.
-- [Zaplanuj odbiór w Australii](data-box-disk-deploy-picked-up.md#pick-up-in-australia).
-- [Zaplanuj pobranie dla krajów w Azji](data-box-disk-deploy-picked-up.md#pick-up-in-asia) , takich jak Japonia, Korea i Singapur.
-
-::: zone target="chromeless"
-
-Po pobraniu dysków przez operatora zostanie wyświetlony stan zamówienia w portalu aktualizacje i identyfikator śledzenia.
-
-::: zone-end
-
-## <a name="pick-up-in-us-canada"></a>Wybieraj w Stanach Zjednoczonych, Kanadzie
+### <a name="pick-up-in-us-canada"></a>Wybieraj w Stanach Zjednoczonych, Kanadzie
 
 W przypadku powrotu urządzenia w Stanach Zjednoczonych lub Kanadzie wykonaj następujące czynności.
 
@@ -80,7 +67,7 @@ W przypadku powrotu urządzenia w Stanach Zjednoczonych lub Kanadzie wykonaj nas
     - Jeśli numer śledzenia nie jest ujęty w cudzysłów, UPS będzie wymagał dodatkowej opłaty za pobranie.
     - Zamiast planowania pobrania, można również wycofać Data Box Disk w najbliższej lokalizacji docelowej.
 
-## <a name="pick-up-in-europe"></a>Pobierz w Europie
+### <a name="pick-up-in-europe"></a>Pobierz w Europie
 
 W przypadku powrotu urządzenia w Europie należy wykonać poniższe czynności.
 
@@ -93,7 +80,7 @@ W przypadku powrotu urządzenia w Europie należy wykonać poniższe czynności.
 4. Przejdź do witryny sieci Web kraj/region DHL Express i wybierz pozycję **książka kolekcja kurierów > eReturn**.    
 3. Podaj numer listu przewozowego i kliknij przycisk **Zamówienie kuriera**, aby zaplanować odebranie przesyłki.
 
-## <a name="pick-up-in-australia"></a>Wybierz w Australii
+### <a name="pick-up-in-australia"></a>Wybierz w Australii
 
 Centra danych platformy Azure w Australii mają dodatkowe powiadomienie o zabezpieczeniach. Wszystkie wychodzące wysyłki muszą mieć zaawansowane powiadomienie. Wykonaj następujące kroki, aby uzyskać w Australii.
 
@@ -104,11 +91,11 @@ Centra danych platformy Azure w Australii mają dodatkowe powiadomienie o zabezp
     - Adres
     - Nazwa kontaktu
 
-## <a name="pick-up-in-asia"></a>Wybierz w Azji
+### <a name="pick-up-in-asia"></a>Wybierz w Azji
 
 Instrukcje dotyczące odbioru są różne dla Japonii, Korei i Singapuru.
 
-### <a name="pick-up-in-japan"></a>Pobierz w Japonii
+#### <a name="pick-up-in-japan"></a>Pobierz w Japonii
 
 1. Zapisz nazwę firmy i informacje o adresie na liście wysyłkowej jako informacje o nadawcy.
 2. Quantium rozwiązanie e-mail przy użyciu następującego szablonu wiadomości e-mail.
@@ -135,7 +122,7 @@ W razie konieczności można skontaktować się z pomocą techniczną rozwiązan
 - Adres e-mail:Customerservice.JP@quantiumsolutions.com 
 - Telefon: 03-5755-0150 
 
-### <a name="pick-up-in-korea"></a>Wybierz w Korei
+#### <a name="pick-up-in-korea"></a>Wybierz w Korei
 
 1. Upewnij się, że zawarto adnotację zwrotną przesyłki.
 2. Aby zażądać pobrania, gdy jest obecny komentarz dotyczący wysyłki:
@@ -149,13 +136,10 @@ W razie konieczności można skontaktować się z pomocą techniczną rozwiązan
     3. Jeśli Courier nie dotarł do kolekcji, wywołaj *Quantium Solutions International* linia do alternatywnych rozwiązań. 
     4. Jeśli żądanie zostało wysłane za pośrednictwem telefonu, otrzymasz ustne potwierdzenie.
 
-### <a name="pick-up-in-singapore"></a>Wybierz w Singapurze
+#### <a name="pick-up-in-singapore"></a>Wybierz w Singapurze
 
 1. Wydrukuj etykietę wysyłkową i Dołącz ją do pola. Jeśli etykieta jest uszkodzona lub utracona:
     - Przejdź do **omówienia > Pobierz etykietę wysyłkową** i otrzymaj zwrotną etykietę wysyłkową.
-
-        ![Pobierz etykietę wysyłkową](media/data-box-disk-deploy-picked-up/download-shipping-label.png)
-
     - Umieszczanie etykiety na urządzeniu. Upewnij się, że etykieta jest widoczna.
 
 2. Aby poprosić o pobranie:
