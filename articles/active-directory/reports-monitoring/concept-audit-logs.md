@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0a31fab8dd1490b58e743c149e4a54cae11bed1
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: b2b30b6463ed3d58ec1565f3c49f98388ad09ed4
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988341"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186294"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Raporty dotyczące inspekcji w portalu usługi Azure Active Directory 
 
@@ -81,7 +81,7 @@ Dane inspekcji można filtrować w następujących polach:
 - Usługa
 - Kategoria
 - Działanie
-- Stan
+- State
 - Cel
 - Zainicjowane przez (aktor)
 - Zakres dat

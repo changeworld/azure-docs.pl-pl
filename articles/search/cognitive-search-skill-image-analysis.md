@@ -2,7 +2,7 @@
 title: Umiejętność wyszukiwania poznawczego analizy obrazów — Azure Search
 description: Wyodrębnij tekst semantyczny za pomocą analizy obrazów, wykorzystując umiejętność ImageAnalysis poznawczych Azure Search w potoku wzbogacenia.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.workload: search
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 2bdb65355f835eec232efd4f0493ecefbecfdd26
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 07969a92286837f8f72b533173ac8d170378d0ea
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128188"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183385"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>Umiejętność analizy obrazów
 
