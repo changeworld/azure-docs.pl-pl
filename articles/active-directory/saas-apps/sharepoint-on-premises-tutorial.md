@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 21c10e142802914bcf3292ef7f25066675e6cdd1
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: 9c956f89d890f93a887d2412c74c906095acf4db
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67143922"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164362"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sharepoint-on-premises"></a>Samouczek: Integracja usługi Azure Active Directory z lokalnym programem SharePoint
 
@@ -38,7 +38,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 Do skonfigurowania integracji usługi Azure AD z lokalnym programem SharePoint potrzebne są następujące elementy:
 
-* Subskrypcja usługi Azure AD. Jeśli nie ma środowiska usługi Azure AD, możesz pobrać [bezpłatne konto](https://azure.microsoft.com/free/)
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/)
 * Subskrypcja lokalnego programu SharePoint z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -58,7 +58,7 @@ Aby skonfigurować integrację lokalnego programu SharePoint z usługą Azure AD
     ![Przycisk usługi Azure Active Directory](common/select-azuread.png)
 
     > [!NOTE]   
-    > Jeśli element nie powinien być dostępny, jego można również otworzyć za pomocą stałe **wszystkich usług** łącze w górnej części panelu nawigacyjnym po lewej stronie. W poniższym omówieniu **usługi Azure Active Directory** łącze to znajduje się w **tożsamości** sekcji lub mogą być wyszukiwane przy użyciu pola tekstowego filtru.
+    > Jeśli element nie powinien być dostępny, można go również otworzyć za pomocą linku naprawione **wszystkie usługi** w górnej części lewego panelu nawigacji. W poniższym omówieniu link **Azure Active Directory** znajduje się w sekcji **tożsamość** lub można go wyszukać przy użyciu pola tekstowego filtr.
 
 2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
@@ -82,9 +82,9 @@ Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z loka
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 2. **[Konfigurowanie logowania jednokrotnego w lokalnym programie SharePoint](#configure-sharepoint-on-premises-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-4. **[Utwórz grupę zabezpieczeń usługi Azure AD w witrynie Azure portal](#create-an-azure-ad-security-group-in-the-azure-portal)**  — Aby włączyć nową grupę zabezpieczeń w usłudze Azure AD na potrzeby logowania jednokrotnego.
-5. **[Udzielanie dostępu do programu SharePoint w lokalnej grupy zabezpieczeń](#grant-access-to-sharepoint-on-premises-security-group)**  — udzielanie dostępu do określonej grupy do usługi Azure AD.
-6. **[Przypisz grupy zabezpieczeń usługi Azure AD, w witrynie Azure portal](#assign-the-azure-ad-security-group-in-the-azure-portal)**  — przypisywanie określonej grupy do usługi Azure AD do uwierzytelniania.
+4. Aby włączyć logowanie jednokrotne w usłudze Azure AD **[, Utwórz w Azure Portal grupę zabezpieczeń usługi Azure AD](#create-an-azure-ad-security-group-in-the-azure-portal)** .
+5. **[Przyznaj dostęp do lokalnej grupy zabezpieczeń programu SharePoint](#grant-access-to-sharepoint-on-premises-security-group)** — Przyznaj dostęp dla określonej grupy do usługi Azure AD.
+6. **[Przypisz grupę zabezpieczeń usługi Azure AD w Azure Portal](#assign-the-azure-ad-security-group-in-the-azure-portal)** — aby przypisać konkretną grupę do usługi Azure AD na potrzeby uwierzytelniania.
 7. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
@@ -143,7 +143,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD za pomocą lokalnego p
 
 ### <a name="configure-sharepoint-on-premises-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w lokalnym programie SharePoint
 
-1. W oknie przeglądarki innej witryny sieci web Zaloguj się w witrynie programu SharePoint w środowisku lokalnym firmy jako administrator.
+1. W innym oknie przeglądarki sieci Web Zaloguj się do lokalnej witryny firmowej programu SharePoint jako administrator.
 
 2. **Konfigurowanie nowego zaufanego dostawcy tożsamości w programie SharePoint Server 2016**
 
@@ -201,89 +201,89 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola `brittasimon@yourcompanydomain.extension`  
+    b. W polu **Nazwa użytkownika** wpisz`brittasimon@yourcompanydomain.extension`  
     Na przykład: BrittaSimon@contoso.com
 
     d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Kliknij pozycję **Utwórz**.
+    d. Kliknij przycisk **Utwórz**.
 
-### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>Utwórz grupę zabezpieczeń usługi Azure AD w witrynie Azure portal
+### <a name="create-an-azure-ad-security-group-in-the-azure-portal"></a>Utwórz grupę zabezpieczeń usługi Azure AD w Azure Portal
 
-1. Kliknij pozycję **usługi Azure Active Directory > wszystkie grupy**.
+1. Kliknij **Azure Active Directory > wszystkie grupy**.
 
-    ![Utwórz grupę zabezpieczeń usługi Azure AD](./media/sharepoint-on-premises-tutorial/allgroups.png)
+    ![Tworzenie grupy zabezpieczeń usługi Azure AD](./media/sharepoint-on-premises-tutorial/allgroups.png)
 
-2. Kliknij przycisk **nową grupę**:
+2. Kliknij pozycję **Nowa grupa**:
 
-    ![Utwórz grupę zabezpieczeń usługi Azure AD](./media/sharepoint-on-premises-tutorial/newgroup.png)
+    ![Tworzenie grupy zabezpieczeń usługi Azure AD](./media/sharepoint-on-premises-tutorial/newgroup.png)
 
-3. Wypełnij **typ grupy**, **Nazwa grupy**, **opis grupy**, **Typ członkostwa**. Kliknij strzałkę, aby Wybieranie elementów członkowskich, a następnie wyszukiwania lub kliknij element członkowski, który chcesz dodać do grupy. Kliknij pozycję **wybierz** można dodać wybranych członków, następnie kliknij **Utwórz**.
+3. Wypełnij pola **Typ grupy**, **Nazwa grupy**, **Opis grupy**, **Typ członkostwa**. Kliknij strzałkę, aby wybrać elementy członkowskie, a następnie wyszukaj lub kliknij element członkowski, który chcesz dodać do grupy. Kliknij pozycję **Wybierz** , aby dodać wybrane elementy członkowskie, a następnie kliknij pozycję **Utwórz**.
 
-    ![Utwórz grupę zabezpieczeń usługi Azure AD](./media/sharepoint-on-premises-tutorial/addingmembers.png)
+    ![Tworzenie grupy zabezpieczeń usługi Azure AD](./media/sharepoint-on-premises-tutorial/addingmembers.png)
 
     > [!NOTE]
-    > Aby można było przypisać grupy zabezpieczeń usługi Active Directory platformy Azure do programu SharePoint w środowisku lokalnym, będą niezbędne do zainstalowania i skonfigurowania [AzureCP](https://yvand.github.io/AzureCP/) w lokalnym programem SharePoint farmy lub tworzenie i konfigurowanie alternatywnych oświadczenia niestandardowe Dostawca dla programu SharePoint.  Sekcja więcej informacji na końcu dokumentu do tworzenia własnego dostawcy oświadczenia niestandardowe, jeśli nie używasz AzureCP.
+    > Aby można było przypisywać Azure Active Directory grupy zabezpieczeń do lokalnego programu SharePoint, konieczne będzie zainstalowanie i skonfigurowanie usługi [AzureCP](https://yvand.github.io/AzureCP/) w lokalnej farmie programu SharePoint lub opracowanie i skonfigurowanie alternatywnego niestandardowego dostawcy oświadczeń dla programu SharePoint.  Zapoznaj się z sekcją więcej informacji na końcu dokumentu w celu utworzenia własnego niestandardowego dostawcy oświadczeń, jeśli nie używasz AzureCP.
 
-### <a name="grant-access-to-sharepoint-on-premises-security-group"></a>Udzielanie dostępu do programu SharePoint w lokalnej grupy zabezpieczeń
+### <a name="grant-access-to-sharepoint-on-premises-security-group"></a>Udzielanie dostępu do lokalnej grupy zabezpieczeń programu SharePoint
 
-**Konfigurowanie grup zabezpieczeń i uprawnień na rejestrowanie aplikacji**
+**Konfigurowanie grup zabezpieczeń i uprawnień do rejestracji aplikacji**
 
-1. W witrynie Azure portal wybierz **usługi Azure Active Directory**, a następnie wybierz **rejestracje aplikacji**.
+1. W Azure Portal wybierz pozycję **Azure Active Directory**, a następnie wybierz pozycję **rejestracje aplikacji**.
 
     ![Blok Aplikacje dla przedsiębiorstw](./media/sharepoint-on-premises-tutorial/appregistrations.png)
 
-2. W polu wyszukiwania wpisz i wybierz **lokalny program SharePoint**.
+2. W polu wyszukiwania wpisz i wybierz pozycję **SharePoint lokalnie**.
 
     ![Lokalny program SharePoint na liście wyników](./media/sharepoint-on-premises-tutorial/appsearch.png)
 
-3. Kliknij pozycję **manifestu**.
+3. Kliknij **manifest**.
 
-    ![Manifest — opcja](./media/sharepoint-on-premises-tutorial/manifest.png)
+    ![Opcja manifestu](./media/sharepoint-on-premises-tutorial/manifest.png)
 
-4. Modyfikowanie `groupMembershipClaims`: `NULL`, `groupMembershipClaims`: `SecurityGroup`. Następnie kliknij przycisk przy zapisywaniu
+4. Modyfikuj `groupMembershipClaims`: `NULL`, do `groupMembershipClaims`: .`SecurityGroup` Następnie kliknij pozycję Zapisz
 
-    ![Edytuj Manifest](./media/sharepoint-on-premises-tutorial/manifestedit.png)
+    ![Edytuj manifest](./media/sharepoint-on-premises-tutorial/manifestedit.png)
 
-5. Kliknij pozycję **ustawienia**, następnie kliknij pozycję **wymagane uprawnienia**.
+5. Kliknij pozycję **Ustawienia**, a następnie kliknij pozycję **wymagane uprawnienia**.
 
     ![Wymagane uprawnienia](./media/sharepoint-on-premises-tutorial/settings.png)
 
-6. Kliknij pozycję **Dodaj** i następnie **wybierz interfejs API**.
+6. Kliknij przycisk **Dodaj** , a następnie **Wybierz interfejs API**.
 
     ![Dostęp do interfejsu API](./media/sharepoint-on-premises-tutorial/required_permissions.png)
 
-7. Dodaj oba **Windows Azure Active Directory** i **interfejsu API Microsoft Graph**, ale tylko wtedy można wybrać jeden z nich jednocześnie.
+7. Dodaj zarówno **Azure Active Directory Windows** , jak i **interfejs API Microsoft Graph**, ale można tylko wybrać jeden z nich naraz.
 
-    ![Wybierz interfejs API](./media/sharepoint-on-premises-tutorial/permissions.png)
+    ![Wybór interfejsu API](./media/sharepoint-on-premises-tutorial/permissions.png)
 
-8. Wybierz pakiet Windows Azure Active Directory, sprawdź Czytaj dane katalogu, a następnie kliknij pozycję Wybierz. Przejdź wstecz i dodać program Microsoft Graph wybierz Czytaj dane katalogu, a także.  Kliknij Wybierz i kliknij pozycję gotowe.
+8. Wybierz pozycję Windows Azure Active Directory, sprawdź Odczytaj dane katalogu, a następnie kliknij pozycję Wybierz. Wróć i Dodaj Microsoft Graph i zaznacz również opcję Odczytaj dane katalogu.  Kliknij pozycję Wybierz, a następnie kliknij pozycję Gotowe.
 
-    ![Włącz dostęp](./media/sharepoint-on-premises-tutorial/readpermission.png)
+    ![Włączanie dostępu](./media/sharepoint-on-premises-tutorial/readpermission.png)
 
-9. Teraz, w obszarze wymagane ustawienia, kliknij pozycję **udzielić uprawnień** a następnie kliknij przycisk Tak, do udzielania uprawnień.
+9. Teraz w obszarze wymagane ustawienia kliknij pozycję **Udziel uprawnień** , a następnie kliknij przycisk tak, aby przyznać uprawnienia.
 
     ![Udziel uprawnień](./media/sharepoint-on-premises-tutorial/grantpermission.png)
 
     > [!NOTE]
-    > Sprawdź w obszarze powiadomień, aby określić, jeśli pomyślnie zostały przyznane uprawnienia.  Jeśli nie są one AzureCP nie będzie działać prawidłowo, i nie będzie możliwe do skonfigurowania programu SharePoint przy użyciu grup zabezpieczeń usługi Azure Active Directory.
+    > Zaznacz opcję powiadomienia, aby określić, czy uprawnienia zostały pomyślnie przyznane.  Jeśli tak nie jest, AzureCP nie będzie działać prawidłowo i nie będzie możliwe skonfigurowanie lokalnego programu SharePoint przy użyciu grup zabezpieczeń Azure Active Directory.
 
-10. Konfigurowanie AzureCP na farmie programu SharePoint w środowisku lokalnym lub rozwiązanie alternatywne, niestandardowe oświadczenia dostawcy.  W tym przykładzie używamy AzureCP.
+10. Skonfiguruj AzureCP w farmie lokalnej programu SharePoint lub alternatywne rozwiązanie niestandardowego dostawcy oświadczeń.  W tym przykładzie korzystamy z AzureCP.
 
     > [!NOTE]
-    > Należy pamiętać, że AzureCP nie jest produktem firmy Microsoft lub obsługiwane przez pomoc techniczną firmy Microsoft. Pobieranie, instalowanie i konfigurowanie AzureCP w farmie programu SharePoint w środowisku lokalnym na https://yvand.github.io/AzureCP/ 
+    > Należy pamiętać, że AzureCP nie jest produktem firmy Microsoft ani nie jest obsługiwany przez pomoc techniczną firmy Microsoft. Pobierz, zainstaluj i skonfiguruj AzureCP w lokalnej farmie programu SharePoint na https://yvand.github.io/AzureCP/ 
 
-11. **Udzielić dostępu do usługi Azure Security grupy usługi Active Directory w programie SharePoint w lokalnej** :-grupy musi otrzymać dostęp do aplikacji w lokalnych programu SharePoint.  Wykonaj następujące kroki, aby ustawić uprawnienia dostępu do aplikacji sieci web.
+11. **Przyznaj dostęp do Azure Active Directory grupy zabezpieczeń w lokalnym programie SharePoint** : — grupy muszą mieć udzielony dostęp do aplikacji w lokalnym programie SharePoint.  Wykonaj następujące kroki, aby ustawić uprawnienia dostępu do aplikacji sieci Web.
 
-12. W witrynie Administracja centralna kliknij pozycję Zarządzanie aplikacjami, zarządzanie aplikacjami sieci web, a następnie wybierz aplikację sieci web do aktywowania wstążki, a następnie kliknij przycisk w zasadach użytkownika.
+12. W obszarze Administracja centralna kliknij pozycję Zarządzanie aplikacjami, Zarządzaj aplikacjami sieci Web, a następnie wybierz aplikację sieci Web, aby aktywować Wstążkę, a następnie kliknij pozycję zasady użytkownika.
 
     ![Administracja centralna](./media/sharepoint-on-premises-tutorial/centraladministration.png)
 
-13. W ramach zasad dla aplikacji sieci Web wybierz polecenie Dodaj użytkowników, a następnie wybierz strefę, kliknij przycisk Dalej.  Kliknij w książce adresowej.
+13. W obszarze zasady dla aplikacji sieci Web kliknij pozycję Dodaj użytkowników, a następnie wybierz strefę, a następnie kliknij przycisk Dalej.  Kliknij książkę adresową.
 
     ![Zasady dla aplikacji sieci Web](./media/sharepoint-on-premises-tutorial/webapp-policy.png)
 
-14. Następnie wyszukaj i Dodaj grupy zabezpieczeń Active Directory platformy Azure i kliknij przycisk OK.
+14. Następnie wyszukaj i Dodaj Azure Active Directory grupę zabezpieczeń i kliknij przycisk OK.
 
     ![Dodawanie grupy zabezpieczeń](./media/sharepoint-on-premises-tutorial/securitygroup.png)
 
@@ -291,11 +291,11 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
     ![Dodawanie grupy zabezpieczeń](./media/sharepoint-on-premises-tutorial/permissions1.png)
 
-16. Zobacz, w ramach zasad dla aplikacji sieci Web, grupy usługi Azure Active Directory zostanie dodany.  Oświadczenia grupy pokazuje usługi Azure Active Directory zabezpieczeń grupy identyfikator obiektu dla nazwy użytkownika.
+16. W obszarze zasady dla aplikacji sieci Web zostanie dodana grupa Azure Active Directory.  W polu Nazwa użytkownika jest wyświetlany Azure Active Directory identyfikator obiektu grupy zabezpieczeń.
 
     ![Dodawanie grupy zabezpieczeń](./media/sharepoint-on-premises-tutorial/addgroup.png)
 
-17. Przejdź do zbioru witryn programu SharePoint, a także dodać grupę, w miejscu. Kliknij pozycję Ustawienia witryny, a następnie kliknij uprawnień do witryny i przyznawanie uprawnień.  Wyszukaj oświadczenie roli grupy, przypisać poziom uprawnień, a następnie kliknij przycisk Udostępnij.
+17. Przejdź do kolekcji witryn programu SharePoint i Dodaj również grupę. Kliknij pozycję Ustawienia witryny, a następnie kliknij pozycję uprawnienia lokacji i Udziel uprawnień.  Wyszukaj pozycję rola grupy, przypisz poziom uprawnień, a następnie kliknij pozycję Udostępnij.
 
     ![Dodawanie grupy zabezpieczeń](./media/sharepoint-on-premises-tutorial/grantpermission1.png)
 
@@ -303,7 +303,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 Konfiguracja działa w przypadku jednej aplikacji internetowej, ale wymaga dodatkowej konfiguracji, jeśli zamierzasz używać tego samego zaufanego dostawcy tożsamości dla wielu aplikacji internetowych. Załóżmy na przykład, że rozszerzyliśmy aplikację internetową w celu używania adresu URL `https://portal.contoso.local` i teraz chcemy również uwierzytelniać użytkowników w `https://sales.contoso.local`. Aby to zrobić, musimy zaktualizować dostawcę tożsamości, aby uwzględnić parametr WReply i zaktualizować rejestrację aplikacji w usłudze Azure AD w celu dodania adresu URL odpowiedzi.
 
-1. W witrynie Azure portal Otwórz katalog usługi Azure AD. Kliknij pozycję **Rejestracje aplikacji**, następnie kliknij pozycję **Wyświetl wszystkie aplikacje**. Kliknij aplikację, która została utworzony wcześniej (Integracja programu SharePoint z protokołem SAML).
+1. W Azure Portal Otwórz katalog usługi Azure AD. Kliknij pozycję **Rejestracje aplikacji**, następnie kliknij pozycję **Wyświetl wszystkie aplikacje**. Kliknij aplikację, która została utworzony wcześniej (Integracja programu SharePoint z protokołem SAML).
 
 2. Kliknij pozycję **Ustawienia**.
 
@@ -324,7 +324,7 @@ Konfiguracja działa w przypadku jednej aplikacji internetowej, ale wymaga dodat
 
 ### <a name="fixing-people-picker"></a>Naprawianie selektora osób
 
-Użytkownicy mogą teraz logować się do programu SharePoint 2016 przy użyciu tożsamości z usługi Azure AD, ale nadal są możliwości poprawy środowiska użytkownika. Na przykład wyszukiwanie użytkownika przedstawia wiele wyników wyszukiwania w selektorze osób. Istnieją wyniki wyszukiwania dla każdego z trzech typów oświadczeń, które zostały utworzone w mapowaniu oświadczeń. Aby wybrać użytkownika za pomocą selektora osób, należy dokładnie wpisać jego nazwę użytkownika i wybrać wynik oświadczenia **name**.
+Użytkownicy mogą teraz logować się do programu SharePoint 2016 przy użyciu tożsamości z usługi Azure AD, ale nadal istnieją okazje do ulepszenia środowiska użytkownika. Na przykład wyszukiwanie użytkownika przedstawia wiele wyników wyszukiwania w selektorze osób. Istnieją wyniki wyszukiwania dla każdego z trzech typów oświadczeń, które zostały utworzone w mapowaniu oświadczeń. Aby wybrać użytkownika za pomocą selektora osób, należy dokładnie wpisać jego nazwę użytkownika i wybrać wynik oświadczenia **name**.
 
 ![Wyniki wyszukiwania oświadczeń](./media/sharepoint-on-premises-tutorial/fig16-claimssearchresults.png)
 
@@ -332,7 +332,7 @@ Nie ma weryfikacji wyszukiwanych wartości, co może prowadzić do błędów pis
 
 Aby pomóc w tym scenariuszu, istnieje rozwiązanie typu open-source o nazwie [AzureCP](https://yvand.github.io/AzureCP/), które zapewnia dostawcę oświadczeń niestandardowych dla programu SharePoint 2016. Będzie ono korzystało z funkcji Azure AD Graph do rozpoznawania wartości wprowadzanych przez użytkowników i wykonywania weryfikacji. Dowiedz się więcej o rozwiązaniu [AzureCP](https://yvand.github.io/AzureCP/).
 
-### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>Przypisz grupy zabezpieczeń usługi Azure AD, w witrynie Azure portal
+### <a name="assign-the-azure-ad-security-group-in-the-azure-portal"></a>Przypisz grupę zabezpieczeń usługi Azure AD w Azure Portal
 
 1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Lokalny program SharePoint**.
 
@@ -350,12 +350,12 @@ Aby pomóc w tym scenariuszu, istnieje rozwiązanie typu open-source o nazwie [A
 
     ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-5. Wyszukaj grupy zabezpieczeń, które chcesz użyć, a następnie kliknij grupę, aby dodać go do sekcji wybierz elementy członkowskie. Kliknij przycisk **wybierz**, następnie kliknij przycisk **przypisać**.
+5. Wyszukaj grupę zabezpieczeń, której chcesz użyć, a następnie kliknij grupę, aby dodać ją do sekcji Wybierz członków. Kliknij pozycję **Wybierz**, a następnie kliknij pozycję **Przypisz**.
 
-    ![Wyszukaj grupy zabezpieczeń](./media/sharepoint-on-premises-tutorial/securitygroup1.png)
+    ![Wyszukaj grupę zabezpieczeń](./media/sharepoint-on-premises-tutorial/securitygroup1.png)
 
     > [!NOTE]
-    > Sprawdź powiadomienia na pasku menu, aby otrzymywać powiadomienia, że grupa została pomyślnie przypisana do aplikacji przedsiębiorstwa w witrynie Azure portal.
+    > Sprawdź powiadomienia na pasku menu, aby otrzymywać powiadomienia o pomyślnym przypisaniu grupy do aplikacji przedsiębiorstwa w Azure Portal.
 
 ### <a name="create-sharepoint-on-premises-test-user"></a>Tworzenie użytkownika testowego lokalnego programu SharePoint
 
@@ -373,4 +373,4 @@ Po kliknięciu kafelka lokalnego programu SharePoint na panelu dostępu powinno 
 
 - [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Co to jest dostęp warunkowy w Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

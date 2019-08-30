@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 08/29/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: a0c34e30e52bd2a6d57e2cf8299f231f7f2960d9
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: e883e231988e63d22cb990224d240b1c13fb04b6
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147944"
+ms.locfileid: "70164439"
 ---
 ::: zone target="docs"
 
@@ -335,6 +335,6 @@ Aby sprawdzić dane, wykonaj następujące czynności.
 1. Uruchom polecenie `DataBoxDiskValidation.cmd` w celu zweryfikowania sumy kontrolnej w folderze *DataBoxDiskImport* na dysku.
 2. Użyj opcji 2, aby zweryfikować pliki i wygenerować sumy kontrolne. Czas wykonywania tej operacji zależy od rozmiaru danych. Jeśli podczas walidacji i generowania sumy kontrolnej wystąpi błąd, zostanie wyświetlone powiadomienie i podany link do dzienników błędów.
 
-    Aby uzyskać więcej informacji na temat walidacji danych, zobacz [Weryfikuj dane](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data). Jeśli wystąpią błędy podczas walidacji, zobacz [Rozwiązywanie problemów z błędami walidacji](https://docs.microsoft.com/en-us/azure/databox/data-box-disk-troubleshoot){: target = "_blank"}.
+    Aby uzyskać więcej informacji na temat walidacji danych, zobacz [Weryfikuj dane](https://docs.microsoft.com/azure/databox/data-box-disk-deploy-copy-data#validate-data). Jeśli wystąpią błędy podczas walidacji, zobacz [Rozwiązywanie problemów z błędami walidacji](data-box-disk-troubleshoot.md).
 
 ::: zone-end

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Azure Active Directory integrację z osobami | Microsoft Docs'
+title: 'Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z osobami | Microsoft Docs'
 description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory i osobami.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/01/2019
+ms.date: 08/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 334241683f95496ce9ea0629247bb8fd53364ee9
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3a9b8f08a54c978d81a8d33c61ab3d5f5fc7271f
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826063"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164217"
 ---
-# <a name="tutorial-integrate-people-with-azure-active-directory"></a>Samouczek: Integrowanie osób z Azure Active Directory
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-people"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z osobami
 
 W tym samouczku dowiesz się, jak zintegrować osoby z usługą Azure Active Directory (Azure AD). Podczas integrowania osób z usługą Azure AD można:
 
@@ -47,6 +47,9 @@ W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure A
 * Użytkownicy obsługują Logowanie jednokrotne w usłudze **SP**
 * Aplikacje mobilne dla osób można teraz skonfigurować za pomocą usługi Azure AD w celu włączenia logowania jednokrotnego. W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
+>[!NOTE]
+>Identyfikator tej aplikacji to stała wartość ciągu, dlatego można skonfigurować tylko jedno wystąpienie w jednej dzierżawie.
+
 ## <a name="adding-people-from-the-gallery"></a>Dodawanie osób z galerii
 
 Aby skonfigurować integrację osób z usługą Azure AD, musisz dodać osoby z galerii do listy zarządzanych aplikacji SaaS.
@@ -58,21 +61,20 @@ Aby skonfigurować integrację osób z usługą Azure AD, musisz dodać osoby z 
 1. W sekcji **Dodaj z galerii** wpisz **osoby** w polu wyszukiwania.
 1. Wybierz pozycję **osoby** w panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on-for-people"></a>Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD dla osób
 
 Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą osób przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w osobach.
 
 Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą osób, wykonaj następujące bloki konstrukcyjne:
 
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
+    1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
+    1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
 2. **[Konfigurowanie logowania](#configure-people-sso)** jednokrotnego dla osób — aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-3. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
-4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
-5. **[Utwórz użytkowników testowego użytkownika](#create-people-test-user)** — aby dysponować odpowiednikiem B. Simon w osobach, które są połączone z reprezentacją użytkownika w usłudze Azure AD.
+    1. **[Utwórz użytkowników testowego użytkownika](#create-people-test-user)** — aby dysponować odpowiednikiem B. Simon w osobach, które są połączone z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
+## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
 Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
@@ -100,22 +102,6 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 6. W sekcji **Konfigurowanie osób** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
-
-### <a name="configure-people-sso"></a>Konfigurowanie logowania jednokrotnego dla osób
-
-1. Aby skonfigurować Logowanie jednokrotne dla aplikacji, musisz zalogować się do dzierżawy osób jako administrator.
-   
-2. W menu po lewej stronie kliknij pozycję **Ustawienia**.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/people-tutorial/tutorial_people_001.png)
-
-3. Kliknij pozycję **Company** (Firma).
-
-    ![Konfigurowanie logowania jednokrotnego](./media/people-tutorial/tutorial_people_002.png)
-
-4. W **pliku metadanych SAML metadanych przekazywania "Logowanie**jednokrotne" kliknij przycisk **Przeglądaj** w celu przekazania pobranego pliku.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/people-tutorial/tutorial_people_003.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -147,11 +133,35 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
 1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
+## <a name="configure-people-sso"></a>Konfigurowanie logowania jednokrotnego dla osób
+
+1. Aby zautomatyzować konfigurację w ramach osób, należy zainstalować **Moje aplikacje bezpieczne logowanie do przeglądarki** , klikając pozycję **Zainstaluj rozszerzenie**.
+
+    ![Rozszerzenie moje aplikacje](common/install-myappssecure-extension.png)
+
+2. Po dodaniu rozszerzenia do przeglądarki, kliknij pozycję **Instalator osoby** przekieruje Cię do aplikacji osoby. Z tego miejsca podaj poświadczenia administratora, aby zalogować się do osób. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i automatyzuje kroki 3-6.
+
+    ![Konfiguracja konfiguracji](common/setup-sso.png)
+
+3. Jeśli chcesz ręcznie skonfigurować osoby, Otwórz nowe okno przeglądarki sieci Web i zaloguj się w witrynie firmy osoby jako administrator i wykonaj następujące czynności:
+   
+4. W menu po lewej stronie kliknij pozycję **Ustawienia**.
+
+    ![Konfigurowanie logowania jednokrotnego](./media/people-tutorial/tutorial_people_001.png)
+
+5. Kliknij pozycję **Company** (Firma).
+
+    ![Konfigurowanie logowania jednokrotnego](./media/people-tutorial/tutorial_people_002.png)
+
+6. W **pliku metadanych SAML metadanych przekazywania "Logowanie**jednokrotne" kliknij przycisk **Przeglądaj** w celu przekazania pobranego pliku.
+
+    ![Konfigurowanie logowania jednokrotnego](./media/people-tutorial/tutorial_people_003.png)
+
 ### <a name="create-people-test-user"></a>Utwórz użytkownika testowego
 
 W tej sekcji utworzysz użytkownika o nazwie B. Simon w osobach. Współpracuj z [zespołem pomocy technicznej dla osób](mailto:customerservices@peoplehr.com) , aby dodać użytkowników na platformie osoby. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
-### <a name="test-sso"></a>Testuj Logowanie jednokrotne 
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
@@ -179,3 +189,4 @@ Po kliknięciu kafelka osoby w panelu dostępu należy automatycznie zalogować 
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Wypróbuj osoby z usługą Azure AD](https://aad.portal.azure.com)

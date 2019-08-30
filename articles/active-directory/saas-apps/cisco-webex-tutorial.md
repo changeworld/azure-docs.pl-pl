@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 08/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1adda943676eb4918369d3cb8027f559d5dd0f6e
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 141d3062f231e198b3587efcdf4ae6e9a1c97ed6
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050014"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162682"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) przy użyciu spotkań Cisco WebEx
 
@@ -78,24 +78,24 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 1. W [Azure Portal](https://portal.azure.com/)na stronie integracji aplikacji do **spotkań Cisco WebEx** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
 1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
-1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
-
-   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
-
-1. W sekcji **Podstawowa konfiguracja języka SAML** Przekaż pobrany plik **metadanych dostawcy usług** i skonfiguruj aplikację w trybie inicjowania **dostawcy tożsamości** , wykonując następujące czynności:
-
-    >[!Note]
-    >Zostanie wyświetlony plik metadanych dostawcy usług, który został wyjaśniony w dalszej części artykułu Konfigurowanie logowania jednokrotnego w usłudze **Cisco WebEx** . 
+1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** można skonfigurować aplikację w trybie inicjalizacji **dostawcy tożsamości** , przenosząc plik **metadanych dostawcy usługi** w następujący sposób:
 
     a. Kliknij przycisk **przekazywania pliku metadanych**.
 
     b. Kliknij pozycję **logo folderu** wybierz plik metadanych, a następnie kliknij przycisk **przekazywanie**.
 
-    c. Po pomyślnym ukończeniu przekazywania pliku metadanych dostawcy usług wartości **Identyfikator** i **Adres URL odpowiedzi** w sekcji **Podstawowa konfiguracja protokołu SAML** zostaną wypełnione automatycznie:
+    c. Po pomyślnym zakończeniu przekazywania pliku metadanych dostawcy usług wartości **identyfikatorów** i **adresów URL odpowiedzi** są uzyskiwane automatycznie wypełniane w sekcji **Podstawowa konfiguracja SAML** .
 
-5. Jeśli chcesz skonfigurować aplikację w trybie zainicjowania programu **SP** , wykonaj następujące czynności:
+    >[!Note]
+    >Zostanie pobrany plik metadanych dostawcy usług z sekcji **Konfigurowanie spotkań Cisco WebEx — logowanie** jednokrotne, który został wyjaśniony w dalszej części tego samouczka. 
+
+1. Jeśli chcesz skonfigurować aplikację w trybie zainicjowania programu **SP** , wykonaj następujące czynności:  
+
+    a. W sekcji **Podstawowa konfiguracja języka SAML** kliknij ikonę Edytuj/pióro.
+
+   ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
     
-    W polu tekstowym **adres URL logowania** wpisz adres URL, używając następującego wzorca:`https://<customername>.webex.com`
+    b. W polu tekstowym **adres URL logowania** wpisz adres URL, używając następującego wzorca:` https://<customername>.my.webex.com`
 
 5. Aplikacja do spotkań Cisco WebEx oczekuje potwierdzeń SAML w określonym formacie, co wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych. Kliknij ikonę  **Edytuj** , aby otworzyć okno dialogowe Atrybuty użytkownika.
 

@@ -2,7 +2,7 @@
 title: Umiejętność wyszukiwania w tłumaczeniach tekstu — Azure Search
 description: Oblicza tekst i dla każdego rekordu zwraca tekst przetłumaczony na określony język docelowy w potoku wzbogacenia Azure Search.
 services: search
-manager: briansmi
+manager: nitinme
 author: careyjmac
 ms.service: search
 ms.workload: search
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: cmacdo
 ms.subservice: cognitive-search
-ms.openlocfilehash: 5f608ee058dd4e463253f4c4f5e410c515031e25
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 407fd246313e582a3d28a6cbb474edefecd7f0af
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638877"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183314"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Umiejętność tłumaczenia tekstu
 

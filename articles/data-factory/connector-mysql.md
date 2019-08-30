@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
-ms.openlocfilehash: b17b6d12dc60546a29d37cfa12fe1f11186579e1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: fcf56e8088af25c14c022039bf8862f2dc21c77a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967468"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172566"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopiowanie danych z programu MySQL przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -25,6 +25,9 @@ ms.locfileid: "68967468"
 > * [Bieżąca wersja](connector-mysql.md)
 
 W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z bazy danych MySQL. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
+
+>[!NOTE]
+>Aby skopiować dane z usługi lub do [Azure Database for MySQL](../mysql/overview.md) , użyj łącznika wyspecjalizowane [Azure Database for MySQL](connector-azure-database-for-mysql.md).
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
@@ -148,7 +151,7 @@ Aby skopiować dane z programu MySQL, należy ustawić Właściwość Type zesta
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **Obiekt relacyjny** | Tak |
-| tableName | Nazwa tabeli w bazie danych MySQL. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
+| tableName | Nazwa tabeli w bazie danych MySQL. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
 

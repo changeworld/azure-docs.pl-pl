@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: iainfou
-ms.openlocfilehash: 86e0f09e957df308f3af868d9590951f29d226b1
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 3fd2a50946f0857d527c34b62687b2dbdd71298e
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073890"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172042"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Samouczek: Przyłączanie maszyny wirtualnej z systemem Windows Server do domeny zarządzanej
 
@@ -214,7 +214,7 @@ Po wykonaniu każdego z tych kroków rozwiązywania problemów spróbuj ponownie
 * Upewnij się, że określone konto użytkownika należy do grupy *Administratorzy domeny usługi AAD* .
 * Spróbuj użyć formatu UPN w celu określenia poświadczeń, takich jak `contosoadmin@contoso.onmicrosoft.com`. Jeśli istnieje wielu użytkowników z tym samym prefiksem nazwy UPN w dzierżawie lub jeśli prefiks nazwy UPN jest zbyt długi, zostanie automatycznie wygenerowany *sAMAccountName* dla Twojego konta. W takich przypadkach format *sAMAccountName* dla konta może być inny niż oczekiwany lub używany w domenie lokalnej.
 * Sprawdź, czy [włączono synchronizację haseł][password-sync] z domeną zarządzaną. Bez tego kroku konfiguracji wymagane skróty haseł nie będą obecne w domenie zarządzanej AD DS platformy Azure w celu poprawnego uwierzytelnienia próby logowania.
-* Poczekaj na zakończenie synchronizacji haseł. Po zmianie hasła konta użytkownika może upłynąć 15-20 minut, aby hasło było dostępne do użycia podczas przyłączania do domeny.
+* Poczekaj na zakończenie synchronizacji haseł. Po zmianie hasła konta użytkownika automatyczna synchronizacja w tle z usługi Azure AD aktualizuje hasło w usłudze Azure AD DS. Udostępnienie hasła przez przyłączenie do domeny wymaga pewnego czasu.
 
 ## <a name="next-steps"></a>Następne kroki
 

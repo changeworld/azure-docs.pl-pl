@@ -1,6 +1,6 @@
 ---
-title: Projektowanie wielodostępną bazą danych z usługą Azure Database for PostgreSQL — w Hiperskali (Citus) (wersja zapoznawcza) samouczek
-description: W tym samouczku pokazano, jak tworzyć i wypełnić oraz zapytania rozproszone tabele w usłudze Azure Database for postgresql w warstwie na dużą skalę (Citus) (wersja zapoznawcza).
+title: Projektowanie wielodostępnej bazy danych za pomocą samouczka Azure Database for PostgreSQL — Citus (wersja zapoznawcza)
+description: W tym samouczku przedstawiono sposób tworzenia, wypełniania i wykonywania zapytań dotyczących tabel rozproszonych w Azure Database for PostgreSQL Citus (wersja zapoznawcza).
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
@@ -9,35 +9,35 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 73d7aebf3dbff59320e0ef92cbd54811503c71b4
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ba20a048faecc9e37a2bfbe750de0fbeba88d538
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792268"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163980"
 ---
-# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Samouczek: Projektowanie wielodostępną bazą danych przy użyciu usługi Azure Database for PostgreSQL — w Hiperskali (Citus) (wersja zapoznawcza)
+# <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>Samouczek: Projektowanie bazy danych z wieloma dzierżawami przy użyciu Azure Database for PostgreSQL — Citus (wersja zapoznawcza)
 
-W tym samouczku możesz używać usługi Azure Database for PostgreSQL — w Hiperskali (Citus) (wersja zapoznawcza), aby dowiedzieć się, jak:
+W tym samouczku użyjemy Azure Database for PostgreSQL-Citus (wersja zapoznawcza), aby dowiedzieć się, jak:
 
 > [!div class="checklist"]
-> * Utwórz grupę serwerów (Citus) na dużą skalę
-> * Utwórz schemat przy użyciu narzędzia psql
-> * Tabele fragmentów w węzłach
+> * Tworzenie grupy serwerów hiperskali (Citus)
+> * Tworzenie schematu za pomocą narzędzia PSQL
+> * Fragmentu tabele między węzłami
 > * Pozyskiwanie przykładowych danych
-> * Zapytania o dane dzierżawy
-> * Udostępnianie danych między dzierżawami
-> * Dostosowywanie schematu dla dzierżawcy
+> * Wykonywanie zapytań dotyczących danych dzierżawy
+> * Udostępnianie danych między dzierżawcami
+> * Dostosuj schemat dla dzierżawy
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [azure-postgresql-hyperscale-create-db](../../includes/azure-postgresql-hyperscale-create-db.md)]
 
-## <a name="use-psql-utility-to-create-a-schema"></a>Utwórz schemat przy użyciu narzędzia psql
+## <a name="use-psql-utility-to-create-a-schema"></a>Tworzenie schematu za pomocą narzędzia PSQL
 
-Po nawiązaniu połączenia z usługi Azure Database for PostgreSQL — na dużą skalę (Citus) (wersja zapoznawcza) za pomocą narzędzia psql, można wykonać niektóre podstawowe zadania. Ten samouczek przeprowadzi Cię przez tworzenie aplikacji sieci web, umożliwiająca reklamodawców do śledzenia swoich kampanii.
+Po nawiązaniu połączenia z Azure Database for PostgreSQLm-Citus (wersja zapoznawcza) przy użyciu PSQL można wykonać niektóre podstawowe zadania. Ten samouczek przeprowadzi Cię przez proces tworzenia aplikacji sieci Web, która umożliwia wydziałom śledzenie swoich kampanii.
 
-Wiele firm można korzystać z aplikacji, więc Utwórzmy tabelę do przechowywania firm i inny wpis dla swoich kampanii. W konsoli narzędzia psql uruchom następujące polecenia:
+Wiele firm może korzystać z aplikacji, więc utworzymy tabelę do przechowywania firm i innych dla nich kampanii. W konsoli PSQL Uruchom następujące polecenia:
 
 ```sql
 CREATE TABLE companies (
@@ -63,7 +63,7 @@ CREATE TABLE campaigns (
 );
 ```
 
-Każdej kampanii za uruchamianie reklam. Dodaj tabelę dla reklam, uruchamiając poniższy kod w psql po powyższym kodzie:
+Każda kampania będzie obciążana za uruchamianie reklam. Dodaj tabelę dla reklam, uruchamiając następujący kod w PSQL po powyższym kodzie:
 
 ```sql
 CREATE TABLE ads (
@@ -84,7 +84,7 @@ CREATE TABLE ads (
 );
 ```
 
-Na koniec będzie Śledzimy statystyk określających, kliknięć i wyświetleń, w przypadku każdej reklamy:
+Na koniec będziemy śledzić statystyki dotyczące kliknięć i wrażenia dla każdej usługi AD:
 
 ```sql
 CREATE TABLE clicks (
@@ -118,19 +118,19 @@ CREATE TABLE impressions (
 );
 ```
 
-Nowo utworzonego tabelami w listę tabel, teraz dostępna w psql można wyświetlić, uruchamiając:
+Nowo utworzone tabele znajdują się na liście tabel teraz w PSQL, uruchamiając:
 
 ```postgres
 \dt
 ```
 
-Aplikacje wielodostępne może wymuszać unikatowość tylko na dzierżawę, dlatego wszystkie klucze podstawowe i obce obejmują identyfikator firmy.
+Aplikacje z wieloma dzierżawcami mogą wymuszać unikatowość tylko dla dzierżawców, co oznacza, że wszystkie klucze podstawowe i obce zawierają identyfikator firmy.
 
-## <a name="shard-tables-across-nodes"></a>Tabele fragmentów w węzłach
+## <a name="shard-tables-across-nodes"></a>Fragmentu tabele między węzłami
 
-Wdrożenia na dużą skalę wiersze tabeli są przechowywane w różnych węzłach, na podstawie wartości kolumny wyznaczony przez użytkownika. Tej dzierżawy, który jest właścicielem wiersze, które znakami "kolumna dystrybucji".
+Wdrożenie w celu przechowania tabeli wierszy w różnych węzłach w oparciu o wartość kolumny wyznaczonej przez użytkownika. Ta "kolumna dystrybucji" oznacza, do której dzierżawy należą wiersze.
 
-Ustawmy kolumny dystrybucji firmy\_id, identyfikator dzierżawy. W psql uruchom następujące funkcje:
+Ustawmy, aby kolumna dystrybucji była identyfikatorem\_firmy, identyfikatorem dzierżawy. W PSQL Uruchom następujące funkcje:
 
 ```sql
 SELECT create_distributed_table('companies',   'id');
@@ -142,7 +142,7 @@ SELECT create_distributed_table('impressions', 'company_id');
 
 ## <a name="ingest-sample-data"></a>Pozyskiwanie przykładowych danych
 
-Poza teraz psql w wierszu polecenia normalne pobieranie przykładowych zestawów danych:
+Na zewnątrz PSQL teraz w normalnym wierszu polecenia Pobierz przykładowe zestawy danych:
 
 ```bash
 for dataset in companies campaigns ads clicks impressions geo_ips; do
@@ -150,9 +150,11 @@ for dataset in companies campaigns ads clicks impressions geo_ips; do
 done
 ```
 
-Zwrotne wewnątrz psql zbiorczo załadować dane. Pamiętaj uruchomić wersja narzędzia psql w tym samym katalogu, w której pobrano pliki danych.
+Z powrotem w PSQL, zbiorczo Ładuj dane. Upewnij się, że uruchamiasz PSQL w tym samym katalogu, do którego pobrano pliki danych.
 
 ```sql
+SET CLIENT_ENCODING TO 'utf8';
+
 \copy companies from 'companies.csv' with csv
 \copy campaigns from 'campaigns.csv' with csv
 \copy ads from 'ads.csv' with csv
@@ -160,11 +162,11 @@ Zwrotne wewnątrz psql zbiorczo załadować dane. Pamiętaj uruchomić wersja na
 \copy impressions from 'impressions.csv' with csv
 ```
 
-Tych danych będzie rozpowszechniana w węzłach procesu roboczego.
+Te dane będą teraz rozłożone między węzłami procesu roboczego.
 
-## <a name="query-tenant-data"></a>Zapytania o dane dzierżawy
+## <a name="query-tenant-data"></a>Wykonywanie zapytań dotyczących danych dzierżawy
 
-Gdy aplikacja żąda danych dla jednej dzierżawy, bazy danych można wykonać zapytania w węźle pojedynczego procesu roboczego. Filtr zapytań jednej dzierżawy za pomocą identyfikatora pojedynczej dzierżawy. Na przykład poniższe zapytanie filtry `company_id = 5` reklam i wyświetleń. Spróbuj ją uruchomić w psql, aby wyświetlić wyniki.
+Gdy aplikacja żąda danych dla pojedynczej dzierżawy, baza danych może wykonać zapytanie w jednym węźle procesu roboczego. Zapytania o pojedynczej dzierżawie są filtrowane według pojedynczego identyfikatora dzierżawy. Na przykład następujące filtry `company_id = 5` zapytań dla reklam i wrażenia. Spróbuj uruchomić go w PSQL, aby wyświetlić wyniki.
 
 ```sql
 SELECT a.campaign_id,
@@ -181,11 +183,11 @@ GROUP BY a.campaign_id, a.id
 ORDER BY a.campaign_id, n_impressions desc;
 ```
 
-## <a name="share-data-between-tenants"></a>Udostępnianie danych między dzierżawami
+## <a name="share-data-between-tenants"></a>Udostępnianie danych między dzierżawcami
 
-Do tej pory wszystkie tabele zostały przekazane przez `company_id`, ale niektóre dane nie naturalnie "należy" do dowolnej dzierżawy w szczególności i mogą być udostępniane. Na przykład wszystkich firm w przykładzie platformy ad może potrzebować informacji geograficznych dla swoich odbiorców na podstawie adresów IP.
+Dopóki teraz wszystkie tabele nie zostaną rozdystrybuowane przez `company_id`program, ale niektóre dane nie są naturalnie "należące do żadnej dzierżawy i mogą być udostępniane. Na przykład, wszystkie firmy z tej platformy usługi AD mogą chcieć uzyskać informacje geograficzne dla swoich odbiorców na podstawie adresów IP.
 
-Utwórz tabelę do przechowywania udostępnionych informacji geograficznych. Uruchom następujące polecenia w psql:
+Utwórz tabelę, aby przechowywać udostępnione informacje geograficzne. Uruchom następujące polecenia w PSQL:
 
 ```sql
 CREATE TABLE geo_ips (
@@ -197,21 +199,21 @@ CREATE TABLE geo_ips (
 CREATE INDEX ON geo_ips USING gist (addrs inet_ops);
 ```
 
-Następnie należy `geo_ips` "Tabela odwołania" przechowywać kopię tabeli w każdym węźle procesu roboczego.
+Następnie Utwórz `geo_ips` "tabelę referencyjną", aby zapisać kopię tabeli w każdym węźle procesu roboczego.
 
 ```sql
 SELECT create_reference_table('geo_ips');
 ```
 
-Załaduj do niej przykładowe dane. Pamiętaj, aby uruchomić to polecenie w psql z wewnątrz katalogu, w której pobrano zestaw danych.
+Załaduj dane przy użyciu przykładowych danych. Należy pamiętać, aby uruchomić to polecenie w PSQL z katalogu, do którego pobrano zestaw danych.
 
 ```sql
 \copy geo_ips from 'geo_ips.csv' with csv
 ```
 
-Łączenie tabeli kliknięć za pomocą geograficznie\_adresy IP są wydajne we wszystkich węzłach.
-Oto sprzężenia do znajdowania lokalizacji wszystkich osób, który kliknął ad
-290. Spróbuj uruchomić zapytanie w psql.
+Dołączanie tabeli kliknięć przy\_użyciu geograficznie adresów IP jest wydajne we wszystkich węzłach.
+Oto sprzężenie, aby znaleźć lokalizacje wszystkich osób, które klikną w usłudze AD
+290. Spróbuj uruchomić zapytanie w PSQL.
 
 ```sql
 SELECT c.id, clicked_at, latlon
@@ -221,14 +223,14 @@ SELECT c.id, clicked_at, latlon
    AND c.ad_id = 290;
 ```
 
-## <a name="customize-the-schema-per-tenant"></a>Dostosowywanie schematu dla dzierżawcy
+## <a name="customize-the-schema-per-tenant"></a>Dostosuj schemat dla dzierżawy
 
-Każda dzierżawa może być konieczne przechowywanie informacji specjalnych nie jest wymagany przez inne osoby. Jednak wszystkie dzierżawy udostępniać wspólna infrastruktura schemat identyczne bazy danych. Gdzie można dodatkowe dane?
+Każdy Dzierżawca może wymagać przechowywania specjalnych informacji, które nie są wymagane przez inne osoby. Jednak wszyscy dzierżawcy korzystają ze wspólnej infrastruktury z identycznym schematem bazy danych. Gdzie można znaleźć dodatkowe dane?
 
-Jednym sposobem jest użycie typ kolumny nieograniczony, takich jak PostgreSQL JSONB.  Nasze schemat zawiera pole JSONB `clicks` o nazwie `user_data`.
-Firmie (Załóżmy, że pięć), można użyć kolumny do sprawdzenia, czy użytkownik znajduje się na urządzeniu przenośnym.
+Jedną z lew jest użycie typu kolumny Open-zakończony, takiego jak PostgreSQL JSONB.  Nasz schemat zawiera pole `clicks` JSONB o nazwie. `user_data`
+Firma (powiedzmy pięć firm) może użyć kolumny, aby sprawdzić, czy użytkownik znajduje się na urządzeniu przenośnym.
 
-Oto zapytanie w celu określenia, który kliknie przycisk więcej: mobilnych lub tradycyjny odwiedzających.
+Oto zapytanie, aby znaleźć, kto klika pozycję Więcej: mobilne lub tradycyjne osoby odwiedzające.
 
 ```sql
 SELECT
@@ -240,7 +242,7 @@ GROUP BY user_data->>'is_mobile'
 ORDER BY count DESC;
 ```
 
-Firma Microsoft można zoptymalizować to zapytanie dla jednej firmy, tworząc [częściowe indeksu](https://www.postgresql.org/docs/current/static/indexes-partial.html).
+Możemy zoptymalizować to zapytanie dla jednej firmy, tworząc [indeks częściowy](https://www.postgresql.org/docs/current/static/indexes-partial.html).
 
 ```sql
 CREATE INDEX click_user_data_is_mobile
@@ -248,7 +250,7 @@ ON clicks ((user_data->>'is_mobile'))
 WHERE company_id = 5;
 ```
 
-Ogólnie rzecz biorąc, możemy utworzyć [indeksów GIN](https://www.postgresql.org/docs/current/static/gin-intro.html) na każdy klucz i wartość w kolumnie.
+Bardziej ogólnie rzecz biorąc, możemy utworzyć [indeks ątek](https://www.postgresql.org/docs/current/static/gin-intro.html) dla każdego klucza i wartości w kolumnie.
 
 ```sql
 CREATE INDEX click_user_data
@@ -265,12 +267,12 @@ SELECT id
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-W poprzednich krokach utworzono zasoby platformy Azure w grupie serwerów. Jeśli nie będziesz już potrzebować tych zasobów w przyszłości, Usuń grupę serwera. Naciśnij klawisz *Usuń* znajdujący się w *Przegląd* strony grupy serwerów. Po wyświetleniu monitu na stronie wyskakujące, upewnij się, nazwę grupy serwerów i kliknij końcowe *Usuń* przycisku.
+W poprzednich krokach zostały utworzone zasoby platformy Azure w grupie serwerów. Jeśli nie chcesz potrzebować tych zasobów w przyszłości, Usuń grupę serwerów. Naciśnij przycisk *Usuń* na stronie *Przegląd* dla swojej grupy serwerów. Po wyświetleniu monitu na stronie podręcznej Potwierdź nazwę grupy serwerów, a następnie kliknij przycisk *Usuń* końcowego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób aprowizowania grupy serwerów na dużą skalę (Citus). Dołączone do niego za pomocą narzędzia psql, utworzyć schemat i rozproszonych danych. Pokazaliśmy ci, wykonywać zapytania względem danych w ramach i między dzierżawami i dostosowanie schematu na dzierżawę.
+W tym samouczku pokazano, jak zainicjować obsługę administracyjną grupy serwerów Citus. Nawiązano połączenie z usługą PSQL, utworzono schemat i dane rozproszone. Nauczysz się wysyłać zapytania dotyczące danych zarówno w dzierżawach, jak i między nimi, a następnie dostosować schemat na dzierżawcę.
 
-Następnie Dowiedz się więcej o koncepcjach na dużą skalę.
+Następnie Dowiedz się więcej na temat pojęć związanych ze skalą.
 > [!div class="nextstepaction"]
-> [Typy węzłów na dużą skalę](https://aka.ms/hyperscale-concepts)
+> [Skalowanie typów węzłów](https://aka.ms/hyperscale-concepts)

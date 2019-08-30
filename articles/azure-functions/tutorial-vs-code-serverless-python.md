@@ -3,21 +3,31 @@ title: Tworzenie i wdrażanie Azure Functions w języku Python z Visual Studio C
 description: Jak używać rozszerzenia Visual Studio Code Azure Functions do tworzenia funkcji bezserwerowych w języku Python i wdrażania ich na platformie Azure.
 services: functions
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: f5591a3e0ca73649b1ffc51c75aa95e86e286768
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 4f5c10536992f51ac61815507a3869e521520299
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639095"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170712"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>Wdrażanie języka Python w celu Azure Functions z Visual Studio Code
 
 W tym samouczku użyjesz Visual Studio Code i rozszerzenia Azure Functions, aby utworzyć bezserwerowy punkt końcowy HTTP z językiem Python oraz dodać do magazynu połączenie (lub "powiązanie"). Azure Functions uruchamia kod w środowisku bezserwerowym bez konieczności inicjowania obsługi administracyjnej maszyny wirtualnej ani publikowania aplikacji sieci Web. Azure Functions rozszerzenie dla Visual Studio Code znacznie upraszcza proces używania funkcji przez automatyczne obsługiwanie wielu problemów z konfiguracją.
+
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+
+> [!div class="checklist"]
+> * Zainstaluj rozszerzenie Azure Functions
+> * Tworzenie funkcji wyzwalanej przez protokół HTTP
+> * Debuguj lokalnie
+> * Synchronizuj ustawienia aplikacji
+> * Wyświetlanie dzienników przesyłania strumieniowego
+> * Nawiązywanie połączenia z usługą Azure Storage
 
 Jeśli wystąpią problemy z którymkolwiek z kroków opisanych w tym samouczku, chcielibyśmy poznać szczegóły. Aby przesłać szczegółową opinię, użyj przycisku **mam problem** na końcu każdej sekcji.
 
@@ -100,29 +110,26 @@ Dane wyjściowe, które zaczynają się od logo Azure Functions (należy przewin
     | Wybierz język projektu aplikacji funkcji | **Python** | Język, który ma być używany dla funkcji, która określa szablon użyty dla kodu. |
     | Wybierz szablon dla pierwszej funkcji projektu | **Wyzwalacz HTTP** | Funkcja, która używa wyzwalacza HTTP, jest uruchamiana za każdym razem, gdy istnieje żądanie HTTP wysłane do punktu końcowego funkcji. (Istnieją różne wyzwalacze dla Azure Functions. Aby dowiedzieć się więcej, zobacz artykuł [co mogę zrobić z usługą Functions?](functions-overview.md#what-can-i-do-with-functions).) |
     | Podaj nazwę funkcji | HttpExample | Nazwa jest używana dla podfolderu, który zawiera kod funkcji wraz z danymi konfiguracyjnymi, a także definiuje nazwę punktu końcowego HTTP. Użyj "HttpExample" zamiast zaakceptowania domyślnego "HTTPTrigger", aby odróżnić samą funkcję od wyzwalacza. |
-    | Poziom autoryzacji | **Anonimowe** | Autoryzacja anonimowa udostępnia funkcję publicznie dostęp dla każdego użytkownika. |
+    | Poziom autoryzacji | **Function** | Wywołania wykonywane do punktu końcowego funkcji wymagają [klucza funkcji](functions-bindings-http-webhook.md#authorization-keys). |
     | Wybierz, w jaki sposób chcesz otworzyć projekt | **Otwórz w bieżącym oknie** | Otwiera projekt w bieżącym oknie Visual Studio Code. |
 
-1. Po krótkim czasie zostanie wyświetlony komunikat wskazujący, że nowy projekt został utworzony. W **Eksploratorze**znajduje się podfolder utworzony dla tej funkcji, a Visual Studio Code otwiera  *\_ \_plik\_init\_. PR* zawierający domyślny kod funkcji:
+1. Po krótkim czasie zostanie wyświetlony komunikat wskazujący, że nowy projekt został utworzony. W **Eksploratorze**znajduje się podfolder utworzony dla tej funkcji. 
+
+1. Jeśli nie jest jeszcze otwarty, Otwórz  *\_ \_plik\_init\_. PR* zawierający domyślny kod funkcji:
 
     [![Wynik tworzenia nowego projektu funkcji w języku Python](media/tutorial-vs-code-serverless-python/project-create-results.png)](media/tutorial-vs-code-serverless-python/project-create-results.png)
 
     > [!NOTE]
-    > Jeśli Visual Studio Code informuje, że nie masz wybranego interpretera języka **Python podczas otwierania  *\_ \_\_init\_. PR*, Otwórz paletę poleceń (F1), wybierz język Python: Wybierz** polecenie interpreter, a następnie wybierz środowisko wirtualne w folderze lokalnym `.env` (który został utworzony jako część projektu). Środowisko musi być oparte na języku Python 3.6 x, jak wspomniano wcześniej w sekcji [wymagania wstępne](#prerequisites).
+    > Gdy Visual Studio Code informuje, że nie masz wybranego interpretera języka Python po **otwarciu  *\_ \_elementu\_init\_. PR*, Otwórz paletę poleceń (F1), wybierz język Python: Wybierz** polecenie interpreter, a następnie wybierz środowisko wirtualne w folderze lokalnym `.env` (który został utworzony jako część projektu). Środowisko musi być oparte na języku Python 3.6 x, jak wspomniano wcześniej w sekcji [wymagania wstępne](#prerequisites).
     >
     > ![Wybieranie środowiska wirtualnego utworzonego przy użyciu projektu](media/tutorial-vs-code-serverless-python/select-venv-interpreter.png)
-
-> [!TIP]
-> Za każdym razem, gdy chcesz utworzyć kolejną funkcję w tym samym projekcie, użyj polecenia **CREATE FUNCTION** na **platformie Azure: Eksplorator** funkcji lub Otwórz paletę poleceń (F1) i **wybierz Azure Functions: Create Function**. Oba polecenia monitują o nazwę funkcji (która jest nazwą punktu końcowego), a następnie tworzy podfolder z plikami domyślnymi.
->
-> ![Nowe polecenie funkcji na platformie Azure: Eksplorator funkcji](media/tutorial-vs-code-serverless-python/function-create-new.png)
 
 > [!div class="nextstepaction"]
 > [Wystąpił problem](https://www.research.net/r/PWZWZ52?tutorial=python-functions-extension&step=02-create-function)
 
 ## <a name="examine-the-code-files"></a>Sprawdzanie plików kodu
 
-W nowo utworzonym podfolderze funkcji znajdują się trzy pliki:  *\_ \_\_init\_. PR* zawiera kod funkcji, *Function. JSON* opisuje funkcję do Azure Functions i *Sample. dat* to przykładowy plik danych. Jeśli chcesz, możesz usunąć *przykład. dat* , ponieważ istnieje tylko, aby można było dodać inne pliki do podfolderu.
+W nowo utworzonym podfolderze funkcji _HttpExample_ są trzy pliki  *\_:\_ \_\_init. PR* zawiera kod funkcji *Function. JSON* opisuje funkcję na platformie Azure Functions i *Sample. dat* to przykładowy plik danych. Jeśli chcesz, możesz usunąć *przykład. dat* , ponieważ istnieje tylko, aby można było dodać inne pliki do podfolderu.
 
 Najpierw przyjrzyjmy się *funkcji Function. JSON* , a następnie w  *\_ \_kodzie\_init\_. PR*.
 
@@ -135,7 +142,7 @@ Plik Function. JSON zawiera informacje o konfiguracji niezbędne do Azure Functi
   "scriptFile": "__init__.py",
   "bindings": [
     {
-      "authLevel": "anonymous",
+      "authLevel": "function",
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
@@ -155,9 +162,9 @@ Plik Function. JSON zawiera informacje o konfiguracji niezbędne do Azure Functi
 
 Właściwość identyfikuje plik startowy dla kodu i ten kod musi zawierać funkcję języka Python o nazwie `main`. `scriptFile` Możesz umieścić kod w wielu plikach, tak długo, jak określony tutaj plik zawiera `main` funkcję.
 
-`bindings` Element zawiera dwa obiekty, jeden do opisywania żądań przychodzących, a drugi do opisywania odpowiedzi HTTP. W przypadku żądań przychodzących`"direction": "in"`() funkcja reaguje na żądania HTTP GET lub post i nie wymaga uwierzytelniania. Odpowiedź (`"direction": "out"`) jest odpowiedzią http, która zwraca każdą wartość zwróconą `main` z funkcji języka Python.
+`bindings` Element zawiera dwa obiekty, jeden do opisywania żądań przychodzących, a drugi do opisywania odpowiedzi HTTP. W przypadku żądań przychodzących`"direction": "in"`() funkcja reaguje na żądania HTTP GET lub post i wymaga podania klucza funkcji. Odpowiedź (`"direction": "out"`) jest odpowiedzią http, która zwraca każdą wartość zwróconą `main` z funkcji języka Python.
 
-### <a name="initpy"></a>\_\_init.py\_\_
+### <a name="__initpy__"></a>\_\_init.py\_\_
 
 Podczas tworzenia nowej funkcji Azure Functions udostępnia domyślny kod języka Python w  *\_ \_\_init\_. PR*:
 
@@ -233,7 +240,7 @@ Ważne części kodu są następujące:
 
     Alternatywnie Utwórz plik, taki jak *Data. JSON* `{"name":"Visual Studio Code"}` , zawierający i użyj polecenia `curl --header "Content-Type: application/json" --request POST --data @data.json http://localhost:7071/api/HttpExample`.
 
-1. Aby przetestować debugowanie funkcji, należy ustawić punkt przerwania w wierszu, który `name = req.params.get('name')` odczytuje i ponownie wysłać żądanie do adresu URL. Debuger Visual Studio Code powinien zostać zatrzymany w tym wierszu, co pozwala na badanie zmiennych i przechodzenie przez kod. (Aby zapoznać się z krótkim przewodnikiem dotyczącym debugowania podstawowego, zobacz [samouczek Visual Studio Code — Konfigurowanie i uruchamianie debugera](https://code.visualstudio.com/docs/python/python-tutorial.md#configure-and-run-the-debugger)).
+1. Aby debugować funkcję, należy ustawić punkt przerwania w wierszu, który `name = req.params.get('name')` odczytuje i ponownie wysłać żądanie do adresu URL. Debuger Visual Studio Code powinien zostać zatrzymany w tym wierszu, co pozwala na badanie zmiennych i przechodzenie przez kod. (Aby zapoznać się z krótkim przewodnikiem dotyczącym debugowania podstawowego, zobacz [samouczek Visual Studio Code — Konfigurowanie i uruchamianie debugera](https://code.visualstudio.com/docs/python/python-tutorial.md#configure-and-run-the-debugger)).
 
 1. Po upewnieniu się, że funkcja została dokładnie przetestowana lokalnie, Zatrzymaj debuger (za pomocą polecenia **Debuguj** > **zatrzymywanie debugowania** menu lub polecenie **Disconnect** na pasku narzędzi debugowania).
 
@@ -423,7 +430,7 @@ W tej sekcji dodasz powiązanie magazynu do funkcji HttpExample utworzonej wcze�
     | --- | --- |
     | Ustaw kierunek powiązania | określoną |
     | Wybieranie powiązania z kierunkiem | Usługa Azure Queue Storage |
-    | Nazwa służąca do identyfikacji tego powiązania w kodzie | msg |
+    | Nazwa używana do identyfikowania tego powiązania w kodzie | msg |
     | Kolejka, do której zostanie wysłany komunikat | outqueue |
     | Wybierz opcję Ustawienia z pliku *Local. Settings. JSON* (z prośbą o połączenie z magazynem) | AzureWebJobsStorage |
 
@@ -493,7 +500,7 @@ W tej sekcji dodasz powiązanie magazynu do funkcji HttpExample utworzonej wcze�
 
 Utworzona aplikacja funkcji obejmuje zasoby, które mogą ponosić minimalne koszty (zobacz [Cennik funkcji](https://azure.microsoft.com/pricing/details/functions/)). Aby wyczyścić zasoby, kliknij prawym przyciskiem myszy aplikacja funkcji na **platformie Azure: Eksplorator** funkcji i wybierz pozycję **Usuń aplikacja funkcji**. Możesz również odwiedzić [Azure Portal](https://portal.azure.com), wybrać **grupy zasobów** w okienku nawigacji po lewej stronie, wybrać grupę zasobów, która została utworzona w procesie tego samouczka, a następnie użyć polecenia **Usuń grupę zasobów** .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Gratulujemy wykonania tego przewodnika po wdrożeniu kodu w języku Python do Azure Functions! Teraz możesz utworzyć wiele innych funkcji bezserwerowych.
 

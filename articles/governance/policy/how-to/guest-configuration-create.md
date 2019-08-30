@@ -7,20 +7,20 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 12b88e14ed1d20ad26c9c8832877da08d3d98523
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
-ms.translationtype: HT
+ms.openlocfilehash: 235ad37c5cf5f8ac7e801a6d25e961d32c1b7aad
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146122"
+ms.locfileid: "70164919"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Jak utworzyć zasady konfiguracji gościa
 
-Konfiguracja gościa używa modułu zasobów [Konfiguracja żądanego stanu](/powershell/dsc) (DSC) do tworzenia konfiguracji inspekcji maszyn wirtualnych platformy Azure. Konfiguracja DSC definiuje warunek, w którym maszyna wirtualna powinna znajdować się w programie. Jeśli Ocena konfiguracji nie powiedzie się, zostanie wyzwolone **Inspekcja** efektu zasad, a maszyna wirtualna zostanie uznana za niezgodną.
+Konfiguracja gościa używa modułu zasobów [Konfiguracja żądanego stanu](/powershell/dsc) (DSC) do tworzenia konfiguracji inspekcji maszyn platformy Azure. Konfiguracja DSC definiuje warunek, w którym maszyna powinna znajdować się w programie. Jeśli Ocena konfiguracji nie powiedzie się, zostanie wyzwolony efekt zasad **auditIfNotExists** i maszyna zostanie uznanaza niezgodną.
 
-[Azure Policy konfiguracja gościa](/azure/governance/policy/concepts/guest-configuration) może być używana tylko do inspekcji ustawień wewnątrz maszyn wirtualnych. Korygowanie ustawień wewnątrz maszyn wirtualnych nie jest jeszcze dostępne.
+[Azure Policy konfiguracja gościa](/azure/governance/policy/concepts/guest-configuration) może być używana tylko do inspekcji ustawień wewnątrz maszyn. Korygowanie ustawień wewnątrz maszyn nie jest jeszcze dostępne.
 
-Wykonaj poniższe czynności, aby utworzyć własną konfigurację służącą do sprawdzania poprawności stanu maszyny wirtualnej platformy Azure.
+Aby utworzyć własną konfigurację weryfikacji stanu maszyny platformy Azure, należy wykonać następujące czynności.
 
 > [!IMPORTANT]
 > Zasady niestandardowe z konfiguracją gościa są funkcją w wersji zapoznawczej.
@@ -133,18 +133,18 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 - **Ścieżka**: Ścieżka folderu wyjściowego. Ten parametr jest opcjonalny. Jeśli nie zostanie określony, pakiet zostanie utworzony w bieżącym katalogu.
 - **ChefProfilePath**: Pełna ścieżka do profilu INSPEC. Ten parametr jest obsługiwany tylko podczas tworzenia zawartości do inspekcji systemu Linux.
 
-Ukończony pakiet musi być przechowywany w lokalizacji dostępnej dla zarządzanych maszyn wirtualnych. Przykłady obejmują repozytoria GitHub, repozytorium platformy Azure lub usługę Azure Storage. Jeśli wolisz nie udostępniać pakietu publicznie, możesz dołączyć [token sygnatury](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) dostępu współdzielonego w adresie URL. Można również zaimplementować [punkt końcowy usługi](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) dla maszyn wirtualnych w sieci prywatnej, chociaż ta konfiguracja ma zastosowanie tylko do uzyskiwania dostępu do pakietu i nie komunikuje się z usługą.
+Ukończony pakiet musi być przechowywany w lokalizacji dostępnej dla zarządzanych maszyn wirtualnych. Przykłady obejmują repozytoria GitHub, repozytorium platformy Azure lub usługę Azure Storage. Jeśli wolisz nie udostępniać pakietu publicznie, możesz dołączyć [token sygnatury](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) dostępu współdzielonego w adresie URL. Można również zaimplementować [punkt końcowy usługi](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) dla maszyn w sieci prywatnej, chociaż ta konfiguracja ma zastosowanie tylko do uzyskiwania dostępu do pakietu i nie komunikuje się z usługą.
 
 ### <a name="working-with-secrets-in-guest-configuration-packages"></a>Praca z wpisami tajnymi w pakietach konfiguracji gościa
 
 W Azure Policy konfiguracji gościa najlepszym sposobem zarządzania kluczami tajnymi używanymi w czasie wykonywania jest przechowywanie ich w Azure Key Vault. Ten projekt jest implementowany w ramach niestandardowych zasobów DSC.
 
-Najpierw utwórz tożsamość zarządzaną przypisaną przez użytkownika na platformie Azure. Tożsamość jest używana przez maszyny wirtualne do uzyskiwania dostępu do wpisów tajnych przechowywanych w Key Vault. Aby uzyskać szczegółowe instrukcje, zobacz [Tworzenie, wyświetlanie listy lub usuwanie tożsamości zarządzanej przypisanej przez użytkownika przy użyciu Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+Najpierw utwórz tożsamość zarządzaną przypisaną przez użytkownika na platformie Azure. Tożsamość jest używana przez maszyny do uzyskiwania dostępu do wpisów tajnych przechowywanych w Key Vault. Aby uzyskać szczegółowe instrukcje, zobacz [Tworzenie, wyświetlanie listy lub usuwanie tożsamości zarządzanej przypisanej przez użytkownika przy użyciu Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
 Następnie Utwórz wystąpienie Key Vault. Aby uzyskać szczegółowe instrukcje, zobacz [Ustawianie i pobieranie wpisu tajnego — PowerShell](../../../key-vault/quick-create-powershell.md).
 Przypisz uprawnienia do wystąpienia, aby przyznać tożsamości przypisanej użytkownikowi dostęp do wpisów tajnych przechowywanych w Key Vault. Aby uzyskać szczegółowe instrukcje, zobacz [Ustawianie i pobieranie wpisu tajnego platformy .NET](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
 
-Następnie przypisz tożsamość przypisaną do użytkownika do maszyny wirtualnej. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu programu PowerShell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
+Następnie przypisz do komputera tożsamość przypisaną przez użytkownika. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu programu PowerShell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
 Na dużą skalę Przypisz tę tożsamość przy użyciu Azure Resource Manager za pośrednictwem Azure Policy. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie wirtualnej platformy Azure przy użyciu szablonu](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
 
 Na koniec w ramach zasobu niestandardowego Użyj identyfikatora klienta wygenerowanego powyżej, aby uzyskać dostęp do Key Vault przy użyciu tokenu dostępnego na komputerze. Adres URL i do wystąpienia Key Vault można przesłać do zasobu jako właściwości, więc nie trzeba aktualizować zasobu dla wielu środowisk lub należy zmienić wartości. [](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema) `client_id`
@@ -165,7 +165,7 @@ $credential = New-Object System.Management.Automation.PSCredential('secret',$val
 
 ## <a name="test-a-guest-configuration-package"></a>Testowanie pakietu konfiguracji gościa
 
-Po utworzeniu pakietu konfiguracyjnego, ale przed opublikowaniem go na platformie Azure, można przetestować funkcjonalność pakietu ze stacji roboczej lub środowiska CI/CD. Moduł GuestConfiguration zawiera polecenie cmdlet `Test-GuestConfigurationPackage` , które ładuje tego samego agenta w środowisku deweloperskim, jak jest używany wewnątrz usługi Azure Virtual Machines. Korzystając z tego rozwiązania, można przeprowadzić testowanie integracji lokalnie przed wydaniem do rozliczanego testu/pytań i odpowiedzi/środowisk produkcyjnych.
+Po utworzeniu pakietu konfiguracyjnego, ale przed opublikowaniem go na platformie Azure, można przetestować funkcjonalność pakietu ze stacji roboczej lub środowiska CI/CD. Moduł GuestConfiguration zawiera polecenie cmdlet `Test-GuestConfigurationPackage` ładujące tego samego agenta w środowisku deweloperskim, jak jest używane wewnątrz maszyn platformy Azure. Korzystając z tego rozwiązania, można przeprowadzić testowanie integracji lokalnie przed wydaniem do rozliczanego testu/pytań i odpowiedzi/środowisk produkcyjnych.
 
 ```azurepowershell-interactive
 Test-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Verbose
@@ -187,7 +187,7 @@ Więcej informacji o testowaniu z parametrami znajduje się w sekcji poniżej [p
 
 ## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>Tworzenie plików wdrożenia definicji Azure Policy i inicjatywy
 
-Gdy niestandardowy pakiet zasad konfiguracji gościa został utworzony i przekazany do lokalizacji dostępnej dla maszyn wirtualnych, Utwórz definicję zasad konfiguracji gościa dla Azure Policy. Polecenie cmdlet przyjmuje publicznie dostępny pakiet zasad konfiguracji gościa i tworzy definicję zasad **auditIfNotExists** i **deployIfNotExists.** `New-GuestConfigurationPolicy` Zostanie również utworzona definicja inicjatywy zasad, która obejmuje zarówno definicje zasad.
+Gdy niestandardowy pakiet zasad konfiguracji gościa został utworzony i przekazany do lokalizacji dostępnej dla maszyn, Utwórz definicję zasad konfiguracji gościa dla Azure Policy. Polecenie cmdlet przyjmuje publicznie dostępny pakiet zasad konfiguracji gościa i tworzy definicję zasad **auditIfNotExists** i **deployIfNotExists.** `New-GuestConfigurationPolicy` Zostanie również utworzona definicja inicjatywy zasad, która obejmuje zarówno definicje zasad.
 
 Poniższy przykład tworzy definicje zasad i inicjatyw w określonej ścieżce z pakietu zasad niestandardowych konfiguracji gościa dla systemu Windows i zawiera nazwę, opis i wersję:
 
@@ -220,7 +220,7 @@ Następujące pliki są tworzone przez `New-GuestConfigurationPolicy`:
 
 Dane wyjściowe polecenia cmdlet zwracają obiekt zawierający nazwę wyświetlaną inicjatywy i ścieżkę plików zasad.
 
-Jeśli chcesz użyć tego polecenia do tworzenia szkieletu niestandardowego projektu zasad, możesz wprowadzić zmiany w tych plikach. Przykładem może być modyfikacja sekcji "If" w celu obliczenia, czy konkretny tag jest obecny dla maszyn wirtualnych. Aby uzyskać szczegółowe informacje na temat tworzenia zasad, zobacz programowe [Tworzenie zasad](./programmatically-create.md).
+Jeśli chcesz użyć tego polecenia do tworzenia szkieletu niestandardowego projektu zasad, możesz wprowadzić zmiany w tych plikach. Przykładem może być modyfikacja sekcji "If", aby sprawdzić, czy określony tag jest obecny dla maszyn. Aby uzyskać szczegółowe informacje na temat tworzenia zasad, zobacz programowe [Tworzenie zasad](./programmatically-create.md).
 
 ### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Używanie parametrów w niestandardowych zasadach konfiguracji gościa
 
@@ -337,7 +337,7 @@ Po przeprowadzeniu konwersji zawartości należy wykonać kroki opisane powyżej
 Zasady niestandardowe konfiguracji gościa domyślnie używają skrótu SHA256, aby sprawdzić, czy pakiet zasad nie został zmieniony od momentu opublikowania na serwerze, który jest poddany inspekcji.
 Opcjonalnie klienci mogą również używać certyfikatu do podpisywania pakietów i wymuszania rozszerzenia konfiguracji gościa, aby zezwalać tylko na podpisaną zawartość.
 
-Aby włączyć ten scenariusz, należy wykonać dwa kroki. Uruchom polecenie cmdlet, aby podpisać pakiet zawartości, i Dołącz tag do maszyn wirtualnych, które powinny wymagać podpisania kodu.
+Aby włączyć ten scenariusz, należy wykonać dwa kroki. Uruchom polecenie cmdlet, aby podpisać pakiet zawartości, i Dołącz tag do maszyn, które powinny wymagać podpisania kodu.
 
 Aby skorzystać z funkcji walidacji podpisu, uruchom `Protect-GuestConfigurationPackage` polecenie cmdlet w celu podpisania pakietu przed jego opublikowaniem. To polecenie cmdlet wymaga certyfikatu "podpisywanie kodu".
 
@@ -353,17 +353,17 @@ Protect-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindo
 - **PrivateGpgKeyPath**: Ścieżka prywatnego klucza GPG. Ten parametr jest obsługiwany tylko w przypadku podpisywania zawartości dla systemu Linux.
 - **PublicGpgKeyPath**: Ścieżka klucza publicznego GPG. Ten parametr jest obsługiwany tylko w przypadku podpisywania zawartości dla systemu Linux.
 
-Agent GuestConfiguration oczekuje, że klucz publiczny certyfikatu ma być obecny w "zaufanych głównych urzędach certyfikacji" na maszynach z systemem Windows `/usr/local/share/ca-certificates/extra` i w ścieżce na komputerach z systemem Linux. Aby węzeł mógł zweryfikować podpisaną zawartość, Zainstaluj klucz publiczny certyfikatu na maszynie wirtualnej przed zastosowaniem zasad niestandardowych. Ten proces można wykonać przy użyciu dowolnej techniki wewnątrz maszyny wirtualnej lub za pomocą Azure Policy. Przykładowy szablon jest [dostępny tutaj](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows).
+Agent GuestConfiguration oczekuje, że klucz publiczny certyfikatu ma być obecny w "zaufanych głównych urzędach certyfikacji" na maszynach z systemem Windows `/usr/local/share/ca-certificates/extra` i w ścieżce na komputerach z systemem Linux. Aby węzeł mógł zweryfikować podpisaną zawartość, przed zastosowaniem zasad niestandardowych Zainstaluj klucz publiczny certyfikatu na komputerze. Ten proces można wykonać przy użyciu dowolnej techniki wewnątrz maszyny wirtualnej lub za pomocą Azure Policy. Przykładowy szablon jest [dostępny tutaj](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows).
 Zasady dostępu Key Vault muszą zezwalać dostawcy zasobów obliczeniowych na dostęp do certyfikatów podczas wdrożeń. Aby uzyskać szczegółowe instrukcje, zobacz [konfigurowanie Key Vault dla maszyn wirtualnych w programie Azure Resource Manager](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
 
-Poniżej znajduje się przykład eksportowania klucza publicznego z certyfikatu podpisywania w celu zaimportowania go do maszyny wirtualnej.
+Poniżej znajduje się przykład eksportowania klucza publicznego z certyfikatu podpisywania w celu zaimportowania go do maszyny.
 
 ```azurepowershell-interactive
 $Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {($_.Subject-eq "CN=mycert3") } | Select-Object -First 1
 $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ```
 
-Odpowiednie informacje na temat tworzenia kluczy GPG do użycia z maszynami wirtualnymi z systemem Linux są dostępne w artykule w witrynie GitHub, [generując nowy klucz GPG](https://help.github.com/en/articles/generating-a-new-gpg-key).
+Odpowiednie informacje na temat tworzenia kluczy GPG do użycia z maszynami z systemem Linux są dostępne w artykule w witrynie GitHub, [generując nowy klucz GPG](https://help.github.com/en/articles/generating-a-new-gpg-key).
 
 Po opublikowaniu zawartości Dodaj tag o nazwie `GuestConfigPolicyCertificateValidation` i wartości `enabled` do wszystkich maszyn wirtualnych, na których powinno być wymagane podpisywanie kodu. Ten tag można dostarczyć na dużą skalę przy użyciu Azure Policy. Zapoznaj się z przykładem [Zastosuj tag i jego wartość domyślną](../samples/apply-tag-default-value.md) .
 Po zastosowaniu tego tagu definicja zasad wygenerowana przy użyciu `New-GuestConfigurationPolicy` polecenia cmdlet włącza wymaganie za pośrednictwem rozszerzenia konfiguracji gościa.

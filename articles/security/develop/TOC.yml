@@ -7,10 +7,6 @@
       items:
         - name: Aplikacja internetowa w kontenerze systemu Linux
           href: secure-web-app.md
-    - name: Rozwiązania zgodne ze standardami branżowymi
-      items:
-        - name: Payment Card Industry
-          href: secure-pci-web-app.md
 - name: Pojęcia
   expanded: true
   items:

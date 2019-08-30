@@ -7,25 +7,25 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 6/21/2019
+ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: cb81c73f7946a10bae0470a55dcf1c0d55c2b847
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 093ada2b2751540b986154be3a2f333784c1259f
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330048"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173290"
 ---
-# <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Zatrzymać lub usunąć zadania usługi Azure Stream Analytics
+# <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Zatrzymywanie lub usuwanie zadania Azure Stream Analytics
 
-Zadania usługi Azure Stream Analytics można łatwo zatrzymać lub usunąć za pomocą witryny Azure portal, programu Azure PowerShell, zestawu Azure SDK dla platformy .net lub interfejsu API REST. Nie można odzyskać zadania usługi Stream Analytics, gdy został on usunięty.
+Zadania Azure Stream Analytics można łatwo zatrzymać lub usunąć za pomocą Azure Portal, Azure PowerShell, zestawu Azure SDK dla platformy .NET lub interfejsu API REST. Nie można odzyskać zadania Stream Analytics po jego usunięciu.
 
 >[!NOTE] 
 >Po zatrzymaniu zadania usługi Stream Analytics, dane są utrwalane tylko w magazynie danych wejściowych i wyjściowych, takich jak Event Hubs lub usługi Azure SQL Database. Jeśli są wymagane, aby usunąć dane z platformy Azure, koniecznie wykonaj proces usuwania zasobów wejściowe i wyjściowe zadania usługi Stream Analytics.
 
 ## <a name="stop-a-job-in-azure-portal"></a>Zatrzymaj zadanie w witrynie Azure portal
 
-Po zatrzymaniu zadania zasoby są deprovisionned i zatrzymuje się przetwarzanie zdarzeń. Opłaty związane z tym zadanie również zostaną zatrzymane. Jednakże wszystkich konfiguracji są zachowywane i można ponownie uruchomić zadanie później 
+Po zatrzymaniu zadania zasoby są cofane i zatrzymują przetwarzanie zdarzeń. Opłaty związane z tym zadaniem również są zatrzymane. Jednak cała konfiguracja jest zachowywana, a zadanie można uruchomić ponownie później 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
 
@@ -39,7 +39,7 @@ Po zatrzymaniu zadania zasoby są deprovisionned i zatrzymuje się przetwarzanie
 ## <a name="delete-a-job-in-azure-portal"></a>Usuwanie zadania w witrynie Azure portal
 
 >[!WARNING] 
->Nie można odzyskać zadania usługi Stream Analytics, gdy został on usunięty.
+>Nie można odzyskać zadania Stream Analytics po jego usunięciu.
 
 1. Zaloguj się do Portalu Azure. 
 
@@ -54,7 +54,7 @@ Po zatrzymaniu zadania zasoby są deprovisionned i zatrzymuje się przetwarzanie
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Aby zatrzymać zadania przy użyciu programu PowerShell, użyj [Stop AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) polecenia cmdlet. Aby usunąć zadanie przy użyciu programu PowerShell, użyj [AzStreamAnalyticsJob Usuń](https://docs.microsoft.com/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) polecenia cmdlet.
+Aby zatrzymać zadanie przy użyciu programu PowerShell, użyj polecenia cmdlet [stop-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/stop-azstreamanalyticsjob) . Aby usunąć zadanie przy użyciu programu PowerShell, użyj polecenia cmdlet [Remove-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/Remove-azStreamAnalyticsJob) .
 
 ## <a name="stop-or-delete-a-job-using-azure-sdk-for-net"></a>Zatrzymać lub usunąć zadania przy użyciu zestawu Azure SDK dla platformy .NET
 

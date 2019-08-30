@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 08/29/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: bdb66ec65d493c6af2f33bf6ed6e4a2bb2154235
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8a455fdb8ef81b0e06d1f77f7a9cdd5bec351b2b
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897040"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164265"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB za pomocą programu PowerShell (wersja zapoznawcza)
 
@@ -164,6 +164,9 @@ Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach ostrych wł
 Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `
     -StorageAccountName <storage-account>
 ```
+
+> [!IMPORTANT]
+> Zarówno przypisanie klucza delegowania użytkownika, jak i roli RBAC są buforowane przez usługę Azure Storage, dzięki czemu może wystąpić opóźnienie między zainicjowaniem procesu odwoływania a istniejącym skojarzeniem SAS delegowania użytkownika.
 
 ## <a name="next-steps"></a>Następne kroki
 

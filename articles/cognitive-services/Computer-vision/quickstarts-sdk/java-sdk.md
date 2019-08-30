@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: quickstart
 ms.date: 07/25/2019
 ms.author: pafarley
-ms.openlocfilehash: daea1415c42960970d097753bc657392d4e1a1f4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
-ms.translationtype: HT
+ms.openlocfilehash: fd8abf81589f3338f9e45c6c1d23681269ccc654
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137274"
+ms.locfileid: "70164852"
 ---
 # <a name="quickstart-computer-vision-client-library-for-java"></a>Szybki start: przetwarzanie obrazów Biblioteka kliencka dla języka Java
 
@@ -142,6 +142,9 @@ Najpierw Utwórz **zasoby/** folder w folderze **src/Main/** folder projektu, a 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_refs)]
 
+> [!NOTE]
+> Możesz również analizować obraz zdalny przy użyciu adresu URL. Zapoznaj się z przykładowym kodem w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/ComputerVisionQuickstart.java) , aby poznać scenariusze związane z obrazami zdalnymi.
+
 ### <a name="specify-visual-features"></a>Określ funkcje wizualne
 
 Następnie określ, które funkcje wizualne mają zostać wyodrębnione w analizie. Aby uzyskać pełną listę, zobacz Wyliczenie [VisualFeatureTypes](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.models.visualfeaturetypes?view=azure-java-stable) .
@@ -149,17 +152,59 @@ Następnie określ, które funkcje wizualne mają zostać wyodrębnione w analiz
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_features)]
 
 ### <a name="analyze"></a>Analiza
-Ta metoda drukuje szczegółowe wyniki do konsoli dla każdego zakresu analizy obrazu. Zalecamy obchwycenie tego wywołania metody w bloku try/catch
+Ta metoda drukuje szczegółowe wyniki do konsoli dla każdego zakresu analizy obrazu. Zalecamy pootocz wywołanie metody w bloku try/catch. Metoda **analyzeImageInStream** zwraca obiekt **ImageAnalysis** , który zawiera wszystkie wyodrębnione informacje.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_analyze)]
 
-### <a name="display-results"></a>Wyświetlanie wyników
+W poniższych sekcjach pokazano, jak szczegółowo analizować te informacje.
 
-Powyższe wywołanie metody zwróci obiekt ImageAnalysis, który zawiera wszystkie wyodrębnione informacje. Aby wydrukować szczegóły danej funkcji wizualizacji, można użyć bloku kodu, takiego jak poniższy:
+### <a name="get-image-description"></a>Pobierz opis obrazu
 
-[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_display)]
+Poniższy kod pobiera listę wygenerowanych napisów dla obrazu. Aby uzyskać więcej informacji, zobacz [Opis obrazów](../concept-describing-images.md) .
 
-Zapoznaj się z przykładowym kodem w witrynie [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/ComputerVisionQuickstart.java) , aby uzyskać pełny zestaw opcji wyświetlania.
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_captions)]
+
+### <a name="get-image-category"></a>Pobierz kategorię obrazu
+
+Poniższy kod pobiera wykrytą kategorię obrazu. Aby uzyskać więcej informacji, zobacz [kategoryzowanie obrazów](../concept-categorizing-images.md) .
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_category)]
+
+### <a name="get-image-tags"></a>Pobierz Tagi obrazu
+
+Poniższy kod pobiera zestaw wykrytych tagów z obrazu. Zobacz [Tagi zawartości](../concept-tagging-images.md) , aby uzyskać więcej szczegółów
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_tags)]
+
+### <a name="get-faces"></a>Pobierz twarze
+
+Poniższy kod zwraca wykryte twarze na obrazie ze współrzędnymi prostokątów i wybierz atrybuty twarzy. Aby uzyskać więcej informacji, zobacz [wykrywanie czołowe](../concept-detecting-faces.md) .
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_faces)]
+
+### <a name="get-adult-or-racy-content"></a>Uzyskaj zawartość dla dorosłych lub erotycznej
+
+Poniższy kod drukuje wykrytą obecność zawartości dla dorosłych lub erotycznej w obrazie. Aby uzyskać więcej informacji [, zobacz zawartość dla dorosłych i erotycznej](../concept-detecting-adult-content.md) .
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_adult)]
+
+### <a name="get-image-color-scheme"></a>Pobierz schemat kolorów obrazu
+
+Poniższy kod drukuje wykryte atrybuty koloru w obrazie, takie jak kolory dominujące i kolor akcentu. Zobacz [schematy kolorów](../concept-detecting-color-schemes.md) , aby uzyskać więcej szczegółów.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_colors)]
+
+### <a name="get-domain-specific-content"></a>Pobieranie zawartości specyficznej dla domeny
+
+Przetwarzanie obrazów może korzystać z wyspecjalizowanego modelu do dalszej analizy obrazów. Aby uzyskać więcej informacji, zobacz [zawartość specyficzną dla domeny](../concept-detecting-domain-content.md) . 
+
+Poniższy kod analizuje dane dotyczące wykrytych osobistości w obrazie.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_celebrities)]
+
+Poniższy kod analizuje dane dotyczące wykrytych punktów orientacyjnych w obrazie.
+
+[!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/ComputerVisionQuickstart.java?name=snippet_analyzelocal_landmarks)]
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
 

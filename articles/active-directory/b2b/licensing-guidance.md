@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 08/15/2019
+ms.date: 08/29/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 081061eae07fa3765d032ad155e59ebf5aa3cbc9
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 5968536d0bd0fbe2496fd9bf5fca86c7a1c4053d
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512560"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162268"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Wskazówki dotyczące licencjonowania funkcji współpracy między firmami przy użyciu usługi Azure Active Directory
 
@@ -32,7 +32,7 @@ Ponadto użytkownicy-Goście mogą korzystać z bezpłatnych funkcji usługi Azu
 ## <a name="examples-calculating-guest-user-licenses"></a>Przykłady: Obliczanie licencji użytkownika-gościa
 Po ustaleniu, ilu użytkowników-Gości musi uzyskać dostęp do płatnych usług Azure AD, upewnij się, że masz wystarczającą liczbę płatnych licencji usługi Azure AD, aby uwzględnić użytkowników-Gości w wymaganym współczynniku 1:5. Oto kilka przykładów:
 
-- Chcesz zaprosić użytkowników-Gości 100 do aplikacji lub usług usługi Azure AD, a także chcesz przypisać zarządzanie dostępem i Inicjowanie obsługi administracyjnej wszystkim użytkownikom-Gościom. Użytkownik chce również wymagać uwierzytelniania wieloskładnikowego i dostępu warunkowego dla 50 tych użytkowników-Gości. Aby obsłużyć tę kombinację, należy dysponować 10 Azure AD — wersja Podstawowa licencji i 10 Azure AD — wersja Premium licencji P1. Jeśli planujesz używanie funkcji ochrony tożsamości z użytkownikami gościa, musisz Azure AD — wersja Premium licencje P2 w tym samym współczynniku 1:5, aby obsłużyć użytkowników-Gości.
+- Chcesz zaprosić 100 użytkowników-Gości do aplikacji lub usług usługi Azure AD, a także zapewnić zarządzanie dostępem i Inicjowanie obsługi administracyjnej. W przypadku 50 tych użytkowników-Gości trzeba również wymagać uwierzytelniania MFA i dostępu warunkowego, dlatego dla tych funkcji wymagane są 10 Azure AD — wersja Premium licencji P1. Jeśli planujesz używanie funkcji ochrony tożsamości z użytkownikami gościa, musisz Azure AD — wersja Premium licencje P2 w tym samym współczynniku 1:5, aby obsłużyć użytkowników-Gości.
 - Chcesz zaprosić 60 użytkowników-Gości, którzy wszystkie wymagają uwierzytelniania wieloskładnikowego, więc musisz mieć co najmniej 12 Azure AD — wersja Premiumych licencji P1. Masz 10 pracowników z licencjami na Azure AD — wersja Premium P1, co pozwoli maksymalnie 50 użytkownikom-Gościom w ramach wskaźnika licencjonowania 1:5. Musisz zakupić dwie dodatkowe licencje na P1, aby obkryć 10 dodatkowym użytkownikom-Gościom.
 
 ## <a name="next-steps"></a>Następne kroki

@@ -8,16 +8,21 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: divswa, LADocs
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 59263f74086f789e46e854ca320455e84dcb42c1
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 8712af60df2454b29c0691602260c8b826eae75c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907596"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164982"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Łączenie z systemami SAP z Azure Logic Apps
+
+> [!IMPORTANT]
+> Starsze łączniki serwera aplikacji SAP i serwera komunikatów SAP zaplanowano jako przestarzałe. Bieżący łącznik SAP konsoliduje te poprzednie łączniki SAP, aby nie trzeba było zmieniać typu połączenia, jest w pełni zgodny z poprzednimi łącznikami, zapewnia wiele dodatkowych możliwości i nadal korzysta z biblioteki łącznika SAP .NET ( SAP NCo).
+>
+> W przypadku aplikacji logiki korzystających ze starszych łączników należy [przeprowadzić migrację do najnowszego łącznika](#migrate) przed datą zakończenia. W przeciwnym razie te aplikacje logiki będą powodować błędy wykonywania i nie będą mogły wysyłać komunikatów do systemu SAP.
 
 W tym artykule pokazano, jak można uzyskać dostęp do lokalnych zasobów SAP z wewnątrz aplikacji logiki przy użyciu łącznika SAP. Łącznik współpracuje z klasycznymi wersjami oprogramowania SAP, takimi jak R/3 i systemu ECC w środowisku lokalnym. Łącznik umożliwia także integrację z nowszymi dla platformy SAP opartymi na platformie HANA, takimi jak S/4 HANA, niezależnie od tego, czy są hostowane lokalnie, czy w chmurze. Łącznik SAP obsługuje integrację komunikatów lub danych z systemami opartymi na systemie SAP NetWeaver za pośrednictwem dokumentu pośredniczącego (IDoc), Business Application Programming Interface (BAPI) lub zdalnego wywołania funkcji (RFC).
 
@@ -31,7 +36,7 @@ W przypadku tych operacji łącznik SAP obsługuje uwierzytelnianie podstawowe z
 
 Łącznik SAP integruje się z lokalnymi systemami SAP za pomocą [lokalnej bramy danych](../logic-apps/logic-apps-gateway-connection.md). W scenariuszach wysyłania, na przykład gdy komunikat jest wysyłany z aplikacji logiki do systemu SAP, Brama danych działa jako klient RFC i przekazuje żądania otrzymane z aplikacji logiki do SAP. Podobnie w przypadku scenariuszy odbioru Brama danych działa jako serwer RFC, który odbiera żądania od SAP i przekazuje je do aplikacji logiki.
 
-W tym artykule przedstawiono sposób tworzenia przykładowych aplikacji logiki, które integrują się z systemem SAP, oraz obejmują opisane wcześniej scenariusze integracji.
+W tym artykule przedstawiono sposób tworzenia przykładowych aplikacji logiki, które integrują się z systemem SAP, oraz obejmują opisane wcześniej scenariusze integracji. W przypadku aplikacji logiki, które używają starszych łączników SAP, w tym artykule przedstawiono sposób migracji aplikacji logiki do najnowszego łącznika SAP.
 
 <a name="pre-reqs"></a>
 
@@ -63,11 +68,23 @@ Aby wykonać czynności opisane w tym artykule, potrzebne są następujące elem
 
 * Zawartość komunikatu, którą można wysłać do serwera SAP, na przykład plik IDoc, musi być w formacie XML i zawierać przestrzeń nazw dla akcji SAP, która ma być używana.
 
+<a name="migrate"></a>
+
+## <a name="migrate-to-current-connector"></a>Migrowanie do bieżącego łącznika
+
+1. Jeśli jeszcze tego nie zrobiono, zaktualizuj [lokalną bramę danych](https://www.microsoft.com/download/details.aspx?id=53127) , tak aby była dostępna Najnowsza wersja. Aby uzyskać więcej informacji, zobacz [Instalowanie lokalnej bramy danych dla Azure Logic Apps](../logic-apps/logic-apps-gateway-install.md).
+
+1. W aplikacji logiki korzystającej ze starszego łącznika SAP Usuń akcję **Wyślij do SAP** .
+
+1. Z poziomu najnowszego łącznika SAP Dodaj akcję **Wyślij do SAP** . Aby można było użyć tej akcji, należy ponownie utworzyć połączenie z systemem SAP.
+
+1. Gdy skończysz, Zapisz aplikację logiki.
+
 <a name="add-trigger"></a>
 
 ## <a name="send-to-sap"></a>Wyślij do SAP
 
-W tym przykładzie zastosowano aplikację logiki, którą można wyzwolić za pomocą żądania HTTP. Aplikacja logiki wysyła IDoc do serwera SAP i zwraca odpowiedź do żądającego, który wywołał aplikację logiki. 
+W tym przykładzie zastosowano aplikację logiki, którą można wyzwolić za pomocą żądania HTTP. Aplikacja logiki wysyła IDoc do serwera SAP i zwraca odpowiedź do żądającego, który wywołał aplikację logiki.
 
 ### <a name="add-an-http-request-trigger"></a>Dodawanie wyzwalacza żądania HTTP
 
@@ -235,7 +252,7 @@ W tym przykładzie jest stosowana aplikacja logiki, która wyzwala, gdy aplikacj
 
    Można też ręcznie określić akcję:
 
-   ![Ręcznie wprowadź akcję SAP](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png) 
+   ![Ręcznie wprowadź akcję SAP](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png)
 
    Oto przykład pokazujący, jak akcja pojawia się po skonfigurowaniu wyzwalacza tak, aby otrzymywał więcej niż jeden komunikat.
 
@@ -259,13 +276,13 @@ Aplikacja logiki jest teraz gotowa do odbierania komunikatów z systemu SAP.
 
 1. Otwórz najnowszy przebieg, który pokazuje komunikat wysłany z systemu SAP w sekcji dane wyjściowe wyzwalacza.
 
-## <a name="receive-idocs-packets-from-sap"></a>Odbieranie pakietów IDOCs z oprogramowania SAP
+## <a name="receive-idoc-packets-from-sap"></a>Odbieranie pakietów IDOC z oprogramowania SAP
 
 Można skonfigurować SAP, aby [wysyłał IDOCs w pakietach](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html), które są partiami lub grupami IDOCs. Do odbierania pakietów IDOC, łącznika SAP i konkretnego wyzwalacza nie jest wymagana dodatkowa konfiguracja. Jednak, aby przetwarzać każdy element w pakiecie IDOC po odebraniu pakietu przez wyzwalacz, należy wykonać pewne dodatkowe kroki, aby podzielić pakiet na poszczególne IDOCs.
 
-Oto przykład, który pokazuje, jak wyodrębnić poszczególne IDOCs z pakietu przy użyciu [ `xpath()` funkcji](./workflow-definition-language-functions-reference.md#xpath): 
+Oto przykład, który pokazuje, jak wyodrębnić poszczególne IDOCs z pakietu przy użyciu [ `xpath()` funkcji](./workflow-definition-language-functions-reference.md#xpath):
 
-1. Przed rozpoczęciem potrzebna jest aplikacja logiki z wyzwalaczem SAP. Jeśli nie masz jeszcze tej aplikacji logiki, wykonaj kroki opisane w tym temacie, aby skonfigurować [aplikację logiki z wyzwalaczem SAP](#receive-from-sap). 
+1. Przed rozpoczęciem potrzebna jest aplikacja logiki z wyzwalaczem SAP. Jeśli nie masz jeszcze tej aplikacji logiki, wykonaj kroki opisane w tym temacie, aby skonfigurować [aplikację logiki z wyzwalaczem SAP](#receive-from-sap).
 
    Na przykład:
 
@@ -279,7 +296,7 @@ Oto przykład, który pokazuje, jak wyodrębnić poszczególne IDOCs z pakietu p
 
 1. Aby wyodrębnić pojedyncze IDOC, Dodaj krok, który tworzy zmienną tablicową i zapisuje kolekcję IDOC przy użyciu innego `xpath()` wyrażenia:
 
-   `xpath(xml(triggerBody()?['Content']), '/*[local-name()="Receive"]/*[local-name()="idocData"]')` 
+   `xpath(xml(triggerBody()?['Content']), '/*[local-name()="Receive"]/*[local-name()="idocData"]')`
 
    ![Pobierz tablicę elementów](./media/logic-apps-using-sap-connector/get-array.png)
 
@@ -333,18 +350,18 @@ Na pasku narzędzi projektanta wybierz pozycję **Zapisz**.
 
    1. Podaj informacje o połączeniu dla serwera SAP. Dla właściwości **brama danych** Wybierz bramę danych utworzoną w Azure Portal na potrzeby instalacji bramy.
 
-      - Jeśli właściwość **Typ logowania** jest ustawiona na **serwer aplikacji**, te właściwości, które zwykle są opcjonalne, są wymagane:
+      * Jeśli właściwość **Typ logowania** jest ustawiona na **serwer aplikacji**, te właściwości, które zwykle są opcjonalne, są wymagane:
 
         ![Utwórz połączenie z serwerem aplikacji SAP](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-      - Jeśli właściwość **Typ logowania** ma wartość **Grupuj**, te właściwości, które zwykle są opcjonalne, są wymagane:
+      * Jeśli właściwość **Typ logowania** ma wartość **Grupuj**, te właściwości, które zwykle są opcjonalne, są wymagane:
 
         ![Utwórz połączenie z serwerem komunikatów SAP](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
 
       Domyślnie silne wpisywanie jest używane do sprawdzania nieprawidłowych wartości przez wykonywanie walidacji kodu XML względem schematu. Takie zachowanie może pomóc wykryć problemy wcześniej. Opcja **bezpieczne wpisywanie** jest dostępna w celu zapewnienia zgodności z poprzednimi wersjami i sprawdza tylko długość ciągu. Dowiedz się więcej o [opcji bezpiecznego wpisywania](#safe-typing).
 
-   1. Po zakończeniu wybierz pozycję **Utwórz**. 
-   
+   1. Po zakończeniu wybierz pozycję **Utwórz**.
+
       Logic Apps konfiguruje i testuje połączenie, aby upewnić się, że połączenie działa poprawnie.
 
 1. Podaj ścieżkę do artefaktu, dla którego chcesz wygenerować schemat.
@@ -484,6 +501,30 @@ Gdy wiadomości są wysyłane z włączonym bezpiecznym wpisywaniem, odpowiedź 
 <DATE>99991231</DATE>
 <TIME>235959</TIME>
 ```
+
+## <a name="advanced-scenarios"></a>Scenariusze zaawansowane
+
+### <a name="confirm-transaction-explicitly"></a>Potwierdź jawnie transakcję
+
+Po wysłaniu transakcji do SAP z Logic Apps, ta wymiana odbywa się w dwóch krokach, zgodnie z opisem w dokumencie SAP, [transakcyjnych programów serwera RFC](https://help.sap.com/doc/saphelp_nwpi71/7.1/en-US/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true). Domyślnie Akcja **Wyślij do SAP** obsługuje zarówno procedurę transferu funkcji, jak i potwierdzenie transakcji w pojedynczym wywołaniu. Łącznik SAP oferuje opcję oddzielenia tych kroków. Można wysłać IDOC i zamiast automatycznie potwierdzić transakcję, można użyć akcji jawnego **potwierdzenia identyfikatora transakcji** .
+
+Ta możliwość rozdzielenia potwierdzenia identyfikatora transakcji jest przydatna, gdy nie chcesz duplikować transakcji w oprogramowaniu SAP, na przykład w scenariuszach, w których mogą wystąpić awarie wynikające z przyczyn takich jak problemy z siecią. Dzięki potwierdzeniu oddzielnego identyfikatora transakcji transakcja jest wykonywana tylko raz w systemie SAP.
+
+Oto przykład, który pokazuje następujący wzorzec:
+
+1. Utwórz pustą aplikację logiki i Dodaj wyzwalacz HTTP.
+
+1. W łączniku SAP Dodaj akcję **Wyślij IDOC** . Podaj szczegóły dotyczące IDOC wysyłanego do systemu SAP.
+
+1. Aby jawnie potwierdzić identyfikator transakcji w osobnym kroku, w właściwości **Potwierdź TID** wybierz pozycję **nie**. Dla właściwości opcjonalny **Identyfikator GUID identyfikatora transakcji** można ręcznie określić wartość lub łącznik automatycznie generować i zwracać ten identyfikator GUID w odpowiedzi z akcji Wyślij IDOC.
+
+   ![Wyślij właściwości akcji IDOC](./media/logic-apps-using-sap-connector/send-idoc-action-details.png)
+
+1. Aby jawnie potwierdzić identyfikator transakcji, Dodaj akcję **Potwierdź identyfikator transakcji** . Kliknij wewnątrz pola **Identyfikator transakcji** , aby wyświetlić listę zawartości dynamicznej. Z tej listy wybierz wartość **identyfikatora transakcji** zwracaną z akcji **Wyślij IDOC** .
+
+   ![Akcja potwierdzenia identyfikatora transakcji](./media/logic-apps-using-sap-connector/explicit-transaction-id.png)
+
+   Po uruchomieniu tego kroku bieżąca transakcja jest oznaczona jako ukończona na obu końcach, po stronie łącznika SAP i po stronie systemowej SAP.
 
 ## <a name="known-issues-and-limitations"></a>Znane problemy i ograniczenia
 

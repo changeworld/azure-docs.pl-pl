@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 390e49a09136c21f3fd2f6555c0d56fde6e3b267
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 38da6d39d095ce27cdd26719d9b8b752d2921bc0
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60388136"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164767"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Tworzenie szablonów usługi Azure Resource Manager w celu zachowania spójności w chmurze
 
@@ -47,7 +47,7 @@ W pozostałej części tego przewodnika opisano obszary, które należy wziąć 
 * Upewnij się, że parametry szablonu, którego używasz pracować w chmurach programu docelowego.
 * Sprawdź, że dostępne są właściwości specyficzne dla zasobu chmury docelowego.
 
-Wprowadzenie do szablonów usługi Azure Resource Manager, zobacz [wdrożenie szablonu](resource-group-overview.md#template-deployment).
+Wprowadzenie do szablonów usługi Azure Resource Manager, zobacz [wdrożenie szablonu](template-deployment-overview.md).
 
 ## <a name="ensure-template-functions-work"></a>Upewnij się, że praca template — funkcje
 
@@ -61,7 +61,7 @@ Możliwości usługi Azure Resource Manager będzie zawsze wprowadzane do global
 
 1. Gdy masz lokalnego klona repozytorium, podłącz do docelowej usługi Azure Resource Manager przy użyciu programu PowerShell.
 
-1. Zaimportuj moduł psm1 i wykonaj następujące polecenie cmdlet Test-AzureRmureRmTemplateFunctions:
+1. Zaimportuj moduł PSM1 i wykonaj polecenie cmdlet Test-AzureRmureRmTemplateFunctions:
 
    ```powershell
    # Import the module
@@ -154,7 +154,7 @@ W szablonie, łącza są generowane, łącząc podstawowy identyfikator URI (z `
 
 Za pomocą tej metody, wartość domyślna `_artifactsLocation` parametr jest używany. Jeśli połączonymi szablonami, należy pobrać z innej lokalizacji, parametr wejściowy może służyć w czasie wdrażania, aby zastąpić wartość domyślną — bez zmian do szablonu jest wymagana.
 
-### <a name="use-artifactslocation-instead-of-hardcoding-links"></a>Użyj _artifactsLocation zamiast hardcoding łącza
+### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>Użyj _artifactsLocation zamiast hardcoding łącza
 
 Oprócz pełnienia dla zagnieżdżonych szablonów, adres URL w `_artifactsLocation` parametr jest używany jako podstawa dla wszystkich powiązanych artefaktów Szablon wdrożenia. Niektóre rozszerzenia maszyny Wirtualnej zawiera łącza do skryptu przechowywane poza szablonu. Aby zainstalować te rozszerzenia należy nie umieszczaj łącza. Na przykład rozszerzeń niestandardowych skryptów i programu PowerShell DSC może połączyć skryptu zewnętrznego w serwisie GitHub, jak pokazano: 
 
@@ -211,7 +211,7 @@ Do konstruowania bezwzględny identyfikator URI artefaktu, preferowaną metodą 
 }
 ```
 
-W przypadku tej metody wszystkie artefakty wdrożenia, w tym skrypty konfiguracji mogą być przechowywane w tej samej lokalizacji za pomocą samego szablonu. Aby zmienić lokalizację wszystkich łączy, musisz tylko określić inny podstawowy adres URL dla _parametry artifactsLocation_.
+W przypadku tej metody wszystkie artefakty wdrożenia, w tym skrypty konfiguracji mogą być przechowywane w tej samej lokalizacji za pomocą samego szablonu. Aby zmienić lokalizację wszystkich linków, należy określić inny podstawowy adres URL dla _parametrów artifactsLocation_.
 
 ## <a name="factor-in-differing-regional-capabilities"></a>Wziąć pod uwagę różne możliwości regionalne
 

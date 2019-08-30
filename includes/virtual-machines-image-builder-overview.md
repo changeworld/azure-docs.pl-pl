@@ -5,12 +5,12 @@ ms.date: 04/30/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: jeconnoc
-ms.openlocfilehash: fa34baa7569b0552708cd1a9b57d79186e5acd57
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 4be1ed779ad424d30ac34fd55f117ada3ed9c7a2
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68669777"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70166755"
 ---
 Standardowe obrazy maszyn wirtualnych (VM) umożliwiają organizacjom Migrowanie do chmury i zapewnianie spójności we wdrożeniach. Obrazy zwykle obejmują wstępnie zdefiniowane ustawienia zabezpieczeń i konfiguracji oraz niezbędne oprogramowanie. Skonfigurowanie własnego potoku obrazu wymaga czasu, infrastruktury i konfiguracji, ale za pomocą konstruktora obrazów maszyn wirtualnych platformy Azure wystarczy utworzyć prostą konfigurację opisującą obraz, przesłać ją do usługi, a obraz został skompilowany i rozdystrybuowany.
  
@@ -73,7 +73,7 @@ Konstruktor obrazów platformy Azure to w pełni zarządzana usługa platformy A
 
 1. Utwórz szablon obrazu jako plik JSON. Ten plik JSON zawiera informacje o źródle, dostosowywaniu i dystrybucji obrazu. Istnieje wiele przykładów w [repozytorium GitHub usługi Azure Image Builder](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts).
 1. Prześlij go do usługi, spowoduje to utworzenie artefaktu szablonu obrazu w określonej grupie zasobów. W tle program Image Builder pobierze obraz źródłowy lub plik ISO oraz skrypty zgodnie z wymaganiami. Są one przechowywane w oddzielnej grupie zasobów, która jest tworzona automatycznie w ramach subskrypcji, w formacie: IT_\<DestinationResourceGroup>_\<TemplateName>. 
-1. Po utworzeniu szablonu obrazu można utworzyć obraz. W konstruktorze obrazu w tle program używa szablonu i plików źródłowych do tworzenia maszyny wirtualnej, sieci i magazynu w IT_\<DestinationResourceGroup > _\<templateName > grupy zasobów.
+1. Po utworzeniu szablonu obrazu można utworzyć obraz. W konstruktorze obrazu w tle program używa szablonu i plików źródłowych do tworzenia maszyny wirtualnej (D1v2), sieci, publicznego adresu IP i magazynu w\<IT_ DestinationResourceGroup >\<_ templateName > grupie zasobów.
 1. W ramach tworzenia obrazu Konstruktor obrazów dystrybuuje obraz zgodnie z szablonem, a następnie usuwa dodatkowe zasoby z IT_\<DestinationResourceGroup > _\<templateName > grupę zasobów, która została utworzona dla proces.
 
 
@@ -104,7 +104,7 @@ Konstruktor obrazów tworzy maszynę wirtualną przy użyciu D1v2 rozmiaru maszy
  
 Program Azure Image Builder dystrybuuje obraz do wybranych regionów, co może spowodować naliczenie opłat za ruch wychodzący z sieci.
  
-## <a name="next-steps"></a>Kolejne kroki 
+## <a name="next-steps"></a>Następne kroki 
  
 Aby wypróbować Konstruktor obrazów platformy Azure, zapoznaj się z artykułami dotyczącymi tworzenia obrazów systemu [Linux](../articles/virtual-machines/linux/image-builder.md) lub [Windows](../articles/virtual-machines/windows/image-builder.md) .
  

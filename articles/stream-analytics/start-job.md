@@ -1,6 +1,6 @@
 ---
-title: Jak uruchomić zadania usługi Azure Stream Analytics
-description: W tym artykule opisano sposób uruchamiania zadania usługi Stream Analytics.
+title: Jak uruchomić zadanie Azure Stream Analytics
+description: W tym artykule opisano sposób uruchamiania zadania Stream Analytics z Azure Portal, programu PowerShell i programu Visual Studio.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
@@ -8,38 +8,38 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 9bc3e4132919e5fc5baadc78841e66efd3c34bcd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e4cb63accf7e89ac02451e9c25b9902a8a10812
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61362269"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173268"
 ---
-# <a name="how-to-start-an-azure-stream-analytics-job"></a>Jak uruchomić zadania usługi Azure Stream Analytics
+# <a name="how-to-start-an-azure-stream-analytics-job"></a>Jak uruchomić zadanie Azure Stream Analytics
 
-Można uruchomić zadania usługi Azure Stream Analytics przy użyciu witryny Azure portal, programu Visual Studio i PowerShell. Po uruchomieniu zadania, możesz wybrać czas wykonywania zadania rozpocząć tworzenie danych wyjściowych. Witryna Azure portal, programu Visual Studio i PowerShell każdego mają różne metody do ustawiania godziny rozpoczęcia. Te metody są opisane poniżej.
+Zadanie Azure Stream Analytics można uruchomić za pomocą Azure Portal, programu Visual Studio i programu PowerShell. Po rozpoczęciu zadania wybierz godzinę rozpoczęcia tworzenia danych wyjściowych. Azure Portal, Visual Studio i PowerShell mają różne metody ustawiania czasu rozpoczęcia. Te metody są opisane poniżej.
 
 ## <a name="start-options"></a>Opcje uruchamiania
-Trzy poniższe opcje są dostępne do rozpoczęcia zadania. Należy pamiętać, że cały czas, które są wymienione poniżej są określone w [TIMESTAMP BY](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics). Jeśli nie określono TIMESTAMP BY, użyty zostanie czas nadejścia.
-* **Teraz**: Sprawia, że punkt początkowy zdarzenie wyjściowe strumienia taki sam jak podczas uruchamiania zadania. Jeśli używany jest operator danych czasowych (np. przedział czasu, opóźnienie lub ŁĄCZONY albo oczekuje), Azure Stream Analytics automatycznie przyjrzymy się tworzenie kopii danych w źródle danych wejściowych. Na przykład "Teraz" Uruchamianie zadania i zapytanie używa okno wirowania 5 minut, Azure Stream Analytics wyszukiwanie danych od 5 minut temu w danych wejściowych.
-Pierwsze zdarzenie w danych wyjściowych zostało równy lub większy niż bieżący czas i ASA gwarantuje wyliczanymi wszystkich zdarzeń wejściowych, które logicznie mogą przyczynić się do danych wyjściowych. Na przykład są generowane nie częściowej agregacji w trybie okna. Zawsze jest pełna wartość zagregowaną.
+Trzy poniższe opcje są dostępne do uruchomienia zadania. Należy zauważyć, że wszystkie podane poniżej godziny są określone w [znaczniku czasu przez](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics). Jeśli SYGNATURa CZASowa przez nie zostanie określona, zostanie użyty czas odbioru.
+* **Teraz**: Sprawia, że punkt początkowy strumienia zdarzeń wyjściowych jest taki sam jak czas uruchomienia zadania. Jeśli jest używany operator danych czasowych (np. przedział czasu, opóźnienie lub SPRZĘŻENIe), Azure Stream Analytics automatycznie powróci do danych w źródle wejściowym. Na przykład, jeśli uruchomisz zadanie "teraz" i jeśli zapytanie korzysta z okna wirowania 5 minut, Azure Stream Analytics będzie szukać danych z 5 minut temu w danych wejściowych.
+Pierwsze możliwe zdarzenie wyjściowe ma sygnaturę czasową równą lub większą od bieżącego czasu, a w systemie ASA są gwarancje, że wszystkie zdarzenia wejściowe, które mogą logicznie wchodzić w skład danych wyjściowych, zostały uwzględnione. Na przykład nie są generowane częściowe agregacje okna. Zawsze jest to pełna agregowana wartość.
 
-* **Niestandardowy**: Możesz wybrać początkowy punkt danych wyjściowych. Podobnie jak **teraz** opcji usługi Azure Stream Analytics będzie automatycznie odczytywać dane przed tym razem, gdy używany jest operator danych czasowych 
+* **Niestandardowy**: Możesz wybrać punkt początkowy danych wyjściowych. Podobnie jak w przypadku opcji **teraz** , Azure Stream Analytics automatycznie odczytywać dane przed upływem tego czasu, jeśli jest używany operator danych czasowych 
 
-* **Ostatnio zatrzymane**. Ta opcja jest dostępna, gdy zadanie została wcześniej uruchomiona, ale został ręcznie zatrzymany lub nie powiodło się. Po wybraniu tej opcji usługi Azure Stream Analytics użyje ostatniego wyjścia ponownie uruchomić zadanie, dzięki czemu żadne dane nie zostaną utracone. Podobnie do poprzednich opcji usługi Azure Stream Analytics będzie automatycznie odczytywać dane przed tym razem Jeśli używany jest operator danych czasowych. Ponieważ kilka partycji danych wejściowych może mieć inny czas, Najwcześniejsza godzina zatrzymania wszystkich partycji jest używana, a w rezultacie niektóre duplikaty mogą być widoczne w danych wyjściowych. Więcej informacji na temat dokładnie — po zakończeniu przetwarzania są dostępne na stronie [gwarancją dostarczania zdarzeń](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics).
+* **Gdy ostatnie zostało zatrzymane**. Ta opcja jest dostępna, gdy zadanie zostało wcześniej uruchomione, ale zostało zatrzymane ręcznie lub niepowodzeniem. Po wybraniu tej opcji Azure Stream Analytics użyje ostatniego czasu wyjściowego, aby ponownie uruchomić zadanie, dzięki czemu żadne dane nie zostaną utracone. Podobnie jak w przypadku poprzednich opcji, Azure Stream Analytics automatycznie odczytywać dane przed upływem tego czasu, jeśli używany jest operator danych czasowych. Ponieważ kilka partycji wejściowych może mieć różny czas, jest używany Najwcześniejszy czas zatrzymania wszystkich partycji, ponieważ niektóre duplikaty mogą być widoczne w danych wyjściowych. Więcej informacji na temat przetwarzania jednokrotnego jest dostępnych na stronie [gwarancje dostarczenia zdarzeń](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics).
 
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Przejdź do zadania w witrynie Azure portal i wybierz pozycję **Start** na stronie Przegląd. Wybierz **czas rozpoczęcia dane wyjściowe zadania** , a następnie wybierz **Start**.
+Przejdź do zadania w Azure Portal i wybierz pozycję **Rozpocznij** na stronie Przegląd. Wybierz **godzinę rozpoczęcia zadania wyjściowego** , a następnie wybierz pozycję **Uruchom**.
 
-Wybierz jedną z opcji dla **czas rozpoczęcia dane wyjściowe zadania**. W tabeli przedstawiono opcje *teraz*, *niestandardowe*, i, jeśli zadanie zostało wcześniej uruchomione, *ostatnio zatrzymane*. Aby uzyskać więcej informacji o tych opcjach, zobacz powyżej.
+Wybierz jedną z opcji dla **czasu rozpoczęcia zadania**. Opcje są *teraz*, *niestandardowe*i, jeśli zadanie zostało wcześniej uruchomione, *gdy ostatnie*zostało zatrzymane. Aby uzyskać więcej informacji na temat tych opcji, zobacz powyżej.
 
 ## <a name="visual-studio"></a>Visual Studio
 
-W widoku zadania wybierz przycisk zieloną strzałkę, aby uruchomić zadanie. Ustaw **zadanie danych wyjściowych Uruchom tryb** i wybierz **Start**. Stan zadania zmieni się na **systemem**.
+W widoku zadania wybierz przycisk Zielona strzałka, aby uruchomić zadanie. Ustaw **tryb uruchamiania danych wyjściowych zadania** i wybierz pozycję **Uruchom**. Stan zadania zmieni się na **uruchomiony**.
 
-Dostępne są trzy opcje **zadanie danych wyjściowych Uruchom tryb**: *JobStartTime*, *CustomTime*, i *LastOutputEventTime*. Jeśli ta właściwość jest nieobecne, wartością domyślną jest *JobStartTime*. Aby uzyskać więcej informacji o tych opcjach, zobacz powyżej.
+Istnieją trzy opcje **trybu uruchamiania danych wyjściowych zadania**: *JobStartTime*, *CustomTime*i *LastOutputEventTime*. Jeśli ta właściwość jest nieobecna, wartość domyślna to *JobStartTime*. Aby uzyskać więcej informacji na temat tych opcji, zobacz powyżej.
 
 
 ## <a name="powershell"></a>PowerShell
@@ -53,12 +53,12 @@ Start-AzStreamAnalyticsJob `
   -OutputStartMode 'JobStartTime'
 ```
 
-Dostępne są trzy opcje **OutputStartMode**: *JobStartTime*, *CustomTime*, i *LastOutputEventTime*. Jeśli ta właściwość jest nieobecne, wartością domyślną jest *JobStartTime*. Aby uzyskać więcej informacji o tych opcjach, zobacz powyżej.
+Dostępne są trzy opcje **Jeśli**: *JobStartTime*, *CustomTime*i *LastOutputEventTime*. Jeśli ta właściwość jest nieobecna, wartość domyślna to *JobStartTime*. Aby uzyskać więcej informacji na temat tych opcji, zobacz powyżej.
 
-Aby uzyskać więcej informacji na temat `Start-AzStreamAnalyitcsJob` polecenia cmdlet widoku [odwołania Start AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob).
+Aby uzyskać więcej informacji na `Start-AzStreamAnalyitcsJob` temat polecenia cmdlet, zobacz temat [Start-AzStreamAnalyticsJob](/powershell/module/az.streamanalytics/start-azstreamanalyticsjob).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Szybki start: Tworzenie zadania usługi Stream Analytics przy użyciu witryny Azure portal](stream-analytics-quick-create-portal.md)
-* [Szybki start: Tworzenie zadania usługi Stream Analytics przy użyciu programu Azure PowerShell](stream-analytics-quick-create-powershell.md)
-* [Szybki start: Tworzenie zadania usługi Stream Analytics przy użyciu narzędzi Azure Stream Analytics dla programu Visual Studio](stream-analytics-quick-create-vs.md)
+* [Szybki start: Tworzenie zadania Stream Analytics przy użyciu Azure Portal](stream-analytics-quick-create-portal.md)
+* [Szybki start: Tworzenie zadania Stream Analytics przy użyciu Azure PowerShell](stream-analytics-quick-create-powershell.md)
+* [Szybki start: Tworzenie zadania Stream Analytics przy użyciu narzędzi Azure Stream Analytics Tools for Visual Studio](stream-analytics-quick-create-vs.md)

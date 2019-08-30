@@ -13,38 +13,37 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: e36e1ca17b5106c79076d1c62e737ba60907ab19
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 8420142e67fe4af12045a2b6fe7f7461ef384f81
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666472"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164472"
 ---
 # <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi dla sieci wirtualnej
 
 Punkty końcowe usługi sieci wirtualnej rozszerzają prywatną przestrzeń adresową i tożsamość sieci wirtualnej do usług platformy Azure za pośrednictwem bezpośredniego połączenia. Punkty końcowe umożliwiają zabezpieczanie krytycznych zasobów usługi platformy Azure tylko do sieci wirtualnych. Ruch z sieci wirtualnej do usługi platformy Azure zawsze pozostaje w sieci szkieletowej platformy Microsoft Azure.
 
-Ta funkcja jest dostępna dla następujących regionów i usług platformy Azure:
+Ta funkcja jest dostępna dla następujących regionów i usług platformy Azure. w nawiasach należy również znaleźć zasób Microsoft. *, który należy włączyć ze strony podsieci podczas konfigurowania punktów końcowych usługi dla usługi:
 
 **Ogólnie dostępne**
 
-- **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** : ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
-- **[Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
-- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
-- **[Serwer usługi Azure Database for PostgreSQL](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : ogólnie dostępny w regionach platformy Azure, w których jest dostępna usługa bazy danych.
-- **[Serwer usługi Azure Database for MySQL](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : ogólnie dostępny w regionach platformy Azure, w których jest dostępna usługa bazy danych.
-- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** : ogólnie dostępny w regionach platformy Azure, w których jest dostępna usługa bazy danych.
-- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
-- **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)** : ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
-- **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
-- **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
-- **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** : ogólnie dostępna we wszystkich regionach platformy Azure, w których jest dostępna usługa ADLS Gen1.
-- **[Usługa Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** : Ogólnie dostępna we wszystkich regionach platformy Azure, w których usługi App service jest dostępna
+- **[Usługa Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)** (Microsoft. Storage): ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
+- **[Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft. SQL): ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
+- **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft. SQL): ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
+- **[Serwer Azure Database for PostgreSQL](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft. SQL): ogólnie dostępny w regionach platformy Azure, w których jest dostępna usługa bazy danych.
+- **[Serwer Azure Database for MySQL](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft. SQL): ogólnie dostępny w regionach platformy Azure, w których jest dostępna usługa bazy danych.
+- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** (Microsoft. SQL): ogólnie dostępny w regionach platformy Azure, w których jest dostępna usługa bazy danych.
+- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft. AzureCosmosDB): ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
+- **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)** (Magazyn Microsoft. kluczy): ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
+- **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft. ServiceBus): ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
+- **[Event Hubs platformy Azure](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft. EventHub): ogólnie dostępna we wszystkich regionach świadczenia usługi Azure.
+- **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (Microsoft. usługi azureactivedirectory): ogólnie dostępna we wszystkich regionach platformy Azure, w których jest dostępna usługa ADLS Gen1.
+- **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** : Ogólnie dostępna we wszystkich regionach świadczenia usługi Azure, w których usługa App Service jest dostępna
 
 **Publiczna wersja zapoznawcza**
 
-- **[Usługa Azure Container Registry](../container-registry/container-registry-vnet.md)** : W wersji zapoznawczej dostępne we wszystkich regionach platformy Azure, w których usługa Azure Container Registry jest dostępna.
-.
+- **[Azure Container Registry](../container-registry/container-registry-vnet.md)** (Microsoft. ContainerRegistry): Wersja zapoznawcza jest dostępna we wszystkich regionach świadczenia usługi Azure, w których Azure Container Registry jest dostępna.
 
 Najbardziej aktualne powiadomienia można znaleźć na stronie [aktualizacji usługi Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -63,7 +62,7 @@ Punkty końcowe usługi oferują następujące korzyści:
 - Funkcja jest dostępna tylko dla sieci wirtualnych wdrożonych za pomocą modelu wdrażania przy użyciu usługi Azure Resource Manager.
 - Punkty końcowe są włączone w podsieciach skonfigurowanych w sieciach wirtualnych platformy Azure. Punktów końcowych nie można używać dla ruchu ze środowiska lokalnego do usług platformy Azure. Aby uzyskać więcej informacji, zobacz [Zabezpieczanie dostępu do usług platformy Azure ze środowiska lokalnego](#securing-azure-services-to-virtual-networks)
 - W przypadku usługi Azure SQL punkt końcowy usługi dotyczy tylko ruchu usługi platformy Azure w regionie sieci wirtualnej. W przypadku usługi Azure Storage na potrzeby obsługi ruchu w magazynach GRS i RA-GRS punkty końcowe są rozszerzane, aby uwzględniać sparowane regiony, w których wdrożono sieć wirtualną. Dowiedz się więcej na temat [sparowanych regionów platformy Azure](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions).
-- W przypadku usługi ADLS Gen 1 funkcja integracji z siecią wirtualną jest dostępna tylko dla sieci wirtualnych w tym samym regionie. Ponadto należy pamiętać, że integracja sieci wirtualnej dla usługi Azure Data Lake Storage Gen1 sprawia, że korzystanie z zabezpieczenia punktu końcowego usługi sieci wirtualnej między sieci wirtualnej i usługi Azure Active Directory (Azure AD), aby wygenerować dodatkowe zabezpieczenia oświadczenia w tokenie dostępu. Te oświadczenia są następnie używane do uwierzytelniania sieci wirtualnej na koncie usługi Data Lake Storage Gen1 i uzyskania dostępu. Tag "Microsoft.AzureActiveDirectory" na liście usług obsługujących punkty końcowe usługi jest używana tylko w przypadku obsługi punktów końcowych usługi Azure Data Lake Store Gen 1. Azure Active Directory (Azure AD) nie obsługuje natywnie punktów końcowych usługi. Dowiedz się więcej o [usługi Azure Data Lake Store Gen 1 Integracja z siecią wirtualną](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- W przypadku usługi ADLS Gen 1 funkcja integracji z siecią wirtualną jest dostępna tylko dla sieci wirtualnych w tym samym regionie. Należy również zauważyć, że integracja sieci wirtualnej dla Azure Data Lake Storage Gen1 korzysta z zabezpieczeń punktu końcowego usługi sieci wirtualnej między siecią wirtualną i Azure Active Directory (Azure AD) w celu wygenerowania dodatkowych oświadczeń zabezpieczeń w tokenie dostępu. Te oświadczenia są następnie używane do uwierzytelniania sieci wirtualnej na koncie usługi Data Lake Storage Gen1 i uzyskania dostępu. Tag "Microsoft. usługi azureactivedirectory" wymieniony w obszarze punkty końcowe usługi pomocniczej jest używany tylko dla punktów końcowych usługi pomocniczej ADLS generacji 1. Azure Active Directory (Azure AD) nie obsługuje natywnych punktów końcowych usługi. Dowiedz się więcej o integracji z siecią [wirtualną Azure Data Lake Store generacji 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="securing-azure-services-to-virtual-networks"></a>Zabezpieczanie usług platformy Azure w sieciach wirtualnych
 
@@ -122,7 +121,7 @@ Po skonfigurowaniu punktów końcowych usługi do określonej usługi zweryfikuj
 
 ## <a name="provisioning"></a>Inicjowanie obsługi
 
-Punkty końcowe usługi można niezależnie konfigurować w sieciach wirtualnych — czynność tę może wykonać użytkownik z uprawnieniami do zapisu w sieci wirtualnej. Aby zabezpieczyć zasoby usługi platformy Azure z siecią wirtualną, użytkownik musi mieć uprawnienia do *Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action* dla dodawanych podsieci. To uprawnienie jest domyślnie uwzględniane we wbudowanych rolach administratora usługi, domyślnie i może być modyfikowane przez tworzenie ról niestandardowych.
+Punkty końcowe usługi można niezależnie konfigurować w sieciach wirtualnych — czynność tę może wykonać użytkownik z uprawnieniami do zapisu w sieci wirtualnej. Aby zabezpieczyć zasoby usługi platformy Azure w sieci wirtualnej, użytkownik musi mieć uprawnienie do usługi *Microsoft. Network/virtualNetworks/Subnets/joinViaServiceEndpoint/Action* dla dodawanych podsieci. To uprawnienie jest domyślnie uwzględniane we wbudowanych rolach administratora usługi, domyślnie i może być modyfikowane przez tworzenie ról niestandardowych.
 
 Dowiedz się więcej na temat [wbudowanych ról](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i przypisywaniu określonych uprawnień do [ról niestandardowych](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -134,7 +133,7 @@ Za korzystanie z punktów końcowych usługi nie są naliczane dodatkowe opłaty
 
 Nie ma limitu całkowitej liczby punktów końcowych usługi w sieci wirtualnej.
 
-Niektóre usługi platformy Azure, takimi jak konta magazynu platformy Azure, mogą wymuszać limity liczby podsieci używanych do zabezpieczania zasobów. Szczegółowe informacje można znaleźć w dokumentacji dotyczącej różnych usług w sekcji [Następne kroki](#next-steps).
+Niektóre usługi platformy Azure, takie jak konta usługi Azure Storage, mogą wymuszać limity liczby podsieci używanych do zabezpieczania zasobu. Szczegółowe informacje można znaleźć w dokumentacji dotyczącej różnych usług w sekcji [Następne kroki](#next-steps).
 
 ## <a name="virtual-network-service-endpoint-policies"></a>Zasady punktu końcowego usługi dla sieci wirtualnej 
 

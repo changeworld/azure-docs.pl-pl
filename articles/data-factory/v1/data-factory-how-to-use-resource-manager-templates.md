@@ -11,18 +11,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: b33762ae18332854d6c25d49553b533c9b99cc44
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: d2360efe71327f02d5cb7d16cb8141f47c304b0c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139465"
+ms.locfileid: "70164675"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Tworzenie jednostek Azure Data Factory przy użyciu szablonów
 > [!NOTE]
 > Ten artykuł dotyczy wersji 1 usługi Data Factory. 
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Korzystając z Azure Data Factory na potrzeby integracji danych, można odróżnić się od siebie w różnych środowiskach lub wielokrotnie wdrażać te same zadania w ramach tego samego rozwiązania. Szablony ułatwiają wdrażanie tych scenariuszy i zarządzanie nimi w prosty sposób. Szablony w Azure Data Factory doskonale nadają się do scenariuszy, które wymagają ponownego wykorzystania i powtórzenia.
 
 Rozważ sytuację, w której organizacja ma 10 zakładów produkcyjnych na całym świecie. Dzienniki z poszczególnych zakładów są przechowywane w oddzielnej lokalnej bazie danych SQL Server. Firma chce utworzyć pojedynczy magazyn danych w chmurze na potrzeby analiz ad hoc. Chce również mieć taką samą logikę, ale różne konfiguracje dla środowisk programistycznych, testowych i produkcyjnych.
@@ -32,7 +32,7 @@ W takim przypadku należy powtórzyć zadanie w tym samym środowisku, ale z ró
 Ponadto, ponieważ organizacja chce wdrożyć te 10 fabryk danych wiele razy w różnych środowiskach, szablony mogą korzystać z tej samej **użyteczności** , wykorzystując osobne pliki parametrów do tworzenia, testowania i środowiska produkcyjnego.
 
 ## <a name="templating-with-azure-resource-manager"></a>Tworzenia szablonów z Azure Resource Manager
-[Szablony Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md#template-deployment) są doskonałym sposobem osiągnięcia tworzenia szablonów w Azure Data Factory. Szablony Menedżer zasobów definiują infrastrukturę i konfigurację rozwiązania platformy Azure za pomocą pliku JSON. Ponieważ szablony Azure Resource Manager współpracują ze wszystkimi/większością usług platformy Azure, może być szeroko używany do łatwego zarządzania wszystkimi zasobami zasobów platformy Azure. Zobacz [Tworzenie szablonów Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) , aby dowiedzieć się więcej o szablonach Menedżer zasobów.
+[Szablony Azure Resource Manager](../../azure-resource-manager/template-deployment-overview.md) są doskonałym sposobem osiągnięcia tworzenia szablonów w Azure Data Factory. Szablony Menedżer zasobów definiują infrastrukturę i konfigurację rozwiązania platformy Azure za pomocą pliku JSON. Ponieważ szablony Azure Resource Manager współpracują ze wszystkimi/większością usług platformy Azure, może być szeroko używany do łatwego zarządzania wszystkimi zasobami zasobów platformy Azure. Zobacz [Tworzenie szablonów Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) , aby dowiedzieć się więcej o szablonach Menedżer zasobów.
 
 ## <a name="tutorials"></a>Samouczki
 Aby uzyskać instrukcje krok po kroku dotyczące tworzenia jednostek Data Factory przy użyciu szablonów Menedżer zasobów, zobacz następujące samouczki:

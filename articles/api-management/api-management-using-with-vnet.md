@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 20577459e7dee2530efc17581bcc51b7d6bf2789
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f79fffe2117de77e4e44dcbbaa782b2ade81e04b
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073366"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164186"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management z sieciami wirtualnymi
 Usługi Azure Virtual Networks (sieci wirtualnych) umożliwiają umieszczanie dowolnego z zasobów platformy Azure w sieci niezwiązanej z obsługą Internetu, do której można kontrolować dostęp. Te sieci mogą następnie być połączone z sieciami lokalnymi przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej na temat sieci wirtualnych platformy Azure, Zacznij od informacji poniżej: [Omówienie usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -149,7 +149,11 @@ Poniżej znajduje się lista typowych problemów z błędami konfiguracji, któr
     
   * Cały ruch płaszczyzny kontroli z Internetu do punktu końcowego zarządzania usługi API Management jest kierowany przez określony zestaw przychodzących adresów IP hostowanych przez API Management. Gdy ruch wymuszony jest tunelowany, odpowiedzi nie będą symetryczne mapowanie z powrotem na te adresy IP źródła przychodzącego. Aby przezwyciężyć ograniczenie, musimy dodać następujące trasy zdefiniowane przez użytkownika ([UDR][UDRs]) w celu kierowania ruchu z powrotem do platformy Azure przez ustawienie miejsca docelowego tych tras hosta na wartość "Internet". Zestaw przychodzących adresów IP dla ruchu płaszczyzny kontroli jest następujący:
     
-    > 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 13.64.39.16/32, 40.81.47.216/32, 51.145.179.78/32, 52.142.95.35/32, 40.90.185.46/32, 20.40.125.155/32
+     | Środowisko platformy Azure | Adresy IP zarządzania                                                                                                                                                                                                                                                                                                                                                              |
+    |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | Azure Public      | 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 13.64.39.16/32, 40.81.47.216/32, 51.145.179.78/32, 52.142.95.35/32, 40.90.185.46/32, 20.40.125.155/32, 52.159.16.255/32, 40.82.157.167/32, 51.137.136.0/32, 40.81.185.8/32, 40.81.47.216/32, 51.145.56.125/32, 40.81.89.24/32, 52.224.186.99/32, 51.145.179.78/32, 52.140.238.179/32, 40.66.60.111/32, 52.139.80.117/32, 20.46.144.85/32, 191.233.24.179/32, 40.90.185.46/32, 102.133.130.197/32, 52.139.20.34/32, 40.80.232.185/32, 13.71.49.1/32, 13.64.39.16/32, 20.40.160.107/32, 20.37.52.67/32, 20.44.33.246/32, 13.86.102.66/32, 20.40.125.155/32, 51.143.127.203/32, 52.253.225.124/32, 52.253.159.160/32, 20.188.77.119/32, 20.44.72.3/32, 52.142.95.35/32, 52.139.152.27/32, 20.39.80.2/32, 51.107.96.8/32, 20.39.99.81/32, 20.37.81.41/32, 51.107.0.91/32, 102.133.0.79/32, 51.116.96.0/32, 51.116.0.0/32 |
+    | Azure Government  | 52.127.42.160/32, 52.127.34.192/32 |
+    | Azure — Chiny       | 139.217.51.16/32, 139.217.171.176/32 |
 
   * W przypadku innych zależności usługi API Management, które są wymuszane tunelowanie, powinien istnieć sposób, aby rozpoznać nazwę hosta i skontaktować się z punktem końcowym. Obejmują one
       - Metryki i monitorowanie kondycji

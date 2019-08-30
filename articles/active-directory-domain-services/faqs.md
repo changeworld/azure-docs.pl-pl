@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: iainfou
-ms.openlocfilehash: 80bc5ef78a73430dea23bdd644767d9fa9b3c9a8
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: b079d311e357f4dfb94e55fbca3cafdec198ade9
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124677"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171907"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Często zadawane pytania
 Ta strona zawiera odpowiedzi na często zadawane pytania dotyczące Azure Active Directory Domain Services. Kontynuuj sprawdzanie aktualizacji.
@@ -79,7 +79,7 @@ Nie. Nie przyznano uprawnień administracyjnych w domenie zarządzanej. Przywile
 Nie. Członkostwa w grupach nie można modyfikować w domenach objętych usługą Azure AD Domain Services. To samo dotyczy atrybutów użytkownika. Można jednak zmienić członkostwa w grupach lub atrybuty użytkownika w usłudze Azure AD lub w domenie lokalnej. Takie zmiany są automatycznie synchronizowane z Azure AD Domain Services.
 
 ### <a name="how-long-does-it-take-for-changes-i-make-to-my-azure-ad-directory-to-be-visible-in-my-managed-domain"></a>Jak długo trwa wprowadzanie zmian wprowadzonych w katalogu usługi Azure AD, aby były widoczne w mojej domenie zarządzanej?
-Zmiany wprowadzone w katalogu usługi Azure AD za pomocą interfejsu użytkownika usługi Azure AD lub programu PowerShell są synchronizowane z domeną zarządzaną. Ten proces synchronizacji jest uruchamiany w tle. Po zakończeniu synchronizacji początkowej zwykle trwa około 20 minut, aby zmiany wprowadzone w usłudze Azure AD zostały odzwierciedlone w domenie zarządzanej.
+Zmiany wprowadzone w katalogu usługi Azure AD za pomocą interfejsu użytkownika usługi Azure AD lub programu PowerShell są automatycznie synchronizowane z domeną zarządzaną. Ten proces synchronizacji jest uruchamiany w tle. Nie zdefiniowano okresu dla tej synchronizacji, aby zakończyć wszystkie zmiany obiektu.
 
 ### <a name="can-i-extend-the-schema-of-the-managed-domain-provided-by-azure-ad-domain-services"></a>Czy można rozciągnąć schemat domeny zarządzanej udostępnionej przez Azure AD Domain Services?
 Nie. Schemat jest zarządzany przez firmę Microsoft dla domeny zarządzanej. Rozszerzenia schematu nie są obsługiwane przez Azure AD Domain Services.

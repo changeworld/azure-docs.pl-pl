@@ -1,59 +1,62 @@
 ---
-title: Przewodnik Szybki start dotyczący platformy Microsoft Azure Data Box ciężkich | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak szybko wdrożyć usługi Azure Data pole duże w witrynie Azure portal
+title: Przewodnik Szybki Start dotyczący Data Box Heavy Microsoft Azure | Microsoft Docs
+description: Dowiedz się, jak szybko wdrożyć Azure Data Box Heavy w Azure Portal
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: quickstart
-ms.date: 06/04/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 3467b25c085fb86d4aed3918d5446d118f76ffb8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 433c3ac08d8d7d8158d4cc958979782e3b3192e1
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446731"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164420"
 ---
-# <a name="quickstart-deploy-azure-data-box-heavy-using-the-azure-portal"></a>Szybki start: Wdrażanie usługi Azure Data pole mocno przy użyciu witryny Azure portal
+::: zone target = "docs"
 
-Ten przewodnik Szybki Start opisano sposób wdrażania usługi Azure Data pole mocno przy użyciu witryny Azure portal. Kroki obejmują jak okablowanie, konfigurowanie i kopiowanie danych do duże pole danych, dzięki czemu przekazuje go do platformy Azure. Czynności opisane w przewodniku Szybki start należy wykonać w witrynie Azure Portal oraz w lokalnym internetowym interfejsie użytkownika na urządzeniu.
+# <a name="quickstart-deploy-azure-data-box-heavy-using-the-azure-portal"></a>Szybki start: Wdrażanie Azure Data Box Heavy przy użyciu Azure Portal
 
-Aby zyskać szczegółowe instrukcje dotyczące wdrażania i śledzenia krok po kroku, zobacz [Samouczek: Duże pole danych na platformie Azure zamówienia](data-box-heavy-deploy-ordered.md)
+W tym przewodniku szybki start opisano sposób wdrażania Azure Data Box Heavy przy użyciu Azure Portal. Kroki te zawierają informacje dotyczące sposobu kabli, konfigurowania i kopiowania danych do Data Box Heavy tak, aby zostały przekazane do platformy Azure. Czynności opisane w przewodniku Szybki start należy wykonać w witrynie Azure Portal oraz w lokalnym internetowym interfejsie użytkownika na urządzeniu.
+
+Aby zyskać szczegółowe instrukcje dotyczące wdrażania i śledzenia krok po kroku, zobacz [Samouczek: Azure Data Box Heavy kolejności](data-box-heavy-deploy-ordered.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed wdrożeniem urządzenia, należy wykonać następujące wymagania wstępne dotyczące konfiguracji dla instalacji lokacji, usługa Data Box i urządzenia.
+Przed wdrożeniem urządzenia należy spełnić następujące wymagania wstępne dotyczące konfiguracji lokacji, usługi urządzenie Data Box i urządzenia.
 
-### <a name="for-installation-site"></a>Dla instalacji lokacji
+### <a name="for-installation-site"></a>Lokacja instalacji
 
 Przed rozpoczęciem upewnij się, że:
 
-- Urządzenie może składać się za pośrednictwem wszystkie swoje entryways. Wymiary urządzenia są: szerokość: 26" długość: 48" height: 28”.
-- Masz dostęp do urządzenia za pośrednictwem elevator lub zwiększenia, jeśli planujesz zainstalować piętra niż dostęp.
-- Masz dwie osoby do obsługi urządzenia. Urządzenie waga wynosi około ~ 500 modułów równoważenia obciążenia. przypada na koła.
-- Masz prostych witryn w centrum danych za pomocą odległości połączenie dostępnej sieci, która może pomieścić urządzenia przy użyciu ten system.
+- Urządzenie może być zgodne ze wszystkimi entryways. Wymiary urządzenia: Szerokość: 26 "Długość: 48 "Wysokość: 28 ".
+- Użytkownik ma dostęp do urządzenia za pośrednictwem windy lub rampy, jeśli planujesz zainstalować ją w piętrzie innym niż piętro podłogowe.
+- Masz dwie osoby do obsługi urządzenia. Urządzenie odważy około 500 funtów. i zawiera koła.
+- W centrum danych znajduje się płaska lokacja z bliskością dostępnego połączenia sieciowego, które może obsłużyć urządzenie z tym ustawieniem.
 
 ### <a name="for-service"></a>Na potrzeby usługi
 
 Przed rozpoczęciem upewnij się, że:
 
 - Masz konto magazynu platformy Microsoft Azure z poświadczeniami dostępu.
-- Subskrypcja używane dla usługi Data Box jest [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview), lub [dostępu Sponsorowanego Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0036p/).
-- Masz dostęp właściciela lub współautora do subskrypcji, aby utworzyć zamówienie duże pole danych.
+- Subskrypcja używana na potrzeby usługi urządzenie Data Box to [Microsoft Umowa Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), [dostawca rozwiązań w chmurze (CSP)](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)lub [dostęp sponsorowany Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0036p/).
+- Masz właściciela lub dostęp współautora do subskrypcji, aby utworzyć zamówienie Data Box Heavy.
 
 ### <a name="for-device"></a>Na potrzeby urządzenia
 
 Przed rozpoczęciem upewnij się, że:
 
-- Po przejrzeniu [zaleceń dla Twojej duże pole danych](data-box-safety.md).
-- Masz komputerze hosta podłączonym do sieci centrum danych. Duże pole danych umożliwia skopiowanie danych z tego komputera. Należy uruchomić komputer-host [obsługiwanym systemie operacyjnym](data-box-heavy-system-requirements.md).
-- Użytkownik ma komputer przenośny za pomocą kabla RJ-45, aby nawiązać połączenie z lokalnego interfejsu użytkownika i skonfigurować urządzenie. Aby skonfigurować jeden raz każdego węzła urządzenia przy użyciu komputera przenośnego.
-- Centrum danych ma o dużej szybkości sieci i masz co najmniej 10 GbE połączenia.
-- Wymagany jest jeden kabel 40-GB/s lub kabel 10 GB/s na każdy węzeł urządzenia. Wybierz kable, które są zgodne z Mellanox MCX314A-BCCT interfejs sieciowy:
-    - Kabel 40-GB/s urządzenia koniec kabla musi być QSFP +.
-    - Kabel 10 GB/s wymaga kabel SFP + podłączony do przełącznik 10 G, na jednym końcu QSFP + SFP + karty (lub kartą QSA) dla elementu end, które podłącza się do urządzenia.
-- Przewodów zasilania znajdują się w zasobniku tyłu urządzenia.
+- Zawarto przegląd [wytycznych dotyczących bezpieczeństwa Data Box Heavy](data-box-safety.md).
+- Masz komputer hosta połączony z siecią centrum danych. Data Box Heavy skopiuje dane z tego komputera. Na komputerze hosta musi być uruchomiony [obsługiwany system operacyjny](data-box-heavy-system-requirements.md).
+- Istnieje laptop z kablem RJ-45 do łączenia się z lokalnym interfejsem użytkownika i konfigurowania urządzenia. Aby skonfigurować każdy węzeł urządzenia, użyj laptopa.
+- Twoje centrum danych ma sieć o dużej szybkości i masz co najmniej 1 10 GbE połączeń.
+- Potrzebny jest kabel 1 40-GB/s lub kabel 10 GB/s dla każdego węzła urządzenia. Wybierz kable, które są zgodne z interfejsem sieciowym Mellanox MCX314A-BCCT:
+    - W przypadku kabla 40-GB/s urządzenie musi mieć wartość QSFP +.
+    - W przypadku kabla 10 GB/s potrzebny jest kabel SFP +, który jest podłączany do 10-gramowego przełącznika na jednym końcu, przy użyciu karty QSFP + do SFP + (lub karty QSA) dla punktu końcowego, który jest podłączony do urządzenia.
+- Kable zasilające są dołączone do zasobnika z tyłu urządzenia.
+
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
@@ -65,80 +68,93 @@ Ten krok zajmuje około 5 minut.
 
 1. Utwórz nowy zasób usługi Azure Data Box w witrynie Azure Portal.
 2. Wybierz istniejącą subskrypcję, w której włączono tę usługę, a następnie wybierz typ transferu **Import**. Podaj **Kraj źródłowy**, w którym są przechowywane dane, oraz **Docelowy region platformy Azure**, do którego mają zostać przekazane dane.
-3. Wybierz **Data Box ciężkich**. Maksymalnej pojemności do wykorzystania 770 TB, a można utworzyć wiele zamówień w przypadku większych ilości danych.
+3. Wybierz **Data Box Heavy**. Maksymalna użyteczna pojemność to 770 TB i można utworzyć wiele zamówień dla większych rozmiarów danych.
 4. Wprowadź szczegóły zamówienia i informacje dotyczące wysyłki. Jeśli ta usługa jest dostępna w Twoim regionie, podaj adresy e-mail na potrzeby powiadomień, zapoznaj się z podsumowaniem i utwórz zamówienie.
 
 Po utworzeniu zamówienia urządzenie zostanie przygotowane do wysłania.
 
-## <a name="cable-for-power"></a>Kabel zasilania
+::: zone-end
 
-Ten krok zajmuje około 5 minut.
+::: zone target = "chromeless"
 
-Po otrzymaniu duże pole danych, wykonaj następujące czynności Podłączanie urządzenia zasilania i Włącz urządzenie.
+# <a name="cable-and-connect-to-your-device"></a>Kabel i połączenie z urządzeniem
+
+Po przejrzeniu wymagań wstępnych można nawiązać połączenie z urządzeniem i połączyć się z nim.
+
+::: zone-end
+
+## <a name="cable-for-power"></a>Kabel do podłączenia
+
+Ten krok zajmie około 5 minut.
+
+Po otrzymaniu Data Box Heavy wykonaj następujące kroki, aby podłączyć urządzenie do urządzenia i włączyć urządzenie.
 
 1. Jeśli urządzenie nosi jakiekolwiek oznaki uszkodzenia lub naruszenia, nie wykonuj dalszych czynności. Skontaktuj się z działem pomocy technicznej firmy Microsoft, aby otrzymać urządzenie zamienne.
-2. Przenieść urządzenia do instalacji lokacji i Zablokuj tylne koła.
-3. Wszystkie kable zasilania cztery nawiązać połączenie zasilacze tyłu urządzenia.
-4. Użyj przycisków zasilania na płaszczyźnie frontonu, aby włączyć w węzłach urządzenia.
+2. Przenieś urządzenie do lokacji instalacji i Zablokuj tylne koła.
+3. Podłącz wszystkie cztery kable zasilające do zasilaczy z tyłu urządzenia.
+4. Aby włączyć węzły urządzeń, użyj przycisków zasilanych na płaszczyźnie czołowej.
 
-## <a name="cable-first-node-for-network"></a>Kabel pierwszego węzła sieci
+## <a name="cable-first-node-for-network"></a>Pierwszy węzeł kabla dla sieci
 
-W tym kroku trwa około 10 – 15 minut.
+Wykonanie tego kroku zajmie około 10-15 minut.
 
 1. Użyj kabla sieciowego RJ-45 CAT 6, aby podłączyć komputer hosta do portu zarządzania (MGMT) na urządzeniu.
-2. Użyj kabla Twinax QSFP + miedzianego można podłączyć co najmniej jeden 40 GB/s (preferowane ponad 1 GB/s) interfejsu sieciowego, DATA 1 lub 2 danych dla danych. Jeśli używasz przełącznika 10 GB/s, za pomocą kabla miedzianego Twinax SFP + QSFP + SFP + karty (karta QSA) do łączenia z interfejsu sieciowego 40-GB/s dla danych.
+2. Użyj kabla Twinax QSFP + miedź, aby podłączyć co najmniej 1 40 GB/s (preferowany ponad 1 GB/s) interfejs sieciowy, dane 1 lub dane 2 dla danych. W przypadku korzystania z przełącznika 10 GB/s należy użyć kabla Twinax SFP + miedzianego z adapterem QSFP + do SFP + (karta QSA) w celu połączenia z interfejsem sieciowym 40 GB dla danych.
 3. Podłącz przewody do urządzenia tak, jak pokazano poniżej.  
 
-    ![Rozpakowane duże pole danych](media/data-box-heavy-quickstart-portal/data-box-heavy-ports-cabled.png)  
+    ![Data Box Heavy okablowanie](media/data-box-heavy-quickstart-portal/data-box-heavy-ports-cabled.png)  
 
-## <a name="configure-first-node"></a>Skonfigurować pierwszy węzeł
+## <a name="configure-first-node"></a>Skonfiguruj pierwszy węzeł
 
 Ten krok zajmuje około 5–7 minut.
 
-1. Aby uzyskać hasło urządzenia, przejdź do pozycji **Ogólne > Szczegóły urządzenia** w witrynie [Azure Portal](https://portal.azure.com). Dla obu węzłów urządzenia używane to samo hasło.
-2. Przypisz statyczny adres IP 192.168.100.5 i podsieć 255.255.255.0 do karty Ethernet na komputerze, którego używasz połączyć się z dużymi pola danych. Uzyskaj dostęp do lokalnego internetowego interfejsu użytkownika urządzenia pod adresem `https://192.168.100.10`. Nawiązywanie połączenia może potrwać do 5 minut po włączeniu urządzenia.
+1. Aby uzyskać hasło urządzenia, przejdź do pozycji **Ogólne > Szczegóły urządzenia** w witrynie [Azure Portal](https://portal.azure.com). To samo hasło jest używane w przypadku obu węzłów urządzenia.
+2. Przypisz statyczny adres IP 192.168.100.5 i podsieć 255.255.255.0 do karty Ethernet na komputerze używanym do łączenia się z Data Box Heavy. Uzyskaj dostęp do lokalnego internetowego interfejsu użytkownika urządzenia pod adresem `https://192.168.100.10`. Nawiązywanie połączenia może potrwać do 5 minut po włączeniu urządzenia.
 3. Zaloguj się przy użyciu hasła uzyskanego z witryny Azure Portal. Zostanie wyświetlony komunikat o błędzie, informujący o problemie z certyfikatem zabezpieczeń witryny internetowej. Postępuj zgodnie z instrukcjami dotyczącymi używanej przeglądarki, aby przejść do odpowiedniej strony internetowej.
-4. Domyślnie ustawienia sieci dla interfejsów (z wyjątkiem MGMT) są skonfigurowane jako DHCP. W razie potrzeby można skonfigurować te interfejsy jako statyczny i podaj adres IP.
+4. Domyślnie ustawienia sieci dla interfejsów (z wyłączeniem zarządzania) są skonfigurowane jako DHCP. W razie konieczności można skonfigurować te interfejsy jako statyczne i podać adres IP.
 
-## <a name="cable-and-configure-the-second-node"></a>Podłącz i skonfiguruj drugi węzeł
+## <a name="cable-and-configure-the-second-node"></a>Podłącz drugi węzeł i skonfiguruj go
 
-W tym kroku trwa około 15 – 20 minut.
+Wykonanie tego kroku zajmie około 15-20 minut.
 
-Postępuj zgodnie z krokami dla pierwszego węzła Podłącz i skonfiguruj drugi węzeł na urządzeniu.  
+Postępuj zgodnie z instrukcjami dotyczącymi pierwszego węzła, aby podłączyć kabel i skonfigurować drugi węzeł na urządzeniu.  
 
-## <a name="copy-data"></a>Kopiowanie danych
 
-Czas wymagany do ukończenia tej operacji zależy od tego, że rozmiar danych i prędkości sieci, w którym dane są kopiowane.
+::: zone target = "docs"
+
+## <a name="copy-data"></a>Kopiuj dane
+
+Czas do ukończenia tej operacji zależy od rozmiaru danych i szybkości sieci, do której są kopiowane dane.
  
-1. Kopiuj dane do obu węzłów urządzenia przy użyciu zarówno 40-GB/s danych interfejsy równolegle.
+1. Kopiuj dane do obu węzłów urządzenia jednocześnie, jednocześnie używając interfejsów danych 40 GB/s.
 
-    - Jeśli przy użyciu hosta Windows używać takich jak narzędzia do kopiowania plików zgodnych SMB [Robocopy](https://technet.microsoft.com/library/ee851678.aspx).
+    - W przypadku korzystania z hosta z systemem Windows należy użyć narzędzia do kopiowania plików zgodnego z protokołem SMB, takiego jak [Robocopy](https://technet.microsoft.com/library/ee851678.aspx).
     - W przypadku hosta z systemem plików NFS skopiuj dane za pomocą polecenia `cp` lub `rsync`.
-2. Łączyć się z udziałami na urządzeniu przy użyciu ścieżki:`\\<IP address of your device>\ShareName`. Aby uzyskać poświadczenia dostępu do udziału, przejdź do **Connect & copy** strony w lokalnym internetowym interfejsie użytkownika duże pole danych.
-3. Upewnij się, że udział i nazwy folderu oraz dane postępuj zgodnie z wytycznymi opisany w [limity dla usługi Azure Storage i duże pole danych](data-box-heavy-limits.md).
+2. Nawiąż połączenie z udziałami na urządzeniu przy użyciu ścieżki`\\<IP address of your device>\ShareName`:. Aby uzyskać poświadczenia dostępu do udziału, przejdź do strony **połącz & Kopiuj** w lokalnym interfejsie użytkownika sieci Web Data Box Heavy.
+3. Upewnij się, że nazwy udziału i folderu oraz dane są zgodne z wskazówkami opisanymi w [limitach usługi Azure Storage i Data Box Heavy](data-box-heavy-limits.md).
 
-## <a name="prepare-to-ship"></a>Przygotowanie do wysłania
+## <a name="prepare-to-ship"></a>Przygotowywanie do wysłania
 
 Czas wymagany do ukończenia tej operacji zależy od rozmiaru danych.
 
-1. Po kopiowanie danych zostanie zakończone bez żadnych błędów, przejdź do **przygotowywanie do wysłania** strony w lokalnym internetowym interfejsie użytkownika, a następnie uruchom przygotowanie wysyłki.
-2. Po **przygotowywanie do wysłania** została ukończona pomyślnie na obu węzłach, wyłącz funkcję urządzenia, z poziomu lokalnego internetowego interfejsu użytkownika.
+1. Po zakończeniu kopiowania danych bez żadnych błędów przejdź do strony **przygotowanie do wysłania** w lokalnym interfejsie użytkownika sieci Web i Rozpocznij przygotowywanie.
+2. Po pomyślnym zakończeniu **przygotowanie do wysłania** na obu węzłach Wyłącz urządzenie z poziomu lokalnego interfejsu użytkownika sieci Web.
 
 ## <a name="ship-to-azure"></a>Wysyłka do platformy Azure
 
-Ta operacja trwa około 15 – 20 minut.
+Wykonanie tej operacji trwa około 15-20 minut.
 
-1. Usuń kable i przywrócić je do zasobnika tyłu urządzenia.
-2. Za pomocą operatora regionalnej, należy zaplanować odbioru.
-3. Dotrzyj do [operacje na danych pole](mailto:DataBoxOps@microsoft.com) informuje o odbiór i Pobierz zwrotną etykietę wysyłkową.
-4. Etykiety wysyłki zwrotnej powinny być widoczne na panelu przednim wyczyść urządzenia.
+1. Usuń kable i przywróć je do zasobnika z tyłu urządzenia.
+2. Zaplanuj pobranie w ramach operatora regionalnego.
+3. Uzyskaj dostęp do [urządzenie Data Box operacji](mailto:DataBoxOps@microsoft.com) , aby informować o odbiorze i uzyskać etykietę wysyłki zwrotnej.
+4. Etykieta wysyłania zwrotnego powinna być widoczna w panelu przedniego na urządzeniu.
 
 ## <a name="verify-data"></a>Weryfikacja danych
 
 Czas wymagany do ukończenia tej operacji zależy od rozmiaru danych.
 
-1. Gdy duże pole dane urządzenie jest podłączone do sieci centrum danych platformy Azure, danych jest automatyczne przekazywanie na platformie Azure.
-2. Usługa Data Box powiadamia o ukończeniu kopiowanie danych za pośrednictwem witryny Azure portal.
+1. Gdy urządzenie Data Box Heavy jest połączone z siecią centrum danych Azure, dane zostaną automatycznie przekazane do platformy Azure.
+2. Usługa urządzenie Data Box powiadamia o ukończeniu kopiowania danych za pośrednictwem Azure Portal.
 
     1. Sprawdź dzienniki błędów pod kątem ewentualnych niepowodzeń i podejmij odpowiednie działania.
     2. Sprawdź, czy dane znajdują się na kontach magazynu, zanim usuniesz je ze źródła.
@@ -147,13 +163,15 @@ Czas wymagany do ukończenia tej operacji zależy od rozmiaru danych.
 
 Ten krok zajmuje około 2–3 minut.
 
-- Duże pole danych kolejność, w witrynie Azure portal można anulować, przed przetworzeniem kolejności. Po przetworzeniu zamówienia nie można go anulować. Realizacja zamówienia będzie kontynuowana aż do etapu ukończenia. Aby anulować zamówienie, w sekcji **Przegląd** kliknij pozycję **Anuluj** na pasku poleceń.
+- Możesz anulować kolejność Data Box Heavy w Azure Portal przed przetworzeniem zamówienia. Po przetworzeniu zamówienia nie można go anulować. Realizacja zamówienia będzie kontynuowana aż do etapu ukończenia. Aby anulować zamówienie, w sekcji **Przegląd** kliknij pozycję **Anuluj** na pasku poleceń.
 
 - Możesz usunąć zamówienie, gdy jego stan w witrynie Azure Portal to **Ukończono** lub **Anulowano**. Aby usunąć zamówienie, w sekcji **Przegląd** kliknij pozycję **Usuń** na pasku poleceń.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym przewodniku Szybki Start wdrożono dane pole mocno ułatwia importowanie danych do platformy Azure. Aby dowiedzieć się więcej o zarządzaniu dużymi pole danych platformy Azure, przejdź do następującego samouczka:
+W tym przewodniku szybki start wdrożono Data Box Heavy, aby pomóc w zaimportowaniu danych do platformy Azure. Aby dowiedzieć się więcej o zarządzaniu Azure Data Box Heavy, przejdź do następującego samouczka:
 
 > [!div class="nextstepaction"]
-> [Używanie witryny Azure portal do administrowania duże pole danych](data-box-portal-admin.md)
+> [Użyj Azure Portal do administrowania Data Box Heavy](data-box-portal-admin.md)
+
+::: zone-end

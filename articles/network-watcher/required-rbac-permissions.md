@@ -1,6 +1,6 @@
 ---
-title: Uprawnienia wymagane do korzystać z możliwości usługi Azure Network Watcher | Dokumentacja firmy Microsoft
-description: Dowiedz się, które uprawnienia kontroli dostępu opartej na rolach na platformie Azure są wymagane do pracy z funkcjami usługi Network Watcher.
+title: Uprawnienia wymagane do korzystania z możliwości usługi Azure Network Watcher | Microsoft Docs
+description: Dowiedz się, które uprawnienia kontroli dostępu opartej na rolach platformy Azure są wymagane do pracy z możliwościami Network Watcher.
 services: network-watcher
 documentationcenter: ''
 author: KumudD
@@ -14,108 +14,105 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: kumud
-ms.openlocfilehash: 8c8fe6125d9c638fedadc3d299ff0ac0d601fd61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5bd7e30a6a95d60bda4b7c3da44be1b8046bb71f
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685696"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163795"
 ---
-# <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Uprawnienia kontroli dostępu opartej na rolach, trzeba używać możliwościach usługi Network Watcher
+# <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Uprawnienia kontroli dostępu opartej na rolach wymagane do korzystania z funkcji Network Watcher
 
-Kontrola dostępu oparta na rolach na platformie Azure (RBAC) umożliwia przypisanie konkretne akcje do członków organizacji, którzy potrzebują do wykonania ich obowiązków przypisane. Aby korzystać z możliwości usługi Network Watcher, konta, zaloguj się do platformy Azure, muszą być przypisane do [właściciela](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner), [Współautor](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor), lub [Współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor) wbudowanych ról, lub przypisane do [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) przypisany akcji wymienionych dla każdej funkcji usługi Network Watcher w kolejnych sekcjach. Aby dowiedzieć się więcej o możliwościach usługi Network Watcher, zobacz [co to jest Usługa Network Watcher?](network-watcher-monitoring-overview.md).
+Kontrola dostępu oparta na rolach (RBAC) na platformie Azure umożliwia przypisywanie tylko określonych czynności do członków organizacji, których potrzebują do wykonania przypisanych im obowiązków. Aby można było korzystać z funkcji Network Watcher, konto, które należy zalogować do platformy Azure za [](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#owner)pomocą programu, musi być przypisane do wbudowanych ról współautor, [współautor](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#contributor)lub [sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-contributor) lub przypisane do [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) , do której przypisano akcje wymienione dla Każda Network Watcher możliwości w poniższych sekcjach. Aby dowiedzieć się więcej o możliwościach Network Watcher, zobacz [co to jest Network Watcher?](network-watcher-monitoring-overview.md).
 
 ## <a name="network-watcher"></a>Network Watcher
 
-| Akcja                                                              | Name (Nazwa)                                                           |
+| Action                                                              | Opis                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/read                              | Uzyskać usługi network watcher                                          |
-| Microsoft.Network/networkWatchers/write                             | Utwórz lub zaktualizuj usługi network watcher                             |
-| Microsoft.Network/networkWatchers/delete                            | Usunąć obserwatora sieciowego                                       |
+| Microsoft.Network/networkWatchers/read                              | Pobierz obserwatora sieciowego                                          |
+| Microsoft.Network/networkWatchers/write                             | Tworzenie lub aktualizowanie obserwatora sieciowego                             |
+| Microsoft.Network/networkWatchers/delete                            | Usuwanie obserwatora sieciowego                                       |
 
-## <a name="nsg-flow-logs"></a>Dzienniki przepływu sieciowych grup zabezpieczeń
+## <a name="nsg-flow-logs"></a>Dzienniki przepływów sieciowych grup zabezpieczeń
 
-| Akcja                                                              | Name (Nazwa)                                                           |
+| Action                                                              | Opis                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/configureFlowLog/action           | Konfiguruj przepływ dziennika                                           |
-| Microsoft.Network/networkWatchers/queryFlowLogStatus/action         | Kwerenda o stan dziennika przepływu                                    |
+| Microsoft.Network/networkWatchers/configureFlowLog/action           | Konfigurowanie dziennika przepływu                                           |
+| Microsoft.Network/networkWatchers/queryFlowLogStatus/action         | Stan zapytania dla dziennika przepływu                                    |
 
-## <a name="connection-troubleshoot"></a>Rozwiązywanie problemów z połączeniami
+## <a name="connection-troubleshoot"></a>Rozwiązywanie problemów z połączeniem
 
-| Akcja                                                              | Name (Nazwa)                                                           |
+| Action                                                              | Opis                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/connectivityCheck/action          | Zainicjuj połączenie Rozwiązywanie problemów z testów
-| Microsoft.Network/networkWatchers/queryTroubleshootResult/action    | Wyniki zapytania połączenia Rozwiązywanie problemów z testów                |
-| Microsoft.Network/networkWatchers/troubleshoot/action               | Uruchom połączenie Rozwiązywanie problemów z testów                             |
+| Microsoft.Network/networkWatchers/connectivityCheck/action          | Zainicjuj test rozwiązywania problemów z połączeniem
+| Microsoft.Network/networkWatchers/queryTroubleshootResult/action    | Wyniki zapytania dotyczące test rozwiązywania problemów z połączeniem                |
+| Microsoft.Network/networkWatchers/troubleshoot/action               | Uruchom test rozwiązywania problemów z połączeniem                             |
 
 ## <a name="connection-monitor"></a>Monitor połączeń
 
-| Akcja                                                              | Name (Nazwa)                                                           |
+| Action                                                              | Opis                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/connectionMonitors/start/action   | Uruchom monitor połączeń                                     |
+| Microsoft.Network/networkWatchers/connectionMonitors/start/action   | Uruchom Monitor połączeń                                     |
 | Microsoft.Network/networkWatchers/connectionMonitors/stop/action    | Zatrzymywanie monitora połączeń                                      |
-| Microsoft.Network/networkWatchers/connectionMonitors/query/action   | Zapytania monitora połączeń                                     |
-| Microsoft.Network/networkWatchers/connectionMonitors/read           | Uzyskiwanie monitora połączeń                                       |
+| Microsoft.Network/networkWatchers/connectionMonitors/query/action   | Wysyłanie zapytań do monitora połączeń                                     |
+| Microsoft.Network/networkWatchers/connectionMonitors/read           | Pobierz monitor połączeń                                       |
 | Microsoft.Network/networkWatchers/connectionMonitors/write          | Tworzenie monitora połączeń                                    |
 | Microsoft.Network/networkWatchers/connectionMonitors/delete         | Usuwanie monitora połączeń                                    |
 
-## <a name="packet-capture"></a>Przechwytywanie pakietów
+## <a name="packet-capture"></a>Przechwycenie pakietu
 
-| Akcja                                                              | Name (Nazwa)                                                           |
+| Action                                                              | Opis                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/packetCaptures/queryStatus/action | Kwerenda o stan przechwytywania pakietów                           |
-| Microsoft.Network/networkWatchers/packetCaptures/stop/action        | Zatrzymać przechwytywania pakietu                                          |
-| Microsoft.Network/networkWatchers/packetCaptures/read               | Rozpoczynanie przechwytywania pakietu                                           |
-| Microsoft.Network/networkWatchers/packetCaptures/write              | Utwórz przechwytywania pakietów                                        |
-| Microsoft.Network/networkWatchers/packetCaptures/delete             | Usuwanie przechwycenia pakietu                                        |
+| Microsoft.Network/networkWatchers/packetCaptures/queryStatus/action | Zbadaj stan przechwycenia pakietu                           |
+| Microsoft.Network/networkWatchers/packetCaptures/stop/action        | Zatrzymywanie przechwytywania pakietu                                          |
+| Microsoft.Network/networkWatchers/packetCaptures/read               | Pobierz przechwycenie pakietu                                           |
+| Microsoft.Network/networkWatchers/packetCaptures/write              | Tworzenie przechwycenia pakietu                                        |
+| Microsoft.Network/networkWatchers/packetCaptures/delete             | Usuwanie przechwytywania pakietu                                        |
 
-## <a name="ip-flow-verify"></a>Weryfikowanie przepływu adresów IP
+## <a name="ip-flow-verify"></a>Weryfikacja przepływu dla adresu IP
 
-| Akcja                                                              | Name (Nazwa)                                                           |
+| Action                                                              | Opis                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/ipFlowVerify/action               | Zweryfikuj przepływ IP                                              |
+| Microsoft. Network/networkWatchers/ipFlowVerify/akcja               | Weryfikowanie przepływu IP                                              |
 
 ## <a name="next-hop"></a>Następny przeskok
 
-| Akcja                                                              | Name (Nazwa)                                                           |
+| Action                                                              | Opis                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/nextHop/action                    | Pobieranie następnego przeskoku z maszyny Wirtualnej                                     |
+| Microsoft.Network/networkWatchers/nextHop/action                    | Pobierz następny przeskok z maszyny wirtualnej                                     |
 
 ## <a name="network-security-group-view"></a>Widok sieciowych grup zabezpieczeń
 
-| Akcja                                                              | Name (Nazwa)                                                           |
+| Action                                                              | Opis                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/securityGroupView/action          | Wyświetlanie grup zabezpieczeń                                           |
 
 ## <a name="topology"></a>Topologia
 
-| Akcja                                                              | Name (Nazwa)                                                           |
+| Action                                                              | Opis                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/topology/action                   | Pobieranie topologii                                                   |
+| Microsoft.Network/networkWatchers/topology/action                   | Uzyskiwanie topologii                                                   |
 
-## <a name="reachability-report"></a>Dostępność raportów
+## <a name="reachability-report"></a>Raport osiągalności
 
-| Akcja                                                              | Name (Nazwa)                                                           |
+| Action                                                              | Opis                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/azureReachabilityReport/action    | Pobierz raport osiągalności platformy Azure                               |
+| Microsoft.Network/networkWatchers/azureReachabilityReport/action    | Pobierz raport o osiągalności platformy Azure                               |
+
 
 ## <a name="additional-actions"></a>Dodatkowe akcje
 
-Możliwości obserwatora sieci również wymagają następujących czynności:
+Funkcje Network Watcher wymagają również następujących działań:
 
-- Microsoft.Authorization/ \* /Odczyt
-- Microsoft.Resources/subscriptions/resourceGroups/Read
-- Microsoft.Storage/storageAccounts/Read
-- Microsoft.Storage/storageAccounts/listServiceSas/Action
-- Microsoft.Storage/storageAccounts/listAccountSas/Action
-- Microsoft.Storage/storageAccounts/listKeys/Action
-- Microsoft.Compute/virtualMachines/Read
-- Microsoft.Compute/virtualMachines/Write
-- Microsoft.Compute/virtualMachines/extensions/Read
-- Microsoft.Compute/virtualMachines/extensions/Write
-- Microsoft.Compute/virtualMachineScaleSets/Read
-- Microsoft.Compute/virtualMachineScaleSets/Write
-- Microsoft.Compute/virtualMachineScaleSets/extensions/Read
-- Microsoft.Compute/virtualMachineScaleSets/extensions/Write
-- Microsoft.Insights/alertRules/*
-- Microsoft.Support/*
+| Akcje:                                                           | Opis                                                    |
+| ---------                                                           | -------------                                                  |
+| Microsoft. Authorization/\*/Read                                     | Służy do pobierania przypisań ról RBAC i definicji zasad          |
+| Microsoft.Resources/subscriptions/resourceGroups/Read               | Służy do wyliczania wszystkich grup zasobów w ramach subskrypcji    |
+| Microsoft. Storage/storageAccounts/Read                              | Służy do pobierania właściwości dla określonego konta magazynu   |
+| Microsoft. Storage/storageAccounts/listServiceSas/Action, </br> Microsoft. Storage/storageAccounts/listAccountSas/Action, <br> Microsoft. Storage/storageAccounts/listKeys/akcja| Służy do pobierania sygnatur dostępu współdzielonego (SAS) umożliwiających [bezpieczny dostęp do konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) i zapisywanie na koncie magazynu |
+| Microsoft. COMPUTE/virtualMachines/odczyt, </br> Microsoft. COMPUTE/virtualMachines/Write| Służy do logowania się do maszyny wirtualnej, przechwycenia pakietu i przekazania jej do konta magazynu|
+| Microsoft. COMPUTE/virtualMachines/Extensions/Read </br> Microsoft. COMPUTE/virtualMachines/Extensions/Write| Służy do sprawdzania, czy Network Watcher rozszerzenie jest obecne, i instalowanie w razie potrzeby |
+| Microsoft. COMPUTE/virtualMachineScaleSets/odczyt, </br> Microsoft. COMPUTE/virtualMachineScaleSets/Write| Służy do uzyskiwania dostępu do zestawów skalowania maszyn wirtualnych, do przechwytywania pakietów i przekazywania ich do konta magazynu|
+| Microsoft. COMPUTE/virtualMachineScaleSets/rozszerzenia/odczyt, </br> Microsoft. COMPUTE/virtualMachineScaleSets/Extensions/Write| Służy do sprawdzania, czy Network Watcher rozszerzenie jest obecne, i instalowanie w razie potrzeby |
+| Microsoft.Insights/alertRules/*                                     | Służy do konfigurowania alertów metryk                                     |
+| Microsoft.Support/*                                                 | Służy do tworzenia i aktualizowania biletów pomocy technicznej z Network Watcher |

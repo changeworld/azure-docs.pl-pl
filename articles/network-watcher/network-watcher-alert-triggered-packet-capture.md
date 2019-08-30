@@ -1,6 +1,6 @@
 ---
-title: Używanie przechwytywania pakietów do proaktywnego monitorowania sieci przy użyciu alertów i usługi Azure Functions | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób tworzenia przechwytywania pakietów wyzwolonych alertów za pomocą usługi Azure Network Watcher
+title: Używanie funkcji przechwytywania pakietów do aktywnego monitorowania sieci z alertami i Azure Functions | Microsoft Docs
+description: W tym artykule opisano sposób tworzenia alertu wyzwalającego przechwytywanie pakietów przy użyciu usługi Azure Network Watcher
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 37e42b05046be27254d2ceb15a59fbdb931ae161
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d894fabf3cfd4c6949aba94d558751bf007356d9
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64711912"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165154"
 ---
-# <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Proaktywne monitorowanie sieci za pomocą alertów i usługi Azure Functions na użytek przechwycenie pakietu
+# <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Używanie funkcji przechwytywania pakietów do aktywnego monitorowania sieci z alertami i Azure Functions
 
-Przechwytywanie pakietów obserwatora sieci tworzy sesji przechwytywania, aby śledzić ruch do i z maszyn wirtualnych. Plik przechwytywania może mieć filtru, który jest zdefiniowane w celu śledzenia tylko ruch, którego chcesz monitorować. Te dane są następnie przechowywane w obiekcie blob magazynu lokalnie i na maszynie gościa.
+Przechwytywanie pakietów Network Watcher tworzy sesje przechwytywania do śledzenia ruchu z maszyn wirtualnych i z nich. Plik przechwytywania może mieć filtr, który jest zdefiniowany do śledzenia tylko ruchu, który ma być monitorowany. Te dane są następnie przechowywane w magazynie obiektów blob lub lokalnie na maszynie gościa.
 
-Ta funkcja może być uruchomiona zdalnie innych scenariuszy usługi automation, takich jak Azure Functions. Przechwytywanie pakietów zapewnia możliwość uruchomienia aktywnego przechwytywania oparte na sieci definiowanej przez anomalii. Inne zastosowania obejmują zbierania statystyk sieciowych, uzyskiwanie informacji o sieci włamań i debugowania komunikacja klient serwer.
+Tę możliwość można uruchomić zdalnie z innych scenariuszy automatyzacji, takich jak Azure Functions. Funkcja przechwytywania pakietów umożliwia uruchamianie aktywnych przechwytywania w oparciu o zdefiniowane anomalie sieci. Inne zastosowania obejmują gromadzenie danych statystycznych sieci, uzyskiwanie informacji na temat intruzów sieci, debugowanie komunikacji klient-serwer i nie tylko.
 
-Zasoby, które są wdrażane na platformie Azure uruchomić 24/7. Możesz i działu aktywnie nie można monitorować stan wszystkich zasobów 24/7. Na przykład co się stanie po wystąpieniu problemu o 2: 00?
+Zasoby wdrożone na platformie Azure — Uruchom 24/7. Ty i pracownicy nie mogą aktywnie monitorować stanu wszystkich zasobów 24/7. Na przykład co się stanie, jeśli wystąpi problem z 2 AM?
 
-Dzięki użyciu usługi Network Watcher, alerty i functions z poziomu systemu Azure możesz aktywnie reagować z wyprzedzeniem przy użyciu danych i narzędzia do rozwiązywania problemów w sieci.
+Korzystając z Network Watcher, alertów i funkcji z poziomu ekosystemu platformy Azure, możesz proaktywnie odpowiedzieć na dane i narzędzia, aby rozwiązać problemy w sieci.
 
 ![Scenariusz][scenario]
 
@@ -38,55 +38,55 @@ Dzięki użyciu usługi Network Watcher, alerty i functions z poziomu systemu Az
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Najnowszą wersję [programu Azure PowerShell](/powershell/azure/install-Az-ps).
-* Istniejącego wystąpienia usługi Network Watcher. Jeśli nie masz jeszcze jeden, [Utwórz wystąpienie usługi Network Watcher](network-watcher-create.md).
-* W tym samym regionie, co Usługa Network Watcher z istniejącej maszyny wirtualnej [rozszerzenia Windows](../virtual-machines/windows/extensions-nwa.md) lub [rozszerzenia maszyny wirtualnej systemu Linux](../virtual-machines/linux/extensions-nwa.md).
+* Najnowsza wersja [Azure PowerShell](/powershell/azure/install-Az-ps).
+* Istniejące wystąpienie Network Watcher. Jeśli jeszcze tego nie masz, [Utwórz wystąpienie Network Watcher](network-watcher-create.md).
+* Istniejąca maszyna wirtualna w tym samym regionie co Network Watcher z rozszerzeniem [systemu Windows](../virtual-machines/windows/extensions-nwa.md) lub [rozszerzeniem maszyny wirtualnej](../virtual-machines/linux/extensions-nwa.md)z systemem Linux.
 
 ## <a name="scenario"></a>Scenariusz
 
-W tym przykładzie maszyna wirtualna wysyła więcej segmentów TCP niż zwykle, a chcesz otrzymywać alerty. Segmentów TCP jest używany tutaj jako przykładu, ale można użyć dowolnego warunek alertu.
+W tym przykładzie maszyna wirtualna wysyła więcej segmentów TCP niż zwykle i chcesz otrzymywać alerty. Segmenty TCP są używane na przykład w tym miejscu, ale można użyć dowolnego warunku alertu.
 
-Po wyświetleniu powiadomienia, chcesz otrzymywać poziomie pakietów danych, aby zrozumieć, dlaczego został zwiększony komunikacji. Możesz wykonać kroki, aby wrócić maszyny wirtualnej do regularnego komunikacji.
+Po otrzymaniu alertu chcesz otrzymywać dane na poziomie pakietu, aby zrozumieć, dlaczego komunikacja została zwiększona. Następnie można wykonać kroki, aby przywrócić maszynę wirtualną do zwykłej komunikacji.
 
-W tym scenariuszu przyjęto założenie, iż istniejącego wystąpienia usługi Network Watcher i grupę zasobów z prawidłową maszyną wirtualną.
+W tym scenariuszu przyjęto założenie, że masz istniejące wystąpienie Network Watcher i grupę zasobów z prawidłową maszyną wirtualną.
 
-Poniżej przedstawiono omówienie przepływu pracy, który ma miejsce:
+Poniższa lista zawiera omówienie przepływu pracy, który ma miejsce:
 
-1. Alert zostanie wywołany na maszynie Wirtualnej.
-1. Alert wywołuje funkcję platformy Azure za pomocą elementu webhook.
-1. Funkcji platformy Azure przetwarza alertu i uruchamia sesję przechwytywania pakietów usługi Network Watcher.
-1. Przechwytywanie pakietów działa na maszynie Wirtualnej i umożliwia zbieranie informacji o ruchu.
-1. Plik przechwytywania pakietów jest przekazywany do konta magazynu do przeglądu i diagnostyki.
+1. Alert jest wyzwalany na maszynie wirtualnej.
+1. Alert wywołuje funkcję platformy Azure za pośrednictwem elementu webhook.
+1. Funkcja platformy Azure przetwarza alert i uruchamia sesję przechwytywania pakietów Network Watcher.
+1. Przechwytywanie pakietów działa na maszynie wirtualnej i zbiera ruch.
+1. Plik przechwytywania pakietów zostanie przekazany do konta magazynu w celu przejrzenia i zdiagnozowania.
 
-Aby zautomatyzować ten proces, utworzymy i połączyć z alertu w naszej maszyny Wirtualnej, aby wyzwolić po wystąpieniu zdarzenia. Musimy również utworzyć funkcję, aby wywoływać usługi Network Watcher.
+Aby zautomatyzować ten proces, tworzymy i łączymy alert na naszej maszynie wirtualnej w celu wyzwolenia po wystąpieniu zdarzenia. Utworzymy również funkcję do wywołania do Network Watcher.
 
-W tym scenariuszu wykonuje następujące czynności:
+W tym scenariuszu są przeprowadzane następujące czynności:
 
-* Tworzy funkcję platformy Azure, który rozpoczyna się przechwytywania pakietów.
-* Tworzy regułę alertu na maszynie wirtualnej i konfiguruje regułę alertu do wywoływania funkcji platformy Azure.
+* Tworzy funkcję platformy Azure, która uruchamia przechwytywanie pakietu.
+* Tworzy regułę alertu na maszynie wirtualnej i konfiguruje regułę alertu, aby wywoływać funkcję platformy Azure.
 
 ## <a name="create-an-azure-function"></a>Tworzenie funkcji platformy Azure
 
-Pierwszym krokiem jest tworzenie funkcji platformy Azure do przetwarzania alertu i utworzyć przechwytywania pakietów.
+Pierwszym krokiem jest utworzenie funkcji platformy Azure w celu przetworzenia alertu i utworzenia przechwycenia pakietu.
 
-1. W [witryny Azure portal](https://portal.azure.com), wybierz opcję **Utwórz zasób** > **obliczenia** > **aplikacji funkcji**.
+1. W [Azure Portal](https://portal.azure.com)wybierz pozycję **Utwórz zasób** > **aplikacja funkcji** **obliczeniowy** > .
 
-    ![Utworzenie aplikacji funkcji][1-1]
+    ![Tworzenie aplikacji funkcji][1-1]
 
-2. Na **aplikacji funkcji** bloku, wprowadź następujące wartości, a następnie wybierz **OK** do utworzenia aplikacji:
+2. W bloku **aplikacja funkcji** wprowadź następujące wartości, a następnie wybierz pozycję **OK** , aby utworzyć aplikację:
 
     |**Ustawienie** | **Wartość** | **Szczegóły** |
     |---|---|---|
     |**Nazwa aplikacji**|PacketCaptureExample|Nazwa aplikacji funkcji.|
     |**Subskrypcja**|[Twoja subskrypcja] Subskrypcja, dla której ma zostać utworzona aplikacja funkcji.||
-    |**Grupa zasobów**|PacketCaptureRG|Grupę zasobów zawierającą aplikację funkcji.|
-    |**Plan hostingu**|Plan zużycia| Typ planu używany przez aplikację funkcji. Opcje to zużycie i plan usługi Azure App Service. |
-    |**Lokalizacja**|Środkowe stany USA| Region, w której chcesz utworzyć aplikację funkcji.|
-    |**Konto magazynu**|{automatycznie wygenerowany}| Konto magazynu, które wymaga usługi Azure Functions na potrzeby magazynu ogólnego przeznaczenia.|
+    |**Grupa zasobów**|PacketCaptureRG|Grupa zasobów zawierająca aplikację funkcji.|
+    |**Plan hostingu**|Plan Zużycie| Typ planu używany przez aplikację funkcji. Opcje to użycie lub plan Azure App Service. |
+    |**Location**|Środkowe stany USA| Region, w którym ma zostać utworzona aplikacja funkcji.|
+    |**Konto magazynu**|automatycznie generowanych| Konto magazynu, które Azure Functions potrzeby magazynowania ogólnego przeznaczenia.|
 
-3. Na **aplikacje funkcji PacketCaptureExample** bloku wybierz **funkcje** > **funkcja niestandardowa**  >  **+** .
+3. W bloku **aplikacje funkcji PacketCaptureExample** wybierz pozycję **funkcje** > **Funkcja** > **+** niestandardowa.
 
-4. Wybierz **HttpTrigger-Powershell**, a następnie wprowadź pozostałe informacje. Na koniec, aby utworzyć funkcję, wybierz **Utwórz**.
+4. Wybierz pozycję **HttpTrigger — PowerShell**, a następnie wprowadź pozostałe informacje. Na koniec aby utworzyć funkcję, wybierz pozycję **Utwórz**.
 
     |**Ustawienie** | **Wartość** | **Szczegóły** |
     |---|---|---|
@@ -97,21 +97,21 @@ Pierwszym krokiem jest tworzenie funkcji platformy Azure do przetwarzania alertu
 ![Przykład funkcji][functions1]
 
 > [!NOTE]
-> Szablon programu PowerShell jest eksperymentalny i nie ma pełną pomoc techniczną.
+> Szablon programu PowerShell jest eksperymentalny i nie ma pełnej obsługi.
 
-Dostosowania są wymagane dla tego przykładu i zostały wyjaśnione w poniższych krokach.
+Na potrzeby tego przykładu są wymagane dostosowania opisane w poniższych krokach.
 
 ### <a name="add-modules"></a>Dodaj moduły
 
-Za pomocą poleceń cmdlet programu PowerShell obserwatora sieci, należy przekazać najnowszy moduł programu PowerShell do aplikacji funkcji.
+Aby użyć Network Watcher poleceń cmdlet programu PowerShell, Przekaż najnowszy moduł programu PowerShell do aplikacji funkcji.
 
-1. Na komputerze lokalnym przy użyciu zainstalowane najnowsze moduły programu Azure PowerShell uruchom następujące polecenie programu PowerShell:
+1. Na komputerze lokalnym z zainstalowanymi najnowszymi modułami Azure PowerShell uruchom następujące polecenie programu PowerShell:
 
     ```powershell
     (Get-Module Az.Network).Path
     ```
 
-    W tym przykładzie zapewnia ścieżkę lokalną moduły programu Azure PowerShell. Te foldery są używane w kolejnym kroku. Moduły, które są używane w tym scenariuszu są:
+    W tym przykładzie przedstawiono ścieżkę lokalną modułów Azure PowerShell. Te foldery są używane w późniejszym kroku. Moduły, które są używane w tym scenariuszu, to:
 
    * Az.Network
 
@@ -121,13 +121,13 @@ Za pomocą poleceń cmdlet programu PowerShell obserwatora sieci, należy przeka
 
      ![Foldery programu PowerShell][functions5]
 
-1. Wybierz **ustawień aplikacji funkcji** > **przejdź do Edytor usługi App Service**.
+1. Wybierz pozycję >  **Ustawienia aplikacji funkcji** **Przejdź do Edytor usługi App Service**.
 
     ![Ustawienia aplikacji funkcji][functions2]
 
-1. Kliknij prawym przyciskiem myszy **AlertPacketCapturePowershell** folder, a następnie utwórz folder o nazwie **azuremodules**. 
+1. Kliknij prawym przyciskiem myszy folder **AlertPacketCapturePowershell** , a następnie utwórz folder o nazwie **azuremodules**. 
 
-4. Utwórz podfolder dla każdego modułu, które są potrzebne.
+4. Utwórz podfolder dla każdego wymaganego modułu.
 
     ![Folder i podfoldery][functions3]
 
@@ -137,28 +137,28 @@ Za pomocą poleceń cmdlet programu PowerShell obserwatora sieci, należy przeka
 
     * Az.Resources
 
-1. Kliknij prawym przyciskiem myszy **Az.Network** podfolder, a następnie wybierz **Przekaż pliki**. 
+1. Kliknij prawym przyciskiem myszy folder **AZ. Network** , a następnie wybierz pozycję **Przekaż pliki**. 
 
-6. Przejdź do swojej moduły platformy Azure. W lokalnej **Az.Network** folderu, zaznacz wszystkie pliki w folderze. Następnie wybierz przycisk **OK**. 
+6. Przejdź do modułów platformy Azure. W lokalnym folderze **AZ. Network** wybierz wszystkie pliki w folderze. Następnie wybierz przycisk **OK**. 
 
-7. Powtórz te kroki dla **Az.Accounts** i **Az.Resources**.
+7. Powtórz te kroki dla **AZ. Accounts** i **AZ.** Resources.
 
     ![Przekazywanie plików][functions6]
 
-1. Po zakończeniu, każdy folder powinien mieć pliki modułu programu PowerShell na maszynie lokalnej.
+1. Po zakończeniu każdy folder powinien mieć pliki modułu programu PowerShell z komputera lokalnego.
 
-    ![Pliki interpretatora PowerShell][functions7]
+    ![Pliki programu PowerShell][functions7]
 
 ### <a name="authentication"></a>Authentication
 
-Aby korzystać z poleceń cmdlet programu PowerShell, należy uwierzytelnić. Możesz skonfigurować uwierzytelnianie w aplikacji funkcji. Aby skonfigurować uwierzytelnianie, należy skonfigurować zmienne środowiskowe i przekazywanie zaszyfrowanego pliku klucza do aplikacji funkcji.
+Aby użyć poleceń cmdlet programu PowerShell, należy się uwierzytelnić. Uwierzytelnianie można skonfigurować w aplikacji funkcji. Aby skonfigurować uwierzytelnianie, należy skonfigurować zmienne środowiskowe i przekazać zaszyfrowany plik klucza do aplikacji funkcji.
 
 > [!NOTE]
-> Ten scenariusz zawiera tylko jeden przykład jak implementować uwierzytelniania za pomocą usługi Azure Functions. Istnieją inne sposoby, aby to zrobić.
+> W tym scenariuszu przedstawiono tylko jeden przykład sposobu implementowania uwierzytelniania przy użyciu Azure Functions. Istnieją inne sposoby wykonania tej czynności.
 
 #### <a name="encrypted-credentials"></a>Zaszyfrowane poświadczenia
 
-Poniższy skrypt programu PowerShell tworzy plik klucza o nazwie **PassEncryptKey.key**. Umożliwia także zaszyfrowana wersja hasła, która jest dostarczana. To hasło jest tego samego hasła, która jest zdefiniowana dla aplikacji usługi Azure Active Directory, który jest używany do uwierzytelniania.
+Poniższy skrypt programu PowerShell tworzy plik klucza o nazwie **PassEncryptKey. Key**. Zapewnia także zaszyfrowaną wersję dostarczonego hasła. To hasło jest takie samo jak hasło, które jest zdefiniowane dla aplikacji Azure Active Directory używanej na potrzeby uwierzytelniania.
 
 ```powershell
 #Variables
@@ -177,13 +177,13 @@ $Encryptedpassword = $secPw | ConvertFrom-SecureString -Key $AESKey
 $Encryptedpassword
 ```
 
-W edytorze usługi App Service dla aplikacji funkcji, Utwórz folder o nazwie **klucze** w obszarze **AlertPacketCapturePowerShell**. Następnie przekaż **PassEncryptKey.key** pliku, który został utworzony w poprzednim przykładzie programu PowerShell.
+W Edytor usługi App Service aplikacji funkcji Utwórz folder o nazwie **klucze** w obszarze **AlertPacketCapturePowerShell**. Następnie Przekaż plik **PassEncryptKey. Key** , który został utworzony w poprzednim przykładzie programu PowerShell.
 
 ![Klucz funkcji][functions8]
 
 ### <a name="retrieve-values-for-environment-variables"></a>Pobierz wartości zmiennych środowiskowych
 
-Wymaganie końcowego jest Ustawianie zmiennych środowiskowych, które są niezbędne uzyskać dostęp do wartości do uwierzytelniania. Na poniższej liście przedstawiono zmienne środowiskowe, które zostały utworzone:
+Ostatnim wymaganiem jest skonfigurowanie zmiennych środowiskowych, które są niezbędne do uzyskania dostępu do wartości uwierzytelniania. Na poniższej liście przedstawiono zmienne środowiskowe, które są tworzone:
 
 * AzureClientID
 
@@ -194,9 +194,9 @@ Wymaganie końcowego jest Ustawianie zmiennych środowiskowych, które są niezb
 
 #### <a name="azureclientid"></a>AzureClientID
 
-Identyfikator klienta jest identyfikator aplikacji dla aplikacji w usłudze Azure Active Directory.
+Identyfikator klienta to identyfikator aplikacji w Azure Active Directory.
 
-1. Jeśli nie masz jeszcze aplikacji do użycia, z poniższego przykładu, aby utworzyć aplikację.
+1. Jeśli nie masz jeszcze aplikacji do użycia, uruchom poniższy przykład, aby utworzyć aplikację.
 
     ```powershell
     $app = New-AzADApplication -DisplayName "ExampleAutomationAccount_MF" -HomePage "https://exampleapp.com" -IdentifierUris "https://exampleapp1.com/ExampleFunctionsAccount" -Password "<same password as defined earlier>"
@@ -206,19 +206,19 @@ Identyfikator klienta jest identyfikator aplikacji dla aplikacji w usłudze Azur
     ```
 
    > [!NOTE]
-   > Hasło używane podczas tworzenia aplikacji przez powinny być tego samego hasła, który został utworzony wcześniej, podczas zapisywania pliku klucza.
+   > Hasło, które ma być używane podczas tworzenia aplikacji, powinno być tym samym hasłem, które zostało utworzone wcześniej podczas zapisywania pliku klucza.
 
-1. W witrynie Azure portal wybierz **subskrypcje**. Wybierz subskrypcję, a następnie wybierz pozycję **kontrola dostępu (IAM)** .
+1. W Azure Portal wybierz pozycję **subskrypcje**. Wybierz subskrypcję, której chcesz użyć, a następnie wybierz pozycję **Kontrola dostępu (IAM)** .
 
-    ![Funkcje zarządzania tożsamościami i Dostępem][functions9]
+    ![Funkcja IAM][functions9]
 
-1. Wybierz konto, a następnie wybierz pozycję **właściwości**. Skopiuj identyfikator aplikacji.
+1. Wybierz konto, którego chcesz użyć, a następnie wybierz pozycję **Właściwości**. Skopiuj identyfikator aplikacji.
 
     ![Identyfikator aplikacji funkcji][functions10]
 
 #### <a name="azuretenant"></a>AzureTenant
 
-Uzyskaj identyfikator dzierżawy, uruchamiając poniższy przykład programu PowerShell:
+Uzyskaj identyfikator dzierżawy, uruchamiając następujące przykładowe polecenia programu PowerShell:
 
 ```powershell
 (Get-AzSubscription -SubscriptionName "<subscriptionName>").TenantId
@@ -226,7 +226,7 @@ Uzyskaj identyfikator dzierżawy, uruchamiając poniższy przykład programu Pow
 
 #### <a name="azurecredpassword"></a>AzureCredPassword
 
-Wartość zmiennej środowiskowej AzureCredPassword jest wartością, który można pobrać z systemem w poniższym przykładzie programu PowerShell. W tym przykładzie jest taki sam, która jest wyświetlana w poprzednim **zaszyfrowane poświadczenia** sekcji. Wartość, która jest potrzebna jest dane wyjściowe `$Encryptedpassword` zmiennej.  To hasło jednostki usługi, który został zaszyfrowany za pomocą skryptu programu PowerShell.
+Wartość zmiennej środowiskowej AzureCredPassword to wartość, którą uzyskasz od uruchomienia poniższego przykładu programu PowerShell. Ten przykład jest taki sam, jak ten, który jest wyświetlany w poprzedniej sekcji **zaszyfrowane poświadczenia** . Wymagana wartość jest wartością wyjściową `$Encryptedpassword` zmiennej.  Jest to hasło nazwy głównej usługi, które zostało zaszyfrowane za pomocą skryptu programu PowerShell.
 
 ```powershell
 #Variables
@@ -245,27 +245,27 @@ $Encryptedpassword = $secPw | ConvertFrom-SecureString -Key $AESKey
 $Encryptedpassword
 ```
 
-### <a name="store-the-environment-variables"></a>Store zmiennych środowiskowych
+### <a name="store-the-environment-variables"></a>Przechowuj zmienne środowiskowe
 
-1. Przejdź do aplikacji funkcji. Następnie wybierz pozycję **ustawień aplikacji funkcji** > **Konfigurowanie ustawień aplikacji**.
+1. Przejdź do aplikacji funkcji. Następnie wybierz kolejno pozycje **Funkcja ustawienia** > aplikacji**Skonfiguruj ustawienia aplikacji**.
 
     ![Konfigurowanie ustawień aplikacji][functions11]
 
-1. Dodaj zmienne środowiskowe i ich wartości ustawień aplikacji, a następnie wybierz **Zapisz**.
+1. Dodaj zmienne środowiskowe i ich wartości do ustawień aplikacji, a następnie wybierz pozycję **Zapisz**.
 
     ![Ustawienia aplikacji][functions12]
 
-### <a name="add-powershell-to-the-function"></a>Dodaj programu PowerShell do funkcji
+### <a name="add-powershell-to-the-function"></a>Dodawanie programu PowerShell do funkcji
 
-Teraz nadszedł czas na wykonywanie wywołań do usługi Network Watcher z w ramach funkcji platformy Azure. W zależności od wymagań implementacja tej funkcji może się różnić. Jednak ogólny przepływ kodu jest następująca:
+Teraz można wykonywać wywołania do Network Watcher z poziomu funkcji platformy Azure. W zależności od wymagań implementacja tej funkcji może się różnić. Jednak ogólny przepływ kodu jest następujący:
 
-1. Parametry wejściowe procesu.
-2. Przechwytuje pakietów istniejące zapytanie w celu sprawdzenia limitów i rozwiązać konflikty nazw.
-3. Utwórz przechwytywania pakietów za pomocą odpowiednich parametrów.
-4. Przechwytywanie pakietów sondowania, okresowo do czasu jego zakończenia.
-5. Powiadamia użytkownika, że sesja przechwytywania pakietów została zakończona.
+1. Przetwarzanie parametrów wejściowych.
+2. Wykonaj zapytanie o istniejące przechwycenia pakietu, aby sprawdzić ograniczenia i rozwiązać konflikty nazw.
+3. Utwórz przechwycenie pakietu z odpowiednimi parametrami.
+4. Okresowe przechwytywanie pakietów sondy do momentu ukończenia.
+5. Powiadom użytkownika, że sesja przechwytywania pakietów została ukończona.
 
-Poniższy przykład jest kod programu PowerShell, który może służyć do funkcji. Istnieją wartości, które muszą zostać zastąpione dla **subscriptionId**, **resourceGroupName**, i **storageAccountName**.
+Poniższy przykład to kod programu PowerShell, który może być używany w funkcji. Istnieją wartości, które muszą zostać zastąpione dla identyfikatora **subskrypcji**, **resourceGroupName**i **storageAccountName**.
 
 ```powershell
             #Import Azure PowerShell modules required to make calls to Network Watcher
@@ -305,8 +305,7 @@ Poniższy przykład jest kod programu PowerShell, który może służyć do funk
                 Write-Output ("Resource Type:  {0}" -f $requestBody.context.resourceType)
 
                 #Get the Network Watcher in the VM's region
-                $nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
-                $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+                $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
 
                 #Get existing packetCaptures
                 $packetCaptures = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher
@@ -326,55 +325,55 @@ Poniższy przykład jest kod programu PowerShell, który może służyć do funk
             } 
  ``` 
 #### <a name="retrieve-the-function-url"></a>Pobierz adres URL funkcji 
-1. Po utworzeniu funkcji należy skonfigurować alert do wywołania adresu URL, który jest skojarzony z funkcją. Aby uzyskać tę wartość, skopiuj adres URL funkcji z aplikacji funkcji.
+1. Po utworzeniu funkcji Skonfiguruj alert, aby wywoływać adres URL skojarzony z funkcją. Aby uzyskać tę wartość, skopiuj adres URL funkcji z aplikacji funkcji.
 
-    ![Znajdowanie adres URL funkcji][functions13]
+    ![Znajdowanie adresu URL funkcji][functions13]
 
 2. Skopiuj adres URL funkcji dla aplikacji funkcji.
 
     ![Kopiowanie adresu URL funkcji][2]
 
-Jeśli potrzebujesz właściwości niestandardowe w ładunku żądania POST elementu webhook, zobacz [Konfigurowanie elementu webhook dla alertu dotyczącego metryki Azure](../azure-monitor/platform/alerts-webhooks.md).
+Jeśli wymagane są właściwości niestandardowe w ładunku żądania POST elementu webhook, zapoznaj się z tematem [Konfigurowanie elementu webhook w ramach alertu dotyczącego metryki platformy Azure](../azure-monitor/platform/alerts-webhooks.md).
 
-## <a name="configure-an-alert-on-a-vm"></a>Konfigurowanie alertu dla maszyny Wirtualnej
+## <a name="configure-an-alert-on-a-vm"></a>Konfigurowanie alertu na maszynie wirtualnej
 
-Alerty można skonfigurować do powiadamiania osób określonych Metryka przekracza próg, który nie jest do niej przypisany. W tym przykładzie alertu znajduje się na segmentów TCP, które są wysyłane, ale można wyzwolić alert dla innych metryk. W tym przykładzie alertu jest skonfigurowana do wywoływania elementu webhook w wywołaniu funkcji.
+Alerty można skonfigurować w taki sposób, aby powiadamiać osoby, gdy określona Metryka przekroczy przypisany do niej próg. W tym przykładzie alert znajduje się na segmentach TCP, które są wysyłane, ale alert może być wyzwalany dla wielu innych metryk. W tym przykładzie alert jest skonfigurowany do wywoływania elementu webhook w celu wywołania funkcji.
 
-### <a name="create-the-alert-rule"></a>Utwórz regułę alertu
+### <a name="create-the-alert-rule"></a>Tworzenie reguły alertu
 
-Przejdź do istniejącej maszyny wirtualnej, a następnie dodaj regułę alertu. Bardziej szczegółowa dokumentacja na temat konfigurowania alertów znajduje się w temacie [Tworzenie alertów w usłudze Azure Monitor dla usług platformy Azure — witryna Azure portal](../monitoring-and-diagnostics/insights-alerts-portal.md). Wprowadź następujące wartości w **reguły alertu** bloku, a następnie wybierz **OK**.
+Przejdź do istniejącej maszyny wirtualnej, a następnie Dodaj regułę alertu. Bardziej szczegółową dokumentację dotyczącą konfigurowania alertów można znaleźć [w temacie Tworzenie alertów w Azure monitor dla usług platformy Azure — Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md). Wprowadź następujące wartości w bloku **reguła alertu** , a następnie wybierz przycisk **OK**.
 
   |**Ustawienie** | **Wartość** | **Szczegóły** |
   |---|---|---|
   |**Nazwa**|TCP_Segments_Sent_Exceeded|Nazwa reguły alertu.|
-  |**Opis**|Segmentów TCP wysyłane przekroczyła próg|Opis reguły alertu.|
-  |**Metryka**|Wysłane segmenty protokołu TCP| Metryki służące do wyzwolenia alertu. |
-  |**Warunek**|Większe niż| Warunek, który chcesz użyć podczas obliczania metryki.|
-  |**Próg**|100| Wartość metryki, które wyzwala alert. Ta wartość powinna być równa prawidłową wartość dla danego środowiska.|
-  |**Okres**|W ciągu ostatnich pięciu minut| Określa okres, w którym należy szukać próg dla metryki.|
-  |**Webhook**|[adres URL elementu webhook z funkcji aplikacji]| Adres URL elementu webhook z poziomu aplikacji funkcji, który został utworzony w poprzednich krokach.|
+  |**Opis**|Liczba wysłanych segmentów TCP przekroczyła próg|Opis reguły alertu.|
+  |**Metryka**|Wysłane segmenty TCP| Metryka używana do wyzwalania alertu. |
+  |**Rozgrzewa**|Większe niż| Warunek, który ma być używany podczas oceniania metryki.|
+  |**Próg**|100| Wartość metryki wyzwalającej alert. Ta wartość powinna być ustawiona na prawidłową wartość dla danego środowiska.|
+  |**Czasu**|W ciągu ostatnich pięciu minut| Określa okres, w którym ma być wyszukiwany próg dla metryki.|
+  |**Elementu webhook**|[adres URL elementu webhook z aplikacji funkcji]| Adres URL elementu webhook z aplikacji funkcji, który został utworzony w poprzednich krokach.|
 
 > [!NOTE]
-> Metryka segmentów TCP nie jest włączona domyślnie. Dowiedz się więcej o sposobie włączania dodatkowe metryki, odwiedzając [Włączanie monitorowania i diagnostyki](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md).
+> Metryka segmentów TCP nie jest domyślnie włączona. Dowiedz się więcej o tym, jak włączyć dodatkowe metryki, odwiedzając [funkcję monitorowanie i diagnostykę](../monitoring-and-diagnostics/insights-how-to-use-diagnostics.md).
 
 ## <a name="review-the-results"></a>Sprawdzanie wyników
 
-Po kryteria alertu wyzwalaczy przechwytywania pakietów jest tworzony. Przejdź do usługi Network Watcher, a następnie wybierz **przechwytywania pakietów**. Na tej stronie możesz wybrać link pliku przechwytywania pakietów, aby pobrać przechwytywania pakietów.
+Po zastosowaniu kryteriów dla wyzwalaczy alertów zostanie utworzone przechwytywanie pakietów. Przejdź do Network Watcher, a następnie wybierz pozycję **przechwytywanie pakietów**. Na tej stronie można wybrać łącze plik przechwytywania pakietów, aby pobrać funkcję przechwytywania pakietów.
 
 ![Wyświetl przechwycenie pakietu][functions14]
 
-Jeśli plik przechwytywania jest przechowywany lokalnie, można je pobrać, logując się do maszyny wirtualnej.
+Jeśli plik przechwytywania jest przechowywany lokalnie, możesz go pobrać, logując się do maszyny wirtualnej.
 
-Aby uzyskać instrukcje dotyczące pobierania plików z konta usługi Azure storage, zobacz [wprowadzenie do usługi Azure Blob storage przy użyciu platformy .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Inne narzędzie, można użyć jest [Eksploratora usługi Storage](https://storageexplorer.com/).
+Aby uzyskać instrukcje dotyczące pobierania plików z kont usługi Azure Storage, zobacz [Rozpoczynanie pracy z usługą Azure Blob Storage przy użyciu platformy .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Innym narzędziem, którego można użyć, jest [Eksplorator usługi Storage](https://storageexplorer.com/).
 
-Po pobraniu swoje przechwytywania można je wyświetlić, przy użyciu dowolnego narzędzia, który może odczytać **.cap** pliku. Poniżej podano linki do dwóch spośród tych narzędzi:
+Po pobraniu przechwytywania można je wyświetlić przy użyciu dowolnego narzędzia, które może odczytać plik **. Cap** . Poniżej znajdują się linki do dwóch z następujących narzędzi:
 
-- [Narzędzie Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
+- [Analizator komunikatów firmy Microsoft](https://technet.microsoft.com/library/jj649776.aspx)
 - [WireShark](https://www.wireshark.org/)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak wyświetlać swoje przechwytywania pakietów, odwiedzając [analizy przechwytywania pakietów za pomocą programu Wireshark](network-watcher-deep-packet-inspection.md).
+Dowiedz się, jak wyświetlać przechwycone pakiety, odwiedzając [analizę przechwytywania pakietów za pomocą programu Wireshark](network-watcher-deep-packet-inspection.md).
 
 
 [1]: ./media/network-watcher-alert-triggered-packet-capture/figure1.png

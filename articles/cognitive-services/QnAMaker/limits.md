@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/29/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b90b4806e86ed0ba33500cf31a6ed892241ceabe
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 27526f4940cb7ab538992f3506c1a35a81cec9bc
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423454"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165021"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Usługa QnA Maker wiedzy limity i granice
 
@@ -44,19 +44,31 @@ Maksymalna liczba linków głębokiego, które mogą być przeszukiwane w celu w
 
 ## <a name="metadata-limits"></a>Limity metadanych
 
+### <a name="by-azure-search-pricing-tier"></a>Według Azure Search warstwy cenowej
+
 Maksymalna liczba pól metadanych na bazę wiedzy zależy od **[limitów warstwy Azure Search](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** .
 
 |**Warstwy usługi Azure Search** | **Bezpłatna** | **Podstawowa** |**S1** | **S2**| **S3** |**WYSOKA GĘSTOŚĆ S3**|
 |---|---|---|---|---|---|----|
 |Pola metadanych maksymalnej dla danej usługi QnA Maker (we wszystkich artykułów bazy wiedzy)|1000|100 *|1000|1000|1000|1000|
 
+### <a name="by-name-and-value"></a>Według nazwy i wartości
+
+W poniższej tabeli wymieniono długość i dopuszczalne znaki nazwy i wartości metadanych.
+
+|Element|Dozwolone znaki|Dopasowanie wzorca wyrażenia regularnego|Maks. liczba znaków|
+|--|--|--|--|
+|Name|Udostępnia<br>alfanumeryczne (litery i cyfry)<br>`_`podkreślenia|`^[a-zA-Z0-9_]+$`|100|
+|Value|Zezwala na wszystko z wyjątkiem<br>`:`średnikami<br>`|`(potok pionowy)|`^[^:|]+$`|500|
+|||||
+
 ## <a name="knowledge-base-content-limits"></a>Limity zawartości bazy wiedzy
 Ogólne ograniczenia dotyczące zawartości w bazie wiedzy knowledge base:
 * Długość tekstu odpowiedzi: 25,000
 * Długość tekstu pytania: 1000
 * Długość tekstu klucza/wartości metadanych: 100
-* Obsługiwane znaki dla nazwy metadanych: Alfabety, cyfry i _  
-* Obsługiwane znaki dla wartości metadanych: Wszystkie z wyjątkiem: i | 
+* Obsługiwane znaki dla nazwy metadanych: Alfabety, cyfry i`_`  
+* Obsługiwane znaki dla wartości metadanych: Wszystkie z `:` wyjątkiem i`|` 
 * Długość nazwy pliku: 200
 * Obsługiwane formaty plików: "tsv", ".pdf", ".txt", ".docx", "xlsx".
 * Maksymalna liczba pytań alternatywnych: 300
@@ -76,7 +88,7 @@ Te reprezentują limity dla każdej akcji aktualizacji; oznacza to kliknięcie *
 * Maksymalna liczba dodanych lub usuniętych pól metadanych: 10
 * Maksymalna liczba adresów URL, które można odświeżyć: 5
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Dowiedz się, kiedy i jak zmienić warstwy usług:
 

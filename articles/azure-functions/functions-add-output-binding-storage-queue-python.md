@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 34ec7c678410b2e0814f8dbb7a69257886cb891d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 9fdbf3466256c5e24de17541770fa2095fcf38a4
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639114"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171085"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Dodawanie powiązania kolejki usługi Azure Storage do funkcji języka Python
 
@@ -194,11 +194,11 @@ Możesz [sprawdzić komunikat kolejki magazynu](#query-the-storage-queue) , aby 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Została zaktualizowana funkcja wyzwalana przez protokół HTTP w celu zapisania danych w kolejce magazynu. Aby dowiedzieć się więcej na temat opracowywania Azure Functions przy użyciu języka Python, zobacz [Przewodnik dla deweloperów Azure Functions Python](functions-reference-python.md) oraz [Azure Functions wyzwalacze i powiązania](functions-triggers-bindings.md).
+Została zaktualizowana funkcja wyzwalana przez protokół HTTP w celu zapisania danych w kolejce magazynu. Aby dowiedzieć się więcej na temat opracowywania Azure Functions przy użyciu języka Python, zobacz [Przewodnik dla deweloperów Azure Functions Python](functions-reference-python.md) oraz [Azure Functions wyzwalacze i powiązania](functions-triggers-bindings.md). Aby zapoznać się z przykładami kompletnych projektów funkcji w języku Python, zobacz [przykłady funkcji języka Python](/samples/browse/?products=azure-functions&languages=python). 
 
 Następnie należy włączyć monitorowanie Application Insights dla aplikacji funkcji:
 
 > [!div class="nextstepaction"]
-> [Włącz integrację Application Insights](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Enable Application Insights integration (Włączanie integracji z usługą Application Insights)](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure Storage Explorer]: https://storageexplorer.com/

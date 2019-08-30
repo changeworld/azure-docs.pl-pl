@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 85b1e3eae9d7472fa829665707fca481a28f0623
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 88a5e5fa1267e834a04c46ed38868cf74acd9bb0
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011289"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171925"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Jak obiekty i poświadczenia są synchronizowane w Azure AD Domain Servicesej domenie zarządzanej
 
@@ -30,7 +30,7 @@ Na poniższym diagramie pokazano, jak działa synchronizacja między usługą Az
 
 ## <a name="synchronization-from-azure-ad-to-azure-ad-ds"></a>Synchronizacja z usługi Azure AD do usługi Azure AD DS
 
-Konta użytkowników, członkostwa w grupach i skróty poświadczeń są synchronizowane jeden sposób z usługi Azure AD do AD DS platformy Azure. Ten proces synchronizacji jest automatyczny. Nie musisz konfigurować ani monitorować tego procesu synchronizacji ani nim zarządzać. Synchronizacja początkowa może potrwać kilka godzin, w zależności od liczby obiektów w katalogu usługi Azure AD. Po zakończeniu synchronizacji początkowej zmiany wprowadzone w usłudze Azure AD, takie jak zmiana hasła lub atrybutów, poświęć około 20-30 minut na aktualizację w usłudze Azure AD DS.
+Konta użytkowników, członkostwa w grupach i skróty poświadczeń są synchronizowane jeden sposób z usługi Azure AD do AD DS platformy Azure. Ten proces synchronizacji jest automatyczny. Nie musisz konfigurować ani monitorować tego procesu synchronizacji ani nim zarządzać. Synchronizacja początkowa może potrwać kilka godzin, w zależności od liczby obiektów w katalogu usługi Azure AD. Po zakończeniu synchronizacji początkowej zmiany wprowadzone w usłudze Azure AD, takie jak zmiany hasła lub atrybutów, zostaną automatycznie zsynchronizowane z usługą Azure AD DS.
 
 Proces synchronizacji jest jednym ze sposobów/jednokierunkowy przez projektowanie. Nie istnieje wsteczna Synchronizacja zmian z platformy Azure AD DS z powrotem do usługi Azure AD. Domena zarządzana AD DS platformy Azure jest w dużym stopniu tylko do odczytu, z wyjątkiem niestandardowych jednostek organizacyjnych, które można utworzyć. Nie można wprowadzać zmian w atrybutach użytkownika, hasłach użytkowników ani członkostwie w grupach w ramach domeny zarządzanej AD DS platformy Azure.
 

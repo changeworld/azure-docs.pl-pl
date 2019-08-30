@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 7fa2a5088e2eae039d43ecf0db080190f74cd772
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 7f913eebb2dd3926165a36c37dcb356aa05f2de4
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125216"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172051"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Samouczek: Utwórz i skonfiguruj wystąpienie Azure Active Directory Domain Services
 
@@ -202,7 +202,7 @@ Aby zmienić hasło dla użytkownika tylko w chmurze, użytkownik musi wykonać 
 1. Na stronie **Zmienianie hasła** wprowadź istniejące hasło (stare), a następnie wprowadź i Potwierdź nowe hasło.
 1. Wybierz **przesłać**.
 
-Po zmianie hasła nowego hasła do użycia w usłudze Azure AD DS potrwa kilka minut. Po około 20 minutach można użyć nowego hasła do logowania się do komputerów przyłączonych do domeny zarządzanej.
+Po zmianie hasła nowego hasła do użycia w usłudze Azure AD DS i pomyślnym zalogowaniu się do komputerów przyłączonych do domeny zarządzanej zajmie kilka minut.
 
 ## <a name="next-steps"></a>Następne kroki
 

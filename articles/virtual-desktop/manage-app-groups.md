@@ -1,58 +1,62 @@
 ---
-title: Zarządzanie grupami aplikacji dla Windows wirtualnego pulpitu (wersja zapoznawcza) — platformy Azure
-description: W tym artykule opisano sposób konfigurowania dzierżaw Windows wirtualnego pulpitu (wersja zapoznawcza) w usłudze Azure Active Directory.
+title: Zarządzanie grupami aplikacji na potrzeby wersji zapoznawczej pulpitu wirtualnego systemu Windows — Azure
+description: Opisuje sposób konfigurowania dzierżawców dla systemu Windows Virtual Desktop w wersji zapoznawczej w Azure Active Directory.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 73425df1f0cfedd2a681650fc2b536a652b621d5
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 2bec7e490443727fa294e7be9412bb20ae66e691
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206672"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163256"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Samouczek: Zarządzanie grupami aplikacji dla Windows wirtualnego pulpitu (wersja zapoznawcza)
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>Samouczek: Zarządzanie grupami aplikacji na potrzeby wersji zapoznawczej pulpitu wirtualnego systemu Windows
 
-Domyślna grupa aplikacji utworzonych dla nowej puli hosta Windows wirtualnego pulpitu (wersja zapoznawcza) są również publikowane pełnego pulpitu. Ponadto można utworzyć co najmniej jedną grupę aplikacji programów RemoteApp puli hosta. Postępuj zgodnie z tym samouczkiem, aby utworzyć grupę aplikacji programów RemoteApp i publikowanie poszczególnych **Start** menu aplikacji.
+Domyślna grupa aplikacji utworzona dla nowej puli hostów systemu Windows Virtual Desktop w wersji zapoznawczej również publikuje pełny pulpit. Ponadto można utworzyć co najmniej jedną grupę aplikacji RemoteApp dla puli hostów. Postępuj zgodnie z tym samouczkiem, aby utworzyć grupę aplikacji RemoteApp i opublikować poszczególne aplikacje menu **Start** .
 
 W tym samouczku pokazano, jak:
 
 > [!div class="checklist"]
-> * Utwórz grupę programów RemoteApp.
+> * Utwórz grupę usługi RemoteApp.
 > * Udzielanie dostępu do programów RemoteApp.
 
-Przed przystąpieniem do wykonywania [Pobierz i zaimportuj moduł programu PowerShell pulpitu wirtualnego Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) do użycia w sesji programu PowerShell, jeśli jeszcze go.
+Przed rozpoczęciem [Pobierz i zaimportuj moduł programu PowerShell dla pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , który ma być używany w sesji programu PowerShell, jeśli jeszcze tego nie zrobiono. Następnie uruchom następujące polecenie cmdlet, aby zalogować się do konta:
 
-## <a name="create-a-remoteapp-group"></a>Utwórz grupę programów RemoteApp
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
 
-1. Uruchom następujące polecenia cmdlet programu PowerShell do tworzenia pustej grupy aplikacji programów RemoteApp.
+## <a name="create-a-remoteapp-group"></a>Tworzenie grupy usługi RemoteApp
+
+1. Uruchom następujące polecenie cmdlet programu PowerShell, aby utworzyć nową pustą grupę aplikacji RemoteApp.
 
    ```powershell
    New-RdsAppGroup <tenantname> <hostpoolname> <appgroupname> -ResourceType "RemoteApp"
    ```
 
-2. (Opcjonalnie) Aby sprawdzić, czy utworzono grupę aplikacji, można uruchomić następujące polecenie cmdlet, aby wyświetlić listę wszystkich grup aplikacji dla puli hosta.
+2. Obowiązkowe Aby sprawdzić, czy grupa aplikacji została utworzona, możesz uruchomić następujące polecenie cmdlet, aby wyświetlić listę wszystkich grup aplikacji dla puli hostów.
 
    ```powershell
    Get-RdsAppGroup <tenantname> <hostpoolname>
    ```
 
-3. Uruchom następujące polecenie cmdlet, aby uzyskać listę **Start** menu aplikacje w obrazach maszyn wirtualnych w puli hosta. Zanotuj wartości **FilePath**, **IconPath**, **IconIndex**oraz inne ważne informacje dla aplikacji, którą chcesz opublikować.
+3. Uruchom następujące polecenie cmdlet, aby uzyskać listę aplikacji menu **Start** w obrazie maszyny wirtualnej puli hostów. Zapisz wartości **FilePath**, **IconPath**, **IconIndex**i inne ważne informacje dla aplikacji, którą chcesz opublikować.
 
    ```powershell
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
    
-4. Uruchom następujące polecenie cmdlet, aby zainstalować aplikację na podstawie `AppAlias`. `AppAlias` Po uruchomieniu dane wyjściowe z kroku 3, staje się widoczny.
+4. Uruchom następujące polecenie cmdlet, aby zainstalować aplikację opartą `AppAlias`na systemie. `AppAlias`staną się widoczne po uruchomieniu danych wyjściowych z kroku 3.
 
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>
    ```
 
-5. (Opcjonalnie) Uruchom następujące polecenie cmdlet, aby opublikować nowy program RemoteApp do grupy aplikacji utworzonej w kroku 1.
+5. Obowiązkowe Uruchom następujące polecenie cmdlet, aby opublikować nowy Program RemoteApp w grupie aplikacji utworzonej w kroku 1.
 
    ```powershell
    New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -Filepath <filepath>  -IconPath <iconpath> -IconIndex <iconindex>
@@ -64,16 +68,16 @@ Przed przystąpieniem do wykonywania [Pobierz i zaimportuj moduł programu Power
    Get-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname>
    ```
 
-7. Powtórz kroki 1 – 5 dla każdej aplikacji, którą chcesz opublikować dla tej grupy aplikacji.
-8. Uruchom następujące polecenie cmdlet, aby zezwolić użytkownikom na dostęp do programów RemoteApp w grupie aplikacji.
+7. Powtórz kroki od 1 do 5 dla każdej aplikacji, która ma zostać opublikowana dla tej grupy aplikacji.
+8. Uruchom następujące polecenie cmdlet, aby udzielić użytkownikom dostępu do programów RemoteApp w grupie aplikacji.
 
    ```powershell
    Add-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname> -UserPrincipalName <userupn>
    ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób tworzenia grupy aplikacji, go wypełnić przy użyciu programów RemoteApp i przypisywanie użytkowników do grupy aplikacji. Aby dowiedzieć się, jak utworzyć pulę hosta weryfikacji, zobacz następujące samouczki. Pula hosta sprawdzania poprawności służy do monitorowania usługi aktualizacji przed zarządzeniem do środowiska produkcyjnego.
+W tym samouczku przedstawiono sposób tworzenia grupy aplikacji, wypełniania jej przy użyciu programów RemoteApp i przypisywania użytkowników do grupy aplikacji. Aby dowiedzieć się, jak utworzyć pulę hostów weryfikacji, zobacz poniższy samouczek. Można użyć puli hostów weryfikacji do monitorowania aktualizacji usługi przed ich wycofaniem do środowiska produkcyjnego.
 
 > [!div class="nextstepaction"]
-> [Utwórz pulę hosta do sprawdzania poprawności aktualizacje usług](./create-validation-host-pool.md)
+> [Tworzenie puli hostów w celu sprawdzenia poprawności aktualizacji usługi](./create-validation-host-pool.md)

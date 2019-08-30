@@ -1,6 +1,6 @@
 ---
-title: Automatyzowanie sieciowej grupy zabezpieczeń inspekcji przy użyciu widoku grupy zabezpieczeń obserwatora sieci platformy Azure | Dokumentacja firmy Microsoft
-description: Ta strona zawiera instrukcje dotyczące sposobu konfigurowania inspekcji sieciowej grupy zabezpieczeń
+title: Automatyzowanie inspekcji sieciowej grupy zabezpieczeń za pomocą widoku grupy zabezpieczeń Network Watcher Azure | Microsoft Docs
+description: Ta strona zawiera instrukcje dotyczące konfigurowania inspekcji sieciowej grupy zabezpieczeń
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,42 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 016d68de90088314250fef1fcfdb57d7f155ef79
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8e0eddd07fc0c473e4777d9dd90d0b2c64145e34
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707166"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70165142"
 ---
-# <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Automatyzowanie sieciowej grupy zabezpieczeń inspekcji przy użyciu widoku grupy zabezpieczeń obserwatora sieci platformy Azure
+# <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Automatyzacja inspekcji sieciowej grupy zabezpieczeń za pomocą widoku grupy zabezpieczeń Network Watcher platformy Azure
 
-Klienci często muszą stawiać z żądaniem kontrolować poziom bezpieczeństwa infrastruktury. Ten problem nie różni się dla maszyn wirtualnych na platformie Azure. Należy mieć podobny profil zabezpieczeń na podstawie reguł sieciowej grupy zabezpieczeń (NSG), stosowane. Korzystając z widoku grupy zabezpieczeń, możesz teraz uzyskać listę reguł zastosowane do maszyny Wirtualnej w ramach sieciowej grupy zabezpieczeń. Można zdefiniować złoty profil zabezpieczeń sieciowej grupy zabezpieczeń i zainicjować widok grup zabezpieczeń w erze co tydzień i porównasz dane wyjściowe do profilu złoty i utworzyć raport. W ten sposób można zidentyfikować z łatwością wszystkich maszyn wirtualnych, które nie są zgodne z profilu zabezpieczeń wymaganych.
+Klienci często podlegają wyzwaniom sprawdzającym stan bezpieczeństwa infrastruktury. To wyzwanie nie jest inne dla swoich maszyn wirtualnych na platformie Azure. Należy mieć podobny profil zabezpieczeń oparty na regułach sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń). Korzystając z widoku grupy zabezpieczeń, można teraz uzyskać listę reguł stosowanych do maszyny wirtualnej w ramach sieciowej grupy zabezpieczeń. Można zdefiniować sieciowej grupy ZABEZPIECZEŃy profil zabezpieczeń i zainicjować widok grupy zabezpieczeń na cotygodniowo erze i porównać dane wyjściowe z profilem złota i utworzyć raport. W ten sposób można łatwo zidentyfikować wszystkie maszyny wirtualne, które nie są zgodne z określonym profilem zabezpieczeń.
 
-Jeśli nie jesteś zaznajomiony z sieciowymi grupami zabezpieczeń, zobacz [Omówienie zabezpieczeń sieci](../virtual-network/security-overview.md).
+Jeśli nie znasz sieciowych grup zabezpieczeń, zobacz [Omówienie zabezpieczeń sieci](../virtual-network/security-overview.md).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-W tym scenariuszu możesz porównać znane dobre linii bazowej do wyników widoku grupy zabezpieczeń dla maszyny wirtualnej.
+W tym scenariuszu należy porównać znaną dobrą linię bazową z wynikami widoku grupy zabezpieczeń zwróconymi dla maszyny wirtualnej.
 
-W tym scenariuszu przyjęto założenie, zostały już wykonane czynności opisane w [utworzyć usługę Network Watcher](network-watcher-create.md) utworzyć usługę Network Watcher. Scenariusz również założenie, że grupa zasobów o prawidłową maszyna wirtualna istnieje ma być używany.
+W tym scenariuszu założono, że wykonano już kroki opisane w temacie [tworzenie Network Watcher](network-watcher-create.md) w celu utworzenia Network Watcher. W tym scenariuszu założono również, że grupa zasobów z prawidłową maszyną wirtualną istnieje do użycia.
 
 ## <a name="scenario"></a>Scenariusz
 
-Scenariusz, w tym artykule pobiera widok grupy zabezpieczeń dla maszyny wirtualnej.
+Scenariusz opisany w tym artykule pobiera widok grupy zabezpieczeń dla maszyny wirtualnej.
 
-W tym scenariuszu wykonasz następujące czynności:
+W tym scenariuszu będziesz:
 
-- Pobieranie zestawu znanych rozsądną regułą
-- Pobierz maszynę wirtualną przy użyciu interfejsu API Rest
+- Pobierz znany dobry zestaw reguł
+- Pobieranie maszyny wirtualnej przy użyciu interfejsu API REST
 - Pobierz widok grupy zabezpieczeń dla maszyny wirtualnej
-- Oceń odpowiedzi
+- Oceń odpowiedź
 
-## <a name="retrieve-rule-set"></a>Pobieranie zestawu reguł
+## <a name="retrieve-rule-set"></a>Pobierz zestaw reguł
 
-Pierwszym krokiem w tym przykładzie jest pracować z istniejącego planu bazowego. Poniższy przykład przedstawia niektóre json wyodrębnione z istniejącej grupy zabezpieczeń sieci przy użyciu `Get-AzNetworkSecurityGroup` polecenia cmdlet, która jest używana jako linii bazowej, w tym przykładzie.
+Pierwszym krokiem w tym przykładzie jest współdziałanie z istniejącą linią bazową. Poniższy przykład to kod JSON wyodrębniony z istniejącej sieciowej grupy zabezpieczeń przy użyciu `Get-AzNetworkSecurityGroup` polecenia cmdlet, które jest używane jako linia bazowa tego przykładu.
 
 ```json
 [
@@ -116,9 +116,9 @@ Pierwszym krokiem w tym przykładzie jest pracować z istniejącego planu bazowe
 ]
 ```
 
-## <a name="convert-rule-set-to-powershell-objects"></a>Konwertowanie zestawu reguł do obiektów programu PowerShell
+## <a name="convert-rule-set-to-powershell-objects"></a>Konwertuj zestaw reguł na obiekty programu PowerShell
 
-W tym kroku będziemy są odczytu pliku json, który został wcześniej utworzony za pomocą reguł, które powinny być w sieciowej grupie zabezpieczeń, w tym przykładzie.
+W tym kroku odczytujemy plik JSON, który został utworzony wcześniej z regułami, które powinny znajdować się w sieciowej grupie zabezpieczeń w tym przykładzie.
 
 ```powershell
 $nsgbaserules = Get-Content -Path C:\temp\testvm1-nsg.json | ConvertFrom-Json
@@ -126,24 +126,23 @@ $nsgbaserules = Get-Content -Path C:\temp\testvm1-nsg.json | ConvertFrom-Json
 
 ## <a name="retrieve-network-watcher"></a>Retrieve Network Watcher
 
-Następnym krokiem jest można pobrać wystąpienia usługi Network Watcher. `$networkWatcher` Zmienna jest przekazywana do `AzNetworkWatcherSecurityGroupView` polecenia cmdlet.
+Następnym krokiem jest pobranie Network Watcher wystąpienia. Zmienna jest przenoszona `AzNetworkWatcherSecurityGroupView` do polecenia cmdlet. `$networkWatcher`
 
 ```powershell
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
-$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
+$networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 ```
 
-## <a name="get-a-vm"></a>Uzyskiwanie maszyny Wirtualnej
+## <a name="get-a-vm"></a>Pobierz maszynę wirtualną
 
-Maszyna wirtualna jest wymagana do uruchamiania `Get-AzNetworkWatcherSecurityGroupView` polecenia cmdlet względem. Poniższy przykład powoduje pobranie obiektu maszyny Wirtualnej.
+Aby uruchomić polecenie cmdlet w programie, `Get-AzNetworkWatcherSecurityGroupView` wymagana jest maszyna wirtualna. Poniższy przykład pobiera obiekt maszyny wirtualnej.
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName "testrg" -Name "testvm1"
 ```
 
-## <a name="retrieve-security-group-view"></a>Pobierz widok grup zabezpieczeń
+## <a name="retrieve-security-group-view"></a>Pobierz widok grupy zabezpieczeń
 
-Następnym krokiem jest do pobierania wyników widoku grupy zabezpieczeń. Ten wynik jest porównywana do formatu json "baseline", pokazaną wcześniej.
+Następnym krokiem jest pobranie wyniku widoku grupy zabezpieczeń. Ten wynik jest porównywany z formatem JSON "Baseline", który został pokazany wcześniej.
 
 ```powershell
 $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
@@ -151,9 +150,9 @@ $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatche
 
 ## <a name="analyzing-the-results"></a>Analizowanie wyników
 
-Odpowiedzi są grupowane według interfejsów sieciowych. Różnych typów reguł, zwracane są skuteczne i domyślne reguły zabezpieczeń. Wynik jest dalszych rozbiciu sposób stosowania, w podsieci lub wirtualnej karty sieciowej.
+Odpowiedź jest pogrupowana według interfejsów sieciowych. Różne typy zwracanych reguł są obowiązujące i domyślne reguły zabezpieczeń. Wynik jest w dalszej postaci podzielony na sposób ich stosowania — w podsieci lub wirtualnej karcie sieciowej.
 
-Poniższy skrypt programu PowerShell porównuje wyniki widok grup zabezpieczeń do istniejącego pliku wyjściowego z sieciową grupą zabezpieczeń. Poniższy przykład to prosty przykład, jak można porównać wyniki z `Compare-Object` polecenia cmdlet.
+Poniższy skrypt programu PowerShell porównuje wyniki widoku grupy zabezpieczeń z istniejącymi danymi wyjściowymi sieciowej grupy zabezpieczeń. Poniższy przykład to prosty przykład sposobu, w jaki wyniki można porównać z `Compare-Object` poleceniem cmdlet.
 
 ```powershell
 Compare-Object -ReferenceObject $nsgbaserules `
@@ -161,7 +160,7 @@ Compare-Object -ReferenceObject $nsgbaserules `
 -Property Name,Description,Protocol,SourcePortRange,DestinationPortRange,SourceAddressPrefix,DestinationAddressPrefix,Access,Priority,Direction
 ```
 
-Poniższy przykład jest wynikiem. Widać, że dwie reguły, które w pierwszej regule ustawiono nie był obecny w porównaniu.
+Poniższy przykład to wynik. W porównaniu można zobaczyć dwie z reguł, które znajdowały się w pierwszym zestawie reguł.
 
 ```
 Name                     : My2ndRuleDoNotDelete
@@ -189,9 +188,9 @@ Direction                : Inbound
 SideIndicator            : <=
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Jeśli ustawienia zostały zmienione, zobacz [Zarządzanie sieciowymi grupami zabezpieczeń](../virtual-network/manage-network-security-group.md) ułatwiają śledzenie reguły zabezpieczeń sieci grupy i zabezpieczeń, które są w danym.
+Jeśli ustawienia zostały zmienione, zobacz [Manage Network Security Groups](../virtual-network/manage-network-security-group.md) to Track The Network Security Groups and Security rules.
 
 
 

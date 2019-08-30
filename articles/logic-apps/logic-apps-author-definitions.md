@@ -10,16 +10,16 @@ ms.reviewer: klam, jehollan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 89a77c25c75617be0e1ef92b73eec28263f53f82
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: a96cc56c85db6726bf2cdaff72904e76ecbaf087
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385587"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164651"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Tworzenie, edytowanie lub rozszerzone dane JSON dla definicji aplikacji logiki w Azure Logic Apps
 
-W przypadku tworzenia rozwiązań integracji dla przedsiębiorstw przy użyciu zautomatyzowanych przepływów pracy w [Azure Logic Apps](../logic-apps/logic-apps-overview.md), podstawowe definicje aplikacji logiki używają prostych i deklaratywnych JavaScript Object Notation (JSON) wraz z [językiem definicji przepływu pracy (WDL) Schemat](../logic-apps/logic-apps-workflow-definition-language.md) opisu i walidacji. Te formaty umożliwiają łatwiejsze odczytywanie i zrozumienie definicji aplikacji logiki, nie wiedząc o kodzie. Aby zautomatyzować tworzenie i wdrażanie aplikacji logiki, możesz uwzględnić definicje aplikacji logiki jako [zasoby platformy Azure](../azure-resource-manager/resource-group-overview.md) w ramach [szablonów Azure Resource Manager](../azure-resource-manager/resource-group-overview.md#template-deployment). Aby tworzyć i wdrażać aplikacje logiki oraz zarządzać nimi, można użyć [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [interfejsu wiersza polecenia platformy Azure](../azure-resource-manager/resource-group-template-deploy-cli.md)lub [interfejsów API REST Azure Logic Apps](https://docs.microsoft.com/rest/api/logic/).
+W przypadku tworzenia rozwiązań integracji dla przedsiębiorstw przy użyciu zautomatyzowanych przepływów pracy w [Azure Logic Apps](../logic-apps/logic-apps-overview.md), podstawowe definicje aplikacji logiki używają prostych i deklaratywnych JavaScript Object Notation (JSON) wraz z [językiem definicji przepływu pracy (WDL) Schemat](../logic-apps/logic-apps-workflow-definition-language.md) opisu i walidacji. Te formaty umożliwiają łatwiejsze odczytywanie i zrozumienie definicji aplikacji logiki, nie wiedząc o kodzie. Aby zautomatyzować tworzenie i wdrażanie aplikacji logiki, możesz uwzględnić definicje aplikacji logiki jako [zasoby platformy Azure](../azure-resource-manager/resource-group-overview.md) w ramach [szablonów Azure Resource Manager](../azure-resource-manager/template-deployment-overview.md). Aby tworzyć i wdrażać aplikacje logiki oraz zarządzać nimi, można użyć [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [interfejsu wiersza polecenia platformy Azure](../azure-resource-manager/resource-group-template-deploy-cli.md)lub [interfejsów API REST Azure Logic Apps](https://docs.microsoft.com/rest/api/logic/).
 
 Aby pracować z definicjami aplikacji logiki w formacie JSON, Otwórz Edytor widoku kodu podczas pracy w Azure Portal lub w programie Visual Studio lub skopiuj definicję do dowolnego edytora, który chcesz. Jeśli dopiero zaczynasz tworzyć aplikacje logiki, zapoznaj [się z tematem jak utworzyć swoją pierwszą aplikację logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -45,7 +45,7 @@ W programie Visual Studio można otwierać aplikacje logiki, które zostały utw
 
 1. Otwórz rozwiązanie Visual Studio lub projekt [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) , który zawiera aplikację logiki.
 
-2. Znajdź i Otwórz definicję aplikacji logiki, która domyślnie jest wyświetlana w [szablonie Menedżer zasobów](../azure-resource-manager/resource-group-overview.md#template-deployment)o nazwie **LogicApp. JSON**. Można użyć i dostosować ten szablon do wdrożenia w różnych środowiskach.
+2. Znajdź i Otwórz definicję aplikacji logiki, która domyślnie jest wyświetlana w [szablonie Menedżer zasobów](../azure-resource-manager/template-deployment-overview.md)o nazwie **LogicApp. JSON**. Można użyć i dostosować ten szablon do wdrożenia w różnych środowiskach.
 
 3. Otwórz menu skrótów dla definicji i szablonu aplikacji logiki. Wybierz pozycję **Otwórz przy użyciu Projektanta aplikacji logiki**.
 

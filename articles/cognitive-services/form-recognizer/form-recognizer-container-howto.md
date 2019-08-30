@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 08/29/2019
 ms.author: dapine
-ms.openlocfilehash: 3c0129275ecf78e6a4e6b9286f975ded2b6f9ae3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 25ea4c96a0e392db2af9c25a150696ca2b25b2dd
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051209"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164551"
 ---
 # <a name="install-and-run-form-recognizer-containers"></a>Instalowanie i uruchamianie kontenerów aparatów rozpoznawania formularzy
 
@@ -58,28 +58,25 @@ Minimalna i zalecana liczba rdzeni procesora CPU i pamięci do przydzielenia dla
 
 | Kontener | Minimalne | Zalecane |
 |-----------|---------|-------------|
-|cognitive-services-form-recognizer | 2 rdzeń, 4 GB pamięci | 4 rdzenie, 8 GB pamięci |
+| Rozpoznawanie formularzy | 2 rdzeń, 4 GB pamięci | 4 rdzenie, 8 GB pamięci |
+| Rozpoznawanie tekstu | 1 rdzeń, 8 GB pamięci | 2 rdzenie, 8 GB pamięci |
 
 * Każdy rdzeń musi mieć co najmniej 2,6 gigaherca (GHz) lub szybszy.
-* TPS — liczba transakcji na sekundę
 * Rdzeń i pamięć odpowiadają `--cpus` ustawieniom i `--memory` , które są `docker run` używane jako część polecenia.
 
 > [!Note]
 > Wartości minimalne i zalecane są zależne od limitów platformy Docker, a *nie* zasobów maszyn hosta.
 
-## <a name="get-the-container-image-with-the-docker-pull-command"></a>Pobierz obraz kontenera za pomocą polecenia docker pull
+## <a name="get-the-container-images-with-the-docker-pull-command"></a>Pobierz obrazy kontenerów za pomocą polecenia docker pull
 
-Obrazy kontenerów dla aparatu rozpoznawania formularzy są dostępne w następującym repozytorium:
+Obrazy kontenerów dla programu **rozpoznawania formularzy** i ofert **rozpoznawanie tekstu** są dostępne w następującym rejestrze kontenera:
 
-| Kontener | Repozytorium |
+| Kontener | W pełni kwalifikowana nazwa obrazu |
 |-----------|------------|
-| cognitive-services-form-recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+| Rozpoznawanie formularzy | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest` |
+| Rozpoznawanie tekstu | `containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest` |
 
-Jeśli zamierzasz używać `cognitive-services-recognize-text` [kontenera](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)zamiast usługi aparat rozpoznawania formularzy, `docker pull` upewnij się, że używasz polecenia z poprawną nazwą kontenera: 
-
-```
-docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
-```
+Wymagane są oba kontenery, należy pamiętać, że kontener **tekstu aparatu rozpoznawania** jest [szczegółowy poza tym artykułem.](../Computer-vision/computer-vision-how-to-install-containers.md##get-the-container-image-with-docker-pull)
 
 [!INCLUDE [Tip for using docker list](../../../includes/cognitive-services-containers-docker-list-tip.md)]
 
@@ -91,6 +88,15 @@ Aby uzyskać kontener aparatu rozpoznawania formularzy, użyj następującego po
 
 ```Docker
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer:latest
+```
+### <a name="docker-pull-for-the-recognize-text-container"></a>Wypychanie platformy Docker dla kontenera Rozpoznawanie tekstu
+
+#### <a name="recognize-text"></a>Rozpoznawanie tekstu
+
+Aby uzyskać kontener Rozpoznawanie tekstu, użyj następującego polecenia:
+
+```Docker
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text:latest
 ```
 
 ## <a name="how-to-use-the-container"></a>Jak używać kontenera

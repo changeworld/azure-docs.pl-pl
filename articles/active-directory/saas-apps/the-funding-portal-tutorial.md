@@ -1,12 +1,12 @@
 ---
-title: 'Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą Pluralsight | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Pluralsight.
+title: 'Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z portalem finansowania | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować Logowanie jednokrotne między Azure Active Directory a portalem finansowania.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: 4c3f07d2-4e1f-4ea3-9025-c663f1f2b7b4
+ms.assetid: 4663cc8a-976a-4c6c-b3b4-1e5df9b66744
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
@@ -16,19 +16,19 @@ ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3659c73886f8c44dec75ab62bc9902ed6f01fd1
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f707e9e56ea5386f1ccb438aa06aac066784e7cc
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164202"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173441"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pluralsight"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z usługą Pluralsight
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-the-funding-portal"></a>Samouczek: Azure Active Directory integrację logowania jednokrotnego (SSO) z portalem finansowania
 
-W tym samouczku dowiesz się, jak zintegrować usługę Pluralsight z usługą Azure Active Directory (Azure AD). Po zintegrowaniu usługi Pluralsight z usługą Azure AD można:
+W tym samouczku dowiesz się, jak zintegrować Portal finansowania z usługą Azure Active Directory (Azure AD). Po zintegrowaniu portalu finansowania z usługą Azure AD można:
 
-* Kontrolka w usłudze Azure AD, która ma dostęp do Pluralsight.
-* Zezwól użytkownikom na automatyczne logowanie się do usługi Pluralsight przy użyciu kont w usłudze Azure AD.
+* Kontrolka w usłudze Azure AD, która ma dostęp do portalu finansowania.
+* Zezwól użytkownikom na automatyczne logowanie do portalu finansowania przy użyciu kont usługi Azure AD.
 * Zarządzaj kontami w jednej centralnej lokalizacji — Azure Portal.
 
 Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne przy użyciu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -38,48 +38,43 @@ Aby dowiedzieć się więcej o integracji aplikacji SaaS z usługą Azure AD, zo
 Aby rozpocząć, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz subskrypcji, możesz uzyskać [bezpłatne konto](https://azure.microsoft.com/free/).
-* Subskrypcja z włączonym logowaniem jednokrotnym (SSO) Pluralsight.
+* Subskrypcja obsługująca Logowanie jednokrotne (SSO) portalu finansowania.
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i testujesz Logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Aplikacja Pluralsight obsługuje logowanie jednokrotne inicjowane przez **dostawcę usługi**
-* Pluralsight obsługuje Inicjowanie obsługi użytkowników **just in Time**
+* Portal finansowania obsługuje logowanie jednokrotne w ramach programu **SP**
 
-> [!NOTE]
-> Identyfikator tej aplikacji to stała wartość ciągu, dlatego można skonfigurować tylko jedno wystąpienie w jednej dzierżawie.
+## <a name="adding-the-funding-portal-from-the-gallery"></a>Dodawanie portalu finansowania z galerii
 
-## <a name="adding-pluralsight-from-the-gallery"></a>Dodawanie aplikacji Pluralsight z galerii
-
-Aby skonfigurować integrację aplikacji Pluralsight z usługą Azure AD, musisz dodać aplikację Pluralsight z galerii do swojej listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację portalu finansowania z usługą Azure AD, musisz dodać portal finansowania z galerii do listy zarządzanych aplikacji SaaS.
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu służbowego lub osobistego konta Microsoft.
 1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
 1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
 1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
-1. W sekcji **Dodaj z galerii** wpisz **Pluralsight** w polu wyszukiwania.
-1. Wybierz pozycję **Pluralsight** from panel wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
+1. W sekcji **Dodaj z galerii** wpisz **Portal finansowania** w polu wyszukiwania.
+1. Wybierz **Portal finansowania** z panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
+## <a name="configure-and-test-azure-ad-single-sign-on-for-the-funding-portal"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD dla portalu finansowania
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-pluralsight"></a>Skonfiguruj i przetestuj Logowanie jednokrotne w usłudze Azure AD dla Pluralsight
+Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą portalu finansowania przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w portalu finansowania.
 
-Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą Pluralsight przy użyciu użytkownika testowego o nazwie **B. Simon**. Aby logowanie jednokrotne działało, należy ustanowić relację linku między użytkownikiem usługi Azure AD i powiązanym użytkownikiem w Pluralsight.
-
-Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą Pluralsight, wykonaj następujące bloki konstrukcyjne:
+Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pomocą portalu finansowania, wykonaj następujące bloki konstrukcyjne:
 
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
     1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
     1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
-1. **[Skonfiguruj logowanie](#configure-pluralsight-sso)** jednokrotne w usłudze Pluralsight, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
-    1. **[Utwórz użytkownika testowego Pluralsight](#create-pluralsight-test-user)** , aby dysponować odpowiednikiem B. Simon w Pluralsight, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
+1. **[Skonfiguruj Logowanie jednokrotne w portalu finansowania](#configure-the-funding-portal-sso)** — w celu skonfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
+    1. **[Utwórz użytkownika testowego portalu finansowania](#create-the-funding-portal-test-user)** — Aby uzyskać odpowiednik elementu B. Simon w portalu finansowania, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
 1. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
 Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji **Pluralsight** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
+1. W [Azure Portal](https://portal.azure.com/)na stronie integracja **aplikacji portalu finansowania** Znajdź sekcję **Zarządzanie** i wybierz pozycję Logowanie jednokrotne.
 1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
@@ -87,20 +82,18 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 1. W sekcji **Podstawowa konfiguracja języka SAML** wprowadź wartości dla następujących pól:
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<instancename>.pluralsight.com/sso/<companyname>`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.regenteducation.net/`
 
-    b. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `www.pluralsight.com`
-
-    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<instancename>.pluralsight.com/sp/ACS.saml2`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.regenteducation.net`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL odpowiedzi i adresu URL logowania. Aby uzyskać te wartości, skontaktuj się z [zespołem pomocy technicznej klienta Pluralsight](mailto:support@pluralsight.com). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Aby uzyskać te wartości, skontaktuj się z [zespołem pomocy technicznej w portalu ds. klientów](mailto:info@regenteducation.com) . Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
     ![Link pobierania certyfikatu](common/metadataxml.png)
 
-1. W sekcji **Konfigurowanie Pluralsight** skopiuj odpowiednie adresy URL na podstawie wymagania.
+1. W sekcji **Konfigurowanie portalu finansowania** skopiuj odpowiednie adresy URL na podstawie wymagania.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -118,10 +111,10 @@ W tej sekcji utworzysz użytkownika testowego w Azure Portal o nazwie B. Simon.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure przez przyznanie dostępu do usługi Pluralsight.
+W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotnego na platformie Azure, przyznając dostęp do portalu finansowania.
 
 1. W Azure Portal wybierz pozycję **aplikacje dla przedsiębiorstw**, a następnie wybierz pozycję **wszystkie aplikacje**.
-1. Na liście Aplikacje wybierz pozycję **Pluralsight**.
+1. Na liście Aplikacje wybierz **Portal finansowania**.
 1. Na stronie Przegląd aplikacji Znajdź sekcję **Zarządzanie** i wybierz pozycję **Użytkownicy i grupy**.
 
    ![Link "Użytkownicy i grupy"](common/users-groups-blade.png)
@@ -134,19 +127,19 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 1. Jeśli oczekujesz dowolnej wartości roli w potwierdzeniu SAML, w oknie dialogowym **Wybierz rolę** wybierz odpowiednią rolę dla użytkownika z listy, a następnie kliknij przycisk **Wybierz** w dolnej części ekranu.
 1. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-## <a name="configure-pluralsight-sso"></a>Konfigurowanie logowania jednokrotnego Pluralsight
+## <a name="configure-the-funding-portal-sso"></a>Konfigurowanie logowania jednokrotnego w portalu finansowania
 
-Aby skonfigurować Logowanie jednokrotne na stronie **Pluralsight** , musisz wysłać pobrany **XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej Pluralsight](mailto:support@pluralsight.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+Aby skonfigurować Logowanie jednokrotne na stronie **portalu finansowania** , musisz wysłać pobrany **kod XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal do [zespołu pomocy technicznej portalu finansowania](mailto:info@regenteducation.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
-### <a name="create-pluralsight-test-user"></a>Tworzenie użytkownika testowego aplikacji Pluralsight
+### <a name="create-the-funding-portal-test-user"></a>Tworzenie użytkownika testowego portalu finansowania
 
-W tej sekcji użytkownik o nazwie Britta Simon jest tworzony w Pluralsight. Pluralsight obsługuje Inicjowanie obsługi użytkowników just in Time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik nie istnieje jeszcze w usłudze Pluralsight, zostanie utworzony nowy po uwierzytelnieniu.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w portalu finansowania. Powspółpracuje z [zespołem pomocy technicznej portalu,](mailto:info@regenteducation.com) aby dodać użytkowników na platformie portalu finansowania. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
-## <a name="test-sso"></a>Testuj Logowanie jednokrotne
+## <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Pluralsight w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Pluralsight, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka portalu finansowania w panelu dostępu należy automatycznie zalogować się do portalu finansowania, dla którego skonfigurowano Logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
@@ -156,5 +149,4 @@ Po kliknięciu kafelka Pluralsight w panelu dostępu powinno nastąpić automaty
 
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Wypróbuj Pluralsight z usługą Azure AD](https://aad.portal.azure.com/)
-
+- [Wypróbuj Portal finansowania z usługą Azure AD](https://aad.portal.azure.com/)

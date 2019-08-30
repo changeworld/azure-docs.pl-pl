@@ -14,15 +14,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.custom: seo-java-july2019
-ms.openlocfilehash: 822fadb661fd9fcdde8ff75fa4f9e60dfa44c97b
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.custom: seo-java-july2019, seo-java-august2019
+ms.openlocfilehash: 2e64f996a346e0241fd5feefb11a38a0c8605b27
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663418"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173402"
 ---
-# <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Jak używać tematów Service Bus i subskrypcji w języku Java
+# <a name="use-service-bus-topics-and-subscriptions-with-java"></a>Korzystanie z Service Bus tematów i subskrypcji w języku Java
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
@@ -458,7 +458,7 @@ Message sending: Id = 9
 > [!NOTE]
 > Za pomocą [eksploratora Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/)można zarządzać zasobami Service Bus. Eksplorator Service Bus umożliwia użytkownikom łączenie się z przestrzenią nazw Service Bus i administrowanie jednostkami obsługi komunikatów w prosty sposób. Narzędzie zapewnia zaawansowane funkcje, takie jak funkcja importowania/eksportowania lub możliwość testowania tematów, kolejek, subskrypcji, usług przekazywania, centrów powiadomień i centrów zdarzeń. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać więcej informacji, zobacz [Service Bus kolejkami, tematami i subskrypcjami][Service Bus queues, topics, and subscriptions].
 
 [Azure SDK for Java]: https://docs.microsoft.com/java/api/overview/azure/

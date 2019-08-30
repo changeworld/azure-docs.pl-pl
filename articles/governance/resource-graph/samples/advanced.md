@@ -1,19 +1,19 @@
 ---
 title: Przykłady zapytań zaawansowanych
-description: Przy użyciu usługi Azure Resource Graph można uruchamiać zapytania zaawansowane, na przykład dotyczące pojemności zestawu skalowania maszyn wirtualnych, wyświetlania listy wszystkich używanych tagów czy dopasowania maszyn wirtualnych za pomocą wyrażeń regularnych.
+description: Użyj grafu zasobów platformy Azure do uruchamiania niektórych zaawansowanych zapytań, w tym pojemności zestawu skalowania maszyn wirtualnych, wyświetlania wszystkich używanych tagów i zgodnych maszyn wirtualnych z wyrażeniami regularnymi.
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 08/29/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7684ae6b4ddb6320efc62ef6f9963bef1b9a66fa
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: b5742d4c14d2599b3efa73e427a5d418e5ef1c1e
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64691993"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164897"
 ---
 # <a name="advanced-resource-graph-queries"></a>Zaawansowane zapytania usługi Resource Graph
 
@@ -22,7 +22,7 @@ Pierwszym krokiem do zrozumienia zapytań usługi Azure Resource Graph jest pods
 Omówimy następujące zaawansowane zapytania:
 
 > [!div class="checklist"]
-> - [Uzyskaj pojemność zestawu skalowania maszyn wirtualnych i rozmiar](#vmss-capacity)
+> - [Pobieranie pojemności i rozmiaru zestawu skalowania maszyny wirtualnej](#vmss-capacity)
 > - [Wyświetlanie listy wszystkich nazw tagów](#list-all-tags)
 > - [Wyświetlanie maszyn wirtualnych dopasowanych przez wyrażenie regularne](#vm-regex)
 
@@ -72,8 +72,8 @@ Search-AzGraph -Query "project tags | summarize buildschema(tags)"
 
 ## <a name="vm-regex"></a>Wyświetlanie maszyn wirtualnych dopasowanych przez wyrażenie regularne
 
-To zapytanie szuka maszyn wirtualnych, które odpowiadają [wyrażeniu regularnemu](/dotnet/standard/base-types/regular-expression-language-quick-reference) (nazywanemu _regex_).
-**Pasuje do wyrażenia regularnego \@**  pozwala na określenie wyrażenia regularnego do dopasowania, czyli `^Contoso(.*)[0-9]+$`. Definicja tego wyrażenia regularnego jest wyjaśniona jako:
+To zapytanie szuka maszyn wirtualnych, które odpowiadają [wyrażeniu regularnemu](/dotnet/standard/base-types/regular-expression-language-quick-reference) (nazywanemu _regex_). **Dopasowuje wyrażenie \@ regularne** pozwala nam definiować wyrażenie regularne, które jest `^Contoso(.*)[0-9]+$`zgodne.
+Definicja tego wyrażenia regularnego jest wyjaśniona jako:
 
 - `^` - Dopasowanie musi zaczynać się od początku ciągu.
 - `Contoso` - Ciąg z uwzględnieniem wielkości liter.
@@ -100,7 +100,23 @@ az graph query -q "where type =~ 'microsoft.compute/virtualmachines' and name ma
 Search-AzGraph -Query "where type =~ 'microsoft.compute/virtualmachines' and name matches regex @'^Contoso(.*)[0-9]+$' | project name | order by name asc"
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="displaynames"></a>Uwzględnij nazwy dzierżawców i subskrypcji z nazwami wyświetlanymi
+
+To zapytanie używa nowego parametru **include** z opcjami _DisplayName_ , aby dodać **subscriptionDisplayName** i **tenantDisplayName** do wyników. Ten parametr jest dostępny tylko dla interfejsu wiersza polecenia platformy Azure i Azure PowerShell.
+
+```azurecli-interactive
+az graph query -q "limit 1" --include displayNames
+```
+
+```azurepowershell-interactive
+Search-AzGraph -Query "limit 1" -Include DisplayNames
+```
+
+> [!NOTE]
+> Jeśli zapytanie nie używa **programu Project** do określenia zwracanych właściwości, **subscriptionDisplayName** i **tenantDisplayName** są automatycznie dołączane do wyników.
+> Jeśli zapytanie używa **programu Project**, każde z pól _DisplayName_ musi być jawnie dołączone do **projektu** lub nie będzie zwracane w wynikach, nawet gdy zostanie użyty parametr **include** .
+
+## <a name="next-steps"></a>Następne kroki
 
 - Zobacz przykłady [zapytań dla początkujących](starter.md)
 - Dowiedz się więcej o [języku zapytań](../concepts/query-language.md)

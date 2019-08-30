@@ -1,26 +1,37 @@
 ---
-title: Konfigurowanie ustawień usługi Azure aplikacja funkcji | Microsoft Docs
+title: Konfigurowanie ustawień aplikacji funkcji na platformie Azure
 description: Dowiedz się, jak skonfigurować ustawienia aplikacji funkcji platformy Azure.
 author: ggailey777
 manager: gwallace
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 03/28/2018
+ms.date: 08/14/2019
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 27e56c3bcaa08fee25c362cdfed64c61b92873cb
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 7ad7f6156bbd8ea86e3e71bda4b23dac9722a0ef
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982655"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170732"
 ---
-# <a name="how-to-manage-a-function-app"></a>Jak zarządzać aplikacją funkcji
+# <a name="manage-your-function-app"></a>Zarządzanie aplikacją funkcji 
 
-W Azure Functions aplikacja funkcji udostępnia kontekst wykonywania dla poszczególnych funkcji. Zachowania aplikacji funkcji dotyczą wszystkich funkcji hostowanych przez daną aplikację funkcji. W tym temacie opisano sposób konfigurowania aplikacji funkcji i zarządzania nimi w Azure Portal.
+W Azure Functions aplikacja funkcji udostępnia kontekst wykonywania dla poszczególnych funkcji. Zachowania aplikacji funkcji dotyczą wszystkich funkcji hostowanych przez daną aplikację funkcji. Wszystkie funkcje w aplikacji funkcji muszą być w tym samym [języku](supported-languages.md). 
 
-Aby rozpocząć, przejdź do [Azure Portal](https://portal.azure.com) i zaloguj się na koncie platformy Azure. Na pasku wyszukiwania w górnej części portalu wpisz nazwę aplikacji funkcji i wybierz ją z listy. Po wybraniu aplikacji funkcji zostanie wyświetlona następująca strona:
+Poszczególne funkcje w aplikacji funkcji są wdrażane razem i są skalowane jednocześnie. Wszystkie funkcje w tym samym zakresie zasobów funkcji, na wystąpienie, jako aplikacja funkcji skaluje się. 
+
+Parametry połączenia, zmienne środowiskowe i inne ustawienia aplikacji są definiowane osobno dla każdej aplikacji funkcji. Wszelkie dane, które muszą być współużytkowane przez aplikacje funkcji, powinny być przechowywane zewnętrznie w utrwalonym magazynie.
+
+W tym artykule opisano sposób konfigurowania aplikacji funkcji i zarządzania nimi. 
+
+> [!TIP]  
+> Wiele opcji konfiguracji można także zarządzać za pomocą [Interfejs wiersza polecenia platformy Azure]. 
+
+## <a name="get-started-in-the-azure-portal"></a>Rozpocznij pracę w witrynie Azure Portal
+
+Aby rozpocząć, przejdź do [Azure Portal] i zaloguj się na koncie platformy Azure. Na pasku wyszukiwania w górnej części portalu wpisz nazwę aplikacji funkcji i wybierz ją z listy. Po wybraniu aplikacji funkcji zostanie wyświetlona następująca strona:
 
 ![Przegląd aplikacji funkcji w Azure Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
 
@@ -28,17 +39,37 @@ Możesz przejść do wszystkiego, czego potrzebujesz do zarządzania aplikacją 
 
 ## <a name="settings"></a>Ustawienia aplikacji
 
-Karta **Ustawienia aplikacji** obsługuje ustawienia, które są używane przez aplikację funkcji.
+Karta **Ustawienia aplikacji** obsługuje ustawienia, które są używane przez aplikację funkcji. Te ustawienia są przechowywane w postaci zaszyfrowanej i należy wybrać opcję **Pokaż wartości** , aby wyświetlić wartości w portalu. Dostęp do ustawień aplikacji można również uzyskać przy użyciu interfejsu wiersza polecenia platformy Azure.
+
+### <a name="portal"></a>Portal
+
+Aby dodać ustawienie w portalu, wybierz pozycję **nowe ustawienie aplikacji** i Dodaj nową parę klucz-wartość.
 
 ![Ustawienia aplikacji funkcji w Azure Portal.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
-Te ustawienia są przechowywane w postaci zaszyfrowanej i należy wybrać opcję **Pokaż wartości** , aby wyświetlić wartości w portalu.
+### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Aby dodać ustawienie, wybierz pozycję **nowe ustawienie aplikacji** i Dodaj nową parę klucz-wartość.
+[`az functionapp config appsettings list`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-list) Polecenie zwraca istniejące ustawienia aplikacji, jak w poniższym przykładzie:
+
+```azurecli-interactive
+az functionapp config appsettings list --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME>
+```
+
+[`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) Polecenie dodaje lub aktualizuje ustawienie aplikacji. Poniższy przykład tworzy ustawienie z kluczem o nazwie `CUSTOM_FUNCTION_APP_SETTING` i `12345`wartości:
+
+
+```azurecli-interactive
+az functionapp config appsettings set --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--settings CUSTOM_FUNCTION_APP_SETTING=12345
+```
+
+### <a name="use-application-settings"></a>Użyj ustawień aplikacji
 
 [!INCLUDE [functions-environment-variables](../../includes/functions-environment-variables.md)]
 
-W przypadku lokalnego tworzenia aplikacji funkcji te wartości są przechowywane w pliku projektu Local. Settings. JSON.
+Podczas lokalnego tworzenia aplikacji funkcji należy zachować lokalne kopie tych wartości w pliku projektu Local. Settings. JSON. Aby dowiedzieć się więcej, zobacz [plik ustawień lokalnych](functions-run-local.md#local-settings-file).
 
 ## <a name="platform-features"></a>Funkcje platformy
 
@@ -49,7 +80,7 @@ Aplikacje funkcji działają w programie i są obsługiwane przez platformę Azu
 > [!NOTE]
 > Nie wszystkie funkcje App Service są dostępne, gdy aplikacja funkcji jest uruchamiana w ramach planu hostingu zużycia.
 
-Pozostała część tego tematu koncentruje się na następujących App Service funkcjach w Azure Portal, które są przydatne w przypadku funkcji:
+Pozostała część tego artykułu koncentruje się na następujących App Service funkcjach w Azure Portal, które są przydatne w przypadku funkcji:
 
 + [Edytor App Service](#editor)
 + [Console](#console)
@@ -57,67 +88,63 @@ Pozostała część tego tematu koncentruje się na następujących App Service 
 + [Opcje wdrażania](#deployment)
 + [CORS](#cors)
 + [Uwierzytelnianie](#auth)
-+ [Definicja interfejsu API](#swagger)
 
 Aby uzyskać więcej informacji na temat sposobu pracy z ustawieniami App Service, zobacz [konfigurowanie Azure App Service ustawień](../app-service/configure-common.md).
 
 ### <a name="editor"></a>Edytor usługi App Service
 
-| | |
-|-|-|
-| ![Edytor App Service aplikacji funkcji.](./media/functions-how-to-use-azure-function-app-settings/function-app-appsvc-editor.png)  | Edytor App Service to zaawansowany edytor w portalu, którego można użyć do modyfikacji plików konfiguracji JSON i plików kodu. Wybranie tej opcji powoduje uruchomienie oddzielnej karty przeglądarki z podstawowym edytorem. Dzięki temu można zintegrować z repozytorium git, uruchamiać i debugować kod oraz modyfikować ustawienia aplikacji funkcji. Ten Edytor zapewnia ulepszone środowisko programistyczne dla funkcji w porównaniu z blokiem domyślnej aplikacji funkcji.    |
-
 ![Edytor App Service](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
+
+Edytor App Service to zaawansowany edytor w portalu, którego można użyć do modyfikacji plików konfiguracji JSON i plików kodu. Wybranie tej opcji powoduje uruchomienie oddzielnej karty przeglądarki z podstawowym edytorem. Dzięki temu można zintegrować z repozytorium git, uruchamiać i debugować kod oraz modyfikować ustawienia aplikacji funkcji. Ten Edytor zapewnia ulepszone środowisko programistyczne dla funkcji w porównaniu z wbudowanym edytorem funkcji.  
+
+Zalecamy rozważenie opracowywania funkcji na komputerze lokalnym. Podczas tworzenia lokalnie i publikowania na platformie Azure pliki projektu są tylko do odczytu w portalu. Aby dowiedzieć się więcej, zobacz temat [kod i test Azure Functions lokalnie](functions-develop-local.md).
 
 ### <a name="console"></a>Konsoli
 
-| | |
-|-|-|
-| ![Konsola aplikacji funkcji w Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-console.png) | Konsola w portalu jest idealnym narzędziem deweloperskim, gdy wolisz korzystać z aplikacji funkcji z poziomu wiersza polecenia. Typowe polecenia obejmują Tworzenie katalogów i plików oraz nawigację, a także wykonywanie plików wsadowych i skryptów. |
-
 ![Konsola aplikacji funkcji](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
+
+Konsola w portalu jest idealnym narzędziem deweloperskim, gdy wolisz korzystać z aplikacji funkcji z poziomu wiersza polecenia. Typowe polecenia obejmują Tworzenie katalogów i plików oraz nawigację, a także wykonywanie plików wsadowych i skryptów. 
+
+Podczas programowania lokalnego zalecamy używanie [Azure Functions Core Tools](functions-run-local.md) i [Interfejs wiersza polecenia platformy Azure].
 
 ### <a name="kudu"></a>Narzędzia zaawansowane (kudu)
 
-| | |
-|-|-|
-| ![Aplikacja funkcji kudu w Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-advanced-tools.png) | Zaawansowane narzędzia dla App Service (znane również jako kudu) zapewniają dostęp do zaawansowanych funkcji administracyjnych aplikacji funkcji. Z usługi kudu można zarządzać informacjami o systemie, ustawieniami aplikacji, zmiennymi środowiskowymi, rozszerzeniami witryn, nagłówkami HTTP i zmiennymi serwera. Możesz również uruchomić **kudu** , przechodząc do punktu końcowego SCM dla aplikacji funkcji, np.`https://<myfunctionapp>.scm.azurewebsites.net/` |
-
 ![Konfigurowanie kudu](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-
-### <a name="a-namedeploymentdeployment-options"></a><a name="deployment">Opcje wdrażania
-
-| | |
-|-|-|
-| ![Opcje wdrażania aplikacji funkcji w Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-deployment-source.png) | Funkcje umożliwiają tworzenie kodu funkcji na komputerze lokalnym. Następnie możesz przekazać projekt aplikacji funkcji lokalnych na platformę Azure. Oprócz tradycyjnego przekazywania FTP funkcje umożliwiają wdrażanie aplikacji funkcji przy użyciu popularnych rozwiązań ciągłej integracji, takich jak GitHub, Azure DevOps, Dropbox, Bitbucket i inne. Aby uzyskać więcej informacji, zobacz [wdrażanie ciągłe dla Azure Functions](functions-continuous-deployment.md). Aby przekazać ręcznie przy użyciu protokołu FTP lub lokalnego narzędzia Git, należy również [skonfigurować poświadczenia wdrożenia](functions-continuous-deployment.md#credentials). |
+Zaawansowane narzędzia dla App Service (znane również jako kudu) zapewniają dostęp do zaawansowanych funkcji administracyjnych aplikacji funkcji. Z usługi kudu można zarządzać informacjami o systemie, ustawieniami aplikacji, zmiennymi środowiskowymi, rozszerzeniami witryn, nagłówkami HTTP i zmiennymi serwera. Możesz również uruchomić **kudu** , przechodząc do punktu końcowego SCM dla aplikacji funkcji, np.`https://<myfunctionapp>.scm.azurewebsites.net/` 
 
 
-### <a name="cors"></a>CORS
+### <a name="deployment"></a>Centrum wdrażania
 
-| | |
-|-|-|
-| ![Funkcja CORS aplikacji funkcji w Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-cors.png) | Aby zapobiec wykonywaniu złośliwego kodu w usługach, App Service blokuje wywołania do aplikacji funkcji ze źródeł zewnętrznych. Funkcje obsługują współużytkowanie zasobów między źródłami (CORS), aby umożliwić zdefiniowanie "dozwolonych" dozwolonych źródeł, z których funkcje mogą akceptować żądania zdalne.  |
+W przypadku korzystania z rozwiązania do kontroli źródła w celu opracowywania i konserwowania kodu funkcji centrum wdrażania umożliwia tworzenie i wdrażanie z kontroli źródła. Projekt został skompilowany i wdrożony na platformie Azure podczas wprowadzania aktualizacji. Aby uzyskać więcej informacji, zobacz [technologie wdrażania w Azure Functions](functions-deployment-technologies.md).
 
-![Konfigurowanie mechanizmu CORS aplikacja funkcji](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
+### <a name="cors"></a>Współużytkowanie zasobów między źródłami
+
+Aby zapobiec wykonywaniu złośliwego kodu na kliencie, nowoczesne przeglądarki blokują żądania z aplikacji sieci Web do zasobów uruchomionych w oddzielnej domenie. [Współużytkowanie zasobów między źródłami (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS) umożliwia `Access-Control-Allow-Origin` zadeklarować, które pochodzenia mogą wywoływać punkty końcowe w aplikacji funkcji.
+
+#### <a name="portal"></a>Portal
+
+Po skonfigurowaniu listy **dozwolonych źródeł** dla aplikacji `Access-Control-Allow-Origin` funkcji nagłówek jest automatycznie dodawany do wszystkich odpowiedzi z punktów końcowych HTTP w aplikacji funkcji. 
+
+![Skonfiguruj listę CORS aplikacji funkcji](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
+
+Gdy jest używany symbol`*`wieloznaczny (), wszystkie pozostałe domeny zostaną zignorowane. 
+
+Użyj polecenia [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) , aby dodać domenę do listy dozwolonych źródeł. Poniższy przykład dodaje domenę contoso.com:
+
+```azurecli-interactive
+az functionapp cors add --name <FUNCTION_APP_NAME> \
+--resource-group <RESOURCE_GROUP_NAME> \
+--allowed-origins https://contoso.com
+```
+
+[`az functionapp cors show`](/cli/azure/functionapp/cors#az-functionapp-cors-show) Użyj polecenia, aby wyświetlić listę bieżących dozwolonych źródeł.
 
 ### <a name="auth"></a>Ponowne
 
-| | |
-|-|-|
-| ![Uwierzytelnianie aplikacji funkcji w Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-authentication.png) | Gdy funkcje używają wyzwalacza HTTP, można wymagać, aby wywołania były najpierw uwierzytelniane. App Service obsługuje uwierzytelnianie Azure Active Directory i logują się przy użyciu dostawców społecznościowych, takich jak Facebook, Microsoft i Twitter. Aby uzyskać szczegółowe informacje na temat konfigurowania konkretnych dostawców uwierzytelniania, zobacz [Omówienie uwierzytelniania Azure App Service](../app-service/overview-authentication-authorization.md). |
-
 ![Konfigurowanie uwierzytelniania dla aplikacji funkcji](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-authentication.png)
 
-
-### <a name="swagger"></a>Definicja interfejsu API
-
-| | |
-|-|-|
-| ![Definicja struktury Swagger interfejsu API aplikacji funkcji w Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-api-definition.png) | Funkcja obsługuje strukturę Swagger, aby umożliwić klientom łatwiejsze korzystanie z funkcji wyzwalanych przez protokół HTTP. Aby uzyskać więcej informacji na temat tworzenia definicji interfejsu API za pomocą struktury Swagger, odwiedź [hosta RESTful API with CORS w Azure App Service](../app-service/app-service-web-tutorial-rest-api.md). Można również użyć serwerów proxy usługi Functions do zdefiniowania pojedynczej powierzchni interfejsu API dla wielu funkcji. Aby uzyskać więcej informacji, zobacz [Praca z serwery proxy usługi Azure Functions](functions-proxies.md). |
-
-![Konfigurowanie interfejsu API aplikacja funkcji](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-apidef.png)
-
+Gdy funkcje używają wyzwalacza HTTP, można wymagać, aby wywołania były najpierw uwierzytelniane. App Service obsługuje uwierzytelnianie Azure Active Directory i logowanie się przy użyciu dostawców społecznościowych, takich jak Facebook, Microsoft i Twitter. Aby uzyskać szczegółowe informacje na temat konfigurowania konkretnych dostawców uwierzytelniania, zobacz [Omówienie uwierzytelniania Azure App Service](../app-service/overview-authentication-authorization.md). 
 
 
 ## <a name="next-steps"></a>Następne kroki
@@ -125,5 +152,5 @@ Aby uzyskać więcej informacji na temat sposobu pracy z ustawieniami App Servic
 + [Skonfiguruj ustawienia Azure App Service](../app-service/configure-common.md)
 + [Ciągłe wdrażanie dla usługi Azure Functions](functions-continuous-deployment.md)
 
-
-
+[Interfejs wiersza polecenia platformy Azure]: /cli/azure/
+[Azure Portal]: https://portal.azure.com

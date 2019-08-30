@@ -133,12 +133,6 @@
       href: concept-detecting-adult-content.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Korzystanie z przetwarzania obrazów
-      items:
-        - name: Java
-          href: Tutorials/java-tutorial.md
-        - name: JavaScript
-          href: Tutorials/javascript-tutorial.md
     - name: Wywoływanie interfejsu API przetwarzania obrazów
       href: Vision-API-How-to-Topics/HowToCallVisionAPI.md
     - name: Korzystanie z kontenerów

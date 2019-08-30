@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 08/29/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: ef51a1b130323a8799d5334d8d043fda08fcc7ef
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 6ea4dbf07c8ef99c43dbe7add1ae9270056f708c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69896961"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164325"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli-preview"></a>Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera lub obiektu BLOB za pomocą interfejsu wiersza polecenia platformy Azure (wersja zapoznawcza)
 
@@ -61,7 +61,7 @@ W `--auth-mode login` przypadku tworzenia sygnatury dostępu współdzielonego `
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>Tworzenie sygnatury dostępu współdzielonego użytkownika dla kontenera
 
-Aby utworzyć sygnaturę dostępu współdzielonego dla kontenera za pomocą interfejsu wiersza polecenia platformy Azure, wywołaj polecenie [AZ Storage Container Generate-SAS](/cli/azure/storage/container#az-storage-container-generate-sas) .
+Aby utworzyć sygnaturę dostępu współdzielonego delegowania użytkowników dla kontenera za pomocą interfejsu wiersza polecenia platformy Azure, wywołaj polecenie [AZ Storage Container Generate-SAS](/cli/azure/storage/container#az-storage-container-generate-sas) .
 
 Uprawnienia obsługiwane w przypadku delegowania SYGNATURy dostępu użytkownika w kontenerze obejmują dodawanie, tworzenie, usuwanie, wyświetlanie, Odczyt i zapis. Uprawnienia można określić pojedynczo lub łącznie. Aby uzyskać więcej informacji o tych uprawnieniach, zobacz [Tworzenie skojarzeń zabezpieczeń delegowania użytkownika](/rest/api/storageservices/create-user-delegation-sas).
 
@@ -85,7 +85,7 @@ se=2019-07-27&sp=r&sv=2018-11-09&sr=c&skoid=<skoid>&sktid=<sktid>&skt=2019-07-26
 
 ### <a name="create-a-user-delegation-sas-for-a-blob"></a>Tworzenie sygnatury dostępu współdzielonego użytkownika dla obiektu BLOB
 
-Aby utworzyć sygnaturę dostępu współdzielonego delegowania użytkownika dla obiektu BLOB za pomocą interfejsu wiersza polecenia platformy Azure, wywołaj polecenie [AZ Storage BLOB Generate-SAS](/cli/azure/storage/blob#az-storage-blob-generate-sas) .
+Aby utworzyć sygnaturę dostępu współdzielonego dla delegowania użytkowników dla obiektu BLOB za pomocą interfejsu wiersza polecenia platformy Azure, wywołaj polecenie [AZ Storage BLOB Generate-SAS](/cli/azure/storage/blob#az-storage-blob-generate-sas) .
 
 Obsługiwane uprawnienia do delegowania przez użytkownika funkcji sygnatury dostępu współdzielonego w obiekcie blob obejmują dodawanie, tworzenie, usuwanie, Odczyt i zapis. Uprawnienia można określić pojedynczo lub łącznie. Aby uzyskać więcej informacji o tych uprawnieniach, zobacz [Tworzenie skojarzeń zabezpieczeń delegowania użytkownika](/rest/api/storageservices/create-user-delegation-sas).
 
@@ -112,6 +112,21 @@ https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?se=2019-
 
 > [!NOTE]
 > Sygnatura dostępu współdzielonego użytkownika nie obsługuje definiowania uprawnień z przechowywanymi zasadami.
+
+## <a name="revoke-a-user-delegation-sas"></a>Odwoływanie sygnatury dostępu współdzielonego użytkownika
+
+Aby odwołać sygnaturę dostępu współdzielonego delegowania użytkownika z interfejsu wiersza polecenia platformy Azure, wywołaj polecenie [AZ Storage account REVOKE-delegowanie-Keys](/cli/azure/storage/account#az-storage-account-revoke-delegation-keys) . To polecenie odwołuje wszystkie klucze delegowania użytkowników skojarzone z określonym kontem magazynu. Wszystkie sygnatury dostępu współdzielonego skojarzone z tymi kluczami są unieważnione.
+
+Pamiętaj, aby zastąpić wartości symboli zastępczych w nawiasach ostrych własnymi wartościami:
+
+```azurecli-interactive
+az storage account revoke-delegation-keys \
+    --name <storage-account> \
+    --resource-group <resource-group>
+```
+
+> [!IMPORTANT]
+> Zarówno przypisanie klucza delegowania użytkownika, jak i roli RBAC są buforowane przez usługę Azure Storage, dzięki czemu może wystąpić opóźnienie między zainicjowaniem procesu odwoływania a istniejącym skojarzeniem SAS delegowania użytkownika.
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -1,5 +1,5 @@
 ---
-title: Pisanie w języku C# funkcji zdefiniowanej przez użytkownika dla zadania usługi Azure Stream Analytics Edge w programie Visual Studio (wersja zapoznawcza)
+title: Pisanie C# funkcji zdefiniowanych przez użytkownika dla Azure Stream Analytics zadań brzegowych w programie Visual Studio (wersja zapoznawcza)
 description: Dowiedz się, jak pisać w języku C# funkcje zdefiniowane przez użytkownika dla zadań usługi Stream Analytics Edge w programie Visual Studio.
 services: stream-analytics
 author: mamccrea
@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5597109a65a8af88bf286977d039656635565ed9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cadc603a94d5d17ad2df419f8507c37f9e3272f8
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60204237"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173308"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-edge-job-preview"></a>Samouczek: Pisanie w języku C# funkcji zdefiniowanej przez użytkownika dla zadania usługi Azure Stream Analytics Edge (wersja zapoznawcza)
 
@@ -136,7 +136,7 @@ Funkcję zdefiniowaną przez użytkownika w języku C# można debugować lokalni
 
     ![Dodawanie punktów przerwania do zdefiniowanej przez użytkownika funkcji usługi Stream Analytics w programie Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-breakpoints.png)
 
-2. Naciśnij klawisz **F5**, aby uruchomić debugowanie. Zgodnie z oczekiwaniami program będzie zatrzymywać się w punktach przerwania.
+2. Naciśnij klawisz **F5** można rozpocząć debugowania. Zgodnie z oczekiwaniami program będzie zatrzymywać się w punktach przerwania.
 
     ![Wyświetlanie wyników debugowania zdefiniowanej przez użytkownika funkcji usługi Stream Analytics](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-debug.png)
 
@@ -148,7 +148,7 @@ Po przetestowaniu zapytania w środowisku lokalnym wybierz pozycję **Prześlij 
 ## <a name="deploy-to-iot-edge-devices"></a>Wdrażanie na urządzeniach usługi IoT Edge
 Zadanie usługi Stream Analytics jest teraz gotowe do wdrożenia jako moduł usługi IoT Edge. Postępuj zgodnie z instrukcjami z [przewodnika Szybki start dotyczącego usługi IoT Edge](https://docs.microsoft.com/azure/iot-edge/quickstart), aby utworzyć centrum IoT Hub, zarejestrować urządzenie usługi IoT Edge, a następnie zainstaluj i uruchom środowisko uruchomieniowe usługi IoT Edge na urządzeniu. Następnie postępuj zgodnie z instrukcjami z samouczka dotyczącego [wdrażania zadania](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics#deploy-the-job), aby wdrożyć zadanie usługi Stream Analytics jako moduł usługi IoT Edge. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku utworzono prostą funkcję zdefiniowaną przez użytkownika w języku C# przy użyciu metody CodeBehind, opublikowano zadanie na platformie Azure i wdrożono zadanie na urządzeniach usługi IoT Edge przy użyciu portalu usługi IoT Hub. 
 

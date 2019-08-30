@@ -1,26 +1,23 @@
 ---
 title: Tworzenie aplikacji funkcji przy użyciu witryny Azure Portal | Microsoft Docs
-description: Utwórz nową aplikację funkcji w usłudze Azure App Service z poziomu portalu.
-services: functions
-documentationcenter: na
+description: Utwórz nową aplikację funkcji na platformie Azure z poziomu portalu.
 author: ggailey777
-manager: jeconnoc
-ms.assetid: ''
+manager: gwallace
 ms.service: azure-functions
-ms.topic: quickstart
-ms.date: 04/11/2017
+ms.topic: conceptual
+ms.date: 08/29/2019
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: eb362ec652b306a12a41e7e96dcbc86638369c17
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 93bce0404c9b3bf630416557726dca0c856528c3
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085889"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170801"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Tworzenie aplikacji funkcji przy użyciu witryny Azure Portal
 
-Aplikacje funkcji platformy Azure korzystają z infrastruktury usługi Azure App Service. W tym temacie opisano sposób tworzenia aplikacji funkcji w witrynie Azure Portal. Aplikacja funkcji to kontener hostujący wykonywanie poszczególnych funkcji. Po utworzeniu aplikacji funkcji w planie hostingu usługi App Service aplikacja ta może korzystać ze wszystkich funkcji usługi App Service.
+W tym temacie pokazano, jak za pomocą Azure Functions utworzyć aplikację funkcji w Azure Portal. Aplikacja funkcji to kontener hostujący wykonywanie poszczególnych funkcji. 
 
 ## <a name="create-a-function-app"></a>Tworzenie aplikacji funkcji
 
@@ -34,15 +31,15 @@ Po utworzeniu aplikacji funkcji możesz utworzyć indywidualne funkcje w jednym 
 
 ## <a name="service-plans"></a>Plany usługi
 
-Usługa Azure Functions oferuje dwa różne plany usługi: Plan zużycia i plan usługi App Service. W planie Zużycie moc obliczeniowa jest automatycznie alokowana, gdy uruchomiony jest Twój kod, oraz jest skalowana w poziomie na potrzeby obsługi obciążenia, a następnie skalowana w pionie, gdy kod nie jest uruchomiony. Plan usługi App Service daje aplikacji funkcji dostęp do wszystkich funkcji usługi App Service. Musisz wybrać plan podczas tworzenia aplikacji funkcji i obecnie nie można go zmienić. Aby uzyskać więcej informacji, zobacz [Wybieranie planu hostingu usługi Azure Functions](functions-scale.md).
+Azure Functions ma trzy różne plany usługi: Plan zużycia, plan Premium i dedykowany plan (App Service). Musisz wybrać swój plan usługi, gdy aplikacja funkcji zostanie utworzona i nie można jej później zmienić. Aby uzyskać więcej informacji, zobacz [Wybieranie planu hostingu usługi Azure Functions](functions-scale.md).
 
-Jeśli zamierzasz uruchamiać funkcje w języku JavaScript w planie usługi App Service, wybierz plan z mniejszą liczbą rdzeni. Aby uzyskać więcej informacji, zobacz [Dokumentacja języka JavaScript dla usługi Functions](functions-reference-node.md#choose-single-vcpu-app-service-plans).
+Jeśli planujesz uruchamianie funkcji JavaScript w ramach dedykowanego planu (App Service), należy wybrać plan z mniejszą liczbą rdzeni. Aby uzyskać więcej informacji, zobacz [Dokumentacja języka JavaScript dla usługi Functions](functions-reference-node.md#choose-single-vcpu-app-service-plans).
 
 <a name="storage-account-requirements"></a>
 
 ## <a name="storage-account-requirements"></a>Wymagania konta magazynu
 
-Podczas tworzenia aplikacji funkcji w usłudze App Service należy utworzyć konto usługi Azure Storage ogólnego przeznaczenia obsługujące usługi Blob Storage, Queue Storage i Table Storage lub połączyć takie konto. Wewnętrznie usługa Functions używa usługi Storage na potrzeby operacji takich jak zarządzanie wyzwalaczami i rejestrowanie wykonań funkcji. Niektóre konta magazynu nie obsługują kolejek i tabel, na przykład konta magazynu tylko dla obiektów blob, konta usługi Azure Premium Storage i konta magazynu ogólnego przeznaczenia z replikacją ZRS. Te konta są odfiltrowywane z bloku Konto magazynu podczas tworzenia aplikacji funkcji.
+Podczas tworzenia aplikacji funkcji należy utworzyć konto usługi Azure Storage ogólnego przeznaczenia lub połączyć się z nim, które obsługuje magazyn obiektów blob, kolejek i tabel. Wewnętrznie usługa Functions używa usługi Storage na potrzeby operacji takich jak zarządzanie wyzwalaczami i rejestrowanie wykonań funkcji. Niektóre konta magazynu nie obsługują kolejek i tabel, na przykład konta magazynu tylko dla obiektów blob, konta usługi Azure Premium Storage i konta magazynu ogólnego przeznaczenia z replikacją ZRS. Te konta są odfiltrowywane z bloku Konto magazynu podczas tworzenia aplikacji funkcji.
 
 >[!NOTE]
 >Podczas korzystania z planu hostingu Zużycie kod funkcji i pliki konfiguracji powiązania są przechowywane w usłudze Azure File Storage na głównym koncie magazynu. Po usunięciu głównego konta magazynu ta zawartość zostanie usunięta i nie będzie można jej odzyskać.

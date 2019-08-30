@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: 1459b6fc45bb3d875b4869d1dcb4302dec21eb96
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: bc32ce59a7ec99278fb193f375d4ca945c227d2f
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114801"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172188"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatyzowanie kompilacji i konserwacji obrazów kontenerów za pomocą zadań ACR
 
@@ -49,6 +49,13 @@ W poniższej tabeli przedstawiono kilka przykładów obsługiwanych lokalizacji 
 | Gałąź GitHub | Określona gałąź repozytorium GitHub.| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | Podfolder usługi GitHub | Pliki znajdujące się w podfolderze repozytorium GitHub. Przykład przedstawia kombinację specyfikacji gałęzi i podfolderu. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | Plik tar zdalnego | Pliki skompresowanego Archiwum na zdalnym serwerze WebServer. | `http://remoteserver/myapp.tar.gz` |
+
+Domyślnie zadania ACR kompilują obrazy dla systemu operacyjnego Linux i architektury amd64. `--platform` Określ tag do kompilowania obrazów systemu Windows lub dla innych architektur w systemie Linux. Określ system operacyjny i opcjonalnie obsługiwaną architekturę w formacie systemu operacyjnego/architektury (na przykład `--platform Linux/arm`). W przypadku architektur ARM Opcjonalnie określ wariant w formacie OS/Architecture/Variant (na przykład `--platform Linux/arm64/v8`):
+
+| OS | Architektura|
+| --- | ------- | 
+| Linux | Procesor<br/>ARM<br/>arm64<br/>386 |
+| Windows | Procesor |
 
 Zadania ACR są zaprojektowane jako pierwotny cykl życia kontenera. Na przykład Zintegruj zadania ACR w rozwiązaniu CI/CD. Wykonanie polecenia [AZ login][az-login] z jednostką [usługi][az-login-service-principal]powoduje, że rozwiązanie Ci/CD może wydać polecenie [AZ ACR Build][az-acr-build] , aby uruchomić kompilacje obrazu.
 
