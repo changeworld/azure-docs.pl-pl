@@ -1,105 +1,107 @@
 ---
-title: Przejdź interfejsów API Azure Twins cyfrowych | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak typowych wzorców zapytań interfejsów API zarządzania Twins cyfrowych platformy Azure.
+title: Nawigowanie po interfejsie API Digital bliźniaczych reprezentacji platformy Azure | Microsoft Docs
+description: Dowiedz się, jak często spotykane są zapytania dotyczące interfejsów API usługi Azure Digital bliźniaczych reprezentacji Management.
 author: kingdomofends
 manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 08/29/2019
 ms.author: v-adgera
-ms.openlocfilehash: da1493d2d52f2c8a964df3b72c1622a9c6b66abf
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 8472a86800d13cedd228ca881a7c095ff748350a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67719853"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172820"
 ---
-# <a name="how-to-use-azure-digital-twins-management-apis"></a>Jak używać interfejsów API zarządzania Twins cyfrowych platformy Azure
+# <a name="how-to-use-azure-digital-twins-management-apis"></a>Jak używać interfejsów API usługi Azure Digital bliźniaczych reprezentacji Management
 
-Interfejsy API umożliwiające zarządzanie Twins cyfrowych platformy Azure udostępniają zaawansowane funkcje dla aplikacji IoT. W tym artykule pokazano, jak przechodzić przez strukturę interfejsu API.  
+Interfejsy API usługi Azure Digital bliźniaczych reprezentacji Management zapewniają zaawansowane funkcje dla aplikacji IoT. W tym artykule pokazano, jak nawigować przez strukturę interfejsu API.  
 
 ## <a name="api-summary"></a>Podsumowanie interfejsu API
 
-Na poniższej liście przedstawiono składniki cyfrowego interfejsów API bliźniaczych reprezentacji.
+Na poniższej liście przedstawiono składniki interfejsów API Digital bliźniaczych reprezentacji.
 
-* [/ spacje](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces): Te interfejsy API wchodzić w interakcje z lokalizacji fizycznych w ustawieniach. Te ułatwiają tworzenie, usuwanie i zarządzanie cyfrowego mapowania sieci lokalizacji fizycznych w formie [przestrzenne wykresu](concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph).
+* [/Spaces](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces): Te interfejsy API współpracują z lokalizacjami fizycznymi w instalatorze. Te informacje ułatwiają tworzenie, usuwanie i Zarządzanie cyfrowymi mapowaniami lokalizacji fizycznych w postaci [wykresu przestrzennego](concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph).
 
-* [/Devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices): Te interfejsy API wchodzić w interakcje z urządzeniami w ustawieniach. Te urządzenia mogą zarządzać co najmniej jeden czujników. Na przykład urządzenie może być telefonu, pod czujników urządzenia Raspberry Pi lub bramy lora utworzonej i tak dalej.
+* [/Devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices): Te interfejsy API współpracują z urządzeniami w instalatorze. Urządzenia te mogą zarządzać jedną lub większą liczbą czujników. Na przykład urządzenie może być telefonem lub Raspberry z czujnikiem pi lub bramą Lora utworzonej i tak dalej.
 
-* [/Sensors](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Sensors): Te interfejsy API ułatwiają komunikowania się z czujników skojarzonych z urządzeń i sieci lokalizacji fizycznych. Czujników, Zapisz i Wyślij otoczenia wartości, które następnie mogą być używane do manipulowania środowiska przestrzennych.  
+* [/Sensors](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Sensors): Te interfejsy API pomagają w komunikacji z czujnikami skojarzonymi z urządzeniami i lokalizacjami fizycznymi. Czujniki rejestrują i wysyłają wartości otoczenia, których następnie można użyć do manipulowania środowiskiem przestrzennym.  
 
-* [/Resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources): Te interfejsy API ułatwiają konfigurowanie zasobów, takich jak usługi IoT hub, wystąpienia Twins cyfrowych.
+* [/resources](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Resources): Te interfejsy API ułatwiają konfigurowanie zasobów, takich jak centrum IoT, dla wystąpienia bliźniaczych reprezentacji cyfrowych.
 
-* [/ typów](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Types): Te interfejsy API umożliwiają skojarzenie rozszerzone typy z obiektów reprezentacje urządzeń cyfrowych, można dodać szczególne cechy do tych obiektów. Te typy umożliwiają łatwe filtrowanie i grupowanie obiektów w Interfejsie użytkownika i funkcje niestandardowe, które przetwarzają dane telemetryczne. Przykłady typów rozszerzonej *DeviceType*, *SensorType*, *SensorDataType*, *SpaceType*, *SpaceSubType* , *SpaceBlobType*, *SpaceResourceType*i tak dalej.
+* [/Types](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Types): Te interfejsy API umożliwiają kojarzenie rozszerzonych typów z obiektami Digital bliźniaczych reprezentacji, aby dodać do tych obiektów określone cechy. Te typy umożliwiają łatwe filtrowanie i grupowanie obiektów w interfejsie użytkownika oraz funkcji niestandardowych, które przetwarzają dane telemetryczne. Przykłady rozszerzonych typów to typ *urządzenia*, *SensorType*, *SensorDataType*, *spacetype*, *SpaceSubType*, *SpaceBlobType*, *SpaceResourceType*i tak dalej.
 
-* [/ontologies](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Ontologies): Te interfejsy API ułatwiają zarządzanie ontologie, które są kolekcjami typów rozszerzonej. Ontologie podać nazwy dla typów obiektów, zgodnie z przestrzeni fizycznej, które reprezentują. Na przykład *BACnet* ontology zapewnia określonych nazw *typy czujnika*, *typy danych*, *datasubtypes*i *dataunittypes*. Ontologie zarządzanych i utworzone przez usługę. Użytkownikom można załadować i rozładować ontologie. Po załadowaniu ontology są wszystkie jego nazwy skojarzonych typów, włączona i gotowa do udostępnienia w grafie przestrzennych. 
+* [/ontologies](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Ontologies): Te interfejsy API ułatwiają zarządzanie ontologie, które są kolekcjami typów rozszerzonych. Ontologie Podaj nazwy dla typów obiektów zgodnie z ich rozmiarem fizycznym. Na przykład *BACnet* Ontology dostarcza określonych nazw dla *typów czujników*, *typów*danych, *datasubtypes*i *dataunittypes*. Ontologie są zarządzane i tworzone przez usługę. Użytkownicy mogą ładować i zwalniać ontologie. Po załadowaniu Ontology wszystkie skojarzone z nim nazwy typów są włączane i gotowe do aprowizacji na wykresie przestrzennym. 
 
-* [/propertyKeys](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/PropertyKeys): Te interfejsy API umożliwia tworzenie niestandardowych właściwości usługi *miejsca do magazynowania*, *urządzeń*, *użytkowników*, i *czujników*. Te właściwości są tworzone jako pary klucz/wartość. Można zdefiniować typ danych dla tych właściwości, ustawiając ich *PrimitiveDataType*. Na przykład można zdefiniować właściwości o nazwie *BasicTemperatureDeltaProcessingRefreshTime* typu *uint* czujniki, a następnie przypisz wartości dla tej właściwości dla każdego z czujników. Ograniczenia te wartości można również dodać podczas tworzenia właściwości, takie jak *Min* i *Max* zakresów adresów, a także dozwolonych wartości *ValidationData*.
+* [/propertyKeys](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/PropertyKeys): Za pomocą tych interfejsów API można tworzyć niestandardowe właściwości dla *miejsc*, *urządzeń*, *użytkowników*i *czujników*. Te właściwości są tworzone jako pary klucz/wartość. Można zdefiniować typ danych dla tych właściwości, ustawiając ich *PrimitiveDataType*. Na przykład można zdefiniować właściwość o nazwie *BasicTemperatureDeltaProcessingRefreshTime* typu *uint* dla czujników, a następnie przypisać wartość tej właściwości dla każdej z czujników. Możesz również dodać ograniczenia dla tych wartości podczas tworzenia właściwości, takiej jak *minimalna* i *Maksymalna liczba* zakresów, a także dozwolonych wartości jako *ValidationData*.
 
-* [/matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers): Te interfejsy API umożliwiają określenie warunków, które chcesz oceniać przychodzące dane urządzenie. Zobacz [w tym artykule](concepts-user-defined-functions.md#matchers) Aby uzyskać więcej informacji. 
+* [/matchers](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Matchers): Te interfejsy API umożliwiają określenie warunków, które chcesz oszacować z danych urządzenia przychodzącego. Aby uzyskać więcej informacji, zobacz [ten artykuł](concepts-user-defined-functions.md#matchers) . 
 
-* [/userDefinedFunctions](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/UserDefinedFunctions): Te interfejsy API umożliwiają tworzenie, delete lub update warunki niestandardowe funkcja, która będzie wykonania, gdy zdefiniowana przez *dopasowujące jednostki* występują do przetwarzania danych pochodzących z konfiguracji. Zobacz [w tym artykule](concepts-user-defined-functions.md#user-defined-functions) Aby uzyskać więcej informacji na temat tych funkcji niestandardowych, nazywany również *funkcje zdefiniowane przez użytkownika*. 
+* [/userDefinedFunctions](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/UserDefinedFunctions): Te interfejsy API umożliwiają tworzenie, usuwanie i aktualizowanie funkcji niestandardowej, która będzie wykonywana, gdy wystąpią warunki zdefiniowane przez *dopasowania* , do przetwarzania danych pochodzących z Instalatora. Zobacz [ten artykuł](concepts-user-defined-functions.md#user-defined-functions) , aby uzyskać więcej informacji o tych funkcjach niestandardowych, nazywanych również *funkcjami zdefiniowanymi przez użytkownika*. 
 
-* [/Endpoints](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Endpoints): Te interfejsy API umożliwiają tworzenie punktów końcowych, dzięki czemu rozwiązania cyfrowe Twins może komunikować się z innymi usługami platformy Azure do przechowywania danych i analiz. Odczyt [w tym artykule](concepts-events-routing.md) Aby uzyskać więcej informacji. 
+* [/Endpoints](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/Endpoints): Te interfejsy API umożliwiają tworzenie punktów końcowych, dzięki czemu rozwiązanie Digital bliźniaczych reprezentacji może komunikować się z innymi usługami platformy Azure w celu przechowywania i analizowania danych. Przeczytaj [ten artykuł](concepts-events-routing.md) , aby uzyskać więcej informacji. 
 
-* [/keyStores](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/KeyStores): Te interfejsy API umożliwiają zarządzanie magazynami kluczy zabezpieczeń dla Twojego miejsca do magazynowania. Te magazyny można przechowywać Kolekcja kluczy zabezpieczeń i umożliwiają łatwe pobieranie najnowszych klucze.
+* [/keyStores](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#/KeyStores): Te interfejsy API umożliwiają Zarządzanie magazynami kluczy zabezpieczeń dla miejsc. Te magazyny mogą zawierać kolekcję kluczy zabezpieczeń i umożliwiają łatwe pobieranie najnowszych prawidłowych kluczy.
 
-* [/ Użytkownicy](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Users): Te interfejsy API umożliwiają tworzenie skojarzeń użytkowników z Twojego miejsca do magazynowania, aby zlokalizować te osoby, gdy jest to wymagane. 
+* [/users](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Users): Te interfejsy API umożliwiają kojarzenie użytkowników ze spacjami, aby odszukać te osoby w razie potrzeby. 
 
-* [/system](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/System): Te interfejsy API umożliwiają zarządzanie ustawienia systemowe, takie jak domyślne typy miejsc do magazynowania i czujniki. 
+* [/odzyskiwanie](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/System): Te interfejsy API umożliwiają zarządzanie ustawieniami całego systemu, takimi jak domyślne typy spacji i czujników. 
 
-* [/roleAssignments](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/RoleAssignments): Te interfejsy API umożliwiają skojarzenie ról z jednostki, takie jak identyfikator użytkownika, identyfikator funkcji zdefiniowanej przez użytkownika, itp. Każdy przypisania roli zawiera identyfikator obiektu do skojarzenia typu jednostki, identyfikator roli do skojarzenia, identyfikator dzierżawy i ścieżkę, która definiuje górny limit liczby zasobów, których jednostki może uzyskać dostęp za pomocą tego skojarzenia. Odczyt [w tym artykule](security-role-based-access-control.md) Aby uzyskać więcej informacji.
+* [/roleAssignments](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/RoleAssignments): Te interfejsy API umożliwiają kojarzenie ról z jednostkami, takimi jak identyfikator użytkownika, identyfikator funkcji zdefiniowany przez użytkownika itd. Każde przypisanie roli obejmuje identyfikator jednostki do skojarzenia, typ jednostki, identyfikator roli do skojarzenia, identyfikator dzierżawy i ścieżkę definiującą górny limit zasobu, do którego jednostka może uzyskać dostęp przy użyciu tego skojarzenia. Przeczytaj [ten artykuł](security-role-based-access-control.md) , aby uzyskać więcej informacji.
 
 
-## <a name="api-navigation"></a>Interfejs API nawigacji
+## <a name="api-navigation"></a>Nawigacja interfejsu API
 
-Cyfrowy interfejsów API Twins obsługuje filtrowanie i nawigacja w całym wykresie przestrzennych, korzystając z następujących parametrów:
+Interfejsy API Digital bliźniaczych reprezentacji obsługują filtrowanie i nawigowanie na całym wykresie przestrzennym przy użyciu następujących parametrów:
 
-- **spaceId**: Interfejs API będzie filtrować wyniki według identyfikatora danego miejsca. Ponadto flagę logiczną **useParentSpace** dotyczy [/spacje](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces) interfejsów API, co oznacza, że identyfikator danej obszaru odwołuje się do miejsca nadrzędnego, zamiast bieżącego miejsca. 
+- **spaceId**: Interfejs API będzie filtrować wyniki według danego identyfikatora obszaru. Dodatkowo Flaga logiczna **useParentSpace** ma zastosowanie do interfejsów API [/Spaces](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Spaces) , co oznacza, że dany identyfikator obszaru odwołuje się do przestrzeni nadrzędnej zamiast bieżącego obszaru. 
 
-- **minLevel** i **maxLevel**: Główny spacje są uznawane za na poziomie 1. Miejsca do magazynowania z elementu nadrzędnego miejsce na poziomie *n* znajdują się na poziomie *n + 1*. Przy użyciu zestawu tych wartości można filtrować wyniki na określonym poziomie. Są to wartości włącznie po ustawieniu. W tym samym poziomie co ich najbliższe miejsca są traktowane jako urządzeń, czujników i innych obiektów. Aby uzyskać wszystkie obiekty na danym poziomie, ustaw obie **minLevel** i **maxLevel** taką samą wartość.
+- **minLevel** i **maxLevel**: Miejsca główne są uznawane za na poziomie 1. Spacje z przestrzenią nadrzędną na poziomie *n* są na poziomie *n + 1*. Po ustawieniu tych wartości można filtrować wyniki na określonych poziomach. Te wartości łączą się po ustawieniu. Urządzenia, czujniki i inne obiekty są uważane za znajdujące się na tym samym poziomie co najbliższe miejsce. Aby uzyskać wszystkie obiekty na danym poziomie, ustaw wartości **minLevel** i **maxLevel** na taką samą wartość.
 
-- **minRelative** i **maxRelative**: Gdy te filtry są podane, odpowiedniego poziomu jest względem poziomu identyfikator danego obszaru:
-   - Poziom względną *0* jest tym samym poziomie jak identyfikator danego miejsca.
-   - Poziom względną *1* reprezentuje miejsca do magazynowania na tym samym poziomie jako element podrzędny danego miejsca identyfikatora. Poziom względną *n* reprezentuje niższe niż określona przestrzeń przez miejsca do magazynowania *n* poziomów.
-   - Poziom względną *-1* reprezentuje miejsca do magazynowania na tym samym poziomie miejsca nadrzędny określonego miejsca.
+- **minRelative** i **maxRelative**: Po otrzymaniu tych filtrów odpowiedni poziom jest określany względem poziomu danego obszaru:
+   - Poziom względny *0* to ten sam poziom, co dany identyfikator obszaru.
+   - Poziom względny *1* oznacza spacje na tym samym poziomie co elementy podrzędne danego identyfikatora obszaru. Poziom względny *n* reprezentuje spacje mniejsze niż określone miejsce o *n* poziomach.
+   - Poziom względny *-1* oznacza spacje na tym samym poziomie co przestrzeń nadrzędna określonego obszaru.
 
-- **Przechodzenie przez**: Umożliwia przechodzenie w dowolnym kierunku z Identyfikatorem danego miejsca określony przez następujące wartości.
-   - **Brak**: Ta wartość domyślna filtrów identyfikator danego miejsca.
-   - **Dół**: Filtruje według Identyfikatora danego miejsca i jego elementy podrzędne. 
-   - **Się**: Filtruje według Identyfikatora danego miejsca i jego elementów nadrzędnych. 
-   - **Zakres**: Filtruje poziomą część przestrzenne programu graph na tym samym poziomie jak identyfikator danego miejsca. Musi on **minRelative** lub **maxRelative** należy ustawić wartość true. 
+- **Przechodzenie**: Umożliwia przechodzenie w dowolnym kierunku z danego identyfikatora obszaru określonego przez następujące wartości.
+   - **Brak**: Ta wartość domyślna jest filtrowana dla danego identyfikatora obszaru.
+   - **W dół**: Te filtry według danego identyfikatora obszaru i jego elementów podrzędnych. 
+   - W **górę**: Te filtry według danego identyfikatora obszaru i jego elementów nadrzędnych. 
+   - **Zakres**: To filtruje poziomą część wykresu przestrzennego na tym samym poziomie, co dany identyfikator obszaru. Wymaga to ustawienia wartości **minRelative** lub **maxRelative** . 
 
 
 ### <a name="examples"></a>Przykłady
 
-Na poniższej liście przedstawiono kilka przykładów nawigację [/devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices) interfejsów API. Należy pamiętać, że symbol zastępczy `YOUR_MANAGEMENT_API_URL` odwołuje się do identyfikatora URI cyfrowego interfejsów API bliźniaczych reprezentacji w formacie `https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0/`, gdzie `YOUR_INSTANCE_NAME` to nazwa wystąpienia usługi Azure cyfrowego bliźniaczych reprezentacji i `YOUR_LOCATION` jest region, w którym znajduje się wystąpienie usługi.
+Na poniższej liście przedstawiono kilka przykładów nawigacji za pomocą interfejsów API [/Devices](https://docs.westcentralus.azuresmartspaces.net/management/swagger/ui/index#!/Devices) . Należy zauważyć, że `YOUR_MANAGEMENT_API_URL` symbol zastępczy odnosi się do identyfikatora URI interfejsów API Digital `https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/api/v1.0/`bliźniaczych reprezentacji w `YOUR_INSTANCE_NAME` formacie, gdzie jest nazwą wystąpienia usługi Azure Digital bliźniaczych reprezentacji i `YOUR_LOCATION` jest regionem, w którym jest hostowane wystąpienie.
 
-- `YOUR_MANAGEMENT_API_URL/devices?maxLevel=1` Zwraca wszystkie urządzenia podłączone do głównego miejsca do magazynowania.
-- `YOUR_MANAGEMENT_API_URL/devices?minLevel=2&maxLevel=4` Zwraca wszystkie urządzenia dołączone do miejsca do magazynowania poziomów 2, 3 lub 4.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId` Zwraca wszystkie urządzenia podłączone bezpośrednio do mySpaceId.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down` Zwraca wszystkie urządzenia podłączone do mySpaceId lub jeden z jego obiektów podrzędnych.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true` Zwraca wszystkie urządzenia podłączone do elementów podrzędnych mySpaceId, z wyłączeniem mySpaceId.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true&maxLevel=1&maxRelative=true` Zwraca wszystkie urządzenia podłączone do bezpośrednie elementy podrzędne mySpaceId.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Up&maxLevel=-1&maxRelative=true` Zwraca wszystkie urządzenia podłączone do jednego z elementów nadrzędnych mySpaceId.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&maxLevel=5` Zwraca wszystkie urządzenia podłączone do obiektów podrzędnych mySpaceId, znajdujących się na poziomie mniejsze niż lub równy 5.
-- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true` Zwraca wszystkie urządzenia dołączone do miejsca do magazynowania, które znajdują się na tym samym poziomie co mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?maxLevel=1`zwraca wszystkie urządzenia dołączone do miejsc głównych.
+- `YOUR_MANAGEMENT_API_URL/devices?minLevel=2&maxLevel=4`zwraca wszystkie urządzenia dołączone do miejsc o poziomach 2, 3 lub 4.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId`zwraca wszystkie urządzenia bezpośrednio dołączone do mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down`zwraca wszystkie urządzenia dołączone do mySpaceId lub jednego z jego obiektów podrzędnych.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true`zwraca wszystkie urządzenia dołączone do elementów podrzędnych elementu mySpaceId, z wyłączeniem mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&minLevel=1&minRelative=true&maxLevel=1&maxRelative=true`zwraca wszystkie urządzenia dołączone do bezpośrednich elementów podrzędnych mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Up&maxLevel=-1&maxRelative=true`zwraca wszystkie urządzenia dołączone do jednego z elementów nadrzędnych mySpaceId.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Down&maxLevel=5`zwraca wszystkie urządzenia dołączone do elementów podrzędnych mySpaceId, które są na poziomie mniejszym lub równym 5.
+- `YOUR_MANAGEMENT_API_URL/devices?spaceId=mySpaceId&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true`zwraca wszystkie urządzenia dołączone do miejsc, które znajdują się na tym samym poziomie co mySpaceId.
 
 
 ## <a name="odata-support"></a>Obsługa protokołu OData
-Większość interfejsów API, które zwracają kolekcje, takie jak wywołanie GET /spaces, obsługuje podzbiór następujących ogólnych [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) Opcje zapytań systemu:  
+
+Większość interfejsów API, które zwracają kolekcje, takie jak wywołanie GET w systemie/Spaces, obsługują następujący podzestaw ogólnych opcji zapytania systemu [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) :  
 
 * **$filter**
 * **$orderby** 
 * **$top**
-* **$skip** — Jeśli chcesz wyświetlić całą kolekcję powinien request całego zestawu w pojedynczym wywołaniu, a następnie wykonaj stronicowania w aplikacji. 
+* **$Skip** — Jeśli zamierzasz wyświetlić całą kolekcję, należy zażądać jej jako całego zestawu w pojedynczym wywołaniu, a następnie wykonać stronicowanie w aplikacji. 
 
-Należy pamiętać, że inne opcje zapytań, takich jak $count, $rozwiń $search nie są obsługiwane.
+> [!NOTE]
+> Niektóre opcje OData (takie jak opcje zapytania **$Count**, **$expand**i **$Search**) nie są obecnie obsługiwane.
 
 ### <a name="examples"></a>Przykłady
 
-Na poniższej liście przedstawiono kilka przykładów zapytań przy użyciu opcji zapytania systemu OData firmy:
+Poniższa lista przedstawia kilka zapytań z prawidłową składnią OData:
 
 - `YOUR_MANAGEMENT_API_URL/devices?$top=3&$orderby=Name desc`
 - `YOUR_MANAGEMENT_API_URL/keystores?$filter=endswith(Description,’space’)`
@@ -108,9 +110,10 @@ Na poniższej liście przedstawiono kilka przykładów zapytań przy użyciu opc
 - `YOUR_MANAGEMENT_API_URL/users?$top=4&$filter=endswith(LastName,’k’)&$orderby=LastName`
 - `YOUR_MANAGEMENT_API_URL/spaces?$orderby=Name desc&$top=3&$filter=substringof('Floor’,Name)`
  
-
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać niektóre typowe wzorce zapytań interfejsu API, przeczytaj [jak wykonywać zapytania interfejsów API Twins cyfrowych platformy Azure do wykonywania typowych zadań](how-to-query-common-apis.md).
+Aby poznać typowe wzorce zapytań interfejsu API, przeczytaj artykuł [jak wykonywać zapytania dotyczące interfejsów API Digital bliźniaczych reprezentacji na platformie Azure w celu wykonywania typowych zadań](./how-to-query-common-apis.md).
 
-Aby dowiedzieć się więcej na temat punktów końcowych interfejsu API, przeczytaj [sposób używania cyfrowego Swagger Twins](./how-to-use-swagger.md).
+Aby dowiedzieć się więcej na temat punktów końcowych interfejsu API, zobacz [jak używać programu Digital bliźniaczych reprezentacji Swagger](./how-to-use-swagger.md).
+
+Aby przejrzeć składnię OData i dostępne operatory porównania, Odczytaj [Operatory porównania OData w Azure Search](../search/search-query-odata-comparison-operators.md).

@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie aplikacjami logiki za pomocą programu Visual Studio — Azure Logic Apps
-description: Zarządzanie aplikacjami logiki i innych zasobów platformy Azure za pomocą Eksploratora chmury w usłudze Visual Studio
+title: Zarządzanie aplikacjami logiki przy użyciu programu Visual Studio — Azure Logic Apps
+description: Zarządzanie aplikacjami logiki i innymi zasobami platformy Azure za pomocą programu Visual Studio Cloud Explorer
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,19 +10,19 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: 694ff490d7623b2dff26a61ccae8106a276b84af
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f628be48039df63700f8e786821f29ba55cfd943
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447900"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164889"
 ---
-# <a name="manage-logic-apps-with-visual-studio"></a>Zarządzanie aplikacjami logiki w programie Visual Studio
+# <a name="manage-logic-apps-with-visual-studio"></a>Zarządzanie aplikacjami logiki za pomocą programu Visual Studio
 
-Mimo że można tworzyć, edytować, zarządzanie i wdrażanie aplikacji logiki w [witryny Azure portal](https://portal.azure.com), można również używać Visual Studio, gdy chcesz dodać do kontroli źródła, publikowanie różnych wersji i tworzenia aplikacji logiki [platformy Azure Menedżer zasobów](../azure-resource-manager/resource-group-overview.md) szablonów dla różnych środowisk wdrożeń. Za pomocą Eksploratora chmury programu Visual Studio można znaleźć i zarządzanie aplikacjami logiki w taki sposób, wraz z innymi zasobami platformy Azure. Możesz na przykład, Otwórz, pobieranie, Edytuj, także uruchomić, wyświetlać historię uruchomień, wyłącz i Włącz aplikacje logiki, które są już wdrożone w witrynie Azure portal. Dowiedz się, jeśli dopiero zaczynasz pracę z usługą Azure Logic Apps w programie Visual Studio [sposób tworzenia aplikacji logiki za pomocą programu Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+Chociaż można tworzyć, edytować i wdrażać aplikacje logiki w [Azure Portal](https://portal.azure.com), można także użyć programu Visual Studio, jeśli chcesz dodać aplikacje logiki do kontroli źródła, opublikować różne wersje i utworzyć szablony [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) dla różne środowiska wdrażania. Za pomocą programu Visual Studio Cloud Explorer można znajdować aplikacje logiki i zarządzać nimi wraz z innymi zasobami platformy Azure. Można na przykład otwierać, pobierać, edytować, uruchamiać, wyświetlać historię uruchamiania, wyłączać i włączać Aplikacje logiki, które są już wdrożone w Azure Portal. Jeśli dopiero zaczynasz pracę z Azure Logic Apps w programie Visual Studio, Dowiedz się, [jak tworzyć aplikacje logiki za pomocą programu Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
 > [!IMPORTANT]
-> Wdrażanie i publikowanie aplikacji logiki w programie Visual Studio zastępuje wersję tej aplikacji w witrynie Azure portal. Dlatego jeśli wprowadzisz zmiany w witrynie Azure portal, które chcesz zachować, upewnij się, że możesz [Odśwież aplikację logiki w programie Visual Studio](#refresh) w witrynie Azure portal przed następnym wdrażania lub opublikować z programu Visual Studio.
+> Wdrożenie lub opublikowanie aplikacji logiki z programu Visual Studio zastępuje wersję tej aplikacji w Azure Portal. Dlatego jeśli wprowadzisz zmiany w Azure Portal, które chcesz zachować, upewnij się, że [aplikacja logiki została odświeżona w programie Visual Studio](#refresh) z Azure Portal przed następnym wdrożeniem lub opublikowaniem w programie Visual Studio.
 
 <a name="requirements"></a>
 
@@ -32,21 +32,21 @@ Mimo że można tworzyć, edytować, zarządzanie i wdrażanie aplikacji logiki 
 
 * Pobierz i zainstaluj te narzędzia, jeśli jeszcze ich nie masz: 
 
-  * [Program Visual Studio 2019 r, 2017 lub 2015 — Community edition lub nowszej](https://aka.ms/download-visual-studio). 
+  * [Visual Studio 2019, 2017 lub 2015 — wersja Community lub nowsza](https://aka.ms/download-visual-studio). 
   Ten przewodnik Szybki start używa bezpłatnego Visual Studio Community 2017.
 
     > [!IMPORTANT]
-    > Po zainstalowaniu programu Visual Studio 2019 lub 2017, upewnij się, że wybrano **programowanie na platformie Azure** obciążenia.
-    > Aby uzyskać więcej informacji, zobacz [Zarządzanie zasoby skojarzone z kontami platformy Azure w programie Visual Studio Cloud Explorer](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view).
+    > Po zainstalowaniu programu Visual Studio 2019 lub 2017 upewnij się, że wybrano obciążenie **Programowanie na platformie Azure** .
+    > Aby uzyskać więcej informacji, zobacz [Zarządzanie zasobami skojarzonymi z kontami platformy Azure w programie Visual Studio Cloud Explorer](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view).
 
-    Do zainstalowania programu Cloud Explorer programu Visual Studio 2015, [Pobierz Eksplorator chmury z witryny Marketplace programu Visual Studio](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). 
-    Aby uzyskać więcej informacji, zobacz [Zarządzanie zasoby skojarzone z kontami platformy Azure w Eksploratorze chmury w usłudze Visual Studio (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
+    Aby zainstalować program Cloud Explorer dla programu Visual Studio 2015, [Pobierz program Cloud Explorer z Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015). 
+    Aby uzyskać więcej informacji, zobacz [Zarządzanie zasobami skojarzonymi z kontami platformy Azure w programie Visual Studio Cloud Explorer (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015).
 
   * [Zestaw Azure SDK (2.9.1 lub nowszy)](https://azure.microsoft.com/downloads/) 
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
-  * Narzędzia systemu Azure aplikacje logiki dla wersji programu Visual Studio, które mają:
+  * Azure Logic Apps narzędzia dla wersji programu Visual Studio, którą chcesz:
 
     * [Visual Studio 2019](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2019)
 
@@ -57,136 +57,136 @@ Mimo że można tworzyć, edytować, zarządzanie i wdrażanie aplikacji logiki 
     Możesz pobrać i zainstalować narzędzia Azure Logic Apps Tools bezpośrednio z witryny Visual Studio Marketplace lub dowiedzieć się, [jak zainstalować to rozszerzenie z poziomu programu Visual Studio](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions). 
     Upewnij się, że po zakończeniu instalacji program Visual Studio zostanie ponownie uruchomiony.
 
-* Dostęp do Internetu podczas korzystania z osadzonego projektanta aplikacji logiki
+* Dostęp do sieci Web przy użyciu osadzonego projektanta Logic Apps
 
   Projektant wymaga połączenia internetowego do tworzenia zasobów na platformie Azure oraz odczytywania właściwości i danych z łączników w aplikacji logiki. 
   Jeśli na przykład używany jest łącznik usługi Dynamics CRM Online, projektant wyszukuje dostępne właściwości domyślne i niestandardowe w wystąpieniu CRM.
 
 <a name="find-logic-apps-vs"></a>
 
-## <a name="find-your-logic-apps"></a>Znajdź aplikacje logiki
+## <a name="find-your-logic-apps"></a>Znajdowanie aplikacji logiki
 
-W programie Visual Studio można znaleźć wszystkie aplikacje logiki, które są skojarzone z subskrypcją platformy Azure i są wdrażane w witrynie Azure portal za pomocą Eksploratora chmury.
+W programie Visual Studio można znaleźć wszystkie aplikacje logiki skojarzone z subskrypcją platformy Azure i wdrożone w Azure Portal przy użyciu programu Cloud Explorer.
 
-1. Otwórz program Visual Studio. Na **widoku** menu, wybierz opcję **programu Cloud Explorer**.
+1. Otwórz program Visual Studio. W menu **Widok** wybierz opcję **Eksplorator chmury**.
 
-1. W programie Cloud Explorer, wybierz **zarządzania kontami**. Wybierz subskrypcję platformy Azure skojarzone z aplikacjami logiki, a następnie wybierz **Zastosuj**. Na przykład:
+1. W programie Cloud Explorer wybierz pozycję **Zarządzanie kontem**. Wybierz subskrypcję platformy Azure skojarzoną z aplikacjami logiki, a następnie wybierz pozycję **Zastosuj**. Na przykład:
 
-   ![Wybierz pozycję "Zarządzanie kontem"](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
+   ![Wybierz pozycję "Zarządzanie kontami"](./media/manage-logic-apps-with-visual-studio/account-management-select-Azure-subscription.png)
 
-1. Oparte na tego, czy przeszukujesz przez **grup zasobów** lub **typów zasobów**, wykonaj następujące kroki:
+1. W zależności od tego, czy wyszukujesz według **grup zasobów** czy **typów zasobów**, wykonaj następujące kroki:
 
-   * **Grupy zasobów**: W ramach Twojej subskrypcji platformy Azure programu Cloud Explorer pokazuje wszystkie grupy zasobów, które są skojarzone z tą subskrypcją. 
-   Rozwiń grupę zasobów, który zawiera aplikację logiki, a następnie wybierz swoją aplikację logiki.
+   * **Grupy zasobów**: W ramach subskrypcji platformy Azure w Eksploratorze chmury są wyświetlane wszystkie grupy zasobów skojarzone z daną subskrypcją. 
+   Rozwiń grupę zasobów zawierającą aplikację logiki, a następnie wybierz aplikację logiki.
 
-   * **Typy zasobów**: W ramach Twojej subskrypcji platformy Azure, rozwiń węzeł **Logic Apps**. Po programie Cloud Explorer pokazuje wszystkie aplikacje wdrożone logiki, które są skojarzone z Twoją subskrypcją, wybierz swoją aplikację logiki.
+   * **Typy zasobów**: W ramach subskrypcji platformy Azure rozwiń węzeł **Logic Apps**. Po wyświetleniu wszystkich wdrożonych aplikacji logiki skojarzonych z subskrypcją w programie Cloud Explorer wybierz aplikację logiki.
 
 <a name="open-designer"></a>
 
 ## <a name="open-in-visual-studio"></a>Otwórz w programie Visual Studio
 
-W programie Visual Studio możesz otworzyć aplikacji logiki wcześniej utworzyć i wdrożyć bezpośrednio w witrynie Azure portal lub jako projektów usługi Azure Resource Manager za pomocą programu Visual Studio.
+W programie Visual Studio można otwierać aplikacje logiki wcześniej utworzone i wdrożone bezpośrednio za pomocą Azure Portal lub jako projekty Azure Resource Manager z programem Visual Studio.
 
-1. Otwórz Eksploratora chmury i Znajdź swoją aplikację logiki. 
+1. Otwórz program Cloud Explorer i Znajdź aplikację logiki. 
 
-1. W menu skrótów dla aplikacji logiki, wybierz **Otwórz za pomocą edytora aplikacji logiki**.
+1. W menu skrótów aplikacji logiki wybierz pozycję **Otwórz za pomocą edytora aplikacji logiki**.
 
    > [!TIP]
-   > Jeśli nie masz tego polecenia w programie Visual Studio 2019 r, sprawdź, czy najnowsze aktualizacje dla programu Visual Studio.
+   > Jeśli nie masz tego polecenia w programie Visual Studio 2019, sprawdź, czy masz najnowsze aktualizacje programu Visual Studio.
 
-   W tym przykładzie aplikacji logiki według typów zasobów, dzięki czemu aplikacje logiki są wyświetlane w obszarze **Logic Apps** sekcji.
+   Ten przykład pokazuje Aplikacje logiki według typu zasobu, dzięki czemu Aplikacje logiki są wyświetlane w sekcji **Logic Apps** .
 
-   ![Otwórz logiki wdrożonej aplikacji z witryny Azure portal](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
+   ![Otwórz wdrożoną aplikację logiki z Azure Portal](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
-   Po otwarciu aplikacji logiki, w Projektancie aplikacji logiki, w dolnej części projektanta, możesz wybrać **widok kodu** tak, aby przejrzeć wewnętrzna struktura definicji aplikacji logiki. 
-   Dowiedz się, jeśli chcesz utworzyć szablon wdrożenia dla aplikacji logiki [sposobu pobierania szablonu usługi Azure Resource Manager](#download-logic-app) dla tej aplikacji logiki. Dowiedz się więcej o [szablonów usługi Resource Manager](../azure-resource-manager/resource-group-overview.md#template-deployment).
+   Po otwarciu aplikacji logiki w programie Logic Apps Designer u dołu projektanta można wybrać **Widok kod** , aby można było przejrzeć podstawową strukturę definicji aplikacji logiki. 
+   Jeśli chcesz utworzyć szablon wdrożenia dla aplikacji logiki, Dowiedz się, [jak pobrać szablon Azure Resource Manager](#download-logic-app) dla tej aplikacji logiki. Dowiedz się więcej o [szablonach Menedżer zasobów](../azure-resource-manager/template-deployment-overview.md).
 
 <a name="download-logic-app"></a>
 
 ## <a name="download-from-azure"></a>Pobierz z platformy Azure
 
-Można pobrać aplikacji logiki z [witryny Azure portal](https://portal.azure.com) i zapisz je jako [usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) szablonów. Można następnie lokalnie edytować szablony z programem Visual Studio i dostosowywanie aplikacji logiki dla różnych środowisk wdrożeń. Automatyczne pobieranie aplikacji logiki *parametryzuje dane* ich definicje wewnątrz [szablonów usługi Resource Manager](../azure-resource-manager/resource-group-overview.md#template-deployment), które również użyć JavaScript Object Notation (JSON).
+Aplikacje logiki można pobrać z [Azure Portal](https://portal.azure.com) i zapisać je jako szablony [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) . Następnie można edytować szablony lokalnie za pomocą programu Visual Studio i dostosowywać Aplikacje logiki do różnych środowisk wdrażania. Pobieranie aplikacji logiki automatycznie *parameterizes* ich definicje w [szablonach Menedżer zasobów](../azure-resource-manager/template-deployment-overview.md), które również używają JavaScript Object Notation (JSON).
 
-1. W programie Visual Studio Otwórz Eksploratora chmury, a następnie znajdź i wybierz aplikację logiki, która mają być pobierane z platformy Azure.
+1. W programie Visual Studio Otwórz program Cloud Explorer, a następnie Znajdź i wybierz aplikację logiki, którą chcesz pobrać z platformy Azure.
 
-2. W menu skrótów dla tej aplikacji, wybierz **Otwórz za pomocą edytora aplikacji logiki**.
+2. W menu skrótów tej aplikacji wybierz pozycję **Otwórz za pomocą edytora aplikacji logiki**.
 
    > [!TIP]
-   > Jeśli nie masz tego polecenia w programie Visual Studio 2019 r, sprawdź, czy najnowsze aktualizacje dla programu Visual Studio.
+   > Jeśli nie masz tego polecenia w programie Visual Studio 2019, sprawdź, czy masz najnowsze aktualizacje programu Visual Studio.
 
-   Projektant aplikacji logiki otworzy i przedstawiono aplikację logiki. 
-   Aby zapoznać się z podstawową definicję i struktury w dolnej części projektanta aplikacji logiki wybierz pozycję **widok kodu**. 
+   Zostanie otwarty projektant aplikacji logiki i zostanie wyświetlona aplikacja logiki. 
+   Aby przejrzeć podstawową definicję i strukturę aplikacji logiki, w dolnej części projektanta wybierz **Widok kod**. 
 
-3. Na pasku narzędzi Projektanta wybierz **Pobierz**.
+3. Na pasku narzędzi projektanta wybierz pozycję **Pobierz**.
 
-   ![Wybierz opcję "Pobierz"](./media/manage-logic-apps-with-visual-studio/download-logic-app.png)
+   ![Wybierz pozycję "Pobierz"](./media/manage-logic-apps-with-visual-studio/download-logic-app.png)
 
-4. Po wyświetleniu monitu o lokalizację, przejdź do tej lokalizacji i zapisać szablon usługi Resource Manager definicji aplikacji logiki w formacie JSON (plik JSON). 
+4. Po wyświetleniu monitu o lokalizację przejdź do tej lokalizacji i Zapisz szablon Menedżer zasobów dla definicji aplikacji logiki w formacie pliku JSON (JSON). 
 
-Definicji aplikacji logiki, który pojawia się w `resources` podsekcji wewnątrz szablonu usługi Resource Manager. Teraz możesz edytować definicji aplikacji logiki i szablon usługi Resource Manager z programem Visual Studio. Można również dodać szablonu jako projektu usługi Azure Resource Manager, do rozwiązania programu Visual Studio. Dowiedz się więcej o [usługi Resource Manager projekty dla aplikacji logiki w programie Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md). 
+Definicja aplikacji logiki zostanie wyświetlona `resources` w podsekcji wewnątrz szablonu Menedżer zasobów. Teraz można edytować definicję aplikacji logiki i szablon Menedżer zasobów za pomocą programu Visual Studio. Możesz również dodać szablon jako projekt Azure Resource Manager do rozwiązania programu Visual Studio. Dowiedz się więcej [na temat Menedżer zasobów projektów dla usługi Logic Apps w programie Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md). 
 
 <a name="refresh"></a>
 
-## <a name="refresh-from-azure"></a>Odśwież na platformie Azure
+## <a name="refresh-from-azure"></a>Odświeżanie z platformy Azure
 
-Jeśli poddasz edycji aplikację logiki w witrynie Azure portal i chcesz zachować te zmiany, upewnij się, że możesz odświeżyć wersji tej aplikacji w programie Visual Studio z tymi zmianami. 
+Jeśli edytujesz aplikację logiki w Azure Portal i chcesz zachować te zmiany, pamiętaj, aby odświeżyć wersję tej aplikacji w programie Visual Studio przy użyciu tych zmian. 
 
-* W programie Visual Studio, na pasku narzędzi Projektanta aplikacji logiki wybierz **Odśwież**.
+* W programie Visual Studio na pasku narzędzi projektanta aplikacji logiki wybierz pozycję **Odśwież**.
 
   —lub—
 
-* W Eksploratorze chmury w usłudze Visual Studio, otwórz menu skrótów aplikację logiki, a następnie wybierz **Odśwież**.
+* W programie Visual Studio Cloud Explorer otwórz menu skrótów aplikacji logiki i wybierz polecenie **Odśwież**.
 
-![Odśwież aplikację logiki, za pomocą aktualizacji](./media/manage-logic-apps-with-visual-studio/refresh-logic-app.png)
+![Odśwież aplikację logiki przy użyciu aktualizacji](./media/manage-logic-apps-with-visual-studio/refresh-logic-app.png)
 
 ## <a name="publish-logic-app-updates"></a>Publikowanie aktualizacji aplikacji logiki
 
-Gdy wszystko będzie gotowe do wdrożenia usługi Logic Apps aktualizacje aplikacji z programu Visual Studio na platformie Azure, na pasku narzędzi Projektanta aplikacji logiki wybierz pozycję **Publikuj**.
+Gdy wszystko będzie gotowe do wdrożenia aktualizacji aplikacji logiki z programu Visual Studio na platformie Azure, na pasku narzędzi projektanta aplikacji logiki wybierz pozycję **Publikuj**.
 
-![Publikowanie aplikacji logiki zaktualizowane](./media/manage-logic-apps-with-visual-studio/publish-logic-app.png)
+![Opublikuj zaktualizowaną aplikację logiki](./media/manage-logic-apps-with-visual-studio/publish-logic-app.png)
 
-## <a name="manually-run-your-logic-app"></a>Ręcznie uruchomić swoją aplikację logiki
+## <a name="manually-run-your-logic-app"></a>Ręczne uruchamianie aplikacji logiki
 
-Można ręcznie wyzwalać aplikacji logiki wdrożonych na platformie Azure z programu Visual Studio. Na pasku narzędzi Projektanta aplikacji logiki wybierz **uruchomienia wyzwalacza**.
+Możesz ręcznie wyzwolić aplikację logiki wdrożoną na platformie Azure z programu Visual Studio. Na pasku narzędzi projektanta aplikacji logiki wybierz **Uruchom wyzwalacz**.
 
-![Ręcznie uruchomić aplikację logiki](./media/manage-logic-apps-with-visual-studio/manually-run-logic-app.png)
+![Ręcznie uruchom aplikację logiki](./media/manage-logic-apps-with-visual-studio/manually-run-logic-app.png)
 
 ## <a name="review-run-history"></a>Przeglądać historię uruchamiania
 
-Aby sprawdzić stan i diagnozowania problemów z uruchomienia aplikacji logiki, możesz przejrzeć szczegółowe informacje, takie jak dane wejściowe i wyjściowe dla tych działa w programie Visual Studio.
+Aby sprawdzić stan i zdiagnozować problemy z uruchomieniami aplikacji logiki, można przejrzeć szczegóły, takie jak dane wejściowe i wyjściowe, dla tych przebiegów w programie Visual Studio.
 
-1. W programie Cloud Explorer, otwórz menu skrótów aplikację logiki, a następnie wybierz **historii uruchamiania Open**.
+1. W programie Cloud Explorer otwórz menu skrótów aplikacji logiki, a następnie wybierz pozycję **Otwórz historię uruchamiania**.
 
-   ![Otwórz historii uruchamiania](./media/manage-logic-apps-with-visual-studio/view-run-history.png)
+   ![Otwórz historię uruchamiania](./media/manage-logic-apps-with-visual-studio/view-run-history.png)
 
-1. Aby wyświetlić szczegóły dotyczące określonego uruchomienia, kliknij dwukrotnie przycisk Uruchom. Na przykład:
+1. Aby wyświetlić szczegóły określonego uruchomienia, kliknij dwukrotnie przebieg. Na przykład:
 
-   ![Szczegółowa historia uruchamiania](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
+   ![Szczegółowa historia przebiegów](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   
    > [!TIP]
-   > Aby posortować tabelę według właściwości, wybierz nagłówek kolumny, dla tej właściwości. 
+   > Aby posortować tabelę według właściwości, wybierz nagłówek kolumny dla tej właściwości. 
 
-1. Rozwiń kroki, których dane wejściowe i wyjściowe, o których chcesz przejrzeć. Na przykład:
+1. Rozwiń kroki, których dane wejściowe i wyjściowe chcesz przejrzeć. Na przykład:
 
    ![Wyświetl dane wejściowe i wyjściowe dla każdego kroku](./media/manage-logic-apps-with-visual-studio/run-inputs-outputs.png)
 
 ## <a name="disable-or-enable-logic-app"></a>Wyłączanie lub włączanie aplikacji logiki
 
-Bez usuwania aplikacji logiki, można wyłączyć wyzwalacza z wyzwalania następnym razem, gdy jest spełniony warunek wyzwalacza. Wyłączanie aplikacji logiki zapobiega aparat usługi Logic Apps, tworzenie i uruchamianie wystąpienia przyszłych przepływu pracy aplikacji logiki.
-W programie Cloud Explorer, otwórz menu skrótów aplikację logiki, a następnie wybierz **wyłączyć**.
+Bez usuwania aplikacji logiki można zatrzymać wywoływanie wyzwalacza przy następnym uruchomieniu warunku wyzwalacza. Wyłączenie aplikacji logiki uniemożliwia aparatowi Logic Apps tworzenie i uruchamianie przyszłych wystąpień przepływu pracy dla aplikacji logiki.
+W programie Cloud Explorer otwórz menu skrótów aplikacji logiki, a następnie wybierz pozycję **Wyłącz**.
 
 ![Wyłączanie aplikacji logiki](./media/manage-logic-apps-with-visual-studio/disable-logic-app.png)
 
 > [!NOTE]
-> Po wyłączeniu aplikacji logiki są tworzone nie nowe przebiegi. Wszystkie w toku i oczekujących uruchomień będzie kontynuowane, dopóki kończą się, co może zająć czas trwania. 
+> Po wyłączeniu aplikacji logiki nie są tworzone żadne nowe uruchomienia. Wszystkie w toku i oczekujące przebiegi będą kontynuowane do czasu zakończenia, co może zająć trochę czasu. 
 
-Gdy wszystko będzie gotowe wznowić działanie aplikacji logiki, można ponownie aktywować swoją aplikację logiki. W programie Cloud Explorer, otwórz menu skrótów aplikację logiki, a następnie wybierz **Włącz**.
+Gdy wszystko będzie gotowe do wznowienia działania aplikacji logiki, możesz ponownie aktywować aplikację logiki. W programie Cloud Explorer otwórz menu skrótów aplikacji logiki, a następnie wybierz pozycję **Włącz**.
 
 ![Włączanie aplikacji logiki](./media/manage-logic-apps-with-visual-studio/enable-logic-app.png)
 
 ## <a name="delete-your-logic-app"></a>Usuwanie aplikacji logiki
 
-Aby usunąć aplikację logiki w witrynie Azure portal, w programie Cloud Explorer, otwórz menu skrótów aplikację logiki i wybierz **Usuń**.
+Aby usunąć aplikację logiki z Azure Portal, w programie Cloud Explorer otwórz menu skrótów aplikacji logiki, a następnie wybierz pozycję **Usuń**.
 
 ![Usuwanie aplikacji logiki](./media/manage-logic-apps-with-visual-studio/delete-logic-app.png)
 
@@ -195,15 +195,15 @@ Aby usunąć aplikację logiki w witrynie Azure portal, w programie Cloud Explor
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Po otwarciu projektu aplikacji logiki w Projektancie aplikacji logiki możesz nie otrzymać opcję wybierania subskrypcji platformy Azure. Zamiast tego aplikacja logiki zostanie otwarty z subskrypcją platformy Azure, który nie jest ten, którego chcesz użyć. To zachowanie ma miejsce, ponieważ po otwarciu pliku JSON aplikacji logiki, Visual Studio zapisuje w pamięci podręcznej pierwszy w wybranej subskrypcji do użytku w przyszłości. Aby rozwiązać ten problem, spróbuj wykonać jedną z następujących czynności:
+Po otwarciu projektu aplikacji logiki w projektancie Logic Apps można nie uzyskać opcji wyboru subskrypcji platformy Azure. Zamiast tego aplikacja logiki zostanie otwarta z subskrypcją platformy Azure, która nie jest tą, której chcesz użyć. Takie zachowanie występuje, ponieważ po otwarciu pliku JSON aplikacji logiki program Visual Studio buforuje pierwszą wybraną subskrypcję do użytku w przyszłości. Aby rozwiązać ten problem, spróbuj wykonać jedną z następujących czynności:
 
 * Zmień nazwę pliku JSON aplikacji logiki. Pamięć podręczna subskrypcji zależy od nazwy pliku.
 
-* Aby usunąć wcześniej wybrane subskrypcje dla *wszystkich* logic apps w rozwiązaniu, Usuń ukryty folder programu Visual Studio ustawień (.vs) w katalogu tego rozwiązania. Ta lokalizacja przechowuje informacje o subskrypcji.
+* Aby usunąć wcześniej wybrane subskrypcje dla *wszystkich* aplikacji logiki w rozwiązaniu, Usuń ukryty folder ustawień programu Visual Studio (. vs) w katalogu rozwiązania. Ta lokalizacja przechowuje informacje o subskrypcji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono sposób Zarządzanie aplikacjami logiki wdrożone za pomocą programu Visual Studio. Następnie Dowiedz się więcej o dostosowywaniu definicji aplikacji logiki dla wdrożenia:
+W tym artykule przedstawiono sposób zarządzania wdrożonymi aplikacjami logiki w programie Visual Studio. Następnie Dowiedz się więcej na temat dostosowywania definicji aplikacji logiki na potrzeby wdrożenia:
 
 > [!div class="nextstepaction"]
 > [Tworzenie definicji aplikacji logiki w formacie JSON](../logic-apps/logic-apps-author-definitions.md)

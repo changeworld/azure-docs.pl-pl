@@ -5,15 +5,15 @@ services: container-registry
 author: dlepow
 manager: gwallace
 ms.service: container-registry
-ms.topic: quickstart
+ms.topic: article
 ms.date: 05/06/2019
 ms.author: danlep
-ms.openlocfilehash: d2132f060076aefe6ae0eccb6d5300c78c96ece5
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6cf5efb33340844d782dc4481f5834d7590e745a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68356548"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172303"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Zaufanie do zawartości w usłudze Azure Container Registry
 
@@ -43,7 +43,7 @@ Zaufanie do zawartości jest zarządzane przy użyciu zestawu kryptograficznych 
 
 Pierwszym krokiem jest włączenie zaufania do zawartości na poziomie rejestru. Gdy włączysz zaufanie do zawartości, klienci (użytkownicy lub usługi) będą mogli wypychać podpisane obrazy do Twojego rejestru. Włączenie zaufania do zawartości w rejestrze nie ogranicza użycia rejestru tylko do użytkowników z włączonym zaufaniem do zawartości. Użytkownicy bez włączonego zaufania do zawartości wciąż będą mogli używać Twojego rejestru w zwykły sposób. Jednak użytkownicy z włączony zaufaniem do zawartości w swoich klientach będą widzieć w Twoim rejestrze *tylko* podpisane obrazy.
 
-Aby włączyć zaufanie do zawartości dla rejestru, najpierw przejdź do rejestru w witrynie Azure Portal. W obszarze **zasady**wybierz  > pozycję**Zaoszczędź**zawartość**włączona** > .
+Aby włączyć zaufanie do zawartości dla rejestru, najpierw przejdź do rejestru w witrynie Azure Portal. W obszarze **zasady**wybierz > pozycję**Zaoszczędź**zawartość**włączona** > .
 
 ![Włączanie zaufania do zawartości dla rejestru w witrynie Azure Portal][content-trust-01-portal]
 

@@ -5,13 +5,13 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 5/2/2019
-ms.openlocfilehash: a6e5cd69a0655bf8235bf5755ab596ca2bde0387
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.date: 05/02/2019
+ms.openlocfilehash: d6d31506a13656a954c48dfee00f14d8ab381fd5
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716160"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173238"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Poziom zgodności dla zadań usługi Azure Stream Analytics
 
@@ -119,7 +119,7 @@ Następujące istotne zmiany są wprowadzane przy poziomie zgodności 1.1:
 
 ### <a name="service-bus-xml-format"></a>Service Bus format XML
 
-**poziom 1,0:** Azure Stream Analytics użyciu DataContractSerializer, więc zawartość komunikatów zawiera tagi XML. Przykład:
+**poziom 1,0:** Azure Stream Analytics użyciu DataContractSerializer, więc zawartość komunikatów zawiera tagi XML. Na przykład:
 
 `@\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId":"1", "Temperature":64\}\u0001`
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e726b60a08f234ef021b2901f8ed29ec74f0ff47
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 97d900146b3485df5cdf226f07aaa3aee116fc92
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087574"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186756"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Uruchamianie elementów Runbook w hybrydowym procesie roboczym elementu Runbook
 
@@ -61,7 +61,7 @@ Można również użyć [InlineScript](automation-powershell-workflow.md#inlines
 
 ### <a name="runas-account"></a>Konto Uruchom jako
 
-Domyślnie hybrydowy proces roboczy elementu Runbook używa systemu lokalnego dla systemu Windows, a specjalne konto `nxautomation` użytkownika w systemie Linux do wykonywania elementów Runbook. Zamiast elementów Runbook udostępniają własne uwierzytelnianie do zasobów lokalnych, można określić konto **Uruchom jako** dla grupy hybrydowych procesów roboczych. Należy określić [zasób poświadczeń](automation-credentials.md) , który ma dostęp do zasobów lokalnych, a wszystkie elementy Runbook będą uruchamiane w ramach tych poświadczeń podczas działania w hybrydowym procesie roboczym elementu Runbook w grupie.
+Domyślnie hybrydowy proces roboczy elementu Runbook używa systemu lokalnego dla systemu Windows, a specjalne konto `nxautomation` użytkownika w systemie Linux do wykonywania elementów Runbook. Zamiast elementów Runbook udostępniają własne uwierzytelnianie do zasobów lokalnych, można określić konto **Uruchom jako** dla grupy hybrydowych procesów roboczych. Należy określić [zasób poświadczeń](automation-credentials.md) , który ma dostęp do zasobów lokalnych, w tym magazyny certyfikatów i wszystkie elementy Runbook, które są uruchamiane w ramach tych poświadczeń, podczas uruchamiania w hybrydowym procesie roboczym elementu Runbook w grupie.
 
 Nazwa użytkownika dla poświadczenia musi mieć jeden z następujących formatów:
 

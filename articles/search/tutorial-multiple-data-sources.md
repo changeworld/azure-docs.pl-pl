@@ -2,18 +2,18 @@
 title: C#Ręczny Indeksowanie wielu źródeł danych — Azure Search
 description: Dowiedz się, jak importować dane z wielu źródeł danych do jednego indeksu Azure Search.
 author: RobDixon22
-manager: HeidiSteen
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: tutorial
 ms.date: 06/21/2019
 ms.author: heidist
-ms.openlocfilehash: 2776bcd095c570be500fa6ddb2675820b2259716
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 71fa4b590b41324536d740da5205977c0cefc448
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840678"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186503"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Ręczny Łączenie danych z wielu źródeł danych w jednym indeksie Azure Search
 

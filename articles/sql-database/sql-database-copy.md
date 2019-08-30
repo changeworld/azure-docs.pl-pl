@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 06/03/2019
-ms.openlocfilehash: e9cc5aaaf11a799b17cc87b40113e166fcd93afb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/29/2019
+ms.openlocfilehash: cdbc79ca6764dd49f427b395dbaf8502c58bf63a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568993"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173430"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Kopiowanie spójnej transakcyjnie kopii bazy danych Azure SQL Database
 
@@ -24,7 +24,7 @@ Azure SQL Database oferuje kilka metod tworzenia spójnej i niefunkcjonalnej kop
 
 ## <a name="overview"></a>Omówienie
 
-Kopia bazy danych jest migawką źródłowej bazy danych w czasie żądania kopiowania. Możesz wybrać ten sam serwer lub inny serwer. Można również wybrać opcję utrzymania warstwy usługi i rozmiaru obliczeń lub użyć innego rozmiaru obliczeniowego w ramach tej samej warstwy usług (Edition). Po zakończeniu kopiowania zostanie ona w pełni funkcjonalna, niezależna baza danych. W tym momencie można go uaktualnić lub zmienić na starszą wersję. Logowania, użytkownicy i uprawnienia mogą być zarządzane niezależnie.  
+Kopia bazy danych jest migawką źródłowej bazy danych w czasie żądania kopiowania. Możesz wybrać ten sam serwer lub inny serwer. Można również wybrać opcję utrzymania warstwy usługi i rozmiaru obliczeń lub użyć innego rozmiaru obliczeniowego w ramach tej samej warstwy usług (Edition). Po zakończeniu kopiowania zostanie ona w pełni funkcjonalna, niezależna baza danych. W tym momencie można go uaktualnić lub zmienić na starszą wersję. Logowania, użytkownicy i uprawnienia mogą być zarządzane niezależnie. Kopia jest tworzona przy użyciu technologii replikacji geograficznej, a po zakończeniu umieszczania zostanie wykonane automatyczne działanie łącza replikacji geograficznej. Wszystkie wymagania dotyczące korzystania z replikacji geograficznej dotyczą operacji kopiowania bazy danych. Szczegółowe informacje znajdują się w temacie [Omówienie aktywnej replikacji](sql-database-active-geo-replication.md) geograficznej.
 
 > [!NOTE]
 > [Automatyczne kopie zapasowe bazy danych](sql-database-automated-backups.md) są używane podczas tworzenia kopii bazy danych.
@@ -61,6 +61,26 @@ New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
 ```
 
 Aby zapoznać się z kompletnym przykładowym skryptem, zobacz [Kopiowanie bazy danych na nowy serwer](scripts/sql-database-copy-database-to-new-server-powershell.md).
+
+Kopia bazy danych jest operacją asynchroniczną, ale docelowa baza danych jest tworzona natychmiast po zaakceptowaniu żądania. Jeśli chcesz anulować operację kopiowania nadal w toku, Porzuć docelową bazę danych za pomocą polecenia cmdlet [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) .  
+
+## <a name="rbac-roles-to-manage-database-copy"></a>Role RBAC do zarządzania kopią bazy danych
+
+Aby utworzyć kopię bazy danych, musisz mieć następujące role:
+
+- Właściciel subskrypcji lub
+- SQL Server rolę współautor lub
+- Rola niestandardowa w źródłowej i docelowej bazie danych z następującymi uprawnieniami:
+
+   Microsoft. SQL/serwery/bazy danych/Odczyt Microsoft. SQL/serwery/bazy danych/zapis
+
+Aby anulować kopię bazy danych, musisz mieć następujące role:
+
+- Właściciel subskrypcji lub
+- SQL Server rolę współautor lub
+- Rola niestandardowa w źródłowej i docelowej bazie danych z następującymi uprawnieniami:
+
+   Microsoft. SQL/serwery/bazy danych/Odczyt Microsoft. SQL/serwery/bazy danych/zapis
 
 ## <a name="copy-a-database-by-using-transact-sql"></a>Kopiowanie bazy danych przy użyciu języka Transact-SQL
 
@@ -108,6 +128,10 @@ Monitoruj proces kopiowania, wykonując zapytania dotyczące widoków sys. datab
 > [!NOTE]
 > Jeśli zdecydujesz się anulować kopiowanie w trakcie wykonywania, wykonaj instrukcję [Drop Database](https://msdn.microsoft.com/library/ms178613.aspx) w nowej bazie danych. Alternatywnie wykonanie instrukcji DROP DATABASE w źródłowej bazie danych spowoduje również anulowanie procesu kopiowania.
 
+> [!IMPORTANT]
+> Jeśli konieczne jest utworzenie kopii o znacznie mniejszym przekroczeniu niż źródło, docelowa baza danych może nie mieć wystarczających zasobów do zakończenia procesu tworzenia i może spowodować niepowodzenie operacji kopiowania. W tym scenariuszu Użyj żądania przywracania geograficznego, aby utworzyć kopię na innym serwerze i/lub innym regionie. Więcej informacje można znaleźć w temacie [odzyskiwanie bazy danych Azure SQL Database przy użyciu kopii zapasowych bazy danych](sql-database-recovery-using-backups.md#geo-restore) .
+
+
 ## <a name="resolve-logins"></a>Rozwiązywanie logowań
 
 Gdy nowa baza danych jest w trybie online na serwerze docelowym, należy użyć instrukcji [ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx) , aby ponownie zamapować użytkowników z nowej bazy danych na nazwy logowania na serwerze docelowym. Aby rozwiązać użytkowników oddzielonych, zobacz [Rozwiązywanie problemów z użytkownikami](https://msdn.microsoft.com/library/ms175475.aspx)oddzielonymi. Zobacz również [jak zarządzać zabezpieczeniami usługi Azure SQL Database po odzyskiwaniu po awarii](sql-database-geo-replication-security-config.md).
@@ -116,7 +140,7 @@ Wszyscy użytkownicy w nowej bazie danych zachowują uprawnienia, które miały 
 
 Aby dowiedzieć się więcej o zarządzaniu użytkownikami i logowaniami podczas kopiowania bazy danych na inny serwer SQL Database, zobacz [jak zarządzać zabezpieczeniami usługi Azure SQL Database po awarii](sql-database-geo-replication-security-config.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby uzyskać informacje na temat logowań, zobacz Zarządzanie nazwami [logowania](sql-database-manage-logins.md) i [Zarządzanie zabezpieczeniami usługi Azure SQL Database po awarii](sql-database-geo-replication-security-config.md).
 * Aby wyeksportować bazę danych, zobacz [Eksportowanie bazy danych do BACPAC](sql-database-export.md).

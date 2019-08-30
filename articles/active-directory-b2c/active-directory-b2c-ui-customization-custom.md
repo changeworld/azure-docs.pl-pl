@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0c6186334820d0e419a06b9c60a8279825bf54c2
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e79d7a4b97f010b035f5c864682b4d3882a21393
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927293"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171913"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Dostosuj interfejs użytkownika aplikacji przy użyciu zasad niestandardowych w Azure Active Directory B2C
 
@@ -65,17 +65,16 @@ Aby hostować tę zawartość HTML w usłudze BLOB Storage, wykonaj następując
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. W menu **centrum** wybierz > kolejno pozycje **Nowy** > magazyn**konto magazynu**.
-3. Wprowadź unikatową **nazwę** konta magazynu.
-4. **Model wdrażania** może pozostawać **Menedżer zasobów**.
-5. Zmień **rodzaj konta** na **Magazyn obiektów BLOB**.
-6. **Wydajność** może być **standardowa**.
-7. **Replikacja** może pozostawać **RA-GRS**.
-8. **Warstwa dostępu** może pozostać **gorąca**.
-9. **Szyfrowanie usługi Storage** może pozostać **wyłączone**.
-10. Wybierz **subskrypcję** dla konta magazynu.
-11. Utwórz **grupę zasobów** lub wybierz istniejącą.
-12. Wybierz **lokalizację geograficzną** dla swojego konta magazynu.
-13. Kliknij pozycję **Utwórz**, aby utworzyć konto magazynu.  
+3. Wybierz **subskrypcję** dla konta magazynu.
+4. Utwórz **grupę zasobów** lub wybierz istniejącą.
+5. Wprowadź unikatową **nazwę** konta magazynu.
+6. Wybierz **lokalizację geograficzną** dla swojego konta magazynu. 
+7. **Model wdrażania** może pozostawać **Menedżer zasobów**.
+8. **Wydajność** może być **standardowa**.
+9. Zmień **rodzaj konta** na **Magazyn obiektów BLOB**.
+10. **Replikacja** może pozostawać **RA-GRS**.
+11. **Warstwa dostępu** może pozostać **gorąca**. 
+12. Kliknij przycisk **Przegląd + Utwórz** , aby utworzyć konto magazynu.  
     Po zakończeniu wdrażania blok **konta magazynu** zostanie otwarty automatycznie.
 
 ## <a name="create-a-container"></a>Tworzenie kontenera

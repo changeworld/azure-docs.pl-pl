@@ -2,7 +2,7 @@
 title: Umiejętność wyszukiwania tekstu scalanie — Azure Search
 description: Scalanie tekstu z kolekcji pól w jedno skonsolidowane pole. Skorzystaj z tej umiejętności poznawczej w potoku wzbogacenia Azure Search.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.workload: search
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 64246f28ac185e8816971e24a67682d6d2dd9be1
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 3cf816a07b61fd5c398dba376276ef1e9f28e985
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635906"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186337"
 ---
 #    <a name="text-merge-cognitive-skill"></a>Umiejętność scalania tekstu
 

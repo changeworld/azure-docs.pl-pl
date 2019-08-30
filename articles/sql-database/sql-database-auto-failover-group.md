@@ -10,17 +10,17 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 08/16/2019
-ms.openlocfilehash: 6357b5a477390f484a47167a0b9d2e524d37c9ac
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 08/29/2019
+ms.openlocfilehash: 73aeea42cd843716c845d7712539ae5c81f03dca
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035770"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173067"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup z obsługą trybu failover w celu zapewnienia przezroczystej i skoordynowanej pracy w trybie failover wielu baz danych
 
-Grupy autotrybu failover są funkcją SQL Database, która umożliwia zarządzanie replikacją i trybem failover grupy baz danych na serwerze SQL Database lub wszystkich baz danych w wystąpieniu zarządzanym w innym regionie. Jest to deklaratywne streszczenie na istniejącej funkcji aktywnej [replikacji](sql-database-active-geo-replication.md) geograficznej, zaprojektowane w celu uproszczenia wdrażania geograficznie replikowanych baz danych i zarządzania nimi na dużą skalę. Możesz zainicjować tryb failover ręcznie lub można delegować go do usługi SQL Database na podstawie zasad zdefiniowanych przez użytkownika. Ta ostatnia opcja umożliwia automatyczne odzyskanie wielu pokrewnych baz danych w regionie pomocniczym po katastrofalnym błędzie lub innym nieplanowanym zdarzeniu, które powoduje całkowite lub częściowe utratę dostępności usługi SQL Database w regionie podstawowym. Grupa trybu failover może zawierać jedną lub wiele baz danych, zwykle używanych przez tę samą aplikację. Ponadto można użyć dodatkowych baz danych z możliwością odczytu, aby odciążać obciążenia zapytań służących tylko do odczytywania. Ponieważ grupy autotrybu failover obejmują wiele baz danych, te bazy danych muszą być skonfigurowane na serwerze podstawowym. Zarówno podstawowy, jak i pomocniczy serwer bazy danych w grupie trybu failover musi znajdować się w tej samej subskrypcji. Grupy autotrybu failover obsługują replikację wszystkich baz danych w grupie tylko do jednego serwera pomocniczego w innym regionie.
+Grupy autotrybu failover są funkcją SQL Database, która umożliwia zarządzanie replikacją i trybem failover grupy baz danych na serwerze SQL Database lub wszystkich baz danych w wystąpieniu zarządzanym w innym regionie. Jest to deklaratywne streszczenie na istniejącej funkcji aktywnej [replikacji](sql-database-active-geo-replication.md) geograficznej, zaprojektowane w celu uproszczenia wdrażania geograficznie replikowanych baz danych i zarządzania nimi na dużą skalę. Możesz zainicjować tryb failover ręcznie lub można delegować go do usługi SQL Database na podstawie zasad zdefiniowanych przez użytkownika. Ta ostatnia opcja umożliwia automatyczne odzyskanie wielu pokrewnych baz danych w regionie pomocniczym po katastrofalnym błędzie lub innym nieplanowanym zdarzeniu, które powoduje całkowite lub częściowe utratę dostępności usługi SQL Database w regionie podstawowym. Grupa trybu failover może zawierać jedną lub wiele baz danych, zwykle używanych przez tę samą aplikację. Ponadto można użyć dodatkowych baz danych z możliwością odczytu, aby odciążać obciążenia zapytań służących tylko do odczytywania. Ponieważ grupy autotrybu failover obejmują wiele baz danych, te bazy danych muszą być skonfigurowane na serwerze podstawowym. Grupy autotrybu failover obsługują replikację wszystkich baz danych w grupie tylko do jednego serwera pomocniczego w innym regionie.
 
 > [!NOTE]
 > Podczas pracy z pojedynczymi lub w puli baz danych na serwerze SQL Database i potrzebujesz wielu serwerów pomocniczych w tym samym lub różnych regionach, użyj [aktywnej replikacji](sql-database-active-geo-replication.md)geograficznej. 
@@ -191,12 +191,20 @@ Jeśli aplikacja używa wystąpienia zarządzanego jako warstwy danych, postępu
 
   Aby zapewnić nieprzerwane połączenie z wystąpieniem podstawowym po przejściu w tryb failover, oba wystąpienia muszą znajdować się w tej samej strefie DNS. Gwarantuje to, że ten sam certyfikat wielodomenowy (SAN) może służyć do uwierzytelniania połączeń klientów z jednym z dwóch wystąpień w grupie trybu failover. Gdy aplikacja jest gotowa do wdrożenia produkcyjnego, Utwórz wystąpienie pomocnicze w innym regionie i upewnij się, że współużytkuje strefę DNS z wystąpieniem podstawowym. Można to zrobić poprzez określenie `DNS Zone Partner` opcjonalnego parametru przy użyciu Azure Portal, programu PowerShell lub interfejsu API REST. 
 
-  Aby uzyskać więcej informacji o tworzeniu wystąpienia pomocniczego w tej samej strefie DNS co wystąpienie podstawowe, zobacz [Zarządzanie grupami trybu failover z wystąpieniami zarządzanymi (wersja zapoznawcza)](#powershell-managing-failover-groups-with-managed-instances-preview).
+  Aby uzyskać więcej informacji o tworzeniu wystąpienia pomocniczego w tej samej strefie DNS co wystąpienie podstawowe, zobacz [Tworzenie pomocniczego wystąpienia zarządzanego](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance).
 
 - **Włącz ruch związany z replikacją między dwoma wystąpieniami**
 
   Ze względu na to, że każde wystąpienie jest izolowane w własnej sieci wirtualnej, należy zezwolić na ruch dwukierunkowy między tymi sieci wirtualnychami. Zobacz [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
+- **Tworzenie grupy trybu failover między wystąpieniami zarządzanymi w różnych subskrypcjach**
+
+  Można utworzyć grupę trybu failover między wystąpieniami zarządzanymi w dwóch różnych subskrypcjach. Korzystając z interfejsu API programu PowerShell, można to zrobić, `PartnerSubscriptionId` określając parametr wystąpienia pomocniczego. W przypadku korzystania z interfejsu API REST każdy identyfikator wystąpienia zawarty `properties.managedInstancePairs` w parametrze może mieć swój własny identyfikatora subskrypcji. 
+  
+  > [!IMPORTANT]
+  > Witryna Azure Portal nie obsługuje grup trybu failover w różnych subskrypcjach.
+
+  
 - **Skonfiguruj grupę trybu failover, aby zarządzać trybem failover całego wystąpienia**
 
   Grupa trybu failover będzie zarządzać trybem failover wszystkich baz danych w wystąpieniu. Gdy grupa zostanie utworzona, każda baza danych w wystąpieniu zostanie automatycznie zreplikowana geograficznie do wystąpienia pomocniczego. Nie można użyć grup trybu failover w celu zainicjowania częściowej pracy awaryjnej podzestawu baz danych.
@@ -326,34 +334,16 @@ Jak wspomniano wcześniej, grupy autotrybu failover i aktywnej replikacji geogra
 > Przykładowy skrypt można znaleźć w temacie [Konfigurowanie i przełączanie w tryb failover grupy trybu failover dla pojedynczej bazy danych](scripts/sql-database-add-single-db-to-failover-group-powershell.md).
 >
 
-### <a name="powershell-managing-failover-groups-with-managed-instances-preview"></a>Program PowerShell: Zarządzanie grupami trybu failover z wystąpieniami zarządzanymi (wersja zapoznawcza)
+### <a name="powershell-managing-sql-database-failover-groups-with-managed-instances"></a>Program PowerShell: Zarządzanie grupami trybu failover bazy danych SQL z wystąpieniami zarządzanymi 
 
-#### <a name="install-the-newest-pre-release-version-of-powershell"></a>Zainstaluj najnowszą wersję wstępną programu PowerShell
-
-1. Zaktualizuj moduł PowerShellGet do 1.6.5 (lub najnowszej wersji zapoznawczej). Zobacz [witrynę programu PowerShell w wersji](https://www.powershellgallery.com/packages/AzureRM.Sql/4.11.6-preview)zapoznawczej.
-
-   ```powershell
-      install-module PowerShellGet -MinimumVersion 1.6.5 -force
-   ```
-
-2. W nowym oknie programu PowerShell wykonaj następujące polecenia:
-
-   ```powershell
-      import-module PowerShellGet
-      get-module PowerShellGet #verify version is 1.6.5 (or newer)
-      install-module azurerm.sql -RequiredVersion 4.5.0-preview -AllowPrerelease –Force
-      import-module azurerm.sql
-   ```
-
-#### <a name="powershell-commandlets-to-create-an-instance-failover-group"></a>Polecenia cmdlet programu PowerShell w celu utworzenia grupy trybu failover wystąpienia
-
-| interfejs API | Opis |
+| Polecenia cmdlet | Opis |
 | --- | --- |
-| New-AzureRmSqlDatabaseInstanceFailoverGroup |To polecenie tworzy grupę trybu failover i rejestruje ją na serwerze podstawowym i pomocniczym|
-| Set-AzureRmSqlDatabaseInstanceFailoverGroup |Modyfikuje konfigurację grupy trybu failover|
-| Get-AzureRmSqlDatabaseInstanceFailoverGroup |Pobiera konfigurację grupy trybu failover|
-| Switch-AzureRmSqlDatabaseInstanceFailoverGroup |Wyzwala tryb failover grupy trybu failover na serwerze pomocniczym|
-| Remove-AzureRmSqlDatabaseInstanceFailoverGroup | Usuwa grupę trybu failover|
+| [New-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |To polecenie tworzy grupę trybu failover i rejestruje ją na serwerze podstawowym i pomocniczym|
+| [Set-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Modyfikuje konfigurację grupy trybu failover|
+| [Get-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Pobiera konfigurację grupy trybu failover|
+| [Przełącznik-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Wyzwala tryb failover grupy trybu failover na serwerze pomocniczym|
+| [Remove-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Usuwa grupę trybu failover|
+|  | |
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>INTERFEJS API REST: Zarządzanie grupami trybu failover bazy danych SQL przy użyciu jednej i puli baz danych
 

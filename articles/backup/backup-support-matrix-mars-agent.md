@@ -3,16 +3,16 @@ title: Macierz obsługi dla agenta Microsoft Azure Recovery Services (MARS) — 
 description: Ten artykuł zawiera podsumowanie Azure Backup pomocy technicznej podczas tworzenia kopii zapasowej maszyn, na których jest uruchomiony agent Microsoft Azure Recovery Services (MARS).
 author: dcurwin
 ms.service: backup
-ms.date: 02/17/2019
+ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 8c983772f58c1ea01db175b47225ccfafa515b96
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 599d3f97ea30b096999d754a995af2ba660c0bc3
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951979"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186171"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Macierz obsługi kopii zapasowej za pomocą agenta Microsoft Azure Recovery Services (MARS)
 
@@ -72,20 +72,22 @@ Ograniczanie sieci | Niedostępne dla maszyn z kopią zapasową z systemem Windo
 
 Agenta MARS można używać do tworzenia kopii zapasowych bezpośrednio na platformie Azure w niektórych systemach operacyjnych działających na maszynach lokalnych i maszynach wirtualnych platformy Azure. Systemy operacyjne muszą być 64 bitowe i powinny mieć zainstalowane najnowsze pakiety i aktualizacje usług. W poniższej tabeli zestawiono te systemy operacyjne:
 
-**System operacyjny** | **Pliki/foldery** | **Stan systemu** 
---- | --- | --- 
-Windows 10 (Enterprise, Pro, Home) | Tak | Nie
-Windows 8.1 (Enterprise, Pro)| Tak |Nie
-Windows 8 (Enterprise, Pro) | Tak | Nie
-Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Tak | Nie
-Windows Server 2016 (wersje Standard, Datacenter, Essentials) | Tak | Tak
-Windows Server 2012 R2 (wersje Standard, Datacenter, Foundation, Essentials) | Tak | Tak
-Windows Server 2012 (wersje Standard, Datacenter, Foundation) | Tak | Tak
-Windows Server 2008 R2 (wersje Standard, Enterprise, Datacenter, Foundation) | Tak | Tak
-Windows Server 2008 z dodatkiem SP2 (wersje Standard, Datacenter, Foundation) | Tak | Nie
-Windows Storage Server 2016/2012 R2/2012 (standard, Grupa robocza) | Tak | Nie
+**System operacyjny** | **Pliki/foldery** | **Stan systemu** | **Wymagania dotyczące oprogramowania/modułu**
+--- | --- | --- | ---
+Windows 10 (Enterprise, Pro, Home) | Tak | Nie |  Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
+Windows 8.1 (Enterprise, Pro)| Tak |Nie | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
+Windows 8 (Enterprise, Pro) | Tak | Nie | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
+Windows 7 (Ultimate, Enterprise, Pro, Home Premium/Basic, Starter) | Tak | Nie | Sprawdź odpowiednią wersję serwera pod kątem wymagań dotyczących oprogramowania/modułu
+Windows Server 2016 (wersje Standard, Datacenter, Essentials) | Tak | Tak | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
+Windows Server 2012 R2 (wersje Standard, Datacenter, Foundation, Essentials) | Tak | Tak | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
+Windows Server 2012 (wersje Standard, Datacenter, Foundation) | Tak | Tak |— .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0 <br> — Obsługa i zarządzanie obrazami wdrażania (DISM. exe)
+Windows Server 2008 R2 (wersje Standard, Enterprise, Datacenter, Foundation) | Tak | Tak | — .NET 3,5, .NET 4,5 <br> — Windows PowerShell <br> -Zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0 <br> — Obsługa i zarządzanie obrazami wdrażania (DISM. exe)
+Windows Server 2008 z dodatkiem SP2 (wersje Standard, Datacenter, Foundation) | Tak | Nie | — .NET 3,5, .NET 4,5 <br> — Windows PowerShell <br> -Zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0 <br> — Obsługa i zarządzanie obrazami wdrażania (DISM. exe) <br> -Virtual Server 2005 Base + KB KB948515
+Windows Storage Server 2016/2012 R2/2012 (standard, Grupa robocza) | Tak | Nie | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
+Windows Server 2019 (wersje Standard, Datacenter, Essentials) | Tak | Tak | — .NET 4,5 <br> — Windows PowerShell <br> -Najnowsza zgodna z pakietem redystrybucyjnym Microsoft VC + + <br> — Program Microsoft Management Console (MMC) 3,0
 
 Aby uzyskać więcej informacji, zobacz [obsługiwane systemy operacyjne serwera usługi MAB i DPM](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
+
 
 ## <a name="backup-limits"></a>Limity kopii zapasowych
 

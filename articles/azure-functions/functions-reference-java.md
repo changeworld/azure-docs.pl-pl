@@ -1,38 +1,38 @@
 ---
-title: Dokumentacja dla deweloperów języka Java dla usługi Azure Functions | Dokumentacja firmy Microsoft
-description: Zrozumienie, jak tworzyć funkcje za pomocą języka Java.
+title: Dokumentacja dla deweloperów języka Java dla Azure Functions | Microsoft Docs
+description: Dowiedz się, jak opracowywać funkcje przy użyciu języka Java.
 services: functions
 documentationcenter: na
 author: rloutlaw
 manager: justhe
-keywords: Azure functions, funkcje, przetwarzanie zdarzeń, elementy webhook, obliczanie dynamiczne, architektura bezserwerowa, języka java
+keywords: usługa Azure Functions, funkcje, przetwarzanie zdarzeń, elementy webhook, dynamiczne obliczenia, architektura bezserwerowa, Java
 ms.service: azure-functions
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: acd873cd19cafb785f968fd3d8671640bcfafed8
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: aea1434acdbfd97bcc9096dddd497ef031a74b94
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67163701"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170560"
 ---
-# <a name="azure-functions-java-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions Java
+# <a name="azure-functions-java-developer-guide"></a>Przewodnik dewelopera Azure Functions Java
 
-Środowisko uruchomieniowe usługi Azure Functions obsługuje [Java SE 8 LTS (zulu8.31.0.2-jre8.0.181 win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/). Ten przewodnik zawiera informacje dotyczące niewymagającego pisania usługi Azure Functions przy użyciu języka Java.
+Środowisko uruchomieniowe Azure Functions obsługuje środowisko [Java SE 8 LTS (Zulu 8.31.0.2-JRE 8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/). Ten przewodnik zawiera informacje na temat złożonego pisania Azure Functions przy użyciu języka Java.
 
-Funkcja języka Java jest `public` metodzie, z adnotacją `@FunctionName`. Ta metoda definiuje wpis dla funkcji języka Java i muszą być unikatowe w określonym pakiecie. 
+Funkcja języka Java to metoda `public` , która jest zadekoracyjna `@FunctionName`adnotacją. Ta metoda definiuje wpis dla funkcji języka Java i musi być unikatowa w konkretnym pakiecie. 
 
-W tym artykule założono, że już znasz [dokumentacja dla deweloperów usługi Azure Functions](functions-reference.md). Należy również wykonać szybkiego startu usługi Functions, aby utworzyć pierwszą funkcję, za pomocą [programu Visual Studio Code](functions-create-first-function-vs-code.md) lub [Maven](functions-create-first-java-maven.md).
+W tym artykule przyjęto założenie, że już odczytano [informacje dotyczące deweloperów Azure Functions](functions-reference.md). Należy również wykonać funkcję Szybki Start, aby utworzyć pierwszą funkcję przy użyciu [Visual Studio Code](functions-create-first-function-vs-code.md) lub [Maven](functions-create-first-java-maven.md).
 
 ## <a name="programming-model"></a>Model programowania 
 
-Pojęcia związane z [wyzwalaczy i powiązań](functions-triggers-bindings.md) mają zasadnicze znaczenie w usłudze Azure Functions. Wyzwalacze Rozpocznij wykonywanie Twojego kodu. Powiązania umożliwiają sposób przekazywania danych do i zwrócić dane z funkcji, bez konieczności pisania kodu dostępu do danych niestandardowych.
+Pojęcia związane z [wyzwalaczami i powiązaniami](functions-triggers-bindings.md) mają podstawowe znaczenie dla Azure Functions. Wyzwalacze rozpoczynają wykonywanie kodu. Powiązania umożliwiają przekazywanie danych do i zwracanie danych z funkcji bez konieczności pisania niestandardowego kodu dostępu do danych.
 
 ## <a name="folder-structure"></a>Struktura folderów
 
-Poniżej przedstawiono strukturę folderu projektu Java usługi Azure Functions:
+Oto struktura folderów projektu Java Azure Functions:
 
 ```
 FunctionsProject
@@ -56,18 +56,18 @@ FunctionsProject
  | - pom.xml
 ```
 
-Możesz użyć udostępnionego [host.json](functions-host-json.md) pliku, aby skonfigurować aplikację funkcji. Każda funkcja ma swój własny plik kodu (początku) i plik konfiguracji powiązania (function.json).
+Aby skonfigurować aplikację funkcji, można użyć udostępnionego pliku [host. JSON](functions-host-json.md) . Każda funkcja ma własny plik kodu (. Java) i plik konfiguracji powiązania (Function. JSON).
 
-Można umieścić więcej niż jedną funkcję w projekcie. Należy unikać umieszczenie funkcji w oddzielnych plikach JAR. `FunctionApp` w elemencie docelowym katalog to, co zostanie wdrożona do aplikacji funkcji na platformie Azure.
+W projekcie można umieścić więcej niż jedną funkcję. Unikaj umieszczania funkcji w osobnych jarsach. `FunctionApp` Katalog docelowy jest wdrażany w aplikacji funkcji na platformie Azure.
 
 ## <a name="triggers-and-annotations"></a>Wyzwalacze i adnotacje
 
- Funkcje są wywoływane przez wyzwalacz, takie jak żądania HTTP, czasomierz lub aktualizacji danych. Funkcja musi przetworzyć tego wyzwalacza i wszystkie inne dane wejściowe, aby wygenerować dane wyjściowe z co najmniej jeden.
+ Funkcje są wywoływane przez wyzwalacz, taki jak żądanie HTTP, czasomierz lub aktualizacja danych. Funkcja musi przetworzyć ten wyzwalacz i wszelkie inne dane wejściowe, aby utworzyć co najmniej jedno wyjście.
 
-Korzystanie z adnotacji Java objęte [com.microsoft.azure.functions.annotation.*](/java/api/com.microsoft.azure.functions.annotation) pakietu, aby powiązać dane wejściowe i wyjściowe metody. Aby uzyskać więcej informacji, zobacz [dokumenty referencyjne języka Java](/java/api/com.microsoft.azure.functions.annotation).
+Użyj adnotacji języka Java zawartych w pakiecie [com. Microsoft. Azure. Functions. Annotation. *](/java/api/com.microsoft.azure.functions.annotation) , aby powiązać dane wejściowe i wyjściowe z metodami. Aby uzyskać więcej informacji, zobacz [dokumenty referencyjne języka Java](/java/api/com.microsoft.azure.functions.annotation).
 
 > [!IMPORTANT] 
-> Należy skonfigurować konto usługi Azure Storage w swojej [local.settings.json](/azure/azure-functions/functions-run-local#local-settings-file) do uruchomienia usługi Azure Blob storage, Azure Queue storage lub Azure Table storage wyzwalaczy lokalnie.
+> Musisz skonfigurować konto usługi Azure Storage w pliku [Local. Settings. JSON](/azure/azure-functions/functions-run-local#local-settings-file) , aby uruchamiać lokalnie usługi Azure Blob Storage, Azure queue storage lub Azure Table Storage.
 
 Przykład:
 
@@ -81,7 +81,7 @@ public class Function {
 }
 ```
 
-Oto wygenerowanego odpowiadającego `function.json` przez [maven wtyczki, azure functions w-](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin):
+Poniżej przedstawiono wygenerowane `function.json` przez platformę [Azure-Functions-Maven-plugin](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-maven-plugin):
 
 ```json
 {
@@ -105,15 +105,15 @@ Oto wygenerowanego odpowiadającego `function.json` przez [maven wtyczki, azure 
 
 ```
 
-## <a name="jdk-runtime-availability-and-support"></a>Zestaw JDK środowiska uruchomieniowego dostępność i pomoc techniczna 
+## <a name="jdk-runtime-availability-and-support"></a>Dostępność i obsługa środowiska uruchomieniowego JDK 
 
-Potrzeby lokalnego programowania aplikacji funkcji w języku Java, pobieranie i używanie [Azul Zulu Enterprise na platformie Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java JDK 8 z [firmy Azul Systems](https://www.azul.com/downloads/azure-only/zulu/). Usługa Azure Functions używa środowiska uruchomieniowego Azul Java 8 JDK, podczas wdrażania aplikacji funkcji w chmurze.
+W przypadku lokalnego opracowywania aplikacji funkcji Java Pobierz i użyj programu [Azul Zulu Enterprise for Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) Java 8 zestawy JDK z [systemów Azul](https://www.azul.com/downloads/azure-only/zulu/). Azure Functions korzysta z Azul środowiska uruchomieniowego Java 8 JDK podczas wdrażania aplikacji funkcji w chmurze.
 
-[Pomoc techniczna platformy Azure](https://azure.microsoft.com/support/) w przypadku problemów z JDK i funkcja jest dostępna z aplikacji [plan pomocy technicznej kwalifikowaną](https://azure.microsoft.com/support/plans/).
+[Pomoc techniczna systemu Azure](https://azure.microsoft.com/support/) dotycząca problemów z aplikacjami zestawy JDK i funkcji jest dostępna z [zakwalifikowanym planem pomocy technicznej](https://azure.microsoft.com/support/plans/).
 
-## <a name="customize-jvm"></a>Dostosowywanie maszyny JVM
+## <a name="customize-jvm"></a>Dostosuj JVM
 
-Functions umożliwia dostosowywanie maszyny wirtualnej Java (JVM), umożliwia uruchamianie funkcji języka Java. [Następujące opcje maszyny JVM](https://github.com/Azure/azure-functions-java-worker/blob/master/worker.config.json#L7) są używane przez domyślny:
+Funkcje umożliwiają dostosowanie maszyny wirtualnej Java (JVM) używanej do uruchamiania funkcji języka Java. [Następujące opcje JVM](https://github.com/Azure/azure-functions-java-worker/blob/master/worker.config.json#L7) są używane domyślnie:
 
 * `-XX:+TieredCompilation`
 * `-XX:TieredStopAtLevel=1`
@@ -121,44 +121,44 @@ Functions umożliwia dostosowywanie maszyny wirtualnej Java (JVM), umożliwia ur
 * `-Djava.net.preferIPv4Stack=true`
 * `-jar`
 
-Możesz podać dodatkowe argumenty w aplikacji, ustawienie o nazwie `JAVA_OPTS`. Ustawienia aplikacji można dodać do aplikacji funkcji wdrożona na platformie Azure w witrynie Azure portal lub interfejsu wiersza polecenia platformy Azure.
+W ustawieniu aplikacji o nazwie `JAVA_OPTS`można podać dodatkowe argumenty. Możesz dodać ustawienia aplikacji do aplikacji funkcji wdrożonej na platformie Azure w Azure Portal lub interfejsie wiersza polecenia platformy Azure.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-W [witryny Azure portal](https://portal.azure.com), użyj [kartę ustawień aplikacji](functions-how-to-use-azure-function-app-settings.md#settings) dodać `JAVA_OPTS` ustawienie.
+W [Azure Portal](https://portal.azure.com)Użyj [karty Ustawienia aplikacji](functions-how-to-use-azure-function-app-settings.md#settings) , `JAVA_OPTS` aby dodać ustawienie.
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Możesz użyć [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) polecenie, aby ustawić `JAVA_OPTS`, jak w poniższym przykładzie:
+Możesz użyć polecenia [AZ functionapp config AppSettings Set](/cli/azure/functionapp/config/appsettings) , aby ustawić `JAVA_OPTS`, jak w poniższym przykładzie:
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <APP_NAME> \
 --resource-group <RESOURCE_GROUP> \
 --settings "JAVA_OPTS=-Djava.awt.headless=true"
 ```
-Ten przykład włącza tryb nienadzorowanej. Zastąp `<APP_NAME>` o nazwie aplikację funkcji i `<RESOURCE_GROUP>` z grupą zasobów.
+Ten przykład włącza tryb bezobsługowy. Zastąp `<APP_NAME>` ciąg nazwą aplikacji funkcji i `<RESOURCE_GROUP>` grupą zasobów.
 
 > [!WARNING]  
-> W [planu zużycie](functions-scale.md#consumption-plan), należy dodać `WEBSITE_USE_PLACEHOLDER` ustawienie z wartością `0`.  
-To ustawienie powoduje zwiększenie razy zimnego dla funkcji języka Java.
+> W [planie zużycia](functions-scale.md#consumption-plan)należy dodać `WEBSITE_USE_PLACEHOLDER` ustawienie `0`z wartością.  
+To ustawienie powoduje zwiększenie czasu zimnego uruchamiania funkcji języka Java.
 
-## <a name="third-party-libraries"></a>Bibliotek innych firm 
+## <a name="third-party-libraries"></a>Biblioteki innych firm 
 
-Usługa Azure Functions obsługuje korzystanie z bibliotek innych firm. Domyślnie wszystkie zależności są określone w projekcie `pom.xml` pliku są automatycznie powiązane podczas [ `mvn package` ](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md#azure-functionspackage) cel. W przypadku bibliotek, które nie jest określony jako zależności w `pom.xml` pliku, umieść je w `lib` katalogu w katalogu głównym funkcji. Zależności są umieszczane w `lib` katalogu zostaną dodane do modułu ładującego klasę systemu w czasie wykonywania.
+Azure Functions obsługuje korzystanie z bibliotek innych firm. Domyślnie wszystkie zależności określone w pliku projektu `pom.xml` są automatycznie umieszczane w tym [`mvn package`](https://github.com/Microsoft/azure-maven-plugins/blob/master/azure-functions-maven-plugin/README.md#azure-functionspackage) celu. W przypadku bibliotek nieokreślonych jako zależności `pom.xml` w pliku umieść je `lib` w katalogu w katalogu głównym funkcji. Zależności umieszczane w `lib` katalogu są dodawane do modułu ładującego klasy systemu w czasie wykonywania.
 
-`com.microsoft.azure.functions:azure-functions-java-library` Zależnościach znajduje się na ścieżce klasy domyślnie i nie muszą być dołączone w `lib` katalogu. Ponadto [azure-functions-java-proces roboczy](https://github.com/Azure/azure-functions-java-worker) dodaje składników zależnych wymienionych [tutaj](https://github.com/Azure/azure-functions-java-worker/wiki/Azure-Java-Functions-Worker-Dependencies) do ścieżki.
+Zależność jest domyślnie dostępna w ścieżce klasy i nie musi być uwzględniona `lib` w katalogu. `com.microsoft.azure.functions:azure-functions-java-library` Ponadto [platforma Azure-Functions-Java-Worker](https://github.com/Azure/azure-functions-java-worker) dodaje zależności wymienione [tutaj](https://github.com/Azure/azure-functions-java-worker/wiki/Azure-Java-Functions-Worker-Dependencies) do ścieżki klas.
 
 ## <a name="data-type-support"></a>Obsługa typu danych
 
-Można użyć zwykłych starych obiektów Java (Pojo), typy zdefiniowane w `azure-functions-java-library`, lub typów danych pierwotnych, takich jak String i Integer, aby powiązać dane wejściowe lub wyjściowe powiązania.
+Można używać zwykłych obiektów języka Java (Pojo), typów zdefiniowanych w `azure-functions-java-library`lub typów danych pierwotnych, takich jak String i Integer, do powiązania danych wejściowych lub wyjściowych.
 
 ### <a name="pojos"></a>POJOs
 
-Do konwersji danych wejściowych do obiektu typu POJO, [azure-functions-java-proces roboczy](https://github.com/Azure/azure-functions-java-worker) używa [gson](https://github.com/google/gson) biblioteki. Obiektu typu POJO typy używane jako dane wejściowe do funkcji powinny być `public`.
+Do konwertowania danych wejściowych na POJO, [Azure-Functions-Java-Worker](https://github.com/Azure/azure-functions-java-worker) używa biblioteki [gson](https://github.com/google/gson) . Typy POJO używane jako dane wejściowe funkcji powinny być `public`.
 
 ### <a name="binary-data"></a>Dane binarne
 
-Powiąż binarnych danych wejściowych lub wyjściowych, aby `byte[]`, ustawiając `dataType` w swojej function.json do `binary`:
+Powiąż binarne dane wejściowe lub `byte[]`wyjściowe z, `dataType` ustawiając pole w funkcji Function. JSON `binary`:
 
 ```java
    @FunctionName("BlobTrigger")
@@ -172,11 +172,11 @@ Powiąż binarnych danych wejściowych lub wyjściowych, aby `byte[]`, ustawiaj�
     }
 ```
 
-Jeśli oczekujesz, że wartości null, użyj `Optional<T>`.
+Jeśli oczekujesz wartości null, użyj `Optional<T>`.
 
 ## <a name="bindings"></a>Powiązania
 
-Powiązania danych wejściowych i wyjściowych zapewniają deklaratywną metodę, aby nawiązać połączenie danych z poziomu kodu. Funkcja mogą mieć wiele danych wejściowych i wyjściowych powiązania.
+Powiązania danych wejściowych i wyjściowych zapewniają deklaratywny sposób nawiązywania połączenia z danymi z poziomu kodu. Funkcja może mieć wiele powiązań wejściowych i wyjściowych.
 
 ### <a name="input-binding-example"></a>Przykład powiązania danych wejściowych
 
@@ -214,11 +214,11 @@ public class Function {
 }
 ```
 
-Możesz wywołać tę funkcję za pomocą żądania HTTP. 
-- Ładunek żądania HTTP jest przekazywany jako `String` dla argumentu `inputReq`.
-- Jeden wpis jest pobierany z usługi Table storage i jest przekazywany jako `TestInputData` do argumentu `inputData`.
+Wywołaj tę funkcję przy użyciu żądania HTTP. 
+- Ładunek żądania HTTP jest przenoszona jako `String` argument dla argumentu `inputReq`.
+- Jeden wpis jest pobierany z magazynu tabel i jest przenoszona `TestInputData` do argumentu. `inputData`
 
-Aby móc odbierać partii danych wejściowych, można powiązać `String[]`, `POJO[]`, `List<String>`, lub `List<POJO>`.
+Aby otrzymać wsadowe dane wejściowe, można `String[]`powiązać z, `POJO[]`, `List<String>`, lub `List<POJO>`.
 
 ```java
 @FunctionName("ProcessIotMessages")
@@ -235,11 +235,11 @@ Aby móc odbierać partii danych wejściowych, można powiązać `String[]`, `PO
 
 ```
 
-Ta funkcja pobiera wyzwalane, gdy ma nowych danych w Centrum zdarzeń skonfigurowany. Ponieważ `cardinality` ustawiono `MANY`, funkcja otrzymuje partię komunikatów z Centrum zdarzeń. `EventData` z event hub są konwertowane na `TestEventData` do wykonywania funkcji.
+Ta funkcja jest wyzwalana za każdym razem, gdy w skonfigurowanym centrum zdarzeń są nowe dane. Ponieważ jest ustawiona na `MANY`, funkcja otrzymuje partie komunikatów z centrum zdarzeń. `cardinality` `EventData`z centrum zdarzeń zostanie przekonwertowane `TestEventData` na potrzeby wykonywania funkcji.
 
 ### <a name="output-binding-example"></a>Przykład powiązania danych wyjściowych
 
-Powiązanie danych wyjściowych można powiązać wartości zwracanej przy użyciu `$return`. 
+Można powiązać powiązanie danych wyjściowych z wartością zwracaną przy użyciu `$return`. 
 
 ```java
 package com.example;
@@ -256,9 +256,9 @@ public class Function {
 }
 ```
 
-W przypadku wielu powiązania danych wyjściowych, użyj wartości zwracanej tylko dla jednego z nich.
+Jeśli istnieje wiele powiązań wyjściowych, użyj wartości zwracanej tylko dla jednego z nich.
 
-Aby wysłać wiele wartości danych wyjściowych, należy użyć `OutputBinding<T>` zdefiniowane w `azure-functions-java-library` pakietu. 
+Aby wysłać wiele wartości wyjściowych, `OutputBinding<T>` Użyj zdefiniowanej `azure-functions-java-library` w pakiecie. 
 
 ```java
 @FunctionName("QueueOutputPOJOList")
@@ -292,20 +292,20 @@ Aby wysłać wiele wartości danych wyjściowych, należy użyć `OutputBinding<
     }
 ```
 
-Możesz wywołać tę funkcję na HttpRequest. Zapisuje ona wiele wartości, do usługi Queue storage.
+Wywołujesz tę funkcję na wywołaniu HttpRequest. Zapisuje wiele wartości do magazynu kolejek.
 
-## <a name="httprequestmessage-and-httpresponsemessage"></a>Obiekt HttpRequestMessage i obiektu HttpResponseMessage
+## <a name="httprequestmessage-and-httpresponsemessage"></a>HttpRequestMessage i HttpResponseMessage
 
- Są one zdefiniowane w `azure-functions-java-library`. Są one typy pomocnika do pracy z funkcjami HttpTrigger.
+ Są one zdefiniowane w `azure-functions-java-library`. Są to typy pomocnika do pracy z funkcjami HttpTrigger.
 
-| Specjalistyczną odmianą      |       Cel        | Typowy                  |
+| Typ wyspecjalizowany      |       Cel        | Typowy sposób użycia                  |
 | --------------------- | :-----------------: | ------------------------------ |
-| `HttpRequestMessage<T>`  |    Wyzwalacz HTTP     | Pobiera metody, nagłówków lub zapytania |
-| `HttpResponseMessage` | Powiązanie danych wyjściowych HTTP | Zwraca stan innych niż 200   |
+| `HttpRequestMessage<T>`  |    Wyzwalacz HTTP     | Pobiera metodę, nagłówki lub zapytania |
+| `HttpResponseMessage` | Powiązanie danych wyjściowych HTTP | Zwraca stan inny niż 200   |
 
 ## <a name="metadata"></a>Metadane
 
-Wyślij kilka wyzwalaczy [wyzwolić metadanych](/azure/azure-functions/functions-triggers-bindings) wraz z danych wejściowych. Można użyć adnotacji `@BindingName` do powiązania do wyzwolenia metadanych.
+Niektóre wyzwalacze wysyłają [metadane wyzwalacza](/azure/azure-functions/functions-triggers-bindings) wraz z danymi wejściowymi. Możesz użyć adnotacji `@BindingName` do powiązania z metadanymi wyzwalacza.
 
 
 ```Java
@@ -325,7 +325,7 @@ public class Function {
     }
 }
 ```
-W powyższym przykładzie `queryValue` jest powiązany z parametru ciągu zapytania `name` w adresie URL żądania http `http://{example.host}/api/metadata?name=test`. Oto inny przykład, w którym pokazano, jak powiązać `Id` z metadanych wyzwalacz kolejki.
+W poprzednim przykładzie, `queryValue` jest powiązany z parametrem `name` ciągu zapytania w adresie URL żądania HTTP, `http://{example.host}/api/metadata?name=test`. Oto inny przykład przedstawiający sposób powiązania `Id` z metadanymi wyzwalacza kolejki.
 
 ```java
  @FunctionName("QueueTriggerMetadata")
@@ -342,15 +342,15 @@ W powyższym przykładzie `queryValue` jest powiązany z parametru ciągu zapyta
 ```
 
 > [!NOTE]
-> Nazwa podana w adnotacji musi być zgodna właściwości metadanych.
+> Nazwa podana w adnotacji musi być zgodna z właściwością metadanych.
 
 ## <a name="execution-context"></a>Kontekst wykonywania
 
-`ExecutionContext`, zdefiniowane w `azure-functions-java-library`, zawiera metody pomocnicze do komunikowania się z środowisko uruchomieniowe usługi functions.
+`ExecutionContext`zdefiniowany w `azure-functions-java-library`, zawiera metody pomocnika do komunikowania się ze środowiskiem uruchomieniowym funkcji.
 
 ### <a name="logger"></a>Logger
 
-Użyj `getLogger`zdefiniowaną w `ExecutionContext`, zapisywanie dzienników z kodu funkcji.
+Użycie `getLogger`, zdefiniowane w `ExecutionContext`, do pisania dzienników z kodu funkcji.
 
 Przykład:
 
@@ -371,54 +371,54 @@ public class Function {
 
 ## <a name="view-logs-and-trace"></a>Wyświetlanie dzienników i śledzenia
 
-Można użyć wiersza polecenia platformy Azure do strumienia Java stdout i stderr rejestrowania, a także rejestrowanie innych aplikacji. 
+Interfejsu wiersza polecenia platformy Azure można użyć do przesyłania strumieniowego rejestrowania w języku Java stdout i stderr, a także do rejestrowania innych aplikacji. 
 
-Oto jak skonfigurować aplikację funkcji, aby zapisać rejestrowanie aplikacji przy użyciu wiersza polecenia platformy Azure:
+Poniżej przedstawiono sposób konfigurowania aplikacji funkcji do zapisywania rejestrowania aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure:
 
 ```azurecli-interactive
 az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
 ```
 
-Do strumienia wyjściowego rejestrowanie dla aplikacji funkcji przy użyciu wiersza polecenia platformy Azure, otwórz nowy wiersz polecenia, Bash lub sesji terminalowej i wprowadź następujące polecenie:
+Aby przesłać strumieniowo dane wyjściowe rejestrowania dla aplikacji funkcji przy użyciu interfejsu wiersza polecenia platformy Azure, Otwórz nowy wiersz poleceń, bash lub sesję terminala, a następnie wprowadź następujące polecenie:
 
 ```azurecli-interactive
 az webapp log tail --name webappname --resource-group myResourceGroup
 ```
-[Az webapp log tail](/cli/azure/webapp/log) polecenie ma funkcje umożliwiające filtrowanie danych wyjściowych za pomocą `--provider` opcji. 
+Polecenie [AZ webapp log tail](/cli/azure/webapp/log) zawiera opcje umożliwiające filtrowanie danych wyjściowych przy użyciu `--provider` opcji. 
 
-Aby pobrać pliki dziennika jako pojedynczy plik ZIP, przy użyciu wiersza polecenia platformy Azure, otwórz nowy wiersz polecenia, Bash lub sesji terminalowej i wprowadź następujące polecenie:
+Aby pobrać pliki dzienników jako pojedynczy plik ZIP przy użyciu interfejsu wiersza polecenia platformy Azure, Otwórz nowy wiersz poleceń, bash lub sesję terminala, a następnie wprowadź następujące polecenie:
 
 ```azurecli-interactive
 az webapp log download --resource-group resourcegroupname --name functionappname
 ```
 
-Musisz włączyć systemu plików, logowania w witrynie Azure portal lub interfejsu wiersza polecenia platformy Azure, przed uruchomieniem tego polecenia.
+Przed uruchomieniem tego polecenia należy włączyć rejestrowanie systemu plików w Azure Portal lub interfejsie wiersza polecenia platformy Azure.
 
 ## <a name="environment-variables"></a>Zmienne środowiskowe
 
-W przypadku funkcji [ustawienia aplikacji](https://docs.microsoft.com/azure/azure-functions/functions-app-settings), takie jak połączenia z usługą ciągów, są widoczne jako zmiennych środowiskowych podczas wykonywania. Dostęp do tych ustawień, używając `System.getenv("AzureWebJobsStorage")`.
+W funkcjach, [Ustawienia aplikacji](functions-app-settings.md), takie jak parametry połączenia usługi, są ujawniane jako zmienne środowiskowe podczas wykonywania. Możesz uzyskać dostęp do tych ustawień przy użyciu `System.getenv("AzureWebJobsStorage")`,.
 
-Na przykład można dodać [AppSetting](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings), o nazwie `testAppSetting` i wartość `testAppSettingValue`:
+Poniższy przykład pobiera [ustawienie aplikacji](functions-how-to-use-azure-function-app-settings.md#settings)z kluczem o nazwie `myAppSetting`:
 
 ```java
 
 public class Function {
     public String echo(@HttpTrigger(name = "req", methods = {"post"}, authLevel = AuthorizationLevel.ANONYMOUS) String req, ExecutionContext context) {
-        context.getLogger().info("testAppSetting "+ System.getenv("testAppSettingValue"));
+        context.getLogger().info("My app setting value: "+ System.getenv("myAppSetting"));
         return String.format(req);
     }
 }
 
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji dotyczących programowania Java usługi Azure Functions zobacz następujące zasoby:
+Aby uzyskać więcej informacji na temat programowania w języku Java Azure Functions, zobacz następujące zasoby:
 
 * [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)
 * [Dokumentacja usługi Azure Functions dla deweloperów](functions-reference.md)
-* [Wyzwalacze w usłudze Azure Functions i powiązania](functions-triggers-bindings.md)
-* Lokalne programowanie i debugowanie za pomocą [programu Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md), i [środowiska Eclipse](functions-create-maven-eclipse.md)
-* [Zdalne debugowanie środowiska Java w usłudze Azure Functions przy użyciu programu Visual Studio Code](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
-* [Wtyczka maven plugin for Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) 
-* Usprawnij Tworzenie funkcji przy użyciu `azure-functions:add` celu i przygotowywanie katalogu przemieszczania dla [wdrażanie plików ZIP](deployment-zip-push.md).
+* [Azure Functions wyzwalacze i powiązania](functions-triggers-bindings.md)
+* Lokalne programowanie i debugowanie za pomocą [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md)i [zaćmienie](functions-create-maven-eclipse.md)
+* [Zdalne debugowanie Azure Functions Java z Visual Studio Code](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
+* [Wtyczka Maven dla Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) 
+* Usprawnij Tworzenie funkcji za pomocą `azure-functions:add` celu i przygotuj katalog przemieszczania dla [wdrożenia pliku zip](deployment-zip-push.md).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: atsenthi
-ms.openlocfilehash: 2c96c421d768b1e75169615d81a03387602a83ac
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 2e730ae8ecf6f1fab12aff23cab0ac3aa246233a
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036063"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173359"
 ---
 # <a name="open-ports-for-a-service-fabric-cluster"></a>Otwieranie portów dla klastra Service Fabric
 
@@ -110,4 +110,4 @@ W przypadku `New-AzLoadBalancerRuleConfig` `-FrontendPort` polecenia reprezentuj
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się więcej o [sieci w Service Fabric](service-fabric-patterns-networking.md). rvice-Fabric-Patterns-Networking.MD).
+Dowiedz się więcej o [sieci w Service Fabric](service-fabric-patterns-networking.md).

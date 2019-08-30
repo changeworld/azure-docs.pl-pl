@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f4f081001f2573bccc58205ccc7955739b7f5c4c
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: ca7985ee302b35f8e7b39c46c229c7b0b263ffce
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779288"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170656"
 ---
 # <a name="azure-functions-networking-options"></a>Opcje sieci Azure Functions
 
@@ -52,8 +52,10 @@ Aby dowiedzieć się więcej, zobacz [Azure App Service ograniczenia dostępu st
 ## <a name="private-site-access"></a>Dostęp do witryn prywatnych
 
 Dostęp do lokacji prywatnej dotyczy udostępniania aplikacji tylko z sieci prywatnej, takiej jak z poziomu sieci wirtualnej platformy Azure. 
-* Dostęp do lokacji prywatnej jest dostępny w planie [Premium](./functions-premium-plan.md) i [App Service](functions-scale.md#app-service-plan) podczas konfigurowania **punktów końcowych usługi** . Aby uzyskać więcej informacji, zobacz [punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md)
-    * Należy pamiętać, że dzięki punktom końcowym usługi funkcja nadal ma pełny dostęp wychodzący do Internetu, nawet z skonfigurowaną integracją sieci wirtualnej.
+* Dostęp do lokacji prywatnej jest dostępny w planie [Premium](./functions-premium-plan.md), [zużycia](functions-scale.md#consumption-plan) i [App Service](functions-scale.md#app-service-plan) w przypadku skonfigurowania **punktów końcowych usługi** . 
+    * Punkty końcowe usługi można skonfigurować dla poszczególnych aplikacji w obszarze funkcje platformy > sieci > skonfigurować ograniczenia dostępu > Dodaj regułę. Sieci wirtualne można teraz wybrać jako "typ" reguły.
+    * Aby uzyskać więcej informacji, zobacz [punkty końcowe usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md)
+        * Należy pamiętać, że dzięki punktom końcowym usługi funkcja nadal ma pełny dostęp wychodzący do Internetu, nawet z skonfigurowaną integracją sieci wirtualnej.
 * Dostęp do lokacji prywatnej jest również dostępny dla App Service Environment skonfigurowany przy użyciu wewnętrznego modułu równoważenia obciążenia (ILB). Aby uzyskać więcej informacji, zobacz [Tworzenie i używanie wewnętrznego modułu równoważenia obciążenia z App Service Environment](../app-service/environment/create-ilb-ase.md).
 
 ## <a name="virtual-network-integration"></a>Integracja sieci wirtualnej
@@ -99,6 +101,13 @@ Integracja sieci wirtualnej w usłudze Functions używa udostępnionej infrastru
 * [Integracja sieci wirtualnej wymagana przez bramę](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
 Aby dowiedzieć się więcej o korzystaniu z integracji z siecią wirtualną, zobacz [Integrowanie aplikacji funkcji z siecią wirtualną platformy Azure](functions-create-vnet.md).
+
+### <a name="restricting-your-storage-account-to-a-virtual-network"></a>Ograniczanie konta magazynu do sieci wirtualnej
+
+> [!note] 
+> Chwilowo może upłynąć do 12 godzin, zanim Twoje konto magazynu stanie się dostępne w aplikacji funkcji po skonfigurowaniu ograniczeń dostępu dla tego konta magazynu. W tym czasie aplikacja będzie całkowicie w trybie offline.
+
+Aby zapewnić wyższy poziom zabezpieczeń, można ograniczyć konto magazynu aplikacji do sieci wirtualnej. Następnie należy zintegrować swoją lokację z tą siecią wirtualną, aby uzyskać dostęp do konta magazynu. Ta konfiguracja jest obsługiwana we wszystkich planach, które obsługują integrację z siecią wirtualną.
 
 ## <a name="virtual-network-triggers-non-http"></a>Wyzwalacze sieci wirtualnej (bez protokołu HTTP)
 

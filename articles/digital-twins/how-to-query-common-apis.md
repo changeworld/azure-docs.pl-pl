@@ -1,50 +1,50 @@
 ---
-title: Azure cyfrowego Twins typowych wzorców zapytań | Dokumentacja firmy Microsoft
-description: Informacje o typowych wzorców zapytań interfejsów API zarządzania Twins cyfrowych platformy Azure.
+title: Typowe wzorce zapytań usługi Azure Digital bliźniaczych reprezentacji | Microsoft Docs
+description: Poznaj typowe wzorce wykonywania zapytań dotyczących interfejsów API zarządzania usługą Azure Digital bliźniaczych reprezentacji.
 author: kingdomofends
 manager: philmea
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 08/29/2019
 ms.author: v-adgera
-ms.openlocfilehash: eca355a51b516311d060df09905c1df769037ec5
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 55b0676ce0a0dc6d4347ddcadf43b7b650f0f9a1
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67722841"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172804"
 ---
-# <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Jak wykonać zapytanie interfejsów API Twins cyfrowych platformy Azure do wykonywania typowych zadań
+# <a name="how-to-query-azure-digital-twins-apis-for-common-tasks"></a>Jak wykonywać zapytania dotyczące interfejsów API Digital bliźniaczych reprezentacji platformy Azure dla typowych zadań
 
-W tym artykule przedstawiono wzorców zapytań, aby pomóc Ci w realizacji typowych scenariuszy wystąpienia Twins cyfrowych platformy Azure. Założono, że wystąpienie Twins cyfrowego jest uruchomiony. Możesz użyć dowolnego klienta REST takiego jak narzędzie Postman. 
+W tym artykule przedstawiono wzorce zapytań ułatwiające wykonywanie typowych scenariuszy dla wystąpienia usługi Azure Digital bliźniaczych reprezentacji. Przyjęto założenie, że wystąpienie bliźniaczych reprezentacji cyfrowe jest już uruchomione. Można użyć dowolnego klienta REST, takiego jak program Poster. 
 
 [!INCLUDE [digital-twins-management-api](../../includes/digital-twins-management-api.md)]
 
 
-## <a name="queries-for-spaces-and-types"></a>Zapytania dotyczące miejsca do magazynowania i typów
+## <a name="queries-for-spaces-and-types"></a>Zapytania dotyczące spacji i typów
 
-W tej sekcji przedstawiono przykładowe zapytania, aby uzyskać więcej informacji na temat usługi udostępnione miejsca do magazynowania. Tworzenie uwierzytelnionego żądania GET HTTP z przykładowe zapytania, zastępując symbole zastępcze wartości z konfiguracji. 
+Ta sekcja zawiera przykładowe zapytania, aby uzyskać więcej informacji o zainicjowanych miejscach. Wykonaj uwierzytelnione żądania GET HTTP z przykładowymi zapytaniami, zastępując symbole zastępcze wartościami z Instalatora. 
 
-- Pobierz miejsca do magazynowania, które są węzły główne.
+- Pobierz spacje, które są węzłami głównymi.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?$filter=ParentSpaceId eq null
     ```
 
-- Uzyskiwanie miejsca według nazwy i obejmują urządzeń, czujników, obliczonych wartości i wartości z czujników. 
+- Pobierz spację według nazwy i Uwzględnij urządzenia, czujniki, obliczone wartości i wartości czujnika. 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?name=Focus Room A1&includes=fullpath,devices,sensors,values,sensorsvalues
     ```
 
-- Miejsca do magazynowania i informacji o nich czujnika/urządzenia, których elementem nadrzędnym jest identyfikator danego obszaru i które są na poziomie 2 do 5 [względem danego miejsca](how-to-navigate-apis.md#api-navigation). 
+- Pobierz spacje i informacje o urządzeniu/czujniku, których elementem nadrzędnym jest dany identyfikator obszaru, i które są na poziomach od dwóch do pięciu [względem danego obszaru](how-to-navigate-apis.md#api-navigation). 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?spaceId=YOUR_SPACE_ID&includes=fullpath,devices,sensors,values,sensorsvalues&traverse=Down&minLevel=1&minRelative=true&maxLevel=5&maxRelative=true
     ```
 
-- Uzyskiwanie miejsca z danym Identyfikatorem i zawierać obliczonych i wartości z czujników.
+- Pobierz miejsce z danym IDENTYFIKATORem i Dołącz wartości obliczone i czujnika.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?ids=YOUR_SPACE_ID&includes=Values,sensors,SensorsValues
@@ -56,13 +56,13 @@ W tej sekcji przedstawiono przykładowe zapytania, aby uzyskać więcej informac
     YOUR_MANAGEMENT_API_URL/propertykeys?spaceId=YOUR_SPACE_ID
     ```
 
-- Pobierz miejsca do magazynowania przy użyciu klucza właściwości o nazwie *AreaInSqMeters* i jego wartość wynosi 30. Możesz również ciąg operacje, na przykład get spacje zawierającego klucz właściwości, za pomocą `name = X contains Y`.
+- Pobierz spacje przy użyciu klucza właściwości o nazwie *AreaInSqMeters* , a jego wartość to 30. Możesz również wykonywać operacje na ciągach, na przykład Pobierz spacje zawierające klucz właściwości `name = X contains Y`z.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/spaces?propertyKey=AreaInSqMeters&propertyValue=30
     ```
 
-- Pobieranie wszystkich nazw o nazwie *temperatury* wraz ze skojarzonymi zależnościami i ontologie.
+- Pobierz wszystkie nazwy z *temperaturą* nazwy i skojarzonymi zależnościami i ontologie.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/types?names=Temperature&includes=space,ontologies,description,fullpath
@@ -71,21 +71,21 @@ W tej sekcji przedstawiono przykładowe zapytania, aby uzyskać więcej informac
 
 ## <a name="queries-for-roles-and-role-assignments"></a>Zapytania dotyczące ról i przypisań ról
 
-W tej sekcji przedstawiono niektóre zapytania, aby uzyskać więcej informacji na temat ról i ich przypisania. 
+W tej sekcji przedstawiono niektóre zapytania, aby uzyskać więcej informacji na temat ról i ich przypisań. 
 
-- Pobierz wszystkie role obsługiwane przez Twins cyfrowych platformy Azure.
+- Pobierz wszystkie role obsługiwane przez usługę Azure Digital bliźniaczych reprezentacji.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
 
-- Pobierz wszystkie przypisania roli w ramach wystąpienia cyfrowego bliźniaczych reprezentacji. 
+- Pobierz wszystkie przypisania ról w wystąpieniu Digital bliźniaczych reprezentacji. 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=down
     ```
 
-- Pobieranie przypisań ról w określonej ścieżce.
+- Pobieranie przypisań ról dla określonej ścieżki.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/roleassignments?path=/A_SPATIAL_PATH
@@ -93,7 +93,7 @@ W tej sekcji przedstawiono niektóre zapytania, aby uzyskać więcej informacji 
 
 ## <a name="queries-for-devices"></a>Zapytania dotyczące urządzeń
 
-W tej sekcji przedstawiono kilka przykładów, jak używać interfejsów API zarządzania, aby uzyskać szczegółowe informacje o urządzeniach. Wszystkie wywołania interfejsu API muszą zostać uwierzytelnione żądania GET HTTP.
+W tej sekcji przedstawiono kilka przykładów użycia interfejsów API zarządzania w celu uzyskania szczegółowych informacji o urządzeniach. Wszystkie wywołania interfejsu API muszą być uwierzytelniani ODBIERAją żądania HTTP.
 
 - Pobierz wszystkie urządzenia.
 
@@ -101,13 +101,13 @@ W tej sekcji przedstawiono kilka przykładów, jak używać interfejsów API zar
     YOUR_MANAGEMENT_API_URL/devices
     ```
 
-- Znajdowanie wszystkich stanów urządzeń.
+- Znajdź wszystkie Stany urządzeń.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/system/devices/statuses
     ```
 
-- Uzyskaj określonego urządzenia.
+- Pobierz określone urządzenie.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_ID
@@ -119,110 +119,110 @@ W tej sekcji przedstawiono kilka przykładów, jak używać interfejsów API zar
     YOUR_MANAGEMENT_API_URL/devices?maxLevel=1
     ```
 
-- Pobierz wszystkie urządzenia dołączone do miejsca do magazynowania na poziomie 2 do 4.
+- Pobierz wszystkie urządzenia dołączone do miejsc na poziomach od 2 do 4.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?minLevel=2&maxLevel=4
     ```
 
-- Pobierz wszystkie urządzenia podłączone bezpośrednio do identyfikatora dla danego miejsca.
+- Pobierz wszystkie urządzenia bezpośrednio dołączone do określonego identyfikatora obszaru.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID
     ```
 
-- Pobierz wszystkie urządzenia podłączone do określonego miejsca i jego obiektów podrzędnych.
+- Pobierz wszystkie urządzenia dołączone do określonego obszaru i jego obiektów podrzędnych.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down
     ```
 
-- Pobierz wszystkie urządzenia podłączone do elementów podrzędnych miejsca, z wyjątkiem miejsca.
+- Pobierz wszystkie urządzenia dołączone do elementów podrzędnych miejsca, z wyłączeniem tego miejsca.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down&minLevel=1&minRelative=true
     ```
 
-- Pobierz wszystkie urządzenia podłączone do bezpośrednie elementy podrzędne miejsca.
+- Pobierz wszystkie urządzenia dołączone do bezpośrednich elementów podrzędnych miejsca.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down&minLevel=1&minRelative=true&maxLevel=1&maxRelative=true
     ```
 
-- Pobierz wszystkie urządzenia podłączone do jednego z elementów nadrzędnych ze spacją.
+- Pobierz wszystkie urządzenia dołączone do jednego z elementów nadrzędnych obszaru.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Up&maxLevel=-1&maxRelative=true
     ```
 
-- Pobierz wszystkie urządzenia podłączone do obiektów podrzędnych, miejsca, które są poziomu mniejszy lub równy 5.
+- Pobierz wszystkie urządzenia dołączone do elementów podrzędnych miejsca o poziomie mniejszym lub równym 5.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Down&maxLevel=5
     ```
 
-- Pobierz wszystkie urządzenia dołączone do miejsca do magazynowania, znajdujących się na tym samym poziomie jak obszaru o identyfikatorze *YOUR_SPACE_ID*.
+- Pobierz wszystkie urządzenia dołączone do miejsc, które znajdują się na tym samym poziomie, co miejsce o IDENTYFIKATORze *YOUR_SPACE_ID*.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?spaceId=YOUR_SPACE_ID&traverse=Span&minLevel=0&minRelative=true&maxLevel=0&maxRelative=true
     ```
 
-- Pobieranie parametrów połączenia urządzenia usługi IoT Hub dla urządzenia.
+- Pobierz IoT Hub parametry połączenia z urządzeniem.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices/YOUR_DEVICE_ID?includes=ConnectionString
     ```
 
-- Pobierz urządzenie o identyfikatorze danego sprzętu, obejmujących również czujniki dołączone.
+- Pobierz urządzenie z danym IDENTYFIKATORem sprzętu, w tym z dołączonymi czujnikami.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/devices?hardwareIds=YOUR_DEVICE_HARDWARE_ID&includes=sensors
     ```
 
-- Pobierz czujników dla typów danych, w tym przypadku *ruchu* i *temperatury*.
+- Uzyskaj czujniki dla konkretnych typów danych, w tym przypadku *ruchu* i *temperatury*.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/sensors?dataTypes=Motion,Temperature
     ```
 
-## <a name="queries-for-matchers-and-user-defined-functions"></a>Zapytania dotyczące dopasowujące jednostki i funkcji zdefiniowanych przez użytkownika 
+## <a name="queries-for-matchers-and-user-defined-functions"></a>Zapytania dotyczące odpowiedników i funkcji zdefiniowanych przez użytkownika 
 
-- Pobierz wszystkie aprowizowane dopasowujące jednostki i ich identyfikatorów.
+- Pobierz wszystkie przydziały i ich identyfikatory.
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/matchers
     ```
 
-- Uzyskaj szczegółowe informacje dotyczące konkretnego dopasowywania, łącznie ze spacjami i funkcji zdefiniowanych przez użytkownika, skojarzone z nią.
+- Uzyskaj szczegółowe informacje o konkretnym dopasowaniu, w tym informacje o przestrzeni i zdefiniowanej przez użytkownika funkcji.
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_ID?includes=description, conditions, fullpath, userdefinedfunctions, space
     ```
 
-- Oceń dopasowywania względem czujnika i Włącz rejestrowanie na potrzeby debugowania. Zwracany tego komunikatu HTTP GET informuje, czy dopasowywania i czujnik należeć do typu danych. 
+- Oceń dopasowanie do czujnika i Włącz rejestrowanie na potrzeby debugowania. Zwrot tego komunikatu HTTP GET informuje o tym, czy dopasowanie i czujnik należą do typu danych. 
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_ID/evaluate/YOUR_SENSOR_ID?enableLogging=true
     ```
 
-- Pobierz identyfikator funkcje zdefiniowane przez użytkownika. 
+- Pobierz identyfikator funkcji zdefiniowanych przez użytkownika. 
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/userdefinedfunctions
     ```
 
-- Pobieranie zawartości określonej funkcji zdefiniowanych przez użytkownika 
+- Pobierz zawartość określonej funkcji zdefiniowanej przez użytkownika 
 
    ```plaintext
     YOUR_MANAGEMENT_API_URL/userdefinedfunctions/YOUR_USER_DEFINED_FUNCTION_ID/contents
     ```
 
 
-## <a name="queries-for-users"></a>Zapytania dotyczące użytkowników
+## <a name="queries-for-users"></a>Zapytania dla użytkowników
 
-W tej sekcji przedstawiono niektóre przykładowe zapytania interfejsu API zarządzania użytkownikami w reprezentacji urządzeń cyfrowych platformy Azure. Upewnij się żądanie HTTP GET, zastępując symbole zastępcze wartości z konfiguracji. 
+Ta sekcja zawiera przykładowe zapytania interfejsu API do zarządzania użytkownikami w usłudze Azure Digital bliźniaczych reprezentacji. Utwórz żądanie HTTP GET zastępujące symbole zastępcze wartościami z Twojego Instalatora. 
 
-- Pobieranie wszystkich użytkowników. 
+- Pobierz wszystkich użytkowników. 
 
     ```plaintext
     YOUR_MANAGEMENT_API_URL/users
@@ -234,8 +234,8 @@ W tej sekcji przedstawiono niektóre przykładowe zapytania interfejsu API zarz�
     YOUR_MANAGEMENT_API_URL/users/ANY_USER_ID
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się, jak można uwierzytelnić przy użyciu interfejsu API zarządzania, przeczytaj [uwierzytelniania za pomocą interfejsów API](./security-authenticating-apis.md).
+Aby dowiedzieć się, jak uwierzytelniać się za pomocą interfejsu API zarządzania, przeczytaj artykuł [uwierzytelnianie za pomocą interfejsów API](./security-authenticating-apis.md).
 
-Aby dowiedzieć się więcej na temat punktów końcowych interfejsu API, przeczytaj [sposób używania cyfrowego Swagger Twins](./how-to-use-swagger.md).
+Aby dowiedzieć się więcej na temat punktów końcowych interfejsu API, zobacz [jak używać programu Digital bliźniaczych reprezentacji Swagger](./how-to-use-swagger.md).

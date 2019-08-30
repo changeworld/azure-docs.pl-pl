@@ -2,7 +2,7 @@
 title: Umiejętność wyszukiwania poznawczego rozpoznawania jednostek — Azure Search
 description: Wyodrębnij różne typy jednostek z tekstu w Azure Search potoku wyszukiwania poznawczego.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.workload: search
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: 25f6075d1e026745d4db1a60149e109a0f9636a4
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: eb196b9ff72201358982764f227ab7935489f05d
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635951"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183411"
 ---
 #    <a name="entity-recognition-cognitive-skill"></a>Umiejętność rozpoznawania jednostek
 

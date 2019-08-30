@@ -1,8 +1,8 @@
 ---
-title: Uaktualnienie do zestawu .NET SDK rozszerzenia usługi Azure Search w wersji 1.1 — usługa Azure Search
-description: Migrowanie kodu do zestawu .NET SDK rozszerzenia usługi Azure Search w wersji 1.1 ze starszych wersji interfejsu API. Poznaj nowe funkcje i zmiany kodu są wymagane.
+title: Uaktualnij do Azure Search .NET SDK w wersji 1,1-Azure Search
+description: Migruj kod do Azure Search .NET SDK wersja 1,1 ze starszych wersji interfejsu API. Dowiedz się, co nowego i jakie zmiany w kodzie są wymagane.
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: dotnet
@@ -10,73 +10,73 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 82823bae76521080634d4f7ff285d94ce8495fbf
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 8227e1b372af1eee43db59da2cfad165d67be9ae
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "65024165"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183268"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-11"></a>Uaktualnianie do zestawu .NET SDK rozszerzenia usługi Azure Search w wersji 1.1
+# <a name="upgrading-to-the-azure-search-net-sdk-version-11"></a>Uaktualnianie do Azure Search .NET SDK w wersji 1,1
 
-Jeśli używasz wersji 1.0.2-preview lub starszy z [zestawu .NET SDK usługi Azure Search](https://aka.ms/search-sdk), ten artykuł pomoże Ci uaktualnić aplikację do używania w wersji 1.1.
+Jeśli używasz wersji 1.0.2-Preview lub starszej części [zestawu SDK Azure Search .NET](https://aka.ms/search-sdk), ten artykuł pomoże Ci uaktualnić aplikację do korzystania z wersji 1,1.
 
-Aby uzyskać ogólne wskazówki zestawu SDK, wraz z przykładami, zobacz [jak używać usługi Azure Search z poziomu aplikacji .NET](search-howto-dotnet-sdk.md).
+Aby zapoznać się z bardziej ogólnym przewodnikiem dotyczącym zestawu SDK, łącznie z przykładami, zobacz [jak używać Azure Search z poziomu aplikacji .NET](search-howto-dotnet-sdk.md).
 
 > [!NOTE]
-> Po uaktualnieniu do wersji 1.1 lub jeśli już korzystasz z wersji między 1.1 i 2.0 — w wersji zapoznawczej (włącznie), należy uaktualnić do wersji 3. Zobacz [uaktualnienie do zestawu .NET SDK rozszerzenia usługi Azure Search w wersji 3](search-dotnet-sdk-migration.md) instrukcje.
+> Po uaktualnieniu do wersji 1,1 lub jeśli korzystasz już z wersji z zakresu od 1,1 do 2,0 — wersja zapoznawcza, należy przeprowadzić uaktualnienie do wersji 3. Aby uzyskać instrukcje [, zobacz Uaktualnianie do Azure Search .NET SDK w wersji 3](search-dotnet-sdk-migration.md) .
 >
 
-Najpierw należy zaktualizować odwołania programu NuGet dla `Microsoft.Azure.Search` przy użyciu konsoli Menedżera pakietów NuGet lub przez kliknięcie prawym przyciskiem myszy odwołania projektu i wybierając "Zarządzaj NuGet pakietów..." w programie Visual Studio.
+Najpierw zaktualizuj odwołanie do `Microsoft.Azure.Search` programu NuGet przy użyciu konsoli Menedżera pakietów NuGet lub kliknij prawym przyciskiem myszy odwołania do projektu i wybierz polecenie "Zarządzaj pakietami NuGet..." w programie Visual Studio.
 
-Po NuGet pobrała nowe pakiety i ich zależności, należy ponownie skompilować projekt.
+Po pobraniu przez program NuGet nowych pakietów i ich zależności, należy ponownie skompilować projekt.
 
-Jeśli była wcześniej używana wersja 1.0.0-preview, 1.0.1-preview lub 1.0.2-preview, kompilacji ma być pomyślnie wykonane i wszystko gotowe!
+Jeśli wcześniej używasz wersji 1.0.0-Preview, 1.0.1-Preview lub 1.0.2-Preview, kompilacja powinna zakończyć się powodzeniem i wszystko gotowe do użycia.
 
-Jeśli wcześniej używano 0.13.0-preview wersji lub starsze, powinien zostać wyświetlony tworzenia błędów, takich jak następujące:
+Jeśli wcześniej używasz wersji 0.13.0-Preview lub starszej, powinny być widoczne błędy kompilacji podobne do następujących:
 
     Program.cs(137,56,137,62): error CS0117: 'Microsoft.Azure.Search.Models.IndexBatch' does not contain a definition for 'Create'
     Program.cs(137,99,137,105): error CS0117: 'Microsoft.Azure.Search.Models.IndexAction' does not contain a definition for 'Create'
     Program.cs(146,41,146,54): error CS1061: 'Microsoft.Azure.Search.IndexBatchException' does not contain a definition for 'IndexResponse' and no extension method 'IndexResponse' accepting a first argument of type 'Microsoft.Azure.Search.IndexBatchException' could be found (are you missing a using directive or an assembly reference?)
     Program.cs(163,13,163,42): error CS0246: The type or namespace name 'DocumentSearchResponse' could not be found (are you missing a using directive or an assembly reference?)
 
-Następnym krokiem jest, aby naprawić błędy kompilacji jedno po drugim. Większość będzie wymagać, zmieniając niektóre nazwy klasy i metody, które zostały zmienione w zestawie SDK. [Listę istotnych zmian w wersji 1.1](#ListOfChangesV1) zawiera listę tych zmian nazw.
+Następnym krokiem jest poprawienie błędów kompilacji po jednym. Większość będzie wymagała zmiany nazw klas i metod, które zostały zmienione w zestawie SDK. [Lista istotnych zmian w wersji 1,1](#ListOfChangesV1) zawiera listę zmian nazw.
 
-Jeśli za pomocą niestandardowej klasy modelu dokumentów, a te klasy posiadają właściwości niedopuszczającej typy pierwotne (na przykład `int` lub `bool` w C#), w wersji 1.1, zestawu SDK, które należy zwrócić uwagę jest naprawienie usterki. Zobacz [poprawki w wersji 1.1](#BugFixesV1) Aby uzyskać więcej informacji.
+Jeśli używasz klas niestandardowych do modelowania dokumentów, a te klasy mają właściwości niedopuszczające wartości null typy pierwotne (na przykład `int` lub `bool` w C#), istnieje Poprawka błędu w wersji 1,1 zestawu SDK, którego należy wiedzieć. Aby uzyskać więcej informacji, zobacz [poprawki błędów w wersji 1,1](#BugFixesV1) .
 
-Na koniec gdy problem został rozwiązany błędów kompilacji, można wprowadzeniu zmian do aplikacji w taki sposób, aby móc korzystać z nowych funkcji, jeśli chcesz, aby.
+Na koniec po usunięciu błędów kompilacji można wprowadzić zmiany w aplikacji, aby korzystać z nowych funkcji.
 
 <a name="ListOfChangesV1"></a>
 
-## <a name="list-of-breaking-changes-in-version-11"></a>Listę istotnych zmian w wersji 1.1
-Poniższa lista są uporządkowane według prawdopodobieństwo, że zmiana wpłynie na kod aplikacji.
+## <a name="list-of-breaking-changes-in-version-11"></a>Lista istotnych zmian w wersji 1,1
+Poniższa lista jest uporządkowana według prawdopodobieństwa, że zmiana wpłynie na kod aplikacji.
 
-### <a name="indexbatch-and-indexaction-changes"></a>IndexBatch i IndexAction zmian
-`IndexBatch.Create` została zmieniona na `IndexBatch.New` i nie ma już `params` argumentu. Możesz użyć `IndexBatch.New` partii, które łączyć różnego rodzaju akcje (scaleń, usuwa itp.). Ponadto istnieją nowe metody statyczne do tworzenia instancji gdzie wszystkie akcje są takie same: `Delete`, `Merge`, `MergeOrUpload`, i `Upload`.
+### <a name="indexbatch-and-indexaction-changes"></a>IndexBatch i IndexAction zmiany
+`IndexBatch.Create`Zmieniono nazwę na `IndexBatch.New` i nie `params` ma już argumentu. Można użyć `IndexBatch.New` dla partii, które mieszają różne typy akcji (Scalanie, usuwanie itp.). Ponadto istnieją nowe metody statyczne do tworzenia partii, w których wszystkie akcje są takie same `Delete`:, `Merge`, `MergeOrUpload`, i `Upload`.
 
-`IndexAction` nie ma już konstruktorów publicznych i jego właściwości, teraz są niezmienne. Należy używać nowej metody statyczne do tworzenia akcji do różnych celów: `Delete`, `Merge`, `MergeOrUpload`, i `Upload`. `IndexAction.Create` została usunięta. Jeśli używane jest przeciążenie, które przyjmuje tylko dokumenty, upewnij się, że użyj `Upload` zamiast tego.
+`IndexAction`nie ma już konstruktorów publicznych i jego właściwości są teraz niezmienne. Należy używać nowych metod statycznych do tworzenia akcji do różnych celów `Delete`:, `Merge`, `MergeOrUpload`, i `Upload`. `IndexAction.Create`został usunięty. Jeśli użyto przeciążenia, które pobiera tylko dokument, należy zamiast tego użyć `Upload` .
 
 #### <a name="example"></a>Przykład
-Jeśli Twój kod wygląda następująco:
+Jeśli kod wygląda następująco:
 
     var batch = IndexBatch.Create(documents.Select(doc => IndexAction.Create(doc)));
     indexClient.Documents.Index(batch);
 
-Można go zmienić, na ten element, aby naprawić wszystkie błędy kompilacji:
+Można to zmienić w celu usunięcia błędów kompilacji:
 
     var batch = IndexBatch.New(documents.Select(doc => IndexAction.Upload(doc)));
     indexClient.Documents.Index(batch);
 
-Jeśli chcesz, możesz ją jeszcze bardziej uprościć do tego:
+Jeśli chcesz, możesz uprościć to:
 
     var batch = IndexBatch.Upload(documents);
     indexClient.Documents.Index(batch);
 
-### <a name="indexbatchexception-changes"></a>Zmiany IndexBatchException
-`IndexBatchException.IndexResponse` Właściwości została zmieniona na `IndexingResults`, a jej typ jest teraz `IList<IndexingResult>`.
+### <a name="indexbatchexception-changes"></a>IndexBatchException zmiany
+Nazwa właściwości została zmieniona na `IndexingResults`, a jej typ to teraz `IList<IndexingResult>`. `IndexBatchException.IndexResponse`
 
 #### <a name="example"></a>Przykład
-Jeśli Twój kod wygląda następująco:
+Jeśli kod wygląda następująco:
 
     catch (IndexBatchException e)
     {
@@ -85,7 +85,7 @@ Jeśli Twój kod wygląda następująco:
             String.Join(", ", e.IndexResponse.Results.Where(r => !r.Succeeded).Select(r => r.Key)));
     }
 
-Można go zmienić, na ten element, aby naprawić wszystkie błędy kompilacji:
+Można to zmienić w celu usunięcia błędów kompilacji:
 
     catch (IndexBatchException e)
     {
@@ -97,9 +97,9 @@ Można go zmienić, na ten element, aby naprawić wszystkie błędy kompilacji:
 <a name="OperationMethodChanges"></a>
 
 ### <a name="operation-method-changes"></a>Zmiany metody operacji
-Każda operacja w zestawu .NET SDK usługi Azure Search jest udostępniany jako zbiór przeciążenia metody dla obiektów wywołujących synchroniczne i asynchroniczne. Podpisy i uwzględniając z tych przeciążeń metody została zmieniona w wersji 1.1.
+Każda operacja w Azure Search .NET SDK jest uwidaczniana jako zestaw przeciążeń metody dla wywołań synchronicznych i asynchronicznych. Sygnatury i ich fabryki zostały zmienione w wersji 1,1.
 
-Na przykład operacji "Pobierz statystyki indeksu" w starszych wersjach zestawu SDK udostępniane tymi podpisami:
+Na przykład operacja "Pobierz statystyki indeksu" we wcześniejszych wersjach zestawu SDK uwidacznia następujące sygnatury:
 
 W pliku `IIndexOperations`:
 
@@ -120,7 +120,7 @@ W pliku `IndexOperationsExtensions`:
         this IIndexOperations operations,
         string indexName);
 
-Podpisy metod dla tej samej operacji w wersji 1.1 wyglądać następująco:
+Sygnatury metod dla tej samej operacji w wersji 1,1 wyglądać następująco:
 
 W pliku `IIndexesOperations`:
 
@@ -146,23 +146,23 @@ W pliku `IndexesOperationsExtensions`:
         string indexName,
         SearchRequestOptions searchRequestOptions = default(SearchRequestOptions));
 
-Począwszy od wersji 1.1, zestawu .NET SDK usługi Azure Search porządkuje metod operacji inaczej:
+Począwszy od wersji 1,1, zestaw SDK Azure Search .NET organizuje różne metody operacji:
 
-* Następujące parametry opcjonalne teraz są modelowane jako domyślne parametry raczej niż dodatkową metodę przeciążenia. Czasami znacznie zmniejsza liczbę przeciążenia metody.
-* Metody rozszerzające ukryć teraz mnóstwo nadmiarowe szczegóły HTTP od elementu wywołującego. Na przykład starsze wersje zestawu SDK zwrócony obiekt odpowiedzi z kodem stanu HTTP, który często nie trzeba sprawdzić, ponieważ operacja metod generują `CloudException` dla dowolnego kodu stanu, który wskazuje na błąd. Nowe metody rozszerzenia po prostu zwraca obiekty modelu, co pozwala wyeliminować wysiłek związany z konieczności Odkodowywanie je w kodzie.
-* Z drugiej strony podstawowe interfejsy udostępniają teraz te metody, które zapewniają więcej kontroli na poziomie protokołu HTTP, gdy ich potrzebujesz. Możesz teraz przekazać niestandardowych nagłówków HTTP, które mają zostać uwzględnione w żądań i nowym `AzureOperationResponse<T>` zwracany typ zapewnia bezpośredni dostęp do `HttpRequestMessage` i `HttpResponseMessage` dla tej operacji. `AzureOperationResponse` jest zdefiniowany w `Microsoft.Rest.Azure` przestrzeni nazw i zastępuje `Hyak.Common.OperationResponse`.
+* Parametry opcjonalne są teraz modelowane jako parametry domyślne, a nie dodatkowe przeciążenia metod. Zmniejsza to liczbę przeciążeń metod, czasami znacząco.
+* Metody rozszerzające teraz ukrywają wiele nadmiarowych szczegółów protokołu HTTP z obiektu wywołującego. Na przykład starsze wersje zestawu SDK zwróciły obiekt odpowiedzi z kodem stanu HTTP, którego często nie trzeba było sprawdzić, ponieważ metody `CloudException` operacji zgłaszają kod stanu, który wskazuje na błąd. Nowe metody rozszerzające zwracają obiekty modelu, co pozwala na ich odwinięcie w kodzie.
+* Z drugiej strony interfejsy podstawowe teraz uwidaczniają metody, które zapewniają większą kontrolę na poziomie protokołu HTTP, jeśli jest to potrzebne. Teraz można przekazać niestandardowe nagłówki HTTP, aby uwzględnić je w żądaniach, a nowy `AzureOperationResponse<T>` zwracany typ daje bezpośredni dostęp `HttpRequestMessage` do i `HttpResponseMessage` dla operacji. `AzureOperationResponse`jest zdefiniowany w `Microsoft.Rest.Azure` przestrzeni nazw i zastępuje `Hyak.Common.OperationResponse`.
 
-### <a name="scoringparameters-changes"></a>Zmiany ScoringParameters
-Nową klasę o nazwie `ScoringParameter` został dodany w najnowszy zestaw SDK, aby ułatwić Podaj parametry dla profile oceniania w zapytaniu wyszukiwania. Wcześniej `ScoringProfiles` właściwość `SearchParameters` klasa została wpisana jako `IList<string>`; Teraz ma `IList<ScoringParameter>`.
+### <a name="scoringparameters-changes"></a>ScoringParameters zmiany
+Nowa klasa o nazwie `ScoringParameter` została dodana w najnowszym zestawie SDK, aby ułatwić dostarczenie parametrów do profilów oceniania w zapytaniu wyszukiwania. `ScoringProfiles` Wcześniej Właściwość `SearchParameters` klasy została wpisana jako `IList<string>`; Teraz jest wpisana jako `IList<ScoringParameter>`.
 
 #### <a name="example"></a>Przykład
-Jeśli Twój kod wygląda następująco:
+Jeśli kod wygląda następująco:
 
     var sp = new SearchParameters();
     sp.ScoringProfile = "jobsScoringFeatured";      // Use a scoring profile
     sp.ScoringParameters = new[] { "featuredParam-featured", "mapCenterParam-" + lon + "," + lat };
 
-Można go zmienić, na ten element, aby naprawić wszystkie błędy kompilacji: 
+Można to zmienić w celu usunięcia błędów kompilacji: 
 
     var sp = new SearchParameters();
     sp.ScoringProfile = "jobsScoringFeatured";      // Use a scoring profile
@@ -173,20 +173,20 @@ Można go zmienić, na ten element, aby naprawić wszystkie błędy kompilacji:
             new ScoringParameter("mapCenterParam", GeographyPoint.Create(lat, lon))
         };
 
-### <a name="model-class-changes"></a>Zmiany w modelu klas
-Z powodu zmian podpisu opisanych w [zmiany metody operacji](#OperationMethodChanges), wiele klas w `Microsoft.Azure.Search.Models` przestrzeni nazw, został przeniesiony lub usunięty. Na przykład:
+### <a name="model-class-changes"></a>Zmiany klasy modelu
+Ze względu na zmiany sygnatury opisane w [metodzie operacji zmiany](#OperationMethodChanges)nazwy wielu `Microsoft.Azure.Search.Models` klas w przestrzeni nazw zostały zmienione lub zostały usunięte. Przykład:
 
-* `IndexDefinitionResponse` został zastąpiony przez `AzureOperationResponse<Index>`
+* `IndexDefinitionResponse`został zastąpiony przez`AzureOperationResponse<Index>`
 * Zmieniono nazwę polecenia `DocumentSearchResponse` na `DocumentSearchResult`
 * Zmieniono nazwę polecenia `IndexResult` na `IndexingResult`
-* `Documents.Count()` Zwraca teraz `long` z liczbą dokumentów zamiast `DocumentCountResponse`
+* `Documents.Count()`Funkcja zwraca `long` teraz liczbę dokumentów zamiast`DocumentCountResponse`
 * Zmieniono nazwę polecenia `IndexGetStatisticsResponse` na `IndexGetStatisticsResult`
 * Zmieniono nazwę polecenia `IndexListResponse` na `IndexListResult`
 
-Aby podsumować, `OperationResponse`-pochodne klasy, które istniały tylko do opakowania obiekt modelu zostały usunięte. Pozostałe klasy mieli sufiksów zmieniła się z `Response` do `Result`.
+Aby podsumować klasy `OperationResponse`pochodne, które istniały tylko w przypadku, gdy obiekt modelu został usunięty. Sufiks pozostałych klas został zmieniony z `Response` na. `Result`
 
 #### <a name="example"></a>Przykład
-Jeśli Twój kod wygląda następująco:
+Jeśli kod wygląda następująco:
 
     IndexerGetStatusResponse statusResponse = null;
 
@@ -202,7 +202,7 @@ Jeśli Twój kod wygląda następująco:
 
     IndexerExecutionResult lastResult = statusResponse.ExecutionInfo.LastResult;
 
-Można go zmienić, na ten element, aby naprawić wszystkie błędy kompilacji:
+Można to zmienić w celu usunięcia błędów kompilacji:
 
     IndexerExecutionInfo status = null;
 
@@ -218,8 +218,8 @@ Można go zmienić, na ten element, aby naprawić wszystkie błędy kompilacji:
 
     IndexerExecutionResult lastResult = status.LastResult;
 
-#### <a name="response-classes-and-ienumerable"></a>Klasy odpowiedzi i interfejsu IEnumerable
-Dodatkowe zmiany, które może mieć wpływ na kod jest klasy odpowiedzi, używane do przechowywania kolekcji nie jest już zaimplementować `IEnumerable<T>`. Zamiast tego można bezpośredniego dostępu właściwości kolekcji. Na przykład, jeśli kod wygląda następująco:
+#### <a name="response-classes-and-ienumerable"></a>Klasy odpowiedzi i IEnumerable
+Dodatkowa zmiana, która może mieć wpływ na Twój kod, to klasy odpowiedzi, które nie implementują `IEnumerable<T>`kolekcji. Zamiast tego można uzyskać bezpośredni dostęp do właściwości kolekcji. Na przykład, jeśli kod wygląda następująco:
 
     DocumentSearchResponse<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
     foreach (SearchResult<Hotel> result in response)
@@ -227,7 +227,7 @@ Dodatkowe zmiany, które może mieć wpływ na kod jest klasy odpowiedzi, używa
         Console.WriteLine(result.Document);
     }
 
-Można go zmienić, na ten element, aby naprawić wszystkie błędy kompilacji:
+Można to zmienić w celu usunięcia błędów kompilacji:
 
     DocumentSearchResult<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
     foreach (SearchResult<Hotel> result in response.Results)
@@ -235,8 +235,8 @@ Można go zmienić, na ten element, aby naprawić wszystkie błędy kompilacji:
         Console.WriteLine(result.Document);
     }
 
-#### <a name="special-case-for-web-applications"></a>Przypadek specjalny dla aplikacji sieci web
-W przypadku aplikacji sieci web, który serializuje `DocumentSearchResponse` bezpośrednio wysyłać wyniki wyszukiwania do przeglądarki, konieczne będzie zmian w kodzie lub wyniki nie będą poprawnie serializacji. Na przykład, jeśli kod wygląda następująco:
+#### <a name="special-case-for-web-applications"></a>Specjalny przypadek dla aplikacji sieci Web
+Jeśli masz aplikację sieci Web, która deserializacji `DocumentSearchResponse` bezpośrednio w celu wysyłania wyników wyszukiwania do przeglądarki, musisz zmienić kod lub wyniki nie będą poprawnie serializowane. Na przykład, jeśli kod wygląda następująco:
 
     public ActionResult Search(string q = "")
     {
@@ -251,7 +251,7 @@ W przypadku aplikacji sieci web, który serializuje `DocumentSearchResponse` bez
         };
     }
 
-Można ją zmienić, uzyskując `.Results` właściwości odpowiedzi wyszukiwania w celu naprawić renderowania wyników wyszukiwania:
+Można to zmienić, pobierając `.Results` Właściwość odpowiedzi wyszukiwania w celu naprawienia renderowania wyników wyszukiwania:
 
     public ActionResult Search(string q = "")
     {
@@ -266,75 +266,75 @@ Można ją zmienić, uzyskując `.Results` właściwości odpowiedzi wyszukiwani
         };
     }
 
-Trzeba będzie szukać takiej sytuacji w kodzie **Kompilator nie ostrzega** ponieważ `JsonResult.Data` typu `object`.
+Należy poszukać takich przypadków w kodzie, **Kompilator nie wyświetli ostrzeżenia,** ponieważ `JsonResult.Data` jest typem. `object`
 
-### <a name="cloudexception-changes"></a>Zmiany CloudException
-`CloudException` Klasa została przeniesiona z `Hyak.Common` przestrzeń nazw `Microsoft.Rest.Azure` przestrzeni nazw. Ponadto jego `Error` właściwości została zmieniona na `Body`.
+### <a name="cloudexception-changes"></a>Zmiany w chmurzeexception
+Klasa została przeniesiona `Hyak.Common` z przestrzeni nazw do `Microsoft.Rest.Azure` przestrzeni nazw. `CloudException` Ponadto nazwa jego `Error` właściwości została zmieniona na. `Body`
 
-### <a name="searchserviceclient-and-searchindexclient-changes"></a>Zmiany SearchServiceClient i SearchIndexClient
-Typ `Credentials` właściwości została zmieniona z `SearchCredentials` z klasą bazową `ServiceClientCredentials`. Jeśli potrzebujesz dostępu do `SearchCredentials` z `SearchIndexClient` lub `SearchServiceClient`, użyj nowej `SearchCredentials` właściwości.
+### <a name="searchserviceclient-and-searchindexclient-changes"></a>SearchServiceClient i SearchIndexClient zmiany
+Typ `Credentials` właściwości został zmieniony z `SearchCredentials` `ServiceClientCredentials`na jego klasę bazową. Jeśli `SearchCredentials` potrzebujesz dostępu `SearchIndexClient` do lub `SearchServiceClient`, użyj nowej `SearchCredentials` właściwości.
 
-W starszych wersjach zestawu SDK `SearchServiceClient` i `SearchIndexClient` ma konstruktorów, które miały `HttpClient` parametru. Te zostały zastąpione konstruktorów, które przyjmują `HttpClientHandler` oraz tablicę `DelegatingHandler` obiektów. Ta funkcja ułatwia instalowanie niestandardowe programy obsługi wstępnie przetworzyć żądania HTTP, jeśli to konieczne.
+W starszych wersjach zestawu SDK `SearchServiceClient` i `SearchIndexClient` `HttpClient` posiadały konstruktory, które przyjęły parametr. Zostały one zastąpione konstruktorami, które pobierają `HttpClientHandler` i `DelegatingHandler` tablicę obiektów. Ułatwia to instalowanie niestandardowych obsługi żądań HTTP w razie potrzeby.
 
-Na koniec konstruktorów, które miały `Uri` i `SearchCredentials` uległy zmianie. Na przykład, jeśli masz kod, który wygląda w następujący sposób:
+Na koniec konstruktory, które miały `Uri` i `SearchCredentials` zostały zmienione. Na przykład, jeśli masz kod, który wygląda następująco:
 
     var client =
         new SearchServiceClient(
             new SearchCredentials("abc123"),
             new Uri("http://myservice.search.windows.net"));
 
-Można go zmienić, na ten element, aby naprawić wszystkie błędy kompilacji:
+Można to zmienić w celu usunięcia błędów kompilacji:
 
     var client =
         new SearchServiceClient(
             new Uri("http://myservice.search.windows.net"),
             new SearchCredentials("abc123"));
 
-Należy także zauważyć, że typ parametru poświadczenia została zmieniona na `ServiceClientCredentials`. Jest to prawdopodobnie nie będzie mieć wpływ na kod od `SearchCredentials` jest tworzony na podstawie `ServiceClientCredentials`.
+Należy również zauważyć, że typ parametru poświadczenia został zmieniony na `ServiceClientCredentials`. Prawdopodobnie nie wpłynie to na kod, ponieważ `SearchCredentials` pochodzi od. `ServiceClientCredentials`
 
-### <a name="passing-a-request-id"></a>Identyfikator żądania
-W starszych wersjach zestawu SDK, można ustawić identyfikator żądania na `SearchServiceClient` lub `SearchIndexClient` i zostałaby ona dołączona do każdego żądania interfejsu API REST. Ułatwia to Rozwiązywanie problemów z usługą wyszukiwania, jeśli chcesz się z pomocą techniczną. Jest jednak bardziej użyteczny, aby ustawić identyfikator unikatowy żądania, dla każdej operacji, zamiast używać tego samego Identyfikatora dla wszystkich operacji. Z tego powodu `SetClientRequestId` metody `SearchServiceClient` i `SearchIndexClient` zostały usunięte. Zamiast tego Przekaż identyfikator żądania do każdej metody operacji za pomocą opcjonalnego `SearchRequestOptions` parametru.
+### <a name="passing-a-request-id"></a>Przekazywanie identyfikatora żądania
+W starszych wersjach zestawu SDK można ustawić identyfikator żądania na `SearchServiceClient` lub `SearchIndexClient` i zostanie on uwzględniony w każdym żądaniu do interfejsu API REST. Jest to przydatne w przypadku rozwiązywania problemów z usługą wyszukiwania, jeśli musisz skontaktować się z pomocą techniczną. Jednak bardziej przydatne jest ustawienie unikatowego identyfikatora żądania dla każdej operacji, a nie użycie tego samego identyfikatora dla wszystkich operacji. Z tego powodu `SetClientRequestId` `SearchServiceClient` metody i `SearchIndexClient` zostały usunięte. Zamiast tego można przekazać identyfikator żądania do każdej metody operacji za pośrednictwem opcjonalnego `SearchRequestOptions` parametru.
 
 > [!NOTE]
-> W przyszłej wersji zestawu SDK dodamy nowy mechanizm do ustawiania Identyfikatora żądania globalnie na kliencie obiektów, zgodny z podejścia, używany przez inne zestawy SDK platformy Azure.
+> W przyszłej wersji zestawu SDK dodamy nowy mechanizm konfigurowania identyfikatora żądania globalnie dla obiektów klienta, które są spójne z podejściem używanym przez inne zestawy SDK platformy Azure.
 > 
 > 
 
 ### <a name="example"></a>Przykład
-Jeśli masz kod, który wygląda w następujący sposób:
+Jeśli masz kod, który wygląda następująco:
 
     client.SetClientRequestId(Guid.NewGuid());
     ...
     long count = client.Documents.Count();
 
-Można go zmienić, na ten element, aby naprawić wszystkie błędy kompilacji:
+Można to zmienić w celu usunięcia błędów kompilacji:
 
     long count = client.Documents.Count(new SearchRequestOptions(requestId: Guid.NewGuid()));
 
-### <a name="interface-name-changes"></a>Zmiany nazwy interfejsu
-Nazwy interfejsu grup operacji zostały zmienione aby były zgodne z odpowiadających im nazw właściwości:
+### <a name="interface-name-changes"></a>Zmiany nazw interfejsów
+Wszystkie nazwy interfejsów grupy operacji zostały zmienione tak, aby były spójne z odpowiadającymi im nazwami właściwości:
 
-* Typ `ISearchServiceClient.Indexes` została zmieniona z `IIndexOperations` do `IIndexesOperations`.
-* Typ `ISearchServiceClient.Indexers` została zmieniona z `IIndexerOperations` do `IIndexersOperations`.
-* Typ `ISearchServiceClient.DataSources` została zmieniona z `IDataSourceOperations` do `IDataSourcesOperations`.
-* Typ `ISearchIndexClient.Documents` została zmieniona z `IDocumentOperations` do `IDocumentsOperations`.
+* Zmieniono nazwę typu `ISearchServiceClient.Indexes` z `IIndexesOperations`na. `IIndexOperations`
+* Zmieniono nazwę typu `ISearchServiceClient.Indexers` z `IIndexersOperations`na. `IIndexerOperations`
+* Zmieniono nazwę typu `ISearchServiceClient.DataSources` z `IDataSourcesOperations`na. `IDataSourceOperations`
+* Zmieniono nazwę typu `ISearchIndexClient.Documents` z `IDocumentsOperations`na. `IDocumentOperations`
 
-Ta zmiana jest mało prawdopodobne, aby wpłynąć na kod, chyba że zostanie utworzona mocks te interfejsy do celów testowych.
+Ta zmiana nie wpłynie na kod, chyba że nie zostały utworzone żadne imitacje tych interfejsów do celów testowych.
 
 <a name="BugFixesV1"></a>
 
-## <a name="bug-fixes-in-version-11"></a>Poprawki błędów w wersji 1.1
-Wystąpił błąd w starszych wersjach programu Azure Search .NET SDK odnoszących się do serializacji w klasach modelu niestandardowego. Ten błąd mógł wystąpić, jeśli został utworzony z właściwością typem wartościowym niebędącym klasy modelu niestandardowego.
+## <a name="bug-fixes-in-version-11"></a>Poprawki błędów w wersji 1,1
+Wystąpił błąd we wcześniejszych wersjach Azure Search .NET SDK odnoszących się do serializacji niestandardowych klas modelu. Usterka może wystąpić, jeśli utworzono niestandardową klasę modelu z właściwością typu wartości niedopuszczające wartości null.
 
-### <a name="steps-to-reproduce"></a>Kroki prowadzące do odtworzenia
-Utwórz klasę modelu niestandardowego z właściwością typu wartości innych niż null. Na przykład dodać publiczny `UnitCount` właściwości typu `int` zamiast `int?`.
+### <a name="steps-to-reproduce"></a>Kroki do odtworzenia
+Utwórz niestandardową klasę modelu z właściwością typu wartości, która nie dopuszcza wartości null. Na przykład Dodaj publiczną `UnitCount` Właściwość Type `int` zamiast `int?`.
 
-Jeśli indeks dokument z wartością domyślną tego typu (na przykład 0 dla `int`), pole jest wartość null w usłudze Azure Search. Jeśli później wyszukiwać tego dokumentu `Search` zgłosi wywołanie `JsonSerializationException` skarżących, który nie może przekonwertować `null` do `int`.
+Jeśli indeksowanie dokumentu ma wartość domyślną tego typu (na przykład 0 dla `int`), pole będzie miało wartość null w Azure Search. Jeśli następnie wyszukasz ten dokument `Search` , wywołanie `JsonSerializationException` zgłosi skargę, że nie można przeprowadzić `null` konwersji `int`do.
 
-Ponadto filtry może nie działać zgodnie z oczekiwaniami, ponieważ o wartości null zostały zapisane w indeksie zamiast wartość zamierzona.
+Ponadto filtry mogą nie zadziałały zgodnie z oczekiwaniami, ponieważ w indeksie zamiast zamierzonej wartości Zapisano wartość null.
 
-### <a name="fix-details"></a>Usuń szczegóły
-Ten problem został rozwiązany w wersji 1.1 zestawu SDK. Teraz masz klasę modelu następująco:
+### <a name="fix-details"></a>Popraw szczegóły
+Ten problem został rozwiązany w wersji 1,1 zestawu SDK. Teraz, jeśli masz klasę modelu podobną do tej:
 
     public class Model
     {
@@ -343,15 +343,15 @@ Ten problem został rozwiązany w wersji 1.1 zestawu SDK. Teraz masz klasę mode
         public int IntValue { get; set; }
     }
 
-i ustawiasz `IntValue` 0, ta wartość jest teraz prawidłowo serializowana jako 0 przesyłania i przechowywane jako 0 w indeksie. Ponadto uruchomienie round działa zgodnie z oczekiwaniami.
+i ustawiona `IntValue` na 0, ta wartość jest teraz prawidłowo serializowana jako 0 w locie i przechowywana jako 0 w indeksie. Rounding działa również zgodnie z oczekiwaniami.
 
-Istnieje jeden potencjalny problem pod uwagę w przypadku tej metody: Jeśli używasz typu modelu z właściwością dopuszcza trzeba **gwarantuje** że żaden dokument w indeksie nie zawiera wartości null w odpowiednim polu. Zestaw SDK ani interfejsu API REST usługi Azure Search nie pomoże Ci tego wymusić.
+Istnieje jeden potencjalny problem, który należy wiedzieć o tym podejściu: Jeśli używasz typu modelu z właściwością, która nie dopuszcza wartości null, musisz **zagwarantować** , że żadne dokumenty w indeksie nie zawierają wartości null dla odpowiedniego pola. Nie można wymusić tego zestawu SDK ani interfejsu API REST Azure Search.
 
 Nie jest to czysto hipotetyczny problem. Wyobraź sobie scenariusz, w którym dodajesz nowe pole do istniejącego indeksu typu `Edm.Int32`. Po zaktualizowaniu definicji indeksu wszystkie dokumenty będą miały wartość null dla tego nowego pola (ponieważ wszystkie typy w usłudze Azure Search dopuszczają wartość null). Jeśli następnie dla tego pola użyjesz klasy modelu z właściwością `int` niedopuszczającą wartości null, podczas próby pobrania dokumentów otrzymasz wyjątek `JsonSerializationException` podobny do poniższego:
 
     Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 
-Z tego powodu nadal zalecane, najlepszym rozwiązaniem jest używanie typów dopuszczających wartości zerowe w klasach modeli.
+Z tego powodu nadal zalecamy używanie typów dopuszczających wartości null w klasach modelu jako najlepsze rozwiązanie.
 
-Aby uzyskać szczegółowe informacje na temat tego błędu i poprawki, zobacz [ten problem w serwisie GitHub](https://github.com/Azure/azure-sdk-for-net/issues/1063).
+Aby uzyskać więcej informacji na temat tego błędu i poprawki, zobacz [ten problem w witrynie GitHub](https://github.com/Azure/azure-sdk-for-net/issues/1063).
 

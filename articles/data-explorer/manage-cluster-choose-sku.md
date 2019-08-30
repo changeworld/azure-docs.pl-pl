@@ -1,18 +1,18 @@
 ---
 title: Wybierz poprawną jednostkę SKU maszyny wirtualnej dla klastra usługi Azure Eksplorator danych
 description: W tym artykule opisano, jak wybrać optymalny rozmiar jednostki SKU dla klastra usługi Azure Eksplorator danych.
-author: avnera
+author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 2eb23a65196ac4f6456f50dbbbfd9e4b484ad171
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 8293fd2d84189cc1f1df3564abbfdcbf86e3543e
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515731"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186749"
 ---
 # <a name="select-the-correct-vm-sku-for-your-azure-data-explorer-cluster"></a>Wybierz poprawną jednostkę SKU maszyny wirtualnej dla klastra usługi Azure Eksplorator danych 
 
@@ -83,7 +83,7 @@ Specyfikacje techniczne dotyczące maszyn wirtualnych klastra usługi Azure Eksp
 |L16s_1| zoptymalizowane pod kątem magazynu | 2,6&nbsp;TB | 16| 128&nbsp;GB | 0 | 2 | 1000
 
 * Zaktualizowaną listę jednostek SKU maszyny wirtualnej można wyświetlić za pomocą [interfejsu API](/dotnet/api/microsoft.azure.management.kusto.clustersoperationsextensions.listskus?view=azure-dotnet)usługi Azure Eksplorator danych ListSkus. 
-* Dowiedz się więcej o różnych jednostkach [SKU obliczeniowych](/azure/virtual-machines/windows/sizes-compute). 
+* Dowiedz się więcej o różnych jednostkach [SKU](/azure/virtual-machines/windows/sizes). 
 
 ## <a name="next-steps"></a>Następne kroki
 

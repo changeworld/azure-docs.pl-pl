@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: cbbfd5f7beb7270bf55e952c818b4802d9d9ecab
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f30ac3d5e20b3f797e083972ac179fd29f6b1475
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847989"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182543"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning-service"></a>Korzystanie z istniejącego modelu z usługą Azure Machine Learning
 
@@ -76,23 +76,40 @@ Aby uzyskać więcej informacji na temat rejestracji modelu ogólnie, zobacz art
 
 ## <a name="define-inference-configuration"></a>Definiowanie konfiguracji wnioskowania
 
-Konfiguracja wnioskowania definiuje środowisko używane do uruchamiania wdrożonego modelu. Konfiguracja wnioskowania odwołuje się do następujących plików, które są używane do uruchamiania modelu podczas jego wdrażania:
+Konfiguracja wnioskowania definiuje środowisko używane do uruchamiania wdrożonego modelu. Konfiguracja wnioskowania odwołuje się do następujących jednostek, które są używane do uruchamiania modelu podczas jego wdrażania:
 
-* Środowisko uruchomieniowe. Jedyną poprawną wartością dla środowiska uruchomieniowego jest obecnie język Python.
 * Skrypt wejściowy. Ten plik (o `score.py`nazwie) ładuje model podczas uruchamiania wdrożonej usługi. Jest on również odpowiedzialny za otrzymywanie danych, przekazywanie go do modelu, a następnie zwracanie odpowiedzi.
-* Plik środowiska Conda. Ten plik definiuje pakiety języka Python, które są konieczne do uruchomienia modelu i skryptu wejścia. 
+* [Środowisko](how-to-use-environments.md)usługi Azure Machine Learning. Środowisko definiuje zależności oprogramowania wymagające do uruchomienia modelu i skryptu wejścia.
 
-Poniższy przykład przedstawia podstawową konfigurację wnioskowania przy użyciu zestawu SDK języka Python:
+Poniższy przykład pokazuje, jak utworzyć środowisko przy użyciu zestawu SDK, a następnie użyć go z konfiguracją wnioskowania:
 
 ```python
 from azureml.core.model import InferenceConfig
+from azureml.core import Environment
+from azureml.core.environment import CondaDependencies
 
-inference_config = InferenceConfig(runtime= "python", 
-                                   entry_script="score.py",
-                                   conda_file="myenv.yml")
+# Create the environment
+myenv = Environment(name="myenv")
+conda_dep = CondaDependencies()
+
+# Define the packages needed by the model and scripts
+conda_dep.add_conda_package("tensorflow")
+conda_dep.add_conda_package("numpy")
+conda_dep.add_conda_package("scikit-learn")
+conda_dep.add_pip_package("keras")
+
+# Adds dependencies to PythonSection of myenv
+myenv.python.conda_dependencies=conda_dep
+
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
 ```
 
-Aby uzyskać więcej informacji, zobacz [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) Reference.
+Aby uzyskać więcej informacji zobacz następujące artykuły:
+
++ [Jak używać środowisk](how-to-use-environments.md).
++ Odwołanie [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) .
+
 
 Interfejs wiersza polecenia ładuje konfigurację wnioskowania z pliku YAML:
 
@@ -102,6 +119,20 @@ Interfejs wiersza polecenia ładuje konfigurację wnioskowania z pliku YAML:
    "runtime": "python",
    "condaFile": "myenv.yml"
 }
+```
+
+W interfejsie wiersza polecenia środowisko Conda jest zdefiniowane w pliku `myenv.yml` , do którego odwołuje się konfiguracja wnioskowania. Następujący YAML to zawartość tego pliku:
+
+```yaml
+name: inference_environment
+dependencies:
+- python=3.6.2
+- tensorflow
+- numpy
+- scikit-learn
+- pip:
+    - azureml-defaults
+    - keras
 ```
 
 Aby uzyskać więcej informacji na temat konfiguracji wnioskowania, zobacz [Deploying Models with Azure Machine Learning Service](how-to-deploy-and-where.md).
@@ -190,24 +221,6 @@ def predict(text, include_neutral=True):
 ```
 
 Aby uzyskać więcej informacji na temat skryptów wprowadzania, zobacz [Wdrażanie modeli za pomocą usługi Azure Machine Learning](how-to-deploy-and-where.md).
-
-### <a name="conda-environment"></a>Środowisko Conda
-
-W poniższym YAML opisano środowisko Conda, które jest konieczne do uruchamiania modelu i skryptu wejścia:
-
-```yaml
-name: inference_environment
-dependencies:
-- python=3.6.2
-- tensorflow
-- numpy
-- scikit-learn
-- pip:
-    - azureml-defaults
-    - keras
-```
-
-Aby uzyskać więcej informacji, zobacz [Wdrażanie modeli za pomocą usługi Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="define-deployment"></a>Definiowanie wdrożenia
 

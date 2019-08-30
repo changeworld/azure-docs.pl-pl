@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 07/20/2019
-ms.openlocfilehash: 21da8dce7a77a086381bd21dc0129b614fa65ad3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
-ms.translationtype: HT
+ms.date: 08/28/2019
+ms.openlocfilehash: df74d2d07937634e2b656746c0a9fc9cd86b8c93
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138408"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182600"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Samouczek: Wprowadzenie do tworzenia pierwszego eksperymentu z ML
 
@@ -51,10 +51,11 @@ W obszarze roboczym utworzysz zasób w chmurze, aby rozpocząć korzystanie z no
 
      ![Wybierz nową maszynę wirtualną](./media/tutorial-1st-experiment-sdk-setup/add-workstation.png)
 
-1. Podaj nazwę dla maszyny wirtualnej. Następnie wybierz przycisk **Utwórz**.
+1. Podaj nazwę dla maszyny wirtualnej. 
+   + Nazwa maszyny wirtualnej notesu musi zawierać od 2 do 16 znaków. Prawidłowe znaki to litery, cyfry i znaki.  
+   + Nazwa musi również być unikatowa w ramach subskrypcji platformy Azure.
 
-    > [!NOTE]
-    > Nazwa maszyny wirtualnej notesu musi zawierać od 2 do 16 znaków. Prawidłowe znaki to litery, cyfry i znaki.  Nazwa musi również być unikatowa w ramach subskrypcji platformy Azure.
+1. Następnie wybierz przycisk **Utwórz**. Skonfigurowanie maszyny wirtualnej może chwilę potrwać.
 
 1. Poczekaj, aż stan zmieni się na **uruchomiony**.
 
@@ -66,43 +67,16 @@ Po uruchomieniu maszyny wirtualnej Użyj sekcji **maszyny wirtualne notesu** , a
 
     ![Uruchom serwer notesu Jupyter](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
 
-    Link uruchamia serwer notesu i otwiera stronę sieci Web notesu Jupyter na nowej karcie przeglądarki.  Ten link będzie działał tylko dla osoby, która tworzy maszynę wirtualną. Każdy użytkownik obszaru roboczego musi utworzyć własną maszynę wirtualną.
+   Link uruchamia serwer notesu i otwiera stronę sieci Web notesu Jupyter na nowej karcie przeglądarki.  Ten link będzie działał tylko dla osoby, która tworzy maszynę wirtualną. Każdy użytkownik obszaru roboczego musi utworzyć własną maszynę wirtualną.
 
-1. Na stronie internetowej notesu Jupyter znajduje się Górna nazwa folderu.  Wybierz ten folder.
+1. Na stronie Jupyter notesu wybierz górny folder NazwaFolderu, który ma swoją nazwę użytkownika.  
 
-    > [!TIP]
-    > Ten folder znajduje się na [koncie magazynu](concept-workspace.md#resources) w obszarze roboczym, a nie na maszynie wirtualnej notesu.  Możesz usunąć maszynę wirtualną notesu i nadal zachować całą swoją służbę.  Po utworzeniu nowej maszyny wirtualnej notesu zostanie ona załadowana w tym samym folderze. Jeśli udostępnisz obszar roboczy innym osobom, zobaczysz Twój folder i zobaczysz ich.
+   Ten folder istnieje na [koncie magazynu](concept-workspace.md#resources) obszaru roboczego, a nie na maszynie wirtualnej notesu.  Po usunięciu maszyny wirtualnej notesu nadal będzie można zachować całą swoją służbę.  Po utworzeniu nowej maszyny wirtualnej notesu zostanie ona załadowana w tym samym folderze. Jeśli udostępnisz obszar roboczy innym osobom, zobaczysz Twój folder i zobaczysz ich.
 
-1. `samples-*` Otwórz podkatalog, a następnie otwórz`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
+1. `samples-*` Otwórz podkatalog, a następnie Otwórz Notes Jupyter`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
 
-> [!Warning]
-> Upewnij się `tutorial-1st-experiment-sdk-train.ipynb` , że otwarto plik, `.yml` a **nie** plik o > tej samej nazwie. 
-
-W **drugiej części** samouczka uruchomiono kod w `tutorial-1st-experiment-sdk-train.ipynb` celu uczenia modelu uczenia maszynowego.
-
-## <a name="end"></a>Czyszczenie zasobów
-
-Nie wykonuj tej sekcji, jeśli planujesz przejście do **części 2** samouczka.
-
-### <a name="stop-the-notebook-vm"></a>Zatrzymaj maszynę wirtualną notesu
-
-Jeśli używasz serwera notesu w chmurze, Zatrzymaj maszynę wirtualną, gdy nie używasz jej do obniżenia kosztów.
-
-1. W obszarze roboczym wybierz pozycję **maszyny wirtualne Notes**.
-
-   ![Zatrzymaj serwer maszyn wirtualnych](./media/tutorial-1st-experiment-sdk-setup/stop-server.png)
-
-1. Z listy wybierz maszynę wirtualną.
-
-1. Wybierz pozycję **Zatrzymaj**.
-
-1. Gdy wszystko będzie gotowe do korzystania z serwera, wybierz pozycję **Uruchom**.
-
-### <a name="delete-everything"></a>Usuń wszystko
-
-[!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
-
-Możesz też zachować grupę zasobów i usunąć jeden obszar roboczy. Wyświetl właściwości obszaru roboczego i wybierz pozycję **Usuń**.
+   > [!Warning]
+   > Upewnij się `tutorial-1st-experiment-sdk-train.ipynb` , że otwarto plik, `.yml` a **nie** plik o > tej samej nazwie. 
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -111,7 +85,10 @@ W tym samouczku zostały wykonane następujące zadania:
 * Utworzono obszar roboczy usługi Azure Machine Learning.
 * Utworzono i skonfigurowano serwer notesu w chmurze w obszarze roboczym.
 
-Przejdź do **części 2** tego samouczka, aby nauczyć prosty model uczenia maszynowego.
+W **drugiej części** samouczka uruchomiono kod w `tutorial-1st-experiment-sdk-train.ipynb` celu uczenia modelu uczenia maszynowego. 
 
 > [!div class="nextstepaction"]
 > [Samouczek: Uczenie swojego pierwszego modelu](tutorial-1st-experiment-sdk-train.md)
+
+> [!IMPORTANT]
+> Jeśli nie planujesz wykonywania następujących czynności w ramach tego samouczka lub innych samouczków, [Zatrzymaj maszynę wirtualną serwera notesu chmury](tutorial-1st-experiment-sdk-train.md#clean-up-resources) , gdy nie używasz jej do obniżenia kosztów.

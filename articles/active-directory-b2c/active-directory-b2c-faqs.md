@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e5ceb53cb0fcce40d779bd516fa4cebac6d11209
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 7b569454696717913c325581ca1f00479a371984
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061376"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183189"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Często zadawane pytania
 
@@ -143,7 +143,7 @@ Wykonaj następujące kroki, aby usunąć dzierżawę Azure AD B2C:
 1. Wybierz pozycję **Wyświetl wszystkie aplikacje**
 1. Wybierz aplikację o nazwie **B2C-Extensions-App**, wybierz pozycję **Usuń**, a następnie wybierz pozycję **tak** po wyświetleniu monitu.
 1. W obszarze **Zarządzaj**wybierz pozycję **Ustawienia użytkownika**.
-1. W obszarze **połączenia konta serwisu LinkedIn**wybierz pozycję **nie**, a następnie wybierz pozycję **Zapisz**.
+1. Jeśli jest obecny, w obszarze **połączenia konta serwisu LinkedIn**wybierz pozycję **nie**, a następnie wybierz pozycję **Zapisz**.
 1. W obszarze **Zarządzaj**wybierz pozycję **Właściwości** .
 1. W obszarze **Zarządzanie dostępem do zasobów platformy Azure**wybierz pozycję **tak**, a następnie wybierz pozycję **Zapisz**.
 1. Wyloguj się z Azure Portal a następnie zaloguj się ponownie, aby odświeżyć dostęp.

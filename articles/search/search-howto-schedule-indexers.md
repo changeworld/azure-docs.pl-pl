@@ -3,18 +3,18 @@ title: Jak zaplanować indeksatory — Azure Search
 description: Zaplanuj Azure Search indeksatory, aby okresowo indeksować zawartość lub w określonych godzinach.
 ms.date: 05/31/2019
 author: HeidiSteen
-manager: HeidiSteen
+manager: nitinme
 ms.author: heidist
 services: search
 ms.service: search
 ms.devlang: ''
 ms.topic: conceptual
-ms.openlocfilehash: 245a2139aae0910ea1415811234667f2c06500ec
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f72067637f9db84a432562ea5502861355426469
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855793"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186575"
 ---
 # <a name="how-to-schedule-indexers-for-azure-search"></a>Jak zaplanować indeksatory dla Azure Search
 Indeksator jest zwykle uruchamiany jednokrotnie, natychmiast po jego utworzeniu. Można uruchomić je ponownie na żądanie przy użyciu portalu, interfejsu API REST lub zestawu .NET SDK. Można również skonfigurować indeksator do uruchamiania okresowo zgodnie z harmonogramem.

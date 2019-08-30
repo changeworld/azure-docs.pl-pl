@@ -1,6 +1,6 @@
 ---
-title: Otwieranie portów dla maszyny Wirtualnej przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak otworzyć port / utworzyć punkt końcowy do maszyny Wirtualnej Windows przy użyciu trybu wdrożenia Menedżera zasobów platformy Azure i programu Azure PowerShell
+title: Otwieranie portów dla maszyny wirtualnej przy użyciu Azure PowerShell | Microsoft Docs
+description: Dowiedz się, jak otworzyć port/utworzyć punkt końcowy na maszynie wirtualnej z systemem Windows przy użyciu trybu wdrażania usługi Azure Resource Manager i Azure PowerShell
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -8,34 +8,33 @@ manager: gwallace
 editor: ''
 ms.assetid: cf45f7d8-451a-48ab-8419-730366d54f1e
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 2910882424326f5a09b00d31c0e0fedb45d1e5d8
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: cd5aab6934e2f9692411e09046722cd59ad5e6a8
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67720107"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70089103"
 ---
-# <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Jak otworzyć porty i punkty końcowe do maszyny Wirtualnej na platformie Azure przy użyciu programu PowerShell
+# <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Jak otworzyć porty i punkty końcowe na maszynie wirtualnej na platformie Azure przy użyciu programu PowerShell
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
 
 ## <a name="quick-commands"></a>Szybkie polecenia
-Aby utworzyć sieciową grupę zabezpieczeń i listy kontroli dostępu reguły należy [najnowszą wersję programu Azure PowerShell zainstalowane](/powershell/azureps-cmdlets-docs). Możesz również [wykonaj następujące kroki w witrynie Azure portal](nsg-quickstart-portal.md).
+Aby utworzyć sieciową grupę zabezpieczeń i reguły listy ACL, potrzebna [jest Najnowsza wersja Azure PowerShell](/powershell/azureps-cmdlets-docs). [Te kroki można również wykonać przy użyciu Azure Portal](nsg-quickstart-portal.md).
 
-Zaloguj się do konta platformy Azure:
+Zaloguj się do swojego konta platformy Azure:
 
 ```powershell
 Connect-AzAccount
 ```
 
-W poniższych przykładach należy zastąpić własnymi wartościami nazw parametrów. Przykładowe nazwy parametru uwzględnione *myResourceGroup*, *myNetworkSecurityGroup*, i *myVnet*.
+W poniższych przykładach Zastąp nazwy parametrów własnymi wartościami. Przykładowe nazwy parametrów dołączone do *zasobów*, *myNetworkSecurityGroup*i *myVnet*.
 
-Utwórz regułę za pomocą [New AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig). Poniższy przykład tworzy regułę o nazwie *myNetworkSecurityGroupRule* umożliwia *tcp* ruch na porcie *80*:
+Utwórz regułę przy użyciu elementu [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig). Poniższy przykład tworzy regułę o nazwie *myNetworkSecurityGroupRule* , aby zezwalać na ruch *tcp* na porcie *80*:
 
 ```powershell
 $httprule = New-AzNetworkSecurityRuleConfig `
@@ -51,7 +50,7 @@ $httprule = New-AzNetworkSecurityRuleConfig `
     -DestinationPortRange 80
 ```
 
-Następnie utwórz grupy zabezpieczeń sieci z [New AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) i przypisz zasady HTTP został utworzony w następujący sposób. Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNetworkSecurityGroup*:
+Następnie utwórz sieciową grupę zabezpieczeń z poleceniem [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) i przypisz utworzoną właśnie regułę protokołu HTTP w następujący sposób. Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNetworkSecurityGroup*:
 
 ```powershell
 $nsg = New-AzNetworkSecurityGroup `
@@ -61,7 +60,7 @@ $nsg = New-AzNetworkSecurityGroup `
     -SecurityRules $httprule
 ```
 
-Teraz możemy przypisywanie sieciowej grupy zabezpieczeń do podsieci. Poniższy przykład przypisuje istniejącą sieć wirtualną o nazwie *myVnet* do zmiennej *$vnet* z [Get AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork):
+Teraz przypiszemy do podsieci grupę zabezpieczeń sieci. Poniższy przykład przypisuje istniejącą sieć wirtualną o nazwie *myVnet* do zmiennej *$VNET* za pomocą [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork):
 
 ```powershell
 $vnet = Get-AzVirtualNetwork `
@@ -69,7 +68,7 @@ $vnet = Get-AzVirtualNetwork `
     -Name "myVnet"
 ```
 
-Kojarzenie sieciowej grupy zabezpieczeń dla podsieci środowiska za pomocą [AzVirtualNetworkSubnetConfig zestaw](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig). Poniższy przykład powoduje skojarzenie podsieci o nazwie *mySubnet* za pomocą sieciowej grupy zabezpieczeń:
+Skojarz sieciową grupę zabezpieczeń z podsiecią przy użyciu [opcji Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig). Poniższy przykład powoduje skojarzenie podsieci o nazwie Moja podsieć z grupą zabezpieczeń sieci:
 
 ```powershell
 $subnetPrefix = $vnet.Subnets|?{$_.Name -eq 'mySubnet'}
@@ -81,7 +80,7 @@ Set-AzVirtualNetworkSubnetConfig `
     -NetworkSecurityGroup $nsg
 ```
 
-Na koniec zaktualizuj sieci wirtualnej przy użyciu [AzVirtualNetwork zestaw](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) w kolejności, aby zmiany zaczęły obowiązywać:
+Na koniec Zaktualizuj swoją sieć wirtualną za pomocą polecenia [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork) , aby zmiany zaczęły obowiązywać:
 
 ```powershell
 Set-AzVirtualNetwork -VirtualNetwork $vnet
@@ -89,14 +88,14 @@ Set-AzVirtualNetwork -VirtualNetwork $vnet
 
 
 ## <a name="more-information-on-network-security-groups"></a>Więcej informacji na temat sieciowych grup zabezpieczeń
-Szybkie polecenia w tym miejscu umożliwiają rozpoczęcie pracy z ruchem przepływać do maszyny Wirtualnej. Sieciowe grupy zabezpieczeń zapewniają wiele świetnych funkcji i stopień szczegółowości do kontrolowania dostępu do zasobów. Przeczytaj więcej o [tworzenie sieciowej grupy zabezpieczeń i listy kontroli dostępu reguły tutaj](tutorial-virtual-network.md#secure-network-traffic).
+Szybkie polecenia w tym miejscu umożliwiają rozpoczęcie pracy z ruchem skierowanym do maszyny wirtualnej. Sieciowe grupy zabezpieczeń zapewniają wiele doskonałych funkcji i szczegółowości kontroli dostępu do zasobów. Więcej informacji o [tworzeniu sieciowych grup zabezpieczeń i reguł listy ACL](tutorial-virtual-network.md#secure-network-traffic)można znaleźć tutaj.
 
-W przypadku aplikacji sieci web o wysokiej dostępności należy umieszczać maszyny wirtualne za modułem równoważenia obciążenia platformy Azure. Moduł równoważenia obciążenia dystrybuuje ruch do maszyn wirtualnych z sieciową grupą zabezpieczeń, która pozwala na filtrowanie ruchu sieciowego. Aby uzyskać więcej informacji, zobacz [sposób ładowania równoważenia maszyn wirtualnych systemu Linux na platformie Azure do utworzenia aplikacji o wysokiej dostępności](tutorial-load-balancer.md).
+W przypadku aplikacji sieci Web o wysokiej dostępności należy umieścić maszyny wirtualne za Azure Load Balancer. Moduł równoważenia obciążenia dystrybuuje ruch do maszyn wirtualnych z sieciową grupą zabezpieczeń, która zapewnia filtrowanie ruchu. Aby uzyskać więcej informacji, zobacz [jak równoważyć obciążenie maszyn wirtualnych z systemem Linux na platformie Azure w celu utworzenia aplikacji o wysokiej](tutorial-load-balancer.md)dostępności.
 
 ## <a name="next-steps"></a>Następne kroki
-W tym przykładzie utworzono prosta Reguła zezwalająca na ruch HTTP. Można znaleźć informacje dotyczące tworzenia środowisk bardziej szczegółowe w następujących artykułach:
+W tym przykładzie utworzono prostą regułę zezwalającą na ruch HTTP. Informacje na temat tworzenia bardziej szczegółowych środowisk można znaleźć w następujących artykułach:
 
 * [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)
-* [Co to jest sieciowa grupa zabezpieczeń?](../../virtual-network/security-overview.md)
-* [Omówienie usługi Azure Resource Manager dla usługi równoważenia obciążenia](../../load-balancer/load-balancer-arm.md)
+* [Co to jest sieciowa Grupa zabezpieczeń?](../../virtual-network/security-overview.md)
+* [Przegląd Azure Resource Manager dla modułów równoważenia obciążenia](../../load-balancer/load-balancer-arm.md)
 

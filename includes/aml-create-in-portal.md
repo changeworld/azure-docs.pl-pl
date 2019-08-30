@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/14/2019
-ms.openlocfilehash: 507a6d998f83f5a399f78566967067d0ed92f8b0
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 3955995ed1a7a48cfe323db5bf0e767446d89534
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534395"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164056"
 ---
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu poświadczeń dla używanej subskrypcji platformy Azure. 
 
@@ -37,7 +37,10 @@ ms.locfileid: "69534395"
 
 1. Po zakończeniu konfigurowania obszaru roboczego wybierz pozycję **Utwórz**. 
 
-   Utworzenie obszaru roboczego może potrwać kilka chwil.
+   > [!Warning] 
+   > Tworzenie obszaru roboczego w chmurze może potrwać kilka minut.
 
-   Po zakończeniu procesu zostanie wyświetlony komunikat o powodzeniu wdrożenia. Aby wyświetlić nowy obszar roboczy, wybierz pozycję **Przejdź do zasobu**.
+   Po zakończeniu procesu zostanie wyświetlony komunikat o powodzeniu wdrożenia. 
+ 
+ 1. Aby wyświetlić nowy obszar roboczy, wybierz pozycję **Przejdź do zasobu**.
 

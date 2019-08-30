@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: 3acae8f7d34bb02905e6e8d479b7de5ccab1bb7a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d9b0c551cdfb92b380a967aaa5bdce7c278fd39e
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850982"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183575"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Kondycja zaplecza, dzienniki diagnostyczne i metryki dla Application Gateway
 
@@ -105,7 +105,7 @@ Za pomocą różnych typów dzienników na platformie Azure można zarządzać b
 Masz trzy opcje przechowywania dzienników:
 
 * **Konto magazynu**: Konta magazynu najlepiej używać w przypadku dzienników, gdy dzienniki są przechowywane przez dłuższy czas i są przeglądane w razie potrzeby.
-* **Centra zdarzeń**: Centra zdarzeń to doskonałe rozwiązanie umożliwiające integrację z innymi narzędziami do zarządzania informacjami i zdarzeniami zabezpieczeń (SEIM) w celu uzyskania alertów dotyczących zasobów.
+* **Centra zdarzeń**: Centra zdarzeń to doskonałe rozwiązanie umożliwiające integrację z innymi narzędziami do zarządzania informacjami i zdarzeniami zabezpieczeń (SIEM) w celu uzyskania alertów dotyczących zasobów.
 * **Azure monitor dzienników**: Dzienniki Azure Monitor najlepiej sprawdzają się w czasie rzeczywistym monitorowania aplikacji lub patrząc na trendy.
 
 ### <a name="enable-logging-through-powershell"></a>Włączanie rejestrowania za poorednictwem programu PowerShell
@@ -201,7 +201,7 @@ Dziennik dostępu jest generowany tylko wtedy, gdy włączono go na każdym wyst
 ```
 W przypadku Application Gateway i WAF v2 dzienniki zawierają nieco więcej informacji:
 
-|Wartość  |Opis  |
+|Value  |Opis  |
 |---------|---------|
 |instanceId     | Application Gateway wystąpienie, które obsłużyło żądanie.        |
 |clientIP     | Adres IP pochodzący od żądania.        |
@@ -255,7 +255,7 @@ W przypadku Application Gateway i WAF v2 dzienniki zawierają nieco więcej info
 Dziennik wydajności jest generowany tylko wtedy, gdy włączono go na każdym wystąpieniu Application Gateway, zgodnie z opisem w poprzednich krokach. Dane są przechowywane na koncie magazynu określonym podczas włączania rejestrowania. Dane dziennika wydajności są generowane w 1-minutowych interwałach. Rejestrowane są następujące dane:
 
 
-|Wartość  |Opis  |
+|Value  |Opis  |
 |---------|---------|
 |instanceId     |  Application Gateway wystąpienie, dla którego są generowane dane wydajności. W przypadku bramy aplikacji o wielu wystąpieniach istnieje jeden wiersz dla każdego wystąpienia.        |
 |healthyHostCount     | Liczba hostów w dobrej kondycji w puli zaplecza.        |

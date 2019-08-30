@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: aaeaed22b1e09556452a49d7fc63c15ef0c7fcdb
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 48d2463eee2caeaae36118bf736d00eed84c897a
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061331"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186212"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Rozwiązywanie problemów z Update Management
 
@@ -113,6 +113,24 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
+
+### <a name="updates-nodeployment"></a>Scenariusz Aktualizacje instalowane bez wdrożenia
+
+### <a name="issue"></a>Problem
+
+Po zarejestrowaniu maszyny z systemem Windows w Update Management można zobaczyć aktualizacje instalacji bez wdrożenia.
+
+### <a name="cause"></a>Przyczyna
+
+W systemie Windows aktualizacje są instalowane automatycznie zaraz po ich udostępnieniu. Może to spowodować pomyłkę, jeśli aktualizacja nie została zaplanowana do wdrożenia na maszynie.
+
+### <a name="resolution"></a>Rozwiązanie
+
+Klucz rejestru systemu Windows, `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` domyślnie przyjmuje wartość "4" — **Pobierz i zainstaluj**.
+
+W przypadku klientów Update Management zalecamy ustawienie tego klucza na wartość "3" — pobieranie z autopobieraniem, **ale nie na automatycznej instalacji**.
+
+Aby uzyskać więcej informacji, zobacz [Konfigurowanie aktualizacji automatycznych](https://docs.microsoft.com/en-us/windows/deployment/update/waas-wu-settings#configure-automatic-updates).
 
 ### <a name="nologs"></a>Scenariusz Maszyny nie są wyświetlane w portalu w obszarze Update Management
 

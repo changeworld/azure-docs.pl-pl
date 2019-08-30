@@ -1,8 +1,8 @@
 ---
-title: Uaktualnienie do zestawu .NET SDK rozszerzenia usługi Azure Search w wersji 3 - usługi Azure Search
-description: Migrowanie kodu do zestawu .NET SDK rozszerzenia usługi Azure Search w wersji 3 ze starszych wersji. Poznaj nowe funkcje i zmiany kodu, które są wymagane.
+title: Uaktualnianie do Azure Search .NET SDK w wersji 3 — Azure Search
+description: Migruj kod do Azure Search .NET SDK wersja 3 ze starszych wersji. Dowiedz się, co nowego i jakie zmiany w kodzie są wymagane.
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: dotnet
@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: d41c2b541bf80448d180a1d081c255e5bf754e5e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cab0da93bbea117c216969faf2f1e194e16d675f
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65147329"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70183222"
 ---
-# <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>Uaktualnianie do zestawu .NET SDK rozszerzenia usługi Azure Search w wersji 3
+# <a name="upgrading-to-the-azure-search-net-sdk-version-3"></a>Uaktualnianie do Azure Search .NET SDK w wersji 3
 
 <!--- DETAILS in the word doc
 cosmosdb
@@ -26,72 +26,72 @@ Indexer execution result errors no longer have status
 the data source API will no longer return in the response of any REST operation, the connection string specified by the user.
 --->
 
-Jeśli używasz wersji 2.0 w wersji zapoznawczej lub starszy z [zestawu .NET SDK usługi Azure Search](https://aka.ms/search-sdk), ten artykuł pomoże Ci uaktualnić aplikację do używania w wersji 3.
+W przypadku korzystania z wersji 2,0-Preview lub starszej [Azure Search .NET SDK](https://aka.ms/search-sdk)ten artykuł pomoże Ci uaktualnić aplikację do korzystania z wersji 3.
 
-Aby uzyskać ogólne wskazówki zestawu SDK, wraz z przykładami, zobacz [jak używać usługi Azure Search z poziomu aplikacji .NET](search-howto-dotnet-sdk.md).
+Aby zapoznać się z bardziej ogólnym przewodnikiem dotyczącym zestawu SDK, łącznie z przykładami, zobacz [jak używać Azure Search z poziomu aplikacji .NET](search-howto-dotnet-sdk.md).
 
-Zestaw .NET SDK usługi Azure Search w wersji 3 zawiera pewne zmiany z wcześniejszych wersji. Są to przede wszystkim pomocnicza, dzięki czemu Zmienianie kodu należy wymagać tylko minimalnym nakładzie pracy. Zobacz [kroki niezbędne do uaktualnienia](#UpgradeSteps) zawiera instrukcje dotyczące sposobu zmiany kodu do nowej wersji zestawu SDK.
+Wersja 3 zestawu SDK Azure Search .NET zawiera pewne zmiany z wcześniejszych wersji. Są one w większości drobnych, więc zmiana kodu powinna wymagać tylko minimalnego nakładu pracy. Zobacz [procedurę uaktualniania](#UpgradeSteps) , aby uzyskać instrukcje dotyczące zmiany kodu w celu użycia nowej wersji zestawu SDK.
 
 > [!NOTE]
-> Jeśli używasz wersji 1.0.2-preview lub starsze, należy uaktualnić system do wersji 1.1 pierwszy, a następnie uaktualnić do wersji 3. Zobacz [uaktualnienie do zestawu .NET SDK rozszerzenia usługi Azure Search w wersji 1.1](search-dotnet-sdk-migration-version-1.md) instrukcje.
+> Jeśli używasz wersji 1.0.2-Preview lub starszej, należy najpierw uaktualnić do wersji 1,1, a następnie uaktualnić do wersji 3. Aby uzyskać instrukcje [, zobacz Uaktualnianie do Azure Search zestawu SDK platformy .NET w wersji 1,1](search-dotnet-sdk-migration-version-1.md) .
 >
-> Wystąpienia usługi Azure Search obsługuje kilka wersji interfejsu API REST, w tym najnowsze. Można użyć wersji, gdy nie jest już najnowsze, ale zaleca się przeprowadzenie migracji kodu, aby użyć najnowszej wersji. Korzystając z interfejsu API REST, należy określić wersję interfejsu API w każdym żądaniu za pomocą parametru api-version. Korzystając z zestawu .NET SDK, wersję zestawu SDK, w przypadku używania określa odpowiednią wersję interfejsu API REST. Jeśli używasz starszy zestaw SDK, można nadal uruchomić ten kod bez konieczności wprowadzania zmian, nawet wtedy, gdy usługa zostanie uaktualniony do nowszej wersji interfejsu API do obsługi.
+> Wystąpienie usługi Azure Search obsługuje kilka wersji interfejsu API REST, w tym najnowsze. Możesz nadal korzystać z wersji, gdy nie jest już Najnowsza, ale zalecamy przeprowadzenie migracji kodu w celu użycia najnowszej wersji. W przypadku korzystania z interfejsu API REST należy określić wersję interfejsu API w każdym żądaniu za pośrednictwem parametru API-Version. Podczas korzystania z zestawu SDK platformy .NET wersja zestawu SDK określa odpowiednią wersję interfejsu API REST. Jeśli używasz starszego zestawu SDK, możesz nadal uruchamiać ten kod bez zmian, nawet jeśli usługa zostanie uaktualniona w celu obsługi nowszej wersji interfejsu API.
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-3"></a>Co nowego w wersji 3
-Zestaw .NET SDK usługi Azure Search w wersji 3 jest przeznaczony dla najnowszej ogólnie dostępnej wersji Azure Search REST API, w szczególności 2016-09-01. Dzięki temu można używać wiele nowych funkcji usługi Azure Search z poziomu aplikacji .NET, w tym następujące:
+Wersja 3 zestawu SDK Azure Search .NET jest przeznaczona dla najnowszej ogólnie dostępnej wersji interfejsu API REST Azure Search, w tym 2016-09-01. Dzięki temu można korzystać z wielu nowych funkcji Azure Search z aplikacji .NET, w tym:
 
 * [Analizatory niestandardowe](https://aka.ms/customanalyzers)
-* [Usługa Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) i [Azure Table Storage](search-howto-indexing-azure-tables.md) obsługi indeksatorów
-* Dostosowywanie indeksatora za pośrednictwem [mapowania pól](search-indexer-field-mappings.md)
-* Elementy etag obsługuje umożliwiające bezpieczne równoczesnych aktualizacji definicji indeksów, indeksatorów i źródeł danych
-* Pomoc techniczna przy tworzeniu definicje pól indeksu deklaratywnie przez urządzanie klasy modelu i za pomocą nowego `FieldBuilder` klasy.
-* Obsługa platformy .NET Core i .NET przenośne Profile 111
+* Obsługa [usługi azure BLOB Storage](search-howto-indexing-azure-blob-storage.md) i [usługi Azure Table Storage](search-howto-indexing-azure-tables.md) Indexer
+* Dostosowywanie indeksatora za pośrednictwem [mapowań pól](search-indexer-field-mappings.md)
+* Elementy ETag obsługują bezpieczną współbieżną aktualizację definicji indeksu, indeksatorów i źródeł danych
+* Obsługa tworzenia definicji pól indeksu w sposób deklaratywny przez dekorowania nazwy klasy modelu i przy użyciu nowej `FieldBuilder` klasy.
+* Obsługa profilu przenośnego .NET Core i .NET 111
 
 <a name="UpgradeSteps"></a>
 
-## <a name="steps-to-upgrade"></a>Kroki niezbędne do uaktualnienia
-Najpierw należy zaktualizować odwołania programu NuGet dla `Microsoft.Azure.Search` przy użyciu konsoli Menedżera pakietów NuGet lub przez kliknięcie prawym przyciskiem myszy odwołania projektu i wybierając "Zarządzaj NuGet pakietów..." w programie Visual Studio.
+## <a name="steps-to-upgrade"></a>Kroki do uaktualnienia
+Najpierw zaktualizuj odwołanie do `Microsoft.Azure.Search` programu NuGet przy użyciu konsoli Menedżera pakietów NuGet lub kliknij prawym przyciskiem myszy odwołania do projektu i wybierz polecenie "Zarządzaj pakietami NuGet..." w programie Visual Studio.
 
-Po NuGet pobrała nowe pakiety i ich zależności, należy ponownie skompilować projekt. W zależności od struktury kodu jego może odbudować pomyślnie. Jeśli tak, jesteś gotowy!
+Po pobraniu przez program NuGet nowych pakietów i ich zależności, należy ponownie skompilować projekt. W zależności od tego, jak kod jest strukturalny, może zostać pomyślnie ponownie odbudowany. Jeśli tak, wszystko jest gotowe!
 
-Jeśli kompilacja nie powiedzie się, powinien zostać wyświetlony błąd kompilacji, jak pokazano poniżej:
+Jeśli kompilacja nie powiedzie się, powinien pojawić się błąd kompilacji podobny do następującego:
 
     Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
 
-Następnym krokiem jest, aby naprawić ten błąd kompilacji. Zobacz [przełomowe zmiany w wersji 3](#ListOfChanges) szczegółowe informacje o co powoduje błąd i jak go naprawić.
+Następnym krokiem jest poprawienie tego błędu kompilacji. Zobacz istotne [zmiany w wersji 3](#ListOfChanges) , aby uzyskać szczegółowe informacje na temat tego, co powoduje błąd i sposób jego rozwiązania.
 
-Może zostać wyświetlony ostrzeżenia kompilacji dodatkowe dotyczące przestarzałe metody lub właściwości. Ostrzeżenia zawierają instrukcje dotyczące rozwiązania do zastosowania zamiast przestarzałych funkcji. Na przykład, jeśli aplikacja używa `IndexingParameters.Base64EncodeKeys` właściwość powinna pojawić się ostrzeżenie informujące, `"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
+Mogą pojawić się dodatkowe ostrzeżenia kompilacji dotyczące przestarzałych metod lub właściwości. Ostrzeżenia będą zawierać instrukcje dotyczące użycia zamiast przestarzałej funkcji. Na przykład jeśli aplikacja używa `IndexingParameters.Base64EncodeKeys` właściwości, należy otrzymać ostrzeżenie z informacją o tym, że`"This property is obsolete. Please create a field mapping using 'FieldMapping.Base64Encode' instead."`
 
-Gdy problem został rozwiązany błędów kompilacji, można wprowadzić zmiany do aplikacji w taki sposób, aby móc korzystać z nowych funkcji, jeśli chcesz, aby. Nowe funkcje w zestawie SDK są szczegółowo opisane w [nowości w wersji 3](#WhatsNew).
+Po naprawieniu błędów kompilacji możesz wprowadzić zmiany w aplikacji, aby korzystać z nowych funkcji. Nowe funkcje zestawu SDK opisano w temacie [co nowego w wersji 3](#WhatsNew).
 
 <a name="ListOfChanges"></a>
 
 ## <a name="breaking-changes-in-version-3"></a>Istotne zmiany w wersji 3
-Istnieje niewielka liczba przełomowe zmiany w wersji 3, które mogą wymagać kodu zmienia oprócz ponownie skompilować aplikację.
+Istnieje niewielka liczba istotnych zmian w wersji 3, które mogą wymagać zmiany kodu oprócz ponownego kompilowania aplikacji.
 
-### <a name="indexesgetclient-return-type"></a>Zwracany typ Indexes.GetClient
-`Indexes.GetClient` Metoda ma nowy typ zwracany. Uprzednio była zwracana `SearchIndexClient`, ale ta zmiana została wprowadzona `ISearchIndexClient` w wersji 2.0 — w wersji zapoznawczej, a zmiany są stosowane do wersji 3. Ma to na celu zapewnienie obsługi dla klientów, które chcą testowanie `GetClient` metody testów jednostkowych, zwracając implementację testową z `ISearchIndexClient`.
+### <a name="indexesgetclient-return-type"></a>Indexes. GetClient zwraca typ
+`Indexes.GetClient` Metoda ma nowy zwracany typ. Wcześniej został zwrócony `SearchIndexClient`, ale został zmieniony na `ISearchIndexClient` w wersji 2,0-Preview, a zmiana ta przeniesie do wersji 3. Jest to pomoc dla klientów, którzy chcą zasymulować `GetClient` metodę dla testów jednostkowych, zwracając `ISearchIndexClient`implementację makiety.
 
 #### <a name="example"></a>Przykład
-Jeśli Twój kod wygląda następująco:
+Jeśli kod wygląda następująco:
 
 ```csharp
 SearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-Można go zmienić, na ten element, aby naprawić wszystkie błędy kompilacji:
+Można to zmienić w celu usunięcia błędów kompilacji:
 
 ```csharp
 ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>AnalyzerName, typ danych i inne osoby nie są już niejawnie konwertowany na ciągi
-Istnieje wiele typów w zestawie SDK .NET Azure wyszukiwania, który pochodzi od `ExtensibleEnum`. Wcześniej te typy były wszystkie niejawnej konwersji na typ `string`. Jednak błąd został wykryty w `Object.Equals` implementacji dla tych klas i naprawianie błędów wymagane wyłączenie tej konwersji niejawnych. Jawna konwersja na `string` nadal uzyskuje zezwolenie.
+### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>Analizatorname, DataType i inne nie są już niejawnie konwertowane na ciągi
+Istnieje wiele typów w zestawie SDK Azure Search .NET, który pochodzi od `ExtensibleEnum`. Wcześniej te typy były niejawnie konwertowane na typ `string`. Jednak usterka została odnaleziona w `Object.Equals` implementacji dla tych klas i Naprawianie błędu wymaganego do wyłączenia tej niejawnej konwersji. Jawna konwersja `string` na jest nadal dozwolona.
 
 #### <a name="example"></a>Przykład
-Jeśli Twój kod wygląda następująco:
+Jeśli kod wygląda następująco:
 
 ```csharp
 var customTokenizerName = TokenizerName.Create("my_tokenizer"); 
@@ -109,7 +109,7 @@ index.Analyzers = new Analyzer[]
 }; 
 ```
 
-Można go zmienić, na ten element, aby naprawić wszystkie błędy kompilacji:
+Można to zmienić w celu usunięcia błędów kompilacji:
 
 ```csharp
 const string CustomTokenizerName = "my_tokenizer"; 
@@ -127,27 +127,27 @@ index.Analyzers = new Analyzer[]
 }; 
 ```
 
-### <a name="removed-obsolete-members"></a>Usunięto przestarzali członkowie
+### <a name="removed-obsolete-members"></a>Usunięto przestarzałe składowe
 
-Może zostać wyświetlony, błędy kompilacji związane z metodami lub właściwościami, które zostały oznaczone jako przestarzałe w wersji 2.0 w wersji zapoznawczej, a następnie usunięte w wersji 3. Jeśli wystąpią błędy takie, w tym miejscu przedstawiono sposób ich rozwiązywania:
+Możesz zobaczyć błędy kompilacji związane z metodami lub właściwościami, które zostały oznaczone jako przestarzałe w wersji 2,0-Preview, a następnie usunięte w wersji 3. W przypadku wystąpienia takich błędów poniżej przedstawiono sposób ich rozwiązywania:
 
-- W przypadku używania tego konstruktora: `ScoringParameter(string name, string value)`, zamiast tego użyj tego: `ScoringParameter(string name, IEnumerable<string> values)`
-- Jeśli używano `ScoringParameter.Value` właściwości, należy zastosować `ScoringParameter.Values` właściwości lub `ToString` metody zamiast tego.
-- Jeśli używano `SearchRequestOptions.RequestId` właściwości, należy zastosować `ClientRequestId` właściwości zamiast tego.
+- Jeśli używasz tego konstruktora: `ScoringParameter(string name, string value)`, użyj tego:`ScoringParameter(string name, IEnumerable<string> values)`
+- Jeśli używasz `ScoringParameter.Value` właściwości, zamiast tego `ScoringParameter.Values` Użyj właściwości lub `ToString` metody.
+- Jeśli używasz `SearchRequestOptions.RequestId` właściwości, `ClientRequestId` Użyj zamiast niej właściwości.
 
-### <a name="removed-preview-features"></a>Usunięto w wersji zapoznawczej
+### <a name="removed-preview-features"></a>Usunięte funkcje w wersji zapoznawczej
 
-W wersji 2.0 — w wersji zapoznawczej jest uaktualniane do wersji 3, należy pamiętać, że JSON i analizy obsługę indeksatory obiektów Blob CSV został usunięty, ponieważ te funkcje są nadal w wersji zapoznawczej. W szczególności następujące metody `IndexingParametersExtensions` klasy zostały usunięte:
+W przypadku uaktualniania z wersji 2,0 — wersja zapoznawcza do wersji 3 należy pamiętać, że obsługa kodu JSON i woluminu CSV dla indeksatorów obiektów BLOB została usunięta, ponieważ te funkcje są nadal w wersji zapoznawczej. W szczególnych przypadkach następujące metody `IndexingParametersExtensions` klasy zostały usunięte:
 
 - `ParseJson`
 - `ParseJsonArrays`
 - `ParseDelimitedTextFiles`
 
-Jeśli aplikacja ma twardych zależność od tych funkcji, nie można uaktualnić do wersji 3 zestawu .NET SDK usługi Azure Search. Można nadal używać wersji 2.0 — w wersji zapoznawczej. Jednak należy pamiętać, że **nie zaleca się przy użyciu zestawów SDK wersji zapoznawczej w aplikacjach produkcyjnych**. Funkcje w wersji zapoznawczej są tylko do oceny i mogą ulec zmianie.
+Jeśli aplikacja ma twardą zależność od tych funkcji, nie będzie można przeprowadzić uaktualnienia do wersji 3 zestawu Azure Search .NET SDK. Możesz nadal używać wersji 2,0-Preview. Należy jednak pamiętać, że **nie zalecamy korzystania z wersji zapoznawczej zestawów SDK w aplikacjach produkcyjnych**. Funkcje w wersji zapoznawczej służą wyłącznie do oceny i mogą ulec zmianie.
 
-## <a name="conclusion"></a>Podsumowanie
-Aby uzyskać więcej informacji na temat korzystania z zestawu .NET SDK usługi Azure Search zobacz [.NET porad](search-howto-dotnet-sdk.md).
+## <a name="conclusion"></a>Wniosek
+Jeśli potrzebujesz więcej szczegółowych informacji na temat korzystania z zestawu SDK Azure Search platformy .NET, zobacz [temat jak to zrobić](search-howto-dotnet-sdk.md).
 
-Chętnie poznamy Twoją opinię na zestawie SDK. Jeśli napotkasz problemy, możesz poprosić nas o pomoc na [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search). Jeśli znajdziesz błąd, możesz Prześlij zgłoszenie do [repozytorium Azure .NET SDK w witrynie GitHub](https://github.com/Azure/azure-sdk-for-net/issues). Upewnij się, że prefiks tytuł problemu z usługą "[Azure Search]".
+Poznamy Twoją opinię na temat zestawu SDK. Jeśli wystąpią problemy, skontaktuj się z nami, aby uzyskać pomoc dotyczącą [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-search). Jeśli znajdziesz błąd, możesz zgłosić problem w [repozytorium GitHub zestawu SDK platformy Azure](https://github.com/Azure/azure-sdk-for-net/issues). Upewnij się, że tytuł problemu jest prefiksem "[Azure Search]".
 
-Dziękujemy za pomocą usługi Azure Search.
+Dziękujemy za korzystanie z Azure Search!

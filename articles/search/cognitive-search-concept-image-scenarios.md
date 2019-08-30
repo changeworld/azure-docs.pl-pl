@@ -2,7 +2,7 @@
 title: Przetwarzanie i Wyodrębnianie tekstu z obrazów w usłudze wyszukiwania poznawczego — Azure Search
 description: Przetwarzaj i Wyodrębniaj tekst oraz inne informacje z obrazów w potokach wyszukiwania poznawczego w Azure Search.
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.subservice: cognitive-search
@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 216be226f3ce6d1a288462d1a1b79f2bb0d3efe5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 65b6eb07a866db405af3e5bc609a540c36f148a8
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639927"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186431"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Jak przetwarzać i wyodrębniać informacje z obrazów w scenariuszach wyszukiwania poznawczego
 

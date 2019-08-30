@@ -4,23 +4,19 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 04/24/2019
 ms.author: glenga
-ms.openlocfilehash: a3f75b7273164abc5318f16e9ab8d9883ff0c0aa
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9381f436aaeedb31732f853a6c4765ac43c6a752
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183013"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170866"
 ---
 ## <a name="test"></a>Testowanie funkcji na platformie Azure
 
-Korzystanie z programu cURL, przetestuj wdrożoną funkcję. Przy użyciu adresu URL, który został skopiowany w poprzednim kroku, Dołącz ciąg zapytania `&name=<yourname>` do adresu URL, jak w poniższym przykładzie:
+Użyj Zwinięciea, aby przetestować wdrożoną funkcję. Przy użyciu adresu URL, w tym klucza funkcji skopiowanego z poprzedniego kroku, dołącz ciąg `&name=<yourname>` zapytania do adresu URL.
 
-```bash
-curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
-```
+![Używanie zwinięcie do wywołania funkcji na platformie Azure.](./media/functions-test-function-code/functions-azure-cli-function-test-curl.png) 
 
-![Używając programu cURL, aby wywołać funkcję platformy Azure.](./media/functions-test-function-code/functions-azure-cli-function-test-curl.png) 
+Możesz także wkleić skopiowany adres URL, w tym klucz funkcji, w polu do adresu przeglądarki sieci Web. Ponownie Dołącz ciąg `&name=<yourname>` zapytania do adresu URL przed wykonaniem żądania.
 
-Można także Wklej skopiowany adres URL w adresu przeglądarki sieci web. Ponownie Dołącz ciąg zapytania `&name=<yourname>` do adresu URL, przed wykonaniem żądania.
-
-![W przeglądarce sieci web w wywołaniu funkcji.](./media/functions-test-function-code/functions-azure-cli-function-test-browser.png)  
+![Używanie przeglądarki sieci Web do wywoływania funkcji.](./media/functions-test-function-code/functions-azure-cli-function-test-browser.png)  

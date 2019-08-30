@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: c8ffa7b65e4f97fa537299bf542ba377da026064
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69626379"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70174647"
 ---
 Rozmiary maszyn wirtualnych zoptymalizowane pod kątem pamięci oferują duże proporcje pamięci dla serwerów relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizę w pamięci. Ten artykuł zawiera informacje na temat liczby procesorów wirtualnych vCPU, dysków danych i kart sieciowych, a także przepływności magazynu i przepustowości sieci dla każdego rozmiaru w ramach tego grupowania.
 
@@ -147,7 +147,7 @@ Funkcja maszyny wirtualnej z serii Mv2 Intel® technologia wielowątkowości fun
 
 <sup>1</sup> te duże maszyny wirtualne wymagają jednego z następujących obsługiwanych systemów operacyjnych gościa: Windows Server 2016, Windows Server 2019, SLES 12 SP4, SLES 15.
 
-<sup>2</sup> maszyny wirtualne z serii Mv2 są tylko 2 generacji. Jeśli używasz systemu Linux, zapoznaj się z sekcją jak znaleźć i wybrać obraz systemu SUSE Linux.
+<sup>2</sup> maszyny wirtualne z serii Mv2 są tylko [2 generacji](/azure/virtual-machines/linux/generation-2) . Jeśli używasz systemu Linux, zapoznaj się z sekcją jak znaleźć i wybrać obraz systemu SUSE Linux.
 
 #### <a name="find-a-suse-image"></a>Znajdowanie obrazu SUSE
 

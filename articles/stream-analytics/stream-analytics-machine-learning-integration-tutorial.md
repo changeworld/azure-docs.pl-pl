@@ -9,15 +9,15 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2d74488f60f21e3644a7a04579bfab7e70882b01
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: ab510f7ee2f95a2c3373c0514c31554598451b27
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621541"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173334"
 ---
-# <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning-studio-preview"></a>Przeprowadzanie analizy tonacji przy użyciu usługi Azure Stream Analytics i Azure Machine Learning Studio (wersja zapoznawcza)
-W tym artykule opisano, jak szybko skonfigurować proste zadanie usługi Azure Stream Analytics, która integruje usługi Azure Machine Learning Studio. Używasz modelem analizy tonacji usługi Machine Learning w galerii Cortana Intelligence do analizowania danych przesyłanych strumieniowo tekstu i ustalić wyniku tonacji w czasie rzeczywistym. Przy użyciu pakietu Cortana Intelligence pozwala wykonać to zadanie, nie martwiąc się o niewymagającego tworzenia modelu analizy tonacji.
+# <a name="perform-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-preview"></a>Wykonywanie analizy tonacji z użyciem Azure Stream Analytics i Azure Machine Learning Studio (wersja zapoznawcza)
+W tym artykule opisano sposób szybkiego skonfigurowania prostego zadania Azure Stream Analytics, które integruje Azure Machine Learning Studio. Używasz modelem analizy tonacji usługi Machine Learning w galerii Cortana Intelligence do analizowania danych przesyłanych strumieniowo tekstu i ustalić wyniku tonacji w czasie rzeczywistym. Przy użyciu pakietu Cortana Intelligence pozwala wykonać to zadanie, nie martwiąc się o niewymagającego tworzenia modelu analizy tonacji.
 
 Możesz poprosić zdobytą wiedzę w tym artykule scenariuszy, takich jak te:
 
@@ -45,7 +45,7 @@ Przed rozpoczęciem upewnij się, że dysponujesz następującymi elementami:
 Na wysokim poziomie Aby wykonać zadania przedstawione w tym artykule wykonano następujące czynności:
 
 1. Tworzenie konta usługi Azure storage i kontenera magazynu obiektów blob i przekaż plik wejściowy formacie CSV do kontenera.
-3. Dodaj model analizy tonacji z galerii Cortana Intelligence do obszaru roboczego usługi Azure Machine Learning Studio i wdróż ten model jako usługę sieci web, w obszarze roboczym usługi Machine Learning.
+3. Dodaj model analizy tonacji z Cortana Intelligence Gallery do obszaru roboczego Azure Machine Learning Studio i Wdróż ten model jako usługę sieci Web w obszarze roboczym Machine Learning.
 5. Utwórz zadanie usługi Stream Analytics, które wywołuje ta usługa sieci web jako funkcję w celu określenia wskaźniki nastrojów klientów dotyczące wprowadzania tekstu.
 6. Uruchamianie zadania usługi Stream Analytics i sprawdzanie danych wyjściowych.
 

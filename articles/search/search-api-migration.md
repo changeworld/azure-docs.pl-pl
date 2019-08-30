@@ -1,100 +1,100 @@
 ---
-title: Uaktualnij do najnowszej wersji interfejsu API REST usługi Azure Search — usługa Azure Search
-description: Różnice w wersjach interfejsu API i naukę akcje, które są wymagane, aby przeprowadzić migrację istniejącego kodu do najnowszej wersji interfejsu API REST usługi Azure Search.
+title: Uaktualnij do najnowszej wersji interfejsu API REST usługi Azure Search Azure Search
+description: Zapoznaj się z różnicami w wersji interfejsu API i Dowiedz się, które akcje są wymagane do migrowania istniejącego kodu do najnowszej wersji interfejsu API REST usługi Azure Search.
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: brjohnst
-ms.openlocfilehash: 85a8ddf4ce87d7ac8ce460c0aff56311a2ea4578
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c1f7fdb1f349c9e31ba63d79a9b9e26ea9f09da
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540690"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182385"
 ---
 # <a name="upgrade-to-the-latest-azure-search-service-rest-api-version"></a>Uaktualnij do najnowszej wersji interfejsu API REST usługi Azure Search
-Jeśli używasz poprzedniej wersji [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/), ten artykuł pomoże Ci uaktualnienia aplikacji w taki sposób, aby używać najnowszych jest ogólnie dostępna wersja interfejsu API 2019-05-06.
+Jeśli używasz starszej wersji [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/), ten artykuł pomoże Ci uaktualnić aplikację pod kątem korzystania z najnowszej, dostępnej w wersji interfejsu api, 2019-05-06.
 
-Wersja 2019-05-06 interfejsu API REST zawiera pewne zmiany z wcześniejszych wersji. Są to przede wszystkim zgodne z poprzednimi wersjami, więc zmiana kodu należy wymagać tylko minimalnym nakładzie pracy, w zależności od instalowanej wersji używanego wcześniej. [Kroki niezbędne do uaktualnienia](#UpgradeSteps) opisano zmiany kodu, wymagane do używania nowych funkcji.
+Wersja 2019-05-06 interfejsu API REST zawiera pewne zmiany z wcześniejszych wersji. Są one głównie zgodne z poprzednimi wersjami, więc zmiana kodu powinna wymagać tylko minimalnego nakładu pracy, w zależności od używanej wersji. [Procedura uaktualniania](#UpgradeSteps) przedstawia zmiany kodu wymagane do korzystania z nowych funkcji.
 
 > [!NOTE]
-> Wystąpienie usługi Azure Search obsługuje wersje zakres interfejsu API REST, w tym wcześniejsze. Można nadal używać tych wersji interfejsu API, ale zalecamy przeprowadzenie migracji kodu do najnowszej wersji, aby umożliwić dostęp nowe możliwości.
+> Wystąpienie usługi Azure Search obsługuje wiele wersji interfejsu API REST, w tym wcześniejszych. Możesz nadal używać tych wersji interfejsu API, ale zalecamy Migrowanie kodu do najnowszej wersji, aby uzyskać dostęp do nowych funkcji.
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-2019-05-06"></a>Co nowego w wersji 2019-05-06
-Wersja 2019-05-06 jest ogólnie dostępna najnowszą wersję interfejsu API REST usługi Azure Search Service. Funkcje, które zostały przeniesione do stanu jest ogólnie dostępna w tej wersji interfejsu API:
+Wersja 2019-05-06 to najnowsza ogólnie dostępna wersja interfejsu API REST usługi Azure Search. Funkcje, które przeszły do ogólnie dostępnego stanu w tej wersji interfejsu API, obejmują:
 
-* [Autouzupełnianie](index-add-suggesters.md) jest funkcją typeahead kończące wprowadzania częściowo określonego okresu.
+* [Autouzupełnianie](index-add-suggesters.md) jest funkcją typeahead, która kończy częściowo określone dane wejściowe.
 
-* [Typy złożone](search-howto-complex-data-types.md) zapewnia natywną obsługę danych ze strukturą obiektu do indeksu usługi Azure Search.
+* [Typy złożone](search-howto-complex-data-types.md) zapewniają natywną obsługę danych strukturalnych obiektów w indeksie Azure Search.
 
-* [Podczas analizowania tryby JsonLines](search-howto-index-json-blobs.md)częścią usługi Azure Blob indeksowania, tworzy jeden wyszukiwania dokumentów na jednostkę JSON, oddzielonych znakami nowego wiersza.
+* [Tryby analizy JsonLines](search-howto-index-json-blobs.md), część indeksowania obiektów blob platformy Azure, tworzy jeden dokument wyszukiwania na jednostkę JSON rozdzieloną wierszem.
 
-* [Usługa cognitive search](cognitive-search-concept-intro.md) zapewnia indeksowania wykorzystującego aparatów wzbogacania sztucznej Inteligencji usług Cognitive Services.
+* [Wyszukiwanie poznawcze](cognitive-search-concept-intro.md) zapewnia indeksowanie, które wykorzystuje silniki wzbogacania AI z Cognitive Services.
 
-Kilka wersji zapoznawczych funkcji pokrywają się z tą aktualizacją jest ogólnie dostępna. Aby przejrzeć listę nowych funkcji zapoznawczych, zobacz [wersji interfejsu api REST wyszukiwania 2019-05-06-Preview](search-api-preview.md).
+Niektóre wersje funkcji w wersji zapoznawczej pokrywają się z ogólną dostępną aktualizacją. Aby zapoznać się z listą nowych funkcji w wersji zapoznawczej, zobacz [interfejs API REST usługi Search — wersja 2019-05-06-Preview](search-api-preview.md).
 
 ## <a name="breaking-changes"></a>Zmiany powodujące niezgodność
 
-Istniejący kod, zawierające następujące funkcje zostaną przerwane w wersji api-version = 2019-05-06.
+Istniejący kod zawierający następujące funkcje spowoduje przerwanie działania interfejsu API-Version = 2019-05-06.
 
-### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>Indeksator dla usługi Azure Cosmos DB — źródło danych jest teraz "type": "cosmosdb"
+### <a name="indexer-for-azure-cosmos-db---datasource-is-now-type-cosmosdb"></a>Indeksator dla Azure Cosmos DB-DataSource jest teraz "Type": "cosmosdb"
 
-Jeśli używasz [indeksator usługi Cosmos DB](search-howto-index-cosmosdb.md ), należy zmienić `"type": "documentdb"` do `"type": "cosmosdb"`.
+Jeśli używasz [indeksatora Cosmos DB](search-howto-index-cosmosdb.md ), musisz zmienić `"type": "documentdb"` na. `"type": "cosmosdb"`
 
-### <a name="indexer-execution-result-errors-no-longer-have-status"></a>Błędy wynik wykonania indeksator nie będzie już stanu
+### <a name="indexer-execution-result-errors-no-longer-have-status"></a>Błędy wyniku wykonywania indeksatora nie mają już stanu
 
-Struktura błąd wykonywanie indeksatora stracił `status` elementu. Ten element został usunięty, ponieważ nie został on udostępniają przydatne informacje.
+Struktura błędów dla wykonywania indeksatora wcześniej zawierała `status` element. Ten element został usunięty, ponieważ nie dostarcza użytecznych informacji.
 
-### <a name="indexer-data-source-api-no-longer-returns-connection-strings"></a>Indeksator źródła danych interfejsu API nie zwraca już parametry połączenia
+### <a name="indexer-data-source-api-no-longer-returns-connection-strings"></a>Interfejs API źródła danych indeksatora nie zwraca już parametrów połączenia
 
-Z poziomu interfejsu API wersje 2019-05-06 i 2019-05-06-Preview lub nowszy, źródła danych, interfejs API nie zwraca już parametry połączenia w odpowiedzi żadnych operacji REST. W poprzednich wersjach interfejsu API dla źródła danych utworzone za pomocą wpisu, zwracany jest usługi Azure Search **201** następuje odpowiedzi OData, która zawiera parametry połączenia w postaci zwykłego tekstu.
+Od interfejsu API w wersji 2019-05-06 i 2019-05-06 — wersja zapoznawcza, interfejs API źródła danych nie zwraca już parametrów połączenia w odpowiedzi na jakąkolwiek operację REST. W poprzednich wersjach interfejsu API dla źródeł danych utworzonych za pomocą polecenia POST Azure Search zwrócić **201** , a następnie odpowiedzi OData, która zawierała ciąg połączenia w postaci zwykłego tekstu.
 
-### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>O nazwie rozpoznawania jednostek cognitive umiejętności jest już obsługiwany.
+### <a name="named-entity-recognition-cognitive-skill-is-now-discontinued"></a>Umiejętność rozpoznawania nazwanych jednostek jest teraz nieobsługiwana
 
-Jeśli wywołasz [nazwa jednostki rozpoznawania](cognitive-search-skill-named-entity-recognition.md) umiejętności w swoim kodzie, wywołanie zakończy się niepowodzeniem. Funkcja zastępczy jest [rozpoznawanie jednostek](cognitive-search-skill-entity-recognition.md). Można zastąpić odwołanie umiejętności żadne inne zmiany. Podpis interfejsu API jest takie same dla obu wersji. 
+Jeśli wywołasz w kodzie umiejętność [rozpoznawania jednostek nazw](cognitive-search-skill-named-entity-recognition.md) , wywołanie zakończy się niepowodzeniem. Funkcja wymiany jest [rozpoznawaniem jednostek](cognitive-search-skill-entity-recognition.md). Powinno być możliwe zamienienie odwołania do umiejętności bez żadnych innych zmian. Sygnatura interfejsu API jest taka sama dla obu wersji. 
 
 <a name="UpgradeSteps"></a>
 
-## <a name="steps-to-upgrade"></a>Kroki niezbędne do uaktualnienia
-Jeśli uaktualniasz z poprzedniej wersji ogólnie dostępnej wersji 2017-11-11 lub 2016-09-01, prawdopodobnie nie musisz dokonać zmian w kodzie, inny niż numer wersji. Tylko sytuacji, w których konieczne może być zmiana kodu są:
+## <a name="steps-to-upgrade"></a>Kroki do uaktualnienia
+W przypadku uaktualniania z wcześniejszej wersji systemu, 2017-11-11 lub 2016-09-01, prawdopodobnie nie trzeba wprowadzać żadnych zmian w kodzie, innym niż zmienić numer wersji. Jedyne sytuacje, w których może zajść potrzeba zmiany kodu, są następujące:
 
-* Twój kod nie powiedzie się, nierozpoznany właściwości są zwracane w odpowiedzi interfejsu API. Domyślnie aplikacja powinien ignorować właściwości, których nie rozumie.
+* Kod kończy się niepowodzeniem, gdy nierozpoznane właściwości są zwracane w odpowiedzi interfejsu API. Domyślnie aplikacja powinna ignorować właściwości, które nie są zrozumiałe.
 
-* Twój kod będzie się powtarzał żądań interfejsu API i próbuje ponownie wysłać je do nowej wersji interfejsu API. Na przykład, to może się zdarzyć, jeśli aplikacja będzie nadal występować, tokeny kontynuacji zwrócony z interfejsu API wyszukiwania (Aby uzyskać więcej informacji, poszukaj `@search.nextPageParameters` w [dokumentacja interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)).
+* Kod utrzymuje żądania interfejsu API i próbuje ponownie wysłać je do nowej wersji interfejsu API. Na przykład może się tak zdarzyć, jeśli aplikacja utrzymuje tokeny kontynuacji zwrócone przez interfejs API wyszukiwania (Aby uzyskać więcej informacji, `@search.nextPageParameters` poszukaj w [dokumentacji interfejsu API wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)).
 
-Jeśli jedno z tych sytuacji odnoszą się do Ciebie, następnie konieczne może być odpowiednio zmień swój kod. W przeciwnym razie żadne zmiany nie powinny być wymagane, jeśli nie chcesz rozpocząć korzystanie z [nowe funkcje](#WhatsNew) wersji 2019-05-06.
+Jeśli jedna z tych sytuacji dotyczy użytkownika, może być konieczne odpowiednie zmiany kodu. W przeciwnym razie zmiany nie powinny być konieczne, chyba że chcesz zacząć korzystać z [nowych funkcji](#WhatsNew) w wersji 2019-05-06.
 
-Uaktualniania z wersji interfejsu API w wersji zapoznawczej powyższych ma również zastosowanie, ale należy również pamiętać, że niektóre funkcje w wersji zapoznawczej nie są dostępne w wersji 2019-05-06:
+Jeśli uaktualniasz program z wersji zapoznawczej interfejsu API, powyższe ma również zastosowanie, ale trzeba również pamiętać, że niektóre funkcje w wersji zapoznawczej nie są dostępne w programie Version 2019-05-06:
 
-* [Zapytania "Więcej następująco"](search-more-like-this.md)
-* [Indeksowanie obiektów blob CSV](search-howto-index-csv-blobs.md)
-* [Obsługa interfejsu API usługi MongoDB dla indeksatorów usługi Cosmos DB](search-howto-index-cosmosdb.md)
+* ["Bardziej podobne zapytania"](search-more-like-this.md)
+* [Indeksowanie obiektów BLOB CSV](search-howto-index-csv-blobs.md)
+* [Obsługa interfejsu API MongoDB dla indeksatorów Cosmos DB](search-howto-index-cosmosdb.md)
 
-Jeśli Twój kod korzysta z tych funkcji, nie można uaktualnić do interfejsu API w wersji 2019-05-06 bez usuwania swojej użytkowania.
+Jeśli kod korzysta z tych funkcji, nie będzie można przeprowadzić uaktualnienia do interfejsu API w wersji 2019-05-06 bez usuwania ich użycia.
 
 > [!IMPORTANT]
-> Interfejsy API (wersja zapoznawcza) są przeznaczone do testowania i oceny, a nie powinny być używane w środowiskach produkcyjnych.
+> Interfejsy API w wersji zapoznawczej są przeznaczone do testowania i oceny i nie powinny być używane w środowiskach produkcyjnych.
 > 
 
-### <a name="upgrading-complex-types"></a>Uaktualnianie typy złożone
+### <a name="upgrading-complex-types"></a>Uaktualnianie typów złożonych
 
-Jeśli kod używa typów złożonych starszych wersji interfejsu API w wersji zapoznawczej 2017-11-11-Preview lub 2016-09-01-Preview, istnieją pewne ograniczenia nowe i zmienione funkcje w wersji 2019-05-06, z których należy wiedzieć:
+Jeśli kod korzysta z typów złożonych ze starszym interfejsem API wersji zapoznawczej 2017-11-11 — wersja zapoznawcza lub 2016-09-01 — wersja zapoznawcza, istnieją pewne nowe i zmienione limity w wersji 2019-05-06, z których należy pamiętać:
 
-+ Obniżeniu limity głębokość pól podrzędnych i liczby złożonych kolekcji na indeks. Jeśli utworzono indeksów, która przekracza te limity za pomocą wersji interfejsu api (wersja zapoznawcza), dowolne próba zaktualizuj lub utwórz je ponownie przy użyciu interfejsu API w wersji 2019-05-06 zakończy się niepowodzeniem. Dotyczy to Ciebie, należy ponownie zaprojektować schematu mieści się w granicach nowy i następnie odbudowanie indeksu.
++ Limity głębokości pól podrzędnych i liczby złożonych kolekcji na indeks zostały obniżone. Jeśli utworzono indeksy, które przekraczają te limity przy użyciu wersji zapoznawczej interfejsu API, każda próba zaktualizowania lub ponownego utworzenia ich przy użyciu interfejsu API w wersji 2019-05-06 zakończy się niepowodzeniem. Jeśli ma to zastosowanie, konieczne będzie ponowne zaprojektowanie schematu w celu dopasowania go do nowych limitów, a następnie odbudowanie indeksu.
 
-+ Brak nowego ograniczenia w wersji api-version 2019-05-06 liczby elementów złożonych kolekcji dla dokumentu. Indeksy są tworzone z dokumentami, która przekracza te limity za pomocą wersji interfejsu api w wersji zapoznawczej, wszelkie próby ponownego poindeksowania danych tych danych przy użyciu interfejsu api-version 2019-05-06 zakończy się niepowodzeniem. Dotyczy to Ciebie, należy zmniejszyć liczbę elementów złożonych kolekcji na dokumencie przed indeksowanie danych.
++ W wersji API-Version 2019-05-06 występuje nowy limit liczby elementów złożonych kolekcji na dokument. W przypadku utworzenia indeksów z dokumentami, które przekraczają te limity przy użyciu wersji zapoznawczej interfejsu API, wszelkie próby ponownego indeksowania danych przy użyciu interfejsu API w wersji 2019-05-06 będą kończyć się niepowodzeniem. Jeśli ma to zastosowanie, należy zmniejszyć liczbę złożonych elementów kolekcji dla dokumentu przed ponownym indeksem danych.
 
-Aby uzyskać więcej informacji, zobacz [limitów usług dla usługi Azure Search](search-limits-quotas-capacity.md).
+Aby uzyskać więcej informacji, zobacz [limity usługi dla Azure Search](search-limits-quotas-capacity.md).
 
-### <a name="how-to-upgrade-an-old-complex-type-structure"></a>Jak uaktualnić starej struktury typu złożonego
+### <a name="how-to-upgrade-an-old-complex-type-structure"></a>Jak uaktualnić starą strukturę typu złożonego
 
-Jeśli Twój kod używa typów złożonych z jednym starsze wersje interfejsu API (wersja zapoznawcza), być może korzystasz formatem definicji indeksu, który wygląda w następujący sposób:
+Jeśli kod korzysta z typów złożonych z jedną ze starszych wersji interfejsu API podglądu, może być używany format definicji indeksu, który wygląda następująco:
 
 ```json
 {
@@ -129,23 +129,23 @@ Jeśli Twój kod używa typów złożonych z jednym starsze wersje interfejsu AP
 }  
 ```
 
-Nowszy format drzewa Definiowanie pól indeksu została wprowadzona w wersji interfejsu API 2017-11-11-Preview. W nowym formacie każde pole złożonych ma kolekcji pól, w którym jego podrzędne pola są definiowane. W interfejsie API w wersji 2019-05-06 ten nowy format jest używany wyłącznie i podjęto próbę utworzenia lub zaktualizowania indeksu w starym formacie zakończy się niepowodzeniem. W przypadku indeksów utworzona za pomocą tego starszego formatu należy zaktualizować je na nowy format, zanim można było zarządzać nimi za pomocą interfejsu API w wersji 2019-05-06 przy użyciu interfejsu API w wersji 2017-11-11-Preview.
+W interfejsie API w wersji 2017-11-11-Preview wprowadzono nowszy format przypominający drzewo służący do definiowania pól indeksów. W nowym formacie każde pole złożone zawiera kolekcję pól, w której są zdefiniowane pola podrzędne. W interfejsie API w wersji 2019-05-06 ten nowy format jest używany wyłącznie i próba utworzenia lub zaktualizowania indeksu przy użyciu starego formatu zakończy się niepowodzeniem. Jeśli masz indeksy utworzone przy użyciu starego formatu, musisz użyć interfejsu API w wersji 2017-11-11-Preview, aby zaktualizować je do nowego formatu, zanim będzie można nimi zarządzać przy użyciu interfejsu API w wersji 2019-05-06.
 
-Następujące czynności, za pomocą interfejsu API w wersji 2017-11-11-Preview, można zaktualizować "płaską" indeksów do nowego formatu:
+Za pomocą interfejsu API w wersji 2017-11-11-Preview można zaktualizować indeksy "Flat" w nowym formacie:
 
-1. Wykonaj żądanie GET w celu pobrania indeksu. Jeśli jest już w nowym formacie, wszystko będzie gotowe.
+1. Wykonanie żądania GET w celu pobrania indeksu. Jeśli jest już w nowym formacie, wszystko jest gotowe.
 
-2. Wykonuje translację elementu indeksu z formatu "płaską" do nowego formatu. Musisz napisać kod dla tego, ponieważ w czasie pisania tego dokumentu jest dostępny żaden kod przykładowy.
+2. Przetłumacz indeks z formatu "Flat" na nowy format. Musisz napisać kod, ponieważ w momencie pisania nie ma dostępnego przykładowego kodu.
 
-3. Wykonaj żądanie PUT, aby zaktualizować indeks do nowego formatu. Upewnij się, że nie należy zmieniać wszelkie inne informacje szczegółowe dotyczące indeksu, takie jak możliwość wyszukiwania/filterability pola, ponieważ nie jest to dozwolone przez interfejs API aktualizacji indeksu.
+3. Wykonaj żądanie PUT, aby zaktualizować indeks do nowego formatu. Pamiętaj, aby nie zmieniać żadnych szczegółów indeksu, takich jak możliwości wyszukiwania/filtrowania pól, ponieważ nie jest to dozwolone przez interfejs API indeksu aktualizacji.
 
 > [!NOTE]
-> Nie jest możliwe Zarządzaj indeksami utworzone przy użyciu starego formatu "płaską" w witrynie Azure portal. Uaktualnij indeksów z reprezentacji "płaską" na reprezentację w postaci "drzewa" przy najbliższej sposobności.
+> Nie jest możliwe zarządzanie indeksami utworzonymi przy użyciu starego formatu "Flat" z Azure Portal. Uaktualnij indeksy z "płaskiej" reprezentacji do "drzewa" w najkrótszej wygodie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Przejrzyj Dokumentacja referencyjna interfejsu API REST usługi Azure Search. Jeśli napotkasz problemy, poproś nas o pomoc na [StackOverflow](https://stackoverflow.com/) lub [się z pomocą techniczną](https://azure.microsoft.com/support/community/?product=search).
+Zapoznaj się z dokumentacją interfejsu API REST usługi Azure Search. Jeśli wystąpią problemy, poproś nas o pomoc dotyczącą usługi [StackOverflow](https://stackoverflow.com/) lub [skontaktuj się z pomocą techniczną](https://azure.microsoft.com/support/community/?product=search).
 
 > [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API REST usługi wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/)
+> [Dokumentacja interfejsu API REST usługi Search](https://docs.microsoft.com/rest/api/searchservice/)
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: dc31abaadf3f39d31a4c1b04f9911b5ce1677916
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: e01bb13b904aaf8671512daa3ef3cbad182f01e3
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048563"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70161961"
 ---
 W tej sekcji opisano, jak utworzyć centrum IoT przy użyciu witryny [Azure Portal](https://portal.azure.com).
 
@@ -50,7 +50,7 @@ W tej sekcji opisano, jak utworzyć centrum IoT przy użyciu witryny [Azure Port
 
     - **Ustawienia zaawansowane —** **partycje urządzenia-chmura:**  >  ta właściwość dotyczy relacji między komunikatami urządzenie-chmura, a liczbą czytników jednocześnie odczytujących te komunikaty. Większość centrów potrzebuje tylko czterech partycji.
 
-1. Na potrzeby tego samouczka Zaakceptuj opcje domyślne, a następnie wybierz pozycję **Przegląd + Utwórz** , aby przejrzeć wybrane opcje. Zostanie wyświetlony ekran podobny do następującego.
+1. Na potrzeby tego artykułu Zaakceptuj opcje domyślne, a następnie wybierz pozycję **Przegląd + Utwórz** , aby przejrzeć wybrane opcje. Zostanie wyświetlony ekran podobny do następującego.
 
    ![Przejrzyj informacje dotyczące tworzenia nowego centrum](./media/iot-hub-include-create-hub/iot-hub-create-review-vs2019.png)
 
