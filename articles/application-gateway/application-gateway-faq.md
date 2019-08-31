@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: da8142ad035eec338a3c1ba1a23be7c2be470a04
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 3fa97c5738128907b0edad40cedf582e80c33443
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891721"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194472"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Często zadawane pytania dotyczące Application Gateway
 
@@ -277,7 +277,11 @@ Tak, jednostka SKU Application Gateway v2 obsługuje Key Vault. Aby uzyskać wi�
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>Jak mogę skonfigurować odbiorniki HTTPS dla witryn com i .NET? 
 
-W przypadku wielu routingu opartych na domenach (opartych na hostach) można utworzyć odbiorniki w wielu lokacjach, skonfigurować odbiorniki używające protokołu HTTPS jako protokołu i kojarzyć detektory z regułami routingu. Aby uzyskać więcej informacji, zobacz [hostowanie wielu witryn przy użyciu Application Gateway](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview). 
+W przypadku wielu routingu opartych na domenach (opartych na hostach) można utworzyć odbiorniki w wielu lokacjach, skonfigurować odbiorniki używające protokołu HTTPS jako protokołu i kojarzyć detektory z regułami routingu. Aby uzyskać więcej informacji, zobacz [hostowanie wielu witryn przy użyciu Application Gateway](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview).
+
+### <a name="can-i-use-special-characters-in-my-pfx-file-password"></a>Czy mogę używać znaków specjalnych w haśle pliku PFX?
+
+Nie, używaj tylko znaków alfanumerycznych w haśle pliku PFX.
 
 ## <a name="configuration---web-application-firewall-waf"></a>Konfiguracja — Zapora aplikacji sieci Web (WAF)
 

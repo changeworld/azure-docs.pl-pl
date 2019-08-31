@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57bc2ca38b5166cfba39fb20254e169ce016ea12
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 0a6b1782b9822877850f7c223dd80eed008ef706
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706310"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193195"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory często zadawane pytania dotyczące zarządzania urządzeniami
 
@@ -194,14 +194,14 @@ Usunięci lub wyłączni użytkownicy, którzy nie zalogują się wcześniej, ni
 
 ---
 
-### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>Pyt.: Dlaczego niektórzy użytkownicy nie otrzymują załączonych do usługi Azure AD postanowień dotyczących uwierzytelniania wieloskładnikowego?
+### <a name="q-why-dont-some-of-my-users-get-azure-multi-factor-authentication-prompts-on-azure-ad-joined-devices"></a>Pyt.: Dlaczego niektórzy użytkownicy nie Multi-Factor Authentication otrzymują załączonych do usługi Azure AD żadnych postanowień
 
-**Odp.:** Użytkownik może dołączyć lub zarejestrować urządzenie w usłudze Azure AD przy użyciu uwierzytelniania wieloskładnikowego. Następnie samo urządzenie będzie zaufanym drugim czynnikiem dla tego użytkownika. Za każdym razem, gdy ten sam użytkownik loguje się na urządzeniu i uzyskuje dostęp do aplikacji, usługa Azure AD traktuje urządzenie jako drugi czynnik. Dzięki temu użytkownik może bezproblemowo uzyskiwać dostęp do aplikacji bez dodatkowych pytań dotyczących uwierzytelniania wieloskładnikowego. 
+**Odp.:** Użytkownik może dołączyć lub zarejestrować urządzenie w usłudze Azure AD przy użyciu Multi-Factor Authentication. Następnie samo urządzenie będzie zaufanym drugim czynnikiem dla tego użytkownika. Za każdym razem, gdy ten sam użytkownik loguje się na urządzeniu i uzyskuje dostęp do aplikacji, usługa Azure AD traktuje urządzenie jako drugi czynnik. Dzięki temu użytkownik może bezproblemowo uzyskiwać dostęp do aplikacji bez dodatkowych Multi-Factor Authenticationych. 
 
 Takie zachowanie:
 
 - Ma zastosowanie do przyłączonych do usługi Azure AD i zarejestrowanych urządzeń usługi Azure AD — ale nie dla urządzeń przyłączonych do hybrydowej usługi Azure AD.
-- Nie dotyczy żadnych innych użytkowników, którzy logują się na tym urządzeniu. Wszyscy inni użytkownicy, którzy uzyskują dostęp do tego urządzenia, otrzymują wyzwanie usługi uwierzytelniania wieloskładnikowego. Następnie mogą uzyskiwać dostęp do aplikacji, które wymagają uwierzytelniania wieloskładnikowego.
+- Nie dotyczy żadnych innych użytkowników, którzy logują się na tym urządzeniu. Wszyscy inni użytkownicy, którzy uzyskują dostęp do tego urządzenia, otrzymają wyzwanie Multi-Factor Authentication. Następnie mogą uzyskiwać dostęp do aplikacji, które wymagają Multi-Factor Authentication.
 
 ---
 
@@ -281,12 +281,19 @@ Dołączanie hybrydowej usługi Azure AD ma pierwszeństwo przed zarejestrowanym
 
 ## <a name="azure-ad-register-faq"></a>Rejestracja w usłudze Azure AD — często zadawane pytania
 
-### <a name="q-how-do-i-remove-an-azure-ad-registered-device-locally-on-the-device"></a>Pyt.: Jak mogę usunąć zarejestrowane urządzenie usługi Azure AD lokalnie na urządzeniu?
+### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>Pyt.: Jak mogę usunąć zarejestrowanego stanu usługi Azure AD na potrzeby lokalnego urządzenia?
 
 **Odp.:** 
 - W przypadku zarejestrowanych urządzeń z systemem Windows 10 w usłudze Azure AD przejdź do pozycji **Ustawienia** > **konta** > **dostęp do**zasobów służbowych. Wybierz swoje konto i wybierzpozycję Rozłącz. Rejestracja urządzenia dotyczy profilu użytkownika w systemie Windows 10.
 - W przypadku systemów iOS i Android można użyć Microsoft Authenticator**rejestracji urządzeń** **ustawień** > aplikacji i wybrać pozycję **Wyrejestruj urządzenie**.
 - W przypadku usługi macOS można użyć aplikacji Portal firmy Microsoft Intune, aby wyrejestrować urządzenie z zarządzania i usunąć wszelkie rejestracje. 
+
+---
+### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>Pyt.: Jak zablokować użytkownikom możliwość dodawania dodatkowych kont służbowych (zarejestrowanych w usłudze Azure AD) na urządzeniach z systemem Windows 10 firmowych?
+
+**Odp.:** Włącz następujący rejestr, aby zablokować użytkownikom możliwość dodawania dodatkowych kont służbowych do domeny firmowej, przyłączonej do usługi Azure AD lub urządzeń z systemem Windows 10 przyłączonych do hybrydowej usługi Azure AD. Te zasady mogą również służyć do blokowania nieumyślnego uzyskiwania usługi Azure AD zarejestrowane przy użyciu tego samego konta użytkownika przez maszyny przyłączone do domeny. 
+
+`HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001`
 
 ---
 ### <a name="q-can-i-register-android-or-ios-byod-devices"></a>Pyt.: Czy można rejestrować urządzenia z systemem Android lub iOS BYOD?

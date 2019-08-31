@@ -1,18 +1,18 @@
 ---
 title: Jak zarządzać komercyjnym kontem witryny Marketplace w centrum partnerskim
 description: Dowiedz się, jak zarządzać komercyjnym kontem witryny Marketplace w centrum partnerskim.
-author: mattwojo
+author: ChJenk
 manager: evansma
 ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: f0557f21e791dd22df16451003d5efcfc72c56b4
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.date: 08/30/2019
+ms.openlocfilehash: 99f981698daf12bf7d493159fc7fd08a98a28104
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164732"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194266"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak zarządzać kontem komercyjnej witryny Marketplace w centrum partnerskim 
 
@@ -305,9 +305,15 @@ Jeśli aplikacja usługi Azure AD odczytuje i zapisuje dane w Microsoft Azure AD
 Użytkownikom firmy można przypisać następujące role i uprawnienia do komercyjnego programu Marketplace w centrum partnerskim. 
 
 |**Rola**|**Uprawnienia**|
-|----------------------------------|:---------------------------------|
-
-| Menedżer | • może uzyskać dostęp do wszystkich funkcji konto Microsoft z wyjątkiem ustawień podatków i wypłaty |      | • Może zarządzać użytkownikami, rolami i kontami służbowymi (dzierżawcami) | | Deweloperzy | • mogą zarządzać ofertami i publikować je |      | • Może wyświetlać raporty wydawcy | | Administrator globalny | • nie ma zastosowania do komercyjnej witryny Marketplace | | Współautor firmy | • nie dotyczy komercyjnej witryny Marketplace | | Współautor finansowe | • nie dotyczy komercyjnej witryny Marketplace | | Rynek rynkowy | • nie ma zastosowania do komercyjnej witryny Marketplace |
+|----------------------------------|---------------------------------|
+|maszyny wirtualnej|-Może uzyskać dostęp do wszystkich funkcji konto Microsoft z wyjątkiem ustawień podatków i wypłat|
+|      |— Może zarządzać użytkownikami, rolami i kontami służbowymi (dzierżawcami)|
+|Deweloper|— Umożliwia zarządzanie ofertami i ich publikowanie|
+|      |— Może wyświetlać raporty wydawcy|
+|Administrator globalny|— Nie dotyczy komercyjnej witryny Marketplace|
+|Współautor firmy|— Nie dotyczy komercyjnej witryny Marketplace|
+|Współautor finansowe|— Nie dotyczy komercyjnej witryny Marketplace|
+|Wiodący|— Nie dotyczy komercyjnej witryny Marketplace|
 
 Aby uzyskać więcej informacji na temat zarządzania rolami i uprawnieniami w innych obszarach Centrum partnerskiego, takich jak Azure Active Directory (AD), dostawca rozwiązań w chmurze (CSP), dostawca panelu sterowania (CPV), użytkownicy-Goście lub Microsoft Partner Network (MPN), zobacz [Przypisywanie ról użytkowników i uprawnienia w centrum partnerskim](https://docs.microsoft.com/partner-center/permissions-overview).
 

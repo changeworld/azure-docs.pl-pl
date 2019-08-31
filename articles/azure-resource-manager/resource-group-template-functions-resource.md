@@ -3,15 +3,15 @@ title: Funkcje szablonu usługi Resource Manager platformy Azure — zasoby | Do
 description: Opisuje funkcje, aby użyć w szablonie usługi Azure Resource Manager można pobrać wartości dotyczące zasobów.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: eddd99be9d4a30e3e71c806a3f98c6be6800e8fb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 85462e78b3660546bad80ef69f332522bf015549
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095749"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194816"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla szablonów usługi Azure Resource Manager
 
@@ -429,7 +429,7 @@ W przypadku konstruowania w pełni kwalifikowanego odwołania do zasobu kolejno�
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-resource-name}]**
 
-Na przykład:
+Przykład:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt`jest niepoprawny `Microsoft.Compute/virtualMachines/extensions/myVM/myExt`
 

@@ -1,34 +1,29 @@
 ---
-title: Machine narzędzia do analizy nauki i dane — Azure | Dokumentacja firmy Microsoft
+title: Uczenie maszynowe & narzędzia do nauki o danych
+titleSuffix: Azure Data Science Virtual Machine
 description: Więcej informacji na temat narzędzi i platform wstępnie zainstalowanych na maszynie wirtualnej do nauki o danych uczenia maszynowego.
 keywords: data science tools, data science virtual machine, tools for data science, linux data science
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: 3b05d076a61593e8c34ce642f2fe2fd137e07109
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d823eb615f983190ee6974ee3012f069309ca753
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565249"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195639"
 ---
-# <a name="machine-learning-and-data-science-tools"></a>Narzędzia do analizy nauki i dane maszyny
+# <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Uczenie maszynowe i narzędzia do nauki o danych w usłudze Azure Data Learning Virtual Machines
 Maszyn wirtualnych do nauki o danych zawiera bogaty zestaw narzędzi i biblioteki dla usługi machine learning (ML) dostępna w popularnych języków, takich jak Python, R i Julia. 
 
 Poniżej przedstawiono niektóre narzędzia ML i bibliotek na maszynach wirtualnych do nauki o danych. 
 
-## <a name="azure-machine-learninghttpsdocsmicrosoftcomazuremachine-learningserviceoverview-what-is-azure-ml-sdk"></a>[Usługi Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml) zestawu SDK
+## <a name="azure-machine-learning-sdk-for-python"></a>Zestaw SDK Azure Machine Learning dla języka Python
+Zobacz pełne informacje dotyczące [zestawu SDK Azure Machine Learning dla języka Python](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml).
 |    |           |
 | ------------- | ------------- |
 | Co to jest?   |   Usługa Azure Machine Learning to usługa w chmurze, który służy do opracowywania i wdrażania modeli uczenia Maszynowego. Możesz śledzić swoje modele, jak tworzenie, szkolenie, skalowanie i zarządzać nimi za pomocą zestawu SDK języka Python. Wdrażanie modeli jako kontenery i uruchamiać je w chmurze, lokalnie lub w usłudze Azure IoT Edge.   |

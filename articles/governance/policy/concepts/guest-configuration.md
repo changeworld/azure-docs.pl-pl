@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b6c9e50334a25b505655a49a02cd98165d04740b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 269d13e0b64d2da7a21316b16c88acde46ba1722
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164947"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194646"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Omówienie usługi Azure Policy gościa konfiguracji
 
@@ -130,6 +130,11 @@ Wszystkie wbudowane zasady konfiguracji gościa znajdują się w inicjatywy do g
 ### <a name="multiple-assignments"></a>Wiele przypisań
 
 Zasady konfiguracji gościa obsługują obecnie tylko jednokrotne przypisanie tego samego przypisania gościa na komputerze, nawet jeśli przypisanie zasad używa różnych parametrów.
+
+## <a name="built-in-resource-modules"></a>Wbudowane moduły zasobów
+
+Po zainstalowaniu rozszerzenia konfiguracji gościa moduł programu PowerShell "GuestConfiguration" jest dołączony do najnowszej wersji modułów zasobów DSC. Ten moduł można pobrać z Galeria programu PowerShell przy użyciu linku "Pobieranie ręczne" na stronie modułu [GuestConfiguration/](https://www.powershellgallery.com/packages/GuestConfiguration/).
+Dla formatu pliku ". nupkg" można zmienić nazwę na ". zip", aby zdekompresować i przejrzeć.
 
 ## <a name="client-log-files"></a>Pliki dziennika klienta
 

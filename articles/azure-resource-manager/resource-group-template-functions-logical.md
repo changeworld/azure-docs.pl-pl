@@ -1,24 +1,24 @@
 ---
-title: Usługa Azure Resource Manager funkcje szablonu - logiczne | Dokumentacja firmy Microsoft
-description: Opisuje funkcje do używania szablonu usługi Azure Resource Manager w celu określenia wartości logiczne.
+title: Funkcje szablonu Azure Resource Manager — logiczne | Microsoft Docs
+description: Opisuje funkcje, które mają być używane w szablonie Azure Resource Manager, aby określić wartości logiczne.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 04/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 2487cf928685423e4b60bb2923fc7e348eaff0c3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ea91798a1c0ca0aad729128ce4694a85165f3c3b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447975"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194791"
 ---
-# <a name="logical-functions-for-azure-resource-manager-templates"></a>Funkcje logiczne dla szablonów usługi Azure Resource Manager
+# <a name="logical-functions-for-azure-resource-manager-templates"></a>Funkcje logiczne dla szablonów Azure Resource Manager
 
-Resource Manager udostępnia kilka funkcji składania porównania w szablonach.
+Menedżer zasobów udostępnia kilka funkcji do dokonywania porównań w szablonach.
 
-* [i](#and)
-* [wartość logiczna](#bool)
+* [lub](#and)
+* [logiczna](#bool)
 * [if](#if)
 * [not](#not)
 * [lub](#or)
@@ -27,23 +27,23 @@ Resource Manager udostępnia kilka funkcji składania porównania w szablonach.
 
 `and(arg1, arg2, ...)`
 
-Sprawdza, czy wszystkie wartości parametrów są spełnione.
+Sprawdza, czy wszystkie wartości parametrów mają wartość true.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |boolean |Pierwsza wartość, aby sprawdzić, czy ma wartość true. |
-| argument2 |Tak |boolean |Druga wartość, aby sprawdzić, czy ma wartość true. |
-| dodatkowe argumenty |Nie |boolean |Dodatkowe argumenty, aby sprawdzić, czy są spełnione. |
+| arg1 |Tak |boolean |Pierwsza wartość, aby sprawdzić, czy wartość jest równa true. |
+| arg2 |Tak |boolean |Druga wartość do sprawdzenia, czy ma wartość true. |
+| dodatkowe argumenty |Nie |boolean |Dodatkowe argumenty do sprawdzenia, czy są spełnione. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Zwraca **True** Jeśli wszystkie wartości są true; w przeciwnym razie **False**.
+Zwraca **wartość true** , jeśli wszystkie wartości mają wartość true; w przeciwnym razie **false**.
 
 ### <a name="examples"></a>Przykłady
 
-Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) przedstawia sposób użycia funkcji logicznych.
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) pokazuje, jak używać funkcji logicznych.
 
 ```json
 {
@@ -67,12 +67,12 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu są:
+Dane wyjściowe z poprzedniego przykładu to:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name | Typ | Value |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
-| orExampleOutput | Bool | True |
+| orExampleOutput | Bool | Prawda |
 | notExampleOutput | Bool | False |
 
 ## <a name="bool"></a>bool
@@ -88,11 +88,11 @@ Konwertuje parametr na wartość logiczną.
 | arg1 |Tak |ciąg lub int |Wartość do przekonwertowania na wartość logiczną. |
 
 ### <a name="return-value"></a>Wartość zwracana
-Wartość logiczna przekonwertowana wartości.
+Wartość logiczna przekonwertowanej wartości.
 
 ### <a name="examples"></a>Przykłady
 
-Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json) pokazuje, jak za pomocą usług bool string lub integer.
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/bool.json) pokazuje, jak używać bool z ciągiem lub liczbą całkowitą.
 
 ```json
 {
@@ -122,38 +122,38 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
-| trueString | Bool | True |
+| trueString | Bool | Prawda |
 | falseString | Bool | False |
-| trueInt | Bool | True |
+| trueInt | Bool | Prawda |
 | falseInt | Bool | False |
 
 ## <a name="if"></a>if
 
 `if(condition, trueValue, falseValue)`
 
-Zwraca wartość, na podstawie warunku jest wartość PRAWDA lub FAŁSZ.
+Zwraca wartość na podstawie tego, czy warunek ma wartość true lub false.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| condition |Tak |boolean |Wartość, aby sprawdzić, czy jest wartość PRAWDA lub FAŁSZ. |
-| trueValue |Tak | ciąg, int, obiekt lub tablica |Wartość zwracana, gdy warunek jest prawdziwy. |
-| falseValue |Tak | ciąg, int, obiekt lub tablica |Wartość zwracana, gdy warunek jest fałszywy. |
+| condition |Tak |boolean |Wartość, aby sprawdzić, czy jest to wartość true lub false. |
+| trueValue |Tak | ciąg, int, Object lub Array |Wartość, która ma zostać zwrócona, gdy warunek ma wartość true. |
+| falseValue |Tak | ciąg, int, Object lub Array |Wartość, która ma zostać zwrócona, gdy warunek ma wartość false. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Zwraca drugi parametr, gdy pierwszy parametr jest **True**; w przeciwnym razie zwraca wartość trzeciego parametru.
+Zwraca drugi parametr, gdy pierwszy parametr ma **wartość true**; w przeciwnym razie zwraca trzeci parametr.
 
 ### <a name="remarks"></a>Uwagi
 
-Gdy warunek jest **True**, jest oceniana wartość true. Gdy warunek jest **False**, jest oceniana wartość false. Za pomocą **Jeśli** funkcji może zawierać wyrażeń, które obowiązują tylko warunkowo. Na przykład możesz odwoływać się z zasobem, który istnieje w ramach jednego warunku, ale nie w ramach innych warunków. W poniższej sekcji przedstawiono przykładowy warunkowo obliczenia wyrażenia.
+Gdy warunek ma **wartość true**, Szacowana jest tylko wartość true. Gdy warunek ma **wartość false**, Szacowana jest tylko wartość false. Za pomocą funkcji **if** można uwzględnić wyrażenia, które są warunkowo prawidłowe. Na przykład można odwołać się do zasobu, który istnieje w ramach jednego warunku, ale nie pod drugim warunkiem. Przykład warunkowego szacowania wyrażeń przedstawiono w poniższej sekcji.
 
 ### <a name="examples"></a>Przykłady
 
-Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) ilustruje sposób używania `if` funkcji.
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) pokazuje, `if` jak używać funkcji.
 
 ```json
 {
@@ -178,15 +178,15 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu są:
+Dane wyjściowe z poprzedniego przykładu to:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name | Typ | Value |
 | ---- | ---- | ----- |
 | yesOutput | String | tak |
-| noOutput | String | nie |
-| objectOutput | Object | { "test": "value1" } |
+| NoOutput | String | nie |
+| objectOutput | Object | {"test": "wartość1"} |
 
-Następujące [przykładowy szablon](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) pokazuje, jak użyć tej funkcji za pomocą wyrażeń, które obowiązują tylko warunkowo.
+Poniższy [przykładowy szablon](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/conditionWithReference.json) pokazuje, jak używać tej funkcji z wyrażeniami, które są warunkowo prawidłowe.
 
 ```json
 {
@@ -238,21 +238,21 @@ Następujące [przykładowy szablon](https://github.com/krnese/AzureDeploy/blob/
 
 `not(arg1)`
 
-Konwertuje wartość przeciwną wartość logiczną.
+Konwertuje wartość logiczną na wartość odwrotną.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |boolean |Wartość do przekonwertowania. |
+| arg1 |Tak |boolean |Wartość do przekonwertowania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Zwraca **True** po parametrze **False**. Zwraca **False** po parametrze **True**.
+Zwraca **wartość true** , jeśli parametr ma **wartość false**. Zwraca **wartość false** , jeśli parametr ma **wartość true**.
 
 ### <a name="examples"></a>Przykłady
 
-Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) przedstawia sposób użycia funkcji logicznych.
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) pokazuje, jak używać funkcji logicznych.
 
 ```json
 {
@@ -276,15 +276,15 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu są:
+Dane wyjściowe z poprzedniego przykładu to:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name | Typ | Value |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
-| orExampleOutput | Bool | True |
+| orExampleOutput | Bool | Prawda |
 | notExampleOutput | Bool | False |
 
-Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) używa **nie** z [jest równa](resource-group-template-functions-comparison.md#equals).
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) używa **nie** z [równą](resource-group-template-functions-comparison.md#equals).
 
 ```json
 {
@@ -300,33 +300,33 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
     }
 ```
 
-Dane wyjściowe z poprzedniego przykładu są:
+Dane wyjściowe z poprzedniego przykładu to:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name | Typ | Value |
 | ---- | ---- | ----- |
-| checkNotEquals | Bool | True |
+| checkNotEquals | Bool | Prawda |
 
 ## <a name="or"></a>lub
 
 `or(arg1, arg2, ...)`
 
-Sprawdza, czy wszystkie wartości parametru to true.
+Sprawdza, czy parametr ma wartość true.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |boolean |Pierwsza wartość, aby sprawdzić, czy ma wartość true. |
-| argument2 |Yes |boolean |Druga wartość, aby sprawdzić, czy ma wartość true. |
-| dodatkowe argumenty |Nie |boolean |Dodatkowe argumenty, aby sprawdzić, czy są spełnione. |
+| arg1 |Tak |boolean |Pierwsza wartość, aby sprawdzić, czy wartość jest równa true. |
+| arg2 |Tak |boolean |Druga wartość do sprawdzenia, czy ma wartość true. |
+| dodatkowe argumenty |Nie |boolean |Dodatkowe argumenty do sprawdzenia, czy są spełnione. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Zwraca **True** Jeśli dowolna wartość PRAWDA; w przeciwnym razie **False**.
+Zwraca **wartość true** , jeśli dowolna wartość jest równa true; w przeciwnym razie **false**.
 
 ### <a name="examples"></a>Przykłady
 
-Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) przedstawia sposób użycia funkcji logicznych.
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/andornot.json) pokazuje, jak używać funkcji logicznych.
 
 ```json
 {
@@ -350,15 +350,15 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 }
 ```
 
-Dane wyjściowe z poprzedniego przykładu są:
+Dane wyjściowe z poprzedniego przykładu to:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name | Typ | Value |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
-| orExampleOutput | Bool | True |
+| orExampleOutput | Bool | Prawda |
 | notExampleOutput | Bool | False |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby uzyskać opis sekcje szablonu usługi Azure Resource Manager, zobacz [tworzenia usługi Azure Resource Manager](resource-group-authoring-templates.md).
 * Aby scalić wiele szablonów, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).

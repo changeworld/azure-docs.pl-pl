@@ -1,103 +1,103 @@
 ---
-title: Aktualizowanie istniejącej oferty komercyjnej witryny Marketplace
-description: Jak uaktualniać istniejących komercyjnych oferty w portalu Marketplace, w tym edytowanie, usuwanie wersję roboczą, anulowanie żądanie opublikowania, Zatrzymaj sprzedaży oferty lub planu i synchronizowanie prywatnych grup odbiorców.
-author: mattwojo
+title: Zaktualizuj istniejącą ofertę komercyjnej witryny Marketplace
+description: Jak wprowadzać aktualizacje do istniejącej komercyjnej oferty portalu Marketplace, w tym edytowania, usuwania wersji roboczej, anulowania żądania opublikowania, zaniechania sprzedaży oferty lub planu oraz zsynchronizowania prywatnych odbiorców.
+author: ChJenk
 manager: evansma
-ms.author: mattwoj
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: f591df0fe93336da09e9c441292c97be09f25a2e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 9cefdc9354560ac5b7f3789cde2408a4c255c186
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442093"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191762"
 ---
-# <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Aktualizowanie istniejącej oferty w witrynie Marketplace komercyjnych
+# <a name="update-an-existing-offer-in-the-commercial-marketplace"></a>Aktualizowanie istniejącej oferty w komercyjnej witrynie Marketplace
 
-Możesz wyświetlić swoje istniejące oferty na **Przegląd** karcie [portal Marketplace komercyjnych](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) Centrum partnerskiego.
+Istniejące oferty można wyświetlić na karcie **Przegląd** w [portalu komercyjnej witryny Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/offers) w centrum partnerskim.
 
-Aby zaktualizować istniejące oferty, który działa aktualnie w portalu marketplace: 
+Aby zaktualizować istniejącą ofertę, która jest obecnie aktywna w portalu Marketplace: 
 
-1. Wybierz nazwę oferty, którą chcesz zaktualizować. Stan oferty, może być dostępna jako **na żywo**, **publikowanie**, **projekt**, **uwagę potrzebne**, lub **nieznajdującej się sprzedawanych w witrynie marketplace** (jeśli wcześniej wybrano zatrzymać sprzedaży oferty). Po wybraniu **oferują Przegląd** tę ofertę zostanie otwarta strona.
-2. Wybierz **aktualizacji** z karty podglądu lub element menu w lewym obszarze nawigacji dla danego obszaru, który chcesz zaktualizować. Możesz chcieć zaktualizować **oferują instalacji**, **właściwości**, **oferuje listę**, **(wersja zapoznawcza)** , **konfiguracji technicznej** , **Zaplanować Przegląd**, lub **przetestuj**. 
-3. Wprowadź zmiany, a następnie wybierz pozycję **Zapisz**. Powtórz ten proces, dopóki wszystkie zmiany zostaną zakończone.
+1. Wybierz nazwę oferty, którą chcesz zaktualizować. Stan oferty może być wymieniony jako **aktywny**, **publikowany w toku**, **wersja robocza**, **konieczna Uwaga**lub **nie jest sprzedawana w portalu Marketplace** (jeśli wcześniej wybrano, aby zrezygnować z sprzedaży oferty). Po wybraniu zostanie otwarta strona **przeglądu oferty** dla tej oferty.
+2. Wybierz pozycję **Aktualizuj** z karty Przegląd lub element menu w lewym okienku nawigacji, dla obszaru, który chcesz zaktualizować. Możesz chcieć zaktualizować **konfigurację oferty**, **Właściwości**, **listę oferty**, **Podgląd**, **konfigurację techniczną**, **Przegląd planu**lub **dysk testowy**. 
+3. Wprowadź zmiany, a następnie wybierz pozycję **Zapisz**. Powtarzaj ten proces, dopóki nie zostaną ukończone wszystkie zmiany.
 
-## <a name="review-and-publish-an-updated-offer"></a>Przejrzyj i opublikować zaktualizowaną ofertę
+## <a name="review-and-publish-an-updated-offer"></a>Przejrzyj i Opublikuj zaktualizowaną ofertę
 
-Gdy wszystko będzie gotowe opublikować zaktualizowaną ofertę, wybierz pozycję **Publikuj** z dowolnej strony. **Przeglądu i publikowanie** zostanie otwarta strona. Na tej stronie możesz wykonywać następujące czynności:
+Gdy wszystko będzie gotowe do opublikowania zaktualizowanej oferty, wybierz pozycję **Publikuj** z dowolnej strony. Zostanie otwarta strona **przeglądanie i publikowanie** . Na tej stronie można:
 
 
-- Wyświetlany jest stan ukończenia sekcji, zaktualizowano oferty: 
-    - **Nieopublikowane zmiany**: Sekcja została zaktualizowana i zostanie zakończone. Podano wszystkich wymaganych danych i nie wystąpiły błędy wprowadzony w aktualizacji.
-    - **Niekompletne**: Aktualizacje sekcji wprowadzone błędów, które trzeba naprawić lub wymaga więcej informacji, należy podać.
-- Podaj dodatkowe informacje, aby zespół testowy certyfikacji, aby upewnić się, że testowanie płynnie przechodzi.
-- Prześlij zaktualizowany oferty do opublikowania, wybierając **przesyłania**.  Możemy do Ciebie wiadomość e-mail po udostępnieniu przeglądu i akceptacji oferty zaktualizowaną wersję zapoznawczą.
+- Zobacz stan ukończenia dla sekcji zaktualizowanej oferty: 
+    - **Nieopublikowane zmiany**: Sekcja została zaktualizowana i została ukończona. Wszystkie wymagane dane zostały dostarczone, a aktualizacje nie zostały wprowadzone.
+    - **Niekompletne**: Aktualizacje wprowadzone w sekcji wprowadziły błędy, które muszą zostać naprawione lub wymagają podania więcej informacji.
+- Podaj dodatkowe informacje dla zespołu testowania certyfikacji, aby upewnić się, że testowanie przebiega bezproblemowo.
+- Prześlij zaktualizowaną ofertę opublikowania, wybierając pozycję **Prześlij**.  Wyślemy wiadomość e-mail, gdy wersja zapoznawcza zaktualizowanej oferty będzie dostępna do przeglądu i wylogowania.
 
-**WAŻNE**: Oferta w wersji zapoznawczej, należy przejrzeć, gdy będzie dostępny i wybierz pozycję **gotowej do pracy** opublikować zaktualizowaną ofertę zamierzonych odbiorców (publicznym lub prywatnym).
+**WAŻNE**: Zapoznaj się z podglądem oferty, gdy będzie ona dostępna, a następnie wybierz pozycję **Przejdź na żywo** , aby opublikować zaktualizowaną ofertę dla wybranych odbiorców (publicznych lub prywatnych).
 
-## <a name="update-a-plan-within-an-existing-offer"></a>Zaktualizuj plan w ramach istniejącej oferty
+## <a name="update-a-plan-within-an-existing-offer"></a>Aktualizowanie planu w ramach istniejącej oferty
 
-Aby zmienić plan w ramach istniejącej oferty, które zostały już opublikowane:
+Aby wprowadzić zmiany w planie w ramach istniejącej oferty, która została już opublikowana:
 
-- Za pomocą **oferują Przegląd** otwarte istniejące oferty strony, wybierz plan, który chcesz zmienić. Jeśli plan nie jest dostępny z **omówienie planu** listy wybierz **Zobacz wszystkie plany**.
-- Użytkownik może wybrać plan **nazwa**, **model cen**, lub **dostępności**. *Obecnie plany są dostępne tylko w języku angielskim (Stany Zjednoczone)* .
-- Wybierz **Zapisz** po wprowadzeniu dowolnych zmian niezbędnych do planu nazwę, opis, ceny lub dostępności odbiorców. 
-- Wybierz **Publikuj** Jeśli wszystko jest gotowe do opublikowania aktualizacji. **[Przeglądu i publikowanie](#review-and-publish-an-updated-offer)** strony będą otwierane i zapewnienia stan ukończenia aktualizacji. 
+- Na stronie **Przegląd oferty** otwartej dla istniejącej oferty wybierz plan, który chcesz zmienić. Jeśli plan nie jest dostępny z listy **Przegląd planu** , wybierz pozycję **Zobacz wszystkie plany**.
+- Możesz wybrać opcję **Nazwa**planu, **model cen**lub **dostępność**. *Obecnie plany są dostępne tylko w języku angielskim (Stany Zjednoczone)* .
+- Wybierz pozycję **Zapisz** po wprowadzeniu wszelkich niezbędnych zmian w polu Nazwa, opis, Cennik lub dostępność odbiorcy. 
+- Wybierz pozycję **Opublikuj** , gdy wszystko będzie gotowe do opublikowania aktualizacji. Strona **[Przegląd i publikacja](#review-and-publish-an-updated-offer)** zostanie otwarta i będzie mieć stan ukończenia dla aktualizacji. 
 
-## <a name="delete-a-draft-offer"></a>Usuń ofertę opartą na wersji roboczej
+## <a name="delete-a-draft-offer"></a>Usuwanie oferty wersji roboczej
 
-Możesz usunąć ofertę projekt (taki, który nie został opublikowany), wybierając **Usuń wersję roboczą** z **oferują Przegląd** strony. Ta opcja nie będzie dostępne, jeśli wcześniej zostały opublikowane oferty.
+Możesz usunąć ofertę roboczą (nieopublikowaną), wybierając pozycję **Usuń wersję roboczą** z strony **Przegląd oferty** . Ta opcja nie będzie dostępna dla Ciebie, jeśli oferta została wcześniej opublikowana.
 
-Po upewnieniu się, czy chcesz usunąć oferty wersję roboczą, oferty nie będą już widoczne i dostępne w Centrum partnerskim i **oferuje wszystkie** zostanie otwarta strona.
+Po upewnieniu się, że chcesz usunąć wersję roboczą oferty, oferta nie będzie już widoczna ani dostępna w centrum partnerskim, a zostanie otwarta strona **wszystkie oferty** .
 
-## <a name="delete-a-draft-plan"></a>Usuwanie planu projektu
+## <a name="delete-a-draft-plan"></a>Usuń plan wersji roboczej
 
-Aby usunąć plan, który nie został opublikowany, wybierz **Usuń wersję roboczą** z **omówienie planu** strony. Ta opcja nie będzie dostępne, jeśli wcześniej zostały opublikowane oferty.
+Aby usunąć plan, który nie został opublikowany, wybierz pozycję **Usuń wersję roboczą** z strony **Przegląd planu** . Ta opcja będzie niedostępna, jeśli oferta została wcześniej opublikowana.
 
-Po upewnieniu się, że chcesz usunąć plan projektu, plan nie będzie widoczny i dostępny w Centrum partnerskim.
+Po upewnieniu się, że chcesz usunąć wersję roboczą planu, plan nie będzie już widoczny ani dostępny w centrum partnerskim.
 
 ## <a name="cancel-publishing"></a>Anuluj publikowanie
 
-Aby anulować oferty z **publikowanie** stanu:
+Aby anulować ofertę ze stanem **publikowania w toku** :
 
-- Wybierz nazwę oferty, aby otworzyć **oferują Przegląd** strony. 
-- Wybierz **Anuluj publikowanie** w prawym górnym rogu strony.
-- Upewnij się, czy chcesz zatrzymać oferty publikacji. 
+- Wybierz nazwę oferty, aby otworzyć stronę **przeglądu oferty** . 
+- Wybierz pozycję **Anuluj publikowanie** w prawym górnym rogu strony.
+- Potwierdź, że chcesz zatrzymać publikowanie oferty. 
 
-Jeśli chcesz opublikować ofertę w późniejszym czasie, należy ponownie uruchomić proces publikowania.
+Jeśli chcesz opublikować ofertę w późniejszym czasie, musisz rozpocząć proces publikowania w trybie.
 
 > [!NOTE]
-> Można zatrzymać oferty publikacji tylko wtedy, gdy jeszcze nie wykazała postępów do podpisywania wydawcy kroku oferty. Po wybraniu **emisji na żywo** nie będziesz mieć opcję anulowania już publikowania.
+> Możesz zatrzymać ofertę od opublikowania tylko wtedy, gdy oferta jeszcze nie postępuje w kroku wylogowania wydawcy. Po wybraniu przycisku **Przejdź na żywo** nie będzie dostępna opcja anulowania publikowania.
 
-## <a name="stop-selling-an-offer-or-plan"></a>Zatrzymaj sprzedaży oferty lub planu
+## <a name="stop-selling-an-offer-or-plan"></a>Zatrzymaj sprzedawanie oferty lub planu
 
-Aby zatrzymać sprzedaży oferty po użytkownik zostały już opublikowane, wybierz **zatrzymać sprzedaży** z **oferują Przegląd** strony. Aby zatrzymać sprzedaży planu, wybierz **zatrzymać sprzedaży** z **omówienie planu** strony. (Opcja zakończona sprzedaż planu jest dostępna tylko jeśli masz więcej niż jeden plan w ramach oferty. Można zatrzymać sprzedaży jednego planu bez wywierania wpływu na innych planów w ramach oferty.)
+Aby zrezygnować z sprzedaży oferty po jej opublikowaniu, wybierz pozycję **Zatrzymaj sprzedawanie** na stronie **przeglądu oferty** . Aby zrezygnować z sprzedaży planu, wybierz pozycję **Zatrzymaj sprzedawanie** na stronie **Przegląd planu** . (Opcja zatrzymania sprzedaży planu jest dostępna tylko wtedy, gdy masz więcej niż jeden plan w ofercie. Możesz zrezygnować z sprzedawania jednego planu bez wpływu na inne plany w ramach oferty.
 
-Po upewnieniu się, czy chcesz zatrzymać, sprzedaży oferty lub plan, w ciągu kilku godzin będzie nie będzie ona widoczna w portalu marketplace i można go pobrać nie nowych klientów. 
+Po potwierdzeniu, że chcesz zrezygnować z sprzedaży oferty lub planu, w ciągu kilku godzin nie będą one już widoczne w portalu Marketplace i nie będzie można pobrać nowych klientów. 
 
-Żadnych klientów, którzy wcześniej uzyskane z oferty lub planu można nadal z niej korzystać. Oni pobrać go ponownie, ale nie otrzymają aktualizacje, aktualizacji i ponownie opublikować ofertę lub planu w późniejszym czasie. 
+Wszyscy klienci, którzy wcześniej uzyskali ofertę lub plan, nadal mogą z niego korzystać. Mogą pobrać je ponownie, ale nie będą otrzymywać aktualizacji w przypadku aktualizacji i ponownego opublikowania oferty lub planu w późniejszym czasie. 
 
-Po zakończeniu żądania można zatrzymać sprzedaży oferty/plan możesz będą nadal wyświetlane w portalu Marketplace komercyjnych w Centrum partnerskim. Aby usunąć projekt, wybierz **Usuń wersję roboczą** albo **oferują Przegląd** lub **zaplanować Przegląd** strony. 
+Gdy Twoje żądanie zatrzymania sprzedaży oferty/planu zostało zakończone, zobaczysz je w portalu komercyjnej witryny Marketplace w centrum partnerskim. Aby usunąć wersję roboczą, wybierz pozycję **Usuń wersję roboczą** z strony **Przegląd oferty** lub **Przegląd planu** . 
 
-Jeśli zdecydujesz się na liście sprzedaży tej oferty lub ponownie zaplanować, postępuj zgodnie z instrukcjami, aby [aktualizowanie istniejącej oferty](#update-an-existing-offer-in-the-commercial-marketplace). Nie należy zapominać, że konieczne będzie **publikowania** oferty lub planu ponownie po wprowadzeniu dowolnych zmian.
+Jeśli zdecydujesz się na wystawianie lub ponowne sprzedawanie tej oferty lub planu, postępuj zgodnie z instrukcjami w celu [zaktualizowania istniejącej oferty](#update-an-existing-offer-in-the-commercial-marketplace). Nie zapomnij, że konieczne będzie **opublikowanie** oferty lub ponowne zaplanowanie po wprowadzeniu jakichkolwiek zmian.
 
-## <a name="remove-offers-from-existing-customers"></a>Usuwanie oferty z istniejących klientów
+## <a name="remove-offers-from-existing-customers"></a>Usuń oferty z istniejących klientów
 
-Usunięcie oferty z istniejących klientów, [rejestrowanie żądania pomocy technicznej](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). Wybierz swój typ oferty określone z **typ problemu** listy, a następnie wybierz pozycję **Usuń opublikowane oferty** w **kategorii** listy. Prześlij żądanie. Zespół pomocy technicznej przeprowadzi Cię przez proces usuwania oferty.
+Aby usunąć oferty z istniejących klientów, należy [zarejestrować żądanie pomocy technicznej](https://support.microsoft.com/supportforbusiness/productselection?sapId=48734891-ee9a-5d77-bf29-82bf8d8111ff). Wybierz konkretny typ oferty z listy **typ problemu** , a następnie wybierz pozycję **Usuń opublikowaną ofertę** z listy **kategorii** . Prześlij żądanie. Zespół pomocy technicznej przeprowadzi Cię przez proces usuwania oferty.
 
-## <a name="sync-private-plan-audiences"></a>Grupy odbiorców prywatnej plan synchronizacji
+## <a name="sync-private-plan-audiences"></a>Synchronizuj odbiorców planu prywatnego
 
-Jeśli oferta obejmuje jeden lub więcej planów, które są skonfigurowane tylko jako prywatnego ograniczonych grupy odbiorców, istnieje możliwość aktualizowanie odbiorców, które mogą uzyskać dostęp prywatny planu bez publikowania innych zmian do tej oferty. 
+Jeśli oferta obejmuje jeden lub więcej planów, które są skonfigurowane tak, aby były dostępne tylko dla użytkowników z ograniczeniami, można zaktualizować tylko odbiorców, którzy mają dostęp do tego planu prywatnego bez publikowania innych zmian w ofercie. 
 
-Aby zaktualizować, a następnie zsynchronizować prywatnej odbiorców swoje plany dotyczące:
+Aby zaktualizować i zsynchronizować prywatnych odbiorców dla planów:
 
-- Modyfikowanie odbiorców w co najmniej jeden plan prywatne, przy użyciu + **Dodaj identyfikator** lub **zaimportować klientów (csv)** przycisk, a następnie zapisz zmiany.
-- Wybierz **synchronizacji prywatnej odbiorców** z **zaplanować Przegląd** strony.
+- Zmodyfikuj odbiorców w jednym lub kilku planach prywatnych przy użyciu przycisku + **Dodaj identyfikator** lub **Importuj klientów (CSV)** , a następnie Zapisz zmiany.
+- Wybierz pozycję **Synchronizuj odbiorców prywatnych** na stronie **Przegląd planu** .
 
-**Synchronizuj prywatnej odbiorców** opublikujemy tylko zmiany do swojej prywatnej odbiorców bez publikowania innych aktualizacji może pokrywać się do oferty projektu.
+**Synchronizacja prywatnych odbiorców** spowoduje opublikowanie tylko zmian w prywatnych odbiorcach, bez publikowania innych aktualizacji, które mogły zostać wprowadzone do oferty wersji roboczej.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Sprawdź stan publikowania oferty komercyjnej witryny Marketplace](./publishing-status.md)

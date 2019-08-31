@@ -1,30 +1,23 @@
 ---
 title: Głębokie uczenie & platformy AI
-titleSuffix: Azure Data Science Virtual Machines
-description: Platformy uczenia głębokiego i narzędzia na platformie Azure Data Science Virtual Machine, w tym TensorFlow, PyTorch, Keras, Caffe, MXNet, Horovod, Theano, Łańcucher itd.
+titleSuffix: Azure Data Science Virtual Machine
+description: Dostępne platformy i narzędzia uczenia głębokiego na platformie Azure Data Science Virtual Machine, w tym TensorFlow, PyTorch, Keras, Caffe, MXNet, Horovod, Theano, Łańcucher itd.
 keywords: data science tools, data science virtual machine, tools for data science, linux data science
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 08/11/2019
-ms.author: vijetaj
-ms.openlocfilehash: 3c9510b99bbdc7db292ecdc0bf59aadc305cf0c8
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: bcf5228b6d6055c4b2e716ca6b34878a3bb3b870
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035836"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192176"
 ---
-# <a name="deep-learning-and-ai-frameworks"></a>Platformy sztucznej inteligencji i uczenia głębokiego
+# <a name="deep-learning-and-ai-frameworks-for-azure-data-science-vm"></a>Uczenie głębokie i platformy AI dla platformy Azure Data Science VM
 [Data Science Virtual Machine](https://aka.ms/dsvm) (DSVM) obsługuje wiele platform uczenia głębokiego, które ułatwiają tworzenie aplikacji sztucznej inteligencją (AI) z analizą predykcyjną i funkcjami poznawczymi, takimi jak zrozumienie obrazu i języka.
 
 Platformy uczenia głębokiego dostępne na DSVM obejmują:

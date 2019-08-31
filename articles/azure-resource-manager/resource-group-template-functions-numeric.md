@@ -1,30 +1,30 @@
 ---
-title: Usługa Azure Resource Manager funkcje szablonu - liczbowych | Dokumentacja firmy Microsoft
-description: Opisuje funkcje służące do pracy z międzynarodowymi numerami identyfikującymi w szablonie usługi Azure Resource Manager.
+title: Funkcje szablonu Azure Resource Manager — liczba | Microsoft Docs
+description: Opisuje funkcje, które mają być używane w szablonie Azure Resource Manager do pracy z liczbami.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: f63ce16369fd1ff58d5368b43c3c730008e63d9a
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 3ec5477ca6ea1731f18b09d6393bdde6261e0c32
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206414"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194337"
 ---
-# <a name="numeric-functions-for-azure-resource-manager-templates"></a>Funkcje numeryczne dla szablonów usługi Azure Resource Manager
+# <a name="numeric-functions-for-azure-resource-manager-templates"></a>Funkcje liczbowe dla Azure Resource Manager szablonów
 
-Usługa Resource Manager zapewnia następujące funkcje do pracy z liczb całkowitych:
+Menedżer zasobów udostępnia następujące funkcje do pracy z liczbami całkowitymi:
 
-* [Dodaj](#add)
+* [dodana](#add)
 * [copyIndex](#copyindex)
 * [div](#div)
 * [float](#float)
 * [int](#int)
 * [max](#max)
 * [min](#min)
-* [dzielenie modulo](#mod)
+* [Funkcja](#mod)
 * [mul](#mul)
 * [sub](#sub)
 
@@ -32,7 +32,7 @@ Usługa Resource Manager zapewnia następujące funkcje do pracy z liczb całkow
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="add"></a>add
+## <a name="add"></a>dodaj
 `add(operand1, operand2)`
 
 Zwraca sumę dwóch podanych liczb całkowitych.
@@ -41,7 +41,7 @@ Zwraca sumę dwóch podanych liczb całkowitych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- | 
-|Operand1 |Yes |int |Pierwsza liczba do dodania. |
+|operand1 |Tak |int |Pierwsza liczba do dodania. |
 |Operand2 |Tak |int |Druga liczba do dodania. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -50,7 +50,7 @@ Liczba całkowita, która zawiera sumę parametrów.
 
 ### <a name="example"></a>Przykład
 
-Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json) dodaje dwa parametry.
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/add.json) dodaje dwa parametry.
 
 ```json
 {
@@ -85,9 +85,9 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
-| addResult | Int | 8 |
+| AddResult | Int | 8 |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -103,31 +103,31 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="copyindex" />
 
-## <a name="copyindex"></a>copyIndex
+## <a name="copyindex"></a>Funkcji copyindex
 `copyIndex(loopName, offset)`
 
-Zwraca indeks iteracji pętli. 
+Zwraca indeks pętli iteracji. 
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| loopName | Nie | string | Nazwa pętli w celu uzyskania iteracji. |
-| offset |Nie |int |Liczba do dodania do wartości iteracji liczony od zera. |
+| loopName | Nie | ciąg | Nazwa pętli do pobrania iteracji. |
+| offset |Nie |int |Liczba, która ma zostać dodana do wartości iteracji opartej na zero. |
 
 ### <a name="remarks"></a>Uwagi
 
-Ta funkcja jest zawsze używana z **kopiowania** obiektu. Jeśli wartość nie zostanie podany dla **przesunięcie**, jest zwracana wartość bieżącą iterację. Wartość iteracji rozpoczyna się od zera. Podczas definiowania zasobów lub zmienne, można użyć iteracji pętli.
+Ta funkcja jest zawsze używana z obiektem **copy** . Jeśli nie podano wartości dla **przesunięcia**, zwracana jest bieżąca wartość iteracji. Wartość iteracji zaczyna się od zera. Pętli iteracji można używać podczas definiowania zasobów lub zmiennych.
 
-**LoopName** właściwość umożliwia określenie, czy copyIndex odwołuje się do zasobu iteracji lub iteracji właściwości. Jeśli wartość nie zostanie podany dla **loopName**, bieżąca iteracja typ zasobu jest używana. Wprowadź wartość w polu **loopName** podczas iteracji we właściwości. 
+Właściwość **loopname** pozwala określić, czy funkcji copyindex odwołuje się do iteracji zasobu, czy do iteracji właściwości. Jeśli nie podano wartości dla **loopname**, używana jest bieżąca iteracja typu zasobu. Podaj wartość dla parametru **loopname** podczas iterowania właściwości. 
  
-Aby uzyskać pełny opis wykorzystania **copyIndex**, zobacz [tworzenie wielu wystąpień zasobów w usłudze Azure Resource Manager](resource-group-create-multiple.md).
+Pełny opis sposobu korzystania z usługi **funkcji copyindex**można znaleźć w temacie [Tworzenie wielu wystąpień zasobów w Azure Resource Manager](resource-group-create-multiple.md).
 
-Na przykład za pomocą **copyIndex** podczas definiowania zmiennej, zobacz [zmienne](resource-group-authoring-templates.md#variables).
+Aby zapoznać się z przykładem użycia **funkcji copyindex** podczas definiowania zmiennej, zobacz [zmienne](resource-group-authoring-templates.md#variables).
 
 ### <a name="example"></a>Przykład
 
-Poniższy przykład pokazuje pętlę kopiowania i wartość indeksu, jego nazwa. 
+Poniższy przykład przedstawia pętlę kopiowania i wartość indeksu zawartą w nazwie. 
 
 ```json
 "resources": [ 
@@ -152,22 +152,22 @@ Liczba całkowita reprezentująca bieżący indeks iteracji.
 ## <a name="div"></a>div
 `div(operand1, operand2)`
 
-Zwraca dzielenia dwóch podanych liczb całkowitych.
+Zwraca podział liczby całkowitej z dwóch podanych liczb całkowitych.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Operand1 |Tak |int |Liczba jest dzielona. |
-| Operand2 |Tak |int |Numer który jest używany do dzielenia. Nie może wynosić 0. |
+| operand1 |Tak |int |Podzielona liczba. |
+| Operand2 |Tak |int |Liczba, która jest używana do dzielenia. Nie może mieć wartości 0. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Liczba całkowita reprezentująca podziału.
+Liczba całkowita reprezentująca podział.
 
 ### <a name="example"></a>Przykład
 
-Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json) dzieli jeden parametr przez inny parametr.
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/div.json) dzieli jeden parametr przez inny parametr.
 
 ```json
 {
@@ -202,7 +202,7 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
 | divResult | Int | 2 |
 
@@ -223,20 +223,20 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="float"></a>float
 `float(arg1)`
 
-Konwertuje wartość na zmiennoprzecinkowy numer punktu. Podczas przekazywania parametrów niestandardowych do aplikacji, takie jak aplikacja logiki tylko użyć tej funkcji.
+Konwertuje wartość na liczbę zmiennoprzecinkową. Ta funkcja jest używana tylko podczas przekazywania parametrów niestandardowych do aplikacji, na przykład aplikacji logiki.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |ciąg lub int |Wartość do przekonwertowania na zmiennoprzecinkowy numer punktu. |
+| arg1 |Tak |ciąg lub int |Wartość do przekonwertowania na liczbę zmiennoprzecinkową. |
 
 ### <a name="return-value"></a>Wartość zwracana
-Zmiennoprzecinkowa numer.
+Liczba zmiennoprzecinkowa.
 
 ### <a name="example"></a>Przykład
 
-Poniższy przykład pokazuje, jak używać float do przekazania parametrów do aplikacji logiki:
+Poniższy przykład pokazuje, jak używać metody zmiennoprzecinkowej do przekazywania parametrów do aplikacji logiki:
 
 ```json
 {
@@ -257,7 +257,7 @@ Poniższy przykład pokazuje, jak używać float do przekazania parametrów do a
 ## <a name="int"></a>int
 `int(valueToConvert)`
 
-Konwertuje określoną wartość do wartości całkowitej.
+Konwertuje określoną wartość na liczbę całkowitą.
 
 ### <a name="parameters"></a>Parametry
 
@@ -267,11 +267,11 @@ Konwertuje określoną wartość do wartości całkowitej.
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Całkowitą wartość przekonwertowana.
+Liczba całkowita przekonwertowanej wartości.
 
 ### <a name="example"></a>Przykład
 
-Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json) konwertuje wartość tego parametru dostarczone przez użytkownika na liczbę całkowitą.
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/int.json) konwertuje wartość parametru dostarczoną przez użytkownika na liczbę całkowitą.
 
 ```json
 {
@@ -296,7 +296,7 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
 | intResult | Int | 4 |
 
@@ -314,24 +314,24 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="max" />
 
-## <a name="max"></a>Maksymalna
+## <a name="max"></a>maks.
 `max (arg1)`
 
-Zwraca maksymalną wartość w tablicy liczb całkowitych lub na liście liczb całkowitych rozdzielonych przecinkami.
+Zwraca maksymalną wartość z tablicy liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |tablica liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych |Kolekcja do uzyskania maksymalnej wartości. |
+| arg1 |Tak |tablica liczb całkowitych lub rozdzielana przecinkami lista liczb całkowitych |Kolekcja, w której ma zostać uzyskana wartość maksymalna. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Liczba całkowita reprezentująca maksymalną wartość z kolekcji.
+Liczba całkowita reprezentująca wartość maksymalną z kolekcji.
 
 ### <a name="example"></a>Przykład
 
-Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) pokazuje, jak za pomocą max tablicy i listy liczb całkowitych:
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) pokazuje, jak używać Max z tablicą i listą liczb całkowitych:
 
 ```json
 {
@@ -359,7 +359,7 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
@@ -378,24 +378,24 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="min" />
 
-## <a name="min"></a>min.
+## <a name="min"></a>min
 `min (arg1)`
 
-Zwraca minimalną wartość w tablicy liczb całkowitych lub na liście liczb całkowitych rozdzielonych przecinkami.
+Zwraca minimalną wartość z tablicy liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Tak |tablica liczb całkowitych lub rozdzielaną przecinkami listę liczb całkowitych |Kolekcja można pobrać wartość minimalna. |
+| arg1 |Tak |tablica liczb całkowitych lub rozdzielana przecinkami lista liczb całkowitych |Kolekcja, w której ma zostać uzyskana wartość minimalna. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Liczba całkowita reprezentująca minimalną wartość z kolekcji.
+Liczba całkowita reprezentująca wartość minimalną z kolekcji.
 
 ### <a name="example"></a>Przykład
 
-Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) pokazuje, jak za pomocą usług min tablicy i listy liczb całkowitych:
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) pokazuje, jak używać min z tablicą i listą liczb całkowitych:
 
 ```json
 {
@@ -423,7 +423,7 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
@@ -442,16 +442,16 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 <a id="mod" />
 
-## <a name="mod"></a>dzielenie modulo
+## <a name="mod"></a>Funkcja
 `mod(operand1, operand2)`
 
-Zwraca resztę z dzielenia liczby całkowitej, przy użyciu dwóch podanych liczb całkowitych.
+Zwraca resztę z dzielenia liczb całkowitych przy użyciu dwóch podanych liczb całkowitych.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Operand1 |Yes |int |Liczba jest dzielona. |
+| operand1 |Tak |int |Podzielona liczba. |
 | Operand2 |Tak |int |Liczba, która jest używana do dzielenia, nie może wynosić 0. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -459,7 +459,7 @@ Liczba całkowita reprezentująca resztę.
 
 ### <a name="example"></a>Przykład
 
-Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json) zwraca resztę z dzielenia jeden parametr przez inny parametr.
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mod.json) Zwraca resztę z dzielenia jednego parametru przez inny parametr.
 
 ```json
 {
@@ -494,7 +494,7 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
 | modResult | Int | 1 |
 
@@ -521,16 +521,16 @@ Zwraca iloczyn dwóch podanych liczb całkowitych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Operand1 |Yes |int |Pierwszy numer do pomnożenia. |
-| Operand2 |Yes |int |Druga liczba do pomnożenia. |
+| operand1 |Tak |int |Pierwsza liczba do pomnożenia. |
+| Operand2 |Tak |int |Druga liczba do pomnożenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Liczba całkowita reprezentująca mnożenia.
+Liczba całkowita reprezentująca iloczyn.
 
 ### <a name="example"></a>Przykład
 
-Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json) mnoży jeden parametr przez inny parametr.
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/mul.json) mnoży jeden parametr przez inny parametr.
 
 ```json
 {
@@ -565,7 +565,7 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
 | mulResult | Int | 15 |
 
@@ -586,21 +586,21 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ## <a name="sub"></a>sub
 `sub(operand1, operand2)`
 
-Zwraca odejmowania dwóch podanych liczb całkowitych.
+Zwraca odejmowanie dwóch podanych liczb całkowitych.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| Operand1 |Tak |int |Numer który jest odejmowany od. |
+| operand1 |Tak |int |Liczba odjęta od. |
 | Operand2 |Tak |int |Liczba, która jest odejmowana. |
 
 ### <a name="return-value"></a>Wartość zwracana
-Liczba całkowita reprezentująca odejmowania.
+Liczba całkowita reprezentująca odejmowanie.
 
 ### <a name="example"></a>Przykład
 
-Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json) odejmuje jeden parametr z innego parametru.
+Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/sub.json) odejmuje jeden parametr z innego parametru.
 
 ```json
 {
@@ -635,9 +635,9 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
-| subResult | Int | 4 |
+| Wynik | Int | 4 |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -655,5 +655,5 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 * Aby uzyskać opis sekcje szablonu usługi Azure Resource Manager, zobacz [tworzenia usługi Azure Resource Manager](resource-group-authoring-templates.md).
 * Aby scalić wiele szablonów, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
 * Do iteracji określoną liczbę razy podczas tworzenia dla typu zasobów, zobacz [tworzenie wielu wystąpień zasobów w usłudze Azure Resource Manager](resource-group-create-multiple.md).
-* Aby zobaczyć, jak wdrożyć szablon został utworzony, zobacz [wdrażania aplikacji przy użyciu szablonu usługi Azure Resource Manager](resource-group-template-deploy.md).
+* Aby dowiedzieć się, jak wdrożyć utworzony szablon, zobacz [wdrażanie aplikacji przy użyciu szablonu Azure Resource Manager](resource-group-template-deploy.md).
 
