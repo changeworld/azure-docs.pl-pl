@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a3a097c164628e6d4e4b7886a195901207d83a3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d3bb18f11de92680d296d747fc34e16c3264c369
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852208"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193284"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-client-credentials-flow"></a>Microsoft Identity platform i przepływ poświadczeń klienta OAuth 2,0
 
@@ -81,7 +81,7 @@ Aby użyć uprawnień aplikacji w aplikacji, wykonaj kroki opisane w następnych
 3. Znajdź sekcję **uprawnienia interfejsu API** , a następnie Dodaj **uprawnienia aplikacji** wymagane przez aplikację.
 4. **Zapisz** rejestrację aplikacji.
 
-#### <a name="recommended-sign-the-user-into-your-app"></a>Rekomendowane Podpisz użytkownika w aplikacji
+#### <a name="recommended-sign-the-user-into-your-app"></a>Zalecane: Podpisz użytkownika w aplikacji
 
 Zazwyczaj podczas kompilowania aplikacji korzystającej z uprawnień aplikacji aplikacja wymaga strony lub widoku, w którym administrator zatwierdza uprawnienia aplikacji. Ta strona może należeć do przepływu logowania aplikacji, części ustawień aplikacji lub być dedykowanym przepływem "Połącz". W wielu przypadkach ma sens, aby aplikacja pokazywała ten widok "Połącz" tylko po zalogowaniu się użytkownika przy użyciu konto Microsoft służbowego.
 
@@ -170,7 +170,8 @@ client_id=535fb089-9ff3-47b6-9bfb-4f1264799865
 ```
 
 ```
-curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/common/oauth2/v2.0/token'
+// Replace {tenant} with your tenant! 
+curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=535fb089-9ff3-47b6-9bfb-4f1264799865&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret=qWgdYAmab0YSkuL1qKv5bPX&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
 | Parametr | Warunek | Opis |
@@ -250,10 +251,6 @@ Odpowiedź na błąd wygląda następująco:
 | `trace_id` | Unikatowy identyfikator żądania, które pomoże przeprowadzić diagnostykę. |
 | `correlation_id` | Unikatowy identyfikator dla żądania pomagającego przeprowadzić diagnostykę w składnikach. |
 
-> [!NOTE]
-> Aby aplikacja mogła odbierać token v2, można zaktualizować plik manifestu aplikacji z poziomu witryny Azure Portal. Możesz dodać atrybut `accessTokenAcceptedVersion` i ustawić wartość na 2 jako `"accessTokenAcceptedVersion": 2`. Sprawdź [manifest aplikacji](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest#manifest-reference) artykułu, aby dowiedzieć się więcej na ten temat. Domyślnie aplikacja aktualnie recieves token v1. Jeśli nie jest on zdefiniowany w manifeście aplikacji/interfejsu API sieci Web, wartość tego atrybutu w manifeście domyślnie wynosi 1, w związku z czym aplikacja otrzyma token v1.  
-
-
 ## <a name="use-a-token"></a>Użyj tokenu
 
 Po uzyskaniu tokenu Użyj tokenu, aby wykonać żądania do zasobu. Po wygaśnięciu tokenu Powtórz żądanie do `/token` punktu końcowego, aby uzyskać nowy token dostępu.
@@ -269,7 +266,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 ```
 
 ```
-curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q" 'https://graph.microsoft.com/v1.0/me/messages'
+curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbG...." 'https://graph.microsoft.com/v1.0/me/messages'
 ```
 
 ## <a name="code-samples-and-other-documentation"></a>Przykłady kodu i inne dokumenty

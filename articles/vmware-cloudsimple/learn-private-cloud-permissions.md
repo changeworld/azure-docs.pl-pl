@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ab74b37fa8adc58f8641893b4168f71c453b0fdd
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0c617cbd17d9b9620c957eec45aadd962db34831
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972702"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194124"
 ---
 # <a name="cloudsimple-private-cloud-permission-model-of-vmware-vcenter"></a>Model uprawnień chmury prywatnej CloudSimple firmy VMware vCenter
 
@@ -24,7 +24,7 @@ CloudSimple zachowuje pełny dostęp administracyjny do środowiska chmury prywa
 Podczas tworzenia chmury prywatnej w domenie programu vCenter logowania jednokrotnego jest tworzony użytkownik **CloudOwner** z dostępem do **roli właściciela w chmurze** w celu zarządzania obiektami w chmurze prywatnej. Ten użytkownik może również skonfigurować dodatkowe [źródła tożsamości programu vCenter](set-vcenter-identity.md)i innych użytkowników w chmurze prywatnej programu vCenter.
 
 > [!NOTE]
-> Domyślny użytkownik usługi CloudSimple Private Cloud vCenter to `cloudowner@cloudsimple.local` gdy Chmura prywatna jest tworzona bez powiązania z lokalnym programem vCenter.
+> Domyślny użytkownik usługi CloudSimple Private Cloud vCenter jest cloudowner@cloudsimple.local tworzony podczas tworzenia chmury prywatnej.
 
 ## <a name="user-groups"></a>Grupy użytkowników
 

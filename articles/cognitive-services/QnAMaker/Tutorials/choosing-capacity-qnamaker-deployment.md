@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 2b2879a1ebcf01a0433873e8da77c4ce55a078cd
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 2d8f0fce3cb8f1cd8fdb596cb4e238a79d6cee4c
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647018"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193507"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>Wybieranie pojemności dla danego wdrożenia usługi QnA Maker
 
@@ -45,9 +45,9 @@ W poniższej tabeli przedstawiono niektóre wytyczne wysokiego poziomu.
 | Środowisko programistyczne/testowe   | Standardowy SKU         | Udostępniona      | Podstawowa        | Publikowanie do 14 artykułów bazy wiedzy, rozmiar 2 GB    |
 | Środowiska produkcyjnego | Standardowy SKU         | Podstawowa       | Standardowa (Standard)     | Publikowanie do 49 artykułów bazy wiedzy, rozmiar 25 GB |
 
-Dla uaktualnienie stosie usługi QnA Maker, zobacz [uaktualnienia usługi QnA Maker](../How-To/upgrade-qnamaker-service.md).
+Dla uaktualnienie stosie usługi QnA Maker, zobacz [uaktualnienia usługi QnA Maker](../How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Uaktualnianie usługi QnA Maker](../How-To/upgrade-qnamaker-service.md)
+> [Uaktualnianie usługi QnA Maker](../How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker)

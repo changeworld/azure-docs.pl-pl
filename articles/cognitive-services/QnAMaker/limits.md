@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 27526f4940cb7ab538992f3506c1a35a81cec9bc
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: c7b0dc39d2da403383f245b9ff3227734c58cbbe
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165021"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193490"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Usługa QnA Maker wiedzy limity i granice
 
@@ -90,8 +90,4 @@ Te reprezentują limity dla każdej akcji aktualizacji; oznacza to kliknięcie *
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, kiedy i jak zmienić warstwy usług:
-
-* [QNA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku): Jeśli potrzebujesz więcej plików źródłowych lub większych dokumentów w bazie wiedzy, poza bieżącą warstwą, Uaktualnij warstwę cenową usługi QnA Maker Service.
-* [App Service](how-to/upgrade-qnamaker-service.md#upgrade-app-service): Gdy baza wiedzy musi obpracować więcej żądań z aplikacji klienckiej, należy uaktualnić warstwę cenową usługi App Service.
-* [Azure Search](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service): Planując posiadanie wielu baz wiedzy, należy uaktualnić warstwę cenową usługi Azure Search.
+Dowiedz się, kiedy i jak zmienić [warstwy cenowe usług](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker).

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: c79429d1a39e975c6bcc7fce191846a6205f9a86
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: b48988c04f6b387a8124a812a836e2b92a9d3ada
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311700"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194384"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Za pomocą połączone i zagnieżdżone szablony, podczas wdrażania zasobów platformy Azure
 
@@ -479,6 +479,8 @@ done
 Mimo że dołączonego szablonu musi być dostępny zewnętrznie, nie musi być ogólnie dostępne publicznie. Szablon można dodać do konta magazynu prywatnego, który jest dostępny dla właściciela konta magazynu. Następnie należy utworzyć token sygnatury (SAS) dostępu współdzielonego, aby umożliwić dostęp podczas wdrażania. Token sygnatury dostępu Współdzielonego możesz dodać do identyfikatora URI do dołączonego szablonu. Nawet jeśli token jest przekazywany jako bezpieczny ciąg, identyfikator URI szablonu połączony, w tym token sygnatury dostępu Współdzielonego jest rejestrowany w operacji wdrażania. Aby ograniczyć zagrożenia, należy ustawić wygaśnięcia tokenu.
 
 Plik parametrów również może być ograniczona do dostępu za pomocą tokenu sygnatury dostępu Współdzielonego.
+
+Obecnie nie można połączyć się z szablonem na koncie magazynu, które znajduje się za [zaporą usługi Azure Storage](../storage/common/storage-network-security.md).
 
 Poniższy przykład pokazuje, jak przekazać token sygnatury dostępu Współdzielonego podczas łączenia do szablonu:
 

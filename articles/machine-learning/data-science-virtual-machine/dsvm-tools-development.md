@@ -1,29 +1,23 @@
 ---
-title: Narzędzia programistyczne maszyna wirtualna do analizy danych — Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej na temat narzędzi i zintegrowanych środowisk programistycznych, które są wstępnie zainstalowane na Data Science Virtual Machine.
+title: Narzędzia programistyczne
+titleSuffix: Azure Data Science Virtual Machine
+description: Dowiedz się więcej na temat narzędzi i zintegrowanych środowisk programistycznych dostępnych na Data Science Virtual Machine.
 keywords: data science tools, data science virtual machine, tools for data science, linux data science
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.author: vijetaj
-ms.openlocfilehash: 8f9dad0fb007945b69b75daadfdb12f61dc4defb
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6ff4d92cb3730716c532332bf426132fcbb8e122
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074300"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191950"
 ---
-# <a name="development-tools-on-the-data-science-virtual-machine"></a>Narzędzia programistyczne na maszynie wirtualnej do nauki o danych
+# <a name="development-tools-on-the-azure-data-science-virtual-machine"></a>Narzędzia programistyczne na platformie Azure Data Science Virtual Machine
 
 Data Science Virtual Machine (DSVM) udostępnia kilka popularnych narzędzi w wysoce wydajnym zintegrowanym środowisku programistycznym (IDE). Poniżej przedstawiono niektóre narzędzia, które znajdują się maszyny DSVM.
 

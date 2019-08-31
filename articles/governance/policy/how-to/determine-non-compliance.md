@@ -1,22 +1,22 @@
 ---
 title: Ustalanie przyczyn niezgodności
-description: Jeśli zasób jest niezgodne, istnieje wiele możliwych przyczyn. Dowiedz się dowiedzieć się, co było przyczyną braku zgodności.
+description: Jeśli zasób nie jest zgodny, istnieje wiele możliwych przyczyn. Dowiedz się, co spowodowało niezgodność.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: fb7f238bb5c04bb03ee500b1b953895cc88c0596
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b36e7c333521e9438e76bfbe53a26dce23c2e8a
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66298920"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194671"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ustalanie przyczyn niezgodności
 
-Zasób platformy Azure zostanie uznane za niezgodne reguły zasad, to zrozumieć, która część reguły, zasób nie jest zgodne z. Jest to również przydatne zrozumieć, jakie zmiany zmienić uprzednio zgodna zasobów, aby stał się brak zgodności. Istnieją dwa sposoby znajdowania tych informacji:
+Jeśli zasób platformy Azure jest określony jako niezgodny z regułą zasad, warto zrozumieć, która część reguły nie jest zgodna z zasobem. Warto również zrozumieć, jakie zmiany zmieniły wcześniej zgodne zasoby, aby nie były zgodne. Istnieją dwa sposoby znajdowania tych informacji:
 
 > [!div class="checklist"]
 > - [Szczegóły zgodności](#compliance-details)
@@ -24,32 +24,32 @@ Zasób platformy Azure zostanie uznane za niezgodne reguły zasad, to zrozumieć
 
 ## <a name="compliance-details"></a>Szczegóły zgodności
 
-Zasób jest niezgodne, szczegóły zgodności dla tego zasobu są dostępne z **zgodność z zasadami** strony. W okienku szczegółów zgodności zawiera następujące informacje:
+Jeśli zasób nie jest zgodny, szczegóły zgodności dla tego zasobu są dostępne na stronie **zgodność z zasadami** . Okienko Szczegóły zgodności zawiera następujące informacje:
 
-- Szczegóły zasobu, takie jak nazwa, typ, lokalizację i identyfikator zasobu
-- Stan zgodności i sygnaturę czasową ostatniej oceny bieżące przypisania zasad
-- Lista _przyczyn_ dla zasobów niezgodności
+- Szczegóły zasobu, takie jak nazwa, typ, lokalizacja i identyfikator zasobu
+- Stan zgodności i sygnatura czasowa ostatniej oceny bieżącego przydziału zasad
+- Lista _przyczyn_ braku zgodności zasobów
 
 > [!IMPORTANT]
-> Jako szczegóły zgodności _niezgodne_ zasobów zawiera bieżącą wartość właściwości tego zasobu, użytkownik musi mieć **odczytu** operacji **typu** programu zasób. Na przykład jeśli _niezgodne_ zasób jest **Microsoft.Compute/virtualMachines** , a następnie użytkownik musi mieć **Microsoft.Compute/virtualMachines/read** Operacja. Jeśli użytkownik nie ma wymaganych operacji, jest wyświetlany błąd dostępu.
+> Ponieważ szczegóły zgodności dla niezgodnego zasobu przedstawiają bieżącą wartość właściwości tego zasobu, użytkownik musi mieć operację **odczytu** do **typu** zasobu. Na przykład jeśli niezgodny zasób to **Microsoft. COMPUTE/virtualMachines** , użytkownik musi mieć operację **Microsoft. COMPUTE/virtualMachines/Read** . Jeśli użytkownik nie ma wymaganej operacji, zostanie wyświetlony komunikat o błędzie dostępu.
 
 Aby wyświetlić szczegóły zgodności, wykonaj następujące kroki:
 
 1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
 
-1. Na **Przegląd** lub **zgodności** wybierz zasadę w **stan zgodności** czyli _niezgodne_.
+1. Na stronie **Przegląd** lub **zgodność** wybierz zasady w **stanie zgodności** , które _nie są zgodne_.
 
-1. W obszarze **zgodność zasobów** karcie **zgodność z zasadami** strony, kliknij prawym przyciskiem myszy lub wybierz wielokropek zasobu w **stan zgodności** to znaczy  _Niezgodne_. Następnie wybierz pozycję **wyświetlić szczegóły zgodności**.
+1. Na karcie **zgodność zasobów** na stronie **zgodność z zasadami** kliknij prawym przyciskiem myszy lub wybierz wielokropek zasobu w **stanie zgodności** , który jest niezgodny. Następnie wybierz pozycję **Wyświetl szczegóły zgodności**.
 
-   ![Opcja Szczegóły zgodności widoku](../media/determine-non-compliance/view-compliance-details.png)
+   ![Wyświetl szczegóły zgodności](../media/determine-non-compliance/view-compliance-details.png)
 
-1. **Szczegóły zgodności** okienko wyświetla informacje z najnowszej wersji ewaluacyjnej zasobu do bieżącego przypisania zasad. W tym przykładzie pole **Microsoft.Sql/servers/version** okaże się _12.0_ podczas gdy oczekiwano definicji zasad _14.0_. Jeśli zasób jest niezgodny z wielu powodów, każda znajduje się w tym okienku.
+1. W okienku **szczegóły zgodności** są wyświetlane informacje z najnowszej wersji ewaluacyjnej zasobu do bieżącego przypisania zasad. W tym przykładzie można znaleźć wartość pola **Microsoft. SQL/Server/version** na _12,0_ , gdy oczekiwano definicji zasad _14,0_. Jeśli zasób nie jest zgodny z wieloma przyczynami, każda z nich jest wymieniona w tym okienku.
 
-   ![W okienku szczegółów zgodności i przyczyn braku zgodności](../media/determine-non-compliance/compliance-details-pane.png)
+   ![Okienko Szczegóły zgodności i przyczyny braku zgodności](../media/determine-non-compliance/compliance-details-pane.png)
 
-   Dla **auditIfNotExists** lub **deployIfNotExists** zawierają szczegóły definicji zasad **details.type** właściwości oraz wszelkie opcjonalne właściwości. Aby uzyskać listę, zobacz [właściwości auditIfNotExists](../concepts/effects.md#auditifnotexists-properties) i [właściwości deployIfNotExists](../concepts/effects.md#deployifnotexists-properties). **Ostatnio oceniono zasobów** jest zasobem powiązane z **szczegóły** sekcja definicji.
+   W przypadku definicji zasad **auditIfNotExists** lub **deployIfNotExists** szczegóły obejmują Właściwość Details **. Type** i wszelkie opcjonalne właściwości. Aby uzyskać listę, zobacz [Właściwości auditIfNotExists](../concepts/effects.md#auditifnotexists-properties) i [deployIfNotExists](../concepts/effects.md#deployifnotexists-properties). **Ostatni szacowany zasób** jest powiązanym zasobem z sekcji **szczegółów** definicji.
 
-   Przykład częściowe **deployIfNotExists** definicji:
+   Przykładowa częściowa definicja **deployIfNotExists** :
 
    ```json
    {
@@ -74,83 +74,68 @@ Aby wyświetlić szczegóły zgodności, wykonaj następujące kroki:
    }
    ```
 
-   ![W okienku szczegółów zgodności - * ifNotExists](../media/determine-non-compliance/compliance-details-pane-existence.png)
+   ![Okienko Szczegóły zgodności-* ifNotExists](../media/determine-non-compliance/compliance-details-pane-existence.png)
 
 > [!NOTE]
-> Aby chronić dane, gdy wartość właściwości jest _klucz tajny_ bieżącą wartość wyświetla gwiazdki.
+> Aby chronić dane, gdy wartość właściwości jest tajna , bieżąca wartość Wyświetla gwiazdki.
 
-Te informacje wyjaśniają, dlaczego zasób jest obecnie niezgodne, ale nie pokazuj, kiedy zmiana została wprowadzona do zasobu, który spowodował jego stanie się niezgodne. Aby uzyskać te informacje, zobacz [(wersja zapoznawcza) historię zmian](#change-history-preview) poniżej.
+Te szczegóły wyjaśniają, dlaczego zasób jest obecnie niezgodny, ale nie powinien być wyświetlany, gdy zmiana została wprowadzona w zasobie, która spowodowała niezgodność. Aby uzyskać te informacje, zobacz sekcję [Zmień historię (wersja zapoznawcza)](#change-history-preview) poniżej.
 
-### <a name="compliance-reasons"></a>Zachowania zgodności
+### <a name="compliance-reasons"></a>Przyczyny zgodności
 
-Następujące macierzy mapuje każdą możliwą _Przyczyna_ w odpowiedzialne [warunek](../concepts/definition-structure.md#conditions) w definicji zasad:
+Poniższa macierz odwzorowuje każdy możliwy _powód_ do warunku [](../concepts/definition-structure.md#conditions) odpowiedzialnego w definicji zasad:
 
 |Reason | Warunek |
 |-|-|
-|Bieżąca wartość musi zawierać wartość docelową jako klucz. |containsKey lub **nie** notContainsKey |
+|Bieżąca wartość musi zawierać wartość docelową jako klucz. |ContainsKey — lub **nie** notContainsKey |
 |Bieżąca wartość musi zawierać wartość docelową. |zawiera lub **nie** notContains |
 |Bieżąca wartość musi być równa wartości docelowej. |równa się lub **nie** notEquals |
-|Bieżąca wartość musi być mniejsza niż wartość docelową. |mniej lub **nie** greaterOrEquals |
+|Bieżąca wartość musi być mniejsza niż wartość docelowa. |mniej lub **nie** greaterOrEquals |
 |Bieżąca wartość musi być większa lub równa wartości docelowej. |greaterOrEquals lub **nie** mniej |
-|Bieżąca wartość musi być większa niż wartość docelową. |większe lub **nie** lessOrEquals |
-|Bieżąca wartość musi być mniejsza lub równa wartości docelowej. |lessOrEquals lub **nie** większa |
-|Bieżąca wartość, musi istnieć. |Istnieje |
-|Bieżąca wartość musi być w wartości docelowej. |w lub **nie** notIn |
-|Bieżąca wartość musi być takie jak wartości docelowej. |Podobnie jak lub **nie** notLike |
-|Bieżąca wartość należy czułym na wielkość liter wartości docelowej. |zgodne lub **nie** notMatch |
-|Bieżąca wartość musi dopasowanie bez uwzględniania wielkości liter w wartości docelowej. |matchInsensitively lub **nie** notMatchInsensitively |
-|Bieżąca wartość nie może zawierać wartości docelowej jako klucz. |notContainsKey lub **nie** containsKey|
+|Bieżąca wartość musi być większa niż wartość docelowa. |większe lub **nie** lessOrEquals |
+|Bieżąca wartość nie może być większa niż wartość docelowa. |lessOrEquals lub **nie jest** większa |
+|Bieżąca wartość musi istnieć. |istniejący |
+|Bieżąca wartość musi należeć do wartości docelowej. |w programie lub notIn |
+|Bieżąca wartość musi być taka sama jak wartość docelowa. |Podobnie jak notLike |
+|Bieżąca wartość musi uwzględniać wielkość liter, dopasowując wartość docelową. |dopasowanie lub notMatch |
+|Bieżąca wartość musi uwzględniać wielkość liter, dopasowując wartość docelową. |matchInsensitively lub **nie** notMatchInsensitively |
+|Bieżąca wartość nie może zawierać wartości docelowej jako klucza. |notContainsKey lub **nie** ContainsKey —|
 |Bieżąca wartość nie może zawierać wartości docelowej. |notContains lub **nie** zawiera |
 |Bieżąca wartość nie może być równa wartości docelowej. |notEquals lub **nie** równa się |
 |Bieżąca wartość nie może istnieć. |**nie** istnieje  |
-|Bieżąca wartość nie może być w wartości docelowej. |notIn lub **nie** w |
-|Bieżąca wartość nie może być np. wartości docelowej. |notLike lub **nie** np. |
-|Bieżąca wartość musi dopasowanie bez uwzględniania wielkości liter w wartości docelowej. |notMatch lub **nie** dopasowania |
-|Bieżąca wartość musi być nie wielkości liter wartości docelowej. |notMatchInsensitively lub **nie** matchInsensitively |
-|Nie powiązanych zasobów odpowiada efekt w definicji zasad. |Zasób typu zdefiniowanego w **then.details.type** i powiązane z zasobem zdefiniowane w **Jeśli** część reguły zasad nie istnieje. |
+|Bieżąca wartość nie może być wartością docelową. |notIn lub **nie** w |
+|Bieżąca wartość nie może być taka sama jak wartość docelowa. |notLike lub **nie** Lubię |
+|Bieżąca wartość nie może uwzględniać wielkości liter pasującej do wartości docelowej. |notMatch lub **nie jest** zgodny |
+|Bieżąca wartość nie może uwzględniać wielkości liter odpowiadającej wartości docelowej. |notMatchInsensitively lub **nie** matchInsensitively |
+|Żadne powiązane zasoby nie pasują do szczegółów efektu w definicji zasad. |Zasób typu zdefiniowanego w elemencie **then. details. Type** i powiązany z zasobem zdefiniowanym w instrukcji **if** w regule zasad nie istnieje. |
 
-## <a name="compliance-details-for-guest-configuration"></a>Szczegóły zgodności konfiguracji gościa
+## <a name="compliance-details-for-guest-configuration"></a>Szczegóły zgodności dla konfiguracji gościa
 
-Aby uzyskać _inspekcji_ zasad w _konfiguracji gościa_ kategorii, może istnieć wiele ustawień, ocenione w ramach maszyny Wirtualnej i konieczne będzie wyświetlać szczegóły poszczególnych ustawień. Na przykład, jeśli masz inspekcji, aby uzyskać listę zainstalowanych aplikacji i stanu przypisania jest _niezgodne_, musisz wiedzieć, określonych aplikacji, które są nieobecne.
+W przypadku zasad auditIfNotExistsymi w kategorii _Konfiguracja gościa_ może istnieć wiele ustawień ocenianych wewnątrz maszyny wirtualnej i trzeba będzie wyświetlić szczegółowe informacje na temat ustawień. Na przykład jeśli przeprowadzasz inspekcję listy zasad haseł, a tylko jeden z nich ma stan niezgodny, musisz wiedzieć, które zasady haseł _nie są zgodne_i dlaczego.
 
-Możesz również utracić dostęp do bezpośrednio zalogować się do maszyny Wirtualnej, ale należy sporządzić raport na temat przyczyny maszyna wirtualna jest _niezgodne_. Na przykład może być inspekcji, że maszyny wirtualne są przyłączone do domeny i obejmują bieżącego członkostwa w domenie, w obszarze szczegółów raportowania.
+Użytkownik może również nie mieć dostępu do bezpośredniego logowania się do maszyny wirtualnej, ale należy zgłosić, dlaczego maszyna wirtualna nie jest _zgodna_.
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
+Zacznij od wykonania tych samych kroków w powyższej sekcji, aby wyświetlić szczegóły zgodności zasad.
 
-1. Na **Przegląd** lub **zgodności** wybierz przypisanie zasad dla dowolnego inicjatywy, który zawiera definicję zasad konfiguracji gościa to _niezgodne_.
+W okienku **szczegóły zgodności** kliknij pozycję Połącz **ostatnio obliczony zasób**.
 
-1. Wybierz _inspekcji_ zasad w inicjatywy to _niezgodne_.
+   ![Wyświetl szczegóły definicji auditIfNotExists](../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png)
 
-   ![Wyświetl szczegóły definicji inspekcji](../media/determine-non-compliance/guestconfig-audit-compliance.png)
+Na stronie **przypisanie gościa** są wyświetlane wszystkie dostępne szczegóły zgodności. Każdy wiersz w widoku reprezentuje ocenę, która została wykonana w ramach maszyny. W kolumnie **Przyczyna** jest wyświetlana fraza opisująca dlaczego przypisanie gościa jest niezgodne. Na przykład w przypadku inspekcji zasad haseł w kolumnie **Przyczyna** zostanie wyświetlony tekst zawierający bieżącą wartość dla każdego ustawienia.
 
-1. Na **zgodność zasobów** karcie podano następujące informacje:
-
-   - **Nazwa** — nazwa przypisania konfiguracji gościa.
-   - **Zasób nadrzędny** -maszynę wirtualną w _niezgodne_ stanu dla wybranego przypisania konfiguracji gościa.
-   - **Typ zasobu** — _guestConfigurationAssignments_ pełnej nazwy.
-   - **Ostatnio oceniono** — czas ostatniego powiadomienia, usługi gościa konfiguracji usługi Azure Policy o stanie docelowej maszyny wirtualnej.
-
-   ![Wyświetl szczegóły zgodności](../media/determine-non-compliance/guestconfig-assignment-view.png)
-
-1. Wybierz nazwę przypisanie konfiguracji gościa w **nazwa** kolumnie, aby otworzyć **zgodność zasobów** strony.
-
-1. Wybierz **Wyświetl zasób** znajdujący się u góry strony Aby otworzyć **przypisania gościa** strony.
-
-**Przypisania gościa** strony wyświetli wszystkie szczegóły dostępne zgodności. Każdy wiersz w widoku reprezentuje wersję próbną, która została wykonana na maszynie wirtualnej. W **Przyczyna** kolumny, frazę opisujące, dlaczego jest przypisanie gościa _niezgodne_ jest wyświetlany. Jeśli masz inspekcji, że maszyny wirtualne powinny być przyłączony do domeny, na przykład **Przyczyna** kolumny zostanie wyświetlony tekst w tym bieżące członkostwo w domenie.
-
-![Wyświetl szczegóły zgodności](../media/determine-non-compliance/guestconfig-compliance-details.png)
+![Wyświetl szczegóły zgodności.](../media/determine-non-compliance/guestconfig-compliance-details.png)
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Można również wyświetlić szczegółowe informacje o zgodności z programu Azure PowerShell. Najpierw upewnij się, że masz zainstalowany moduł konfiguracji gościa.
+Możesz również wyświetlić szczegóły zgodności z Azure PowerShell. Najpierw upewnij się, że moduł konfiguracji gościa jest zainstalowany.
 
 ```azurepowershell-interactive
 Install-Module Az.GuestConfiguration
 ```
 
-Można wyświetlić bieżący stan wszystkich przypisań gościa dla maszyny Wirtualnej przy użyciu następującego polecenia:
+Bieżący stan wszystkich przypisań gościa dla maszyny wirtualnej można wyświetlić przy użyciu następującego polecenia:
 
 ```azurepowershell-interactive
 Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname>
@@ -163,7 +148,7 @@ Audit that an application is installed inside Windows VMs                 {[Inst
 Audit that an application is not installed inside Windows VMs.            {[InstalledApplication]NotInstalledApplica...
 ```
 
-Aby wyświetlić tylko _Przyczyna_ frazę, która opisuje, dlaczego maszyna wirtualna jest _niezgodne_, zwraca tylko właściwości elementu podrzędnego przyczyna.
+Aby wyświetlić tylko frazę _przyczyny_ opisującą dlaczego maszyna wirtualna jest _niezgodna_, zwróć tylko Właściwość podrzędną przyczyna.
 
 ```azurepowershell-interactive
 Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname> | % ComplianceReasons | % Reasons | % Reason
@@ -173,10 +158,10 @@ Get-AzVMGuestPolicyReport -ResourceGroupName <resourcegroupname> -VMName <vmname
 The following applications are not installed: '<name>'.
 ```
 
-Historia zgodności można również danych wyjściowych przydziałów gościa w zakresie dla maszyny wirtualnej. Dane wyjściowe tego polecenia zawiera szczegóły każdego raportu dla maszyny Wirtualnej.
+Istnieje również możliwość wyprowadzania historii zgodności dla przypisań Gości w zakresie dla komputera. Dane wyjściowe tego polecenia zawierają szczegóły każdego raportu dla maszyny wirtualnej.
 
 > [!NOTE]
-> Dane wyjściowe mogą zwracać dużej ilości danych. Zalecane jest przechowywanie danych wyjściowych w zmiennej.
+> Dane wyjściowe mogą zwrócić dużą ilość danych. Zaleca się przechowywanie danych wyjściowych w zmiennej.
 
 ```azurepowershell-interactive
 $guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname>
@@ -191,7 +176,7 @@ PolicyDisplayName                                                         Compli
 <truncated>
 ```
 
-Aby uprościć ten widok, należy użyć **ShowChanged** parametru. Dane wyjściowe tego polecenia obejmuje tylko raporty, które następnie zmianę stanu zgodności.
+Aby uprościć ten widok, użyj parametru **ShowChanged** . Dane wyjściowe tego polecenia zawierają tylko raporty, które zostały wykonane ze zmianą stanu zgodności.
 
 ```azurepowershell-interactive
 $guestHistory = Get-AzVMGuestPolicyStatusHistory -ResourceGroupName <resourcegroupname> -VMName <vmname> -ShowChanged
@@ -209,32 +194,32 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 ## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>Historia zmian (wersja zapoznawcza)
 
-Jako część nowego **publicznej wersji zapoznawczej**, ostatnich 14 dni historii zmian są dostępne dla wszystkich zasobów platformy Azure, które obsługują [ukończyć usuwanie tryb](../../../azure-resource-manager/complete-mode-deletion.md). Historię zmian zawiera szczegółowe informacje o, gdy wykryte zmiany i a _visual diff_ dla każdej zmiany. Wykrywanie zmian jest wyzwalany, gdy dodane, usunięte lub zmienione właściwości Menedżera zasobów.
+W ramach nowej **publicznej wersji**zapoznawczej historia zmian jest dostępna dla wszystkich zasobów platformy Azure, które obsługują [usuwanie w trybie pełnym](../../../azure-resource-manager/complete-mode-deletion.md). Historia zmian zawiera szczegółowe informacje o tym, kiedy wykryto zmianę i różnicą wizualną dla każdej zmiany. Wykrywanie zmian jest wyzwalane po dodaniu, usunięciu lub zmianie Menedżer zasobów właściwości.
 
 1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
 
-1. Na **Przegląd** lub **zgodności** wybierz zasadę w dowolnym **stan zgodności**.
+1. Na stronie **Przegląd** lub **zgodność** wybierz zasady w dowolnym **stanie zgodności**.
 
-1. W obszarze **zgodność zasobów** karcie **zgodność z zasadami** wybierz zasób.
+1. Na karcie **zgodność zasobów** na stronie **zgodność z zasadami** wybierz zasób.
 
-1. Wybierz **historię zmian (wersja zapoznawcza)** karcie **zgodność zasobów** strony. Lista Wykryto zmiany, jeśli nie są wyświetlane wszelkie istnieje.
+1. Na stronie **zgodność zasobów** wybierz kartę **historia zmian (wersja zapoznawcza)** . Zostanie wyświetlona lista wykrytych zmian (jeśli istnieją).
 
-   ![Azure karcie Historia zmian zasad zgodności zasobu strony](../media/determine-non-compliance/change-history-tab.png)
+   ![Karta historia zmian Azure Policy na stronie zgodności zasobów](../media/determine-non-compliance/change-history-tab.png)
 
-1. Wybierz jeden z wykryte zmiany. _Visual diff_ dla zasobu są przedstawione na **historię zmian** strony.
+1. Wybierz jedną z wykrytych zmian. _Różnica wizualna_ dla zasobu jest wyświetlana na stronie **historia zmian** .
 
-   ![Azure zasad zmian historii Visual różnicowego na stronie Historia zmian](../media/determine-non-compliance/change-history-visual-diff.png)
+   ![Na stronie historii zmian Azure Policy Zmień wizualną różnicę historii](../media/determine-non-compliance/change-history-visual-diff.png)
 
-_Visual diff_ aides do identyfikowania zmiany w zasobie. Wykryto zmiany mogą być niepowiązane z bieżącego stanu zgodności zasobu.
+_Wizualna różnica_ aides w identyfikacji zmian w zasobie. Wykryte zmiany mogą nie być powiązane z bieżącym stanem zgodności zasobu.
 
-Dane historii zmian są udostępniane przez [wykres zasobów Azure](../../resource-graph/overview.md). Aby wysłać zapytanie tych informacji poza witryny Azure portal, zobacz [pobieranie zmian zasobów](../../resource-graph/how-to/get-resource-changes.md).
+Dane historii zmian są udostępniane przez [usługę Azure Resource Graph](../../resource-graph/overview.md). Aby zbadać te informacje poza Azure Portal, zobacz [pobieranie zmian zasobów](../../resource-graph/how-to/get-resource-changes.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md).
+- Zapoznaj się z przykładami w [Azure Policy Samples](../samples/index.md).
 - Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md).
 - Przejrzyj [wyjaśnienie działania zasad](../concepts/effects.md).
-- Zrozumienie sposobu [programowe tworzenie zasad](programmatically-create.md).
-- Dowiedz się, jak [Pobierz dane zgodności](getting-compliance-data.md).
-- Dowiedz się, jak [korygowanie niezgodnych zasobów](remediate-resources.md).
-- Przejrzyj grupy zarządzania jest [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../../management-groups/overview.md).
+- Dowiedz się, jak [programowo utworzyć zasady](programmatically-create.md).
+- Dowiedz się, jak [uzyskać dane zgodności](getting-compliance-data.md).
+- Dowiedz się, jak [skorygować niezgodne zasoby](remediate-resources.md).
+- Zapoznaj się z informacjami o tym, czym jest Grupa zarządzania, aby [zorganizować swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/overview.md).

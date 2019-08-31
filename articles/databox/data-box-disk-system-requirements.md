@@ -8,12 +8,13 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: e17fbcebc128a7169953ed05de617efa25fc25f8
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.localizationpriority: high
+ms.openlocfilehash: 20c27a3e4e9a96a19b347e5ef57ab9fb3c047140
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172717"
+ms.locfileid: "70194434"
 ---
 ::: zone target="docs"
 
@@ -27,12 +28,13 @@ Wymagania systemowe obejmują obsługiwane platformy dla klientów łączących 
 
 ::: zone target="chromeless"
 
-## <a name="prerequisites"></a>Wymagania wstępne
+# <a name="review-prerequisites"></a>Przegląd wymagań wstępnych
 
-Masz dostępny komputer kliencki, z którego możesz skopiować dane. Na komputerze klienckim wymagane jest:
+1. Musisz mieć uporządkowane Data Box Disk przy użyciu samouczka: Zamów Azure Data Box Disk. Odebrano dyski i jeden kabel łączący na dysku.
+2. Masz dostępny komputer kliencki, z którego możesz skopiować dane. Na komputerze klienckim wymagane jest:
 
-- Uruchom obsługiwany system operacyjny.
-- Inne wymagane oprogramowanie jest zainstalowane.
+    - Uruchom obsługiwany system operacyjny.
+    - Inne wymagane oprogramowanie jest zainstalowane.
 
 ::: zone-end
 

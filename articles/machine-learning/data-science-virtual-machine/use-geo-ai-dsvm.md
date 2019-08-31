@@ -1,27 +1,21 @@
 ---
-title: Za pomocą geograficznie sztucznej inteligencji maszyny wirtualnej analizy danych — Azure | Dokumentacja firmy Microsoft
+title: Użyj geograficznego AI
+titleSuffix: Azure Data Science Virtual Machine
 description: Dowiedz się, jak używać maszyny wirtualnej do nauki o danych sztucznej Inteligencji geograficznej do analizowania danych i tworzenie modeli na podstawie danych geoprzestrzennych.
 keywords: głębokiego uczenia i sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, geoprzestrzenna analiza
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.author: vijetaj
-ms.openlocfilehash: 22c0d7d604ca41044d2d969d4ddbd2ae1a4d23d5
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 01238885e68a39ff713bd346a9206668e16e7ee4
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170480"
+ms.locfileid: "70195286"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Za pomocą maszyny wirtualnej analizy danych geograficznych ze sztucznej inteligencji
 
@@ -47,7 +41,7 @@ Oprócz przykładów opartych na środowisku uczenia maszynowego i głębokiego 
 
 2. [Wprowadzenie do analizy geograficznej przy użyciu języka R](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Przykład wprowadzający, który pokazuje, jak korzystać z danych geoprzestrzennych przy użyciu interfejsu języka R do ArcGIS, który jest udostępniany przez bibliotekę [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) . 
 
-3. [Klasyfikacja użycia gruntów na poziomie pikseli](https://github.com/Azure/pixel_level_land_classification): Samouczek, który ilustruje sposób tworzenia modelu sieci głębokiego neuronowych, który akceptuje obraz antenowy jako dane wejściowe i zwraca etykietę okładki gruntowej. Przykłady etykiet okładki gruntowej są *zalesione* i *wodne*. Model zwraca etykietę dla każdego piksela na obrazie. Model jest tworzony przy użyciu platformy Microsoft Open Source [Cognitive Toolkit (CNTK)](https://www.microsoft.com/en-us/cognitive-toolkit/) .
+3. [Klasyfikacja użycia gruntów na poziomie pikseli](https://github.com/Azure/pixel_level_land_classification): Samouczek, który ilustruje sposób tworzenia modelu sieci głębokiego neuronowych, który akceptuje obraz antenowy jako dane wejściowe i zwraca etykietę okładki gruntowej. Przykłady etykiet okładki gruntowej są *zalesione* i *wodne*. Model zwraca etykietę dla każdego piksela na obrazie. 
 
 
 ## <a name="next-steps"></a>Następne kroki

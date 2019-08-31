@@ -1,6 +1,6 @@
 ---
-title: Użyj platforma tożsamości usługi Microsoft do logowania się użytkowników przy użyciu przyznania poświadczeń (ROPC) hasła właściciela zasobu | Azure
-description: Obsługa przeglądarki bez uwierzytelniania są przekazywane przy użyciu przyznania poświadczeń hasła właściciela zasobu.
+title: Korzystanie z platformy tożsamości firmy Microsoft do logowania użytkowników przy użyciu poświadczeń hasła właściciela zasobu (ROPC) | Azure
+description: Obsługa przepływów uwierzytelniania bez przeglądarki przy użyciu hasła właściciela zasobu.
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -12,28 +12,28 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/20/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da111311de7b873be6453862ffcbd56fe546ea7f
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 7d5324aba5202abb76f07d1eaf43fe214e690393
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482384"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193205"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Platforma tożsamości firmy Microsoft i poświadczeń hasła właściciela zasobów OAuth 2.0
+# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Microsoft Identity platform oraz poświadczenia hasła właściciela zasobu OAuth 2,0
 
-Obsługuje platformy tożsamości firmy Microsoft [przyznania poświadczeń hasła właściciela zasobu (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), co umożliwia aplikacji do logowania użytkownika dzięki obsłudze bezpośrednio swoje hasło. Przepływ ROPC wymaga wysokiego stopnia narażenia zaufania i użytkownika, a ten przepływ należy używać tylko, gdy nie można użyć innych, bardziej bezpiecznymi przepływów.
+Platforma tożsamości firmy Microsoft obsługuje [przyznawanie poświadczeń hasła właściciela zasobu (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), co umożliwia aplikacji Logowanie użytkownika przez bezpośrednią obsługę hasła. Przepływ ROPC wymaga wysokiego stopnia zaufania i narażenia użytkownika. tego przepływu należy używać tylko wtedy, gdy inne, bardziej bezpieczne, nie można używać przepływów.
 
 > [!IMPORTANT]
 >
-> * Punkt końcowy platforma tożsamości firmy Microsoft obsługuje tylko ROPC dla dzierżaw usługi Azure AD, nie osobistych kont. Oznacza to, że trzeba korzystać z punktem końcowym specyficznym dla dzierżawy (`https://login.microsoftonline.com/{TenantId_or_Name}`) lub `organizations` punktu końcowego.
-> * Konta osobiste, które są zaproszeni do dzierżawy usługi Azure AD nie można użyć ROPC.
-> * Konta, które nie mają hasła nie może zalogować się za pomocą ROPC. W tym scenariuszu zaleca się używać inny przepływ dla aplikacji zamiast tego.
-> * Jeśli użytkownicy muszą użyć uwierzytelniania wieloskładnikowego (MFA) do logowania do aplikacji, będą blokowane zamiast tego.
+> * Punkt końcowy platformy tożsamości firmy Microsoft obsługuje tylko ROPC dla dzierżawców usługi Azure AD, a nie konta osobiste. Oznacza to, że należy użyć punktu końcowego określonego dla dzierżawy`https://login.microsoftonline.com/{TenantId_or_Name}`() `organizations` lub punktu końcowego.
+> * Konta osobiste, które są zapraszane do dzierżawy usługi Azure AD, nie mogą używać ROPC.
+> * Konta, które nie mają haseł, nie mogą się zalogować za poorednictwem ROPC. W tym scenariuszu zalecamy użycie w zamian innego przepływu dla aplikacji.
+> * Jeśli użytkownicy muszą korzystać z uwierzytelniania wieloskładnikowego (MFA) do logowania się do aplikacji, zostaną one zablokowane.
 
 ## <a name="protocol-diagram"></a>Diagram protokołu
 
@@ -43,15 +43,15 @@ Na poniższym diagramie przedstawiono przepływ ROPC.
 
 ## <a name="authorization-request"></a>Żądanie autoryzacji
 
-Przepływ ROPC jest pojedyncze żądanie&mdash;wysyła do klienta w identyfikacji i poświadczenia użytkownika do dostawcy tożsamości, a następnie otrzymuje w odpowiedzi tokeny. Klient musi żądać adres e-mail użytkownika (UPN) i hasło przed jej wprowadzeniem. Natychmiast po żądania zakończonego powodzeniem klient powinien gwarantuje bezpieczne wydawanie poświadczenia użytkownika z pamięci. Nigdy nie należy zapisać je.
+Przepływ ROPC jest pojedynczym żądaniem: wysyła identyfikator klienta i poświadczenia użytkownika do dostawcy tożsamości, a następnie odbiera tokeny zwracane przez program. Przed wykonaniem tych czynności klient musi zażądać adresu e-mail użytkownika (UPN) i hasła. Natychmiast po pomyślnym żądaniu klient powinien bezpiecznie zwolnić poświadczenia użytkownika z pamięci. Nigdy nie należy ich zapisywać.
 
 > [!TIP]
-> Spróbuj wykonać tego żądania w narzędziu Postman!
-> [![Spróbuj uruchomić to żądanie w narzędziu Postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> Spróbuj wykonać to żądanie w programie Poster!
+> [![Spróbuj uruchomić to żądanie w programie Poster](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
 ```
-// Line breaks and spaces are for legibility only.
+// Line breaks and spaces are for legibility only.  This is a public client, so no secret is required. 
 
 POST {tenant}/oauth2/v2.0/token
 Host: login.microsoftonline.com
@@ -66,15 +66,18 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr | Warunek | Opis |
 | --- | --- | --- |
-| `tenant` | Wymagane | Chcesz się zalogować użytkownika do dzierżawy katalogu. Może to być w formacie przyjaznej nazwy lub identyfikatora GUID. Nie można ustawić ten parametr `common` lub `consumers`, ale może być ustawiona na `organizations`. |
+| `tenant` | Wymagane | Dzierżawa katalogu, w której ma być zalogowany użytkownik. Może to być w formacie identyfikatora GUID lub przyjaznej nazwy. Ten parametr nie może być ustawiony `common` na `consumers`wartość lub, ale może być `organizations`ustawiony na. |
+| `client_id` | Wymagane | Identyfikator aplikacji (klienta), którą strona [Rejestracje aplikacji Azure Portala](https://go.microsoft.com/fwlink/?linkid=2083908) została przypisana do aplikacji. | 
 | `grant_type` | Wymagane | Musi być równa `password`. |
 | `username` | Wymagane | Adres e-mail użytkownika. |
 | `password` | Wymagane | Hasło użytkownika. |
-| `scope` | Zalecane | Listę rozdzielonych spacjami [zakresy](v2-permissions-and-consent.md), lub uprawnienia, których wymaga aplikacja. W przepływie interaktywne administrator lub użytkownik musi wyrazić zgodę te zakresy wcześniej. |
+| `scope` | Zalecane | Rozdzielana spacjami lista [zakresów](v2-permissions-and-consent.md)lub uprawnień wymaganych przez aplikację. W przepływie interaktywnym administrator lub użytkownik musi wyrazić zgodę na te zakresy przed czasem. |
+| `client_secret`| Czasami wymagane | Jeśli aplikacja jest klientem publicznym, a następnie `client_secret` `client_assertion` nie można jej uwzględnić.  Jeśli aplikacja jest klientem poufnym, należy ją uwzględnić. | 
+| `client_assertion` | Czasami wymagane | Inna forma `client_secret`, wygenerowana przy użyciu certyfikatu.  Aby uzyskać więcej informacji, zobacz [poświadczenia certyfikatu](active-directory-certificate-credentials.md) . | 
 
-### <a name="successful-authentication-response"></a>Pomyślne uwierzytelnienie odpowiedzi
+### <a name="successful-authentication-response"></a>Pomyślna odpowiedź uwierzytelniania
 
-Poniższy przykład przedstawia odpowiedź oznaczająca Powodzenie tokenu:
+W poniższym przykładzie przedstawiono Pomyślne odpowiedzi tokenu:
 
 ```json
 {
@@ -89,26 +92,25 @@ Poniższy przykład przedstawia odpowiedź oznaczająca Powodzenie tokenu:
 
 | Parametr | Format | Opis |
 | --------- | ------ | ----------- |
-| `token_type` | String | Zawsze ustawiony na wartość `Bearer`. |
-| `scope` | Ciągi oddzielone spacjami | Jeśli został zwrócony token dostępu, a ten parametr zawiera listę zakresów, który token dostępu jest prawidłowy dla. |
-| `expires_in`| int | Liczba sekund, które token dostępu dołączony jest nieprawidłowa dla. |
-| `access_token`| Nieprzezroczysty ciąg | Wystawiony dla [zakresy](v2-permissions-and-consent.md) którego zażądano. |
-| `id_token` | JWT | Jeśli wystawionych oryginalny `scope` parametru `openid` zakresu. |
-| `refresh_token` | Nieprzezroczysty ciąg | Jeśli wystawionych oryginalny `scope` parametru `offline_access`. |
+| `token_type` | String | Zawsze ustawiaj `Bearer`na. |
+| `scope` | Ciągi rozdzielone spacją | Jeśli został zwrócony token dostępu, ten parametr wyświetla listę zakresów, dla których token dostępu jest prawidłowy. |
+| `expires_in`| int | Liczba sekund, przez jaką jest ważny włączony token dostępu. |
+| `access_token`| Ciąg nieprzezroczysty | Wystawiony dla żądanych [zakresów](v2-permissions-and-consent.md) . |
+| `id_token` | JWT | Wystawiony, `scope` Jeśli oryginalny parametr `openid` zawiera zakres. |
+| `refresh_token` | Ciąg nieprzezroczysty | Wystawiony, `scope` Jeśli zostanie `offline_access`uwzględniony oryginalny parametr. |
 
-Można użyć tokenu odświeżania do uzyskania nowych tokenów dostępu i Odśwież tokeny przy użyciu tego samego przepływu, opisane w [dokumentacji przepływu OAuth kodów](v2-oauth2-auth-code-flow.md#refresh-the-access-token).
+Możesz użyć tokenu odświeżania, aby uzyskać nowe tokeny dostępu i odświeżać tokeny przy użyciu tego samego przepływu opisanego w [dokumentacji przepływu kodu OAuth](v2-oauth2-auth-code-flow.md#refresh-the-access-token).
 
-### <a name="error-response"></a>Odpowiedzi na błąd
+### <a name="error-response"></a>Odpowiedź na błąd
 
-Jeśli użytkownik udzielona poprawna nazwa użytkownika lub hasło lub nie odebrał żądanego zgody, uwierzytelnianie nie powiedzie się.
+Jeśli użytkownik nie podał prawidłowej nazwy użytkownika lub hasła lub klient nie otrzyma żądanej zgody, uwierzytelnienie zakończy się niepowodzeniem.
 
 | Błąd | Opis | Akcja klienta |
 |------ | ----------- | -------------|
-| `invalid_grant` | Uwierzytelnianie nie powiodło się | Poświadczenia są niepoprawne lub klient nie ma wyrażania zgody dla żądanych zakresów. Jeśli zakresy nie są przyznawane, `consent_required` zostanie zwrócony błąd. W takim przypadku klient powinien wysłać użytkownika do monitu interakcyjnego przy użyciu widoku sieci Web lub w przeglądarce. |
-| `invalid_request` | Żądanie zostało nieprawidłowo skonstruowany. | Typ udzielania nie jest obsługiwana na `/common` lub `/consumers` kontekst uwierzytelniania.  Zamiast nich należy używać słów kluczowych `/organizations`. |
-| `invalid_client` | Aplikacja jest nieprawidłowo skonfigurowana | Może się to zdarzyć, jeśli `allowPublicClient` właściwość nie jest ustawiona na wartość true w [manifest aplikacji](reference-app-manifest.md). `allowPublicClient` Właściwość jest niezbędne, ponieważ przydział ROPC nie ma identyfikatora URI przekierowania. Usługa Azure AD nie może określić, jeśli aplikacja jest aplikacji publicznych klienta lub poufne klienta, chyba że właściwość jest ustawiona. ROPC jest obsługiwana tylko w przypadku aplikacji publicznych klienta. |
+| `invalid_grant` | Uwierzytelnianie nie powiodło się | Poświadczenia były nieprawidłowe lub klient nie ma zgody na żądane zakresy. Jeśli zakresy nie zostaną przyznane, `consent_required` zostanie zwrócony błąd. W takim przypadku klient powinien wysłać użytkownika do interakcyjnego monitu przy użyciu widoku WebView lub przeglądarki. |
+| `invalid_request` | Żądanie zostało nieprawidłowo skonstruowane | Typ grantu nie jest obsługiwany w `/common` przypadku `/consumers` kontekstów uwierzytelniania lub.  Użyj `/organizations` zamiast tego identyfikatora dzierżawy. |
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 
-* ROPC osobiście wypróbować przy użyciu [Przykładowa aplikacja konsoli](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2).
-* Aby ustalić, czy należy używać punktu końcowego v2.0, przeczytaj temat [ograniczenia dotyczące programu Microsoft identity platformy](active-directory-v2-limitations.md).
+* Wypróbuj usługę ROPC za pomocą przykładowej [aplikacji konsolowej](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2).
+* Aby określić, czy należy używać punktu końcowego v 2.0, przeczytaj temat [ograniczenia dotyczące platformy tożsamości firmy Microsoft](active-directory-v2-limitations.md).

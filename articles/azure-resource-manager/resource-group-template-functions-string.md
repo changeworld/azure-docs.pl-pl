@@ -3,15 +3,15 @@ title: Funkcje szablonu Azure Resource Manager — ciąg | Microsoft Docs
 description: Opisuje funkcje, które mają być używane w szablonie Azure Resource Manager do pracy z ciągami.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1db1eb9be3586f76a8d3abc48a78a1e691da9924
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c30bb47f3f35663a6ffcfc0126758eb82c9dec4e
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698180"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194778"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Funkcje ciągów dla Azure Resource Manager szablonów
 
@@ -242,8 +242,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
-| base64Output | Ciąg | b25lLCB0d28sIHRocmVl |
-| toStringOutput | Ciąg | Raz dwa trzy |
+| base64Output | String | b25lLCB0d28sIHRocmVl |
+| toStringOutput | String | Raz dwa trzy |
 | toJsonOutput | Object | {"jeden": "a", "dwa": "b"} |
 
 ## <a name="concat"></a>Concat
@@ -288,7 +288,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
 | concatOutput | String | prefix-5yj4yjf5mbg72 |
 
@@ -405,7 +405,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
 | stringTrue | Bool | Prawda |
 | stringFalse | Bool | False |
@@ -424,7 +424,7 @@ Konwertuje wartość na identyfikator URI danych.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToConvert |Yes |ciąg |Wartość do przekonwertowania na identyfikator URI danych. |
+| stringToConvert |Tak |ciąg |Wartość do przekonwertowania na identyfikator URI danych. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -466,8 +466,8 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
-| dataUriOutput | Ciąg | data:text/plain;charset=utf8;base64,SGVsbG8= |
-| toStringOutput | Ciąg | Cześć ludzie! |
+| dataUriOutput | String | data:text/plain;charset=utf8;base64,SGVsbG8= |
+| toStringOutput | String | Cześć ludzie! |
 
 ## <a name="datauritostring"></a>dataUriToString
 
@@ -479,7 +479,7 @@ Konwertuje wartość sformatowaną identyfikatora URI danych na ciąg.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| dataUriToConvert |Yes |ciąg |Wartość identyfikatora URI danych do przekonwertowania. |
+| dataUriToConvert |Tak |ciąg |Wartość identyfikatora URI danych do przekonwertowania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -599,8 +599,8 @@ Określa, czy ciąg ma kończyć się wartością. W porównaniu z rozróżniani
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |ciąg |Wartość, która zawiera element do znalezienia. |
-| stringToFind |Yes |ciąg |Wartość do znalezienia. |
+| stringToSearch |Tak |ciąg |Wartość, która zawiera element do znalezienia. |
+| stringToFind |Tak |ciąg |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -646,7 +646,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
 | startsTrue | Bool | Prawda |
 | startsCapTrue | Bool | Prawda |
@@ -665,7 +665,7 @@ Zwraca pierwszy znak ciągu lub pierwszy element tablicy.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |Tablica lub ciąg |Wartość do pobrania pierwszego elementu lub znaku. |
+| arg1 |Tak |Tablica lub ciąg |Wartość do pobrania pierwszego elementu lub znaku. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -760,7 +760,7 @@ Poniższy przykładowy szablon pokazuje, jak używać funkcji format.
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
 | formatTest | String | Witaj, użytkownik. Sformatowana liczba: 8 175 133 |
 
@@ -845,8 +845,8 @@ Zwraca pierwszą pozycję wartości w ciągu. W porównaniu z rozróżnianiem wi
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |ciąg |Wartość, która zawiera element do znalezienia. |
-| stringToFind |Yes |ciąg |Wartość do znalezienia. |
+| stringToSearch |Tak |ciąg |Wartość, która zawiera element do znalezienia. |
+| stringToFind |Tak |ciąg |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -958,7 +958,7 @@ Zwraca ostatnią pozycję wartości w ciągu. W porównaniu z rozróżnianiem wi
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |ciąg |Wartość, która zawiera element do znalezienia. |
+| stringToSearch |Tak |ciąg |Wartość, która zawiera element do znalezienia. |
 | stringToFind |Tak |ciąg |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -1001,7 +1001,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
 | pierwsze | Int | 0 |
 | Ostatnia | Int | 3 |
@@ -1134,7 +1134,7 @@ Poniższy przykładowy szablon przedstawia parametr z nowym identyfikatorem.
 
 Dane wyjściowe z powyższego przykładu różnią się w zależności od wdrożenia, ale będą podobne do następujących:
 
-| Name (Nazwa) | Typ | Value |
+| Name | Typ | Value |
 | ---- | ---- | ----- |
 | guidOutput | ciąg | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
@@ -1177,7 +1177,7 @@ Poniższy przykład używa funkcji newGuid, aby utworzyć unikatową nazwę kont
 
 Dane wyjściowe z powyższego przykładu różnią się w zależności od wdrożenia, ale będą podobne do następujących:
 
-| Name (Nazwa) | Typ | Value |
+| Name | Typ | Value |
 | ---- | ---- | ----- |
 | nameOutput | ciąg | storagenziwvyru7uxie |
 
@@ -1192,7 +1192,7 @@ Zwraca ciąg wyrównany do prawej poprzez dodanie znaków po lewej stronie do os
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| valueToPad |Yes |ciąg lub int |Wartość na wyrównanie do prawej. |
+| valueToPad |Tak |ciąg lub int |Wartość na wyrównanie do prawej. |
 | totalLength |Tak |int |Całkowita liczba znaków w zwracanym ciągu. |
 | paddingCharacter |Nie |pojedynczy znak |Znak, który ma zostać użyty do lewej krawędzi do momentu osiągnięcia całkowitej długości. Wartość domyślna to spacja. |
 
@@ -1230,7 +1230,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
-| stringOutput | Ciąg | 0000000123 |
+| stringOutput | String | 0000000123 |
 
 ## <a name="replace"></a>stępować
 
@@ -1280,10 +1280,10 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
-| firstOutput | Ciąg | 1231231234 |
-| secondOutput | Ciąg | 123-123-xxxx |
+| firstOutput | String | 1231231234 |
+| secondOutput | String | 123-123-xxxx |
 
 ## <a name="skip"></a>pomiń
 
@@ -1422,7 +1422,7 @@ Określa, czy ciąg rozpoczyna się od wartości. W porównaniu z rozróżnianie
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToSearch |Yes |ciąg |Wartość, która zawiera element do znalezienia. |
+| stringToSearch |Tak |ciąg |Wartość, która zawiera element do znalezienia. |
 | stringToFind |Tak |ciąg |Wartość do znalezienia. |
 
 ### <a name="return-value"></a>Wartość zwracana
@@ -1739,7 +1739,7 @@ Konwertuje określony ciąg na wielkie litery.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToChange |Yes |ciąg |Wartość do przekonwertowania na wielkie litery. |
+| stringToChange |Tak |ciąg |Wartość do przekonwertowania na wielkie litery. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1790,7 +1790,7 @@ Usuwa wszystkie spacje wiodące i końcowe z określonego ciągu.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToTrim |Yes |ciąg |Wartość do przycięcia. |
+| stringToTrim |Tak |ciąg |Wartość do przycięcia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -1822,7 +1822,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
 | przesłać | String | Raz dwa trzy |
 
@@ -1914,8 +1914,8 @@ Tworzy bezwzględny identyfikator URI przez połączenie baseUri i ciągu relati
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| baseUri |Yes |ciąg |Podstawowy ciąg identyfikatora URI. |
-| relativeUri |Yes |ciąg |Względny ciąg identyfikatora URI, który ma zostać dodany do podstawowego ciągu identyfikatora URI. |
+| baseUri |Tak |ciąg |Podstawowy ciąg identyfikatora URI. |
+| relativeUri |Tak |ciąg |Względny ciąg identyfikatora URI, który ma zostać dodany do podstawowego ciągu identyfikatora URI. |
 
 Wartość parametru **baseUri** może zawierać określony plik, ale podczas KONSTRUOWANIA identyfikatora URI jest używana tylko ścieżka podstawowa. Na przykład przekazywanie `http://contoso.com/resources/azuredeploy.json` jako parametr baseUri skutkuje podstawowym `http://contoso.com/resources/`identyfikatorem URI.
 
@@ -1962,7 +1962,7 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
 | uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
@@ -1978,7 +1978,7 @@ Koduje identyfikator URI.
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| stringToEncode |Yes |ciąg |Wartość do kodowania. |
+| stringToEncode |Tak |ciąg |Wartość do kodowania. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -2019,9 +2019,9 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
 | Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
-| uriOutput | Ciąg | http://contoso.com/resources/nested/azuredeploy.json |
-| componentOutput | Ciąg | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | Ciąg | http://contoso.com/resources/nested/azuredeploy.json |
+| uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
+| componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
+| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="uricomponenttostring"></a>uriComponentToString
 
@@ -2072,11 +2072,11 @@ Poniższy [przykładowy szablon](https://github.com/Azure/azure-docs-json-sample
 
 Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name (Nazwa) | Typ | Value |
 | ---- | ---- | ----- |
 | uriOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | String | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
-| toStringOutput | Ciąg | http://contoso.com/resources/nested/azuredeploy.json |
+| toStringOutput | String | http://contoso.com/resources/nested/azuredeploy.json |
 
 ## <a name="utcnow"></a>utcNow
 
@@ -2145,7 +2145,7 @@ Poniższy przykładowy szablon pokazuje różne formaty wartości daty i godziny
 
 Dane wyjściowe z powyższego przykładu różnią się w zależności od wdrożenia, ale będą podobne do następujących:
 
-| Name (Nazwa) | Typ | Wartość |
+| Name | Typ | Value |
 | ---- | ---- | ----- |
 | utcOutput | ciąg | 20190305T175318Z |
 | utcShortOutput | ciąg | 03/05/2019 |

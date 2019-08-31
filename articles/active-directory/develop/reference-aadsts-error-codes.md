@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/13/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cfefe02b8c9325a2d501289b10b09bc153b0593
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 261fe2142fc3bc45625b5d088a46ad92c34222db
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135753"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193167"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kody błędów uwierzytelniania i autoryzacji
 
@@ -31,7 +31,12 @@ Szukasz informacji o kodach błędów AADSTS, które są zwracane z usługi toke
 > [!NOTE]
 > Te informacje mają charakter wstępny i mogą ulec zmianie. Masz pytanie lub nie możesz znaleźć tego, czego szukasz? Utwórz problem w usłudze GitHub lub zapoznaj się z [pomocą techniczną i opcjami pomocy dla deweloperów](active-directory-develop-help-support.md) , aby dowiedzieć się więcej na temat innych sposobów uzyskiwania pomocy i obsługi technicznej.
 >
-> Ta dokumentacja jest dostępna dla wskazówek dotyczących deweloperów i administratorów, ale nigdy nie powinna być używana przez klienta. Kody błędów mogą ulec zmianie w dowolnym momencie w celu zapewnienia bardziej szczegółowych komunikatów o błędach, które są przeznaczone do ułatwienia deweloperom podczas kompilowania aplikacji. Aplikacje, które są zależne od tekstu lub numerów kodów błędów, zostaną złamane z upływem czasu.  
+> Ta dokumentacja jest dostępna dla wskazówek dotyczących deweloperów i administratorów, ale nigdy nie powinna być używana przez klienta. Kody błędów mogą ulec zmianie w dowolnym momencie w celu zapewnienia bardziej szczegółowych komunikatów o błędach, które są przeznaczone do ułatwienia deweloperom podczas kompilowania aplikacji. Aplikacje, które są zależne od tekstu lub numerów kodów błędów, zostaną złamane z upływem czasu.
+
+## <a name="lookup-current-error-code-information"></a>Wyszukaj bieżące informacje o kodzie błędu
+Kody błędów i komunikaty mogą ulec zmianie.  Aby uzyskać najbardziej aktualne informacje, zapoznaj [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) się ze stroną, aby znaleźć AADSTS opisów błędów, poprawek i sugerowanych rozwiązań.  
+
+Wyszukaj w liczbowej części zwróconego kodu błędu.  Na przykład jeśli wystąpił kod błędu "AADSTS16000", wykonaj wyszukiwanie w [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) "16000".  Możesz również połączyć się bezpośrednio z określonym błędem, dodając numer kodu błędu do adresu URL: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000).
 
 ## <a name="aadsts-error-codes"></a>Kody błędów AADSTS
 

@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 611947c8c1d202cf4abf4222dfe0072aced58507
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 81b1f06238b8205e72fd989bb581fba39423f7c3
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135724"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193230"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autoryzowanie dostępu do aplikacji internetowych usługi Azure Active Directory przy użyciu przepływu udzielania kodu OAuth 2.0
 
@@ -179,7 +179,7 @@ Pomyślna odpowiedź może wyglądać następująco:
 
 | Parametr | Opis |
 | --- | --- |
-| access_token |Żądany [token dostępu](access-tokens.md) jako podpisany token sieci Web JSON (JWT). Aplikacja może używać tego tokenu do uwierzytelniania w zabezpieczonym zasobie, takim jak internetowy interfejs API. |
+| access_token |Żądany token dostępu.  Jest to ciąg nieprzezroczysty — zależy od tego, co zasób oczekuje na otrzymanie, i nie jest przeznaczony do przeglądania przez klienta. Aplikacja może używać tego tokenu do uwierzytelniania w zabezpieczonym zasobie, takim jak internetowy interfejs API. |
 | token_type |Wskazuje wartość typu tokenu. Jedynym typem obsługiwanym przez usługę Azure AD jest znak. Aby uzyskać więcej informacji na temat tokenów okaziciela [, zobacz Struktura autoryzacji OAuth 2.0: Użycie tokenu okaziciela (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt) |
 | expires_in |Jak długo token dostępu jest prawidłowy (w sekundach). |
 | expires_on |Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczba sekund od 1970-01-01T0:0: 0Z UTC do czasu wygaśnięcia. Ta wartość służy do określenia okresu istnienia buforowanych tokenów. |
@@ -283,8 +283,6 @@ Tokeny dostępu są krótkotrwałe i muszą być odświeżane po wygaśnięciu, 
 
 Tokeny odświeżania nie mają określonych okresów istnienia. Zwykle okresy istnienia tokenów odświeżania są stosunkowo długie. Jednak w niektórych przypadkach tokeny odświeżania wygasną, są odwoływane lub nie ma wystarczających uprawnień do żądanej akcji. Aplikacja musi oczekiwać i obsłużyć błędy zwrócone przez punkt końcowy wystawiania tokenów.
 
-[!NOTE] Okresy istnienia tokenu dostępu można znaleźć tutaj: https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-configurable-token-lifetimes#configurable-token-lifetime-properties Domyślnie tokeny dostępu to 1 godzina, a wartość domyślna dla tokenów odświeżania to 90 dni. Te okresy istnienia można zmienić, konfigurując odpowiednio okresy istnienia tokenu. 
-
 Po otrzymaniu odpowiedzi z błędem tokenu odświeżania Odrzuć bieżący token odświeżania i zażądaj nowego kodu autoryzacji lub tokenu dostępu. W szczególności w przypadku używania tokenu odświeżania w przepływie przydzielenia kodu autoryzacji, jeśli otrzymasz odpowiedź z `interaction_required` kodami błędów lub `invalid_grant` , Odrzuć token odświeżenia i zażądaj nowego kodu autoryzacji.
 
 Przykładowe żądanie do punktu końcowego **specyficznego** dla dzierżawy (można również użyć **wspólnego** punktu końcowego), aby uzyskać nowy token dostępu przy użyciu tokenu odświeżania wygląda następująco:
@@ -352,3 +350,6 @@ Przykładowa odpowiedź na błąd może wyglądać następująco:
 | correlation_id |Unikatowy identyfikator żądania, które może pomóc w diagnostyce między składnikami. |
 
 Opis kodów błędów i zalecanej akcji klienta można znaleźć w temacie [kody błędów dla błędów punktu końcowego tokenu](#error-codes-for-token-endpoint-errors).
+
+## <a name="next-steps"></a>Następne kroki
+Aby dowiedzieć się więcej o punkcie końcowym usługi Azure AD v 1.0 i sposobach dodawania uwierzytelniania i autoryzacji do aplikacji sieci Web i interfejsów API sieci Web, zobacz [przykładowe aplikacje](sample-v1-code.md).

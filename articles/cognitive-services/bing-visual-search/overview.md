@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: overview
-ms.date: 03/27/2019
+ms.date: 08/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: 15abbfd8892464f3a2c21a85c07bc5b8e94e47ad
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 22a8bb2609439a82a825bf7f542709d46771ad92
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594694"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195224"
 ---
 # <a name="what-is-the-bing-visual-search-api"></a>Co to jest interfejs API wyszukiwania wizualnego Bing?
 
-Interfejs API wyszukiwania wizualnego Bing zwraca szczegółowe informacje o obrazie. Możesz przekazać obraz lub podać adres URL. Szczegółowe dane są wizualnie podobnymi obrazami, źródłami zakupów, stronami sieci Web, które zawierają obraz i nie tylko. Szczegółowe informacje zwracane przez interfejs API wyszukiwania wizualnego Bing są podobne do pokazanych w Bing.com/images.
+Interfejs API wyszukiwania wizualnego Bing zwraca szczegółowe informacje o obrazie. Możesz przekazać obraz lub podać adres URL. Szczegółowe dane są wizualnie podobnymi obrazami, źródłami zakupów, stronami sieci Web, które zawierają obraz i nie tylko. Szczegółowe informacje zwracane przez interfejs API wyszukiwania wizualnego Bing są podobne do pokazanych w Bing.com/images. 
 
 Jeśli używasz [interfejs API wyszukiwania obrazów Bing](../bing-image-search/overview.md), możesz użyć tokenów usługi Insights z wyników wyszukiwania tego interfejsu API dla Wyszukiwanie wizualne Bing zamiast przekazywania obrazu.
 
@@ -38,6 +38,7 @@ Poniższe informacje można odnaleźć przy użyciu wyszukiwanie wizualne Bing:
 | Powiązane wyszukiwania                     | Powiązane wyszukiwania wykonane przez innych użytkowników lub oparte na zawartości obrazu.            |
 | Strony sieci Web, które zawierają obraz     | Strony internetowe, które zawierają obraz wejściowy.            |
 | Przepisy                              | Strony sieci Web, które zawierają przepisy dotyczące tworzenia naczyń z obrazu wejściowego.            |
+| Jednostki                             | Dobrze znane osoby, miejsca i rzeczy. |
 
 Oprócz szczegółowych informacji wyszukiwanie wizualne Bing zwraca różne warunki (czyli Tagi) pochodzące z obrazu wejściowego. Tagi umożliwiają użytkownikom Eksplorowanie pojęć znalezionych w obrazie. Na przykład jeśli obraz wejściowy jest sławę Athlete, jeden z tagów może być nazwą Athlete, inny tag może być sportem. Lub, jeśli obraz wejściowy jest kołowy firmy Apple, Tagi mogą być kołowe firmy Apple, ciasta i Desserts.
 
@@ -51,7 +52,7 @@ Interfejs API wyszukiwania wizualnego Bing jest usługą internetową zgodną z 
 2. Wyślij żądanie do interfejsu API z prawidłowym zapytaniem wyszukiwania.
 3. Przetwórz odpowiedź interfejsu API, analizując zwrócony komunikat JSON.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Najpierw wypróbuj interfejs API wyszukiwania wizualnego Bing [Interactive](https://azure.microsoft.com/services/cognitive-services/bing-visual-search/).
 Demonstracja pokazuje, jak można szybko dostosować zapytanie wyszukiwania i wyszukuj sieć Web dla obrazów.

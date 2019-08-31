@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/12/2019
+ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: 08864d6a965921f7f6d284dc53bd2586d30fedd1
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 096b6a13c85d04ebeb4f2ffae72acdd8629ae886
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014425"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191752"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosuj ustawienia klastra Service Fabric
 W tym artykule opisano różne ustawienia sieci szkieletowej dla klastra Service Fabric, które można dostosować. W przypadku klastrów hostowanych na platformie Azure można dostosować ustawienia za pomocą [Azure Portal](https://portal.azure.com) lub szablonu Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [uaktualnianie konfiguracji klastra platformy Azure](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych można dostosować ustawienia, aktualizując plik *ClusterConfig. JSON* i wykonując uaktualnienie konfiguracji w klastrze. Aby uzyskać więcej informacji, zobacz [uaktualnianie konfiguracji klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -236,6 +236,8 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |UserMaxStandByReplicaCount |Int, wartość domyślna to 1 |Dynamiczne|Domyślna maksymalna liczba replik rezerwowych zachowywanych przez system dla usług użytkownika. |
 |UserReplicaRestartWaitDuration |Czas w sekundach, wartość domyślna to \* 60,0 30 |Dynamiczne|Określ wartość TimeSpan w sekundach. Gdy trwała replika ulegnie awarii; Windows Fabric czeka na ten czas trwania repliki, aby utworzyć kopię zapasową przed utworzeniem nowych replik zamiennych (co wymagałoby kopii stanu). |
 |UserStandByReplicaKeepDuration |Czas w sekundach, wartość domyślna to \* 3600,0 \* 24 7 |Dynamiczne|Określ wartość TimeSpan w sekundach. Gdy utrwalona replika wraca ze stanu Down; być może został już zastąpiony. Ten czasomierz określa, jak długo Radio będzie utrzymywać replikę rezerwową przed odpisaniem. |
+|WaitForInBuildReplicaSafetyCheckTimeout|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (60 * 10)|Dynamiczne|Określ wartość TimeSpan w sekundach. Wpis konfiguracyjny dla opcjonalnego limitu czasu sprawdzania bezpieczeństwa WaitForInBuildReplica. Ta konfiguracja określa limit czasu sprawdzania bezpieczeństwa WaitForInBuildReplica dla aktywacji i uaktualnień węzłów. To sprawdzenie zabezpieczeń kończy się niepowodzeniem, jeśli którykolwiek z poniższych ma wartość PRAWDA:-tworzony jest podstawowy i rozmiar zestawu repliki docelowej ft > 1 — Jeśli bieżąca replika jest w kompilacji i jest utrwalona — jeśli jest to bieżąca podstawowa i Nowa replika jest skompilowana, to sprawdzanie zabezpieczeń zostanie pominięte PED, jeśli limit czasu wygaśnie, nawet jeśli jeden z poprzednich warunków nadal jest prawdziwy. |
+|WaitForReconfigurationSafetyCheckTimeout|TimeSpan, wartość domyślna to common:: TimeSpan:: FromSeconds (60.0 * 10)|Dynamiczne|Określ wartość TimeSpan w sekundach. Wpis konfiguracyjny dla opcjonalnego limitu czasu sprawdzania bezpieczeństwa WaitForReconfiguration. Ta konfiguracja definiuje limit czasu sprawdzania bezpieczeństwa WaitForReconfiguration dla aktywacji i uaktualnień węzłów. To sprawdzenie zabezpieczeń kończy się niepowodzeniem, jeśli sprawdzana replika jest częścią partycji, która jest w trakcie ponownej konfiguracji. Sprawdzanie bezpieczeństwa zostanie pominięte po upływie limitu czasu, nawet jeśli partycja nadal jest w ponownej konfiguracji.|
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 
@@ -647,6 +649,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 |AADClusterApplication|ciąg, wartość domyślna to ""|Static|Nazwa lub identyfikator aplikacji internetowego interfejsu API reprezentujący klaster |
 |AADLoginEndpoint|ciąg, wartość domyślna to ""|Static|Punkt końcowy logowania usługi AAD, domyślna komercyjna platforma Azure określona dla środowiska innego niż domyślne, takie jak\/Azure Government "https:/Login.microsoftonline.us" |
 |AADTenantId|ciąg, wartość domyślna to ""|Static|Identyfikator dzierżawy (GUID) |
+|AcceptExpiredPinnedClusterCertificate|bool, wartość domyślna to FALSE|Dynamiczne|Flaga oznaczająca, czy akceptować wygasłe certyfikaty klastrów zadeklarowane przez odcisk palca mają zastosowanie tylko do certyfikatów klastra; tak, aby zachować aktywność klastra. |
 |AdminClientCertThumbprints|ciąg, wartość domyślna to ""|Dynamiczne|Odciski palca certyfikatów używanych przez klientów w roli administratora. Jest to lista nazw rozdzielonych przecinkami. |
 |AADTokenEndpointFormat|ciąg, wartość domyślna to ""|Static|Punkt końcowy tokenu usługi AAD, domyślny komercyjny dla platformy Azure, określony dla środowiska innego niż domyślne,\/takie jak{0}Azure Government "https:/Login.microsoftonline.us/" |
 |AdminClientClaims|ciąg, wartość domyślna to ""|Dynamiczne|Wszystkie możliwe oświadczenia oczekiwane przez klientów administracyjnych; ten sam format co ClientClaims; Ta lista jest wewnętrznie dodawana do ClientClaims; nie trzeba również dodawać tych samych wpisów do ClientClaims. |

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/25/2019
+ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: bc5216fccd5beab0e655776c0ccda3c53332da6f
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: b558384fe6bc86cd7b0ebd640407557e23f68ddd
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478603"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194562"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Samouczek: Skonfiguruj bramę aplikacji z zakończeniem SSL przy użyciu Azure Portal
 
@@ -57,6 +57,9 @@ E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 ```
 
 Użyj [eksportu-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) z odciskiem palca, który został zwrócony w celu wyeksportowania pliku PFX z certyfikatu:
+
+> [!NOTE]
+> Nie należy używać żadnych znaków specjalnych w haśle pliku PFX. Obsługiwane są tylko znaki alfanumeryczne.
 
 ```powershell
 $pwd = ConvertTo-SecureString -String "Azure123456!" -Force -AsPlainText
@@ -122,7 +125,7 @@ Pula zaplecza służy do kierowania żądań do serwerów zaplecza, które obsł
     - **Nazwa**: Wprowadź *myBackendPool* jako nazwę puli zaplecza.
     - **Dodaj pulę zaplecza bez elementów docelowych**: Wybierz pozycję **tak** , aby utworzyć pulę zaplecza bez elementów docelowych. Po utworzeniu bramy aplikacji należy dodać cele zaplecza.
 
-3. W oknie **Dodawanie puli zaplecza** wybierz pozycję **Dodaj** , aby zapisać konfigurację puli zaplecza i powrócić **do karty zaplecze** .
+3. W oknie **Dodawanie puli zaplecza** wybierz pozycję **Dodaj** , aby zapisać konfigurację puli zaplecza i powrócić do karty zaplecze.
 
      ![Utwórz nową bramę aplikacji: zafrontony](./media/application-gateway-create-gateway-portal/application-gateway-create-backends.png)
 
@@ -138,7 +141,7 @@ Na karcie **Konfiguracja** zostanie nawiązane połączenie frontonu i puli zapl
 
 3. Reguła routingu wymaga odbiornika. Na karcie **odbiornik** w oknie **Dodawanie reguły routingu** wprowadź następujące wartości dla odbiornika:
 
-    - **Nazwa odbiornika**: Wprowadź *dla* nazwy odbiornika.
+    - **Nazwa odbiornika**: Wprowadź dla nazwy odbiornika.
     - **Adres IP frontonu**: Wybierz pozycję **Public (publiczny** ), aby wybrać publiczny adres IP utworzony dla frontonu.
     - **Protokół**: Wybierz pozycję **https**.
     - **Port**: Sprawdź, czy dla portu wprowadzono 443.

@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 577bf7f157eb89da360fa6cbdd4d22c1054f234f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: daf2781113016b20c19a6b8f5365033f1ff1479b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966711"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195268"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Korzystanie z usługi Active Learning w celu ulepszania bazy wiedzy
 
@@ -56,7 +56,7 @@ Ważne jest, aby QnA Maker uzyskać jawną opinię na temat tego, która z odpow
 
 ## <a name="upgrade-your-runtime-version-to-use-active-learning"></a>Uaktualnij wersję środowiska uruchomieniowego, aby korzystać z usługi Active Learning
 
-Usługa Active Learning jest obsługiwana w środowisku uruchomieniowym w wersji 4.4.0 i nowszych. Jeśli baza wiedzy została utworzona w starszej wersji, [Uaktualnij środowisko uruchomieniowe](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates) , aby użyć tej funkcji. 
+Usługa Active Learning jest obsługiwana w środowisku uruchomieniowym w wersji 4.4.0 i nowszych. Jeśli baza wiedzy została utworzona w starszej wersji, [Uaktualnij środowisko uruchomieniowe](set-up-qnamaker-service-azure.md#get-latest-runtime-updates) , aby użyć tej funkcji. 
 
 ## <a name="turn-on-active-learning-to-see-suggestions"></a>Włącz aktywną naukę, aby zobaczyć sugestie
 
@@ -181,7 +181,7 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|Właściwość żądania HTTP|Name (Nazwa)|Type|Cel|
+|Właściwość żądania HTTP|Name|Type|Cel|
 |--|--|--|--|
 |Parametr trasy adresu URL|Identyfikator bazy wiedzy|ciąg|Identyfikator GUID bazy wiedzy.|
 |Poddomena hosta|Nazwa zasobu QnAMaker|ciąg|Nazwa hosta QnA Maker w ramach subskrypcji platformy Azure. Jest on dostępny na stronie Ustawienia po opublikowaniu bazy wiedzy. |
@@ -194,8 +194,8 @@ Treść JSON ma kilka ustawień:
 |Właściwość treści JSON|Type|Cel|
 |--|--|--|--|
 |`feedbackRecords`|array|Lista opinii.|
-|`userId`|ciąg|Identyfikator użytkownika osoby akceptującej sugerowane pytania. Format identyfikatora użytkownika jest aktualny. Na przykład adres e-mail może być prawidłowym IDENTYFIKATORem użytkownika w danej architekturze. Opcjonalny.|
-|`userQuestion`|ciąg|Dokładny tekst zapytania użytkownika. Wymagany.|
+|`userId`|ciąg|Identyfikator użytkownika osoby akceptującej sugerowane pytania. Format identyfikatora użytkownika jest aktualny. Na przykład adres e-mail może być prawidłowym IDENTYFIKATORem użytkownika w danej architekturze. Opcjonalna.|
+|`userQuestion`|ciąg|Dokładny tekst zapytania użytkownika. Wymagana.|
 |`qnaID`|numer|Identyfikator pytania znaleziony w [odpowiedzi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties). |
 
 Przykładowa treść JSON wygląda następująco:

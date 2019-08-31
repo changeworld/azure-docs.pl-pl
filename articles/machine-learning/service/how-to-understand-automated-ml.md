@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/22/2019
-ms.openlocfilehash: 387865ac229acc5d16f595b96c76e7c9a014e991
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: d626a7768e7070360a6f0249486bfa83407fe998
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70062136"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192073"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Informacje o zautomatyzowanych wynikach uczenia maszynowego
 
@@ -102,7 +102,7 @@ weighted_accuracy|Waga ważona jest dokładnością, gdzie waga określona dla k
 
 Macierz pomyłek służy do opisywania wydajność model klasyfikacji. Każdy wiersz zawiera wystąpienia klasy wartość true, a każda kolumna reprezentuje wystąpienia to przewidywana klasa. Macierz pomyłek pokazuje poprawnie sklasyfikowane etykiety i etykiety niepoprawnie sklasyfikowanych w danym modelu.
 
-W przypadku problemów z klasyfikacji usługi Azure Machine Learning automatycznie zapewnia macierz pomyłek dla każdego modelu, który jest skompilowany. Dla każdego macierz pomyłek automatycznych ML zostaną wyświetlone poprawnie sklasyfikowane etykiety jako etykiety zielony i niepoprawnie sklasyfikowanych w kolorze czerwonym. Rozmiar koła reprezentuje liczbę próbek w nim. Ponadto liczba częstotliwość każdej etykiety przewidywane i każdej etykiety wartość true, znajduje się w sąsiadujących wykresów słupkowych. 
+W przypadku problemów z klasyfikacji usługi Azure Machine Learning automatycznie zapewnia macierz pomyłek dla każdego modelu, który jest skompilowany. W przypadku każdej matrycy nieistotnej, zautomatyzowany ML będzie wyświetlać częstotliwość każdej etykiety predykcyjnej i każdej przedziału prawdziwych etykiet. Ciemniejszy kolor, im wyższy licznik w danej części macierzy. Najlepiej, najciemniejszymi kolorami byłyby ukośne na przekątnej macierzy. 
 
 Przykład 1: Model klasyfikacji z niską dokładnością ![modelu klasyfikacji z niską dokładnością](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
 

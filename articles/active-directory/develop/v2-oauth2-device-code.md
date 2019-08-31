@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 274c4e89ff3f996cc71cdacdfb7b5b72e813ae4b
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: fdd99899494e9f7b3c0caa4e83f18803b969db1e
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297661"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192720"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Microsoft Identity platform i przepływ kodu urządzenia OAuth 2,0
 
@@ -35,7 +35,7 @@ Platforma tożsamości firmy Microsoft obsługuje [przyznawanie kodu urządzenia
 >
 > Konta osobiste, które są zapraszane do dzierżawy usługi Azure AD, będą mogły korzystać z dotacji do przepływu urządzeń, ale tylko w kontekście dzierżawy.
 >
-> W tej chwili pole odpowiedziniejestuwzględnianeaniobsługiwane.`verification_uri_complete`  
+> W tej chwili pole odpowiedziniejestuwzględnianeaniobsługiwane.`verification_uri_complete`  Wspominamy, że jeśli odczytasz Standard, zobaczysz `verification_uri_complete` , że jest on wymieniony jako opcjonalny element standardowego przepływu kodu urządzenia.
 
 > [!NOTE]
 > Punkt końcowy platformy tożsamości firmy Microsoft nie obsługuje wszystkich Azure Active Directoryych scenariuszy i funkcji. Aby określić, czy należy używać punktu końcowego platformy tożsamości firmy Microsoft, przeczytaj artykuł [ograniczenia dotyczące platformy tożsamości firmy Microsoft](active-directory-v2-limitations.md).
@@ -78,7 +78,7 @@ Pomyślna odpowiedź będzie obiektem JSON zawierającym wymagane informacje umo
 | Parametr | Format | Opis |
 | ---              | --- | --- |
 |`device_code`     | String | Długi ciąg używany do weryfikowania sesji między klientem a serwerem autoryzacji. Klient używa tego parametru, aby zażądać tokenu dostępu z serwera autoryzacji. |
-|`user_code`       | Ciąg | Krótki ciąg pokazywany użytkownikowi, który służy do identyfikowania sesji na urządzeniu pomocniczym.|
+|`user_code`       | String | Krótki ciąg pokazywany użytkownikowi, który służy do identyfikowania sesji na urządzeniu pomocniczym.|
 |`verification_uri`| Identyfikator URI | Identyfikator URI, do którego użytkownik powinien przejść, `user_code` aby móc się zalogować. |
 |`expires_in`      | int | Liczba sekund przed `device_code` wygaśnięciem i `user_code` . |
 |`interval`        | int | Liczba sekund, przez jaką klient powinien czekać między żądaniami sondowania. |

@@ -1,29 +1,23 @@
 ---
-title: Store bezpieczny - dostęp poświadczeń na maszynie wirtualnej do nauki o danych platformy Azure | Dokumentacja firmy Microsoft
+title: Bezpieczne przechowywanie poświadczeń dostępu
+titleSuffix: Azure Data Science Virtual Machine
 description: Dowiedz się, jak bezpiecznie przechowywać poświadczenia dostępu na maszynie wirtualnej do nauki o danych. Dowiesz się, jak używać tożsamości usługi zarządzanej i Azure Key Vault do przechowywania poświadczeń dostępu.
 keywords: głębokiego uczenia i sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, geoprzestrzenna analiza, zespół danych dla celów naukowych
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/08/2018
+author: vijetajo
 ms.author: vijetaj
-ms.openlocfilehash: 1374cbef41f40ea270f3c4d84c68d08e7db095bc
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.topic: conceptual
+ms.date: 05/08/2018
+ms.openlocfilehash: 17e611007d2b5400497597946159826df7aa4848
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051621"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195602"
 ---
-# <a name="store-access-credentials-securely-on-a-data-science-virtual-machine"></a>Bezpieczne przechowywanie poświadczeń dostępu na Data Science Virtual Machine
+# <a name="store-access-credentials-securely-on-an-azure-data-science-virtual-machine"></a>Bezpieczne przechowywanie poświadczeń dostępu na platformie Azure Data Science Virtual Machine
 
 Często kod w aplikacjach w chmurze zawiera poświadczenia służące do uwierzytelniania w usługach w chmurze. Zarządzanie tymi poświadczeniami i ich Zabezpieczanie to dobrze znane wyzwanie w tworzeniu aplikacji w chmurze. W idealnym przypadku poświadczenia nigdy nie powinny występować na stacjach roboczych deweloperów ani nie są zaewidencjonowane do kontroli źródła.
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: 505a3104968e285a7fe4801db8029dc45647087a
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 2eaae9093614f1512dcd75d23c98bca871bf2850
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011347"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193333"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Samouczek: Konfigurowanie bezpiecznego protokołu LDAP dla Azure Active Directory Domain Services domeny zarządzanej
 
@@ -63,7 +63,7 @@ Certyfikat, którego żądanie lub utworzenie, musi spełniać poniższe wymagan
 
 * **Zaufany wystawca** — certyfikat musi być wystawiony przez Urząd zaufany przez komputery łączące się z domeną zarządzaną przy użyciu protokołu Secure LDAP. Ten Urząd może być publicznym urzędem certyfikacji lub urzędem certyfikacji przedsiębiorstwa zaufanym przez te komputery.
 * **Okres istnienia** — certyfikat musi być ważny przez co najmniej 3-6 miesięcy. Secure LDAP dostęp do domeny zarządzanej zostanie zakłócony po wygaśnięciu certyfikatu.
-* **Nazwa podmiotu** — nazwa podmiotu w certyfikacie musi być domeną zarządzaną. Na przykład jeśli domena ma nazwę *contoso.com*, nazwa podmiotu certyfikatu musi mieć wartość *contoso.com*.
+* **Nazwa podmiotu** — nazwa podmiotu w certyfikacie musi być domeną zarządzaną. Na przykład jeśli domena ma nazwę *contoso.com*, nazwa podmiotu certyfikatu musi być * *. contoso.com*.
     * Nazwa DNS lub alternatywna nazwa podmiotu certyfikatu musi być certyfikatem z symbolem wieloznacznym, aby zapewnić prawidłowe działanie bezpiecznego protokołu LDAP z Azure AD Domain Services. Kontrolery domeny używają losowo nazw i można je usunąć lub dodać, aby zapewnić, że usługa pozostanie dostępna.
 * **Użycie klucza** — certyfikat musi być skonfigurowany pod kątem *podpisów cyfrowych* i *szyfrowania kluczy*.
 * **Cel certyfikatu** — certyfikat musi być prawidłowy na potrzeby uwierzytelniania serwera SSL.
@@ -78,7 +78,7 @@ $dnsName="contoso.com"
 $lifetime=Get-Date
 
 # Create a self-signed certificate for use with Azure AD DS
-New-SelfSignedCertificate -Subject $dnsName `
+New-SelfSignedCertificate -Subject *.$dnsName `
   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
   -Type SSLServerAuthentication -DnsName *.$dnsName, $dnsName
 ```
@@ -86,7 +86,7 @@ New-SelfSignedCertificate -Subject $dnsName `
 Następujące przykładowe dane wyjściowe pokazują, że certyfikat został pomyślnie wygenerowany i jest przechowywany w lokalnym magazynie certyfikatów (*LocalMachine\MY*):
 
 ```output
-PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject $dnsName `
+PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject *.$dnsName `
 >>   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
 >>   -Type SSLServerAuthentication -DnsName *.$dnsName, $dnsName.com
 

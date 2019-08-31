@@ -1,6 +1,6 @@
 ---
-title: Skonfiguruj ustawienia reguły wykrywania inteligentnego usługi Azure Application Insights przy użyciu szablonów usługi Azure Resource Manager | Dokumentacja firmy Microsoft
-description: Automatyzowanie zarządzania i konfiguracji reguły wykrywania inteligentnego usługi Azure Application Insights przy użyciu szablonów usługi Azure Resource Manager
+title: Konfigurowanie ustawień reguły wykrywania inteligentnego Application Insights platformy Azure przy użyciu szablonów Azure Resource Manager | Microsoft Docs
+description: Automatyzowanie zarządzania i konfiguracji Application Insights reguł wykrywania inteligentnego na platformie Azure przy użyciu szablonów Azure Resource Manager
 services: application-insights
 documentationcenter: ''
 author: harelbr
@@ -13,36 +13,36 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: 6bb89eec0b4905e101bed87d3d3fc617dec589e0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: e7a54c2e207a27f3519375df09d0c930a92d52d6
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477859"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193722"
 ---
-# <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Zarządzanie regułami wykrywania inteligentnego usługi Application Insights przy użyciu szablonów usługi Azure Resource Manager
+# <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Zarządzanie Application Insights regułami wykrywania inteligentnego przy użyciu szablonów Azure Resource Manager
 
-Reguły wykrywania inteligentnego w usłudze Application Insights można zarządzać, a także skonfigurować przy użyciu [szablonów usługi Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md).
-Ta metoda może służyć w przypadku wdrażania nowych zasobów usługi Application Insights z usługą automation usługi Azure Resource Manager lub modyfikując ustawienia istniejących zasobów.
+Reguły inteligentnego wykrywania w Application Insights mogą być zarządzane i konfigurowane przy użyciu [szablonów Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md).
+Tej metody można użyć podczas wdrażania nowych zasobów Application Insights z automatyzacją Azure Resource Manager lub do modyfikowania ustawień istniejących zasobów.
 
 ## <a name="smart-detection-rule-configuration"></a>Konfiguracja reguły wykrywania inteligentnego
 
-Można skonfigurować następujące ustawienia dla reguły wykrywania inteligentnego:
-- Jeśli zasada jest włączona (wartość domyślna to **true**.)
-- Jeśli wiadomości e-mail powinny być przesyłane do użytkowników skojarzonych z subskrypcją [Czytelnik monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) i [Współautor monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) role po znalezieniu wykrycie (wartość domyślna to **true**.)
-- Znajduje wszystkie dodatkowi adresaci wiadomości e-mail, które powinien otrzymywać powiadomienie, gdy wykrycie.
-    -  Konfiguracja poczty e-mail jest niedostępna dla reguły wykrywania inteligentnego oznaczone jako _Podgląd_.
+Dla reguły wykrywania inteligentnego można skonfigurować następujące ustawienia:
+- Jeśli reguła jest włączona (wartość domyślna to **true**).
+- Jeśli wiadomości e-mail powinny być wysyłane do użytkowników skojarzonych z czytnikiem [monitorowania](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-reader) subskrypcji i [monitorować role współautor](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) po znalezieniu wykrywania (wartość domyślna to **true**).
+- Wszyscy dodatkowi Adresaci poczty e-mail, którzy powinni otrzymać powiadomienie po znalezieniu wykrywania.
+    -  Konfiguracja poczty e-mail nie jest dostępna dla reguł wykrywania inteligentnego oznaczonych jako _wersja_zapoznawcza.
 
-Aby zezwolić na konfigurowanie ustawień reguły za pomocą usługi Azure Resource Manager, konfiguracji reguły wykrywania inteligentnego jest teraz dostępny jako wewnętrzny zasobów w ramach zasobu usługi Application Insights, o nazwie **ProactiveDetectionConfigs**.
-Maksymalny elastyczności każdej reguły wykrywania inteligentnego można skonfigurować ustawienia powiadomień unikatowy.
+Aby umożliwić Konfigurowanie ustawień reguły za pośrednictwem Azure Resource Manager, Konfiguracja reguły wykrywania inteligentnego jest teraz dostępna jako zasób wewnętrzny w ramach zasobu Application Insights o nazwie **ProactiveDetectionConfigs**.
+W celu uzyskania maksymalnej elastyczności Każda reguła wykrywania inteligentnego może być skonfigurowana przy użyciu unikatowych ustawień powiadomień.
 
 ## 
 
 ## <a name="examples"></a>Przykłady
 
-Poniżej przedstawiono kilka przykładów, w którym pokazano, jak skonfigurować ustawienia reguły wykrywania inteligentnego, za pomocą szablonów usługi Azure Resource Manager.
-Wszystkie przykłady odnoszą się do zasobu usługi Application Insights o nazwie _"MojaAplikacja"_ , i "zależności długi czas trwania wykrywania inteligentnego reguły", która wewnętrznie nosi nazwę _"longdependencyduration"_ .
-Upewnij się, zastąp nazwę zasobu usługi Application Insights i określ nazwę wewnętrznego reguły wykrywania inteligentnego odpowiednie. Sprawdź w tabeli poniżej listy odpowiednie wewnętrzne nazwy usługi Azure Resource Manager dla każdej reguły wykrywania inteligentnego.
+Poniżej przedstawiono kilka przykładów, które pokazują, jak skonfigurować ustawienia reguł wykrywania inteligentnego za pomocą szablonów Azure Resource Manager.
+Wszystkie przykłady odnoszą się do zasobu Application Insights o nazwie _"moja aplikacja"_ i do "reguły wykrywania" długiego czasu trwania zależności ", która jest wewnętrznie nazywana _" longdependencyduration "_ .
+Pamiętaj, aby zastąpić nazwę zasobu Application Insights i określić odpowiednią nazwę wewnętrzną reguły wykrywania inteligentnego. Zapoznaj się z poniższą tabelą, aby wyświetlić listę odpowiednich wewnętrznych nazw Azure Resource Manager dla każdej reguły wykrywania inteligentnego.
 
 ### <a name="disable-a-smart-detection-rule"></a>Wyłącz regułę wykrywania inteligentnego
 
@@ -75,7 +75,7 @@ Upewnij się, zastąp nazwę zasobu usługi Application Insights i określ nazw�
     }
 ```
 
-### <a name="disable-sending-email-notifications-for-a-smart-detection-rule"></a>Wyłączanie wysyłania powiadomień e-mail dla reguły wykrywania inteligentnego
+### <a name="disable-sending-email-notifications-for-a-smart-detection-rule"></a>Wyłącz wysyłanie powiadomień e-mail dla reguły wykrywania inteligentnego
 
 ```json
 {
@@ -106,7 +106,7 @@ Upewnij się, zastąp nazwę zasobu usługi Application Insights i określ nazw�
     }
 ```
 
-### <a name="add-additional-email-recipients-for-a-smart-detection-rule"></a>Dodaj dodatkowi adresaci wiadomości e-mail dla reguły wykrywania inteligentnego
+### <a name="add-additional-email-recipients-for-a-smart-detection-rule"></a>Dodawanie dodatkowych odbiorców poczty e-mail dla reguły wykrywania inteligentnego
 
 ```json
 {
@@ -138,9 +138,9 @@ Upewnij się, zastąp nazwę zasobu usługi Application Insights i określ nazw�
 
 ```
 
-### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Anomalie w wersji 2 (inne niż wersja klasyczna) reguła alertu o niepowodzeniu
+### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Reguła alertu o niepowodzeniu w wersji 2 (nieklasycznej)
 
-Ten szablon usługi Azure Resource Manager pokazuje konfigurowanie reguły alertu anomalie w wersji 2 przy użyciu ważność 2. Nowa wersja anomalie reguły alertu jest częścią nowej platformy Azure, zgłaszania alertów platformy i zastępuje klasycznej wersji, która zostanie wycofana w ramach [classic alerty procesu wycofywania](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+Ten szablon Azure Resource Manager demonstruje konfigurację reguły alertu o anomalii niepowodzeń v2 o ważności 2. Ta nowa wersja reguły alertu dotyczącego anomalii awarii jest częścią nowej platformy alertów platformy Azure i zastępuje wersję klasyczną, która jest wycofywana w ramach [procesu](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/)wycofywania alertów klasycznych.
 
 ```json
 {
@@ -151,6 +151,7 @@ Ten szablon usługi Azure Resource Manager pokazuje konfigurowanie reguły alert
             "type": "microsoft.alertsmanagement/smartdetectoralertrules",
             "apiVersion": "2019-03-01",
             "name": "Failure Anomalies - my-app",
+            "location": "global", 
             "properties": {
                   "description": "Detects a spike in the failure rate of requests or dependencies",
                   "state": "Enabled",
@@ -170,27 +171,27 @@ Ten szablon usługi Azure Resource Manager pokazuje konfigurowanie reguły alert
 ```
 
 > [!NOTE]
-> Ten szablon usługi Azure Resource Manager jest unikatowy dla reguły alertu v2 anomalie i różni się od innych klasyczne reguły wykrywania inteligentnego opisanego w tym artykule.   
+> Ten szablon Azure Resource Manager jest unikatowy dla reguły alertu niepowodzenia anomalii v2 i różni się od innych klasycznych reguł wykrywania inteligentnego opisanych w tym artykule.   
 
 ## <a name="smart-detection-rule-names"></a>Nazwy reguł wykrywania inteligentnego
 
-Poniżej znajduje się tabela nazwy reguł wykrywania inteligentnego, w jakiej występują w portalu wraz z ich nazwy wewnętrzne, które powinny być używane w szablonie usługi Azure Resource Manager.
+Poniżej znajduje się tabela nazw reguł wykrywania inteligentnego, która pojawia się w portalu wraz z nazwami wewnętrznymi, które powinny być używane w szablonie Azure Resource Manager.
 
 > [!NOTE]
-> Reguły wykrywania inteligentnego oznaczone jako _Podgląd_ nie obsługują powiadomienia e-mail. W związku z tym, można ustawić tylko _włączone_ właściwość dla tych zasad. 
+> Reguły inteligentnego wykrywania oznaczone jako _wersja_ zapoznawcza nie obsługują powiadomień e-mail. W związku z tym można ustawić tylko właściwość _Enabled_ dla tych reguł. 
 
-| Nazwa reguły portalu Azure | Nazwa wewnętrzna
+| Nazwa reguły Azure Portal | Nazwa wewnętrzna
 |:---|:---|
 | Długi czas ładowania strony | slowpageloadtime |
 | Długi czas odpowiedzi serwera | slowserverresponsetime |
 | Długi czas trwania zależności | longdependencyduration |
-| Pogorszenie czasu odpowiedzi serwera | degradationinserverresponsetime |
-| Pogorszenie czasu trwania zależności | degradationindependencyduration |
-| Obniżenie wydajności stopień ważności śledzenia (wersja zapoznawcza) | extension_traceseveritydetector |
-| Nietypowy wzrost liczby wyjątków (wersja zapoznawcza) | extension_exceptionchangeextension |
-| Potencjalny przeciek pamięci wykryto (wersja zapoznawcza) | extension_memoryleakextension |
-| Potencjalny problem z zabezpieczeniami wykryto (wersja zapoznawcza) | extension_securityextensionspackage |
-| Nietypowy wzrost liczby dzienna ilość danych (wersja zapoznawcza) | extension_billingdatavolumedailyspikeextension |
+| Wydłużenie czasu odpowiedzi serwera | degradationinserverresponsetime |
+| Obniżenie w czasie trwania zależności | degradationindependencyduration |
+| Spadek współczynnika ważności śledzenia (wersja zapoznawcza) | extension_traceseveritydetector |
+| Nietypowy wzrost w woluminie wyjątku (wersja zapoznawcza) | extension_exceptionchangeextension |
+| Wykryto Potencjalny przeciek pamięci (wersja zapoznawcza) | extension_memoryleakextension |
+| Wykryto potencjalny problem z zabezpieczeniami (wersja zapoznawcza) | extension_securityextensionspackage |
+| Nietypowy wzrost ilości danych dziennych (wersja zapoznawcza) | extension_billingdatavolumedailyspikeextension |
 
 ## <a name="next-steps"></a>Następne kroki
 

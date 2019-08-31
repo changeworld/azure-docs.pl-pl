@@ -1,28 +1,20 @@
 ---
-title: Dowiedz się, jak używać maszyny wirtualnej do nauki o danych systemu Linux
-titleSuffix: Azure
+title: Poznaj system Linux
+titleSuffix: Azure Data Science Virtual Machine
 description: Jak przeprowadzić kilka typowych zadań do nauki o danych z maszyny Wirtualnej do nauki o danych systemu Linux.
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-editor: cgronlun
-ms.custom: seodec18
-ms.assetid: 34ef0b10-9270-474f-8800-eecb183bbce4
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.author: vijetaj
-ms.openlocfilehash: 8100108adc7115921948d3e8f10e415bc2705fbd
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 0f0f75a3ac6f258cbcd13ee24dabb870f1a37fbf
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051652"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192016"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Do nauki o danych z systemem Linux maszyny wirtualnej analizy danych na platformie Azure
 W tym instruktażu przedstawiono sposób wykonywania kilku typowych zadań do nauki o danych z maszyna wirtualna do nauki o danych systemu Linux. Linux Data Science Virtual Machine (dsvm dystrybucji) jest obraz maszyny wirtualnej dostępne na platformie Azure, który jest wstępnie instalowane ze zbiorem narzędzi często używane do analizy danych i uczenia maszynowego. Składniki oprogramowania są wymienione w [Aprowizowanie maszyny wirtualnej do nauki o danych Linux](linux-dsvm-intro.md) tematu. Obraz maszyny Wirtualnej ułatwia rozpoczęcie pracy, nauki o danych w ciągu kilku minut, bez konieczności instalowania i konfigurowania poszczególnych narzędzi indywidualnie. Możesz łatwo skalować w górę maszyny Wirtualnej, w razie potrzeby i zatrzymaj ją, gdy użycie. Więc ten zasób jest elastyczne i ekonomiczne.

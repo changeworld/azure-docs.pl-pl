@@ -1,27 +1,21 @@
 ---
-title: Wprowadzenie do środowiska zespołowe na podstawie maszyny wirtualnej do nauki o danych — Azure | Dokumentacja firmy Microsoft
+title: Analiza zespołu i środowisko AI
+titleSuffix: Azure Data Science Virtual Machine
 description: Wzorce dotyczące wdrażania maszyny Wirtualnej do nauki o danych w środowisku przedsiębiorstwa zespołu.
 keywords: głębokiego uczenia i sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, geoprzestrzenna analiza, zespół danych dla celów naukowych
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/08/2018
+author: vijetajo
 ms.author: vijetaj
-ms.openlocfilehash: 5f34498fbdacf7fc6e62788913c795ab70ceef23
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.topic: overview
+ms.date: 05/08/2018
+ms.openlocfilehash: 06d05d6d410af13bfbe85f3cb66523c1d48cb77c
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991626"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195652"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Analiza zespołu na podstawie maszyny wirtualnej do nauki o danych i sztucznej Inteligencji środowiska 
 [Data Science Virtual Machine](overview.md) (DSVM) zapewnia rozbudowane środowisko na platformie Azure z wbudowanym oprogramowaniem do sztucznej analizy (AI) i analizy danych.

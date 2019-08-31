@@ -3,15 +3,15 @@ title: Zasoby platformy Azure bez limitu 800
 description: Wyświetla listę typów zasobów platformy Azure, które mogą mieć więcej niż 800 wystąpień w grupie zasobów.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 7/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: a796896450a5b786e3b78aeddd81e6d66b02eb94
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: eec448dcbf1c550b6b0a0ee0f17505fd6ddd3c74
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700459"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194738"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Zasoby nieograniczone do 800 wystąpień na grupę zasobów
 
@@ -142,6 +142,6 @@ W przypadku niektórych typów zasobów należy skontaktować się z pomocą tec
 * apiManagementAccounts/apis
 * lokacje
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać pełną listę przydziałów i limitów, zobacz [limity subskrypcji i usług platformy Azure, przydziały i ograniczenia](../azure-subscription-service-limits.md).

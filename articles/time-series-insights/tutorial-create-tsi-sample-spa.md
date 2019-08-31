@@ -4,16 +4,16 @@ description: Dowiedz się, jak utworzyć jednostronicową aplikację sieci Web, 
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/29/2019
+ms.date: 08/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 4d9af918c222107cfca5863309efb391b8e6d2e0
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 031e8074585426584d7ef63a103c9c2b4d90e6c3
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720863"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194228"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>Samouczek: Tworzenie jednostronicowej aplikacji internetowej usługi Azure Time Series Insights
 
@@ -105,7 +105,7 @@ Ten samouczek używa również danych ze środowiska Time Series Insights aplika
 
       [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-153&highlight=4-5)]
 
-      Na przykład:
+      Przykład:
 
       ```javascript
       clientId: '8884d4ca-b9e7-403a-bd8a-366d0ce0d460',
@@ -127,6 +127,10 @@ Ten samouczek używa również danych ze środowiska Time Series Insights aplika
 
       [![Visual Studio — okienko Publikuj profil](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png#lightbox)
 
+   1. Wybierz, aby opublikować nowe wystąpienie Azure App Service lub użyć istniejącego.
+
+      [![Wybierz wystąpienie Azure App Service](media/tutorial-create-tsi-sample-spa/vs-publish-select-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-select-target.png#lightbox)
+
    1. Wybierz subskrypcję, której chcesz użyć do opublikowania aplikacji. Wybierz projekt **TsiSpaApp** . Następnie wybierz przycisk **OK**.
 
       [![Visual Studio — okienko App Service publikowania](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png#lightbox)
@@ -137,12 +141,16 @@ Ten samouczek używa również danych ze środowiska Time Series Insights aplika
 
    1. W okienku **danych wyjściowych** programu Visual Studio pojawi się komunikat o pomyślnym opublikowaniu. Po zakończeniu wdrażania program Visual Studio otworzy aplikację sieci Web na karcie przeglądarki i wyświetli prośbę o zalogowanie. Po pomyślnym zalogowaniu w formantach Time Series Insights są wypełniane dane.
 
+   1. Przejdź do aplikacji sieci Web i zaloguj się, aby wyświetlić renderowane Time Series Insights dane wizualizacji.
+
+      [![Przeglądanie hostowanej aplikacji sieci Web](media/tutorial-create-tsi-sample-spa/vs-publish-hosted-app.png)](media/tutorial-create-tsi-sample-spa/vs-publish-hosted-app.png#lightbox)
+
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów  
 
 Kod/warunek błędu | Opis
 ---------------------| -----------
-*AADSTS50011: brak adresów odpowiedzi zarejestrowanych dla aplikacji.* | W rejestracji usługi Azure AD brakuje właściwości **adresu URL odpowiedzi** . Przejdź do pozycji **Ustawienia** > **adresy URL odpowiedzi** dla rejestracji aplikacji usługi Azure AD. Sprawdź, czy **Identyfikator URI przekierowania** jest dostępny w **kroku 2** lub **4** , gdy zarejestrowano [aplikację w celu korzystania z usługi Azure AD](#register-with-azure-ad) .
-*AADSTS50011: Adres URL odpowiedzi określony w żądaniu nie jest zgodny z adresami URL odpowiedzi skonfigurowanymi dla aplikacji: "\<Identyfikator aplikacji >".* |  >  [](#build-and-publish) Określony w kroku 6. b w kompilacji i publikacji aplikacja sieci Web musi być zgodna z wartością określoną w polu Ustawienia adresy URL odpowiedzi w rejestracji aplikacji usługi Azure AD. `postLogoutRedirectUri` |
+*AADSTS50011: brak adresów odpowiedzi zarejestrowanych dla aplikacji.* | W rejestracji usługi Azure AD brakuje właściwości **URI przekierowania** . Przejdź do obszaru**identyfikatory URI przekierowania** **uwierzytelniania** > dla rejestracji aplikacji usługi Azure AD. Sprawdź, czy **Identyfikator URI przekierowania** jest dostępny w **kroku 2** lub **4** , gdy zarejestrowano [aplikację w celu korzystania z usługi Azure AD](#register-with-azure-ad) .
+*AADSTS50011: Adres URL odpowiedzi określony w żądaniu nie jest zgodny z adresami URL odpowiedzi skonfigurowanymi dla aplikacji: "\<Identyfikator aplikacji >".* |  >  [](#build-and-publish) Określony w kroku 6. b w temacie kompilacja i publikacja aplikacji sieci Web musi być zgodna z wartością określoną w identyfikatorach URI przekierowania uwierzytelniania w rejestracji aplikacji usługi Azure AD. `postLogoutRedirectUri` |
 Aplikacja sieci Web ładuje, ale ma niestylową stronę logowania tylko do tekstu, z białym tłem. | Sprawdź, czy ścieżki omówione w **kroku 6** [kompilowania i publikowania aplikacji sieci Web](#build-and-publish) są poprawne. Jeśli aplikacja internetowa nie może znaleźć plików CSS, styl strony będzie niepoprawny.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
@@ -154,7 +162,7 @@ W menu po lewej Azure Portal:
 1. Wybierz pozycję **grupy zasobów**, a następnie wybierz grupę zasobów utworzoną dla środowiska Time Series Insights. W górnej części strony wybierz pozycję **Usuń grupę zasobów**, wprowadź nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
 1. Wybierz pozycję **grupy zasobów**, a następnie wybierz grupę zasobów, która została utworzona przez Akcelerator rozwiązania do symulacji urządzeń. W górnej części strony wybierz pozycję **Usuń grupę zasobów**, wprowadź nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono następujące informacje:
 

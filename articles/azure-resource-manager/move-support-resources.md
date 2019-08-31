@@ -3,15 +3,15 @@ title: Obsługa operacji przenoszenia według typu zasobów platformy Azure
 description: Wyświetla listę typów zasobów platformy Azure, które można przenieść do nowej grupy zasobów lub subskrypcji.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: a588d4e4b1978b572488dcd5d53698cbb8f7d311
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 3100ce897a09c2747c2b339662c699d197ba73d7
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997293"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194847"
 ---
 # <a name="move-operation-support-for-resources"></a>Obsługa operacji przenoszenia dla zasobów
 W tym artykule przedstawiono, czy typ zasobu platformy Azure obsługuje operację przenoszenia. Zawiera również informacje dotyczące specjalnych warunków, które należy wziąć pod uwagę podczas przeniesienia zasobu.

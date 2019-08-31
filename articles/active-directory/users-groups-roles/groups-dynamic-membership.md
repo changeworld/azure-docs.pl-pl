@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 08/30/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f529723abd449891dba845253502b78e8666199f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: b562ccf81a80219caa9f80bec82f64f7d2510626
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650219"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194596"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w Azure Active Directory
 
@@ -27,30 +27,32 @@ W Azure Active Directory (Azure AD) można tworzyć złożone reguły oparte na 
 
 W przypadku zmiany atrybutów użytkownika lub urządzenia system oblicza wszystkie dynamiczne reguły grupy w katalogu, aby sprawdzić, czy dana zmiana spowodowałaby dodanie lub usunięcie grupy. Jeśli użytkownik lub urządzenie spełnia regułę w grupie, są one dodawane jako członek tej grupy. Jeśli nie spełniają już reguły, zostaną one usunięte. Nie można ręcznie dodać lub usunąć członka grupy dynamicznej.
 
-* Można utworzyć grupę dynamiczną dla urządzeń lub użytkowników, ale nie można utworzyć reguły zawierającej użytkowników i urządzenia.
-* Nie można utworzyć grupy urządzeń opartej na atrybutach właścicieli urządzeń. Reguły członkostwa urządzeń mogą odwoływać się tylko do atrybutów urządzeń.
+- Można utworzyć grupę dynamiczną dla urządzeń lub użytkowników, ale nie można utworzyć reguły zawierającej użytkowników i urządzenia.
+- Nie można utworzyć grupy urządzeń opartej na atrybutach właścicieli urządzeń. Reguły członkostwa urządzeń mogą odwoływać się tylko do atrybutów urządzeń.
 
 > [!NOTE]
 > Ta funkcja wymaga Azure AD — wersja Premium licencji P1 dla każdego unikatowego użytkownika, który jest członkiem jednej lub więcej grup dynamicznych. Nie musisz przypisywać licencji użytkownikom, aby nie były członkami grup dynamicznych, ale musisz mieć minimalną liczbę licencji w dzierżawie, aby uwzględnić wszystkich tych użytkowników. Na przykład jeśli masz łącznie 1 000 unikatowych użytkowników we wszystkich grupach dynamicznych w dzierżawie, musisz mieć co najmniej 1 000 licencji na Azure AD — wersja Premium P1, aby spełnić wymagania dotyczące licencji.
 >
 
-## <a name="constructing-the-body-of-a-membership-rule"></a>Konstruowanie treści reguły członkostwa
+## <a name="rule-builder-in-the-azure-portal"></a>Konstruktor reguł w Azure Portal
 
-Reguła członkostwa, która automatycznie wypełnia grupę użytkownikami lub urządzeniami, jest wyrażeniem binarnym, które powoduje wynik PRAWDA lub FAŁSZ. Trzy części prostej reguły są:
+Usługa Azure AD udostępnia Konstruktor reguł, który umożliwia szybsze tworzenie i aktualizowanie ważnych reguł. Konstruktor reguł obsługuje konstruowanie do pięciu wyrażeń. Konstruktor reguł ułatwia tworzenie reguły z kilkoma prostymi wyrażeniami, ale nie można ich użyć do odtworzenia każdej reguły. Jeśli Konstruktor reguł nie obsługuje reguły, którą chcesz utworzyć, możesz użyć pola tekstowego.
 
-* Właściwość
-* Operator
-* Value
+Poniżej przedstawiono kilka przykładów zaawansowanych reguł lub składni, dla których zalecamy utworzenie przy użyciu pola tekstowego:
 
-Kolejność części w wyrażeniu jest ważna, aby uniknąć błędów składniowych.
+- Reguła z więcej niż pięcioma wyrażeniami
+- Reguła bezpośrednich podwładnych
+- Ustawianie [pierwszeństwa operatorów](groups-dynamic-membership.md#operator-precedence)
+- [Reguły z wyrażeniami złożonymi](groups-dynamic-membership.md#rules-with-complex-expressions); na przykład`(user.proxyAddresses -any (_ -contains "contoso"))`
 
-### <a name="rule-builder-in-the-azure-portal"></a>Konstruktor reguł w Azure Portal
+> [!NOTE]
+> Konstruktor reguł może nie być w stanie wyświetlić niektórych reguł skonstruowanych w polu tekstowym. Gdy Konstruktor reguł nie może wyświetlić reguły, może zostać wyświetlony komunikat. Konstruktor reguł nie zmienia obsługiwanej składni, walidacji lub przetwarzania reguł grupy dynamicznej w dowolny sposób.
 
-Usługa Azure AD udostępnia Konstruktor reguł, który umożliwia szybsze tworzenie i aktualizowanie ważnych reguł. Konstruktor reguł obsługuje maksymalnie pięć reguł. Aby dodać szóste i dowolne kolejne warunki reguły, należy użyć pola tekstowego. Aby uzyskać więcej instrukcji krok po kroku, zobacz temat [Aktualizowanie grupy dynamicznej](groups-update-rule.md).
+Aby uzyskać więcej instrukcji krok po kroku, zobacz temat [Aktualizowanie grupy dynamicznej](groups-update-rule.md).
 
-   ![Dodawanie reguły członkostwa dla grupy dynamicznej](./media/groups-update-rule/update-dynamic-group-rule.png)
+![Dodawanie reguły członkostwa dla grupy dynamicznej](./media/groups-update-rule/update-dynamic-group-rule.png)
 
-### <a name="rules-with-a-single-expression"></a>Reguły z jednym wyrażeniem
+### <a name="rule-syntax-for-a-single-expression"></a>Składnia reguły dla pojedynczego wyrażenia
 
 Pojedyncze wyrażenie jest najprostszą formą reguły członkostwa i zawiera tylko trzy wymienione powyżej elementy. Reguła z jednym wyrażeniem wygląda podobnie do następującej: `Property Operator Value`, gdzie składnia właściwości jest nazwą Object. Property.
 
@@ -62,13 +64,23 @@ user.department -eq "Sales"
 
 Nawiasy są opcjonalne dla jednego wyrażenia. Łączna długość treści reguły członkostwa nie może przekraczać 2048 znaków.
 
+# <a name="constructing-the-body-of-a-membership-rule"></a>Konstruowanie treści reguły członkostwa
+
+Reguła członkostwa, która automatycznie wypełnia grupę użytkownikami lub urządzeniami, jest wyrażeniem binarnym, które powoduje wynik PRAWDA lub FAŁSZ. Trzy części prostej reguły są:
+
+- Właściwość
+- Operator
+- Value
+
+Kolejność części w wyrażeniu jest ważna, aby uniknąć błędów składniowych.
+
 ## <a name="supported-properties"></a>Obsługiwane właściwości
 
 Istnieją trzy typy właściwości, których można użyć do skonstruowania reguły członkostwa.
 
-* Boolean
-* String
-* Kolekcja ciągów
+- Boolean
+- String
+- Kolekcja ciągów
 
 Poniżej przedstawiono właściwości użytkownika, których można użyć do utworzenia jednego wyrażenia.
 
@@ -119,7 +131,7 @@ Poniżej przedstawiono właściwości użytkownika, których można użyć do ut
 
 Aby uzyskać właściwości używane dla reguł urządzeń, zobacz [reguły dotyczące urządzeń](#rules-for-devices).
 
-## <a name="supported-operators"></a>Obsługiwane operatory
+## <a name="supported-expression-operators"></a>Obsługiwane operatory wyrażeń
 
 W poniższej tabeli wymieniono wszystkie obsługiwane operatory i ich składnię dla jednego wyrażenia. Operatory mogą być używane z prefiksem łącznika (-) lub bez niego.
 
@@ -297,10 +309,10 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 
 Poniższe porady mogą pomóc w poprawnym użyciu zasady.
 
-* **Identyfikator Menedżera** jest identyfikatorem obiektu menedżera. Można je znaleźć w **profilu**Menedżera.
-* Aby reguła działała, upewnij się, że właściwość **Manager** została ustawiona poprawnie dla użytkowników w dzierżawie. Bieżącą wartość można sprawdzić w **profilu**użytkownika.
-* Ta reguła obsługuje tylko raporty bezpośrednie Menedżera. Innymi słowy, nie można utworzyć grupy z bezpośrednimi raportami Menedżera *i* ich raportami.
-* Tej reguły nie można łączyć z żadną inną regułą członkostwa.
+- **Identyfikator Menedżera** jest identyfikatorem obiektu menedżera. Można je znaleźć w **profilu**Menedżera.
+- Aby reguła działała, upewnij się, że właściwość **Manager** została ustawiona poprawnie dla użytkowników w dzierżawie. Bieżącą wartość można sprawdzić w **profilu**użytkownika.
+- Ta reguła obsługuje tylko raporty bezpośrednie Menedżera. Innymi słowy, nie można utworzyć grupy z bezpośrednimi raportami Menedżera *i* ich raportami.
+- Tej reguły nie można łączyć z żadną inną regułą członkostwa.
 
 ### <a name="create-an-all-users-rule"></a>Tworzenie reguły "Wszyscy użytkownicy"
 
@@ -373,8 +385,8 @@ Można użyć następujących atrybutów urządzeń.
 
 Te artykuły zawierają dodatkowe informacje dotyczące grup w Azure Active Directory.
 
-* [Wyświetlanie istniejących grup](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Tworzenie nowej grupy i dodawanie członków](../fundamentals/active-directory-groups-create-azure-portal.md)
-* [Zarządzanie ustawieniami grupy](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [Zarządzanie członkostwem w grupie](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [Zarządzanie regułami dynamicznymi dla użytkowników w grupie](groups-create-rule.md)
+- [Wyświetlanie istniejących grup](../fundamentals/active-directory-groups-view-azure-portal.md)
+- [Tworzenie nowej grupy i dodawanie członków](../fundamentals/active-directory-groups-create-azure-portal.md)
+- [Zarządzanie ustawieniami grupy](../fundamentals/active-directory-groups-settings-azure-portal.md)
+- [Zarządzanie członkostwem w grupie](../fundamentals/active-directory-groups-membership-azure-portal.md)
+- [Zarządzanie regułami dynamicznymi dla użytkowników w grupie](groups-create-rule.md)

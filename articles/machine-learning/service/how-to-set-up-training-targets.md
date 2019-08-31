@@ -11,14 +11,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: b1ee18abfab2cf286ee010bd6d25dfbc5a38cebb
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: c9bc9d64d7f21498acd5cb0c23447e7ff77de629
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011578"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195580"
 ---
-# <a name="set-up-compute-targets-for-model-training"></a>Konfigurowanie celów obliczeń do trenowania modelu 
+# <a name="set-up-and-use-compute-targets-for-model-training"></a>Skonfiguruj cele obliczeń i używaj ich do szkolenia modelu 
 
 Dzięki usłudze Azure Machine Learning można nauczyć model na różnych zasobach lub środowiskach, zbiorczo nazywanymi [__obiektami docelowymi obliczeń__](concept-azure-machine-learning-architecture.md#compute-targets). Obiekt docelowy obliczeń może być maszyną lokalną lub zasobem w chmurze, takim jak Azure Machine Learning COMPUTE, Azure HDInsight lub zdalną maszynę wirtualną.  Możesz również utworzyć cele obliczeniowe dla wdrożenia modelu, zgodnie z opisem w artykule ["gdzie i jak wdrażać modele"](how-to-deploy-and-where.md).
 
@@ -47,33 +47,9 @@ Usługa Azure Machine Learning ma różne wsparcie dla różnych obiektów docel
 
 Podczas szkolenia często rozpoczyna się na komputerze lokalnym, a następnie uruchamia ten skrypt szkoleniowy na innym miejscu docelowym obliczeń. Za pomocą usługi Azure Machine Learning można uruchomić skrypt na różnych obiektach docelowych obliczeń bez konieczności zmiany skryptu. 
 
-Wystarczy zdefiniować środowisko dla każdego elementu docelowego obliczeń z **konfiguracją uruchomieniową**.  Następnie, gdy chcesz uruchomić eksperyment szkoleniowy w innym miejscu docelowym obliczeń, określ konfigurację uruchamiania dla tego obliczenia.
+Wystarczy zdefiniować środowisko dla każdego obiektu docelowego obliczeń w ramach **konfiguracji przebiegu**.  Następnie, gdy chcesz uruchomić eksperyment szkoleniowy w innym miejscu docelowym obliczeń, określ konfigurację uruchamiania dla tego obliczenia. Aby uzyskać szczegółowe informacje na temat określania środowiska i powiązania go w celu uruchomienia konfiguracji, zobacz [Tworzenie środowisk i zarządzanie nimi na potrzeby szkolenia i wdrażania](how-to-use-environments.md)
 
 Dowiedz się [](#submit) więcej o przesyłaniu eksperymentów na końcu tego artykułu.
-
-### <a name="manage-environment-and-dependencies"></a>Zarządzanie środowiskiem i zależnościami
-
-Podczas tworzenia konfiguracji uruchamiania należy zdecydować, jak zarządzać środowiskiem i zależnościami w obiekcie docelowym obliczeń. 
-
-#### <a name="system-managed-environment"></a>System zarządzany środowiska
-
-Użyj środowiska zarządzanego przez system, jeśli chcesz, aby [Conda](https://conda.io/docs/) zarządzać środowiskiem Python i zależnościami skryptów. Domyślnie przyjęto środowisko zarządzane przez system i najbardziej typowy wybór. Jest to przydatne w przypadku zdalnych obiektów docelowych obliczeń, szczególnie w przypadku, gdy nie można skonfigurować tego obiektu docelowego. 
-
-Wszystko, co musisz zrobić, określa każdą zależność pakietu przy użyciu [klasy CondaDependency](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) , a następnie Conda tworzy plik o nazwie **conda_dependencies. yml** w katalogu **aml_config** w obszarze roboczym z listą zależności pakietu i konfiguruje środowisko języka Python podczas przesyłania eksperymentu szkoleniowego. 
-
-Początkowa konfiguracja nowego środowiska może potrwać kilka minut w zależności od rozmiaru wymaganych zależności. Tak długo, jak lista pakietów pozostaje niezmieniona, czas instalacji odbywa się tylko raz.
-  
-Poniższy kod przedstawia przykład środowiska zarządzanego przez system wymagające scikit-Dowiedz się:
-    
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_system_managed)]
-
-#### <a name="user-managed-environment"></a>Środowiska zarządzanego przez użytkownika
-
-W przypadku środowiska zarządzanego przez użytkownika użytkownik jest odpowiedzialny za skonfigurowanie środowiska i zainstalowanie każdego pakietu potrzebnych do wykonywania skryptów szkoleniowych w miejscu docelowym obliczeń. Jeśli środowisko szkoleniowe zostało już skonfigurowane (na przykład na komputerze lokalnym), możesz pominąć krok instalacji, ustawiając `user_managed_dependencies` wartość true. Conda nie sprawdzi Twojego środowiska ani nie zainstaluje żadnego z nich.
-
-Poniższy kod przedstawia przykład konfigurowania przebiegów szkoleniowych dla środowiska zarządzanego przez użytkownika:
-
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_user_managed)]
 
 ## <a name="whats-an-estimator"></a>Co to jest szacowania?
 
@@ -390,7 +366,7 @@ Aby uzyskać więcej informacji, zobacz [Zarządzanie zasobami](reference-azure-
 
 Możesz uzyskiwać dostęp do obiektów docelowych obliczeń skojarzonych z obszarem roboczym i zarządzać nimi, korzystając z [rozszerzenia vs Code](how-to-vscode-tools.md#create-and-manage-compute-targets) dla usługi Azure Machine Learning.
 
-## <a id="submit"></a>Prześlij przebieg szkoleniowy
+## <a id="submit"></a>Prześlij uruchomienie szkolenia przy użyciu zestawu SDK Azure Machine Learning
 
 Po utworzeniu konfiguracji przebiegu należy użyć jej do uruchomienia eksperymentu.  Wzorzec kodu do przesyłania przebiegu szkoleniowego jest taki sam dla wszystkich typów obiektów docelowych obliczeń:
 
@@ -430,8 +406,70 @@ Przełączenie tego samego eksperymentu w celu uruchomienia go w innym miejscu d
 Możesz też:
 
 * Prześlij eksperyment z `Estimator` obiektem, jak pokazano w [pouczeniu modeli ml z szacowania](how-to-train-ml-models.md).
-* Prześlij eksperyment [przy użyciu rozszerzenia interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md#experiments).
+* Prześlij przebieg dla [strojenia parametru](how-to-tune-hyperparameters.md).
 * Prześlij eksperyment za pośrednictwem [rozszerzenia vs Code](how-to-vscode-tools.md#train-and-tune-models).
+
+## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Utwórz konfigurację uruchamiania i prześlij przebieg przy użyciu interfejsu wiersza polecenia Azure Machine Learning
+
+Możesz użyć [interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) i [Machine Learning rozszerzenia interfejsu wiersza polecenia](reference-azure-machine-learning-cli.md) , aby utworzyć konfigurację uruchamiania i przesłać przebiegi w różnych obiektach docelowych obliczeń. W poniższych przykładach założono, że masz istniejące obszar roboczy usługi Azure Machine Learning i zalogujesz się do platformy Azure `az login` przy użyciu polecenia interfejsu wiersza poleceń. 
+
+### <a name="create-run-configuration"></a>Utwórz konfigurację uruchamiania
+
+Najprostszym sposobem tworzenia konfiguracji uruchamiania jest nawigowanie po folderze zawierającym skrypty środowiska Python uczenia maszynowego i używanie interfejsu wiersza polecenia
+
+```azurecli
+az ml folder attach
+```
+
+To polecenie tworzy podfolder `.azureml` zawierający pliki konfiguracji uruchamiania dla różnych elementów docelowych obliczeń. Można kopiować i edytować te pliki, aby dostosować konfigurację, na przykład dodać pakiety Python lub zmienić ustawienia platformy Docker.  
+
+### <a name="create-an-experiment"></a>Tworzenie eksperymentu
+
+Najpierw utwórz eksperyment dla przebiegów
+
+```azurecli
+az ml experiment create -n <experiment>
+```
+
+### <a name="script-run"></a>Uruchomienie skryptu
+
+Aby przesłać uruchomienie skryptu, wykonaj polecenie
+
+```azurecli
+az ml run submit-script -e <experiment> -c <runconfig> my_train.py
+```
+
+### <a name="hyperdrive-run"></a>Przebieg z dysku
+
+Do przeprowadzenia przebiegu strojenia parametrów można użyć polecenia popełnienia z interfejsem CLI platformy Azure. Najpierw utwórz plik konfiguracji z dysku w następującym formacie. Aby uzyskać szczegółowe informacje na temat parametrów strojenia parametrów, zobacz [dostrajanie parametrów w](how-to-tune-hyperparameters.md) artykule dotyczącym modelu.
+
+```yml
+# hdconfig.yml
+sampling: 
+    type: random # Supported options: Random, Grid, Bayesian
+    parameter_space: # specify a name|expression|values tuple for each parameter.
+    - name: --penalty # The name of a script parameter to generate values for.
+      expression: choice # supported options: choice, randint, uniform, quniform, loguniform, qloguniform, normal, qnormal, lognormal, qlognormal
+      values: [0.5, 1, 1.5] # The list of values, the number of values is dependent on the expression specified.
+policy: 
+    type: BanditPolicy # Supported options: BanditPolicy, MedianStoppingPolicy, TruncationSelectionPolicy, NoTerminationPolicy
+    evaluation_interval: 1 # Policy properties are policy specific. See the above link for policy specific parameter details.
+    slack_factor: 0.2
+primary_metric_name: Accuracy # The metric used when evaluating the policy
+primary_metric_goal: Maximize # Maximize|Minimize
+max_total_runs: 8 # The maximum number of runs to generate
+max_concurrent_runs: 2 # The number of runs that can run concurrently.
+max_duration_minutes: 100 # The maximum length of time to run the experiment before cancelling.
+```
+
+Dodaj ten plik obok plików konfiguracji uruchomieniowej. Następnie prześlij dysk Uruchom za pomocą polecenia:
+```azurecli
+az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configuration-name <hdconfig> my_train.py
+```
+
+Zwróć uwagę na sekcję *argumenty* w runconfig i *przestrzeni parametrów* w pliku config. Zawierają one argumenty wiersza polecenia, które mają być przekazane do skryptu szkoleniowego. Wartość w runconfig pozostaje taka sama dla każdej iteracji, podczas gdy zakres w konfiguracji dysku jest powtarzany. Nie określaj tego samego argumentu w obu plikach.
+
+Aby uzyskać więcej informacji na ```az ml``` temat poleceń interfejsu wiersza polecenia i pełnego zestawu argumentów, zobacz [dokumentację referencyjną](reference-azure-machine-learning-cli.md).
 
 <a id="gitintegration"></a>
 

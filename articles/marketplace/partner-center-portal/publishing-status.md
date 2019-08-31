@@ -1,18 +1,18 @@
 ---
 title: Sprawdź stan publikowania oferty komercyjnej witryny Marketplace
 description: Sprawdź stan weryfikacji, certyfikacji i kroków w wersji zapoznawczej wymaganych do opublikowania oferty za pośrednictwem komercyjnej witryny Marketplace w centrum partnerskim firmy Microsoft.
-author: mattwojo
+author: ChJenk
 manager: evansma
-ms.author: mattwoj
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: c547ad256e6ba44da4ef81aa2a3aa2c77ba24815
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 77cb18a858ca87acbb8182bf708e403010251365
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982737"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191783"
 ---
 # <a name="check-the-publishing-status-of-your-commercial-marketplace-offer"></a>Sprawdź stan publikowania oferty komercyjnej witryny Marketplace
 

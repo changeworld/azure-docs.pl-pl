@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 545860a394c7eac953c1cbacc9dd05fc3737f6c1
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7b800a7ef38624dbe89a61dd04e2bd97b02066bb
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856167"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191917"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Dostęp do danych w usługach Azure Storage
 
@@ -200,6 +200,7 @@ est = Estimator(source_directory='your code directory',
                 entry_script='train.py',
                 inputs=[datastore1.as_download(), datastore2.path('./foo').as_download(), datastore3.as_upload(path_on_compute='./bar.pkl')])
 ```
+
 ### <a name="compute-and-datastore-matrix"></a>Macierze obliczeniowe i magazyn danych
 
 Magazyny danych obsługują obecnie przechowywanie informacji o połączeniu z usługami magazynu wymienionymi w poniższej macierzy. Ta macierz przedstawia dostępne funkcje dostępu do danych dla różnych obiektów docelowych obliczeń i scenariuszy magazynu danych. Dowiedz się więcej [na temat obiektów docelowych obliczeń dla Azure Machine Learning](how-to-set-up-training-targets.md#compute-targets-for-training).
@@ -218,6 +219,17 @@ Magazyny danych obsługują obecnie przechowywanie informacji o połączeniu z u
 > [!NOTE]
 > Mogą istnieć scenariusze, w których wysoce iteracyjne i duże procesy danych są uruchamiane `as_download()` szybciej przy `as_mount()`użyciu zamiast programu; może to być sprawdzona eksperymentowo.
 
+### <a name="accessing-source-code-during-training"></a>Uzyskiwanie dostępu do kodu źródłowego podczas szkolenia
+
+Usługa Azure Blob Storage ma większe szybkości przepływności niż udział plików platformy Azure i będzie skalowana do dużej liczby zadań uruchomionych równolegle. Z tego powodu zalecamy skonfigurowanie przebiegów do korzystania z usługi BLOB Storage na potrzeby przesyłania plików kodu źródłowego.
+
+Poniższy przykład kodu określa w konfiguracji uruchamiania, która magazyn danych obiektów BLOB ma być używana do transferów kodu źródłowego.
+
+```python 
+# workspaceblobstore is the default blob storage
+run_config.source_directory_data_store = "workspaceblobstore" 
+```
+
 ## <a name="access-data-during-scoring"></a>Uzyskiwanie dostępu do danych podczas oceniania
 
 Usługa Azure Machine Learning oferuje kilka sposobów na korzystanie z modeli do oceniania. Niektóre z tych metod nie zapewniają dostępu do magazynów danych. Skorzystaj z poniższej tabeli, aby zrozumieć, które metody umożliwiają dostęp do magazynów danych podczas oceniania:
@@ -231,7 +243,7 @@ Usługa Azure Machine Learning oferuje kilka sposobów na korzystanie z modeli d
 W sytuacjach, w których zestaw SDK nie zapewnia dostępu do magazynów danych, można utworzyć niestandardowy kod przy użyciu odpowiedniego zestawu Azure SDK, aby uzyskać dostęp do tego programu. Na przykład do uzyskiwania dostępu do danych przechowywanych w obiektach Blob za pomocą [zestawu SDK usługi Azure Storage dla języka Python](https://github.com/Azure/azure-storage-python) .
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Uczenie modelu](how-to-train-ml-models.md)
 

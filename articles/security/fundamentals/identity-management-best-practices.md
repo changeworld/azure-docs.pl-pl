@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 371c3b9fde17bba33fb6f2526be68fe89aec6b01
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 093c5878cd2f7df63502a7aff686824af3c88078
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934690"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195074"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Najlepsze rozwiązania dotyczące zabezpieczeń usługi Azure Identity Management i kontroli dostępu
 W tym artykule omówiono zbieranie najlepszych rozwiązań dotyczących zabezpieczeń usługi Azure Identity Management i kontroli dostępu. Te najlepsze rozwiązania wynikają z naszych doświadczeń związanych z [usługą Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) i środowiskami klientów.
@@ -93,7 +93,7 @@ Organizacje, które nie integrują swojej tożsamości lokalnej z tożsamościam
 > Należy wybrać katalogi, w których znajdują się konta krytyczne, oraz określić, czy używana stacja robocza stacji roboczej jest zarządzana przez nowe usługi w chmurze czy istniejące. Korzystanie z istniejących procesów zarządzania i inicjowania obsługi tożsamości może zmniejszyć ryzyko, ale może również stworzyć ryzyko naruszenia konta lokalnego i przestawienie go do chmury. Możesz chcieć użyć innej strategii dla różnych ról (na przykład administratorów IT i administratorów jednostek roboczych). Dostępne są dwie opcje. Pierwsza opcja polega na utworzeniu kont usługi Azure AD, które nie są zsynchronizowane z lokalnym wystąpieniem Active Directory. Dołącz do usługi Azure AD swoją administracyjną stację roboczą, którą możesz zarządzać i poprawiać przy użyciu Microsoft Intune. Druga opcja polega na użyciu istniejących kont administratora przez synchronizację z lokalnym wystąpieniem Active Directory. Użyj istniejących stacji roboczych w domenie Active Directory na potrzeby zarządzania i zabezpieczeń.
 
 ## <a name="manage-connected-tenants"></a>Zarządzanie połączonymi dzierżawcami
-Twoja organizacja zabezpieczeń wymaga wglądu w ocenę ryzyka i ustalenia, czy stosowane są zasady organizacji i wymagania prawne. Należy upewnić się, że organizacja zabezpieczeń ma wgląd we wszystkie subskrypcje połączone ze środowiskiem produkcyjnym i siecią (za pośrednictwem [usługi Azure ExpressRoute](../../expressroute/expressroute-introduction.md) lub [sieci VPN typu lokacja-lokacja](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)). Administrator [globalny/administrator firmy](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) w usłudze Azure AD może podnieść poziom dostępu do roli [administratora dostępu użytkowników](../../role-based-access-control/built-in-roles.md#user-access-administrator) i zobaczyć wszystkie subskrypcje i grupy zarządzane połączone ze środowiskiem.
+Twoja organizacja zabezpieczeń wymaga wglądu w ocenę ryzyka i ustalenia, czy stosowane są zasady organizacji i wymagania prawne. Należy upewnić się, że organizacja zabezpieczeń ma wgląd we wszystkie subskrypcje połączone ze środowiskiem produkcyjnym i siecią (za pośrednictwem [usługi Azure ExpressRoute](../../expressroute/expressroute-introduction.md) lub [sieci VPN typu lokacja-lokacja](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)). Administrator [globalny/administrator firmy](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions) w usłudze Azure AD może podnieść poziom dostępu do roli [administratora dostępu użytkowników](../../role-based-access-control/built-in-roles.md#user-access-administrator) i zobaczyć wszystkie subskrypcje i grupy zarządzane połączone ze środowiskiem.
 
 Zobacz [Podnieś poziom dostępu do zarządzania wszystkimi subskrypcjami i grupami zarządzania platformy Azure](../../role-based-access-control/elevate-access-global-admin.md) , aby upewnić się, że użytkownik i Twoja grupa zabezpieczeń mogą wyświetlać wszystkie subskrypcje lub grupy zarządzania połączone ze środowiskiem. Ten podwyższony poziom dostępu należy usunąć po przeprowadzeniu oceny ryzyka.
 
@@ -139,21 +139,21 @@ Jeśli masz wielu dzierżawców lub chcesz umożliwić użytkownikom [Resetowani
 
 Zalecamy wymaganie weryfikacji dwuetapowej dla wszystkich użytkowników. Obejmuje to administratorów i innych użytkowników w organizacji, którzy mogą mieć znaczący wpływ na bezpieczeństwo kont (na przykład funkcjonariusze finansów).
 
-Istnieje wiele opcji wymagających weryfikacji dwuetapowej. Najlepsza opcja zależy od Twoich celów, uruchomionej wersji usługi Azure AD i programu licencjonowania. Zobacz, [jak wymagać weryfikacji dwuetapowej dla użytkownika](/azure/active-directory/authentication/howto-mfa-userstates) , aby określić najlepszą dla siebie opcję. Aby uzyskać więcej informacji o licencjach i cenach, zobacz strony z cennikiem usługi [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) i [usługi Azure](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) MFA.
+Istnieje wiele opcji wymagających weryfikacji dwuetapowej. Najlepsza opcja zależy od Twoich celów, uruchomionej wersji usługi Azure AD i programu licencjonowania. Zobacz, [jak wymagać weryfikacji dwuetapowej dla użytkownika](/azure/active-directory/authentication/howto-mfa-userstates) , aby określić najlepszą dla siebie opcję. Aby uzyskać więcej informacji o licencjach i cenach, zobacz strony z cennikiem usługi [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) i [platformy Azure Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) .
 
 Poniżej przedstawiono opcje i korzyści dotyczące włączania weryfikacji dwuetapowej:
 
-**Opcja 1**: [Włącz uwierzytelnianie wieloskładnikowe, zmieniając stan użytkownika](../../active-directory/authentication/howto-mfa-userstates.md).   
-**Korzyść**: Jest to tradycyjna metoda wymagająca weryfikacji dwuetapowej. Współpracuje z [usługą Azure MFA zarówno w chmurze, jak i na serwerze usługi Azure](/azure/active-directory/authentication/concept-mfa-whichversion)MFA. Użycie tej metody wymaga, aby użytkownicy przeprowadzali weryfikację dwuetapową przy każdym logowaniu i zastępują zasady dostępu warunkowego.
+**Opcja 1**: [Włącz Multi-Factor Authentication przez zmianę stanu użytkownika](../../active-directory/authentication/howto-mfa-userstates.md).   
+**Korzyść**: Jest to tradycyjna metoda wymagająca weryfikacji dwuetapowej. Działa ona zarówno [w przypadku usługi azure Multi-Factor Authentication w chmurze, jak i na platformie azure serwer Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-whichversion). Użycie tej metody wymaga, aby użytkownicy przeprowadzali weryfikację dwuetapową przy każdym logowaniu i zastępują zasady dostępu warunkowego.
 
-Aby określić, gdzie ma być włączone uwierzytelnianie wieloskładnikowe, sprawdź, [która wersja usługi Azure MFA jest odpowiednia dla mojej organizacji?](/azure/active-directory/authentication/concept-mfa-whichversion).
+Aby określić, gdzie należy włączyć Multi-Factor Authentication, zobacz, [która wersja usługi Azure MFA jest odpowiednia dla mojej organizacji?](/azure/active-directory/authentication/concept-mfa-whichversion).
 
-**Opcja 2**: [Włącz uwierzytelnianie wieloskładnikowe za pomocą zasad dostępu warunkowego](/azure/active-directory/authentication/howto-mfa-getstarted).
+**Opcja 2**: [Włącz Multi-Factor Authentication z zasadami dostępu warunkowego](/azure/active-directory/authentication/howto-mfa-getstarted).
 **Korzyść**: Ta opcja umożliwia wyświetlenie monitu o weryfikację dwuetapową w określonych warunkach przy użyciu [dostępu warunkowego](/azure/active-directory/active-directory-conditional-access-azure-portal). Określone warunki mogą być logowaniem użytkowników z różnych lokalizacji, niezaufanych urządzeń lub aplikacji, które są uważane za ryzykowne. Definiowanie określonych warunków, w których wymagana jest weryfikacja dwuetapowa, pozwala uniknąć stałego monitowania użytkowników, co może być nieprzyjemnym interfejsem użytkownika.
 
-Jest to najbardziej elastyczny sposób na umożliwienie weryfikacji dwuetapowej dla użytkowników. Włączenie zasad dostępu warunkowego działa tylko w przypadku uwierzytelniania wieloskładnikowego platformy Azure w chmurze i jest funkcją Premium usługi Azure AD. Więcej informacji na temat tej metody można znaleźć w temacie [wdrażanie usługi Azure MFA opartej na chmurze](/azure/active-directory/authentication/howto-mfa-getstarted).
+Jest to najbardziej elastyczny sposób na umożliwienie weryfikacji dwuetapowej dla użytkowników. Włączenie zasad dostępu warunkowego działa tylko w przypadku usługi Azure Multi-Factor Authentication w chmurze i jest funkcją Premium usługi Azure AD. Więcej informacji na temat tej metody można znaleźć w temacie [wdrażanie opartego na chmurze Multi-Factor Authentication platformy Azure](/azure/active-directory/authentication/howto-mfa-getstarted).
 
-**Opcja 3**: Włącz uwierzytelnianie wieloskładnikowe za pomocą zasad dostępu warunkowego, Oceniając ryzyko związane z Azure AD Identity Protectionami użytkowników i [](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa)logowania.   
+**Opcja 3**: Włącz Multi-Factor Authentication przy użyciu zasad dostępu warunkowego, Oceniając ryzyko związane z logowaniem użytkownika i [Azure AD Identity Protection](/azure/active-directory/authentication/tutorial-risk-based-sspr-mfa).   
 **Korzyść**: Ta opcja umożliwia:
 
 - Wykrywaj potencjalne luki w zabezpieczeniach, które mają wpływ na tożsamości w organizacji.
@@ -163,7 +163,7 @@ Jest to najbardziej elastyczny sposób na umożliwienie weryfikacji dwuetapowej 
 Ta metoda używa oceny ryzyka Azure AD Identity Protection, aby określić, czy Weryfikacja dwuetapowa jest wymagana na podstawie ryzyka związanego z logowaniem do wszystkich aplikacji w chmurze. Ta metoda wymaga licencjonowania Azure Active Directory P2. Więcej informacji na temat tej metody można znaleźć w [Azure Active Directory Identity Protection](/azure/active-directory/identity-protection/overview).
 
 > [!Note]
-> Opcja 1, włączenie uwierzytelniania wieloskładnikowego przez zmianę stanu użytkownika, przesłania zasady dostępu warunkowego. Ponieważ opcje 2 i 3 korzystają z zasad dostępu warunkowego, nie można użyć opcji 1 z nimi.
+> Opcja 1, Włączanie Multi-Factor Authentication przez zmianę stanu użytkownika, przesłania zasady dostępu warunkowego. Ponieważ opcje 2 i 3 korzystają z zasad dostępu warunkowego, nie można użyć opcji 1 z nimi.
 
 Organizacje, które nie dodawaj dodatkowych warstw ochrony tożsamości, takich jak weryfikacja dwuetapowa, są bardziej podatne na ataki kradzieży poświadczeń. Atak kradzieży poświadczeń może prowadzić do złamania danych.
 
@@ -174,7 +174,7 @@ Wyznaczanie grup lub poszczególnych ról odpowiadających określonym funkcjom 
 
 Zespół ds. zabezpieczeń wymaga wglądu w zasoby platformy Azure w celu oceny i skorygowania ryzyka. Jeśli zespół ds. zabezpieczeń ma obowiązki operacyjne, potrzebują dodatkowych uprawnień do wykonywania swoich zadań.
 
-Za pomocą [RBAC](/azure/role-based-access-control/overview) można przypisywać uprawnienia użytkownikom, grupom i aplikacjom w określonym zakresie. Zakresem przypisania roli może być subskrypcja, Grupa zasobów lub pojedynczy zasób.
+Za pomocą [RBAC](/azure/role-based-access-control/overview) można przypisywać uprawnienia użytkownikom, grupom i aplikacjom w określonym zakresie. Zakresem przypisania roli może być subskrypcja, grupa zasobów lub pojedynczy zasób.
 
 **Najlepsze rozwiązanie**: Segregowaj cła w zespole i Udziel dostępu tylko użytkownikom, których potrzebują do wykonywania swoich zadań. Zamiast udzielać każdemu nieograniczonyemu dostępowi do subskrypcji lub zasobów platformy Azure, Zezwól tylko na określone akcje w określonym zakresie.
 **Szczegóły**: Do przypisywania uprawnień użytkownikom można używać [wbudowanych ról RBAC](/azure/role-based-access-control/built-in-roles) na platformie Azure.
@@ -239,10 +239,10 @@ Oceń konta, które są przypisane lub kwalifikujące się do roli administrator
 **Najlepsze rozwiązanie**: W przypadku sytuacji awaryjnej ma miejsce proces "Break Glass".
 **Szczegóły**: Postępuj zgodnie z instrukcjami w temacie [Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD](/azure/active-directory/users-groups-roles/directory-admin-roles-secure).
 
-**Najlepsze rozwiązanie**: Wymagaj, aby wszystkie krytyczne konta administratorów były hasłami (preferowanymi) lub wymagają uwierzytelniania wieloskładnikowego.
+**Najlepsze rozwiązanie**: Wymagaj, aby wszystkie krytyczne konta administratorów miały być hasłami (preferowanymi) lub wymagają Multi-Factor Authentication.
 **Szczegóły**: Użyj [aplikacji Microsoft Authenticator](/azure/active-directory/authentication/howto-authentication-phone-sign-in) , aby zalogować się do dowolnego konta usługi Azure AD bez użycia hasła. Podobnie jak w [przypadku usługi Windows Hello dla firm](/windows/security/identity-protection/hello-for-business/hello-identity-verification), Microsoft Authenticator używa uwierzytelniania opartego na kluczach, aby włączyć poświadczenia użytkownika powiązane z urządzeniem i korzystać z uwierzytelniania biometrycznego lub numeru PIN.
 
-Wymagaj uwierzytelniania wieloskładnikowego Azure przy logowaniu dla wszystkich użytkowników, którzy są trwale przypisani do co najmniej jednej roli administratora usługi Azure AD: Administrator globalny, administrator ról uprzywilejowanych, administrator programu Exchange Online i administrator usługi SharePoint Online. Włącz [uwierzytelnianie wieloskładnikowe dla kont administratorów](/azure/active-directory/authentication/howto-mfa-userstates) i upewnij się, że zarejestrowano użytkowników konta administratora.
+Wymagaj usługi Azure Multi-Factor Authentication podczas logowania dla wszystkich użytkowników, którzy są trwale przypisani do co najmniej jednej roli administratora usługi Azure AD: Administrator globalny, administrator ról uprzywilejowanych, administrator programu Exchange Online i administrator usługi SharePoint Online. Włącz [Multi-Factor Authentication kont administratorów](/azure/active-directory/authentication/howto-mfa-userstates) i upewnij się, że zarejestrowano użytkowników konta administratora.
 
 **Najlepsze rozwiązanie**: W przypadku krytycznych kont administratorów należy dysponować administratorem stacji roboczej, gdzie zadania produkcyjne są niedozwolone (na przykład przeglądanie i poczta e-mail). Pozwala to chronić konta administratorów przed atakami wykorzystującymi funkcję przeglądania i poczty e-mail oraz znacząco zmniejszają ryzyko wystąpienia poważnych zdarzeń.
 **Szczegóły**: Użyj stacji roboczej administratora. Wybierz poziom zabezpieczeń stacji roboczej:
@@ -265,7 +265,7 @@ Wymagaj uwierzytelniania wieloskładnikowego Azure przy logowaniu dla wszystkich
 
 [Włącz synchronizację skrótów haseł](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#turn-on-password-hash-synchronization)  
 
-[Wymagaj uwierzytelniania wieloskładnikowego dla użytkowników we wszystkich uprzywilejowanych rolach, a także dla narażonych użytkowników](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
+[Wymagaj Multi-Factor Authentication dla użytkowników we wszystkich uprzywilejowanych rolach, a także dla narażonych użytkowników](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
 
 [Uzyskaj wynik zabezpieczony przez pakiet Office 365 (Jeśli korzystasz z pakietu Office 365)](/azure/active-directory/users-groups-roles/directory-admin-roles-secure#obtain-your-office-365-secure-score-if-using-office-365)  
 

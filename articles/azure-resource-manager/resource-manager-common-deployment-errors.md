@@ -6,14 +6,14 @@ author: tfitzmac
 keywords: Błąd wdrażania, wdrażanie platformy Azure, wdrażanie na platformie Azure
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 07/28/2019
+ms.date: 08/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 639f6b3b29b7effa12de79335d44b0193f3f9932
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: df5362028a38a86ba8df46efae2e3c3109856463
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638544"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194360"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Rozwiązywanie typowych błędów wdrażania platformy Azure za pomocą Azure Resource Manager
 
@@ -41,7 +41,7 @@ Jeśli szukasz informacji o kodzie błędu i te informacje nie zostały podane w
 | ImageNotFound | Sprawdź ustawienia obrazu maszyny wirtualnej. |  |
 | InUseSubnetCannotBeDeleted | Ten błąd może wystąpić podczas próby zaktualizowania zasobu, a żądanie jest przetwarzane przez usunięcie i utworzenie zasobu. Upewnij się, że określono wszystkie niezmienione wartości. | [Aktualizowanie zasobu](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | InvalidAuthenticationTokenTenant | Uzyskaj token dostępu dla odpowiedniej dzierżawy. Możesz uzyskać tylko token z dzierżawy, do której należy Twoje konto. | |
-| InvalidContentLink | Najprawdopodobniej podjęto próbę połączenia z zagnieżdżonym szablonem, który nie jest dostępny. Sprawdź dokładnie identyfikator URI podany dla szablonu zagnieżdżonego. Jeśli szablon istnieje na koncie magazynu, upewnij się, że identyfikator URI jest dostępny. Może być konieczne przekazanie tokenu SAS. | [Połączone szablony](resource-group-linked-templates.md) |
+| InvalidContentLink | Najprawdopodobniej podjęto próbę połączenia z zagnieżdżonym szablonem, który nie jest dostępny. Sprawdź dokładnie identyfikator URI podany dla szablonu zagnieżdżonego. Jeśli szablon istnieje na koncie magazynu, upewnij się, że identyfikator URI jest dostępny. Może być konieczne przekazanie tokenu SAS. Obecnie nie można połączyć się z szablonem znajdującym się na koncie magazynu za [zaporą usługi Azure Storage](../storage/common/storage-network-security.md). Rozważ przeniesienie szablonu do innego repozytorium, takiego jak GitHub. | [Połączone szablony](resource-group-linked-templates.md) |
 | InvalidParameter | Jedna z wartości podanych dla zasobu jest niezgodna z oczekiwaną wartością. Ten błąd może wynikać z wielu różnych warunków. Na przykład hasło może być niewystarczające lub nazwa obiektu BLOB może być niepoprawna. Komunikat o błędzie powinien wskazywać, którą wartość należy poprawić. | |
 | InvalidRequestContent | Wartości wdrożenia obejmują wartości, które nie zostały rozpoznane lub brakuje wymaganych wartości. Potwierdź wartości dla typu zasobu. | [Dokumentacja szablonu](/azure/templates/) |
 | InvalidRequestFormat | Włącz rejestrowanie debugowania podczas uruchamiania wdrożenia i sprawdź zawartość żądania. | [Rejestrowanie debugowania](#enable-debug-logging) |

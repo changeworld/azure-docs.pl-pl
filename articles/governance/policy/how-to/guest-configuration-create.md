@@ -7,12 +7,12 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 235ad37c5cf5f8ac7e801a6d25e961d32c1b7aad
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: ee8a17846495a122f7432e66c3e343a00dd0a015
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164919"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194626"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Jak utworzyć zasady konfiguracji gościa
 
@@ -367,6 +367,13 @@ Odpowiednie informacje na temat tworzenia kluczy GPG do użycia z maszynami z sy
 
 Po opublikowaniu zawartości Dodaj tag o nazwie `GuestConfigPolicyCertificateValidation` i wartości `enabled` do wszystkich maszyn wirtualnych, na których powinno być wymagane podpisywanie kodu. Ten tag można dostarczyć na dużą skalę przy użyciu Azure Policy. Zapoznaj się z przykładem [Zastosuj tag i jego wartość domyślną](../samples/apply-tag-default-value.md) .
 Po zastosowaniu tego tagu definicja zasad wygenerowana przy użyciu `New-GuestConfigurationPolicy` polecenia cmdlet włącza wymaganie za pośrednictwem rozszerzenia konfiguracji gościa.
+
+## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>PRZEGLĄDANIA Rozwiązywanie problemów z przypisaniami zasad konfiguracji gościa
+
+Narzędzie jest dostępne w wersji zapoznawczej, aby pomóc w rozwiązywaniu problemów z przypisaniami konfiguracji gościa Azure Policy.
+Narzędzie jest w wersji zapoznawczej i zostało opublikowane w Galeria programu PowerShell jako nazwa modułu [Narzędzia do rozwiązywania problemów z konfiguracją gościa](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
+
+Aby uzyskać więcej informacji na temat poleceń cmdlet w tym narzędziu, użyj polecenia Get-Help w programie PowerShell, aby wyświetlić wbudowane wskazówki.  Ponieważ narzędzie pobiera częste aktualizacje, to najlepszy sposób uzyskiwania najnowszych informacji.
 
 ## <a name="next-steps"></a>Następne kroki
 

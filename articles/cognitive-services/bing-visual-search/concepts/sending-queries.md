@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 7/01/2019
+ms.date: 08/30/2019
 ms.author: aahi
-ms.openlocfilehash: 6604e5d5b3b77955c9e5f78df5d2a5b804bf09ef
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e857401591d45048962e9f606973dbf59dfe99c8
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883575"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194313"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Wysyłanie zapytań wyszukiwania do interfejs API wyszukiwania wizualnego Bing
 
@@ -73,7 +73,7 @@ Punkt końcowy wyszukiwania wizualnego jest następujący: https:\/\/api.cogniti
 
 Poniżej przedstawiono parametry zapytania, które należy określić w żądaniu. Należy podać `mkt` co najmniej parametr zapytania:
 
-| Name (Nazwa) | Value | Type | Wymagane |
+| Name | Value | Type | Wymagane |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | Dwuznakowy kod kraju, który reprezentuje miejsce, z którego pochodzą wyniki.<br /><br /> Jeśli ustawisz ten parametr, musisz także określić nagłówek [Accept-Language](#acceptlanguage). Usługa Bing używa pierwszego obsługiwanego języka znalezionego na liście języków i łączy ten język z określonym kodem kraju, aby ustalić rynek, z którego mają być zwrócone wyniki. Jeśli lista języków nie zawiera obsługiwanego języka, usługa Bing znajduje najbliższy język i rynek, które obsługują żądanie. Może też używać rynku zagregowanego lub domyślnego, zamiast podanego.<br /><br /> Tego parametru zapytania i parametru `Accept-Language` należy używać tylko wtedy, gdy jest określanych wiele języków. W przeciwnym razie należy użyć parametrów zapytania `mkt` i `setLang`.<br /><br /> Ten parametr i parametr zapytania [mkt](#mkt) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie. | String | Nie       |
 | <a name="mkt" />mkt   | Rynek, z którego pochodzą wyniki. <br /><br /> **UWAGA:** Należy zawsze określić rynek, jeśli jest znany. Określenie rynku pomaga usłudze Bing w kierowaniu żądania i zwracaniu odpowiedniej i optymalnej odpowiedzi.<br /><br /> Ten parametr i parametr zapytania [cc](#cc) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie. | String | Tak      |
@@ -242,7 +242,7 @@ Pole `tags` zawiera nazwę wyświetlaną i listę akcji (szczegółowe informacj
 
 Aby uzyskać listę domyślnych szczegółowych informacji, zobacz [tag default Insights](../default-insights-tag.md).
 
-Pozostałe tagi zawierają inne szczegółowe informacje, które mogą interesować użytkownika. Jeśli na przykład obraz zawiera tekst, jeden tag może obejmować szczegółowe informacje TextResults, które zawierają rozpoznany tekst. Lub, jeśli Bing rozpoznaje jednostkę (czyli osobę, miejsce lub rzecz) w obrazie, jeden z tagów może zidentyfikować jednostkę. Wyszukiwanie wizualne zwraca także zróżnicowany zestaw terminów (tagów) pobranych z obrazu wejściowego. Tagi te umożliwiają użytkownikom Eksplorowanie pojęć znalezionych w obrazie. Jeśli na przykład obrazu wejściowy przedstawia sławnego sportowca, jeden z tagów może reprezentować dyscyplinę sportową i zawierać linki do obrazów tej dyscypliny.
+Pozostałe tagi zawierają inne szczegółowe informacje, które mogą interesować użytkownika. Jeśli na przykład obraz zawiera tekst, jeden tag może obejmować szczegółowe informacje TextResults, które zawierają rozpoznany tekst. Lub, jeśli Bing rozpoznaje jednostkę (to jest dobrze znana/popularna osoba, miejsce lub rzecz) w obrazie, jeden z tagów może zidentyfikować jednostkę. Wyszukiwanie wizualne zwraca także zróżnicowany zestaw terminów (tagów) pobranych z obrazu wejściowego. Tagi te umożliwiają użytkownikom Eksplorowanie pojęć znalezionych w obrazie. Jeśli na przykład obrazu wejściowy przedstawia sławnego sportowca, jeden z tagów może reprezentować dyscyplinę sportową i zawierać linki do obrazów tej dyscypliny.
 
 Każdy tag zawiera nazwę wyświetlaną, która służy do kategoryzowania szczegółowych informacji, pole ograniczenia identyfikujące region zainteresowania, których dotyczą szczegółowe informacje, same szczegółowe informację oraz miniaturę obrazu. Jeśli na przykład obraz przedstawia osobę w bluzie sportowej, jeden z tagów może zawierać pole ograniczenia, które obejmuje bluzę i szczegółowe informacje VisualSearch oraz ProductVisualSearch. Natomiast inny tag może zawierać szczegółowe informacje ImageResults, które obejmują adres URL żądania interfejsu API /images/search umożliwiający pobranie obrazów powiązanych tematycznie, lub adres URL wyszukiwania witryny Bing.com, który powoduje otwarcie wyników wyszukiwania obrazu w witrynie Bing.com.
 
@@ -368,7 +368,7 @@ Rozpoznawanie tekstu może także rozpoznawać informacje kontaktowe na wizytów
     }
 ```
 
-Jeśli obraz zawiera rozpoznaną jednostkę, taką jak osoba, miejsce lub rzecz, jeden tag może obejmować szczegółowe informacje jednostki.
+Jeśli obraz zawiera rozpoznaną jednostkę, taką jak dobrze znana/popularna osoba, miejsce lub rzecz, jeden z tagów może zawierać szczegółowe informacje o jednostce.
 
 ```json
     {

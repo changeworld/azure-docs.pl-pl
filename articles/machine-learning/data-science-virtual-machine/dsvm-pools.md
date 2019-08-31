@@ -1,31 +1,25 @@
 ---
-title: Pule maszyna wirtualna do analizy danych — Azure | Dokumentacja firmy Microsoft
+title: Pule udostępnione
+titleSuffix: Azure Data Science Virtual Machine
 description: Wdrażanie pul DSVMs jako zasobu udostępnionego dla zespołu
 keywords: głębokiego uczenia i sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, geoprzestrzenna analiza, zespół danych dla celów naukowych
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/10/2018
+author: vijetajo
 ms.author: vijetaj
-ms.openlocfilehash: 76a715838fa5eb4f806fccc98675ea5acdbe1822
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.topic: conceptual
+ms.date: 12/10/2018
+ms.openlocfilehash: 929040b5dc8650a757fb9c0da58cb82a76a72b5b
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992033"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195627"
 ---
 # <a name="create-a-shared-pool-of-data-science-virtual-machines"></a>Utwórz współużytkowanej puli maszyn wirtualnych do nauki o danych
 
-W tym artykule omówiono sposób tworzenia udostępnionej puli Virtual Machines analizy danych (DSVMs) dla zespołu. Zalety korzystania z puli udostępnionej obejmują lepsze wykorzystanie zasobów, łatwiejsze udostępnianie i współpracę oraz wydajniejsze zarządzanie zasobami DSVM.
+W tym artykule dowiesz się, jak utworzyć udostępnioną pulę Virtual Machines analizy danych (DSVMs) dla zespołu. Zalety korzystania z puli udostępnionej obejmują lepsze wykorzystanie zasobów, łatwiejsze udostępnianie i współpracę oraz wydajniejsze zarządzanie zasobami DSVM.
 
 Aby utworzyć pulę maszyny, można użyć wielu metod i technologii. Ten artykuł koncentruje się na pulach dla interaktywnych maszyn wirtualnych. Alternatywna zarządzana infrastruktura obliczeniowa to Azure Machine Learning COMPUTE. Aby uzyskać więcej informacji, zobacz [set up COMPUTE targets](../service/how-to-set-up-training-targets.md#amlcompute).
 
