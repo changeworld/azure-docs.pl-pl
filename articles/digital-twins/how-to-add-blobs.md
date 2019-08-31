@@ -56,9 +56,9 @@ Metadane obiektu BLOB JSON są zgodne z następującym modelem:
 | **parentId** | String | Jednostka nadrzędna, z którą ma zostać skojarzony obiekt BLOB (miejsca, urządzenia lub Użytkownicy) |
 | **name** |String | Przyjazna dla człowieka nazwa obiektu BLOB |
 | **type** | String | Typ obiektu BLOB — nie można używać *typu* i elementu *typeId*  |
-| **typeId** | Liczba całkowita | Identyfikator typu obiektu BLOB — nie można używać *typu* i elementu *typeId* |
+| **typeId** | Integer | Identyfikator typu obiektu BLOB — nie można używać *typu* i elementu *typeId* |
 | **Podtyp** | String | Podtyp obiektu BLOB — nie można użyć *podtypu* i elementu subtypeid |
-| **subtypeId** | Liczba całkowita | Identyfikator podtypu dla obiektu BLOB — nie można użyć *podtypu* i elementu subtypeid |
+| **subtypeId** | Integer | Identyfikator podtypu dla obiektu BLOB — nie można użyć *podtypu* i elementu subtypeid |
 | **zharmonizowan** | String | Dostosowany opis obiektu BLOB |
 | **sharing** | String | Czy obiekt BLOB może być współużytkowany-enum [`None`, `Tree`, `Global`] |
 
