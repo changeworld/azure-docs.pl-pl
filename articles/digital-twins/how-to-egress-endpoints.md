@@ -49,14 +49,14 @@ Zdarzenia są wysyłane przez obiekty IoT (takie jak urządzenia i czujniki) do 
 
 | Atrybut | Type | Opis |
 | --- | --- | --- |
-| id | ciąg | Unikatowy identyfikator zdarzenia. |
-| subject | ciąg | Ścieżka zdefiniowana przez program Publisher do tematu zdarzenia. |
+| id | string | Unikatowy identyfikator zdarzenia. |
+| subject | string | Ścieżka zdefiniowana przez program Publisher do tematu zdarzenia. |
 | data | object | Dane zdarzenia specyficzne dla dostawcy zasobów. |
-| Klasę | ciąg | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
-| eventTime | ciąg | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
-| wersja | ciąg | Wersja schematu dla obiektu danych. Wydawca definiuje wersję schematu. |
-| metadataVersion | ciąg | Wersja schematu dla metadanych zdarzenia. Event Grid definiuje schemat właściwości najwyższego poziomu. Event Grid udostępnia tę wartość. |
-| topic | ciąg | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Event Grid udostępnia tę wartość. |
+| eventType | string | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
+| eventTime | string | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
+| dataversion | string | Wersja schematu dla obiektu danych. Wydawca definiuje wersję schematu. |
+| metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Event Grid definiuje schemat właściwości najwyższego poziomu. Event Grid udostępnia tę wartość. |
+| topic | string | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Event Grid udostępnia tę wartość. |
 
 Aby uzyskać więcej informacji o schemacie zdarzeń Event Grid:
 
