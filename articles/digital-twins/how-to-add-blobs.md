@@ -114,9 +114,9 @@ Pojedyncze zwrócone obiekty blob są zgodne z następującym schematem JSON:
 | **name** |String | Przyjazna dla człowieka nazwa obiektu BLOB |
 | **parentId** | String | Jednostka nadrzędna, z którą ma zostać skojarzony obiekt BLOB (miejsca, urządzenia lub Użytkownicy) |
 | **type** | String | Typ obiektu BLOB — nie można używać *typu* i elementu *typeId*  |
-| **typeId** | Liczba całkowita | Identyfikator typu obiektu BLOB — nie można używać *typu* i elementu *typeId* |
+| **typeId** | Integer | Identyfikator typu obiektu BLOB — nie można używać *typu* i elementu *typeId* |
 | **Podtyp** | String | Podtyp obiektu BLOB — nie można użyć *podtypu* i elementu subtypeid |
-| **subtypeId** | Liczba całkowita | Identyfikator podtypu dla obiektu BLOB — nie można użyć *podtypu* i elementu subtypeid |
+| **subtypeId** | Integer | Identyfikator podtypu dla obiektu BLOB — nie można użyć *podtypu* i elementu subtypeid |
 | **sharing** | String | Czy obiekt BLOB może być współużytkowany-enum [`None`, `Tree`, `Global`] |
 | **zharmonizowan** | String | Dostosowany opis obiektu BLOB |
 | **contentInfos** | Array | Określa informacje o metadanych bez struktury, w tym wersję |

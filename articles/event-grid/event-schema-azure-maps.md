@@ -119,9 +119,9 @@ Obiekt danych ma następujące właściwości:
 | -------- | ---- | ----------- |
 | apiCategory | string | Interfejs API kategorii zdarzenia. |
 | apiName | string | Nazwa interfejsu API zdarzenia. |
-| issues | obiekt | Wyświetla listę problemów napotkanych podczas przetwarzania. Jeśli zwracane są wszystkie problemy, będą nie geometrii zwrócony z odpowiedzią. |
+| issues | object | Wyświetla listę problemów napotkanych podczas przetwarzania. Jeśli zwracane są wszystkie problemy, będą nie geometrii zwrócony z odpowiedzią. |
 | responseCode | numer | Kod odpowiedzi HTTP |
-| geometries | obiekt | Wyświetla geometrii ogrodzenia, które zawierają współrzędnych pozycji lub nakładania się searchBuffer wokół pozycji. |
+| geometries | object | Wyświetla geometrii ogrodzenia, które zawierają współrzędnych pozycji lub nakładania się searchBuffer wokół pozycji. |
 
 Obiekt błąd jest zwracany, gdy wystąpi błąd w interfejsie API map. Obiekt błędu ma następujące właściwości:
 
