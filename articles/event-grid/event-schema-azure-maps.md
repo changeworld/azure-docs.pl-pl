@@ -109,7 +109,7 @@ Zdarzenie zawiera następujące dane najwyższego poziomu:
 | eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
 | eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | string | Unikatowy identyfikator zdarzenia. |
-| data | obiekt | Dane zdarzenia wirtualnego Grodzenia. |
+| data | object | Dane zdarzenia wirtualnego Grodzenia. |
 | dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
 | metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
