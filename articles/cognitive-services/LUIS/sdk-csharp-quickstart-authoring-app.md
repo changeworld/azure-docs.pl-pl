@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 08/12/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 11f40d99a36493272cb6cd51e4a339c19cd0358b
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d186d0477fd05f4948bd0280ee9ce677ad1b7542
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966737"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207307"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>Szybki start: Language Understanding (LUIS) Tworzenie biblioteki klienta dla platformy .NET
 
@@ -190,7 +190,7 @@ Opublikuj aplikację LUIS przy użyciu metody [PublishAsync](https://docs.micros
 
 Uruchom aplikację za pomocą polecenia dotnet `run` z katalogu aplikacji.
 
-```dotnet
+```console
 dotnet run
 ```
 

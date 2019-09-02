@@ -3,7 +3,7 @@ documentType: LandingData
 title: Dokumentacja usługi Azure Machine Learning
 metadata:
   title: Dokumentacja usługi Azure Machine Learning Service — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: 'Usługa Azure Machine Learning Service udostępnia zestawy SDK i usługi, które służą do szybkiego przygotowywania danych oraz trenowania i wdrażania modeli uczenia maszynowego. Podnieś produktywność, korzystając ze środowiska obliczeniowego z automatycznym skalowaniem i potoków. Korzystaj z tych możliwości za pośrednictwem platform typu open source języka Python, takich jak PyTorch, TensorFlow i scikit-learn. Rozpocznij pracę dzięki przewodnikom Szybki start i samouczkom.'
+  description: 'Usługa Azure Machine Learning Service udostępnia zestawy SDK i usługi, które służą do szybkiego trenowania i wdrażania modeli uczenia maszynowego. Podnieś produktywność, korzystając ze środowiska obliczeniowego z automatycznym skalowaniem i potoków. Korzystaj z tych możliwości za pośrednictwem platform typu open source języka Python, takich jak PyTorch, TensorFlow i scikit-learn. Rozpocznij pracę dzięki przewodnikom Szybki start i samouczkom.'
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -16,7 +16,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: 'Usługa Azure Machine Learning Service udostępnia zestawy SDK i usługi, które służą do szybkiego przygotowywania danych oraz trenowania i wdrażania modeli uczenia maszynowego. Podnieś produktywność i zoptymalizuj koszty, korzystając ze środowiska obliczeniowego z automatycznym skalowaniem i potoków. Korzystaj z tych możliwości za pośrednictwem platform typu open source języka Python, takich jak PyTorch, TensorFlow i scikit-learn. Rozpocznij pracę dzięki przewodnikom Szybki start i samouczkom.'
+  description: 'Usługa Azure Machine Learning Service udostępnia zestawy SDK i usługi, które służą do szybkiego trenowania i wdrażania modeli uczenia maszynowego. Podnieś produktywność i zoptymalizuj koszty, korzystając ze środowiska obliczeniowego z automatycznym skalowaniem i potoków. Korzystaj z tych możliwości za pośrednictwem platform typu open source języka Python, takich jak PyTorch, TensorFlow i scikit-learn. Rozpocznij pracę dzięki przewodnikom Szybki start i samouczkom.'
   aside:
     image:
       alt: null
@@ -30,7 +30,7 @@ sections:
   - title: Samouczki krok po kroku
     items:
       - type: paragraph
-        text: 'Dowiedz się, jak przygotować dane, skonfigurować eksperymenty oraz trenować i operacjonalizować modele uczenia maszynowego.'
+        text: 'Dowiedz się, jak skonfigurować eksperymenty oraz trenować modele uczenia maszynowego i obsługiwać operacje.'
       - type: paragraph
         text: '<b>Użyj witryny Azure Portal</b> — łatwego w użyciu interfejsu niewymagającego pisania kodu na potrzeby uczenia maszynowego:'
       - type: list

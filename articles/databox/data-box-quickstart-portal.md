@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 08/27/2019
+ms.date: 08/30/2019
 ms.author: alkohli
-ms.openlocfilehash: 6e9854bf46de40cc288a04ac67beb48e8a4fb959
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 21e784320bc2b0785cdd28354947c0df6c35daf4
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098781"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207994"
 ---
 ::: zone target="docs"
 
@@ -23,7 +23,7 @@ ms.locfileid: "70098781"
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Wprowadzenie do Azure Data Box Disk przy użyciu Azure Portal
+# <a name="get-started-with-azure-data-box"></a>Wprowadzenie do Azure Data Box 
 
 ::: zone-end
 

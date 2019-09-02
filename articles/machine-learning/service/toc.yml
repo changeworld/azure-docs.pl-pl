@@ -145,17 +145,6 @@
         - name: Dodawanie i rejestrowanie zestawów danych
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
-        - name: Przygotowywanie za pomocą elementu azureml.dataprep
-          items:
-            - name: Ładowanie danych
-              displayName: 'data, etl, data prep, dataprep'
-              href: how-to-load-data.md
-            - name: Przekształcanie danych
-              displayName: 'data, etl, dataprep, data prep'
-              href: how-to-transform-data.md
-            - name: Zapisywanie danych
-              displayName: 'data, etl, data prep, dataprep'
-              href: how-to-write-data.md
     - name: Szkolenie modeli
       items:
         - name: Konfigurowanie środowisk szkoleniowych
@@ -347,6 +336,8 @@
               href: ../algorithm-module-reference/multiclass-neural-network.md
             - name: Wieloklasowy las decyzyjny
               href: ../algorithm-module-reference/multiclass-decision-forest.md
+            - name: Wieloklasowe wzmocnione drzewo decyzyjne
+              href: ../algorithm-module-reference/multiclass-boosted-decision-tree.md
             - name: Dwuklasowy uśredniony perceptron
               href: ../algorithm-module-reference/two-class-averaged-perceptron.md
             - name: Dwuklasowy las decyzyjny

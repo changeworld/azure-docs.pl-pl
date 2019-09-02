@@ -1,0 +1,61 @@
+### YamlMime:Landing
+title: Dokumentacja usługi Azure Queue Storage — Azure Storage
+summary: Azure Queue Storage to usługa służąca do przechowywania dużej liczby komunikatów. Uzyskuj dostęp do komunikatów z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS.
+metadata:
+  title: Dokumentacja usługi Azure Queue Storage — Azure Storage
+  description: Azure Queue Storage to usługa służąca do przechowywania dużej liczby komunikatów. Uzyskuj dostęp do komunikatów z dowolnego miejsca na świecie za pośrednictwem protokołu HTTP lub HTTPS.
+  services: storage
+  ms.service: storage
+  ms.subservice: queues
+  ms.topic: landing-page
+  ms.collection: collection
+  author: mhopkins-msft
+  ms.author: mhopkins
+  ms.date: 08/27/2019
+  ms.openlocfilehash: 5de22a49dcc985ca95ee97d9de77180e2c56765b
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70129418"
+landingContent:
+- title: Informacje o kolejkach platformy Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Czym są kolejki platformy Azure?
+      url: storage-queues-introduction.md
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Tworzenie kolejki i dodawanie komunikatu w witrynie Azure Portal
+      url: storage-quickstart-queues-portal.md
+    - text: Tworzenie kolejki w usłudze Azure Storage przy użyciu platformy .NET
+      url: storage-quickstart-queues-dotnet.md
+- title: Programowanie z zastosowaniem kolejek
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Rozpoczynanie pracy z usługą Azure Queue Storage przy użyciu platformy .NET
+      url: storage-dotnet-how-to-use-queues.md
+    - text: Jak używać Magazynu kolejek w języku Java
+      url: storage-java-how-to-use-queue-storage.md
+    - text: Jak używać Magazynu kolejek w oprogramowaniu Node.js
+      url: storage-nodejs-how-to-use-queues.md
+    - text: Jak używać usługi Queue Storage z poziomu języka C++
+      url: storage-c-plus-plus-how-to-use-queues.md
+    - text: Jak używać Magazynu kolejek w języku Python
+      url: storage-python-how-to-use-queue-storage.md
+- title: Zarządzanie kolejkami
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Wykonywanie operacji usługi Azure Queue Storage przy użyciu programu Azure PowerShell
+      url: storage-powershell-how-to-use-queues.md
+- title: Samouczek
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Praca z kolejkami magazynu platformy Azure (.NET)
+      url: storage-tutorial-queues.md

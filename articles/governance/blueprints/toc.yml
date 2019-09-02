@@ -156,6 +156,9 @@
     - name: Aktualizowanie istniejących przypisań za pomocą portalu
       displayName: 'lock, errors'
       href: ./how-to/update-existing-assignments.md
+    - name: Konfigurowanie środowiska dla operatora strategii
+      displayName: 'rbac, user-assigned, managed, identity, management group'
+      href: ./how-to/configure-for-blueprint-operator.md
     - name: Zarządzanie strategiami jako kodem (społeczność)
       href: 'https://github.com/Azure/azure-blueprints/blob/master/README.md'
 - name: Rozwiązywanie problemów

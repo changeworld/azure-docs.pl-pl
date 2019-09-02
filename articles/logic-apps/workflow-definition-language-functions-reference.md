@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
-ms.date: 07/27/2019
-ms.openlocfilehash: c6fd20a2e1766a8bc9abfc92c6fc11d10dbe1bf2
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.date: 08/23/2019
+ms.openlocfilehash: 484e2776d96d9beaca703f93b22c51299ccf63a7
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516085"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208400"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Dokumentacja funkcji dla języka definicji przepływu pracy w Azure Logic Apps i Microsoft Flow
 
@@ -23,7 +23,7 @@ W przypadku definicji przepływu pracy w [Azure Logic Apps](../logic-apps/logic-
 > [!NOTE]
 > Ta strona referencyjna dotyczy zarówno Azure Logic Apps, jak i Microsoft Flow, ale pojawia się w dokumentacji Azure Logic Apps. Mimo że ta strona odwołuje się głównie do usługi Logic Apps, te funkcje działają zarówno dla przepływów, jak i aplikacji logiki. Aby uzyskać więcej informacji o funkcjach i wyrażeniach w Microsoft Flow, zobacz [use Expressions in Conditions](https://docs.microsoft.com/flow/use-expressions-in-conditions).
 
-Na przykład można obliczyć wartości przy użyciu funkcji matematycznych, takich jak [Funkcja Add ()](../logic-apps/workflow-definition-language-functions-reference.md#add), jeśli chcesz, aby suma była sumą z liczb całkowitych lub zmiennoprzecinkowych. Oto kilka innych przykładowych zadań, które można wykonywać za pomocą funkcji:
+Na przykład można obliczyć wartości przy użyciu funkcji matematycznych, takich jak [Funkcja Add ()](../logic-apps/workflow-definition-language-functions-reference.md#add), jeśli chcesz, aby suma była sumą z liczb całkowitych lub zmiennoprzecinkowych. Oto inne przykładowe zadania, które można wykonywać za pomocą funkcji:
 
 | Zadanie | Składnia funkcji | Wynik |
 | ---- | --------------- | ------ |
@@ -252,6 +252,7 @@ Aby uzyskać pełne informacje o każdej z tych funkcji, zobacz [alfabetyczną l
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | Zwróć treść określonej części w danych wyjściowych akcji z wieloma częściami. |
 | [outputs](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | Zwraca dane wyjściowe akcji w czasie wykonywania. |
 | [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | Zwraca wartość parametru, który jest opisany w definicji przepływu pracy. |
+| [wynika](../logic-apps/workflow-definition-language-functions-reference.md#result) | Zwraca dane wejściowe i wyjściowe ze wszystkich akcji w określonym zakresie akcji, takich jak `For_each`, `Until`, i `Scope`. |
 | [uruchamiać](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | Zwraca dane wyjściowe wyzwalacza w czasie wykonywania lub z innych par nazw i wartości JSON. Zobacz również [triggerOutputs](#triggerOutputs) i [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody). |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | Zwraca `body` dane wyjściowe wyzwalacza w czasie wykonywania. Zobacz [wyzwalacz](../logic-apps/workflow-definition-language-functions-reference.md#trigger). |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | Zwróć pojedynczą wartość odpowiadającą nazwie klucza w danych wyjściowych wyzwalacza *form-Data* lub *form* . |
@@ -638,7 +639,7 @@ I zwraca ten wynik:`"2018-03-15T00:15:00.0000000Z"`
 
 ### <a name="addproperty"></a>addProperty
 
-Dodaj właściwość i jej wartość lub parę nazwa-wartość do obiektu JSON i zwróć zaktualizowany obiekt. Jeśli obiekt już istnieje w czasie wykonywania, funkcja zgłasza błąd.
+Dodaj właściwość i jej wartość lub parę nazwa-wartość do obiektu JSON i zwróć zaktualizowany obiekt. Jeśli właściwość już istnieje w czasie wykonywania, funkcja zakończy się niepowodzeniem i zgłosi błąd.
 
 ```
 addProperty(<object>, '<property>', <value>)
@@ -656,13 +657,81 @@ addProperty(<object>, '<property>', <value>)
 | <*updated-object*> | Object | Zaktualizowany obiekt JSON z określoną właściwością. |
 ||||
 
-*Przykład*
-
-Ten przykład dodaje `accountNumber` Właściwość `customerProfile` do obiektu, który jest konwertowany na notację JSON przy użyciu funkcji [JSON ()](#json) .
-Funkcja przypisuje wartość wygenerowaną przez funkcję [GUID ()](#guid) i zwraca zaktualizowany obiekt:
+Aby dodać właściwość podrzędną do istniejącej właściwości, użyj następującej składni:
 
 ```
-addProperty(json('customerProfile'), 'accountNumber', guid())
+addProperty(<object>['<parent-property>'], '<child-property>', <value>)
+```
+
+| Parametr | Wymagane | Typ | Opis |
+| --------- | -------- | ---- | ----------- |
+| <*object*> | Tak | Object | Obiekt JSON, w którym chcesz dodać właściwość |
+| <*Właściwość Parent*> | Tak | String | Nazwa właściwości nadrzędnej, w której ma zostać dodana Właściwość podrzędna |
+| <*Właściwość podrzędna*> | Tak | String | Nazwa właściwości podrzędnej do dodania |
+| <*wartościami*> | Tak | Any | Wartość do ustawienia dla określonej właściwości |
+|||||
+
+| Wartość zwracana | Type | Opis |
+| ------------ | ---- | ----------- |
+| <*updated-object*> | Object | Zaktualizowany obiekt JSON, którego właściwość została ustawiona |
+||||
+
+*Przykład 1*
+
+Ten przykład dodaje `middleName` właściwość do obiektu JSON, który jest konwertowany z ciągu na notację JSON przy użyciu funkcji [JSON ()](#json) . Obiekt zawiera `firstName` już właściwości i `surName` . Funkcja przypisuje określoną wartość do nowej właściwości i zwraca zaktualizowany obiekt:
+
+```
+addProperty(json('{ "firstName": "Sophia", "lastName": "Owen" }'), 'middleName', 'Anne')
+```
+
+Oto bieżący obiekt JSON:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+Oto zaktualizowany obiekt JSON:
+
+```json
+{
+   "firstName": "Sophia",
+   "middleName": "Anne",
+   "surName": "Owen"
+}
+```
+
+*Przykład 2*
+
+Ten przykład dodaje `middleName` Właściwość podrzędną do istniejącej `customerName` właściwości w obiekcie JSON, który jest konwertowany z ciągu na notację JSON przy użyciu funkcji [JSON ()](#json) . Funkcja przypisuje określoną wartość do nowej właściwości i zwraca zaktualizowany obiekt:
+
+```
+addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'middleName', 'Anne')
+```
+
+Oto bieżący obiekt JSON:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "surName": "Owen"
+   }
+}
+```
+
+Oto zaktualizowany obiekt JSON:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "middleName": "Anne",
+      "surName": "Owen"
+   }
+}
 ```
 
 <a name="addSeconds"></a>
@@ -3152,7 +3221,7 @@ I zwraca ten wynik:`"the new string"`
 
 ### <a name="removeproperty"></a>removeProperty
 
-Usunięcie właściwości z obiektu i zwrócenie zaktualizowanego obiektu.
+Usunięcie właściwości z obiektu i zwrócenie zaktualizowanego obiektu. Jeśli właściwość, którą próbujesz usunąć, nie istnieje, funkcja zwraca oryginalny obiekt.
 
 ```
 removeProperty(<object>, '<property>')
@@ -3169,20 +3238,208 @@ removeProperty(<object>, '<property>')
 | <*updated-object*> | Object | Zaktualizowany obiekt JSON bez określonej właściwości |
 ||||
 
-*Przykład*
-
-Ten przykład usuwa `"accountLocation"` Właściwość `"customerProfile"` z obiektu, który jest konwertowany na notację JSON przy użyciu funkcji [JSON ()](#json) i zwraca zaktualizowany obiekt:
+Aby usunąć Właściwość podrzędną z istniejącej właściwości, użyj następującej składni:
 
 ```
-removeProperty(json('customerProfile'), 'accountLocation')
+removeProperty(<object>['<parent-property>'], '<child-property>')
+```
+
+| Parametr | Wymagane | Typ | Opis |
+| --------- | -------- | ---- | ----------- |
+| <*object*> | Tak | Object | Obiekt JSON, którego właściwość ma zostać usunięta. |
+| <*Właściwość Parent*> | Tak | String | Nazwa właściwości nadrzędnej z właściwością podrzędną, która ma zostać usunięta. |
+| <*Właściwość podrzędna*> | Tak | String | Nazwa właściwości podrzędnej do usunięcia |
+|||||
+
+| Wartość zwracana | Type | Opis |
+| ------------ | ---- | ----------- |
+| <*updated-object*> | Object | Zaktualizowany obiekt JSON, którego usunięto Właściwość podrzędną. |
+||||
+
+*Przykład 1*
+
+Ten przykład usuwa `middleName` właściwość z obiektu JSON, który jest konwertowany z ciągu na notację JSON przy użyciu funkcji [JSON ()](#json) i zwraca zaktualizowany obiekt:
+
+```
+removeProperty(json('{ "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" }'), 'middleName')
+```
+
+Oto bieżący obiekt JSON:
+
+```json
+{
+   "firstName": "Sophia",
+   "middleName": "Anne",
+   "surName": "Owen"
+}
+```
+
+Oto zaktualizowany obiekt JSON:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+*Przykład 2*
+
+Ten przykład usuwa `middleName` Właściwość podrzędną `customerName` z właściwości Parent w obiekcie JSON, który jest konwertowany z ciągu na notację JSON przy użyciu funkcji [JSON ()](#json) i zwraca zaktualizowany obiekt:
+
+```
+removeProperty(json('{ "customerName": { "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" } }')['customerName'], 'middleName')
+```
+
+Oto bieżący obiekt JSON:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "middleName": "Anne",
+      "surName": "Owen"
+   }
+}
+```
+
+Oto zaktualizowany obiekt JSON:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "surName": "Owen"
+   }
+}
+```
+
+<a name="result"></a>
+
+### <a name="result"></a>wynik
+
+Zwraca dane wejściowe i wyjściowe ze wszystkich akcji, które znajdują się w określonej akcji w zakresie, takiej jak `For_each`, `Until`lub `Scope` akcja. Ta funkcja jest przydatna zwracająca wyniki akcji zakończonej niepowodzeniem, aby można było zdiagnozować i obsłużyć wyjątki. Aby uzyskać więcej informacji, zobacz [pobieranie kontekstu i wyników dla niepowodzeń](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures).
+
+```
+result('<scopedActionName>')
+```
+
+| Parametr | Wymagane | Typ | Opis |
+| --------- | -------- | ---- | ----------- |
+| <*scopedActionName*> | Tak | String | Nazwa akcji z zakresem, z której mają zostać zwrócone dane wejściowe i wyjściowe ze wszystkich akcji wewnętrznych |
+||||
+
+| Wartość zwracana | Type | Opis |
+| ------------ | ---- | ----------- |
+| <*Array-Object*> | Array — obiekt | Tablica zawierająca tablice danych wejściowych i wyjść z poszczególnych akcji, które pojawiają się w określonej akcji w zakresie |
+||||
+
+*Przykład*
+
+Ten przykład zwraca dane wejściowe i wyjściowe z każdej iteracji akcji http wewnątrz `For_each` pętli przy `result()` użyciu funkcji w `Compose` akcji:
+
+```json
+{
+   "actions": {
+      "Compose": {
+         "inputs": "@result('For_each')",
+         "runAfter": {
+            "For_each": [
+               "Succeeded"
+            ]
+         },
+         "type": "compose"
+      },
+      "For_each": {
+         "actions": {
+            "HTTP": {
+               "inputs": {
+                  "method": "GET",
+                  "uri": "https://httpstat.us/200"
+               },
+               "runAfter": {},
+               "type": "Http"
+            }
+         },
+         "foreach": "@triggerBody()",
+         "runAfter": {},
+         "type": "Foreach"
+      }
+   }
+}
+```
+
+Poniżej przedstawiono sposób, w jaki Przykładowa zwracana tablica może wyglądać `outputs` tam, gdzie obiekt zewnętrzny zawiera dane wejściowe i wyjściowe z każdej iteracji akcji `For_each` wewnątrz akcji.
+
+```json
+[
+   {
+      "name": "HTTP",
+      "outputs": [
+         {
+            "name": "HTTP",
+            "inputs": {
+               "uri": "https://httpstat.us/200",
+               "method": "GET"
+            },
+            "outputs": {
+               "statusCode": 200,
+               "headers": {
+                   "X-AspNetMvc-Version": "5.1",
+                   "Access-Control-Allow-Origin": "*",
+                   "Cache-Control": "private",
+                   "Date": "Tue, 20 Aug 2019 22:15:37 GMT",
+                   "Set-Cookie": "ARRAffinity=0285cfbea9f2ee7",
+                   "Server": "Microsoft-IIS/10.0",
+                   "X-AspNet-Version": "4.0.30319",
+                   "X-Powered-By": "ASP.NET",
+                   "Content-Length": "0"
+               },
+               "startTime": "2019-08-20T22:15:37.6919631Z",
+               "endTime": "2019-08-20T22:15:37.95762Z",
+               "trackingId": "6bad3015-0444-4ccd-a971-cbb0c99a7.....",
+               "clientTrackingId": "085863526764.....",
+               "code": "OK",
+               "status": "Succeeded"
+            }
+         },
+         {
+            "name": "HTTP",
+            "inputs": {
+               "uri": "https://httpstat.us/200",
+               "method": "GET"
+            },
+            "outputs": {
+            "statusCode": 200,
+               "headers": {
+                   "X-AspNetMvc-Version": "5.1",
+                   "Access-Control-Allow-Origin": "*",
+                   "Cache-Control": "private",
+                   "Date": "Tue, 20 Aug 2019 22:15:37 GMT",
+                   "Set-Cookie": "ARRAffinity=0285cfbea9f2ee7",
+                   "Server": "Microsoft-IIS/10.0",
+                   "X-AspNet-Version": "4.0.30319",
+                   "X-Powered-By": "ASP.NET",
+                   "Content-Length": "0"
+               },
+               "startTime": "2019-08-20T22:15:37.6919631Z",
+               "endTime": "2019-08-20T22:15:37.95762Z",
+               "trackingId": "9987e889-981b-41c5-aa27-f3e0e59bf69.....",
+               "clientTrackingId": "085863526764.....",
+               "code": "OK",
+               "status": "Succeeded"
+            }
+         }
+      ]
+   }
+]
 ```
 
 <a name="setProperty"></a>
 
 ### <a name="setproperty"></a>setProperty
 
-Ustaw wartość właściwości obiektu i zwróć zaktualizowany obiekt.
-Aby dodać nową właściwość, można użyć tej funkcji lub funkcji AddProperty [()](#addProperty) .
+Ustaw wartość właściwości obiektu JSON i zwróć zaktualizowany obiekt. Jeśli właściwość, którą próbujesz ustawić, nie istnieje, właściwość zostanie dodana do obiektu. Aby dodać nową właściwość, użyj funkcji [AddProperty ()](#addProperty) .
 
 ```
 setProperty(<object>, '<property>', <value>)
@@ -3195,18 +3452,79 @@ setProperty(<object>, '<property>', <value>)
 | <*wartościami*> | Tak | Any | Wartość do ustawienia dla określonej właściwości |
 |||||
 
+Aby ustawić właściwość podrzędną w obiekcie podrzędnym, należy zamiast tego `setProperty()` użyć wywołania zagnieżdżonego. W przeciwnym razie funkcja zwraca tylko obiekt podrzędny jako dane wyjściowe.
+
+```
+setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<object>['parentProperty'], '<child-property>', <value>))
+```
+
+| Parametr | Wymagane | Typ | Opis |
+| --------- | -------- | ---- | ----------- |
+| <*object*> | Tak | Object | Obiekt JSON, którego właściwość ma zostać ustawiona. |
+| <*Właściwość Parent*> | Tak | String | Nazwa właściwości nadrzędnej z właściwością podrzędną, która ma zostać ustawiona. |
+| <*Właściwość podrzędna*> | Tak | String | Nazwa właściwości podrzędnej do ustawienia |
+| <*wartościami*> | Tak | Any | Wartość do ustawienia dla określonej właściwości |
+|||||
+
 | Wartość zwracana | Type | Opis |
 | ------------ | ---- | ----------- |
 | <*updated-object*> | Object | Zaktualizowany obiekt JSON, którego właściwość została ustawiona |
 ||||
 
-*Przykład*
+*Przykład 1*
 
-Ten przykład ustawia `"accountNumber"` Właściwość `"customerProfile"` obiektu, który jest konwertowany na notację JSON przy użyciu funkcji [JSON ()](#json) .
-Funkcja przypisuje wartość wygenerowaną przez funkcję [GUID ()](#guid) i zwraca zaktualizowany obiekt JSON:
+Ten przykład ustawia `surName` właściwość w obiekcie JSON, który jest konwertowany z ciągu na notację JSON przy użyciu funkcji [JSON ()](#json) . Funkcja przypisuje określoną wartość do właściwości i zwraca zaktualizowany obiekt:
 
 ```
-setProperty(json('customerProfile'), 'accountNumber', guid())
+setProperty(json('{ "firstName": "Sophia", "surName": "Owen" }'), 'surName', 'Hartnett')
+```
+
+Oto bieżący obiekt JSON:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+Oto zaktualizowany obiekt JSON:
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Hartnett"
+}
+```
+
+*Przykład 2*
+
+Ten przykład ustawia `surName` Właściwość `customerName` podrzędną właściwości Parent w obiekcie JSON, który jest konwertowany z ciągu na notację JSON przy użyciu funkcji [JSON ()](#json) . Funkcja przypisuje określoną wartość do właściwości i zwraca zaktualizowany obiekt:
+
+```
+setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }'), 'customerName', setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'surName', 'Hartnett'))
+```
+
+Oto bieżący obiekt JSON:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophie",
+      "surName": "Owen"
+   }
+}
+```
+
+Oto zaktualizowany obiekt JSON:
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophie",
+      "surName": "Hartnett"
+   }
+}
 ```
 
 <a name="skip"></a>

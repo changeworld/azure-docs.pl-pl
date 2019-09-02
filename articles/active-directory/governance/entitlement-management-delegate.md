@@ -16,12 +16,12 @@ ms.date: 07/10/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 064724b3c6a5faa485850ecdfa3d3759d3631be0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 9b631f078240821e79513c4bd944a33b4725bc52
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124909"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207135"
 ---
 # <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Delegowanie zadań w usłudze Azure AD uprawnień zarządzanie (wersja zapoznawcza)
 
@@ -117,6 +117,7 @@ Użytkownik, który nie jest administratorem globalnym lub administratorem użyt
 | [Administrator aplikacji w chmurze](../users-groups-roles/directory-assign-admin-roles.md) | Właściciel katalogu |  |  | :heavy_check_mark: |  |
 | Użytkownik | Właściciel katalogu | Tylko wtedy, gdy właściciel grupy | Tylko wtedy, gdy właściciel grupy | Tylko wtedy, gdy właściciel aplikacji |  |
 
+Aby określić najmniejszą rolę uprzywilejowaną dla zadania, można także odwoływać się do [ról administratorów za pomocą zadania administratora w Azure Active Directory](../users-groups-roles/roles-delegate-by-task.md#entitlement-management).
 
 ## <a name="add-a-catalog-creator"></a>Dodaj twórcę katalogu
 

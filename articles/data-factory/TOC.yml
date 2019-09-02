@@ -187,6 +187,8 @@
           href: iterative-development-debugging.md
     - name: Łączniki
       items:
+        - name: Omówienie łączników
+          href: connector-overview.md
         - name: Usługa internetowa witryny Amazon Marketplace
           href: connector-amazon-marketplace-web-service.md
         - name: Amazon Redshift
@@ -306,7 +308,7 @@
           href: connector-oracle-service-cloud.md
         - name: Format Parquet
           href: format-parquet.md
-        - name: Paypal
+        - name: PayPal
           href: connector-paypal.md
         - name: Phoenix
           href: connector-phoenix.md
@@ -382,40 +384,40 @@
     - name: Przekształcanie danych
       href: transform-data.md
       items:
+        - name: Działanie funkcji platformy Azure
+          href: control-flow-azure-function-activity.md
+        - name: Działanie niestandardowe
+          href: transform-data-using-dotnet-custom-activity.md
+        - name: Działanie pliku Jar usługi Databricks
+          href: transform-data-databricks-jar.md
+        - name: Działanie notesu usługi Databricks
+          href: transform-data-databricks-notebook.md
+        - name: Działanie języka Python w usłudze Databricks
+          href: transform-data-databricks-python.md
+        - name: Działanie języka U-SQL w usłudze Data Lake
+          href: transform-data-using-data-lake-analytics.md
         - name: Działania technologii Hive w usłudze HDInsight
           href: transform-data-using-hadoop-hive.md
-        - name: Działania technologii Pig w usłudze HDInsight
-          href: transform-data-using-hadoop-pig.md
         - name: Działania technologii MapReduce w usłudze HDInsight
           href: transform-data-using-hadoop-map-reduce.md
-        - name: Działania przesyłania strumieniowego usługi HDInsight
-          href: transform-data-using-hadoop-streaming.md
+        - name: Działania technologii Pig w usłudze HDInsight
+          href: transform-data-using-hadoop-pig.md
         - name: Działania platformy Spark w usłudze HDInsight
           href: transform-data-using-spark.md
+        - name: Działania przesyłania strumieniowego usługi HDInsight
+          href: transform-data-using-hadoop-streaming.md
         - name: Działanie wykonywania wsadowego w usłudze ML
           href: transform-data-using-machine-learning.md
         - name: Działanie aktualizacji zasobu w usłudze ML
           href: update-machine-learning-models.md
         - name: Działania procedur składowanych
           href: transform-data-using-stored-procedure.md
-        - name: Działanie języka U-SQL w usłudze Data Lake
-          href: transform-data-using-data-lake-analytics.md
-        - name: Działanie notesu usługi Databricks
-          href: transform-data-databricks-notebook.md
-        - name: Działanie pliku Jar usługi Databricks
-          href: transform-data-databricks-jar.md
-        - name: Działanie języka Python w usłudze Databricks
-          href: transform-data-databricks-python.md
-        - name: Działanie niestandardowe
-          href: transform-data-using-dotnet-custom-activity.md
         - name: Usługi połączone usługi Compute
           href: compute-linked-services.md
     - name: Przepływ sterowania
       items:
         - name: Działanie dołączania zmiennej
           href: control-flow-append-variable-activity.md
-        - name: Działanie funkcji platformy Azure
-          href: control-flow-azure-function-activity.md
         - name: Działanie wykonywania przepływu danych
           href: control-flow-execute-data-flow-activity.md
         - name: Działanie wykonywania potoku
@@ -584,6 +586,8 @@
       items:
         - name: Rozwiązywanie problemów z aktywnością
           href: data-factory-troubleshoot-guide.md
+        - name: Rozwiązywanie problemów z łącznikiem
+          href: connector-troubleshoot-guide.md
         - name: Rozwiązywanie problemów z zarządzaniem środowiskiem Azure-SSIS IR
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Rozwiązywanie problemów z wykonywaniem pakietów w środowisku Azure-SSIS IR

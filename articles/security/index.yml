@@ -1,0 +1,244 @@
+### YamlMime:Hub
+title: Dokumentacja zabezpieczeń platformy Azure
+summary: Zabezpieczenia są zintegrowane z każdym aspektem platformy Azure. Platforma Azure oferuje wyjątkowe korzyści związane z bezpieczeństwem wynikające z globalnej analizy zabezpieczeń, zaawansowanych kontrolek przeznaczonych dla klienta oraz bezpiecznej infrastruktury ze wzmocnionymi zabezpieczeniami. Ta zaawansowana kombinacja pomaga chronić aplikacje i dane, wspierać działania związane z zapewnianiem zgodności oraz udostępniać ekonomiczne zabezpieczenia organizacjom dowolnej wielkości.
+brand: azure
+metadata:
+  title: Dokumentacja zabezpieczeń platformy Azure
+  description: Zabezpieczenia są zintegrowane z każdym aspektem platformy Azure. Platforma Azure oferuje wyjątkowe korzyści związane z bezpieczeństwem wynikające z globalnej analizy zabezpieczeń, zaawansowanych kontrolek przeznaczonych dla klienta oraz bezpiecznej infrastruktury ze wzmocnionymi zabezpieczeniami. Ta zaawansowana kombinacja pomaga chronić aplikacje i dane, wspierać działania związane z zapewnianiem zgodności oraz udostępniać ekonomiczne zabezpieczenia organizacjom dowolnej wielkości.
+  services: security
+  ms.service: security
+  ms.subservice: na
+  ms.topic: hub-page
+  ms.collection: na
+  author: TerryLanfear
+  ms.author: terrylan
+  manager: rkarlin
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 2b33bd8b2b4e2338884993ec76feb8027c8753d4
+  ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70148884"
+highlightedContent:
+  items:
+  - title: Wprowadzenie do zabezpieczeń platformy Azure
+    itemType: overview
+    url: ./fundamentals/overview.md
+  - title: Najlepsze rozwiązania i wzorce dotyczące zabezpieczeń
+    itemType: concept
+    url: ./fundamentals/best-practices-and-patterns.md
+  - title: Co to jest Centrum zabezpieczeń Azure?
+    itemType: overview
+    url: ../security-center/security-center-intro.md
+conceptualContent:
+  items:
+  - title: Podstawy
+    links:
+    - url: ./fundamentals/technical-capabilities.md
+      itemType: overview
+      text: Możliwości techniczne zabezpieczeń platformy Azure
+    - url: https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91
+      itemType: concept
+      text: Wspólna odpowiedzialność dla chmury obliczeniowej
+    - url: ./fundamentals/common-security-attributes.md
+      itemType: concept
+      text: Mechanizmy kontroli zabezpieczeń dla usług platformy Azure
+    footerLink:
+      url: ./fundamentals/index.md
+      text: Zobacz więcej
+  - title: Deweloperzy
+    links:
+    - url: ./develop/secure-dev-overview.md
+      itemType: overview
+      text: Najlepsze rozwiązania dotyczące bezpiecznego tworzenia
+    - url: ./develop/secure-web-app.md
+      itemType: tutorial
+      text: Tworzenie bezpiecznej aplikacji internetowej
+    - url: ./develop/threat-modeling-tool.md
+      itemType: concept
+      text: Narzędzie do modelowania zagrożeń firmy Microsoft
+    footerLink:
+      url: ./develop/index.yml
+      text: Zobacz więcej
+  - title: Testy porównawcze i rekomendacje
+    links:
+    - url: https://azure.microsoft.com/resources/azure-cloud-security-benchmark-draft/
+      itemType: download
+      text: Test porównawczy zabezpieczeń chmury platformy Azure
+    - url: ../security-center/security-center-using-recommendations.md
+      itemType: overview
+      text: Rekomendacje usługi Azure Security Center
+  - title: Wpisy tajne i klucze
+    links:
+    - url: ../key-vault/key-vault-overview.md
+      itemType: overview
+      text: Co to jest usługa Azure Key Vault?
+    - url: ../key-vault/quick-create-cli.md
+      itemType: quickstart
+      text: Ustawianie i pobieranie wpisu tajnego
+    - url: ../dedicated-hsm/overview.md
+      itemType: overview
+      text: Co to jest dedykowany moduł HSM platformy Azure?
+    footerLink:
+      url: /azure/key-vault/
+      text: Zobacz więcej
+  - title: Ochrona danych
+    links:
+    - url: ./fundamentals/encryption-atrest.md
+      itemType: concept
+      text: Szyfrowanie danych w spoczynku
+    - url: ./fundamentals/data-encryption-best-practices.md
+      itemType: concept
+      text: Najlepsze rozwiązania z zakresu zabezpieczeń i szyfrowania danych
+    - url: ../storage/common/storage-security-guide.md
+      itemType: concept
+      text: Zabezpieczenia magazynu
+    footerLink:
+      url: azure-security-disk-encryption-overview.md
+      text: Zobacz więcej
+  - title: Zarządzanie tożsamościami
+    links:
+    - url: ./fundamentals/choose-ad-authn.md
+      itemType: concept
+      text: Wybieranie odpowiedniej metody uwierzytelniania
+    - url: ./fundamentals/steps-secure-identity.md
+      itemType: concept
+      text: Zabezpieczanie infrastruktury tożsamości
+    - url: ./fundamentals/identity-management-best-practices.md
+      itemType: concept
+      text: Najlepsze rozwiązania dotyczące zabezpieczeń
+    footerLink:
+      url: ./fundamentals/identity-management-overview.md
+      text: Zobacz więcej
+  - title: Monitorowanie zabezpieczeń
+    links:
+    - url: ../security-center/security-center-get-started.md
+      itemType: quickstart
+      text: Dołączanie subskrypcji do usługi Security Center
+    - url: ../security-center/security-center-just-in-time.md
+      itemType: how-to-guide
+      text: Dostęp just-in-time do maszyny wirtualnej
+    - url: ../security-center/tutorial-security-policy.md
+      itemType: how-to-guide
+      text: Praca z zasadami zabezpieczeń
+    footerLink:
+      url: /azure/security-center/
+      text: Zobacz więcej
+  - title: Monitorowanie zabezpieczeń IoT
+    links:
+    - url: ../asc-for-iot/overview.md
+      itemType: overview
+      text: Wprowadzenie do usługi Azure Security Center dla IoT
+    - url: ../asc-for-iot/architecture.md
+      itemType: how-to-guide
+      text: Architektura usługi Azure Security Center dla IoT
+    - url: ../asc-for-iot/getting-started.md
+      itemType: how-to-guide
+      text: Wprowadzenie do usługi Azure Security Center dla IoT
+    footerLink:
+      url: /azure/asc-for-iot/
+      text: Zobacz więcej
+  - title: Analiza zabezpieczeń
+    links:
+    - url: ../sentinel/overview.md
+      itemType: overview
+      text: Co to jest wersja zapoznawcza usługi Azure Sentinel?
+    - url: ../sentinel/quickstart-onboard.md
+      itemType: quickstart
+      text: Dołączanie do wersji zapoznawczej usługi Azure Sentinel
+    - url: ../sentinel/quickstart-get-visibility.md
+      itemType: quickstart
+      text: Rozpoczynanie pracy z wersją zapoznawczą usługi Azure Sentinel
+    footerLink:
+      url: /azure/sentinel/
+      text: Zobacz więcej
+  - title: Ochrona przed zagrożeniami
+    links:
+    - url: ../security-center/security-center-alerts-overview.md
+      itemType: concept
+      text: Alerty zabezpieczeń w Centrum zabezpieczeń Azure
+    - url: ../storage/common/storage-advanced-threat-protection.md
+      itemType: concept
+      text: Usługa Advanced Threat Protection dla usługi Azure Storage
+    - url: ../sql-database/sql-database-threat-detection-overview.md
+      itemType: concept
+      text: Usługa Advanced Threat Protection dla usługi Azure SQL Database
+    footerLink:
+      url: ./fundamentals/threat-detection.md
+      text: Zobacz więcej
+  - title: Rejestrowanie i przeprowadzanie inspekcji
+    links:
+    - url: ./fundamentals/log-audit.md
+      itemType: concept
+      text: Rejestrowanie i przeprowadzanie inspekcji na platformie Azure
+    - url: ./fundamentals/management-monitoring-overview.md
+      itemType: overview
+      text: Omówienie zarządzania i monitorowania
+    - url: ./fundamentals/azure-log-integration-overview.md
+      itemType: overview
+      text: Wprowadzenie do usługi Azure Log Integration
+    footerLink:
+      url: https://docs.microsoft.com/search/?search=security+audit+log&scope=azure&category=Documentation
+      text: Wyszukaj więcej
+  - title: Bezpieczeństwo sieci
+    links:
+    - url: ./fundamentals/network-overview.md
+      itemType: overview
+      text: Omówienie zabezpieczeń
+    - url: ./fundamentals/network-best-practices.md
+      itemType: concept
+      text: Najlepsze rozwiązania dotyczące zabezpieczeń
+    - url: ./fundamentals/ddos-best-practices.md
+      itemType: concept
+      text: DDoS Protection
+  - title: Zabezpieczenia infrastruktury
+    links:
+    - url: ./fundamentals/physical-security.md
+      itemType: concept
+      text: Obiekty, środowiska lokalne i zabezpieczenia fizyczne platformy Azure
+    - url: ./fundamentals/infrastructure-network.md
+      itemType: concept
+      text: Architektura sieci
+    - url: ./fundamentals/protection-customer-data.md
+      itemType: concept
+      text: Ochrona danych klientów
+    footerLink:
+      url: ./fundamentals/infrastructure.md
+      text: Zobacz więcej
+  - title: Zabezpieczenia maszyn wirtualnych
+    links:
+    - url: ./fundamentals/virtual-machines-overview.md
+      itemType: overview
+      text: Omówienie zabezpieczeń
+    - url: ./fundamentals/iaas.md
+      itemType: concept
+      text: Najlepsze rozwiązania dotyczące obciążeń IaaS
+    - url: ./fundamentals/azure-marketplace-images.md
+      itemType: concept
+      text: Rekomendacje dotyczące konfiguracji zabezpieczeń
+  - title: Zabezpieczenia bazy danych
+    links:
+    - url: ./fundamentals/database-security-overview.md
+      itemType: overview
+      text: Omówienie zabezpieczeń
+    - url: ./fundamentals/database-best-practices.md
+      itemType: concept
+      text: Najlepsze rozwiązania dotyczące zabezpieczeń
+    - url: ./fundamentals/database-security-checklist.md
+      itemType: concept
+      text: Lista kontrolna zabezpieczeń
+  - title: Zarządzanie i zgodność
+    links:
+    - url: ./blueprints/au-protected-iaaswa-overview.md
+      itemType: tutorial
+      text: Rozwiązania dotyczące zgodności
+    - url: ../governance/policy/overview.md
+      itemType: overview
+      text: Usługa Azure Policy
+    - url: ../governance/blueprints/overview.md
+      itemType: overview
+      text: Usługa Azure Blueprints
+    footerLink:
+      url: /azure/governance/
+      text: Zobacz więcej

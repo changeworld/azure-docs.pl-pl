@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 99f981698daf12bf7d493159fc7fd08a98a28104
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 8c3b9523f6e6991723b0da721dbf7667ee340772
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194266"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207973"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak zarządzać kontem komercyjnej witryny Marketplace w centrum partnerskim 
 
@@ -151,7 +151,7 @@ Centrum partnerskie wykorzystuje [Azure Active Directory](https://docs.microsoft
 
 ## <a name="manage-users"></a>Zarządzaj użytkownikami
 
-Sekcja **Użytkownicy** Centrum partnerskiego (w obszarze **Ustawienia konta**) umożliwia korzystanie z usługi Azure AD do zarządzania użytkownikami, grupami i aplikacjami usługi Azure AD, które mają dostęp do Twojego konta Centrum partnerskiego. Należy pamiętać, że w celu zarządzania użytkownikami należy zalogować się przy użyciu [konta służbowego](./company-work-accounts.md) (skojarzonej dzierżawy usługi Azure AD). Aby zarządzać użytkownikami w ramach innego konta służbowego/dzierżawy, musisz wylogować się, a następnie ponownie zalogować się jako użytkownik z uprawnieniami **Menedżera** dla tego konta służbowego/dzierżawy. 
+Sekcja **Użytkownicy** Centrum partnerskiego (w obszarze **Ustawienia konta**) umożliwia korzystanie z usługi Azure AD do zarządzania użytkownikami, grupami i aplikacjami usługi Azure AD, które mają dostęp do Twojego konta Centrum partnerskiego. Aby zarządzać użytkownikami, musisz się zalogować za pomocą [konta służbowego](./company-work-accounts.md) (skojarzonej dzierżawy usługi Azure AD). Aby zarządzać użytkownikami w ramach innego konta służbowego/dzierżawy, musisz wylogować się, a następnie ponownie zalogować się jako użytkownik z uprawnieniami **Menedżera** dla tego konta służbowego/dzierżawy. 
 
 Po zalogowaniu się przy użyciu konta służbowego (dzierżawy usługi Azure AD) można:
 - [Dodawanie lub usuwanie użytkowników](#add-or-remove-users)
@@ -300,20 +300,19 @@ Jeśli aplikacja usługi Azure AD odczytuje i zapisuje dane w Microsoft Azure AD
 4.  Jeśli chcesz utworzyć więcej kluczy, wybierz pozycję **Dodaj inny klucz**.
 
 
-### <a name="define-user-roles-and-permissions"></a>Definiowanie ról i uprawnień użytkowników
+## <a name="define-user-roles-and-permissions"></a>Definiowanie ról i uprawnień użytkowników
 
-Użytkownikom firmy można przypisać następujące role i uprawnienia do komercyjnego programu Marketplace w centrum partnerskim. 
+Użytkownikom firmy można przypisać następujące role i uprawnienia do komercyjnego programu Marketplace w centrum partnerskim:
 
-|**Rola**|**Uprawnienia**|
-|----------------------------------|---------------------------------|
-|maszyny wirtualnej|-Może uzyskać dostęp do wszystkich funkcji konto Microsoft z wyjątkiem ustawień podatków i wypłat|
-|      |— Może zarządzać użytkownikami, rolami i kontami służbowymi (dzierżawcami)|
-|Deweloper|— Umożliwia zarządzanie ofertami i ich publikowanie|
-|      |— Może wyświetlać raporty wydawcy|
-|Administrator globalny|— Nie dotyczy komercyjnej witryny Marketplace|
-|Współautor firmy|— Nie dotyczy komercyjnej witryny Marketplace|
-|Współautor finansowe|— Nie dotyczy komercyjnej witryny Marketplace|
-|Wiodący|— Nie dotyczy komercyjnej witryny Marketplace|
+- **Menedżera**
+  - Może uzyskać dostęp do wszystkich funkcji konto Microsoft oprócz ustawień podatków i wypłat
+  - Może zarządzać użytkownikami, rolami i kontami służbowymi (dzierżawcami)
+- **Developer**
+  - Może zarządzać ofertami i publikować je
+  - Może wyświetlać raporty wydawcy
+
+> [!NOTE]
+> Role Administrator globalny, współautor biznesowa, współautor finansów i rynkowe nie są używane w komercyjnym programie Marketplace ani nie mają skojarzonych uprawnień.
 
 Aby uzyskać więcej informacji na temat zarządzania rolami i uprawnieniami w innych obszarach Centrum partnerskiego, takich jak Azure Active Directory (AD), dostawca rozwiązań w chmurze (CSP), dostawca panelu sterowania (CPV), użytkownicy-Goście lub Microsoft Partner Network (MPN), zobacz [Przypisywanie ról użytkowników i uprawnienia w centrum partnerskim](https://docs.microsoft.com/partner-center/permissions-overview).
 

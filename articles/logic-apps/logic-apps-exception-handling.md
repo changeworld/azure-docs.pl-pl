@@ -1,21 +1,20 @@
 ---
-title: Obsługa błędów i wyjątków — Azure Logic Apps | Microsoft Docs
+title: Obsługa błędów i wyjątków — Azure Logic Apps
 description: Informacje o wzorcach obsługi błędów i wyjątków w Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: dereklee
 ms.author: deli
-manager: jeconnoc
+ms.reviewer: klam, estfan, LADocs
 ms.date: 01/31/2018
 ms.topic: article
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 3f812c1142b5cd40169f7340163295b0f7ea6a4d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 828bea50a66b90f35843901ae2d7c703ffa58f2d
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60996603"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208174"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Obsługa błędów i wyjątków w Azure Logic Apps
 
@@ -219,13 +218,15 @@ Przechwytują wyjątki w **nie powiodło się** zakres i wykonywania działań, 
 
 Aby uzyskać ograniczenia dotyczące zakresów, zobacz [limity i konfiguracja](../logic-apps/logic-apps-limits-and-config.md).
 
+<a name="get-results-from-failures"></a>
+
 ### <a name="get-context-and-results-for-failures"></a>Pobierz kontekst i wyniki dla niepowodzeń
 
-Chociaż przechwytywanie błędów z zakresu jest przydatne, można również zastanowić się, że kontekst pomaga zrozumieć, które akcje nie powiodły się, oraz wszelkie zwrócone błędy lub kody stanu. `@result()` Wyrażenie zawiera kontekst dotyczący wyniku wszystkich akcji w zakresie.
+Chociaż przechwytywanie błędów z zakresu jest przydatne, można również zastanowić się, że kontekst pomaga zrozumieć, które akcje nie powiodły się, oraz wszelkie zwrócone błędy lub kody stanu.
 
-`@result()` Wyrażenie akceptuje pojedynczy parametr (nazwa zakresu) i zwraca tablicę wszystkich wyników akcji z tego zakresu. Te obiekty akcji zawierają te same atrybuty, co  **\@obiekt Actions ()** , takie jak godzina rozpoczęcia akcji, czas zakończenia, stan, dane wejściowe, identyfikatory korelacji i wyjścia. Aby wysłać kontekst dla wszystkich akcji, które zakończyły się niepowodzeniem w zakresie, można łatwo sparować  **\@funkcję wynik ()** z właściwością **runAfter** .
+[`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) Funkcja zawiera kontekst dotyczący wyników wszystkich akcji w zakresie. `result()` Funkcja akceptuje pojedynczy parametr, który jest nazwą zakresu i zwraca tablicę zawierającą wszystkie wyniki akcji z tego zakresu. Te obiekty akcji zawierają te same atrybuty co `@actions()` obiekt, takie jak godzina rozpoczęcia akcji, czas zakończenia, stan, dane wejściowe, identyfikatory korelacji i wyjścia. Aby wysłać kontekst dla wszystkich akcji, które zakończyły się niepowodzeniem w zakresie, `@result()` można łatwo sparować `runAfter` wyrażenie z właściwością.
 
-Aby uruchomić akcję dla każdej akcji w zakresie, który ma wynik **Niepowodzenie** i filtrować tablicę wyników w dół do akcji zakończonych niepowodzeniem, można sparować  **\@wynik ()** z akcją **[Filtruj tablicę](../connectors/connectors-native-query.md)** i pętlą [**for each**](../logic-apps/logic-apps-control-flow-loops.md) . Można użyć przefiltrowanej tablicy wyników i wykonać akcję dla każdej awarii przy użyciu pętli **for each** . 
+Aby uruchomić akcję dla każdej akcji w zakresie, który ma wynik niepowodzenie i filtrować tablicę wyników w dół do akcji zakończonych niepowodzeniem , można sparować `@result()` wyrażenie z akcją [**filtru Array**](../connectors/connectors-native-query.md) i pętlą [**for each**](../logic-apps/logic-apps-control-flow-loops.md) . Można użyć przefiltrowanej tablicy wyników i wykonać akcję dla każdej awarii przy użyciu pętli **for each** .
 
 Oto przykład, a następnie szczegółowy opis, który wysyła żądanie HTTP POST z treścią odpowiedzi dla wszystkich akcji, które zakończyły się niepowodzeniem w zakresie "My_Scope":
 

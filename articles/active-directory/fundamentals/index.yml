@@ -1,47 +1,67 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Podstawowa dokumentacja usługi Azure Active Directory
+summary: Poznaj podstawowe pojęcia i procesy dotyczące usługi Azure Active Directory (Azure AD), w tym sposób tworzenia podstawowego środowiska, podstawowych użytkowników i grup w celu rozpoczęcia pracy.
 metadata:
-  document_id: null
   title: Podstawowa dokumentacja usługi Azure Active Directory
-  description: Poznaj podstawowe pojęcia i procesy dostępne podczas korzystania z usługi Azure Active Directory.
-  services: active-directory
-  ms.subservice: fundamentals
-  author: msaburnley
+  description: Poznaj podstawowe pojęcia i procesy dotyczące usługi Azure Active Directory (Azure AD), w tym sposób tworzenia podstawowego środowiska, podstawowych użytkowników i grup w celu rozpoczęcia pracy.
   manager: daveba
-  ms.service: active-directory
-  ms.topic: landing-page
-  ms.date: 09/07/2018
   ms.author: ajburnle
-abstract:
-  description: 'Poznaj podstawowe pojęcia i procesy dotyczące usługi Azure Active Directory (Azure AD), w tym sposób tworzenia podstawowych użytkowników i grup oraz sposób tworzenia podstawowego środowiska w celu rozpoczęcia pracy.'
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak rozpocząć pracę z portalem usługi Azure Active Directory.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/i_portal.png
-            text: Uzyskiwanie dostępu do usługi Azure AD w celu utworzenia dzierżawy
-            href: active-directory-access-create-new-tenant.md
-          - image:
-              src: ./media/index/i_tasks.png
-            text: Wyświetlanie grup i członków
-            href: active-directory-groups-view-azure-portal.md
-  - title: Przewodniki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak wykonywać podstawowe zadania w celu skonfigurowania środowiska usługi Azure Active Directory'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Tworzenie konta w usłudze Azure AD Premium</a>
-          - html: <a href="/azure/active-directory/fundamentals/add-custom-domain">Jak dodać niestandardową nazwę domeny</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal">Jak utworzyć podstawową grupę i dodać członków</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners">Jak dodać właścicieli grupy</a>
-          - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Jak dodać nowego użytkownika</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal">Jak przypisać role do użytkowników</a>
-          - html: <a href="/azure/active-directory/fundamentals/license-users-groups">Jak przypisać licencje do użytkowników</a>
+  ms.collection: na
+  ms.date: 08/27/2019
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: c0f85c065a4334f41c7f52a05e2b885f97dde25f
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70124894"
+landingContent:
+- title: Informacje o usłudze Azure AD
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Azure Active Directory?
+      url: active-directory-whatis.md
+    - text: Co nowego w usłudze Azure Active Directory
+      url: whats-new.md
+  - linkListType: concept
+    links:
+    - text: Architektura usługi Azure AD
+      url: active-directory-architecture.md
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Uzyskiwanie dostępu do portalu i tworzenie dzierżawy
+      url: active-directory-access-create-new-tenant.md
+    - text: Wyświetlanie grup z przypisanymi członkami
+      url: active-directory-groups-view-azure-portal.md
+- title: Tworzenie konta usługi Azure AD
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Rejestrowanie w usłudze Azure Active Directory w wersji Premium
+      url: active-directory-get-started-premium.md
+    - text: Tworzenie konta dla usługi Azure AD jako organizacja
+      url: sign-up-organization.md
+    - text: Dodawanie niestandardowej nazwy domeny
+      url: add-custom-domain.md
+- title: Tworzenie grupy w usłudze Azure AD
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Tworzenie grupy podstawowej i dodawanie członków
+      url: active-directory-groups-create-azure-portal.md
+    - text: Dodawanie lub usuwanie właścicieli grupy
+      url: active-directory-accessmanagement-managing-group-owners.md
+- title: Dodawanie użytkowników i przypisywanie ich ról i licencji
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Dodawanie lub usuwanie użytkowników
+      url: add-users-azure-active-directory.md
+    - text: Przypisywanie licencji do użytkowników
+      url: license-users-groups.md

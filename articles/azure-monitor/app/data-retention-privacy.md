@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 18129c625630e7e21e2139ea3967ba5152bc0b30
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: df441a55ef4a9a40fe4defcabca5f667eeddbf29
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991180"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207294"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w usłudze Application Insights
 
@@ -100,7 +100,7 @@ Mogą być eksportowane przez Ciebie i członków zespołu i mogą być kopiowan
 Firma Microsoft używa danych tylko w celu udostępnienia usługi.
 
 ## <a name="where-is-the-data-held"></a>Gdzie są przechowywane dane?
-* W Stanach Zjednoczonych, Europie lub Południowo-Wschodnia. Lokalizację można wybrać podczas tworzenia nowego zasobu Application Insights. 
+* Lokalizację można wybrać podczas tworzenia nowego zasobu Application Insights. Dowiedz się więcej o dostępności Application Insights [](https://azure.microsoft.com/global-infrastructure/services/?products=all)na region.
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>Czy oznacza to, że moja aplikacja musi być hostowana w USA, Europie czy Azji Południowo-Wschodnia?
 * Nie. Aplikacja może działać w dowolnym miejscu — na własnych hostach lokalnych lub w chmurze.
@@ -247,7 +247,7 @@ Zestawy SDK różnią się między platformami i istnieje kilka składników, kt
 | [TrackMetric wywołań][api] |Wartości liczbowe<br/>**Aœciwoœci** |
 | [Śledzenie wywołań *][api] |Nazwa zdarzenia<br/>**Aœciwoœci** |
 | [Wywołanie metody Trackexception][api] |**Wyjątki**<br/>Zrzut stosu<br/>**Aœciwoœci** |
-| Zestaw SDK nie może zbierać danych. Przykład: <br/> -nie można uzyskać dostępu do liczników wydajności<br/> -wyjątek w inicjatorze telemetrii |Diagnostyka zestawu SDK |
+| Zestaw SDK nie może zbierać danych. Na przykład: <br/> -nie można uzyskać dostępu do liczników wydajności<br/> -wyjątek w inicjatorze telemetrii |Diagnostyka zestawu SDK |
 
 W przypadku [zestawów SDK dla innych platform][platforms]Zobacz dokumenty.
 

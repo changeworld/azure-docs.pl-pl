@@ -32,11 +32,11 @@
           href: howto-sign-in-risk-policy.md
         - name: Konfigurowanie zasad ryzyka użytkowników
           href: howto-user-risk-policy.md
-        - name: Zamykanie aktywnych zdarzeń o podwyższonym ryzyku
+        - name: Zamykanie aktywnych wykryć ryzyka
           href: howto-close-active-risk-events.md
         - name: Odblokowywanie użytkowników
           href: howto-unblock-user.md
-        - name: Symulowanie ryzykownych zdarzeń
+        - name: Symulowanie wykryć ryzyka
           href: playbook.md
         - name: Często zadawane pytania
           href: faqs.md
@@ -46,9 +46,9 @@
           href: overview-v2.md
         - name: Omówienie zabezpieczeń
           href: security-overview.md
-        - name: Badanie ryzykownych użytkowników i logowań
-          href: howto-investigate-risky-users-signins.md
-        - name: Udostępnianie informacji zwrotnych dotyczących zdarzeń o podwyższonym ryzyku
+        - name: Badanie ryzyka
+          href: howto-investigate-risk.md
+        - name: Udostępnianie informacji zwrotnych dotyczących wykryć ryzyka
           href: howto-provide-risk-event-feedback.md
         - name: Konfigurowanie zasad ryzyka
           href: howto-configure-risk-policies.md
@@ -58,7 +58,7 @@
   items:
     - name: Korzystanie z interfejsu API programu Microsoft Graph
       href: graph-get-started.md
-    - name: Zdarzenia o podwyższonym ryzyku
+    - name: Wykrycia ryzyka
       href: risk-events-reference.md
     - name: Słownik
       href: glossary.md

@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: f5db715ecb7d5523f5f52a356198eb547f69d4f8
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 661adb755d076b0cc6114a287855482165ccb817
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194299"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208094"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Migracja konta z portal Cloud Partner do Centrum partnerskiego
 
@@ -26,13 +26,13 @@ Jeśli jesteś użytkownikiem z rolą właściciela w programie CPP dla danego k
 
 Kliknij transparent, aby zainicjować proces migracji konta. Oczekiwane jest wprowadzenie następujących elementów:
 
-### <a name="work-e-mail-address"></a>Służbowy adres e-mail
+### <a name="work-email-address"></a>Służbowy adres e-mail
 
 W większości przypadków Zaloguj się przy użyciu adresu e-mail używanego do logowania się do programu CPP. W niektórych przypadkach należy użyć innego adresu e-mail:
 
-* Konto Microsoft: Jeśli konto CPP jest kontem Microsoft, należy wprowadzić prawidłowy służbowy adres e-mail skojarzony z dzierżawcą, dla którego zarejestrowano identyfikator MPN. 
+* Konto Microsoft: Jeśli konto CPP jest konto Microsoft, musisz wprowadzić prawidłowy służbowy adres e-mail skojarzony z dzierżawcą, dla którego zarejestrowano identyfikator MPN.
 
-* Niezgodność dzierżawy: Jeśli służbowy adres e-mail nie należy do dzierżawy skojarzonej z IDENTYFIKATORem Microsoft Partner Network na Twoim koncie CPP, zostanie wyświetlony komunikat o błędzie. Aby przenieść poprzedni błąd, wprowadź adres e-mail skojarzony z dzierżawcą. Komunikat o błędzie zawiera nazwę dzierżawcy. 
+* Niezgodność dzierżawy: Jeśli służbowy adres e-mail nie należy do dzierżawy skojarzonej z IDENTYFIKATORem Microsoft Partner Network na Twoim koncie CPP, zostanie wyświetlony komunikat o błędzie. Aby przenieść poprzedni błąd, wprowadź adres e-mail skojarzony z dzierżawcą. Komunikat o błędzie zawiera nazwę dzierżawcy.
 
 ### <a name="sign-up-for-microsoft-partner-network-program"></a>Utwórz konto w programie Microsoft Partner Network
 

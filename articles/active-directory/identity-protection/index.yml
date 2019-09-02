@@ -12,12 +12,12 @@ metadata:
   ms.author: joflore
   ms.date: 08/20/2019
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 5f69dff8568c308d7a8eb9d80e247ef7cfc58acd
-  ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+  ms.openlocfilehash: b493af4372c612c41bafeaef863d8542e6730cb1
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
   ms.translationtype: HT
   ms.contentlocale: pl-PL
-  ms.lasthandoff: 08/21/2019
-  ms.locfileid: "69874112"
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70126212"
 landingContent:
 - title: Informacje o ochronie tożsamości
   linkLists:
@@ -27,14 +27,14 @@ landingContent:
       url: overview-v2.md
     - text: Przedstawiamy omówienie zabezpieczeń
       url: security-overview.md
-- title: Badanie zdarzeń o podwyższonym ryzyku
+- title: Badanie wykryć ryzyka
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: Konfigurowanie zasad ryzyka
       url: howto-configure-risk-policies.md
-    - text: Badanie ryzykownych użytkowników i logowań
-      url: howto-investigate-risky-users-signins.md
+    - text: Badanie ryzyka
+      url: howto-investigate-risk.md
   - linkListType: reference
     links:
     - text: Typy zdarzeń
@@ -47,7 +47,7 @@ landingContent:
       url: flows.md
   - linkListType: how-to-guide
     links:
-    - text: Symulowanie ryzykownych zdarzeń
+    - text: Symulowanie wykryć ryzyka
       url: playbook.md
   - linkListType: quickstart
     links:

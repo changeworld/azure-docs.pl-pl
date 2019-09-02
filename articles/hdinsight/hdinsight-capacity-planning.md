@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0f386faa5a18282c9e60bdb282e01dcd53f9de4f
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 3d82846c02754f23b4a2e86a7881c952e503b36f
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114300"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207154"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Planowanie pojemności klastrów usługi HDInsight
 
@@ -60,7 +60,7 @@ W przypadku klastra z 48 węzłami zalecamy od 4 do 8 kont magazynu. Mimo że mo
 
 ## <a name="choose-a-cluster-type"></a>Wybierz typ klastra
 
-Typ klastra określa obciążenie skonfigurowane do uruchamiania klastra usługi HDInsight, takie jak [Apache Hadoop](https://hadoop.apache.org/), [Apache Storm](https://storm.apache.org/), [Apache Kafka](https://kafka.apache.org/)lub [Apache Spark](https://spark.apache.org/). Aby uzyskać szczegółowy opis dostępnych typów klastrów, zobacz [wprowadzenie do usługi Azure HDInsight](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight). Każdy typ klastra ma określoną topologię wdrożenia, która obejmuje wymagania dotyczące rozmiaru i liczby węzłów.
+Typ klastra określa obciążenie skonfigurowane do uruchamiania klastra usługi HDInsight, takie jak [Apache Hadoop](https://hadoop.apache.org/), [Apache Storm](https://storm.apache.org/), [Apache Kafka](https://kafka.apache.org/)lub [Apache Spark](https://spark.apache.org/). Aby uzyskać szczegółowy opis dostępnych typów klastrów, zobacz [wprowadzenie do usługi Azure HDInsight](hdinsight-overview.md#cluster-types-in-hdinsight). Każdy typ klastra ma określoną topologię wdrożenia, która obejmuje wymagania dotyczące rozmiaru i liczby węzłów.
 
 ## <a name="choose-the-vm-size-and-type"></a>Wybierz rozmiar i typ maszyny wirtualnej
 

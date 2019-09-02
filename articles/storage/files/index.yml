@@ -1,0 +1,57 @@
+### YamlMime:Landing
+title: Azure Files
+summary: Usługa Azure Files oferuje w pełni zarządzane, międzyplatformowe udziały plików w chmurze, dostępne za pośrednictwem protokołu Server Message Block (SMB).
+metadata:
+  title: Azure Files
+  description: Instaluj udziały plików w chmurze lub środowisku lokalnym w systemie Windows, Linux i macOS. Buforuj udziały plików platformy Azure w systemach Windows Server za pomocą funkcji Azure File Sync w celu zapewnienia dostępu lokalnego.
+  services: storage
+  ms.service: storage
+  ms.subservice: files
+  ms.topic: landing-page
+  ms.collection: collection
+  author: roygara
+  ms.author: rogarana
+  ms.date: 08/27/2019
+  ms.openlocfilehash: 06764b43d46dc4fee51ac58254e2d2578257f096
+  ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70143054"
+landingContent:
+- title: Informacje o usłudze Azure Files
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Przewodnik planowania dla usługi Azure Files
+      url: storage-files-planning.md
+    - text: Przewodnik planowania dla usługi Azure File Sync
+      url: storage-sync-files-planning.md
+    - text: Co to jest usługa Azure Files?
+      url: storage-files-introduction.md
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Tworzenie udziałów plików i korzystanie z nich — Windows
+      url: storage-files-quick-create-use-windows.md
+    - text: Tworzenie udziałów plików w warstwie Premium
+      url: storage-how-to-create-premium-fileshare.md
+    - text: Zarządzanie serwerem w usłudze Azure File Sync
+      url: storage-sync-files-server-registration.md
+  - linkListType: tutorial
+    links:
+    - text: Rozszerzanie serwerów plików systemu Windows przy użyciu usługi Azure File Sync
+      url: storage-sync-files-extend-servers.md
+- title: Rozwiązywanie problemów
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Rozwiązywanie problemów z usługą Azure Files w systemie Windows
+      url: storage-troubleshoot-windows-file-connection-problems.md
+    - text: Rozwiązywanie problemów z usługą Azure Files w systemie Linux
+      url: storage-troubleshoot-linux-file-connection-problems.md
+    - text: Rozwiązywanie problemów z wydajnością usługi Azure Files
+      url: storage-troubleshooting-files-performance.md
+    - text: Rozwiązywanie problemów z usługą Azure File Sync
+      url: storage-sync-files-troubleshoot.md

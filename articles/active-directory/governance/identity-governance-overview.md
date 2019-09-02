@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 08/25/2019
+ms.date: 08/28/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 014a2c3cff3804657e4e2bf624b97eceef4bf4b2
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 74e0539095701ec104495bf5a44dec668494d444
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033320"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207179"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co to jest usługa Azure AD Identity Governance?
 
@@ -69,6 +69,18 @@ W przeszłości dostęp uprzywilejowany został opisany przez innych dostawców 
 ![Cykl życia uprzywilejowanego dostępu](./media/identity-governance-overview/privileged-access-lifecycle.png)
 
 Azure AD Privileged Identity Management (PIM) oferuje dodatkowe funkcje kontroli dostosowane do zabezpieczania praw dostępu do zasobów w usłudze Azure AD, na platformie Azure i innych usługach online firmy Microsoft.  Dostęp just-in-Time i funkcje alertów o zmianie roli udostępniane przez usługę Azure AD PIM, oprócz uwierzytelniania wieloskładnikowego i dostępu warunkowego, zapewniają kompleksowy zestaw kontrolek ładu, który pomaga zabezpieczyć zasoby firmy (katalog, Office 365 i role zasobów platformy Azure). Podobnie jak w przypadku innych form dostępu, organizacje mogą korzystać z przeglądów dostępu w celu skonfigurowania cyklicznej certyfikacji dostępu dla wszystkich użytkowników w rolach administratora.
+
+## <a name="least-privileged-roles"></a>Najniższe role uprzywilejowane
+
+Użycie usługi PIM pozwala ograniczyć uprawnienia administracyjne użytkownika do dodatkowego zabezpieczenia. Poniżej znajdują się najmniej uprzywilejowane role katalogu dla konfiguracji w funkcjach zarządzania tożsamościami usługi Azure AD: 
+
+| Cecha | Najmniejsza rola uprzywilejowana |
+| ------- | --------------------- |
+| Zarządzanie upoważnieniami | Administrator użytkowników (z wyjątkiem dodawania witryn usługi SharePoint Online do wykazów, które wymagają administratora globalnego) |
+| Warunki użytkowania | Administrator zabezpieczeń lub administrator dostępu warunkowego |
+| Przeglądy dostępu | Administrator użytkowników (z wyjątkiem przeglądów dostępu dotyczących ról platformy Azure lub usługi Azure AD, które wymagają uprzywilejowanego administratora roli) |
+|Privileged Identity Management | Administrator ról uprzywilejowanych |
+
 
 ## <a name="getting-started"></a>Wprowadzenie
 

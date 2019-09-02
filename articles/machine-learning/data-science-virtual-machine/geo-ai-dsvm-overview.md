@@ -1,30 +1,23 @@
 ---
-title: Maszyna wirtualna do analizy danych — omówienie geograficznego sztucznej inteligencji
-titleSuffix: Azure
-description: Maszyny wirtualnej analizy danych geograficznych ze sztucznej inteligencji zapewnia ArcGIS Pro do pracy za pomocą danych geograficznych. Udostępnia także zestaw narzędzi do nauki, R i danych do pracy z uczeniem maszynowym i sztuczną inteligencją (AI).
+title: Co to jest geograficzna sztuczna inteligencja
+titleSuffix: Azure Data Science Virtual Machine
+description: Geograficznie sztuczna inteligencja Data Science Virtual Machine zapewnia ArcGIS Pro do pracy z danymi geograficznymi, a także narzędzi Python, R i Data Science do pracy z ML i AI.
 keywords: głębokiego uczenia i sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, geoprzestrzenna analiza
 services: machine-learning
-documentationcenter: ''
-author: vijetajo
-manager: cgronlun
-ms.custom: seodec18
-ms.assetid: ''
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: vijetajo
+ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.author: vijetaj
-ms.openlocfilehash: 05596ea9a4456b73ec1e398e4a27ec3a49457cd9
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 3d17006b9d35f0abbcc0e9c60f38ab693c1d088d
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172867"
+ms.locfileid: "70195584"
 ---
-# <a name="introduction-to-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Wprowadzenie do maszyny wirtualnej analizy danych geograficznych ze sztucznej inteligencji
+# <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Co to jest geograficzna sztuczna inteligencja Data Science Virtual Machine?
 
 Geograficznie sztuczna inteligencja Data Science Virtual Machine (nazywana również geograficzną Data Science VM AI lub geograficznie DSVM) oferuje funkcje analityczne geoprzestrzenne z Data Science Virtual Machine platformy Azure (DSVM). Ta maszyna wirtualna rozszerza zestaw narzędzi AI i analizy danych [DSVM](overview.md) , dodając wiodący w rynku system informacji geograficznej [ARCGIS Pro](https://www.esri.com/arcgis/products/arcgis-pro/overview) z ERSI.
 

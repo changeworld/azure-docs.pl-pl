@@ -1,7 +1,7 @@
 ---
 title: Poznaj system Linux
 titleSuffix: Azure Data Science Virtual Machine
-description: Jak przeprowadzić kilka typowych zadań do nauki o danych z maszyny Wirtualnej do nauki o danych systemu Linux.
+description: Dowiedz się, jak wykonać kilka typowych zadań związanych z nauką o danych przy użyciu Data Science Virtual Machine systemu Linux.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
@@ -9,72 +9,73 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 0f0f75a3ac6f258cbcd13ee24dabb870f1a37fbf
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 759c804fd4128d7b28cbba078cab5e9d7e6453f6
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70192016"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208301"
 ---
-# <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Do nauki o danych z systemem Linux maszyny wirtualnej analizy danych na platformie Azure
-W tym instruktażu przedstawiono sposób wykonywania kilku typowych zadań do nauki o danych z maszyna wirtualna do nauki o danych systemu Linux. Linux Data Science Virtual Machine (dsvm dystrybucji) jest obraz maszyny wirtualnej dostępne na platformie Azure, który jest wstępnie instalowane ze zbiorem narzędzi często używane do analizy danych i uczenia maszynowego. Składniki oprogramowania są wymienione w [Aprowizowanie maszyny wirtualnej do nauki o danych Linux](linux-dsvm-intro.md) tematu. Obraz maszyny Wirtualnej ułatwia rozpoczęcie pracy, nauki o danych w ciągu kilku minut, bez konieczności instalowania i konfigurowania poszczególnych narzędzi indywidualnie. Możesz łatwo skalować w górę maszyny Wirtualnej, w razie potrzeby i zatrzymaj ją, gdy użycie. Więc ten zasób jest elastyczne i ekonomiczne.
+# <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Nauka danych przy użyciu Data Science Virtual Machine systemu Linux na platformie Azure
 
-Zadania do nauki o danych, które są przedstawione w tym przewodniku wykonaj czynności opisane w temacie [zespołu danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview). Ten proces obejmuje to systematyczne podejście do nauki o danych, który umożliwia zespołom naukowców skutecznie współpracować z cyklem tworzenia inteligentnych aplikacji. W procesie nauki o danych udostępnia także platforma iteracyjne do nauki o danych, który może występować przez osobę.
+W tym instruktażu pokazano, jak wykonać kilka typowych zadań naukowych dotyczących danych przy użyciu Data Science Virtual Machine systemu Linux (DSVM). Linux DSVM to obraz maszyny wirtualnej dostępny na platformie Azure, który jest preinstalowany z kolekcją narzędzi często używanych do analizy danych i uczenia maszynowego. Najważniejsze składniki oprogramowania są objęte obsługą [administracyjną Data Science Virtual Machine systemu Linux](linux-dsvm-intro.md). Obraz DSVM ułatwia rozpoczęcie pracy z analizą danych w kilka minut, bez konieczności instalowania i konfigurowania poszczególnych narzędzi osobno. Można łatwo skalować w górę DSVM, jeśli jest to konieczne, i można go zatrzymać, gdy nie jest używany. Zasób DSVM jest elastyczny i ekonomiczny.
 
-Analizujemy [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) zestawu danych, w tym przewodniku. Jest to zestaw wiadomości e-mail, które są oznaczone jako wiadomości-śmieci lub które pichcisz (tzn. nie są one spam), a także statystykami dotyczącymi zawartość wiadomości e-mail. Statystyki uwzględnione są omówione w następnej, ale jedną sekcję.
+Zadania analizy danych przedstawione w tym instruktażu są zgodne z krokami opisanymi w temacie [co to jest proces nauki o danych zespołowych?](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) Proces nauki danych zespołu to systematyczne podejście do nauki dotyczącej danych, które ułatwiają zespołom analityków danych wydajną współpracę nad cyklem tworzenia inteligentnych aplikacji. W procesie nauki o danych udostępnia także platforma iteracyjne do nauki o danych, który może występować przez osobę.
+
+W tym instruktażu analizujemy zestaw danych [spambase](https://archive.ics.uci.edu/ml/datasets/spambase) . Spambase to zbiór wiadomości e-mail oznaczonych jako spam lub Ham (bez spamu). Spambase zawiera również pewne dane statystyczne dotyczące zawartości wiadomości e-mail. Więcej informacji na temat statystyk znajduje się w dalszej części przewodnika.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed użyciem systemu Linux maszyny wirtualnej do nauki o danych, musisz mieć następujące czynności:
 
-* **Subskrypcji platformy Azure**. Jeśli nie masz już jeden, zobacz [Utwórz bezpłatne konto platformy Azure już dziś](https://azure.microsoft.com/free/).
-* A [ **Linux maszyny Wirtualnej do analizy danych**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Aby uzyskać informacje o inicjowaniu obsługi tej maszyny Wirtualnej, zobacz [Aprowizowanie maszyny wirtualnej do nauki o danych Linux](linux-dsvm-intro.md).
-* [X2Go](https://wiki.x2go.org/doku.php) zainstalowana na danym komputerze i otworzyć sesję XFCE. Aby uzyskać informacje na temat instalowania i konfigurowania **klienta programu x2go**, zobacz [Instalowanie i Konfigurowanie klienta x2go](linux-dsvm-intro.md#install-and-configure-the-x2go-client).
-* Dla płynne przewijanie, Przełącz flagę gfx.xrender.enabled o: config w przeglądarce FireFox maszyn wirtualnych. [Zobacz więcej informacji znajdziesz tutaj. ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Należy również rozważyć przełączanie *mousewheel.enable_pixel_scrolling* na wartość False. [Instrukcje w tym miejscu.](https://support.mozilla.org/questions/981140)
-* **Konta usługi Azure ml**. Jeśli nie masz jeszcze jeden Załóż nowe na [strony głównej usługi Azure ml](https://studio.azureml.net/). Brak warstwę bezpłatnego użycia, aby pomóc Ci rozpocząć pracę.
+Przed użyciem DSVM systemu Linux należy spełnić następujące wymagania wstępne:
+
+* **Subskrypcja platformy Azure**. Aby uzyskać subskrypcję platformy Azure, zobacz artykuł [Tworzenie bezpłatnego konta platformy Azure już dzisiaj](https://azure.microsoft.com/free/).
+* [**Data Science Virtual Machine systemu Linux**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Informacje o aprowizacji maszyny wirtualnej można znaleźć w temacie [Inicjowanie obsługi Data Science Virtual Machine systemu Linux](linux-dsvm-intro.md).
+* [**X2go**](https://wiki.x2go.org/doku.php) zainstalowane na komputerze z otwartą sesją pulpit Xfce. Aby uzyskać więcej informacji, zobacz [Instalowanie i Konfigurowanie klienta x2go](linux-dsvm-intro.md#install-and-configure-the-x2go-client).
+* Aby usprawnić przewijanie w przeglądarce sieci Web w programie DSVM, przełącz `gfx.xrender.enabled` flagę w. `about:config` [Dowiedz się więcej](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Należy również rozważyć `mousewheel.enable_pixel_scrolling` ustawienie `False`. [Dowiedz się więcej](https://support.mozilla.org/questions/981140).
+* **Konto Azure Machine Learning**. Jeśli jeszcze tego nie zrobiono, Utwórz nowe konto na [stronie głównej Azure Machine Learning](https://studio.azureml.net/). Możesz bezpłatnie wypróbować usługę, aby pomóc Ci rozpocząć pracę.
 
 ## <a name="download-the-spambase-dataset"></a>Pobierz zestaw danych spambase
-[Spambase](https://archive.ics.uci.edu/ml/datasets/spambase) zestaw danych jest stosunkowo mały zestaw danych zawiera tylko 4601 przykłady. Jest to wygodne rozmiar do użycia podczas wykazania, że niektóre najważniejsze funkcje maszyna wirtualna do nauki o danych, ponieważ utrzymuje wymagania dotyczące zasobów niewielkie.
+
+[Spambase](https://archive.ics.uci.edu/ml/datasets/spambase) DataSet to stosunkowo mały zestaw danych, który zawiera 4 601 przykładów. Zestaw danych jest wygodnym rozmiarem do prezentowania niektórych kluczowych funkcji DSVM, ponieważ utrzymuje wymagania dotyczące zasobów.
 
 > [!NOTE]
-> W tym instruktażu utworzono na D2 v2 wielkości Linux maszyny wirtualnej analizy danych (CentOS wydanie). Ten rozmiar maszyny wirtualnej DSVM jest przystosowana do obsługi w procedurach przedstawionych w tym przewodniku.
->
->
+> Ten Instruktaż został utworzony przy użyciu D2 v2-size Linux DSVM (CentOS Edition). Aby wykonać procedury, które są przedstawione w tym instruktażu, można użyć DSVM tego rozmiaru.
 
-Jeśli potrzebujesz więcej miejsca w magazynie, możesz utworzyć dodatkowe dyski i dołącz je do maszyny Wirtualnej. Te dyski Użyj trwałego magazynu platformy Azure, dzięki czemu ich dane są zachowywane, nawet wtedy, gdy serwer jest aprowizowany ponownie z powodu zmiany rozmiaru lub jest wyłączony. Aby dodać dysk i dołączyć go do maszyny Wirtualnej, postępuj zgodnie z instrukcjami [dodać dysk do maszyny Wirtualnej z systemem Linux](../../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Kroki przy użyciu interfejsu wiersza polecenia platformy Azure (Azure CLI), który jest już zainstalowany na maszyny DSVM. Dlatego te procedury może odbywać się wyłącznie z samą maszynę Wirtualną. Innym rozwiązaniem w celu zwiększenia magazynu jest użycie [usługi Azure files](../../storage/files/storage-how-to-use-files-linux.md).
+Jeśli potrzebujesz więcej miejsca do magazynowania, możesz utworzyć dodatkowe dyski i dołączyć je do DSVM. Na dyskach jest używany trwały Magazyn Azure, więc ich dane są zachowywane nawet wtedy, gdy serwer jest ponownie inicjowany z powodu zmiany rozmiarów lub wyłączania. Aby dodać dysk i dołączyć go do DSVM, wykonaj kroki opisane w temacie [Dodawanie dysku do maszyny wirtualnej z systemem Linux](../../virtual-machines/linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Procedura dodawania dysku przy użyciu interfejsu wiersza polecenia platformy Azure, który jest już zainstalowany w DSVM. Możesz wykonać czynności całkowicie z DSVM samego siebie. Kolejną opcją zwiększenia magazynu jest użycie [Azure Files](../../storage/files/storage-how-to-use-files-linux.md).
 
-Aby pobrać dane, Otwórz okno terminalu i uruchom następujące polecenie:
+Aby pobrać dane, Otwórz okno terminalu, a następnie uruchom następujące polecenie:
 
     wget https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
 
-Pobrany plik ma wiersz nagłówka, więc utworzyć inny plik, który ma nagłówka. Uruchom następujące polecenie, aby utworzyć plik, odpowiednie nagłówki:
+Pobrany plik nie ma wiersza nagłówka. Utwórzmy kolejny plik, który ma nagłówek. Uruchom następujące polecenie, aby utworzyć plik, odpowiednie nagłówki:
 
     echo 'word_freq_make, word_freq_address, word_freq_all, word_freq_3d,word_freq_our, word_freq_over, word_freq_remove, word_freq_internet,word_freq_order, word_freq_mail, word_freq_receive, word_freq_will,word_freq_people, word_freq_report, word_freq_addresses, word_freq_free,word_freq_business, word_freq_email, word_freq_you, word_freq_credit,word_freq_your, word_freq_font, word_freq_000, word_freq_money,word_freq_hp, word_freq_hpl, word_freq_george, word_freq_650, word_freq_lab,word_freq_labs, word_freq_telnet, word_freq_857, word_freq_data,word_freq_415, word_freq_85, word_freq_technology, word_freq_1999,word_freq_parts, word_freq_pm, word_freq_direct, word_freq_cs, word_freq_meeting,word_freq_original, word_freq_project, word_freq_re, word_freq_edu,word_freq_table, word_freq_conference, char_freq_semicolon, char_freq_leftParen,char_freq_leftBracket, char_freq_exclamation, char_freq_dollar, char_freq_pound, capital_run_length_average,capital_run_length_longest, capital_run_length_total, spam' > headers
 
-Następnie złączyć dwa pliki z poleceniem:
+Następnie połącz dwa pliki razem:
 
     cat spambase.data >> headers
     mv headers spambaseHeaders.data
 
-Zestaw danych zawiera kilka typów statystyk w każdej wiadomości e-mail:
+Zestaw danych zawiera kilka typów statystyk dla każdej wiadomości e-mail:
 
-* Kolumn, takich jak ***word\_Częst\_WORD*** wskazać wartość procentowa wyrazy w wiadomości e-mail, które odpowiadają *WORD*. Na przykład jeśli *word\_Częst\_upewnij* wynosi 1, a następnie 1% wszystkie wyrazy w wiadomości e-mail zostały *wprowadzić*.
-* Kolumny, takie jak ***char\_Częst\_CHAR*** wskazać wartość procentowa wszystkie znaki w wiadomości e-mail, które były *CHAR*.
-* ***wielkie\_Uruchom\_długość\_najdłuższy*** jest najdłuższy okres sekwencję wielkie litery.
-* ***wielkie\_Uruchom\_długość\_średni*** jest średnia długość wszystkie sekwencje wielkie litery.
-* ***wielkie\_Uruchom\_długość\_całkowita*** jest łączna długość wszystkich sekwencji wielkie litery.
-* ***spam*** wskazuje, czy wiadomość e-mail została uznana za spam, czy nie (1 = wiadomości-śmieci, 0 = nie spamu).
+* Kolumny, **takie\_jak\_Word FREQ * Word***, wskazują procent słów w wiadomości e-mail pasującej do *wyrazu*. Jeśli na przykład **słowo\_FREQ\_** ma wartość **1**, nastąpiło 1% wszystkich wyrazów w wiadomości e-mail.
+* Kolumny, **takie\_jak\_char FREQ * char***, wskazują procent wszystkich znaków w wiadomości e-mail, która jest *znakiem*.
+* **wielkie\_Uruchom\_długość\_najdłuższy** jest najdłuższy okres sekwencję wielkie litery.
+* **wielkie\_Uruchom\_długość\_średni** jest średnia długość wszystkie sekwencje wielkie litery.
+* **wielkie\_Uruchom\_długość\_całkowita** jest łączna długość wszystkich sekwencji wielkie litery.
+* **spam** wskazuje, czy wiadomość e-mail została uznana za spam, czy nie (1 = wiadomości-śmieci, 0 = nie spamu).
 
-## <a name="explore-the-dataset-with-microsoft-r-open"></a>Zapoznaj się z zestawu danych za pomocą programu Microsoft R Open
-Umożliwia sprawdzanie danych i wykonaj niektóre podstawowe uczenie maszynowe przy użyciu języka R. Maszyna wirtualna do nauki o danych, który jest dostarczany z [Microsoft R Open](https://mran.revolutionanalytics.com/open/) wstępnie zainstalowane. Wielowątkowe biblioteki matematyczne w tej wersji programu R oferują lepszą wydajność niż różne wersje apartamentem. Microsoft R Open także odtwarzaniem przy użyciu migawki repozytorium pakietów CRAN.
+## <a name="explore-the-dataset-by-using-r-open"></a>Eksplorowanie zestawu danych przy użyciu języka R Open
 
-Aby pobrać kopię przykłady kodu, używana w tym przewodniku, sklonuj **Azure-maszyny-Learning — nauka o danych** repozytorium przy użyciu narzędzia git, który jest wstępnie zainstalowanych na maszynie Wirtualnej. W wierszu polecenia usługi git Uruchom polecenie:
+Przeanalizujmy dane i wykonują podstawowe Uczenie maszynowe przy użyciu języka R. DSVM jest dostarczany ze wstępnie zainstalowanym [programem Microsoft R Open](https://mran.revolutionanalytics.com/open/) . Wielowątkowe biblioteki matematyczne w wstępnie zainstalowanej wersji języka R oferują lepszą wydajność niż wersje jednowątkowe. Otwarty język R umożliwia także odtwarzalność za pomocą migawki repozytorium pakietu CRAN.
+
+Aby uzyskać kopie przykładów kodu, które są używane w tym instruktażu, użyj narzędzia Git, aby sklonować repozytorium Azure-Machine-Learning-Data-nauka. Narzędzie git jest preinstalowane na DSVM. W wierszu polecenia usługi git Uruchom polecenie:
 
     git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
 
-Otwórz okno terminala i rozpocznij nową sesję R dzięki interakcyjnej konsoli R lub użyć programu RStudio wstępnie zainstalowane na maszynie.
+Otwórz okno terminalu i uruchom nową sesję języka R w konsoli języka R Interactive. Można również użyć RStudio, który jest preinstalowany na DSVM.
 
-
-Aby importować dane i skonfigurować środowisko, uruchom polecenie:
+Aby zaimportować dane i skonfigurować środowisko:
 
     data <- read.csv("spambaseHeaders.data")
     set.seed(123)
@@ -87,27 +88,27 @@ Aby uzyskać inny widok danych:
 
     str(data)
 
-To pokazuje typ każda zmienna i pierwsze kilka wartości w zestawie danych.
+Ten widok przedstawia typ każdej zmiennej i kilka pierwszych wartości w zestawie danych.
 
-*Spamu* kolumna została odczytana jako liczba całkowita, ale jest faktycznie kategorii zmiennej (lub Authentication). Aby ustawić jej typ:
+**Spamu** kolumna została odczytana jako liczba całkowita, ale jest faktycznie kategorii zmiennej (lub Authentication). Aby ustawić jej typ:
 
     data$spam <- as.factor(data$spam)
 
-Do wykonania niektórych analizę należy użyć [ggplot2](https://ggplot2.tidyverse.org/) pakietów popularnych wydarzeniom biblioteki dla języka R, która jest już zainstalowana na maszynie Wirtualnej. Uwaga: dane podsumowania wyświetlane wcześniej, że mamy statystyki podsumowujące częstotliwość znak wykrzyknika. Spróbujmy wykreślania tych częstotliwości, w tym miejscu przy użyciu następujących poleceń:
+Aby przeprowadzić analizę naukową, Użyj pakietu [ggplot2](https://ggplot2.tidyverse.org/) , popularnej biblioteki grafów dla języka R, który jest wstępnie zainstalowany w DSVM. Na podstawie danych podsumowania wyświetlanych wcześniej podsumowanie zawiera podsumowanie dotyczące częstotliwości znaku wykrzyknika. Tutaj Umieść te częstotliwości, uruchamiając następujące polecenia:
 
     library(ggplot2)
     ggplot(data) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
 
-Ponieważ zero pasek pochylenie wykres pozbądźmy go:
+Ponieważ pasek zero jest skośny, można go wyeliminować:
 
     email_with_exclamation = data[data$char_freq_exclamation > 0, ]
     ggplot(email_with_exclamation) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
 
-Brak nietrywialnymi gęstość powyżej 1, która wygląda ciekawie. Przyjrzyjmy się tylko te dane:
+Istnieje nieprosta gęstość powyżej 1, która wygląda interesująca. Przyjrzyjmy się tylko tym danym:
 
     ggplot(data[data$char_freq_exclamation > 1, ]) + geom_histogram(aes(x=char_freq_exclamation), binwidth=0.25)
 
-Następnie podzielić ją, przez które pichcisz vs spamu:
+Następnie podzielenie go przez spam a Ham:
 
     ggplot(data[data$char_freq_exclamation > 1, ], aes(x=char_freq_exclamation)) +
     geom_density(lty=3) +
@@ -116,23 +117,22 @@ Następnie podzielić ją, przez które pichcisz vs spamu:
     ggtitle("Distribution of spam \nby frequency of !") +
     labs(fill="spam", y="Density")
 
-Te przykłady powinny umożliwiać wykonywanie podobne wykresy pozostałe kolumny do eksplorowania danych zawartych w nich.
+Te przykłady powinny ułatwić tworzenie podobnych wykresów i Eksplorowanie danych w innych kolumnach.
 
-## <a name="train-and-test-an-ml-model"></a>Uczenie i testowanie modeli uczenia Maszynowego
-Teraz załóżmy szkolenie kilka klasyfikowanie wiadomości e-mail w zestawie danych, jako zawierającego zakres lub które pichcisz modele uczenia maszynowego. Firma Microsoft szkolenie modelu drzewa decyzyjnego i model lasu losowych w tej sekcji, a następnie przetestować ich dokładności prognozy ich.
+## <a name="train-and-test-a-machine-learning-model"></a>Uczenie i testowanie modelu uczenia maszynowego
+
+Przekażmy kilka modeli uczenia maszynowego, aby sklasyfikować wiadomości e-mail w zestawie danych jako zawierające spam lub Ham. W tej sekcji pouczymy Model drzewa decyzyjnego i losowy model lasów. Następnie przetestujemy dokładność prognoz.
 
 > [!NOTE]
-> Używany w poniższym kodzie pakiet rpart (partycjonowanie cyklicznego i drzew regresji) jest już zainstalowana na maszynie Wirtualnej do nauki o danych.
->
->
+> Pakiet *rpart* (drzewa partycjonowania i regresji) użyty w poniższym kodzie jest już zainstalowany na DSVM.
 
-Pierwszy, możemy podzielić zestawu danych na zestawy szkoleniowe i testowe:
+Najpierw Podziel zestaw danych na zestawy szkoleniowe i zestawy testów:
 
     rnd <- runif(dim(data)[1])
     trainSet = subset(data, rnd <= 0.7)
     testSet = subset(data, rnd > 0.7)
 
-A następnie utwórz drzewa decyzyjnego do klasyfikowania wiadomości e-mail.
+Następnie utwórz drzewo decyzyjne służące do klasyfikowania wiadomości e-mail:
 
     require(rpart)
     model.rpart <- rpart(spam ~ ., method = "class", data = trainSet)
@@ -141,7 +141,7 @@ A następnie utwórz drzewa decyzyjnego do klasyfikowania wiadomości e-mail.
 
 Poniżej przedstawiono wyniki:
 
-![1](./media/linux-dsvm-walkthrough/decision-tree.png)
+![Diagram tworzonego drzewa decyzyjnego](./media/linux-dsvm-walkthrough/decision-tree.png)
 
 Aby określić, jak sprawdzi się na zestaw szkoleniowy, użyj następującego kodu:
 
@@ -157,7 +157,7 @@ Aby określić, jak sprawdzi się w zestawie testów:
     accuracy <- sum(diag(t))/sum(t)
     accuracy
 
-Spróbujmy również model lasu losowych. Losowe lasach wiele algorytmów uczenia i wyjściowych klasę, która jest tryb klasyfikacje ze wszystkich poszczególnych algorytmów. Zapewniają one bardziej wydajne usługi machine learning podejście, ponieważ skorygowanie tendencje modelu drzewa decyzyjnego do overfit zestaw danych szkoleniowych.
+Spróbujmy również model lasu losowych. Lasy losowe przeszkolą wiele drzew decyzyjnych i wyprowadzają klasę, która jest trybem klasyfikacji ze wszystkich poszczególnych drzew decyzyjnych. Zapewniają one bardziej zaawansowane podejście do uczenia maszynowego, ponieważ są one poprawne dla tendencji modelu drzewa decyzyjnego, aby overfit zestaw danych szkoleniowych.
 
     require(randomForest)
     trainVars <- setdiff(colnames(data), 'spam')
@@ -172,82 +172,85 @@ Spróbujmy również model lasu losowych. Losowe lasach wiele algorytmów uczeni
     accuracy
 
 
-## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Wdrażanie modelu w programie Azure Machine Learning Studio
-[Azure Machine Learning Studio](https://studio.azureml.net/) to usługa w chmurze, która ułatwia tworzenie i wdrażanie modeli analizy predykcyjnej. Jedną z świetnych funkcji programu Azure Machine Learning Studio jest możliwość publikowania dowolnej funkcji języka R jako usługi sieci Web. Pakiet Azure Machine Learning Studio R sprawia, że wdrożenie jest łatwe do wykonania bezpośrednio z naszej sesji języka R na DSVM.
+## <a name="deploy-a-model-to-azure-machine-learning-studio"></a>Wdróż model do Azure Machine Learning Studio
 
-Aby wdrożyć kod drzewa decyzyjnego z poprzedniej sekcji, musisz zalogować się do usługi Azure Machine Learning Studio. Potrzebujesz Identyfikatora obszaru roboczego i token autoryzacji, aby zalogować się. Aby znaleźć te wartości i zainicjować zmienne Azure Machine Learning z nimi:
+[Azure Machine Learning Studio](https://studio.azureml.net/) to usługa w chmurze, która ułatwia tworzenie i wdrażanie modeli analizy predykcyjnej. Świetną funkcją Azure Machine Learning Studio jest możliwość publikowania dowolnej funkcji języka R jako usługi sieci Web. Pakiet Azure Machine Learning Studio R sprawia, że wdrożenie jest łatwe, bezpośrednio z sesji języka R na DSVM.
 
-Wybierz **ustawienia** w menu po lewej stronie. Uwaga swoje **identyfikator obszaru roboczego**. ![2](./media/linux-dsvm-walkthrough/workspace-id.png)
+Aby wdrożyć kod drzewa decyzyjnego z poprzedniej sekcji, zaloguj się do Azure Machine Learning Studio. Potrzebujesz Identyfikatora obszaru roboczego i token autoryzacji, aby zalogować się. Aby znaleźć te wartości i zainicjować dla nich zmienne Azure Machine Learning, wykonaj następujące kroki:
 
-Wybierz **tokenach autoryzacji** obciążenie menu i notatki usługi **tokenu autoryzacji podstawowej**.![ 3](./media/linux-dsvm-walkthrough/workspace-token.png)
+1. W menu po lewej stronie wybierz pozycję **Ustawienia**. Zwróć uwagę na wartość **identyfikatora obszaru roboczego**.
 
-Obciążenia **usługi Azure ml** pakietu, a następnie ustaw wartości zmiennych z Twoim Identyfikatorem token i obszar roboczy w sesji języka r., na maszyny DSVM:
+   ![Identyfikator obszaru roboczego Azure Machine Learning Studio](./media/linux-dsvm-walkthrough/workspace-id.png)
 
-    if(!require("AzureML")) install.packages("AzureML")
-    require(AzureML)
-    wsAuth = "<authorization-token>"
-    wsID = "<workspace-id>"
+1. Wybierz kartę **tokeny autoryzacji** . Zwróć uwagę na wartość **podstawowego tokenu autoryzacji**.
 
+   ![Podstawowy Token autoryzacji Azure Machine Learning Studio](./media/linux-dsvm-walkthrough/workspace-token.png)
+1. Załaduj pakiet platformy **Azure** , a następnie ustaw wartości zmiennych przy użyciu tokenu i identyfikatora obszaru roboczego w sesji języka R na DSVM:
 
-Teraz można uproszczenie model Aby wykonywać ułatwia zaimplementowanie tej prezentacji. Wybierz trzy zmienne w najbardziej zbliżony do katalogu głównego drzewa decyzyjnego i tworzyć nowe drzewo przy użyciu tylko tych trzech zmiennych:
+        if(!require("AzureML")) install.packages("AzureML")
+        require(AzureML)
+        wsAuth = "<authorization-token>"
+        wsID = "<workspace-id>"
 
-    colNames <- c("char_freq_dollar", "word_freq_remove", "word_freq_hp", "spam")
-    smallTrainSet <- trainSet[, colNames]
-    smallTestSet <- testSet[, colNames]
-    model.rpart <- rpart(spam ~ ., method = "class", data = smallTrainSet)
+1. Teraz można uproszczenie model Aby wykonywać ułatwia zaimplementowanie tej prezentacji. Wybierz trzy zmienne w drzewie decyzyjnym znajdującym się najbliżej katalogu głównego i skompiluj nowe drzewo przy użyciu tylko tych trzech zmiennych:
 
-Potrzebujemy funkcji prognozowania, który przyjmuje funkcji jako dane wejściowe i zwraca przewidywane wartości:
+        colNames <- c("char_freq_dollar", "word_freq_remove", "word_freq_hp", "spam")
+        smallTrainSet <- trainSet[, colNames]
+        smallTestSet <- testSet[, colNames]
+        model.rpart <- rpart(spam ~ ., method = "class", data = smallTrainSet)
 
-    predictSpam <- function(newdata) {
-      predictDF <- predict(model.rpart, newdata = newdata)
-      return(colnames(predictDF)[apply(predictDF, 1, which.max)])
-    }
+1. Potrzebujemy funkcji prognozowania, który przyjmuje funkcji jako dane wejściowe i zwraca przewidywane wartości:
 
-
-Publikowanie funkcji predictSpam do korzystania z usługi Azure ml **publishWebService** funkcji:
-
-    spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
+        predictSpam <- function(newdata) {
+        predictDF <- predict(model.rpart, newdata = newdata)
+        return(colnames(predictDF)[apply(predictDF, 1, which.max)])
+        }
 
 
-Ta funkcja przyjmuje **predictSpam** funkcji, tworzy usługę sieci web o nazwie **spamWebService** z zdefiniowane dane wejściowe i wyjściowe i zwraca informacje na temat nowego punktu końcowego.
+1. Opublikuj funkcję **predictSpam** na stronie Azure przy użyciu funkcji **publishWebService** :
 
-Wyświetl szczegółowe informacje o najnowszej opublikowanej usługi sieci web, łącznie z jej punkt końcowy interfejsu API i uzyskać dostęp do kluczy przy użyciu polecenia:
+        spamWebService <- publishWebService(ws, fun = predictSpam, name="spamWebService", inputSchema = smallTrainSet, data.frame=TRUE)
 
-    s<-tail(services(ws, name = "spamWebService"), 1)
-    ep <- endpoints(ws,s)
-    ep
+1. Ta funkcja przyjmuje funkcję **predictSpam** , tworzy usługę sieci Web o nazwie **spamWebService** , która ma zdefiniowane dane wejściowe i wyjściowe, a następnie zwraca informacje o nowym punkcie końcowym.
 
-Aby wypróbować tę funkcję w pierwszym ustawić 10 wierszy testu:
+    To polecenie służy do wyświetlania szczegółów najnowszej opublikowanej usługi sieci Web, w tym jej punktu końcowego interfejsu API i kluczy dostępu:
 
-    consume(ep, smallTestSet[1:10, ])
+        s<-tail(services(ws, name = "spamWebService"), 1)
+        ep <- endpoints(ws,s)
+        ep
+
+1. Aby wypróbować tę funkcję w pierwszym ustawić 10 wierszy testu:
+
+        consume(ep, smallTestSet[1:10, ])
 
 <a name="deep-learning"></a>
 
-## <a name="deep-learning-tutorials-and-walkthroughs"></a>Głębokiego uczenia, samouczki i przewodniki
+## <a name="deep-learning-tutorials-and-walkthroughs"></a>Samouczki i przewodniki dotyczące uczenia głębokiego
 
-Oprócz przykładów oparte na strukturze zbiór — wszechstronne wskazówki udostępniane są również że zweryfikowany w DLVM. Przewodniki te pomagają szybko Rozpocznij korzystanie z usługi opracowywania aplikacji uczenia głębokiego w domenach, takich jak obraz i tekst/language understanding. Więcej samouczków end-to-end w różnych domenach i technologii, będą w dalszym ciągu można dodać.   
+Oprócz przykładów opartych na architekturze udostępnia się również zestaw kompleksowych przewodników. Przewodniki te pomagają szybko Rozpocznij korzystanie z usługi opracowywania aplikacji uczenia głębokiego w domenach, takich jak obraz i tekst/language understanding.
 
+- [Uruchamianie sieci neuronowych w różnych strukturach](https://github.com/ilkarman/DeepLearningFrameworks): Obszerny przewodnik pokazujący, jak migrować kod z jednej struktury do innej. Pokazano również, jak porównać model i wydajność środowiska uruchomieniowego w różnych strukturach. 
 
-- [Uruchamianie sieci neuronowych w różnych strukturach](https://github.com/ilkarman/DeepLearningFrameworks): Kompleksowy przewodnik pokazujący sposób migrowania kodu z jednej struktury do innej. Ilustruje też sposób porównywania modelu i uruchamianie wydajności w czasie dla platform. 
+- [Przewodnik dotyczący tworzenia kompleksowych rozwiązań do wykrywania produktów w obrazach](https://github.com/Azure/cortana-intelligence-product-detection-from-images): Wykrywanie obrazów to technika, która umożliwia lokalizowanie i klasyfikowanie obiektów w obrazach. Technologia ta pozwala uzyskać ogromne korzyści w wielu domenach biznesowych w czasie rzeczywistym. Na przykład sprzedawcy detaliczni, można użyć tej techniki ustalenie produktu, który klientów została pobrana z półki. Informacje te pomagają z kolei magazyny Zarządzanie spis produktów. 
 
-- [Przewodnik dotyczący tworzenia kompleksowych rozwiązań do wykrywania produktów w obrazach](https://github.com/Azure/cortana-intelligence-product-detection-from-images): Wykrywanie obrazów to technika, która umożliwia lokalizowanie i klasyfikowanie obiektów w obrazach. Ta technologia może potencjalnie doprowadzić ogromne korzyści w wielu dziedzinach biznesowych realnym. Na przykład sprzedawcy detaliczni, można użyć tej techniki ustalenie produktu, który klientów została pobrana z półki. Informacje te pomagają z kolei magazyny Zarządzanie spis produktów. 
+- [Głębokie uczenie audio](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/): W tym samouczku przedstawiono sposób uczenia modelu uczenia głębokiego na potrzeby wykrywania zdarzeń audio w [zestawie danych dotyczących dźwięków miejskich](https://urbansounddataset.weebly.com/). Samouczek zawiera omówienie sposobu pracy z danymi audio.
 
-- [Uczenie głębokie dla audio](https://blogs.technet.microsoft.com/machinelearning/2018/01/30/hearing-ai-getting-started-with-deep-learning-for-audio-on-azure/) ten samouczek pokazuje sposób trenowania modelu uczenia głębokiego, wykrywania zdarzeń audio na [dataset miejskich dźwięki](https://serv.cusp.nyu.edu/projects/urbansounddataset/urbansound8k.html) i omówiono sposób pracy z danymi audio.
+- [Klasyfikacja dokumentów tekstowych](https://github.com/anargyri/lstm_han): W tym instruktażu przedstawiono sposób tworzenia i uczenia dwóch różnych architektur sieci neuronowych: Hierarchiczna sieć zwracająca uwagę i długotrwała pamięć krótkoterminowa (LSTM). Te sieci neuronowych na użytek interfejsu API biblioteki Keras głębokie uczenie do klasyfikowania dokumentów tekstowych. Keras to przód do trzech najpopularniejszych platform uczenia głębokiego: Microsoft Cognitive Toolkit, TensorFlow i Theano.
 
-- [Klasyfikacja dokumentów tekstowych](https://github.com/anargyri/lstm_han): W tym instruktażu przedstawiono sposób tworzenia i uczenia dwóch różnych architektur sieci neuronowych: Sieć hierarchiczna zwracająca uwagę i długi czas pamięci (LSTM). Te sieci neuronowych na użytek interfejsu API biblioteki Keras głębokie uczenie do klasyfikowania dokumentów tekstowych. Keras to przód do trzech najpopularniejszych platform uczenia głębokiego: Microsoft Cognitive Toolkit, TensorFlow i Theano.
+## <a name="other-tools"></a>Inne narzędzia
 
-## <a name="use-other-tools-available"></a>Za pomocą innych narzędzi, które są dostępne
-Pozostałe sekcje pokazują, jak korzystać z niektórych narzędzi zainstalowanych na maszynie Wirtualnej do nauki o danych systemu Linux. Oto lista narzędzi omówiono:
+Pozostałe sekcje pokazują, jak używać niektórych narzędzi zainstalowanych w systemie Linux DSVM. Omawiamy następujące narzędzia:
 
 * XGBoost
 * Python
-* Jupyterhub
+* JupyterHub
 * Rattle
-* PostgreSQL & Squirrel SQL
+* PostgreSQL i SQuirreL SQL
 * SQL Server Data Warehouse
 
-## <a name="xgboost"></a>XGBoost
-[XGBoost](https://xgboost.readthedocs.org/en/latest/) to narzędzie, które umożliwia szybkie i dokładne wzmocnione drzewo implementację.
+### <a name="xgboost"></a>XGBoost
+
+[XGBoost](https://xgboost.readthedocs.org/en/latest/) zapewnia szybką i dokładną implementację podwyższania poziomu drzewa.
 
     require(xgboost)
     data <- read.csv("spambaseHeaders.data")
@@ -263,17 +266,16 @@ Pozostałe sekcje pokazują, jak korzystać z niektórych narzędzi zainstalowan
     accuracy <- 1.0 - mean(as.numeric(pred > 0.5) != testSet$spam)
     print(paste("test accuracy = ", accuracy))
 
-XGBoost można również wywołać z języka python lub wiersza polecenia.
+XGBoost może również wywołać z języka Python lub wiersza polecenia.
 
-## <a name="python"></a>Python
-Do tworzenia aplikacji przy użyciu języka Python dystrybucje Anaconda Python 2.7 i 3.5 zostały zainstalowane w maszyny DSVM.
+### <a name="python"></a>Python
+
+W przypadku programowania w języku Python dystrybucje Anaconda języka Python 3,5 i 2,7 są zainstalowane na DSVM.
 
 > [!NOTE]
-> Obejmuje dystrybucji pakietu Anaconda [Conda](https://conda.pydata.org/docs/index.html), który może służyć do tworzenia niestandardowego środowiska dla języka Python, które mają różne wersje i/lub pakietów zainstalowanych w nich.
->
->
+> Anaconda dystrybucji obejmuje [Conda](https://conda.pydata.org/docs/index.html). Za pomocą Conda można tworzyć niestandardowe środowiska języka Python, w których zainstalowano różne wersje lub pakiety.
 
-Spróbujmy odczytać w niektórych spambase zestawu danych i klasyfikowanie wiadomości e-mail z maszynami wektor pomocy technicznej w scikit-Dowiedz się więcej:
+Przeczytajmy część zestawu danych spambase i Klasyfikowanie wiadomości e-mail przy użyciu maszyn wektorów pomocy technicznej w Scikit — uczenie się:
 
     import pandas
     from sklearn import svm
@@ -287,14 +289,14 @@ Jak tworzyć prognozy:
 
     clf.predict(X.ix[0:20, :])
 
-Aby pokazać sposób publikowania punktu końcowego usługi Azure ml, upewnijmy się prostsze modelu trzech zmiennych ile My mieliśmy po opublikowaniu modelu R wcześniej.
+Aby dowiedzieć się, jak opublikować punkt końcowy Azure Machine Learning, Utwórzmy bardziej podstawowy model. Będziemy używać trzech zmiennych, które zostały użyte po opublikowaniu modelu R wcześniej:
 
     X = data[["char_freq_dollar", "word_freq_remove", "word_freq_hp"]]
     y = data.ix[:, 57]
     clf = svm.SVC()
     clf.fit(X, y)
 
-Aby opublikować model uczenia maszynowego Azure:
+Aby opublikować model do Azure Machine Learning:
 
     # Publish the model.
     workspace_id = "<workspace-id>"
@@ -314,89 +316,87 @@ Aby opublikować model uczenia maszynowego Azure:
     # Call the model
     predictSpam.service(1, 1, 1)
 
-> [!NOTE]
-> To jest dostępna tylko dla języka python 2.7 i nie jest jeszcze obsługiwana na 3.5. Uruchom z **/anaconda/bin/python2.7**.
->
->
-
-## <a name="jupyterhub"></a>Jupyterhub
-Dystrybucja pakietu Anaconda w maszyny DSVM jest powiązana z notesu programu Jupyter, środowisko dla wielu platform, udostępniać kod języka Python, R lub Julia i analizy. Notes Jupyter jest dostępna za pośrednictwem JupyterHub. Zaloguj się przy użyciu lokalnej nazwy użytkownika systemu Linux i hasło przy ***https://\<nazwę DNS maszyny Wirtualnej lub adres IP\>: 8000 /***. Wszystkie pliki konfiguracji JupyterHub, znajdują się w katalogu **/etc/jupyterhub**.
 
 > [!NOTE]
-> Aby użyć Menedżera pakietów języka Python (za pośrednictwem `pip` polecenie) z notesu Jupyter w jądrze bieżącego następującego polecenia mogą być używane w komórce kodu, na przykład:
+> Ta opcja jest dostępna tylko dla języka Python 2,7. Nie jest jeszcze obsługiwane w języku Python 3,5. Aby uruchomić, użyj **/Anaconda/bin/python2.7**.
+
+### <a name="jupyterhub"></a>JupyterHub
+
+Rozkład Anaconda w DSVM zawiera Jupyter Notebook, czyli środowisko Międzyplatformowe do udostępniania kodu Python, R lub Julia i analizy. Dostęp do Jupyter Notebook można uzyskać za pomocą JupyterHub. Użytkownik loguje się przy użyciu nazwy użytkownika i hasła lokalnego systemu Linux pod\<nazwą DNS https://DSVM lub adresem\>IP: 8000/. Wszystkie pliki konfiguracji dla JupyterHub znajdują się w/etc/jupyterhub.
+
+> [!NOTE]
+> Aby użyć Menedżera pakietów języka Python (za pośrednictwem `pip` polecenia) z Jupyter notebook w bieżącym jądrze, użyj tego polecenia w komórce kodu:
+>
 >   ```python
 >    import sys
 >    ! {sys.executable} -m pip install numpy -y
 >   ```
 > 
-> 
-> 
-> [!NOTE]
-> Aby użyć Instalatora Conda (za pośrednictwem `conda` polecenie) z notesu Jupyter w jądrze bieżącego następującego polecenia mogą być używane w komórce kodu, na przykład:
+> Aby użyć Instalatora Conda (za pośrednictwem `conda` polecenia) z Jupyter notebook w bieżącym jądrze, użyj tego polecenia w komórce kodu:
+>
 >   ```python
 >    import sys
 >    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
 >   ```
 
-Kilka notesów próbki są już zainstalowane na maszynie Wirtualnej:
+Kilka przykładowych notesów jest już zainstalowanych na DSVM:
 
-* Zobacz [IntroToJupyterPython.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroToJupyterPython.ipynb) notesu Python próbki.
-* Zobacz [IntroTutorialinR](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroTutorialinR.ipynb) przykład **R** notesu.
-* Zobacz [IrisClassifierPyMLWebService](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IrisClassifierPyMLWebService.ipynb) inny przykład **Python** notesu.
+* Przykładowe notesy w języku Python:
+  * [IntroToJupyterPython. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroToJupyterPython.ipynb)
+  * [IrisClassifierPyMLWebService](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IrisClassifierPyMLWebService.ipynb)
+* Przykładowy Notes języka R:
+  * [IntroTutorialinR](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Data-Science-Virtual-Machine/Samples/Notebooks/IntroTutorialinR.ipynb) 
 
 > [!NOTE]
-> Języka Julia jest również dostępna z poziomu wiersza polecenia na maszynie Wirtualnej do nauki o danych systemu Linux.
->
->
+> Język Julia jest również dostępny w wierszu polecenia w systemie Linux DSVM.
 
-## <a name="rattle"></a>Rattle
-[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (R analitycznych narzędzie do Dowiedz się, łatwo) jest graficznego narzędzia języka R do wyszukiwania danych. Posiada intuicyjny interfejs, który można łatwo załadować, eksplorować, przekształcania danych i tworzyć i oceniać modele.  Rattle artykułu [: Graficzny interfejs użytkownika wyszukiwania danych dla](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) języka R zawiera Instruktaż pokazujący jego funkcje.
+### <a name="rattle"></a>Rattle
 
-Zainstaluj i uruchom Rattle za pomocą następujących poleceń:
+[Rattle](https://cran.r-project.org/web/packages/rattle/index.html) (*R* *A*nalityczny *t*OOL *t*o *L*zdobyć *E*asily) jest graficznym narzędziem języka r do wyszukiwania danych. Rattle ma intuicyjny interfejs, który ułatwia ładowanie, eksplorowanie i Przekształcanie danych oraz tworzenie i ocenę modeli. [Rattle: Graficzny interfejs użytkownika wyszukiwania danych dla](https://journal.r-project.org/archive/2009-2/RJournal_2009-2_Williams.pdf) języka R zawiera Instruktaż pokazujący funkcje Rattle.
+
+Zainstaluj i uruchom program Rattle, uruchamiając następujące polecenia:
 
     if(!require("rattle")) install.packages("rattle")
     require(rattle)
     rattle()
 
 > [!NOTE]
-> Instalacja nie jest wymagane na maszyny DSVM. Ale Rattle może wyświetlić monit o zainstalowanie dodatkowych pakietów, podczas ładowania.
->
->
+> Nie musisz instalować Rattle na DSVM. Jednak po otwarciu Rattle może zostać wyświetlony monit o zainstalowanie dodatkowych pakietów.
 
-Rattle korzysta z interfejsu opartego na karcie. Większość kart odpowiadają procedury opisanej w [danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), takich jak ładowanie danych lub jego Eksplorowanie. Proces analizy danych jest pisany od lewej do prawej, za pośrednictwem karty. Ale ostatnią kartę zawiera dziennik poleceń języka R uruchamiane przez Rattle.
+Rattle korzysta z interfejsu opartego na karcie. Większość kart odpowiada krokom w [zespołowym procesie nauki danych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/), takim jak ładowanie danych lub Eksplorowanie danych. Proces analizy danych jest pisany od lewej do prawej, za pośrednictwem karty. Ostatnia karta zawiera dziennik poleceń języka R, które zostały uruchomione przez Rattle.
 
 Aby załadować i skonfigurować zestaw danych:
 
-* Aby załadować plik, wybierz pozycję **danych** karcie następnie
-* Wybierz selektor **Filename** i wybierz polecenie **spambaseHeaders.data**.
-* Aby załadować plik. Wybierz **Execute** górny wiersz przycisków. Podsumowanie każdej kolumny, w tym jego typu danych wskazany, czy dane wejściowe, obiektu docelowego lub inny typ zmiennej i liczbie unikatowych wartości powinny być widoczne.
-* Poprawnie zidentyfikował rattle **spamu** kolumny jako element docelowy. Wybierz kolumnę wiadomości-śmieci, a następnie ustaw **docelowy typ danych** do **Categoric**.
+1. Aby załadować plik, wybierz kartę **dane** .
+1. Wybierz selektor obok **nazwy pliku**, a następnie wybierz pozycję **spambaseHeaders. Data**.
+1. Aby załadować plik. Wybierz pozycję **Wykonaj**. Powinno zostać wyświetlone podsumowanie każdej kolumny, w tym określony typ danych. bez względu na to, czy jest to wejście, obiekt docelowy czy inny typ zmiennej; oraz liczbę unikatowych wartości.
+1. Poprawnie zidentyfikował rattle **spamu** kolumny jako element docelowy. Wybierz kolumnę **spam** , a następnie ustaw **docelowy typ danych** na **categoric**.
 
 Aby eksplorować dane:
 
-* Wybierz **Eksploruj** kartę.
-* Kliknij przycisk **podsumowania**, następnie **Execute**, aby wyświetlić informacje dotyczące typów zmiennych i niektóre statystyki podsumowujące.
-* Aby wyświetlić inne rodzaje statystyki dotyczące każdej zmiennej, wybierz inne opcje, takie jak **opis** lub **podstawy**.
+1. Wybierz **Eksploruj** kartę.
+1. Aby wyświetlić informacje o typach zmiennych i niektórych statystykach podsumowujących, > wybierz opcję**wykonywanie**podsumowania.
+1. Aby wyświetlić inne typy statystyk dla każdej zmiennej, wybierz inne opcje, takie jak **opisywanie** lub **podstawy**.
 
-**Eksploruj** karta również służy do generowania wielu powierzchniach bezpośrednio. Do wykreślenia histogram danych:
+Karta Eksplorowanie umożliwia również generowanie szczegółowych wykresów. Do wykreślenia histogram danych:
 
-* Wybierz **dystrybucje**.
-* Sprawdź **Histogram** dla **word_freq_remove** i **word_freq_you**.
-* Wybierz pozycję **Wykonaj**. Powinny być widoczne oba wykresy gęstość w oknie pojedynczy wykres, jeżeli jest jasne, że słowa "you" pojawia się znacznie częściej w wiadomościach e-mail niż "Usuń".
+1. Wybierz **dystrybucje**.
+1. W przypadku **word_freq_remove** i **Word_freq_you**wybierz pozycję **histogram**.
+1. Wybierz pozycję **Wykonaj**. W jednym oknie wykresu powinny być widoczne oba wykresy gęstości, w których jest jasne, że słowo pojawia się częściej niż w wiadomościach e-mail.
 
-Krzywe korelacji są również interesujące. Aby go utworzyć:
+Wykresy **korelacji** są również interesujące. Aby utworzyć wykres:
 
-* Wybierz **korelacji** jako **typu**, następnie
-* Wybierz pozycję **Wykonaj**.
-* Rattle wyświetli ostrzeżenie, że zalecane maksymalnie 40 zmiennych. Wybierz **tak** Aby wyświetlić wykres.
+1. W obszarze **Typ**wybierz pozycję **korelacja**.
+1. Wybierz pozycję **Wykonaj**.
+1. Rattle wyświetli ostrzeżenie, że zalecane maksymalnie 40 zmiennych. Wybierz **tak** Aby wyświetlić wykres.
 
-Istnieją pewne interesujące korelacje, które pojawiają się: "Technologia", jest ściśle związana "Http" i "labs", na przykład. Jest ona również zdecydowanie skorelowanych z "650", ponieważ numer kierunkowy ofiarodawców zestaw danych jest 650.
+Istnieje kilka interesujących korelacji: _technologia_ jest silnie skorelowana z _HP_ i _Labs_, na przykład. Jest również silnie skorelowane z _650_ , ponieważ kod obszaru dawców zestawu danych to 650.
 
-W oknie Eksploruj dostępnych wartości liczbowych dla korelacji między wyrazami. Warto uwagi, na przykład, że "Technologia" negatywny są skorelowane z "Twoje" i "pieniądze".
+Wartości liczbowe korelacji między wyrazami są dostępne w oknie Eksplorowanie . Warto zwrócić uwagę na przykład, że _technologia_ jest niekorzystnie skorelowane z i _pieniędzy_.
 
-Rattle można przekształcać zestawu danych do obsługi niektórych typowych problemów. Na przykład umożliwia ponowne skalowanie funkcje, przypisują brakujące wartości, obsługi wartości odstających i usuwanie zmiennych lub uwagi z brakujących danych. Rattle można również zidentyfikować reguły skojarzenia między uwag i/lub zmienne. Te karty wykraczają poza zakres tego instruktażu wprowadzających.
+Rattle można przekształcać zestawu danych do obsługi niektórych typowych problemów. Na przykład może zmieniać skalę funkcji, określać brakujące wartości, obsługiwać elementy odstające i usuwać zmienne lub obserwacje z brakującymi danymi. Rattle może również identyfikować reguły kojarzenia między obserwacjami a zmiennymi. Te karty nie zostały omówione w tym instruktażu wprowadzającym.
 
-Rattle można również wykonywać analizy klastra. Umożliwia wykluczenie niektórych funkcji, aby ułatwić dane wyjściowe. Na **danych** kartę, wybrać **Ignoruj** obok każdego zmiennych, z wyjątkiem tych 10 najważniejszych elementów:
+Rattle może również uruchamiać analizę klastra. Umożliwia wykluczenie niektórych funkcji, aby ułatwić dane wyjściowe. Na karcie **dane** wybierz opcję **Ignoruj** obok każdej ze zmiennych, z wyjątkiem tych 10 elementów:
 
 * word_freq_hp
 * word_freq_technology
@@ -409,71 +409,69 @@ Rattle można również wykonywać analizy klastra. Umożliwia wykluczenie niekt
 * word_freq_business
 * wiadomości-śmieci
 
-Następnie wróć do **klastra** kartę, wybrać **KMeans**i ustaw *liczbę klastrów* do 4. Następnie **wykonania**. Wyniki są wyświetlane w oknie danych wyjściowych. Jeden klaster ma wysokich częstotliwości "george" i "http" i prawdopodobnie jest uzasadnione służbowy adres e-mail.
+Wróć do karty **klaster** . Wybierz pozycję **KMeans**, a następnie ustaw **liczbę klastrów** na **4**. Wybierz pozycję **Wykonaj**. Wyniki są wyświetlane w oknie danych wyjściowych. Jeden klaster ma wysoką częstotliwość _George_ i _HP_i prawdopodobnie jest uzasadnioną służbową pocztą e-mail.
 
-Aby utworzyć model uczenia maszynowego drzewa prostych decyzji:
+Aby utworzyć podstawowy model uczenia maszynowego w strukturze:
 
-* Wybierz **modelu** karty
-* Wybierz **drzewa** jako **typu**.
-* Wybierz **Execute** do wyświetlenia w drzewie w postaci tekstu w oknie danych wyjściowych.
-* Wybierz **Rysowanie** przycisk, aby wyświetlić graficzną wersję. Bardzo przypomina drzewa firma uzyskany wcześniej przy użyciu *rpart*.
+1. Wybierz **modelu** karty
+1. W polu **Typ**wybierz pozycję **drzewo**.
+1. Wybierz **Execute** do wyświetlenia w drzewie w postaci tekstu w oknie danych wyjściowych.
+1. Wybierz **Rysowanie** przycisk, aby wyświetlić graficzną wersję. Drzewo decyzyjne wygląda podobnie do drzewa uzyskanego wcześniej przy użyciu rpart.
 
-Jedna z funkcji nieuprzywilejowany Rattle polega na ich szybkie oceny i uruchomić kilka metod learning maszyny. Poniżej przedstawiono procedurę:
+Przydatna funkcja Rattle może uruchamiać kilka metod uczenia maszynowego i szybko je oceniać. Oto kroki:
 
-* Wybierz **wszystkich** dla **typu**.
-* Wybierz pozycję **Wykonaj**.
-* Po zakończeniu kliknąć każdej pojedynczej **typu**, takiej jak **SVM**i wyświetlić wyniki.
-* Można również porównać wydajność modele na weryfikacji, można ustawić przy użyciu **Evaluate** kartę. Na przykład **macierzy błąd** wybór dowiesz się, macierz pomyłek, ogólny błąd i błąd uśrednionej klasy dla każdego modelu w zestawie sprawdzania poprawności.
-* Można również wykreślania krzywych ROC, wykonywać analizy ważność i wykonywanie innych typów oceny modelu.
+1. Dla opcji **Typ**zaznacz **wszystko**.
+1. Wybierz pozycję **Wykonaj**.
+1. Po zakończeniu działania Rattle można wybrać dowolną wartość **typu** , na przykład **SVM**, i wyświetlić wyniki.
+1. Możesz również porównać wydajność modeli w zestawie walidacji, korzystając z karty **szacowanie** . Na przykład **macierzy błąd** wybór dowiesz się, macierz pomyłek, ogólny błąd i błąd uśrednionej klasy dla każdego modelu w zestawie sprawdzania poprawności. Można również wykreślić krzywe ROC, uruchamiać analizę czułości i wykonywać inne typy ocen modeli.
 
-Po zakończeniu procesu tworzenia modeli wybierz **dziennika** kartę, aby wyświetlić kod R, uruchamiając Rattle podczas sesji. Możesz wybrać **wyeksportować** przycisk, aby go zapisać.
+Po zakończeniu tworzenia modeli wybierz kartę **Dziennik** , aby wyświetlić kod języka R, który został uruchomiony przez Rattle podczas sesji. Możesz wybrać **wyeksportować** przycisk, aby go zapisać.
 
 > [!NOTE]
-> W bieżącej wersji Rattle znajduje się błąd. Aby zmodyfikować skrypt lub użyć go do powtórzenia kroków później, należy wstawić znak # przed poleceniem *Eksportuj ten dziennik...* w tekście dziennika.
->
->
+> Bieżąca wersja programu Rattle zawiera usterkę. Aby zmodyfikować skrypt lub użyć go w celu późniejszego powtórzenia kroków, należy wstawić **#** znak przed poleceniem *Eksportuj ten dziennik...* w tekście dziennika.
 
-## <a name="postgresql--squirrel-sql"></a>PostgreSQL & Squirrel SQL
-Maszyny DSVM jest powiązana z zainstalowana baza danych PostgreSQL. PostgreSQL jest zaawansowane, typu open-source relacyjnej bazy danych. W tej sekcji przedstawiono sposób ładowania naszego zestawu danych spamu PostgreSQL i następnie wykonuje zapytania.
+### <a name="postgresql-and-squirrel-sql"></a>PostgreSQL i SQuirreL SQL
 
-Przed załadowaniem danych, należy zezwolić na uwierzytelnianie hasłem z hosta. W wierszu polecenia:
+Maszyny DSVM jest powiązana z zainstalowana baza danych PostgreSQL. PostgreSQL jest zaawansowane, typu open-source relacyjnej bazy danych. W tej sekcji przedstawiono sposób ładowania zestawu danych spambase do PostgreSQL, a następnie wykonywania zapytania.
+
+Przed załadowaniem danych należy zezwolić na uwierzytelnianie hasła z hosta lokalnego. W wierszu polecenia uruchom następujące polecenie:
 
     sudo gedit /var/lib/pgsql/data/pg_hba.conf
 
 W dolnej części pliku konfiguracji są kilka wierszy, które szczegółowo dozwolone połączenia:
 
-    # "local" is for Unix domain socket connections only
+    # "local" is only for Unix domain socket connections:
     local   all             all                                     trust
     # IPv4 local connections:
     host    all             all             127.0.0.1/32            ident
     # IPv6 local connections:
     host    all             all             ::1/128                 ident
 
-Zmień wiersz "IPv4 połączenia lokalnego", aby użyć md5 zamiast ident, dzięki czemu możemy zalogować się przy użyciu nazwy użytkownika i hasła:
+Zmień linię **połączenia lokalnego IPv4** , aby używać **algorytmu MD5** zamiast **ident**, więc można zalogować się przy użyciu nazwy użytkownika i hasła:
 
     # IPv4 local connections:
     host    all             all             127.0.0.1/32            md5
 
-I ponownie uruchom usługę postgres:
+Następnie uruchom ponownie usługę PostgreSQL:
 
     sudo systemctl restart postgresql
 
-Aby uruchomić narzędzie psql, terminalu interactive database for PostgreSQL, jako użytkownik postgres wbudowanych uruchom następujące polecenie w wierszu:
+Aby uruchomić *PSQL* (interaktywny Terminal dla PostgreSQL) jako wbudowanego użytkownika Postgres, uruchom następujące polecenie:
 
     sudo -u postgres psql
 
-Utwórz nowe konto użytkownika przy użyciu tej samej nazwy użytkownika, jako konto aktualnie zalogowany jako i przypisz do niego hasło w systemie Linux:
+Utwórz nowe konto użytkownika przy użyciu nazwy użytkownika konta systemu Linux użytego do zalogowania się. Utwórz hasło:
 
     CREATE USER <username> WITH CREATEDB;
     CREATE DATABASE <username>;
     ALTER USER <username> password '<password>';
     \quit
 
-Następnie zaloguj się do narzędzia psql jako użytkownika:
+Zaloguj się do PSQL:
 
     psql
 
-I zaimportuj dane do nowej bazy danych:
+Zaimportuj dane do nowej bazy danych:
 
     CREATE DATABASE spam;
     \c spam
@@ -481,75 +479,75 @@ I zaimportuj dane do nowej bazy danych:
     \copy data FROM /home/<username>/spambase.data DELIMITER ',' CSV;
     \quit
 
-Teraz sklonujemy Eksplorowanie danych i uruchomisz kilka zapytań przy użyciu **Squirrel SQL**, graficznego narzędzia, która umożliwia interakcję z bazami danych za pośrednictwem sterownika JDBC.
+Teraz eksplorujmy dane i uruchamiasz niektóre zapytania za pomocą SQuirreL SQL, graficznego narzędzia, którego możesz użyć do współdziałania z bazami danych za pośrednictwem sterownika JDBC.
 
-Aby rozpocząć, uruchom Squirrel SQL z menu aplikacji. Aby skonfigurować sterownika:
+Aby rozpocząć, w menu **aplikacje** Otwórz SQuirreL SQL. Aby skonfigurować sterownika:
 
-* Wybierz **Windows**, następnie **przeglądanie sterowników**.
-* Kliknij prawym przyciskiem myszy **PostgreSQL** i wybierz **modyfikowania sterowników**.
-* Wybierz **bardzo klasy ścieżki**, następnie **Dodaj**.
-* Wprowadź ***/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar*** dla **nazwa pliku** i
-* Wybierz pozycję **Otwórz**.
-* Wybierz z listy sterowniki, a następnie wybierz **org.postgresql.Driver** w **Nazwa klasy**i wybierz **OK**.
+1. Wybierz pozycję**sterowniki widoku** **systemu Windows** > .
+1. Kliknij prawym przyciskiem myszy pozycję **PostgreSQL** i wybierz pozycję **Modyfikuj sterownik**.
+1. Wybierz pozycję **dodatkowa ścieżka** > klasy**Dodaj**.
+1. W obszarze **Nazwa pliku**wprowadź **/usr/share/Java/jdbcdrivers/PostgreSQL-9.4.1208.jre6.jar**.
+1. Wybierz pozycję **Otwórz**.
+1. Wybierz pozycję **Wyświetl sterowniki**. W obszarze **Nazwa klasy**wybierz pozycję **org. PostgreSQL. Driver**, a następnie wybierz przycisk **OK**.
 
 Aby skonfigurować połączenie z serwerem lokalnym:
 
-* Wybierz **Windows**, następnie **wyświetlić aliasy.**
-* Wybierz **+** , aby wprowadzić nowy alias.
-* Nadaj mu nazwę *bazy danych spamu*, wybierz **PostgreSQL** w **sterownika** listy rozwijanej.
-* Ustaw adres URL *jdbc:postgresql://localhost/spam*.
-* Wprowadź swoje *username* i *hasło*.
-* Kliknij przycisk **OK**.
-* Aby otworzyć **połączenia** okna, kliknij dwukrotnie ***spamu bazy danych*** aliasu.
-* Wybierz przycisk **Połącz**.
+1. Wybierz pozycję **Windows** > **View aliasy.**
+1. Wybierz przycisk **+** , aby utworzyć nowy alias. Dla nowej nazwy aliasu wprowadź **bazę danych spamu**. 
+1. W obszarze **Sterownik**wybierz pozycję **PostgreSQL**.
+1. Ustaw adres URL **jdbc:postgresql://localhost/spam**.
+1. Wprowadź nazwę użytkownika i hasło.
+1. Kliknij przycisk **OK**.
+1. Aby otworzyć **połączenia** okna, kliknij dwukrotnie **spamu bazy danych** aliasu.
+1. Wybierz przycisk **Połącz**.
 
 Aby uruchomić kilka zapytań:
 
-* Wybierz **SQL** kartę.
-* Wprowadź prostego zapytania, na przykład `SELECT * from data;` w polu tekstowym zapytanie w górnej części karty SQL.
-* Naciśnij klawisz **Wprowadź Ctrl** do jej uruchomienia. Domyślnie Squirrel SQL zwraca pierwsze 100 wierszy z zapytania.
+1. Wybierz **SQL** kartę.
+1. W polu zapytania w górnej części karty **SQL** wprowadź zapytanie podstawowe, takie jak `SELECT * from data;`.
+1. Naciśnij klawisze CTRL + ENTER, aby uruchomić zapytanie. Domyślnie SQuirreL SQL zwraca pierwsze 100 wierszy z zapytania.
 
-Istnieje wiele więcej zapytań, że można uruchomić, aby zapoznać się z tych danych. Na przykład, jak działa częstotliwość wyraz *wprowadzić* różnią się w wiadomości-śmieci, które pichcisz?
+Istnieje wiele zapytań, które można uruchomić, aby eksplorować te dane. Na przykład, jak działa częstotliwość wyraz *wprowadzić* różnią się w wiadomości-śmieci, które pichcisz?
 
     SELECT avg(word_freq_make), spam from data group by spam;
 
-Lub co to są właściwości wiadomości e-mail, które często zawierają *3d*?
+Lub jakie są cechy poczty e-mail, które często zawierają *3D*?
 
     SELECT * from data order by word_freq_3d desc;
 
-Większość wiadomości e-mail, które mają wysokie wystąpienie *3d* są najwyraźniej wysyłania spamu, dzięki czemu może to być przydatne do tworzenia modelu predykcyjnego klasyfikowanie wiadomości e-mail.
+Większość wiadomości e-mail, które mają duże wystąpienie *3W* , jest prawdopodobnie spamem. Te informacje mogą być przydatne podczas tworzenia modelu predykcyjnego do klasyfikowania wiadomości e-mail.
 
-Jeśli chcesz wykonać uczenia maszynowego z danymi przechowywanymi w bazie danych programu PostgreSQL, należy rozważyć użycie [MADlib](https://madlib.incubator.apache.org/).
+Jeśli chcesz przeprowadzić Uczenie maszynowe przy użyciu danych przechowywanych w bazie danych PostgreSQL, rozważ użycie [MADlib](https://madlib.incubator.apache.org/).
 
-## <a name="sql-server-data-warehouse"></a>SQL Server Data Warehouse
-Azure SQL Data Warehouse to oparta na chmurze i skalowalna w poziomie baza danych, która może przetwarzać ogromne ilości danych relacyjnych i nierelacyjnych. Aby uzyskać więcej informacji, zobacz [co to jest Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+### <a name="sql-data-warehouse"></a>SQL Data Warehouse
+
+Azure SQL Data Warehouse to oparta na chmurze baza danych skalowalna w poziomie, która może przetwarzać ogromne ilości danych, zarówno relacyjnych, jak i nierelacyjnych. Aby uzyskać więcej informacji, zobacz [co to jest Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
 Aby połączyć się z magazynem danych i utworzenia tabeli, uruchom następujące polecenie w wierszu polecenia:
 
     sqlcmd -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -I
 
-Następnie w wierszu sqlcmd:
+W wierszu polecenia sqlcmd Uruchom następujące polecenie:
 
     CREATE TABLE spam (word_freq_make real, word_freq_address real, word_freq_all real, word_freq_3d real,word_freq_our real, word_freq_over real, word_freq_remove real, word_freq_internet real,word_freq_order real, word_freq_mail real, word_freq_receive real, word_freq_will real,word_freq_people real, word_freq_report real, word_freq_addresses real, word_freq_free real,word_freq_business real, word_freq_email real, word_freq_you real, word_freq_credit real,word_freq_your real, word_freq_font real, word_freq_000 real, word_freq_money real,word_freq_hp real, word_freq_hpl real, word_freq_george real, word_freq_650 real, word_freq_lab real,word_freq_labs real, word_freq_telnet real, word_freq_857 real, word_freq_data real,word_freq_415 real, word_freq_85 real, word_freq_technology real, word_freq_1999 real,word_freq_parts real, word_freq_pm real, word_freq_direct real, word_freq_cs real, word_freq_meeting real,word_freq_original real, word_freq_project real, word_freq_re real, word_freq_edu real,word_freq_table real, word_freq_conference real, char_freq_semicolon real, char_freq_leftParen real,char_freq_leftBracket real, char_freq_exclamation real, char_freq_dollar real, char_freq_pound real, capital_run_length_average real, capital_run_length_longest real, capital_run_length_total real, spam integer) WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
     GO
 
-Kopiowanie danych za pomocą narzędzia bcp:
+Skopiuj dane przy użyciu narzędzia bcp:
 
     bcp spam in spambaseHeaders.data -q -c -t  ',' -S <server-name>.database.windows.net -d <database-name> -U <username> -P <password> -F 1 -r "\r\n"
 
 > [!NOTE]
-> Końce wierszy w pobranym pliku są Windows style, ale bcp oczekuje stylu systemu UNIX, dlatego musimy sprawdzić bcp z flagą - r.
->
->
+> Pobrany plik zawiera końce linii stylu systemu Windows. Narzędzie bcp oczekuje końców linii w stylu systemu UNIX. Użyj flagi-r, aby powiedzieć bcp.
 
-I zapytania przy użyciu narzędzia sqlcmd:
+Następnie wykonaj zapytanie przy użyciu narzędzia sqlcmd:
 
     select top 10 spam, char_freq_dollar from spam;
     GO
 
-Można także badać, za pomocą Squirrel SQL. Wykonać podobne kroki dla PostgreSQL, za pomocą MSSQL serwera sterownik JDBC firmy Microsoft, który można znaleźć w ***/usr/share/java/jdbcdrivers/sqljdbc42.jar***.
+Możesz również wysyłać zapytania przy użyciu języka SQL SQuirreL. Wykonaj czynności podobne do PostgreSQL przy użyciu sterownika JDBC SQL Server. Sterownik JDBC znajduje się w folderze/usr/share/Java/jdbcdrivers/sqljdbc42.jar.
 
-## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać omówienie tematów, które przeprowadzą Cię przez zadania, wchodzące w skład procesu do nauki o danych na platformie Azure, zobacz [zespołu danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview).
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać opis innych instruktaży end-to-end, które przedstawiają kroki w procesie nauki o danych zespołu dla konkretnych scenariuszy, zobacz [wskazówki dotyczące procesu do nauki o danych zespołu](../team-data-science-process/walkthroughs.md). Przewodniki pokazują również sposób łączenia w chmurze i lokalnych narzędzi i usług w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji.
+Aby zapoznać się z omówieniem artykułów, które przeprowadzą Cię przez zadania wchodzące w skład procesu analizy danych na platformie Azure, zobacz [zespół ds. analizy danych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview).
+
+Aby zapoznać się z opisem kompleksowych przewodników, które przedstawiają kroki procesu nauka danych zespołu dla konkretnych scenariuszy, zobacz przewodniki dotyczące [procesów naukowych](../team-data-science-process/walkthroughs.md)dotyczących analiz danych. Przewodniki pokazują również sposób łączenia w chmurze i lokalnych narzędzi i usług w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji.

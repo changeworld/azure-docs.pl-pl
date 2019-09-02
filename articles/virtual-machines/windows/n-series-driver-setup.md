@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc6e37b088c6bcbb2de4693eb50be661db869ecd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 92ebd34c20e3733971593344925dcb566a1bf912
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089186"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207365"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Instalowanie sterowników NVIDIA GPU na maszynach wirtualnych serii N z systemem Windows 
 
@@ -40,6 +40,8 @@ Aby zapoznać się z podstawowymi danymi, pojemnościami magazynu i szczegółam
 Po instalacji sterownika siatki na maszynie wirtualnej wymagane jest ponowne uruchomienie. Po zainstalowaniu sterownika CUDA ponowne uruchomienie nie jest wymagane.
 
 ## <a name="verify-driver-installation"></a>Weryfikuj instalację sterownika
+
+Należy pamiętać, że Panel sterowania NVIDIA jest dostępny tylko w przypadku instalacji sterownika siatki. Jeśli zainstalowano sterowniki CUDA, Panel sterowania NVIDIA nie będzie widoczny.
 
 Instalację sterownika można sprawdzić w Menedżer urządzeń. Poniższy przykład przedstawia pomyślne Konfigurowanie karty Tesla K80 na maszynie wirtualnej Azure NC.
 

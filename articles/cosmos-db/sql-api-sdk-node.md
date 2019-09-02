@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
-ms.openlocfilehash: 4292b2e83c55ce62db777d846206e5857bf81ca7
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: de1c1b93b813f71b321da0625bc60e0762a859c7
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142573"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207960"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB zestawu SDK środowiska Node. js dla interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -414,7 +414,7 @@ Nowe funkcje i funkcje i optymalizacje są dodawane tylko do bieżącego zestawu
 Wszelkie żądania do usługi Cosmos DB przy użyciu wycofane zestawu SDK zostanie odrzucone przez usługę.
 
 > [!WARNING]
-> Wszystkie wersje **1. x** zestawu SDK węzła dla interfejsu API SQL zostaną wycofane **30 sierpnia 2020**.
+> Wszystkie wersje **1. x** zestawu SDK klienta węzła dla interfejsu API SQL zostaną wycofane **30 sierpnia 2020**. Dotyczy to tylko zestawu SDK węzła po stronie klienta i nie ma wpływu na skrypty po stronie serwera (procedury składowane, wyzwalacze i UDF).
 > 
 >
 <br/>

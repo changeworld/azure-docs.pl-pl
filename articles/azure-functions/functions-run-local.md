@@ -1,22 +1,20 @@
 ---
 title: Pracuj z Azure Functions Core Tools | Microsoft Docs
 description: Dowiedz się, jak kodować i testować usługi Azure Functions w wierszu polecenia lub terminalu na komputerze lokalnym przed uruchomieniem ich na Azure Functions.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 4bad9db6af6d368c943619bc2105f3fba0b7eb7b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fc77ef6786fbd16ecfeb34397ead11be8b107176
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096156"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207282"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Pracuj z Azure Functions Core Tools
 
@@ -414,6 +412,8 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ## <a name="publish"></a>Publikowanie na platformie Azure
 
 Azure Functions Core Tools obsługuje dwa typy wdrożeń: Wdrażanie plików projektów funkcji bezpośrednio w aplikacji funkcji za pomocą narzędzia [zip Deploy](functions-deployment-technologies.md#zip-deploy) i [wdrażanie niestandardowego kontenera Docker](functions-deployment-technologies.md#docker-container). Użytkownik musi już [utworzyć aplikację funkcji w ramach subskrypcji platformy Azure](functions-cli-samples.md#create), w której zostanie wdrożony swój kod. Projekty wymagające kompilacji powinny zostać skompilowane, aby można było wdrożyć pliki binarne.
+
+Folder projektu może zawierać pliki i katalogi specyficzne dla języka, które nie powinny być publikowane. Wykluczone elementy są wymienione w pliku. funcignore w folderze głównym projektu.     
 
 ### <a name="project-file-deployment"></a>Wdrożenie (pliki projektu)
 

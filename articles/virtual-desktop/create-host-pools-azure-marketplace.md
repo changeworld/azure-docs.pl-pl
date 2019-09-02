@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: 6629a612f7067394d9da83a81bdf46467a6e033a
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: d6628f1522880f650bfd8c728fe46fd050a8e6a0
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163729"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208385"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Samouczek: Tworzenie puli hostów za pomocą witryny Azure Marketplace
 
@@ -44,7 +44,7 @@ Aby uruchomić ofertę Azure Marketplace w celu aprowizacji nowej puli hostów:
 2. W oknie wyszukiwania portalu Marketplace wprowadź **Windows Virtual Desktop** .
 3. Wybierz pozycję **pulpit wirtualny systemu Windows — zapewnij pulę hostów**, a następnie wybierz pozycję **Utwórz**.
 
-Postępuj zgodnie ze wskazówkami, aby wprowadzić informacje dla odpowiednich bloków.
+Następnie postępuj zgodnie z instrukcjami w następnej sekcji, aby wprowadzić informacje dla odpowiednich bloków.
 
 ### <a name="basics"></a>Ustawienia podstawowe
 
@@ -56,6 +56,9 @@ Oto co należy zrobić w przypadku bloku **podstawy** :
 4. Wybierz pozycję **Utwórz nowy** i podaj nazwę nowej grupy zasobów.
 5. W polu **Lokalizacja**wybierz tę samą lokalizację co sieć wirtualna, która ma łączność z serwerem Active Directory.
 6. Kliknij przycisk **OK**.
+
+>[!IMPORTANT]
+>Jeśli używasz czystego Azure Active Directory Domain Services i Azure Active Directory rozwiązanie, upewnij się, że Pula hostów została wdrożona w tym samym regionie co Azure Active Directory Domain Services, aby uniknąć błędów przyłączania do domeny i poświadczeń.
 
 ### <a name="configure-virtual-machines"></a>Konfigurowanie maszyn wirtualnych
 

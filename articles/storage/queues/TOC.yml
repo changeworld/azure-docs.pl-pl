@@ -1,9 +1,9 @@
-- name: Dokumentacja usługi Azure Storage
-  href: /azure/storage/
+- name: Dokumentacja usługi Azure Queues Storage
+  href: /azure/storage/queues/
 - name: Omówienie
   expanded: true
   items:
-    - name: Co to jest Azure Queues?
+    - name: Czym są kolejki platformy Azure?
       href: storage-queues-introduction.md
 - name: Przewodniki Szybki start
   items:

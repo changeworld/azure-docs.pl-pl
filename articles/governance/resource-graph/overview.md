@@ -7,12 +7,12 @@ ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: faad0a0166c1b11f51f814bb6ce3351d7a017239
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7091e2bd1ee24843299721d3c21a8546197fac6f
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900023"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207576"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Omówienie usługi Azure Resource Graph
 
@@ -35,7 +35,7 @@ W tej dokumentacji każda funkcja zostanie szczegółowo omówiona.
 
 Azure Resource Manager obecnie obsługuje zapytania dotyczące podstawowych pól zasobów, w tym w odniesieniu do nazwy zasobu, identyfikatora, typu, grupy zasobów, subskrypcji i lokalizacji. Menedżer zasobów również udostępnia funkcje do wywoływania poszczególnych dostawców zasobów w celu uzyskania szczegółowych właściwości jednego zasobu naraz.
 
-Za pomocą usługi Azure Resource Graph możesz uzyskać dostęp do tych właściwości, które zwracają dostawców zasobów, bez konieczności wykonywania poszczególnych wywołań do każdego dostawcy zasobów. Aby zapoznać się z listą obsługiwanych typów zasobów, Wyszukaj wartość **tak** w obszarze [zasoby dla wdrożeń trybu pełnego](../../azure-resource-manager/complete-mode-deletion.md) .
+Za pomocą usługi Azure Resource Graph możesz uzyskać dostęp do tych właściwości, które zwracają dostawców zasobów, bez konieczności wykonywania poszczególnych wywołań do każdego dostawcy zasobów. Aby zapoznać się z listą obsługiwanych typów zasobów, Wyszukaj wartość **tak** w obszarze [zasoby dla wdrożeń trybu pełnego](../../azure-resource-manager/complete-mode-deletion.md) . Alternatywny sposób wyświetlania obsługiwanych typów zasobów znajduje się w [przeglądarce schematów programu Graph zasobów platformy Azure](./first-query-portal.md#schema-browser).
 
 Za pomocą usługi Azure Resource Graph można:
 
@@ -80,7 +80,13 @@ Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące żądań](./conce
 
 ## <a name="running-your-first-query"></a>Uruchamianie pierwszego zapytania
 
-Wykres zasobów obsługuje interfejs wiersza polecenia platformy Azure, Azure PowerShell i zestaw Azure SDK dla platformy .NET. Zapytanie ma taką samą strukturę dla każdego języka. Dowiedz się, jak włączyć usługę Resource Graph w [interfejsie wiersza polecenia platformy Azure](first-query-azurecli.md#add-the-resource-graph-extension) i [programie Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module).
+Eksplorator grafu zasobów platformy Azure, część Azure Portal, umożliwia uruchamianie zapytań wykresów zasobów bezpośrednio w programie Azure Portal. Przypnij wyniki jako wykresy dynamiczne, aby zapewnić dynamiczne informacje w czasie rzeczywistym do przepływu pracy portalu. Aby uzyskać więcej informacji, zobacz [pierwsze zapytanie z Eksploratorem zasobów platformy Azure](first-query-portal.md).
+
+Wykres zasobów obsługuje interfejs wiersza polecenia platformy Azure, Azure PowerShell, zestaw Azure SDK dla platformy .NET i nie tylko. Zapytanie ma taką samą strukturę dla każdego języka. Dowiedz się, jak włączyć Wykres zasobów przy użyciu:
+
+- [Azure Portal i Eksplorator wykresu zasobów](first-query-portal.md) 
+- [Interfejs wiersza polecenia platformy Azure](first-query-azurecli.md#add-the-resource-graph-extension)
+- [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
 
 ## <a name="next-steps"></a>Następne kroki
 

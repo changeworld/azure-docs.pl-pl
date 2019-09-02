@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 08/29/2019
-ms.openlocfilehash: 73aeea42cd843716c845d7712539ae5c81f03dca
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.date: 08/30/2019
+ms.openlocfilehash: 65a75bc3a2e7ab2361ee8ae53d11ba1604c1d1ef
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173067"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208347"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup z obsługą trybu failover w celu zapewnienia przezroczystej i skoordynowanej pracy w trybie failover wielu baz danych
 
@@ -92,7 +92,7 @@ Aby osiągnąć prawdziwą ciągłość biznesową, Dodawanie nadmiarowości baz
 
 - **Zasady trybu failover tylko do odczytu**
 
-  Domyślnie tryb failover odbiornika tylko do odczytu jest wyłączony. Gwarantuje to, że nie ma to wpływu na wydajność podstawowego, gdy pomocnicza jest w trybie offline. Oznacza to jednak również, że sesje tylko do odczytu nie będą mogły nawiązywać połączenia do momentu odzyskania pomocniczego. Jeśli nie można tolerować przestojów w sesjach tylko do odczytu i są one prawidłowe do tymczasowego użycia podstawowego dla ruchu tylko do odczytu i zapisu do odczytu z kosztem potencjalnego obniżenia wydajności podstawowego, można włączyć tryb failover dla odbiornika tylko do odczytu. W takim przypadku ruch tylko do odczytu zostanie automatycznie przekierowany do podstawowego, jeśli pomocnicza nie jest dostępna.
+  Domyślnie tryb failover odbiornika tylko do odczytu jest wyłączony. Gwarantuje to, że nie ma to wpływu na wydajność podstawowego, gdy pomocnicza jest w trybie offline. Oznacza to jednak również, że sesje tylko do odczytu nie będą mogły nawiązywać połączenia do momentu odzyskania pomocniczego. Jeśli nie można tolerować przestojów w przypadku sesji tylko do odczytu i są one prawidłowe do tymczasowego użycia podstawowego dla ruchu tylko do odczytu i zapisu do odczytu z kosztem potencjalnego obniżenia wydajności podstawowego, można włączyć tryb failover dla odbiornika tylko do odczytu przez skonfigurowanie `AllowReadOnlyFailoverToPrimary` właściwości. W takim przypadku ruch tylko do odczytu zostanie automatycznie przekierowany do podstawowego, jeśli pomocnicza nie jest dostępna.
 
 - **Planowana praca w trybie failover**
 
@@ -112,7 +112,7 @@ Aby osiągnąć prawdziwą ciągłość biznesową, Dodawanie nadmiarowości baz
 
 - **Okres prolongaty z utratą danych**
 
-  Ponieważ podstawowe i pomocnicze bazy danych są synchronizowane przy użyciu replikacji asynchronicznej, przełączenie w tryb failover może spowodować utratę danych. Można dostosować zasady automatycznego trybu failover w celu odzwierciedlenia tolerancji aplikacji do utraty danych. Konfigurując **GracePeriodWithDataLossHours**, można kontrolować czas oczekiwania systemu przed zainicjowaniem trybu failover, który prawdopodobnie spowoduje utratę danych.
+  Ponieważ podstawowe i pomocnicze bazy danych są synchronizowane przy użyciu replikacji asynchronicznej, przełączenie w tryb failover może spowodować utratę danych. Można dostosować zasady automatycznego trybu failover w celu odzwierciedlenia tolerancji aplikacji do utraty danych. Konfigurując `GracePeriodWithDataLossHours`, można kontrolować czas oczekiwania systemu przed zainicjowaniem trybu failover, który prawdopodobnie spowoduje utratę danych.
 
 - **Wiele grup trybu failover**
 
@@ -155,7 +155,7 @@ Podczas projektowania usługi z zachowaniem ciągłości działania postępuj zg
 
 - **Używanie odbiornika tylko do odczytu dla obciążenia przeznaczonego tylko do odczytu**
 
-  Jeśli istnieje logicznie izolowane obciążenie przeznaczone tylko do odczytu, które jest odporne na określoną nieaktualność danych, możesz użyć pomocniczej bazy danych w aplikacji. W przypadku sesji tylko do odczytu Użyj `<fog-name>.secondary.database.windows.net` jako adresu URL serwera, a połączenie jest automatycznie przekierowywane do pomocniczego. Zalecane jest również, aby wskazać w zamierzeniu odczytywania parametrów połączenia przy użyciu **ApplicationIntent = ReadOnly**.
+  Jeśli istnieje logicznie izolowane obciążenie przeznaczone tylko do odczytu, które jest odporne na określoną nieaktualność danych, możesz użyć pomocniczej bazy danych w aplikacji. W przypadku sesji tylko do odczytu Użyj `<fog-name>.secondary.database.windows.net` jako adresu URL serwera, a połączenie jest automatycznie przekierowywane do pomocniczego. Zaleca się również, aby wskazać w polu cel odczytu parametrów połączenia przy użyciu `ApplicationIntent=ReadOnly`. Jeśli chcesz mieć pewność, że obciążenie tylko do odczytu będzie możliwe do ponownego połączenia po przejściu w tryb failover lub w przypadku przełączenia serwera pomocniczego `AllowReadOnlyFailoverToPrimary` w tryb offline, należy skonfigurować właściwość zasad trybu failover. 
 
 - **Przygotowanie do obniżenia wydajności**
 
@@ -166,7 +166,7 @@ Podczas projektowania usługi z zachowaniem ciągłości działania postępuj zg
 
 - **Przygotowanie do utraty danych**
 
-  Jeśli zostanie wykryta awaria, program SQL czeka na okres określony przez **GracePeriodWithDataLossHours**. Wartość domyślna to 1 godzina. Jeśli nie możesz zapewnić utraty danych, pamiętaj, aby ustawić **GracePeriodWithDataLossHours** na wystarczająco dużą liczbę, na przykład 24 godziny. Użyj ręcznej pracy awaryjnej grupy, aby wrócić z poziomu pomocniczego do podstawowego.
+  Jeśli zostanie wykryta awaria, program SQL czeka przez określony `GracePeriodWithDataLossHours`czas. Wartość domyślna to 1 godzina. Jeśli nie możesz zapewnić utraty danych, upewnij się, że `GracePeriodWithDataLossHours` ustawiono wystarczająco dużą liczbę, na przykład 24-godzinny. Użyj ręcznej pracy awaryjnej grupy, aby wrócić z poziomu pomocniczego do podstawowego.
 
   > [!IMPORTANT]
   > Pule elastyczne z 800 lub mniej DTU i więcej niż 250 baz danych korzystających z replikacji geograficznej mogą napotkać problemy, w tym dłuższe planowane przełączanie w tryb failover i wydajność o obniżonej wydajności.  Te problemy mogą wystąpić w przypadku obciążeń intensywnie korzystających z zapisu, gdy punkty końcowe replikacji geograficznej są szeroko oddzielane przez geografię lub gdy dla każdej bazy danych są używane wiele pomocniczych punktów końcowych.  Objawy tych problemów są wskazywane, gdy opóźnienie replikacji geograficznej rośnie wraz z upływem czasu.  Te opóźnienia można monitorować przy użyciu [sys. DM _geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Jeśli te problemy wystąpią, środki zaradcze obejmują zwiększenie liczby DTU puli lub zmniejszenie liczby replikowanych geograficznie baz danych w tej samej puli.
@@ -305,10 +305,10 @@ Ta sekwencja jest zalecana, aby uniknąć problemu polegającego na tym, że pom
 
 ## <a name="preventing-the-loss-of-critical-data"></a>Zapobieganie utracie danych o kluczowym znaczeniu
 
-Ze względu na duże opóźnienie sieci rozległej, ciągła kopia używa mechanizmu replikacji asynchronicznej. Replikacja asynchroniczna powoduje nieuniknięcie utraty danych w przypadku wystąpienia błędu. Jednak niektóre aplikacje mogą nie wymagać utraty danych. Aby chronić te aktualizacje krytyczne, Deweloper aplikacji może wywoływać procedurę systemu [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) natychmiast po zatwierdzeniu transakcji. Wywołanie **sp_wait_for_database_copy_sync** blokuje wątek wywołujący do momentu przekazania ostatniej zatwierdzonej transakcji do pomocniczej bazy danych. Jednak nie czeka na odtworzenie i zatwierdzenie wysłanych transakcji na serwerze pomocniczym. **sp_wait_for_database_copy_sync** jest objęty zakresem określonego linku ciągłego kopiowania. Każdy użytkownik z uprawnieniami do nawiązywania połączenia z podstawową bazą danych może wywoływać tę procedurę.
+Ze względu na duże opóźnienie sieci rozległej, ciągła kopia używa mechanizmu replikacji asynchronicznej. Replikacja asynchroniczna powoduje nieuniknięcie utraty danych w przypadku wystąpienia błędu. Jednak niektóre aplikacje mogą nie wymagać utraty danych. Aby chronić te aktualizacje krytyczne, Deweloper aplikacji może wywoływać procedurę systemu [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) natychmiast po zatwierdzeniu transakcji. Wywołanie `sp_wait_for_database_copy_sync` blokuje wątek wywołujący do momentu przekazania ostatniej zatwierdzonej transakcji do pomocniczej bazy danych. Jednak nie czeka na odtworzenie i zatwierdzenie wysłanych transakcji na serwerze pomocniczym. `sp_wait_for_database_copy_sync`jest zakresem do określonego linku ciągłego kopiowania. Każdy użytkownik z uprawnieniami do nawiązywania połączenia z podstawową bazą danych może wywoływać tę procedurę.
 
 > [!NOTE]
-> **sp_wait_for_database_copy_sync** zapobiega utracie danych po przejściu w tryb failover, ale nie gwarantuje pełnej synchronizacji dostępu do odczytu. Opóźnienie spowodowane przez wywołanie procedury **sp_wait_for_database_copy_sync** może być istotne i zależy od rozmiaru dziennika transakcji w czasie wywołania.
+> `sp_wait_for_database_copy_sync`zapobiega utracie danych po przejściu w tryb failover, ale nie gwarantuje pełnej synchronizacji dostępu do odczytu. Opóźnienie spowodowane przez `sp_wait_for_database_copy_sync` wywołanie procedury może być znaczące i zależy od rozmiaru dziennika transakcji w czasie wywołania.
 
 ## <a name="failover-groups-and-point-in-time-restore"></a>Grupy trybu failover i przywracanie do punktu w czasie
 

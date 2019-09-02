@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/24/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 210724e8a8b9b585a3e308b8e321d809e4e897a1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c78359920ebc5faab2e0a678a901bcb8581a4e45
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560649"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207329"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Samouczek: Użyj bot aplikacji sieci Web z włączonym Language Understanding wC#
 
@@ -54,7 +54,7 @@ Użyj C# , aby skompilować bot rozmowy zintegrowane z funkcją interpretacji j�
     |Nazwa aplikacji|Nazwa jest używana jako domena podrzędna, gdy bot jest wdrażany w chmurze (na przykład humanresourcesbot.azurewebsites.net).|`luis-csharp-bot-` + `<your-name>`, na przykład `luis-csharp-bot-johnsmith`|
     |Szablon bota|Ustawienia struktury bota — zobacz następną tabelę|
     |Lokalizacja aplikacji usługi LUIS|Musi być taka sama jak region zasobu usługi LUIS|`westus`|
-    |Plan usługi App Service/lokalizacja|Nie zmieniaj podanej wartości domyślnej.|
+    |Plan/Lokalizacja usługi App Service|Nie zmieniaj podanej wartości domyślnej.|
     |Application Insights|Nie zmieniaj podanej wartości domyślnej.|
     |Identyfikator i hasło aplikacji firmy Microsoft|Nie zmieniaj podanej wartości domyślnej.|
 
@@ -347,7 +347,7 @@ Uruchom bota w programie Visual Studio. Zostanie otwarte okno przeglądarki z wi
 
 1. W emulatorze bot należy zaksięgować lot, wprowadzając następujący wypowiedź: 
 
-    ```bot
+    ```console
     Book a flight from Paris to Berlin on March 22, 2020
     ```
 
@@ -360,7 +360,7 @@ Uruchom bota w programie Visual Studio. Zostanie otwarte okno przeglądarki z wi
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zobacz więcej [przykładów](https://github.com/microsoft/botframework-solutions) z botami konwersacyjnymi. 
 

@@ -96,20 +96,27 @@
   href: reset-network-interface.md
 - name: Ponowne uruchamianie maszyny wirtualnej lub zmienianie jej rozmiaru
   href: restart-resize-error-troubleshooting.md
-- name: Korzystanie z konsoli szeregowej
+- name: Konsola szeregowa
+  href: serial-console-overview.md
   items:
-    - name: Maszyna wirtualna z systemem Linux
+    - name: Konsola szeregowa dla systemu Linux
       href: serial-console-linux.md
       items:
         - name: Konsola szeregowa — tryb GRUB/pojedynczego użytkownika
           href: serial-console-grub-single-user-mode.md
         - name: Konsola szeregowa — NMI/SysRq
           href: serial-console-nmi-sysrq.md
-    - name: Maszyna wirtualna z systemem Windows
+    - name: Konsola szeregowa dla systemu Windows
       href: serial-console-windows.md
       items:
         - name: Polecenia CMD i polecenia programu PowerShell
           href: serial-console-cmd-ps-commands.md
+    - name: Włączanie i wyłączanie konsoli szeregowej
+      href: serial-console-enable-disable.md
+    - name: Opcje zasilania w konsoli szeregowej
+      href: serial-console-power-options.md
+    - name: Typowe błędy konsoli szeregowej
+      href: serial-console-errors.md
 - name: Błędy podczas usuwania zasobów magazynu
   href: storage-resource-deletion-errors.md
 - name: Błędy podczas usuwania klasycznych zasobów magazynu
@@ -153,6 +160,8 @@
 - name: Błędy rozruchu
   href: boot-error-troubleshoot.md
   items:
+    - name: Błąd rozruchu maszyny wirtualnej platformy Azure
+      href: troubleshoot-vm-boot-error.md
     - name: Diagnostyka rozruchu
       href: boot-diagnostics.md
     - name: Błędy funkcji BitLocker

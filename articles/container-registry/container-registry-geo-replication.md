@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 50ab3fc92fc980638547bb090c5d0d78aa20ab5f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c0de5f958c6dcbf935de4eec9557cf64620abbcf
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172269"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208004"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Replikacja geograficzna w usłudze Azure Container Registry
 
@@ -97,8 +97,19 @@ Usługa ACR rozpocznie synchronizowanie obrazów między skonfigurowanymi replik
 * Każdy region w rejestrze z replikacją geograficzną jest niezależny od konfiguracji. Azure Container Registry umowy SLA mają zastosowanie do każdego regionu zreplikowanego geograficznie.
 * W przypadku wypychania lub ściągania obrazów z rejestru z replikacją geograficzną, usługa Azure Traffic Manager w tle wysyła żądanie do rejestru znajdującego się w regionie najbliżej użytkownika.
 * Po wypchnięciu aktualizacji obrazu lub tagu do najbliższego regionu przez Azure Container Registry replikację manifestów i warstw do pozostałych regionów, które zostały wybrane. Większe obrazy trwają dłużej niż mniejsze. Obrazy i Tagi są synchronizowane w regionach replikacji z modelem spójności ostatecznej.
-* Aby zarządzać przepływami pracy, które są zależne od aktualizacji wypychanych do rejestru z replikacją geograficzną, zalecamy skonfigurowanie elementów [webhook](container-registry-webhook.md) w celu reagowania na zdarzenia wypychania. Można skonfigurować regionalne elementy webhook w ramach rejestru replikowanego geograficznie do śledzenia zdarzeń wypychania w miarę ich kończenia w regionach replikowanych geograficznie.
+* Aby zarządzać przepływami pracy, które są zależne od aktualizacji wypychanych do replikowanych geograficznie [](container-registry-webhook.md) , zalecamy skonfigurowanie elementów webhook w celu reagowania na zdarzenia wypychania. Można skonfigurować regionalne elementy webhook w ramach rejestru replikowanego geograficznie do śledzenia zdarzeń wypychania w miarę ich kończenia w regionach replikowanych geograficznie.
 
+## <a name="delete-a-replica"></a>Usuwanie repliki
+
+Po skonfigurowaniu repliki dla rejestru możesz ją usunąć w dowolnym momencie, jeśli nie jest już potrzebne. Usuń replikę za pomocą Azure Portal lub innych narzędzi, takich jak polecenie [AZ ACR Replication Delete](/cli/azure/acr/replication#az-acr-replication-delete) w interfejsie wiersza polecenia platformy Azure.
+
+Aby usunąć replikę z Azure Portal:
+
+1. Przejdź do Azure Container Registry i wybierz pozycję **replikacje**.
+1. Wybierz nazwę repliki, a następnie wybierz pozycję **Usuń**. Potwierdź, że chcesz usunąć replikę.
+
+> [!NOTE]
+> Nie można usunąć repliki rejestru w *regionie głównym* rejestru, czyli w lokalizacji, w której został utworzony rejestr. Replikę główną można usunąć tylko przez usunięcie samego rejestru.
 
 ## <a name="geo-replication-pricing"></a>Cennik replikacji geograficznej
 

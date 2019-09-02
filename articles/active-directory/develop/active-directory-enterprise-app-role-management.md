@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 091fb7cb9e74166b1e01c00834c2346dd2f0fd8b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 699c8ce559d26ad226ad1dfd7f7266fe8c4acdfb
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835537"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207187"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Konfigurowanie żądania roli wystawionego w tokenie SAML dla aplikacji dla przedsiębiorstw
 
@@ -59,7 +59,7 @@ Jeśli aplikacja oczekuje, że role niestandardowe mają być przesyłane do odp
 
     ![Strona właściwości](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
 
-6. Otwórz [Eksploratora grafów usługi Azure AD](https://developer.microsoft.com/graph/graph-explorer) w innym oknie i wykonaj następujące czynności:
+6. Otwórz [eksploratora Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer) w innym oknie i wykonaj następujące czynności:
 
     a. Zaloguj się do witryny programu Graph Explorer przy użyciu konta administratora globalnego lub współadministratora dzierżawy.
 
@@ -186,7 +186,7 @@ Jeśli aplikacja oczekuje, że role niestandardowe mają być przesyłane do odp
 
 Aby zaktualizować istniejącą rolę, wykonaj następujące czynności:
 
-1. Otwórz [Eksploratora grafów usługi Azure AD](https://developer.microsoft.com/graph/graph-explorer).
+1. Otwórz [eksploratora Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer).
 
 2. Zaloguj się do witryny programu Graph Explorer przy użyciu konta administratora globalnego lub współadministratora dzierżawy.
 
@@ -224,7 +224,7 @@ Aby zaktualizować istniejącą rolę, wykonaj następujące czynności:
 
 Aby usunąć istniejącą rolę, wykonaj następujące czynności:
 
-1. Otwórz [Eksploratora grafów usługi Azure AD](https://developer.microsoft.com/graph/graph-explorer) w innym oknie.
+1. Otwórz [eksploratora Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer) w innym oknie.
 
 2. Zaloguj się do witryny programu Graph Explorer przy użyciu konta administratora globalnego lub współadministratora dzierżawy.
 

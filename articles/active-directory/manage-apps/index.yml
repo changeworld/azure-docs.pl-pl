@@ -1,51 +1,95 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja zarządzania aplikacjami
+summary: Usługa Azure Active Directory zapewnia bezpieczny i bezproblemowy dostęp do aplikacji lokalnych i działających w chmurze. Do tego zwalnia z konieczności zarządzania hasłami. Wystarczy, że użytkownicy zalogują się raz, i mogą uzyskiwać dostęp do usługi Office 365 oraz tysięcy innych aplikacji. Z naszych przewodników Szybki start, samouczków i wskazówek dowiesz się, jak wdrażać aplikacje i zarządzać nimi.
 metadata:
-  title: Dokumentacja zarządzania aplikacjami usługi Azure AD — Azure Active Directory
-  description: 'Dowiedz się, jak zarządzać aplikacjami i wdrażać je za pomocą usługi Azure Active Directory.'
-  services: active-directory
-  author: barbkess
-  manager: daveba
-  layout: LandingPage
-  ms.assetid: null
+  title: Dokumentacja zarządzania aplikacjami
+  description: Usługa Azure Active Directory zapewnia bezpieczny i bezproblemowy dostęp do aplikacji lokalnych i działających w chmurze. Do tego zwalnia z konieczności zarządzania hasłami. Wystarczy, że użytkownicy zalogują się raz, i mogą uzyskiwać dostęp do usługi Office 365 oraz tysięcy innych aplikacji. Z naszych przewodników Szybki start, samouczków i wskazówek dowiesz się, jak wdrażać aplikacje i zarządzać nimi.
   ms.service: active-directory
+  ms.subservice: manage-apps
+  ms.workload: identity
   ms.topic: landing-page
-  ms.date: 09/14/2018
-  ms.author: barbkess
-abstract:
-  description: 'Usługa Azure Active Directory zapewnia bezpieczny i bezproblemowy dostęp do aplikacji lokalnych i działających w chmurze. Do tego zwalnia z konieczności zarządzania hasłami. Wystarczy, że użytkownicy zalogują się raz, i mogą uzyskiwać dostęp do usługi Office 365 oraz tysięcy innych aplikacji. Z naszych przewodników Szybki start, samouczków i wskazówek dowiesz się, jak wdrażać aplikacje i zarządzać nimi.'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video.png
-      width: 250
-    title: 'Bezpieczny dostęp do aplikacji za pomocą usługi Azure AD (1:47)'
-    href: 'https://youtu.be/BSUuXXcJKCk/'
-    width: 250
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak dodać aplikację umożliwiającą użytkownikom dostęp za pomocą usługi Azure Active Directory.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_protect.svg'
-            text: Dodawanie aplikacji
-            href: 'https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal'
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_protect.svg'
-            text: Wyświetl swoje aplikacje
-            href: 'https://docs.microsoft.com/azure/active-directory/manage-apps/view-applications-portal'
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak włączyć prosty i bezpieczny proces logowania dla aplikacji.'
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://docs.microsoft.com/azure/active-directory/saas-apps/">Samouczki aplikacji SaaS</a>'
-          - html: <a href="/azure/active-directory/manage-apps/application-proxy-add-on-premises-application">Dodawanie aplikacji lokalnej za pomocą serwera proxy aplikacji</a>
+  ms.date: 08/16/2019
+  author: msmimart
+  ms.author: mimart
+  manager: celested
+  ms.openlocfilehash: acb99eab233836f46c1e1dfe4c857fb2e80ed3de
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70127550"
+landingContent:
+- title: Informacje o zarządzaniu aplikacjami
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest zarządzanie aplikacjami?
+      url: what-is-application-management.md
+- title: Zarządzanie aplikacjami w chmurze i logowaniem jednokrotnym
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Omówienie logowania jednokrotnego
+      url: what-is-single-sign-on.md
+    - text: Środowiska użytkowników
+      url: end-user-experiences.md
+  - linkListType: quickstart
+    links:
+    - text: Dodawanie aplikacji z galerii
+      url: add-application-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: Dodawanie aplikacji spoza galerii
+      url: add-non-gallery-app.md
+    - text: Konfigurowanie logowania jednokrotnego
+      url: configure-single-sign-on-non-gallery-applications.md
+    - text: Przypisywanie użytkownika lub grupy do aplikacji
+      url: assign-user-or-group-access-portal.md
+- title: Aprowizowanie użytkowników i grup w aplikacji
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest automatyczna aprowizacja użytkowników?
+      url: user-provisioning.md
+  - linkListType: concept
+    links:
+    - text: Aprowizacja użytkowników i grup przy użyciu standardu SCIM
+      url: use-scim-to-provision-users-and-groups.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurowanie automatycznej aprowizacji użytkowników
+      url: configure-automatic-user-provisioning-portal.md
+    - text: Dostosowywanie mapowań atrybutów
+      url: customize-application-attributes.md
+    - text: Sprawdzanie stanu aprowizacji
+      url: application-provisioning-when-will-provisioning-finish-specific-user.md
+  - linkListType: reference
+    links:
+    - text: Pisanie wyrażeń do mapowania atrybutów
+      url: functions-for-customizing-application-data.md
+- title: Publikowanie aplikacji lokalnych za pomocą serwera proxy aplikacji
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest serwer proxy aplikacji?
+      url: what-is-application-proxy.md
+  - linkListType: concept
+    links:
+    - text: Planowanie serwera proxy aplikacji
+      url: application-proxy-deployment-plan.md
+  - linkListType: tutorial
+    links:
+    - text: Dodawanie aplikacji lokalnej
+      url: application-proxy-add-on-premises-application.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurowanie łączników za pomocą serwerów proxy
+      url: application-proxy-configure-connectors-with-proxy-servers.md
+    - text: Konfigurowanie niestandardowej strony głównej
+      url: application-proxy-configure-custom-home-page.md
+  - linkListType: deploy
+    links:
+    - text: Publikowanie pulpitu zdalnego przy użyciu serwera proxy aplikacji
+      url: application-proxy-integrate-with-remote-desktop-services.md
+    - text: Włączanie dostępu zdalnego do programu SharePoint przy użyciu serwera proxy aplikacji usługi Azure AD
+      url: application-proxy-integrate-with-sharepoint-server.md

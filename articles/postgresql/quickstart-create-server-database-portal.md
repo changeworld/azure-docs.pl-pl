@@ -1,18 +1,18 @@
 ---
-title: Przewodnik Szybki Start — Tworzenie usługi Azure Database for PostgreSQL — jeden serwer przy użyciu witryny Azure portal
-description: Przewodnik Szybki start dotyczący tworzenia i zarządzania usługi Azure Database for PostgreSQL — pojedynczy serwer przy użyciu interfejsu użytkownika witryny Azure portal.
+title: Szybki Start — Tworzenie serwera Azure Database for PostgreSQL-pojedynczego przy użyciu Azure Portal
+description: Przewodnik Szybki Start dotyczący tworzenia serwera Azure Database for PostgreSQL i zarządzania nim przy użyciu interfejsu użytkownika Azure Portal.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/25/2019
-ms.openlocfilehash: 152e93fefecaeaab3502ad5d974ba923727f919b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f9a729376baeb03656b7b54fcb8e10a865d1f364
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443107"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195141"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Szybki start: Tworzenie serwera usługi Azure Database for PostgreSQL w witrynie Azure Portal
 
@@ -28,31 +28,31 @@ Otwórz przeglądarkę internetową i przejdź do [portalu](https://portal.azure
 Serwer usługi Azure Database for PostgreSQL jest tworzony ze skonfigurowanym zestawem [zasobów obliczeniowych i przestrzeni dyskowej](./concepts-pricing-tiers.md). Serwer jest tworzony w ramach [grupy zasobów Azure](../azure-resource-manager/resource-group-overview.md).
 
 Aby utworzyć serwer usługi Azure Database for PostgreSQL, wykonaj następujące kroki:
-1. Wybierz przycisk **Utwórz zasób** (+) w lewym górnym rogu portalu.
+1. Wybierz pozycję **Utwórz zasób** (+) w lewym górnym rogu portalu.
 
 2. Wybierz pozycję **Bazy danych** > **Azure Database for PostgreSQL**.
 
     !["Azure Database for PostgreSQL" w menu](./media/quickstart-create-database-portal/1-create-database.png)
 
-3. Wybierz **pojedynczego serwera** opcji wdrożenia.
+3. Wybierz opcję wdrożenia **pojedynczego serwera** .
 
-   ![Wybieranie usługi Azure Database for PostgreSQL — opcji wdrożenia pojedynczego serwera](./media/quickstart-create-database-portal/select-deployment-option.png)
+   ![Wybierz opcję wdrażania Azure Database for PostgreSQL-pojedynczego serwera](./media/quickstart-create-database-portal/select-deployment-option.png)
 
-4. Wypełnij **podstawy** formularza następujące informacje:
+4. Wypełnij formularz **podstawy** przy użyciu następujących informacji:
 
     ![Tworzenie serwera](./media/quickstart-create-database-portal/create-basics.png)
 
     Ustawienie|Sugerowana wartość|Opis
     ---|---|---
-    Subskrypcja|Nazwa subskrypcji użytkownika|Subskrypcja platformy Azure, która ma być używana dla serwera. Jeśli masz wiele subskrypcji, wybierz tę, w ramach której są naliczane opłaty za ten zasób.
-    Grupa zasobów|*myresourcegroup*| Nowa nazwa grupy zasobów lub istniejąca nazwa z subskrypcji.
+    Subscription|Nazwa subskrypcji użytkownika|Subskrypcja platformy Azure, która ma być używana dla serwera. Jeśli masz wiele subskrypcji, wybierz tę, w ramach której są naliczane opłaty za ten zasób.
+    Resource group|*myresourcegroup*| Nowa nazwa grupy zasobów lub istniejąca nazwa z subskrypcji.
     Nazwa serwera |*mydemoserver*|Unikatowa nazwę, która identyfikuje serwer usługi Azure Database for PostgreSQL. Nazwa domeny *postgres.database.azure.com* jest dołączana do podawanej nazwy serwera. Serwer może zawierać tylko małe litery, cyfry i znaki łącznika (-). Musi zawierać od 3 do 63 znaków.
-    Źródło danych | *Brak* | Wybierz *Brak* Aby utworzyć nowy serwer od początku. (Opcję *Kopia zapasowa* należy wybrać w przypadku tworzenia serwera z geograficznej kopii zapasowej istniejącego serwera usługi Azure Database for PostgreSQL).
+    Źródło danych | *Brak* | Wybierz opcję *Brak* , aby utworzyć nowy serwer od podstaw. (Opcję *Kopia zapasowa* należy wybrać w przypadku tworzenia serwera z geograficznej kopii zapasowej istniejącego serwera usługi Azure Database for PostgreSQL).
     Nazwa użytkownika administratora |*myadmin*| Własne konto logowania do użycia podczas łączenia z serwerem. Nazwą logowania administratora nie może być **azure_superuser**, **azure_pg_admin**, **admin**, **administrator**, **root**, **guest** ani **public**. Nie może ona zaczynać się od **pg_** .
     Hasło |Twoje hasło| Nowe hasło do konta administratora serwera. Musi zawierać od 8 do 128 znaków. Hasło musi zawierać znaki z trzech z następujących kategorii: wielkie litery z alfabetu angielskiego, małe litery z alfabetu angielskiego, cyfry (0–9) i znaki inne niż alfanumeryczne (!, $, #, % itd.).
     Location|Region najbliżej Twoich użytkowników| Lokalizacja znajdująca się najbliżej użytkowników.
     Version|Najnowsza wersja główna| Najnowsza wersja główna usługi PostgreSQL, chyba że masz inne określone wymagania.
-    Obliczeniowe i Magazyn | **Ogólnego przeznaczenia**, **Generacja 5**, **2 rdzenie wirtualne**, **5 GB**, **7 dni**, **Geograficznie nadmiarowy** | Konfiguracje obliczania, magazynu i kopii zapasowej dla nowego serwera. Wybierz **skonfiguruj poświadczenia serwera**. Następnie wybierz kartę **Ogólnego przeznaczenia**. *Velikost haldy 5*, *4 rdzenie wirtualne*, *100 GB*, i *7 dni* są wartościami domyślnymi dla **Generowanie obliczeń**,  **Rdzeń wirtualny**, **magazynu**, i **okres przechowywania kopii zapasowej**. Możesz pozostawić te suwaki pierwotnej formie lub dostosować je. Aby włączyć kopie zapasowe serwera w magazynie geograficznie nadmiarowym, wybierz opcję **Geograficznie nadmiarowy** w pozycji **Opcje nadmiarowości kopii zapasowej**. Aby zapisać tę wybraną warstwę cenową, wybierz przycisk **OK**. Następny zrzut ekranu przedstawia te wybory.
+    Obliczenia i magazyn | **Ogólnego przeznaczenia**, **Generacja 5**, **2 rdzenie wirtualne**, **5 GB**, **7 dni**, **Geograficznie nadmiarowy** | Konfiguracje obliczania, magazynu i kopii zapasowej dla nowego serwera. Wybierz pozycję **Konfiguruj serwer**. Następnie wybierz kartę **Ogólnego przeznaczenia**. Wartość domyślna dla **generacji obliczeń**, **rdzeń wirtualny**, **magazynu**i **okresu przechowywania kopii zapasowych**wynosi *5* *rdzeni wirtualnych*, *100 GB*i *7 dni* . Możesz pozostawić te suwaki jako lub dostosować je. Aby włączyć kopie zapasowe serwera w magazynie geograficznie nadmiarowym, wybierz opcję **Geograficznie nadmiarowy** w pozycji **Opcje nadmiarowości kopii zapasowej**. Aby zapisać tę wybraną warstwę cenową, wybierz przycisk **OK**. Następny zrzut ekranu przedstawia te wybory.
 
    > [!NOTE]
    > Jeśli niewielkie zasoby obliczeniowe i we/wy są wystarczające dla Twojego obciążenia, warto rozważyć użycie warstwy cenowej Podstawowa. Pamiętaj, że serwerów utworzonych w warstwie cenowej Podstawowa nie można później przeskalować do warstwy Ogólnego przeznaczenia lub Zoptymalizowana pod kątem pamięci. Przejdź na [stronę cennika](https://azure.microsoft.com/pricing/details/postgresql/), aby uzyskać więcej informacji.
@@ -60,7 +60,7 @@ Aby utworzyć serwer usługi Azure Database for PostgreSQL, wykonaj następując
 
     ![Okienko „Warstwa cenowa”](./media/quickstart-create-database-portal/2-pricing-tier.png)
 
-5. Wybierz **Przejrzyj + Utwórz** przejrzeć wybrane opcje. Wybierz pozycję **Utwórz**, aby aprowizować serwer. Ta operacja może potrwać kilka minut.
+5. Wybierz pozycję **Recenzja + Utwórz** , aby przejrzeć wybrane opcje. Wybierz pozycję **Utwórz**, aby aprowizować serwer. Ta operacja może potrwać kilka minut.
 
 6. Na pasku narzędzi wybierz ikonę **Powiadomienia** (dzwonek), aby monitorować proces wdrażania. Po zakończeniu wdrażania możesz wybrać opcję **Przypnij do pulpitu nawigacyjnego**, która tworzy kafelek dla tego serwera na pulpicie nawigacyjnym witryny Azure Portal jako skrót do strony **Przegląd** serwera. Wybranie opcji **Przejdź do zasobu** spowoduje otworzenie strony **Przegląd** serwera.
 
@@ -72,7 +72,7 @@ Aby utworzyć serwer usługi Azure Database for PostgreSQL, wykonaj następując
 
 Usługa Azure Database for PostgreSQL tworzy zaporę na poziomie serwera. Uniemożliwia ona zewnętrznym aplikacjom i narzędziom łączenie się z serwerem i wszelkimi bazami danych na tym serwerze, chyba że utworzysz regułę otwierającą zaporę dla konkretnych adresów IP. 
 
-1. Po zakończeniu wdrażania odszukaj serwer. W razie potrzeby wyszukaj go. Na przykład z menu po lewej stronie wybierz pozycję **Wszystkie zasoby**. Wpisz nazwę serwera, np. nazwę przykładowego serwera **mydemoserver**, aby wyszukać nowo utworzony serwer. Wybierz nazwę serwera z listy wyników wyszukiwania. Zostanie otwarta strona **Przegląd**, która zawiera dalsze opcje konfiguracji.
+1. Po zakończeniu wdrażania odszukaj serwer. W razie potrzeby wyszukaj go. Na przykład z menu po lewej stronie wybierz pozycję **Wszystkie zasoby**. Wprowadź nazwę serwera, na przykład **mydemoserver**, aby wyszukać nowo utworzony serwer. Wybierz nazwę serwera z listy wyników wyszukiwania. Zostanie otwarta strona **Przegląd**, która zawiera dalsze opcje konfiguracji.
  
     ![Wyszukiwanie nazwy serwera](./media/quickstart-create-database-portal/4-locate.png)
 
@@ -115,7 +115,7 @@ Istnieje wiele aplikacji, za pomocą których można nawiązać połączenie z s
    ```
 
    > [!TIP]
-   > Jeśli wolisz Użyj ścieżki adresu URL, aby nawiązać połączenie z Postgres kodowanie adresu URL @ logowania dla nazwy użytkownika z `%40`. Na przykład będzie ciąg połączenia dla narzędzia psql 
+   > Jeśli wolisz używać ścieżki URL w celu nawiązania połączenia z usługą Postgres, adres URL Koduj znak @ w nazwie `%40`użytkownika za pomocą. Na przykład parametry połączenia dla PSQL byłyby, 
    > ```
    > psql postgresql://myadmin%40mydemoserver@mydemoserver.postgres.database.azure.com:5432/postgres
    > ```
@@ -136,9 +136,9 @@ Istnieje wiele aplikacji, za pomocą których można nawiązać połączenie z s
    > [!TIP]
    > Jeśli konfiguracja zapory nie umożliwia dostępu do adresu IP klienta, wystąpi następujący błąd:
    > 
-   > psql: Błąd krytyczny: Brak pliku pg_hba.conf dla hosta `<IP address>`, użytkownik "myadmin", baza danych "postgres", błąd krytyczny dla SSL: wymagane połączenie SSL. Określ opcje protokołu SSL i spróbuj ponownie.
+   > psql: Krytyczny: brak wpisu pg_hba. conf dla `<IP address>`hosta, użytkownika "Administrator", bazy danych "Postgres", SSL w przypadku krytycznego: wymagane połączenie SSL. Określ opcje protokołu SSL i spróbuj ponownie.
    > 
-   > Upewnij się, że adres IP sieci klienta jest dozwolona w poprzednim kroku reguły zapory.
+   > Upewnij się, że adres IP klienta jest dozwolony w powyższym kroku reguł zapory.
 
 2. Utwórz pustą bazę danych o nazwie „mypgsqldb”, wpisując następujące polecenie w wierszu polecenia:
     ```bash
@@ -170,27 +170,27 @@ pgAdmin to narzędzie open source używane z bazą danych PostgreSQL. Aplikację
 
    ![Karta „Connection” (Połączenie)](./media/quickstart-create-database-portal/10-pgadmin-create-server.png)
 
-    Parametr narzędzia pgAdmin |Wartość|Opis
+    Parametr narzędzia pgAdmin |Value|Opis
     ---|---|---
     Nazwa lub adres hosta | Nazwa serwera | Wartość nazwy serwera, która została użyta wcześniej podczas tworzenia serwera usługi Azure Database for PostgreSQL. Przykładowy serwer to **mydemoserver.postgres.database.azure.com**. Użyj w pełni kwalifikowanej nazwy domeny ( **\*.postgres.database.azure.com**), jak pokazano w przykładzie. Jeśli nie pamiętasz nazwy serwera, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. 
     Port | 5432 | Port używany podczas łączenia z serwerem usługi Azure Database for PostgreSQL. 
     Baza danych konserwacji | *postgres* | Domyślna nazwa bazy danych wygenerowana przez system.
-    Nazwa użytkownika | Nazwa logowania administratora serwera | Nazwa logowania administratora serwera, którą podano wcześniej podczas tworzenia serwera usługi Azure Database for PostgreSQL. Jeśli nie pamiętasz nazwy użytkownika, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. Format jest *username\@servername*.
+    Nazwa użytkownika | Nazwa logowania administratora serwera | Nazwa logowania administratora serwera, którą podano wcześniej podczas tworzenia serwera usługi Azure Database for PostgreSQL. Jeśli nie pamiętasz nazwy użytkownika, postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby uzyskać informacje dotyczące połączenia. Format to *username\@ServerName*.
     Hasło | Hasło administratora | Hasło wybrane podczas tworzenia serwera wcześniej w tym przewodniku Szybki start.
     Role | Pozostaw puste | Nie trzeba podawać nazwy roli w tym momencie. Pozostaw pole puste.
     Tryb SSL | *Wymagane* | Tryb SSL możesz ustawić na karcie SSL narzędzia pgAdmin. Domyślnie wszystkie serwery usługi Azure Database for PostgreSQL są tworzone z włączonym wymuszaniem protokołu SSL. Aby wyłączyć wymuszanie protokołu SSL, zobacz [Wymuszanie protokołu SSL](./concepts-ssl-connection-security.md).
     
 5. Wybierz pozycję **Zapisz**.
 
-6. W okienku **Przeglądarka** z lewej strony rozwiń węzeł **Serwery**. Wybierz serwer, np. **mydemoserver**. Kliknij, aby się z nim połączyć.
+6. W okienku **Przeglądarka** z lewej strony rozwiń węzeł **Serwery**. Wybierz serwer, na przykład **mydemoserver**, aby nawiązać z nim połączenie.
 
 7. Rozwiń węzeł serwera, a następnie rozwiń jego podrzędny element **Bazy danych**. Lista powinna obejmować istniejącą bazę danych *postgres* oraz wszelkie inne utworzone bazy danych. Za pomocą usługi Azure Database for PostgreSQL można utworzyć wiele baz danych na jednym serwerze.
 
-8. Kliknij prawym przyciskiem myszy pozycję **Bazy danych**, wybierz menu **Utwórz**, a następnie wybierz pozycję **Baza danych**.
+8. Kliknij prawym przyciskiem myszy pozycję **bazy danych**, wybierz menu **Utwórz** , a następnie wybierz pozycję **baza danych**.
 
-9. W polu **Database** (Baza danych) wpisz wybraną nazwę bazy danych, np. **mypgsqldb2**.
+9. Wprowadź wybraną nazwę bazy danych w polu **baza danych** , na przykład **mypgsqldb2**.
 
-10. Z listy rozwijanej wybierz pozycję **Właściciel** dla bazy danych. Wybierz nazwę logowania administratora serwera, np. przykładową nazwę **my admin**.
+10. Z listy rozwijanej wybierz pozycję **Właściciel** dla bazy danych. Wybierz nazwę logowania administratora serwera, na przykład **administrator**.
 
     ![Tworzenie bazy danych w narzędziu pgAdmin](./media/quickstart-create-database-portal/11-pgadmin-database.png)
 
@@ -208,7 +208,7 @@ Zasoby, które zostały utworzone w ramach tego przewodnika Szybki start, możes
 Aby usunąć całą grupę zasobów łącznie z nowo utworzonym serwerem:
 1. Znajdź grupę zasobów w portalu. W menu po lewej stronie wybierz pozycję **Grupy zasobów**. Następnie wybierz nazwę grupy zasobów, na przykład **myresourcegroup**.
 
-2. Na stronie grupy zasobów wybierz pozycję **Usuń**. W polu tekstowym wpisz nazwę grupy zasobów, np. przykładowej grupy **myresourcegroup**, aby potwierdzić usunięcie. Wybierz pozycję **Usuń**.
+2. Na stronie grupy zasobów wybierz pozycję **Usuń**. Wprowadź nazwę grupy zasobów, na przykład, w polu tekstowym, możnapotwierdzić usunięcie. Wybierz pozycję **Usuń**.
 
 Aby usunąć tylko nowo utworzony serwer:
 1. Znajdź serwer w portalu, jeśli nie jest otwarty. W menu po lewej stronie wybierz pozycję **Wszystkie zasoby**. Następnie wyszukaj utworzony serwer.
@@ -217,8 +217,8 @@ Aby usunąć tylko nowo utworzony serwer:
 
     ![Przycisk „Usuń”](./media/quickstart-create-database-portal/12-delete.png)
 
-3. Potwierdź nazwę serwera do usunięcia i wyświetl jego bazy danych, których dotyczy ta operacja. W polu tekstowym wpisz nazwę serwera, np. przykładowego serwera **mydemoserver**. Wybierz pozycję **Usuń**.
+3. Potwierdź nazwę serwera do usunięcia i wyświetl jego bazy danych, których dotyczy ta operacja. W polu tekstowym wprowadź nazwę serwera, na przykład **mydemoserver**. Wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
 > [Migrowanie bazy danych przy użyciu funkcji eksportowania i importowania](./howto-migrate-using-export-and-import.md)
