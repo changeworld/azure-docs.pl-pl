@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a96c02d1d7d2fae43e0a5915e9233bde842ce621
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 3a014bab0252667c3c70e56399a72de4e5771a86
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066666"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210120"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrowanie aplikacji z usługą Azure Virtual Network
 W tym dokumencie opisano funkcję integracji Azure App Service sieci wirtualnej i sposób jej konfigurowania z aplikacjami w [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Sieci wirtualne platformy Azure][VNETOverview] (Sieci wirtualnych) umożliwia umieszczenie wielu zasobów platformy Azure w sieci bez obsługi Internetu.  
@@ -110,7 +110,7 @@ Aby odłączyć aplikację od sieci wirtualnej, wybierz pozycję **Rozłącz**. 
 
 #### <a name="web-app-for-containers"></a>Web App for Containers
 
-Jeśli używasz App Service w systemie Linux z wbudowanymi obrazami, funkcja integracji regionalnej sieci wirtualnej działa bez dodatkowych zmian. W przypadku używania Web App for Containers należy zmodyfikować obraz platformy Docker, aby można było korzystać z integracji z siecią wirtualną. W obrazie platformy Docker Użyj zmiennej środowiskowej portu jako portu nasłuchu głównego serwera sieci Web, zamiast używać numeru portu stałe. Zmienna środowiskowa portu jest automatycznie ustawiana przez App Service platformę w czasie uruchamiania kontenera.
+Jeśli używasz App Service w systemie Linux z wbudowanymi obrazami, funkcja integracji regionalnej sieci wirtualnej działa bez dodatkowych zmian. W przypadku używania Web App for Containers należy zmodyfikować obraz platformy Docker, aby można było korzystać z integracji z siecią wirtualną. W obrazie platformy Docker Użyj zmiennej środowiskowej portu jako portu nasłuchu głównego serwera sieci Web, zamiast używać numeru portu stałe. Zmienna środowiskowa portu jest automatycznie ustawiana przez App Service platformę w czasie uruchamiania kontenera. Jeśli używasz protokołu SSH, demon SSH musi być skonfigurowany do nasłuchiwania na numerze portu określonego przez zmienną środowiskową SSH_PORT w przypadku korzystania z integracji regionalnej sieci wirtualnej.
 
 ### <a name="service-endpoints"></a>Punkty końcowe usługi
 

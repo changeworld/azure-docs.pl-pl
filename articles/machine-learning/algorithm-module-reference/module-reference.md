@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 05/02/2019
-ms.openlocfilehash: 065931140894478caee9d4ea49dac49f2415716b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 76b70c742289ac98e49338b267660a30abba9557
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128655"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210452"
 ---
 # <a name="algorithm--module-reference-overview"></a>Omówienie algorytmu & modułu
 
@@ -33,7 +33,7 @@ Moduły są zorganizowane według funkcjonalności:
 | --- |--- | ---- |
 | Konwersje formatów danych | Konwertuj dane między różnymi formatami plików używanymi w usłudze Machine Learning. | [Konwertuj na CSV](convert-to-csv.md) |
 | Dane wejściowe i wyjściowe | Przenieś dane ze źródeł w chmurze do eksperymentu. Zapisuj wyniki lub dane pośrednie w usłudze Azure Storage, w bazie danych SQL lub Hive, w trakcie działania eksperymentu lub korzystaj z magazynu w chmurze, aby wymieniać dane między eksperymentami.  | [Importuj dane](import-data.md)<br/>[Eksportuj dane](export-data.md)<br/>[Wprowadź dane ręcznie](enter-data-manually.md) |
-| Przekształcenie danych | Operacje na danych, które są unikatowe dla uczenia maszynowego, takie jak normalizowanie lub pakowania danych, wybór funkcji i zmniejszenie liczby wymiarów.| [Wybieranie kolumn w zestawie danych](select-columns-in-dataset.md) <br/> [Edytuj metadane](edit-metadata.md) <br/> [Wyczyść brakujące dane](clean-missing-data.md) <br/> [Dodaj kolumny](add-columns.md) <br/> [Dodaj wiersze](add-rows.md) <br/> [Usuń zduplikowane wiersze](remove-duplicate-rows.md) <br/> [Dołącz dane](join-data.md) <br/> [Podziel dane](split-data.md) <br/> [Normalizowanie danych](normalize-data.md) <br/> [Partycja i przykład](partition-and-sample.md) |
+| Przekształcenie danych | Operacje na danych, które są unikatowe dla uczenia maszynowego, takie jak normalizowanie lub pakowania danych, wybór funkcji i zmniejszenie liczby wymiarów.| [Wybieranie kolumn w zestawie danych](select-columns-in-dataset.md) <br/> [Edytuj metadane](edit-metadata.md) <br/> [Wyczyść brakujące dane](clean-missing-data.md) <br/>  [Mieszanie funkcji](feature-hashing.md) <br/>  [Wyodrębnij funkcje N gramów z tekstu](extract-n-gram-features-from-text.md) <br/> [Dodaj kolumny](add-columns.md) <br/> [Dodaj wiersze](add-rows.md) <br/> [Usuń zduplikowane wiersze](remove-duplicate-rows.md) <br/> [Przetwarzaj wstępnie tekst](preprocess-text.md) <br/> [Dołącz dane](join-data.md) <br/> [Podziel dane](split-data.md) <br/> [Normalizowanie danych](normalize-data.md) <br/> [Partycja i przykład](partition-and-sample.md) |
 | Moduły Python i R | Napisz kod i Osadź go w module, aby zintegrować Języki Python i R z Twoim eksperymentem. | [Wykonaj skrypt języka Python](execute-python-script.md)   <br/> [Utwórz model języka Python](create-python-model.md) <br/> [Wykonaj skrypt języka R](execute-r-script.md)
 |  | **Algorytmy uczenia maszynowego**: | |
 | Klasyfikacja | Przewidywanie klasy.  Wybierz jeden z dwuklasowego algorytmu lub algorytmów wieloklasowych.| [Las decyzyjny wieloklasowej](multiclass-decision-forest.md) <br/> [Wieloklasowe drzewo decyzyjne](multiclass-boosted-decision-tree.md) <br/> [Wieloklasowa regresja logistyczna](multiclass-logistic-regression.md)  <br/> [Multiclass Neural Network](multiclass-neural-network.md)  <br/>  [Regresja logistyczna dla dwóch klas](two-class-logistic-regression.md)  <br/>[Średnia Perceptron średniej klasy](two-class-averaged-perceptron.md) <br/> [Dwuklasowe&nbsp;&nbsp;drzewo decyzyjne&nbsp;](two-class-boosted-decision-tree.md)  <br/> [Las decyzyjny dwóch klas](two-class-decision-forest.md)  <br/> [Sieć neuronowych z dwiema klasami](two-class-neural-network.md)  <br/> [Maszyna&#8209;wektorowa&nbsp;&nbsp;obsługi&nbsp;dwóch klas](two-class-support-vector-machine.md) 

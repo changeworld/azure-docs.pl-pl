@@ -5,15 +5,15 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: tutorial
-ms.date: 2/14/2018
+ms.date: 02/14/2018
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 575ebfb62b3eed70f783bc68b7f06559e5632490
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: e03c085a9671ba84d3af63da658f749f09ebcdef
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273967"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210072"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Odzyskiwanie plików z platformy Azure na serwer z systemem Windows
 
@@ -68,7 +68,7 @@ Wraz z agentem usługi Microsoft Azure Recovery Services (MARS) jest instalowany
 
     Po odinstalowaniu migawki zobaczysz komunikat **Ukończono zadanie** w okienku **Zadania** w konsoli agenta.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 To ostatni samouczek dotyczący tworzenia kopii zapasowej i przywracania danych serwera z systemem Windows na platformie Azure. Aby uzyskać więcej informacji na temat usługi Azure Backup, zobacz przykładowy skrypt programu PowerShell umożliwiający tworzenie kopii zapasowej zaszyfrowanych maszyn wirtualnych.
 

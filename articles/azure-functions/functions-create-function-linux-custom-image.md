@@ -1,22 +1,19 @@
 ---
 title: Tworzenie Azure Functions w systemie Linux przy użyciu obrazu niestandardowego
 description: Informacje o sposobie tworzenia usługi Azure Functions działającej w niestandardowym obrazie systemu Linux.
-services: functions
-keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
-ms.devlang: azure-cli
-manager: jeconnoc
-ms.openlocfilehash: 525cb444ad7b1b78de867f83539ac338ddd144e9
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+manager: gwallace
+ms.openlocfilehash: 80f7185b69a7953656235d3bd622b7f61611de1a
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562920"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210182"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Tworzenie funkcji w systemie Linux przy użyciu obrazu niestandardowego
 
@@ -56,7 +53,7 @@ Możesz również użyć usługi [Azure Cloud Shell](https://shell.azure.com/bas
 
 ## <a name="create-the-local-function-app-project"></a>Tworzenie lokalnego projektu aplikacji funkcji
 
-Uruchom następujące polecenie w wierszu polecenia, aby utworzyć projekt aplikacji funkcji w folderze `MyFunctionProj` bieżącego katalogu lokalnego.
+Uruchom następujące polecenie w wierszu polecenia, aby utworzyć projekt aplikacji funkcji w folderze `MyFunctionProj` bieżącego katalogu lokalnego. W przypadku projektu w języku Python [należy uruchomić program w środowisku wirtualnym](functions-create-first-function-python.md#create-and-activate-a-virtual-environment-optional).
 
 ```bash
 func init MyFunctionProj --docker
@@ -68,7 +65,7 @@ Po wyświetleniu monitu wybierz środowisko uruchomieniowe procesów roboczych s
 
 * `dotnet`: tworzy projekt biblioteki klas .NET Core (. csproj).
 * `node`: tworzy projekt w języku JavaScript.
-* `python`: tworzy projekt w języku Python.
+* `python`: tworzy projekt w języku Python.  
 
 Gdy polecenie zostanie wykonane, zostaną zwrócone dane wyjściowe podobne do następujących:
 

@@ -6,15 +6,15 @@ manager: carmonm
 keywords: kopia zapasowa serwerów z systemem windows; kopia zapasowa windows server; kopia zapasowa i odzyskiwanie po awarii
 ms.service: backup
 ms.topic: tutorial
-ms.date: 8/22/2018
+ms.date: 08/22/2018
 ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 0a8a4795cf35402ebecbf6838aaeb5f17768aa06
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: f72e43eab51708365895d37c30d08ff823f93626
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467033"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210100"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Tworzenie kopii zapasowej serwerów z systemem Windows na platformie Azure
 
@@ -141,7 +141,7 @@ Został określony harmonogram uruchamiania zadań tworzenia kopii zapasowej. Ni
 4.  Po zakończeniu tworzenia pierwszej kopii zapasowej w okienku **Zadania** konsoli agenta usług MARS zostanie wyświetlony stan **Ukończono zadanie**.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Podczas pracy z tym samouczkiem wykonano następujące czynności przy użyciu witryny Azure Portal: 
  

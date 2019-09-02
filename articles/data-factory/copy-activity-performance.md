@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 05ecfdc4f082aaa44fe54e6b807a1c5faf84eb8d
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 22c83b1fe53a9209fd243fe807bb76718cbdcbbd
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69996459"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211684"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Przewodnik dotyczący wydajności i skalowalności działania kopiowania
 > [!div class="op_single_selector" title1="Wybierz używaną wersję Azure Data Factory:"]
@@ -181,6 +181,7 @@ Dla każdego przebiegu działania kopiowania Azure Data Factory określa liczbę
 | Skopiuj scenariusza | Domyślna liczba równoległych kopii określany przez usługę |
 | --- | --- |
 | Kopiowanie danych między magazynami oparte na plikach |Zależy od rozmiaru plików i liczby DIUs używanych do kopiowania danych między dwoma magazynami danych w chmurze lub konfiguracją fizyczną środowiska Integration Runtime. |
+| Kopiowanie z magazynu danych relacyjnych z włączoną opcją partycji (w tym z użyciem programu [Oracle](connector-oracle.md#oracle-as-source), programu [Teradata](connector-teradata.md#teradata-as-source), [tabeli SAP](connector-sap-table.md#sap-table-as-source)i [oprogramowania SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source))|4 |
 | Kopiowanie danych z dowolnego magazynu źródłowego do usługi Azure Table Storage |4 |
 | Innych scenariuszach kopiowania |1 |
 

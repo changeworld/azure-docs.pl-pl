@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 4bce7aeebee729ed253d39720ef520880c261a22
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 3777aecea5e25b33a7010ad90887829406e491ae
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639646"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210169"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Uruchom instalację nienadzorowaną Azure Backup Server
 
@@ -26,7 +26,7 @@ Te kroki nie mają zastosowania, Jeśli instalujesz Azure Backup Server v1.
 
 2. Wklej następujący kod w pliku MABSSetup. ini. Zastąp tekst w nawiasach (\< \>) wartościami z Twojego środowiska. Następujący tekst jest przykładem:
 
-   ```
+   ```text
    [OPTIONS]
    UserName=administrator
    CompanyName=<Microsoft Corporation>
@@ -49,7 +49,7 @@ Te kroki nie mają zastosowania, Jeśli instalujesz Azure Backup Server v1.
 
 3. Zapisz plik. Następnie w wierszu polecenia z podwyższonym poziomem uprawnień na serwerze instalacji wprowadź następujące polecenie:
 
-   ```
+   ```cmd
    start /wait <cdlayout path>/Setup.exe /i  /f <.ini file path>/setup.ini /L <log path>/setup.log
    ```
 
@@ -59,7 +59,7 @@ Możesz użyć tych flag do instalacji:</br>
 **/i**: Ścieżka instalacji</br>
 **/x**: Ścieżka odinstalowania</br>
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Po zainstalowaniu serwera kopii zapasowej należy dowiedzieć się, jak przygotować serwer lub rozpocząć ochronę obciążeń.
 
 - [Przygotowywanie obciążeń serwera kopii zapasowej](backup-azure-microsoft-azure-backup.md)

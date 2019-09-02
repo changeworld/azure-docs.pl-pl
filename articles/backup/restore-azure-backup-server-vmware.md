@@ -1,18 +1,18 @@
 ---
-title: Przywracanie maszyn wirtualnych VMware za pomocą Azure Backup Server
+title: Przywracanie maszyn wirtualnych VMware przy użyciu usługi Azure Backup Server
 description: Użyj Azure Backup Server (serwera usługi MAB), aby przywrócić maszyny wirtualne programu VMware działające na serwerze VMware vCenter/ESXi.
 author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/18/2019
+ms.date: 08/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: fd851822a7068928a2f332c240bc33b70b1e16f6
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 7d267fcd27a96c5ee7820a5d9fb73c6bbdb80695
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69642307"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210148"
 ---
 # <a name="restore-vmware-virtual-machines"></a>Przywróć maszyny wirtualne VMware
 

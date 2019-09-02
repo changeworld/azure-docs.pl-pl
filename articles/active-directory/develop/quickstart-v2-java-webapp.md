@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/11/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: fa3ad71dcc7738169f78f4dab94bd9bdf4d4cc89
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: f1ceae17195c08af380a7448dd4dbf3bfa3f9de2
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182972"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211874"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Szybki start: Dodawanie logowania do aplikacji sieci Web w języku Java firmy Microsoft
 
@@ -35,7 +35,6 @@ Po ukończeniu tego przewodnika aplikacja będzie akceptować logowania do osobi
 > ## <a name="prerequisites"></a>Wymagania wstępne
 > Do uruchomienia tego przykładu potrzebne są: 
 > - Zestaw Java Development Kit (JDK) 8 lub nowszy i Maven.
-> - Dzierżawa usługi Azure Active Directory (Azure AD). Aby uzyskać więcej informacji na temat uzyskiwania dzierżawy usługi Azure AD, zobacz [jak uzyskać dzierżawę usługi Azure AD.](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-create-new-tenant)
 >
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Rejestrowanie i pobieranie aplikacji Szybki start

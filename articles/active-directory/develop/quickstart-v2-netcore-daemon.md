@@ -17,12 +17,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a2b6d01802fd819471a9cfb382166e6293261ca
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a130878baa10be426072dfe79284a1d602dfb6ff
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852893"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211863"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Szybki start: uzyskiwanie tokenu i wywoływanie interfejsu API programu Microsoft Graph z poziomu aplikacji konsolowej za pomocą tożsamości aplikacji
 
@@ -39,11 +39,9 @@ Ten przewodnik Szybki Start wymaga [programu .NET Core 2,2](https://www.microsof
 
 > [!div renderon="docs" class="sxs-lookup"]
 >
-> Istnieją dwie opcje uruchamiania aplikacji Szybki start:
-> * [Ekspresowo] [Opcja 1: zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
-> * [Ręcznie] [Opcja 2: zarejestrowanie i ręczne skonfigurowanie aplikacji oraz przykładowego kodu](#option-2-register-and-manually-configure-your-application-and-code-sample)
+> Istnieją dwie opcje uruchamiania aplikacji Szybki start: Express (opcja 1 poniżej) i ręczna (opcja 2)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Opcja 1: zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Option 1: zarejestrowanie i automatyczne skonfigurowanie aplikacji, a następnie pobranie przykładowego kodu
 >
 > 1. Przejdź do nowego okienka [Azure Portal-rejestracje aplikacji](https://portal.azure.com/?Microsoft_AAD_RegisteredApps=true#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/DotNetCoreDaemonQuickstartPage/sourceType/docs) .
 > 1. Wprowadź nazwę aplikacji i wybierz pozycję **Zarejestruj**.
@@ -80,12 +78,12 @@ Ten przewodnik Szybki Start wymaga [programu .NET Core 2,2](https://www.microsof
 
 #### <a name="step-2-download-your-visual-studio-project"></a>Krok 2: pobieranie projektu programu Visual Studio
 
-[Pobierz projekt programu Visual Studio](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/msal3x.zip)
+[Pobierz projekt programu Visual Studio](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>Krok 3: konfigurowanie projektu programu Visual Studio
 
 1. Wyodrębnij plik zip do folderu lokalnego blisko folderu głównego dysku, na przykład **C:\Azure-Samples**.
-1. Otwórz rozwiązanie w programie Visual Studio — **daemon-console.sln** (opcjonalnie).
+1. Otwórz rozwiązanie w programie Visual Studio — **1 — Call-MSGraph\daemon-Console.sln** (opcjonalnie).
 1. Zmodyfikuj plik **appsettings.json**, zastępując wartości pól `ClientId`, `Tenant` i `ClientSecret` następującym kodem:
 
     ```json
@@ -145,7 +143,7 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 Jeśli używasz programu Visual Studio, naciśnij klawisz **F5** , aby uruchomić aplikację. w przeciwnym razie uruchom aplikację za pomocą wiersza polecenia lub konsoli:
 
 ```console
-cd {ProjectFolder}\daemon-console
+cd {ProjectFolder}\daemon-console\1-Call-Graph
 dotnet run
 ```
 
@@ -166,7 +164,7 @@ MSAL ([Microsoft. Identity. Client](https://www.nuget.org/packages/Microsoft.Ide
  Platformę MSAL.NET można zainstalować, uruchamiając następujące polecenie w **konsoli menedżera pakietów** programu Visual Studio:
 
 ```powershell
-Install-Package Microsoft.Identity.Client -Pre
+Install-Package Microsoft.Identity.Client
 ```
 
 Jeśli nie używasz programu Visual Studio, możesz również uruchomić następujące polecenie, aby dodać bibliotekę MSAL do projektu:
@@ -221,8 +219,15 @@ Więcej informacji można znaleźć w [dokumentacji dotyczącej metody `AcquireT
 
 ## <a name="next-steps"></a>Następne kroki
 
+Aby dowiedzieć się więcej na temat aplikacji demonów, zobacz stronę docelową scenariusza
+
 > [!div class="nextstepaction"]
-> [Przykład demona .NET Core](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
+> [Aplikacja demona, która wywołuje interfejsy API sieci Web](scenario-daemon-overview.md)
+
+Aby zapoznać się z samouczkiem aplikacji demona, zobacz:
+
+> [!div class="nextstepaction"]
+> [Samouczek dotyczący konsoli demona .NET Core](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2)
 
 Dowiedz się więcej na temat uprawnień i wyrażania zgody:
 
@@ -233,9 +238,6 @@ Aby dowiedzieć się więcej na temat przepływu autoryzacji w tym scenariuszu, 
 
 > [!div class="nextstepaction"]
 > [Client credentials Oauth flow (Przepływ OAuth poświadczeń klienta)](v2-oauth2-client-creds-grant-flow.md)
-
-> [!div class="nextstepaction"]
-> [Client credential flows with MSAL.NET (Przepływy poświadczeń klienta korzystające z platformy MSAL.NET)](https://aka.ms/msal-net-client-credentials)
 
 Pomóż nam ulepszyć platformę tożsamości firmy Microsoft. Powiedz nam, co myślisz, wykonując krótką ankietę z dwoma pytaniami.
 

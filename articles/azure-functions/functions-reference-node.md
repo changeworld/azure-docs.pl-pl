@@ -13,10 +13,10 @@ ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
 ms.openlocfilehash: 62115dd519336c728b679e4e698182a50660a464
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
+ms.lasthandoff: 09/02/2019
 ms.locfileid: "68949885"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów Azure Functions JavaScript
@@ -418,7 +418,7 @@ Podczas pracy z wyzwalaczami HTTP można uzyskiwać dostęp do obiektów żądan
 
 W poniższej tabeli przedstawiono wersję środowiska Node. js używaną przez każdą wersję główną funkcji Runtime:
 
-| Wersja funkcji | Wersja Node.js | 
+| Wersja funkcji | Wersja środowiska Node. js | 
 |---|---|
 | 1.x | 6.11.2 (zablokowany przez środowisko uruchomieniowe) |
 | 2.x  | _Active LTS_ i _Maintenance LTS_ wersje Node. js (zalecane 8.11.1 i 10.14.1). Ustaw wersję przy użyciu [Ustawienia aplikacji](functions-how-to-use-azure-function-app-settings.md#settings)WEBSITE_NODE_DEFAULT_VERSION.|

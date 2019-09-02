@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 8ed9b86f8dd4f255a6ea8420ef27fbb131df91a9
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 1bba5e91e3edda41b75a96d8b55495ca5d1c092b
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644892"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70209636"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Różnice w języku T-SQL wystąpienia zarządzanego, ograniczenia i znane problemy
 
@@ -338,6 +338,10 @@ Wystąpienie zarządzane nie może uzyskać dostępu do udziałów plików i fol
 - `CREATE ASSEMBLY FROM FILE`nie jest obsługiwana. Zobacz [Tworzenie zestawu z pliku](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY`nie można odwoływać się do plików. Zobacz [ALTER Assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
+### <a name="database-mail-db_mail"></a>Poczta bazy danych (db_mail)
+ - `sp_send_dbmail`nie można wysłać atachments @file_attachments przy użyciu parametru. Ta procedura nie umożliwia dostępu do lokalnego systemu plików ani udziałów w zakresie lub magazynu obiektów blob platformy Azure.
+ - Zobacz znane problemy związane z `@query` parametrem i uwierzytelnianiem.
+ 
 ### <a name="dbcc"></a>DBCC
 
 Nieudokumentowane instrukcje DBCC, które są włączone w SQL Server nie są obsługiwane w wystąpieniach zarządzanych.
@@ -536,6 +540,14 @@ Maksymalny rozmiar `tempdb` pliku nie może być większy niż 24 GB na rdzeń w
 Wystąpienie zarządzane umieszcza pełne informacje w dziennikach błędów. Istnieje wiele wewnętrznych zdarzeń systemowych, które są rejestrowane w dzienniku błędów. Użyj niestandardowej procedury, aby odczytać dzienniki błędów, które filtrują pewne nieistotne wpisy. Aby uzyskać więcej informacji, zobacz [wystąpienie zarządzane — sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
 ## <a name="Issues"></a>Znane problemy
+
+### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>Nie można uwierzytelnienia karty inteligentnej do zewnętrznych serwerów poczty przy użyciu bezpiecznego połączenia (SSL)
+
+**Dniu** 2019 sie
+
+Poczta bazy danych [skonfigurowana przy użyciu bezpiecznego połączenia (SSL)](https://docs.microsoft.com/sql/relational-databases/database-mail/configure-database-mail) nie może być uwierzytelniana na niektórych serwerach poczty E-mail poza platformą Azure. Jest to problem z konfiguracją zabezpieczeń, który wkrótce zostanie rozwiązany.
+
+**Poprawkę** Tymczasowe usunięcie bezpiecznego połączenia (SSL) stanowi konfigurację poczty bazy danych do momentu rozwiązania problemu. 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Okna dialogowe Service Broker między bazami danych muszą zostać zainicjowane po uaktualnieniu warstwy usług
 
