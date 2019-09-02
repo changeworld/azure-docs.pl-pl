@@ -1,65 +1,81 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja tożsamości hybrydowej
+summary: Rozwiązania firmy Microsoft do obsługi tożsamości obejmują zarówno funkcje lokalne, jak i chmurowe, tworząc jedną tożsamość użytkownika na potrzeby uwierzytelniania i autoryzacji w kontekście wszystkich zasobów, niezależnie od lokalizacji. Nazywamy to tożsamością hybrydową.
 metadata:
-  document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275e
-  title: Dokumentacja tożsamości hybrydowej
-  description: 'Program Azure AD Connect umożliwia integrowanie katalogów lokalnych z usługą Azure Active Directory. Dzięki temu użytkownicy mogą posługiwać się wspólną tożsamością dla usługi Office 365, platformy Azure i aplikacji SaaS zintegrowanych z usługą Azure AD.'
-  services: active-directory
   author: billmath
+  description: Program Azure AD Connect umożliwia integrowanie katalogów lokalnych z usługą Azure Active Directory. Dzięki temu użytkownicy mogą posługiwać się wspólną tożsamością dla usługi Office 365, platformy Azure i aplikacji SaaS zintegrowanych z usługą Azure AD.
   manager: daveba
-  ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 05/18/2018
   ms.author: billmath
-abstract:
-  description: 'Rozwiązania firmy Microsoft do obsługi tożsamości obejmują zarówno funkcje lokalne, jak i chmurowe, tworząc jedną tożsamość użytkownika na potrzeby uwierzytelniania i autoryzacji w kontekście wszystkich zasobów, niezależnie od lokalizacji. Nazywamy to tożsamością hybrydową.</br></br></br>Program Azure AD Connect umożliwia integrowanie katalogów lokalnych z usługą Azure Active Directory. Dzięki temu użytkownicy mogą posługiwać się wspólną tożsamością dla usługi Office 365, platformy Azure i aplikacji SaaS zintegrowanych z usługą Azure AD. W tym temacie przedstawiono kroki związane z planowaniem, wdrażaniem i obsługą. Zawiera on zbiór linków do tematów związanych z tym obszarem.'
-  aside:
-    image:
-      alt: film w witrynie channel 9
-      height: 110
-      src: media/index/video2.png
-      width: 250
-    title: 'Rozszerzanie katalogów lokalnych na chmurę (1:11:12)'
-    href: 'https://channel9.msdn.com/Events/Ignite/2015/BRK3862/player'
-    width: 250
-sections:
-  - title: Samouczki krok po kroku
-    items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/active-directory/hybrid/tutorial-password-hash-sync
-            html: <p>Omówienie rozszerzania tożsamości na chmurę za pomocą synchronizacji skrótów haseł</p>
-            image:
-              alt: synchronizacja skrótów haseł
-              src: media/index/azuread2.png
-            title: Integrowanie pojedynczego lasu usługi AD za pomocą synchronizacji skrótów haseł
-          - href: /azure/active-directory/hybrid/tutorial-passthrough-authentication
-            html: '<p>Dowiedz się, jak rozszerzyć tożsamość na chmurę za pomocą uwierzytelniania przekazywanego.</p>'
-            image:
-              alt: uwierzytelnianie przekazywane
-              src: media/index/manage2.png
-            title: Integrowanie pojedynczego lasu usługi AD przy użyciu uwierzytelniania przekazywanego
-          - href: /azure/active-directory/hybrid/tutorial-federation
-            html: '<p>Dowiedz się, jak sfederować program Azure Active Directory (Azure AD) Connect z lokalną usługą Active Directory Federation Services (AD FS) i usługą Azure AD.</p>'
-            image:
-              alt: federacja
-              src: media/index/federate2.png
-            title: Integrowanie pojedynczego lasu usługi AD przy użyciu federacji
-  - title: Przewodniki z instrukcjami
-    items:
-      - type: paragraph
-        text: Omówienie sposobu wykonywania różnych zadań związanych z tożsamością hybrydową
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/hybrid/how-to-connect-install-custom">Instalowanie programu Azure AD Connect w środowisku tożsamości hybrydowej</a>
-          - html: <a href="/azure/active-directory/hybrid/how-to-connect-sso">Bezproblemowe logowanie jednokrotne za pomocą programu Azure AD Connect</a>
-          - html: <a href="/azure/active-directory/hybrid/how-to-connect-install-prerequisites">Wymagania wstępne programu Azure AD Connect</a>
-          - html: <a href="/azure/active-directory/hybrid/reference-connect-version-history">Historia wydawania wersji programu Azure AD Connect</a>
-          - html: <a href="/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler">Zarządzanie harmonogramem programu Azure AD Connect Sync</a>
+  ms.collection: na
+  ms.date: 08/15/2019
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: fa9007d0e9ad59ee0ffb29fe1c5c74c8530d84fa
+  ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70162196"
+landingContent:
+- title: Tożsamość hybrydowa — informacje
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest tożsamość hybrydowa?
+      url: whatis-hybrid-identity.md
+- title: Wybieranie najlepszego rozwiązania do zarządzania cyklem życia użytkowników i grup
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to są Azure AD Connect Health i Connect Health?
+      url: whatis-azure-ad-connect.md
+  - linkListType: tutorial
+    links:
+    - text: Integrowanie pojedynczego lasu usługi AD za pomocą synchronizacji skrótów haseł
+      url: tutorial-password-hash-sync.md
+    - text: Integrowanie pojedynczego lasu usługi AD przy użyciu uwierzytelniania przekazywanego
+      url: tutorial-passthrough-authentication.md
+    - text: Integrowanie pojedynczego lasu usługi AD przy użyciu federacji
+      url: tutorial-federation.md
+- title: Wybieranie metody uwierzytelniania najkorzystniejszej dla organizacji
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest synchronizacja skrótów haseł?
+      url: whatis-phs.md
+    - text: Co to jest uwierzytelnianie przekazywane?
+      url: how-to-connect-pta.md
+    - text: Co to jest federacja?
+      url: whatis-fed.md
+    - text: Co to jest logowanie jednokrotne?
+      url: how-to-connect-sso.md
+  - linkListType: concept
+    links:
+    - text: Określanie najodpowiedniejszej metody uwierzytelniania
+      url: /azure/security/fundamentals/choose-ad-authn
+- title: Wprowadzenie do tożsamości hybrydowej
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Instalowanie programu Azure AD Connect przy użyciu ustawień ekspresowych
+      url: how-to-connect-install-express.md
+    - text: Instalowanie programu Azure AD Connect przy użyciu ustawień niestandardowych
+      url: how-to-connect-install-custom.md
+    - text: Konfigurowanie konta łącznika usługi AD DS
+      url: how-to-connect-configure-ad-ds-connector-account.md
+    - text: Zmienianie hasła konta usługi ADSync
+      url: how-to-connect-sync-change-serviceacct-pass.md
+    - text: Zmienianie hasła do konta łącznika usługi Azure AD
+      url: how-to-connect-azureadaccount.md
+    - text: Zmienianie hasła do konta usług AD DS
+      url: how-to-connect-sync-change-addsacct-pass.md
+  - linkListType: reference
+    links:
+    - text: Wymagane porty i protokoły
+      url: reference-connect-ports.md
+    - text: Konta i uprawnienia
+      url: reference-connect-accounts-permissions.md
+    - text: Historia wersji programu Azure AD Connect
+      url: reference-connect-version-history.md

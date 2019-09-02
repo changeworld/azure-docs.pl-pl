@@ -28,7 +28,7 @@ Azure Event Grid to usługa obsługi zdarzeń dla chmury. Ta usługa używa [sub
 
 W tym artykule używasz witryny Azure portal do subskrybowania zdarzenia dla swojego konta usługi Azure Media Services. Następnie możesz wyzwolić zdarzeń w celu wyświetlenia wyniku. Zazwyczaj użytkownik wysyła zdarzenia do punktu końcowego, w którym następuje przetwarzanie danych zdarzenia i są wykonywane akcje. W artykule firma Microsoft wysyła zdarzenia do aplikacji sieci web, która gromadzi i wyświetla komunikaty.
 
-Po zakończeniu przekonasz się, że dane zdarzenia zostały wysłane do aplikacji sieci Web.
+Po zakończeniu przekonasz się, że dane zdarzenia zostały wysłane do aplikacji internetowej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 

@@ -306,6 +306,10 @@
               href: istio-install.md
             - name: Routing inteligentny i wydania Canary
               href: istio-scenario-routing.md
+        - name: Używanie rozwiązania Hashicorp Consul Connect
+          items:
+            - name: Instalowanie i konfigurowanie
+              href: consul-install.md
         - name: Korzystanie z usługi Azure Database for PostgreSQL
           href: ../postgresql/concepts-aks.md
           maintainContext: true

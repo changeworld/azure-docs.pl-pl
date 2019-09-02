@@ -309,7 +309,7 @@
           href: b2clogin.md
         - name: Migrowanie internetowego interfejsu API do usługi b2clogin.com
           href: multiple-token-endpoints.md
-          displayName: 'migrate, b2clogin, owin, jwt'
+          displayName: 'migrate, b2clogin, owin'
     - name: Automatyzacja
       items:
         - name: Eksportowanie raportu użycia
@@ -318,6 +318,9 @@
           href: active-directory-b2c-devquickstarts-graph-dotnet.md
     - name: Dzienniki inspekcji
       href: active-directory-b2c-reference-audit-logs.md
+    - name: Zabezpieczanie interfejsu API usługi API Management
+      href: secure-api-management.md
+      displayName: 'apim, api management, migrate, b2clogin.com'
     - name: Zgodność
       items:
         - name: Dostęp użytkowników

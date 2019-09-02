@@ -4,9 +4,9 @@
 - name: Omówienie
   expanded: true
   items:
-    - name: Co to jest maszyna wirtualna do analizy danych?
+    - name: Co to jest środowisko Data Science Virtual Machine?
       href: overview.md
-    - name: Co to jest maszyna wirtualna analizy danych geograficznych ze sztuczną inteligencją?
+    - name: Co to jest maszyna DSVM ze sztuczną inteligencją w zakresie danych geograficznych?
       href: geo-ai-dsvm-overview.md
 - name: Przewodniki Szybki start
   expanded: true
@@ -17,7 +17,7 @@
       href: dsvm-ubuntu-intro.md
     - name: Tworzenie maszyny DSVM z systemem CentOS
       href: linux-dsvm-intro.md
-    - name: Tworzenie maszyny wirtualnej analizy danych geograficznych ze sztuczną inteligencją
+    - name: Tworzenie maszyny DSVM ze sztuczną inteligencją w zakresie danych geograficznych
       href: provision-geo-ai-dsvm.md
 - name: Pojęcia
   items:
@@ -35,7 +35,7 @@
       href: dsvm-tools-ingestion.md
     - name: Narzędzia do eksploracji i wizualizacji danych
       href: dsvm-tools-explore-and-visualize.md
-    - name: Wskazówki i zabezpieczenia przedsiębiorstwa
+    - name: Wskazówki i zabezpieczenia dotyczące przedsiębiorstwa
       href: dsvm-enterprise-overview.md
 - name: Przykłady
   href: dsvm-samples-and-walkthroughs.md

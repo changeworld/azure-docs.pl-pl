@@ -8,6 +8,9 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
+    - name: Uruchamianie pierwszego zapytania — witryna Azure Portal
+      displayName: 'portal, resource, graph, explorer'
+      href: first-query-portal.md
     - name: Uruchamianie pierwszego zapytania — interfejs wiersza polecenia platformy Azure
       displayName: 'extension, docker'
       href: first-query-azurecli.md

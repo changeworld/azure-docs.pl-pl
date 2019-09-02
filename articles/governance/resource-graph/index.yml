@@ -8,7 +8,7 @@ metadata:
   manager: carmonm
   ms.service: resource-graph
   ms.topic: landing-page
-  ms.date: 05/06/2019
+  ms.date: 08/25/2019
   ms.author: dacoulte
 abstract:
   description: Dokumentacja usługi Azure Resource Graph ułatwia skonfigurowanie i poznanie języka zapytań w celu odnajdowania i eksplorowania zasobów w odpowiedniej skali.
@@ -20,6 +20,11 @@ sections:
       - type: list
         style: icon48
         items:
+          - image:
+              alt: Eksplorator usługi Azure Resource Graph
+              src: ./media/arg_explorer.svg
+            text: Eksplorator usługi Resource Graph
+            href: first-query-portal.md
           - image:
               alt: Interfejs wiersza polecenia platformy Azure
               src: ./media/cli.svg

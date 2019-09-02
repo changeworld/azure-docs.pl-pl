@@ -58,6 +58,8 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager'
 - name: Pojęcia
   items:
+    - name: Wdrożenia szablonów
+      href: template-deployment-overview.md
     - name: Struktura pliku szablonu
       displayName: 'parameters,variables,resources,outputs,condition'
       href: resource-group-authoring-templates.md
@@ -83,6 +85,8 @@
   items:
     - name: Tworzenie szablonów
       items:
+        - name: Narzędzie programistyczne — VS Code
+          href: resource-manager-tools-vs-code.md
         - name: Tworzenie szablonu
           href: how-to-create-template.md
         - name: Nazwa i typ zasobu podrzędnego

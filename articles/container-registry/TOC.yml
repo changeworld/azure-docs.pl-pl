@@ -59,6 +59,8 @@
       items:
         - name: Wypychanie i ściąganie obrazu
           href: container-registry-get-started-docker-cli.md
+        - name: Wypychanie i ściąganie artefaktu OCI
+          href: container-registry-oci-artifacts.md
         - name: Wyświetlanie repozytoriów
           href: container-registry-repositories.md
         - name: Importowanie obrazów kontenerów

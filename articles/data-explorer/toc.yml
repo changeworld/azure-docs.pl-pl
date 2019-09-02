@@ -44,8 +44,12 @@
           href: ingest-data-event-hub.md
         - name: Event Grid
           href: ingest-data-event-grid.md
+        - name: Usługa IoT Hub
+          href: ingest-data-iot-hub.md
         - name: Pozyskiwanie jednym kliknięciem
           href: ingest-data-one-click.md
+        - name: Pozyskiwanie danych za pośrednictwem przesyłania strumieniowego
+          href: ingest-data-streaming.md
         - name: Kafka
           href: ingest-data-kafka.md
         - name: Python
@@ -90,6 +94,12 @@
               href: power-bi-imported-query.md
             - name: Zapytanie SQL
               href: power-bi-sql-query.md
+        - name: Excel
+          items:
+            - name: łącznik
+              href: excel-connector.md
+            - name: puste zapytanie
+              href: excel-blank-query.md
         - name: Grafana
           href: grafana.md
         - name: Łącznik ODBC

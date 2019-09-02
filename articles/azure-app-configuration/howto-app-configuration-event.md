@@ -22,7 +22,7 @@ ms.locfileid: "68326597"
 ---
 # <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Szybki start: Kierowanie zdarzeń konfiguracji aplikacji platformy Azure do punktu końcowego sieci Web przy użyciu interfejsu wiersza polecenia platformy Azure
 
-W tym przewodniku szybki start dowiesz się, jak skonfigurować subskrypcje zdarzeń konfiguracji aplikacji platformy Azure w celu wysyłania zdarzeń modyfikacji klucz-wartość do internetowego punktu końcowego. Użytkownicy usługi Azure App Configuration mogą subskrybować zdarzenia, które są emitowane za każdym razem, gdy wartości klucza są modyfikowane. Zdarzenia te mogą wyzwalać elementy webhook, Azure Functions, kolejki usługi Azure Storage lub inne procedury obsługi zdarzeń obsługiwane przez Azure Event Grid. Zazwyczaj użytkownik wysyła zdarzenia do punktu końcowego, w którym następuje przetwarzanie danych zdarzenia i są wykonywane akcje. Jednak aby uprościć ten artykuł, zdarzenia zostaną wysłane do aplikacji sieci Web, która zbiera i wyświetla komunikaty.
+W tym przewodniku szybki start dowiesz się, jak skonfigurować subskrypcje zdarzeń konfiguracji aplikacji platformy Azure w celu wysyłania zdarzeń modyfikacji klucz-wartość do internetowego punktu końcowego. Użytkownicy usługi Azure App Configuration mogą subskrybować zdarzenia, które są emitowane za każdym razem, gdy wartości klucza są modyfikowane. Zdarzenia te mogą wyzwalać elementy webhook, Azure Functions, kolejki usługi Azure Storage lub inne procedury obsługi zdarzeń obsługiwane przez Azure Event Grid. Zazwyczaj użytkownik wysyła zdarzenia do punktu końcowego, w którym następuje przetwarzanie danych zdarzenia i są wykonywane akcje. Jednak aby uprościć ten artykuł, zdarzenia zostaną wysłane do aplikacji internetowej, która zbiera i wyświetla komunikaty.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -61,7 +61,7 @@ az appconfig create \
 
 Przed zasubskrybowaniem tematu utwórzmy punkt końcowy dla komunikatów o zdarzeniach. Zazwyczaj w punkcie końcowym akcje są wykonywane na podstawie danych zdarzenia. Aby uprościć ten przewodnik Szybki Start, wdrożysz [wstępnie zbudowaną aplikację sieci Web](https://github.com/Azure-Samples/azure-event-grid-viewer), która będzie wyświetlać komunikaty o zdarzeniach. Wdrożone rozwiązanie zawiera plan usługi App Service, aplikację internetową usługi App Service i kod źródłowy z repozytorium GitHub.
 
-Zastąp `<your-site-name>` unikatową nazwą aplikacji sieci Web. Nazwa aplikacji sieci Web musi być unikatowa, ponieważ stanowi część wpisu DNS.
+Zastąp `<your-site-name>` unikatową nazwą aplikacji internetowej. Nazwa aplikacji internetowej musi być unikatowa, ponieważ stanowi część wpisu DNS.
 
 ```azurecli-interactive
 $sitename=<your-site-name>
@@ -82,7 +82,7 @@ Powinna być widoczna witryna internetowa bez żadnych aktualnie wyświetlanych 
 
 Subskrybowanie tematu to dla usługi Event Grid informacja o tym, które zdarzenia chcesz śledzić i gdzie mają być one wysyłane. Poniższy przykład subskrybuje utworzoną konfigurację aplikacji i przekazuje adres URL z aplikacji sieci Web jako punkt końcowy dla powiadomienia o zdarzeniu. Zastąp element `<event_subscription_name>` nazwą Twojej subskrypcji zdarzeń. Jako parametrów `<resource_group_name>` i `<appconfig_name>` użyj utworzonych wcześniej wartości.
 
-Punkt końcowy dla aplikacji sieci Web musi zawierać sufiks `/api/updates/`.
+Punkt końcowy dla aplikacji internetowej musi zawierać sufiks `/api/updates/`.
 
 ```azurecli-interactive
 appconfigId=$(az appconfig show --name <appconfig_name> --resource-group <resource_group_name> --query id --output tsv)
@@ -94,7 +94,7 @@ az eventgrid event-subscription create \
   --endpoint $endpoint
 ```
 
-Wyświetl aplikację sieci Web ponownie i zwróć uwagę, że zdarzenie sprawdzania poprawności subskrypcji zostało do niej wysłane. Wybierz ikonę oka, aby rozwinąć dane zdarzenia. Usługa Event Grid wysyła zdarzenie weryfikacji, aby w punkcie końcowym mogło nastąpić sprawdzenie, czy dane zdarzenia mają być odbierane. Aplikacja sieci Web zawiera kod do sprawdzania poprawności subskrypcji.
+Wyświetl aplikację sieci Web ponownie i zwróć uwagę, że zdarzenie sprawdzania poprawności subskrypcji zostało do niej wysłane. Wybierz ikonę oka, aby rozwinąć dane zdarzenia. Usługa Event Grid wysyła zdarzenie weryfikacji, aby w punkcie końcowym mogło nastąpić sprawdzenie, czy dane zdarzenia mają być odbierane. Aplikacja internetowa zawiera kod do sprawdzania poprawności subskrypcji.
 
 ![Wyświetlanie zdarzenia subskrypcji](./media/quickstarts/event-grid/view-subscription-event.png)
 
