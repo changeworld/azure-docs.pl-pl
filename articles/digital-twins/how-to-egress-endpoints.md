@@ -54,7 +54,7 @@ Zdarzenia są wysyłane przez obiekty IoT (takie jak urządzenia i czujniki) do 
 | data | object | Dane zdarzenia specyficzne dla dostawcy zasobów. |
 | Klasę | string | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
 | eventTime | string | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
-| wersja | string | Wersja schematu dla obiektu danych. Wydawca definiuje wersję schematu. |
+| dataVersion | string | Wersja schematu dla obiektu danych. Wydawca definiuje wersję schematu. |
 | metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Event Grid definiuje schemat właściwości najwyższego poziomu. Event Grid udostępnia tę wartość. |
 | topic | string | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Event Grid udostępnia tę wartość. |
 

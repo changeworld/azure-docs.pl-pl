@@ -147,6 +147,8 @@
           href: concepts-data-flow-overview.md
         - name: Tryb debugowania
           href: concepts-data-flow-debug-mode.md
+        - name: Obsługa plików JSON
+          href: concepts-data-flow-json.md
         - name: Odchylenia od schematu
           href: concepts-data-flow-schema-drift.md
         - name: Okienko inspekcji
@@ -446,6 +448,8 @@
           href: control-flow-webhook-activity.md
     - name: Przekształcenia przepływu danych
       items:
+        - name: Pole o stałej szerokości
+          href: how-to-fixed-width.md
         - name: Agregacja
           href: data-flow-aggregate.md
         - name: Modyfikuj wiersz
@@ -600,6 +604,8 @@
           href: data-migration-guidance-overview.md
         - name: Migrowanie danych z usług AWS S3 na platformę Azure
           href: data-migration-guidance-s3-azure-storage.md
+        - name: Migrowanie danych z lokalnego klastra Hadoop na platformę Azure
+          href: data-migration-guidance-hdfs-azure-storage.md
 - name: Dokumentacja
   items:
     - name: .NET

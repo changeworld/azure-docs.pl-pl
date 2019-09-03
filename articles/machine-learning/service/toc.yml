@@ -33,10 +33,10 @@
               href: tutorial-auto-train-models.md
     - name: Interfejs wizualny
       items:
-        - name: Trenowanie modelu regresji
+        - name: 1. Trenowanie modelu regresji
           displayName: studio
           href: ui-tutorial-automobile-price-train-score.md
-        - name: Wdrażanie modelu regresji
+        - name: 2. Wdrażanie modelu regresji
           displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
     - name: Zautomatyzowane uczenie maszynowe
