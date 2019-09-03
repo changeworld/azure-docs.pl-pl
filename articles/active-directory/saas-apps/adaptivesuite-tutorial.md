@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 599b0c8f45f91f9ecff210264a813e302f18059e
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: ad059e6047dd883c0a5aab0d714d999840050584
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488952"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213613"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Samouczek: Integruj adaptacyjne szczegółowe dane za pomocą Azure Active Directory
 
@@ -81,7 +81,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. W sekcji **Podstawowa konfiguracja** języka SAML wykonaj następujące czynności:
+1. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
     a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
@@ -174,7 +174,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się w celu uzyskania a
 
 **Aby skonfigurować aprowizację użytkowników, wykonaj następujące czynności:**
 
-1. Zaloguj się do swojej  witryny usługi adaptacyjnej Insights jako administrator.
+1. Zaloguj się do swojej witryny usługi adaptacyjnej Insights jako administrator.
 
 2. Przejdź do sekcji **Administration** (Administracja).
 

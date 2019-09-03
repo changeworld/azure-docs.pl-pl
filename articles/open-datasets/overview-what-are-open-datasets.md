@@ -7,12 +7,12 @@ ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/02/2019
-ms.openlocfilehash: 7fa8562c466c81ebc05360bf06cdde1ee29bed9e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 0c4bf3143bbf1ceb2f2f3c4a22477daa03690a0e
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598990"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213580"
 ---
 # <a name="what-are-azure-open-datasets-preview-and-how-can-you-use-them"></a>Co to są otwarte zestawy danych platformy Azure (wersja zapoznawcza) i jak można z nich korzystać?
 
@@ -49,7 +49,7 @@ Za pomocą konta platformy Azure możesz uzyskać dostęp do otwartych zestawów
 
 Otwarte zestawy danych udostępniają Azure Notebooks i Azure Databricks notesy, których można użyć do łączenia danych z usługą Azure Machine Learning i Azure Databricks. Do zestawów danych można także uzyskać dostęp za pomocą zestawu SDK języka Python. 
 
-Nie jest jednak potrzebne konto platformy Azure, aby uzyskać dostęp do otwartych zestawów danych; Możesz uzyskać do nich dostęp z dowolnego środowiska języka Python bez platformy Spark lub bez niego.
+Nie jest jednak potrzebne konto platformy Azure, aby uzyskać dostęp do otwartych zestawów danych; Możesz uzyskać do nich dostęp z dowolnego środowiska języka Python z platformą Spark lub bez niej.
 
 ## <a name="request-or-contribute-datasets"></a>Żądanie lub zestawy danych współtworzenia
 

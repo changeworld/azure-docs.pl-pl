@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af98633e1dfdbe6392199ade282a918c6134a033
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c0b1471abd7e057af919ed274547daf94d356c2b
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347403"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213611"
 ---
 # <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>Samouczek: Integracja sieci szkieletowej zabezpieczeń w chmurze z usługą Azure Active Directory
 
@@ -104,7 +104,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
     ![Link pobierania certyfikatu](common/metadataxml.png)
 
-5. Aby zmodyfikować opcje **podpisywania** zgodnie z wymaganiami, kliknij przycisk **Edytuj** , aby otworzyć okno dialogowe **certyfikatu** podpisywania SAML.
+5. Aby zmodyfikować opcje **podpisywania** zgodnie z wymaganiami, kliknij przycisk **Edytuj** , aby otworzyć okno dialogowe **certyfikatu podpisywania SAML** .
 
     ![Odpowiedź SAML](./media/ciscocloudlock-tutorial/saml.png)
 
@@ -153,7 +153,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 ### <a name="create-the-cloud-security-fabric-test-user"></a>Tworzenie użytkownika testowego sieci szkieletowej zabezpieczeń w chmurze
 
-W tej sekcji utworzysz użytkownika o nazwie B. Simon w sieci szkieletowej zabezpieczeń w chmurze. Współpraca z [zespołem pomocy technicznej usługi Cloud Security Fabric](mailto:support@cloudlock.com) umożliwia dodanie użytkowników z platformy Cloud Security Fabric. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie B. Simon w sieci szkieletowej zabezpieczeń w chmurze. Współpraca z [zespołem pomocy technicznej usługi Cloud Security Fabric](mailto:support@cloudlock.com) umożliwia dodanie użytkowników z platformy Cloud Security Fabric. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
