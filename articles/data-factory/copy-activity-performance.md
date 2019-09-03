@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 22c83b1fe53a9209fd243fe807bb76718cbdcbbd
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: f760917ae8f4ab11902799e36973ae896c4a2b43
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211684"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232350"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Przewodnik dotyczący wydajności i skalowalności działania kopiowania
 > [!div class="op_single_selector" title1="Wybierz używaną wersję Azure Data Factory:"]
@@ -181,7 +181,7 @@ Dla każdego przebiegu działania kopiowania Azure Data Factory określa liczbę
 | Skopiuj scenariusza | Domyślna liczba równoległych kopii określany przez usługę |
 | --- | --- |
 | Kopiowanie danych między magazynami oparte na plikach |Zależy od rozmiaru plików i liczby DIUs używanych do kopiowania danych między dwoma magazynami danych w chmurze lub konfiguracją fizyczną środowiska Integration Runtime. |
-| Kopiowanie z magazynu danych relacyjnych z włączoną opcją partycji (w tym z użyciem programu [Oracle](connector-oracle.md#oracle-as-source), programu [Teradata](connector-teradata.md#teradata-as-source), [tabeli SAP](connector-sap-table.md#sap-table-as-source)i [oprogramowania SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source))|4 |
+| Kopiowanie z magazynu danych relacyjnych z włączoną opcją partycji (w tym z systemami [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [SAP Table](connector-sap-table.md#sap-table-as-source)i [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source))|4 |
 | Kopiowanie danych z dowolnego magazynu źródłowego do usługi Azure Table Storage |4 |
 | Innych scenariuszach kopiowania |1 |
 
@@ -193,7 +193,7 @@ Aby kontrolować obciążenie maszyn, które obsługują magazyny danych, lub do
 **Punkty do uwagi:**
 
 - Podczas kopiowania danych między magazynami opartymi na plikach **parallelCopies** określa równoległość na poziomie pliku. Fragmentowanie w pojedynczym pliku odbywa się automatycznie i w sposób przezroczysty. Zaprojektowano w celu użycia najlepszego odpowiedniego rozmiaru fragmentu dla danego typu magazynu danych źródłowych w celu załadowania danych równolegle i ortogonalnych do **parallelCopies**. Rzeczywista liczba równoległych kopii usługi data movement service używa dla operacji kopiowania w czasie wykonywania jest nie więcej niż liczba plików, których masz. Jeśli zachowanie kopiowania ma wartość **mergeFile**, działanie kopiowania nie może korzystać z równoległości na poziomie plików.
-- W przypadku kopiowania danych z magazynów, które nie są oparte na plikach (z wyjątkiem programu [Oracle](connector-oracle.md#oracle-as-source), [Teradata](connector-teradata.md#teradata-as-source), [tabeli SAP](connector-sap-table.md#sap-table-as-source)i [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) Connector jako źródło z włączoną funkcją partycjonowania danych), do magazynów, które są oparte na plikach, Usługa przenoszenia danych ignoruje Właściwość **parallelCopies** . Nawet jeśli równoległości jest określona, nie zostanie zastosowane w tym przypadku.
+- W przypadku kopiowania danych z magazynów, które nie są oparte na plikach (z wyjątkiem programu [Oracle](connector-oracle.md#oracle-as-source), [Netezza](connector-netezza.md#netezza-as-source), [Teradata](connector-teradata.md#teradata-as-source), [tabeli SAP](connector-sap-table.md#sap-table-as-source)i [SAP Open Hub](connector-sap-business-warehouse-open-hub.md#sap-bw-open-hub-as-source) Connector jako źródła z włączoną obsługą partycjonowania danych) do magazynów, które są oparte na plikach, dane Usługa przenoszenia ignoruje Właściwość **parallelCopies** . Nawet jeśli równoległości jest określona, nie zostanie zastosowane w tym przypadku.
 - Właściwość **parallelCopies** jest prostopadła do **dataIntegrationUnits**. Pierwsza jest liczony we wszystkich jednostkach integracji danych.
 - Po określeniu wartości właściwości **parallelCopies** należy wziąć pod uwagę wzrost obciążenia magazynów danych źródłowych i ujścia. Należy również rozważyć zwiększenie obciążenia do własnego środowiska Integration Runtime, jeśli działanie kopiowania jest przez niego uprawnione, na przykład w przypadku kopii hybrydowej. Ten wzrost obciążenia występuje szczególnie w przypadku wielu działań lub współbieżnych uruchomień tych samych działań, które działają w tym samym magazynie danych. Jeśli zauważysz, że magazyn danych lub własne środowisko Integration Runtime jest przeciążony, zmniejsz wartość **parallelCopies** , aby zwolnić obciążenie.
 

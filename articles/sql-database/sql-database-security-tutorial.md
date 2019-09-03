@@ -8,14 +8,14 @@ ms.topic: tutorial
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 9850285482db4f5981c183b51152ba1a3ac4975c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ba648a2bf563b775c39f11ab8d5c4069c4bf740f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640131"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231191"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Samouczek: Zabezpieczanie pojedynczej bazy danych lub bazy danych w puli
 
@@ -58,7 +58,7 @@ Aby wykonać wszystkie kroki tego samouczka, zaloguj się do witryny [Azure Port
 
 ## <a name="create-firewall-rules"></a>Tworzenie reguł zapory
 
-Bazy danych SQL są chronione przez zapory na platformie Azure. Domyślnie wszystkie połączenia z serwerem i bazami danych są odrzucane, poza połączeniami z innych usług platformy Azure. Aby uzyskać więcej informacji, zobacz [Reguły zapory na poziomie serwera i na poziomie bazy danych usługi Azure SQL Database](sql-database-firewall-configure.md).
+Bazy danych SQL są chronione przez zapory na platformie Azure. Domyślnie wszystkie połączenia z serwerem i bazą danych są odrzucane. Aby uzyskać więcej informacji, zobacz [Reguły zapory na poziomie serwera i na poziomie bazy danych usługi Azure SQL Database](sql-database-firewall-configure.md).
 
 Najbezpieczniejsza konfiguracja to ustawienie opcji **Zezwalaj na dostęp do usług platformy Azure** na wartość **WYŁ**. Następnie należy utworzyć [zastrzeżony adres IP (wdrożenie klasyczne)](../virtual-network/virtual-networks-reserved-public-ip.md) dla zasobu wymagającego możliwości połączenia, na przykład maszyny wirtualnej platformy Azure czy usługi w chmurze, i zezwolić na dostęp przez zaporę tylko z tego adresu IP. Jeśli używasz modelu wdrożenia usługi [Resource Manager](/azure/virtual-network/virtual-network-ip-addresses-overview-arm), wymagany jest dedykowany publiczny adres IP dla każdego zasobu.
 
@@ -87,9 +87,6 @@ Aby skonfigurować regułę zapory na poziomie serwera:
    1. Wybierz przycisk **OK** i zamknij stronę **Ustawienia zapory**.
 
 Teraz możesz nawiązać połączenie z dowolną bazą danych na serwerze przy użyciu określonego adresu IP lub zakresu adresów IP.
-
-> [!IMPORTANT]
-> Domyślnie dostęp za pośrednictwem zapory usługi SQL Database jest włączony dla wszystkich usług platformy Azure w obszarze **Zezwalaj na dostęp do usług platformy Azure**. Wybierz przycisk **WYŁ.** , aby wyłączyć dostęp dla wszystkich usług platformy Azure.
 
 ### <a name="setup-database-firewall-rules"></a>Konfigurowanie reguł zapory bazy danych
 

@@ -1,37 +1,37 @@
 ---
-title: Jak zarządzać przypisaniami przy użyciu programu PowerShell
-description: Dowiedz się, jak zarządzać przypisaniami planu za pomocą oficjalnego schematy moduł Azure PowerShell, Az.Blueprint.
+title: Zarządzanie przypisaniami przy użyciu programu PowerShell
+description: Dowiedz się, jak zarządzać przypisaniami planów przy użyciu oficjalnego modułu programu PowerShell platformy Azure, AZ. plan.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d8eacffe4b792eda5d81051f6aa65caa3292c896
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: beaa3f4c5ab272592e7fae5a95b40a9b586aaf65
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60682847"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232894"
 ---
-# <a name="how-to-manage-assignments-with-powershell"></a>Jak zarządzać przypisaniami przy użyciu programu PowerShell
+# <a name="how-to-manage-assignments-with-powershell"></a>Zarządzanie przypisaniami przy użyciu programu PowerShell
 
-Przypisanie planu mogą być zarządzane przy użyciu **Az.Blueprint** modułu Azure PowerShell. Ten moduł umożliwia pobieranie, tworzenie, aktualizowanie i usuwanie przypisań. Moduł można również pobrać szczegółów dla istniejącej definicji planu. W tym artykule opisano sposób instalowania modułu i rozpocząć korzystanie z niej.
+Przypisanie planu można zarządzać przy użyciu modułu **AZ. plan** Azure PowerShell. Moduł obsługuje pobieranie, tworzenie, aktualizowanie i usuwanie przypisań. Moduł może również pobrać szczegóły istniejących definicji planu. W tym artykule opisano sposób instalowania modułu i rozpoczynania korzystania z niego.
 
-## <a name="add-the-azblueprint-module"></a>Dodaj moduł Az.Blueprint
+## <a name="add-the-azblueprint-module"></a>Dodaj moduł AZ. plan
 
-Aby włączyć programu Azure PowerShell do zarządzania przypisaniami planu, można dodać modułu. Ten moduł może być używany z lokalnie zainstalowanym programem PowerShell, [programem Azure Cloud Shell](https://shell.azure.com) lub [obrazem Docker programu Azure PowerShell](https://hub.docker.com/r/azuresdk/azure-powershell/).
+Aby umożliwić Azure PowerShell zarządzania przypisaniami planu, należy dodać moduł. Ten moduł może być używany z lokalnie zainstalowanym programem PowerShell, [programem Azure Cloud Shell](https://shell.azure.com) lub [obrazem Docker programu Azure PowerShell](https://hub.docker.com/r/azuresdk/azure-powershell/).
 
 ### <a name="base-requirements"></a>Wymagania podstawowe
 
-Moduł Azure schematy wymaga następującego oprogramowania:
+Moduł plany platformy Azure wymaga następującego oprogramowania:
 
-- Program Azure PowerShell 1.5.0 lub nowszej. Jeśli jeszcze go nie zainstalowano, postępuj zgodnie z [tymi instrukcjami](/powershell/azure/install-az-ps).
+- Azure PowerShell 1.5.0 lub wyższy. Jeśli jeszcze go nie zainstalowano, postępuj zgodnie z [tymi instrukcjami](/powershell/azure/install-az-ps).
 - Modułu PowerShellGet w wersji 2.0.1 lub nowszej. Jeśli jeszcze nie został on zainstalowany lub zaktualizowany, postępuj zgodnie z [tymi instrukcjami](/powershell/gallery/installing-psget).
 
 ### <a name="install-the-module"></a>Instalowanie modułu
 
-Schematy modułu programu PowerShell jest **Az.Blueprint**.
+Moduł planów dla programu PowerShell to **AZ. plan**.
 
 1. Za pomocą monitu **administracyjnego** programu PowerShell uruchom następujące polecenie:
 
@@ -41,21 +41,21 @@ Schematy modułu programu PowerShell jest **Az.Blueprint**.
    ```
 
    > [!NOTE]
-   > Jeśli **Az.Accounts** jest już zainstalowany, może być konieczne użycie `-AllowClobber` spowoduje wymuszenie instalacji.
+   > Jeśli **AZ. Accounts** jest już zainstalowana, może być konieczne użycie `-AllowClobber` programu w celu wymuszenia instalacji.
 
-1. Sprawdź, czy moduł został zaimportowany i jest poprawna wersja (0.1.0):
+1. Sprawdź, czy moduł został zaimportowany i czy jest to poprawna wersja (0.1.0):
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.Blueprint module
    Get-Command -Module 'Az.Blueprint' -CommandType 'Cmdlet'
    ```
 
-## <a name="get-blueprint-definitions"></a>Pobieranie definicji planu
+## <a name="get-blueprint-definitions"></a>Pobierz definicje planów
 
-Pierwszym krokiem do pracy z przypisania często to pobieranie odwołania do definicji planu.
-`Get-AzBlueprint` Polecenie cmdlet pobiera co najmniej jedna definicja planu. Polecenia cmdlet można pobrać definicji planu z grupą zarządzania za pomocą `-ManagementGroupId {mgId}` lub subskrypcji przy użyciu `-SubscriptionId {subId}`. **Nazwa** parametru pobiera definicji planu, ale może być używany z **ManagementGroupId** lub **SubscriptionId**. **Wersja** mogą być używane z **nazwa** się o definicji planu, który jest zwracany. Zamiast **wersji**, przełącznik `-LatestPublished` chwyty ostatnio opublikowanej wersji.
+Pierwszym krokiem do pracy z przypisaniem jest często pobranie odwołania do definicji planu.
+`Get-AzBlueprint` Polecenie cmdlet pobiera co najmniej jedną definicję planu. Polecenie cmdlet może pobrać definicje planu z grupy zarządzania z `-ManagementGroupId {mgId}` lub z `-SubscriptionId {subId}`subskrypcją programu. Parametr **name** pobiera definicję planu, ale musi być używany z **ManagementGroupId** lub identyfikatorem **subskrypcji**. **Wersja** może być używana z **nazwą** , aby być bardziej jawna, na której jest zwracana definicja planu. Zamiast **wersji**, przełącznik `-LatestPublished` korzysta z ostatnio opublikowanej wersji.
 
-W poniższym przykładzie użyto `Get-AzBlueprint` można pobrać wszystkich wersji definicji planu, o nazwie "101 schematy definition subskrypcji" z konkretną subskrypcję, reprezentowane jako `{subId}`:
+Poniższy przykład używa `Get-AzBlueprint` , aby pobrać wszystkie wersje definicji planu o nazwie "101-plany-definicja-subskrypcja" z określonej subskrypcji reprezentowanej jako `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -67,7 +67,7 @@ $blueprints = Get-AzBlueprint -SubscriptionId '{subId}' -Name '101-blueprints-de
 $blueprints
 ```
 
-Przykładowe dane wyjściowe dla definicji planu z wieloma wersjami wygląda następująco:
+Przykładowe dane wyjściowe dla definicji planu z wieloma wersjami wyglądają następująco:
 
 ```output
 Name                 : 101-blueprints-definition-subscription
@@ -82,7 +82,7 @@ Parameters           : {storageAccount_storageAccountType, storageAccount_locati
 ResourceGroups       : ResourceGroup
 ```
 
-[Planu parametry](../concepts/parameters.md#blueprint-parameters) na planu definicji można rozszerzyć, aby dostarczyć dodatkowych informacji.
+[Parametry](../concepts/parameters.md#blueprint-parameters) strategii w definicji strategii mogą być rozwinięte, aby uzyskać więcej informacji.
 
 ```azurepowershell-interactive
 $blueprints.Parameters
@@ -97,11 +97,11 @@ allowedlocations_listOfAllowedLocations                Microsoft.Azure.Commands.
 [Usergrouporapplicationname]:Reader_RoleAssignmentName Microsoft.Azure.Commands.Blueprint.Models.PSParameterDefinition
 ```
 
-## <a name="get-blueprint-assignments"></a>Pobieranie przypisań planu
+## <a name="get-blueprint-assignments"></a>Pobieranie przypisań planów
 
-Jeśli przypisanie planu już istnieje, można uzyskać odwołanie do niej przy użyciu `Get-AzBlueprintAssignment` polecenia cmdlet. Polecenie cmdlet pobiera **SubscriptionId** i **nazwa** jako parametry opcjonalne. Jeśli **SubscriptionId** nie zostanie określony, używany jest bieżący kontekst subskrypcji.
+Jeśli przypisanie planu już istnieje, można uzyskać odwołanie do niego przy użyciu `Get-AzBlueprintAssignment` polecenia cmdlet. Polecenie cmdlet przyjmuje identyfikator **subskrypcji** i **nazwę** jako parametry opcjonalne. Jeśli nie określono identyfikatora **subskrypcji** , używany jest bieżący kontekst subskrypcji.
 
-W poniższym przykładzie użyto `Get-AzBlueprintAssignment` można pobrać przypisania pojedynczego planu, o nazwie "Przypisania lock-resource-groups" z konkretną subskrypcję, reprezentowane jako `{subId}`:
+Poniższy przykład używa `Get-AzBlueprintAssignment` do uzyskania jednego przypisania planu o nazwie "przypisanie-blokada-zasób-grupy" z określonej subskrypcji reprezentowanej jako `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -113,7 +113,7 @@ $blueprintAssignment = Get-AzBlueprintAssignment -SubscriptionId '{subId}' -Name
 $blueprintAssignment
 ```
 
-Przykład danych wyjściowych przypisanie planu wygląda następująco:
+Przykładowe dane wyjściowe dla przypisania planu wyglądają następująco:
 
 ```output
 Name              : Assignment-lock-resource-groups
@@ -127,47 +127,47 @@ Parameters        :
 ResourceGroups    : ResourceGroup
 ```
 
-## <a name="create-blueprint-assignments"></a>Tworzenie przypisań planu
+## <a name="create-blueprint-assignments"></a>Tworzenie przypisań strategii
 
-Jeśli jeszcze nie istnieje przypisanie planu, możesz utworzyć za pomocą `New-AzBlueprintAssignment` polecenia cmdlet. To polecenie cmdlet używa następujących parametrów:
+Jeśli przypisanie planu nie istnieje jeszcze, można je utworzyć za pomocą `New-AzBlueprintAssignment` polecenia cmdlet. To polecenie cmdlet używa następujących parametrów:
 
-- **Nazwa** [wymagane]
-  - Określa nazwę przypisanie planu
-  - Muszą być unikatowe i nie istnieje w **SubscriptionId**
-- **Plan** [wymagane]
+- **Nazwa** potrzeb
+  - Określa nazwę przypisania strategii
+  - Musi być unikatowa i jeszcze nie istnieć w identyfikatorze **subskrypcji**
+- **Plan** potrzeb
   - Określa definicję planu do przypisania
-  - Użyj `Get-AzBlueprint` można pobrać obiektu odwołania
-- **Lokalizacja** [wymagane]
-  - Określa region przypisany systemowo tożsamości i subskrypcji wdrożenia obiektu zarządzanego w
-- **Subskrypcja** (opcjonalnie)
-  - Określa subskrypcję, w której wdrożono przypisania
-  - Jeśli nie zostanie podana, wartość domyślna to bieżącego kontekstu subskrypcji
-- **Zablokuj** (opcjonalnie)
-  - Definiuje [planu blokowania zasobów](../concepts/resource-locking.md) na potrzeby wdrożone zasoby
+  - Użyj `Get-AzBlueprint` , aby uzyskać obiekt odwołania
+- **Lokalizacja** potrzeb
+  - Określa region dla tożsamości zarządzanej przypisanej do systemu i obiektu wdrożenia subskrypcji
+- **Subskrypcja** obowiązkowe
+  - Określa subskrypcję, do której jest wdrażane przypisanie
+  - Jeśli nie zostanie podany, wartością domyślną jest bieżący kontekst subskrypcji
+- **Blokada** obowiązkowe
+  - Definiuje [blokadę zasobów](../concepts/resource-locking.md) planu do użycia dla wdrożonych zasobów
   - Obsługiwane opcje: _None_, _AllResourcesReadOnly_, _AllResourcesDoNotDelete_
-  - Jeśli nie zostanie podana, wartość domyślna to _None_
-- **SystemAssignedIdentity** (opcjonalnie)
-  - Wybierz do tworzenia tożsamości zarządzanej przypisany systemowo przypisania i wdrażania zasobów
-  - Domyślne dla zestawu parametrów "tożsamość"
+  - Jeśli nie zostanie podany, wartość domyślna to _Brak_ .
+- **SystemAssignedIdentity** obowiązkowe
+  - Wybierz, aby utworzyć zarządzaną przez system tożsamość skojarzoną z przypisaniem i wdrożyć zasoby
+  - Wartość domyślna dla zestawu parametrów "Identity"
   - Nie można używać z **UserAssignedIdentity**
-- **UserAssignedIdentity** (opcjonalnie)
-  - Określa przypisanych przez użytkownika tożsamości zarządzanej do używanych w celu przypisania i wdrażania zasobów
-  - Część "tożsamość" zestaw parametrów
+- **UserAssignedIdentity** obowiązkowe
+  - Określa tożsamość zarządzaną przypisaną przez użytkownika do użycia podczas przypisywania i wdrażania zasobów
+  - Część zestawu parametrów "Identity"
   - Nie można używać z **SystemAssignedIdentity**
-- **Parametr** (opcjonalnie)
-  - A [tabeli mieszania](/powershell/module/microsoft.powershell.core/about/about_hash_tables) par klucz/wartość dla ustawienia [parametrów dynamicznych](../concepts/parameters.md#dynamic-parameters) na przypisanie planu
-  - Wartością domyślną jest parametr dynamiczny **defaultValue** w definicji
-  - Jeśli nie podano parametru, a nie ma przypisanego **defaultValue**, parametr jest opcjonalny
+- **Parametr** obowiązkowe
+  - [Tabela skrótów](/powershell/module/microsoft.powershell.core/about/about_hash_tables) par klucz/wartość służąca do ustawiania [parametrów dynamicznych](../concepts/parameters.md#dynamic-parameters) w przypisaniu planu
+  - Wartością domyślną dla parametru dynamicznego jest wartość **DefaultValue** w definicji
+  - Jeśli parametr nie jest podany i nie ma **atrybutu DefaultValue**, parametr nie jest opcjonalny
 
     > [!NOTE]
-    > **Parametr** nie obsługuje secureStrings.
+    > **Parametr** nie obsługuje SecureString.
 
-- **ResourceGroupParameter** (opcjonalnie)
-  - A [tabeli mieszania](/powershell/module/microsoft.powershell.core/about/about_hash_tables) artefaktów grupy zasobów
-  - Każdy symbol zastępczy artefaktu grupy zasobów będzie miał pary klucz/wartość do ustawiania dynamicznie **nazwa** i/lub **lokalizacji** tego artefaktu grupy zasobów
-  - Jeśli nie podano parametru grupy zasobów, a nie ma przypisanego **defaultValue**, parametru grupy zasobów nie jest opcjonalna
+- **ResourceGroupParameter** obowiązkowe
+  - [Tablica skrótów](/powershell/module/microsoft.powershell.core/about/about_hash_tables) artefaktów grupy zasobów
+  - Każdy symbol zastępczy artefaktu grupy zasobów będzie miał pary klucz/wartość do dynamicznego ustawienia **nazwy** i/lub **lokalizacji** w tym artefaktie grupy zasobów
+  - Jeśli nie podano parametru grupy zasobów i nie maon wartości DefaultValue, parametr grupy zasobów nie jest opcjonalny
 
-Poniższy przykład tworzy nowe przypisanie definicji planu "Mój plan" pobrana z wersji "1.1" `Get-AzBlueprint`, ustawia zarządzaną lokalizację obiektu tożsamości i przypisanie do "westus2", blokad zasobów przy użyciu  _AllResourcesReadOnly_i ustawia tabel skrótów dla obu **parametru** i **ResourceGroupParameter** na konkretną subskrypcję, reprezentowane jako `{subId}`:
+Poniższy przykład tworzy nowe przypisanie wersji "1,1" w definicji planu "My-strategii" pobranej z `Get-AzBlueprint`, ustawia lokalizację zarządzaną tożsamości i obiektu przypisania na "westus2", blokuje zasoby z _AllResourcesReadOnly_ i ustawia tabele skrótów dla **parametrów** i **ResourceGroupParameter** w określonej subskrypcji reprezentowanej jako `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -188,7 +188,7 @@ $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Bluep
     -Parameter $bpParameters -ResourceGroupParameter $bpRGParameters
 ```
 
-Przykładowe dane wyjściowe do tworzenia przypisanie planu wygląda następująco:
+Przykładowe dane wyjściowe tworzenia przypisania strategii wyglądają następująco:
 
 ```output
 Name              : my-blueprint-assignment
@@ -202,50 +202,50 @@ Parameters        : {storageAccount_storageAccountType}
 ResourceGroups    : ResourceGroup
 ```
 
-## <a name="update-blueprint-assignments"></a>Aktualizowanie przypisań planu
+## <a name="update-blueprint-assignments"></a>Aktualizowanie przypisań planów
 
-Czasami jest niezbędne do aktualizacji przypisanie planu, który został już utworzony. `Set-AzBlueprintAssignment` Polecenie cmdlet obsługuje tę akcję. Polecenie cmdlet pobiera najbardziej te same parametry, `New-AzBlueprintAssignment` jest polecenie cmdlet, dzięki czemu wszystkie elementy, które została ustawiona na przypisanie do zaktualizowania. Wyjątki od tego czy _nazwa_, _planu_, i _SubscriptionId_. Tylko wartości, które zostały podane są aktualizowane.
+Czasami trzeba zaktualizować przypisanie planu, które zostało już utworzone. `Set-AzBlueprintAssignment` Polecenie cmdlet obsługuje tę akcję. Polecenie cmdlet pobiera większość z tych samych parametrów, które `New-AzBlueprintAssignment` są używane przez polecenie cmdlet, co umożliwia zaktualizowanie wszystkich elementów ustawionych w przypisaniu. Wyjątkami tego są _nazwy_, _plany_i identyfikator _subskrypcji_. Tylko podane wartości są aktualizowane.
 
-Aby dowiedzieć się, co się dzieje w przypadku aktualizowania przypisania planu, zobacz [zasady aktualizowanie przypisań](./update-existing-assignments.md#rules-for-updating-assignments).
+Aby zrozumieć, co się dzieje w przypadku aktualizowania przypisania planu, zobacz [reguły dotyczące aktualizowania](./update-existing-assignments.md#rules-for-updating-assignments)przypisań.
 
-- **Nazwa** [wymagane]
-  - Określa nazwę przypisanie planu do zaktualizowania
-  - Używana do lokalizowania przypisania, aby zaktualizować, nie należy zmieniać przypisania
-- **Plan** [wymagane]
-  - Określa definicję planu przypisanie planu
-  - Użyj `Get-AzBlueprint` można pobrać obiektu odwołania
-  - Używana do lokalizowania przypisania, aby zaktualizować, nie należy zmieniać przypisania
-- **Lokalizacja** (opcjonalnie)
-  - Określa region przypisany systemowo tożsamości i subskrypcji wdrożenia obiektu zarządzanego w
-- **Subskrypcja** (opcjonalnie)
-  - Określa subskrypcję, w której wdrożono przypisania
-  - Jeśli nie zostanie podana, wartość domyślna to bieżącego kontekstu subskrypcji
-  - Używana do lokalizowania przypisania, aby zaktualizować, nie należy zmieniać przypisania
-- **Zablokuj** (opcjonalnie)
-  - Definiuje [planu blokowania zasobów](../concepts/resource-locking.md) na potrzeby wdrożone zasoby
+- **Nazwa** potrzeb
+  - Określa nazwę przypisania strategii do zaktualizowania
+  - Służy do lokalizowania przypisania do aktualizacji, a nie do zmiany przypisania
+- **Plan** potrzeb
+  - Określa definicję planu przypisania planu
+  - Użyj `Get-AzBlueprint` , aby uzyskać obiekt odwołania
+  - Służy do lokalizowania przypisania do aktualizacji, a nie do zmiany przypisania
+- **Lokalizacja** obowiązkowe
+  - Określa region dla tożsamości zarządzanej przypisanej do systemu i obiektu wdrożenia subskrypcji
+- **Subskrypcja** obowiązkowe
+  - Określa subskrypcję, do której jest wdrażane przypisanie
+  - Jeśli nie zostanie podany, wartością domyślną jest bieżący kontekst subskrypcji
+  - Służy do lokalizowania przypisania do aktualizacji, a nie do zmiany przypisania
+- **Blokada** obowiązkowe
+  - Definiuje [blokadę zasobów](../concepts/resource-locking.md) planu do użycia dla wdrożonych zasobów
   - Obsługiwane opcje: _None_, _AllResourcesReadOnly_, _AllResourcesDoNotDelete_
-- **SystemAssignedIdentity** (opcjonalnie)
-  - Wybierz do tworzenia tożsamości zarządzanej przypisany systemowo przypisania i wdrażania zasobów
-  - Domyślne dla zestawu parametrów "tożsamość"
+- **SystemAssignedIdentity** obowiązkowe
+  - Wybierz, aby utworzyć zarządzaną przez system tożsamość skojarzoną z przypisaniem i wdrożyć zasoby
+  - Wartość domyślna dla zestawu parametrów "Identity"
   - Nie można używać z **UserAssignedIdentity**
-- **UserAssignedIdentity** (opcjonalnie)
-  - Określa przypisanych przez użytkownika tożsamości zarządzanej do używanych w celu przypisania i wdrażania zasobów
-  - Część "tożsamość" zestaw parametrów
+- **UserAssignedIdentity** obowiązkowe
+  - Określa tożsamość zarządzaną przypisaną przez użytkownika do użycia podczas przypisywania i wdrażania zasobów
+  - Część zestawu parametrów "Identity"
   - Nie można używać z **SystemAssignedIdentity**
-- **Parametr** (opcjonalnie)
-  - A [tabeli mieszania](/powershell/module/microsoft.powershell.core/about/about_hash_tables) par klucz/wartość dla ustawienia [parametrów dynamicznych](../concepts/parameters.md#dynamic-parameters) na przypisanie planu
-  - Wartością domyślną jest parametr dynamiczny **defaultValue** w definicji
-  - Jeśli nie podano parametru, a nie ma przypisanego **defaultValue**, parametr jest opcjonalny
+- **Parametr** obowiązkowe
+  - [Tabela skrótów](/powershell/module/microsoft.powershell.core/about/about_hash_tables) par klucz/wartość służąca do ustawiania [parametrów dynamicznych](../concepts/parameters.md#dynamic-parameters) w przypisaniu planu
+  - Wartością domyślną dla parametru dynamicznego jest wartość **DefaultValue** w definicji
+  - Jeśli parametr nie jest podany i nie ma **atrybutu DefaultValue**, parametr nie jest opcjonalny
 
     > [!NOTE]
-    > **Parametr** nie obsługuje secureStrings.
+    > **Parametr** nie obsługuje SecureString.
 
-- **ResourceGroupParameter** (opcjonalnie)
-  - A [tabeli mieszania](/powershell/module/microsoft.powershell.core/about/about_hash_tables) artefaktów grupy zasobów
-  - Każdy symbol zastępczy artefaktu grupy zasobów będzie miał pary klucz/wartość do ustawiania dynamicznie **nazwa** i/lub **lokalizacji** tego artefaktu grupy zasobów
-  - Jeśli nie podano parametru grupy zasobów, a nie ma przypisanego **defaultValue**, parametru grupy zasobów nie jest opcjonalna
+- **ResourceGroupParameter** obowiązkowe
+  - [Tablica skrótów](/powershell/module/microsoft.powershell.core/about/about_hash_tables) artefaktów grupy zasobów
+  - Każdy symbol zastępczy artefaktu grupy zasobów będzie miał pary klucz/wartość do dynamicznego ustawienia **nazwy** i/lub **lokalizacji** w tym artefaktie grupy zasobów
+  - Jeśli nie podano parametru grupy zasobów i nie maon wartości DefaultValue, parametr grupy zasobów nie jest opcjonalny
 
-Poniższy przykład aktualizuje przypisywanie definicji planu "Mój plan" pobrana z wersji "1.1" `Get-AzBlueprint` , zmieniając tryb blokowania:
+Poniższy przykład aktualizuje przypisanie wersji "1,1" definicji planu "My-strategii" pobranej `Get-AzBlueprint` przez zmianę trybu blokowania:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -258,7 +258,7 @@ $bpAssignment = Set-AzBlueprintAssignment -Name 'my-blueprint-assignment' -Bluep
     -SubscriptionId '{subId}' -Lock AllResourcesDoNotDelete
 ```
 
-Przykładowe dane wyjściowe do tworzenia przypisanie planu wygląda następująco:
+Przykładowe dane wyjściowe tworzenia przypisania strategii wyglądają następująco:
 
 ```output
 Name              : my-blueprint-assignment
@@ -272,11 +272,11 @@ Parameters        : {storageAccount_storageAccountType}
 ResourceGroups    : ResourceGroup
 ```
 
-## <a name="remove-blueprint-assignments"></a>Usuwanie przypisania planu
+## <a name="remove-blueprint-assignments"></a>Usuwanie przypisań strategii
 
-Gdy nadejdzie czas przydziału planu do usunięcia, `Remove-AzBlueprintAssignment` polecenie cmdlet obsługuje tę akcję. Polecenie cmdlet pobiera albo **nazwa** lub **InputObject** Aby określić, które planu przypisania do usunięcia. **SubscriptionId** jest _wymagane_ i musi być podana we wszystkich przypadkach.
+Gdy jest czas, aby można było usunąć przypisanie do planu, `Remove-AzBlueprintAssignment` polecenie cmdlet obsługuje tę akcję. Polecenie cmdlet przyjmuje **nazwę** lub parametr **inputobject** , aby określić, które przypisanie planu ma zostać usunięte. Identyfikator **subskrypcji** jest _wymagany_ i musi być podany we wszystkich przypadkach.
 
-Poniższy przykład pobiera istniejącego przypisania planu z `Get-AzBlueprintAssignment` i usuwa go z konkretną subskrypcję, reprezentowane jako `{subId}`:
+Poniższy przykład pobiera istniejące przypisanie strategii z `Get-AzBlueprintAssignment` , a następnie usuwa je z określonej subskrypcji reprezentowanej jako: `{subId}`
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -288,9 +288,9 @@ $blueprintAssignment = Get-AzBlueprintAssignment -Name 'Assignment-lock-resource
 Remove-AzBlueprintAssignment -InputObject $blueprintAssignment -SubscriptionId '{subId}'
 ```
 
-## <a name="end-to-end-code-example"></a>Przykładowy kod end-to-end
+## <a name="end-to-end-code-example"></a>Przykład kodu kompleksowego
 
-Łączące wszystkie kroki, poniższy przykład pobiera definicji planu, następnie tworzy, aktualizuje i usuwa przypisanie planu w określonej subskrypcji reprezentowane jako `{subId}`:
+Wykonanie wszystkich kroków razem, w poniższym przykładzie pobiera definicję planu, tworzy, aktualizuje i usuwa przypisanie strategii w ramach określonej subskrypcji reprezentowanej jako `{subId}`:
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -330,9 +330,9 @@ Remove-AzBlueprintAssignment -InputObject $bpAssignment -SubscriptionId '{subId}
 #endregion
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Uzyskaj informacje na temat [cyklu życia strategii](../concepts/lifecycle.md).
+- Dowiedz się więcej o [cyklu życia](../concepts/lifecycle.md)planu.
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../concepts/parameters.md).
 - Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../concepts/sequencing-order.md).
 - Dowiedz się, jak używać [blokowania zasobów strategii](../concepts/resource-locking.md).

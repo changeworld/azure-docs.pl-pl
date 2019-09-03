@@ -1,5 +1,5 @@
 ---
-title: Zasoby w usłudze Azure Media Services | Dokumentacja firmy Microsoft
+title: Zasoby w Azure Media Services | Microsoft Docs
 description: Ten artykuł zawiera opis zasoby są i jak są one używane przez usługi Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -9,30 +9,34 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 07/02/2019
+ms.date: 08/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d0a81d5d7ce8e7569b77007b6ad9c322cf626f16
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 2f2dea922b7a3ba45ad6493ce94f0c52649dfa68
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670698"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70230983"
 ---
 # <a name="assets"></a>Elementy zawartości
 
-W usłudze Azure Media Services [zasobów](https://docs.microsoft.com/rest/api/media/assets) zawiera informacje o plikach cyfrowych przechowywanych w usłudze Azure Storage (w tym wideo, audio, obrazy, kolekcje miniatur, ścieżki tekstowe i pliki napisów). 
+W Azure Media Services [zasób](https://docs.microsoft.com/rest/api/media/assets) zawiera informacje o plikach cyfrowych przechowywanych w usłudze Azure Storage (w tym wideo, audio, obrazy, kolekcje miniatur, ścieżki tekstowe i pliki napisów). 
 
-Element zawartości jest mapowany na kontener obiektów blob w [konta usługi Azure Storage](storage-account-concept.md) i pliki w elemencie zawartości są przechowywane jako blokowe obiekty BLOB w kontenerze. Usługa Media Services obsługuje warstwy obiektu Blob, gdy konto korzysta z ogólnego przeznaczenia w wersji 2 (GPv2) magazynu. Konta GPv2, umożliwia przeniesienie plików [chłodna lub archiwum](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers). **Archiwum** magazynu nadaje się do archiwizacji plików źródłowych, gdy nie będą już potrzebne (na przykład po został zakodowany).
+Zasób jest mapowany do kontenera obiektów BLOB na [koncie usługi Azure Storage](storage-account-concept.md) , a pliki w elemencie zawartości są przechowywane jako blokowe obiekty blob w tym kontenerze. Media Services obsługuje warstwy obiektów blob, gdy konto używa magazynu ogólnego przeznaczenia w wersji 2 (GPv2). Za pomocą GPv2 można przenosić pliki do [magazynu chłodnego lub archiwum](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers). Magazyn archiwalny jest odpowiedni do archiwizowania plików źródłowych, gdy nie są już potrzebne (na przykład po ich zakodowaniu).
 
-**Archiwum** warstwy magazynowania jest zalecane tylko dla plików źródłowych bardzo duże, które już zaszyfrowana i kodowania dane wyjściowe zadania został umieszczony w kontenerze obiektów blob danych wyjściowych. Obiekty BLOB w kontenerze danych wyjściowych, który chcesz skojarzyć z zasobu i użycia, przesłać strumieniowo lub analizować zawartość, musi istnieć w **gorąca** lub **chłodna** warstwy magazynowania.
+Warstwa magazynu **archiwum** jest zalecana tylko dla bardzo dużych plików źródłowych, które zostały już zakodowane i dane wyjściowe zadania kodowania zostały umieszczone w wyjściowym kontenerze obiektów BLOB. Obiekty blob w kontenerze danych wyjściowych, które mają zostać skojarzone z zasobem i używają do przesyłania strumieniowego lub analizowania zawartości, muszą znajdować się w warstwie magazynowania gorąca lub **chłodna** .
 
-## <a name="upload-digital-files-into-assets"></a>Przekazać pliki cyfrowe do zasobów
+### <a name="naming-blobs"></a>Nazywanie obiektów BLOB
 
-Po pliki cyfrowe są przekazywane do magazynu i skojarzone z elementem zawartości, używać w usłudze Media Services, kodowanie, przesyłanie strumieniowe, analizowanie zawartości przepływów pracy. Jednym z typowych przepływów pracy usługi Media Services jest przekazywanie, kodowanie i przesyłanie strumieniowe plików. W tej sekcji opisano ogólne kroki.
+Nazwy plików/obiektów BLOB w obrębie elementu zawartości muszą spełniać zarówno [wymagania dotyczące nazw obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) , jak i [wymagania dotyczące nazw NTFS](https://docs.microsoft.com/windows/win32/fileio/naming-a-file). Przyczyną tych wymagań jest możliwość skopiowania plików z magazynu obiektów BLOB do lokalnego dysku NTFS w celu przetworzenia.
+
+## <a name="upload-digital-files-into-assets"></a>Przekazywanie plików cyfrowych do zasobów
+
+Po przekazaniu plików cyfrowych do magazynu i skojarzeniu ich z elementem zawartości mogą one być używane w kodowaniu Media Services, przesyłanie strumieniowe, analizowanie przepływów pracy zawartości. Jednym z typowych przepływów pracy Media Services jest przekazywanie, kodowanie i przesyłanie strumieniowe pliku. Ta sekcja zawiera opis ogólnych kroków.
 
 > [!TIP]
-> Przed rozpoczęciem tworzenia, przejrzyj [opracowywanie zawartości przy użyciu usługi Media Services v3 API](media-services-apis-overview.md) (w tym informacji na temat uzyskiwania dostępu do interfejsów API, konwencje nazewnictwa, itp.)
+> Przed rozpoczęciem opracowywania, zobacz [Tworzenie aplikacji przy użyciu interfejsów api Media Services v3](media-services-apis-overview.md) (w tym informacje na temat uzyskiwania dostępu do interfejsów API, konwencji nazewnictwa itp.).
 
 1. Użyj interfejsu API usługi Media Services w wersji 3, aby utworzyć nowy element zawartości typu „input”. Ta operacja polega na utworzeniu kontenera na koncie magazynu skojarzonym z kontem usługi Media Services. Interfejs API zwraca nazwę kontenera (na przykład `"container": "asset-b8d8b68a-2d7f-4d8c-81bb-8c7bbbe67ee4"`).
    
@@ -46,14 +50,14 @@ Po pliki cyfrowe są przekazywane do magazynu i skojarzone z elementem zawartoś
 2. Pobierz adres URL sygnatury dostępu współdzielonego z uprawnieniami odczytu/zapisu, który będzie używany do przekazywania plików cyfrowych do kontenera elementów zawartości. W celu [utworzenia listy adresów URL kontenerów elementów zawartości](https://docs.microsoft.com/rest/api/media/assets/listcontainersas) można użyć interfejsu API usługi Media Services.
 3. W celu przekazania plików do kontenera elementów zawartości należy użyć interfejsów API lub zestawów SDK usługi Azure Storage (np. [interfejsu API REST magazynu](../../storage/common/storage-rest-api-auth.md), [zestawu JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md) lub [zestawu .NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)). 
 4. W celu utworzenia przekształcenia i zadania przetwarzającego element zawartości „input” należy użyć interfejsów API usługi Media Services w wersji 3. Aby uzyskać więcej informacji, zobacz [Przekształcenia i zadania](transform-concept.md).
-5. Stream zawartość z zasobu "Wyjście".
+5. Przesyłaj strumieniowo zawartość z zasobu "output".
 
-Aby uzyskać pełny przykład .NET, który pokazuje, jak: tworzenia zasobu, Pobierz adres URL zapisu sygnatury dostępu Współdzielonego do zasobu kontenera w magazynie, przekazać plik do kontenera w magazynie przy użyciu adresu URL sygnatury dostępu Współdzielonego, zobacz [utworzyć dane wejściowe zadania z pliku lokalnego](job-input-from-local-file-how-to.md).
+Pełny przykład platformy .NET, który pokazuje, jak: utworzyć element zawartości, uzyskać zapisywalny adres URL sygnatury dostępu współdzielonego do kontenera zasobów w magazynie, Przekaż plik do kontenera w magazynie przy użyciu adresu URL sygnatury dostępu współdzielonego, zobacz [Tworzenie danych wejściowych zadania z pliku lokalnego](job-input-from-local-file-how-to.md).
 
-### <a name="create-a-new-asset"></a>Utwórz nowy zasób
+### <a name="create-a-new-asset"></a>Utwórz nowy element zawartości
 
 > [!NOTE]
-> Właściwości zasobu typu Data/Godzina, zawsze znajdują się w formacie UTC.
+> Właściwości elementu zawartości typu datetime są zawsze w formacie UTC.
 
 #### <a name="rest"></a>REST
 
@@ -61,7 +65,7 @@ Aby uzyskać pełny przykład .NET, który pokazuje, jak: tworzenia zasobu, Pobi
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Media/mediaServices/{amsAccountName}/assets/{assetName}?api-version=2018-07-01
 ```
 
-Na przykład REST, zobacz [utworzenie elementu zawartości z użyciem usług REST](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples) przykład.
+Aby zapoznać się z przykładem, zobacz [Tworzenie zasobu z](https://docs.microsoft.com/rest/api/media/assets/createorupdate#examples) przykładem Rest.
 
 W przykładzie pokazano sposób utworzenia **treści żądania**, w której można określić przydatne informacje, takie jak opis, nazwa kontenera, konto magazynu oraz inne informacje.
 
@@ -85,24 +89,24 @@ curl -X PUT \
  Asset asset = await client.Assets.CreateOrUpdateAsync(resourceGroupName, accountName, assetName, new Asset());
 ```
 
-Aby uzyskać pełny przykład, zobacz [utworzyć dane wejściowe zadania z pliku lokalnego](job-input-from-local-file-how-to.md). W wersji 3 usługa Media Services, dane wejściowe zadania można również utworzyć z adresów URL protokołu HTTPS (zobacz [tworzenie dane wejściowe zadania na podstawie adresu URL HTTPS](job-input-from-http-how-to.md)).
+Pełny przykład można znaleźć w temacie [Tworzenie danych wejściowych zadania z pliku lokalnego](job-input-from-local-file-how-to.md). W Media Services v3 dane wejściowe zadania mogą być również tworzone na podstawie adresów URL HTTPS (zobacz [Tworzenie danych wejściowych zadania na podstawie adresu URL https](job-input-from-http-how-to.md)).
 
-## <a name="map-v3-asset-properties-to-v2"></a>Mapowania właściwości zasobów w wersji 3 w wersji 2
+## <a name="map-v3-asset-properties-to-v2"></a>Mapuj właściwości zasobu v3 do wersji 2
 
-W poniższej tabeli przedstawiono sposób, w jaki [zasobów](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)jego właściwości w wersji 3 mapować do właściwości zasobu w wersji 2.
+W poniższej tabeli przedstawiono sposób, w jaki właściwości [zasobu](https://docs.microsoft.com/rest/api/media/assets/createorupdate#asset)w wersji v3 mapują się na właściwości zasobu w 2.
 
-|właściwości v3|właściwości v2|
+|Właściwości v3|Właściwości v2|
 |---|---|
-|ID — (unikatowe) pełną ścieżkę usługi Azure Resource Manager, zobacz przykłady w [zasobów](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
-|Nazwa — (unikatowe) zobacz [konwencje nazewnictwa](media-services-apis-overview.md#naming-conventions) ||
+|Identyfikator — (unikatowy) pełna ścieżka Azure Resource Manager, zobacz przykłady w elemencie [zawartości](https://docs.microsoft.com/rest/api/media/assets/createorupdate)||
+|Nazwa — (unikatowy) zobacz [konwencje nazewnictwa](media-services-apis-overview.md#naming-conventions) ||
 |alternateId|AlternateId|
-|assetId|ID — (unikatowe) wartości zaczyna się od `nb:cid:UUID:` prefiks.|
-|Utworzone|Utworzono|
-|description|Name (Nazwa)|
+|assetId|Wartość identyfikatora — (unikatowa) rozpoczyna się `nb:cid:UUID:` od prefiksu.|
+|utworzone|Utworzono|
+|description|Name|
 |lastModified|Ostatnia modyfikacja|
 |storageAccountName|StorageAccountName|
 |storageEncryptionFormat| Opcje (opcje tworzenia)|
-|— typ||
+|type||
 
 ## <a name="storage-side-encryption"></a>Szyfrowanie po stronie magazynu
 
@@ -120,10 +124,10 @@ Aby chronić Twoje zasoby w spoczynku, zasoby mają zostać zaszyfrowane za pomo
 
 ## <a name="filtering-ordering-paging"></a>Filtrowania, sortowania, stronicowania
 
-Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek usługi Media Services](entities-overview.md).
+Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek Media Services](entities-overview.md).
 
 ## <a name="next-steps"></a>Następne kroki
 
 * [Strumieniowe przesyłanie pliku](stream-files-dotnet-quickstart.md)
 * [Korzystanie z funkcji DVR w chmurze](live-event-cloud-dvr.md)
-* [Różnice między Media Services v2 i v3](migrate-from-v2-to-v3.md)
+* [Różnice między Media Services V2 i V3](migrate-from-v2-to-v3.md)

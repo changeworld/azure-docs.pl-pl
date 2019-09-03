@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: c31a9fde50de8190cdd7bc19600344a8e58cf60b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e2faa47a58283623747ae569de22e1c57df1a51f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827323"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231134"
 ---
 # <a name="azure-migrate-appliance"></a>Urządzenie usługi Azure Migrate
 
@@ -72,6 +72,9 @@ Przepływność zapisu karty sieciowej (MB na sekundę) | net.transmitted.averag
 
 ## <a name="collected-metadata-vmware"></a>Zebrane metadane — VMware
 
+> [!NOTE]
+> Metadane wykryte przez urządzenie Azure Migrate są używane, aby pomóc Ci w odpowiednim rozmiarze aplikacji podczas migrowania ich do platformy Azure, przeprowadzać analizę przydatności na platformie Azure, analizę zależności aplikacji i planowanie kosztów. Firma Microsoft nie używa tych danych w odniesieniu do żadnej inspekcji zgodności licencji.
+
 Poniżej znajduje się pełna lista metadanych maszyn wirtualnych VMware, które urządzenie zbiera i wysyła do platformy Azure.
 
 **Dane** | **Counter**
@@ -109,7 +112,7 @@ Adresy IPv6 | vm.Guest.Net
 Przepływność odczytu (MB na sekundę) | NET. Receive. Average
 Przepływność zapisu (MB na sekundę) | net.transmitted.average
 **Szczegóły ścieżki spisu** | 
-Name (Nazwa) | container.GetType().Name
+Name | container.GetType().Name
 Typ obiektu podrzędnego | wbudowane. Typ podrzędny
 Szczegóły odwołania | wbudowane. MoRef
 Szczegóły nadrzędne | Kontener. Parent
@@ -122,6 +125,9 @@ Szczegóły hosta na maszynę wirtualną | ((HostSystem) kontener). MASZYN
 
 
 ## <a name="collected-performance-data-hyper-v"></a>Zebrane dane wydajności — funkcja Hyper-V
+
+> [!NOTE]
+> Metadane wykryte przez urządzenie Azure Migrate są używane, aby pomóc Ci w odpowiednim rozmiarze aplikacji podczas migrowania ich do platformy Azure, przeprowadzać analizę przydatności na platformie Azure, analizę zależności aplikacji i planowanie kosztów. Firma Microsoft nie używa tych danych w odniesieniu do żadnej inspekcji zgodności licencji.
 
 Oto dane wydajności maszyny wirtualnej VMware, które urządzenie zbiera i wysyła do platformy Azure.
 

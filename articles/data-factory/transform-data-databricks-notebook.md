@@ -6,18 +6,18 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
-author: djpmsft
-ms.author: daperlov
+author: nabhishek
+ms.author: abnarain
 manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.openlocfilehash: db437c7699c7fddc2b04175537446f53c4c4bc85
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 23166a4a0110629674db6ccc9d225118264b3c15
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140828"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233063"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Przekształcanie danych przez uruchamianie notesu datakostks
 
@@ -111,6 +111,19 @@ W powyższych definicjach działań datacegły należy określić następujące 
 ```
 
 Aby uzyskać więcej informacji, zobacz [dokumentację](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) dotyczącą typów bibliotek.
+
+## <a name="passing-parameters-between-notebooks-and-data-factory"></a>Przekazywanie parametrów między notesami i Data Factory
+
+Parametry fabryki danych można przekazać do notesów przy użyciu właściwości *baseParameters* w działaniu z danymi. 
+
+W niektórych przypadkach może być konieczne przekazanie z powrotem określonych wartości z notesu do fabryki danych, które mogą być używane dla przepływu sterowania (sprawdzanie warunkowe) w fabryce danych lub zużywane przez działania podrzędne (limit rozmiaru wynosi 2 MB). 
+
+1. W Twoim notesie można wywołać metodę [. Notes. Exit ("ReturnValue")](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) i odpowiadający jej "ReturnValue" zostaną zwrócone do fabryki danych.
+
+2. Możesz użyć danych wyjściowych w usłudze Data Factory przy użyciu wyrażeń takich `'@activity('databricks notebook activity name').output.runOutput'`jak. 
+
+   > [!IMPORTANT]
+   > W przypadku przekazywania obiektu JSON można pobrać wartości poprzez dołączenie nazw właściwości. Przykład: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Jak przekazać bibliotekę w kostkach
 

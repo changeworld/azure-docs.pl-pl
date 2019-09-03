@@ -7,13 +7,12 @@ ms.date: 12/06/2018
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 291152b46f97c9b6dd10b67c7ce812fcc791ce09
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 805f9178cb77241b8332fb78687a8409206e5c05
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979607"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231572"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Szybki start: Tworzenie przypisania zasad w celu zidentyfikowania niezgodnych zasobów
 
@@ -30,15 +29,15 @@ W tym przewodniku Szybki start utworzysz przypisanie zasad i przypiszesz definic
 
 1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
 
-   ![Wyszukaj zasady wszystkie usługi](./media/assign-policy-portal/search-policy.png)
+   ![Wyszukaj zasady w obszarze wszystkie usługi](./media/assign-policy-portal/search-policy.png)
 
 1. Wybierz pozycję **Przypisania** w lewej części strony usługi Azure Policy. Przypisanie to zasady, które zostały przypisane do określonego zakresu.
 
-   ![Wybierz stronę przypisania ze strony Przegląd zasad](./media/assign-policy-portal/select-assignments.png)
+   ![Strona wybierania przydziałów na stronie Przegląd zasad](./media/assign-policy-portal/select-assignments.png)
 
 1. Wybierz pozycję **Przypisz zasady** w górnej części strony **Zasady — Przypisania**.
 
-   ![Przypisywanie definicji zasad ze strony przypisania](./media/assign-policy-portal/select-assign-policy.png)
+   ![Przypisywanie definicji zasad ze strony przypisań](./media/assign-policy-portal/select-assign-policy.png)
 
 1. Na stronie **Przypisywanie zasad** wybierz **Zakres**, klikając wielokropek i wybierając grupę zarządzania lub subskrypcję. Opcjonalnie możesz wybrać grupę zasobów. Zakres określa, jakie zasoby lub grupy zasobów są wymuszane w ramach przypisania zasad. Następnie kliknij przycisk **Wybierz** w dolnej części strony **Zakres**.
 
@@ -50,9 +49,9 @@ W tym przewodniku Szybki start utworzysz przypisanie zasad i przypiszesz definic
 
    - Wymuszaj tag i jego wartość
    - Apply tag and its value (Zastosuj tag i jego wartość)
-   - Wymagaj programu SQL Server w wersji 12.0
+   - Require SQL Server Version 12.0 (Wymagaj programu SQL Server w wersji 12.0)
 
-   Aby uzyskać częściowa lista dostępnych zasad wbudowanych, zobacz [przykładów usługi Azure Policy](./samples/index.md).
+   Aby zapoznać się z częściową listą dostępnych wbudowanych zasad, zobacz [Azure Policy Samples](./samples/index.md).
 
 1. Przeszukaj listę definicji zasad, aby znaleźć definicję *Audit VMs that do not use managed disks* (Przeprowadź inspekcję maszyn wirtualnych, które nie używają dysków zarządzanych). Kliknij te zasady, a następnie kliknij pozycję **Wybierz**.
 
@@ -71,7 +70,7 @@ Teraz możesz zidentyfikować niezgodne zasoby, aby poznać stan zgodności Twoj
 
 Wybierz pozycję **Zgodność** w lewej części strony. Znajdź utworzone przypisanie zasad **Audit VMs that do not use managed disks** (Przeprowadź inspekcję maszyn wirtualnych, które nie używają dysków zarządzanych).
 
-![Szczegóły zgodności na stronie zasad zgodności](./media/assign-policy-portal/policy-compliance.png)
+![Szczegóły zgodności na stronie zgodność zasad](./media/assign-policy-portal/policy-compliance.png)
 
 Jeśli istnieją jakiekolwiek zasoby niezgodne z nowym przypisaniem, zostaną one wyświetlone w obszarze **Niezgodne zasoby**.
 
@@ -79,10 +78,10 @@ Jeśli warunek zostanie oceniony dla istniejących zasobów i okaże się prawdz
 
 | **Stan zasobu** | **Efekt** | **Ocena zasad** | **Stan zgodności** |
 | --- | --- | --- | --- |
-| Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | True | Niezgodne |
+| Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | Prawda | Niezgodne |
 | Exists | Deny, Audit, Append\*, DeployIfNotExist\*, AuditIfNotExist\* | False | Zgodne |
-| Nowa | Audit, AuditIfNotExist\* | True | Niezgodne |
-| Nowe | Audit, AuditIfNotExist\* | False | Zgodne |
+| Nowa | Audit, AuditIfNotExist\* | Prawda | Niezgodne |
+| Nowa | Audit, AuditIfNotExist\* | False | Zgodne |
 
 \* Efekty Append, DeployIfNotExist i AuditIfNotExist wymagają instrukcji IF z wartością TRUE.
 Ponadto efekty wymagają, aby warunek istnienia miał wartość FALSE, aby być niezgodnymi. W przypadku wartości TRUE warunek IF wyzwala ocenę warunku istnienia dla powiązanych zasobów.
@@ -95,9 +94,9 @@ Aby usunąć utworzone przypisanie, wykonaj następujące kroki:
 
 1. Kliknij prawym przyciskiem myszy przypisanie **Audit VMs that do not use managed disks** (Przeprowadź inspekcję maszyn wirtualnych, które nie używają dysków zarządzanych), a następnie wybierz pozycję **Usuń przypisanie**
 
-   ![Usuwanie przypisania ze strony zgodności](./media/assign-policy-portal/delete-assignment.png)
+   ![Usuwanie przypisania ze strony zgodność](./media/assign-policy-portal/delete-assignment.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start przypisano definicję zasad do zakresu i oceniono raport jego zgodności.
 Definicja zasady zawiera sprawdzenie, czy wszystkie zasoby w ramach zakresu są zgodne, oraz określenie niezgodnych zasobów.

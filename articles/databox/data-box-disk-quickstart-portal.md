@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 08/30/2019
+ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 7623244d8b7de012d80e7e4844a9b3693ccdd662
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b07adc955b7904c6e6a3278480cec5a2be91ec35
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186697"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232908"
 ---
 ::: zone target="docs"
 
@@ -67,7 +67,7 @@ Zaloguj się do witryny Azure Portal pod adresem [https://aka.ms/azuredataboxfro
 > - **Połącz i**Odblokuj: Podłącz urządzenie i Odblokuj dysk, aby skopiować dane.
 > - **Skopiuj dane na dysk i sprawdź**poprawność: Skopiuj dane na dyski do folderów pretworzonych.
 > - **Zwróć dyski**: Zwróć dyski do centrum danych platformy Azure, w którym dane są przekazywane do konta magazynu.
-> - **Sprawdź dane na platformie Azure**: Przed usunięciem z serwera daty źródłowej Sprawdź, czy dane zostały przekazane do konta magazynu.
+> - **Sprawdź dane na platformie Azure**: Przed usunięciem z źródłowego serwera danych sprawdź, czy dane zostały przekazane do konta magazynu.
 
 ::: zone-end
 

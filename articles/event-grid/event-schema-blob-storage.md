@@ -1,65 +1,65 @@
 ---
-title: Schemat zdarzenia magazynu obiektów blob Azure Event Grid
-description: Opisuje właściwości, które są dostarczane dla zdarzeń usługi blob storage za pomocą usługi Azure Event Grid
+title: Schemat zdarzeń magazynu obiektów Blob Azure Event Grid
+description: Opisuje właściwości, które są dostarczane dla zdarzeń usługi BLOB Storage z Azure Event Grid
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: bed6c3f1efcb2d0ef34e827ddb2b521f8c038940
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: bd85353aa37cf182a807d99cdc9fb63ead00edeb
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445766"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232438"
 ---
-# <a name="azure-event-grid-event-schema-for-blob-storage"></a>Schemat zdarzeń Azure Event Grid dla magazynu obiektów Blob
+# <a name="azure-event-grid-event-schema-for-blob-storage"></a>Schemat zdarzeń Azure Event Grid dla usługi BLOB Storage
 
-Ten artykuł zawiera właściwości i schematu dla zdarzeń usługi blob storage. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [schematu zdarzeń usługi Azure Event Grid](event-schema.md).
+Ten artykuł zawiera właściwości i schemat zdarzeń usługi BLOB Storage. Aby zapoznać się z wprowadzeniem do schematów zdarzeń, zobacz [Azure Event Grid schemacie zdarzeń](event-schema.md).
 
-Aby uzyskać listę przykładowych skryptów i samouczków, zobacz [źródło zdarzenia magazynu](event-sources.md#storage).
+Aby uzyskać listę przykładowych skryptów i samouczków, zobacz [Źródło zdarzeń magazynu](event-sources.md#storage).
 
-## <a name="list-of-events-for-blob-rest-apis"></a>Lista zdarzeń dla interfejsów API REST usługi Blob
+## <a name="list-of-events-for-blob-rest-apis"></a>Lista zdarzeń dla interfejsów API REST obiektów BLOB
 
-Te zdarzenia są wyzwalane, gdy klient tworzy, zastępuje lub usuwa obiekt blob przez wywołanie interfejsów API REST usługi Blob.
+Te zdarzenia są wyzwalane, gdy klient tworzy, zastępuje lub usuwa obiekt BLOB przez wywoływanie interfejsów API REST obiektów BLOB.
 
  |Nazwa zdarzenia |Opis|
  |----------|-----------|
- |**Microsoft.Storage.BlobCreated** |Wyzwalane, gdy obiekt blob zostanie utworzony lub zastąpiony. <br>W szczególności, to zdarzenie jest wyzwalane, gdy klienci korzystają z `PutBlob`, `PutBlockList`, lub `CopyBlob` operacje, które są dostępne w interfejsie API REST obiektu Blob.   |
- |**Microsoft.Storage.BlobDeleted** |Wyzwalane, gdy obiekt blob zostanie usunięty. <br>W szczególności, to zdarzenie jest wyzwalane, gdy klienci wywołują `DeleteBlob` operacji, które są dostępne w interfejsie API REST obiektu Blob. |
+ |**Microsoft.Storage.BlobCreated** |Wyzwalane, gdy obiekt BLOB zostanie utworzony lub zastąpiony. <br>To zdarzenie jest wyzwalane, gdy klienci korzystają z `PutBlob`, `PutBlockList`lub `CopyBlob` operacji, które są dostępne w interfejsie API REST usługi BLOB.   |
+ |**Microsoft.Storage.BlobDeleted** |Wyzwalane po usunięciu obiektu BLOB. <br>To zdarzenie jest wyzwalane, gdy klienci wywołują `DeleteBlob` operację, która jest dostępna w interfejsie API REST usługi BLOB. |
 
 > [!NOTE]
-> Jeśli chcesz upewnić się, że **Microsoft.Storage.BlobCreated** zdarzenie jest wyzwalane tylko wtedy, gdy jest blokowy obiekt Blob jest całkowicie zadeklarowanej, filtrować zdarzenia dla `CopyBlob`, `PutBlob`, i `PutBlockList` wywołań interfejsów API REST. Te wyzwalania wywołań interfejsu API **Microsoft.Storage.BlobCreated** zdarzenia tylko wtedy, gdy dane są w pełni zobowiązane do blokowego obiektu Blob. Aby dowiedzieć się, jak utworzyć filtr, zobacz [filtrowanie zdarzeń usługi Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+> Jeśli chcesz się upewnić, że zdarzenie **Microsoft. Storage. BlobCreated** jest wyzwalane tylko wtedy, gdy blokowy obiekt BLOB jest całkowicie zatwierdzony, przefiltruj zdarzenie `PutBlockList` dla `CopyBlob`wywołań interfejsu API, `PutBlob`i. Te wywołania interfejsu API wyzwalają zdarzenie **Microsoft. Storage. BlobCreated** tylko wtedy, gdy dane są w pełni zatwierdzone do blokowego obiektu BLOB. Aby dowiedzieć się, jak utworzyć filtr, zobacz [filtrowanie zdarzeń dla Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
-## <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Lista zdarzeń usługi Azure Data Lake magazynu Gen 2 interfejsy API REST
+## <a name="list-of-the-events-for-azure-data-lake-storage-gen-2-rest-apis"></a>Lista zdarzeń dla Azure Data Lake Storage interfejsu API REST generacji 2
 
-Te zdarzenia są wyzwalane, jeśli zostanie włączone hierarchicznej przestrzeni nazw na koncie magazynu, a klienci wywołań interfejsów API usługi Azure Data Lake Storage Gen2 REST.
+Te zdarzenia są wyzwalane po włączeniu hierarchicznej przestrzeni nazw na koncie magazynu, a klienci wywołują Azure Data Lake Storage Gen2 interfejsy API REST.
 
 > [!NOTE]
-> Te zdarzenia są w publicznej wersji zapoznawczej i są dostępne tylko **zachodnie stany USA 2** i **zachodnio-środkowe stany USA** regionów.
+> Te zdarzenia są w publicznej wersji zapoznawczej i są dostępne tylko w regionach **zachodnie stany USA 2** i zachodnie **stany USA** .
 
  |Nazwa zdarzenia|Opis|
  |----------|-----------|
- |**Microsoft.Storage.BlobCreated** | Wyzwalane, gdy obiekt blob zostanie utworzony lub zastąpiony. <br>W szczególności, to zdarzenie jest wyzwalane, gdy klienci korzystają z `CreateFile` i `FlushWithClose` operacje, które są dostępne w usłudze Azure Data Lake magazynu Gen2 interfejsu API REST. |
- |**Microsoft.Storage.BlobDeleted** |Wyzwalane, gdy obiekt blob zostanie usunięty. <br>W szczególności, to zdarzenie jest również wyzwalany, gdy klienci wywołują `DeleteFile` operacji, które są dostępne w usłudze Azure Data Lake magazynu Gen2 interfejsu API REST. |
- |**Microsoft.Storage.BlobRenamed**|Wyzwalane, gdy zmieniono jego nazwę obiektu blob. <br>W szczególności, to zdarzenie jest wyzwalane, gdy klienci korzystają z `RenameFile` operacji, które są dostępne w usłudze Azure Data Lake magazynu Gen2 interfejsu API REST.|
- |**Microsoft.Storage.DirectoryCreated**|Wyzwalane, gdy jest tworzony w katalogu. <br>W szczególności, to zdarzenie jest wyzwalane, gdy klienci korzystają z `CreateDirectory` operacji, które są dostępne w usłudze Azure Data Lake magazynu Gen2 interfejsu API REST.|
- |**Microsoft.Storage.DirectoryRenamed**|Wyzwalane, gdy zmieniono jego nazwę katalogu. <br>W szczególności, to zdarzenie jest wyzwalane, gdy klienci korzystają z `RenameDirectory` operacji, które są dostępne w usłudze Azure Data Lake magazynu Gen2 interfejsu API REST.|
- |**Microsoft.Storage.DirectoryDeleted**|Wyzwalane, gdy katalog zostanie usunięty. <br>W szczególności, to zdarzenie jest wyzwalane, gdy klienci korzystają z `DeleteDirectory` operacji, które są dostępne w usłudze Azure Data Lake magazynu Gen2 interfejsu API REST.|
+ |**Microsoft.Storage.BlobCreated** | Wyzwalane, gdy obiekt BLOB zostanie utworzony lub zastąpiony. <br>To zdarzenie jest wyzwalane, gdy klienci korzystają `CreateFile` z operacji i `FlushWithClose` , które są dostępne w interfejsie API REST Azure Data Lake Storage Gen2. |
+ |**Microsoft.Storage.BlobDeleted** |Wyzwalane po usunięciu obiektu BLOB. <br>To zdarzenie jest również wyzwalane, gdy klienci wywołują `DeleteFile` operację, która jest dostępna w interfejsie API REST Azure Data Lake Storage Gen2. |
+ |**Microsoft.Storage.BlobRenamed**|Wyzwalane po zmianie nazwy obiektu BLOB. <br>To zdarzenie jest wyzwalane, gdy klienci używają `RenameFile` tej operacji, która jest dostępna w interfejsie API REST Azure Data Lake Storage Gen2.|
+ |**Microsoft.Storage.DirectoryCreated**|Wyzwalane po utworzeniu katalogu. <br>To zdarzenie jest wyzwalane, gdy klienci używają `CreateDirectory` tej operacji, która jest dostępna w interfejsie API REST Azure Data Lake Storage Gen2.|
+ |**Microsoft.Storage.DirectoryRenamed**|Wyzwalane, gdy zostanie zmieniona nazwa katalogu. <br>To zdarzenie jest wyzwalane, gdy klienci używają `RenameDirectory` tej operacji, która jest dostępna w interfejsie API REST Azure Data Lake Storage Gen2.|
+ |**Microsoft.Storage.DirectoryDeleted**|Wyzwalane po usunięciu katalogu. <br>To zdarzenie jest wyzwalane, gdy klienci używają `DeleteDirectory` tej operacji, która jest dostępna w interfejsie API REST Azure Data Lake Storage Gen2.|
 
 > [!NOTE]
-> Jeśli chcesz upewnić się, że **Microsoft.Storage.BlobCreated** zdarzenie jest wyzwalane tylko wtedy, gdy jest blokowy obiekt Blob jest całkowicie zadeklarowanej, filtrować zdarzenia dla `FlushWithClose` wywołania interfejsu API REST. Wyzwalacze wywołanie tego interfejsu API **Microsoft.Storage.BlobCreated** zdarzenia tylko wtedy, gdy dane są w pełni zobowiązane do blokowego obiektu Blob. Aby dowiedzieć się, jak utworzyć filtr, zobacz [filtrowanie zdarzeń usługi Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
+> Jeśli chcesz się upewnić, że zdarzenie **Microsoft. Storage. BlobCreated** jest wyzwalane tylko wtedy, gdy blokowy obiekt BLOB jest całkowicie zatwierdzony, odfiltruj zdarzenie dla `FlushWithClose` wywołania interfejsu API REST. To wywołanie interfejsu API wyzwala zdarzenie **Microsoft. Storage. BlobCreated** tylko wtedy, gdy dane są w pełni zatwierdzone do blokowego obiektu BLOB. Aby dowiedzieć się, jak utworzyć filtr, zobacz [filtrowanie zdarzeń dla Event Grid](https://docs.microsoft.com/azure/event-grid/how-to-filter-events).
 
 <a id="example-event" />
 
-## <a name="the-contents-of-an-event-response"></a>Zawartość reagowania na zdarzenia
+## <a name="the-contents-of-an-event-response"></a>Zawartość odpowiedzi na zdarzenie
 
-Po wyzwoleniu zdarzenie usługi Event Grid wysyła dane dotyczące tego zdarzenia do punktu końcowego subskrypcji.
+Po wyzwoleniu zdarzenia usługa Event Grid wysyła dane dotyczące tego zdarzenia w celu subskrybowania punktu końcowego.
 
-Ta sekcja zawiera przykład jak tych danych będzie wyglądać dla każdego zdarzenia magazynu obiektów blob.
+Ta sekcja zawiera przykład sposobu, w jaki będą wyglądały dane dla każdego zdarzenia usługi BLOB Storage.
 
-### <a name="microsoftstorageblobcreated-event"></a>Microsoft.Storage.BlobCreated event
+### <a name="microsoftstorageblobcreated-event"></a>Zdarzenie Microsoft. Storage. BlobCreated
 
 ```json
 [{
@@ -87,18 +87,18 @@ Ta sekcja zawiera przykład jak tych danych będzie wyglądać dla każdego zdar
 }]
 ```
 
-### <a name="microsoftstorageblobcreated-event-data-lake-storage-gen2"></a>Microsoft.Storage.BlobCreated event (Data Lake Storage Gen2)
+### <a name="microsoftstorageblobcreated-event-data-lake-storage-gen2"></a>Zdarzenie Microsoft. Storage. BlobCreated (Data Lake Storage Gen2)
 
-Jeśli konto usługi blob storage ma hierarchicznej przestrzeni nazw, danych podobny do poprzedniego przykładu, z wyjątkiem tych zmian:
+Jeśli konto magazynu obiektów BLOB ma hierarchiczną przestrzeń nazw, dane wyglądają podobnie jak w poprzednim przykładzie, z wyjątkiem tych zmian:
 
-* `dataVersion` Jest ustawiona na wartość `2`.
+* Klucz ma ustawioną `2`wartość. `dataVersion`
 
-* `data.api` Klucz jest ustawiony na ciąg `CreateFile` lub `FlushWithClose`.
+* Klucz jest ustawiony na ciąg `CreateFile` lub `FlushWithClose`. `data.api`
 
-* `contentOffset` Klucz znajduje się w zestawie danych.
+* `contentOffset` Klucz jest zawarty w zestawie danych.
 
 > [!NOTE]
-> Jeśli używasz aplikacji `PutBlockList` operację, aby przekazać nowy obiekt blob do konta, dane nie zawierają tych zmian.
+> Jeśli aplikacje używają `PutBlockList` operacji do przekazania nowego obiektu BLOB do konta, dane nie będą zawierać tych zmian.
 
 ```json
 [{
@@ -152,18 +152,18 @@ Jeśli konto usługi blob storage ma hierarchicznej przestrzeni nazw, danych pod
 }]
 ```
 
-### <a name="microsoftstorageblobdeleted-event-data-lake-storage-gen2"></a>Microsoft.Storage.BlobDeleted event (Data Lake Storage Gen2)
+### <a name="microsoftstorageblobdeleted-event-data-lake-storage-gen2"></a>Zdarzenie Microsoft. Storage. BlobDeleted (Data Lake Storage Gen2)
 
-Jeśli konto usługi blob storage ma hierarchicznej przestrzeni nazw, danych podobny do poprzedniego przykładu, z wyjątkiem tych zmian:
+Jeśli konto magazynu obiektów BLOB ma hierarchiczną przestrzeń nazw, dane wyglądają podobnie jak w poprzednim przykładzie, z wyjątkiem tych zmian:
 
-* `dataVersion` Jest ustawiona na wartość `2`.
+* Klucz ma ustawioną `2`wartość. `dataVersion`
 
-* `data.api` Klucz jest ustawiony na ciąg `DeleteFile`.
+* Klucz jest ustawiony na ciąg `DeleteFile`. `data.api`
 
-* `url` Klucza zawiera ścieżkę `dfs.core.windows.net`.
+* Klucz zawiera ścieżkę `dfs.core.windows.net`. `url`
 
 > [!NOTE]
-> Jeśli używasz aplikacji `DeleteBlob` operacja usuwania obiektu blob z konta, a dane nie zawierają tych zmian.
+> Jeśli aplikacje używają `DeleteBlob` operacji do usuwania obiektu BLOB z konta, dane nie będą zawierać tych zmian.
 
 ```json
 [{
@@ -189,7 +189,7 @@ Jeśli konto usługi blob storage ma hierarchicznej przestrzeni nazw, danych pod
 }]
 ```
 
-### <a name="microsoftstorageblobrenamed-event"></a>Microsoft.Storage.BlobRenamed event
+### <a name="microsoftstorageblobrenamed-event"></a>Zdarzenie Microsoft. Storage. BlobRenamed
 
 ```json
 [{
@@ -214,7 +214,7 @@ Jeśli konto usługi blob storage ma hierarchicznej przestrzeni nazw, danych pod
 }]
 ```
 
-### <a name="microsoftstoragedirectorycreated-event"></a>Zdarzenie Microsoft.Storage.DirectoryCreated
+### <a name="microsoftstoragedirectorycreated-event"></a>Zdarzenie Microsoft. Storage. DirectoryCreated
 
 ```json
 [{
@@ -238,7 +238,7 @@ Jeśli konto usługi blob storage ma hierarchicznej przestrzeni nazw, danych pod
 }]
 ```
 
-### <a name="microsoftstoragedirectoryrenamed-event"></a>Zdarzenie Microsoft.Storage.DirectoryRenamed
+### <a name="microsoftstoragedirectoryrenamed-event"></a>Zdarzenie Microsoft. Storage. DirectoryRenamed
 
 ```json
 [{
@@ -263,7 +263,7 @@ Jeśli konto usługi blob storage ma hierarchicznej przestrzeni nazw, danych pod
 }]
 ```
 
-### <a name="microsoftstoragedirectorydeleted-event"></a>Zdarzenie Microsoft.Storage.DirectoryDeleted
+### <a name="microsoftstoragedirectorydeleted-event"></a>Zdarzenie Microsoft. Storage. DirectoryDeleted
 
 ```json
 [{
@@ -290,44 +290,42 @@ Jeśli konto usługi blob storage ma hierarchicznej przestrzeni nazw, danych pod
 
 ## <a name="event-properties"></a>Właściwości zdarzenia
 
-Zdarzenie zawiera następujące dane najwyższego poziomu:
+Zdarzenie ma następujące dane najwyższego poziomu:
 
-| Właściwość | Typ | Opis |
+| Właściwość | Type | Opis |
 | -------- | ---- | ----------- |
-| topic | string | Zasobów Pełna ścieżka do źródła zdarzeń. To pole nie jest zapisywalna. Usługa Event Grid udostępnia tę wartość. |
-| subject | string | Ścieżka zdefiniowana przez wydawcę na temat zdarzenia. |
-| eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
-| eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
+| topic | string | Pełna ścieżka zasobu do źródła zdarzeń. To pole nie umożliwia zapisu. Event Grid udostępnia tę wartość. |
+| subject | string | Ścieżka zdefiniowana przez program Publisher do tematu zdarzenia. |
+| Klasę | string | Jeden z zarejestrowanych typów zdarzeń dla tego źródła zdarzeń. |
+| eventTime | string | Czas generowania zdarzenia na podstawie czasu UTC dostawcy. |
 | id | string | Unikatowy identyfikator zdarzenia. |
-| data | obiekt | Dane zdarzenia magazynu obiektów blob. |
-| dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
-| metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
+| data | object | Dane zdarzenia magazynu obiektów BLOB. |
+| dataVersion | string | Wersja schematu obiektu danych. Wydawca definiuje wersję schematu. |
+| metadataVersion | string | Wersja schematu metadanych zdarzenia. Event Grid definiuje schemat właściwości najwyższego poziomu. Event Grid udostępnia tę wartość. |
 
 Obiekt danych ma następujące właściwości:
 
-| Właściwość | Typ | Opis |
+| Właściwość | Type | Opis |
 | -------- | ---- | ----------- |
-| api | string | Operacja, która wyzwoliła zdarzenie. |
-| clientRequestId | string | Identyfikator żądania dostarczonych przez klienta magazynu operacji interfejsu API. Ten identyfikator może służyć do odnoszą się do dzienników diagnostycznych usługi Azure Storage, korzystając z pola "client-request-id" w dziennikach i mogą otrzymywać żądania klientów przy użyciu nagłówek "x-ms klient request-id". Zobacz [Format dziennika](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
-| requestId | string | Identyfikator generowanych przez usługi żądania dla operacji interfejsu API usługi storage. Może służyć do odnoszą się do usługi Azure Storage diagnostyczne dzienniki, korzystając z pola "żądanie id-header" w dziennikach i zwracany jest zainicjowanie wywołanie interfejsu API w nagłówku "x-ms-request-id". Zobacz [Format dziennika](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
-| eTag | string | Wartość, która służy do wykonywania operacji warunkowo. |
-| contentType | string | Typ zawartości, określony dla obiektu blob. |
-| contentLength contentLength | liczba całkowita | Rozmiar obiektu blob w bajtach. |
-| blobType | string | Typ obiektu blob. Prawidłowe wartości to "BlockBlob" lub "PageBlob". |
-| contentOffset | numer | Przesunięcie w bajtach operacji zapisu wykonane w punkcie, gdzie aplikacja wyzwolenie zdarzenia ukończone zapisywanie do pliku. <br>Pojawia się tylko w przypadku zdarzeń wyzwalanych dla kont usługi blob storage, które mają hierarchicznej przestrzeni nazw.|
-| destinationUrl |string | Adres url pliku który będzie istnieć po zakończeniu operacji. Na przykład po zmianie nazwy pliku `destinationUrl` właściwość zawiera adres url nową nazwę pliku. <br>Pojawia się tylko w przypadku zdarzeń wyzwalanych dla kont usługi blob storage, które mają hierarchicznej przestrzeni nazw.|
-| sourceUrl |string | Adres url pliku, który istnieje przed wykonać operację. Na przykład po zmianie nazwy pliku `sourceUrl` zawiera adres url oryginalna nazwa pliku przed operacji zmiany nazwy. <br>Pojawia się tylko w przypadku zdarzeń wyzwalanych dla kont usługi blob storage, które mają hierarchicznej przestrzeni nazw. |
-| url | string | Ścieżka do obiektu blob. <br>Jeśli klient korzysta z interfejsu API REST obiektów Blob, a następnie adres url zawiera tę strukturę:  *\<nazwa konta magazynu\>.blob.core.windows.net/\<nazwa kontenera\>/\<nazwa pliku \>* . <br>Jeśli klient korzysta z interfejsu API REST programu Data Lake Storage, a następnie adres url zawiera tę strukturę:  *\<nazwa konta magazynu\>.dfs.core.windows.net/\<nazw systemu plików\> / \<nazwa pliku\>* .
-|
-| recursive| string| `True` do wykonania tej operacji we wszystkich katalogach podrzędnych; w przeciwnym razie `False`. <br>Pojawia się tylko w przypadku zdarzeń wyzwalanych dla kont usługi blob storage, które mają hierarchicznej przestrzeni nazw. |
-| sequencer | string | Nieprzezroczysty Ciąg reprezentującą logiczne sekwencję zdarzeń o dowolną nazwę określonego obiektu blob.  Użytkownicy mogą używać standardowego porównywania ciągów zrozumienie względne sekwencji dwa zdarzenia w tej samej nazwy obiektu blob. |
-| storageDiagnostics | object | Dane diagnostyczne od czasu do czasu dołączane przez usługę Azure Storage. Jeśli jest obecny, mają być ignorowane przez odbiorców zdarzeń. |
+| interfejs API | ciąg | Operacja, która wyzwoliła zdarzenie. |
+| clientRequestId | ciąg | Identyfikator żądania dostarczonego przez klienta dla operacji interfejsu API magazynu. Tego identyfikatora można użyć do skorelowania dzienników diagnostycznych usługi Azure Storage przy użyciu pola "Client-Request-ID" w dziennikach i można go podać w żądaniach klientów przy użyciu nagłówka "x-MS-Client-Request-ID". Zobacz [format dziennika](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
+| requestId | ciąg | Identyfikator żądania wygenerowanego przez usługę dla operacji interfejsu API magazynu. Może służyć do skorelowania dzienników diagnostycznych usługi Azure Storage przy użyciu pola "Request-ID-Header" w dziennikach i jest zwracana z inicjowania wywołania interfejsu API w nagłówku "x-MS-Request-ID". Zobacz [format dziennika](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format). |
+| Element ETag | ciąg | Wartość, której można użyć do warunkowego wykonywania operacji. |
+| contentType | ciąg | Typ zawartości określony dla obiektu BLOB. |
+| contentLength contentLength | integer | Rozmiar obiektu BLOB w bajtach. |
+| blobType | ciąg | Typ obiektu BLOB. Prawidłowe wartości to "BlockBlob" lub "PageBlob". |
+| contentOffset | numer | Przesunięcie w bajtach operacji zapisu wykonane w punkcie, w którym aplikacja wyzwalająca zdarzenie zakończyła zapisywanie do pliku. <br>Pojawia się tylko dla zdarzeń wyzwalanych na kontach usługi BLOB Storage, które mają hierarchiczną przestrzeń nazw.|
+| destinationUrl |ciąg | Adres URL pliku, który będzie istniał po zakończeniu operacji. Na przykład jeśli nazwa pliku zostanie zmieniona, `destinationUrl` Właściwość zawiera adres URL nowej nazwy pliku. <br>Pojawia się tylko dla zdarzeń wyzwalanych na kontach usługi BLOB Storage, które mają hierarchiczną przestrzeń nazw.|
+| sourceUrl |ciąg | Adres URL pliku, który istnieje przed operacją. Na przykład jeśli nazwa pliku zostanie zmieniona, `sourceUrl` zawiera adres URL oryginalnej nazwy pliku przed operacją zmiany nazwy. <br>Pojawia się tylko dla zdarzeń wyzwalanych na kontach usługi BLOB Storage, które mają hierarchiczną przestrzeń nazw. |
+| url | ciąg | Ścieżka do obiektu BLOB. <br>Jeśli klient używa interfejsu API REST usługi BLOB, ten adres URL ma strukturę:  *\<Storage-account-name\>.\<BLOB.Core.Windows.NET/Container-\>/\<name\>* . <br>Jeśli klient używa interfejsu API REST Data Lake Storage, ten adres URL ma następującą strukturę:  *\<Storage-account-name\<\>\>./\<DFS.Core.Windows.NET/File-Name File-Name \>* . |
+| recursive | ciąg | `True`Aby wykonać operację na wszystkich katalogach podrzędnych; w `False`przeciwnym razie. <br>Pojawia się tylko dla zdarzeń wyzwalanych na kontach usługi BLOB Storage, które mają hierarchiczną przestrzeń nazw. |
+| sequencer | ciąg | Nieprzezroczysta wartość ciągu reprezentująca logiczną sekwencję zdarzeń dla każdej konkretnej nazwy obiektu BLOB.  Użytkownicy mogą używać standardowego porównania ciągów, aby zrozumieć względną sekwencję dwóch zdarzeń dla tej samej nazwy obiektu BLOB. |
+| storageDiagnostics | object | Dane diagnostyczne są czasami uwzględniane przez usługę Azure Storage. Gdy są obecne, powinny być ignorowane przez odbiorców zdarzeń. |
+|Właściwość|Type|Opis|
+|-------------------|------------------------|-----------------------------------------------------------------------|
 
-|Właściwość|Typ|Opis|
- |-------------------|------------------------|-----------------------------------------------------------------------|
+## <a name="next-steps"></a>Następne kroki
 
-## <a name="next-steps"></a>Kolejne kroki
-
-* Wprowadzenie do usługi Azure Event Grid, zobacz [co to jest usługa Event Grid?](overview.md)
-* Aby uzyskać więcej informacji na temat tworzenia subskrypcji usługi Azure Event Grid, zobacz [schemat subskrypcji usługi Event Grid](subscription-creation-schema.md).
-* Wprowadzenie do pracy z zdarzeń usługi blob storage, zobacz [zdarzeń usługi Blob trasy storage — interfejs wiersza polecenia Azure](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json). 
+* Aby zapoznać się z wprowadzeniem do Azure Event Grid, zobacz [co to jest Event Grid?](overview.md)
+* Aby uzyskać więcej informacji na temat tworzenia subskrypcji Azure Event Grid, zobacz [Event Grid schematu subskrypcji](subscription-creation-schema.md).
+* Aby zapoznać się z wprowadzeniem do pracy ze zdarzeniami usługi BLOB Storage, zobacz [Route BLOB Storage Events — interfejs wiersza polecenia platformy Azure](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json). 

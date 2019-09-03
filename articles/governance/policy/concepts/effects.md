@@ -1,5 +1,5 @@
 ---
-title: Zrozumienie, jak działają efekty
+title: Informacje o działaniu efektów
 description: Definicja zasad platformy Azure ma różne efekty, określające sposób zarządzania i podać zgodności.
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,31 +7,30 @@ ms.date: 03/29/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: c2bf19a2599d59b9ff2b3d189b26134f1528a878
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1ac0e70700b4b093fad09b4d10c6bdcf2e06adac
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448568"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231532"
 ---
 # <a name="understand-azure-policy-effects"></a>Omówienie usługi Azure Policy efekty
 
 Każda definicja zasad w zasadach usługi Azure ma wpływ jednego. Powiadamiaj decyduje o tym, co się stanie, gdy reguła zasad jest oceniany w celu dopasowania. Efekty zachowywać się inaczej, jeśli są one dla nowego zasobu, zasób zaktualizowane lub istniejącego zasobu.
 
-Efekty te są obecnie obsługiwane w definicji zasad:
+Te efekty są obecnie obsługiwane w definicji zasad:
 
-- [Dołącz](#append)
+- [Łączono](#append)
 - [Inspekcja](#audit)
 - [AuditIfNotExists](#auditifnotexists)
-- [Odmów](#deny)
+- [Pozbawić](#deny)
 - [DeployIfNotExists](#deployifnotexists)
 - [Disabled (Wyłączone)](#disabled)
-- [EnforceRegoPolicy](#enforceregopolicy) (wersja zapoznawcza)
+- [EnforceRegoPolicy](#enforceregopolicy) przeglądania
 
 ## <a name="order-of-evaluation"></a>Kolejność obliczania
 
-Żądania można utworzyć lub zaktualizować zasobów za pomocą usługi Azure Resource Manager są obliczane najpierw przez usługę Azure Policy. Usługa Azure Policy tworzy listę wszystkich przydziałów, stosowanie do zasobu, które ocenia następnie zasobu wobec każdej definicji. Usługa Azure Policy przetwarza kilka efektów przed przekazaniem żądania do odpowiedniego dostawcy zasobów. Uniemożliwi to niepotrzebne przetwarzania przez dostawcę zasobów, gdy zasób nie spełnia wymagań kontrolki zaprojektowane zarządzania usługi Azure Policy.
+Żądania utworzenia lub zaktualizowania zasobu za pomocą Azure Resource Manager są oceniane przez Azure Policy pierwsze. Azure Policy tworzy listę wszystkich przypisań, które są stosowane do zasobu, a następnie szacuje zasób dla każdej definicji. Azure Policy przetwarza kilka efektów przed przekazaniem żądania do odpowiedniego dostawcy zasobów. Wykonanie tej czynności zapobiega niepotrzebnemu przetwarzaniu przez dostawcę zasobów, gdy zasób nie spełnia zaprojektowanych kontrolek ładu Azure Policy.
 
 - **Wyłączone** jest najpierw sprawdzane w celu określenia, jeśli powinna być oceniana reguła zasad.
 - **Dołącz** jest następnie oceniany. Ponieważ Dołącz może zmienić żądania, zmiany wprowadzone przez dołączanie może uniemożliwić inspekcji lub odmówić efekt wraz z.
@@ -40,7 +39,7 @@ Efekty te są obecnie obsługiwane w definicji zasad:
 
 Po dostawcy zasobów zwróci kod powodzenia, **AuditIfNotExists** i **DeployIfNotExists** obliczenia w celu określenia, czy konieczne jest dodatkowe zgodności rejestrowania lub akcji.
 
-Obecnie nie ma żadnych kolejności dla **EnforceRegoPolicy** efekt.
+Obecnie nie ma żadnych kolejności oceny dla efektu **EnforceRegoPolicy** .
 
 ## <a name="disabled"></a>Wyłączone
 
@@ -52,7 +51,7 @@ Dołącz służy do dodania kolejnych pól do żądanego zasobu podczas jej twor
 
 ### <a name="append-evaluation"></a>Dołącz oceny
 
-Dołącz ocenia przed żądania przetwarzane przez dostawcę zasobów podczas tworzenia lub aktualizowania zasobu. Dołącz dodaje pola do zasobu podczas **Jeśli** warunek reguły jest spełniony. Jeśli efekt Dołącz przesłonić wartość oryginalne żądanie, podając inną wartość, następnie go działa jako efektu odrzucenia i odrzuca żądanie. Aby dołączyć nową wartość do istniejącej tablicy, należy użyć **[\*]** wersji aliasu.
+Dołącz ocenia przed żądania przetwarzane przez dostawcę zasobów podczas tworzenia lub aktualizowania zasobu. Dołącz dodaje pola do zasobu podczas **Jeśli** warunek reguły jest spełniony. Jeśli efekt Dołącz przesłonić wartość oryginalne żądanie, podając inną wartość, następnie go działa jako efektu odrzucenia i odrzuca żądanie. Aby dołączyć nową wartość do istniejącej tablicy, użyj wersji **[\*]** aliasu.
 
 Po uruchomieniu definicji zasad przy użyciu efektu dołączania w ramach cyklu oceny go nie zmieniać zasoby, które już istnieją. Zamiast tego oznacza dowolnego zasobu, który spełnia **Jeśli** warunek jako niezgodne.
 
@@ -62,7 +61,7 @@ Ma jedynie wpływ dołączania **szczegóły** tablicy, która jest wymagana. Ja
 
 ### <a name="append-examples"></a>Dołącz przykłady
 
-Przykład 1: Pojedynczy **pól i wartości** Paruj, aby dołączyć tag.
+Przykład 1: Para pojedynczych **pól/wartości** w celu dołączenia tagu.
 
 ```json
 "then": {
@@ -74,7 +73,7 @@ Przykład 1: Pojedynczy **pól i wartości** Paruj, aby dołączyć tag.
 }
 ```
 
-Przykład 2: Dwa **pól i wartości** pary do dołączenia zestawu tagów.
+Przykład 2: Dwie pary **pól/wartości** w celu dołączenia zestawu tagów.
 
 ```json
 "then": {
@@ -91,7 +90,7 @@ Przykład 2: Dwa **pól i wartości** pary do dołączenia zestawu tagów.
 }
 ```
 
-Przykład 3: Pojedynczy **pól i wartości** Sparuj przy użyciu innej niż **[\*]** [alias](definition-structure.md#aliases) z tablicą **wartość** do konfigurowania reguł adresów IP na koncie magazynu. Gdy non - **[\*]** aliasu jest tablicą, dołącza efekt **wartość** jako macierz w całości. Jeśli tablica już istnieje, Odmów zdarzeniu z konflikt.
+Przykład 3: Para pojedynczych **pól/wartości** przy użyciu [aliasu](definition-structure.md#aliases) innego niż **[\*]** z **wartością** tablicy, aby ustawić reguły adresów IP na koncie magazynu. Gdy alias "non **-\*[]** " jest tablicą, efekt dodaje **wartość** jako całą tablicę. Jeśli tablica już istnieje, zdarzenie odmowy występuje z powodu konfliktu.
 
 ```json
 "then": {
@@ -106,7 +105,7 @@ Przykład 3: Pojedynczy **pól i wartości** Sparuj przy użyciu innej niż **[\
 }
 ```
 
-Przykład 4: Pojedynczy **pól i wartości** Sparuj przy użyciu **[\*]** [alias](definition-structure.md#aliases) z tablicą **wartość** do konfigurowania reguł adresów IP na koncie magazynu. Za pomocą **[\*]** dołącza efekt alias **wartość** potencjalnie wcześniej istniejącej tablicy. Jeśli tablica nie istnieje, zostanie utworzony.
+Przykład 4: Para pojedynczego **pola/wartości** przy użyciu [aliasu](definition-structure.md#aliases) **[\*]** z **wartością** tablicy do ustawiania reguł IP na koncie magazynu. Korzystając z aliasu **\*[]** , efekt dołącza **wartość** do potencjalnie istniejącej tablicy. Jeśli tablica jeszcze nie istnieje, zostanie utworzona.
 
 ```json
 "then": {
@@ -137,7 +136,7 @@ Efektu odrzucenia nie ma żadnych dodatkowych właściwości do użycia w **nast
 
 ### <a name="deny-example"></a>Przykład Odmów
 
-Przykład: Przy użyciu efektu odrzucenia.
+Przykład: Przy użyciu efektu odmowy.
 
 ```json
 "then": {
@@ -151,7 +150,7 @@ Inspekcja służy do tworzenia to zdarzenie ostrzegawcze w dzienniku aktywności
 
 ### <a name="audit-evaluation"></a>Ocena inspekcji
 
-Inspekcja jest ostatni efekt sprawdzane przez usługę Azure Policy, podczas tworzenia lub aktualizacji zasobu. Usługa Azure Policy wysyła następnie zasobu na potrzeby dostawcy zasobów. Inspekcja działa tak samo, dla żądania zasobów i cykl oceny. Usługa Azure Policy dodaje `Microsoft.Authorization/policies/audit/action` operacji z dziennikiem aktywności i oznaczy zasobu jako niezgodne.
+Inspekcja jest ostatnim efektem sprawdzonym przez Azure Policy podczas tworzenia lub aktualizowania zasobu. Azure Policy następnie wysyła zasób do dostawcy zasobów. Inspekcja działa tak samo, dla żądania zasobów i cykl oceny. Azure Policy dodaje `Microsoft.Authorization/policies/audit/action` operację do dziennika aktywności i oznacza zasób jako niezgodny.
 
 ### <a name="audit-properties"></a>Właściwości inspekcji
 
@@ -159,7 +158,7 @@ Efekt inspekcji nie ma żadnych dodatkowych właściwości do użycia w **nastę
 
 ### <a name="audit-example"></a>Przykład inspekcji
 
-Przykład: Przy użyciu efektu audytu.
+Przykład: Przy użyciu efektu inspekcji.
 
 ```json
 "then": {
@@ -173,7 +172,7 @@ AuditIfNotExists umożliwia inspekcję na zasoby, które odpowiadają **Jeśli**
 
 ### <a name="auditifnotexists-evaluation"></a>Ocena AuditIfNotExists
 
-AuditIfNotExists uruchomiony po dostawcy zasobów ma obsługiwane żądania tworzenia lub aktualizacji zasobu i zwrócił kod stanu powodzenia. Audyt występuje, jeśli nie ma żadnych powiązanych zasobów lub zasoby zdefiniowane przez **ExistenceCondition** nie zostało oszacowane jako prawdziwe. Usługa Azure Policy dodaje `Microsoft.Authorization/policies/audit/action` na działanie operacji logowania tak samo jako efekt inspekcji. Po wyzwoleniu zasób, który spełnione **Jeśli** warunek jest zasobem, który jest oznaczony jako niezgodne.
+AuditIfNotExists uruchomiony po dostawcy zasobów ma obsługiwane żądania tworzenia lub aktualizacji zasobu i zwrócił kod stanu powodzenia. Audyt występuje, jeśli nie ma żadnych powiązanych zasobów lub zasoby zdefiniowane przez **ExistenceCondition** nie zostało oszacowane jako prawdziwe. Azure Policy dodaje `Microsoft.Authorization/policies/audit/action` operację do dziennika aktywności w taki sam sposób, jak efekt inspekcji. Po wyzwoleniu zasób, który spełnione **Jeśli** warunek jest zasobem, który jest oznaczony jako niezgodne.
 
 ### <a name="auditifnotexists-properties"></a>Właściwości AuditIfNotExists
 
@@ -181,10 +180,10 @@ AuditIfNotExists uruchomiony po dostawcy zasobów ma obsługiwane żądania twor
 
 - **Typ** [wymagane]
   - Określa typ powiązanego zasobu do dopasowania.
-  - Jeśli **details.type** jest typem zasobu poniżej **Jeśli** warunku zasobu, zasad, który wysyła zapytanie dotyczące zasobów tego **typu** w zakresie zasobów ocenione. W przeciwnym razie zapytania zasad w ramach tej samej grupie zasobów co ocenianą zasób.
+  - Jeśli **details. Type** jest typem zasobu poniżej zasobu warunku **if** , zasady zapytania dotyczące zasobów tego **typu** w zakresie szacowanego zasobu. W przeciwnym razie zapytania zasad w ramach tej samej grupy zasobów co obliczony zasób.
 - **Nazwa** (opcjonalnie)
   - Określa dokładną nazwę zasobu do dopasowania i powoduje, że zasady Aby pobrać jeden, konkretny zasób zamiast wszystkich zasobów określonego typu.
-  - Gdy stan wartości **if.field.type** i **then.details.type** są zgodne, następnie **nazwa** staje się _wymagane_ i musi być `[field('name')]`. Jednak [inspekcji](#audit) zamiast tego należy rozważyć wpływ.
+  - Gdy wartości warunku dla opcji **IF. Field. Type** i **then. details. Type** są zgodne, a następnie **Nazwa** stanie się _wymagana_ i musi być `[field('name')]`. Jednak zamiast tego należy rozważyć efekt [inspekcji](#audit) .
 - **ResourceGroupName** (opcjonalnie)
   - Umożliwia dopasowanie powiązanego zasobu pochodzić z innej grupy zasobów.
   - Nie ma zastosowania, jeśli **typu** jest zasobem, który będzie poniżej **Jeśli** warunku zasobu.
@@ -205,7 +204,7 @@ AuditIfNotExists uruchomiony po dostawcy zasobów ma obsługiwane żądania twor
 
 ### <a name="auditifnotexists-example"></a>Przykład AuditIfNotExists
 
-Przykład: Oblicza maszyn wirtualnych, aby określić, jeśli rozszerzenia ochrony przed złośliwym oprogramowaniem istnieje, a następnie przeprowadza inspekcję, gdy brak.
+Przykład: Oblicza Virtual Machines, aby określić, czy rozszerzenie ochrony przed złośliwym kodem istnieje, a następnie przeprowadza inspekcję w razie braku.
 
 ```json
 {
@@ -255,7 +254,7 @@ Podczas cyklu oszacowania definicji zasad z efektem DeployIfNotExists, dopasowyw
   - Rozpoczyna się od próby pobrania zasobu poniżej **Jeśli** zasobów warunek, a następnie zapytań w ramach tej samej grupie zasobów co **Jeśli** warunku zasobu.
 - **Nazwa** (opcjonalnie)
   - Określa dokładną nazwę zasobu do dopasowania i powoduje, że zasady Aby pobrać jeden, konkretny zasób zamiast wszystkich zasobów określonego typu.
-  - Gdy stan wartości **if.field.type** i **then.details.type** są zgodne, następnie **nazwa** staje się _wymagane_ i musi być `[field('name')]`.
+  - Gdy wartości warunku dla opcji **IF. Field. Type** i **then. details. Type** są zgodne, a następnie **Nazwa** stanie się _wymagana_ i musi być `[field('name')]`.
 - **ResourceGroupName** (opcjonalnie)
   - Umożliwia dopasowanie powiązanego zasobu pochodzić z innej grupy zasobów.
   - Nie ma zastosowania, jeśli **typu** jest zasobem, który będzie poniżej **Jeśli** warunku zasobu.
@@ -276,10 +275,10 @@ Podczas cyklu oszacowania definicji zasad z efektem DeployIfNotExists, dopasowyw
   - Na przykład, można sprawdzić, czy zasób nadrzędny (w **Jeśli** warunku) znajduje się w tej samej lokalizacji zasobów zgodnych powiązanego zasobu.
 - **roleDefinitionIds** [wymagane]
   - Ta właściwość musi zawierać tablicę ciągów, które jest zgodny z Identyfikatorem roli kontroli dostępu opartej na rolach dostępna w subskrypcji. Aby uzyskać więcej informacji, zobacz [korygowania — konfigurowanie definicji zasad](../how-to/remediate-resources.md#configure-policy-definition).
-- **DeploymentScope** (opcjonalnie)
+- **DeploymentScope** obowiązkowe
   - Dozwolone wartości to _subskrypcji_ i _ResourceGroup_.
-  - Ustawia typ wdrożenia wyzwolenie. _Subskrypcja_ wskazuje [wdrażania na poziomie subskrypcji](../../../azure-resource-manager/deploy-to-subscription.md), _ResourceGroup_ oznacza wdrożenie w grupie zasobów.
-  - A _lokalizacji_ musi zostać określona właściwość _wdrożenia_ przy użyciu wdrożeń poziomu subskrypcji.
+  - Ustawia typ wdrożenia, które ma zostać wyzwolone. _Subskrypcja_ wskazuje [wdrożenie na poziomie subskrypcji](../../../azure-resource-manager/deploy-to-subscription.md), Grupa zasobów wskazuje wdrożenie w grupie.
+  - W przypadku korzystania z wdrożeń na poziomie subskrypcji należy określić właściwość _Location_ we _wdrożeniu_ .
   - Wartość domyślna to _ResourceGroup_.
 - **Wdrożenie** [wymagane]
   - Ta właściwość powinna zawierać wdrożenia pełnym szablonem znajdującym się, jak zostałaby przekazana do `Microsoft.Resources/deployments` umieścić interfejsu API. Aby uzyskać więcej informacji, zobacz [interfejsu API REST wdrożenia](/rest/api/resources/deployments).
@@ -289,7 +288,7 @@ Podczas cyklu oszacowania definicji zasad z efektem DeployIfNotExists, dopasowyw
 
 ### <a name="deployifnotexists-example"></a>Przykład DeployIfNotExists
 
-Przykład: Oblicza baz danych SQL Server w celu ustalenia, czy włączono transparentDataEncryption. Jeśli nie, następnie jest wykonywany wdrożenia, aby umożliwić.
+Przykład: Oblicza SQL Server baz danych, aby określić, czy transparentDataEncryption jest włączony. Jeśli nie, zostanie wykonane wdrożenie do włączenia.
 
 ```json
 "if": {
@@ -342,30 +341,30 @@ Przykład: Oblicza baz danych SQL Server w celu ustalenia, czy włączono transp
 
 ## <a name="enforceregopolicy"></a>EnforceRegoPolicy
 
-Efekt ten jest używany z definicji zasad *tryb* z `Microsoft.ContainerService.Data`. Jest używany do przekazywania zdefiniowane przy użyciu zasad kontroli przyjęcia [Rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego) do [Otwórz agenta zasad](https://www.openpolicyagent.org/) (Nieprzez) na [usługi Azure Kubernetes Service](../../../aks/intro-kubernetes.md).
+Ten efekt jest używany z `Microsoft.ContainerService.Data`trybem definicji zasad. Służy do przekazywania reguł kontroli przyjęcia zdefiniowanych za pomocą [rego](https://www.openpolicyagent.org/docs/how-do-i-write-policies.html#what-is-rego) , aby [otworzyć agenta zasad](https://www.openpolicyagent.org/) (Nieprzez) w [usłudze Azure Kubernetes](../../../aks/intro-kubernetes.md).
 
 > [!NOTE]
-> [Usługa Azure Policy dla rozwiązania Kubernetes](rego-for-aks.md) w publicznej wersji zapoznawczej i obsługuje tylko wbudowane definicje zasad.
+> [Azure Policy Kubernetes](rego-for-aks.md) jest w publicznej wersji zapoznawczej i obsługuje tylko wbudowane definicje zasad.
 
 ### <a name="enforceregopolicy-evaluation"></a>Ocena EnforceRegoPolicy
 
-Kontroler dopuszczenie Otwórz agenta zasad ocenia wszelkie nowe żądanie w klastrze w czasie rzeczywistym.
-Co 5 minut, pełne skanowanie klastra zostanie ukończona, a wyniki zgłoszone do usługi Azure Policy.
+Otwarty kontroler przyjmowania agentów zasad umożliwia ocenę każdego nowego żądania w klastrze w czasie rzeczywistym.
+Co 5 minut jest wykonywane pełne skanowanie klastra i wyniki zgłoszone do Azure Policy.
 
 ### <a name="enforceregopolicy-properties"></a>Właściwości EnforceRegoPolicy
 
-**Szczegóły** właściwość efektu EnforceRegoPolicy ma właściwości podrzędnych, które opisują reguły kontroli Rego czasowej.
+Właściwość Details efektu EnforceRegoPolicy ma właściwości SubProperties opisujące regułę rego Admission Control.
 
-- **policyId** [wymagane]
-  - Unikatowa nazwa przekazany jako parametr do reguły kontroli Rego czasowej.
-- **zasady** [wymagane]
-  - Określa identyfikator URI reguły kontroli Rego czasowej.
-- **policyParameters** [opcjonalnie]
-  - Definiuje żadnych parametrów i wartości do przekazania do zasad rego.
+- **policyId** potrzeb
+  - Unikatowa nazwa przenoszona jako parametr do reguły rego Admission Control.
+- **zasady** potrzeb
+  - Określa identyfikator URI reguły rego Admission Control.
+- **policyParameters** obowiązkowe
+  - Definiuje wszelkie parametry i wartości, które mają zostać przekazane do zasad regoymi.
 
 ### <a name="enforceregopolicy-example"></a>Przykład EnforceRegoPolicy
 
-Przykład: Rego dopuszczenie kontroli reguły zezwalającej na tylko obrazy określonego kontenera w usłudze AKS.
+Przykład: Reguła rego Admission Control zezwalająca na dostęp tylko do określonych obrazów kontenerów w AKS.
 
 ```json
 "if": {
@@ -421,11 +420,11 @@ Jeśli zasady 1 i 2 zasad miała efektu metod deny, sytuacji zmieni się na:
 
 Każdego przydziału jest szacowana osobno. Jako takie nie ma szansę zasobu do dostawy za pośrednictwem przerwa z różnic w zakresie. Wynikiem zasady warstwowe lub zasad nakładają się w sieci jest uważany za **zbiorczą najbardziej restrykcyjne**. Na przykład efektu odrzucenia, gdyby obie zasady 1 i 2 zasobem zostałby zablokowany za pomocą zasad nakładających się i powodujące konflikt. Jeśli nadal potrzebujesz zasób, który ma być tworzonych w zakresie docelowym, przejrzyj wykluczenia na każdego przypisania, aby sprawdzić odpowiednie zasady mają wpływ na odpowiednie zakresy.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md).
+- Zapoznaj się z przykładami w [Azure Policy Samples](../samples/index.md).
 - Przejrzyj temat [Struktura definicji zasad Azure Policy](definition-structure.md).
-- Zrozumienie sposobu [programowe tworzenie zasad](../how-to/programmatically-create.md).
-- Dowiedz się, jak [Pobierz dane zgodności](../how-to/getting-compliance-data.md).
-- Dowiedz się, jak [korygowanie niezgodnych zasobów](../how-to/remediate-resources.md).
-- Przejrzyj grupy zarządzania jest [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../../management-groups/overview.md).
+- Dowiedz się, jak [programowo utworzyć zasady](../how-to/programmatically-create.md).
+- Dowiedz się, jak [uzyskać dane zgodności](../how-to/getting-compliance-data.md).
+- Dowiedz się, jak [skorygować niezgodne zasoby](../how-to/remediate-resources.md).
+- Zapoznaj się z informacjami o tym, czym jest Grupa zarządzania, aby [zorganizować swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/overview.md).

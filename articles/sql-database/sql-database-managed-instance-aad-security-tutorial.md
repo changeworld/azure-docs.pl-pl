@@ -9,12 +9,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: 87bd22ec4f2cfae62d1f80284ad8346ca292d016
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 37098411f465c611dc9d2e2443f369e01d6e338c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567680"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231007"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Samouczek: Zabezpieczanie wystąpienia zarządzanego usługi Azure SQL Database przy użyciu jednostek usługi (identyfikatorów logowania) serwera Azure AD
 
@@ -55,10 +55,12 @@ Aby ukończyć ten samouczek, upewnij się, że dysponujesz następującymi elem
 
 ## <a name="limiting-access-to-your-managed-instance"></a>Ograniczanie dostępu do wystąpienia zarządzanego
 
-Dostęp do wystąpień zarządzanych jest możliwy tylko za pośrednictwem prywatnego adresu IP. Z wystąpieniem zarządzanym nie można łączyć się z poziomu żadnych punktów końcowych usługi poza siecią wystąpienia zarządzanego. Podobnie jak izolowane SQL Server środowiska lokalnego, aplikacje lub użytkownicy potrzebują dostępu do sieci wystąpienia zarządzanego (VNet), zanim będzie można nawiązać połączenie. Aby uzyskać więcej informacji, zapoznaj się z artykułem [Connect your application to a managed instance](sql-database-managed-instance-connect-app.md) (Łączenie aplikacji z wystąpieniem zarządzanym).
+Zarządzane wystąpienia są dostępne za pomocą prywatnego adresu IP. Podobnie jak izolowane SQL Server środowiska lokalnego, aplikacje lub użytkownicy potrzebują dostępu do sieci wystąpienia zarządzanego (VNet), zanim będzie można nawiązać połączenie. Aby uzyskać więcej informacji, zapoznaj się z artykułem [Connect your application to a managed instance](sql-database-managed-instance-connect-app.md) (Łączenie aplikacji z wystąpieniem zarządzanym).
+
+Istnieje również możliwość skonfigurowania punktu końcowego usługi w zarządzanym wystąpieniu, która umożliwia nawiązywanie połączeń publicznych w taki sam sposób jak Azure SQL Database. Aby uzyskać więcej informacji, zobacz następujący artykuł, [Konfigurowanie publicznego punktu końcowego w Azure SQL Database wystąpienia zarządzanego](sql-database-managed-instance-public-endpoint-configure.md).
 
 > [!NOTE] 
-> Ponieważ do wystąpień zarządzanych dostęp można uzyskać tylko w ich sieci wirtualnej, [reguły zapory usługi SQL Database](sql-database-firewall-configure.md) nie mają zastosowania. Wystąpienie zarządzane ma swoją własną [wbudowaną zaporę](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
+> Nawet z włączonymi punktami końcowymi usługi [SQL Database reguły zapory](sql-database-firewall-configure.md) nie mają zastosowania. Zarządzane wystąpienie ma własną [wbudowaną zaporę](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md) do zarządzania łącznością.
 
 ## <a name="create-an-azure-ad-server-principal-login-for-a-managed-instance-using-ssms"></a>Tworzenie jednostki usługi (identyfikatora logowania) serwera Azure AD dla wystąpienia zarządzanego przy użyciu programu SSMS
 
@@ -434,7 +436,7 @@ Funkcja wykonywania zapytań w wielu bazach danych jest obsługiwana dla kont us
 - Przy użyciu jednostek usługi (identyfikatorów logowania) serwera Azure AD można skonfigurować usługi Service Broker i DBMail.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 ### <a name="enable-security-features"></a>Włączanie funkcji zabezpieczeń.
 

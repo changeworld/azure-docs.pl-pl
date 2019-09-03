@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: 75bbcfa831ba7ef0b3dd0da629cfa94768d6ae9d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: b96779a0a37602b6d114c9baf517df2637f734a2
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873327"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231126"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Łączenie narzędzi do skalowania i platformy Spark w usłudze HDInsight
 
@@ -193,7 +193,7 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
 
 ## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>Importowanie danych linii lotniczych i pogody do ramek dataframes
 
-Teraz używamy funkcji Spark [. DF ()](http://spark.apache.org/docs/latest/api/R/read.df.html) do zaimportowania danych pogody i linii lotniczych do ramek dataframes. Ta funkcja, podobnie jak wiele innych metod Spark, jest wykonywana opóźnieniem, co oznacza, że są umieszczane w kolejce do wykonania, ale nie wykonywane do czasu wymagane.
+Teraz używamy funkcji Spark [. DF ()](https://spark.apache.org/docs/latest/api/R/read.df.html) do zaimportowania danych pogody i linii lotniczych do ramek dataframes. Ta funkcja, podobnie jak wiele innych metod Spark, jest wykonywana opóźnieniem, co oznacza, że są umieszczane w kolejce do wykonania, ale nie wykonywane do czasu wymagane.
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -266,7 +266,7 @@ weatherDF <- rename(weatherDF,
 
 ## <a name="joining-the-weather-and-airline-data"></a>Sprzęganie danych pogody i linii lotniczych
 
-Teraz korzystamy z funkcji [joinobject ()](http://spark.apache.org/docs/latest/api/R/join.html) , aby wykonać lewe sprzężenie zewnętrzne danych linii lotniczych i pogodowych przez wyruszenie AirportID i DateTime. Sprzężenie zewnętrzne pozwala nam zachować wszystkie rekordy danych linii lotniczych nawet wtedy, gdy nie ma żadnych pasujących danych pogody. Po przyłączeniu usuniemy pewne nadmiarowe kolumny i zmienimy nazwy przechowywanych kolumn w celu usunięcia prefiksu przychodzącej ramki danych wprowadzonego przez sprzężenie.
+Teraz korzystamy z funkcji [joinobject ()](https://spark.apache.org/docs/latest/api/R/join.html) , aby wykonać lewe sprzężenie zewnętrzne danych linii lotniczych i pogodowych przez wyruszenie AirportID i DateTime. Sprzężenie zewnętrzne pozwala nam zachować wszystkie rekordy danych linii lotniczych nawet wtedy, gdy nie ma żadnych pasujących danych pogody. Po przyłączeniu usuniemy pewne nadmiarowe kolumny i zmienimy nazwy przechowywanych kolumn w celu usunięcia prefiksu przychodzącej ramki danych wprowadzonego przez sprzężenie.
 
 ```
 logmsg('Join airline data with weather at Origin Airport')

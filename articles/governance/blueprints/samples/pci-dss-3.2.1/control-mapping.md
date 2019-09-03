@@ -8,12 +8,12 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: c2dbfa5f6c9d679582a1834f2ff645c5ff79c51e
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: d7d62770bc0e2683fc7bc1554493954c0e98758b
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515693"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232694"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>Sterowanie mapowaniem przykładu planu PCI-DSS v 3.2.1
 
@@ -25,7 +25,7 @@ Następujące mapowania są do kontrolek **PCI-DSS v 3.2.1:2018 r** . Użyj nawi
 
 Ten plan ułatwia zarządzanie sieciami i sterowanie nimi przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które monitorują grupy zabezpieczeń sieci z regułami ograniczającymi. Reguły, które są zbyt ograniczane, mogą zezwalać na niezamierzony dostęp do sieci i powinny być przeglądane. Ten plan przypisuje jedną Azure Policy definicji, które monitorują niechronione punkty końcowe, aplikacje i konta magazynu. Punkty końcowe i aplikacje, które nie są chronione przez zaporę, i konta magazynu z nieograniczonym dostępem mogą zezwalać na nieograniczony dostęp do informacji zawartych w systemie informacyjnym.
 
-- Przeprowadź inspekcję nieograniczonego dostępu do kont magazynu
+- Inspekcja nieograniczonego dostępu sieciowego do kont magazynu
 - Dostęp za poorednictwem punktu końcowego połączonego z Internetem powinien być ograniczony
 
 ## <a name="34a-41-41g-41h-and-653-cryptographic-protection"></a>3.4. a, 4,1, 4.1. g, 4.1. h i 6.5.3, ochrona kryptograficzna
@@ -42,13 +42,13 @@ Ten plan pomaga wymuszać zasady przy użyciu kontrolek cryptograph, przypisują
 - Należy włączyć bezpieczny transfer do kont magazynu
 - W klastrach Service Fabric Właściwość ClusterProtectionLevel ma ustawioną wartość EncryptAndSign
 - Należy włączyć Transparent Data Encryption baz danych SQL
-- Wdróż przezroczyste szyfrowanie danych usługi SQL DB
+- Wdróż przezroczyste szyfrowanie danych SQL DB
 
 ## <a name="51-62-66-and-1121-vulnerability-scanning-and-system-updates"></a>5,1, 6,2, 6,6 i 11.2.1 luk w zabezpieczeniach oraz aktualizacje systemu
 
 Ten plan ułatwia zarządzanie lukami w zabezpieczeniach systemu informacyjnego przez przypisanie definicji [Azure Policy](../../../policy/overview.md) , które monitorują brakujące aktualizacje systemu, luki w zabezpieczeniach systemu operacyjnego, luki SQL i luki w zabezpieczeniach maszyn wirtualnych na platformie Azure Security Center. Azure Security Center udostępnia funkcje raportowania, które umożliwiają wgląd w informacje o stanie zabezpieczeń wdrożonych zasobów platformy Azure w czasie rzeczywistym.
 
-- Monitoruj brakujący program Endpoint Protection w usłudze Azure Security Center
+- Monitoruj brakujące Endpoint Protection w Azure Security Center
 - Wdróż domyślne rozszerzenie Microsoft IaaSAntimalware dla systemu Windows Server
 - Wdrażanie wykrywania zagrożeń na serwerach SQL
 - Aktualizacje systemu powinny być zainstalowane na maszynach
@@ -75,7 +75,7 @@ Services.
 - W ramach usługi MFA należy włączyć konta z uprawnieniami do zapisu w Twojej subskrypcji
 - Uwierzytelnianie wieloskładnikowe powinno być włączone na kontach z uprawnieniami do odczytu w ramach subskrypcji
 - Dla serwerów SQL powinien zostać zainicjowany administrator Azure Active Directory
-- Przeprowadź inspekcję użycia niestandardowych reguł kontroli RBAC
+- Inspekcja użycia niestandardowych reguł RBAC
 
 ## <a name="812-and-815-least-privilege-and-review-of-user-access-rights"></a>8.1.2 i 8.1.5 najniższe uprawnienia i przegląd praw dostępu użytkownika
 
@@ -112,7 +112,7 @@ Dzienniki diagnostyczne zapewniają wgląd w operacje wykonywane w ramach zasob�
 
 - Inspekcja powinna być włączona w zaawansowanych ustawieniach zabezpieczeń danych na SQL Server
 - Przeprowadź inspekcję ustawienia diagnostyki
-- Przeprowadź inspekcję ustawień inspekcji SQL na poziomie serwera
+- Inspekcja ustawień inspekcji poziomu serwera SQL
 - Wdrażanie inspekcji na serwerach SQL
 - Konta magazynu należy migrować do nowych zasobów Azure Resource Manager
 - Maszyny wirtualne należy migrować do nowych zasobów Azure Resource Manager
@@ -134,7 +134,7 @@ Po przejrzeniu mapowania kontroli planu PCI-DSS v 3.2.1 zapoznaj się z następu
 
 ## <a name="addition-articles-about-blueprints-and-how-to-use-them"></a>Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
-- Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
+- Dowiedz się więcej o [cyklu życia](../../concepts/lifecycle.md)planu.
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).
 - Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../../concepts/sequencing-order.md).
 - Dowiedz się, jak używać [blokowania zasobów strategii](../../concepts/resource-locking.md).

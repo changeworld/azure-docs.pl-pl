@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 18297410842b432af0093a71406df71f7e03db9d
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: 311db544a119d4b9bee7d31cfdfac33aa3c4ed79
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602051"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233162"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Informacje o kondycji maszyn wirtualnych platformy Azure
 
@@ -285,7 +285,7 @@ Aby wyświetlić zaktualizowany stan kondycji, można odświeżyć stronę Diagn
 
 Azure Monitor dla maszyn wirtualnych Health integruje się z [alertami platformy Azure](../../azure-monitor/platform/alerts-overview.md). Zgłasza alert po wykryciu wstępnie zdefiniowanych kryteriów, zmienia się ze stanu dobrej kondycji na nieprawidłowy. Alerty są pogrupowane według ważności, od ważność od 0 do ważność 4, z ważność 0 jako najwyższy poziom.
 
-Alerty nie są skojarzone z grupą akcji w celu powiadomienia użytkownika o wyzwoleniu alertu. Właściciel subskrypcji musi skonfigurować powiadomienia, wykonując czynności opisane w sekcji [Konfigurowanie alertów](#configure-alerts) .
+Alerty nie są skojarzone z grupą akcji w celu powiadomienia użytkownika o wyzwoleniu alertu. Użytkownik z rolą właściciela w zakresie subskrypcji musi skonfigurować powiadomienia, wykonując czynności opisane w sekcji [Konfigurowanie alertów](#configure-alerts) .
 
 Całkowita liczba alertów dotyczących kondycji maszyn wirtualnych sklasyfikowanych według ważności jest dostępna na pulpicie nawigacyjnym kondycji w sekcji **alerty** . Po wybraniu całkowitej liczby alertów lub liczby odpowiadającej poziomowi ważności zostanie otwarta strona **alerty** z listami wszystkich alertów pasujących do wybranych elementów.
 
@@ -301,7 +301,7 @@ Możesz filtrować ten widok, wybierając wartości z menu rozwijanego w górnej
 
 |Kolumna |Opis |
 |-------|------------|
-|Subscription |Wybierz subskrypcję Azure. W widoku są uwzględniane tylko alerty w wybranej subskrypcji. |
+|Subscription |Wybierz subskrypcję platformy Azure. W widoku są uwzględniane tylko alerty w wybranej subskrypcji. |
 |Grupa zasobów |Wybierz pojedynczą grupę zasobów. W widoku są uwzględniane tylko alerty z obiektami docelowymi w wybranej grupie zasobów. |
 |Typ zasobu |Wybierz co najmniej jeden typ zasobu. Domyślnie wybrane są tylko alerty docelowych **maszyn wirtualnych** i są one uwzględnione w tym widoku. Ta kolumna jest dostępna tylko po określeniu grupy zasobów. |
 |Resource |Wybierz zasób. W widoku są uwzględniane tylko alerty z tym zasobem. Ta kolumna jest dostępna tylko po określeniu typu zasobu. |

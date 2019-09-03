@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 09/03/2019
+ms.localizationpriority: high
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e58e33efebfe372bd5cacc45f0a8045cec18878d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 259c20aead3bbe7b44c59efe031a079ba80e2905
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135040"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232950"
 ---
 ::: zone target="chromeless"
 
@@ -49,7 +50,7 @@ Przed rozpoczęciem upewnij się, że zostały wykonane kroki opisane w artykule
     - Zalecamy pakowanie dysków przy użyciu dobrze zabezpieczonego zawijania bąbelkowego.
     - Upewnij się, że dopasowanie jest Snug, aby zmniejszyć liczbę ruchów w polu.
 
-Następne kroki są określane przez miejsce zwrócenia urządzenia. Instrukcje są różne dla Stanów Zjednoczonych/Kanady, Australii lub krajów w Azji.
+Następne kroki są określane przez miejsce zwrócenia urządzenia. Instrukcje są różne dla Stanów Zjednoczonych/Kanady, Unii Europejskiej (UE), Australii lub krajów w Azji.
 
 ### <a name="pick-up-in-us-canada"></a>Wybieraj w Stanach Zjednoczonych, Kanadzie
 

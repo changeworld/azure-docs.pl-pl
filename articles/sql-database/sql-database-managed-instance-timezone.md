@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
-ms.date: 08/14/2019
-ms.openlocfilehash: a02709ffde144e7bd5e4d05fcd0e07c5d84a15fb
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 09/03/2019
+ms.openlocfilehash: e81ae2fc563300402339fc40893fbbdbbd326dcd
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035823"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233227"
 ---
 # <a name="time-zones-in-azure-sql-database-managed-instance"></a>Strefy czasowe w Azure SQL Database wystąpieniu zarządzanym
 
@@ -83,50 +83,32 @@ Można przywrócić plik kopii zapasowej lub zaimportować dane do wystąpienia 
 
 ### <a name="point-in-time-restore"></a>Przywracanie do określonego momentu
 
-<del>Gdy wykonujesz przywracanie do punktu w czasie, czas przywracania jest interpretowany jako czas UTC. W ten sposób można uniknąć wszelkich niejasności z powodu czasu letniego i jego potencjalnych zmian.<del>
-
- >[!WARNING]
-  > Bieżące zachowanie nie jest zgodne z powyższą instrukcją i czas przywracania do programu jest interpretowany jako dla strefy czasowej źródłowego wystąpienia zarządzanego, z którego pobierane są automatyczne kopie zapasowe bazy danych. Pracujemy nad korygowaniem tego zachowania, aby interpretować dany punkt w czasie jako czas UTC.
+Gdy wykonujesz przywracanie do punktu w czasie, czas przywracania jest interpretowany jako czas UTC. W ten sposób można uniknąć wszelkich niejasności z powodu czasu letniego i jego potencjalnych zmian.
 
 ### <a name="auto-failover-groups"></a>Grupy automatycznego trybu failover
 
 Korzystanie z tej samej strefy czasowej w wystąpieniu podstawowym i pomocniczym w grupie trybu failover nie jest wymuszane, ale zdecydowanie zalecamy.
 
   >[!WARNING]
-  > Zdecydowanie zalecamy użycie tej samej strefy czasowej dla wystąpienia podstawowego i dodatkowego w grupie trybu failover. Ze względu na niektóre rzadkie scenariusze zachowywanie tej samej strefy czasowej w wystąpieniach podstawowych i pomocniczych nie jest wymuszane. Ważne jest, aby zrozumieć, że w przypadku ręcznej lub automatycznej pracy awaryjnej wystąpienie pomocnicze zachowa oryginalną strefę czasową.
+  > Zdecydowanie zalecamy użycie tej samej strefy czasowej dla wystąpienia podstawowego i dodatkowego w grupie trybu failover. Z powodu niektórych rzadkich przypadków użycia utrzymywanie tej samej strefy czasowej w wystąpieniach podstawowych i pomocniczych nie jest wymuszane. Ważne jest, aby zrozumieć, że w przypadku ręcznej lub automatycznej pracy awaryjnej wystąpienie pomocnicze zachowa oryginalną strefę czasową.
 
 ## <a name="limitations"></a>Ograniczenia
 
 - Nie można zmienić strefy czasowej istniejącego wystąpienia zarządzanego.
 - Procesy zewnętrzne uruchomione z zadań agenta SQL Server nie obserwują strefy czasowej wystąpienia.
 
-## <a name="known-issues"></a>Znane problemy
-
-Gdy jest wykonywana operacja przywracania do określonego momentu (kopie), czas przywracania do programu jest interpretowany jako strefę czasową ustawioną w wystąpieniu zarządzanym, z którego pobierane są automatyczne kopie zapasowe bazy danych, mimo że strona portalu dla kopie sugeruje, że czas jest interpretowany jako UTC.
-
-Przykład:
-
-Załóżmy, że wystąpienie, dla którego pobierane są automatyczne kopie zapasowe, ma ustawiony okres Wschodni czas standardowy (UTC-5).
-Na stronie portalu przywracania do punktu w czasie jest sugerowany czas UTC:
-
-![KOPIE z lokalnym czasem przy użyciu portalu](media/sql-database-managed-instance-timezone/02-pitr-with-nonutc-timezone.png)
-
-Jednak czas przywracania do programu jest faktycznie interpretowany jako Wschodni czas standardowy, a w tym konkretnym przykładzie baza danych zostanie przywrócona do stanu o godzinie 9 (Wschodni czas standardowy), a nie czasu UTC.
-
-Jeśli chcesz przeprowadzić przywracanie do określonego punktu w czasie UTC, najpierw Oblicz odpowiedni czas w strefie czasowej wystąpienia źródłowego i Użyj tego czasu w portalu lub skrypcie środowiska PowerShell/interfejsu wiersza polecenia.
-
 ## <a name="list-of-supported-time-zones"></a>Lista obsługiwanych stref czasowych
 
 | **Identyfikator strefy czasowej** | **Nazwa wyświetlana strefy czasowej** |
 | --- | --- |
 | Czas standardowy linii zmiany czasu | (UTC-12:00) Międzynarodowa linia zmiany daty — Zachód |
-| UTC-11 | (UTC-11:00) Uniwersalny czas koordynowany-11 |
-| Aleuty (czas standardowy) | (UTC-10:00) Aleuty |
+| UTC — 11 | (UTC-11:00) Uniwersalny czas koordynowany-11 |
+| Aleuty (czas standardowy) | (UTC-10:00) Wyspy Aleuckie |
 | Hawaje (czas standardowy) | (UTC-10:00) Hawaje |
-| Markizy (czas standardowy) | (UTC-09:30) Markizy |
+| Markizy (czas standardowy) | (UTC-09:30) Wyspy Markizy |
 | Alaska (czas standardowy) | (UTC-09:00) Alaska |
-| UTC-09 | (UTC-09:00) Uniwersalny czas koordynowany-09 |
-| Meksyk (standardowy czas pacyficzny) | (UTC-08:00) Kalifornia Dolna |
+| UTC — 09 | (UTC-09:00) Uniwersalny czas koordynowany-09 |
+| Pacyficzny czas standardowy (Meksyk) | (UTC-08:00) Kalifornia Dolna |
 | UTC-08 | (UTC-08:00) Uniwersalny czas koordynowany-08 |
 | Pacyfik (czas standardowy) | (UTC-08:00) Stany Zjednoczone i Kanada (czas pacyficzny) |
 | Stany Zjednoczone (górski czas standardowy) | (UTC-07:00) Arizona |
@@ -157,7 +139,7 @@ Jeśli chcesz przeprowadzić przywracanie do określonego punktu w czasie UTC, n
 | Argentyna (czas standardowy) | (UTC-03:00) Buenos Aires |
 | Grenlandia (czas standardowy) | (UTC-03:00) Grenlandia |
 | Montevideo (czas standardowy) | (UTC-03:00) Montevideo |
-| Czas standardowy (Magallanes) | (UTC-03:00) Punta Arenas |
+| Czas standardowy (Magallanes) | (UTC-03:00) Punta |
 | Saint-Pierre (czas standardowy) | (UTC-03:00) Saint-Pierre i Miquelon |
 | Bahia (czas standardowy) | (UTC-03:00) Salwador |
 | UTC-02 | (UTC-02:00) Uniwersalny czas koordynowany-02 |
@@ -166,12 +148,12 @@ Jeśli chcesz przeprowadzić przywracanie do określonego punktu w czasie UTC, n
 | Wyspy Zielonego Przylądka (czas standardowy) | (UTC-01:00) Wyspy Zielonego Przylądka |
 | UTC | (UTC) Uniwersalny czas koordynowany |
 | GMT (czas standardowy) | (UTC+00:00) Dublin, Edynburg, Lizbona, Londyn |
-| Greenwich (czas standardowy) | (UTC+00:00) Monrowia, Reykjavik |
+| Greenwich (czas standardowy) | (UTC+00:00) Monrovia, Reykjavik |
 | W. Europa (czas standardowy) | (UTC+01:00) Amsterdam, Berlin, Berno, Rzym, Sztokholm, Wiedeń |
 | Europa Środkowa (czas standardowy) | (UTC+01:00) Belgrad, Bratysława, Budapeszt, Lublana, Praga |
 | Romański czas standardowy | (UTC+01:00) Bruksela, Kopenhaga, Madryt, Paryż |
-| Maroko (czas standardowy) | (UTC+01:00) Casablanca |
-| Wyspa Świętego Tomasza — czas standardowy | (UTC+01:00) Wyspa Świętego Tomasza |
+| Maroko (czas standardowy) | (UTC + 01:00) Casablanca |
+| Wyspa Świętego Tomasza — czas standardowy | (UTC + 01:00) Wyspa Świętego Tomasza |
 | Środkowoeuropejski czas standardowy | (UTC+01:00) Sarajewo, Skopie, Warszawa, Zagrzeb |
 | W. Afryka Środkowa (czas standardowy) | (UTC+01:00) Afryka Środkowozachodnia |
 | Jordania (czas standardowy) | (UTC+02:00) Amman |
@@ -185,14 +167,14 @@ Jeśli chcesz przeprowadzić przywracanie do określonego punktu w czasie UTC, n
 | Finlandia (czas standardowy) | (UTC+02:00) Helsinki, Kijów, Ryga, Sofia, Tallin, Wilno |
 | Izrael (czas standardowy) | (UTC+02:00) Jerozolima |
 | Kaliningrad (czas standardowy) | (UTC+02:00) Kaliningrad |
-| Sudan (czas standardowy) | (UTC+02:00) Chartum |
+| Sudan (czas standardowy) | (UTC + 02:00) Chartum |
 | Libia (czas standardowy) | (UTC+02:00) Trypolis |
-| Namibia (czas standardowy) | (UTC+02:00) Windhoek |
+| Namibia (czas standardowy) | (UTC + 02:00) Windhuk |
 | Arabski czas standardowy | (UTC+03:00) Bagdad |
-| Turcja (czas standardowy) | (UTC+03:00) Stambuł |
-| Arabia Saud. (czas standardowy) | (UTC+03:00) Kuwejt, Ar-Rijad |
+| Turcja (czas standardowy) | (UTC + 03:00) Stambuł |
+| Arabia Saud. (czas standardowy) | (UTC+03:00) Kuwejt, Rijad |
 | Białoruś (czas standardowy) | (UTC+03:00) Mińsk |
-| Rosyjski czas standardowy | (UTC+03:00) Moskwa, Petersburg |
+| Rosyjski czas standardowy | (UTC + 03:00) Moskwa, Sankt Petersburg |
 | E. Afryka (czas standardowy) | (UTC+03:00) Nairobi |
 | Iran (czas standardowy) | (UTC+03:30) Teheran |
 | Arabia (czas standardowy) | (UTC+04:00) Abu Zabi, Maskat |
@@ -200,37 +182,37 @@ Jeśli chcesz przeprowadzić przywracanie do określonego punktu w czasie UTC, n
 | Azerbejdżan (czas standardowy) | (UTC+04:00) Baku |
 | Strefa 3 czasu Rosji | (UTC+04:00) Iżewsk, Samara |
 | Mauritius (czas standardowy) | (UTC+04:00) Port Louis |
-| Czas standardowy (Saratów) | (UTC+04:00) Saratów |
-| Gruzja (czas standardowy) | (UTC+04:00) Tibilisi |
-| Wołgograd (czas standardowy) | (UTC+04:00) Wołgograd |
+| Czas standardowy (Saratów) | (UTC + 04:00) Saratów |
+| Gruzja (czas standardowy) | (UTC+04:00) Tbilisi |
+| Wołgograd (czas standardowy) | (UTC + 04:00) Wołgograd |
 | Kaukaz (czas standardowy) | (UTC+04:00) Erywań |
 | Afganistan (czas standardowy) | (UTC+04:30) Kabul |
 | Azja Zach. (czas standardowy) | (UTC+05:00) Aszchabad, Taszkient |
 | Jekaterynburg (czas standardowy) | (UTC+05:00) Jekaterynburg |
 | Pakistan (czas standardowy) | (UTC+05:00) Islamabad, Karaczi |
 | Indie (czas standardowy) | (UTC+05:30) Chennai, Kolkata (Kalkuta), Mumbaj (Bombaj), Nowe Delhi |
-| Sri Lanka (czas standardowy) | (UTC+05:30) Sri Dźajawardanapura Kotte |
+| Sri Lanka (czas standardowy) | (UTC+05:30) Sri Jayawardenepura |
 | Nepal (czas standardowy) | (UTC+05:45) Katmandu |
 | Azja Środkowa (czas standardowy) | (UTC+06:00) Astana |
 | Bangladesz (czas standardowy) | (UTC+06:00) Dakka |
-| Omsk (czas standardowy) | (UTC+06:00) Omsk |
+| Omsk (czas standardowy) | (UTC + 06:00) Omsk |
 | Mjanma (czas standardowy) | (UTC+06:30) Yangon (Rangun) |
 | Azja Południowo-Wschodnia (czas standardowy) | (UTC+07:00) Bangkok, Hanoi, Dżakarta |
 | Ałtaj (czas standardowy) | (UTC+07:00) Barnauł, Gornoałtajsk |
 | W. Mongolia (czas standardowy) | (UTC+07:00) Ajmak kobdoski |
 | Azja Północna (czas standardowy) | (UTC+07:00) Krasnojarsk |
-| AZOTAN. Azja Środkowa (czas standardowy) | (UTC+07:00) Nowosybirsk |
+| AZOTAN. Azja Środkowa (czas standardowy) | (UTC + 07:00) Nowosybirsk |
 | Tomsk (czas standardowy) | (UTC+07:00) Tomsk |
-| Chiny (czas standardowy) | (UTC+08:00) Pekin, Czungking, SRA Hongkong, Urumczi |
+| Chiny (czas standardowy) | (UTC+08:00) Pekin, Chongqing, Hongkong SAR, Urumczi |
 | Azja Północna (Wschodni czas standardowy) | (UTC+08:00) Irkuck |
 | Singapur (czas standardowy) | (UTC+08:00) Kuala Lumpur, Singapur |
 | W. Australia (czas standardowy) | (UTC+08:00) Perth |
-| Tajpej (czas standardowy) | (UTC+08:00) Tajpej |
+| Tajpej (czas standardowy) | (UTC+08:00) Taipei |
 | Ułan Bator (czas standardowy) | (UTC+08:00) Ułan Bator |
-| Australia Środkowo-Zachodnia (czas standardowy) | (UTC+08:45) Eucla |
+| Australia Środkowa W. czas standardowy | (UTC+08:45) Eucla |
 | Zabajkale (czas standardowy) | (UTC+09:00) Czyta |
 | Tokio (czas standardowy) | (UTC+09:00) Osaka, Sapporo, Tokio |
-| Korea Północna (czas standardowy) | (UTC+09:00) Phenian |
+| Korea Północna (czas standardowy) | (UTC + 09:00) Phenian |
 | Korea (czas standardowy) | (UTC+09:00) Seul |
 | Jakuck (czas standardowy) | (UTC+09:00) Jakuck |
 | Znormalizowane. Australia (czas standardowy) | (UTC+09:30) Adelajda |
@@ -240,20 +222,20 @@ Jeśli chcesz przeprowadzić przywracanie do określonego punktu w czasie UTC, n
 | Zachodni Pacyfik (czas standardowy) | (UTC+10:00) Guam, Port Moresby |
 | Tasmania (czas standardowy) | (UTC+10:00) Hobart |
 | Władywostok (czas standardowy) | (UTC+10:00) Władywostok |
-| Lord Howe (czas standardowy) | (UTC+10:30) Lord Howe |
-| Bougainville (czas standardowy) | (UTC+11:00) Wyspa Bougainville’a |
+| Lord Howe (czas standardowy) | (UTC+10:30) Wyspa Lord Howe |
+| Bougainville (czas standardowy) | (UTC+11:00) Wyspa Bougainville |
 | Rosja strefa czasowa 10 | (UTC+11:00) Czokurdach |
 | Magadan (czas standardowy) | (UTC+11:00) Magadan |
-| Norfolk (czas standardowy) | (UTC+11:00) Norfolk |
+| Norfolk (czas standardowy) | (UTC+11:00) Wyspa Norfolk |
 | Sachalin (czas standardowy) | (UTC+11:00) Sachalin |
 | Środkowy Pacyfik (czas standardowy) | (UTC+11:00) Wyspy Salomona, Nowa Kaledonia |
 | Rosja strefa czasowa 11 | (UTC+12:00) Anadyr, Pietropawłowsk Kamczacki |
 | Nowa Zelandia (czas standardowy) | (UTC+12:00) Auckland, Wellington |
-| UTC+12 | (UTC+12:00) Uniwersalny czas koordynowany+12 |
+| UTC + 12 | (UTC+12:00) Uniwersalny czas koordynowany+12 |
 | Fidżi (czas standardowy) | (UTC+12:00) Fidżi |
-| Kamczatka (czas standardowy) | (GMT+12:00) Pietropawłowsk Kamczacki — stare |
+| Kamczatka (czas standardowy) | (UTC+12:00) Pietropawłowsk Kamczacki — stare |
 | Wyspy Chatham (czas standardowy) | (UTC+12:45) Wyspy Chatham |
-| UTC+13 | (UTC+13:00) Uniwersalny czas koordynowany+13 |
+| UTC + 13 | (UTC + 13:00) Uniwersalny czas koordynowany + 13 |
 | Tonga (czas standardowy) | (UTC+13:00) Nuku'alofa |
 | Samoa (czas standardowy) | (UTC+13:00) Samoa |
 | Line Islands (czas standardowy) | (UTC+14:00) Wyspa Kiritimati |

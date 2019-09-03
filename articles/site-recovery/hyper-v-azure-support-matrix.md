@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: raynew
-ms.openlocfilehash: 3158ebddf6ffe5594c9daf0fd9f3e3fe980c0b24
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b4f9c0ab3ca50b0ce8c9ba27d8773c58a72dcfa9
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845673"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70230964"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Macierz obsługi odzyskiwania po awarii lokalnych maszyn wirtualnych funkcji Hyper-V na platformie Azure
 
@@ -59,14 +59,14 @@ Dodawanie dysku do zreplikowanej maszyny wirtualnej funkcji Hyper-V | Nieobsług
 
 **Składnik** | **Funkcja Hyper-V z Virtual Machine Manager** | **Funkcja Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
-Sieć hosta: Tworzenie zespołu kart interfejsu sieciowego | Yes | Tak
-Sieć hosta: VLAN | Yes | Tak
+Sieć hosta: Tworzenie zespołu kart interfejsu sieciowego | Tak | Tak
+Sieć hosta: VLAN | Tak | Tak
 Sieć hosta: IPv4 | Tak | Tak
 Sieć hosta: IPv6 | Nie | Nie
 Sieć VMNETWORK gościa: Tworzenie zespołu kart interfejsu sieciowego | Nie | Nie
-Sieć VMNETWORK gościa: IPv4 | Yes | Tak
-Sieć VMNETWORK gościa: IPv6 | Nie | Yes
-Sieć VMNETWORK gościa: Statyczny adres IP (system Windows) | Yes | Tak
+Sieć VMNETWORK gościa: IPv4 | Tak | Tak
+Sieć VMNETWORK gościa: IPv6 | Nie | Tak
+Sieć VMNETWORK gościa: Statyczny adres IP (system Windows) | Tak | Tak
 Sieć VMNETWORK gościa: Statyczny adres IP (Linux) | Nie | Nie
 Sieć VMNETWORK gościa: Multi-NIC | Tak | Tak
 
@@ -76,15 +76,15 @@ Sieć VMNETWORK gościa: Multi-NIC | Tak | Tak
 
 **Składnik** | **Funkcja Hyper-V z Virtual Machine Manager** | **Funkcja Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
-Azure ExpressRoute | Yes | Yes
-ILB | Yes | Tak
+Azure ExpressRoute | Tak | Tak
+ILB | Tak | Tak
 ELB | Tak | Tak
 Azure Traffic Manager | Tak | Tak
-Multi-NIC | Yes | Tak
-Zastrzeżony adres IP | Yes | Tak
+Multi-NIC | Tak | Tak
+Zastrzeżony adres IP | Tak | Tak
 IPv4 | Tak | Tak
-Zachowaj źródłowy adres IP | Yes | Tak
-Punkty końcowe usługi Azure Virtual Network<br/> (bez zapór usługi Azure Storage) | Yes | Yes
+Zachowaj źródłowy adres IP | Tak | Tak
+Punkty końcowe usługi Azure Virtual Network<br/> (bez zapór usługi Azure Storage) | Tak | Tak
 Accelerated Networking | Nie | Nie
 
 
@@ -102,9 +102,9 @@ Wiele ścieżek (MPIO). Przetestowano przy użyciu:<br></br> Microsoft DSM, EMC 
 **Storage** | **Funkcja Hyper-V z Virtual Machine Manager** | **Funkcja Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
 VMDK | Nie dotyczy | Nie dotyczy
-VHD/VHDX | Yes | Tak
-Maszyna wirtualna generacji 2 | Yes | Tak
-EFI/UEFI| Yes | Yes
+VHD/VHDX | Tak | Tak
+Maszyna wirtualna generacji 2 | Tak | Tak
+EFI/UEFI| Tak | Tak
 Udostępniony dysk klastra | Nie | Nie
 Zaszyfrowany dysk | Nie | Nie
 NFS | Nie dotyczy | Nie dotyczy
@@ -118,20 +118,20 @@ Wolumin z dyskiem rozłożonym > 1 TB | Tak | Tak
 Miejsca do magazynowania | Nie | Nie
 Gorące Dodawanie/usuwanie dysku | Nie | Nie
 Wykluczanie dysku | Tak | Tak
-Wiele ścieżek (MPIO) | Yes | Yes
+Wiele ścieżek (MPIO) | Tak | Tak
 
 ## <a name="azure-storage"></a>Azure Storage
 
 **Składnik** | **Funkcja Hyper-V z Virtual Machine Manager** | **Funkcja Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
-Magazyn lokalnie nadmiarowy | Tak | Yes
-Magazyn geograficznie nadmiarowy | Tak | Yes
-Magazyn Geograficznie nadmiarowy do odczytu | Yes | Tak
+Magazyn lokalnie nadmiarowy | Tak | Tak
+Magazyn geograficznie nadmiarowy | Tak | Tak
+Magazyn Geograficznie nadmiarowy do odczytu | Tak | Tak
 Chłodny magazyn | Nie | Nie
 Magazyn gorąca| Nie | Nie
 Obiekty BLOB typu Block | Nie | Nie
 Szyfrowanie w spoczynku (SSE)| Tak | Tak
-Premium Storage | Yes | Yes
+Premium Storage | Tak | Tak
 Usługa importu/eksportu | Nie | Nie
 Zapory usługi Azure Storage dla sieci wirtualnych skonfigurowane na docelowym koncie magazynu/pamięci podręcznej (używane do przechowywania danych replikacji) | Nie | Nie
 
@@ -141,7 +141,7 @@ Zapory usługi Azure Storage dla sieci wirtualnych skonfigurowane na docelowym k
 **Funkcja** | **Funkcja Hyper-V z Virtual Machine Manager** | **Funkcja Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
 Zestawy dostępności | Tak | Tak
-HUB | Yes | Tak  
+HUB | Tak | Tak  
 Dyski zarządzane | Tak, w przypadku trybu failover.<br/><br/> Powrót po awarii dysków zarządzanych nie jest obsługiwany. | Tak, w przypadku trybu failover.<br/><br/> Powrót po awarii dysków zarządzanych nie jest obsługiwany.
 
 ## <a name="azure-vm-requirements"></a>Wymagania dotyczące maszyny wirtualnej platformy Azure
@@ -151,7 +151,7 @@ Lokalne maszyny wirtualne replikowane na platformę Azure muszą spełniać wyma
 **Składnik** | **Wymagania** | **Szczegóły**
 --- | --- | ---
 System operacyjny gościa | Site Recovery obsługuje wszystkie systemy operacyjne, które są [obsługiwane przez platformę Azure](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx).  | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie jest obsługiwana
-Architektura systemu operacyjnego gościa | 64-bitowa | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie jest obsługiwana
+Architektura systemu operacyjnego gościa | 32-bitowy (Windows Server 2008)/64-bit | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie jest obsługiwana
 Rozmiar dysku systemu operacyjnego | Do 2 048 GB dla maszyn wirtualnych 1. generacji.<br/><br/> Do 300 GB dla maszyn wirtualnych 2. generacji.  | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie jest obsługiwana
 Liczba dysków systemu operacyjnego | 1 | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie jest obsługiwana
 Liczba dysków danych | 16 lub mniej  | Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie jest obsługiwana
@@ -166,13 +166,13 @@ Typ maszyny wirtualnej | Generacja 1<br/><br/> Generacja 2 — Windows | Maszyny
 
 ## <a name="recovery-services-vault-actions"></a>Akcje magazynu Recovery Services
 
-**Akcja** |  **Funkcja Hyper-V z Virtual Machine Manager** | **Funkcja Hyper-V bez Virtual Machine Manager**
+**Akcja** |  **Funkcja Hyper-V z programem VMM** | **Funkcja Hyper-V bez programu VMM**
 --- | --- | ---
 Przenoszenie magazynu między grupami zasobów<br/><br/> W ramach i między subskrypcjami | Nie | Nie
 Przenoszenie magazynu, sieci, maszyn wirtualnych platformy Azure między grupami zasobów<br/><br/> W ramach i między subskrypcjami | Nie | Nie
 
 > [!NOTE]
-> Podczas replikowania maszyn wirtualnych funkcji Hyper-V (zarządzanych za pomocą programu SCVMM i bez niego) ze środowiska lokalnego na platformę Azure można replikować tylko do jednej dzierżawy usługi AD z jednego określonego środowisku — lokacji lub SCVMM w trybie użytkownika.
+> Podczas replikowania maszyn wirtualnych funkcji Hyper-v z lokalnego do platformy Azure można replikować tylko do jednej dzierżawy usługi AD z jednego określonego środowiska — lokacji funkcji Hyper-lub funkcji Hyper-V z programem VMM, zgodnie z wymaganiami.
 
 
 ## <a name="provider-and-agent"></a>Dostawca i agent

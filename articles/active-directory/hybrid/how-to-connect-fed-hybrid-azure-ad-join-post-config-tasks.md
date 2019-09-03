@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e76abcac94a877e6bc7ea5c417c77c8c2febff
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 70e3267792f27a170efa26cc4267d1b25045a099
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032698"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231243"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>Zadania pokonfiguracyjne dotyczące dołączania do hybrydowej usługi Azure AD
 
@@ -31,12 +31,12 @@ Po uruchomieniu Azure AD Connect, aby skonfigurować organizację dla sprzężen
 Wszystkie urządzenia przyłączone do domeny z systemem Windows 10 i Windows Server 2016 są automatycznie rejestrowane w usłudze Azure AD po zakończeniu wszystkich kroków konfiguracji. Jeśli wolisz przeprowadzić kontrolowane wdrożenie, a nie rejestrację automatyczną, możesz użyć zasad grupy, aby selektywnie włączać lub wyłączać Automatyczne wdrażanie.  Te zasady grupy należy ustawić przed rozpoczęciem wykonywania innych czynności konfiguracyjnych:
 * Utwórz obiekt zasad grupy w Active Directory.
 * Nadaj mu nazwę (np. sprzężenie hybrydowe usługi Azure AD).
-* Edytuj & Przejdź do:  Zasady > konfiguracji komputera > Szablony administracyjne > składników systemu Windows > rejestracji urządzeń.
+* Edytuj i przejdź do:  Zasady > konfiguracji komputera > Szablony administracyjne > składników systemu Windows > rejestracji urządzeń.
 
 >[!NOTE]
 >W przypadku 2012R2 ustawienia zasad są w **konfiguracji komputera > zasad > Szablony administracyjne > składników systemu Windows > Workplace Join > automatyczne dołączanie komputerów klienckich**
 
-* Wyłącz to ustawienie:  Rejestrowanie komputerów przyłączonych do domeny jako urządzeń.
+* Włącz to ustawienie:  Rejestrowanie komputerów przyłączonych do domeny jako urządzeń.
 * Zastosuj i kliknij przycisk OK.
 * Połącz obiekt zasad grupy z wybraną lokalizacją (jednostką organizacyjną, grupą zabezpieczeń lub domeną dla wszystkich urządzeń).
 

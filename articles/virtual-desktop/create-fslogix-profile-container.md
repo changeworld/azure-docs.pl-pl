@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: 05289b8e3aa0e083dd948a2d43f3af92418bc5d2
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 078a29fc1ab66151aa41c3901bb6a3af6479a0ba
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051983"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233274"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Tworzenie kontenera profilu FSLogix dla puli hostów przy użyciu Azure NetApp Files
 
@@ -218,7 +218,7 @@ Ta sekcja opiera się na [tworzeniu kontenera profilu dla puli hostów przy uży
 
 6. Połącz się bezpośrednio z dowolną częścią maszyny wirtualnej puli hostów przy użyciu Pulpit zdalny i Otwórz **Eksploratora plików.** Następnie przejdź do **ścieżki instalacji** (w poniższym przykładzie ścieżka instalacji to \\ \\ANF-SMB-3863.gt1107.onmicrosoft.com\\ANF-vol).
 
-   W tym folderze powinien istnieć dysk VHD profilu, taki jak ten, w poniższym przykładzie.
+   W tym folderze powinien istnieć dysk VHD (lub VHDX) profilu, taki jak ten, w poniższym przykładzie.
 
    ![Zrzut ekranu przedstawiający zawartość folderu w ścieżce instalacji. Wewnątrz programu jest pojedynczy plik VHD o nazwie "Profile_ssbb".](media/mount-path-folder.png)
 

@@ -1,79 +1,78 @@
 ---
-title: Korzystanie z parametrów do tworzenia dynamicznych plany
-description: Więcej informacji na temat parametrów statyczne i dynamiczne i jak za ich pomocą tworzy schematy dynamiczne.
+title: Używanie parametrów do tworzenia planów dynamicznych
+description: Informacje o parametrach statycznych i dynamicznych oraz sposobach tworzenia przez nich planów dynamicznych.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 5c1bb1f959f920ea9bce23082ec531dc83d873ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9670433284ae963783b655322c4b18f748df52c5
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66356980"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231953"
 ---
-# <a name="creating-dynamic-blueprints-through-parameters"></a>Tworzenie dynamicznych schematy za pomocą parametrów
+# <a name="creating-dynamic-blueprints-through-parameters"></a>Tworzenie dynamicznych planów za poorednictwem parametrów
 
-W pełni zdefiniowana planu z różnych artefaktami (np. grupy zasobów, Menedżer zasobów szablonów, zasad lub przypisania ról) oferuje szybkie tworzenie i spójne Tworzenie obiektów w obrębie platformy Azure. Aby umożliwić użycie elastycznych te wzorce projektowe wielokrotnego użytku i kontenerów, schematy Azure obsługuje parametry. Parametr tworzy elastyczność zarówno podczas definicji i przypisania, aby zmienić właściwości artefaktów wdrożone przez planu.
+W pełni zdefiniowany plan z różnymi artefaktami (takimi jak grupy zasobów, szablony Menedżer zasobów, zasady lub przypisania ról) umożliwia szybkie tworzenie i spójne Tworzenie obiektów na platformie Azure. Aby umożliwić elastyczne korzystanie z tych wzorców i kontenerów projektu wielokrotnego użytku, plany platformy Azure obsługują parametry. Parametr tworzy elastyczność podczas definiowania i przypisywania, aby zmienić właściwości artefaktów wdrożonych przez plan.
 
-Prostym przykładem jest artefaktu grupy zasobów. Po utworzeniu grupy zasobów ma dwa wymagane wartości, które należy podać: Nazwa i lokalizacja. Jeśli podczas dodawania grupy zasobów do Twojego planu parametrów nie istnieje, należy zdefiniować tej nazwy i lokalizacji co do użytku z planu. Powtórzenie spowoduje, że każdy korzystanie z planem, aby utworzyć artefakty w tej samej grupie zasobów. Zasoby znajdujące się w tej grupie zasobów może stać się zduplikowane i powodować konflikt.
+Prostym przykładem jest artefakt grupy zasobów. Po utworzeniu grupy zasobów muszą być podane dwie wymagane wartości: Nazwa i lokalizacja. W przypadku dodawania grupy zasobów do planu, jeśli parametry nie istnieją, należy zdefiniować tę nazwę i lokalizację dla każdego użycia planu. To powtórzenie spowodowałoby każde użycie planu do tworzenia artefaktów w tej samej grupie zasobów. Zasoby znajdujące się w tej grupie zasobów byłyby zduplikowane i powodują konflikt.
 
 > [!NOTE]
-> Nie jest to problem dla dwóch różnych planów obejmujący grupę zasobów o takiej samej nazwie.
-> Jeśli istnieje już uwzględnione w planie grupę zasobów, planu w dalszym ciągu tworzenie powiązanych artefaktów w danej grupie zasobów. Może to spowodować konflikt jako dwa zasoby o takiej samej nazwie, a typ zasobu nie mogą znajdować się w ramach subskrypcji.
+> Nie jest to problem z dwoma różnymi planami, aby uwzględnić grupę zasobów o tej samej nazwie.
+> Jeśli grupa zasobów uwzględniona w planie już istnieje, plan nadal tworzy powiązane artefakty w tej grupie zasobów. Może to spowodować konflikt, ponieważ dwa zasoby o tej samej nazwie i typie zasobu nie mogą istnieć w ramach subskrypcji.
 
-Rozwiązanie tego problemu jest parametrów. Schematy umożliwia definiowanie wartości dla każdej właściwości artefaktu podczas przypisywania do subskrypcji. Parametr umożliwia ponowne użycie planu, który tworzy grupę zasobów i innych zasobów w ramach jednej subskrypcji bez konfliktów.
+Rozwiązaniem tego problemu są parametry. Plany umożliwiają definiowanie wartości dla każdej właściwości artefaktu podczas przypisywania do subskrypcji. Parametr umożliwia ponowne użycie planu, który tworzy grupę zasobów i inne zasoby w ramach jednej subskrypcji bez konfliktu.
 
-## <a name="blueprint-parameters"></a>Parametry strategii
+## <a name="blueprint-parameters"></a>Parametry planu
 
-Za pomocą interfejsu API REST parametry mogą być tworzone na samego planu. Te parametry są inne niż parametrów dla każdej z obsługiwanych artefaktów. Po utworzeniu parametru na planu może służyć przez artefaktów, w tym planie. Przykładem może być prefiks nazwy grupy zasobów. Artefakt służy parametr planu do tworzenia parametru "przede wszystkim dynamicznego". Jak można również określić parametr podczas przypisywania, ten wzorzec umożliwia użycie w celu zachowania spójności, które mogą stosować zasady nazewnictwa. Aby uzyskać instrukcje, zobacz [ustawienie statycznych parametrów - planu parametru poziomu](#blueprint-level-parameter).
+Za pomocą interfejsu API REST, parametry można tworzyć na podstawie samego planu. Parametry te różnią się od parametrów dla każdego z obsługiwanych artefaktów. Gdy parametr jest tworzony w planie, może być używany przez artefakty w tym planie. Przykładem może być prefiks nazwy grupy zasobów. Artefakt może użyć parametru strategii, aby utworzyć "głównie dynamiczny" parametr. Jako że parametr można także zdefiniować podczas przypisywania, ten wzorzec umożliwia spójność, która może być zgodna z regułami nazewnictwa. Aby uzyskać instrukcje, zobacz [Ustawianie parametrów statycznych — parametr poziomu](#blueprint-level-parameter)planu.
 
-### <a name="using-securestring-and-secureobject-parameters"></a>Za pomocą parametrów ciągu secureString i secureObject
+### <a name="using-securestring-and-secureobject-parameters"></a>Używanie parametrów secureString i secureobject
 
-Podczas gdy szablon usługi Resource Manager _artefaktu_ obsługuje parametry **secureString** i **secureObject** typów, plany platformy Azure wymaga każdego połączenia z usługi Azure Key Vault.
-To zabezpieczenie zapobiega niebezpieczne praktyki przechowywania wpisów tajnych wraz z planu i zachęca zatrudnienia bezpieczne wzorce. Plany usługi Azure obsługuje to zabezpieczenie, wykrywanie włączenia albo parametru secure w szablonie usługi Resource Manager _artefaktu_. Usługa, która jest następnie monituje podczas przypisywania następujących właściwości usługi Key Vault na wykryte parametru secure:
+Ponieważ _artefakt_ szablonu Menedżer zasobów obsługuje parametry typu **secureString** i Secureobject , plany platformy Azure wymagają, aby każdy z nich był połączony z Azure Key Vault.
+Ta miara zabezpieczeń zapobiega niebezpiecznemu wykorzystaniu wpisów tajnych wraz z planem i zachęcaniu do pracy z bezpiecznymi wzorcami. Plany platformy Azure wspierają ten środek zabezpieczeń, co umożliwia wykrywanie dołączania dowolnego bezpiecznego parametru w _artefaktie_szablonu Menedżer zasobów. Podczas przypisywania zostanie wyświetlony komunikat o następujących właściwościach Key Vault na wykryty bezpieczny parametr:
 
-- Identyfikator zasobu usługi Key Vault
-- Nazwa wpisu tajnego usługi Key Vault
-- Wersja wpisu tajnego usługi Key Vault
+- Identyfikator zasobu Key Vault
+- Key Vault nazwa klucza tajnego
+- Key Vault wersja klucza tajnego
 
-Jeśli przypisanie planu używa **przypisany systemowo tożsamości zarządzanej**, odwołanie do usługi Key Vault _musi_ istnieje w tej samej subskrypcji, o których przypisano definicję planu.
+Jeśli przypisanie planu używa **tożsamości zarządzanej przypisanej do systemu**, przywoływane Key Vault _muszą_ istnieć w tej samej subskrypcji, do której jest przypisana definicja planu.
 
-Jeśli przypisanie planu używa **przypisanych przez użytkownika z tożsamości zarządzanej**, odwołanie do usługi Key Vault _może_ istnieje w subskrypcji scentralizowany. Tożsamość zarządzana musi otrzymać odpowiednie uprawnienia w usłudze Key Vault przed przypisanie planu.
+Jeśli przypisanie planu używa **tożsamości zarządzanej przypisanej przez użytkownika**, przywoływane Key Vault _mogą_ istnieć w scentralizowanej subskrypcji. Tożsamość zarządzana musi mieć przyznane odpowiednie prawa na Key Vault przed przypisaniem planu.
 
 > [!IMPORTANT]
-> W obu przypadkach usługi Key Vault musi mieć **włączyć dostęp do usługi Azure Resource Manager dla wdrożenia szablonu** skonfigurowane na **zasady dostępu** strony. Aby uzyskać wskazówki na temat włączania tej funkcji, zobacz [usługi Key Vault — wdrożenie szablonu Włącz](../../../managed-applications/key-vault-access.md#enable-template-deployment).
+> W obu przypadkach Key Vault musi mieć **włączony dostęp do Azure Resource Manager dla wdrożenia szablonu** skonfigurowanego na stronie **zasady dostępu** . Aby uzyskać instrukcje dotyczące włączania tej funkcji, zobacz [Key Vault-Enable Template Deployment](../../../managed-applications/key-vault-access.md#enable-template-deployment).
 
-Aby uzyskać więcej informacji na temat usługi Azure Key Vault, zobacz [Key Vault Przegląd](../../../key-vault/key-vault-overview.md).
+Aby uzyskać więcej informacji na temat Azure Key Vault, zobacz [Key Vault Omówienie](../../../key-vault/key-vault-overview.md).
 
 ## <a name="parameter-types"></a>Typy parametrów
 
 ### <a name="static-parameters"></a>Parametry statyczne
 
-Wartość parametru określone w definicji planu jest nazywany **parametru statycznego**, ponieważ każdy Użyj planu wdroży artefaktów przy użyciu tej wartości statycznej. W tym przykładzie grupa zasobów, gdy nie ma sensu nazwy grupy zasobów może być uzasadnione dla lokalizacji. Następnie każdy przypisanie planu może utworzyć grupę zasobów, niezależnie od rodzaju jest wywoływana podczas przypisywania w tej samej lokalizacji. Ta elastyczność umożliwia selektywne w jakie możesz zdefiniować jako wymagane vs co można zmienić podczas przypisywania.
+Wartość parametru zdefiniowana w definicji strategii jest nazywana parametrem statycznym, ponieważ każde użycie strategii spowoduje wdrożenie artefaktu przy użyciu tej wartości statycznej. W przykładzie grupy zasobów, gdy nie ma sensu nazwy grupy zasobów, może to mieć sens dla lokalizacji. Następnie każde przypisanie planu utworzy grupę zasobów, niezależnie od jej wywołania podczas przypisywania w tej samej lokalizacji. Ta elastyczność pozwala na selektywne Określanie, co jest wymagane, a co można zmienić podczas przypisywania.
 
-#### <a name="setting-static-parameters-in-the-portal"></a>Parametry statyczne ustawienia w portalu
+#### <a name="setting-static-parameters-in-the-portal"></a>Ustawianie parametrów statycznych w portalu
 
 1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
 1. Wybierz pozycję **Definicje strategii** w lewej części strony.
 
-1. Kliknij istniejący plan, a następnie kliknij przycisk **edycji planu** lub kliknij przycisk **+ Utwórz plan** i Wypełnij informacje w **podstawy** kartę.
+1. Kliknij istniejący plan, a następnie kliknij pozycję **Edytuj plan** lub kliknij pozycję **+ Utwórz plan** i Wypełnij informacje na karcie **podstawy** .
 
-1. Kliknij pozycję **Next: Artefakty** lub kliknąć **artefaktów** kartę.
+1. Kliknij pozycję **Next: Artefakty** lub kliknij kartę **artefakty** .
 
-1. Artefakty dodane do planu, które mają parametr opcje wyświetlania **parametry X z Y wypełnione** w **parametry** kolumny. Kliknij wiersz artefaktu, aby edytować parametry artefaktu.
+1. Artefakty dodawane do planu, który ma opcje parametrów, są wyświetlane **parametry X z Y wypełnione** w kolumnie **Parameters** . Kliknij wiersz artefaktu, aby edytować parametry artefaktu.
 
-   ![Parametry planu na definicji planu](../media/parameters/parameter-column.png)
+   ![Parametry strategii w definicji planu](../media/parameters/parameter-column.png)
 
-1. **Edytuj artefaktu** strony Wyświetla opcje wartość odpowiednią do artefaktu kliknięty. Każdy parametr na artefaktu ma tytuł, pole wartości i pola wyboru. Ustaw pole niezaznaczone, aby stał się **parametru statycznego**. W przykładzie poniżej, tylko _lokalizacji_ jest **parametru statycznego** pozostał niezaznaczone i _nazwy grupy zasobów_ jest zaznaczone.
+1. Na stronie **Edytowanie artefaktu** są wyświetlane opcje wartości odpowiednie dla artefaktu klikniętego w polu. Każdy parametr artefaktu ma tytuł, pole wartości i pole wyboru. Ustaw pole tak, aby nie było sprawdzane jako **parametr statyczny**. W poniższym przykładzie tylko _Lokalizacja_ jest **parametrem statycznym** , ponieważ nie jest zaznaczone i sprawdzana jest _Nazwa grupy zasobów_ .
 
-   ![Parametry statyczne planu artefaktu planu](../media/parameters/static-parameter.png)
+   ![Zaplanuj parametry statyczne w artefaktie planu](../media/parameters/static-parameter.png)
 
-#### <a name="setting-static-parameters-from-rest-api"></a>Parametry statyczne ustawienia z interfejsu API REST
+#### <a name="setting-static-parameters-from-rest-api"></a>Ustawianie parametrów statycznych z interfejsu API REST
 
 Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które musisz zastąpić własnymi wartościami:
 
@@ -82,7 +81,7 @@ Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które mu
 
 ##### <a name="blueprint-level-parameter"></a>Parametr poziomu planu
 
-Podczas tworzenia planu za pośrednictwem interfejsu API REST, jest możliwe utworzenie [planu parametry](#blueprint-parameters). Aby to zrobić, użyj następującego formatu identyfikatora URI interfejsu API REST i treści:
+Podczas tworzenia strategii za pomocą interfejsu API REST można utworzyć [Parametry](#blueprint-parameters)strategii. W tym celu należy użyć następującego identyfikatora URI interfejsu API REST i formatu treści:
 
 - Identyfikator URI interfejsu API REST
 
@@ -114,8 +113,8 @@ Podczas tworzenia planu za pośrednictwem interfejsu API REST, jest możliwe utw
   }
   ```
 
-Po utworzeniu planu parametru poziomu może służyć w artefakty dodane do tego planu.
-W poniższym przykładzie interfejs API REST tworzy artefaktu przypisania roli na planu i używa parametru poziomu planu.
+Po utworzeniu parametru poziomu planu można go używać na artefaktach dodanych do tego planu.
+Poniższy przykład interfejsu API REST tworzy artefakt przypisania roli w planie i używa parametru poziomu planu.
 
 - Identyfikator URI interfejsu API REST
 
@@ -136,11 +135,11 @@ W poniższym przykładzie interfejs API REST tworzy artefaktu przypisania roli n
   }
   ```
 
-W tym przykładzie **principalIds** używa właściwości **właścicieli** planu parametru poziomu przy użyciu wartości `[parameters('owners')]`. Ustawienie parametru na artefakt za pomocą parametru poziomu planu nadal znajduje się przykład **parametru statycznego**. Parametr poziomu planu nie można ustawić podczas przypisywania planu i będzie mieć taką samą wartość dla każdego przypisania.
+W tym przykładzie właściwość **principalIds** używa parametru poziomu strategii **właściciele** przy użyciu wartości `[parameters('owners')]`. Ustawienie parametru na artefaktie przy użyciu parametru poziomu planu jest nadal przykładem **parametru statycznego**. Nie można ustawić parametru poziomu planu podczas przypisywania planu i będzie on taki sam jak wartość w każdym przypisaniu.
 
-##### <a name="artifact-level-parameter"></a>Parametru poziomu artefaktów
+##### <a name="artifact-level-parameter"></a>Parametr poziomu artefaktu
 
-Tworzenie **parametry statyczne** na artefakt jest podobny, ale przyjmuje wartość bezpośrednio zamiast przy użyciu `parameters()` funkcji. Poniższy przykład tworzy dwa parametry statyczne, **tagName** i **tagValue**. Wartość na każdym bezpośrednio pod warunkiem i nie używa wywołania funkcji.
+Tworzenie **parametrów statycznych** w artefaktie jest podobne, ale przyjmuje wartość prostą zamiast używać `parameters()` funkcji. Poniższy przykład tworzy dwa parametry statyczne, **TagName** i **tagValue**. Wartość na każdej z nich jest podawana bezpośrednio i nie używa wywołania funkcji.
 
 - Identyfikator URI interfejsu API REST
 
@@ -170,7 +169,7 @@ Tworzenie **parametry statyczne** na artefakt jest podobny, ale przyjmuje warto�
 
 ### <a name="dynamic-parameters"></a>Parametry dynamiczne
 
-Jest przeciwieństwem statyczne parametr **parametru dynamicznego**. Ten parametr nie jest zdefiniowany dla planu, ale zamiast tego jest zdefiniowany podczas każdego przydziału planu. W tym przykładzie grupa zasobów wykorzystania **parametru dynamicznego** pasujące do nazwy grupy zasobów. Zapewnia inną nazwę dla każdego przydziału planu. Aby uzyskać listę funkcji planu, zobacz [planu funkcje](../reference/blueprint-functions.md) odwołania.
+Przeciwieństwem parametru statycznego jest **parametr dynamiczny**. Ten parametr nie jest zdefiniowany w planie, ale zamiast tego jest definiowany podczas każdego przydziału planu. W przykładzie grupy zasobów użycie **parametru dynamicznego** ma sens dla nazwy grupy zasobów. Zapewnia inną nazwę dla każdego przydziału planu. Aby zapoznać się z listą funkcji planu, zobacz Dokumentacja [funkcji](../reference/blueprint-functions.md) strategii.
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>Ustawianie parametrów dynamicznych w portalu
 
@@ -178,15 +177,15 @@ Jest przeciwieństwem statyczne parametr **parametru dynamicznego**. Ten paramet
 
 1. Wybierz pozycję **Definicje strategii** w lewej części strony.
 
-1. Kliknij prawym przyciskiem myszy na planu, który chcesz przypisać. Wybierz **planu Przypisz** lub kliknąć planu, którą chcesz przypisać, a następnie kliknij przycisk **planu Przypisz** przycisku.
+1. Kliknij prawym przyciskiem myszy strategię, którą chcesz przypisać. Wybierz pozycję **Przypisz plan** lub kliknij plan, który chcesz przypisać, a następnie kliknij przycisk **Przypisz plan** .
 
-1. Na **planu Przypisz** strony, Znajdź **parametry artefaktu** sekcji. Każdego artefaktu z co najmniej jednym **parametru dynamicznego** Wyświetla artefaktu i opcje konfiguracji. Podaj wymagane wartości parametrów, zanim przypisze planu. W poniższym przykładzie _nazwa_ jest **parametru dynamicznego** musi być zdefiniowany można ukończyć ich przypisywania planu.
+1. Na stronie **Przypisz plan** Znajdź sekcję **Parametry artefaktu** . Każdy artefakt z co najmniej jednym **parametrem dynamicznym** wyświetla artefakt i opcje konfiguracji. Podaj wymagane wartości parametrów przed przypisaniem planu. W poniższym przykładzie _Nazwa_ jest **parametrem dynamicznym** , który musi być zdefiniowany, aby można było wykonać przypisanie do planu.
 
-   ![Parametr dynamiczny plan podczas przypisywania planu](../media/parameters/dynamic-parameter.png)
+   ![Parametr dynamiczny strategii podczas przypisywania strategii](../media/parameters/dynamic-parameter.png)
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>Ustawianie parametrów dynamicznych z interfejsu API REST
 
-Ustawienie **parametrów dynamicznych** przypisanie jest wykonywana, wprowadzając wartość bezpośrednio. Zamiast korzystać z funkcji, takich jak [parameters()](../reference/blueprint-functions.md#parameters), podana wartość jest odpowiedni ciąg. Artefakty dla grupy zasobów są definiowane za pomocą "Nazwa szablonu," **nazwa**, i **lokalizacji** właściwości. Wszystkie inne parametry dla artefaktu uwzględniane są zdefiniowane w obszarze **parametry** z **\<nazwa\>** i **wartość** pary kluczy. Planu jest skonfigurowany dla parametrów dynamicznych, które nie są oferowane w trakcie przypisywania, przypisanie zakończy się niepowodzeniem.
+Ustawienie **parametrów dynamicznych** podczas przypisywania jest wykonywane przez bezpośrednie wprowadzenie wartości. Zamiast używać funkcji, takiej jak [Parametry ()](../reference/blueprint-functions.md#parameters), podana wartość jest odpowiednim ciągiem. Artefakty dla grupy zasobów są definiowane przy użyciu właściwości "Nazwa szablonu", **Nazwa**i **Lokalizacja** . Wszystkie inne parametry dla dołączonego artefaktu są zdefiniowane w parametrach z **\<\>** parą kluczy Name i **Value** . Jeśli plan jest skonfigurowany dla parametru dynamicznego, który nie jest dostarczany podczas przypisywania, przypisanie zakończy się niepowodzeniem.
 
 - Identyfikator URI interfejsu API REST
 
@@ -237,10 +236,10 @@ Ustawienie **parametrów dynamicznych** przypisanie jest wykonywana, wprowadzaj�
   }
   ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj listę rzeczy, [planu funkcji](../reference/blueprint-functions.md).
-- Uzyskaj informacje na temat [cyklu życia strategii](lifecycle.md).
+- Zobacz listę [funkcji](../reference/blueprint-functions.md)strategii.
+- Dowiedz się więcej o [cyklu życia](lifecycle.md)planu.
 - Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](sequencing-order.md).
 - Dowiedz się, jak używać [blokowania zasobów strategii](resource-locking.md).
 - Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md).

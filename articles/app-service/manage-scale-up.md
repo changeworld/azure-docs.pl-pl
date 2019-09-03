@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: cebd6e5c120bdaa5e7dd5b681366e07087cd3498
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d2c3b09277963781b90f65705e03f936f81b14ee
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069190"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232366"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Skalowanie aplikacji w górę w Azure App Service
 
@@ -85,11 +85,8 @@ Aby zapoznać się z tabelą limity usług, przydziałów i ograniczeń oraz obs
 
 ## <a name="more-resources"></a>Więcej zasobów
 
-Film wideo dotyczący skalowania App Service aplikacji można znaleźć w następujących zasobach:
- 
-* [Kiedy skalować usługi Azure Websites — Schackow Stefan](https://azure.microsoft.com/resources/videos/azure-web-sites-free-vs-standard-scaling/)
-* [Skalowanie automatyczne Azure Websites, CPU lub zaplanowane — z Schackow Stefan](https://azure.microsoft.com/resources/videos/auto-scaling-azure-web-sites/)
-* [Jak usługa Azure Websites skaluje się do Schackow Stefan](https://azure.microsoft.com/resources/videos/how-azure-web-sites-scale/)
+[Ręczne lub automatyczne skalowanie liczby wystąpień](../monitoring-and-diagnostics/insights-how-to-scale.md)  
+[Konfigurowanie warstwy PremiumV2 dla App Service](app-service-configure-premium-tier.md)
 
 <!-- LINKS -->
 [vmsizes]:https://azure.microsoft.com/pricing/details/app-service/

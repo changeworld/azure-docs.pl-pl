@@ -1,23 +1,22 @@
 ---
 title: Tworzenie strategii w portalu
-description: Plany usługi Azure umożliwia tworzenie, zdefiniuj i wdrażaj artefakty za pośrednictwem witryny Azure portal.
+description: Za pomocą planów platformy Azure można tworzyć, definiować i wdrażać artefakty za pomocą Azure Portal.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 97d0615fcc4f86c295441ec6a0eb8b86ba6b11b5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 473e16c610e7dee0b2838cb1a54ef7cd98958889
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059702"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232970"
 ---
-# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Szybki start: Zdefiniuj i przypisz plan w witrynie portal
+# <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Szybki start: Definiowanie i Przypisywanie planu w portalu
 
-Gdy dowiesz się, jak utworzyć i przypisać schematy, można zdefiniować typowe wzorce do tworzenia wielokrotnego użytku i szybko wdrożyć konfiguracje oparte na usłudze Azure Resource Manager szablony, zasady, zabezpieczeń i inne. W tym samouczku dowiesz się, czy niektóre typowe zadania związane z tworzenie, publikowanie i przypisywanie planu w Twojej organizacji za pomocą planów usługi Azure. Te zadania obejmują:
+Gdy dowiesz się, jak tworzyć i przypisywać plany, możesz definiować typowe wzorce, aby opracowywać konfiguracje do wielokrotnego użytku i szybko wdrażane na podstawie Azure Resource Manager szablonów, zasad, zabezpieczeń i innych. W ramach tego samouczka nauczysz się korzystać z planów platformy Azure w celu wykonywania niektórych typowych zadań związanych z tworzeniem, publikowaniem i przypisywaniem strategii w organizacji. Te zadania obejmują:
 
 > [!div class="checklist"]
 > - Tworzenie nowej strategii i dodawanie różnych obsługiwanych artefaktów
@@ -31,74 +30,74 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="create-a-blueprint"></a>Tworzenie strategii
 
-Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utworzenie strategii z dostępnych zasobów. W tym przykładzie należy utworzyć nowy plan o nazwie **MyBlueprint** do konfigurowania ról, przypisywanie zasad dla subskrypcji. Następnie dodaj nową grupę zasobów i utworzyć przypisanie szablonu i roli Menedżera zasobów dla nowej grupy zasobów.
+Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utworzenie strategii z dostępnych zasobów. W tym przykładzie Utwórz nowy plan o nazwie Moje **plany** , aby skonfigurować przypisania ról i zasad dla subskrypcji. Następnie Dodaj nową grupę zasobów i Utwórz szablon Menedżer zasobów i przypisanie roli dla nowej grupy zasobów.
 
 1. W okienku po lewej stronie wybierz pozycję **Wszystkie usługi**. Wyszukaj i wybierz pozycję **Strategie**.
 
-1. Wybierz **planu definicje** ze strony na pasku po lewej stronie i wybierz **+ Utwórz plan** znajdujący się u góry strony.
+1. Wybierz pozycję **definicje** strategii ze strony po lewej stronie, a następnie wybierz przycisk **+ Utwórz plan** w górnej części strony.
 
-   Lub wybierz **Utwórz** z **wprowadzenie** strony, aby przejść bezpośrednio do tworzenia planu.
+   Lub wybierz pozycję **Utwórz** na stronie **wprowadzenie** , aby przejść bezpośrednio do tworzenia planu.
 
-   ![Tworzenie planu ze strony definicji planu](./media/create-blueprint-portal/create-blueprint-button.png)
+   ![Utwórz plan na stronie definicje strategii](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. Podaj **nazwy planu** takich jak **MyBlueprint**. (Użyj maksymalnie 48 litery i cyfry, ale bez spacji i znaków specjalnych). Pozostaw **planu opis** puste.
+1. Podaj **nazwę** planu, taką jak moje **plany**. (Użyj maksymalnie 48 liter i cyfr, ale nie spacji ani znaków specjalnych). Dla tej pory pozostaw pustą wartość **Opis** planu.
 
-1. W **Lokalizacja definicji** polu, wybierz przycisk wielokropka po prawej stronie, wybierz [grupy zarządzania](../management-groups/overview.md) lub subskrypcji, w którym chcesz zapisać planu, a następnie wybierz **wybierz**.
+1. W polu **Lokalizacja definicji** wybierz wielokropek po prawej stronie, wybierz [grupę zarządzania](../management-groups/overview.md) lub subskrypcję, w której chcesz zapisać plan, a następnie wybierz **pozycję Wybierz**.
 
-1. Sprawdź, czy informacje są poprawne. **Nazwy planu** i **Lokalizacja definicji** pola nie można zmienić później. Następnie wybierz pozycję **dalej: Artefakty** w dolnej części strony lub kartę **Artefakty** w górnej części strony.
+1. Sprawdź, czy informacje są poprawne. Nie można później zmienić **nazwy** planu i **lokalizacji definicji** . Następnie wybierz **pozycję Dalej: Artefakty** w dolnej części strony lub kartę **Artefakty** w górnej części strony.
 
-1. Dodawanie przypisania roli na poziomie subskrypcji:
+1. Dodaj przypisanie roli na poziomie subskrypcji:
 
-   1. Wybierz **+ Dodawanie artefaktu** wiersz w obszarze **subskrypcji**. **Dodawanie artefaktu** po prawej stronie w przeglądarce zostanie otwarte okno.
+   1. Wybierz pozycję **+ Dodaj** wiersz artefaktu w obszarze **subskrypcja**. Po prawej stronie przeglądarki zostanie otwarte okno **Dodawanie artefaktów** .
 
-   1. Wybierz **przypisania roli** dla **typ artefaktu**.
+   1. Wybierz **przypisanie roli** dla **typu artefaktu**.
 
-   1. W obszarze **roli**, wybierz opcję **Współautor**. Pozostaw **Dodaj użytkownika, aplikacji lub grupy** pola, przy czym pole wyboru, który wskazuje parametr dynamiczny.
+   1. W obszarze **rola**wybierz pozycję **współautor**. Pozostaw pole wyboru **Dodaj użytkownika, aplikację lub grupę** , które wskazuje parametr dynamiczny.
 
-   1. Wybierz **Dodaj** można dodać tego artefaktu do planu.
+   1. Wybierz pozycję **Dodaj** , aby dodać ten artefakt do planu.
 
    ![Przypisanie roli dla artefaktu planu](./media/create-blueprint-portal/add-role-assignment.png)
 
    > [!NOTE]
-   > Większość artefaktów obsługuje parametrów. Parametr, który ma przypisaną wartość, podczas tworzenia planu jest *parametru statycznego*. Jeśli parametr nie zostanie przypisana podczas przypisywania planu jest *parametru dynamicznego*. Aby uzyskać więcej informacji, zobacz [Parametry strategii](./concepts/parameters.md).
+   > Większość artefaktów obsługuje parametry. Parametr, do którego przypisano wartość podczas tworzenia planu,jest parametrem statycznym. Jeśli parametr zostanie przypisany podczas przypisywania planu, jest to *parametr dynamiczny*. Aby uzyskać więcej informacji, zobacz [Parametry strategii](./concepts/parameters.md).
 
 1. Dodaj przypisanie zasad na poziomie subskrypcji:
 
-   1. Wybierz **+ Dodawanie artefaktu** wiersz pod artefaktu przypisania roli.
+   1. Wybierz **+ Dodaj** wiersz artefaktu w obszarze artefaktu przypisania roli.
 
-   1. Wybierz **przypisania zasad** dla **typ artefaktu**.
+   1. Wybierz **przypisanie zasad** dla **typu artefaktu**.
 
-   1. Zmiana **typu** do **wbudowanych**. W **wyszukiwania**, wprowadź **tag**.
+   1. Zmień **Typ** na **wbudowany**. W polu **wyszukiwania**wpisz **tag**.
 
-   1. Kliknij poza polem **Wyszukiwanie**, aby zastosować filtrowanie. Wybierz **Dołącz tag i jego wartość domyślną do grup zasobów**.
+   1. Kliknij poza polem **Wyszukiwanie**, aby zastosować filtrowanie. Wybierz opcję **Dołącz tag i jej wartość domyślną do grup zasobów**.
 
-   1. Wybierz **Dodaj** można dodać tego artefaktu do planu.
+   1. Wybierz pozycję **Dodaj** , aby dodać ten artefakt do planu.
 
-1. Zaznacz wiersz przypisania zasad **Dołącz tag i jego wartość domyślną do grup zasobów**.
+1. Wybierz wiersz **znacznika Dołącz przypisanie zasad i jego wartość domyślną do grup zasobów**.
 
-1. Okna, aby podać parametry do artefaktu w ramach definicji planu otwiera i umożliwia ustawienie parametrów dla wszystkich przypisań (parametry statyczne) oparte na ten plan zamiast podczas przypisywania (parametry dynamiczne). W tym przykładzie użyto parametrów dynamicznych podczas przypisywania planu, więc pozostaw wartości domyślne i wybierz pozycję **anulować**.
+1. Okno, aby dostarczyć parametry artefaktu w ramach definicji planu otwiera się i umożliwia ustawienie parametrów dla wszystkich przypisań (parametry statyczne) na podstawie tego planu, zamiast podczas przypisywania (parametry dynamiczne). W tym przykładzie podczas przypisywania strategii są używane parametry dynamiczne, więc pozostaw wartości domyślne i wybierz pozycję **Anuluj**.
 
 1. Dodaj grupę zasobów na poziomie subskrypcji:
 
-   1. Wybierz **+ Dodawanie artefaktu** wiersz w obszarze **subskrypcji**.
+   1. Wybierz pozycję **+ Dodaj** wiersz artefaktu w obszarze **subskrypcja**.
 
-   1. Wybierz **grupy zasobów** dla **typ artefaktu**.
+   1. Wybierz **grupę zasobów** dla **typu artefaktu**.
 
-   1. Pozostaw **nazwę wyświetlaną artefaktu**, **nazwy grupy zasobów**, i **lokalizacji** pola puste, ale upewnij się, że zaznaczono pole wyboru dla każdej właściwości parametru były one parametry dynamiczne.
+   1. Pozostaw pustą **nazwę wyświetlaną artefaktu**, **nazwę grupy zasobów**i pola **lokalizacji** pustej, ale upewnij się, że pole wyboru jest zaznaczone dla każdej właściwości parametru, aby uczynić je parametrami dynamicznymi.
 
-   1. Wybierz **Dodaj** można dodać tego artefaktu do planu.
+   1. Wybierz pozycję **Dodaj** , aby dodać ten artefakt do planu.
 
-1. Dodawanie szablonu w ramach grupy zasobów:
+1. Dodaj szablon do grupy zasobów:
 
-   1. Wybierz **+ Dodawanie artefaktu** wiersz w obszarze **ResourceGroup** wpisu.
+   1. Wybierz **+ Dodaj** wiersz artefaktu w ramach wpisu grupy **zasobów** .
 
-   1. Wybierz **szablonu usługi Azure Resource Manager** dla **typ artefaktu**ustaw **nazwę wyświetlaną artefaktu** do **StorageAccount**i pozostawić  **Opis** puste.
+   1. Wybierz **szablon Azure Resource Manager** dla **typu artefaktu**, ustaw **nazwę wyświetlaną artefaktu** na **StorageAccount**i pozostaw pole **Opis** puste.
 
    1. Na karcie **Szablon** w polu edytora wklej poniższy szablon usługi Resource Manager.
-      Po wklejeniu tego szablonu, wybierz **parametry** kartę i zwróć uwagę, że parametry szablonu **storageAccountType** i **lokalizacji** zostały wykryte. Każdy parametr został automatycznie wykryte i wypełnione, ale skonfigurowany jako parametr dynamiczny.
+      Po wklejeniu szablonu wybierz kartę **Parametry** i zwróć uwagę na to, że wykryto parametry szablonu **storageAccountType** i **Location** . Każdy parametr został automatycznie wykryty i wypełniony, ale skonfigurowany jako parametr dynamiczny.
 
       > [!IMPORTANT]
-      > Jeśli importujesz szablonu, upewnij się, że plik jest tylko JSON i nie zawiera kodu HTML. Gdy wskazuje adres URL w witrynie GitHub, upewnij się, że wybrano **RAW** można pobrać czystej plik JSON, a nie jednego, ujęte w nawiasy HTML do wyświetlenia w witrynie GitHub. Jeśli zaimportowany szablon nie jest czystym plikiem JSON, wystąpi błąd.
+      > W przypadku importowania szablonu upewnij się, że plik ma tylko format JSON i nie zawiera kodu HTML. Gdy wskazujesz adres URL w serwisie GitHub, upewnij się, że wybrano opcję **RAW** , aby uzyskać czysty plik JSON, a nie ten, który został opakowany w formacie HTML do wyświetlania w serwisie GitHub. Jeśli zaimportowany szablon nie jest czystym plikiem JSON, wystąpi błąd.
 
       ```json
       {
@@ -149,72 +148,72 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
       }
       ```
 
-   1. Wyczyść **storageAccountType** pole wyboru i zwróć uwagę, że listy rozwijanej zawiera tylko wartości zawarte w szablonie usługi Resource Manager w obszarze **allowedValues**. Zaznacz pole, aby ustawić jej parametrów dynamicznych.
+   1. Wyczyść pole wyboru **storageAccountType** i pamiętaj, że lista rozwijana zawiera tylko wartości zawarte w szablonie Menedżer zasobów w obszarze **allowedValues**. Zaznacz pole, aby ponownie ustawić parametr dynamiczny.
 
-   1. Wybierz **Dodaj** można dodać tego artefaktu do planu.
+   1. Wybierz pozycję **Dodaj** , aby dodać ten artefakt do planu.
 
-   ![Szablon usługi Resource Manager dla artefaktu planu](./media/create-blueprint-portal/add-resource-manager-template.png)
+   ![Menedżer zasobów szablon artefaktu planu](./media/create-blueprint-portal/add-resource-manager-template.png)
 
-1. Ukończona strategia powinna wyglądać podobnie do poniższej. Należy zauważyć, że każdego artefaktu ma  **_x_ poza _y_ parametry wypełnione** w **parametry** kolumny. Parametry dynamiczne są ustawiane podczas każdego przydziału planu.
+1. Ukończona strategia powinna wyglądać podobnie do poniższej. Zwróć uwagę, że każdy artefakt ma **parametry _x_ out z _y_ wypełnione** w kolumnie **Parameters** . Parametry dynamiczne są ustawiane podczas każdego przydziału planu.
 
-   ![Definicji planu ukończone](./media/create-blueprint-portal/completed-blueprint.png)
+   ![Ukończona definicja planu](./media/create-blueprint-portal/completed-blueprint.png)
 
-1. Teraz, że dodano wszystkie artefakty planowane, zaznacz **Zapisz wersję roboczą** w dolnej części strony.
+1. Po dodaniu wszystkich zaplanowanych artefaktów wybierz pozycję **Zapisz wersję roboczą** w dolnej części strony.
 
 ## <a name="edit-a-blueprint"></a>Edytowanie strategii
 
-W [Tworzenie planu](#create-a-blueprint), nie Podaj opis lub dodawanie przypisania roli do nowej grupy zasobów. Problem można rozwiązać zarówno, wykonując następujące czynności:
+W obszarze [Utwórz plan](#create-a-blueprint)nie podano opisu lub Dodaj przypisanie roli do nowej grupy zasobów. Aby rozwiązać ten problem, wykonaj następujące czynności:
 
 1. Wybierz pozycję **Definicje strategii** w lewej części strony.
 
-1. Na liście Schematy, kliknij prawym przyciskiem myszy jeden, która została wcześniej utworzona, a następnie wybierz **edycji planu**.
+1. Na liście planów kliknij prawym przyciskiem myszy wcześniej utworzoną, a następnie wybierz pozycję **Edytuj plan**.
 
-1. W polu **Opis strategii** podaj informacje o strategii i artefaktach, które ją tworzą. W tym przypadku wprowadź opis podobny do następującego: **Ten plan ustawia tag zasad i przypisanie roli w ramach subskrypcji, tworzy grupy zasobów, a następnie wdraża zasobów szablonu i przypisanie roli do tej grupy zasobów.**
+1. W polu **Opis strategii** podaj informacje o strategii i artefaktach, które ją tworzą. W tym przypadku wprowadź opis podobny do następującego: **Ten plan ustawia zasady tagów i przypisanie roli w ramach subskrypcji, tworzy grupy zasobów i wdraża szablon zasobu i przypisanie roli do tego elementu.**
 
 1. Wybierz opcję **Dalej: Artefakty** w dolnej części strony lub kartę **Artefakty** w górnej części strony.
 
-1. Dodaj przypisanie roli w ramach grupy zasobów:
+1. Dodaj przypisanie roli do grupy zasobów:
 
-   1. Wybierz **+ Dodawanie artefaktu** wiersz bezpośrednio pod **ResourceGroup** wpisu.
+   1. Wybierz pozycję **+ Dodaj** wiersz artefaktu bezpośrednio pod wpisem grupy **zasobów** .
 
-   1. Wybierz **przypisania roli** dla **typ artefaktu**.
+   1. Wybierz **przypisanie roli** dla **typu artefaktu**.
 
-   1. W obszarze **roli**, wybierz opcję **właściciela**i usuń zaznaczenie pola wyboru w obszarze **Dodaj użytkownika, aplikacji lub grupy** pole.
+   1. W obszarze **rola**wybierz pozycję **właściciel**, a następnie wyczyść pole wyboru w obszarze **Dodawanie użytkownika, aplikacji lub grupy** .
 
-   1. Wyszukaj i wybierz użytkownika, aplikacji lub grupy do dodania. Ten artefakt używa zestawu parametrów statyczne takie same w każdym przypisania tego planu.
+   1. Wyszukaj i wybierz użytkownika, aplikację lub grupę do dodania. Ten artefakt używa parametru statycznego ustawionego tak samo w każdym przypisaniu tego planu.
 
-   e. Wybierz **Dodaj** można dodać tego artefaktu do planu.
+   e. Wybierz pozycję **Dodaj** , aby dodać ten artefakt do planu.
 
-   ![Drugie przypisanie roli dla artefaktu planu](./media/create-blueprint-portal/add-role-assignment-2.png)
+   ![Przypisanie drugiej roli dla artefaktu planu](./media/create-blueprint-portal/add-role-assignment-2.png)
 
-1. Ukończona strategia powinna wyglądać podobnie do poniższej. Należy zauważyć, że przypisanie roli w nowo dodanym pokazuje **parametry 1 z 1 wypełnione**. Oznacza to, że jest to parametr statyczne.
+1. Ukończona strategia powinna wyglądać podobnie do poniższej. Zwróć uwagę, że nowo dodane przypisanie roli pokazuje, że **wypełniono 1 z 1 parametrów**. Oznacza to, że jest to parametr statyczny.
 
-   ![Druga definicja planu ukończone](./media/create-blueprint-portal/completed-blueprint-2.png)
+   ![Druga definicja ukończonego planu](./media/create-blueprint-portal/completed-blueprint-2.png)
 
-1. Wybierz **Zapisz wersję roboczą** teraz, gdy został zaktualizowany.
+1. Wybierz pozycję **Zapisz wersję roboczą** teraz, gdy została zaktualizowana.
 
 ## <a name="publish-a-blueprint"></a>Publikowanie strategii
 
 Po dodaniu wszystkich zaplanowanych artefaktów do strategii czas na jej opublikowanie.
-Publikowanie sprawia, że plan dostępne do przypisania do subskrypcji.
+Opublikowanie sprawia, że plan jest dostępny do przypisania do subskrypcji.
 
 1. Wybierz pozycję **Definicje strategii** w lewej części strony.
 
-1. Na liście Schematy, kliknij prawym przyciskiem myszy ten, który został wcześniej utworzony, a następnie wybierz pozycję **publikowania planu**.
+1. Na liście planów kliknij prawym przyciskiem myszy ten, który został wcześniej utworzony, a następnie wybierz pozycję **Publikuj plan**.
 
-1. W otwartym okienku **wersji** (litery, cyfry i łączniki o maksymalnej długości 20 znaków), takie jak **v1**. Opcjonalnie wprowadź tekst w **zmienić uwagi**, takich jak **najpierw opublikować**.
+1. W otwartym okienku Podaj **wersję** (litery, cyfry i łączniki z maksymalną długością 20 znaków), taką jak **V1**. Opcjonalnie wprowadź tekst w polu **Zmień uwagi**, na przykład **najpierw Opublikuj**.
 
-1. Wybierz **Publikuj** w dolnej części strony.
+1. Wybierz pozycję **Publikuj** w dolnej części strony.
 
 ## <a name="assign-a-blueprint"></a>Przypisywanie strategii
 
-Po opublikowaniu planu można ją przypisać do subskrypcji. Przypisz plan, który został utworzony do jednej subskrypcji w obszarze hierarchia grup zarządzania. Jeśli strategia została zapisana w subskrypcji, można ją przypisać tylko do tej subskrypcji.
+Po opublikowaniu planu można go przypisać do subskrypcji. Przypisz utworzony plan do jednej z subskrypcji w hierarchii grupy zarządzania. Jeśli strategia została zapisana w subskrypcji, można ją przypisać tylko do tej subskrypcji.
 
 1. Wybierz pozycję **Definicje strategii** w lewej części strony.
 
-1. Na liście Schematy, kliknij prawym przyciskiem myszy jeden, który został wcześniej utworzony (lub wybierz przycisk wielokropka) i wybierz **planu Przypisz**.
+1. Na liście planów kliknij prawym przyciskiem myszy wcześniej utworzoną opcję (lub wybierz wielokropek) i wybierz pozycję **Przypisz plan**.
 
-1. Na **planu Przypisz** stronie **subskrypcji** listy rozwijanej, wybierz subskrypcje, które chcesz wdrożyć ten plan do.
+1. Na stronie **Przypisz plan** na liście rozwijanej **subskrypcja** wybierz subskrypcje, dla których chcesz wdrożyć ten plan.
 
    Jeśli w portalu [Azure Billing](../../billing/index.md) są dostępne obsługiwane oferty dotyczące wersji Enterprise, zostanie uaktywniony link **Utwórz nową** w obszarze **Subskrypcja**. Wykonaj następujące kroki:
 
@@ -222,86 +221,86 @@ Po opublikowaniu planu można ją przypisać do subskrypcji. Przypisz plan, któ
 
    1. W polu **Nazwa wyświetlana** podaj nazwę dla nowej subskrypcji.
 
-   1. Wybierz dostępnych **oferują** z listy rozwijanej.
+   1. Wybierz dostępną **ofertę** z listy rozwijanej.
 
-   1. Użyj wielokropka, aby wybrać [grupy zarządzania](../management-groups/index.md) , subskrypcja będzie elementem podrzędnym.
+   1. Użyj wielokropka, aby wybrać [grupę zarządzania](../management-groups/index.md) , do której subskrypcja będzie podrzędna.
 
    1. Wybierz pozycję **Utwórz** w dolnej części strony.
 
-   ![Utwórz subskrypcję dla subskrypcji przypisanie planu](./media/create-blueprint-portal/assignment-create-subscription.png)
+   ![Tworzenie subskrypcji dla subskrypcji przydziału planu](./media/create-blueprint-portal/assignment-create-subscription.png)
 
    > [!IMPORTANT]
-   > Nowa subskrypcja jest tworzony natychmiast, po wybraniu **Utwórz**.
+   > Nowa subskrypcja zostanie utworzona natychmiast po wybraniu opcji **Utwórz**.
 
    > [!NOTE]
-   > Przypisanie jest tworzony dla każdej subskrypcji, którą można wybrać. Możesz zmiany przypisania pojedynczej subskrypcji, w późniejszym czasie bez konieczności wprowadzania zmian w pozostałej części wybranych subskrypcji.
+   > Dla każdej wybranej subskrypcji zostanie utworzone przypisanie. Można wprowadzać zmiany w jednym przypisaniu subskrypcji w późniejszym czasie bez wymuszania zmian w pozostałej części wybranych subskrypcji.
 
-1. Aby uzyskać **nazwa przypisania**, Podaj unikatową nazwę dla tego przypisania.
+1. Dla **nazwy przydziału**Podaj unikatową nazwę dla tego przypisania.
 
-1. W **lokalizacji**, wybierz region dla zarządzanego obiektu wdrożenia tożsamości i subskrypcji do utworzenia w. Usługa Azure Blueprint używa tej tożsamości zarządzanej do wdrażania wszystkich artefaktów w przypisanej strategii. Aby dowiedzieć się więcej, zobacz [Tożsamości zarządzane dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md).
+1. W obszarze **Lokalizacja**wybierz region, w którym ma zostać utworzona zarządzana tożsamość i obiekt wdrożenia subskrypcji. Usługa Azure Blueprint używa tej tożsamości zarządzanej do wdrażania wszystkich artefaktów w przypisanej strategii. Aby dowiedzieć się więcej, zobacz [Tożsamości zarządzane dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md).
 
-1. Pozostaw **wersji definicji planu** listy rozwijanej wyboru **opublikowano** wersji na **v1** wpisu. (Wartość domyślna to najnowszej opublikowanej wersji).
+1. Pozostaw wybraną **wersję definicji** planu z listy rozwijanej wersje **opublikowanych** wersji w pozycji **V1** . (Domyślnie jest to ostatnio opublikowana wersja).
 
-1. Dla opcji **Blokowanie przypisania** pozostaw wartość domyślną **Nie blokuj**. Aby uzyskać więcej informacji, zobacz [blokowania zasobów plany](./concepts/resource-locking.md).
+1. Dla opcji **Blokowanie przypisania** pozostaw wartość domyślną **Nie blokuj**. Aby uzyskać więcej informacji, zobacz temat [plany blokowania zasobów](./concepts/resource-locking.md).
 
-   ![Blokowanie i zarządzanych tożsamości dla przypisania](./media/create-blueprint-portal/assignment-locking-mi.png)
+   ![Blokowanie i zarządzanie tożsamościami dla przypisania](./media/create-blueprint-portal/assignment-locking-mi.png)
 
-1. W obszarze **tożsamości zarządzanej**, pozostaw wartość domyślną **przypisanej w systemie**.
+1. W obszarze **zarządzana tożsamość**pozostaw domyślnie **przypisany system**.
 
 1. Dla przypisania roli na poziomie subskrypcji **[Grupa użytkowników lub nazwa aplikacji]: Współautor** wyszukaj i wybierz użytkownika, aplikację lub grupę.
 
-1. W przypadku przypisania zasady na poziomie subskrypcji, ustawić **nazwa tagu** do **CostCenter** i **wartość tagu** do **ContosoIT**.
+1. Dla przypisania zasad na poziomie subskrypcji ustaw wartość **nazwa tagu** na **CostCenter** , a **wartością tagu** na **ContosoIT**.
 
-1. Dla **ResourceGroup**, podaj **nazwa** z **StorageAccount** i **lokalizacji** z **wschodnie stany USA 2** z listy rozwijanej.
+1. Wprzypadku obiektu Resources Podaj **nazwę** **StorageAccount** i **lokalizację** **Wschodnie stany USA 2** z listy rozwijanej.
 
    > [!NOTE]
-   > Dla każdego artefaktu dodanego w ramach grupy zasobów w definicji planu tego artefaktu tworzone jest wcięcie aby było zgodne z grupą zasobów lub obiekt, który ją wdrożysz.
-   > Artefakty, które nie przyjmują parametrów albo nie może mieć parametrów określonych w przypisania są wyświetlane tylko w przypadku informacji kontekstowych.
+   > Dla każdego artefaktu dodanego w ramach grupy zasobów podczas definiowania planu, ten artefakt jest wcięty do dopasowania do grupy zasobów lub obiektu, w którym zostanie wdrożony.
+   > Artefakty, które nie przyjmują parametrów lub nie mają parametrów, które mają być zdefiniowane podczas przypisywania, są wyświetlane tylko dla informacji kontekstowych.
 
-1. W szablonie usługi Azure Resource Manager **StorageAccount**, wybierz opcję **Standard_GRS** dla **storageAccountType** parametru.
+1. Na **StorageAccount**szablonu Azure Resource Manager wybierz pozycję **Standard_GRS** dla parametru **storageAccountType** .
 
-1. Przeczytaj pole informacyjne w dolnej części strony, a następnie wybierz **przypisać**.
+1. Zapoznaj się z polem informacji w dolnej części strony, a następnie wybierz pozycję **Przypisz**.
 
 ## <a name="track-deployment-of-a-blueprint"></a>Śledzenie wdrażania strategii
 
 Po przypisaniu strategii do co najmniej jednej subskrypcji dzieją się dwie rzeczy:
 
-- Planu jest dodawany do **przypisane plany** strony dla każdej subskrypcji.
-- Rozpoczyna się proces wdrażania wszystkich artefaktów, które są definiowane przez planu.
+- Plan zostanie dodany do strony **przypisane plany** dla każdej subskrypcji.
+- Zostanie rozpoczęty proces wdrażania wszystkich artefaktów zdefiniowanych przez plan.
 
-Teraz, gdy planu zostało przypisane do subskrypcji, sprawdź postęp wdrażania:
+Teraz, gdy plan został przypisany do subskrypcji, sprawdź postęp wdrożenia:
 
 1. Wybierz pozycję **Przypisane strategie** w lewej części strony.
 
-1. Na liście Schematy, kliknij prawym przyciskiem myszy, które zostały wcześniej przypisane, a następnie wybierz **Wyświetl szczegóły przydziału**.
+1. Na liście planów kliknij prawym przyciskiem myszy wcześniej przypisane, a następnie wybierz pozycję **Wyświetl szczegóły przydziału**.
 
    ![Wyświetl szczegóły przydziału ze strony przypisane plany](./media/create-blueprint-portal/view-assignment-details.png)
 
-1. Na **planu przypisania** strony, weryfikowanie, czy wszystkich artefaktów zostały pomyślnie wdrożone i że nie wystąpiły błędy podczas wdrażania. Jeśli wystąpiły błędy, zobacz [Rozwiązywanie problemów z plany](./troubleshoot/general.md) kroki określić, co poszło źle.
+1. Na stronie **przypisanie** strategii Sprawdź, czy wszystkie artefakty zostały pomyślnie wdrożone i czy nie wystąpiły żadne błędy podczas wdrażania. Jeśli wystąpią błędy, zobacz tematy dotyczące [rozwiązywania problemów](./troubleshoot/general.md) , aby określić, co poszło źle.
 
 ## <a name="unassign-a-blueprint"></a>Cofanie przypisania strategii
 
-Jeśli przypisanie planu nie są już potrzebne, usuń go z subskrypcji. Planu może zostały zastąpione przez nowszą planu z zaktualizowane wzorce, zasad i projekty. Po usunięciu strategii artefakty przypisane w jej ramach są pozostawiane. Aby usunąć przypisanie strategii, wykonaj następujące kroki:
+Jeśli nie potrzebujesz już przypisania planu, usuń je z subskrypcji. Plan mógł zostać zastąpiony przez nowszy plan z zaktualizowanymi wzorcami, zasadami i projektami. Po usunięciu strategii artefakty przypisane w jej ramach są pozostawiane. Aby usunąć przypisanie strategii, wykonaj następujące kroki:
 
 1. Wybierz pozycję **Przypisane strategie** w lewej części strony.
 
-1. Na liście plany wybierz planu, który chcesz cofnąć to przypisanie. Następnie wybierz pozycję **Cofnij przypisanie planu** znajdujący się u góry strony.
+1. Na liście planów wybierz strategię, którą chcesz cofnąć przypisanie. Następnie wybierz przycisk **Cofnij przypisanie** planu w górnej części strony.
 
-1. Przeczytaj komunikat potwierdzający, a następnie wybierz pozycję **OK**.
+1. Przeczytaj komunikat z potwierdzeniem, a następnie wybierz przycisk **OK**.
 
 ## <a name="delete-a-blueprint"></a>Usuwanie strategii
 
 1. Wybierz pozycję **Definicje strategii** w lewej części strony.
 
-1. Kliknij prawym przyciskiem myszy planu, który chcesz usunąć, a następnie wybierz pozycję **usuwania planu**. Następnie wybierz pozycję **tak** w oknie dialogowym potwierdzenia.
+1. Kliknij prawym przyciskiem myszy plan, który chcesz usunąć, a następnie wybierz pozycję **Usuń plan**. Następnie wybierz pozycję **tak** w oknie dialogowym potwierdzenia.
 
 > [!NOTE]
-> Trwa usuwanie planu w przypadku tej metody spowoduje również usunięcie wszystkich opublikowane wersje wybranego planu.
-> Aby usunąć jedną wersję, otwórz planu, wybierz **opublikowane wersje** , a następnie wybierz wersję, którą chcesz usunąć, a następnie wybierz **Usuń tę wersję**. Ponadto nie można usunąć planu, dopóki nie zostały usunięte wszystkie przypisania planu tej definicji planu.
+> Usunięcie planu w tej metodzie spowoduje również usunięcie wszystkich opublikowanych wersji wybranego planu.
+> Aby usunąć pojedynczą wersję, Otwórz plan, wybierz kartę **opublikowane wersje** , wybierz wersję, którą chcesz usunąć, a następnie wybierz pozycję **Usuń tę wersję**. Nie można również usunąć planu, dopóki nie usunięto wszystkich przypisań planu tej definicji planu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [planu cyklu życia](./concepts/lifecycle.md).
+- Dowiedz się więcej o [cyklu życia](./concepts/lifecycle.md)planu.
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](./concepts/parameters.md).
 - Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](./concepts/sequencing-order.md).
 - Dowiedz się, jak używać [blokowania zasobów strategii](./concepts/resource-locking.md).

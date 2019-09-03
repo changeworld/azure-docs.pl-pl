@@ -8,12 +8,12 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 7da31e09157b8877db4d36d0f061f29433d02d11
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: b53f293f6289377d85f4346933f7edb7369065cf
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515632"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231634"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Kontrolowanie mapowania przykładowych OFICJALNych i BRYTYJSKIch planów NHS w Wielkiej Brytanii
 
@@ -39,7 +39,7 @@ Zrozumienie, w jaki sposób zasoby platformy Azure mogą mieć nieoptymalną kon
 - Należy włączyć bezpieczny transfer do kont magazynu
 - W klastrach Service Fabric Właściwość ClusterProtectionLevel ma ustawioną wartość EncryptAndSign
 - Należy włączyć Transparent Data Encryption baz danych SQL
-- Wdróż przezroczyste szyfrowanie danych usługi SQL DB
+- Wdróż przezroczyste szyfrowanie danych SQL DB
 - Wymagaj szyfrowania na kontach Data Lake Store
 - Dozwolone lokalizacje (zostały trwale zakodowane jako "Południowe Zjednoczone Królestwo" i "ZACHODNIe Zjednoczone Królestwo")
 - Dozwolone lokalizacje dla grup zasobów (zostały trwale zakodowane jako "Południowe Zjednoczone Królestwo" i "ZACHODNIe Zjednoczone Królestwo")
@@ -48,7 +48,7 @@ Zrozumienie, w jaki sposób zasoby platformy Azure mogą mieć nieoptymalną kon
 
 Ten plan ułatwia zarządzanie lukami w zabezpieczeniach systemu informacji przez przypisanie definicji [Azure Policy](../../../policy/overview.md) , które monitorują brak programu Endpoint Protection, brakujące aktualizacje systemu operacyjnego, luki w zabezpieczeniach SQL i wirtualne luki w zabezpieczeniach komputera. Te szczegółowe dane zapewniają informacje o stanie zabezpieczeń wdrożonych zasobów i umożliwiają określanie priorytetów akcji korygowania.
 
-- Monitoruj brakujący program Endpoint Protection w usłudze Azure Security Center
+- Monitoruj brakujące Endpoint Protection w Azure Security Center
 - Aktualizacje systemu powinny być zainstalowane na maszynach
 - Luki w zabezpieczeniach konfiguracji zabezpieczeń na maszynach należy skorygować
 - Luki w zabezpieczeniach baz danych SQL należy skorygować
@@ -58,9 +58,9 @@ Ten plan ułatwia zarządzanie lukami w zabezpieczeniach systemu informacji prze
 
 Ten plan pomaga chronić zasoby systemu informacji przez przypisanie [Azure Policy](../../../policy/overview.md) definicji, które zapewniają ochronę przed nieograniczonym dostępem, dozwolonych aktywność i zagrożeniami.
 
-- Przeprowadź inspekcję nieograniczonego dostępu do kont magazynu
+- Inspekcja nieograniczonego dostępu sieciowego do kont magazynu
 - Na maszynach wirtualnych należy włączyć adaptacyjne kontrolki aplikacji
-- Wdróż wykrywanie zagrożeń na serwerach SQL
+- Wdrażanie wykrywania zagrożeń na serwerach SQL
 - Wdróż domyślne rozszerzenie programu Microsoft IaaSe chroniące przed złośliwym oprogramowaniem dla systemu Windows Server
 
 ## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 zarządzanie użytkownikami i tożsamość 10
@@ -111,13 +111,13 @@ Ten plan pomaga również kontrolować dostęp do zasobów platformy Azure, przy
 - \[Wersja\]zapoznawcza: Inspekcja maszyn wirtualnych z systemem Linux, które zezwalają na połączenia zdalne z kont bez hasła
 - Konta magazynu należy migrować do nowych zasobów Azure Resource Manager
 - Maszyny wirtualne należy migrować do nowych zasobów Azure Resource Manager
-- Przeprowadź inspekcję maszyn wirtualnych, które nie korzystają z dysków zarządzanych
+- Inspekcja maszyn wirtualnych, które nie korzystają z dysków zarządzanych
 
 ## <a name="11-external-interface-protection"></a>11 ochrona interfejsu zewnętrznego
 
 W przypadku korzystania z więcej niż 25 zasad do odpowiedniego zarządzania bezpiecznymi użytkownikami ten plan pomaga chronić interfejsy usługi przed nieautoryzowanym dostępem, przypisując [Azure Policy](../../../policy/overview.md) definicję, która monitoruje nieograniczone konta magazynu. Konta magazynu z nieograniczonym dostępem mogą zezwalać na niezamierzony dostęp do informacji zawartych w systemie informacyjnym. Ten plan przypisuje również zasady, które umożliwiają adaptacyjne kontrole aplikacji na maszynach wirtualnych.
 
-- Przeprowadź inspekcję nieograniczonego dostępu do kont magazynu
+- Inspekcja nieograniczonego dostępu sieciowego do kont magazynu
 - Na maszynach wirtualnych należy włączyć adaptacyjne kontrolki aplikacji
 
 ## <a name="12-secure-service-administration"></a>12 administrowanie bezpieczną usługą
@@ -153,10 +153,10 @@ Ten plan pomaga zapewnić, że zdarzenia systemowe są rejestrowane przez przypi
 
 - Inspekcja powinna być włączona w zaawansowanych ustawieniach zabezpieczeń danych na SQL Server
 - Przeprowadź inspekcję ustawienia diagnostyki
-- Przeprowadź inspekcję ustawień inspekcji SQL na poziomie serwera
+- Inspekcja ustawień inspekcji poziomu serwera SQL
 - \[Wersja\]zapoznawcza: Wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux
 - \[Wersja\]zapoznawcza: Wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows
-- Wdrażaj zasób Network Watcher podczas tworzenia sieci wirtualnych
+- Wdróż obserwatora sieciowego po utworzeniu sieci wirtualnych
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -168,7 +168,7 @@ Po przejrzeniu mapowania kontroli w OFICJALNych i BRYTYJSKIch planach NHS, odwie
 
 Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
-- Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
+- Dowiedz się więcej o [cyklu życia](../../concepts/lifecycle.md)planu.
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).
 - Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../../concepts/sequencing-order.md).
 - Dowiedz się, jak używać [blokowania zasobów strategii](../../concepts/resource-locking.md).

@@ -1,131 +1,131 @@
 ---
-title: Przykładowe - SP NIST 800-53 R4 planu — kroki wdrażania
-description: Wdróż kroki NIST SP 800-53 R4 planu próbki.
+title: Przykład — NIST SP 800-53 R4 plan — wdrażanie kroków
+description: Wdróż kroki z przykładu NIST SP 800-53 R4 plan.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 206763e2d17f4ad711ff5fd897f1429814e61837
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: a4b2690c067e1081efdc9637e79b181fc75ad6d4
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68228905"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232700"
 ---
-# <a name="deploy-the-nist-sp-800-53-r4-blueprint-sample"></a>Wdrażanie NIST SP 800-53 R4 planu próbki
+# <a name="deploy-the-nist-sp-800-53-r4-blueprint-sample"></a>Wdrażanie przykładu planu NIST SP 800-53 R4
 
-Aby wdrożyć SP NIST schematy Azure przykładowy plan R4 800-53, należy podjąć następujące kroki:
+Aby wdrożyć usługę Azure Plans NIST SP 800-53 R4, należy wykonać następujące czynności:
 
 > [!div class="checklist"]
-> - Tworzenie nowego planu z próbki
-> - Oznacz kopii przykładu jako **opublikowano**
+> - Utwórz nowy plan z przykładu
+> - Oznacz swoją kopię przykładowej publikacji jako opublikowaną
 > - Przypisz swoją kopię planu do istniejącej subskrypcji
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
 
-## <a name="create-blueprint-from-sample"></a>Utwórz plan z próbki
+## <a name="create-blueprint-from-sample"></a>Utwórz plan z przykładu
 
-Najpierw należy zaimplementować przykładowy plan przez utworzenie nowego planu w środowisku przy użyciu przykładu jako początkowego.
+Najpierw Zaimplementuj przykład strategii, tworząc nowy plan w środowisku przy użyciu przykładu jako starter.
 
-1. Wybierz **wszystkich usług** Wyszukaj i wybierz pozycję **zasad** w okienku po lewej stronie. Na **zasad** wybierz opcję **plany**.
+1. Wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **zasady** w okienku po lewej stronie. Na stronie **zasady** wybierz pozycję **plany**.
 
-1. Z **wprowadzenie** strony po lewej stronie, wybierz opcję **Utwórz** przycisku w obszarze _Tworzenie planu_.
+1. Na stronie **pierwsze kroki** z lewej strony wybierz przycisk **Utwórz** w obszarze _Utwórz plan_.
 
-1. Znajdź **R4 SP NIST 800-53** przykładowy plan w ramach _inne przykłady_ i wybierz **korzystać z tej próbki**.
+1. Znajdź przykład planu **NIST SP 800-53 R4** w obszarze _inne przykłady_ i wybierz opcję **Użyj tego przykładu**.
 
-1. Wprowadź _podstawy_ próbki planu:
+1. Wprowadź _podstawy_ przykładu planu:
 
-   - **Nazwa planu**: Podaj nazwę dla tej kopii przykładu NIST SP 800-53 R4 planu.
-   - **Lokalizacja definicji**: Użyj wielokropek i wybierz grupę zarządzania, aby zapisać kopię próbki.
+   - **Nazwa**planu: Podaj nazwę kopii przykładowego planu NIST SP 800-53 R4.
+   - **Lokalizacja definicji**: Użyj wielokropka i wybierz grupę zarządzania, w której ma zostać zapisana kopia przykładu.
 
-1. Wybierz _artefaktów_ kartę w górnej części strony lub **dalej: Artefakty** w dolnej części strony.
+1. Wybierz kartę _artefakty_ w górnej części strony lub **Następny: Artefakty** w dolnej części strony.
 
-1. Przejrzyj listę artefaktów, które tworzą przykładowy plan. Wiele artefaktów ma parametry, które zdefiniujemy później. Wybierz **Zapisz wersję roboczą** po zakończeniu przeglądania przykładu planu.
+1. Zapoznaj się z listą artefaktów, które składają się na przykład strategii. Wiele artefaktów ma parametry, które zostaną zdefiniowane w dalszej części. Wybierz pozycję **Zapisz wersję roboczą** po zakończeniu przeglądania przykładu planu.
 
-## <a name="publish-the-sample-copy"></a>Kopiowanie przykładowych publikowania
+## <a name="publish-the-sample-copy"></a>Publikowanie kopii przykładowej
 
-Utworzono kopię przykładowej planu w danym środowisku. Jest tworzony w **projekt** tryb i musi być **opublikowano** przed mogą zostać przypisane i wdrożony. Kopię przykładowych planu można dostosować do Twojego środowiska i potrzeb, niejedna modyfikacji może Przenieś go od spełnia wymagania programu NIST SP 800-53 kontrolki.
+Twoja kopia przykładu strategii została teraz utworzona w Twoim środowisku. Jest on tworzony w trybie **wersji roboczej** i musi być **opublikowany** , aby można go było przypisać i wdrożyć. Kopię przykładowej strategii można dostosować do środowiska i potrzeb, ale zmiana ta może nie być wyrównania z użyciem kontrolek NIST SP 800-53.
 
-1. Wybierz **wszystkich usług** Wyszukaj i wybierz pozycję **zasad** w okienku po lewej stronie. Na **zasad** wybierz opcję **plany**.
+1. Wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **zasady** w okienku po lewej stronie. Na stronie **zasady** wybierz pozycję **plany**.
 
-1. Wybierz **planu definicje** strony po lewej stronie. Użyj filtrów, aby znaleźć kopii przykładu planu, a następnie wybierz ją.
+1. Wybierz stronę **definicje** strategii po lewej stronie. Użyj filtrów, aby znaleźć kopię przykładowej strategii, a następnie wybierz ją.
 
-1. Wybierz **publikowania planu** w górnej części strony. W nowej strony po prawej stronie zapewniają **wersji** dla tej kopii przykładu planu. Ta właściwość jest przydatne w przypadku, jeśli wprowadzisz zmiany w dalszej części. Podaj **zmienić uwagi** takie jak "pierwsza wersja publikowane z poziomu NIST SP 800-53 R4 planu przykład." Następnie wybierz pozycję **Publikuj** w dolnej części strony.
+1. Wybierz pozycję **Publikuj plan** w górnej części strony. Na nowej stronie z prawej strony Podaj **wersję** kopii przykładowej strategii. Ta właściwość jest przydatna w przypadku późniejszej modyfikacji. Podaj **informacje** o zmianach, takie jak "Pierwsza wersja opublikowana z przykładu NIST SP 800-53 R4." Następnie wybierz pozycję **Publikuj** w dolnej części strony.
 
-## <a name="assign-the-sample-copy"></a>Przypisania kopiowania próbki
+## <a name="assign-the-sample-copy"></a>Przypisz przykładową kopię
 
-Gdy kopii przykładu planu została pomyślnie **opublikowano**, może ona zostać przypisana do subskrypcji w obrębie grupy zarządzania został zapisany w. Ten krok jest, gdzie parametry są przekazywane do unikatowość każdego wdrożenia kopii przykładu planu.
+Po pomyślnym opublikowaniu kopii przykładowej strategiimożna ją przypisać do subskrypcji w grupie zarządzania, w której został on zapisany. Ten krok polega na tym, że parametry są dostarczane, aby każde wdrożenie kopii przykładowej strategii było unikatowe.
 
-1. Wybierz **wszystkich usług** Wyszukaj i wybierz pozycję **zasad** w okienku po lewej stronie. Na **zasad** wybierz opcję **plany**.
+1. Wybierz pozycję **wszystkie usługi** i Wyszukaj i wybierz pozycję **zasady** w okienku po lewej stronie. Na stronie **zasady** wybierz pozycję **plany**.
 
-1. Wybierz **planu definicje** strony po lewej stronie. Użyj filtrów, aby znaleźć kopii przykładu planu, a następnie wybierz ją.
+1. Wybierz stronę **definicje** strategii po lewej stronie. Użyj filtrów, aby znaleźć kopię przykładowej strategii, a następnie wybierz ją.
 
-1. Wybierz **planu Przypisz** w górnej części strony definicji planu.
+1. Wybierz pozycję **Przypisz plan** w górnej części strony definicji planu.
 
 1. Podaj wartości parametrów dla przypisania planu:
 
-   - Podstawy
+   - Ustawienia podstawowe
 
-     - **Subskrypcje**: Wybierz co najmniej jednej z subskrypcji, które znajdują się w grupie zarządzania należy zapisać swoją kopię przykładowy plan do. Jeśli wybierzesz więcej niż jedną subskrypcję, przypisania zostaną utworzone dla każdego przy użyciu podanych parametrów.
-     - **Nazwa przypisania**: Nazwa jest wstępnie wypełniona automatycznie na podstawie nazwy planu.
-       Zmień stosownie do potrzeb, lub pozostawić.
-     - **Lokalizacja**: Wybierz region dla tożsamości zarządzanej, które zostały utworzone w. Usługa Azure Blueprint używa tej tożsamości zarządzanej do wdrażania wszystkich artefaktów w przypisanej strategii. Aby dowiedzieć się więcej, zobacz [Tożsamości zarządzane dla zasobów platformy Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
-     - **Wersja definicji planu**: Wybierz **opublikowano** wersji kopii przykładu planu.
+     - **Subskrypcje**: Wybierz co najmniej jedną subskrypcję znajdującą się w grupie zarządzania, do której została zapisana kopia przykładu planu. W przypadku wybrania więcej niż jednej subskrypcji zostanie utworzone przypisanie dla każdego z nich przy użyciu wprowadzonych parametrów.
+     - **Nazwa przypisania**: Nazwa jest wstępnie wypełniana na podstawie nazwy planu.
+       Zmień stosownie do potrzeb lub pozostaw jako is.
+     - **Lokalizacja**: Wybierz region, w którym ma zostać utworzona zarządzana tożsamość. Usługa Azure Blueprint używa tej tożsamości zarządzanej do wdrażania wszystkich artefaktów w przypisanej strategii. Aby dowiedzieć się więcej, zobacz [Tożsamości zarządzane dla zasobów platformy Azure](../../../../active-directory/managed-identities-azure-resources/overview.md).
+     - **Wersja definicji**planu: Wybierz **opublikowaną** wersję kopii przykładowej strategii.
 
-   - Przypisanie blokady
+   - Zablokuj przypisanie
 
-     Wybierz opcję blokady planu, ustawienie dla danego środowiska. Aby uzyskać więcej informacji, zobacz [blokowanie zasobów strategii](../../concepts/resource-locking.md).
+     Wybierz ustawienie blokowania planu dla danego środowiska. Aby uzyskać więcej informacji, zobacz [blokowanie zasobów strategii](../../concepts/resource-locking.md).
 
    - Tożsamość zarządzana
 
-     Pozostaw wartość domyślną _przypisanej w systemie_ zarządzane opcja tożsamości.
+     Pozostaw domyślną opcję zarządzanej tożsamości przypisanej do _systemu_ .
 
    - Parametry artefaktu
 
-     Parametry zdefiniowane w tej sekcji dotyczą artefaktu w ramach której jest zdefiniowany. Te parametry są [parametrów dynamicznych](../../concepts/parameters.md#dynamic-parameters) ponieważ są one definiowane podczas przypisywania planu. Aby uzyskać pełną listę lub artefaktu parametrów i ich opisy, zobacz [tabeli Parametry artefaktu](#artifact-parameters-table).
+     Parametry zdefiniowane w tej sekcji dotyczą artefaktu, w ramach którego jest zdefiniowany. Parametry te są [parametrami dynamicznymi](../../concepts/parameters.md#dynamic-parameters) , ponieważ są one definiowane podczas przypisywania planu. Aby uzyskać pełną listę lub parametry artefaktów oraz ich opisy, zobacz [tabela parametrów artefaktów](#artifact-parameters-table).
 
-1. Po wprowadzeniu wszystkich parametrów, wybierz **przypisać** w dolnej części strony. Przypisanie planu jest tworzony i rozpocznie się wdrażanie artefaktów. Wdrożenie potrwa około godziny. Aby sprawdzić stan wdrożenia, otwórz przypisanie planu.
+1. Po wprowadzeniu wszystkich parametrów wybierz pozycję **Przypisz** w dolnej części strony. Utworzono przypisanie strategii i rozpocznie się wdrażanie artefaktów. Wdrażanie zajmuje trochę czasu. Aby sprawdzić stan wdrożenia, Otwórz przypisanie planu.
 
 > [!WARNING]
-> Usługa Azure schematy i przykłady wbudowanych planu są **bezpłatna**. Zasoby platformy Azure są [rozliczana według produktu](https://azure.microsoft.com/pricing/). Użyj [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/) można oszacować koszt zasobów wdrożonych w tym przykładzie planu.
+> Usługa plany platformy Azure i wbudowane przykłady planów są **bezpłatne**. Zasoby platformy Azure są [wyceniane według produktu](https://azure.microsoft.com/pricing/). Za pomocą [kalkulatora cen](https://azure.microsoft.com/pricing/calculator/) można oszacować koszt uruchamiania zasobów wdrożonych przez ten przykład strategii.
 
-## <a name="artifact-parameters-table"></a>Artefakt parametrów tabeli
+## <a name="artifact-parameters-table"></a>Tabela parametrów artefaktów
 
-Poniższa tabela zawiera listę planu artefaktu parametry:
+Poniższa tabela zawiera listę parametrów artefaktów strategii:
 
 |Nazwa artefaktu|Typ artefaktu|Nazwa parametru|Opis|
 |-|-|-|-|
-|\[Podgląd\]: Inspekcja NIST SP 800-53 R4 kontrolek i wdrażanie określonych rozszerzeń maszyn wirtualnych, aby spełnić wymagania dotyczące inspekcji|Przypisywanie zasad|Identyfikator obszaru roboczego analizy dzienników, powinny mieć skonfigurowane maszyny wirtualne|Jest to identyfikator (GUID) maszyny wirtualne należy skonfigurować dla obszaru roboczego usługi Log Analytics.|
-|\[Podgląd\]: Inspekcja NIST SP 800-53 R4 kontrolek i wdrażanie określonych rozszerzeń maszyn wirtualnych, aby spełnić wymagania dotyczące inspekcji|Przypisywanie zasad|Lista typów zasobów, które mają włączone dzienniki diagnostyczne|Lista typów zasobów do inspekcji, jeśli nie włączono ustawienie dzienników diagnostycznych. Dopuszczalne wartości, można znaleźć w folderze [schematy dla dzienników diagnostycznych usługi Azure Monitor](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
-|\[Podgląd\]: Inspekcja NIST SP 800-53 R4 kontrolek i wdrażanie określonych rozszerzeń maszyn wirtualnych, aby spełnić wymagania dotyczące inspekcji|Przypisywanie zasad|Lista użytkowników, które mają zostać wykluczone z grupy administratorów maszyn wirtualnych Windows|Rozdzielana średnikami lista elementów członkowskich, które powinny być wyłączone w lokalnej grupie Administratorzy. Na przykład: Administrator. myUser1; myUser2|
-|\[Podgląd\]: Inspekcja NIST SP 800-53 R4 kontrolek i wdrażanie określonych rozszerzeń maszyn wirtualnych, aby spełnić wymagania dotyczące inspekcji|Przypisywanie zasad|Lista użytkowników, które powinny być uwzględnione w grupie administratorów maszyn wirtualnych Windows|Rozdzielana średnikami lista elementów członkowskich, które powinny znajdować się w lokalnej grupie Administratorzy. Na przykład: Administrator. myUser1; myUser2|
-|\[Podgląd\]: Wdrażanie programu Log Analytics Agent for Linux VM Scale Sets (zestawu skalowania maszyn wirtualnych)|Przypisywanie zasad|Obszar roboczy usługi log Analytics dla zestawów skalowania maszyny Wirtualnej systemu Linux (VMSS)|Jeśli ten obszar roboczy jest poza zakresem przypisania należy ręcznie przyznać uprawnienia "Współautor usługi Log Analytics" (lub podobny) do przypisania zasad jednostki identyfikatora.|
-|\[Podgląd\]: Wdrażanie programu Log Analytics Agent for Linux VM Scale Sets (zestawu skalowania maszyn wirtualnych)|Przypisywanie zasad|Opcjonalnie: Lista obrazów maszyn wirtualnych, obsługiwanych systemów operacyjnych Linux, można dodać do zakresu|Pusta tablica może służyć do wskazania nie parametry opcjonalne: \[\]|
-|\[Podgląd\]: Wdrażanie programu Log Analytics Agent na maszynach wirtualnych systemu Linux|Przypisywanie zasad|Zaloguj się obszaru roboczego analizy dla maszyn wirtualnych z systemem Linux|Jeśli ten obszar roboczy jest poza zakresem przypisania należy ręcznie przyznać uprawnienia "Współautor usługi Log Analytics" (lub podobny) do przypisania zasad jednostki identyfikatora.|
-|\[Podgląd\]: Wdrażanie programu Log Analytics Agent na maszynach wirtualnych systemu Linux|Przypisywanie zasad|Opcjonalnie: Lista obrazów maszyn wirtualnych, obsługiwanych systemów operacyjnych Linux, można dodać do zakresu|Pusta tablica może służyć do wskazania nie parametry opcjonalne: \[\]|
-|\[Podgląd\]: Wdrażanie programu Log Analytics Agent Windows VM Scale Sets (zestawu skalowania maszyn wirtualnych)|Przypisywanie zasad|Obszar roboczy usługi log Analytics dla zestawów skalowania maszyn wirtualnych Windows (VMSS)|Jeśli ten obszar roboczy jest poza zakresem przypisania należy ręcznie przyznać uprawnienia "Współautor usługi Log Analytics" (lub podobny) do przypisania zasad jednostki identyfikatora.|
-|\[Podgląd\]: Wdrażanie programu Log Analytics Agent Windows VM Scale Sets (zestawu skalowania maszyn wirtualnych)|Przypisywanie zasad|Opcjonalnie: Lista obrazów maszyn wirtualnych, obsługiwanych systemów operacyjnych Windows, aby dodać do zakresu|Pusta tablica może służyć do wskazania nie parametry opcjonalne: \[\]|
-|\[Podgląd\]: Wdrażanie programu Log Analytics Agent for Windows VMs|Przypisywanie zasad|Zaloguj się obszaru roboczego analizy dla maszyn wirtualnych Windows|Jeśli ten obszar roboczy jest poza zakresem przypisania należy ręcznie przyznać uprawnienia "Współautor usługi Log Analytics" (lub podobny) do przypisania zasad jednostki identyfikatora.|
-|\[Podgląd\]: Wdrażanie programu Log Analytics Agent for Windows VMs|Przypisywanie zasad|Opcjonalnie: Lista obrazów maszyn wirtualnych, obsługiwanych systemów operacyjnych Windows, aby dodać do zakresu|Pusta tablica może służyć do wskazania nie parametry opcjonalne: \[\]|
-|Wdróż zaawansowaną ochronę przed zagrożeniami dla kont magazynu|Przypisywanie zasad|Efekt|Informacje dotyczące efektów zasad znajduje się w temacie [zrozumieć wpływ zasad platformy Azure](../../../policy/concepts/effects.md)|
-|Wdrażanie inspekcji na serwerach SQL|Przypisywanie zasad|Wyrażona w dniach długość okresu przechowywania (0 oznacza nieograniczone przechowywanie)|Liczba dni przechowywania (opcjonalnie; 180 dni, jeśli nie określono tego parametru)|
-|Wdrażanie inspekcji na serwerach SQL|Przypisywanie zasad|Nazwa grupy zasobów dla konta magazynu dla inspekcji usługi SQL server|Zdarzenia inspekcji bazy danych zapisów inspekcji, zaloguj się na Twoim koncie usługi Azure Storage (konto magazynu zostanie utworzone w każdym regionie tworzona programu SQL Server, która będzie współdzielona przez wszystkie serwery w danym regionie). Uwaga: Aby zapewnić sprawne działanie inspekcji nie usuwaj ani nie zmienić nazwę grupy zasobów ani kont magazynu.|
-|Wdrażanie ustawień diagnostycznych dla sieciowych grup zabezpieczeń|Przypisywanie zasad|Prefiks konta magazynu dla diagnostyki grupy zabezpieczeń sieci|Ten prefiks jest łączona z lokalizacji grupy zabezpieczeń sieci w celu utworzenia nazwy konta magazynu utworzonego.|
-|Wdrażanie ustawień diagnostycznych dla sieciowych grup zabezpieczeń|Przypisywanie zasad|Nazwa grupy zasobów dla konta magazynu diagnostyki grupy zabezpieczeń sieci (musi istnieć)|Zostanie utworzone konto magazynu w grupie zasobów. Ta grupa zasobów musi już istnieć.|
+|\[Wersja\]zapoznawcza: Inspekcja NIST SP 800-53 R4 kontroluje i wdraża konkretne rozszerzenia maszyn wirtualnych do obsługi wymagań inspekcji|Przypisanie zasad|Log Analytics identyfikator obszaru roboczego, dla którego należy skonfigurować maszyny wirtualne|To jest identyfikator (GUID) obszaru roboczego Log Analytics, dla którego należy skonfigurować maszyny wirtualne.|
+|\[Wersja\]zapoznawcza: Inspekcja NIST SP 800-53 R4 kontroluje i wdraża konkretne rozszerzenia maszyn wirtualnych do obsługi wymagań inspekcji|Przypisanie zasad|Lista typów zasobów, dla których włączono obsługę dzienników diagnostycznych|Lista typów zasobów do inspekcji, jeśli nie włączono ustawienia dziennika diagnostycznego. Akceptowalne wartości można znaleźć Azure Monitor w obszarze [schematy dzienników diagnostycznych](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
+|\[Wersja\]zapoznawcza: Inspekcja NIST SP 800-53 R4 kontroluje i wdraża konkretne rozszerzenia maszyn wirtualnych do obsługi wymagań inspekcji|Przypisanie zasad|Lista użytkowników, którzy powinni być wykluczeni z grupy administratorów maszyn wirtualnych z systemem Windows|Rozdzielana średnikami lista elementów członkowskich, które powinny być wykluczone w grupie lokalnej Administratorzy. Na przykład: Administratora Użytkownik1; Do|
+|\[Wersja\]zapoznawcza: Inspekcja NIST SP 800-53 R4 kontroluje i wdraża konkretne rozszerzenia maszyn wirtualnych do obsługi wymagań inspekcji|Przypisanie zasad|Lista użytkowników, którzy powinni zostać dołączeni do grupy administratorów maszyn wirtualnych z systemem Windows|Rozdzielana średnikami lista elementów członkowskich, które powinny być uwzględnione w lokalnej grupie Administratorzy. Na przykład: Administratora Użytkownik1; Do|
+|\[Wersja\]zapoznawcza: Wdróż VM Scale Sets Log Analytics agenta dla systemu Linux (VMSS)|Przypisanie zasad|Log Analytics obszar roboczy dla VM Scale Sets systemu Linux (VMSS)|Jeśli ten obszar roboczy znajduje się poza zakresem przypisania, musisz ręcznie udzielić uprawnienia "Log Analytics współautor" (lub podobnego) do identyfikatora podmiotu zabezpieczeń przypisania zasad.|
+|\[Wersja\]zapoznawcza: Wdróż VM Scale Sets Log Analytics agenta dla systemu Linux (VMSS)|Przypisanie zasad|Opcjonalnie: Lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Linux do dodania do zakresu|Pustą tablicę można użyć do wskazania braku parametrów opcjonalnych:\[\]|
+|\[Wersja\]zapoznawcza: Wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux|Przypisanie zasad|Obszar roboczy Log Analytics dla maszyn wirtualnych z systemem Linux|Jeśli ten obszar roboczy znajduje się poza zakresem przypisania, musisz ręcznie udzielić uprawnienia "Log Analytics współautor" (lub podobnego) do identyfikatora podmiotu zabezpieczeń przypisania zasad.|
+|\[Wersja\]zapoznawcza: Wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Linux|Przypisanie zasad|Opcjonalnie: Lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Linux do dodania do zakresu|Pustą tablicę można użyć do wskazania braku parametrów opcjonalnych:\[\]|
+|\[Wersja\]zapoznawcza: Wdróż Log Analytics agenta dla systemu Windows VM Scale Sets (VMSS)|Przypisanie zasad|Log Analytics obszar roboczy dla VM Scale Sets systemu Windows (VMSS)|Jeśli ten obszar roboczy znajduje się poza zakresem przypisania, musisz ręcznie udzielić uprawnienia "Log Analytics współautor" (lub podobnego) do identyfikatora podmiotu zabezpieczeń przypisania zasad.|
+|\[Wersja\]zapoznawcza: Wdróż Log Analytics agenta dla systemu Windows VM Scale Sets (VMSS)|Przypisanie zasad|Opcjonalnie: Lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Windows do dodania do zakresu|Pustą tablicę można użyć do wskazania braku parametrów opcjonalnych:\[\]|
+|\[Wersja\]zapoznawcza: Wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows|Przypisanie zasad|Obszar roboczy Log Analytics dla maszyn wirtualnych z systemem Windows|Jeśli ten obszar roboczy znajduje się poza zakresem przypisania, musisz ręcznie udzielić uprawnienia "Log Analytics współautor" (lub podobnego) do identyfikatora podmiotu zabezpieczeń przypisania zasad.|
+|\[Wersja\]zapoznawcza: Wdrażanie agenta Log Analytics dla maszyn wirtualnych z systemem Windows|Przypisanie zasad|Opcjonalnie: Lista obrazów maszyn wirtualnych z obsługiwanym systemem operacyjnym Windows do dodania do zakresu|Pustą tablicę można użyć do wskazania braku parametrów opcjonalnych:\[\]|
+|Wdróż zaawansowaną ochronę przed zagrożeniami na kontach magazynu|Przypisanie zasad|Efekt|Informacje dotyczące efektów zasad można znaleźć w [opisie Azure Policy efektów](../../../policy/concepts/effects.md)|
+|Wdrażanie inspekcji na serwerach SQL|Przypisanie zasad|Wartość w dniach okresu przechowywania (0 oznacza nieograniczony czas przechowywania)|Dni przechowywania (opcjonalnie, 180 dni, jeśli nie określono)|
+|Wdrażanie inspekcji na serwerach SQL|Przypisanie zasad|Nazwa grupy zasobów dla konta magazynu na potrzeby inspekcji programu SQL Server|Inspekcja zapisuje zdarzenia bazy danych w dzienniku inspekcji na koncie usługi Azure Storage (konto magazynu zostanie utworzone w każdym regionie, w którym zostanie utworzone SQL Server, które będzie współużytkowane przez wszystkie serwery w tym regionie). Ważne — w przypadku właściwej operacji inspekcji nie należy usuwać ani zmieniać nazw grup zasobów ani kont magazynu.|
+|Wdróż ustawienia diagnostyczne dla sieciowych grup zabezpieczeń|Przypisanie zasad|Prefiks konta magazynu dla diagnostyki sieciowej grupy zabezpieczeń|Ten prefiks zostanie połączony z lokalizacją sieciowej grupy zabezpieczeń w celu utworzenia nazwy utworzonego konta magazynu.|
+|Wdróż ustawienia diagnostyczne dla sieciowych grup zabezpieczeń|Przypisanie zasad|Nazwa grupy zasobów dla konta magazynu dla diagnostyki sieciowej grupy zabezpieczeń (musi istnieć)|Grupa zasobów, w której zostanie utworzone konto magazynu. Ta grupa zasobów musi już istnieć.|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy przejrzeniu kroki umożliwiające wdrożenie NIST SP 800-53 R4 planu próbki, odwiedź następujące artykuły, aby informacje na temat planu i mapowanie kontrolek:
+Po przejrzeniu kroków w celu wdrożenia przykładu z planu NIST SP 800-53 R4 zapoznaj się z następującymi artykułami, aby dowiedzieć się więcej o mapowaniu planów i kontroli:
 
 > [!div class="nextstepaction"]
-> [SP NIST 800-53 R4 planu — omówienie](./index.md)
-> [planu R4 SP NIST 800-53 - mapowanie kontrolek](./control-mapping.md)
+> [NIST SP 800-53 R4 plan — Omówienie](./index.md)
+> [NIST SP 800-53 R4 plan-Control mapowania](./control-mapping.md)
 
 Dodatkowe artykuły na temat strategii i sposobu ich używania:
 
-- Uzyskaj informacje na temat [cyklu życia strategii](../../concepts/lifecycle.md).
+- Dowiedz się więcej o [cyklu życia](../../concepts/lifecycle.md)planu.
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../../concepts/parameters.md).
 - Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../../concepts/sequencing-order.md).
 - Dowiedz się, jak używać [blokowania zasobów strategii](../../concepts/resource-locking.md).

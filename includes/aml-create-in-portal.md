@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/14/2019
-ms.openlocfilehash: dee813cbe1da6a6300f65b7005bf4a4b0226112a
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 11287ee5ca0df3e51bca20b39c35eb5ce33b88bd
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208644"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231071"
 ---
 1. Zaloguj się do [Azure Portal](https://portal.azure.com/) przy użyciu poświadczeń dla używanej subskrypcji platformy Azure. 
 
@@ -28,9 +28,7 @@ ms.locfileid: "70208644"
 
 1. W okienku **obszaru roboczego usługi Machine Learning** wybierz pozycję **Utwórz** , aby rozpocząć.
 
-  
-
-1. Skonfiguruj nowy obszar roboczy, podając nazwę obszaru roboczego, subskrypcję, grupę zasobów i lokalizację.
+1. Podaj następujące informacje, aby skonfigurować nowy obszar roboczy:
 
    Pole|Opis 
    ---|---

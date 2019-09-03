@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9bc9d64d7f21498acd5cb0c23447e7ff77de629
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 07176fbe22e70658856dd266687a15d719e78e9f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195580"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231088"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Skonfiguruj cele obliczeń i używaj ich do szkolenia modelu 
 
@@ -422,6 +422,19 @@ az ml folder attach
 ```
 
 To polecenie tworzy podfolder `.azureml` zawierający pliki konfiguracji uruchamiania dla różnych elementów docelowych obliczeń. Można kopiować i edytować te pliki, aby dostosować konfigurację, na przykład dodać pakiety Python lub zmienić ustawienia platformy Docker.  
+
+### <a name="structure-of-run-configuration-file"></a>Struktura pliku konfiguracji uruchamiania
+
+Plik konfiguracji uruchomieniowej jest YAML sformatowany z następującymi sekcjami
+ * Skrypt do uruchomienia i jego argumentów
+ * Nazwa elementu docelowego obliczeń, wartość "Local" lub nazwa obliczeń w obszarze roboczym.
+ * Parametry do wykonywania przebiegu: Framework, programu Communicator dla rozproszonych przebiegów, maksymalny czas trwania i liczba węzłów obliczeniowych.
+ * Sekcja środowiska. Szczegóły dotyczące pól w tej sekcji znajdują się w temacie [Tworzenie środowisk szkoleniowych i zarządzanie nimi](how-to-use-environments.md) .
+   * Aby określić pakiety języka Python, które mają zostać zainstalowane dla programu Run, Utwórz [plik środowiska Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually)i ustaw wartość pola __condaDependenciesFile__ .
+ * Wykonaj szczegóły historii, aby określić folder pliku dziennika oraz włączyć lub wyłączyć migawki wyjściowe kolekcji i uruchamiania historii.
+ * Szczegóły konfiguracji specyficzne dla wybranego środowiska.
+ * Odwołania do danych i szczegóły magazynu danych.
+ * Szczegóły konfiguracji specyficzne dla środowisko obliczeniowe usługi Machine Learning tworzenia nowego klastra.
 
 ### <a name="create-an-experiment"></a>Tworzenie eksperymentu
 

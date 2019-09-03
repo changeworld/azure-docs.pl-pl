@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: c2c9e3d29ced5f75873656e253ecdbab5efe7df8
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: ca5d857e4d473c7f76b7fac62e8a8bab39769b25
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114402"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233134"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Bieżące ograniczenia dotyczące pul węzłów systemu Windows Server i obciążeń aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -21,47 +21,18 @@ W usłudze Azure Kubernetes Service (AKS) można utworzyć pulę węzłów, w kt
 W tym artykule opisano niektóre ograniczenia i koncepcje systemu operacyjnego dla węzłów systemu Windows Server w AKS. Pule węzłów dla systemu Windows Server są obecnie w wersji zapoznawczej.
 
 > [!IMPORTANT]
-> Funkcja AKS w wersji zapoznawczej to samoobsługowe uczestnictwo. Wersje zapoznawcze są udostępniane w postaci "AS-IS" i "jako dostępne" i są wyłączone z umów dotyczących poziomu usług i ograniczonej rękojmi. Wersje zapoznawcze AKS są częściowo objęte obsługą klienta w oparciu o najlepszy nakład pracy. W związku z tym te funkcje nie są przeznaczone do użytku produkcyjnego. Aby dowiedzieć się więcej, zobacz następujące artykuły pomocy technicznej:
+> Funkcja AKS w wersji zapoznawczej to samoobsługowe uczestnictwo. Wersje zapoznawcze są udostępniane w postaci "AS-IS" i "jako dostępne" i są wyłączone z umów dotyczących poziomu usług i ograniczonej rękojmi. Wersje zapoznawcze AKS są częściowo objęte obsługą klienta w oparciu o najlepszy nakład pracy. W związku z tym te funkcje nie są przeznaczone do użytku produkcyjnego. Dodatkowe informacje można znaleźć w następujących artykułach pomocy technicznej:
 >
 > * [Zasady pomocy technicznej AKS][aks-support-policies]
 > * [Pomoc techniczna platformy Azure — często zadawane pytania][aks-faq]
 
-## <a name="limitations-for-windows-server-in-kubernetes"></a>Ograniczenia dotyczące systemu Windows Server w Kubernetes
+## <a name="which-windows-operating-systems-are-supported"></a>Które systemy operacyjne Windows są obsługiwane?
 
-Kontenery systemu Windows Server muszą działać na hoście kontenera z systemem Windows. Aby uruchomić kontenery systemu Windows Server w AKS, można [utworzyć pulę węzłów z systemem Windows Server][windows-node-cli] jako system operacyjny gościa. Obsługa puli węzłów serwera okna zawiera pewne ograniczenia, które są częścią nadrzędnego serwera systemu Windows w projekcie Kubernetes. Te ograniczenia nie są specyficzne dla AKS. Aby uzyskać więcej informacji o tej obsłudze nadrzędnej dla systemu Windows Server w Kubernetes, zobacz [kontenery systemu Windows Server w ograniczeniach Kubernetes](https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations).
+AKS używa systemu Windows Server 2019 jako wersji systemu operacyjnego hosta i obsługuje tylko izolację procesu. Obrazy kontenerów skompilowane przy użyciu innych wersji systemu Windows Server nie są obsługiwane. [Zgodność wersji kontenera systemu Windows][windows-container-compat]
 
-Następujące ograniczenia nadrzędne dla kontenerów systemu Windows Server w programie Kubernetes są istotne dla AKS:
+## <a name="is-kubernetes-different-on-windows-and-linux"></a>Czy Kubernetes różnią się w systemach Windows i Linux?
 
-- Kontenery systemu Windows Server mogą korzystać tylko z systemu Windows Server 2019, który odpowiada podstawowemu systemowi OPERACYJNEmu węzła systemu Windows Server.
-    - Obrazy kontenerów utworzone przy użyciu systemu Windows Server 2016 jako podstawowy system operacyjny nie są obsługiwane.
-- Nie można używać kontenerów uprzywilejowanych.
-- Funkcje specyficzne dla systemu Linux, takie jak RunAsUser, SELinux, AppArmor lub POSIX, nie są dostępne w kontenerach Windows Server.
-    - Ograniczenia w systemie plików, które są specyficzne dla systemu Linux, takie jak UUI/GUID, na uprawnienia użytkownika również nie są dostępne w kontenerach systemu Windows Server.
-- Dyski platformy Azure i Azure Files są obsługiwanymi typami woluminów dostępnymi jako woluminy NTFS w kontenerze systemu Windows Server.
-    - Magazyny i woluminy NFS nie są obsługiwane.
-
-## <a name="aks-limitations-for-windows-server-node-pools"></a>Ograniczenia AKS dla pul węzłów systemu Windows Server
-
-Następujące dodatkowe ograniczenia dotyczą obsługi puli węzłów systemu Windows Server w programie AKS:
-
-- Klaster AKS zawsze zawiera pulę węzłów systemu Linux jako pierwszą pulę węzłów. Nie można usunąć tej pierwszej puli węzłów opartej na systemie Linux, chyba że zostanie usunięty sam klaster AKS.
-- Klastry AKS muszą używać modelu sieci usługi Azure CNI (Advanced).
-    - Sieć korzystającą wtyczki kubenet (podstawowa) nie jest obsługiwana. Nie można utworzyć klastra AKS, który korzysta z korzystającą wtyczki kubenet. Aby uzyskać więcej informacji na temat różnic między modelami sieci, zobacz [pojęcia dotyczące sieci dla aplikacji w AKS][azure-network-models].
-    - Model sieci usługi Azure CNI wymaga dodatkowego planowania i zagadnień związanych z zarządzaniem adresami IP. Aby uzyskać więcej informacji na temat planowania i implementowania usługi Azure CNI, zobacz [Konfigurowanie sieci Azure CNI w programie AKS][configure-azure-cni].
-- Węzły systemu Windows Server w AKS muszą zostać uaktualnione do najnowszej wersji systemu windows Server 2019, aby zachować najnowsze poprawki poprawek i aktualizacji. Aktualizacje systemu Windows nie są włączone w podstawowym obrazie węzła w AKS. Zgodnie z regularnym harmonogramem Windows Update cyklu wydania i procesu weryfikacji należy przeprowadzić uaktualnienie w puli węzłów systemu Windows Server w klastrze AKS. Aby uzyskać więcej informacji na temat uaktualniania puli węzłów systemu Windows Server, zobacz [uaktualnianie puli węzłów w AKS][nodepool-upgrade].
-    - Podczas uaktualniania węzła systemu Windows Server tymczasowo zużywane są dodatkowe adresy IP w podsieci sieci wirtualnej w ramach wdrożenia nowego węzła przed usunięciem starego węzła.
-    - przydziały vCPU są również tymczasowo zużywane w ramach subskrypcji jako nowy węzeł, a następnie został usunięty stary węzeł.
-    - Nie można automatycznie aktualizować i zarządzać ponownymi uruchomieniami `kured` przy użyciu węzłów systemu Linux w AKS.
-- Klaster AKS może mieć maksymalnie osiem pul węzłów.
-    - Dla tych ośmiu pul węzłów można mieć maksymalnie 400 węzłów.
-- Nazwa puli węzłów systemu Windows Server ma limit 6 znaków.
-- Funkcje w wersji zapoznawczej w programie AKS, takie jak zasady sieciowe i automatyczne skalowanie klastra, nie są zatwierdzone dla węzłów systemu Windows Server.
-- Kontrolery transferu danych przychodzących należy planować tylko w węzłach systemu Linux przy użyciu NodeSelector.
-- Azure Dev Spaces jest obecnie dostępna tylko dla pul węzłów opartych na systemie Linux.
-- Obsługa kont usług zarządzanych przez grupę (gMSA), gdy węzły systemu Windows Server nie są przyłączone do domeny Active Directory nie są obecnie dostępne w AKS.
-    - Projekt "open source" w ramach strumienia [AKS-Engine][aks-engine] zapewnia obecnie obsługę gMSA, jeśli trzeba będzie używać tej funkcji.
-
-## <a name="os-concepts-that-are-different"></a>Różne koncepcje systemu operacyjnego
+Obsługa puli węzłów serwera okna zawiera pewne ograniczenia, które są częścią nadrzędnego serwera systemu Windows w projekcie Kubernetes. Te ograniczenia nie są specyficzne dla AKS. Aby uzyskać więcej informacji o tej obsłudze nadrzędnej systemu Windows Server w programie Kubernetes, zobacz sekcję [obsługiwane funkcje i ograniczenia][upstream-limitations] w artykule [wprowadzenie do obsługi systemu Windows w dokumencie Kubernetes][intro-windows] , z projektu Kubernetes.
 
 Kubernetes jest historycznym systemem Linux. Wiele przykładów używanych w nadrzędnej witrynie sieci Web [Kubernetes.IO][kubernetes] jest przeznaczonych do użycia w węzłach systemu Linux. Podczas tworzenia wdrożeń korzystających z kontenerów systemu Windows Server następujące zagadnienia są stosowane na poziomie systemu operacyjnego:
 
@@ -71,14 +42,68 @@ Kubernetes jest historycznym systemem Linux. Wiele przykładów używanych w nad
 - **Ścieżki plików** — Konwencja w systemie Windows Server jest używana \ zamiast/.
     - W obszarze specyfikacje instalujące woluminy określ ścieżkę dla kontenerów systemu Windows Server. Na przykład zamiast punktu instalacji */mnt/Volume* w kontenerze systemu Linux należy określić literę dysku i lokalizację, taką jak */K/Volume* , do zainstalowania jako dysk *K:* .
 
+## <a name="what-kind-of-disks-are-supported-for-windows"></a>Jakiego rodzaju dyski są obsługiwane w systemie Windows?
+
+Dyski platformy Azure i Azure Files są obsługiwanymi typami woluminów dostępnymi jako woluminy NTFS w kontenerze systemu Windows Server.
+
+## <a name="can-i-run-windows-only-clusters-in-aks"></a>Czy można uruchamiać tylko klastry systemu Windows w AKS?
+
+Węzły główne (płaszczyzna kontroli) w klastrze AKS są hostowane przez AKS tej usługi, nie będą widoczne w systemie operacyjnym węzłów obsługujących składniki główne. Wszystkie klastry AKS są tworzone z domyślną pulą pierwszego węzła, który jest oparty na systemie Linux. Ta Pula węzłów zawiera usługi systemowe, które są konieczne do funkcjonowania klastra. Zaleca się uruchomienie co najmniej dwóch węzłów w pierwszej puli węzłów w celu zapewnienia niezawodności klastra i możliwości wykonywania operacji klastra. Nie można usunąć pierwszej puli węzłów opartej na systemie Linux, chyba że zostanie usunięty sam klaster AKS.
+
+## <a name="what-network-plug-ins-are-supported"></a>Jakie wtyczki sieciowe są obsługiwane?
+
+Klastry AKS z pulami węzłów systemu Windows muszą używać modelu sieci usługi Azure CNI (Advanced). Sieć korzystającą wtyczki kubenet (podstawowa) nie jest obsługiwana. Aby uzyskać więcej informacji na temat różnic między modelami sieci, zobacz [pojęcia dotyczące sieci dla aplikacji w AKS][azure-network-models]. — Model sieci usługi Azure CNI wymaga dodatkowego planowania i zagadnień związanych z zarządzaniem adresami IP. Aby uzyskać więcej informacji na temat planowania i implementowania usługi Azure CNI, zobacz [Konfigurowanie sieci Azure CNI w programie AKS][configure-azure-cni].
+
+## <a name="can-i-change-the-min--of-pods-per-node"></a>Czy mogę zmienić minimalną liczbę zasobników na węzeł?
+
+Obecnie jest wymagane ustawienie co najmniej 30 zasobników, aby zapewnić niezawodność klastrów.
+
+## <a name="how-do-patch-my-windows-nodes"></a>Jak zastosować poprawki do węzłów systemu Windows?
+
+Węzły systemu Windows Server w AKS muszą zostać uaktualnione w celu pobrania najnowszych poprawek poprawek i aktualizacji. Aktualizacje systemu Windows nie są włączone na węzłach w AKS. AKS zwalnia nowe obrazy puli węzłów, gdy tylko poprawki są dostępne, klienci są odpowiedzialni za uaktualnienie pul węzłów, aby zachować bieżące informacje na temat poprawek i poprawek. Dotyczy to również używanej wersji Kubernetes. Informacje o wersji AKS będą wskazywać, kiedy są dostępne nowe wersje. Aby uzyskać więcej informacji na temat uaktualniania puli węzłów systemu Windows Server, zobacz [uaktualnianie puli węzłów w AKS][nodepool-upgrade].
+
+> [!NOTE]
+> Zaktualizowany obraz systemu Windows Server będzie używany tylko wtedy, gdy uaktualnienie klastra (uaktualnienie płaszczyzny kontroli) zostało wykonane przed uaktualnieniem puli węzłów
+>
+
+## <a name="how-many-node-pools-can-i-create"></a>Ile pul węzłów można utworzyć?
+
+Klaster AKS może mieć maksymalnie osiem pul węzłów (8). W ramach pul węzłów można mieć maksymalnie 400 węzłów. [Ograniczenia puli węzłów][nodepool-limitations].
+
+## <a name="what-can-i-name-my-windows-node-pools"></a>Jak Nazywam się pulami węzłów systemu Windows?
+
+Należy zachować nazwę maksymalnie 6 (sześć znaków). Jest to bieżące ograniczenie AKS.
+
+## <a name="are-all-features-supported-with-windows-nodes"></a>Czy wszystkie funkcje są obsługiwane z węzłami systemu Windows?
+
+Zasady sieciowe i korzystającą wtyczki kubenet nie są obecnie obsługiwane w węzłach systemu Windows. 
+
+## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Czy można uruchamiać kontrolery transferu danych przychodzących w węzłach systemu Windows?
+
+Tak, kontroler transferu danych przychodzących obsługujący kontenery systemu Windows Server można uruchamiać w węzłach systemu Windows w AKS.
+
+## <a name="can-i-use-azure-dev-spaces-with-windows-nodes"></a>Czy mogę używać Azure Dev Spaces z węzłami systemu Windows?
+
+Azure Dev Spaces jest obecnie dostępna tylko dla pul węzłów opartych na systemie Linux.
+
+## <a name="can-my-windows-server-containers-use-gmsa"></a>Czy moje kontenery systemu Windows Server używają gMSA?
+
+Obsługa kont usług zarządzanych przez grupę (gMSA) nie jest obecnie dostępna w AKS.
+
+## <a name="what-if-i-need-a-feature-which-is-not-supported"></a>Co zrobić, jeśli potrzebuję funkcji, która nie jest obsługiwana?
+
+Pracujemy nad udostępnieniem wszystkich funkcji potrzebnych do systemu Windows w AKS, ale jeśli wystąpią przerwy, projekt typu "open source", a [AKS-Engine][aks-engine] umożliwia łatwą i w pełni dostosowywalny sposób uruchamiania Kubernetes na platformie Azure, w tym pomocy technicznej systemu Windows. Zapoznaj się z naszym planem funkcji [AKS plan][aks-roadmap].
+
 ## <a name="next-steps"></a>Następne kroki
 
 Aby rozpocząć pracę z kontenerami systemu Windows Server w programie AKS, należy [utworzyć pulę węzłów, w której działa system Windows Server w AKS][windows-node-cli].
 
 <!-- LINKS - external -->
-[upstream-limitations]: https://kubernetes.io/docs/setup/windows/#limitations
 [kubernetes]: https://kubernetes.io
 [aks-engine]: https://github.com/azure/aks-engine
+[upstream-limitations]: https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/#supported-functionality-and-limitations
+[intro-windows]: https://kubernetes.io/docs/setup/production-environment/windows/intro-windows-in-kubernetes/
+[aks-roadmap]: https://github.com/Azure/AKS/projects/1
 
 <!-- LINKS - internal -->
 [azure-network-models]: concepts-network.md#azure-virtual-networks
@@ -88,3 +113,6 @@ Aby rozpocząć pracę z kontenerami systemu Windows Server w programie AKS, nal
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
 [azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat
+[nodepool-limitations]: use-multiple-node-pools.md#limitations
+[preview-support]: support-policies.md#preview-features-or-feature-flags
+[windows-container-compat]: https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility#windows-server-2019-host-os-compatibility

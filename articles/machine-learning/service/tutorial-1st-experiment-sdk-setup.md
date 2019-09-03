@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/28/2019
-ms.openlocfilehash: df74d2d07937634e2b656746c0a9fc9cd86b8c93
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: b1da94a2644c299447271b447f51ae4f7750774c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182600"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231048"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment"></a>Samouczek: Wprowadzenie do tworzenia pierwszego eksperymentu z ML
 
@@ -24,16 +24,14 @@ W tym samouczku przedstawiono kompleksowe kroki umożliwiające rozpoczęcie pra
 W tym samouczku zostaną wykonane następujące czynności:
 
 > [!div class="checklist"]
-> * Utwórz obszar roboczy uczenia maszynowego do użycia w następnym samouczku.
+> * Utwórz [obszar roboczy usługi Azure Machine Learning](concept-workspace.md) do użycia w następnym samouczku.
 > * Utwórz chmurową maszynę wirtualną Jupyter Notes Azure Machine Learning z zainstalowanym i wstępnie skonfigurowanym zestawem SDK języka Python.
 
-## <a name="prerequisites"></a>Wymagania wstępne
-
-Jedynym wymaganiem wstępnym dla tego samouczka jest subskrypcja platformy Azure. Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
+Jeśli nie masz subskrypcji Azure, przed rozpoczęciem utwórz bezpłatne konto. Wypróbuj [bezpłatną lub płatną wersję usługi Azure Machine Learning](https://aka.ms/AMLFree) już dziś.
 
 ## <a name="create-a-workspace"></a>Tworzenie obszaru roboczego
 
-Obszar roboczy to podstawowe zasoby w chmurze, za pomocą których można eksperymentować, uczeniować i wdrażać modele uczenia maszynowego. Wiąże się to z łatwym w użyciu zestawem SDK i grupą zasobów platformy Azure. Jeśli masz już obszar roboczy usługi Azure Machine Learning, przejdź do [następnej sekcji](#azure). W przeciwnym razie utwórz je teraz.
+Obszar roboczy Azure Machine Learning to podstawowe zasoby w chmurze, za pomocą których można eksperymentować, uczeniować i wdrażać modele uczenia maszynowego. Wiąże się to z łatwym w użyciu zestawem SDK i grupą zasobów platformy Azure. Jeśli masz już obszar roboczy usługi Azure Machine Learning, przejdź do [następnej sekcji](#azure). W przeciwnym razie utwórz je teraz.
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
@@ -58,10 +56,7 @@ W obszarze roboczym utworzysz zasób w chmurze, aby rozpocząć korzystanie z no
 1. Następnie wybierz przycisk **Utwórz**. Skonfigurowanie maszyny wirtualnej może chwilę potrwać.
 
 1. Poczekaj, aż stan zmieni się na **uruchomiony**.
-
-### <a name="launch-jupyter-web-interface"></a>Uruchom interfejs sieci Web Jupyter
-
-Po uruchomieniu maszyny wirtualnej Użyj sekcji **maszyny wirtualne notesu** , aby uruchomić interfejs sieci Web Jupyter.
+   Po uruchomieniu maszyny wirtualnej Użyj sekcji **maszyny wirtualne notesu** , aby uruchomić interfejs sieci Web Jupyter.
 
 1. Wybierz pozycję **Jupyter** w kolumnie **URI** dla maszyny wirtualnej.
 
@@ -69,14 +64,6 @@ Po uruchomieniu maszyny wirtualnej Użyj sekcji **maszyny wirtualne notesu** , a
 
    Link uruchamia serwer notesu i otwiera stronę sieci Web notesu Jupyter na nowej karcie przeglądarki.  Ten link będzie działał tylko dla osoby, która tworzy maszynę wirtualną. Każdy użytkownik obszaru roboczego musi utworzyć własną maszynę wirtualną.
 
-1. Na stronie Jupyter notesu wybierz górny folder NazwaFolderu, który ma swoją nazwę użytkownika.  
-
-   Ten folder istnieje na [koncie magazynu](concept-workspace.md#resources) obszaru roboczego, a nie na maszynie wirtualnej notesu.  Po usunięciu maszyny wirtualnej notesu nadal będzie można zachować całą swoją służbę.  Po utworzeniu nowej maszyny wirtualnej notesu zostanie ona załadowana w tym samym folderze. Jeśli udostępnisz obszar roboczy innym osobom, zobaczysz Twój folder i zobaczysz ich.
-
-1. `samples-*` Otwórz podkatalog, a następnie Otwórz Notes Jupyter`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
-
-   > [!Warning]
-   > Upewnij się `tutorial-1st-experiment-sdk-train.ipynb` , że otwarto plik, `.yml` a **nie** plik o > tej samej nazwie. 
 
 ## <a name="next-steps"></a>Następne kroki
 

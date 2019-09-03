@@ -1,22 +1,22 @@
 ---
-title: Usługa Azure functions plany
-description: Opisuje funkcje do użycia z usługą Azure schematy definicji i przypisań.
+title: Funkcje planów platformy Azure
+description: Opisuje funkcje do użycia z definicjami i przypisaniami planów platformy Azure.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 04/15/2019
 ms.topic: reference
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: dc72113a8f5ed978d64d35c43e94dc9e19e4cdb1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dcf073c58a723b8dbd835ac331c0ce9d16187445
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65209401"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232857"
 ---
-# <a name="functions-for-use-with-azure-blueprints"></a>Funkcje do użycia z usługą Azure plany
+# <a name="functions-for-use-with-azure-blueprints"></a>Funkcje do użycia z planami platformy Azure
 
-Plany usługi Azure udostępnia funkcje Tworzenie definicji planu bardziej dynamiczne. Te funkcje są przeznaczone do użytku z definicjami planu i artefakty planu. Artefakt szablonu usługi Resource Manager obsługuje pełne wykorzystanie funkcji Menedżera zasobów, oprócz wprowadzenie wartość dynamiczna za pomocą parametru planu.
+Plany platformy Azure udostępniają funkcje, które ułatwiają tworzenie definicji planu. Te funkcje są przeznaczone do użycia z definicjami planów i artefaktami strategii. Artefakt szablonu Menedżer zasobów obsługuje pełne korzystanie z funkcji Menedżer zasobów oprócz pobierania wartości dynamicznej za pomocą parametru strategii.
 
 Obsługiwane są następujące funkcje:
 
@@ -31,17 +31,17 @@ Obsługiwane są następujące funkcje:
 
 `artifacts(artifactName)`
 
-Zwraca obiekt właściwości wypełniane przy użyciu tego artefakty planu danych wyjściowych.
+Zwraca obiekt właściwości wypełniony przez dane wyjściowe artefaktów planu.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| artifactName |Tak |string |Nazwa artefaktu planu. |
+| artefaktname |Tak |ciąg |Nazwa artefaktu planu. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Obiekt właściwości danych wyjściowych. **Generuje** właściwości są zależne od typu artefaktu planu, do którego nastąpiło odwołanie. Wszystkie typy wykonaj format:
+Obiekt właściwości danych wyjściowych. Właściwości danych wyjściowych są zależne od typu artefaktu strategii, do którego się odwołuje. Wszystkie typy są zgodne z formatem:
 
 ```json
 {
@@ -49,7 +49,7 @@ Obiekt właściwości danych wyjściowych. **Generuje** właściwości są zale�
 }
 ```
 
-#### <a name="policy-assignment-artifact"></a>Artefaktu przypisania zasad
+#### <a name="policy-assignment-artifact"></a>Artefakt przypisania zasad
 
 ```json
 {
@@ -61,11 +61,11 @@ Obiekt właściwości danych wyjściowych. **Generuje** właściwości są zale�
 }
 ```
 
-#### <a name="resource-manager-template-artifact"></a>Artefakt szablonu usługi Resource Manager
+#### <a name="resource-manager-template-artifact"></a>Menedżer zasobów artefaktu szablonu
 
-**Generuje** właściwości zwracanego obiektu są zdefiniowane w szablonie usługi Resource Manager i zwrócony przez wdrożenie.
+Właściwości danych wyjściowych zwróconego obiektu są zdefiniowane w szablonie Menedżer zasobów i zwracane przez wdrożenie.
 
-#### <a name="role-assignment-artifact"></a>Artefaktu przypisania roli
+#### <a name="role-assignment-artifact"></a>Artefakt przypisania roli
 
 ```json
 {
@@ -79,7 +79,7 @@ Obiekt właściwości danych wyjściowych. **Generuje** właściwości są zale�
 
 ### <a name="example"></a>Przykład
 
-Artefakt szablonu usługi Resource Manager, z Identyfikatorem _myTemplateArtifact_ zawierający następujące przykładowe dane wyjściowe właściwości:
+Artefakt szablonu Menedżer zasobów z IDENTYFIKATORem _myTemplateArtifact_ zawierający następującą przykładową Właściwość wyjściową:
 
 ```json
 {
@@ -105,37 +105,37 @@ Artefakt szablonu usługi Resource Manager, z Identyfikatorem _myTemplateArtifac
 }
 ```
 
-Niektóre przykłady pobierania danych z _myTemplateArtifact_ próbki są:
+Przykłady pobierania danych z przykładu _myTemplateArtifact_ są następujące:
 
-| Wyrażenie | Typ | Wartość |
+| Wyrażenie | Type | Value |
 |:---|:---|:---|
-|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["first", "sekundę"\] |
-|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | "first" |
-|`[artifacts("myTemplateArtifact").outputs.myString]` | String | "Mój wartość ciągu" |
-|`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | {"myproperty": "Moja value", "anotherProperty": true} |
-|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | "Mój wartość" |
-|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | True |
+|`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["pierwszy", "s"\] |
+|`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | String | pierwszego |
+|`[artifacts("myTemplateArtifact").outputs.myString]` | String | "wartość my ciągu" |
+|`[artifacts("myTemplateArtifact").outputs.myObject]` | Object | {"noproperty": "My Value", "anotherProperty": true} |
+|`[artifacts("myTemplateArtifact").outputs.myObject.myProperty]` | String | "Moja wartość" |
+|`[artifacts("myTemplateArtifact").outputs.myObject.anotherProperty]` | Bool | Prawda |
 
-## <a name="concat"></a>concat
+## <a name="concat"></a>Concat
 
 `concat(string1, string2, string3, ...)`
 
-Łączy wiele wartości parametrów i zwraca połączony ciąg.
+Łączy wiele wartości ciągu i zwraca ciąg połączony.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| string1 |Tak |string |Pierwsza wartość łączenia. |
-| dodatkowe argumenty |Nie |string |Dodatkowe wartości w kolejności sekwencyjnej dla łączenia |
+| string1 |Tak |ciąg |Pierwsza wartość dla łączenia. |
+| dodatkowe argumenty |Nie |ciąg |Dodatkowe wartości w kolejności sekwencyjnej dla łączenia |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Ciąg wartości łączonych.
+Ciąg łączonych wartości.
 
 ### <a name="remarks"></a>Uwagi
 
-Funkcja Azure planu różni się od funkcji szablonu usługi Azure Resource Manager, w tym działa tylko z ciągami.
+Funkcja Azure Blueprint różni się od funkcji szablonu Azure Resource Manager, która działa tylko z ciągami.
 
 ### <a name="example"></a>Przykład
 
@@ -145,25 +145,25 @@ Funkcja Azure planu różni się od funkcji szablonu usługi Azure Resource Mana
 
 `parameters(parameterName)`
 
-Zwraca wartość parametru planu. Określona nazwa parametru musi być zdefiniowany w definicji planu lub artefakty planu.
+Zwraca wartość parametru planu. Określona nazwa parametru musi być zdefiniowana w definicji strategii lub w artefaktach strategii.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Tak |string |Nazwa parametru do zwrócenia. |
+| parameterName |Tak |ciąg |Nazwa parametru do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Wartość określonego planu lub parametr artefaktu planu.
+Wartość określonego parametru strategii lub artefaktu strategii.
 
 ### <a name="remarks"></a>Uwagi
 
-Funkcja Azure planu różni się od funkcji szablonu usługi Azure Resource Manager, w tym działa tylko z parametry planu.
+Funkcja Azure Blueprint różni się od funkcji szablonu Azure Resource Manager, która działa tylko z parametrami strategii.
 
 ### <a name="example"></a>Przykład
 
-Zdefiniuj parametr _principalIds_ w definicji planu:
+Zdefiniuj parametr _principalIds_ w definicji strategii:
 
 ```json
 {
@@ -185,7 +185,7 @@ Zdefiniuj parametr _principalIds_ w definicji planu:
 }
 ```
 
-Następnie użyj _principalIds_ jako argument dla `parameters()` w artefaktu planu:
+Następnie użyj _principalIds_ jako argumentu `parameters()` w artefaktie planu:
 
 ```json
 {
@@ -219,13 +219,13 @@ Zwrócony obiekt jest w następującym formacie:
 
 ### <a name="remarks"></a>Uwagi
 
-Funkcja Azure planu różni się od funkcji szablonu usługi Azure Resource Manager. `resourceGroup()` Artefaktu do poziomu subskrypcji lub definicji planu nie można użyć funkcji. Tylko można je w artefakty planu, będące częścią artefaktu grupy zasobów.
+Funkcja Azure Blueprint różni się od funkcji szablonu Azure Resource Manager. Nie można użyć funkcji w artefaktie poziomu subskrypcji lub definicji planu. `resourceGroup()` Może być używany tylko w artefaktach planu, które są częścią artefaktu grupy zasobów.
 
-Typowym zastosowaniem `resourceGroup()` funkcja jest do tworzenia zasobów w tej samej lokalizacji co artefaktu grupy zasobów.
+Typowym zastosowaniem `resourceGroup()` funkcji jest tworzenie zasobów w tej samej lokalizacji co artefakt grupy zasobów.
 
 ### <a name="example"></a>Przykład
 
-Aby użyć lokalizacji grupy zasobów, należy ustawić w jednym definicji planu, lub podczas przypisywania jako lokalizacji dla innego artefaktu, należy zadeklarować obiektu zastępczego grupy zasobów w definicji planu. W tym przykładzie _NetworkingPlaceholder_ to nazwa symbolu zastępczego grupy zasobów.
+Aby użyć lokalizacji grupy zasobów, ustawić w definicji planu lub podczas przypisywania, jako lokalizację innego artefaktu Zadeklaruj Obiekt zastępczy grupy zasobów w definicji strategii. W tym przykładzie _NetworkingPlaceholder_ jest nazwą symbolu zastępczego grupy zasobów.
 
 ```json
 {
@@ -241,7 +241,7 @@ Aby użyć lokalizacji grupy zasobów, należy ustawić w jednym definicji planu
 }
 ```
 
-Następnie użyj `resourceGroup()` funkcję w kontekście artefaktu planu, który jest przeznaczony dla obiektu zastępczego grupy zasobów. W tym przykładzie artefaktu szablonu jest wdrażana w _NetworkingPlaceholder_ grupy zasobów i dostarcza parametr _resourceLocation_ dynamicznie wypełniony  _NetworkingPlaceholder_ lokalizację grupy zasobów do szablonu. Lokalizacja _NetworkingPlaceholder_ grupy zasobów może mieć statycznie zdefiniowanych w definicji planu lub definiowane dynamicznie podczas przypisywania. W obu przypadkach artefaktu szablonu podano te informacje jako parametr i używa go do wdrażania zasobów na poprawną lokalizację.
+Następnie użyj `resourceGroup()` funkcji w kontekście artefaktu planu, który jest przeznaczony dla obiektu zastępczego grupy zasobów. W tym przykładzie artefakt szablonu jest wdrażany w grupie zasobów _NetworkingPlaceholder_ i dostarcza parametr _resourceLocation_ dynamicznie wypełniony z lokalizacją grupy zasobów _NetworkingPlaceholder_ do formularza. Lokalizacja grupy zasobów _NetworkingPlaceholder_ mogła być zdefiniowana statycznie w definicji strategii lub dynamicznie zdefiniowana podczas przypisywania. W obu przypadkach artefakt szablonu jest dostarczany jako parametr i używa go do wdrożenia zasobów we właściwym miejscu.
 
 ```json
 {
@@ -266,13 +266,13 @@ Następnie użyj `resourceGroup()` funkcję w kontekście artefaktu planu, któr
 
 `resourceGroups(placeholderName)`
 
-Zwraca obiekt, który reprezentuje artefaktu grupę określonego zasobu. W odróżnieniu od `resourceGroup()`, który wymaga kontekstu artefaktu, ta funkcja jest używana do pobrania właściwości symbolu zastępczego grupę określonego zasobu nie w kontekście danej grupie zasobów.
+Zwraca obiekt, który reprezentuje określony artefakt grupy zasobów. W przeciwieństwie `resourceGroup()`do, który wymaga kontekstu artefaktu, ta funkcja jest używana do pobierania właściwości określonego symbolu zastępczego grupy zasobów, gdy nie znajduje się w kontekście tej grupy zasobów.
 
 ### <a name="parameters"></a>Parametry
 
 | Parametr | Wymagane | Typ | Opis |
 |:--- |:--- |:--- |:--- |
-| placeholderName |Tak |string |Nazwa symbolu zastępczego artefaktu grupy zasobów do zwrócenia. |
+| Symbol zastępczy |Tak |ciąg |Nazwa symbolu zastępczego artefaktu grupy zasobów do zwrócenia. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -287,7 +287,7 @@ Zwrócony obiekt jest w następującym formacie:
 
 ### <a name="example"></a>Przykład
 
-Aby użyć lokalizacji grupy zasobów, należy ustawić w jednym definicji planu, lub podczas przypisywania jako lokalizacji dla innego artefaktu, należy zadeklarować obiektu zastępczego grupy zasobów w definicji planu. W tym przykładzie _NetworkingPlaceholder_ to nazwa symbolu zastępczego grupy zasobów.
+Aby użyć lokalizacji grupy zasobów, ustawić w definicji planu lub podczas przypisywania, jako lokalizację innego artefaktu Zadeklaruj Obiekt zastępczy grupy zasobów w definicji strategii. W tym przykładzie _NetworkingPlaceholder_ jest nazwą symbolu zastępczego grupy zasobów.
 
 ```json
 {
@@ -303,7 +303,7 @@ Aby użyć lokalizacji grupy zasobów, należy ustawić w jednym definicji planu
 }
 ```
 
-Następnie użyj `resourceGroups()` funkcji w kontekście dowolnego artefaktu planu, aby pobrać odwołanie do obiektu zastępczego grupy zasobów. W tym przykładzie wdrożono artefaktu szablonu poza _NetworkingPlaceholder_ grupy zasobów i dostarcza parametr _artifactLocation_ dynamicznie wypełniony  _NetworkingPlaceholder_ lokalizację grupy zasobów do szablonu. Lokalizacja _NetworkingPlaceholder_ grupy zasobów może mieć statycznie zdefiniowanych w definicji planu lub definiowane dynamicznie podczas przypisywania. W obu przypadkach artefaktu szablonu podano te informacje jako parametr i używa go do wdrażania zasobów na poprawną lokalizację.
+Następnie użyj `resourceGroups()` funkcji z kontekstu dowolnego artefaktu strategii, aby uzyskać odwołanie do obiektu zastępczego grupy zasobów. W tym przykładzie artefakt szablonu jest wdrażany poza grupą zasobów _NetworkingPlaceholder_ i dostarcza parametr _artifactLocation_ , który jest dynamicznie wypełniany z lokalizacją grupy zasobów _NetworkingPlaceholder_ do formularza. Lokalizacja grupy zasobów _NetworkingPlaceholder_ mogła być zdefiniowana statycznie w definicji strategii lub dynamicznie zdefiniowana podczas przypisywania. W obu przypadkach artefakt szablonu jest dostarczany jako parametr i używa go do wdrożenia zasobów we właściwym miejscu.
 
 ```json
 {
@@ -328,7 +328,7 @@ Następnie użyj `resourceGroups()` funkcji w kontekście dowolnego artefaktu pl
 
 `subscription()`
 
-Zwraca szczegółowe informacje o subskrypcji dla bieżącego przydziału planu.
+Zwraca szczegóły dotyczące subskrypcji bieżącego przypisania planu.
 
 ### <a name="return-value"></a>Wartość zwracana
 
@@ -345,7 +345,7 @@ Zwrócony obiekt jest w następującym formacie:
 
 ### <a name="example"></a>Przykład
 
-Użyj nazwę wyświetlaną tej subskrypcji i `concat()` funkcja służąca do tworzenia konwencji nazewnictwa przekazany jako parametr _resourceName_ do artefaktu szablonu.
+Użyj nazwy wyświetlanej subskrypcji i `concat()` funkcji w celu utworzenia konwencji nazewnictwa, która została przeniesiona jako parametr resourceName do artefaktu szablonu.
 
 ```json
 {
@@ -366,9 +366,9 @@ Użyj nazwę wyświetlaną tej subskrypcji i `concat()` funkcja służąca do tw
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Uzyskaj informacje na temat [cyklu życia strategii](../concepts/lifecycle.md).
+- Dowiedz się więcej o [cyklu życia](../concepts/lifecycle.md)planu.
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](../concepts/parameters.md).
 - Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](../concepts/sequencing-order.md).
 - Dowiedz się, jak używać [blokowania zasobów strategii](../concepts/resource-locking.md).

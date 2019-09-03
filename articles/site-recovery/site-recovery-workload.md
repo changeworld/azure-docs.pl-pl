@@ -5,22 +5,22 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 6/27/2019
+ms.date: 09/03/2019
 ms.author: raynew
-ms.openlocfilehash: 6a0e07f338da039be1660e59510b24bcd44eed0c
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: f3ff6e5e05cab9aab5257d810c6785e7691bae45
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491740"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232190"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Jakie obciążenia można chronić za pomocą usługi Azure Site Recovery?
 
-W tym artykule opisano obciążenia i aplikacje, które może chronić do odzyskiwania po awarii przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md) usługi.
+W tym artykule opisano obciążenia i aplikacje, które można chronić przed odzyskiwaniem po awarii za pomocą usługi [Azure Site Recovery](site-recovery-overview.md) .
 
 
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Organizacje wymagają strategii zapewniającej ciągłość biznesową i odzyskiwanie po awarii (BCDR, Business Continuity and Disaster Recovery), w ramach której obciążenia i dane pozostają bezpieczne i dostępne podczas planowanych lub nieplanowanych przestojów oraz możliwie jak najszybciej są przywracane do normalnych warunków roboczych.
 
@@ -35,27 +35,27 @@ Usługa Site Recovery przyczynia się do ochrony i odzyskiwania na poziomie apli
 * Zapewnia replikację dla dowolnych obciążeń działających na obsługiwanej maszynie, niezależnie od aplikacji.
 * Niemal synchroniczna replikacja z celami punktu odzyskiwania wynoszącymi nawet 30 sekund, która spełnia wymagania większości aplikacji o krytycznym znaczeniu biznesowym.
 * Spójne migawki jednowarstwowych lub wielowarstwowych aplikacji.
-* Integracja z funkcji AlwaysOn programu SQL Server i współpraca z innymi technologiami replikacji na poziomie aplikacji, łącznie z grupy dostępności bazy danych programu Exchange AD replikacji, funkcji SQL AlwaysOn (DAG).
+* Integracja z usługą SQL Server AlwaysOn i partnerstwo z innymi technologiami replikacji na poziomie aplikacji, takimi jak replikacja usługi AD, funkcja SQL AlwaysOn i grupy dostępności bazy danych programu Exchange (grupy DAG składające).
 * Elastyczne plany odzyskiwania, które umożliwiają odzyskanie całego stosu aplikacji jednym kliknięciem oraz uwzględniają zewnętrzne skrypty i działania ręczne w planie.
 * Zaawansowane zarządzanie siecią w usłudze Site Recovery i na platformie Azure, które upraszcza wymagania sieciowe aplikacji. Obejmuje to rezerwowanie adresów IP, konfigurowanie równoważenia obciążeń oraz integrację z programem Azure Traffic Manager dla zapewnienia przełączania sieci o niskim limicie czasu odzyskiwania.
 * Bogata biblioteka automatyzacji, która zapewnia gotowe do zastosowania w środowisku produkcyjnym skrypty dopasowane do danych aplikacji, które można pobrać i zintegrować z planami odzyskiwania.
 
 ## <a name="workload-summary"></a>Podsumowanie obciążenia
-Usługa Site Recovery może replikować dowolną aplikację uruchomioną na obsługiwanej maszynie. Ponadto współpracujemy z zespołami odpowiedzialnymi za produkty, aby przeprowadzać dodatkowe testy konkretnych aplikacji.
+Usługa Site Recovery może replikować dowolną aplikację uruchomioną na obsługiwanej maszynie. Ponadto współpracujemy z zespołami ds. produktów w celu przeprowadzenia dodatkowego testowania dla aplikacji określonych w tabeli.
 
 | **Obciążenie** |**Replikacja maszyn wirtualnych platformy Azure na platformę Azure** |**Replikacja maszyn wirtualnych funkcji Hyper-V do lokacji dodatkowej** | **Replikacja maszyn wirtualnych funkcji Hyper-V do platformy Azure** | **Replikacja maszyn wirtualnych VMware do lokacji dodatkowej** | **Replikacja maszyn wirtualnych VMware do platformy Azure** |
 | --- | --- | --- | --- | --- |---|
-| Active Directory, DNS |Tak |Tak |Tak |Tak |Tak|
-| Aplikacje internetowe (IIS, SQL) |Tak |Tak |Tak |Tak |Tak|
-| System Center Operations Manager |Tak |Tak |Tak |Tak |Tak|
-| Sharepoint |Tak |Tak |Tak |Tak |Tak|
+| Active Directory, DNS |T |T |T |T |T|
+| Aplikacje internetowe (IIS, SQL) |T |T |T |T |T|
+| System Center Operations Manager |T |T |T |T |T|
+| Program SharePoint |T |T |T |T |T|
 | SAP<br/><br/>Replikacja lokacji SAP do platformy Azure, bez klastra |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft)|
-| Exchange (bez grupy DAG) |Tak |Tak |Tak |Tak |Tak|
-| Pulpit zdalny/VDI |Tak |Tak |Tak |Tak |Tak|
+| Exchange (bez grupy DAG) |T |T |T |T |T|
+| Pulpit zdalny/VDI |T |T |T |T |T|
 | Linux (system operacyjny i aplikacje) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft) |Tak (przetestowane przez firmę Microsoft)|
-| Dynamics AX |Tak |Tak |Tak |Tak |Tak|
-| Serwer plików systemu Windows |Tak |Tak |Tak |Tak |Tak|
-| Citrix XenApp i XenDesktop |Tak|ND |Tak |ND |Tak |
+| Dynamics AX |T |T |T |T |T|
+| Serwer plików systemu Windows |T |T |T |T |T|
+| Citrix XenApp i XenDesktop |T|ND |T |ND |T |
 
 ## <a name="replicate-active-directory-and-dns"></a>Replikacja usługi Active Directory i DNS
 Usługa Active Directory i infrastruktura DNS są istotne dla większości aplikacji firmowych. Podczas odzyskiwania po awarii należy zabezpieczyć i odzyskać te składniki infrastruktury przed odzyskaniem obciążeń i aplikacji.
@@ -105,7 +105,7 @@ Usługi pulpitu zdalnego zapewniają infrastrukturę pulpitu wirtualnego (VDI), 
 |---| --- | --- | --- | --- | --- | --- | --- |
 | **Pulpit wirtualny w puli (niezarządzany)** |Nie|Yes |Nie |Yes |Nie |Yes |Nie |
 | **Pulpit wirtualny w puli (zarządzany i bez dysku UPD)** |Nie|Yes |Nie |Yes |Nie |Yes |Nie |
-| **Zdalne aplikacje i sesje pulpitu (bez dysku UPD)** |Yes|Yes |Yes |Yes |Yes |Yes |Yes |
+| **Zdalne aplikacje i sesje pulpitu (bez dysku UPD)** |Tak|Yes |Yes |Yes |Yes |Yes |Tak |
 
 [Konfigurowanie funkcji odzyskiwania po awarii ona potrzeby usługi RDS za pomocą usługi Azure Site Recovery](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure).
 
@@ -154,6 +154,6 @@ Aby chronić wdrożenia programów Citrix XenApp i XenDesktop, korzystaj z usłu
 
 [Dowiedz się więcej](site-recovery-citrix-xenapp-and-xendesktop.md) na temat chronienia wdrożeń programów Citrix XenApp i XenDesktop. Możesz też zapoznać się z [oficjalnym dokumentem firmy Citrix](https://aka.ms/citrix-xenapp-xendesktop-with-asr) poświęconym tym samym zagadnieniom.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Zapoznaj się z wprowadzeniem](azure-to-azure-quickstart.md) do replikacji maszyn wirtualnych platformy Azure.

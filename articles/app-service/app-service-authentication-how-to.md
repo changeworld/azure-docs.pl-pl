@@ -4,21 +4,21 @@ description: Pokazuje, jak dostosować uwierzytelnianie i autoryzację w App Ser
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: cfowler
+manager: gwallace
 editor: ''
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 09/02/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ee8d8c54bd618780e00d9975f2fc6950cd795d44
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 105728bdab9c70bb807f38e4a09d5be863694c16
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098544"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231975"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Zaawansowane użycie uwierzytelniania i autoryzacji w Azure App Service
 
@@ -130,7 +130,7 @@ W przypadku korzystania z w pełni kwalifikowanych adresów URL musi być hostow
 GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
 ```
 
-Należy uruchomić następujące polecenie w [Azure Cloud Shell](../cloud-shell/quickstart.md):
+Uruchom następujące polecenie w [Azure Cloud Shell](../cloud-shell/quickstart.md):
 
 ```azurecli-interactive
 az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
@@ -197,7 +197,7 @@ Gdy token dostępu dostawcy (nie [token sesji](#extend-session-token-expiration-
 
 Po skonfigurowaniu dostawcy można [znaleźć token odświeżania i czas wygaśnięcia tokenu dostępu](#retrieve-tokens-in-app-code) w magazynie tokenów. 
 
-Aby odświeżyć token dostępu w dowolnym momencie, po `/.auth/refresh` prostu wywołaj w dowolnym języku. Poniższy fragment kodu używa platformy jQuery do odświeżania tokenów dostępu z klienta JavaScript.
+Aby odświeżyć token dostępu w dowolnym momencie, po prostu `/.auth/refresh` Wywołaj w dowolnym języku. Poniższy fragment kodu używa platformy jQuery do odświeżania tokenów dostępu z klienta JavaScript.
 
 ```JavaScript
 function refreshTokens() {
@@ -230,7 +230,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>Ogranicz domenę kont logowania
 
-Zarówno konto Microsoft, jak i Azure Active Directory umożliwiają logowanie się z wielu domen. Na przykład konto Microsoft umożliwia korzystanie z kont _Outlook.com_, _Live.com_i _hotmail.com_ . Azure Active Directory zezwala na dowolną liczbę domen niestandardowych dla kont logowania. Takie zachowanie może być niepożądane w przypadku aplikacji wewnętrznej, do której nie ma dostępu każda osoba mająca konto _Outlook.com_ . Aby ograniczyć nazwę domeny kont logowania, wykonaj następujące kroki.
+Zarówno konto Microsoft, jak i Azure Active Directory umożliwiają logowanie się z wielu domen. Na przykład konto Microsoft umożliwia korzystanie z kont _Outlook.com_, _Live.com_i _hotmail.com_ . Usługa Azure AD umożliwia dowolna liczba domen niestandardowych dla kont logowania. Można jednak przyspieszyć użytkowników bezpośrednio do własnej, oznakowanej strony logowania usługi Azure AD (np `contoso.com`.). Aby zasugerować nazwę domeny kont logowania, wykonaj następujące kroki.
 
 W [https://resources.azure.com](https://resources.azure.com)programiePrzejdź >  do >  subskrypcjisubskrypcjinazwa resourceGroupszasób **_\<\__**  >  **_\<\_ Nazwa\_ grupy >_** **_dostawcy nazwaaplikacji\_ Microsoft.\<_** Web >  sites> >  >  >  >  **Konfiguracja**  >  **authsettings**. 
 
@@ -239,6 +239,54 @@ Kliknij przycisk **Edytuj**, zmodyfikuj następującą właściwość, a następ
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
 ```
+
+To ustawienie dołącza `domain_hint` parametr ciągu zapytania do adresu URL przekierowania logowania. 
+
+> [!IMPORTANT]
+> Możliwe jest, aby klient usunął `domain_hint` parametr po odebraniu adresu URL przekierowania, a następnie zalogować się w innej domenie. Dlatego chociaż ta funkcja jest wygodna, nie jest funkcją zabezpieczeń.
+>
+
+## <a name="authorize-or-deny-users"></a>Autoryzuj lub Odmów użytkownikom
+
+Chociaż App Service zajmuje się najprostszym przypadkiem autoryzacji (tj. odrzuca nieuwierzytelnione żądania), aplikacja może wymagać bardziej szczegółowych zachowań autoryzacji, takich jak ograniczanie dostępu tylko do określonej grupy użytkowników. W niektórych przypadkach należy napisać niestandardowy kod aplikacji, aby zezwolić na dostęp do zalogowanego użytkownika lub go zablokować. W innych przypadkach App Service lub dostawca tożsamości może pomóc bez konieczności wprowadzania zmian w kodzie.
+
+- [Poziom serwera](#server-level-windows-apps-only)
+- [Poziom dostawcy tożsamości](#identity-provider-level)
+- [Poziom aplikacji](#application-level)
+
+### <a name="server-level-windows-apps-only"></a>Poziom serwera (tylko aplikacje systemu Windows)
+
+W przypadku dowolnej aplikacji systemu Windows można zdefiniować zachowanie autoryzacji serwera sieci Web usług IIS, edytując plik *Web. config* . Aplikacje systemu Linux nie używają usług IIS i nie można ich konfigurować za pomocą *pliku Web. config*.
+
+1. Przejdź do `https://<app-name>.scm.azurewebsites.net/DebugConsole`
+
+1. W Eksploratorze przeglądarki plików App Service przejdź do *lokalizacji site/wwwroot*. Jeśli plik *Web. config* nie istnieje, utwórz go, wybierając **+** pozycję  >  **nowy plik**. 
+
+1. Wybierz ołówek dla *pliku Web. config* , aby go edytować. Dodaj następujący kod konfiguracji i kliknij przycisk **Zapisz**. Jeśli *plik Web. config* już istnieje, po prostu `<authorization>` Dodaj element ze wszystkimi elementami. Dodaj konta, które mają być dozwolone w `<allow>` elemencie.
+
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <configuration>
+       <system.web>
+          <authorization>
+            <allow users="user1@contoso.com,user2@contoso.com"/>
+            <deny users="*"/>
+          </authorization>
+       </system.web>
+    </configuration>
+    ```
+
+### <a name="identity-provider-level"></a>Poziom dostawcy tożsamości
+
+Dostawca tożsamości może zapewnić pewną autoryzację klucza. Przykład:
+
+- [Azure App Service](configure-authentication-provider-aad.md)można [zarządzać dostępem na poziomie przedsiębiorstwa](../active-directory/manage-apps/what-is-access-management.md) bezpośrednio w usłudze Azure AD. Aby uzyskać instrukcje, zobacz [Jak usunąć dostęp użytkownika do aplikacji](../active-directory/manage-apps/methods-for-removing-user-access.md).
+- W przypadku usługi [Google](configure-authentication-provider-google.md)interfejsy API, które należą do [organizacji](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) , można skonfigurować tak, aby zezwalały na dostęp tylko użytkownikom w organizacji (zobacz sekcję [Konfigurowanie pomocy technicznej **OAuth 2,0** ](https://support.google.com/cloud/answer/6158849?hl=en)).
+
+### <a name="application-level"></a>Poziom aplikacji
+
+Jeśli jeden z pozostałych poziomów nie zapewnia autoryzacji lub dostawca tożsamości nie jest obsługiwany, należy napisać kod niestandardowy w celu autoryzowania użytkowników na podstawie [oświadczeń użytkowników](#access-user-claims).
+
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]

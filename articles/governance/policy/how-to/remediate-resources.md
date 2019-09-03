@@ -7,24 +7,23 @@ ms.date: 01/23/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: ba015a1d5183fcf27cfcc05ef1d0cd838201e91e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f88ecb782598cabacc29f97ee3225a5abf280a84
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077117"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232327"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korygowanie niezgodnych zasobów przy użyciu usługi Azure Policy
 
-Zasoby, które nie są zgodne na **deployIfNotExists** zasad można umieścić w stanu zgodności za pośrednictwem **korygowania**. Korygowanie odbywa się przez poinstruowanie usługi Azure Policy, aby uruchomić **deployIfNotExists** wpływu przypisanych zasad na istniejących zasobów. W tym artykule przedstawiono kroki niezbędne do zrozumienia i wykonać korygowanie za pomocą usługi Azure Policy.
+Zasoby, które nie są zgodne na **deployIfNotExists** zasad można umieścić w stanu zgodności za pośrednictwem **korygowania**. Korygowanie jest realizowane przez poinstruuj Azure Policy, aby **deployIfNotExists** efekt przypisanych zasad do istniejących zasobów. W tym artykule przedstawiono kroki niezbędne do zrozumienia i wykonania korygowania Azure Policy.
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="how-remediation-security-works"></a>Jak działają zabezpieczenia korygowania
 
-Gdy działa szablonu usługi Azure Policy w **deployIfNotExists** definicji zasad, jak za pomocą [tożsamości zarządzanej](../../../active-directory/managed-identities-azure-resources/overview.md).
-Usługa Azure Policy tworzy tożsamość zarządzaną dla każdego przypisania, ale musi mieć szczegółowe informacje o jakie role, aby przyznać tożsamości zarządzanej. Jeśli tożsamość zarządzana brakuje ról, ten błąd jest wyświetlany podczas przypisywania zasad lub inicjatywy. Korzystając z portalu Azure automatycznie przyzna zasada tożsamość zarządzaną wymienionych ról po uruchomieniu przypisania.
+Gdy Azure Policy uruchamia szablon w definicji zasad **deployIfNotExists** , robi to przy użyciu [tożsamości zarządzanej](../../../active-directory/managed-identities-azure-resources/overview.md).
+Azure Policy tworzy tożsamość zarządzaną dla każdego przydziału, ale musi mieć szczegółowe informacje o rolach, które mają udzielić zarządzanej tożsamości. Jeśli tożsamość zarządzana brakuje ról, ten błąd jest wyświetlany podczas przypisywania zasad lub inicjatywy. W przypadku korzystania z portalu Azure Policy automatycznie udzielą zarządzanej tożsamości po rozpoczęciu przypisywania.
 
 ![Tożsamość zarządzana — Brak roli](../media/remediate-resources/missing-role.png)
 
@@ -53,7 +52,7 @@ az role definition list --name 'Contributor'
 
 ## <a name="manually-configure-the-managed-identity"></a>Ręcznie skonfiguruj tożsamość zarządzaną
 
-Tworząc przypisania za pomocą portalu usługi Azure Policy generuje tożsamość zarządzaną i spowoduje przyznanie role zdefiniowane w **roleDefinitionIds**. W następujących warunkach kroki, aby utworzyć tożsamość zarządzaną i przypisz mu uprawnienia musi być wykonywane ręcznie:
+Podczas tworzenia przypisania przy użyciu portalu, Azure Policy zarówno generuje tożsamość zarządzaną, jak i przyznaje jej role zdefiniowane w **roleDefinitionIds**. W następujących warunkach kroki, aby utworzyć tożsamość zarządzaną i przypisz mu uprawnienia musi być wykonywane ręcznie:
 
 - Podczas korzystania z zestawu SDK (np. programu Azure PowerShell)
 - Po zmodyfikowaniu zasobu poza zakres przypisania przez szablon
@@ -83,7 +82,7 @@ $assignment = New-AzPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL D
 
 ### <a name="grant-defined-roles-with-powershell"></a>Udziel określonych ról przy użyciu programu PowerShell
 
-Nowej tożsamości zarządzanej musi wykonać replikację za pomocą usługi Azure Active Directory, zanim mogą być udzielone wymagane role. Po zakończeniu replikacji poniższy przykład wykonuje iterację definicji zasad w `$policyDef` dla **roleDefinitionIds** i używa [New AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) udzielenia nowej tożsamości zarządzanych role.
+Nowej tożsamości zarządzanej musi wykonać replikację za pomocą usługi Azure Active Directory, zanim mogą być udzielone wymagane role. Po zakończeniu replikacji Poniższy przykład iteruje definicję zasad w programie `$policyDef` dla **roleDefinitionIds** i używa funkcji [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) do udzielenia nowej tożsamości zarządzanej role.
 
 ```azurepowershell-interactive
 # Use the $policyDef to get to the roleDefinitionIds array
@@ -127,7 +126,7 @@ Aby dodać rolę przydział tożsamość zarządzaną, wykonaj następujące kro
 
 ## <a name="create-a-remediation-task"></a>Utwórz zadanie korygowania
 
-### <a name="create-a-remediation-task-through-portal"></a>Utwórz zadanie korygowania za pośrednictwem portalu
+### <a name="create-a-remediation-task-through-portal"></a>Tworzenie zadania korygującego za pomocą portalu
 
 Podczas obliczania wartości, przypisanie zasad o **deployIfNotExists** efekt Określa, czy istnieją niezgodne zasoby. Gdy zostaną odnalezione niezgodnych zasobów, szczegółowe informacje znajdują się na **korygowania** strony. Wraz z listy zasad, które mają niezgodne zasoby to opcja umożliwiająca wyzwalanie **zadań korygowania**. Ta opcja jest, co tworzy wdrożenie z **deployIfNotExists** szablonu.
 
@@ -135,11 +134,11 @@ Aby utworzyć **zadań korygowania**, wykonaj następujące kroki:
 
 1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
 
-   ![Wyszukaj zasady wszystkie usługi](../media/remediate-resources/search-policy.png)
+   ![Wyszukaj zasady w obszarze wszystkie usługi](../media/remediate-resources/search-policy.png)
 
 1. Wybierz **korygowania** po lewej stronie strony usługi Azure Policy.
 
-   ![Na stronie zasad wybierz opcję korygowania](../media/remediate-resources/select-remediation.png)
+   ![Wybieranie opcji korygowania na stronie zasad](../media/remediate-resources/select-remediation.png)
 
 1. Wszystkie **deployIfNotExists** przypisania zasad za pomocą niezgodnych zasobów znajdują się w **zasad w celu korygowania** kartę i tabelę danych. Kliknij zasady z zasobami, które są niezgodne. **Nowe zadanie korygowania** zostanie otwarta strona.
 
@@ -148,11 +147,11 @@ Aby utworzyć **zadań korygowania**, wykonaj następujące kroki:
 
 1. Na **nowe zadanie korygowania** strony, Filtruj zasoby, aby skorygować za pomocą **zakres** wielokropek, aby wybrać zasoby podrzędne, z której jest przypisany zasad (w tym do pojedynczego zasobu obiekty). Ponadto, za pomocą **lokalizacje** rozwinięcie listy w celu dalszego filtrowania zasobów. Tylko zasoby wymienione w tabeli zostaną skorygowane.
 
-   ![Korygowanie — wybrać zasoby, które korygowania](../media/remediate-resources/select-resources.png)
+   ![Koryguj — Wybierz zasoby do skorygowania](../media/remediate-resources/select-resources.png)
 
 1. Rozpocznij zadanie korygowania po zasobów zostały przefiltrowane przez kliknięcie przycisku **Koryguj**. Zostanie otwarta strona zgodność zasad **zadania korygowania** kartę, aby wyświetlić stan postępu zadań.
 
-   ![Korygowanie - postęp zadań korygowania](../media/remediate-resources/task-progress.png)
+   ![Korygowanie postępu zadań korygowania](../media/remediate-resources/task-progress.png)
 
 1. Kliknij pozycję **zadań korygowania** ze strony zasad zgodności, aby uzyskać szczegółowe informacje o postępie. Filtrowanie używane dla tego zadania jest wyświetlana wraz z listy zasobów są rozwiązane.
 
@@ -162,9 +161,9 @@ Aby utworzyć **zadań korygowania**, wykonaj następujące kroki:
 
 Zasoby wdrożone za pośrednictwem **zadań korygowania** są dodawane do **wdrożonych zasobów** karty na stronie zasad zgodności.
 
-### <a name="create-a-remediation-task-through-azure-cli"></a>Utwórz zadanie korygowania za pośrednictwem wiersza polecenia platformy Azure
+### <a name="create-a-remediation-task-through-azure-cli"></a>Tworzenie zadania korygującego za pomocą interfejsu wiersza polecenia platformy Azure
 
-Aby utworzyć **zadań korygowania** przy użyciu wiersza polecenia platformy Azure, użyj `az policy remediation` poleceń. Zastąp `{subscriptionId}` identyfikatorem subskrypcji i `{myAssignmentId}` za pomocą usługi **deployIfNotExists** identyfikatora przypisania zasad.
+Aby utworzyć **zadanie korygowania** przy użyciu interfejsu wiersza polecenia platformy Azure `az policy remediation` , Użyj poleceń. Zastąp `{subscriptionId}` ciąg identyfikatorem subskrypcji `{myAssignmentId}` i identyfikatorem przydziału zasad **deployIfNotExists** .
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -173,11 +172,11 @@ Aby utworzyć **zadań korygowania** przy użyciu wiersza polecenia platformy Az
 az policy remediation create --name myRemediation --policy-assignment '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{myAssignmentId}'
 ```
 
-Inne polecenia korygowania i przykłady, zobacz [korygowanie zasad az](/cli/azure/policy/remediation) poleceń.
+Aby poznać inne polecenia i przykłady korygowania, zobacz [AZ Policy korygowanie](/cli/azure/policy/remediation) Commands.
 
-### <a name="create-a-remediation-task-through-azure-powershell"></a>Utwórz zadanie korygowanie za pomocą programu Azure PowerShell
+### <a name="create-a-remediation-task-through-azure-powershell"></a>Utwórz zadanie korygujące za pośrednictwem Azure PowerShell
 
-Aby utworzyć **zadań korygowania** przy użyciu programu Azure PowerShell, użyj `Start-AzPolicyRemediation` poleceń. Zastąp `{subscriptionId}` identyfikatorem subskrypcji i `{myAssignmentId}` za pomocą usługi **deployIfNotExists** identyfikatora przypisania zasad.
+Aby utworzyć **zadanie korygowania** przy użyciu Azure PowerShell, użyj `Start-AzPolicyRemediation` poleceń. Zastąp `{subscriptionId}` ciąg identyfikatorem subskrypcji `{myAssignmentId}` i identyfikatorem przydziału zasad **deployIfNotExists** .
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell
@@ -186,13 +185,13 @@ Aby utworzyć **zadań korygowania** przy użyciu programu Azure PowerShell, uż
 Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{myAssignmentId}'
 ```
 
-Inne polecenia cmdlet korygowania i przykłady, zobacz [Az.PolicyInsights](/powershell/module/az.policyinsights/#policy_insights) modułu.
+Inne polecenia cmdlet służące do korygowania i przykłady można znaleźć w module [AZ. PolicyInsights](/powershell/module/az.policyinsights/#policy_insights) .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj przykłady na [przykładów usługi Azure Policy](../samples/index.md).
+- Zapoznaj się z przykładami w [Azure Policy Samples](../samples/index.md).
 - Przejrzyj temat [Struktura definicji zasad Azure Policy](../concepts/definition-structure.md).
 - Przejrzyj [wyjaśnienie działania zasad](../concepts/effects.md).
-- Zrozumienie sposobu [programowe tworzenie zasad](programmatically-create.md).
-- Dowiedz się, jak [Pobierz dane zgodności](getting-compliance-data.md).
-- Przejrzyj grupy zarządzania jest [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../../management-groups/overview.md).
+- Dowiedz się, jak [programowo utworzyć zasady](programmatically-create.md).
+- Dowiedz się, jak [uzyskać dane zgodności](getting-compliance-data.md).
+- Zapoznaj się z informacjami o tym, czym jest Grupa zarządzania, aby [zorganizować swoje zasoby za pomocą grup zarządzania platformy Azure](../../management-groups/overview.md).

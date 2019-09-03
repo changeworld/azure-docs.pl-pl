@@ -4,8 +4,10 @@
   items:
     - name: Informacje o usłudze Security Center
       href: security-center-intro.md
-    - name: Security Center — obsługiwane platformy i funkcje
+    - name: Obsługiwane platformy
       href: security-center-os-coverage.md
+    - name: Obsługiwane funkcje
+      href: security-center-services.md
 - name: Przewodniki Szybki start
   expanded: true
   items:

@@ -1,73 +1,72 @@
 ---
-title: Zrozumienie blokowanie zasobów
-description: Informacje o opcjach blokowania, aby chronić zasoby podczas przypisywania planu.
+title: Zrozumienie blokowania zasobów
+description: Zapoznaj się z opcjami blokowania, aby chronić zasoby podczas przypisywania planu.
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 04/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: db0b5bbe1261c7bdf76393c69a1189d2a850cd07
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d3cee73d8614c4aea2d2883cdcf2f049b1b8f67
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64719757"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232936"
 ---
-# <a name="understand-resource-locking-in-azure-blueprints"></a>Zrozumienie blokowania w plany usługi Azure resource
+# <a name="understand-resource-locking-in-azure-blueprints"></a>Zrozumienie blokowania zasobów w planach platformy Azure
 
-Tworzenie spójnego środowiska na dużą skalę jest tylko naprawdę przydatne, jeśli istnieje mechanizm w celu zachowania spójności. W tym artykule opisano, jak blokowania zasobów działa w plany usługi Azure. Aby zobaczyć przykład blokowania zasobów oraz stosowanie _Odmów przypisania_, zobacz [ochrony nowych zasobów](../tutorials/protect-new-resources.md) samouczka.
+Tworzenie spójnych środowisk na dużą skalę jest naprawdę cenne, jeśli istnieje mechanizm zapewnienia spójności. W tym artykule wyjaśniono, jak blokada zasobów działa w planach platformy Azure. Aby zapoznać się z przykładem blokowania zasobów i stosowania _przypisań Odmów_, zobacz artykuł [Ochrona nowych zasobów](../tutorials/protect-new-resources.md) .
 
 ## <a name="locking-modes-and-states"></a>Tryby blokowania i Stany
 
-Tryb blokowania odnosi się do przypisania planu i ma trzy opcje: **Nie blokuj**, **tylko do odczytu**, lub **nie usuwaj**. Tryb blokowania jest skonfigurowane podczas wdrażania artefaktu podczas przypisywania planu. Można ustawić inny tryb blokowania, aktualizując przypisanie planu.
-Blokowanie trybach, jednak nie można zmienić poza schematy.
+Tryb blokowania ma zastosowanie do przypisania planu i ma trzy opcje: **Nie blokuj**, **tylko do odczytu**lub **nie usuwaj**. Tryb blokowania jest konfigurowany podczas wdrażania artefaktu podczas jego przypisywania. Inny tryb blokowania można ustawić, aktualizując przypisanie planu.
+Nie można jednak zmienić trybów blokowania poza planami.
 
-Zasoby utworzone w ramach artefaktów na przypisanie planu ma cztery stany: **Nie jest zablokowany**, **tylko do odczytu**, **nie może edytować / usuwać**, lub **nie można usunąć**. Każdy typ artefaktu może być w **nie zablokowany** stanu. Poniższa tabela może służyć do określenia stanu zasobu:
+Zasoby utworzone przez artefakty w przypisaniu planu mają cztery stany: **Nie zablokowano**, **tylko do odczytu**, **nie można edytować/usunąć**lub **nie można usunąć**. Każdy typ artefaktu może być w stanie niezablokowanym. Poniższa tabela może służyć do określenia stanu zasobu:
 
-|Tryb|Typ zasobu artefaktu|Stan|Opis|
+|Tryb|Typ zasobu artefaktu|State|Opis|
 |-|-|-|-|
-|Nie blokuj|*|Nie jest zablokowany|Zasoby nie są chronione przez schematy. Ten stan jest również używany do zasoby dodane do **tylko do odczytu** lub **nie usuwaj** artefaktu grupy zasobów z poza przypisanie planu.|
-|Tylko do odczytu|Grupa zasobów|Nie można edytować / Delete|Grupa zasobów jest tylko do odczytu i nie można zmodyfikować tagów w grupie zasobów. **Nie jest zablokowany** zasoby mogą być dodane, przeniesiony, zmieniony lub usunięty z tej grupy zasobów.|
-|Tylko do odczytu|Grupa zasobów spoza|Tylko do odczytu|Zasób nie można zmienić w dowolny sposób — bez zmian i nie można usunąć.|
-|Nie usuwaj|*|Nie można usunąć|Zasoby mogą ulec zmianie, ale nie można jej usunąć. **Nie jest zablokowany** zasoby mogą być dodane, przeniesiony, zmieniony lub usunięty z tej grupy zasobów.|
+|Nie blokuj|*|Niezablokowane|Zasoby nie są chronione przez plany. Ten stan jest również używany w przypadku zasobów dodanych do elementu " **tylko do odczytu** " lub nie **usuwaj** artefaktu grupy zasobów spoza przypisania planu.|
+|Tylko do odczytu|Resource group|Nie można edytować/usunąć|Grupa zasobów jest tylko do odczytu i nie można modyfikować tagów w grupie zasobów. **Niezablokowane** zasoby mogą być dodawane, przenoszone, zmieniane lub usuwane z tej grupy zasobów.|
+|Tylko do odczytu|Grupa niezasobów|Tylko do odczytu|Nie można zmienić zasobu w jakikolwiek sposób — brak zmian i nie można go usunąć.|
+|Nie usuwaj|*|Nie można usunąć|Zasoby można zmienić, ale nie można ich usunąć. **Niezablokowane** zasoby mogą być dodawane, przenoszone, zmieniane lub usuwane z tej grupy zasobów.|
 
-## <a name="overriding-locking-states"></a>Zastępowanie stany blokowania
+## <a name="overriding-locking-states"></a>Zastępowanie Stanów blokowania
 
-Zazwyczaj można niepowołanym odpowiedni [kontroli dostępu opartej na rolach](../../../role-based-access-control/overview.md) (RBAC) w ramach subskrypcji, takie jak rola "Właściciel", być może zmienić lub usunąć dowolnego zasobu. Dostęp nie schematy stosuje blokowania przypisania wdrożonej w ramach. Jeśli ustawiono przypisanie z **tylko do odczytu** lub **nie usuwaj** opcji, a nie nawet subskrypcji właściciela można wykonać akcji zablokowanych chronionego zasobu.
+Jest to zwykle możliwe dla kogoś z odpowiednią [rolą kontroli dostępu opartej na rolach](../../../role-based-access-control/overview.md) (RBAC) w ramach subskrypcji, takiej jak rola "właściciel", aby umożliwić zmianę lub usunięcie dowolnego zasobu. Ten dostęp nie jest dozwolony w przypadku, gdy plany stosują blokowanie w ramach wdrożonego przypisania. Jeśli przypisanie zostało ustawione przy użyciu opcji **tylko do odczytu** lub **nie usuwaj** , a właściciel subskrypcji może wykonać zablokowaną akcję dla chronionego zasobu.
 
-Ta miara zabezpieczeń chroni spójność zdefiniowanych planu i środowiska, który został zaprojektowany do utworzenia z przypadkowego lub programowy usuwania lub zmiany.
+Ten środek zabezpieczeń chroni spójność zdefiniowanego planu i środowiska, które zostało zaprojektowane do tworzenia z przypadkowego lub programowego usunięcia lub zmiany.
 
-## <a name="removing-locking-states"></a>Stany blokady usuwania
+## <a name="removing-locking-states"></a>Usuwanie Stanów blokowania
 
-Jeśli okaże się to konieczne, można zmodyfikować lub usunąć zasób chronione przez przypisanie, istnieją dwa sposoby, aby to zrobić.
+Jeśli konieczna będzie modyfikacja lub usunięcie zasobu chronionego przez przypisanie, istnieją dwa sposoby tego celu.
 
-- Aktualizowanie przypisania planu w celu blokowania tryb **nie blokady**
-- Usuwanie przypisania planu
+- Aktualizowanie przypisania planu do trybu blokowania **nie blokuj**
+- Usuń przypisanie planu
 
-Usunięcie przypisania blokad utworzone przez schematy są usuwane. Jednakże zasób jest pozostawione i czy muszą zostać usunięte w normalny sposób.
+Po usunięciu przypisania blokady utworzone przez plany są usuwane. Zasób jest jednak pozostawiony i musi zostać usunięty w normalny sposób.
 
-## <a name="how-blueprint-locks-work"></a>Jak planu blokuje pracy
+## <a name="how-blueprint-locks-work"></a>Jak działają blokowane plany
 
-RBAC [Odmów przypisania](../../../role-based-access-control/deny-assignments.md) Odmów, akcja jest stosowane do artefaktu zasobów podczas przypisywania planu, jeśli wybrane przypisania **tylko do odczytu** lub **nie usuwaj** Opcja. Akcja odmowy jest dodawany przez zarządzaną tożsamością przypisanie planu i może zostać usunięty tylko ze źródeł artefaktów w tej samej tożsamości zarządzanej. To zabezpieczenie wymusza mechanizm blokowania i uniemożliwia usunięcie blokady plan poza schematy.
+Akcja Odmów [przypisania](../../../role-based-access-control/deny-assignments.md) kontroli RBAC jest stosowana do zasobów artefaktu podczas przypisywania planu, jeśli przypisanie zabrało opcję **tylko do odczytu** lub **nie usuwaj** . Akcja Odmów jest dodawana przez zarządzaną tożsamość przypisania planu i może zostać usunięta tylko z zasobów artefaktów przez tę samą tożsamość zarządzaną. Ta miara zabezpieczeń wymusza mechanizm blokowania i uniemożliwia usunięcie blokady strategii poza planami.
 
-![Plan Odmów przypisania dla grupy zasobów](../media/resource-locking/blueprint-deny-assignment.png)
+![Zablokuj przypisanie do grupy zasobów](../media/resource-locking/blueprint-deny-assignment.png)
 
-[Odmów przypisania właściwości](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) każdego trybu są następujące:
+[Właściwości przypisania Odmów](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) dla każdego trybu są następujące:
 
-|Tryb |Permissions.Actions |Permissions.NotActions |Nazwy główne [i]. Typ |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
+|Tryb |Uprawnienia. akcje |Uprawnienia. nonaruszone |Podmioty zabezpieczeń [i]. Wprowadź |ExcludePrincipals [i]. #C1 | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Tylko do odczytu |**\*** |**\*/ odczytu** |SystemDefined (wszyscy) |Przypisanie planu i zdefiniowane przez użytkownika w **excludedPrincipals** |Grupa zasobów - _true_; Zasób - _false_ |
-|Nie usuwaj |**\*/ DELETE** | |SystemDefined (wszyscy) |Przypisanie planu i zdefiniowane przez użytkownika w **excludedPrincipals** |Grupa zasobów - _true_; Zasób - _false_ |
+|Tylko do odczytu |**\*** |**\*/read** |SystemDefined (wszyscy) |przypisanie strategii i zdefiniowane przez użytkownika w **excludedPrincipals** |Grupa zasobów — _true_; Zasób — _Fałsz_ |
+|Nie usuwaj |**\*/** | |SystemDefined (wszyscy) |przypisanie strategii i zdefiniowane przez użytkownika w **excludedPrincipals** |Grupa zasobów — _true_; Zasób — _Fałsz_ |
 
 > [!IMPORTANT]
-> Usługa Azure Resource Manager buforuje Szczegóły przypisania roli dla maksymalnie 30 minut. Odmów co w efekcie przypisania odmowy Akcja zasobów planu natychmiast może nie być w pełnego wpływu. W tym okresie czasu może istnieć możliwość usuwania zasobu mają być chronione przez planu blokad.
+> Azure Resource Manager buforuje Szczegóły przydziału roli przez maksymalnie 30 minut. W związku z tym odmowa akcji Odmów przypisań na zasoby strategii może nie być od razu całkowicie w pełni funkcjonalna. W tym czasie może być możliwe usunięcie zasobu przeznaczonego do ochrony przez blokady planu.
 
-## <a name="exclude-a-principal-from-a-deny-assignment"></a>Wykluczanie jednostki z przypisania Odmów
+## <a name="exclude-a-principal-from-a-deny-assignment"></a>Wyklucz podmiot zabezpieczeń z przypisania Odmów
 
-W niektórych scenariuszach projektu lub zabezpieczeń może być konieczne wykluczyć jednostki z [Odmów przypisania](../../../role-based-access-control/deny-assignments.md) tworzy przypisanie planu. Odbywa się w interfejsie API REST, dodając do pięciu wartości **excludedPrincipals** tablicy w **blokad** właściwości podczas [Tworzenie przypisania](/rest/api/blueprints/assignments/createorupdate).
-Jest to przykład treści żądania, który zawiera **excludedPrincipals**:
+W niektórych scenariuszach projektowych lub zabezpieczających może być konieczne wykluczenie podmiotu zabezpieczeń z [przydziału Odmów](../../../role-based-access-control/deny-assignments.md) , które tworzy. Jest to realizowane w interfejsie API REST przez dodanie maksymalnie pięciu wartości do tablicy **excludedPrincipals** we właściwości **Locks** podczas [tworzenia przypisania](/rest/api/blueprints/assignments/createorupdate).
+Jest to przykład treści żądania, która zawiera **excludedPrincipals**:
 
 ```json
 {
@@ -109,10 +108,10 @@ Jest to przykład treści żądania, który zawiera **excludedPrincipals**:
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Postępuj zgodnie z [chronić nowe zasoby](../tutorials/protect-new-resources.md) samouczka.
-- Uzyskaj informacje na temat [cyklu życia strategii](lifecycle.md).
+- Postępuj zgodnie z samouczkiem [Ochrona nowych zasobów](../tutorials/protect-new-resources.md) .
+- Dowiedz się więcej o [cyklu życia](lifecycle.md)planu.
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](parameters.md).
 - Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](sequencing-order.md).
 - Dowiedz się, jak [zaktualizować istniejące przypisania](../how-to/update-existing-assignments.md).

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: diberry
-ms.openlocfilehash: 82285b27822b6c93f8efc24579bb99c308649ac0
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5b0516f3d610c0a518d6afc461dddebfb68a7c5d
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932670"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213518"
 ---
 # <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>Wersja zapoznawcza: Migrowanie do interfejsu API w wersji 3. x dla aplikacji LUIS
 
@@ -114,7 +114,7 @@ Interfejs API v3 ma inne parametry ciągu zapytania.
 |`externalEntities`|array|Tylko wersja 3|Nie jest wymagane.|[Jednostki zewnętrzne](#external-entities-passed-in-at-prediction-time) zapewniają aplikacji Luis możliwość identyfikowania i etykietowania jednostek podczas środowiska uruchomieniowego, które mogą być używane jako funkcje istniejących jednostek. |
 |`options.datetimeReference`|ciąg|Tylko wersja 3|Brak domyślnego|Służy do określania [przesunięcia datetimeV2](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity). Format datetimeReference to [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
 |`options.overridePredictions`|boolean|Tylko wersja 3|false|Określa, czy jest używana [Jednostka zewnętrzna użytkownika (o takiej samej nazwie jak istniejąca jednostka)](#override-existing-model-predictions) lub istniejąca jednostka w modelu jest używana do przewidywania. |
-|`query`|ciąg|Tylko wersja 3|Wymagane.|**W wersji 2**wypowiedź do przewidywania jest `q` parametrem. <br><br>**W wersji 3**funkcja jest przenoszona do `query` parametru.|
+|`query`|ciąg|Tylko wersja 3|Wymagana.|**W wersji 2**wypowiedź do przewidywania jest `q` parametrem. <br><br>**W wersji 3**funkcja jest przenoszona do `query` parametru.|
 
 
 
@@ -223,7 +223,7 @@ W wersji 2 jednostka jest identyfikowana przez _nazwę jednostki_ z rolą jako w
 ]
 ```
 
-W wersji 3 jednostka jest przywoływana przez _rolę jednostki_ , jeśli przewidywana jest rola:
+W wersji 3 jednostka jest przywoływana przez _rolę jednostki_, jeśli przewidywana jest rola:
 
 ```JSON
 "entities":{
@@ -418,7 +418,7 @@ Wyślij w następującej treści JSON, aby dodać nową podlistę z synonimami d
     },
     "dynamicLists": [
         {
-            "listEntityName":"ProductList",
+            "listEntity*":"ProductList",
             "requestLists":[
                 {
                     "name": "Azure Cognitive Services",

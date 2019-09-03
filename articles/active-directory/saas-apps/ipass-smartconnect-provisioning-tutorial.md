@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 09ef80742c931c9b7e8f8c2e2cf0b9e373ad6184
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 3141a32437e56bcefe830bc94109e93208e0258d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015767"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232157"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi iPass SmartConnect w celu automatycznego aprowizacji użytkowników
 
@@ -57,7 +57,7 @@ Przed skonfigurowaniem i włączeniem automatycznej aprowizacji użytkowników n
 Przed skonfigurowaniem usługi iPass SmartConnect w celu automatycznego aprowizacji użytkowników w usłudze Azure AD należy pobrać informacje o konfiguracji z konsoli administratora iPass SmartConnect:
 
 1. Aby pobrać token okaziciela, który jest wymagany do uwierzytelnienia w punkcie końcowym iPass SmartConnect Standard scim, zapoznaj się z pierwszym ustawieniem iPass SmartConnect, ponieważ ta wartość jest dostępna tylko wtedy. 
-2. Jeśli nie masz tokenu okaziciela, skontaktuj się z zespołem pomocy technicznej [iPass SmartConnect] (mailto:help@ipass.com), aby pobrać nowy.
+2. Jeśli nie masz tokenu okaziciela, skontaktuj się z [zespołem pomocy technicznej IPass SmartConnect](mailto:help@ipass.com) , aby pobrać nowy.
 
 ## <a name="add-ipass-smartconnect-from-the-gallery"></a>Dodaj iPass SmartConnect z galerii
 

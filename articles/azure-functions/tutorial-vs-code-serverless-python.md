@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: glenga
-ms.openlocfilehash: 4f5c10536992f51ac61815507a3869e521520299
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 43fee2ce25e358bbcff915d2fbef96bf4b7c1a0c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170712"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233108"
 ---
 # <a name="deploy-python-to-azure-functions-with-visual-studio-code"></a>Wdrażanie języka Python w celu Azure Functions z Visual Studio Code
 
@@ -56,7 +56,7 @@ Postępuj zgodnie z instrukcjami dotyczącymi systemu operacyjnego w [pracy z Az
 
 ### <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Po zainstalowaniu rozszerzenia funkcji Zaloguj się do swojego konta platformy Azure, przechodząc do **platformy Azure: Eksplorator** funkcji, wybierz pozycję **Zaloguj się do platformy Azure**i postępuj zgodnie z monitami.
+Po zainstalowaniu rozszerzenia funkcji Zaloguj się do konta platformy Azure, przechodząc do **platformy Azure: Eksplorator** funkcji, wybierz pozycję **Zaloguj się do platformy Azure**i postępuj zgodnie z monitami.
 
 ![Zaloguj się do platformy Azure za pomocą Visual Studio Code](media/tutorial-vs-code-serverless-python/azure-sign-in.png)
 
@@ -207,7 +207,7 @@ Ważne części kodu są następujące:
 
 ## <a name="debug-locally"></a>Debuguj lokalnie
 
-1. Podczas tworzenia projektu Functions rozszerzenie Visual Studio Code tworzy również konfigurację uruchamiania w programie `.vscode/launch.json` , która zawiera pojedynczą konfigurację o nazwie dołączanie **do funkcji języka Python**. Ta konfiguracja oznacza, że można po prostu nacisnąć klawisz F5 lub użyć Eksploratora debugowania do uruchomienia projektu:
+1. Podczas tworzenia projektu Functions rozszerzenie Visual Studio Code tworzy również konfigurację uruchamiania w programie `.vscode/launch.json` , która zawiera pojedynczą konfigurację o nazwie dołączanie **do funkcji języka Python**. Ta konfiguracja oznacza, że można po prostu wybrać **F5** lub użyć Eksploratora debugowania do uruchomienia projektu:
 
     ![Eksplorator debugowania pokazujący konfigurację uruchamiania funkcji](media/tutorial-vs-code-serverless-python/launch-configuration.png)
 
@@ -393,7 +393,7 @@ Po pierwszym wdrożeniu można wprowadzać zmiany w kodzie, takie jak dodawanie 
     }
     ```
 
-1. Uruchom Debuger, naciskając klawisz F5 lub wybierając polecenie **Debuguj** > **Rozpocznij debugowanie** menu. W oknie **dane wyjściowe** powinny teraz być widoczne oba punkty końcowe w projekcie:
+1. Uruchom Debuger, wybierając klawisz **F5** lub wybierając polecenie **Debuguj** > **Rozpocznij debugowanie** menu. W oknie **dane wyjściowe** powinny teraz być widoczne oba punkty końcowe w projekcie:
 
     ```output
     Http Functions:
@@ -479,15 +479,15 @@ W tej sekcji dodasz powiązanie magazynu do funkcji HttpExample utworzonej wcze�
             )
     ```
 
-1. Aby przetestować te zmiany lokalnie, uruchom debuger ponownie w Visual Studio Code, naciskając klawisz F5 lub wybierając polecenie **Debuguj** > **Rozpocznij debugowanie** menu. Jak przed wyświetleniem okna **danych wyjściowych** punkty końcowe w projekcie.
+1. Aby przetestować te zmiany lokalnie, uruchom debuger ponownie w Visual Studio Code, wybierając klawisz **F5** lub wybierając polecenie **Debuguj** > **Rozpocznij debugowanie** menu. Jak przed wyświetleniem okna **danych wyjściowych** punkty końcowe w projekcie.
 
 1. W przeglądarce przejdź do adresu URL `http://localhost:7071/api/HttpExample?name=VS%20Code` , aby utworzyć żądanie do punktu końcowego HttpExample, co powinno również napisać komunikat do kolejki.
 
 1. Aby sprawdzić, czy wiadomość została zapisywana w kolejce "Moja kolejka" (nazywana w powiązaniu), można użyć jednej z trzech metod:
 
-    1. Zaloguj się do [Azure Portal](https://portal.azure.com)i przejdź do grupy zasobów zawierającej projekt funkcji. W ramach tej grupy zasobów lokalnego i przejdź do konta magazynu dla projektu, a następnie przejdź do **kolejek**. Na tej stronie przejdź do "Dequeue", która powinna wyświetlać wszystkie zarejestrowane komunikaty.
+    1. Zaloguj się do [Azure Portal](https://portal.azure.com)i przejdź do grupy zasobów zawierającej projekt funkcji. W tej grupie zasobów Znajdź i Otwórz konto magazynu dla projektu, a następnie przejdź do pozycji **kolejki**. Na tej stronie przejdź do pozycji "Moja kolejka", która powinna wyświetlać wszystkie zarejestrowane komunikaty.
 
-    1. Przejdź do kolejki i zapoznaj się z Eksplorator usługi Azure Storage, która integruje się z programem Visual Studio, zgodnie z opisem w temacie [Connect Functions to Azure Storage przy użyciu Visual Studio Code](functions-add-output-binding-storage-queue-vs-code.md), szczególnie w sekcji [Badanie kolejki wyjściowej](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue) .
+    1. Otwórz i zapoznaj się z kolejką, korzystając z Eksplorator usługi Azure Storage, która integruje się z programem Visual Studio, zgodnie z opisem w sekcji [łączenie funkcji z usługą Azure Storage przy użyciu Visual Studio Code](functions-add-output-binding-storage-queue-vs-code.md), w szczególności z sekcją [Badanie kolejki wyjściowej](functions-add-output-binding-storage-queue-vs-code.md#examine-the-output-queue) .
 
     1. Użyj interfejsu wiersza polecenia platformy Azure, aby wykonać zapytanie do kolejki magazynu, zgodnie z opisem w temacie [zapytanie do kolejki magazynu](functions-add-output-binding-storage-queue-python.md#query-the-storage-queue).
     

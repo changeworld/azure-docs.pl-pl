@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4274b3684a2e9e79385a561b1cad426b4ffd954e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 58a220192d6a02c6ad66094e8421405578a82a01
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609944"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231300"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Zarządzanie problemami z programem Endpoint Protection przy użyciu Azure Security Center
 Azure Security Center monitoruje stan ochrony przed złośliwym kodem i raportuje ją w bloku problemy z programem Endpoint Protection. Security Center wyróżnia problemy, takie jak wykryte zagrożenia i niewystarczająca ochrona, które mogą sprawić, że maszyny wirtualne i komputery są narażone na ataki chroniące przed złośliwym kodem. Korzystając z informacji w obszarze **problemy z programem Endpoint Protection**, można zidentyfikować plan pozwalający rozwiązać wszelkie zidentyfikowane problemy.
@@ -31,12 +31,12 @@ Security Center zgłasza następujące problemy z programem Endpoint Protection:
 - Kondycja programu Endpoint Protection:
 
   - Nieaktualny podpis — na tych maszynach wirtualnych i komputerach jest zainstalowane rozwiązanie chroniące przed złośliwym kodem, ale rozwiązanie nie ma najnowszych podpisów chroniących przed złośliwym kodem.
-  - Brak ochrony w czasie rzeczywistym — na tych maszynach wirtualnych i komputerach jest zainstalowane rozwiązanie chroniące przed złośliwym kodem, ale nie jest ono skonfigurowane do ochrony w czasie rzeczywistym.   Usługa może być wyłączona lub Security Center może nie być w stanie uzyskać stanu, ponieważ rozwiązanie nie jest obsługiwane. Listę obsługiwanych rozwiązań można znaleźć w temacie [integracja z partnerem](security-center-os-coverage.md#supported-endpoint-protection-solutions) .
+  - Brak ochrony w czasie rzeczywistym — na tych maszynach wirtualnych i komputerach jest zainstalowane rozwiązanie chroniące przed złośliwym kodem, ale nie jest ono skonfigurowane do ochrony w czasie rzeczywistym.   Usługa może być wyłączona lub Security Center może nie być w stanie uzyskać stanu, ponieważ rozwiązanie nie jest obsługiwane. Listę obsługiwanych rozwiązań można znaleźć w temacie [integracja z partnerem](security-center-services.md#endpoint-supported) .
   - Nieraportowanie — rozwiązanie chroniące przed złośliwym kodem jest instalowane, ale nie zgłasza danych.
   - Nieznane — jest zainstalowane rozwiązanie chroniące przed złośliwym kodem, ale jego stan jest nieznany lub zgłasza nieznany błąd.
 
     > [!NOTE]
-    > Zobacz [integrowanie rozwiązań zabezpieczeń](security-center-os-coverage.md#supported-endpoint-protection-solutions) , aby zapoznać się z listą rozwiązań zabezpieczeń programu Endpoint Protection zintegrowanych z Security Center.
+    > Zobacz [integrowanie rozwiązań zabezpieczeń](security-center-services.md#endpoint-supported) , aby zapoznać się z listą rozwiązań zabezpieczeń programu Endpoint Protection zintegrowanych z Security Center.
     >
     >
 

@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/29/2019
 ms.author: juliako
-ms.openlocfilehash: b627a78edef1c0b0fe6b3ed011678145aea397ae
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a7d178972a8c8b413e3c6336c403348f1eb78abb
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845887"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232598"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Informacje o wersji Azure Media Services Video Indexer
 
@@ -27,6 +27,43 @@ Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedst
 * Znane problemy
 * Poprawki błędów
 * Przestarzałe funkcje
+
+## <a name="august-2019"></a>2019 sierpnia
+ 
+### <a name="video-indexer-deployed-in-uk-south"></a>Video Indexer wdrożony w programie Południowe Zjednoczone Królestwo
+
+Teraz możesz utworzyć konto płatne Video Indexer w regionie Południowo-południe.
+
+### <a name="new-editorial-shot-type-insights-available"></a>Dostępne są nowe szczegółowe informacje o typie zrzutu redakcyjnego
+
+Nowe Tagi dodawane do zrzutów wideo udostępniają redakcyjne "typy zrzutów", aby identyfikować je za pomocą wspólnych fraz redakcyjnych używanych w przepływie pracy tworzenia zawartości, takich jak: Extreme Closeup, Closeup, Wide, medium, dwa zrzuty, na zewnątrz, w lewo i w prawo (dostępne w JSON).
+
+### <a name="new-people-and-locations-entities-extraction-available"></a>Dostępne są nowe osoby i lokalizacje
+
+Video Indexer identyfikuje nazwane lokalizacje i osoby za pośrednictwem przetwarzania języka naturalnego (NLP) na podstawie OCR i transkrypcji wideo. Video Indexer używa algorytmu uczenia maszynowego do rozpoznawania, gdy określone lokalizacje (na przykład Eiffel Tower) lub osoby (na przykład Jan Nowak) są wywoływane w filmie wideo.
+
+### <a name="keyframes-extraction-in-native-resolution"></a>Wyodrębnianie klatek kluczowych w rozdzielczości natywnej
+
+Ramki kluczowe wyodrębnione przez Video Indexer są dostępne w oryginalnej rozdzielczości wideo.
+ 
+### <a name="ga-for-training-custom-face-models-from-images"></a>Zaplanowanie szkolenia niestandardowych modeli czołowych z obrazów
+
+Uczenie się zdjęć z obrazów przenoszonych z trybu podglądu do GA (dostępne za pośrednictwem interfejsu API i portalu).
+
+> [!NOTE]
+> Nie ma wpływu na ceny związane z przejściem "wersja zapoznawcza do wersji zapoznawczej".
+
+### <a name="hide-gallery-toggle-option"></a>Ukryj opcję przełączania galerii
+
+Użytkownik może wybrać opcję ukrycia karty Galeria w portalu (podobnie jak w przypadku ukrycia karty przykłady).
+ 
+### <a name="maximum-url-size-increased"></a>Zwiększono maksymalny rozmiar adresu URL
+
+Obsługa ciągu zapytania URL o 4096 (zamiast 2048) na indeksowaniu wideo.
+ 
+### <a name="support-for-multi-lingual-projects"></a>Obsługa projektów wielojęzycznych
+
+Projekty można teraz tworzyć w oparciu o wideo indeksowane w różnych językach (tylko interfejsy API).
 
 ## <a name="july-2019"></a>Lipiec 2019
 
@@ -72,6 +109,6 @@ Podczas wywoływania [interfejsu API aktualizowania transkrypcji wideo](https://
 
 Oprócz obsługiwanego formatu napisów (narzędzia SRT, VTT i TTML), Video Indexer teraz obsługuje pobieranie transkrypcji w formatach TXT i CSV.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Omówienie](video-indexer-overview.md)

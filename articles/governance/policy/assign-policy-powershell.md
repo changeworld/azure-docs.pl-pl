@@ -1,5 +1,5 @@
 ---
-title: Tworzenie zasad dla niezgodnych zasobów przy użyciu programu Azure PowerShell
+title: Utwórz zasady dla niezgodnych zasobów przy użyciu Azure PowerShell
 description: Używając programu Azure PowerShell, utwórz przypisanie usługi Azure Policy, aby zidentyfikować niezgodne zasoby.
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,20 +7,19 @@ ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 2ff34911dea19b83731b46077bd60c7b085763a4
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 5962db75fdd640822feb06ddb93bf7d4f2acd4d5
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65979580"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232304"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Szybki start: Tworzenie przypisania usługi Azure Policy w celu identyfikacji niezgodnych zasobów przy użyciu usługi Azure PowerShell
 
-Pierwszym krokiem do zrozumienia pojęcia zgodności na platformie Azure jest określenie obecnej sytuacji dotyczącej Twoich zasobów. W tym przewodniku Szybki start utworzysz przypisanie zasad w celu zidentyfikowania maszyn wirtualnych, które nie korzystają z dysków zarządzanych. Po zakończeniu zidentyfikujesz maszyny wirtualne, które są *niezgodnych*.
+Pierwszym krokiem do zrozumienia pojęcia zgodności na platformie Azure jest określenie obecnej sytuacji dotyczącej Twoich zasobów. W tym przewodniku Szybki start utworzysz przypisanie zasad w celu zidentyfikowania maszyn wirtualnych, które nie korzystają z dysków zarządzanych. Po zakończeniu zidentyfikujesz maszyny wirtualne, które nie są *zgodne*.
 
-Moduł programu Azure PowerShell jest używany do zarządzania zasobami platformy Azure z poziomu wiersza polecenia lub skryptów.
-Ten przewodnik wyjaśnia, jak użyć modułu Az Tworzenie przypisania zasad.
+Moduł Azure PowerShell służy do zarządzania zasobami platformy Azure z poziomu wiersza polecenia lub skryptów.
+W tym przewodniku wyjaśniono, jak używać AZ module do tworzenia przypisania zasad.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
@@ -29,7 +28,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Przed rozpoczęciem upewnij się, że masz zainstalowaną najnowszą wersję programu Azure PowerShell. Zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps), aby uzyskać szczegółowe informacje.
-- Zarejestruj dostawcę zasobów usługi Azure Policy Insights przy użyciu programu Azure PowerShell. Dzięki zarejestrowaniu dostawcy zasobów masz pewność, że subskrypcja będzie z nim współpracować. Aby zarejestrować dostawcę zasobów, należy mieć uprawnienia do wykonywania operacji rejestrowania dostawcy zasobów. Ta operacja jest uwzględniona w rolach Współautor i Właściciel. Uruchom następujące polecenie, aby zarejestrować dostawcę zasobów:
+- Zarejestruj dostawcę zasobów usługi Azure Policy Insights przy użyciu Azure PowerShell. Dzięki zarejestrowaniu dostawcy zasobów masz pewność, że subskrypcja będzie z nim współpracować. Aby zarejestrować dostawcę zasobów, należy mieć uprawnienia do wykonywania operacji rejestrowania dostawcy zasobów. Ta operacja jest uwzględniona w rolach Współautor i Właściciel. Uruchom następujące polecenie, aby zarejestrować dostawcę zasobów:
 
   ```azurepowershell-interactive
   # Register the resource provider if it's not already registered
@@ -40,7 +39,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="create-a-policy-assignment"></a>Tworzenie przypisania zasad
 
-W tym przewodniku Szybki Start utworzysz przypisanie zasad dla *maszyn wirtualnych bez dysków zarządzanych z inspekcji* definicji. Ta definicja zasad identyfikuje maszyny wirtualne, które nie korzystają z dysków zarządzanych.
+W tym przewodniku szybki start utworzysz przypisanie zasad dla *maszyn wirtualnych inspekcji bez definicji dysków zarządzanych* . Ta definicja zasad identyfikuje maszyny wirtualne, które nie korzystają z dysków zarządzanych.
 
 Uruchom następujące polecenia, aby utworzyć nowe przypisanie zasad:
 
@@ -73,7 +72,7 @@ Skorzystaj z poniższych informacji w celu zidentyfikowania zasobów niezgodnych
 Get-AzPolicyState -ResourceGroupName $rg.ResourceGroupName -PolicyAssignmentName 'audit-vm-manageddisks' -Filter 'IsCompliant eq false'
 ```
 
-Aby uzyskać więcej informacji na temat pobierania stanu zasad, zobacz [Get AzPolicyState](/powershell/module/az.policyinsights/Get-AzPolicyState).
+Aby uzyskać więcej informacji na temat uzyskiwania stanu zasad, zobacz [Get-AzPolicyState](/powershell/module/az.policyinsights/Get-AzPolicyState).
 
 Wyniki powinny wyglądać podobnie do następujących:
 
@@ -95,7 +94,7 @@ PolicyDefinitionCategory    : Compute
 ManagementGroupIds          : {managementGroupId}
 ```
 
-Wyniki zgodne, zostanie wyświetlony w **zgodność zasobów** karcie przypisania zasad w widoku witryny Azure portal.
+Wyniki są zgodne z informacjami wyświetlanymi na karcie **zgodność zasobów** w przypisaniu zasad w widoku Azure Portal.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -106,7 +105,7 @@ Aby usunąć utworzone przypisanie, wykonaj następujące polecenie:
 Remove-AzPolicyAssignment -Name 'audit-vm-manageddisks' -Scope '/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>'
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym przewodniku Szybki start została przypisana definicja zasad mających na celu zidentyfikowanie niezgodnych zasobów w środowisku platformy Azure.
 

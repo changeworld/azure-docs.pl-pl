@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: faae9ae335e391afac4ed2ef75472f1fecdaca86
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 94bdeebcecdf924468f022ac95867bd82df5a793
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211674"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231320"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopiowanie danych z tabeli SAP przy użyciu Azure Data Factory
 
@@ -35,9 +35,9 @@ W każdym przypadku ten łącznik tabeli SAP obsługuje:
 - Kopiowanie danych z tabeli SAP w:
 
   - Składnik SAP ERP Central (SAP ECC) w wersji 7,01 lub nowszej (w ostatnim stosie pakietów pomocy technicznej SAP wydanej po 2015).
-  - System SAP Business Warehouse (SAP BW) w wersji 7,01 lub nowszej.
+  - System SAP Business Warehouse (SAP BW) w wersji 7,01 lub nowszej (w ostatnim stosie pakietów pomocy technicznej SAP wydanej po 2015).
   - SAP S/4HANA.
-  - Inne produkty w oprogramowaniu SAP Business Suite w wersji 7,01 lub nowszej.
+  - Inne produkty w oprogramowaniu SAP Business Suite w wersji 7,01 lub nowszej (w ostatnim stosie pakietów obsługi SAP wydanej po 2015).
 
 - Kopiowanie danych z zarówno przezroczystej tabeli SAP, tabeli w puli, tabeli klastrowanej, jak i widoku.
 - Kopiowanie danych przy użyciu uwierzytelniania podstawowego lub bezpiecznej komunikacji sieciowej (SNC), jeśli SNC jest skonfigurowany.

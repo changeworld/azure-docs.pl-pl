@@ -9,13 +9,13 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 07/20/2019
-ms.openlocfilehash: cee5801826c78bdee51ba5afb14d6776a1191702
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.date: 09/03/2019
+ms.openlocfilehash: 8065284d65f1b0a91fc05846b451305906c74fc8
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051632"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231097"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Samouczek: Uczenie swojego pierwszego modelu ML
 
@@ -34,6 +34,29 @@ W tym samouczku nauczysz się wykonywać następujące zadania:
 Jedynym wymaganiem wstępnym jest uruchomienie części jednego z tego samouczka, [Ustawienia środowiska i obszaru roboczego](tutorial-1st-experiment-sdk-setup.md).
 
 W tej części samouczka uruchamiasz kod w notesie `tutorials/tutorial-1st-experiment-sdk-train.ipynb` przykładowym Jupyter otwartym na końcu części pierwszej. Ten artykuł zawiera ten sam kod, który znajduje się w notesie.
+
+## <a name="launch-jupyter-web-interface"></a>Uruchom interfejs sieci Web Jupyter
+
+1. Na stronie obszaru roboczego w Azure Portal wybierz pozycję **maszyny wirtualne Notes** po lewej stronie.
+
+1. W kolumnie **URI** w ramach tego samouczka wybierz pozycję **Jupyter** .
+
+    ![Uruchom serwer notesu Jupyter](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
+
+   Link uruchamia serwer notesu i otwiera stronę sieci Web notesu Jupyter na nowej karcie przeglądarki.  Ten link będzie działał tylko dla osoby, która tworzy maszynę wirtualną. Każdy użytkownik obszaru roboczego musi utworzyć własną maszynę wirtualną.
+
+1. Na stronie Jupyter notesu wybierz górny folder NazwaFolderu, który ma swoją nazwę użytkownika.  
+
+
+   Ten folder istnieje na [koncie magazynu](concept-workspace.md#resources) obszaru roboczego, a nie na maszynie wirtualnej notesu.  Po usunięciu maszyny wirtualnej notesu nadal będzie można zachować całą swoją służbę.  Po utworzeniu nowej maszyny wirtualnej notesu zostanie ona załadowana w tym samym folderze. Jeśli udostępnisz obszar roboczy innym osobom, zobaczysz Twój folder i zobaczysz ich.
+
+1. `samples-*` Otwórz podkatalog, a następnie Otwórz Notes Jupyter`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
+
+   > [!Warning]
+   > Upewnij się `tutorial-1st-experiment-sdk-train.ipynb` , że otwarto plik, `.yml` a **nie** plik o > tej samej nazwie. 
+
+1. Pozostała część tego artykułu zawiera tę samą zawartość, która jest wyświetlana w notesie.  Jeśli chcesz uruchomić kod, przejdź teraz do notesu.
+
 
 ## <a name="connect-workspace-and-create-experiment"></a>Połącz obszar roboczy i Utwórz eksperyment
 

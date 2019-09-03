@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: bc6d9e7214d2b7cd009e7562357bed420e49f185
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e9b688d54049c21da3276a20e27dcc9ad3d4ceca
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325107"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231472"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Konfigurowanie odzyskiwania po awarii dla wielowarstwowej aplikacji SharePoint na potrzeby odzyskiwania po awarii przy użyciu Azure Site Recovery
 
@@ -56,7 +56,7 @@ Program SharePoint można wdrożyć na jednym lub większej liczbie serwerów pr
 
 ## <a name="site-recovery-support"></a>Obsługa usługi Site Recovery
 
-W przypadku tworzenia tego artykułu są używane maszyny wirtualne VMware z systemem Windows Server 2012 R2 Enterprise. Użyto programu SharePoint 2013 Enterprise Edition i programu SQL Server 2014 Enterprise Edition. Ponieważ Site Recovery replikacji jest niezależny od aplikacji, zalecenia podane w tym miejscu powinny być przechowywane na potrzeby następujących scenariuszy.
+Site Recovery to Application-niezależny od i powinna działać z dowolną wersją programu SharePoint uruchomioną na obsługiwanej maszynie. W przypadku tworzenia tego artykułu są używane maszyny wirtualne VMware z systemem Windows Server 2012 R2 Enterprise. Użyto programu SharePoint 2013 Enterprise Edition i programu SQL Server 2014 Enterprise Edition.
 
 ### <a name="source-and-target"></a>Źródło i cel
 
@@ -65,15 +65,8 @@ W przypadku tworzenia tego artykułu są używane maszyny wirtualne VMware z sys
 **Funkcja Hyper-V** | Tak | Tak
 **VMware** | Tak | Tak
 **Serwer fizyczny** | Tak | Tak
-**Azure** | Nie dotyczy | Yes
+**Azure** | Nie dotyczy | Tak
 
-### <a name="sharepoint-versions"></a>Wersje programu SharePoint
-Obsługiwane są następujące wersje programu SharePoint Server.
-
-* Program SharePoint Server 2013 Standard
-* SharePoint server 2013 Enterprise
-* Program SharePoint Server 2016 Standard
-* SharePoint Server 2016 Enterprise
 
 ### <a name="things-to-keep-in-mind"></a>Kwestie, które należy wziąć pod uwagę
 
@@ -109,7 +102,7 @@ Postępuj zgodnie z [poniższymi wskazówkami](site-recovery-vmware-to-azure.md)
 W przypadku witryn mających dostęp do Internetu [Utwórz profil Traffic Manager typu "Priority"](../traffic-manager/traffic-manager-create-profile.md) w subskrypcji platformy Azure. A następnie skonfiguruj profil DNS i Traffic Manager w następujący sposób.
 
 
-| **Where** | **Element źródłowy** | **Obiektów**|
+| **Where** | **Element źródłowy** | **Obiekt docelowy**|
 | --- | --- | --- |
 | Publiczna usługa DNS | Publiczna usługa DNS dla witryn programu SharePoint <br/><br/> Np.: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
 | Lokalna usługa DNS | sharepointonprem.contoso.com | Publiczny adres IP w farmie lokalnej |

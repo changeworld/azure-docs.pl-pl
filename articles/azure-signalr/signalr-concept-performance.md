@@ -1,223 +1,223 @@
 ---
-title: Wskazówki dotyczące wydajności dla usługi Azure SignalR Service
-description: Przegląd wydajności usługi Azure SignalR Service.
+title: Przewodnik dotyczący wydajności usługi Azure Signal Service
+description: Przegląd wydajności usługi Azure Signal Service.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: zhshang
-ms.openlocfilehash: f7cc05c8c2a299d809c4386d119fef58fa2548d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 027f9f99161a0e4f76a39a15780bc840380a61ba
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61269499"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232536"
 ---
-# <a name="performance-guide-for-azure-signalr-service"></a>Wskazówki dotyczące wydajności dla usługi Azure SignalR Service
+# <a name="performance-guide-for-azure-signalr-service"></a>Przewodnik dotyczący wydajności usługi Azure Signal Service
 
-Jednym z kluczowych korzyści z używania usługi Azure SignalR Service jest łatwość skalowania aplikacji SignalR. W przypadku scenariusza na dużą skalę wydajność jest ważnym czynnikiem. 
+Jedną z najważniejszych zalet korzystania z usługi Azure Signal Service jest łatwość skalowania aplikacji sygnalizujących. W scenariuszu o dużej skali wydajność jest ważnym czynnikiem. 
 
-W tym przewodniku wprowadzimy czynników wpływających na wydajność aplikacji SignalR. Opiszemy typowe wydajności w różnych scenariuszach przypadków użycia. Na koniec wprowadzimy środowiska i narzędzi służących do generowania raportu dotyczącego wydajności.
+W tym przewodniku wprowadzimy czynniki wpływające na wydajność aplikacji sygnalizującej. Opiszemy typową wydajność w różnych scenariuszach przypadków użycia. Na końcu wprowadzimy środowisko i narzędzia, których można użyć do wygenerowania raportu o wydajności.
 
 ## <a name="term-definitions"></a>Definicje terminów
 
-*Liczba przychodzących*: Wiadomości przychodzące do usługi Azure SignalR Service.
+*Ruch*przychodzący: Komunikat przychodzący do usługi Azure Signal Service.
 
-*Wychodzące*: Wychodzący komunikat z usługi Azure SignalR Service.
+Wychodzące: Komunikat wychodzący z usługi Azure Signal Service.
 
-*Przepustowość*: Całkowity rozmiar wszystkich komunikatów w ciągu 1 sekundy.
+*Przepustowość*: Łączny rozmiar wszystkich komunikatów w 1 s.
 
-*Domyślny tryb*: Domyślny pracy tryb wystąpienia usługi Azure SignalR Service została utworzona. Usługi Azure SignalR Service oczekuje, że serwer aplikacji nawiązać połączenie z nią przed akceptuje połączenia przez klientów.
+*Tryb domyślny*: Domyślny tryb roboczy podczas tworzenia wystąpienia usługi Azure Signal instance. Usługa Azure Signal oczekuje, aby serwer aplikacji ustanowił połączenie z nim przed zaakceptowaniem wszelkich połączeń klienta.
 
-*Tryb bez użycia serwera*: Tryb, w którym usługi Azure SignalR Service akceptuje tylko połączenia klienckie. Brak połączenia z serwerem jest dozwolone.
+*Tryb*bezserwerowy: Tryb, w którym usługa sygnałów platformy Azure akceptuje tylko połączenia klienckie. Brak połączenia z serwerem.
 
 ## <a name="overview"></a>Omówienie
 
-Usługi Azure SignalR Service definiuje siedem warstwy standardowa o pojemności maksymalnej wydajności. Ten przewodnik odpowiedzi na następujące pytania:
+Usługa Azure Signal definiuje siedem warstw standardowych dla różnych pojemności wydajności. Ten przewodnik odpowiada na następujące pytania:
 
--   Co to jest typowe wydajności usługi Azure SignalR Service dla poszczególnych warstw?
+-   Jaka jest typowa wydajność usługi sygnału Azure dla każdej warstwy?
 
--   Usługa Azure SignalR Service spełnia moich wymagań dla komunikatów, przepływność (na przykład wysyłanie 100 000 komunikatów na sekundę)?
+-   Czy usługa Azure sygnalizująca spełnia wymagania dotyczące przepływności komunikatów (na przykład wysyłania komunikatów 100 000 na sekundę)?
 
--   Dla mojego konkretnego scenariusza, która warstwa jest odpowiedni dla mnie? Lub w jaki sposób można wybrać odpowiednie warstwę?
+-   Jakie warstwy są odpowiednie dla mojego scenariusza? Lub jak wybrać odpowiednią warstwę?
 
--   Jakiego rodzaju aplikacji serwera (rozmiar maszyny Wirtualnej) jest odpowiedni dla mnie? Ile z nich należy wdrożyć?
+-   Jakiego rodzaju serwer aplikacji (rozmiar maszyny wirtualnej) jest odpowiedni dla mnie? Ile z nich należy wdrożyć?
 
-Aby odpowiedzieć na następujące pytania, ten przewodnik zapewnia najpierw ogólne omówienie czynników wpływających na wydajność. Następnie przedstawiono maksymalna liczba komunikatów przychodzących i wychodzących dla każdej warstwy dla typowe przypadki użycia: **echo**, **emisji**, **wysyłania do grupy**, i **Wyślij do połączenie** (peer-to-peer przejmować).
+Aby odpowiedzieć na te pytania, ten przewodnik najpierw zawiera ogólne wyjaśnienie czynników wpływających na wydajność. Następnie ilustruje maksymalną liczbę komunikatów przychodzących i wychodzących dla każdej warstwy dla typowych przypadków użycia: **echo**, **emisja**, **Wyślij do grupy**i **Wyślij do połączenia** (obsługa komunikacji równorzędnej między elementami równorzędnymi).
 
-Ten przewodnik nie można uwzględnić wszystkie scenariusze (i różnych przypadków użycia, rozmiary wiadomości wzorców wysyłania komunikatu i tak dalej). Ale zapewnia niektórych metod, aby ułatwić:
+Ten przewodnik nie może obejmować wszystkich scenariuszy (i różnych przypadków użycia, rozmiarów komunikatów, wzorców wysyłania komunikatów itp.). Udostępnia ona kilka metod, które ułatwiają:
 
-- Oceń swoje przybliżone wymagania dla komunikatów przychodzących lub wychodzących.
-- Znajdź odpowiednie warstw, sprawdzając w tabeli wydajności.
+- Oceń przybliżone wymagania dotyczące komunikatów przychodzących lub wychodzących.
+- Znajdź odpowiednie warstwy, sprawdzając tabelę wydajności.
 
 ## <a name="performance-insight"></a>Szczegółowe informacje o wydajności
 
-W tej sekcji opisano metodologii oceny wydajności, a następnie wyświetla listę wszystkich czynników wpływających na wydajność. Na koniec zapewnia metody, aby ułatwić ocenę wymagań dotyczących wydajności.
+W tej sekcji opisano metodologie oceny wydajności, a następnie wymieniono wszystkie czynniki wpływające na wydajność. Na końcu udostępnia metody, które ułatwiają ocenę wymagań dotyczących wydajności.
 
 ### <a name="methodology"></a>Metodologia
 
-*Przepływność* i *opóźnienie* dwie typowe kwestie sprawdzania wydajności. Dla usługi Azure SignalR Service każda warstwa jednostki SKU ma swój własny przepływności ograniczania zasad. Definiuje zasady *maksymalna dozwolona wartość przepływności (przepustowość ruchu przychodzącego i wychodzącego)* jako maksymalną osiągnięta przepływność, gdy czas oczekiwania, który jest mniejszy niż 1 sekundę 99 procent wiadomości.
+*Przepływność* i *opóźnienie* są dwoma typowymi aspektami sprawdzania wydajności. W przypadku usługi Azure Signal każda warstwa SKU ma własne zasady ograniczania przepływności. Zasady definiują *maksymalną dozwoloną przepływność (przepustowość ruchu przychodzącego i wychodzącego)* jako maksymalną osiągniętą przepływność, gdy 99% komunikatów ma opóźnienie mniejsze niż 1 sekunda.
 
-Opóźnienie to przedział czasu za pośrednictwem połączenia wysyłania komunikatu do odbierania komunikatów odpowiedzi z usługi Azure SignalR Service. Weźmy **echo** jako przykład. Każde połączenie klienta dodaje sygnaturę czasową w komunikacie. Serwer aplikacji Centrum wysyła oryginalnej wiadomości z powrotem do klienta. Dlatego opóźnienia propagacji łatwo jest obliczana przez każde połączenie klienta. Sygnatura czasowa jest dołączony do każdej wiadomości w **emisji**, **wysyłania do grupy**, i **wysyłać połączenia**.
+Opóźnienie to przedział czasu z połączenia wysyłającego komunikat w celu odebrania komunikatu odpowiedzi z usługi Azure Signal. Podejmijmy **echo** jako przykład. Każde połączenie z klientem dodaje sygnaturę czasową w komunikacie. Centrum serwera aplikacji wysyła oryginalny komunikat z powrotem do klienta programu. Opóźnienie propagacji jest łatwo obliczane przez każde połączenie z klientem. Sygnatura czasowa jest dołączana do każdej wiadomości w **emisji**, **wysyłania do grupy**i **wysyłania do połączenia**.
 
-Aby symulować tysiące jednoczesnych połączeń klienta, wiele maszyn wirtualnych są tworzone w wirtualnej sieci prywatnej, na platformie Azure. Łączenie wszystkich tych maszyn wirtualnych w tym samym wystąpieniu usługi Azure SignalR Service.
+Aby symulować tysiące współbieżnych połączeń klienta, w wirtualnej sieci prywatnej na platformie Azure są tworzone wiele maszyn wirtualnych. Wszystkie te maszyny wirtualne łączą się z tym samym wystąpieniem usługi Azure Signal instance.
 
-W domyślnym trybie usługi Azure SignalR Service serwera aplikacji, maszyny wirtualne są wdrażane w tej samej prywatnej sieci wirtualnej jako klienta maszyn wirtualnych. Wszystkie maszyny wirtualne klienta i serwera aplikacji, maszyny wirtualne są wdrażane w tej samej sieci z tym samym regionie, aby uniknąć opóźnienia między regionami.
+W domyślnym trybie usługi Azure Signal Machines maszyny wirtualne serwera aplikacji są wdrażane w tej samej wirtualnej sieci prywatnej co maszyny wirtualne klienta. Wszystkie maszyny wirtualne klienta i maszyny wirtualne serwera aplikacji są wdrażane w tej samej sieci tego samego regionu, aby uniknąć opóźnień między regionami.
 
-### <a name="performance-factors"></a>Czynnikami wydajnościowymi
+### <a name="performance-factors"></a>Czynniki wydajności
 
-Teoretycznie pojemność usługi Azure SignalR Service, jest ograniczona przez zasobów obliczeniowych: Procesor CPU, pamięci i sieci. Na przykład więcej połączeń do usługi Azure SignalR Service spowodować, że usługi w celu użycia większej ilości pamięci. Dla większych ruchu komunikatu (na przykład, każdy komunikat jest większa niż 2048 bajtów), usługa Azure SignalR Service trzeba poświęcić więcej cykli procesora CPU do przetwarzania ruchu. W tym samym czasie przepustowość sieci platformy Azure również nakłada limit maksymalny ruchu.
+Teoretycznie pojemność usługi Azure Signal Service jest ograniczona przez zasoby obliczeniowe: PROCESOR, pamięć i sieć. Na przykład więcej połączeń z usługą Azure sygnalizujących powoduje, że usługa używa większej ilości pamięci. W przypadku większego ruchu komunikatów (na przykład każdy komunikat jest większy niż 2 048 bajtów) usługa Azure Signal Service musi poświęcać więcej cyklom procesora CPU na przetwarzanie ruchu. W tym przypadku przepustowość sieci platformy Azure nakłada również limit na maksymalny ruch.
 
-Typ transportu jest innym czynnikiem, który wpływa na wydajność. Są trzy typy [WebSocket](https://en.wikipedia.org/wiki/WebSocket), [-wysyłane — zdarzenie serwera](https://en.wikipedia.org/wiki/Server-sent_events), i [długiego sondowania](https://en.wikipedia.org/wiki/Push_technology). 
+Typ transportu jest innym czynnikiem wpływającym na wydajność. Te trzy typy to między innymi typ [protokołu WebSocket](https://en.wikipedia.org/wiki/WebSocket), [serwer — zdarzenie wysłane](https://en.wikipedia.org/wiki/Server-sent_events)i [długotrwałe sondowanie](https://en.wikipedia.org/wiki/Push_technology). 
 
-Protokół WebSocket jest dwukierunkowe i protokół komunikacyjny pełny dupleks za pośrednictwem jednego połączenia TCP. Server — wysyłane — zdarzenie jest protokołem jednokierunkowe do wypychania komunikatów z serwera do klienta. Długiego sondowania wymaga od klientów do okresowego wysyłania informacji z serwera za pomocą żądania HTTP. Dla tego samego interfejsu API w tych samych warunkach WebSocket ma najlepszą wydajność, Server-wysyłane — zdarzenia jest wolniejszy i długiego sondowania jest niższa. Usługi Azure SignalR Service zaleca WebSocket domyślnie.
+Protokół WebSocket jest dwukierunkowym protokołem komunikacji dwubajtowej przez pojedyncze połączenie TCP. Serwer — wysłane — zdarzenie jest jednokierunkowym protokołem do wypychania komunikatów z serwera do klienta. Długotrwałe sondowanie wymaga, aby klienci okresowo sondowali informacje z serwera za pośrednictwem żądania HTTP. W przypadku tego samego interfejsu API w tych samych warunkach protokół WebSocket ma najlepszą wydajność, to zdarzenie wysłane przez serwer jest wolniejsze i długotrwałe sondowanie jest najwolniejsze. Usługa Azure Signal Service zaleca domyślnie protokół WebSocket.
 
-Koszt routingu komunikatów ogranicza wydajność. Usługi Azure SignalR Service odgrywa rolę jako router wiadomość, która kieruje wiadomości z zestawu serwerów lub klientów do innych klientów i serwerów. Inny scenariusz lub interfejsu API wymaga różnych zasad routingu. 
+Koszt routingu wiadomości ogranicza także wydajność. Usługa Azure Signal Service odgrywa rolę jako router komunikatów, która kieruje komunikat z zestawu klientów lub serwerów do innych klientów lub serwerów. Inny scenariusz lub interfejs API wymaga innych zasad routingu. 
 
-Aby uzyskać **echo**, klient wysyła komunikat do samego siebie i routingu obiektem docelowym jest także sam. Ten wzorzec ma najniższą routingu kosztów. Ale w przypadku **emisji**, **wysyłania do grupy**, i **wysyłać do połączenia**, usługi Azure SignalR Service trzeba wyszukać połączenia docelowej przy użyciu danych rozproszonych wewnętrznych Struktura. To dodatkowe przetwarzanie używa więcej czasu Procesora, pamięci i przepustowość sieci. W rezultacie wydajność jest niższa.
+W przypadku **ECHA**klient wysyła wiadomość do samego siebie, a miejsce docelowe routingu również należy do siebie. Ten wzorzec ma najniższy koszt routingu. W przypadku **emisji**, **wysyłania do grupy**i **wysyłania do połączenia**usługa Azure Signal Service musi wyszukiwać docelowe połączenia za pomocą wewnętrznej rozproszonej struktury danych. To dodatkowe przetwarzanie zużywa więcej przepustowości procesora, pamięci i sieci. W efekcie wydajność jest wolniejsza.
 
-W domyślnym trybie serwera aplikacji również mogą stać się wąskim gardłem w niektórych scenariuszach. Zawiera zestaw SDK usługi Azure SignalR do wywołania koncentratora, gdy ta funkcja obsługuje połączenia na żywo z każdego komputera klienckiego za pomocą sygnały pulsu.
+W trybie domyślnym serwer aplikacji może również stać się wąskim gardłem w niektórych scenariuszach. Zestaw SDK usługi Azure Signal ma wywoływać centrum, podczas gdy utrzymuje połączenie na żywo z każdym klientem za pośrednictwem sygnałów pulsu.
 
-W trybie bez użycia serwera klient wysyła komunikat przez post protokołu HTTP, który nie jest wydajne niż protokołu WebSocket.
+W trybie bezserwerowym klient wysyła komunikat przy użyciu protokołu HTTP POST, który nie jest tak wydajny jak protokół WebSocket.
 
-Innym czynnikiem jest protokół: JSON i [MessagePack](https://msgpack.org/index.html). MessagePack jest mniejszy rozmiar i dostarczane szybciej niż JSON. MessagePack nie mogą jednak zwiększyć wydajność. Wydajność usługi Azure SignalR Service nie jest wrażliwa na protokoły, ponieważ jej nie dekodowania ładunku komunikatu podczas przekazywania wiadomości z klientów na serwerach lub na odwrót.
+Innym czynnikiem jest protokół: JSON i [MessagePack](https://msgpack.org/index.html). MessagePack jest mniejsza w rozmiarze i dostarczana szybciej niż JSON. MessagePack może nie zwiększyć wydajności, chociaż. Wydajność usługi Azure Signal Service nie jest uwzględniana w protokołach, ponieważ nie dekoduje ładunku komunikatów podczas przekazywania komunikatów z klientów do serwerów lub odwrotnie.
 
-Podsumowanie następujące czynniki mają wpływ na wydajność dla ruchu przychodzącego i wychodzącego:
+Podsumowując, następujące czynniki wpływają na wydajność ruchu przychodzącego i wychodzącego:
 
--   Warstwa jednostki SKU (Procesora/pamięci)
+-   Warstwa SKU (procesor CPU/pamięć)
 
 -   Liczba połączeń
 
 -   Rozmiar komunikatu
 
--   wskaźnik wysyłania wiadomości
+-   Szybkość wysyłania komunikatów
 
--   Typ transportu (WebSocket, Server-wysyłane — zdarzenia lub długiego sondowania)
+-   Typ transportu (protokół WebSocket, wysłane przez serwer — zdarzenie lub długie sondowanie)
 
 -   Scenariusz przypadków użycia (koszt routingu)
 
--   połączenia server i usługę aplikacji (w trybie serwera)
+-   Połączenia serwera aplikacji i usługi (w trybie serwera)
 
 
-### <a name="finding-a-proper-sku"></a>Znajdowanie odpowiednich jednostek SKU
+### <a name="finding-a-proper-sku"></a>Znajdowanie właściwej jednostki SKU
 
-Jak można obliczyć pojemności dla ruchu przychodzącego/wychodzącego lub odnaleźć warstwy, która jest odpowiednia dla specyficznego przypadku użycia?
+Jak można oszacować wydajność ruchu przychodzącego/wychodzącego lub określić, która warstwa jest odpowiednia dla określonego przypadku użycia?
 
-Przyjęto założenie, że serwer aplikacji jest wystarczająca i nie stanowi wąskie gardło. Następnie sprawdź maksymalnej przepustowości dla ruchu przychodzącego i wychodzącego dla każdej warstwy.
+Załóżmy, że serwer aplikacji jest wystarczająco wydajny i nie jest wąskim gardłem wydajności. Następnie sprawdź maksymalną przepustowość ruchu przychodzącego i wychodzącego dla każdej warstwy.
 
-#### <a name="quick-evaluation"></a>Szybką ocenę
+#### <a name="quick-evaluation"></a>Szybka Ocena
 
-Teraz uprościć oceny najpierw, zakładając, że niektóre ustawienia domyślne: 
+Uprość proces oceny przy założeniu, że niektóre ustawienia domyślne: 
 
-- Typ transportu jest protokołu WebSocket.
-- Rozmiar komunikatu wynosi 2048 bajtów.
-- Wiadomość jest wysyłana co 1 s.
-- Azure SignalR Service to w domyślnym trybie.
+- Typ transportu to WebSocket.
+- Rozmiar komunikatu wynosi 2 048 bajtów.
+- Wiadomość jest wysyłana co 1 sekundę.
+- Usługa Azure Signal Service jest w domyślnym trybie.
 
-Każdą warstwę ma swoją własną maksymalnej przepustowości dla ruchu przychodzącego i wychodzącego przepustowości. Bezproblemowe komfortu nie jest gwarantowana po połączeń przychodzących lub wychodzących przekracza limit.
+Każda warstwa ma własną maksymalną przepustowość ruchu przychodzącego i przepustowość wychodzącą. Bezproblemowe środowisko użytkownika nie jest gwarantowane po przekroczeniu limitu połączenia przychodzącego lub wychodzącego.
 
-**Echo** zapewnia maksymalnej przepustowości dla ruchu przychodzącego, ponieważ ma ona routingu najniższy koszt. **Emisja** definiuje przepustowości maksymalnej wiadomości wychodzących.
+**Echo** zapewnia maksymalną przepustowość ruchu przychodzącego, ponieważ ma najniższy koszt routingu. **Broadcast** definiuje maksymalną przepustowość komunikatów wychodzących.
 
-Czy *nie* przekracza wyróżnione wartości w dwóch poniższych tabelach.
+*Nie* Przekrocz wartości wyróżnionych w dwóch poniższych tabelach.
 
-|       Echo                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
+|       ECHA                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
 | Połączenia                       | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
-| **Przepustowości dla ruchu przychodzącego** | **2 MB/s**    | **4 MB/s**    | **10 MB/s**   | **20 MB/s**    | **40 MBps**    | **100 MB/s**   | **200 MB/s**    |
-| Przepustowość ruchu wychodzącego | 2 MB/s   | 4 MB/s   | 10 MB/s  | 20 MB/s   | 40 MB/s   | 100 MB/s  | 200 MB/s   |
+| **Przepustowość ruchu przychodzącego** | **2 MB/s**    | **4 MB/s**    | **10 MB/s**   | **20 MB/s**    | **40 MB/s**    | **100 MB/s**   | **200 MB/s**    |
+| Przepustowość wychodząca | 2 MB/s   | 4 MB/s   | 10 MB/s  | 20 MB/s   | 40 MB/s   | 100 MB/s  | 200 MB/s   |
 
 
 |     Emisja             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
 | Połączenia               | 1000 | 2000 | 5,000  | 10 000 | 20,000 | 50,000  | 100,000 |
-| Przepustowości dla ruchu przychodzącego  | 4 Kb/s   | 4 Kb/s   | 4 Kb/s    | 4 Kb/s    | 4 Kb/s    | 4 Kb/s     | 4 Kb/s    |
-| **Przepustowość ruchu wychodzącego** | **4 MB/s**    | **8 MB/s**    | **20 MB/s**    | **40 MBps**    | **80 MB/s**    | **200 MB/s**    | **400 MB/s**   |
+| Przepustowość ruchu przychodzącego  | 4 KB/s   | 4 KB/s   | 4 KB/s    | 4 KB/s    | 4 KB/s    | 4 KB/s     | 4 KB/s    |
+| **Przepustowość wychodząca** | **4 MB/s**    | **8 MB/s**    | **20 MB/s**    | **40 MB/s**    | **80 MB/s**    | **200 MB/s**    | **400 MB/s**   |
 
-*Liczba przychodzących przepustowości* i *przepustowości wychodzącej* rozmiar łączna liczba komunikatów na sekundę.  Poniżej przedstawiono formuł dla nich:
+*Przepustowość ruchu przychodzącego* i *przepustowość* wychodząca to całkowity rozmiar komunikatów na sekundę.  Poniżej znajdują się następujące formuły:
 ```
   inboundBandwidth = inboundConnections * messageSize / sendInterval
   outboundBandwidth = outboundConnections * messageSize / sendInterval
 ```
 
-- *inboundConnections*: Liczba połączeń wysyłania komunikatu.
+- *inboundConnections*: Liczba połączeń wysyłających wiadomość.
 
-- *outboundConnections*: Liczba połączeń odbierania komunikatów.
+- *outboundConnections*: Liczba połączeń otrzymujących wiadomość.
 
-- *messageSize*: Rozmiar pojedynczej wiadomości (wartość średnia). Małe komunikat, który to mniej niż 1024 bajty, ma wpływ na wydajność podobny komunikat 1024 bajtów.
+- *messageSize*: Rozmiar pojedynczego komunikatu (średnia wartość). Mały komunikat o rozmiarze mniejszym niż 1 024 bajtów ma wpływ na wydajność podobny do komunikatu o rozmiarze 1 024-bajtowym.
 
-- *SendInterval*: Godzina wysłania jeden komunikat. Zazwyczaj jest 1 sekundę na komunikat, co oznacza wysyłanie jeden komunikat co sekundę. Mniejszego oznacza wysyłanie więcej wiadomości w danym okresie. Na przykład 0,5 sekundy na komunikat oznacza, że wysyłanie komunikatów co sekundę.
+- *sendInterval*: Godzina wysłania jednej wiadomości. Zwykle jest to 1 sekundę na komunikat, co oznacza wysłanie jednej wiadomości co sekundę. Mniejszy interwał oznacza wysyłanie więcej komunikatów w danym okresie czasu. Na przykład 0,5 sekund na komunikat oznacza wysyłanie dwóch komunikatów co sekundę.
 
-- *Połączenia*: Zatwierdzone maksymalną wartość progową dla usługi Azure SignalR Service dla każdej warstwy. Jeśli dodatkowo zwiększa się liczba połączeń, będzie odczuwają ograniczania przepustowości połączenia.
+- *Połączenia*: Przekazany maksymalny próg usługi Azure Signal dla każdej warstwy. Jeśli nastąpi dalsze zwiększenie liczby połączeń, będzie to miało wpływ na ograniczenia połączeń.
 
-#### <a name="evaluation-for-complex-use-cases"></a>Ocena dla przypadków użycia złożonych
+#### <a name="evaluation-for-complex-use-cases"></a>Ocena złożonych przypadków użycia
 
-##### <a name="bigger-message-size-or-different-sending-rate"></a>Większy rozmiar komunikatu lub inną szybkość wysyłania
+##### <a name="bigger-message-size-or-different-sending-rate"></a>Większy rozmiar wiadomości lub inny wskaźnik wysyłania
 
-Przypadek użycia w rzeczywistości jest bardziej skomplikowany. Jest w stanie może wysyłać komunikat większa niż 2048 bajtów lub szybkość wysyłania wiadomości jest nie jeden komunikat na sekundę. Na przykład można znaleźć ocenianie jego wydajność, Przyjrzyjmy się emisja Unit100 firmy.
+Rzeczywisty przypadek użycia jest bardziej skomplikowany. Może wysłać komunikat o rozmiarze większym niż 2 048 bajtów lub szybkość wysyłania komunikatów nie może wynosić jeden komunikat na sekundę. Skorzystajmy z Unit100's emisji jako przykładu, aby dowiedzieć się, jak oszacować swoją wydajność.
 
-W poniższej tabeli przedstawiono przypadek użycia w rzeczywistości **emisji**. Ale rozmiar komunikatu, liczba połączeń i częstotliwość wysyłania wiadomości różnią się od co firma Microsoft zakłada, że w poprzedniej sekcji. Pytanie jest o tym, jak firma Microsoft dowolnego z tych elementów (rozmiar komunikatu, liczba połączeń lub szybkość wysyłania wiadomości) wywnioskować gdy wiemy, że tylko dwa z nich.
+W poniższej tabeli przedstawiono rzeczywiste przypadki użycia **emisji**. Jednak rozmiar wiadomości, liczba połączeń i szybkość wysyłania komunikatów różnią się od wartości założono w poprzedniej sekcji. Pytanie to, w jaki sposób można wywnioskować dowolne z tych elementów (rozmiar komunikatu, liczbę połączeń lub szybkość wysyłania komunikatów), jeśli wiemy tylko dwa z nich.
 
-| Emisja  | Rozmiar komunikatu | Komunikaty przychodzące na sekundę | Połączenia | Wyślij interwały |
+| Emisja  | Rozmiar komunikatu | Komunikaty przychodzące na sekundę | Połączenia | Interwały wysyłania |
 |---|---------------------|--------------------------|-------------|-------------------------|
-| 1 | 20 KB                | 1                        | 100,000     | 5 s                      |
-| 2 | 256 KB               | 1                        | 8000       | 5 s                      |
+| 1 | 20 KB                | 1                        | 100,000     | 5 sekund                      |
+| 2 | 256 KB               | 1                        | 8000       | 5 sekund                      |
 
-Następująca formuła jest łatwe wywnioskować na podstawie poprzednie formuły:
+Poniższa formuła jest łatwa do wnioskowania na podstawie poprzedniej formuły:
 
 ```
 outboundConnections = outboundBandwidth * sendInterval / messageSize
 ```
 
-Dla Unit100 maksymalna przepustowość ruchu wychodzącego jest 400 MB z poprzedniej tabeli. Rozmiar komunikatu o rozmiarze 20-KB, maksymalna liczba połączeń wychodzących powinna być 400 MB \* 5 / 20 KB = 100 000, który pasuje do wartości rzeczywistych.
+W przypadku Unit100 maksymalna przepustowość wychodząca to 400 MB z poprzedniej tabeli. Dla rozmiaru komunikatu o rozmiarze 20 KB Maksymalna liczba połączeń wychodzących powinna wynosić 400 MB \* 5/20 KB = 100 000, co odpowiada wartości rzeczywistej.
 
-##### <a name="mixed-use-cases"></a>Zastosowań mieszanych
+##### <a name="mixed-use-cases"></a>Mieszane przypadki użycia
 
-Przypadek użycia rzeczywistych ze sobą zwykle napisana cztery podstawowego zastosowań: **echo**, **emisji**, **wysyłania do grupy**, i **wysyłać połączenia**. Metodologia, która umożliwia ocenę pojemność jest:
+Faktyczny przypadek użycia zwykle Miksuje cztery podstawowe przypadki użycia razem: **echo**, **emisja**, **Wyślij do grupy**i **Wyślij do połączenia**. Metodologia używana do oszacowania pojemności:
 
-1. Przypadki użycia mieszane należy podzielić na cztery podstawowego zastosowań.
-1. Oblicz przepustowości maksymalnej wiadomości przychodzących i wychodzących za pomocą formuł poprzedniego oddzielnie.
-1. Suma obliczenia przepustowości można pobrać całkowitej maksymalnej przepustowości dla ruchu przychodzącego/wychodzącego. 
+1. Podziel mieszane przypadki użycia na cztery podstawowe przypadki użycia.
+1. Oblicz maksymalną przepustowość ruchu przychodzącego i wychodzącego, korzystając z poprzednich formuł osobno.
+1. Aby uzyskać całkowitą maksymalną przepustowość ruchu przychodzącego/wychodzącego, należy zsumować obliczenia przepustowości. 
 
-Następnie wybierz odpowiednie warstwy z tabel maksymalnej przepustowości dla ruchu przychodzącego/wychodzącego.
+Następnie wybierz odpowiednią warstwę z maksymalnymi tabelami przepustowości ruchu przychodzącego/wychodzącego.
 
 > [!NOTE]
-> Do wysyłania wiadomości do setek lub tysięcy mniejszym grupom lub tysięcy klientów wysyłania komunikatu do siebie nawzajem stanie się dominujący koszt routingu. Mieć wpływ na konto.
+> W przypadku wysyłania komunikatu do setek lub tysięcy małych grup lub tysięcy klientów wysyłających wiadomości do siebie koszt routingu będzie miał wartość dominującą. Uwzględnij ten wpływ na konto.
 
-Dla przypadku użycia wysyłania wiadomości do klientów, upewnij się, czy serwer aplikacji jest *nie* wąskie gardło. W poniższej sekcji "Case study", zawiera wytyczne dotyczące liczby serwerów aplikacji należy i jak wiele połączeń z serwerem, należy skonfigurować.
+W przypadku użycia w przypadku wysyłania komunikatu do klientów upewnij się, że serwer aplikacji *nie* jest wąskim gardłem. W poniższej sekcji "Analiza przypadku" przedstawiono wskazówki dotyczące liczby potrzebnych serwerów aplikacji oraz liczby połączeń serwera, które należy skonfigurować.
 
 ## <a name="case-study"></a>Analiza przypadku
 
-Poniższe sekcje przechodzą przez cztery typowe przypadki użycia dla transportu WebSocket: **echo**, **emisji**, **wysyłania do grupy**, i **wysyłać połączenia**. Dla każdego scenariusza w sekcji przedstawiono bieżąca pojemność dla ruchu przychodzącego i wychodzącego dla usługi Azure SignalR Service. Objaśniono także główne czynniki wpływające na wydajność.
+W poniższych sekcjach opisano cztery typowe przypadki użycia na potrzeby transportu protokołu WebSocket: **echo**, **emisja**, **Wyślij do grupy**i **Wyślij do połączenia**. W każdym scenariuszu sekcja zawiera listę bieżących, przychodzących i wychodzących zdolności produkcyjnych usługi Azure Signal Service. Wyjaśniono również główne czynniki wpływające na wydajność.
 
-W domyślnym trybie serwer aplikacja tworzy pięć połączenia z serwerem za pomocą usługi Azure SignalR Service. Domyślnie serwer aplikacji używa usługi Azure SignalR Service SDK. W następujących wyników testu wydajności połączenia z serwerem są podwyższone do 15 (lub więcej emisji i wysyłanie wiadomości do dużych grup).
+W trybie domyślnym serwer aplikacji tworzy pięć połączeń z serwerem za pomocą usługi Azure Signal Service. Serwer aplikacji domyślnie używa zestawu SDK usługi Azure Signal. W poniższych wynikach testu wydajności połączenia serwera są zwiększane do 15 (lub więcej na potrzeby rozgłaszania i wysyłania komunikatów do dużej grupy).
 
-Różnych przypadków użycia mają różne wymagania dotyczące serwerów aplikacji. **Emisja** wymaga niewielkiej liczby serwerów aplikacji. **Echo** lub **wysyłać połączenia** wymaga wielu serwerów aplikacji.
+Różne przypadki użycia mają różne wymagania dotyczące serwerów aplikacji. **Emisja** wymaga niewielkiej liczby serwerów aplikacji. **Echo** lub **Wyślij do połączenia** potrzebuje wielu serwerów aplikacji.
 
-We wszystkich przypadkach użycia, domyślny rozmiar komunikatu wynosi 2048 bajtów i interwał wysyłania komunikatów wynosi 1 s.
+W przypadku wszystkich przypadków użycia domyślnym rozmiarem komunikatu jest 2 048 bajtów, a interwał wysyłania komunikatu wynosi 1 sekundę.
 
 ### <a name="default-mode"></a>Tryb domyślny
 
-Klientów, serwerów aplikacji sieci web i usługi Azure SignalR Service są zaangażowane w domyślnym trybie. Każdy klient oznacza jednego połączenia.
+Klienci, serwery aplikacji sieci Web i usługa Azure Signal są zaliczane w tryb domyślny. Każdy Klient oznacza jedno połączenie.
 
-#### <a name="echo"></a>Echo
+#### <a name="echo"></a>ECHA
 
-Po pierwsze aplikacji sieci web nawiązania połączenia z usługą Azure SignalR. Po drugie wielu klientów łączenie aplikacji sieci web, która przekierowuje klientów do usługi Azure SignalR Service przy użyciu tokenu dostępu i punktu końcowego. Następnie klienci ustanawiania połączeń protokołu WebSocket przy użyciu usługi Azure SignalR Service.
+Najpierw aplikacja internetowa nawiązuje połączenie z usługą Azure Signal Service. Następnie wielu klientów nawiązuje połączenie z aplikacją sieci Web, która przekierowuje klientów do usługi Azure Signal Service przy użyciu tokenu dostępu i punktu końcowego. Następnie klienci nawiązują połączenia WebSocket z usługą Azure Signal Service.
 
-Po wszystkich klientów nawiązywać połączenia, mogą Rozpocznij wysyłanie wiadomość, która zawiera sygnaturę czasową do określonego koncentratora co sekundę. Centrum echa komunikat, przywracając jego oryginalny klient. Każdy klient oblicza opóźnienia, po odebraniu wiadomości echo ponownie.
+Gdy wszyscy klienci nawiązują połączenia, zaczynają wysyłać komunikat zawierający sygnaturę czasową do określonego centrum co sekundę. Centrum wysyła komunikat z powrotem do jego oryginalnego klienta. Każdy klient oblicza czas oczekiwania, gdy odbierze komunikat ECHA z powrotem.
 
-Na poniższym diagramie 5 do 8 (ruch wyróżniony czerwonym) znajdują się w pętli. Pętla uruchamia domyślny czas trwania (5 minut) i pobiera statystyki wszystkich komunikatów opóźnienia.
+Na poniższym diagramie, od 5 do 8 (czerwony wyróżniony ruch) znajdują się w pętli. Pętla jest uruchamiana przez domyślny czas trwania (5 minut) i pobiera statystykę wszystkich opóźnień komunikatów.
 
-![Ruch dla przypadku użycia echo](./media/signalr-concept-performance/echo.png)
+![Ruch dla przypadku użycia ECHA](./media/signalr-concept-performance/echo.png)
 
-Zachowanie **echo** ustali, że maksymalnej przepustowości dla ruchu przychodzącego jest równa maksymalnej przepustowości dla ruchu wychodzącego. Aby uzyskać szczegółowe informacje Zobacz poniższej tabeli.
+Zachowanie **ECHA** określa, że maksymalna przepustowość ruchu przychodzącego jest równa maksymalnej przepustowości wychodzącej. Aby uzyskać szczegółowe informacje, zobacz poniższą tabelę.
 
-|       Echo                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
+|       ECHA                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
 | Połączenia                       | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
-| Dla ruchu przychodzącego/wychodzącego komunikatów na sekundę | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
-| Przepustowości dla ruchu przychodzącego/wychodzącego | 2 MB/s   | 4 MB/s   | 10 MB/s  | 20 MB/s   | 40 MB/s   | 100 MB/s  | 200 MB/s   |
+| Komunikaty przychodzące/wychodzące na sekundę | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
+| Przepustowość ruchu przychodzącego/wychodzącego | 2 MB/s   | 4 MB/s   | 10 MB/s  | 20 MB/s   | 40 MB/s   | 100 MB/s  | 200 MB/s   |
 
-W tym przypadku użycia każdego komputera klienckiego wywołuje koncentratora zdefiniowanego na serwerze aplikacji. Koncentrator, po prostu wywołuje metody zdefiniowanej w oryginalnym po stronie klienta. To Centrum jest najbardziej lekki Centrum **echo**.
+W tym przypadku użycia każdy klient wywołuje centrum zdefiniowane na serwerze aplikacji. Koncentrator po prostu wywołuje metodę zdefiniowaną w oryginalnej stronie klienta. To centrum jest najbardziej lekkim centrum na potrzeby **ECHA**.
 
 ```
         public void Echo(IDictionary<string, object> data)
@@ -226,36 +226,36 @@ W tym przypadku użycia każdego komputera klienckiego wywołuje koncentratora z
         }
 ```
 
-Nawet w przypadku tego prostego koncentratora ciśnienie ruchu na serwerze aplikacji jest widoczne jako **echo** dla ruchu przychodzącego komunikatu wzrostu obciążenia. To wykorzystania ruchu wymaga wielu serwerów aplikacji w przypadku dużych jednostek SKU. W poniższej tabeli wymieniono liczby serwerów aplikacji, dla każdej warstwy.
+Nawet w przypadku tego prostego centrum, nacisk na ruch na serwerze aplikacji jest widoczny w miarę wzrostu obciążenia komunikatów przychodzących. To ciśnienie ruchu wymaga wielu serwerów aplikacji dla dużych warstw jednostki SKU. W poniższej tabeli wymieniono liczbę serwerów aplikacji dla każdej warstwy.
 
 
-|    Echo          | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
+|    ECHA          | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
 | Połączenia      | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
 | Liczba serwerów aplikacji | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
-> Klient połączenia liczbę, rozmiar komunikatu, komunikat wysyłania szybkości, warstwa jednostki SKU i Procesora/pamięci serwera aplikacji mają wpływ na ogólną wydajność **echo**.
+> Numer połączenia klienta, rozmiar komunikatu, szybkość wysyłania komunikatów, warstwa SKU oraz procesor CPU/pamięć serwera aplikacji mają wpływ na ogólną wydajność **ECHA**.
 
 #### <a name="broadcast"></a>Emisja
 
-Aby uzyskać **emisji**, gdy aplikacja internetowa odbierze komunikat, emituje do wszystkich klientów. Istnieje więcej klientów są emisji większego ruchu wiadomości na temat wszystkich klientów. Zobacz poniższy diagram.
+W przypadku **emisji**, gdy aplikacja sieci Web otrzymuje komunikat, emituje do wszystkich klientów. Im więcej klientów jest emitowanych, tym większy jest ruch komunikatów dla wszystkich klientów. Zapoznaj się z poniższym diagramem.
 
-![Ruch dla danego przypadku użycia emisji](./media/signalr-concept-performance/broadcast.png)
+![Ruch dla przypadku użycia emisji](./media/signalr-concept-performance/broadcast.png)
 
-Emituje sygnał niewielkiej liczby klientów. Przepustowości dla ruchu przychodzącego komunikatu jest mały, ale przepustowość ruchu wychodzącego jest bardzo duży. Przepustowość ruchu wychodzącego wiadomości zwiększa się jako połączenie klienta lub zwiększenie współczynnika emisji.
+Zostanie wyemitowana niewielka liczba klientów. Przepustowość komunikatów przychodzących jest mała, ale przepustowość wychodząca jest duża. Przepustowość wiadomości wychodzącej zwiększa się wraz ze wzrostem liczby połączeń klienta lub szybkości emisji.
 
-W poniższej tabeli podsumowano, maksymalna liczba połączeń klientów, liczba komunikatów dla ruchu przychodzącego/wychodzącego i przepustowość.
+W poniższej tabeli zestawiono maksymalne połączenia klientów, liczbę komunikatów przychodzących/wychodzących oraz przepustowość.
 
 |     Emisja             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
 | Połączenia               | 1000 | 2000 | 5,000  | 10 000 | 20,000 | 50,000  | 100,000 |
 | Komunikaty przychodzące na sekundę  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
-| Wiadomości wychodzących na sekundę | 2000 | 4,000 | 10 000 | 20,000 | 40,000 | 100,000 | 200,000 |
-| Przepustowości dla ruchu przychodzącego  | 4 Kb/s   | 4 Kb/s   | 4 Kb/s    | 4 Kb/s    | 4 Kb/s    | 4 Kb/s     | 4 Kb/s     |
-| Przepustowość ruchu wychodzącego | 4 MB/s   | 8 MB/s   | 20 MB/s   | 40 MB/s   | 80 MB/s   | 200 MB/s   | 400 MB/s   |
+| Komunikaty wychodzące na sekundę | 2000 | 4,000 | 10 000 | 20,000 | 40,000 | 100,000 | 200,000 |
+| Przepustowość ruchu przychodzącego  | 4 KB/s   | 4 KB/s   | 4 KB/s    | 4 KB/s    | 4 KB/s    | 4 KB/s     | 4 KB/s     |
+| Przepustowość wychodząca | 4 MB/s   | 8 MB/s   | 20 MB/s   | 40 MB/s   | 80 MB/s   | 200 MB/s   | 400 MB/s   |
 
-Klienci emisji, które umieszczać komunikaty są nie więcej niż cztery. Potrzebują mniejszej liczby serwerów aplikacji, w porównaniu z **echo** ponieważ kwota wiadomości przychodzących jest mała. Dwa serwery aplikacji są wystarczająco dużo, aby uzyskać informacje o umowie SLA i wydajności. Jednak należy zwiększyć domyślne połączenia z serwerem w celu uniknięcia nierównowagi, szczególnie w przypadku Unit50 i Unit100.
+Emituje klientów, którzy publikują komunikaty, nie przekraczają czterech. W porównaniu z **echomi** potrzebują mniejszej liczby serwerów aplikacji, ponieważ długość komunikatu przychodzącego jest mała. Dwa serwery aplikacji są wystarczające dla zagadnień związanych z umową SLA i wydajnością. Należy jednak zwiększyć domyślne połączenia serwera, aby uniknąć nierównowagi, szczególnie w przypadku Unit50 i Unit100.
 
 |   Emisja      | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
@@ -263,39 +263,39 @@ Klienci emisji, które umieszczać komunikaty są nie więcej niż cztery. Potrz
 | Liczba serwerów aplikacji | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
-> Zwiększenie domyślnego połączenia serwera z zakresu od 5 do 40 na każdym serwerze aplikacji, aby uniknąć możliwych serwera niezrównoważone połączenia usługi Azure SignalR Service.
+> Zwiększ liczbę domyślnych połączeń serwera z 5 na 40 na każdym serwerze aplikacji, aby uniknąć możliwych niezrównoważonych połączeń serwera z usługą Azure Signal Service.
 >
-> Liczba połączeń klienta, rozmiar komunikatu, szybkość wysyłania wiadomości i warstwa jednostki SKU mają wpływ na ogólną wydajność dla **emisji**.
+> Numer połączenia klienta, rozmiar komunikatu, szybkość wysyłania komunikatów i warstwa SKU mają wpływ na ogólną wydajność **emisji**.
 
 #### <a name="send-to-group"></a>Wyślij do grupy
 
-**Wysyłania do grupy** przypadek użycia ma podobny wzorzec ruchu do **emisji**. Różnica polega na tym, że po klienci ustanawiają połączeń protokołu WebSocket przy użyciu usługi Azure SignalR Service, dołączenie do grupy przed wysłaniem wiadomości do określonej grupy. Na poniższym diagramie przedstawiono przepływ ruchu.
+Przypadek użycia **wysyłania do grupy** ma podobny wzorzec ruchu do **emisji**. Różnica polega na tym, że gdy klienci nawiązują połączenia WebSocket z usługą Azure Signal Service, muszą dołączyć do grup, zanim będą mogli wysłać komunikat do określonej grupy. Na poniższym diagramie przedstawiono przepływ ruchu.
 
-![Ruch dla danego przypadku użycia wysyłania do grupy](./media/signalr-concept-performance/sendtogroup.png)
+![Ruch dla przypadku użycia dla wysyłania do grupy](./media/signalr-concept-performance/sendtogroup.png)
 
-Element członkowski grupy i liczba grup są dwa czynniki wpływające na wydajność. Aby uprościć analizy, możemy zdefiniować dwa rodzaje grup:
+Liczba członków i grup grup to dwa czynniki wpływające na wydajność. Aby uprościć analizę, definiujemy dwa rodzaje grup:
 
-- **Małą grupę**: Każda grupa ma połączenia o szybkości 10. Numer grupy jest równa (liczba połączeń max) / 10. Na przykład dla Unit1, jeśli istnieją 1000 liczby połączeń, mamy jeszcze 1000 / 10 = 100 grupy.
+- **Mała grupa**: Każda grupa ma 10 połączeń. Numer grupy jest równy (maksymalna liczba połączeń)/10. Na przykład w przypadku Unit1 liczba połączeń wynosi 1 000, a następnie mamy 1000/10 = 100 grupy.
 
-- **Duże grupy**: Numer grupy zawsze wynosi 10. Liczba elementów członkowskich grupy jest równy (liczba połączeń max) / 10. Na przykład dla Unit1, jeśli istnieją 1000 liczby połączeń, następnie każda grupa ma 1000 / 10 = 100 elementów członkowskich.
+- **Duża grupa**: Numer grupy to zawsze 10. Liczba członków grupy jest równa (maksymalna liczba połączeń)/10. Na przykład dla Unit1, jeśli liczba połączeń wynosi 1 000, każda grupa ma 1000/10 = 100 członków.
 
-**Wyślij do grupy** zapewnia routing kosztów do usługi Azure SignalR Service, ponieważ ma ona można znaleźć połączenia docelowej przy użyciu struktury danych rozproszonych. Jak zwiększyć wysyłania połączeń, zwiększa koszt.
+Wartość **Wyślij do grupy umożliwia** kierowanie kosztów routingu do usługi Azure Signal Service, ponieważ ma ona znaleźć docelowe połączenia za pomocą rozproszonej struktury danych. W miarę zwiększania się liczby połączeń wysyłających zwiększa się koszt.
 
-##### <a name="small-group"></a>Małą grupę
+##### <a name="small-group"></a>Mała Grupa
 
-Routing koszt jest znaczący do wysyłania wiadomości na wiele małych grup. Obecnie wdrożenia usługi Azure SignalR Service osiąga limit koszt routingu w Unit50. Dodawanie więcej czasu Procesora i pamięci nie pomoże, więc nie może poprawić Unit100 dalsze zgodnie z projektem. Jeśli potrzebujesz więcej ruchu przychodzącego przepustowości, należy się z pomocą techniczną.
+Koszt routingu jest znaczący dla wysyłania komunikatów do wielu małych grup. Obecnie implementacja usługi sygnałów platformy Azure trafi limit kosztów routingu na Unit50. Dodanie większej liczby procesorów i pamięci nie pomoże, więc Unit100 nie można jeszcze bardziej poprawić. Jeśli potrzebujesz większej przepustowości ruchu przychodzącego, skontaktuj się z pomocą techniczną.
 
 |   Wyślij do małej grupy     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50 | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|--------|---------|
 | Połączenia               | 1000 | 2000 | 5,000  | 10 000 | 20,000 | 50,000 | 100,000
-| Liczba elementów członkowskich grupy        | 10    | 10    | 10     | 10     | 10     | 10     | 10 
+| Liczba członków grupy        | 10    | 10    | 10     | 10     | 10     | 10     | 10 
 | Liczba grup               | 100   | 200   | 500    | 1000  | 2000  | 5,000  | 10 000 
 | Komunikaty przychodzące na sekundę  | 200   | 400   | 1000  | 2,500  | 4,000  | 7,000  | 7,000   |
-| Przepustowości dla ruchu przychodzącego  | 400 KB/s  | 800 KB/s  | 2 MB/s     | 5 MB/s     | 8 MB/s     | 14 MB/s    | 14 MB/s     |
-| Wiadomości wychodzących na sekundę | 2000 | 4,000 | 10 000 | 25,000 | 40,000 | 70,000 | 70,000  |
-| Przepustowość ruchu wychodzącego | 4 MB/s    | 8 MB/s    | 20 MB/s    | 50 MB/s     | 80 MB/s    | 140 MB/s   | 140 MB/s    |
+| Przepustowość ruchu przychodzącego  | 400 KB/s  | 800 KB/s  | 2 MB/s     | 5 MB/s     | 8 MB/s     | 14 MB/s    | 14 MB/s     |
+| Komunikaty wychodzące na sekundę | 2000 | 4,000 | 10 000 | 25,000 | 40,000 | 70 000 | 70 000  |
+| Przepustowość wychodząca | 4 MB/s    | 8 MB/s    | 20 MB/s    | 50 MB/s     | 80 MB/s    | 140 MB/s   | 140 MB/s    |
 
-Wiele połączeń klienckich wywołujesz Centrum, więc numer serwera aplikacji jest również krytyczne znaczenie dla wydajności. W poniższej tabeli wymieniono liczby serwera sugerowanych aplikacji.
+Wiele połączeń klientów wywołuje centrum, więc numer serwera aplikacji jest również krytyczny dla wydajności. W poniższej tabeli wymieniono sugerowane liczby serwerów aplikacji.
 
 |  Wyślij do małej grupy   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
@@ -303,53 +303,53 @@ Wiele połączeń klienckich wywołujesz Centrum, więc numer serwera aplikacji 
 | Liczba serwerów aplikacji | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
-> Klient połączenia liczbę, rozmiar komunikatu, komunikat wysyłania szybkości, routingu kosztów, warstwa jednostki SKU i Procesora/pamięci serwera aplikacji mają wpływ na ogólną wydajność **wysyłać małą grupę**.
+> Numer połączenia klienta, rozmiar komunikatu, szybkość wysyłania komunikatów, koszt routingu, warstwa SKU oraz procesor CPU/pamięć serwera aplikacji mają wpływ na ogólną wydajność **wysyłania do małej grupy**.
 
-##### <a name="big-group"></a>Grupa big Data
+##### <a name="big-group"></a>Duża grupa
 
-Dla **wysyłać do dużych grup**, przepustowość wychodzącą staje się wąskie gardło, zanim osiągnięcia routingu koszt limit. W poniższej tabeli przedstawiono maksymalną przepustowość wychodzącą są prawie takie same jak dla **emisji**.
+W przypadku **wysyłania do dużych grup**przepustowość wychodząca jest wąskim gardłem, zanim zostanie osiągnięty limit kosztów routingu. W poniższej tabeli przedstawiono maksymalną przepustowość wychodzącą, która jest niemal taka sama jak w przypadku **emisji**.
 
-|    Wyślij do dużych grup      | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
+|    Wyślij do dużej grupy      | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
 | Połączenia               | 1000 | 2000 | 5,000  | 10 000 | 20,000 | 50,000  | 100,000
-| Liczba elementów członkowskich grupy        | 100   | 200   | 500    | 1000  | 2000  | 5,000   | 10 000 
+| Liczba członków grupy        | 100   | 200   | 500    | 1000  | 2000  | 5,000   | 10 000 
 | Liczba grup               | 10    | 10    | 10     | 10     | 10     | 10      | 10
 | Komunikaty przychodzące na sekundę  | 20    | 20    | 20     | 20     | 20     | 20      | 20      |
-| Przepustowości dla ruchu przychodzącego  | 80 Kb/s   | 40 Kb/s   | 40 Kb/s    | 20 kb/s    | 40 Kb/s    | 40 Kb/s     | 40 Kb/s     |
-| Wiadomości wychodzących na sekundę | 2000 | 4,000 | 10 000 | 20,000 | 40,000 | 100,000 | 200,000 |
-| Przepustowość ruchu wychodzącego | 8 MB/s    | 8 MB/s    | 20 MB/s    | 40 MB/s    | 80 MB/s    | 200 MB/s    | 400 MB/s    |
+| Przepustowość ruchu przychodzącego  | 80 KB/s   | 40 KB/s   | 40 KB/s    | 20 KB/s    | 40 KB/s    | 40 KB/s     | 40 KB/s     |
+| Komunikaty wychodzące na sekundę | 2000 | 4,000 | 10 000 | 20,000 | 40,000 | 100,000 | 200,000 |
+| Przepustowość wychodząca | 8 MB/s    | 8 MB/s    | 20 MB/s    | 40 MB/s    | 80 MB/s    | 200 MB/s    | 400 MB/s    |
 
-Wysyłanie liczba połączeń jest nie więcej niż 40. Obciążenia na serwerze aplikacji jest mała, więc sugerowane liczba aplikacji sieci web jest mały.
+Liczba połączeń wysyłanych nie przekracza 40. Obciążenie serwera aplikacji jest małe, więc Sugerowana liczba aplikacji sieci Web jest mała.
 
-|  Wyślij do dużych grup  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
+|  Wyślij do dużej grupy  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
 | Połączenia      | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
 | Liczba serwerów aplikacji | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
-> Zwiększenie domyślnego połączenia serwera z zakresu od 5 do 40 na każdym serwerze aplikacji, aby uniknąć możliwych serwera niezrównoważone połączenia usługi Azure SignalR Service.
+> Zwiększ liczbę domyślnych połączeń serwera z 5 na 40 na każdym serwerze aplikacji, aby uniknąć możliwych niezrównoważonych połączeń serwera z usługą Azure Signal Service.
 > 
-> Liczba połączeń klienta, rozmiar komunikatu, szybkość wysyłania wiadomości, koszt routingu i warstwy SKU mają wpływ na ogólną wydajność **wysyłać do dużych grup**.
+> Numer połączenia klienta, rozmiar komunikatu, szybkość wysyłania komunikatów, koszt routingu i warstwa SKU mają wpływ na ogólną wydajność **wysyłania do dużych grup**.
 
 #### <a name="send-to-connection"></a>Wyślij do połączenia
 
-W **wysyłać połączenia** przypadek użycia, gdy klienci ustanawiają połączenia z usługi Azure SignalR Service, każdy klient wymaga specjalnych Centrum można pobrać własne identyfikator połączenia. Testów porównawczych wydajności zbiera wszystkie identyfikatory połączeń rozmieszcza je i ponownie przypisuje je do wszystkich klientów jako obiekt docelowy wysyłania. Klienci nadal wysyłania komunikatu do połączenie docelowe, dopóki nie zakończy się test wydajności.
+Gdy klienci nawiązują połączenia z usługą Azure Signal Agent, w przypadku użycia w przypadku **połączenia Wyślij do** , każdy klient wywołuje specjalne centrum w celu uzyskania własnego identyfikatora połączenia. Wzorzec wydajności zbiera wszystkie identyfikatory połączeń, losowo je umieszcza i ponownie przypisuje je wszystkim klientom jako docelowy adres. Klienci wysyłają komunikat do połączenia docelowego do momentu zakończenia testu wydajności.
 
-![Ruch dla danego przypadku użycia wysłania do klienta](./media/signalr-concept-performance/sendtoclient.png)
+![Ruch dla przypadku użycia dla wysyłania do klienta](./media/signalr-concept-performance/sendtoclient.png)
 
-Koszt marszruty **wysyłać połączenia** jest podobny do kosztów dla **wysyłać małą grupę**.
+Koszt routingu dla **wysyłania do połączenia** jest podobny do kosztów **wysyłania do małych grup**.
 
-W miarę zwiększania liczby połączeń koszt routingu ogranicza ogólną wydajność. Unit50 osiągnęła limit. W rezultacie Unit100 nie może usprawnić posługiwanie.
+W miarę wzrostu liczby połączeń, koszt routingu ogranicza ogólną wydajność. Unit50 osiągnął limit. W związku z tym Unit100 nie można poprawić.
 
-Poniższej tabeli znajduje się Podsumowanie statystyczne po wielu rund uruchomiona **wysyłać połączenia** testów porównawczych.
+Poniższa tabela zawiera podsumowanie statystyczne po wielu zaokrągleniach uruchomienia testu " **Wyślij do połączenia** ".
 
 |   Wyślij do połączenia   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50          | Unit100         |
 |------------------------------------|-------|-------|-------|--------|--------|-----------------|-----------------|
 | Połączenia                        | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000          | 100,000         |
-| Dla ruchu przychodzącego/wychodzącego komunikatów na sekundę | 1000 | 2000 | 5,000 | 8000  | 9,000  | 20,000 | 20,000 |
-| Przepustowości dla ruchu przychodzącego/wychodzącego | 2 MB/s    | 4 MB/s    | 10 MB/s   | 16 MB/s    | 18 MB/s    | 40 MB/s       | 40 MB/s       |
+| Komunikaty przychodzące/wychodzące na sekundę | 1000 | 2000 | 5,000 | 8000  | 9 000  | 20,000 | 20,000 |
+| Przepustowość ruchu przychodzącego/wychodzącego | 2 MB/s    | 4 MB/s    | 10 MB/s   | 16 MB/s    | 18 MB/s    | 40 MB/s       | 40 MB/s       |
 
-Ten przypadek użycia wymaga dużym obciążeniem po stronie serwera aplikacji. Zobacz Serwer aplikacji sugerowane count w tabeli poniżej.
+Ten przypadek użycia wymaga wysokiego obciążenia po stronie serwera aplikacji. Zapoznaj się z sugerowaną liczbą serwerów aplikacji w poniższej tabeli.
 
 |  Wyślij do połączenia  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
@@ -357,82 +357,82 @@ Ten przypadek użycia wymaga dużym obciążeniem po stronie serwera aplikacji. 
 | Liczba serwerów aplikacji | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
-> Klient połączenia liczbę, rozmiar komunikatu, komunikat wysyłania szybkości, routingu kosztów, warstwa jednostki SKU i moc procesora CPU i pamięci dla programu server app mają wpływ na ogólną wydajność **wysyłać połączenia**.
+> Numer połączenia klienta, rozmiar komunikatu, szybkość wysyłania komunikatów, koszt routingu, warstwa SKU oraz procesor CPU/pamięć dla serwera aplikacji mają wpływ na ogólną wydajność **wysyłania do połączenia**.
 
-#### <a name="aspnet-signalr-echo-broadcast-and-send-to-small-group"></a>Echo biblioteki SignalR platformy ASP.NET, emisji i wysłać do małej grupy
+#### <a name="aspnet-signalr-echo-broadcast-and-send-to-small-group"></a>ASP.NET sygnalizujący echo, broadcast i Send do małej grupy
 
-Usługi Azure SignalR Service zawiera samą pojemność wydajności biblioteki SignalR platformy ASP.NET. 
+Usługa Azure sygnalizująca zapewnia taką samą pojemność wydajności dla sygnalizującego ASP.NET. 
 
-Test wydajności korzysta z usługi Azure Web Apps z [standardowa S3 planu usługi](https://azure.microsoft.com/pricing/details/app-service/windows/) dla biblioteki SignalR platformy ASP.NET.
+Test wydajności używa platformy Azure Web Apps ze [standardowego planu usługi S3](https://azure.microsoft.com/pricing/details/app-service/windows/) dla sygnalizującego ASP.NET.
 
-W poniższej tabeli przedstawiono liczba sugerowane web app for ASP.NET SignalR **echo**.
+W poniższej tabeli przedstawiono sugerowaną liczbę aplikacji sieci Web na potrzeby **ECHA**sygnałów ASP.NET.
 
-|   Echo           | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
+|   ECHA           | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
 | Połączenia      | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
 | Liczba serwerów aplikacji | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
-W poniższej tabeli przedstawiono liczba sugerowane web app for ASP.NET SignalR **emisji**.
+W poniższej tabeli przedstawiono sugerowaną liczbę aplikacji sieci Web dla **emisji**sygnałów ASP.NET.
 
 |  Emisja       | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
 | Połączenia      | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
 | Liczba serwerów aplikacji | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
-W poniższej tabeli przedstawiono liczba sugerowane web app for ASP.NET SignalR **wysyłać małą grupę**.
+W poniższej tabeli przedstawiono sugerowaną liczbę aplikacji sieci Web dla sygnałów ASP.NET **wysyłanych do małych grup**.
 
 |  Wyślij do małej grupy     | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
 | Połączenia      | 1000 | 2000 | 5,000 | 10 000 | 20,000 | 50,000 | 100,000 |
 | Liczba serwerów aplikacji | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
-### <a name="serverless-mode"></a>Tryb bez użycia serwera
+### <a name="serverless-mode"></a>Tryb bezserwerowy
 
-Klienci i usługi Azure SignalR Service są zaangażowane w trybie bez użycia serwera. Każdy klient oznacza jednego połączenia. Klient wysyła komunikaty za pośrednictwem interfejsu API REST do innego klienta lub odpowiedniej do emisji komunikatów dla wszystkich.
+Klienci i usługa Azure Signal Service są objęte trybem bezserwerowym. Każdy Klient oznacza jedno połączenie. Klient wysyła komunikaty za pomocą interfejsu API REST do innego klienta lub emituje komunikaty do wszystkich.
 
-Wysyłanie komunikatów o wysokiej gęstości za pośrednictwem interfejsu API REST nie jest tak wydajna, jak za pomocą protokołu WebSocket. Tworzenie nowego połączenia HTTP zawsze wymaga, a to dodatkowych opłat w trybie bez użycia serwera.
+Wysyłanie komunikatów o wysokiej gęstości za pośrednictwem interfejsu API REST nie jest tak wydajne jak użycie protokołu WebSocket. Wymaga to utworzenia nowego połączenia HTTP za każdym razem, gdy jest to dodatkowy koszt w trybie bezserwerowym.
 
-#### <a name="broadcast-through-rest-api"></a>Emisja za pośrednictwem interfejsu API REST
-Wszyscy klienci ustanawiania połączeń protokołu WebSocket przy użyciu usługi Azure SignalR Service. Niektórzy klienci zacznij emisji za pośrednictwem interfejsu API REST. Wysyłanie (ruch przychodzący) komunikatów jest wspomaga Post protokołu HTTP, który nie jest efektywne w porównaniu z protokołu WebSocket.
+#### <a name="broadcast-through-rest-api"></a>Rozgłaszanie za poorednictwem interfejsu API REST
+Wszyscy klienci nawiązują połączenia WebSocket z usługą Azure Signal Service. Następnie niektórzy klienci rozpoczynają emitowanie za pomocą interfejsu API REST. Wysyłanie komunikatów (ruch przychodzący) odbywa się za pośrednictwem protokołu HTTP POST, co nie jest efektywne w porównaniu z protokołem WebSocket.
 
-|   Emisja za pośrednictwem interfejsu API REST     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
+|   Rozgłaszanie za poorednictwem interfejsu API REST     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
 | Połączenia               | 1000 | 2000 | 5,000  | 10 000 | 20,000 | 50,000  | 100,000 |
 | Komunikaty przychodzące na sekundę  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
-| Wiadomości wychodzących na sekundę | 2000 | 4,000 | 10 000 | 20,000 | 40,000 | 100,000 | 200,000 |
-| Przepustowości dla ruchu przychodzącego  | 4 Kb/s    | 4 Kb/s    | 4 Kb/s     | 4 Kb/s     | 4 Kb/s     | 4 Kb/s      | 4 Kb/s      |
-| Przepustowość ruchu wychodzącego | 4 MB/s    | 8 MB/s    | 20 MB/s    | 40 MB/s    | 80 MB/s    | 200 MB/s    | 400 MB/s    |
+| Komunikaty wychodzące na sekundę | 2000 | 4,000 | 10 000 | 20,000 | 40,000 | 100,000 | 200,000 |
+| Przepustowość ruchu przychodzącego  | 4 KB/s    | 4 KB/s    | 4 KB/s     | 4 KB/s     | 4 KB/s     | 4 KB/s      | 4 KB/s      |
+| Przepustowość wychodząca | 4 MB/s    | 8 MB/s    | 20 MB/s    | 40 MB/s    | 80 MB/s    | 200 MB/s    | 400 MB/s    |
 
-#### <a name="send-to-user-through-rest-api"></a>Wysłać do użytkownika za pośrednictwem interfejsu API REST
-Testu porównawczego nazwy użytkowników są przypisywane do wszystkich klientów, przed rozpoczęciem nawiązywania połączenia z usługi Azure SignalR Service. Po klientów ustanawiania połączeń protokołu WebSocket przy użyciu usługi Azure SignalR Service, uruchamiania wysyłania wiadomości do innych użytkowników za pomocą żądania HTTP Post.
+#### <a name="send-to-user-through-rest-api"></a>Wyślij do użytkownika przy użyciu interfejsu API REST
+Test porównawczy przypisuje nazwy użytkowników wszystkim klientom przed rozpoczęciem nawiązywania połączenia z usługą Azure Signaler. Gdy klienci nawiązują połączenia WebSocket z usługą Azure Signal Service, zaczynają wysyłać komunikaty do innych użytkowników za pośrednictwem protokołu HTTP POST.
 
-|   Wysłać do użytkownika za pośrednictwem interfejsu API REST | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
+|   Wyślij do użytkownika przy użyciu interfejsu API REST | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
 | Połączenia               | 1000 | 2000 | 5,000  | 10 000 | 20,000 | 50,000  | 100,000 |
-| Komunikaty przychodzące na sekundę  | 300   | 600   | 900    | 1,300  | 2000  | 10 000  | 18,000  |
-| Wiadomości wychodzących na sekundę | 300   | 600   | 900    | 1,300  | 2000  | 10 000  | 18,000 |
-| Przepustowości dla ruchu przychodzącego  | 600 KB/s  | 1.2 MB/s  | 1.8 MB/s   | 2.6 MB/s   | 4 MB/s     | 10 MB/s     | 36 MB/s    |
-| Przepustowość ruchu wychodzącego | 600 KB/s  | 1.2 MB/s  | 1.8 MB/s   | 2.6 MB/s   | 4 MB/s     | 10 MB/s     | 36 MB/s    |
+| Komunikaty przychodzące na sekundę  | 300   | 600   | 900    | 1 300  | 2000  | 10 000  | 18 000  |
+| Komunikaty wychodzące na sekundę | 300   | 600   | 900    | 1 300  | 2000  | 10 000  | 18 000 |
+| Przepustowość ruchu przychodzącego  | 600 kb/s  | 1,2 MB/s  | 1,8 MB/s   | 2,6 MB/s   | 4 MB/s     | 10 MB/s     | 36 MB/s    |
+| Przepustowość wychodząca | 600 kb/s  | 1,2 MB/s  | 1,8 MB/s   | 2,6 MB/s   | 4 MB/s     | 10 MB/s     | 36 MB/s    |
 
-## <a name="performance-test-environments"></a>Wydajność środowiska testowe
+## <a name="performance-test-environments"></a>Środowiska testowe wydajności
 
-Dla wszystkich zastosowań wymienionych wcześniej, firma Microsoft prowadzone testów wydajnościowych — wszystko w środowisku platformy Azure. Co najwyżej użyliśmy 50 VMs klienta i serwera aplikacji 20 maszyn wirtualnych. Poniżej przedstawiono niektóre szczegóły:
+W przypadku wszystkich przypadków użycia wymienionych wcześniej przeprowadzono testy wydajnościowe w środowisku platformy Azure. Najwyżej używamy 50 maszyn wirtualnych klienta i 20 maszyn wirtualnych serwera aplikacji. Oto kilka szczegółów:
 
-- Rozmiar maszyny Wirtualnej klienta: StandardDS2V2 (2 procesory vCPU, pamięci 7G)
+- Rozmiar maszyny wirtualnej klienta: StandardDS2V2 (2 vCPU, pamięć 7G)
 
-- Serwer aplikacji rozmiar maszyny Wirtualnej: StandardF4sV2 (4 vCPU, pamięci 8 K)
+- Rozmiar maszyny wirtualnej serwera aplikacji: StandardF4sV2 (4 vCPU, pamięć 8G)
 
-- Azure SignalR SDK połączeń serwera: 15
+- Połączenia serwera zestawu SDK usługi Azure Signal: 15
 
 ## <a name="performance-tools"></a>Narzędzia wydajności
 
-Narzędzia do oceny wydajności dla usługi Azure SignalR Service można znaleźć na [GitHub](https://github.com/Azure/azure-signalr-bench/tree/master/SignalRServiceBenchmarkPlugin).
+Narzędzia do oceny wydajności usługi Azure Signal można znaleźć w witrynie [GitHub](https://github.com/Azure/azure-signalr-bench/).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule stało się z omówieniem usługi Azure SignalR Service wydajności w typowych scenariuszach przypadków użycia.
+W tym artykule przedstawiono omówienie wydajności usługi Azure sygnalizującej w typowych scenariuszach przypadków użycia.
 
-Aby uzyskać szczegółowe informacje na temat podstawy usługi i skalowania dla niego, przeczytaj następujące przewodniki:
+Aby uzyskać szczegółowe informacje na temat wewnętrznych usługi i skalować je, przeczytaj następujące przewodniki:
 
 * [Wewnętrzne elementy usługi Azure SignalR Service](signalr-concept-internals.md)
-* [Usługi Azure SignalR Service skalowania](signalr-howto-scale-multi-instances.md)
+* [Skalowanie usługi Azure Signal](signalr-howto-scale-multi-instances.md)
