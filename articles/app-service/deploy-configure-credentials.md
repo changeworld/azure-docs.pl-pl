@@ -35,7 +35,7 @@ Poświadczenia na poziomie użytkownika można skonfigurować na [stronie zasob�
 
 Aby skonfigurować użytkownika wdrożenia w [Cloud Shell](https://shell.azure.com), uruchom polecenie [AZ webapp Deployment User Set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) . Zastąp \<> nazwy \<użytkownika i hasła > nazwą użytkownika i hasłom wdrożenia. 
 
-- Nazwa użytkownika musi być unikatowa w ramach platformy Azure, a w przypadku lokalnych powiadomień wypychanych Git nie może zawierać symbolu "@". 
+- Nazwa użytkownika musi być unikatowa w ramach platformy Azure, a w przypadku lokalnych powiadomień wypychanych Git nie może zawierać symbolu ‘@’ 
 - Hasło musi składać się z co najmniej ośmiu znaków, a dwa z następujących trzech elementów: litery, cyfry i symbole. 
 
 ```azurecli-interactive
