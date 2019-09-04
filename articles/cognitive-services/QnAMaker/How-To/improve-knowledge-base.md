@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: daf2781113016b20c19a6b8f5365033f1ff1479b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ae186209395078ed56a046aafdbe01bb513fc3a0
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195268"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277431"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Korzystanie z usługi Active Learning w celu ulepszania bazy wiedzy
 
@@ -56,7 +56,7 @@ Ważne jest, aby QnA Maker uzyskać jawną opinię na temat tego, która z odpow
 
 ## <a name="upgrade-your-runtime-version-to-use-active-learning"></a>Uaktualnij wersję środowiska uruchomieniowego, aby korzystać z usługi Active Learning
 
-Usługa Active Learning jest obsługiwana w środowisku uruchomieniowym w wersji 4.4.0 i nowszych. Jeśli baza wiedzy została utworzona w starszej wersji, [Uaktualnij środowisko uruchomieniowe](set-up-qnamaker-service-azure.md#get-latest-runtime-updates) , aby użyć tej funkcji. 
+Usługa Active Learning jest obsługiwana w środowisku uruchomieniowym w wersji 4.4.0 i nowszych. Jeśli baza wiedzy została utworzona w starszej wersji, [Uaktualnij środowisko uruchomieniowe](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) , aby użyć tej funkcji. 
 
 ## <a name="turn-on-active-learning-to-see-suggestions"></a>Włącz aktywną naukę, aby zobaczyć sugestie
 
@@ -73,7 +73,7 @@ Aktywna nauka jest domyślnie wyłączona. Włącz tę opcję, aby zobaczyć sug
 
     [![Na stronie Ustawienia usługi Przełącz funkcję Active Learning. Jeśli nie możesz przełączać tej funkcji, może być konieczne uaktualnienie usługi.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
 
-    Po włączeniu aktywnej uczenia baza wiedzy sugeruje nowe pytania w regularnych odstępach czasu na podstawie pytań przesłanych przez użytkownika. **Aktywną naukę** można wyłączyć, przełączając ponownie ustawienie.
+    Po włączeniu **aktywnej uczenia** baza wiedzy sugeruje nowe pytania w regularnych odstępach czasu na podstawie pytań przesłanych przez użytkownika. **Aktywną naukę** można wyłączyć, przełączając ponownie ustawienie.
 
 ## <a name="accept-an-active-learning-suggestion-in-the-knowledge-base"></a>Zaakceptowanie aktywnej sugestii szkoleniowej w bazie wiedzy
 
@@ -91,7 +91,7 @@ Aktywna nauka jest domyślnie wyłączona. Włącz tę opcję, aby zobaczyć sug
 
     Możesz dodawać lub usuwać _wszystkie sugestie_ , wybierając pozycję **Dodaj wszystko** lub **Odrzuć wszystko** na kontekstowym pasku narzędzi.
 
-1. Wybierz pozycję **Zapisz i** pouczenie, aby zapisać zmiany w bazie wiedzy.
+1. Wybierz pozycję **Zapisz i pouczenie** , aby zapisać zmiany w bazie wiedzy.
 
 1. Wybierz pozycję **Publikuj** , aby zezwolić na dostęp do zmian z [interfejsu API GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-request-configuration).
 
@@ -195,7 +195,7 @@ Treść JSON ma kilka ustawień:
 |--|--|--|--|
 |`feedbackRecords`|array|Lista opinii.|
 |`userId`|ciąg|Identyfikator użytkownika osoby akceptującej sugerowane pytania. Format identyfikatora użytkownika jest aktualny. Na przykład adres e-mail może być prawidłowym IDENTYFIKATORem użytkownika w danej architekturze. Opcjonalna.|
-|`userQuestion`|ciąg|Dokładny tekst zapytania użytkownika. Wymagana.|
+|`userQuestion`|ciąg|Dokładny tekst zapytania użytkownika. Wymagany.|
 |`qnaID`|numer|Identyfikator pytania znaleziony w [odpowiedzi GenerateAnswer](metadata-generateanswer-usage.md#generateanswer-response-properties). |
 
 Przykładowa treść JSON wygląda następująco:

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 48b38e88ea6d0d99a0734aa36716020ced6e3d78
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 14339a61e48866d51089db9a0008a3de982b1710
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193620"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277109"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Współczynnik ufności z bazy wiedzy usługi QnA Maker
 Jeśli kwerenda użytkownika są dopasowywane do wiedzy, narzędzie QnA Maker zwraca odpowiednich odpowiedzi, wraz z współczynnik ufności. Ten wynik wskazuje ufności padnie odpowiednie dopasowania dla zapytania danego użytkownika. 
@@ -55,7 +55,7 @@ Wybierając próg, należy pamiętać, równowagę między dokładności i pokry
 - Jeśli **pokrycia** (lub odwołania) jest bardziej ważne — i chcesz odpowiedzieć jak najwięcej pytań do odpowiedzi najszybciej, nawet w przypadku częściowej relacji do użytkownika pytanie - ZMNIEJSZYSZ wartość progową. Oznacza to, że może być więcej przypadków, gdy odpowiedź nie odpowiada na kwerendy rzeczywistego użytkownika, ale zapewnia nieco powiązane odpowiedzi. *Na przykład:* w przypadku progu **30**można udzielić odpowiedzi na zapytania, takie jak "gdzie mogę edytować moją KB?".
 
 > [!NOTE]
-> Nowsze wersje usługi QnA Maker obejmują udoskonalenia w zakresie logiki oceniania i mogą mieć wpływ na próg. Ilekroć, zaktualizuj usługę, upewnij się, testowanie i dostosować wartość progową, jeśli to konieczne. Wersję pytań i odpowiedzi usługi można sprawdzić [tutaj](https://www.qnamaker.ai/UserSettings)i zobacz, jak uzyskać najnowsze aktualizacje [tutaj](../How-To/set-up-qnamaker-service-azure.md#get-latest-runtime-updates).
+> Nowsze wersje usługi QnA Maker obejmują udoskonalenia w zakresie logiki oceniania i mogą mieć wpływ na próg. Ilekroć, zaktualizuj usługę, upewnij się, testowanie i dostosować wartość progową, jeśli to konieczne. Wersję pytań i odpowiedzi usługi można sprawdzić [tutaj](https://www.qnamaker.ai/UserSettings)i zobacz, jak uzyskać najnowsze aktualizacje [tutaj](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates).
 
 ## <a name="set-threshold"></a>Ustaw próg 
 

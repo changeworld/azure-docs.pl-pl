@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: a6fa08596f5778b2c188fe3402801cf487b32ae4
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: cdd7cfcb9d835c2ccac1dc367b9a1b34b509e8cf
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966984"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276425"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopiowanie danych z punktu końcowego HTTP przy użyciu Azure Data Factory
 
@@ -27,7 +27,7 @@ ms.locfileid: "68966984"
 
 W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z punktu końcowego HTTP. Artykuł opiera się na [działania kopiowania w usłudze Azure Data Factory](copy-activity-overview.md), który ma ogólne omówienie działania kopiowania.
 
-Różnica między tym łącznikiem HTTP, łącznika [rest](connector-rest.md) i łącznikiem [tabeli sieci Web](connector-web-table.md) :
+Różnica między tym łącznikiem HTTP, [łącznika REST](connector-rest.md) i [łącznikiem tabeli sieci Web](connector-web-table.md) :
 
 - **Łącznik REST** obsługujący kopiowanie danych z interfejsów API RESTful; 
 - **Łącznik http** jest ogólny do pobierania danych z dowolnego punktu końcowego http, np. do pobrania pliku. Przed udostępnieniem łącznika REST może wystąpić potrzeba użycia łącznika HTTP do kopiowania danych z interfejsu API RESTful, który jest obsługiwany, ale mniej funkcjonalny porównanie z łącznikiem REST.
@@ -103,7 +103,7 @@ Ustaw właściwość **AuthenticationType** na wartość **Basic**, **Digest**lu
 
 ### <a name="using-clientcertificate-authentication"></a>Korzystanie z uwierzytelniania ClientCertificate
 
-Aby użyć uwierzytelniania ClientCertificate, należy ustawić Właściwość AuthenticationType na **Kolekcja ClientCertificate**. Oprócz ogólnych właściwości, które są opisane w poprzedniej sekcji, określ następujące właściwości:
+Aby użyć uwierzytelniania ClientCertificate, należy ustawić właściwość **AuthenticationType** na **Kolekcja ClientCertificate**. Oprócz ogólnych właściwości, które są opisane w poprzedniej sekcji, określ następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -166,12 +166,12 @@ Jeśli używasz **certThumbprint** do uwierzytelniania, a certyfikat jest instal
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. 
 
-- W przypadku **Parquet, rozdzielany tekst i format binarny**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem i binarnym zestawem danych](#format-based-dataset) .
+- W przypadku **Parquet, rozdzielonego tekstu, Avro i formatu binarnego**zapoznaj się z sekcją [Parquet, rozdzielaną tekstem, Avro i binarnym zestawem danych](#format-based-dataset) .
 - W przypadku innych formatów, takich jak **Orc/Avro/JSON**, zapoznaj się z sekcją [innego formatu zestawu danych](#other-format-dataset) .
 
-### <a name="format-based-dataset"></a>Parquet, rozdzielany tekst i binarny zestaw danych
+### <a name="format-based-dataset"></a>Parquet, rozdzielany tekstem, Avro i binarny zestaw danych
 
-Aby skopiować dane do i z **Parquet, rozdzielonego tekstu lub formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstowym](format-delimited-text.md) i artykułem [formatu binarnego](format-binary.md) w oparciu o zestaw danych oparty na formacie i obsługiwane ustawienia. Następujące właściwości są obsługiwane w przypadku protokołu HTTP `location` w obszarze Ustawienia w zestawie danych opartym na formacie:
+Aby skopiować dane do i z **Parquet, rozdzielonego tekstu lub formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielonym formatem tekstowym](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie zestawu danych opartym na formacie i obsługiwanymi ustawieniami. Następujące właściwości są obsługiwane w przypadku protokołu HTTP `location` w obszarze Ustawienia w zestawie danych opartym na formacie:
 
 | Właściwość    | Opis                                                  | Wymagane |
 | ----------- | ------------------------------------------------------------ | -------- |
@@ -212,7 +212,7 @@ Aby skopiować dane do i z **Parquet, rozdzielonego tekstu lub formatu binarnego
 
 ### <a name="other-format-dataset"></a>Inny zestaw danych formatu
 
-Aby skopiować dane z protokołu HTTP w **formacie Orc/Avro/JSON**, obsługiwane są następujące właściwości:
+Aby skopiować dane z protokołu HTTP w **formacie Orc/JSON**, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -222,7 +222,7 @@ Aby skopiować dane z protokołu HTTP w **formacie Orc/Avro/JSON**, obsługiwane
 | additionalHeaders | Dodatkowe nagłówki żądań HTTP. | Nie |
 | Elemencie requestbody | Treść żądania HTTP. | Nie |
 | format | Jeśli chcesz pobrać dane z punktu końcowego HTTP jako-is bez analizy, a następnie skopiować dane do magazynu opartego na plikach, Pomiń sekcję **Format** w definicjach zestawu danych wejściowych i wyjściowych.<br/><br/>Jeśli chcesz przeanalizować zawartość odpowiedzi HTTP podczas kopiowania, obsługiwane są następujące typy formatu plików: **TextFormat**, **formatu jsonformat**, **AvroFormat**, **OrcFormat**i **ParquetFormat**. W obszarze **Format**ustaw właściwość **Type** na jedną z tych wartości. Aby uzyskać więcej informacji, zobacz [Format JSON](supported-file-formats-and-compression-codecs.md#json-format), [Format tekstu](supported-file-formats-and-compression-codecs.md#text-format), [Format Avro](supported-file-formats-and-compression-codecs.md#avro-format), [Format Orc](supported-file-formats-and-compression-codecs.md#orc-format)i [Format Parquet](supported-file-formats-and-compression-codecs.md#parquet-format). |Nie |
-| compression | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Obsługiwane typy: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**.<br/>Obsługiwane poziomy: Optymalnai najszybsza. |Nie |
+| compression | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Obsługiwane typy: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**.<br/>Obsługiwane poziomy:  **Optymalna** i **najszybsza**. |Nie |
 
 > [!NOTE]
 > Obsługiwany rozmiar ładunku żądania HTTP to około 500 KB. Jeśli rozmiar ładunku, który ma zostać przekazany do punktu końcowego sieci Web, jest większy niż 500 KB, należy rozważyć przetwarzanie wsadowe w mniejszych fragmentach.
@@ -274,12 +274,12 @@ Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do def
 
 ### <a name="http-as-source"></a>HTTP jako źródło
 
-- Aby skopiować z **Parquet, rozdzielany tekstem i binarny format**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem i źródłem formatu binarnego](#format-based-source) .
+- Aby skopiować z **Parquet, rozdzielony tekst, Avro i format binarny**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem, Avro i plikiem binarnym](#format-based-source) .
 - Aby skopiować dane z innych formatów, takich jak **Orc/Avro/JSON**, zapoznaj się z sekcją [inne źródło formatu](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, rozdzielone Źródło tekstu i format binarny
+#### <a name="format-based-source"></a>Parquet, rozdzielany tekstem, Avro i binarny kod źródłowy
 
-Aby skopiować dane z **Parquet, rozdzielonego tekstu lub formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstowym](format-delimited-text.md) i artykułem [formatu binarnego](format-binary.md) w oparciu o źródło działania kopiowania opartego na formacie i obsługiwane ustawienia. Następujące właściwości są obsługiwane w przypadku protokołu HTTP `storeSettings` w obszarze Ustawienia źródła kopiowania opartego na formacie:
+Aby skopiować dane z **Parquet, rozdzielanego tekstem lub formacie binarnym**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielonym formatem tekstowym](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie źródłowym i obsługiwanymi ustawieniami. Następujące właściwości są obsługiwane w przypadku protokołu HTTP `storeSettings` w obszarze Ustawienia źródła kopiowania opartego na formacie:
 
 | Właściwość                 | Opis                                                  | Wymagane |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -336,7 +336,7 @@ Aby skopiować dane z **Parquet, rozdzielonego tekstu lub formatu binarnego**, z
 
 #### <a name="other-format-source"></a>Inne źródło formatowania
 
-Aby skopiować dane z protokołu HTTP w **formacie Orc/Avro/JSON**, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+Aby skopiować dane z protokołu HTTP w **formacie Orc/JSON**, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |

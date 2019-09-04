@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9858e8a52888304edd48893db02faa992b356b3b
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 53b2f9783b33c859ca2c5de5f35353b8482ea5c7
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774900"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275138"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Zrozumienie struktury i składni szablonów Azure Resource Manager
 
@@ -44,61 +44,10 @@ W najprostszym strukturze szablon zawiera następujące elementy:
 | [parameters](#parameters) |Nie |Wartości, które są dostarczane, gdy wdrożenie jest wykonywane w celu dostosowania wdrożenia zasobów. |
 | [variables](#variables) |Nie |Wartości, które są używane jako fragmenty JSON w szablonie, aby uprościć wyrażenia języka szablonów. |
 | [functions](#functions) |Nie |Funkcje zdefiniowane przez użytkownika, które są dostępne w ramach szablonu. |
-| [resources](#resources) |Yes |Typy zasobów wdrożone lub zaktualizowane w grupie zasobów lub subskrypcji. |
+| [resources](#resources) |Tak |Typy zasobów wdrożone lub zaktualizowane w grupie zasobów lub subskrypcji. |
 | [outputs](#outputs) |Nie |Wartości, które są zwracane po wdrożeniu. |
 
 Każdy element ma właściwości, które można ustawić. W tym artykule opisano bardziej szczegółowe sekcje szablonu.
-
-## <a name="syntax"></a>Składnia
-
-Podstawowa składnia szablonu to JSON. Można jednak użyć wyrażeń do rozszerania wartości JSON dostępnych w ramach szablonu.  Wyrażenia zaczynają się i kończą z `[` nawiasami: i `]`, odpowiednio. Wartość wyrażenia jest szacowana podczas wdrażania szablonu. Wyrażenie może zwracać ciąg, liczbę całkowitą, wartość logiczną, tablicę lub obiekt. Poniższy przykład przedstawia wyrażenie w wartości domyślnej parametru:
-
-```json
-"parameters": {
-  "location": {
-    "type": "string",
-    "defaultValue": "[resourceGroup().location]"
-  }
-},
-```
-
-W wyrażeniu składnia `resourceGroup()` wywołuje jedną z funkcji, które Menedżer zasobów zapewnia do użycia w ramach szablonu. Podobnie jak w języku JavaScript, wywołania funkcji są sformatowane `functionName(arg1,arg2,arg3)`jako. Składnia `.location` pobiera jedną właściwość z obiektu zwróconego przez tę funkcję.
-
-W funkcjach szablonów i ich parametrach nie jest rozróżniana wielkość liter. Na przykład Menedżer zasobów rozpoznaje **zmienne ("var1")** i **zmienne ("var1")** jako takie same. W przypadku oceny, chyba że funkcja wyraźnie modyfikuje wielkość liter (na przykład toUpper lub toLower), funkcja zachowuje wielkość liter. Niektóre typy zasobów mogą mieć wymagania dotyczące wielkości liter niezależnie od sposobu szacowania funkcji.
-
-Aby ciąg literału rozpoczynał się od lewego nawiasu `[` i kończyć się nawiasem klamrowym `]`, ale nie powinien być interpretowany jako wyrażenie, Dodaj dodatkowy nawias klamrowy, `[[`aby uruchomić ciąg. Na przykład zmienna:
-
-```json
-"demoVar1": "[[test value]"
-```
-
-Jest rozpoznawany jako `[test value]`.
-
-Jeśli jednak ciąg literału nie kończy się nawiasem, nie należy określać pierwszego nawiasu. Na przykład zmienna:
-
-```json
-"demoVar2": "[test] value"
-```
-
-Jest rozpoznawany jako `[test] value`.
-
-Aby przekazać wartość ciągu jako parametr do funkcji, należy użyć apostrofów.
-
-```json
-"name": "[concat('storage', uniqueString(resourceGroup().id))]"
-```
-
-Aby wypróbować podwójne cudzysłowy w wyrażeniu, takie jak dodanie obiektu JSON w szablonie, użyj ukośnika odwrotnego.
-
-```json
-"tags": {
-    "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
-},
-```
-
-Wyrażenie szablonu nie może zawierać więcej niż 24 576 znaków.
-
-Aby zapoznać się z pełną listą funkcji szablonu, zobacz [Azure Resource Manager Template Functions](resource-group-template-functions.md). 
 
 ## <a name="parameters"></a>Parametry
 
@@ -130,7 +79,7 @@ Dostępne właściwości dla parametru to:
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
 | parameterName |Tak |Nazwa parametru. Musi być prawidłowym identyfikatorem języka JavaScript. |
-| type |Yes |Typ wartości parametru. Dozwolone typy i wartości to **String**, **SecureString**, **int**, **bool**, **Object**, **secureobject**i **Array**. |
+| type |Tak |Typ wartości parametru. Dozwolone typy i wartości to **String**, **SecureString**, **int**, **bool**, **Object**, **secureobject**i **Array**. |
 | defaultValue |Nie |Wartość domyślna parametru, jeśli nie podano wartości dla parametru. |
 | allowedValues |Nie |Tablica dozwolonych wartości parametru, aby upewnić się, że podano odpowiednią wartość. |
 | minValue |Nie |Minimalna wartość parametrów typu int, ta wartość jest dopuszczalna. |
@@ -501,11 +450,11 @@ Należy zdefiniować zasoby o następującej strukturze:
 
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
-| condition | Nie | Wartość logiczna wskazująca, czy zasób zostanie zainicjowany podczas tego wdrożenia. Gdy `true`zasób jest tworzony podczas wdrażania. Gdy `false`zasób jest pomijany dla tego wdrożenia. Zobacz [warunek](#condition). |
-| apiVersion |Yes |Wersja interfejsu API REST do użycia podczas tworzenia zasobu. Aby określić dostępne wartości, zobacz [Dokumentacja szablonu](/azure/templates/). |
-| type |Yes |Typ zasobu. Ta wartość jest kombinacją przestrzeni nazw dostawcy zasobów i typu zasobu (np **. Microsoft. Storage/storageAccounts**). Aby określić dostępne wartości, zobacz [Dokumentacja szablonu](/azure/templates/). W przypadku zasobu podrzędnego format typu zależy od tego, czy jest on zagnieżdżony w obrębie zasobu nadrzędnego, czy zdefiniowany poza zasobem nadrzędnym. Zobacz [Set Name i Type dla zasobów podrzędnych](child-resource-name-type.md). |
+| condition | Nie | Wartość logiczna wskazująca, czy zasób zostanie zainicjowany podczas tego wdrożenia. Gdy `true`zasób jest tworzony podczas wdrażania. Gdy `false`zasób jest pomijany dla tego wdrożenia. Zobacz [wdrażanie warunkowe](conditional-resource-deployment.md). |
+| apiVersion |Tak |Wersja interfejsu API REST do użycia podczas tworzenia zasobu. Aby określić dostępne wartości, zobacz [Dokumentacja szablonu](/azure/templates/). |
+| type |Tak |Typ zasobu. Ta wartość jest kombinacją przestrzeni nazw dostawcy zasobów i typu zasobu (np **. Microsoft. Storage/storageAccounts**). Aby określić dostępne wartości, zobacz [Dokumentacja szablonu](/azure/templates/). W przypadku zasobu podrzędnego format typu zależy od tego, czy jest on zagnieżdżony w obrębie zasobu nadrzędnego, czy zdefiniowany poza zasobem nadrzędnym. Zobacz [Set Name i Type dla zasobów podrzędnych](child-resource-name-type.md). |
 | name |Tak |Nazwa zasobu. Nazwa musi następować zgodnie z ograniczeniami składnika URI zdefiniowanymi w RFC3986. Ponadto usługi platformy Azure, które uwidaczniają nazwę zasobu podmiotom zewnętrznym, sprawdzają poprawność nazwy, aby upewnić się, że nie jest próbą sfałszowania innej tożsamości. W przypadku zasobu podrzędnego format nazwy zależy od tego, czy jest on zagnieżdżony w obrębie zasobu nadrzędnego, czy zdefiniowany poza zasobem nadrzędnym. Zobacz [Set Name i Type dla zasobów podrzędnych](child-resource-name-type.md). |
-| location |Różna |Obsługiwane lokalizacje geograficzne podanego zasobu. Można wybrać dowolną z dostępnych lokalizacji, ale zazwyczaj warto ją wybrać blisko użytkowników. Zwykle warto również umieścić zasoby, które współpracują ze sobą w tym samym regionie. Większość typów zasobów wymaga lokalizacji, ale niektóre typy (takie jak przypisanie roli) nie wymagają lokalizacji. |
+| location |Różna |Obsługiwane lokalizacje geograficzne podanego zasobu. Można wybrać dowolną z dostępnych lokalizacji, ale zazwyczaj warto ją wybrać blisko użytkowników. Zwykle warto również umieścić zasoby, które współpracują ze sobą w tym samym regionie. Większość typów zasobów wymaga lokalizacji, ale niektóre typy (takie jak przypisanie roli) nie wymagają lokalizacji. Zobacz [Ustawianie lokalizacji zasobu](resource-location.md) |
 | tags |Nie |Tagi, które są skojarzone z zasobem. Zastosuj Tagi, aby logicznie organizować zasoby w ramach subskrypcji. |
 | komentarz |Nie |Twoje notatki umożliwiające dokumentowanie zasobów w szablonie. Aby uzyskać więcej informacji, zobacz [Komentarze w szablonach](resource-group-authoring-templates.md#comments). |
 | kopiuj |Nie |Jeśli potrzebujesz więcej niż jednego wystąpienia, liczba zasobów do utworzenia. Domyślny tryb jest równoległy. Określ tryb seryjny, gdy nie chcesz, aby wszystkie lub zasoby zostały wdrożone w tym samym czasie. Aby uzyskać więcej informacji, zobacz [Tworzenie kilku wystąpień zasobów w Azure Resource Manager](resource-group-create-multiple.md). |
@@ -515,31 +464,6 @@ Należy zdefiniować zasoby o następującej strukturze:
 | Natur | Nie | Niektóre zasoby umożliwiają wartości, która definiuje typ wdrażanego zasobu. Na przykład można określić typ Cosmos DB, który ma zostać utworzony. |
 | zamierza | Nie | Niektóre zasoby umożliwiają wartości definiujące plan do wdrożenia. Na przykład można określić obraz z witryny Marketplace dla maszyny wirtualnej. | 
 | zasoby |Nie |Zasoby podrzędne, które są zależne od definiowanego zasobu. Podaj tylko typy zasobów, które są dozwolone przez schemat zasobu nadrzędnego. Nie jest implikowana zależność od zasobu nadrzędnego. Należy jawnie zdefiniować tę zależność. Zobacz [Set Name i Type dla zasobów podrzędnych](child-resource-name-type.md). |
-
-### <a name="condition"></a>Warunek
-
-Jeśli podczas wdrażania należy zdecydować, czy należy utworzyć zasób, należy użyć `condition` elementu. Wartość dla tego elementu jest rozpoznawana jako true lub false. Gdy wartość jest równa true, zasób jest tworzony. Gdy wartość jest równa false, zasób nie zostanie utworzony. Wartość może zostać zastosowana tylko do całego zasobu.
-
-Zazwyczaj ta wartość jest używana, gdy chcesz utworzyć nowy zasób lub użyć istniejącego. Na przykład, aby określić, czy nowe konto magazynu zostało wdrożone, czy używane jest istniejące konto magazynu, użyj:
-
-```json
-{
-    "condition": "[equals(parameters('newOrExisting'),'new')]",
-    "type": "Microsoft.Storage/storageAccounts",
-    "name": "[variables('storageAccountName')]",
-    "apiVersion": "2017-06-01",
-    "location": "[resourceGroup().location]",
-    "sku": {
-        "name": "[variables('storageAccountType')]"
-    },
-    "kind": "Storage",
-    "properties": {}
-}
-```
-
-Aby zapoznać się z kompletnym przykładowym `condition` szablonem, który używa elementu, zobacz [maszyna wirtualna z nowym lub istniejącym Virtual Network, magazynem i publicznym adresem IP](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions).
-
-Jeśli używasz funkcji [odwołania](resource-group-template-functions-resource.md#reference) lub [listy](resource-group-template-functions-resource.md#list) z zasobem, który jest wdrażany warunkowo, funkcja jest oceniana, nawet jeśli zasób nie został wdrożony. Występuje błąd, jeśli funkcja odwołuje się do zasobu, który nie istnieje. Użyj funkcji [if](resource-group-template-functions-logical.md#if) , aby upewnić się, że funkcja jest obliczana tylko pod kątem warunków, gdy zasób jest wdrożony. Zobacz [funkcję if](resource-group-template-functions-logical.md#if) , aby zapoznać się z przykładowym szablonem, który używa if i Reference z wdrożonym warunkowo zasobem.
 
 ### <a name="resource-names"></a>Nazwy zasobów
 
@@ -592,65 +516,6 @@ W przypadku typów zasobów, do których użytkownik uzyskuje dostęp przez inny
   "type": "firewallrules",
   "name": "AllowAllWindowsAzureIps",
   ...
-}
-```
-
-### <a name="resource-location"></a>Lokalizacja zasobu
-
-Podczas wdrażania szablonu należy podać lokalizację każdego zasobu. Różne typy zasobów są obsługiwane w różnych lokalizacjach. Aby uzyskać obsługiwane lokalizacje dla typu zasobu, zobacz [dostawcy zasobów platformy Azure i ich typy](resource-manager-supported-services.md).
-
-Użyj parametru, aby określić lokalizację dla zasobów, i ustaw wartość domyślną na `resourceGroup().location`.
-
-Poniższy przykład przedstawia konto magazynu wdrożone w lokalizacji określonej jako parametr:
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storageAccountType": {
-      "type": "string",
-      "defaultValue": "Standard_LRS",
-      "allowedValues": [
-        "Standard_LRS",
-        "Standard_GRS",
-        "Standard_ZRS",
-        "Premium_LRS"
-      ],
-      "metadata": {
-        "description": "Storage Account type"
-      }
-    },
-    "location": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]",
-      "metadata": {
-        "description": "Location for all resources."
-      }
-    }
-  },
-  "variables": {
-    "storageAccountName": "[concat('storage', uniquestring(resourceGroup().id))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageAccountName')]",
-      "location": "[parameters('location')]",
-      "apiVersion": "2018-07-01",
-      "sku": {
-        "name": "[parameters('storageAccountType')]"
-      },
-      "kind": "StorageV2",
-      "properties": {}
-    }
-  ],
-  "outputs": {
-    "storageAccountName": {
-      "type": "string",
-      "value": "[variables('storageAccountName')]"
-    }
-  }
 }
 ```
 
@@ -801,7 +666,7 @@ W przypadku **zasobów**Dodaj `comments` element lub obiekt metadanych. W poniż
 ]
 ```
 
-Wprzypadku danych wyjściowych Dodaj obiekt metadanych do wartości wyjściowej.
+W **przypadku danych wyjściowych**Dodaj obiekt metadanych do wartości wyjściowej.
 
 ```json
 "outputs": {

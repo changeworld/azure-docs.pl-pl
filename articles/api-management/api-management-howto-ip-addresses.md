@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 64bd71d89446a19d2afe56a32b0c7124e897cb48
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8d7346bb61fad09e3f7c9098809463285ef57e93
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072412"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242483"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Adresy IP API Management platformy Azure
 
@@ -27,7 +27,9 @@ Przy użyciu adresów IP można tworzyć reguły zapory, filtrować ruch przycho
 
 ## <a name="ip-addresses-of-api-management-service"></a>Adresy IP usługi API Management
 
-Jeśli usługa API Management to usługa dla deweloperów, podstawowa, standardowa lub Premium, możesz pobrać adresy IP z pulpitu nawigacyjnego przeglądu zasobu w Azure Portal.
+Każde wystąpienie usługi API Management w warstwie Deweloper, podstawowa, standardowa lub Premium ma publiczne adresy IP, które nie są dostępne wyłącznie dla tego wystąpienia usługi (nie są one udostępniane innym zasobom). 
+
+Adresy IP można pobrać z pulpitu nawigacyjnego przeglądu zasobu w Azure Portal.
 
 ![API Management adres IP](media/api-management-howto-ip-addresses/public-ip.png)
 

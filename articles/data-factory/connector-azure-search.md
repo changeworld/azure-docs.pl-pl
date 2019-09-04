@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: edf475ac11168c33a6b11ccda3482ac44579e8d8
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: bc914d27e9bea15a625dd2cd196401d733f8cfb8
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726218"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275936"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Kopiowanie danych do indeksu Azure Search przy użyciu Azure Data Factory
 
@@ -43,7 +43,7 @@ Następujące właściwości są obsługiwane dla Azure Search połączonej usł
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type musi mieć ustawioną wartość: **AzureSearch** | Yes |
+| type | Właściwość Type musi mieć ustawioną wartość: **AzureSearch** | Tak |
 | url | Adres URL usługi Azure Search. | Tak |
 | key | Klucz administratora dla usługi Azure Search. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
@@ -75,14 +75,14 @@ Następujące właściwości są obsługiwane dla Azure Search połączonej usł
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Azure Search.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Azure Search.
 
 Aby skopiować dane do Azure Search, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| — typ | Właściwość Type zestawu danych musi być ustawiona na wartość: **AzureSearchIndex** | Tak |
-| indexName | Nazwa indeksu Azure Search. Data Factory nie tworzy indeksu. Indeks musi istnieć w Azure Search. | Yes |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **AzureSearchIndex** | Tak |
+| indexName | Nazwa indeksu Azure Search. Data Factory nie tworzy indeksu. Indeks musi istnieć w Azure Search. | Tak |
 
 **Przykład:**
 
@@ -113,7 +113,7 @@ Aby skopiować dane do Azure Search, ustaw typ źródła w działaniu Copy na **
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **AzureSearchIndexSink** | Yes |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **AzureSearchIndexSink** | Tak |
 | writeBehavior | Określa, czy należy scalić lub zamienić, gdy dokument już istnieje w indeksie. Zobacz [Właściwość WriteBehavior](#writebehavior-property).<br/><br/>Dozwolone wartości to: **Scal** (ustawienie domyślne) i **przekazywanie**. | Nie |
 | writeBatchSize | Przekazuje dane do indeksu Azure Search, gdy rozmiar buforu osiągnie writeBatchSize. Aby uzyskać szczegółowe informacje, zobacz [Właściwość WriteBatchSize](#writebatchsize-property) .<br/><br/>Dozwolone wartości to: integer od 1 do 1 000; wartość domyślna to 1000. | Nie |
 
@@ -179,5 +179,5 @@ W poniższej tabeli określono, czy Azure Search typ danych jest obsługiwany.
 | String Array | Nie |
 | GeographyPoint względem | Nie |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

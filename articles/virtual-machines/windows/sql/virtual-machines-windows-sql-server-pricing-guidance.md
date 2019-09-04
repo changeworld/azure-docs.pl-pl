@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 116ffa31fb540897f9a769b73c3a6474dda45b88
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d9b4cf755bbf2e225bee813510c083570b0f8064
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101917"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70280171"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>Wskazówki dotyczące cen dla SQL Server maszyn wirtualnych platformy Azure
 
@@ -113,7 +113,7 @@ Aby używać BYOL z maszyną wirtualną SQL Server, musisz mieć licencję na SQ
 
 | Korzyść BYOL | Opis |
 |-----|-----|
-| **Oszczędności kosztów** | [Korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) oferuje do 55% oszczędności. Aby uzyskać więcej informacji, zobacz [przełączanie modelu licencjonowania] (Virtual-Machines-Windows-SQL-ahb.md |
+| **Oszczędności kosztów** | [Korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) oferuje do 55% oszczędności. Aby uzyskać więcej informacji, zobacz [przełączanie modelu licencjonowania](virtual-machines-windows-sql-ahb.md) |
 | **Bezpłatna pasywna replika pomocnicza** | Kolejną zaletą korzystania z własnej licencji jest [bezpłatna Licencjonowanie jednej pasywnej repliki pomocniczej](https://azure.microsoft.com/pricing/licensing-faq/) na SQL Server w celu zapewnienia wysokiej dostępności. Spowoduje to odcięcie kosztu licencjonowania SQL Server wdrożenia o wysokiej dostępności (na przykład przy użyciu zawsze włączonych grup dostępności). Prawa do uruchamiania pasywnego serwera pomocniczego są dostępne za pomocą wsparcia Software Assurance w trybie failover. |
 
 Aby utworzyć maszynę wirtualną z systemem SQL Server 2017 przy użyciu jednego z tych obrazów dołączenia do własnych licencji, zobacz maszyny wirtualne z prefiksem "{BYOL}":
@@ -166,7 +166,7 @@ W przypadku innych przepływów pracy należy rozważyć automatyczne wyłączen
 
 ## <a name="next-steps"></a>Następne kroki
 
-Ogólne wskazówki dotyczące cen platformy Azure można znaleźć w temacie zapobieganie nieoczekiwanym kosztom rozliczeń [i zarządzania kosztami platformy Azure](../../../billing/billing-getting-started.md). Najnowsze ceny Virtual Machines, w tym SQL Server, znajdują się na stronie cennika usługi Azure VM na platformie Azure dla maszyn wirtualnych i maszyn wirtualnych z [systemem](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+Ogólne wskazówki dotyczące cen platformy Azure można znaleźć w temacie [zapobieganie nieoczekiwanym kosztom rozliczeń i zarządzania kosztami platformy Azure](../../../billing/billing-getting-started.md). Najnowsze ceny Virtual Machines, w tym SQL Server, znajdują się na stronie cennika usługi Azure VM na platformie Azure dla maszyn wirtualnych i maszyn wirtualnych z [systemem](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 Aby zapoznać się z omówieniem SQL Server uruchomionym w usłudze Azure Virtual Machines, zobacz następujące artykuły:
 

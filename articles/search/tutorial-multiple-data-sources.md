@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: tutorial
 ms.date: 06/21/2019
 ms.author: heidist
-ms.openlocfilehash: 71fa4b590b41324536d740da5205977c0cefc448
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: d55a586d3dfb22b5dad377ff656b8d6a6c940bdb
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186503"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241833"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C#Ręczny Łączenie danych z wielu źródeł danych w jednym indeksie Azure Search
 
@@ -70,7 +70,7 @@ Ten przykład używa dwóch małych zestawów danych, które opisują siedem fik
 
 1. [Zaloguj się do Azure Portal](https://portal.azure.com), a następnie przejdź do strony przegląd konta Azure Cosmos DB.
 
-1. Na pasku menu kliknij pozycję Dodaj kontener. Określ wartość "Utwórz nową bazę danych" i użyj nazwy " **pokoje hotelowe-DB**". Wprowadź **pokoje hotelowe** dla nazwy kolekcji i **/HotelId** dla klucza partycji. Kliknij przycisk **OK** , aby utworzyć bazę danych i kontener.
+1. Na pasku menu kliknij pozycję Dodaj kontener. Określ wartość "Utwórz nową bazę danych" i użyj nazwy " **pokoje hotelowe-DB**". Wprowadź **Hotele** dla nazwy kolekcji i **/HotelId** dla klucza partycji. Kliknij przycisk **OK** , aby utworzyć bazę danych i kontener.
 
    ![Dodaj kontener Azure Cosmos DB](media/tutorial-multiple-data-sources/cosmos-add-container.png "Dodawanie kontenera Azure Cosmos DB")
 
@@ -274,7 +274,7 @@ private static async Task CreateAndRunBlobIndexer(string indexName, SearchServic
     await searchService.DataSources.CreateOrUpdateAsync(blobDataSource);
 ```
 
-Po utworzeniu źródła danych program skonfiguruje obiekt BLOB indeksatora o nazwie **sale**-Indexer.
+Po utworzeniu źródła danych program skonfiguruje obiekt BLOB indeksatora o nazwie **sale-Indexer**.
 
 ```csharp
     // Add a field mapping to match the Id field in the documents to 
@@ -334,7 +334,7 @@ Ponieważ indeks został już wypełniony danymi hotelu z bazy danych Azure Cosm
 
 Można eksplorować wypełniony indeks wyszukiwania po uruchomieniu programu przy użyciu [**Eksploratora wyszukiwania**](search-explorer.md) w portalu.
 
-W Azure Portal Otwórz stronę **Przegląd** usługi wyszukiwania i Znajdź na liście **indeksów** pozycję **Pokój** z przemieszczeń hotelowych.
+W Azure Portal Otwórz stronę **Przegląd** usługi wyszukiwania i Znajdź na liście **indeksów** pozycję **Pokój z przemieszczeń hotelowych** .
 
   ![Lista indeksów Azure Search](media/tutorial-multiple-data-sources/index-list.png "Lista indeksów Azure Search")
 

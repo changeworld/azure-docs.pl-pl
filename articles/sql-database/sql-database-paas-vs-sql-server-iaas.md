@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/22/2019
-ms.openlocfilehash: f303e6ba30b8b68f1bed4c5bcacd746932cbe156
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 998318ad1418c1076676725af03bd7f33c963b3a
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873827"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279935"
 ---
 # <a name="choose-the-right-deployment-option-in-azure-sql"></a>Wybierz odpowiednią opcję wdrożenia w usłudze Azure SQL
 
@@ -33,7 +33,7 @@ Podczas każdej dyskusji dotyczącej baz danych Azure w zestawieniu z lokalnymi 
 
 Jak widać na diagramie, każda oferta może być scharakteryzowana przez poziom administrowania w ramach infrastruktury oraz stopień wydajności.
 
-Na platformie Azure możesz mieć SQL Server obciążenia działające jako usługa hostowana ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)) lub infrastruktura hostowana ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)). W ramach programu PaaS masz wiele opcji wdrażania i warstw usług w ramach każdej opcji wdrażania. Kluczowym pytaniem, które należy zadać w przypadku podejmowania decyzji między PaaS lub IaaS, jest zarządzanie bazą danych, stosowanie poprawek, tworzenie kopii zapasowych lub delegowanie tych operacji na platformę Azure?
+Na platformie Azure możesz mieć SQL Server obciążenia działające jako usługa hostowana ([PaaS](https://azure.microsoft.com/overview/what-is-paas/)) lub infrastruktura hostowana ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)). W ramach programu PaaS masz wiele opcji wdrażania i warstw usług w ramach każdej opcji wdrażania. Kluczowym pytaniem, które należy zadać w przypadku podejmowania decyzji o wyborze między PaaS lub IaaS, jest zarządzanie bazą danych, stosowanie poprawek i wykonywanie kopii zapasowych. Czy chcesz delegować te operacje na platformę Azure?
 
 W zależności od odpowiedzi dostępne są następujące opcje:
 
@@ -41,7 +41,7 @@ W zależności od odpowiedzi dostępne są następujące opcje:
 
 
   Bazy danych oferują następujące opcje wdrażania:
-  - Jako [***pojedyncza baza danych***](sql-database-single-database.md) z własnym zestawem zasobów zarządzanych za pośrednictwem serwera bazy danych. Pojedyncza baza danych jest podobna do [zawartej bazy danych](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) w SQL Server. Ta opcja jest zoptymalizowana pod kątem nowoczesnego opracowywania nowych aplikacji w chmurze. [](sql-database-service-tier-hyperscale.md) Dostępne są opcje skalowania i bezserwerowe. [](sql-database-serverless.md)
+  - Jako [***pojedyncza baza danych***](sql-database-single-database.md) z własnym zestawem zasobów zarządzanych za pośrednictwem serwera bazy danych. Pojedyncza baza danych jest podobna do [zawartej bazy danych](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) w SQL Server. Ta opcja jest zoptymalizowana pod kątem nowoczesnego opracowywania nowych aplikacji w chmurze. Dostępne są opcje [skalowania](sql-database-service-tier-hyperscale.md) i [bezserwerowe](sql-database-serverless.md) .
   - [***Pula elastyczna***](sql-database-elastic-pool.md), która jest kolekcją baz danych ze współdzielonym zestawem zasobów zarządzanych za pośrednictwem serwera bazy danych. Pojedyncze bazy danych można przenieść do i z puli elastycznej. Ta opcja jest zoptymalizowana pod kątem nowoczesnego opracowywania nowych aplikacji w chmurze przy użyciu wielodostępnego wzorca aplikacji SaaS. Pule elastyczne zapewniają ekonomiczne rozwiązanie do zarządzania wydajnością wielu baz danych, które mają wzorce użycia zmiennych.
   - [***Serwer bazy danych***](sql-database-servers.md), który służy do zarządzania grupami pojedynczych baz danych i pul elastycznych. Serwery baz danych pełnią rolę centralnego punktu administracyjnego dla wielu baz danych pojedynczych lub w puli, [logowania](sql-database-manage-logins.md), [reguł zapory](sql-database-firewall-configure.md), [reguł inspekcji](sql-database-auditing.md), [zasad wykrywania zagrożeń](sql-database-threat-detection.md)i [grup trybu failover](sql-database-auto-failover-group.md).
 

@@ -1,105 +1,105 @@
 ---
-title: Pobierz metryki usługi Azure Cosmos DB z usługi Azure Monitor
+title: Pobierz metryki Azure Cosmos DB z Azure Monitor
 description: ''
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/18/2019
-ms.openlocfilehash: 2eb61a6b9afa3cabf1733be120dfbdacb7de4534
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 09/01/2019
+ms.openlocfilehash: 762c910336fa2b50a46eda23cf66d8a7aa383c52
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276797"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241225"
 ---
-# <a name="monitor-and-debug-azure-cosmos-db-metrics-from-azure-monitor"></a>Monitorowania i debugowania metryk usługi Azure Cosmos DB z usługi Azure Monitor
+# <a name="monitor-and-debug-azure-cosmos-db-metrics-from-azure-monitor"></a>Monitoruj i Debuguj Azure Cosmos DB metryki z Azure Monitor
 
-Możesz wyświetlić metryki usługi Azure Cosmos DB z interfejsem API usługi Azure Monitor. Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, łącznie z witryny Azure portal, uzyskując dostęp do nich za pośrednictwem interfejsu API REST lub ich zapytań przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Metryki usługi Azure Cosmos DB to wartości liczbowe o małych opóźnieniach, domyślnie zbierane częstotliwością co minutę, możesz także agregować tych metryk. Te metryki są zdolne do obsługi scenariuszy w czasie rzeczywistym.  
+Azure Cosmos DB metryki można przeglądać z poziomu interfejsu API Azure Monitor. Azure Monitor oferuje kilka sposobów współpracy z metrykami, w tym Azure Portal, uzyskiwania dostępu do nich za pośrednictwem interfejsu API REST lub wykonywania zapytań przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Metryki Azure Cosmos DB to wartości liczbowe o małym opóźnieniu, zbierane z częstotliwością jednej minuty domyślnie, można również agregować te metryki. Te metryki mogą obsługiwać scenariusze w czasie rzeczywistym.  
 
-W tym artykule opisano różne usługi Azure Cosmos DB metryk, które można wyświetlić z usługi Azure Monitor przy użyciu witryny Azure portal. Jeśli interesuje Cię w typowych przypadkach użycia i jak metryki usługi Azure Cosmos DB re umożliwia analizowanie i debugowanie tych problemów, zobacz [monitorowania i debugowania za pomocą metryk w usłudze Azure Cosmos DB](use-metrics.md) artykułu. Spowoduje użyj jednej z istniejących kont usługi Azure Cosmos i wyświetlić różne metryki poziomie bazy danych, kontenerów, region, żądanie lub operacji. Dlatego upewnij się, masz konto usługi Azure Cosmos z przykładowymi danymi i wykonywanie operacji CRUD na tych danych.
+W tym artykule opisano różne Azure Cosmos DB metryki, które można wyświetlać z Azure Monitor przy użyciu Azure Portal. Jeśli interesuje Cię typowe przypadki użycia i sposób, w jaki Azure Cosmos DB metryki ponownie używane do analizowania i debugowania tych problemów, zobacz [monitorowanie i debugowanie za pomocą metryk w Azure Cosmos DB](use-metrics.md) artykule. Będziesz używać jednego z istniejących kont usługi Azure Cosmos i wyświetlać różne metryki na poziomie bazy danych, kontenera, regionu, żądania lub operacji. Upewnij się, że masz konto usługi Azure Cosmos z przykładowymi danymi i wykonywanie operacji CRUD na tych danych.
 
-## <a name="view-metrics-from-azure-portal"></a>Wyświetl metryki w witrynie Azure portal
+## <a name="view-metrics-from-azure-portal"></a>Wyświetl metryki z Azure Portal
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-1. Wybierz **Monitor** z lewym pasku nawigacyjnym, a wybierz **metryki**.
+1. Wybierz pozycję **monitor** na pasku nawigacyjnym po lewej stronie, a następnie wybierz pozycję **metryki**.
 
-   ![W okienku metryk w usłudze Azure Monitor](./media/cosmos-db-azure-monitor-metrics/monitor-metrics-blade.png)
+   ![Okienko metryki w Azure Monitor](./media/cosmos-db-azure-monitor-metrics/monitor-metrics-blade.png)
 
-1. Z **metryki** okienko > **wybierz zasób** > Wybierz wymagane **subskrypcji**, i **grupy zasobów**. Dla **typ zasobu**, wybierz opcję **kont usługi Azure Cosmos DB**, wybierz jedną z istniejących kont usługi Azure Cosmos i wybierz **Zastosuj**. 
+1. W okienku **metryki** > **Wybierz zasób** > Wybierz wymaganą **subskrypcję**i **grupę zasobów**. W polu **Typ zasobu**wybierz pozycję **konta Azure Cosmos DB**, wybierz jedno z istniejących kont usługi Azure Cosmos i wybierz pozycję **Zastosuj**. 
 
-   ![Wybierz konto usługi Cosmos DB, aby wyświetlić metryki](./media/cosmos-db-azure-monitor-metrics/select-cosmosdb-account.png)
+   ![Wybierz konto Cosmos DB, aby wyświetlić metryki](./media/cosmos-db-azure-monitor-metrics/select-cosmosdb-account.png)
 
-1. Następnie możesz wybrać metryki z listy dostępnych metryk. Możesz wybrać metryki specyficzne dla jednostek żądania, magazynu, opóźnienia, dostępności, Cassandra i inne. Aby dowiedzieć się więcej szczegółów na temat wszystkich dostępnych metryk na tej liście, zobacz [metryki według kategorii](#metrics-by-category) dalszej części tego artykułu. W tym przykładzie wybierzemy **jednostek żądania** i **Avg** jako wartość agregacji. 
+1. Następnie możesz wybrać metrykę z listy dostępnych metryk. Można wybrać metryki specyficzne dla jednostek żądań, magazynu, opóźnień, dostępności, Cassandra i innych. Aby uzyskać szczegółowe informacje na temat wszystkich dostępnych metryk na tej liście, zobacz sekcję [metryki według kategorii](#metrics-by-category) w tym artykule. W tym przykładzie wybieramy **jednostki żądania** i **średnika** jako wartość agregacji. 
 
-   Oprócz tych szczegółów możesz również wybrać **zakres czasu** i **stopień szczegółowości czasu** metryk. W przypadku osiągnięcia maksymalnej liczby można wyświetlać metryki w ciągu ostatnich 30 dni.  Po zastosowaniu filtru wyświetlania wykresu oparte na filtr. Widać to średnia liczba jednostek żądania używane na minutę w wybranym okresie.  
+   Oprócz tych szczegółów można także wybrać **zakres czasu** i **stopień szczegółowości** metryk. Co więcej, można wyświetlić metryki z ostatnich 30 dni.  Po zastosowaniu filtru na podstawie filtru zostanie wyświetlony wykres. W wybranym okresie można zobaczyć średnią liczbę jednostek żądań zużytych na minutę.  
 
-   ![Wybierz metrykę w witrynie Azure portal](./media/cosmos-db-azure-monitor-metrics/metric-types.png)
+   ![Wybierz metrykę z Azure Portal](./media/cosmos-db-azure-monitor-metrics/metric-types.png)
 
-## <a name="add-filters-to-metrics"></a>Dodaj filtry do metryk
+## <a name="add-filters-to-metrics"></a>Dodawanie filtrów do metryk
 
-Można również filtrować metryki i wykres wyświetlane przez konkretną **CollectionName**, **DatabaseName**, **OperationType**, **Region**, i **StatusCode**. Aby filtrować metryki, wybierz **Dodaj filtr** i wybierz polecenie wymaganej właściwości, takie jak **OperationType** i wybierz wartość, takich jak **zapytania**. Wykres przedstawia następnie jednostek żądania, używane dla operacji zapytania dla wybranego okresu. Operacje wykonywane przy użyciu procedury składowanej nie są rejestrowane, dzięki czemu nie są dostępne w obszarze metryki OperationType.
+Można również filtrować metryki i wykres wyświetlany przez określoną **CollectionName**, **DatabaseName**, **OperationType**, **region**i **StatusCode**. Aby odfiltrować metryki, wybierz pozycję **Dodaj filtr** i wybierz wymaganą właściwość, taką jak **OperationType** , i wybierz wartość, taką jak **zapytanie**. Następnie Wykres wyświetla jednostki żądania wykorzystane dla operacji zapytania w wybranym okresie. Operacje wykonywane za pośrednictwem procedury składowanej nie są rejestrowane, więc nie są dostępne w ramach metryki operacji.
 
-![Dodaj filtr, aby wybrać metryki stopień szczegółowości](./media/cosmos-db-azure-monitor-metrics/add-metrics-filter.png)
+![Dodaj filtr, aby wybrać stopień szczegółowości metryki](./media/cosmos-db-azure-monitor-metrics/add-metrics-filter.png)
 
-Możesz grupować metryki za pomocą **zastosować podział** opcji. Można na przykład grupy jednostek żądania na typ operacji i wyświetlić wykres dla wszystkich operacji na raz, jak pokazano na poniższej ilustracji: 
+Metryki można grupować przy użyciu opcji **Zastosuj dzielenie** . Na przykład można grupować jednostki żądań na typ operacji i wyświetlać wykres dla wszystkich operacji na raz, jak pokazano na poniższej ilustracji: 
 
-![Dodaj filtr podziału](./media/cosmos-db-azure-monitor-metrics/apply-metrics-splitting.png)
+![Dodaj filtr podziału zastosowania](./media/cosmos-db-azure-monitor-metrics/apply-metrics-splitting.png)
 
 
 ## <a id="metrics-by-category"></a>Metryki według kategorii
 
 ### <a name="request-metrics"></a>Metryki żądania
             
-|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji) |Opis|Wymiary| Stopniach szczegółowości czasu| Starsze mapowania metryki | Sposób użycia |
+|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji) |Opis|Wymiary| Stopień szczegółowości czasu| Mapowanie starszej metryki | Użycie |
 |---|---|---|---| ---| ---| ---|
-| TotalRequests (łączna liczba żądań) | Count (licznik) | Liczba żądań| DatabaseName, StatusCode CollectionName, Region,| Wszyscy | TotalRequests, Http 2xx, 3xx Http, Http 400, Http 401, wewnętrzny błąd serwera, Usługa niedostępna, ograniczenia żądań, żądań na sekundę | Używana do monitorowania żądań na został zwrócony kod stanu kolekcji na minutę stopień szczegółowości. Aby uzyskać średnia liczba żądań na sekundę, użycia agregacji liczba na minutę, a następnie podzielić przez 60. |
-| MetadataRequests (liczba żądań metadanych) |Count (licznik) | Liczba żądań metadanych. Usługa Azure Cosmos DB obsługuje kolekcji metadanych systemowych dla każdego konta, które umożliwiają wyliczanie w kolekcji, bazami danych itp., i ich konfiguracji bezpłatnie. | DatabaseName, StatusCode CollectionName, Region,| Wszyscy| |Używana do monitorowania ograniczenia ze względu na żądania metadanych.|
-| MongoRequests (Mongo żądań) | Count (licznik) | Liczba żądań Mongo | DatabaseName CollectionName, Region, CommandName, kod błędu| Wszyscy |Liczba żądań zapytanie MONGO, Mongo aktualizacji żądania wskaźnik, Mongo usunąć liczba żądań, Mongo Wstaw liczba żądań Mongo liczby żądań zakończonych| Umożliwia monitorowanie błędów żądania Mongo, użycia dla polecenia należy wpisać. |
+| TotalRequests (całkowita liczba żądań) | Liczba (liczba) | Liczba wykonanych żądań| DatabaseName, CollectionName, region, StatusCode| Wszyscy | TotalRequests, http 2xx, http 3xx, http 400, HTTP 401, wewnętrzny błąd serwera, Usługa niedostępna, żądania ograniczone, średnia liczba żądań na sekundę | Służy do monitorowania żądań według kodu stanu, kontenera z dokładnością do minuty. Aby uzyskać średnią liczbę żądań na sekundę, użyj agregacji Count na minutę i Podziel ją na 60. |
+| MetadataRequests (żądania metadanych) |Liczba (liczba) | Liczba żądań metadanych. Azure Cosmos DB utrzymuje kontener metadanych systemu dla każdego konta, który umożliwia Wyliczenie kolekcji, baz danych itp., a ich konfiguracje, bez opłat. | DatabaseName, CollectionName, region, StatusCode| Wszyscy| |Służy do monitorowania ograniczania przepustowości ze względu na żądania metadanych.|
+| MongoRequests (żądania Mongo) | Liczba (liczba) | Liczba wykonanych żądań Mongo | DatabaseName, CollectionName, region, CommandName, ErrorCode| Wszyscy |Częstotliwość żądań zapytań Mongo, szybkość żądania aktualizacji Mongo, częstotliwość żądań usunięcia Mongo, Mongo wstawiania liczby żądań, Mongo| Służy do monitorowania błędów żądania Mongo, użycia na typ polecenia. |
 
 ### <a name="request-unit-metrics"></a>Metryki jednostki żądania
 
-|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji)|Opis|Wymiary| Stopniach szczegółowości czasu| Starsze mapowania metryki | Sposób użycia |
+|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji)|Opis|Wymiary| Stopień szczegółowości czasu| Mapowanie starszej metryki | Użycie |
 |---|---|---|---| ---| ---| ---|
-| MongoRequestCharge (Mongo żądanie opłaty) | Liczba (łącznie) |Wykorzystane jednostki żądania MONGO| DatabaseName CollectionName, Region, CommandName, kod błędu| Wszyscy |Opłata za żądanie wyrażana MONGO zapytania, Mongo aktualizacji żądanie — opłata, Mongo usunąć opłata za żądanie wyrażana, Mongo Wstaw opłata za żądanie wyrażana, liczba Mongo żądania opłata| Używana do monitorowania zasobów Mongo (RUS) w ciągu minuty.|
-| TotalRequestUnits (łączna liczba żądań jednostki)| Liczba (łącznie) | Używane jednostki żądania| DatabaseName, StatusCode CollectionName, Region, |Wszyscy| TotalRequestUnits| Umożliwia monitorowanie użycia łączna liczba jednostek RU na minutę stopień szczegółowości. Aby uzyskać RU średnie użycie na sekundę, użycia agregacji łączna liczba na minutę i podzielić przez 60.|
-| ProvisionedThroughput (Aprowizowanej przepływności)| Liczba (maksymalnie) |Przepływność aprowizowana w kolekcji stopień szczegółowości| DatabaseName, CollectionName| 5 MIN| | Używana do monitorowania aprowizowanej przepływności na kolekcję.|
+| MongoRequestCharge (Mongo żądania) | Liczba (łącznie) |Wykorzystane jednostki żądania Mongo| DatabaseName, CollectionName, region, CommandName, ErrorCode| Wszyscy |Mongo naliczanie żądań zapytań, opłata za żądanie aktualizacji Mongo, opłata za żądanie usunięcia żądania, Mongo, opłata za żądanie| Służy do monitorowania Mongo zasobów jednostek RU w ciągu minuty.|
+| TotalRequestUnits (łączna liczba jednostek żądań)| Liczba (łącznie) | Wykorzystane jednostki żądania| DatabaseName, CollectionName, region, StatusCode |Wszyscy| TotalRequestUnits| Służy do monitorowania całkowitego użycia RU z dokładnością do minuty. Aby obliczyć średnią liczbę zużytych jednostek RU na sekundę, użyj łącznej agregacji na minutę i Podziel ją na 60.|
+| ProvisionedThroughput (zainicjowana przepływność)| Liczba (maksimum) |Elastyczna przepływność na poziomie szczegółowości kontenera| DatabaseName, ContainerName| 5 M| | Służy do monitorowania zainicjowanej przepływności na kontener.|
 
 ### <a name="storage-metrics"></a>Metryki magazynu
 
-|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji)|Opis|Wymiary| Stopniach szczegółowości czasu| Starsze mapowania metryki | Sposób użycia |
+|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji)|Opis|Wymiary| Stopień szczegółowości czasu| Mapowanie starszej metryki | Użycie |
 |---|---|---|---| ---| ---| ---|
-| AvailableStorage (dostępnego magazynu) |Bajty (łącznie) | Całkowita ilość miejsca dostępna zgłoszone w 5 minut szczegółowości na region| DatabaseName, CollectionName, Region| 5 MIN| Dostępna pamięć| Służy do monitorowania dostępny magazyn szczegółowości minimalnej pojemności (dotyczy tylko w przypadku magazynu stałej kolekcji) powinien wynosić 5 minut.| 
-| DataUsage (Korzystanie z danych) |Bajty (łącznie) |Łączna ilość danych użycia zgłoszonych w 5 minut szczegółowości na region| DatabaseName, CollectionName, Region| 5 MIN |Rozmiar danych | Umożliwia monitorowanie użycia łączna ilość danych, kolekcji i region, minimalna szczegółowość powinien wynosić 5 minut.|
-| IndexUsage (użycie indeksu) | Bajty (łącznie) |Łączne użycie indeksu zgłoszone w 5 minut szczegółowości na region| DatabaseName, CollectionName, Region| 5 MIN| Rozmiar indeksu| Umożliwia monitorowanie użycia łączna ilość danych, kolekcji i region, minimalna szczegółowość powinien wynosić 5 minut. |
-| DocumentQuota (limit przydziału dokumentu) | Bajty (łącznie) | Przydział pamięci masowej zgłoszone w 5 minut szczegółowości na region.| DatabaseName, CollectionName, Region| 5 MIN |Pojemność magazynu| Umożliwia monitorowanie łącznego limitu przydziału na poziomie kolekcji i region, minimalna szczegółowość powinien wynosić 5 minut.|
-| DocumentCount (liczba dokumentów) | Liczba (łącznie) |Łączną liczbę dokumentów zgłoszone w 5 minut szczegółowości na region| DatabaseName, CollectionName, Region| 5 MIN |Liczba dokumentów|Używane do monitorowania liczby dokumentów w kolekcji i region, minimalna szczegółowość powinien wynosić 5 minut.|
+| AvailableStorage (dostępny magazyn) |Bajty (łącznie) | Łączna ilość dostępnego magazynu zgłoszona z dokładnością do 5 minut na region| DatabaseName, CollectionName, region| 5 M| Dostępny magazyn| Służy do monitorowania dostępnej pojemności magazynu (dotyczy tylko stałych kolekcji magazynów) minimalny stopień szczegółowości powinien wynosić 5 minut.| 
+| Datausage (użycie danych) |Bajty (łącznie) |Całkowite użycie danych zgłoszone z dokładnością do 5 minut na region| DatabaseName, CollectionName, region| 5 M |Rozmiar danych | Służy do monitorowania łącznego użycia danych w kontenerze i regionie, minimalny stopień szczegółowości powinien wynosić 5 minut.|
+| IndexUsage (użycie indeksu) | Bajty (łącznie) |Całkowite użycie indeksów zgłoszone w 5-minutowych stopnia szczegółowości na region| DatabaseName, CollectionName, region| 5 M| Rozmiar indeksu| Służy do monitorowania łącznego użycia danych w kontenerze i regionie, minimalny stopień szczegółowości powinien wynosić 5 minut. |
+| DocumentQuota (przydział dokumentu) | Bajty (łącznie) | Łączny przydział magazynu zgłoszony z dokładnością do 5 minut na region.| DatabaseName, CollectionName, region| 5 M |Pojemność magazynu| Służy do monitorowania łącznego limitu przydziału w kontenerze i regionie. minimalny stopień szczegółowości powinien wynosić 5 minut.|
+| DocumentCount (liczba dokumentów) | Liczba (łącznie) |Łączna liczba dokumentów zgłoszona z dokładnością do 5 minut na region| DatabaseName, CollectionName, region| 5 M |Liczba dokumentów|Używane do monitorowania liczby dokumentów w kontenerze i regionie, minimalny stopień szczegółowości powinien wynosić 5 minut.|
 
-### <a name="latency-metrics"></a>Opóźnienie metryki
+### <a name="latency-metrics"></a>Metryki opóźnienia
 
-|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji)|Opis|Wymiary| Stopniach szczegółowości czasu| Sposób użycia |
+|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji)|Opis|Wymiary| Stopień szczegółowości czasu| Użycie |
 |---|---|---|---| ---| ---|
-| ReplicationLatency (opóźnienie replikacji)| Milisekundy (minimalna, maksymalna i średnia) | Poziomie P99 opóźnienie replikacji między regionami źródłowych i docelowych dla konta włączono geograficznie| SourceRegion, TargetRegion| Wszyscy | Używana do monitorowania na poziomie P99 opóźnienie replikacji między dwoma regionami oddalonymi dowolnego konta z replikacją geograficzną. |
+| ReplicationLatency (opóźnienie replikacji)| Milisekundy (minimum, maksimum, średnia) | Opóźnienie replikacji poziomie P99 w regionach źródłowym i docelowym dla konta z obsługą geograficzną| SourceRegion, TargetRegion| Wszyscy | Służy do monitorowania opóźnienia replikacji poziomie P99 między dowolnymi dwoma regionami dla konta z replikacją geograficzną. |
 
 
 ### <a name="availability-metrics"></a>Metryki dostępności
 
-|Metryka (nazwa wyświetlana metryki) |Jednostka (typ agregacji)|Opis| Stopniach szczegółowości czasu| Starsze mapowania metryki | Sposób użycia |
+|Metryka (nazwa wyświetlana metryki) |Jednostka (typ agregacji)|Opis| Stopień szczegółowości czasu| Mapowanie starszej metryki | Użycie |
 |---|---|---|---| ---| ---|
-| ServiceAvailability (dostępność usługi)| Procent (Minimum, maksimum) | Dostępność żądania konta na jedną godzinę stopień szczegółowości| 1H | Dostępność usługi | Reprezentuje procent sumy przekazane żądania. Żądanie uznaje się niepowodzeniem z powodu błędu systemu, jeśli 410, jest kod stanu 500 lub 503 służy do monitorowania dostępności kont na godzinę stopień szczegółowości. |
+| Serviceavailability (dostępność usługi)| Procent (minimum, maksimum) | Dostępność żądań konta z dokładnością do 1 godziny| 1H | Dostępność usługi | Reprezentuje procent całkowitej liczby żądań zakończonych niepowodzenie. Żądanie jest uznawane za niepowodzenie z powodu błędu systemu, jeśli kod stanu to 410, 500 lub 503 używany do monitorowania dostępności konta na poziomie szczegółowości godzin. |
 
 
-### <a name="cassandra-api-metrics"></a>Metryki interfejsu API rozwiązania Cassandra
+### <a name="cassandra-api-metrics"></a>Metryki interfejs API Cassandra
 
-|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji)|Opis|Wymiary| Stopniach szczegółowości czasu| Sposób użycia |
+|Metryka (nazwa wyświetlana metryki)|Jednostka (typ agregacji)|Opis|Wymiary| Stopień szczegółowości czasu| Użycie |
 |---|---|---|---| ---| ---|
-| CassandraRequests (Cassandra żądań) | Count (licznik) | Liczba żądań interfejsu API rozwiązania Cassandra| DatabaseName, CollectionName, ErrorCode, Region, OperationType, ResourceType| Wszyscy| Umożliwia monitorowanie bazy danych Cassandra żądań na minutę stopień szczegółowości. Aby uzyskać średnia liczba żądań na sekundę, użycia agregacji liczba na minutę, a następnie podzielić przez 60.|
-| CassandraRequestCharges (Cassandra żądania opłaty) | Liczba (Sum, Min, Max, Avg) | Jednostki używane przez żądania interfejsu API rozwiązania Cassandra żądania| DatabaseName, CollectionName, Region, OperationType, ResourceType| Wszyscy| Używana do monitorowania jednostek ru na minutę posługują się konta interfejsu API rozwiązania Cassandra.|
-| CassandraConnectionClosures (zamknięć połączenia bazy danych Cassandra) |Count (licznik) |Liczba połączeń bazy danych Cassandra z zamknięty| ClosureReason, Region| Wszyscy | Używane do monitorowania łączności między klientami i interfejsu API rozwiązania Cassandra usługi Azure Cosmos DB.|
+| CassandraRequests (żądania Cassandra) | Liczba (liczba) | Liczba wykonanych żądań interfejs API Cassandra| DatabaseName, CollectionName, ErrorCode, region, OperationType, ResourceType| Wszyscy| Służy do monitorowania żądań Cassandra z dokładnością do minuty. Aby uzyskać średnią liczbę żądań na sekundę, użyj agregacji Count na minutę i Podziel ją na 60.|
+| CassandraRequestCharges (Cassandra żądania) | Count (sum, min, Max, AVG) | Jednostki żądań używane przez żądania interfejs API Cassandra| DatabaseName, CollectionName, region, OperationType, ResourceType| Wszyscy| Służy do monitorowania jednostek ru używanych na minutę przez konto interfejs API Cassandra.|
+| CassandraConnectionClosures (zamknięcia połączeń Cassandra) |Liczba (liczba) |Liczba zamkniętych połączeń Cassandra| ClosureReason, region| Wszyscy | Służy do monitorowania łączności między klientami i interfejs API Cassandra Azure Cosmos DB.|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Wyświetl i Monitoruj metryki z okienka metryki konta usługi Azure Cosmos DB](use-metrics.md)
+* [Wyświetl i monitoruj metryki z poziomu okienka metryki konta Azure Cosmos DB](use-metrics.md)
 
-* [Rejestrowanie diagnostyczne w usłudze Azure Cosmos DB](logging.md)
+* [Rejestrowanie diagnostyczne w Azure Cosmos DB](logging.md)

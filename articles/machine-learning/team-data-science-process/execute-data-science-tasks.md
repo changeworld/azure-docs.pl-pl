@@ -10,18 +10,18 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9d8ae3a95262b1554e7e97fac8375a44743bf4df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb792034e49b0f8f663eb9ee968ea6fac1372373
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60344669"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278607"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Wykonania zadań dotyczących nauki o danych: eksploracji, modelowania i wdrożenia
 
 Typowe zadania wydobywania danych obejmują eksplorację danych, modelowania i wdrożenia. W tym artykule pokazano, jak **interakcyjna Eksploracja danych, analizy i raportowania (IDEAR)** i **zautomatyzowane modelowania i raportowania (AMAR)** narzędzia, aby wykonać kilka typowych zadań do nauki o danych Interakcyjna Eksploracja danych, analizy danych, raportowania i tworzenia modelu. Przedstawia opcje wdrażania modelu w środowisku produkcyjnym przy użyciu wielu różnych platformach danych i zestaw narzędzi, takie jak następujące:
 
-- [Azure Machine Learning](../service/index.yml)
+- [Azure Machine Learning](../index.yml)
 - [Programu SQL Server z usługami uczenia Maszynowego](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
@@ -73,7 +73,7 @@ Aby uzyskać więcej informacji, zobacz [zautomatyzowane modelowania i raportowa
 ### <a name="model-management"></a>Zarządzanie modelami
 Po zostały skompilowane wielu modeli, należy zazwyczaj ma system rejestrowania modeli i zarządzania nimi. Zazwyczaj należy kombinację skryptów lub interfejsów API i bazy danych lub wersji systemu zaplecza. Jest kilka opcji, które należy rozważyć do wykonywania tych zadań zarządzania są:
 
-1. [Usługa Azure Machine Learning — Usługa Zarządzanie modelami](../service/index.yml)
+1. [Usługa Azure Machine Learning — Usługa Zarządzanie modelami](../index.yml)
 2. [ModelDB z uniwersytetu MIT](https://mitdbg.github.io/modeldb/) 
 3. [Programu SQL server jako system zarządzania modelu](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)

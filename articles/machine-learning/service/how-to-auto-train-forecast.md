@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 793474495f3ab3ef06a17b48d15c2f91d0677365
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2a037a495a1e1ed211bd9a535891ccf75fdb140b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848162"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278176"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Autouczenie modelu prognozowania szeregów czasowych
 
@@ -38,7 +38,7 @@ Funkcje wyodrębnione z danych szkoleniowych odgrywają rolę krytyczną. I, zau
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Obszar roboczy usługi Azure Machine Learning. Aby utworzyć obszar roboczy, zobacz [Tworzenie obszaru roboczego usługi Azure Machine Learning](how-to-manage-workspace.md).
-* W tym artykule założono podstawową wiedzę na temat konfigurowania zautomatyzowanego eksperymentu uczenia maszynowego. Postępuj zgodnie z [](how-to-configure-auto-train.md) [samouczkiem](tutorial-auto-train-models.md) lub poradami, aby zobaczyć podstawowe wzorce projektowe eksperymentu w usłudze Machine Learning.
+* W tym artykule założono podstawową wiedzę na temat konfigurowania zautomatyzowanego eksperymentu uczenia maszynowego. Postępuj zgodnie z [samouczkiem](tutorial-auto-train-models.md) lub poradami [, aby zobaczyć](how-to-configure-auto-train.md) podstawowe wzorce projektowe eksperymentu w usłudze Machine Learning.
 
 ## <a name="preparing-data"></a>Przygotowywanie danych
 
@@ -198,5 +198,5 @@ Powtórz kroki niezbędne do załadowania tych przyszłych danych do ramki Dataf
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Postępuj [](tutorial-auto-train-models.md) zgodnie z samouczkiem, aby dowiedzieć się, jak tworzyć eksperymenty przy użyciu automatycznej uczenia maszynowego
-* Zapoznaj się z dokumentacją [zestawu Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk) .
+* Postępuj zgodnie z [samouczkiem](tutorial-auto-train-models.md) , aby dowiedzieć się, jak tworzyć eksperymenty przy użyciu automatycznej uczenia maszynowego
+* Zapoznaj się z dokumentacją [zestawu Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) .

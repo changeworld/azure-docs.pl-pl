@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: 096b6a13c85d04ebeb4f2ffae72acdd8629ae886
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: cdbb545e981e50e23bbbb011dc54577acf7974f7
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191752"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241749"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosuj ustawienia klastra Service Fabric
 W tym artykule opisano różne ustawienia sieci szkieletowej dla klastra Service Fabric, które można dostosować. W przypadku klastrów hostowanych na platformie Azure można dostosować ustawienia za pomocą [Azure Portal](https://portal.azure.com) lub szablonu Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [uaktualnianie konfiguracji klastra platformy Azure](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych można dostosować ustawienia, aktualizując plik *ClusterConfig. JSON* i wykonując uaktualnienie konfiguracji w klastrze. Aby uzyskać więcej informacji, zobacz [uaktualnianie konfiguracji klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -311,7 +311,7 @@ Poniżej znajduje się lista ustawień sieci szkieletowej, które można dostoso
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki lub Krótki opis** |
 | --- | --- | --- | --- |
 |EnableApplicationTypeHealthEvaluation |Bool, wartość domyślna to false |Static|Zasady oceny kondycji klastra: Włącz dla oceny kondycji typu aplikacji. |
-|MaxSuggestedNumberOfEntityHealthReports|Int, wartość domyślna to 500 |Dynamiczne|Maksymalna liczba raportów o kondycji, które może mieć jednostka przed zwiększeniem wątpliwości dotyczących logiki raportowania kondycji licznika danych. Każda jednostka kondycji powinna mieć stosunkowo małą liczbę raportów kondycji. Jeśli liczba raportów przekracza tę liczbę; mogą wystąpić problemy z implementacją licznika alarmowego. Jednostka z zbyt dużą liczbą raportów jest oflagowana przy użyciu raportu kondycji ostrzegawczej, gdy jednostka jest szacowana. |
+|MaxSuggestedNumberOfEntityHealthReports|Int, wartość domyślna to 100 |Dynamiczne|Maksymalna liczba raportów o kondycji, które może mieć jednostka przed zwiększeniem wątpliwości dotyczących logiki raportowania kondycji licznika danych. Każda jednostka kondycji powinna mieć stosunkowo małą liczbę raportów kondycji. Jeśli liczba raportów przekracza tę liczbę; mogą wystąpić problemy z implementacją licznika alarmowego. Jednostka z zbyt dużą liczbą raportów jest oflagowana przy użyciu raportu kondycji ostrzegawczej, gdy jednostka jest szacowana. |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
 

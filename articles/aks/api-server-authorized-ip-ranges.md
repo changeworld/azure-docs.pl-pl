@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: fe0c9d7e870b56bf83b70845af9159ea0703c4ab
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 487940bfb5d6e7c5eebf99f804f57c3e17709377
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533631"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276498"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Wersja zapoznawcza — bezpieczny dostęp do serwera interfejsu API przy użyciu zakresów autoryzowanych adresów IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -28,13 +28,15 @@ W tym artykule pokazano, jak używać zakresów adresów IP autoryzowanych przez
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
+W tym artykule przyjęto założenie, że pracujesz z klastrami korzystającymi z programu [korzystającą wtyczki kubenet] [korzystającą wtyczki kubenet].  W przypadku klastrów opartych na interfejsie [Azure Container Network Interface (CNI)] [CNI-Networking] nie będzie potrzebna tabela tras wymagana do zabezpieczenia dostępu.  Należy ręcznie utworzyć tabelę tras.  Aby uzyskać więcej informacji, zobacz [Zarządzanie tabelami tras](https://docs.microsoft.com/azure/virtual-network/manage-route-table) .
+
 Zakres adresów IP autoryzowanych przez serwer API działa tylko w przypadku nowych klastrów AKS utworzonych przez Ciebie. W tym artykule opisano sposób tworzenia klastra AKS przy użyciu interfejsu wiersza polecenia platformy Azure.
 
 Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.61 lub nowszej. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne jest zainstalowanie lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 ### <a name="install-aks-preview-cli-extension"></a>Zainstaluj rozszerzenie interfejsu wiersza polecenia AKS-Preview
 
-Aby skonfigurować zakres adresów IP autoryzowanych przez serwer interfejsu API, musisz mieć rozszerzenie interfejsu wiersza polecenia *AKS-Preview* w wersji 0.4.1 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji* zapoznawczej przy użyciu poleceń [AZ Extension Add][az-extension-add] , a następnie wyszukaj wszystkie dostępne aktualizacje za pomocą polecenia [AZ Extension Update][az-extension-update] :
+Aby skonfigurować zakres adresów IP autoryzowanych przez serwer interfejsu API, musisz mieć rozszerzenie interfejsu wiersza polecenia *AKS-Preview* w wersji 0.4.1 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji zapoznawczej* przy użyciu poleceń [AZ Extension Add][az-extension-add] , a następnie wyszukaj wszystkie dostępne aktualizacje za pomocą polecenia [AZ Extension Update][az-extension-update] :
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -85,7 +87,7 @@ Aby uzyskać więcej informacji na temat serwera interfejsu API i innych składn
 
 Zakres adresów IP autoryzowanych przez serwer interfejsu API działa tylko w przypadku nowych klastrów AKS. Nie można włączyć autoryzowanych zakresów adresów IP w ramach operacji tworzenia klastra. Jeśli spróbujesz włączyć autoryzowane zakresy adresów IP w ramach procesu tworzenia klastra, węzły klastra nie będą mogły uzyskać dostępu do serwera interfejsu API podczas wdrażania, ponieważ w tym punkcie nie jest zdefiniowany adres IP ruchu wychodzącego.
 
-Najpierw utwórz klaster przy użyciu polecenia [AZ AKS Create][az-aks-create] . Poniższy przykład tworzy klaster z jednym węzłem o nazwie *myAKSCluster* w grupie zasobów o nazwiemoja ResourceName.
+Najpierw utwórz klaster przy użyciu polecenia [AZ AKS Create][az-aks-create] . Poniższy przykład tworzy klaster z jednym węzłem o nazwie *myAKSCluster* w grupie zasobów o nazwie Moja *resourceName*.
 
 ```azurecli-interactive
 # Create an Azure resource group
@@ -109,7 +111,7 @@ Aby upewnić się, że węzły w klastrze mogą niezawodnie komunikować się z 
 > [!WARNING]
 > Korzystanie z zapory platformy Azure może wiązać się ze znacznymi kosztami w ramach miesięcznego cyklu rozliczeniowego. Wymóg używania zapory platformy Azure powinien być konieczny tylko w tym okresie wstępnej wersji zapoznawczej. Aby uzyskać więcej informacji i planowanie kosztów, zobacz [Cennik usługi Azure firewall][azure-firewall-costs].
 >
-> Alternatywnie, Jeśli klaster korzysta ze [standardowego modułu równoważenia obciążenia SKU][standard-sku-lb], nie trzeba konfigurować zapory platformy Azure jako bramy wychodzącej. Użyj [AZ Network Public-IP list][az-network-public-ip-list] i określ grupę zasobów klastra AKS, która zwykle zaczyna się od *MC_* . Spowoduje to wyświetlenie publicznego adresu IP dla klastra, który można dozwolonych. Na przykład:
+> Alternatywnie, Jeśli klaster korzysta ze [standardowego modułu równoważenia obciążenia SKU][standard-sku-lb], nie trzeba konfigurować zapory platformy Azure jako bramy wychodzącej. Użyj [AZ Network Public-IP list][az-network-public-ip-list] i określ grupę zasobów klastra AKS, która zwykle zaczyna się od *MC_* . Spowoduje to wyświetlenie publicznego adresu IP dla klastra, który można dozwolonych. Przykład:
 >
 > ```azurecli-interactive
 > RG=$(az aks show --resource-group myResourceGroup --name myAKSClusterSLB --query nodeResourceGroup -o tsv)

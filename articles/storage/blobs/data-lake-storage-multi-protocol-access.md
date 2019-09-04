@@ -1,5 +1,5 @@
 ---
-title: Dostęp przez wiele protokołów w Azure Data Lake Storage | Microsoft Docs
+title: Dostęp z wieloprotokołem do Azure Data Lake Storage (wersja zapoznawcza) | Microsoft Docs
 description: Używaj interfejsów API obiektów blob i aplikacji, które używają interfejsów API obiektów blob z Azure Data Lake Storage Gen2.
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: cc0191a9484a09ed12e0ca0cde4d51681e44ec5f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 471e3008c25ddef83dd9b502dd8f677ae31cc71b
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855538"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259376"
 ---
-# <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Dostęp z wieloprotokołem do Azure Data Lake Storage
+# <a name="multi-protocol-access-on-azure-data-lake-storage-preview"></a>Dostęp przez wiele protokołów w Azure Data Lake Storage (wersja zapoznawcza)
 
 Interfejsy API obiektów BLOB działają teraz z kontami, które mają hierarchiczną przestrzeń nazw. To odblokowuje cały ekosystem narzędzi, aplikacji i usług, a także wszystkie funkcje magazynu obiektów BLOB do kont, które mają hierarchiczną przestrzeń nazw.
 
 Do tej pory mogło być konieczne przechowywanie oddzielnych rozwiązań magazynu dla magazynu obiektów i magazynu analizy. Dzieje się tak, ponieważ Azure Data Lake Storage Gen2 miała ograniczoną obsługę ekosystemu. Miał także ograniczony dostęp do funkcji Blob service, takich jak rejestrowanie diagnostyczne. Pofragmentowane rozwiązanie magazynu jest trudne do utrzymania, ponieważ trzeba przenieść dane między kontami, aby osiągnąć różne scenariusze. Nie musisz już tego robić.
 
 > [!NOTE]
-> Dostęp za pomocą protokołu wieloprotokołowego Data Lake Storage jest dostępny w publicznej wersji zapoznawczej, a dostęp się tylko w regionach **zachodnie stany USA 2** i **zachodnie stany USA** . Aby zapoznać się z ograniczeniami, zobacz artykuł [znane problemy](data-lake-storage-known-issues.md) . Aby zarejestrować się w wersji zapoznawczej, zobacz [Tę stronę](https://aka.ms/blobinteropsignup).
+> Dostęp do wieloprotokołowego Data Lake Storage jest dostępny w publicznej wersji zapoznawczej, a w [tych regionach](#region-availability). Aby zapoznać się z ograniczeniami, zobacz artykuł [znane problemy](data-lake-storage-known-issues.md) . Aby zarejestrować się w wersji zapoznawczej, zobacz [Tę stronę](https://aka.ms/blobinteropsignup).
 
 ## <a name="use-the-entire-ecosystem-of-applications-tools-and-services"></a>Korzystaj z całego ekosystemu aplikacji, narzędzi i usług
 
@@ -46,9 +46,23 @@ Interfejsy API obiektów blob i interfejsy API Data Lake Storage Gen2 mogą dzia
 
 ![Dostęp z wieloprotokołem do Data Lake Storage koncepcyjnych](./media/data-lake-storage-interop/interop-concept.png) 
 
-Istniejące narzędzia i aplikacje korzystające z interfejsu API obiektów BLOB uzyskują te korzyści automatycznie. Deweloperzy nie będą musieli ich modyfikować. Data Lake Storage Gen2 konsekwentnie stosuje katalogi i listy ACL na poziomie plików, niezależnie od protokołu używanego przez narzędzia i aplikacje do uzyskiwania dostępu do danych.   
+Istniejące narzędzia i aplikacje korzystające z interfejsu API obiektów BLOB uzyskują te korzyści automatycznie. Deweloperzy nie będą musieli ich modyfikować. Data Lake Storage Gen2 konsekwentnie stosuje katalogi i listy ACL na poziomie plików, niezależnie od protokołu używanego przez narzędzia i aplikacje do uzyskiwania dostępu do danych. 
 
-## <a name="next-steps"></a>Kolejne kroki
+<a id="region-availability" />
+
+## <a name="region-availability"></a>Dostępność w danym regionie
+
+Dostęp z obsługą protokołu do Azure Data Lake Storage (wersja zapoznawcza) jest dostępny w następujących regionach:
+
+|||||
+|-|-|-|-|
+|Środkowe stany USA|Środkowo-zachodnie stany USA|Kanada Środkowa|
+|East US|Azja Wschodnia|Europa Północna|
+|Wschodnie stany USA 2|Azja Południowo-Wschodnia|Europa Zachodnia|
+|Zachodnie stany USA|Australia Wschodnia|Japonia Wschodnia|
+|Zachodnie stany USA 2|Brazylia Południowa||
+
+## <a name="next-steps"></a>Następne kroki
 
 Zobacz [znane problemy](data-lake-storage-known-issues.md)
 

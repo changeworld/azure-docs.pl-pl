@@ -9,14 +9,14 @@ ms.service: cognitive-services
 ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: nolachar
+ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 5443b97febd6bf3831690531bceb540181e7676c
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 429570d81f7e15758d8ea60951bb4d01b96f8f2c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706974"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256482"
 ---
 # <a name="when-to-use-enum-entities-and-set-entity-actions"></a>Kiedy używać jednostek WYLICZAnia i ustawiania akcji jednostek
 
@@ -39,21 +39,21 @@ Ten samouczek wprowadzi dwie nowe funkcje. Nowy typ jednostki o nazwie ENUM (Sho
 
 Istnieją przypadki konwersacji, w których znaczenie wyrazów zależy od kontekstu.  Normalne słowa kluczowe z etykietą są interpretowane i wyodrębniane przy użyciu usługi interpretacji języka, ale w takich przypadkach te systemy mogą nie być w stanie uczyć się, używając przykładów z etykietami.
 
-Wyobraź sobie, że przesłuchasz część konwersacji między osobami znajdującymi się w pobliżu i tylko wyraz "tak". Nie wiesz, co jest zgodne z wyrażeniem "yes" lub "potwierdzeniem", ponieważ nie zostało to potwierdzone przed tym pytaniem. Pytanie przed kontekstem, które daje znaczenie odpowiedzi. Podobnie od "tak" jest to typowa odpowiedź na wiele różnych pytań, ponieważ nie jest to możliwe, dostarczając przykłady tak jak w przypadku [niestandardowych](04-introduction-to-entities.md) , wyszkolonych jednostek, ponieważ następnie dowiesz się, jak oznaczyć każdą "tak" jako tę jednostkę.
+Wyobraź sobie, że przesłuchasz część konwersacji między osobami znajdującymi się w pobliżu i tylko wyraz "tak". Nie wiesz, co jest zgodne z wyrażeniem "yes" lub "potwierdzeniem", ponieważ nie zostało to potwierdzone przed tym pytaniem. Pytanie przed kontekstem, które daje znaczenie odpowiedzi. Podobnie od "tak" jest to typowa odpowiedź na wiele różnych pytań, ponieważ nie jest to możliwe, dostarczając przykłady tak jak w przypadku [niestandardowych, wyszkolonych](04-introduction-to-entities.md) jednostek, ponieważ następnie dowiesz się, jak oznaczyć każdą "tak" jako tę jednostkę.
 
 ### <a name="example"></a>Przykład
 
 Wyjaśnimy teraz Poniższy przykład:
 
 Bot Czy chcesz uzyskać Cognitive Services platformy Azure?
-Użytkownik: Tak bot: Czy chcesz mieć lody?
-Użytkownik: Yes
+Użytkownicy Tak bot: Czy chcesz mieć lody?
+Użytkownicy Tak
 
-W poprzednich samouczkach zostały wyszukane niestandardowi [wyszkolone](04-introduction-to-entities.md) jednostki i Twoje początkowe zamyślinie może być przyczyną utworzenia jednostki o nazwie "likesCogServices" i etykiety pierwszej "yes" jako tej jednostki.  Jednak system również oznaczy drugi "tak". Gdy podjęto próbę skorygowania etykiety drugiego "tak" do "likesIceCream", utworzymy konflikt dwóch tych samych danych wejściowych "yes", co oznacza różne elementy i byłyby zablokowane.
+W poprzednich samouczkach zostały wyszukane [niestandardowi wyszkolone](04-introduction-to-entities.md) jednostki i Twoje początkowe zamyślinie może być przyczyną utworzenia jednostki o nazwie "likesCogServices" i etykiety pierwszej "yes" jako tej jednostki.  Jednak system również oznaczy drugi "tak". Gdy podjęto próbę skorygowania etykiety drugiego "tak" do "likesIceCream", utworzymy konflikt dwóch tych samych danych wejściowych "yes", co oznacza różne elementy i byłyby zablokowane.
 
 W takich przypadkach należy używać jednostek WYLICZENIA i akcji SET_ENTITY.
 
-## <a name="when-to-use-enums-or-setentity-actions"></a>Kiedy należy używać wyliczeń lub akcji SET_ENTITY
+## <a name="when-to-use-enums-or-set_entity-actions"></a>Kiedy należy używać wyliczeń lub akcji SET_ENTITY
 
 Użyj poniższych reguł, aby dowiedzieć się, kiedy należy używać jednostek WYLICZENIA i akcji SET_ENTITY:
 
@@ -66,13 +66,13 @@ Innymi słowy, użyj ich w przypadku wszystkich monitów o bliskim zakończeniu,
 > Obecnie obowiązuje ograniczenie do 5 wartości na jednostkę enum. Każda wartość używa jednego z gniazd w bieżącym limicie 64. Zobacz [CL-wartości-i-granice](../cl-values-and-boundaries.md)
 
 Przykład: Bot Czy zamówienie jest poprawne?
-Użytkownik: Tak
+Użytkownicy Tak
 
 Gdy możliwe wartości jednostki są otwarte — zakończono nienaprawione, należy użyć funkcji alternatywnej, takiej jak [oczekiwana jednostka](05-expected-entity.md).
 
 Przykład: Bot Jak się nazywasz?
-Użytkownik: Bot matowy: Jaki jest Twój ulubiony kolor?
-Użytkownik: Srebrny
+Użytkownicy Bot matowy: Jaki jest Twój ulubiony kolor?
+Użytkownicy Srebrny
 
 Te monity są uważane za otwarte, ponieważ mogą być odpowiedzi z dowolnymi wartościami.
 

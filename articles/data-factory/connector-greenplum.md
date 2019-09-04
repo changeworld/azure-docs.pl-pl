@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 50b3b04170f3544017446613a46d4c2ed6537d95
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f0aa1fdb1377b44aee1689e5fdd0372e7cc1d943
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966524"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275073"
 ---
 # <a name="copy-data-from-greenplum-using-azure-data-factory"></a>Kopiowanie danych z Greenplum przy użyciu usługi Azure Data Factory
 
@@ -108,7 +108,9 @@ Aby skopiować dane z Greenplum, należy ustawić właściwość typu zestawu da
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **GreenplumTable** | Tak |
-| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
+| schema | Nazwa schematu. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| table | Nazwa tabeli. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| tableName | Nazwa tabeli ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. Użyj `schema` i`table` dla nowego obciążenia. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
 
@@ -117,11 +119,12 @@ Aby skopiować dane z Greenplum, należy ustawić właściwość typu zestawu da
     "name": "GreenplumDataset",
     "properties": {
         "type": "GreenplumTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Greenplum linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```

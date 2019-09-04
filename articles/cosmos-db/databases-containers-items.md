@@ -4,15 +4,15 @@ description: W tym artykule opisano sposób tworzenia i używania baz danych, ko
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 09/01/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 9c8460380755c6057f7507443d0b564e85c2ff86
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: de9b0a372d04b40a24b6dc0a8952722129f4a55f
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598487"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241209"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Pracuj z bazami danych, kontenerami i elementami w Azure Cosmos DB
 
@@ -74,7 +74,7 @@ Kontener usługi Azure Cosmos jest wyspecjalizowany w jednostkach specyficznych 
 
 | Jednostka usługi Azure Cosmos | Interfejs API SQL | Interfejs API rozwiązania Cassandra | Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB | Interfejs API języka Gremlin | Interfejs API tabel |
 | --- | --- | --- | --- | --- | --- |
-|Usługa Azure container Cosmos | Collection | Tabela | Collection | Graph | Tabela |
+|Usługa Azure container Cosmos | Kontener | Tabela | Collection | Graph | Tabela |
 
 ### <a name="properties-of-an-azure-cosmos-container"></a>Właściwości kontenera usługi Azure Cosmos
 
@@ -101,8 +101,8 @@ Kontener usługi Azure Cosmos obsługuje następujące operacje, gdy używasz do
 | Wyliczanie kontenerów w bazie danych | Tak | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
 | Przeczytaj kontenera | Yes | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
 | Utwórz nowy kontener | Tak | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
-| Aktualizowanie kontenera | Yes | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
-| Usuwanie kontenera | Yes | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
+| Aktualizowanie kontenera | Tak | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
+| Usuwanie kontenera | Tak | Yes | Yes | Yes | Nie dotyczy | Nie dotyczy |
 
 ## <a name="azure-cosmos-items"></a>Usługa Azure Cosmos elementów
 
@@ -118,12 +118,12 @@ Każdy element usługi Azure Cosmos ma następujące właściwości zdefiniowane
 
 | Właściwość zdefiniowana przez system | Generowane przez system lub użytkownik — konfigurowalne| Cel | Interfejs API SQL | Interfejs API rozwiązania Cassandra | Interfejs API usługi Azure Cosmos DB dla bazy danych MongoDB | Interfejs API języka Gremlin | Interfejs API tabel |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_#c1 | Generowane przez system | Unikatowy identyfikator elementu | Yes | Nie | Nie | Nie | Nie |
+|\_#c1 | Generowane przez system | Unikatowy identyfikator elementu | Tak | Nie | Nie | Nie | Nie |
 |\_element ETag | Generowane przez system | Tag jednostki używane do mechanizmu kontroli optymistycznej współbieżności | Yes | Nie | Nie | Nie | Nie |
 |\_TS | Generowane przez system | Sygnatura czasowa ostatniej aktualizacji elementu | Tak | Nie | Nie | Nie | Nie |
 |\_automatycznej | Generowane przez system | Mogą być adresowane identyfikator URI elementu | Yes | Nie | Nie | Nie | Nie |
 |id | Albo | Unikatowa nazwa zdefiniowana przez użytkownika w partycji logicznej. Jeśli użytkownik nie określi identyfikatora, system wygeneruje je automatycznie. | Tak | Yes | Yes | Yes | Yes |
-|Dowolne właściwości zdefiniowanych przez użytkownika | Zdefiniowane przez użytkownika | Właściwości zdefiniowane przez użytkownika reprezentowane w reprezentacji natywnej interfejsu API (w tym JSON, BSON i CQL) | Tak | Yes | Yes | Yes | Yes |
+|Dowolne właściwości zdefiniowanych przez użytkownika | Zdefiniowane przez użytkownika | Właściwości zdefiniowane przez użytkownika reprezentowane w reprezentacji natywnej interfejsu API (w tym JSON, BSON i CQL) | Tak | Yes | Yes | Yes | Tak |
 
 > [!NOTE]
 > Unikatowość `id` właściwości jest wymuszana tylko w obrębie każdej partycji logicznej. Wiele dokumentów może mieć taką samą `id` właściwość z różnymi wartościami klucza partycji.

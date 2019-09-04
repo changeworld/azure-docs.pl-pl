@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 56d332ca00cbd47448b7e3fb8d3ab2d141380b70
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: c845c4bcc8dc57371304b5917ee09191b5256c51
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061531"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276352"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Blob storage za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -315,12 +315,12 @@ Te właściwości są obsługiwane w przypadku obiektów Blob platformy Azure po
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. 
 
-- W przypadku **Parquet, rozdzielany tekst i format binarny**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem i binarnym zestawem danych](#format-based-dataset) .
-- W przypadku innych formatów, takich jak **Orc/Avro/JSON**, zapoznaj się z sekcją [innego formatu zestawu danych](#other-format-dataset) .
+- W przypadku **Parquet, rozdzielonego tekstu, Avro i formatu binarnego**zapoznaj się z sekcją [Parquet, rozdzielaną tekstem i binarnym zestawem danych](#format-based-dataset) .
+- W przypadku innych formatów, takich jak **Format Orc/JSON**, zapoznaj się z sekcją [zestaw danych](#other-format-dataset) .
 
-### <a name="format-based-dataset"></a>Parquet, rozdzielany tekst i binarny zestaw danych
+### <a name="format-based-dataset"></a>Parquet, rozdzielany tekstem, Avro i binarny zestaw danych
 
-Aby skopiować dane do i z magazynu obiektów BLOB w Parquet, rozdzielonym formacie tekstowym lub binarnym, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md) i [formatem binarnym](format-binary.md) w artykule dotyczącym formatu zestawu danych i obsługiwanych ustawień. Następujące właściwości są obsługiwane w przypadku obiektów blob platformy `location` Azure w obszarze Ustawienia w zestawie danych opartym na formacie:
+Aby skopiować dane do i z magazynu obiektów BLOB w Parquet, rozdzielony tekst, Avro lub binarny, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie zestawu danych opartym na formacie i obsługiwanymi ustawieniami. Następujące właściwości są obsługiwane w przypadku obiektów blob platformy `location` Azure w obszarze Ustawienia w zestawie danych opartym na formacie:
 
 | Właściwość   | Opis                                                  | Wymagane |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -362,7 +362,7 @@ Aby skopiować dane do i z magazynu obiektów BLOB w Parquet, rozdzielonym forma
 
 ### <a name="other-format-dataset"></a>Inny zestaw danych formatu
 
-Aby skopiować dane do i z magazynu obiektów BLOB w formacie ORC/Avro/JSON, należy ustawić Właściwość Type zestawu danych na **AzureBlob**. Następujące właściwości są obsługiwane.
+Aby skopiować dane do i z magazynu obiektów BLOB w formacie ORC/JSON, należy ustawić Właściwość Type zestawu danych na **AzureBlob**. Następujące właściwości są obsługiwane.
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -413,12 +413,12 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania dz
 
 ### <a name="blob-storage-as-a-source-type"></a>Magazyn obiektów blob jako typ źródła
 
-- Aby skopiować z **Parquet, rozdzielany tekstem i binarny format**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem i źródłem formatu binarnego](#format-based-source) .
-- Aby skopiować dane z innych formatów, takich jak **Orc/Avro/JSON**, zapoznaj się z sekcją [inne źródło formatu](#other-format-source) .
+- Aby skopiować z **Parquet, rozdzielony tekst, Avro i format binarny**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem i źródłem formatu binarnego](#format-based-source) .
+- Aby skopiować dane z innych formatów, takich jak **Format Orc/JSON**, zapoznaj się z sekcją [inne źródło formatu](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, rozdzielone Źródło tekstu i format binarny
+#### <a name="format-based-source"></a>Parquet, rozdzielany tekstem, Avro i binarny kod źródłowy
 
-Aby skopiować dane do i z magazynu obiektów BLOB w **Parquet, rozdzielonym formacie tekstowym lub binarnym**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md) i [formatem binarnym](format-binary.md) w artykule dotyczącym formatu zestawu danych i obsługiwanych ustawień. Następujące właściwości są obsługiwane w przypadku obiektów blob platformy `storeSettings` Azure w obszarze Ustawienia w źródle kopiowania opartego na formacie:
+Aby skopiować dane do i z magazynu obiektów BLOB w **Parquet, rozdzielony tekst, Avro lub binarny**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie danych opartym na formacie i obsługiwanym Ustawienia. Następujące właściwości są obsługiwane w przypadku obiektów blob platformy `storeSettings` Azure w obszarze Ustawienia w źródle kopiowania opartego na formacie:
 
 | Właściwość                 | Opis                                                  | Wymagane                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -476,7 +476,7 @@ Aby skopiować dane do i z magazynu obiektów BLOB w **Parquet, rozdzielonym for
 
 #### <a name="other-format-source"></a>Inne źródło formatowania
 
-Aby skopiować dane z magazynu obiektów BLOB w **formacie Orc, Avro lub JSON**, ustaw typ źródła w działaniu Copy na **BlobSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji.
+Aby skopiować dane z magazynu obiektów BLOB w **formacie Orc lub JSON**, ustaw typ źródła w działaniu Copy na **BlobSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji.
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -518,12 +518,12 @@ Aby skopiować dane z magazynu obiektów BLOB w **formacie Orc, Avro lub JSON**,
 
 ### <a name="blob-storage-as-a-sink-type"></a>Magazyn obiektów blob jako typ ujścia
 
-- Aby skopiować z **Parquet, rozdzielany tekstem i binarny format**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem i źródłem formatu binarnego](#format-based-source) .
-- Aby skopiować dane z innych formatów, takich jak **Orc/Avro/JSON**, zapoznaj się z sekcją [inne źródło formatu](#other-format-source) .
+- Aby skopiować z **Parquet, rozdzielony tekst, Avro i format binarny**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem i źródłem formatu binarnego](#format-based-source) .
+- Aby skopiować dane z innych formatów, takich jak **Format Orc/JSON**, zapoznaj się z sekcją [inne źródło formatu](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, rozdzielone Źródło tekstu i format binarny
+#### <a name="format-based-source"></a>Parquet, rozdzielany tekstem, Avro i binarny kod źródłowy
 
-Aby skopiować dane z magazynu obiektów BLOB w **Parquet, rozdzielonym formacie tekstowym lub binarnym**, zapoznaj się z [formatem Parquet](format-parquet.md), rozdzielonym [formatem tekstowym](format-delimited-text.md) i artykułem [formatu binarnego](format-binary.md) w oparciu o źródło działania kopiowania opartego na formacie i obsługiwane ustawienia. Następujące właściwości są obsługiwane w przypadku obiektów blob platformy `storeSettings` Azure w obszarze Ustawienia w ujściach kopiowania opartych na formacie:
+Aby skopiować dane z magazynu obiektów BLOB w **Parquet, rozdzielonym formacie tekstowym, Avro lub binarnym**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielonym formatem tekstowym](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie źródłowym i obsługiwane ustawienia. Następujące właściwości są obsługiwane w przypadku obiektów blob platformy `storeSettings` Azure w obszarze Ustawienia w ujściach kopiowania opartych na formacie:
 
 | Właściwość                 | Opis                                                  | Wymagane |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -571,7 +571,7 @@ Aby skopiować dane z magazynu obiektów BLOB w **Parquet, rozdzielonym formacie
 
 #### <a name="other-format-sink"></a>Inny ujścia formatu
 
-Aby skopiować dane do magazynu obiektów BLOB w **formacie Orc/Avro/JSON**, ustaw typ ujścia w działaniu Copy na **wartość blobsink**. Następujące właściwości są obsługiwane w **ujścia** sekcji.
+Aby skopiować dane do magazynu obiektów BLOB w **formacie Orc/JSON**, ustaw typ ujścia w działaniu Copy na **wartość blobsink**. Następujące właściwości są obsługiwane w **ujścia** sekcji.
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |

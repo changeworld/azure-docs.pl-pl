@@ -7,30 +7,28 @@ ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 054f9ed21ee0d7ef725c2b7eee8174c53374b5bc
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 06a767af71f457273e0e20d1248d64c22b3563e7
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232263"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274946"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Omówienie usługi Azure Policy gościa konfiguracji
 
 Oprócz inspekcji i [korygowaniem](../how-to/remediate-resources.md) zasobów platformy Azure, Azure Policy może przeprowadzać inspekcję ustawień wewnątrz maszyny. Sprawdzanie poprawności jest wykonywane przez rozszerzenie konfiguracji gościa i klienta. Rozszerzenie, za pomocą klienta, sprawdza poprawność ustawień, takich jak konfiguracja systemu operacyjnego, Konfiguracja aplikacji lub obecności i ustawienia środowiska.
 
-W tej chwili Azure Policy konfiguracja gościa tylko przeprowadza inspekcję ustawienia wewnątrz maszyny.
+W tej chwili Azure Policy konfiguracja gościa wykonuje tylko inspekcję ustawień wewnątrz maszyny.
 Nie można jeszcze stosować konfiguracji.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="extension-and-client"></a>Rozszerzenie i klienta
 
 Aby przeprowadzić inspekcję ustawień wewnątrz maszyny, [rozszerzenie maszyny wirtualnej](../../../virtual-machines/extensions/overview.md) jest włączone. Rozszerzenie pobiera przypisania zasad mających zastosowanie i odpowiedniej definicji konfiguracji.
 
-### <a name="limits-set-on-the-exension"></a>Limity ustawione na exension
+### <a name="limits-set-on-the-extension"></a>Limity ustawione dla rozszerzenia
 
 Aby ograniczyć rozszerzenie od wpływu na aplikacje działające na komputerze, konfiguracja gościa nie może przekroczyć więcej niż 5% użycia procesora CPU.
-Jest to prawdziwe BOH w przypadku konfiguracji dostarczonych przez firmę Microsoft jako "wbudowane" i dla konfiguracji niestandardowych utworzonych przez klientów.
+Dotyczy to zarówno konfiguracji dostarczonych przez firmę Microsoft jako "wbudowane", jak i dla konfiguracji niestandardowych utworzonych przez klientów.
 
 ## <a name="register-guest-configuration-resource-provider"></a>Procedura Rejestruj dostawcę zasobów konfiguracji gościa
 
@@ -144,6 +142,32 @@ Windows: `C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindo
 Linux: `/var/lib/waagent/Microsoft.GuestConfiguration.ConfigurationforLinux-<version>/GCAgent/logs/dsc.log`
 
 Gdzie `<version>` odwołuje się do bieżącego numeru wersji.
+
+### <a name="collecting-logs-remotely"></a>Zdalne zbieranie dzienników
+
+Pierwszym krokiem w rozwiązywaniu problemów z konfiguracjami lub modułami konfiguracji gościa `Test-GuestConfigurationPackage` należy użyć polecenia cmdlet, wykonując czynności opisane w sekcji [Testowanie pakietu konfiguracji gościa](../how-to/guest-configuration-create.md#test-a-guest-configuration-package).  Jeśli to się nie powiedzie, zbieranie dzienników klienta może pomóc zdiagnozować problemy.
+
+#### <a name="windows"></a>Windows
+
+Jeśli chcesz użyć możliwości polecenia Uruchom maszynę wirtualną platformy Azure do przechwytywania informacji z plików dziennika na maszynach z systemem Windows, może być przydatny Poniższy przykładowy skrypt programu PowerShell. Aby uzyskać szczegółowe informacje na temat uruchamiania skryptu w witrynie Azure Portal lub za pomocą Azure PowerShell, zobacz [Uruchamianie skryptów programu PowerShell na maszynie wirtualnej z systemem Windows za pomocą polecenia Uruchom](../../../virtual-machines/windows/run-command.md).
+
+```powershell
+$linesToIncludeBeforeMatch = 0
+$linesToIncludeAfterMatch = 10
+$latestVersion = Get-ChildItem -Path 'C:\Packages\Plugins\Microsoft.GuestConfiguration.ConfigurationforWindows\' | ForEach-Object {$_.FullName} | Sort-Object -Descending | Select-Object -First 1
+Select-String -Path "$latestVersion\dsc\logs\dsc.log" -pattern 'DSCEngine','DSCManagedEngine' -CaseSensitive -Context $linesToIncludeBeforeMatch,$linesToIncludeAfterMatch | Select-Object -Last 10
+```
+
+#### <a name="linux"></a>Linux
+
+Jeśli chcesz użyć możliwości polecenia Uruchom maszynę wirtualną platformy Azure do przechwytywania informacji z plików dziennika na maszynach z systemem Linux, może być przydatne użycie następującego przykładowego skryptu bash. Aby uzyskać szczegółowe informacje na temat uruchamiania skryptu z witryny Azure Portal lub przy użyciu interfejsu wiersza polecenia platformy Azure, zobacz [Uruchamianie skryptów powłoki na maszynie wirtualnej z systemem Linux przy użyciu polecenia Run](../../../virtual-machines/linux/run-command.md)
+
+```Bash
+linesToIncludeBeforeMatch=0
+linesToIncludeAfterMatch=10
+latestVersion=$(find /var/lib/waagent/ -type d -name "Microsoft.GuestConfiguration.ConfigurationforLinux-*" -maxdepth 1 -print | sort -z | sed -n 1p)
+egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCManagedEngine' "$latestVersion/GCAgent/logs/dsc.log" | tail
+```
 
 ## <a name="guest-configuration-samples"></a>Przykłady konfiguracji gościa
 

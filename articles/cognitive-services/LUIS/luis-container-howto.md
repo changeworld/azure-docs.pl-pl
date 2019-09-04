@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/02/2019
 ms.author: dapine
-ms.openlocfilehash: eaf689ecb8fd64dca15570179733b7d7539a352e
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: d05f98ae695dd428a28ce49934e05c60de6328bc
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050079"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257038"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Instalowanie i uruchamianie kontenerów platformy Docker LUIS
  
@@ -84,11 +84,11 @@ Gdy kontener znajduje się na [komputerze hosta](#the-host-computer), użyj nast
 ![Proces używania kontenera Language Understanding (LUIS)](./media/luis-container-how-to/luis-flow-with-containers-diagram.jpg)
 
 1. [Pakiet eksportu](#export-packaged-app-from-luis) dla kontenera z Luis Portal lub interfejsów API Luis.
-1. Przenieś plik pakietu do wymaganego katalogu wejściowego na [komputerze-hoście](#the-host-computer). Nie zmieniaj nazwy, nie zmieniaj, zastępuj ani nie Kompresuj pliku pakietu LUIS.
+1. Przenieś plik pakietu do wymaganego katalogu **wejściowego** na [komputerze-hoście](#the-host-computer). Nie zmieniaj nazwy, nie zmieniaj, zastępuj ani nie Kompresuj pliku pakietu LUIS.
 1. [Uruchom kontener](##run-the-container-with-docker-run)z wymaganymi ustawieniami _instalacji_ i rozliczeń. Więcej [przykładów](luis-container-configuration.md#example-docker-run-commands) `docker run` polecenia jest dostępnych. 
 1. [Wykonywanie zapytania dotyczącego punktu końcowego przewidywania kontenera](#query-the-containers-prediction-endpoint). 
-1. Po zakończeniu pracy z kontenerem zaimportuj [dzienniki punktów końcowych](#import-the-endpoint-logs-for-active-learning) z instalacji wyjściowej w portalu Luis i [Zatrzymaj](#stop-the-container) kontener.
-1. Aby ulepszyć aplikację [](luis-how-to-review-endpoint-utterances.md) , użyj aktywnej uczenia w portalu Luis na stronie **Przegląd punktu końcowego wyrażenia długości** .
+1. Po zakończeniu pracy z kontenerem [zaimportuj dzienniki punktów końcowych](#import-the-endpoint-logs-for-active-learning) z instalacji wyjściowej w portalu Luis i [Zatrzymaj](#stop-the-container) kontener.
+1. Aby ulepszyć aplikację, użyj [aktywnej uczenia](luis-how-to-review-endpoint-utterances.md) w portalu Luis na stronie **Przegląd punktu końcowego wyrażenia długości** .
 
 Nie można zmienić aplikacji działającej w kontenerze. W kolejności zmiany aplikacji w kontenerze należy zmienić aplikację w usłudze LUIS przy użyciu portalu [Luis](https://www.luis.ai) lub użyć [interfejsów API tworzenia](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)Luis. Następnie Wyszkol i/lub Opublikuj, a następnie Pobierz nowy pakiet i ponownie uruchom kontener.
 
@@ -122,7 +122,7 @@ Przed spakowaniem aplikacji LUIS należy wykonać następujące czynności:
 |Wymagania dotyczące pakietów|Szczegóły|
 |--|--|
 |Wystąpienie zasobów usługi Azure _Cognitive Services_|Obsługiwane regiony obejmują<br><br>Zachodnie Stany```westus```USA ()<br>Europa Zachodnia (```westeurope```)<br>Australia Wschodnia (```australiaeast```)|
-|Przeszkolone lub opublikowana aplikacja LUIS|Bez nieobsługiwanych [zależności](#unsupported-dependencies). |
+|Przeszkolone lub opublikowana aplikacja LUIS|Bez [nieobsługiwanych zależności](#unsupported-dependencies). |
 |Dostęp do systemu plików [komputera hosta](#the-host-computer) |Komputer hosta musi zezwalać na [instalację wejściową](luis-container-configuration.md#mount-settings).|
   
 ### <a name="export-app-package-from-luis-portal"></a>Eksportuj pakiet aplikacji z portalu LUIS
@@ -236,13 +236,13 @@ Więcej [przykładów](luis-container-configuration.md#example-docker-run-comman
 
 > [!IMPORTANT]
 > `Eula`, `Billing`, I `ApiKey` opcje muszą być określone w celu uruchomienia kontenera; w przeciwnym razie nie uruchamia się kontener.  Aby uzyskać więcej informacji, zobacz [rozliczeń](#billing).
-> Wartość ApiKey jest **kluczem** ze strony klucze i punkty końcowe w portalu Luis i jest również dostępna na stronie klucze zasobów platformy Azure `Cognitive Services` .  
+> Wartość ApiKey jest **kluczem** ze strony **zasobów platformy Azure** w portalu Luis i jest również dostępna na stronie klucze zasobów platformy Azure `Cognitive Services` .  
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
 ## <a name="endpoint-apis-supported-by-the-container"></a>Interfejsy API punktu końcowego obsługiwane przez kontener
 
-Dla tego kontenera są dostępne zarówno wersje 2, jak i [v3 (](luis-migration-api-v3.md) wersja zapoznawcza) interfejsu API. 
+Dla tego kontenera są dostępne zarówno wersje 2, jak i [v3 (wersja zapoznawcza)](luis-migration-api-v3.md) interfejsu API. 
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Zbadaj punkt końcowy przewidywania kontenera
 
@@ -314,7 +314,7 @@ Aby zamknąć kontener, w środowisku wiersza polecenia, w którym jest uruchomi
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Jeśli uruchamiasz kontener z instalacją wyjściową [](luis-container-configuration.md#mount-settings) i włączono rejestrowanie, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera. 
+Jeśli uruchamiasz kontener z [instalacją wyjściową](luis-container-configuration.md#mount-settings) i włączono rejestrowanie, kontener generuje pliki dziennika, które są przydatne do rozwiązywania problemów występujących podczas uruchamiania lub uruchamiania kontenera. 
 
 ## <a name="billing"></a>Rozliczenia
 
@@ -366,7 +366,7 @@ W tym artykule przedstawiono koncepcje i przepływ pracy służące do pobierani
 ## <a name="next-steps"></a>Następne kroki
 
 * Przegląd [skonfigurować kontenery](luis-container-configuration.md) ustawień konfiguracji
-* Rozwiązywanie [](troubleshooting.md) problemów związanych z działaniem funkcji Luis można znaleźć w rozwiązaniu.
+* [Rozwiązywanie](troubleshooting.md) problemów związanych z działaniem funkcji Luis można znaleźć w rozwiązaniu.
 * Użyj więcej [kontenerów Cognitive Services](../cognitive-services-container-support.md)
 
 <!-- Links - external -->

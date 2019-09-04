@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 912a063a5a831f2eade4678719723a56548b57ee
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a20c6e90f38e6443597fdf50edd3d4766dc71096
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967531"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275288"
 ---
 # <a name="copy-data-from-ftp-server-by-using-azure-data-factory"></a>Kopiowanie danych z serwera FTP przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -38,7 +38,7 @@ Ten łącznik FTP jest obsługiwany dla następujących działań:
 W tym przypadku ten łącznik FTP obsługuje:
 
 - Kopiowanie plików przy użyciu uwierzytelniania **podstawowego** lub **anonimowego** .
-- Kopiowanie plików jako pliku lub analizowanie plików z obsługiwanymi [formatami plików i koderami-dekoder kompresji](supported-file-formats-and-compression-codecs.md).
+- Kopiowanie plików jako pliku lub analizowanie plików z [obsługiwanymi formatami plików i koderami-dekoder kompresji](supported-file-formats-and-compression-codecs.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -122,12 +122,12 @@ Dla połączonej usługi FTP są obsługiwane następujące właściwości:
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. 
 
-- W przypadku **Parquet, rozdzielany tekst i format binarny**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem i binarnym zestawem danych](#format-based-dataset) .
-- W przypadku innych formatów, takich jak **Orc/Avro/JSON**, zapoznaj się z sekcją [innego formatu zestawu danych](#other-format-dataset) .
+- W przypadku **Parquet, rozdzielonego tekstu, Avro i formatu binarnego**zapoznaj się z sekcją [Parquet, rozdzielaną tekstem, Avro i binarnym zestawem danych](#format-based-dataset) .
+- W przypadku innych formatów, takich jak **Format Orc/JSON**, zapoznaj się z sekcją [zestaw danych](#other-format-dataset) .
 
-### <a name="format-based-dataset"></a>Parquet, rozdzielany tekst i binarny zestaw danych
+### <a name="format-based-dataset"></a>Parquet, rozdzielany tekstem, Avro i binarny zestaw danych
 
-Aby skopiować dane z **Parquet, rozdzielanego tekstem lub formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), rozdzielonym [formatem tekstowym](format-delimited-text.md) i artykułem [formatu binarnego](format-binary.md) w zestawie danych opartym na formacie i obsługiwanymi ustawieniami. Następujące właściwości są obsługiwane w przypadku protokołu FTP `location` w obszarze Ustawienia w zestawie danych opartym na formacie:
+Aby skopiować dane z **Parquet, rozdzielanego tekstem lub formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielonym formatem tekstowym](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie zestawu danych opartym na formacie i obsługiwanymi ustawieniami. Następujące właściwości są obsługiwane w przypadku protokołu FTP `location` w obszarze Ustawienia w zestawie danych opartym na formacie:
 
 | Właściwość   | Opis                                                  | Wymagane |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -166,7 +166,7 @@ Aby skopiować dane z **Parquet, rozdzielanego tekstem lub formatu binarnego**, 
 
 ### <a name="other-format-dataset"></a>Inny zestaw danych formatu
 
-Aby skopiować dane z FTP w **formacie Orc/Avro/JSON**, obsługiwane są następujące właściwości:
+Aby skopiować dane z FTP w **formacie Orc/JSON**, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -174,7 +174,7 @@ Aby skopiować dane z FTP w **formacie Orc/Avro/JSON**, obsługiwane są następ
 | folderPath | Ścieżka do folderu. Filtr symboli wieloznacznych jest obsługiwany, dozwolone symbole `*` wieloznaczne to: (dopasowuje zero `?` lub więcej znaków) i (dopasowuje zero `^` lub pojedynczy znak); Użyj do wyjścia, jeśli rzeczywista nazwa folderu ma symbol wieloznaczny lub ten znak ucieczki wewnątrz. <br/><br/>Przykłady: RootFolder/subfolder/, Zobacz więcej przykładów w [przykładach folderów i filtrów plików](#folder-and-file-filter-examples). |Tak |
 | fileName | **Filtr nazwy lub symbol wieloznaczny** dla plików w ramach określonego "folderPath". Jeśli nie określisz wartości dla tej właściwości, zestaw danych wskazuje wszystkie pliki w folderze. <br/><br/>Dla filtru, dozwolone symbole wieloznaczne są: `*` (dopasowuje zero lub więcej znaków) i `?` (dopasowuje zero lub jeden znak).<br/>— Przykład 1: `"fileName": "*.csv"`<br/>— Przykład 2: `"fileName": "???20180427.txt"`<br/>Użyj `^` jako znak ucieczki, jeśli Twoje rzeczywiste nazwy plików symboli wieloznacznych lub ten znak ucieczki wewnątrz. |Nie |
 | format | Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych.<br/><br/>Jeśli chcesz analizować pliki o określonym formacie, obsługiwane są następujące typy formatu plików: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](supported-file-formats-and-compression-codecs.md#text-format), [formatu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro Format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc Format](supported-file-formats-and-compression-codecs.md#orc-format), i [formatu Parquet](supported-file-formats-and-compression-codecs.md#parquet-format) sekcje. |Brak (tylko w przypadku scenariusza kopia binarna) |
-| compression | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**.<br/>Obsługiwane są następujące poziomy: Optymalnai najszybsza. |Nie |
+| compression | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**.<br/>Obsługiwane są następujące poziomy: **Optymalna** i **najszybsza**. |Nie |
 | useBinaryTransfer | Określ, czy używać trybu transferu binarnego. Wartości mają wartość true w przypadku trybu binarnego (wartość domyślna) i wartość false dla kodu ASCII. |Nie |
 
 >[!TIP]
@@ -217,12 +217,12 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania dz
 
 ### <a name="ftp-as-source"></a>FTP jako źródło
 
-- Aby skopiować z **Parquet, rozdzielany tekstem i binarny format**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem i źródłem formatu binarnego](#format-based-source) .
-- Aby skopiować dane z innych formatów, takich jak **Orc/Avro/JSON**, zapoznaj się z sekcją [inne źródło formatu](#other-format-source) .
+- Aby skopiować z **Parquet, rozdzielony tekst, Avro i format binarny**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem, Avro i plikiem binarnym](#format-based-source) .
+- Aby skopiować dane z innych formatów, takich jak **Format Orc/JSON**, zapoznaj się z sekcją [inne źródło formatu](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, rozdzielone Źródło tekstu i format binarny
+#### <a name="format-based-source"></a>Parquet, rozdzielany tekstem, Avro i binarny kod źródłowy
 
-Aby skopiować dane z **Parquet, rozdzielonego tekstu lub formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstowym](format-delimited-text.md) i artykułem [formatu binarnego](format-binary.md) w oparciu o źródło działania kopiowania opartego na formacie i obsługiwane ustawienia. Następujące właściwości są obsługiwane w przypadku usługi FTP `storeSettings` w obszarze Ustawienia źródła kopiowania opartego na formacie:
+Aby skopiować dane z **Parquet, rozdzielonego tekstu, Avro lub formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielonym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie źródłowym działania kopiowania opartego na formacie i obsługiwanych ustawień . Następujące właściwości są obsługiwane w przypadku usługi FTP `storeSettings` w obszarze Ustawienia źródła kopiowania opartego na formacie:
 
 | Właściwość                 | Opis                                                  | Wymagane                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -281,7 +281,7 @@ Aby skopiować dane z **Parquet, rozdzielonego tekstu lub formatu binarnego**, z
 
 #### <a name="other-format-source"></a>Inne źródło formatowania
 
-Aby skopiować dane z FTP w **formacie Orc/Avro/JSON**, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+Aby skopiować dane z FTP w **formacie Orc/JSON**, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |

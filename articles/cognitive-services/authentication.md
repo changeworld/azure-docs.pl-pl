@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: b69bd39e97cc97830142c8b1911f1116927643b2
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: ae3530af7741b8ce48e08c2a85589ffae8a83f49
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467537"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276792"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Uwierzytelnianie żądań w usłudze Azure Cognitive Services
 
@@ -66,7 +66,7 @@ Poniższy film wideo demonstruje użycie klucza Cognitive Services.
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>Uwierzytelnianie za pomocą klucza subskrypcji wielousługowej
 
 >[!WARNING]
-> W tej chwili te usługi **nie** obsługują kluczy wielousługowych: QnA Maker, usługi mowy i Custom Vision.
+> W tej chwili te usługi **nie** obsługują kluczy wielousługowych: QnA Maker, usługi mowy, Custom Vision i wykrywania anomalii.
 
 Ta opcja używa także klucza subskrypcji do uwierzytelniania żądań. Główną różnicą jest to, że klucz subskrypcji nie jest powiązany z określoną usługą, a zamiast tego można użyć jednego klucza do uwierzytelniania żądań dla wielu Cognitive Services. Zobacz [cennik Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/) , aby uzyskać informacje o dostępności regionalnej, obsługiwanych funkcjach i cenach.
 

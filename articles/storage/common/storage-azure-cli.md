@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: d259ea02824937f0c496bb253fa4b6c1f5cea412
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 46ae70bf4f1c2fe0276a3327ff37650dd57341d0
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015635"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259385"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Używanie interfejsu wiersza polecenia platformy Azure z usługą Azure Storage
 
@@ -25,9 +25,9 @@ W tym przewodniku pokazano, jak za pomocą [interfejsu wiersza polecenia platfor
 
 W przykładach w przewodniku założono użycie powłoki bash w Ubuntu, ale inne platformy powinny działać podobnie. 
 
-[!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
-
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
+[!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 W tym przewodniku założono, że rozumiesz podstawowe pojęcia związane z usługą Azure Storage. Przyjęto również założenie, że można spełnić wymagania dotyczące tworzenia konta określone poniżej dla platformy Azure i usługi magazynu.
@@ -41,7 +41,7 @@ W tym przewodniku założono, że rozumiesz podstawowe pojęcia związane z usł
 Pobierz i zainstaluj interfejs wiersza polecenia platformy Azure, postępując zgodnie z instrukcjami podanymi w temacie [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-az-cli2).
 
 > [!TIP]
-> Jeśli masz problemy z instalacją, zapoznaj się z sekcją [Rozwiązywanie problemów z instalacją](/cli/azure/install-az-cli2) artykułu i przewodnikiem rozwiązywania [problemów](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md) w witrynie GitHub.
+> Jeśli masz problemy z instalacją, zapoznaj się z sekcją [Rozwiązywanie problemów z instalacją](/cli/azure/install-az-cli2) artykułu i przewodnikiem [rozwiązywania problemów](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md) w witrynie GitHub.
 >
 
 ## <a name="working-with-the-cli"></a>Praca z interfejsem wiersza polecenia

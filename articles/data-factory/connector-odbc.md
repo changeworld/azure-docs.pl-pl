@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 9ee0f4ccfcd75504be6bb636e7ee54a845a10280
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a20a901d5fde251fdc1a044795615acdc1d61c5b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966918"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277645"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopiowanie danych z i do magazynów danych ODBC przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -57,7 +57,7 @@ Dla połączonej usługi ODBC są obsługiwane następujące właściwości:
 | userName | Określ nazwę użytkownika w przypadku korzystania z uwierzytelniania podstawowego. | Nie |
 | password | Określ hasło dla konta użytkownika określonego dla nazwy użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | credential | Część poświadczeń dostępu do parametrów połączenia określona w formacie wartości właściwości specyficznej dla sterownika. Przykład: `"RefreshToken=<secret refresh token>;"`. Oznacz to pole jako element SecureString. | Nie |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Samodzielna Integration Runtime jest wymagana, jak wspomniano [](#prerequisites)w wymaganiach wstępnych. |Tak |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Samodzielna Integration Runtime jest wymagana, jak wspomniano w [wymaganiach wstępnych](#prerequisites). |Tak |
 
 **Przykład 1: używanie uwierzytelniania podstawowego**
 
@@ -114,13 +114,13 @@ Dla połączonej usługi ODBC są obsługiwane następujące właściwości:
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych ODBC.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych ODBC.
 
-Aby skopiować dane z magazynu danych zgodnego ze standardem ODBC, należy ustawić Właściwość Type zestawu danych na **relacyjny**. Obsługiwane są następujące właściwości:
+Aby skopiować dane z magazynu danych zgodnego ze standardem ODBC, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **Obiekt relacyjny** | Tak |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **ODBC** | Tak |
 | tableName | Nazwa tabeli w magazynie danych ODBC. | Nie dla źródła (Jeśli określono "zapytanie" w źródle aktywności);<br/>Tak dla ujścia |
 
 **Przykład**
@@ -129,7 +129,8 @@ Aby skopiować dane z magazynu danych zgodnego ze standardem ODBC, należy ustaw
 {
     "name": "ODBCDataset",
     "properties": {
-        "type": "RelationalTable",
+        "type": "OdbcTable",
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<ODBC linked service name>",
             "type": "LinkedServiceReference"
@@ -141,17 +142,19 @@ Aby skopiować dane z magazynu danych zgodnego ze standardem ODBC, należy ustaw
 }
 ```
 
+Jeśli używasz `RelationalTable` określonego zestawu danych, jest on nadal obsługiwany w stanie takim, w jakim będziesz mieć możliwość korzystania z nowej usługi.
+
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło ODBC.
 
 ### <a name="odbc-as-source"></a>ODBC jako źródło
 
-Aby skopiować dane z magazynu danych zgodnego ze standardem ODBC, ustaw typ źródła w działaniu Copy na **RelationalSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z magazynu danych zgodnego z ODBC, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **RelationalSource** | Tak |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **OdbcSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
@@ -175,7 +178,7 @@ Aby skopiować dane z magazynu danych zgodnego ze standardem ODBC, ustaw typ źr
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "OdbcSource",
                 "query": "SELECT * FROM MyTable"
             },
             "sink": {
@@ -185,6 +188,8 @@ Aby skopiować dane z magazynu danych zgodnego ze standardem ODBC, ustaw typ źr
     }
 ]
 ```
+
+Jeśli używasz `RelationalSource` typu source, nadal jest ono obsługiwane w stanie takim, w jakim będziesz mieć możliwość użycia nowego.
 
 ### <a name="odbc-as-sink"></a>ODBC jako ujścia
 
@@ -242,7 +247,7 @@ Dane można kopiować do SAP HANA bazy danych przy użyciu uniwersalnego łączn
 
 Skonfiguruj własne Integration Runtime na komputerze z dostępem do magazynu danych. Aby nawiązać połączenie z magazynem danych, Integration Runtime używa sterownika ODBC dla SAP HANA. W związku z tym Zainstaluj sterownik, jeśli nie został jeszcze zainstalowany na tym samym komputerze. Szczegółowe informacje znajdują się w sekcji [wymagania wstępne](#prerequisites) .
 
-Przed użyciem ujścia SAP HANA w rozwiązaniu Data Factory Sprawdź, czy Integration Runtime może nawiązać połączenie z magazynem danych, korzystając z instrukcji w sekcji Rozwiązywanie problemów [z łącznością](#troubleshoot-connectivity-issues) .
+Przed użyciem ujścia SAP HANA w rozwiązaniu Data Factory Sprawdź, czy Integration Runtime może nawiązać połączenie z magazynem danych, korzystając z instrukcji w sekcji [Rozwiązywanie problemów z łącznością](#troubleshoot-connectivity-issues) .
 
 Utwórz połączoną usługę ODBC, aby połączyć SAP HANA magazyn danych z usługą Azure Data Factory, jak pokazano w następującym przykładzie:
 

@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: d186d0477fd05f4948bd0280ee9ce677ad1b7542
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: d7668f49df1caca6b4261424b0d2c025a640d572
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207307"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258782"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>Szybki start: Language Understanding (LUIS) Tworzenie biblioteki klienta dla platformy .NET
 
@@ -37,9 +37,9 @@ Użyj biblioteki klienta tworzenia Language Understanding (LUIS) dla platformy .
 
 ## <a name="setting-up"></a>Konfigurowanie
 
-### <a name="get-your-language-understanding-luis-authoring-key"></a>Pobierz klucz tworzenia Language Understanding (LUIS)
+### <a name="get-your-language-understanding-luis-starter-key"></a>Pobierz klucz początkowy Language Understanding (LUIS)
 
-Pobierz [klucz tworzenia](luis-how-to-account-settings.md)i [Utwórz zmienną środowiskową](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla klucza o nazwie `COGNITIVESERVICE_AUTHORING_KEY`.
+Pobierz [klucz początkowy](luis-how-to-azure-subscription.md#starter-key)i [Utwórz zmienną środowiskową](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla klucza o nazwie `COGNITIVESERVICE_AUTHORING_KEY`.
 
 ### <a name="create-a-new-c-application"></a>Utwórz nową C# aplikację
 
@@ -91,8 +91,8 @@ Po utworzeniu klienta Użyj tego klienta, aby uzyskać dostęp do funkcji, w tym
 * Przykład wyrażenia długości — [Dodaj przez partię](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.batchasync?view=azure-dotnet), [Usuń według identyfikatora](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.deleteasync?view=azure-dotnet) 
 * Funkcje — zarządzanie [listami fraz](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.featuresextensions.addphraselistasync?view=azure-dotnet) 
 * Model — zarządzanie [intencjami](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions?view=azure-dotnet) i jednostkami
-* Wzorce — zarządzanie [](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.patternextensions?view=azure-dotnet) wzorcami
-* Uczenie [](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.trainversionasync?view=azure-dotnet) aplikacji i sondowanie jej pod kątem [stanu szkolenia](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.getstatusasync?view=azure-dotnet)
+* [Wzorce — zarządzanie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.patternextensions?view=azure-dotnet) wzorcami
+* [Uczenie](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.trainversionasync?view=azure-dotnet) aplikacji i sondowanie jej pod kątem [stanu szkolenia](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.trainextensions.getstatusasync?view=azure-dotnet)
 * [Wersje](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.versionsextensions?view=azure-dotnet) — zarządzanie przy użyciu klonowania, eksportowania i usuwania
 
 
@@ -140,7 +140,7 @@ W katalogu projektu Otwórz plik **program.cs** w preferowanym edytorze lub w ś
     [!code-csharp[Create a LUIS app](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringCreateApplication)]
 
 ## <a name="create-intent-for-the-app"></a>Utwórz cel dla aplikacji
-Zamiarem jest obiekt podstawowy w modelu aplikacji LUIS. Celem jest wyrównanie do grupy zamiarów wypowiedź użytkownika. Użytkownik może zadać pytanie lub utworzyć instrukcję poszukującą konkretnej zamierzonej odpowiedzi z bot (lub innej aplikacji klienckiej). Przykłady zamiarów polegają na rezerwacji lotu, zaproszeniu o Pogoda w miejscu docelowym i zaproszeniu o informacje kontaktowe dotyczące usługi klienta.   
+Zamiarem jest obiekt podstawowy w modelu aplikacji LUIS. Celem jest wyrównanie do grupy _zamiarów_wypowiedź użytkownika. Użytkownik może zadać pytanie lub utworzyć instrukcję poszukującą konkretnej _zamierzonej_ odpowiedzi z bot (lub innej aplikacji klienckiej). Przykłady zamiarów polegają na rezerwacji lotu, zaproszeniu o Pogoda w miejscu docelowym i zaproszeniu o informacje kontaktowe dotyczące usługi klienta.   
 
 Utwórz [ModelCreateObject](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.models.modelcreateobject?view=azure-dotnet) o nazwie unikatowego zamiaru, a następnie Przekaż identyfikator aplikacji, identyfikator wersji i ModelCreateObject do metody [model. AddIntentAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions.addintentasync?view=azure-dotnet) . Odpowiedź jest IDENTYFIKATORem intencji.
 
@@ -150,7 +150,7 @@ Utwórz [ModelCreateObject](https://docs.microsoft.com/dotnet/api/microsoft.azur
 
 Jednostki, które nie są wymagane, są dostępne w większości aplikacji. Jednostka wyodrębnia informacje z wypowiedź użytkownika, niezbędne do fullfil zamiaru użytkownika. Istnieje kilka typów [wstępnie skompilowanych](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions.addprebuiltasync?view=azure-dotnet) i niestandardowych jednostek, z których każdy ma własne modele obiektów transformacji danych (DTO).  Typowe wstępnie skompilowane jednostki do dodania do aplikacji obejmują [Number](luis-reference-prebuilt-number.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md), [geographyV2](luis-reference-prebuilt-geographyv2.md), [porządkową](luis-reference-prebuilt-ordinal.md). 
 
-Ta Metoda addentities utworzyła `Location` prostą jednostkę z `Class` dwiema rolami, prostą jednostką `Flight` , jednostką złożoną i dodaje kilka wstępnie utworzonych jednostek.
+Ta metoda **addentities** utworzyła `Location` prostą jednostkę z `Class` dwiema rolami, prostą jednostką `Flight` , jednostką złożoną i dodaje kilka wstępnie utworzonych jednostek.
 
 Ważne jest, aby wiedzieć, że jednostki nie są oznaczone zamiarem. Mogą one i zwykle dotyczyć wielu intencji. Tylko przykład wyrażenia długości użytkownika jest oznaczony dla określonego, pojedynczego zamiaru.
 
@@ -168,7 +168,7 @@ Wywołaj [przykłady. BatchAsync](https://docs.microsoft.com/dotnet/api/microsof
 
 [!code-csharp[Add example utterances to a specific intent](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=AuthoringBatchAddUtterancesForIntent)]
     
-Metody tworzenia i etykietowania są metodami narzędzi, które ułatwiają tworzenie obiektów.
+Metody **tworzenia i** **etykietowania** są metodami narzędzi, które ułatwiają tworzenie obiektów.
 
 ## <a name="train-the-app"></a>Uczenie aplikacji
 
@@ -205,5 +205,5 @@ Jeśli chcesz wyczyścić, możesz usunąć aplikację LUIS. Usuwanie aplikacji 
 
 * [Co to jest interfejs API Language Understanding (LUIS)?](what-is-luis.md)
 * [Co nowego?](whats-new.md)
-* [](luis-concept-intent.md)Zamiary, [jednostki](luis-concept-entity-types.md)i [przykład wyrażenia długości](luis-concept-utterance.md)oraz [wstępnie zbudowane jednostki](luis-reference-prebuilt-entities.md)
+* [Zamiary](luis-concept-intent.md), [jednostki](luis-concept-entity-types.md)i [przykład wyrażenia długości](luis-concept-utterance.md)oraz [wstępnie zbudowane jednostki](luis-reference-prebuilt-entities.md)
 * Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/LUIS/LUIS.cs).

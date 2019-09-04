@@ -8,12 +8,13 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 8cb763766ebb151ad1c59b63a33a63493a4f0069
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.localizationpriority: high
+ms.openlocfilehash: 4267b8299e13f1705b218e65b268c45bd5a658e2
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164372"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240314"
 ---
 ::: zone target = "docs"
 
@@ -152,7 +153,7 @@ Przed rozpoczęciem kopiowania danych należy uwzględnić następujące kwestie
 - Upewnij się, że dane są kopiowane do udziałów odpowiadających właściwym formatom danych. To znaczy na przykład, że dane blokowych obiektów blob są kopiowane do udziału dla blokowych obiektów blob. Skopiuj wirtualne dyski twarde do stronicowego obiektu blob.
 
     Jeśli format danych nie pasuje do odpowiedniego typu udziału, na późniejszym etapie przekazywanie danych na platformę Azure zakończy się niepowodzeniem.
--  Podczas kopiowania danych upewnij się, że rozmiar danych jest zgodny z limitami rozmiaru opisanymi w limitach [usługi Azure Storage i Data Box Heavy](data-box-heavy-limits.md).
+-  Podczas kopiowania danych upewnij się, że rozmiar danych jest zgodny z limitami rozmiaru opisanymi w [limitach usługi Azure Storage i Data Box Heavy](data-box-heavy-limits.md).
 - Jeśli dane, które są przekazywane przez Data Box Heavy, są przesyłane współbieżnie przez inne aplikacje poza Data Box Heavy, co może skutkować błędami zadań przekazywania i uszkodzeniem danych.
 - Zalecenia:
     - Nie używaj protokołów SMB i NFS w tym samym czasie.

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 841c55e9aa05e6b627716b084ad7685683f9faec
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 45eebe5bce819fa59f2ed6779e845afa6b3efaa5
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498352"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276854"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Śledzenie operacji niestandardowych przy użyciu zestawu SDK platformy Application Insights .NET
 
@@ -31,8 +31,8 @@ Ten dokument zawiera wskazówki dotyczące śledzenia niestandardowych operacji 
 - Application Insights aplikacji sieci Web (z systemem ASP.NET) w wersji 2.4 +.
 - Application Insights ASP.NET Core wersja 2.1 +.
 
-## <a name="overview"></a>Przegląd
-Operacja jest logicznym elementem pracy wykonywanym przez aplikację. Ma nazwę, czas rozpoczęcia, czas trwania, wynik i kontekst wykonania, takie jak nazwa użytkownika, właściwości i wynik. Jeśli operacja A została zainicjowana przez operację B, operacja B jest ustawiana jako element nadrzędny dla elementu. Operacja może mieć tylko jeden element nadrzędny, ale może mieć wiele operacji podrzędnych. Aby uzyskać więcej informacji na temat korelacji operacji i telemetrii, zobacz Korelacja telemetrii [Azure Application Insights](correlation.md).
+## <a name="overview"></a>Omówienie
+Operacja jest logicznym elementem pracy wykonywanym przez aplikację. Ma nazwę, czas rozpoczęcia, czas trwania, wynik i kontekst wykonania, takie jak nazwa użytkownika, właściwości i wynik. Jeśli operacja A została zainicjowana przez operację B, operacja B jest ustawiana jako element nadrzędny dla elementu. Operacja może mieć tylko jeden element nadrzędny, ale może mieć wiele operacji podrzędnych. Aby uzyskać więcej informacji na temat korelacji operacji i telemetrii, zobacz [korelacja telemetrii Azure Application Insights](correlation.md).
 
 W Application Insights .NET SDK operacja jest opisywana przez klasę abstrakcyjną [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs) i jej elementy podrzędne [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) i [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs).
 
@@ -318,7 +318,7 @@ public async Task<MessagePayload> Dequeue(CloudQueue queue)
     {
         // Update status code and success as appropriate.
         telemetry.Stop();
-        telemetryClient.Track(telemetry);
+        telemetryClient.TrackDependency(telemetry);
     }
 
     return null;
@@ -442,7 +442,7 @@ public async Task RunMyTaskAsync()
 
 Operacja usuwania powoduje zatrzymanie operacji, więc można ją wykonać, a nie wywołując `StopOperation`.
 
-*Ostrzeżenie*: w niektórych przypadkach wyjątek niedozwolony [](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) `finally` może nie być wywoływany, więc operacje mogą nie być śledzone.
+*Ostrzeżenie*: w niektórych przypadkach wyjątek [niedozwolony](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-finally) `finally` może nie być wywoływany, więc operacje mogą nie być śledzone.
 
 ### <a name="parallel-operations-processing-and-tracking"></a>Równoległe przetwarzanie operacji i śledzenie
 
@@ -494,8 +494,8 @@ Każda operacja Application Insights (żądanie lub zależność) obejmuje `Acti
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Poznaj podstawy korelacji [](correlation.md) telemetrii w Application Insights.
+- Poznaj podstawy [korelacji telemetrii](correlation.md) w Application Insights.
 - Zobacz [model danych](../../azure-monitor/app/data-model.md) dla typów Application Insights i modelu danych.
 - Zgłoś niestandardowe [zdarzenia i metryki](../../azure-monitor/app/api-custom-events-metrics.md) do Application Insights.
-- Zapoznaj się [](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) z konfiguracją standardową dla kolekcji właściwości kontekstu.
+- Zapoznaj się z [konfiguracją](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) standardową dla kolekcji właściwości kontekstu.
 - Sprawdź [Przewodnik użytkownika System. Diagnostics. Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) , aby zobaczyć, jak skorelować dane telemetryczne.

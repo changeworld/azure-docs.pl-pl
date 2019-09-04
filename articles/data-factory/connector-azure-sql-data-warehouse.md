@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 2bfb094994bcc6f41044a08aab6eb0155967638e
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: d3365f0a893c80043c93091c3e4e91382bdcd67e
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231430"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275873"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Data Warehouse przy użyciu usługi Azure Data Factory 
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -233,8 +233,10 @@ Aby skopiować dane z lub do Azure SQL Data Warehouse, obsługiwane są następu
 
 | Właściwość  | Opis                                                  | Wymagane                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
-| type      | **Typu** właściwości zestawu danych musi być równa **AzureSqlDWTable**. | Yes                         |
-| tableName | Nazwa tabeli lub widoku w wystąpieniu usługi Azure SQL Data Warehouse, która połączona usługa przywołuje. | Brak źródła tak dla ujścia |
+| type      | **Typu** właściwości zestawu danych musi być równa **AzureSqlDWTable**. | Tak                         |
+| schema | Nazwa schematu. |Brak źródła tak dla ujścia  |
+| table | Nazwa tabeli/widoku. |Brak źródła tak dla ujścia  |
+| tableName | Nazwa tabeli/widoku ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. W przypadku nowych obciążeń Użyj `schema` i `table`. | Brak źródła tak dla ujścia |
 
 #### <a name="dataset-properties-example"></a>Przykład właściwości zestawu danych
 
@@ -250,7 +252,8 @@ Aby skopiować dane z lub do Azure SQL Data Warehouse, obsługiwane są następu
         },
         "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
-            "tableName": "MyTable"
+            "schema": "<schema_name>",
+            "table": "<table_name>"
         }
     }
 }
@@ -429,7 +432,7 @@ Jeśli nie są spełnione wymagania, usługi Azure Data Factory umożliwia spraw
     >[!IMPORTANT]
     >Jeśli usługa Azure Storage jest skonfigurowana za pomocą punktu końcowego usługi sieci wirtualnej, należy użyć uwierzytelniania tożsamości zarządzanej — Zobacz, aby korzystać z [punktów końcowych usługi sieci wirtualnej w usłudze Azure Storage](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Zapoznaj się z wymaganymi konfiguracjami w Data Factory z poziomu [uwierzytelniania tożsamości zarządzanego przez obiekt blob platformy Azure](connector-azure-blob-storage.md#managed-identity) i sekcji [uwierzytelniania tożsamości zarządzanego](connector-azure-data-lake-storage.md#managed-identity) przez usługę Azure Data Lake Storage Gen2.
 
-2. **Format danych źródłowych** jest **Parquet**, **Orc**lub rozdzielany **tekstem**z następującymi konfiguracjami:
+2. **Format danych źródłowych** jest **Parquet**, **Orc**lub **rozdzielany tekstem**z następującymi konfiguracjami:
 
    1. Ścieżka folderu nie zawiera filtru symboli wieloznacznych.
    2. Nazwa pliku jest pusta lub wskazuje na pojedynczy plik. W przypadku określenia wieloznacznej nazwy pliku w działaniu kopiowania może to `*` być `*.*`tylko lub.

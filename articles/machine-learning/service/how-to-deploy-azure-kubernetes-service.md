@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 26f965169f1fd01676efd3356534a8ac9f2121f7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7afa96c3c4d1a163e323aa0bb50ec361ff74aac3
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036085"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278693"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Wdrażanie modelu w klastrze usługi Azure Kubernetes Service
 
@@ -23,7 +23,7 @@ Dowiedz się, jak za pomocą usługi Azure Machine Learning wdrożyć model jako
 
 - __Krótki czas odpowiedzi__.
 - __Skalowanie__ automatyczne wdrożonej usługi.
-- Opcje przyspieszania sprzętowego, takie jak macierze oparte na procesorach GPU i polach (FPGA).
+- Opcje __przyspieszania sprzętowego__ , takie jak macierze oparte na procesorach GPU i polach (FPGA).
 
 > [!IMPORTANT]
 > Skalowanie Cluter nie jest obsługiwane za pomocą zestawu SDK Azure Machine Learning. Aby uzyskać więcej informacji na temat skalowania węzłów w klastrze AKS, zobacz [skalowanie liczby węzłów w KLASTRZE AKS](../../aks/scale-cluster.md).
@@ -42,7 +42,7 @@ Podczas wdrażania w usłudze Azure Kubernetes należy wdrożyć klaster AKS, kt
 
 - Model uczenia maszynowego zarejestrowany w obszarze roboczym. Jeśli nie masz zarejestrowanego modelu, zapoznaj [się z tematem jak i gdzie wdrażać modele](how-to-deploy-and-where.md).
 
-- [Rozszerzenie interfejsu wiersza polecenia platformy Azure dla usługi Machine Learning Service](reference-azure-machine-learning-cli.md), [Azure Machine Learning SDK języka Python](https://aka.ms/aml-sdk)lub [rozszerzenia Azure Machine Learning Visual Studio Code](how-to-vscode-tools.md).
+- [Rozszerzenie interfejsu wiersza polecenia platformy Azure dla usługi Machine Learning Service](reference-azure-machine-learning-cli.md), [Azure Machine Learning SDK języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)lub [rozszerzenia Azure Machine Learning Visual Studio Code](how-to-vscode-tools.md).
 
 - W fragmentach kodu w języku __Python__ w tym artykule założono, że ustawiono następujące zmienne:
 
@@ -63,7 +63,7 @@ Tworzenie i dołączanie klastra AKS jest jednym procesem czasu dla Twojego obsz
 > [!TIP]
 > Jeśli chcesz zabezpieczyć klaster AKS przy użyciu Virtual Network platformy Azure, musisz najpierw utworzyć sieć wirtualną. Aby uzyskać więcej informacji, zobacz temat [bezpieczne eksperymentowanie i wnioskowanie za pomocą usługi Azure Virtual Network](how-to-enable-virtual-network.md#aksvnet).
 
-Jeśli chcesz utworzyć klaster AKS na potrzeby tworzenia, __sprawdzania poprawności__i __testowania__ zamiast produkcji, możesz określić __cel klastra__ dla __testu deweloperskiego__.
+Jeśli chcesz utworzyć klaster AKS __na potrzeby tworzenia__, __sprawdzania poprawności__i __testowania__ zamiast produkcji, możesz określić __cel klastra__ dla __testu deweloperskiego__.
 
 > [!WARNING]
 > Jeśli ustawisz `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, tworzony klaster nie jest odpowiedni dla ruchu na poziomie produkcyjnym i może zwiększyć czas wnioskowania. Klastry deweloperskie i testowe nie gwarantują odporności na uszkodzenia. Zalecamy co najmniej 2 wirtualne procesory CPU dla klastrów deweloperskich i testowych.

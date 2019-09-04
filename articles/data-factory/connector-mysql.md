@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: fcf56e8088af25c14c022039bf8862f2dc21c77a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: d76b51aa5117e662e9ff17bb91516c758de3071c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172566"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277705"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopiowanie danych z programu MySQL przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -27,7 +27,7 @@ ms.locfileid: "70172566"
 W tym artykule opisano sposób używania działania kopiowania w Azure Data Factory do kopiowania danych z bazy danych MySQL. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
 >[!NOTE]
->Aby skopiować dane z usługi lub do [Azure Database for MySQL](../mysql/overview.md) , użyj łącznika wyspecjalizowane [Azure Database for MySQL](connector-azure-database-for-mysql.md).
+>Aby skopiować dane z usługi lub do [Azure Database for MySQL](../mysql/overview.md) , użyj [łącznika](connector-azure-database-for-mysql.md)wyspecjalizowane Azure Database for MySQL.
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
@@ -144,13 +144,13 @@ Jeśli używasz połączonej usługi MySQL z następującym ładunkiem, nadal je
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych MySQL.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych MySQL.
 
-Aby skopiować dane z programu MySQL, należy ustawić Właściwość Type zestawu danych nawartość relacyjny. Obsługiwane są następujące właściwości:
+Aby skopiować dane z programu MySQL, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **Obiekt relacyjny** | Tak |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **Baza danych MySql** | Tak |
 | tableName | Nazwa tabeli w bazie danych MySQL. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
@@ -160,15 +160,18 @@ Aby skopiować dane z programu MySQL, należy ustawić Właściwość Type zesta
     "name": "MySQLDataset",
     "properties":
     {
-        "type": "RelationalTable",
+        "type": "MySqlTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<MySQL linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+Jeśli używasz `RelationalTable` określonego zestawu danych, jest on nadal obsługiwany w stanie takim, w jakim będziesz mieć możliwość korzystania z nowej usługi.
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
@@ -176,11 +179,11 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania dz
 
 ### <a name="mysql-as-source"></a>MySQL jako źródło
 
-Aby skopiować dane z programu MySQL, ustaw typ źródła w działaniu Copy na **RelationalSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z programu MySQL, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **RelationalSource** | Tak |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **MySqlSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
@@ -204,7 +207,7 @@ Aby skopiować dane z programu MySQL, ustaw typ źródła w działaniu Copy na *
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "MySqlSource",
                 "query": "SELECT * FROM MyTable"
             },
             "sink": {
@@ -214,6 +217,8 @@ Aby skopiować dane z programu MySQL, ustaw typ źródła w działaniu Copy na *
     }
 ]
 ```
+
+Jeśli używasz `RelationalSource` typu source, nadal jest ono obsługiwane w stanie takim, w jakim będziesz mieć możliwość użycia nowego.
 
 ## <a name="data-type-mapping-for-mysql"></a>Mapowanie typu danych dla programu MySQL
 

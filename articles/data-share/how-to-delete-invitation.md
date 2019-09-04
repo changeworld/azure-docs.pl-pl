@@ -5,13 +5,13 @@ author: madams0013
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: t-maadam
-ms.openlocfilehash: 5e2cf7f9a9ec6456ae5566536bca7bae47d87e84
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: jasonh
+ms.openlocfilehash: 49fd3da721f3a9ef5d9810e88fa15a92709ee2e6
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67877222"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258659"
 ---
 # <a name="how-to-delete-an-invitation-to-a-recipient-in-azure-data-share-preview"></a>Jak usunąć zaproszenie do adresata w wersji zapoznawczej usługi Azure Data Share
 
@@ -23,5 +23,5 @@ W wersji zapoznawczej usługi Azure Data Share przejdź do wysłanego udziału i
 
 ![Usuwanie zaproszenia](./media/how-to/how-to-delete-invitation/delete-invitation.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Dowiedz się więcej na temat [odwoływania subskrypcji udziału](how-to-revoke-share-subscription.md).

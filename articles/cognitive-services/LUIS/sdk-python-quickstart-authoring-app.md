@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/07/2019
 ms.author: diberry
-ms.openlocfilehash: f5756c479d47e905e0110c9919cf4b5be4e75099
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f8149372e0a96cda81ef38558ee0bcf87eb53bb3
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932127"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258759"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>Szybki start: Language Understanding (LUIS) Tworzenie biblioteki klienta dla języka Python
 
@@ -37,9 +37,9 @@ Użyj biblioteki klienta tworzenia Language Understanding (LUIS) dla języka Pyt
 
 ## <a name="setting-up"></a>Konfigurowanie
 
-### <a name="get-your-language-understanding-luis-authoring-key"></a>Pobierz klucz tworzenia Language Understanding (LUIS)
+### <a name="get-your-language-understanding-luis-starter-key"></a>Pobierz klucz początkowy Language Understanding (LUIS)
 
-Pobierz swój [klucz tworzenia](luis-how-to-account-settings.md)i [Utwórz zmienną środowiskową](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla klucza o nazwie `LUIS_AUTHORING_KEY` i zmiennej środowiskowej dla regionu klucza. `LUIS_REGION`
+Pobierz [klucz początkowy](luis-how-to-azure-subscription.md#starter-key)i [Utwórz zmienną środowiskową](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) dla klucza o nazwie `LUIS_AUTHORING_KEY` i zmiennej środowiskowej dla regionu klucza. `LUIS_REGION`
 
 ### <a name="install-the-python-library-for-luis"></a>Zainstaluj bibliotekę języka Python dla LUIS
 
@@ -59,8 +59,8 @@ Po utworzeniu klienta Użyj tego klienta, aby uzyskać dostęp do funkcji, w tym
 * Przykład wyrażenia długości — [Dodaj przez partię](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.examplesoperations?view=azure-python#batch-app-id--version-id--example-label-object-array--custom-headers-none--raw-false----operation-config-), [Usuń według identyfikatora](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.examplesoperations?view=azure-python#delete-app-id--version-id--example-id--custom-headers-none--raw-false----operation-config-) 
 * Funkcje — zarządzanie [listami fraz](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.featuresoperations?view=azure-python#add-phrase-list-app-id--version-id--phraselist-create-object--custom-headers-none--raw-false----operation-config-) 
 * Model — zarządzanie [intencjami](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-intent-app-id--version-id--name-none--custom-headers-none--raw-false----operation-config-) i jednostkami
-* Wzorce — zarządzanie [](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.patternoperations?view=azure-python#add-pattern-app-id--version-id--pattern-none--intent-none--custom-headers-none--raw-false----operation-config-) wzorcami
-* Uczenie [](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.trainoperations?view=azure-python#train-version-app-id--version-id--custom-headers-none--raw-false----operation-config-) aplikacji i sondowanie jej pod kątem [stanu szkolenia](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.trainoperations?view=azure-python#get-status-app-id--version-id--custom-headers-none--raw-false----operation-config-)
+* [Wzorce — zarządzanie](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.patternoperations?view=azure-python#add-pattern-app-id--version-id--pattern-none--intent-none--custom-headers-none--raw-false----operation-config-) wzorcami
+* [Uczenie](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.trainoperations?view=azure-python#train-version-app-id--version-id--custom-headers-none--raw-false----operation-config-) aplikacji i sondowanie jej pod kątem [stanu szkolenia](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.trainoperations?view=azure-python#get-status-app-id--version-id--custom-headers-none--raw-false----operation-config-)
 * [Wersje](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.versionsoperations?view=azure-python) — zarządzanie przy użyciu klonowania, eksportowania i usuwania
 
 
@@ -101,7 +101,7 @@ Utwórz obiekt [CognitiveServicesCredentials](https://docs.microsoft.com/python/
 
 
 ## <a name="create-intent-for-the-app"></a>Utwórz cel dla aplikacji
-Zamiarem jest obiekt podstawowy w modelu aplikacji LUIS. Celem jest wyrównanie do grupy zamiarów wypowiedź użytkownika. Użytkownik może zadać pytanie lub utworzyć instrukcję poszukującą konkretnej zamierzonej odpowiedzi z bot (lub innej aplikacji klienckiej). Przykłady zamiarów polegają na rezerwacji lotu, zaproszeniu o Pogoda w miejscu docelowym i zaproszeniu o informacje kontaktowe dotyczące usługi klienta.   
+Zamiarem jest obiekt podstawowy w modelu aplikacji LUIS. Celem jest wyrównanie do grupy _zamiarów_wypowiedź użytkownika. Użytkownik może zadać pytanie lub utworzyć instrukcję poszukującą konkretnej _zamierzonej_ odpowiedzi z bot (lub innej aplikacji klienckiej). Przykłady zamiarów polegają na rezerwacji lotu, zaproszeniu o Pogoda w miejscu docelowym i zaproszeniu o informacje kontaktowe dotyczące usługi klienta.   
 
 Użyj metody [model. Add _intent](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.modeloperations?view=azure-python#add-intent-app-id--version-id--name-none--custom-headers-none--raw-false----operation-config-) z nazwą unikatowego zamiaru, a następnie Przekaż identyfikator aplikacji, identyfikator wersji i nową nazwę celu. 
 
@@ -167,5 +167,5 @@ Jeśli chcesz wyczyścić i usunąć subskrypcję Cognitive Services, możesz us
 
 * [Co to jest interfejs API Language Understanding (LUIS)?](what-is-luis.md)
 * [Co nowego?](whats-new.md)
-* [](luis-concept-intent.md)Zamiary, [jednostki](luis-concept-entity-types.md)i [przykład wyrażenia długości](luis-concept-utterance.md)oraz [wstępnie zbudowane jednostki](luis-reference-prebuilt-entities.md)
+* [Zamiary](luis-concept-intent.md), [jednostki](luis-concept-entity-types.md)i [przykład wyrażenia długości](luis-concept-utterance.md)oraz [wstępnie zbudowane jednostki](luis-reference-prebuilt-entities.md)
 * Kod źródłowy tego przykładu można znaleźć w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py).

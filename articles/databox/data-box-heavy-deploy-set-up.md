@@ -6,14 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: b6b353e0e01f3f598048e5fbb2682603045b1037
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.localizationpriority: high
+ms.openlocfilehash: f5473ae7bd9ac1615d59d18c996e01902e1adbd6
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164457"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241413"
 ---
 ::: zone target = "docs"
 
@@ -86,7 +87,7 @@ Aby nawiązać połączenie z urządzeniem, wykonaj następujące czynności.
 
     ![Data Box Heavy przewody zasilające na pasku zadań](media/data-box-heavy-deploy-set-up/data-box-heavy-power-cords-tray.png)
 
-6. Następnym krokiem jest zidentyfikowanie różnych portów w tylnej części urządzenia. Istnieją dwa węzły urządzeń — **Węzeł1** i **Węzeł2**. Każdy węzeł ma cztery interfejsy sieciowe, **Zarządzanie**, **dane1**, **Dane2**, **DATA3**. Zarządzanie służy do konfigurowania zarządzania podczas początkowej konfiguracji urządzenia. Dane1-**DATA3** są portami danych. Porty **zarządzania** i **DATA3** są 1 GB/s, a w przypadku, gdy **dane1**, **Dane2** może współpracować z portami 40 GB lub 10 GB/s. W dolnej części dwóch węzłów urządzenia są cztery jednostki zasilacza (PSUs), które są współużytkowane przez dwa węzły urządzeń. W przypadku tego urządzenia **PSUs** są **PSU1**, **PSU2**, **PSU3**i **PSU4** od lewej do prawej.
+6. Następnym krokiem jest zidentyfikowanie różnych portów w tylnej części urządzenia. Istnieją dwa węzły urządzeń — **Węzeł1** i **Węzeł2**. Każdy węzeł ma cztery interfejsy sieciowe, **Zarządzanie**, **dane1**, **Dane2**, **DATA3**. Zarządzanie **służy do** konfigurowania zarządzania podczas początkowej konfiguracji urządzenia. Dane1-**DATA3** są portami danych. Porty **zarządzania** i **DATA3** są 1 GB/s, a w przypadku, gdy **dane1**, **Dane2** może współpracować z portami 40 GB lub 10 GB/s. W dolnej części dwóch węzłów urządzenia są cztery jednostki zasilacza (PSUs), które są współużytkowane przez dwa węzły urządzeń. W przypadku tego urządzenia **PSUs** są **PSU1**, **PSU2**, **PSU3**i **PSU4** od lewej do prawej.
 
     ![Porty Data Box Heavy](media/data-box-heavy-deploy-set-up/data-box-heavy-ports.png)
 

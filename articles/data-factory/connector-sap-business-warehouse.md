@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: cd17dcb7a9f68c25617c9e6b928ddebebcdbddbe
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: 4ee9048202a5953ff27ea83cfb39cb1af0739e7a
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211725"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277504"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopiowanie danych z programu SAP Business Warehouse przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -69,7 +69,7 @@ Następujące właściwości są obsługiwane dla połączonej usługi SAP Busin
 | clientId | Identyfikator klienta klienta w systemie SAP w.<br/>Dozwolona wartość: 3-cyfrowa liczba dziesiętna reprezentowana jako ciąg. | Tak |
 | userName | Nazwa użytkownika, który ma dostęp do serwera SAP. | Tak |
 | password | Hasło użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Samodzielna Integration Runtime jest wymagana, jak wspomniano [](#prerequisites)w wymaganiach wstępnych. |Tak |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Samodzielna Integration Runtime jest wymagana, jak wspomniano w [wymaganiach wstępnych](#prerequisites). |Tak |
 
 **Przykład:**
 
@@ -98,9 +98,9 @@ Następujące właściwości są obsługiwane dla połączonej usługi SAP Busin
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych SAP BW.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych SAP BW.
 
-Aby skopiować dane z SAP BW, ustaw właściwość Typ zestawu danych na relacyjny. Brak właściwości specyficznych dla typu, które są obsługiwane dla SAP BWgo zestawu danych typu relacyjnego.
+Aby skopiować dane z SAP BW, ustaw właściwość Type zestawu danych na **SapBwCube**. Brak właściwości specyficznych dla typu, które są obsługiwane dla SAP BWgo zestawu danych typu relacyjnego.
 
 **Przykład:**
 
@@ -108,15 +108,18 @@ Aby skopiować dane z SAP BW, ustaw właściwość Typ zestawu danych na relacyj
 {
     "name": "SAPBWDataset",
     "properties": {
-        "type": "RelationalTable",
+        "type": "SapBwCube",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP BW linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+Jeśli używasz `RelationalTable` określonego zestawu danych, jest on nadal obsługiwany w stanie takim, w jakim będziesz mieć możliwość korzystania z nowej usługi.
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
@@ -124,11 +127,11 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania dz
 
 ### <a name="sap-bw-as-source"></a>SAP BW jako źródło
 
-Aby skopiować dane z SAP BW, ustaw typ źródła w działaniu Copy na **RelationalSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z SAP BW, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **RelationalSource** | Tak |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **SapBwSource** | Tak |
 | query | Określa zapytanie MDX do odczytu danych z wystąpienia SAP BW. | Tak |
 
 **Przykład:**
@@ -152,7 +155,7 @@ Aby skopiować dane z SAP BW, ustaw typ źródła w działaniu Copy na **Relatio
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "SapBwSource",
                 "query": "<MDX query for SAP BW>"
             },
             "sink": {
@@ -162,6 +165,8 @@ Aby skopiować dane z SAP BW, ustaw typ źródła w działaniu Copy na **Relatio
     }
 ]
 ```
+
+Jeśli używasz `RelationalSource` typu source, nadal jest ono obsługiwane w stanie takim, w jakim będziesz mieć możliwość użycia nowego.
 
 ## <a name="data-type-mapping-for-sap-bw"></a>Mapowanie typu danych dla SAP BW
 

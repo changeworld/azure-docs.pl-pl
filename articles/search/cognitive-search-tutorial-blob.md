@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: luisca
 ms.subservice: cognitive-search
-ms.openlocfilehash: bb37c9106149397f50e84b340b1be1189e0de7d1
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 726fdd6aeebac970142fa9225381af77114bfe42
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186266"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274111"
 ---
 # <a name="tutorial-add-structure-to-unstructured-content-with-cognitive-search"></a>Samouczek: Dodawanie struktury do "zawartości bez struktury" przy użyciu wyszukiwania poznawczego
 
@@ -22,12 +22,12 @@ Jeśli masz niestrukturalną zawartość tekstu lub obrazu, funkcja [wyszukiwani
 
 > [!div class="checklist"]
 > * Zacznij od całego dokumentu (tekst bez struktury), takiego jak PDF, MD, DOCX i PPTX, w usłudze Azure Blob Storage.
-> * Utwórz potok, który wyodrębnia tekst, wykrywa język, rozpoznaje jednostki i wykrywa kluczowe frazy.
+> * Zdefiniuj potok, który wyodrębnia tekst, wykrywa język, rozpoznaje jednostki i wykrywa kluczowe frazy.
 > * Zdefiniuj indeks do przechowywania danych wyjściowych (nieprzetworzona zawartość oraz pary nazwa-wartość w postaci potoku).
-> * Wykonaj potok, aby utworzyć i załadować indeks.
-> * Eksploruj zawartość przy użyciu wyszukiwania pełnotekstowego i sformatowanej składni zapytań.
+> * Wykonaj potok, aby rozpocząć transformacje i analizę oraz utworzyć i załadować indeks.
+> * Eksplorowanie wyników przy użyciu wyszukiwania pełnotekstowego i zaawansowanej składni zapytań.
 
-Aby ukończyć ten przewodnik, będziesz potrzebować kilku usług oraz [aplikacji klasycznej](https://www.getpostman.com/) programu Poster lub innego narzędzia do testowania sieci Web, aby umożliwić wywoływanie interfejsu API REST. 
+Aby ukończyć ten przewodnik, będziesz potrzebować kilku usług oraz [aplikacji klasycznej programu Poster](https://www.getpostman.com/) lub innego narzędzia do testowania sieci Web, aby umożliwić wywoływanie interfejsu API REST. 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem Otwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 

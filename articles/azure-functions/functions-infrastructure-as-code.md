@@ -12,12 +12,12 @@ ms.server: functions
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
-ms.openlocfilehash: 3d60e5e4aae3457ae04cd7e4ecfe4f9253a04751
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 976121e2fd7af280ccc959ba2a93aceb4ae2bdea
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085400"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276829"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatyzowanie wdrażania zasobów dla aplikacji funkcji w Azure Functions
 
@@ -195,16 +195,22 @@ Nie trzeba definiować planu zużycia. Jeden zostanie automatycznie utworzony lu
 Plan zużycia jest specjalnym typem zasobu "farma serwerów". Dla systemu Windows można określić za pomocą `Dynamic` wartości `computeMode` właściwości i `sku` :
 
 ```json
-{
-    "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2015-04-01",
-    "name": "[variables('hostingPlanName')]",
-    "location": "[resourceGroup().location]",
-    "properties": {
-        "name": "[variables('hostingPlanName')]",
-        "computeMode": "Dynamic",
-        "sku": "Dynamic"
-    }
+{  
+   "type":"Microsoft.Web/serverfarms",
+   "apiVersion":"2016-09-01",
+   "name":"[variables('hostingPlanName')]",
+   "location":"[resourceGroup().location]",
+   "properties":{  
+      "name":"[variables('hostingPlanName')]",
+      "computeMode":"Dynamic"
+   },
+   "sku":{  
+      "name":"Y1",
+      "tier":"Dynamic",
+      "size":"Y1",
+      "family":"Y",
+      "capacity":0
+   }
 }
 ```
 
@@ -649,7 +655,7 @@ Aby wdrożyć szablon, można użyć dowolnego z poniższych sposobów:
 
 ### <a name="deploy-to-azure-button"></a>Przycisk Wdróż na platformie Azure
 
-Zamień ```<url-encoded-path-to-azuredeploy-json>``` na zakodowaną w [adresie URL](https://www.bing.com/search?q=url+encode) wersję ścieżki `azuredeploy.json` nieprzetworzonego pliku w serwisie GitHub.
+Zamień ```<url-encoded-path-to-azuredeploy-json>``` na [zakodowaną w adresie URL](https://www.bing.com/search?q=url+encode) wersję ścieżki `azuredeploy.json` nieprzetworzonego pliku w serwisie GitHub.
 
 Oto przykład, który używa promocji:
 

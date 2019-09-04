@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 65b6eb07a866db405af3e5bc609a540c36f148a8
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 84109cf04588a5de6fb3fd946a89b5dfee4baa1b
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186431"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259149"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Jak przetwarzać i wyodrębniać informacje z obrazów w scenariuszach wyszukiwania poznawczego
 
@@ -34,16 +34,15 @@ Nie można wyłączyć normalizacji obrazu. Umiejętności, które iterą nad ob
 | Parametr konfiguracji | Opis |
 |--------------------|-------------|
 | imageAction   | Ustaw wartość "Brak", jeśli nie ma żadnej akcji, gdy zostaną napotkane obrazy osadzone lub pliki obrazów. <br/>Ustaw wartość "generateNormalizedImages", aby generować tablicę znormalizowanych obrazów w ramach łamania dokumentów.<br/>Ustaw wartość "generateNormalizedImagePerPage", aby wygenerować tablicę znormalizowanych obrazów, gdzie w przypadku plików PDF w źródle danych każda strona jest renderowana do jednego obrazu wyjściowego.  Funkcja jest taka sama jak "generateNormalizedImages" dla typów plików innych niż PDF.<br/>Dla każdej opcji, która nie jest "none", obrazy zostaną uwidocznione w polu *normalized_images* . <br/>Wartość domyślna to "Brak". Ta konfiguracja jest odnosi się tylko do źródeł danych obiektów blob, gdy wartość "dataToExtract" jest ustawiona na "contentAndMetadata". <br/>Co najwyżej 1000 obrazów zostanie wyodrębnionych z danego dokumentu. Jeśli w dokumencie znajduje się więcej niż 1000 obrazów, pierwsze 1000 zostanie wyodrębnione i zostanie wygenerowane ostrzeżenie. |
-|  normalizedImageMaxWidth | Maksymalna szerokość (w pikselach) dla wygenerowanych znormalizowanych obrazów. Wartość domyślna to 2000.|
-|  normalizedImageMaxHeight | Maksymalna wysokość (w pikselach) dla wygenerowanych znormalizowanych obrazów. Wartość domyślna to 2000.|
+|  normalizedImageMaxWidth | Maksymalna szerokość (w pikselach) dla wygenerowanych znormalizowanych obrazów. Wartość domyślna to 2000. Maksymalna dozwolona wartość to 10000. | 
+|  normalizedImageMaxHeight | Maksymalna wysokość (w pikselach) dla wygenerowanych znormalizowanych obrazów. Wartość domyślna to 2000. Maksymalna dozwolona wartość to 10000.|
 
 > [!NOTE]
-> Jeśli ustawisz właściwość *imageAction* na inną niż "none", nie będzie można ustawić właściwości przeanalizmode na wartość inną niż "default".  W konfiguracji indeksatora można ustawić tylko jedną z tych dwóch właściwości na wartość inną niż domyślna.
+> Jeśli ustawisz właściwość *imageAction* na inną niż "none", nie będzie można ustawić właściwości *przeanalizmode* na wartość inną niż "default".  W konfiguracji indeksatora można ustawić tylko jedną z tych dwóch właściwości na wartość inną niż domyślna.
 
 Ustaw parametr **analizymode** na `json` (Aby indeksować każdy obiekt BLOB jako pojedynczy dokument) lub `jsonArray` (jeśli obiekty blob zawierają tablice JSON, a każdy element tablicy ma być traktowany jako oddzielny dokument).
 
-Domyślnie 2000 pikseli dla znormalizowanych obrazów Maksymalna szerokość i wysokość opiera się na maksymalnym rozmiarze obsługiwanym przez [umiejętność OCR](cognitive-search-skill-ocr.md) i [umiejętności analizy obrazu](cognitive-search-skill-image-analysis.md). W przypadku zwiększenia maksymalnych limitów przetwarzanie może zakończyć się niepowodzeniem na większych obrazach.
-
+Domyślnie 2000 pikseli dla znormalizowanych obrazów Maksymalna szerokość i wysokość opiera się na maksymalnym rozmiarze obsługiwanym przez [umiejętność OCR](cognitive-search-skill-ocr.md) i [umiejętności analizy obrazu](cognitive-search-skill-image-analysis.md). [Umiejętność OCR](cognitive-search-skill-ocr.md) obsługuje maksymalną szerokość i wysokość 4200 dla języków innych niż angielski i 10000 w języku angielskim.  W przypadku zwiększenia maksymalnych limitów przetwarzanie może zakończyć się niepowodzeniem w przypadku większych obrazów, w zależności od definicji zestawu umiejętności i języka dokumentów. 
 
 ImageAction można określić w [definicji indeksatora](https://docs.microsoft.com/rest/api/searchservice/create-indexer) w następujący sposób:
 

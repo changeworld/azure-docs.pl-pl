@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: mlearned
-ms.openlocfilehash: 6d122b3ac1504db0a2d22fea749c6c94174e4ff9
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 54a95186a297cf3604858341fb8f5aba3702bf5a
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233141"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241796"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -116,6 +116,8 @@ Obsługa systemu Windows Server dla puli węzłów obejmuje pewne ograniczenia, 
 
 W umowie dotyczącej poziomu usług (SLA) dostawca zgadza się zwrócić klienta koszt usługi, jeśli nie jest spełniony opublikowany poziom usług. Ponieważ AKS jest bezpłatny, żaden koszt nie jest dostępny do zwrotu, więc AKS nie ma formalnej umowy SLA. AKS ma jednak na celu zachowanie dostępności co najmniej 99,5% dla serwera interfejsu API Kubernetes.
 
+Ważne jest, aby rozpoznać rozróżnienie między dostępnością usługi AKS, która odnosi się do czasu przestoju płaszczyzny kontroli Kubernetes i dostępności konkretnego obciążenia działającego w usłudze Azure Virtual Machines. Mimo że płaszczyzna kontroli może być niedostępna, jeśli płaszczyzna kontroli nie jest gotowa, obciążenia klastra uruchomione na maszynach wirtualnych platformy Azure mogą nadal działać. Maszyny wirtualne platformy Azure są płatnymi zasobami, które są objęte umową SLA. Przeczytaj [tutaj, aby uzyskać więcej informacji](https://azure.microsoft.com/en-us/support/legal/sla/virtual-machines/v1_8/) na temat umowy SLA dotyczącej maszyn wirtualnych platformy Azure i jak zwiększyć dostępność przy użyciu funkcji, takich jak [strefy dostępności][availability-zones].
+
 ## <a name="why-cant-i-set-maxpods-below-30"></a>Dlaczego nie mogę ustawić maxPods poniżej 30?
 
 W AKS można ustawić `maxPods` wartość podczas tworzenia klastra przy użyciu interfejsu wiersza polecenia platformy Azure i szablonów Azure Resource Manager. Jednak zarówno korzystającą wtyczki kubenet, jak i Azure CNI wymagają *wartości minimalnej* (zweryfikowany podczas tworzenia):
@@ -204,6 +206,7 @@ Chociaż AKS ma mechanizmy odporności, aby wytrzymać takie konfiguracje i odzy
 [reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md
 [api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
 [multi-node-pools]: ./use-multiple-node-pools.md
+[availability-zones]: ./availability-zones.md
 
 <!-- LINKS - external -->
 

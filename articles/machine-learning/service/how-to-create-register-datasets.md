@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/22/2019
-ms.openlocfilehash: e5d5d36e82914f1d6d03299db0ed1427ac5a389a
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 2ce64df5eeb8aa44ef714d6b465b7f2e1819635d
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147587"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259291"
 ---
 # <a name="create-and-access-datasets-preview-in-azure-machine-learning"></a>Tworzenie zestawów danych i uzyskiwanie do nich dostępu (wersja zapoznawcza) w Azure Machine Learning
 
@@ -41,13 +41,13 @@ Aby tworzyć zestawy danych i korzystać z nich, potrzebne są:
 * [Zestaw Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), który obejmuje pakiet usługi Azure DataSets.
 
 > [!Note]
-> Niektóre klasy zestawu danych (wersja zapoznawcza) mają zależności w pakiecie [Azure](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) preprodukcyjnym. W przypadku użytkowników systemu Linux te klasy są obsługiwane tylko w następujących dystrybucjach:  Red Hat Enterprise Linux, Ubuntu, Fedora i CentOS.
+> Niektóre klasy zestawu danych (wersja zapoznawcza) mają zależności w pakiecie [Azure preprodukcyjnym](https://docs.microsoft.com/python/api/azureml-dataprep/?view=azure-ml-py) . W przypadku użytkowników systemu Linux te klasy są obsługiwane tylko w następujących dystrybucjach:  Red Hat Enterprise Linux, Ubuntu, Fedora i CentOS.
 
 ## <a name="dataset-types"></a>Typy zestawów danych
 
 Zestawy danych są podzielone na różne typy w zależności od tego, jak użytkownicy zużywają je w szkoleniu. Lista typów zestawów danych:
 * [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) reprezentuje dane w formacie tabelarycznym przez analizowanie dostarczonego pliku lub listy plików. Zapewnia to możliwość zmaterializowania danych w Pandas Dataframe. `TabularDataset` Obiekt można utworzyć na podstawie plików CSV, TSV, Parquet, wyników zapytania SQL itp. Pełną listę można znaleźć w naszej [dokumentacji](https://aka.ms/tabulardataset-api-reference).
-* FileDataset odwołuje się do jednego lub wielu plików w magazynach danych lub publicznych adresach URL. Zapewnia to możliwość pobierania lub instalowania plików na potrzeby obliczeń. Pliki mogą być w dowolnym formacie, co umożliwia szeroką gamę scenariuszy uczenia maszynowego, w tym głębokie uczenie.
+* [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) odwołuje się do jednego lub wielu plików w magazynach danych lub publicznych adresach URL. Zapewnia to możliwość pobierania lub instalowania plików na potrzeby obliczeń. Pliki mogą być w dowolnym formacie, co umożliwia szeroką gamę scenariuszy uczenia maszynowego, w tym głębokie uczenie.
 
 Aby dowiedzieć się więcej o nadchodzących zmianach interfejsu API, zobacz [tutaj](https://aka.ms/tabular-dataset).
 
@@ -55,7 +55,7 @@ Aby dowiedzieć się więcej o nadchodzących zmianach interfejsu API, zobacz [t
 
 Tworząc zestaw danych, utworzysz odwołanie do lokalizacji źródła danych wraz z kopią jej metadanych. Dane pozostają w istniejącej lokalizacji, więc nie są naliczane żadne dodatkowe koszty związane z magazynem.
 
-Aby dane były dostępne dla usługi Azure Machine Learning, zestawy danych muszą zostać utworzone na podstawie ścieżek w [usłudze Azure](how-to-access-data.md) datastores lub publicznych adresów URL sieci Web.
+Aby dane były dostępne dla usługi Azure Machine Learning, zestawy danych muszą zostać utworzone na podstawie ścieżek w [usłudze Azure datastores](how-to-access-data.md) lub publicznych adresów URL sieci Web.
 
 Aby utworzyć zestawy danych ze [sklepu datastore](how-to-access-data.md):
 

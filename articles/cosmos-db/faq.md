@@ -4,15 +4,15 @@ description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące usługi A
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: cb2b3246264d04ce97c45dff58979079a731998e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 30530f445941747c659f584d279261148b08825e
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066095"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240797"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Często zadawane pytania dotyczące różnych interfejsów API w usłudze Azure Cosmos DB
 
@@ -87,9 +87,9 @@ Try Azure Cosmos DB subskrypcje będą widoczne w witrynie Azure portal obok inn
 
 Do subskrypcji Wypróbuj usługę Azure Cosmos DB mają zastosowanie następujące warunki:
 
-* Jeden [kontener aprowizacji](./set-throughput.md#set-throughput-on-a-container) o przepływności na subskrypcję usług SQL, Gremlin API i Table accounts.
-* Maksymalnie trzy [kolekcje inicjowane](./set-throughput.md#set-throughput-on-a-container) przez przepływność na subskrypcję dla kont usługi MongoDB.
-* Jedna [baza danych](./set-throughput.md#set-throughput-on-a-database) z obsługą przepływności na subskrypcję. Bazy danych z obsługą przepływności mogą zawierać dowolną liczbę kontenerów wewnątrz.
+* Jeden [kontener aprowizacji o przepływności](./set-throughput.md#set-throughput-on-a-container) na subskrypcję usług SQL, Gremlin API i Table accounts.
+* Maksymalnie trzy [kolekcje inicjowane przez przepływność](./set-throughput.md#set-throughput-on-a-container) na subskrypcję dla kont usługi MongoDB.
+* Jedna [baza danych z obsługą przepływności](./set-throughput.md#set-throughput-on-a-database) na subskrypcję. Bazy danych z obsługą przepływności mogą zawierać dowolną liczbę kontenerów wewnątrz.
 * Pojemność magazynu o rozmiarze 10 GB.
 * Replikacja globalna jest dostępna w następujących [regionach platformy Azure](https://azure.microsoft.com/regions/): Środkowe stany USA, Europa Północna i Azja Południowo-Wschodnia
 * Maksymalna przepływność 5 K/s w przypadku aprowizacji na poziomie kontenera.
@@ -119,7 +119,7 @@ Po ustawieniu regionu, należy pamiętać, że usługi Azure Cosmos DB szanuje c
 
 ### <a name="is-it-possible-to-switch-from-container-level-throughput-provisioning-to-database-level-throughput-provisioning-or-vice-versa"></a>Jest możliwe przełączyć się z poziomu przepływności kontenerów aprowizacji aprowizacji poziomu przepływności bazy danych? I odwrotnie
 
-Kontener i aprowizacji poziomu przepływności bazy danych to osobne oferty i przełączania się między jedną z tych wersji wymagają migracji danych ze źródła do miejsca docelowego. Oznacza to, należy utworzyć nową bazę danych lub nową kolekcję, a następnie przeprowadzić migrację danych za pomocą [biblioteki wykonawca zbiorcze](bulk-executor-overview.md) lub [usługi Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
+Kontener i aprowizacji poziomu przepływności bazy danych to osobne oferty i przełączania się między jedną z tych wersji wymagają migracji danych ze źródła do miejsca docelowego. Co oznacza, że trzeba utworzyć nową bazę danych lub nowy kontener, a następnie przeprowadzić migrację danych przy użyciu [biblioteki wykonawczy zbiorczej](bulk-executor-overview.md) lub [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
 
 ### <a name="does-azure-cosmosdb-support-time-series-analysis"></a>Usługa Azure cosmos DB obsługuje analiza serii czasu?
 
@@ -149,7 +149,8 @@ Tak, interfejs API SQL obsługuje transakcje dla wielu dokumentów wyrażone jak
 
 Kontener jest grupą dokumentów i ich skojarzonej logiki aplikacji JavaScript. Kontener jest płatna jednostka, której [koszt](performance-levels.md) zależy od informacji o przepływności i magazynu używane. Kontenery mogą znajdować się na partycji lub serwerów i skalowalność niezbędną do obsługi praktycznie nieograniczonej ilości magazynu lub przepływności.
 
-* W przypadku usługi SQL API i interfejsu API Cosmos DB dla kont MongoDB kontener jest mapowany do kolekcji.
+* W przypadku interfejsu API SQL kontener jest mapowany do kontenera.
+* Dla interfejsu API Cosmos DB dla kont MongoDB, kontener jest mapowany do kolekcji.
 * W przypadku kont bazy danych Cassandra i interfejsu API tabel kontener mapuje do tabeli.
 * Interfejs API Gremlin kont kontener mapuje do wykresu.
 
@@ -157,7 +158,7 @@ Kontenery są również jednostkami rozliczeniowymi dla usługi Azure Cosmos DB.
 
 ### <a name="how-do-i-create-a-database"></a>Jak utworzyć bazę danych?
 
-Można utworzyć bazy danych przy użyciu [witryny Azure portal](https://portal.azure.com), zgodnie z opisem w [dodania kolekcji](create-sql-api-java.md#add-a-container), jednego z [zestawów SDK usługi Azure Cosmos DB](sql-api-sdk-dotnet.md), lub [interfejsów API REST](/rest/api/cosmos-db/).
+Bazy danych można tworzyć przy użyciu [Azure Portal](https://portal.azure.com), zgodnie z opisem w [sekcji Dodawanie kontenera](create-sql-api-java.md#add-a-container), jednego z [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)lub [interfejsów API REST](/rest/api/cosmos-db/).
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>Jak skonfigurować użytkowników i uprawnienia?
 
@@ -179,7 +180,7 @@ Aby użyć optymistycznej współbieżności na platformie .NET, należy użyć 
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>Jak wykonywać transakcje w interfejsie API SQL?
 
-Interfejs API SQL obsługuje transakcje zintegrowane z językiem za pomocą procedur składowanych JavaScript i wyzwalacze. Wszystkie operacje bazy danych wewnątrz skryptów są wykonywane w ramach izolacji migawki. Jeśli jest to kolekcja jednej partycji, obejmuje wykonanie do kolekcji. Jeśli kolekcja jest partycjonowana, obejmuje wykonanie dokumenty z taką samą wartość klucza partycji w kolekcji. Migawka wersji dokumentów (elementy ETag) jest wykonywana na początku transakcji i zatwierdzana tylko wtedy, gdy działanie skryptu zakończy się pomyślnie. Jeśli kod JavaScript zwraca błąd, transakcja zostaje wycofana. Aby uzyskać więcej informacji, zobacz [programowania języka JavaScript po stronie serwera dla usługi Azure Cosmos DB](stored-procedures-triggers-udfs.md).
+Interfejs API SQL obsługuje transakcje zintegrowane z językiem za pomocą procedur składowanych JavaScript i wyzwalacze. Wszystkie operacje bazy danych wewnątrz skryptów są wykonywane w ramach izolacji migawki. Jeśli jest to kontener o pojedynczej partycji, wykonanie jest ograniczone do kontenera. W przypadku partycjonowania kontenera wykonywanie jest ograniczone do dokumentów o tej samej wartości klucza partycji w kontenerze. Migawka wersji dokumentów (elementy ETag) jest wykonywana na początku transakcji i zatwierdzana tylko wtedy, gdy działanie skryptu zakończy się pomyślnie. Jeśli kod JavaScript zwraca błąd, transakcja zostaje wycofana. Aby uzyskać więcej informacji, zobacz [programowania języka JavaScript po stronie serwera dla usługi Azure Cosmos DB](stored-procedures-triggers-udfs.md).
 
 ### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>Jak można I wstawiania zbiorczego dokumenty do usługi Cosmos DB?
 
@@ -191,7 +192,7 @@ Użytkownik może wstawiania zbiorczego dokumenty do usługi Azure Cosmos DB w j
 
 ### <a name="does-the-sql-api-support-resource-link-caching"></a>Czy buforowanie linków zasobów pomocy technicznej interfejsu API SQL?
 
-Tak, ponieważ usługa Azure Cosmos DB jest usługą RESTful, linki zasobów są niezmienne i mogą być buforowane. Klienci interfejsu API SQL można określić nagłówek "If-None-Match" dla odczytów względem dowolnego dokumentu podobne do zasobu lub kolekcji, a następnie zaktualizować ich lokalne kopie, po zmianie wersji serwera.
+Tak, ponieważ usługa Azure Cosmos DB jest usługą RESTful, linki zasobów są niezmienne i mogą być buforowane. Klienci interfejsu API SQL mogą określić nagłówek "If-None-Match", aby odczytywać wszystkie dokumenty lub kontenery podobne do zasobów, a następnie zaktualizować ich kopie lokalne po zmianie wersji serwera.
 
 ### <a name="is-a-local-instance-of-sql-api-available"></a>Lokalne wystąpienie programu interfejsu API SQL jest dostępna?
 
@@ -225,7 +226,7 @@ Wraz ze wspólnymi kodami błędów MongoDB interfejs API Azure Cosmos DB dla Mo
 
 | Błąd               | Kod  | Opis  | Rozwiązanie  |
 |---------------------|-------|--------------|-----------|
-| TooManyRequests     | 16500 | Całkowita liczba jednostek żądań, używane jest większa niż współczynnik aprowizowane jednostki żądań dla kolekcji i zostały ograniczone. | Należy rozważyć skalowanie przepływności przypisanych do kontenera lub zestaw kontenerów na platformie Azure portal lub Trwa ponawianie próby ponownie. |
+| TooManyRequests     | 16500 | Całkowita liczba zużytych jednostek żądania jest większa niż stawka żądania aprowizacji dla kontenera i została ograniczona. | Należy rozważyć skalowanie przepływności przypisanych do kontenera lub zestaw kontenerów na platformie Azure portal lub Trwa ponawianie próby ponownie. |
 | ExceededMemoryLimit | 16501 | Jako usługa dla wielu dzierżawców operacji stała się za pośrednictwem przydziału pamięci klienta. | Zmniejsz zakres operacji przy użyciu bardziej restrykcyjnych kryteria zapytania lub skontaktuj się z działem pomocy technicznej firmy [witryny Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Przykład: <em> &nbsp; DB.&nbsp;getcollection ("Users"). Aggregate ([ &nbsp; &nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {Name: "Adam"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {Age:-1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])</em>) |
 
 ### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmos-dbs-api-for-mongodb"></a>Czy sterownik Simba dla MongoDB jest obsługiwany z interfejsem API Azure Cosmos DB dla MongoDB?
@@ -523,7 +524,7 @@ Opłata za RU opiera się na zestawie roboczym danych podczas przechodzenia i us
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Jaka jest maksymalna skala, który grafowej bazy danych może mieć w usłudze Azure Cosmos DB — interfejs API Gremlin?
 
-Usługa Azure Cosmos DB wykorzystuje [partycjonowanie poziome](partition-data.md) automatycznie adres wzrost wymagania dotyczące magazynu i przepływności. Maksymalną pojemność przepływności i przestrzeni dyskowej obciążenie jest określana przez liczbę partycji, które są skojarzone z danej kolekcji. Jednak kolekcji interfejs API Gremlin ma określony zbiór wytycznych, aby zapewnić właściwe działanie doświadczeń skali. Aby uzyskać więcej informacji na temat partycjonowania i najlepsze rozwiązania, zobacz [partycjonowanie w usłudze Azure Cosmos DB](partition-data.md) artykułu.
+Usługa Azure Cosmos DB wykorzystuje [partycjonowanie poziome](partition-data.md) automatycznie adres wzrost wymagania dotyczące magazynu i przepływności. Maksymalna przepływność i pojemność magazynu obciążenia są określane przez liczbę partycji skojarzonych z danym kontenerem. Jednak kontener interfejsu API Gremlin ma określony zestaw wytycznych, aby zapewnić prawidłowe działanie wydajności na dużą skalę. Aby uzyskać więcej informacji na temat partycjonowania i najlepsze rozwiązania, zobacz [partycjonowanie w usłudze Azure Cosmos DB](partition-data.md) artykułu.
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Jak chronić przed atakami polegającymi na iniekcji przy użyciu języka Gremlin sterowniki?
 

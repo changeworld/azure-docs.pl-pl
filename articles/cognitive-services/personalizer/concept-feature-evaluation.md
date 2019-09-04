@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: d03c5f66f760a2bea9f99501cec478831a347c5d
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 31243b5e9da55aafbc376fa416c1b00a4499c116
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668725"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242412"
 ---
 # <a name="feature-evaluation"></a>Ocena funkcji
 
@@ -32,9 +32,9 @@ Ważniejsze funkcje mają silniejsze wagi w modelu. Ponieważ te funkcje mają s
 
 ## <a name="getting-feature-importance-evaluation"></a>Pobieranie oceny ważności funkcji
 
-Aby wyświetlić wyniki ważności funkcji, należy uruchomić ocenę. Uzyskane informacje o ważności funkcji reprezentują bieżący model usługi Personalizowanie online. Ocena ocenia ważność funkcji modelu zapisaną w dniu zakończenia okresu ewaluacyjnego. 
+Aby wyświetlić wyniki ważności funkcji, należy uruchomić ocenę. Ocena powoduje utworzenie czytelnych etykiet funkcji na podstawie nazw funkcji zaobserwowanych w okresie ewaluacyjnym.
 
-Ocena powoduje utworzenie czytelnych etykiet funkcji na podstawie nazw funkcji zaobserwowanych w okresie ewaluacyjnym.
+Uzyskane informacje o ważności funkcji reprezentują bieżący model usługi Personalizowanie online. Ocena ocenia ważność funkcji modelu zapisaną w dniu zakończenia okresu próbnego, po przejściu na wszystkie szkolenia wykonywane podczas oceny, z bieżącymi zasadami uczenia online. 
 
 Wyniki ważności funkcji nie reprezentują innych zasad i modeli przetestowanych lub utworzonych podczas oceny.  Ocena nie będzie zawierać funkcji wysyłanych do narzędzia Personalizacja po zakończeniu okresu próbnego.
 

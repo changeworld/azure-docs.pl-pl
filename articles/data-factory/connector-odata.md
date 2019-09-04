@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 30bad3dd519d622d7e224da7bd53e7c6625014f6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a31f0618f7e9dc8fdb0e9b2988d3d3c32fefcf64
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966477"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277669"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopiowanie danych ze źródła strumieniowego OData przy użyciu Azure Data Factory
 
@@ -212,6 +212,7 @@ Aby skopiować dane z protokołu OData, ustaw właściwość **Type** zestawu da
     "properties":
     {
         "type": "ODataResource",
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<OData linked service name>",
             "type": "LinkedServiceReference"
@@ -232,11 +233,11 @@ Aby uzyskać pełną listę sekcje i właściwości, które są dostępne do def
 
 ### <a name="odata-as-source"></a>OData jako źródło
 
-Aby skopiować dane z protokołu OData, ustaw typ **źródła** w działaniu Kopiuj na **RelationalSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z usługi OData, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość **RelationalSource**. | Tak |
+| type | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość **ODataSource**. | Tak |
 | query | Opcje zapytania OData dotyczące filtrowania danych. Przykład: `"$select=Name,Description&$top=5"`.<br/><br/>**Uwaga**: Łącznik OData kopiuje dane ze połączonego adresu URL: `[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`. Aby uzyskać więcej informacji, zobacz [składniki URL usługi OData](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nie |
 
 **Przykład**
@@ -260,7 +261,7 @@ Aby skopiować dane z protokołu OData, ustaw typ **źródła** w działaniu Kop
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "ODataSource",
                 "query": "$select=Name,Description&$top=5"
             },
             "sink": {
@@ -270,6 +271,8 @@ Aby skopiować dane z protokołu OData, ustaw typ **źródła** w działaniu Kop
     }
 ]
 ```
+
+Jeśli używasz `RelationalSource` typu source, nadal jest ono obsługiwane w stanie takim, w jakim będziesz mieć możliwość użycia nowego.
 
 ## <a name="data-type-mapping-for-odata"></a>Mapowanie typu danych dla usługi OData
 

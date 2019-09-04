@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: b0bbfe973f18067284514e39d36442a63bd3efc8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 19c450a1832e725fa5fbf171b991a6b617291cfe
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60508950"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276703"
 ---
 # <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Kopiowanie danych z Presto przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
@@ -44,12 +44,12 @@ Następujące właściwości są obsługiwane w przypadku Presto połączonej us
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi być równa: **Presto** | Yes |
+| type | Właściwość Type musi mieć ustawioną wartość: **Presto** | Tak |
 | host | Adres IP lub hosta nazwę serwera, Presto. (i.e. 192.168.222.160)  | Yes |
 | serverVersion | Wersja serwera Presto. (czyli 0.148-t)  | Yes |
 | catalog | Kontekst katalogu dla wszystkich żądań względem serwera.  | Yes |
 | port | Port TCP używany Presto serwer do nasłuchiwania połączeń klientów. Wartość domyślna to 8080.  | Nie |
-| authenticationType | Mechanizm uwierzytelniania używany do łączenia się z serwerem Presto. <br/>Dozwolone wartości to: **Anonimowe**, **LDAP** | Yes |
+| authenticationType | Mechanizm uwierzytelniania używany do łączenia się z serwerem Presto. <br/>Dozwolone wartości to: **Anonimowe**, **LDAP** | Tak |
 | username | Nazwa użytkownika używana do łączenia się z serwerem Presto.  | Nie |
 | password | Hasło odpowiadający nazwie użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | enableSsl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu protokołu SSL. Wartość domyślna to false.  | Nie |
@@ -91,8 +91,10 @@ Aby skopiować dane z Presto, należy ustawić właściwość typu zestawu danyc
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **PrestoObject** | Yes |
-| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **PrestoObject** | Tak |
+| schema | Nazwa schematu. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| table | Nazwa tabeli. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| tableName | Nazwa tabeli ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. Użyj `schema` i`table` dla nowego obciążenia. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
 
@@ -101,11 +103,12 @@ Aby skopiować dane z Presto, należy ustawić właściwość typu zestawu danyc
     "name": "PrestoDataset",
     "properties": {
         "type": "PrestoObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Presto linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
@@ -120,7 +123,7 @@ Aby skopiować dane z Presto, należy ustawić typ źródła w działaniu kopiow
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi być równa wartości właściwości type źródło działania kopiowania: **PrestoSource** | Yes |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **PrestoSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**

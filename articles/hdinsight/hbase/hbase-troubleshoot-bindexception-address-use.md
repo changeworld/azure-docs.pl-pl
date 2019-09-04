@@ -5,13 +5,13 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/08/2019
-ms.openlocfilehash: 8851a4dfb7deafab7ad77ef80619dd49ca46ed71
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.date: 08/16/2019
+ms.openlocfilehash: c2f7575dca5432d90bf421afa5a39a4a4cd79744
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947853"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69983040"
 ---
 # <a name="scenario-bindexception---address-already-in-use-in-azure-hdinsight"></a>Scenariusz: Bindexception — adres jest już używany w usłudze Azure HDInsight
 
@@ -31,23 +31,23 @@ Caused by: java.net.BindException: Address already in use
 
 ## <a name="cause"></a>Przyczyna
 
-Ponowne uruchamianie serwerów regionów HBase podczas dużego obciążenia. Poniżej znajdują się informacje o tym, co się stanie w tle, gdy użytkownik inicjuje operację ponownego uruchamiania na serwerze regionu HBase z poziomu interfejsu użytkownika Ambari:
+Ponowne uruchamianie serwerów regionu Apache HBase podczas działania dużego obciążenia. Poniżej znajdują się informacje o tym, co się stanie w tle, gdy użytkownik inicjuje operację ponownego uruchamiania na serwerze regionu HBase z poziomu interfejsu użytkownika Apache Ambari:
 
-1. Agent Ambari wyśle żądanie zatrzymania do serwera regionu.
+1. Agent Ambari wysyła żądanie zatrzymania do serwera regionu.
 
-1. Agent Ambari następnie czeka 30 sekund, aż serwer regionu zostanie bezpiecznie zamknięty.
+1. Agent Ambari czeka 30 sekund, aż serwer regionu zostanie bezpiecznie zamknięty
 
-1. Jeśli aplikacja nadal nawiązuje połączenie z serwerem regionu, nie zostanie ona natychmiast ZAMKNIĘTA, a więc limit czasu 30 sekund wygaśnie wkrótce.
+1. Jeśli aplikacja nadal nawiązuje połączenie z serwerem regionu, serwer nie zostanie natychmiast zamknięty. Limit czasu 30 sekund upływa przed zamknięciem.
 
-1. Po upływie 30 sekund Agent Ambari wyśle wymuszenie wybicia (Kill-9) do serwera regionu.
+1. Po 30 sekundach Agent Ambari wysyła polecenie Force-Kill (`kill -9`) do serwera regionu.
 
 1. Ze względu na to nieoczekiwane zamknięcie, chociaż proces serwera regionu zostanie zamknięty, port skojarzony z procesem może nie zostać wyrzucony, który ostatecznie `AddressBindException`prowadzi do.
 
 ## <a name="resolution"></a>Rozwiązanie
 
-Przed zainicjowaniem ponownego uruchomienia Zmniejsz obciążenie serwerów regionów HBase.
+Przed zainicjowaniem ponownego uruchomienia Zmniejsz obciążenie serwerów regionów HBase. Ponadto dobrym pomysłem jest pierwsze opróżnianie wszystkich tabel. Aby uzyskać informacje na temat sposobu opróżniania tabel, [Zobacz HDInsight HBase: Jak zwiększyć czas ponownego uruchamiania klastra Apache HBase przez opróżnianie tabel](https://web.archive.org/web/20190112153155/https://blogs.msdn.microsoft.com/azuredatalake/2016/09/19/hdinsight-hbase-how-to-improve-hbase-cluster-restart-time-by-flushing-tables/).
 
-Alternatywnie Wypróbuj i ręcznie uruchom ponownie serwery regionów w węzłach procesu roboczego, używając następujących poleceń:
+Alternatywnie spróbuj ręcznie uruchomić ponownie serwery regionów w węzłach procesu roboczego, używając następujących poleceń:
 
 ```bash
 sudo su - hbase -c "/usr/hdp/current/hbase-regionserver/bin/hbase-daemon.sh stop regionserver"

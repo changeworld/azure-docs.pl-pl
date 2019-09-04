@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/21/2019
 ms.author: atsenthi
-ms.openlocfilehash: b7d34095568fa1d98c5f2987a70397ca042c8867
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: ca7a3cfe62520ed82dcf494a33f3bd188dbebe76
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036409"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279984"
 ---
 # <a name="supported-service-fabric-versions"></a>Obsługiwane Service Fabric wersje
 
-Upewnij się, że w klastrze jest zawsze uruchomiona obsługiwana wersja usługi Azure Service Fabric. Co najmniej 60 dni po opublikowaniu nowej wersji Service Fabric, obsługa poprzedniej wersji zostanie zakończona. Anonse nowych wydań znajdziesz na [blogu zespołu Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/).
+Upewnij się, że w klastrze jest zawsze uruchomiona obsługiwana wersja usługi Azure Service Fabric. Co najmniej 60 dni po opublikowaniu nowej wersji Service Fabric, obsługa poprzedniej wersji zostanie zakończona. Anonse nowych wydań znajdziesz na [blogu zespołu Service Fabric](https://azure.microsoft.com/updates/?product=service-fabric).
 
 Zapoznaj się z następującymi dokumentami, aby uzyskać szczegółowe informacje o tym, jak utrzymać klaster z obsługiwaną wersją Service Fabric:
 

@@ -7,12 +7,12 @@ ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 869be11639fd4e957a991cadb44f2714875ddf7e
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: d9aadc477c3f39cfbb108d2f3eece0c9e0b06264
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232721"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239144"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Pobieranie danych zgodności zasobów platformy Azure
 
@@ -27,8 +27,6 @@ Przed obejrzeniem metody sporządzić raport na temat zgodności, Przyjrzyjmy si
 
 > [!WARNING]
 > Jeśli stan zgodności jest raportowany jako **niezarejestrowany**, sprawdź, czy dostawca zasobów **Microsoft. PolicyInsights** jest zarejestrowany i czy użytkownik ma odpowiednie uprawnienia kontroli dostępu opartej na rolach (RBAC), zgodnie z opisem w temacie [RBAC w Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
-
-[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="evaluation-triggers"></a>Wyzwalacze oceny
 
@@ -112,7 +110,7 @@ Oprócz **zgodne** i **niezgodne**, zasady i zasobów mają trzy inne stany:
 
 - **Konflikt**: Istnieją co najmniej dwie zasady z regułami powodującymi konflikt. Na przykład dwie zasady dołączania tego samego tagu z różnymi wartościami.
 - **Nie uruchomiono**: Cykl oceniania nie został uruchomiony dla zasad lub zasobów.
-- **Nie**zarejestrowano: Dostawca zasobów Azure Policy nie został zarejestrowany lub zalogowane konto nie ma uprawnień do odczytu danych zgodności.
+- **Nie zarejestrowano**: Dostawca zasobów Azure Policy nie został zarejestrowany lub zalogowane konto nie ma uprawnień do odczytu danych zgodności.
 
 Azure Policy używa pól **Typ** i **Nazwa** w definicji, aby określić, czy zasób jest zgodny. Jeśli zasób jest zgodny, jest traktowana jako odpowiednie i ma stan **zgodne** lub **niezgodne**. Jeśli **typu** lub **nazwa** jest właściwością tylko do definicji, a wszystkie zasoby są traktowane jako stosowane są oceniane.
 
@@ -144,7 +142,7 @@ Kliknij prawym przyciskiem myszy w wierszu zdarzenia, o których chcesz zbierać
 
 <a name="change-history-preview"></a>
 
-Gdy zasoby są określone jako niezgodne, istnieje wiele możliwych przyczyn. Aby określić przyczynę braku zgodności zasobu lub aby znaleźć zmianę odpowiedzialną, zobacz [Określanie, które nie](./determine-non-compliance.md)są **zgodne** .
+Gdy zasoby są określone jako **niezgodne**, istnieje wiele możliwych przyczyn. Aby określić przyczynę braku zgodności zasobu lub aby znaleźć zmianę odpowiedzialną, zobacz [Określanie, które nie](./determine-non-compliance.md)są **zgodne** .
 
 ## <a name="command-line"></a>Wiersz polecenia
 
@@ -177,7 +175,7 @@ $response
 
 ### <a name="summarize-results"></a>Podsumowanie wyników
 
-Za pomocą interfejsu API REST podsumowania jest możliwe w kontenerze, definicji lub przypisania. Oto przykład podsumowania na poziomie subskrypcji przy użyciu podsumowania Azure Policy wgląd [w subskrypcję](/rest/api/policy-insights/policystates/summarizeforsubscription):
+Za pomocą interfejsu API REST podsumowania jest możliwe w kontenerze, definicji lub przypisania. Oto przykład podsumowania na poziomie subskrypcji przy użyciu [podsumowania Azure Policy wgląd w subskrypcję](/rest/api/policy-insights/policystates/summarizeforsubscription):
 
 ```http
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/summarize?api-version=2018-04-04

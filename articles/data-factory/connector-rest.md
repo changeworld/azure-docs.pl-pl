@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 8c7c8faad70022ba985a4041fd578becbaf70078
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 0bd97a6b1636d4b540c616958e5531c86362f597
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966862"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276620"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Kopiowanie danych z punktu końcowego REST przy użyciu Azure Data Factory
 
@@ -25,7 +25,7 @@ W tym artykule opisano sposób używania działania kopiowania w Azure Data Fact
 
 Różnica między tym łącznikiem REST, [łącznika http](connector-http.md) i [łącznikiem tabeli sieci Web](connector-web-table.md) :
 
-- **Łącznik REST** obsługujący kopiowanie danych z interfejsów API RESTful; 
+- **Łącznik REST** obsługuje kopiowanie danych z interfejsów API RESTful; 
 - **Łącznik http** jest ogólny do pobierania danych z dowolnego punktu końcowego http, np. do pobrania pliku. Przed udostępnieniem tego łącznika REST może wystąpić potrzeba użycia łącznika HTTP do kopiowania danych z interfejsu API RESTful, który jest obsługiwany, ale mniej funkcjonalny jest porównywany z łącznikiem REST.
 - **Łącznik tabeli sieci Web** wyodrębnia zawartość tabeli z strony html.
 
@@ -61,7 +61,7 @@ Dla połączonej usługi REST są obsługiwane następujące właściwości:
 |:--- |:--- |:--- |
 | type | Właściwość **Type** musi być ustawiona na wartość **RestService**. | Tak |
 | url | Podstawowy adres URL usługi REST. | Tak |
-| enableServerCertificateValidation | Określa, czy podczas nawiązywania połączenia z punktem końcowym ma być weryfikowany certyfikat SSL po stronie serwera. | Nie<br /> (wartość domyślna to **true**) |
+| enableServerCertificateValidation | Czy sprawdzać poprawność certyfikatu protokołu SSL po stronie serwera podczas nawiązywania połączenia z punktem końcowym. | Nie<br /> (wartość domyślna to **true**) |
 | authenticationType | Typ uwierzytelniania używany do nawiązywania połączenia z usługą REST. Dozwolone wartości to **Anonymous**, **Basic**, **AadServicePrincipal** i **ManagedServiceIdentity**. Zapoznaj się z odpowiednimi sekcjami poniżej, aby uzyskać więcej właściwości i przykładów. | Tak |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) nawiązywania połączenia z magazynem danych. Dowiedz się więcej z sekcji [wymagania wstępne](#prerequisites) . Jeśli nie zostanie określony, ta właściwość używa Azure Integration Runtime domyślnego. |Nie |
 
@@ -175,50 +175,23 @@ Aby skopiować dane z usługi REST, obsługiwane są następujące właściwośc
 |:--- |:--- |:--- |
 | type | Właściwość **Type** zestawu danych musi być ustawiona na wartość **RestResource**. | Tak |
 | relativeUrl | Względny adres URL do zasobu, który zawiera dane. Jeśli ta właściwość nie jest określona, używana jest tylko adres URL określony w definicji połączonej usługi. | Nie |
-| requestMethod | Metoda HTTP. Dozwolone wartości to **Get** (default) i **post**. | Nie |
-| additionalHeaders | Dodatkowe nagłówki żądań HTTP. | Nie |
-| Elemencie requestbody | Treść żądania HTTP. | Nie |
-| paginationRules | Zasady dzielenia na strony w celu redagowania żądań kolejnych stron. Szczegółowe informacje znajdują się w sekcji [Obsługa podziału na strony](#pagination-support) . | Nie |
 
-**Przykład 1: Korzystanie z metody get z podziałem na strony**
+Jeśli ustawienia `requestMethod`, `additionalHeaders`, `requestBody` i wzestawiedanych,nadalsąobsługiwanejako-is,podczasgdysugerowanejestużycienowegomodeluwźródleaktywności.`paginationRules`
+
+**Przykład:**
 
 ```json
 {
     "name": "RESTDataset",
     "properties": {
         "type": "RestResource",
+        "typeProperties": {
+            "relativeUrl": "<relative url>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<REST linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "additionalHeaders": {
-                "x-user-defined": "helloworld"
-            },
-            "paginationRules": {
-                "AbsoluteUrl": "$.paging.next"
-            }
-        }
-    }
-}
-```
-
-**Przykład 2: Korzystanie z metody post**
-
-```json
-{
-    "name": "RESTDataset",
-    "properties": {
-        "type": "RestResource",
-        "linkedServiceName": {
-            "referenceName": "<REST linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "requestMethod": "Post",
-            "requestBody": "<body for POST REST request>"
         }
     }
 }
@@ -237,10 +210,14 @@ Następujące właściwości są obsługiwane w działaniu kopiowania **źródł
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość **RestSource**. | Tak |
+| requestMethod | Metoda HTTP. Dozwolone wartości to **Get** (default) i **post**. | Nie |
+| additionalHeaders | Dodatkowe nagłówki żądań HTTP. | Nie |
+| Elemencie requestbody | Treść żądania HTTP. | Nie |
+| paginationRules | Zasady dzielenia na strony w celu redagowania żądań kolejnych stron. Szczegółowe informacje znajdują się w sekcji [Obsługa podziału na strony](#pagination-support) . | Nie |
 | httpRequestTimeout | Limit czasu (wartość **TimeSpan** ) żądania HTTP w celu uzyskania odpowiedzi. Ta wartość jest przekroczeniem limitu czasu w celu uzyskania odpowiedzi, a nie limitu czasu odczytu danych odpowiedzi. Wartość domyślna to **00:01:40**.  | Nie |
 | requestInterval | Czas oczekiwania przed wysłaniem żądania na następną stronę. Wartość domyślna to **00:00:01** |  Nie |
 
-**Przykład**
+**Przykład 1: Korzystanie z metody get z podziałem na strony**
 
 ```json
 "activities":[
@@ -262,6 +239,46 @@ Następujące właściwości są obsługiwane w działaniu kopiowania **źródł
         "typeProperties": {
             "source": {
                 "type": "RestSource",
+                "additionalHeaders": {
+                    "x-user-defined": "helloworld"
+                },
+                "paginationRules": {
+                    "AbsoluteUrl": "$.paging.next"
+                },
+                "httpRequestTimeout": "00:01:00"
+            },
+            "sink": {
+                "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+**Przykład 2: Korzystanie z metody post**
+
+```json
+"activities":[
+    {
+        "name": "CopyFromREST",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<REST input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "RestSource",
+                "requestMethod": "Post",
+                "requestBody": "<body for POST REST request>",
                 "httpRequestTimeout": "00:01:00"
             },
             "sink": {
@@ -285,7 +302,7 @@ Ten ogólny łącznik REST obsługuje następujące wzorce stronicowania:
 * Nagłówek następnego żądania = wartość właściwości w bieżącej treści odpowiedzi
 * Nagłówek następnego żądania = wartość nagłówka w bieżących nagłówkach odpowiedzi
 
-**Reguły stronicowania** są zdefiniowane jako słownik w zestawie danych, który zawiera jedną lub więcej par klucz-wartość z uwzględnieniem wielkości liter. Konfiguracja zostanie użyta do wygenerowania żądania rozpoczynającego się od drugiej strony. Łącznik przestanie iterację, gdy pobiera kod stanu HTTP 204 (brak zawartości) lub którekolwiek wyrażenie wykryto w "paginationRules" zwraca wartość null.
+**Reguły stronicowania** są zdefiniowane jako słownik w zestawie danych, który zawiera jedną lub więcej par klucz-wartość z uwzględnieniem wielkości liter. Konfiguracja zostanie użyta do wygenerowania żądania rozpoczynającego się od drugiej strony. Łącznik przestanie iterację, gdy pobiera kod stanu HTTP 204 (brak zawartości) lub którekolwiek z wyrażeń wykryto w "paginationRules" zwróci wartość null.
 
 **Obsługiwane klucze** w regułach dzielenia na strony:
 
@@ -336,30 +353,26 @@ Interfejs API programu Graph w serwisie Facebook zwraca odpowiedź w następują
 }
 ```
 
-Odpowiednia konfiguracja `paginationRules` zestawu danych REST jest następująca:
+Odpowiednia konfiguracja źródła działania kopiowania REST w szczególności `paginationRules` jest następująca:
 
 ```json
-{
-    "name": "MyFacebookAlbums",
-    "properties": {
-            "type": "RestResource",
-            "typeProperties": {
-                "relativeUrl": "albums",
-                "paginationRules": {
-                    "AbsoluteUrl": "$.paging.next"
-                }
-            },
-            "linkedServiceName": {
-                "referenceName": "MyRestService",
-                "type": "LinkedServiceReference"
-            }
+"typeProperties": {
+    "source": {
+        "type": "RestSource",
+        "paginationRules": {
+            "AbsoluteUrl": "$.paging.next"
+        },
+        ...
+    },
+    "sink": {
+        "type": "<sink type>"
     }
 }
 ```
 
 ## <a name="export-json-response-as-is"></a>Eksportuj odpowiedź JSON jako-is
 
-Za pomocą tego łącznika REST można wyeksportować odpowiedź JSON interfejsu API REST w taki sam sposób, jak w przypadku różnych magazynów opartych na plikach. Aby uzyskać taką kopię schematu niezależny od, Pomiń sekcję "struktura" (nazywanąrównież schematem) w temacie zestaw danych i schemat w działaniu kopiowania.
+Za pomocą tego łącznika REST można wyeksportować odpowiedź JSON interfejsu API REST w taki sam sposób, jak w przypadku różnych magazynów opartych na plikach. Aby uzyskać taką kopię schematu niezależny od, Pomiń sekcję "struktura" (nazywaną również *schematem*) w temacie zestaw danych i schemat w działaniu kopiowania.
 
 ## <a name="schema-mapping"></a>Mapowanie schematu
 

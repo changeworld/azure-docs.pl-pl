@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/07/2019
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 5c310c1943eaf23423be873c6172e27c621fe109
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e9ecdad0fb4d02f160977fa28a484b2a3a5bb30
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564068"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257074"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Szybki start: Wdrażanie aplikacji w portalu LUIS
 
@@ -40,7 +40,7 @@ Tworzysz zasób punktu końcowego przewidywania w Azure Portal. Tego zasobu nale
 
    |Ustawienie|Value|Cel|
    |--|--|--|
-   |Name (Nazwa)|`my-cognitive-service-resource`|Nazwa zasobu platformy Azure. Ta nazwa jest potrzebna podczas przypisywania zasobu do aplikacji w portalu LUIS.|
+   |Name|`my-cognitive-service-resource`|Nazwa zasobu platformy Azure. Ta nazwa jest potrzebna podczas przypisywania zasobu do aplikacji w portalu LUIS.|
    |Subscription|Twoja subskrypcja|Wybierz jedną z subskrypcji skojarzonych z Twoim kontem.|
    |Location|**Zachodnie stany USA**|Region świadczenia usługi Azure dla tego zasobu.|
    |Warstwa cenowa|**S0**|Domyślna warstwa cenowa dla tego zasobu.|
@@ -59,11 +59,11 @@ Za każdym razem, gdy tworzysz nowy zasób dla LUIS, musisz przypisać zasób do
 
 1. Zaloguj się do [portalu Luis](https://www.luis.ai) i wybierz aplikację **myEnglishApp** z listy aplikacji.
 
-1. Wybierz pozycję **Zarządzaj** w prawym górnym menu, a następnie wybierz pozycję **klucze i punkty końcowe**.
+1. Wybierz pozycję **Zarządzaj** w prawym górnym menu, a następnie wybierz pozycję **zasoby platformy Azure**.
 
-1. Aby dodać LUIS, wybierz pozycję **Przypisz zasób +** .
+1. Aby dodać LUIS, wybierz pozycję **Dodaj zasób predykcyjny**.
 
-   [![Przypisywanie zasobu do aplikacji](./media/get-started-portal-deploy-app/assign-resource-button.png)](./media/get-started-portal-deploy-app/assign-resource-button.png#lightbox)
+    <!-- TBD: get screenshot-->
 
 1. Wybierz dzierżawę, subskrypcję i nazwę zasobu. Wybierz **przypisany zasób**.
 
@@ -75,7 +75,7 @@ Za każdym razem, gdy tworzysz nowy zasób dla LUIS, musisz przypisać zasób do
 
 Przeszkol aplikację, gdy wszystko będzie gotowe do jej przetestowania. Opublikuj aplikację, jeśli chcesz, aby aktualnie przeszkolony wersja była dostępna dla aplikacji klienckich z poziomu środowiska uruchomieniowego punktu końcowego przewidywania zapytań.
 
-1. Jeśli aplikacja jest wyszkola, wybierz pozycję  pouczenie z menu w prawym górnym rogu.
+1. Jeśli aplikacja jest wyszkola, wybierz pozycję **pouczenie** z menu w prawym górnym rogu.
 
 1. Wybierz pozycję **Publikuj** z górnego menu. Zaakceptuj domyślne ustawienia środowiska, a następnie wybierz pozycję **Publikuj**.
 
@@ -87,7 +87,7 @@ Przeszkol aplikację, gdy wszystko będzie gotowe do jej przetestowania. Opublik
 
 1. Wybierz adres URL punktu końcowego skojarzony z nową nazwą zasobu. Ta akcja spowoduje otwarcie przeglądarki sieci Web z poprawnie skonstruowanym adresem URL w `GET` celu zgłoszenia żądania do środowiska uruchomieniowego punktu końcowego przewidywania.
 
-1. Na końcu adresu URL jest krótkie dla kwerendy i jest dołączany do żądania GET wypowiedź użytkownika.  `q=` `q=`Po wprowadzeniu tych samych użytkowników wypowiedź użytych na końcu poprzedniego przewodnika Szybki Start:
+1. Na końcu adresu URL jest krótkie dla kwerendy i jest dołączany do żądania GET wypowiedź użytkownika. `q=` `q=`Po wprowadzeniu tych samych użytkowników wypowiedź użytych na końcu poprzedniego przewodnika Szybki Start:
 
     ```Is there a form named hrf-234098```
 
@@ -131,7 +131,7 @@ Po zakończeniu pracy z tym przewodnikiem Szybki Start wybierz pozycję **Moje a
 
 [![Usuń aplikację z listy Moje aplikacje](./media/get-started-portal-build-app/delete-app.png)](./media/get-started-portal-build-app/delete-app.png#lightbox)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Identyfikowanie typowych intencji i jednostek](luis-tutorial-prebuilt-intents-entities.md)

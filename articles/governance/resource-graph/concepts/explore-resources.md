@@ -7,18 +7,16 @@ ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 58470dddafb29b6a2e5fa8ec0b474dd5da778799
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 148d69b96291737088a1472a9affd8bb9e43ab1b
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231548"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241124"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Badanie zasobów platformy Azure przy użyciu usługi Resources Graph
 
 Usługa Azure Resource Graph umożliwia szybkie eksplorowanie i odnajdywanie zasobów platformy Azure na dużą skalę. Zaprojektowana w celu uzyskania szybkich odpowiedzi to świetny sposób poznania środowiska oraz właściwości, które tworzą zasoby platformy Azure.
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="explore-virtual-machines"></a>Eksplorowanie maszyn wirtualnych
 
@@ -309,5 +307,5 @@ Search-AzGraph -Query "where type =~ 'Microsoft.Network/publicIPAddresses' | whe
 ## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [języku zapytań](query-language.md)
-- Zobacz język używany w zapytaniach [początkowych](../samples/starter.md)
-- Zobacz zaawansowane zastosowania w [zaawansowanych](../samples/advanced.md) zapytaniach
+- Zobacz język używany w [zapytaniach początkowych](../samples/starter.md)
+- Zobacz zaawansowane zastosowania w [zaawansowanych zapytaniach](../samples/advanced.md)

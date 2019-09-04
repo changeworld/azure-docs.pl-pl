@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 01f764d96eacdc94fd90b4f695c4b774a6ded5c5
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 891fff203fbec8433793d3f3873e985dfebc31b0
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967446"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277625"
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Kopiowanie danych z oprogramowania Phoenix za pomocą usługi Azure Data Factory 
 
@@ -93,7 +93,9 @@ Aby skopiować dane z rozwiązania Phoenix, należy ustawić właściwość typu
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość Type zestawu danych musi być ustawiona na wartość: **PhoenixObject** | Tak |
-| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
+| schema | Nazwa schematu. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| table | Nazwa tabeli. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| tableName | Nazwa tabeli ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. Użyj `schema` i`table` dla nowego obciążenia. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
 
@@ -102,11 +104,12 @@ Aby skopiować dane z rozwiązania Phoenix, należy ustawić właściwość typu
     "name": "PhoenixDataset",
     "properties": {
         "type": "PhoenixObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<Phoenix linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```

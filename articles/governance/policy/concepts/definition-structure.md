@@ -7,12 +7,12 @@ ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 988fc124a68ef07981c0f36334778be326fff3a2
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 1999a47d18fd3ce6388d6177be85c7debd3c1e97
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232280"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70239181"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -67,8 +67,6 @@ Na przykład następujący kod JSON przedstawiono zasady, które ogranicza, gdzi
 
 Wszystkie przykłady Azure Policy znajdują się na [Azure Policy próbkach](../samples/index.md).
 
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
-
 ## <a name="mode"></a>Tryb
 
 **Tryb** jest skonfigurowany w zależności od tego, czy zasady są ukierunkowane na Właściwość Azure Resource Manager lub Właściwość dostawcy zasobów.
@@ -108,13 +106,13 @@ Parametr ma następujące właściwości, które są używane w definicji zasad:
 - `metadata`: Definiuje podwłaściwości używane głównie przez Azure Portal do wyświetlania informacji przyjaznych dla użytkownika:
   - `description`: Wyjaśnienie, w jaki sposób jest używany parametr. Może służyć do podania przykładów akceptowalnych wartości.
   - `displayName`: Przyjazna nazwa wyświetlana w portalu dla parametru.
-  - `strongType`: Obowiązkowe Używane podczas przypisywania definicji zasad za pomocą portalu. Zawiera listę kontekstową. Aby uzyskać więcej informacji, [](#strongtype)Zobacz strongtype.
+  - `strongType`: Obowiązkowe Używane podczas przypisywania definicji zasad za pomocą portalu. Zawiera listę kontekstową. Aby uzyskać więcej informacji, zobacz [strongtype](#strongtype).
   - `assignPermissions`: Obowiązkowe Ustaw _wartość true_ , aby Azure Portal utworzyć przypisania roli podczas przypisywania zasad. Ta właściwość jest przydatna w przypadku, gdy chcesz przypisać uprawnienia poza zakresem przypisania. Istnieje jedno przypisanie roli w ramach zasad (lub definicji roli we wszystkich zasadach z inicjatywy). Wartość parametru musi być prawidłowym zasobem lub zakresem.
 - `defaultValue`: Obowiązkowe Ustawia wartość parametru w przypisaniu, jeśli nie podano wartości.
   Wymagane podczas aktualizowania istniejącej definicji zasad, która jest przypisana.
 - `allowedValues`: Obowiązkowe Dostarcza tablicę wartości, które parametr akceptuje podczas przypisywania.
 
-Można na przykład zdefiniować definicję zasad, aby ograniczyć lokalizacje, w których można wdrożyć zasoby. Parametr dla tej definicji zasad może być **allowedLocations**. Ten parametr będzie używany przez każde przypisanie definicji zasad w celu ograniczenia akceptowanych wartości. Użycie silnego typu zapewnia ulepszone środowisko podczas kończenia przydziału w portalu:
+Można na przykład zdefiniować definicję zasad, aby ograniczyć lokalizacje, w których można wdrożyć zasoby. Parametr dla tej definicji zasad może być **allowedLocations**. Ten parametr będzie używany przez każde przypisanie definicji zasad w celu ograniczenia akceptowanych wartości. Użycie **silnego** typu zapewnia ulepszone środowisko podczas kończenia przydziału w portalu:
 
 ```json
 "parameters": {
@@ -266,7 +264,7 @@ Obsługiwane są następujące pola:
 - `location`
   - Użyj **globalnych** dla zasobów, które są lokalizacją niezależny od. Aby zapoznać się z przykładem, zobacz sekcję [dozwolone lokalizacje](../samples/allowed-locations.md).
 - `identity.type`
-  - Zwraca typ zarządzanej [tożsamości](../../../active-directory/managed-identities-azure-resources/overview.md) włączonej dla zasobu.
+  - Zwraca typ [zarządzanej tożsamości](../../../active-directory/managed-identities-azure-resources/overview.md) włączonej dla zasobu.
 - `tags`
 - `tags['<tagName>']`
   - Ta składnia nawiasów umożliwia obsługę nazw tagów, które mają znaki interpunkcyjne, takie jak łącznik, kropka lub spacja.
@@ -285,7 +283,7 @@ Obsługiwane są następujące pola:
 
 Wartość parametru może być przekazanie do pola tagu. Przekazywanie parametru do pola tagu zwiększa elastyczność definicji zasad podczas przypisywania zasad.
 
-W poniższym przykładzie `concat` jest używany do tworzenia wyszukiwania pól tagów dla tagu o nazwie **TagName** parametru. Jeśli ten tag nie istnieje, efekt dołączania jest używany do dodawania znacznika przy użyciu wartości tego samego nazwanego tagu ustawionego w nadrzędnej grupie zasobów poddane inspekcji za pomocą `resourcegroup()` funkcji Lookup.
+W poniższym przykładzie `concat` jest używany do tworzenia wyszukiwania pól tagów dla tagu o nazwie **TagName** parametru. Jeśli ten tag nie istnieje, efekt **dołączania** jest używany do dodawania znacznika przy użyciu wartości tego samego nazwanego tagu ustawionego w nadrzędnej grupie zasobów poddane inspekcji za pomocą `resourcegroup()` funkcji Lookup.
 
 ```json
 {
@@ -309,7 +307,7 @@ Warunki mogą być również tworzone przy użyciu **wartości**. **wartość** 
 **wartość** jest sparowana z dowolnym obsługiwanym [warunkiem](#conditions).
 
 > [!WARNING]
-> Jeśli wynik _funkcji szablonu_ jest błąd, Ocena zasad kończy się niepowodzeniem. Niepowodzenie oceny to niejawne **odmowa**. Aby uzyskać więcej informacji, [](#avoiding-template-failures)Zobacz unikanie niepowodzeń związanych z szablonami.
+> Jeśli wynik _funkcji szablonu_ jest błąd, Ocena zasad kończy się niepowodzeniem. Niepowodzenie oceny to niejawne **odmowa**. Aby uzyskać więcej informacji, zobacz [unikanie niepowodzeń związanych z szablonami](#avoiding-template-failures).
 
 #### <a name="value-examples"></a>Przykłady wartości
 
@@ -369,7 +367,7 @@ Użycie _funkcji szablonu_ w **wartości** pozwala na wiele złożonych zagnież
 }
 ```
 
-Powyższa Przykładowa reguła zasad używa podciągu [()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) , aby porównać pierwsze trzy znaki **nazwy** z **ABC**. Jeśli **Nazwa** jest krótsza niż trzy znaki, `substring()` funkcja powoduje błąd. Ten błąd powoduje, że zasady stają się efektem odmowy.
+Powyższa Przykładowa reguła zasad używa [podciągu ()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) , aby porównać pierwsze trzy znaki **nazwy** z **ABC**. Jeśli **Nazwa** jest krótsza niż trzy znaki, `substring()` funkcja powoduje błąd. Ten błąd powoduje, że zasady stają się efektem **odmowy** .
 
 Zamiast tego należy użyć funkcji [if ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) , aby sprawdzić, czy pierwsze trzy znaki **nazwy** są równe **ABC** bez dopuszczania **nazwy** krótszej niż trzy znaki w celu spowodowania błędu:
 
@@ -516,7 +514,7 @@ Mieć wiele aliasów, które są dostępne wersji, która jest wyświetlana jako
 
 Alias "normal" reprezentuje pole jako pojedynczą wartość. To pole jest przeznaczone do dokładnego dopasowania scenariuszy porównywania, gdy cały zestaw wartości musi być dokładnie zdefiniowany, nie więcej i nie rzadziej.
 
-Alias **[\*]** umożliwia porównanie wartości poszczególnych elementów w tablicy i określonych właściwości każdego elementu. Takie podejście umożliwia porównanie właściwości elementów dla elementu "If None of", "if any" lub "If all of". Przy użyciu **ipRules\*[]** przykład sprawdza, czy każda _Akcja_ jest odmowa, ale nie martw się o liczbę istniejących reguł lub _wartość_ IP. Ta przykładowa reguła sprawdza, czy dla dowolnych dopasowań **ipRules [\*]. Value** do **10.0.4.1** i stosuje element **effecttype** tylko wtedy, gdy nie znajdzie co najmniej jednego dopasowania:
+Alias **[\*]** umożliwia porównanie wartości poszczególnych elementów w tablicy i określonych właściwości każdego elementu. Takie podejście umożliwia porównanie właściwości elementów dla elementu "If None of", "if any" lub "If all of". Przy użyciu **ipRules\*[]** przykład sprawdza, czy każda _Akcja_ jest _odmowa_, ale nie martw się o liczbę istniejących reguł lub _wartość_ IP. Ta przykładowa reguła sprawdza, czy dla dowolnych dopasowań **ipRules [\*]. Value** do **10.0.4.1** i stosuje element **effecttype** tylko wtedy, gdy nie znajdzie co najmniej jednego dopasowania:
 
 ```json
 "policyRule": {
@@ -538,7 +536,7 @@ Alias **[\*]** umożliwia porównanie wartości poszczególnych elementów w tab
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz [ocenianie aliasu [\*]](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
+Aby uzyskać więcej informacji, zobacz [ocenianie aliasu\*[]](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
 ## <a name="initiatives"></a>Inicjatywy
 

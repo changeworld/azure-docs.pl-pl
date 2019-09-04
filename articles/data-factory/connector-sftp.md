@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 37bdcb48dcd37bf81aac8f5c2e1213d7f0deb327
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f51e93ff164c0ec2352c1a57eb698a4374fbe5c9
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966448"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276927"
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Kopiowanie danych z serwera SFTP przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -37,7 +37,7 @@ Ten łącznik SFTP jest obsługiwany dla następujących działań:
 W przypadku tego łącznika SFTP obsługuje:
 
 - Kopiowanie plików przy użyciu uwierzytelniania **podstawowego** lub **SshPublicKey** .
-- Kopiowanie plików jako pliku lub analizowanie plików z obsługiwanymi [formatami plików i koderami-dekoder kompresji](supported-file-formats-and-compression-codecs.md).
+- Kopiowanie plików jako pliku lub analizowanie plików z [obsługiwanymi formatami plików i koderami-dekoder kompresji](supported-file-formats-and-compression-codecs.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -177,12 +177,12 @@ Aby użyć uwierzytelniania klucza publicznego SSH, ustaw właściwość "Authen
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. 
 
-- W przypadku **Parquet, rozdzielany tekst i format binarny**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem i binarnym zestawem danych](#format-based-dataset) .
-- W przypadku innych formatów, takich jak **Orc/Avro/JSON**, zapoznaj się z sekcją [innego formatu zestawu danych](#other-format-dataset) .
+- W przypadku **Parquet, rozdzielonego tekstu, Avro i formatu binarnego**zapoznaj się z sekcją [Parquet, rozdzielaną tekstem, Avro i binarnym zestawem danych](#format-based-dataset) .
+- W przypadku innych formatów, takich jak **Format Orc/JSON**, zapoznaj się z sekcją [zestaw danych](#other-format-dataset) .
 
-### <a name="format-based-dataset"></a>Parquet, rozdzielany tekst i binarny zestaw danych
+### <a name="format-based-dataset"></a>Parquet, rozdzielany tekstem, Avro i binarny zestaw danych
 
-Aby skopiować dane do i z **Parquet, rozdzielonego tekstu lub formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstowym](format-delimited-text.md) i artykułem [formatu binarnego](format-binary.md) w oparciu o zestaw danych oparty na formacie i obsługiwane ustawienia. Następujące właściwości są obsługiwane w przypadku protokołu SFTP `location` w obszarze Ustawienia w zestawie danych opartym na formacie:
+Aby skopiować dane do i z **Parquet, rozdzielonego tekstu lub formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielonym formatem tekstowym](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie zestawu danych opartym na formacie i obsługiwanymi ustawieniami. Następujące właściwości są obsługiwane w przypadku protokołu SFTP `location` w obszarze Ustawienia w zestawie danych opartym na formacie:
 
 | Właściwość   | Opis                                                  | Wymagane |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -221,7 +221,7 @@ Aby skopiować dane do i z **Parquet, rozdzielonego tekstu lub formatu binarnego
 
 ### <a name="other-format-dataset"></a>Inny zestaw danych formatu
 
-Aby skopiować dane z protokołu SFTP w **formacie Orc/Avro/JSON**, obsługiwane są następujące właściwości:
+Aby skopiować dane z protokołu SFTP w **formacie Orc/JSON**, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -231,7 +231,7 @@ Aby skopiować dane z protokołu SFTP w **formacie Orc/Avro/JSON**, obsługiwane
 | modifiedDatetimeStart | Filtr plików oparty na atrybucie: Ostatnia modyfikacja. Pliki zostanie wybrana, w przypadku ich godzina ostatniej modyfikacji w okresie między `modifiedDatetimeStart` i `modifiedDatetimeEnd`. Czas jest stosowany do strefy czasowej UTC w formacie "2018-12-01T05:00:00Z". <br/><br/> Należy pamiętać, że będzie to miało wpływ na ogólną wydajność przenoszenia danych przez włączenie tego ustawienia, jeśli chcesz, aby filtr plików był objęty dużą ilością plików. <br/><br/> Właściwości mogą mieć wartość NULL, co oznacza, że żaden filtr atrybutu pliku nie zostanie zastosowany do zestawu danych.  Gdy `modifiedDatetimeStart` ma wartość daty/godziny, ale `modifiedDatetimeEnd` ma wartość NULL, oznacza pliki, których ostatniej modyfikacji atrybut jest większa niż lub równe wartością daty/godziny, zostanie wybrany.  Gdy `modifiedDatetimeEnd` ma wartość daty/godziny, ale `modifiedDatetimeStart` ma wartość NULL, oznacza to, pliki, których ostatniej modyfikacji atrybut jest mniejsza niż wartość daty i godziny zostanie wybrany.| Nie |
 | modifiedDatetimeEnd | Filtr plików oparty na atrybucie: Ostatnia modyfikacja. Pliki zostanie wybrana, w przypadku ich godzina ostatniej modyfikacji w okresie między `modifiedDatetimeStart` i `modifiedDatetimeEnd`. Czas jest stosowany do strefy czasowej UTC w formacie "2018-12-01T05:00:00Z". <br/><br/> Należy pamiętać, że będzie to miało wpływ na ogólną wydajność przenoszenia danych przez włączenie tego ustawienia, jeśli chcesz, aby filtr plików był objęty dużą ilością plików. <br/><br/> Właściwości mogą mieć wartość NULL, co oznacza, że żaden filtr atrybutu pliku nie zostanie zastosowany do zestawu danych.  Gdy `modifiedDatetimeStart` ma wartość daty/godziny, ale `modifiedDatetimeEnd` ma wartość NULL, oznacza pliki, których ostatniej modyfikacji atrybut jest większa niż lub równe wartością daty/godziny, zostanie wybrany.  Gdy `modifiedDatetimeEnd` ma wartość daty/godziny, ale `modifiedDatetimeStart` ma wartość NULL, oznacza to, pliki, których ostatniej modyfikacji atrybut jest mniejsza niż wartość daty i godziny zostanie wybrany.| Nie |
 | format | Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych.<br/><br/>Jeśli chcesz analizować pliki o określonym formacie, obsługiwane są następujące typy formatu plików: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](supported-file-formats-and-compression-codecs.md#text-format), [formatu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro Format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc Format](supported-file-formats-and-compression-codecs.md#orc-format), i [formatu Parquet](supported-file-formats-and-compression-codecs.md#parquet-format) sekcje. |Brak (tylko w przypadku scenariusza kopia binarna) |
-| compression | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**.<br/>Obsługiwane są następujące poziomy: Optymalnai najszybsza. |Nie |
+| compression | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**.<br/>Obsługiwane są następujące poziomy: **Optymalna** i **najszybsza**. |Nie |
 
 >[!TIP]
 >Aby skopiować wszystkie pliki w folderze, określ **folderPath** tylko.<br>Aby skopiować pojedynczy plik o określonej nazwie, należy określić **folderPath** z część z folderem i **fileName** z nazwą pliku.<br>Aby skopiować podzestaw plików w folderze, podaj **folderPath** z część z folderem i **fileName** z filtr z symbolami wieloznacznymi.
@@ -276,12 +276,12 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania dz
 
 ### <a name="sftp-as-source"></a>SFTP jako źródło
 
-- Aby skopiować z **Parquet, rozdzielany tekstem i binarny format**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem i źródłem formatu binarnego](#format-based-source) .
-- Aby skopiować dane z innych formatów, takich jak **Orc/Avro/JSON**, zapoznaj się z sekcją [inne źródło formatu](#other-format-source) .
+- Aby skopiować z **Parquet, rozdzielony tekst, Avro i format binarny**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem, Avro i plikiem binarnym](#format-based-source) .
+- Aby skopiować dane z innych formatów, takich jak **Format Orc/JSON**, zapoznaj się z sekcją [inne źródło formatu](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, rozdzielone Źródło tekstu i format binarny
+#### <a name="format-based-source"></a>Parquet, rozdzielany tekstem, Avro i binarny kod źródłowy
 
-Aby skopiować dane z **Parquet, rozdzielonego tekstu lub formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstowym](format-delimited-text.md) i artykułem [formatu binarnego](format-binary.md) w oparciu o źródło działania kopiowania opartego na formacie i obsługiwane ustawienia. Następujące właściwości są obsługiwane w przypadku protokołu SFTP `storeSettings` w obszarze Ustawienia źródła kopiowania opartego na formacie:
+Aby skopiować dane z **Parquet, rozdzielanego tekstem lub formacie binarnym**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielonym formatem tekstowym](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie źródłowym i obsługiwanymi ustawieniami. Następujące właściwości są obsługiwane w przypadku protokołu SFTP `storeSettings` w obszarze Ustawienia źródła kopiowania opartego na formacie:
 
 | Właściwość                 | Opis                                                  | Wymagane                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -339,7 +339,7 @@ Aby skopiować dane z **Parquet, rozdzielonego tekstu lub formatu binarnego**, z
 
 #### <a name="other-format-source"></a>Inne źródło formatowania
 
-Aby skopiować dane z protokołu SFTP w **formacie Orc/Avro/JSON**, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+Aby skopiować dane z protokołu SFTP w **formacie Orc/JSON**, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |

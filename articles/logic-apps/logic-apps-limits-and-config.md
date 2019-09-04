@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 891273a98c61b59e08b4a15f3b0892e6828a2a47
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 401b33c28e4ba91a0da5e4ab38f920e173302ea1
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099427"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242363"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Informacje o limitach i konfiguracji Azure Logic Apps
 
@@ -65,7 +65,7 @@ Aby zmienić domyślny limit czasu wykonywania i przechowywania magazynu, wykona
 
 1. W Azure Portal w menu aplikacji logiki wybierz pozycję **Ustawienia przepływu pracy**.
 
-2. W obszarze **Opcje środowiska uruchomieniowego**na liście **przechowywanie historii uruchamiania w dniach** wybierz pozycję niestandardowa.
+2. W obszarze **Opcje środowiska uruchomieniowego**na liście **przechowywanie historii uruchamiania w dniach** wybierz pozycję **niestandardowa**.
 
 3. Wprowadź lub przeciągnij suwak, aby określić żądaną liczbę dni.
 
@@ -258,13 +258,11 @@ Po usunięciu aplikacji logiki nie są tworzone wystąpienia nowych przebiegów.
 
 ## <a name="firewall-configuration-ip-addresses"></a>Konfiguracja zapory: Adresy IP
 
-Wszystkie aplikacje logiki w tym samym regionie używają tych samych zakresów adresów IP. Aby zapewnić obsługę wywołań, które bezpośrednio tworzą aplikacje logiki przy użyciu [protokołu HTTP](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)i innych żądań HTTP, skonfiguruj zapory za pomocą *wszystkich* [przychodzących](#inbound) *i* [wychodzących](#outbound) adresów IP używanych przez usługę Logic Apps , w oparciu o regiony, w których istnieją aplikacje logiki. Te adresy są wyświetlane w obszarze nagłówki **przychodzące** i wychodzące w tej sekcji i są sortowane według regionów. 
+Wszystkie aplikacje logiki w tym samym regionie używają tych samych zakresów adresów IP. Aby zapewnić obsługę wywołań, które bezpośrednio tworzą aplikacje logiki przy użyciu [protokołu HTTP](../connectors/connectors-native-http.md), [http + Swagger](../connectors/connectors-native-http-swagger.md)i innych żądań HTTP, skonfiguruj zapory za pomocą *wszystkich* [przychodzących](#inbound) *i* [wychodzących](#outbound) adresów IP używanych przez usługę Logic Apps , w oparciu o regiony, w których istnieją aplikacje logiki. Te adresy są wyświetlane w obszarze nagłówki **przychodzące** i **wychodzące** w tej sekcji i są sortowane według regionów. 
 
-Aby zapewnić obsługę wywołań wywoływanych przez [Łączniki zarządzane przez firmę Microsoft](../connectors/apis-list.md) , należy skonfigurować zaporę ze *wszystkimi* wychodzącymi adresami IP używanymi przez te łączniki w oparciu o regiony, w których istnieją aplikacje logiki. [](#outbound) Te adresy są wyświetlane pod nagłówkiem wychodzącym w tej sekcji i są sortowane według regionów.
+Aby zapewnić obsługę wywołań wywoływanych przez [Łączniki zarządzane przez firmę Microsoft](../connectors/apis-list.md) , należy skonfigurować zaporę ze *wszystkimi* [wychodzącymi](#outbound) adresami IP używanymi przez te łączniki w oparciu o regiony, w których istnieją aplikacje logiki. Te adresy są wyświetlane pod nagłówkiem **wychodzącym** w tej sekcji i są sortowane według regionów. W przypadku aplikacji logiki, które działają w środowisku usługi integracji (ISE), upewnij się, że [te porty są otwarte](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
 
-W przypadku aplikacji logiki, które działają w środowisku usługi integracji (ISE), upewnij się, że [te porty są otwarte](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports).
-
-W przypadku [Azure Government](../azure-government/documentation-government-overview.md) i [platformy Azure z Chin](https://docs.microsoft.com/azure/china/), zastrzeżone adresy IP dla łączników nie są obecnie dostępne.
+W przypadku łączników niestandardowych, [Azure Government](../azure-government/documentation-government-overview.md)i [platformy Azure w Chinach](https://docs.microsoft.com/azure/china/), stałych lub zarezerwowanych adresów IP nie są dostępne.
 
 > [!IMPORTANT]
 >

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: f2ffd88b21d8cf331435a030199b562e6b5b979f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b9d853cc0de08b64f2e0f5530e153724d9eeddda
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840264"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277093"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Obsługiwane formaty plików i kompresji koderów-dekoderów w usłudze Azure Data Factory
 
@@ -35,7 +35,7 @@ Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów 
 ## <a name="text-format"></a>Format tekstu
 
 >[!NOTE]
->Data Factory wprowadzono nowy format tekstowy z rozdzielonymi datset, zobacz artykuł [rozdzielający format tekstowy](format-delimited-text.md) , zawierający szczegóły. Następujące konfiguracje zestawu danych opartego na plikach są nadal obsługiwane, tak jak w przypadku compabitility z poprzednimi wersjami. Zamierzasz użyć nowego modelu do przodu.
+>Data Factory wprowadził nowy zestaw danych w formacie tekstu rozdzielanego, zobacz artykuł [rozdzielający format tekstowy](format-delimited-text.md) — szczegóły. Następujące konfiguracje zestawu danych opartego na plikach są nadal obsługiwane, tak jak w przypadku compabitility z poprzednimi wersjami. Zamierzasz użyć nowego modelu do przodu.
 
 Jeśli chcesz odczytać z pliku tekstowego lub zapisać do pliku tekstowego, ustaw `type` właściwość `format` części zestawu danych na **TextFormat**. Ponadto możesz określić następujące **opcjonalne** właściwości w sekcji `format`. Aby uzyskać informacje na temat sposobu konfigurowania, zobacz sekcję [Przykład formatu TextFormat](#textformat-example).
 
@@ -101,7 +101,7 @@ Jeśli chcesz analizować pliki JSON lub zapisywać dane w formacie JSON, ustaw 
 | nestingSeparator |Znak używany do rozdzielania poziomów zagnieżdżenia. Wartość domyślna to „.” (kropka). |Nie |
 
 >[!NOTE]
->W przypadku krzyżowego stosowania danych w tablicy do wielu wierszy (przypadek 1-> próbki 2 w przykładach [formatu jsonformat](#jsonformat-example)) można wybrać tylko opcję rozwinięcie pojedynczej tablicy przy użyciu właściwości `jsonNodeReference`.
+>W przypadku krzyżowego stosowania danych w tablicy do wielu wierszy (przypadek 1-> próbki 2 w [przykładach formatu jsonformat](#jsonformat-example)) można wybrać tylko opcję rozwinięcie pojedynczej tablicy przy użyciu właściwości `jsonNodeReference`.
 
 ### <a name="json-file-patterns"></a>Wzorce plików JSON
 
@@ -413,7 +413,7 @@ Zestaw danych wyjściowych typu **JsonFormat** jest zdefiniowany następująco: 
 ## <a name="parquet-format"></a>Parquet format
 
 >[!NOTE]
->Data Factory wprowadzono nowy format Parquet datset, zobacz artykuł [Format Parquet](format-parquet.md) ze szczegółowymi informacjami. Następujące konfiguracje zestawu danych opartego na plikach są nadal obsługiwane, tak jak w przypadku compabitility z poprzednimi wersjami. Zamierzasz użyć nowego modelu do przodu.
+>Data Factory wprowadzono nowy zestaw danych Parquet format, zobacz artykuł [Format Parquet](format-parquet.md) ze szczegółami. Następujące konfiguracje zestawu danych opartego na plikach są nadal obsługiwane, tak jak w przypadku compabitility z poprzednimi wersjami. Zamierzasz użyć nowego modelu do przodu.
 
 Jeśli chcesz analizować pliki Parquet lub zapisywać dane w formacie Parquet, ustaw właściwość `format` `type` na wartość **ParquetFormat**. Nie musisz określać żadnych właściwości w sekcji Format należącej do sekcji typeProperties. Przykład:
 
@@ -521,6 +521,9 @@ W przypadku kopiowania uruchomionego na samoobsługowym środowisku IR przy uży
 
 ## <a name="avro-format"></a>AVRO format
 
+>[!NOTE]
+>Data Factory wprowadzono nowy zestaw danych Avro format, zobacz artykuł [Format avri](format-avro.md) ze szczegółami. Następujące konfiguracje zestawu danych opartego na plikach są nadal obsługiwane, tak jak w przypadku compabitility z poprzednimi wersjami. Zamierzasz użyć nowego modelu do przodu.
+
 Jeśli chcesz analizować pliki Avro lub zapisywać dane w formacie Avro, ustaw właściwość `format` `type` na wartość **AvroFormat**. Nie musisz określać żadnych właściwości w sekcji Format należącej do sekcji typeProperties. Przykład:
 
 ```json
@@ -597,7 +600,7 @@ Możesz zobaczyć przykład, który używa funkcji platformy Azure, aby [wyodrę
 
 Tę funkcję można także skompilować przy użyciu niestandardowego działania dotnet. Dodatkowe informacje są dostępne [tutaj](https://docs.microsoft.com/azure/data-factory/transform-data-using-dotnet-custom-activity)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Zobacz następujące artykuły dotyczące magazynów opartych na plikach danych obsługiwanych przez usługę Azure Data Factory:
 

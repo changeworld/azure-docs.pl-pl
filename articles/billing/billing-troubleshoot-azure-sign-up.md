@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
-ms.openlocfilehash: 57dc9c05778563bc0c5df1a8ac8895b51008b01f
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 5032762c1275d3f1c8d1a020a54d20555f8ba3fe
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69657075"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242432"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>Rozwiązywanie problemów z rejestrowaniem na platformie Azure
 
@@ -88,7 +88,7 @@ Czy w przeszłości użyto subskrypcji platformy Azure? Umowa dotycząca warunk�
 
 ### <a name="i-saw-a-charge-on-my-free-trial-account"></a>Otrzymuję opłaty za bezpłatne konto próbne
 
-Po zarejestrowaniu się na koncie karty kredytowej może zostać wyświetlone niewielkie wstrzymanie weryfikacji. To zostało usunięte w ciągu trzech do pięciu dni. Jeśli martwisz się się o zarządzanie kosztami, Przeczytaj więcej na temat [zapobiegania](billing-getting-started.md)nieoczekiwanym kosztom.
+Po zarejestrowaniu się na koncie karty kredytowej może zostać wyświetlone niewielkie wstrzymanie weryfikacji. To zostało usunięte w ciągu trzech do pięciu dni. Jeśli martwisz się się o zarządzanie kosztami, Przeczytaj więcej na temat [zapobiegania nieoczekiwanym kosztom](billing-getting-started.md).
 
 ### <a name="cant-activate-azure-benefit-plan-like-msdn-bizspark-bizsparkplus-or-mpn"></a>Nie można aktywować planu korzyści platformy Azure, takiego jak MSDN, BizSpark, BizSparkPlus lub MPN
 
@@ -106,7 +106,7 @@ Upewnij się, że używasz prawidłowych poświadczeń logowania. Następnie spr
 
 ### <a name="cant-activate-new-azure-in-open-subscription"></a>Nie można aktywować nowej subskrypcji platformy Azure w ramach programu licencjonowania Open
 
-Aby utworzyć subskrypcję platformy Azure w ramach programu licencjonowania Open, musisz dysponować prawidłowym kluczem aktywacji usług online (OSA), który ma skojarzony co najmniej jeden token platformy Azure w ramach programu licencjonowania Open. Jeśli nie masz klucza OSA, skontaktuj się z przedstawicielem firmy Microsoft wymienionym w [witrynie Microsoft Pinpoint](http://pinpoint.microsoft.com/).
+Aby utworzyć subskrypcję platformy Azure w ramach programu licencjonowania Open, musisz dysponować prawidłowym kluczem aktywacji usług online (OSA), który ma skojarzony co najmniej jeden token platformy Azure w ramach programu licencjonowania Open. Jeśli nie masz klucza OSA, skontaktuj się z przedstawicielem firmy Microsoft wymienionym w [witrynie Microsoft Pinpoint](https://pinpoint.microsoft.com/).
 
 ### <a name="error-you-are-not-eligible-for-an-azure-subscription"></a>Błąd: *Nie masz uprawnień do subskrypcji platformy Azure*
 
@@ -118,9 +118,9 @@ Aby rozwiązać ten problem, należy sprawdzić, czy są spełnione następując
 
 ### <a name="error-your-current-account-type-is-not-supported"></a>Błąd: *Bieżący typ konta nie jest obsługiwany*
 
-Ten problem może wystąpić, jeśli konto jest zarejestrowane w niezarządzanym [katalogu usługi Azure AD](../active-directory/users-groups-roles/directory-self-service-signup.md)i nie znajduje się w katalogu usługi Azure AD w organizacji. 
+Ten problem może wystąpić, jeśli konto jest zarejestrowane w [niezarządzanym katalogu usługi Azure AD](../active-directory/users-groups-roles/directory-self-service-signup.md)i nie znajduje się w katalogu usługi Azure AD w organizacji. 
 
-Aby rozwiązać ten problem, zaloguj się do konta platformy Azure przy użyciu innego konta lub Przejmij niezarządzany katalog usługi AD. Aby uzyskać więcej informacji, zobacz Przejmowanie niezarządzanego [katalogu jako administrator w Azure Active Directory](../active-directory/users-groups-roles/domains-admin-takeover.md).
+Aby rozwiązać ten problem, zaloguj się do konta platformy Azure przy użyciu innego konta lub Przejmij niezarządzany katalog usługi AD. Aby uzyskać więcej informacji, zobacz [przejmowanie niezarządzanego katalogu jako administrator w Azure Active Directory](../active-directory/users-groups-roles/domains-admin-takeover.md).
  
 ## <a name="additional-help-resources"></a>Dodatkowe zasoby pomocy
 

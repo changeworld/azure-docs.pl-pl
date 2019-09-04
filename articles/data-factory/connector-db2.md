@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 2bdec0c70e9f11ca40e0ff9e1aa87898c94e119c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: c774725d4a4db4f624cd3980041b2974dfc8ed28
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232994"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275563"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopiowanie danych z programu DB2 przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -32,6 +32,7 @@ Dane z bazy danych programu DB2 można kopiować do dowolnego obsługiwanego mag
 
 W przypadku tego łącznika bazy danych DB2 obsługiwane są następujące platformy i wersje programu IBM DB2 z użyciem rozproszonej architektury relacyjnej bazy (DRDA) (SQLAM) w wersji 9, 10 i 11:
 
+* IBM DB2 dla systemu z/OS 12,1
 * IBM DB2 dla systemu z/OS 11,1
 * IBM DB2 dla systemu z/OS 10,1
 * IBM DB2 dla i 7,3
@@ -99,14 +100,16 @@ Następujące właściwości są obsługiwane w przypadku usługi połączonej z
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych programu DB2.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych programu DB2.
 
-Aby skopiować dane z bazy danych DB2, należy ustawić Właściwość Type zestawu danychna relacyjny. Obsługiwane są następujące właściwości:
+Aby skopiować dane z bazy danych DB2, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **Obiekt relacyjny** | Tak |
-| tableName | Nazwa tabeli w bazie danych DB2. | Nie (Jeśli określono parametr "query" w źródle działania) |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **Db2Table** | Tak |
+| schema | Nazwa schematu. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| table | Nazwa tabeli. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| tableName | Nazwa tabeli ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. Użyj `schema` i`table` dla nowego obciążenia. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
 
@@ -115,15 +118,18 @@ Aby skopiować dane z bazy danych DB2, należy ustawić Właściwość Type zest
     "name": "DB2Dataset",
     "properties":
     {
-        "type": "RelationalTable",
+        "type": "Db2Table",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<DB2 linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+Jeśli używasz `RelationalTable` określonego zestawu danych, jest on nadal obsługiwany w stanie takim, w jakim będziesz mieć możliwość korzystania z nowej usługi.
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
@@ -131,11 +137,11 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania dz
 
 ### <a name="db2-as-source"></a>DB2 jako źródło
 
-Aby skopiować dane z programu DB2, ustaw typ źródła w działaniu Copy na **RelationalSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z bazy danych DB2, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **RelationalSource** | Tak |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **Db2Source** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 **Przykład:**
@@ -159,7 +165,7 @@ Aby skopiować dane z programu DB2, ustaw typ źródła w działaniu Copy na **R
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "Db2Source",
                 "query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""
             },
             "sink": {
@@ -169,6 +175,8 @@ Aby skopiować dane z programu DB2, ustaw typ źródła w działaniu Copy na **R
     }
 ]
 ```
+
+Jeśli używasz `RelationalSource` typu source, nadal jest ono obsługiwane w stanie takim, w jakim będziesz mieć możliwość użycia nowego.
 
 ## <a name="data-type-mapping-for-db2"></a>Mapowanie typu danych dla programu DB2
 

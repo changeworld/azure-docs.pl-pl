@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/07/2019
-ms.openlocfilehash: 2573adcb199ab32467493729842b6c47e3add64b
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 1c6bb557c11cf32449b440b0007e1cef929a026f
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515302"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259413"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>Warstwa usługi ogólnego przeznaczenia — Azure SQL Database
 
@@ -37,7 +37,7 @@ Poniższy rysunek przedstawia cztery węzły w standardowym modelu architektury 
 
 W modelu architektury dla warstwy usług ogólnego przeznaczenia istnieją dwie warstwy:
 
-- Warstwa obliczeń bezstanowych, która uruchamia `sqlserver.exe` proces i zawiera tylko dane przejściowe i buforowane (na przykład pamięć podręczna planu, pula buforów, pula magazynu kolumn). Ten bezstanowy węzeł SQL Server jest obsługiwany przez platformę Azure Service Fabric, która inicjuje proces, kontroluje kondycję węzła i przeprowadza przejście w tryb failover w razie potrzeby w inne miejsce.
+- Warstwa obliczeń bezstanowych, która uruchamia `sqlservr.exe` proces i zawiera tylko dane przejściowe i buforowane (na przykład pamięć podręczna planu, pula buforów, pula magazynu kolumn). Ten bezstanowy węzeł SQL Server jest obsługiwany przez platformę Azure Service Fabric, która inicjuje proces, kontroluje kondycję węzła i przeprowadza przejście w tryb failover w razie potrzeby w inne miejsce.
 - Warstwa danych stanowych z plikami bazy danych (. mdf/. ldf), które są przechowywane w usłudze Azure Blob Storage. Usługa Azure Blob Storage gwarantuje, że nie utracie danych żadnego rekordu, który jest umieszczany w pliku bazy danych. Usługa Azure Storage ma wbudowaną dostępność i nadmiarowość danych, która zapewnia, że każdy rekord w pliku dziennika lub stronie w pliku danych zostanie zachowany nawet w przypadku awarii procesu SQL Server.
 
 Po uaktualnieniu aparatu bazy danych lub systemu operacyjnego część podstawowej infrastruktury nie powiedzie się lub w przypadku wykrycia błędu krytycznego w procesie SQL Server usługa Azure Service Fabric przeniesie proces bezstanowy SQL Server do innego bezstanowego węzła obliczeniowego. Istnieje zestaw węzłów zapasowych, które oczekują na uruchomienie nowej usługi obliczeniowej, jeśli tryb failover węzła podstawowego wystąpi w celu zminimalizowania czasu pracy w trybie failover. Nie dotyczy to danych w warstwie usługi Azure Storage, a pliki danych/dziennika są dołączone do nowo zainicjowanego procesu SQL Server. Ten proces gwarantuje dostępność na 99,99%, ale może mieć wpływ na wydajność dużego obciążenia, które jest uruchomione z powodu czasu przejścia, a fakt, że nowy węzeł SQL Server rozpoczyna się od zimnej pamięci podręcznej.
@@ -51,4 +51,4 @@ Ogólnego przeznaczenia warstwa usługi jest domyślną warstwą usług w Azure 
 - Znajdź charakterystyki zasobów (liczbę rdzeni, operacji we/wy, pamięci) Ogólnego przeznaczenia/warstwy standardowej w [wystąpieniu zarządzanym](sql-database-managed-instance-resource-limits.md#service-tier-characteristics), pojedynczą bazę danych w [modelu rdzeń wirtualny](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-for-provisioned-compute) lub [modelu DTU](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)lub elastyczną pulę w [modelu rdzeń wirtualny](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes) i [modelu DTU](sql-database-dtu-resource-limits-elastic-pools.md#standard-elastic-pool-limits).
 - Dowiedz się więcej na temat warstw [krytyczne dla działania firmy](sql-database-service-tier-business-critical.md) i [skalowania](sql-database-service-tier-hyperscale.md) .
 - Dowiedz się więcej na temat [Service Fabric](../service-fabric/service-fabric-overview.md).
-- Aby uzyskać więcej opcji dotyczących wysokiej dostępności i odzyskiwania po awarii [](sql-database-business-continuity.md), zobacz ciągłość działania.
+- Aby uzyskać więcej opcji dotyczących wysokiej dostępności i odzyskiwania po awarii, zobacz [ciągłość](sql-database-business-continuity.md)działania.

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: c9320c8d0cf512bc9145accc07ab4c79630a7c84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61c10055a7f85f849fc366211eb41382c4c3039b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60808893"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275197"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Kopiowanie danych z usługi Google Analytics za pomocą usługi Azure Data Factory
 
@@ -127,8 +127,10 @@ Aby skopiować dane z usługi Google Analytics, należy ustawić właściwość 
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość typu elementu dataset musi być równa: **GoogleBigQueryObject** | Yes |
-| tableName | Nazwa tabeli. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **GoogleBigQueryObject** | Tak |
+| zestawu | Nazwa zestawu danych usługi Google BigQuery. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| table | Nazwa tabeli. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| tableName | Nazwa tabeli. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. W przypadku nowych obciążeń Użyj `dataset` i `table`. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
 
@@ -137,11 +139,12 @@ Aby skopiować dane z usługi Google Analytics, należy ustawić właściwość 
     "name": "GoogleBigQueryDataset",
     "properties": {
         "type": "GoogleBigQueryObject",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<GoogleBigQuery linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```

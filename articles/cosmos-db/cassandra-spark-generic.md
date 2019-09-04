@@ -7,13 +7,13 @@ ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: cc28cf590a1fd2c3fdfe8651f136526188801c04
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.date: 09/01/2019
+ms.openlocfilehash: cb34ea44c069f067d13a6480531a94a1a515f380
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615642"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241240"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Nawiązywanie połączenia z usługą Azure Cosmos DB interfejs API Cassandra z platformy Spark
 
@@ -29,7 +29,7 @@ Ten artykuł jest jednym z serii artykułów na Azure Cosmos DB interfejs API Ca
 
 * **Azure Cosmos DB bibliotekę pomocnika dla interfejs API Cassandra:** Oprócz łącznika Spark potrzebna jest inna Biblioteka o nazwie [Azure-Cosmos-Cassandra-Spark-Helper]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) z Azure Cosmos DB. Ta biblioteka zawiera niestandardową fabrykę połączeń i klasy zasad ponawiania.
 
-  Zasady ponawiania w Azure Cosmos DB są skonfigurowane do obsługi wyjątków HTTP Code 429 ("Request rate Large"). Azure Cosmos DB interfejs API Cassandra tłumaczy te wyjątki na przeciążone błędy w protokole natywnym Cassandra i można ponowić próbę z powrotem. Ponieważ Azure Cosmos DB używa modelu przepływności z obsługą administracyjną, liczba wyjątków ograniczania żądań występuje po zwiększeniu szybkości transferu danych przychodzących/wychodzących. Zasady ponawiania chronią zadania platformy Spark względem danych, które znacznie przekraczają przepływność przydzieloną dla kolekcji.
+  Zasady ponawiania w Azure Cosmos DB są skonfigurowane do obsługi wyjątków HTTP Code 429 ("Request rate Large"). Azure Cosmos DB interfejs API Cassandra tłumaczy te wyjątki na przeciążone błędy w protokole natywnym Cassandra i można ponowić próbę z powrotem. Ponieważ Azure Cosmos DB używa modelu przepływności z obsługą administracyjną, liczba wyjątków ograniczania żądań występuje po zwiększeniu szybkości transferu danych przychodzących/wychodzących. Zasady ponawiania chronią zadania platformy Spark względem danych, które znacznie przekraczają przepływność przydzieloną dla kontenera.
 
   > [!NOTE] 
   > Zasady ponawiania mogą chronić zadania platformy Spark wyłącznie przy użyciu tylko przyrostów czasu. Jeśli nie skonfigurowano wystarczającej liczby jednostek ru wymaganych do uruchomienia obciążenia, zasady ponawiania nie mają zastosowania, a Klasa zasad ponawiania generuje wyjątek.

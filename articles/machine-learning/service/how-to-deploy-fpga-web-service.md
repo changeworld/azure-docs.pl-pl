@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff4259c438fec448ba510e4c248de6f4acc184ab
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: c3d1d211f85c50a482e1dd9c482cb75477942de7
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990500"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278199"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Co to są tablice z bramą programowalną w polu (FPGA) i sposób wdrażania
 
@@ -133,7 +133,7 @@ Postępuj zgodnie z instrukcjami, aby:
 * Używanie wdrożonego modelu
 * Usuwanie wdrożonych usług
 
-Użyj [zestawu SDK Azure Machine Learning dla języka Python](https://aka.ms/aml-sdk) , aby utworzyć definicję usługi. Definicja usługi jest plikiem opisującym potok grafów (Input, featurized i klasyfikator) oparty na TensorFlow. Polecenie wdrożenia automatycznie kompresuje definicje i wykresy do pliku ZIP i przekazuje je do usługi Azure Blob Storage. DNN jest już wdrożony do uruchamiania na FPGA.
+Użyj [zestawu SDK Azure Machine Learning dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) , aby utworzyć definicję usługi. Definicja usługi jest plikiem opisującym potok grafów (Input, featurized i klasyfikator) oparty na TensorFlow. Polecenie wdrożenia automatycznie kompresuje definicje i wykresy do pliku ZIP i przekazuje je do usługi Azure Blob Storage. DNN jest już wdrożony do uruchamiania na FPGA.
 
 ### <a name="load-azure-ml-workspace"></a>Załaduj obszar roboczy usługi Azure ML
 
@@ -183,7 +183,7 @@ print(feature_tensor.shape)
 
 ### <a name="add-classifier"></a>Dodaj klasyfikator
 
-Po zapoznaniu to klasyfikatora na zestawie danych sieci ImageNet.  Przykłady dotyczące uczenia i szkolenia z zakresu przenoszenia są dostępne w zestawie przykładowych [notesów](https://aka.ms/aml-notebooks).
+Po zapoznaniu to klasyfikatora na zestawie danych sieci ImageNet.  Przykłady dotyczące uczenia i szkolenia z zakresu przenoszenia są dostępne w zestawie [przykładowych notesów](https://aka.ms/aml-notebooks).
 
 ```python
 classifier_output = model_graph.get_default_classifier(feature_tensor)

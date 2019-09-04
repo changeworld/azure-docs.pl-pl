@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.author: hamusa
-ms.openlocfilehash: c9c57a07100f2ea6db86408826bf74d05c8df5aa
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 0d279781cdc27dbf2140c0100d84de5128c6a3d5
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868681"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279423"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Ocenianie dużej liczby maszyn wirtualnych VMware na potrzeby migracji na platformę Azure
 
@@ -30,7 +30,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 
 > [!NOTE]
-> Jeśli chcesz wypróbować ocenę koncepcji, aby ocenić kilka maszyn wirtualnych przed oceną na dużą skalę, postępuj zgodnie z naszymi seriami [samouczków](tutorial-prepare-vmware.md)
+> Jeśli chcesz wypróbować ocenę koncepcji, aby ocenić kilka maszyn wirtualnych przed oceną na dużą skalę, postępuj zgodnie z naszymi [seriami samouczków](tutorial-prepare-vmware.md)
 
 ## <a name="plan-for-assessment"></a>Planowanie oceny
 
@@ -48,7 +48,8 @@ Użyj limitów podsumowania w tej tabeli w celu zaplanowania.
 **Planowanie** | **Limity**
 --- | --- 
 **Projekty Azure Migrate** | Oceń do 35 000 maszyn wirtualnych w projekcie.
-**Urządzenie Azure Migrate** | Urządzenie może łączyć się tylko z jednym vCenter Server.<br/><br/> Urządzenie może być skojarzone tylko z pojedynczym projektem Azure Migrate.<br/> Urządzenie może wykryć do 10 000 maszyn wirtualnych na vCenter Server.
+**Urządzenie Azure Migrate** | Urządzenie może wykryć do 10 000 maszyn wirtualnych na vCenter Server.<br/> Urządzenie może łączyć się tylko z jednym vCenter Server.<br/> Urządzenie może być skojarzone tylko z pojedynczym projektem Azure Migrate.<br/>  Dowolna liczba urządzeń może być skojarzona z pojedynczym projektem Azure Migrate. <br/><br/> 
+**Grupa** | W jednej grupie możesz dodać maksymalnie 35 000 maszyn wirtualnych.
 **Ocena Azure Migrate** | W ramach jednej oceny można ocenić do 35 000 maszyn wirtualnych.
 
 Mając na uwadze następujące limity, Oto kilka przykładowych wdrożeń:

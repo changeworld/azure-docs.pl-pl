@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 2e13efa70d0344defeb306a92ac405439635e929
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: c519b030aaee58397766ecb8658e7af08b5986e1
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619701"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256870"
 ---
 # <a name="understand-how-and-when-to-use-a-luis-version"></a>Informacje o tym, jak i kiedy używać wersji LUIS
 
@@ -48,7 +48,7 @@ Możesz zaimportować wersję na poziomie aplikacji. Ta wersja jest wersją akty
 
 Możesz wyeksportować wersję na poziomie aplikacji lub wyeksportować wersję na poziomie wersji. Jedyną różnicą jest to, że wersja wyeksportowana na poziomie aplikacji jest obecnie aktywna, a na poziomie wersji można wybrać dowolną wersję do eksportowania na stronie **[Ustawienia](luis-how-to-manage-versions.md)** . 
 
-Wyeksportowany plik nie zawiera informacji o maszynach, ponieważ aplikacja jest ponownie przeszkolna po zaimportowaniu. Wyeksportowany plik nie zawiera współpracowników — należy dodać je ponownie, gdy wersja zostanie zaimportowana do nowej aplikacji.
+Wyeksportowany plik nie zawiera informacji o maszynach, ponieważ aplikacja jest ponownie przeszkolna po zaimportowaniu. Wyeksportowany plik nie zawiera informacji o współautorze.
 
 ## <a name="export-each-version-as-app-backup"></a>Eksportuj każdą wersję jako kopię zapasową aplikacji
 Aby utworzyć kopię zapasową aplikacji LUIS, wyeksportuj poszczególne wersje na stronie **[Ustawienia](luis-how-to-manage-versions.md)** .
@@ -59,11 +59,26 @@ Wszystkie wersje, z wyjątkiem aktywnej wersji, można usunąć z listy wersje n
 ## <a name="version-availability-at-the-endpoint"></a>Dostępność wersji w punkcie końcowym
 Przeszkolone wersje nie są automatycznie dostępne w [punkcie końcowym](luis-glossary.md#endpoint)aplikacji. Musisz [opublikować](luis-how-to-publish-app.md) lub ponownie opublikować wersję, aby była dostępna w punkcie końcowym aplikacji. Możesz publikować w ramach **przemieszczania** i **produkcji**, oferując do dwóch wersji aplikacji dostępnych w punkcie końcowym. Jeśli potrzebujesz więcej wersji aplikacji dostępnych w punkcie końcowym, należy wyeksportować wersję i ponownie zaimportować ją do nowej aplikacji. Nowa aplikacja ma inny identyfikator aplikacji.
 
-## <a name="collaborators"></a>Współpracownicy
-Właściciel i wszyscy [współpracownicy](luis-how-to-collaborate.md) mają pełny dostęp do wszystkich wersji aplikacji.
+## <a name="manage-multiple-versions-inside-the-same-app"></a>Zarządzanie wieloma wersjami wewnątrz tej samej aplikacji
+Rozpocznij od [klonowania](luis-how-to-manage-versions.md#clone-a-version), z wersji podstawowy, dla każdego autora. 
 
-## <a name="next-steps"></a>Kolejne kroki
+Każdy autor wprowadza zmiany w swojej wersji aplikacji. Po każdego autora jest zadowolony z modelu, należy wyeksportować nowe wersje plików JSON.  
+
+Wyeksportowane aplikacje są w formacie JSON — pliki, które można porównać zmiany. Połącz pliki, aby utworzyć pojedynczy plik JSON w nowej wersji. Zmiana **versionId** właściwości w formacie JSON oznaczającego nowej wersji scalone. Zaimportować tej wersji oryginalnej aplikacji. 
+
+Ta metoda umożliwia jednej wersji aktywnej, jednej wersji etapu i jeden opublikowanej wersji. Wyniki aktywnej wersji można porównać z opublikowaną wersją (etap lub produkcja) w [okienku testowanie interaktywne](luis-interactive-test.md).
+
+## <a name="manage-multiple-versions-as-apps"></a>Zarządzanie wieloma wersjami jako aplikacje
+[Eksportuj](luis-how-to-manage-versions.md#export-version) wersja podstawowa. Każdego autora importuje wersji. Osoby, które importuje aplikacja jest właścicielem wersji. Po ich zakończeniu modyfikowania aplikacji, eksportowanie wersji. 
+
+Wyeksportowane aplikacje są sformatowanego JSON pliki, które można porównać z podstawowej eksportu dla zmian. Połącz pliki, aby utworzyć pojedynczy plik JSON w nowej wersji. Zmiana **versionId** właściwości w formacie JSON oznaczającego nowej wersji scalone. Zaimportować tej wersji oryginalnej aplikacji.
+
+## <a name="contributions-from-collaborators"></a>Wkłady ze współpracowników
+
+Dowiedz się więcej o tworzeniu udziałów od [współpracowników](luis-how-to-collaborate.md).
+
+## <a name="next-steps"></a>Następne kroki
 
 Zobacz, jak dodać [przechowywanie wersji](luis-how-to-manage-versions.md) na stronie Ustawienia aplikacji. 
 
-Dowiedz się, [](luis-concept-intent.md) jak zaprojektować intencje w modelu.
+Dowiedz się, jak zaprojektować [intencje](luis-concept-intent.md) w modelu.

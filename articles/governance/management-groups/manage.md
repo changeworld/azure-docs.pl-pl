@@ -1,19 +1,19 @@
 ---
-title: Jak zmienić, usunąć lub zarządzać grupami zarządzania - Azure rządów
-description: Dowiedz się, jak wyświetlać, obsługi, aktualizacji i usuwania hierarchia grup zarządzania.
+title: Jak zmienić, usunąć lub zarządzać grupami zarządzania — Zarządzanie platformą Azure
+description: Dowiedz się, jak wyświetlać, obsługiwać, aktualizować i usuwać hierarchię grup zarządzania.
 author: rthorn17
 ms.service: governance
 ms.date: 05/22/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 028b4cbf62bf9ed0b3b38f54d3b787a8c1368da0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7fd9a8e00072bfb8d3a0e57fb552822588111019
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66242948"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241193"
 ---
-# <a name="manage-your-resources-with-management-groups"></a>Zarządzanie zasobami przy użyciu grup zarządzania
+# <a name="manage-your-resources-with-management-groups"></a>Zarządzanie zasobami za pomocą grup zarządzania
 
 Jeśli Twoja organizacja ma wiele subskrypcji, możesz potrzebować sposobu na wydajne zarządzanie dostępem, zasadami i zgodnością dla tych subskrypcji. Grupy zarządzania platformy Azure zapewniają poziom zakresu powyżej subskrypcji. Subskrypcje są organizowane w kontenerach nazywanych „grupami zarządzania”, do których należy zastosować swoje warunki nadzoru. Wszystkie subskrypcje w grupie zarządzania automatycznie dziedziczą warunki zastosowane do tej grupy zarządzania.
 
@@ -21,35 +21,33 @@ Grupy zarządzania umożliwiają zarządzanie klasy korporacyjnej na dużą skal
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
-
 ## <a name="change-the-name-of-a-management-group"></a>Zmień nazwę grupy zarządzania
 
-Możesz zmienić nazwę grupy zarządzania przy użyciu portalu, programu PowerShell lub wiersza polecenia platformy Azure.
+Nazwę grupy zarządzania można zmienić przy użyciu portalu, programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
 ### <a name="change-the-name-in-the-portal"></a>Zmień nazwę w portalu
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
-1. Wybierz **wszystkich usług** > **grup zarządzania**.
+1. Wybierz pozycję **wszystkie** > **grupy zarządzania**usług.
 
-1. Wybierz grupę zarządzania, którą chcesz zmienić.
+1. Wybierz grupę zarządzania, której nazwę chcesz zmienić.
 
-1. Wybierz **szczegóły**.
+1. Wybierz pozycję **szczegóły**.
 
-1. Wybierz **Zmień nazwę grupy** opcji w górnej części strony.
+1. Wybierz opcję **Zmień nazwę grupy** w górnej części strony.
 
-   ![Na stronie grupy zarządzania przy użyciu opcji Zmień nazwę grupy](./media/detail_action_small.png)
+   ![Zmień nazwę opcji grupy na stronie grupy zarządzania](./media/detail_action_small.png)
 
-1. Po otwarciu menu, wprowadź nową nazwę, które Twoim zdaniem, które zostaną wyświetlone.
+1. Po otwarciu menu Wprowadź nową nazwę, którą chcesz wyświetlić.
 
-   ![Zmień nazwę grupy okienka, aby zmienić nazwę grupy zarządzania](./media/rename_context.png)
+   ![Zmień nazwę okienka grupy, aby zmienić nazwę grupy zarządzania](./media/rename_context.png)
 
 1. Wybierz pozycję **Zapisz**.
 
-### <a name="change-the-name-in-powershell"></a>Zmień nazwę w programie PowerShell
+### <a name="change-the-name-in-powershell"></a>Zmiana nazwy w programie PowerShell
 
-Można zaktualizować Użyj nazwę wyświetlaną **AzManagementGroup aktualizacji**. Na przykład Zarządzanie zmianami grup nazwy wyświetlanej, od "Contoso IT", aby "Grupa firmy Contoso", uruchom następujące polecenie:
+Aby zaktualizować nazwę wyświetlaną, użyj **Update-AzManagementGroup**. Aby na przykład zmienić nazwę wyświetlaną grup zarządzania z "contoso IT" na "Group contoso", uruchom następujące polecenie:
 
 ```azurepowershell-interactive
 Update-AzManagementGroup -GroupName 'ContosoIt' -DisplayName 'Contoso Group'
@@ -57,7 +55,7 @@ Update-AzManagementGroup -GroupName 'ContosoIt' -DisplayName 'Contoso Group'
 
 ### <a name="change-the-name-in-azure-cli"></a>Zmień nazwę w interfejsie wiersza polecenia platformy Azure
 
-Wiersza polecenia platformy Azure użyj polecenia update.
+W przypadku interfejsu wiersza polecenia platformy Azure Użyj polecenie Update.
 
 ```azurecli-interactive
 az account management-group update --name 'Contoso' --display-name 'Contoso Group'
@@ -65,42 +63,42 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 ## <a name="delete-a-management-group"></a>Usuwanie grupy zarządzania
 
-Aby usunąć grupę zarządzania, muszą być spełnione następujące wymagania:
+Aby można było usunąć grupę zarządzania, muszą zostać spełnione następujące wymagania:
 
-1. Nie istnieją żadne podrzędne grupy zarządzania lub subskrypcji w ramach grupy zarządzania.
+1. W grupie zarządzania nie ma podrzędnych grup ani subskrypcji zarządzania.
 
-   - Aby przenieść subskrypcję z grupą zarządzania, zobacz [przenieść subskrypcję do innej grupy zarządzania](#move-subscriptions-in-the-hierarchy).
+   - Aby przenieść subskrypcję z grupy zarządzania, zobacz [przenoszenie subskrypcji do innej grupy zarządzania](#move-subscriptions-in-the-hierarchy).
 
-   - Aby przenieść grupę zarządzania do innej grupy zarządzania, zobacz [przenieść grup zarządzania w hierarchii](#move-management-groups-in-the-hierarchy).
+   - Aby przenieść grupę zarządzania do innej grupy zarządzania, zobacz [przenoszenie grup zarządzania w hierarchii programu](#move-management-groups-in-the-hierarchy).
 
-1. Masz uprawnienia do zapisu w grupie zarządzania ("Owner", "Współautor" lub "Współautor grupy zarządzania"). Aby zobaczyć, jakie uprawnienia ma, wybierz grupę zarządzania a następnie wybierz **IAM**. Aby uzyskać więcej informacji na temat ról RBAC, zobacz [zarządzanie dostępem i uprawnieniami przy użyciu RBAC](../../role-based-access-control/overview.md).  
+1. Masz uprawnienia do zapisu w grupie zarządzania ("właściciel", "Współautor" lub "Współautor grupy zarządzania"). Aby zobaczyć, jakie masz uprawnienia, wybierz grupę zarządzania, a następnie wybierz pozycję **IAM**. Aby dowiedzieć się więcej na temat ról RBAC, zobacz [Zarządzanie dostępem i uprawnieniami za pomocą RBAC](../../role-based-access-control/overview.md).  
 
 ### <a name="delete-in-the-portal"></a>Usuwanie w portalu
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
-1. Wybierz **wszystkich usług** > **grup zarządzania**.
+1. Wybierz pozycję **wszystkie** > **grupy zarządzania**usług.
 
 1. Wybierz grupę zarządzania, którą chcesz usunąć.
 
-1. Wybierz **szczegóły**.
+1. Wybierz pozycję **szczegóły**.
 
-1. Wybierz **Usuń**
+1. Wybierz pozycję **Usuń**
 
     > [!TIP]
-    > Jeśli ikona jest wyłączona, kursor nad swoje selektor myszy na ikonie dowiesz się, powód.
+    > Jeśli ikona jest wyłączona, umieszczenie selektora myszy na ikonie pokazuje przyczynę.
 
    ![Usuń opcję grupy](./media/delete.png)
 
-1. Brak okno które otwiera potwierdzenie, że chcesz usunąć grupę zarządzania.
+1. Istnieje okno z potwierdzeniem, że chcesz usunąć grupę zarządzania.
 
-   ![Usuwanie grupy oknie potwierdzenia](./media/delete_confirm.png)
+   ![Okno potwierdzania usuwania grupy](./media/delete_confirm.png)
 
-1. Wybierz **tak**.
+1. Wybierz pozycję **tak**.
 
 ### <a name="delete-in-powershell"></a>Usuwanie w programie PowerShell
 
-Użyj **AzManagementGroup Usuń** polecenia w ramach programu PowerShell, można usunąć grupy zarządzania.
+Użyj polecenia **Remove-AzManagementGroup** w programie PowerShell, aby usunąć grupy zarządzania.
 
 ```azurepowershell-interactive
 Remove-AzManagementGroup -GroupName 'Contoso'
@@ -108,7 +106,7 @@ Remove-AzManagementGroup -GroupName 'Contoso'
 
 ### <a name="delete-in-azure-cli"></a>Usuwanie w interfejsie wiersza polecenia platformy Azure
 
-Za pomocą wiersza polecenia platformy Azure Użyj usunięcia grupy zarządzania polecenia az konta.
+Korzystając z interfejsu wiersza polecenia platformy Azure, użyj polecenie AZ Account Management-Group Delete.
 
 ```azurecli-interactive
 az account management-group delete --name 'Contoso'
@@ -116,35 +114,35 @@ az account management-group delete --name 'Contoso'
 
 ## <a name="view-management-groups"></a>Wyświetlanie grup zarządzania
 
-Możesz wyświetlić wszystkie grupy zarządzania już bezpośredniego lub dziedziczonego rolę RBAC z.  
+Można wyświetlić dowolną grupę zarządzania, w której jest włączona bezpośrednia lub dziedziczona rola RBAC.  
 
 ### <a name="view-in-the-portal"></a>Wyświetl w portalu
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
-1. Wybierz **wszystkich usług** > **grup zarządzania**.
+1. Wybierz pozycję **wszystkie** > **grupy zarządzania**usług.
 
-1. Na stronie hierarchii grupy zarządzania zostanie załadowany. Ta strona jest, gdzie możesz eksplorować wszystkie grupy zarządzania, a subskrypcje mają dostęp do. Wybieranie nazwy grupy przejście w dół poziom w hierarchii. Nawigacja działa tak samo, jak Eksplorator plików.
+1. Zostanie załadowana strona hierarchii grupy zarządzania. Na tej stronie można eksplorować wszystkie grupy zarządzania i subskrypcje, do których masz dostęp. Wybranie nazwy grupy powoduje przejście do poziomu hierarchii. Nawigacja działa tak samo, jak Eksplorator plików.
 
-1. Aby wyświetlić szczegóły grupy zarządzania, wybierz **(szczegóły)** łącze obok tytułu grupy zarządzania. Jeśli ten link nie jest dostępna, nie masz uprawnień do wyświetlania tej grupy zarządzania.
+1. Aby wyświetlić szczegóły grupy zarządzania, wybierz łącze **(szczegóły)** obok tytułu grupy zarządzania. Jeśli ten link nie jest dostępny, nie masz uprawnień do wyświetlania tej grupy zarządzania.
 
-   ![Main](./media/main.png)
+   ![Główny](./media/main.png)
 
-### <a name="view-in-powershell"></a>Widok w programie PowerShell
+### <a name="view-in-powershell"></a>Wyświetl w programie PowerShell
 
-Polecenie Get-AzManagementGroup do pobrania wszystkich grup.  Zobacz [Az.Resources](/powershell/module/az.resources/Get-AzManagementGroup) modułów, aby uzyskać pełną listę zarządzania grupy poleceń pobieranie programu Powershell.  
+Aby pobrać wszystkie grupy, należy użyć polecenia Get-AzManagementGroup.  Zobacz [AZ. resources](/powershell/module/az.resources/Get-AzManagementGroup) , aby uzyskać pełną listę grup zarządzania, Pobierz polecenia programu PowerShell.  
 
 ```azurepowershell-interactive
 Get-AzManagementGroup
 ```
 
-Grupę zarządzania pojedynczego informacji Użyj parametru - GroupName
+Aby uzyskać informacje o pojedynczej grupie zarządzania, użyj parametru-GroupName
 
 ```azurepowershell-interactive
 Get-AzManagementGroup -GroupName 'Contoso'
 ```
 
-Aby zwrócić określonej grupy zarządzania i wszystkie poziomy hierarchii na jej podstawie, użyj **-rozwiń** i **-Recurse** parametrów.  
+Aby zwrócić konkretną grupę zarządzania i wszystkie poziomy hierarchii w niej, użyj parametrów **-expand** i **-rekursywnie** .  
 
 ```azurepowershell-interactive
 PS C:\> $response = Get-AzManagementGroup -GroupName TestGroupParent -Expand -Recurse
@@ -179,143 +177,143 @@ DisplayName : TestRecurseChild
 Children    :
 ```
 
-### <a name="view-in-azure-cli"></a>Widok wiersza polecenia platformy Azure
+### <a name="view-in-azure-cli"></a>Wyświetl w interfejsie wiersza polecenia platformy Azure
 
-Polecenie listy jest używane do pobierania wszystkich grup.  
+Do pobrania wszystkich grup służy polecenie list.  
 
 ```azurecli-interactive
 az account management-group list
 ```
 
-Grupę zarządzania pojedynczego informacji użyj polecenia show
+Aby uzyskać informacje o pojedynczej grupie zarządzania, użyj polecenia show
 
 ```azurecli-interactive
 az account management-group show --name 'Contoso'
 ```
 
-Aby zwrócić określonej grupy zarządzania i wszystkie poziomy hierarchii na jej podstawie, użyj **-rozwiń** i **-Recurse** parametrów.
+Aby zwrócić konkretną grupę zarządzania i wszystkie poziomy hierarchii w niej, użyj parametrów **-expand** i **-rekursywnie** .
 
 ```azurecli-interactive
 az account management-group show --name 'Contoso' -e -r
 ```
 
-## <a name="move-subscriptions-in-the-hierarchy"></a>Przenieś subskrypcje w hierarchii
+## <a name="move-subscriptions-in-the-hierarchy"></a>Przenoszenie subskrypcji w hierarchii
 
-Jednym z powodów tworzenia grupy zarządzania jest powiązać razem subskrypcji. Elementy podrzędne w innej grupie zarządzania można wprowadzić tylko grupy zarządzania i subskrypcje. Subskrypcję, która przenosi do grupy zarządzania dziedziczy wszystkie dostępu użytkownika i zasad z nadrzędnej grupy zarządzania.
+Jednym z powodów tworzenia grupy zarządzania jest łączenie subskrypcji. Tylko grupy zarządzania i subskrypcje mogą być elementami podrzędnymi innej grupy zarządzania. Subskrypcja przenoszona do grupy zarządzania odziedziczy wszystkie uprawnienia dostępu użytkowników i zasad z nadrzędnej grupy zarządzania.
 
-Aby przenieść subskrypcję, wszystkie z następujących uprawnień RBAC, muszą być spełnione:
+Aby przenieść subskrypcję, wszystkie następujące uprawnienia RBAC muszą mieć wartość true:
 
-- Rola "Właściciel" w subskrypcji podrzędnych.
-- "Właściciel", "Współautor" lub "Współautor grupy zarządzania" Rola nadrzędna grupa zarządzania docelowego.
-- Rola "Owner", "Współautor" lub "Współautor grupy zarządzania" w istniejącej grupie zarządzania nadrzędnej.
+- Rola "Owner" w subskrypcji podrzędnej.
+- Rola "Owner", "Współautor" lub "Współautor grupy zarządzania" w docelowej nadrzędnej grupie zarządzania.
+- Rola "Owner", "Współautor" lub "Współautor grupy zarządzania" w istniejącej nadrzędnej grupie zarządzania.
 
-W przypadku istniejącej grupy zarządzania nadrzędnej lub docelowe głównej grupy zarządzania, wymagania dotyczące uprawnień nie mają zastosowania. Ponieważ głównej grupy zarządzania jest domyślnie docelowa dodatkowego dla wszystkich nowych grup zarządzania, jak i subskrypcje, nie potrzebujesz uprawnienia do niego, aby przenieść element.
+Jeśli obiekt docelowy lub istniejąca nadrzędna grupa zarządzania jest główną grupą zarządzania, wymagania dotyczące uprawnień nie są stosowane. Ponieważ główną grupą zarządzania jest domyślny punkt załadunkowy dla wszystkich nowych grup zarządzania i subskrypcji, nie musisz mieć uprawnień do przenoszenia elementu.
 
-Jeśli rola właściciela subskrypcji jest dziedziczona z bieżącej grupy zarządzania, Przenieś elementy docelowe są ograniczone. Można przenosić tylko subskrypcji do innej grupy zarządzania, w których masz rolę właściciela. Nie można przenieść ją do grupy zarządzania których jesteś współautorem, ponieważ spowoduje utratę własności subskrypcji. Jeśli bezpośrednio masz przypisaną rolę właściciela subskrypcji (nie dziedziczone z grupy zarządzania), można przenieść ją do żadnej grupy zarządzania, w których jesteś współautorem.
+Jeśli rola właściciela w subskrypcji jest dziedziczona z bieżącej grupy zarządzania, cele przenoszenia są ograniczone. Subskrypcję można przenieść tylko do innej grupy zarządzania, w której masz rolę właściciela. Nie można przenieść go do grupy zarządzania, w której jesteś współautorem, ponieważ utracisz własność subskrypcji. Jeśli użytkownik jest bezpośrednio przypisany do roli właściciela subskrypcji (niedziedziczonej z grupy zarządzania), można przenieść ją do dowolnej grupy zarządzania, w której jesteś współautorem.
 
-Aby zobaczyć, jakie posiadasz uprawnienia w witrynie Azure portal, wybierz opcję zarządzania w grupie, a następnie wybierz pozycję **IAM**. Aby uzyskać więcej informacji na temat ról RBAC, zobacz [zarządzanie dostępem i uprawnieniami przy użyciu RBAC](../../role-based-access-control/overview.md).
+Aby sprawdzić, jakie uprawnienia znajdują się w Azure Portal, wybierz grupę zarządzania, a następnie wybierz pozycję **IAM**. Aby dowiedzieć się więcej na temat ról RBAC, zobacz [Zarządzanie dostępem i uprawnieniami za pomocą RBAC](../../role-based-access-control/overview.md).
 
-### <a name="move-subscriptions-in-the-portal"></a>Przeniesienie subskrypcji w portalu
+### <a name="move-subscriptions-in-the-portal"></a>Przenoszenie subskrypcji w portalu
 
-#### <a name="add-an-existing-subscription-to-a-management-group"></a>Dodać istniejącą subskrypcję do grupy zarządzania
+#### <a name="add-an-existing-subscription-to-a-management-group"></a>Dodaj istniejącą subskrypcję do grupy zarządzania
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
-1. Wybierz **wszystkich usług** > **grup zarządzania**.
+1. Wybierz pozycję **wszystkie** > **grupy zarządzania**usług.
 
-1. Wybierz grupę zarządzania, którą zamierzasz jako nadrzędną.
+1. Wybierz grupę zarządzania, która ma być elementem nadrzędnym.
 
-1. W górnej części strony wybierz **Dodaj subskrypcję**.
+1. W górnej części strony wybierz pozycję **Dodaj subskrypcję**.
 
-1. Wybierz subskrypcję z listy poprawny identyfikator.
+1. Wybierz subskrypcję z listy z poprawnym IDENTYFIKATORem.
 
-   ![Dostępne subskrypcje, aby dodać do grupy zarządzania](./media/add_context_sub.png)
+   ![Dostępne subskrypcje do dodania do grupy zarządzania](./media/add_context_sub.png)
 
 1. Wybierz pozycję "Zapisz".
 
-#### <a name="remove-a-subscription-from-a-management-group"></a>Usuń subskrypcję z grupy zarządzania
+#### <a name="remove-a-subscription-from-a-management-group"></a>Usuwanie subskrypcji z grupy zarządzania
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
-1. Wybierz **wszystkich usług** > **grup zarządzania**.
+1. Wybierz pozycję **wszystkie** > **grupy zarządzania**usług.
 
-1. Wybierz grupę zarządzania, planowane jest to znaczy bieżącym elementem nadrzędnym.  
+1. Wybierz zaplanowaną grupę zarządzania, która jest bieżącym elementem nadrzędnym.  
 
-1. Na liście, który chcesz przenieść, wybierz Wielokropek na końcu wiersza dla subskrypcji.
+1. Wybierz wielokropek na końcu wiersza dla subskrypcji na liście, która ma zostać przeniesiona.
 
-   ![Opcja Przenieś grupy zarządzania](./media/move_small.png)
+   ![Opcja przenoszenia w grupie zarządzania](./media/move_small.png)
 
-1. Wybierz **przenieść**.
+1. Wybierz pozycję **Przenieś**.
 
-1. W wyświetlonym menu wybierz **nadrzędna grupa zarządzania**.
+1. W wyświetlonym menu wybierz **nadrzędną grupę zarządzania**.
 
-   ![Przesuń okienko, aby zmienić grupy nadrzędnej](./media/move_small_context.png)
+   ![Przenieś okienko, aby zmienić grupę nadrzędną](./media/move_small_context.png)
 
 1. Wybierz pozycję **Zapisz**.
 
 ### <a name="move-subscriptions-in-powershell"></a>Przenoszenie subskrypcji w programie PowerShell
 
-Aby przenieść subskrypcję, w programie PowerShell, należy użyć polecenia New-AzManagementGroupSubscription.  
+Aby przenieść subskrypcję programu PowerShell, użyj polecenia New-AzManagementGroupSubscription.  
 
 ```azurepowershell-interactive
 New-AzManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
 ```
 
-Aby usunąć połączenie między i użyj polecenia Remove-AzManagementGroupSubscription, subskrypcję i grupę zarządzania.
+Aby usunąć łącze między programem a subskrypcją i grupą zarządzania, użyj polecenia Remove-AzManagementGroupSubscription.
 
 ```azurepowershell-interactive
 Remove-AzManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
 ```
 
-### <a name="move-subscriptions-in-azure-cli"></a>Przenieś subskrypcje w interfejsie wiersza polecenia platformy Azure
+### <a name="move-subscriptions-in-azure-cli"></a>Przenoszenie subskrypcji w interfejsie wiersza polecenia platformy Azure
 
-Aby przenieść subskrypcję, w interfejsie wiersza polecenia, należy użyć polecenia Dodaj.
+Aby przenieść subskrypcję w interfejsie wiersza polecenia, należy użyć polecenie Dodaj.
 
 ```azurecli-interactive
 az account management-group subscription add --name 'Contoso' --subscription '12345678-1234-1234-1234-123456789012'
 ```
 
-Aby usunąć subskrypcję z grupy zarządzania, użyj polecenia remove subskrypcji.  
+Aby usunąć subskrypcję z grupy zarządzania, użyj polecenia Usuń subskrypcję.  
 
 ```azurecli-interactive
 az account management-group subscription remove --name 'Contoso' --subscription '12345678-1234-1234-1234-123456789012'
 ```
 
-## <a name="move-management-groups-in-the-hierarchy"></a>Przeniesienie grup zarządzania w hierarchii  
+## <a name="move-management-groups-in-the-hierarchy"></a>Przenoszenie grup zarządzania w hierarchii  
 
-Podczas przenoszenia nadrzędna grupa zarządzania hierarchię w ramach tej grupy przenosi się z nim. Dostępu należy przenieść grupy zarządzania, zobacz [dostęp do grupy zarządzania](index.md#management-group-access).
+Po przeniesieniu nadrzędnej grupy zarządzania hierarchia w tej grupie jest przenoszona wraz z nią. Aby uzyskać dostęp do przenoszenia grup zarządzania, zobacz dostęp do [grupy zarządzania](index.md#management-group-access).
 
-### <a name="move-management-groups-in-the-portal"></a>Przeniesienie grup zarządzania w portalu
+### <a name="move-management-groups-in-the-portal"></a>Przenoszenie grup zarządzania w portalu
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
 
-1. Wybierz **wszystkich usług** > **grup zarządzania**.
+1. Wybierz pozycję **wszystkie** > **grupy zarządzania**usług.
 
-1. Wybierz grupę zarządzania, którą zamierzasz jako nadrzędną.
+1. Wybierz grupę zarządzania, która ma być elementem nadrzędnym.
 
-1. W górnej części strony wybierz **Dodaj grupę zarządzania**.
+1. W górnej części strony wybierz pozycję **Dodaj grupę zarządzania**.
 
-1. W wyświetlonym menu wybierz nową lub użyj istniejącej grupy zarządzania.
+1. W wyświetlonym menu wybierz, czy chcesz utworzyć nową, czy użyć istniejącej grupy zarządzania.
 
-   - Wybieranie nowego utworzy nową grupę zarządzania.
-   - Wybieranie istniejącego spowoduje wyświetlenie menu rozwijane wszystkich grup zarządzania, który można przenieść do tej grupy zarządzania.  
+   - Wybranie opcji Nowy spowoduje utworzenie nowej grupy zarządzania.
+   - Wybranie istniejącej opcji spowoduje wyświetlenie listy rozwijanej wszystkich grup zarządzania, które można przenieść do tej grupy zarządzania.  
 
    ![Przenoszenie grupy zarządzania do nowej lub istniejącej grupy](./media/add_context_MG.png)
 
 1. Wybierz pozycję **Zapisz**.
 
-### <a name="move-management-groups-in-powershell"></a>Przeniesienie grup zarządzania w programie PowerShell
+### <a name="move-management-groups-in-powershell"></a>Przenoszenie grup zarządzania w programie PowerShell
 
-Użyj polecenia AzManagementGroup aktualizacji w programie PowerShell, aby przenieść grupy zarządzania do innej grupy.
+Użyj polecenia Update-AzManagementGroup w programie PowerShell, aby przenieść grupę zarządzania pod inną grupę.
 
 ```azurepowershell-interactive
 $parentGroup = Get-AzManagementGroup -GroupName ContosoIT
 Update-AzManagementGroup -GroupName 'Contoso' -ParentId $parentGroup.id
 ```  
 
-### <a name="move-management-groups-in-azure-cli"></a>Przeniesienie grup zarządzania w interfejsie wiersza polecenia platformy Azure
+### <a name="move-management-groups-in-azure-cli"></a>Przenoszenie grup zarządzania w interfejsie wiersza polecenia platformy Azure
 
-Użyj polecenia aktualizacji, aby przenieść grupy do zarządzania przy użyciu wiersza polecenia platformy Azure.
+Użyj polecenia Aktualizuj, aby przenieść grupę zarządzania przy użyciu interfejsu wiersza polecenia platformy Azure.
 
 ```azurecli-interactive
 az account management-group update --name 'Contoso' --parent ContosoIT
@@ -323,31 +321,31 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Inspekcja grup zarządzania przy użyciu dzienników aktywności
 
-Grupy zarządzania są obsługiwane w [dzienniku aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md). Można tworzyć zapytania wszystkie zdarzenia, które odbywa się w grupie zarządzania w tej samej lokalizacji centralnej, innych zasobów platformy Azure.  Na przykład widoczne są wszystkie przypisania ról i zmiany przypisań zasad w określonej grupie zarządzania.
+Grupy zarządzania są obsługiwane w [dzienniku aktywności platformy Azure](../../azure-monitor/platform/activity-logs-overview.md). Możesz badać wszystkie zdarzenia, które wystąpiły do grupy zarządzania w tej samej centralnej lokalizacji co inne zasoby platformy Azure.  Na przykład widoczne są wszystkie przypisania ról i zmiany przypisań zasad w określonej grupie zarządzania.
 
-![Dzienniki aktywności przy użyciu grup zarządzania](media/al-mg.png)
+![Dzienniki aktywności z grupami zarządzania](media/al-mg.png)
 
 Jeśli chcesz wykonać zapytanie dotyczące grup zarządzania spoza witryny Azure Portal, zakres docelowy grup zarządzania wygląda tak: **„/providers/Microsoft.Management/managementGroups/{identyfikator_grupy_zarządzania}”** .
 
-## <a name="referencing-management-groups-from-other-resource-providers"></a>Odwoływanie się do grup zarządzania, od innych dostawców zasobów
+## <a name="referencing-management-groups-from-other-resource-providers"></a>Odwoływanie się do grup zarządzania od innych dostawców zasobów
 
-Podczas odwoływania się do grup zarządzania, z akcji inny dostawca zasobów, należy użyć następującej ścieżki, jako zakres. Ta ścieżka jest używana w przypadku korzystania z programu PowerShell, interfejsu wiersza polecenia platformy Azure i interfejsów API REST.  
+Podczas odwoływania się do grup zarządzania z innych akcji dostawcy zasobów należy użyć następującej ścieżki jako zakresu. Ta ścieżka jest używana podczas korzystania z programu PowerShell, interfejsu wiersza polecenia platformy Azure i interfejsów API REST.  
 
->"/ providers/Microsoft.Management/managementGroups/{yourMgID}"
+>"/providers/Microsoft.Management/managementGroups/{yourMgID}"
 
-Przykładem użycia tej ścieżki jest podczas przypisywania nowe przypisanie roli do grupy zarządzania w programie PowerShell
+Przykładem użycia tej ścieżki jest przypisanie nowego przypisania roli do grupy zarządzania w programie PowerShell
 
 ```azurepowershell-interactive
 New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Contoso"
 ```
 
-Tej samej ścieżce zakres jest używany podczas pobierania definicji zasad w grupie zarządzania.
+Ta sama ścieżka zakresu jest używana podczas pobierania definicji zasad w grupie zarządzania.
 
 ```http
 GET https://management.azure.com/providers/Microsoft.Management/managementgroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/ResourceNaming?api-version=2018-05-01
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby dowiedzieć się więcej na temat grup zarządzania, zobacz:
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 94bdeebcecdf924468f022ac95867bd82df5a793
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 1d64a25fc60a1a1cbe1ed04f87a57556b7de0b88
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231320"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259016"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Kopiowanie danych z tabeli SAP przy użyciu Azure Data Factory
 
@@ -80,7 +80,7 @@ Następujące właściwości są obsługiwane dla SAP BW połączonej usługi:
 | `clientId` | Identyfikator klienta w systemie SAP.<br/>Dozwolona wartość: 3-cyfrowa liczba dziesiętna reprezentowana jako ciąg. | Tak |
 | `language` | Język, którego używa System SAP.<br/>Wartość domyślna to `EN`.| Nie |
 | `userName` | Nazwa użytkownika, który ma dostęp do serwera SAP. | Tak |
-| `password` | Hasło użytkownika. Oznacz to pole typem, `SecureString` aby bezpiecznie przechowywać je w Data Factory, lub odwoływać się do [wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
+| `password` | Hasło użytkownika. Oznacz to pole typem, `SecureString` aby bezpiecznie przechowywać je w Data Factory, lub [odwoływać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
 | `sncMode` | Wskaźnik aktywacji SNC w celu uzyskania dostępu do serwera SAP, na którym znajduje się tabela.<br/>Użyj, jeśli chcesz używać SNC do nawiązywania połączenia z serwerem SAP.<br/>Dozwolone wartości to `0` (wyłączone, domyślne) lub `1` (włączone). | Nie |
 | `sncMyName` | Nazwa SNC inicjatora do uzyskania dostępu do serwera SAP, na którym znajduje się tabela.<br/>Ma zastosowanie `sncMode` , gdy jest włączony. | Nie |
 | `sncPartnerName` | Nazwa SNC partnera komunikacyjnego, aby uzyskać dostęp do serwera SAP, na którym znajduje się tabela.<br/>Ma zastosowanie `sncMode` , gdy jest włączony. | Nie |

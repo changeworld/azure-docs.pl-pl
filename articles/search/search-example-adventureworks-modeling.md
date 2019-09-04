@@ -1,27 +1,27 @@
 ---
 title: 'Przykład: Modelowanie bazy danych magazynu AdventureWorks — Azure Search'
 description: Dowiedz się, jak modelować dane relacyjne, przekształcając je w spłaszczony zestaw danych, na potrzeby indeksowania i wyszukiwania pełnotekstowego w Azure Search.
-author: cstone
+author: HeidiSteen
 manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/25/2019
-ms.author: chstone
-ms.openlocfilehash: 52ccf3edfca5b3481b038bd5d3449c1dd6354179
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 09/05/2019
+ms.author: heidist
+ms.openlocfilehash: c25dd34460e7e92bb20913f5b812044623dd38e3
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649922"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274036"
 ---
 # <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>Przykład: Modelowanie bazy danych magazynu AdventureWorks dla Azure Search
 
-Modelowanie zawartości strukturalnej bazy danych w wydajnym indeksie wyszukiwania jest rzadko bardzo proste. Planowanie i zarządzanie zmianami, istnieje wyzwanie związane z denormalizacją wierszy źródłowych od ich stanu przyłączonego do tabeli. W tym artykule są używane dane przykładowe AdventureWorks, dostępne online, aby wyróżnić typowe środowiska przejścia z bazy danych do wyszukania. 
+Azure Search akceptuje spłaszczony zestaw wierszy jako dane wejściowe do [potoku indeksowania (pozyskiwania danych)](search-what-is-an-index.md). Jeśli dane źródłowe pochodzą z SQL Server relacyjnej bazy danych, w tym artykule przedstawiono jedno podejście do tworzenia spłaszczonego zestawu wierszy przed indeksowaniem przy użyciu przykładowej bazy danych AdventureWorks.
 
 ## <a name="about-adventureworks"></a>Informacje o AdventureWorks
 
-Jeśli masz wystąpienie SQL Server, możesz zapoznać się z przykładową bazą danych AdventureWorks. Wśród tabel uwzględnionych w tej bazie danych znajdują się pięć tabel, które ujawniają informacje o produkcie.
+Jeśli masz wystąpienie SQL Server, możesz zapoznać się z [przykładową bazą danych AdventureWorks](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017). Wśród tabel uwzględnionych w tej bazie danych znajdują się pięć tabel, które ujawniają informacje o produkcie.
 
 + **ProductModel**: Nazwa
 + **Produkt**: nazwa, kolor, koszt, rozmiar, waga, obraz, Kategoria (każdy wiersz jest przyłączany do określonego ProductModel)
@@ -29,7 +29,7 @@ Jeśli masz wystąpienie SQL Server, możesz zapoznać się z przykładową baz�
 + **ProductModelProductDescription**: locale (każdy wiersz jest przyłączany do ProductModel do określonego ProductDescription dla określonego języka)
 + **ProductCategory**: nazwa, Kategoria nadrzędna
 
-Połączenie wszystkich tych danych z spłaszczonym zestawem wierszy, które można pozyskać w indeksie wyszukiwania, jest zadaniem w stanie. 
+Łączenie wszystkich tych danych z spłaszczonym zestawem wierszy, które można przetworzyć w indeks wyszukiwania, jest celem tego przykładu. 
 
 ## <a name="considering-our-options"></a>Rozważanie naszych opcji
 
@@ -43,7 +43,7 @@ Rozwiązanie tego problemu nie jest tak proste jak przeniesienie docelowego inde
 
 ## <a name="use-a-collection-data-type"></a>Użyj typu danych kolekcji
 
-"Prawidłowe podejście" polega na użyciu funkcji wyszukiwania w schemacie, która nie ma bezpośredniego operatora równoległego w modelu bazy danych: **Kolekcja (EDM. String)** . Typ danych kolekcji jest używany, gdy masz listę pojedynczych ciągów, a nie bardzo długi (pojedynczy) ciąg. Jeśli masz Tagi lub słowa kluczowe, użyj typu danych kolekcji dla tego pola.
+"Prawidłowe podejście" polega na użyciu funkcji wyszukiwania w schemacie, która nie ma bezpośredniego operatora równoległego w modelu bazy danych: **Kolekcja (EDM. String)** . Ta konstrukcja jest zdefiniowana w schemacie indeksu Azure Search. Typ danych kolekcji jest używany, gdy trzeba przedstawić listę pojedynczych ciągów, a nie bardzo długi (pojedynczy) ciąg. Jeśli masz Tagi lub słowa kluczowe, użyj typu danych kolekcji dla tego pola.
 
 Przez definiowanie pól indeksu wielowartościowego **kolekcji (EDM. String)** dla "Color", "size" i "Image" informacje pomocnicze są zachowywane dla aspektów i filtrowania bez zanieczyszczania indeksu ze zduplikowanymi wpisami. Analogicznie Zastosuj funkcje agregujące do pól liczbowych produktu, indeksowanie **minListPrice** zamiast każdego pojedynczego produktu **listPrice**.
 
@@ -164,5 +164,3 @@ WHERE
 
 > [!div class="nextstepaction"]
 > [Przykład: Taksonomie aspektów wielopoziomowych w Azure Search](search-example-adventureworks-multilevel-faceting.md)
-
-

@@ -1,84 +1,84 @@
 ---
-title: Tryby wdrażania usługi Azure Resource Manager | Dokumentacja firmy Microsoft
-description: Opisuje sposób określenia, czy ma być używany tryb pełną lub przyrostową wdrożenia za pomocą usługi Azure Resource Manager.
+title: Tryby wdrażania Azure Resource Manager | Microsoft Docs
+description: Opisuje, w jaki sposób należy określić, czy ma być używany pełny czy przyrostowy tryb wdrażania z Azure Resource Manager.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8a53ed1eea66c976c46a21378a9c48a1ad5ce902
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: c82d8b90d9da44ab8f4b8ea0aa0e063ea70350e2
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508208"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258959"
 ---
-# <a name="azure-resource-manager-deployment-modes"></a>Tryby wdrażania usługi Azure Resource Manager
+# <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager tryby wdrażania
 
-Podczas wdrażania zasobów, należy określić, że wdrożenie jest aktualizację przyrostową lub ukończenia aktualizacji.  Główną różnicą między tymi dwoma trybami jest sposób obsługiwania przez istniejące zasoby w grupie zasobów, które nie są w szablonie usługi Resource Manager. Domyślny tryb jest przyrostowy.
+Podczas wdrażania zasobów należy określić, że wdrożenie jest aktualizacją przyrostową, albo pełną aktualizacją.  Podstawowa różnica między tymi dwoma trybami polega na tym, że Menedżer zasobów obsługuje istniejące zasoby w grupie zasobów, która nie znajduje się w szablonie. Domyślnym trybem jest przyrostowy.
 
-Dla obu trybów usługi Resource Manager spróbuje utworzyć wszystkie zasoby, które określono w szablonie. Jeśli zasób już istnieje w grupie zasobów i jego ustawienia są bez zmian, żadna operacja nie zostanie podjęte dla tego zasobu. Po zmianie wartości właściwości zasobu, zasób jest aktualizowana o te nowe wartości. Jeśli próbujesz zaktualizować lokalizację i typ istniejącego zasobu, wdrożenie zakończy się niepowodzeniem z powodu błędu. Zamiast tego należy wdrożyć nowy zasób z lokalizacją lub typu, należy.
+W przypadku obu trybów Menedżer zasobów próbuje utworzyć wszystkie zasoby określone w szablonie. Jeśli zasób już istnieje w grupie zasobów, a jego ustawienia nie są zmieniane, nie jest wykonywana żadna operacja dla tego zasobu. W przypadku zmiany wartości właściwości zasobu zasób zostanie zaktualizowany o te nowe wartości. Jeśli spróbujesz zaktualizować lokalizację lub typ istniejącego zasobu, wdrożenie nie powiedzie się z powodu błędu. Zamiast tego należy wdrożyć nowy zasób z wymaganą lokalizacją lub typem.
 
-## <a name="complete-mode"></a>W trybie
+## <a name="complete-mode"></a>Tryb kompletny
 
-W trybie, Menedżer zasobów **usuwa** zasoby, które istnieją w grupie zasobów, ale nie są określone w szablonie. Zasoby, które są określone w szablonie, ale nie wdrożona, ponieważ [warunek](resource-group-authoring-templates.md#condition) zwróci wartość false, nie są usuwane.
+W trybie kompletnym Menedżer zasobów **usuwa** zasoby, które istnieją w grupie zasobów, ale nie są określone w szablonie. Zasoby, które są określone w szablonie, ale nie zostały wdrożone, ponieważ [warunek](conditional-resource-deployment.md) ma wartość false, nie jest usuwany.
 
-Zachowaj ostrożność przy użyciu w trybie z [skopiuj pętli](resource-group-create-multiple.md). Wszystkie zasoby, które nie są określone w szablonie po rozwiązaniu pętlę kopiowania są usuwane.
+Należy zachować ostrożność przy użyciu trybu kompletnego z [pętlami kopiowania](resource-group-create-multiple.md). Wszystkie zasoby, które nie są określone w szablonie po rozwiązaniu pętli kopiowania, są usuwane.
 
-Istnieją pewne różnice w sposób obsługi przez typy zasobów w trybie usunięcia. Nadrzędny zasoby są automatycznie usuwane, gdy nie znajduje się w szablonie, które jest wdrożone w trybie. Niektóre zasoby podrzędne nie są automatycznie usuwane po nie w szablonie. Jednak te zasoby podrzędne są usuwane po usunięciu zasobu nadrzędnego. 
+Istnieją pewne różnice w sposobie, w jaki typy zasobów obsługują operacje usuwania w trybie pełnym. Zasoby nadrzędne są automatycznie usuwane, gdy nie znajdują się w szablonie, który został wdrożony w trybie kompletnym. Niektóre zasoby podrzędne nie są automatycznie usuwane, gdy nie znajdują się w szablonie. Jednak te zasoby podrzędne zostaną usunięte, jeśli zasób nadrzędny zostanie usunięty. 
 
-Na przykład jeśli dana grupa zasobów zawiera strefę DNS (typ zasobu Microsoft.Network/dnsZones) i rekord CNAME (typ zasobu Microsoft.Network/dnsZones/CNAME), strefa DNS jest zasobem nadrzędnym dla rekordu CNAME. Jeśli wdrażanie przy użyciu tryb pełny i nie uwzględniają stref DNS w szablonie, rekordu CNAME i strefy DNS są zarówno usuwane. Jeśli dołączysz strefy DNS w szablonie, ale nie zawierają rekord CNAME, rekord CNAME nie jest usuwany. 
+Na przykład, jeśli grupa zasobów zawiera strefę DNS (typ zasobu Microsoft. Network/dnsZones) i rekord CNAME (typ zasobu Microsoft. Network/dnsZones/CNAME), strefa DNS jest zasobem nadrzędnym rekordu CNAME. W przypadku wdrożenia z trybem kompletnym i nie dołączania strefy DNS do szablonu strefa DNS i rekord CNAME są usuwane. Jeśli w szablonie zostanie uwzględniona strefa DNS, ale nie zostanie uwzględniony rekord CNAME, rekord CNAME nie zostanie usunięty. 
 
-Aby uzyskać listę sposób typów zasobów obsługi usuwania, zobacz [zasobów usunięcia platformy Azure w przypadku wdrożeń w trybie](complete-mode-deletion.md).
+Aby uzyskać listę sposobu, w jaki typy zasobów obsługują usuwanie, zobacz [usuwanie zasobów platformy Azure na potrzeby wdrożeń w trybie pełnym](complete-mode-deletion.md).
 
-Jeśli grupa zasobów jest [zablokowane](resource-group-lock-resources.md), tryb pełny nie powoduje usunięcia zasobów.
+Jeśli grupa zasobów jest [zablokowana](resource-group-lock-resources.md), tryb kompletny nie usuwa zasobów.
 
 > [!NOTE]
-> Tylko szablony z katalogu głównego obsługują tryb całego procesu wdrażania. Aby uzyskać [połączonych lub zagnieżdżonych szablonów](resource-group-linked-templates.md), należy użyć trybu przyrostowego. 
+> Tylko szablony na poziomie głównym obsługują pełny tryb wdrażania. W przypadku [szablonów połączonych lub zagnieżdżonych](resource-group-linked-templates.md)należy użyć trybu przyrostowego. 
 >
-> [Subskrypcja wdrożeń poziomu](deploy-to-subscription.md) nie obsługują w trybie.
+> [Wdrożenia na poziomie subskrypcji](deploy-to-subscription.md) nie obsługują trybu pełnego.
 >
-> Obecnie portal nie obsługuje trybu ukończone.
+> Obecnie portal nie obsługuje trybu pełnego.
 >
 
 ## <a name="incremental-mode"></a>Tryb przyrostowy
 
-W trybie przyrostowym, Menedżer zasobów **pozostawia niezmienione** zasoby, które istnieją w grupie zasobów, ale nie są określone w szablonie.
+W trybie przyrostowym Menedżer zasobów **opuszcza niezmienione** zasoby, które istnieją w grupie zasobów, ale nie są określone w szablonie.
 
-Jednak w przypadku ponownego wdrażania istniejącego zasobu w trybie przyrostowym, wynik jest inny. Określ wszystkie właściwości zasobu, a nie tylko te, które aktualizujesz. Typowe nieporozumienia jest myśleć, właściwości, które nie zostały określone są pozostawione bez zmian. Jeśli nie określisz niektórych właściwości usługi Resource Manager interpretuje update jako zastąpienie tych wartości.
+Jednak podczas ponownego wdrażania istniejącego zasobu w trybie przyrostowym wynik jest inny. Określ wszystkie właściwości zasobu, a nie tylko te, które są aktualizowane. Typowy nieporozumienia polega na tym, że właściwości, które nie są określone, pozostaną bez zmian. Jeśli nie określisz pewnych właściwości, Menedżer zasobów interpretuje aktualizację jako zastępującą te wartości.
 
-## <a name="example-result"></a>Przykład wyniku
+## <a name="example-result"></a>Przykładowy wynik
 
-Aby zilustrować różnica między trybami przyrostowe i kompletne, rozważmy następujący scenariusz.
+Aby zilustrować różnicę między trybami przyrostowym i kompletnym, należy wziąć pod uwagę Poniższy scenariusz.
 
 **Grupa zasobów** zawiera:
 
-* Zasobu A
+* Zasób A
 * Zasób B
-* Zasób języka C
+* Zasób C
 
 **Szablon** zawiera:
 
-* Zasobu A
+* Zasób A
 * Zasób B
-* Zasób, D
+* Zasób D
 
-Po wdrożeniu w **przyrostowe** tryb, grupa zasobów ma:
+Po wdrożeniu w trybie **przyrostowym** Grupa zasobów zawiera:
 
-* Zasobu A
+* Zasób A
 * Zasób B
-* Zasób języka C
-* Zasób, D
+* Zasób C
+* Zasób D
 
-Po wdrożeniu w **pełną** trybie C zasób zostanie usunięty. Grupa zasobów zawiera:
+Po wdrożeniu w trybie **kompletnym** zasób C jest usuwany. Grupa zasobów zawiera:
 
-* Zasobu A
+* Zasób A
 * Zasób B
-* Zasób, D
+* Zasób D
 
-## <a name="set-deployment-mode"></a>Ustaw tryb wdrożenia
+## <a name="set-deployment-mode"></a>Ustawianie trybu wdrożenia
 
-Aby ustawić tryb wdrożenia, w przypadku wdrażania przy użyciu programu PowerShell, użyj `Mode` parametru.
+Aby ustawić tryb wdrażania podczas wdrażania przy użyciu programu PowerShell, należy `Mode` użyć parametru.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment `
@@ -88,7 +88,7 @@ New-AzResourceGroupDeployment `
   -TemplateFile c:\MyTemplates\storage.json
 ```
 
-Aby ustawić tryb wdrożenia, w przypadku wdrażania przy użyciu wiersza polecenia platformy Azure, użyj `mode` parametru.
+Aby ustawić tryb wdrażania podczas wdrażania przy użyciu interfejsu wiersza polecenia platformy Azure `mode` , użyj parametru.
 
 ```azurecli-interactive
 az group deployment create \
@@ -99,7 +99,7 @@ az group deployment create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-Poniższy przykład przedstawia połączony szablon ustawiony tryb wdrożenie przyrostowe:
+Poniższy przykład pokazuje połączony szablon z trybem wdrożenia przyrostowego:
 
 ```json
 "resources": [
@@ -115,8 +115,8 @@ Poniższy przykład przedstawia połączony szablon ustawiony tryb wdrożenie pr
 ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Aby dowiedzieć się więcej na temat tworzenia szablonów usługi Resource Manager, zobacz [tworzenia usługi Azure Resource Manager](resource-group-authoring-templates.md).
-* Aby dowiedzieć się więcej na temat wdrażania zasobów, zobacz [wdrażania aplikacji przy użyciu szablonu usługi Azure Resource Manager](resource-group-template-deploy.md).
-* Aby wyświetlić operacje dla dostawcy zasobów, zobacz [interfejsu API REST usługi Azure](/rest/api/).
+* Aby dowiedzieć się więcej na temat tworzenia szablonów Menedżer zasobów, zobacz [tworzenie Azure Resource Manager szablonów](resource-group-authoring-templates.md).
+* Aby dowiedzieć się więcej o wdrażaniu zasobów, zobacz [wdrażanie aplikacji przy użyciu szablonu Azure Resource Manager](resource-group-template-deploy.md).
+* Aby wyświetlić operacje dla dostawcy zasobów, zobacz [interfejs API REST platformy Azure](/rest/api/).

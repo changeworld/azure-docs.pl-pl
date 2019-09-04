@@ -1,63 +1,63 @@
 ---
-title: Jak przywrócić dane z usługi Azure Cosmos DB z kopii zapasowej
-description: W tym artykule opisano sposób przywracania danych usługi Azure Cosmos DB z kopii zapasowej, skontaktuj się z działem pomocy technicznej platformy Azure, aby przywrócić dane, jak kroki do wykonania po przywróceniu danych.
+title: Jak przywrócić Azure Cosmos DB dane z kopii zapasowej
+description: W tym artykule opisano, jak przywrócić Azure Cosmos DB dane z kopii zapasowej, jak skontaktować się z pomocą techniczną platformy Azure w celu przywrócenia danych, czynności, które należy wykonać po przywróceniu danych.
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 09/01/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: c32c333de94d1ed0089323e00e6dbbaaebb36488
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 19ca835ca8211202cd358ac2ec3695675183a372
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241047"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240763"
 ---
-# <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Przywracanie danych z kopii zapasowej w usłudze Azure Cosmos DB 
+# <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Przywracanie danych z kopii zapasowej w Azure Cosmos DB 
 
-Jeśli przypadkowo usuniesz bazę danych lub kontener, możesz to zrobić [bilet pomocy technicznej]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) lub [z działem pomocy technicznej platformy Azure]( https://azure.microsoft.com/support/options/) do przywrócenia danych z automatycznych kopii zapasowych online. Pomoc techniczna platformy Azure jest dostępny dla wybranych planów tylko takie jak **standardowa**, **dla deweloperów**i planów wyższa niż ich. Pomoc techniczna platformy Azure nie jest dostępna z **podstawowe** planu. Aby dowiedzieć się więcej o planach pomocy technicznej w różnych, zobacz [plany pomocy technicznej platformy Azure](https://azure.microsoft.com/support/plans/) strony. 
+Jeśli przypadkowo usuniesz bazę danych lub kontener, możesz [utworzyć bilet pomocy technicznej]( https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) lub [wywoływać pomoc techniczną platformy Azure]( https://azure.microsoft.com/support/options/) w celu przywrócenia danych z automatycznych kopii zapasowych online. Pomoc techniczna systemu Azure jest dostępna dla wybranych planów, takich jak **Standard**, **Developer**i plany wyższe niż. Pomoc techniczna systemu Azure nie jest dostępna w planie **Basic** . Aby dowiedzieć się więcej o różnych planach pomocy technicznej, zobacz stronę [plany pomocy technicznej systemu Azure](https://azure.microsoft.com/support/plans/) . 
 
-Aby przywrócić migawki określonej kopii zapasowej, usługi Azure Cosmos DB wymaga, czy dane są dostępne na czas trwania cyklu tworzenia kopii zapasowych dla tej migawki.
+Aby przywrócić określoną migawkę kopii zapasowej, Azure Cosmos DB wymaga, aby dane były dostępne na czas trwania cyklu tworzenia kopii zapasowej dla tej migawki.
 
-## <a name="request-a-restore"></a>Żądanie przywracania
+## <a name="request-a-restore"></a>Zażądaj przywrócenia
 
-Przed zażądaniem przywracania, powinny mieć następujące informacje:
+Przed zażądaniem przywrócenia należy mieć następujące szczegóły:
 
-* Mieć gotowy identyfikator swojej subskrypcji.
+* Przygotuj swój identyfikator subskrypcji.
 
-* Oparte na sposób danych została przypadkowo usunięta albo zmodyfikowana, należy przygotować mają dodatkowe informacje. Zaleca się, ma dostępnych informacji o wyprzedzeniem zminimalizować Wstecz i w przód, mogą być szkodliwe w niektórych przypadkach wrażliwe na czas.
+* W zależności od tego, jak dane zostały przypadkowo usunięte lub zmodyfikowane, należy przygotować się do posiadania dodatkowych informacji. Zaleca się, aby te informacje były dostępne z wyprzedzeniem, aby zminimalizować liczbę ponownych prób, które mogą być szkodliwe w pewnych przypadkach.
 
-* Usunięcie całego konta usługi Azure Cosmos DB, musisz podać nazwę usuniętego konta. Jeśli tworzysz innego konta z taką samą nazwę jak konto usunięte, udostępnianie ich zespołu pomocy technicznej ponieważ pomaga ono ustalić odpowiednie konto do wyboru. Zaleca się biletów pomocy technicznej w różnych plików dla każdego konta usuniętego ponieważ minimalizuje pomyłek stanu przywracania.
+* Jeśli całe konto Azure Cosmos DB zostanie usunięte, należy podać nazwę usuniętego konta. Jeśli utworzysz inne konto o tej samej nazwie co usunięte konto, udostępnij je zespołowi pomocy technicznej, ponieważ pomaga określić odpowiednie konto do wybrania. Zaleca się, aby dla każdego usuniętego konta zawarto plikować różne bilety, ponieważ minimalizuje to stan przywracania.
 
-* Usunięcie co najmniej jednej bazy danych należy podać konto usługi Cosmos Azure, a także nazwy bazy danych Azure Cosmos i określ, czy nowej bazy danych o takiej samej nazwie istnieje.
+* Jeśli co najmniej jedna baza danych została usunięta, należy podać konto usługi Azure Cosmos, a także nazwę bazy danych usługi Azure Cosmos i określić, czy istnieje nowa baza danych o takiej samej nazwie.
 
-* Jeśli co najmniej jeden kontener zostaną usunięte, należy podać nazwę konta usługi Azure Cosmos, nazwy baz danych i nazwy kontenera. I określ, czy kontener o takiej samej nazwie istnieje.
+* W przypadku usunięcia co najmniej jednego kontenera należy podać nazwę konta usługi Azure Cosmos, nazwy baz danych i nazwy kontenerów. I określ, czy kontener o tej samej nazwie już istnieje.
 
-* Jeśli przypadkowo usunięty lub uszkodzone dane, należy skontaktować się ze [pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) w 8 godzin, aby zespół usługi Azure Cosmos DB może pomagać przywracania danych z kopii zapasowych.
+* Jeśli przypadkowo usunięto lub uszkodzenie danych, należy skontaktować się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/options/) w ciągu 8 godzin, aby zespół Azure Cosmos DB mógł ułatwić przywrócenie danych z kopii zapasowych.
   
-  * Jeśli została przypadkowo usunięta z bazy danych lub kontenera, należy otworzyć zgłoszenie do pomocy technicznej ważność B lub ważność C Azure. 
-  * Jeśli przypadkowo usunięty lub uszkodzony niektórych dokumentów w kontenerze, należy otworzyć zgłoszenie do pomocy technicznej ważność A. 
+  * Jeśli przypadkowo usunięto bazę danych lub kontener, Otwórz przypadek pomocy technicznej platformy Azure ważność B lub ważność C. 
+  * Jeśli przypadkowo usunięto lub uszkodzenie niektórych dokumentów w kontenerze, Otwórz ważność. 
 
-Gdy wystąpi uszkodzenie danych, a dokumenty z kontenera zostaną zmodyfikowane lub usunięte, **jak najszybciej usunąć kontener**. Przez usunięcie kontenera, można uniknąć zastępowaniu kopie zapasowe usługi Azure Cosmos DB. Jeśli z jakiegoś powodu usunięcia nie jest możliwe, należy jak najszybciej założyć zgłoszenie. Oprócz nazwy konta usługi Azure Cosmos nazwy baz danych w przypadku nazw kolekcji należy określić punkt w czasie, do której można przywrócić dane do. Należy być dokładny jak to możliwe pomóc nam określić najlepszych dostępnych kopii zapasowych, w tym czasie. Jest również ważne określić godzinę w formacie UTC. 
+Gdy następuje uszkodzenie danych i jeśli dokumenty w kontenerze są modyfikowane lub usuwane, **Usuń kontener najszybciej, jak to możliwe**. Usunięcie kontenera pozwala uniknąć Azure Cosmos DB zastępowania kopii zapasowych. Jeśli z jakiegoś powodu nie jest możliwe usunięcie, należy zastanowić o bilet najszybciej, jak to możliwe. Oprócz nazw kont usługi Azure Cosmos, nazw baz danych i nazw kontenerów należy określić punkt w czasie, do którego można przywrócić dane. Ważne jest, aby zapewnić możliwie precyzyjne określenie najlepszych dostępnych kopii zapasowych. Ważne jest również, aby określić godzinę w formacie UTC. 
 
-Poniższy zrzut ekranu przedstawia sposób utworzenia żądania pomocy technicznej dla container(collection/graph/table) przywrócić dane przy użyciu witryny Azure portal. Zawierają dodatkowe szczegóły, takie jak typ danych, w celu przywracania, czas podczas dane zostały usunięte, aby pomóc nam określić priorytety żądania.
+Poniższy zrzut ekranu ilustruje sposób tworzenia żądania obsługi dla kontenera (kolekcji/wykresu/tabeli) w celu przywrócenia danych przy użyciu Azure Portal. Podaj dodatkowe szczegóły, takie jak typ danych, cel przywracania, czas, po usunięciu danych, aby pomóc nam określić priorytet żądania.
 
-![Utwórz żądanie obsługi kopii zapasowych przy użyciu witryny Azure portal](./media/how-to-backup-and-restore/backup-support-request-portal.png)
+![Utwórz żądanie obsługi kopii zapasowej za pomocą Azure Portal](./media/how-to-backup-and-restore/backup-support-request-portal.png)
 
-## <a name="post-restore-actions"></a>Wykonywane po przywróceniu działania
+## <a name="post-restore-actions"></a>Akcje po przywróceniu
 
-Po przywróceniu danych otrzymasz powiadomienie o nazwę nowego konta (zwykle jest w formacie `<original-name>-restored1`) i godziny, jeśli konto zostało przywrócone do. Przywrócona konto będzie mieć ten sam aprowizowanej przepływności zasady indeksowania i jest w tym samym regionie co oryginalnego konta. Użytkownik będący administratorem subskrypcji lub coadmin widoczne przywróconych kont.
+Po przywróceniu danych otrzymasz powiadomienie o nazwie nowego konta (zwykle w formacie `<original-name>-restored1`) i czasie, w którym konto zostało przywrócone. Przywrócone konto będzie miało taką samą przepływność, a zasady indeksowania i znajdują się w tym samym regionie co oryginalne konto. Użytkownik będący administratorem subskrypcji lub współadministratorem może zobaczyć przywrócone konto.
 
-Po przywróceniu danych należy sprawdzić i sprawdzanie poprawności danych na koncie przywrócona i upewnij się, że zawiera on wersji, które są oczekiwane. Jeśli wszystko wygląda dobrze, należy przeprowadzić migrację danych do usługi oryginalnego konta przy użyciu [zestawienia zmian usługi Azure Cosmos DB](change-feed.md) lub [usługi Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
+Po przywróceniu danych należy sprawdzić i sprawdzić poprawność danych na przywróconym koncie i upewnić się, że zawiera ona oczekiwaną wersję. Jeśli wszystko wygląda dobrze, należy przeprowadzić migrację danych z powrotem do oryginalnego konta przy użyciu [Azure Cosmos DB zmian](change-feed.md) lub [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
 
-Zaleca się usunięcie kontenera lub bazy danych natychmiast po przeprowadzeniu migracji danych. Jeśli nie usuniesz przywróconej bazy danych lub kontenerów, spowoduje naliczenie kosztów, jednostek żądania, magazynu i ruchu wychodzącego.
+Zaleca się usunięcie kontenera lub bazy danych bezpośrednio po przeprowadzeniu migracji danych. Jeśli nie usuniesz przywróconych baz danych lub kontenerów, zostaną naliczone opłaty za jednostki żądań, magazyn i ruch wychodzący.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Następnie możesz dowiedzieć się jak przeprowadzić migrację danych do oryginalnego konta za pomocą następujących artykułach:
+Następnie możesz dowiedzieć się, jak przeprowadzić migrację danych z powrotem do oryginalnego konta, korzystając z następujących artykułów:
 
-* Aby Przywracanie żądania, skontaktuj się z działem pomocy technicznej systemu Azure, [bilet w witrynie Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
-* [Zestawienia zmian usługi Cosmos DB użyj](change-feed.md) do przenoszenia danych do usługi Azure Cosmos DB.
+* Aby wykonać żądanie przywrócenia, skontaktuj się z pomocą techniczną platformy Azure, Utwórz [bilet z Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
+* Aby przenieść dane do Azure Cosmos DB, [Użyj kanału informacyjnego zmiany Cosmos DB](change-feed.md) .
 
-* [Usługa Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) do przenoszenia danych do usługi Azure Cosmos DB.
+* Przenieś dane do Azure Cosmos DB [za pomocą Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) .

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2019
 ms.author: tomfitz
-ms.openlocfilehash: cf6a5b07dd72c4e2364281b755e77e642f8fe167
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 161539aaec4d3b7162405f437b7fb3dd1f6a00e6
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542990"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258844"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Najlepsze rozwiązania dotyczące szablonu Azure Resource Manager
 
@@ -149,7 +149,7 @@ Informacje przedstawione w tej sekcji mogą być przydatne podczas pracy z [para
 
 ## <a name="variables"></a>Zmienne
 
-Poniższe informacje mogą być przydatne podczas pracy ze zmiennymi [](resource-group-authoring-templates.md#variables):
+Poniższe informacje mogą być przydatne podczas pracy ze [zmiennymi](resource-group-authoring-templates.md#variables):
 
 * Użyj notacji CamelCase przypadku nazw zmiennych.
 
@@ -159,7 +159,7 @@ Poniższe informacje mogą być przydatne podczas pracy ze zmiennymi [](resource
 
 * Nie używaj zmiennych dla `apiVersion` zasobu. Wersja interfejsu API określa schemat zasobu. Często nie można zmienić wersji bez zmiany właściwości zasobu.
 
-* Nie można użyć funkcji [Reference](resource-group-template-functions-resource.md#reference) w sekcji **zmiennych** szablonu. Funkcja **Reference** dziedziczy jej wartość ze stanu środowiska uruchomieniowego zasobu. Jednak zmienne są rozwiązywane podczas początkowej analizy szablonu. Konstruowanie wartości, które wymagają funkcji referencyjnej, bezpośrednio w sekcji **zasoby** lub dane **wyjściowe** szablonu.
+* Nie można użyć funkcji [Reference](resource-group-template-functions-resource.md#reference) w sekcji **zmiennych** szablonu. Funkcja **Reference** dziedziczy jej wartość ze stanu środowiska uruchomieniowego zasobu. Jednak zmienne są rozwiązywane podczas początkowej analizy szablonu. Konstruowanie wartości, które wymagają funkcji **referencyjnej** , bezpośrednio w sekcji **zasoby** lub dane **wyjściowe** szablonu.
 
 * Dołącz zmienne nazw zasobów, które muszą być unikatowe.
 
@@ -175,7 +175,7 @@ Podczas wybierania [zależności](resource-group-define-dependencies.md) , któr
 
 * Ustaw zasób podrzędny jako zależny od jego zasobu nadrzędnego.
 
-* Zasoby z [elementem Condition](resource-group-authoring-templates.md#condition) ustawionym na wartość false są automatycznie usuwane z kolejności zależności. Ustaw zależności, tak jakby zasób jest zawsze wdrażany.
+* Zasoby z [elementem Condition](conditional-resource-deployment.md) ustawionym na wartość false są automatycznie usuwane z kolejności zależności. Ustaw zależności, tak jakby zasób jest zawsze wdrażany.
 
 * Zezwól na kaskadowe zależności bez ustawiania ich jawnie. Na przykład maszyna wirtualna zależy od interfejsu sieci wirtualnej, a interfejs sieci wirtualnej zależy od sieci wirtualnej i publicznych adresów IP. W związku z tym, maszyna wirtualna jest wdrażana po wszystkich trzech zasobach, ale nie ustawia jawnie maszyny wirtualnej jako zależnej od wszystkich trzech zasobów. Takie podejście wyjaśnia kolejność zależności i ułatwia późniejsze zmiany szablonu.
 

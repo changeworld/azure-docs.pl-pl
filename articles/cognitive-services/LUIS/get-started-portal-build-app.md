@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: f54643883028d93b56c7e122f43db95bb6d0b8c1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3bdada262df3778ab8781f967fdbd64a780009b2
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560878"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258282"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Szybki start: Tworzenie nowej aplikacji w portalu LUIS
 
@@ -23,9 +23,9 @@ W tym przewodniku szybki start utworzysz nową aplikację w [portalu Luis](https
 
 Tworzenie aplikacji jest bezpłatne i nie wymaga subskrypcji platformy Azure. Gdy wszystko będzie gotowe do wdrożenia aplikacji, zapoznaj się z [przewodnikiem Szybki Start, aby wdrożyć aplikację](get-started-portal-deploy-app.md). Przedstawiono w nim sposób tworzenia zasobu usługi poznawczej platformy Azure i przypisywania go do aplikacji.
 
-## <a name="create-an-app"></a>Tworzenie aplikacji
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
-1. Otwórz [Portal Luis](https://www.luis.ai) w przeglądarce i zaloguj się. Jeśli logujesz się po raz pierwszy, musisz utworzyć bezpłatne konto użytkownika portalu LUIS.
+## <a name="create-an-app"></a>Tworzenie aplikacji
 
 1. Wybierz pozycję **Utwórz nową aplikację** na podstawie paska narzędzi kontekstu.
 
@@ -33,9 +33,9 @@ Tworzenie aplikacji jest bezpłatne i nie wymaga subskrypcji platformy Azure. Gd
 
 1. W oknie podręcznym Skonfiguruj aplikację przy użyciu następujących ustawień, a następnie wybierz pozycję **gotowe**.
 
-   |Nazwa ustawienia| Wartość | Cel|
+   |Nazwa ustawienia| Value | Cel|
    |--|--|--|
-   |Name (Nazwa)|`myEnglishApp`|Unikatowa nazwa aplikacji LUIS<br>wymagane|
+   |Name|`myEnglishApp`|Unikatowa nazwa aplikacji LUIS<br>wymagane|
    |Kultura|**Angielski**|Język wyrażenia długości od użytkowników, **en-us**<br>wymagane|
    |Opis|`App made with LUIS Portal`|Opis aplikacji<br>opcjonalne|
    | | | |
@@ -49,7 +49,7 @@ Po utworzeniu aplikacji LUIS należy utworzyć intencje. Intencje są sposobem n
  1. Znajdź i Zastosuj do zadań
  1. Znajdowanie formularzy do zastosowania w przypadku zadań
 
-Dwie różne intencje dotyczące  aplikacji są wyrównane do następujących intencji:
+Dwie różne _intencje_ dotyczące aplikacji są wyrównane do następujących intencji:
 
 |Intencja|Przykładowy tekst od użytkownika<br>znane jako _wypowiedź_|
 |--|--|
@@ -58,7 +58,7 @@ Dwie różne intencje dotyczące  aplikacji są wyrównane do następujących in
 
 Aby utworzyć intencje, wykonaj następujące czynności:
 
-1. Po utworzeniu aplikacji znajduje się na stronie intencje w  sekcji **kompilacja** . Wybierz pozycję **Create new intent** (Utwórz nową intencję).
+1. Po utworzeniu aplikacji znajduje się na stronie **intencje** w sekcji **kompilacja** . Wybierz pozycję **Create new intent** (Utwórz nową intencję).
 
    [![Przycisk Utwórz nowy cel](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
@@ -124,7 +124,7 @@ Opcja **Brak** jest zamiarem rezerwowym i nie powinna być pusta. Ta metoda powi
 
 Przykładowa metoda wyrażenia długości **nie** powinna być poza domeną aplikacji klienckiej.
 
-1. Wybierz  pozycję intencje w menu po lewej stronie, a następnie wybierz pozycję **Brak** z listy intencje.
+1. Wybierz pozycję **intencje** w menu po lewej stronie, a następnie wybierz pozycję **Brak** z listy intencje.
 
 1. Dodaj następujący przykład wyrażenia długości do celu:
 
@@ -150,7 +150,7 @@ W menu w prawym górnym rogu wybierz pozycję **uczenie** , aby zastosować zmia
 
 ## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Testowanie nowej aplikacji za pomocą interaktywnego okienka testów
 
-Użyj interaktywnego  okienka testowego w portalu Luis, aby sprawdzić, czy jednostka została wyodrębniona z nowej wyrażenia długości, która nie była jeszcze widoczna dla aplikacji.
+Użyj interaktywnego okienka **testowego** w portalu Luis, aby sprawdzić, czy jednostka została wyodrębniona z nowej wyrażenia długości, która nie była jeszcze widoczna dla aplikacji.
 
 1. Wybierz pozycję **Testuj** w prawym górnym menu.
 

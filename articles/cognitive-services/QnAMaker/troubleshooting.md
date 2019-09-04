@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 60a2b63c7d37440bb08c7a7f15f052cfa2607406
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 95b4978b66accce0182e58493cb9d600dbe5e35f
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193693"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277480"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Rozwiązywanie problemów dotyczących QnA Maker
 
@@ -134,7 +134,7 @@ Aby korzystać z wielu języków oraz wielu baz wiedzy, użytkownik musi utworzy
 
 ### <a name="how-can-i-change-the-name-of-the-azure-search-resource-used-by-qna-maker"></a>Jak zmienić nazwę zasobu usługi Azure Search, używane przez narzędzie QnA Maker?
 
-Nazwa zasobu usługi Azure Search jest nazwą zasobu usługi QnA Maker niektóre litery losowe dołączany na końcu. Dzięki temu trudno rozróżnienie między wieloma Wyszukaj zasoby dotyczące usługi QnA Maker. Utwórz osobną usługą Azure Search (nadawania jej nazwy w sposób, aby) i połączyć ją z usługą pytań i odpowiedzi. Kroki są podobne kroki konieczne do [uaktualnienie usługi Azure Search](How-To/set-up-qnamaker-service-azure.md#upgrade-azure-search-service).
+Nazwa zasobu usługi Azure Search jest nazwą zasobu usługi QnA Maker niektóre litery losowe dołączany na końcu. Dzięki temu trudno rozróżnienie między wieloma Wyszukaj zasoby dotyczące usługi QnA Maker. Utwórz osobną usługą Azure Search (nadawania jej nazwy w sposób, aby) i połączyć ją z usługą pytań i odpowiedzi. Kroki są podobne do kroków, które należy wykonać, aby [uaktualnić usługę Azure Search](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-search-service).
 
 ### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>Kiedy QNA Maker zwraca `Runtime core is not initialized,` , jak rozwiązać ten problem?
 

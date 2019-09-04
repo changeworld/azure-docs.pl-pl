@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 79cb276f121c351a9954994038d9d826819edf5d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1e6d3b78887c9d195fdf0137553860c141bdaaba
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087451"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241055"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Punkty kontrolne i powtarzanie w Durable Functions (Azure Functions)
 
@@ -124,7 +124,7 @@ Za każdym razem, gdy funkcja wznawia działanie `await` zC#() `yield` lub (Java
 
 Zachowanie powtarzania tworzy ograniczenia dotyczące typu kodu, który można napisać w funkcji programu Orchestrator:
 
-* Kod programu Orchestrator musibyć deterministyczny. Zostanie ona powtórzona wiele razy i musi generować ten sam wynik za każdym razem. Na przykład żadne bezpośrednie wywołania do pobrania bieżącej daty/godziny, pobrania losowych identyfikatorów GUID lub wywołania do zdalnych punktów końcowych.
+* Kod programu Orchestrator musi być **deterministyczny**. Zostanie ona powtórzona wiele razy i musi generować ten sam wynik za każdym razem. Na przykład żadne bezpośrednie wywołania do pobrania bieżącej daty/godziny, pobrania losowych identyfikatorów GUID lub wywołania do zdalnych punktów końcowych.
 
   Jeśli kod programu Orchestrator wymaga pobrania bieżącej daty/godziny, powinien on używać interfejsu API [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (.NET) lub `currentUtcDateTime` (JavaScript), który jest bezpieczny do odtworzenia.
 
@@ -142,9 +142,12 @@ Zachowanie powtarzania tworzy ograniczenia dotyczące typu kodu, który można n
 
 * Kod programu Orchestrator nie powinien być **blokowany**. Na przykład oznacza to brak operacji we/wy i brak wywołań do `Thread.Sleep` (.NET) lub równoważnych interfejsów API.
 
-  Jeśli koordynator musi opóźnić korzystanie z interfejsu API programu ( [](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) .NET) lub `createTimer` (JavaScript).
+  Jeśli koordynator musi opóźnić korzystanie z interfejsu [API programu (](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) .NET) lub `createTimer` (JavaScript).
 
-* Kod programu Orchestrator **nigdy nie może inicjować żadnej operacji asynchronicznej** , chyba że jest `context.df` używany interfejs API [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) lub interfejs API obiektu. Na `Task.Run`przykład nie `setInterval()` , `Task.Delay` lub `HttpClient.SendAsync` w programie .NET lub `setTimeout()` w języku JavaScript. Trwała struktura zadań wykonuje kod programu Orchestrator w pojedynczym wątku i nie może współdziałać z innymi wątkami, które mogą być zaplanowane przez inne asynchroniczne interfejsy API. W `InvalidOperationException` takim przypadku wyjątek jest zgłaszany.
+* Kod programu Orchestrator **nigdy nie może inicjować żadnej operacji asynchronicznej** , [](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) chyba że jest `context.df` używany interfejs API DurableOrchestrationContext lub interfejs API obiektu. Na `Task.Run`przykład nie `setInterval()` , `Task.Delay` lub `HttpClient.SendAsync` w programie .NET lub `setTimeout()` w języku JavaScript. Trwała struktura zadań wykonuje kod programu Orchestrator w pojedynczym wątku i nie może współdziałać z innymi wątkami, które mogą być zaplanowane przez inne asynchroniczne interfejsy API. W `InvalidOperationException` takim przypadku wyjątek jest zgłaszany.
+
+> [!NOTE]
+> Interfejs API [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) wykonuje asynchroniczne operacje we/wy, które nie są dozwolone w funkcji programu Orchestrator i mogą być używane tylko w funkcjach innych niż program Orchestrator.
 
 * W kodzie programu Orchestrator **należy unikać nieskończonych pętli** . Ponieważ trwała struktura zadań zapisuje historię wykonywania w miarę postępów funkcji aranżacji, pętla nieskończona może spowodować, że w wystąpieniu programu Orchestrator brakuje pamięci. W przypadku scenariuszy pętli nieskończonej Użyj interfejsów API, takich jak [ContinueAsNew](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_ContinueAsNew_) ( `continueAsNew` .NET) lub (JavaScript), aby ponownie uruchomić wykonywanie funkcji i odrzucić poprzednią historię wykonania.
 

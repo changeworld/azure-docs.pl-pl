@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 8b424696c3350ff2592df9a97189dde3df57845f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 5b6ece20f67258391e31b941edfc1ec0aa5db98f
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138558"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279264"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Zarządzanie za pomocą interfejsu API zarządzania usługami sieci web Azure Machine Learning Studio
 ## <a name="overview"></a>Przegląd
@@ -301,7 +301,7 @@ W tym przewodniku przedstawiono działający przykład języka Python. Należy j
     except urllib2.HTTPError, error:
         printHttpError(error)
         return
-    with open(output_file, "w+") as f:
+    with open(output_file, "wb+") as f:
         f.write(response.read())
     print(resultsLabel + " have been written to the file " + output_file)
     return

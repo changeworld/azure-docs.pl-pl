@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 33ee006a704cec1fb0d75a953629aec68461a4f4
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 8bf83f483bb7680b71bf928430858240deb3d603
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165192"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278826"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -290,7 +290,7 @@ Azure Databricks jest środowiskiem opartym na Apache Spark w chmurze platformy 
 Jak Azure Databricks współpracuje z usługą Azure Machine Learning:
 + Możesz nauczyć model przy użyciu platformy Spark MLlib i wdrożyć model do ACI/AKS z poziomu Azure Databricks.
 + Możesz również użyć funkcji [automatycznego uczenia maszynowego](concept-automated-ml.md) w specjalnym zestawie SDK usługi Azure ML z Azure Databricks.
-+ Azure Databricks jako obiekt docelowy obliczeń można użyć z potoku [Azure Machine Learning](concept-ml-pipelines.md).
++ Azure Databricks jako obiekt docelowy obliczeń można użyć z [potoku Azure Machine Learning](concept-ml-pipelines.md).
 
 ### <a name="set-up-your-databricks-cluster"></a>Konfigurowanie klastra datakostks
 
@@ -411,5 +411,4 @@ Plik konfiguracji można utworzyć na trzy sposoby:
 ## <a name="next-steps"></a>Następne kroki
 
 - [Uczenie modelu](tutorial-train-models-with-aml.md) na Azure Machine Learning z zestawem danych mnist ręcznie
-- Wyświetl informacje o [zestawie Azure Machine Learning SDK dla języka Python](https://aka.ms/aml-sdk)
-- Informacje na temat [pakietu przygotowywania danych dla Azure Machine Learning](https://aka.ms/data-prep-sdk)
+- Wyświetl informacje o [zestawie Azure Machine Learning SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)

@@ -10,24 +10,72 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 01ee8e5b9d7ab1e8ab4086e559ce8dd8df76252f
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 0880b5706f2621971a4e5c82a6db03cdd22ce4d6
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182688"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278291"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
-Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uzyskać pełną zawartość referencyjną SDK, odwiedź stronę referencyjną [**głównego zestawu sdk Azure Machine Learning dla języka Python**](https://aka.ms/aml-sdk) . 
+Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uzyskać pełną zawartość referencyjną SDK, odwiedź stronę referencyjną [**głównego zestawu sdk Azure Machine Learning dla języka Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) . 
 
 Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat znanych błędów i rozwiązania problemu.
 
+## <a name="2019-09-03"></a>2019-09-03
+### <a name="azure-machine-learning-sdk-for-python-v1060"></a>Zestaw Azure Machine Learning SDK dla języka Python v 1.0.60
+
++ **Nowe funkcje**
+  + Wprowadzono FileDataset, która odwołuje się do jednego lub wielu plików w magazynach danych lub publicznych adresach URL. Pliki mogą być w dowolnym formacie. FileDataset umożliwia pobieranie lub Instalowanie plików na potrzeby obliczeń. Aby dowiedzieć się więcej na temat https://aka.ms/file-dataset FileDataset, odwiedź stronę.
+  + Dodano obsługę YAML potoków dla kroku PythonScript, kroku adla, kroku datakostki, DataTransferStep i AzureBatch
+
++ **Poprawki i ulepszenia błędów**
+  + **Azure-automl-Core**
+    + AutoArima jest teraz pożądanym potokiem tylko dla wersji zapoznawczej.
+    + Ulepszone raportowanie błędów w przypadku prognozowania.
+    + Ulepszone rejestrowanie przy użyciu wyjątków niestandardowych zamiast ogólnych w zadaniach prognozowania.
+    + Usunięto kontrolę max_concurrent_iterations, aby była mniejsza niż łączna liczba iteracji.
+    + Modele AutoML teraz zwracają AutoMLExceptions
+    + Ta wersja zwiększa wydajność wykonywania zautomatyzowanych uruchomień lokalnych w usłudze Machine Learning.
+  + **azureml-core**
+    + Wprowadź `Dataset.get_all()` , która zwraca słownik elementów `TabularDataset` i `FileDataset` obiektów objętych nazwą rejestracji. 
+    
+    ```py 
+    workspace = Workspace.from_config() 
+    all_datasets = Dataset.get_all(workspace) 
+    mydata = all_datasets['my-data'] 
+    ```
+    
+    + Wprowadź `parition_format` jako argument do `Dataset.Tabular.from_delimited_files` i `Dataset.Tabular.from_parquet.files`. Informacje o partycji każdej ścieżki danych zostaną wyodrębnione do kolumn w oparciu o określony format. "{column_name}" tworzy kolumnę String, a "{column_name: RRRR/MM/DD/HH/mm/SS}" tworzy kolumnę datetime, gdzie "RRRR", "MM", "DD", "gg", "mm" i "SS" są używane do wyodrębniania wartości typu Year, month, Day, Hour, minute i Second. Partition_format powinien rozpoczynać się od pozycji pierwszego klucza partycji, aż do końca ścieżki pliku. Na przykład dana ścieżka ". /USA/2019/01/01/data.csv "gdzie partycja jest według kraju i godziny, partition_format ="/{Country}/{PartitionDate: RRRR/MM/DD}/Data. csv "tworzy kolumnę ciągu" Country "z wartością" USA "i kolumną DateTime" PartitionDate "o wartości" 2019-01-01 ".
+    + `to_csv_files`metody `to_parquet_files` i zostały dodane do `TabularDataset`. Metody te umożliwiają konwersję między `TabularDataset` a i `FileDataset` a przez konwersję danych do plików o określonym formacie.
+    + Podczas zapisywania pliku dockerfile wygenerowanego przez model () automatycznie loguj się do podstawowego rejestru obrazu.
+    + "gpu_support" nie jest już konieczne; Platforma Azure jest teraz automatycznie wykrywana i używa rozszerzenia platformy Docker firmy NVIDIA, gdy jest dostępne. Zostanie usunięta w przyszłej wersji.
+    + Dodano obsługę tworzenia, aktualizowania i używania PipelineDrafts.
+    + Ta wersja zwiększa wydajność wykonywania zautomatyzowanych uruchomień lokalnych w usłudze Machine Learning.
+    + Użytkownicy mogą badać metryki z historii uruchamiania według nazwy.
+    + Ulepszone rejestrowanie przy użyciu wyjątków niestandardowych zamiast ogólnych w zadaniach prognozowania.
+  + **azureml-explain-model**
+    + Dodano parametr feature_maps do nowego MimicWrapper, dzięki czemu użytkownicy mogą uzyskiwać nieprzetworzone wyjaśnienia funkcji.
+    + Przekazywanie zestawu danych jest teraz domyślnie wyłączone w celu przekazania wyjaśnień i można je ponownie włączyć przy użyciu upload_datasets = true
+    + Dodano parametry filtrowania "is_law" do listy wyjaśnień i funkcji pobierania.
+    + Dodaje metodę `get_raw_explanation(feature_maps)` do globalnych i lokalnych obiektów wyjaśnień.
+    + Dodano Sprawdzanie wersji do lightgbm z wydrukowanym ostrzeżeniem, jeśli poniżej obsługiwanej wersji
+    + Zoptymalizowane użycie pamięci podczas tworzenia wsadowych objaśnień
+    + Modele AutoML teraz zwracają AutoMLExceptions
+  + **azureml-pipeline-core**
+    + Dodano obsługę tworzenia, aktualizowania i używania PipelineDrafts — może służyć do obsługi definicji potoku mutable i używania ich interaktywnie do uruchamiania
+  + **azureml-train-automl**
+    + Utworzono funkcję umożliwiającą zainstalowanie określonych wersji procesora GPU pytorch v 1.1.0, cuda toolkit 9,0, pytorch-transformatorów, które są wymagane do włączenia BERT/XLNet w środowisku środowiska uruchomieniowego języka Python.
+  + **azureml-train-core**
+    + Wczesna awaria niektórych z parametrów w zestawie SDK, a nie po stronie serwera.
+
+  
 ## <a name="2019-08-19"></a>2019-08-19
 
 ### <a name="azure-machine-learning-sdk-for-python-v1057"></a>Zestaw Azure Machine Learning SDK dla języka Python v 1.0.57
 + **Nowe funkcje**
-  + Włączone `TabularDataset` do użycia przez AutomatedML. Aby dowiedzieć się `TabularDataset`więcej na temat https://aka.ms/azureml/howto/createdatasets, odwiedź stronę.
+  + Włączone `TabularDataset` do użycia przez AutomatedML. Aby dowiedzieć się `TabularDataset`więcej na temat https://aka.ms/azureml/howto/createdatasets , odwiedź stronę.
   
 + **Poprawki i ulepszenia błędów**
   + **automl-Client-Core-nativeclient**
@@ -101,7 +149,7 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
 ### <a name="azure-portal"></a>Azure Portal
 + **Funkcja wersji zapoznawczej**
   + Przesyłanie strumieniowe plików dziennika i danych wyjściowych jest teraz dostępne dla stron szczegółów uruchamiania. Po włączeniu przełącznika podglądu pliki będą przesyłać strumieniowo aktualizacje w czasie rzeczywistym.
-  + Możliwość ustawiania limitu przydziału na poziomie obszaru roboczego jest publikowana w wersji zapoznawczej. Przydziały AmlCompute są przydzielane na poziomie subskrypcji, ale teraz można rozpowszechnić ten przydział między obszarami roboczymi i przydzielić go do sprawiedliwego udostępniania i zarządzania. Po prostu kliknij blok **użycie i limity przydziału** na lewym pasku nawigacyjnym obszaru roboczego i wybierz kartę **Konfigurowanie** przydziałów. Zwróć uwagę, że musisz być administratorem subskrypcji, aby móc ustawiać przydziały na poziomie obszaru roboczego, ponieważ jest to operacja między obszarami roboczymi.
+  + Możliwość ustawiania limitu przydziału na poziomie obszaru roboczego jest publikowana w wersji zapoznawczej. Przydziały AmlCompute są przydzielane na poziomie subskrypcji, ale teraz można rozpowszechnić ten przydział między obszarami roboczymi i przydzielić go do sprawiedliwego udostępniania i zarządzania. Po prostu kliknij blok **użycie i limity przydziału** na lewym pasku nawigacyjnym obszaru roboczego i wybierz kartę **Konfigurowanie przydziałów** . Zwróć uwagę, że musisz być administratorem subskrypcji, aby móc ustawiać przydziały na poziomie obszaru roboczego, ponieważ jest to operacja między obszarami roboczymi.
 
 ## <a name="2019-08-05"></a>2019-08-05
 
@@ -388,7 +436,7 @@ Przywrócono zmianę, która zwiększyła wydajność, ponieważ powodowała to 
   + Automatyczne Uczenie maszynowe nowe funkcje:
     + STL featurized na potrzeby prognozowania
     + KMeans klastrowanie jest włączone do czyszczenia funkcji
-  + AmlCompute zatwierdzeń przydziałów stało się szybsze. Teraz zautomatyzowany proces zatwierdzania żądań limitu przydziału w ramach progu. Aby uzyskać więcej informacji o działaniu przydziałów, Dowiedz się, [jak zarządzać](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas)przydziałami.
+  + AmlCompute zatwierdzeń przydziałów stało się szybsze. Teraz zautomatyzowany proces zatwierdzania żądań limitu przydziału w ramach progu. Aby uzyskać więcej informacji o działaniu przydziałów, Dowiedz się, [jak zarządzać przydziałami](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-quotas).
 
 + **Funkcje w wersji zapoznawczej**
     + Integracja z usługą [MLflow](https://mlflow.org) 1.0.0 Tracking za pomocą pakietu Azure-MLflow ([przykładowe notesy](https://aka.ms/azureml-mlflow-examples)).
@@ -506,7 +554,7 @@ Użyj maszyny wirtualnej z notesem jako bezpiecznego, gotowego do użycia w prze
     + Zarejestruj model przy użyciu usługi Zarządzanie modelami i konteneryzowanie model
     + Wdrażanie modelu na maszynie wirtualnej platformy Azure przy użyciu FPGA w klastrze usługi Azure Kubernetes Service (AKS)
   + Wdrażanie kontenera na urządzeniu z serwerem [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview)
-  + Poprowadź ocenę danych za pomocą punktu końcowego gRPC [](https://github.com/Azure-Samples/aml-hardware-accelerated-models) z tym przykładem
+  + Poprowadź ocenę danych za pomocą punktu końcowego gRPC z tym [przykładem](https://github.com/Azure-Samples/aml-hardware-accelerated-models)
 
 ### <a name="automated-machine-learning"></a>Zautomatyzowane uczenie maszynowe
 
@@ -755,7 +803,7 @@ Uwaga: Zestaw SDK języka Python dla przygotowywania danych `numpy` nie `pandas`
 ### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Azure Machine Learning zestawu SDK 1.0.7 przygotowywania danych
 
 + **Nowe funkcje**
-  + Udoskonalenia magazynu danych (udokumentowane w przewodniku w [usłudze Magazyn](https://aka.ms/aml-data-prep-datastore-nb)danych)
+  + Udoskonalenia magazynu danych (udokumentowane w [przewodniku w usłudze Magazyn](https://aka.ms/aml-data-prep-datastore-nb)danych)
     + Dodano możliwość odczytu i zapisu do udziału plików platformy Azure oraz ADLS magazynów danych w celu skalowania w górę.
     + W przypadku korzystania z magazynów danych program przygotowywania w ramach programu obsługuje teraz używanie uwierzytelniania nazwy głównej usługi zamiast interakcyjnego uwierzytelniania.
     + Dodano obsługę adresów URL wasb i wasbs.

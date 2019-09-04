@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 0a47bb70ef87783d9b275329452c94526c67a2c3
-ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
+ms.openlocfilehash: d82f843cb5cdd7b910c734f26a93144374061b74
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70211732"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274496"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopiowanie danych z programu SAP Business Warehouse za pośrednictwem usługi Open Hub przy użyciu Azure Data Factory
 
@@ -108,7 +108,7 @@ Następujące właściwości są obsługiwane w przypadku usługi SAP Business W
 | język | Język, którego używa System SAP. | Nie (wartość domyślna to **EN**)|
 | userName | Nazwa użytkownika, który ma dostęp do serwera SAP. | Tak |
 | password | Hasło użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
-| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Samodzielna Integration Runtime jest wymagana, jak wspomniano [](#prerequisites)w wymaganiach wstępnych. |Tak |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Samodzielna Integration Runtime jest wymagana, jak wspomniano w [wymaganiach wstępnych](#prerequisites). |Tak |
 
 **Przykład:**
 
@@ -145,11 +145,8 @@ Aby skopiować dane z i do SAP BW Otwórz Centrum, ustaw właściwość Type zes
 |:--- |:--- |:--- |
 | type | Właściwość Type musi być ustawiona na wartość **SapOpenHubTable**.  | Tak |
 | openHubDestinationName | Nazwa miejsca docelowego typu Open Hub, z którego mają zostać skopiowane dane. | Tak |
-| excludeLastRequest | Określa, czy mają zostać wykluczone rekordy ostatniego żądania. | Nie (wartość domyślna to **true**) |
-| baseRequestId | Identyfikator żądania dla ładowania różnicowego. Po jego ustawieniu zostaną pobrane tylko dane z identyfikatorem żądania **większym niż** wartość tej właściwości.  | Nie |
 
->[!TIP]
->Jeśli otwarta tabela centrów zawiera tylko dane wygenerowane przez pojedynczy identyfikator żądania, na przykład zawsze należy wykonać pełne ładowanie i zastąpić istniejące dane w tabeli, lub uruchomić DTP tylko raz dla testu, pamiętaj o usunięciu zaznaczenia opcji "excludeLastRequest" w celu skopiowania d ATA out.
+Jeśli ustawienia `excludeLastRequest` i `baseRequestId` w zestawie danych, nadal są obsługiwane w stanie takim, w jakim jest zalecane użycie nowego modelu w źródle aktywności.
 
 **Przykład:**
 
@@ -158,12 +155,13 @@ Aby skopiować dane z i do SAP BW Otwórz Centrum, ustaw właściwość Type zes
     "name": "SAPBWOpenHubDataset",
     "properties": {
         "type": "SapOpenHubTable",
+        "typeProperties": {
+            "openHubDestinationName": "<open hub destination name>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<SAP BW Open Hub linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "openHubDestinationName": "<open hub destination name>"
         }
     }
 }
@@ -175,7 +173,16 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania dz
 
 ### <a name="sap-bw-open-hub-as-source"></a>SAP BW otworzyć Centrum jako źródło
 
-Aby skopiować dane z SAP BW Otwórz Centrum, ustaw typ źródła w działaniu kopiowania na **SapOpenHubSource**. W sekcji **Źródło** działania kopiowania nie są dostępne żadne dodatkowe właściwości specyficzne dla typu.
+Aby skopiować dane z SAP BW Otwórz Centrum, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+
+| Właściwość | Opis | Wymagane |
+|:--- |:--- |:--- |
+| type | Właściwość **Type** źródła działania Copy musi być ustawiona na wartość **SapOpenHubSource**. | Tak |
+| excludeLastRequest | Określa, czy mają zostać wykluczone rekordy ostatniego żądania. | Nie (wartość domyślna to **true**) |
+| baseRequestId | Identyfikator żądania dla ładowania różnicowego. Po jego ustawieniu zostaną pobrane tylko dane z identyfikatorem żądania **większym niż** wartość tej właściwości.  | Nie |
+
+>[!TIP]
+>Jeśli otwarta tabela centrów zawiera tylko dane wygenerowane przez pojedynczy identyfikator żądania, na przykład zawsze należy wykonać pełne ładowanie i zastąpić istniejące dane w tabeli, lub uruchomić DTP tylko raz dla testu, pamiętaj o usunięciu zaznaczenia opcji "excludeLastRequest" w celu skopiowania d ATA out.
 
 Aby przyspieszyć ładowanie danych, można ustawić [`parallelCopies`](copy-activity-performance.md#parallel-copy) działanie kopiowania w celu załadowania danych z SAP BW otwartego centrum. Jeśli na przykład ustawisz `parallelCopies` cztery, Data Factory współbieżnie wykonuje cztery wywołania RFC, a każde wywołanie RFC pobierze część danych z SAP BW otwartej tabeli z podziałem na partycje według identyfikatora żądania DTP i identyfikatora pakietu. Ma to zastosowanie, gdy liczba unikatowych identyfikatorów żądań DTP i identyfikator pakietu jest większa niż wartość `parallelCopies`. Podczas kopiowania danych do magazynu danych opartego na plikach, jest również ponownie wykonywane polecenie zapisu do folderu jako wiele plików (Określ nazwę folderu), w którym to przypadku wydajność jest lepsza niż zapis do pojedynczego pliku.
 
@@ -200,7 +207,8 @@ Aby przyspieszyć ładowanie danych, można ustawić [`parallelCopies`](copy-act
         ],
         "typeProperties": {
             "source": {
-                "type": "SapOpenHubSource"
+                "type": "SapOpenHubSource",
+                "excludeLastRequest": true
             },
             "sink": {
                 "type": "<sink type>"

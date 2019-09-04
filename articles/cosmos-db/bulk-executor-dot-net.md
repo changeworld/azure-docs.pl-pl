@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 0b74c7b178ee4512067de4b8decba0c3c565ccd4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 26e4c4edbcfc282fffd0d43673d3585cfe973848
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616964"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241285"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Użycie zbiorczej biblioteki programu .NET do wykonywania operacji zbiorczych w Azure Cosmos DB
 
@@ -58,7 +58,7 @@ Aplikacja "BulkImportSample" generuje losowe dokumenty i zbiorczo importuje je d
    private static readonly int CollectionThroughput = int.Parse(ConfigurationManager.AppSettings["CollectionThroughput"]);
    ```
 
-   Importer zbiorcze tworzy nową bazę danych i kolekcji przy użyciu nazwy bazy danych, nazwę kolekcji i wartości przepływności, określone w pliku App.config. 
+   Importer zbiorczy tworzy nową bazę danych i kontener z nazwą bazy danych, nazwą kontenera i wartościami przepływności określonymi w pliku App. config. 
 
 3. Następny obiekt DocumentClient jest inicjowany z bezpośrednim trybem połączenia TCP:  
 
@@ -197,4 +197,4 @@ Korzystając z biblioteki program wykonujący zbiorcze, należy wziąć pod uwag
   ```
 
 ## <a name="next-steps"></a>Następne kroki
-* Aby dowiedzieć się więcej na temat szczegółów pakietu NuGet i informacji o wersji biblioteki programu .NET do zbiorczego modułu wykonawczego, zobacz[Szczegóły zestawu SDK](sql-api-sdk-bulk-executor-dot-net.md)modułu wykonawczy. 
+* Aby dowiedzieć się więcej na temat szczegółów pakietu NuGet i informacji o wersji biblioteki programu .NET do zbiorczego modułu wykonawczego, zobacz[Szczegóły zestawu SDK modułu wykonawczy](sql-api-sdk-bulk-executor-dot-net.md). 

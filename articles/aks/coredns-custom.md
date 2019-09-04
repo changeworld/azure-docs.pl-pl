@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: 5a69882f6bb38ac8e005ce5552fe57383a58cc63
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 40c170575e0b6e6264eed8a464ac73012cbe8627
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542578"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276505"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Dostosowywanie CoreDNS za pomocą usługi Azure Kubernetes Service
 
 Usługa Azure Kubernetes Service (AKS) używa projektu [CoreDNS][coredns] do zarządzania i rozpoznawania DNS klastra w przypadku wszystkich klastrów *1.12. x* i wyższych. Wcześniej został użyty projekt polecenia-DNS. Ten projekt polecenia-DNS jest obecnie przestarzały. Aby uzyskać więcej informacji na temat dostosowywania CoreDNS i Kubernetes, zapoznaj się z [oficjalną dokumentacją dla nadrzędnego][corednsk8s].
 
-Ponieważ AKS jest usługą zarządzaną, nie można modyfikować konfiguracji głównej dla CoreDNS ( *CoreFile*). Zamiast tego należy użyć Kubernetes *ConfigMap* , aby zastąpić ustawienia domyślne. Aby wyświetlić domyślny AKS CoreDNS ConfigMaps, użyj `kubectl get configmaps -namespace=kube-system coredns -o yaml` polecenia.
+Ponieważ AKS jest usługą zarządzaną, nie można modyfikować konfiguracji głównej dla CoreDNS ( *CoreFile*). Zamiast tego należy użyć Kubernetes *ConfigMap* , aby zastąpić ustawienia domyślne. Aby wyświetlić domyślny AKS CoreDNS ConfigMaps, użyj `kubectl get configmaps --namespace=kube-system coredns -o yaml` polecenia.
 
 W tym artykule pokazano, jak używać ConfigMaps do podstawowych opcji dostosowania CoreDNS w programie AKS.
 

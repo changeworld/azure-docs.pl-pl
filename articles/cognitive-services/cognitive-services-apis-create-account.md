@@ -9,20 +9,20 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: af01c0c2586ce7df1902a0bcc502c6fd06a5215d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c7db2b4d49e3b9297c32d2e11ffe7c7702c17544
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697906"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274659"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Tworzenie zasobu Cognitive Services przy użyciu Azure Portal
 
-Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć pracę z usługą Azure Cognitive Services przy użyciu Azure Portal. Cognitive Services są reprezentowane przez [zasoby](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal) platformy Azure utworzone w ramach subskrypcji platformy Azure. Po utworzeniu zasobu Użyj kluczy i punktu końcowego wygenerowanego do uwierzytelniania aplikacji. 
+Skorzystaj z tego przewodnika Szybki Start, aby utworzyć zasób usługi Azure Cognitive Services przy użyciu Azure Portal. Po pomyślnym utworzeniu zasobu Cognitive Services zostanie uzyskany punkt końcowy i klucz, którego można użyć do uwierzytelniania aplikacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Prawidłowa subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/)
+* Prawidłowa subskrypcja platformy Azure — [Utwórz ją bezpłatnie](https://azure.microsoft.com/free/).
 
 [!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
@@ -34,35 +34,68 @@ Przed utworzeniem zasobu Cognitive Services należy mieć grupę zasobów platfo
 
     ![Wybierz interfejsy API usług Cognitive Services](media/cognitive-services-apis-create-account/azurePortalScreenMulti.png)
 
-2. Dostępne Cognitive Services można znaleźć w następujących sposób:
-    * Użyj paska wyszukiwania i wprowadź nazwę usługi, którą chcesz subskrybować.
-        * Aby utworzyć zasób obejmujący wiele usług, wprowadź **Cognitive Services** na pasku wyszukiwania, a następnie wybierz zasób **Cognitive Services** .
+2. Jak wyjaśniono wcześniej, można utworzyć zasób Cognitive Services na dwa sposoby — za pomocą zasobu wielousługowego lub zasobu pojedynczego usługi.
 
-        ![Wyszukaj Cognitive Services](media/cognitive-services-apis-create-account/azureCogServSearchMulti.png)
+    #### <a name="multi-service-resourcetabmultiservice"></a>[Zasób obejmujący wiele usług](#tab/multiservice)
 
-    * Aby wyświetlić wszystkie dostępne usługi poznawcze, wybierz pozycję **AI + Machine Learning**w obszarze **Azure Marketplace**. Jeśli nie widzisz interesującej Cię usługi, kliknij pozycję **Zobacz wszystko** i przewiń do **Cognitive Services**. Kliknij przycisk **więcej** , aby wyświetlić cały katalog interfejsy API usług Cognitive Services.
+    Aby utworzyć zasób obejmujący wiele usług, wprowadź **Cognitive Services** na pasku wyszukiwania.
+
+    ![Wyszukaj Cognitive Services](media/cognitive-services-apis-create-account/azureCogServSearchMulti.png)
+
+    Na stronie Cognitive Services wybierz pozycję **Utwórz**.
+
+    ![Utwórz konto Cognitive Services](media/cognitive-services-apis-create-account/azurecogservsearchmulti-2.png)
+
+    #### <a name="single-service-resourcetabsingleservice"></a>[Zasób pojedynczego usługi](#tab/singleservice)
+
+    Aby wyświetlić wszystkie dostępne usługi poznawcze, wybierz pozycję **AI + Machine Learning**w obszarze **Azure Marketplace**. Jeśli nie widzisz interesującej Cię usługi, kliknij pozycję **Zobacz wszystko** i przewiń do **Cognitive Services**. Kliknij pozycję **Zobacz więcej** , aby wyświetlić cały katalog Cognitive Services.
+
+    Po wybraniu usługi kliknij pozycję **Utwórz**.
     
-        ![Wybierz interfejsy API usług Cognitive Services](media/cognitive-services-apis-create-account/azureMarketplace.png)
+    ![Wybierz interfejsy API usług Cognitive Services](media/cognitive-services-apis-create-account/azureMarketplace.png)
 
+    ***
 3. Na stronie **Tworzenie** podaj następujące informacje:
 
-    > [!IMPORTANT]
-    > Zapamiętaj swoją lokalizację platformy Azure, ponieważ może być potrzebna podczas wywoływania Cognitive Services platformy Azure.
+    #### <a name="multi-service-resourcetabmultiservice"></a>[Zasób obejmujący wiele usług](#tab/multiservice)
 
     |    |    |
     |--|--|
-    | **Nazwa** | Opisowa nazwa zasobu usług poznawczej. Na przykład *MyCognitiveServicesAccount*. |
+    | **Nazwa** | Opisowa nazwa zasobu usług poznawczej. Na przykład *MyCognitiveServicesResource*. |
     | **Subskrypcja** | Wybierz jedną z dostępnych subskrypcji platformy Azure. |
-    | **Location** | Lokalizacja wystąpienia usługi poznawczej. Różne lokalizacje mogą wprowadzać opóźnienia, ale nie mają wpływu na dostępność zasobu przez środowisko uruchomieniowe. |
+    | **Location** | Lokalizacja wystąpienia usługi poznawczej. Różne lokalizacje mogą wprowadzać opóźnienia, ale nie mają wpływu na dostępność zasobu przez środowisko uruchomieniowe. Zapamiętaj swoją lokalizację platformy Azure, ponieważ może być potrzebna podczas wywoływania Cognitive Services platformy Azure. |
     | **Warstwa cenowa** | Koszt konta Cognitive Services zależy od wybranych opcji i użycia. Aby uzyskać więcej informacji, zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/cognitive-services/)interfejsu API.
-    | **Grupa zasobów** | [Grupa zasobów platformy Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption/governance/resource-consistency/azure-resource-access#what-is-an-azure-resource-group) , która będzie zawierać zasób Cognitive Services. Można utworzyć nową grupę lub dodać ją do istniejącej grupy. |
+    | **Grupa zasobów** | Grupa zasobów platformy Azure, która będzie zawierać zasób Cognitive Services. Można utworzyć nową grupę lub dodać ją do istniejącej grupy. |
+
+    ![Ekran tworzenia zasobów](media/cognitive-services-apis-create-account/resource_create_screen-multi.png)
+
+    Kliknij przycisk **Utwórz**.
+
+    #### <a name="single-service-resourcetabsingleservice"></a>[Zasób pojedynczego usługi](#tab/singleservice)
+
+    |    |    |
+    |--|--|
+    | **Nazwa** | Opisowa nazwa zasobu usług poznawczej. Na przykład *TextAnalyticsResource*. |
+    | **Subskrypcja** | Wybierz jedną z dostępnych subskrypcji platformy Azure. |
+    | **Location** | Lokalizacja wystąpienia usługi poznawczej. Różne lokalizacje mogą wprowadzać opóźnienia, ale nie mają wpływu na dostępność zasobu przez środowisko uruchomieniowe. Zapamiętaj swoją lokalizację platformy Azure, ponieważ może być potrzebna podczas wywoływania Cognitive Services platformy Azure. |
+    | **Warstwa cenowa** | Koszt konta Cognitive Services zależy od wybranych opcji i użycia. Aby uzyskać więcej informacji, zobacz [szczegóły cennika](https://azure.microsoft.com/pricing/details/cognitive-services/)interfejsu API.
+    | **Grupa zasobów** | Grupa zasobów platformy Azure, która będzie zawierać zasób Cognitive Services. Można utworzyć nową grupę lub dodać ją do istniejącej grupy. |
 
     ![Ekran tworzenia zasobów](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
+    Kliknij przycisk **Utwórz**.
+
+    ***
 
 ## <a name="get-the-keys-for-your-resource"></a>Pobierz klucze dla zasobu
 
-Po utworzeniu zasobu możesz uzyskać do niego dostęp z poziomu pulpitu nawigacyjnego platformy Azure, jeśli został on przypięty. W przeciwnym razie można je znaleźć w **grupach zasobów**. Po wybraniu zasobu można pobrać klucze, wybierając pozycję **klucze** w obszarze **Zarządzanie zasobami**.
+Po pomyślnym utworzeniu zasobu otrzymasz wyskakujące powiadomienie w prawym górnym rogu ekranu. Na stronie powiadomienia kliknij pozycję **Przejdź do zasobu** , aby wyświetlić utworzony zasób usługi poznawczej. 
+
+![Przejdź do zasobu usługi poznawczej](media/cognitive-services-apis-create-account/cog-serv-go-to-resource.png)
+
+W otwartym okienku szybkiego startu możesz uzyskać dostęp do punktu końcowego i klucza.
+
+![Pobierz klucz i punkt końcowy](media/cognitive-services-apis-create-account/get-cog-serv-keys.png)
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
 

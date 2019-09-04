@@ -9,31 +9,31 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 90f064ce5d6dc7ffa6b4c532ac30d9b4dd60e13f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 00e69d9222444e3b700fca10e3f15b4b110e0c60
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981136"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241740"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 
-Usługa Azure Storage oferuje model zabezpieczeń warstwowych. Ten model umożliwia Zabezpieczanie kont magazynu do określonego zestawu sieci, obsługiwane. Po skonfigurowaniu reguł sieci tylko te aplikacje, które wnioskujące o udostępnienie danych z ponad określonego zestawu sieci mają dostęp do konta magazynu.
+Usługa Azure Storage oferuje model zabezpieczeń warstwowych. Ten model umożliwia Zabezpieczanie kont magazynu w określonym podzestawie sieci. W przypadku skonfigurowania reguł sieci tylko aplikacje żądające danych za pośrednictwem określonego zestawu sieci mogą uzyskiwać dostęp do konta magazynu. Dostęp do konta magazynu można ograniczyć do żądań pochodzących z określonych adresów IP, zakresów adresów IP lub z listy podsieci w sieciach wirtualnych platformy Azure.
 
-Aplikacja, która uzyskuje dostęp do konta magazynu, gdy zasady sieci wymaga prawidłowego autoryzacji w żądaniu. Autoryzacja jest obsługiwana przy użyciu poświadczeń usługi Azure Active Directory (Azure AD) dla obiektów blob i kolejek z prawidłowym kluczem dostępu do konta lub z tokenem SAS.
+Aplikacja, która uzyskuje dostęp do konta magazynu, gdy reguły sieciowe są stosowane, wymaga odpowiedniej autoryzacji dla żądania. Autoryzacja jest obsługiwana przy użyciu poświadczeń usługi Azure Active Directory (Azure AD) dla obiektów blob i kolejek z prawidłowym kluczem dostępu do konta lub z tokenem SAS.
 
 > [!IMPORTANT]
-> Włączenie reguły zapory dla konta magazynu domyślnie blokuje żądań przychodzących danych, chyba, że żądania pochodzą z usługi, która działa w ramach usługi Azure Virtual Network (VNet). Żądania, które są blokowane obejmują z innymi usługami platformy Azure w witrynie Azure portal, rejestrowania i metryk usług i tak dalej.
+> Włączenie reguł zapory dla konta magazynu domyślnie blokuje przychodzące żądania danych, chyba że żądania pochodzą z usługi działającej w ramach platformy Azure Virtual Network (VNet). Żądania, które są blokowane obejmują z innymi usługami platformy Azure w witrynie Azure portal, rejestrowania i metryk usług i tak dalej.
 >
-> Możesz udzielić dostępu do usług platformy Azure, które działają z w ramach sieci wirtualnej, umożliwiając podsieci wystąpienia usługi. Włącz ograniczonej liczbie scenariuszy za pomocą [wyjątki](#exceptions) mechanizm opisane w poniższej sekcji. Aby uzyskać dostęp do witryny Azure portal, należałoby znajdować się na komputerze w ramach zaufanej (IP lub sieci wirtualnej) ustawiony.
+> Można udzielić dostępu do usług platformy Azure, które działają w sieci wirtualnej, zezwalając na ruch z podsieci obsługującej wystąpienie usługi. Można również włączyć ograniczoną liczbę scenariuszy przez mechanizm [wyjątków](#exceptions) opisany w następnej sekcji. Aby uzyskać dostęp do danych z konta magazynu za pośrednictwem Azure Portal, musisz znajdować się na komputerze w ramach zaufanej granicy (adresu IP lub sieci wirtualnej), który został skonfigurowany.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="scenarios"></a>Scenariusze
 
-Konfigurowanie kont magazynu, aby odmówić dostępu do ruchu sieciowego ze wszystkich sieci (w tym ruch z Internetu), domyślnie. Następnie przyznać dostęp do ruchu z określonych sieci wirtualnych. Ta konfiguracja umożliwia tworzenie bezpiecznej granicy sieci dla aplikacji. Można również przyznać dostęp do publicznej sieci internet zakresów adresów IP, włączenie połączenia z określonych klientów w Internecie lub w środowisku lokalnym.
+Aby zabezpieczyć konto magazynu, należy najpierw skonfigurować regułę, aby odmówić dostępu do ruchu ze wszystkich sieci (łącznie z ruchem internetowym). Następnie należy skonfigurować reguły zezwalające na dostęp do ruchu pochodzącego z określonych sieci wirtualnych. Ta konfiguracja umożliwia tworzenie bezpiecznej granicy sieci dla aplikacji. Możesz również skonfigurować reguły, aby udzielić dostępu do ruchu z wybranych zakresów publicznych adresów IP w Internecie, włączając połączenia z określonych klientów internetowych lub lokalnych.
 
-Reguły sieciowych są wymuszane dla wszystkich protokołów sieciowych do usługi Azure storage, łącznie z REST i protokół SMB. Dostęp do danych za pomocą narzędzi takich jak witryny Azure portal, Eksploratorze usługi Storage i narzędzia AZCopy, wymagane są jawne sieci reguły.
+Reguły sieciowych są wymuszane dla wszystkich protokołów sieciowych do usługi Azure storage, łącznie z REST i protokół SMB. Aby uzyskać dostęp do danych przy użyciu narzędzi, takich jak Azure Portal, Eksplorator usługi Storage i AZCopy, należy skonfigurować jawne reguły sieciowe.
 
 Reguły sieci można zastosować do istniejących kont magazynu lub podczas tworzenia nowych kont magazynu.
 
@@ -50,7 +50,7 @@ Usługa unmanaged disks w ramach kont magazynu służy za pomocą reguł sieci s
 Domyślnie konta magazynu akceptują połączenia z klientami za pośrednictwem sieci. Aby ograniczyć dostęp do wybranych sieci, należy najpierw zmienić domyślnej akcji.
 
 > [!WARNING]
-> Wprowadzanie zmian do reguł sieci może wpłynąć na Twoje aplikacje możliwość łączenia z usługą Azure Storage. Ustawienie reguły domyślnej sieci **Odmów** blokuje dostęp do danych, chyba że określonej sieci reguły do **udzielić** dostępu są również stosowane. Pamiętaj udzielić dostępu do żadnych dozwolonych sieci przy użyciu reguł sieci, zanim będzie można zmienić domyślną regułę, aby odmówić dostępu.
+> Wprowadzanie zmian do reguł sieci może wpłynąć na Twoje aplikacje możliwość łączenia z usługą Azure Storage. Ustawienie domyślnej reguły sieci na **Odmów** uniemożliwia dostęp do danych, chyba że stosowane są również określone reguły **sieciowe zezwalające na dostęp.** Pamiętaj udzielić dostępu do żadnych dozwolonych sieci przy użyciu reguł sieci, zanim będzie można zmienić domyślną regułę, aby odmówić dostępu.
 
 ### <a name="managing-default-network-access-rules"></a>Reguły dostępu do sieci w usłudze zarządzania domyślne
 
@@ -112,9 +112,9 @@ Możesz zarządzać domyślnej reguły dostępu do sieci dla kont magazynu w wit
 
 ## <a name="grant-access-from-a-virtual-network"></a>Udzielanie dostępu z sieci wirtualnej
 
-Można skonfigurować konta magazynu, aby zezwolić na dostęp tylko z określonej sieci wirtualnych.
+Konta magazynu można skonfigurować tak, aby zezwalały na dostęp tylko z określonych podsieci. Dozwolone podsieci mogą należeć do sieci wirtualnej w tej samej subskrypcji lub w ramach innej subskrypcji, w tym subskrypcji należących do innej dzierżawy Azure Active Directory.
 
-Włącz [punktu końcowego usługi](/azure/virtual-network/virtual-network-service-endpoints-overview) dla usługi Azure Storage w obrębie sieci wirtualnej. Ten punkt końcowy umożliwia ruch optymalną trasę do usługi Azure Storage. Tożsamości w sieci wirtualnej i podsieci również są przesyłane z każdym żądaniem. Administratorzy mogą następnie skonfigurować reguły sieci konta magazynu, które zezwalanie na żądania z określonych podsieci w sieci wirtualnej. Udzielono dostępu przez te reguły sieci muszą w dalszym ciągu spełniają wymagania autoryzacji konta magazynu można uzyskać dostęp do danych klientów.
+Włącz [punktu końcowego usługi](/azure/virtual-network/virtual-network-service-endpoints-overview) dla usługi Azure Storage w obrębie sieci wirtualnej. Punkt końcowy usługi kieruje ruch z sieci wirtualnej przez optymalną ścieżkę do usługi Azure Storage. Tożsamości podsieci i sieci wirtualnej są również przesyłane z każdym żądaniem. Administratorzy mogą następnie skonfigurować reguły sieci dla konta magazynu, które zezwalają na odbieranie żądań z określonych podsieci w sieci wirtualnej. Udzielono dostępu przez te reguły sieci muszą w dalszym ciągu spełniają wymagania autoryzacji konta magazynu można uzyskać dostęp do danych klientów.
 
 Każde konto magazynu obsługuje maksymalnie 100 reguł sieci wirtualnej, które mogą być łączone z [reguł sieci IP](#grant-access-from-an-internet-ip-range).
 
@@ -131,7 +131,10 @@ Podczas planowania odzyskiwania po awarii podczas regionalnej awarii, należy wc
 
 Aby zastosować regułę sieci wirtualnej do konta magazynu, użytkownik musi mieć odpowiednie uprawnienia dla dodawanych podsieci. Jest wymagane uprawnienie *Dołącz do usługi do podsieci* i wchodzi w skład *Współautor konta magazynu* wbudowana rola. Mogą być również dodawane do definicji ról niestandardowych.
 
-Konto magazynu i sieci wirtualnych udzielić dostępu może być w różnych subskrypcjach, ale te subskrypcje muszą być częścią tej samej dzierżawie usługi Azure AD.
+Konto magazynu i dostępne sieci wirtualne mogą znajdować się w różnych subskrypcjach, w tym subskrypcje, które są częścią innej dzierżawy usługi Azure AD.
+
+> [!NOTE]
+> Konfiguracja reguł, które udzielają dostępu do podsieci w sieciach wirtualnych, które są częścią innej dzierżawy Azure Active Directory, są obecnie obsługiwane tylko za pomocą programu PowerShell, interfejsu wiersza polecenia i interfejsów API REST. Takich reguł nie można skonfigurować za pomocą Azure Portal, ale mogą one być wyświetlane w portalu.
 
 ### <a name="managing-virtual-network-rules"></a>Zarządzanie regułami sieci wirtualnej
 
@@ -149,6 +152,8 @@ Możesz zarządzać reguł sieci wirtualnej dla konta magazynu za pośrednictwem
 
     > [!NOTE]
     > Jeśli punkt końcowy usługi dla usługi Azure Storage nie został wcześniej skonfigurowany dla wybranej sieci wirtualnej i podsieci, możesz go skonfigurować jako część tej operacji.
+    >
+    > Obecnie do wyboru podczas tworzenia reguły są wyświetlane tylko sieci wirtualne należące do tej samej dzierżawy Azure Active Directory. Aby udzielić dostępu do podsieci w sieci wirtualnej należącej do innej dzierżawy, użyj programu PowerShell, interfejsu wiersza polecenia lub interfejsów API REST.
 
 1. Aby usunąć sieci wirtualnej lub podsieci regułę, kliknij przycisk **...**  Otwórz menu kontekstowe dla sieci wirtualnej lub podsieci, a następnie kliknij przycisk **Usuń**.
 
@@ -176,6 +181,9 @@ Możesz zarządzać reguł sieci wirtualnej dla konta magazynu za pośrednictwem
     $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
     Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
     ```
+
+    > [!TIP]
+    > Aby dodać regułę sieciową dla podsieci w sieci wirtualnej należącej do innej dzierżawy usługi Azure AD, należy użyć w pełni kwalifikowanego parametru **VirtualNetworkResourceId** w postaci "/subscriptions/Subscription-ID/resourceGroups/resourceGroup-Name/Providers/Microsoft.Network/virtualNetworks/vNet-Name/Subnets/subnet-name".
 
 1. Usuń regułę sieciowej dla sieci wirtualnej i podsieci.
 
@@ -209,6 +217,11 @@ Możesz zarządzać reguł sieci wirtualnej dla konta magazynu za pośrednictwem
     $subnetid=(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
     az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
     ```
+
+    > [!TIP]
+    > Aby dodać regułę dla podsieci w sieci wirtualnej należącej do innej dzierżawy usługi Azure AD, użyj w pełni kwalifikowanego identyfikatora podsieci w postaci "/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name".
+    > 
+    > Możesz użyć parametru **subskrypcji** , aby pobrać identyfikator podsieci dla sieci wirtualnej należącej do innej dzierżawy usługi Azure AD.
 
 1. Usuń regułę sieciowej dla sieci wirtualnej i podsieci.
 
@@ -344,7 +357,7 @@ Reguły sieciowych można włączyć konfiguracji bezpiecznej sieci w przypadku 
 
 Niektóre usługi firmy Microsoft, które współdziałają z kontami magazynu działają z sieci, których nie można udzielić dostępu za pomocą reguł sieci.
 
-Aby ułatwić tego typu elementu roboczego usług, zgodnie z oczekiwaniami, zezwala zestaw zaufanych usług firmy Microsoft w celu obejścia zasad sieci. Te usługi użyje silnego uwierzytelniania dostępu do konta magazynu.
+Aby niektóre usługi działały zgodnie z oczekiwaniami, należy zezwolić podzbiorowi zaufanych usług firmy Microsoft na ominięcie reguł sieci. Te usługi użyje silnego uwierzytelniania dostępu do konta magazynu.
 
 Po włączeniu **dozwolonych zaufanych usług firmy Microsoft...**  wyjątku, następujące usługi (jeśli jest zarejestrowany w ramach subskrypcji), mają prawo dostępu konta magazynu:
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 6991ebfa58099a42b09e482d11c0d3c3983decce
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: f6f409c42c7ffa5639315e71ff565f9c672e227c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535058"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279740"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Komercyjne możliwości i zagadnienia dotyczące transakcji w witrynie Marketplace
 
@@ -75,7 +75,7 @@ Przy publikowaniu oferty bezpłatnej licencji na swoją licencję firma Microsof
 
 ### <a name="pay-as-you-go-and-subscription-site-based-pricing"></a>Płatność zgodnie z rzeczywistym użyciem i subskrypcja (oparta na witrynie)
 
-Cena za WPay i subskrypcję przy publikowaniu oferty z płatność zgodnie z rzeczywistym użyciem lub z subskrypcją subskrypcji firmy Microsoft zapewnia technologię i usługi do przetwarzania zakupów licencji na oprogramowanie, zwraca i obciążeń zwrotnych. W tym scenariuszu Wydawca autoryzuje firmę Microsoft do działania jako Agent w tym celu. Wydawca pozwala firmie Microsoft na ułatwienie transakcji licencjonowania oprogramowania przy zachowaniu ich wyznaczenia jako sprzedawcy, dostawcy, dystrybutora i licencjodawcy.
+Przy publikowaniu oferty transakcji płatność zgodnie z rzeczywistym użyciem lub subskrypcji firma Microsoft udostępnia technologię i usługi do przetwarzania zakupów, zwrotów i obciążeń zwrotnych licencji na oprogramowanie. W tym scenariuszu Wydawca autoryzuje firmę Microsoft do działania jako Agent w tym celu. Wydawca pozwala firmie Microsoft na ułatwienie transakcji licencjonowania oprogramowania przy zachowaniu ich wyznaczenia jako sprzedawcy, dostawcy, dystrybutora i licencjodawcy.
 
 Firma Microsoft umożliwia klientom zamówienie, licencję i korzystanie z oprogramowania wydawcy, z uwzględnieniem warunków i postanowień firmy Microsoft komercyjnych Marketplace oraz umowy licencyjnej użytkownika oprogramowania wydawcy. Wydawcy muszą zapewnić swoją umowę licencyjną użytkownika końcowego lub wybrać [kontrakt standardowy](https://docs.microsoft.com/azure/marketplace/standard-contract) podczas tworzenia oferty.
 

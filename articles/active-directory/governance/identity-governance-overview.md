@@ -16,12 +16,12 @@ ms.date: 08/28/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74e0539095701ec104495bf5a44dec668494d444
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: a17b64cbfffbe9cabd909bccb16d55c07bba8bb0
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207179"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241449"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Co to jest usługa Azure AD Identity Governance?
 
@@ -42,11 +42,11 @@ W odróżnieniu od tych czterech najważniejszych pytań warto ułatwić organiz
 
 ## <a name="identity-lifecycle"></a>Cykl życia tożsamości
 
-Zarządzanie tożsamościami pomaga organizacjom w osiągnięciu równowagi między produktywnością — jak szybko można uzyskać dostęp do potrzebnych zasobów, takich jak dołączanie do mojej organizacji? I *zabezpieczenia* — jak należy zmienić ich dostęp z upływem czasu, na przykład ze względu na zmiany stanu zatrudnienia osoby?  Zarządzanie cyklem życia tożsamości jest podstawą do zarządzania tożsamościami, a skuteczne zarządzanie na dużą skalę wymaga modernizacji infrastruktury zarządzania cyklem życia tożsamości dla aplikacji.
+Zarządzanie tożsamościami pomaga organizacjom w osiągnięciu równowagi między *produktywnością* — jak szybko można uzyskać dostęp do potrzebnych zasobów, takich jak dołączanie do mojej organizacji? I *zabezpieczenia* — jak należy zmienić ich dostęp z upływem czasu, na przykład ze względu na zmiany stanu zatrudnienia osoby?  Zarządzanie cyklem życia tożsamości jest podstawą do zarządzania tożsamościami, a skuteczne zarządzanie na dużą skalę wymaga modernizacji infrastruktury zarządzania cyklem życia tożsamości dla aplikacji.
 
 ![Cykl życia tożsamości](./media/identity-governance-overview/identity-lifecycle.png)
 
-W przypadku wielu organizacji cykl życia tożsamości dla pracowników jest powiązany z reprezentacją tego użytkownika w systemie HCM (zarządzanie dużymi środkami).  Azure AD — wersja Premium automatycznie obsługuje tożsamości użytkowników dla osób przedstawionych w dniach roboczych w Active Directory i Azure Active Directory, zgodnie z opisem w samouczku dotyczącym [obsługi ruchu przychodzącego (wersja zapoznawcza) usługi Workday](../saas-apps/workday-inbound-tutorial.md).  Azure AD — wersja Premium obejmuje również [Microsoft Identity Manager](/microsoft-identity-manager/), które mogą importować rekordy z lokalnych systemów HCM, takich jak SAP, Oracle eBusiness i Oracle PeopleSoft.
+W przypadku wielu organizacji cykl życia tożsamości dla pracowników jest powiązany z reprezentacją tego użytkownika w systemie HCM (zarządzanie dużymi środkami).  Azure AD — wersja Premium automatycznie obsługuje tożsamości użytkowników dla osób przedstawionych w dniach roboczych w Active Directory i Azure Active Directory, zgodnie z opisem w [samouczku dotyczącym obsługi ruchu przychodzącego (wersja zapoznawcza) usługi Workday](../saas-apps/workday-inbound-tutorial.md).  Azure AD — wersja Premium obejmuje również [Microsoft Identity Manager](/microsoft-identity-manager/), które mogą importować rekordy z lokalnych systemów HCM, takich jak SAP, Oracle eBusiness i Oracle PeopleSoft.
 
 W coraz większym stopniu scenariusze wymagają współpracy z osobami spoza organizacji. Współpraca B2B w usłudze [Azure AD](/azure/active-directory/b2b/) umożliwia bezpieczne udostępnianie aplikacji i usług organizacji użytkownikom-Gościom i partnerom zewnętrznym z dowolnej organizacji przy zachowaniu kontroli nad danymi firmowymi.
 
@@ -60,7 +60,7 @@ Zwykle deleguje decyzje dotyczące zatwierdzenia dostępu do podmiotów podejmuj
 
 Organizacje mogą zautomatyzować proces cyklu życia dostępu za pomocą technologii, takich jak [grupy dynamiczne](../users-groups-roles/groups-dynamic-membership.md), w połączeniu z obsługą użytkowników, aby [SaaS aplikacje](../saas-apps/tutorial-list.md) lub [Aplikacje zintegrowane z usługą Standard scim](../manage-apps/use-scim-to-provision-users-and-groups.md).  Organizacje mogą również kontrolować, którzy [Użytkownicy-Goście mają dostęp do aplikacji lokalnych](../b2b/hybrid-cloud-to-on-premises.md).  Te prawa dostępu można następnie regularnie przeglądać przy użyciu cyklicznych [przeglądów dostępu do usługi Azure AD](access-reviews-overview.md).
 
-Gdy użytkownik próbuje uzyskać dostęp do aplikacji, usługa Azure AD wymusza zasady [dostępu warunkowego](/azure/active-directory/conditional-access/) . Na przykład zasady dostępu warunkowego mogą zawierać [warunki użytkowania](../conditional-access/terms-of-use.md) i upewnić się [, że użytkownik wyraził zgodę na te warunki](../conditional-access/require-tou.md) przed uzyskaniem dostępu do aplikacji.
+Gdy użytkownik próbuje uzyskać dostęp do aplikacji, usługa Azure AD wymusza zasady [dostępu warunkowego](/azure/active-directory/conditional-access/) . Na przykład zasady dostępu warunkowego mogą zawierać [warunki użytkowania](../conditional-access/terms-of-use.md) i [upewnić się, że użytkownik wyraził zgodę na te warunki](../conditional-access/require-tou.md) przed uzyskaniem dostępu do aplikacji.
 
 ## <a name="privileged-access-lifecycle"></a>Cykl życia uprzywilejowanego dostępu
 
@@ -72,7 +72,7 @@ Azure AD Privileged Identity Management (PIM) oferuje dodatkowe funkcje kontroli
 
 ## <a name="least-privileged-roles"></a>Najniższe role uprzywilejowane
 
-Użycie usługi PIM pozwala ograniczyć uprawnienia administracyjne użytkownika do dodatkowego zabezpieczenia. Poniżej znajdują się najmniej uprzywilejowane role katalogu dla konfiguracji w funkcjach zarządzania tożsamościami usługi Azure AD: 
+Najlepszym rozwiązaniem jest użycie roli najniższych uprawnień do wykonywania zadań administracyjnych w ramach nadzoru tożsamości. Zalecamy użycie usługi Azure AD PIM do uaktywnienia roli w razie potrzeby w celu wykonania tych zadań. Poniżej wymieniono najmniej uprzywilejowane role katalogu w celu skonfigurowania funkcji zarządzania tożsamościami: 
 
 | Cecha | Najmniejsza rola uprzywilejowana |
 | ------- | --------------------- |

@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 09/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: dbacec6e8f91480996150e73f2a81dbcde67550b
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: b349576f5e9f5410afc29f48e40c38e12168252d
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494805"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258898"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Iteracja zasobu, właściwości lub zmiennej w szablonach Azure Resource Manager
 
@@ -43,13 +43,13 @@ W przypadku użycia z zmienną lub właściwością obiekt Copy ma następujący
 
 Oba zastosowania zostały szczegółowo opisane w tym artykule. Aby zapoznać się z samouczkiem, zobacz [Samouczek: Tworzenie wielu wystąpień zasobów przy użyciu szablonów Menedżer zasobów](./resource-manager-tutorial-create-multiple-instances.md).
 
-Jeśli musisz określić, czy zasób został wdrożony w ogóle, zobacz [warunek elementu](resource-group-authoring-templates.md#condition).
+Jeśli musisz określić, czy zasób został wdrożony w ogóle, zobacz [warunek elementu](conditional-resource-deployment.md).
 
 ## <a name="copy-limits"></a>Limity kopiowania
 
 Aby określić liczbę iteracji, należy podać wartość właściwości Count. Liczba nie może przekraczać 800.
 
-Liczba nie może być liczbą ujemną. W przypadku wdrażania szablonu przy użyciu interfejsu API REST w wersji **2019-05-10** lub nowszej można ustawić liczbę na zero. Wcześniejsze wersje interfejsu API REST nie obsługują wartości zero dla Count. Obecnie interfejs wiersza polecenia platformy Azure lub program PowerShell nie obsługuje liczby zero, ale ta obsługa zostanie dodana w przyszłym wydaniu.
+Liczba nie może być liczbą ujemną. W przypadku wdrażania szablonu z Azure PowerShell 2,6 lub nowszym albo interfejsu API REST w wersji **2019-05-10** lub nowszej można ustawić liczbę na zero. Wcześniejsze wersje programu PowerShell i interfejs API REST nie obsługują wartości zero dla Count. Obecnie w interfejsie wiersza polecenia platformy Azure nie jest obsługiwana wartość zerowa, ale ta obsługa zostanie dodana w przyszłym wydaniu.
 
 Należy zachować ostrożność przy użyciu [wdrożenia trybu kompletnego](deployment-modes.md) z kopią. W przypadku ponownego wdrożenia z trybem kompletnym do grupy zasobów wszystkie zasoby, które nie są określone w szablonie po usunięciu pętli kopiowania, zostaną usunięte.
 

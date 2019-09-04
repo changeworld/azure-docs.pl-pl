@@ -11,18 +11,18 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 03579d75ad9cbaceca1a5d42913ff546088f6cfe
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 5f57be9a1fc5d260ce580b969c8f92c87aea17a8
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982794"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279130"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Korzystanie z modelu usługi Azure Machine Learning, wdrożyć jako usługę sieci web
 
 Wdrażanie modelu usługi Azure Machine Learning w postaci usługi sieci web tworzy interfejs API REST. Można wysyłać dane do tego interfejsu API i odbierać prognozowania zwracane przez model. W tym dokumencie dowiesz się, jak tworzyć klientów dla usługi sieci Web za C#pomocą, go, Java i Python.
 
-Usługa sieci Web jest tworzona podczas wdrażania obrazu do Azure Container Instances, usługi Azure Kubernetes lub tablic opartych na programowalnych polach (FPGA). Tworzysz obrazy z zarejestrowanych modeli i plików oceniania. Pobrano identyfikator URI służący do uzyskiwania dostępu do usługi sieci Web przy użyciu [zestawu SDK Azure Machine Learning](https://aka.ms/aml-sdk). Jeśli jest włączone uwierzytelnianie, można również pobrać klucze uwierzytelniania lub tokeny przy użyciu zestawu SDK.
+Usługa sieci Web jest tworzona podczas wdrażania obrazu do Azure Container Instances, usługi Azure Kubernetes lub tablic opartych na programowalnych polach (FPGA). Tworzysz obrazy z zarejestrowanych modeli i plików oceniania. Pobrano identyfikator URI służący do uzyskiwania dostępu do usługi sieci Web przy użyciu [zestawu SDK Azure Machine Learning](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py). Jeśli jest włączone uwierzytelnianie, można również pobrać klucze uwierzytelniania lub tokeny przy użyciu zestawu SDK.
 
 Ogólny przepływ pracy służący do tworzenia klienta korzystającego z usługi sieci Web Machine Learning to:
 

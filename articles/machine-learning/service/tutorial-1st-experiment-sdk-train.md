@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: 8065284d65f1b0a91fc05846b451305906c74fc8
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 989775916454b6710aef6c2c5be6792920622dab
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231097"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241297"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Samouczek: Uczenie swojego pierwszego modelu ML
 
@@ -47,25 +47,21 @@ W tej części samouczka uruchamiasz kod w notesie `tutorials/tutorial-1st-exper
 
 1. Na stronie Jupyter notesu wybierz górny folder NazwaFolderu, który ma swoją nazwę użytkownika.  
 
-
    Ten folder istnieje na [koncie magazynu](concept-workspace.md#resources) obszaru roboczego, a nie na maszynie wirtualnej notesu.  Po usunięciu maszyny wirtualnej notesu nadal będzie można zachować całą swoją służbę.  Po utworzeniu nowej maszyny wirtualnej notesu zostanie ona załadowana w tym samym folderze. Jeśli udostępnisz obszar roboczy innym osobom, zobaczysz Twój folder i zobaczysz ich.
 
-1. `samples-*` Otwórz podkatalog, a następnie Otwórz Notes Jupyter`tutorials/tutorial-1st-experiment-sdk-train.ipynb`
-
-   > [!Warning]
-   > Upewnij się `tutorial-1st-experiment-sdk-train.ipynb` , że otwarto plik, `.yml` a **nie** plik o > tej samej nazwie. 
-
-1. Pozostała część tego artykułu zawiera tę samą zawartość, która jest wyświetlana w notesie.  Jeśli chcesz uruchomić kod, przejdź teraz do notesu.
-
+1. Otwórz podkatalog, a następnie Otwórz Notes `tutorials/tutorial-1st-experiment-sdk-train.ipynb`Jupyter, a **nie** `.yml` plik o tej samej nazwie. `samples-*` 
 
 ## <a name="connect-workspace-and-create-experiment"></a>Połącz obszar roboczy i Utwórz eksperyment
+
+> [!Important]
+> Pozostała część tego artykułu zawiera tę samą zawartość, która jest wyświetlana w notesie.  
+>
+> Przełącz się do notesu Jupyter teraz, jeśli chcesz czytać wraz z uruchamianiem kodu. 
+> Aby uruchomić pojedynczą komórkę kodu w notesie, kliknij komórkę kod i naciśnij **klawisze SHIFT + ENTER**. Lub Uruchom cały Notes, wybierając pozycję **komórka > Uruchom wszystkie** z górnego menu.
 
 Zaimportuj `config.json`klasęi Załaduj informacje o subskrypcji z pliku przy użyciu funkcji `from_config().` ta funkcja szuka domyślnego pliku JSON w bieżącym katalogu, ale można także określić parametr ścieżki, aby wskazywał na plik. `Workspace` przy `from_config(path="your/file/path")`użyciu. W przypadku serwera notesu w chmurze plik jest automatycznie w katalogu głównym.
 
 Jeśli Poniższy kod pyta o dodatkowe uwierzytelnianie, wystarczy wkleić link w przeglądarce i wprowadzić token uwierzytelniania.
-
-> [!TIP]
-> Jeśli dopiero zaczynasz korzystać z notesów Jupyter, uruchom kod, klikając komórkę kodu i naciskając **klawisze SHIFT + ENTER** , aby uruchamiać komórki pojedynczo. Alternatywnie, aby uruchomić cały Notes na raz, kliknij **komórkę** na górnym pasku menu, a następnie kliknij pozycję **Uruchom wszystkie**.
 
 ```python
 from azureml.core import Workspace
@@ -149,7 +145,7 @@ Gdy szkolenia modeli są przeprowadzane na dużą skalę i tysiące różnych ur
 
 ![Strona głównej eksperymentu w portalu](./media/tutorial-quickstart/experiment-main.png)
 
-Kliknięcie linku z numerem uruchomienia w `RUN NUMBER` kolumnie spowoduje przejście do strony dla każdego pojedynczego uruchomienia. Na karcie domyślne znajdują się szczegółowe informacje dotyczące poszczególnych przebiegów. Przejdź do karty dane **wyjściowe** i zobaczysz `.pkl` plik dla modelu, który został przekazany do przebiegu podczas każdej iteracji szkoleniowej. W tym miejscu możesz pobrać plik modelu, zamiast konieczności ręcznego ponownego uczenia go.
+Kliknięcie linku z numerem uruchomienia w `RUN NUMBER` kolumnie spowoduje przejście do strony dla każdego pojedynczego uruchomienia. Na **karcie domyślne znajdują** się szczegółowe informacje dotyczące poszczególnych przebiegów. Przejdź do karty dane **wyjściowe** i zobaczysz `.pkl` plik dla modelu, który został przekazany do przebiegu podczas każdej iteracji szkoleniowej. W tym miejscu możesz pobrać plik modelu, zamiast konieczności ręcznego ponownego uczenia go.
 
 ![Strona szczegóły uruchamiania w portalu](./media/tutorial-quickstart/model-download.png)
 
@@ -233,4 +229,4 @@ W tym samouczku zostały wykonane następujące zadania:
 > * Oglądane wyniki szkolenia w portalu i pobrane modele
 
 [Wdróż model](tutorial-deploy-models-with-aml.md) za pomocą usługi Azure Machine Learning.
-Dowiedz się, jak opracowywać [zautomatyzowane](tutorial-auto-train-models.md) eksperymenty uczenia maszynowego.
+Dowiedz się, jak opracowywać zautomatyzowane eksperymenty [uczenia maszynowego](tutorial-auto-train-models.md) .

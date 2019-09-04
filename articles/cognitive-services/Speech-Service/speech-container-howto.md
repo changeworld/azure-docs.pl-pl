@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: dapine
-ms.openlocfilehash: 14a360e7dc672266e8445a5ae5eb2168ae766af8
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 7708133fcba0d594ecd420afd8da1b2881055aa7
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741864"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241014"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Instalowanie i uruchamianie kontenerów usługi mowy
 
@@ -25,8 +25,8 @@ Dwa kontenery mowy to **Zamiana mowy na tekst** i **Zamiana tekstu na mowę**.
 
 |Funkcja|Funkcje|Najnowsze|
 |-|-|--|
-|Zamiany mowy na tekst| <li>Przekształca ciągłe nagrywanie mowy w czasie rzeczywistym lub nagrania audio w trybie wsadowym do tekstu z wynikami pośrednimi.|1.1.3|
-|Zamiana tekstu na mowę| <li>Konwertuje tekst na naturalnie brzmiącą mowę. za pomocą danych wejściowych tekstu lub języka Markup syntezy mowy (SSML). |1.1.0|
+|Zamiany mowy na tekst| <li>Przekształca ciągłe nagrywanie mowy w czasie rzeczywistym lub nagrania audio w trybie wsadowym do tekstu z wynikami pośrednimi.|1.2.0|
+|Zamiana tekstu na mowę| <li>Konwertuje tekst na naturalnie brzmiącą mowę. za pomocą danych wejściowych tekstu lub języka Markup syntezy mowy (SSML). |1.2.0|
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -101,10 +101,10 @@ Wszystkie Tagi, z wyjątkiem `latest` programu, są w następującym formacie, `
 Następujący tag jest przykładem formatu:
 
 ```
-1.1.3-amd64-en-us-preview
+1.2.0-amd64-en-us-preview
 ```
 
-Poniższa tabela zawiera listę obsługiwanych ustawień regionalnych dla **zamiany mowy na tekst** w 1.1.3 wersji kontenera:
+Poniższa tabela zawiera listę obsługiwanych ustawień regionalnych dla **zamiany mowy na tekst** w 1.2.0 wersji kontenera:
 
 |Ustawienia regionalne języka|`Tags`|
 |--|--|
@@ -129,10 +129,10 @@ Wszystkie Tagi, z wyjątkiem `latest` programu, są w następującym formacie, `
 Następujący tag jest przykładem formatu:
 
 ```
-1.1.0-amd64-en-us-jessarus-preview
+1.2.0-amd64-en-us-jessarus-preview
 ```
 
-Poniższa tabela zawiera listę obsługiwanych ustawień regionalnych dla **zamiany tekstu na mowę** w wersji 1.1.0 kontenera:
+Poniższa tabela zawiera listę obsługiwanych ustawień regionalnych dla **zamiany tekstu na mowę** w wersji 1.2.0 kontenera:
 
 |Ustawienia regionalne języka|`Tags`|Obsługiwane głosy|
 |--|--|--|
@@ -176,7 +176,7 @@ Gdy kontener znajduje się na [komputerze hosta](#the-host-computer), użyj nast
 
 Użyj polecenia [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) , aby uruchomić jeden z trzech kontenerów. Polecenie używa następujących parametrów:
 
-W trakcie korzystania z **wersji**zapoznawczej ustawienia rozliczeń muszą być prawidłowe, aby można było uruchomić kontener, ale nie są naliczane opłaty za użycie.
+W trakcie korzystania z **wersji zapoznawczej**ustawienia rozliczeń muszą być prawidłowe, aby można było uruchomić kontener, ale nie są naliczane opłaty za użycie.
 
 | Symbol zastępczy | Value |
 |-------------|-------|

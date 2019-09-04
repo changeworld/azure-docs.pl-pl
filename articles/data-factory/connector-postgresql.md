@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 0efb884de9deaa2784e160785c26d78179da6567
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 84a82e5fae7c56a13aeb4603079e9378b38785cb
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966889"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277558"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Kopiowanie danych z PostgreSQL za pomocą Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -139,14 +139,16 @@ Jeśli używasz połączonej usługi PostgreSQL z następującym ładunkiem, nad
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych zobacz artykuł zestawów danych. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych PostgreSQL.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych PostgreSQL.
 
-Aby skopiować dane z PostgreSQL, ustaw właściwość Typ zestawu danych na relacyjny. Obsługiwane są następujące właściwości:
+Aby skopiować dane z PostgreSQL, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **Obiekt relacyjny** | Tak |
-| tableName | Nazwa tabeli w bazie danych PostgreSQL. | Nie (Jeśli określono parametr "zapytanie" w źródle działania) |
+| type | Właściwość Type zestawu danych musi być ustawiona na wartość: **PostgreSqlTable** | Tak |
+| schema | Nazwa schematu. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| table | Nazwa tabeli. |Nie (Jeśli określono parametr "query" w źródle działania)  |
+| tableName | Nazwa tabeli ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. Użyj `schema` i`table` dla nowego obciążenia. | Nie (Jeśli określono parametr "query" w źródle działania) |
 
 **Przykład**
 
@@ -155,15 +157,18 @@ Aby skopiować dane z PostgreSQL, ustaw właściwość Typ zestawu danych na rel
     "name": "PostgreSQLDataset",
     "properties":
     {
-        "type": "RelationalTable",
+        "type": "PostgreSqlTable",
+        "typeProperties": {},
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<PostgreSQL linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {}
+        }
     }
 }
 ```
+
+Jeśli używasz `RelationalTable` określonego zestawu danych, jest on nadal obsługiwany w stanie takim, w jakim będziesz mieć możliwość korzystania z nowej usługi.
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
@@ -171,11 +176,11 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania dz
 
 ### <a name="postgresql-as-source"></a>PostgreSQL jako źródło
 
-Aby skopiować dane z PostgreSQL, ustaw typ źródła w działaniu Copy na **RelationalSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
+Aby skopiować dane z PostgreSQL, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **RelationalSource** | Tak |
+| type | Właściwość Type źródła działania Copy musi mieć ustawioną wartość: **PostgreSqlSource** | Tak |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"query": "SELECT * FROM \"MySchema\".\"MyTable\""`. | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
 
 > [!NOTE]
@@ -202,7 +207,7 @@ Aby skopiować dane z PostgreSQL, ustaw typ źródła w działaniu Copy na **Rel
         ],
         "typeProperties": {
             "source": {
-                "type": "RelationalSource",
+                "type": "PostgreSqlSource",
                 "query": "SELECT * FROM \"MySchema\".\"MyTable\""
             },
             "sink": {
@@ -213,5 +218,7 @@ Aby skopiować dane z PostgreSQL, ustaw typ źródła w działaniu Copy na **Rel
 ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+Jeśli używasz `RelationalSource` typu source, nadal jest ono obsługiwane w stanie takim, w jakim będziesz mieć możliwość użycia nowego.
+
+## <a name="next-steps"></a>Następne kroki
 Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md##supported-data-stores-and-formats).

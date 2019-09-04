@@ -1,23 +1,23 @@
 ---
-title: Samouczek, aby skopiować dane z wirtualnych dysków twardych do usługi managed disks za pomocą usługi Azure Data Box | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z wirtualnych dysków twardych z lokalnych obciążeń maszyny Wirtualnej do usługi Azure Data Box
+title: Samouczek kopiowania danych z dysków VHD do usługi Managed disks przy użyciu Azure Data Box | Microsoft Docs
+description: Informacje o kopiowaniu danych z dysków VHD z lokalnych obciążeń maszyn wirtualnych do Azure Data Box
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 02/27/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 3284821e0ec65a76b29d5195315136639304e411
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 4b7182d1fa70a146da1c01273ffe1032f2982546
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64925473"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240460"
 ---
-# <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Samouczek: Użyj Data Box, aby importować dane jako usługa managed disks na platformie Azure
+# <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>Samouczek: Używanie urządzenie Data Box do importowania danych jako dysków zarządzanych na platformie Azure
 
-W tym samouczku opisano sposób używania urządzenia Azure Data Box do migracji w środowisku lokalnym wirtualnych dysków twardych do usługi managed disks na platformie Azure. Wirtualne dyski twarde z maszyn wirtualnych w środowisku lokalnym są kopiowane do urządzenia Data Box jako stronicowe obiekty BLOB i są przekazywane na platformę Azure jako dyski zarządzane. Te zarządzanych dysków może następnie być dołączone do maszyn wirtualnych platformy Azure.
+W tym samouczku opisano, jak używać Azure Data Box do migrowania lokalnych dysków VHD do dysków zarządzanych na platformie Azure. Wirtualne dyski twarde z lokalnych maszyn wirtualnych są kopiowane do urządzenie Data Box jako stronicowe obiekty blob i są przekazywane do platformy Azure jako dyski zarządzane. Te dyski zarządzane można następnie dołączyć do maszyn wirtualnych platformy Azure.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -33,57 +33,57 @@ Przed rozpoczęciem upewnij się, że:
 
 1. Ukończono [Samouczek: konfigurowanie usługi Azure Data Box](data-box-deploy-set-up.md).
 2. Urządzenie Data Box zostało do Ciebie dostarczone, a stan zamówienia w portalu to **Dostarczono**.
-3. Dysponujesz szybkim połączeniem sieciowym. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE. 10 GbE niedostępny, użyj linku danych 1 GbE, ale dotyczy szybkości kopiowania.
-4. Po przejrzeniu:
+3. Dysponujesz szybkim połączeniem sieciowym. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE. Jeśli połączenie 10-GbE nie jest dostępne, Użyj linku danych 1 GbE, ale ma to zastosowanie do szybkości kopiowania.
+4. Sprawdzono:
 
-    - Obsługiwane [zarządzane rozmiary dysków w limity rozmiaru obiektów platformy Azure](data-box-limits.md#azure-object-size-limits).
-    - [Wprowadzenie do usługi Azure managed disks](/azure/virtual-machines/windows/managed-disks-overview). 
+    - Obsługiwane [rozmiary dysków zarządzanych w limitach rozmiaru obiektów platformy Azure](data-box-limits.md#azure-object-size-limits).
+    - [Wprowadzenie do usługi Azure Managed disks](/azure/virtual-machines/windows/managed-disks-overview). 
 
 ## <a name="connect-to-data-box"></a>Nawiązywanie połączenia z urządzeniem Data Box
 
-Na podstawie zasobów grup określone, urządzenia Data Box tworzy jeden udział dla każdej grupy zasobów. Na przykład jeśli `mydbmdrg1` i `mydbmdrg2` zostały utworzone podczas wprowadzania do zamówienia, są tworzone następujące akcje:
+Na podstawie określonych grup zasobów urządzenie Data Box tworzy jeden udział dla każdej skojarzonej grupy zasobów. Na przykład, jeśli `mydbmdrg1` i `mydbmdrg2` zostały utworzone podczas umieszczania zamówienia, tworzone są następujące udziały:
 
 - `mydbmdrg1_MDisk`
 - `mydbmdrg2_MDisk`
 
-W ramach każdego udziału następujące trzy foldery są tworzone, które odnoszą się do kontenerów na koncie magazynu.
+W każdym udziale tworzone są następujące trzy foldery, które odnoszą się do kontenerów na koncie magazynu.
 
-- Premium, SSD
-- Standardowa, dysk twardy
-- Standardowa, SSD
+- SSD w warstwie Premium
+- HDD w warstwie Standardowa
+- SSD w warstwie Standardowa
 
-W poniższej tabeli przedstawiono ścieżki UNC do udziałów na Twoje urządzenie Data Box.
+W poniższej tabeli przedstawiono ścieżki UNC do udziałów na urządzenie Data Box.
  
 |        Protokół połączenia           |             Ścieżka UNC do udziału                                               |
 |-------------------|--------------------------------------------------------------------------------|
-| SMB |`\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Premium SSD>\file1.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Standard HDD>\file2.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<Standard SSD>\file3.vhd` |  
-| NFS |`//<DeviceIPAddress>/<ResourceGroup1_MDisk>/<Premium SSD>/file1.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<Standard HDD>/file2.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<Standard SSD>/file3.vhd` |
+| SMB |`\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<PremiumSSD>\file1.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<StandardHDD>\file2.vhd`<br> `\\<DeviceIPAddress>\<ResourceGroupName_MDisk>\<StandardSSD>\file3.vhd` |  
+| NFS |`//<DeviceIPAddress>/<ResourceGroup1_MDisk>/<PremiumSSD>/file1.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<StandardHDD>/file2.vhd`<br> `//<DeviceIPAddress>/<ResourceGroupName_MDisk>/<StandardSSD>/file3.vhd` |
 
-Oparte na tego, czy korzystasz z protokołu SMB lub NFS można łączyć się z udziałami urządzenia Data Box, czynności, aby połączyć różnią się.
+W zależności od tego, czy do łączenia się z udziałami urządzenie Data Box są używane SMB, czy NFS, kroki do połączenia są różne.
 
 > [!NOTE]
-> Łączenie za pośrednictwem interfejsu REST nie jest obsługiwane dla tej funkcji.
+> Łączenie za pośrednictwem REST nie jest obsługiwane w przypadku tej funkcji.
 
-### <a name="connect-to-data-box-via-smb"></a>Łączenie do urządzenia Data Box za pomocą protokołu SMB
+### <a name="connect-to-data-box-via-smb"></a>Nawiązywanie połączenia z urządzenie Data Box za pośrednictwem protokołu SMB
 
 Jeśli używasz komputera-hosta z systemem Windows Server, wykonaj następujące kroki, aby nawiązać połączenie z urządzeniem Data Box.
 
-1. Pierwszym krokiem jest uwierzytelnienie i uruchomienie sesji. Przejdź do pozycji **Połącz i skopiuj**. Kliknij przycisk **Uzyskiwanie poświadczeń** można uzyskać poświadczenia dostępu do udziałów skojarzone z grupy zasobów. Można także uzyskać poświadczenia dostępu z **szczegóły urządzenia** w witrynie Azure portal.
+1. Pierwszym krokiem jest uwierzytelnienie i uruchomienie sesji. Przejdź do pozycji **Połącz i skopiuj**. Kliknij przycisk **Pobierz poświadczenia** , aby uzyskać poświadczenia dostępu dla udziałów skojarzonych z Twoją grupą zasobów. Możesz również uzyskać poświadczenia dostępu z **szczegółów urządzenia** w Azure Portal.
 
     > [!NOTE]
-    > Poświadczenia dla wszystkich udziałów za dyski zarządzane są identyczne.
+    > Poświadczenia dla wszystkich udziałów dla dysków zarządzanych są identyczne.
 
     ![Pobieranie poświadczeń udziału 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials1.png)
 
-2. Z dostępu do udziału i kopiowanie danych, okno dialogowe, kopia **Username** i **hasło** udziału. Kliknij przycisk **OK**.
+2. W oknie dialogowym Udostępnianie i kopiowanie danych Skopiuj **nazwę użytkownika** i **hasło** dla udziału. Kliknij przycisk **OK**.
     
     ![Pobieranie poświadczeń udziału 1](media/data-box-deploy-copy-data-from-vhds/get-share-credentials2.png)
 
-3. Dostępu do udziałów, skojarzony zasób (*mydbmdrg1* w poniższym przykładzie) z komputera hosta, Otwórz okno polecenia. W wierszu polecenia wpisz polecenie:
+3. Aby uzyskać dostęp do udziałów skojarzonych z zasobem (*mydbmdrg1* w poniższym przykładzie) z komputera hosta, Otwórz okno wiersza polecenia. W wierszu polecenia wpisz polecenie:
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
-    Twoje ścieżki udziału UNC, w tym przykładzie są następujące:
+    W tym przykładzie ścieżki udziału UNC są następujące:
 
     - `\\169.254.250.200\mydbmdrg1_MDisk`
     - `\\169.254.250.200\mydbmdrg2_MDisk`
@@ -101,12 +101,12 @@ Jeśli używasz komputera-hosta z systemem Windows Server, wykonaj następujące
     
     ![Nawiązywanie połączenia z udziałem za pomocą Eksploratora plików 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer1.png)
 
-    Powinien zostać wyświetlony następujący precreated folderach w ramach każdego udziału.
+    W poszczególnych udziałach powinny być teraz widoczne następujące utworzone foldery.
     
     ![Nawiązywanie połączenia z udziałem za pomocą Eksploratora plików 2](media/data-box-deploy-copy-data-from-vhds/connect-shares-file-explorer2.png)
 
 
-### <a name="connect-to-data-box-via-nfs"></a>Łączenie do urządzenia Data Box za pomocą systemu plików NFS
+### <a name="connect-to-data-box-via-nfs"></a>Łączenie się z usługą urządzenie Data Box za pośrednictwem systemu plików NFS
 
 Jeśli używasz komputera-hosta z systemem Linux, wykonaj następujące czynności, aby skonfigurować urządzenie Data Box na potrzeby zezwalania na dostęp do klientów sieciowego systemu plików.
 
@@ -131,33 +131,33 @@ Jeśli używasz komputera-hosta z systemem Linux, wykonaj następujące czynnoś
 
 ## <a name="copy-data-to-data-box"></a>Kopiowanie danych na urządzenie Data Box
 
-Po połączeniu z serwerem danych, następnym krokiem jest kopiowanie danych. Plik wirtualnego dysku twardego jest kopiowany do konta magazynu przejściowego jako stronicowy obiekt blob. Stronicowy obiekt blob jest następnie konwertowana na dysk zarządzany i przeniesione do grupy zasobów.
+Po nawiązaniu połączenia z serwerem danych następnym krokiem jest skopiowanie danych. Plik VHD jest kopiowany do konta magazynu przemieszczania jako obiekt BLOB strony. Obiekt BLOB stronicowania jest następnie konwertowany na dysk zarządzany i przenoszony do grupy zasobów.
 
-Przed przystąpieniem do wykonywania kopii danych, należy przejrzeć następujące zagadnienia:
+Przed rozpoczęciem kopiowania danych zapoznaj się z następującymi kwestiami:
 
-- Zawsze Kopiuj wirtualne dyski twarde do jednego z precreated folderów. W przypadku kopiowania wirtualnych dysków twardych poza te foldery lub w folderze, który został utworzony, wirtualne dyski twarde zostaną przekazane do konta usługi Azure Storage jako stronicowe obiekty BLOB i dyski zarządzane nie.
-- Do utworzenia dysków zarządzanych można przekazać tylko stałych dysków VHD. Pliki VHDX lub dynamicznych i różnicowych wirtualnych dysków twardych nie są obsługiwane.
-- Możesz może mieć tylko jeden dysk zarządzany o określonej nazwie w grupie zasobów we wszystkich folderach precreated. Oznacza to, że wirtualne dyski twarde przekazany do folderów precreated powinny mieć unikatowe nazwy. Upewnij się, że dana nazwa jest niezgodna już istniejącego dysku zarządzanego w grupie zasobów.
-- Sprawdź limity dysku zarządzanego w [limity rozmiaru obiektów platformy Azure](data-box-limits.md#azure-object-size-limits).
+- Zawsze Kopiuj wirtualne dyski twarde do jednego z utworzonych folderów. W przypadku kopiowania dysków VHD poza te foldery lub w utworzonym folderze wirtualne dyski twarde zostaną przekazane do konta usługi Azure Storage jako stronicowe obiekty blob i dyski niezarządzane.
+- Do tworzenia dysków zarządzanych można przekazać tylko stałe wirtualne dyski twarde. Pliki VHDX lub dynamiczne i różnicowe dyski VHD nie są obsługiwane.
+- Można mieć tylko jeden dysk zarządzany o danej nazwie w grupie zasobów we wszystkich pretworzonych folderach. Oznacza to, że wirtualne dyski twarde przekazane do folderów pretworzonych powinny mieć unikatowe nazwy. Upewnij się, że dana nazwa nie jest zgodna z już istniejącym dyskiem zarządzanym w grupie zasobów.
+- Zapoznaj się z limitami dysku zarządzanego w obszarze [limity rozmiaru obiektów platformy Azure](data-box-limits.md#azure-object-size-limits).
 
-W zależności od tego, czy jest nawiązywane za pośrednictwem protokołu SMB lub NFS można użyć:
+W zależności od tego, czy łączysz się za pośrednictwem protokołu SMB czy NFS, możesz użyć:
 
 - [Kopiowanie danych za pośrednictwem protokołu SMB](data-box-deploy-copy-data.md#copy-data-to-data-box)
 - [Kopiowanie danych za pomocą systemu plików NFS](data-box-deploy-copy-data-via-nfs.md#copy-data-to-data-box)
 
-Poczekaj na zakończenie zadań kopiowania. Upewnij się, że zadania kopiowania została zakończona bez błędów, zanim przejdziesz do kolejnego kroku.
+Poczekaj na zakończenie zadań kopiowania. Upewnij się, że zadania kopiowania zakończyły się bez błędów przed przejściem do następnego kroku.
 
 ![Brak błędów na stronie **Połącz i skopiuj**](media/data-box-deploy-copy-data-from-vhds/verify-no-errors-connect-and-copy.png)
 
-Jeśli występują błędy podczas procesu kopiowania, Pobierz dzienniki z **Połącz i skopiuj** strony.
+Jeśli wystąpią błędy podczas procesu kopiowania, Pobierz dzienniki ze strony **Połącz i Kopiuj** .
 
-- Jeśli plik, który jest wyrównany nie 512 bajtów jest kopiowany, plik nie jest przekazywany jako stronicowy obiekt blob na koncie magazynu przejściowego. Zostanie wyświetlony błąd w dziennikach. Usuń plik, a następnie skopiuj plik, który wynosi 512 bajtów wyrównane.
+- Jeśli skopiowano plik, który nie jest wyrównany do 512 bajtów, plik nie zostanie przekazany jako obiekt BLOB strony do konta magazynu tymczasowego. W dziennikach zostanie wyświetlony komunikat o błędzie. Usuń plik i skopiuj plik o 512 bajtów wyrównanych.
 
-- Jeśli plik VHDX (te pliki nie są obsługiwane) jest kopiowany z długiej nazwy, zobaczysz błąd w dziennikach.
+- Jeśli skopiowano plik VHDX (te pliki nie są obsługiwane) z długą nazwą, w dziennikach zostanie wyświetlony komunikat o błędzie.
 
-    ![Błąd w dziennikach z ** strony nawiązywanie połączenia i kopiowanie **](media/data-box-deploy-copy-data-from-vhds/errors-connect-and-copy.png)
+    ![Błąd w dziennikach z programu * * Connect i Copy * * Page](media/data-box-deploy-copy-data-from-vhds/errors-connect-and-copy.png)
 
-    Napraw błędy, zanim przejdziesz do kolejnego kroku.
+    Przed przejściem do następnego kroku Usuń błędy.
 
 W celu zapewnienia integralności danych podczas kopiowania obliczana jest suma kontrolna. Po zakończeniu kopiowania sprawdź ilość używanego i wolnego miejsca na urządzeniu.
     
@@ -166,7 +166,7 @@ W celu zapewnienia integralności danych podczas kopiowania obliczana jest suma 
 Po zakończeniu zadania kopiowania możesz przejść do sekcji **Przygotowanie do wysłania**.
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono zagadnienia dotyczące usługi Azure Data Box, takie jak:
 

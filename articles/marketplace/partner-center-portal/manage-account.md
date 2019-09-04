@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 8c3b9523f6e6991723b0da721dbf7667ee340772
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: c28469e15841e2675c20868b74cf044159c4e9ca
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207973"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259190"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Jak zarządzać kontem komercyjnej witryny Marketplace w centrum partnerskim 
 
@@ -120,7 +120,7 @@ Aby wstrzymać płatności, przejdź do pozycji **Ustawienia konta**. W obszarze
 Po ustawieniu wypłaty stan Wstrzymaj na **wł**. wszystkie wypłaty zostaną wstrzymane do momentu przełączenia suwaka do trybu **wyłączone**. Gdy to zrobisz, zostanie uwzględniony w następnym cyklu miesięcznej wypłaty (w przypadku spełnienia wszelkich odpowiednich progów płatności). Na przykład jeśli wystąpiły wypłaty w dniu wstrzymania, ale chcesz wystawić wypłatę w czerwcu, upewnij się, że stan wstrzymania wypłaty jest **wyłączony** przed końcem maja.
 
 > [!NOTE]
-> Wypłata została wybrana z tytułu **stanu** ma zastosowanie do **wszystkich** źródeł przychodów, które są płatne za pomocą Centrum partnerskiego firmy Microsoft, w tym Azure Marketplace, AppSource, Microsoft Store, reklamy itp.). Dla każdego źródła przychodu nie można wybrać różnych stanów wstrzymania.
+> **Wypłata** została wybrana z tytułu stanu ma zastosowanie do **wszystkich** źródeł przychodów, które są płatne za pomocą Centrum partnerskiego firmy Microsoft, w tym Azure Marketplace, AppSource, Microsoft Store, reklamy itp.). Dla każdego źródła przychodu nie można wybrać różnych stanów wstrzymania.
 
 ### <a name="devices"></a>Urządzenia
 
@@ -162,7 +162,7 @@ Po zalogowaniu się przy użyciu konta służbowego (dzierżawy usługi Azure AD
 - [Definiowanie ról i uprawnień użytkowników](#define-user-roles-and-permissions)
 
 
-Pamiętaj, że wszyscy użytkownicy Centrum partnerskiego (w tym grupy i aplikacje usługi Azure AD) muszą mieć aktywne konto służbowe w dzierżawie usługi [Azure AD](#manage-tenants) , która jest skojarzona z kontem Centrum partnerskiego. 
+Pamiętaj, że wszyscy użytkownicy Centrum partnerskiego (w tym grupy i aplikacje usługi Azure AD) muszą mieć aktywne konto służbowe w [dzierżawie usługi Azure AD](#manage-tenants) , która jest skojarzona z kontem Centrum partnerskiego. 
 
 ### <a name="add-or-remove-users"></a>Dodawanie lub usuwanie użytkowników
 
@@ -312,7 +312,7 @@ Użytkownikom firmy można przypisać następujące role i uprawnienia do komerc
   - Może wyświetlać raporty wydawcy
 
 > [!NOTE]
-> Role Administrator globalny, współautor biznesowa, współautor finansów i rynkowe nie są używane w komercyjnym programie Marketplace ani nie mają skojarzonych uprawnień.
+> W przypadku programu komercyjnego portalu Marketplace nie są używane role Administrator globalny, współautor biznesowa, współautor finansowy i rynek. Przypisanie tych ról do użytkowników nie ma żadnego wpływu. Tylko role Menedżer i deweloper udzielą uprawnień użytkownikom.
 
 Aby uzyskać więcej informacji na temat zarządzania rolami i uprawnieniami w innych obszarach Centrum partnerskiego, takich jak Azure Active Directory (AD), dostawca rozwiązań w chmurze (CSP), dostawca panelu sterowania (CPV), użytkownicy-Goście lub Microsoft Partner Network (MPN), zobacz [Przypisywanie ról użytkowników i uprawnienia w centrum partnerskim](https://docs.microsoft.com/partner-center/permissions-overview).
 

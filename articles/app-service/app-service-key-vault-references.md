@@ -8,15 +8,15 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 30bd7c68ae1c88aba288b515d0ec32581f90b868
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b33f0dec9e6ec685b19e01ce82cfe4adec88b575
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088184"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258614"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>Użyj Key Vault odwołań dla App Service i Azure Functions (wersja zapoznawcza)
 
@@ -31,7 +31,7 @@ Aby można było odczytać wpisy tajne z Key Vault, należy utworzyć magazyn i 
 
 1. Utwórz magazyn kluczy, postępując zgodnie z [przewodnikiem Szybki start Key Vault](../key-vault/quick-create-cli.md).
 
-1. Utwórz skojarzoną z [systemem tożsamość zarządzaną](overview-managed-identity.md) dla aplikacji.
+1. Utwórz [skojarzoną z systemem tożsamość zarządzaną](overview-managed-identity.md) dla aplikacji.
 
    > [!NOTE] 
    > Odwołania Key Vault obecnie obsługują tylko tożsamości zarządzane przypisane do systemu. Nie można używać tożsamości przypisanych do użytkownika.
@@ -184,3 +184,27 @@ Przykład psuedo-Template dla aplikacji funkcji może wyglądać następująco:
 
 > [!NOTE] 
 > W tym przykładzie wdrożenie kontroli źródła zależy od ustawień aplikacji. Jest to zwykle niebezpieczne zachowanie, ponieważ aktualizacja ustawienia aplikacji zachowuje się asynchronicznie. Jednak ze względu na `WEBSITE_ENABLE_SYNC_UPDATE_SITE` to, że zostało dołączone ustawienie aplikacji, aktualizacja jest synchroniczna. Oznacza to, że wdrożenie kontroli źródła rozpocznie się dopiero po całkowitym zaktualizowaniu ustawień aplikacji.
+
+## <a name="troubleshooting-key-vault-references"></a>Rozwiązywanie problemów dotyczących Key Vault
+
+Jeśli odwołanie nie zostanie prawidłowo rozwiązane, zamiast tego zostanie użyta wartość referencyjna. Oznacza to, że dla ustawień aplikacji zostanie utworzona zmienna środowiskowa, której wartość ma `@Microsoft.KeyVault(...)` składnię. Może to spowodować, że aplikacja zgłosi błędy, ponieważ oczekuje ona wpisu tajnego określonej struktury.
+
+Najczęściej jest to spowodowane niepoprawną konfiguracją [zasad dostępu Key Vault](#granting-your-app-access-to-key-vault). Jednak może być również przyczyną, że wpis tajny nie jest już istniejący lub błąd składniowy w samej odwołaniu.
+
+Jeśli składnia jest poprawna, można wyświetlić inne przyczyny błędu, sprawdzając bieżący stan rozwiązania przy użyciu wbudowanego detektora.
+
+### <a name="using-the-detector-for-app-service"></a>Używanie narzędzia wykrywania dla App Service
+
+1. W portalu przejdź do swojej aplikacji.
+2. Wybierz pozycję **Diagnozuj i Rozwiąż prolems**.
+3. Wybierz pozycję **dostępność i wydajność** , a następnie wybierz pozycję **aplikacja internetowa.**
+4. Znajdź **Key Vault Diagnostyka ustawień aplikacji** i kliknij pozycję **więcej informacji**.
+
+
+### <a name="using-the-detector-for-azure-functions"></a>Używanie narzędzia wykrywania dla Azure Functions
+
+1. W portalu przejdź do swojej aplikacji.
+2. Przejdź do **opcji platformy.**
+3. Wybierz pozycję **Diagnozuj i Rozwiąż prolems**.
+4. Wybierz opcję **dostępność i wydajność** , a następnie wybierz pozycję **aplikacja funkcjonalna lub raportowanie błędów.**
+5. Kliknij pozycję **Key Vault Diagnostyka ustawień aplikacji.**

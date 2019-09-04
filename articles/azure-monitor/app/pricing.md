@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/29/2019
+ms.date: 09/04/2019
 ms.author: dalek
-ms.openlocfilehash: f2ea87f237fa5cca8a4b1f6773d2b47729cfb5b0
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: f0a3930cfb3ff403e0ce9d9be308370810e2065a
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147547"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277008"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Zarządzanie użyciem i kosztami Application Insights
 
@@ -53,15 +53,15 @@ Application Insights ułatwia zrozumienie, jakie koszty są prawdopodobnie opart
 
 ![Wybierz Cennik](./media/pricing/pricing-001.png)
 
-A. Przejrzyj ilość danych w danym miesiącu. Obejmuje to wszystkie dane, które zostały odebrane i zachowane ( [](../../azure-monitor/app/sampling.md)po każdym próbkowaniu) z serwera i aplikacji klienckich oraz z testów dostępności.  
-B. Dla wieloetapowych [testów sieci Web](../../azure-monitor/app/availability-multistep.md)dokonywana jest oddzielna opłata. (Nie obejmuje to prostych testów dostępności, które są uwzględnione w opłacie ilości danych).  
+A. Przejrzyj ilość danych w danym miesiącu. Obejmuje to wszystkie dane, które zostały odebrane i zachowane (po każdym [próbkowaniu](../../azure-monitor/app/sampling.md)) z serwera i aplikacji klienckich oraz z testów dostępności.  
+B. Dla [wieloetapowych testów sieci Web](../../azure-monitor/app/availability-multistep.md)dokonywana jest oddzielna opłata. (Nie obejmuje to prostych testów dostępności, które są uwzględnione w opłacie ilości danych).  
 C. Wyświetlanie trendów ilości danych w ostatnim miesiącu.  
 D. Włącz [próbkowanie](../../azure-monitor/app/sampling.md)pozyskiwania danych.   
 E. Ustaw dzienny limit ilości danych.  
 
-Aby dokładniej zbadać użycie Application Insights, Otwórz stronę metryki , Dodaj metrykę o nazwie "punkt danych", a następnie wybierz opcję *Zastosuj dzielenie* , aby podzielić dane przez "typ elementu telemetrii". 
+Aby dokładniej zbadać użycie Application Insights, Otwórz stronę **metryki** , Dodaj metrykę o nazwie "punkt danych", a następnie wybierz opcję *Zastosuj dzielenie* , aby podzielić dane przez "typ elementu telemetrii". 
 
-Opłaty za Application Insights są dodawane do rachunku na korzystanie z platformy Azure. Szczegóły rachunku na korzystanie z platformy Azure można znaleźć w sekcji Rozliczenia w Azure Portal lub w portalu rozliczeń na [platformie Azure](https://account.windowsazure.com/Subscriptions). 
+Opłaty za Application Insights są dodawane do rachunku na korzystanie z platformy Azure. Szczegóły rachunku na korzystanie z platformy Azure można znaleźć w sekcji **rozliczenia** w Azure Portal lub w [portalu rozliczeń na platformie Azure](https://account.windowsazure.com/Subscriptions). 
 
 ![W menu po lewej stronie wybierz pozycję rozliczenia](./media/pricing/02-billing.png)
 
@@ -119,6 +119,8 @@ Zamiast używać dziennego limitu ilości, użyj [próbkowania](../../azure-moni
 Aby zmienić dzienny limit, w sekcji **Konfigurowanie** zasobu Application Insights, na stronie **użycie i szacowane koszty** wybierz pozycję **dzienny limit**.
 
 ![Dostosuj dzienny limit ilości danych telemetrycznych](./media/pricing/pricing-003.png)
+
+Aby [zmienić dzienny limit za pośrednictwem Azure Resource Manager](../../azure-monitor/app/powershell.md), właściwość do zmiany jest `dailyQuota`.  Za pomocą Azure Resource Manager można również ustawić `dailyQuotaResetTime` i dzienny `warningThreshold`limit. 
 
 ## <a name="sampling"></a>Próbkowanie
 [Próbkowanie](../../azure-monitor/app/sampling.md) to metoda zmniejszania szybkości, z jaką dane telemetryczne są wysyłane do aplikacji, przy zachowaniu możliwości wyszukiwania pokrewnych zdarzeń podczas wyszukiwania diagnostycznego. Należy również zachować poprawne liczby zdarzeń.
@@ -179,7 +181,7 @@ Warstwa na węzeł (dawniej Enterprise) ma opłatą za węzeł, a każdy węzeł
 W przypadku bieżących cen w walucie i regionie zapoznaj się z tematem [Application Insights cenniku](https://azure.microsoft.com/pricing/details/application-insights/).
 
 > [!NOTE]
-> W kwietniu 2018 wprowadziliśmy nowy [](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) model cen dla monitorowania platformy Azure. Ten model przyjmuje prosty model "płatność zgodnie z rzeczywistym użyciem" w całym portfolio usług monitorowania. Dowiedz się więcej o [nowym modelu cen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), sposobach [oceny wpływu przejścia na ten model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) na podstawie wzorców użycia i [sposobu wybierania nowego modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)
+> W kwietniu [2018 wprowadziliśmy nowy](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) model cen dla monitorowania platformy Azure. Ten model przyjmuje prosty model "płatność zgodnie z rzeczywistym użyciem" w całym portfolio usług monitorowania. Dowiedz się więcej o [nowym modelu cen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), sposobach [oceny wpływu przejścia na ten model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) na podstawie wzorców użycia i [sposobu wybierania nowego modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)
 
 ### <a name="per-node-tier-and-operations-management-suite-subscription-entitlements"></a>Uprawnienia do subskrypcji dla warstwy węzła i pakietu Operations Management Suite
 

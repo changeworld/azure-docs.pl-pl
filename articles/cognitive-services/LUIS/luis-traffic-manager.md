@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 85f6be7a897908ef9198ac71ada809efb7c033bc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: c4ea9c5663755a4feb1693dd925d99b10c466140
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650537"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256604"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager umożliwia zarządzanie przydziału punktu końcowego za pośrednictwem kluczy
 Language Understanding (LUIS) oferuje możliwość zwiększenia limitu przydziału żądania punktu końcowego, po przekroczeniu limitu przydziału jednego klucza. Polega to na tworzenie więcej kluczy dla usługi LUIS, a następnie dodanie ich do aplikacji usługi LUIS w **Publikuj** strony w **zasobów i klucze** sekcji. 
@@ -48,7 +48,7 @@ New-AzResourceGroup -Name luis-traffic-manager -Location "West US"
 
     ![Zrzut ekranu usługi Azure portal za pomocą dwóch kluczy usługi LUIS w grupie zasobów usługi luis — traffic-manager](./media/traffic-manager/luis-keys.png)
 
-2. W witrynie sieci Web [Luis][LUIS] w sekcji **Zarządzanie** na stronie **klucze i punkty końcowe** Przypisz klucze do aplikacji i ponownie Opublikuj aplikację, wybierając przycisk **Publikuj** w prawym górnym menu. 
+2. W witrynie sieci Web [Luis][LUIS] w sekcji **Zarządzanie** na stronie **zasoby platformy Azure** Przypisz klucze do aplikacji i ponownie Opublikuj aplikację, wybierając przycisk **Publikuj** w prawym górnym menu. 
 
     Przykładowy adres URL w **punktu końcowego** kolumny za pomocą żądania GET klucza punktu końcowego jako parametr zapytania. Skopiuj adresy URL punktów końcowych dwóch nowych kluczy. Są one używane w ramach konfiguracji usługi Traffic Manager w dalszej części tego artykułu.
 

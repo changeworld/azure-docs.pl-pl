@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 504158f248cde3a399475cdec99de3e6a4ebfcc5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b0881cb6dac9ec83d2126942c758508e760f9c83
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60598006"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274437"
 ---
 # <a name="install-packages-from-within-a-notebook"></a>Instalowanie pakietów z w ramach notesu
 
@@ -40,13 +40,13 @@ Jeśli dane wyjściowe polecenia wskazuje, że wymaganie już jest spełniony, a
 
 ## <a name="r"></a>R
 
-Można zainstalować pakietów w języku R z sieci CRAN lub GitHub przy użyciu `install.packages` funkcji w komórce kodu:
+Pakiety w języku R można instalować z Cran lub GitHub przy użyciu `install.packages` funkcji w komórce kodu:
 
 ```r
 install.packages("package_name")
 ```
 
-Z usługi GitHub za pomocą biblioteki devtools, można zainstalować wersje wstępne i inne pakiety programowania:
+Możesz również zainstalować wersje wstępne i inne pakiety deweloperskie z usługi GitHub przy użyciu biblioteki devtools:
 
 ```r
 options(unzip = 'internal')
@@ -66,12 +66,22 @@ Następnie zainstaluj pakiety:
 
 ```fsharp
 Paket.Package
-[ "MathNet.Numerics"
-"MathNet.Numerics.FSharp"
-]
+  [ "MathNet.Numerics"
+    "MathNet.Numerics.FSharp"
+  ]
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+Następnie załaduj Generator Paket:
+```fsharp
+#load "Paket.Generated.Refs.fsx"
+```
 
-- [Instrukcje: Konfigurowanie i zarządzanie projektami](configure-manage-azure-notebooks-projects.md)
-- [Instrukcje: Przedstawia pokaz slajdów](present-jupyter-notebooks-slideshow.md)
+Otwórz Library:
+```fsharp
+open MathNet.Numerics
+```
+
+## <a name="next-steps"></a>Następne kroki
+
+- [Instrukcje: Konfigurowanie projektów i zarządzanie nimi](configure-manage-azure-notebooks-projects.md)
+- [Instrukcje: Prezentuj pokaz slajdów](present-jupyter-notebooks-slideshow.md)

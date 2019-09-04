@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: d823eb615f983190ee6974ee3012f069309ca753
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: f97412bc3f8d8b046df1324c7e1a0ad568f5db52
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195639"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278777"
 ---
 # <a name="machine-learning-and-data-science-tools-on-azure-data-science-virtual-machines"></a>Uczenie maszynowe i narzędzia do nauki o danych w usłudze Azure Data Learning Virtual Machines
 Maszyn wirtualnych do nauki o danych zawiera bogaty zestaw narzędzi i biblioteki dla usługi machine learning (ML) dostępna w popularnych języków, takich jak Python, R i Julia. 
@@ -24,15 +24,16 @@ Poniżej przedstawiono niektóre narzędzia ML i bibliotek na maszynach wirtualn
 
 ## <a name="azure-machine-learning-sdk-for-python"></a>Zestaw SDK Azure Machine Learning dla języka Python
 Zobacz pełne informacje dotyczące [zestawu SDK Azure Machine Learning dla języka Python](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml).
+
 |    |           |
 | ------------- | ------------- |
-| Co to jest?   |   Usługa Azure Machine Learning to usługa w chmurze, który służy do opracowywania i wdrażania modeli uczenia Maszynowego. Możesz śledzić swoje modele, jak tworzenie, szkolenie, skalowanie i zarządzać nimi za pomocą zestawu SDK języka Python. Wdrażanie modeli jako kontenery i uruchamiać je w chmurze, lokalnie lub w usłudze Azure IoT Edge.   |
-| Obsługiwane wersje     | Windows (środowisko Conda: Azure), Linux (Conda Environment: py36)    |
-| Typowe zastosowania      | Ogólne platformy uczenia Maszynowego      |
-| Jak jest ona skonfigurowana lub zainstalowane?      |  Zainstalowano z obsługą procesorów GPU   |
-| Jak za pomocą lub uruchomić go      | Jak dla języka Python SDK i platformą Azure. Aktywuj, aby środowiska conda `AzureML` w wersji Windows *lub* do `py36` w wersji systemu Linux.      |
-| Łącza do przykładów      | Przykładowy program Jupyter notebooks znajdują się w `AzureML` katalogu w ramach notesów.  |
-| Pokrewnych narzędzi      | Program Visual Studio Code, Jupyter   |
+| Co to jest? |   Usługa Azure Machine Learning to usługa w chmurze, który służy do opracowywania i wdrażania modeli uczenia Maszynowego. Możesz śledzić swoje modele, jak tworzenie, szkolenie, skalowanie i zarządzać nimi za pomocą zestawu SDK języka Python. Wdrażanie modeli jako kontenery i uruchamiać je w chmurze, lokalnie lub w usłudze Azure IoT Edge. |
+| Obsługiwane wersje  | Windows (środowisko Conda: Azure), Linux (Conda Environment: py36) |
+| Typowe zastosowania      | Ogólne platformy uczenia Maszynowego  |
+| Jak jest ona skonfigurowana lub zainstalowane? |  Zainstalowano z obsługą procesorów GPU |
+| Jak za pomocą lub uruchomić go | Jak dla języka Python SDK i platformą Azure. Aktywuj, aby środowiska conda `AzureML` w wersji Windows *lub* do `py36` w wersji systemu Linux.  |
+| Łącza do przykładów | Przykładowy program Jupyter notebooks znajdują się w `AzureML` katalogu w ramach notesów.  |
+| Pokrewnych narzędzi  | Program Visual Studio Code, Jupyter   |
 
 ## <a name="xgboost"></a>XGBoost 
 |    |           |

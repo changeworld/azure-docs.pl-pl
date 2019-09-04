@@ -1,7 +1,7 @@
 ---
-title: Klucze subskrypcji — LUIS
+title: Jak używać kluczy tworzenia i środowiska uruchomieniowego — LUIS
 titleSuffix: Azure Cognitive Services
-description: Nie musisz tworzyć kluczy subskrypcji, aby korzystać z bezpłatnych pierwszych 1000 zapytań punktów końcowych. Jeśli wystąpi błąd _braku przydziału_ w postaci HTTP 403 lub 429, musisz utworzyć klucz i przypisać go do aplikacji.
+description: Przy pierwszym użyciu Language Understanding (LUIS) nie trzeba tworzyć klucza tworzenia. Jeśli zamierzasz opublikować aplikację, użyj punktu końcowego środowiska uruchomieniowego, aby utworzyć aplikację i przypisać do niej klucz środowiska uruchomieniowego.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,133 +9,106 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 1f8b84722c881cee1fe196e5a614b58cf3c19031
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 36d03e20c9a56d7b317b867f01c1c0b5767c802c
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932857"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257001"
 ---
-# <a name="using-subscription-keys-with-your-luis-app"></a>Używanie kluczy subskrypcji z aplikacją usługi LUIS
+# <a name="using-authoring-and-runtime-resource-keys"></a>Korzystanie z kluczy zasobów tworzenia i środowiska uruchomieniowego
 
-Przy pierwszym użyciu Language Understanding (LUIS) nie trzeba tworzyć kluczy subskrypcji. Otrzymujesz 1000 zapytań punktów końcowych, które zaczynają się od. 
-
-Testowanie i prototypu tylko przy użyciu warstwy bezpłatna (F0). W przypadku systemów produkcyjnych, użyj [płatnych](https://aka.ms/luis-price-tier) warstwy. Nie używaj [tworzenia klucza](luis-concept-keys.md#authoring-key) dla punktu końcowego kwerend w środowisku produkcyjnym.
-
+Zasoby tworzenia i środowiska uruchomieniowego zapewniają uwierzytelnianie w aplikacji LUIS i punkcie końcowym przewidywania.
 
 <a name="create-luis-service"></a>
-<a name="create-language-understanding-endpoint-key-in-the-azure-portal"/>
+<a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>
 
-## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Utwórz zasób środowiska uruchomieniowego punktu końcowego w Azure Portal
+Po zalogowaniu się do portalu LUIS możesz kontynuować:
 
-Tworzysz [zasób punktu końcowego przewidywania](get-started-portal-deploy-app.md#create-the-endpoint-resource) w Azure Portal. Tego zasobu należy używać tylko w przypadku zapytań prognozowania punktów końcowych. Nie używaj tego zasobu do tworzenia zmian w aplikacji.
+* bezpłatny [klucz wersji próbnej](#trial-key) — udostępniający tworzenie i kilka zapytań dotyczących punktów końcowych przewidywania.
+* nowy zasób tworzenia LUIS platformy Azure — Utwórz nowy zasób. To nie jest taki sam, jak zasób punktu końcowego przewidywania. 
 
-Można utworzyć zasób Language Understanding lub zasób Cognitive Services. W przypadku tworzenia zasobu Language Understanding dobrym sposobem jest postpend typu zasobu na nazwę zasobu. 
 
-<a name="programmatic-key" ></a>
-<a name="authoring-key" ></a>
-<a name="endpoint-key" ></a>
-<a name="use-endpoint-key-in-query" ></a>
-<a name="api-usage-of-ocp-apim-subscription-key" ></a>
-<a name="key-limits" ></a>
-<a name="key-limit-errors" ></a>
-<a name="key-concepts"></a>
-<a name="authoring-key"></a>
-<a name="create-and-use-an-endpoint-key"></a>
-<a name="assign-endpoint-key"></a>
-<a name="assign-resource"></a>
+<a name="starter-key"></a>
 
-### <a name="using-resource-from-luis-portal"></a>Korzystanie z zasobów z portalu LUIS
+## <a name="sign-in-to-luis-portal-and-begin-authoring"></a>Zaloguj się do portalu LUIS i zacznij tworzenie
 
-Jeśli używasz zasobu z portalu LUIS, nie musisz znać Twojego klucza i lokalizacji. Zamiast tego musisz znać dzierżawę zasobów, subskrypcję i nazwę zasobu.
+1. Zaloguj się do [portalu Luis](https://www.luis.ai) i zaakceptuj warunki użytkowania.
+1. Rozpocznij swoją aplikację LUIS, wybierając typ klucza tworzenia LUIS, który ma być używany: bezpłatny klucz wersji próbnej lub nowy klucz tworzenia usługi Azure LUIS. 
 
-Po przypisaniu zasobu do aplikacji LUIS w portalu LUIS klucz i lokalizacja są dostarczane jako część adresu URL punktu końcowego przewidywania zapytania na stronie Zarządzanie **kluczami i ustawieniami punktu końcowego** sekcji Zarządzaj. [](#assign-resource-key-to-luis-app-in-luis-portal)
- 
-### <a name="using-resource-from-rest-api-or-sdk"></a>Korzystanie z zasobu z interfejsu API REST lub zestawu SDK
+    ![Wybierz typ zasobu Language Understanding tworzenia](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
 
-Jeśli używasz zasobu z interfejsów API REST lub zestawu SDK, musisz znać klucz i lokalizację. Te informacje są dostępne jako część adresu URL punktu końcowego przewidywania zapytania na stronie Zarządzanie kluczami **i kluczami punktu końcowego, a** także w Azure Portal na stronach omówienie i klucze zasobu.
+1. Po zakończeniu procesu wyboru zasobów [Utwórz nową aplikację](luis-how-to-start-new-app.md#create-new-app-in-luis). 
 
-## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>Przypisywanie klucza zasobu do aplikacji LUIS w portalu LUIS
+## <a name="trial-key"></a>Klucz wersji próbnej
 
-Za każdym razem, gdy tworzysz nowy zasób dla LUIS, musisz [przypisać zasób do aplikacji Luis](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal). Po jego przypisaniu nie trzeba wykonać tego kroku ponownie, chyba że zostanie utworzony nowy zasób. Możesz utworzyć nowy zasób, aby rozszerzyć regiony aplikacji lub obsłużyć większą liczbę zapowiadanych zapytań.
+Zostanie udostępniony klucz wersji próbnej (Starter). Służy jako klucz uwierzytelniania do wysyłania zapytań do środowiska uruchomieniowego punktu końcowego przewidywania, do 1000 zapytań miesięcznie. 
 
-<!-- content moved to luis-reference-regions.md, need replacement links-->
-<a name="regions-and-keys"></a>
-<a name="publishing-to-europe"></a>
-<a name="publishing-to-australia"></a>
+Jest ona widoczna na stronie **Ustawienia użytkownika** oraz na stronach **Zarządzanie > zasobów platformy Azure** w portalu Luis. 
 
-### <a name="unassign-resource"></a>Cofanie przypisania zasobów
-Po odłączeniu klucza punktu końcowego, nie zostanie usunięta z platformy Azure. Jest on tylko została odłączona od usługi LUIS. 
+Gdy wszystko będzie gotowe do opublikowania punktu końcowego przewidywania, Utwórz i przypisz klucze środowiska uruchomieniowego tworzenia i przewidywania, aby zastąpić funkcję klucza początkowego. 
 
-Gdy klucza punktu końcowego nieprzypisane lub nie jest przypisany do aplikacji, żądanie do punktu końcowego adresu URL zwraca błąd: `401 This application cannot be accessed with the current subscription`. 
+## <a name="create-resources-in-the-azure-portal"></a>Tworzenie zasobów w Azure Portal
 
-### <a name="include-all-predicted-intent-scores"></a>Obejmują wszystkie przewidywanych wskaźników intencji
-**Uwzględnij wszystkie przewidywane wyniki intencji** pola wyboru pozwala odpowiedzi na zapytanie punkt końcowy do uwzględnienia wyników prognoz dla każdego intencji. 
+1. Zaloguj się w witrynie [Azure Portal](https://azure.microsoft.com/free/). 
+1. Wybierz pozycję **+ Utwórz zasób**.
+1. W polu wyszukiwania wpisz `Language understanding`.
+1. Wybierz pozycję **Utwórz**, aby rozpocząć proces tworzenia. 
+1. Utwórz **oba te** elementy, aby utworzyć klucz środowiska uruchomieniowego usługi tworzenia i prognozowania. 
+1. Wprowadź informacje wymagane do utworzenia zasobu, a następnie wybierz pozycję **Utwórz** , aby zakończyć proces.
 
-To ustawienie pozwala używać chatbot lub wywoływania usługi LUIS aplikacji, aby wprowadzić programowe decyzję oparciu o wyniki zwrócone intencji. Ogólnie rzecz biorąc najważniejsze intencji dwa są najbardziej interesujące. W przypadku oceny najważniejszych intencji Twojego chatbot możliwość Zadaj pytanie monitowania, dzięki której ostatecznego wyboru między Brak intencji i oceniania wysokiej intencji None. 
+    ![Tworzenie zasobu interpretacji języka](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
-Intencji i ich wyniki są również uwzględnione w dziennikach punktu końcowego. Możesz [wyeksportować](luis-how-to-start-new-app.md#export-app) tych dzienników i przeanalizować wyniki. 
+    |Name|Cel|
+    |--|--|
+    |Nazwa zasobu| Wybrana nazwa niestandardowa, używana jako część adresu URL dla zapytań dotyczących tworzenia i przewidywania punktów końcowych.|
+    |Nazwa subskrypcji| subskrypcja, która będzie rozliczana za zasób.|
+    |Resource group| Nazwa niestandardowej grupy zasobów, która została wybrana lub utworzona. Grupy zasobów umożliwiają grupowanie zasobów platformy Azure w celu uzyskania dostępu i zarządzania w tym samym regionie.|
+    |Lokalizacja autorstwa|Region skojarzony z Twoim modelem.|
+    |Tworzenie warstwy cenowej|Warstwa cenowa określa maksymalną liczbę transakcji na sekundę i miesiąc.|
+    |Lokalizacja środowiska uruchomieniowego|Region skojarzony z opublikowanym środowiskiem uruchomieniowym przewidywanego punktu końcowego.|
+    |Warstwa cenowa środowiska uruchomieniowego|Warstwa cenowa określa maksymalną liczbę transakcji na sekundę i miesiąc.|
 
-```JSON
-{
-  "query": "book a flight to Cairo",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.5223427
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.5223427
-    },
-    {
-      "intent": "BookFlight",
-      "score": 0.372391433
-    }
-  ],
-  "entities": []
-}
-```
+    Po utworzeniu obu zasobów Przypisz zasoby w portalu LUIS.
 
-### <a name="enable-bing-spell-checker"></a>Włączanie sprawdzania pisowni Bing 
-W **ustawienia adresu url punktu końcowego**, **sprawdzania pisowni Bing** przełącznik umożliwia usługi LUIS do poprawianie błędnie napisanych wyrazów przed prognozy. Tworzenie  **[klucz sprawdzania pisowni Bing](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)** . 
+## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>Przypisywanie zasobów autorstwa w portalu LUIS dla wszystkich aplikacji
 
-Dodaj parametr **sprawdzania pisowni = true** QueryString i **Bing-pisownia-Check-Subscription-Key = {YOUR_BING_KEY_HERE}** . Zastąp `{YOUR_BING_KEY_HERE}` kluczem moduł sprawdzania pisowni Bing.
+Można przypisać zasób tworzenia dla jednej aplikacji lub dla wszystkich aplikacji w LUIS. Poniższa procedura przypisuje wszystkie aplikacje do pojedynczego zasobu tworzenia.
 
-```JSON
-{
-  "query": "Book a flite to London?",
-  "alteredQuery": "Book a flight to London?",
-  "topScoringIntent": {
-    "intent": "BookFlight",
-    "score": 0.780123
-  },
-  "entities": []
-}
-```
+1. Zaloguj się do [portalu Luis](https://www.luis.ai).
+1. Na górnym pasku nawigacyjnym po prawej stronie wybierz konto użytkownika, a następnie wybierz pozycję **Ustawienia**.
+1. Na stronie **Ustawienia użytkownika** wybierz pozycję **Dodaj zasób tworzenia** , a następnie wybierz istniejący zasób tworzenia. Wybierz pozycję **Zapisz**. 
 
-### <a name="publishing-regions"></a>Publikowanie regionów
+## <a name="assign-a-resource-to-an-app"></a>Przypisywanie zasobu do aplikacji
 
-Dowiedz się więcej o publikowaniu [regionów](luis-reference-regions.md) publikowania w tym [Europa](luis-reference-regions.md#publishing-to-europe), i [Australii](luis-reference-regions.md#publishing-to-australia). Regiony publikowania różnią się od tworzenia regionów. Tworzenie aplikacji w regionie tworzenia odpowiadające regionowi publikowania, potrzebne dla punktu końcowego zapytania.
+Do aplikacji można przypisać pojedynczy zasób, tworzenie lub przewidywanie środowiska uruchomieniowego punktu końcowego.
 
-## <a name="assign-resource-without-luis-portal"></a>Przydziel zasób bez portal usługi LUIS
+1. Zaloguj się do [portalu Luis](https://www.luis.ai), a następnie wybierz aplikację z listy **Moje aplikacje** .
+1. Przejdź do strony **zarządzaj > zasobami platformy Azure** .
 
-Do celów usługi automation, takich jak potok ciągłej integracji/ciągłego wdrażania można automatycznie przypisywać zasobem usługi LUIS z aplikacją usługi LUIS. Aby to zrobić, należy wykonać następujące czynności:
+    ![Wybierz pozycję Zarządzaj > zasobów platformy Azure w portalu LUIS, aby przypisać zasób do aplikacji.](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
+
+1. Wybierz kartę zasób przewidywania lub tworzenia, a następnie wybierz przycisk **Dodaj zasób predykcyjny** lub **Dodaj zasób tworzenia zasobów** . 
+1. Wybierz pola w formularzu, aby znaleźć poprawny zasób, a następnie wybierz pozycję **Zapisz**.  
+
+### <a name="assign-runtime-resource-without-using-luis-portal"></a>Przypisywanie zasobu środowiska uruchomieniowego bez użycia portalu LUIS
+
+W celach automatyzacji, takich jak potok ciągłej integracji/ciągłego wdrażania, można zautomatyzować przypisanie zasobu środowiska uruchomieniowego LUIS do aplikacji LUIS. Aby to zrobić, należy wykonać następujące czynności:
 
 1. Pobierz token do usługi Azure Resource Manager z tego [witryny sieci Web](https://resources.azure.com/api/token?plaintext=true). Ten token wygaśnie więc natychmiast zastosować go. Żądanie zwraca tokenu usługi Azure Resource Manager.
 
     ![Token Azure Resource Manager żądania i Odbierz token Azure Resource Manager](./media/luis-manage-keys/get-arm-token.png)
 
-1. Użyj tokenu na potrzeby żądania zasobów usługi LUIS w subskrypcjach, z [uzyskać LUIS azure konta interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c), Twoje konto użytkownika ma dostęp do. 
+1. Użyj tokenu, aby zażądać zasobów środowiska uruchomieniowego LUIS w różnych subskrypcjach, za pomocą [interfejsu API kont platformy Azure Get Luis](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c), do którego Twoje konto użytkownika ma dostęp. 
 
     Ten interfejs API WPIS wymaga następujących ustawień:
 
     |Nagłówek|Wartość|
     |--|--|
     |`Authorization`|Wartość `Authorization` jest `Bearer {token}`. Należy zauważyć, że wartość tokenu musi być poprzedzona wyraz `Bearer` i spacja.| 
-    |`Ocp-Apim-Subscription-Key`|Twoje [tworzenia klucza](luis-how-to-account-settings.md).|
+    |`Ocp-Apim-Subscription-Key`|Twój klucz tworzenia.|
 
     Ten interfejs API zwraca tablicę obiektów JSON subskrypcji usługi LUIS, m.in. identyfikator subskrypcji, grupy zasobów i nazwę zasobu, zwracane jako nazwy konta. Znajdź jeden element w tablicy, która jest zasobem usługi LUIS do przypisania do aplikacji usługi LUIS. 
 
@@ -146,12 +119,34 @@ Do celów usługi automation, takich jak potok ciągłej integracji/ciągłego w
     |Typ|Ustawienie|Wartość|
     |--|--|--|
     |Nagłówek|`Authorization`|Wartość `Authorization` jest `Bearer {token}`. Należy zauważyć, że wartość tokenu musi być poprzedzona wyraz `Bearer` i spacja.|
-    |Nagłówek|`Ocp-Apim-Subscription-Key`|Twoje [tworzenia klucza](luis-how-to-account-settings.md).|
-    |Nagłówek|`Content-type`|`application/json`|
+    |nagłówek|`Ocp-Apim-Subscription-Key`|Twój klucz tworzenia.|
+    |nagłówek|`Content-type`|`application/json`|
     |Ciąg zapytania|`appid`|Identyfikator aplikacji usługi LUIS. 
     |Treść||{"AzureSubscriptionId": "ddda2925-af7f-4b05-9ba1-2155c5fe8a8e"<br>"ResourceGroup": "Grupa zasobów-2"<br>"Nazwa konta": "Usługa luis-uswest-S0-2"}|
 
     Po pomyślnym ten interfejs API zwraca 201 - stan utworzone. 
+
+## <a name="unassign-resource"></a>Cofanie przypisania zasobów
+
+1. Zaloguj się do [portalu Luis](https://www.luis.ai), a następnie wybierz aplikację z listy **Moje aplikacje** .
+1. Przejdź do strony **zarządzaj > zasobami platformy Azure** .
+1. Wybierz kartę zasób przewidywania lub tworzenia, a następnie wybierz przycisk **Cofnij przypisanie zasobu** dla zasobu. 
+
+Po odpisaniu zasobu nie jest on usuwany z platformy Azure. Jest on tylko została odłączona od usługi LUIS. 
+
+## <a name="reset-authoring-key"></a>Resetuj klucz tworzenia pakietów administracyjnych
+
+**W przypadku [tworzenia aplikacji migrowanych zasobów](luis-migration-authoring.md)** : Jeśli klucz autorstwa został naruszony, zresetuj klucz w Azure Portal na stronie **klucze** dla tego zasobu tworzenia. 
+
+W **przypadku aplikacji, które nie zostały jeszcze zmigrowane**: klucz jest resetowany we wszystkich aplikacjach w portalu Luis. W przypadku tworzenia aplikacji za pośrednictwem interfejsów API tworzenia należy zmienić wartość parametru OCP-APIM-Subscription-Key na nowy klucz.
+
+## <a name="regenerate-azure-key"></a>Wygeneruj ponownie klucz platformy Azure
+
+Wygeneruj ponownie klucze platformy Azure z Azure Portal na stronie **klucze** .
+
+## <a name="delete-account"></a>Usuń konto
+
+Zobacz [magazyn danych i usuwania](luis-concept-data-storage.md#accounts) informacji o jakie dane są usuwane po usunięciu konta.
 
 ## <a name="change-pricing-tier"></a>Zmień warstwę cenową
 
@@ -163,39 +158,16 @@ Do celów usługi automation, takich jak potok ciągłej integracji/ciągłego w
     ![Zmień warstwę płatności usługi LUIS](./media/luis-usage-tiers/plans.png)
 1.  Po zakończeniu zmianą cen okno podręczne sprawdza nowej warstwy cenowej. 
     ![Sprawdź warstwę płatności usługi LUIS](./media/luis-usage-tiers/updated.png)
-1. Pamiętaj, aby [przypisania tego klucza punktu końcowego](#assign-endpoint-key) na **Publikuj** strony i używać jej w wszystkie zapytania punktu końcowego. 
+1. Pamiętaj, aby [przypisania tego klucza punktu końcowego](#assign-a-resource-to-an-app) na **Publikuj** strony i używać jej w wszystkie zapytania punktu końcowego. 
 
-## <a name="fix-http-status-code-403-and-429"></a>Popraw kod stanu HTTP 403 i 429
+## <a name="viewing-azure-resource-metrics"></a>Wyświetlanie metryk zasobów platformy Azure
 
-Kody stanu błędów 403 i 429 są uzyskiwane w przypadku przekroczenia liczby transakcji na sekundę lub transakcji miesięcznie dla warstwy cenowej.
-
-### <a name="when-you-receive-an-http-403-error-status-code"></a>Po otrzymaniu kodu stanu błędu HTTP 403
-
-W przypadku korzystania ze wszystkich bezpłatnych zapytań dotyczących punktów końcowych 1000 lub przekroczenia limitu przydziału miesięcznych transakcji warstwy cenowej występuje kod stanu błędu HTTP 403. 
-
-Aby naprawić ten błąd, należy [zmienić warstwę cenową](luis-how-to-azure-subscription.md#change-pricing-tier) na wyższą lub [utworzyć nowy zasób](get-started-portal-deploy-app.md#create-the-endpoint-resource) i [przypisać go do aplikacji](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
-
-Rozwiązania tego błędu obejmują:
-
-* W [Azure Portal](https://portal.azure.com), w Language Understanding zasobów, w **warstwie cenowej zarządzanie zasobami — >** Zmień warstwę cenową na wyższą warstwę TPS. Nie musisz wykonywać żadnych czynności w portalu Language Understanding, jeśli zasób został już przypisany do aplikacji Language Understanding.
-*  Jeśli użycie przekroczy najwyższą warstwę cenową, należy dodać więcej Language Understanding zasobów przy użyciu modułu równoważenia obciążenia przed nimi. [Language Understanding kontener](luis-container-howto.md) z Kubernetes lub Docker Compose może Ci pomóc.
-
-### <a name="when-you-receive-an-http-429-error-status-code"></a>Po otrzymaniu kodu stanu błędu HTTP 429
-
-Ten kod stanu jest zwracany, gdy liczba transakcji na sekundę przekracza Twoją warstwę cenową.  
-
-Rozwiązania obejmują:
-
-* Możesz [zwiększyć swoją warstwę cenową](#change-pricing-tier), jeśli nie masz najwyższej warstwy.
-* Jeśli użycie przekroczy najwyższą warstwę cenową, należy dodać więcej Language Understanding zasobów przy użyciu modułu równoważenia obciążenia przed nimi. [Language Understanding kontener](luis-container-howto.md) z Kubernetes lub Docker Compose może Ci pomóc.
-* Po otrzymaniu tego kodu stanu można posłużyć do żądania aplikacji klienckich przy użyciu [zasad ponawiania](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) . 
-
-## <a name="viewing-summary-usage"></a>Wyświetlanie podsumowania użycia
+### <a name="viewing-azure-resource-summary-usage"></a>Wyświetlanie użycia podsumowania zasobów platformy Azure
 Możesz wyświetlić informacje dotyczące użycia usługi LUIS na platformie Azure. **Przegląd** strona zawiera najnowsze informacje podsumowania, w tym połączeń i błędów. Jeśli usługa LUIS żądania punktu końcowego, następnie natychmiast obejrzeć **strony Przegląd**, Zezwalaj na użycie pojawienie się do pięciu minut.
 
 ![Wyświetlanie podsumowania użycia](./media/luis-usage-tiers/overview.png)
 
-## <a name="customizing-usage-charts"></a>Dostosowywanie wykresy użycia
+### <a name="customizing-azure-resource-usage-charts"></a>Dostosowywanie wykresów użycia zasobów platformy Azure
 Metryki zapewnia bardziej szczegółowy wgląd w dane.
 
 ![Domyślne metryki](./media/luis-usage-tiers/metrics-default.png)
@@ -204,13 +176,16 @@ Wykresy metryk można skonfigurować w przedziale czasu i typ metryki.
 
 ![Metryki niestandardowe](./media/luis-usage-tiers/metrics-custom.png)
 
-## <a name="total-transactions-threshold-alert"></a>Łączna liczba transakcji próg alertu
+### <a name="total-transactions-threshold-alert"></a>Łączna liczba transakcji próg alertu
 Jeśli chcesz dowiedzieć się, gdy został osiągnięty limit określonego progu transakcji, na przykład 10 000 transakcji, można utworzyć alertu. 
 
 ![Domyślne alerty](./media/luis-usage-tiers/alert-default.png)
 
 Dodaj alert dotyczący metryki dla **łączna liczba wywołań** metryk przez pewien czas. Dodaj adresy e-mail wszystkich osób, które powinien zostać wyświetlony alert. Dodaj elementy webhook dla wszystkich systemów, które powinny otrzymać alert. Można również uruchomić aplikację logiki, gdy zostanie wyzwolony alert. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Dowiedz się, jak używać [wersji](luis-how-to-manage-versions.md) Zarządzanie zmianami w aplikacją usługi LUIS.
+* Dowiedz się, [jak za pomocą wersji](luis-how-to-manage-versions.md) sterować cyklem życia aplikacji.
+* Zapoznaj się z pojęciami dotyczącymi [zasobów tworzenia](/luis-concept-keys.md#authoring-key) i [współautorów](luis-concept-keys.md#contributions-from-other-authors) tego zasobu.
+* Dowiedz się [, jak tworzyć zasoby dotyczące](luis-how-to-azure-subscription.md) tworzenia i wykonywania
+* Migrowanie do nowego [zasobu tworzenia](luis-migration-authoring.md) 

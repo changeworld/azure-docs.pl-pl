@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: b80c32fea0d62bb5800a677ff30cb0787e83afa2
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 7874a2bad63a4c5b47545c06a91228e64d523849
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945841"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258789"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding często zadawane pytania
 
@@ -68,7 +68,7 @@ Cortana, który wstępnie skompilowanych aplikacji zostały zaniechane w 2017 r.
 ### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Jak przenieść własność aplikacją usługi LUIS?
 Aby przetransferować aplikacją usługi LUIS do innej subskrypcji platformy Azure, Eksportuj aplikacji LUIS, a następnie importować go za pomocą nowego konta. Zaktualizuj identyfikator aplikacji usługi LUIS w aplikacji klienta, który ją wywołuje. Nowa aplikacja może zwrócić LUIS nieco inne wyniki z oryginalnej aplikacji.
 
-### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Wstępnie utworzona jednostka jest oznaczona jako przykład wypowiedź zamiast mojej jednostki niestandardowej. Jak to naprawić? 
+### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Wstępnie utworzona jednostka jest oznaczona jako przykład wypowiedź zamiast mojej jednostki niestandardowej. Jak mogę rozwiązać ten problem? 
 
 Zobacz [Rozwiązywanie problemów prekompilowanych jednostek](luis-concept-entity-types.md#troubleshooting-prebuilt-entities).
 
@@ -78,7 +78,7 @@ Przeczytaj więcej na temat [błędów importowania wersji](luis-how-to-manage-v
 
 <a name="luis-collaborating"></a>
 
-## <a name="collaborating"></a>Współpracę
+## <a name="collaborating-and-contributing"></a>Współpraca i Współtworzenie
 
 ### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Jak mogę zapewnić współpracownikom dostęp do LUIS za pomocą Azure Active Directory (Azure AD) lub kontroli dostępu opartej na rolach (RBAC)?
 
@@ -87,6 +87,31 @@ Zapoznaj się z tematem [Azure Active Directory zasobów](luis-how-to-collaborat
 <a name="luis-endpoint"></a>
 
 ## <a name="endpoint"></a>Endpoint
+
+### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>Otrzymałem kod stanu błędu HTTP 403. Jak go naprawić?
+
+Kody stanu błędów 403 i 429 są uzyskiwane w przypadku przekroczenia liczby transakcji na sekundę lub transakcji miesięcznie dla warstwy cenowej. Zwiększ swoją warstwę cenową lub Użyj [kontenerów](luis-container-howto.md)Language Understanding.
+
+W przypadku korzystania ze wszystkich bezpłatnych zapytań dotyczących punktów końcowych 1000 lub przekroczenia limitu przydziału miesięcznych transakcji warstwy cenowej występuje kod stanu błędu HTTP 403. 
+
+Aby naprawić ten błąd, należy [zmienić warstwę cenową](luis-how-to-azure-subscription.md#change-pricing-tier) na wyższą lub [utworzyć nowy zasób](get-started-portal-deploy-app.md#create-the-endpoint-resource) i [przypisać go do aplikacji](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
+
+Rozwiązania tego błędu obejmują:
+
+* W [Azure Portal](https://portal.azure.com), w Language Understanding zasobów, w **warstwie cenowej zarządzanie zasobami — >** Zmień warstwę cenową na wyższą warstwę TPS. Nie musisz wykonywać żadnych czynności w portalu Language Understanding, jeśli zasób został już przypisany do aplikacji Language Understanding.
+*  Jeśli użycie przekroczy najwyższą warstwę cenową, należy dodać więcej Language Understanding zasobów przy użyciu modułu równoważenia obciążenia przed nimi. [Language Understanding kontener](luis-container-howto.md) z Kubernetes lub Docker Compose może Ci pomóc.
+
+### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>Otrzymałem kod stanu błędu HTTP 429. Jak go naprawić?
+
+Kody stanu błędów 403 i 429 są uzyskiwane w przypadku przekroczenia liczby transakcji na sekundę lub transakcji miesięcznie dla warstwy cenowej. Zwiększ swoją warstwę cenową lub Użyj [kontenerów](luis-container-howto.md)Language Understanding.
+
+Ten kod stanu jest zwracany, gdy liczba transakcji na sekundę przekracza Twoją warstwę cenową.  
+
+Rozwiązania obejmują:
+
+* Możesz [zwiększyć swoją warstwę cenową](luis-how-to-azure-subscription.md#change-pricing-tier), jeśli nie masz najwyższej warstwy.
+* Jeśli użycie przekroczy najwyższą warstwę cenową, należy dodać więcej Language Understanding zasobów przy użyciu modułu równoważenia obciążenia przed nimi. [Language Understanding kontener](luis-container-howto.md) z Kubernetes lub Docker Compose może Ci pomóc.
+* Po otrzymaniu tego kodu stanu można posłużyć do żądania aplikacji klienckich przy użyciu [zasad ponawiania](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) . 
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Moje zapytanie punkt końcowy zwracany nieoczekiwane wyniki. Co mam zrobić?
 
@@ -102,7 +127,7 @@ Przegląd [najlepsze praktyki](luis-concept-best-practices.md) inne porady.
 Usługa LUIS [tokenizes](luis-glossary.md#token) na podstawie wypowiedź [kultury](luis-language-support.md#tokenization). Oryginalna wartość i tokenami wartości są dostępne dla [wyodrębnianie danych](luis-concept-data-extraction.md#tokenized-entity-returned).
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Jak utworzyć i przypisać klucza punktu końcowego usługi LUIS?
-[Tworzenie klucza punktu końcowego](luis-how-to-azure-subscription.md) na platformie Azure Twoja [usługi](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) poziom. [Przypisany klawisz](luis-how-to-azure-subscription.md) na **[kluczy i punktów końcowych](luis-how-to-azure-subscription.md)** strony. Nie ma żadnych odpowiednich interfejsów API dla tej akcji. Następnie należy zmienić żądania HTTP do punktu końcowego do [użycia nowego klucza punktu końcowego](luis-concept-keys.md#use-endpoint-key-in-query).
+[Tworzenie klucza punktu końcowego](luis-how-to-azure-subscription.md) na platformie Azure Twoja [usługi](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) poziom. [Przypisz klucz](luis-how-to-azure-subscription.md) na stronie **[zasobów platformy Azure](luis-how-to-azure-subscription.md)** . Nie ma żadnych odpowiednich interfejsów API dla tej akcji. Następnie należy zmienić żądania HTTP do punktu końcowego do [użycia nowego klucza punktu końcowego](luis-concept-keys.md).
 
 ### <a name="how-do-i-interpret-luis-scores"></a>Jak interpretować wyniki usługi LUIS?
 System powinien używać najwyższy intencji oceniania niezależnie od jego wartość. Na przykład współczynnik poniżej 0,5 (mniej niż 50%) niekoniecznie oznacza, że usługa LUIS ma niski zaufania. Materiały szkoleniowe dotyczące usługi więcej danych może pomóc zwiększyć [wynik](luis-concept-prediction-score.md) intencji najbardziej prawdopodobną.
@@ -110,7 +135,7 @@ System powinien używać najwyższy intencji oceniania niezależnie od jego wart
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Dlaczego nie widzę mojego trafienia punktu końcowego na pulpicie nawigacyjnym mojej aplikacji?
 Trafienia punktu końcowego całkowita na pulpicie nawigacyjnym aplikacji są okresowo aktualizowane, ale metryki skojarzone z klucza punktu końcowego usługi LUIS w witrynie Azure portal są aktualizowane częściej.
 
-Jeśli na pulpicie nawigacyjnym nie widzisz zaktualizowanych trafień punktów końcowych, zaloguj się do Azure Portal i Znajdź zasób skojarzony z kluczem punktu końcowego LUIS, a następnie otwórz metryki, aby wybrać metrykę **całkowitej liczby wywołań** . Jeśli klucza punktu końcowego jest używana do więcej niż jedną aplikacją usługi LUIS, metryki w witrynie Azure portal pokazuje łączna liczba wywołań ze wszystkich aplikacji usługi LUIS, które go używają.
+Jeśli na pulpicie nawigacyjnym nie widzisz zaktualizowanych trafień punktów końcowych, zaloguj się do Azure Portal i Znajdź zasób skojarzony z kluczem punktu końcowego LUIS, a następnie otwórz **metryki** , aby wybrać metrykę **całkowitej liczby wywołań** . Jeśli klucza punktu końcowego jest używana do więcej niż jedną aplikacją usługi LUIS, metryki w witrynie Azure portal pokazuje łączna liczba wywołań ze wszystkich aplikacji usługi LUIS, które go używają.
 
 ### <a name="is-there-a-powershell-command-get-to-the-endpoint-quota"></a>Czy istnieje polecenie programu PowerShell z przydziałem punktów końcowych?
 
@@ -123,10 +148,10 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Moja aplikacja usługi LUIS była praca wczoraj, ale już dziś otrzymuję błędy 403. Nie można zmodyfikować aplikację tak. Jak go naprawić?
-Postępuj zgodnie z tymi [instrukcjami](#how-do-i-create-and-assign-a-luis-endpoint-key) , aby utworzyć klucz punktu końcowego Luis i przypisać go do aplikacji. Następnie należy zmienić żądanie HTTP aplikacji klienta do punktu końcowego, aby [użyć nowego klucza punktu końcowego](luis-concept-keys.md#use-endpoint-key-in-query). Jeśli nowy zasób został utworzony w innym regionie, Zmień również region żądania klienta HTTP.
+Postępuj zgodnie z tymi [instrukcjami](#how-do-i-create-and-assign-a-luis-endpoint-key) , aby utworzyć klucz punktu końcowego Luis i przypisać go do aplikacji. Następnie należy zmienić żądanie HTTP aplikacji klienta do punktu końcowego, aby [użyć nowego klucza punktu końcowego](luis-concept-keys.md). Jeśli nowy zasób został utworzony w innym regionie, Zmień również region żądania klienta HTTP.
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>Jak zabezpieczyć Mój punkt końcowy usługi LUIS?
-Zobacz [zabezpieczenia punktu końcowego](luis-concept-security.md#securing-the-endpoint).
+Zobacz [zabezpieczenia punktu końcowego](luis-concept-keys.md#securing-the-endpoint).
 
 ## <a name="working-within-luis-limits"></a>Praca w granicach usługi LUIS
 
@@ -185,17 +210,15 @@ Jeśli aplikacja istniały przed LUIS jest ogólnie dostępna (GA), klucze punkt
 
 ### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Jak mogę dowiedzieć się, jakiego klucza potrzebuję, gdzie go mam, i co mam z nim korzystać? 
 
-Aby dowiedzieć się więcej o różnicach między [kluczem tworzenia](luis-how-to-account-settings.md) i [kluczem przewidywania punktu końcowego](luis-how-to-azure-subscription.md), zobacz [Tworzenie i wykonywanie zapytań dotyczących kluczy punktu końcowego przewidywania w programie Luis](luis-concept-keys.md) . 
+Aby dowiedzieć się więcej o różnicach między kluczem tworzenia i kluczem środowiska uruchomieniowego przewidywania, zobacz [Tworzenie i wykonywanie zapytań dotyczących kluczy punktu końcowego prognoz w programie Luis](luis-concept-keys.md) . 
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Wystąpił błąd dotyczący braku limitu przydziału. Jak go naprawić? 
 
-Zobacz, [Popraw kod stanu HTTP 403 i 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) , aby dowiedzieć się więcej.
+Zobacz, Popraw kod stanu HTTP [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) i [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) , aby dowiedzieć się więcej.
 
 ### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Muszę obsługiwać więcej zapytań punktów końcowych. Jak mogę to zrobić? 
 
-Zobacz, [Popraw kod stanu HTTP 403 i 429](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429) , aby dowiedzieć się więcej.
-
-
+Zobacz, Popraw kod stanu HTTP [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) i [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) , aby dowiedzieć się więcej.
 
 ## <a name="app-management"></a>Zarządzanie aplikacjami
 
@@ -254,7 +277,7 @@ Jeśli używasz Azure bot Service, a problem polega na tym, że **test w usłudz
 1. Otwórz Edytor kodu online. 
 1. Na górnym, niebieskim pasku nawigacyjnym wybierz nazwę bot (drugi element w prawo).
 1. Z listy rozwijanej wyniki wybierz pozycję **Otwórz konsolę kudu**.
-1. Wybierzpozycję LogFiles, a następnie wybierz pozycję **aplikacja**. Przejrzyj wszystkie pliki dziennika. Jeśli błąd nie jest widoczny w folderze aplikacji, przejrzyj wszystkie pliki dziennika w **pliku dziennika**. 
+1. Wybierz pozycję **LogFiles**, a następnie wybierz pozycję **aplikacja**. Przejrzyj wszystkie pliki dziennika. Jeśli błąd nie jest widoczny w folderze aplikacji, przejrzyj wszystkie pliki dziennika w **pliku dziennika**. 
 1. Pamiętaj, aby ponownie skompilować projekt, jeśli używasz skompilowanego języka, takiego C#jak.
 
 > [!Tip] 

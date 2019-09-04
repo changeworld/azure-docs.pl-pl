@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7c4af8346b5da20c662b5549284a3540d08908f8
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4ebdf1d14b1f8721a3709a7e8c90f2a1db76b6fc
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072922"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259133"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Korzystanie z klienta Apache Z usługi Beeline z usługą Apache Hive
 
@@ -44,9 +44,9 @@ Zamień `<headnode-FQDN>` na w pełni kwalifikowaną nazwę domeny węzła głó
 
 ---
 
-### <a name="to-hdinsight-enterprise-security-package-esp-cluster"></a>Do klastra usługi HDInsight pakiet Enterprise Security (ESP)
+### <a name="to-hdinsight-enterprise-security-package-esp-cluster-using-kerberos"></a>Do klastra usługi HDInsight pakiet Enterprise Security (ESP) przy użyciu protokołu Kerberos
 
-Podczas nawiązywania połączenia z klientem z klastrem pakiet Enterprise Security (ESP) przyłączonym do usługi Azure Active Directory (AAD) na komputerze w tym samym obszarze klastra należy również określić nazwę `<AAD-Domain>` domeny i nazwę konta użytkownika domeny z uprawnieniami do dostęp do klastra `<username>`:
+Podczas nawiązywania połączenia z klientem z klastrem pakiet Enterprise Security (ESP) przyłączonym do Azure Active Directory (AAD) — DS na komputerze w tym samym obszarze klastra należy również określić nazwę `<AAD-Domain>` domeny i nazwę konta użytkownika domeny z uprawnienia dostępu do klastra `<username>`:
 
 ```bash
 kinit <username>
@@ -57,12 +57,18 @@ Zamień `<username>` na nazwę konta w domenie z uprawnieniami dostępu do klast
 
 ---
 
-### <a name="over-public-internet"></a>Za pośrednictwem publicznej sieci Internet
+### <a name="over-public-or-private-endpoints"></a>Za pośrednictwem publicznych lub prywatnych punktów końcowych
 
-Podczas nawiązywania połączenia z klastrem ESP połączonym z innymi niż ESP lub Azure Active Directory (AAD) za pośrednictwem publicznego Internetu należy podać nazwę konta logowania klastra `admin`(domyślnie) i hasło. Na przykład przy użyciu z usługi Beeline z systemu klienckiego do nawiązywania połączenia `<clustername>.azurehdinsight.net` z adresem. To połączenie jest nawiązywane za `443`pośrednictwem portu i szyfrowane przy użyciu protokołu SSL:
+Podczas nawiązywania połączenia z klastrem przy użyciu publicznych lub prywatnych punktów końcowych należy podać nazwę konta logowania klastra ( `admin`ustawienie domyślne) i hasło. Na przykład przy użyciu z usługi Beeline z systemu klienckiego do nawiązywania połączenia `<clustername>.azurehdinsight.net` z adresem. To połączenie jest nawiązywane za `443`pośrednictwem portu i szyfrowane przy użyciu protokołu SSL:
 
 ```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
+```
+
+lub dla prywatnego punktu końcowego:
+
+```bash
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password
 ```
 
 Element `clustername` należy zastąpić nazwą klastra usługi HDInsight. Zamień `admin` na konto logowania klastra dla klastra. Zamień `password` na hasło dla konta logowania klastra.
@@ -73,13 +79,21 @@ Element `clustername` należy zastąpić nazwą klastra usługi HDInsight. Zamie
 
 Apache Spark udostępnia własną implementację serwera hiveserver2, która jest czasami określana jako serwer Spark Thrift. Ta usługa używa platformy Spark SQL do rozpoznawania zapytań zamiast Hive i może zapewnić lepszą wydajność w zależności od zapytania.
 
-#### <a name="over-public-internet-with-apache-spark"></a>Za pośrednictwem publicznej sieci Internet z Apache Spark
+#### <a name="through-public-or-private-endpoints"></a>Za poorednictwem publicznych lub prywatnych punktów końcowych
 
-Parametry połączenia używane podczas nawiązywania połączenia za pośrednictwem Internetu są nieco inne. Zamiast zawiera `httpPath=/hive2`: `httpPath/sparkhive2`
+Użyte parametry połączenia są nieco inne. Zamiast zawiera `httpPath=/hive2`: `httpPath/sparkhive2`
 
 ```bash 
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
 ```
+
+lub dla prywatnego punktu końcowego:
+
+```bash 
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password
+```
+
+Element `clustername` należy zastąpić nazwą klastra usługi HDInsight. Zamień `admin` na konto logowania klastra dla klastra. Zamień `password` na hasło dla konta logowania klastra.
 
 ---
 
@@ -194,7 +208,7 @@ Ten przykład jest oparty na użyciu klienta Z usługi Beeline z połączenia SS
    > [!NOTE]  
    > Tabele zewnętrzne powinny być używane, gdy oczekuje się, że dane podstawowe mają być aktualizowane przez zewnętrzne źródło. Na przykład proces automatycznego przekazywania danych lub operacja MapReduce.
    >
-   > Porzucenie tabeli zewnętrznej nie powoduje usunięcia danych, tylko definicji tabeli.
+   > Porzucenie tabeli **zewnętrznej nie powoduje usunięcia danych** , tylko definicji tabeli.
 
     Dane wyjściowe tego polecenia są podobne do następującego tekstu:
 

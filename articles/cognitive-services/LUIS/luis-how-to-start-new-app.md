@@ -9,19 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 87244169aa8e50ddd503086121dd84f5d50c5df4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5939886f68a877c4cfad752fe93c4f0eca8f80cf
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932772"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258501"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Tworzenie nowej aplikacji LUIS w portalu LUIS
 Istnieje kilka sposobów, aby utworzyć aplikację usługi LUIS. Można utworzyć aplikację usługi LUIS w [LUIS](https://www.luis.ai) portalu lub za pomocą usługi LUIS tworzenia [interfejsów API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
 
 ## <a name="using-the-luis-portal"></a>Za pomocą portalu usługi LUIS
+
 Można utworzyć nową aplikację w portalu usługi LUIS na kilka sposobów:
 
 * Rozpocznij od pusta aplikacja i tworzyć intencji, wypowiedzi i jednostek.
@@ -39,6 +40,8 @@ Można utworzyć nową aplikację za pomocą tworzenia interfejsów API na kilka
 <a name="import-new-app"></a>
 <a name="delete-app"></a>
  
+
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
 ## <a name="create-new-app-in-luis"></a>Utwórz nową aplikację w usługi LUIS
 

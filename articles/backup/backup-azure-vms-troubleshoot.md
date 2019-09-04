@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 69d75f9050560eb4a9e394241316c0474fffe7cc
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f053cc9bf6b08b9cf76b6e992c3d8cbdf5f759da
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232469"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258982"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Rozwiązywanie problemów dotyczących błędów kopii zapasowych w usłudze Azure Virtual Machines
 
@@ -34,10 +34,10 @@ W tej sekcji omówiono niepowodzenie operacji tworzenia kopii zapasowej maszyny 
 * Upewnij się, że usługa **agenta gościa systemu Windows Azure** jest uruchomiona. `Services.msc` Jeśli brakuje usługi **agenta gościa platformy Microsoft Azure** , zainstaluj ją z [kopii zapasowych maszyn wirtualnych platformy Azure w magazynie Recovery Services](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent).
 * **Dziennik zdarzeń** może zawierać błędy kopii zapasowych, które pochodzą z innych produktów kopii zapasowej, na przykład kopia zapasowa systemu Windows Server i nie są ze względu na usługę Azure Backup. Wykonaj następujące kroki, aby określić, czy problem dotyczy Azure Backup:
    * Jeśli wystąpił błąd dotyczący **kopii zapasowej** wpisu w źródle lub komunikacie zdarzenia, sprawdź, czy kopie zapasowe usługi Azure IaaS VM zostały wykonane pomyślnie, a także czy punkt przywracania został utworzony z żądanym typem migawki.
-    * Jeśli Azure Backup działa, problem jest prawdopodobnie z innym rozwiązaniem tworzenia kopii zapasowej. 
+    * Jeśli Azure Backup działa, problem jest prawdopodobnie z innym rozwiązaniem tworzenia kopii zapasowej.
     * Oto przykład błędu podglądu zdarzeń, w którym usługa Azure Backup działała prawidłowo, ale "Kopia zapasowa systemu Windows Server" zakończyła się niepowodzeniem:<br>
     ![Niepowodzenie Kopia zapasowa systemu Windows Server](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
-    * Jeśli Azure Backup zakończy się niepowodzeniem, wyszukaj odpowiedni kod błędu w sekcji typowe błędy kopii zapasowej maszyny wirtualnej w tym artykule. 
+    * Jeśli Azure Backup zakończy się niepowodzeniem, wyszukaj odpowiedni kod błędu w sekcji typowe błędy kopii zapasowej maszyny wirtualnej w tym artykule.
 
 ## <a name="common-issues"></a>Typowe problemy
 
@@ -127,9 +127,9 @@ Jeśli w katalogu **MachineKeys** są wyświetlane uprawnienia inne niż ustawie
     * Zapisz atrybuty
     * Zapisz atrybuty rozszerzone
     * Uprawnienia do odczytu
-2. Usuń wszystkie certyfikaty, **w** których wystawiony jest klasyczny model wdrażania lub **Generator certyfikatów CRP systemu Windows Azure**:
+2. Usuń wszystkie certyfikaty, **w których wystawiony** jest klasyczny model wdrażania lub **Generator certyfikatów CRP systemu Windows Azure**:
     * [Otwórz przystawkę Certyfikaty w konsoli komputera lokalnego](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx).
-    * W obszarze**Certyfikaty** **osobiste** > Usuń wszystkie certyfikaty, **w** których wystawiony jest klasyczny model wdrażania lub **Generator certyfikatów usługi Windows Azure CRP**.
+    * W obszarze**Certyfikaty** **osobiste** > Usuń wszystkie certyfikaty, **w których wystawiony** jest klasyczny model wdrażania lub **Generator certyfikatów usługi Windows Azure CRP**.
 3. Wyzwalanie zadania tworzenia kopii zapasowej maszyny wirtualnej.
 
 ## <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState — stan rozszerzenia nie obsługuje operacji tworzenia kopii zapasowej
@@ -193,7 +193,7 @@ Dzięki temu migawki będą wykonywane za pośrednictwem hosta, a nie konta goś
 | **Kod błędu**: VmNotInDesirableState <br/> **Komunikat o błędzie**:  Maszyna wirtualna nie jest w stanie umożliwiającym wykonywanie kopii zapasowych. |<ul><li>Jeśli maszyna wirtualna jest w stanie przejściowym między **działaniem** i **wyłączaniem**, poczekaj na zmianę stanu. Następnie Wyzwól zadanie tworzenia kopii zapasowej. <li> Jeśli maszyna wirtualna jest maszyną wirtualną z systemem Linux i używa modułu jądra systemu Linux z ulepszonymi zabezpieczeniami, Wyklucz z zasad zabezpieczeń **/var/lib/waagent** ścieżki agenta platformy Azure Linux i upewnij się, że rozszerzenie kopii zapasowej jest zainstalowane.  |
 | Agent maszyny wirtualnej nie znajduje się na komputerze wirtualnym: <br>Zainstaluj wszystkie wymagania wstępne i agenta maszyny wirtualnej. Następnie ponownie uruchom operację. |Przeczytaj więcej na temat [instalacji agenta maszyny wirtualnej i sprawdzanie poprawności instalacji agenta maszyny wirtualnej](#vm-agent). |
 | **Kod błędu**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Komunikat o błędzie**: Operacja migawki nie powiodła się z powodu błędu podczas tworzenia kanału bezpiecznej komunikacji sieciowej. | <ol><li> Otwórz Edytor rejestru, uruchamiając **regedit. exe** w trybie podniesionych uprawnień. <li> Zidentyfikuj wszystkie wersje .NET Framework znajdujących się w systemie. Znajdują się one w hierarchii klucza rejestru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft**. <li> Dla każdej .NET Framework znajdującej się w kluczu rejestru Dodaj następujący klucz: <br> **Schusestrongcrypto we "= DWORD: 00000001**. </ol>|
-| **Kod błędu**: ExtensionVCRedistInstallationFailure <br/> **Komunikat o błędzie**: Operacja migawki nie powiodła się z powodu błędu instalacji C++ pakietu redystrybucyjnego visual Studio 2012. | Przejdź do C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion i zainstaluj vcredist2012_x64.<br/>Upewnij się, że wartość klucza rejestru, która umożliwia instalację usługi, jest ustawiona na poprawną wartość. Oznacza to, że należy ustawić wartość początkową w **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** na **3** , a nie **4**. <br><br>Jeśli nadal występują problemy z instalacją, uruchom ponownie usługę instalacji, uruchamiając polecenie **msiexec/unregister** , a następnie pozycję **msiexec/Register** z wiersza polecenia z podwyższonym poziomem uprawnień.  |
+| **Kod błędu**: ExtensionVCRedistInstallationFailure <br/> **Komunikat o błędzie**: Operacja migawki nie powiodła się z powodu błędu instalacji C++ pakietu redystrybucyjnego visual Studio 2012. | Przejdź do C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion i zainstaluj vcredist2013_x64.<br/>Upewnij się, że wartość klucza rejestru, która umożliwia instalację usługi, jest ustawiona na poprawną wartość. Oznacza to, że należy ustawić wartość **początkową** w **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** na **3** , a nie **4**. <br><br>Jeśli nadal występują problemy z instalacją, uruchom ponownie usługę instalacji, uruchamiając polecenie **msiexec/unregister** , a następnie pozycję **msiexec/Register** z wiersza polecenia z podwyższonym poziomem uprawnień.  |
 
 
 ## <a name="jobs"></a>Zadania
@@ -222,7 +222,7 @@ Dzięki temu migawki będą wykonywane za pośrednictwem hosta, a nie konta goś
 | Usługa kopii zapasowej nie ma autoryzacji umożliwiającej dostęp do zasobów w Twojej subskrypcji. |Aby rozwiązać ten problem, należy najpierw przywrócić dyski, wykonując kroki opisane w sekcji [przywracanie kopii zapasowej dysków](backup-azure-arm-restore-vms.md#restore-disks). Następnie użyj kroków programu PowerShell z sekcji [Tworzenie maszyny wirtualnej z przywróconych dysków](backup-azure-vms-automation.md#restore-an-azure-vm). |
 
 ## <a name="backup-or-restore-takes-time"></a>Czas wykonywania kopii zapasowej lub przywracania
-Jeśli kopia zapasowa trwa dłużej niż 12 godzin lub przywracanie trwa ponad 6 godzin, zapoznaj [](backup-azure-vms-introduction.md#best-practices) się z najlepszymi rozwiązaniami i zagadnieniami dotyczącymi [wydajności](backup-azure-vms-introduction.md#backup-performance)
+Jeśli kopia zapasowa trwa dłużej niż 12 godzin lub przywracanie trwa ponad 6 godzin, zapoznaj się z [najlepszymi rozwiązaniami](backup-azure-vms-introduction.md#best-practices) i [zagadnieniami](backup-azure-vms-introduction.md#backup-performance) dotyczącymi wydajności
 
 ## <a name="vm-agent"></a>Agent maszyny wirtualnej
 ### <a name="set-up-the-vm-agent"></a>Konfigurowanie agenta maszyny wirtualnej

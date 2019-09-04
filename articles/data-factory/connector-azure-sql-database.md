@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: a8ab2039cde11876d853b411ca09a51e96e2ca0a
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: c9192a6d6b8cf122092963f2352af8bb6e5a6c21
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233049"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275922"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopiowanie danych do lub z Azure SQL Database przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję Azure Data Factory:"]
@@ -45,7 +45,7 @@ W tym Azure SQL Database łącznik obsługuje następujące funkcje:
 >[Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=azuresqldb-current) Azure SQL Database nie jest teraz obsługiwana przez ten łącznik. Aby obejść ten krok, można użyć [ogólnego łącznika ODBC](connector-odbc.md) i sterownika SQL Server ODBC za pośrednictwem własnego środowiska Integration Runtime. Postępuj zgodnie z [tymi wskazówkami](https://docs.microsoft.com/sql/connect/odbc/using-always-encrypted-with-the-odbc-driver?view=azuresqldb-current) przy użyciu opcji pobierania sterowników ODBC i parametrów połączenia.
 
 > [!IMPORTANT]
-> W przypadku kopiowania danych przy użyciu środowiska Azure Data Factory Integration Runtime Skonfiguruj zaporę [SQL Server platformy Azure](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) , aby umożliwić usługom platformy Azure dostęp do serwera.
+> W przypadku kopiowania danych przy użyciu środowiska Azure Data Factory Integration Runtime Skonfiguruj [zaporę SQL Server platformy Azure](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) , aby umożliwić usługom platformy Azure dostęp do serwera.
 > Jeśli skopiujesz dane przy użyciu własnego środowiska Integration Runtime, skonfiguruj zaporę usługi Azure SQL Server tak, aby zezwalała na odpowiedni zakres adresów IP. Ten zakres obejmuje adres IP maszyny, który jest używany do nawiązywania połączenia z Azure SQL Database.
 
 ## <a name="get-started"></a>Wprowadzenie
@@ -63,7 +63,7 @@ Te właściwości są obsługiwane dla Azure SQL Database połączonej usługi:
 | type | Właściwość **Type** musi być ustawiona na wartość **AzureSqlDatabase**. | Tak |
 | connectionString | Określ informacje, które są konieczne do nawiązania połączenia z wystąpieniem Azure SQL Database dla właściwości **ConnectionString** . <br/>Oznacz to pole jako **SecureString** , aby bezpiecznie przechowywać je w Azure Data Factory. Możesz również umieścić hasło lub klucz jednostki usługi w Azure Key Vault. Jeśli jest to uwierzytelnianie SQL, należy ściągnąć `password` konfigurację z parametrów połączenia. Aby uzyskać więcej informacji, zobacz przykład JSON po zalogowaniu do tabeli i [przechowywania w Azure Key Vault](store-credentials-in-key-vault.md). | Tak |
 | servicePrincipalId | Określ identyfikator klienta aplikacji. | Tak, w przypadku korzystania z uwierzytelniania usługi Azure AD za pomocą nazwy głównej usługi |
-| servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako element **SecureString** , aby bezpiecznie przechowywać go w Azure Data Factory lub odwołać się do [wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak, w przypadku korzystania z uwierzytelniania usługi Azure AD za pomocą nazwy głównej usługi |
+| servicePrincipalKey | Określ klucz aplikacji. Oznacz to pole jako element **SecureString** , aby bezpiecznie przechowywać go w Azure Data Factory lub [odwołać się do wpisu tajnego przechowywanego w Azure Key Vault](store-credentials-in-key-vault.md). | Tak, w przypadku korzystania z uwierzytelniania usługi Azure AD za pomocą nazwy głównej usługi |
 | tenant | Określ informacje o dzierżawie, takie jak nazwa domeny lub identyfikator dzierżawy, w której znajduje się aplikacja. Pobierz ją przez umieszczenie kursora myszy w prawym górnym rogu Azure Portal. | Tak, w przypadku korzystania z uwierzytelniania usługi Azure AD za pomocą nazwy głównej usługi |
 | connectVia | To [środowisko Integration Runtime](concepts-integration-runtime.md) służy do nawiązywania połączenia z magazynem danych. Jeśli magazyn danych znajduje się w sieci prywatnej, możesz użyć środowiska Azure Integration Runtime lub własnego środowiska Integration Runtime. Jeśli nie zostanie określony, zostanie użyta domyślna usługa Azure Integration Runtime. | Nie |
 
@@ -234,7 +234,9 @@ Aby skopiować dane z lub do Azure SQL Database, obsługiwane są następujące 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | Właściwość **Type** zestawu danych musi być ustawiona na wartość **wartość azuresqltable**. | Tak |
-| tableName | Nazwa tabeli lub widoku w wystąpieniu Azure SQL Database, do której odwołuje się połączona usługa. | Brak źródła tak dla ujścia |
+| schema | Nazwa schematu. |Brak źródła tak dla ujścia  |
+| table | Nazwa tabeli/widoku. |Brak źródła tak dla ujścia  |
+| tableName | Nazwa tabeli/widoku ze schematem. Ta właściwość jest obsługiwana w celu zapewnienia zgodności z poprzednimi wersjami. W przypadku nowych obciążeń Użyj `schema` i `table`. | Brak źródła tak dla ujścia |
 
 #### <a name="dataset-properties-example"></a>Przykład właściwości zestawu danych
 
@@ -250,7 +252,8 @@ Aby skopiować dane z lub do Azure SQL Database, obsługiwane są następujące 
         },
         "schema": [ < physical schema, optional, retrievable during authoring > ],
         "typeProperties": {
-            "tableName": "MyTable"
+            "schema": "<schema_name>",
+            "table": "<table_name>"
         }
     }
 }
@@ -461,7 +464,7 @@ Podczas kopiowania danych do Azure SQL Database może być wymagane inne zachowa
 - [Dołącz](#append-data): Moje dane źródłowe mają tylko nowe rekordy.
 - [Upsert](#upsert-data): Moje dane źródłowe są wstawiane i aktualizowane.
 - [Zastąp](#overwrite-the-entire-table): Chcę ponownie załadować całą tabelę wymiarów za każdym razem.
-- [Zapisz z logiką](#write-data-with-custom-logic)niestandardową: Potrzebuję dodatkowego przetwarzania przed ostatnim wstawieniem do tabeli docelowej.
+- [Zapisz z logiką niestandardową](#write-data-with-custom-logic): Potrzebuję dodatkowego przetwarzania przed ostatnim wstawieniem do tabeli docelowej.
 
 Zapoznaj się z odpowiednimi sekcjami dotyczącymi konfigurowania programu w Azure Data Factory i najlepszych rozwiązaniach.
 
@@ -480,7 +483,7 @@ Przykładowo w Azure Data Factory można utworzyć potok z **działaniem kopiowa
 
 ![UPSERT](./media/connector-azure-sql-database/azure-sql-database-upsert.png)
 
-W bazie danych Zdefiniuj procedurę składowaną z logiką scalania, taką jak Poniższy przykład, który jest wskazywany przez poprzednią aktywność procedury składowanej. Załóżmy, że element docelowy jest tabelą marketingową z trzema kolumnami: **ProfileID**, **stan**i **Kategoria**. Wykonaj upsert na podstawie kolumny **ProfileID** .
+W bazie danych Zdefiniuj procedurę składowaną z logiką scalania, taką jak Poniższy przykład, który jest wskazywany przez poprzednią aktywność procedury składowanej. Załóżmy, że element docelowy jest tabelą **marketingową** z trzema kolumnami: **ProfileID**, **stan**i **Kategoria**. Wykonaj upsert na podstawie kolumny **ProfileID** .
 
 ```sql
 CREATE PROCEDURE [dbo].[spMergeData]
@@ -533,7 +536,7 @@ Poniższy przykład przedstawia sposób użycia procedury składowanej do wykona
     )
     ```
 
-2. W bazie danych Zdefiniuj procedurę składowaną o takiej samej nazwie jak **SqlWriterStoredProcedureName**. Obsługuje dane wejściowe z określonego źródła i scala do tabeli danych wyjściowych. Nazwa parametru typu tabeli w procedurze składowanej jest taka sama jak tabelaname zdefiniowana w zestawie danych.
+2. W bazie danych Zdefiniuj procedurę składowaną o takiej samej nazwie jak **SqlWriterStoredProcedureName**. Obsługuje dane wejściowe z określonego źródła i scala do tabeli danych wyjściowych. Nazwa parametru typu tabeli w procedurze składowanej jest taka sama jak **tabelaname** zdefiniowana w zestawie danych.
 
     ```sql
     CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)
