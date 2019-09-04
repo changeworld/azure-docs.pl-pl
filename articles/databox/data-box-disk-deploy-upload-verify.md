@@ -7,15 +7,15 @@ ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
 ms.localizationpriority: high
-ms.date: 08/22/2019
+ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: e36f009422307b3b70091775d2288ee710839172
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: a4d814ab5b1f26a6a2b871a850fd5e3153e256f5
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014181"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240275"
 ---
 ::: zone target="docs"
 
@@ -48,7 +48,7 @@ Po zakończeniu kopiowania danych stan zamówienia zmieni się na **Zakończone*
 
 ![Kopiowanie danych zostało zakończone](media/data-box-disk-deploy-picked-up/data-box-portal-completed.png)
 
-Jeśli kopia zakończy się z błędami, zobacz [Rozwiązywanie problemów](data-box-disk-troubleshoot-upload.md)z przekazywaniem.
+Jeśli kopia zakończy się z błędami, zobacz [Rozwiązywanie problemów z przekazywaniem](data-box-disk-troubleshoot-upload.md).
 
 Sprawdź, czy dane znajdują się na kontach magazynu, zanim usuniesz je ze źródła. Twoje dane mogą znajdować się w:
 
@@ -70,20 +70,40 @@ Sprawdź, czy dane znajdują się na kontach magazynu, zanim usuniesz je ze źr�
       ![Grupa zasobów dla dysków zarządzanych](media/data-box-disk-deploy-picked-up/resource-group-attached-managed-disk.png)
 
   - W przypadku skopiowania pliku VHDX lub dynamicznego/różnicowego dysku VHD dysk VHDX/VHD zostanie przekazany do konta magazynu tymczasowego jako blokowy obiekt BLOB. Przejdź do swojego **konta magazynu tymczasowego > obiektów BLOB** , a następnie wybierz odpowiedni kontener — StandardSSD, StandardHDD lub PremiumSSD. Plik VHDX/VHD powinien być wyświetlany jako blokowe obiekty blob na koncie magazynu przemieszczania.
+  
+::: zone-end
 
-Aby sprawdzić, czy dane zostały przekazane na platformę Azure, wykonaj następujące czynności:
+::: zone target="chromeless"
+
+# <a name="verify-data-upload-to-azure"></a>Weryfikowanie przekazania danych na platformę Azure
+
+Po przekazaniu danych na platformę Azure Sprawdź, czy Twoje dane są na kontach magazynu przed usunięciem go ze źródła. Twoje dane mogą znajdować się w:
+
+- Twoje konta usługi Azure Storage. Po skopiowaniu danych na urządzenie Data Box są one zależnie od typu przekazywane do jednej z poniższych ścieżek w ramach konta usługi Azure Storage.
+
+    - **Dla blokowych obiektów blob i stronicowych obiektów BLOB**: https://< storage_account_name >. blob. Core.<containername>Windows. NET//Files/a.txt
+
+    - **W przypadku Azure Files**: https://< storage_account_name >. plik. Core. Windows. NET<sharename>//Files/a.txt
+
+- Grupy zasobów dysku zarządzanego. Podczas tworzenia dysków zarządzanych wirtualne dyski twarde są przekazywane jako stronicowe obiekty blob, a następnie konwertowane na dyski zarządzane. Dyski zarządzane są dołączone do grup zasobów określonych w momencie tworzenia zamówienia.
+
+::: zone-end
+
+Aby sprawdzić, czy dane zostały przekazane do platformy Azure, wykonaj następujące czynności:
 
 1. Przejdź do konta magazynu skojarzonego z zamówieniem dysku.
 2. Przejdź do pozycji **Blob Service > Przeglądaj obiekty blob**. Zostanie wyświetlona lista kontenerów. Na koncie magazynu są tworzone kontenery o nazwach odpowiadających nazwom podfolderów utworzonych przez Ciebie w folderach *BlockBlob* i *PageBlob*.
     Jeśli nazwy folderów są niezgodne z konwencją nazewnictwa platformy Azure, przekazywanie danych na platformę Azure zakończy się niepowodzeniem.
 
-4. Aby upewnić się, że cały zestaw danych został przekazany, użyj Eksploratora usługi Microsoft Azure Storage. Dołącz konto magazynu powiązane z zamówieniem dysków, a następnie sprawdź listę kontenerów obiektów blob. Wybierz kontener, kliknij pozycję **Więcej**, a następnie pozycję **Statystyka folderu**. W okienku **Działania** zostaną wyświetlone statystyki dotyczące tego folderu, w tym liczba i łączny rozmiar obiektów blob. Łączny rozmiar obiektów blob w bajtach powinien być taki sam, jak rozmiar zestawu danych.
+3. Aby upewnić się, że cały zestaw danych został przekazany, użyj Eksploratora usługi Microsoft Azure Storage. Dołącz konto magazynu odpowiadające kolejności Data Box Disk, a następnie zapoznaj się z listą kontenerów obiektów BLOB. Wybierz kontener, kliknij pozycję **Więcej**, a następnie pozycję **Statystyka folderu**. W okienku **Działania** zostaną wyświetlone statystyki dotyczące tego folderu, w tym liczba i łączny rozmiar obiektów blob. Łączny rozmiar obiektów blob w bajtach powinien być taki sam, jak rozmiar zestawu danych.
 
     ![Statystyka folderu w Eksploratorze usługi Storage](media/data-box-disk-deploy-picked-up/folder-statistics-storage-explorer.png)
 
 ## <a name="erasure-of-data-from-data-box-disk"></a>Wymazywanie danych z urządzenia Data Box Disk
 
 Po zakończeniu kopiowania i sprawdzeniu, czy dane znajdują się na koncie usługi Azure Storage, dyski są bezpiecznie wymazywane zgodnie ze standardem NIST.
+
+::: zone target="docs"
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -101,22 +121,6 @@ Przejdź do następnego tematu, aby zapoznać się z instrukcjami zarządzania u
 
 ::: zone-end
 
-::: zone target="chromeless"
 
-# <a name="verify-data-upload-to-azure"></a>Weryfikowanie przekazania danych na platformę Azure
-
-Po przekazaniu danych na platformę Azure Sprawdź, czy Twoje dane są na kontach magazynu przed usunięciem go ze źródła. Twoje dane mogą znajdować się w:
-
-- Twoje konta usługi Azure Storage. Po skopiowaniu danych na urządzenie Data Box są one zależnie od typu przekazywane do jednej z poniższych ścieżek w ramach konta usługi Azure Storage.
-
-    - **Dla blokowych obiektów blob i stronicowych obiektów BLOB**: https://< storage_account_name >. blob. Core.<containername>Windows. NET//Files/a.txt
-
-    - **W przypadku Azure Files**: https://< storage_account_name >. plik. Core. Windows. NET<sharename>//Files/a.txt
-
-    Możesz też przejść do swojego konta usługi Azure Storage w witrynie Azure Portal i nawigować z poziomu tej witryny.
-
-- Grupy zasobów dysku zarządzanego. Podczas tworzenia dysków zarządzanych wirtualne dyski twarde są przekazywane jako stronicowe obiekty blob, a następnie konwertowane na dyski zarządzane. Dyski zarządzane są dołączone do grup zasobów określonych w momencie tworzenia zamówienia.
-
-::: zone-end
 
 

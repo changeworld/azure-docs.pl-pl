@@ -3,18 +3,18 @@ title: Szybki Start — Ustawianie i pobieranie klucza tajnego z Azure Key Vault
 description: W tym przewodniku szybki start ustawisz i pobrano klucz tajny z Azure Key Vault przy użyciu aplikacji sieci Web Node
 services: key-vault
 author: msmbaldwin
-manager: sumedhb
+manager: rkarlin
 ms.service: key-vault
 ms.topic: quickstart
-ms.date: 09/05/2018
-ms.author: barclayn
+ms.date: 09/03/2010
+ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 5ca6289b1af02a54d8c66d5a9835e24f61c58559
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4bea46e62f90a41b566781457a39718849ee0e15
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934454"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259245"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Szybki start: Ustawianie i pobieranie wpisu tajnego z Azure Key Vault przy użyciu aplikacji sieci Web Node 
 
@@ -196,5 +196,9 @@ Po przejściu do `https://<app_name>.azurewebsites.net`sekcji można zobaczyć w
 
 ## <a name="next-steps"></a>Następne kroki
 
-> [!div class="nextstepaction"]
-> [Zestaw Azure SDK dla platformy Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
+W tym przewodniku szybki start utworzono Key Vault i Zapisano w nim wpis tajny. Aby dowiedzieć się więcej na temat Key Vault i sposobu integrowania go z aplikacjami, przejdź do artykułu poniżej.
+
+- Zapoznaj się [z omówieniem Azure Key Vault](key-vault-overview.md)
+- Zobacz [przewodnik dewelopera Azure Key Vault](key-vault-developers-guide.md)
+- Informacje o [kluczach, wpisach tajnych i certyfikatach](about-keys-secrets-and-certificates.md)
+- Przegląd [Azure Key Vault najlepszych](key-vault-best-practices.md) rozwiązań

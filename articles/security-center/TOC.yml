@@ -131,24 +131,16 @@
           href: security-center-vulnerability-assessment-recommendations.md
         - name: Raporty na temat zagrożeń
           href: security-center-threat-report.md
-        - name: Alerty niestandardowe
-          href: security-center-custom-alert.md
         - name: Współczynnik ufności alertu
           href: security-center-confidence-score.md
-        - name: Mapa alertów zabezpieczeń i analiza zagrożeń
-          href: security-center-threat-intel.md
         - name: Badanie
           href: security-center-investigation.md
         - name: Zarządzanie danymi użytkownika badań
           href: security-center-investigation-user-data.md
         - name: Elementy playbook usługi Logic Apps
           href: security-center-playbooks.md
-        - name: Wyszukiwanie
-          href: security-center-search.md
         - name: Planowanie i operacje
           href: security-center-planning-and-operations-guide.md
-        - name: Dostosowywanie konfiguracji zabezpieczeń
-          href: security-center-customize-os-security-config.md
 - name: Dokumentacja
   items:
     - name: Interfejsy API REST

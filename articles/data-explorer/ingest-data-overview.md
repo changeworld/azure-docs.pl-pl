@@ -1,66 +1,66 @@
 ---
-title: Pozyskiwanie danych w usłudze Azure Eksplorator danych
-description: Dowiedz się więcej o różnych sposobów umożliwia pobieranie danych (załaduj) w Eksploratorze danych platformy Azure
+title: Pozyskiwanie danych Eksplorator danych platformy Azure
+description: Dowiedz się więcej na temat różnych sposobów pozyskiwania (ładowania) danych na platformie Azure Eksplorator danych
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 891d2acc42f8d6f03976f0553e2e3127bc6d16f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be77ae932ec72239bea04fce298d7f1b84e5e4d8
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759340"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240650"
 ---
-# <a name="azure-data-explorer-data-ingestion"></a>Pozyskiwanie danych w usłudze Azure Eksplorator danych
+# <a name="azure-data-explorer-data-ingestion"></a>Pozyskiwanie danych Eksplorator danych platformy Azure
 
-Pozyskiwanie danych polega na używana do ładowania rekordów danych z co najmniej jednego źródła, można utworzyć lub zaktualizować tabeli w Eksploratorze danych platformy Azure. Gdy pozyskiwane, dane będą dostępne dla zapytania. Na poniższym diagramie przedstawiono przepływ end-to-end do pracy w Eksploratorze danych platformy Azure, w tym pozyskiwanie danych.
+Pozyskiwanie danych to proces używany do ładowania rekordów danych z co najmniej jednego źródła w celu utworzenia lub zaktualizowania tabeli w usłudze Azure Eksplorator danych. Po pobraniu dane staną się dostępne do zapytania. Poniższy diagram przedstawia kompleksowy przepływ pracy na platformie Azure Eksplorator danych, w tym pozyskiwanie danych.
 
 ![Przepływ danych](media/ingest-data-overview/data-flow.png)
 
-Usługa zarządzania danych Eksploratora danych usługi Azure, która jest odpowiedzialna za przetwarzanie danych, oferuje następujące funkcje:
+Usługa zarządzania danymi w usłudze Azure Eksplorator danych, która jest odpowiedzialna za pozyskiwanie danych, zapewnia następujące funkcje:
 
-1. **Ściągania danych**: Pobierania danych z zewnętrznych źródeł (usługa Event Hubs) lub liczbę żądań pozyskiwania odczytu z kolejki usługi Azure.
+1. **Ściąganie danych**: Ściągaj dane ze źródeł zewnętrznych (Event Hubs) lub Odczytuj żądania pozyskiwania z kolejki platformy Azure.
 
-1. **Przetwarzanie wsadowe**: Przepływać do tej samej bazy danych i tabeli w celu zoptymalizowania przepływności pozyskiwania danych partii.
+1. Tworzenie **partii**: Dane wsadowe przepływające do tej samej bazy danych i tabeli w celu zoptymalizowania przepływności pozyskiwania.
 
-1. **Sprawdzanie poprawności**: Wstępne sprawdzanie poprawności i formatu konwersji w razie potrzeby.
+1. **Sprawdzanie poprawności**: Wstępna weryfikacja i Konwersja formatu, jeśli jest to konieczne.
 
-1. **Manipulowanie danymi**: Pasującego schematu, organizowanie, indeksowanie, kodowanie i kompresji danych.
+1. **Manipulowanie danymi**: Dopasowanie schematu, porządkowanie, indeksowanie, kodowanie i kompresowanie danych.
 
-1. **Punkt stanu trwałego w usłudze flow pozyskiwania**: Zarządzanie obciążenia pozyskiwania na aparacie i obsługiwać ponowne próby na przejściowe awarie.
+1. **Punkt trwałości w przepływie**pozyskiwania: Zarządzanie obciążeniem pozyskiwania w aparacie i dojściem ponawiania prób po błędach przejściowych.
 
-1. **Zatwierdzenie pozyskiwania danych**: Udostępnia dane dla zapytania.
+1. Zatwierdź pozyskiwanie **danych**: Sprawia, że dane są dostępne dla kwerendy.
 
-## <a name="ingestion-methods"></a>Metody wprowadzania
+## <a name="ingestion-methods"></a>Metody pozyskiwania
 
-Eksplorator danych usługi Azure obsługuje kilka metod wprowadzania, każdy z własną target scenariuszy, zalety i wady. Eksplorator danych usługi Azure oferuje potoków i łączników, aby typowe usługi, wprowadzanie programowe przy użyciu zestawów SDK i bezpośredni dostęp do aparatu do celów eksploracji.
+Usługa Azure Eksplorator danych obsługuje kilka metod pozyskiwania, z których każda ma własne scenariusze, zalety i wady. Usługa Azure Eksplorator danych oferuje potoki i łączniki dla typowych usług, programowe pozyskiwanie przy użyciu zestawów SDK i bezpośredni dostęp do aparatu w celach eksploracji.
 
-### <a name="ingestion-using-pipelines-connectors-and-plugins"></a>Wprowadzanie za pomocą potoków, łączników i wtyczek
+### <a name="ingestion-using-pipelines-connectors-and-plugins"></a>Pozyskiwanie przy użyciu potoków, łączników i wtyczek
 
-Eksplorator danych usługi Azure obecnie obsługuje:
+Obecnie usługa Azure Eksplorator danych obsługuje:
 
-* Potoku siatki zdarzeń, które mogą być zarządzane za pomocą Kreatora zarządzania w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [pozyskiwania obiektów blob platformy Azure do Eksploratora danych usługi Azure](ingest-data-event-grid.md).
+* Potok Event Grid, którym można zarządzać za pomocą Kreatora zarządzania w Azure Portal. Aby uzyskać więcej informacji, zobacz pozyskiwanie [obiektów blob platformy Azure w usłudze azure Eksplorator danych](ingest-data-event-grid.md).
 
-* Potoku Centrum zdarzeń, które mogą być zarządzane za pomocą Kreatora zarządzania w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [pozyskiwać dane z Centrum zdarzeń do Eksploratora danych usługi Azure](ingest-data-event-hub.md).
+* Potok centrum zdarzeń, którym można zarządzać za pomocą Kreatora zarządzania w Azure Portal. Aby uzyskać więcej informacji, zobacz pozyskiwanie [danych z centrum zdarzeń do usługi Azure Eksplorator danych](ingest-data-event-hub.md).
 
-* Dodatek Logstash, zobacz [pozyskiwać dane z programu Logstash do Eksploratora danych usługi Azure](ingest-data-logstash.md).
+* Wtyczka logstash, zobacz pozyskiwanie [danych z logstash na platformie Azure Eksplorator danych](ingest-data-logstash.md).
 
-* Łącznik platformy Kafka, zobacz [pozyskiwać dane z usługi Kafka do Eksploratora danych usługi Azure](ingest-data-kafka.md).
+* Łącznik Kafka, zobacz pozyskiwanie [danych z Kafka na platformie Azure Eksplorator danych](ingest-data-kafka.md).
 
-### <a name="ingestion-using-integration-services"></a>Wprowadzanie za pomocą usług integration services
+### <a name="ingestion-using-integration-services"></a>Pozyskiwanie przy użyciu usług Integration Services
 
-* Usługa Azure Data Factory (ADF), to usługa integracji w pełni zarządzane dane dla obciążeń wynikających z analizy na platformie Azure, aby skopiować dane do i z za pomocą Eksploratora danych usługi Azure [obsługiwane magazyny danych i formatów](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats). Aby uzyskać więcej informacji, zobacz [kopiowanie danych z usługi Azure Data Factory do Eksploratora danych usługi Azure](/azure/data-explorer/data-factory-load-data).
+* Azure Data Factory (ADF) — w pełni zarządzana usługa integracji danych dla obciążeń analitycznych na platformie Azure, umożliwiająca kopiowanie danych do i z usługi Azure Eksplorator danych przy użyciu [obsługiwanych magazynów danych i formatów](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats). Aby uzyskać więcej informacji, zobacz [Kopiowanie danych z Azure Data Factory do platformy Azure Eksplorator danych](/azure/data-explorer/data-factory-load-data).
 
-### <a name="programmatic-ingestion"></a>Wprowadzanie programowe
+### <a name="programmatic-ingestion"></a>Pozyskiwanie programistyczne
 
-Eksplorator danych usługi Azure udostępnia zestawy SDK, które mogą służyć do kwerendy i danych. Wprowadzanie programowe jest zoptymalizowane pod kątem pozwala zmniejszyć koszty pozyskiwania (KWS), minimalizując transakcje magazynu, podczas i po procesu pozyskiwania.
+Usługa Azure Eksplorator danych udostępnia zestawy SDK, których można używać na potrzeby pozyskiwania zapytań i danych. Pozyskiwanie programistyczne jest zoptymalizowane pod kątem zmniejszenia kosztów pozyskiwania (KWS) przez zminimalizowanie transakcji magazynu podczas procesu pozyskiwania.
 
-**Dostępne zestawy SDK i projektów typu open-source**:
+**Dostępne zestawy SDK i projekty open source**:
 
-Kusto oferuje zestaw SDK, który może służyć do odbierania i wysyłania zapytań dotyczących danych przy użyciu klienta:
+Kusto oferuje zestaw SDK klienta, który może służyć do pozyskiwania i wykonywania zapytań dotyczących danych za pomocą:
 
 * [Zestaw SDK dla języka Python](/azure/kusto/api/python/kusto-python-client-library)
 
@@ -68,95 +68,95 @@ Kusto oferuje zestaw SDK, który może służyć do odbierania i wysyłania zapy
 
 * [Zestaw SDK Java](/azure/kusto/api/java/kusto-java-client-library)
 
-* [Węzeł zestawu SDK](/azure/kusto/api/node/kusto-node-client-library)
+* [Zestaw SDK węzła](/azure/kusto/api/node/kusto-node-client-library)
 
-* [Interfejs API REST](/azure/kusto/api/netfx/kusto-ingest-client-rest)
+* [REST API](/azure/kusto/api/netfx/kusto-ingest-client-rest)
 
-**Wprowadzanie programowe technik**:
+**Techniki pozyskiwania programistycznego**:
 
-* Wprowadzania danych przez usługę zarządzania danych Eksploratora danych usługi Azure (o wysokiej przepływności i niezawodne pozyskiwanie):
+* Pozyskiwanie danych za pomocą usługi zarządzania danymi w usłudze Azure Eksplorator danych (Wysoka przepływność i niezawodne pozyskiwanie):
 
-    [**Batch pozyskiwania** ](/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (udostępnione przez zestaw SDK): klient przesyła dane do usługi Azure Blob storage (wyznaczony przez usługę zarządzania danych Eksplorator danych platformy Azure) i wysyła powiadomienie do kolejki usługi Azure. Wprowadzanie usługi Batch jest zalecana technika mocno obciążające, niezawodne i tanie pozyskiwania.
+    Pozyskiwanie [**wsadowe**](/azure/kusto/api/netfx/kusto-ingest-queued-ingest-sample) (udostępniane przez zestaw SDK): klient przekazuje dane do usługi Azure Blob Storage (wydanej przez usługę zarządzania danymi w usłudze Azure Eksplorator danych) i publikuje powiadomienie w kolejce platformy Azure. Pozyskiwanie wsadowe jest zalecaną techniką do pozyskiwania, niezawodnego i taniego pozyskiwania danych.
 
-* Dane wprowadzane bezpośrednio do aparatu Eksplorator danych platformy Azure (najbardziej odpowiednie do potrzeb eksploracji i tworzenia prototypów):
+* Pozyskiwanie danych bezpośrednio w aparacie Eksplorator danych platformy Azure (najbardziej odpowiednie dla eksploracji i tworzenia prototypów):
 
-  * **Wbudowane pozyskiwania**: polecenia sterowania (.ingest wbudowany) zawierający dane wewnątrzpasmowe jest przeznaczony dla ad hoc do celów testowych.
+  * Pozyskanie w **tekście**: polecenie sterowania (. pozyskiwanie wbudowane) zawierające dane w paśmie jest przeznaczone do celów testowych ad hoc.
 
-  * **Pozyskiwanie z kwerendy**: polecenia sterowania (.set, .set lub dołączania, .set lub zastępowanie), który wskazuje na wyniki zapytania jest używana do generowania raportów lub małych tabel tymczasowych.
+  * Pozyskiwanie **z zapytania**: polecenie sterowania (. Set,. Set-lub-append,. Set-lub-Replace), które wskazuje na wyniki zapytania, służy do generowania raportów lub małych tabel tymczasowych.
 
-  * **Pozyskiwanie z magazynu**: polecenia sterowania (.ingest do) za pomocą — dane przechowywane zewnętrznie (na przykład usługi Azure Blob Storage) umożliwia wydajne zbiorcze pozyskiwania danych.
+  * Pozyskiwanie **z magazynu**: polecenie sterowania (. pozyskiwanie w programie) z danymi przechowywanymi zewnętrznie (na przykład Azure Blob Storage) umożliwia wydajne pozyskiwanie danych.
 
 **Opóźnienie różnych metod**:
 
 | Metoda | Opóźnienie |
 | --- | --- |
 | **Pozyskiwanie wbudowane** | Natychmiastowe |
-| **Pozyskiwanie z zapytania** | Czas wykonywania zapytania i czas przetwarzania |
-| **Pozyskiwanie z magazynu** | Czas pobierania i czas przetwarzania |
-| **Pozyskiwanie umieszczonych w kolejce** | Przetwarzanie wsadowe, czas i czas przetwarzania |
+| **Pozyskiwanie z zapytania** | Czas wykonywania zapytania + czas przetwarzania |
+| **Pozyskiwanie z magazynu** | Czas pobierania + czas przetwarzania |
+| **Przyjmowanie w kolejce** | Przetwarzanie wsadowe + czas przetwarzania |
 | |
 
-Czas przetwarzania zależy od rozmiaru danych trwa dłużej niż kilka sekund. Przetwarzanie wsadowe godziny wartość domyślna to 5 minut.
+Czas przetwarzania zależy od rozmiaru danych, który jest krótszy niż kilka sekund. Wartość domyślna czasu przetwarzania wsadowego na 5 minut.
 
-## <a name="choosing-the-most-appropriate-ingestion-method"></a>Wybranie najbardziej odpowiedniej metody wprowadzania
+## <a name="choosing-the-most-appropriate-ingestion-method"></a>Wybieranie najbardziej odpowiedniej metody pozyskiwania
 
-Przed rozpoczęciem pozyskiwania danych, użytkownik powinien samodzielnie na następujące pytania.
+Przed rozpoczęciem pozyskiwania danych należy zadać sobie następujące pytania.
 
-* Gdzie ma się moje dane? 
-* Co to jest format danych i można je zmienić? 
-* Co to są wymagane pola, aby można wykonywać zapytania? 
-* Co to jest ilość oczekiwanych danych i prędkości? 
-* Ile typy zdarzeń powinny (widoczna jako liczba tabel)? 
-* Jak często schematu zdarzeń oczekuje się, aby zmienić? 
-* Ilu węzłów wygeneruje dane? 
-* Co to jest źródłowego systemu operacyjnego? 
+* Gdzie znajdują się moje dane? 
+* Co to jest format danych i czy można go zmienić? 
+* Jakie pola są wymagane do zapytania? 
+* Jaki jest oczekiwany wolumin danych i szybkość pracy? 
+* Ile typów zdarzeń jest oczekiwanych (odzwierciedlonych jako liczba tabel)? 
+* Jak często schemat zdarzenia powinien zostać zmieniony? 
+* Ile węzłów będzie generować dane? 
+* Co to jest źródłowy system operacyjny? 
 * Jakie są wymagania dotyczące opóźnień? 
-* Jedną z istniejących potoków pozyskiwania zarządzanej można używać? 
+* Czy można użyć jednego z istniejących potoków pozyskiwania? 
 
-W przypadku organizacji z istniejącą infrastrukturą, które są oparte na usługą obsługi wiadomości, takich jak Centrum zdarzeń przy użyciu łącznika prawdopodobnie jest najbardziej odpowiednie rozwiązania. Pozyskiwanie umieszczonych w kolejce jest odpowiednia dla dużych ilości danych.
+W przypadku organizacji z istniejącą infrastrukturą opartą na usłudze obsługi komunikatów, takiej jak centrum zdarzeń i IoT Hub, używanie łącznika jest prawdopodobnie najbardziej odpowiednim rozwiązaniem. Przyjmowanie w kolejce jest odpowiednie dla dużych ilości danych.
 
 ## <a name="supported-data-formats"></a>Obsługiwane formaty danych
 
-Dla wszystkich pozyskiwania metod innych niż pozyskiwać z zapytania, formatu danych tak, aby można go przeanalizować, Eksplorator danych usługi Azure. Formaty obsługiwane dane są:
+W przypadku wszystkich metod pozyskiwania innych niż pozyskiwanie z kwerendy sformatuj dane, aby usługa Azure Eksplorator danych mogła ją przeanalizować. Obsługiwane formaty danych:
 
-* CSV, TSV, PSV, SCSV, SOH
-* Avro (oddzielone w wierszu, wiele wierszy), JSON
+* CSV, TSV, TSVE, PSV, SCSV, RAPORT O KONDYCJI
+* JSON (rozdzielone wierszami, wielowierszowe), Avro
 * ZIP i GZIP 
 
 > [!NOTE]
-> Gdy dane są pozyskiwane, są wnioskowane typy danych, na podstawie kolumn tabeli docelowej. Jeśli rekord jest niekompletne lub pola nie może być analizowana jako typ danych, odpowiednie kolumny tabeli zostaną wypełnione przy użyciu wartości null.
+> Gdy dane są pozyskiwane, typy danych są wywnioskowane na podstawie kolumn tabeli docelowej. Jeśli rekord jest niekompletny lub nie można przeanalizować pola jako wymaganego typu danych, odpowiednie kolumny tabeli zostaną wypełnione wartościami o wartości null.
 
-## <a name="ingestion-recommendations-and-limitations"></a>Zalecenia dotyczące pozyskiwania i ograniczenia
+## <a name="ingestion-recommendations-and-limitations"></a>Zalecenia i ograniczenia dotyczące pozyskiwania
 
-* Zasady przechowywania skuteczne pozyskiwanych danych jest tworzony na podstawie zasad przechowywania bazy danych. Zobacz [zasady przechowywania](/azure/kusto/concepts/retentionpolicy) Aby uzyskać szczegółowe informacje. Dane wprowadzane wymaga **pozwalająca tabeli** lub **dużych możliwościach skalowania bazy danych** uprawnienia.
-* Pozyskiwanie obsługuje maksymalny rozmiar pliku wynoszący 5 GB. Zaleca się pozyskiwać pliki między 100 MB i 1 GB.
+* Efektywne zasady przechowywania danych uzyskanych pochodzą z zasad przechowywania bazy danych. Aby uzyskać szczegółowe informacje, zobacz [zasady przechowywania](/azure/kusto/concepts/retentionpolicy) . Pozyskiwanie danych wymaga uprawnień do pozyskiwania **tabel** lub pozyskiwania **baz danych** .
+* Pozyskiwanie obsługuje maksymalny rozmiar pliku wynoszący 5 GB. Zaleca się pozyskiwanie plików z zakresu od 100 MB do 1 GB.
 
-## <a name="schema-mapping"></a>mapowanie schematu
+## <a name="schema-mapping"></a>Mapowanie schematu
 
-Mapowanie schematu pozwala powiązać pola danych źródła kolumny tabeli docelowej.
+Mapowanie schematu pomaga powiązać pola danych źródłowych z kolumnami tabeli docelowej.
 
-* [Mapowanie CSV](/azure/kusto/management/mappings?branch=master#csv-mapping) (opcjonalnie) współpracuje z wszystkie formaty oparte na numer. Mogą być wykonywane za pomocą parametru polecenia pozyskiwania lub [wstępnie utworzone w tabeli](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) i do którego istnieje odwołanie parametru polecenia pozyskiwania.
-* [Mapowanie JSON](/azure/kusto/management/mappings?branch=master#json-mapping) (obowiązkowe) i [mapowania Avro](/azure/kusto/management/mappings?branch=master#avro-mapping) (obowiązkowe) mogą być wykonywane za pomocą parametru polecenia odbierania. Można je również [wstępnie utworzone w tabeli](/azure/kusto/management/tables#create-ingestion-mapping) i do którego istnieje odwołanie parametru polecenia pozyskiwania.
+* [Mapowanie CSV](/azure/kusto/management/mappings?branch=master#csv-mapping) (opcjonalnie) działa ze wszystkimi formatami opartymi na liczbie porządkowej. Można go wykonać przy użyciu parametru polecenia pozyskiwania lub [wstępnie utworzonego w tabeli](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) i przywoływanych przez parametr polecenia pozyskiwania.
+* [Mapowanie JSON](/azure/kusto/management/mappings?branch=master#json-mapping) (obowiązkowe) i [Mapowanie Avro](/azure/kusto/management/mappings?branch=master#avro-mapping) (obowiązkowe) można wykonać przy użyciu parametru polecenia pozyskiwania. Mogą być również [wstępnie utworzone w tabeli](/azure/kusto/management/tables#create-ingestion-mapping) i przywoływane przez parametr polecenia pozyskiwania.
 
-## <a name="next-steps"></a>Kolejne kroki
-
-> [!div class="nextstepaction"]
-> [Pozyskiwanie danych z Centrum zdarzeń do Eksploratora danych usługi Azure](ingest-data-event-hub.md)
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Pozyskiwanie danych przy użyciu subskrypcji usługi Event Grid do Eksploratora danych platformy Azure](ingest-data-event-grid.md)
+> [Pozyskiwanie danych z centrum zdarzeń do usługi Azure Eksplorator danych](ingest-data-event-hub.md)
 
 > [!div class="nextstepaction"]
-> [Pozyskiwanie danych z usługi Kafka do Eksploratora danych usługi Azure](ingest-data-kafka.md)
+> [Pozyskiwanie danych przy użyciu subskrypcji Event Grid na platformie Azure Eksplorator danych](ingest-data-event-grid.md)
 
 > [!div class="nextstepaction"]
-> [Pozyskiwanie danych przy użyciu biblioteki języka Python w Eksploratorze danych Azure](python-ingest-data.md)
+> [Pozyskiwanie danych z Kafka na platformie Azure Eksplorator danych](ingest-data-kafka.md)
 
 > [!div class="nextstepaction"]
-> [Pozyskiwanie danych przy użyciu biblioteki węzeł Eksploratora danych platformy Azure](node-ingest-data.md)
+> [Pozyskiwanie danych przy użyciu biblioteki języka Python Eksplorator danych platformy Azure](python-ingest-data.md)
 
 > [!div class="nextstepaction"]
-> [Pozyskiwanie danych przy użyciu usługi Azure Data Explorer zestaw .NET Standard SDK (wersja zapoznawcza)](net-standard-ingest-data.md)
+> [Pozyskiwanie danych przy użyciu biblioteki węzłów Eksplorator danych platformy Azure](node-ingest-data.md)
 
 > [!div class="nextstepaction"]
-> [Pozyskiwanie danych z programu Logstash do Eksploratora danych platformy Azure](ingest-data-logstash.md)
+> [Pozyskiwanie danych przy użyciu usługi Azure Eksplorator danych .NET Standard SDK (wersja zapoznawcza)](net-standard-ingest-data.md)
+
+> [!div class="nextstepaction"]
+> [Pozyskiwanie danych z logstash do platformy Azure Eksplorator danych](ingest-data-logstash.md)

@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 01d1183d82d4d3a0f9d423a2dd64876fb4e3d6a4
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: c4f80c977ea56da14d90d4c0d1784bc379d3a5e9
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147561"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259269"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>Szybki start: Azure Key Vault Biblioteka kliencka dla platformy .NET
 
@@ -210,5 +210,12 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Zobacz [całą aplikację konsolową w usłudze GitHub](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet)
-- [Dowiedz się więcej o usłudze Key Vault](key-vault-whatis.md)
+W tym przewodniku szybki start utworzono Magazyn kluczy, Zapisano wpis tajny i pobrano ten klucz tajny. Zobacz [całą aplikację konsolową w](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet)serwisie GitHub.
+
+Aby dowiedzieć się więcej na temat Key Vault i sposobu integrowania go z aplikacjami, przejdź do artykułu poniżej.
+
+- Implementowanie uwierzytelniania między usługami [w celu Azure Key Vault przy użyciu platformy .NET](service-to-service-authentication.md)
+- Zapoznaj się [z omówieniem Azure Key Vault](key-vault-overview.md)
+- Zobacz [przewodnik dewelopera Azure Key Vault](key-vault-developers-guide.md)
+- Informacje o [kluczach, wpisach tajnych i certyfikatach](about-keys-secrets-and-certificates.md)
+- Przegląd [Azure Key Vault najlepszych](key-vault-best-practices.md) rozwiązań

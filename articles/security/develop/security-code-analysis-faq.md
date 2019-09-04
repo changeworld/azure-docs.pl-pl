@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure dokumentacja dotycząca analizy kodu zabezpieczeń — często zadawane pytania
-description: Ten artykuł zawiera często zadawane pytania dotyczące rozszerzenia analizy kodu zabezpieczeń
+title: Dokumentacja analizy kodu zabezpieczeń firmy Microsoft — często zadawane pytania
+description: Ten artykuł zawiera często zadawane pytania dotyczące rozszerzenia Microsoft Security code Analysis
 author: vharindra
 manager: sukhans
 ms.author: terrylan
@@ -12,85 +12,100 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 8038b7bd60ac771c798a1a8645022b0bf9e142a9
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 846f0ecdd49fc1c501893209b60fa9acc8a32ed2
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934845"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242329"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
-Masz pytania? Zapoznaj się z często zadawanymi pytaniami, aby uzyskać więcej informacji.
+Masz pytania? Zapoznaj się z poniższymi PYTANIAmi, aby uzyskać więcej informacji.
 
-## <a name="general-faqs"></a>Ogólne często zadawane pytania
+## <a name="general-faq"></a>Ogólne często zadawane pytania
 
-### <a name="can-i-install-the-extension-on-my-tfs-not-azure-devops-server"></a>Czy mogę zainstalować rozszerzenie na serwerze TFS (nie na platformie Azure DevOps)? 
+### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>Czy mogę zainstalować rozszerzenie na dowolnym wystąpieniu programu Visual Studio Team Foundation Server zamiast w wystąpieniu usługi Azure DevOps?
 
-Nie, rozszerzenie nie jest dostępne do pobrania i zainstalowania dla programu TFS.
+Nie. Rozszerzenie nie jest dostępne do pobrania i instalacji dla programu Visual Studio Team Foundation Server.
 
 ### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>Czy muszę uruchomić analizę kodu zabezpieczeń firmy Microsoft z moją kompilacją? 
 
-Tak i nie. W zależności od typu narzędzia analizy sam kod źródłowy może być jedynym wymaganym warunkiem lub może być wymagana wartość wyjściowa kompilacji. Na przykład, ponieważ skaner poświadczeń analizuje pliki w strukturze folderów repozytorium kodu, można uruchomić skaner poświadczeń i opublikować dzienniki analizy zabezpieczeń zadania kompilacji w autonomicznej kompilacji w celu pobrania wyników.
-W przypadku innych narzędzi służących do analizowania artefaktów kompilacji, takich jak BinSkim, kompilacja będzie wymagana najpierw.
+Może. Jest to zależne od typu narzędzia do analizy. Kod źródłowy może być jedynym wymaganym warunkiem lub dane wyjściowe kompilacji mogą być wymagane.
 
-### <a name="can-i-break-my-build-when-results-are-found"></a>Czy mogę przerwać kompilację po znalezieniu wyników? 
-Tak, możesz wprowadzić przerwanie kompilacji, gdy dowolne narzędzie zgłosi problem, wyszukiwanie w jego pliku dziennika. Wystarczy dodać zadanie kompilacji po analizie i zaznaczyć pole wyboru dla każdego narzędzia, dla którego chcesz przerwać kompilację. Możesz przerwać kompilację, gdy dowolne narzędzie zgłosi błędy lub ostrzeżenia i błędy w interfejsie użytkownika zadania po wykonaniu analizy.
+Na przykład skaner poświadczeń (CredScan) analizuje pliki w strukturze folderów repozytorium kodu. Ze względu na tę analizę można uruchomić zadania kompilacji dzienników analizy zabezpieczeń i opublikować je w autonomicznej kompilacji w celu uzyskania wyników.
 
-### <a name="how-are-the-command-line-arguments-different-in-azure-devops-than-they-are-in-the-standalone-desktop-tools"></a>Czym różnią się argumenty wiersza polecenia w usłudze Azure DevOps niż w autonomicznych narzędziach pulpitu? 
+W przypadku innych narzędzi, takich jak BinSkim, które analizują artefakty po kompilacji, najpierw wymagana jest kompilacja.
 
-W większości przypadków zadania kompilacji Azure DevOps są bezpośrednimi otokami wokół argumentów wiersza polecenia narzędzi zabezpieczeń. Wszystkie elementy, które zwykle przechodzą do narzędzia w wierszu polecenia z pulpitu, można przekazać do danych wejściowych argumentów zadania kompilacji.
-Poniżej znajduje się lista zauważalnych różnic:
- - Narzędzie zostanie wykonane z folderu źródłowego agenta $ (Build. SourcesDirectory) lub% BUILD_SOURCESDIRECTORY%. Przykład: C:\agent\_work\1\s 
- - Ścieżki w argumentach mogą być względne względem katalogu głównego katalogu źródłowego wymienionego powyżej lub bezwzględnie przez uruchomienie agenta Premium ze znanymi lokalizacjami wdrożenia zasobów lokalnych lub użyciem zmiennych kompilacji DevOps platformy Azure
- - Narzędzia będą automatycznie podawać ścieżkę lub folder pliku wyjściowego, jeśli podano ścieżkę wyjściową, zostanie ona usunięta i zastąpiona ścieżką do naszej dobrze znanej lokalizacji dzienników w agencie kompilacji.
- - Niektóre dodatkowe parametry wiersza polecenia są oczyszczane i usuwane z niektórych narzędzi, takich jak dodawanie lub usuwanie opcji, aby upewnić się, że nie zostanie uruchomiony graficzny interfejs użytkownika.
+### <a name="can-i-break-my-build-when-results-are-found"></a>Czy mogę przerwać kompilację po znalezieniu wyników?
 
-### <a name="can-i-run-a-build-task-for-example-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>Czy można uruchomić zadanie kompilacji (na przykład skaner poświadczeń) dla wielu repozytoriów w kompilacji DevOps Azure? 
+Tak. Możesz wprowadzić przerwanie kompilacji, gdy dowolne narzędzie zgłosi problem lub problem w jego pliku dziennika. Wystarczy dodać zadanie kompilacji po analizie i zaznaczyć pole wyboru dla każdego narzędzia, dla którego chcesz przerwać kompilację.
 
-Nie, uruchomienie bezpiecznych narzędzi programistycznych dla wielu repozytoriów w pojedynczym potoku nie jest obecnie obsługiwane.
+W interfejsie użytkownika zadania po przeanalizie można przerwać kompilację, gdy dowolne narzędzie zgłosi tylko błędy lub błędy i ostrzeżenia.
 
-###  <a name="the-output-file-i-specified-is-not-being-created--i-cant-find-the-output-file-i-specified"></a>Określony plik wyjściowy nie jest tworzony/nie można znaleźć określonego pliku wyjściowego 
+### <a name="how-do-the-command-line-arguments-in-azure-devops-differ-from-those-arguments-in-the-standalone-desktop-tools"></a>Jak argumenty wiersza polecenia w usłudze Azure DevOps różnią się od tych argumentów w autonomicznych narzędziach pulpitu? 
 
-Zadania kompilacji obecnie oczyszczają dane wejściowe użytkownika i aktualizują lokalizację wygenerowanego pliku wyjściowego do wspólnej lokalizacji w agencie kompilacji. Aby uzyskać więcej informacji na temat tej lokalizacji, zobacz następujące pytania.
+W większości przypadków zadania kompilacji Azure DevOps są bezpośrednimi otokami wokół argumentów wiersza polecenia narzędzi zabezpieczeń. Można przekazać jako argumenty do zadania kompilacji wszystko, co jest zwykle przekazywane do narzędzia wiersza polecenia.
+
+Zauważalne różnice:
+
+- Narzędzia są uruchamiane z folderu źródłowego agenta $ (Build. SourcesDirectory) lub z% BUILD_SOURCESDIRECTORY%. Przykładem jest C:\agent\_work\1\s.
+- Ścieżki w argumentach mogą być względne względem katalogu głównego katalogu źródłowego wymienionego wcześniej. Ścieżki mogą być również bezwzględne. Ścieżki bezwzględne są uzyskiwane przy użyciu zmiennych kompilacji DevOps platformy Azure lub przez uruchomienie agenta lokalnego z znanymi lokalizacjami wdrożenia zasobów lokalnych.
+- Narzędzia automatycznie zapewniają ścieżkę lub folder pliku wyjściowego. Jeśli podano lokalizację wyjściową dla zadania kompilacji, Ta lokalizacja zostanie zastąpiona ścieżką do dobrze znanej lokalizacji dzienników w agencie kompilacji.
+- Niektóre dodatkowe argumenty wiersza polecenia są zmieniane dla niektórych narzędzi. Jednym z przykładów jest dodanie lub usunięcie opcji, które zapewniają, że nie jest uruchamiany graficzny interfejs użytkownika.
+
+### <a name="can-i-run-a-build-task-like-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>Czy mogę uruchomić zadanie kompilacji, takie jak skaner poświadczeń dla wielu repozytoriów w kompilacji DevOps Azure?
+
+Nie. Uruchamianie bezpiecznych narzędzi programistycznych w wielu repozytoriach w pojedynczym potoku nie jest obsługiwane.
+
+### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>Określony plik wyjściowy nie jest tworzony lub nie można znaleźć podanego pliku wyjściowego
+
+Zadania kompilacji filtrują niektóre dane wejściowe użytkownika. Dla tego pytania należy zaktualizować lokalizację wygenerowanego pliku wyjściowego jako wspólną lokalizację w agencie kompilacji. Aby uzyskać więcej informacji na temat tej lokalizacji, zobacz następujące pytania.
 
 ### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>Gdzie znajdują się pliki wyjściowe generowane przez narzędzia? 
 
-Zadania kompilacji automatycznie dodają ścieżki wyjściowe do następującej dobrze znanej lokalizacji w agencie kompilacji $ (Agent. BuildDirectory)\_sdt\logs. Dzięki standaryzacji w tej lokalizacji możemy zagwarantować, że inne zespoły wytwarzające dzienniki analizy kodu lub zużywające je będą miały dostęp.
+Zadania kompilacji automatycznie dodają ścieżki wyjściowe do tej dobrze znanej lokalizacji na agencie kompilacji: $ (Agent. BuildDirectory)\_sdt\logs. Ze względu na to, że firma Microsoft stosuje się do tej lokalizacji, wszystkie zespoły, które tworzą lub zużywają dzienniki analizy kodu, mają dostęp do danych wyjściowych.
 
 ### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>Czy można kolejkować kompilację, aby uruchamiać te zadania na hostowanym agencie kompilacji? 
 
-Tak, wszystkie zadania i narzędzia w rozszerzeniu można wykonać na hostowanym agencie kompilacji.
+Tak. Wszystkie zadania i narzędzia w rozszerzeniu można wykonać na hostowanym agencie kompilacji.
 
 >[!NOTE]
-> Zadanie kompilacji chroniącej przed złośliwym oprogramowaniem wymaga agenta kompilacji z włączonym usługą Windows Defender, który ma wartość true w "hostowanej program VS2017" lub nowszych agentach kompilacji. (Nie zostanie uruchomiony na starszym agencie "Hosted"/"programu VS2015"). Nie można zaktualizować podpisów tych agentów, ale sygnatura powinna być zawsze stosunkowo aktualna, krótsza niż 3 godziny.
+> Zadanie kompilacji skanera chroniącego przed złośliwym oprogramowaniem wymaga agenta kompilacji z włączonym usługą Windows Defender. Udostępniony program Visual Studio 2017 i jego nowsze wersje zapewniają taki Agent. Zadanie kompilacji nie zostanie uruchomione w hostowanym agencie programu Visual Studio 2015.
 >
+> Mimo że nie można zaktualizować podpisów tych agentów, sygnatury powinny zawsze być starsze niż trzy godziny.
 
-### <a name="can-i-run-these-build-tasks-as-part-of-a-release-pipeline-as-opposed-to-a-build-pipeline"></a>Czy można uruchamiać te zadania kompilacji w ramach potoku wydania (w przeciwieństwie do potoku kompilacji)? 
-W większości przypadków tak. Jednak zadania, które publikują artefakty, nie są obsługiwane przez usługę Azure DevOps do uruchamiania z potoków wydań: "Jedyną kategorią zadań, które nie powinny być używane z wersją, są te, które publikują artefakty. Jest to spowodowane tym, że obecnie nie obsługujemy publikowania artefaktów w wersji ".
-Zapobiega to pomyślnym uruchomieniu zadania "Opublikuj dzienniki analizy zabezpieczeń" z potoku wersji; zakończy się niepowodzeniem, a opisowy komunikat o błędzie.
+### <a name="can-i-run-these-build-tasks-as-part-of-a-release-pipeline-as-opposed-to-a-build-pipeline"></a>Czy można uruchamiać te zadania kompilacji jako część potoku wersji, zamiast potoku kompilacji?
 
-### <a name="from-where-do-the-build-tasks-download-the-tools"></a>Skąd zadania kompilacji pobierają narzędzia? 
-Zadania kompilacji a) pobierają pakiety NuGet dla narzędzi z następującego [źródła danych usługi Azure DevOps zarządzanie pakietami](https://securitytools.pkgs.visualstudio.com/_packaging/SecureDevelopmentTools/nuget/v3/index.json) lub używają menedżera pakietów węzła, który musi być wstępnie zainstalowany na agencie kompilacji (przykład: "npm Install tslint").
+W większości przypadków tak.
 
-### <a name="what-effect-will-installing-the-extension-have-on-my-azure-devops-organization"></a>Jakie znaczenie ma zainstalowanie rozszerzenia w mojej organizacji usługi Azure DevOps? 
+Jednak usługa Azure DevOps nie obsługuje uruchamiania zadań w ramach potoków wydań, gdy te zadania publikują artefakty. Brak pomocy technicznej uniemożliwia pomyślne uruchomienie zadania publikowania dzienników analizy zabezpieczeń w potoku wydania. Zadanie w zamian kończy się niepowodzeniem z komunikatem o błędzie opisowym.
 
-Podczas instalowania programu zadania kompilacji zabezpieczeń udostępniane przez rozszerzenie staną się dostępne do użycia przez wszystkich użytkowników w organizacji. Podczas tworzenia lub edytowania potoku platformy Azure te zadania będą dostępne do dodania z listy kolekcja zadań kompilacji. W przeciwnym razie instalacja rozszerzenia w organizacji usługi Azure DevOps nie ma żadnego wpływu. Nie modyfikuje żadnych ustawień konta ani projektu ani potoków.
+### <a name="from-where-do-the-build-tasks-download-the-tools"></a>Skąd zadania kompilacji pobierają narzędzia?
 
-### <a name="will-installing-the-extension-modify-my-existing-azure-pipelines"></a>Czy zostanie zainstalowane rozszerzenie Modyfikuj moje istniejące Azure Pipelines? 
+Zadania kompilacji mogą pobrać pakiety NuGet narzędzi z [kanału informacyjnego usługi Azure DevOps zarządzanie pakietami](https://securitytools.pkgs.visualstudio.com/_packaging/SecureDevelopmentTools/nuget/v3/index.json). Zadania kompilacji mogą również korzystać z Menedżera pakietów węzła, który musi być wstępnie zainstalowany na agencie kompilacji. Przykładem takiej instalacji jest polecenie **npm Install tslint**.
 
-Nie. Zainstalowanie rozszerzenia spowoduje, że będą dostępne zadania kompilacji zabezpieczeń do dodania do Azure Pipelines. Użytkownicy nadal muszą dodać lub zaktualizować definicje kompilacji, aby zintegrować narzędzia w procesie kompilacji.
+### <a name="what-effect-does-installing-the-extension-have-on-my-azure-devops-organization"></a>Jaki wpływ na instalację rozszerzenia należy do mojej organizacji usługi Azure DevOps? 
 
-## <a name="task-specific-faqs"></a>Często zadawane pytania dotyczące zadań
+Po zainstalowaniu zadania kompilacji zabezpieczeń udostępniane przez rozszerzenie staną się dostępne dla wszystkich użytkowników w organizacji. Podczas tworzenia lub edytowania potoku platformy Azure te zadania są dostępne z listy kolekcja zadań kompilacji. W przeciwnym razie instalacja rozszerzenia w organizacji usługi Azure DevOps nie przynosi żadnego efektu. Instalacja nie modyfikuje żadnych ustawień konta, ustawień projektu ani potoków.
 
-W tej sekcji są wyświetlane często zadawane pytania dotyczące zadań kompilacji.
+### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>Czy zainstalowanie rozszerzenia modyfikuje moje istniejące potoki platformy Azure? 
 
-### <a name="credential-scanner-faqs"></a>Często zadawane pytania dotyczące skanerów poświadczeń
+Nie. Zainstalowanie rozszerzenia sprawia, że zadania kompilacji zabezpieczeń są dostępne dla wszystkich potoków. Nadal trzeba dodać lub zaktualizować definicje kompilacji, aby narzędzia mogły współpracowały z procesem kompilacji.
 
-#### <a name="what-are-common-suppressions-scenarios-and-examples"></a>Jakie są typowe scenariusze pomijania i przykłady? 
-Poniżej przedstawiono dwa najczęstsze scenariusze pomijania:
-##### <a name="suppress-all-occurrences-of-a-given-secret-within-the-specified-path"></a>Pomiń wszystkie wystąpienia danego wpisu tajnego w określonej ścieżce 
-Klucz skrótu wpisu tajnego z pliku wyjściowego skanera poświadczeń jest wymagany, jak pokazano w poniższym przykładzie
-   
+## <a name="task-specific-faq"></a>Często zadawane pytania dotyczące zadań
+
+Pytania dotyczące zadań kompilacji są wymienione w tej sekcji.
+
+### <a name="credential-scanner"></a>Skaner poświadczeń
+
+#### <a name="what-are-common-suppression-scenarios-and-examples"></a>Jakie są typowe scenariusze pomijania i przykłady?
+
+Poniżej znajdują się szczegółowe informacje o dwóch typowych scenariuszach pomijania.
+
+##### <a name="to-suppress-all-occurrences-of-a-given-secret-within-the-specified-path"></a>Aby pominąć wszystkie wystąpienia danego wpisu tajnego w określonej ścieżce
+
+Klucz skrótu wpisu tajnego z pliku wyjściowego CredScan jest wymagany, jak pokazano w poniższym przykładzie.
+
         {
             "tool": "Credential Scanner",
             "suppressions": [
@@ -102,21 +117,21 @@ Klucz skrótu wpisu tajnego z pliku wyjściowego skanera poświadczeń jest wyma
         }
 
 >[!WARNING]
-> Klucz skrótu jest generowany przez część pasującej wartości lub zawartości pliku. Każda Poprawka kodu źródłowego może zmienić klucz skrótu i wyłączyć regułę pomijania. 
+> Klucz skrótu jest generowany przez część pasującej wartości lub zawartości pliku. Każda Poprawka kodu źródłowego może zmienić klucz skrótu i wyłączyć regułę pomijania.
 
-##### <a name="to-suppress-all-secrets-in-a-specified-file-or-to-suppress-the-secrets-file-itself"></a>Aby pominąć wszystkie wpisy tajne w określonym pliku (lub aby pominąć sam plik tajny) 
-Wyrażeniem pliku może być nazwa pliku lub każda przyrostkowa część pełnej ścieżki/nazwy pliku. Symbole wieloznaczne nie są obsługiwane. 
+##### <a name="to-suppress-all-secrets-in-a-specified-file-or-to-suppress-the-secrets-file-itself"></a>Aby pominąć wszystkie wpisy tajne w określonym pliku lub pominąć sam plik tajny
 
-**Przykład** 
+Wyrażeniem pliku może być nazwa pliku. Może to być również część podstawowa elementu pełnej ścieżki pliku lub nazwy pliku. Symbole wieloznaczne nie są obsługiwane.
 
-Plik, który ma zostać pominięty: [InputPath] \src\JS\lib\angular.js 
+W poniższych przykładach pokazano, jak pominąć plik \<inputPath > \src\JS\lib\angular.js
 
-Prawidłowe reguły pomijania: 
-- [InputPath] \src\JS\lib\angular.js--pomijanie pliku w określonej ścieżce
+Przykłady prawidłowych reguł pomijania:
+
+- \<InputPath > \src\JS\lib\angular.js — pomija plik w określonej ścieżce
 - \src\JS\lib\angular.js
 - \JS\lib\angular.js
 - \lib\angular.js
-- kątow. js--Pomijaj każdy plik o tej samej nazwie
+- kątow. js — pomija wszystkie pliki o tej samej nazwie
 
         {
             "tool": "Credential Scanner",
@@ -133,62 +148,86 @@ Prawidłowe reguły pomijania:
         }      
 
 >[!WARNING] 
-> Wszystkie przyszłe wpisy tajne dodane do pliku będą również automatycznie pomijane. 
+> Wszystkie przyszłe wpisy tajne dodane do pliku również zostaną pominięte automatycznie.
 
-#### <a name="what-are-recommended-secrets-management-guidelines"></a>Jakie są zalecane wskazówki dotyczące zarządzania kluczami tajnymi? 
-Podczas wykrywania stałych zakodowanych wpisów tajnych w odpowiednim czasie i łagodzenia ryzyka jest to jeszcze lepsze, jeśli jedna z nich nie pozwala na całkowite sprawdzenie wpisów tajnych. W tym przypadku firma Microsoft udostępniła analizatora kodu CredScan jako część [rozszerzenia Microsoft DevLabs](https://marketplace.visualstudio.com/items?itemName=VSIDEDevOpsMSFT.ContinuousDeliveryToolsforVisualStudio) dla programu Visual Studio. Na wczesnej wersji zapoznawczej oferuje deweloperom wbudowane środowisko do wykrywania potencjalnych wpisów tajnych w kodzie, dzięki czemu można rozwiązać te problemy w czasie rzeczywistym. Aby uzyskać więcej informacji, zapoznaj [](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/) się z blogiem dotyczącym bezpiecznego zarządzania kluczami tajnymi w chmurze. Poniżej przedstawiono kilka dodatkowych zasobów, które ułatwiają zarządzanie wpisami tajnymi i dostęp do poufnych informacji z aplikacji w bezpieczny sposób: 
+#### <a name="what-are-recommended-guidelines-for-managing-secrets"></a>Jakie są zalecane wskazówki dotyczące zarządzania wpisami tajnymi?
+
+Warto szybko wykrywać stałe kodowane klucze tajne i ograniczać ryzyko. Nie należy jednak jeszcze lepiej zaewidencjonować wpisów tajnych.
+
+Aby pomóc w tym przypadku, firma Microsoft udostępniła wczesną wersję zapoznawczą analizatora kodu skanera poświadczeń jako część [rozszerzenia Microsoft DevLabs](https://marketplace.visualstudio.com/items?itemName=VSIDEDevOpsMSFT.ContinuousDeliveryToolsforVisualStudio) dla programu Visual Studio. Analizator jest wersją wczesnej wersji zapoznawczej. Oferuje deweloperom wbudowane środowisko do wykrywania potencjalnych wpisów tajnych w kodzie. Dzięki temu Analizator udostępnia również deweloperom szansę rozwiązać te problemy w czasie rzeczywistym.
+
+Aby uzyskać więcej informacji, zobacz wpis w blogu [Zarządzanie kluczami tajnymi bezpiecznie w chmurze](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/).
+
+Poniższe zasoby ułatwiają bezpieczne zarządzanie kluczami tajnymi i dostęp do poufnych informacji z poziomu aplikacji:
+
  - [Usługa Azure Key Vault](../../key-vault/index.yml)
- - [Azure Active Directory](../../sql-database/sql-database-aad-authentication.md)
- - [tożsamość usługi zarządzanej usługi Azure AD](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
- - [Tożsamość usługi zarządzanej (MSI) dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md)
- - [tożsamość usługi zarządzanej platformy Azure](../../app-service/overview-managed-identity.md)
+ - [Azure Active Directory (Azure AD)](../../sql-database/sql-database-aad-authentication.md)
+ - [Usługa Azure AD tożsamość usługi zarządzanej (MSI)](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
+ - [Tożsamości zarządzane dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md)
+ - [Zarządzane tożsamości w Azure App Service i Azure Functions](../../app-service/overview-managed-identity.md)
  - [Biblioteka AppAuthentication](../../key-vault/service-to-service-authentication.md)
 
 #### <a name="can-i-write-my-own-custom-searchers"></a>Czy mogę napisać własne niestandardowe wyszukiwania?
 
-Skaner poświadczeń bazuje na zestawie wyszukiwania zawartości często zdefiniowanym w pliku **buildsearchers. XML** . Plik zawiera tablicę serializowanych obiektów XML, które reprezentują obiekt ContentSearcher. Program jest dystrybuowany z zestawem analityków, które zostały dobrze przetestowane, ale pozwala na implementację własnych niestandardowych wyszukiwań. 
+Skaner poświadczeń polega na zestawie wyszukiwania zawartości, które są często zdefiniowane w pliku buildsearchers. XML. Plik zawiera tablicę serializowanych obiektów XML, które reprezentują obiekt **ContentSearcher** . Program jest dystrybuowany z zestawem dobrze przetestowanych wyszukiwań. Ale można również zaimplementować własne niestandardowe wyszukiwania.
 
-Wyszukiwanie zawartości jest zdefiniowane w następujący sposób: 
+Wyszukiwanie zawartości jest zdefiniowane w następujący sposób:
 
-- **Name** — nazwa opisowa wyszukiwania, który ma być używany w pliku wyjściowym skanera poświadczeń. Zaleca się użycie notacji CamelCase konwencji nazewnictwa przypadków dla nazw wyszukiwania. 
-- **RuleID** — stabilny identyfikator nieprzezroczysty dla wyszukiwania. 
-    - Domyślne wyszukiwania skanera poświadczeń są przypisywane za pomocą RuleIds, takich jak CSCAN0010, CSCAN0020, CSCAN0030 itp. Ostatnia cyfra jest zarezerwowana dla potencjalnej grupy wyrażeń regularnych wyszukiwania lub dzielenia.
-    - RuleId dla dostosowanych wyszukiwań powinna mieć własną przestrzeń nazw w formacie: CSCAN-{Namespace} 0,010, CSCAN-{Namespace} 0020, CSCAN-{Namespace} 0030 itd.
-    - W pełni kwalifikowana nazwa wyszukiwania jest kombinacją RuleId i nazwy elementu Searcher. Przykład CSCAN0010. KeyStoreFiles, CSCAN0020. Base64EncodedCertificate itp.
-- **ResourceMatchPattern** — wyrażenie regularne rozszerzeń plików do sprawdzenia względem wyszukiwania
-- **ContentSearchPatterns** — tablica ciągów zawierających instrukcje wyrażenia regularnego do dopasowania. Jeśli nie zdefiniowano żadnych wzorców wyszukiwania, wszystkie pliki zgodne ze wzorcem dopasowania zasobów zostaną zwrócone.
-- **ContentSearchFilters** — tablica ciągów zawierających instrukcje wyrażenia regularnego do filtrowania konkretnych fałszywych wyników wyszukiwania.
-- **Matchdetails** — opis komunikatu i/lub instrukcje ograniczenia, które mają zostać dodane dla każdego dopasowania do usługi wyszukiwania.
-- **Zalecenie** — zapewnia zawartość pola sugestii dla dopasowania przy użyciu formatu szybkiego raportu.
-- **Ważność** — liczba całkowita odzwierciedlająca ważność problemu (najwyższa = 1).
-![Konfiguracja skanera poświadczeń](./media/security-tools/6-credscan-customsearchers.png)
+- **Nazwa**: Nazwa opisowa wyszukiwania, który ma być używany w plikach wyjściowych skanera poświadczeń. Zalecamy użycie konwencji nazewnictwa notacji CamelCase-Case dla nazw usługi Search.
+- **RuleID**: Stabilny identyfikator nieprzezroczystego elementu wyszukiwania:
+    - Domyślnym analitykiem skanera poświadczeń jest przypisana wartość **RuleID** , na przykład CSCAN0010, CSCAN0020 lub CSCAN0030. Ostatnia cyfra jest zarezerwowana dla potencjalnie łączących lub dzielących grupy wyszukiwania za pomocą wyrażeń regularnych (wyrażenie regularne).
+    - Wartość **RuleID** niestandardowego wyszukiwania powinna mieć własną przestrzeń nazw. Przykłady obejmują CSCAN-\<przestrzeń\>nazw 0,010, CSCAN\<-\>przestrzeń nazw 0020 i CSCAN\<-\>Namespace 0030.
+    - W pełni kwalifikowana nazwa wyszukiwania to kombinacja wartości **RuleID** i nazwy szukanej. Przykłady obejmują CSCAN0010. KeyStoreFiles i CSCAN0020. Base64EncodedCertificate.
+- **ResourceMatchPattern**: Wyrażenie regularne rozszerzeń plików do sprawdzenia dla wyszukiwania.
+- **ContentSearchPatterns**: Tablica ciągów zawierających instrukcje wyrażenia regularnego do dopasowania. Jeśli nie zdefiniowano żadnych wzorców wyszukiwania, zwracane są wszystkie pliki zgodne z wartością **ResourceMatchPattern** .
+- **ContentSearchFilters**: Tablica ciągów zawierających instrukcje wyrażenia regularnego do filtrowania fałszywych wartości dodatnich dla wyszukiwania.
+- **MatchDetails**: Komunikat opisowy, instrukcje ograniczenia lub oba, które mają zostać dodane dla każdego dopasowania do usługi wyszukiwania.
+- **Zalecenie**: Sugestie — zawartość pola dla dopasowania przy użyciu formatu raportu wstępnie szybkiego.
+- **Ważność**: Liczba całkowita, która odzwierciedla poziom ważności problemu. Najwyższy poziom ważności ma wartość 1.
 
-### <a name="roslyn-analyzers-faqs"></a>Roslyn analizatory — często zadawane pytania
+  ![Plik XML pokazujący konfigurację skanera poświadczeń](./media/security-tools/6-credscan-customsearchers.png)
 
-#### <a name="what-are-the-most-common-errors-when-using-the-roslyn-analyzers-task"></a>Jakie są najczęstsze błędy podczas korzystania z zadania analizatorów Roslyn?
+### <a name="roslyn-analyzers"></a>Analizatory Roslyn
 
-**Błąd: Projekt został przywrócony przy użyciu programu Microsoft. servicecore. App w wersji x. x. x, ale z bieżącymi ustawieniami, zamiast tego zostanie użyta wersja y. y. y. Aby rozwiązać ten problem, upewnij się, że te same ustawienia są używane do przywracania i dla kolejnych operacji, takich jak Kompilowanie lub publikowanie. Zazwyczaj ten problem może wystąpić, jeśli właściwość RuntimeIdentifier jest ustawiona podczas kompilowania lub publikowania, ale nie podczas przywracania:**
+#### <a name="what-are-common-errors-when-using-the-roslyn-analyzers-task"></a>Jakie są typowe błędy podczas korzystania z zadania analizatorów Roslyn?
 
-Analizatory Roslyn są uruchamiane jako część kompilacji, dlatego drzewo źródłowe na maszynie kompilacji musi być w stanie możliwego do skompilowania. Krok (prawdopodobnie "program dotnet. exe Publish") między główną kompilacją a analizatorami Roslyn może umieścić drzewo źródłowe w stanie niemożliwego do skompilowania. Może to być duplikowanie kroku, który wykonuje przywracanie NuGet, tuż przed krokiem analizatora Roslyn, umieści drzewo źródłowe w stanie możliwego do skompilowania.
+##### <a name="the-project-was-restored-using-a-wrong-microsoftnetcoreapp-version"></a>Projekt został przywrócony przy użyciu nieprawidłowej wersji programu Microsoft. WebCore. App
 
-**"CSC. exe" zakończył pracę z kodem błędu 1 — nie można utworzyć wystąpienia analizatora AAAA z C:\BBBB.dll: Nie można załadować pliku lub zestawu "Microsoft. CodeAnalysis, Version = X. X. X. X, Culture = neutral, PublicKeyToken = 31bf3856ad364e35" lub jednej z jego zależności. System nie może odnaleźć określonego pliku.**
+Pełny komunikat o błędzie:
 
-Upewnij się, że kompilator obsługuje analizatory Roslyn. "CSC. exe/Version" powinien raportować co najmniej v 2.6. x. W niektórych przypadkach poszczególne pliki. csproj mogą zastąpić instalację programu Visual Studio na maszynie kompilacji, odwołując się do pakietu z Microsoft.Net. Kompilators. Jeśli użycie określonej wersji kompilatora nie zostało zamierzone, Usuń odwołania do Microsoft.Net. kompilatorów. W przeciwnym razie upewnij się, że przywoływany pakiet jest również co najmniej v 2.6. x. Spróbuj uzyskać dziennik błędów, który można znaleźć w parametrze/ErrorLog: w wierszu polecenia CSC. exe (znajdującym się w dzienniku zadania kompilacji Roslyn). Może wyglądać podobnie do tego:/ErrorLog: f:\ts-Services-123\_work\456\s\Some\Project\Code\Code.csproj.Sarif
+Porn Projekt został przywrócony przy użyciu programu Microsoft. servicecore. App w wersji *x. x. x*, ale z bieżącymi ustawieniami, zamiast tego zostanie użyta wersja *y. y. y* . Aby rozwiązać ten problem, upewnij się, że te same ustawienia są używane do przywracania i dla kolejnych operacji, takich jak Kompilowanie lub publikowanie. Zazwyczaj ten problem może wystąpić, jeśli właściwość RuntimeIdentifier jest ustawiona podczas kompilowania lub publikowania, ale nie podczas przywracania.
 
-**C# Kompilator nie jest wystarczająco ostatni (musi być > = 2,6)**
+Ponieważ zadania analizatorów Roslyn są uruchamiane jako część kompilacji, drzewo źródłowe na maszynie kompilacji musi być w stanie możliwego do skompilowania.
 
-Najnowsze wersje C# kompilatora są opublikowane tutaj: https://www.nuget.org/packages/Microsoft.Net.Compilers. Aby uzyskać zainstalowaną wersję, użyj polecenia `C:\>csc.exe /version` Uruchom z wiersza poleceń. Upewnij się, że nie masz żadnych odwołań do pakietu NuGet Microsoft.Net. COMPILERS, który jest < v 2.6.
+Krok między głównymi krokami kompilowania i Roslynów może spowodować umieszczenie drzewa źródłowego w stanie uniemożliwiającym Kompilowanie. Ten dodatkowy krok to prawdopodobnie **plik dotnet. exe Publish**. Spróbuj zduplikować krok, który wykonuje przywracanie NuGet tuż przed krokiem Roslyn analizatorów. Ten zduplikowany krok może spowodować przywrócenie drzewa źródła w stanie możliwego do skompilowania.
 
-**Nie znaleziono dzienników programu MSBuild/VSBuild**
+##### <a name="cscexe-cant-create-an-analyzer-instance"></a>CSC. exe nie może utworzyć wystąpienia analizatora
 
-Ze względu na sposób działania zadania to zadanie wymaga wykonania zapytania dotyczącego usługi Azure DevOps dla dziennika MSBuild z zadania kompilacji MSBuild. Jeśli to zadanie zostanie uruchomione natychmiast po zadaniu kompilacji MSBuild, dziennik nie będzie jeszcze dostępny; Umieść inne zadania kompilacji, w tym zadania kompilacji SecDevTools, takie jak Binskim, skanowanie chroniące przed złośliwym kodem i inne), między zadaniem kompilacji MSBuild i zadaniem do tworzenia analizatorów Roslyn. 
+Pełny komunikat o błędzie:
+
+Zakończono działanie "CSC. exe" z kodem błędu 1 — nie można utworzyć wystąpienia analizatora *AAAA* z pliku C:\\*bbbb*. dll: Nie można załadować pliku lub zestawu "Microsoft. CodeAnalysis, Version =*X. x. x. x*, Culture = neutral, PublicKeyToken = 31bf3856ad364e35" lub jednej z jego zależności. System nie może odnaleźć określonego pliku."
+
+Upewnij się, że kompilator obsługuje analizatory Roslyn. Uruchomienie polecenia **CSC. exe/Version** powinno spowodować zgłoszenie wartości wersji 2,6 lub nowszej.
+
+Czasami plik. csproj może zastąpić instalację programu Visual Studio na maszynie kompilacji, odwołując się do pakietu z Microsoft.Net. Kompilators. Jeśli nie zamierzasz używać określonej wersji kompilatora, Usuń odwołania do Microsoft.Net. Kompilators. W przeciwnym razie upewnij się, że wersja przywoływanego pakietu jest również 2,6 lub nowsza.
+
+Spróbuj uzyskać ścieżkę dziennika błędów, która jest określona w opcji **CSC. exe/ErrorLog** . Opcja i ścieżka są wyświetlane w dzienniku dla zadania kompilacji analizatory Roslyn. Mogą wyglądać podobnie do **/ErrorLog: f:\ts-Services-\_123 work\456\s\Some\Project\Code\Code.csproj.Sarif**
+
+##### <a name="the-c-compiler-version-isnt-recent-enough"></a>Wersja C# kompilatora nie jest wystarczająco aktualna
+
+Aby uzyskać najnowsze wersje C# kompilatora, przejdź do [Microsoft.NET. kompilators](https://www.nuget.org/packages/Microsoft.Net.Compilers). Aby uzyskać zainstalowaną wersję, uruchom **plik csc. exe/Version** w wierszu polecenia. Upewnij się, że odwołujesz się do pakietu NuGet Microsoft.Net. COMPILERS w wersji 2,6 lub nowszej.
+
+##### <a name="msbuild-and-vsbuild-logs-arent-found"></a>Nie znaleziono dzienników MSBuild i VSBuild
+
+Zadanie kompilacji analizatorów Roslyn musi wysyłać zapytania do usługi Azure DevOps dla dziennika MSBuild z zadania kompilacji MSBuild. Jeśli zadanie analizatora zostanie uruchomione natychmiast po wykonaniu zadania MSBuild, dziennik nie będzie jeszcze dostępny. Umieść inne zadania między zadaniem programu MSBuild a zadaniem analizatorów Roslyn. Przykłady innych zadań obejmują skaner BinSkim i chroniący przed złośliwym oprogramowaniem.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Jeśli potrzebujesz dodatkowej pomocy, pomoc techniczna firmy Microsoft do analizy kodu zabezpieczeń jest dostępna od poniedziałku do piątku od 9:00 AM – 5:00 PM (pacyficzny czas standardowy)
+Jeśli potrzebujesz dodatkowej pomocy, obsługa analizy kodu zabezpieczeń firmy Microsoft jest dostępna od poniedziałku do piątku od 9:00 AM do 5:00 PM (pacyficzny czas standardowy).
 
-  - Dołączanie — skontaktuj się z kierownikami ds. klientów, aby rozpocząć pracę. 
+  - Dołączania Aby rozpocząć, skontaktuj się z kierownikami ds. klientów technicznych.
+  
+  - Pomocy Wyślij wiadomość e-mail do naszego zespołu w usłudze [Microsoft Security code Analysis support](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).
+
   >[!NOTE] 
-  >Jeśli nie masz jeszcze płatnej pomocy technicznej z firmą Microsoft lub jeśli masz ofertę pomocy technicznej, która nie pozwala na zakup usług w katalogu Phoenix, odwiedź naszą [stronę główną usług pomocy technicznej](https://www.microsoft.com/enterprise/services/support) , aby uzyskać więcej informacji.
-
-  - Pomoc techniczna — Wyślij wiadomość E-mail do naszego zespołu przy [pomocy technicznej analizy kodu zabezpieczeń firmy Microsoft](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request)
+  >Być może nie masz płatnej pomocy technicznej z firmą Microsoft. Może też istnieć oferta pomocy technicznej, która uniemożliwia zakup usług z katalogu Phoenix. Jeśli spełniony jest dowolny z tych warunków, odwiedź [stronę główną usług pomocy technicznej](https://www.microsoft.com/enterprise/services/support) , aby uzyskać więcej informacji.

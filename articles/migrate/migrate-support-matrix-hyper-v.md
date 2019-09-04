@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 00f222472a9b41c7f95ae90bdca57f13175b2b5d
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 26b7f185a05bcf50db3af6bd3b75d5e61d6ec84b
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952140"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279570"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska funkcji Hyper-V
 
@@ -37,7 +37,7 @@ Migracja serwerów funkcji Hyper-V zarządzanych przy użyciu programu System Ce
 --- | ---
 Uprawnienia platformy Azure | Aby utworzyć projekt Azure Migrate, musisz mieć uprawnienia współautora lub właściciela w ramach subskrypcji.
 Maszyny wirtualne funkcji Hyper-V | Oceń do 35 000 maszyn wirtualnych funkcji Hyper-V w jednym projekcie. W ramach subskrypcji platformy Azure można mieć wiele projektów. Projekt może zawierać zarówno maszyny wirtualne VMware, jak i maszyny wirtualne funkcji Hyper-V, a także limity oceny.
-Współrzędne geograficzne | Możesz tworzyć Azure Migrate projekty w wielu lokalizacje geograficzneach. Chociaż można tworzyć projekty w określonych ographies, można ocenić lub migrować maszyny pod kątem innych lokalizacji docelowych. Lokalizacja geograficzna projektu służy tylko do przechowywania odnalezionych metadanych.
+Współrzędne geograficzne | Możesz tworzyć Azure Migrate projekty w wielu lokalizacje geograficzneach. Chociaż można tworzyć projekty w określonych lokalizacje geograficzne, można ocenić lub migrować maszyny pod kątem innych lokalizacji docelowych. Lokalizacja geograficzna projektu służy tylko do przechowywania odnalezionych metadanych.
 
   **Lokalizacja geograficzna** | **Lokalizacja magazynu metadanych**
   --- | ---
@@ -53,7 +53,7 @@ Współrzędne geograficzne | Możesz tworzyć Azure Migrate projekty w wielu lo
 
 
  > [!NOTE]
- > Obsługa Azure Government jest obecnie dostępna tylko dla starszej [wersji](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) programu Azure Migrate.
+ > Obsługa Azure Government jest obecnie dostępna tylko dla [starszej wersji](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) programu Azure Migrate.
 
 
 ## <a name="assessment-hyper-v-host-requirements"></a>Ocena — wymagania dotyczące hosta funkcji Hyper-V
@@ -82,8 +82,13 @@ W celu oceny Azure Migrate uruchamia lekkie urządzenie w celu odnajdywania masz
 
 | **Pomoc techniczna**                | **Szczegóły**               
 | :-------------------       | :------------------- |
-| **Projekt Azure Migrate**  |  Urządzenie może być skojarzone z pojedynczym projektem.<br/> Możesz odkryć do 5000 maszyn wirtualnych funkcji Hyper-V za pomocą jednego urządzenia.
-| **Funkcja Hyper-V**    |  Urządzenie jest wdrażane jako maszyna wirtualna funkcji Hyper-V.<br/> Podana maszyna wirtualna urządzenia ma maszynę wirtualną funkcji Hyper-V w wersji 5,0.<br/> Na hoście maszyny wirtualnej musi działać system Windows Server 2012 R2 lub nowszy.<br/> Potrzebuje wystarczającej ilości miejsca, aby przydzielić 16 GB pamięci RAM, 8 procesorów wirtualnych vCPU i 1 Przełącznik zewnętrzny dla maszyny wirtualnej urządzenia.<br/> Urządzenie wymaga statycznego lub dynamicznego adresu IP i dostępu do Internetu.
+| **Wdrażanie urządzenia**   |  Urządzenie jest wdrażane jako maszyna wirtualna funkcji Hyper-V.<br/> Maszyna wirtualna z urządzeniem Azure Migrate jest maszyną wirtualną funkcji Hyper-V w wersji 5,0.<br/> Na hoście funkcji Hyper-V musi być uruchomiony system Windows Server 2012 R2 lub nowszy.<br/> Host wymaga wystarczającej ilości miejsca, aby przydzielić 16 GB pamięci RAM, 8 procesorów wirtualnych vCPU i 1 Przełącznik zewnętrzny dla maszyny wirtualnej urządzenia.<br/> Urządzenie musi mieć statyczny lub dynamiczny adres IP oraz dostęp do Internetu.
+| **Projekt Azure Migrate**  |  Urządzenie może być skojarzone z pojedynczym projektem.<br/> Dowolna liczba urządzeń może być skojarzona z pojedynczym projektem.<br/> Można ocenić do 35 000 maszyn wirtualnych w projekcie.
+| **Hosty funkcji Hyper-V**          | Urządzenie może połączyć się z maksymalnie 300 hostami funkcji Hyper-V.
+| **Odnajdowa**              | Pojedyncze urządzenie może wykryć do 5000 maszyn wirtualnych.
+| **Grupa oceny**       | Można dodać do 35 000 maszyn w jednej grupie.
+| **Stopnia**             | W ramach jednej oceny można ocenić do 35 000 maszyn wirtualnych.
+
 
 
 ## <a name="assessment-appliance-url-access"></a>Ocena — dostęp do adresu URL urządzenia
@@ -98,7 +103,7 @@ Do oceny maszyn wirtualnych urządzenie Azure Migrate musi mieć łączność z 
 **Adres URL** | **Szczegóły**  
 --- | ---
 *.portal.azure.com | Nawigacja do Azure Portal
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Zaloguj się do swojej subskrypcji platformy Azure
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Zaloguj się do Twojej subskrypcji platformy Azure.
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Tworzenie aplikacji Azure Active Directory na potrzeby komunikacji urządzeń z usługą.
 management.azure.com | Tworzenie aplikacji Azure Active Directory na potrzeby komunikacji urządzeń z usługą.
 dc.services.visualstudio.com | Rejestrowanie i monitorowanie
@@ -116,6 +121,9 @@ Poniższa tabela zawiera podsumowanie wymagań dotyczących portów dla oceny.
 --- | ---
 **Wprowadzony** | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/> Połączenia przychodzące na porcie 44368 do zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL:``` https://<appliance-ip-or-name>:44368 ```<br/> Połączenia wychodzące na portach 443, 5671 i 5672 do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
 **Host/klaster funkcji Hyper-V** | Połączenia przychodzące na portach usługi WinRM 5985 (HTTP) i 5986 (HTTPS) do ściągania metadanych konfiguracji i wydajności maszyn wirtualnych funkcji Hyper-V przy użyciu sesji model wspólnych informacji (CIM).
+
+## <a name="migration-limitations"></a>Migracja — ograniczenia
+Można wybrać maksymalnie 10 maszyn wirtualnych na potrzeby replikacji. Jeśli chcesz migrować więcej maszyn, wykonaj replikację w grupach o wartości 10.
 
 ## <a name="migration-hyper-v-host-requirements"></a>Migracja — wymagania dotyczące hosta funkcji Hyper-V
 

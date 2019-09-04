@@ -8,18 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ee359b76072da3caee9ae1f5fab3d0fc28d25c0e
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: c06cd53e408ebcae24de487fe1d4d25e14aae11b
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972691"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240709"
 ---
 # <a name="connect-from-on-premises-to-cloudsimple-using-expressroute"></a>Nawiązywanie połączenia z poziomu lokalnego z CloudSimple za pomocą ExpressRoute
 
 Jeśli masz już połączenie z usługą Azure ExpressRoute z lokalizacji zewnętrznej (na przykład lokalnie) na platformie Azure, możesz połączyć ją ze środowiskiem CloudSimple. Można to zrobić za pomocą funkcji platformy Azure, która umożliwia łączenie się ze sobą przy użyciu dwóch obwodów usługi ExpressRoute. Ta metoda służy do ustanawiania bezpiecznego, prywatnego, wysokiej przepustowości i małych opóźnień między dwoma środowiskami.
 
 [![Połączenie lokalne ExpressRoute — Global Reach](media/cloudsimple-global-reach-connection.png)](media/cloudsimple-global-reach-connection.png)
+
+## <a name="before-you-begin"></a>Przed rozpoczęciem
+
+Do ustanowienia połączenia Global Reach z lokalnego programu jest wymagany blok adresów sieciowych ( **/29** ).  Przestrzeń adresowa/29 jest używana dla sieci tranzytowej między obwodami usługi ExpressRoute.  Sieć tranzytowa nie powinna nakładać się na żadne sieci wirtualne platformy Azure, sieci lokalne ani CloudSimple sieci chmur prywatnych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -65,3 +69,8 @@ Aby nawiązać połączenie z usługą ExpressRoute, należy utworzyć autoryzac
     * Typ problemu: **Żądanie obsługi**
     * Podtyp problemu: **Utwórz połączenie ExpressRoute z lokalną usługą**
     * Podaj identyfikator zasobu i klucz autoryzacji, które zostały skopiowane i zapisane w okienku szczegółów.
+    * Podaj/29 przestrzeń adresową sieci dla sieci tranzytowej.
+
+## <a name="next-steps"></a>Następne kroki
+
+* [Dowiedz się więcej o usłudze Azure Network Connections](cloudsimple-azure-network-connection.md)  

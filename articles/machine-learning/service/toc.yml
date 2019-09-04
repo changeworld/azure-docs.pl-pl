@@ -1,5 +1,5 @@
 - name: Dokumentacja usługi Azure Machine Learning Service
-  href: index.yml
+  href: ../index.yml
 - name: Omówienie
   expanded: true
   items:

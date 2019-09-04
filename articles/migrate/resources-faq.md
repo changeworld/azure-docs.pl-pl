@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 03651ecb073d02a373c434b8cb55bdafec6d142a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 46c6ac52e1afb6c1619b814580a1059fd3dfedda
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142215"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279501"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Migrate: Często zadawane pytania
 
@@ -27,7 +27,7 @@ Zobacz [listę dla programu VMware](https://docs.microsoft.com/azure/migrate/mig
 
 Azure Migrate udostępnia scentralizowane centrum umożliwiające rozpoczęcie migracji, wykonanie i śledzenie odnajdywania i oceny maszyn oraz obciążeń oraz wykonywanie i śledzenie migracji maszyn i obciążeń na platformę Azure. [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) to rozwiązanie odzyskiwania po awarii. Migracja serwera Azure Migrate używa Azure Site Recovery w zapleczu, aby umożliwić migrację do migracji na maszynach lokalnych.
 
-## <a name="azure-migrate-appliance-vmwarephysical-servers"></a>Urządzenie Azure Migrate (serwery VMware/fizyczne)
+## <a name="azure-migrate-appliance"></a>Urządzenie usługi Azure Migrate
 
 ### <a name="how-does-the-azure-migrate-appliance-connect-to-azure"></a>Jak urządzenie Azure Migrate nawiązuje połączenie z platformą Azure?
 
@@ -87,6 +87,9 @@ W przypadku funkcji Hyper-V odnajdywanie używa poświadczeń hosta funkcji Hype
 ### <a name="how-many-vms-can-i-discover-with-a-single-migration-appliance"></a>Ile maszyn wirtualnych można znaleźć w jednym urządzeniu migracji?
 
 Możesz odkryć do 10 000 maszyn wirtualnych VMware oraz do 5 000 maszyn wirtualnych funkcji Hyper-V z jednym urządzeniem migracji. Jeśli masz więcej maszyn w środowisku lokalnym, Dowiedz się, jak skalować oceny [funkcji Hyper-V](scale-hyper-v-assessment.md) i programu [VMware](scale-vmware-assessment.md) .
+
+### <a name="can-i-delete-the-azure-migrate-appliance-from-the-project"></a>Czy mogę usunąć urządzenie Azure Migrate z projektu?
+Obecnie Usuwanie urządzenia z projektu nie jest obsługiwane. Jedynym sposobem usunięcia urządzenia jest usunięcie grupy zasobów zawierającej projekt Azure Migrate skojarzony z urządzeniem, ale spowoduje to również usunięcie innych zarejestrowanych urządzeń, wykrytego spisu, ocen i wszystkich innych artefaktów platformy Azure skojarzone z projektem w grupie zasobów.
 
 ## <a name="azure-migrate-server-assessment"></a>Azure Migrate oceny serwera
 

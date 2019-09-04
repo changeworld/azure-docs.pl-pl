@@ -9,7 +9,7 @@ metadata:
   ms.author: sngun
   ms.service: cosmos-db
   ms.topic: landing-page
-  ms.date: 05/20/2019
+  ms.date: 09/01/2019
 abstract:
   description: 'Usługa Azure Cosmos DB to w pełni zarządzana usługa bazy danych z gotową do użycia funkcją dystrybucji globalnej i jawną replikacją wielowzorcową. Możesz uruchamiać globalnie dystrybuowane obciążenia analizy operacyjnej o niskim opóźnieniu i korzystać ze sztucznej inteligencji w odniesieniu do danych transakcyjnych w bazie danych. Dowiedz się, jak używać usługi Azure Cosmos DB, korzystając z przewodników Szybki start, samouczków i przykładów.'
   aside:

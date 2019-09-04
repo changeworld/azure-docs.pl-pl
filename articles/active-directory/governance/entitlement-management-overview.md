@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/10/2019
+ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d93a20494886bb7d563439e2699f60bedb646dcd
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 0c99ee1987b592a2e8314d529b118fb26945271e
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032555"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241710"
 ---
-# <a name="what-is-azure-ad-entitlement-management-preview"></a>Co to jest zarządzanie upoważnieniami w usłudze Azure AD? (wersja zapoznawcza)
+# <a name="what-is-azure-ad-entitlement-management-preview"></a>Co to jest zarządzanie upoważnieniami w usłudze Azure AD? (Wersja zapoznawcza)
 
 > [!IMPORTANT]
 > Zarządzanie prawami w usłudze Azure Active Directory (Azure AD) jest obecnie dostępne w publicznej wersji zapoznawczej.
@@ -46,7 +46,7 @@ Organizacje korporacyjne często napotykają problemy związane z zarządzaniem 
 - Użytkownicy mogą mieć problemy z lokalizowaniem odpowiednich osób lub odpowiednich zasobów
 - Gdy użytkownicy znajdą i uzyskają dostęp do zasobu, mogą uzyskać dostęp do niego dłużej niż jest to wymagane do celów służbowych
 
-Te problemy są złożone dla użytkowników, którzy potrzebują dostępu z innego katalogu, takich jak użytkownicy zewnętrzni z organizacji łańcucha dostaw lub innych partnerów firmy. Na przykład:
+Te problemy są złożone dla użytkowników, którzy potrzebują dostępu z innego katalogu, takich jak użytkownicy zewnętrzni z organizacji łańcucha dostaw lub innych partnerów firmy. Przykład:
 
 - Organizacje mogą nie znać wszystkich konkretnych osób w innych katalogach, aby mogli je zapraszać
 - Nawet jeśli organizacje mogły zaprosić tych użytkowników, organizacje mogą nie pamiętać, aby zarządzać wszystkimi dostępem użytkownika spójnie
@@ -77,14 +77,14 @@ Poniżej przedstawiono typy zasobów, do których można zarządzać dostępem z
 - Aplikacje dla przedsiębiorstw usługi Azure AD, w tym aplikacja SaaS i aplikacje zintegrowane z niestandardową obsługą Federacji lub aprowizacji
 - Zbiory witryn i witryny usługi SharePoint Online
 
-Można również kontrolować dostęp do innych zasobów, które są zależne od grup zabezpieczeń usługi Azure AD lub grup programu Office 365.  Przykład:
+Można również kontrolować dostęp do innych zasobów, które są zależne od grup zabezpieczeń usługi Azure AD lub grup programu Office 365.  Na przykład:
 
 - Można udzielić użytkownikom licencji na Microsoft Office 365 przy użyciu grupy zabezpieczeń usługi Azure AD w pakiecie dostępu i konfigurowania [licencjonowania opartego na grupach](../users-groups-roles/licensing-groups-assign.md) dla tej grupy.
 - Można udzielić użytkownikom dostępu do zarządzania zasobami platformy Azure za pomocą grupy zabezpieczeń usługi Azure AD w pakiecie dostępu i tworzenia [przypisania roli platformy Azure](../../role-based-access-control/role-assignments-portal.md) dla tej grupy
 
 ## <a name="what-are-access-packages-and-policies"></a>Co to są pakiety i zasady dostępu?
 
-Zarządzanie prawami wprowadza koncepcję *pakietu dostępu*. Pakiet dostępu to pakiet wszystkich zasobów, które użytkownik musi pracować nad projektem lub wykonywać zadania. Zasoby obejmują dostęp do grup, aplikacji lub witryn. Pakiety dostępu są używane do zarządzania dostępem do pracowników wewnętrznych, a także użytkowników spoza organizacji. Pakiety dostępu są definiowane w konteneracho nazwie wykazów.
+Zarządzanie prawami wprowadza koncepcję *pakietu dostępu*. Pakiet dostępu to pakiet wszystkich zasobów, które użytkownik musi pracować nad projektem lub wykonywać zadania. Zasoby obejmują dostęp do grup, aplikacji lub witryn. Pakiety dostępu są używane do zarządzania dostępem do pracowników wewnętrznych, a także użytkowników spoza organizacji. Pakiety dostępu są definiowane w kontenerach o nazwie *wykazów*.
 
 Pakiety dostępu zawierają również co najmniej jedną *zasadę*. Zasady definiują reguły lub guardrails w celu uzyskania dostępu do pakietu dostępu. Włączenie zasad wymusza, aby tylko Ci użytkownicy mieli dostęp do odpowiednich zasobów i przez właściwy czas.
 
@@ -139,6 +139,18 @@ Aby lepiej zrozumieć Zarządzanie uprawnieniami i dokumentację, należy zapozn
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
 Wyspecjalizowane chmury, takie jak Azure Government, Azure (Niemcy) i Azure (Chiny), nie są obecnie dostępne do użycia w tej wersji zapoznawczej.
+
+### <a name="which-users-must-have-licenses"></a>Którzy użytkownicy muszą mieć licencje?
+
+Dzierżawa musi mieć co najmniej tyle licencji na Azure AD — wersja Premium P2, ponieważ aktywni użytkownicy będą członkami. Aktywni użytkownicy należący do zarządzania prawami obejmują:
+
+- Użytkownik inicjujący lub zatwierdził żądanie dotyczące pakietu dostępu.
+- Użytkownik, któremu przypisano pakiet dostępu. 
+- Użytkownik zarządzający pakietami dostępu.
+
+W ramach licencji dla użytkowników należących do członków, można również zezwolić wielu użytkownikom-Gościom na współpracujące z zarządzaniem prawami. Aby uzyskać informacje o tym, jak obliczyć liczbę użytkowników-Gości, których można uwzględnić, zobacz [Azure Active Directory wskazówki dotyczące licencjonowania współpracy B2B](../b2b/licensing-guidance.md).
+
+Aby uzyskać informacje na temat sposobu przypisywania licencji do użytkowników, zobacz [przypisywanie lub usuwanie licencji przy użyciu portalu Azure Active Directory](../fundamentals/license-users-groups.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

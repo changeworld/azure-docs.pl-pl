@@ -73,32 +73,6 @@
   items:
     - name: Biblioteka kliencka funkcji zdefiniowanych przez użytkownika
       href: reference-user-defined-functions-client-library.md
-- name: Powiązane
-  items:
-    - name: Rozwiązania
-      items:
-        - name: Akceleratory rozwiązań IoT
-          href: /azure/iot-accelerators
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: Usługi platformy
-      items:
-        - name: Usługa IoT Hub
-          href: /azure/iot-hub
-        - name: Usługa IoT Hub Device Provisioning
-          href: /azure/iot-dps
-        - name: Zestawy SDK usługi IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Maps
-          href: /azure/azure-maps
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Brzeg
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: Zestawy SDK urządzeń IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: Zasoby
   items:
     - name: 'Przykłady usługi Azure Digital Twins dla języka C# (.NET)'

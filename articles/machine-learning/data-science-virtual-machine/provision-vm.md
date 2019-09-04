@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: quickstart
 ms.date: 02/22/2019
-ms.openlocfilehash: 6c0abc20775e604f9ea1c6ba882e5a9ff1d89e90
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ac4b9b4d32d05083ceabd41207243eb483648baa
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195293"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70278598"
 ---
 # <a name="quickstart-set-up-a-windows-data-science-virtual-machine-on-azure"></a>Szybki start: Konfigurowanie Data Science Virtual Machine systemu Windows na platformie Azure
 
@@ -24,7 +24,7 @@ Microsoft Windows Data Science Virtual Machine (DSVM) to obraz maszyny wirtualne
 
 W DSVM znajdują się następujące narzędzia:
 
-* Zestaw SDK języka Python dla [usługi Azure Machine Learning](../service/index.yml).
+* Zestaw SDK języka Python dla [usługi Azure Machine Learning](../index.yml).
 * [Serwer Microsoft Machine Learning](https://docs.microsoft.com/machine-learning-server/index) Developer edition.
 * Anaconda Python dystrybucji.
 * Notes Jupyter przy użyciu języka R i Python oraz PySpark jądra.
@@ -147,7 +147,7 @@ Link do przykładów można znaleźć na stronie głównej notesu po uwierzyteln
 
 ### <a name="visual-studio-community-2017"></a>Visual Studio Community 2017
 
-DSVM obejmuje program Visual Studio Community. Jest to bezpłatna wersja popularnego środowiska IDE od firmy Microsoft, której można użyć do celów ewaluacyjnych i małych zespołów. Zapoznaj się z postanowieniami licencyjnymi dotyczącymi [oprogramowania firmy Microsoft](https://www.visualstudio.com/support/legal/mt171547).
+DSVM obejmuje program Visual Studio Community. Jest to bezpłatna wersja popularnego środowiska IDE od firmy Microsoft, której można użyć do celów ewaluacyjnych i małych zespołów. Zapoznaj się z [postanowieniami licencyjnymi dotyczącymi oprogramowania firmy Microsoft](https://www.visualstudio.com/support/legal/mt171547).
 
 Otwórz program Visual Studio, korzystając z ikony pulpitu lub menu **Start** . Wyszukaj programy (logo systemu Windows + S), a następnie **program Visual Studio**. W tym miejscu możesz tworzyć projekty w językach takich jak C#, Python, R i Node. js. Zainstalowane dodatki plug-in należy wygodne do pracy z następującymi usługami platformy Azure:
 
@@ -228,7 +228,7 @@ Możesz użyć [Instalator platformy Microsoft Web](https://www.microsoft.com/we
 ## <a name="next-steps"></a>Następne kroki
 
 * Zapoznaj się z narzędziami w DSVM, otwierając menu **Start** .
-* Dowiedz się więcej o usłudze Azure Machine Learning, odczytując informacje o usłudze [Azure Machine Learning Service?](../service/overview-what-is-azure-ml.md) i wypróbować [Przewodniki Szybki Start i samouczki](../service/index.yml).
+* Dowiedz się więcej o usłudze Azure Machine Learning, odczytując informacje o tym, [co to jest usługa Azure Machine Learning?](../service/overview-what-is-azure-ml.md) i wypróbować [samouczki](../index.yml).
 * W Eksploratorze plików przejdź do folderu C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts for Samples, które używają biblioteki kolekcję funkcji revoscaler w języku R, która obsługuje analizę danych w skali przedsiębiorstwa. 
 * Zapoznaj się z artykułem [dziesięć rzeczy, które można wykonać na Data Science Virtual Machine](https://aka.ms/dsvmtenthings).
 * Dowiedz się, jak tworzyć rozwiązania analityczne end-to-end systematycznie przy użyciu [zespołu danych dla celów naukowych](../team-data-science-process/index.yml).

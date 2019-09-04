@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: c351ee8290b60c81add173bb927b0c12e37f5c7c
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 7fe2c39871f1cd512da7f9a2c5146e79abbe74a6
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018132"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279597"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska VMware
 
@@ -35,8 +35,7 @@ W tabeli zestawiono obsługiwane scenariusze dotyczące maszyn wirtualnych VMwar
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
 **Uprawnienia platformy Azure** | Aby utworzyć projekt Azure Migrate, musisz mieć uprawnienia współautora lub właściciela w ramach subskrypcji.
-**Ograniczenia dotyczące oprogramowania VMware**  | Oceń do 35 000 maszyn wirtualnych VMware w jednym projekcie. Możesz utworzyć wiele projektów w ramach subskrypcji platformy Azure.
-**Limity projektu** | Projekt może zawierać zarówno maszyny wirtualne VMware, jak i maszyny wirtualne funkcji Hyper-V, a także limity oceny.
+**Ograniczenia dotyczące oprogramowania VMware**  | Oceń do 35 000 maszyn wirtualnych VMware w jednym projekcie. Możesz utworzyć wiele projektów w ramach subskrypcji platformy Azure. Projekt może zawierać zarówno maszyny wirtualne VMware, jak i maszyny wirtualne funkcji Hyper-V, a także limity oceny.
 **Lokalizacja geograficzna** | Projekt Azure Migrate można utworzyć w wielu lokalizacje geograficzneach. Chociaż można tworzyć tylko projekty w tych lokalizacje geograficzne, można ocenić lub migrować maszyny dla innych lokalizacji docelowych. Lokalizacja geograficzna projektu służy tylko do przechowywania odnalezionych metadanych.
 
 **Lokalizacja geograficzna** | **Lokalizacja magazynu metadanych**
@@ -53,7 +52,7 @@ Stany Zjednoczone | Środkowe stany USA lub zachodnie stany USA 2
 
 
  > [!NOTE]
- > Obsługa Azure Government jest obecnie dostępna tylko dla starszej [wersji](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) programu Azure Migrate.
+ > Obsługa Azure Government jest obecnie dostępna tylko dla [starszej wersji](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) programu Azure Migrate.
 
 
 ## <a name="assessment-vcenter-server-requirements"></a>Ocena — wymagania dotyczące vCenter Server
@@ -70,14 +69,15 @@ Do oceny potrzebne jest konto tylko do odczytu dla vCenter Server.
 
 ## <a name="assessment-appliance-requirements"></a>Ocena — wymagania dotyczące urządzenia
 
-Urządzenie Azure Migrate dla oprogramowania VMware zostanie wdrożone przy użyciu szablonu komórki jajowe zaimportowanego do vCenter Server.
+Azure Migrate uruchamia lekkie urządzenie w celu odnalezienia maszyn wirtualnych VMware i wysłanie metadanych maszyny wirtualnej i danych wydajności do Azure Migrate. Urządzenie dla oprogramowania VMware jest wdrażane przy użyciu szablonu komórki jajowe zaimportowanego do vCenter Server. Poniższa tabela zawiera podsumowanie wymagań dotyczących urządzeń.
 
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
-**vCenter Server** | Musisz mieć wystarczającą ilość zasobów na vCenter Server, aby przydzielić maszynę wirtualną z 32 GB pamięci RAM, 8 procesorów wirtualnych vCPU i zewnętrznym przełącznikiem wirtualnym.<br/><br/> Urządzenie wymaga dostępu do Internetu, bezpośrednio lub za pomocą serwera proxy.
-**ESXi** | Maszynę wirtualną urządzenia należy wdrożyć na hoście ESXi z systemem w wersji 5,5 lub nowszej.
-**Projekt Azure Migrate** | Urządzenie może być skojarzone z pojedynczym projektem.
-**vCenter Server** | Urządzenie może wykryć do 10 000 maszyn wirtualnych VMware na vCenter Server.<br/> Urządzenie może połączyć się z jednym vCenter Server.
+**Wdrażanie urządzenia** | Urządzenie jest wdrażane jako maszyna wirtualna VMware. Musisz mieć wystarczającą ilość zasobów na vCenter Server, aby przydzielić maszynę wirtualną z 32 GB pamięci RAM, 8 procesorów wirtualnych vCPU i zewnętrznym przełącznikiem wirtualnym.<br/><br/> Urządzenie wymaga dostępu do Internetu, bezpośrednio lub za pomocą serwera proxy.<br/> Maszynę wirtualną urządzenia należy wdrożyć na hoście ESXi z systemem w wersji 5,5 lub nowszej. 
+**Projekt Azure Migrate** | Urządzenie może być skojarzone z pojedynczym projektem. <br/> Dowolna liczba urządzeń może być skojarzona z pojedynczym projektem.<br/> Można ocenić do 35 000 maszyn wirtualnych w projekcie.
+**Odnajdowa** | Urządzenie może wykryć do 10 000 maszyn wirtualnych VMware na vCenter Server.<br/> Urządzenie może połączyć się z pojedynczym vCenter Server.
+**Grupa oceny** | Można dodać do 35 000 maszyn w jednej grupie.
+**Stopnia** | W ramach jednej oceny można ocenić do 35 000 maszyn wirtualnych.
 
 
 ## <a name="assessment-url-access-requirements"></a>Ocena — wymagania dotyczące dostępu do adresów URL
@@ -107,6 +107,8 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 Urządzenie | Połączenia przychodzące na porcie TCP 3389, aby zezwolić na połączenia pulpitu zdalnego z urządzeniem.<br/><br/> Połączenia przychodzące na porcie 44368 do zdalnego dostępu do aplikacji do zarządzania urządzeniami przy użyciu adresu URL:```https://<appliance-ip-or-name>:44368``` <br/><br/>Połączenia wychodzące na porcie 443, 5671 i 5672 do wysyłania metadanych odnajdywania i wydajności do Azure Migrate.
 vCenter Server | Połączenia przychodzące na porcie TCP 443 umożliwiające urządzeniu zbieranie metadanych dotyczących konfiguracji i wydajności dla ocen. <br/><br/> Urządzenie domyślnie łączy się z programem vCenter na porcie 443. Jeśli serwer vCenter nasłuchuje na innym porcie, można zmodyfikować port podczas konfigurowania odnajdywania.
 
+## <a name="migration---limitations"></a>Migracja — ograniczenia
+Można wybrać maksymalnie 10 maszyn wirtualnych na potrzeby replikacji. Jeśli chcesz migrować więcej maszyn, wykonaj replikację w grupach o wartości 10. W przypadku migracji programu VMware bez agenta można jednocześnie uruchomić do 100 replikacji.
 
 ## <a name="agentless-migration-vmware-server-requirements"></a>Migracja bez agentów — wymagania dotyczące serwera VMware
 
