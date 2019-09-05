@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: sqlfreshmay19
-ms.openlocfilehash: b7b7d4cfe699ffdef3a8f736f5656d0b0067453a
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 83475af3cfdd83e718243d80b84599d53716a5d5
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575198"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375837"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Szybki start: Utwórz i zbadaj Azure SQL Data Warehouse w Azure Portal
 
@@ -98,7 +98,7 @@ Usługa SQL Data Warehouse tworzy zaporę na poziomie serwera. Ta zapora uniemo�
 > Usługa SQL Data Warehouse komunikuje się przez port 1433. Jeśli próbujesz nawiązać połączenie z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. Jeśli nastąpi taka sytuacja, nie będzie można nawiązać połączenia z serwerem usługi Azure SQL Database, chyba że dział IT otworzy port 1433.
 
 1. Po zakończeniu wdrożenia wybierz pozycję **wszystkie usługi** w menu po lewej stronie. Wybierz pozycję **bazy danych**, a następnie wybierz pozycję gwiazda obok pozycji **SQL Data Warehouse** , aby dodać magazyny danych SQL do ulubionych.
-1. Wybierz pozycję **SQL Data Warehouses** w menu po lewej stronie, a następnie kliknij pozycję **MySampleDatabase** (usługa **SQL Data Warehouse** ). Zostanie otwarta strona przeglądu bazy danych zawierająca w pełni kwalifikowaną nazwę serwera (na przykład **mynewserver-20180430.Database.Windows.NET**) i opcje dalszej konfiguracji.
+1. Wybierz pozycję **SQL Data Warehouses** w menu po lewej stronie, a następnie kliknij pozycję **MySampleDataWarehouse** (usługa **SQL Data Warehouse** ). Zostanie otwarta strona przeglądu bazy danych zawierająca w pełni kwalifikowaną nazwę serwera (na przykład **mynewserver-20180430.Database.Windows.NET**) i opcje dalszej konfiguracji.
 1. Skopiuj tę w pełni kwalifikowaną nazwę serwera do użycia w celu nawiązania połączenia z serwerem i jego bazami danych w tym i innym przewodniku Szybki Start. Aby otworzyć ustawienia serwera, kliknij nazwę serwera.
 
    ![znajdowanie nazwy serwera](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)

@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 05/28/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 1dbbb6e7bd88e08520225515c422529dc260e1b2
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: e31f3dc166177ce36289b97d85d90a9582c9cae5
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377373"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375997"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Używanie iniekcji zależności w programie .NET Azure Functions
 
@@ -71,7 +71,7 @@ namespace MyNamespace
 
 ## <a name="use-injected-dependencies"></a>Użyj wstrzykiwanych zależności
 
-ASP.NET Core używa iniekcji konstruktora w celu udostępnienia zależności funkcji. Poniższy przykład demonstruje, jak `IMyService` i `HttpClient` zależności są wstrzykiwane do funkcji wyzwalanej przez protokół http.
+ASP.NET Core używa iniekcji konstruktora w celu udostępnienia zależności funkcji. Poniższy przykład demonstruje, jak `IMyService` i `HttpClient` zależności są wstrzykiwane do funkcji wyzwalanej przez protokół http. 
 
 ```csharp
 using System;
@@ -112,7 +112,7 @@ namespace MyNamespace
 }
 ```
 
-Użycie iniekcji konstruktorów oznacza, że nie należy używać funkcji statycznych, jeśli chcesz skorzystać z iniekcji zależności.
+Użycie iniekcji konstruktorów oznacza, że nie należy używać funkcji statycznych, jeśli chcesz skorzystać z iniekcji zależności. W przypadku klienta Cosmos odwołaj się do [tego](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/CodeSamples/AzureFunctions/AzureFunctionsCosmosClient.cs).
 
 ## <a name="service-lifetimes"></a>Okresy istnienia usługi
 
@@ -146,7 +146,7 @@ Jeśli istnieją inne usługi, dla których chcesz wziąć zależność, [Utwór
 
 Zastępowanie usług dostarczonych przez hosta nie jest obecnie obsługiwane.  Jeśli istnieją usługi, które chcesz przesłonić, [Utwórz problem i Zaproponuj je w serwisie GitHub](https://github.com/azure/azure-functions-host).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji, zobacz następujące zasoby:
 

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: bfda4f4ebe8990a16853bdfe40065a7501de5275
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 85afb69a7656e96e2f7163ded5cb23ac1b2560ea
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086887"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70380965"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Zarządzanie usługą IoT Central z programu Azure PowerShell
 
@@ -45,7 +45,7 @@ Install-Module Az.IotCentral
 
 ## <a name="create-an-application"></a>Tworzenie aplikacji
 
-Użyj polecenia cmdlet [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) , aby utworzyć aplikację IoT Central w ramach subskrypcji platformy Azure. Na przykład:
+Użyj polecenia cmdlet [New-AzIotCentralApp](https://docs.microsoft.com/powershell/module/az.iotcentral/New-AzIotCentralApp) , aby utworzyć aplikację IoT Central w ramach subskrypcji platformy Azure. Przykład:
 
 ```powershell
 # Create a resource group for the IoT Central application
@@ -66,7 +66,7 @@ Skrypt najpierw tworzy grupę zasobów w regionie Wschodnie stany USA dla aplika
 |Parametr         |Opis |
 |------------------|------------|
 |ResourceGroupName |Grupa zasobów zawierająca aplikację. Ta grupa zasobów musi już istnieć w Twojej subskrypcji. |
-|Location |Domyślnie to polecenie cmdlet używa lokalizacji z grupy zasobów. Obecnie można utworzyć aplikację IoT Central w regionach **Wschodnie stany USA**, zachodnie **stany USA**, **Europa Północna**lub **Europa Zachodnia** . |
+|Location |Domyślnie to polecenie cmdlet używa lokalizacji z grupy zasobów. Obecnie można utworzyć aplikację IoT Central w regionach **Wschodnie stany USA**, **zachodnie stany USA**, **Europa Północna**lub **Europa Zachodnia** . |
 |Name              |Nazwa aplikacji w Azure Portal. |
 |Poddomena         |Poddomena w adresie URL aplikacji. W tym przykładzie adres URL aplikacji to https://mysubdomain.azureiotcentral.com. |
 |Numer SKU               |Obecnie jedyną wartością jest **S1** (warstwa standardowa). Zobacz [Cennik usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
@@ -80,6 +80,9 @@ Skrypt najpierw tworzy grupę zasobów w regionie Wschodnie stany USA dla aplika
 |iotc-default@1.0.0 |Tworzy pustą aplikację, którą wypełnisz własnymi urządzeniami i szablonami urządzeń. |
 |iotc-demo@1.0.0    |Tworzy aplikację, która zawiera już utworzony szablon urządzenia typu Automat do sprzedaży z chłodziarką. Użyj tego szablonu, aby rozpocząć eksplorowanie usługi Azure IoT Central. |
 |iotc-devkit-sample@1.0.0 |Tworzy aplikację z gotowymi szablonami urządzeń, które umożliwiają łączenie z urządzeniem MXChip lub Raspberry Pi. Użyj tego szablonu, jeśli jesteś programistą dla deweloperów urządzeń przy użyciu dowolnego z tych urządzeń. |
+
+> [!NOTE]
+> Szablon **aplikacji w wersji zapoznawczej** jest obecnie dostępny tylko w regionach **Europy Północnej** i **środkowe stany USA** .
 
 ## <a name="view-your-iot-central-applications"></a>Wyświetlanie aplikacji IoT Central
 

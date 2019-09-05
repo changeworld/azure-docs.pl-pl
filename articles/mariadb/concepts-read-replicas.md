@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 8cfda202e57dcee4f7a783de893fb712501dfd26
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/04/2019
+ms.openlocfilehash: db2457cc3e320ac413cb245f51810b654c63aa22
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992184"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308989"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Odczytaj repliki w Azure Database for MariaDB
 
 Funkcja Read Replica umożliwia replikowanie danych z serwera Azure Database for MariaDB do serwera tylko do odczytu. Z serwera głównego można replikować maksymalnie pięć replik. Repliki są aktualizowane asynchronicznie przy użyciu opartej na lokalizacji pliku dziennika binarnego (binlog) aparatu MariaDB z globalnym IDENTYFIKATORem transakcji (GTID). Aby dowiedzieć się więcej na temat replikacji binlog, zobacz [Omówienie replikacji binlog](https://mariadb.com/kb/en/library/replication-overview/).
-
-> [!IMPORTANT]
-> Replikę odczytu można utworzyć w tym samym regionie, w którym znajduje się serwer główny, lub w dowolnym innym wybranym regionie świadczenia usługi Azure. Repliki odczytu (ten sam region i wiele regionów) są obecnie dostępne w publicznej wersji zapoznawczej.
 
 Repliki to nowe serwery, którymi można zarządzać podobnie jak regularne Azure Database for MariaDB serwery. Dla każdej repliki odczytu są naliczane opłaty za zasoby obliczeniowe rdzeni wirtualnych i magazyn w GB/miesiąc.
 
@@ -37,9 +34,6 @@ Funkcja odczytu repliki korzysta z replikacji asynchronicznej. Ta funkcja nie je
 
 ## <a name="cross-region-replication"></a>Replikacja między regionami
 Replikę odczytu można utworzyć w innym regionie niż serwer główny. Replikacja między regionami może być przydatna w scenariuszach takich jak planowanie odzyskiwania po awarii lub umieszczenie danych bliżej użytkowników.
-
-> [!IMPORTANT]
-> Replikacja między regionami jest obecnie dostępna w publicznej wersji zapoznawczej.
 
 Serwer główny może być w dowolnym [regionie Azure Database for MariaDB](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb).  Serwer główny może mieć replikę w osobnym regionie lub regionach uniwersalnej repliki.
 
@@ -79,7 +73,7 @@ Podczas tworzenia repliki nie są dziedziczone reguły zapory ani punkt końcowy
 
 Replika dziedziczy konto administratora z serwera głównego. Wszystkie konta użytkowników na serwerze głównym są replikowane do replik odczytu. Można nawiązać połączenie z repliką odczytu tylko przy użyciu kont użytkowników, które są dostępne na serwerze głównym.
 
-Możesz połączyć się z repliką przy użyciu nazwy hosta i prawidłowego konta użytkownika, tak jak w przypadku zwykłego serwera Azure Database for MariaDB. W przypadku serwera o nazwie Moja replika znazwą administratora administrator można nawiązać połączenie z repliką przy użyciu interfejsu wiersza polecenia MySQL:
+Możesz połączyć się z repliką przy użyciu nazwy hosta i prawidłowego konta użytkownika, tak jak w przypadku zwykłego serwera Azure Database for MariaDB. W przypadku serwera o nazwie Moja **replika** z **nazwą administratora**administrator można nawiązać połączenie z repliką przy użyciu interfejsu wiersza polecenia MySQL:
 
 ```bash
 mysql -h myreplica.mariadb.database.azure.com -u myadmin@myreplica -p
@@ -126,7 +120,7 @@ Replika odczytu jest tworzona jako nowy serwer Azure Database for MariaDB. Nie m
 Replika jest tworzona przy użyciu tej samej konfiguracji serwera co serwer główny. Po utworzeniu repliki kilka ustawień można zmienić niezależnie od serwera głównego: generowanie obliczeń, rdzeni wirtualnych, magazyn, okres przechowywania kopii zapasowej i wersja aparatu MariaDB. Warstwę cenową można także zmienić niezależnie, z wyjątkiem warstwy Podstawowa lub z niej.
 
 > [!IMPORTANT]
-> Przed zaktualizowaniem konfiguracji serwera głównego do nowych wartości, zaktualizuj konfigurację repliki do wartości równej lub wyższej. Ta akcja zapewnia, że replika może być zachowywana wraz ze wszystkimi zmianami wprowadzonymi do wzorca.
+> Przed zaktualizowaniem konfiguracji serwera głównego do nowych wartości zaktualizuj konfigurację repliki do takich samych lub wyższych wartości. Dzięki temu replika może być na bieżąco ze zmianami wprowadzonymi we wzorcu.
 
 ### <a name="stopped-replicas"></a>Repliki zatrzymane
 

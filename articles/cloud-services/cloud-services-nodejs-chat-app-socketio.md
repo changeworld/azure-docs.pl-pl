@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: gwallace
-ms.openlocfilehash: 251fd8ec3708ed154e12b0511be24eb776a48fbf
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: bbeaacd4c7028905e279dd5dc421414f4eafae54
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359076"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306756"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Tworzenie aplikacji czatu środowiska Node. js przy użyciu usługi Socket.IO w usłudze w chmurze platformy Azure
 
@@ -116,7 +116,7 @@ Po zapisaniu zmian w programie **Server. js**wykonaj następujące kroki, aby za
 4. Po przetestowaniu aplikacji Zatrzymaj emulator, wydając następujące polecenie:
    
        PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
-5. Aby wdrożyć aplikację na platformie Azure, użyj polecenia cmdlet **Publish-AzureServiceProject** . Na przykład:
+5. Aby wdrożyć aplikację na platformie Azure, użyj polecenia cmdlet **Publish-AzureServiceProject** . Przykład:
    
        PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch
    
@@ -144,7 +144,7 @@ Aplikacja działa teraz na platformie Azure i może przekazywać wiadomości cza
 ## <a name="next-steps"></a>Następne kroki
 W tym samouczku przedstawiono sposób tworzenia podstawowej aplikacji czatu hostowanej w usłudze w chmurze platformy Azure. Aby dowiedzieć się, jak hostować tę aplikację w witrynie sieci Web platformy Azure, zobacz [Tworzenie aplikacji czatu środowiska Node. js za pomocą usługi Socket.IO w witrynie internetowej platformy Azure][chatwebsite].
 
-Aby uzyskać więcej informacji, zobacz również [Centrum deweloperów środowiska Node. js](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest).
+Aby uzyskać więcej informacji, zobacz również [Centrum deweloperów środowiska Node. js](https://docs.microsoft.com/azure/javascript/).
 
 [chatwebsite]: https://docs.microsoft.com/azure/cloud-services/cloud-services-nodejs-develop-deploy-app
 

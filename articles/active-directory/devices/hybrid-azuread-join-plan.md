@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66dbfa40d5a19c7f15ed2772740b84652ae3e58c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 5559d30921ea44679b4ecd24c77e26be163c18fc
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231275"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375907"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Instrukcje: Planowanie implementacji dołączania hybrydowego Azure Active Directory
 
@@ -77,7 +77,7 @@ Sprzężenie hybrydowe usługi Azure AD nie jest obecnie obsługiwane, jeśli ś
 
 Sprzężenie hybrydowe usługi Azure AD nie jest obecnie obsługiwane w przypadku korzystania z infrastruktury pulpitów wirtualnych (VDI).
 
-Dołączanie hybrydowej usługi Azure AD jest nieobsługiwane w przypadku moduły TPM zgodnych ze standardem FIPS. Jeśli urządzenia mają moduły TPM zgodny ze standardem FIPS, należy je wyłączyć przed przejściem do hybrydowego sprzężenia usługi Azure AD. Firma Microsoft nie udostępnia żadnych narzędzi do wyłączania trybu FIPS dla moduły TPM, ponieważ jest on zależny od producenta modułu TPM. Aby uzyskać pomoc techniczną, skontaktuj się z producentem OEM.
+Hybrydowe dołączanie usługi Azure AD jest obsługiwane w przypadku modułu TPM zgodnego ze standardem FIPS 2,0 i nie jest obsługiwane dla modułu TPM 1,2 Jeśli urządzenia są zgodne ze standardem FIPS 1,2, należy je wyłączyć przed przejściem do hybrydowego sprzężenia usługi Azure AD. Firma Microsoft nie udostępnia żadnych narzędzi do wyłączania trybu FIPS dla moduły TPM, ponieważ jest on zależny od producenta modułu TPM. Aby uzyskać pomoc techniczną, skontaktuj się z producentem OEM.
 
 Hybrydowe dołączanie usługi Azure AD nie jest obsługiwane w przypadku systemu Windows Server z uruchomioną rolą kontrolera domeny (DC).
 
@@ -99,7 +99,7 @@ Jeśli urządzenia przyłączone do domeny systemu Windows 10 są zarejestrowane
 
 Gdy wszystkie wymagania wstępne są stosowane, urządzenia z systemem Windows będą automatycznie rejestrowane jako urządzenia w dzierżawie usługi Azure AD. Stan tych tożsamości urządzeń w usłudze Azure AD jest określany jako sprzężenie hybrydowe usługi Azure AD. Więcej informacji na temat pojęć uwzględnionych w tym artykule można znaleźć w artykułach [wprowadzenie do zarządzania tożsamościami urządzeń w Azure Active Directory](overview.md) i [planowanie implementacji dołączania hybrydowego Azure Active Directory](hybrid-azuread-join-plan.md).
 
-Organizacje mogą chcieć przeprowadzić kontrolowane sprawdzenie poprawności hybrydowego sprzężenia usługi Azure AD przed włączeniem jej w całej organizacji. Zapoznaj się z artykułem sprawdzanie poprawności funkcji dołączania hybrydowego usługi [Azure AD](hybrid-azuread-join-control.md) , aby zrozumieć, jak to zrobić.
+Organizacje mogą chcieć przeprowadzić kontrolowane sprawdzenie poprawności hybrydowego sprzężenia usługi Azure AD przed włączeniem jej w całej organizacji. Zapoznaj się z artykułem [Sprawdzanie poprawności funkcji dołączania hybrydowego usługi Azure AD](hybrid-azuread-join-control.md) , aby zrozumieć, jak to zrobić.
 
 ## <a name="select-your-scenario-based-on-your-identity-infrastructure"></a>Wybierz swój scenariusz w oparciu o infrastrukturę tożsamości
 
@@ -107,7 +107,7 @@ Sprzężenie hybrydowe usługi Azure AD współdziała z systemami, zarządzanym
 
 ### <a name="managed-environment"></a>Środowisko zarządzane
 
-Środowisko zarządzane można wdrożyć przy użyciu opcji [Synchronizacja skrótów haseł (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) lub [uwierzytelnianie przekazywane (PTA)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) z bezproblemowym logowaniem jednokrotnym. [](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)
+Środowisko zarządzane można wdrożyć przy użyciu opcji [Synchronizacja skrótów haseł (PHS)](https://docs.microsoft.com/azure/active-directory/hybrid/whatis-phs) lub [uwierzytelnianie przekazywane (PTA)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta) z [bezproblemowym logowaniem jednokrotnym](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso).
 
 Te scenariusze nie wymagają konfigurowania serwera federacyjnego na potrzeby uwierzytelniania.
 

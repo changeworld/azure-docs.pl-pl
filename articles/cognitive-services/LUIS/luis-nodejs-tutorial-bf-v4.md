@@ -1,5 +1,5 @@
 ---
-title: Language Understanding bot Node. js v4
+title: 'Samouczek: Language Understanding bot Node. js v4'
 titleSuffix: Azure Cognitive Services
 description: Przy użyciu platformy Node.js utwórz czatbot zintegrowany z usługą Language Understanding (LUIS). Ten czatbot używa aplikacji Human Resources, aby szybko wdrożyć rozwiązanie bota. Bot jest tworzony za pomocą platformy Bot Framework w wersji 4 i bota aplikacji internetowej platformy Azure.
 services: cognitive-services
@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 08/30/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 8455a9c9ecff89643e090f1d763a44f97f5779f5
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 8227a7683c1333b21537630f7f074f624926f984
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70206885"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375768"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Samouczek: Korzystanie z bot aplikacji sieci Web z włączonym Language Understanding w języku Node. js 
 

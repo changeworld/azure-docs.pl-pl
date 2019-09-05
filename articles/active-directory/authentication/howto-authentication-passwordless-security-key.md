@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a063891339a46366490447b7c7a7a1a14fd81be6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 316a523a6216354ae5b6166be55e183a4e050766
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828919"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305073"
 ---
 # <a name="enable-passwordless-security-key-sign-in-for-azure-ad-preview"></a>Włączenie klucza zabezpieczeń bezhasłem w usłudze Azure AD (wersja zapoznawcza)
 
@@ -54,11 +54,11 @@ Aby włączyć dostawcę poświadczeń dla określonych grup urządzeń, użyj n
    1. Nazwa: Klucze zabezpieczeń logowania systemu Windows
    1. Opis: Włącza klucze zabezpieczeń FIDO, które mają być używane podczas logowania do systemu Windows
    1. Platforma: System Windows 10 i nowsze
-   1. Typ platformy: Niestandardowa
+   1. Typ profilu: Niestandardowa
    1. Niestandardowe ustawienia OMA-URI:
       1. Nazwa: Włącz klucze zabezpieczeń FIDO dla logowania do systemu Windows
       1. OMA-URI: ./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin
-      1. Typ danych: Liczba całkowita
+      1. Typ danych: Integer
       1. Wartość: 1 
 1. Te zasady mogą być przypisane do określonych użytkowników, urządzeń lub grup. Więcej informacji można znaleźć w artykule [przypisywanie profilów użytkowników i urządzeń w Microsoft Intune](https://docs.microsoft.com/intune/device-profile-assign).
 
@@ -118,8 +118,8 @@ Funkcje rejestracji dla metod uwierzytelniania bezhaseł polegają na połączon
 1. Przejdź na stronę [https://myprofile.microsoft.com](https://myprofile.microsoft.com)
 1. Zaloguj się, jeśli jeszcze nie
 1. Kliknij pozycję **informacje zabezpieczające**
-   1. Jeśli użytkownik ma już zarejestrowana co najmniej jedną metodę uwierzytelniania wieloskładnikowego platformy Azure, może natychmiast zarejestrować klucz zabezpieczeń FIDO2.
-   1. Jeśli nie zarejestrowano co najmniej jednej metody usługi Azure MFA, należy dodać ją.
+   1. Jeśli użytkownik ma już zarejestrowaną co najmniej jedną metodę Multi-Factor Authentication platformy Azure, może natychmiast zarejestrować klucz zabezpieczeń FIDO2.
+   1. Jeśli nie zarejestrowano co najmniej jednej metody Multi-Factor Authentication platformy Azure, należy dodać ją.
 1. Dodaj klucz zabezpieczeń FIDO2, klikając pozycję **Dodaj metodę** i wybierając pozycję **klucz zabezpieczeń** .
 1. Wybierz **urządzenie USB** lub **urządzenie NFC**
 1. Przygotuj swój klucz, a następnie wybierz pozycję **dalej** .
@@ -171,4 +171,4 @@ Pracujemy nad obsługą funkcji, która umożliwia zmianę nazwy UPN na urządze
 
 [Informacje o rejestracji urządzeń](../devices/overview.md)
 
-[Dowiedz się więcej o usłudze Azure wieloskładnikowe Authentication](../authentication/howto-mfa-getstarted.md)
+[Dowiedz się więcej o usłudze Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

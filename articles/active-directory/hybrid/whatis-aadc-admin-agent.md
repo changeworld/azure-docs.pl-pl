@@ -1,5 +1,5 @@
 ---
-title: Co to jest Agent programu Azure AD Connect administratora — program Azure AD Connect | Dokumentacja firmy Microsoft
+title: Co to jest Agent Azure AD Connect administrator Azure AD Connect | Microsoft Docs
 description: Opisuje narzędzia używane do synchronizowania i monitorowania środowiska lokalnego w usłudze Azure AD.
 services: active-directory
 author: billmath
@@ -7,55 +7,57 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/25/2019
+ms.date: 09/04/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36ab3fff4294b4cda3d1554ef2761d3f4acaca35
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 222dab87ee71870e564e426d7466555893cc565b
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687252"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305186"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>Co to jest agent administratora programu Azure AD Connect? 
-Agent programu Azure AD Connect administracji jest nowym składnikiem programu Azure Active Directory Connect zainstalowanego na serwerze usługi Azure Active Directory Connect. Służy do zbierania określonych danych ze środowiska usługi Active Directory, która pomaga pomocy technicznej inżynier ds. Aby rozwiązać problemy podczas otwierania zgłoszenia do pomocy technicznej firmy Microsoft. 
+Agent administracji Azure AD Connect jest nowym składnikiem Azure Active Directory Connect, który można zainstalować na serwerze Azure Active Directory Connect. Służy do zbierania określonych danych ze środowiska Active Directory, które ułatwiają inżynierowi pomocy technicznej firmy Microsoft Rozwiązywanie problemów podczas otwierania zgłoszenia do pomocy technicznej. 
 
 >[!NOTE]
->Agent administracyjny nie jest zainstalowane i jest domyślnie włączone.  W celu zbierania danych, która pomaga w przypadkach pomocy technicznej, należy zainstalować agenta.
+>Agent administracyjny nie jest instalowany i domyślnie włączony.  Należy zainstalować agenta, aby zbierać dane w celu ułatwienia pomocy technicznej.
 
-Po zainstalowaniu czeka Agent Azure AD Connect administracji dla określonych żądań dla danych z usługi Azure Active Directory, pobiera żądanych danych ze środowiska synchronizacji i wysyła je do usługi Azure Active Directory, gdzie są one przedstawiane przez firmę Microsoft pomocy technicznej inżynier ds. 
+Po zainstalowaniu Agent administracji Azure AD Connect czeka na określone żądania danych z Azure Active Directory, pobiera żądane dane ze środowiska synchronizacji i wysyła je do Azure Active Directory, gdzie jest prezentowane pomocy technicznej firmy Microsoft. pracowników. 
 
-Informacje, które Agent programu Azure AD Connect administracyjnej pobiera ze środowiska nie są przechowywane w jakikolwiek sposób — tylko jest wyświetlany ze specjalistą pomocy technicznej firmy Microsoft w celu udzielenia mu pomocy w wykrywaniu i rozwiązywaniu problemów w usłudze Azure Active Directory Connect Domyślnie zgłoszenie do pomocy technicznej powiązane otwarcia agenta programu Azure AD Connect administracyjną nie jest zainstalowany serwerze programu platformy Azure AD Connect. 
+Informacje, które Agent administracyjny Azure AD Connect pobiera ze środowiska nie są przechowywane w żaden sposób — są wyświetlane tylko dla inżynierów pomocy technicznej firmy Microsoft, aby ułatwić im badanie i rozwiązywanie problemów Azure Active Directory Connect pokrewna sprawa dotycząca pomocy technicznej otwierająca agenta administracyjnego Azure AD Connect nie jest instalowana domyślnie na serwerze Azure AD Connect. 
 
-## <a name="install-the-azure-ad-connect-administration-agent-on-the-azure-ad-connect-server"></a>Instalowanie agenta programu Azure AD Connect administracyjną na serwerze programu Azure AD Connect 
-Agent Azure AD Connect administracji pliki binarne są umieszczane na serwerze usługi AAD Connect. Aby zainstalować agenta, wykonaj następujące czynności: 
+## <a name="install-the-azure-ad-connect-administration-agent-on-the-azure-ad-connect-server"></a>Instalowanie Azure AD Connect agenta administracyjnego na serwerze Azure AD Connect 
 
+Wymagania wstępne:
+1.  Azure AD Connect jest zainstalowany na serwerze
+2.  Azure AD Connect Health jest zainstalowany na serwerze
 
+![Agent administracyjny](media/whatis-aadc-admin-agent/adminagent0.png)
 
-1. Otwórz program powershell w trybie administratora 
-2. Przejdź do katalogu, w którym się znajduje się dysk cd "C:\Program Files\Microsoft Azure Active Directory Connect\SetupFiles" aplikacja 
-3. Uruchom aplikację AADConnectAdminAgentSetup.exe 
- 
-Po wyświetleniu monitu wprowadź swoje poświadczenia administratora globalnego usługi Azure AD. 
+Pliki binarne agenta administracyjnego Azure AD Connect są umieszczane na serwerze programu AAD Connect. Aby zainstalować agenta programu, wykonaj następujące czynności:
 
->[!NOTE]
->Jest to znany problem gdzie pojawi się monit o podanie poświadczeń wielokrotnie. Ten problem zostanie rozwiązany w następnej wersji.
+1.  Otwórz program PowerShell w trybie administratora
+2.  Przejdź do katalogu, w którym znajduje się dysk CD "C:\Program Files\Microsoft Azure Active Directory Connect\Tools"
+3.  Uruchom ConfigureAdminAgent. ps1
 
-Po zainstalowaniu agenta zobaczysz następujące dwa nowe programy na liście "Dodaj lub usuń programy" w Panelu sterowania na serwerze: 
+Po wyświetleniu monitu wprowadź poświadczenia administratora globalnego usługi Azure AD. Powinno to być te same poświadczenia, które zostały wprowadzone podczas instalacji Azure AD Connect.
 
-![agent administracyjny](media/whatis-aadc-admin-agent/adminagent1.png)
+Po zainstalowaniu agenta zobaczysz następujące dwa nowe programy z listy "Dodaj/Usuń programy" w panelu sterowania serwera: 
 
-## <a name="what-data-in-my-sync-service-is-shown-to-the-microsoft-service-engineer"></a>Jakie dane w mojej usłudze synchronizacji jest wyświetlany jako inżynier usług firmy Microsoft? 
-Podczas otwierania zgłoszenia do pomocy technicznej inżynier pomocy technicznej firmy Microsoft można wyświetlić, dla danego użytkownika, odpowiednie dane w usłudze Active Directory, obszaru łącznika usługi Active Directory na serwerze usługi Azure Active Directory Connect obszaru łącznika usługi Azure Active Directory na platformie Azure Serwer Active Directory Connect i Metaverse na serwerze usługi Azure Active Directory Connect. 
+![Agent administracyjny](media/whatis-aadc-admin-agent/adminagent1.png)
 
-Ze specjalistą pomocy technicznej firmy Microsoft nie można zmienić żadnych danych w systemie może zobaczyć i hasła. 
+## <a name="what-data-in-my-sync-service-is-shown-to-the-microsoft-service-engineer"></a>Jakie dane w ramach usługi synchronizacji są widoczne dla inżyniera usługi firmy Microsoft? 
+Po otwarciu pomoc techniczna firmy Microsoft inżynier może zobaczyć, że dla danego użytkownika, odpowiednie dane w Active Directory, miejsce łącznika Active Directory na serwerze Azure Active Directory Connect, Azure Active Directory miejsce łącznika na platformie Azure Active Directory Connect Server i Metaverse na serwerze Azure Active Directory Connect. 
 
-## <a name="what-if-i-dont-want-the-microsoft-support-engineer-to-access-my-data"></a>Co zrobić, jeśli nie ma ze specjalistą pomocy technicznej firmy Microsoft na dostęp do moich danych? 
-Po zainstalowaniu agenta, jeśli nie chcesz, inżynier usług firmy Microsoft oraz dostęp do danych dla pomocy technicznej, możesz wyłączyć funkcje, modyfikując plik konfiguracji usługi, zgodnie z poniższym opisem: 
+Inżynier pomoc techniczna firmy Microsoft nie może zmienić żadnych danych w systemie i nie może zobaczyć żadnych haseł. 
 
-1.  Otwórz **C:\Program Files\Microsoft Azure AD Connect administracji Agent\AzureADConnectAdministrationAgentService.exe.config** w Notatniku.
-2.  Wyłącz **UserDataEnabled** ustawienia, jak pokazano poniżej. Jeśli **UserDataEnabled** ustawienie istnieje i jest ustawiona na wartość true, a następnie ustaw ją na false. Jeśli ustawienie nie istnieje, Dodaj ustawienie jak pokazano poniżej.    
+## <a name="what-if-i-dont-want-the-microsoft-support-engineer-to-access-my-data"></a>Co zrobić, jeśli nie chcę, aby specjalista pomocy technicznej firmy Microsoft mógł uzyskać dostęp do moich danych? 
+Jeśli agent zostanie zainstalowany, jeśli nie chcesz, aby inżynier usług firmy Microsoft mógł uzyskać dostęp do danych w celu uzyskania pomocy technicznej, możesz wyłączyć tę funkcję, modyfikując plik konfiguracji usługi zgodnie z poniższym opisem: 
+
+1.  Otwórz **C:\Program Files\Microsoft Azure AD Connect Administration Agent\AzureADConnectAdministrationAgentService.exe.config** w Notatniku.
+2.  Wyłącz ustawienie **UserDataEnabled** , jak pokazano poniżej. Jeśli ustawienie **UserDataEnabled** istnieje i ma wartość true, ustaw dla niego wartość false. Jeśli to ustawienie nie istnieje, należy dodać ustawienie, jak pokazano poniżej.    
 
     ```xml
     <appSettings>
@@ -65,9 +67,9 @@ Po zainstalowaniu agenta, jeśli nie chcesz, inżynier usług firmy Microsoft or
     ```
 
 3.  Zapisz plik konfiguracji.
-4.  Uruchom ponownie usługę Agent Azure AD Connect administracji, jak pokazano poniżej
+4.  Uruchom ponownie usługę agenta administracyjnego Azure AD Connect, jak pokazano poniżej
 
-![agent administracyjny](media/whatis-aadc-admin-agent/adminagent2.png)
+![Agent administracyjny](media/whatis-aadc-admin-agent/adminagent2.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 Dowiedz się więcej na temat [integrowania tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md).

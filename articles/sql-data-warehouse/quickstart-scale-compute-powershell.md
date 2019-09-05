@@ -10,16 +10,16 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 193aec8de2a6ee34da666a013dcb0d49d85c08b0
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 37b5f0a989bb76a9a40529cd11944de40a164156
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574844"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306227"
 ---
-# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>Szybki start: skalowanie zasobów obliczeniowych w usłudze Azure SQL Data Warehouse za pomocą programu PowerShell
+# <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-azure-powershell"></a>Szybki start: Skalowanie obliczeniowe w Azure SQL Data Warehouse w Azure PowerShell
 
-Skalowanie zasobów obliczeniowych w usłudze Azure SQL Data Warehouse za pomocą programu PowerShell. [Skalowanie zasobów obliczeniowych w poziomie](sql-data-warehouse-manage-compute-overview.md) zapewnia lepszą wydajność, a zmniejszenie ich skali pozwala ograniczyć koszty.
+Skalowanie obliczeniowe w Azure SQL Data Warehouse przy użyciu Azure PowerShell. [Skalowanie zasobów obliczeniowych w poziomie](sql-data-warehouse-manage-compute-overview.md) zapewnia lepszą wydajność, a zmniejszenie ich skali pozwala ograniczyć koszty.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
@@ -68,7 +68,7 @@ Wykonaj następujące kroki, aby znaleźć informacje o lokalizacji dla magazynu
 
 W usłudze SQL Data Warehouse można zwiększyć lub zmniejszyć ilość zasobów obliczeniowych przez odpowiednie dostosowanie jednostek magazynu danych. Postępując według czynności opisanych w artykule [Tworzenie i łączenie — portal](create-data-warehouse-portal.md) utworzono bazę danych **mySampleDataWarehouse** z 400 jednostkami DWU. Poniższe kroki umożliwiają dostosowanie liczby jednostek DWU dla bazy danych **mySampleDataWarehouse**.
 
-Aby zmienić jednostki magazynu danych, użyj polecenia cmdlet [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) programu PowerShell. W poniższym przykładzie są ustawiane jednostki magazynu danych DW300c dla bazy danych **mySampleDataWarehouse** , która jest hostowana w grupie zasobów zasób na serwerze **mynewserver-20180430**.
+Aby zmienić jednostki magazynu danych, użyj polecenia cmdlet [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) programu PowerShell. W poniższym przykładzie są ustawiane jednostki magazynu danych DW300c dla bazy danych **mySampleDataWarehouse** , która jest hostowana **w grupie zasobów zasób na** serwerze **mynewserver-20180430**.
 
 ```Powershell
 Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300c"

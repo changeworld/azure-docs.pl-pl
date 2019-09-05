@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/31/2019
+ms.date: 09/04/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 7fd98c7bb2cd049da8f5f68a5d2401081822eb22
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 183030a063faa212d7d5788792aa525f530d18ef
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779187"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308390"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Samouczek: Tworzenie budżetów platformy Azure i zarządzanie nimi
 
 Budżety w usłudze Cost Management ułatwiają planowanie poprawy odpowiedzialności organizacji. Za pomocą budżetów możesz obserwować koszt wykorzystywanych lub subskrybowanych usług platformy Azure w określonym czasie. Ułatwiają one poinformować inne osoby o ich wydatków, aby aktywnie zarządzać kosztami i monitorować, jak wydatków w miarę wraz z upływem czasu. Po przekroczeniu progów budżetu, który został utworzony, są wyzwalane tylko powiadomienia. Wpływają na żaden z zasobów i nie zostanie ono zatrzymane swoje użycie. Budżetów służy do porównywania i śledzić wydatki jako analizując koszty.
 
-Miesięczne budżety są oceniane w odniesieniu do wydatków co cztery godziny. Dane i powiadomienia dotyczące używanych zasobów są jednak dostępne w ciągu ośmiu godzin.  
+Miesięczne budżety są oceniane w odniesieniu do wydatków co cztery godziny. Jednak dane dla używanych zasobów są dostępne w ciągu ośmiu godzin. Po spełnieniu próg budżetu powiadomienia e-mail są zwykle odbierane w mniej niż osiem godzin. 
 
 Budżetów automatycznie resetować na końcu okresu (co miesiąc, co kwartał lub rocznie) na tym samym kwotę budżetu po wybraniu przyszłą datę wygaśnięcia. Ponieważ są one resetowane sama kwota budżetu, musisz utworzyć oddzielne budżety, gdy budżet kwot różnią się w przyszłych okresach.
 
@@ -70,7 +70,7 @@ Upewnij się, że w oknie **Tworzenie budżetu** podano prawidłowy zakres. Wybi
 
 Po zidentyfikowaniu zakresu i filtrów wpisz nazwę budżetu. Następnie wybierz miesięczny, kwartalny lub roczny okres resetowania budżetu. Ten okres resetowania określa przedział czasu, który jest analizowany przez budżet. Koszt oceniany przez budżet rozpoczyna się od zera na początku każdego nowego okresu. Po utworzeniu co kwartał budżetu działa w taki sam sposób jak miesięcznego budżetu. Różnica polega na tym, że kwota budżetu na kwartał jest równomiernie podzielone między trzy miesiące kwartału. Roczna kwota budżetu jest równomiernie dzielona między wszystkie 12 miesięcy roku kalendarzowego.
 
-Jeśli masz subskrypcję z płatnością zgodnie z rzeczywistym użyciem, MSDN lub Visual Studio, okres rozliczeniowy faktury może nie być wyrównany do miesiąca kalendarzowego. Dla tych typów subskrypcji i grup zasobów można utworzyć budżet wyrównany do okresu faktury lub miesięcy kalendarzowych. Aby utworzyć budżet wyrównany do okresu faktury, wybierz okres resetowania **miesiąca rozliczeniowego**, kwartału **rozliczeniowego**lub **roku rozliczeniowego**. Aby utworzyć budżet wyrównany do miesiąca kalendarzowego, wybierz okres resetowania **co miesiąc**, **co kwartał**lub co **rok**.
+Jeśli masz subskrypcję z płatnością zgodnie z rzeczywistym użyciem, MSDN lub Visual Studio, okres rozliczeniowy faktury może nie być wyrównany do miesiąca kalendarzowego. Dla tych typów subskrypcji i grup zasobów można utworzyć budżet wyrównany do okresu faktury lub miesięcy kalendarzowych. Aby utworzyć budżet wyrównany do okresu faktury, wybierz okres resetowania **miesiąca rozliczeniowego**, **kwartału rozliczeniowego**lub **roku rozliczeniowego**. Aby utworzyć budżet wyrównany do miesiąca kalendarzowego, wybierz okres resetowania **co miesiąc**, **co kwartał**lub co **rok**.
 
 Następnie ustal datę wygaśnięcia budżetu, gdy budżet przestanie być ważny, a następnie Zakończ szacowanie kosztów.
 
@@ -78,7 +78,7 @@ W oparciu o pola wybrane w budżecie do tej pory wykres jest widoczny, aby ułat
 
 ![Przykład przedstawiający tworzenie budżetu z danymi kosztu miesięcznego ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-Po skonfigurowaniu kwoty budżetu kliknij przycisk **dalej** , aby skonfigurować alerty budżetu. Budżetów wymagają co najmniej jeden koszt progu (% budżetu) i odpowiedniego adresu e-mail. Możesz opcjonalnie dołączyć maksymalnie pięć progi i pięciu adresów e-mail w jednym budżetu. Po spełnieniu próg budżetu powiadomienia e-mail są zwykle odbierane w mniej niż osiem godzin. Aby uzyskać więcej informacji na temat powiadomień, zobacz Korzystanie z alertów dotyczących [kosztów](cost-mgt-alerts-monitor-usage-spending.md). W poniższym przykładzie zostanie wygenerowany alert e-mail, gdy zostanie osiągnięty limit 90% budżetu.
+Po skonfigurowaniu kwoty budżetu kliknij przycisk **dalej** , aby skonfigurować alerty budżetu. Budżetów wymagają co najmniej jeden koszt progu (% budżetu) i odpowiedniego adresu e-mail. Możesz opcjonalnie dołączyć maksymalnie pięć progi i pięciu adresów e-mail w jednym budżetu. Po spełnieniu próg budżetu powiadomienia e-mail są zwykle odbierane w mniej niż osiem godzin. Aby uzyskać więcej informacji na temat powiadomień, zobacz [Korzystanie z alertów dotyczących kosztów](cost-mgt-alerts-monitor-usage-spending.md). W poniższym przykładzie zostanie wygenerowany alert e-mail, gdy zostanie osiągnięty limit 90% budżetu.
 
 ![Przykład pokazujący warunki alertu](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
@@ -112,7 +112,7 @@ W poniższym przykładzie przedstawiono wartości progowe budżetu ustawione na 
 
 ![Przykład pokazujący warunki alertów skonfigurowane z różnymi grupami akcji i typem akcji](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 

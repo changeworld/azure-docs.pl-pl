@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: af5b16448a39e0106dbc04724607ff603483484c
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: e1c206c329b491ec9f8d36a12e2b4bf8ed8107b3
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997743"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383014"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Co to jest usługa Azure IoT Central (funkcje w wersji zapoznawczej)?
 
@@ -62,7 +62,7 @@ Ten artykuł zawiera opis dla IoT Central platformy Azure:
 - Typy schematów tablicy nie są obsługiwane.
 - Eksportowanie szablonu aplikacji i kopiowanie aplikacji nie są obsługiwane.
 - Obsługiwane są tylko zestawy SDK dla urządzeń C i Node. js.
-- Jest on dostępny tylko w wybranych regionach.
+- Jest on dostępny tylko w regionach Europy Północnej i środkowe stany USA.
 
 ## <a name="personas"></a>Osoby
 

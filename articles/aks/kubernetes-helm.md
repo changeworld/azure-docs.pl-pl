@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: zarhoads
-ms.openlocfilehash: 27d557ab12093223450fd7bc1b88c68e1f156947
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: bc74ac660c5bba0624416d0a1724d959a4c385a7
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135503"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305272"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Instalowanie aplikacji przy użyciu usługi Helm w usłudze Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,7 @@ W tym artykule przyjęto założenie, że masz istniejący klaster AKS. Jeśli p
 Wymagany jest również interfejs wiersza polecenia Helm, który jest klientem uruchomionym w systemie deweloperskim. Pozwala ona uruchamiać, zatrzymywać i zarządzać aplikacjami za pomocą Helm. W przypadku korzystania z Azure Cloud Shell interfejs wiersza polecenia Helm jest już zainstalowany. Aby uzyskać instrukcje dotyczące instalacji na lokalnej platformie, zobacz [Instalowanie Helm][helm-install].
 
 > [!IMPORTANT]
-> Helm jest przeznaczony do uruchamiania w węzłach systemu Linux. Jeśli w klastrze znajdują się węzły systemu Windows Server, musisz upewnić się, że Helm są zaplanowane do uruchomienia tylko na węzłach z systemem Linux. Należy również upewnić się, że wszystkie zainstalowane wykresy Helm są również zaplanowane do uruchomienia w prawidłowych węzłach. Polecenia w tym artykule używają selektorów [węzłów][k8s-node-selector] , aby upewnić się, że zasobniki są zaplanowane do poprawnych węzłów, ale nie wszystkie wykresy Helm mogą uwidocznić wybór węzła. Możesz również rozważyć użycie innych opcji w klastrze, takich jak przypisania [][taints].
+> Helm jest przeznaczony do uruchamiania w węzłach systemu Linux. Jeśli w klastrze znajdują się węzły systemu Windows Server, musisz upewnić się, że Helm są zaplanowane do uruchomienia tylko na węzłach z systemem Linux. Należy również upewnić się, że wszystkie zainstalowane wykresy Helm są również zaplanowane do uruchomienia w prawidłowych węzłach. Polecenia w tym artykule używają selektorów [węzłów][k8s-node-selector] , aby upewnić się, że zasobniki są zaplanowane do poprawnych węzłów, ale nie wszystkie wykresy Helm mogą uwidocznić wybór węzła. Możesz również rozważyć użycie innych opcji w klastrze, [takich jak][taints]przypisania.
 
 ## <a name="create-a-service-account"></a>Utwórz konto usługi
 
@@ -64,16 +64,18 @@ kubectl apply -f helm-rbac.yaml
 
 ## <a name="secure-tiller-and-helm"></a>Zabezpieczanie do i Helm
 
-Klient Helm i usługa do odczekania uwierzytelniają się i komunikują się ze sobą przy użyciu protokołu TLS/SSL. Ta metoda uwierzytelniania pomaga zabezpieczyć klaster Kubernetes i jakie usługi można wdrożyć. Aby zwiększyć bezpieczeństwo, można wygenerować własne certyfikaty z podpisem. Każdy użytkownik Helm otrzyma swój własny certyfikat klienta i zostanie on zainicjowany w klastrze Kubernetes z zastosowanymi certyfikatami. Aby uzyskać więcej informacji, zobacz [Korzystanie z protokołu TLS/SSL między Helm i][helm-ssl]przydziałem IT.
+Klient Helm i usługa do odczekania uwierzytelniają się i komunikują się ze sobą przy użyciu protokołu TLS/SSL. Ta metoda uwierzytelniania pomaga zabezpieczyć klaster Kubernetes i jakie usługi można wdrożyć. Aby zwiększyć bezpieczeństwo, można wygenerować własne certyfikaty z podpisem. Każdy użytkownik Helm otrzyma swój własny certyfikat klienta i zostanie on zainicjowany w klastrze Kubernetes z zastosowanymi certyfikatami. Aby uzyskać więcej informacji, zobacz [Korzystanie z protokołu TLS/SSL między Helm i przydziałem][helm-ssl]IT.
 
 W przypadku klastra Kubernetes z obsługą kontroli RBAC można kontrolować poziom dostępu do klastra. Można zdefiniować przestrzeń nazw Kubernetes, która jest wdrażana w programie, i ograniczyć zakres przestrzeni nazw, które mogą następnie wdrożyć zasoby w programie. Takie podejście umożliwia tworzenie wystąpień programu w różnych przestrzeniach nazw i ograniczanie granic wdrożenia oraz określanie zakresu użytkowników programu Helm Client do określonych przestrzeni nazw. Aby uzyskać więcej informacji, zobacz [Helm kontroli dostępu opartej na rolach][helm-rbac].
 
 ## <a name="configure-helm"></a>Konfigurowanie Helm
 
-Aby wdrożyć podstawową usługę do klastra AKS, użyj polecenia [init Helm][helm-init] . Jeśli w `--service-account` klastrze nie włączono kontroli RBAC, Usuń argument i wartość. W przypadku skonfigurowania protokołu TLS/SSL dla operacji do odniesień i Helm należy pominąć ten podstawowy krok inicjujący, a następnie podać wymagane `--tiller-tls-` , jak pokazano w następnym przykładzie.
+Aby wdrożyć podstawową usługę do klastra AKS, użyj polecenia [init Helm][helm-init] . Jeśli w `--service-account` klastrze nie włączono kontroli RBAC, Usuń argument i wartość. W poniższych przykładach ustawiono również [historię — maks][helm-history-max] . do 200.
+
+W przypadku skonfigurowania protokołu TLS/SSL dla operacji do odniesień i Helm należy pominąć ten podstawowy krok inicjujący, a następnie podać wymagane `--tiller-tls-` , jak pokazano w następnym przykładzie.
 
 ```console
-helm init --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
+helm init --history-max 200 --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
 W przypadku skonfigurowania protokołu TLS/SSL między Helm i do przydzielenia przez `--tiller-tls-*` program do dostarczania parametrów i nazw własnych certyfikatów, jak pokazano w następującym przykładzie:
@@ -85,8 +87,9 @@ helm init \
     --tiller-tls-key tiller.key.pem \
     --tiller-tls-verify \
     --tls-ca-cert ca.cert.pem \
+    --history-max 200 \
     --service-account tiller \
-    --node-selectors "beta.kubernetes.io/os"="linux"
+    --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
 ## <a name="find-helm-charts"></a>Znajdź wykresy Helm
@@ -140,7 +143,7 @@ $ helm repo update
 Hold tight while we grab the latest from your chart repositories...
 ...Skip local chart repository
 ...Successfully got an update from the "stable" chart repository
-Update Complete. ⎈ Happy Helming!⎈
+Update Complete.
 ```
 
 ## <a name="run-helm-charts"></a>Uruchom wykresy Helm
@@ -217,6 +220,7 @@ Aby uzyskać więcej informacji na temat zarządzania wdrożeniami aplikacji Kub
 [helm-install]: https://docs.helm.sh/using_helm/#installing-helm
 [helm-install-options]: https://github.com/kubernetes/helm/blob/master/docs/install.md
 [helm-list]: https://docs.helm.sh/helm/#helm-list
+[helm-history-max]: https://helm.sh/docs/using_helm/#initialize-helm-and-install-tiller
 [helm-rbac]: https://docs.helm.sh/using_helm/#role-based-access-control
 [helm-repo-update]: https://docs.helm.sh/helm/#helm-repo-update
 [helm-search]: https://docs.helm.sh/helm/#helm-search

@@ -1,5 +1,5 @@
 ---
-title: Tworzenie bazy wiedzy — QnA Maker
+title: 'Szybki start: Tworzenie bazy wiedzy — QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Użyj portalu usługi interfejs API usługi QnA Maker, aby dodać Tworzenie bazy wiedzy z Chit-Chat. Spowoduje to zaangażowanie aplikacji. Dodaj wstępnie wypełniony zestaw najpopularniejszych Chit-Chat do swojej bazy wiedzy jako punkt wyjścia dla Chit — rozmowy i Oszczędź czas i koszt ich zapisania od podstaw.
 services: cognitive-services
@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: conceptual
-ms.date: 08/30/2019
+ms.topic: quickstart
+ms.date: 09/04/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 322a1d25ed434d8be674288b1b13d6ecf961590b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 798bbb725d4764c5ec7a1d69770e9508af0fdf5a
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193566"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376211"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Szybki start: Tworzenie bazy wiedzy przy użyciu portalu usługi interfejs API usługi QnA Maker
 

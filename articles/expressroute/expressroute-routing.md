@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 09/04/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 458808f9d2c496ae4c29b05bd8a3531b94ba78c0
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 9d4822d07a95fcdec32c0c4146562884302fa4f8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422671"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308316"
 ---
 # <a name="expressroute-routing-requirements"></a>Wymagania dotyczące routingu w usłudze ExpressRoute
 Aby połączyć się z usługami w chmurze firmy Microsoft przy użyciu usługi ExpressRoute, konieczne będzie skonfigurowanie routingu oraz zarządzanie nim. Niektórzy dostawcy połączenia oferują konfigurowanie routingu oraz zarządzanie nim jako usługą zarządzaną. Skontaktuj się z dostawcą połączenia, aby sprawdzić, czy taka usługa jest oferowana. Jeśli nie, musisz spełnić wymagania opisane poniżej:
@@ -211,7 +211,7 @@ Wszystkie trasy anonsowane przez firmę Microsoft zostaną oznaczone odpowiedni�
 > 
 
 ### <a name="service-to-bgp-community-value"></a>Wartość wspólnotowa usługi BGP
-Oprócz tego firma Microsoft oznaczy również prefiksy w oparciu o usługę, do której się odnoszą. Dotyczy to tylko komunikacji równorzędnej firmy Microsoft. Poniższa tabela zawiera mapowanie usługi do wartości społeczności BGP.
+Oprócz tego firma Microsoft oznaczy również prefiksy w oparciu o usługę, do której się odnoszą. Dotyczy to tylko komunikacji równorzędnej firmy Microsoft. Poniższa tabela zawiera mapowanie usługi do wartości społeczności BGP. Można uruchomić polecenie cmdlet "Get-AzBgpServiceCommunity", aby zapoznać się z pełną listą najnowszych wartości.
 
 | **Usługa** | **Wartość społeczności BGP** |
 | --- | --- |

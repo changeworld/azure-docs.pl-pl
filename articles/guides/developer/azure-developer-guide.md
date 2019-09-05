@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: f04dd628ae0999edd202c98521526ae70e1ff0af
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 367027a48dd51dd88de63cb163e05e0e8503755d
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141215"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308582"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Przewodnik dla początkujących deweloperów platformy Azure
 
@@ -136,7 +136,7 @@ Platforma Azure oferuje kilka sposobów korzystania z kontenerów w aplikacjach.
 
   > **Kiedy używać**: Gdy chcesz generować spójne wdrożenia kontenerów dla aplikacji na maszynie wirtualnej lub gdy chcesz używać [Docker Compose](https://docs.docker.com/compose/overview/).
   > 
-  > **Rozpocznij**: [Utwórz środowisko platformy Docker na platformie Azure przy użyciu rozszerzenia maszyny wirtualnej](../../virtual-machines/virtual-machines-linux-dockerextension.md)platformy Docker.
+  > **Rozpocznij**: [Utwórz środowisko platformy Docker na platformie Azure przy użyciu rozszerzenia maszyny wirtualnej platformy Docker](../../virtual-machines/virtual-machines-linux-dockerextension.md).
 
 - **Azure Container Service**: Umożliwia tworzenie i Konfigurowanie klastra maszyn wirtualnych, które są wstępnie skonfigurowane do uruchamiania aplikacji kontenera, oraz zarządzanie nim. Aby dowiedzieć się więcej o usłudze Container Service, zobacz [wprowadzenie Azure Container Service](../../container-service/container-service-intro.md).
 
@@ -234,7 +234,7 @@ Platforma Azure jest oparta na zestawie interfejsów API REST, które obsługuj�
 Oprócz interfejsów API REST wiele usług platformy Azure umożliwia również programistyczne zarządzanie zasobami z aplikacji przy użyciu zestawów SDK platformy Azure specyficznych dla platformy, w tym zestawów SDK dla następujących platform deweloperskich:
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
--   [Node.js](https://docs.microsoft.com/javascript/azure)
+-   [Node.js](https://docs.microsoft.com/azure/javascript/)
 -   [Java](https://docs.microsoft.com/java/azure)
 -   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
 -   [Python](/azure/python/)

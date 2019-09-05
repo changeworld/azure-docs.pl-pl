@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: aahi
-ms.openlocfilehash: 8f3d30866ac6db0cdece9af8144fcfa266871172
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e57bb55f5bbeba9cb476672723511a4d19c46165
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697885"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383253"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Tworzenie zasobu Cognitive Services przy użyciu interfejsu wiersza polecenia platformy Azure (CLI)
 
@@ -23,12 +23,12 @@ Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć pracę z usługą Az
 
 W tym przewodniku szybki start dowiesz się, jak zarejestrować się w usłudze Azure Cognitive Services i utworzyć konto z subskrypcją pojedynczego lub wielousługowego za pomocą [interfejsu wiersza polecenia (CLI) platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Te usługi są reprezentowane przez [zasoby](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)platformy Azure, które umożliwiają nawiązywanie połączenia z co najmniej jedną interfejsy API usług Cognitive Services platformy Azure.
 
+[!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Prawidłowa subskrypcja platformy Azure — [Utwórz ją](https://azure.microsoft.com/free/) bezpłatnie.
 * [Interfejs wiersza polecenia platformy Azure (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-
-[!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>Instalowanie interfejsu wiersza polecenia platformy Azure i logowanie 
 
@@ -72,7 +72,7 @@ az group create \
 
 ### <a name="choose-a-cognitive-service-and-pricing-tier"></a>Wybieranie usługi poznawczej i warstwy cenowej
 
-Podczas tworzenia nowego zasobu należy znać "rodzaj" usługi, która ma być używana, wraz z żądaną warstwą cenową ( [](https://azure.microsoft.com/pricing/details/cognitive-services/) lub jednostką SKU). Te i inne informacje są używane jako parametry podczas tworzenia zasobu.
+Podczas tworzenia nowego zasobu należy znać "rodzaj" usługi, która ma być używana, wraz z żądaną [warstwą cenową](https://azure.microsoft.com/pricing/details/cognitive-services/) (lub jednostką SKU). Te i inne informacje są używane jako parametry podczas tworzenia zasobu.
 
 > [!NOTE]
 > Wiele usług poznawczej ma bezpłatną warstwę, której można użyć do wypróbowania usługi. Aby skorzystać z warstwy Bezpłatna, użyj `F0` jako jednostki SKU dla zasobu.

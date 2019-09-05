@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 40eaabb149e2e897ecd4e1109e0db7c42b990925
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 31137bba8c9b6b88c6a8b9569c02ae887e73e8d0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101546"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309606"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Implementowanie bramy Oracle na maszynie wirtualnej platformy Azure z systemem Linux 
 
 Interfejs wiersza polecenia platformy Azure umożliwia tworzenie zasobów Azure i zarządzanie nimi z poziomu wiersza polecenia lub skryptów. W tym przewodniku szczegółowo opisano, jak używać interfejsu wiersza polecenia platformy Azure do wdrażania bazy danych Oracle 12c Database z obrazu galerii portalu Azure Marketplace. 
 
-W tym dokumencie przedstawiono krok po kroku, jak utworzyć, zainstalować i skonfigurować program Oracle na maszynie wirtualnej na platformie Azure.
+W tym dokumencie przedstawiono krok po kroku, jak utworzyć, zainstalować i skonfigurować program Oracle na maszynie wirtualnej na platformie Azure. W tym samouczku dwie maszyny wirtualne są skonfigurowane w zestawie dostępności w jednym regionie. Ten sam samouczek może służyć do konfigurowania bramy OracleGolden dla maszyn wirtualnych w różnych Strefy dostępności w jednym regionie świadczenia usługi Azure lub w przypadku instalacji maszyn wirtualnych w dwóch różnych regionach.
 
 Przed rozpoczęciem upewnij się, że interfejs wiersza polecenia platformy Azure został zainstalowany. Aby uzyskać więcej informacji, zobacz [Azure CLI installation guide](https://docs.microsoft.com/cli/azure/install-azure-cli) (Przewodnik instalacji interfejsu wiersza polecenia platformy Azure).
 

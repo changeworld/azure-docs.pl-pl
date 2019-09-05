@@ -1,22 +1,22 @@
 ---
-title: Korzystanie z emulatora typu open source azurite na potrzeby programowania i testowania usługi BLOB Storage (wersja zapoznawcza)
-description: Emulator typu open source azurite (wersja zapoznawcza) udostępnia bezpłatne środowisko lokalne do testowania aplikacji usługi Azure Blob Storage.
+title: Korzystanie z emulatora Open Source azurite na potrzeby programowania i testowania usługi Azure Storage (wersja zapoznawcza)
+description: Emulator typu open source azurite (wersja zapoznawcza) udostępnia bezpłatne środowisko lokalne do testowania aplikacji usługi Azure Storage.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 06/12/2019
+ms.date: 08/31/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: ebecd6cf9af5395e4da2b395ca9b2ff974a75409
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e611afd6f10154636eb2e0dd08437b4f7468d6b3
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721700"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309524"
 ---
-# <a name="use-the-azurite-open-source-emulator-for-blob-storage-development-and-testing-preview"></a>Korzystanie z emulatora typu open source azurite na potrzeby programowania i testowania usługi BLOB Storage (wersja zapoznawcza)
+# <a name="use-the-azurite-open-source-emulator-for-azure-storage-development-and-testing-preview"></a>Korzystanie z emulatora Open Source azurite na potrzeby programowania i testowania usługi Azure Storage (wersja zapoznawcza)
 
-Emulator typu open source azurite w wersji 3 (wersja zapoznawcza) zawiera bezpłatne środowisko lokalne do testowania aplikacji usługi Azure Blob Storage. Gdy aplikacja działa lokalnie, przejdź do korzystania z konta usługi Azure Storage w chmurze. Emulator zapewnia obsługę wielu platform w systemach Windows, Linux i MacOS. Azurite v3 obsługuje interfejsy API zaimplementowane przez Blob service platformy Azure.
+Azurite w wersji 3,2 Emulator typu Open Source (wersja zapoznawcza) zawiera bezpłatne środowisko lokalne do testowania aplikacji magazynu obiektów blob platformy Azure i kolejek. Gdy aplikacja działa lokalnie, przejdź do korzystania z konta usługi Azure Storage w chmurze. Emulator zapewnia obsługę wielu platform w systemach Windows, Linux i MacOS. Azurite v3 obsługuje interfejsy API zaimplementowane przez Blob service platformy Azure.
 
 Azurite to przyszła platforma emulatora magazynu. Azurite zastępuje [emulator usługi Azure Storage](storage-use-emulator.md). Azurite będzie nadal aktualizowana w celu obsługi najnowszych wersji interfejsów API usługi Azure Storage.
 
@@ -35,18 +35,21 @@ W obszarze Visual Studio Code Wybierz okienko **rozszerzenia** i wyszukaj ciąg 
 
 Alternatywnie przejdź do [vs Code rynku rozszerzenia](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) w przeglądarce. Wybierz przycisk **Zainstaluj** , aby otworzyć Visual Studio Code i przejdź bezpośrednio do strony rozszerzenia azurite.
 
-Aby szybko uruchomić lub zamknąć azurite, kliknij pozycję **Usługa BLOB azurite** na pasku stanu vs Code lub wydawanie następujących poleceń w palecie poleceń vs Code. Aby otworzyć paletę poleceń, naciśnij klawisz **F1** w vs Code.
+Aby szybko uruchomić lub zamknąć azurite, kliknij pozycję **[azurite BLOB Service]** lub **[azurite Queue Service]** na pasku stanu vs Code lub wydawanie następujących poleceń w palecie poleceń vs Code. Aby otworzyć paletę poleceń, naciśnij klawisz **F1** w vs Code.
 
 Rozszerzenie obsługuje następujące polecenia Visual Studio Code:
 
    * **Azurite: Uruchom** — Uruchom wszystkie usługi azurite
    * **Azurite: Zamknij** wszystkie usługi azurite
    * **Azurite: Wyczyść** — Zresetuj wszystkie dane usługi azurite Services utrwalenie
-   * **Azurite: Start** -obiekt BLOB Start BLOB Service
-   * **Azurite: Usługa** zamykania obiektów BLOB typu Close-BLOB
-   * **Azurite: Clean** -BLOB Clean BLOB Service
+   * **Azurite: Uruchamianie usługi BLOB** Service — uruchamianie usługi BLOB Service
+   * **Azurite: Zamknij usługę BLOB** Service — zamknij usługę BLOB Service
+   * **Azurite: Czyszczenie usługi BLOB** Service — czyszczenie usługi BLOB
+   * **Azurite: Uruchom usługę** kolejki — Uruchom usługę kolejki
+   * **Azurite: Zamknij usługę** kolejki — zamknij usługę kolejki
+   * **Azurite: Usługa** czyszczenia kolejki — czysta usługa kolejki
 
-Aby skonfigurować azurite w Visual Studio Code, zaznacz okienko rozszerzenia i kliknij prawym przyciskiem myszy pozycję **azurite**. Wybierz pozycję **Konfiguruj ustawienia rozszerzenia**.
+Aby skonfigurować azurite w Visual Studio Code, zaznacz okienko rozszerzenia. Wybierz ikonę **zarządzania** (koła zębatego) dla **azurite**. Wybierz pozycję **Konfiguruj ustawienia rozszerzenia**.
 
 ![Azurite Skonfiguruj ustawienia rozszerzenia](media/storage-use-azurite/azurite-configure-extension-settings.png)
 
@@ -56,6 +59,8 @@ Obsługiwane są następujące ustawienia:
    * **Azurite: Port** obiektu BLOB — BLOB Service port nasłuchiwania. Domyślnym portem jest 10000.
    * **Azurite: Debuguj** — wyprowadza Dziennik debugowania do kanału azurite. Wartość domyślna to **false**.
    * **Azurite: Lokalizacja** — ścieżka lokalizacji obszaru roboczego. Wartość domyślna to Visual Studio Code folder roboczy.
+   * **Azurite: Host** kolejki — punkt końcowy nasłuchiwania usługa kolejki. Ustawieniem domyślnym jest 127.0.0.1.
+   * **Azurite: Port** kolejki — usługa kolejki port nasłuchiwania. Domyślnym portem jest 10001.
    * **Azurite: Tryb** dyskretny powoduje wyłączenie dziennika dostępu. Wartość domyślna to **false**.
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>Instalowanie i uruchamianie azurite za pomocą NPM
@@ -81,15 +86,22 @@ docker pull mcr.microsoft.com/azure-storage/azurite
 Następujące polecenie uruchamia obraz platformy Docker azurite. `-p 10000:10000` Parametr przekierowuje żądania z portu 10000 maszyny hosta do wystąpienia platformy Docker.
 
 ```console
-docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
 ```
 
 **Określ lokalizację obszaru roboczego**:
 
-W poniższym przykładzie `-v c:/azurite:/data` parametr określa `c:/azurite` jako azurite lokalizację danych.
+W poniższym przykładzie `-v c:/azurite:/data` parametr określa *c:/azurite* jako utrwaloną lokalizację danych azurite. Przed uruchomieniem polecenia Docker należy utworzyć katalog *c:/azurite*.
 
 ```console
-docker run -p 10000:10000 -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 -p 10001:10001 -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
+```
+
+**Uruchamianie tylko usługi BLOB Service**
+
+```console
+docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite
+    azurite-blob --blobHost 0.0.0.0 --blobPort 10000
 ```
 
 **Ustaw wszystkie parametry azurite**:
@@ -98,11 +110,14 @@ Ten przykład pokazuje, jak ustawić wszystkie parametry wiersza polecenia. Wszy
 
 ```console
 docker run -p 8888:8888
+           -p 9999:9999
            -v c:/azurite:/workspace mcr.microsoft.com/azure-storage/azurite azurite
            -l /workspace
            -d /workspace/debug.log
            --blobPort 8888
            --blobHost 0.0.0.0
+           --queuePort 9999
+           --queueHost 0.0.0.0
 ```
 
 Zobacz [Opcje wiersza polecenia](#command-line-options) , aby uzyskać więcej informacji o konfigurowaniu azurite podczas uruchamiania.
@@ -143,13 +158,15 @@ To polecenie informuje azurite o przechowywaniu wszystkich danych w określonym 
 Ta sekcja zawiera szczegółowe informacje na temat przełączników wiersza polecenia dostępnych podczas uruchamiania azurite. Wszystkie przełączniki wiersza polecenia są opcjonalne.
 
 ```console
-C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>]
-    [-l | --location <workspace path>] [-s | --silent] [-d | --debug <log file path>]
+C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>] 
+    [-d | --debug <log file path>] [-l | --location <workspace path>]
+    [--queueHost <IP address>] [--queuePort <port address>]
+    [-s | --silent] [-h | --help]
 ```
 
-Przełącznik **-l** to skrót do parametru- **-Location**, **-s** jest skrótem **--Silent**i **-d** jest skrótem **--Debug**.
+**-D** to skrót do **--Debug**, **-l** Switch jest skrótem do **--Location**, **-s** jest skrótem **--silentnym**i **-h** to skrót dla **--pomocy**.
 
-### <a name="listening-host"></a>Host nasłuchiwania
+### <a name="blob-listening-host"></a>Host nasłuchujący obiektów BLOB
 
 **Opcjonalne** Domyślnie azurite będzie nasłuchiwał adres 127.0.0.1 jako serwer lokalny. Aby ustawić adres na wymagania, użyj przełącznika **--blobHost** .
 
@@ -168,7 +185,7 @@ azurite --blobHost 0.0.0.0
 > [!CAUTION]
 > Zezwalanie na żądania zdalne może sprawić, że system będzie narażony na ataki zewnętrzne.
 
-### <a name="listening-port-configuration"></a>Konfiguracja portu nasłuchiwania
+### <a name="blob-listening-port-configuration"></a>Konfiguracja portu nasłuchiwania obiektów BLOB
 
 **Opcjonalne** Domyślnie azurite nasłuchuje Blob service na porcie 10000. Użyj przełącznika **--blobPort** , aby określić wymagany port nasłuchujący.
 
@@ -185,6 +202,46 @@ Pozwól, aby system automatycznie wybierał dostępny port:
 
 ```console
 azurite --blobPort 0
+```
+
+Używany port jest wyświetlany podczas uruchamiania azurite.
+
+### <a name="queue-listening-host"></a>Host nasłuchiwania kolejki
+
+**Opcjonalne** Domyślnie azurite będzie nasłuchiwał adres 127.0.0.1 jako serwer lokalny. Aby ustawić adres na wymagania, użyj przełącznika **--queueHost** .
+
+Akceptuj tylko żądania na komputerze lokalnym:
+
+```console
+azurite --queueHost 127.0.0.1
+```
+
+Zezwalaj na żądania zdalne:
+
+```console
+azurite --queueHost 0.0.0.0
+```
+
+> [!CAUTION]
+> Zezwalanie na żądania zdalne może sprawić, że system będzie narażony na ataki zewnętrzne.
+
+### <a name="queue-listening-port-configuration"></a>Kolejka konfiguracji portu nasłuchiwania
+
+**Opcjonalne** Domyślnie azurite nasłuchuje usługa kolejki na porcie 10001. Użyj przełącznika **--queuePort** , aby określić wymagany port nasłuchujący.
+
+> [!NOTE]
+> Po użyciu dostosowanego portu należy zaktualizować parametry połączenia lub odpowiednią konfigurację w narzędziach lub zestawach SDK usługi Azure Storage.
+
+Dostosuj port nasłuchujący usługa kolejki:
+
+```console
+azurite --queuePort 8888
+```
+
+Pozwól, aby system automatycznie wybierał dostępny port:
+
+```console
+azurite --queuePort 0
 ```
 
 Używany port jest wyświetlany podczas uruchamiania azurite.

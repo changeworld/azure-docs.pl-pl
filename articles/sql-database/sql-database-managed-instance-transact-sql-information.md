@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1bba5e91e3edda41b75a96d8b55495ca5d1c092b
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 9d99bb6db56a8db9d78952e4cf16465e386358cc
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70209636"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383137"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Różnice w języku T-SQL wystąpienia zarządzanego, ograniczenia i znane problemy
 
@@ -27,7 +27,7 @@ Ten artykuł zawiera podsumowanie i wyjaśnienie różnic między składnią i z
 Istnieją pewne ograniczenia PaaS wprowadzone w wystąpieniu zarządzanym, a niektóre zmiany zachowań są porównywane z SQL Server. Różnice są podzielone na następujące kategorie:<a name="Differences"></a>
 
 - [Dostępność](#availability) obejmuje różnice w przypadku, gdy są [zawsze włączone](#always-on-availability) i [kopie zapasowe](#backup).
-- [Zabezpieczenia](#security) obejmują różnice między [inspekcjami](#auditing), [certyfikatami](#certificates), poświadczeniami, [dostawcami usług kryptograficznych](#cryptographic-providers), [logowania i użytkownikami](#logins-and-users)oraz [kluczem usługi i kluczem głównym usługi](#service-key-and-service-master-key). [](#credential)
+- [Zabezpieczenia](#security) obejmują różnice między [inspekcjami](#auditing), [certyfikatami](#certificates), [poświadczeniami](#credential), [dostawcami usług kryptograficznych](#cryptographic-providers), [logowania i użytkownikami](#logins-and-users)oraz [kluczem usługi i kluczem głównym usługi](#service-key-and-service-master-key).
 - [Konfiguracja](#configuration) obejmuje różnice w [rozszerzeniu puli buforów](#buffer-pool-extension), [Sortowanie](#collation), [poziomy zgodności](#compatibility-levels), [dublowanie bazy danych](#database-mirroring), [Opcje bazy danych](#database-options), [Agent SQL Server](#sql-server-agent)i [Opcje tabeli](#tables).
 - [Funkcje](#functionalities) obejmują [BULK INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [transakcji rozproszonych](#distributed-transactions), [zdarzeń rozszerzonych](#extended-events), [bibliotek zewnętrznych](#external-libraries), [FILESTREAM i FileTable](#filestream-and-filetable), [pełnotekstowego Wyszukiwanie semantyczne](#full-text-semantic-search), [połączone serwery](#linked-servers), [baza](#polybase), [replikacja](#replication), [przywracanie](#restore-statement), [Service Broker](#service-broker), [procedury składowane, funkcje i wyzwalacze](#stored-procedures-functions-and-triggers).
 - [Ustawienia środowiska](#Environment) , takie jak sieci wirtualnych i konfiguracje podsieci.
@@ -334,7 +334,7 @@ Wystąpienie zarządzane nie może uzyskać dostępu do udziałów plików i fol
 
 Wystąpienie zarządzane nie może uzyskać dostępu do udziałów plików i folderów systemu Windows, więc obowiązują następujące ograniczenia:
 
-- Obsługiwane `CREATE ASSEMBLY FROM BINARY` są tylko. Zobacz [Tworzenie zestawu na podstawie](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql)danych binarnych. 
+- Obsługiwane `CREATE ASSEMBLY FROM BINARY` są tylko. Zobacz [Tworzenie zestawu na podstawie danych binarnych](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql). 
 - `CREATE ASSEMBLY FROM FILE`nie jest obsługiwana. Zobacz [Tworzenie zestawu z pliku](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY`nie można odwoływać się do plików. Zobacz [ALTER Assembly](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
@@ -412,7 +412,7 @@ Tabele zewnętrzne odwołujące się do plików w systemie HDFS lub Azure Blob S
     - Wystąpienia zarządzane mogą komunikować się z najnowszymi wersjami SQL Server. Zapoznaj się z obsługiwanymi wersjami [tutaj](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems).
     - Replikacja transakcyjna ma [dodatkowe wymagania dotyczące sieci](sql-database-managed-instance-transactional-replication.md#requirements).
 
-Informacje o konfigurowaniu replikacji znajdują się w samouczku dotyczącym [replikacji](replication-with-sql-database-managed-instance.md).
+Informacje o konfigurowaniu replikacji znajdują się w [samouczku](replication-with-sql-database-managed-instance.md)dotyczącym replikacji.
 
 
 Jeśli replikacja jest włączona w bazie danych w [grupie trybu failover](sql-database-auto-failover-group.md), administrator wystąpienia zarządzanego musi oczyścić wszystkie publikacje na starym serwerze podstawowym i ponownie skonfigurować je na nowym serwerze podstawowym po przejściu w tryb failover. W tym scenariuszu są niezbędne następujące działania:
@@ -541,6 +541,14 @@ Wystąpienie zarządzane umieszcza pełne informacje w dziennikach błędów. Is
 
 ## <a name="Issues"></a>Znane problemy
 
+### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Po przejściu w tryb failover może zajść konieczność ponownego skonfigurowania przyrządu zasobów na Krytyczne dla działania firmyej warstwie usług
+
+**Dniu** Wrz 2019
+
+Funkcja [gubernatora zasobów](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) , która umożliwia ograniczenie zasobów przypisanych do obciążenia użytkownikami, może nieprawidłowo sklasyfikować pewne obciążenie użytkownika po przejściu w tryb failover lub w przypadku zmiany warstwy usługi (na przykład zmiany maksymalnego rdzeń wirtualny lub maksymalnego wystąpienia). Rozmiar magazynu).
+
+**Obejście problemu**: Uruchamiaj `ALTER RESOURCE GOVERNOR RECONFIGURE` okresowo lub jako część zadania programu SQL Agent, które wykonuje zadanie SQL, gdy wystąpienie zostanie uruchomione, jeśli używasz [prezesa zasobów](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor).
+
 ### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>Nie można uwierzytelnienia karty inteligentnej do zewnętrznych serwerów poczty przy użyciu bezpiecznego połączenia (SSL)
 
 **Dniu** 2019 sie
@@ -584,6 +592,12 @@ Jeśli replikacja transakcyjna jest włączona w bazie danych w grupie autotrybu
 SQL Server Management Studio i SQL Server narzędzia danych nie fuly obsługi logowania do katalogu kont i użytkowników usługi Azure.
 - Korzystanie z usług Azure AD Server Principals (Logins) i użytkowników (publiczna wersja zapoznawcza) za pomocą narzędzi SQL Server Data Tools nie jest obecnie obsługiwane.
 - Obsługa skryptów dla podmiotów zabezpieczeń serwera usługi Azure AD (logowania) i użytkowników (publiczna wersja zapoznawcza) nie jest obsługiwana w SQL Server Management Studio.
+
+### <a name="temporary-database-is-used-during-restore-operation"></a>Tymczasowa baza danych jest używana podczas operacji przywracania
+
+Gdy baza danych jest przywracana w wystąpieniu zarządzanym, usługa Restore najpierw utworzy pustą bazę danych o podanej nazwie w celu przydzielenia nazwy do wystąpienia. Po pewnym czasie ta baza danych zostanie porzucona, a przywrócenie rzeczywistej bazy danych zostanie rozpoczęte. Baza danych, która jest w stanie *przywracania* , będzie miała tymczasową wartość identyfikatora GUID, a nie nazwę. Nazwa tymczasowa zostanie zmieniona na żądaną nazwę określoną w `RESTORE` instrukcji po zakończeniu procesu przywracania. W fazie początkowej użytkownik może uzyskać dostęp do pustej bazy danych, a nawet utworzyć tabele lub załadować dane w tej bazie danych. Ta Tymczasowa baza danych zostanie porzucona, gdy usługa przywracania rozpocznie działanie drugiej fazy.
+
+**Obejście problemu**: Nie uzyskuj dostępu do przywracanej bazy danych, dopóki nie zobaczysz, że Przywracanie zostało zakończone.
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>Struktura i zawartość bazy danych TEMPDB są odtwarzane
 
@@ -643,7 +657,7 @@ using (var scope = new TransactionScope())
 
 Mimo że ten kod działa z danymi w tym samym wystąpieniu, wymagana jest usługa MSDTC.
 
-**Poprawkę** Użyj elementu SqlConnection [. ChangeDatabase (String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) , aby użyć innej bazy danych w kontekście połączenia zamiast korzystać z dwóch połączeń.
+**Poprawkę** Użyj elementu [SqlConnection. ChangeDatabase (String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) , aby użyć innej bazy danych w kontekście połączenia zamiast korzystać z dwóch połączeń.
 
 ### <a name="clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address"></a>Moduły CLR i połączone serwery czasami nie mogą odwoływać się do lokalnego adresu IP
 

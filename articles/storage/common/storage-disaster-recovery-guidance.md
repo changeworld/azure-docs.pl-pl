@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7785c6b5c575bf862b1ba0edccc75fc1c6031b08
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: b2cd7232bce674dfa5aa2c6f4b6d9386fa7a189b
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015657"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376451"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Odzyskiwanie po awarii i tryb failover konta magazynu (wersja zapoznawcza) w usłudze Azure Storage
 
@@ -43,7 +43,7 @@ Inne opcje nadmiarowości usługi Azure Storage obejmują magazyn strefowo nadmi
 > [!WARNING]
 > Magazyn Geograficznie nadmiarowy wykonuje ryzyko utraty danych. Dane są replikowane do regionu pomocniczego asynchronicznie, co oznacza, że istnieje opóźnienie między zapisaniem danych w regionie podstawowym do regionu pomocniczego. W przypadku awarii operacje zapisu w podstawowym punkcie końcowym, które nie zostały jeszcze zreplikowane do pomocniczego punktu końcowego, zostaną utracone.
 
-## <a name="design-for-high-availability"></a>Projektowanie pod kątem wysokiej dostępności
+## <a name="design-for-high-availability"></a>Projektowanie na potrzeby wysokiej dostępności
 
 Ważne jest, aby zaprojektować aplikację pod kątem wysokiej dostępności od początku. Zapoznaj się z tymi zasobami platformy Azure, aby uzyskać wskazówki dotyczące projektowania aplikacji i planowania odzyskiwania po awarii:
 
@@ -55,7 +55,7 @@ Ważne jest, aby zaprojektować aplikację pod kątem wysokiej dostępności od 
 Ponadto należy pamiętać o najlepszych rozwiązaniach dotyczących utrzymania wysokiej dostępności dla danych usługi Azure Storage:
 
 * **Dysku** Użyj [Azure Backup](https://azure.microsoft.com/services/backup/) , aby utworzyć kopię zapasową dysków maszyny wirtualnej używanych przez maszyny wirtualne platformy Azure. Należy również rozważyć użycie [Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/) do ochrony maszyn wirtualnych w przypadku awarii regionalnej.
-* **Blokowe obiekty blob:** Włącz opcję [usuwania](../blobs/storage-blob-soft-delete.md) nietrwałego, aby chronić przed usuwaniem na poziomie obiektów i zastępowaniem, lub kopiować blokowe obiekty blob na inne konto magazynu w innym regionie przy użyciu [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md)lub [biblioteki przenoszenia danych platformy Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
+* **Blokowe obiekty blob:** Włącz opcję [usuwania nietrwałego](../blobs/storage-blob-soft-delete.md) , aby chronić przed usuwaniem na poziomie obiektów i zastępowaniem, lub kopiować blokowe obiekty blob na inne konto magazynu w innym regionie przy użyciu [AzCopy](storage-use-azcopy.md), [Azure PowerShell](storage-powershell-guide-full.md)lub [biblioteki przenoszenia danych platformy Azure](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/).
 * **Plikach** Użyj [AzCopy](storage-use-azcopy.md) lub [Azure PowerShell](storage-powershell-guide-full.md) , aby skopiować pliki do innego konta magazynu w innym regionie.
 * **Tabele:** Użyj [AzCopy](storage-use-azcopy.md) , aby wyeksportować dane tabeli do innego konta magazynu w innym regionie.
 
@@ -168,7 +168,6 @@ Należy pamiętać, że wszystkie dane przechowywane na dysku tymczasowym zostan
 Następujące funkcje lub usługi nie są obsługiwane w przypadku przełączania do trybu failover dla konta w wersji zapoznawczej:
 
 - Azure File Sync nie obsługuje trybu failover dla konta magazynu. Konta magazynu zawierające udziały plików platformy Azure używane jako punkty końcowe chmury w Azure File Sync nie powinny być przenoszone do trybu failover. Wykonanie tej operacji spowoduje, że synchronizacja przestanie działać, a także może spowodować nieoczekiwaną utratę danych w przypadku nowych plików warstwowych.  
-- Konta magazynu używające Azure Data Lake Storage Gen2 hierarchicznej przestrzeni nazw nie mogą być przełączone w tryb failover.
 - Nie można przełączyć konta magazynu zawierającego zarchiwizowane obiekty blob w tryb failover. Obsługa zarchiwizowanych obiektów BLOB na oddzielnym koncie magazynu, które nie są planowane do trybu failover.
 - Nie można przełączyć konta magazynu zawierającego blokowe obiekty blob w warstwie Premium. Konta magazynu obsługujące blokowe obiekty blob w warstwie Premium nie obsługują obecnie nadmiarowości geograficznej.
 - Po zakończeniu pracy w trybie failover następujące funkcje przestaną działać, jeśli są one początkowo włączone: [Subskrypcje zdarzeń](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview), [Zasady cyklu życia](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts), [Rejestrowanie analityka magazynu](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging).

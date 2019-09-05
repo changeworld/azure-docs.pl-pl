@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/28/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: b903dfea11e5ac2390eb437e699ee8ec790a5061
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9e5bb77c25b4f9fe00b75918812a1d52feff3b2a
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562976"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308209"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-go"></a>Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka Go
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-go"></a>Szybki start: Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka Go
 
 Ten przewodnik Szybki start przeprowadzi Cię przez programowe uzyskiwanie odpowiedzi z opublikowanej bazy wiedzy usługi QnA Maker. Baza wiedzy zawiera pytania i odpowiedzi ze [źródeł danych](../Concepts/data-sources-supported.md) , takich jak często zadawane pytania. [Pytanie](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) jest wysyłane do usługi QNA Maker. [Odpowiedź](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obejmuje odpowiedzi przewidziane w górnej części. 
 
@@ -89,7 +89,7 @@ Skompiluj i uruchom program z poziomu wiersza polecenia. Automatycznie wyśle on
 
 [!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API Reference (Dokumentacja interfejsu API REST usługi QnA Maker w wersji 4)](https://go.microsoft.com/fwlink/?linkid=2092179)

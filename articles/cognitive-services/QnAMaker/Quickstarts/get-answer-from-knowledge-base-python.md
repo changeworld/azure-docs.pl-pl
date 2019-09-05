@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 05/24/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 71f2cc3ef028d66be7049cf85003d51e6b4baef3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 34c85de456e7ec96f3244d327fd53c91ed90d109
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559812"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306910"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka Python
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Szybki start: Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka Python
 
 Ten przewodnik Szybki start przeprowadzi Cię przez programowe uzyskiwanie odpowiedzi z opublikowanej bazy wiedzy usługi QnA Maker. Baza wiedzy zawiera pytania i odpowiedzi ze [źródeł danych](../Concepts/data-sources-supported.md) , takich jak często zadawane pytania. [Pytanie](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) jest wysyłane do usługi QNA Maker. [Odpowiedź](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obejmuje odpowiedzi przewidziane w górnej części. 
 

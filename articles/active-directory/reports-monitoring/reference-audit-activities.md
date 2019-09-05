@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56a94ef3f6ea5737b629efe44bd3e1cc1f36a693
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: aaa60a7737b7781a21e23516d139332f10bdf448
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127144"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306012"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Informacje o działaniach inspekcji usługi Azure AD
 
@@ -408,6 +408,14 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Zarządzanie katalogiem|Pobieranie dostawców tożsamości dla określonego przepływu administracyjnego|
 |Zarządzanie katalogiem|Pobieranie listy wszystkich przepływów administracyjnych|
 |Zarządzanie katalogiem|Pobieranie listy tagów wszystkich przepływów administracyjnych dla wszystkich użytkowników|
+|Zarządzanie grupami|Członkowie grupy pobierania zbiorczego — uruchomiono|
+|Zarządzanie grupami|Członkowie grupy pobierania zbiorczego — zakończono|
+|Zarządzanie grupami|Członkowie grupy importu zbiorczego — uruchomiono|
+|Zarządzanie grupami|Członkowie grupy importu zbiorczego — zakończono|
+|Zarządzanie grupami|Zbiorcze usuwanie członków grupy — rozpoczęto|
+|Zarządzanie grupami|Zbiorcze usuwanie członków grupy — zakończono|
+|Zarządzanie grupami|Grupy pobierania zbiorczego — rozpoczęte|
+|Zarządzanie grupami|Grupy pobierania zbiorczego — zakończono|
 |Zarządzanie grupami|Pobieranie listy dzierżaw dla użytkownika|
 |Zarządzanie grupami|Pobieranie samodzielnie określonych oświadczeń kont lokalnych|
 |Zarządzanie grupami|Pobieranie zlokalizowanego pliku JSON zasobu|
@@ -454,28 +462,42 @@ W tym artykule wymieniono działania inspekcji, które mogą być rejestrowane w
 |Zarządzanie rolami|Usuwanie konfiguracji urządzenia|
 |Zarządzanie rolami|Urządzenie, które nie jest już zgodne|
 |Zarządzanie rolami|Urządzenie, które nie jest już zarządzane|
-|Zarządzanie użytkownikami|Usuwanie zarejestrowanego właściciela z urządzenia|
-|Zarządzanie użytkownikami|Usuwanie zarejestrowanych użytkowników z urządzenia|
-|Zarządzanie użytkownikami|Zaktualizuj urządzenie|
-|Zarządzanie użytkownikami|Aktualizowanie konfiguracji urządzenia|
-|Zarządzanie użytkownikami|Dodawanie kwalifikujących się elementów członkowskich do roli|
-|Zarządzanie użytkownikami|Dodawanie elementu członkowskiego do roli|
-|Zarządzanie użytkownikami|Dodawanie przypisania roli do definicji roli|
-|Zarządzanie użytkownikami|Dodawanie roli z szablonu|
-|Zarządzanie użytkownikami|Dodawanie członka w zakresie do roli|
-|Zarządzanie użytkownikami|Usuwanie kwalifikującego się elementu członkowskiego z roli|
-|Zarządzanie użytkownikami|Usuwanie członka z roli|
-|Zarządzanie użytkownikami|Usuwanie przypisania roli z definicji roli|
-|Zarządzanie użytkownikami|Usuwanie elementu członkowskiego w zakresie z roli|
-|Zarządzanie użytkownikami|Aktualizowanie roli|
 |Zarządzanie użytkownikami|AccessReview_Review|
 |Zarządzanie użytkownikami|AccessReview_Update|
 |Zarządzanie użytkownikami|ActivationAborted|
 |Zarządzanie użytkownikami|ActivationApproved|
 |Zarządzanie użytkownikami|ActivationCanceled|
 |Zarządzanie użytkownikami|ActivationRequested|
+|Zarządzanie użytkownikami|Dodawanie kwalifikujących się elementów członkowskich do roli|
+|Zarządzanie użytkownikami|Dodawanie elementu członkowskiego do roli|
+|Zarządzanie użytkownikami|Dodawanie przypisania roli do definicji roli|
+|Zarządzanie użytkownikami|Dodawanie roli z szablonu|
+|Zarządzanie użytkownikami|Dodawanie członka w zakresie do roli|
 |Zarządzanie użytkownikami|Dodano|
 |Zarządzanie użytkownikami|Przypisywanie|
+|Zarządzanie użytkownikami|Tworzenie zbiorcze użytkowników — rozpoczęto|
+|Zarządzanie użytkownikami|Tworzenie zbiorczo użytkowników — zakończono|
+|Zarządzanie użytkownikami|Usuwanie zbiorcze użytkowników — rozpoczęto|
+|Zarządzanie użytkownikami|Usuwanie zbiorcze użytkowników — zakończono|
+|Zarządzanie użytkownikami|Użytkownicy pobierania zbiorczego — uruchomiono|
+|Zarządzanie użytkownikami|Użytkownicy pobierania zbiorczego — zakończono|
+|Zarządzanie użytkownikami|Przywrócenie zbiorcze usuniętych użytkowników — rozpoczęto|
+|Zarządzanie użytkownikami|Przywracanie zbiorcze — usunięto użytkowników — zakończono|
+|Zarządzanie użytkownikami|Zaproszeni użytkownicy zbiorczi — uruchomiono|
+|Zarządzanie użytkownikami|Zaproszeni użytkownicy zbiorczi — zakończono|
+|Zarządzanie użytkownikami|Usuwanie zarejestrowanego właściciela z urządzenia|
+|Zarządzanie użytkownikami|Usuwanie zarejestrowanych użytkowników z urządzenia|
+|Zarządzanie użytkownikami|Usuwanie kwalifikującego się elementu członkowskiego z roli|
+|Zarządzanie użytkownikami|Usuwanie członka z roli|
+|Zarządzanie użytkownikami|Usuwanie przypisania roli z definicji roli|
+|Zarządzanie użytkownikami|Usuwanie elementu członkowskiego w zakresie z roli|
+|Zarządzanie użytkownikami|Zaktualizuj urządzenie|
+|Zarządzanie użytkownikami|Aktualizowanie konfiguracji urządzenia|
+|Zarządzanie użytkownikami|Aktualizowanie roli|
+
+
+
+
 
 
 ## <a name="identity-protection"></a>Ochrona tożsamości

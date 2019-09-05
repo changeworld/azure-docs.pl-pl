@@ -1,5 +1,5 @@
 ---
-title: Pobierz intencje C# ,-Luis
+title: 'Szybki start: Pobierz intencje C# ,-Luis'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start dotyczącym języka C# użyjesz dostępnej publicznie aplikacji LUIS, aby określić intencję użytkownika w tekście konwersacji.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 92f74174d35a58e54ae0078f146f86dbfc7aa709
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f7bea7320c99487e5f8f534f337a744344efa658
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563847"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375548"
 ---
 # <a name="quickstart-get-intent-using-c"></a>Szybki start: pobieranie intencji za pomocą języka C#
 

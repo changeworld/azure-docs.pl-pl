@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: d0f29e2c01d6295935ac56cb19c37e1ad6bbd21b
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: bd1317242f84b4d8bd039da89d991a73f6cd3781
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907380"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309309"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Tworzenie replik odczytu i zarządzanie nimi w Azure Database for PostgreSQL-pojedynczym serwerze z Azure Portal
 
 W tym artykule dowiesz się, jak tworzyć repliki odczytu i zarządzać nimi w Azure Database for PostgreSQL z Azure Portal. Aby dowiedzieć się więcej o replikach odczytu, zobacz [Omówienie](concepts-read-replicas.md).
-
-> [!IMPORTANT]
-> Replikę odczytu można utworzyć w tym samym regionie, w którym znajduje się serwer główny, lub w dowolnym innym wybranym regionie świadczenia usługi Azure. Replikacja między regionami jest obecnie dostępna w publicznej wersji zapoznawczej.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -57,7 +54,7 @@ Aby utworzyć replikę odczytu, wykonaj następujące kroki:
 
 2. Na pasku bocznym serwera w obszarze **Ustawienia**wybierz pozycję **replikacja**.
 
-3. Wybierz pozycję **Dodaj**replikę.
+3. Wybierz pozycję **Dodaj replikę**.
 
    ![Dodaj replikę](./media/howto-read-replicas-portal/add-replica.png)
 
@@ -145,7 +142,7 @@ Możesz również usunąć replikę odczytu z okna **replikacji** , wykonując n
 
    ![Wybierz replikę do usunięcia](./media/howto-read-replicas-portal/select-replica.png)
  
-4. Wybierz pozycję **Usuń**replikę.
+4. Wybierz pozycję **Usuń replikę**.
 
    ![Wybierz pozycję Usuń replikę](./media/howto-read-replicas-portal/select-delete-replica.png)
  
@@ -158,11 +155,11 @@ Możesz również usunąć replikę odczytu z okna **replikacji** , wykonując n
 Do monitorowania replik odczytu są dostępne dwie metryki.
 
 ### <a name="max-lag-across-replicas-metric"></a>Metryka maksymalnego opóźnienia między replikami
-Metryka **maks. opóźnienie między** replikami pokazuje opóźnienie w bajtach między serwerem głównym a repliką najbardziej opóźnioną. 
+Metryka **maks. opóźnienie między replikami** pokazuje opóźnienie w bajtach między serwerem głównym a repliką najbardziej opóźnioną. 
 
 1.  W Azure Portal wybierz serwer główny Azure Database for PostgreSQL.
 
-2.  Wybierz pozycję **Metryki**. W oknie **metryki** wybierz pozycję **maks. opóźnienie między**replikami.
+2.  Wybierz pozycję **Metryki**. W oknie **metryki** wybierz pozycję **maks. opóźnienie między replikami**.
 
     ![Monitoruj maksymalne opóźnienie między replikami](./media/howto-read-replicas-portal/select-max-lag.png)
  
@@ -181,5 +178,5 @@ Metryka **opóźnienia repliki** przedstawia czas od ostatniego odtworzenia tran
 3. Dla **agregacji**wybierz **wartość Max**. 
  
 ## <a name="next-steps"></a>Następne kroki
-* Dowiedz się więcej o odczytaniu [replik w Azure Database for PostgreSQL](concepts-read-replicas.md).
+* Dowiedz się więcej o [odczytaniu replik w Azure Database for PostgreSQL](concepts-read-replicas.md).
 * Dowiedz się, jak [tworzyć repliki odczytu i zarządzać nimi w interfejsie wiersza polecenia platformy Azure](howto-read-replicas-cli.md).

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 99750971e11171c0b315cac38089c216d42c7ba6
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 7e77a5a6891335139737ba3ef377c55b6694f043
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663663"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383387"
 ---
 # <a name="what-is-personalizer"></a>Co to jest usługa Personalizacja?
 
@@ -29,7 +29,7 @@ Usługa Personalizacja platformy Azure to chmurowa usługa interfejsu API, któr
 
 ## <a name="how-does-personalizer-work"></a>Jak działa program Personalizuj?
 
-Personalizacja korzysta z modeli uczenia maszynowego w celu ustalenia, jakie działania mają najwyższy rangę w kontekście. Aplikacja kliencka zawiera listę możliwych akcji z informacjami o nich; i informacje o kontekście, które mogą zawierać informacje o użytkowniku, urządzeniu itp. Personalizacja określa akcję do wykonania. Gdy aplikacja kliencka użyje wybranej akcji, zapewnia ona informacje zwrotne do personalizacji w formie nagrody. Po otrzymaniu opinii Personalizowanie automatycznie aktualizuje własny model używany do przyszłych rangi.
+Personalizacja korzysta z modeli uczenia maszynowego w celu ustalenia, jakie działania mają najwyższy rangę w kontekście. Aplikacja kliencka zawiera listę możliwych akcji z informacjami o nich; i informacje o kontekście, które mogą zawierać informacje o użytkowniku, urządzeniu itp. Personalizacja określa akcję do wykonania. Gdy aplikacja kliencka użyje wybranej akcji, zapewnia ona informacje zwrotne do personalizacji w formie nagrody. Po otrzymaniu opinii Personalizowanie automatycznie aktualizuje własny model używany do przyszłych rangi. W miarę upływu czasu Personalizacja będzie szkolić jeden model, który może sugerować najlepszą akcję do wyboru w każdym kontekście na podstawie ich funkcji.
 
 ## <a name="how-do-i-use-the-personalizer"></a>Jak mogę użyć personalizacji?
 
@@ -53,6 +53,8 @@ Na przykład aplikacja kliencka może dodać personalizację do:
 * Wybierz odpowiedź bot rozmowy, aby wyjaśnić intencję użytkownika lub zasugerować akcję.
 * Ustalanie priorytetów sugestii, jakie użytkownik powinien wykonać w następnym kroku w procesie biznesowym.
 
+Program personalizujer nie jest usługą do utrwalania informacji o profilu użytkownika i zarządzania nimi, a także do rejestrowania preferencji lub historii poszczególnych użytkowników. Personalizacja uczy się od funkcji poszczególnych interakcji w akcji, a kontekst jeden model, który może uzyskać maksymalne nagrody w przypadku wystąpienia podobnych funkcji. 
+
 ## <a name="personalization-for-developers"></a>Personalizacja dla deweloperów
 
 Usługa personalizacji ma dwa interfejsy API:
@@ -62,7 +64,11 @@ Usługa personalizacji ma dwa interfejsy API:
 
 ![Podstawowa sekwencja zdarzeń dla personalizacji](media/what-is-personalizer/personalization-intro.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Szybki start: Utwórz pętlę opinii wC#](csharp-quickstart-commandline-feedback-loop.md)
+* [Szybki start: Tworzenie pętli opinii w programie Node. js](quickstart-command-line-feedback-loop-nodejs-sdk.md)
+* [Szybki start: Tworzenie pętli opinii w języku Python](python-quickstart-commandline-feedback-loop.md)
+* [Informacje o funkcjach i akcjach dotyczących żądania rangi](concepts-features.md)
+* [Dowiedz się więcej na temat określania wyniku żądania nagrody](concept-rewards.md)
 * [Korzystanie z demonstracji interaktywnej](https://personalizationdemo.azurewebsites.net/)

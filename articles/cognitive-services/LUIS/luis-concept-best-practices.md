@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 7a2802bd4daa1a009c610688120c9a56583b054f
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 91ff99f674439580d369aad1490ded85d39d377c
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639278"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382881"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Najlepsze rozwiązania dotyczące tworzenia aplikacji interpretacji języka, dzięki usługom Cognitive Services
 Tworzenie aplikacji LUIS za pomocą procesu tworzenia aplikacji: 
@@ -27,7 +27,7 @@ Tworzenie aplikacji LUIS za pomocą procesu tworzenia aplikacji:
 * Test z punktu końcowego 
 * Dodawanie funkcji
 
-Po opublikowaniu aplikacji [](luis-how-to-publish-app.md)należy użyć cyklu tworzenia do dodawania funkcji, publikowania i testowania z punktu końcowego. Nie zaczynają się na następny cykl i tworzenia pakietów administracyjnych, dodając więcej wypowiedzi przykładu. Nie zezwala, LUIS, Dowiedz się, modelu za pomocą wypowiedzi rzeczywistych użytkowników. 
+Po [opublikowaniu](luis-how-to-publish-app.md)aplikacji należy użyć cyklu tworzenia do dodawania funkcji, publikowania i testowania z punktu końcowego. Nie zaczynają się na następny cykl i tworzenia pakietów administracyjnych, dodając więcej wypowiedzi przykładu. Nie zezwala, LUIS, Dowiedz się, modelu za pomocą wypowiedzi rzeczywistych użytkowników. 
 
 Aby usługa LUIS to wydajny w jego zadania uczenia nie rozwijaj wypowiedzi aż bieżący zestaw wypowiedzi punktu końcowego i przykładowe są zwraca wyniki prognozowania pewność, wysoka. Popraw wyniki przy użyciu [aktywnego uczenia](luis-concept-review-endpoint-utterances.md), [wzorców](luis-concept-patterns.md)i [list fraz](luis-concept-feature.md). 
 
@@ -78,13 +78,13 @@ Informacje dodatkowe:
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>Dodawanie listy frazy i wzorców w późniejszej iteracji
 
-Najlepszym rozwiązaniem jest niestosowanie tych zasad przed przetestowaniem aplikacji. Należy zrozumieć, jak działa aplikacja przed dodaniem [list](luis-concept-feature.md) i [wzorców](luis-concept-patterns.md) frazy, ponieważ te funkcje są ważone bardziej silnie niż przykład wyrażenia długości i pochylenie pozostanie niebezpieczne. 
+Najlepszym rozwiązaniem jest niestosowanie tych zasad przed przetestowaniem aplikacji. Należy zrozumieć, jak działa aplikacja przed dodaniem list i [wzorców](luis-concept-patterns.md) [frazy](luis-concept-feature.md) , ponieważ te funkcje są ważone bardziej silnie niż przykład wyrażenia długości i pochylenie pozostanie niebezpieczne. 
 
-Po zrozumieniu, jak działa aplikacja, Dodaj każdą z tych funkcji, które mają zastosowanie do aplikacji. Nie trzeba dodawać tych funkcji razem z każdą iteracją [](luis-concept-app-iteration.md) ani zmieniać funkcji w każdej wersji. 
+Po zrozumieniu, jak działa aplikacja, Dodaj każdą z tych funkcji, które mają zastosowanie do aplikacji. Nie trzeba dodawać tych funkcji razem z każdą [iteracją](luis-concept-app-iteration.md) ani zmieniać funkcji w każdej wersji. 
 
 Nie trzeba dodawać ich na początku projektu modelu, ale łatwiej jest zobaczyć, jak każda z nich zmienia wyniki po przetestowaniu modelu z wyrażenia długości. 
 
-Najlepszym rozwiązaniem jest przetestowanie za pośrednictwem [punktu końcowego](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) , aby uzyskać dodatkową korzyść z [aktywnego uczenia](luis-concept-review-endpoint-utterances.md). [Okienko testowanie interaktywne](luis-interactive-test.md) jest również prawidłową metodologią testu. 
+Najlepszym rozwiązaniem jest przetestowanie za pośrednictwem [punktu końcowego](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) , aby uzyskać dodatkową korzyść z [aktywnego uczenia](luis-concept-review-endpoint-utterances.md). [Okienko testowanie interaktywne](luis-interactive-test.md) jest również prawidłową metodologią testu. 
  
 
 ### <a name="phrase-lists"></a>Listy fraz
@@ -101,7 +101,7 @@ Informacje dodatkowe:
 
 Wypowiedzi użytkowników z punktu końcowego, bardzo podobne do siebie nawzajem, może spowodować ujawnienie wzorców wybór programu word i umieszczania. [Wzorzec](luis-concept-patterns.md) funkcja przyjmuje ten wybór programu word i umieszczania wraz z wyrażeń regularnych w celu zwiększenia dokładności prognozy. We wzorcu wyrażenia regularnego umożliwia słów i znaki interpunkcyjne, które zamierzasz Ignoruj podczas nadal pasujących do wzorca. 
 
-Użyj opcjonalnej [składni](luis-concept-patterns.md) wzorca dla interpunkcji, aby można było zignorować interpunkcję. Użyj [jawnej listy](luis-concept-patterns.md#explicit-lists) , aby skompensować wzorzec. wszelkie problemy z składnią. 
+Użyj [opcjonalnej składni](luis-concept-patterns.md) wzorca dla interpunkcji, aby można było zignorować interpunkcję. Użyj [jawnej listy](luis-concept-patterns.md#explicit-lists) , aby skompensować wzorzec. wszelkie problemy z składnią. 
 
 Informacje dodatkowe:
 * Związane [Wzorce poprawiają dokładność przewidywania](luis-concept-patterns.md)

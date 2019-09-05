@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 1fc6c054b32c62fbebaa2af738e25ef0dec362ac
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 2e578c6bfdfb25eaba3d0c692ff33aa5b0572669
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981286"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305996"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrację ruchu do nowszych bram
 
@@ -41,11 +41,11 @@ Pierwsza część migracji ruchu do nowszych bram jest zaplanowana na **14 paźd
 - Azja Wschodnia
 
 Migracja ruchu zmieni publiczny adres IP, który usługa DNS rozpoznaje dla SQL Database.
-Będzie to miało wpływ, jeśli masz
+Będzie to miało wpływ na następujące działania:
 - Sztywno zakodowany adres IP dla każdej konkretnej bramy w zaporze lokalnej
 - Wszystkie podsieci używające programu Microsoft. SQL jako punktu końcowego usługi, ale nie mogą komunikować się z adresami IP bramy
 
-Nie będzie to miało wpływu, jeśli masz 
+Nie będzie to miało wpływu na następujące warunki:
 - Przekierowanie jako zasada połączenia
 - Połączenia do SQL Database z platformy Azure i używanie tagów usługi
 - Połączenia utworzone przy użyciu obsługiwanych wersji sterownika JDBC dla SQL Server nie będą miały wpływu. Aby uzyskać obsługiwane wersje JDBC, zobacz artykuł [pobieranie sterownika programu Microsoft JDBC dla SQL Server](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server).

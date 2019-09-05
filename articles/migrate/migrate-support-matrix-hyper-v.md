@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 26b7f185a05bcf50db3af6bd3b75d5e61d6ec84b
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 97972be655a6a03cfe29d8589a144d1e027b86fc
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279570"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376095"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska funkcji Hyper-V
 
@@ -82,7 +82,7 @@ W celu oceny Azure Migrate uruchamia lekkie urządzenie w celu odnajdywania masz
 
 | **Pomoc techniczna**                | **Szczegóły**               
 | :-------------------       | :------------------- |
-| **Wdrażanie urządzenia**   |  Urządzenie jest wdrażane jako maszyna wirtualna funkcji Hyper-V.<br/> Maszyna wirtualna z urządzeniem Azure Migrate jest maszyną wirtualną funkcji Hyper-V w wersji 5,0.<br/> Na hoście funkcji Hyper-V musi być uruchomiony system Windows Server 2012 R2 lub nowszy.<br/> Host wymaga wystarczającej ilości miejsca, aby przydzielić 16 GB pamięci RAM, 8 procesorów wirtualnych vCPU i 1 Przełącznik zewnętrzny dla maszyny wirtualnej urządzenia.<br/> Urządzenie musi mieć statyczny lub dynamiczny adres IP oraz dostęp do Internetu.
+| **Wdrażanie urządzenia**   |  Urządzenie jest wdrażane jako maszyna wirtualna funkcji Hyper-V.<br/> Maszyna wirtualna z urządzeniem Azure Migrate jest maszyną wirtualną funkcji Hyper-V w wersji 5,0.<br/> Na hoście funkcji Hyper-V musi być uruchomiony system Windows Server 2012 R2 lub nowszy.<br/> Host wymaga wystarczającej ilości miejsca, aby przydzielić 16 GB pamięci RAM, 8 procesorów wirtualnych vCPU, około 80 GB miejsca do magazynowania oraz przełącznik zewnętrzny dla maszyny wirtualnej urządzenia.<br/> Urządzenie musi mieć statyczny lub dynamiczny adres IP oraz dostęp do Internetu.
 | **Projekt Azure Migrate**  |  Urządzenie może być skojarzone z pojedynczym projektem.<br/> Dowolna liczba urządzeń może być skojarzona z pojedynczym projektem.<br/> Można ocenić do 35 000 maszyn wirtualnych w projekcie.
 | **Hosty funkcji Hyper-V**          | Urządzenie może połączyć się z maksymalnie 300 hostami funkcji Hyper-V.
 | **Odnajdowa**              | Pojedyncze urządzenie może wykryć do 5000 maszyn wirtualnych.

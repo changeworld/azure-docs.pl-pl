@@ -1,6 +1,6 @@
 ---
-title: Dołączanie lub odłączanie galerii udostępnionego obrazu w usłudze Azure Lab Services | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dołączyć galerii udostępnionego obrazu do laboratorium w usłudze Azure Lab Services.
+title: Dołączanie lub odłączanie galerii obrazów udostępnionych w Azure Lab Services | Microsoft Docs
+description: Dowiedz się, jak dołączyć udostępnioną galerię obrazów do laboratorium w Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,84 +11,78 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: de4e9fb4b15f4c346926fe46f23255c668204c2e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18a14981c97af8e9d90480f7b04d50fc6df6b01d
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413886"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382709"
 ---
-# <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Dołączanie lub odłączanie galerii udostępnionego obrazu w usłudze Azure Lab Services
-Administrator nauczycieli/laboratorium można zapisać obrazu szablonu maszyny Wirtualnej na platformie Azure [galerii obrazów udostępnionych](../../virtual-machines/windows/shared-image-galleries.md) aby mogła zostać ponownie użyte przez inne osoby. Pierwszym krokiem administratora laboratorium dołącza istniejących galerii udostępnionego obrazu do konta laboratorium. Po dołączeniu galerii obrazów udostępnionych labs utworzonych w ramach konta laboratorium można zapisać obrazy do galerii obrazów udostępnionych. Inne nauczycieli można wybrać ten obraz z galerii obrazów udostępnionych, aby utworzyć szablon dla ich klas. 
+# <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Dołączanie lub odłączanie galerii obrazów udostępnionych w Azure Lab Services
+Nauczyciele/administrator laboratorium mogą zapisać obraz szablonu maszyny wirtualnej w [galerii udostępnionych obrazów](../../virtual-machines/windows/shared-image-galleries.md) systemu Azure, aby był on ponownie używany przez inne osoby. Pierwszym krokiem jest dołączenie istniejącej galerii udostępnionych obrazów do konta laboratorium przez administratora laboratorium. Po dołączeniu do galerii obrazów udostępnionych laboratoria utworzone na koncie laboratorium mogą zapisywać obrazy w galerii obrazów udostępnionych. Inni nauczyciele mogą wybrać ten obraz z galerii obrazów udostępnionych, aby utworzyć szablon dla ich klas. 
 
-W tym artykule pokazano, jak dołączanie lub odłączanie galerii obrazów udostępnionych na koncie laboratorium. 
+W tym artykule opisano sposób dołączania lub odłączania udostępnionej galerii obrazów do konta laboratorium. 
 
-## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurowanie w czasie tworzenia konta laboratorium
-Podczas tworzenia konta laboratorium galerii udostępnionego obrazu można dołączyć do konta laboratorium. Możesz wybrać istniejące galerii obrazów udostępnionych z listy rozwijanej lub Utwórz nową. Aby utworzyć i dołączyć galerii obrazów udostępnionych na koncie laboratorium, wybierz pozycję **Utwórz nową**, wprowadź nazwę dla galerii i wprowadź **OK**. 
+## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfiguruj podczas tworzenia konta laboratorium
+Podczas tworzenia konta laboratorium możesz dołączyć udostępnioną galerię obrazów do konta laboratorium. Możesz wybrać istniejącą galerię obrazów udostępnionych z listy rozwijanej lub utworzyć nową. Aby utworzyć i dołączyć udostępnioną galerię obrazów do konta laboratorium, wybierz pozycję **Utwórz nowy**, wprowadź nazwę galerii, a następnie wprowadź **OK**. 
 
-![Konfigurowanie galerii obrazów udostępnionych w czasie tworzenia konta laboratorium](../media/how-to-use-shared-image-gallery/new-lab-account.png)
+![Konfigurowanie udostępnionej galerii obrazów w momencie tworzenia konta laboratorium](../media/how-to-use-shared-image-gallery/new-lab-account.png)
 
-## <a name="configure-after-the-lab-account-is-created"></a>Skonfigurować po utworzeniu konta laboratorium
-Po utworzeniu konta laboratorium, należy wykonać następujące zadania:
+## <a name="configure-after-the-lab-account-is-created"></a>Konfiguruj po utworzeniu konta laboratorium
+Po utworzeniu konta laboratorium można wykonać następujące zadania:
 
-- Tworzenie i dołączanie galerii udostępnionego obrazu
-- Dołącz galerii udostępnionego obrazu do konta laboratorium
-- Odłącz galerii udostępnionego obrazu z konta laboratorium
+- Tworzenie i dołączanie galerii obrazów udostępnionych
+- Dołącz udostępnioną galerię obrazów do konta laboratorium
+- Odłączanie udostępnionej galerii obrazów z konta laboratorium
 
-## <a name="create-and-attach-a-shared-image-gallery"></a>Tworzenie i dołączanie galerii udostępnionego obrazu
+## <a name="create-and-attach-a-shared-image-gallery"></a>Tworzenie i dołączanie galerii obrazów udostępnionych
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz pozycję **Wszystkie usługi** w menu po lewej stronie. Wybierz **Lab Services** w **DEVOPS** sekcji. Jeśli wybierzesz gwiazdkę (`*`) obok pozycji **Lab Services**, jest ona dodawana do **ulubione** sekcji, w menu po lewej stronie. W następnym roku, wybierz **Lab Services** w obszarze **ulubione**.
+2. Wybierz pozycję **Wszystkie usługi** w menu po lewej stronie. Wybierz pozycję **usługi laboratoryjne** w sekcji **DEVOPS** . Jeśli wybierzesz pozycję gwiazdka (`*`) obok pozycji **usługi Lab Services**, zostanie ona dodana do sekcji **Ulubione** w menu po lewej stronie. Od następnego momentu wybierz pozycję **usługi laboratoryjne** w obszarze **Ulubione**.
 
-    ![All Services -> Lab Services](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
-3. Wybierz konto usługi laboratorium, aby zobaczyć **konta laboratorium** strony. 
-4. Wybierz **galerii obrazów współdzielona** w menu po lewej stronie, a następnie wybierz pozycję **+ Utwórz** na pasku narzędzi.  
+    ![Wszystkie usługi — > usług Lab Services](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
+3. Wybierz swoje konto laboratorium, aby wyświetlić stronę **konto laboratorium** . 
+4. Wybierz pozycję **Galeria obrazów udostępnionych** w menu po lewej stronie, a następnie wybierz pozycję **+ Utwórz** na pasku narzędzi.  
 
-    ![Utwórz przycisk galerii udostępnionego obrazu](../media/how-to-use-shared-image-gallery/new-shared-image-gallery-button.png)
-5. W **galerii obrazów udostępnionych utwórz** oknie wprowadź **nazwa** galerii i wprowadź **OK**. 
+    ![Przycisk tworzenia galerii obrazów udostępnionych](../media/how-to-use-shared-image-gallery/new-shared-image-gallery-button.png)
+5. W oknie **Tworzenie galerii obrazów udostępnionych** wprowadź **nazwę** galerii, a następnie wprowadź **OK**. 
 
-    ![Utwórz okno Galeria udostępnionego obrazu](../media/how-to-use-shared-image-gallery/create-shared-image-gallery-window.png)
+    ![Utwórz okno galerii obrazów udostępnionych](../media/how-to-use-shared-image-gallery/create-shared-image-gallery-window.png)
 
-    Usługa Azure Lab Services tworzy galerii obrazów udostępnionych i dołączono go do konta laboratorium. Laboratoria wszystkich utworzonych w tym laboratorium konta mają dostęp do galerii dołączonego obrazu udostępnionych. 
+    Azure Lab Services tworzy galerię obrazów udostępnionych i dołączy ją do konta laboratorium. Wszystkie laboratoria utworzone w ramach tego konta laboratorium mają dostęp do dołączonej galerii obrazów udostępnionych. 
 
-    ![Galeria dołączonego obrazu](../media/how-to-use-shared-image-gallery/image-gallery-in-list.png)
+    ![Galeria dołączonych obrazów](../media/how-to-use-shared-image-gallery/image-gallery-in-list.png)
 
-    W dolnym okienku zobaczysz obrazów w galerii obrazów udostępnionych. W tej nowej galerii Brak obrazów. Podczas przekazywania obrazów w galerii, zobaczysz je na tej stronie.     
+    W dolnym okienku zobaczysz obrazy w galerii obrazów udostępnionych. W tej nowej galerii nie ma obrazów. Po przekazaniu obrazów do galerii są one widoczne na tej stronie.     
 
-    Wszystkie obrazy w galerii obrazów udostępnionych dołączone są domyślnie włączone. Można włączyć lub wyłączyć wybrane obrazy, wybierając je na liście i za pomocą **włączyć wybrane obrazy** lub **Wyłącz wybrane obrazy** przycisku.
+    Wszystkie obrazy z dołączonej udostępnionej galerii obrazów są domyślnie włączone. Można włączać lub wyłączać wybrane obrazy, zaznaczając je na liście i używając przycisku **Włącz wybrane obrazy** lub **Wyłącz wybrane obrazy** .
 
-## <a name="attach-an-existing-shared-image-gallery"></a>Dołącz istniejące galerii udostępnionego obrazu
-Poniższa procedura pokazuje, jak dołączyć istniejący galerii udostępnionego obrazu do konta laboratorium. 
+## <a name="attach-an-existing-shared-image-gallery"></a>Dołączanie istniejącej galerii obrazów udostępnionych
+Poniższa procedura przedstawia sposób dołączania istniejącej galerii obrazów udostępnionych do konta laboratorium. 
 
-1. Na **konta laboratorium** wybierz opcję **galerii obrazów współdzielona** w menu po lewej stronie, a następnie wybierz pozycję **Dołącz** na pasku narzędzi. 
+1. Na stronie **konto laboratorium** wybierz pozycję **Galeria obrazów udostępnionych** w menu po lewej stronie, a następnie wybierz pozycję **Dołącz** na pasku narzędzi. 
 
-    ![Udostępnione obrazu z galerii — Dodawanie przycisku](../media/how-to-use-shared-image-gallery/sig-attach-button.png)
-5. Na **dołączanie istniejących galerii obrazów współdzielona** stronie, wybierz z galerii obrazów udostępnionych, a następnie wybierz **OK**.
+    ![Galeria obrazów udostępnionych — przycisk Dodaj](../media/how-to-use-shared-image-gallery/sig-attach-button.png)
+5. Na stronie **dołączanie istniejącej galerii obrazów udostępnionych** Wybierz galerię udostępnionych obrazów, a następnie wybierz **przycisk OK**.
 
-    ![Wybieranie istniejącej kontrolki Galeria](../media/how-to-use-shared-image-gallery/select-image-gallery.png)
-6. Zostanie wyświetlony następujący ekran: 
+    ![Wybierz istniejącą galerię](../media/how-to-use-shared-image-gallery/select-image-gallery.png)
+6. Zobaczysz następujący ekran: 
 
-    ![Moja galeria na liście](../media/how-to-use-shared-image-gallery/my-gallery-in-list.png)
+    ![Moja Galeria na liście](../media/how-to-use-shared-image-gallery/my-gallery-in-list.png)
     
-    W tym przykładzie Brak obrazów w galerii obrazów udostępnionych jeszcze.
+    W tym przykładzie nie ma jeszcze obrazów w galerii obrazów udostępnionych.
 
-    Tożsamość platformy Azure Lab Services jest dodawany jako współautora do galerii obrazów udostępnionego, który jest dołączony do laboratorium. Umożliwia nauczycielom / administrator IT, aby zapisać maszynę wirtualną obrazy do galerii obrazów udostępnionych. Laboratoria wszystkich utworzonych w tym laboratorium konta mają dostęp do galerii dołączonego obrazu udostępnionych. 
+    Azure Lab Services tożsamość jest dodawana jako współautor do galerii obrazów udostępnionych, która jest dołączona do laboratorium. Umożliwia nauczycielom/administratorom IT zapisywanie obrazów maszyn wirtualnych w galerii obrazów udostępnionych. Wszystkie laboratoria utworzone w ramach tego konta laboratorium mają dostęp do dołączonej galerii obrazów udostępnionych. 
 
-    Wszystkie obrazy w galerii obrazów udostępnionych dołączone są domyślnie włączone. Można włączyć lub wyłączyć wybrane obrazy, wybierając je na liście i za pomocą **włączyć wybrane obrazy** lub **Wyłącz wybrane obrazy** przycisku. 
+    Wszystkie obrazy z dołączonej udostępnionej galerii obrazów są domyślnie włączone. Można włączać lub wyłączać wybrane obrazy, zaznaczając je na liście i używając przycisku **Włącz wybrane obrazy** lub **Wyłącz wybrane obrazy** . 
 
-## <a name="save-an-image-to-the-shared-image-gallery"></a>Zapisz obraz do galerii obrazów udostępnionych
-Po dołączeniu galerii udostępnionego obrazu administrator konta laboratorium lub nauczyciel można zapisać lub przekazać obraz do galerii obrazów udostępnionych, dzięki czemu mogą być ponownie używane przez inne nauczycieli. Aby uzyskać instrukcje dotyczące przekazywania obrazu do galerii obrazów udostępnionych, zobacz [Przegląd galerii obrazów współdzielona](../../virtual-machines/windows/shared-images.md). 
+## <a name="detach-a-shared-image-gallery"></a>Odłączanie galerii obrazów udostępnionych
+Tylko jedna udostępniona Galeria obrazów może być dołączona do laboratorium. Jeśli chcesz dołączyć kolejną galerię obrazów udostępnionych, odłącz ją od bieżącego przed dołączeniem nowego. Aby odłączyć galerię obrazów udostępnionych z laboratorium, wybierz opcję **Odłącz** na pasku narzędzi i potwierdź operację odłączania. 
 
-> [!NOTE]
-> Curently laboratoriów na potrzeby zajęć interfejsu użytkownika (UI) nie obsługuje zapisywania obrazu laboratorium do galerii obrazów udostępnionych. 
+![Odłączanie galerii obrazów udostępnionych z konta laboratorium](../media/how-to-use-shared-image-gallery/detach.png)
 
-## <a name="detach-a-shared-image-gallery"></a>Odłącz galerii udostępnionego obrazu
-Tylko jedna Galeria udostępnionego obrazu można dołączyć do laboratorium. Jeśli chcesz dołączyć inny galerii obrazów udostępnionego, należy odłączyć bieżącej subskrypcji, przed dołączeniem na nową. Aby odłączyć galerii udostępnionego obrazu działanie w środowisku laboratoryjnym, wybierz **Odłącz** na pasku narzędzi i upewnij się, operacja odłączenia. 
+## <a name="next-steps"></a>Następne kroki
+Aby dowiedzieć się, jak zapisać obraz laboratorium w galerii obrazów udostępnionych lub użyć obrazu z galerii obrazów udostępnionych, aby utworzyć maszynę wirtualną, zobacz [jak używać galerii obrazów udostępnionych](how-to-use-shared-image-gallery.md).
 
-![Odłącz galerii udostępnionego obrazu z konta laboratorium](../media/how-to-use-shared-image-gallery/detach.png)
-
-## <a name="next-steps"></a>Kolejne kroki
-Aby dowiedzieć się więcej o tym, jak zapisać obraz laboratorium do galerii obrazów udostępnionych lub użyć obrazu z galerii obrazów udostępnionych, utworzyć maszynę Wirtualną, zobacz [sposób korzystania z galerii obrazów udostępnionych](how-to-use-shared-image-gallery.md).
-
-Aby uzyskać więcej informacji na temat udostępnionych galerie obrazów, ogólnie rzecz biorąc, zobacz [galerii obrazów udostępnionych](../../virtual-machines/windows/shared-image-galleries.md).
+Aby uzyskać więcej informacji na temat ogólnie udostępnionych galerii obrazów, zobacz [Galeria obrazów udostępnionych](../../virtual-machines/windows/shared-image-galleries.md).

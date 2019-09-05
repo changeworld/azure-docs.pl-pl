@@ -7,12 +7,12 @@ ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 4/29/2019
-ms.openlocfilehash: 0fe81926327bcccac56718cc0d06e336e1af17fe
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 6a95cbad161906bd12a608880ac694d6bdf1ed27
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165086"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383048"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark-preview"></a>Łącznik usługi Azure Eksplorator danych dla Apache Spark (wersja zapoznawcza)
 
@@ -21,7 +21,7 @@ ms.locfileid: "70165086"
 Łącznik usługi Azure Eksplorator danych dla platformy Spark implementuje źródło danych i ujścia danych na potrzeby przesyłania danych między usługą Azure Eksplorator danych i klastrami Spark w celu korzystania z obu tych możliwości. Korzystając z usługi Azure Eksplorator danych i Apache Spark, możesz tworzyć szybkie i skalowalne aplikacje ukierunkowane na scenariusze oparte na danych, takie jak uczenie maszynowe (ML), extract-transform-load (ETL) i Log Analytics. Zapisywanie w usłudze Azure Eksplorator danych można przeprowadzić w trybie wsadowym i przesyłania strumieniowego.
 Odczyt z usługi Azure Eksplorator danych obsługuje funkcję oczyszczania kolumn i przekazywanie predykatów, co zmniejsza ilość transferowanych danych przez filtrowanie danych w usłudze Azure Eksplorator danych.
 
-Łącznik usługi Azure Eksplorator danych Spark to [projekt Open Source](https://github.com/Azure/azure-kusto-spark) , który można uruchomić w dowolnym klastrze Spark.
+Łącznik usługi Azure Eksplorator danych Spark to [projekt Open Source](https://github.com/Azure/azure-kusto-spark) , który można uruchomić w dowolnym klastrze Spark. Łącznik usługi Azure Eksplorator danych Spark sprawia, że platforma Azure Eksplorator danych prawidłowy magazyn danych dla standardowych operacji związanych ze źródłem Spark i ujścia, takich jak Write, Read i writeStream. 
 
 > [!NOTE]
 > Mimo że niektóre z poniższych przykładów odnoszą się do klastra platformy Spark [Azure Databricks](https://docs.azuredatabricks.net/) , łącznik usługi Azure Eksplorator danych Spark nie przyjmuje bezpośrednich zależności od elementów datakostki ani żadnej innej dystrybucji platformy Spark.
@@ -30,7 +30,7 @@ Odczyt z usługi Azure Eksplorator danych obsługuje funkcję oczyszczania kolum
 
 * [Tworzenie klastra usługi Azure Eksplorator danych i bazy danych](/azure/data-explorer/create-cluster-database-portal) 
 * Tworzenie klastra Spark
-* Zainstaluj bibliotekę łączników usługi Azure Eksplorator danych i biblioteki wymienione [](https://github.com/Azure/azure-kusto-spark#dependencies) w zależnościach, w tym następujące biblioteki [zestawu SDK Java Kusto](/azure/kusto/api/java/kusto-java-client-library) :
+* Zainstaluj bibliotekę łączników usługi Azure Eksplorator danych i biblioteki wymienione w [zależnościach](https://github.com/Azure/azure-kusto-spark#dependencies) , w tym następujące biblioteki [zestawu SDK Java Kusto](/azure/kusto/api/java/kusto-java-client-library) :
     * [Klient danych Kusto](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
     * [Klient pozyskiwania Kusto](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
 * Wstępnie skompilowane biblioteki dla [platformy Spark 2,4, Scala 2,11](https://github.com/Azure/azure-kusto-spark/releases)
@@ -120,7 +120,7 @@ Najbardziej prosta i wspólna metoda uwierzytelniania. Ta metoda jest zalecana w
 Następujące uprawnienia muszą zostać przyznane w klastrze usługi Azure Eksplorator danych:
 
 * W przypadku odczytywania (źródła danych) aplikacja usługi Azure AD musi mieć uprawnienia *przeglądarki* w docelowej bazie danych lub uprawnienia *administratora* w tabeli docelowej.
-* Do zapisu (ujścia danych) aplikacja usługi Azure AD musi mieć uprawnienia do pozyskiwania w docelowej bazie danych. Ponadto musi mieć uprawnienia *użytkownika* w docelowej bazie danych, aby utworzyć nowe tabele. Jeśli tabela docelowa już istnieje, można skonfigurować uprawnienia *administratora* w tabeli docelowej.
+* Do zapisu (ujścia danych) aplikacja usługi Azure AD *musi mieć uprawnienia* do pozyskiwania w docelowej bazie danych. Ponadto musi mieć uprawnienia *użytkownika* w docelowej bazie danych, aby utworzyć nowe tabele. Jeśli tabela docelowa już istnieje, można skonfigurować uprawnienia *administratora* w tabeli docelowej.
  
 Aby uzyskać więcej informacji na temat ról podmiotu zabezpieczeń platformy Azure Eksplorator danych, zobacz [Autoryzacja oparta na rolach](/azure/kusto/management/access-control/role-based-authorization). Aby zarządzać rolami zabezpieczeń, zobacz [Zarządzanie rolami zabezpieczeń](/azure/kusto/management/security-roles).
 

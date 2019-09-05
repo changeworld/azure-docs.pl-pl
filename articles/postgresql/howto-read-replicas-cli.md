@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 63a8acad3c393a4c4d9c6a3b6750f1f934dad43d
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: 5946c74d0075e04112e840d78dd9f5f57bec7475
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907438"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309392"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>Tworzenie replik odczytu i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure
 
 W tym artykule dowiesz się, jak tworzyć repliki odczytu i zarządzać nimi w Azure Database for PostgreSQL z poziomu interfejsu wiersza polecenia platformy Azure. Aby dowiedzieć się więcej o replikach odczytu, zobacz [Omówienie](concepts-read-replicas.md).
-
-> [!IMPORTANT]
-> Replikę odczytu można utworzyć w tym samym regionie, w którym znajduje się serwer główny, lub w dowolnym innym wybranym regionie świadczenia usługi Azure. Replikacja między regionami jest obecnie dostępna w publicznej wersji zapoznawczej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 - [Serwer Azure Database for PostgreSQL](quickstart-create-server-up-azure-cli.md) być serwerem głównym.
@@ -31,7 +28,7 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 ## <a name="prepare-the-master-server"></a>Przygotowywanie serwera głównego
 Te kroki muszą być używane do przygotowywania serwera głównego w warstwach zoptymalizowanych pod kątem Ogólnego przeznaczenia lub pamięci.
 
-Parametr musi być ustawiony na replikę na serwerze głównym. `azure.replication_support` Po zmianie tego parametru statycznego ponowne uruchomienie serwera jest wymagane, aby zmiany zaczęły obowiązywać.
+Parametr musi być ustawiony na **replikę** na serwerze głównym. `azure.replication_support` Po zmianie tego parametru statycznego ponowne uruchomienie serwera jest wymagane, aby zmiany zaczęły obowiązywać.
 
 1. Ustaw `azure.replication_support` na replikę.
 
@@ -70,7 +67,7 @@ az postgres server replica create --name mydemoserver-replica --source-server my
 > [!NOTE]
 > Aby dowiedzieć się więcej na temat regionów, w których można utworzyć replikę, zapoznaj się z [artykułem dotyczącym pojęć dotyczących repliki](concepts-read-replicas.md). 
 
-Jeśli nie ustawisz `azure.replication_support` parametru na replikę na serwerze głównym ogólnego przeznaczenia lub zoptymalizowanym pod kątem pamięci i ponownie uruchomiono serwer, zostanie wyświetlony komunikat o błędzie. Przed utworzeniem repliki wykonaj te dwa kroki.
+Jeśli nie ustawisz `azure.replication_support` parametru na **replikę** na serwerze głównym ogólnego przeznaczenia lub zoptymalizowanym pod kątem pamięci i ponownie uruchomiono serwer, zostanie wyświetlony komunikat o błędzie. Przed utworzeniem repliki wykonaj te dwa kroki.
 
 Replika jest tworzona przy użyciu tych samych ustawień obliczeniowych i magazynu co główny. Po utworzeniu repliki można zmienić kilka ustawień niezależnie od serwera głównego: generowanie obliczeń, rdzeni wirtualnych, magazyn i okres przechowywania zapasowego. Warstwę cenową można także zmienić niezależnie, z wyjątkiem warstwy Podstawowa lub z niej.
 
@@ -103,5 +100,5 @@ az postgres server delete --name myserver --resource-group myresourcegroup
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-* Dowiedz się więcej o odczytaniu [replik w Azure Database for PostgreSQL](concepts-read-replicas.md).
+* Dowiedz się więcej o [odczytaniu replik w Azure Database for PostgreSQL](concepts-read-replicas.md).
 * Dowiedz się, jak [tworzyć repliki odczytu i zarządzać nimi w Azure Portal](howto-read-replicas-portal.md).

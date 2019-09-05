@@ -6,19 +6,16 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: a7e7beb3cdef7551a1bce2a693b8044ea6ed8946
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 939097ccca844e505819f5aad405d6322941b526
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907682"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309178"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Tworzenie replik odczytu i zarządzanie nimi w Azure Database for MariaDB przy użyciu Azure Portal
 
 W tym artykule przedstawiono sposób tworzenia replik odczytu i zarządzania nimi w usłudze Azure Database for MariaDB przy użyciu Azure Portal.
-
-> [!IMPORTANT]
-> Replikę odczytu można utworzyć w tym samym regionie, w którym znajduje się serwer główny, lub w dowolnym innym wybranym regionie świadczenia usługi Azure. Repliki odczytu (ten sam region i wiele regionów) są obecnie dostępne w publicznej wersji zapoznawczej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -37,7 +34,7 @@ Serwer repliki odczytu można utworzyć, wykonując następujące czynności:
 
 3. Wybierz opcję **replikacja** z menu, w obszarze **Ustawienia**.
 
-4. Wybierz pozycję **Dodaj**replikę.
+4. Wybierz pozycję **Dodaj replikę**.
 
    ![Azure Database for MariaDB — replikacja](./media/howto-read-replica-portal/add-replica.png)
 
@@ -96,7 +93,7 @@ Aby usunąć serwer repliki odczytu z Azure Portal, wykonaj następujące czynno
 
    ![Azure Database for MariaDB — usuwanie repliki wybierz serwer](./media/howto-read-replica-portal/delete-replica-select.png)
 
-4. Wybierz pozycję **Usuń** replikę
+4. Wybierz pozycję **Usuń replikę**
 
    ![Azure Database for MariaDB-Usuń replikę](./media/howto-read-replica-portal/delete-replica.png)
 

@@ -1,22 +1,22 @@
 ---
-title: What's new in Azure Application Gateway
-description: Aby dowiedzieć się o nowych za pomocą usługi Azure Application Gateway, takich jak najnowsze informacje o wersji, znanych problemów i poprawek błędów przestarzałe funkcje i nadchodzących zmian.
+title: Co nowego w usłudze Azure Application Gateway
+description: Dowiedz się, co nowego w usłudze Azure Application Gateway, takich jak Najnowsze informacje o wersji, znane problemy, poprawki błędów, przestarzałe funkcje i nadchodzące zmiany.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: overview
 ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: 2a494b924107baeabbcf412af7e1bbdb1db0f753
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 6755825aa123b3d7d1eed23291790ff3dc477ac5
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752021"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382484"
 ---
-# <a name="whats-new-in-azure-application-gateway"></a>What's new in Azure Application Gateway?
+# <a name="whats-new-in-azure-application-gateway"></a>Co nowego w usłudze Azure Application Gateway?
 
-Usługa Azure Application Gateway jest aktualizowany na bieżąco. Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedstawiono informacje o:
+Usługa Azure Application Gateway jest regularnie aktualizowana. Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedstawiono informacje o:
 
 - Zainstalowane najnowsze wersje
 - Znane problemy
@@ -27,16 +27,17 @@ Usługa Azure Application Gateway jest aktualizowany na bieżąco. Aby uzyskać 
 
 |Cecha  |Opis  |Data dodania  |
 |---------|---------|---------|
-|Reguły niestandardowe zapory aplikacji internetowej |Application Gateway WAF_v2 obsługuje teraz reguł niestandardowych. Zobacz [reguły niestandardowe Application Gateway](custom-waf-rules-overview.md). |2019 czerwca |
-|Skalowanie automatyczne nadmiarowości strefy, statycznych adresów VIP Obsługa wersji ogólnie dostępnej |Ogólnie dla jednostek SKU v2, które skalowania automatycznego obsługuje nadmiarowości strefy, poprawić wydajność, statycznych adresów VIP, usługi Key Vault przepisać nagłówka. Zobacz [dokumentacji skalowania automatycznego usługi Application Gateway](application-gateway-autoscaling-zone-redundant.md). |2019 kwietnia |
-|Integracja magazynu kluczy |Usługa Application Gateway obsługuje teraz integrację z usługą Key Vault (w publicznej wersji zapoznawczej) dla serwera certyfikatów, które są dołączone do odbiorników obsługujące protokół HTTPS. Zobacz [kończenia żądań SSL z certyfikatami usługi Key Vault](key-vault-certs.md). |2019 kwietnia |
-|Nagłówek CRUD/modyfikacji oprogramowania     |Teraz można przepisać nagłówków HTTP. Zobacz [samouczka: Tworzenie bramy aplikacji i ponownie zapisuje nagłówki HTTP](tutorial-http-header-rewrite-powershell.md) Aby uzyskać więcej informacji.|Grudzień 2018 r.|
-|Lista konfiguracji i wyłączenie zapory aplikacji sieci Web     |Dodaliśmy więcej opcji ułatwiające konfigurowanie zapory aplikacji internetowych i redukować liczbę fałszywych alarmów. Zobacz [limity rozmiaru żądanie zapory aplikacji sieci Web i listy wykluczeń](application-gateway-waf-configuration.md) Aby uzyskać więcej informacji.|Grudzień 2018 r.|
-|Skalowanie automatyczne nadmiarowości strefy, statycznych adresów VIP pomocy technicznej.      |Jednostki SKU w wersji 2 i istnieje wiele udoskonaleń, takich jak automatyczne skalowanie, lepszą wydajność i nie tylko. Zobacz [co to jest Azure Application Gateway?](overview.md) Aby uzyskać więcej informacji.|Wrzesień 2018 r.|
-|Opróżnianie połączeń     |Opróżniania połączenia pozwala bezpiecznie usunąć członków puli zaplecza. Aby uzyskać więcej informacji, zobacz [opróżniania połączenia](overview.md#connection-draining).|Wrzesień 2018 r.|
-|Niestandardowe strony błędów     |Za pomocą strony błędów niestandardowych można utworzyć stronę błędu w formacie rest, witryny sieci Web. Aby włączyć tę opcję, zobacz [strony błędów niestandardowych Utwórz bramę aplikacji](custom-error.md).|Wrzesień 2018 r.|
-|Ulepszenia metryki     |Możesz uzyskać lepszą widok stanu usługi Application Gateway przy użyciu rozszerzonych metryk. Aby włączyć metryki dotyczące Twojej bramy Application Gateway, zobacz [kondycja zaplecza, dzienniki diagnostyczne i metryki dla usługi Application Gateway](application-gateway-diagnostics.md).|Czerwiec 2018 r.|
+|Więcej metryk |Dodaliśmy następujące nowe metryki, które ułatwiają monitorowanie jednostki SKU bramy Application w wersji 2: [Metryki dotyczące chronometrażu](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#timing-metrics), stan odpowiedzi zaplecza, bajty odebrane, Wysłane bajty, protokół TLS klienta i bieżące jednostki obliczeniowe. Zobacz [metryki obsługiwane przez jednostkę SKU Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-supported-by-application-gateway-v2-sku). |2019 sierpnia |
+|Reguły niestandardowe zapory aplikacji internetowej |Application Gateway WAF_v2 obsługuje teraz Tworzenie reguł niestandardowych. Zobacz [Application Gateway reguł niestandardowych](custom-waf-rules-overview.md). |Czerwiec 2019 |
+|Skalowanie automatyczne, nadmiarowość stref, obsługa statycznych adresów VIP |Ogólna dostępność dla jednostki SKU w wersji 2, która obsługuje skalowanie automatyczne, nadmiarowość stref, podnoszenie wydajności, statyczne adresy VIP, Key Vault, ponowne zapisywanie nagłówka. Zobacz [Application Gateway dokumentacji skalowania](application-gateway-autoscaling-zone-redundant.md)automatycznego. |Kwiecień 2019 |
+|Integracja Key Vault |Application Gateway teraz obsługuje integrację z Key Vault (w publicznej wersji zapoznawczej) dla certyfikatów serwera, które są dołączone do odbiorników z obsługą protokołu HTTPS. Zobacz [kończenie połączeń SSL z certyfikatami Key Vault](key-vault-certs.md). |Kwiecień 2019 |
+|Nagłówek CRUD/ponowne zapisywanie     |Teraz można ponownie napisać nagłówki HTTP. Zobacz [samouczek: Utwórz bramę aplikacji i ponownie Napisz nagłówki](tutorial-http-header-rewrite-powershell.md) http, aby uzyskać więcej informacji.|Grudzień 2018 r.|
+|WAF konfiguracja i lista wykluczeń     |Dodaliśmy więcej opcji, które ułatwiają konfigurowanie WAF i zmniejszanie fałszywych wyników pozytywnych. Aby uzyskać więcej informacji [, zobacz limity rozmiaru żądań zapory aplikacji sieci Web i listy wykluczeń](application-gateway-waf-configuration.md) .|Grudzień 2018 r.|
+|Skalowanie automatyczne, nadmiarowość stref, obsługa statycznych adresów VIP      |W przypadku wersji 2 jednostki SKU wprowadzono wiele udoskonaleń, takich jak Skalowanie automatyczne, zwiększona wydajność i wiele innych. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure Application Gateway?](overview.md) .|Wrzesień 2018 r.|
+|Opróżnianie połączenia     |Opróżnianie połączeń pozwala bezpiecznie usunąć członków z pul zaplecza. Aby uzyskać więcej informacji, zobacz [opróżnianie połączenia](overview.md#connection-draining).|Wrzesień 2018 r.|
+|Niestandardowe strony błędów     |Ze stronami błędów niestandardowych można utworzyć stronę błędu w formacie reszty witryn sieci Web. Aby włączyć tę funkcję, zobacz [tworzenie Application Gateway niestandardowych stron błędów](custom-error.md).|Wrzesień 2018 r.|
+|Udoskonalenia metryk     |Lepszy widok stanu Application Gateway można uzyskać przy użyciu ulepszonych metryk. Aby włączyć metryki na Application Gateway, zobacz temat [kondycja zaplecza, dzienniki diagnostyczne i metryki dla Application Gateway](application-gateway-diagnostics.md).|Czerwiec 2018 r.|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat usługi Azure Application Gateway, zobacz [co to jest Azure Application Gateway?](overview.md)
+Aby uzyskać więcej informacji na temat usługi Azure Application Gateway, zobacz [co to jest usługa azure Application Gateway?](overview.md)

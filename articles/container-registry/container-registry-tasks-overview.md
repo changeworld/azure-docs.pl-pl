@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: danlep
-ms.openlocfilehash: bc32ce59a7ec99278fb193f375d4ca945c227d2f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 2d7237c1d142e9f7bb5a47294d1375040be43ac3
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172188"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308039"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatyzowanie kompilacji i konserwacji obrazów kontenerów za pomocą zadań ACR
 
@@ -28,7 +28,7 @@ Twórz i Testuj obrazy kontenerów za pomocą zadań ACR na cztery sposoby:
 * [Szybkie zadanie](#quick-task): Twórz i Wypychaj obrazy kontenerów na żądanie na platformie Azure bez konieczności instalacji lokalnego aparatu platformy Docker. Zastanów się w chmurze. `docker push` `docker build` Kompiluj z lokalnego kodu źródłowego lub repozytorium git.
 * [Kompilacja przy zatwierdzaniu kodu źródłowego](#automatic-build-on-source-code-commit): Wyzwalaj kompilację obrazu kontenera automatycznie, gdy kod zostanie przekazany do repozytorium git.
 * [Kompilacja w ramach aktualizacji obrazu podstawowego](#automate-os-and-framework-patching): Wyzwól kompilację obrazu kontenera, gdy obraz podstawowy tego obrazu został zaktualizowany.
-* [Zadania](#multi-step-tasks)wieloetapowe: Zdefiniuj zadania wieloetapowe, które umożliwiają kompilowanie obrazów, uruchamianie kontenerów jako poleceń i wypychanie obrazów do rejestru. Ta funkcja ACR zadania obsługuje wykonywanie zadań na żądanie i równoległe Kompilowanie obrazów, testowanie i wypychanie.
+* [Zadania wieloetapowe](#multi-step-tasks): Zdefiniuj zadania wieloetapowe, które umożliwiają kompilowanie obrazów, uruchamianie kontenerów jako poleceń i wypychanie obrazów do rejestru. Ta funkcja ACR zadania obsługuje wykonywanie zadań na żądanie i równoległe Kompilowanie obrazów, testowanie i wypychanie.
 
 ## <a name="quick-task"></a>Szybkie zadanie
 
@@ -36,26 +36,9 @@ Cykl programowania w pętli wewnętrznej, proces iteracyjny pisania kodu, kompil
 
 Przed zatwierdzeniem pierwszego wiersza kodu funkcja [zadanie szybkiego zadania](container-registry-tutorial-quick-task.md) ACR zadania może zapewnić zintegrowane środowisko programistyczne, odciążając kompilacje obrazu kontenera na platformie Azure. Za pomocą szybkich zadań można zweryfikować zautomatyzowane definicje kompilacji i wychwycić potencjalne problemy przed zatwierdzeniem kodu.
 
-Przy użyciu znajomego `docker build` formatu polecenie [AZ ACR Build][az-acr-build] w interfejsie wiersza polecenia platformy Azure przyjmuje *kontekst* (zestaw plików do skompilowania), wysyła do niego zadania ACR i domyślnie wypychanie skompilowanego obrazu do rejestru po zakończeniu.
+Przy użyciu znajomego `docker build` formatu polecenie [AZ ACR Build][az-acr-build] w interfejsie wiersza polecenia platformy Azure przyjmuje [kontekst](#context-locations) (zestaw plików do skompilowania), wysyła do niego zadania ACR i domyślnie wypychanie skompilowanego obrazu do rejestru po zakończeniu.
 
 Aby zapoznać się z wprowadzeniem, zobacz Przewodnik Szybki Start dotyczący [kompilowania i uruchamiania obrazu kontenera](container-registry-quickstart-task-cli.md) w Azure Container Registry.  
-
-W poniższej tabeli przedstawiono kilka przykładów obsługiwanych lokalizacji kontekstu dla zadań ACR:
-
-| Lokalizacja kontekstu | Opis | Przykład |
-| ---------------- | ----------- | ------- |
-| Lokalny system plików | Pliki znajdujące się w katalogu w lokalnym systemie plików. | `/home/user/projects/myapp` |
-| Gałąź główna usługi GitHub | Pliki znajdujące się w głównej (lub innej domyślnej) gałęzi repozytorium GitHub.  | `https://github.com/gituser/myapp-repo.git` |
-| Gałąź GitHub | Określona gałąź repozytorium GitHub.| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| Podfolder usługi GitHub | Pliki znajdujące się w podfolderze repozytorium GitHub. Przykład przedstawia kombinację specyfikacji gałęzi i podfolderu. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
-| Plik tar zdalnego | Pliki skompresowanego Archiwum na zdalnym serwerze WebServer. | `http://remoteserver/myapp.tar.gz` |
-
-Domyślnie zadania ACR kompilują obrazy dla systemu operacyjnego Linux i architektury amd64. `--platform` Określ tag do kompilowania obrazów systemu Windows lub dla innych architektur w systemie Linux. Określ system operacyjny i opcjonalnie obsługiwaną architekturę w formacie systemu operacyjnego/architektury (na przykład `--platform Linux/arm`). W przypadku architektur ARM Opcjonalnie określ wariant w formacie OS/Architecture/Variant (na przykład `--platform Linux/arm64/v8`):
-
-| OS | Architektura|
-| --- | ------- | 
-| Linux | Procesor<br/>ARM<br/>arm64<br/>386 |
-| Windows | Procesor |
 
 Zadania ACR są zaprojektowane jako pierwotny cykl życia kontenera. Na przykład Zintegruj zadania ACR w rozwiązaniu CI/CD. Wykonanie polecenia [AZ login][az-login] z jednostką [usługi][az-login-service-principal]powoduje, że rozwiązanie Ci/CD może wydać polecenie [AZ ACR Build][az-acr-build] , aby uruchomić kompilacje obrazu.
 
@@ -104,13 +87,34 @@ Można na przykład utworzyć zadanie wieloetapowe, które automatyzuje następu
 
 Zadania wieloetapowe umożliwiają podział kompilowania, uruchamiania i testowania obrazu na bardziej złożone etapy z obsługą zależności między etapami. W przypadku zadań wieloetapowych w zadaniach ACR masz bardziej szczegółową kontrolę nad tworzeniem i testowaniem obrazów oraz przepływami pracy w systemie operacyjnym i architekturą.
 
-Więcej informacji o zadaniach wieloetapowych w uruchamianiu wieloetapowych [zadań kompilacji, testowania i poprawiania w zadaniach ACR](container-registry-tasks-multi-step.md).
+Więcej informacji o zadaniach wieloetapowych w [uruchamianiu wieloetapowych zadań kompilacji, testowania i poprawiania w zadaniach ACR](container-registry-tasks-multi-step.md).
+
+## <a name="context-locations"></a>Lokalizacje kontekstu
+
+W poniższej tabeli przedstawiono kilka przykładów obsługiwanych lokalizacji kontekstu dla zadań ACR:
+
+| Lokalizacja kontekstu | Opis | Przykład |
+| ---------------- | ----------- | ------- |
+| Lokalny system plików | Pliki znajdujące się w katalogu w lokalnym systemie plików. | `/home/user/projects/myapp` |
+| Gałąź główna usługi GitHub | Pliki znajdujące się w głównej (lub innej domyślnej) gałęzi repozytorium GitHub.  | `https://github.com/gituser/myapp-repo.git` |
+| Gałąź GitHub | Określona gałąź repozytorium GitHub.| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| Podfolder usługi GitHub | Pliki znajdujące się w podfolderze repozytorium GitHub. Przykład przedstawia kombinację specyfikacji gałęzi i podfolderu. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| Plik tar zdalnego | Pliki skompresowanego Archiwum na zdalnym serwerze WebServer. | `http://remoteserver/myapp.tar.gz` |
+
+## <a name="image-platforms"></a>Platformy obrazów
+
+Domyślnie zadania ACR kompilują obrazy dla systemu operacyjnego Linux i architektury amd64. `--platform` Określ tag do kompilowania obrazów systemu Windows lub dla innych architektur w systemie Linux. Określ system operacyjny i opcjonalnie obsługiwaną architekturę w formacie systemu operacyjnego/architektury (na przykład `--platform Linux/arm`). W przypadku architektur ARM Opcjonalnie określ wariant w formacie OS/Architecture/Variant (na przykład `--platform Linux/arm64/v8`):
+
+| OS | Architektura|
+| --- | ------- | 
+| Linux | Procesor<br/>ARM<br/>arm64<br/>386 |
+| Windows | Procesor |
 
 ## <a name="view-task-logs"></a>Wyświetlanie dzienników zadań
 
-Każde uruchomienie zadania generuje dane wyjściowe dziennika, które można sprawdzić, aby określić, czy kroki zadania zostały wykonane pomyślnie. W przypadku użycia polecenia [AZ ACR Build](/cli/azure/acr#az-acr-build), [AZ ACR Run](/cli/azure/acr#az-acr-run)lub [AZ ACR Task Run](/cli/azure/acr/task#az-acr-task-run) , aby wyzwolić zadanie, dane wyjściowe dziennika dla uruchomienia zadania są przesyłane strumieniowo do konsoli programu, a także przechowywane do późniejszego pobrania. Wyświetl dzienniki dla zadania uruchomionego w Azure Portal lub użyj polecenia [AZ ACR Task Logs](/cli/azure/acr/task#az-acr-task-logs) .
+Każde uruchomienie zadania generuje dane wyjściowe dziennika, które można sprawdzić, aby określić, czy kroki zadania zostały wykonane pomyślnie. W przypadku użycia polecenia [AZ ACR Build](/cli/azure/acr#az-acr-build), [AZ ACR Run](/cli/azure/acr#az-acr-run)lub [AZ ACR Task Run](/cli/azure/acr/task#az-acr-task-run) , aby wyzwolić zadanie, dane wyjściowe dziennika dla uruchomienia zadania są przesyłane strumieniowo do konsoli programu, a także przechowywane do późniejszego pobrania. Gdy zadanie jest automatycznie wyzwalane, na przykład przez zatwierdzenie kodu źródłowego lub aktualizację obrazu podstawowego, dzienniki zadań są przechowywane tylko. Wyświetl dzienniki dla zadania uruchomionego w Azure Portal lub użyj polecenia [AZ ACR Task Logs](/cli/azure/acr/task#az-acr-task-logs) .
 
-Począwszy od lipca 2019, dane i dzienniki uruchamiania zadań w rejestrze będą przechowywane domyślnie przez 30 dni, a następnie automatycznie przeczyszczane. Jeśli chcesz zarchiwizować dane do uruchomienia zadania, Włącz archiwizowanie przy użyciu polecenia [AZ ACR Task Update-Run](/cli/azure/acr/task#az-acr-task-update-run) . Poniższy przykład umożliwia archiwizowanie dla zadania uruchamiania *CF11* w rejestrze rejestru.
+Począwszy od lipca 2019, dane i dzienniki uruchamiania zadań w rejestrze będą przechowywane domyślnie przez 30 dni, a następnie automatycznie przeczyszczane. Jeśli chcesz zarchiwizować dane do uruchomienia zadania, Włącz archiwizowanie przy użyciu polecenia [AZ ACR Task Update-Run](/cli/azure/acr/task#az-acr-task-update-run) . Poniższy przykład umożliwia archiwizowanie dla zadania uruchamiania *CF11* *w rejestrze rejestru.*
 
 ```azurecli
 az acr task update-run --registry myregistry --run-id cf11 --no-archive false

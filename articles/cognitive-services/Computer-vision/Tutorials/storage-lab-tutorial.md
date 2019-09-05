@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 04/17/2019
+ms.date: 09/04/2019
 ms.author: pafarley
-ms.openlocfilehash: c125941414c73b14138f2b2fc15e470d9ed2d905
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 8ecf5fb7d54e7c9411c1153610d3a637477285bf
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137538"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382975"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Samouczek: generowanie metadanych obrazów w usłudze Azure Storage przy użyciu przetwarzania obrazów
 
@@ -42,7 +42,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Musisz utworzyć zasób przetwarzania obrazów dla swojego konta platformy Azure. Ten zasób zarządza Twoim dostępem do usługi przetwarzania obrazów platformy Azure. 
 
-1. Postępuj zgodnie z instrukcjami w temacie [Tworzenie zasobu usługi Azure Cognitive Services](../../cognitive-services-apis-create-account.md#single-service-resource) , aby utworzyć zasób przetwarzanie obrazów.
+1. Postępuj zgodnie z instrukcjami w temacie [Tworzenie zasobu usługi Azure Cognitive Services](../../cognitive-services-apis-create-account.md) , aby utworzyć zasób przetwarzanie obrazów.
 
 1. Następnie przejdź do menu dla swojej grupy zasobów i kliknij właśnie utworzoną subskrypcję interfejs API przetwarzania obrazów. Skopiuj adres URL z obszaru **Punkt końcowy** do miejsca, z którego będzie go można za chwilę łatwo uzyskać. Następnie kliknij pozycję **Pokaż klucze dostępu**.
 

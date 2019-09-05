@@ -7,17 +7,17 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 21b046a54c2fbe309113222f54dbad4405fc409d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 530f38289afb3fce85bbb025e7b699862eedbadc
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136578"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382697"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure Key Vault zarządzane konto magazynu — PowerShell
 
 > [!NOTE]
-> [Integracja usługi Azure Storage z usługą Azure Active Directory (Azure AD) jest teraz w wersji](../storage/common/storage-auth-aad.md)zapoznawczej. Zalecamy używanie usługi Azure AD do uwierzytelniania i autoryzacji, która zapewnia dostęp oparty na tokenach OAuth2 do usługi Azure Storage, podobnie jak Azure Key Vault. Dzięki temu można:
+> [Integracja usługi Azure Storage z usługą Azure Active Directory (Azure AD) jest teraz w wersji zapoznawczej](../storage/common/storage-auth-aad.md). Zalecamy używanie usługi Azure AD do uwierzytelniania i autoryzacji, która zapewnia dostęp oparty na tokenach OAuth2 do usługi Azure Storage, podobnie jak Azure Key Vault. Dzięki temu można:
 > - Uwierzytelnianie aplikacji klienckiej przy użyciu tożsamości aplikacji lub użytkownika zamiast poświadczeń konta magazynu. 
 > - Użyj [tożsamości zarządzanej usługi Azure AD](/azure/active-directory/managed-identities-azure-resources/) w przypadku uruchamiania na platformie Azure. Tożsamości zarządzane usuwają potrzebę wszystkich jednocześnie uwierzytelniania klienta i przechowywania poświadczeń w aplikacji lub z aplikacją.
 > - Użyj Access Control opartej na rolach (RBAC) do zarządzania autoryzacją, która jest również obsługiwana przez Key Vault.
@@ -111,7 +111,7 @@ Korzystając z tej samej sesji programu PowerShell, zaktualizuj zasady dostępu 
 ```azurepowershell-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
 
-Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userId -PermissionsToStorage get, list, listsas, delete, set, update, regeneratekey, recover, backup, restore, purge
+Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userId -PermissionsToStorage get, list, delete, set, update, regeneratekey, getsas, listsas, deletesas, setsas, recover, backup, restore, purge
 ```
 
 Należy pamiętać, że uprawnienia dla kont magazynu nie są dostępne na stronie "zasady dostępu" konta magazynu w Azure Portal.

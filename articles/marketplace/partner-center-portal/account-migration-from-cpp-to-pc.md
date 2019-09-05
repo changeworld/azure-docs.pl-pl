@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 661adb755d076b0cc6114a287855482165ccb817
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 8c7680896507cd3738fa3bce0d30a516d08509c4
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208094"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383288"
 ---
 # <a name="account-migration-from-cloud-partner-portal-to-partner-center"></a>Migracja konta z portal Cloud Partner do Centrum partnerskiego
 
@@ -43,20 +43,20 @@ W przypadku, gdy konto CPP nie ma identyfikatora Microsoft Partner Network lub m
 Migracja musi wystąpić tylko raz dla danego konta. Po zakończeniu migracji konta przez danego partnera wszyscy właściciele będą widzieć to zachowanie na stronie profilu wydawcy:
 
 1. Zostanie wyświetlona strona Ustawienia partnera w Microsoft Partner Network, w której można teraz zarządzać ustawieniami konta. 
-2. Żółty transparent na stronie profilu wydawcy w programie CPP będzie widoczny dla użytkowników, którzy mają rolę właściciela, z prośbą o zarządzanie ustawieniami konta w centrum partnerskim. 
-3. Strona Ustawienia konta w programie CPP jest konwertowana na tryb tylko do odczytu. 
+2. Żółty transparent na stronie profilu wydawcy w programie CPP będzie widoczny dla użytkowników, którzy mają rolę właściciela, z prośbą o zarządzanie ustawieniami konta w centrum partnerskim.
+3. Strona Ustawienia konta w programie CPP jest konwertowana na tryb tylko do odczytu.
 
 ## <a name="move-dynamics-365-based-solutions-to-partner-center"></a>Przenoszenie rozwiązań opartych na protokole Dynamics 365 do Centrum partnerskiego
 
 Jeśli utworzono program Dynamics 365 dla zaangażowania klienta lub Dynamics 365 dla rozwiązań Finansów i operacji w jednym portalu komercyjnym partnera GTM, **rozwiązania te powinny być teraz zarządzane w centrum partnerskim**.
 
-**Jeśli nie przeniesiono swoich rozwiązań do 31 sierpnia 2019**, wykonaj poniższe kroki najszybciej, jak to możliwe. Dopóki tego nie zrobisz: 
+**Jeśli nie przeniesiono swoich rozwiązań do 31 sierpnia 2019**, wykonaj poniższe kroki najszybciej, jak to możliwe. Dopóki tego nie zrobisz:
 - Niezależni dostawcy oprogramowania nie będą mieć dostępu do korzyści marketingowych
 - Nastąpi utrata priorytetu dla współsprzedawcy
-- Te, które wymagają osadzenia w chmurze, nie będą zgodne
+- Te, które wymagają osadzenia w chmurze, będą niezgodne po 15 października 2019
 
 > [!NOTE]
-> Jeśli Twoje konto członkostwa MPN zostało pierwotnie utworzone w centrum członkostwa partnera (PMC), zaloguj się do [Centrum partnerskiego](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) , aby upewnić się, że Twoje konto zostało zmigrowane przed wykonaniem poniższych kroków. Jeśli zobaczysz ekran profilu z IDENTYFIKATORem MPN, wszystko jest gotowe do wykonania. W przeciwnym razie należy uruchomić migrację konta, postępując zgodnie z instrukcjami w [Centrum członkostwa](https://partners.microsoft.com/partnerprogram/Welcome.aspx)w partnerze. Jeśli potrzebujesz pomocy, odwiedź [Pomoc techniczną](https://partner.microsoft.com/support?issueid=100-0077).
+> Jeśli Twoje konto członkostwa MPN zostało pierwotnie utworzone w centrum członkostwa partnera (PMC), zaloguj się do [Centrum partnerskiego](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile) , aby upewnić się, że Twoje konto zostało zmigrowane przed wykonaniem poniższych kroków. Jeśli zobaczysz ekran profilu z IDENTYFIKATORem MPN, wszystko jest gotowe do wykonania. W przeciwnym razie należy uruchomić migrację konta, postępując zgodnie z instrukcjami w [Centrum członkostwa w partnerze](https://partners.microsoft.com/partnerprogram/Welcome.aspx). Jeśli potrzebujesz pomocy, odwiedź [Pomoc techniczną](https://partner.microsoft.com/support?issueid=100-0077).
 
 1. Przejdź do [strony Przegląd komercyjnego portalu Marketplace w centrum partnerskim](https://partner.microsoft.com/dashboard/commercial-marketplace/overview). Jeśli w okienku nawigacji po lewej stronie zostanie wyświetlona wartość "komercyjna witryna Marketplace", nastąpi rejestracja i przechodzenie do następnego kroku. Jeśli nie, [zarejestruj się teraz w portalu komercyjnym](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv) .
 2. Potwierdź, że oferty są w AppSource, [wyszukując oferty](https://appsource.microsoft.com/). Jeśli oferty znajdują się już w AppSource, przejdź do następnego kroku. W przypadku dowolnej oferty nieznajdującej się w AppSource Utwórz [nową ofertę dynamics 365 dla programu Customer Engagement](create-new-customer-engagement-offer.md) lub [nową ofertę usługi Dynamics 365 dla operacji](create-new-operations-offer.md).

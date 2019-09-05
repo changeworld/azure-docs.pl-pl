@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: ba128f5ad87083f8d57c33011969756f3b3a8c93
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ead314e4c889b79892857eb07ecdd63377131b12
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559829"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376349"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka C#
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-c"></a>Szybki start: Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka C#
 
 Ten przewodnik Szybki start przeprowadzi Cię przez programowe uzyskiwanie odpowiedzi z opublikowanej bazy wiedzy usługi QnA Maker. Baza wiedzy zawiera pytania i odpowiedzi ze [źródeł danych](../Concepts/data-sources-supported.md) , takich jak często zadawane pytania. [Pytanie](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) jest wysyłane do usługi QNA Maker. [Odpowiedź](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obejmuje odpowiedzi przewidziane w górnej części. 
 

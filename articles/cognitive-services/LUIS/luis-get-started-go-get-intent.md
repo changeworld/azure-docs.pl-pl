@@ -1,5 +1,5 @@
 ---
-title: Pobierz intencje, przejdź do LUIS
+title: 'Szybki start: Pobierz intencje, przejdź do LUIS'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start dotyczącym języka Go użyjesz dostępnej publicznie aplikacji LUIS, aby określić intencję użytkownika w tekście konwersacji.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: c4c2d94544739b0611d19705a669d124295947d8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1fc36b8e1240751ce85d61c761cd069dcdad207e
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563837"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307558"
 ---
 # <a name="quickstart-get-intent-using-go"></a>Szybki start: pobieranie intencji za pomocą języka Go
 
@@ -91,6 +91,6 @@ Aby uzyskać dostęp do tych samych wyników, które zostały wyświetlone w okn
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 Zamknij plik Go i usuń go z systemu plików. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
 > [Dodawanie wypowiedzi](luis-get-started-go-add-utterance.md)

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 36cd9b560bd149fd837db09cba33ce6bb2199a20
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 07089def3290d6d64919ad2551de7584646cc681
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827729"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306632"
 ---
 # <a name="get-face-detection-data"></a>Pobieranie danych wykrywania kroju
 
@@ -29,7 +29,7 @@ W tym przewodniku pokazano, jak:
 
 ## <a name="setup"></a>Konfiguracja
 
-W tym przewodniku przyjęto założenie [](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) , że został już `faceClient`skonstruowany obiekt FaceClient o nazwie z kluczem subskrypcji i adresem URL punktu końcowego. W tym miejscu możesz użyć funkcji wykrywania kroju przez wywołanie [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), która jest używana w tym przewodniku, lub [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Aby uzyskać instrukcje dotyczące sposobu konfigurowania tej funkcji, zobacz Wykrywanie twarzy — [Szybki Start dla C# ](../quickstarts/csharp-detect-sdk.md).
+W tym przewodniku przyjęto założenie [](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) , że został już `faceClient`skonstruowany obiekt FaceClient o nazwie z kluczem subskrypcji i adresem URL punktu końcowego. W tym miejscu możesz użyć funkcji wykrywania kroju przez wywołanie [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet), która jest używana w tym przewodniku, lub [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet). Aby uzyskać instrukcje dotyczące sposobu konfigurowania tej funkcji, wykonaj jedną z przewodników Szybki Start.
 
 Ten przewodnik koncentruje się na konkretnych wywołaniach wykrywania, takich jak argumenty, które można przekazać, i co można zrobić z zwracanymi danymi. Zalecamy, aby wykonywać zapytania dotyczące tylko potrzebnych funkcji. Każda operacja zajmuje dodatkowy czas.
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 06/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a71eb00ce4d4ace6ccc17e050946b39debed929c
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 23475fb77210eeea0568bb996529c81458db9c6c
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034881"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382761"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Jak zaktualizować moduły Azure PowerShell w programie Azure Automation
 
@@ -48,10 +48,6 @@ Poniżej przedstawiono kilka kwestii, które należy wziąć pod uwagę w przypa
 
 * Jeśli chcesz użyć określonej Azure PowerShell wersji modułu zamiast najnowszej dostępnej w Galeria programu PowerShell, Przekaż te wersje do opcjonalnego `ModuleVersionOverrides` parametru elementu Runbook **Update-AutomationAzureModulesForAccount** . Aby zapoznać się z [przykładami, zobacz element Runbook Update-AutomationAzureModulesForAccount. ps1.](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1
 ) Moduły Azure PowerShell, które nie są wymienione `ModuleVersionOverrides` w parametrze, są aktualizowane przy użyciu najnowszych wersji modułu na Galeria programu PowerShell. Jeśli wartość `ModuleVersionOverrides` Nothing nie zostanie przekazana do parametru, wszystkie moduły są aktualizowane przy użyciu najnowszych wersji modułu na Galeria programu PowerShell. Takie zachowanie jest takie samo, jak przycisk **Aktualizuj moduły platformy Azure** .
-
-## <a name="known-issues"></a>Znane problemy
-
-Istnieje znany problem z aktualizacją modułów AzureRM na koncie usługi Automation, które znajduje się w grupie zasobów o nazwie liczbowej rozpoczynającej się od 0. Aby zaktualizować moduły platformy Azure na koncie usługi Automation, musi ono należeć do grupy zasobów o nazwie alfanumerycznej. Grupy zasobów o nazwach liczbowych zaczynających się od 0 nie mogą teraz zaktualizować modułów AzureRM.
 
 ## <a name="next-steps"></a>Następne kroki
 

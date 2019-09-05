@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 02/28/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 2b888a275b08c7011c6e0b60ff1cd1d70b42f465
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 008ecf221dfcc069f6ac3b2ee3d8e5e46056c83c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559847"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308131"
 ---
-# <a name="get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka Java
+# <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Szybki start: Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu języka Java
 
 Ten przewodnik Szybki start przeprowadzi Cię przez programowe uzyskiwanie odpowiedzi z opublikowanej bazy wiedzy usługi QnA Maker. Baza wiedzy zawiera pytania i odpowiedzi ze [źródeł danych](../Concepts/data-sources-supported.md) , takich jak często zadawane pytania. [Pytanie](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) jest wysyłane do usługi QNA Maker. [Odpowiedź](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obejmuje odpowiedzi przewidziane w górnej części. 
 

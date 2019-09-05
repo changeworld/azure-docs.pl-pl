@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c5f7e45a1e1daa5d8504db2506a79e88c28bcc1
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1b5aedd5c9bde7689df14c7efdf8d58692680c13
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989592"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383171"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Kody błędów raportów działań związanych z logowaniem 
 
@@ -40,7 +40,7 @@ Przejdź do [raportu logowania](https://portal.azure.com/#blade/Microsoft_AAD_IA
 
 ![Działania związane z logowaniem](./media/reference-sign-ins-error-codes/61.png "Działania związane z logowaniem")
 
-Przefiltruj raport, aby wyświetlić wszystkie nieudane logowania, wybierając pozycję niepowodzenie w polu listy rozwijanej **Stan logowania** .
+Przefiltruj raport, aby wyświetlić wszystkie nieudane logowania, wybierając pozycję **Niepowodzenie** w polu listy rozwijanej **Stan logowania** .
 
 ![Działania związane z logowaniem](./media/reference-sign-ins-error-codes/06.png "Działania związane z logowaniem")
 
@@ -105,7 +105,7 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |50126|Nieprawidłowa nazwa użytkownika lub hasło albo nieprawidłowa lokalna nazwa użytkownika lub hasło.|
 |50127|Użytkownik musi zainstalować aplikację brokera, aby uzyskać dostęp do tej zawartości.|
 |50128|Nieprawidłowa nazwa domeny — nie znaleziono informacji identyfikacyjnych dzierżawy w żądaniu lub IMPLIKOWANYCH przez żadne podane poświadczenia.|
-|50129|Urządzenie nie jest dołączone do miejsca pracy — do zarejestrowania urządzenia wymagane jest dołączenie do **miejsca pracy** .|
+|50129|Urządzenie nie jest dołączone do miejsca pracy — do zarejestrowania urządzenia wymagane jest **dołączenie do miejsca pracy** .|
 |50130|Nie można zinterpretować wartości Claim jako znanej metody uwierzytelniania.|
 |50131|Używane w różnych błędach dostępu warunkowego. Na przykład Zły stan urządzenia z systemem Windows albo żądanie zablokowane z powodu podejrzanych decyzji związanych z działaniami, zasadami dostępu i zasadami zabezpieczeń.|
 |50132|Poświadczenia zostały odwołane z następujących powodów:<ul><li>Artefakt logowania jednokrotnego jest nieprawidłowy lub wygasł</li><li>Sesja nie jest wystarczająco świeża dla aplikacji</li><li>Wysłano żądanie logowania dyskretnego, ale sesja użytkownika z usługą Azure AD jest nieprawidłowy lub wygasła.</li></ul>|
@@ -153,6 +153,8 @@ Możesz również programowo uzyskać dostęp do danych logowania przy użyciu [
 |70018|Nieprawidłowy kod weryfikacyjny — użytkownik wpisał niewłaściwy kod użytkownika dla przepływu kodu urządzenia. Autoryzacja nie jest zatwierdzona.|
 |70019|Kod weryfikacyjny wygasł. Ponowienie próby logowania przez użytkownika.|
 |70037|Podano nieprawidłową odpowiedź na wezwanie. Odrzucono sesję uwierzytelniania zdalnego.|
+|70043|Zarządzanie sesjami dostępu warunkowego platformy Azure wymusza wygaśnięcie sesji|
+|70044|Zarządzanie sesjami dostępu warunkowego platformy Azure wymusza wygaśnięcie sesji|
 |75001|Wystąpił błąd podczas wiązania komunikatu SAML.|
 |75003|Aplikacja zwróciła błąd związany z nieobsługiwanym powiązaniem (odpowiedzi protokołu SAML nie można wysłać za pomocą powiązań innych niż żądania HTTP POST). Skontaktuj się z właścicielem aplikacji.|
 |75005|Usługa Azure AD nie obsługuje żądania SAML wysłanego przez aplikację na potrzeby logowania jednokrotnego. Skontaktuj się z właścicielem aplikacji.|

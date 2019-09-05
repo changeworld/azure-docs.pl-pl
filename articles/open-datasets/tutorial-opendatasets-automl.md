@@ -9,12 +9,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: 6f72daa4a601df0e3592910645c2f9b35ab64431
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0218221426351b0b508021fc74693557f200b4e8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845815"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309260"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>Samouczek: Tworzenie modelu regresji z automatycznym uczeniem maszynowym i otwartymi zestawami danych
 
@@ -1246,7 +1246,7 @@ weather_df.head(10)
 
 Ponownie wywołaj `pandas.Series.dt.normalize` `datetime` dla pola w danych pogodowych, aby pasował do klucza czasu w `taxi_holidays_df`. Usuń niepotrzebne kolumny i odfiltruj rekordy, w których znajduje się `NaN`temperatura.
 
-Następnie Grupuj dane pogodowe, aby codziennie agregowane wartości pogodowe. Zdefiniuj DICT `aggregations` , aby zdefiniować sposób agregowania poszczególnych pól na poziomie dziennym. Dla `snowDepth` `precipTime` `precipDepth` i `temperature` podejmij znaczenie i dla i zajmiemy się dzienną największą wartością. `groupby()` Użyj funkcji wraz z agregacjami, aby zgrupować dane. Wyświetl podgląd danych, aby upewnić się, że istnieje jeden rekord dziennie.
+Następnie Grupuj dane pogodowe, aby codziennie agregowane wartości pogodowe. Zdefiniuj DICT o nazwie `aggregations` , aby określić sposób agregowania poszczególnych pól na poziomie dziennym. Dla `snowDepth` `precipTime` `precipDepth` i `temperature` podejmij znaczenie i dla i zajmiemy się dzienną największą wartością. `groupby()` Użyj funkcji wraz z agregacjami, aby zgrupować dane. Wyświetl podgląd danych, aby upewnić się, że istnieje jeden rekord dziennie.
 
 ```python
 weather_df["datetime"] = weather_df["datetime"].dt.normalize()
@@ -1942,7 +1942,7 @@ Jeśli nie planujesz korzystać z utworzonych zasobów, usuń je, aby nie nawią
 1. Wybierz pozycję **Usuń grupę zasobów**.
 1. Wpisz nazwę grupy zasobów. Następnie wybierz pozycję **Usuń**.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Więcej przykładów kodu można znaleźć w [notesach](https://github.com/Azure/OpenDatasetsNotebooks) otwartych zestawów danych platformy Azure.
 * Postępuj zgodnie z instrukcjami, [Aby](https://docs.microsoft.com/azure/machine-learning/service/how-to-configure-auto-train) uzyskać więcej informacji na temat automatycznego uczenia maszynowego w usłudze Azure Machine Learning.

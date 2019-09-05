@@ -1,111 +1,110 @@
 ---
-title: Odbieranie alertów dziennika aktywności dla powiadomień dotyczących usług platformy Azure
-description: Odbieraj powiadomienia w wiadomościach SMS, wiadomości e-mail lub element webhook po wystąpieniu usługi platformy Azure.
+title: Odbieraj alerty dziennika aktywności w powiadomieniach usługi platformy Azure
+description: Otrzymuj powiadomienia za pośrednictwem wiadomości SMS, poczty e-mail lub elementu webhook w przypadku wystąpienia usługi platformy Azure.
 author: stephbaron
 ms.author: stbaron
 services: monitoring
 ms.service: service-health
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 1151eb8659c60cd71430c3dd971e73ec03a5545f
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 40ffe0b377a5cbb21f07c479097958d7c15a2879
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538278"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383162"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Tworzenie alertów dziennika aktywności dla powiadomień dotyczących usług
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-W tym artykule pokazano, jak skonfigurować alerty dziennika aktywności dla powiadomień dotyczących kondycji usługi przy użyciu witryny Azure portal.  
+W tym artykule opisano sposób konfigurowania alertów dziennika aktywności dla powiadomień o kondycji usługi przy użyciu Azure Portal.  
 
-Powiadomienia o kondycji usług są przechowywane w [dziennika aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md) biorąc pod uwagę potencjalnie dużą liczbą informacje przechowywane w dzienniku aktywności, istnieje interfejs oddzielnego użytkownika, aby ułatwić wyświetlanie i Konfigurowanie alertów dotyczących kondycji usługi powiadomienia. 
+Powiadomienia o kondycji usługi są przechowywane w [dzienniku aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md) z uwzględnieniem prawdopodobnie dużej ilości informacji przechowywanych w dzienniku aktywności, istnieje oddzielny interfejs użytkownika, który ułatwia wyświetlanie i Konfigurowanie alertów dotyczących powiadomień o kondycji usługi. 
 
-Mogą otrzymać alert, gdy platforma Azure wysyła powiadomienia o kondycji usług do Twojej subskrypcji platformy Azure. Można skonfigurować alerty na podstawie:
+Możesz otrzymać Alert, gdy platforma Azure wyśle powiadomienia o kondycji usługi do subskrypcji platformy Azure. Alert można skonfigurować na podstawie:
 
-- Klasa powiadomienia o kondycji usługi (Service problemów planowana konserwacja porad dotyczących kondycji).
-- Subskrypcja, w których to dotyczy.
-- Usługi, których to dotyczy.
-- Regiony, w których to dotyczy.
+- Klasa powiadomień o kondycji usługi (problemy z usługą, planowana konserwacja, klasyfikatory kondycji).
+- Objęta subskrypcją.
+- Uwzględnione usługi.
+- Uwzględnione regiony.
 
 > [!NOTE]
-> Powiadomienia o kondycji usług nie wysyła alert dotyczące zasobów zdarzenia dotyczące kondycji.
+> Powiadomienia o kondycji usługi nie wysyłają alertów dotyczących zdarzeń związanych z kondycją zasobów.
 
-Można także skonfigurować kogo wysyłane alertu:
+Możesz również skonfigurować osobę, do której ma być wysyłany Alert:
 
 - Wybierz istniejącą grupę akcji.
-- Utwórz nową grupę akcji, (które mogą służyć do następnych alertów).
+- Utwórz nową grupę akcji (która może być używana w przyszłych alertach).
 
 Aby dowiedzieć się więcej o grupach akcji, zobacz [Create and manage action groups (Tworzenie grup akcji i zarządzanie nimi)](../azure-monitor/platform/action-groups.md).
 
-Aby uzyskać informacje na temat konfigurowania usługi kondycji powiadomień alertów przy użyciu szablonów usługi Azure Resource Manager, zobacz [szablonów usługi Resource Manager](../azure-monitor/platform/alerts-activity-log.md).
+Aby uzyskać informacje dotyczące sposobu konfigurowania alertów powiadomień o kondycji usługi przy użyciu szablonów Azure Resource Manager, zobacz [szablony Menedżer zasobów](../azure-monitor/platform/alerts-activity-log.md).
 
-### <a name="watch-a-video-on-setting-up-your-first-azure-service-health-alert"></a>Obejrzyj film wideo na temat konfigurowania pierwszy alert usługi Azure Service Health
+### <a name="watch-a-video-on-setting-up-your-first-azure-service-health-alert"></a>Obejrzyj film wideo na temat konfigurowania pierwszego alertu Azure Service Health
 
 >[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2OaXt]
 
-## <a name="alert-and-new-action-group-using-azure-portal"></a>Akcja alertu i nowe grupy przy użyciu witryny Azure portal
-1. W [portal](https://portal.azure.com), wybierz opcję **Service Health**.
+## <a name="alert-and-new-action-group-using-azure-portal"></a>Alert i Nowa grupa akcji przy użyciu Azure Portal
+1. W [portalu](https://portal.azure.com)wybierz pozycję **Service Health**.
 
     ![Usługa "Service Health"](media/alerts-activity-log-service-notifications/home-servicehealth.png)
 
-1. W **alerty** zaznacz **alerty dotyczące kondycji**.
+1. W sekcji **alerty** wybierz pozycję **alerty dotyczące kondycji**.
 
-    ![Na karcie "Alerty dotyczące kondycji"](media/alerts-activity-log-service-notifications/alerts-blades-sh.png)
+    ![Karta "alerty kondycji"](media/alerts-activity-log-service-notifications/alerts-blades-sh.png)
 
-1. Wybierz **Tworzenie alertów dotyczących kondycji usługi** i wypełnij pola.
+1. Wybierz pozycję **Utwórz alert kondycji usługi** i wypełnij pola.
 
     ![Polecenie "Utwórz alert kondycji usługi"](media/alerts-activity-log-service-notifications/service-health-alert.png)
 
-1. Wybierz **subskrypcji**, **usług**, i **regionów** mają dotyczyć alerty.
+1. Wybierz **subskrypcję**, **usługi**i **regiony** , dla których chcesz otrzymywać alerty.
 
-    ![Okno dialogowe "Dodaj alert dziennika aktywności"](media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)
+    ![Okno dialogowe Dodawanie alertu dziennika aktywności](media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)
 
-> [!NOTE]
-> Ta subskrypcja jest używana do zapisać alert dziennika aktywności. Alertu zasobów zostanie wdrożone do tej subskrypcji i monitoruje zdarzeń w dzienniku aktywności.
+    > [!NOTE]
+    > Ta subskrypcja służy do zapisywania alertu dziennika aktywności. Zasób alertu jest wdrażany w tej subskrypcji i monitoruje zdarzenia w dzienniku aktywności.
 
-1. Wybierz **typy zdarzeń** chcesz otrzymywać alerty dla: *Usługa problem*, *planowanej konserwacji*, i *porad dotyczących kondycji* 
+1. Wybierz **typy zdarzeń** , dla których chcesz otrzymywać alerty: *Problem z usługą*, *Planowana konserwacja*i *klasyfikatory kondycji* 
 
-1. Zdefiniuj informacje dotyczące alertu, wprowadzając **Nazwa reguły alertu** i **opis**.
+1. Zdefiniuj szczegóły alertu, wprowadzając nazwę i **Opis** **reguły alertu** .
 
-1. Wybierz **grupy zasobów** miejscu alertu do zapisania.
+1. Wybierz **grupę zasobów** , w której ma zostać zapisany alert.
 
-1. Utwórz nową grupę akcji, wybierając **Nowa grupa akcji**. Wprowadź nazwę w **Nazwa grupy akcji** polu, a następnie wprowadź nazwę w **krótką nazwę** pole. Krótka nazwa odwołuje się do powiadomień, które są wysyłane, gdy zostanie wyzwolony alert.
+1. Utwórz nową grupę akcji, wybierając pozycję **Nowa grupa akcji**. Wprowadź nazwę w polu **Nazwa grupy akcji** , a następnie wprowadź nazwę w polu **krótka nazwa** . Krótka nazwa jest przywoływana w powiadomieniach, które są wysyłane, gdy ten alert zostanie wyzwolony.
 
     ![Utwórz nową grupę akcji](media/alerts-activity-log-service-notifications/action-group-creation.png)
 
-1. Zdefiniuj listę odbiorców, podając odbiorcę firmy:
+1. Zdefiniuj listę odbiorników, dostarczając:
 
     a. **Nazwa**: Wprowadź nazwę, alias lub identyfikator odbiorcy.
 
-    b. **Typ akcji**: Wybierz wiadomości SMS, wiadomości e-mail, element webhook i aplikacji platformy Azure.
+    b. **Typ akcji**: Wybierz pozycję SMS, wiadomość e-mail, element webhook, aplikację platformy Azure i nie tylko.
 
-    c. **Szczegóły**: Oparte na wybrany typ akcji, wprowadź numer telefonu, adres e-mail, identyfikator URI elementu webhook, itp.
+    c. **Szczegóły**: Na podstawie wybranego typu akcji wprowadź numer telefonu, adres e-mail, identyfikator URI elementu webhook itd.
 
-1. Wybierz **OK** Aby utworzyć grupę akcji, a następnie **Utwórz regułę alertu** do ukończenia alertu.
+1. Wybierz **przycisk OK** , aby utworzyć grupę akcji, a następnie **Utwórz regułę alertu** w celu ukończenia alertu.
 
-W ciągu kilku minut ten alert jest aktywna i rozpoczyna się do wyzwalania na podstawie warunków, które zostały określone podczas tworzenia.
+W ciągu kilku minut alert jest aktywny i rozpocznie się wyzwalanie na podstawie warunków określonych podczas tworzenia.
 
-Dowiedz się, jak [Konfigurowanie powiadomień elementu webhook dla istniejących systemów zarządzania problem](service-health-alert-webhook-guide.md). Aby uzyskać informacje dotyczące schematu elementu webhook dla alertów dziennika aktywności, zobacz [alerty dzienników elementy Webhook dla aktywności platformy Azure](../azure-monitor/platform/activity-log-alerts-webhook.md).
+Dowiedz się, jak [skonfigurować powiadomienia elementu webhook dla istniejących systemów zarządzania problemami](service-health-alert-webhook-guide.md). Aby uzyskać informacje na temat schematu elementu webhook dla alertów dziennika aktywności, zobacz elementy [webhook dla alertów dziennika aktywności platformy Azure](../azure-monitor/platform/activity-log-alerts-webhook.md).
 
 >[!NOTE]
->Grupa akcji zdefiniowane w ramach tej procedury jest do ponownego użycia istniejącej grupy akcji dla wszystkich przyszłych definicji alertu.
+>Grupa akcji zdefiniowana w tych krokach jest wielokrotnego użytku jako istniejąca grupa akcji dla wszystkich przyszłych definicji alertów.
 >
->
 
-## <a name="alert-with-existing-action-group-using-azure-portal"></a>Alert o istniejącej grupy akcji przy użyciu witryny Azure portal
+## <a name="alert-with-existing-action-group-using-azure-portal"></a>Zgłoś alert z istniejącą grupą akcji przy użyciu Azure Portal
 
-1. Wykonaj kroki od 1 do 6 w poprzedniej sekcji, aby utworzyć powiadomienia usługi kondycji. 
+1. Wykonaj kroki od 1 do 6 w poprzedniej sekcji, aby utworzyć powiadomienie dotyczące kondycji usługi. 
 
-1. W obszarze **zdefiniuj grupę akcji**, kliknij przycisk **grupy akcji wybierania** przycisku. Wybierz grupę odpowiednie działania.
+1. W obszarze **Definiowanie grupy akcji**kliknij przycisk **Wybierz grupę akcji** . Wybierz odpowiednią grupę akcji.
 
-1. Wybierz **Dodaj** można dodać do grupy akcji, a następnie **Utwórz regułę alertu** do ukończenia alertu.
+1. Wybierz pozycję **Dodaj** , aby dodać grupę akcji, a następnie **Utwórz regułę alertu** w celu ukończenia alertu.
 
-W ciągu kilku minut ten alert jest aktywna i rozpoczyna się do wyzwalania na podstawie warunków, które zostały określone podczas tworzenia.
+W ciągu kilku minut alert jest aktywny i rozpocznie się wyzwalanie na podstawie warunków określonych podczas tworzenia.
 
-## <a name="alert-and-new-action-group-using-the-azure-resource-manager-templates"></a>Akcja alertu i nowe grupy przy użyciu szablonów usługi Azure Resource Manager
+## <a name="alert-and-new-action-group-using-the-azure-resource-manager-templates"></a>Alert i Nowa grupa akcji przy użyciu szablonów Azure Resource Manager
 
-Oto przykład, który tworzy grupy akcji z elementem docelowym poczty e-mail i włącza wszystkie powiadomień dotyczących kondycji usługi dla subskrypcji docelowej.
+Poniżej przedstawiono przykład, który tworzy grupę akcji z miejscem docelowym poczty e-mail i włącza wszystkie powiadomienia kondycji usługi dla subskrypcji docelowej.
 
 ```json
 {
@@ -195,18 +194,18 @@ Oto przykład, który tworzy grupy akcji z elementem docelowym poczty e-mail i w
 
 ## <a name="manage-your-alerts"></a>Zarządzanie alertami
 
-Po utworzeniu alertu, jest ona widoczna na **alerty** części **Monitor**. Wybierz alert, który ma być zarządzany do:
+Po utworzeniu alertu jest on widoczny w sekcji **alerty** **monitora**. Wybierz Alert, który chcesz zarządzać:
 
-* Czy chcesz go edytować.
+* Edytuj go.
 * Usuń go.
-* Wyłączyć lub włączyć, jeśli chcesz tymczasowo zatrzymać lub wznowić odbieranie powiadomień o alercie.
+* Wyłączenie lub włączenie tego elementu, jeśli chcesz tymczasowo zatrzymać lub wznowić otrzymywanie powiadomień dotyczących alertu.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [najlepsze rozwiązania dotyczące konfigurowania alertów usługi Azure Service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa).
-- Dowiedz się, jak [Instalatora mobilnych powiadomień wypychanych dla usługi Azure Service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
-- Dowiedz się, jak [Konfigurowanie powiadomień elementu webhook dla istniejących systemów zarządzania problem](service-health-alert-webhook-guide.md).
-- Dowiedz się więcej o [usługi powiadomień dotyczących kondycji](service-notifications.md).
-- Dowiedz się więcej o [powiadomień szybkości](../azure-monitor/platform/alerts-rate-limiting.md).
-- Przegląd [schemat elementów webhook alertu dziennika aktywności](../azure-monitor/platform/activity-log-alerts-webhook.md).
-- Pobierz [Przegląd alertów dziennika aktywności](../azure-monitor/platform/alerts-overview.md)i Dowiedz się, jak otrzymywać alerty.
-- Dowiedz się więcej o [grup akcji](../azure-monitor/platform/action-groups.md).
+## <a name="next-steps"></a>Następne kroki
+- Poznaj [najlepsze rozwiązania dotyczące konfigurowania Azure Service Health alertów](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUa).
+- Dowiedz się, jak [skonfigurować mobilne powiadomienia wypychane dla Azure Service Health](https://www.microsoft.com/en-us/videoplayer/embed/RE2OtUw).
+- Dowiedz się, jak [skonfigurować powiadomienia elementu webhook dla istniejących systemów zarządzania problemami](service-health-alert-webhook-guide.md).
+- Dowiedz się więcej o [powiadomieniach o kondycji usługi](service-notifications.md).
+- Dowiedz się więcej na temat [ograniczania liczby powiadomień](../azure-monitor/platform/alerts-rate-limiting.md).
+- Przejrzyj [schemat elementu webhook alertu dziennika aktywności](../azure-monitor/platform/activity-log-alerts-webhook.md).
+- Zapoznaj się z [omówieniem alertów dziennika aktywności](../azure-monitor/platform/alerts-overview.md)i Dowiedz się, jak otrzymywać alerty.
+- Dowiedz się więcej na temat [grup akcji](../azure-monitor/platform/action-groups.md).

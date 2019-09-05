@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: ellacroi
-ms.openlocfilehash: b8d0759d96b0b2566934f117f5dea32ec4ad015c
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 209905eaf90e006ded232be73ab2a3a428568eda
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68000018"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309021"
 ---
 # <a name="marketplace-faqs"></a>Witryna Marketplace — często zadawane pytania
 
@@ -36,7 +36,7 @@ Witryna Azure Marketplace oferuje rozwiązania i usługi techniczne utworzone pr
 
 * podstawowe systemy operacyjne
 * databases
-* security
+* zabezpieczenia
 * identity
 * sieć
 * łańcucha bloków
@@ -207,7 +207,7 @@ Mimo że większość subskrypcji firmy Microsoft można łatwo przekonwertować
 
 Aby przeprowadzić migrację innych usług zakupionych w portalu Azure Marketplace do subskrypcji umowy EA, najpierw Anuluj aplikacje z istniejącej subskrypcji MOSP i ponownie Kup te aplikacje w ramach subskrypcji umowy EA. Dzięki temu możesz przesłać żądanie kredytowe dotyczące zwrotu w trakcie potencjalnego miesiąca nakładających się zakresów między subskrypcjami usługi Marketplace — Utwórz [bilet pomocy technicznej](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-**Jaka jest różnica między *ceną*, *ceną oprogramowania*i łączną *ceną* w strukturze kosztów dla ofert maszyn wirtualnych w portalu Azure Marketplace?**
+**Jaka jest różnica między *ceną*, *ceną oprogramowania*i *łączną ceną* w strukturze kosztów dla ofert maszyn wirtualnych w portalu Azure Marketplace?**
 
 *Cena* to koszt maszyny wirtualnej platformy Azure, w której ma zostać uruchomione oprogramowanie. *Cena oprogramowania* to koszt oprogramowania wydawcy portalu Marketplace uruchomionego na maszynie wirtualnej platformy Azure. *Cena łączna* dotyczy łącznego łącznego kosztu maszyny wirtualnej platformy Azure oraz oprogramowania wydawcy portalu Marketplace działającego na maszynie wirtualnej platformy Azure.
 
@@ -219,7 +219,7 @@ Tak. Środki subskrypcyjne lub fundusze zobowiązań pieniężnych platformy Azu
 
 Szacowane informacje o użyciu można znaleźć w [Azure Portal]. Takie szacowane informacje o wykorzystaniu nie mogą obejmować ostatnich działań i mogą być oparte na projekcjach uzyskanych na podstawie przeszłego zużycia. W publicznej wersji zapoznawczej ta możliwość może nie być dostępna dla wszystkich zakupów i może się różnić w zależności od typu produktu.
 
-### <a name="customer-support"></a>Obsługa klienta
+### <a name="customer-support"></a>Pomoc techniczna
 
 **Z kim mam się kontaktować w przypadku ogólnych problemów z pomocą techniczną w witrynie Azure Marketplace?**
 
@@ -263,7 +263,7 @@ Portal Azure Marketplace jest przeznaczony dla informatyków i deweloperów rozw
 
 **Dlaczego warto opublikować moją aplikację w witrynie Azure Marketplace i jak mogę jej korzystać?**
 
-Portal Azure Marketplace udostępnia partnerom firmy Microsoft rynek na potrzeby promowania i sprzedawania produktów i usług klientom platformy Azure. Wydawcy mogą natychmiast uzyskać dostęp do 140 rynków globalnych, naszych 300 000 partnerów i sieci platformy Azure dla klientów korporacyjnych.  Portal Marketplace obejmuje ponad 90% firm listy Fortune 500 i wiele wiodących deweloperów. Nowi partnerzy w witrynie Azure Marketplace są automatycznie oferowani z [korzyściami](gtm-your-marketplace-benefits.md#go-to-market-gtm-benefits-in-the-marketplace) , aby pomóc w zwiększeniu świadomości oferty w witrynie Azure Marketplace.
+Portal Azure Marketplace udostępnia partnerom firmy Microsoft rynek na potrzeby promowania i sprzedawania produktów i usług klientom platformy Azure. Wydawcy mogą natychmiast uzyskać dostęp do 140 rynków globalnych, naszych 300 000 partnerów i sieci platformy Azure dla klientów korporacyjnych.  Portal Marketplace obejmuje ponad 90% firm listy Fortune 500 i wiele wiodących deweloperów. Nowi partnerzy w witrynie Azure Marketplace są automatycznie oferowani z [korzyściami](gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits) , aby pomóc w zwiększeniu świadomości oferty w witrynie Azure Marketplace.
 
 **Jaki jest czynnik odróżniający między portalem Azure Marketplace i AppSource?**
 
@@ -305,7 +305,7 @@ Aby uzyskać więcej informacji i rozpocząć Włączanie wersji próbnej za pom
 
 **Jak mogę rozpocząć rejestrację w centrum deweloperów?**
 
-Aby rozpocząć, wydawcy powinni sprawdzić, czy [konto Centrum deweloperów](deprecated/register-dev-center.md) nie zostało jeszcze zarejestrowane (aby zapobiec duplikowaniu). Następnym krokiem jest zarejestrowanie się [przy użyciu konto Microsoft](https://account.microsoft.com/account/) , który zostanie skojarzony z kontem dewelopera.
+Aby rozpocząć, wydawcy powinni sprawdzić, czy [konto Centrum deweloperów](deprecated/register-dev-center.md) nie zostało jeszcze zarejestrowane (aby zapobiec duplikowaniu). Następnym krokiem jest zarejestrowanie [się przy użyciu konto Microsoft](https://account.microsoft.com/account/) , który zostanie skojarzony z kontem dewelopera.
 
 Jeśli nie masz jeszcze konto Microsoft, możesz [utworzyć konto](https://signup.live.com/) (na przykład: contoso_marketplace@live.com).
 
@@ -319,11 +319,11 @@ Potencjalni klienci to klienci, którzy wdrażają produkty z portalu Marketplac
 
 **Gdzie mogę uzyskać pomoc w konfigurowaniu miejsca docelowego potencjalnego klienta?**
 
-Dowiedz się więcej w temacie [Portal Cloud partner — Uzyskaj](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) informacje o potencjalnych klientach lub Prześlij [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) zgłoszenie do pomocy technicznej, wybierając typ oferty i zarządzanie potencjalnymi klientami.
+Dowiedz się więcej w temacie [Portal Cloud partner — Uzyskaj informacje o potencjalnych klientach](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md) lub Prześlij [https://aka.ms/marketplacepublishersupport](https://aka.ms/marketplacepublishersupport) zgłoszenie do pomocy technicznej, wybierając typ oferty i zarządzanie potencjalnymi klientami.
 
 **Czy muszę skonfigurować miejsce docelowe potencjalnego klienta w celu opublikowania oferty w portalu Marketplace?**
 
-Tak, jeśli publikowana jest oferta contacter, **SaaS**lub **usług konsultingowych** , musisz skonfigurować miejsce docelowe potencjalnego klienta.
+Tak, jeśli publikowana jest oferta **contacter**, **SaaS**lub **usług konsultingowych** , musisz skonfigurować miejsce docelowe potencjalnego klienta.
 
 **Jak upewnić się, że konfiguracja lidera jest poprawna?**
 
@@ -370,7 +370,7 @@ Proś [Anjana Sompur (slalom Consulting)](mailto:v-ansomp@microsoft.com).
 
 **Jakie są korzyści ze stosowania w przypadku wydawców dostępnych w portalu Azure Marketplace?**
 
-Portal Azure Marketplace to punkt początkowy dla wspólnych działań związanych z przechodzeniem do rynku z firmą Microsoft, a bramą to partnerstwo gotowe. Wszystkie nowe aukcje w witrynie Azure Marketplace są automatycznie oferowane z korzyściami z niekosztownego przechodzenia na [rynek](https://assetsprod.microsoft.com/mpn/marketplace-gtm-benefits.pdf) , aby pomóc w rozwiązywaniu problemów z ofertami do klientów firmy Microsoft. Po opublikowaniu oferty zespół GTM firmy Microsoft kontaktuje się z firmą i rozpoczyna świadczenie usług.
+Portal Azure Marketplace to punkt początkowy dla wspólnych działań związanych z przechodzeniem do rynku z firmą Microsoft, a bramą to partnerstwo gotowe. Wszystkie nowe aukcje w witrynie Azure Marketplace są automatycznie oferowane z [korzyściami z niekosztownego przechodzenia na rynek](https://assetsprod.microsoft.com/mpn/marketplace-gtm-benefits.pdf) , aby pomóc w rozwiązywaniu problemów z ofertami do klientów firmy Microsoft. Po opublikowaniu oferty zespół GTM firmy Microsoft kontaktuje się z firmą i rozpoczyna świadczenie usług.
 
 Odwiedź witrynę [Microsoft GTM Services](https://partner.microsoft.com/reach-customers/gtm) , aby uzyskać więcej informacji na temat naszych GTMych korzyści i sposobów rozwoju firmy w portalu Marketplace.
 

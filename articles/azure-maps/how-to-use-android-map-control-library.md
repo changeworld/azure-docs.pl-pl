@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a3423635ab226693e0b3b057e2c2cb441861ea1b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 9abe9eb9cdad6351f49fba2dace64095783455cf
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839405"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376002"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Wprowadzenie do Azure Maps Android SDK
 
@@ -109,7 +109,18 @@ Następnym krokiem tworzenia aplikacji jest zainstalowanie Android SDK Azure Map
     * Ustawianie informacji o uwierzytelnianiu Azure Maps
     * Pobieranie wystąpienia kontrolki mapy w metodzie **OnCreate**
 
-    Ustawienie informacji o uwierzytelnianiu w klasie AzureMaps globalnie przy użyciu metod setSubscriptionKey lub setAadProperties powoduje, że nie trzeba dodawać informacji o uwierzytelnianiu w każdym widoku. Kontrolka mapy zawiera własne metody cyklu życia do zarządzania cyklem życia OpenGL dla systemu Android, które muszą być wywoływane bezpośrednio z działania zawierającego. Aby aplikacja mogła prawidłowo, wywołaj metody cyklu życia kontrolki mapy, należy zastąpić następujące metody cyklu życia w działaniu zawierającym formant mapy i wywołać odpowiednią metodę kontroli mapy. 
+    Ustawienie informacji o uwierzytelnianiu w `AzureMaps` klasie globalnie `setSubscriptionKey` przy użyciu metod `setAadProperties` lub powoduje, że nie trzeba dodawać informacji o uwierzytelnianiu w każdym widoku. 
+
+    Kontrolka mapy zawiera własne metody cyklu życia do zarządzania cyklem życia OpenGL dla systemu Android, które muszą być wywoływane bezpośrednio z działania zawierającego. Aby aplikacja mogła prawidłowo, wywołaj metody cyklu życia kontrolki mapy, należy zastąpić następujące metody cyklu życia w działaniu zawierającym formant mapy i wywołać odpowiednią metodę kontroli mapy. 
+
+    * OnCreate (pakiet) 
+    * OnStart () 
+    * onresume () 
+    * OnPause () 
+    * onStop () 
+    * OnDestroy () 
+    * onSaveInstanceState (pakiet) 
+    * onLowMemory() 
 
     Edytuj plik **MAINS. Java** w następujący sposób:
     
@@ -140,13 +151,24 @@ Następnym krokiem tworzenia aplikacji jest zainstalowanie Android SDK Azure Map
             mapControl = findViewById(R.id.mapcontrol);
 
             mapControl.onCreate(savedInstanceState);
-
+    
+            //Wait until the map resources are ready.
+            mapControl.onReady(map -> {
+                //Add your post map load code here.
+    
+            });
         }
 
         @Override
         public void onResume() {
             super.onResume();
             mapControl.onResume();
+        }
+
+        @Override
+        protected void onStart(){
+            super.onStart();
+            mapControl.onStart();
         }
 
         @Override
@@ -178,7 +200,6 @@ Następnym krokiem tworzenia aplikacji jest zainstalowanie Android SDK Azure Map
             super.onSaveInstanceState(outState);
             mapControl.onSaveInstanceState(outState);
         }
-
     }
 
     ```

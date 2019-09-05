@@ -1,5 +1,5 @@
 ---
-title: Prosta jednostka, lista fraz — LUIS
+title: 'Samouczek: Prosta jednostka, lista fraz — LUIS'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku wyodrębnisz z wypowiedzi dane nauczone maszynowo dotyczące nazwy stanowiska pracownika, używając prostej jednostki. Aby zwiększyć dokładność wyodrębniania, dodaj listę fraz zawierającą terminy specyficzne dla danej prostej jednostki.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 1b731d8000e748813649ea32c91b9566a8bc245a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 87e4fe3671f419383cb342fdb7dca55a8d2eb45d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648602"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376268"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Samouczek: wyodrębnianie nazw przy użyciu prostej jednostki i listy fraz
 

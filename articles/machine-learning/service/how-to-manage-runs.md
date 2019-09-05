@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2019
-ms.openlocfilehash: 9b58d6e189c891d0dd2917d7d150f133dc35f917
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: b938d55749373711ddf2a19df12b987276b224ca
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019101"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376294"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Uruchamianie, monitorowanie i anulowanie przebiegów szkoleniowych w języku Python
 
@@ -226,7 +226,7 @@ Aby wydajnie tworzyć wiele podrzędnych przebiegów, [`create_children()`](http
 
 Uruchomienia podrzędne mogą być również przesyłane z przebiegu nadrzędnego. Dzięki temu można tworzyć hierarchie uruchomień nadrzędnych i podrzędnych, z których każda działa w różnych obiektach docelowych obliczeń połączonych przez wspólny identyfikator przebiegu nadrzędnego.
 
-Użyj metody ["submit_child ()"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-count-none--tag-key-none--tag-values-none-) , aby przesłać podrzędny przebieg z przebiegu nadrzędnego. Aby to zrobić w skrypcie uruchomienia nadrzędnego, Pobierz kontekst uruchamiania i prześlij podrzędny przebieg przy użyciu metody "submit_child" "w wystąpieniu kontekstu.
+Użyj metody ["submit_child ()"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) , aby przesłać podrzędny przebieg z przebiegu nadrzędnego. Aby to zrobić w skrypcie uruchomienia nadrzędnego, Pobierz kontekst uruchamiania i prześlij podrzędny przebieg przy użyciu metody "submit_child" "w wystąpieniu kontekstu.
 
 ```python
 ## In parent run script

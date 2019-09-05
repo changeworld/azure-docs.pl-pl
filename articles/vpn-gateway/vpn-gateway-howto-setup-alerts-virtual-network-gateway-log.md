@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: c84d457c51f71bdf315bbbcec674ff1186dd905f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: d914c020553bace7ea5ab8898ac4093fea30e6c9
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249014"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307007"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Konfigurowanie alertów dotyczących zdarzeń dzienników diagnostycznych z VPN Gateway
 
@@ -70,12 +70,17 @@ Poniższe przykładowe kroki spowodują utworzenie alertu dotyczącego zdarzenia
 
    ![Wybory dla niestandardowego przeszukiwania dzienników](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "Wybierz pozycję")
 
-10. W polu tekstowym **Zapytanie wyszukiwania** wpisz poniższe zapytanie. W razie potrzeby Zastąp wartości w < >.
+10. W polu tekstowym **Zapytanie wyszukiwania** wpisz poniższe zapytanie. Zastąp wartości w < > i TimeGenerated, zgodnie z potrzebami.
 
     ```
-    AzureDiagnostics |
-      where Category  == "TunnelDiagnosticLog" and ResourceId == toupper("<RESOURCEID OF GATEWAY>") and TimeGenerated > ago(5m) and
-      remoteIP_s == "<REMOTE IP OF TUNNEL>" and status_s == "Disconnected"
+    AzureDiagnostics
+    | where Category == "TunnelDiagnosticLog"
+    | where _ResourceId == tolower("<RESOURCEID OF GATEWAY>")
+    | where TimeGenerated > ago(5m) 
+    | where remoteIP_s == "<REMOTE IP OF TUNNEL>"
+    | where status_s == "Disconnected"
+    | project TimeGenerated, OperationName, instance_s, Resource, ResourceGroup, _ResourceId 
+    | sort by TimeGenerated asc
     ```
 
     Ustaw wartość progową na 0 i wybierz pozycję **gotowe**.
@@ -90,6 +95,6 @@ Poniższe przykładowe kroki spowodują utworzenie alertu dotyczącego zdarzenia
 
     ![Wybory dla tworzenia reguły](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert11.png  "Wybierz pozycję")
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby skonfigurować alerty dotyczące metryk tuneli, zobacz [Konfigurowanie alertów na VPN Gateway metryki](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).

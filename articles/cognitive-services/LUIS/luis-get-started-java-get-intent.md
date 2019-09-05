@@ -1,5 +1,5 @@
 ---
-title: Opcje pobierania, Java — LUIS
+title: 'Szybki start: Opcje pobierania, Java — LUIS'
 titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start dotyczącym języka Java użyjesz dostępnej publicznie aplikacji LUIS, aby określić intencję użytkownika w tekście konwersacji.
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 7a80aefd7a88727cf3a2261115c076853bd45b3f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d38802119ed9761b1baf497a9524c430eefda89a
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563809"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375500"
 ---
 # <a name="quickstart-get-intent-using-java"></a>Szybki start: pobieranie intencji przy użyciu języka Java
 

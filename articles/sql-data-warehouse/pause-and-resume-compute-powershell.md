@@ -10,14 +10,14 @@ ms.subservice: manage
 ms.date: 03/20/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 220d2aefd714cd3546fa4d5c2ac8852d2786b8ac
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: da9c3d42919bba6ce04fc54bafc2fb5d245379f5
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575405"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306090"
 ---
-# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Szybki start: Wstrzymywanie i wznawianie obliczeń w Azure SQL Data Warehouse przy użyciu programu PowerShell
+# <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-azure-powershell"></a>Szybki start: Wstrzymywanie i wznawianie obliczeń w Azure SQL Data Warehouse z Azure PowerShell
 
 Użyj programu PowerShell, aby wstrzymać obliczenia w Azure SQL Data Warehouse w celu oszczędności kosztów. [Wznów Obliczanie](sql-data-warehouse-manage-compute-overview.md) , gdy wszystko jest gotowe do korzystania z magazynu danych.
 
@@ -68,7 +68,7 @@ Wykonaj następujące kroki, aby znaleźć informacje o lokalizacji dla magazynu
 
 Aby zaoszczędzić koszty, możesz wstrzymywać i wznawiać zasoby obliczeniowe na żądanie. Na przykład jeśli baza danych nie jest używana w porze nocnej i w weekendy, możesz ją wstrzymać w tych godzinach i wznowić ją w ciągu dnia. Nie jest naliczana opłata za zasoby obliczeniowe, gdy baza danych jest wstrzymana. Opłata za magazyn jest jednak nadal naliczana.
 
-Aby wstrzymać bazę danych, należy użyć polecenia cmdlet [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase) . Poniższy przykład wstrzymuje magazyn danych o nazwie **mySampleDataWarehouse** hostowanej na serwerze o nazwie **newserver-20171113**. Serwer należy do grupy zasobów platformy Azure o nazwiemoja ResourceName.
+Aby wstrzymać bazę danych, należy użyć polecenia cmdlet [Suspend-AzSqlDatabase](/powershell/module/az.sql/suspend-azsqldatabase) . Poniższy przykład wstrzymuje magazyn danych o nazwie **mySampleDataWarehouse** hostowanej na serwerze o nazwie **newserver-20171113**. Serwer należy do grupy zasobów platformy Azure o nazwie Moja **resourceName**.
 
 
 ```Powershell

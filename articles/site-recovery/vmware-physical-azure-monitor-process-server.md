@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 09/05/2019
 ms.author: raynew
-ms.openlocfilehash: 5d746385a034fdf742b8958b3d1fe51ea2a3c5cf
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 00b424672b505a5bb3d576c0ca4d8e334e2a1753
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972174"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383209"
 ---
 # <a name="monitor-the-process-server"></a>Monitorowanie serwera przetwarzania
 
@@ -57,10 +57,12 @@ Serwer przetwarzania generuje wiele alertów dotyczących kondycji, które zosta
 ![Ostrzeżenie][yellow] | Użycie procesora CPU > 80% dla ostatnich 15 minut
 ![Ostrzeżenie][yellow] | Użycie pamięci > 80% dla ostatnich 15 minut
 ![Ostrzeżenie][yellow] | Wolne miejsce w folderze pamięci podręcznej < 30% dla ostatnich 15 minut
+![Ostrzeżenie][yellow] | Site Recovery monitoruje dane oczekujące/wychodzące co pięć minut i szacuje, że dane w pamięci podręcznej serwera przetwarzania nie mogą być przekazywane do platformy Azure w ciągu 30 minut.
 ![Ostrzeżenie][yellow] | Usługi serwera przetwarzania nie są uruchomione w ciągu ostatnich 15 minut
 ![Krytyczny][red] | Użycie procesora CPU > 95% dla ostatnich 15 minut
 ![Krytyczny][red] | Użycie pamięci > 95% dla ostatnich 15 minut
 ![Krytyczny][red] | Wolne miejsce w folderze pamięci podręcznej < 25% dla ostatnich 15 minut
+![Krytyczny][red] | Site Recovery monitoruje dane oczekujące/wychodzące co pięć minut i szacuje, że dane w pamięci podręcznej serwera przetwarzania nie mogą zostać przekazane do platformy Azure w ciągu 45 minut.
 ![Krytyczny][red] | Brak pulsu z serwera przetwarzania przez 15 minut.
 
 ![Klucz tabeli](./media/vmware-physical-azure-monitor-process-server/table-key.png)

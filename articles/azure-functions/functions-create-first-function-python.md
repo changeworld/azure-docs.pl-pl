@@ -9,16 +9,16 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: gwallace
-ms.openlocfilehash: cb7f5a10169c8baaecae0fc1916a439d61bfbf7c
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 98cb6d8eb665121e5991508056aa2fd9edc0629d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70170877"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376038"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Tworzenie funkcji wyzwalanej przez protokół HTTP na platformie Azure
 
-W tym artykule pokazano, jak za pomocą narzędzi wiersza polecenia utworzyć projekt w języku Python, który działa w Azure Functions. Utworzona funkcja jest wyzwalana przez żądania HTTP. Na koniec opublikujesz projekt do uruchamiania jako [Funkcja](functions-scale.md#consumption-plan) bezserwerowa na platformie Azure.
+W tym artykule pokazano, jak za pomocą narzędzi wiersza polecenia utworzyć projekt w języku Python, który działa w Azure Functions. Utworzona funkcja jest wyzwalana przez żądania HTTP. Na koniec opublikujesz projekt do uruchamiania jako [Funkcja bezserwerowa](functions-scale.md#consumption-plan) na platformie Azure.
 
 Ten artykuł jest pierwszym z dwóch przewodników szybki start dla Azure Functions. Po wykonaniu tego artykułu należy [dodać powiązanie danych wyjściowych kolejki usługi Azure Storage](functions-add-output-binding-storage-queue-python.md) do funkcji.
 
@@ -38,7 +38,7 @@ Przed rozpoczęciem należy wykonać następujące czynności:
 
 ## <a name="create-and-activate-a-virtual-environment-optional"></a>Tworzenie i aktywowanie środowiska wirtualnego (opcjonalnie)
 
-Aby lokalnie opracowywać i testować funkcje języka Python, zaleca się używanie środowiska Python 3,6. Uruchom następujące polecenia, aby utworzyć i aktywować środowisko wirtualne o nazwie `.venv`.
+Aby lokalnie opracowywać i testować funkcje języka Python, zaleca się używanie środowiska Python 3,6. Uruchom następujące polecenia, aby utworzyć i aktywować środowisko wirtualne o nazwie `.venv`. Aby zainstalować venv, wykonaj polecenie: sudo apt-get install python3-venv
 
 ### <a name="bash"></a>Bash
 

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 021341406f1a7269aadf18eb3a748e539cbb5bf5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 421d41f95eff0ba0fdbca02c588d4a9a0c461a84
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086960"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70381057"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>Zarządzanie IoT Central z poziomu interfejsu wiersza polecenia platformy Azure
 
@@ -53,7 +53,7 @@ Te polecenia najpierw tworzą grupę zasobów w regionie Wschodnie stany USA dla
 | Parametr         | Opis |
 | ----------------- | ----------- |
 | resource-group    | Grupa zasobów zawierająca aplikację. Ta grupa zasobów musi już istnieć w Twojej subskrypcji. |
-| location          | Domyślnie to polecenie używa lokalizacji z grupy zasobów. Obecnie można utworzyć aplikację IoT Central w regionach **Wschodnie stany USA**, zachodnie **stany USA**, **Europa Północna**lub **Europa Zachodnia** . |
+| location          | Domyślnie to polecenie używa lokalizacji z grupy zasobów. Obecnie można utworzyć aplikację IoT Central w regionach **Wschodnie stany USA**, **zachodnie stany USA**, **Europa Północna**lub **Europa Zachodnia** . |
 | name              | Nazwa aplikacji w Azure Portal. |
 | poddomeny         | Poddomena w adresie URL aplikacji. W tym przykładzie adres URL aplikacji to https://mysubdomain.azureiotcentral.com. |
 | sku               | Obecnie jedyną wartością jest **S1** (warstwa standardowa). Zobacz [Cennik usługi Azure IoT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
@@ -67,6 +67,9 @@ Te polecenia najpierw tworzą grupę zasobów w regionie Wschodnie stany USA dla
 | iotc-default@1.0.0       | Tworzy pustą aplikację, którą wypełnisz własnymi urządzeniami i szablonami urządzeń. |
 | iotc-demo@1.0.0          | Tworzy aplikację, która zawiera już utworzony szablon urządzenia typu Automat do sprzedaży z chłodziarką. Użyj tego szablonu, aby rozpocząć eksplorowanie usługi Azure IoT Central. |
 | iotc-devkit-sample@1.0.0 | Tworzy aplikację z gotowymi szablonami urządzeń, które umożliwiają łączenie z urządzeniem MXChip lub Raspberry Pi. Użyj tego szablonu, jeśli jesteś programistą dla deweloperów urządzeń przy użyciu dowolnego z tych urządzeń. |
+
+> [!NOTE]
+> Szablon **aplikacji w wersji zapoznawczej** jest obecnie dostępny tylko w regionach **Europy Północnej** i **środkowe stany USA** .
 
 ## <a name="view-your-applications"></a>Wyświetl swoje aplikacje
 
@@ -84,7 +87,7 @@ az iotcentral app update --name myiotcentralapp \
 
 ## <a name="remove-an-application"></a>Usuwanie aplikacji
 
-Użyj polecenia [AZ iotcentral App Delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) , aby usunąć aplikację IoT Central. Na przykład:
+Użyj polecenia [AZ iotcentral App Delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) , aby usunąć aplikację IoT Central. Przykład:
 
 ```azurecli-interactive
 az iotcentral app delete --name myiotcentralapp \

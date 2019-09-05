@@ -7,12 +7,12 @@ ms.author: parthp
 ms.service: marketplace
 ms.topic: guide
 ms.date: 07/05/2019
-ms.openlocfilehash: b1839316f8f11af7e4f365694fc017c262d00a86
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 71a74476bcec6cb2ab3dc5efabe1a550577f0107
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191730"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383241"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Utwórz komercyjne konto witryny Marketplace w centrum partnerskim
 
@@ -20,7 +20,7 @@ Aby opublikować oferty w [witrynie Azure Marketplace](https://azuremarketplace.
 
 ## <a name="create-a-partner-center-account"></a>Utwórz konto Centrum partnerskiego
 
-W tym artykule omówiono sposób tworzenia konta Centrum partnerskiego, w tym: 
+W tym artykule omówiono sposób tworzenia konta Centrum partnerskiego, w tym:
 
 - [Rejestrowanie przy użyciu strony rejestracji Centrum partnerskiego](#to-create-a-commercial-marketplace-account-in-partner-center)
 - [Zaloguj się przy użyciu konta służbowego](#sign-in-with-a-work-account)
@@ -56,11 +56,11 @@ Musisz wyrazić zgodę na warunki i postanowienia w [Umowie wydawcy Microsoft Ma
 
 #### <a name="provide-your-publisher-profile"></a>Podaj swój profil wydawcy
 
-Twój profil wydawcy zawiera nazwę firmy i identyfikator MPN. Jeśli jeszcze tego nie zrobiono, należy dołączyć do [Microsoft Partner Network](https://partner.microsoft.com/commercial). Po dołączeniu do Microsoft Partner Network zostanie wyświetlony identyfikator MPN. 
+Twój profil wydawcy zawiera nazwę firmy i identyfikator MPN. Jeśli jeszcze tego nie zrobiono, należy dołączyć do [Microsoft Partner Network](https://partner.microsoft.com/commercial). Po dołączeniu do Microsoft Partner Network zostanie wyświetlony identyfikator MPN.
 
-Utwórz identyfikator wydawcy. IDENTYFIKATOR wydawcy jednoznacznie identyfikuje firmę i oferty w witrynie Marketplace i AppSource. 
+Utwórz identyfikator wydawcy. IDENTYFIKATOR wydawcy jednoznacznie identyfikuje firmę i oferty w witrynie Marketplace i AppSource.
 
-Po potwierdzeniu informacji o profilu wydawcy Zaakceptuj warunki i postanowienia i Utwórz konto Centrum partnerskiego, wybierając pozycję **Akceptuj i Kontynuuj**. 
+Po potwierdzeniu informacji o profilu wydawcy Zaakceptuj warunki i postanowienia i Utwórz konto Centrum partnerskiego, wybierając pozycję **Akceptuj i Kontynuuj**.
 
 >[!Important]
 >*Aby zaakceptować te warunki, musisz mieć uprawnienia do działania w imieniu firmy.*
@@ -79,7 +79,7 @@ Po przeniesieniu informacji o koncie z przeglądarki CPP do Centrum partnerskieg
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Dodaj nowych wydawców do komercyjnego programu Marketplace
 
-Organizacja może mieć wielu wydawców skojarzonych z komercyjnym kontem witryny Marketplace. Istniejący użytkownik może dodać kolejnych wydawców po zalogowaniu się do Centrum partnerskiego, wybierając pozycję **Ustawienia** -> konta**wydawcy** -> **Dodaj**wydawcę.
+Organizacja może mieć wielu wydawców skojarzonych z komercyjnym kontem witryny Marketplace. Istniejący użytkownik może dodać kolejnych wydawców po zalogowaniu się do Centrum partnerskiego, wybierając pozycję **Ustawienia** -> konta**wydawcy** -> **Dodaj wydawcę**.
 
 >[!Note]
 >Przed dodaniem nowego wydawcy można przejrzeć istniejących wydawców, logując się do Centrum partnerskiego, a następnie wybierając pozycję **Ustawienia** -> konta**wydawcy** , aby wyświetlić listę istniejących wydawców.
@@ -88,7 +88,7 @@ Inny użytkownik z tej samej dzierżawy Azure Active Directory może dodać nowe
 
 1. Rozpocznij pracę z przepływem rejestracji w [centrum partnerskim firmy Microsoft](https://partner.microsoft.com/en-us/dashboard/account/v3/enrollment/introduction/azureisv).
 1. Wybierz pozycję **Zaloguj się przy użyciu konta służbowego** i wprowadź swój służbowy adres e-mail.
-1. Wybierz przycisk **Dodaj** wydawcę.
+1. Wybierz przycisk **Dodaj wydawcę** .
 1. Wybierz identyfikator MPN, który chcesz skojarzyć z wydawcą.
 1. Zaktualizuj **szczegóły wydawcy** w formularzu. <br>
 
@@ -96,7 +96,7 @@ Inny użytkownik z tej samej dzierżawy Azure Active Directory może dodać nowe
    1. **PublisherID**: Identyfikator używany przez centrum partnerskie do unikatowego identyfikowania wydawcy. Wartość domyślna dla tego pola jest mapowana na istniejący i unikatowy `PublisherID` w systemie, którego nie można ponownie użyć, a tym samym pole należy zaktualizować. <br>
    1. **Informacje kontaktowe**: W razie potrzeby Zaktualizuj informacje kontaktowe.
 
-1. Po zakończeniu procesu możesz zarządzać nowo utworzonym wydawcą, przechodząc do komercyjnego programu w **portalu Marketplace** wymienionym w menu nawigacji po lewej stronie. Jeśli nie widzisz komercyjnego programu **Marketplace** , Odśwież stronę.  Nowy Wydawca zostanie wyświetlony na liście **wydawcy** .
+1. Po zakończeniu procesu możesz zarządzać nowo utworzonym wydawcą, przechodząc do **komercyjnego programu w portalu Marketplace** wymienionym w menu nawigacji po lewej stronie. Jeśli nie widzisz **komercyjnego programu Marketplace** , Odśwież stronę.  Nowy Wydawca zostanie wyświetlony na liście **wydawcy** .
 
 ## <a name="next-steps"></a>Następne kroki
 

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
-ms.openlocfilehash: fd60923351970dfe5aa5705a0508dbd39941ef58
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 23c54a69f709ec97d895ed5965841e43ebdc560c
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68254347"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306562"
 ---
 # <a name="specify-a-face-recognition-model"></a>Określanie modelu rozpoznawania twarzy
 
@@ -98,16 +98,17 @@ Interfejs API [Sprawdzanie kroju] sprawdza, czy dwie twarze należą do tej same
 Jeśli chcesz porównać wyniki modeli _recognition_01_ i _recognition_02_ z danymi, musisz wykonać następujące działania:
 
 1. Utwórz odpowiednio dwie **osoby**z _recognition_01_ i _recognition_02_ .
-1. Użyj danych obrazu w celu wykrycia twarzy i zarejestrowania ich dla **osób**trzecich dla tych dwóch **osób**i wyzwolenie procesu szkolenia z interfejsem API uczenia się w ramach usługi [Element PersonGroup — uczenie] .
-1. Przetestuj ze [] znakiem na platformie i porównujej wyniki.
+1. Użyj danych obrazu w celu wykrycia twarzy i zarejestrowania ich dla **osób**trzecich dla tych dwóch **osób**i wyzwolenie procesu szkolenia z interfejsem API [Element PersonGroup — uczenie] się w ramach usługi Person.
+1. Przetestuj ze [Twarz — identyfikacja] iporównujej wyniki.
 
 Jeśli zwykle określono próg ufności (wartość z zakresu od zero do 1, która określa, jak pewność, że model musi być identyfikowany jako), może być konieczne użycie różnych progów dla różnych modeli. Próg dla jednego modelu nie powinien być współużytkowany z innym i nie musi dawać takich samych wyników.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule przedstawiono sposób określania modelu rozpoznawania, który ma być używany z różnymi interfejsami API usługi kroju. Następnie postępuj zgodnie z przewodnikiem Szybki Start, aby rozpocząć korzystanie z wykrywania czołowego.
 
-* [Wykrywanie twarzy na obrazie](../quickstarts/csharp-detect-sdk.md)
+* [Zestaw SDK platformy .NET](../Quickstarts/csharp-sdk.md)
+* [Zestaw SDK dla języka Python](../Quickstarts/python-sdk.md)
 
 [Wykrywanie kroju]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Głowa — Znajdź podobne]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237

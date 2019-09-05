@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
 ms.author: joanpo
-ms.openlocfilehash: f3d2439c4456c34e5c554a5399a77f19a954a9e3
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 4f3148a4d5bd0d39ccfcf7e92e80300a7e19effa
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70243089"
+ms.locfileid: "70307216"
 ---
 # <a name="use-powershell-to-monitor-the-usage-of-a-sent-data-share"></a>Monitorowanie użycia wysłanego udziału danych przy użyciu programu PowerShell
 
@@ -47,8 +47,8 @@ W tym skrypcie użyto następujących poleceń:
 
 | Polecenie | Uwagi |
 |---|---|
-| [New-AzDataShareTrigger](/powershell/module/az.resources/new-azdatasharetrigger) | Utwórz wyzwalacz migawki udziału. |
-| [Get-AzDataShareTrigger](/powershell/module/az.resources/get-azdatasharetrigger) | Pobiera ustawienia synchronizacji synchronizacji udziału. |
+| [New-AzDataShareTrigger](/powershell/module/az.datashare/new-azdatasharetrigger?view=azps-2.6.0) | Utwórz wyzwalacz migawki udziału. |
+| [Get-AzDataShareTrigger](/powershell/module/az.datashare/get-azdatasharesynchronizationsetting?view=azps-2.6.0) | Pobiera ustawienia synchronizacji synchronizacji udziału. |
 |||
 
 ## <a name="next-steps"></a>Następne kroki

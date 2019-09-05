@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7591cefddd6e7217c885293a2f5c878d7a82e158
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: aa81f181c8d062e5fd68b0fbb2445f5c37540889
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015916"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309568"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -114,7 +114,7 @@ Udziały muszą być udostępniane w 1 przyrostach GiB. Minimalny rozmiar to 100
 >
 > transfer danych przychodzących = 40 MiB/s + 0,04 * aprowizacji GiB
 
-Rozmiar udziału można zwiększyć w dowolnym momencie, ale może zostać zmniejszony dopiero po 24 godzinach od momentu ostatniego wzrostu. Po odczekaniu przez 24 godziny bez zwiększenia rozmiaru można zmniejszyć rozmiar udziału dowolną liczbę razy, aż do momentu jego zwiększenia. Zmiany skali operacji we/wy na sekundę będą obowiązywać w ciągu kilku minut od zmiany rozmiaru.
+Udostępniony rozmiar udziału jest określany przez przydział udziału. Przydział udziału można zwiększyć w dowolnym momencie, ale może zostać zmniejszony dopiero po 24 godzinach od momentu ostatniego wzrostu. Po odczekaniu przez 24 godziny bez zwiększenia limitu przydziału można zmniejszyć przydział udziału dowolną liczbę razy, aż do momentu jego zwiększenia. Zmiany skali operacji we/wy na sekundę będą obowiązywać w ciągu kilku minut od zmiany rozmiaru.
 
 Istnieje możliwość zmniejszenia rozmiaru udziału przystosowanego poniżej użytych GiB. Jeśli to zrobisz, nie utracisz danych, ale nadal będą naliczane opłaty za używany rozmiar i zostanie uzyskana wydajność (liczba operacji wejścia/wyjścia na sekundę, przepływność i liczba IOPS dla operacji wejścia/wyjścia na sekundę) udziału, który nie jest używany.
 
@@ -186,7 +186,7 @@ Zarówno region podstawowy, jak i pomocniczy zarządzają replikami w osobnych d
 
 Przed wybraniem opcji replikacji należy pamiętać o następujących kwestiach:
 
-* Magazyn strefy Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza) zapewnia wysoką dostępność wraz z maksymalną trwałością przez replikację danych synchronicznie w trzech strefach dostępności platformy Azure, a następnie replikowanie danych asynchronicznie do regionu pomocniczego. Możesz również włączyć dostęp do odczytu do regionu pomocniczego. GZRS zaprojektowano w celu udostępnienia co najmniej 99.99999999999999% (16 9) trwałości obiektów w danym roku. Aby uzyskać więcej informacji na temat GZRS, zobacz Geograficznie nadmiarowy [Magazyn w celu zapewnienia wysokiej dostępności i maksymalnej trwałości (wersja zapoznawcza)](../common/storage-redundancy-gzrs.md).
+* Magazyn strefy Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza) zapewnia wysoką dostępność wraz z maksymalną trwałością przez replikację danych synchronicznie w trzech strefach dostępności platformy Azure, a następnie replikowanie danych asynchronicznie do regionu pomocniczego. Możesz również włączyć dostęp do odczytu do regionu pomocniczego. GZRS zaprojektowano w celu udostępnienia co najmniej 99.99999999999999% (16 9) trwałości obiektów w danym roku. Aby uzyskać więcej informacji na temat GZRS, zobacz [Geograficznie nadmiarowy magazyn w celu zapewnienia wysokiej dostępności i maksymalnej trwałości (wersja zapoznawcza)](../common/storage-redundancy-gzrs.md).
 * Magazyn strefowo nadmiarowy (ZRS) zapewnia wysoką dostępność z replikacją synchroniczną i może być lepszym wyborem w przypadku niektórych scenariuszy niż GRS. Aby uzyskać więcej informacji na temat ZRS, zobacz [ZRS](../common/storage-redundancy-zrs.md).
 * Replikacja asynchroniczna polega na opóźnieniu od momentu zapisania danych w regionie podstawowym, gdy zostanie ono zreplikowane do regionu pomocniczego. W przypadku awarii regionalnej zmiany, które nie zostały jeszcze zreplikowane do regionu pomocniczego, mogą zostać utracone, jeśli nie można odzyskać tych danych z regionu podstawowego.
 * W programie GRS replika nie jest dostępna do odczytu lub zapisu, chyba że firma Microsoft zainicjuje przejście w tryb failover do regionu pomocniczego. W przypadku przejścia w tryb failover będziesz mieć dostęp do odczytu i zapisu do tych danych po zakończeniu pracy w trybie failover. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące odzyskiwania po awarii](../common/storage-disaster-recovery-guidance.md).
@@ -244,7 +244,7 @@ Aby sprawdzić stan rejestracji, możesz uruchomić następujące polecenie:
 Get-AzProviderFeature -FeatureName AllowLargeFileShares -ProviderNamespace Microsoft.Storage
 ```
 
-Zaktualizowanie stanu do zarejestrowanego może potrwać do 15minut. Po zarejestrowaniustanu powinno być możliwe korzystanie z tej funkcji.
+Zaktualizowanie stanu do **zarejestrowanego**może potrwać do 15 minut. Po **zarejestrowaniu**stanu powinno być możliwe korzystanie z tej funkcji.
 
 ### <a name="use-larger-file-shares"></a>Użyj większych udziałów plików
 

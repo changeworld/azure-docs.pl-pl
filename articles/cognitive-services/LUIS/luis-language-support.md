@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: f46757b97fb2dd38be36459e5aafb70f5b5a3bf6
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 3b1b31da68d821ff27fa30e75ec1522b9d4875c8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932711"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307433"
 ---
 # <a name="language-and-region-support-for-luis"></a>Obsługa języka i regionu dla usługi LUIS
 
@@ -38,6 +38,7 @@ Usługa LUIS rozumie wypowiedzi w następujących językach:
 | Francuski (Francja) |`fr-FR` |-| ✔ |✔ |✔|
 | Francuski (Kanada) |`fr-CA` |-|   -   |-|✔|
 | Niemiecki |`de-DE` |-| ✔ |✔ |✔|
+| Hindi | `hi-IN`|-|-|-|-|
 | Włoski |`it-IT` |-| ✔ |✔|✔|
 | *[Japoński](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|Tylko frazy kluczowe|
 | Koreański |`ko-KR` |-|   -   |-|Tylko frazy kluczowe|
@@ -53,7 +54,7 @@ Obsługa języka jest różny dla [ze wstępnie utworzonych jednostek](luis-refe
 
  - W `zh-cn` kultury, LUIS oczekuje zestawu zamiast zestawu znaków tradycyjnych uproszczone znaków chińskich.
  - Nazwy intencji, jednostki, funkcje i wyrażenia regularne mogą być znakami języka chińskiego lub litery rzymskie.
- - Zapoznaj się z dokumentacją prekompilowanych [domen](luis-reference-prebuilt-domains.md) , aby uzyskać informacje o tym, które `zh-cn` prekompilowane domeny są obsługiwane w kulturze.
+ - Zapoznaj się z dokumentacją [prekompilowanych domen](luis-reference-prebuilt-domains.md) , aby uzyskać informacje o tym, które `zh-cn` prekompilowane domeny są obsługiwane w kulturze.
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
 ### <a name="japanese-support-notes"></a>\* Informacje o pomocy technicznej japoński
@@ -88,6 +89,7 @@ Do przeprowadzenia uczenia maszynowego, usługa LUIS dzieli wypowiedź na [token
 |Francuski (fr-FR)|✔||||
 |Francuski (fr-CA)|✔||||
 |Niemiecki|||✔|✔|
+| Hindi |✔|-|-|-|-|
 |Włoski|✔||||
 |Japoński||||✔|
 |Koreański||✔||✔|

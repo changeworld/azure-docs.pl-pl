@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/12/2018
-ms.openlocfilehash: d932164f972169c93e368a41c09df039196341b5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: b6c04edb3fc843dfe1b9176dc06bf312473591c3
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141640"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376442"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Zmienne systemowe obsługiwane przez Azure Data Factory
 W tym artykule opisano zmienne systemowe obsługiwane przez Azure Data Factory. Te zmienne można używać w wyrażeniach podczas definiowania jednostek Data Factory.
@@ -39,8 +39,8 @@ Te zmienne systemowe mogą być przywoływane w dowolnym miejscu w kodzie JSON w
 
 | Nazwa zmiennej | Opis |
 | --- | --- |
-| @trigger().scheduledTime |Czas, w którym wyzwalacz został zaplanowany do wywołania uruchomienia potoku. Na przykład dla wyzwalacza, który jest uruchamiany co 5 minut, ta zmienna zwróci `2017-06-01T22:20:00Z` `2017-06-01T22:29:00Z` , `2017-06-01T22:25:00Z`odpowiednio.|
-| @trigger().startTime |Czas, po którym wyzwalacz jest uruchamiany w celu wywołania uruchomienia potoku. Na przykład dla wyzwalacza, który jest uruchamiany co 5 minut, ta zmienna może zwrócić coś podobnego `2017-06-01T22:25:00.7958577Z`do `2017-06-01T22:29:00.9935483Z` tego `2017-06-01T22:20:00.4061448Z`, odpowiednio. (Uwaga: Sygnatura czasowa jest domyślnie w formacie ISO 8601)|
+| @trigger().scheduledTime |Czas, w którym wyzwalacz został zaplanowany do wywołania uruchomienia potoku. Na przykład dla wyzwalacza, który jest uruchamiany co 5 minut, ta zmienna zwróci `2017-06-01T22:20:00Z` `2017-06-01T22:30:00Z` , `2017-06-01T22:25:00Z`odpowiednio.|
+| @trigger().startTime |Czas, po którym **wyzwalacz jest** uruchamiany w celu wywołania uruchomienia potoku. Na przykład dla wyzwalacza, który jest uruchamiany co 5 minut, ta zmienna może zwrócić coś podobnego `2017-06-01T22:25:00.7958577Z`do `2017-06-01T22:30:00.9935483Z` tego `2017-06-01T22:20:00.4061448Z`, odpowiednio. (Uwaga: Sygnatura czasowa jest domyślnie w formacie ISO 8601)|
 
 ## <a name="tumbling-window-trigger-scope"></a>Zakres wyzwalacza okna wirowania
 Te zmienne systemowe mogą być przywoływane w dowolnym miejscu w kodzie JSON wyzwalacza, jeśli wyzwalacz jest typu: "TumblingWindowTrigger."

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: f79fffe2117de77e4e44dcbbaa782b2ade81e04b
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b89f4d2264924983aac93fb266efd71e46bea6bf
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164186"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305227"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management z sieciami wirtualnymi
 Usługi Azure Virtual Networks (sieci wirtualnych) umożliwiają umieszczanie dowolnego z zasobów platformy Azure w sieci niezwiązanej z obsługą Internetu, do której można kontrolować dostęp. Te sieci mogą następnie być połączone z sieciami lokalnymi przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej na temat sieci wirtualnych platformy Azure, Zacznij od informacji poniżej: [Omówienie usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -25,7 +25,7 @@ Usługi Azure Virtual Networks (sieci wirtualnych) umożliwiają umieszczanie do
 Usługę Azure API Management można wdrożyć w sieci wirtualnej (VNET), dzięki czemu można uzyskać dostęp do usług zaplecza w sieci. Portal dla deweloperów i Brama interfejsu API można skonfigurować tak, aby były dostępne zarówno z Internetu, jak i tylko w obrębie sieci wirtualnej.
 
 > [!NOTE]
-> Usługa Azure API Management obsługuje zarówno klasyczny, jak i Azure Resource Manager sieci wirtualnych.
+> Adres URL dokumentu importowania interfejsu API musi być obsługiwany przez publicznie dostępny adres internetowy.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -123,7 +123,7 @@ Poniżej znajduje się lista typowych problemów z błędami konfiguracji, któr
 | * / *                        | Przychodzący            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Load Balancer infrastruktury platformy Azure                          | Wewnętrzna & zewnętrzna  |
 
 >[!IMPORTANT]
-> Porty, dla których *przeznaczenie* jest pogrubienie, są wymagane do pomyślnego wdrożenia usługi API Management. Zablokowanie innych portów spowoduje jednak obniżenie wydajności i monitorowanie uruchomionej usługi.
+> Porty, dla których *przeznaczenie* jest **pogrubienie** , są wymagane do pomyślnego wdrożenia usługi API Management. Zablokowanie innych portów spowoduje jednak obniżenie wydajności i monitorowanie uruchomionej usługi.
 
 + **Funkcja SSL**: Aby włączyć tworzenie i sprawdzanie poprawności łańcucha certyfikatu SSL, usługa API Management wymaga łączności sieciowej wychodzącej z ocsp.msocsp.com, mscrl.microsoft.com i crl.microsoft.com. Ta zależność nie jest wymagana, jeśli dowolny certyfikat przekazywany do API Management zawiera pełny łańcuch do katalogu głównego urzędu certyfikacji.
 

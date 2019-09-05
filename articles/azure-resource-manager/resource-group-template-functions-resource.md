@@ -4,14 +4,14 @@ description: Opisuje funkcje, aby użyć w szablonie usługi Azure Resource Mana
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/20/2019
+ms.date: 09/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 85462e78b3660546bad80ef69f332522bf015549
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 43369131700681de5523043f414129a2e4169f44
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194816"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306923"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla szablonów usługi Azure Resource Manager
 
@@ -61,7 +61,6 @@ W poniższej tabeli przedstawiono możliwe zastosowania list *.
 | Microsoft.CognitiveServices/accounts | [klucze list](/rest/api/cognitiveservices/accountmanagement/accounts/listkeys) |
 | Microsoft.ContainerRegistry/registries | [listBuildSourceUploadUrl](/rest/api/containerregistry/registries%20(tasks)/getbuildsourceuploadurl) |
 | Microsoft.ContainerRegistry/registries | [listCredentials](/rest/api/containerregistry/registries/listcredentials) |
-| Microsoft.ContainerRegistry/registries | [listPolicies](/rest/api/containerregistry/registries/listpolicies) |
 | Microsoft.ContainerRegistry/registries | [listUsages](/rest/api/containerregistry/registries/listusages) |
 | Microsoft. ContainerRegistry/rejestry/elementy webhook | [listEvents](/rest/api/containerregistry/webhooks/listevents) |
 | Microsoft.ContainerRegistry/registries/runs | [listLogSasUrl](/rest/api/containerregistry/runs/getlogsasurl) |
@@ -429,7 +428,7 @@ W przypadku konstruowania w pełni kwalifikowanego odwołania do zasobu kolejno�
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-resource-name}]**
 
-Przykład:
+Na przykład:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt`jest niepoprawny `Microsoft.Compute/virtualMachines/extensions/myVM/myExt`
 

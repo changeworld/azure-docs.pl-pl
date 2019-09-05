@@ -4,15 +4,15 @@ description: Opisuje sposób przygotowania do oceny i migracji lokalnych maszyn 
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/11/2019
+ms.date: 09/04/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5bd4926494e13c1dd0cfb6283292ade967471238
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 3b623675343d63385213091b66e220c5358c6437
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013432"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383324"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>Przygotowywanie maszyn wirtualnych VMware na potrzeby oceny i migracji na platformę Azure
 
@@ -47,7 +47,7 @@ Wymagane są następujące uprawnienia platformy Azure:
 
 1. W Azure Portal Otwórz subskrypcję i wybierz pozycję **Kontrola dostępu (IAM)** .
 2. W obszarze **Sprawdź dostęp**Znajdź odpowiednie konto i kliknij je, aby wyświetlić uprawnienia.
-3. Należy mieć uprawnienia współautora lub **właściciela** .
+3. Należy mieć uprawnienia **współautora** lub **właściciela** .
     - Jeśli właśnie utworzono bezpłatne konto platformy Azure, jesteś właścicielem subskrypcji.
     - Jeśli nie jesteś właścicielem subskrypcji, Pracuj z właścicielem, aby przypisać rolę.
 
@@ -93,8 +93,8 @@ Przypisz uprawnienia do przypisywania ról do grupy zasobów, w której znajduje
 1. W grupie zasobów w Azure Portal wybierz pozycję **Kontrola dostępu (IAM)** .
 2. W obszarze **Sprawdź dostęp**Znajdź odpowiednie konto i kliknij je, aby wyświetlić uprawnienia.
 
-    - Aby uruchomić ocenę serwera, uprawnienia współautora są wystarczające.
-    - Aby uruchomić migrację serwera bez agenta, należy mieć uprawnienia **właściciela** ( lub współautora i **administrator dostępu użytkowników**).
+    - Aby uruchomić ocenę serwera, uprawnienia **współautora** są wystarczające.
+    - Aby uruchomić migrację serwera bez agenta, należy mieć uprawnienia **właściciela** (lub **współautora** i **administrator dostępu użytkowników**).
 
 3. Jeśli nie masz wymaganych uprawnień, poproś ich od właściciela grupy zasobów. 
 

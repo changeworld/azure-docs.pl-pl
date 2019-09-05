@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 25751db785bf5d0b67195d1e1db660c0b9b5bf4e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d4d2a843248985c4fe17bf5401b261862d71fecf
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100946"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383045"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Zarządzaj IoT Central z Azure Portal
 
@@ -40,6 +40,9 @@ Następnie wybierz pozycję **Utwórz**.
 ![Portal zarządzania: Zasób IoT Central](media/howto-manage-iot-central-from-portal/image0c1.png)
 
 Wypełnij wszystkie pola w formularzu. Ten formularz jest podobny do formularza wypełnianego, aby utworzyć aplikacje w witrynie sieci Web programu [Azure IoT Central Application Manager](https://aka.ms/iotcentral) . Aby uzyskać więcej informacji, zobacz [Tworzenie aplikacji IoT Central](quick-deploy-iot-central.md) — Szybki Start.
+
+> [!NOTE]
+> Szablon **aplikacji w wersji zapoznawczej** jest obecnie dostępny tylko w regionach **Europy Północnej** i **środkowe stany USA** .
 
 ![Portal zarządzania: Tworzenie zasobu IoT Central](media/howto-manage-iot-central-from-portal/image1a.png)  
 

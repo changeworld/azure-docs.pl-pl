@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: c993e465bc439ff52cba3241dbff64b7655d1f12
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: f7d205920704ce8aedf3b2e3c07bd429b3c64964
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849175"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375346"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Często zadawane pytania dotyczące zapory aplikacji sieci Web platformy Azure
 
@@ -53,12 +53,6 @@ Wdrożenie zasad WAF globalnie zwykle trwa około 5 minut i często kończy się
 
 Po zintegrowaniu z usługą front-drzwi WAF jest zasobem globalnym. Ta sama konfiguracja ma zastosowanie do wszystkich miejsc z przodu.
  
-## <a name="how-do-i-limit-access-to-my-back-end-to-be-from-front-door-only"></a>Jak mogę ograniczyć dostęp do mojego zaplecza tylko z przodu?
-
-Możesz skonfigurować listę Access Control IP w zapleczu, aby zezwolić tylko na wychodzące zakresy adresów IP z przodu i odmówić dostępu z Internetu. Tagi usług są obsługiwane, aby można było używać ich w sieci wirtualnej. Ponadto można sprawdzić, czy pole nagłówka HTTP X-Forward-host jest prawidłowe dla aplikacji sieci Web.
-
-
-
 
 ## <a name="which-azure-waf-options-should-i-choose"></a>Które opcje usługi Azure WAF należy wybrać?
 
@@ -73,7 +67,10 @@ Obecnie reguły ModSec KSR 2.2.9 i KSR 3,0 są obsługiwane tylko przez program 
 
 Ogólnie dystrybuowane na krawędziach sieci platformy Azure, drzwi frontonu platformy Azure mogą wchłonąć i geograficznie izolować duże ataki. Można utworzyć niestandardowe zasady WAF, aby automatycznie blokować i ograniczać liczbę ataków http (s), które mają znane sygnatury. Więcej informacji można DDoS Protection włączyć w sieci wirtualnej, w której zostaną wdrożone zaplecza. Klienci w Azure DDoS Protection standard otrzymują dodatkowe korzyści, w tym ochronę kosztów, gwarancję SLA i dostęp do ekspertów z zespołu szybkiego reagowania na DDoS w celu uzyskania natychmiastowej pomocy w trakcie ataku. 
 
-## <a name="next-steps"></a>Kolejne kroki
+Zalecamy zablokowanie frontonu w środowisku produkcyjnym, aby zmniejszyć obszar ataków DDoS. Zobacz [Jak mogę Zablokuj dostęp do mojego zaplecza tylko na moje drzwi platformy Azure?](https://docs.microsoft.com/en-us/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)
+
+
+## <a name="next-steps"></a>Następne kroki
 
 - Dowiedz się więcej o [zaporze aplikacji sieci Web platformy Azure](waf-overview.md).
 - Dowiedz się więcej na temat [zewnętrznych drzwi platformy Azure](front-door-overview.md).

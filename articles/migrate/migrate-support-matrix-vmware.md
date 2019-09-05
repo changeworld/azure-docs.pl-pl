@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 7fe2c39871f1cd512da7f9a2c5146e79abbe74a6
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ecceb1177d7b7015afc92f10284a9372d0cfb4a2
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279597"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375316"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Macierz obsługi dotycząca oceny i migracji środowiska VMware
 
@@ -73,7 +73,7 @@ Azure Migrate uruchamia lekkie urządzenie w celu odnalezienia maszyn wirtualnyc
 
 **Pomoc techniczna** | **Szczegóły**
 --- | ---
-**Wdrażanie urządzenia** | Urządzenie jest wdrażane jako maszyna wirtualna VMware. Musisz mieć wystarczającą ilość zasobów na vCenter Server, aby przydzielić maszynę wirtualną z 32 GB pamięci RAM, 8 procesorów wirtualnych vCPU i zewnętrznym przełącznikiem wirtualnym.<br/><br/> Urządzenie wymaga dostępu do Internetu, bezpośrednio lub za pomocą serwera proxy.<br/> Maszynę wirtualną urządzenia należy wdrożyć na hoście ESXi z systemem w wersji 5,5 lub nowszej. 
+**Wdrażanie urządzenia** | Urządzenie jest wdrażane jako maszyna wirtualna VMware. Musisz mieć wystarczającą ilość zasobów na vCenter Server, aby przydzielić maszynę wirtualną z 32 GB pamięci RAM, 8 procesorów wirtualnych vCPU, około 80 GB miejsca na dysku i zewnętrznym przełączniku wirtualnym.<br/><br/> Urządzenie wymaga dostępu do Internetu, bezpośrednio lub za pomocą serwera proxy.<br/> Maszynę wirtualną urządzenia należy wdrożyć na hoście ESXi z systemem w wersji 5,5 lub nowszej. 
 **Projekt Azure Migrate** | Urządzenie może być skojarzone z pojedynczym projektem. <br/> Dowolna liczba urządzeń może być skojarzona z pojedynczym projektem.<br/> Można ocenić do 35 000 maszyn wirtualnych w projekcie.
 **Odnajdowa** | Urządzenie może wykryć do 10 000 maszyn wirtualnych VMware na vCenter Server.<br/> Urządzenie może połączyć się z pojedynczym vCenter Server.
 **Grupa oceny** | Można dodać do 35 000 maszyn w jednej grupie.

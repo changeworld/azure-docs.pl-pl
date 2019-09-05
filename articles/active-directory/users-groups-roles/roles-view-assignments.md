@@ -8,23 +8,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 09/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf45d45481712e30d40bacec9a3c4d80d1ed56b6
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 7e21bd2b20ac48d3719e41b1e93a82cbe5a864b7
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707554"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382561"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Wyświetlanie przypisań ról niestandardowych w Azure Active Directory
 
-W tym artykule opisano sposób wyświetlania ról niestandardowych przypisanych w Azure Active Directory (Azure AD). W Azure Active Directory (Azure AD) role można przypisywać na poziomie katalogu lub z zakresem pojedynczej aplikacji. Przypisania ról w zakresie katalogu są dodawane do listy pojedynczych przypisań roli aplikacji, ale przypisania ról w zakresie jednego aplikacji nie są dodawane do listy przypisań na poziomie katalogu.
+W tym artykule opisano sposób wyświetlania ról niestandardowych przypisanych w Azure Active Directory (Azure AD). W Azure Active Directory (Azure AD) role można przypisywać w zakresie całej organizacji lub z zakresem pojedynczej aplikacji.
 
-## <a name="view-the-assignments-of-a-role-with-directory-scope-using-the-azure-ad-portal"></a>Wyświetlanie przypisań roli z zakresem katalogu przy użyciu portalu usługi Azure AD
+- Przypisania ról w zakresie całej organizacji są dodawane do i mogą być widoczne na liście przypisań roli pojedynczej aplikacji.
+- Przypisania ról w ramach pojedynczego zakresu aplikacji nie są dodawane do i nie mogą być widoczne na liście przypisań zakresów w całej organizacji.
+
+## <a name="view-role-assignments-in-the-azure-portal"></a>Wyświetlanie przypisań ról w Azure Portal
+
+Ta procedura opisuje Wyświetlanie przypisań roli z zakresem całej organizacji.
 
 1. Zaloguj się do  [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com)przy użyciu uprawnień administrator ról uprzywilejowanych lub Administrator globalny w organizacji usługi Azure AD.
 1. Wybierz pozycję **Azure Active Directory**, wybierz pozycję **role i Administratorzy**, a następnie wybierz rolę, aby ją otworzyć i wyświetlić jej właściwości.
@@ -32,9 +37,9 @@ W tym artykule opisano sposób wyświetlania ról niestandardowych przypisanych 
 
     ![Wyświetlanie przypisań ról i uprawnień po otwarciu roli z listy](./media/roles-view-assignments/role-assignments.png)
 
-## <a name="view-the-assignments-of-a-role-with-directory-scope-using-azure-ad-powershell"></a>Wyświetlanie przypisań roli z zakresem katalogu przy użyciu programu Azure AD PowerShell
+## <a name="view-role-assignments-using-azure-ad-powershell"></a>Wyświetlanie przypisań ról przy użyciu programu Azure AD PowerShell
 
-Możesz zautomatyzować sposób przypisywania ról administratora usługi Azure AD użytkownikom przy użyciu Azure PowerShell. W tym artykule jest wykorzystywany moduł [Azure Active Directory PowerShell w wersji 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) .
+W tej sekcji opisano Wyświetlanie przypisań roli z zakresem całej organizacji. W tym artykule jest wykorzystywany moduł [Azure Active Directory PowerShell w wersji 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) . Aby wyświetlić przypisania zakresów pojedynczych aplikacji za pomocą programu PowerShell, można użyć poleceń cmdlet w [przypisywać role niestandardowe przy użyciu programu PowerShell](roles-assign-powershell.md).
 
 ### <a name="prepare-powershell"></a>Przygotowywanie programu PowerShell
 
@@ -71,7 +76,9 @@ $role = Get-AzureADDirectoryRole -ObjectId "5b3fe201-fa8b-4144-b6f1-875829ff7543
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
 ```
 
-## <a name="view-the-assignments-of-a-role-with-directory-scope-using-microsoft-graph-api"></a>Wyświetlanie przypisań roli z zakresem katalogu przy użyciu interfejsu API Microsoft Graph
+## <a name="view-role-assignments-using-microsoft-graph-api"></a>Wyświetlanie przypisań ról przy użyciu interfejsu API Microsoft Graph
+
+W tej sekcji opisano Wyświetlanie przypisań roli z zakresem całej organizacji.  Aby wyświetlić przypisania zakresów pojedynczych aplikacji przy użyciu interfejs API programu Graph, można użyć operacji w [przypisaniu ról niestandardowych z interfejs API programu Graph](roles-assign-graph.md).
 
 Żądanie HTTP, aby uzyskać przypisanie roli dla danej definicji roli.
 
@@ -93,22 +100,24 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="view-the-assignments-of-a-role-with-single-application-scope-using-the-azure-ad-portal-preview"></a>Wyświetlanie przypisań roli z zakresem pojedynczej aplikacji za pomocą portalu usługi Azure AD (wersja zapoznawcza)
+## <a name="view-assignments-of-a-role-with-single-application-scope-preview"></a>Wyświetlanie przypisań roli z zakresem pojedynczej aplikacji (wersja zapoznawcza)
+
+W tej sekcji opisano Wyświetlanie przypisań roli z zakresem pojedynczej aplikacji.
 
 1. Zaloguj się do  [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com)przy użyciu uprawnień administrator ról uprzywilejowanych lub Administrator globalny w organizacji usługi Azure AD.
-1. Wybierz pozycję Azure Active Directory, wybierz pozycję **rejestracje aplikacji**, a następnie wybierz pozycję Rejestracja aplikacji, aby wyświetlić jej właściwości. Może być konieczne wybranie opcji **wszystkie aplikacje** , aby wyświetlić pełną listę rejestracji aplikacji w organizacji usługi Azure AD.
+1. Wybierz pozycję **rejestracje aplikacji**, a następnie wybierz pozycję Rejestracja aplikacji, aby wyświetlić jej właściwości. Może być konieczne wybranie opcji **wszystkie aplikacje** , aby wyświetlić pełną listę rejestracji aplikacji w organizacji usługi Azure AD.
 
     ![Tworzenie lub edytowanie rejestracji aplikacji na stronie Rejestracje aplikacji](./media/roles-create-custom/appreg-all-apps.png)
 
-1. Wybierz **role i Administratorzy**, a następnie wybierz rolę, aby wyświetlić jej właściwości.
+1. W obszarze Rejestracja aplikacji wybierz pozycję **role i Administratorzy**, a następnie wybierz rolę, aby wyświetlić jej właściwości.
 
     ![Wyświetlanie przypisań ról rejestracji aplikacji ze strony Rejestracje aplikacji](./media/roles-view-assignments/appreg-assignments.png)
 
-1. Wybierz pozycję **przypisania** , aby wyświetlić przypisania dla tej roli.
+1. Wybierz pozycję **przypisania** , aby wyświetlić przypisania dla tej roli. Otwarcie widoku przypisania w ramach rejestracji aplikacji powoduje wyświetlenie przypisań objętych zakresem tego zasobu usługi Azure AD.
 
     ![Wyświetlanie przypisań ról rejestracji aplikacji z właściwości rejestracji aplikacji](./media/roles-view-assignments/appreg-assignments-2.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Podziel się z nami na [forum ról administracyjnych usługi Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 * Aby uzyskać więcej informacji o rolach i przypisaniu roli administratora, zobacz [Przypisywanie ról administratorów](directory-assign-admin-roles.md).

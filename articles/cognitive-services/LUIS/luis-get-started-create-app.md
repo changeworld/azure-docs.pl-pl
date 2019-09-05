@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 08/25/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 34978d552b2a5002906b65c06e0c8ad76f58761b
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 1704b62cae6375d376fc43fb7a2940cd9c717072
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258134"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382504"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Szybki start: używanie wstępnie utworzonej aplikacji do automatyzacji domu
 
@@ -65,7 +65,7 @@ Wybierz opcję **Intents** (Intencje) w okienku nawigacji po lewej stronie, aby 
 
 Wybierz intencję **HomeAutomation.TurnOff**. Możesz zobaczyć, że intencja zawiera listę wypowiedzi, które są oznaczone przy użyciu jednostek.
 
-[![Zrzut ekranu przedstawiający intencję HomeAutomation.TurnOff](media/luis-quickstart-new-app/home-automation-turnon.png "Zrzut ekranu przedstawiający intencję HomeAutomation.TurnOff")](media/luis-quickstart-new-app/home-automation-turnon.png)
+[![Zrzut ekranu przedstawiający intencję HomeAutomation.TurnOff](media/luis-quickstart-new-app/home-automation-turnoff.png "Zrzut ekranu przedstawiający intencję HomeAutomation.TurnOff")](media/luis-quickstart-new-app/home-automation-turnoff.png)
 
 ## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
 
@@ -80,10 +80,14 @@ Turn off the lights
 
 Sprawdź, czy intencja o najwyższym wyniku odpowiada oczekiwanej intencji dla każdej wypowiedzi testowej.
 
-W tym przykładzie wypowiedź „Turn off the lights” (Wyłącz światło) jest prawidłowo identyfikowana jako najwyżej oceniana intencja „HomeAutomation.TurnOff”.
+W tym przykładzie `Turn off the lights` jest poprawnie zidentyfikowany jako najpopularniejszy cel oceniania **HomeAutomation.** .
 
 [![Zrzut ekranu przedstawiający panel Test z wyróżnioną wypowiedzią](media/luis-quickstart-new-app/test.png "Zrzut ekranu przedstawiający panel Test z wyróżnioną wypowiedzią")](media/luis-quickstart-new-app/test.png)
 
+
+Wybierz pozycję **Sprawdź** , aby przejrzeć więcej informacji na temat przewidywania.
+
+![Zrzut ekranu przedstawiający Panel testowy z wyróżnioną pozycją wypowiedź](media/luis-quickstart-new-app/review-test-inspection-pane-in-portal.png)
 
 Ponownie wybierz opcję **Test** (Testuj), aby zwinąć okienko testowania. 
 
@@ -93,14 +97,134 @@ Ponownie wybierz opcję **Test** (Testuj), aby zwinąć okienko testowania.
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>Wysyłanie zapytania do punktu końcowego za pomocą różnych wypowiedzi
+## <a name="query-the-v2-api-prediction-endpoint"></a>Wysyłanie zapytań do punktu końcowego przewidywania interfejsu API v2
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
-2. Przejdź na koniec tego adresu URL i wprowadź ciąg `turn off the living room light`, a następnie naciśnij klawisz Enter. W przeglądarce zostanie wyświetlona odpowiedź punktu końcowego HTTP w formacie JSON.
+1. Przejdź na koniec tego adresu URL i wprowadź ciąg `turn off the living room light`, a następnie naciśnij klawisz Enter. W przeglądarce zostanie wyświetlona wersja **interfejsu API v2** w punkcie końcowym protokołu HTTP.
 
-    [![Zrzut ekranu przedstawiający przeglądarkę z wynikiem danych JSON zdarzeń wykrycia intencji TurnOff](media/luis-quickstart-new-app/turn-off-living-room.png "Zrzut ekranu przedstawiający przeglądarkę z wynikiem danych JSON zdarzeń wykrycia intencji TurnOff")](media/luis-quickstart-new-app/turn-off-living-room.png)
+    ```json
+    {
+      "query": "turn off the living room light",
+      "topScoringIntent": {
+        "intent": "HomeAutomation.TurnOff",
+        "score": 0.9753089
+      },
+      "intents": [
+        {
+          "intent": "HomeAutomation.TurnOff",
+          "score": 0.9753089
+        },
+        {
+          "intent": "HomeAutomation.QueryState",
+          "score": 0.01027893
+        },
+        {
+          "intent": "HomeAutomation.TurnUp",
+          "score": 0.006881481
+        },
+        {
+          "intent": "HomeAutomation.SetDevice",
+          "score": 0.006786365
+        },
+        {
+          "intent": "HomeAutomation.TurnDown",
+          "score": 0.005145787
+        },
+        {
+          "intent": "HomeAutomation.TurnOn",
+          "score": 0.004114749
+        },
+        {
+          "intent": "None",
+          "score": 0.000598924
+        }
+      ],
+      "entities": [
+        {
+          "entity": "living room",
+          "type": "HomeAutomation.Location",
+          "startIndex": 13,
+          "endIndex": 23,
+          "score": 0.94558233
+        },
+        {
+          "entity": "living room light",
+          "type": "HomeAutomation.DeviceName",
+          "startIndex": 13,
+          "endIndex": 29,
+          "resolution": {
+            "values": [
+              "living room light"
+            ]
+          }
+        },
+        {
+          "entity": "light",
+          "type": "HomeAutomation.DeviceType",
+          "startIndex": 25,
+          "endIndex": 29,
+          "resolution": {
+            "values": [
+              "light"
+            ]
+          }
+        }
+      ]
+    }
+    ```
     
+## <a name="query-the-v3-api-prediction-endpoint"></a>Zbadaj punkt końcowy przewidywania interfejsu API v3
+
+W przypadku [zapytania interfejsu API v3](luis-migration-api-v3.md)w przeglądarce Zmień żądanie https metody get, zmieniając wartości w nawiasy kątowe dla własnych wartości. 
+
+**Adres URL v2 z metodą Get**:
+
+Region\<https://>. API. poznawcze. Microsoft. com/Luis/**v 2.0**/Apps/\<AppID >? verbosed = true & Subscription-Key =\<YOUR_KEY > &**q =\<User-wypowiedź-Text >**
+
+**Adres URL v3 z metodą Get**:
+
+Region\<https://>. API. poznawcze. Microsoft. com/Luis/**v 3.0 — wersja zapoznawcza**\</Apps/AppID >/**gniazd**/**produkcyjnych**/ **? verbose**= true & Subscription-Key =\<YOUR_KEY > &**Query =\<User-wypowiedź-Text >**
+
+W przeglądarce jest wyświetlana wersja **interfejsu API v3** odpowiedzi w punkcie końcowym protokołu HTTP.
+
+```json
+{
+    "query": "turn off the lights",
+    "prediction": {
+        "normalizedQuery": "turn off the lights",
+        "topIntent": "HomeAutomation.TurnOff",
+        "intents": {
+            "HomeAutomation.TurnOff": {
+                "score": 0.99649024
+            }
+        },
+        "entities": {
+            "HomeAutomation.DeviceType": [
+                [
+                    "light"
+                ]
+            ],
+            "$instance": {
+                "HomeAutomation.DeviceType": [
+                    {
+                        "type": "HomeAutomation.DeviceType",
+                        "text": "lights",
+                        "startIndex": 13,
+                        "length": 6,
+                        "modelTypeId": 5,
+                        "modelType": "List Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]

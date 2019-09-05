@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 07/13/2019
-ms.openlocfilehash: 44ac290a471fd0099b6589f84fea604249818432
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.date: 09/05/2019
+ms.openlocfilehash: 9ea070ea86a4d0d5e7101e82450235a59c936d2d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868612"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376404"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Stan scenariuszy migracji obsługiwanych przez Azure Database Migration Service
 
@@ -28,7 +28,7 @@ Za pomocą Azure Database Migration Service można przeprowadzić migrację w tr
 
 ## <a name="migration-scenario-status"></a>Stan scenariusza migracji
 
-Stan scenariuszy migracji obsługiwanych przez Azure Database Migration Service różni się w zależności od czasu. Ogólnie rzecz biorąc, scenariusze są najpierw udostępniane w **prywatnej wersji**zapoznawczej. Uczestnictwo w prywatnej wersji zapoznawczej wymaga od klientów przedstawienia nominacji za pośrednictwem [witryny DMS Preview](https://aka.ms/dms-preview). Po prywatnej wersji zapoznawczej stan scenariusza zmieni się na publiczną wersję zapoznawczą. Azure Database Migration Service użytkownicy mogą wypróbować scenariusze migracji w publicznej wersji zapoznawczej bezpośrednio z poziomu interfejsu użytkownika. Rejestracja nie jest wymagana.  Jednak scenariusze migracji w publicznej wersji zapoznawczej mogą nie być dostępne we wszystkich regionach i mogą zostać wprowadzone dodatkowe zmiany przed ostateczną wersją. Po publicznej wersji zapoznawczej stan scenariusza zmieni się na **ogólnie dostępny**. Ogólna dostępność (GA) to końcowy stan wersji, a funkcje są kompletne i dostępne dla wszystkich użytkowników.
+Stan scenariuszy migracji obsługiwanych przez Azure Database Migration Service różni się w zależności od czasu. Ogólnie rzecz biorąc, scenariusze są najpierw udostępniane w **prywatnej wersji zapoznawczej**. Uczestnictwo w prywatnej wersji zapoznawczej wymaga od klientów przedstawienia nominacji za pośrednictwem [witryny DMS Preview](https://aka.ms/dms-preview). Po prywatnej wersji zapoznawczej stan scenariusza zmieni się na **publiczną wersję zapoznawczą**. Azure Database Migration Service użytkownicy mogą wypróbować scenariusze migracji w publicznej wersji zapoznawczej bezpośrednio z poziomu interfejsu użytkownika. Rejestracja nie jest wymagana.  Jednak scenariusze migracji w publicznej wersji zapoznawczej mogą nie być dostępne we wszystkich regionach i mogą zostać wprowadzone dodatkowe zmiany przed ostateczną wersją. Po publicznej wersji zapoznawczej stan scenariusza zmieni się na **ogólnie dostępny**. Ogólna dostępność (GA) to końcowy stan wersji, a funkcje są kompletne i dostępne dla wszystkich użytkowników.
 
 ## <a name="migration-scenario-support"></a>Obsługa scenariusza migracji
 
@@ -38,21 +38,21 @@ W poniższych tabelach przedstawiono, które scenariusze migracji są obsługiwa
 > Jeśli opisany poniżej scenariusz nie jest wyświetlany w interfejsie użytkownika, skontaktuj się z aliasem [usługi Azure Database migrations](mailto:AskAzureDatabaseMigrations@service.microsoft.com) , aby uzyskać dodatkowe informacje.
 
 > [!IMPORTANT]
-> Aby wyświetlić wszystkie scenariusze aktualnie obsługiwane przez Azure Database Migration Service w prywatnej wersji zapoznawczej, zobacz [witrynę DMS w wersji](https://aka.ms/dms-preview)zapoznawczej.
+> Aby wyświetlić wszystkie scenariusze aktualnie obsługiwane przez Azure Database Migration Service w prywatnej wersji zapoznawczej, zobacz [witrynę DMS w wersji zapoznawczej](https://aka.ms/dms-preview).
 
 ### <a name="offline-one-time-migration-support"></a>Obsługa migracji w trybie offline (jednorazowej)
 
 W poniższej tabeli przedstawiono Azure Database Migration Service obsługi migracji w trybie offline.
 
-| Cel  | Source | Pomoc techniczna | Stan |
+| Cel  | Source | Pomoc techniczna | State |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Baza danych SQL Azure** | Oprogramowanie SQL Server | ✔ | Ogólna dostępność |
+| **Baza danych SQL Azure** | SQL Server | ✔ | Ogólna dostępność |
 |   | SQL RDS |  |  |
 |   | Oracle |  |  |
-| **Baza danych Azure SQL** | Oprogramowanie SQL Server | ✔ | Ogólna dostępność |
+| **Baza danych Azure SQL** | SQL Server | ✔ | Ogólna dostępność |
 |   | SQL RDS |  |  |
 |   | Oracle |  |   |
-| **Maszyna wirtualna Azure SQL** | Oprogramowanie SQL Server | ✔ | Ogólna dostępność |
+| **Maszyna wirtualna Azure SQL** | SQL Server | ✔ | Ogólna dostępność |
 |   | Oracle |   |   |
 | **Usługi Azure Cosmos DB** | MongoDB | ✔ | Ogólna dostępność |
 | **Azure DB dla MySQL** | MySQL |   |   |
@@ -64,23 +64,23 @@ W poniższej tabeli przedstawiono Azure Database Migration Service obsługi migr
 
 W poniższej tabeli przedstawiono Azure Database Migration Service obsługi migracji w trybie online.
 
-| Cel  | Source | Pomoc techniczna | Stan |
+| Cel  | Source | Pomoc techniczna | State |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Baza danych SQL Azure** | Oprogramowanie SQL Server | ✔ | Ogólna dostępność |
+| **Baza danych SQL Azure** | SQL Server | ✔ | Ogólna dostępność |
 |   | SQL RDS | ✔ | Ogólna dostępność |
 |   | Oracle |  |  |
-| **Baza danych Azure SQL** | Oprogramowanie SQL Server | ✔ | Ogólna dostępność |
+| **Baza danych Azure SQL** | SQL Server | ✔ | Ogólna dostępność |
 |   | SQL RDS | ✔ | Ogólna dostępność |
 |   | Oracle | ✔ | Prywatna wersja zapoznawcza |
-| **Maszyna wirtualna Azure SQL** | Oprogramowanie SQL Server |   |   |
+| **Maszyna wirtualna Azure SQL** | SQL Server |   |   |
 |   | Oracle  |  |  |
 | **Usługi Azure Cosmos DB** | MongoDB | ✔ | Ogólna dostępność |
 | **Azure DB dla MySQL** | MySQL | ✔ | Ogólna dostępność |
 |   | RDS MySQL | ✔ | Ogólna dostępność |
 | **Azure DB dla PostgreSQL** | PostgreSQL | ✔ | Ogólna dostępność |
 |   | PostgreSQL RDS | ✔ | Ogólna dostępność |
-|   | Oracle | ✔ | Prywatna wersja zapoznawcza |
+|   | Oracle | ✔ | Publiczna wersja zapoznawcza |
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby zapoznać się z omówieniem Azure Database Migration Service i regionalnej dostępności, zobacz artykuł [co to jest Azure Database Migration Service](dms-overview.md).

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 4864e2c040ad6771ad187269de43d5978fc6324f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 8a06573e6bcb2d5a6c6c97ad19e168f9c71aaa13
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876052"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308219"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Podręcznik publikowania dla różnych typów ofert
 
@@ -34,7 +34,7 @@ Typy ofert w witrynie Azure Marketplace są wymienione w poniższej tabeli.
 | **Typ oferty**    | **Opis**  |
 | :------------------- | :-------------------|
 | [**Maszyny wirtualne**](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) | Podczas wdrażania urządzenia wirtualnego w ramach subskrypcji skojarzonej z klientem Użyj typu oferty maszyny wirtualnej. |
-| [**Szablony rozwiązań**](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates) | Użyj typu oferty szablon rozwiązania, gdy rozwiązanie wymaga dodatkowego wdrożenia i automatyzacji konfiguracji poza prostą maszyną wirtualną. |
+| [**Szablony rozwiązań**](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates) | Użyj szablonu rozwiązania (znanego również jako aplikacja platformy Azure), gdy rozwiązanie wymaga dodatkowego wdrożenia i automatyzacji konfiguracji poza prostą maszyną wirtualną. Szablony rozwiązań mogą korzystać z wielu różnych rodzajów zasobów platformy Azure, w tym między innymi maszyn wirtualnych.  |
 | [**Aplikacje zarządzane**](https://docs.microsoft.com/azure/marketplace/marketplace-managed-apps) | Użyj usługi Azure App: Managed App — typ oferty, gdy wymagane są następujące warunki: <br> <ul> <li> Rozwiązanie oparte na subskrypcji można wdrożyć dla klienta przy użyciu maszyny wirtualnej lub całego rozwiązania opartego na IaaS. </li> <li>Ty lub Twój klient wymaga, aby rozwiązanie było zarządzane przez partnera. </li> <ul> |
 | [**Aplikacje SaaS**](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) | Użyj typu oferty aplikacji SaaS, aby umożliwić klientowi kupowanie rozwiązań technicznych opartych na SaaS, w ramach subskrypcji. |
 | [**Oferty kontenerów**](https://docs.microsoft.com/azure/marketplace/marketplace-containers) | Użyj typu oferty kontenera, gdy rozwiązanie jest obrazem kontenera Docker, który został zainicjowany jako usługa kontenera platformy Azure oparta na Kubernetes. |

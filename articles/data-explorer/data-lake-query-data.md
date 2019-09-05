@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: ef4dfc4370c71eac1978a6f3535b571a5e6009b5
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: b0056df16dccaf1dc7e94aad1a2c6c262ffd89ee
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950134"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383377"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Wykonywanie zapytań dotyczących danych w Azure Data Lake przy użyciu usługi Azure Eksplorator danych (wersja zapoznawcza)
 
@@ -50,6 +50,7 @@ Platforma Azure Eksplorator danych integruje się z usługą Azure Blob Storage 
     > * Oczekiwana jest zwiększona wydajność z bardziej szczegółowym partycjonowaniem. Na przykład zapytania dotyczące tabel zewnętrznych z partycjami dziennymi będą miały lepszą wydajność niż te zapytania z tabelami z podziałem na partycje.
     > * Podczas definiowania tabeli zewnętrznej z partycjami, struktura magazynu powinna być taka sama.
 Na przykład jeśli tabela jest zdefiniowana z partycją DateTime w formacie RRRR/MM/DD (domyślnie), ścieżka pliku magazynu URI powinna mieć wartość *container1/rrrr/mm/dd/all_exported_blobs*. 
+    > * Jeśli tabela zewnętrzna jest podzielona na partycje przez kolumnę datetime, zawsze Uwzględnij filtr czasu dla zamkniętego zakresu w zapytaniu (na przykład zapytanie- `ArchivedProducts | where Timestamp between (ago(1h) .. 10m)` -powinno być wykonywane lepiej niż ten (otwarty zakres) jeden — `ArchivedProducts | where Timestamp > ago(1h)` ). 
 
 1. Tabela zewnętrzna jest widoczna w lewym okienku interfejsu użytkownika sieci Web
 
@@ -101,7 +102,7 @@ external_table("ArchivedProducts") | take 100
 
 ### <a name="query-an-external-table-with-json-format"></a>Zapytanie tabeli zewnętrznej z formatem JSON
 
-Aby zbadać tabelę zewnętrzną z formatem JSON, należy użyć `external_table()` funkcji i podać nazwę tabeli i nazwę mapowania jako argumenty funkcji. W zapytaniu poniżej, jeśli nie określono mapowanianame, zostanie użyte mapowanie, które zostało wcześniej utworzone.
+Aby zbadać tabelę zewnętrzną z formatem JSON, należy użyć `external_table()` funkcji i podać nazwę tabeli i nazwę mapowania jako argumenty funkcji. W zapytaniu poniżej, jeśli nie określono *mapowanianame* , zostanie użyte mapowanie, które zostało wcześniej utworzone.
 
 ```kusto
 external_table(‘ExternalTableJson’, ‘mappingName’)

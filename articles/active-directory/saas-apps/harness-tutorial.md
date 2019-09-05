@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/22/2019
+ms.date: 09/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37a527e8cd83d292d8af8af5acd0c903c63081f2
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 709bf2e413ddb40ae1ed84672cea0c0b71be2ce6
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014076"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305937"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>Samouczek: Azure Active Directory Integracja z logowaniem jednokrotnym (SSO) za pomocą programu
 
@@ -54,7 +54,7 @@ Aby skonfigurować integrację programu z usługą Azure AD, musisz dodać zesp�
 1. W okienku nawigacji po lewej stronie wybierz usługę **Azure Active Directory** .
 1. Przejdź do **aplikacji przedsiębiorstwa** , a następnie wybierz pozycję **wszystkie aplikacje**.
 1. Aby dodać nową aplikację, wybierz pozycję **Nowa aplikacja**.
-1. W sekcji **Dodaj z galerii** w polu wyszukiwania wpisz ciąg.
+1. W sekcji **Dodaj z galerii** **w polu wyszukiwania wpisz ciąg** .
 1. Wybierz pozycję **zespół** z panelu wyników, a następnie Dodaj aplikację. Poczekaj kilka sekund, gdy aplikacja zostanie dodana do dzierżawy.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-harness"></a>Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD dla programu dla zespołu
@@ -66,16 +66,16 @@ Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD za pom
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
     1. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
     1. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
-1. **[Skonfiguruj usługę Logowanie](#configure-harness-sso)** jednokrotne w celu skonfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
+1. **[Skonfiguruj usługę Logowanie jednokrotne](#configure-harness-sso)** w celu skonfigurowania ustawień logowania jednokrotnego na stronie aplikacji.
     1. **[Utwórz użytkownika testowego zespołu](#create-harness-test-user)** usługi, aby dysponować odpowiednikiem B. Simon w programie dla zespołu, który jest połączony z reprezentacją użytkownika w usłudze Azure AD.
-1. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
+1. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
 Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie integracja aplikacji z obsługą Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
-1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie **integracja aplikacji z** obsługą Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
@@ -89,7 +89,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://app.harness.io/`
 
     > [!NOTE]
-    > Wartość adresu URL odpowiedzi nie jest prawdziwa. Zostanie wyświetlony rzeczywisty adres URL odpowiedzi z sekcji **Konfigurowanie usługi logowania** jednokrotnego, która została omówiona w dalszej części tego samouczka. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Wartość adresu URL odpowiedzi nie jest prawdziwa. Zostanie wyświetlony rzeczywisty adres URL odpowiedzi z sekcji **Konfigurowanie usługi logowania jednokrotnego** , która została omówiona w dalszej części tego samouczka. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu protokołu SAML** w sekcji **certyfikat podpisywania SAML** Znajdź **plik XML metadanych Federacji** i wybierz pozycję **Pobierz** , aby pobrać certyfikat i zapisać go na komputerze.
 
@@ -131,17 +131,25 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 ## <a name="configure-harness-sso"></a>Konfigurowanie logowania jednokrotnego
 
-1. Otwórz nowe okno przeglądarki sieci Web i zaloguj się do firmowej witryny programu jako administrator.
+1. Aby zautomatyzować konfigurację w ramach programu, należy zainstalować **Moje aplikacje bezpieczne logowanie do przeglądarki** , klikając pozycję **Zainstaluj rozszerzenie**.
 
-1. W prawym górnym rogu strony kliknij pozycję **stałe** **Ustawienia uwierzytelniania** >  **Zarządzanie dostępem do**zabezpieczeń.>
+    ![Rozszerzenie moje aplikacje](common/install-myappssecure-extension.png)
+
+2. Po dodaniu rozszerzenia do przeglądarki, kliknij pozycję **Instalator zespół** przeprowadzi Cię do aplikacji programu. Z tego miejsca podaj poświadczenia administratora, aby zalogować się do programu. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i automatyzuje kroki 3-6.
+
+    ![Konfiguracja konfiguracji](common/setup-sso.png)
+
+3. Jeśli chcesz ręcznie skonfigurować program instalacyjny, Otwórz nowe okno przeglądarki sieci Web i zaloguj się do firmowej lokacji firmy jako administrator i wykonaj następujące czynności:
+
+4. W prawym górnym rogu strony kliknij pozycję **stałe** **Ustawienia uwierzytelniania** >  **Zarządzanie dostępem do**zabezpieczeń.>
 
     ![Konfiguracja zespołu](./media/harness-tutorial/configure01.png)
 
-1. W sekcji **dostawcy logowania** jednokrotnego kliknij pozycję **+ Dodaj dostawcę** >rejestracji jednokrotnej protokołu **SAML**.
+5. W sekcji **dostawcy logowania jednokrotnego** kliknij pozycję > **+ Dodaj dostawcę rejestracji jednokrotnej**protokołu **SAML**.
 
     ![Konfiguracja zespołu](./media/harness-tutorial/configure03.png)
 
-1. W wyskakującym okienku **dostawcy SAML** wykonaj następujące czynności:
+6. W wyskakującym okienku **dostawcy SAML** wykonaj następujące czynności:
 
     ![Konfiguracja zespołu](./media/harness-tutorial/configure02.png)
 
@@ -161,7 +169,7 @@ Aby umożliwić użytkownikom usługi Azure AD logowanie się do programu, musz�
 
 1. Zaloguj się, aby skorzystać z programu jako administrator.
 
-1. W prawym górnym rogu strony kliknij pozycję **ciągły** > **dostęp do zasobów zarządzanie** > **użytkownikami**.
+1. W prawym górnym rogu strony kliknij pozycję> **ciągły**  **dostęp do zasobów zarządzanie** > **użytkownikami**.
 
     ![Konfiguracja zespołu](./media/harness-tutorial/configure04.png)
 

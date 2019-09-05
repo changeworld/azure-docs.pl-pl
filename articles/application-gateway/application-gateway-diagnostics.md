@@ -7,14 +7,14 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: d9b0c551cdfb92b380a967aaa5bdce7c278fd39e
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 6df78a46e6bc8055f8cce89e199d01ad631e178e
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183575"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306186"
 ---
-# <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Kondycja zaplecza, dzienniki diagnostyczne i metryki dla Application Gateway
+# <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Zapasowe dzienniki kondycji i diagnostyczne dla Application Gateway
 
 Za pomocą usługi Azure Application Gateway można monitorować zasoby w następujący sposób:
 
@@ -22,7 +22,7 @@ Za pomocą usługi Azure Application Gateway można monitorować zasoby w nastę
 
 * [Dzienniki](#diagnostic-logging): Dzienniki umożliwiają zapisywanie lub zużywanie danych z zasobów na potrzeby monitorowania, a także korzystanie z nich.
 
-* [Metryki](#metrics): Application Gateway obecnie ma siedem metryk do wyświetlania liczników wydajności.
+* [Metryki](application-gateway-metrics.md): Application Gateway ma kilka metryk, które pomagają sprawdzić, czy system działa zgodnie z oczekiwaniami.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -40,7 +40,7 @@ Raport kondycji zaplecza odzwierciedla dane wyjściowe sondy kondycji Applicatio
 
 W portalu kondycja zaplecza jest dostarczana automatycznie. W istniejącej bramie aplikacji wybierz pozycję **monitorowanie** > **kondycja zaplecza**. 
 
-Każdy element członkowski w puli zaplecza znajduje się na tej stronie (niezależnie od tego, czy jest to karta sieciowa, adres IP czy nazwa FQDN). Wyświetlana jest Nazwa puli zaplecza, port, nazwa ustawień protokołu HTTP zaplecza i stan kondycji. Prawidłowe wartości kondycji są **zdrowe**, **złej kondycji**i nieznane.
+Każdy element członkowski w puli zaplecza znajduje się na tej stronie (niezależnie od tego, czy jest to karta sieciowa, adres IP czy nazwa FQDN). Wyświetlana jest Nazwa puli zaplecza, port, nazwa ustawień protokołu HTTP zaplecza i stan kondycji. Prawidłowe wartości kondycji są **zdrowe**, **złej kondycji**i **nieznane**.
 
 > [!NOTE]
 > Jeśli widzisz stan kondycji zaplecza **nieznany**, upewnij się, że dostęp do zaplecza nie jest blokowany przez regułę sieciowej grupy zabezpieczeń, zdefiniowaną przez użytkownika trasę (UDR) lub niestandardową usługę DNS w sieci wirtualnej.
@@ -172,7 +172,7 @@ Dziennik dostępu jest generowany tylko wtedy, gdy włączono go na każdym wyst
 |Hmaster| Rozmiar wysłanego pakietu, w bajtach.|
 |timeTaken| Czas (w milisekundach), przez jaki trwa przetwarzanie żądania i jego odpowiedź do wysłania. Ta wartość jest obliczana jako interwał od momentu, gdy Application Gateway otrzymuje pierwszy bajt żądania HTTP do momentu zakończenia operacji wysyłania odpowiedzi. Należy pamiętać, że pole czas wykonania zazwyczaj obejmuje czas, w którym żądania i pakiety odpowiedzi są przesyłane przez sieć. |
 |sslEnabled| Czy komunikacja z pulami zaplecza korzysta z protokołu SSL. Prawidłowe wartości są włączone i wyłączone.|
-|host| Nazwa hosta, za pomocą którego żądanie zostało wysłane do serwera wewnętrznej bazy danych. Jeśli nazwa hosta zaplecza jest przesłonięta, to będzie odzwierciedlać tę nazwę.|
+|host| Nazwa hosta, za pomocą którego żądanie zostało wysłane do serwera wewnętrznej bazy danych. Jeśli nazwa hosta zaplecza jest zastępowana, będzie to miało odzwierciedlenie.|
 |originalHost| Nazwa hosta, za pomocą którego żądanie zostało odebrane przez Application Gateway od klienta.|
 ```json
 {
@@ -359,67 +359,6 @@ Ponadto możesz połączyć się z kontem magazynu i pobrać wpisy dziennika JSO
 #### <a name="analyzing-access-logs-through-goaccess"></a>Analizowanie dzienników dostępu za poorednictwem GoAccess
 
 Opublikowano szablon Menedżer zasobów, który służy do instalowania i uruchamiania popularnych analizatora dzienników [GoAccess](https://goaccess.io/) na potrzeby Application Gateway dzienników dostępu. GoAccess zapewnia cenne dane statystyczne dotyczące ruchu HTTP, takie jak unikatowych odwiedzających, żądanych plików, hostów, systemów operacyjnych, przeglądarek, kodów stanu HTTP i nie tylko. Aby uzyskać więcej informacji, zobacz [plik Readme w folderze szablonów Menedżer zasobów w witrynie GitHub](https://aka.ms/appgwgoaccessreadme).
-
-## <a name="metrics"></a>Metryki
-
-Metryki to funkcja dla niektórych zasobów platformy Azure, w której można wyświetlić liczniki wydajności w portalu. W przypadku Application Gateway dostępne są następujące metryki:
-
-- **Bieżące połączenia**
-- **Nieudane żądania**
-- **Liczba hostów w dobrej kondycji**
-
-   Można filtrować według jednej puli zaplecza, aby pokazać hosty zdrowe/złej kondycji w określonej puli zaplecza.
-
-
-- **Stan odpowiedzi**
-
-   Rozkład kodu stanu odpowiedzi można dodatkowo podzielić na odpowiedzi w kategoriach 2xx, 3xx, 4xx i 5xx.
-
-- **Przepływność**
-- **Łączna liczba żądań**
-- **Liczba hostów w złej kondycji**
-
-   Można filtrować według jednej puli zaplecza, aby pokazać hosty zdrowe/złej kondycji w określonej puli zaplecza.
-
-Przejdź do bramy aplikacji, w obszarze **monitorowanie** wybierzpozycję metryki. Aby wyświetlić dostępne wartości, wybierz listę rozwijaną **METRYKA**.
-
-Na poniższej ilustracji przedstawiono przykład z trzema metrykami wyświetlonymi w ciągu ostatnich 30 minut:
-
-[![](media/application-gateway-diagnostics/figure5.png "Widok metryki")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
-
-Aby wyświetlić bieżącą listę metryk, zobacz temat [obsługiwane metryki z Azure monitor](../azure-monitor/platform/metrics-supported.md).
-
-### <a name="alert-rules"></a>Reguły alertów
-
-Reguły alertów można uruchomić na podstawie metryk dla zasobu. Na przykład alert może wywołać element webhook lub wysłać wiadomość e-mail do administratora, jeśli przepływność bramy aplikacji jest powyżej, poniżej lub w określonym przedziale czasu.
-
-Poniższy przykład przeprowadzi Cię przez proces tworzenia reguły alertu, która wysyła wiadomość e-mail do administratora po naruszeniu przez przepływność wartości progowej:
-
-1. Wybierz pozycję **Dodaj alert metryki** , aby otworzyć stronę **Dodawanie reguły** . Możesz również uzyskać dostęp do tej strony ze strony metryki.
-
-   ![Przycisk "Dodaj alert dotyczący metryki"][6]
-
-2. Na stronie **Dodawanie reguły** Wypełnij sekcje nazwa, warunek i powiadomienie, a następnie wybierz **przycisk OK**.
-
-   * W selektorze **warunku** wybierz jedną z czterech wartości: **Większe**niż, **większe niż lub równe**, **mniejsze**niż lub **mniejsze niż lub równe**.
-
-   * W selektorze **okresu** Wybierz okres z pięciu minut do 6 godzin.
-
-   * W przypadku wybrania opcji właściciele, współautorzy **i czytelnicy poczty**e-mail wiadomość e-mail może być dynamiczna na podstawie użytkowników, którzy mają dostęp do tego zasobu. W przeciwnym razie można podać listę użytkowników z rozdzieloną przecinkami w polu **dodatkowe adresy e-mail administratora** .
-
-   ![Dodaj stronę reguły][7]
-
-W przypadku naruszenia progu wiadomości e-mail podobnej do tej na poniższej ilustracji przychodzą:
-
-![Adres e-mail pod kątem naruszenia progu][8]
-
-Po utworzeniu alertu dotyczącego metryki pojawia się lista alertów. Zawiera przegląd wszystkich reguł alertów.
-
-![Lista alertów i reguł][9]
-
-Aby dowiedzieć się więcej na temat powiadomień o alertach, zobacz [Odbieranie powiadomień o alertach](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
-
-Aby dowiedzieć się więcej o elementach webhook i sposobach ich użycia z alertami, odwiedź stronę [Konfigurowanie elementu webhook w ramach alertu dotyczącego metryki platformy Azure](../azure-monitor/platform/alerts-webhooks.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

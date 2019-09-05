@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: e18f1db80b8fcb2c8846ce0c7294e1766cfa1ca3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: accc59ee31ddb7371774da3235cc9ccff24ad641
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091381"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309223"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Red Hat Enterprise Linux obrazów na platformie Azure
 W tym artykule opisano dostępne obrazy Red Hat Enterprise Linux (RHEL) w witrynie Azure Marketplace oraz zasady dotyczące ich nazewnictwa i przechowywania.
@@ -133,12 +133,12 @@ RHEL-SAP-HANA | 6.7      | RAW    | Agent systemu Linux | RHEL 6,7 dla SAP HANA
 |             | 7.3      | LVM    | Agent systemu Linux | RHEL 7,3 dla SAP HANA
 RHEL — SAP-APPS | 6.8      | RAW    | Agent systemu Linux | RHEL 6,8 dla oprogramowania SAP Business Applications
 |             | 7.3      | LVM    | Agent systemu Linux | RHEL 7,3 dla oprogramowania SAP Business Applications
-RHEL – HA       | 7.4      | RAW    | Agent systemu Linux | RHEL 7,4 z dodatkiem HA
-|             | 7.5      | RAW    | Agent systemu Linux | RHEL 7,5 z dodatkiem HA
-|             | 7,6      | RAW    | Agent systemu Linux | RHEL 7,6 z dodatkiem HA
-RHEL — SAP-HA   | 7.4      | RAW    | Agent systemu Linux | RHEL 7,4 dla oprogramowania SAP z dodatkiem HA
-|             | 7.5      | RAW    | Agent systemu Linux | RHEL 7,5 dla oprogramowania SAP z dodatkiem HA
-|             | 7,6      | RAW    | Agent systemu Linux | RHEL 7,6 dla oprogramowania SAP z dodatkiem HA
+RHEL – HA       | 7.4      | LVM    | Agent systemu Linux | RHEL 7,4 z dodatkiem HA
+|             | 7.5      | LVM    | Agent systemu Linux | RHEL 7,5 z dodatkiem HA
+|             | 7,6      | LVM    | Agent systemu Linux | RHEL 7,6 z dodatkiem HA
+RHEL — SAP-HA   | 7.4      | LVM    | Agent systemu Linux | RHEL 7,4 dla oprogramowania SAP z dodatkiem HA
+|             | 7.5      | LVM    | Agent systemu Linux | RHEL 7,5 dla oprogramowania SAP z dodatkiem HA
+|             | 7,6      | LVM    | Agent systemu Linux | RHEL 7,6 dla oprogramowania SAP z dodatkiem HA
 
 ### <a name="old-naming-convention"></a>Stara Konwencja nazewnictwa
 Rodzina obrazów RHEL 7 i rodzina RHEL 6 obrazów używa określonych wersji w swoich jednostkach SKU do momentu wprowadzenia zmiany konwencji nazewnictwa opisanej powyżej.

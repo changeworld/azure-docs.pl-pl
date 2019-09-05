@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: 8948a0fe6112df0d29c0f04685dadbd379a4a382
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d924f0eb89984fbe77f94eff553d00a25b4b7a3a
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098922"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309620"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Korzystanie z punktów końcowych usługi sieci wirtualnej i reguł dla serwerów baz danych
 
@@ -72,8 +72,6 @@ Istnieje możliwość korzystania z [kontroli dostępu opartej na rolach (RBAC)]
 
 W przypadku Azure SQL Database funkcja reguł sieci wirtualnej ma następujące ograniczenia:
 
-- Aplikację sieci Web można zamapować na prywatny adres IP w sieci wirtualnej/podsieci. Nawet jeśli punkty końcowe usługi są włączone w danej sieci wirtualnej/podsieci, połączenia z aplikacji sieci Web na serwerze będą mieć publiczne Źródło IP platformy Azure, a nie Źródło sieci wirtualnej/podsieci. Aby włączyć łączność z aplikacji sieci Web na serwerze z regułami zapory VNet, należy **zezwolić usługom platformy Azure na dostęp do serwera** na serwerze.
-
 - W zaporze dla SQL Database Każda reguła sieci wirtualnej odwołuje się do podsieci. Wszystkie te podsieci, do których istnieją odwołania, muszą być hostowane w tym samym regionie geograficznym, który hostuje SQL Database.
 
 - Każdy serwer Azure SQL Database może mieć maksymalnie 128 wpisów listy ACL dla danej sieci wirtualnej.
@@ -121,9 +119,9 @@ Baza danych wielobase jest często używana do ładowania dane do Azure SQL Data
 > [!IMPORTANT]
 > Moduł Azure Resource Manager programu PowerShell jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. W przypadku tych poleceń cmdlet zobacz [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne.
 
-1.  Zainstaluj Azure PowerShell przy użyciu [](https://docs.microsoft.com/powershell/azure/install-az-ps)tego przewodnika.
-2.  Jeśli masz konto usługi Magazyn ogólnego przeznaczenia w wersji 1 lub BLOB, musisz najpierw przeprowadzić uaktualnienie do ogólnego przeznaczenia w wersji 2 przy [](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)użyciu tego przewodnika.
-3.  Musisz **zezwolić zaufanym usługom firmy Microsoft na dostęp do tego konta magazynu** , włączone w obszarze zapory konta usługi Azure Storage i menu ustawienia **sieci wirtualnych** . Aby uzyskać więcej [](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) informacji, zapoznaj się z tym przewodnikiem.
+1.  Zainstaluj Azure PowerShell przy użyciu tego [przewodnika](https://docs.microsoft.com/powershell/azure/install-az-ps).
+2.  Jeśli masz konto usługi Magazyn ogólnego przeznaczenia w wersji 1 lub BLOB, musisz najpierw przeprowadzić uaktualnienie do ogólnego przeznaczenia w wersji 2 przy użyciu tego [przewodnika](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+3.  Musisz **zezwolić zaufanym usługom firmy Microsoft na dostęp do tego konta magazynu** , włączone w obszarze zapory konta usługi Azure Storage i menu ustawienia **sieci wirtualnych** . Aby uzyskać więcej informacji, zapoznaj się z tym [przewodnikiem](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) .
  
 #### <a name="steps"></a>Kroki
 1. W programie PowerShell **zarejestruj SQL Server platformy Azure** , które obsługują wystąpienie Azure SQL Data Warehouse za pomocą usługi Azure Active Directory (AAD):
@@ -134,16 +132,16 @@ Baza danych wielobase jest często używana do ładowania dane do Azure SQL Data
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
     
-   1. Utwórz **konto magazynu ogólnego przeznaczenia w wersji 2** za pomocą [](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)tego przewodnika.
+   1. Utwórz **konto magazynu ogólnego przeznaczenia w wersji 2** za pomocą tego [przewodnika](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
 
    > [!NOTE]
-   > - Jeśli masz konto usługi Magazyn ogólnego przeznaczenia w wersji 1 lub BLOB, musisz **najpierw przeprowadzić uaktualnienie do wersji 2** przy [](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)użyciu tego przewodnika.
-   > - Aby uzyskać znane problemy z Azure Data Lake Storage Gen2, zapoznaj się [](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)z tym przewodnikiem.
+   > - Jeśli masz konto usługi Magazyn ogólnego przeznaczenia w wersji 1 lub BLOB, musisz **najpierw przeprowadzić uaktualnienie do wersji 2** przy użyciu tego [przewodnika](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
+   > - Aby uzyskać znane problemy z Azure Data Lake Storage Gen2, zapoznaj się z tym [przewodnikiem](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
     
 1. W obszarze konto magazynu przejdź do pozycji **Access Control (IAM)** , a następnie kliknij pozycję **Dodaj przypisanie roli**. Przypisz rolę RBAC **współautor danych obiektów blob magazynu** do platformy Azure SQL Server Hosting Azure SQL Data Warehouse, który został zarejestrowany w usłudze Azure Active Directory (AAD), jak w kroku 1.
 
    > [!NOTE] 
-   > Tylko członkowie z uprawnieniami właściciela mogą wykonać ten krok. Aby uzyskać różne wbudowane role dla zasobów platformy Azure, zapoznaj się [](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)z tym przewodnikiem.
+   > Tylko członkowie z uprawnieniami właściciela mogą wykonać ten krok. Aby uzyskać różne wbudowane role dla zasobów platformy Azure, zapoznaj się z tym [przewodnikiem](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
   
 1. **Połączenie z kontem usługi Azure Storage:**
 

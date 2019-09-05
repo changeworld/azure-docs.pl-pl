@@ -10,21 +10,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/06/2019
+ms.date: 09/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e15fa8c79663fc2517039124f9be8c1ecd57b8a8
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 8b5479bc7f4e65f23a2e2dcf7deb91742fe50610
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837876"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382485"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Delegowanie uprawnień rejestracji aplikacji w Azure Active Directory
 
-W tym artykule opisano sposób korzystania z uprawnień aplikacji w rolach niestandardowych w usłudze Azure Active Directory (Azure AD) w celu rozwiązania potrzeb związanych z zarządzaniem aplikacjami. Azure Active Directory (Azure AD) umożliwia delegowanie uprawnień do tworzenia aplikacji i zarządzania nimi w następujący sposób:
+W tym artykule opisano, jak używać uprawnień udzielonych przez role niestandardowe w usłudze Azure Active Directory (Azure AD) w celu rozwiązania potrzeb związanych z zarządzaniem aplikacjami. W usłudze Azure AD można delegować uprawnienia do tworzenia aplikacji i zarządzania nimi w następujący sposób:
 
 - [Ograniczenie użytkowników, którzy mogą tworzyć aplikacje](#restrict-who-can-create-applications) i zarządzać tworzonymi przez nie aplikacjami. Domyślnie w usłudze Azure AD wszyscy użytkownicy mogą rejestrować rejestracje aplikacji i zarządzać wszystkimi aspektami tworzonych przez nie aplikacji. Może to być ograniczone tylko do wybranych osób, które mają uprawnienia.
 - [Przypisywanie jednego lub większej liczby właścicieli do aplikacji](#assign-application-owners). Jest to prosty sposób udzielenia komuś możliwości zarządzania wszystkimi aspektami konfiguracji usługi Azure AD dla określonej aplikacji.
@@ -40,7 +40,7 @@ Domyślnie w usłudze Azure AD wszyscy użytkownicy mogą rejestrować rejestrac
 ### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>Aby wyłączyć domyślną możliwość tworzenia rejestracji aplikacji lub wyrażania zgody na aplikacje
 
 1. Zaloguj się do swojej organizacji usługi Azure AD przy użyciu konta uprawniającego do roli administratora globalnego w organizacji usługi Azure AD.
-1. Po uzyskaniu wystarczających uprawnień Ustaw jedną lub obie następujące czynności:
+1. Ustaw jedną lub obie następujące czynności:
 
     - Na [stronie Ustawienia użytkownika organizacji](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)ustaw opcję **Użytkownicy mogą rejestrować aplikacje** na wartość nie. Spowoduje to wyłączenie domyślnej możliwości tworzenia rejestracji aplikacji przez użytkowników.
     - Na stronie [Ustawienia użytkownika dla aplikacji dla przedsiębiorstw](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)ustaw, aby **użytkownicy mogli wyrazić zgodę na aplikacje uzyskujące dostęp do danych firmy w ich imieniu** na wartość nie. Dzięki temu użytkownicy będą mogli wyrazić zgodę na aplikacje uzyskujące dostęp do danych firmy w ich imieniu.
@@ -100,7 +100,7 @@ Porady dotyczące tworzenia i używania ról niestandardowych do delegowania zar
 - Role niestandardowe nie zapewniają dostępu do portalu usługi Azure AD, gdy ustawienie użytkownika "Ogranicz dostęp do portalu administracyjnego usługi Azure AD" ma wartość tak.
 - Rejestracje aplikacji użytkownik ma dostęp do korzystania z przypisań ról tylko na karcie "wszystkie aplikacje" na stronie rejestracji aplikacji. Nie są one wyświetlane na karcie "posiadane aplikacje".
 
-Aby uzyskać więcej informacji na temat podstawowych ról niestandardowych, zobacz [Omówienie ról niestandardowych](roles-custom-overview.md), a także sposób [tworzenia roli niestandardowej](roles-create-custom.md) i sposobu przypisywania [roli](roles-assign-powershell.md).
+Aby uzyskać więcej informacji na temat podstawowych ról niestandardowych, zobacz [Omówienie ról niestandardowych](roles-custom-overview.md), a także sposób [tworzenia roli niestandardowej](roles-create-custom.md) i sposobu [przypisywania roli](roles-assign-powershell.md).
 
 ## <a name="next-steps"></a>Następne kroki
 

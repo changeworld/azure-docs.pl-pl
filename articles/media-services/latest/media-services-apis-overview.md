@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 26fea4322df625b2e38028a3b7121fb41f2acf81
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 5558eeb4012ac563388ad47df61114534e9859ed
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311858"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308338"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>Programowanie przy użyciu interfejsów API Media Services v3
 
@@ -38,7 +38,7 @@ Zamiast tworzyć jednostkę usługi, należy rozważyć użycie zarządzanych to
 
 ### <a name="azure-ad-service-principal"></a>Nazwa główna usługi Azure AD 
 
-Jeśli tworzysz aplikację usługi Azure AD i nazwę główną usługi, aplikacja musi znajdować się w własnej dzierżawie. Po utworzeniu aplikacji nadaj współautorowi aplikacji lub  dostęp do roli **właściciela** do konta Media Services. 
+Jeśli tworzysz aplikację usługi Azure AD i nazwę główną usługi, aplikacja musi znajdować się w własnej dzierżawie. Po utworzeniu aplikacji nadaj **współautorowi** aplikacji lub dostęp do roli **właściciela** do konta Media Services. 
 
 Jeśli nie masz pewności, czy masz uprawnienia do tworzenia aplikacji usługi Azure AD, zobacz [wymagane uprawnienia](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
@@ -76,6 +76,10 @@ Nazwy zasobów w usłudze Azure Media Services w wersji 3 (na przykład Zasoby, 
 Nazwy zasobów usługi Media Services nie mogą zawierać znaków „<”, „>”, „%”, „&”, „:”, „&#92;”, „?”, „/”, „*”, „+”, „.”, pojedynczych cudzysłowów ani żadnych znaków sterujących. Wszystkie inne znaki są dozwolone. Maksymalna długość nazwy zasobu to 260 znaków. 
 
 Aby uzyskać więcej informacji na temat nazewnictwa w usłudze Azure Resource Manager zobacz: [Wymagania dotyczące nazewnictwa](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) i [Konwencje nazewnictwa](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
+
+### <a name="names-of-filesblobs-within-an-asset"></a>Nazwy plików/obiektów BLOB w obrębie elementu zawartości
+
+Nazwy plików/obiektów BLOB w obrębie elementu zawartości muszą spełniać zarówno [wymagania dotyczące nazw obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) , jak i [wymagania dotyczące nazw NTFS](https://docs.microsoft.com/windows/win32/fileio/naming-a-file). Przyczyną tych wymagań jest możliwość skopiowania plików z magazynu obiektów BLOB do lokalnego dysku NTFS w celu przetworzenia.
 
 ## <a name="long-running-operations"></a>Długotrwałe operacje
 

@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 09/04/2019
 ms.author: mialdrid
 ms.custom: seodec18
-ms.openlocfilehash: fc614626131236361246664a1bcef34f82b54ec5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 5b74e387c6bee58acbbb7bae320a9bc72a4dda1c
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848466"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376276"
 ---
 # <a name="expressroute-virtual-network-gateway-and-fastpath"></a>Brama sieci wirtualnej usługi ExpressRoute i rozwiązanie FastPath
 Aby połączyć sieć wirtualną platformy Azure i sieć lokalną za pośrednictwem usługi ExpressRoute, najpierw należy utworzyć bramę sieci wirtualnej. Brama sieci wirtualnej służy do dwóch celów: trasy IP programu Exchange między sieciami i kierowanie ruchu sieciowego. W tym artykule opisano typy bram, jednostki SKU bramy i szacowaną wydajność według jednostki SKU. W tym artykule opisano również ExpressRoute [FastPath](#fastpath), funkcję, która umożliwia ruch sieciowy z sieci lokalnej w celu obejścia bramy sieci wirtualnej w celu zwiększenia wydajności.
@@ -60,12 +60,13 @@ Nowe jednostki SKU bramy obsługują także inne opcje wdrażania, aby możliwie
 ## <a name="fastpath"></a>FastPath
 Brama sieci wirtualnej ExpressRoute jest przeznaczona do wymiany tras sieciowych i kierowania ruchu sieciowego. FastPath zaprojektowano w celu poprawienia wydajności ścieżki danych między siecią lokalną i siecią wirtualną. Po włączeniu FastPath wysyła ruch sieciowy bezpośrednio do maszyn wirtualnych w sieci wirtualnej, pomijając bramę. 
 
-FastPath jest dostępna tylko w [ExpressRoute bezpośredniej](expressroute-erdirect-about.md) . Innymi słowy, tę funkcję można włączyć tylko wtedy, gdy [Sieć wirtualna](expressroute-howto-linkvnet-arm.md) jest podłączona do obwodu ExpressRoute utworzonego przy użyciu portu ExpressRoute Direct. FastPath nadal wymaga utworzenia bramy sieci wirtualnej w celu wymiany tras między siecią wirtualną i siecią lokalną. Brama sieci wirtualnej musi mieć wartość Ultra Performance lub ErGw3AZ.
+FastPath jest dostępna tylko w [ExpressRoute bezpośredniej](expressroute-erdirect-about.md) . Innymi słowy, tę funkcję można włączyć tylko wtedy, gdy [Sieć wirtualna jest podłączona](expressroute-howto-linkvnet-arm.md) do obwodu ExpressRoute utworzonego przy użyciu portu ExpressRoute Direct. FastPath nadal wymaga utworzenia bramy sieci wirtualnej w celu wymiany tras między siecią wirtualną i siecią lokalną. Brama sieci wirtualnej musi mieć wartość Ultra Performance lub ErGw3AZ.
 
 FastPath nie obsługuje następujących funkcji:
 * UDR w podsieci bramy: w przypadku zastosowania UDR do podsieci bramy sieci wirtualnej ruch sieciowy z sieci lokalnej będzie nadal wysyłany do bramy sieci wirtualnej.
 * Komunikacja równorzędna sieci wirtualnych: w przypadku komunikacji równorzędnej z drugą siecią wirtualną z tą, która jest połączona z usługą ExpressRoute ruch sieciowy z sieci lokalnej do innych sieci wirtualnych (tj. "szprych" sieci wirtualnych) będzie nadal wysyłane do sieci wirtualnej punkt. Obejście polega na połączeniu wszystkich sieci wirtualnych bezpośrednio do obwodu ExpressRoute.
-
+* Balander obciążenia podstawowego: w przypadku wdrożenia podstawowego wewnętrznego modułu równoważenia obciążenia w sieci wirtualnej lub usługi Azure PaaS wdrożonej w sieci wirtualnej używa podstawowego wewnętrznego modułu równoważenia obciążenia, ruchu sieciowego z sieci lokalnej do wirtualnych adresów IP hostowanych w usłudze Podstawowa usługa równoważenia obciążenia zostanie wysłana do bramy sieci wirtualnej. Rozwiązaniem jest uaktualnienie podstawowego modułu równoważenia obciążenia do usługi [równoważenia obciążenia w warstwie Standardowa](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-overview). 
+ 
 ## <a name="resources"></a>Polecenia cmdlet programu PowerShell i interfejsów API REST
 Aby uzyskać dodatkowe zasoby techniczne i wymagań określonej składni, korzystając z interfejsów API REST i poleceń cmdlet programu PowerShell dla konfiguracji bramy sieci wirtualnej zobacz następujące strony:
 

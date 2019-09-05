@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 82c286ce60751775308d0f2c197d86785c4f0a14
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/04/2019
+ms.openlocfilehash: 75fcbdc20c1caf191d4a22672fc9641b36c263c5
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991585"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309342"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Odczytaj repliki w Azure Database for PostgreSQL — pojedynczy serwer
 
@@ -33,8 +33,6 @@ Funkcja Read Replica używa replikacji asynchronicznej PostgreSQL. Ta funkcja ni
 ## <a name="cross-region-replication"></a>Replikacja między regionami
 Replikę odczytu można utworzyć w innym regionie niż serwer główny. Replikacja między regionami może być przydatna w scenariuszach takich jak planowanie odzyskiwania po awarii lub umieszczenie danych bliżej użytkowników.
 
-> [!IMPORTANT]
-> Replikacja między regionami jest obecnie dostępna w publicznej wersji zapoznawczej.
 
 Serwer główny może być w dowolnym [regionie Azure Database for PostgreSQL](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql).  Serwer główny może mieć replikę w osobnym regionie lub regionach uniwersalnej repliki.
 
@@ -58,11 +56,11 @@ Istnieją jednak ograniczenia, które należy wziąć pod uwagę:
 
 
 ## <a name="create-a-replica"></a>Tworzenie repliki
-Serwer główny musi mieć `azure.replication_support` ustawiony parametr rereplica. Gdy ten parametr zostanie zmieniony, wymagane jest ponowne uruchomienie serwera, aby zmiany zaczęły obowiązywać. `azure.replication_support` (Parametr dotyczy tylko ogólnego przeznaczenia i warstw zoptymalizowanych pod kątem pamięci).
+Serwer główny musi mieć `azure.replication_support` ustawiony parametr **rereplica**. Gdy ten parametr zostanie zmieniony, wymagane jest ponowne uruchomienie serwera, aby zmiany zaczęły obowiązywać. `azure.replication_support` (Parametr dotyczy tylko ogólnego przeznaczenia i warstw zoptymalizowanych pod kątem pamięci).
 
 Po uruchomieniu przepływu pracy tworzenia repliki zostanie utworzony pusty serwer Azure Database for PostgreSQL. Nowy serwer jest wypełniony danymi znajdującymi się na serwerze głównym. Czas utworzenia zależy od ilości danych na serwerze głównym oraz czasu od ostatniego cotygodniowej pełnej kopii zapasowej. Czas może się wahać od kilku minut do kilku godzin.
 
-Każda replika ma włączoną [](concepts-pricing-tiers.md#storage-auto-grow)funkcję autowzrostu magazynu. Funkcja autozwiększania umożliwia replikom przechowywanie danych replikowanych do nich i uniemożliwia przerwanie replikacji spowodowane błędami magazynowania.
+Każda replika ma włączoną funkcję [autowzrostu](concepts-pricing-tiers.md#storage-auto-grow)magazynu. Funkcja autozwiększania umożliwia replikom przechowywanie danych replikowanych do nich i uniemożliwia przerwanie replikacji spowodowane błędami magazynowania.
 
 Funkcja Read Replica używa replikacji fizycznej PostgreSQL, a nie replikacji logicznej. Replikacja strumieniowa przy użyciu miejsc replikacji jest domyślnym trybem operacji. W razie potrzeby wysyłanie dziennika służy do wykrycia.
 
@@ -73,7 +71,7 @@ Podczas tworzenia repliki nie są dziedziczone reguły zapory ani punkt końcowy
 
 Replika dziedziczy konto administratora z serwera głównego. Wszystkie konta użytkowników na serwerze głównym są replikowane do replik odczytu. Można nawiązać połączenie z repliką odczytu tylko przy użyciu kont użytkowników, które są dostępne na serwerze głównym.
 
-Możesz połączyć się z repliką przy użyciu nazwy hosta i prawidłowego konta użytkownika, tak jak w przypadku zwykłego serwera Azure Database for PostgreSQL. W przypadku serwera o nazwie **moja** replika znazwą administratora administrator można nawiązać połączenie z repliką przy użyciu PSQL:
+Możesz połączyć się z repliką przy użyciu nazwy hosta i prawidłowego konta użytkownika, tak jak w przypadku zwykłego serwera Azure Database for PostgreSQL. W przypadku serwera o nazwie **moja replika** z **nazwą administratora administrator można**nawiązać połączenie z repliką przy użyciu PSQL:
 
 ```
 psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
@@ -82,9 +80,9 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 W wierszu polecenia wprowadź hasło dla konta użytkownika.
 
 ## <a name="monitor-replication"></a>Monitoruj replikację
-Azure Database for PostgreSQL udostępnia dwie metryki do monitorowania replikacji. Dwie metryki to **maksymalne opóźnienie między** replikami i **zwłoką repliki**. Aby dowiedzieć się, jak wyświetlić te metryki, zobacz sekcję **monitorowanie repliki** w [artykule Jak uzyskać informacje o replikacji](howto-read-replicas-portal.md).
+Azure Database for PostgreSQL udostępnia dwie metryki do monitorowania replikacji. Dwie metryki to **maksymalne opóźnienie między replikami** i **zwłoką repliki**. Aby dowiedzieć się, jak wyświetlić te metryki, zobacz sekcję **monitorowanie repliki** w [artykule Jak uzyskać informacje o replikacji](howto-read-replicas-portal.md).
 
-Metryka **maks. opóźnienie między** replikami pokazuje opóźnienie w bajtach między wzorcem a repliką najbardziej opóźnioną. Ta Metryka jest dostępna tylko na serwerze głównym.
+Metryka **maks. opóźnienie między replikami** pokazuje opóźnienie w bajtach między wzorcem a repliką najbardziej opóźnioną. Ta Metryka jest dostępna tylko na serwerze głównym.
 
 Metryka **opóźnienia repliki** przedstawia czas od ostatniego odtworzonej transakcji. Jeśli na serwerze głównym nie ma żadnych transakcji, Metryka uwzględnia ten czas opóźnienia. Ta Metryka jest dostępna tylko dla serwerów repliki. Opóźnienie repliki jest obliczane na podstawie `pg_stat_wal_receiver` widoku:
 
@@ -148,7 +146,7 @@ Po pomyślnym przetworzeniu odczytów i zapisów aplikacja została ukończona w
 Ta sekcja zawiera podsumowanie zagadnień dotyczących funkcji odczytu repliki.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-Przed utworzeniem repliki odczytu, `azure.replication_support` parametr musi być ustawiony na replikę na serwerze głównym. Gdy ten parametr zostanie zmieniony, wymagane jest ponowne uruchomienie serwera, aby zmiany zaczęły obowiązywać. Ten `azure.replication_support` parametr ma zastosowanie tylko do warstw ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
+Przed utworzeniem repliki odczytu, `azure.replication_support` parametr musi być ustawiony na **replikę** na serwerze głównym. Gdy ten parametr zostanie zmieniony, wymagane jest ponowne uruchomienie serwera, aby zmiany zaczęły obowiązywać. Ten `azure.replication_support` parametr ma zastosowanie tylko do warstw ogólnego przeznaczenia i zoptymalizowanych pod kątem pamięci.
 
 ### <a name="new-replicas"></a>Nowe repliki
 Replika odczytu jest tworzona jako nowy serwer Azure Database for PostgreSQL. Nie można wykonać istniejącego serwera w replice. Nie można utworzyć repliki innej repliki odczytu.
@@ -157,7 +155,7 @@ Replika odczytu jest tworzona jako nowy serwer Azure Database for PostgreSQL. Ni
 Replika jest tworzona przy użyciu tych samych ustawień obliczeniowych i magazynu co główny. Po utworzeniu repliki można zmienić kilka ustawień niezależnie od serwera głównego: generowanie obliczeń, rdzeni wirtualnych, magazyn i okres przechowywania kopii zapasowych. Warstwę cenową można także zmienić niezależnie, z wyjątkiem warstwy Podstawowa lub z niej.
 
 > [!IMPORTANT]
-> Przed zaktualizowaniem ustawień głównych do nowej wartości należy zaktualizować konfigurację repliki do wartości równej lub wyższej. Ta akcja zapewnia, że replika może być zachowywana wraz ze wszystkimi zmianami wprowadzonymi do wzorca.
+> Przed zaktualizowaniem ustawień głównych do nowej wartości należy zaktualizować konfigurację repliki do wartości równej lub wyższej. Dzięki temu replika może być na bieżąco ze zmianami wprowadzonymi we wzorcu.
 
 PostgreSQL wymaga, aby wartość `max_connections` parametru w replice odczytu była większa lub równa wartości głównej; w przeciwnym razie replika nie zostanie uruchomiona. W Azure Database for PostgreSQL `max_connections` wartość parametru jest określana na podstawie jednostki SKU. Aby uzyskać więcej informacji, zobacz [limity w Azure Database for PostgreSQL](concepts-limits.md). 
 

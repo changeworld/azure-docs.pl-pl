@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: ee7e529593960c3a7c62021225122370c122b3c4
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 4dd58f2542674633f2d5e2a1724adc7934d7f030
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/04/2019
-ms.locfileid: "70240968"
+ms.locfileid: "70307042"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Zarządzanie usługą Azure łańcucha bloków przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -186,7 +186,7 @@ az role assignment create --role <role> --assignee <assignee> --scope /subscript
 |---------|-------------|
 | **roli** | Nazwa roli usługi Azure AD. |
 | **osoby przydzielonej** | Identyfikator użytkownika usługi Azure AD. Na przykład: `user@contoso.com` |
-| **Scope** | Zakres przypisania roli. Może być łańcucha bloków członkiem węzła transakcji. |
+| **Scope** | Zakres przypisania roli. Może być elementem członkowskim łańcucha bloków lub węzłem transakcji. |
 
 **Przykład:**
 
@@ -219,7 +219,7 @@ az role assignment create --role <role> --assignee-object-id <assignee_object_id
 |---------|-------------|
 | **roli** | Nazwa roli usługi Azure AD. |
 | **przydzielone-ID obiektu** | Identyfikator grupy usługi Azure AD lub identyfikator aplikacji. |
-| **Scope** | Zakres przypisania roli. Może być łańcucha bloków członkiem węzła transakcji. |
+| **Scope** | Zakres przypisania roli. Może być elementem członkowskim łańcucha bloków lub węzłem transakcji. |
 
 **Przykład:**
 
@@ -242,7 +242,7 @@ az role assignment delete --role <myRole> --assignee <assignee> --scope /subscri
 |---------|-------------|
 | **roli** | Nazwa roli usługi Azure AD. |
 | **osoby przydzielonej** | Identyfikator użytkownika usługi Azure AD. Na przykład: `user@contoso.com` |
-| **Scope** | Zakres przypisania roli. Może być łańcucha bloków członkiem węzła transakcji. |
+| **Scope** | Zakres przypisania roli. Może być elementem członkowskim łańcucha bloków lub węzłem transakcji. |
 
 ## <a name="next-steps"></a>Następne kroki
 

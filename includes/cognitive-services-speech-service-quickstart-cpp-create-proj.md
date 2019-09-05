@@ -2,50 +2,79 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 2/20/2019
+ms.date: 08/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 27fcf32a9a268488da318567d3edc55d23bd8967
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 99a7dec6936b86af4ab9b80d266cd886dae66d12
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482424"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70381805"
 ---
-1. Start Visual Studio 2019.
+Aby utworzyć projekt programu Visual Studio na C++ potrzeby tworzenia aplikacji klasycznych, należy skonfigurować opcje programistyczne programu Visual Studio, utworzyć projekt, wybrać architekturę docelową i zainstalować zestaw Speech SDK. 
 
-1. Upewnij się, że jest dostępny pakiet roboczy **Programowanie aplikacji klasycznych w języku C++** . Wybierz kolejno pozycje **Narzędzia** > **Pobierz narzędzia i funkcje** na pasku menu programu Visual Studio, aby otworzyć instalator programu Visual Studio. Jeśli ten pakiet roboczy jest już włączony, pomiń ten krok i przejdź do kolejnego.
+### <a name="set-up-visual-studio-development-options"></a>Konfigurowanie opcji programistycznych programu Visual Studio
 
-    ![Zrzut ekranu karty Pakiety robocze programu Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
+Aby rozpocząć, upewnij się, że program Visual Studio jest poprawnie skonfigurowany do C++ tworzenia aplikacji klasycznych:
 
-    W przeciwnym razie zaznacz pole wyboru obok pozycji **Programowanie aplikacji klasycznych w języku C++** .
+1. Otwórz program Visual Studio 2019, aby wyświetlić okno **uruchamiania** .
 
-1. Upewnij się, że jest dostępny składnik **Menedżer pakietów NuGet**. Przejdź do karty **Poszczególne składniki** w oknie dialogowym instalatora programu Visual Studio i wybierz pozycję **Menedżer pakietów NuGet**, jeśli nie została jeszcze wybrana.
+   ![Okno uruchamiania — Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png) 
 
-      ![Zrzut ekranu karty Poszczególne składniki programu Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-nuget-package-manager.png)
+1. Wybierz pozycję **Kontynuuj bez kodu** , aby przejść do środowiska IDE programu Visual Studio.
 
-1. Jeśli musisz włączyć pakiet roboczy języka C++ lub program NuGet, wybierz pozycję **Modyfikuj** (w prawym dolnym rogu okna dialogowego). Instalowanie nowej funkcji chwilę potrwa. Jeśli obie funkcje zostały już włączone, należy zamknąć okno dialogowe.
+1. Na pasku menu programu Visual Studio wybierz kolejno pozycje **Narzędzia** > **Pobierz narzędzia i funkcje** , aby otworzyć Instalator programu Visual Studio i wyświetlić okno dialogowe **Modyfikowanie** .
 
-1. Utwórz nową aplikację konsolową dla systemu Windows Desktop, korzystając z zestawu narzędzi Visual C++. Najpierw wybierz w menu pozycje **Plik** > **Nowy** > **Projekt**. W oknie dialogowym **Nowy projekt** w lewym okienku rozwiń pozycje **Zainstalowane** > **Visual C++**  > **Windows Desktop**. Następnie wybierz pozycję **Aplikacja konsolowa systemu Windows**. Jako nazwę projektu podaj *helloworld*.
+   ![Karta obciążenia, modyfikowanie okna dialogowego, Instalator programu Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
 
-    ![Zrzut ekranu przedstawiający okno dialogowe nowego projektu](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-01-new-console-app.png)
+1. Na karcie **obciążenia** w obszarze **systemu Windows**Znajdź **Programowanie dla komputerów stacjonarnych z C++**  obciążeniem. Jeśli pole wyboru obok tego obciążenia nie jest już zaznaczone, zaznacz je.
 
-1. Jeśli korzystasz z 64-bitowego systemu Windows, możesz przełączyć platformę kompilacji na `x64` za pomocą menu rozwijanego na pasku narzędzi programu Visual Studio. (64-bitowe wersje systemu Windows mogą obsługiwać aplikacje 32-bitowe, więc nie jest to wymagane.)
+1. Na karcie **poszczególne składniki** Znajdź pole wyboru **Menedżer pakietów NuGet** . Jeśli pole wyboru nie jest jeszcze zaznaczone, zaznacz je.
 
-    ![Zrzut ekranu paska narzędzi programu Visual Studio z wyróżnioną opcją x64](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-02-switch-to-x64.png)
+1. Wybierz przycisk w rogu z etykietą **Close** lub **Modify**. (Nazwa przycisku różni się w zależności od tego, czy wybrano wszystkie funkcje do instalacji). W przypadku wybrania opcji **Modyfikuj**rozpocznie się instalacja, która może chwilę potrwać.
 
-1. W Eksploratorze rozwiązań kliknij rozwiązanie prawym przyciskiem myszy i wybierz pozycję **Zarządzaj pakietami NuGet dla rozwiązania**.
+1. Zamknij Instalator programu Visual Studio.
 
-    ![Zrzut ekranu Eksploratora rozwiązań z wyróżnioną opcją Zarządzaj pakietami NuGet rozwiązania](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-03-manage-nuget-packages.png)
+### <a name="create-the-project-and-select-the-target-architecture"></a>Utwórz projekt i wybierz architekturę docelową
 
-1. W prawym górnym rogu wybierz w polu **Źródło pakietu** wartość **nuget.org**. Wyszukaj pakiet `Microsoft.CognitiveServices.Speech` i zainstaluj go w projekcie **helloworld**.
+Następnie utwórz projekt:
 
-    ![Zrzut ekranu okna dialogowego Zarządzaj pakietami dla rozwiązania](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-04-nuget-install-1.0.0.png)
+1. Na pasku menu programu Visual Studio wybierz kolejno pozycje **plik** > **Nowy** > **projekt** , aby wyświetlić okno **Utwórz nowy projekt** .
 
-    > [!NOTE]
-    > Bieżąca wersja zestawu Speech SDK usługi Cognitive Services to `1.5.0`.
+   ![Tworzenie nowego projektu C++ — Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-01-new-console-app.png)
 
-1. Zaakceptuj wyświetloną licencję, aby rozpocząć instalowanie pakietu NuGet.
+1. Znajdź i wybierz pozycję **Aplikacja konsolowa**. Upewnij się, że wybrano C++ wersję tego typu projektu (w przeciwieństwie do C# lub Visual Basic).
 
-    ![Zrzut ekranu okna dialogowego Akceptacja licencji](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-05-nuget-license.png)
+1. Wybierz pozycję **dalej** , aby wyświetlić ekran **Konfiguruj nowy projekt** .
 
-Po zainstalowaniu pakietu w konsoli Menedżera pakietów zostanie wyświetlone potwierdzenie.
+   ![Konfigurowanie nowego projektu i C++ programu Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-configure-your-new-project.png)
+
+1. W polu **Nazwa projektu**wprowadź `helloworld`.
+
+1. W obszarze **Lokalizacja**przejdź do, a następnie wybierz lub Utwórz folder, w którym ma zostać zapisany projekt.
+
+Teraz wybierz architekturę platformy docelowej. Na pasku narzędzi programu Visual Studio Znajdź pole listy rozwijanej **platformy rozwiązania** . (Jeśli nie widzisz go, wybierz pozycję **Wyświetl** > **paski narzędzi** > **Standard** , aby wyświetlić pasek narzędzi zawierający **platformy rozwiązań**). Jeśli korzystasz z 64-bitowego systemu Windows, wybierz **x64** w polu listy rozwijanej. 64 — bit systemu Windows może również uruchamiać aplikacje 32-bitowe, więc możesz wybrać **x86** , jeśli wolisz.
+
+### <a name="install-the-speech-sdk"></a>Instalowanie zestawu SDK usługi Mowa
+
+Na koniec zainstaluj [pakiet NuGet zestawu Speech SDK](https://aka.ms/csspeech/nuget)i odwołuje się do zestawu Speech SDK w projekcie:
+
+1. W **Eksplorator rozwiązań**kliknij prawym przyciskiem myszy rozwiązanie, a następnie wybierz pozycję **Zarządzaj pakietami NuGet dla rozwiązania** , aby przejść do okna **rozwiązania NuGet** .
+
+1. Wybierz pozycję **Przeglądaj**.
+
+   ![NuGet — Karta rozwiązanie, Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-03-manage-nuget-packages.png)
+
+1. W obszarze **Źródło pakietu**wybierz pozycję **NuGet.org**.
+
+1. W polu **wyszukiwania** wpisz `Microsoft.CognitiveServices.Speech`, a następnie wybierz ten pakiet po pojawieniu się w wynikach wyszukiwania.
+
+   ![Instalacja pakietu Microsoft. CognitiveServices C++ . Speech — Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-04-nuget-install-1.0.0.png)
+
+1. W okienku stan pakietu obok wyników wyszukiwania wybierz swój projekt **HelloWorld** .
+
+1. Wybierz pozycję **Zainstaluj**.
+
+1. W oknie dialogowym **Podgląd zmian** wybierz **przycisk OK**.
+
+1. W oknie dialogowym **Akceptacja licencji** Wyświetl licencję, a następnie wybierz pozycję **Akceptuję**. Rozpocznie się instalacja pakietu i po zakończeniu instalacji w okienku **dane wyjściowe** zostanie wyświetlony komunikat podobny do następującego: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.6.0' to helloworld`. 

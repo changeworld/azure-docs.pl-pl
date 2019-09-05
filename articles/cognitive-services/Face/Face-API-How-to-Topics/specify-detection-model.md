@@ -1,7 +1,7 @@
 ---
 title: Jak określić model wykrywania — interfejs API rozpoznawania twarzy
 titleSuffix: Azure Cognitive Services
-description: W tym artykule Pokaż jak wybrać model wykrywania twarzy za pomocą aplikacji interfejsu API rozpoznawania twarzy platformy Azure.
+description: W tym artykule opisano sposób wybierania modelu wykrywania czołowego, który będzie używany w aplikacji interfejs API rozpoznawania twarzy platformy Azure.
 services: cognitive-services
 author: yluiu
 manager: nitinme
@@ -10,55 +10,55 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
-ms.openlocfilehash: 26ab3cb247309aa21791ca5a984f39ef40ce9a78
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 4306a918d56240bfe038100124b3c2b94964cebc
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249631"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306682"
 ---
 # <a name="specify-a-face-detection-model"></a>Określanie modelu wykrywania twarzy
 
-Ten przewodnik pokazuje, jak określić model wykrywania twarzy dla interfejsu API rozpoznawania twarzy platformy Azure.
+W tym przewodniku pokazano, jak określić model wykrywania kroju dla interfejs API rozpoznawania twarzy platformy Azure.
 
-Interfejs API rozpoznawania twarzy używa modeli uczenia maszynowego do wykonywania operacji na twarze na obrazach. Kontynuujemy poprawić dokładność naszej modeli, w oparciu o opinie klientów oraz poprawę badań i możemy dostarczać te ulepszenia jako aktualizacje w modelu. Deweloperzy mają możliwość określenia, którą wersję modelu wykrywania twarzy chcieliby użyć; ich można wybrać model, który najlepiej pasuje do ich przypadkach użycia.
+Interfejs API rozpoznawania twarzy używa modeli uczenia maszynowego do wykonywania operacji na ludzkich twarzy na obrazach. Kontynuujemy ulepszanie dokładności naszych modeli w oparciu o opinie klientów i postępy w badaniach, a firma Microsoft zapewnia te udoskonalenia jako aktualizacje modelu. Deweloperzy mogą określić, która wersja modelu wykrywania kroju ma być używana; mogą wybrać model, który najlepiej pasuje do swojego przypadku użycia.
 
-Czytaj dalej, aby dowiedzieć się, jak określić model wykrywania twarzy w przypadku niektórych operacji twarzy. Interfejs API rozpoznawania twarzy używa wykrywanie twarzy w każdym przypadku, gdy jej konwertuje obraz twarzy na inny rodzaj danych.
+Przeczytaj, aby dowiedzieć się, jak określić model wykrywania czołowego w niektórych operacjach. Interfejs API rozpoznawania twarzy używa wykrywania czołowego za każdym razem, gdy konwertuje obraz obrazu do innej formy danych.
 
-Jeśli nie masz pewności, czy należy używać najnowszy model, przejdź do [ocenić różne modele](#evaluate-different-models) sekcji, aby obliczyć nowego modelu i porównaj wyniki przy użyciu bieżącego zestawu danych.
+Jeśli nie masz pewności, czy należy używać najnowszego modelu, przejdź do sekcji [Oceń różne modele](#evaluate-different-models) , aby oszacować nowy model i porównać wyniki przy użyciu bieżącego zestawu danych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Należy zapoznać się z pojęciem wykrywanie twarzy sztucznej Inteligencji. Jeśli nie masz, zobacz Przewodnik koncepcyjny wykrywania twarzy lub przewodniku z instrukcjami:
+Należy zapoznać się z koncepcją wykrywania kroju systemu AI. Jeśli nie, zapoznaj się z przewodnikiem dotyczącego wykrywania koncepcji lub przewodnikiem:
 
-* [Pojęcia dotyczące wykrywania twarzy](../concepts/face-detection.md)
-* [Jak wykrywanie twarzy na obrazie](HowtoDetectFacesinImage.md)
+* [Pojęcia dotyczące wykrywania czołowego](../concepts/face-detection.md)
+* [Jak wykrywać twarze w obrazie](HowtoDetectFacesinImage.md)
 
-## <a name="detect-faces-with-specified-model"></a>Wykrywanie twarzy przy użyciu określonego modelu
+## <a name="detect-faces-with-specified-model"></a>Wykrywanie twarzy z określonym modelem
 
-Wykrywanie twarzy umożliwia znalezienie lokalizacji obwiedni ludzkich twarzy i identyfikuje ich visual charakterystycznych elementów krajobrazu. Wyodrębnia funkcje twarzy i zapisuje je do późniejszego użycia z [rozpoznawania](../concepts/face-recognition.md) operacji.
+Wykrywanie twarzy umożliwia znalezienie obwiedni ludzkich i określenie ich punktów wizualizacji. Wyodrębnia funkcje funkcji i zapisuje je do późniejszego użycia w operacjach [rozpoznawania](../concepts/face-recognition.md) .
 
-Kiedy używasz [twarzy — wykrywanie] interfejsu API, można przypisać wersji modelu przy użyciu `detectionModel` parametru. Dostępne wartości to:
+W przypadku korzystania z interfejsu API [wykrywanie kroju] i można przypisać wersję modelu z `detectionModel` parametrem. Dostępne są następujące wartości:
 
 * `detection_01`
 * `detection_02`
 
-Adres URL żądania [twarzy — wykrywanie] interfejsu API REST będzie wyglądać następująco:
+Adres URL żądania dla interfejsu API REST [Wykrywanie kroju] będzie wyglądać następująco:
 
 `https://westus.api.cognitive.microsoft.com/face/v1.0/detect[?returnFaceId][&returnFaceLandmarks][&returnFaceAttributes][&recognitionModel][&returnRecognitionModel][&detectionModel]&subscription-key=<Subscription key>`
 
-Jeśli korzystasz z biblioteki klienta, można przypisać wartość `detectionModel` , przekazując odpowiednie parametry. Jeśli pozostawisz nieprzypisane, interfejsu API użyje domyślnej wersji modelu (`detection_01`). Zobacz poniższy przykład kodu dla biblioteki klienckiej .NET.
+W przypadku korzystania z biblioteki klienta można przypisać wartość `detectionModel` przez przekazanie odpowiedniego ciągu. Jeśli pozostawisz go nieprzypisane, interfejs API będzie używać domyślnej wersji modelu (`detection_01`). Zobacz Poniższy przykład kodu dla biblioteki klienta .NET.
 
 ```csharp
 string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, recognitionModel: "recognition_02", detectionModel: "detection_02");
 ```
 
-## <a name="add-face-to-person-with-specified-model"></a>Dodawanie rozpoznawania twarzy do osoby, przy użyciu określonego modelu
+## <a name="add-face-to-person-with-specified-model"></a>Dodaj miarę do osoby z określonym modelem
 
-Interfejs API rozpoznawania twarzy można wyodrębnić dane rozpoznawania twarzy z obrazu i skojarz ją z **osoby** obiektu za pomocą [grupie osoba — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) interfejsu API. W tym wywołaniu interfejsu API można określić model wykrywania w taki sam sposób jak w [twarzy — wykrywanie].
+Interfejs API rozpoznawania twarzy może wyodrębnić dane dotyczące kroju z obrazu i skojarzyć go z obiektem **osoba** za pośrednictwem [osoby tworzącej](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) interfejs API. W ramach tego wywołania interfejsu API można określić model wykrywania w taki sam sposób jak w przypadku [Wykrywanie kroju]na platformie.
 
-Zobacz poniższy przykład kodu dla biblioteki klienckiej .NET.
+Zobacz Poniższy przykład kodu dla biblioteki klienta .NET.
 
 ```csharp
 // Create a PersonGroup and add a person with face detected by "detection_02" model
@@ -71,14 +71,14 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_02");
 ```
 
-Ten kod tworzy **grupie** o identyfikatorze `mypersongroupid` i dodaje **osoby** do niego. A następnie dodaje do tej powierzchni **osoby** przy użyciu `detection_02` modelu. Jeśli nie określisz *detectionModel* parametru, interfejs API użyje domyślnego modelu `detection_01`.
+Ten kod tworzy **odbiorcę** o identyfikatorze `mypersongroupid` i dodaje do niego **osobę** . Następnie dodaje do tej **osoby** nową miarę przy użyciu `detection_02` modelu. Jeśli nie określisz parametru *detectionModel* , interfejs API użyje domyślnego modelu, `detection_01`.
 
 > [!NOTE]
-> Nie trzeba używać tego samego modelu wykrywania dla wszystkich twarze na **osoby** obiektu, a nie trzeba używać tego samego modelu wykrywanie podczas wykrywania nowe powierzchnie do porównania z **osoby** obiektu (w [Twarz — identyfikacja] interfejsu API, na przykład).
+> Nie musisz używać tego samego modelu wykrywania dla wszystkich twarzy w obiekcie **osoby** i nie musisz używać tego samego modelu wykrywania podczas wykrywania nowych twarzy do porównania z obiektem **osoby** (na przykład w interfejsie API rozpoznawania [Twarz — identyfikacja] ).
 
-## <a name="add-face-to-facelist-with-specified-model"></a>Dodawanie rozpoznawania twarzy do FaceList przy użyciu określonego modelu
+## <a name="add-face-to-facelist-with-specified-model"></a>Dodaj miarę do FaceList z określonym modelem
 
-Można również określić model wykrywania, po dodaniu twarzy do istniejącego **FaceList** obiektu. Zobacz poniższy przykład kodu dla biblioteki klienckiej .NET.
+Możesz również określić model wykrywania, gdy dodasz miarę do istniejącego obiektu **FaceList** . Zobacz Poniższy przykład kodu dla biblioteki klienta .NET.
 
 ```csharp
 await faceClient.FaceList.CreateAsync(faceListId, "My face collection", recognitionModel: "recognition_02");
@@ -87,31 +87,32 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_02");
 ```
 
-Ten kod tworzy **FaceList** o nazwie `My face collection` i dodaje twarzy do niego za pomocą `detection_02` modelu. Jeśli nie określisz *detectionModel* parametru, interfejs API użyje domyślnego modelu `detection_01`.
+Ten kod tworzy **FaceList** o nazwie `My face collection` i dodaje `detection_02` do niej miarę z modelem. Jeśli nie określisz parametru *detectionModel* , interfejs API użyje domyślnego modelu, `detection_01`.
 
 > [!NOTE]
-> Nie trzeba używać tego samego modelu wykrywania dla wszystkich twarze na **FaceList** obiektu, a nie trzeba używać tego samego modelu wykrywanie podczas wykrywania nowe powierzchnie do porównania z **FaceList** obiektu.
+> Nie musisz używać tego samego modelu wykrywania dla wszystkich twarzy w obiekcie **FaceList** i nie musisz używać tego samego modelu wykrywania podczas wykrywania nowych twarzy do porównania z obiektem **FaceList** .
 
-## <a name="evaluate-different-models"></a>Ocena różnych modeli
+## <a name="evaluate-different-models"></a>Oceń różne modele
 
-Modele wykrywania twarzy różnych są zoptymalizowane pod kątem różnych zadań. Zobacz poniższą tabelę, aby uzyskać omówienie różnic.
+Różne modele wykrywania kroju są zoptymalizowane pod kątem różnych zadań. Zapoznaj się z poniższą tabelą, aby zapoznać się z omówieniem różnic.
 
 |**detection_01**  |**detection_02**  |
 |---------|---------|
-|Wybór domyślny dla wszystkich operacji wykrywania twarzy. | Wydane w maja 2019 r i jest dostępny opcjonalnie we wszystkich operacjach wykrywania twarzy.
-|Nie zoptymalizowane pod kątem małych, Wyświetl bocznych lub rozmyte twarzy.  | Polepszenia dokładności w małych, widok strony i rozmyty twarzy. |
-|Zwraca twarzy atrybutów (poza siedzibę, wiek, emocje itd.), jeśli są one określone w wywołaniu wykrywania. |  Zwraca atrybuty twarzy.     |
-|Zwraca twarzy charakterystycznych elementów krajobrazu, jeśli są one określone w wywołaniu wykrywania.   | Nie zwraca to punktów charakterystycznych.  |
+|Wybór domyślny dla wszystkich operacji wykrywania elementu czołowego. | Wydane w maju 2019 i dostępne opcjonalnie we wszystkich operacjach wykrywania czołowych.
+|Nie zoptymalizowany pod kątem małych, bocznych i rozmytych twarzy.  | Ulepszona dokładność dla małych, bocznych i rozmytych twarzy. |
+|Zwraca atrybuty kroju (ułożenie głowy, wiek, rozpoznawania emocji itd.), jeśli są one określone w wywołaniu wykrywania. |  Nie zwraca atrybutów kroju.     |
+|Zwraca punkty orientacyjne, jeśli są one określone w wywołaniu wykrywania.   | Nie zwraca punktów orientacyjnych.  |
 
-Najlepszym sposobem, aby porównać parametrów `detection_01` i `detection_02` modele to z nich korzystać w przykładowym zestawie danych. Firma Microsoft zaleca wywołanie [twarzy — wykrywanie] interfejsu API na wielu różnych obrazów, szczególnie obrazy wielu lub powierzchnie, które są trudne do znajduje się za pomocą każdego modelu wykrywania. Należy zwrócić uwagę na liczbę twarzy, które zwraca każdego modelu.
+Najlepszym sposobem porównania wydajności `detection_01` modeli i `detection_02` jest użycie ich w przykładowym zestawie danych. Zalecamy wywoływanie interfejsu API [Wykrywanie kroju] na różnych obrazach, w szczególności obrazów wielu powierzchni lub twarzy, które trudno zobaczyć, przy użyciu poszczególnych modeli wykrywania. Zwróć uwagę na liczbę twarzy zwracanych przez poszczególne modele.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym artykule przedstawiono sposób określania model wykrywania za pomocą różnych interfejsów API rozpoznawania twarzy. Następnie postępuj zgodnie z szybkiego startu, aby rozpocząć pracę, za pomocą wykrywania twarzy.
+W tym artykule przedstawiono sposób określania modelu wykrywania, który ma być używany z różnymi interfejsami API rozpoznawania. Następnie postępuj zgodnie z przewodnikiem Szybki Start, aby rozpocząć korzystanie z wykrywania czołowego.
 
-* [Wykrywanie twarzy na obrazie (.NET SDK)](../quickstarts/csharp-detect-sdk.md)
+* [Zestaw SDK platformy .NET](../Quickstarts/csharp-sdk.md)
+* [Zestaw SDK dla języka Python](../Quickstarts/python-sdk.md)
 
-[Twarzy — wykrywanie]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
+[Wykrywanie kroju]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [Face - Find Similar]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237
 [Twarz — identyfikacja]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239
 [Face - Verify]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a

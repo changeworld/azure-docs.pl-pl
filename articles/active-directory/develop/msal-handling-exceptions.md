@@ -16,12 +16,12 @@ ms.date: 08/19/2019
 ms.author: negoe
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 77a2e571b76044ff9114f6671b187118cf03c0ba
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: fe3ad29cfd113deba5824ce25721dc543c6267c0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135810"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305053"
 ---
 # <a name="handling-exceptions-and-errors-using-msal"></a>Obsługa wyjątków i błędów przy użyciu MSAL
 Wyjątki w bibliotece uwierzytelniania firmy Microsoft (MSAL) są przeznaczone dla deweloperów aplikacji do rozwiązywania problemów, a nie do wyświetlania użytkownikom końcowym. Komunikaty o wyjątkach nie są zlokalizowane.
@@ -179,7 +179,7 @@ Interaktywny uzyskiwanie tokenu wyświetla użytkownika i daje im możliwość s
 
 Gdy wywołujesz interfejs API wymagający dostępu warunkowego, możesz odebrać wyzwanie dotyczące oświadczeń w błędzie z interfejsu API. W takim przypadku można przekazać oświadczenia zwrócone w błędzie do `claimsRequest` pola `AuthenticationParameters.ts` klasy w celu spełnienia odpowiednich zasad. 
 
-Zobacz [żądanie dodatkowych oświadczeń]() , aby uzyskać więcej szczegółów.
+Zobacz [żądanie dodatkowych oświadczeń](active-directory-optional-claims.md) , aby uzyskać więcej szczegółów.
 
 ## <a name="retrying-after-errors-and-exceptions"></a>Ponawianie próby po wystąpieniu błędów i wyjątkach
 

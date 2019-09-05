@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 63150b8924438df8d77fdd088811d9fbe3ec2d84
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: bff6268507c0d2ec0aa1eac0c7e2e9d2513ded58
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967308"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376120"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Przenoszenie maszyn wirtualnych platformy Azure między Azure Government i regionami publicznymi 
 
@@ -98,8 +98,8 @@ Na każdym serwerze, który ma zostać zreplikowany, musi być zainstalowana us�
      Skorzystaj z poniższych dokumentów, aby utworzyć odpowiednie najczęściej używane zasoby sieciowe, na podstawie konfiguracji źródłowej maszyny wirtualnej.
 
     - [Sieciowe grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Moduły równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
-    - [Publiczny adres IP](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+    - [Moduły równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer)
+    - [Publiczny adres IP](../virtual-network/virtual-network-public-ip-address.md)
     
     Informacje na temat innych składników sieciowych zawiera [dokumentacja](https://docs.microsoft.com/azure/#pivot=products&panel=network) sieci. 
 
@@ -146,7 +146,7 @@ Upewnij się, że komputer może uzyskać dostęp do tych adresów URL w oparciu
 
 Reguły zapory oparte na adresach IP powinny zezwalać na komunikację ze wszystkimi adresami URL platformy Azure wymienionymi powyżej za pośrednictwem portu HTTPS (443). Aby uprościć i ograniczyć zakres adresów IP, zalecane jest filtrowanie adresów URL.
 
-- **Komercyjne adresy** IP — Zezwalaj na przedziały [adresów IPv4 centrum danych platformy Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653)oraz port HTTPS (443). Zezwalaj na zakresy adresów IP dla regionu platformy Azure Twojej subskrypcji, aby obsługiwać adresy URL usługi AAD, kopii zapasowej, replikacji i magazynu.  
+- **Komercyjne adresy** IP — Zezwalaj na [przedziały adresów IPv4 centrum danych platformy Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653)oraz port HTTPS (443). Zezwalaj na zakresy adresów IP dla regionu platformy Azure Twojej subskrypcji, aby obsługiwać adresy URL usługi AAD, kopii zapasowej, replikacji i magazynu.  
 - **Adresy IP instytucji rządowych** — zezwalaj na [Azure Government zakresy adresów URL centrum](https://www.microsoft.com/en-us/download/details.aspx?id=57063)danych oraz port HTTPS (443) dla wszystkich regionów USGov (Wirginia, Texas, Arizona i Iowa) do obsługi usługi AAD, kopii zapasowych, replikacji i adresów URL magazynu.  
 
 #### <a name="run-setup"></a>Uruchamianie instalatora

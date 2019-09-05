@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: roiyz
-ms.openlocfilehash: ba82b026fe69bd22b3afa89ddb73373dfd194472
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6a845cad298e2aedbe68a11cd170120d1d229043
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092693"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382840"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Omówienie agenta maszyny wirtualnej platformy Azure
 Agent maszyny wirtualnej Microsoft Azure (Agent VM) to bezpieczny, lekki proces zarządzający interakcją maszyny wirtualnej z kontrolerem sieci szkieletowej Azure. Agent maszyny wirtualnej odgrywa podstawową rolę w procesie włączania i wykonywania rozszerzeń maszyny wirtualnej platformy Azure. Rozszerzenia maszyn wirtualnych umożliwiają konfigurację po wdrożeniu maszyny wirtualnej, taką jak instalowanie i Konfigurowanie oprogramowania. Rozszerzenia maszyn wirtualnych umożliwiają również włączenie funkcji odzyskiwania, takich jak resetowanie hasła administracyjnego maszyny wirtualnej. Bez agenta maszyny wirtualnej platformy Azure nie można uruchomić rozszerzeń maszyn wirtualnych.
@@ -66,6 +66,9 @@ Agenta maszyny wirtualnej można zainstalować przez dwukrotne kliknięcie pliku
 ```cmd
 msiexec.exe /i WindowsAzureVmAgent.2.7.1198.778.rd_art_stable.160617-1120.fre /quiet
 ```
+
+### <a name="prerequisites"></a>Wymagania wstępne
+Agent maszyny wirtualnej z systemem Windows wymaga co najmniej systemu Windows Server 2008 R2 (64-BITS) do uruchomienia przy użyciu programu .NET Framework 4,0.
 
 ## <a name="detect-the-vm-agent"></a>Wykrywanie agenta maszyny wirtualnej
 

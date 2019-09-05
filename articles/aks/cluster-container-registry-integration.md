@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: mlearned
-ms.openlocfilehash: 1f07581be8fc416f8aae5eec1460ca3d33bda8f9
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 3c11367945b74db9be20ade86c7bc26901440e4d
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114235"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305163"
 ---
 # <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Wersja zapoznawcza — uwierzytelnianie za pomocą Azure Container Registry z usługi Azure Kubernetes
 
@@ -33,11 +33,11 @@ Wymagane są następujące elementy:
 
 * Rola **właściciela** lub **administratora konta platformy Azure** w **subskrypcji platformy Azure**
 * Potrzebujesz także interfejsu wiersza polecenia platformy Azure w wersji 2.0.70 lub nowszej oraz rozszerzenia AKS-Preview 0.4.8
-* Na kliencie musi być [zainstalowany](https://docs.docker.com/install/) program Docker i potrzebny jest dostęp do [centrum platformy Docker](https://hub.docker.com/)
+* Na kliencie musi być [zainstalowany program Docker](https://docs.docker.com/install/) i potrzebny jest dostęp do [centrum platformy Docker](https://hub.docker.com/)
 
 ## <a name="install-latest-aks-cli-preview-extension"></a>Zainstaluj rozszerzenie najnowszej wersji zapoznawczej interfejsu wiersza polecenia AKS
 
-Potrzebujesz rozszerzenia **AKS-Preview 0.4.8** lub nowszego.
+Potrzebujesz rozszerzenia **AKS-Preview 0.4.13** lub nowszego.
 
 ```azurecli
 az extension remove --name aks-preview 
@@ -46,25 +46,33 @@ az extension add -y --name aks-preview
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>Utwórz nowy klaster AKS z integracją ACR
 
-Integrację AKS i ACR można skonfigurować podczas początkowego tworzenia klastra AKS.  Aby umożliwić klastrowi AKS współdziałanie z ACR, używana jest jednostka **usługi** Azure Active Directory. Następujące polecenie interfejsu wiersza polecenia tworzy ACR w określonej grupie zasobów i konfiguruje odpowiednią rolę **ACRPull** dla jednostki usługi. Jeśli *ACR-Name* nie istnieje w określonej grupie zasobów, zostanie automatycznie utworzona domyślna nazwa `aks<resource-group>acr` ACR.  Podaj prawidłowe wartości parametrów poniżej.  Parametry w nawiasach są opcjonalne.
+Integrację AKS i ACR można skonfigurować podczas początkowego tworzenia klastra AKS.  Aby umożliwić klastrowi AKS współdziałanie z ACR, używana jest jednostka **usługi** Azure Active Directory. Następujące polecenie interfejsu wiersza polecenia pozwala autoryzować istniejące ACR w ramach subskrypcji i skonfigurować odpowiednią rolę **ACRPull** dla jednostki usługi. Podaj prawidłowe wartości parametrów poniżej.  Parametry w nawiasach są opcjonalne.
 ```azurecli
 az login
-az aks create -n myAKSCluster -g myResourceGroup --enable-acr [--acr <acr-name-or-resource-id>]
+az acr create -n myContainerRegistry -g myContainerRegistryResourceGroup --sku basic [in case you do not have an existing ACR]
+az aks create -n myAKSCluster -g myResourceGroup --attach-acr <acr-name-or-resource-id>
 ```
 \* * Identyfikator zasobu ACR ma następujący format: 
 
-/subscriptions/< Subscription-d >/resourceGroups/< Resource-Group-Name ><name> 
+/subscriptions/< Subscription-d >/resourceGroups/< Resource-Group-Name > 
   
 Wykonanie tego kroku może potrwać kilka minut.
 
-## <a name="create-acr-integration-for-existing-aks-clusters"></a>Tworzenie integracji ACR dla istniejących klastrów AKS
+## <a name="configure-acr-integration-for-existing-aks-clusters"></a>Konfigurowanie integracji usługi ACR dla istniejących klastrów AKS
 
 Zintegruj istniejący ACR z istniejącymi klastrami AKS, dostarczając prawidłowe wartości dla **ACR-Name** lub **ACR-Resource-ID** w następujący sposób.
 
 ```azurecli
-az aks update -n myAKSCluster -g myResourceGroup --enable-acr --acr <acrName>
-az aks update -n myAKSCluster -g myResourceGroup --enable-acr --acr <acr-resource-id>
+az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --attach-acr <acr-resource-id>
 ```
+
+Można również usunąć integrację między usługą ACR a klastrem AKS z następującymi elementami:
+```azurecli
+az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acrName>
+az aks update -n myAKSCluster -g myResourceGroup --detach-acr <acr-resource-id>
+```
+
 
 ## <a name="log-in-to-your-acr"></a>Logowanie do ACR
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 7874a2bad63a4c5b47545c06a91228e64d523849
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 3907a244bc2d85e7225f94b15150298fd80a032f
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258789"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382337"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding często zadawane pytania
 
@@ -265,7 +265,7 @@ Klucz tworzenia starter jest dozwolona tylko 1000 punkt końcowy zapytań przez 
 Pierwszym problemem jest wyizolowanie, jeśli problem związany z LUISem lub zachodzi poza oprogramowanie pośredniczące LUIS. 
 
 #### <a name="resolve-issue-in-luis"></a>Rozwiązywanie problemu w programie LUIS
-Przekaż ten sam wypowiedź do LUIS z [punktu końcowego Luis](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance). Jeśli zostanie wyświetlony komunikat o błędzie, należy rozwiązać problem w LUIS, dopóki błąd nie zostanie już zwrócony. Typowe błędy:
+Przekaż ten sam wypowiedź do LUIS z [punktu końcowego Luis](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint). Jeśli zostanie wyświetlony komunikat o błędzie, należy rozwiązać problem w LUIS, dopóki błąd nie zostanie już zwrócony. Typowe błędy:
 
 * `Out of call volume quota. Quota will be replenished in <time>.`— Ten problem oznacza konieczność zmiany z klucza tworzenia do [klucza punktu końcowego](luis-how-to-azure-subscription.md) lub należy zmienić [warstwy usług](luis-how-to-azure-subscription.md#change-pricing-tier). 
 

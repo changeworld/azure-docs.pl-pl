@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: e28478d31a674d742870344b33eac6b84c3ae584
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 2705b42849922ce7e3650162b8f1ff78723685c2
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123837"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309238"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfiguracja magazynu dla maszyn wirtualnych SQL Server
 
@@ -110,11 +110,10 @@ Drugą opcją rozwinięcia magazynu jest rozszerzenie istniejącego dysku. Ta op
 
 Ta sekcja zawiera informacje o zmianach konfiguracji magazynu, które usługa Azure automatycznie wykonuje podczas aprowizacji lub konfiguracji maszyny wirtualnej SQL w Azure Portal.
 
-* Jeśli wybrano mniej niż dwa usługi TBs magazynu dla maszyny wirtualnej, platforma Azure nie utworzy puli magazynów.
-* Jeśli wybrano co najmniej dwa usługi TBs magazynu dla maszyny wirtualnej, platforma Azure skonfiguruje pulę magazynów. W następnej sekcji tego tematu znajdują się szczegółowe informacje o konfiguracji puli magazynu.
+* Platforma Azure konfiguruje pulę magazynów z magazynu wybranego z maszyny wirtualnej. Następna sekcja tego tematu zawiera szczegółowe informacje o konfiguracji puli magazynu.
 * Funkcja automatycznej konfiguracji magazynu zawsze używa dysków danych w [warstwie Premium dysków SSD](../disks-types.md) P30. W związku z tym istnieje 1:1 mapowanie między wybraną liczbą terabajtów a liczbą dysków danych podłączonych do maszyny wirtualnej.
 
-Aby uzyskać informacje o cenach, zobacz stronę z cennikiem usługi [Storage](https://azure.microsoft.com/pricing/details/storage) na karcie **Disk Storage** .
+Aby uzyskać informacje o cenach, zobacz stronę z [cennikiem usługi Storage](https://azure.microsoft.com/pricing/details/storage) na karcie **Disk Storage** .
 
 ### <a name="creation-of-the-storage-pool"></a>Tworzenie puli magazynów
 

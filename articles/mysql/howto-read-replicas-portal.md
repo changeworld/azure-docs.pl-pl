@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/21/2019
-ms.openlocfilehash: 74f27f70c4a0752975a53b3889681d3910b1dd05
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/04/2019
+ms.openlocfilehash: 275c7bc8127855712c191141ef681526da7c377b
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906436"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309505"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Tworzenie replik odczytu i zarządzanie nimi w Azure Database for MySQL przy użyciu Azure Portal
 
 W tym artykule przedstawiono sposób tworzenia replik odczytu i zarządzania nimi w usłudze Azure Database for MySQL przy użyciu Azure Portal.
-
-> [!IMPORTANT]
-> Replikę odczytu można utworzyć w tym samym regionie, w którym znajduje się serwer główny, lub w dowolnym innym wybranym regionie świadczenia usługi Azure. Replikacja między regionami jest obecnie dostępna w publicznej wersji zapoznawczej.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -37,7 +34,7 @@ Serwer repliki odczytu można utworzyć, wykonując następujące czynności:
 
 3. Wybierz opcję **replikacja** z menu, w obszarze **Ustawienia**.
 
-4. Wybierz pozycję **Dodaj**replikę.
+4. Wybierz pozycję **Dodaj replikę**.
 
    ![Azure Database for MySQL — replikacja](./media/howto-read-replica-portal/add-replica.png)
 
@@ -96,7 +93,7 @@ Aby usunąć serwer repliki odczytu z Azure Portal, wykonaj następujące czynno
 
    ![Azure Database for MySQL — usuwanie repliki wybierz serwer](./media/howto-read-replica-portal/delete-replica-select.png)
 
-4. Wybierz pozycję **Usuń** replikę
+4. Wybierz pozycję **Usuń replikę**
 
    ![Azure Database for MySQL-Usuń replikę](./media/howto-read-replica-portal/delete-replica.png)
 

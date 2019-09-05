@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 7ec731c6b75ff556c9e00f7041fea32f807fe5f4
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: ecb840d97a45479d32079766807b4f2788cc29ec
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69892020"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382901"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network często zadawane pytania
 
@@ -106,7 +106,7 @@ Tak. Możesz dodać, usunąć, rozwinąć lub zmniejszyć podsieć, jeśli nie m
 Tak. Bloki CIDR używane przez sieć wirtualną można dodawać, usuwać i modyfikować.
 
 ### <a name="if-i-am-running-my-services-in-a-vnet-can-i-connect-to-the-internet"></a>Czy w przypadku korzystania z usług w sieci wirtualnej można nawiązać połączenie z Internetem?
-Tak. Wszystkie usługi wdrożone w sieci wirtualnej mogą łączyć ruch wychodzący z Internetem. Aby dowiedzieć się więcej o wychodzących połączeniach internetowych na platformie Azure, zobacz [połączenia](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)wychodzące. Jeśli chcesz nawiązać połączenie przychodzące z zasobem wdrożonym za pomocą Menedżer zasobów, do zasobu musi być przypisany publiczny adres IP. Aby dowiedzieć się więcej o publicznych adresach IP, zobacz [publiczne adresy IP](virtual-network-public-ip-address.md). Każda usługa w chmurze platformy Azure wdrożona na platformie Azure ma publicznie przypisany adres VIP. Należy zdefiniować wejściowe punkty końcowe dla PaaS ról i punktów końcowych dla maszyn wirtualnych, aby umożliwić tym usługom akceptowanie połączeń z Internetu.
+Tak. Wszystkie usługi wdrożone w sieci wirtualnej mogą łączyć ruch wychodzący z Internetem. Aby dowiedzieć się więcej o wychodzących połączeniach internetowych na platformie Azure, zobacz [połączenia wychodzące](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Jeśli chcesz nawiązać połączenie przychodzące z zasobem wdrożonym za pomocą Menedżer zasobów, do zasobu musi być przypisany publiczny adres IP. Aby dowiedzieć się więcej o publicznych adresach IP, zobacz [publiczne adresy IP](virtual-network-public-ip-address.md). Każda usługa w chmurze platformy Azure wdrożona na platformie Azure ma publicznie przypisany adres VIP. Należy zdefiniować wejściowe punkty końcowe dla PaaS ról i punktów końcowych dla maszyn wirtualnych, aby umożliwić tym usługom akceptowanie połączeń z Internetu.
 
 ### <a name="do-vnets-support-ipv6"></a>Czy sieci wirtualnych obsługuje protokół IPv6?
 Nie. W tej chwili nie można używać protokołu IPv6 z sieci wirtualnych. Można jednak przypisać adresy IPv6 do modułów równoważenia obciążenia platformy Azure, aby zrównoważyć obciążenie maszyn wirtualnych. Aby uzyskać szczegółowe informacje, zobacz [Omówienie protokołu IPv6 dla Azure Load Balancer](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
@@ -117,7 +117,7 @@ Nie. Sieć wirtualna jest ograniczona do jednego regionu. Sieć wirtualna obejmu
 ### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>Czy mogę połączyć sieć wirtualną z inną siecią wirtualną na platformie Azure?
 Tak. Można połączyć jedną sieć wirtualną z inną siecią wirtualną przy użyciu:
 - **Komunikacja równorzędna sieci wirtualnej**: Aby uzyskać szczegółowe informacje, zobacz [Omówienie komunikacji równorzędnej sieci](virtual-network-peering-overview.md) wirtualnych
-- **VPN Gateway platformy Azure**: Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie połączenia](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)między sieciami wirtualnymi. 
+- **VPN Gateway platformy Azure**: Aby uzyskać szczegółowe informacje, zobacz [Konfigurowanie połączenia między sieciami wirtualnymi](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). 
 
 ## <a name="name-resolution-dns"></a>Rozpoznawanie nazw (DNS)
 
@@ -228,9 +228,9 @@ Tak. Interfejsów API REST można używać dla sieci wirtualnych w ramach [Azure
 
 ### <a name="is-there-tooling-support-for-vnets"></a>Czy istnieją narzędzia obsługujące sieci wirtualnych?
 Tak. Dowiedz się więcej o korzystaniu z programu:
-- Azure Portal wdrażania sieci wirtualnych za pomocą [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) i klasycznych [](virtual-networks-create-vnet-classic-pportal.md) modeli wdrażania.
+- Azure Portal wdrażania sieci wirtualnych za pomocą [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) i [klasycznych](virtual-networks-create-vnet-classic-pportal.md) modeli wdrażania.
 - Program PowerShell do zarządzania usługą sieci wirtualnych wdrożoną za pomocą [Menedżer zasobów](/powershell/module/az.network) i [klasycznych](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) modeli wdrażania.
-- Interfejs wiersza polecenia (CLI) platformy Azure do wdrażania sieci wirtualnych wdrożonych w ramach [Menedżer zasobów](/cli/azure/network/vnet) i klasycznych [](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) modeli wdrażania oraz zarządzania nimi.  
+- Interfejs wiersza polecenia (CLI) platformy Azure do wdrażania sieci wirtualnych wdrożonych w ramach [Menedżer zasobów](/cli/azure/network/vnet) i [klasycznych](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) modeli wdrażania oraz zarządzania nimi.  
 
 ## <a name="vnet-peering"></a>Komunikacja równorzędna sieci wirtualnych
 
@@ -257,16 +257,16 @@ W poniższych zasobach są używane podstawowe usługi równoważenia obciążen
 - AKS
 - App Service Environment
 
-Możesz nawiązać połączenie z tym zasobem za pośrednictwem ExpressRoute lub sieci VNet-to-VNet za pośrednictwem bram sieci wirtualnej.
+Możesz połączyć się z tymi zasobami za pośrednictwem ExpressRoute lub sieci VNet-to-VNet za pośrednictwem bram sieci wirtualnej.
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Czy mogę włączyć komunikację równorzędną wirtualnych, jeśli moje sieci wirtualne należą do subskrypcji w ramach różnych Azure Active Directory dzierżawców?
 Tak. Istnieje możliwość ustanowienia komunikacji równorzędnej sieci wirtualnej (lokalnego lub globalnego), jeśli subskrypcje należą do różnych dzierżaw Azure Active Directory. Można to zrobić za pomocą programu PowerShell lub interfejsu wiersza polecenia. Portal nie jest jeszcze obsługiwany.
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>Połączenie komunikacji równorzędnej sieci wirtualnej jest w stanie *inicjowania* , dlaczego nie mogę nawiązać połączenia?
-Jeśli połączenie komunikacji równorzędnej jest w stanie zainicjowanym, oznacza to, że utworzono tylko jeden link. Aby można było nawiązać połączenie, należy utworzyć dwukierunkowy link. Na przykład aby połączyć równorzędną sieć wirtualną z siecią VNet B, należy utworzyć łącze z VNetA do Vnetc i z Vnetc do VNetA. Utworzenie obu linków spowoduje zmianę stanu na *połączony.*
+Jeśli połączenie komunikacji równorzędnej jest w stanie *zainicjowanym* , oznacza to, że utworzono tylko jeden link. Aby można było nawiązać połączenie, należy utworzyć dwukierunkowy link. Na przykład aby połączyć równorzędną sieć wirtualną z siecią VNet B, należy utworzyć łącze z VNetA do Vnetc i z Vnetc do VNetA. Utworzenie obu linków spowoduje zmianę stanu na *połączony*.
 
-### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>Połączenie komunikacji równorzędnej sieci wirtualnej jest w stanie rozłączenia, dlaczego nie można utworzyć połączenia komunikacji równorzędnej?
-Jeśli połączenie komunikacji równorzędnej sieci wirtualnej jest w stanie odłączonym, oznacza to, że jedno z utworzonych linków zostało usunięte. Aby można było ponownie ustanowić połączenie komunikacji równorzędnej, należy usunąć link i ponownie utworzyć.
+### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>Połączenie komunikacji równorzędnej sieci wirtualnej jest w stanie *rozłączenia* , dlaczego nie można utworzyć połączenia komunikacji równorzędnej?
+Jeśli połączenie komunikacji równorzędnej sieci wirtualnej jest w stanie *odłączonym* , oznacza to, że jedno z utworzonych linków zostało usunięte. Aby można było ponownie ustanowić połączenie komunikacji równorzędnej, należy usunąć link i ponownie go utworzyć.
 
 ### <a name="can-i-peer-my-vnet-with-a-vnet-in-a-different-subscription"></a>Czy mogę połączyć sieć wirtualną z siecią wirtualną w ramach innej subskrypcji?
 Tak. Możesz sieci wirtualnych elementy równorzędne w różnych subskrypcjach i w różnych regionach.
@@ -280,8 +280,8 @@ Nie jest naliczana opłata za utworzenie połączenia komunikacji równorzędnej
 ### <a name="is-vnet-peering-traffic-encrypted"></a>Czy ruch komunikacji równorzędnej sieci wirtualnej jest szyfrowany?
 Nie. Ruch między zasobami w sieci wirtualnych komunikacji równorzędnej jest prywatny i izolowany. Pozostanie w całości w sieci szkieletowej firmy Microsoft.
 
-### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Dlaczego moje połączenie komunikacji równorzędnej jest w stanie odłączonym?
-Połączenia komunikacji równorzędnej sieci wirtualnych przechodzą w stan rozłączenia, gdy zostanie usunięte łącze komunikacji równorzędnej sieci wirtualnej. Należy usunąć oba linki, aby ponownie ustanowić pomyślne połączenie komunikacji równorzędnej.
+### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Dlaczego moje połączenie komunikacji równorzędnej jest w stanie *odłączonym* ?
+Połączenia komunikacji równorzędnej sieci wirtualnych przechodzą w stan *rozłączenia* , gdy zostanie usunięte łącze komunikacji równorzędnej sieci wirtualnej. Należy usunąć oba linki, aby ponownie ustanowić pomyślne połączenie komunikacji równorzędnej.
 
 ### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>Jeśli VNetA równorzędny do Vnetc i i elementów równorzędnych Vnetc do VNetC, czy oznacza to, że jako VNetA i VNetC są połączone za pomocą komunikacji równorzędnej?
 Nie. Przechodnia Komunikacja równorzędna nie jest obsługiwana. Aby to zrobić, musisz mieć VNetAy elementów równorzędnych i VNetC.
@@ -301,7 +301,7 @@ Usługa Virtual Network TAP w wersji zapoznawczej jest dostępna we wszystkich r
 Możliwości filtrowania nie są obsługiwane w przypadku WYBRANia pozycji Podgląd sieci wirtualnej. Po dodaniu konfiguracji TAP do interfejsu sieciowego Szczegółowa kopia całego ruchu przychodzącego i wychodzącego w interfejsie sieciowym jest przesyłana strumieniowo do lokalizacji docelowej.
 
 ### <a name="can-multiple-tap-configurations-be-added-to-a-monitored-network-interface"></a>Czy do monitorowanego interfejsu sieciowego można dodać wiele konfiguracji TAP?
-Monitorowany interfejs sieciowy może mieć tylko jedną konfigurację TAP. Zapoznaj się z [rozwiązaniami poszczególnych partnerów](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions) , aby przesłać strumieniowo wiele kopii ruchu TAP do wybranych narzędzi analitycznych.
+Monitorowany interfejs sieciowy może mieć tylko jedną konfigurację TAP. Zapoznaj się z [rozwiązaniem partnera](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions) indywidualnego, aby przesłać strumieniowo wiele kopii ruchu TAP do wybranych narzędzi analitycznych.
 
 ### <a name="can-the-same-virtual-network-tap-resource-aggregate-traffic-from-monitored-network-interfaces-in-more-than-one-virtual-network"></a>Czy ta sama sieć wirtualna umożliwia wybranie zasobów zagregowanych z monitorowanych interfejsów sieciowych w więcej niż jednej sieci wirtualnej?
 Tak. Tego samego zasobu sieci wirtualnej można użyć do agregowania dublowanego ruchu z monitorowanych interfejsów sieciowych w równorzędnych sieciach wirtualnych w ramach tej samej subskrypcji lub innej subskrypcji. Zasób TAP sieci wirtualnej i docelowy moduł równoważenia obciążenia lub docelowy interfejs sieciowy muszą znajdować się w tej samej subskrypcji. Wszystkie subskrypcje muszą znajdować się w tej samej dzierżawie Azure Active Directory.
@@ -317,11 +317,11 @@ Można dodać konfigurację TAP w interfejsie sieciowym podłączonym do maszyny
 ## <a name="virtual-network-service-endpoints"></a>Punkty końcowe usługi dla sieci wirtualnej
 
 ### <a name="what-is-the-right-sequence-of-operations-to-set-up-service-endpoints-to-an-azure-service"></a>Jaka jest właściwa sekwencja operacji w celu skonfigurowania punktów końcowych usługi dla usługi platformy Azure?
-Aby zabezpieczyć zasób usługi platformy Azure za pomocą punktów końcowych usługi, należy wykonać dwie czynności:
+Aby zabezpieczyć zasób usługi platformy Azure za pomocą punktów końcowych usługi, należy wykonać dwa kroki:
 1. Włącz punkty końcowe usługi dla usługi platformy Azure.
 2. Skonfiguruj listy ACL sieci wirtualnej w usłudze platformy Azure.
 
-Pierwszym krokiem jest operacja po stronie sieci, a drugi krok to operacja po stronie zasobów usługi. Obie kroki mogą być wykonywane przez tego samego administratora lub różnych administratorów na podstawie uprawnień RBAC przyznanych roli administratora. Zalecamy najpierw włączyć punkty końcowe usługi dla sieci wirtualnej przed skonfigurowaniem list kontroli dostępu wirtualnej w ramach usługi platformy Azure. W związku z tym należy wykonać kroki opisane powyżej, aby skonfigurować punkty końcowe usługi sieci wirtualnej.
+Pierwszym krokiem jest operacja po stronie sieci, a drugi krok to operacja po stronie zasobów usługi. Obie kroki mogą być wykonywane przez tego samego administratora lub różnych administratorów na podstawie uprawnień RBAC przyznanych roli administratora. Zalecamy najpierw włączyć punkty końcowe usługi dla sieci wirtualnej przed skonfigurowaniem list kontroli dostępu wirtualnej w ramach usługi platformy Azure. W związku z tym kroki muszą być wykonywane w sekwencji wymienionej powyżej w celu skonfigurowania punktów końcowych usługi sieci wirtualnej.
 
 >[!NOTE]
 > Obie operacje opisane powyżej muszą zostać wykonane, aby można było ograniczyć dostęp usługi platformy Azure do dozwolonej sieci wirtualnej i podsieci. Włączenie punktów końcowych usługi dla usługi platformy Azure po stronie sieci nie zapewnia ograniczonego dostępu. Ponadto należy również skonfigurować listy ACL sieci wirtualnej na stronie usługi platformy Azure.
@@ -336,7 +336,7 @@ W przypadku korzystania z funkcji punktów końcowych usługi sieci wirtualnej (
 
 ### <a name="how-does-vnet-service-endpoint-provide-security"></a>Jak punkt końcowy usługi sieci wirtualnej zapewnia zabezpieczenia?
 
-Funkcja punktu końcowego usługi sieci wirtualnej (Włączanie punktu końcowego usługi wirtualnej po stronie sieci i konfigurowania odpowiednich list ACL sieci wirtualnej na stronie usługi platformy Azure) ogranicza dostęp do usługi platformy Azure do dozwolonej sieci wirtualnej i podsieci, zapewniając w ten sposób bezpieczeństwo i izolację poziomu sieciowego ruch usługi platformy Azure. Cały ruch korzystający z punktów końcowych usługi sieci wirtualnej przechodzi przez sieć szkieletową firmy Microsoft, co zapewnia kolejną warstwę izolacji z publicznego Internetu. Ponadto klienci mogą wybrać całkowite usunięcie publicznego dostępu do zasobów usługi platformy Azure i Zezwalanie na ruch tylko z sieci wirtualnych za pośrednictwem kombinacji list kontroli dostępu i zapory IP, a tym samym ochronę zasobów usługi platformy Azure przed nieautoryzowanym dostępem niego.      
+Funkcja punktu końcowego usługi sieci wirtualnej (Włączanie punktu końcowego usługi wirtualnej po stronie sieci i konfigurowania odpowiednich list ACL sieci wirtualnej na stronie usługi platformy Azure) ogranicza dostęp do usługi platformy Azure do dopuszczalnej sieci wirtualnej i podsieci, zapewniając w ten sposób zabezpieczenia na poziomie sieci i izolacja ruchu usługi platformy Azure. Cały ruch korzystający z punktów końcowych usługi sieci wirtualnej przechodzi przez sieć szkieletową firmy Microsoft, co zapewnia kolejną warstwę izolacji z publicznego Internetu. Ponadto klienci mogą wybrać całkowite usunięcie publicznego dostępu do zasobów usługi platformy Azure i Zezwalanie na ruch tylko z sieci wirtualnych za pośrednictwem kombinacji list kontroli dostępu i zapory IP, a tym samym ochronę zasobów usługi platformy Azure przed nieautoryzowanym dostępem niego.      
 
 ### <a name="what-does-the-vnet-service-endpoint-protect---vnet-resources-or-azure-service"></a>Co to jest Ochrona punktu końcowego usługi sieci wirtualnej lub usługi platformy Azure?
 Punkty końcowe usługi sieci wirtualnej ułatwiają ochronę zasobów usługi platformy Azure. Zasoby sieci wirtualnej są chronione za poorednictwem sieciowych grup zabezpieczeń (sieciowych grup zabezpieczeń).
@@ -352,34 +352,34 @@ Tak, jest to możliwe. Sieci wirtualne i zasoby usług platformy Azure mogą nal
 ### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>Czy mogę włączyć punkty końcowe usługi VNet i skonfigurować listy ACL sieci wirtualnej, jeśli sieć wirtualna i zasoby usługi platformy Azure należą do różnych dzierżawców usługi AD?
 Nie, punkty końcowe usługi sieci wirtualnej i listy kontroli dostępu wirtualne nie są obsługiwane w dzierżawach usługi AD.
 
-### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-express-route-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Czy adres IP urządzenia lokalnego, który jest połączony za pośrednictwem bramy usługi Azure Virtual Network Gateway (VPN) lub bramy usługi Express Route, uzyskuje dostęp do usług Azure PaaS za pośrednictwem punktów końcowych usługi sieci wirtualnej?
+### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Czy można korzystać z adresu IP urządzenia lokalnego, który jest połączony za pośrednictwem usługi Azure Virtual Network Gateway (VPN) lub ExpressRoute Gateway przez punkty końcowe usługi sieci wirtualnej?
 Domyślnie nie można uzyskać dostępu do zasobów usługi platformy Azure zabezpieczonych w sieciach wirtualnych z sieci lokalnych. Jeśli chcesz zezwolić na ruch z lokalnego, musisz również zezwolić na publiczne (zazwyczaj NAT) adresy IP z lokalnego lub ExpressRoute. Te adresy IP można dodać za pomocą konfiguracji zapory adresów IP dla zasobów usługi platformy Azure.
 
-### <a name="can-i-use-vnet-service-endpoint-feature-to-secure-azure-service-to-multiple-subnets-with-in-a-virtual-network-or-across-multiple-virtual-networks"></a>Czy można użyć funkcji punktu końcowego usługi sieci wirtualnej do zabezpieczenia usługi platformy Azure w wielu podsieciach w sieci wirtualnej lub w wielu sieciach wirtualnych?
-Aby zabezpieczyć usługi platformy Azure w wielu podsieciach w sieci wirtualnej lub wielu sieciach wirtualnych, należy niezależnie włączyć punkty końcowe usługi w sieci w każdej podsieci, a następnie zabezpieczyć zasoby usługi platformy Azure we wszystkich podsieciach przez skonfigurowanie odpowiednie listy ACL sieci wirtualnej na stronie usługi platformy Azure.
+### <a name="can-i-use-vnet-service-endpoint-feature-to-secure-azure-service-to-multiple-subnets-within-a-virtual-network-or-across-multiple-virtual-networks"></a>Czy można użyć funkcji punktu końcowego usługi sieci wirtualnej do zabezpieczenia usługi platformy Azure w wielu podsieciach w ramach sieci wirtualnej lub wielu sieci wirtualnych?
+Aby zabezpieczyć usługi platformy Azure w wielu podsieciach w sieci wirtualnej lub w wielu sieciach wirtualnych, należy niezależnie włączyć punkty końcowe usługi w sieci w każdej podsieci, a następnie zabezpieczyć zasoby usługi platformy Azure we wszystkich podsieciach przez skonfigurowanie odpowiednie listy ACL sieci wirtualnej po stronie usługi platformy Azure.
  
 ### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>Jak można filtrować ruch wychodzący z sieci wirtualnej do usług platformy Azure i nadal korzystać z punktów końcowych usługi?
 jeśli chcesz sprawdzić lub filtrować ruch kierowany do usługi platformy Azure z sieci wirtualnej, możesz wdrożyć urządzenie sieci wirtualnej w ramach tej sieci wirtualnej. Następnie można zastosować punkty końcowe usługi do podsieci, w której wdrożono wirtualne urządzenie sieciowe i zabezpieczyć zasoby usługi platformy Azure tylko do tej podsieci za pomocą list ACL sieci wirtualnej. Ten scenariusz może być również przydatny, jeśli chcesz ograniczyć dostęp do usługi platformy Azure z sieci wirtualnej tylko do określonych zasobów platformy Azure przy użyciu filtrowania wirtualnego urządzenia sieciowego. Aby uzyskać więcej informacji, zobacz [ruch wychodzący z sieciowych urządzeń wirtualnych](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha).
 
-### <a name="what-happens-when-you-access-an-azure-service-account-that-has-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Co się stanie w przypadku uzyskania dostępu do konta usługi platformy Azure z włączoną listą kontroli dostępu do sieci wirtualnej z poziomu poza siecią wirtualną?
+### <a name="what-happens-when-you-access-an-azure-service-account-that-has-a-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>Co się stanie w przypadku uzyskania dostępu do konta usługi platformy Azure z włączoną listą kontroli dostępu do sieci wirtualnej z poziomu poza siecią wirtualną?
 Zwracany jest błąd HTTP 403 lub HTTP 404.
 
 ### <a name="are-subnets-of-a-virtual-network-created-in-different-regions-allowed-to-access-an-azure-service-account-in-another-region"></a>Czy podsieci sieci wirtualnej utworzonej w różnych regionach mogą uzyskać dostęp do konta usługi platformy Azure w innym regionie? 
 Tak. w przypadku większości usług platformy Azure sieci wirtualne utworzone w różnych regionach mogą uzyskiwać dostęp do usług platformy Azure w innym regionie za pomocą punktów końcowych usługi sieci wirtualnej. Na przykład jeśli konto Azure Cosmos DB znajduje się w regionie zachodnie stany USA lub Wschodnie stany USA, a sieci wirtualne znajdują się w wielu regionach, Sieć wirtualna może uzyskać dostęp do Azure Cosmos DB. Magazyn i SQL to wyjątki, które są regionalne, a zarówno w przypadku sieci wirtualnej, jak i usługi platformy Azure, muszą znajdować się w tym samym regionie.
   
-### <a name="can-an-azure-service-have-both-vnet-acl-and-an-ip-firewall"></a>Czy usługa platformy Azure może mieć zarówno listę ACL sieci wirtualnej, jak i zaporę IP?
+### <a name="can-an-azure-service-have-both-a-vnet-acl-and-an-ip-firewall"></a>Czy usługa platformy Azure ma zarówno listę ACL sieci wirtualnej, jak i zaporę IP?
 Tak, ta lista ACL sieci wirtualnej i Zapora IP mogą współistnieć. Obie funkcje uzupełniają się wzajemnie, aby zapewnić izolację i bezpieczeństwo.
  
 ### <a name="what-happens-if-you-delete-a-virtual-network-or-subnet-that-has-service-endpoint-turned-on-for-azure-service"></a>Co się stanie w przypadku usunięcia sieci wirtualnej lub podsieci z włączonym punktem końcowym usługi dla usługi Azure?
-Usuwanie sieci wirtualnych i podsieci są niezależnymi operacjami i są obsługiwane nawet wtedy, gdy punkty końcowe usługi są włączone dla usług platformy Azure. W przypadkach, gdy usługi platformy Azure mają skonfigurowane listy ACL sieci wirtualnej dla tych sieci wirtualnych i podsieci, informacje o listach ACL sieci wirtualnej skojarzone z usługą platformy Azure są wyłączone, gdy zostanie usunięta Sieć wirtualna lub podsieci z włączonym punktem końcowym usługi sieci wirtualnej.
+Usuwanie sieci wirtualnych i podsieci są niezależnymi operacjami i są obsługiwane nawet wtedy, gdy punkty końcowe usługi są włączone dla usług platformy Azure. W przypadkach, gdy usługi platformy Azure mają skonfigurowane listy ACL sieci wirtualnej dla tych sieci wirtualnych i podsieci, informacje o liście ACL sieci wirtualnej skojarzone z usługą platformy Azure są wyłączone, gdy zostanie usunięta Sieć wirtualna lub podsieci z włączonym punktem końcowym usługi sieci wirtualnej.
  
-### <a name="what-happens-if-azure-service-account-that-has-vnet-service-endpoint-enabled-is-deleted"></a>Co się stanie, jeśli konto usługi platformy Azure z włączonym punktem końcowym usługi sieci wirtualnej zostanie usunięte?
+### <a name="what-happens-if-an-azure-service-account-that-has-a-vnet-service-endpoint-enabled-is-deleted"></a>Co się stanie, jeśli konto usługi platformy Azure z włączonym punktem końcowym usługi sieci wirtualnej zostanie usunięte?
 Usuwanie konta usługi platformy Azure jest niezależną operacją i jest obsługiwane nawet wtedy, gdy punkt końcowy usługi jest włączony po stronie sieci, a usługi dostępu wirtualne sieci wirtualnej są skonfigurowane po stronie usług platformy Azure. 
 
 ### <a name="what-happens-to-the-source-ip-address-of-a-resource-like-a-vm-in-a-subnet-that-has-vnet-service-endpoint-enabled"></a>Co się dzieje ze źródłowym adresem IP zasobu (np. maszyną wirtualną w podsieci), dla którego jest włączony punkt końcowy usługi sieci wirtualnej?
-Po włączeniu punktów końcowych usługi sieci wirtualnej źródłowe adresy IP zasobów w podsieci sieci wirtualnej przełączają się z używania publicznych adresów IPV4 do prywatnych adresów IP sieci wirtualnej platformy Azure dla ruchu do usługi platformy Azure. Należy zauważyć, że może to spowodować niepowodzenie określonej zapory IP, która jest ustawiona na publiczny adres IPV4 w usługach platformy Azure. 
+Po włączeniu punktów końcowych usługi sieci wirtualnej źródłowe adresy IP zasobów w podsieci sieci wirtualnej przełączają się z używania publicznych adresów IPV4 do prywatnych adresów IP sieci wirtualnej platformy Azure dla ruchu do usługi platformy Azure. Należy zauważyć, że może to spowodować niepowodzenie określonych zapór IP skonfigurowanych na publiczny adres IPV4 w usługach platformy Azure. 
 
-### <a name="does-service-endpoint-route-always-take-precedence"></a>Czy ma zawsze pierwszeństwo trasy punktu końcowego usługi?
+### <a name="does-the-service-endpoint-route-always-take-precedence"></a>Czy ma zawsze pierwszeństwo trasy punktu końcowego usługi?
 Punkty końcowe usługi dodają trasę systemową, która ma pierwszeństwo przed trasami BGP i zapewnia optymalny Routing ruchu punktu końcowego usługi. Punkty końcowe usługi zawsze pobierają ruch bezpośrednio z sieci wirtualnej do usługi w sieci szkieletowej Microsoft Azure. Aby uzyskać więcej informacji o tym, jak platforma Azure wybiera trasę, zobacz [routing ruchu w sieci wirtualnej platformy Azure](virtual-networks-udr-overview.md).
  
 ### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>Jak sieciowej grupy zabezpieczeń w podsieci działa z punktami końcowymi usługi?
@@ -395,10 +395,10 @@ Zasady punktu końcowego usługi sieci wirtualnej umożliwiają filtrowanie ruch
 
 ### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Czy Azure Active Directory (Azure AD) obsługuje punkty końcowe usługi sieci wirtualnej?
 
-Azure Active Directory (Azure AD) nie obsługuje natywnych punktów końcowych usługi. Pełną listę usług platformy Azure obsługujących punkty końcowe usługi sieci wirtualnej można zobaczyć [tutaj](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). Należy zauważyć, że tag "Microsoft. usługi azureactivedirectory" wymieniony w obszarze punkty końcowe usługi pomocniczej jest używany do obsługi punktów końcowych usługi ADLS Gen 1. W przypadku usługi ADLS Gen 1 Integracja sieci wirtualnej dla Azure Data Lake Storage Gen1 wykorzystuje zabezpieczenia punktu końcowego usługi sieci wirtualnej między siecią wirtualną i Azure Active Directory (Azure AD) w celu wygenerowania dodatkowych oświadczeń zabezpieczeń w tokenie dostępu. Te oświadczenia są następnie używane do uwierzytelniania sieci wirtualnej na koncie usługi Data Lake Storage Gen1 i uzyskania dostępu. Dowiedz się więcej na temat integracji sieci wirtualnej (Azure Data Lake Store generacji 1) (.. /Data-Lake-Store/Data-Lake-Store-Network-Security.MD? TOC =% 2fazure% 2fvirtual-Network% 2ftoc. JSON
+Azure Active Directory (Azure AD) nie obsługuje natywnych punktów końcowych usługi. Pełną listę usług platformy Azure obsługujących punkty końcowe usługi sieci wirtualnej można zobaczyć [tutaj](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview). Należy zauważyć, że tag "Microsoft. usługi azureactivedirectory" wymieniony w obszarze punkty końcowe usługi obsługiwanej przez usługi jest używany do obsługi punktów końcowych usługi ADLS Gen 1. W przypadku usługi ADLS Gen 1 Integracja sieci wirtualnej dla Azure Data Lake Storage Gen1 wykorzystuje zabezpieczenia punktu końcowego usługi sieci wirtualnej między siecią wirtualną i Azure Active Directory (Azure AD) w celu wygenerowania dodatkowych oświadczeń zabezpieczeń w tokenie dostępu. Te oświadczenia są następnie używane do uwierzytelniania sieci wirtualnej na koncie usługi Data Lake Storage Gen1 i uzyskania dostępu. Dowiedz się więcej na temat integracji sieci wirtualnej (Azure Data Lake Store generacji 1) (.. /Data-Lake-Store/Data-Lake-Store-Network-Security.MD? TOC =% 2fazure% 2fvirtual-Network% 2ftoc. JSON
 
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>Czy istnieją jakieś ograniczenia dotyczące liczby punktów końcowych usługi sieci wirtualnej, które mogę skonfigurować przy użyciu mojej VNet?
-Nie ma limitu całkowitej liczby punktów końcowych usługi wirtualnej w sieci wirtualnej. W przypadku zasobów usług platformy Azure (np. konta usługi Azure Storage) usługi mogą wymuszać limity liczby podsieci używanych do zabezpieczania zasobów. W poniższej tabeli przedstawiono niektóre przykładowe limity: 
+Nie ma limitu całkowitej liczby punktów końcowych usługi wirtualnej w sieci wirtualnej. W przypadku zasobu usługi platformy Azure (takiego jak konto usługi Azure Storage) usługi mogą wymuszać limity liczby podsieci używanych do zabezpieczania zasobu. W poniższej tabeli przedstawiono niektóre przykładowe limity: 
 
 |||
 |---|---|

@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: aa35cb1ae0ad035bdef6ff8e19cf115188ba7f3a
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 2a5190cada0ca834cada4e02bfe7549dc43da4b8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640855"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309514"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Limity zasobów dla pul elastycznych przy użyciu limitów modelu zakupu opartego na rdzeń wirtualny
 
@@ -140,8 +140,8 @@ Możesz ustawić warstwę usług, rozmiar obliczeń i ilość miejsca do magazyn
 |We/Wy, czas oczekiwania (w przybliżeniu)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|5-7 ms (zapis)<br>5-10 ms (odczyt)|
 |Liczba operacji we/wy docelowej (64 KB)|7000|7000|7000|7000|7000|7000|7000|
 |Limity szybkości rejestrowania (MB/s)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
-|Maksymalna liczba współbieżnych procesów roboczych na pulę (żądania) *|1680|1890|2100|2520|33600|4200|8400|
-|Maksymalna liczba współbieżnych logowań na pulę (żądania) *|1680|1890|2100|2520|33600|4200|8400|
+|Maksymalna liczba współbieżnych procesów roboczych na pulę (żądania) *|1680|1890|2100|2520|3360|4200|8400|
+|Maksymalna liczba współbieżnych logowań na pulę (żądania) *|1680|1890|2100|2520|3360|4200|8400|
 |Minimalna/Maksymalna liczba opcji rdzeń wirtualny puli elastycznej na bazę danych|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 16, 24, 32, 40|0, 0,25, 0,5, 1... 16, 24, 32, 40, 80|
 |Liczba replik|1|1|1|1|1|1|1|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|ND|

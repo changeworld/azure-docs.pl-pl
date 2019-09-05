@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 3790b543a1a6dcbb793dbf661441700e6fa24232
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4404f785116110d99dc242d2dae39c4a462f45e9
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611879"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376245"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Przenoszenie maszyn wirtualnych platformy Azure do innego regionu
 
@@ -71,7 +71,7 @@ W tym samouczku wykonasz następujące czynności:
 
     Aby utworzyć najczęściej używane zasoby sieciowe, które są odpowiednie dla Ciebie na podstawie konfiguracji źródłowej maszyny wirtualnej, zapoznaj się z następującą dokumentacją:
     - [Sieciowe grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Moduły równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+    - [Moduły równoważenia obciążenia](https://docs.microsoft.com/azure/load-balancer)
     -  [Publiczny adres IP](../virtual-network/virtual-network-public-ip-address.md)
     - Wszystkie inne składniki sieci można znaleźć w dokumentacji dotyczącej [sieci](https://docs.microsoft.com/azure/#pivot=products&panel=network).
 
@@ -87,7 +87,7 @@ Poniższe kroki pokazują, jak przygotować maszynę wirtualną do przenoszenia 
 1. W polu **Nazwa** podaj przyjazną nazwę **ContosoVMVault**. Jeśli masz więcej niż jedną subskrypcję, wybierz jedną z nich.
 1. Utwórz grupę zasobów **ContosoRG**.
 1. Określ region platformy Azure. Aby sprawdzić Obsługiwane regiony, zobacz temat dostępność geograficzna w [szczegółach cennika Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/).
-1. W **obszarze magazyny Recovery Services**wybierz pozycję **Przegląd** > **ContosoVMVault** >  **+ replikacja**.
+1. W obszarze **magazyny Recovery Services**wybierz pozycję **Przegląd** > **ContosoVMVault** >  **+ replikacja**.
 1. W obszarze **Źródło** wybierz pozycję **Azure**.
 1. W obszarze **Lokalizacja źródłowa** wybierz źródłowy region świadczenia usługi Azure, w którym są uruchomione maszyny wirtualne.
 1. Wybierz model wdrażania usługi Resource Manager. Następnie wybierz pozycje **Subskrypcja źródłowa** i **Źródłowa grupa zasobów**.
@@ -122,7 +122,7 @@ W przypadku zaznaczenia przenoszonej maszyny wirtualnej i wprowadzenia zmiany do
 
 ## <a name="commit"></a>Zatwierdź 
 
-Po sprawdzeniu przeniesionej maszyny wirtualnej i przygotowaniu się do zatwierdzenia zmiany w obszarze **zreplikowane elementy**kliknij prawym przyciskiem myszy pozycję > zatwierdzeniemaszyny wirtualnej. Ten krok kończy proces przenoszenia w regionie docelowym. Poczekaj na zakończenie zadania zatwierdzania.
+Po sprawdzeniu przeniesionej maszyny wirtualnej i przygotowaniu się do zatwierdzenia zmiany w obszarze **zreplikowane elementy**kliknij prawym przyciskiem myszy pozycję > **zatwierdzenie**maszyny wirtualnej. Ten krok kończy proces przenoszenia w regionie docelowym. Poczekaj na zakończenie zadania zatwierdzania.
 
 ## <a name="clean-up"></a>Czyszczenie
 

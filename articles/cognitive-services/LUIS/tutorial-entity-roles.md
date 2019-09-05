@@ -1,5 +1,5 @@
 ---
-title: Dane kontekstowe z rolami — LUIS
+title: 'Samouczek: Dane kontekstowe z rolami — LUIS'
 titleSuffix: Azure Cognitive Services
 description: Znajdź powiązane dane na podstawie kontekstu. Na przykład powiązane są lokalizacje początkowa i docelowa dla fizycznego przeniesienia z jednego budynku i biura do innego budynku i biura.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 05/07/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 2eac05712dc7b3deceba52681195101f9bf2b40c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2af35e08b523d782418ab356bf148e038f397f83
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560012"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308052"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Samouczek: wyodrębnianie danych powiązanych kontekstowo z wypowiedzi
 
@@ -91,7 +91,7 @@ Wstępnie utworzona jednostka, geographyV2, wyodrębnia informacje o lokalizacji
 1. Dodaj dwie role, `Origin`i. `Destination` 
 
     ![Dodaj role do wstępnie skompilowanej jednostki](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
-1. Wybierz  pozycję intencje z nawigacji po lewej stronie, a następnie wybierz opcję **MoveEmployeeToCity** . Zwróć uwagę na to, że nazwy miast są oznaczone wstępnie utworzoną jednostką **geographyV2**.
+1. Wybierz pozycję **intencje** z nawigacji po lewej stronie, a następnie wybierz opcję **MoveEmployeeToCity** . Zwróć uwagę na to, że nazwy miast są oznaczone wstępnie utworzoną jednostką **geographyV2**.
 1. W pierwszej wypowiedź listy wybierz lokalizację pochodzenia. Zostanie wyświetlone menu rozwijane. Na liście wybierz pozycję **geographyV2** , a następnie postępuj zgodnie z menu, aby wybrać **Źródło**.
 1. Użyj metody z poprzedniego kroku, aby oznaczyć wszystkie role lokalizacji we wszystkich wyrażenia długości. 
 
@@ -120,32 +120,32 @@ Wstępnie utworzona jednostka, geographyV2, wyodrębnia informacje o lokalizacji
       "query": "Please move Carl Chamerlin from Tampa to Portland",
       "topScoringIntent": {
         "intent": "MoveEmployeeToCity",
-        "score": 0.979823351
+        "score": 0.9706451
       },
       "intents": [
         {
           "intent": "MoveEmployeeToCity",
-          "score": 0.979823351
+          "score": 0.9706451
         },
         {
           "intent": "None",
-          "score": 0.0156363435
+          "score": 0.0307451729
         }
       ],
       "entities": [
         {
-          "entity": "geographyV2",
-          "role": "Destination",
-          "startIndex": 41,
-          "endIndex": 48,
-          "score": 0.6044041
-        },
-        {
-          "entity": "geographyV2",
-          "role": "Origin",
+          "entity": "tampa",
+          "type": "builtin.geographyV2.city",
           "startIndex": 32,
           "endIndex": 36,
-          "score": 0.739491045
+          "role": "Origin"
+        },
+        {
+          "entity": "portland",
+          "type": "builtin.geographyV2.city",
+          "startIndex": 41,
+          "endIndex": 48,
+          "role": "Destination"
         }
       ]
     }

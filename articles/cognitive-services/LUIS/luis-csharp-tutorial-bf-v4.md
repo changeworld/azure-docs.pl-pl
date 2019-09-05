@@ -1,5 +1,5 @@
 ---
-title: Language Understanding bot C# v4
+title: 'Samouczek: Language Understanding bot C# v4'
 titleSuffix: Azure Cognitive Services
 description: Przy użyciu języka C# twórz czatbot zintegrowany z usługą Language Understanding (LUIS). Bot jest tworzona przy użyciu platformy bot Framework w wersji 4 i usługi Azure Web App bot.
 services: cognitive-services
@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 08/30/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: c78359920ebc5faab2e0a678a901bcb8581a4e45
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 79f75fbae9a13db985f46408145c7d6762ff56b9
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207329"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375582"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-c"></a>Samouczek: Użyj bot aplikacji sieci Web z włączonym Language Understanding wC#
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f04e6f8df55059e2aa2981f85f40e487c6f0f8b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3249957fa20c208d0fd06c676200753163d4bfc8
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823685"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376073"
 ---
 # <a name="tutorial-integrate-learning-at-work-with-azure-active-directory"></a>Samouczek: Integracja uczenia się z Azure Active Directory
 
@@ -65,18 +65,18 @@ Skonfiguruj i przetestuj Logowanie jednokrotne usługi Azure AD za pomocą uczen
 Aby skonfigurować i przetestować Logowanie jednokrotne usługi Azure AD przy użyciu uczenia w miejscu pracy, wykonaj następujące bloki konstrukcyjne:
 
 1. **[Skonfiguruj Logowanie jednokrotne usługi Azure AD](#configure-azure-ad-sso)** , aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Skonfiguruj uczenie się na logowanie](#configure-learning-at-work-sso)** jednokrotne służbowe, aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
+2. **[Skonfiguruj uczenie się na logowanie jednokrotne służbowe](#configure-learning-at-work-sso)** , aby skonfigurować ustawienia logowania jednokrotnego na stronie aplikacji.
 3. **[Utwórz użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować Logowanie jednokrotne w usłudze Azure AD za pomocą usługi B. Simon.
 4. **[Przypisz użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić usłudze B. Simon korzystanie z logowania jednokrotnego w usłudze Azure AD.
 5. **[Utwórz uczenie użytkownika testowego w miejscu pracy](#create-learning-at-work-test-user)** , aby dysponować odpowiednikiem B. Simon w pracy, która jest połączona z reprezentacją użytkownika w usłudze Azure AD.
-6. **[Przetestuj logowanie](#test-sso)** jednokrotne — aby sprawdzić, czy konfiguracja działa.
+6. **[Przetestuj Logowanie jednokrotne](#test-sso)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurowanie logowania jednokrotnego w usłudze Azure AD
 
 Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure AD w Azure Portal.
 
-1. W [Azure Portal](https://portal.azure.com/)na stronie uczenie aplikacji służbowej Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie**jednokrotne.
-1. Na stronie **Wybierz metodę logowania** jednokrotnego wybierz pozycję **SAML**.
+1. W [Azure Portal](https://portal.azure.com/)na stronie **uczenie aplikacji służbowej** Znajdź sekcję **Zarządzanie** i wybierz pozycję **Logowanie jednokrotne**.
+1. Na stronie **Wybierz metodę logowania jednokrotnego** wybierz pozycję **SAML**.
 1. Na stronie **Konfigurowanie logowania jednokrotnego przy użyciu języka SAML** kliknij ikonę Edytuj/pióro, aby określić **podstawową konfigurację języka SAML** , aby edytować ustawienia.
 
    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
@@ -90,9 +90,9 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
     > [!NOTE]
     > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej w zakresie obsługi klienta](https://www.learninga-z.com/site/contact/support) , aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. Uczenie się w aplikacji służbowej oczekuje potwierdzenia SAML w określonym formacie, co wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenu SAML. Poniższy zrzut ekranu przedstawia listę atrybutów domyślnych, gdzie **NameIdentifier** jest zamapowany z **User. userPrincipalName**.
+5. Uczenie się w aplikacji służbowej oczekuje potwierdzenia SAML w określonym formacie, co wymaga dodania mapowań atrybutów niestandardowych do konfiguracji atrybutów tokenu SAML. Na poniższym zrzucie ekranu przedstawiono listę atrybutów domyślnych, gdzie atrybut **nameidentifier** jest mapowany na atrybut **user.userprincipalname**.
 
-    Możesz zaktualizować wartość **NameIdentifier** w usłudze Azure AD na podstawie konfiguracji organizacji. Ta wartość musi być zgodna z **identyfikatorem użytkownika** w chmurze Saba, w przypadku którego trzeba edytować Mapowanie atrybutów, klikając ikonę **Edytuj**  i Zmień mapowanie atrybutu.
+    Możesz zaktualizować wartość **NameIdentifier** w usłudze Azure AD na podstawie konfiguracji organizacji. Ta wartość musi być zgodna z **identyfikatorem użytkownika** w chmurze Saba, w przypadku którego trzeba edytować Mapowanie atrybutów, klikając ikonę **Edytuj** i zmieniając Mapowanie atrybutu.
 
     ![image](common/edit-attribute.png)
 
@@ -106,7 +106,7 @@ Wykonaj następujące kroki, aby włączyć logowanie jednokrotne usługi Azure 
 
 ### <a name="configure-learning-at-work-sso"></a>Konfigurowanie uczenia w miejscu pracy — Logowanie jednokrotne
 
-Aby skonfigurować Logowanie jednokrotne na stronie służbowej, musisz wysłać pobrany **kod XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal, aby [uczenie się w zespole pomocy technicznej](https://www.learninga-z.com/site/contact/support). Ustawili to ustawienie, aby połączenie SAML SSO zostało ustawione prawidłowo po obu stronach
+Aby skonfigurować Logowanie jednokrotne na stronie **służbowej** , musisz wysłać pobrany **kod XML metadanych Federacji** i odpowiednie skopiowane adresy URL z Azure Portal, aby [uczenie się w zespole pomocy technicznej](https://www.learninga-z.com/site/contact/support). Ustawili to ustawienie, aby połączenie SAML SSO zostało ustawione prawidłowo po obu stronach
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -140,7 +140,7 @@ W tej sekcji włączysz usługę B. Simon, aby korzystać z logowania jednokrotn
 
 ### <a name="create-learning-at-work-test-user"></a>Tworzenie szkoleń w miejscu pracy użytkownika testowego
 
-W tej sekcji utworzysz użytkownika o nazwie B. Simon w obszarze uczenie się w miejscu pracy. Współpracuj z [zespołem pomocy technicznej w zakresie pracy](https://www.learninga-z.com/site/contact/support) , aby dodać użytkowników do uczenia się na platformie roboczej. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie B. Simon w obszarze uczenie się w miejscu pracy. Współpracuj z [zespołem pomocy technicznej w zakresie pracy](https://www.learninga-z.com/site/contact/support) , aby dodać użytkowników do uczenia się na platformie roboczej. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
 
 ### <a name="test-sso"></a>Testuj Logowanie jednokrotne 
 
