@@ -162,7 +162,7 @@ Zdarzenie zawiera następujące dane najwyższego poziomu:
 | eventType | string | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. |
 | eventTime | string | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | string | Unikatowy identyfikator zdarzenia. |
-| data | obiekt | Dane zdarzenia magazynu obiektów blob. |
+| data | object | Dane zdarzenia magazynu obiektów blob. |
 | dataVersion | string | Wersja schematu dla obiektu danych. Wydawca Określa wersję schematu. |
 | metadataVersion | string | Wersja schematu dla metadanych zdarzenia. Usługa Event Grid definiuje schemat właściwości najwyższego poziomu. Usługa Event Grid udostępnia tę wartość. |
 
@@ -173,17 +173,17 @@ Obiekt danych ma następujące właściwości:
 | id | string | Identyfikator zdarzenia. |
 | timestamp | string | Czas, w którym wystąpiło zdarzenie. |
 | action | string | Akcja, która obejmuje podanego zdarzenia. |
-| target | obiekt | Obiekt docelowy zdarzenia. |
-| request | obiekt | Żądanie, który wygenerował zdarzenie. |
+| target | object | Obiekt docelowy zdarzenia. |
+| request | object | Żądanie, który wygenerował zdarzenie. |
 
 Obiekt docelowy ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | mediaType | string | Typ MIME przywoływanego obiektu. |
-| size | liczba całkowita | Liczba bajtów treści. Taka sama jak długość pola. |
+| size | integer | Liczba bajtów treści. Taka sama jak długość pola. |
 | digest | string | Skrót zawartości, zgodnie z definicją w specyfikacji interfejsu API HTTP V2 rejestru. |
-| length | liczba całkowita | Liczba bajtów treści. Taka sama jak rozmiar pola. |
+| length | integer | Liczba bajtów treści. Taka sama jak rozmiar pola. |
 | repository | string | Nazwa repozytorium. |
 | tag | string | Nazwa tagu. |
 | name | string | Nazwa wykresu. |
