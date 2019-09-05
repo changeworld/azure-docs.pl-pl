@@ -7,12 +7,12 @@ ms.date: 02/04/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 54a4da8e6d2720086b86c3573623f9dac2469ea4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f5c2b58fc6877bc196eb98faab88712f474523cb
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232922"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241321"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Szybki start: Definiowanie i przypisywanie strategii platformy Azure przy użyciu interfejsu API REST
 
@@ -27,8 +27,6 @@ Znajomość sposobu tworzenia i przypisywania strategii umożliwia definiowanie 
 > - Usuwanie strategii, która została przypisana do subskrypcji
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free).
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="getting-started-with-rest-api"></a>Wprowadzenie do interfejsu API REST
 
@@ -438,7 +436,7 @@ Aby usunąć samą strategię, wykonaj następującą operację interfejsu API R
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o [cyklu życia](./concepts/lifecycle.md)planu.
+- Uzyskaj informacje na temat [cyklu życia strategii](./concepts/lifecycle.md).
 - Dowiedz się, jak używać [parametrów statycznych i dynamicznych](./concepts/parameters.md).
 - Dowiedz się, jak dostosować [kolejność sekwencjonowania strategii](./concepts/sequencing-order.md).
 - Dowiedz się, jak używać [blokowania zasobów strategii](./concepts/resource-locking.md).
