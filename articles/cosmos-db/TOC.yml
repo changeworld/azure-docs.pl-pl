@@ -712,6 +712,8 @@
       items:
         - name: Korzystanie z usługi Power BI
           href: powerbi-visualize.md
+        - name: Tworzenie pulpitu nawigacyjnego z pogodą na żywo
+          href: create-real-time-weather-dashboard-powerbi.md
         - name: Korzystanie z programu Qlik Sense
           href: visualize-qlik-sense.md
     - name: Integracja z innymi usługami platformy Azure

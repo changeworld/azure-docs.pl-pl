@@ -48,7 +48,7 @@
       items:
         - name: Elementy zawartości
           href: assets-concept.md
-          displayName: naming
+          displayName: 'name, naming, file name'
     - name: Kodowanie
       items:
         - name: Omówienie
@@ -150,7 +150,7 @@
       items:
         - name: Omówienie
           href: media-services-apis-overview.md
-          displayName: 'accessing, naming, long-running, invalid character'
+          displayName: 'accessing, long-running, invalid character, name, naming, file name'
         - name: 'Stronicowanie, filtrowanie i określanie kolejności jednostek'
           href: entities-overview.md
         - name: Kontrola dostępu oparta na rolach
@@ -179,6 +179,8 @@
           href: media-reserved-units-cli-how-to.md
         - name: Tworzenie zasobu — interfejs wiersza polecenia
           href: cli-create-asset.md
+    - name: Przewodniki deweloperów
+      items:
         - name: Programowanie z użyciem architektury REST
           items:
             - name: Łączenie z narzędziem Postman

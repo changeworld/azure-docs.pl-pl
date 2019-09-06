@@ -219,10 +219,16 @@
       items:
         - name: Dokumentacja wystąpienia zarządzanego
           href: sql-database-managed-instance-index.yml
-        - name: Funkcje wystąpienia zarządzanego
+        - name: Omówienie wystąpień zarządzanych
           href: sql-database-managed-instance.md
         - name: Często zadawane pytania dotyczące wystąpień zarządzanych
           href: sql-database-managed-instance-faq.md
+        - name: Pule wystąpień
+          items:
+            - name: Omówienie pul wystąpień
+              href: sql-database-instance-pools.md
+            - name: Przewodniki z instrukcjami dla pul wystąpień
+              href: sql-database-instance-pools-how-to.md
         - name: Dokumentacja interfejsu API zarządzania
           href: sql-database-managed-instance-create-manage.md
         - name: Limity zasobów

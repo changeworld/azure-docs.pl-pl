@@ -1,57 +1,81 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja usługi Azure Blockchain
+summary: Dowiedz się, jak tworzyć aplikacje łańcucha bloków. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają, jak za pomocą usługi Azure Blockchain tworzyć i opracowywać aplikacje łańcucha bloków na oraz zarządzać nimi na platformie Azure.
 metadata:
   title: Dokumentacja usługi Azure Blockchain — samouczki i dokumentacja interfejsu API
-  description: 'Dowiedz się, jak tworzyć aplikacje łańcucha bloków. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają, jak za pomocą usługi Azure Blockchain tworzyć i opracowywać aplikacje łańcucha bloków na oraz zarządzać nimi na platformie Azure.'
+  description: Dowiedz się, jak tworzyć aplikacje łańcucha bloków. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają, jak za pomocą usługi Azure Blockchain tworzyć i opracowywać aplikacje łańcucha bloków na oraz zarządzać nimi na platformie Azure.
   services: azure-blockchain
-  author: patricka
-  manager: femila
   ms.service: azure-blockchain
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 03/13/2019
+  author: PatAltimore
   ms.author: patricka
-abstract:
-  description: 'Dowiedz się, jak tworzyć aplikacje łańcucha bloków. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiają, jak za pomocą usługi Azure Blockchain tworzyć i opracowywać aplikacje łańcucha bloków na oraz używać ich na platformie Azure.'
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak utworzyć elementy członkowskie konsorcjum na platformie Azure i połączyć się z nimi.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/deploy.svg
-            text: Tworzenie członka konsorcjum
-            href: /azure/blockchain/service/create-member
-          - image:
-              src: ./media/index/multi-connect.svg
-            text: Łączenie za pomocą rozszerzenia MetaMask
-            href: /azure/blockchain/service/connect-metamask
-          - image:
-              src: ./media/index/cligeneric.svg
-            text: Łączenie przy użyciu rozwiązania geth
-            href: /azure/blockchain/service/connect-geth
-          - image:
-              src: ./media/index/code-blocks.svg
-            text: Łączenie przy użyciu rozwiązania Truffle
-            href: /azure/blockchain/service/connect-truffle
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak tworzyć, konfigurować i opracowywać aplikacje łańcucha bloków na platformie Azure.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/blockchain/service/send-transaction">Tworzenie elementu członkowskiego usługi Azure Blockchain i wysyłanie transakcji</a>
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/blockchain">Interfejs API REST</a></p>'
+  ms.date: 08/29/2019
+  ms.openlocfilehash: c5816bb2278c138a8df07c5c289d53a818614d86
+  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70240834"
+landingContent:
+- title: Informacje o usłudze Azure Blockchain
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Azure Blockchain Service?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Sieci łańcucha bloków prywatnego konsorcjum
+      url: consortium.md
+    - text: Dostęp do danych i zabezpieczenia
+      url: data-security.md
+    - text: Narzędzia programistyczne
+      url: develop.md
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Tworzenie węzłów członkowskich łańcucha bloków — portal
+      url: create-member.md
+    - text: Tworzenie węzłów członkowskich łańcucha bloków — interfejs wiersza polecenia
+      url: create-member-cli.md
+  - linkListType: quickstart
+    links:
+    - text: Użycie programu MetaMask do nawiązania połączenia i programu Remix do wdrożenia kontraktu inteligentnego
+      url: connect-metamask.md
+    - text: Użycie programu Geth do nawiązania połączenia z węzłem transakcji
+      url: connect-geth.md
+    - text: Użycie programu Truffle do nawiązania połączenia z węzłem transakcji
+      url: connect-truffle.md
+  - linkListType: tutorial
+    links:
+    - text: Użycie kontraktów inteligentnych w usłudze Azure Blockchain Service
+      url: send-transaction.md
+  - linkListType: video
+    links:
+    - text: Wdrażanie i konfigurowanie sieci
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-I-Deploy-and-configure-your-network
+    - text: Pisanie i testowanie kontraktów inteligentnych za pomocą programu VS Code
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-II-Write-and-test-smart-contracts-with-VS-Code
+    - text: Wysyłanie danych do księgi
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-III-Send-data-to-the-ledger
+    - text: Publikowanie zdarzeń i danych księgi
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-IV-Publish-events-and-ledger-data
+- title: Zarządzanie
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Zarządzanie węzłami członkowskimi łańcucha bloków — interfejs wiersza polecenia
+      url: manage-cli.md
+    - text: Zarządzanie elementami członkowskimi konsorcjum — PowerShell
+      url: manage-consortium-powershell.md
+    - text: Konfigurowanie węzłów transakcji
+      url: configure-transaction-nodes.md
+    - text: Konfigurowanie dostępu do usługi Active Directory
+      url: configure-aad.md
+- title: Interfejs API
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Interfejs API REST
+      url: https://docs.microsoft.com/rest/api/blockchain

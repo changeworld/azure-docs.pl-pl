@@ -125,6 +125,14 @@
               href: map-events.md
             - name: Udostępnianie aplikacji
               href: map-accessibility.md
+        - name: Narzędzia do rysowania
+          items:
+            - name: Dodawanie paska narzędzi rysowania
+              href: map-add-drawing-toolbar.md
+            - name: Ustawianie opcji rysowania
+              href: set-drawing-options.md
+            - name: Pobieranie danych kształtów
+              href: map-get-shape-data.md
         - name: Moduł usług
           items:
             - name: Korzystanie z modułu usług
@@ -198,7 +206,7 @@
 - name: Zasoby
   items:
     - name: Warunki użytkowania usługi Azure Maps
-      href: 'https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31'
+      href: 'https://azure.microsoft.com/support/legal/'
     - name: Ceny usługi Azure Maps
       href: 'https://azure.microsoft.com/pricing/details/azure-maps'
     - name: Kalkulator cen
@@ -209,6 +217,8 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Wideo usługi Azure Maps
       href: 'https://aka.ms/AzureMapsVideos'
+    - name: Analizy przypadków usługi Azure Maps
+      href: 'https://aka.ms/AzureMapsCaseStudies'
     - name: Słownik usługi Azure Maps
       href: glossary.md
     - name: Aktualizacje usług

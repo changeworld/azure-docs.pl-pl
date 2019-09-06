@@ -60,9 +60,6 @@
   items:
     - name: Wdrożenia szablonów
       href: template-deployment-overview.md
-    - name: Struktura pliku szablonu
-      displayName: 'parameters,variables,resources,outputs,condition'
-      href: resource-group-authoring-templates.md
     - name: Najlepsze rozwiązania dotyczące szablonów
       href: template-best-practices.md
     - name: Szablony pozwalające zachować spójność w chmurze
@@ -85,26 +82,38 @@
   items:
     - name: Tworzenie szablonów
       items:
-        - name: Narzędzie programistyczne — VS Code
+        - name: Korzystanie z programu VS Code
           href: resource-manager-tools-vs-code.md
-        - name: Tworzenie szablonu
-          href: how-to-create-template.md
-        - name: Nazwa i typ zasobu podrzędnego
-          href: child-resource-name-type.md
-        - name: Tworzenie grup zasobów i zasobów w subskrypcji
-          displayName: subscription level deployment
-          href: deploy-to-subscription.md
-        - name: Definiowanie zależności zasobów
-          href: resource-group-define-dependencies.md
+        - name: Pisanie wyrażeń szablonu
+          href: template-expressions.md
+        - name: Parametry
+          href: template-parameters.md
+        - name: Zmienne
+          href: template-variables.md
+        - name: Funkcje zdefiniowane przez użytkownika
+          href: template-user-defined-functions.md
+        - name: Zasoby
+          items:
+            - name: Nazwa i typ zasobu podrzędnego
+              href: child-resource-name-type.md
+            - name: Wdrożenie warunkowe
+              href: conditional-resource-deployment.md
+            - name: Ustawianie zależności zasobów
+              href: resource-group-define-dependencies.md
+            - name: Ustawianie lokalizacji zasobów
+              href: resource-location.md
+            - name: Używanie rozszerzeń szablonów
+              href: resource-manager-use-extensions.md
+        - name: Dane wyjściowe
+          href: template-outputs.md
         - name: Modularyzowanie szablonów
           displayName: 'linked templates, nested templates'
           href: resource-group-linked-templates.md
         - name: Tworzenie wielu wystąpień
           href: resource-group-create-multiple.md
-        - name: Używanie rozszerzeń szablonów
-          href: resource-manager-use-extensions.md
-        - name: Aktualizowanie zasobów
-          href: /azure/architecture/building-blocks/extending-templates/update-resource
+        - name: Tworzenie grup zasobów i zasobów w subskrypcji
+          displayName: subscription level deployment
+          href: deploy-to-subscription.md
     - name: Wdrażanie szablonów
       items:
         - name: Wdrażanie — portal
@@ -244,6 +253,9 @@
       href: resource-manager-async-operations.md
 - name: Dokumentacja
   items:
+    - name: Struktura pliku szablonu
+      displayName: 'parameters,variables,resources,outputs,condition'
+      href: resource-group-authoring-templates.md
     - name: Dokumentacja dotycząca szablonów
       href: /azure/templates/
     - name: Funkcje szablonów

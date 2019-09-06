@@ -1,92 +1,103 @@
-### YamlMime:YamlDocument
-abstract:
-  description: 'Dowiedz się, jak wbudowywać inteligentne algorytmy w aplikacjach i witrynach internetowych przy użyciu produktów usługi Azure Machine Learning.  Samouczki, przewodniki Szybki start, dokumentacja interfejsu API i przykłady przedstawiają, jak to zrobić.'
-documentType: LandingData
-metadata:
-  author: j-martens
-  description: 'Dowiedz się, jak wbudować w swoje aplikacje, witryny i boty inteligentne algorytmy umożliwiające dostrzeganie, słyszenie, wypowiadanie i interpretowanie potrzeb użytkowników naturalnymi metodami komunikacji. Samouczki, przewodniki Szybki start, dokumentacja interfejsu API i przykłady przedstawiają, jak to zrobić.'
-  ms.author: jmartens
-  ms.subservice: core
-  ms.date: 8/14/2019
-  ms.devlang: na
-  ms.service: machine-learning
-  ms.tgt_pltfrm: na
-  ms.topic: landing-page
-  services: machine-learning
-  title: Dokumentacja usługi Azure Machine Learning — samouczki i dokumentacja interfejsu API | Microsoft Docs
-sections:
-  - items:
-      - className: cardsM
-        columns: 2
-        items:
-          - href: /azure/machine-learning/service/overview-what-is-azure-ml
-            html: '<p>Dowiedz się, jak ta usługa zwiększa możliwości analityków danych podczas tworzenia rozwiązań sztucznej inteligencji i zarządzania nimi<br/> za pomocą narzędzi i bibliotek interfejsu wiersza polecenia platformy Azure oraz języka Python dzięki wielu różnym usługom obsługującym dane i obliczenia na platformie Azure. Dowiedz się więcej...</p>'
-            image:
-              src: /azure/machine-learning/media/index/i_machine-learning.svg
-            title: Usługa Azure Machine Learning
-        style: cards
-        type: list
-  - items:
-      - text: Przygotuj się i zacznij korzystać z usługi Azure Machine Learning Service.
-        type: paragraph
-      - text: 'Używaj witryny Azure Portal — łatwego w użyciu interfejsu niewymagającego pisania kodu do trenowania i wdrażania modeli uczenia maszynowego oraz zarządzania nimi:'
-        type: paragraph
-      - items:
-          - html: <a href="service/ui-tutorial-automobile-price-train-score">Trenowanie pierwszego eksperymentu w interfejsie użytkownika przeciągania i upuszczania interfejsu wizualizacji</a>
-          - html: <a href="service/tutorial-first-experiment-automated-ml">Trenowanie i wdrażanie pierwszego modelu klasyfikacji za pomocą zautomatyzowanego uczenia maszynowego</a>
-        style: unordered
-        type: list
-      - text: 'Używaj zestawu SDK języka Python w skryptach i notesach do trenowania i wdrażania modeli uczenia maszynowego oraz zarządzania nimi:'
-        type: paragraph
-      - items:
-          - html: <a href="service/tutorial-1st-experiment-sdk-setup">Konfigurowanie środowiska i trenowanie pierwszego eksperymentu uczenia maszynowego</a>
-          - html: <a href="service/tutorial-train-models-with-aml">Trenowanie i wdrażanie modeli klasyfikacji obrazów</a>
-          - html: <a href="service/tutorial-auto-train-models">Używanie zautomatyzowanego uczenia maszynowego do przewidywania opłat za taksówkę</a>
-        style: unordered
-        type: list
-      - text: 'Używanie modeli:'
-        type: paragraph
-      - items:
-          - html: <a href="service/how-to-consume-web-service">Używanie modelu żądanie-odpowiedź</a>
-          - html: <a href="service/how-to-run-batch-predictions">Prognozy usługi Batch z potokami uczenia maszynowego</a>
-        style: unordered
-        type: list
-    title: Samouczki krok po kroku
-  - items:
-      - className: cardsM
-        columns: 2
-        items:
-          - href: /azure/cognitive-services/
-            html: '<p>Interfejsy API, które udostępniają inteligentne algorytmy dla aplikacji, witryn internetowych i robotów.</p>'
-            image:
-              src: /azure/machine-learning/media/index/cognitive-services.png
-            title: Cognitive Services
-          - href: /azure/machine-learning/studio/
-            html: "<p>Narzędzie do współpracy obsługiwane metodą „przeciągnij i upuść” do tworzenia, testowania i wdrażania rozwiązań z zakresu analizy predykcyjnej na podstawie posiadanych danych za pomocą języka R lub Python.\_</p>"
-            image:
-              src: /azure/machine-learning/media/index/machine-learning-studio.svg
-            title: Azure Machine Learning Studio
-          - href: /sql/advanced-analytics/r/r-services
-            html: <p>Analiza w bazie danych z obsługą języków R i Python.</p>
-            image:
-              src: /azure/machine-learning/media/index/logo_sql.png
-            title: SQL Server Machine Learning Services
-          - href: /machine-learning-server/
-            html: '<p>Elastyczna platforma uczenia maszynowego, która obsługuje wdrożenia języków R i Python w klastrach systemów Windows i Linux oraz platformy Spark w usłudze HDInsight i usługi Hadoop.</p>'
-            image:
-              src: /azure/machine-learning/media/index/ml-server.png
-            title: Serwer Microsoft Machine Learning
-          - href: /azure/machine-learning/team-data-science-process
-            html: '<p>Oparta na współpracy metodologia nauki o danych, która ułatwia zespołom efektywne dostarczanie rozwiązań analizy predykcyjnej i inteligentnych aplikacji.</p>'
-            image:
-              src: /azure/machine-learning/media/index/tdsp.png
-            title: Zespołowe przetwarzanie danych dla celów naukowych
-          - href: /azure/machine-learning/data-science-virtual-machine/
-            html: '<p>Eksperymentuj bez instalowania ani konfigurowania oprogramowania za pomocą maszyn wirtualnych Data Science Virtual Machine (DSVM) i Deep Learning Virtual Machine (DLVM). Popularne narzędzia do analizy danych, uczenia maszynowego i obsługi sztucznej inteligencji są wstępnie instalowane.</p>'
-            image:
-              src: /azure/machine-learning/media/index/virtualmachine.svg
-            title: Maszyna wirtualna do analizy danych
-        style: cards
-        type: list
-    title: Inne technologie uczenia maszynowego firmy Microsoft
+### YamlMime:Landing
 title: Dokumentacja usługi Azure Machine Learning
+summary: Usługa Azure Machine Learning oferuje interfejsy internetowe i zestawy SDK, dzięki czemu możesz szybko trenować i wdrażać modele i potoki uczenia maszynowego na dużą skalę. Korzystaj z tych możliwości za pośrednictwem platform typu open source języka Python, takich jak PyTorch, TensorFlow i scikit-learn.
+metadata:
+  title: Dokumentacja usługi Machine Learning — Azure
+  description: Usługa Azure Machine Learning oferuje interfejsy internetowe i zestawy SDK, aby umożliwić szybkie trenowanie i wdrażanie modeli i potoków uczenia maszynowego na dużą skalę. Korzystaj z tych możliwości za pośrednictwem platform typu open source języka Python, takich jak PyTorch, TensorFlow i scikit-learn.
+  services: machine-learning
+  ms.service: machine-learning
+  ms.subservice: core
+  ms.topic: landing-page
+  ms.collection: collection
+  author: j-martens
+  ms.author: jmartens
+  ms.date: 09/03/2019
+  ms.openlocfilehash: e2c5e592c2330f1e5514c5c59c92ff5c8a3a62b2
+  ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70278311"
+landingContent:
+- title: Rozpoczynanie pracy z usługą Azure ML
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Eksperymentowanie z notesami
+      url: service/tutorial-1st-experiment-sdk-setup.md
+    - text: Eksperymentowanie w interfejsie wizualnym
+      url: service/ui-tutorial-automobile-price-train-score.md
+    - text: Automatyzowanie pierwszego eksperymentu
+      url: service/tutorial-first-experiment-automated-ml.md
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Azure ML?
+      url: service/overview-what-is-azure-ml.md
+    - text: Architektura i pojęcia
+      url: service/concept-azure-machine-learning-architecture.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurowanie środowisk programistycznych
+      url: service/how-to-configure-environment.md
+    - text: Konfigurowanie celów obliczeniowych trenowania
+      url: service/how-to-set-up-training-targets.md
+- title: Trenowanie przy użyciu języka Python
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Tworzenie pierwszego eksperymentu uczenia maszynowego
+      url: service/tutorial-1st-experiment-sdk-setup.md
+    - text: Trenowanie modeli klasyfikacji obrazów
+      url: service/tutorial-train-models-with-aml.md
+    - text: Przewidywanie opłat za taksówkę przy użyciu zautomatyzowanego uczenia maszynowego
+      url: service/tutorial-auto-train-models.md
+  - linkListType: how-to-guide
+    links:
+    - text: Trenowanie za pomocą programu Scikit-learn
+      url: service/how-to-train-scikit-learn.md
+    - text: Trenowanie za pomocą programu TensorFlow
+      url: service/how-to-train-tensorflow.md
+    - text: Trenowanie za pomocą programu PyTorch
+      url: service/how-to-train-pytorch.md
+    - text: Trenowanie za pomocą programu Keras
+      url: service/how-to-train-keras.md
+- title: Trenowanie w interfejsie wizualnym
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Trenowanie zautomatyzowanego eksperymentu uczenia maszynowego
+      url: service/tutorial-first-experiment-automated-ml.md
+    - text: Trenowanie w interfejsie wizualnym
+      url: service/ui-tutorial-automobile-price-train-score.md
+  - linkListType: how-to-guide
+    links:
+    - text: 'Interfejs wizualny: przewidywanie cen samochodów'
+      url: service/ui-sample-regression-predict-automobile-price-basic.md
+    - text: 'Interfejs wizualny: przewidywanie ryzyka kredytowego'
+      url: service/ui-sample-classification-predict-credit-risk-cost-sensitive.md
+    - text: 'Interfejs wizualny: przewidywanie opóźnień'
+      url: service/ui-sample-classification-predict-flight-delay.md
+    - text: 'Interfejs wizualny: przewidywanie rezygnacji'
+      url: service/ui-sample-classification-predict-churn.md
+- title: Wdrażanie modeli i zarządzanie nimi
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Co to jest MLOps?
+      url: service/concept-model-management-and-deployment.md
+    - text: Jak i gdzie wdrażać
+      url: service/how-to-deploy-and-where.md
+    - text: Przewidywanie w czasie rzeczywistym
+      url: service/how-to-consume-web-service.md
+    - text: Przewidywanie wsadowe
+      url: service/how-to-run-batch-predictions.md
+- title: Eksplorowanie szczegółowej dokumentacji
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Zestaw SDK usługi Azure ML dla języka Python
+      url: https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py
+    - text: Interfejs Azure ML CLI
+      url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
+    - text: Algorytmy i moduły interfejsu wizualnego
+      url: algorithm-module-reference/module-reference.md

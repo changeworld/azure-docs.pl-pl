@@ -1,4 +1,4 @@
-- name: Dokumentacja usługi Azure Queues Storage
+- name: Dokumentacja usługi Azure Queue Storage
   href: /azure/storage/queues/
 - name: Omówienie
   expanded: true

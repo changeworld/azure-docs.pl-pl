@@ -1,49 +1,103 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja usługi Azure Blueprints
+summary: Uprość wdrożenia, umieszczając w jednej definicji strategii artefakty takie jak szablony usługi Resource Manager, kontrole dostępu oparte na rolach i zasady.
 metadata:
-  title: Dokumentacja usługi Azure Blueprints — samouczki i dokumentacja interfejsu API
-  description: 'Azure Blueprints to usługa platformy Azure, która umożliwia tworzenie, definiowanie i wdrażanie artefaktów w środowisku platformy Azure.'
-  author: DCtheGeek
-  manager: carmonm
+  title: Dokumentacja usługi Azure Blueprints
+  description: Uprość wdrożenia, umieszczając w jednej definicji strategii artefakty takie jak szablony usługi Resource Manager, kontrole dostępu oparte na rolach i zasady.
   ms.service: blueprints
   ms.topic: landing-page
-  ms.date: 06/14/2019
+  ms.collection: collection
+  author: DCtheGeek
   ms.author: dacoulte
-abstract:
-  description: 'Usługa Azure Blueprints ułatwia wdrażanie i aktualizowanie środowisk chmury w sposób powtarzalny przy użyciu artefaktów składalnych, takich jak zasady, kontrola dostępu oparta na rolach i szablony usługi Azure Resource Manager do aprowizacji zasobów.'
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak tworzyć i przypisywać definicje strategii oraz zarządzać nimi na platformie Azure.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              alt: Azure Portal
-              src: ./media/portal.svg
-            text: Azure Portal
-            href: create-blueprint-portal.md
-          - image:
-              alt: Azure PowerShell
-              src: ./media/powershell.svg
-            text: Azure PowerShell
-            href: create-blueprint-powershell.md
-          - image:
-              alt: REST
-              src: ./media/rest.svg
-            text: REST
-            href: create-blueprint-rest-api.md
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Wiersz polecenia
-            html: '<p><a href="/powershell/module/az.blueprint/#blueprint">Azure PowerShell</a></p>'
-          - title: Języki
-            html: <p><a href="/dotnet/api/overview/azure/blueprints/management">Zestaw Azure SDK dla platformy .NET</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/blueprints/">Dokumentacja interfejsu API</a></p>
+  ms.date: 09/01/2019
+  ms.openlocfilehash: 44d21c07a81dc3fe5912137691b67af1a3e910e2
+  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70239196"
+landingContent:
+- title: Informacje o usłudze Azure Blueprints
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Czym jest usługa Azure Blueprints?
+      url: ./overview.md
+    - text: Etapy wdrożenia
+      url: ./concepts/deployment-stages.md
+    - text: Cykl życia strategii
+      url: ./concepts/lifecycle.md
+  - linkListType: video
+    links:
+    - text: Azure Friday — omówienie usługi Azure Blueprints
+      url: https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Tworzenie nowej strategii (portal)
+      url: ./create-blueprint-portal.md
+    - text: Tworzenie nowej strategii (PowerShell)
+      url: ./create-blueprint-powershell.md
+    - text: Tworzenie nowej strategii (interfejs API REST)
+      url: ./create-blueprint-rest-api.md
+  - linkListType: tutorial
+    links:
+    - text: Użycie przykładu strategii
+      url: ./tutorials/create-from-sample.md
+  - linkListType: deploy
+    links:
+    - text: Indeks przykładów strategii
+      url: ./samples/index.md
+- title: Dostosowywanie strategii
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Parametry dynamiczne
+      url: ./concepts/parameters.md
+    - text: Artefakty sekwencji
+      url: ./concepts/sequencing-order.md
+    - text: Blokowanie wdrożonych zasobów
+      url: ./concepts/resource-locking.md
+  - linkListType: tutorial
+    links:
+    - text: Ochrona nowych zasobów przy użyciu blokad
+      url: ./tutorials/protect-new-resources.md
+- title: Ewolucja do skalowania
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Aktualizowanie istniejących strategii
+      url: ./how-to/update-existing-assignments.md
+    - text: Zarządzanie przypisaniami za pomocą programu PowerShell
+      url: ./how-to/manage-assignments-ps.md
+    - text: Importowanie i eksportowanie za pomocą programu PowerShell
+      url: ./how-to/import-export-ps.md
+    - text: Implementowanie operatorów strategii
+      url: ./how-to/configure-for-blueprint-operator.md
+    - text: Zarządzanie strategiami jako kodem
+      url: https://github.com/Azure/azure-blueprints/blob/master/README.md
+- title: Dołącz do społeczności
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Kanał w witrynie YouTube dotyczący ładu Azure
+      url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
+    - text: Zażądaj funkcji produktu
+      url: https://feedback.azure.com/forums/915958-azure-governance
+    - text: Społeczność techniczna ładu Azure
+      url: https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance
+- title: Dokumentacja
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Funkcje specyficzne dla strategii
+      url: ./reference/blueprint-functions.md
+    - text: Moduł programu PowerShell (PSGallery)
+      url: https://www.powershellgallery.com/packages/Az.Blueprint
+    - text: Azure PowerShell
+      url: /powershell/module/az.blueprint/#blueprint
+    - text: Interfejs API REST
+      url: /rest/api/blueprints/
+    - text: .NET
+      url: /dotnet/api/overview/azure/blueprints/management

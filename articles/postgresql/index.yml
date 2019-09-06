@@ -1,85 +1,139 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentacja usługi Azure Database dla PostgreSQL
+### YamlMime:Landing
+title: Dokumentacja usługi Azure Database for PostgreSQL
+summary: 'Usługa Azure Database for PostgreSQL jest usługą relacyjnej bazy danych opartą na aparacie bazy danych Postgres typu open source. Jest to w pełni zarządzana baza danych oferowana jako usługa, która może obsługiwać obciążenia o krytycznym znaczeniu — z przewidywalną wydajnością, zabezpieczeniami, wysoką dostępnością i dynamiczną skalowalnością. Jest dostępna w postaci dwóch opcji wdrożenia: pojedynczego serwera i klastra Hiperskala (Citus) w wersji zapoznawczej. Opcja hiperskali (Citus) skaluje zapytania w poziomie na wielu maszynach przy użyciu dzielenia na fragmenty i obsługuje aplikacje, które wymagają większej skali i wydajności. Dowiedz się, jak używać usługi Azure Database dla PostgreSQL, korzystając z przewodników Szybki Start, samouczków i przykładów.'
 metadata:
-  document_id: c0fe8cd3-35da-e3e5-718e-8f3cf2f87f34
-  title: Dokumentacja usługi Azure PostgreSQL — samouczki i dokumentacja interfejsu API
-  description: 'Usługa Azure Database dla PostgreSQL jest usługą relacyjnej bazy danych w chmurze firmy Microsoft, utworzoną dla deweloperów i opartą na aparacie bazy danych PostgreSQL typu open source.'
+  description: Usługa Azure Database dla PostgreSQL jest usługą relacyjnej bazy danych w chmurze firmy Microsoft, utworzoną dla deweloperów i opartą na aparacie bazy danych PostgreSQL typu open source.
   author: rachel-msft
   ms.author: raagyema
+  ms.date: 08/30/2019
   ms.service: postgresql
   ms.topic: landing-page
-  ms.date: 04/26/2019
-abstract:
-  description: 'Usługa Azure Database for PostgreSQL jest usługą relacyjnej bazy danych opartą na aparacie bazy danych Postgres typu open source.  Jest to w pełni zarządzana baza danych oferowana jako usługa, która może obsługiwać obciążenia o krytycznym znaczeniu — z przewidywalną wydajnością, zabezpieczeniami, wysoką dostępnością i dynamiczną skalowalnością. Jest dostępna w formie dwóch opcji wdrożenia: pojedynczego serwera i hiperskali (Citus) w wersji zapoznawczej. Opcja hiperskali (Citus) skaluje zapytania w poziomie na wielu maszynach przy użyciu dzielenia na fragmenty i obsługuje aplikacje, które wymagają większej skali i wydajności. Dowiedz się, jak używać usługi Azure Database dla PostgreSQL, korzystając z przewodników Szybki Start, samouczków i przykładów.'
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak utworzyć bazę danych PostgreSQL za pomocą następujących elementów:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Pojedynczy serwer — Azure Portal
-            href: /azure/postgresql/quickstart-create-server-database-portal
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/cli.svg'
-            text: Pojedynczy serwer — interfejs wiersza polecenia platformy Azure
-            href: /azure/postgresql/quickstart-create-server-database-azure-cli
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Hiperskala (Citus) — Azure Portal
-            href: /azure/postgresql/quickstart-create-hyperscale-portal
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'W przypadku pojedynczego serwera:'
-      - type: list
-        style: ordered
-        items:
-          - html: 'Projektowanie bazy danych&#58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Interfejs wiersza polecenia platformy Azure</a>'
-          - html: <a href="/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Tworzenie aplikacji internetowej za pomocą języka Python i interfejsu wiersza polecenia</a>
-          - html: <a href="/azure/postgresql/tutorial-monitor-and-tune">Monitorowanie i dostrajanie usługi</a>
-      - type: paragraph
-        text: 'W przypadku hiperskali (Citus) w wersji zapoznawczej:'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/postgresql/tutorial-design-database-hyperscale-multi-tenant">Projektowanie wielodostępnej bazy danych</a>
-          - html: <a href="/azure/postgresql/tutorial-design-database-hyperscale-realtime">Projektowanie bazy danych w czasie rzeczywistym</a>
-  - title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Tworzenie serwera usługi Azure Database for PostgreSQL
-            href: /learn/modules/create-azure-db-for-postgresql-server/
-            image:
-              src: /learn/achievements/create-azure-db-for-postgresql-server.svg
-              href: /learn/modules/create-azure-db-for-postgresql-server/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure">Więcej interakcyjnych zasobów szkoleniowych...</a>
-  - title: Przykłady
-    items:
-      - type: paragraph
-        text: Znajdowanie skryptów umożliwiających zarządzanie typowymi zadaniami.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/postgresql/sample-scripts-azure-cli">Interfejs wiersza polecenia platformy Azure</a>
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Wiersz polecenia
-            html: <p><a href="/cli/azure/postgres">Interfejs wiersza polecenia platformy Azure</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/postgresql">Interfejs API REST</a></p>
-          - title: Azure Resource Manager
-            html: <p><a href="/azure/templates/microsoft.dbforpostgresql/allversions">Szablony usługi Resource Manager</a></p>
+  ms.openlocfilehash: 6d35798d5e87945656acb298ec6fa06518487f3e
+  ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70259173"
+landingContent:
+- title: Informacje o usłudze Azure Database for PostgreSQL
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Azure Database for PostgreSQL?
+      url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: Zapoznaj się z naszym blogiem
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
+- title: Tworzenie pojedynczego serwera
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Tworzenie serwera przy użyciu witryny Azure Portal
+      url: quickstart-create-server-database-portal.md
+    - text: Tworzenie serwera przy użyciu interfejsu wiersza polecenia platformy Azure
+      url: quickstart-create-server-database-azure-cli.md
+  - linkListType: learn
+    links:
+    - text: 'Moduł szkoleniowy: Tworzenie serwera usługi Azure Database for PostgreSQL'
+      url: /learn/modules/create-azure-db-for-postgresql-server/
+  - linkListType: concept
+    links:
+    - text: Warstwy cenowe
+      url: concepts-pricing-tiers.md
+    - text: Limity
+      url: concepts-limits.md
+    - text: Wersje programu PostgreSQL
+      url: concepts-supported-versions.md
+    - text: Rozszerzenia programu PostgreSQL — pojedynczy serwer
+      url: concepts-extensions.md
+  - linkListType: tutorial
+    links:
+    - text: Projektowanie bazy danych przy użyciu witryny Azure Portal
+      url: tutorial-design-database-using-azure-portal.md
+    - text: Projektowanie bazy danych przy użyciu interfejsu wiersza polecenia platformy Azure
+      url: tutorial-design-database-using-azure-cli.md
+    - text: Tworzenie aplikacji internetowej za pomocą języka Python i interfejsu wiersza polecenia
+      url: /azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json
+    - text: Monitorowanie i strojenie usługi
+      url: tutorial-monitor-and-tune.md
+- title: Tworzenie klastra Hiperskala (Citus) — wersja zapoznawcza
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Tworzenie klastra Hiperskala (Citus) — wersja zapoznawcza w witrynie Azure Portal
+      url: quickstart-create-hyperscale-portal.md
+  - linkListType: tutorial
+    links:
+    - text: Projektowanie wielodostępnej bazy danych
+      url: tutorial-design-database-hyperscale-multi-tenant.md
+    - text: Projektowanie bazy danych czasu rzeczywistego
+      url: tutorial-design-database-hyperscale-realtime.md
+  - linkListType: concept
+    links:
+    - text: Rozszerzenia programu PostgreSQL — Hiperskala
+      url: concepts-hyperscale-extensions.md
+    - text: Omówienie węzłów
+      url: concepts-hyperscale-nodes.md
+    - text: Omówienie danych rozproszonych
+      url: concepts-hyperscale-distributed-data.md
+    - text: Konfigurowanie opcji wydajności
+      url: concepts-hyperscale-configuration-options.md
+- title: Nawiązywanie połączenia z pojedynczym serwerem
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Omówienie zapory
+      url: concepts-firewall-rules.md
+    - text: Tworzenie reguł zapory
+      url: howto-manage-firewall-using-portal.md
+    - text: Konfigurowanie protokołu SSL
+      url: concepts-ssl-connection-security.md
+  - linkListType: get-started
+    links:
+    - text: Nawiązywanie połączenia przy użyciu języka Python
+      url: connect-python.md
+    - text: Nawiązywanie połączenia przy użyciu środowiska Node.js
+      url: connect-nodejs.md
+    - text: Nawiązywanie połączenia przy użyciu języka Java
+      url: connect-java.md
+    - text: Nawiązywanie połączenia przy użyciu języka Ruby
+      url: connect-ruby.md
+    - text: Nawiązywanie połączenia przy użyciu języka PHP
+      url: connect-php.md
+    - text: Nawiązywanie połączenia przy użyciu platformy .NET
+      url: connect-csharp.md
+    - text: Nawiązywanie połączenia przy użyciu języka Go
+      url: connect-go.md
+- title: Kodowanie za pomocą programistycznych interfejsów API
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Skrypty interfejsu wiersza polecenia platformy Azure dla typowych zadań
+      url: /azure/postgresql/sample-scripts-azure-cli
+  - linkListType: reference
+    links:
+    - text: Dokumentacja programistyczna interfejsu wiersza polecenia platformy Azure
+      url: /rest/api/postgresql/
+    - text: Dokumentacja programistyczna interfejsu API REST
+      url: /cli/azure/postgres
+    - text: Szablony usługi Azure Resource Manager
+      url: /azure/templates/microsoft.dbforpostgresql/allversions
+- title: Tworzenie kopii zapasowych i migrowanie danych
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Tworzenie i przywracanie kopii zapasowej na pojedynczym serwerze
+      url: concepts-backup.md
+  - linkListType: how-to-guide
+    links:
+    - text: Przywracanie serwera przy użyciu witryny Azure Portal
+      url: howto-restore-server-portal.md
+    - text: Przywracanie serwera przy użyciu interfejsu wiersza polecenia platformy Azure
+      url: howto-restore-server-cli.md
+    - text: Migrowanie bazy danych przy użyciu operacji utworzenia i przywrócenia zrzutu
+      url: howto-migrate-using-dump-and-restore.md
+    - text: Migrowanie bazy danych przy użyciu funkcji eksportowania i importowania
+      url: howto-migrate-using-export-and-import.md
+    - text: Migracje z minimalnym przestojem
+      url: howto-migrate-online.md

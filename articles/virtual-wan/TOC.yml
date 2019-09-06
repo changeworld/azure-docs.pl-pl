@@ -12,14 +12,16 @@
       href: virtual-wan-expressroute-portal.md
 - name: Pojęcia
   items:
-    - name: Informacje o lokalizacjach i partnerach
+    - name: Lokalizacje i partnerzy
       href: virtual-wan-locations-partners.md
-    - name: Informacje o architekturze globalnej sieci tranzytowej
-      href: virtual-wan-global-transit-network-architecture.md
-    - name: Informacje o płaszczyźnie kontroli usługi Office 365 w wirtualnej sieci WAN
-      href: virtual-wan-office365-overview.md
-    - name: Informacje o zasadach protokołu IPsec
+    - name: Zasady protokołu IPsec
       href: virtual-wan-ipsec.md
+    - name: Architektura
+      items:
+        - name: Architektura globalnej sieci tranzytowej
+          href: virtual-wan-global-transit-network-architecture.md
+        - name: Płaszczyzna kontroli usługi Office 365 w wirtualnej sieci WAN
+          href: virtual-wan-office365-overview.md
 - name: Przewodniki z instrukcjami
   items:
     - name: Kierowanie ruchem z koncentratora wirtualnego do wirtualnego urządzenia sieciowego

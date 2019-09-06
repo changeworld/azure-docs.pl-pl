@@ -1,36 +1,99 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Dokumentacja aplikacji Azure Blockchain Workbench
+summary: Dowiedz się, jak tworzyć aplikacje łańcucha bloków. W samouczkach, dokumentacja interfejsu API i innych dokumentach przedstawiono sposób wdrażania aplikacji Azure Blockchain Workbench oraz tworzenia aplikacji łańcucha bloków na platformie Azure i zarządzania nimi.
 metadata:
-  title: Dokumentacja aplikacji Azure Blockchain Workbench — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: 'Dowiedz się, jak tworzyć aplikacje łańcucha bloków. W samouczkach, dokumentacja interfejsu API i innych dokumentach przedstawiono sposób wdrażania aplikacji Azure Blockchain Workbench oraz tworzenia aplikacji łańcucha bloków na platformie Azure i zarządzania nimi.'
-  services: blockchain-workbench
-  author: patricka
-  manager: femila
-  ms.service: blockchain-workbench
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  title: Dokumentacja usługi Azure Blockchain Workbench — samouczki i dokumentacja interfejsu API
+  description: Dowiedz się, jak tworzyć aplikacje łańcucha bloków. W samouczkach, dokumentacja interfejsu API i innych dokumentach przedstawiono sposób wdrażania aplikacji Azure Blockchain Workbench oraz tworzenia aplikacji łańcucha bloków na platformie Azure i zarządzania nimi.
+  services: azure-blockchain
+  ms.service: azure-blockchain
   ms.topic: landing-page
-  ms.date: 04/17/2018
+  author: PatAltimore
   ms.author: patricka
-abstract:
-  description: 'Dowiedz się, jak tworzyć aplikacje łańcucha bloków. W samouczkach, dokumentacja interfejsu API i innych dokumentach przedstawiono sposób wdrażania aplikacji Azure Blockchain Workbench w celu tworzenia aplikacji łańcucha bloków na platformie Azure.'
-sections:
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak wdrażać, tworzyć i używać aplikacji łańcucha bloków na platformie Azure.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/blockchain-workbench/blockchain-workbench-deploy">Wdrażanie usługi Azure Blockchain Workbench</a>
-          - html: <a href="/azure/blockchain-workbench/blockchain-workbench-create-app">Tworzenie aplikacji łańcucha bloków</a>
-          - html: <a href="/azure/blockchain-workbench/blockchain-workbench-use">Korzystanie z aplikacji łańcucha bloków</a>
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/azure-blockchain-workbench">Interfejs API REST</a></p>'
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 515e269619f7efa5c00071794e41fff83b81ed60
+  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70240814"
+landingContent:
+- title: Informacje o aplikacji Azure Blockchain Workbench
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Czym jest usługa Azure Blockchain Workbench?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Architektura
+      url: architecture.md
+  - linkListType: video
+    links:
+    - text: Wprowadzenie do usługi Azure Blockchain Workbench
+      url: https://channel9.msdn.com/Shows/Blocktalk/Introduction-to-Azure-Blockchain-Workbench
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Wdrażanie usługi Azure Blockchain Workbench
+      url: deploy.md
+  - linkListType: tutorial
+    links:
+    - text: Tworzenie aplikacji usługi Blockchain Workbench
+      url: create-app.md
+    - text: Używanie aplikacji usługi Blockchain Workbench
+      url: use.md
+  - linkListType: video
+    links:
+    - text: Tworzenie pierwszej aplikacji usługi Azure Blockchain Workbench
+      url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
+- title: Przykładowe kontrakty
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Prosta platforma handlowa
+      url: https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/simple-marketplace
+    - text: Podstawowe pochodzenie
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/basic-provenance
+    - text: Skrytka cyfrowa
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/digital-locker
+    - text: Transport mrożonek
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation
+    - text: Transfer zasobów
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer
+    - text: Zaawansowana platforma handlowa z wieloma przepływami pracy
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/bazaar-item-listing
+- title: Zarządzanie
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Zarządzanie użytkownikami aplikacji
+      url: manage-users.md
+    - text: Konfiguracja aplikacji
+      url: configuration.md
+    - text: Przechowywanie wersji aplikacji
+      url: version-app.md
+- title: Integracja
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Wzorce integracji kontraktów inteligentnych
+      url: integration-patterns.md
+  - linkListType: how-to-guide
+    links:
+    - text: Łączenie z bazą danych poza łańcuchem
+      url: getdb-details.md
+    - text: Korzystanie z danych w programie Excel
+      url: data-excel.md
+    - text: Korzystanie z danych w usłudze Power BI
+      url: data-powerbi.md
+    - text: Korzystanie z danych w programie SQL Management Studio
+      url: data-sql-management-studio.md
+  - linkListType: reference
+    links:
+    - text: Interfejs API REST
+      url: use-api.md
+    - text: Interfejs API do obsługi komunikatów
+      url: messages-overview.md
+    - text: Widoki bazy danych
+      url: database-views.md

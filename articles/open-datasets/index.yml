@@ -1,30 +1,41 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentacja wersji zapoznawczej usługi Open Datasets
+### YamlMime:Landing
+title: Dokumentacja wersji zapoznawczej usługi Azure Open Datasets
+summary: Usługa Azure Open Datasets udostępnia wyselekcjonowane i oczyszczone dane, których można użyć po minimalnych przygotowaniach, w tym dane pogodowe, spisu powszechnego i dni wolnych, na potrzeby wzbogacania modeli uczenia maszynowego.
 metadata:
-  title: Dokumentacja usługi Azure Open Datasets (wersja zapoznawcza) — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: 'Dowiedz się, jak korzystać z usługi Azure Open Datasets — nadzorowanych i oczyszczonych danych, których można używać z minimalnym przygotowaniem. Usługa Open Datasets to publiczne dane, takie jak informacje o pogodzie, spisie i świętach, które mogą wzbogacić modele uczenia maszynowego. Z samouczków, przykładów i dokumentacji referencyjnej interfejsu API dowiesz się, w jaki sposób.'
-  ms.service: open-datasets
+  title: Dokumentacja wersji zapoznawczej usługi Open Datasets — Azure
+  description: Usługa Azure Open Datasets udostępnia wyselekcjonowane i oczyszczone dane, których można użyć po minimalnych przygotowaniach, w tym dane pogodowe, spisu powszechnego i dni wolnych, na potrzeby wzbogacania modeli uczenia maszynowego.
+  services: machine-learning
+  ms.service: machine-learning
+  ms.subservice: data-science-vm
   ms.topic: landing-page
+  ms.collection: collection
   author: cjgronlund
   ms.author: cgronlun
-  ms.date: 05/02/2019
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-abstract:
-  description: 'Dowiedz się, jak korzystać z usługi Azure Open Datasets — nadzorowanych i oczyszczonych danych, których można używać z minimalnym przygotowaniem. Usługa Open Datasets zawiera publiczne dane, takie jak informacje o pogodzie, spisie i świętach, które mogą wzbogacić modele uczenia maszynowego. Z samouczków, przykładów i dokumentacji referencyjnej interfejsu API dowiesz się, w jaki sposób.'
-sections:
-  - title: Samouczek krok po kroku
-    items:
-      - type: paragraph
-        text: <a href="tutorial-opendatasets-automl">Kompilowanie modelu regresji przy użyciu zautomatyzowanego uczenia maszynowego</a>
-  - title: Przykłady
-    items:
-      - type: paragraph
-        text: <a href="samples">Notesy na potrzeby wzbogacania zestawów danych</a>
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://docs.microsoft.com/python/api/azureml-opendatasets/?view=azure-ml-py">Dokumentacja interfejsu API</a>'
+  ms.date: 09/03/2019
+  ms.openlocfilehash: a44b9bca7062e451c23453cacbe7042dacb4916c
+  ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70274013"
+landingContent:
+- title: Informacje o usłudze Open Datasets
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Open Datasets?
+      url: overview-what-are-open-datasets.md
+    - text: Przykłady
+      url: samples.md
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Tworzenie modelu regresji przy użyciu zautomatyzowanego uczenia maszynowego
+      url: tutorial-opendatasets-automl.md
+- title: Eksplorowanie zawartości referencyjnej
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Interfejs API języka Python
+      url: https://docs.microsoft.com/python/api/azureml-opendatasets/?view=azure-ml-py
