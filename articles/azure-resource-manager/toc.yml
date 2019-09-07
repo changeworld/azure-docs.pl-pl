@@ -4,6 +4,8 @@
   items:
     - name: Co to jest usługa Resource Manager?
       href: resource-group-overview.md
+    - name: Omówienie szablonu
+      href: template-deployment-overview.md
 - name: Przewodniki Szybki start
   expanded: true
   items:
@@ -58,8 +60,6 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager'
 - name: Pojęcia
   items:
-    - name: Wdrożenia szablonów
-      href: template-deployment-overview.md
     - name: Najlepsze rozwiązania dotyczące szablonów
       href: template-best-practices.md
     - name: Szablony pozwalające zachować spójność w chmurze

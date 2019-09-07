@@ -20,3 +20,25 @@
         - name: Zarządzanie aplikacjami
           tocHref: /azure/active-directory/fundamentals/
           topicHref: /azure/active-directory/manage-apps/index
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: Usługa Active Directory
+      tocHref: /azure/active-directory/hybrid/
+      topicHref: /azure/active-directory/index
+      items:
+        - name: Zarządzanie aplikacjami
+          tocHref: /azure/active-directory/hybrid/
+          topicHref: /azure/active-directory/manage-apps/index
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: Usługa Active Directory
+      tocHref: /azure/active-directory/develop/
+      topicHref: /azure/active-directory/index
+      items:
+        - name: Zarządzanie aplikacjami
+          tocHref: /azure/active-directory/develop/
+          topicHref: /azure/active-directory/manage-apps/index

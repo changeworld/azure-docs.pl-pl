@@ -24,7 +24,7 @@
     - name: Tworzenie aplikacji Ruby
       href: quickstart-ruby.md
     - name: Uruchamianie niestandardowego kontenera
-      href: quickstart-docker-go.md
+      href: quickstart-docker.md
     - name: Tworzenie aplikacji z wieloma kontenerami
       href: quickstart-multi-container.md
 - name: Samouczki
