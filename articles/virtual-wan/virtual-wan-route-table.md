@@ -1,6 +1,6 @@
 ---
-title: Tworzenie sieci platformy Azure z wirtualnych WAN tabelę tras koncentrator wirtualny w celu kierowania do urządzenia WUS | Dokumentacja firmy Microsoft
-description: Wirtualne sieci WAN koncentrator wirtualny tabelę tras w celu kierowania ruchu do wirtualnego urządzenia sieciowego.
+title: Tworzenie tabeli tras wirtualnego centrum sieci WAN platformy Azure w celu kierowania do urządzenie WUS | Microsoft Docs
+description: Tabela tras wirtualnego koncentratora sieci WAN do kierowania ruchu do sieciowego urządzenia wirtualnego.
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: fc8dd6770efa1c057a56374ddc0094c2d88d2eb5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 18af56f6924484c6267871cf3fed34f80a8f12a4
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60457619"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744700"
 ---
-# <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Utwórz koncentrator wirtualny tabelę tras w celu kierowania ruchu do wirtualnego urządzenia sieciowego
+# <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Tworzenie tabeli tras koncentratora wirtualnego w celu kierowania ruchu do sieciowego urządzenia wirtualnego
 
-W tym artykule przedstawiono sposób kierowania ruchu z koncentratora wirtualnego do wirtualnego urządzenia sieciowego. 
+W tym artykule opisano sposób kierowania ruchu z koncentratora wirtualnego do sieciowego urządzenia wirtualnego. 
 
 ![Diagram usługi Virtual WAN](./media/virtual-wan-route-table/vwanroute.png)
 
@@ -25,29 +25,29 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 * Tworzenie sieci WAN
 * Tworzenie koncentratora
-* Tworzenie Centrum połączeń sieci wirtualnej
-* Utwórz trasę koncentratora
+* Tworzenie wirtualnych połączeń sieciowych centrów
+* Tworzenie trasy centrum
 * Tworzenie tabeli tras
-* Zastosowanie tabeli tras
+* Zastosuj tabelę tras
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Sprawdź, czy są spełnione następujące kryteria:
+Sprawdź, czy zostały spełnione następujące kryteria:
 
-1. Masz wirtualnego urządzenia sieciowego (WUS). To jest oprogramowanie innych firm w wybranym aprowizowanego zwykle z witryny Azure Marketplace w sieci wirtualnej.
-2. Masz prywatny adres IP przypisany do interfejsu sieciowego urządzenia WUS. 
-3. Nie można wdrożyć urządzenie WUS w koncentrator wirtualny. Musi zostać wdrożony w oddzielnych sieci wirtualnej. W tym artykule sieci wirtualnej urządzenie WUS nazywa się "strefy DMZ sieci wirtualnej".
-4. "Strefy DMZ sieci wirtualnej" może zawierać jeden lub wiele sieci wirtualnych połączonych z nim. W tym artykule ta sieć wirtualna nazywa się "Pośrednich sieć wirtualną będącą szprychą". Tych sieciach wirtualnych mogą być połączone z siecią wirtualną strefy DMZ przy użyciu komunikacji równorzędnej sieci wirtualnych.
-5. Sprawdź, czy masz 2 sieci wirtualne, które już utworzone. Zostaną one użyte jako sieci wirtualne będące szprychami. W tym artykule przestrzenie adresów sieci wirtualnej szprychy są 10.0.2.0/24 i 10.0.3.0/24. Jeśli potrzebujesz informacji na temat tworzenia sieci wirtualnej, zobacz [Utwórz sieć wirtualną przy użyciu programu PowerShell](../virtual-network/quick-create-powershell.md).
-6. Upewnij się, że nie ma żadnych bram sieci wirtualnej w dowolnej sieci wirtualnych.
+1. Masz wirtualne urządzenie sieciowe (urządzenie WUS). Jest to oprogramowanie innych firm, które jest zazwyczaj inicjowane z portalu Azure Marketplace w sieci wirtualnej.
+2. Masz prywatny adres IP przypisany do interfejsu sieciowego urządzenie WUS. 
+3. Nie można wdrożyć urządzenie WUS w koncentratorze wirtualnym. Należy ją wdrożyć w oddzielnej sieci wirtualnej. W tym artykule Sieć wirtualna urządzenie WUS jest określana jako "Sieć wirtualna strefy DMZ".
+4. "Sieć wirtualna strefy DMZ" może mieć co najmniej jedną podłączoną liczbę sieci wirtualnych. W tym artykule ta sieć wirtualna jest określana jako "pośrednia Sieć wirtualna". Te sieci wirtualnych mogą być połączone z siecią wirtualną DMZ przy użyciu komunikacji równorzędnej sieci wirtualnej.
+5. Sprawdź, czy utworzono już 2 sieci wirtualnych. Zostaną one użyte jako szprych sieci wirtualnych. W tym artykule przestrzenie adresowe sieci wirtualnej szprych to 10.0.2.0/24 i 10.0.3.0/24. Jeśli potrzebujesz informacji na temat sposobu tworzenia sieci wirtualnej, zobacz [Create a Virtual Network using PowerShell](../virtual-network/quick-create-powershell.md).
+6. Upewnij się, że w żadnym sieci wirtualnych nie ma żadnych bram sieci wirtualnej.
 
 ## <a name="signin"></a>1. Logowanie
 
-Upewnij się, że możesz zainstalować najnowszą wersję poleceń cmdlet programu PowerShell usługi Resource Manager. Aby uzyskać więcej informacji na temat instalowania poleceń cmdlet programu PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-az-ps). Jest to ważne, ponieważ wcześniejsze wersje poleceń cmdlet nie zawierają bieżących wartości potrzebnych w tym ćwiczeniu.
+Upewnij się, że zainstalowano najnowszą wersję Menedżer zasobów poleceń cmdlet programu PowerShell. Aby uzyskać więcej informacji na temat instalowania poleceń cmdlet programu PowerShell, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/install-az-ps). Jest to ważne, ponieważ wcześniejsze wersje poleceń cmdlet nie zawierają bieżących wartości potrzebnych w tym ćwiczeniu.
 
-1. Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i zaloguj się do konta platformy Azure. To polecenie cmdlet wyświetli monit o podanie poświadczeń logowania. Po zalogowaniu pobiera ono ustawienia konta, tak aby były dostępne dla programu Azure PowerShell.
+1. Otwórz konsolę programu PowerShell z podniesionymi uprawnieniami i zaloguj się na koncie platformy Azure. To polecenie cmdlet poprosi o poświadczenia logowania. Po zalogowaniu pobiera Twoje ustawienia konta, aby były dostępne do Azure PowerShell.
 
    ```powershell
    Connect-AzAccount
@@ -63,27 +63,27 @@ Upewnij się, że możesz zainstalować najnowszą wersję poleceń cmdlet progr
    Select-AzSubscription -SubscriptionName "Name of subscription"
    ```
 
-## <a name="rg"></a>2. Tworzenie zasobów
+## <a name="rg"></a>2. Utwórz zasoby
 
 1. Utwórz grupę zasobów.
 
    ```powershell
    New-AzResourceGroup -Location "West US" -Name "testRG"
    ```
-2. Tworzenie wirtualnej sieci WAN.
+2. Utwórz wirtualną sieć WAN.
 
    ```powershell
    $virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
    ```
-3. Utwórz koncentrator wirtualny.
+3. Tworzenie koncentratora wirtualnego.
 
    ```powershell
-   New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24"
+   New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -Location "West US"
    ```
 
 ## <a name="connections"></a>3. Tworzenie połączeń
 
-Tworzenie połączenia sieci wirtualnej Centrum z sieci typu gwiazda pośrednich i strefy DMZ sieci wirtualnej do koncentratora wirtualnego.
+Utwórz centra połączeń sieci wirtualnej z pośrednią satelitą i sieć wirtualną DMZ do koncentratora wirtualnego.
 
   ```powershell
   $remoteVirtualNetwork1= Get-AzVirtualNetwork -Name "indirectspoke1" -ResourceGroupName "testRG"
@@ -95,17 +95,17 @@ Tworzenie połączenia sieci wirtualnej Centrum z sieci typu gwiazda pośrednich
   New-AzVirtualHubVnetConnection -ResourceGroupName "testRG" -VirtualHubName "westushub" -Name  "testvnetconnection3" -RemoteVirtualNetwork $remoteVirtualNetwork3
   ```
 
-## <a name="route"></a>4. Utwórz trasę koncentratora wirtualnego
+## <a name="route"></a>4. Tworzenie trasy koncentratora wirtualnego
 
-W tym artykule przestrzenie adresowe sieci typu gwiazda pośrednie są 10.0.2.0/24 i 10.0.3.0/24, a urządzenie WUS w strefie DMZ sieci interfejs prywatny adres IP jest 10.0.4.5.
+W tym artykule pośrednie przestrzenie adresowe sieci wirtualnej szprych to 10.0.2.0/24 i 10.0.3.0/24, a prywatny adres IP strefy DMZ urządzenie WUS to 10.0.4.5.
 
 ```powershell
 $route1 = New-AzVirtualHubRoute -AddressPrefix @("10.0.2.0/24", "10.0.3.0/24") -NextHopIpAddress "10.0.4.5"
 ```
 
-## <a name="applyroute"></a>5. Utwórz tabelę tras koncentrator wirtualny
+## <a name="applyroute"></a>5. Tworzenie tabeli tras koncentratora wirtualnego
 
-Utwórz tabelę tras koncentrator wirtualny, a następnie zastosowanie utworzona trasa do niej.
+Utwórz tabelę tras koncentratora wirtualnego, a następnie Zastosuj do niej utworzoną trasę.
  
 ```powershell
 $routeTable = New-AzVirtualHubRouteTable -Route @($route1)
@@ -113,12 +113,12 @@ $routeTable = New-AzVirtualHubRouteTable -Route @($route1)
 
 ## <a name="commit"></a>6. Zatwierdź zmiany
 
-Zatwierdź zmiany do koncentratora wirtualnego.
+Zatwierdź zmiany w koncentratorze wirtualnym.
 
 ```powershell
 Update-AzVirtualHub -VirtualWanId $virtualWan.Id -ResourceGroupName "testRG" -Name "westushub" -RouteTable $routeTable
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat usługi Virtual WAN, zobacz stronę [Omówienie usługi Virtual WAN](virtual-wan-about.md).

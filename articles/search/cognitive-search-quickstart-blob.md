@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: quickstart
 ms.date: 07/09/2019
 ms.author: heidist
-ms.openlocfilehash: a4654e5895e9c7768b9fa6b975ef848294bcc8cc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 72546e6327fc3286455482943dcaedbd5a8e2943
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648920"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744728"
 ---
 # <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-in-azure-search"></a>Szybki start: Tworzenie potoku indeksowania AI przy użyciu umiejętności poznawczych w Azure Search
 
@@ -45,7 +45,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) zapewnia AI. Ten przewodnik Szybki Start zawiera kroki umożliwiające dodanie tych zasobów w trybie online podczas określania potoku. Nie jest konieczne skonfigurowanie kont z góry.
 
-Usługi platformy Azure są wymagane do udostępnienia danych wejściowych potoku indeksowania. Można użyć dowolnego źródła danych obsługiwanego przez [Azure Search indeksatorów](search-indexer-overview.md) z wyjątkiem platformy Azure Table Storage, co nie jest obsługiwane w przypadku indeksowania AI. Ten przewodnik Szybki Start używa [usługi Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) jako kontenera plików danych źródłowych. 
+Usługi platformy Azure są wymagane do udostępnienia danych wejściowych potoku indeksowania. Można użyć dowolnego źródła danych obsługiwanego przez [Azure Search indeksatorów](search-indexer-overview.md). Ten przewodnik Szybki Start używa [usługi Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) jako kontenera plików danych źródłowych. 
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>Konfigurowanie usługi Azure Blob Service i ładowanie przykładowych danych
 

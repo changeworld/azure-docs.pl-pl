@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3918c37d985c6766fe6ad4601b70ddbd4597b0ba
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4d8955517450ce3b4efdf30e2790e4be678dfc7b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087148"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735197"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Interakcja przez człowieka w przykładowej weryfikacji Durable Functions-telefonie
 
@@ -53,7 +53,7 @@ Funkcja **E4_SmsPhoneVerification** używa standardowego pliku *Function. JSON* 
 
 Oto kod implementujący funkcję:
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#Napisy
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
 
@@ -63,7 +63,7 @@ Oto kod implementujący funkcję:
 
 Po uruchomieniu ta funkcja programu Orchestrator wykonuje następujące czynności:
 
-1. Pobiera numer telefonu, do którego wyśle powiadomienie SMS.
+1. Pobiera numer telefonu, do którego *wyśle* powiadomienie SMS.
 2. Wywołuje **E4_SendSmsChallenge** do wysłania wiadomości SMS do użytkownika i zwraca oczekiwany 4-cyfrowy kod wyzwania.
 3. Tworzy trwały czasomierz wyzwalający 90 sekund od bieżącego czasu.
 4. Równolegle z czasomierzem czeka na zdarzenie **SmsChallengeResponse** od użytkownika.
@@ -84,7 +84,7 @@ Funkcja **E4_SendSmsChallenge** używa powiązania Twilio do wysyłania wiadomo�
 
 A Oto kod generujący 4-cyfrowy kod testu i wysyła komunikat SMS:
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#Napisy
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
 

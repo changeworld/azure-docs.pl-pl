@@ -1,5 +1,5 @@
 ---
-title: Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — motywacji i korzyści
+title: Migrowanie Apache Hadoop lokalnych do usługi Azure HDInsight — motywacji i korzyści
 description: Poznaj motywację i zalety migracji lokalnych klastrów Hadoop do usługi Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: f886cb71d4dbc191dae317e8ea72d8c896f37c03
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 3c122a68e9f28772be4e3a17a21e5457aa187ce6
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442073"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736110"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — motywacji i korzyści
 
@@ -167,7 +167,7 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 |---|---|---|
 |**Zainteresowany**|**Przykład**|**Udzielić**|
 | Preferowany region|Wschodnie stany USA||
-|Preferowana Sieć wirtualna?|Yes||
+|Preferowana Sieć wirtualna?|Tak||
 |Wymagana HA/DR?|Tak||
 |Integracja z innymi usługami w chmurze?|ADF, CosmosDB||
 |**Temat**:   **Przenoszenie danych**  |||
@@ -177,14 +177,14 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 |**Temat**:   **Monitorowanie alertów &** |||
 |Korzystanie z usługi Azure Monitoring & alertów vs Integruj monitorowanie innych firm|Korzystanie z alertów usługi Azure Monitoring &||
 |**Temat**:   **Preferencje zabezpieczeń** |||
-|Prywatny i chroniony Potok danych?|Yes||
-|Klaster przyłączony do domeny (ESP)?|     Yes||
+|Prywatny i chroniony Potok danych?|Tak||
+|Klaster przyłączony do domeny (ESP)?|     Tak||
 |AD Sync lokalnych do chmury?|     Tak||
 |Nie. czy użytkownicy usługi AD mają być zsynchronizowani?|          100||
-|Czy chcesz zsynchronizować hasła z chmurą?|    Yes||
-|Tylko użytkownicy w chmurze?|                 Yes||
+|Czy chcesz zsynchronizować hasła z chmurą?|    Tak||
+|Tylko użytkownicy w chmurze?|                 Tak||
 |Potrzebujesz usługi MFA?|                       Nie|| 
-|Wymagania dotyczące autoryzacji danych?|  Yes||
+|Wymagania dotyczące autoryzacji danych?|  Tak||
 |Access Control oparte na rolach?|        Tak||
 |Inspekcja jest wymagana?|                  Tak||
 |Szyfrowanie danych w spoczynku?|          Tak||
@@ -199,7 +199,7 @@ Ta sekcja zawiera kwestionariusze szablonów ułatwiające zebranie ważnych inf
 |Czy dekonstrukcja obciążeń?|Zastępowanie zadań programu Hive za pomocą zadań platformy Spark||
 |Korzystasz z usługi ADF na potrzeby aranżacji danych?|Nie||
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Przeczytaj następny artykuł z tej serii:
 

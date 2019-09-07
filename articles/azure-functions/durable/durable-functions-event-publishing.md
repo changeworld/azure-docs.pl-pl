@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: glenga
-ms.openlocfilehash: 837e29731b617fcb8da95b89668403638c4d049a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f3fd59c0d17bd9094f6887aa5ec088f9fdcdd979
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087400"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734433"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions publikowania do Azure Event Grid (wersja zapoznawcza)
 
@@ -111,7 +111,7 @@ Utwórz aplikacja funkcji. Najlepiej znaleźć go w tym samym regionie, co w tem
 
 ### <a name="create-an-event-grid-trigger-function"></a>Tworzenie funkcji wyzwalacza z siatką zdarzeń
 
-Utwórz funkcję do odbierania zdarzeń cyklu życia. Wybierz pozycję **Funkcja**niestandardowa.
+Utwórz funkcję do odbierania zdarzeń cyklu życia. Wybierz pozycję **Funkcja niestandardowa**.
 
 ![Wybierz opcję Utwórz funkcję niestandardową.](./media/durable-functions-event-publishing/functions-portal.png)
 
@@ -124,6 +124,16 @@ Wprowadź nazwę funkcji, a następnie wybierz pozycję `Create`.
 ![Utwórz wyzwalacz Event Grid.](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
 
 Zostanie utworzona funkcja o następującym kodzie:
+
+#### <a name="precompiled-c"></a>PrekompilowanegoC#
+```csharp
+public static void Run([HttpTrigger] JObject eventGridEvent, ILogger log)
+{
+    log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
+}
+```
+
+#### <a name="c-script"></a>C#Napisy
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -150,6 +160,8 @@ Teraz możesz przystąpić do odbierania zdarzeń cyklu życia.
 ## <a name="create-durable-functions-to-send-the-events"></a>Utwórz Durable Functions, aby wysłać zdarzenia
 
 W projekcie Durable Functions Rozpocznij debugowanie na komputerze lokalnym.  Poniższy kod jest taki sam jak kod szablonu dla Durable Functions. Masz już `host.json` skonfigurowaną `local.settings.json` i na komputerze lokalnym.
+
+### <a name="precompiled-c"></a>PrekompilowanegoC#
 
 ```csharp
 using System.Collections.Generic;
@@ -188,8 +200,8 @@ namespace LifeCycleEventSpike
 
         [FunctionName("Sample_HttpStart")]
         public static async Task<HttpResponseMessage> HttpStart(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")]HttpRequestMessage req,
-            [OrchestrationClient]DurableOrchestrationClient starter,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestMessage req,
+            [OrchestrationClient] DurableOrchestrationClient starter,
             ILogger log)
         {
             // Function input comes from the request content.

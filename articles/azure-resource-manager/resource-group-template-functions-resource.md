@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 43369131700681de5523043f414129a2e4169f44
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 9e50a2705982a022284e1c54bd5ed7360a2d1663
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306923"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390705"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla szablonów usługi Azure Resource Manager
 
@@ -42,6 +42,10 @@ Składnia tej funkcji różni się od nazwy operacji na liście. Każda implemen
 | resourceName lub resourceIdentifier |Yes |ciąg |Unikatowy identyfikator dla zasobu. |
 | apiVersion |Yes |ciąg |Wersja interfejsu API stanu środowiska uruchomieniowego zasobu. Zazwyczaj w formacie **rrrr mm-dd**. |
 | functionValues |Nie |obiekt | Obiekt, który zawiera wartości dla funkcji. Podaj tylko ten obiekt funkcji, które obsługują odbieranie obiekt o wartości parametrów, takich jak **listAccountSas** na koncie magazynu. Przykład przekazywania wartości funkcji przedstawiono w tym artykule. | 
+
+### <a name="valid-uses"></a>Prawidłowe zastosowania
+
+Funkcji list można używać tylko we właściwościach definicji zasobu i w sekcji dane wyjściowe szablonu lub wdrożenia. Gdy jest używany z [iteracją właściwości](resource-group-create-multiple.md#property-iteration), można użyć funkcji listy dla `input` , ponieważ wyrażenie jest przypisane do właściwości zasobów. Nie można ich używać z `count` , ponieważ należy określić liczbę przed rozliczeniem funkcji listy.
 
 ### <a name="implementations"></a>Implementacje
 

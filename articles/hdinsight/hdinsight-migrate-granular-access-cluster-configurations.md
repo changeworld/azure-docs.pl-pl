@@ -1,5 +1,5 @@
 ---
-title: Migrowanie do szczegółowego dostępu opartego na rolach w celu skonfigurowania klastrów — Azure HDInsight
+title: Migrowanie do szczegółowego dostępu opartego na rolach — konfiguracje klastrów usługi Azure HDInsight
 description: Dowiedz się więcej o zmianach wymaganych w ramach migracji do szczegółowego dostępu opartego na rolach dla konfiguracji klastra usługi HDInsight.
 author: tylerfox
 ms.author: tyfox
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: 03bea7b9df929914e25ca97b382dc5c120b5a769
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 9eb77b3e4066712aecebee4660d50baf45957cb8
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69983030"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733230"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrowanie do szczegółowego dostępu opartego na rolach w przypadku konfiguracji klastrów
 

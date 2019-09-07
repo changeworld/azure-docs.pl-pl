@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: e57427fbb7e0d3c67fc4fcbab1a50f14ef8c9501
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5cc033787e1045926ff4fece6826e41f430d48fd
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569343"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744466"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 
@@ -46,7 +46,7 @@ SQL Database oferuje również kilka funkcji zachowania ciągłości biznesowej,
 
 - [Tabele danych czasowych](sql-database-temporal-tables.md) umożliwiają przywrócenie wersji wiersza z dowolnego punktu w czasie.
 - [Wbudowane automatyczne kopie zapasowe](sql-database-automated-backups.md) i [przywracanie do punktu w czasie](sql-database-recovery-using-backups.md#point-in-time-restore) umożliwiają przywrócenie kompletnej bazy danych do pewnego momentu w skonfigurowanym okresie przechowywania do 35 dni.
-- Usuniętą [bazę danych można przywrócić](sql-database-recovery-using-backups.md#deleted-database-restore) do punktu, w którym został usunięty, jeśli **serwer SQL Database nie został usunięty**.
+- [Usuniętą bazę danych można przywrócić](sql-database-recovery-using-backups.md#deleted-database-restore) do punktu, w którym został usunięty, jeśli **serwer SQL Database nie został usunięty**.
 - [Długoterminowe przechowywanie kopii zapasowych](sql-database-long-term-retention.md) umożliwia przechowywanie kopii zapasowych do 10 lat.
 - [Aktywna replikacja geograficzna](sql-database-active-geo-replication.md) umożliwia tworzenie odczytanych replik i ręczne przełączenie w tryb failover do dowolnej repliki w przypadku awarii centrum danych lub uaktualnienia aplikacji.
 - [Automatyczna Grupa trybu failover](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) umożliwia aplikacji automatyczne odzyskiwanie w przypadku awarii centrum danych.
@@ -59,15 +59,15 @@ Jeśli maksymalny obsługiwany okres przechowywania kopii zapasowej dla operacji
 
 ## <a name="compare-geo-replication-with-failover-groups"></a>Porównywanie replikacji geograficznej z grupami trybu failover
 
-[Grupy autotrybu failover](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) upraszczają wdrażanie i użycie [replikacji](sql-database-active-geo-replication.md) geograficznej oraz dodawanie dodatkowych funkcji, zgodnie z opisem w poniższej tabeli:
+[Grupy autotrybu failover](sql-database-auto-failover-group.md#auto-failover-group-terminology-and-capabilities) upraszczają wdrażanie i użycie [replikacji geograficznej](sql-database-active-geo-replication.md) oraz dodawanie dodatkowych funkcji, zgodnie z opisem w poniższej tabeli:
 
 |                                              | Replikacja geograficzna | Grupy trybu failover  |
 |:---------------------------------------------| :-------------- | :----------------|
 | Automatyczna praca awaryjna                           |     Nie          |      Tak         |
 | Równoczesne przełączanie wielu baz danych  |     Nie          |      Tak         |
 | Zaktualizuj parametry połączenia po przejściu w tryb failover      |     Tak         |      Nie          |
-| Obsługiwane wystąpienie zarządzane                   |     Nie          |      Yes         |
-| Może znajdować się w tym samym regionie co podstawowa             |     Yes         |      Nie          |
+| Obsługiwane wystąpienie zarządzane                   |     Nie          |      Tak         |
+| Może znajdować się w tym samym regionie co podstawowa             |     Tak         |      Nie          |
 | Wiele replik                            |     Tak         |      Nie          |
 | Obsługuje skalę odczytu                          |     Tak         |      Tak         |
 | &nbsp; | &nbsp; | &nbsp; |
@@ -78,7 +78,7 @@ Jeśli maksymalny obsługiwany okres przechowywania kopii zapasowej dla operacji
 Sporadycznie centrum danych platformy Azure może mieć awarię. Taka awaria powoduje zakłócenia działania firmy, które mogą trwać tylko kilka minut, ale mogą też trwać wiele godzin.
 
 - Jedną z opcji jest oczekiwanie, aż baza danych powróci do trybu online po zakończeniu awarii centrum danych. Takie rozwiązanie sprawdza się dla aplikacji, w przypadku których baza danych może być w trybie offline. Może to na przykład dotyczyć projektu tworzenia oprogramowania lub bezpłatnej wersji próbnej, nad którymi nie trzeba pracować na bieżąco. Gdy centrum danych ma awarie, nie wiesz, jak długo może trwać awaria, więc ta opcja działa tylko wtedy, gdy baza danych nie jest potrzebna przez pewien czas.
-- Inną opcją jest przywrócenie bazy danych na dowolnym serwerze w dowolnym regionie świadczenia usługi Azure przy użyciu geograficznie nadmiarowych [kopii zapasowych bazy danych](sql-database-recovery-using-backups.md#geo-restore) (czyli przywracania geograficznego). Przywracanie geograficzne wykorzystuje geograficznie nadmiarową kopię zapasową jako źródło i może służyć do odzyskania bazy danych, nawet jeśli baza danych lub Datacenter jest niedostępna z powodu przestoju.
+- Inną opcją jest przywrócenie bazy danych na dowolnym serwerze w dowolnym regionie świadczenia usługi Azure przy użyciu [geograficznie nadmiarowych kopii zapasowych bazy danych](sql-database-recovery-using-backups.md#geo-restore) (czyli przywracania geograficznego). Przywracanie geograficzne wykorzystuje geograficznie nadmiarową kopię zapasową jako źródło i może służyć do odzyskania bazy danych, nawet jeśli baza danych lub Datacenter jest niedostępna z powodu przestoju.
 - Na koniec można szybko odzyskać sprawność po awarii, jeśli skonfigurowano lokację geograficzną z [aktywną replikacją geograficzną](sql-database-active-geo-replication.md) lub [grupą automatycznego trybu failover](sql-database-auto-failover-group.md) dla bazy danych lub baz danych. W zależności od wybranych technologii można użyć opcji ręcznego lub automatycznego przełączania do trybu failover. Gdy sama praca awaryjna trwa zaledwie kilka sekund, jej aktywowanie trwa co najmniej 1 godzina. Jest to konieczne, aby zapewnić, że tryb failover jest uzasadniony przez skalę przestojów. Ponadto przejście w tryb failover może spowodować niewielką utratę danych z powodu charakteru replikacji asynchronicznej. 
 
 Podczas opracowywania planu zapewniania ciągłości działalności biznesowej należy zrozumieć znaczenie maksymalnego dopuszczalnego czasu oczekiwania na pełne odzyskanie aplikacji po wystąpieniu zdarzenia powodującego zakłócenia. Czas wymagany do pełnego odzyskania aplikacji jest znany jako cel czasu odzyskiwania (RTO). Należy również zapoznać się z maksymalnym okresem ostatnich aktualizacji danych (przedział czasu), przez jaki aplikacja może tolerować utratę przy nieplanowanym zdarzeniu. Potencjalna utrata danych jest znana jako cel punktu odzyskiwania (RPO).
@@ -92,7 +92,7 @@ Różne metody odzyskiwania oferują różne poziomy RPO i RTO. Można wybrać o
 | Ręczna praca awaryjna bazy danych | 30 s | 5 s |
 
 > [!NOTE]
-> Ręczne przełączenie do *trybu failover bazy danych* odnosi się do trybu failover pojedynczej bazy danych w jej zapasowej replikacji geograficznej przy użyciu [trybu](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)nieplanowanego
+> Ręczne przełączenie do *trybu failover bazy danych* odnosi się do trybu failover pojedynczej bazy danych w jej zapasowej replikacji geograficznej przy użyciu [trybu nieplanowanego](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)
 Zapoznaj się z tabelą we wcześniejszej części tego artykułu, aby uzyskać szczegółowe informacje na temat RTO trybu failover i punktu odzyskiwania.
 
 
@@ -130,7 +130,7 @@ Jeśli używasz aktywnej replikacji geograficznej lub automatycznych grup trybu 
 
 ### <a name="perform-a-geo-restore"></a>Wykonywanie przywracania geograficznego
 
-W przypadku korzystania z automatycznych kopii zapasowych z magazynem geograficznie nadmiarowym (domyślnie włączony) można odzyskać bazę danych przy użyciu funkcji [przywracania](sql-database-disaster-recovery.md#recover-using-geo-restore)geograficznego. Odzyskiwanie odbywa się zwykle w ciągu 12 godzin — dzięki utracie danych do godziny, która jest określana przez czas wykonania ostatniej kopii zapasowej dziennika i zreplikowanej. Do momentu ukończenia odzyskiwania baza danych nie może rejestrować żadnych transakcji ani odpowiadać na żadne zapytania. Pamiętaj, że przywracanie geograficzne przywraca bazę danych tylko do ostatniego dostępnego punktu w czasie.
+W przypadku korzystania z automatycznych kopii zapasowych z magazynem geograficznie nadmiarowym (domyślnie włączony) można odzyskać bazę danych przy użyciu funkcji [przywracania geograficznego](sql-database-disaster-recovery.md#recover-using-geo-restore). Odzyskiwanie odbywa się zwykle w ciągu 12 godzin — dzięki utracie danych do godziny, która jest określana przez czas wykonania ostatniej kopii zapasowej dziennika i zreplikowanej. Do momentu ukończenia odzyskiwania baza danych nie może rejestrować żadnych transakcji ani odpowiadać na żadne zapytania. Pamiętaj, że przywracanie geograficzne przywraca bazę danych tylko do ostatniego dostępnego punktu w czasie.
 
 > [!NOTE]
 > Jeśli centrum danych powróci do trybu online przed przełączeniem aplikacji do odzyskiwanej bazy danych, można anulować odzyskiwanie.
@@ -140,7 +140,7 @@ W przypadku korzystania z automatycznych kopii zapasowych z magazynem geograficz
 Po odzyskaniu za pomocą dowolnego mechanizmu odzyskiwania należy wykonać następujące zadania dodatkowe, zanim będzie możliwe ponowne rozpoczęcie pracy przez użytkowników i aplikacje:
 
 - Przekieruj klientów i aplikacje klienckie na nowy serwer i przywróconą bazę danych
-- Upewnij się, że istnieją odpowiednie reguły zapory adresów IP na poziomie serwera umożliwiające użytkownikom łączenie się z zaporami na [poziomie bazy danych](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal) lub korzystanie z nich w celu włączenia odpowiednich reguł.
+- Upewnij się, że istnieją odpowiednie reguły zapory adresów IP na poziomie serwera umożliwiające użytkownikom łączenie się z [zaporami na poziomie bazy danych](sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) lub korzystanie z nich w celu włączenia odpowiednich reguł.
 - Zapewnij użycie odpowiednich danych logowania i uprawnień na poziomie głównej bazy danych (lub użyj [użytkowników, którzy się w niej znajdują](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable))
 - W razie potrzeby skonfiguruj inspekcję
 - W razie potrzeby skonfiguruj alerty
@@ -152,6 +152,6 @@ Po odzyskaniu za pomocą dowolnego mechanizmu odzyskiwania należy wykonać nast
 
 Czasami aplikacja musi być przełączona w tryb offline z powodu planowanej konserwacji, takiej jak uaktualnienie aplikacji. [Zarządzanie uaktualnieniami aplikacji](sql-database-manage-application-rolling-upgrade.md) zawiera opis sposobu korzystania z funkcji aktywnej replikacji geograficznej w celu zapewnienia stopniowego uaktualniania aplikacji w chmurze w celu zminimalizowania przestojów podczas uaktualniania i zapewnienia ścieżki odzyskiwania, jeśli coś się nie stało.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Omówienie zagadnień dotyczących projektowania aplikacji dla autonomicznych baz danych i pul elastycznych znajdują się w temacie Designing a Cloud and deawaryjne [strategie odzyskiwania](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)po awarii w [chmurze](sql-database-designing-cloud-solutions-for-disaster-recovery.md) .
+Omówienie zagadnień dotyczących projektowania aplikacji dla autonomicznych baz danych i pul elastycznych znajdują się w temacie [Designing a Cloud](sql-database-designing-cloud-solutions-for-disaster-recovery.md) and deawaryjne [strategie odzyskiwania](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)po awarii w chmurze.

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 6548b84f9599116aaa5055324bfa4625ea621ec3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3db0cd3dd01e3f5f6af6b4b668d1ccac094624a2
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087245"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735174"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Zarządzanie wystąpieniami w Durable Functions na platformie Azure
 
@@ -33,7 +33,7 @@ Metoda [StartNewAsync](https://azure.github.io/azure-functions-durable-extension
 Ta operacja asynchroniczna kończy się po pomyślnym zaplanowaniu procesu aranżacji. Proces aranżacji powinien rozpoczynać się w ciągu 30 sekund. Jeśli trwa dłużej, `TimeoutException`zobaczysz.
 
 > [!WARNING]
-> Podczas programowania lokalnego w języku `WEBSITE_HOSTNAME` JavaScript Ustaw dla zmiennej `localhost:<port>` środowiskowej wartość (na przykład `localhost:7071`), aby użyć metod `DurableOrchestrationClient`w. Aby uzyskać więcej informacji na temat tego wymagania, zobacz artykuł dotyczący usługi [GitHub](https://github.com/Azure/azure-functions-durable-js/issues/28).
+> Podczas programowania lokalnego w języku `WEBSITE_HOSTNAME` JavaScript Ustaw dla zmiennej `localhost:<port>` środowiskowej wartość (na przykład `localhost:7071`), aby użyć metod `DurableOrchestrationClient`w. Aby uzyskać więcej informacji na temat tego wymagania, zobacz artykuł [dotyczący usługi GitHub](https://github.com/Azure/azure-functions-durable-js/issues/28).
 
 ### <a name="net"></a>.NET
 
@@ -43,7 +43,9 @@ Parametry do [StartNewAsync](https://azure.github.io/azure-functions-durable-ext
 * **Dane wejściowe**: Wszystkie dane, które można serializować w formacie JSON, które powinny być przesyłane jako dane wejściowe do funkcji programu Orchestrator.
 * **Identyfikator wystąpienia**: Obowiązkowe Unikatowy identyfikator wystąpienia. Jeśli ten parametr nie zostanie określony, metoda używa identyfikatora losowego.
 
-Oto prosty C# przykład:
+Oto kilka przykładów:
+
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("HelloWorldManualStart")]
@@ -532,14 +534,14 @@ modules.exports = async function(context, ctx) {
 
 ## <a name="rewind-instances-preview"></a>Przewiń do tyłu wystąpienia (wersja zapoznawcza)
 
-Jeśli masz błąd aranżacji z nieoczekiwanej przyczyny, możesz przewinąć wystąpienie do poprzedniego stanu w dobrej kondycji, korzystając z interfejsu API skompilowanego do tego celu.
+Jeśli masz błąd aranżacji z nieoczekiwanej przyczyny, możesz *przewinąć* wystąpienie do poprzedniego stanu w dobrej kondycji, korzystając z interfejsu API skompilowanego do tego celu.
 
 > [!NOTE]
 > Ten interfejs API nie jest przeznaczony do zastępowania w celu zapewnienia prawidłowej obsługi błędów i zasad ponawiania. Zamiast tego jest przeznaczona do użycia tylko w przypadkach, w których wystąpienia aranżacji kończą się niepowodzeniem z nieoczekiwanych przyczyn. Aby uzyskać więcej informacji na temat obsługi błędów i zasad ponawiania, zobacz temat [Obsługa błędów](durable-functions-error-handling.md) .
 
 Użyj interfejsu API [RewindAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RewindAsync_System_String_System_String_) (.NET) `rewindAsync` lub (JavaScript), aby przełączyć aranżację do stanu *uruchomienia* . Ponownie uruchom błędy wykonywania działania lub podaranżacji, które spowodowały błąd aranżacji.
 
-Załóżmy na przykład, że masz przepływ pracy obejmujący serię zatwierdzeń [ludzkich](durable-functions-concepts.md#human). Załóżmy, że istnieje szereg funkcji działania, które powiadamiają kogoś o konieczności zatwierdzenia i oczekują odpowiedzi w czasie rzeczywistym. Po odebraniu odpowiedzi przez wszystkie działania zatwierdzenia lub przekroczeniu limitu czasu inne działanie nie powiedzie się z powodu błędnej konfiguracji aplikacji, na przykład parametrów połączenia z bazą danych. Wynikiem jest niepowodzenie aranżacji w przepływie pracy. Za pomocą interfejsu API `rewindAsync` (.NET)lub(JavaScript),administratoraplikacjimożenaprawićbłądkonfiguracjiiprzewinąćniepowodzeniearanżacjidostanubezpośrednioprzedawarią.`RewindAsync` Żadna z kroków związanych z interakcją przez człowieka nie musi być ponownie zatwierdzana, a aranżacja może teraz zakończyć się pomyślnie.
+Załóżmy na przykład, że masz przepływ pracy obejmujący serię [zatwierdzeń ludzkich](durable-functions-concepts.md#human). Załóżmy, że istnieje szereg funkcji działania, które powiadamiają kogoś o konieczności zatwierdzenia i oczekują odpowiedzi w czasie rzeczywistym. Po odebraniu odpowiedzi przez wszystkie działania zatwierdzenia lub przekroczeniu limitu czasu inne działanie nie powiedzie się z powodu błędnej konfiguracji aplikacji, na przykład parametrów połączenia z bazą danych. Wynikiem jest niepowodzenie aranżacji w przepływie pracy. Za pomocą interfejsu API `rewindAsync` (.NET)lub(JavaScript),administratoraplikacjimożenaprawićbłądkonfiguracjiiprzewinąćniepowodzeniearanżacjidostanubezpośrednioprzedawarią.`RewindAsync` Żadna z kroków związanych z interakcją przez człowieka nie musi być ponownie zatwierdzana, a aranżacja może teraz zakończyć się pomyślnie.
 
 > [!NOTE]
 > Funkcja *przewijania do tyłu* nie obsługuje zawijania wystąpień aranżacji korzystających z trwałych czasomierzy.
@@ -592,6 +594,8 @@ Aby usunąć wszystkie dane skojarzone z aranżacją, można przeczyścić histo
 
  Metoda ma dwa przeciążenia. Pierwszy z nich Przeczyszcza historię według identyfikatora wystąpienia aranżacji:
 
+### <a name="c"></a>C#
+
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
 public static Task Run(
@@ -603,6 +607,8 @@ public static Task Run(
 ```
 
 Drugi przykład pokazuje funkcję wyzwalaną przez czasomierz, która Przeczyszcza historię dla wszystkich wystąpień aranżacji, które zakończyły się po upływie określonego interwału czasu. W tym przypadku usuwa dane dla wszystkich wystąpień zakończonych 30 lub więcej dni temu. Zaplanowano uruchomienie raz dziennie, przy 12% AM:
+
+### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("PurgeInstanceHistory")]
@@ -621,7 +627,7 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Aby proces funkcji wyzwolonej pomyślnie zakończył się powodzeniem, stan środowiska uruchomieniowego musi być zakończony, **zakończony**lubniepowodzenie.
+> Aby proces funkcji wyzwolonej pomyślnie zakończył się **powodzeniem, stan**środowiska uruchomieniowego musi być zakończony, **zakończony**lub **Niepowodzenie**.
 
 ### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 

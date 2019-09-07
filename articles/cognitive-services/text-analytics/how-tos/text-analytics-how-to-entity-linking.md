@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: ea7d3f56aa512b8f5998d710451ff3b37659ca13
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 93d5b3de47ec0b3c0494589da0baf87f91a0233a
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697841"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390257"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak używać rozpoznawania jednostek nazwanych w analiza tekstu
 
@@ -52,14 +52,14 @@ Używanie łączenia jednostek w różnych językach wymaga użycia odpowiedniej
 | Ilość      | Currency      | „$10,99”     |
 | Ilość      | Wymiar     | „10 miles”, „40 cm”     |
 | Ilość      | Temperatura   | „32 degrees”    |
-| Datetime      | NIE DOTYCZY\*         | „6:30PM February 4, 2012”      |
-| Datetime      | Date          | „May 2nd, 2017”, „05/02/2017”   |
-| Datetime      | Time          | "8:00", "8:00"  |
-| Datetime      | Zakres dat     | „May 2nd to May 5th”    |
-| Datetime      | Zakres czasu     | „6pm to 7pm”     |
-| Datetime      | Duration      | „1 minute and 45 seconds”   |
-| Datetime      | Zestaw           | „every Tuesday”     |
-| Datetime      | Strefa czasowa      |    |
+| DateTime      | NIE DOTYCZY\*         | „6:30PM February 4, 2012”      |
+| DateTime      | Date          | „May 2nd, 2017”, „05/02/2017”   |
+| DateTime      | Time          | "8:00", "8:00"  |
+| DateTime      | Zakres dat     | „May 2nd to May 5th”    |
+| DateTime      | Zakres czasu     | „6pm to 7pm”     |
+| DateTime      | Duration      | „1 minute and 45 seconds”   |
+| DateTime      | Zestaw           | „every Tuesday”     |
+| DateTime      | Strefa czasowa      |    |
 | URL           | NIE DOTYCZY\*         | "https:\//www.Bing.com"    |
 | Email         | NIE DOTYCZY\*         | "support@contoso.com" |
 
@@ -98,7 +98,7 @@ Szczegółowe informacje na temat definicji żądania można znaleźć w artykul
 
 + Utwórz żądanie **POST**. Zapoznaj się z dokumentacją interfejsu API dla tego żądania: [Interfejs API jednostek](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ Ustaw punkt końcowy HTTP na potrzeby wyodrębniania jednostek. Musi on obejmować zasób `/entities`: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1/entities`
++ Ustaw punkt końcowy HTTP na potrzeby wyodrębniania fraz kluczowych przy użyciu zasobu analiza tekstu na platformie Azure lub [kontenera analiza tekstu](text-analytics-how-to-install-containers.md)wystąpienia. Musisz uwzględnić `/text/analytics/v2.1/entities`. Na przykład: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`.
 
 + Ustaw nagłówek żądania w taki sposób [, aby zawierał klucz dostępu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) dla operacji analiza tekstu.
 
@@ -286,7 +286,7 @@ W tym artykule przedstawiono koncepcje i przepływ pracy dotyczące łączenia j
 + Żądanie POST jest wysyłane do punktu końcowego `/entities` za pomocą spersonalizowanego [klucza dostępu i punktu końcowego](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) prawidłowego dla używanej subskrypcji.
 + Dane wyjściowe odpowiedzi, które obejmują połączone jednostki (w tym wyniki pewności, przesunięcia i linki sieci Web dla każdego identyfikatora dokumentu) mogą być używane w dowolnej aplikacji
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Interfejs API analizy tekstu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)

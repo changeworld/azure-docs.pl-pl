@@ -1,5 +1,5 @@
 ---
-title: Uruchamianie obciążeń Azure Machine Learning przy użyciu automatycznego uczenia maszynowego (AutoML) na Apache Spark w usłudze Azure HDInsight
+title: Uruchamianie Azure Machine Learning obciążeń na Apache Spark w usłudze Azure HDInsight
 description: Dowiedz się, jak uruchamiać obciążenia Azure Machine Learning przy użyciu automatycznego uczenia maszynowego (AutoML) na Apache Spark w usłudze Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: a731d9e0c97cb8431b1294d961ad46ff324f32be
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: aaea8a1af7ad6df89d41dc0e39d13bafbb610224
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141179"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736062"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Uruchamianie obciążeń Azure Machine Learning przy użyciu automatycznego uczenia maszynowego (AutoML) na Apache Spark w usłudze Azure HDInsight
 
@@ -55,7 +55,7 @@ credentials = UserPassCredentials('user@domain.com', 'my_smart_password')
 
 ## <a name="loading-dataset"></a>Ładowanie zestawu danych
 
-Automatyczne Uczenie maszynowe wusłudze Spark używa przepływów danych, które są oceniane przez opóźnieniem, niezmienne operacje na dane.  Przepływu danych może załadować zestaw danych z obiektu BLOB z dostępem do odczytu publicznego lub z adresu URL obiektu BLOB z tokenem SAS.
+Automatyczne Uczenie maszynowe w usłudze Spark używa **przepływów**danych, które są oceniane przez opóźnieniem, niezmienne operacje na dane.  Przepływu danych może załadować zestaw danych z obiektu BLOB z dostępem do odczytu publicznego lub z adresu URL obiektu BLOB z tokenem SAS.
 
 ```python
 import azureml.dataprep as dprep

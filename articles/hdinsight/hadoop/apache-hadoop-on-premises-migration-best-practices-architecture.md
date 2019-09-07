@@ -1,127 +1,127 @@
 ---
-title: Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania architektury
-description: Poznaj architekturę najlepsze rozwiązania dotyczące migrowania lokalnych klastrów Hadoop do usługi Azure HDInsight.
+title: Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — architektura
+description: Poznaj najlepsze rozwiązania dotyczące architektury dotyczące migrowania lokalnych klastrów Hadoop do usługi Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: d1f2b79ff3ae33adb0b6e3ce5a6d96ad38fb1562
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4243100d74515576463a6812e31625ddc0ca1f48
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64693118"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735880"
 ---
-# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania architektury
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania dotyczące architektury
 
-Ten artykuł zawiera zalecenia dotyczące architektury systemu Azure HDInsight. Jest częścią serii, która zapewnia najlepsze rozwiązania w celu ułatwienia migrowania lokalnych systemów Apache Hadoop do usługi Azure HDInsight.
+W tym artykule przedstawiono zalecenia dotyczące architektury systemów Azure HDInsight. Jest ona częścią serii, która oferuje najlepsze rozwiązania ułatwiające Migrowanie lokalnych systemów Apache Hadoop do usługi Azure HDInsight.
 
-## <a name="use-multiple-workload-optimized-clusters"></a>Za pomocą wielu klastrów zoptymalizowanych pod kątem obciążeń
+## <a name="use-multiple-workload-optimized-clusters"></a>Korzystanie z wielu klastrów zoptymalizowanych pod kątem obciążenia
 
-Wiele lokalnych wdrożeń usługi Apache Hadoop składają się z pojedynczego dużego klastra, która obsługuje wiele obciążeń. Ten pojedynczy klaster może być skomplikowane i mogą wymagać naruszeń do poszczególnych usług, aby wszystkie elementy współpracują ze sobą. Migracja lokalnych klastrów Hadoop do usługi Azure HDInsight wymaga zmiany w przypadku zastosowania podejścia.
+Wiele lokalnych wdrożeń Apache Hadoop obejmuje jeden duży klaster, który obsługuje wiele obciążeń. Ten pojedynczy klaster może być skomplikowany i może wymagać złamania poszczególnych usług, aby wszystkie współpracowały ze sobą. Migrowanie lokalnych klastrów Hadoop do usługi Azure HDInsight wymaga zmiany podejścia.
 
-Usługa Azure klastry HDInsight są przeznaczone dla określonego typu wykorzystanie mocy obliczeniowej. Ponieważ magazynu mogą być współużytkowane przez wiele klastrów, jest możliwe utworzenie wielu klastrów zoptymalizowanych pod kątem obciążeń obliczeń do potrzeb różnych zadań. Każdy typ klastra ma konfiguracją optymalną dla tego określonego obciążenia. W poniższej tabeli wymieniono typy obsługiwanych klastra HDInsight i odpowiedniego obciążenia.
+Klastry usługi Azure HDInsight są przeznaczone do określonego typu obliczeń użycia. Ponieważ magazyn może być współużytkowany przez wiele klastrów, możliwe jest utworzenie wielu klastrów obliczeniowych zoptymalizowanych pod kątem obciążenia, aby zaspokoić potrzeby różnych zadań. Każdy typ klastra ma optymalną konfigurację dla tego konkretnego obciążenia. W poniższej tabeli wymieniono obsługiwane typy klastrów w usłudze HDInsight i odpowiadające im obciążenia.
 
-|**Obciążenie**|**Typ klastra HDInsight**|
+|**Obciążenie**|**Typ klastra usługi HDInsight**|
 |---|---|
-|Przetwarzanie wsadowe (ETL / ELT)|Hadoop, Spark|
+|Przetwarzanie wsadowe (ETL/ELT)|Hadoop, Spark|
 |Magazynowanie danych|Hadoop, Spark, zapytanie interaktywne|
-|IoT / przesyłania strumieniowego|Platforma Kafka, Storm, Spark|
-|Przetwarzanie transakcyjne NoSQL|HBase|
-|Zapytania interakcyjne i szybciej za pomocą pamięci podręcznej w pamięci|Zapytanie interakcyjne|
-|Do nauki o danych|ML Services, Spark|
+|IoT/Streaming|Kafka, burza, Spark|
+|NoSQL transakcyjne przetwarzanie|HBase|
+|Interakcyjne i szybsze zapytania z buforowaniem w pamięci|Zapytanie interakcyjne|
+|Do nauki o danych|Usługi ML, Spark|
 
-W poniższej tabeli przedstawiono różne metody, które mogą służyć do tworzenia klastra usługi HDInsight.
+W poniższej tabeli przedstawiono różne metody, których można użyć do utworzenia klastra usługi HDInsight.
 
-|**Narzędzie**|**Oparte na przeglądarce**|**Wiersz polecenia**|**Interfejs API REST**|**SDK**|
+|**Narzędzie**|**Na podstawie przeglądarki**|**Wiersz polecenia**|**REST API**|**SDK**|
 |---|---|---|---|---|
 |[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
-|[Interfejs wiersza polecenia platformy Azure (wersja 1.0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
+|[Interfejs wiersza polecenia platformy Azure (Ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
 |[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
 |[Zestaw SDK platformy .NET](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)||||X|
 |[Zestaw SDK dla języka Python](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
 |[Zestaw SDK Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
-|[Szablony usługi Azure Resource Manager](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
+|[Szablony Azure Resource Manager](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 
-Aby uzyskać więcej informacji, zobacz artykuł [klastra typów w HDInsight](../hadoop/apache-hadoop-introduction.md).
+Aby uzyskać więcej informacji, zobacz artykuł [typy klastrów w usłudze HDInsight](../hadoop/apache-hadoop-introduction.md).
 
-## <a name="use-transient-on-demand-clusters"></a>Używaj przejściowy klastrów na żądanie
+## <a name="use-transient-on-demand-clusters"></a>Korzystanie z przejściowych klastrów na żądanie
 
-Klastry HDInsight nieużywane przejść przez długi czas. Aby zaoszczędzić na kosztach zasobów HDInsight obsługuje przejściowy klastry na żądanie, które zostaną usunięte po pomyślnym ukończeniu obciążenia.
+Klastry usługi HDInsight mogą nie być używane przez długi czas. W celu ułatwienia oszczędzania kosztów zasobów Usługa HDInsight obsługuje klastry przejściowe na żądanie, które mogą zostać usunięte po pomyślnym zakończeniu obciążenia.
 
-Po usunięciu klastra skojarzone konto magazynu i metadane zewnętrznych nie są usuwane. Klaster można później ponownie utworzyć przy użyciu tego samego konta magazynu i magazynami metadanych.
+Po usunięciu klastra skojarzone konto magazynu i zewnętrzne metadane nie są usuwane. Klaster można później utworzyć ponownie, używając tych samych kont magazynu i metadanych.
 
-Usługa Azure Data Factory może służyć do zaplanowania Tworzenie klastrów HDInsight na żądanie. Aby uzyskać więcej informacji, zobacz artykuł [utworzyć klastry platformy Apache Hadoop na żądanie w HDInsight przy użyciu usługi Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md).
+Azure Data Factory można użyć do zaplanowania tworzenia klastrów usługi HDInsight na żądanie. Aby uzyskać więcej informacji, zobacz artykuł [Tworzenie klastrów Apache Hadoop na żądanie w usłudze HDInsight przy użyciu Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md).
 
-## <a name="decouple-storage-from-compute"></a>Rozdzielenie magazyn od zasobów obliczeniowych
+## <a name="decouple-storage-from-compute"></a>Rozdzielenie magazynu od obliczeń
 
-Typowe lokalnych wdrożeń usługi Hadoop na użytek ten sam zestaw maszyn magazyn danych i przetwarzania danych. Ponieważ są one wspólnie przechowywane, zasobów obliczeniowych i magazynu musi być skalowane razem.
+Typowe wdrożenia lokalnej usługi Hadoop używają tego samego zestawu maszyn do przechowywania i przetwarzania danych. Ze względu na to, że są one rozmieszczone, obliczenia i magazyn muszą być skalowane jednocześnie.
 
-W klastrach HDInsight Magazyn musi być wspólnie przechowywane z mocą obliczeniową i mogą albo należeć do usługi Azure storage, usługi Azure Data Lake Storage lub obu. Oddzielenie magazyn od zasobów obliczeniowych ma następujące zalety:
+W klastrach usługi HDInsight magazyn nie musi znajdować się w lokalizacji obliczeniowej i może znajdować się w usłudze Azure Storage, Azure Data Lake Storage lub obu. Oddzielenie magazynu od obliczeń wiąże się z następującymi korzyściami:
 
-- Udostępnianie danych między klastrami.
-- Korzystanie z klastrów przejściowy, ponieważ dane nie są zależne od klastra.
-- Mniejsze koszty magazynowania.
-- Skalowanie magazynu i obliczeń oddzielnie.
+- Udostępnianie danych w wielu klastrach.
+- Używanie klastrów przejściowych od momentu, gdy dane nie są zależne od klastra.
+- Obniżony koszt magazynu.
+- Skalowanie magazynu i obliczanie osobno.
 - Replikacja danych między regionami.
 
-Obliczeniowe tworzenia klastrów w pobliżu zasobów konta magazynu w regionie platformy Azure, aby zmniejszyć koszt wydajności związany z oddzielenie zasobów obliczeniowych i magazynowych. Szybkich sieci, należy wydajny dostęp węzłów obliczeniowych do danych wewnątrz usługi Azure storage.
+Klastry obliczeniowe są tworzone w pobliżu zasobów konta magazynu w regionie świadczenia usługi Azure, aby zmniejszyć koszty związane z rozdzieleniem mocy obliczeniowej i magazynu. Szybkie sieci sprawiają, że węzły obliczeniowe uzyskują dostęp do danych w usłudze Azure Storage.
 
 ## <a name="use-external-metadata-stores"></a>Korzystanie z zewnętrznych magazynów metadanych
 
 
-Istnieją dwa główne magazyny metadanych, które działają z klastrami HDInsight: [Apache Hive](https://hive.apache.org/) i [Apache Oozie](https://oozie.apache.org/). Magazyn metadanych Hive jest repozytorium centralnym schematu, które mogą być używane przez silniki przetwarzania danych, w tym usługi Hadoop, Spark, LLAP, Presto i Apache Pig. Magazyn metadanych programu Oozie przechowuje szczegółowe informacje dotyczące planowania i ich stan w toku i zakończonych zadań usługi Hadoop.
+Istnieją dwa główne magazyny, które współpracują z klastrami usługi HDInsight: [Apache Hive](https://hive.apache.org/) i [Apache Oozie](https://oozie.apache.org/). Magazyn metadanych Hive to centralne repozytorium schematów, które może być używane przez aparaty przetwarzania danych, w tym Hadoop, Spark, LLAP, Presto i Apache świni. Magazyn metadanych Oozie przechowuje szczegółowe informacje o planowaniu i stanie w toku i ukończonych zadaniach usługi Hadoop.
 
 
-HDInsight używa usługi Azure SQL Database dla gałęzi i Oozie magazyny metadanych. Istnieją dwa sposoby konfigurowania metadanych w klastrach HDInsight:
+Usługa HDInsight używa Azure SQL Database dla magazynów Hive i Oozie. Istnieją dwa sposoby konfigurowania magazynu metadanych w klastrach usługi HDInsight:
 
 1. Domyślny magazyn metadanych
 
-    - Bez dodatkowych kosztów.
-    - Magazyn metadanych jest usuwany, gdy klaster jest usuwany.
-    - Magazyn metadanych nie może być współużytkowane przez różnych klastrach.
-    - Używa podstawowe bazy danych SQL Azure, która ma ograniczenie do pięciu jednostek DTU.
+    - Brak dodatkowych kosztów.
+    - Magazyn metadanych jest usuwany po usunięciu klastra.
+    - Magazynu metadanych nie można udostępniać między różnymi klastrami.
+    - Używa podstawowej bazy danych SQL platformy Azure, która ma pięć limitów jednostek DTU.
 
-1. Niestandardowe zewnętrzny Magazyn metadanych
+1. Niestandardowy zewnętrzny magazyn metadanych
 
-    - Określ zewnętrznej bazy danych SQL Azure jako magazynu metadanych.
-    - Klastry można tworzyć i usunięte bez utraty metadane, takie jak szczegóły zadania Oozie schematu programu Hive.
-    - Pojedynczy Magazyn metadanych bazy danych mogą być udostępniane w różnych typów klastrów.
-    - Magazyn metadanych można przeskalować w górę odpowiednio do potrzeb.
-    - Aby uzyskać więcej informacji, zobacz [używać zewnętrznych magazynów metadanych w usłudze Azure HDInsight](../hdinsight-use-external-metadata-stores.md).
+    - Określ zewnętrzny Azure SQL Database jako magazyn metadanych.
+    - Klastry można tworzyć i usuwać bez utraty metadanych, w tym szczegółów zadania Oozie schematu Hive.
+    - Pojedynczy magazyn bazy danych magazynu może być współużytkowany z różnymi typami klastrów.
+    - Magazyn metadanych można skalować odpowiednio do wymagań.
+    - Aby uzyskać więcej informacji, zobacz [Korzystanie z zewnętrznych magazynów metadanych w usłudze Azure HDInsight](../hdinsight-use-external-metadata-stores.md).
 
-## <a name="best-practices-for-hive-metastore"></a>Najlepsze rozwiązania dotyczące Hive magazynu metadanych
+## <a name="best-practices-for-hive-metastore"></a>Najlepsze rozwiązania dotyczące magazynu metadanych Hive
 
-Najważniejsze wskazówki magazynu metadanych HDInsight Hive są następujące:
+Poniżej przedstawiono niektóre najlepsze rozwiązania dotyczące usługi HDInsight magazyn metadanych Hive:
 
-- Użyj niestandardowego zewnętrzny Magazyn metadanych zasoby obliczeniowe oddzielne i metadanych.
-- Zacznij od S2 warstwa wystąpieniem usługi Azure SQL, który zapewnia 50 jednostek DTU i 250 GB miejsca do magazynowania. Jeśli widzisz "wąskie gardło", można zwiększać bazy danych.
-- Nie udostępniaj magazynu metadanych utworzone dla jednej wersji klastra HDInsight z klastrami w innej wersji. Różne wersje programu Hive używają różnych schematów. Na przykład metadanych nie mogą być udostępniane klastry Hive 1.2 i Hive 2.1.
-- Utwórz kopię zapasową niestandardowy Magazyn metadanych okresowo.
-- Zachowaj magazynu metadanych i klaster HDInsight, w tym samym regionie.
-- Monitorowanie magazynu metadanych dla wydajności i dostępności przy użyciu narzędzi monitorowania bazy danych SQL platformy Azure, takich jak witryny Azure portal lub dzienniki usługi Azure Monitor.
-- Wykonaj **ANALIZOWANIE tabeli** polecenia na potrzeby generowania statystyk dla tabel i kolumn. Na przykład `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
+- Użyj niestandardowego zewnętrznego magazynu metadanych, aby oddzielić zasoby i metadane obliczeniowe.
+- Zacznij od wystąpienia usługi Azure SQL w warstwie S2, które zapewnia 50 jednostek DTU i 250 GB miejsca w magazynie. Jeśli widzisz wąskie gardło, możesz skalować bazę danych w górę.
+- Nie udostępniaj magazynu metadanych utworzonego dla jednej wersji klastra usługi HDInsight z klastrami o innej wersji. Różne wersje programu Hive używają różnych schematów. Nie można na przykład udostępnić magazynu metadanych w klastrach Hive 1,2 i Hive 2,1.
+- Okresowo twórz kopię zapasową niestandardowego magazynu metadanych.
+- Przechowuj magazyn metadanych i klaster usługi HDInsight w tym samym regionie.
+- Monitoruj magazyn metadanych pod kątem wydajności i dostępności przy użyciu narzędzi do monitorowania Azure SQL Database, takich jak dzienniki Azure Portal lub Azure Monitor.
+- Wykonaj polecenie **Analizuj tabelę** jako wymagane do generowania statystyk dla tabel i kolumn. Na przykład `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
 ## <a name="best-practices-for-different-workloads"></a>Najlepsze rozwiązania dotyczące różnych obciążeń
 
-- Należy wziąć pod uwagę przy użyciu funkcji LLAP klastra dla interakcyjnych zapytań Hive z czasem odpowiedzi ulepszone [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) to nowa funkcja programu Hive w wersji 2.0 umożliwiająca wewnątrzpamięciowa pamięć podręczna zapytań. LLAP sprawia, że zapytania programu Hive, które znacznie szybciej, maksymalnie [26 x szybciej niż Hive 1.x w niektórych przypadkach](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
-- Należy wziąć pod uwagę przy użyciu zadań platformy Spark, zamiast zadań Hive.
-- Należy wziąć pod uwagę, zastępując zapytania oparte na aparacie impala LLAP zapytania.
-- Należy wziąć pod uwagę, zastępując zadań MapReduce zadań platformy Spark.
-- Należy wziąć pod uwagę, zastępując partii zadań platformy Spark o małych opóźnieniach, przy użyciu zadań platformy Spark Structured Streaming.
-- Rozważ użycie usługi Azure Data Factory (ADF) w wersji 2.0 dla danych aranżacji.
-- Do zarządzania klastrem, należy wziąć pod uwagę Ambari.
-- Zmień magazyn danych z lokalnym systemem plików HDFS WASB lub ADLS i usług AD FS dla przetwarzania skryptów.
-- Należy wziąć pod uwagę przy użyciu platformy Ranger RBAC dla tabel programu Hive i inspekcji.
-- Należy rozważyć użycie bazy danych cosmos DB zamiast bazy danych MongoDB lub bazy danych Cassandra.
+- Rozważ użycie klastra LLAP na potrzeby interaktywnych zapytań Hive przy użyciu ulepszonego czasu odpowiedzi [LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) to nowa funkcja w programie Hive 2,0, która umożliwia buforowanie zapytań w pamięci. LLAP sprawia, że zapytania Hive znacznie szybsze, do [26x szybciej niż w przypadku programu Hive 1. x w niektórych przypadkach](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/).
+- Rozważ użycie zadań platformy Spark zamiast zadań Hive.
+- Rozważ zamianę zapytań opartych na Impala z zapytaniami LLAP.
+- Rozważ zastępowanie zadań MapReduce za pomocą zadań platformy Spark.
+- Rozważ zastępowanie zadań wsadowych o małym opóźnieniu, korzystając z zadań przetwarzania strumieniowego platformy Spark.
+- Rozważ użycie Azure Data Factory (ADF) 2,0 do organizowania danych.
+- Rozważ Ambari zarządzania klastrem.
+- Zmień magazyn danych z lokalnego systemu plików HDFS na WASB lub ADLS lub ADFS na potrzeby przetwarzania skryptów.
+- Rozważ użycie Ranger RBAC w tabelach i inspekcjach Hive.
+- Rozważ użycie CosmosDB zamiast MongoDB lub Cassandra.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Przeczytaj następny artykuł w tej serii:
+Przeczytaj następny artykuł z tej serii:
 
-- [Infrastruktura najlepsze rozwiązania dotyczące lokalnych do migracji usługi Azure HDInsight Hadoop](apache-hadoop-on-premises-migration-best-practices-infrastructure.md)
+- [Najlepsze rozwiązania dotyczące infrastruktury do migracji Azure HDInsight Hadoop](apache-hadoop-on-premises-migration-best-practices-infrastructure.md)

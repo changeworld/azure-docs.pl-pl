@@ -1,30 +1,28 @@
 ---
-title: Wersja zapoznawcza — używanie standardowego modułu równoważenia obciążenia jednostki SKU w usłudze Azure Kubernetes Service (AKS)
+title: Korzystanie ze standardowego modułu równoważenia obciążenia jednostki SKU w usłudze Azure Kubernetes Service (AKS)
 description: Dowiedz się, jak używać modułu równoważenia obciążenia ze standardową jednostką SKU, aby udostępnić swoje usługi za pomocą usługi Azure Kubernetes Service (AKS).
 services: container-service
 author: zr-msft
 ms.service: container-service
 ms.topic: article
-ms.date: 06/25/2019
+ms.date: 09/05/2019
 ms.author: zarhoads
-ms.openlocfilehash: 422189952096ef25b69e62aa2708c59385b0637a
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 5586886f348fd20ec316461e603156043d4233e8
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898957"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387343"
 ---
-# <a name="preview---use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Wersja zapoznawcza — używanie standardowego modułu równoważenia obciążenia jednostki SKU w usłudze Azure Kubernetes Service (AKS)
+# <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Korzystanie ze standardowego modułu równoważenia obciążenia jednostki SKU w usłudze Azure Kubernetes Service (AKS)
 
 Aby zapewnić dostęp do aplikacji w usłudze Azure Kubernetes Service (AKS), możesz utworzyć i użyć Azure Load Balancer. Moduł równoważenia obciążenia uruchomiony w systemie AKS może być używany jako wewnętrzny lub zewnętrzny moduł równoważenia obciążenia. Wewnętrzny moduł równoważenia obciążenia sprawia, że usługa Kubernetes jest dostępna tylko dla aplikacji działających w tej samej sieci wirtualnej co klaster AKS. Zewnętrzny moduł równoważenia obciążenia otrzymuje co najmniej jeden publiczny adres IP dla ruchu przychodzącego, a usługa Kubernetes jest dostępna zewnętrznie przy użyciu publicznych adresów IP.
 
-Azure Load Balancer jest dostępny w dwóch jednostkach SKU — *podstawowa* i *standardowa*. Domyślnie *podstawowa* jednostka SKU jest używana, gdy manifest usługi jest używany do tworzenia modułu równoważenia obciążenia na AKS. Użycie usługi równoważenia obciążenia ze standardową jednostką SKU zapewnia dodatkowe funkcje, takie jak większy rozmiar puli zaplecza i strefy dostępności. Ważne jest, aby zrozumieć różnice między standardowymi i *podstawowymi* usługami równoważenia obciążenia przed wybraniem, który ma być używany. Po utworzeniu klastra AKS nie można zmienić jednostki SKU modułu równoważenia obciążenia dla tego klastra. Aby uzyskać więcej informacji na temat *podstawowych* i *standardowych* jednostek SKU, zobacz [porównanie jednostki SKU modułu równoważenia obciążenia platformy Azure][azure-lb-comparison].
+Azure Load Balancer jest dostępny w dwóch jednostkach SKU — *podstawowa* i *standardowa*. Domyślnie *podstawowa* jednostka SKU jest używana, gdy manifest usługi jest używany do tworzenia modułu równoważenia obciążenia na AKS. Użycie usługi równoważenia obciążenia ze *standardową* jednostką SKU zapewnia dodatkowe funkcje, takie jak większy rozmiar puli zaplecza i strefy dostępności. Ważne jest, aby zrozumieć różnice między *standardowymi* i *podstawowymi* usługami równoważenia obciążenia przed wybraniem, który ma być używany. Po utworzeniu klastra AKS nie można zmienić jednostki SKU modułu równoważenia obciążenia dla tego klastra. Aby uzyskać więcej informacji na temat *podstawowych* i *standardowych* jednostek SKU, zobacz [porównanie jednostki SKU modułu równoważenia obciążenia platformy Azure][azure-lb-comparison].
 
 W tym artykule opisano sposób tworzenia i używania Azure Load Balancer ze *standardową* jednostką SKU przy użyciu usługi Azure Kubernetes Service (AKS).
 
 W tym artykule założono podstawową wiedzę na temat koncepcji Kubernetes i Azure Load Balancer. Aby uzyskać więcej informacji, zobacz [Kubernetes podstawowe pojęcia dotyczące usługi Azure Kubernetes Service (AKS)][kubernetes-concepts] i [co to jest Azure Load Balancer?][azure-lb].
-
-Ta funkcja jest obecnie dostępna w wersji zapoznawczej.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -36,17 +34,11 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 Nazwa główna usługi klastra AKS wymaga uprawnień do zarządzania zasobami sieci, jeśli używana jest istniejąca podsieć lub Grupa zasobów. Ogólnie rzecz biorąc Przypisz rolę *współautor sieci* do nazwy głównej usługi w odniesieniu do zasobów delegowanych. Aby uzyskać więcej informacji o uprawnieniach, zobacz [delegowanie dostępu AKS do innych zasobów platformy Azure][aks-sp].
 
-Należy utworzyć klaster AKS, który ustawia jednostkę SKU dla usługi równoważenia obciążenia na *Standard* zamiast domyślnej wersji *podstawowej*. Tworzenie klastra AKS jest omówione w późniejszym kroku, ale najpierw musisz włączyć kilka funkcji w wersji zapoznawczej.
-
-> [!IMPORTANT]
-> Funkcja AKS w wersji zapoznawczej to samoobsługowe uczestnictwo. Wersje zapoznawcze są udostępniane w postaci "AS-IS" i "jako dostępne" i są wyłączone z umów dotyczących poziomu usług i ograniczonej rękojmi. Wersje zapoznawcze AKS są częściowo objęte obsługą klienta w oparciu o najlepszy nakład pracy. W związku z tym te funkcje nie są przeznaczone do użytku produkcyjnego. Aby dowiedzieć się więcej, zobacz następujące artykuły pomocy technicznej:
->
-> * [Zasady pomocy technicznej AKS][aks-support-policies]
-> * [Pomoc techniczna platformy Azure — często zadawane pytania][aks-faq]
+Należy utworzyć klaster AKS, który ustawia jednostkę SKU dla usługi równoważenia obciążenia na *Standard* zamiast domyślnej wersji *podstawowej*.
 
 ### <a name="install-aks-preview-cli-extension"></a>Zainstaluj rozszerzenie interfejsu wiersza polecenia AKS-Preview
 
-Aby korzystać z standardowej jednostki SKU modułu równoważenia obciążenia platformy Azure, musisz mieć rozszerzenie interfejsu wiersza polecenia *AKS-Preview* w wersji 0.4.1 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji* zapoznawczej przy użyciu poleceń [AZ Extension Add][az-extension-add] , a następnie wyszukaj wszystkie dostępne aktualizacje za pomocą polecenia [AZ Extension Update][az-extension-update] ::
+Aby korzystać z standardowej jednostki SKU modułu równoważenia obciążenia platformy Azure, musisz mieć rozszerzenie interfejsu wiersza polecenia *AKS-Preview* w wersji 0.4.12 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji zapoznawczej* przy użyciu poleceń [AZ Extension Add][az-extension-add] , a następnie wyszukaj wszystkie dostępne aktualizacje za pomocą polecenia [AZ Extension Update][az-extension-update] :
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -56,47 +48,17 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="register-aksazurestandardloadbalancer-preview-feature"></a>Rejestrowanie funkcji AKSAzureStandardLoadBalancer w wersji zapoznawczej
-
-Aby utworzyć klaster AKS, który może używać modułu równoważenia obciążenia ze standardową jednostką SKU, należy włączyć flagę funkcji *AKSAzureStandardLoadBalancer* w subskrypcji. Funkcja *AKSAzureStandardLoadBalancer* korzysta także z *VMSSPreview* podczas tworzenia klastra przy użyciu zestawów skalowania maszyn wirtualnych. Ta funkcja udostępnia najnowszy zestaw rozszerzeń usługi podczas konfigurowania klastra. Chociaż nie jest to wymagane, zaleca się również włączenie flagi funkcji *VMSSPreview* .
-
-> [!CAUTION]
-> Po zarejestrowaniu funkcji w ramach subskrypcji nie można obecnie wyrejestrować tej funkcji. Po włączeniu niektórych funkcji w wersji zapoznawczej można użyć wartości domyślnych dla wszystkich klastrów AKS utworzonych w ramach subskrypcji. Nie włączaj funkcji w wersji zapoznawczej w ramach subskrypcji produkcyjnych. Korzystaj z oddzielnej subskrypcji, aby testować funkcje w wersji zapoznawczej i zbierać opinie.
-
-Zarejestruj flagi funkcji *VMSSPreview* i *AKSAzureStandardLoadBalancer* za pomocą polecenia [AZ Feature Register][az-feature-register] , jak pokazano w następującym przykładzie:
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "VMSSPreview"
-az feature register --namespace "Microsoft.ContainerService" --name "AKSAzureStandardLoadBalancer"
-```
-
-> [!NOTE]
-> Każdy klaster AKS utworzony po pomyślnym zarejestrowaniu flag funkcji *VMSSPreview* lub *AKSAzureStandardLoadBalancer* korzysta z tego środowiska klastra w wersji zapoznawczej. Aby kontynuować tworzenie regularnych, w pełni obsługiwanych klastrów, nie włączaj funkcji w wersji zapoznawczej w ramach subskrypcji produkcyjnych. Użyj oddzielnej subskrypcji testowej lub deweloperskiej platformy Azure do testowania funkcji w wersji zapoznawczej.
-
-Wyświetlenie stanu *rejestracji*może potrwać kilka minut. Stan rejestracji można sprawdzić za pomocą polecenia [AZ Feature list][az-feature-list] :
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAzureStandardLoadBalancer')].{Name:name,State:properties.state}"
-```
-
-Gdy wszystko będzie gotowe, Odśwież rejestrację dostawcy zasobów *Microsoft. ContainerService* za pomocą polecenia [AZ Provider Register][az-provider-register] :
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
 ### <a name="limitations"></a>Ograniczenia
 
-Podczas tworzenia klastrów AKS i zarządzania nimi, które obsługują moduł równoważenia obciążenia ze standardową jednostką SKU , obowiązują następujące ograniczenia:
+Podczas tworzenia klastrów AKS i zarządzania nimi, które obsługują moduł równoważenia obciążenia ze *standardową* jednostką SKU, obowiązują następujące ograniczenia:
 
-* W przypadku korzystania z *standardowej* jednostki SKU usługi równoważenia obciążenia należy zezwolić na publiczne adresy i uniknąć tworzenia Azure Policy, które zakazują tworzenie adresów IP. Klaster AKS automatycznie tworzy publiczny adres IP jednostki SKU w tej samej grupie zasobów utworzonej dla klastra AKS, który zwykle nosi nazwę z *MC_* na początku. AKS przypisuje publiczny adres IP do modułu równoważenia obciążenia *standardowej* jednostki SKU. Publiczny adres IP jest wymagany do zezwalania na ruch wychodzący z klastra AKS. Ten publiczny adres IP jest również wymagany do utrzymania łączności między płaszczyzną kontroli a węzłami agenta, a także w celu zachowania zgodności z poprzednimi wersjami AKS.
-* W przypadku korzystania z *standardowej* jednostki SKU dla modułu równoważenia obciążenia należy użyć Kubernetes w wersji 1.13.5 lub nowszej.
-
-Chociaż ta funkcja jest dostępna w wersji zapoznawczej, obowiązują następujące dodatkowe ograniczenia:
-
-* W przypadku korzystania z *standardowej* jednostki SKU usługi równoważenia obciążenia w programie AKS nie można ustawić własnego publicznego adresu IP dla ruchu wychodzącego dla modułu równoważenia obciążenia. Należy użyć AKS adresów IP przypisywanych do modułu równoważenia obciążenia.
-* Nie można jej używać z [funkcją publicznego adresu IP węzła](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool).
+* Do zezwalania na ruch wychodzący z klastra AKS jest wymagany co najmniej jeden publiczny adres IP lub prefiks IP. Aby zachować zgodność z poprzednimi wersjami AKS, należy również podać publiczny adres IP lub adres IP. Dostępne są następujące opcje określania publicznych adresów IP lub prefiksów protokołu IPv4 za pomocą usługi równoważenia obciążenia w *warstwie Standardowa* :
+    * Udostępnianie własnych publicznych adresów IP.
+    * Podaj własne prefiksy publicznych adresów IP.
+    * Określ liczbę do 100, aby umożliwić klastrowi AKS tworzenie wielu publicznych adresów IP *standardowej* jednostki SKU w tej samej grupie zasobów utworzonej jako klaster AKS, która zazwyczaj nazywa się *MC_* na początku. AKS przypisuje publiczny adres IP do modułu równoważenia obciążenia *standardowej* jednostki SKU. Domyślnie jeden publiczny adres IP zostanie automatycznie utworzony w tej samej grupie zasobów co klaster AKS, jeśli nie określono publicznego adresu IP, publicznego prefiksu adresu IP lub liczby adresów IP. Należy również zezwolić na publiczne adresy i uniknąć tworzenia Azure Policy, które zakazują tworzenie adresów IP.
+* W przypadku korzystania z *standardowej* jednostki SKU dla modułu równoważenia obciążenia należy użyć Kubernetes w wersji 1,13 lub nowszej.
+* Definiowanie jednostki SKU modułu równoważenia obciążenia można wykonać tylko podczas tworzenia klastra AKS. Nie można zmienić jednostki SKU modułu równoważenia obciążenia po utworzeniu klastra AKS.
+* W pojedynczym klastrze można używać tylko jednej jednostki SKU modułu równoważenia obciążenia.
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -125,10 +87,12 @@ Następujące przykładowe dane wyjściowe przedstawiają pomyślnie utworzoną 
 ```
 
 ## <a name="create-aks-cluster"></a>Tworzenie klastra AKS
-Aby można było uruchomić klaster AKS, który obsługuje moduł równoważenia obciążenia ze standardową jednostką SKU, klaster musi skonfigurować parametr *SKU modułu równoważenia obciążenia* do warstwy *standardowa*. Ten parametr tworzy moduł równoważenia obciążenia ze standardową jednostką SKU podczas tworzenia klastra. Po uruchomieniu usługi *równoważenia* obciążenia w klastrze konfiguracja *standardowego* programu do konfiguracji usługi jest aktualizowana wraz z konfiguracją usług. Użyj polecenia [AZ AKS Create][az-aks-create] , aby utworzyć klaster AKS o nazwie *myAKSCluster*.
+Aby można było uruchomić klaster AKS, który obsługuje moduł równoważenia obciążenia ze *standardową* jednostką SKU, klaster musi skonfigurować parametr *SKU modułu równoważenia obciążenia* do warstwy *standardowa*. Ten parametr tworzy moduł równoważenia obciążenia ze *standardową* jednostką SKU podczas tworzenia klastra. Po uruchomieniu usługi *modułu równoważenia* obciążenia w klastrze konfiguracja usługi modułu równoważenia obciążeń *standardowej* jednostki SKU zostanie zaktualizowana o konfigurację. Użyj polecenia [AZ AKS Create][az-aks-create] , aby utworzyć klaster AKS o nazwie *myAKSCluster*.
 
 > [!NOTE]
 > Właściwość *SKU modułu równoważenia obciążenia* może być używana tylko podczas tworzenia klastra. Nie można zmienić jednostki SKU modułu równoważenia obciążenia po utworzeniu klastra AKS. Ponadto w pojedynczym klastrze można używać tylko jednego typu jednostki SKU modułu równoważenia obciążenia.
+> 
+> Jeśli chcesz użyć własnych publicznych adresów IP, użyj parametrów *równoważenia obciążenia wychodzącego-IP*lub *równoważenia obciążenia wychodzącego z prefiksami IP* . Oba te parametry mogą być również używane podczas [aktualizowania klastra](#optional---provide-your-own-public-ips-or-prefixes-for-egress).
 
 ```azurecli-interactive
 az aks create \
@@ -269,7 +233,7 @@ spec:
           value: "azure-vote-back"
 ```
 
-Powyższy manifest konfiguruje dwa wdrożenia: *Azure-głosowa — przód* i *Azure —* zagłosuj na spód. Aby skonfigurować wdrożenie z dowolnego *głosu z platformy Azure* w celu udostępnienia przy użyciu modułu równoważenia obciążenia, Utwórz manifest `standard-lb.yaml` o nazwie, jak pokazano w następującym przykładzie:
+Powyższy manifest konfiguruje dwa wdrożenia: *Azure-głosowa — przód* i *Azure — zagłosuj na spód*. Aby skonfigurować wdrożenie z dowolnego *głosu z platformy Azure* w celu udostępnienia przy użyciu modułu równoważenia obciążenia, Utwórz manifest `standard-lb.yaml` o nazwie, jak pokazano w następującym przykładzie:
 
 ```yaml
 apiVersion: v1
@@ -293,7 +257,7 @@ kubectl apply -f sample.yaml
 kubectl apply -f standard-lb.yaml
 ```
 
-Moduł równoważenia obciążenia *standardowej* jednostki SKU jest teraz skonfigurowany do udostępniania przykładowej aplikacji. Aby wyświetlić publiczny adres IP modułu równoważenia obciążenia, zobacz szczegóły usługi *Azure — z przodu* przy użyciu [polecenia kubectl][kubectl-get] . Publiczny adres IP modułu równoważenia obciążenia jest wyświetlany w kolumnie *External-IP* . Zmiana adresu IP z  *\<\> oczekującej* na rzeczywisty zewnętrzny adres IP może potrwać minutę lub dwa, jak pokazano w następującym przykładzie:
+Moduł równoważenia obciążenia *standardowej* jednostki SKU jest teraz skonfigurowany do udostępniania przykładowej aplikacji. Aby wyświetlić publiczny adres IP modułu równoważenia obciążenia, zobacz szczegóły usługi *Azure — z przodu* przy użyciu [polecenia kubectl][kubectl-get] . Publiczny adres IP modułu równoważenia obciążenia jest wyświetlany w kolumnie *External-IP* . Zmiana adresu IP z *\<oczekującej\>* na rzeczywisty zewnętrzny adres IP może potrwać minutę lub dwa, jak pokazano w następującym przykładzie:
 
 ```
 $ kubectl get service azure-vote-front
@@ -307,7 +271,72 @@ Przejdź do publicznego adresu IP w przeglądarce i sprawdź, czy zobaczysz przy
 ![Obraz przedstawiający przechodzenie do aplikacji Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
 > [!NOTE]
-> Można również skonfigurować usługę równoważenia obciążenia jako wewnętrzną i nie ujawniać publicznego adresu IP. Aby skonfigurować moduł równoważenia obciążenia jako wewnętrzny, należy dodać `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` jako adnotację do usługi *modułu równoważenia* . Możesz zobaczyć przykład manifestu YAML oraz więcej szczegółów dotyczących wewnętrznego modułu równoważenia obciążenia. [][internal-lb-yaml]
+> Można również skonfigurować usługę równoważenia obciążenia jako wewnętrzną i nie ujawniać publicznego adresu IP. Aby skonfigurować moduł równoważenia obciążenia jako wewnętrzny, należy dodać `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` jako adnotację do usługi *modułu równoważenia* . Możesz zobaczyć przykład manifestu YAML oraz więcej szczegółów dotyczących wewnętrznego modułu równoważenia [obciążenia.][internal-lb-yaml]
+
+## <a name="optional---scale-the-number-of-managed-public-ips"></a>Opcjonalne — skalowanie liczby zarządzanych publicznych adresów IP
+
+W przypadku korzystania ze *standardowego* modułu równoważenia obciążenia z zarządzanymi wychodzącymi adresami IP, które są tworzone domyślnie, można skalować liczbę zarządzanych wychodzących adresów IP, używając parametru- *Managed-IP-Count* .
+
+```azurecli-interactive
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-managed-outbound-ip-count 2
+```
+
+Powyższy przykład ustawia liczbę zarządzanych publicznych adresów IP z *2* dla klastra *MyAKSCluster* w ramach *zasobu*. Można również użyć parametru *modułu równoważenia obciążenia — licznik adresów IP* , aby ustawić początkową liczbę zarządzanych publicznych adresów IP w trakcie tworzenia klastra. Domyślna liczba zarządzanych publicznych adresów IP wychodzących to 1.
+
+## <a name="optional---provide-your-own-public-ips-or-prefixes-for-egress"></a>Opcjonalne — Podaj własne publiczne adresy IP lub prefiksy dla ruchu wychodzącego
+
+W przypadku korzystania ze *standardowego* modułu równoważenia obciążenia jednostki SKU klaster AKS automatycznie tworzy publiczny adres IP w tej samej grupie zasobów utworzonej dla klastra AKS i przypisuje publiczny adres IP do modułu równoważenia obciążenia *standardowej* jednostki SKU. Alternatywnie możesz przypisać własny publiczny adres IP.
+
+> [!IMPORTANT]
+> Należy używać publicznych adresów IP jednostki SKU dla ruchu wychodzącego ze *standardową* jednostką *SKU modułu* równoważenia obciążenia. Można zweryfikować jednostki SKU publicznych adresów IP za pomocą polecenia [AZ Network Public-IP show][az-network-public-ip-show] :
+>
+> ```azurecli-interactive
+> az network public-ip show --resource-group myResourceGroup --name myPublicIP --query sku.name -o tsv
+> ```
+
+Użyj polecenia [AZ Network Public-IP show][az-network-public-ip-show] , aby wyświetlić listę identyfikatorów publicznych adresów IP.
+
+```azurecli-interactive
+az network public-ip show --resource-group myResourceGroup --name myPublicIP --query id -o tsv
+```
+
+Powyższe polecenie wyświetla identyfikator publicznego adresu IP *myPublicIP* w *grupie zasobów zasobu* .
+
+Aby zaktualizować klaster przy użyciu publicznych adresów IP, użyj polecenia *AZ AKS Update* z parametrem *równoważenia obciążenia — wychodzące adresy IP* .
+
+W poniższym przykładzie zastosowano parametr *równoważenia obciążenia — wychodzące adresy IP* z identyfikatorami z poprzedniego polecenia.
+
+```azurecli-interactive
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-outbound-ips <publicIpId1>,<publicIpId2>
+```
+
+Możesz również użyć publicznych prefiksów IP dla ruchu wychodzącego w ramach usługi równoważenia obciążenia w *warstwie Standardowa* . Poniższy przykład używa polecenia [AZ Network Public-IP prefix show][az-network-public-ip-prefix-show] , aby wyświetlić listę identyfikatorów publicznych prefiksów IP:
+
+```azurecli-interactive
+az network public-ip prefix show --resource-group myResourceGroup --name myPublicIPPrefix --query id -o tsv
+```
+
+Powyższe polecenie wyświetla identyfikator *myPublicIPPrefix* publicznego adresu IP w *grupie zasobów zasobu* .
+
+Użyj polecenia *AZ AKS Update* z parametrem *równoważenia obciążenia wychodzącego IP prefiksów* z identyfikatorami z poprzedniego polecenia.
+
+Poniższy przykład używa parametru *równoważenia obciążenia-wychodzącego-IP prefiksów* z identyfikatorami z poprzedniego polecenia.
+
+```azurecli-interactive
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
+```
+
+> [!IMPORTANT]
+> Publiczne adresy IP i prefiksy adresów IPv4 muszą znajdować się w tym samym regionie i części tej samej subskrypcji, co klaster AKS.
 
 ## <a name="clean-up-the-standard-sku-load-balancer-configuration"></a>Czyszczenie konfiguracji standardowego modułu równoważenia obciążenia jednostki SKU
 
@@ -346,6 +375,8 @@ Dowiedz się więcej o usługach Kubernetes Services w [dokumentacji usług Kube
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-group-create]: /cli/azure/group#az-group-create
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[az-network-public-ip-show]: /cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show
+[az-network-public-ip-prefix-show]: /cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-prefix-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [azure-lb]: ../load-balancer/load-balancer-overview.md
 [azure-lb-comparison]: ../load-balancer/load-balancer-overview.md#skus
@@ -355,3 +386,4 @@ Dowiedz się więcej o usługach Kubernetes Services w [dokumentacji usług Kube
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+

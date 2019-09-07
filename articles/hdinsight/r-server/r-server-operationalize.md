@@ -1,6 +1,6 @@
 ---
-title: Operacjonalizowanie usług HDInsight — usługi Azure ML
-description: Dowiedz się, jak operacjonalizować usługi ML w usłudze Azure HDInsight.
+title: Usługi operacjonalizować ML w usłudze HDInsight — Azure
+description: Dowiedz się, jak operacjonalizować model danych, aby dokonać prognoz przy użyciu usług ML w usłudze Azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,37 +8,37 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 36d2ebe00f735089633240914421e2259181e63e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 91407fc76d0a7555a87a8a3dcd1b3ad04ee2af80
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448985"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736234"
 ---
-# <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operacjonalizowanie klastra usługi ML w usłudze Azure HDInsight
+# <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Klaster usług operacjonalizować ML w usłudze Azure HDInsight
 
-Po zastosowaniu klastra usługi ML w HDInsight przeprowadzenie modelowania danych, można zoperacjonalizować model do przewidywania przyszłych zdarzeń. Ten artykuł zawiera instrukcje dotyczące sposobu wykonania tego zadania.
+Po użyciu klastra usług ML w usłudze HDInsight w celu ukończenia modelowania danych można operacjonalizować model, aby dokonać prognoz. Ten artykuł zawiera instrukcje dotyczące wykonywania tego zadania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Klaster usługi ML HDInsight. Zobacz [tworzenie technologii Apache Hadoop clusters, przy użyciu witryny Azure portal](../hdinsight-hadoop-create-linux-clusters-portal.md) i wybierz **usługi ML** dla **typ klastra**.
+* Klaster usługi ML w usłudze HDInsight. Zobacz [Tworzenie klastrów Apache Hadoop przy użyciu Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) i wybierz pozycję **usługi ml** dla **typu klastra**.
 
-* Klient protokołu Secure Shell (SSH): Klient SSH jest używany do zdalnego łączenia z klastrem HDInsight i uruchamianie poleceń bezpośrednio w klastrze. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+* Klient Secure Shell (SSH): Klient SSH jest używany do zdalnego łączenia się z klastrem usługi HDInsight i uruchamiania poleceń bezpośrednio w klastrze. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>Operacjonalizowanie klastra usługi ML z jedną konfiguracją
+## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>Klaster usług operacjonalizować ML z konfiguracją jednokrotną
 
 > [!NOTE]  
-> Poniższe kroki mają zastosowanie do oprogramowania R Server 9.0 i ML Server 9.1. ML 9.3 serwera, można znaleźć [Użyj narzędzia do administrowania, aby zarządzać konfiguracją operacjonalizacji](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch).
+> Poniższe kroki dotyczą R Server 9,0 i ML Server 9,1. ML Server 9,3 można znaleźć w tematach [Zarządzanie konfiguracją operacjonalizacji za pomocą narzędzia administracyjnego](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch).
 
 1. Połącz się z węzłem krawędzi za pomocą protokołu SSH.
 
         ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
-    Aby uzyskać instrukcje dotyczące sposobu używania protokołu SSH przy użyciu usługi Azure HDInsight, zobacz [używać protokołu SSH w usłudze HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md).
+    Aby uzyskać instrukcje dotyczące korzystania z protokołu SSH z usługą Azure HDInsight, zobacz [Używanie protokołu SSH z usługą HDInsight.](../hdinsight-hadoop-linux-use-ssh-unix.md)
 
-1. Zmień katalog dla odpowiedniej wersji i "sudo" dot net biblioteki dll: 
+1. Zmień katalog dla odpowiedniej wersji i sudo NET dll: 
 
-    - For Microsoft ML Server 9.1:
+    - Dla Microsoft ML Server 9,1:
 
             cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0
             sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
@@ -48,39 +48,39 @@ Po zastosowaniu klastra usługi ML w HDInsight przeprowadzenie modelowania danyc
             cd /usr/lib64/microsoft-deployr/9.0.1
             sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-1. Dostępne są opcje do wyboru. Z pierwszej opcji, jak pokazano na poniższym zrzucie ekranu do **skonfigurować ML Server for Operationalization**.
+1. Zostaną wyświetlone opcje do wyboru. Wybierz pierwszą opcję, jak pokazano na poniższym zrzucie ekranu, aby **skonfigurować ml Server dla operacjonalizacji**.
 
     ![opernacjonalizacja przy użyciu jednej maszyny](./media/r-server-operationalize/admin-util-one-box-1.png)
 
-1. Teraz otrzymasz możliwość wyboru sposobu obsługi operacji serwera uczenia Maszynowego. Z prezentowanych opcji Wybierz pierwszy z nich, wprowadzając **A**.
+1. Zostanie wyświetlona opcja wyboru, w jaki sposób chcesz operacjonalizować ML Server. Z przedstawionych opcji wybierz pierwszy z nich, **wprowadzając.**
 
     ![opernacjonalizacja przy użyciu jednej maszyny](./media/r-server-operationalize/admin-util-one-box-2.png)
 
-1. Po wyświetleniu monitu wprowadź, a następnie wprowadź ponownie hasło dla użytkownika administratora lokalnego.
+1. Po wyświetleniu monitu wprowadź hasło administratora lokalnego i wprowadź je ponownie.
 
-1. Powinny być widoczne dane wyjściowe sugerujące, że operacja zakończyła się pomyślnie. Monit również wybrać inną opcję z menu. Wybierz E, aby wrócić do menu głównego.
+1. Powinny zostać wyświetlone dane wyjściowe z sugestią, że operacja zakończyła się pomyślnie. Zostanie również wyświetlony monit o wybranie innej opcji z menu. Wybierz pozycję E, aby wrócić do menu głównego.
 
     ![opernacjonalizacja przy użyciu jednej maszyny](./media/r-server-operationalize/admin-util-one-box-3.png)
 
-1. Opcjonalnie możesz wykonać kontrolę diagnostyczną, uruchamiając test diagnostyczny w następujący sposób:
+1. Opcjonalnie można przeprowadzić kontrolę diagnostyczną, uruchamiając test diagnostyczny w następujący sposób:
 
-    a. W menu głównym wybierz **6** do uruchamiania testów diagnostycznych.
+    a. Z menu głównego wybierz **6** , aby uruchomić testy diagnostyczne.
 
     ![opernacjonalizacja przy użyciu jednej maszyny](./media/r-server-operationalize/diagnostic-1.png)
 
-    b. Wybierz z menu testy diagnostyczne **A**. Po wyświetleniu monitu wprowadź hasło, które podano dla użytkownika administratora lokalnego.
+    b. Z menu testy **diagnostyczne wybierz pozycję**. Po wyświetleniu monitu wprowadź hasło podane dla użytkownika administratora lokalnego.
 
     ![opernacjonalizacja przy użyciu jednej maszyny](./media/r-server-operationalize/diagnostic-2.png)
 
-    c. Upewnij się, że dane wyjściowe pokazuje, że ogólna kondycja — dostęp próbny.
+    c. Sprawdź, czy dane wyjściowe pokazują, że ogólna kondycja jest przebiegu.
 
     ![opernacjonalizacja przy użyciu jednej maszyny](./media/r-server-operationalize/diagnostic-3.png)
 
-    d. Z opcji menu przedstawione, wprowadź **E** wróć do menu głównego, a następnie wprowadź **8** do Zamknij narzędzie administracyjne.
+    d. W wyświetlonych opcjach menu Wprowadź wartość **E** , aby powrócić do menu głównego, a następnie wprowadź **8** , aby wyjść z narzędzia administracyjnego.
 
-### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Duże opóźnienia podczas używania usługi sieci web na platformie Apache Spark
+### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Długotrwałe opóźnienia podczas korzystania z usługi sieci Web na Apache Spark
 
-Jeśli wystąpią duże opóźnienia podczas próby korzystania z usługi internetowej utworzonej za pomocą funkcji mrsdeploy w Apache Spark kontekstu obliczeniowego, może być konieczne dodanie niektórych brakujących folderów. Aplikacja Spark należy do użytkownika o nazwie „*rserve2*” zawsze wtedy, gdy jest wywoływana z usługi internetowej przy użyciu funkcji mrsdeploy. Aby obejść ten problem:
+Jeśli wystąpią duże opóźnienia podczas próby korzystania z usługi internetowej utworzonej za pomocą funkcji mrsdeploy w kontekście obliczeniowym Apache Spark, może być konieczne dodanie niektórych brakujących folderów. Aplikacja Spark należy do użytkownika o nazwie „*rserve2*” zawsze wtedy, gdy jest wywoływana z usługi internetowej przy użyciu funkcji mrsdeploy. Aby obejść ten problem:
 
     # Create these required folders for user 'rserve2' in local and hdfs:
 
@@ -96,9 +96,9 @@ Jeśli wystąpią duże opóźnienia podczas próby korzystania z usługi intern
     rxSparkConnect(reset = TRUE)
 
 
-Na tym etapie konfiguracja operacjonalizacji jest ukończona. Teraz możesz używać `mrsdeploy` pakietów w programie RClient, aby nawiązać połączenie z operacjonalizacją w węźle krawędzi i rozpocząć korzystanie z jej funkcje, takie jak [zdalne wykonywanie kodu](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely) i [usług sieci web](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services). W zależności od tego, czy klaster został skonfigurowany w sieci wirtualnej, może być konieczne skonfigurowanie tunelowania przekierowania portów za pomocą logowania SSH. W poniższych sekcjach wyjaśniono, jak skonfigurować taki tunel.
+Na tym etapie konfiguracja operacjonalizacji jest ukończona. Teraz możesz użyć `mrsdeploy` pakietu w RClient, aby połączyć się z operacjonalizacji w węźle brzegowym i zacząć korzystać z jego funkcji, takich jak [zdalne wykonywanie](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely) i [usługi sieci Web](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services). W zależności od tego, czy klaster został skonfigurowany w sieci wirtualnej, może być konieczne skonfigurowanie tunelowania przekierowania portów za pomocą logowania SSH. W poniższych sekcjach wyjaśniono, jak skonfigurować taki tunel.
 
-### <a name="ml-services-cluster-on-virtual-network"></a>Klaster usługi ML w sieci wirtualnej
+### <a name="ml-services-cluster-on-virtual-network"></a>Klaster usług ML w sieci wirtualnej
 
 Sprawdź, czy ruch przez port 12800 węzła krawędzi jest dozwolony. Pozwala to użyć węzła krawędzi do nawiązania połączenia z funkcją operacjonalizacji.
 
@@ -112,15 +112,15 @@ Sprawdź, czy ruch przez port 12800 węzła krawędzi jest dozwolony. Pozwala to
     )
 
 
-Jeśli metoda `remoteLogin()` nie może połączyć się z węzłem krawędzi, lecz nawiązanie połączenia SSH z węzłem krawędzi jest możliwe, sprawdź, czy reguła zezwalająca na ruch przez port 12800 jest skonfigurowana poprawnie. Jeśli problem nie ustąpi, możesz go obejść, konfigurując tunelowanie przekierowania portów przez połączenie SSH. Aby uzyskać instrukcje zobacz następującą sekcję:
+Jeśli metoda `remoteLogin()` nie może połączyć się z węzłem krawędzi, lecz nawiązanie połączenia SSH z węzłem krawędzi jest możliwe, sprawdź, czy reguła zezwalająca na ruch przez port 12800 jest skonfigurowana poprawnie. Jeśli problem nie ustąpi, możesz go obejść, konfigurując tunelowanie przekierowania portów przez połączenie SSH. Aby uzyskać instrukcje, zobacz następującą sekcję:
 
-### <a name="ml-services-cluster-not-set-up-on-virtual-network"></a>Klaster usługi ML w sieci wirtualnej
+### <a name="ml-services-cluster-not-set-up-on-virtual-network"></a>Klaster usług ML nie jest skonfigurowany w sieci wirtualnej
 
 Jeśli klaster nie jest skonfigurowany w sieci wirtualnej lub występują problemy z korzystaniem z sieci wirtualnej, możesz użyć tunelowania przekierowania portów za pomocą protokołu SSH:
 
     ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
-Gdy sesja SSH jest aktywna, ruch z portu 12800 maszyny lokalnej jest przekazywany do portu 12800 węzła krawędzi, za pomocą sesji SSH. Upewnij się, że w metodzie `remoteLogin()` użyto adresu `127.0.0.1:12800`. Logują operacjonalizacji węzła krawędzi przez przekierowanie portów.
+Gdy sesja SSH jest aktywna, ruch z portu 12800 komputera lokalnego jest przekazywany do portu 12800 węzła brzegowego za pośrednictwem sesji SSH. Upewnij się, że w metodzie `remoteLogin()` użyto adresu `127.0.0.1:12800`. Spowoduje to zalogowanie się do operacjonalizacji węzła krawędzi za pomocą przekazywania portów.
 
 
     library(mrsdeploy)
@@ -132,55 +132,55 @@ Gdy sesja SSH jest aktywna, ruch z portu 12800 maszyny lokalnej jest przekazywan
     )
 
 
-## <a name="scale-operationalized-compute-nodes-on-hdinsight-worker-nodes"></a>Skalowanie z podziałem na operacje obliczeniowe węzłów na węzłach procesu roboczego HDInsight
+## <a name="scale-operationalized-compute-nodes-on-hdinsight-worker-nodes"></a>Skalowanie operacyjnych węzłów obliczeniowych w węzłach procesu roboczego usługi HDInsight
 
-Skalowanie węzłów obliczeniowych, należy najpierw likwidowanie węzłów procesu roboczego, a następnie skonfigurować węzłów obliczeniowych na zlikwidowanych węzłów procesu roboczego.
+Aby skalować węzły obliczeniowe, najpierw zlikwidowanie węzłów procesu roboczego, a następnie skonfigurowanie węzłów obliczeniowych w zlikwidowanych węzłach procesu roboczego.
 
 ### <a name="step-1-decommission-the-worker-nodes"></a>Krok 1: Likwidowanie węzłów procesu roboczego
 
-Klaster usługi ML nie odbywa się za pośrednictwem [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html). Jeśli węzły procesu roboczego nie zostaną zlikwidowane, Menedżer zasobów usługi YARN nie działa zgodnie z oczekiwaniami, ponieważ nie ma informacji o znał zasobów zajętych przez serwer. Aby tego uniknąć, zalecamy zlikwidowanie węzłów procesu roboczego przed przystąpieniem do skalowania węzłów obliczeniowych na zewnątrz.
+Klaster usług ML nie jest zarządzany przez [Apache HADOOP przędzą](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html). Jeśli węzły procesu roboczego nie zostaną zlikwidowane, Menedżer zasobów PRZĘDZa nie będzie działała zgodnie z oczekiwaniami, ponieważ nie ma informacji o zasobach, które są wykonywane przez serwer. Aby tego uniknąć, zalecamy zlikwidowanie węzłów procesu roboczego przed przystąpieniem do skalowania węzłów obliczeniowych na zewnątrz.
 
 Wykonaj następujące kroki, aby zlikwidować węzły procesu roboczego:
 
-1. Zaloguj się do konsoli Ambari klastra, a następnie kliknij przycisk na **hosty** kartę.
+1. Zaloguj się do konsoli Ambari klastra i kliknij kartę **hosty** .
 
-1. Wybierz węzły procesu roboczego (aby mogą zostać wyłączone).
+1. Wybierz węzły procesu roboczego (do zlikwidowania).
 
-1. Kliknij przycisk **akcje** > **wybrane hosty** > **hosty** > **Włącz tryb konserwacji**. Na przykład na poniższej ilustracji węzły wn3 i wn4 są przeznaczone do likwidacji.  
+1. Kliknij kolejno pozycje **Akcje** > **wybrane hosty** >  > **Włącz tryb konserwacji**. Na przykład na poniższej ilustracji węzły wn3 i wn4 są przeznaczone do likwidacji.  
 
    ![likwidowanie węzłów procesu roboczego](./media/r-server-operationalize/get-started-operationalization.png)  
 
-* Wybierz **akcje** > **wybrane hosty** > **DataNodes** > kliknij **Decommission**.
-* Wybierz **akcje** > **wybrane hosty** > **NodeManagers** > kliknij **Decommission**.
-* Wybierz **akcje** > **wybrane hosty** > **DataNodes** > kliknij **zatrzymać**.
-* Wybierz **akcje** > **wybrane hosty** > **NodeManagers** > kliknij **zatrzymać**.
-* Wybierz **akcje** > **wybrane hosty** > **hosty** > kliknij **Zatrzymaj wszystkie składniki**.
+* Wybierz pozycję **Akcje** > **wybrane hosty** > **datanodes** > kliknij pozycję **likwidowanie**.
+* Wybierz pozycję **Akcje** > **wybrane hosty** > **NodeManagers** > kliknij pozycję **likwidowanie**.
+* Wybierz **Akcje** > **wybrane hosty** > **datanodes** > kliknij przycisk **Zatrzymaj**.
+* Wybierz pozycję **Akcje** > **wybrane hosty** > **NodeManagers** > kliknij przycisk **Zatrzymaj**.
+* Wybierz **Akcje** > **wybrane hosty** > **hosty > kliknij** przycisk **Zatrzymaj wszystkie składniki**.
 * Usuń zaznaczenie węzłów procesu roboczego i wybierz węzły główne.
-* Wybierz **akcje** > **wybrane hosty** > "**hosty** > **Uruchom ponownie wszystkie składniki**.
+* Wybierz pozycję **Akcje** > **wybrane hosty** > "**hosty** > **uruchamiają ponownie wszystkie składniki**.
 
-### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>Krok 2: Konfigurowanie węzłów obliczeniowych na każdym zlikwidowanych węzłach procesu roboczego
+### <a name="step-2-configure-compute-nodes-on-each-decommissioned-worker-nodes"></a>Krok 2: Konfigurowanie węzłów obliczeniowych na wszystkich zlikwidowanych węzłach procesu roboczego
 
 1. Za pomocą protokołu SSH połącz się z każdym zlikwidowanym węzłem procesu roboczego.
 
-1. Uruchom narzędzie administracyjne za pomocą odpowiednich biblioteki DLL dla klastra usługi uczenie Maszynowe, czy masz. ML Server 9.1 Uruchom następujące polecenie:
+1. Uruchom narzędzie administracyjne za pomocą odpowiedniej biblioteki DLL dla posiadanego klastra usługi ML. W przypadku ML Server 9,1 Uruchom następujące polecenie:
 
         dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-1. Wprowadź **1** aby wybrać opcję **skonfigurować ML Server for Operationalization**.
+1. Wprowadź **1** , aby wybrać opcję **konfigurowania ml Server dla operacjonalizacji**.
 
-1. Wprowadź **C** aby wybrać opcję `C. Compute node`. Umożliwi to skonfigurowanie węzła obliczeniowego w węźle procesu roboczego.
+1. Wprowadź **C** , aby wybrać `C. Compute node`opcję. Umożliwi to skonfigurowanie węzła obliczeniowego w węźle procesu roboczego.
 
 1. Zamknij narzędzie administracyjne.
 
-### <a name="step-3-add-compute-nodes-details-on-web-node"></a>Krok 3: Dodawanie szczegółów węzłów obliczeniowych na węźle sieci web
+### <a name="step-3-add-compute-nodes-details-on-web-node"></a>Krok 3: Dodawanie szczegółów węzłów obliczeniowych w węźle sieci Web
 
-Po skonfigurowaniu wszystkich zlikwidowanych węzłów procesu roboczego do uruchamiania węzła obliczeniowego wróć do węzła krawędzi i Dodaj adresy IP zlikwidowanych węzłów procesu roboczego w konfiguracji węzła internetowego oprogramowania Server ML:
+Po skonfigurowaniu wszystkich zlikwidowanych węzłów procesu roboczego pod kątem uruchamiania węzła obliczeniowego Wróć do węzła brzegowego i Dodaj adresy IP zlikwidowanych węzłów procesu roboczego do konfiguracji węzła ML Server sieci Web:
 
 1. Połącz się z węzłem krawędzi za pomocą protokołu SSH.
 
 1. Uruchom polecenie `vi /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Server.WebAPI/appsettings.json`.
 
-1. Wyszukaj w sekcji "URI" i Dodaj adres IP węzła procesu roboczego i port.
+1. Poszukaj sekcji "URI" i Dodaj adres IP i port węzła procesu roboczego.
 
        "Uris": {
          "Description": "Update 'Values' section to point to your backend machines. Using HTTPS is highly recommended",
@@ -189,7 +189,7 @@ Po skonfigurowaniu wszystkich zlikwidowanych węzłów procesu roboczego do uruc
          ]
        }
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Manage ML Services cluster on HDInsight (Zarządzanie klastrem usług ML w usłudze HDInsight)](r-server-hdinsight-manage.md)
 * [Compute context options for ML Services cluster on HDInsight (Opcje kontekstu obliczeniowego dla klastra usług ML w usłudze HDInsight)](r-server-compute-contexts.md)

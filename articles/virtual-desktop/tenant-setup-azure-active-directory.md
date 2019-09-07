@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 09/06/2019
 ms.author: helohr
-ms.openlocfilehash: cd80ed3c3db2453a333c87ed706dd358ba248b47
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 66441e852ebe0a391a5807b90eeadae230130815
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516180"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734462"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>Samouczek: Tworzenie dzierżawy w wersji zapoznawczej pulpitu wirtualnego systemu Windows
 
@@ -49,7 +49,7 @@ Aby udzielić uprawnień usługi:
    >https://login.microsoftonline.com/{tenant}/adminconsent?client_id=5a0aa725-4958-4b0c-80a9-34562e23f3b7&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback
    >```
 
-2. Zaloguj się na stronie zgody na pulpit wirtualny systemu Windows przy użyciu konta administratora globalnego. Na przykład jeśli jesteś w organizacji contoso, Twoje konto może być admin@contoso.com lub. admin@contoso.onmicrosoft.com  
+2. Zaloguj się na stronie zgody na pulpit wirtualny systemu Windows przy użyciu konta administratora globalnego. Na przykład jeśli jesteś w organizacji contoso, Twoje konto może być admin@contoso.com lub. admin@contoso.onmicrosoft.com
 3. Wybierz pozycję **Zaakceptuj**.
 4. Poczekaj chwilę, aby usługa Azure AD mogła rejestrować zgodę.
 5. Otwórz przeglądarkę i Rozpocznij przepływ zgody administratora na [aplikację klienta pulpitu wirtualnego systemu Windows](https://login.microsoftonline.com/common/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback).
@@ -78,6 +78,7 @@ Aby przypisać rolę aplikacji TenantCreator:
    ![Zrzut ekranu użytkowników i grup przypisanych do zarządzania aplikacją Enterprise "pulpit wirtualny systemu Windows". Zrzut ekranu zawiera tylko jedno przypisanie, które jest przeznaczone dla "dostępu domyślnego".](media/tenant-default-access.png)
 5. Wybierz pozycję **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w bloku **Dodaj przypisanie** .
 6. Wyszukaj konto użytkownika, które będzie tworzyć dzierżawcę pulpitów wirtualnych systemu Windows. Dla uproszczenia może to być konto administratora globalnego.
+   - Jeśli używasz dostawcy tożsamości firmy Microsoft, takiego jak contosoadmin@live.com lub contosoadmin@outlook.com, możesz nie być w stanie zalogować się do pulpitu wirtualnego systemu Windows. Zalecamy użycie konta specyficznego dla domeny, takiego admin@contoso.com jak admin@contoso.onmicrosoft.com lub.
 
    ![Zrzut ekranu przedstawiający Wybieranie użytkownika do dodania jako "TenantCreator".](media/tenant-assign-user.png)
 

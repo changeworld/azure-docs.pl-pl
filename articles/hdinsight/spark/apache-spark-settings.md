@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie ustawień platformy Spark — Azure HDInsight
-description: Jak skonfigurować platformę Spark dla klastra usługi Azure HDInsight.
+description: Jak wyświetlać i konfigurować ustawienia Apache Spark dla klastra usługi Azure HDInsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: eb948aa2b683f426831e1b0d34b44f814eab6b9f
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 2d369af7c11473d811677f33f9112d41260fcecf
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441932"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736023"
 ---
 # <a name="configure-apache-spark-settings"></a>Konfigurowanie ustawień platformy Apache Spark
 
@@ -91,13 +91,13 @@ Trzy kluczowe parametry, które są często dostosowywane do dostrajania konfigu
 > [!NOTE]  
 > Te trzy parametry konfiguracji można skonfigurować na poziomie klastra (dla wszystkich aplikacji uruchamianych w klastrze), a także dla każdej pojedynczej aplikacji.
 
-Innym źródłem informacji o zasobach używanych przez program wykonujący testy Spark jest interfejs użytkownika aplikacji platformy Spark.  W interfejsie użytkownika platformy Spark wybierz  kartę wykonawcy, aby wyświetlić widok podsumowania i szczegółów konfiguracji i zasobów używanych przez program wykonujący.  Te widoki mogą pomóc w ustaleniu, czy należy zmienić wartości domyślne dla programów wykonujących testy Spark dla całego klastra, czy określonego zestawu wykonań zadań.
+Innym źródłem informacji o zasobach używanych przez funkcje wykonawcze platformy Spark jest interfejs użytkownika aplikacji platformy Spark.  W interfejsie użytkownika platformy Spark wybierz kartę **wykonawcy** , aby wyświetlić widok podsumowania i szczegółów konfiguracji i zasobów używanych przez program wykonujący.  Te widoki mogą pomóc w ustaleniu, czy należy zmienić wartości domyślne dla funkcji wykonawczych platformy Spark dla całego klastra, czy dla określonego zestawu wykonań.
 
 ![Testy platformy Spark](./media/apache-spark-settings/spark-executors.png)
 
 Alternatywnie można użyć interfejsu API REST Ambari, aby programowo sprawdzić ustawienia konfiguracji klastra usługi HDInsight i usługi Spark.  Więcej informacji można znaleźć w [dokumentacji interfejsu API Apache Ambari w witrynie GitHub](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
-W zależności od obciążenia platformy Spark można określić, że niedomyślna konfiguracja platformy Spark zapewnia bardziej zoptymalizowane wykonania zadań platformy Spark.  Należy przeprowadzić testy porównawcze z przykładowymi obciążeniami, aby zweryfikować wszystkie inne niż domyślne konfiguracje klastrów.  Poniżej wymieniono niektóre typowe parametry, które można rozważyć:
+W zależności od obciążenia platformy Spark może się okazać, że bardziej zoptymalizowane wykonania zadań platformy Spark zapewnia niedomyślna konfiguracja platformy Spark.  Należy przeprowadzić testy porównawcze z przykładowymi obciążeniami, aby zweryfikować wszelkie niedomyślne konfiguracje klastrów.  Poniżej wymieniono niektóre typowe parametry, których dostosowanie warto rozważyć:
 
 * `--num-executors`Ustawia liczbę modułów wykonujących.
 * `--executor-cores`Ustawia liczbę rdzeni dla każdego wykonawcy. Zalecamy użycie wykonawców o rozmiarze średnim, ponieważ inne procesy zużywają również część dostępnej pamięci.
@@ -144,7 +144,7 @@ Poniższy kod przedstawia sposób zmiany konfiguracji aplikacji uruchomionej w n
 
 Istnieją różne podstawowe ustawienia konfiguracji, które należy monitorować i dostosowywać w celu zapewnienia, że zadania platformy Spark działają w przewidywalny i wydajny sposób. Te ustawienia pomagają określić najlepszą konfigurację klastra platformy Spark dla określonych obciążeń.  Konieczne będzie również monitorowanie wykonywania długotrwałych i/lub czasochłonnych wykonań zadań platformy Spark.  Najczęstsze centrum wyzwań pozwala na wykorzystanie pamięci z powodu nieprawidłowych konfiguracji (szczególnie programów wykonujących nieprawidłowe rozmiary), długotrwałych operacji i zadań, które powodują kartezjańskiego operacji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Apache Hadoop składniki i wersje dostępne w usłudze HDInsight?](../hdinsight-component-versioning.md)
 * [Zarządzanie zasobami klastra Apache Spark w usłudze HDInsight](apache-spark-resource-manager.md)

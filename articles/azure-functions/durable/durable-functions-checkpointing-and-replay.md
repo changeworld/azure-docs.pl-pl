@@ -3,18 +3,17 @@ title: Punkty kontrolne i powtarzanie w Durable Functions — Azure
 description: Dowiedz się, w jaki sposób punkty kontrolne i odpowiedzi działają w rozszerzeniu Durable Functions Azure Functions.
 services: functions
 author: ggailey777
-manager: jeconnoc
-keywords: ''
+manager: gwallace
 ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1e6d3b78887c9d195fdf0137553860c141bdaaba
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 5d0527de556c25a1d369d7b22c3f62579bc508f0
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241055"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735262"
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Punkty kontrolne i powtarzanie w Durable Functions (Azure Functions)
 
@@ -128,17 +127,9 @@ Zachowanie powtarzania tworzy ograniczenia dotyczące typu kodu, który można n
 
   Jeśli kod programu Orchestrator wymaga pobrania bieżącej daty/godziny, powinien on używać interfejsu API [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) (.NET) lub `currentUtcDateTime` (JavaScript), który jest bezpieczny do odtworzenia.
 
-  Jeśli kod programu Orchestrator musi generować losowy identyfikator GUID, powinien korzystać z interfejsu API [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.NET), który jest bezpieczny do odtworzenia, lub delegowania generowania identyfikatora GUID do funkcji działania (JavaScript), jak w poniższym przykładzie:
+  Jeśli kod programu Orchestrator musi generować losowy identyfikator GUID, powinien korzystać z interfejsu API [NewGuid](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_NewGuid) (.NET) lub `newGuid` (JavaScript), który jest bezpieczny do odtworzenia.
 
-  ```javascript
-  const uuid = require("uuid/v1");
-
-  module.exports = async function(context) {
-    return uuid();
-  }
-  ```
-
-  Operacje niedeterministyczne muszą być wykonywane w funkcjach działania. Obejmuje to wszelką interakcję z innymi powiązaniami wejściowymi lub wyjściowymi. Daje to pewność, że wszystkie wartości niedeterministyczne będą generowane raz podczas pierwszego wykonywania i zapisywane w historii wykonywania. Kolejne wykonania spowodują użycie zapisanej wartości automatycznie.
+   Oprócz tych specjalnych przypadków operacje niedeterministyczne muszą być wykonywane w funkcjach działania. Obejmuje to wszelką interakcję z innymi powiązaniami wejściowymi lub wyjściowymi. Daje to pewność, że wszystkie wartości niedeterministyczne będą generowane raz podczas pierwszego wykonywania i zapisywane w historii wykonywania. Kolejne wykonania spowodują użycie zapisanej wartości automatycznie.
 
 * Kod programu Orchestrator nie powinien być **blokowany**. Na przykład oznacza to brak operacji we/wy i brak wywołań do `Thread.Sleep` (.NET) lub równoważnych interfejsów API.
 
@@ -165,7 +156,7 @@ Chociaż te ograniczenia mogą wydawać się zniechęcające na początku, w rze
 
 Zadania, które można bezpiecznie oczekiwać w funkcjach programu Orchestrator, są czasami określane jako *zadania trwałe*. Są to zadania, które są tworzone i zarządzane przez strukturę zadań trwałych. Przykłady to zadania zwracane przez `CallActivityAsync`, `WaitForExternalEvent`i `CreateTimer`.
 
-Te *zadania trwałe* są zarządzane wewnętrznie przy użyciu listy `TaskCompletionSource` obiektów. Podczas odtwarzania te zadania są tworzone w ramach wykonywania kodu programu Orchestrator i są wykonywane, gdy Dyspozytor wylicza odpowiednie zdarzenia historii. To wszystko zostało wykonane synchronicznie przy użyciu jednego wątku, dopóki cała historia nie zostanie powtórzona. Wszelkie zadania trwałe, które nie są wykonywane na końcu powtarzania historii, mają odpowiednie działania. Na przykład komunikat może być w kolejce do wywołania funkcji działania.
+Te *zadania trwałe* są zarządzane wewnętrznie przy użyciu listy `TaskCompletionSource` obiektów. Podczas odtwarzania te zadania są tworzone w ramach wykonywania kodu programu Orchestrator i są wykonywane, gdy Dyspozytor wylicza odpowiednie zdarzenia historii. To wszystko zostało wykonane synchronicznie przy użyciu jednego wątku, dopóki cała historia nie zostanie powtórzona. Wszelkie zadania trwałe, które nie zostały ukończone na zakończenie odtwarzania historii, mają odpowiednie działania. Na przykład komunikat może być w kolejce do wywołania funkcji działania.
 
 Opisane w tym miejscu zachowanie dotyczące wykonywania powinno ułatwić zrozumienie, dlaczego kod funkcji programu `await` Orchestrator nigdy nie jest nietrwały: wątek dyspozytora nie może czekać na ukończenie i każde wywołanie zwrotne przez to zadanie może spowodować uszkodzenie śledzenia stan funkcji programu Orchestrator. Niektóre testy środowiska uruchomieniowego są gotowe do tego celu.
 

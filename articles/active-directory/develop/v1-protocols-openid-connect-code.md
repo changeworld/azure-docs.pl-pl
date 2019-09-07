@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 09/05/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a82571260f5da679202e96f5e6f72aa2db6788a
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 7c2e80f80ea5d7e7d5ee26eee8b26506386a6e2f
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834684"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389788"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Autoryzuj dostęp do aplikacji sieci Web za pomocą OpenID Connect Connect i Azure Active Directory
 
@@ -181,7 +181,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | Parametr |  | Opis |
 | --- | --- | --- |
-| post_logout_redirect_uri |Rekomendowane |Adres URL, do którego użytkownik powinien zostać przekierowany po pomyślnym wylogowaniu. Jeśli nie jest uwzględniony, użytkownik zostanie pokazany komunikat generyczny. |
+| post_logout_redirect_uri |Rekomendowane |Adres URL, do którego użytkownik powinien zostać przekierowany po pomyślnym wylogowaniu.  Ten adres URL musi być zgodny z jednym z identyfikatorów URI przekierowania zarejestrowanych dla aplikacji w portalu rejestracji aplikacji.  Jeśli *post_logout_redirect_uri* nie jest uwzględniony, użytkownik zostanie pokazany komunikat generyczny. |
 
 ## <a name="single-sign-out"></a>Wylogowanie jednokrotne
 
@@ -251,7 +251,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Aby uzyskać opis możliwych kodów błędów i ich zalecaną akcję klienta, zobacz [kody błędów dla błędów punktu końcowego autoryzacji](#error-codes-for-authorization-endpoint-errors).
 
-Po uzyskaniu autoryzacji `code` `id_token`i można podpisać użytkownika w usłudze i uzyskać tokeny [dostępu](access-tokens.md) w ich imieniu. Aby podpisać użytkownika w programie, należy sprawdzić poprawność dokładnie zgodnie z `id_token` powyższym opisem. Aby uzyskać tokeny dostępu, można wykonać kroki opisane w sekcji "Używanie kodu autoryzacji do żądania tokenu dostępu" w [dokumentacji przepływu kodu OAuth](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token).
+Po uzyskaniu autoryzacji `code` `id_token`i można podpisać użytkownika w usłudze i uzyskać [tokeny dostępu](access-tokens.md) w ich imieniu. Aby podpisać użytkownika w programie, należy sprawdzić poprawność dokładnie zgodnie z `id_token` powyższym opisem. Aby uzyskać tokeny dostępu, można wykonać kroki opisane w sekcji "Używanie kodu autoryzacji do żądania tokenu dostępu" w [dokumentacji przepływu kodu OAuth](v1-protocols-oauth-code.md#use-the-authorization-code-to-request-an-access-token).
 
 ## <a name="next-steps"></a>Następne kroki
 

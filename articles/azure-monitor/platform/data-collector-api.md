@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: bwren
-ms.openlocfilehash: 11c3ded45e87e815b6c694f0a3f9c0ccb96f8750
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a34faeb42fce0a1ee7960f71ffce176492495f9c
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813925"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744512"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Wysyłanie danych dziennika do Azure Monitor za pomocą interfejsu API modułu zbierającego dane HTTP (publiczna wersja zapoznawcza)
 W tym artykule pokazano, jak za pomocą interfejsu API modułu zbierającego dane HTTP wysyłać dane dziennika do Azure Monitor z klienta interfejsu API REST.  Opisano w nim sposób formatowania danych zbieranych przez skrypt lub aplikację, uwzględniania ich w żądaniu oraz żądania autoryzowane przez Azure Monitor.  Przykłady dla programu PowerShell, C#i języka Python.
@@ -59,7 +59,7 @@ Aby użyć interfejsu API modułu zbierającego dane HTTP, należy utworzyć ż�
 | nagłówek | Opis |
 |:--- |:--- |
 | Authorization |Podpis autoryzacji. W dalszej części artykułu można zapoznać się z informacjami na temat tworzenia nagłówka HMAC-SHA256. |
-| Typ dziennika |Określ typ rekordu przesyłanego danych. Limit rozmiaru dla tego parametru to 100 znaków. |
+| Typ dziennika |Określ typ rekordu przesyłanego danych. Może zawierać tylko litery, cyfry i znaki podkreślenia (_) i nie może przekraczać 100 znaków. |
 | x-ms-date |Data przetworzenia żądania w formacie RFC 1123. |
 | x-ms-AzureResourceId | Identyfikator zasobu zasobu platformy Azure, z którym mają być skojarzone dane. Spowoduje to wypełnienie właściwości [_ResourceId](log-standard-properties.md#_resourceid) i umożliwi uwzględnienie danych w zapytaniach [kontekstu zasobów](design-logs-deployment.md#access-mode) . Jeśli to pole nie zostanie określone, dane nie zostaną uwzględnione w zapytaniach kontekstu zasobów. |
 | time-generated-field | Nazwa pola w danych, które zawiera sygnaturę czasową elementu danych. Jeśli określisz pole, jego zawartość zostanie użyta dla **TimeGenerated**. Jeśli to pole nie zostanie określone, wartością domyślną dla **TimeGenerated** jest czas, w którym wiadomość zostanie pozyskana. Zawartość pola komunikat powinna być zgodna z formatem ISO 8601 RRRR-MM-DDTgg: mm: SSS. |
@@ -100,7 +100,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 Przykłady w następnych sekcjach zawierają przykładowy kod ułatwiający utworzenie nagłówka autoryzacji.
 
 ## <a name="request-body"></a>Treść żądania
-Treść wiadomości musi być w formacie JSON. Musi zawierać co najmniej jeden rekord o nazwie właściwości i par wartości w tym formacie:
+Treść wiadomości musi być w formacie JSON. Musi zawierać co najmniej jeden rekord o nazwie właściwości i par wartości w następującym formacie. Nazwa właściwości może zawierać tylko litery, cyfry i znaki podkreślenia (_).
 
 ```json
 [
@@ -141,7 +141,7 @@ Aby zidentyfikować typ danych właściwości, Azure Monitor dodaje sufiks do na
 
 | Typ danych właściwości | Suffix |
 |:--- |:--- |
-| Ciąg |_s |
+| String |_s |
 | Boolean |_b |
 | Double |_d |
 | Data/godzina |_t |
@@ -187,7 +187,7 @@ Kod stanu HTTP 200 oznacza, że żądanie zostało odebrane do przetworzenia. Oz
 
 W tej tabeli przedstawiono pełny zestaw kodów stanu, które mogą zostać zwrócone przez usługę:
 
-| Kod | Stan | Kod błędu | Opis |
+| Kod | State | Kod błędu | Opis |
 |:--- |:--- |:--- |:--- |
 | 200 |OK | |Żądanie zostało pomyślnie zaakceptowane. |
 | 400 |Nieprawidłowe żądanie |InactiveCustomer |Obszar roboczy został zamknięty. |
@@ -202,7 +202,7 @@ W tej tabeli przedstawiono pełny zestaw kodów stanu, które mogą zostać zwr�
 | 403 |Zabroniony |InvalidAuthorization |Usługa nie może uwierzytelnić żądania. Sprawdź, czy identyfikator obszaru roboczego i klucz połączenia są prawidłowe. |
 | 404 |Nie znaleziono | | Podany adres URL jest nieprawidłowy lub żądanie jest zbyt duże. |
 | 429 |Zbyt wiele żądań | | W usłudze występuje duża ilość danych z Twojego konta. Spróbuj ponownie wykonać żądanie później. |
-| 500 |Wewnętrzny błąd serwera |UnspecifiedError |W usłudze wystąpił wewnętrzny błąd. Spróbuj ponownie wykonać żądanie. |
+| 500 |Wewnętrzny błąd serwera |UnspecifiedError |Usługa napotkała błąd wewnętrzny. Spróbuj ponownie wykonać żądanie. |
 | 503 |Usługa niedostępna |ServiceUnavailable |Usługa jest obecnie niedostępna do odbierania żądań. Spróbuj ponownie wykonać żądanie. |
 
 ## <a name="query-data"></a>Zapytania o dane
@@ -216,7 +216,7 @@ Dla każdego przykładu wykonaj następujące kroki, aby ustawić zmienne nagł�
 1. W Azure Portal zlokalizuj obszar roboczy Log Analytics.
 2. Wybierz pozycję **Ustawienia zaawansowane** i **połączone źródła**.
 2. Z prawej strony **identyfikatora obszaru roboczego**wybierz ikonę kopiowania, a następnie wklej identyfikator jako wartość zmiennej **identyfikatora klienta** .
-3. Na prawo od **klucza podstawowego**wybierz ikonę kopiowania, a następnie wklej identyfikator jako wartość zmiennej **klucza** współużytkowanego.
+3. Na prawo od **klucza podstawowego**wybierz ikonę kopiowania, a następnie wklej identyfikator jako wartość zmiennej **klucza współużytkowanego** .
 
 Alternatywnie można zmienić zmienne dla typu dziennika i danych JSON.
 

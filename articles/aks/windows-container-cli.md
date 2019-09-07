@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/17/2019
 ms.author: mlearned
-ms.openlocfilehash: a173272600bab71264ed3b85ce5141814c0a6aed
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: ee798ba624aaf9f21886edab36185fb1b6ae67f2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147201"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387335"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Wersja zapoznawcza — Tworzenie kontenera systemu Windows Server w klastrze usługi Azure Kubernetes Service (AKS) przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -42,7 +42,7 @@ Po utworzeniu klastra, który może uruchamiać kontenery systemu Windows Server
 
 ### <a name="install-aks-preview-cli-extension"></a>Zainstaluj rozszerzenie interfejsu wiersza polecenia AKS-Preview
 
-Aby można było korzystać z kontenerów systemu Windows Server, wymagany jest interfejs wiersza polecenia *AKS-Preview* w wersji 0.4.1 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji* zapoznawczej przy użyciu poleceń [AZ Extension Add][az-extension-add] , a następnie wyszukaj wszystkie dostępne aktualizacje za pomocą polecenia [AZ Extension Update][az-extension-update] ::
+Aby można było korzystać z kontenerów systemu Windows Server, wymagany jest interfejs wiersza polecenia *AKS-Preview* w wersji 0.4.1 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji zapoznawczej* przy użyciu poleceń [AZ Extension Add][az-extension-add] , a następnie wyszukaj wszystkie dostępne aktualizacje za pomocą polecenia [AZ Extension Update][az-extension-update] ::
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -79,7 +79,7 @@ az provider register --namespace Microsoft.ContainerService
 
 Następujące ograniczenia są stosowane podczas tworzenia klastrów AKS i zarządzania nimi, które obsługują pule wielu węzłów:
 
-* W przypadku klastrów utworzonych po pomyślnym zarejestrowaniu *WindowsPreview*dostępne są pule wielu węzłów. Pule wielu węzłów są również dostępne w przypadku rejestrowania funkcji *MultiAgentpoolPreview* i *VMSSPreview* dla subskrypcji. Nie można dodać pul węzłów i zarządzać nimi z istniejącym klastrem AKS utworzonym przed pomyślnym zarejestrowaniem tych funkcji.
+* W przypadku klastrów utworzonych po pomyślnym zarejestrowaniu *WindowsPreview*dostępne są pule wielu węzłów. Pule wielu węzłów są również dostępne po zarejestrowaniu funkcji *MultiAgentpoolPreview* dla subskrypcji. Nie można dodać pul węzłów i zarządzać nimi z istniejącym klastrem AKS utworzonym przed pomyślnym zarejestrowaniem tej funkcji.
 * Nie można usunąć pierwszej puli węzłów.
 
 Chociaż ta funkcja jest dostępna w wersji zapoznawczej, obowiązują następujące dodatkowe ograniczenia:
@@ -165,7 +165,7 @@ az aks nodepool add \
     --kubernetes-version 1.14.6
 ```
 
-Powyższe polecenie tworzy nową pulę węzłów o nazwie *npwin* i dodaje ją do *myAKSCluster*. Podczas tworzenia puli węzłów do uruchamiania kontenerów systemu Windows Server wartość domyślna dla *węzła Node-VM-size* to *Standard_D2s_v3*. Jeśli zdecydujesz się ustawić parametr *Node-VM-size* , sprawdź listę [rozmiarów maszyn wirtualnych][restricted-vm-sizes]z ograniczeniami. Minimalny zalecany rozmiar to *Standard_D2s_v3*. Powyższe polecenie używa również domyślnej podsieci w domyślnej sieci wirtualnej utworzonej podczas uruchamiania `az aks create`.
+Powyższe polecenie tworzy nową pulę węzłów o nazwie *npwin* i dodaje ją do *myAKSCluster*. Podczas tworzenia puli węzłów do uruchamiania kontenerów systemu Windows Server wartość domyślna dla *węzła Node-VM-size* to *Standard_D2s_v3*. Jeśli zdecydujesz się ustawić parametr *Node-VM-size* , sprawdź listę [rozmiarów maszyn wirtualnych z ograniczeniami][restricted-vm-sizes]. Minimalny zalecany rozmiar to *Standard_D2s_v3*. Powyższe polecenie używa również domyślnej podsieci w domyślnej sieci wirtualnej utworzonej podczas uruchamiania `az aks create`.
 
 ## <a name="connect-to-the-cluster"></a>Łączenie z klastrem
 
@@ -272,7 +272,7 @@ Aby monitorować postęp, użyj polecenia [kubectl get-service][kubectl-get] z a
 kubectl get service sample --watch
 ```
 
-Początkowo *adres IP* dla przykładowej usługi jest pokazywany jako *oczekujący*.
+Początkowo *adres IP* dla *przykładowej* usługi jest pokazywany jako *oczekujący*.
 
 ```
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE

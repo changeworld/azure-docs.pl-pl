@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: a5c60a4c7d4f1b441ec5e8444b10594a1e67d7db
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 22e187bba3782e485685354c203a6273d5bcc618
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932715"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735050"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Jak ulepszyć aplikację przy użyciu pulpitu nawigacyjnego
 
@@ -33,7 +33,7 @@ Trzy problemy rozkierowane na pulpicie nawigacyjnym są następujące:
 |Problem|Kolor wykresu|Wyjaśnienie|
 |--|--|--|
 |Nierównoważność danych|-|Dzieje się tak, gdy liczba przykładowych wyrażenia długości znacznie się różni. Wszystkie intencje muszą mieć w _przybliżeniu_ tę samą liczbę przykładowych wyrażenia długości — z wyjątkiem zamiaru none. Powinna ona mieć 10%-15% łącznej liczby wyrażenia długości w aplikacji.<br><br> Jeśli dane są niezrównoważone, ale dokładność przeznaczenie jest wyższa od pewnej wartości progowej, to nierównowaga nie jest raportowana jako problem.<br><br>**Rozpocznij od tego problemu — może to być główna przyczyna innych problemów.**|
-|Niejasne przewidywania|Pomarańczowy|Dzieje się tak, gdy najlepsze zamierzenie i wyniki następnego celu są wystarczająco zbliżone, że mogą przerzucać kolejne szkolenia, [](luis-how-to-train.md#train-with-all-data) z powodu próbkowania negatywnego lub więcej przykładowych wyrażenia długości dodanych do intencji. |
+|Niejasne przewidywania|Pomarańczowy|Dzieje się tak, gdy najlepsze zamierzenie i wyniki następnego celu są wystarczająco zbliżone, że mogą przerzucać kolejne szkolenia, z powodu [próbkowania negatywnego](luis-how-to-train.md#train-with-all-data) lub więcej przykładowych wyrażenia długości dodanych do intencji. |
 |Nieprawidłowe przewidywania|Czerwony|Dzieje się tak, gdy przykład wypowiedź nie jest przewidziany dla zamiaru oznaczonego etykietą (zamiar, w której znajduje się).|
 
 Poprawne przewidywania są reprezentowane kolorem niebieskim.
@@ -78,9 +78,9 @@ Podstawową metodą naprawienia aplikacji będzie Dodawanie lub edytowanie przyk
 
 Dodawanie przykładowej wyrażenia długości powinno odbywać się przez kogoś, kto:
 
-* ma wysoki stopień świadomości, co wyrażenia długości się w różnych intencjach
-* wie, jak wyrażenia długości w jednym zamiarze można mylić z innym zamiarem
-* jest w stanie zdecydować, czy dwa intencje, które są często mylone ze sobą, powinny być zwinięte w jednym zamiarze, a różne dane są ściągane przy użyciu jednostek
+* ma wysoki stopień wiedzy na temat tego, co wyrażenia długości się w różnych intencjach.
+* wie, jak wyrażenia długości w jednym zamiarze można mylić z innym zamiarem.
+* jest w stanie zdecydować, czy dwa intencje, które są często mylone ze sobą, powinny być zwinięte do jednego celu. W takim przypadku należy ściągnąć różne dane przy użyciu jednostek.
 
 ### <a name="patterns-and-phrase-lists"></a>Wzorce i listy fraz
 
@@ -99,12 +99,12 @@ Lista założeń dotyczących **nierównoważenia danych** przedstawia intencje,
 Nie należy dodawać wyrażenia długości do zamiaru brak, chyba że jest to sugerowane na pulpicie nawigacyjnym.
 
 > [!Tip]
-> Skorzystaj z trzeciej sekcji na stronie, **wyrażenia długości** z zamiarem z ustawieniem **wyrażenia długości (Number)** jako krótkiego przewodnika, którego intencje potrzebują więcej wyrażenia długości.  
+> Skorzystaj z trzeciej sekcji na stronie, **wyrażenia długości z zamiarem** z ustawieniem **wyrażenia długości (Number)** jako krótkiego przewodnika, którego intencje potrzebują więcej wyrażenia długości.  
     ![Użyj opcji "wyrażenia długości (Number)", aby znaleźć intencje z niezrównoważoną ilością danych.](./media/luis-how-to-use-dashboard/predictions-per-intent-number-of-utterances.png)
 
 ### <a name="review-incorrect-predictions"></a>Przejrzyj nieprawidłowe przewidywania
 
-**Nieprawidłowa** lista założeń prognozowania zawiera intencje, które mają wyrażenia długości, które są używane jako przykłady dla konkretnego celu, ale są przewidywane dla różnych intencji. 
+Nieprawidłowa lista założeń **prognozowania** zawiera intencje, które mają wyrażenia długości, które są używane jako przykłady dla konkretnego celu, ale są przewidywane dla różnych intencji. 
 
 **Aby rozwiązać ten problem**:
 
@@ -113,7 +113,7 @@ Nie należy dodawać wyrażenia długości do zamiaru brak, chyba że jest to su
 
 ### <a name="review-unclear-predictions"></a>Przejrzyj niejasne przewidywania
 
-Lista założeń **przewidywania** niejasnego przedstawia intencje w wyrażenia długości z wynikami przewidywania, które nie są daleko w stosunku do najbliższej Rival, że najwyższe zamiaru dla wypowiedź mogą ulec zmianie w następnym szkoleniu z powodu [próbkowania negatywnego](luis-how-to-train.md#train-with-all-data).
+Lista założeń **przewidywania niejasnego** przedstawia intencje w wyrażenia długości z wynikami przewidywania, które nie są daleko w stosunku do najbliższej Rival, że najwyższe zamiaru dla wypowiedź mogą ulec zmianie w następnym szkoleniu z powodu [próbkowania negatywnego](luis-how-to-train.md#train-with-all-data).
 
 **Aby rozwiązać ten problem**;
 
@@ -163,7 +163,7 @@ Filtr umożliwia znalezienie intencji z określonym problemem:
 
 ### <a name="correct-prediction-threshold"></a>Poprawna wartość progowa przewidywania
 
-Co to jest wiarygodny wynik do przewidywania? Na początku opracowywania aplikacji 60% może być obiektem docelowym. Użyj poprawnych **prognoz poniżej** z wartością procentową 60%, aby znaleźć dowolne wyrażenia długości w wybranym zamierzeniu, które należy naprawić.
+Co to jest wiarygodny wynik do przewidywania? Na początku opracowywania aplikacji 60% może być obiektem docelowym. Użyj **poprawnych prognoz poniżej** z wartością procentową 60%, aby znaleźć dowolne wyrażenia długości w wybranym zamierzeniu, które należy naprawić.
 
 ### <a name="unclear-or-incorrect-prediction-threshold"></a>Niejasny lub nieprawidłowy próg przewidywania
 

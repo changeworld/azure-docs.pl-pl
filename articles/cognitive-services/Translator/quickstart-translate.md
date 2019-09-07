@@ -1,22 +1,22 @@
 ---
 title: 'Szybki start: Tłumaczenie tekstu tłumaczenie tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku szybki start dowiesz się, jak przetłumaczyć tekst z jednego języka na inny przy użyciu interfejs API tłumaczenia tekstu w usłudze Translator.
+description: W tym przewodniku szybki start dowiesz się, jak tłumaczyć tekst przy użyciu interfejs API tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 08/19/2019
+ms.date: 09/05/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 0d79443ed1e424a3cb8b6c059ac9b6bc62293029
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 28dac7fffc6bb08e02c9d1af80f4237a40ceed65
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906739"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70393946"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-text"></a>Szybki start: Użyj interfejs API tłumaczenia tekstu w usłudze Translator do tłumaczenia tekstu
 

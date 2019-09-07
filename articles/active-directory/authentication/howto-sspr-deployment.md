@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7033c7bd3e783157280709b2c7e889473166ac84
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 330b02e3db6af90fcfeb962e78b043b04090116e
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879229"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743238"
 ---
-# <a name="deploy-azure-ad-self-service-password-reset"></a>Wdrażanie samoobsługowego resetowania hasła w usłudze Azure AD
+# <a name="deploy-azure-ad-self-service-password-reset"></a>Wdrażanie samoobsługowego resetowania haseł w usłudze Azure AD
 
 Samoobsługowe resetowanie hasła (SSPR) to funkcja Azure Active Directory, która umożliwia pracownikom Resetowanie swoich haseł bez konieczności kontaktowania się z pracownikami działu IT. Przed skorzystaniem z usługi pracownicy muszą zarejestrować się w usłudze lub zostać zarejestrowany do samoobsługowego resetowania hasła. Podczas rejestracji pracownik wybiera jedną lub więcej metod uwierzytelniania włączonych przez ich organizację.
 
@@ -37,7 +37,7 @@ Przed wdrożeniem SSPR organizacje mogą chcieć określić liczbę wywołań po
 
 ## <a name="licensing-considerations"></a>Zagadnienia dotyczące licencjonowania
 
-Azure Active Directory jest licencją na użytkownika, co oznacza, że każdy użytkownik musi dysponować odpowiednią licencją dla używanych przez nich funkcji.
+Azure Active Directory jest licencjonowana przez użytkownika, co oznacza, że każdy użytkownik musi mieć odpowiednią licencję dla funkcji, których używają.
 
 Więcej informacji na temat licencjonowania można znaleźć na [stronie cennika Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/)
 
@@ -47,22 +47,22 @@ Firma Microsoft zaleca, aby organizacje umożliwiały łączenie się ze sobą p
 
 ![Rejestracja informacji o zabezpieczeniach](./media/howto-sspr-deployment/combined-security-info.png)
 
-Połączone środowisko rejestracji nie wymaga, aby organizacje mogły korzystać z usługi SSPR i uwierzytelniania wieloskładnikowego Azure. Połączone środowisko rejestracji zapewnia organizacjom lepszy komfort pracy użytkowników w porównaniu z tradycyjnymi indywidualnymi składnikami. Więcej informacji o połączeniu z rejestracją i sposobach ich włączania znajduje się w artykule dotyczącego [łączenia informacji o zabezpieczeniach (wersja zapoznawcza).](concept-registration-mfa-sspr-combined.md)
+Połączone środowisko rejestracji nie wymaga, aby organizacje mogły korzystać z usług SSPR i Azure Multi-Factor Authentication. Połączone środowisko rejestracji zapewnia organizacjom lepszy komfort pracy użytkowników w porównaniu z tradycyjnymi indywidualnymi składnikami. Więcej informacji o połączeniu z rejestracją i sposobach ich włączania znajduje się w artykule dotyczącego [łączenia informacji o zabezpieczeniach (wersja zapoznawcza).](concept-registration-mfa-sspr-combined.md)
 
 ## <a name="plan-the-configuration"></a>Planowanie konfiguracji
 
 Następujące ustawienia są wymagane do włączenia SSPR oraz zalecanych wartości.
 
-| Obszar | Ustawienie | Wartość |
+| Obszar | Ustawienie | Value |
 | --- | --- | --- |
 | **Właściwości SSPR** | Włączono Samoobsługowe resetowanie hasła | **Wybrana** Grupa dla pilotażu/ **wszystko** dla środowiska produkcyjnego |
 | **Metody uwierzytelniania** | Metody uwierzytelniania wymagane do zarejestrowania | Zawsze 1 więcej niż wymagane do zresetowania |
 |   | Metody uwierzytelniania wymagane do zresetowania | Jeden lub dwa |
-| **Rejestracja** | Czy wymagać od użytkowników rejestrowania się podczas logowania? | Yes |
+| **Rejestracja** | Czy wymagać od użytkowników rejestrowania się podczas logowania? | Tak |
 |   | Liczba dni, zanim użytkownicy zostaną poproszeni o ponowne potwierdzenie swoich informacji uwierzytelniania | 90 – 180 dni |
 | **Powiadomienia** | Czy powiadamiać użytkowników o resetowaniu hasła? | Tak |
 |   | Czy powiadamiać wszystkich administratorów, gdy inni administratorzy zresetują swoje hasło? | Tak |
-| **Customization** | Dostosuj link do pomocy technicznej | Yes |
+| **Customization** | Dostosuj link do pomocy technicznej | Tak |
 |   | Niestandardowy adres e-mail lub adres URL pomocy technicznej | Witryna lub adres e-mail pomocy technicznej |
 | **Integracja lokalna** | Zapisuj hasła do lokalnej usługi AD | Tak |
 |   | Zezwalaj użytkownikom na Odblokowywanie konta bez resetowania hasła | Tak |
@@ -89,11 +89,11 @@ Ustaw **liczbę dni, zanim użytkownicy zostaną poproszeni o ponowne potwierdze
 
 ### <a name="notifications-settings"></a>Ustawienia powiadomień
 
-Skonfiguruj zarówno opcję **Powiadamiaj użytkowników o** resetowaniu hasła, jak i powiadom **wszystkich administratorów, gdy inni administratorzy zresetują swoje hasła** na **wartość tak**. Wybranie opcji **tak** powoduje zwiększenie bezpieczeństwa dzięki zapewnieniu, że użytkownicy wiedzą, kiedy hasło zostało zresetowane, i że wszyscy administratorzy są świadomi hasła. Jeśli użytkownicy lub Administratorzy otrzymają takie powiadomienie i nie zainicjowano zmiany, mogą natychmiast zgłosić potencjalne naruszenie zabezpieczeń.
+Skonfiguruj zarówno opcję **Powiadamiaj użytkowników o** resetowaniu hasła, jak i **Powiadom wszystkich administratorów, gdy inni administratorzy zresetują swoje hasła** na **wartość tak**. Wybranie opcji **tak** powoduje zwiększenie bezpieczeństwa dzięki zapewnieniu, że użytkownicy wiedzą, kiedy hasło zostało zresetowane, i że wszyscy administratorzy są świadomi hasła. Jeśli użytkownicy lub Administratorzy otrzymają takie powiadomienie i nie zainicjowano zmiany, mogą natychmiast zgłosić potencjalne naruszenie zabezpieczeń.
 
 ### <a name="customization"></a>Dostosowywanie
 
-W celu zapewnienia użytkownikom, którzy napotykają problemy, można szybko uzyskać pomoc. Ustaw tę opcję na wspólny adres e-mail pomocy technicznej lub stronę internetową, z którą znają użytkownicy.
+**W celu zapewnienia** użytkownikom, którzy napotykają problemy, można szybko uzyskać pomoc. Ustaw tę opcję na wspólny adres e-mail pomocy technicznej lub stronę internetową, z którą znają użytkownicy.
 
 ### <a name="on-premises-integration"></a>Integracja lokalna
 
@@ -118,7 +118,7 @@ Gdy projekty technologii kończą się niepowodzeniem, zazwyczaj są to spowodow
 
 ### <a name="communications-plan"></a>Plan komunikacji
 
-Komunikacja jest niezwykle ważna dla sukcesu każdej nowej usługi. Aktywnie Komunikuj się z użytkownikami, jak korzystać z usługi i co można zrobić, aby uzyskać pomoc, jeśli coś nie działa zgodnie z oczekiwaniami. Zapoznaj się z materiałami wdrożeniowymi samoobsługowego [resetowania hasła w centrum pobierania Microsoft,](https://www.microsoft.com/download/details.aspx?id=56768) aby zapoznać się z pomysłami dotyczącymi planowania strategii komunikacji użytkowników końcowych.
+Komunikacja jest niezwykle ważna dla sukcesu każdej nowej usługi. Aktywnie Komunikuj się z użytkownikami, jak korzystać z usługi i co można zrobić, aby uzyskać pomoc, jeśli coś nie działa zgodnie z oczekiwaniami. Zapoznaj się z [materiałami wdrożeniowymi samoobsługowego resetowania hasła w centrum pobierania Microsoft,](https://www.microsoft.com/download/details.aspx?id=56768) aby zapoznać się z pomysłami dotyczącymi planowania strategii komunikacji użytkowników końcowych.
 
 ### <a name="testing-plan"></a>Plan testowania
 

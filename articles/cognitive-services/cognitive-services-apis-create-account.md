@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: aahi
-ms.openlocfilehash: ae25ffdf3f819c30fdfb1d3110042579f0b197b9
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: d0b2c9c7450b8a44ca93a9d9fa8770b7ab3d9282
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70381766"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743849"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Tworzenie zasobu Cognitive Services przy użyciu Azure Portal
 
@@ -32,12 +32,17 @@ Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć korzystanie z usług
 1. Utwórz zasób.
 
     #### <a name="multi-service-resourcetabmultiservice"></a>[Zasób obejmujący wiele usług](#tab/multiservice)
-
+    
     Zasób Wielousługowy ma nazwę **Cognitive Services** w portalu. [Utwórz zasób Cognitive Services](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne).
     
-    W tej chwili te usługi **nie mogą** być wywoływane przy użyciu kluczy wielousługowych: QnA Maker, usługi mowy, Custom Vision i wykrywania anomalii.
+    W tej chwili zasób Wielousługowy umożliwia dostęp do następujących Cognitive Services:
     
-
+    |                  |                                                      |                    |                               |                  |
+    |------------------|------------------------------------------------------|--------------------|-------------------------------|------------------|
+    | Przetwarzanie obrazów  | Content Moderator                                    | Rozpoznawanie twarzy               | Language Understanding (LUIS) | Analiza tekstu   |
+    | Tłumaczenie tekstu w usłudze Translator  | Wyszukiwanie Bing, wersja 7 <br>(Sieć Web, obrazy, wiadomości, wideo, wizualizacje) | Niestandardowe wyszukiwanie Bing | Wyszukiwanie jednostek Bing            | Automatyczne sugerowanie Bing |
+    | Sprawdzanie pisowni Bing |                                                      |                    |                               |                  |
+    
     #### <a name="single-service-resourcetabsingleservice"></a>[Zasób pojedynczego usługi](#tab/singleservice)
 
     Użyj poniższych linków, aby utworzyć zasób dla dostępnych Cognitive Services:
@@ -85,13 +90,13 @@ Skorzystaj z tego przewodnika Szybki Start, aby rozpocząć korzystanie z usług
 
 ## <a name="get-the-keys-for-your-resource"></a>Pobierz klucze dla zasobu
 
-Po pomyślnym wdrożeniu zasobu kliknij pozycję **Przejdź do zasobu** w obszarze **następne kroki**.
+1. Po pomyślnym wdrożeniu zasobu kliknij pozycję **Przejdź do zasobu** w obszarze **następne kroki**.
 
-![Wyszukaj Cognitive Services](media/cognitive-services-apis-create-account/resource-next-steps.png)
+    ![Wyszukaj Cognitive Services](media/cognitive-services-apis-create-account/resource-next-steps.png)
 
-W otwartym okienku szybkiego startu możesz uzyskać dostęp do klucza i punktu końcowego.
+2. W otwartym okienku szybkiego startu możesz uzyskać dostęp do klucza i punktu końcowego.
 
-![Pobierz klucz i punkt końcowy](media/cognitive-services-apis-create-account/get-cog-serv-keys.png)
+    ![Pobierz klucz i punkt końcowy](media/cognitive-services-apis-create-account/get-cog-serv-keys.png)
 
 [!INCLUDE [cognitive-services-environment-variables](../../includes/cognitive-services-environment-variables.md)]
 

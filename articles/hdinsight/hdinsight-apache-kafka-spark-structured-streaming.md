@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Przesyłanie strumieniowe ze strukturą na platformie Apache Spark za pomocą platformy Apache Kafka — Azure HDInsight'
+title: Samouczek Apache Spark strukturalne przesyłanie strumieniowe za pomocą Apache Kafka — Azure HDInsight
 description: Dowiedz się, jak wymieniać dane z platformą Apache Kafka za pomocą przesyłania strumieniowego platformy Apache Spark. Ten samouczek obejmuje przesyłanie strumieniowe danych z platformy Spark w usłudze HDInsight za pomocą notesu Jupyter.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: hrasheed
-ms.openlocfilehash: da31b6a880344de918a3b3e0f89f60d985db2ce7
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: bf877b9422581cd77349a2a9eddf0ab262977062
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406020"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734759"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Samouczek: Używanie strumieni ze strukturą platformy Apache Spark z platformą Kafka w usłudze HDInsight
 
@@ -328,7 +328,7 @@ Aby usunąć grupę zasobów za pomocą witryny Azure Portal:
 > 
 > Usunięcie platformy Kafka w klastrze usługi HDInsight powoduje usunięcie wszystkich danych przechowywanych na platformie Kafka.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku przedstawiono sposób użycia [przesyłania strumieniowego ze strukturą platformy Apache Spark](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) do zapisywania danych na platformie [Apache Kafka](https://kafka.apache.org/) w usłudze HDInsight i odczytywania z niej danych. Korzystając z poniższego linku, możesz dowiedzieć się, jak używać systemu [Apache Storm](https://storm.apache.org/) z platformą Kafka.
 

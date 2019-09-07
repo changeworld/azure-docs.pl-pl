@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/16/2019
 ms.author: erhopf
-ms.openlocfilehash: a1161540978ec219ba29c881befc1786fc6b3211
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 85e72f4f93267611902c40ae5547b6732beec261
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906465"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70392907"
 ---
 > [!NOTE]
-> Nowe zasoby platformy Azure utworzone po 1 lipca 2019 będą używać niestandardowych nazw domen. Aby uzyskać więcej informacji i pełną listę regionalnych punktów końcowych, zobacz [niestandardowe nazwy domen poddomen dla Cognitive Services](../articles/cognitive-services/cognitive-services-custom-subdomains.md).
+> Nowe zasoby utworzone po 1 lipca 2019 będą używać niestandardowych nazw domen. Aby uzyskać więcej informacji i pełną listę regionalnych punktów końcowych, zobacz [niestandardowe nazwy domen poddomen dla Cognitive Services](../articles/cognitive-services/cognitive-services-custom-subdomains.md).

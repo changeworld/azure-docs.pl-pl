@@ -1,17 +1,17 @@
 ---
 title: Komunikat o błędzie zapytania nie jest wyświetlany w widoku Apache Hive w usłudze Azure HDInsight
-description: Kwerenda kończy się niepowodzeniem w widoku programu Hive bez żadnych szczegółów
+description: Zapytanie kończy się niepowodzeniem w widoku Apache Hive bez żadnych szczegółów w klastrze usługi Azure HDInsight.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/30/2019
-ms.openlocfilehash: e87bb42b09135b61dd4cf32c9ae30b0113d800dc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 8f60e918c6ed2d49f2a9949b5ab096fb1e1f44bb
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68829036"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733131"
 ---
 # <a name="scenario-query-error-message-not-displayed-in-apache-hive-view-in-azure-hdinsight"></a>Scenariusz: Komunikat o błędzie zapytania nie jest wyświetlany w widoku Apache Hive w usłudze Azure HDInsight
 

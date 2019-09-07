@@ -1,25 +1,25 @@
 ---
-title: Apache Sparkowanie strukturalnego przesyłania strumieniowego z Apache Kafka do Azure Cosmos DB usługi Azure HDInsight
+title: Apache Spark danych z Apache Kafka do Azure Cosmos DB usługi Azure HDInsight
 description: Dowiedz się, jak za pomocą Apache Spark strukturalnych przesyłania strumieniowego odczytywać dane z Apache Kafka a następnie zapisywać je w Azure Cosmos DB. Ten przykład obejmuje strumieniowe przesyłanie danych z platformy Spark w usłudze HDInsight za pomocą notesu Jupyter.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: c2d2f56f2a0686b23a3a907686dcee0760d37365
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 546dd094614a72cada2aff60704c4fc191301ad2
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947065"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734938"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Używanie Apache Spark strukturalnych przesyłania strumieniowego z Apache Kafka i Azure Cosmos DB
 
 Dowiedz się, jak za pomocą [Apache Spark](https://spark.apache.org/) [strukturalnych przesyłania strumieniowego](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html) odczytywać dane z [Apache Kafka](https://kafka.apache.org/) w usłudze Azure HDInsight, a następnie przechowywać je w Azure Cosmos DB.
 
-[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) to globalnie dystrybuowana, wielomodelowa baza danych. W tym przykładzie zastosowano model bazy danych interfejsu API SQL. Aby uzyskać więcej informacji, zobacz dokument Witamy w [Azure Cosmos DB](../cosmos-db/introduction.md) .
+[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) to globalnie dystrybuowana, wielomodelowa baza danych. W tym przykładzie zastosowano model bazy danych interfejsu API SQL. Aby uzyskać więcej informacji, zobacz dokument [Witamy w Azure Cosmos DB](../cosmos-db/introduction.md) .
 
 Przesyłanie strumieniowe ze strukturą platformy Spark korzysta z aparatu przetwarzania strumienia opartego na module Spark SQL. Aparat ten umożliwia wyrażanie obliczeń strumieniowych tak samo jak obliczeń wsadowych na danych statycznych. Aby uzyskać więcej informacji na temat przesyłania strumieniowego ze strukturą, zobacz [Przewodnik programowania przesyłania strumieniowego](https://spark.apache.org/docs/2.2.0/structured-streaming-programming-guide.html) w programie Apache.org.
 

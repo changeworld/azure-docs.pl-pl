@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 07176fbe22e70658856dd266687a15d719e78e9f
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 27361017241ba6529b93c24ce7fb95b2c1b22a62
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231088"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389909"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Skonfiguruj cele obliczeń i używaj ich do szkolenia modelu 
 
@@ -49,7 +49,7 @@ Podczas szkolenia często rozpoczyna się na komputerze lokalnym, a następnie u
 
 Wystarczy zdefiniować środowisko dla każdego obiektu docelowego obliczeń w ramach **konfiguracji przebiegu**.  Następnie, gdy chcesz uruchomić eksperyment szkoleniowy w innym miejscu docelowym obliczeń, określ konfigurację uruchamiania dla tego obliczenia. Aby uzyskać szczegółowe informacje na temat określania środowiska i powiązania go w celu uruchomienia konfiguracji, zobacz [Tworzenie środowisk i zarządzanie nimi na potrzeby szkolenia i wdrażania](how-to-use-environments.md)
 
-Dowiedz się [](#submit) więcej o przesyłaniu eksperymentów na końcu tego artykułu.
+Dowiedz się więcej o [przesyłaniu eksperymentów](#submit) na końcu tego artykułu.
 
 ## <a name="whats-an-estimator"></a>Co to jest szacowania?
 
@@ -109,7 +109,7 @@ Azure Machine Learning obliczeń można utworzyć jako obiekt docelowy obliczeń
 > Aby określić maksymalną liczbę węzłów, które mają być używane, zwykle ustawiono `node_count` liczbę węzłów. Obecnie istnieje (04/04/2019) usterka, która uniemożliwia korzystanie z tej usługi. Aby obejść ten element, `amlcompute._cluster_max_node_count` należy użyć właściwości konfiguracji uruchomieniowej. Na przykład `run_config.amlcompute._cluster_max_node_count = 5`.
 
 > [!IMPORTANT]
-> Tworzenie Azure Machine Learning obliczeń opartych na uruchomieniu jest obecnie dostępne w wersji zapoznawczej. Nie należy używać tworzenia opartego na uruchomieniach, jeśli jest używane automatyczne dostrajanie parametrów lub automatyczne Uczenie maszynowe. Aby skorzystać z dostrajania podparametru lub automatycznej uczenia maszynowego, należy zamiast tego utworzyć trwały element docelowy [obliczeń](#persistent) .
+> Tworzenie Azure Machine Learning obliczeń opartych na uruchomieniu jest obecnie dostępne w wersji zapoznawczej. Nie należy używać tworzenia opartego na uruchomieniach, jeśli jest używane automatyczne dostrajanie parametrów lub automatyczne Uczenie maszynowe. Aby skorzystać z dostrajania podparametru lub automatycznej uczenia maszynowego, należy zamiast tego utworzyć [trwały](#persistent) element docelowy obliczeń.
 
 1.  **Tworzenie, dołączanie i Konfigurowanie**: W przypadku tworzenia, dołączania i konfigurowania obiektu docelowego obliczeń przy użyciu konfiguracji przebiegu wykonywane są wszystkie czynności niezbędne do utworzenia, dołączenia i skonfigurowania celu.  
 
@@ -403,11 +403,20 @@ Przełączenie tego samego eksperymentu w celu uruchomienia go w innym miejscu d
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
+> [!TIP]
+> Ten przykład domyślnie używa tylko jednego węzła elementu docelowego obliczeń do szkolenia. Aby użyć więcej niż jednego węzła, ustaw `node_count` konfigurację uruchamiania na żądaną liczbę węzłów. Na przykład poniższy kod ustawia liczbę węzłów używanych do szkolenia w czterech:
+>
+> ```python
+> src.run_config.node_count = 4
+> ```
+
 Możesz też:
 
 * Prześlij eksperyment z `Estimator` obiektem, jak pokazano w [pouczeniu modeli ml z szacowania](how-to-train-ml-models.md).
 * Prześlij przebieg dla [strojenia parametru](how-to-tune-hyperparameters.md).
 * Prześlij eksperyment za pośrednictwem [rozszerzenia vs Code](how-to-vscode-tools.md#train-and-tune-models).
+
+Aby uzyskać więcej informacji, zobacz dokumentację [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) i [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) .
 
 ## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Utwórz konfigurację uruchamiania i prześlij przebieg przy użyciu interfejsu wiersza polecenia Azure Machine Learning
 

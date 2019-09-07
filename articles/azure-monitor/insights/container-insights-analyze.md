@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/22/2019
+ms.date: 09/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 154848c33960cb78b10c58e7a39ddec669d4fae0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c63feb02712447d2427061cbfabc525622107043
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872987"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744590"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Zrozumienie wydajności klastra AKS przy użyciu usługi Azure Monitor dla kontenerów
 Za pomocą Azure Monitor dla kontenerów można użyć wykresów wydajności i stanu kondycji do monitorowania obciążenia klastrów usługi Azure Kubernetes Service (AKS) z dwóch perspektyw. Można monitorować bezpośrednio z klastra AKS lub monitorować wszystkie klastry AKS w ramach subskrypcji z Azure Monitor. Wyświetlanie Azure Container Instances jest również możliwe podczas monitorowania określonego klastra AKS.
@@ -99,7 +99,7 @@ Dostęp do Azure Monitor dla kontenerów jest dostępny bezpośrednio w klastrze
 - Kontrolery 
 - Containers
 
-Zostanie otwarta strona domyślna, gdy zostanie > wybrany**klaster**usługi Insights. Cztery liniowe wykresy wydajnościowe przedstawiają kluczowe metryki wydajności klastra. 
+Zostanie otwarta strona domyślna, gdy zostanie wybrany**klaster**usługi **Insights** > . Cztery liniowe wykresy wydajnościowe przedstawiają kluczowe metryki wydajności klastra. 
 
 ![Przykładowe wykresy wydajności na karcie klastra](./media/container-insights-analyze/containers-cluster-perfview.png)
 
@@ -118,18 +118,18 @@ Azure Monitor for Containers obsługują również [Eksploratora metryk](../plat
 
 W Eksploratorze metryk można wyświetlić zagregowane metryki dotyczące węzła i użycia z Azure Monitor dla kontenerów. W poniższej tabeli zestawiono szczegółowe informacje ułatwiające zrozumienie sposobu używania wykresów metryk do wizualizacji metryk kontenera.
 
-|Przestrzeń nazw | Metryka |
-|----------|--------|
+|Przestrzeń nazw | Metryka | Opis | 
+|----------|--------|-------------|
 | Szczegółowe informacje. kontenery/węzły | |
-| | cpuUsageMillicores |
-| | cpuUsagePercentage |
-| | memoryRssBytes |
-| | memoryRssPercentage |
-| | memoryWorkingSetBytes |
-| | memoryWorkingSetPercentage |
-| | nodesCount |
+| | cpuUsageMillicores | Zagregowane pomiary użycia procesora CPU w klastrze. Jest to rdzeń procesora CPU podzielony na 1000 jednostek (Milli = 1000). Służy do określania użycia rdzeni w kontenerze, w którym wiele aplikacji może korzystać z jednego rdzenia.| 
+| | cpuUsagePercentage | Zagregowane średnie użycie procesora CPU wyrażone w procentach w klastrze.|
+| | memoryRssBytes | Pamięć RSS kontenera użyta w bajtach.| 
+| | memoryRssPercentage | Pamięć RSS kontenera użyta w procentach.|
+| | memoryWorkingSetBytes | Użyta pamięć zestawu roboczego kontenera.| 
+| | memoryWorkingSetPercentage | Pamięć zestawu roboczego kontenera użyta w procentach. | 
+| | nodesCount | Liczba węzłów z Kubernetes.|
 | Szczegółowe informacje. kontenery/zasobniki | |
-| | PodCount |
+| | PodCount | Liczba pod z Kubernetes.|
 
 Można [podzielić](../platform/metrics-charts.md#apply-splitting-to-a-chart) metrykę, aby wyświetlić ją w wymiarze, i wizualizować, jak różne segmenty są porównywane ze sobą. Dla węzła można podzielić wykres na wymiar *hosta* . Z poziomu usługi można podzielić ją na segmenty według następujących wymiarów:
 
@@ -168,9 +168,9 @@ Z rozwiniętego węzła możesz przejść do szczegółów z lub kontenera, któ
  
 ![Przykład przechodzenia do szczegółów z węzła do kontrolera w widoku wydajności](./media/container-insights-analyze/drill-down-node-controller.png)
 
-Wybierz pozycję Kontrolery lub kontenery w górnej części strony, aby przejrzeć stan i wykorzystanie zasobów dla tych obiektów. Aby przejrzeć użycie pamięci, na liście rozwijanej Metryka wybierz pozycję **pamięć RSS** lub **zestaw roboczy pamięci**. **Pamięć RSS** jest obsługiwany tylko w przypadku rozwiązania Kubernetes w wersji 1.8 i nowszych. W przeciwnym razie do wyświetlania wartości **Min&nbsp; %**  jako *NaN&nbsp;%* , który jest wartość typu danych liczbowych, który reprezentuje niezdefiniowany lub wartość wyniku.
+Wybierz pozycję Kontrolery lub kontenery w górnej części strony, aby przejrzeć stan i wykorzystanie zasobów dla tych obiektów. Aby przejrzeć użycie pamięci, na liście rozwijanej **Metryka** wybierz pozycję **pamięć RSS** lub **zestaw roboczy pamięci**. **Pamięć RSS** jest obsługiwany tylko w przypadku rozwiązania Kubernetes w wersji 1.8 i nowszych. W przeciwnym razie do wyświetlania wartości **Min&nbsp; %**  jako *NaN&nbsp;%* , który jest wartość typu danych liczbowych, który reprezentuje niezdefiniowany lub wartość wyniku.
 
-**Zestaw roboczy pamięci** pokazuje zawartą pamięć i pamięć wirtualną (pamięć podręczną) oraz łączną zawartość używaną przez aplikację. W obszarze **RSS pamięci** jest wyświetlana tylko pamięć główna, która jest pamięcią rezydentną. Ta Metryka przedstawia rzeczywistą pojemność dostępnej pamięci.
+**Zestaw roboczy pamięci** pokazuje zawartą pamięć i pamięć wirtualną (pamięć podręczną) oraz łączną zawartość używaną przez aplikację. W obszarze **RSS pamięci** jest wyświetlana tylko pamięć główna (czyli Nothing, ale w innych wyrazach). Ta Metryka przedstawia rzeczywistą pojemność dostępnej pamięci.
 
 ![Widok wydajności węzłów kontenerów](./media/container-insights-analyze/containers-node-metric-dropdown.png)
 
@@ -222,7 +222,7 @@ Informacje wyświetlane podczas przeglądania kontrolerów są opisane w poniżs
 | Kolumna | Opis | 
 |--------|-------------|
 | Name (Nazwa) | Nazwa kontrolera.|
-| State | Stan zbiorczy kontenerów po zakończeniu działania z stanem takim jak *OK*, *przerwany*, Niepowodzenie, *zatrzymano*lub *wstrzymano*. Jeśli kontener jest uruchomiony, ale stan nie był prawidłowo wyświetlany lub nie został pobrany przez agenta i nie odpowiedział przez dłużej niż 30 minut, stan jest *nieznany*. Dodatkowe szczegóły ikony stanu znajdują się w poniższej tabeli.|
+| State | Stan zbiorczy kontenerów po zakończeniu działania z stanem takim jak *OK*, *przerwany*, *Niepowodzenie*, *zatrzymano*lub *wstrzymano*. Jeśli kontener jest uruchomiony, ale stan nie był prawidłowo wyświetlany lub nie został pobrany przez agenta i nie odpowiedział przez dłużej niż 30 minut, stan jest *nieznany*. Dodatkowe szczegóły ikony stanu znajdują się w poniższej tabeli.|
 | Minimum&nbsp;%, średnia&nbsp;%, 50&nbsp;%, 90&nbsp;%, używany 95.&nbsp;%, maksimum&nbsp;%| Pakiet zbiorczy średnią średnią wartość procentową poszczególnych jednostek dla wybranej metryki i percentyl. |
 | Minimum, AVG, pięćdziesiąt, 90, używany 95., Max  | Pakiet zbiorczy średni Procesora pamięci lub millicore wydajności kontenera dla wybranych percentyl. Średnia wartość jest mierzony od limitu Procesora/pamięci dla zasobnik. |
 | Containers | Łączna liczba kontenerów dla kontrolera lub zasobników. |

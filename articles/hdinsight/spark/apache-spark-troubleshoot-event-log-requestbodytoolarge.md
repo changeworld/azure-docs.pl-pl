@@ -1,17 +1,17 @@
 ---
-title: NativeAzureFileSystem ... RequestBodyTooLarge pojawia się w dzienniku dla aplikacji przesyłania strumieniowego Apache Spark w usłudze Azure HDInsight
+title: RequestBodyTooLarge w dziennikach Apache Spark dla aplikacji przesyłania strumieniowego w usłudze Azure HDInsight
 description: NativeAzureFileSystem ... RequestBodyTooLarge pojawia się w dzienniku dla aplikacji przesyłania strumieniowego Apache Spark w usłudze Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/29/2019
-ms.openlocfilehash: 571e02e79714d2e713d4173936120e78e4b067de
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 92e9e41d5829e10bc0130d209249301d78f1b5d3
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700498"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736329"
 ---
 # <a name="scenario-nativeazurefilesystem--requestbodytoolarge-appears-in-log-for-apache-spark-streaming-app-in-azure-hdinsight"></a>Scenariusz: "NativeAzureFileSystem ... RequestBodyTooLarge "pojawia się w dzienniku dla aplikacji przesyłania strumieniowego Apache Spark w usłudze Azure HDInsight
 
@@ -55,7 +55,7 @@ Dostępne są trzy rozwiązania tego błędu:
 
     1. Uruchom ponownie wszystkie usługi, których to dotyczy, za pomocą interfejsu użytkownika Ambari.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 669cd43b73bc66289a355f7fbf9c4498d8a7b99a
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: e763c1a5bebddcb76647b4ecff02506fc41f6a47
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135023"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387387"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Szybki start: Korzystanie z interfejsu API REST języka Python w celu wywołania usługi analiza tekstu poznawczej 
 <a name="HOLTop"></a>
@@ -71,7 +71,7 @@ W poniższych sekcjach opisano sposób wywoływania poszczególnych funkcji inte
 
 ## <a name="detect-languages"></a>Wykrywanie języków
 
-Dołącz `languages` do podstawowego punktu końcowego analiza tekstu, aby utworzyć adres URL wykrywania języka. Na przykład: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
+Dołącz `/text/analytics/v2.1/languages` do podstawowego punktu końcowego analiza tekstu, aby utworzyć adres URL wykrywania języka. Na przykład: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`
     
 ```python
 language_api_url = endpoint + "/text/analytics/v2.1/languages"
@@ -140,7 +140,7 @@ pprint(languages)
 
 ## <a name="analyze-sentiment"></a>Analiza tonacji
 
-Aby wykryć tonacji (zakres wartości dodatnich lub ujemnych) zestawu dokumentów, Dołącz `sentiment` do podstawowego punktu końcowego analiza tekstu, aby utworzyć adres URL wykrywania języka. Na przykład: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
+Aby wykryć tonacji (zakres wartości dodatnich lub ujemnych) zestawu dokumentów, Dołącz `/text/analytics/v2.1/sentiment` do podstawowego punktu końcowego analiza tekstu, aby utworzyć adres URL wykrywania języka. Na przykład: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
     
 ```python
 sentiment_url = endpoint + "/text/analytics/v2.1/sentiment"
@@ -202,7 +202,7 @@ Wynik tonacji dla dokumentu ma wartość z zakresu od 0,0 do 1,0, o wyższym wyn
 
 ## <a name="extract-key-phrases"></a>Wyodrębnij frazy kluczowe
  
-Aby wyodrębnić kluczowe frazy z zestawu dokumentów, Dołącz `keyPhrases` do podstawowego punktu końcowego analiza tekstu, aby utworzyć adres URL wykrywania języka. Na przykład: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
+Aby wyodrębnić kluczowe frazy z zestawu dokumentów, Dołącz `/text/analytics/v2.1/keyPhrases` do podstawowego punktu końcowego analiza tekstu, aby utworzyć adres URL wykrywania języka. Na przykład: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
     
 ```python
 keyphrase_url = endpoint + "/text/analytics/v2.1/keyphrases"
@@ -278,7 +278,7 @@ pprint(key_phrases)
 
 ## <a name="identify-entities"></a>Identyfikowanie jednostek
 
-Aby zidentyfikować dobrze znane jednostki (osoby, miejsca i rzeczy) w dokumentach tekstowych, Dołącz `entities` do podstawowego punktu końcowego analiza tekstu, aby utworzyć adres URL wykrywania języka. Na przykład: `https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
+Aby zidentyfikować dobrze znane jednostki (osoby, miejsca i rzeczy) w dokumentach tekstowych, Dołącz `/text/analytics/v2.1/entities` do podstawowego punktu końcowego analiza tekstu, aby utworzyć adres URL wykrywania języka. Na przykład: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
     
 ```python
 entities_url = endpoint + "/text/analytics/v2.1/entities"

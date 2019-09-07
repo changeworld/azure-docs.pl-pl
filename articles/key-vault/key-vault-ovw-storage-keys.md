@@ -8,18 +8,18 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 7ba85d74f9126f4586313dc4e2b365d1e11f3798
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 251a7c21b671052a23f6ee18cb4278737464b25c
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934179"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744868"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>Zarządzanie kluczami konta magazynu przy użyciu Azure Key Vault i interfejsu wiersza polecenia platformy Azure 
 
 Azure Key Vault zarządza kluczami dla kont usługi Azure Storage i klasycznych kont magazynu. Za pomocą funkcji zarządzanego konta magazynu Key Vault można wykonać kilka kluczowych funkcji zarządzania.
 
-[Konto usługi Azure Storage](/azure/storage/storage-create-storage-account) używa poświadczeń, które składają się z nazwy konta i klucza. Klucz jest generowany automatycznie i służy jako hasło, a nie jako klucz kryptograficzny. Key Vault zarządza kluczami konta magazynu przez przechowywanie ich jako [Key Vault](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets)wpisów tajnych. Klucze są wyświetlane (zsynchronizowane) z kontem usługi Azure Storage i są okresowo ponownie generowanelub obracane. 
+[Konto usługi Azure Storage](/azure/storage/storage-create-storage-account) używa poświadczeń, które składają się z nazwy konta i klucza. Klucz jest generowany automatycznie i służy jako hasło, a nie jako klucz kryptograficzny. Key Vault zarządza kluczami konta magazynu przez przechowywanie ich jako [Key Vault wpisów tajnych](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets). Klucze są wyświetlane (zsynchronizowane) z kontem usługi Azure Storage i są okresowo ponownie generowane lub _obracane_. 
 
 Korzystając z funkcji zarządzanego klucza konta magazynu, należy rozważyć następujące kwestie:
 
@@ -67,7 +67,7 @@ Istnieją cztery podstawowe kroki Key Vault służące do zarządzania kluczami 
 
 1. Pobierz istniejące konto magazynu.
 1. Pobierz istniejący magazyn kluczy.
-1. Dodaj Key Vault konto magazynu zarządzanego do magazynu. Ustaw `key1` jako klucz aktywny z okresem regeneracji wynoszącym 180 dni.
+1. Dodaj Key Vault konto magazynu zarządzanego do magazynu. Ustaw `key1` jako klucz aktywny z okresem regeneracji wynoszącym 90 dni.
 1. Służy `key1` do ustawiania kontekstu magazynu dla określonego konta magazynu.
 
 > [!NOTE]
@@ -150,7 +150,7 @@ Po wykonaniu kroków opisanych w poprzedniej sekcji Uruchom następujące polece
 
 ## <a name="fetch-tokens-in-code"></a>Pobieranie tokenów w kodzie
 
-Wykonaj operacje na koncie magazynu, pobierając tokeny [sygnatury dostępu](../storage/common/storage-dotnet-shared-access-signature-part-1.md) współdzielonego z Key Vault.
+Wykonaj operacje na koncie magazynu, pobierając [tokeny sygnatury dostępu współdzielonego](../storage/common/storage-dotnet-shared-access-signature-part-1.md) z Key Vault.
 
 Istnieją trzy sposoby uwierzytelniania do Key Vault:
 
@@ -196,5 +196,5 @@ Aby uzyskać informacje na temat poleceń interfejsu wiersza polecenia platformy
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Dowiedz się więcej o kluczach, wpisach [tajnych i certyfikatach](https://docs.microsoft.com/rest/api/keyvault/).
+- Dowiedz się więcej o [kluczach, wpisach tajnych i certyfikatach](https://docs.microsoft.com/rest/api/keyvault/).
 - Zapoznaj się z artykułami na [blogu zespołu Azure Key Vault](https://blogs.technet.microsoft.com/kv/).

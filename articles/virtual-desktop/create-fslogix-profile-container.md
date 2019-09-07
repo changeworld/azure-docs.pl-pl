@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: 078a29fc1ab66151aa41c3901bb6a3af6479a0ba
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: dd3b68d600edcbbae73fff542e677d3ebc6b16ee
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233274"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390815"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Tworzenie kontenera profilu FSLogix dla puli hostów przy użyciu Azure NetApp Files
 
@@ -106,7 +106,7 @@ Po tym celu należy przyłączyć połączenie Active Directory.
 
    ![Zrzut ekranu przedstawiający menu przyłączanie Active Directory połączeń.](media/active-directory-connections-menu.png)
 
-2. Wprowadź następujące wartości na stronie Dołączanie **Active Directory** , aby dołączyć do połączenia:
+2. Wprowadź następujące wartości na stronie **Dołączanie Active Directory** , aby dołączyć do połączenia:
 
     - W przypadku **podstawowej usługi DNS**wprowadź adres IP serwera DNS w środowisku, który może rozpoznać nazwę domeny.
     - W obszarze **domena**wprowadź w pełni kwalifikowaną nazwę domeny (FQDN).
@@ -115,13 +115,13 @@ Po tym celu należy przyłączyć połączenie Active Directory.
     - W polu **hasło**wprowadź hasło konta.
 
   >[!NOTE]
-  >Najlepszym rozwiązaniem jest upewnienie się, że w kontrolerze domeny w obszarze **komputery** lub w **odpowiedniej jednostce organizacyjnej przedsiębiorstwa**pojawiło się konto komputera utworzone w celu przyłączenia [połączenia Active Directory](create-fslogix-profile-container.md#join-an-active-directory-connection) .
+  >Najlepszym rozwiązaniem jest upewnienie się, że w kontrolerze domeny w obszarze **komputery** lub w **odpowiedniej jednostce organizacyjnej przedsiębiorstwa**pojawiło się konto komputera utworzone w celu [przyłączenia połączenia Active Directory](create-fslogix-profile-container.md#join-an-active-directory-connection) .
 
 ## <a name="create-a-new-volume"></a>Utwórz nowy wolumin
 
 Następnie musisz utworzyć nowy wolumin.
 
-1. Wybierzpozycję woluminy, a następnie wybierz pozycję **Dodaj wolumin**.
+1. Wybierz pozycję **woluminy**, a następnie wybierz pozycję **Dodaj wolumin**.
 
 2. Po otwarciu bloku **Utwórz wolumin** wprowadź następujące wartości:
 
@@ -129,7 +129,7 @@ Następnie musisz utworzyć nowy wolumin.
     - W obszarze **Pula pojemności**wybierz właśnie utworzoną pulę pojemności z menu rozwijanego.
     - Dla **limitu przydziału (GIB)** wprowadź rozmiar woluminu odpowiedni dla danego środowiska.
     - W obszarze **Sieć wirtualna**wybierz istniejącą sieć wirtualną z połączeniem z kontrolerem domeny z menu rozwijanego.
-    - Wobszarze podsieć wybierz pozycję **Utwórz nową**. Należy pamiętać, że ta podsieć zostanie delegowana do Azure NetApp Files.
+    - W obszarze **podsieć**wybierz pozycję **Utwórz nową**. Należy pamiętać, że ta podsieć zostanie delegowana do Azure NetApp Files.
 
 3.  Wybierz opcję **Dalej: Protokół \> ,abyotworzyć** kartę Protokół i skonfigurować parametry dostępu do woluminu. \>
 
@@ -157,7 +157,7 @@ Ta sekcja opiera się na [tworzeniu kontenera profilu dla puli hostów przy uży
 
 2. Rozpakuj pobrany plik.
 
-3. W pliku przejdź do wersji **x64** > i uruchom program **FSLogixAppsSetup. exe**. Zostanie otwarte menu instalacja.
+3. W pliku przejdź**do wersji** **x64** > i uruchom program **FSLogixAppsSetup. exe**. Zostanie otwarte menu instalacja.
 
 4.  Jeśli masz klucz produktu, wprowadź go w polu tekstowym klucz produktu.
 
@@ -175,7 +175,7 @@ Ta sekcja opiera się na [tworzeniu kontenera profilu dla puli hostów przy uży
 
 11.  Utwórz wartość o nazwie **Enabled** z typem **REG_DWORD** ustawionym na wartość danych **1**.
 
-12. Utwórz wartość o nazwie **VHDLocations** z typem wielociągowym i ustaw jej wartość danych na identyfikator URI udziału Azure NetApp Files.
+12. Utwórz wartość o nazwie **VHDLocations** z typem **wielociągowym** i ustaw jej wartość danych na identyfikator URI udziału Azure NetApp Files.
 
 ## <a name="assign-users-to-session-host"></a>Przypisywanie użytkowników do hosta sesji
 
@@ -195,11 +195,11 @@ Ta sekcja opiera się na [tworzeniu kontenera profilu dla puli hostów przy uży
 4. Uruchom następujące polecenia cmdlet, aby przypisać użytkownika do grupy Pulpit zdalny:
 
    ```powershell
-   $tenant = "<your-wvd-tenant>"
-   $pool1 = "<wvd-pool>"
-   $appgroup = "Desktop Application Group"
-   $user1 = "<user-principal>"
-   Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
+   $wvdTenant = "<your-wvd-tenant>"
+   $hostPool = "<wvd-pool>"
+   $appGroup = "Desktop Application Group"
+   $user = "<user-principal>"
+   Add-RdsAppGroupUser $wvdTenant $hostPool $appGroup $user
    ```
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Upewnij się, że użytkownicy mogą uzyskiwać dostęp do udziału plików usługi Azure NetApp

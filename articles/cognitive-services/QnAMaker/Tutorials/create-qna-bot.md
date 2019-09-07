@@ -1,5 +1,5 @@
 ---
-title: Bot pytań i odpowiedzi — usługa Azure Bot Service — QnA Maker
+title: 'Samouczek: Bot pytań i odpowiedzi — usługa Azure Bot Service — QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Utwórz QnA rozmowę bot ze strony publikowania dla istniejącej bazy wiedzy. Ten bot używa zestawu SDK programu bot Framework v4. Nie trzeba pisać żadnego kodu w celu skompilowania bot, który jest dostarczany przez Ciebie.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 07/31/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 4bb987a5a091871bec2c0cc8cec6d9ab804bb244
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: ea6e0d266c181d930f3d18171b09d222e53da7ab
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697989"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390910"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Samouczek: Tworzenie QnA bot z Azure Bot Service v4
 
@@ -47,7 +47,7 @@ Utwórz bot jako aplikację kliencką dla bazy wiedzy.
 
 1.  Wprowadź ustawienia, aby utworzyć bot:
 
-    |Ustawienie|Wartość|Cel|
+    |Ustawienie|Value|Cel|
     |--|--|--|
     |Nazwa bota|`my-tutorial-kb-bot`|Jest to nazwa zasobu platformy Azure dla bot.|
     |Subscription|Zobacz cel.|Wybierz tę samą subskrypcję, która była używana do tworzenia zasobów QnA Maker.|
@@ -57,7 +57,7 @@ Utwórz bot jako aplikację kliencką dla bazy wiedzy.
     |Nazwa aplikacji|`my-tutorial-kb-bot-app`|Jest to aplikacja internetowa, która obsługuje tylko Twoje bot. Ta nazwa aplikacji nie powinna być taka sama, jak usługa QnA Maker jest już używana. Udostępnianie aplikacji sieci Web QnA Maker przy użyciu dowolnego innego zasobu nie jest obsługiwane.|
     |Język zestawu SDK|C#|Jest to podstawowy język programowania używany przez zestaw SDK bot Framework. Dostępne opcje to [C#](https://github.com/Microsoft/botbuilder-dotnet) lub [Node. js](https://github.com/Microsoft/botbuilder-js).|
     |Klucz uwierzytelniania QnA|**Nie zmieniaj**|Ta wartość jest wypełniana.|
-    |Plan usługi App Service/lokalizacja|**Nie zmieniaj**|W tym samouczku lokalizacja nie jest ważna.|
+    |Plan/Lokalizacja usługi App Service|**Nie zmieniaj**|W tym samouczku lokalizacja nie jest ważna.|
     |Azure Storage|**Nie zmieniaj**|Dane konwersacji są przechowywane w tabelach usługi Azure Storage.|
     |Application Insights|**Nie zmieniaj**|Rejestrowanie jest wysyłane do Application Insights.|
     |Identyfikator aplikacji firmy Microsoft|**Nie zmieniaj**|Użytkownik usługi Active Directory i hasło są wymagane.|

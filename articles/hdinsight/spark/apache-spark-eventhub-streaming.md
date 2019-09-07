@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Przetwarzanie danych z usługi Azure Event Hubs przy użyciu Apache Spark w usłudze Azure HDInsight '
+title: 'Samouczek: Przetwarzanie danych z usługi Azure Event Hubs przy użyciu Apache Spark w usłudze HDInsight'
 description: Samouczek — łączenie Apache Spark w usłudze Azure HDInsight z usługą Azure Event Hubs i przetwarzanie danych przesyłanych strumieniowo.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
-ms.openlocfilehash: 0d47c3f0838e22ad8c5185a42f5f0c748335dfa8
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 2483ba22d3d502479e87ae385bcc837ec87a103c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70049480"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735350"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>Samouczek: Przetwarzanie tweetów przy użyciu usługi Azure Event Hubs i Apache Spark w usłudze HDInsight
 
@@ -116,7 +116,7 @@ Utwórz centrum zdarzeń po wdrożeniu Event Hubs przestrzeni nazw.  Z poziomu p
 
 1. Wybierz pozycję **Utwórz**.  Wdrożenie powinno zakończyć się w ciągu kilku sekund, a następnie nastąpi powrót do strony Event Hubs przestrzeni nazw.
 
-1. W obszarze **Ustawienia**wybierz pozycję **zasady dostępu**współdzielonego.
+1. W obszarze **Ustawienia**wybierz pozycję **zasady dostępu współdzielonego**.
 
 1. Wybierz **RootManageSharedAccessKey**.
     

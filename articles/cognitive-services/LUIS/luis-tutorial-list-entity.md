@@ -7,20 +7,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: tutorial
-ms.date: 07/29/2019
+ms.topic: conceptual
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 979cbe16653c09ea1b019310d820b070be4a5a91
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a722ce39a679fa13e1fe849c46b44f786ea5ee42
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946063"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390268"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Użyj jednostki listy w celu zwiększenia wykrywania jednostki 
-W tym samouczku zademonstrowano użycie [listy jednostek](luis-concept-entity-types.md) zwiększenia wykrywania jednostki. Lista jednostek jest konieczne etykietą, ponieważ są one dokładne dopasowanie warunków.  
+W tym artykule przedstawiono sposób użycia [jednostki listy](luis-concept-entity-types.md) do zwiększenia wykrywania jednostek. Lista jednostek jest konieczne etykietą, ponieważ są one dokładne dopasowanie warunków.  
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Tworzenie jednostki listy 
@@ -37,7 +37,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > [!Tip]
 > Jeśli nie masz już subskrypcję, możesz zarejestrować [bezpłatne konto](https://azure.microsoft.com/free/).
 
-Cały kod w tym samouczku jest dostępny w [repozytorium Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity)w witrynie GitHub. 
+Cały kod w tym artykule jest dostępny w [repozytorium Azure-Samples](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity)w witrynie GitHub. 
 
 ## <a name="use-homeautomation-app"></a>Użyj aplikacji HomeAutomation
 Daje aplikacji HomeAutomation kontroli urządzeń, takich jak światła, rozrywka systemów i środowisko kontroluje takich jak ogrzewania i chłodzenie. Te systemy mają kilka różnych nazw, które mogą obejmować nazwy, pseudonimy, akronimów i żargonu producenta. 
@@ -59,7 +59,7 @@ Jednostka HomeAutomation.Device to doskonałe rozwiązanie dla małych lub liczb
 
 A **listy jednostek** jest dobrym wyborem dla tego scenariusza, ponieważ zestaw warunków dla urządzenia w budynku lub campus jest znanego zestawu, nawet jeśli jest to duży zestaw. Korzystając z obiektami listy, LUIS można odbierać dowolnej możliwej wartości w zestawie termostat i rozwiązać ten problem w dół do tylko jednego urządzenia "termostat". 
 
-W tym samouczku zamierza utworzyć listę jednostek z termostat. Dostępne są następujące alternatywne nazwy dla termostat w ramach tego samouczka: 
+W tym artykule opisano tworzenie listy jednostek z termostatem. Alternatywne nazwy dla termostatu w tym artykule są następujące: 
 
 |alternatywne nazwy dla termostat|
 |--|

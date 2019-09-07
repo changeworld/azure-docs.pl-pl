@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: tworzenie aplikacji Scala Maven dla platformy Spark w usłudze Azure HDInsight przy użyciu środowiska IntelliJ'
+title: 'Samouczek: Aplikacja Scala Maven dla platformy Spark z IntelliJem — Azure HDInsight'
 description: Samouczek — Tworzenie aplikacji Spark, która została zapisywana w Scala za pomocą platformy Apache Maven jako systemu kompilacji i istniejącej Archetype Maven dla Scala zapewnianej przez IntelliJ pomysł.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.openlocfilehash: 263eea88182a947eccc8a57450432fce8d2fcfc9
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 3b9001b9c7fa81b86c70d5c07a33a54bae539add
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839719"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736446"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Samouczek: tworzenie aplikacji Scala Maven dla platformy Apache Spark w usłudze HDInsight przy użyciu środowiska IntelliJ
 

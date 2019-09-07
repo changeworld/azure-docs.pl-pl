@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 4c2058072df4fcb068257c3e265dfe365c6d7e65
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 690d22eadf37a24b4679ce10838074533ac65fcb
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033151"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390067"
 ---
 # <a name="preview---create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Wersja zapoznawcza — Tworzenie klastra usługi Azure Kubernetes Service (AKS), który używa Strefy dostępności
 
@@ -34,7 +34,7 @@ Wymagany jest interfejs wiersza polecenia platformy Azure w wersji 2.0.66 lub no
 
 ### <a name="install-aks-preview-cli-extension"></a>Zainstaluj rozszerzenie interfejsu wiersza polecenia AKS-Preview
 
-Aby utworzyć klastry AKS korzystające ze stref dostępności, potrzebujesz rozszerzenia interfejsu wiersza polecenia *AKS-Preview* w wersji 0.4.1 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji* zapoznawczej przy użyciu poleceń [AZ Extension Add][az-extension-add] , a następnie wyszukaj wszystkie dostępne aktualizacje za pomocą polecenia [AZ Extension Update][az-extension-update] ::
+Aby utworzyć klastry AKS korzystające ze stref dostępności, potrzebujesz rozszerzenia interfejsu wiersza polecenia *AKS-Preview* w wersji 0.4.1 lub nowszej. Zainstaluj rozszerzenie interfejsu wiersza polecenia platformy Azure w *wersji zapoznawczej* przy użyciu poleceń [AZ Extension Add][az-extension-add] , a następnie wyszukaj wszystkie dostępne aktualizacje za pomocą polecenia [AZ Extension Update][az-extension-update] :
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -44,25 +44,21 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="register-feature-flags-for-your-subscription"></a>Rejestrowanie flag funkcji dla subskrypcji
+### <a name="register-the-availabilityzonepreview-feature-flag-for-your-subscription"></a>Zarejestruj flagę funkcji AvailabilityZonePreview dla subskrypcji
 
-Aby utworzyć klaster AKS z strefami dostępności, najpierw włącz niektóre flagi funkcji w ramach subskrypcji. Klastry używają zestawu skalowania maszyn wirtualnych do zarządzania wdrożeniem i konfiguracją węzłów Kubernetes. *Standardowa* jednostka SKU modułu równoważenia obciążenia platformy Azure jest również wymagana w celu zapewnienia odporności składników sieciowych do kierowania ruchu do klastra. Zarejestruj flagi funkcji *AvailabilityZonePreview*, *AKSAzureStandardLoadBalancer*i *VMSSPreview* za pomocą polecenia [AZ Feature Register][az-feature-register] , jak pokazano w następującym przykładzie:
+Aby utworzyć klaster AKS z strefami dostępności, najpierw włącz flagę funkcji *AvailabilityZonePreview* w subskrypcji. Zarejestruj flagę funkcji *AvailabilityZonePreview* za pomocą polecenia [AZ Feature Register][az-feature-register] , jak pokazano w następującym przykładzie:
 
 > [!CAUTION]
 > Po zarejestrowaniu funkcji w ramach subskrypcji nie można obecnie wyrejestrować tej funkcji. Po włączeniu niektórych funkcji w wersji zapoznawczej można użyć wartości domyślnych dla wszystkich klastrów AKS utworzonych w ramach subskrypcji. Nie włączaj funkcji w wersji zapoznawczej w ramach subskrypcji produkcyjnych. Korzystaj z oddzielnej subskrypcji, aby testować funkcje w wersji zapoznawczej i zbierać opinie.
 
 ```azurecli-interactive
 az feature register --name AvailabilityZonePreview --namespace Microsoft.ContainerService
-az feature register --name AKSAzureStandardLoadBalancer --namespace Microsoft.ContainerService
-az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 ```
 
 Wyświetlenie stanu *rejestracji*może potrwać kilka minut. Stan rejestracji można sprawdzić za pomocą polecenia [AZ Feature list][az-feature-list] :
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AvailabilityZonePreview')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAzureStandardLoadBalancer')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
 Gdy wszystko będzie gotowe, Odśwież rejestrację dostawcy zasobów *Microsoft. ContainerService* za pomocą polecenia [AZ Provider Register][az-provider-register] :
@@ -90,7 +86,7 @@ Podczas tworzenia klastra AKS przy użyciu stref dostępności są stosowane nas
 * Klastry z włączonymi strefami dostępności wymagają użycia usługi równoważenia obciążenia w warstwie Standardowa na potrzeby dystrybucji między strefami.
 * Aby wdrożyć usługi równoważenia obciążenia w warstwie Standardowa, należy użyć Kubernetes w wersji 1.13.5 lub nowszej.
 
-Klastry AKS korzystające ze stref dostępności muszą używać *standardowej* jednostki SKU modułu równoważenia obciążenia platformy Azure. Domyślna *podstawowa* jednostka SKU modułu równoważenia obciążenia platformy Azure nie obsługuje dystrybucji w strefach dostępności. Aby uzyskać więcej informacji i ograniczeń dotyczących standardowego modułu równoważenia obciążenia, zobacz [ograniczenia wersji zapoznawczej usługi równoważenia obciążenia Azure w warstwie Standardowa][standard-lb-limitations].
+Klastry AKS korzystające ze stref dostępności muszą używać *standardowej* jednostki SKU modułu równoważenia obciążenia platformy Azure. Domyślna *podstawowa* jednostka SKU modułu równoważenia obciążenia platformy Azure nie obsługuje dystrybucji w strefach dostępności. Aby uzyskać więcej informacji i ograniczeń dotyczących standardowego modułu równoważenia obciążenia, zobacz [ograniczenia dotyczące standardowej jednostki SKU modułu równoważenia obciążenia platformy Azure][standard-lb-limitations].
 
 ### <a name="azure-disks-limitations"></a>Ograniczenia dotyczące dysków platformy Azure
 
