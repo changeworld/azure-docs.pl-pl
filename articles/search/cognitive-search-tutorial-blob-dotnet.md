@@ -9,12 +9,12 @@ ms.subservice: cognitive-search
 ms.topic: tutorial
 ms.date: 05/02/2019
 ms.author: maheff
-ms.openlocfilehash: ad0710a3492eeecd56989e627211da5d4a5e0e0a
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 260f6a6141903ea1fd7edcfe2e031091bba322be
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186259"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744753"
 ---
 # <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline"></a>C#Ręczny Wywołaj interfejsy API usług Cognitive Services w potoku indeksowania Azure Search
 
@@ -66,7 +66,7 @@ Prawidłowy klucz ustanawia relację zaufania dla danego żądania między aplik
 
 ## <a name="prepare-sample-data"></a>Przygotowywanie przykładowych danych
 
-Potok wzbogacania ściąga dane ze źródeł danych platformy Azure. Dane muszą pochodzić ze źródła danych, którego typ jest obsługiwany przez [indeksator usługi Azure Search](search-indexer-overview.md). Usługa Azure Table Storage nie jest obsługiwana w przypadku wyszukiwania poznawczego. Na potrzeby tego ćwiczenia będziemy korzystać z usługi Blob Storage, aby zaprezentować wiele typów zawartości.
+Potok wzbogacania ściąga dane ze źródeł danych platformy Azure. Dane muszą pochodzić ze źródła danych, którego typ jest obsługiwany przez [indeksator usługi Azure Search](search-indexer-overview.md). Na potrzeby tego ćwiczenia będziemy korzystać z usługi Blob Storage, aby zaprezentować wiele typów zawartości.
 
 1. [Zaloguj się do Azure Portal](https://portal.azure.com), przejdź do konta usługi Azure Storage, kliknij pozycję **obiekty blob**, a następnie kliknij pozycję **+ kontener**.
 
@@ -201,7 +201,7 @@ Ponieważ jest to pierwsze żądanie, sprawdź w witrynie Azure Portal, czy źr�
 
 ## <a name="create-a-skillset"></a>Tworzenie zestawu umiejętności
 
-W tej sekcji definiujesz zestaw kroków wzbogacania, które chcesz zastosować do danych. Każdy krok wzbogacania jest określany jako umiejętność i zestaw kroków wzbogacania *zestawu umiejętności*. W ramach tego samouczka są używane [wstępnie zdefiniowane umiejętności poznawcze](cognitive-search-predefined-skills.md) z następujących zestawów umiejętności:
+W tej sekcji definiujesz zestaw kroków wzbogacania, które chcesz zastosować do danych. Każdy krok wzbogacania jest określany jako *umiejętność* i zestaw kroków wzbogacania *zestawu umiejętności*. W ramach tego samouczka są używane [wstępnie zdefiniowane umiejętności poznawcze](cognitive-search-predefined-skills.md) z następujących zestawów umiejętności:
 
 + [Optyczne rozpoznawanie znaków](cognitive-search-skill-ocr.md) do rozpoznawania tekstu napisanego i odręcznego w plikach obrazów.
 

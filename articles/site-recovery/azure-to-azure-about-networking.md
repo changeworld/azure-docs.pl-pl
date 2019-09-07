@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: b549e8bf53ca7728b18e04542c7291f0ce720cb0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 9c65d6055807ee2735f1915e8ca289dc0754535b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876455"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736391"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Informacje o sieci na platformie Azure do replikacji platformy Azure
 
@@ -113,7 +113,11 @@ Zakresy adresów IP Site Recovery są następujące:
    Chiny Północne 2 | 40.73.35.193 | 40.73.33.230
    Chiny Wschodnie | 42.159.205.45 | 42.159.132.40
    Chiny Wschodnie 2 | 40.73.118.52| 40.73.100.125
-  
+   Niemcy Północne| 51.116.208.58| 51.116.58.128
+   Niemcy Środkowo-Zachodnie | 51.116.156.176 | 51.116.154.192
+   Szwajcaria Zachodnia | 51.107.231.223| 51.107.154.128
+   Szwajcaria Północna | 51.107.68.31| 51.107.58.128
+
 ## <a name="example-nsg-configuration"></a>Przykładowa konfiguracja sieciowej grupy zabezpieczeń
 
 Ten przykład pokazuje, jak skonfigurować reguły sieciowej grupy zabezpieczeń dla maszyny wirtualnej do replikacji.
@@ -170,7 +174,7 @@ W sieci wirtualnej można utworzyć punkt końcowy usługi sieciowej dla magazyn
 
 ### <a name="forced-tunneling"></a>Wymuszone tunelowanie
 
-Można zastąpić domyślną trasę systemową platformy Azure dla prefiksu adresu 0.0.0.0/0 z [trasą](../virtual-network/virtual-networks-udr-overview.md#custom-routes) niestandardową i przekierować ruch maszyny wirtualnej do lokalnego urządzenia sieciowego (urządzenie WUS), ale ta konfiguracja nie jest zalecana w przypadku replikacji Site Recovery. Jeśli używasz tras niestandardowych, należy [utworzyć punkt końcowy usługi sieci wirtualnej](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) w sieci wirtualnej dla elementu "Storage", aby ruch związany z replikacją nie opuszcza granicy platformy Azure.
+Można zastąpić domyślną trasę systemową platformy Azure dla prefiksu adresu 0.0.0.0/0 z [trasą niestandardową](../virtual-network/virtual-networks-udr-overview.md#custom-routes) i przekierować ruch maszyny wirtualnej do lokalnego urządzenia sieciowego (urządzenie WUS), ale ta konfiguracja nie jest zalecana w przypadku replikacji Site Recovery. Jeśli używasz tras niestandardowych, należy [utworzyć punkt końcowy usługi sieci wirtualnej](azure-to-azure-about-networking.md#create-network-service-endpoint-for-storage) w sieci wirtualnej dla elementu "Storage", aby ruch związany z replikacją nie opuszcza granicy platformy Azure.
 
 ## <a name="next-steps"></a>Następne kroki
 - Rozpocznij ochronę obciążeń przez [replikowanie maszyn wirtualnych platformy Azure](site-recovery-azure-to-azure.md).

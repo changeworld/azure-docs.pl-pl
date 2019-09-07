@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2e32fb57a5ee34da8c342649cc1740d111723ec
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
-ms.translationtype: MT
+ms.openlocfilehash: 7ec30e2445a5ed6008256f7abcef496247922968
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662911"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744477"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie Log Analytics zapisanych wyszukiwań i alertów do rozwiązania do zarządzania (wersja zapoznawcza)
 
@@ -28,7 +28,7 @@ ms.locfileid: "68662911"
 > [!NOTE]
 > Jest to wstępna dokumentacja dotycząca tworzenia rozwiązań do zarządzania, które są obecnie dostępne w wersji zapoznawczej. Każdy schemat opisany poniżej może ulec zmianie.
 
-[Rozwiązania do zarządzania](solutions.md) zwykle obejmują [zapisane wyszukiwania](../../azure-monitor/log-query/log-query-overview.md) w log Analytics do analizowania danych zebranych przez rozwiązanie. Mogą także definiować [alerty](../../azure-monitor/platform/alerts-overview.md) w celu powiadomienia użytkownika lub automatycznego podjęcia działania w odpowiedzi na problem krytyczny. W tym artykule opisano sposób definiowania Log Analytics zapisanych wyszukiwań i alertów w [szablonie zarządzania zasobami](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) , aby można je było uwzględnić w rozwiązaniach do [zarządzania](solutions-creating.md).
+[Rozwiązania do zarządzania](solutions.md) zwykle obejmują [zapisane wyszukiwania](../../azure-monitor/log-query/log-query-overview.md) w log Analytics do analizowania danych zebranych przez rozwiązanie. Mogą także definiować [alerty](../../azure-monitor/platform/alerts-overview.md) w celu powiadomienia użytkownika lub automatycznego podjęcia działania w odpowiedzi na problem krytyczny. W tym artykule opisano sposób definiowania Log Analytics zapisanych wyszukiwań i alertów w [szablonie zarządzania zasobami](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) , aby można je było uwzględnić w [rozwiązaniach do zarządzania](solutions-creating.md).
 
 > [!NOTE]
 > W przykładach w tym artykule są używane parametry i zmienne, które są wymagane lub wspólne dla rozwiązań do zarządzania, a także opisane w artykule [projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure](solutions-creating.md)
@@ -93,7 +93,7 @@ Reguły alertów w starszej wersji rozwiązania do zarządzania składają się 
 
 - **Zapisane wyszukiwanie.** Definiuje uruchomioną przeszukiwanie dzienników. Wiele reguł alertów może współdzielić jedno zapisane wyszukiwanie.
 - **Rozkład.** Definiuje częstotliwość uruchamiania przeszukiwania dzienników. Każda reguła alertu ma jeden i tylko jeden harmonogram.
-- **Akcja alertu.** Każda reguła alertu ma jeden zasób grupy akcji lub zasób akcji (starsza wersja) z typem alertu, który definiuje szczegóły alertu, taki jak kryteria dla momentu utworzenia rekordu alertu i ważności alertu. Zasób [grupy akcji](../../azure-monitor/platform/action-groups.md) może mieć listę skonfigurowanych akcji, które mają zostać wykonane po uruchomieniu alertu, takiego jak rozmowa głosowa, wiadomości SMS, poczta e-mail, webhook, narzędzie narzędzia ITSM, element Runbook automatyzacji, aplikacja logiki itd.
+- **Akcja alertu.** Każda reguła alertu ma jeden zasób grupy akcji lub zasób akcji (starsza wersja) z typem **alertu** , który definiuje szczegóły alertu, taki jak kryteria dla momentu utworzenia rekordu alertu i ważności alertu. Zasób [grupy akcji](../../azure-monitor/platform/action-groups.md) może mieć listę skonfigurowanych akcji, które mają zostać wykonane po uruchomieniu alertu, takiego jak rozmowa głosowa, wiadomości SMS, poczta e-mail, webhook, narzędzie narzędzia ITSM, element Runbook automatyzacji, aplikacja logiki itd.
 
 Zapisane zasoby wyszukiwania zostały opisane powyżej. Inne zasoby są opisane poniżej.
 
@@ -121,7 +121,7 @@ Właściwości zasobów harmonogramu są opisane w poniższej tabeli.
 |:--|:--|:--|
 | enabled       | Tak | Określa, czy alert jest włączony podczas jego tworzenia. |
 | przedział      | Tak | Jak często zapytanie jest wykonywane w ciągu kilku minut. |
-| queryTimeSpan | Yes | Długość czasu w minutach, przez który należy obliczyć wyniki. |
+| queryTimeSpan | Tak | Długość czasu w minutach, przez który należy obliczyć wyniki. |
 
 Zasób harmonogramu powinien zależeć od zapisanego wyszukiwania, aby został utworzony przed harmonogramem.
 > [!NOTE]
@@ -169,30 +169,30 @@ Akcje alertów mają następującą strukturę. Obejmuje to typowe zmienne i par
 
 Właściwości zasobów akcji alertu są opisane w poniższych tabelach.
 
-| Nazwa elementu | Wymagane | description |
+| Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| type | Tak | Typ akcji.  Jest to **alert** dotyczący akcji alertów. |
-| name | Yes | Nazwa wyświetlana alertu.  Jest to nazwa wyświetlana w konsoli dla reguły alertu. |
-| description | Nie | Opcjonalny opis alertu. |
-| severity | Tak | Ważność rekordu alertu z następujących wartości:<br><br> **najistotniejsz**<br>**wyświetlania**<br>**informacyjną**
+| `Type` | Tak | Typ akcji.  Jest to **alert** dotyczący akcji alertów. |
+| `Name` | Tak | Nazwa wyświetlana alertu.  Jest to nazwa wyświetlana w konsoli dla reguły alertu. |
+| `Description` | Nie | Opcjonalny opis alertu. |
+| `Severity` | Tak | Ważność rekordu alertu z następujących wartości:<br><br> **najistotniejsz**<br>**wyświetlania**<br>**informacyjną**
 
 
 #### <a name="threshold"></a>Próg
 Ta sekcja jest wymagana. Definiuje właściwości dla progu alertu.
 
-| Nazwa elementu | Wymagane | description |
+| Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| Operator | Tak | Operator porównania z następujących wartości:<br><br>**gt = większe niż<br>lt = mniejsze niż** |
-| Value | Yes | Wartość, aby porównać wyniki. |
+| `Operator` | Tak | Operator porównania z następujących wartości:<br><br>**gt = większe niż<br>lt = mniejsze niż** |
+| `Value` | Tak | Wartość, aby porównać wyniki. |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Ta sekcja jest opcjonalna. Uwzględnij go dla alertu pomiaru metryki.
 
-| Nazwa elementu | Wymagane | description |
+| Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| TriggerCondition | Tak | Określa, czy próg dotyczy całkowitej liczby naruszeń lub kolejnych naruszeń z następujących wartości:<br><br>**Łączna<br>Liczba kolejnych** |
-| Operator | Tak | Operator porównania z następujących wartości:<br><br>**gt = większe niż<br>lt = mniejsze niż** |
-| Value | Yes | Liczba przypadków, gdy należy spełnić kryteria w celu wyzwolenia alertu. |
+| `TriggerCondition` | Tak | Określa, czy próg dotyczy całkowitej liczby naruszeń lub kolejnych naruszeń z następujących wartości:<br><br>**Łączna<br>Liczba kolejnych** |
+| `Operator` | Tak | Operator porównania z następujących wartości:<br><br>**gt = większe niż<br>lt = mniejsze niż** |
+| `Value` | Tak | Liczba przypadków, gdy należy spełnić kryteria w celu wyzwolenia alertu. |
 
 
 #### <a name="throttling"></a>Ograniczanie przepływności

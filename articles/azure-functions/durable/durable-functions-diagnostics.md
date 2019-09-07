@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 2cc60ee2c73aa6858f68d6b13a895a0188bb5735
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7c02d4dfde7869da7985817b06f6de398bbef38d
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098138"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734491"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Diagnostyka w Durable Functions na platformie Azure
 
@@ -28,7 +28,7 @@ Azure Functions trwałego rozszerzenia emituje także *zdarzenia śledzenia* , k
 
 ### <a name="tracking-data"></a>Śledzenie danych
 
-Każde zdarzenie cyklu życia wystąpienia aranżacji powoduje zapisanie zdarzenia śledzenia w kolekcji TRACES w Application Insights. To zdarzenie zawiera ładunek **customDimensions** z kilkoma polami.  Wszystkie nazwy pól są poprzedzone `prop__`.
+Każde zdarzenie cyklu życia wystąpienia aranżacji powoduje zapisanie zdarzenia śledzenia w kolekcji **TRACES** w Application Insights. To zdarzenie zawiera ładunek **customDimensions** z kilkoma polami.  Wszystkie nazwy pól są poprzedzone `prop__`.
 
 * **hubName**: Nazwa centrum zadań, w którym są uruchomione aranżacje.
 * Nazwa: Nazwa aplikacji funkcji. Jest to przydatne, gdy masz wiele aplikacji funkcji, które współużytkują to samo wystąpienie Application Insights.
@@ -40,7 +40,7 @@ Każde zdarzenie cyklu życia wystąpienia aranżacji powoduje zapisanie zdarzen
   * **Zaplanowane**: Funkcja została zaplanowana do wykonania, ale jeszcze jej nie uruchomiono.
   * **Uruchomiono**: Funkcja zaczęła działać, ale nie została jeszcze oczekiwana lub ukończona.
   * **Oczekiwane**: Program Orchestrator zaplanował pewną pracę i oczekuje na jego zakończenie.
-  * Nasłuchiwanie: Koordynator nasłuchuje powiadomienia o zdarzeniu zewnętrznym.
+  * **Nasłuchiwanie**: Koordynator nasłuchuje powiadomienia o zdarzeniu zewnętrznym.
   * **Ukończono**: Funkcja została ukończona pomyślnie.
   * **Niepowodzenie**: Działanie funkcji nie powiodło się z powodu błędu.
 * **Przyczyna**: Dodatkowe dane skojarzone ze zdarzeniem śledzenia. Jeśli na przykład wystąpienie oczekuje na powiadomienie o zdarzeniu zewnętrznym, to pole wskazuje nazwę zdarzenia, dla którego oczekuje. Jeśli funkcja zakończyła się niepowodzeniem, będzie zawierać szczegóły błędu.
@@ -107,7 +107,7 @@ Aby włączyć emitowanie pełnych zdarzeń powtarzania aranżacji `LogReplayEve
 
 ### <a name="single-instance-query"></a>Zapytanie o pojedynczym wystąpieniu
 
-Następujące zapytanie pokazuje historyczne dane śledzenia dla pojedynczego wystąpienia aranżacji funkcji w [sekwencji Hello](durable-functions-sequence.md) . Jest ona zapisywana przy użyciu [języka zapytań Application Insights (AIQL)](https://aka.ms/LogAnalyticsLanguageReference). Filtruje wykonywanie powtarzania, tak aby była wyświetlana tylko ścieżka wykonywania logicznego. Zdarzenia mogą być uporządkowane według sortowania `timestamp` według `sequenceNumber` i jak pokazano w poniższym zapytaniu:
+Następujące zapytanie pokazuje historyczne dane śledzenia dla pojedynczego wystąpienia aranżacji funkcji w [sekwencji Hello](durable-functions-sequence.md) . Jest ona zapisywana przy użyciu [języka zapytań Application Insights (AIQL)](https://aka.ms/LogAnalyticsLanguageReference). Filtruje wykonywanie powtarzania, tak aby była wyświetlana tylko ścieżka wykonywania *logicznego* . Zdarzenia mogą być uporządkowane według sortowania `timestamp` według `sequenceNumber` i jak pokazano w poniższym zapytaniu:
 
 ```AIQL
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
@@ -158,9 +158,26 @@ Wynikiem jest lista identyfikatorów wystąpień i ich bieżący stan środowisk
 
 Ważne jest, aby zachować zachowanie odtwarzania programu Orchestrator podczas pisania dzienników bezpośrednio z poziomu funkcji programu Orchestrator. Rozważmy na przykład następującą funkcję programu Orchestrator:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>PrekompilowanegoC#
 
-```cs
+```csharp
+public static async Task Run(
+    [OrchestrationTrigger] DurableOrchestrationContext context,
+    ILogger log)
+{
+    log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
+
+### <a name="c-script"></a>C#Napisy
+
+```csharp
 public static async Task Run(
     DurableOrchestrationContext context,
     ILogger log)
@@ -211,6 +228,23 @@ Done!
 
 Jeśli chcesz tylko zalogować się do wykonywania bez powtarzania, możesz napisać wyrażenie warunkowe do rejestrowania tylko wtedy, `IsReplaying` gdy `false`jest to. Rozważmy przykład powyżej, ale tym razem z testami powtarzania.
 
+#### <a name="precompiled-c"></a>PrekompilowanegoC#
+
+```csharp
+public static async Task Run(
+    [OrchestrationTrigger] DurableOrchestrationContext context,
+    ILogger log)
+{
+    if (!context.IsReplaying) log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    if (!context.IsReplaying) log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    if (!context.IsReplaying) log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
+
 #### <a name="c"></a>C#
 
 ```cs
@@ -257,7 +291,7 @@ Done!
 
 Stan aranżacji niestandardowej pozwala ustawić niestandardową wartość stanu dla funkcji programu Orchestrator. Ten stan jest dostarczany za pośrednictwem interfejsu API zapytania o stan `DurableOrchestrationClient.GetStatusAsync` http lub interfejsu API. Niestandardowy stan aranżacji umożliwia zaawansowane monitorowanie funkcji programu Orchestrator. Na przykład kod funkcji programu Orchestrator może obejmować `DurableOrchestrationContext.SetCustomStatus` wywołania do aktualizowania postępu długotrwałej operacji. Klient, taki jak strona sieci Web lub inny system zewnętrzny, może następnie okresowo badać interfejsy API zapytań o stan HTTP w celu uzyskania bardziej szczegółowych informacji o postępie. Poniżej przedstawiono przykład `DurableOrchestrationContext.SetCustomStatus` użycia:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>PrekompilowanegoC#
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext context)

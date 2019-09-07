@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/24/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: eeabb4547e3c02ebf540e6d156df97954e612fbc
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: edda6dffa04bfc0492b7336893c5b167ccc42ca5
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208340"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743918"
 ---
 # <a name="register-a-sql-server-virtual-machine-in-azure-with-the-sql-vm-resource-provider"></a>Rejestrowanie SQL Server maszyny wirtualnej na platformie Azure przy użyciu dostawcy zasobów maszyny wirtualnej SQL
 
@@ -188,7 +188,7 @@ Bieżący tryb SQL Server agenta IaaS można wyświetlić za pomocą programu Po
      $sqlvm.Properties.sqlManagement
   ```
 
-SQL Server maszyny wirtualne, na których zainstalowano uproszczone rozszerzenie IaaS, mogą uaktualnić tryb do _pełnej_ wersji przy użyciu Azure Portal. SQL Server maszyny wirtualne w trybie _bez agenta_ można uaktualnić do wersji _pełnej_ po uaktualnieniu systemu operacyjnego do wersji Windows 2008 R2 lub nowszej. Nie jest możliwe przeprowadzenie obniżenia — w tym celu należy całkowicie odinstalować rozszerzenie SQL IaaS i zainstalować je ponownie. 
+SQL Server maszyny wirtualne, na których zainstalowano *uproszczone* rozszerzenie IaaS, mogą uaktualnić tryb do _pełnej_ wersji przy użyciu Azure Portal. SQL Server maszyny wirtualne w trybie _bez agenta_ można uaktualnić do wersji _pełnej_ po uaktualnieniu systemu operacyjnego do wersji Windows 2008 R2 lub nowszej. Nie jest możliwe przeprowadzenie obniżenia — w tym celu należy całkowicie odinstalować rozszerzenie SQL IaaS i zainstalować je ponownie. 
 
 Aby uaktualnić tryb agenta do pełnej: 
 
@@ -241,7 +241,7 @@ Aby zarejestrować maszynę wirtualną SQL Server przy użyciu dostawcy zasobów
 1. Przejdź do pozycji **subskrypcje** i wybierz swoją subskrypcję.  
 1. Na stronie **subskrypcje** przejdź do pozycji **dostawcy zasobów**. 
 1. Wprowadź **SQL** w filtrze, aby wyświetlić dostawców zasobów związanych z programem SQL. 
-1. Wybierz pozycję **zarejestruj**, **zarejestruj ponownie**lub wyrejestruj dostawcę **Microsoft. SqlVirtualMachine** , w zależności od żądanej akcji. 
+1. Wybierz pozycję **zarejestruj**, **zarejestruj ponownie**lub **Wyrejestruj** dostawcę **Microsoft. SqlVirtualMachine** , w zależności od żądanej akcji. 
 
 ![Modyfikowanie dostawcy](media/virtual-machines-windows-sql-ahb/select-resource-provider-sql.png)
 
@@ -338,7 +338,7 @@ Tak. Uaktualnianie trybu zarządzania z lekkich do pełnych jest obsługiwane za
 
 Nie. Obniżenie poziomu trybu zarządzania rozszerzeniami SQL Server IaaS nie jest obsługiwane. Trybu zarządzania nie można zmienić z trybu pełnego na lekki lub bez agenta i nie można go zmienić z trybu uproszczonego na tryb bez agenta. 
 
-Aby zmienić tryb zarządzania z pełnego zarządzania, Usuń SQL Server rozszerzenie IaaS. Następnie Porzuć zasób Micorsoft. SqlVirtualMachine i ponownie zarejestruj maszynę wirtualną SQL Server przy użyciu dostawcy zasobów maszyny wirtualnej SQL.
+Aby zmienić tryb zarządzania z pełnego zarządzania, Usuń SQL Server rozszerzenie IaaS. Następnie Porzuć zasób Microsoft. SqlVirtualMachine i ponownie zarejestruj maszynę wirtualną SQL Server przy użyciu dostawcy zasobów maszyny wirtualnej SQL.
 
 **Czy można zarejestrować się u dostawcy zasobów maszyny wirtualnej SQL z Azure Portal?**
 
@@ -346,7 +346,7 @@ Nie. Rejestracja przy użyciu dostawcy zasobów maszyny wirtualnej SQL nie jest 
 
 **Czy można zarejestrować maszynę wirtualną przy użyciu dostawcy zasobów maszyny wirtualnej SQL przed zainstalowaniem SQL Server?**
 
-Nie. Maszyna wirtualna powinna mieć co najmniej jedno wystąpienie SQL Server, aby można było zarejestrować się w dostawcy zasobów maszyny wirtualnej SQL. Jeśli na maszynie wirtualnej nie ma SQL Server wystąpienia, nowy zasób pomocą. SqlVirtualMachine będzie w stanie niepowodzenia.
+Nie. Maszyna wirtualna powinna mieć co najmniej jedno wystąpienie SQL Server, aby można było zarejestrować się w dostawcy zasobów maszyny wirtualnej SQL. Jeśli na maszynie wirtualnej nie ma SQL Server wystąpienia, nowy zasób Microsoft. SqlVirtualMachine będzie w stanie niepowodzenia.
 
 **Czy można zarejestrować maszynę wirtualną przy użyciu dostawcy zasobów maszyny wirtualnej SQL, jeśli istnieje wiele wystąpień SQL Server?**
 

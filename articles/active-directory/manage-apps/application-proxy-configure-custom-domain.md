@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82b8dcfa02d21183a06fa510adb774338e72cb4e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8a1914b7cf79287831e0e94c19c50107c2ac216d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851720"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390788"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Praca z domenami niestandardowymi na serwerze Proxy aplikacji usługi Azure AD
 
@@ -40,7 +40,7 @@ Zaleca się, że Konfigurowanie domen niestandardowych dla aplikacji, jeśli to 
 
 Przed skonfigurowaniem domenę niestandardową, upewnij się, że masz następujące wymagania, które są przygotowywane: 
 - A [zweryfikowaną domenę dodane do usługi Azure Active Directory](../fundamentals/add-custom-domain.md).
-- Niestandardowy certyfikat dla domeny, w postaci pliku PFX. 
+- Niestandardowy certyfikat dla domeny, w postaci pliku PFX.
 - Aplikację w środowisku lokalnym [opublikowane za pośrednictwem serwera Proxy aplikacji](application-proxy-add-on-premises-application.md).
 
 ### <a name="configure-your-custom-domain"></a>Konfigurowanie domeny niestandardowej
@@ -72,6 +72,8 @@ Jeśli masz te trzy wymagania gotowe, wykonaj następujące kroki, aby skonfigur
 Nie ma żadnych ograniczeń w metodach podpisu certyfikatu. Obsługiwane są wszystkie kryptografii krzywej eliptycznej (ECC), alternatywnej nazwy podmiotu (SAN) i innych typowych typów certyfikatów. 
 
 Można użyć certyfikatu symboli wieloznacznych, tak długo, jak symbol wieloznaczny pasuje do żądanego zewnętrznego adresu URL.
+
+Certyfikat musi zawierać klucz prywatny.
 
 W przypadku zainstalowania łańcucha certyfikatów na urządzeniach klienckich można użyć certyfikatów wystawionych przez własną infrastrukturę kluczy publicznych (PKI). Usługi Intune można używać do wdrażania tych certyfikatów na zarządzanych urządzeniach. W przypadku urządzeń niezarządzanych te certyfikaty muszą być instalowane ręcznie.
 

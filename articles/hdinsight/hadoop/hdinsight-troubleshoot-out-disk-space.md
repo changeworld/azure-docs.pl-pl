@@ -1,17 +1,17 @@
 ---
 title: Za mało miejsca na dysku w węźle klastra w usłudze Azure HDInsight
-description: Za mało miejsca na dysku w węźle klastra w usłudze Azure HDInsight
+description: Rozwiązywanie problemów dotyczących miejsca na dysku węzła klastra Apache Hadoop w usłudze Azure HDInsight.
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/05/2019
-ms.openlocfilehash: 696327a00135ba6b3414c773732b8bc99ce4100c
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 139fb0e77f8f6960e7b13899f9586dd78bf46a92
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68842454"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735847"
 ---
 # <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>Scenariusz: Za mało miejsca na dysku w węźle klastra w usłudze Azure HDInsight
 

@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: cephalin
-ms.custom: seodec18
-ms.openlocfilehash: 8b4b6549f9553773cc44c311f49befbb3eec9dc9
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8de464a00867dd397f28de1dc35cf264244f6905
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233096"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743253"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>Konfigurowanie aplikacji App Service do korzystania z Azure Active Directory logowania
 
@@ -40,7 +40,7 @@ Zaleca się skonfigurowanie każdej aplikacji App Service ze swoją rejestracją
 3. Wybierz pozycję **Azure Active Directory**, a następnie wybierz pozycję **Express** w obszarze **tryb zarządzania**.
 4. Wybierz **przycisk OK** , aby zarejestrować aplikację App Service w Azure Active Directory. Spowoduje to utworzenie nowej rejestracji aplikacji. Jeśli chcesz zamiast tego wybrać istniejącą rejestrację aplikacji, kliknij pozycję **Wybierz istniejącą aplikację** , a następnie wyszukaj nazwę wcześniej utworzonej rejestracji aplikacji w ramach dzierżawy. Kliknij pozycję Rejestracja aplikacji, aby ją zaznaczyć, a następnie kliknij przycisk **OK**. Następnie kliknij przycisk **OK** na stronie Ustawienia Azure Active Directory.
 Domyślnie usługa App Service zapewnia uwierzytelnianie, ale nie ogranicza uprawnień dostępu do zawartości i interfejsów API witryny. Musisz autoryzować użytkowników w kodzie aplikacji.
-5. Obowiązkowe Aby ograniczyć dostęp do aplikacji tylko do użytkowników uwierzytelnionych przez Azure Active Directory, należy ustawić **akcję podejmowaną, gdy żądanie nie zostanie uwierzytelnione** w celu zalogowania się **przy użyciu Azure Active Directory**. Wymaga to uwierzytelnienia wszystkich żądań, a wszystkie nieuwierzytelnione żądania są przekierowywane do Azure Active Directory na potrzeby uwierzytelniania.
+5. Obowiązkowe Aby ograniczyć dostęp do aplikacji tylko do użytkowników uwierzytelnionych przez Azure Active Directory, należy ustawić **akcję podejmowaną, gdy żądanie nie zostanie uwierzytelnione** w celu **zalogowania się przy użyciu Azure Active Directory**. Wymaga to uwierzytelnienia wszystkich żądań, a wszystkie nieuwierzytelnione żądania są przekierowywane do Azure Active Directory na potrzeby uwierzytelniania.
 
     > [!NOTE]
     > Ograniczenie dostępu w ten sposób dotyczy wszystkich wywołań aplikacji, które mogą nie być odpowiednie dla aplikacji, które chcą korzystać z publicznie dostępnej strony głównej, tak jak w przypadku aplikacji jednostronicowych. W przypadku takich aplikacji **Zezwalanie na żądania anonimowe (nie akcja)** może być preferowane, z aplikacją ręcznie rozpoczynającą logowanie, zgodnie z opisem w [tym miejscu](overview-authentication-authorization.md#authentication-flow).
@@ -60,18 +60,18 @@ Podczas ręcznego tworzenia rejestracji aplikacji należy zwrócić uwagę na tr
 1. W obszarze **Identyfikator URI przekierowania**wybierz pozycję **Sieć Web** , a następnie wpisz adres URL aplikacji App Service `/.auth/login/aad/callback`i dołącz ścieżkę. Na przykład `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Następnie wybierz przycisk **Utwórz**.
 1. Po utworzeniu rejestracji aplikacji Skopiuj **Identyfikator aplikacji (klienta)** i **Identyfikator katalogu (dzierżawcy)** w przyszłości.
 1. Wybierz **znakowanie**. W polu **adres URL strony głównej**wpisz adres url aplikacji App Service i wybierz pozycję **Zapisz**.
-1. Wybierz opcję Uwidocznij**zestaw** **interfejsów API** > . Wklej adres URL aplikacji App Service i wybierz pozycję **Zapisz**.
+1. Wybierz opcję **Uwidocznij zestaw interfejsów API** > . Wklej adres URL aplikacji App Service i wybierz pozycję **Zapisz**.
 
     > [!NOTE]
-    > Ta wartość to **Identyfikator URI identyfikatora aplikacji** rejestracji aplikacji. Jeśli chcesz mieć aplikację sieci Web frontonu do uzyskiwania dostępu do interfejsu API zaplecza, na przykład, aby zaplecze jawnie udzielić dostępu do frontonu, musisz mieć **Identyfikator URI identyfikatora aplikacji** frontonu po skonfigurowaniu zasobu aplikacji App Service na < C2 zaplecze >.
+    > Ta wartość to **Identyfikator URI identyfikatora aplikacji** rejestracji aplikacji. Jeśli chcesz mieć aplikację sieci Web frontonu do uzyskiwania dostępu do interfejsu API zaplecza, na przykład, aby zaplecze jawnie udzielić dostępu do frontonu, musisz mieć **Identyfikator URI identyfikatora aplikacji** *frontonu* po skonfigurowaniu zasobu aplikacji App Service na < C2 zaplecze >.
 1. Wybierz polecenie **Dodaj zakres**. W polu **Nazwa zakresu**wpisz *user_impersonation*. W polach tekstowych wpisz nazwę i opis zakresu zgody, które użytkownicy mają zobaczyć na stronie zgody, na przykład *dostęp do mojej aplikacji*. Po zakończeniu kliknij pozycję **Dodaj zakres**.
-1. Obowiązkowe Aby utworzyć klucz tajny klienta, wybierz pozycję **Certyfikaty &**  > wpisy tajne**Nowy klient** > **Dodaj**wpis tajny. Skopiuj wartość klucza tajnego klienta podaną na stronie. Gdy przejdziesz dalej, nie będzie on ponownie wyświetlany.
+1. Obowiązkowe Aby utworzyć klucz tajny klienta, wybierz pozycję **Certyfikaty &**  > wpisy tajne**Nowy klient Dodaj wpis tajny** > . Skopiuj wartość klucza tajnego klienta podaną na stronie. Gdy przejdziesz dalej, nie będzie on ponownie wyświetlany.
 1. Obowiązkowe Aby dodać wiele **adresów URL odpowiedzi**, wybierz pozycję **uwierzytelnianie** w menu.
 
 ### <a name="secrets"> </a>Dodawanie Azure Active Directory informacji do aplikacji App Service
 
 1. W [Azure Portal]przejdź do aplikacji App Service. Z menu po lewej stronie wybierz pozycję **uwierzytelnianie/autoryzacja**. Jeśli funkcja uwierzytelniania/autoryzacji nie jest włączona, wybierz pozycję **włączone**. 
-1. Obowiązkowe Domyślnie uwierzytelnianie App Service zezwala na nieuwierzytelniony dostęp do aplikacji. Aby wymusić uwierzytelnianie użytkowników, należy ustawić **akcję podejmowaną, gdy żądanie nie zostanie uwierzytelnione** w celu zalogowania się **za pomocą Azure Active Directory**.
+1. Obowiązkowe Domyślnie uwierzytelnianie App Service zezwala na nieuwierzytelniony dostęp do aplikacji. Aby wymusić uwierzytelnianie użytkowników, należy ustawić **akcję podejmowaną, gdy żądanie nie zostanie uwierzytelnione** w celu **zalogowania się za pomocą Azure Active Directory**.
 1. W obszarze dostawcy uwierzytelniania wybierz pozycję **Azure Active Directory**.
 1. W obszarze **tryb zarządzania**wybierz pozycję **Zaawansowane** i Skonfiguruj uwierzytelnianie App Service zgodnie z poniższą tabelą:
 
@@ -81,6 +81,9 @@ Podczas ręcznego tworzenia rejestracji aplikacji należy zwrócić uwagę na tr
     |Identyfikator wystawcy| Użyj `https://login.microsoftonline.com/<tenant-id>`i Zastąp  *\<identyfikator dzierżawcy >* identyfikatorem **katalogu (dzierżawy)** rejestracji aplikacji. |
     |Klucz tajny klienta (opcjonalnie)| Użyj klucza tajnego klienta wygenerowanego podczas rejestracji aplikacji.|
     |Dozwoleni odbiorcy z tokenem| Jeśli jest to aplikacja *zaplecza* i chcesz zezwolić na tokeny uwierzytelniania z aplikacji frontonu, Dodaj **Identyfikator URI identyfikatora aplikacji** *frontonu* . |
+
+    > [!NOTE]
+    > Skonfigurowany **Identyfikator klienta** jest *zawsze* niejawnie traktowany jako dozwolony odbiorca, niezależnie od tego, jak skonfigurowano **dozwolonych odbiorców tokenu**.
 1. Wybierz pozycję **OK**, a następnie wybierz pozycję **Zapisz**.
 
 Teraz można przystąpić do uwierzytelniania w aplikacji App Service za pomocą Azure Active Directory.

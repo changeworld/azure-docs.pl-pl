@@ -8,63 +8,62 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 21e2d3f75028d239175effa7a3608cc18ccfc95c
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 5d0c43fbcc1c59c3281f412aad96a3942a5c79b1
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67305314"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70392952"
 ---
-**Kolekcja ilości i przechowywania danych** 
+**Wolumin zbierania danych i ich przechowywanie** 
 
-| Warstwa | Ograniczenia na dzień | Przechowywanie danych | Komentarz |
+| Warstwa | Limit dziennie | Przechowywanie danych | Komentarz |
 |:---|:---|:---|:---|
-| Warstwa cenowa bieżącego na GB<br>(zostanie wprowadzony kwietnia 2018 r.) | Bez ograniczeń | 30 - 730 dni | Przechowywanie danych dłużej niż 31 dni jest dostępna dla dodatkowych opłat. Dowiedz się więcej o cenach usługi Azure Monitor. |
-| Starsze bezpłatnymi warstwami<br>(zostanie wprowadzony kwietnia 2016) | 500 MB | 7 dni | Obszar roboczy osiągnie 500 MB dziennie, limit na, pozyskiwania danych zatrzyma się i zostanie wznowiona na początku następnego dnia. Dzień jest oparty na czasie UTC. Należy pamiętać, że dane zebrane przez usługę Azure Security Center nie są uwzględnione w tym 500 MB dziennie, limit na i będą w dalszym ciągu być zbierane powyżej tego limitu.  |
-| Starsze warstwy autonomicznego na GB<br>(zostanie wprowadzony kwietnia 2016) | Bez ograniczeń | 30 do 730 dni | Przechowywanie danych dłużej niż 31 dni jest dostępna dla dodatkowych opłat. Dowiedz się więcej o cenach usługi Azure Monitor. |
-| Starsza wersja na węzeł (OMS)<br>(zostanie wprowadzony kwietnia 2016) | Bez ograniczeń | 30 do 730 dni | Przechowywanie danych dłużej niż 31 dni jest dostępna dla dodatkowych opłat. Dowiedz się więcej o cenach usługi Azure Monitor. |
-| Starsze w warstwie standardowa | Bez ograniczeń | 30 dni  | Nie można go zmienić przechowywania |
-| Starsze warstwy Premium | Bez ograniczeń | 365 dni  | Nie można go zmienić przechowywania |
+| Bieżąca warstwa cenowa za GB<br>(wprowadzono 2018 kwietnia) | Bez limitu | 30-730 dni | Przechowywanie danych przez dłużej niż 31 dni jest dostępne w przypadku dodatkowych opłat. Dowiedz się więcej o cenach Azure Monitor. |
+| Starsze warstwy bezpłatne<br>(wprowadzono 2016 kwietnia) | 500 MB | 7 dni | Gdy obszar roboczy osiągnie limit 500 MB dziennie, pozyskiwanie danych zostaje zatrzymane i wznowione na początku następnego dnia. Dzień jest oparty na czasie UTC. Należy pamiętać, że dane zbierane przez Azure Security Center nie są uwzględniane w tym limicie 500 MB na dzień i będą nadal zbierane powyżej tego limitu.  |
+| Starsza wersja autonomiczna na warstwę GB<br>(wprowadzono 2016 kwietnia) | Bez limitu | od 30 do 730 dni | Przechowywanie danych przez dłużej niż 31 dni jest dostępne w przypadku dodatkowych opłat. Dowiedz się więcej o cenach Azure Monitor. |
+| Starsza wersja na węzeł (OMS)<br>(wprowadzono 2016 kwietnia) | Bez limitu | od 30 do 730 dni | Przechowywanie danych przez dłużej niż 31 dni jest dostępne w przypadku dodatkowych opłat. Dowiedz się więcej o cenach Azure Monitor. |
+| Starsza warstwa standardowa | Bez limitu | 30 dni  | Nie można dostosować przechowywania |
+| Starsza warstwa Premium | Bez limitu | 365 dni  | Nie można dostosować przechowywania |
 
 **Liczba obszarów roboczych na subskrypcję.**
 
 | Warstwa cenowa    | Limit obszaru roboczego | Komentarze
 |:---|:---|:---|
-| Warstwa bezpłatna  | 10 | Nie można zwiększyć ten limit. |
-| Innej warstwy | Bez ograniczeń | Ograniczeniem liczby zasobów w grupie zasobów i liczba grup zasobów na subskrypcję. |
+| Warstwa Bezpłatna  | 10 | Nie można zwiększyć tego limitu. |
+| Wszystkie inne warstwy | Bez limitu | Użytkownik ma ograniczoną liczbę zasobów w grupie zasobów oraz liczbę grup zasobów na subskrypcję. |
 
 **Azure Portal**
 
-| Category | Limits | Komentarze |
+| Kategoria | Limity | Komentarze |
 |:---|:---|:---|
-| Maksymalna liczba rekordów zwróconych przez zapytanie dziennika | 10 000 | Ogranicz wyniki za pomocą zakres kwerendy, zakres czasu i filtrów w zapytaniu. |
+| Maksymalna liczba rekordów zwracanych przez zapytanie dziennika | 10 000 | Zmniejsz wyniki przy użyciu zakresu zapytania, zakresu czasu i filtrów w zapytaniu. |
 
 
 **Interfejs API modułu zbierającego dane**
 
-| Category | Limits | Komentarze |
+| Kategoria | Limity | Komentarze |
 |:---|:---|:---|
-| Maksymalny rozmiar pojedynczego wpisu | 30 MB | Dziel większe woluminy na wiele wpisów. |
+| Maksymalny rozmiar pojedynczego wpisu | 30 MB | Podziel większe woluminy na wiele wpisów. |
 | Maksymalny rozmiar wartości pól  | 32 KB | Pola dłuższe niż 32 KB są obcinane. |
 
 **Interfejs API wyszukiwania**
 
-| Category | Limits | Komentarze |
+| Kategoria | Limity | Komentarze |
 |:---|:---|:---|
-| Maksymalna liczba rekordów zwracanych dla danych niezagregowanych | 5,000 | |
-| Maksymalna liczba rekordów dla danych zagregowanych | 500,000 | Zagregowane dane to wyszukiwanie obejmujące `summarize` polecenia. |
-| Maksymalny rozmiar danych zwróconych | 64,000,000 bajtów (~ 61 MiB)| |
-| Zapytanie maksymalny czas działania | 10 minut | Zobacz [przekroczeń limitu czasu](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts) Aby uzyskać szczegółowe informacje.  |
-| Maksymalna liczba żądań | 200 żądań na 30 sekund dla adresu IP klienta lub użytkownika usługi AAD | Zobacz [limity szybkości](https://dev.loganalytics.io/documentation/Using-the-API/Limits) Aby uzyskać szczegółowe informacje. |
+| Maksymalna liczba rekordów zwrócona w pojedynczym zapytaniu | 500,000 | |
+| Maksymalny rozmiar zwracanych danych | 64 000 000 bajtów (~ 61 MiB)| |
+| Maksymalny czas działania zapytania | 10 minut | Aby uzyskać szczegółowe informacje, zobacz [limity czasu](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts) .  |
+| Maksymalna liczba żądań | 200 żądań w ciągu 30 sekund na użytkownika usługi AAD lub adres IP klienta | Aby uzyskać szczegółowe informacje, zobacz [limity szybkości](https://dev.loganalytics.io/documentation/Using-the-API/Limits) . |
 
-**Limity ogólne obszaru roboczego**
+**Ogólne limity obszaru roboczego**
 
-| Category | Limits | Komentarze |
+| Kategoria | Limity | Komentarze |
 |:---|:---|:---|
 | Maksymalna liczba kolumn w tabeli         | 500 | |
-| Maksymalna liczba znaków dla nazwy kolumny | 500 | |
-| Regiony z wydajnością | Środkowo-zachodnie stany USA | Obecnie nie można utworzyć nowy obszar roboczy w tym regionie, ponieważ znajduje się na limit pojemności tymczasowych. Ten limit jest planowana skierowanych do końca września maja 2019 r. |
-| Eksportowanie danych | nie jest obecnie dostępna | Użyj funkcji platformy Azure lub aplikację logiki Umożliwia agregowanie danych i eksportowanie. | 
+| Maksymalna liczba znaków w nazwie kolumny | 500 | |
+| Regiony w pojemności | Środkowo-zachodnie stany USA | Obecnie nie można utworzyć nowego obszaru roboczego w tym regionie, ponieważ ma on tymczasowy limit pojemności. Ten limit jest planowany na podstawie końca października 2019. |
+| Eksport danych | Obecnie niedostępne | Agreguj i Eksportuj dane przy użyciu funkcji platformy Azure lub aplikacji logiki. | 
 
 >[!NOTE]
->W zależności od tego, jak długo używasz usługi Log Analytics mogą mieć dostęp do starszych warstw cenowych. Dowiedz się więcej o [starszej wersji usługi Log Analytics warstw cenowych](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers). 
+>W zależności od tego, jak długo korzystasz z Log Analytics, możesz mieć dostęp do starszych warstw cenowych. Dowiedz się więcej na temat [log Analytics starszych warstw cenowych](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#legacy-pricing-tiers). 

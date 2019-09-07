@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e303fe5ca1869249d57373aab9c60a5f92b7ea9c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60238051"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735104"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Diagnostyka Azure 1,3 i nowszy Schemat konfiguracji
 > [!NOTE]
@@ -27,13 +27,11 @@ ms.locfileid: "60238051"
 >
 > Ta strona ma zastosowanie tylko w przypadku korzystania z jednej z tych usług.
 
-Ta strona jest prawidłowa dla wersji 1,3 i nowszych (zestaw Azure SDK 2,4 i nowsze). W nowszych sekcjach konfiguracyjnych są wyświetlane Komentarze umożliwiające pokazanie, która wersja została dodana.  
+Ta strona jest prawidłowa dla wersji 1,3 i nowszych (zestaw Azure SDK 2,4 i nowsze). W nowszych sekcjach konfiguracyjnych są wyświetlane Komentarze umożliwiające pokazanie, która wersja została dodana. Wersje 1,0 i 1,2 schematu zostały zarchiwizowane i nie są już dostępne. 
 
 Opisany tutaj plik konfiguracyjny służy do ustawiania ustawień konfiguracji diagnostyki podczas uruchamiania monitora diagnostyki.  
 
 Rozszerzenie jest używane w połączeniu z innymi produktami diagnostyki firmy Microsoft, takimi jak Azure Monitor, które obejmują Application Insights i Log Analytics.
-
-
 
 Pobierz definicję schematu pliku konfiguracji publicznej, wykonując następujące polecenie programu PowerShell:  
 
@@ -431,7 +429,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**WadCfg**|Wymagane. Zobacz opis w innym miejscu na tej stronie.|  
+|**WadCfg**|Wymagany. Zobacz opis w innym miejscu na tej stronie.|  
 |**StorageAccount**|Nazwa konta usługi Azure Storage do przechowywania danych. Może być również określony jako parametr podczas wykonywania polecenia cmdlet Set-AzureServiceDiagnosticsExtension.|  
 |**StorageType**|Może to być *tabela*, *obiekt BLOB*lub *TableAndBlob*. Tabela jest domyślna. Po wybraniu TableAndBlob dane diagnostyczne są zapisywane dwa razy do każdego typu.|  
 |**LocalResourceDirectory**|Katalog na maszynie wirtualnej, w której Agent monitorowania przechowuje dane zdarzenia. Jeśli nie, ustaw, domyślny katalog jest używany:<br /><br /> Dla roli proces roboczy/Sieć Web:`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> Dla maszyny wirtualnej:`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> Wymagane atrybuty:<br /><br /> - **ścieżka** — katalog w systemie, który ma być używany przez Diagnostyka Azure.<br /><br /> - **expandEnvironment** — określa, czy zmienne środowiskowe są rozwinięte w nazwie ścieżki.|  
@@ -451,7 +449,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |----------------|-----------------|  
 | **overallQuotaInMB** | Maksymalna ilość miejsca na dysku lokalnym, która może być używana przez różne typy danych diagnostycznych zbieranych przez Diagnostyka Azure. Ustawienie domyślne to 4096 MB.<br />
 |**useProxyServer** | Skonfiguruj Diagnostyka Azure, aby używać ustawień serwera proxy jako ustawionych w ustawieniach programu IE.|
-|**ujścia** | Dodano w 1,5. Opcjonalna. Wskazuje lokalizację ujścia, aby wysłać również dane diagnostyczne dla wszystkich elementów podrzędnych, które obsługują ujścia. Przykładem ujścia jest Application Insights lub Event Hubs.|  
+|**ujścia** | Dodano w 1,5. Opcjonalny. Wskazuje lokalizację ujścia, aby wysłać również dane diagnostyczne dla wszystkich elementów podrzędnych, które obsługują ujścia. Przykładem ujścia jest Application Insights lub Event Hubs.|  
 
 
 <br /> <br />
@@ -477,12 +475,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Atrybuty|Opis|  
 |----------------|-----------------|  
 |**containerName**|Opcjonalny. Nazwa kontenera obiektów BLOB na koncie usługi Azure Storage, która będzie używana do przechowywania zrzutów awaryjnych.|  
-|**crashDumpType**|Opcjonalna.  Konfiguruje Diagnostyka Azure w celu zbierania danych o minimalnych lub pełnych zrzutach awaryjnych.|  
-|**directoryQuotaPercentage**|Opcjonalna.  Określa wartość procentową **overallQuotaInMB** do zarezerwowania na Zrzuty awaryjne na maszynie wirtualnej.|  
+|**crashDumpType**|Opcjonalny.  Konfiguruje Diagnostyka Azure w celu zbierania danych o minimalnych lub pełnych zrzutach awaryjnych.|  
+|**directoryQuotaPercentage**|Opcjonalny.  Określa wartość procentową **overallQuotaInMB** do zarezerwowania na Zrzuty awaryjne na maszynie wirtualnej.|  
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**CrashDumpConfiguration**|Wymagany. Definiuje wartości konfiguracyjne dla każdego procesu.<br /><br /> Wymagany jest również następujący atrybut:<br /><br /> **ProcessName** — nazwa procesu, który ma Diagnostyka Azure zbierać zrzut awaryjny dla.|  
+|**CrashDumpConfiguration**|Wymagana. Definiuje wartości konfiguracyjne dla każdego procesu.<br /><br /> Wymagany jest również następujący atrybut:<br /><br /> **ProcessName** — nazwa procesu, który ma Diagnostyka Azure zbierać zrzut awaryjny dla.|  
 
 ## <a name="directories-element"></a>Elementy katalogów
  *Drzewa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-katalogi*
@@ -507,7 +505,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
-|**DirectoryConfiguration**|Wymagana. Wymagany atrybut:<br /><br /> **ContainerName** — nazwa kontenera obiektów BLOB na koncie usługi Azure Storage, która ma być używana do przechowywania plików dziennika.|  
+|**DirectoryConfiguration**|Wymagany. Wymagany atrybut:<br /><br /> **ContainerName** — nazwa kontenera obiektów BLOB na koncie usługi Azure Storage, która ma być używana do przechowywania plików dziennika.|  
 
 
 
@@ -516,7 +514,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration, element  
  *Drzewa Root-DiagnosticsConfiguration-PublicConfig-WadCFG-DiagnosticMonitorConfiguration-katalogi-DataSources-DirectoryConfiguration*
 
- Może zawierać element bezwzględny lub **LocalResource** , ale nie oba jednocześnie.  
+ Może zawierać element **bezwzględny** lub **LocalResource** , ale nie oba jednocześnie.  
 
 |Elementy podrzędne|Opis|  
 |--------------------|-----------------|  
@@ -613,8 +611,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|Opcjonalny. Określa maksymalną ilość magazynu systemu plików, który jest dostępny dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
-|**scheduledTransferLogLevelFilter**|**string**|Opcjonalny. Określa minimalny poziom ważności wpisów dziennika, które są transferowane. Wartość domyślna to undefined, która przenosi wszystkie dzienniki. Inne możliwe wartości (w kolejności od największej do najmniejszej ilości informacji) to **pełny**, **informacyjny**, **ostrzegawczy**, **błąd**i **krytyczny**.|  
-|**scheduledTransferPeriod**|**Czas trwania**|Opcjonalny. Określa interwał między planowanymi transferami danych zaokrągloną w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
+|**scheduledTransferLogLevelFilter**|**string**|Opcjonalna. Określa minimalny poziom ważności wpisów dziennika, które są transferowane. Wartość domyślna to **undefined**, która przenosi wszystkie dzienniki. Inne możliwe wartości (w kolejności od największej do najmniejszej ilości informacji) to **pełny**, **informacyjny**, **ostrzegawczy**, **błąd**i **krytyczny**.|  
+|**scheduledTransferPeriod**|**Czas trwania**|Opcjonalna. Określa interwał między planowanymi transferami danych zaokrągloną w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
 |**ujścia** |**string**| Dodano w 1,5. Opcjonalna. Wskazuje lokalizację ujścia, aby również wysyłać dane diagnostyczne. Na przykład Application Insights lub Event Hubs.|  
 
 ## <a name="dockersources"></a>DockerSources
@@ -671,7 +669,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Atrybuty|Type|Opis|  
 |----------------|----------|-----------------|  
-|**logLevel**|**string**|Określa minimalny poziom ważności wpisów dziennika, które są transferowane. Wartość domyślna to undefined, która przenosi wszystkie dzienniki. Inne możliwe wartości (w kolejności od największej do najmniejszej ilości informacji) to **pełny**, **informacyjny**, **ostrzegawczy**, **błąd**i **krytyczny**.|  
+|**logLevel**|**string**|Określa minimalny poziom ważności wpisów dziennika, które są transferowane. Wartość domyślna to **undefined**, która przenosi wszystkie dzienniki. Inne możliwe wartości (w kolejności od największej do najmniejszej ilości informacji) to **pełny**, **informacyjny**, **ostrzegawczy**, **błąd**i **krytyczny**.|  
 |**name**|**string**|Unikatowa nazwa kanału, do którego odwołuje się|  
 
 

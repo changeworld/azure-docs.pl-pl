@@ -1,5 +1,5 @@
 ---
-title: Konfiguracja klastra dla Apache Hadoop, Apache Spark, Apache Kafka, Apache HBase lub R Server — Azure HDInsight
+title: Konfiguracja klastra dla Apache Hadoop, Spark, Kafka, HBase lub R Server — Azure
 description: Konfigurowanie klastrów Hadoop, Kafka, Spark, HBase, R Server lub burzy dla usługi HDInsight z poziomu przeglądarki, klasycznego interfejsu wiersza polecenia platformy Azure, Azure PowerShell, REST lub zestawu SDK.
 keywords: Konfiguracja klastra usługi Hadoop, Konfiguracja klastra Kafka, Konfiguracja klastra Spark, co to jest klaster w usłudze Hadoop
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.openlocfilehash: c2aad97cea39221da56666dbeff72ce56fcb2a22
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: f59455374299e25d0c5d6a06c7ec9efc1f220ecf
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70113696"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733486"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Konfigurowanie klastrów w usłudze HDInsight przy użyciu Apache Hadoop, Apache Spark, Apache Kafka i innych
 
@@ -107,7 +107,7 @@ Pakiet Enterprise Security Package umożliwia integrację usługi HDInsight z us
 
 ## <a name="location"></a>Lokalizacja (regiony) klastrów i magazynu
 
-Nie musisz jawnie określać lokalizacji klastra: Klaster znajduje się w tej samej lokalizacji co magazyn domyślny. Aby uzyskać listę obsługiwanych regionów, kliknij listę rozwijaną **region** w cenniku usługi [HDInsight](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
+Nie musisz jawnie określać lokalizacji klastra: Klaster znajduje się w tej samej lokalizacji co magazyn domyślny. Aby uzyskać listę obsługiwanych regionów, kliknij listę rozwijaną **region** w [cenniku usługi HDInsight](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409).
 
 ## <a name="storage-endpoints-for-clusters"></a>Punkty końcowe magazynu dla klastrów
 

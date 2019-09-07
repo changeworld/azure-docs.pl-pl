@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 05/04/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ea3f4f295da747b3a53956c0888797a5f8607d6e
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 25a0ef528d67deb5ea71720d2ff8e4d62b3b98a5
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310472"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744566"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Samouczek: Automatyzowanie kompilacji obrazu kontenera w chmurze po zatwierdzeniu kodu źródłowego
 
 Oprócz [szybkiego zadania](container-registry-tutorial-quick-task.md)zadania ACR obsługują zautomatyzowane kompilacje obrazów kontenerów platformy Docker w chmurze podczas zatwierdzania kodu źródłowego w repozytorium git.
 
-W tym samouczku zadanie ACR kompiluje i wypycha pojedynczy obraz kontenera określony w pliku dockerfile podczas zatwierdzania kodu źródłowego w repozytorium git. Aby utworzyć [zadanie](container-registry-tasks-multi-step.md) wieloetapowe używające pliku YAML do definiowania kroków do kompilowania, wypychania i opcjonalnego testowania wielu kontenerów przy przekazywaniu kodu [, zobacz Samouczek: Uruchamianie wieloetapowego przepływu pracy kontenera w chmurze podczas zatwierdzania kodu](container-registry-tutorial-multistep-task.md)źródłowego. Aby zapoznać się z omówieniem zadań ACR, zobacz [Automatyzowanie poprawek systemu operacyjnego i platformy przy użyciu zadań ACR](container-registry-tasks-overview.md)
+W tym samouczku zadanie ACR kompiluje i wypycha pojedynczy obraz kontenera określony w pliku dockerfile podczas zatwierdzania kodu źródłowego w repozytorium git. Aby utworzyć [zadanie wieloetapowe](container-registry-tasks-multi-step.md) używające pliku YAML do definiowania kroków do kompilowania, wypychania i opcjonalnego testowania wielu kontenerów przy przekazywaniu kodu [, zobacz Samouczek: Uruchamianie wieloetapowego przepływu pracy kontenera w chmurze podczas zatwierdzania kodu](container-registry-tutorial-multistep-task.md)źródłowego. Aby zapoznać się z omówieniem zadań ACR, zobacz [Automatyzowanie poprawek systemu operacyjnego i platformy przy użyciu zadań ACR](container-registry-tasks-overview.md)
 
 W tym samouczku:
 
@@ -58,7 +58,6 @@ az acr task create \
     --name taskhelloworld \
     --image helloworld:{{.Run.ID}} \
     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
-    --branch master \
     --file Dockerfile \
     --git-access-token $GIT_PAT
 ```
@@ -271,7 +270,7 @@ da2       taskhelloworld  Linux       Succeeded  Manual      2018-09-17T22:50:59
 da1                       Linux       Succeeded  Manual      2018-09-17T22:29:59Z  00:00:57
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku pokazano, jak używać zadania w celu automatycznego wyzwalania kompilacji obrazu kontenera na platformie Azure po zatwierdzeniu kodu źródłowego do repozytorium Git. Przejdź do kolejnego samouczka, aby dowiedzieć się, jak utworzyć zadania, które wyzwalają kompilacje przy aktualizacji obrazu podstawowego obrazu kontenera.
 

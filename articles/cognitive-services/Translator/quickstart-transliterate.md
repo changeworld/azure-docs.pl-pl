@@ -1,22 +1,22 @@
 ---
 title: 'Szybki start: Konwertuj skrypt tekstowy — tłumaczenie tekstu w usłudze Translator'
 titleSuffix: Azure Cognitive Services
-description: W tym przewodniku szybki start dowiesz się, jak zatransliteracjć (konwertowanie) tekstu z jednego skryptu na inny przy użyciu interfejsu API REST tłumaczenie tekstu w usłudze Translator. W tym przykładzie tekst w języku japońskim jest transliterowany na alfabet łaciński.
+description: W tym przewodniku szybki start dowiesz się, jak zatransliteracjć (konwertowanie) tekstu z jednego skryptu na inny przy użyciu interfejs API tłumaczenia tekstu w usłudze Translator. W tym przykładzie tekst w języku japońskim jest transliterowany na alfabet łaciński.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 08/19/2019
+ms.date: 09/05/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 1ed753e9fe24b729f2efeb32bd99f5a721a57083
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: b1da3904c0081a7948adc233878a9a30727f3b37
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906615"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70393915"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text"></a>Szybki start: Użyj interfejs API tłumaczenia tekstu w usłudze Translator do zatransliteracji tekstu
 

@@ -1,17 +1,17 @@
 ---
-title: Błąd Jupyter serwera 404 "nie znaleziono" z powodu "blokowania interfejsu API między źródłami" w usłudze Azure HDInsight
+title: Błąd Jupyter serwera 404 z powodu "blokowania interfejsu API między źródłami" w usłudze Azure HDInsight
 description: Błąd Jupyter serwera 404 "nie znaleziono" z powodu "blokowania interfejsu API między źródłami" w usłudze Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/29/2019
-ms.openlocfilehash: 57ecf081b48097b04d8379119d9a08f0b980494d
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 291fc7f385f652005f44c3e0cd52d4929e914989
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68664968"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736186"
 ---
 # <a name="scenario-jupyter-server-404-not-found-error-due-to-blocking-cross-origin-api-in-azure-hdinsight"></a>Scenariusz: Błąd Jupyter serwera 404 "nie znaleziono" z powodu "blokowania interfejsu API między źródłami" w usłudze Azure HDInsight
 

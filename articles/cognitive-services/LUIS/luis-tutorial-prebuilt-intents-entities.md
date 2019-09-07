@@ -1,5 +1,5 @@
 ---
-title: Prebudowane intencje i jednostki — LUIS
+title: 'Samouczek: Prebudowane intencje i jednostki — LUIS'
 titleSuffix: Azure Cognitive Services
 description: W tym samouczku dodasz wstępnie utworzone intencje i jednostki do aplikacji, aby szybko zyskać funkcje przewidywania intencji i wyodrębniania danych. Nie musisz oznaczać żadnych wypowiedzi za pomocą wstępnie utworzonych jednostek. Jednostka jest wykrywana automatycznie.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 4697bad15a374bed0de08b7cabc5aceaad7f1259
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: aaeddac98e3f192d5e6a87ecfd48005526379ff2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876706"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390981"
 ---
 # <a name="tutorial-identify-common-intents-and-entities"></a>Samouczek: identyfikowanie typowych intencji i jednostek
 

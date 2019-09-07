@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie kopii zapasowej bazy danych Apache HBase i Apache Phoenix i replikacji — Azure HDInsight
-description: Konfigurowanie replikacji bazy danych HBase i rozwiązania Phoenix i kopii zapasowych.
+title: Tworzenie kopii zapasowych i replikacja dla oprogramowania Apache HBase i Apache Phoenix w usłudze Azure HDInsight
+description: Skonfiguruj kopie zapasowe i replikację dla HBase i Phoenix.
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,95 +8,95 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: e60aef7b1848197f41f96a1b5f5414bb0c8f4a15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a1b6e850fab5e9b9b651de9d02ee7981d71a343c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696375"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735910"
 ---
-# <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Konfigurowanie kopii zapasowej i replikacji dla bazy danych Apache HBase i Apache Phoenix w HDInsight
+# <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Konfigurowanie kopii zapasowych i replikacji dla oprogramowania Apache HBase i Apache Phoenix w usłudze HDInsight
 
-Ochrona przed utratą danych Apache HBase obsługuje kilka metod:
+Program Apache HBase obsługuje kilka metod ochrony przed utratą danych:
 
-* Kopiuj `hbase` folderu
-* Następnie zaimportuj eksportu
-* Kopiowanie tabel
+* `hbase` Kopiuj folder
+* Eksportuj, a następnie Importuj
+* Kopiuj tabele
 * Migawki
 * Replikacja
 
 > [!NOTE]  
-> Apache Phoenix przechowuje jego metadane w tabelach HBase, dzięki czemu metadanych kopia zapasowa jest tworzona podczas wykonywania kopii zapasowej katalogu tabele systemowe bazy danych HBase.
+> Apache Phoenix przechowuje metadane w tabelach HBase, co umożliwia utworzenie kopii zapasowej metadanych podczas tworzenia kopii zapasowej tabel wykazu systemu HBase.
 
 W poniższych sekcjach opisano scenariusz użycia dla każdego z tych metod.
 
-## <a name="copy-the-hbase-folder"></a>Skopiuj folder bazy danych hbase
+## <a name="copy-the-hbase-folder"></a>Skopiuj folder HBase
 
-Nie jest możliwe wybranie podzbioru tabel lub rodziny kolumn, w przypadku tej metody, skopiuj wszystkie dane z bazy danych HBase. Kolejne podejścia zapewniają większą kontrolę.
+To podejście polega na skopiowaniu wszystkich danych HBase, bez możliwości wyboru podzbioru tabel lub kolumn. Kolejne podejścia zapewniają większą kontrolę.
 
-Baza danych HBase w HDInsight korzysta z domyślnego magazynu wybrane podczas tworzenia klastra usługi Azure Storage blob lub magazynu usługi Azure Data Lake. W obu przypadkach HBase przechowuje jego plików danych i metadanych w następującej ścieżce:
+HBase w usłudze HDInsight używa domyślnego magazynu wybranego podczas tworzenia klastra, obiektów BLOB usługi Azure Storage lub Azure Data Lake Storage. W obu przypadkach HBase przechowuje dane i pliki metadanych w następującej ścieżce:
 
     /hbase
 
-* Na koncie usługi Azure Storage `hbase` folder znajduje się w folderze głównym określonego kontenera obiektów blob:
+* Na koncie `hbase` usługi Azure Storage folder znajduje się w katalogu głównym kontenera obiektów blob:
 
     ```
     wasbs://<containername>@<accountname>.blob.core.windows.net/hbase
     ```
 
-* W usłudze Azure Data Lake Storage `hbase` folder znajduje się w ścieżce katalogu głównego, zostały określone podczas inicjowania obsługi klastra. Zazwyczaj jest to ścieżka katalogu głównego `clusters` folderem podfolder o nazwie po klastra usługi HDInsight:
+* W Azure Data Lake Storage `hbase` folder znajduje się w ścieżce katalogu głównego określonego podczas aprowizacji klastra. Ta ścieżka katalogu głównego zazwyczaj ma `clusters` folder z podfolderem o nazwie po klastrze usługi HDInsight:
 
     ```
     /clusters/<clusterName>/hbase
     ```
 
-W obu przypadkach `hbase` folder zawiera wszystkie dane, które bazy danych HBase jest opróżniany do dysku, ale nie może zawierać dane w pamięci. Zanim możesz polegać na ten folder jako dokładne reprezentacja danych HBase, należy zamknąć klastra.
+W obu przypadkach `hbase` folder zawiera wszystkie dane, które HBase zostały opróżnione na dysk, ale nie mogą zawierać danych znajdujących się w pamięci. Zanim będzie można polegać na tym folderze jako dokładnej reprezentacji danych HBase, należy zamknąć klaster.
 
-Po usunięciu klastra, możesz pozostawić dane w miejscu lub skopiować dane do nowej lokalizacji:
+Po usunięciu klastra można pozostawić dane na miejscu lub skopiować dane do nowej lokalizacji:
 
-* Utwórz nowe wystąpienie HDInsight wskazuje bieżącą lokalizację magazynu. Z istniejącymi danymi tworzone jest nowe wystąpienie.
+* Utwórz nowe wystąpienie usługi HDInsight wskazujące bieżącą lokalizację magazynu. Nowe wystąpienie jest tworzone ze wszystkimi istniejącymi danymi.
 
-* Kopiuj `hbase` folderu do innego magazynu Azure blob kontenera lub lokalizacji magazynu usługi Data Lake i uruchom nowy klaster z tymi danymi. W przypadku usługi Azure Storage, użyj [AzCopy](../../storage/common/storage-use-azcopy.md)i do użycia usługi Data Lake Storage [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md).
+* `hbase` Skopiuj folder do innego kontenera obiektów BLOB usługi Azure Storage lub lokalizacji Data Lake Storage, a następnie uruchom nowy klaster z tymi danymi. W przypadku usługi Azure Storage Użyj [AzCopy](../../storage/common/storage-use-azcopy.md), a w przypadku Data Lake Storage Użyj [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md).
 
-## <a name="export-then-import"></a>Następnie zaimportuj eksportu
+## <a name="export-then-import"></a>Eksportuj, a następnie Importuj
 
-W klastrze HDInsight źródła narzędzie eksportu (dołączone do bazy danych HBase) eksportowanie danych z tabeli źródłowej do domyślny, dołączony magazyn. Możesz następnie skopiować folder wyeksportowane do lokalizacji magazynu docelowego i uruchom narzędzie importu w docelowym klastrze HDInsight.
+W źródłowym klastrze usługi HDInsight Użyj narzędzia eksportu (dołączonego do HBase) do eksportowania danych z tabeli źródłowej do domyślnego dołączonego magazynu. Następnie można skopiować wyeksportowany folder do lokalizacji magazynu docelowego i uruchomić narzędzie Import w docelowym klastrze usługi HDInsight.
 
-Aby wyeksportować tabelę pierwszy SSH do węzła głównego klastra usługi HDInsight źródła i następnie uruchom następujące polecenie, `hbase` polecenia:
+Aby wyeksportować tabelę, najpierw SSH do węzła głównego źródłowego klastra usługi HDInsight, a następnie uruchom następujące `hbase` polecenie:
 
     hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>"
 
-Aby zaimportować tabelę, SSH do węzła głównego klastra usługi HDInsight docelowego, a następnie uruchom następujące `hbase` polecenia:
+Aby zaimportować tabelę, Użyj protokołu SSH do węzła głównego docelowego klastra usługi HDInsight, a następnie uruchom następujące `hbase` polecenie:
 
     hbase org.apache.hadoop.hbase.mapreduce.Import "<tableName>" "/<path>/<to>/<export>"
 
-Określ ścieżkę pełną eksportu do domyślnego magazynu lub jedną z opcji dołączonego magazynu. Na przykład w usłudze Azure Storage:
+Określ pełną ścieżkę eksportu do magazynu domyślnego lub dowolną z dołączonych opcji magazynu. Na przykład w usłudze Azure Storage:
 
     wasbs://<containername>@<accountname>.blob.core.windows.net/<path>
 
-W usłudze Azure Data Lake magazynu Gen2 składnia jest następująca:
+W Azure Data Lake Storage Gen2 składnia jest następująca:
 
     abfs://<containername>@<accountname>.dfs.core.windows.net/<path>
 
-W usłudze Azure Data Lake magazynu Gen1 składnia jest następująca:
+W Azure Data Lake Storage Gen1 składnia jest następująca:
 
     adl://<accountName>.azuredatalakestore.net:443/<path>
 
-To podejście zapewnia poziom szczegółowości na poziomie tabeli. Można również określić zakres dat dla wierszy uwzględnić, co pozwala na wykonanie procesu przyrostowo. Każdy przypada w milisekundach od początku epoki systemu Unix.
+Takie podejście oferuje stopień szczegółowości poziomu tabeli. Możesz również określić zakres dat do uwzględnienia w wierszach, co pozwala na przyrostowe wykonywanie procesu. Każda Data jest w milisekundach od czasu epoki systemu UNIX.
 
     hbase org.apache.hadoop.hbase.mapreduce.Export "<tableName>" "/<path>/<to>/<export>" <numberOfVersions> <startTimeInMS> <endTimeInMS>
 
-Pamiętaj, że należy określić liczbę wersji każdego wiersza do wyeksportowania. Aby dołączyć wszystkie wersje zakres dat, ustaw `<numberOfVersions>` do wartości większej niż swoje wersje maksymalna możliwa wiersz, takie jak 100000.
+Należy pamiętać, że należy określić liczbę wersji każdego wiersza do wyeksportowania. Aby uwzględnić wszystkie wersje w zakresie dat, ustaw `<numberOfVersions>` wartość większą niż maksymalna możliwa wersja wiersza, taka jak 100000.
 
-## <a name="copy-tables"></a>Kopiowanie tabel
+## <a name="copy-tables"></a>Kopiuj tabele
 
-Narzędzie CopyTable kopiuje dane z tabeli źródłowej, wiersz po wierszu, do istniejącej tabeli docelowej za pomocą tego samego schematu jako źródło. Tabela docelowa może być na tym samym klastrze lub do innego klastra HBase.
+Narzędzie kopiowania kopiuje dane z tabeli źródłowej, wiersz po wierszu do istniejącej tabeli docelowej z tym samym schematem co źródło. Tabela docelowa może znajdować się w tym samym klastrze lub innym klastrze HBase.
 
-Aby użyć CopyTable w klastrze, SSH do węzła głównego klastra usługi HDInsight źródła, a następnie uruchom to `hbase` polecenia:
+Aby używać kopiowania w obrębie klastra, należy użyć protokołu SSH do węzła głównego źródłowego klastra usługi HDInsight, a następnie uruchomić `hbase` to polecenie:
 
     hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> <srcTableName>
 
-Aby użyć CopyTable do skopiowania do tabeli w innym klastrze, należy dodać `peer` Przełącz się z adres klastra docelowego:
+Aby użyć kopiowania do skopiowania do tabeli w innym klastrze, należy dodać `peer` przełącznik z adresem klastra docelowego:
 
     hbase org.apache.hadoop.hbase.mapreduce.CopyTable --new.name=<destTableName> --peer.adr=<destinationAddress> <srcTableName>
 
@@ -104,48 +104,48 @@ Adres docelowy składa się z następujących trzech części:
 
     <destinationAddress> = <ZooKeeperQuorum>:<Port>:<ZnodeParent>
 
-* `<ZooKeeperQuorum>` jest rozdzielaną przecinkami listę węzłów Apache ZooKeeper, na przykład:
+* `<ZooKeeperQuorum>`jest rozdzielaną przecinkami listą węzłów Apache ZooKeeper, na przykład:
 
     zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net
 
-* `<Port>` ustawieniami domyślnymi HDInsight do 2181 i `<ZnodeParent>` jest `/hbase-unsecure`, dlatego pełny `<destinationAddress>` będzie:
+* `<Port>`w przypadku usługi HDInsight wartość domyślna to `<ZnodeParent>` 2181 `/hbase-unsecure`, a więc kompletność `<destinationAddress>` :
 
     zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net:2181:/hbase-unsecure
 
-Zobacz [ręcznego gromadzenia listy kworum dozorcy Apache](#manually-collect-the-apache-zookeeper-quorum-list) w tym artykule, aby uzyskać szczegółowe informacje na temat sposobu pobierania tych wartości dla klastra usługi HDInsight.
+Aby uzyskać szczegółowe informacje o tym, jak pobrać te wartości dla klastra usługi HDInsight, zobacz temat [ręczne zbieranie listy Apache ZooKeeper kworum](#manually-collect-the-apache-zookeeper-quorum-list) w tym artykule.
 
-Narzędzie CopyTable obsługuje również parametry, aby określić zakres czasu wierszy, aby skopiować, a także określić podzbiór rodziny kolumn w tabeli, aby skopiować. Aby wyświetlić pełną listę parametrów obsługiwanych przez CopyTable, uruchom CopyTable bez żadnych parametrów:
+Narzędzie kopiowania obsługuje również parametry, aby określić zakres czasu do skopiowania i określić podzestaw rodzin kolumn w tabeli do skopiowania. Aby wyświetlić pełną listę parametrów obsługiwanych przez program kopiujący, uruchom polecenie KopiujObiekt bez żadnych parametrów:
 
     hbase org.apache.hadoop.hbase.mapreduce.CopyTable
 
-CopyTable skanuje źródło całej zawartości tabeli, które mają zostać skopiowane do tabeli docelowej. Może to zmniejszyć wydajność klastra HBase, podczas CopyTable wykonuje.
+Program copys skanuje całą zawartość tabeli źródłowej, która zostanie skopiowana do tabeli docelowej. Może to zmniejszyć wydajność klastra HBase podczas wykonywania kopiowania.
 
 > [!NOTE]  
-> Aby zautomatyzować kopiowanie danych między tabelami, zobacz `hdi_copy_table.sh` skryptu w [Utils bazy danych HBase w usłudze Azure](https://github.com/Azure/hbase-utils/tree/master/replication) repozytorium w witrynie GitHub.
+> Aby zautomatyzować kopiowanie danych między tabelami, zobacz `hdi_copy_table.sh` skrypt w repozytorium narzędzia [Azure HBase](https://github.com/Azure/hbase-utils/tree/master/replication) w witrynie GitHub.
 
-### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>Ręcznego zebrania kworum Apache ZooKeeper listy
+### <a name="manually-collect-the-apache-zookeeper-quorum-list"></a>Ręcznie Zbierz listę Apache ZooKeeper kworum
 
-W przypadku obu klastrach HDInsight znajdują się w tej samej sieci wirtualnej, zgodnie z opisem w poprzedniej sekcji, rozpoznawanie nazwy hosta wewnętrznego jest automatycznie. Aby użyć CopyTable klastrów HDInsight w dwóch odrębnych sieci wirtualne połączone przez bramę sieci VPN, należy podać hosta adresów IP węzłów dozorcy kworum.
+Gdy oba klastry usługi HDInsight znajdują się w tej samej sieci wirtualnej, zgodnie z wcześniejszym opisem, wewnętrzne rozpoznawanie nazw hostów jest automatyczne. Aby użyć programu copys dla klastrów usługi HDInsight w dwóch oddzielnych sieciach wirtualnych połączonych VPN Gateway, należy podać adresy IP hostów węzłów dozorcy w kworum.
 
-Uzyskanie nazwy hostów kworum, uruchom następujące polecenie curl:
+Aby uzyskać nazwy hostów kworum, uruchom następujące polecenie:
 
     curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/configurations?type=hbase-site&tag=TOPOLOGY_RESOLVED" | grep "hbase.zookeeper.quorum"
 
-Polecenie programu curl pobiera dokument JSON przy użyciu informacji o konfiguracji bazy danych HBase i grep polecenie zwraca tylko wpis "hbase.zookeeper.quorum", na przykład:
+Polecenie zwinięcie pobiera dokument JSON z informacjami o konfiguracji HBase, a polecenie grep zwraca tylko wpis "HBase. dozorcy. kworum", na przykład:
 
     "hbase.zookeeper.quorum" : "zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk4-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net,zk3-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net"
 
-Wartość nazwy hosta kworum jest cały ciąg po prawej stronie dwukropkiem.
+Wartość nazwy hosta kworum to cały ciąg z prawej strony dwukropka.
 
-Aby pobrać adresy IP dla tych hostów, należy użyć następującego polecenia curl dla każdego hosta na poprzedniej liście:
+Aby pobrać adresy IP dla tych hostów, użyj następującego polecenia zwinięcie dla każdego hosta na poprzedniej liście:
 
     curl -u admin:<password> -X GET -H "X-Requested-By: ambari" "https://<clusterName>.azurehdinsight.net/api/v1/clusters/<clusterName>/hosts/<zookeeperHostFullName>" | grep "ip"
 
-W tym poleceniu curl `<zookeeperHostFullName>` jest pełną nazwą DNS hosta ZooKeeper, takiego jak przykładowy `zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net`. Dane wyjściowe polecenia zawierają na przykład adres IP dla określonego hosta:
+W tym zaleceniu `<zookeeperHostFullName>` jest pełną nazwą DNS hosta dozorcy, `zk0-hdizc2.54o2oqawzlwevlfxgay2500xtg.dx.internal.cloudapp.net`na przykład. Dane wyjściowe polecenia zawierają adres IP dla określonego hosta, na przykład:
 
     100    "ip" : "10.0.0.9",
 
-Po zebraniu adresów IP dla wszystkich węzłów dozorcy w swojej kworum, należy ponownie skompilować adres docelowy:
+Po zebraniu adresów IP dla wszystkich węzłów dozorcy w kworum należy ponownie skompilować adres docelowy:
 
     <destinationAddress>  = <Host_1_IP>,<Host_2_IP>,<Host_3_IP>:<Port>:<ZnodeParent>
 
@@ -155,57 +155,57 @@ W naszym przykładzie:
 
 ## <a name="snapshots"></a>Migawki
 
-Migawki pozwalają wzięcie punktu w czasie tworzenia kopii zapasowych danych w magazyn danych z bazy danych HBase. Migawki mają minimalne obciążenie i ukończyć w ciągu sekund, ponieważ operacja migawki jest skutecznie przechwytywania nazwy wszystkich plików w magazynie w tej chwili operacja na metadanych. W momencie migawki nie rzeczywiste dane są kopiowane. Migawki zależą od niezmienne rodzaj danych przechowywanych w systemie plików HDFS, w którym aktualizacje, usunięcia i wstawienia są reprezentowane jako nowe dane. Możesz przywrócić (*klonowania*) migawki na tym samym klastrze lub Eksportuj migawkę do innego klastra.
+Migawki umożliwiają tworzenie kopii zapasowych danych z punktu widzenia w czasie do magazynu HBase. Migawki mają minimalne obciążenie i ukończone w ciągu kilku sekund, ponieważ operacja migawki jest efektywnie operacją metadanych przechwytującą nazwy wszystkich plików znajdujących się w magazynie. W czasie wykonywania migawki nie są kopiowane rzeczywiste dane. Migawki polegają na niezmiennej naturze danych przechowywanych w systemie plików HDFS, gdzie aktualizacje, usunięcia i wstawienia są reprezentowane jako nowe dane. Można przywrócić (*klonować*) migawkę w tym samym klastrze lub wyeksportować migawkę do innego klastra.
 
-Do tworzenia migawek, SSH w do węzła głównego hbase usługi HDInsight, klaster i rozpocząć `hbase` powłoki:
+Aby utworzyć migawkę, SSH do węzła głównego klastra usługi HDInsight HBase i uruchom `hbase` powłokę:
 
     hbase shell
 
-W ramach powłoki hbase polecenie migawki za pomocą nazwy tabeli i tej migawki:
+W obrębie powłoki HBase Użyj polecenia Snapshot z nazwami tabeli i tej migawki:
 
     snapshot '<tableName>', '<snapshotName>'
 
-Można przywrócić migawki według nazwy w obrębie `hbase` powłoki, najpierw wyłącz tabeli, a następnie przywrócić migawki i ponownie włącz tabeli:
+Aby przywrócić migawkę według nazwy w ramach `hbase` powłoki, najpierw wyłącz tabelę, a następnie Przywróć migawkę i ponownie włącz tabelę:
 
     disable '<tableName>'
     restore_snapshot '<snapshotName>'
     enable '<tableName>'
 
-Aby przywrócić migawki do nowej tabeli, należy użyć clone_snapshot:
+Aby przywrócić migawkę do nowej tabeli, użyj clone_snapshot:
 
     clone_snapshot '<snapshotName>', '<newTableName>'
 
-Aby wyeksportować migawkę do systemu plików HDFS do użytku przez inny klaster, najpierw Utwórz migawkę, zgodnie z opisem w poprzedniej sekcji, a następnie użyj narzędzia ExportSnapshot. Uruchom to narzędzie z w ramach sesji SSH z węzłem głównym, nie w ramach `hbase` powłoki:
+Aby wyeksportować migawkę do systemu plików HDFS w celu użycia przez inny klaster, najpierw utwórz migawkę zgodnie z opisem wcześniej, a następnie użyj narzędzia ExportSnapshot. Uruchom to narzędzie z poziomu sesji SSH do węzła głównego, a nie w ramach `hbase` powłoki:
 
      hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot <snapshotName> -copy-to <hdfsHBaseLocation>
 
-`<hdfsHBaseLocation>` Może być dowolną z lokalizacji magazynu dostępne dla klastra źródłowego i powinien wskazywać folder bazy danych hbase, używany przez Twój klaster docelowy. Na przykład jeśli masz pomocniczego konta usługi Azure Storage dołączone do klastra źródłowego, a to konto zapewnia dostęp do kontenera, użyty przez domyślnego magazynu klastra docelowego, można użyć tego polecenia:
+`<hdfsHBaseLocation>` Może to być dowolna lokalizacja magazynu dostępna dla klastra źródłowego i powinna wskazywać folder HBase używany przez klaster docelowy. Jeśli na przykład masz dołączone konto magazynu platformy Azure do klastra źródłowego i to konto zapewnia dostęp do kontenera używanego przez domyślny magazyn klastra docelowego, można użyć tego polecenia:
 
     hbase org.apache.hadoop.hbase.snapshot.ExportSnapshot -snapshot 'Snapshot1' -copy-to 'wasbs://secondcluster@myaccount.blob.core.windows.net/hbase'
 
-Po wyeksportowaniu migawki SSH z węzłem głównym klastra docelowego i przywracanie migawki za pomocą restore_snapshot poleceń w postaci opisany wcześniej.
+Po wyeksportowaniu migawki, Użyj protokołu SSH do węzła głównego klastra docelowego i Przywróć migawkę przy użyciu polecenia restore_snapshot, jak opisano wcześniej.
 
-Migawki zapewniają pełna kopia zapasowa tabeli w czasie `snapshot` polecenia. Migawki są oferowane możliwości wykonywania migawek przyrostowych przez system windows czasu ani określić podzbiór rodzin kolumn do uwzględnienia w migawce.
+Migawki zapewniają kompletną kopię zapasową tabeli w czasie `snapshot` wykonywania polecenia. Migawki nie zapewniają możliwości wykonywania migawek przyrostowych przez okna czasu ani nie określają podzbiorów rodzin kolumn do uwzględnienia w migawce.
 
 ## <a name="replication"></a>Replikacja
 
-Replikacji bazy danych HBase automatycznie wypycha transakcji w źródłowym klastrze docelowym klastrze przy użyciu mechanizmu asynchronicznego przy minimalnym obciążeniu w klastrze źródłowym. W HDInsight, możesz skonfigurować replikację między klastrami gdzie:
+Replikacja HBase automatycznie wypychanie transakcji z klastra źródłowego do klastra docelowego przy użyciu mechanizmu asynchronicznego o minimalnym obciążeniu w klastrze źródłowym. W usłudze HDInsight można skonfigurować replikację między klastrami, gdzie:
 
-* Klastry źródłowy i docelowy znajdują się w tej samej sieci wirtualnej.
-* Klastry źródła i miejsca docelowe są w różnych sieciach wirtualnych połączonych przez bramę sieci VPN, ale starym istnieje w tej samej lokalizacji geograficznej.
-* Klastra źródłowego i klastrów miejsc docelowych znajdują się w różnych sieciach wirtualnych połączonych przez bramę sieci VPN, a każdy klaster istnieje w innej lokalizacji geograficznej.
+* Klastry źródłowe i docelowe znajdują się w tej samej sieci wirtualnej.
+* Klastry źródłowe i docelowe znajdują się w różnych sieciach wirtualnych połączonych przez bramę sieci VPN, ale oba te klastry znajdują się w tej samej lokalizacji geograficznej.
+* Klastry źródłowe i docelowe znajdują się w różnych sieciach wirtualnych połączonych przez bramę sieci VPN, a każdy klaster istnieje w innej lokalizacji geograficznej.
 
-Dostępne są następujące ogólne kroki, aby skonfigurować replikację:
+Poniżej przedstawiono ogólne kroki konfigurowania replikacji:
 
-1. W klastrze źródłowym tworzenia tabel, a następnie wprowadź dane.
-2. W klastrze docelowym Tworzenie tabel docelowych pusty schemat tabeli źródłowej.
-3. Rejestrowanie klastra docelowego jako elementu równorzędnego do klastra źródłowego.
-4. Włącz replikację w tabelach źródłowych żądaną.
-5. Skopiuj dane z tabel źródłowych do tabel docelowych.
-6. Replikacja automatycznie kopiuje nowy modyfikacji danych do tabel źródłowych w tabelach docelowych.
+1. W klastrze źródłowym Utwórz tabele i wypełnij dane.
+2. W klastrze docelowym Utwórz puste tabele docelowe ze schematem tabeli źródłowej.
+3. Zarejestruj klaster docelowy jako element równorzędny w klastrze źródłowym.
+4. Włącz replikację dla żądanych tabel źródłowych.
+5. Skopiuj istniejące dane z tabel źródłowych do tabel docelowych.
+6. Replikacja automatycznie kopiuje nowe modyfikacje danych do tabel źródłowych do tabel docelowych.
 
-Aby włączyć replikację na HDInsight, dotyczą akcji skryptu uruchomionego źródłowego klastra HDInsight. Instrukcje dotyczące włączania replikacji w klastrze lub na eksperymentowanie z replikacją w klastrach przykładowe utworzone w sieciach wirtualnych za pomocą szablonów usługi Azure Resource Management, zobacz [replikacji Konfigurowanie bazy danych Apache HBase](apache-hbase-replication.md). Ten artykuł zawiera również instrukcje dotyczące włączania replikacji Phoenix metadanych.
+Aby włączyć replikację w usłudze HDInsight, Zastosuj akcję skryptu do uruchomionego źródłowego klastra usługi HDInsight. Aby zapoznać się z przewodnikiem dotyczącym włączania replikacji w klastrze, a także do eksperymentowania z replikacją w przykładowych klastrach utworzonych w sieciach wirtualnych przy użyciu szablonów usługi Azure Resource Management, zobacz [Konfigurowanie replikacji Apache HBase](apache-hbase-replication.md). Ten artykuł zawiera również instrukcje dotyczące włączania replikacji metadanych w Phoenix.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Konfigurowanie replikacji bazy danych Apache HBase](apache-hbase-replication.md)
+* [Konfigurowanie replikacji Apache HBase](apache-hbase-replication.md)

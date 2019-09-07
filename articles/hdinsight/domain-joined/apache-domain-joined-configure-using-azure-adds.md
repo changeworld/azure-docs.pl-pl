@@ -1,5 +1,5 @@
 ---
-title: Konfiguracja pakiet Enterprise Security przy użyciu Azure Active Directory Domain Services — usługa Azure HDInsight
+title: pakiet Enterprise Security z Azure Active Directory w usłudze HDInsight
 description: Dowiedz się, jak skonfigurować i skonfigurować klaster pakiet Enterprise Security usługi HDInsight przy użyciu Azure Active Directory Domain Services.
 ms.service: hdinsight
 author: hrasheed-msft
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 1165cbeff1144567e43f408c0866c0b8a571882d
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 76f95e74c8150ac797d20c3166c0e8d6ea085bf9
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125592"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734947"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra usługi HDInsight z pakietem Enterprise Security przy użyciu usług Azure Active Directory Domain Services
 
@@ -37,7 +37,7 @@ Gdy usługa Azure AD-DS jest włączona, wszyscy użytkownicy i obiekty domyśln
 
 Nazwa domeny, która jest używana z usługą Azure AD — nie może mieć więcej niż 39 znaków, do pracy z usługą HDInsight.
 
-Można synchronizować tylko te grupy, które wymagają dostępu do klastrów usługi HDInsight. Ta opcja synchronizowania tylko określonych grup jest nazywana synchronizacją w *zakresie*. Aby uzyskać instrukcje [, zobacz Konfigurowanie synchronizacji z zakresem z usługi Azure AD w domenie zarządzanej](../../active-directory-domain-services/scoped-synchronization.md) .
+Można synchronizować tylko te grupy, które wymagają dostępu do klastrów usługi HDInsight. Ta opcja synchronizowania tylko określonych grup jest nazywana *synchronizacją w zakresie*. Aby uzyskać instrukcje [, zobacz Konfigurowanie synchronizacji z zakresem z usługi Azure AD w domenie zarządzanej](../../active-directory-domain-services/scoped-synchronization.md) .
 
 Podczas włączania bezpiecznego protokołu LDAP należy umieścić nazwę domeny w polu Nazwa podmiotu i Alternatywna nazwa podmiotu w certyfikacie. Na przykład jeśli nazwa domeny to *contoso100.onmicrosoft.com*, upewnij się, że w nazwie podmiotu certyfikatu i alternatywnej nazwie podmiotu istnieje dokładna nazwa. Aby uzyskać więcej informacji, zobacz [Konfigurowanie bezpiecznego protokołu LDAP dla domeny zarządzanej usługi AD DS](../../active-directory-domain-services/tutorial-configure-ldaps.md). Poniżej znajduje się przykład tworzenia certyfikatu z podpisem własnym i nazwy domeny (*contoso100.onmicrosoft.com*) w obu nazwach podmiotów i dnsname (nazwa podmiotu):
 

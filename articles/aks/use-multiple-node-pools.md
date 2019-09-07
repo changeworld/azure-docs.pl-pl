@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: 675d3e2f0dc27e70af497284ce273e87d005a2e1
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 2a18362546ae3c31b06fc5294495d8f5ac5f0be3
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241074"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389938"
 ---
 # <a name="preview---create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Wersja zapoznawcza — tworzenie i zarządzanie wieloma pulami węzłów dla klastra w usłudze Azure Kubernetes Service (AKS)
 
@@ -47,14 +47,13 @@ az extension update --name aks-preview
 
 ### <a name="register-multiple-node-pool-feature-provider"></a>Zarejestruj dostawcę funkcji puli wielu węzłów
 
-Aby utworzyć klaster AKS, który może korzystać z wielu pul węzłów, należy najpierw włączyć dwie flagi funkcji w ramach subskrypcji. Klastry puli wielowęzłowej używają zestawu skalowania maszyn wirtualnych (VMSS) do zarządzania wdrożeniem i konfiguracją węzłów Kubernetes. Zarejestruj flagi funkcji *MultiAgentpoolPreview* i *VMSSPreview* za pomocą polecenia [AZ Feature Register][az-feature-register] , jak pokazano w następującym przykładzie:
+Aby utworzyć klaster AKS, który może korzystać z wielu pul węzłów, należy najpierw włączyć flagę funkcji w ramach subskrypcji. Zarejestruj flagę funkcji *MultiAgentpoolPreview* za pomocą polecenia [AZ Feature Register][az-feature-register] , jak pokazano w następującym przykładzie:
 
 > [!CAUTION]
 > Po zarejestrowaniu funkcji w ramach subskrypcji nie można obecnie wyrejestrować tej funkcji. Po włączeniu niektórych funkcji w wersji zapoznawczej można użyć wartości domyślnych dla wszystkich klastrów AKS utworzonych w ramach subskrypcji. Nie włączaj funkcji w wersji zapoznawczej w ramach subskrypcji produkcyjnych. Korzystaj z oddzielnej subskrypcji, aby testować funkcje w wersji zapoznawczej i zbierać opinie.
 
 ```azurecli-interactive
 az feature register --name MultiAgentpoolPreview --namespace Microsoft.ContainerService
-az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 ```
 
 > [!NOTE]
@@ -64,7 +63,6 @@ Wyświetlenie stanu *rejestracji*może potrwać kilka minut. Stan rejestracji mo
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/MultiAgentpoolPreview')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
 Gdy wszystko będzie gotowe, Odśwież rejestrację dostawcy zasobów *Microsoft. ContainerService* za pomocą polecenia [AZ Provider Register][az-provider-register] :
@@ -77,7 +75,7 @@ az provider register --namespace Microsoft.ContainerService
 
 Następujące ograniczenia są stosowane podczas tworzenia klastrów AKS i zarządzania nimi, które obsługują pule wielu węzłów:
 
-* Pule wielu węzłów są dostępne tylko dla klastrów utworzonych po pomyślnym zarejestrowaniu funkcji *MultiAgentpoolPreview* i *VMSSPreview* dla Twojej subskrypcji. Nie można dodać pul węzłów i zarządzać nimi z istniejącym klastrem AKS utworzonym przed pomyślnym zarejestrowaniem tych funkcji.
+* Pule wielu węzłów są dostępne tylko dla klastrów utworzonych po pomyślnym zarejestrowaniu funkcji *MultiAgentpoolPreview* dla subskrypcji. Nie można dodać pul węzłów i zarządzać nimi z istniejącym klastrem AKS utworzonym przed pomyślnym zarejestrowaniem tej funkcji.
 * Nie można usunąć pierwszej puli węzłów.
 * Nie można użyć dodatku routingu aplikacji protokołu HTTP.
 * Nie można dodać/zaktualizować/usunąć pul węzłów przy użyciu istniejącego szablonu Menedżer zasobów, tak jak w przypadku większości operacji. Zamiast tego należy [użyć oddzielnego szablonu Menedżer zasobów](#manage-node-pools-using-a-resource-manager-template) , aby wprowadzić zmiany pul węzłów w klastrze AKS.
@@ -86,7 +84,7 @@ Chociaż ta funkcja jest dostępna w wersji zapoznawczej, obowiązują następuj
 
 * Klaster AKS może mieć maksymalnie osiem pul węzłów.
 * Klaster AKS może mieć maksymalnie 400 węzłów w ramach tych ośmiu pul węzłów.
-* Wszystkie pule węzłów muszą znajdować się w tej samej podsieci
+* Wszystkie pule węzłów muszą znajdować się w tej samej podsieci.
 
 ## <a name="create-an-aks-cluster"></a>Tworzenie klastra AKS
 

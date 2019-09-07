@@ -10,17 +10,17 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 8712af60df2454b29c0691602260c8b826eae75c
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 98e6b515d5e9d60f95873016ad1cb06a13799bb2
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164982"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390122"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Łączenie z systemami SAP z Azure Logic Apps
 
 > [!IMPORTANT]
-> Starsze łączniki serwera aplikacji SAP i serwera komunikatów SAP zaplanowano jako przestarzałe. Bieżący łącznik SAP konsoliduje te poprzednie łączniki SAP, aby nie trzeba było zmieniać typu połączenia, jest w pełni zgodny z poprzednimi łącznikami, zapewnia wiele dodatkowych możliwości i nadal korzysta z biblioteki łącznika SAP .NET ( SAP NCo).
+> Na wcześniejszym etapie serwera aplikacji SAP oraz łączników serwera komunikatów SAP zaplanowano zaniechanie 30 listopada 2019. Bieżący łącznik SAP konsoliduje te poprzednie łączniki SAP, aby nie trzeba było zmieniać typu połączenia, jest w pełni zgodny z poprzednimi łącznikami, zapewnia wiele dodatkowych możliwości i nadal korzysta z biblioteki łącznika SAP .NET ( SAP NCo).
 >
 > W przypadku aplikacji logiki korzystających ze starszych łączników należy [przeprowadzić migrację do najnowszego łącznika](#migrate) przed datą zakończenia. W przeciwnym razie te aplikacje logiki będą powodować błędy wykonywania i nie będą mogły wysyłać komunikatów do systemu SAP.
 
@@ -190,7 +190,7 @@ Teraz Dodaj akcję odpowiedzi do przepływu pracy aplikacji logiki i Uwzględnij
 1. Na pasku narzędzi projektanta wybierz pozycję **Uruchom**. Ten krok polega na ręcznym uruchomieniu aplikacji logiki.
 
 1. Wyzwól aplikację logiki, wysyłając żądanie HTTP POST do adresu URL w wyzwalaczu żądania HTTP.
-Dołącz zawartość wiadomości do żądania. Aby wysłać żądanie, można użyć narzędzia, takiego jak Poster. [](https://www.getpostman.com/apps)
+Dołącz zawartość wiadomości do żądania. Aby wysłać żądanie, można użyć narzędzia, takiego jak [Poster](https://www.getpostman.com/apps).
 
    W tym artykule żądanie wysyła plik IDoc, który musi być w formacie XML i zawiera przestrzeń nazw dla używanej akcji SAP, na przykład:
 
@@ -495,7 +495,7 @@ Po włączeniu **bezpiecznego pisania** schemat mapuje typy dats i Tims do pól 
 </xs:element>
 ```
 
-Gdy wiadomości są wysyłane z włączonym bezpiecznym wpisywaniem, odpowiedź dats i Tims wygląda następująco:
+Gdy wiadomości są wysyłane z włączonym **bezpiecznym wpisywaniem** , odpowiedź dats i Tims wygląda następująco:
 
 ```xml
 <DATE>99991231</DATE>

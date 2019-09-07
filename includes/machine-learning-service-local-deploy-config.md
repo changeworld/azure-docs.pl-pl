@@ -4,21 +4,21 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 07/26/2019
 ms.author: larryfr
-ms.openlocfilehash: a87773c8f6ddda11b62064758b46d666740a03c2
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ec0f85ff568bcd89d74ccd727d1c5ecfd8aab398
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68556951"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390619"
 ---
 Wpisy w `deploymentconfig.json` dokumencie są mapowane na parametry [LocalWebservice. deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservicedeploymentconfiguration?view=azure-ml-py). W poniższej tabeli opisano mapowanie między jednostkami w dokumencie JSON a parametrami metody:
 
 | Jednostka JSON | Parametr metody | Opis |
 | ----- | ----- | ----- |
-| `computeType` | Nie dotyczy | Docelowy zasób obliczeniowy. W przypadku wartości lokalnych wartość musi być `local`równa. |
+| `computeType` | Nie dotyczy | Docelowy zasób obliczeniowy. Dla lokalnych obiektów docelowych wartość musi być `local`. |
 | `port` | `port` | Port lokalny, na którym ma zostać ujawniony punkt końcowy HTTP usługi. |
 
-Poniższy kod JSON jest przykładową konfiguracją wdrożenia do użycia z interfejsem wiersza polecenia:
+Ten kod JSON jest przykładową konfiguracją wdrożenia do użycia z interfejsem wiersza polecenia:
 
 ```json
 {

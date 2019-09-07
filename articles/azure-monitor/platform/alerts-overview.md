@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 67318fee540195fc913739d78e80649100c54e70
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
-ms.translationtype: MT
+ms.openlocfilehash: defc317618dfffd0e2b28c75b6168ec1dbda36b7
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034813"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735124"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Przegląd alertów w Microsoft Azure 
 
@@ -41,7 +41,7 @@ Atrybuty klucza reguły alertu są następujące:
 
 **Zasób docelowy** — definiuje zakres i sygnały dostępne dla alertów. Obiektem docelowym może być dowolny zasób platformy Azure. Przykładowe cele: maszyna wirtualna, konto magazynu, zestaw skalowania maszyn wirtualnych, obszar roboczy Log Analytics lub Application Insights zasób. W przypadku niektórych zasobów (takich jak Virtual Machines) można określić wiele zasobów jako obiekt docelowy reguły alertu.
 
-Sygnały sygnałów są emitowane przez zasób docelowy i mogą być różne typy. Metryka, dziennik aktywności, Application Insights i dziennik.
+Sygnały **sygnałów są** emitowane przez zasób docelowy i mogą być różne typy. Metryka, dziennik aktywności, Application Insights i dziennik.
 
 **Kryteria** — kryteria są kombinacją sygnału i logiki zastosowanej w zasobie docelowym. Przykłady: 
    - Procent > procesora CPU 70%
@@ -53,6 +53,7 @@ Sygnały sygnałów są emitowane przez zasób docelowy i mogą być różne typ
 **Opis alertu** — opis reguły alertu skonfigurowanej przez użytkownika
 
 **Ważność** — ważność alertu po spełnieniu kryteriów określonych w regule alertu. Ważność może być z zakresu od 0 do 4.
+Ważność 0 = krytyczny ważność 1 = błąd ważność 2 = ostrzeżenie ważność 3 = informacyjny ważność 4 = verbose
 
 **Akcja** — określona Akcja podejmowana po wyzwoleniu alertu. Aby uzyskać więcej informacji, zobacz [grupy akcji](../../azure-monitor/platform/action-groups.md).
 

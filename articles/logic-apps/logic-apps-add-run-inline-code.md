@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: derek1ee, LADocs
 ms.topic: article
 ms.date: 05/14/2019
-ms.openlocfilehash: 76b3807727f4b5c9ab0a2c2bc21c45af1f713b83
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 3b51215e0cf48df2d3cd9df85a3d4c5641a17215
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242444"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390800"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Dodawanie i uruchamianie fragmentów kodu przy użyciu kodu śródwierszowego w Azure Logic Apps
 
@@ -23,6 +23,7 @@ Gdy chcesz uruchomić fragment kodu wewnątrz aplikacji logiki, możesz dodać w
 * Działa w języku JavaScript. Więcej języków już wkrótce.
 * Kończy działanie w ciągu pięciu sekund lub mniej.
 * Obsługuje dane o rozmiarze do 50 MB.
+* Nie wymaga pracy z [akcjami **zmiennych** ](../logic-apps/logic-apps-create-variables-store-values.md), które nie są jeszcze obsługiwane.
 * Używa środowiska Node. js w wersji 8.11.1. Aby uzyskać więcej informacji, zobacz [standardowe obiekty wbudowane](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects). 
 
   > [!NOTE]
@@ -207,7 +208,7 @@ Na przykład `workflowContext` w tym temacie obiekt zawiera te właściwości, d
 
 <a name="add-parameters"></a>
 
-## <a name="add-parameters"></a>Dodaj parametry
+## <a name="add-parameters"></a>Dodawanie parametrów
 
 W niektórych przypadkach może być konieczne jawne wymaganie, aby Akcja **kodu wbudowanego** zawierała wyniki z wyzwalacza lub określonych akcji, do których kod odwołuje się jako zależności przez dodanie parametrów **wyzwalacza** lub **akcji** . Ta opcja jest przydatna w scenariuszach, w których odwołania do nie są Znalezione w czasie wykonywania.
 
@@ -218,7 +219,7 @@ Załóżmy na przykład, że masz kod odwołujący się do wyniku **SelectedOpti
 
 Aby dodać te parametry, Otwórz listę **Dodaj nowy parametr** i wybierz żądane parametry:
 
-   ![Dodaj parametry](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
+   ![Dodawanie parametrów](./media/logic-apps-add-run-inline-code/inline-code-action-add-parameters.png)
 
    | Parametr | Opis |
    |-----------|-------------|

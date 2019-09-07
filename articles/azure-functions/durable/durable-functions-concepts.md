@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 828bcaa8c93454ba845c30c03c76144310891123
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fe3000181ed02e3640e7af48fa492f4a7db55191
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098252"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734583"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Wzorce Durable Functions i koncepcje techniczne (Azure Functions)
 
@@ -37,6 +37,25 @@ W wzorcu łańcucha funkcji sekwencja funkcji jest wykonywana w określonej kole
 
 Można użyć Durable Functions do wdrożenia wzorca łańcucha funkcji zwięzłie, jak pokazano w następującym przykładzie:
 
+#### <a name="precompiled-c"></a>PrekompilowanegoC#
+
+```csharp
+public static async Task<object> Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    try
+    {
+        var x = await context.CallActivityAsync<object>("F1");
+        var y = await context.CallActivityAsync<object>("F2", x);
+        var z = await context.CallActivityAsync<object>("F3", y);
+        return  await context.CallActivityAsync<object>("F4", z);
+    }
+    catch (Exception)
+    {
+        // Error handling or compensation goes here.
+    }
+}
+```
+
 #### <a name="c-script"></a>Skrypt języka C#
 
 ```csharp
@@ -57,7 +76,7 @@ public static async Task<object> Run(DurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> Istnieją delikatne różnice między pisaniem wstępnie skompilowanej funkcji trwałej C# i pisaniem wstępnie skompilowanej funkcji trwałej w C# skrypcie, który jest wyświetlany w przykładzie. C# We wstępnie skompilowanej funkcji trwałe parametry muszą być dekoracyjne z odpowiednimi atrybutami. Przykładem jest `[OrchestrationTrigger]` atrybut `DurableOrchestrationContext` dla parametru. C# W przypadku wstępnie skompilowanej funkcji trwałej, jeśli parametry nie są prawidłowo dekoracyjne, środowisko uruchomieniowe nie może wstrzyknąć zmiennych do funkcji i wystąpi błąd. Aby uzyskać więcej przykładów, zobacz artykuł [Azure-Functions-trwałe-Extension — przykłady w witrynie GitHub](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples).
+> Istnieją delikatne różnice między pisaniem wstępnie skompilowanej funkcji trwałej w programie C# i pisaniem wstępnie skompilowanej funkcji trwałej w C# skrypcie. C# We wstępnie skompilowanej funkcji trwałe parametry muszą być dekoracyjne z odpowiednimi atrybutami. Przykładem jest `[OrchestrationTrigger]` atrybut `DurableOrchestrationContext` dla parametru. C# W przypadku wstępnie skompilowanej funkcji trwałej, jeśli parametry nie są prawidłowo dekoracyjne, środowisko uruchomieniowe nie może wstrzyknąć zmiennych do funkcji i wystąpi błąd. Aby uzyskać więcej przykładów, zobacz artykuł [Azure-Functions-trwałe-Extension — przykłady w witrynie GitHub](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples).
 
 #### <a name="javascript-functions-2x-only"></a>JavaScript (tylko funkcje 2. x)
 
@@ -88,6 +107,29 @@ W wzorcu wentylator/wentylator w wzorcem wykonujesz równolegle wiele funkcji, a
 Dzięki normalnym funkcjom można wyrównać, że funkcja wysyła wiele komunikatów do kolejki. Fanning z powrotem w programie jest znacznie bardziej trudne. Aby obwentylatorować, w normalnej funkcji napiszesz kod do śledzenia, gdy zakończy się funkcje wyzwalane przez kolejkę, a następnie przechowują dane wyjściowe funkcji. 
 
 Rozszerzenie Durable Functions obsługuje ten wzorzec z stosunkowo prostym kodem:
+
+#### <a name="precompiled-c"></a>PrekompilowanegoC#
+
+```csharp
+public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    var parallelTasks = new List<Task<int>>();
+
+    // Get a list of N work items to process in parallel.
+    object[] workBatch = await context.CallActivityAsync<object[]>("F1");
+    for (int i = 0; i < workBatch.Length; i++)
+    {
+        Task<int> task = context.CallActivityAsync<int>("F2", workBatch[i]);
+        parallelTasks.Add(task);
+    }
+
+    await Task.WhenAll(parallelTasks);
+
+    // Aggregate all N outputs and send the result to F3.
+    int sum = parallelTasks.Sum(t => t.Result);
+    await context.CallActivityAsync("F3", sum);
+}
+```
 
 #### <a name="c-script"></a>Skrypt języka C#
 
@@ -177,7 +219,29 @@ Rozszerzenie Durable Functions ma wbudowane elementy webhook, które zarządzaj�
 
 Poniżej przedstawiono kilka przykładów użycia wzorca interfejsu API protokołu HTTP:
 
-#### <a name="c"></a>C#
+#### <a name="precompiled-c"></a>PrekompilowanegoC#
+
+```csharp
+// An HTTP-triggered function starts a new orchestrator function instance.
+[FunctionName("StartNewOrchestration")]
+public static async Task<HttpResponseMessage> Run(
+    [HttpTrigger] HttpRequestMessage req,
+    [OrchestrationClient] DurableOrchestrationClient starter,
+    string functionName,
+    ILogger log)
+{
+    // The function name comes from the request URL.
+    // The function input comes from the request content.
+    dynamic eventData = await req.Content.ReadAsAsync<object>();
+    string instanceId = await starter.StartNewAsync(functionName, eventData);
+
+    log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
+
+    return starter.CreateCheckStatusResponse(req, instanceId);
+}
+```
+
+#### <a name="c-script"></a>Skrypt języka C#
 
 ```csharp
 // An HTTP-triggered function starts a new orchestrator function instance.
@@ -224,7 +288,7 @@ W powyższych przykładach funkcja wyzwalana przez protokół http przyjmuje `fu
 
 ### <a name="monitoring"></a>#4 wzorca: Monitorowanie
 
-Wzorzec monitora odnosi się do elastycznego, cyklicznego procesu w przepływie pracy. Przykład jest sondowany, dopóki nie zostaną spełnione określone warunki. Można użyć wyzwalacza regularnego [czasomierza](../functions-bindings-timer.md) , aby zająć się podstawowym scenariuszem, takim jak okresowe zadanie oczyszczania, ale jego interwał jest statyczny i zarządzanie okresami istnienia wystąpienia stanie się skomplikowany. Za pomocą Durable Functions można tworzyć Elastyczne interwały cykliczne, zarządzać okresami istnienia zadań oraz tworzyć wiele procesów monitorowania z jednej aranżacji.
+Wzorzec monitora odnosi się do elastycznego, cyklicznego procesu w przepływie pracy. Przykład jest sondowany, dopóki nie zostaną spełnione określone warunki. Można użyć [wyzwalacza regularnego czasomierza](../functions-bindings-timer.md) , aby zająć się podstawowym scenariuszem, takim jak okresowe zadanie oczyszczania, ale jego interwał jest statyczny i zarządzanie okresami istnienia wystąpienia stanie się skomplikowany. Za pomocą Durable Functions można tworzyć Elastyczne interwały cykliczne, zarządzać okresami istnienia zadań oraz tworzyć wiele procesów monitorowania z jednej aranżacji.
 
 Przykładem wzorca monitora jest odwrócenie wcześniejszego scenariusza asynchronicznego interfejsu API HTTP. Zamiast uwidaczniać punkt końcowy dla klienta zewnętrznego do monitorowania długotrwałej operacji, długotrwały monitor zużywa zewnętrzny punkt końcowy, a następnie czeka na zmianę stanu.
 
@@ -233,6 +297,35 @@ Przykładem wzorca monitora jest odwrócenie wcześniejszego scenariusza asynchr
 W kilku wierszach kodu można użyć Durable Functions, aby utworzyć wiele monitorów, które obserwują dowolne punkty końcowe. Monitory mogą kończyć wykonywanie, gdy spełniony jest warunek, lub [DurableOrchestrationClient](durable-functions-instance-management.md) może zakończyć działanie monitorów. `wait` Interwał monitora można zmienić na podstawie określonego warunku (na przykład wykładniczy wycofywania). 
 
 Poniższy kod implementuje podstawowy Monitor:
+
+#### <a name="precompiled-c"></a>PrekompilowanegoC#
+
+```csharp
+[FunctionName("Orchestrator")]
+public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    int jobId = context.GetInput<int>();
+    int pollingInterval = GetPollingInterval();
+    DateTime expiryTime = GetExpiryTime();
+
+    while (context.CurrentUtcDateTime < expiryTime)
+    {
+        var jobStatus = await context.CallActivityAsync<string>("GetJobStatus", jobId);
+        if (jobStatus == "Completed")
+        {
+            // Perform an action when a condition is met.
+            await context.CallActivityAsync("SendAlert", machineId);
+            break;
+        }
+
+        // Orchestration sleeps until this time.
+        var nextCheck = context.CurrentUtcDateTime.AddSeconds(pollingInterval);
+        await context.CreateTimer(nextCheck, CancellationToken.None);
+    }
+
+    // Perform more work here, or let the orchestration end.
+}
+```
 
 #### <a name="c-script"></a>Skrypt języka C#
 
@@ -304,6 +397,32 @@ Wzorzec można zaimplementować w tym przykładzie przy użyciu funkcji programu
 
 Te przykłady umożliwiają utworzenie procesu zatwierdzania w celu zademonstrowania wzorca interakcji człowieka:
 
+#### <a name="precompiled-c"></a>PrekompilowanegoC#
+
+```csharp
+[FunctionName("Orchestrator")]
+public static async Task Run([OrchestrationTrigger] DurableOrchestrationContext context)
+{
+    await context.CallActivityAsync("RequestApproval");
+    using (var timeoutCts = new CancellationTokenSource())
+    {
+        DateTime dueTime = context.CurrentUtcDateTime.AddHours(72);
+        Task durableTimeout = context.CreateTimer(dueTime, timeoutCts.Token);
+
+        Task<bool> approvalEvent = context.WaitForExternalEvent<bool>("ApprovalEvent");
+        if (approvalEvent == await Task.WhenAny(approvalEvent, durableTimeout))
+        {
+            timeoutCts.Cancel();
+            await context.CallActivityAsync("ProcessApproval", approvalEvent.Result);
+        }
+        else
+        {
+            await context.CallActivityAsync("Escalate");
+        }
+    }
+}
+```
+
 #### <a name="c-script"></a>Skrypt języka C#
 
 ```csharp
@@ -355,6 +474,20 @@ Aby utworzyć trwały czasomierz, wywołaj `context.CreateTimer` (.NET) lub `con
 
 Klient zewnętrzny może dostarczyć powiadomienie o zdarzeniu do oczekującej funkcji programu Orchestrator przy użyciu [wbudowanych interfejsów API protokołu HTTP](durable-functions-http-api.md#raise-event) lub przy użyciu interfejsu API [DurableOrchestrationClient. RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) z innej funkcji:
 
+#### <a name="precompiled-c"></a>PrekompilowanegoC#
+
+```csharp
+public static async Task Run(
+  [HttpTrigger] string instanceId,
+  [OrchestrationClient] DurableOrchestrationClient client)
+{
+    bool isApproved = true;
+    await client.RaiseEventAsync(instanceId, "ApprovalEvent", isApproved);
+}
+```
+
+#### <a name="c-script"></a>C#Napisy
+
 ```csharp
 public static async Task Run(string instanceId, DurableOrchestrationClient client)
 {
@@ -362,6 +495,8 @@ public static async Task Run(string instanceId, DurableOrchestrationClient clien
     await client.RaiseEventAsync(instanceId, "ApprovalEvent", isApproved);
 }
 ```
+
+#### <a name="javascript"></a>Javascript
 
 ```javascript
 const df = require("durable-functions");

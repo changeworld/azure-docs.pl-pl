@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0b15c9730f7e469fde8fabd1bc4cbcd28efa66c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5949f57a87f324dc2e6651611574f4b66215c8a8
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68953009"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389762"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wdrażanie ochrony haseł w usłudze Azure AD
 
@@ -38,11 +38,11 @@ Istnieje również możliwość, że sprawdzanie poprawności hasła ma wpływ n
 * [Podwyższanie poziomu repliki kontrolera domeny kończy się niepowodzeniem z powodu słabego hasła trybu naprawy usług katalogowych](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-replica-promotion-fails-because-of-a-weak-dsrm-password)
 * [Obniżanie poziomu kontrolera domeny nie powiodło się z powodu słabego hasła administratora lokalnego](howto-password-ban-bad-on-premises-troubleshoot.md#domain-controller-demotion-fails-due-to-a-weak-local-administrator-password)
 
-Po uruchomieniu funkcji w trybie inspekcji przez rozsądny okres można zmienić konfigurację z *inspekcji* w celu wymuszenia, aby wymagać bardziej bezpiecznych haseł. Ukierunkowane monitorowanie w tym czasie jest dobrym pomysłem.
+Po uruchomieniu funkcji w trybie inspekcji przez rozsądny okres można zmienić konfigurację z *inspekcji* w celu *wymuszenia* , aby wymagać bardziej bezpiecznych haseł. Ukierunkowane monitorowanie w tym czasie jest dobrym pomysłem.
 
 ## <a name="deployment-requirements"></a>Wymagania dotyczące wdrażania
 
-* Wymagania dotyczące licencjonowania usługi Azure AD Password Protection można znaleźć w artykule eliminowanie nieprawidłowych [haseł w organizacji](concept-password-ban-bad.md#license-requirements).
+* Wymagania dotyczące licencjonowania usługi Azure AD Password Protection można znaleźć w artykule [eliminowanie nieprawidłowych haseł w organizacji](concept-password-ban-bad.md#license-requirements).
 * Wszystkie kontrolery domeny, na których zainstalowano usługę agenta DC dla ochrony haseł usługi Azure AD, muszą mieć uruchomiony system Windows Server 2012 lub nowszy. Ten wymóg nie oznacza, że domena lub las Active Directory muszą być również na poziomie funkcjonalności domeny lub lasu systemu Windows Server 2012. Jak wspomniano w [zasadach projektowania](concept-password-ban-bad-on-premises.md#design-principles), nie ma minimalnych DFL lub FFL wymaganych do uruchomienia agenta lub oprogramowania serwera proxy.
 * Na wszystkich maszynach, na których zainstalowano usługę agenta kontrolera domeny, musi być zainstalowany program .NET 4,5.
 * Na wszystkich maszynach, na których zainstalowano usługę proxy dla ochrony haseł usługi Azure AD, musi działać system Windows Server 2012 R2 lub nowszy.
@@ -142,7 +142,7 @@ Istnieją dwa wymagane Instalatory dla ochrony hasłem usługi Azure AD. Są one
         ```
 
         > [!NOTE]
-        > Ten tryb kończy się niepowodzeniem, jeśli dla Twojego konta jest wymagane uwierzytelnianie wieloskładnikowe systemu Azure. W takim przypadku należy użyć jednego z dwóch poprzednich trybów uwierzytelniania lub zamiast tego użyć innego konta, które nie wymaga uwierzytelniania MFA.
+        > Ten tryb kończy się niepowodzeniem, jeśli usługa Azure Multi-Factor Authentication jest wymagana dla Twojego konta. W takim przypadku należy użyć jednego z dwóch poprzednich trybów uwierzytelniania lub zamiast tego użyć innego konta, które nie wymaga uwierzytelniania MFA.
         >
         > Możesz również sprawdzić, czy uwierzytelnianie wieloskładnikowe jest wymagane, jeśli usługa Azure Device Registration (która jest używana w ramach okładki przez usługę Azure AD Password Protection) została skonfigurowana w taki sposób, aby globalnie wymagała uwierzytelniania wieloskładnikowego. Aby obejść ten sposób, możesz użyć innego konta, które obsługuje usługę MFA z jednym z poprzednich dwóch trybów uwierzytelniania, lub można także tymczasowo osłabić wymaganie usługi Azure Device Registration MFA. W tym celu przejdź do portalu zarządzania systemu Azure, a następnie przejdź do pozycji Azure Active Directory, następnie kliknij pozycję urządzenia, następnie pozycję Ustawienia urządzenia, a następnie ustaw opcję Wymagaj uwierzytelniania wieloskładnikowego w celu dołączenia do urządzeń. Należy koniecznie zmienić konfigurację tego ustawienia z powrotem na wartość tak po zakończeniu rejestracji.
         >
@@ -186,7 +186,7 @@ Istnieją dwa wymagane Instalatory dla ochrony hasłem usługi Azure AD. Są one
         ```
 
         > [!NOTE]
-        > Ten tryb kończy się niepowodzeniem, jeśli dla Twojego konta jest wymagane uwierzytelnianie wieloskładnikowe systemu Azure. W takim przypadku należy użyć jednego z dwóch poprzednich trybów uwierzytelniania lub zamiast tego użyć innego konta, które nie wymaga uwierzytelniania MFA.
+        > Ten tryb kończy się niepowodzeniem, jeśli usługa Azure Multi-Factor Authentication jest wymagana dla Twojego konta. W takim przypadku należy użyć jednego z dwóch poprzednich trybów uwierzytelniania lub zamiast tego użyć innego konta, które nie wymaga uwierzytelniania MFA.
         >
         > Możesz również sprawdzić, czy uwierzytelnianie wieloskładnikowe jest wymagane, jeśli usługa Azure Device Registration (która jest używana w ramach okładki przez usługę Azure AD Password Protection) została skonfigurowana w taki sposób, aby globalnie wymagała uwierzytelniania wieloskładnikowego. Aby obejść ten sposób, możesz użyć innego konta, które obsługuje usługę MFA z jednym z poprzednich dwóch trybów uwierzytelniania, lub można także tymczasowo osłabić wymaganie usługi Azure Device Registration MFA. W tym celu przejdź do portalu zarządzania systemu Azure, a następnie przejdź do pozycji Azure Active Directory, następnie kliknij pozycję urządzenia, następnie pozycję Ustawienia urządzenia, a następnie ustaw opcję Wymagaj uwierzytelniania wieloskładnikowego w celu dołączenia do urządzeń. Należy koniecznie zmienić konfigurację tego ustawienia z powrotem na wartość tak po zakończeniu rejestracji.
         >
@@ -295,7 +295,7 @@ Gdy jest dostępna nowsza wersja oprogramowania proxy ochrony hasłem usługi Az
 
 Odinstalowywanie bieżącej wersji oprogramowania serwera proxy nie jest wymagane — Instalator wykona uaktualnienie w miejscu. Podczas uaktualniania oprogramowania serwera proxy nie powinno być wymagane ponowne uruchomienie komputera. Uaktualnienie oprogramowania może być zautomatyzowane przy użyciu standardowych procedur MSI, na przykład: `AzureADPasswordProtectionProxySetup.exe /quiet`.
 
-Agent proxy obsługuje automatyczne uaktualnianie. Automatyczne uaktualnianie Microsoft Azure AD używa usługi Aktualizator Connect Agent, która jest zainstalowana równolegle z usługą proxy. Automatyczne uaktualnianie jest domyślnie włączone i można je włączyć lub wyłączyć za pomocą polecenia cmdlet Set-AzureADPasswordProtectionProxyConfiguration. Bieżące ustawienie można wykonać przy użyciu polecenia cmdlet Get-AzureADPasswordProtectionProxyConfiguration. Firma Microsoft zaleca, aby funkcja automatycznego uaktualniania była włączona.
+Agent proxy obsługuje automatyczne uaktualnianie. Automatyczne uaktualnianie Microsoft Azure AD używa usługi Aktualizator Connect Agent, która jest zainstalowana równolegle z usługą proxy. Automatyczne uaktualnianie jest domyślnie włączone i może być włączane lub wyłączane `Set-AzureADPasswordProtectionProxyConfiguration` przy użyciu polecenia cmdlet. Bieżące ustawienie można zbadać przy użyciu `Get-AzureADPasswordProtectionProxyConfiguration` polecenia cmdlet. Firma Microsoft zaleca, aby funkcja automatycznego uaktualniania była włączona.
 
 `Get-AzureADPasswordProtectionProxy` Polecenie cmdlet może służyć do wykonywania zapytań dotyczących wersji oprogramowania wszystkich aktualnie zainstalowanych agentów proxy w lesie.
 

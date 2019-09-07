@@ -1,6 +1,6 @@
 ---
 title: Planowanie pojemności klastra w usłudze Azure HDInsight
-description: Jak określić klaster usługi HDInsight pod kątem pojemności i wydajności.
+description: Zidentyfikuj kluczowe pytania dotyczące planowania pojemności i wydajności klastra usługi Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: hrasheed
-ms.openlocfilehash: 3d82846c02754f23b4a2e86a7881c952e503b36f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 608d097f1ebad9e4e1092c7ec54a573ccb58ad81
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207154"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734664"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Planowanie pojemności klastrów usługi HDInsight
 
@@ -82,7 +82,7 @@ Skalowanie klastra zależy od liczby węzłów maszyn wirtualnych. Dla wszystkic
 
 W zależności od typu klastra zwiększenie liczby węzłów procesu roboczego dodaje dodatkową pojemność obliczeniową (na przykład więcej rdzeni), ale może również dodać do łącznej ilości pamięci wymaganej do obsługi magazynu danych przez cały klaster. Podobnie jak w przypadku wybrania rozmiaru i typu maszyny wirtualnej, wybranie odpowiedniej skali klastra jest zwykle osiągane z użyciem symulowanych obciążeń lub zapytań Kanaryjskich.
 
-Klaster można skalować w poziomie, aby spełniał wymagania dotyczące obciążenia szczytowego, a następnie skalować go z powrotem, gdy te dodatkowe węzły nie będą już potrzebne. [Funkcja](hdinsight-autoscale-clusters.md) automatycznego skalowania umożliwia automatyczne skalowanie klastra na podstawie wstępnie określonych metryk i chronometrażu. Aby uzyskać więcej informacji na temat ręcznego skalowania klastrów, zobacz [skalowanie klastrów usługi HDInsight](hdinsight-scaling-best-practices.md).
+Klaster można skalować w poziomie, aby spełniał wymagania dotyczące obciążenia szczytowego, a następnie skalować go z powrotem, gdy te dodatkowe węzły nie będą już potrzebne. [Funkcja automatycznego skalowania](hdinsight-autoscale-clusters.md) umożliwia automatyczne skalowanie klastra na podstawie wstępnie określonych metryk i chronometrażu. Aby uzyskać więcej informacji na temat ręcznego skalowania klastrów, zobacz [skalowanie klastrów usługi HDInsight](hdinsight-scaling-best-practices.md).
 
 ### <a name="cluster-lifecycle"></a>Cykl życia klastra
 

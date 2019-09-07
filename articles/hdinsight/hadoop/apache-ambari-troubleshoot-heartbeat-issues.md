@@ -1,17 +1,17 @@
 ---
 title: Problemy pulsu Apache Ambari w usłudze Azure HDInsight
-description: Różne przyczyny problemów z pulsem Apache Ambari w usłudze Azure HDInsight
+description: Przegląd różnych powodów problemów pulsu Apache Ambari w usłudze Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/02/2019
-ms.openlocfilehash: a74e826e9a4725c9b689dc97101b00615771d4d1
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 0b20bb5265dd5fa139a691fcb21aaa1795ff352c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781402"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735964"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Problemy pulsu Apache Ambari w usłudze Azure HDInsight
 

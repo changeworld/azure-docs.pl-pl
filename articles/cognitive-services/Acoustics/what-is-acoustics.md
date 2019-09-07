@@ -11,29 +11,32 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0685b65ce9204221e93a1ea4aa47a5e09eaac9f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 51bfcc47961e870fb7fb87b26a78aea0f1564d46
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932979"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390303"
 ---
 # <a name="what-is-project-acoustics"></a>Co to jest akustyka projektu?
-Akustyczny projekt jest aparatem akustycznym Wave dla interaktywnych środowisk 3W. Modele it to efekty Wave, takie jak diffraction, portale i Reverb, w złożonych scenach, bez konieczności ręcznego znaczników strefy. Obejmuje to także integrację aparatu gier i oprogramowania pośredniczącego. Funkcja "akustyczne projektu" jest podobna do statycznego oświetlenia: Tworzenie szczegółowej fizyki w trybie offline, aby zapewnić fizyczną linię bazową, i korzystać z uproszczonego środowiska uruchomieniowego z kontrolkami projektowymi, aby zaspokoić cele artystyczne.
+Akustyczny projekt jest aparatem akustycznym Wave dla interaktywnych środowisk 3W. Modele it to efekty Wave, takie jak zamknięcia, przeszkody, portale i efekty reverberation w złożonych scenach, bez konieczności ręcznego stosowania znaczników strefy lub intensywnego raytracing procesora CPU. Obejmuje to także integrację aparatu gier i oprogramowania pośredniczącego. Funkcja wyznaczania wartości akustycznych projektu jest podobna do statycznego oświetlenia: Tworzenie szczegółowej fizyki w trybie offline, aby zapewnić fizyczną linię bazową, i korzystać z uproszczonego środowiska uruchomieniowego z kontrolkami projektowymi, aby zaspokoić cele w zakresie hałasu wirtualnego świata.
 
 ![Zrzut ekranu przedstawiający narzędzia War 4 z voxels akustycznymi](media/gears-with-voxels.jpg)
 
 ## <a name="using-wave-physics-for-interactive-acoustics"></a>Korzystanie z fizyki Wave dla interaktywnych hałasu
-Metody akustyczne oparte na protokole ray mogą sprawdzać zamknięcia za pomocą jednego rzutu Source-Listener lub Reverb przez oszacowanie lokalnego woluminu sceny przy użyciu kilku promieni. Jednak te techniki mogą być niezawodne, ponieważ Pebble occludes tak samo jak w przypadku Boulder. Promienie nie uwzględniają sposobu, w jaki dźwięk zgina się wokół obiektów, zjawisko znanego jako diffraction. Symulacja akustyczna projektu przechwytuje te efekty przy użyciu symulacji opartej na Wave. Wynik jest bardziej przewidywalny i niezawodny.
+Metody akustyczne oparte na protokole ray mogą sprawdzać zamknięcia za pomocą jednego rzutu Source-Listener lub Reverb przez oszacowanie lokalnego woluminu sceny przy użyciu kilku promieni. Jednak te techniki mogą być niezawodne, ponieważ Pebble occludes tak samo jak w przypadku Boulder. Promienie nie uwzględniają sposobu, w jaki dźwięk zgina się wokół obiektów, zjawisko znanego jako diffraction. Symulacja akustyczna projektu przechwytuje te efekty przy użyciu symulacji opartej na Wave. Wartości akustyczne są bardziej przewidywalne, dokładne i bezproblemowe.
 
-Kluczowe innowacje w projekcie polegają na połączeniu symulacji akustycznej z tradycyjnymi pojęciami dotyczącymi projektowania dźwięku. Tłumaczy wyniki symulacji na tradycyjne parametry Audio DSP dla zamknięcia, portale i Reverb. Projektant używa formantów dla tego procesu tłumaczenia. Aby uzyskać więcej informacji na temat podstawowych technologii związanych z dźwiękiem, odwiedź [stronę projektu badania](https://www.microsoft.com/en-us/research/project/project-triton/).
+Kluczowe innowacje w projekcie polegają na rozłączeniu symulacji akustycznej opartej na dźwiękowym czasie rzeczywistym za pomocą tradycyjnych koncepcji projektowania dźwięku. Tłumaczy wyniki symulacji na tradycyjne parametry Audio DSP dla zamknięcia, portale i Reverb. Projektant używa formantów dla tego procesu tłumaczenia. Aby uzyskać więcej informacji na temat podstawowych technologii związanych z dźwiękiem, odwiedź [stronę projektu badania](https://www.microsoft.com/en-us/research/project/project-triton/).
 
 ![Animacja pokazująca poziomy rozpropagowania fali Wave przez scenę](media/wave-simulation.gif)
 
-## <a name="setup"></a>Konfiguracja
-[Integracja](unity-integration.md) z mechanizmem akustycznym w projekcie polega na przeciąganiu i upuszczaniu i włączaniu wtyczki aparatu audio aparatu Unity. Rozszerzanie kontroli źródła audio Unity przez dołączenie składnika C# kontroli akustycznych projektu do każdego obiektu audio.
+## <a name="video-presentation-from-gdc-2019-30-min"></a>Prezentacja wideo z GDC 2019 (~ 30 min)
+Film wideo(https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "dotyczący hałasu, kliknij, aby odtworzyć wideo") [ ![]
 
-[Integracja](unreal-integration.md) z obsługą Unreali projektu obejmuje wtyczki edytora i gier dla Unreal oraz wtyczkę Wwise. Niestandardowy składnik audio rozszerza znane funkcje Wwise w programie Unreal z kontrolkami projektu na żywo. Kontrolki projektowania są również uwidocznione w Wwise na wtyczki miksera.
+## <a name="setup"></a>Konfiguracja
+Integracja z mechanizmem [akustycznym w projekcie](unity-integration.md) polega na przeciąganiu i upuszczaniu i włączaniu wtyczki aparatu audio aparatu Unity. Rozszerzanie kontroli źródła audio Unity przez dołączenie składnika C# kontroli akustycznych projektu do każdego obiektu audio.
+
+Integracja z obsługą [Unreali projektu](unreal-integration.md) obejmuje wtyczki edytora i gier dla Unreal oraz wtyczkę Wwise. Niestandardowy składnik audio rozszerza znane funkcje Wwise w programie Unreal z kontrolkami projektu na żywo. Kontrolki projektowania są również uwidocznione w Wwise na wtyczki miksera.
 
 ## <a name="workflow"></a>Przepływ pracy
 * **Przed tworzenie:** Zacznij od konfigurowania tworzenie, wybierając geometrię reaguje na akustyczne, na przykład ignorując wałki świetlne. Następnie Edytuj automatyczne przypisania materiału i wybierz obszary nawigacji, aby Przewodnik po próbkach odbiornika. Nie ma znaczników ręcznych dla Reverb/Portal/strefy pokojowej.

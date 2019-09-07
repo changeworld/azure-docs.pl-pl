@@ -1,71 +1,71 @@
 ---
-title: Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania magazynu
-description: Poznaj najlepsze rozwiązania magazynu migracji lokalnych klastrów Hadoop do usługi Azure HDInsight.
+title: Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — magazyn
+description: Poznaj najlepsze rozwiązania dotyczące magazynu na potrzeby migrowania lokalnych klastrów Hadoop do usługi Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: c62a5384edf66fd9309bc7afcb50ada48e3fca7d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2fd8dd09da8080e9eff60bcec7d595476243cd02
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64691520"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736120"
 ---
-# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania magazynu
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight
 
-Ten artykuł zawiera zalecenia dotyczące przechowywania danych w systemach usługi Azure HDInsight. Jest częścią serii, która zapewnia najlepsze rozwiązania w celu ułatwienia migrowania lokalnych systemów Apache Hadoop do usługi Azure HDInsight.
+W tym artykule przedstawiono zalecenia dotyczące magazynu danych w systemach usługi Azure HDInsight. Jest ona częścią serii, która oferuje najlepsze rozwiązania ułatwiające Migrowanie lokalnych systemów Apache Hadoop do usługi Azure HDInsight.
 
-## <a name="choose-right-storage-system-for-hdinsight-clusters"></a>Wybierz system przechowywania dla klastrów HDInsight
+## <a name="choose-right-storage-system-for-hdinsight-clusters"></a>Wybieranie odpowiedniego systemu magazynu dla klastrów usługi HDInsight
 
-Struktura katalogów lokalnych System plików Apache Hadoop (HDFS) mogą ponownie tworzone w usłudze Azure Storage lub magazynu usługi Azure Data Lake. Następnie można bezpiecznie usuwać klastry HDInsight, które są używane do obliczeń bez utraty danych użytkownika. Obie te usługi może służyć jako domyślny system plików i system plików dodatkowych dla klastra usługi HDInsight. Klaster HDInsight i konto magazynu musi być hostowany w tym samym regionie.
+Strukturę katalogów lokalnego systemu plików Apache Hadoop (HDFS) można utworzyć w usłudze Azure Storage lub Azure Data Lake Storage. Następnie można bezpiecznie usunąć klastry usługi HDInsight używane do obliczeń bez utraty danych użytkownika. Obie usługi mogą być używane zarówno jako domyślny system plików, jak i dodatkowy system plików dla klastra usługi HDInsight. Klaster usługi HDInsight i konto magazynu muszą być hostowane w tym samym regionie.
 
 ### <a name="azure-storage"></a>Azure Storage
 
-Klastry HDInsight służy jako domyślny system plików lub systemu plików dodatkowych kontenera obiektów blob w usłudze Azure Storage. Konto magazynu w warstwie standardowa jest obsługiwane do użytku z klastrami HDInsight. Premier warstwa nie jest obsługiwana. Domyślny kontener obiektów blob przechowuje informacje dotyczące klastra, takie jak dzienniki i historia zadań. Udostępnianie pojedynczego kontenera obiektów blob jako domyślnego systemu plików dla wielu klastrów nie jest obsługiwane.
+Klastry usługi HDInsight mogą używać kontenera obiektów BLOB w usłudze Azure Storage jako domyślny system plików lub dodatkowy system plików. Konto magazynu w warstwie Standardowa jest obsługiwane w przypadku klastrów usługi HDInsight. Warstwa Premier nie jest obsługiwana. Domyślny kontener obiektów blob przechowuje informacje dotyczące klastra, takie jak dzienniki i historia zadań. Udostępnianie pojedynczego kontenera obiektów blob jako domyślnego systemu plików dla wielu klastrów nie jest obsługiwane.
 
-Konta magazynu, które są zdefiniowane w proces tworzenia i odpowiednie klucze są przechowywane w `%HADOOP_HOME%/conf/core-site.xml` w węzłach klastra. Ponadto są dostępne w sekcji "Niestandardowa witryna core" w konfiguracji systemu plików HDFS w Interfejsie użytkownika Ambari. Klucz konta magazynu jest domyślne szyfrowanie przekazywanego materiału, a skrypt odszyfrowywania niestandardowy jest używany do odszyfrowywania kluczy przed jest przekazywane do usługi Hadoop demonów. Zadania w tym Hive, MapReduce, przesyłanie strumieniowe usługi Hadoop, a także Pig, zawierają opis kont magazynu i metadane z nimi.
+Konta magazynu zdefiniowane w procesie tworzenia i ich odpowiednie klucze są przechowywane w `%HADOOP_HOME%/conf/core-site.xml` węzłach klastra. Dostęp do nich można uzyskać również w sekcji "niestandardowa witryna podstawowa" w konfiguracji systemu plików HDFS w interfejsie użytkownika Ambari. Klucz konta magazynu jest domyślnie szyfrowany i w celu odszyfrowania kluczy przed przekazaniem do demonów Hadoop jest używany skrypt odszyfrowywania niestandardowego. Do zadań, w tym Hive, MapReduce, przesyłania strumieniowego Hadoop i trzody chlewnej, należy przenieść do nich opis kont magazynu i metadanych.
 
-Usługa Azure storage mogą być replikowane geograficznie. Replikacja geograficzna umożliwia odzyskiwanie geograficzne i nadmiarowość danych, tryb failover do lokalizacji zreplikowanych geograficznie poważnie wpływa na wydajność i może pociągnąć za sobą dodatkowe koszty. Zalecane jest, aby wybrać replikację geograficzną, należy uważnie i tylko jeśli wartość danych jest ponoszenie dodatkowych kosztów.
+Usługa Azure Storage może być replikowana geograficznie. Chociaż replikacja geograficzna umożliwia odzyskiwanie geograficzne i nadmiarowość danych, przełączenie w tryb failover do lokalizacji z replikacją geograficzną poważnie wpływa na wydajność i może pociągnąć za sobą dodatkowe koszty. Zalecenie polega na wybraniu replikacji geograficznej i tylko wtedy, gdy wartość danych jest cenny koszt dodatkowy.
 
-Jedną z następujących formatów można uzyskać dostęp do danych, która jest przechowywana w usłudze Azure Storage:
+Jeden z następujących formatów może służyć do uzyskiwania dostępu do danych przechowywanych w usłudze Azure Storage:
 
 |Format dostępu do danych |Opis |
 |---|---|
-|`wasb:///`|Domyślny magazyn przy użyciu nieszyfrowanego komunikacji.|
-|`wasbs:///`|Dostęp do magazynu domyślnego za pomocą komunikacji szyfrowanej.|
-|`wasb://<container-name>@<account-name>.blob.core.windows.net/`|Używany podczas komunikacji z kontem magazynu innego niż domyślny. |
+|`wasb:///`|Dostęp do magazynu domyślnego przy użyciu nieszyfrowanej komunikacji.|
+|`wasbs:///`|Dostęp do magazynu domyślnego przy użyciu komunikacji szyfrowanej.|
+|`wasb://<container-name>@<account-name>.blob.core.windows.net/`|Używane podczas komunikacji z kontem magazynu innym niż domyślne. |
 
 
-[Usługa Azure Storage cele dotyczące skalowalności i wydajności](../../storage/common/storage-scalability-targets.md) Wyświetla bieżące limity konta magazynu platformy Azure. Potrzebom aplikacji przekroczy cele skalowalności z jednego konta magazynu, aplikacji mogą być wbudowane w wielu kont magazynu, a następnie partycji obiekty danych na tych kontach magazynu.
+[Cele dotyczące skalowalności i wydajności usługi Azure Storage](../../storage/common/storage-scalability-targets.md) zawierają listę bieżących limitów na kontach usługi Azure Storage. Jeśli wymagania aplikacji przekraczają tarcze skalowalności pojedynczego konta magazynu, aplikacja może zostać skompilowana w celu użycia wielu kont magazynu, a następnie partycjonowania obiektów danych na tych kontach magazynu.
 
-[Analizy usługi Azure Storage](../../storage/storage-analytics.md) generuje dane pomiarowe dla wszystkich usług magazynu i witryny Azure portal może być skonfigurowany zbieranie metryk, aby być wizualizowane za pomocą wykresów. Alerty mogą być tworzone na potrzeby powiadomień podczas zostały osiągnięte progi dla metryk zasobów usługi storage.
+[](../../storage/storage-analytics.md)AnalitykamagazynuplatformyAzure dostarcza metryki dla wszystkich usług magazynu, a Azure Portal można skonfigurować metryki zbierania do wizualizacji za poorednictwem wykresów. Można utworzyć alerty w celu powiadomienia o osiągnięciu progów dla metryk zasobów magazynu.
 
-Usługa Azure Storage oferuje [usuwania nietrwałego dla obiektów blob](../../storage/blobs/storage-blob-soft-delete.md) odzyskiwaniu danych, gdy jest przypadkowo zmienione lub usunięte przez aplikację lub innego użytkownika do konta magazynu.
+Usługa Azure Storage oferuje [nietrwałe usuwanie obiektów BLOB](../../storage/blobs/storage-blob-soft-delete.md) , które ułatwiają odzyskiwanie danych po przypadkowej modyfikacji lub usunięciu przez aplikację lub innego użytkownika konta magazynu.
 
-Możesz utworzyć [migawek obiektów blob](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob). Migawki to wersja tylko do odczytu obiektów blob, która jest wykonywana w punkcie w czasie i zapewnia sposób, aby utworzyć kopię zapasową obiektu blob. Po utworzeniu migawki go można odczytać, kopiowana, lub usunięte, ale nie zostały zmodyfikowane.
+Można tworzyć [migawki obiektów BLOB](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob). Migawka to wersja obiektu BLOB w trybie tylko do odczytu, która jest wykonywana w danym momencie i udostępnia sposób tworzenia kopii zapasowej obiektu BLOB. Po utworzeniu migawki można ją odczytywać, kopiować lub usuwać, ale nie modyfikować.
 
 > [!Note]
-> Dla starszych wersji lokalnej usługi Hadoop dystrybucji, które nie mają certyfikatu "wasbs" muszą one zostać zaimportowane do magazynu zaufania Java.
+> W przypadku starszych wersji lokalnych dystrybucji usługi Hadoop, które nie mają certyfikatu "wasbs", należy je zaimportować do magazynu zaufania Java.
 
-Następujące metody może służyć do importowania certyfikatów do magazynu zaufanych Java:
+Do importowania certyfikatów do magazynu zaufania Java można użyć następujących metod:
 
-Pobierz certyfikat ssl usługi Azure Blob do pliku
+Pobieranie certyfikatu protokołu SSL usługi Azure BLOB do pliku
 
 ```bash
 echo -n | openssl s_client -connect <storage-account>.blob.core.windows.net:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > Azure_Storage.cer
 ```
 
-Zaimportuj plik powyżej do magazynu zaufanych Java we wszystkich węzłach
+Zaimportuj powyższy plik do magazynu Java Trusts na wszystkich węzłach
 
 ```bash
 keytool -import -trustcacerts -keystore /path/to/jre/lib/security/cacerts -storepass changeit -noprompt -alias blobtrust -file Azure_Storage.cer
 ```
 
-Sprawdź, czy dodano certyfikat w magazynie zaufania
+Sprawdź, czy dodany certyfikat znajduje się w magazynie zaufania
 
 ```bash
 keytool -list -v -keystore /path/to/jre/lib/security/cacerts
@@ -77,58 +77,58 @@ Aby uzyskać więcej informacji zobacz następujące artykuły:
 - [Azure Storage Scalability and Performance Targets (Cele dotyczące skalowalności i wydajności usługi Azure Storage)](../../storage/common/storage-scalability-targets.md)
 - [Microsoft Azure Storage Performance and Scalability Checklist (Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage)](../../storage/common/storage-performance-checklist.md)
 - [Monitor, diagnose, and troubleshoot Microsoft Azure Storage (Monitorowanie, diagnozowanie i rozwiązywanie problemów z usługą Microsoft Azure Storage)](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md)
-- [Monitorowanie konta magazynu w witrynie Azure portal](../../storage/common/storage-monitor-storage-account.md)
+- [Monitorowanie konta magazynu w witrynie Azure Portal](../../storage/common/storage-monitor-storage-account.md)
 
-### <a name="azure-data-lake-storage-gen1"></a>Usługa Azure Data Lake Storage 1. generacji
+### <a name="azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1
 
-Usługi Azure Data Lake Storage implementuje systemu plików HDFS i POSIX styl modelu kontroli dostępu. Zapewnia najwyższej klasy Integracja z usługą AAD dla kontroli dostępu szczegółowe w dobrym stanie. Nie ma ograniczeń do rozmiaru danych, które mogą być przechowywane i możliwość uruchamiania analiz równoległych.
-
-Aby uzyskać więcej informacji zobacz następujące artykuły:
-
-- [Tworzenie klastrów HDInsight za pomocą usługi Data Lake Storage przy użyciu witryny Azure portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
-- [Użyj usługi Data Lake Storage z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-store.md)
-
-### <a name="azure-data-lake-storage-gen2"></a>Usługa Azure Data Lake Storage 2. generacji
-
-Azure Data Lake magazynu Gen2 stanowi najnowszą magazynowania oferty. Łączy on podstawowe funkcje z pierwsza generacja usługi Azure Data Lake Storage z punktem końcowym systemu na zgodny plik usługi Hadoop bezpośrednio zintegrowana usługa Azure Blob Storage. To ulepszenie łączy korzyści skali i koszt magazyn obiektów o niezawodności i wydajności, które zazwyczaj są skojarzone tylko z systemami plików lokalnych.
-
-Azure Data Lake Store generacji 2 jest wbudowana w górnej części [usługi Azure Blob storage](../../storage/blobs/storage-blobs-introduction.md) i pozwala na łączenie się z danymi przy użyciu obu paradygmatów magazynu plików, jak systemu i obiekt. Funkcje z [usługi Azure Data Lake Storage Gen1](../../data-lake-store/index.md), takich jak semantyki systemu plików, pliku poziom zabezpieczeń i skalowania są połączone z niskie koszty i warstwowego, możliwości odzyskiwania wysoka dostępność/po awarii i duży zestaw SDK/narzędzia ekosystem z [usługi Azure Blob storage](../../storage/blobs/storage-blobs-introduction.md). W Data Lake Storage Gen2 jakość magazynu obiektów pozostają podczas dodawania zalety interfejsu systemu plików zoptymalizowana pod kątem analizy obciążeń.
-
-Podstawową cechą Data Lake Storage Gen2, to dodanie [hierarchicznej przestrzeni nazw](../../storage/data-lake-storage/namespace.md) do usługi Blob storage, który organizuje pliki/obiekty w hierarchii katalogów wydajne dostępu do danych. Hierarchiczna struktura umożliwia wykonywanie operacji, takich jak zmiana nazwy lub usuwanie katalogu jako pojedynczej Atomowej metadanych operacji w katalogu, a nie wyliczanie i przetwarzanie wszystkich obiektów, które mają prefiks nazwy katalogu.
-
-W przeszłości funkcje analizy chmurowej — było naruszenia bezpieczeństwa w zakresie wydajności, zarządzania i zabezpieczeń. Funkcje klucza Gen2 usługi Azure Data Lake Storage (ADLS) są następujące:
-
-- **Dostęp zgodny z usługi Hadoop**: Azure Data Lake magazynu Gen2 pozwala zarządzać i uzyskiwać dostęp do danych, tak samo, jak za pomocą [pliku System (HDFS, Hadoop Distributed)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nowy [sterownika ABFS](../../storage/data-lake-storage/abfs-driver.md) jest dostępna w ramach wszystkich środowisk technologii Apache Hadoop, które są objęte [Azure HDInsight](../index.yml). Ten sterownik umożliwia dostęp do danych przechowywanych w Data Lake Storage Gen2.
-
-- **Nadzbiór uprawnień POSIX**: Model zabezpieczeń Gen2 Data Lake — w pełni obsługuje listy ACL i POSIX uprawnienia oraz niektórych dodatkowy poziom szczegółowości specyficzne dla Data Lake Storage Gen2. Ustawienia można skonfigurować za pomocą narzędzia administracyjne lub środowisk, takich jak Hive, jak i platformy Spark.
-
-- **Niskie koszty**: Data Lake Storage Gen2 funkcji niedrogiej pojemności i transakcji. Jako przejścia danych za pośrednictwem jego pełnego cyklu życia, stawki rozliczeniowe zmienić, aby zminimalizować koszty, za pomocą wbudowanych funkcji, takich jak [cykl życia magazynu obiektów Blob platformy Azure](../../storage/common/storage-lifecycle-management-concepts.md).
-
-- **Współpracuje z narzędzia magazynu obiektów Blob, struktur i aplikacje**: Data Lake Storage Gen2 nadal działają z szeroką gamą narzędzi, struktur i aplikacje, które istnieją już dzisiaj dla magazynu obiektów Blob.
-
-- **Sterownik zoptymalizowane**: Sterownik systemu plików obiektów Blob platformy Azure (ABFS) jest [specjalnie zoptymalizowane pod kątem](../../storage/data-lake-storage/abfs-driver.md) do analizy danych big data. Odpowiednie interfejsy API REST są udostępniane za pośrednictwem punktu końcowego systemu plików dfs, dfs.core.windows.net.
-
-Jedną z następujących formatów można uzyskać dostęp do danych, która jest przechowywana w usłudze ADLS Gen2:
-- `abfs:///`: Dostęp do domyślnej usługi Data Lake Storage dla klastra.
-- `abfs[s]://file_system@account_name.dfs.core.windows.net`: Używany podczas komunikacji z usługi Data Lake Storage innych niż domyślne.
+Azure Data Lake Storage implementuje model kontroli dostępu do stylu systemu plików HDFS i POSIX. Zapewnia ona integrację pierwszej klasy z usługą AAD w celu zapewnienia precyzyjnej kontroli dostępu. Nie ma ograniczeń dotyczących rozmiaru danych, które mogą być przechowywane, lub zdolności do uruchamiania analizy równoległej.
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-- [Wprowadzenie do usługi Azure Data Lake Storage Gen2](../../storage/data-lake-storage/introduction.md)
-- [Sterownik systemu plików obiektów Blob platformy Azure (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
+- [Tworzenie klastrów usługi HDInsight z Data Lake Storage przy użyciu Azure Portal](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+- [Używanie Data Lake Storage z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-store.md)
+
+### <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
+
+Azure Data Lake Storage Gen2 to Najnowsza oferta magazynu. Łączy podstawowe możliwości od pierwszej generacji Azure Data Lake Storage za pomocą punktu końcowego systemu plików zgodnego z usługą Hadoop bezpośrednio zintegrowanego z platformą Azure Blob Storage. To ulepszenie umożliwia łączenie skalowalności i kosztów magazynu obiektów z niezawodnością i wydajnością zwykle skojarzoną tylko z lokalnymi systemami plików.
+
+ADLS Gen 2 jest oparta na [usłudze Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md) i umożliwia interfejsowanie danych przy użyciu zarówno odmian systemu plików, jak i magazynu obiektów. Funkcje z [Azure Data Lake Storage Gen1](../../data-lake-store/index.md), takie jak semantyka systemu plików, zabezpieczenia na poziomie plików i skalowanie, są połączone z niskimi kosztami magazynowymi, wysoką dostępnością/odzyskiwaniem po awarii i dużym ekosystemem z systemem [Azure BLOB Storage](../../storage/blobs/storage-blobs-introduction.md). W Data Lake Storage Gen2, wszystkie jakości magazynu obiektów pozostaną, dodając zalety interfejsu systemu plików zoptymalizowanego pod kątem obciążeń analitycznych.
+
+Podstawową funkcją Data Lake Storage Gen2 jest dodanie [hierarchicznej przestrzeni nazw](../../storage/data-lake-storage/namespace.md) do usługi BLOB Storage, która organizuje obiekty/pliki w hierarchii katalogów na potrzeby wykonywania dostępu do danych. Struktura hierarchiczna umożliwia wykonywanie operacji, takich jak zmiana nazwy lub usuwanie katalogu, aby były jednocyfrowymi operacjami metadanych w katalogu, a nie wyliczeniem i przetwarzaniem wszystkich obiektów, które współużytkują prefiks nazwy katalogu.
+
+W przeszłości funkcje analizy chmurowej — było naruszenia bezpieczeństwa w zakresie wydajności, zarządzania i zabezpieczeń. Najważniejsze funkcje Azure Data Lake Storage (ADLS) Gen2 są następujące:
+
+- **Dostęp zgodny**z usługą Hadoop: Azure Data Lake Storage Gen2 pozwala zarządzać danymi i uzyskiwać do nich dostęp tak samo jak w przypadku [rozproszony system plików Hadoop (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nowy [Sterownik](../../storage/data-lake-storage/abfs-driver.md) ABFS jest dostępny we wszystkich środowiskach Apache Hadoop, które znajdują się w [usłudze Azure HDInsight](../index.yml). Ten sterownik umożliwia dostęp do danych przechowywanych w Data Lake Storage Gen2.
+
+- **Nadzbiór uprawnień systemu POSIX**: Model zabezpieczeń dla programu Data Lake Gen2 w pełni obsługuje uprawnienia list ACL i POSIX oraz pewną dodatkową szczegółowość Data Lake Storage Gen2. Ustawienia można skonfigurować za poorednictwem narzędzi administracyjnych lub platform, takich jak Hive i Spark.
+
+- **Koszt ekonomiczny**: Data Lake Storage Gen2 funkcje magazynu kosztów i transakcji. Jako że dane są przenoszone przez cały cykl życia, stawki rozliczeń zmieniają się, aby zminimalizować koszty dzięki wbudowanym funkcjom, takim jak [cykl życiowy usługi Azure Blob Storage](../../storage/common/storage-lifecycle-management-concepts.md).
+
+- **Współpracuje z narzędziami, strukturami i aplikacjami magazynu obiektów BLOB**: Data Lake Storage Gen2 nadal pracują z szeroką gamę narzędzi, platform i aplikacji, które już istnieją dla usługi BLOB Storage.
+
+- **Zoptymalizowany sterownik**: Sterownik systemu plików obiektów blob platformy Azure (ABFS) jest [zoptymalizowany pod kątem](../../storage/data-lake-storage/abfs-driver.md) analizy danych Big Data. Odpowiednie interfejsy API REST są nadane przez punkt końcowy systemu plików DFS, dfs.core.windows.net.
+
+Jeden z następujących formatów może służyć do uzyskiwania dostępu do danych przechowywanych w ADLS Gen2:
+- `abfs:///`: Uzyskaj dostęp do domyślnego Data Lake Storage klastra.
+- `abfs[s]://file_system@account_name.dfs.core.windows.net`: Używane podczas komunikowania się z Data Lake Storageem innym niż domyślne.
+
+Aby uzyskać więcej informacji zobacz następujące artykuły:
+
+- [Wprowadzenie do Azure Data Lake Storage Gen2](../../storage/data-lake-storage/introduction.md)
+- [Sterownik systemu plików obiektów blob platformy Azure (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
 - [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
-## <a name="secure-azure-storage-keys-within-on-premises-hadoop-cluster-configuration"></a>Kluczy zabezpieczeń usługi Azure Storage w konfiguracji klastra usługi Hadoop w środowisku lokalnym
+## <a name="secure-azure-storage-keys-within-on-premises-hadoop-cluster-configuration"></a>Zabezpieczanie kluczy usługi Azure Storage w ramach lokalnej konfiguracji klastra Hadoop
 
-Klucze usługi Azure storage, które są dodawane do plików konfiguracji usługi Hadoop, nawiąż łączność programów na lokalnego systemu plików HDFS i usługi Azure Blob storage. Te klucze mogą być chronione przez szyfrowanie ich przy użyciu struktury dostawcy poświadczeń w usłudze Hadoop. Gdy zaszyfrowane, mogą być przechowywane i bezpieczny dostęp do.
+Klucze usługi Azure Storage, które są dodawane do plików konfiguracji Hadoop, ustanawiają łączność między lokalnym systemem HDFS i magazynem obiektów blob platformy Azure. Te klucze mogą być chronione przez zaszyfrowanie ich przy użyciu struktury dostawcy poświadczeń usługi Hadoop. Po zaszyfrowaniu można je przechowywać i uzyskiwać do nich dostęp bezpieczny.
 
-**Aby aprowizować poświadczenia:**
+**Aby zainicjować obsługę administracyjną poświadczeń:**
 
 ```bash
 hadoop credential create fs.azure.account.key.account.blob.core.windows.net -value <storage key> -provider jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks/file
 ```
 
-**Aby dodać powyżej Ścieżka dostawcy core-site.xml lub konfigurację systemu Ambari w niestandardowej witrynie core:**
+**Aby dodać powyższą ścieżkę dostawcy do pliku pliku Core-site. XML lub do konfiguracji Ambari w obszarze Custom Core-site:**
 
 ```xml
 <property>
@@ -141,88 +141,88 @@ hadoop credential create fs.azure.account.key.account.blob.core.windows.net -val
 ```
 
 > [!Note]
-> Ścieżka właściwości dostawcy mogą być również dodawane do wiersza polecenia distcp zamiast przechowywania klucza na poziomie klastra na core-site.xml w następujący sposób:
+> Właściwość ścieżka dostawcy może być również dodawana do wiersza polecenia pomocą distcp zamiast zapisywania klucza na poziomie klastra w pliku Core-site. XML w następujący sposób:
 
 ```bash
 hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode.xx.internal.cloudapp.net/path/to/jceks /user/user1/ wasb:<//yourcontainer@youraccount.blob.core.windows.net/>user1
 ```
 
-## <a name="restrict-azure-storage-data-access-using-sas"></a>Ograniczanie dostępu do danych usługi Azure storage przy użyciu sygnatury dostępu Współdzielonego
+## <a name="restrict-azure-storage-data-access-using-sas"></a>Ograniczanie dostępu do danych usługi Azure Storage za pomocą SAS
 
-HDInsight domyślnie ma pełny dostęp do danych w ramach kont usługi Azure Storage skojarzonym z klastrem. Dostęp do sygnatur Współdzielonego dla kontenera obiektów blob może służyć do ograniczania dostępu do danych, takich jak zapewnić użytkownikom dostęp tylko do odczytu do danych.
+Usługa HDInsight domyślnie ma pełny dostęp do danych na kontach usługi Azure Storage skojarzonych z klastrem. Sygnatury dostępu współdzielonego (SAS) w kontenerze obiektów BLOB mogą służyć do ograniczania dostępu do danych, takich jak zapewnianie użytkownikom dostępu tylko do odczytu do danych.
 
-### <a name="using-the-sas-token-created-with-python"></a>Przy użyciu tokenu sygnatury dostępu Współdzielonego utworzony za pomocą języka python
+### <a name="using-the-sas-token-created-with-python"></a>Korzystanie z tokenu sygnatury dostępu współdzielonego utworzonego przy użyciu języka Python
 
-1. Otwórz [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) pliku, a następnie Zmień następujące wartości:
+1. Otwórz plik [SASToken.py](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature/blob/master/Python/SASToken.py) i Zmień następujące wartości:
 
-    |Token — właściwość|Opis|
+    |Właściwość tokenu|Opis|
     |---|---|
-    |nazwa_zasady|Nazwa używać przechowywanych zasad w celu utworzenia.|
+    |nazwa_zasady|Nazwa, która ma zostać użyta do utworzenia zasad przechowywanych.|
     |storage_account_name|Nazwa konta magazynu.|
-    |storage_account_key|Klucz konta magazynu.|
-    |storage_container_name|Kontener na koncie magazynu, którą chcesz ograniczyć dostęp do.|
-    |example_file_path|Ścieżka do pliku, który zostanie przekazany do kontenera.|
+    |storage_account_key|Klucz dla konta magazynu.|
+    |storage_container_name|Kontener na koncie magazynu, do którego ma zostać ograniczony dostęp.|
+    |example_file_path|Ścieżka do pliku, który jest przekazywany do kontenera.|
 
-2. Dołączono plik SASToken.py `ContainerPermissions.READ + ContainerPermissions.LIST` uprawnień i można go dostosować w oparciu o przypadek użycia.
+2. Plik SASToken.py zawiera `ContainerPermissions.READ + ContainerPermissions.LIST` uprawnienia i można go dostosować w zależności od przypadku użycia.
 
-3. Uruchom następujący skrypt: `python SASToken.py`
+3. Wykonaj skrypt w następujący sposób:`python SASToken.py`
 
-4. Po ukończeniu działania skryptu, wyświetla tokenu sygnatury dostępu Współdzielonego, podobny do następującego tekstu: `sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14`
+4. Po zakończeniu działania skryptu jest wyświetlany token sygnatury dostępu współdzielonego podobny do następującego:`sr=c&si=policyname&sig=dOAi8CXuz5Fm15EjRUu5dHlOzYNtcK3Afp1xqxniEps%3D&sv=2014-02-14`
 
-5. Aby ograniczyć dostęp do kontenera przy użyciu sygnatura dostępu współdzielonego, należy dodać wpis niestandardowego do konfiguracji lokacji podstawowej dla klastra, w obszarze Ambari systemu plików HDFS konfiguracje zaawansowane lokacji podstawowej Dodawanie właściwości niestandardowych.
+5. Aby ograniczyć dostęp do kontenera z sygnaturą dostępu współdzielonego, Dodaj niestandardowy wpis do konfiguracji lokacja podstawowa dla klastra w obszarze Ambari HDFS config zaawansowane niestandardowe rdzeń-lokacja Dodaj właściwość.
 
-6. Użyj następujących wartości dla **klucz** i **wartość** pola:
+6. Użyj następujących wartości dla pól **klucza** i **wartości** :
 
-    **Klucz**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **Wartość**: KLUCZ sygnatury dostępu Współdzielonego zwracane przez FROM aplikacji języka Python w kroku 4 powyżej.
+    **Klucz**: `fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net`**Wartość**: KLUCZ sygnatury dostępu współdzielonego zwracany przez aplikację języka Python z kroku 4 powyżej.
 
-7. Kliknij przycisk **Dodaj** przycisk, aby zapisać ten klucz i wartość, a następnie kliknij przycisk **Zapisz** przycisk, aby zapisać zmiany konfiguracji. Po wyświetleniu monitu, Dodaj opis zmiany ("Dodawanie dostępu do magazynu sygnatur dostępu Współdzielonego" na przykład), a następnie kliknij przycisk **Zapisz**.
+7. Kliknij przycisk **Dodaj** , aby zapisać ten klucz i wartość, a następnie kliknij przycisk **Zapisz** , aby zapisać zmiany konfiguracji. Po wyświetleniu monitu Dodaj opis zmiany (na przykład "Dodawanie dostępu do magazynu SAS"), a następnie kliknij przycisk **Zapisz**.
 
-8. W Ambari web UI, wybierz systemu plików HDFS z listy po lewej stronie, a następnie wybierz **ponowne uruchomienie wszystkich wpływ** z akcji z listy rozwijanej po prawej stronie. Po wyświetleniu monitu wybierz **upewnij się, uruchom ponownie wszystkie**.
+8. W interfejsie użytkownika sieci Web Ambari na liście po lewej stronie wybierz pozycję HDFS, a następnie wybierz pozycję **Uruchom ponownie wszystkie** z listy rozwijanej akcje usługi po prawej stronie. Po wyświetleniu monitu wybierz pozycję **Potwierdź ponowne uruchomienie wszystkich**.
 
-9. Powtórz ten proces dla MapReduce2 i YARN.
+9. Powtórz ten proces dla MapReduce2 i PRZĘDZy.
 
-Istnieją trzy ważne warto zapamiętać dotyczących używania tokenów sygnatur dostępu Współdzielonego na platformie Azure:
+Istnieją trzy ważne kwestie dotyczące używania tokenów SAS na platformie Azure:
 
-1. Podczas tworzenia tokenów sygnatur dostępu Współdzielonego przy użyciu uprawnień "Odczyt + LIST" użytkowników, którzy korzystają z kontenera obiektów Blob za pomocą tokenu sygnatury dostępu Współdzielonego będzie "zapisu i usuwania" danych. Użytkownicy, którzy dostęp do kontenera obiektów Blob za pomocą tokenu sygnatury dostępu Współdzielonego i spróbuj zapis lub usunięcie operacji, zostanie wyświetlony komunikat z takich jak `"This request is not authorized to perform this operation"`.
+1. Gdy tokeny SAS są tworzone z uprawnieniami "READ + LIST", użytkownicy, którzy uzyskują dostęp do kontenera obiektów blob z tokenem SAS, nie będą mogli "zapisywać ani usuwać" danych. Użytkownicy, którzy uzyskują dostęp do kontenera obiektów BLOB przy użyciu tego tokenu SAS i próbują wykonać operację zapisu lub usuwania `"This request is not authorized to perform this operation"`, otrzymają komunikat podobny do tego.
 
-2. Wygenerowano tokeny sygnatur dostępu Współdzielonego za pomocą `READ + LIST + WRITE` uprawnienia (ograniczyć `DELETE` tylko), polecenia takie jak `hadoop fs -put` najpierw zapisać `\_COPYING\_` pliku, a następnie spróbuj zmienić nazwę pliku. Tej operacji systemu plików HDFS mapuje `copy+delete` dla WASB. Ponieważ `DELETE` uprawnienie nie został podany, "put" może zakończyć się niepowodzeniem. `\_COPYING\_` Operacji jest funkcją usługi Hadoop, mają na celu dostarczenie niektóre mechanizm kontroli współbieżności. Obecnie nie istnieje żaden sposób ograniczyć tylko operację "DELETE" bez wpływu na "WRITE" także operacje.
+2. Gdy tokeny sygnatury dostępu współdzielonego są generowane z `READ + LIST + WRITE` uprawnieniami (w celu `hadoop fs -put` ograniczenia `DELETE` tylko), `\_COPYING\_` poleceniami, takimi jak pierwszy zapis do pliku, a następnie próba zmiany nazwy pliku. Ta operacja systemu plików HDFS jest `copy+delete` mapowana na WASB. Ponieważ nie podano uprawnienia, "Put" zakończy się niepowodzeniem. `DELETE` `\_COPYING\_` Operacja jest funkcją usługi Hadoop zaprojektowaną w celu zapewnienia pewnej kontroli współbieżności. Obecnie nie ma możliwości ograniczenia tylko operacji usuwania bez wpływu na operacje zapisu.
 
-3. Niestety Dostawca poświadczeń usługi hadoop i odszyfrowywania klucza dostawcy (ShellDecryptionKeyProvider) obecnie nie współpracujesz z tokenów sygnatur dostępu Współdzielonego i dlatego obecnie nie można chronić z widoczności.
+3. Niestety, Dostawca poświadczeń usługi Hadoop i dostawca klucza odszyfrowywania (ShellDecryptionKeyProvider) obecnie nie działają z tokenami SAS i dlatego nie mogą być chronione przed widocznością.
 
-Aby uzyskać więcej informacji, zobacz [użycia usługi Azure Storage sygnatur dostępu współdzielonego do ograniczania dostępu do danych w HDInsight](../hdinsight-storage-sharedaccesssignature-permissions.md).
+Aby uzyskać więcej informacji, zobacz [Używanie sygnatur dostępu współdzielonego usługi Azure Storage w celu ograniczenia dostępu do danych w usłudze HDInsight](../hdinsight-storage-sharedaccesssignature-permissions.md).
 
-## <a name="use-data-encryption-and-replication"></a>Użyj szyfrowania danych i replikacji
+## <a name="use-data-encryption-and-replication"></a>Korzystanie z szyfrowania i replikacji danych
 
-Wszystkie dane zapisane w usłudze Azure Storage są automatycznie szyfrowane przy użyciu [szyfrowanie usługi Storage (SSE)](../../storage/common/storage-service-encryption.md). Dane na koncie Azure storage są zawsze replikowane w celu zapewnienia wysokiej dostępności. Podczas tworzenia konta magazynu można wybrać jedną z następujących opcji replikacji:
+Wszystkie dane zapisywane w usłudze Azure Storage są automatycznie szyfrowane przy użyciu [szyfrowanie usługi Storage (SSE)](../../storage/common/storage-service-encryption.md). Dane na koncie usługi Azure Storage są zawsze replikowane w celu zapewnienia wysokiej dostępności. Podczas tworzenia konta magazynu można wybrać jedną z następujących opcji replikacji:
 
 - [Magazyn lokalnie nadmiarowy (LRS)](../../storage/common/storage-redundancy-lrs.md)
 - [Magazyn strefowo nadmiarowy (ZRS)](../../storage/common/storage-redundancy-zrs.md)
 - [Magazyn geograficznie nadmiarowy (GRS)](../../storage/common/storage-redundancy-grs.md)
 - [Magazyn geograficznie nadmiarowy dostępny do odczytu (RA-GRS)](../../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
 
-Usługi Azure Data Lake Storage zapewnia magazyn lokalnie nadmiarowy (LRS), ale należy także skopiować kluczowych danych do innego konta usługi Data Lake Storage w innym regionie z częstotliwością dostosowaną do potrzeb planu odzyskiwania po awarii. Istnieją różne metody kopiowania danych, takie jak [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), DistCp, [programu Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md), lub [usługi Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md). Zalecane jest również wymusić zasady dostępu dla konta usługi Data Lake Storage, aby zapobiec przypadkowemu usunięciu.
+Azure Data Lake Storage zapewnia Magazyn lokalnie nadmiarowy (LRS), ale należy również skopiować krytyczne dane na inne konto Data Lake Storage w innym regionie o częstotliwości dopasowanej do potrzeb planu odzyskiwania po awarii. Istnieją różne metody kopiowania danych, w tym [ADLCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md), pomocą distcp, [Azure PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md)lub [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md). Zaleca się również wymuszenie zasad dostępu dla konta Data Lake Storage, aby zapobiec przypadkowemu usunięciu.
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-- [Replikacja usługi Azure storage](../../storage/common/storage-redundancy.md)
-- [Wskazówki dotyczące po awarii dla usługi Azure Data Lake Storage (ADLS)](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
+- [Replikacja usługi Azure Storage](../../storage/common/storage-redundancy.md)
+- [Wskazówki dotyczące awarii dla Azure Data Lake Storage (ADLS)](../../data-lake-store/data-lake-store-disaster-recovery-guidance.md)
 
-## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>Dołącz dodatkowe Azure konta magazynu do klastra
+## <a name="attach-additional-azure-storage-accounts-to-cluster"></a>Dołącz dodatkowe konta usługi Azure Storage do klastra
 
-W trakcie procesu tworzenia HDInsight konto Azure Storage lub konta magazynu usługi Azure Data Lake zostanie wybrany jako domyślny system plików. Oprócz domyślne konto magazynu można dodać dodatkowe konta magazynu z tej samej subskrypcji platformy Azure lub różnych subskrypcji platformy Azure w trakcie procesu tworzenia klastra lub po utworzeniu klastra.
+Podczas procesu tworzenia usługi HDInsight jako domyślny system plików jest wybierane konto magazynu platformy Azure lub konto magazynu Azure Data Lake. Oprócz tego domyślnego konta magazynu można dodać dodatkowe konta magazynu z tej samej subskrypcji platformy Azure lub różnych subskrypcji platformy Azure podczas procesu tworzenia klastra lub po utworzeniu klastra.
 
-Można dodać dodatkowe konto magazynu w jednym w następujący sposób:
-- Lokacji podstawowej Ambari systemu plików HDFS Config zaawansowane niestandardowe Dodaj nazwę konta magazynu i klucza, ponowne uruchomienie usług
-- Za pomocą [skryptu akcji](../hdinsight-hadoop-add-storage.md) przez przekazanie nazwy konta magazynu i klucza
+Dodatkowe konto magazynu można dodać na jeden z następujących sposobów:
+- Konfiguracja Ambari HDFS — zaawansowane niestandardowe rdzeń — lokacja Dodaj nazwę i klucz konta magazynu, aby ponownie uruchomić usługi
+- Używanie [akcji skryptu](../hdinsight-hadoop-add-storage.md) przez przekazanie nazwy i klucza konta magazynu
 
 > [!Note]
-> W prawidłowy przypadki użycia, można zwiększyć limity usługi Azure storage za pośrednictwem żądania dotyczącego [pomocy technicznej systemu Azure](https://azure.microsoft.com/support/faq/).
+> W przypadku prawidłowych przypadków użycia limity w usłudze Azure Storage można zwiększyć za pośrednictwem żądania wysłanego do [pomocy technicznej systemu Azure](https://azure.microsoft.com/support/faq/).
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
-- [Dodawanie kolejnych kont magazynu do HDInsight](../hdinsight-hadoop-add-storage.md)
+- [Dodawanie dodatkowych kont magazynu do usługi HDInsight](../hdinsight-hadoop-add-storage.md)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Przeczytaj następny artykuł w tej serii:
+Przeczytaj następny artykuł z tej serii:
 
-- [Dane migracji najlepsze rozwiązania dotyczące lokalnych do migracji usługi Azure HDInsight Hadoop](apache-hadoop-on-premises-migration-best-practices-data-migration.md)
+- [Najlepsze rozwiązania dotyczące migracji danych do Azure HDInsight Hadoop migracji w środowisku lokalnym](apache-hadoop-on-premises-migration-best-practices-data-migration.md)

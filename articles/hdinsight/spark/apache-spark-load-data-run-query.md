@@ -1,6 +1,6 @@
 ---
-title: 'Samouczek: ładowanie danych i uruchamianie zapytań w klastrze platformy Apache Spark w usłudze Azure HDInsight '
-description: Samouczek — Dowiedz się, jak załadować dane i uruchamianie interakcyjnych zapytań na platformie Spark klastrów w usłudze Azure HDInsight.
+title: 'Samouczek: Ładowanie danych i uruchamianie zapytań w klastrze Apache Spark w usłudze Azure HDInsight'
+description: Samouczek — informacje na temat ładowania danych i uruchamiania interakcyjnych zapytań w klastrach Spark w usłudze Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.author: hrasheed
 ms.date: 05/16/2019
-ms.openlocfilehash: e4ed8bb2631b4dc2f760dc4d92247377db591160
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 109ed1a2ef22e498c2d19fd2e4f1848f289e9b55
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67295705"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735271"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Samouczek: ładowanie danych i uruchamianie zapytań w klastrze platformy Apache Spark w usłudze Azure HDInsight
 
@@ -26,19 +26,19 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Klaster Apache Spark w usłudze HDInsight. Zobacz [utworzyć klaster platformy Apache Spark](./apache-spark-jupyter-spark-sql-use-portal.md).
+Klaster Apache Spark w usłudze HDInsight. Zobacz [Tworzenie klastra Apache Spark](./apache-spark-jupyter-spark-sql-use-portal.md).
 
 ## <a name="create-a-jupyter-notebook"></a>Tworzenie notesu Jupyter
 
 Jupyter Notebook to interakcyjne środowisko notesu, które obsługuje różne języki programowania. Notes pozwala na interakcję z danymi, łączenie kodu z tekstem markdown i wykonywanie prostych wizualizacji. 
 
-1. Edytuj adres URL `https://SPARKCLUSTER.azurehdinsight.net/jupyter` , zastępując `SPARKCLUSTER` nazwą klastra Spark. Następnie wprowadź edytowanych adresu URL w przeglądarce sieci web. Jeśli zostanie wyświetlony monit, wprowadź poświadczenia logowania dla klastra.
+1. Edytuj adres URL `https://SPARKCLUSTER.azurehdinsight.net/jupyter` , zastępując `SPARKCLUSTER` go nazwą klastra Spark. Następnie wprowadź edytowany adres URL w przeglądarce sieci Web. Jeśli zostanie wyświetlony monit, wprowadź poświadczenia logowania dla klastra.
 
-2. Na stronie sieci web programu Jupyter, wybierz **New** > **PySpark** do utworzenia notesu. 
+2. Na stronie sieci Web Jupyter wybierz pozycję **Nowy** > **PySpark** , aby utworzyć Notes. 
 
    ![Tworzenie notesu Jupyter w celu uruchomienia interakcyjnego zapytania Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "Tworzenie notesu Jupyter w celu uruchomienia interakcyjnego zapytania Spark SQL")
 
-   Nowy notes zostanie utworzony i otwarty o nazwie Untitled (`Untitled.ipynb`).
+   Nowy Notes zostanie utworzony i otwarty z nazwą bez tytułu (`Untitled.ipynb`).
 
     > [!NOTE]  
     > Dzięki temu, że tworzenie notesu odbywa się przy użyciu jądra PySpark, po uruchomieniu pierwszej komórki kodu sesja `spark` jest tworzona automatycznie. Nie jest konieczne jawne tworzenie sesji.
@@ -49,7 +49,7 @@ Aplikacje mogą tworzyć ramki danych bezpośrednio na podstawie plików lub fol
     
 ![Migawka danych używanych w interakcyjnym zapytaniu Spark SQL](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "Migawka danych używanych w interakcyjnym zapytaniu Spark SQL")
 
-1. Wklej następujący kod do pustej komórki notesu programu Jupyter, a następnie naciśnij klawisz **SHIFT + ENTER** do uruchomienia kodu. Kod importuje typy wymagane w tym scenariuszu:
+1. Wklej następujący kod w pustej komórce notesu Jupyter, a następnie naciśnij klawisze **SHIFT + ENTER** , aby uruchomić kod. Kod importuje typy wymagane w tym scenariuszu:
 
     ```python
     from pyspark.sql import *
@@ -87,9 +87,9 @@ Po utworzeniu tabeli możesz uruchomić interakcyjne zapytanie na danych.
 
     ![Wykres warstwowy wyników interakcyjnego zapytania Spark](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "Wykres warstwowy wyników interakcyjnego zapytania Spark")
 
-3. Na pasku menu Notes, przejdź do **pliku** > **zapisywanie i punktu kontrolnego**.
+3. Na pasku menu Notes przejdź do **pliku** > **Zapisz i Utwórz punkt kontrolny**.
 
-4. Jeśli zamierzasz teraz otworzyć [następny samouczek](apache-spark-use-bi-tools.md), pozostaw notes otwarty. Jeśli nie, zamknij notes w celu zwolnienia zasobów klastra: na pasku menu Notes, przejdź do **pliku** >  **Zamknij i zatrzymanie**.
+4. Jeśli zamierzasz teraz otworzyć [następny samouczek](apache-spark-use-bi-tools.md), pozostaw notes otwarty. W przeciwnym razie Zamknij Notes, aby zwolnić zasoby klastra: na pasku menu Notes przejdź do **pliku** >  **Zamknij i zatrzymywanie**.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -101,9 +101,9 @@ Otwórz klaster w witrynie Azure Portal, a następnie wybierz pozycję **Usuń**
 
 Dodatkowo możesz wybrać nazwę grupy zasobów, aby otworzyć stronę grupy zasobów, a następnie wybrać pozycję **Usuń grupę zasobów**. Usunięcie grupy zasobów powoduje usunięcie zarówno klastra Spark w usłudze HDInsight, jak i domyślnego konta magazynu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku przedstawiono sposób Utwórz ramkę danych z pliku csv oraz do uruchamiania interakcyjnych zapytań Spark SQL klastra Apache Spark w usłudze Azure HDInsight. Przejdź do następnego artykułu, aby dowiedzieć się, w jaki sposób można ściągnąć dane zarejestrowane na platformie Apache Spark do narzędzia analizy biznesowej, takiego jak usługa Power BI.
+W tym samouczku przedstawiono sposób tworzenia ramki danych z pliku CSV oraz uruchamiania interakcyjnych zapytań Spark SQL w klastrze Apache Spark w usłudze Azure HDInsight. Przejdź do następnego artykułu, aby dowiedzieć się, w jaki sposób można ściągnąć dane zarejestrowane na platformie Apache Spark do narzędzia analizy biznesowej, takiego jak usługa Power BI.
 
 > [!div class="nextstepaction"]
 > [Analyze data using BI tools (Analizowanie danych przy użyciu narzędzi do analizy biznesowej)](apache-spark-use-bi-tools.md)

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ae6c2bd27e9192966ecffb4d4296063201fca970
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 992e3f7aa53fdd006d29c06113cd30b07a406f3b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098016"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734335"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Scenariusz monitorowania w przykładowym monitorze Durable Functions-Pogoda
 
@@ -31,7 +31,7 @@ Ten przykład służy do monitorowania bieżących warunków pogodowych lokaliza
 * Monitory mogą kończyć się, gdy jakiś warunek zostanie spełniony lub zostanie przerwany przez inny proces.
 * Monitory mogą przyjmować parametry. W przykładzie pokazano, jak ten sam proces monitorowania pogody można zastosować do każdej żądanej lokalizacji i numeru telefonu.
 * Monitory są skalowalne. Ponieważ każdy monitor jest wystąpieniem aranżacji, można utworzyć wiele monitorów bez konieczności tworzenia nowych funkcji lub definiowania dalszych kodów.
-* Monitory można łatwo zintegrować z większymi przepływami pracy. Monitor może być jedną sekcją bardziej złożonej funkcji aranżacji lub aranżacją podrzędną [](durable-functions-sub-orchestrations.md).
+* Monitory można łatwo zintegrować z większymi przepływami pracy. Monitor może być jedną sekcją bardziej złożonej funkcji aranżacji lub [aranżacją podrzędną](durable-functions-sub-orchestrations.md).
 
 ## <a name="configuring-twilio-integration"></a>Konfigurowanie integracji Twilio
 
@@ -67,7 +67,7 @@ Funkcja **E3_Monitor** używa standardowego pliku *Function. JSON* dla funkcji p
 
 Oto kod implementujący funkcję:
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#Napisy
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
@@ -103,7 +103,7 @@ Podobnie jak w przypadku innych próbek, funkcje działania pomocnika są regula
 
 A oto implementacja. Podobnie jak w przypadku POCOs używanym do transferowania danych, logiki do obsługi wywołania interfejsu API i analizy JSON odpowiedzi jest abstrakcją klasy udostępnionej w C#. Można go znaleźć jako część [przykładowego kodu programu Visual Studio](#run-the-sample).
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#Napisy
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
@@ -117,7 +117,7 @@ Funkcja **E3_SendGoodWeatherAlert** używa powiązania Twilio do wysyłania wiad
 
 A Oto kod, który wysyła wiadomość SMS:
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C#Napisy
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 

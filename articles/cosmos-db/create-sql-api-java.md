@@ -8,13 +8,13 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.author: sngun
-ms.custom: seo-java-august2019
-ms.openlocfilehash: 110c4a343909a81e092b147b79ed69d6bd5c2d9c
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.custom: seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: a34cb8e13d32cbeb6d289869dca3a8cb1391d68f
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981754"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390850"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-sql-api-data"></a>Szybki start: Tworzenie aplikacji Java do zarządzania Azure Cosmos DB danych interfejsu API SQL
 
@@ -26,7 +26,7 @@ ms.locfileid: "69981754"
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
 
-W tym przewodniku Szybki start przedstawiono sposób tworzenia zasobów konta [interfejsu API SQL](sql-api-introduction.md) usługi Azure Cosmos DB i zarządzanie nimi przy użyciu aplikacji Java. Na początku zostaną wykonane następujące czynności: utworzenie konta interfejsu API SQL usługi Azure Cosmos DB przy użyciu witryny Azure Portal, utworzenie aplikacji Java za pomocą [zestawu SDK Java usługi SQL](sql-api-sdk-async-java.md) oraz dodanie zasobów do konta usługi Cosmos DB przy użyciu aplikacji Java. Instrukcje podane w tym przewodniku Szybki start można wykonać w dowolnym systemie operacyjnym, w którym można uruchomić oprogramowanie Java. Po ukończeniu tego przewodnika Szybki Start zobaczysz, jak tworzyć i modyfikować bazy danych Cosmos, kontenery w interfejsie użytkownika lub programowo, zależnie od preferencji użytkownika.
+W tym przewodniku szybki start pokazano, jak za pomocą aplikacji języka Java utworzyć bazę danych dokumentów i zarządzać nią z poziomu Azure Cosmos DB konta interfejsu API SQL. Najpierw utwórz konto Azure Cosmos DB interfejsu API SQL przy użyciu Azure Portal, Utwórz aplikację Java przy użyciu zestawu SQL Java SDK, a następnie Dodaj zasoby do konta Cosmos DB przy użyciu aplikacji Java. Instrukcje podane w tym przewodniku Szybki start można wykonać w dowolnym systemie operacyjnym, w którym można uruchomić oprogramowanie Java. Po ukończeniu tego przewodnika Szybki Start zobaczysz, jak tworzyć i modyfikować bazy danych Cosmos DB, kontenery w interfejsie użytkownika lub programowo, zależnie od preferencji użytkownika.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

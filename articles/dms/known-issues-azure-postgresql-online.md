@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 08/06/2019
-ms.openlocfilehash: 0b1632ab943026578eb753014575ab53d151c33f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 56758e2962adb41c9876171c89b37263a70ed0e4
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855013"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743540"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Znane problemy/ograniczenia migracji z migracją online do usługi Azure DB for PostgreSQL
 
@@ -89,6 +89,8 @@ Znane problemy i ograniczenia związane z migracją online z PostgreSQL do Azure
 
     **Obejście problemu**: Tymczasowo Ustaw klucz podstawowy dla tabeli do migracji, aby kontynuować. Klucz podstawowy można usunąć po zakończeniu migracji danych.
 
+- **Ograniczenie**: Typ JSONB nie jest obsługiwany w przypadku migracji.
+
 ## <a name="lob-limitations"></a>Ograniczenia dotyczące obiektów LOB
 
 Kolumny dużego obiektu (LOB) są kolumnami, które mogą rosnąć duże. W przypadku PostgreSQL, przykłady typów danych LOB obejmują XML, JSON, obraz, tekst itd.
@@ -103,7 +105,7 @@ Kolumny dużego obiektu (LOB) są kolumnami, które mogą rosnąć duże. W przy
     SELECT max(length(cast(body as text))) as body FROM customer_mail
     ```
 
-    **Obejście problemu**: Jeśli masz obiekt LOB o rozmiarze większym niż 32 KB, skontaktuj się z zespołem inżynieryjnym w poproszeniu do [migracji bazy danych platformy Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
+    **Obejście problemu**: Jeśli masz obiekt LOB o rozmiarze większym niż 32 KB, skontaktuj się z zespołem inżynieryjnym w [poproszeniu do migracji bazy danych platformy Azure](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
 - **Ograniczenie**: Jeśli w tabeli znajdują się kolumny LOB i nie istnieje zestaw kluczy podstawowych dla tej tabeli, dane mogą nie być migrowane dla tej tabeli.
 

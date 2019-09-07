@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 19654a4902ae64e5de63ffc93a8d143cc518e254
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b37de45099362fda7288db52cf17749da6e44ea6
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697744"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390230"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Przykład: Wykryj tonacji z analiza tekstu
 
@@ -80,14 +80,14 @@ Aby uzyskać więcej informacji na temat definicji żądania, zobacz [wywoływan
 
 + Utwórz żądanie POST. Aby zapoznać się z dokumentacją interfejsu API dla tego żądania, zobacz [interfejs api analiza tonacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9).
 
-+ Ustaw punkt końcowy HTTP na potrzeby analizy tonacji przy użyciu zasobu analiza tekstu na platformie Azure lub [kontenera analiza tekstu](text-analytics-how-to-install-containers.md)wystąpienia. Musi zawierać `/sentiment` zasób: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`.
++ Ustaw punkt końcowy HTTP na potrzeby analizy tonacji przy użyciu zasobu analiza tekstu na platformie Azure lub [kontenera analiza tekstu](text-analytics-how-to-install-containers.md)wystąpienia. Musisz uwzględnić `/text/analytics/v2.1/sentiment` w adresie URL. Na przykład: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`.
 
 + Ustaw nagłówek żądania w taki sposób, aby zawierał [klucz dostępu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) dla operacji analiza tekstu.
 
 + W treści żądania podaj kolekcję dokumentów JSON przygotowaną na potrzeby tej analizy.
 
 > [!Tip]
-> Użyj [](text-analytics-how-to-call-api.md) programu Poster lub Otwórz **konsolę testowania interfejsu API** w [dokumentacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) , aby utworzyć strukturę żądania i opublikować ją w usłudze.
+> Użyj programu [Poster](text-analytics-how-to-call-api.md) lub Otwórz **konsolę testowania interfejsu API** w [dokumentacji](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) , aby utworzyć strukturę żądania i opublikować ją w usłudze.
 
 ## <a name="step-2-post-the-request"></a>Krok 2: Wysłanie żądania
 
@@ -139,8 +139,8 @@ Poniższy przykład przedstawia odpowiedzi dla kolekcji dokumentów w tym artyku
 > [!NOTE]
 > * Format żądania analiza tonacji v3 i [limity danych](../overview.md#data-limits) są takie same jak w poprzedniej wersji.
 > * W tej chwili analiza tonacji v3:
->    * Obecnie obsługuje tylko język angielski.
->    * Jest dostępny w następujących regionach: `Central US`, `Central Canada`, i `East Asia`.
+>    * Obecnie obsługuje języki angielski, chiński uproszczony i japoński.
+>    * Jest dostępny w następujących regionach: `Central US`, `Central Canada`, i `East Asia`. 
 
 |Cecha |Opis  |
 |---------|---------|
@@ -273,7 +273,7 @@ W tym artykule przedstawiono koncepcje i przepływ pracy analizy tonacji przy u�
  [Omówienie analizy tekstu](../overview.md) [Frequently asked questions (FAQ) (Często zadawane pytania (FAQ))](../text-analytics-resource-faq.md)</br>
  [Strona produktu analizy tekstu](//go.microsoft.com/fwlink/?LinkID=759712)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Wyodrębnianie kluczowych fraz](text-analytics-how-to-keyword-extraction.md)

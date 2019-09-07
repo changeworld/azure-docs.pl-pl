@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 93b3c7671a5beb4b3a451fe0efd13b9f48e00436
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6e0c1419e5656f184d27dce8d185a86bea71d173
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941816"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389948"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Konfigurowanie galerii obrazów udostępnionych w usłudze Azure DevTest Labs
 DevTest Labs obsługuje teraz funkcję [galerii obrazów udostępnionych](../virtual-machines/windows/shared-image-galleries.md) . Umożliwia ona użytkownikom laboratorium dostęp do obrazów z udostępnionej lokalizacji podczas tworzenia zasobów laboratorium. Ułatwia też dostosowanie struktury i organizacji do obrazów maszyn wirtualnych zarządzanych w niestandardowy sposób. Funkcja galerii obrazów udostępnionych obsługuje:
@@ -32,6 +32,9 @@ DevTest Labs obsługuje teraz funkcję [galerii obrazów udostępnionych](../vir
 Aby uzyskać więcej informacji, zobacz [dokumentację udostępnionej galerii obrazów](../virtual-machines/windows/shared-image-galleries.md). 
  
 Jeśli obsługuje wiele zarządzanych obrazów i chcesz udostępnić je w całej firmie, możesz użyć galerii obrazów udostępnionych jako repozytorium, które ułatwia aktualizowanie i udostępnianie obrazów. Właściciel laboratorium może dołączyć do swojego laboratorium istniejącą galerię obrazów udostępnionych. Gdy galeria zostanie dołączona, użytkownicy laboratorium będą mogli tworzyć maszyny przy użyciu najnowszych obrazów. Kluczową zaletą tej funkcji jest to, że usługa DevTest Labs może teraz korzystać z udostępniania obrazów między laboratoriami, subskrypcjami i regionami. 
+
+> [!NOTE]
+> Aby dowiedzieć się więcej o kosztach związanych z usługą galerii obrazów udostępnionych, zobacz [rozliczenia dla udostępnionej galerii obrazów](../virtual-machines/windows/shared-image-galleries.md#billing).
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 - W danym momencie możesz dołączyć tylko jedną galerię udostępnionych obrazów do laboratorium. Jeśli chcesz dołączyć kolejną galerię, musisz odłączyć istniejącą i dołączyć inną. 
@@ -53,7 +56,7 @@ Jeśli obsługuje wiele zarządzanych obrazów i chcesz udostępnić je w całej
     ![Dołącz](./media/configure-shared-image-gallery/attach-options.png)
 1. Przejdź do dołączonej galerii i skonfiguruj galerię, aby **włączyć lub wyłączyć** obrazy udostępnione na potrzeby tworzenia maszyn wirtualnych. Wybierz z listy galerię obrazów, aby ją skonfigurować. 
 
-    Domyślnie ustawienie **Zezwalaj na używanie wszystkich obrazów jako baz maszyn wirtualnych** jest ustawione na **wartość tak**. Oznacza to, że wszystkie obrazy dostępne w dołączonej galerii obrazów udostępnionych będą dostępne dla użytkownika laboratorium podczas tworzenia nowej maszyny wirtualnej laboratorium. W przypadku konieczności ograniczenia dostępu do niektórych obrazów należy zmienić wartość **Zezwalaj na używanie wszystkich obrazów jako baz maszyn wirtualnych** , anastępnie wybrać obrazy, które mają być dozwolone podczas tworzenia maszyn wirtualnych, a następnie wybrać przycisk **Zapisz** .
+    Domyślnie ustawienie **Zezwalaj na używanie wszystkich obrazów jako baz maszyn wirtualnych** jest ustawione na **wartość tak**. Oznacza to, że wszystkie obrazy dostępne w dołączonej galerii obrazów udostępnionych będą dostępne dla użytkownika laboratorium podczas tworzenia nowej maszyny wirtualnej laboratorium. W przypadku konieczności ograniczenia dostępu do niektórych obrazów należy zmienić wartość **Zezwalaj na używanie wszystkich obrazów jako baz maszyn wirtualnych** **, a**następnie wybrać obrazy, które mają być dozwolone podczas tworzenia maszyn wirtualnych, a następnie wybrać przycisk **Zapisz** .
 
     ![Włącz lub Wyłącz](./media/configure-shared-image-gallery/enable-disable.png)
 1. Użytkownicy laboratorium mogą następnie utworzyć maszynę wirtualną za pomocą włączonych obrazów, klikając pozycję **+ Dodaj** i wyszukasz obraz na stronie **Wybierz swoją bazę** .

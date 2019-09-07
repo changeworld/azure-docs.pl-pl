@@ -1,20 +1,20 @@
 ---
-title: Samouczek — Konfigurowanie zasad usługi bazy danych Apache HBase HDInsight z pakietem Enterprise Security - Azure
-description: Samouczek — Dowiedz się, jak skonfigurować zasady platformy Apache Ranger dla bazy danych HBase w usłudze Azure HDInsight z pakietem Enterprise Security.
+title: Samouczek — Konfigurowanie platformy Apache HBase z pakiet Enterprise Security — Azure
+description: Samouczek — informacje na temat konfigurowania zasad Apache Ranger dla HBase w usłudze Azure HDInsight przy użyciu pakiet Enterprise Security.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 06/18/2019
-ms.openlocfilehash: 04592ba307cd696c20778d4a79f03be2eb0ac987
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 09/04/2019
+ms.openlocfilehash: 39b87347212aef36bcced1a5b297f2f9e89bcc47
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274396"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734913"
 ---
-# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Samouczek: Konfigurowanie zasad usługi bazy danych Apache HBase HDInsight z pakietem Enterprise Security
+# <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Samouczek: Konfigurowanie zasad Apache HBase w usłudze HDInsight przy użyciu pakiet Enterprise Security
 
 Dowiedz się, jak skonfigurować zasady platformy Apache Ranger na potrzeby klastrów Apache HBase pakietów Enterprise Security Package (ESP). Klastry ESP są łączone z domeną, co pozwala użytkownikom na uwierzytelnianie przy użyciu poświadczeń domeny. W tym samouczku utworzysz dwie zasady platformy Ranger, aby ograniczyć dostęp do różnych rodzin kolumn w tabeli bazy danych HBase.
 
@@ -111,7 +111,7 @@ Utwórz zasady platformy Ranger dla użytkowników **sales_user1** i **marketing
    |Rodzina kolumn bazy danych HBase   |  Nazwa, kontakt |
    |Kolumna bazy danych HBase   |  * |
    |Wybierz grupę  | |
-   |Select User (Wybierz użytkownika)  | sales_user1 |
+   |Wybór użytkownika  | sales_user1 |
    |Uprawnienia  | Odczyt |
 
    W nazwie tematu można uwzględnić następujące symbole wieloznaczne:
@@ -135,7 +135,7 @@ Utwórz zasady platformy Ranger dla użytkowników **sales_user1** i **marketing
    |Rodzina kolumn bazy danych HBase   |  Skontaktuj się z |
    |Kolumna bazy danych HBase   |  * |
    |Wybierz grupę  | |
-   |Select User (Wybierz użytkownika)  | marketing_user1 |
+   |Wybór użytkownika  | marketing_user1 |
    |Uprawnienia  | Odczyt |
 
    ![Interfejs użytkownika administratora platformy Apache Ranger — tworzenie zasad](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
@@ -146,7 +146,7 @@ Utwórz zasady platformy Ranger dla użytkowników **sales_user1** i **marketing
 
 Zgodnie ze skonfigurowanymi zasadami platformy Ranger użytkownik **sales_user1** może wyświetlić wszystkie dane dla kolumn w obydwu rodzinach kolumn `Name` i `Contact`. Użytkownik **marketing_user1** może wyświetlać dane tylko w rodzinie kolumn `Contact`.
 
-### <a name="access-data-as-salesuser1"></a>Uzyskiwanie dostępu do danych jako sales_user1
+### <a name="access-data-as-sales_user1"></a>Uzyskiwanie dostępu do danych jako sales_user1
 
 1. Otwórz nowe połączenie SSH z klastrem. Użyj następującego polecenia, aby zalogować się do klastra:
 
@@ -160,7 +160,7 @@ Zgodnie ze skonfigurowanymi zasadami platformy Ranger użytkownik **sales_user1*
    kinit sales_user1
    ```
 
-2. Otwórz powłokę HBase, a następnie przeprowadź skanowanie tabeli `Customers`.
+2. Otwórz powłokę HBase i Zeskanuj tabelę `Customers`.
 
    ```hbaseshell
    hbase shell
@@ -188,7 +188,7 @@ Zgodnie ze skonfigurowanymi zasadami platformy Ranger użytkownik **sales_user1*
     2 row(s) in 0.1000 seconds
     ```
 
-### <a name="access-data-as-marketinguser1"></a>Uzyskiwanie dostępu do danych jako marketing_user1
+### <a name="access-data-as-marketing_user1"></a>Uzyskiwanie dostępu do danych jako marketing_user1
 
 1. Otwórz nowe połączenie SSH z klastrem. Użyj następującego polecenia, aby zalogować się jako użytkownik **marketing_user1**:
 
@@ -202,7 +202,7 @@ Zgodnie ze skonfigurowanymi zasadami platformy Ranger użytkownik **sales_user1*
    kinit marketing_user1
    ```
 
-2. Otwórz powłokę HBase, a następnie przeprowadź skanowanie tabeli `Customers`:
+2. Otwórz powłokę HBase i Zeskanuj tabelę `Customers`:
 
     ```hbaseshell
     hbase shell
@@ -240,7 +240,7 @@ Jeśli nie zamierzasz nadal korzystać z tej aplikacji, usuń utworzony klaster 
 1. Na wyświetlonej liście klastrów usługi HDInsight kliknij symbol **...** obok klastra utworzonego na potrzeby tego samouczka. 
 1. Kliknij przycisk **Usuń**. Kliknij przycisk **Yes** (Tak).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Rozpocznij pracę z bazą danych Apache HBase](../hbase/apache-hbase-tutorial-get-started-linux.md)

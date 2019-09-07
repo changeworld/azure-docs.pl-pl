@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 11ae418ddbe007c6fd5aa44ef22ed7fddec9c702
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b34fd30b8e43e674b0b346672366d680d99ebd5c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087271"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734268"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Interfejsy API protokołu HTTP w Durable Functions (Azure Functions)
 
@@ -33,7 +33,11 @@ Każdy z tych interfejsów API protokołu HTTP jest operacją elementu webhook, 
 
 Klasa [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) uwidacznia interfejs API [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_) , którego można użyć do wygenerowania ładunku odpowiedzi HTTP zawierającego linki do wszystkich obsługiwanych operacji. Oto przykład funkcji wyzwalacza HTTP, która pokazuje, jak używać tego interfejsu API:
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>PrekompilowanegoC#
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
+
+### <a name="c-script"></a>C#Napisy
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/HttpStart/run.csx)]
 
@@ -85,7 +89,7 @@ Wspomniana wcześniej odpowiedź HTTP została zaprojektowana w celu ułatwienia
 Ten protokół umożliwia koordynowanie długotrwałych procesów z zewnętrznymi klientami lub usługami, które obsługują sondowanie punktu końcowego http i po `Location` nagłówku. Podstawowe elementy są już wbudowane w Durable Functions interfejsów API protokołu HTTP.
 
 > [!NOTE]
-> Domyślnie wszystkie działania oparte na protokole HTTP zapewniane przez [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) obsługują standardowy wzorzec operacji asynchronicznej. Ta funkcja umożliwia osadzenie długotrwałej funkcji trwałej w ramach przepływu pracy Logic Apps. Więcej szczegółów na Logic Apps temat obsługi asynchronicznych wzorców HTTP można znaleźć w temacie [Azure Logic Apps akcje przepływu pracy i](../../logic-apps/logic-apps-workflow-actions-triggers.md#asynchronous-patterns)informacje o wyzwalaczach.
+> Domyślnie wszystkie działania oparte na protokole HTTP zapewniane przez [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) obsługują standardowy wzorzec operacji asynchronicznej. Ta funkcja umożliwia osadzenie długotrwałej funkcji trwałej w ramach przepływu pracy Logic Apps. Więcej szczegółów na Logic Apps temat obsługi asynchronicznych wzorców HTTP można znaleźć w temacie [Azure Logic Apps akcje przepływu pracy i informacje o wyzwalaczach](../../logic-apps/logic-apps-workflow-actions-triggers.md#asynchronous-patterns).
 
 ## <a name="http-api-reference"></a>Dokumentacja interfejsu API protokołu HTTP
 
@@ -530,7 +534,7 @@ Parametry żądania dla tego interfejsu API zawierają zestaw domyślny opisany 
 | Pole             | Typ parametru  | Opis |
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | Identyfikator wystąpienia aranżacji. |
-| **`reason`**      | Ciąg zapytania    | Opcjonalna. Przyczyna zakończenia wystąpienia aranżacji. |
+| **`reason`**      | Ciąg zapytania    | Opcjonalny. Przyczyna zakończenia wystąpienia aranżacji. |
 
 #### <a name="response"></a>Odpowiedź
 
@@ -589,7 +593,7 @@ Można zwrócić kilka możliwych wartości kodu stanu.
 * **HTTP 404 (nie znaleziono)** : Nie znaleziono określonego wystąpienia.
 * **HTTP 410 (usunięty)** : Określone wystąpienie zostało zakończone lub zostało zakończone.
 
-Oto przykładowe żądanie, które powoduje odwracanie wystąpienia zakończonego niepowodzeniem i określa przyczynę naprawienia:
+Oto przykładowe żądanie, które powoduje odwracanie wystąpienia zakończonego niepowodzeniem i określa przyczynę **naprawienia**:
 
 ```http
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/rewind?reason=fixed&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
@@ -619,7 +623,7 @@ Parametry żądania dla tego interfejsu API obejmują domyślnie wymieniony wcze
 |-------------------|-----------------|-------------|
 | **`entityType`**  | URL             | Typ jednostki. |
 | **`entityKey`**   | URL             | Unikatowa nazwa jednostki. |
-| **`op`**          | Ciąg zapytania    | Opcjonalny. Nazwa operacji zdefiniowanej przez użytkownika do wywołania. |
+| **`op`**          | Ciąg zapytania    | Opcjonalna. Nazwa operacji zdefiniowanej przez użytkownika do wywołania. |
 | **`{content}`**   | Żądaj zawartości | Ładunek zdarzenia w formacie JSON. |
 
 Oto przykładowe żądanie, które wysyła zdefiniowany przez użytkownika komunikat "Dodaj" do `Counter` jednostki o nazwie. `steps` Zawartość wiadomości jest wartością `5`. Jeśli jednostka jeszcze nie istnieje, zostanie utworzona przez to żądanie:

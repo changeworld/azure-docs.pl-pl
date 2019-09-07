@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f94d3cdbbd1683b20dbe1d370bcac43817458f44
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 69218cedcd5d775fe6e499086663aa124f6bfe25
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139381"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736004"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Dokumentacja skryptów Azure Data Factory-JSON
 > [!NOTE]
@@ -50,7 +50,7 @@ W poniższej tabeli opisano właściwości w definicji JSON potoku:
 | name | Nazwa potoku. Określ nazwę reprezentującą akcję, która ma zostać skonfigurowana dla działania lub potoku<br/><ul><li>Maksymalna liczba znaków: 260</li><li>Musi zaczynać się cyfrą lub znakiem podkreślenia (\_)</li><li>Następujące znaki nie są dozwolone: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":",\\""</li></ul> |Tak |
 | description |Tekst opisujący działanie lub potoki używane przez | Nie |
 | działania | Zawiera listę działań. | Tak |
-| start |Data i godzina rozpoczęcia potoku. Musi być w [formacie ISO](https://en.wikipedia.org/wiki/ISO_8601). Przykład: 2014-10-14T16:32:41. <br/><br/>Można określić czas lokalny, na przykład czas EST. Oto przykład: `2016-02-27T06:00:00**-05:00`, czyli 6.<br/><br/>Właściwości Start i End wspólnie określają aktywny okres dla potoku. Wycinki wyjściowe są tworzone tylko w tym aktywnym okresie. |Nie<br/><br/>W przypadku określenia wartości właściwości End należy określić wartość właściwości Start.<br/><br/>Aby można było utworzyć potok, oba czasy rozpoczęcia i zakończenia mogą być puste. Należy określić obie wartości, aby ustawić aktywny okres uruchomienia potoku. Jeśli nie określisz godzin początkowych i końcowych podczas tworzenia potoku, możesz je ustawić przy użyciu polecenia cmdlet Set-AzDataFactoryPipelineActivePeriod. |
+| start |Data i godzina rozpoczęcia potoku. Musi być w [formacie ISO](https://en.wikipedia.org/wiki/ISO_8601). Na przykład: 2014-10-14T16:32:41. <br/><br/>Można określić czas lokalny, na przykład czas EST. Oto przykład: `2016-02-27T06:00:00**-05:00`, czyli 6.<br/><br/>Właściwości Start i End wspólnie określają aktywny okres dla potoku. Wycinki wyjściowe są tworzone tylko w tym aktywnym okresie. |Nie<br/><br/>W przypadku określenia wartości właściwości End należy określić wartość właściwości Start.<br/><br/>Aby można było utworzyć potok, oba czasy rozpoczęcia i zakończenia mogą być puste. Należy określić obie wartości, aby ustawić aktywny okres uruchomienia potoku. Jeśli nie określisz godzin początkowych i końcowych podczas tworzenia potoku, możesz je ustawić przy użyciu polecenia cmdlet Set-AzDataFactoryPipelineActivePeriod. |
 | end |Data i godzina zakończenia potoku. Jeśli ta wartość jest określona, musi być w formacie ISO. Na przykład: 2014-10-14T17:32:41 <br/><br/>Można określić czas lokalny, na przykład czas EST. Oto przykład: `2016-02-27T06:00:00**-05:00`, czyli 6.<br/><br/>Aby uruchomić potok w nieskończoność, określ 9999-09-09 jako wartość właściwości end. |Nie <br/><br/>W przypadku określenia wartości właściwości Start należy określić wartość właściwości end.<br/><br/>Zobacz uwagi dotyczące właściwości **Start** . |
 | isPaused |Jeśli wartość jest równa true, potok nie jest uruchamiany. Wartość domyślna = false. Ta właściwość służy do włączania lub wyłączania. |Nie |
 | potokmode |Metoda planowania przebiegów dla potoku. Dozwolone wartości to: zaplanowane (wartość domyślna), jednorazowej.<br/><br/>Wartość "zaplanowany" wskazuje, że potok jest uruchamiany w określonym przedziale czasu, zgodnie z jego aktywnym okresem (godzina rozpoczęcia i zakończenia). Element "jednorazowej" wskazuje, że potok jest uruchamiany tylko raz. Nie można obecnie modyfikować/aktualizować potoków jednorazowej utworzonych po utworzeniu. Zobacz [potok jednorazowej](data-factory-create-pipelines.md#onetime-pipeline) , aby uzyskać szczegółowe informacje na temat ustawienia jednorazowej. |Nie |
@@ -319,7 +319,7 @@ W poniższej tabeli opisano właściwości, których można użyć w sekcji **do
 | frequency |Określa jednostkę czasu dla produkcji wycinków zestawu danych.<br/><br/><b>Obsługiwana częstotliwość</b>: Minuta, godzina, dzień, tydzień, miesiąc |Tak |Nie dotyczy |
 | przedział |Określa mnożnik dla częstotliwości<br/><br/>"Interwał x częstotliwości" określa, jak często wycinek jest generowany.<br/><br/>Jeśli potrzebujesz zestawu danych, który ma być pofragmentowany co godzinę, ustawisz <b>częstotliwość</b> na <b>godzinę</b>, a <b>Interwał</b> na <b>1</b>.<br/><br/><b>Uwaga</b>: Jeśli określisz częstotliwość jako minutę, zalecamy ustawienie interwału na wartość nie mniejszą niż 15. |Tak |Nie dotyczy |
 | style |Określa, czy wycinek ma być tworzony na początku, czy na końcu interwału.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Jeśli częstotliwość jest ustawiona na wartość miesiąc, a w polu styl ustawiono wartość EndOfInterval, wycinek zostanie utworzony w ostatnim dniu miesiąca. Jeśli styl jest ustawiony na StartOfInterval, wycinek jest generowany pierwszego dnia miesiąca.<br/><br/>Jeśli częstotliwość jest ustawiona na dzień, a styl ustawiono na EndOfInterval, wycinek jest tworzony w ciągu ostatniej godziny dnia.<br/><br/>Jeśli częstotliwość jest ustawiona na wartość Godzina i styl ustawiono na EndOfInterval, wycinek zostanie utworzony na końcu godziny. Na przykład dla wycinka dla 1 PM — 2 PM, wycinek jest generowany na 2 PM. |Nie |EndOfInterval |
-| anchorDateTime |Definiuje położenie bezwzględne w czasie używanym przez harmonogram do obliczania granic wycinków zestawu danych. <br/><br/><b>Uwaga</b>: Jeśli AnchorDateTime ma części danych, które są bardziej szczegółowe niż częstotliwość, są ignorowane części bardziej szczegółowe. <br/><br/>Na przykład jeśli <b>Interwał</b> jest godzinny <b></b> (częstotliwość: godzina i interwał: 1), a <b>AnchorDateTime</b> zawiera <b>minuty i sekund</b> , a następnie są ignorowane części <b>minut i sekund</b> AnchorDateTime. |Nie |01/01/0001 |
+| anchorDateTime |Definiuje położenie bezwzględne w czasie używanym przez harmonogram do obliczania granic wycinków zestawu danych. <br/><br/><b>Uwaga</b>: Jeśli AnchorDateTime ma części danych, które są bardziej szczegółowe niż częstotliwość, są ignorowane części bardziej szczegółowe. <br/><br/>Na przykład jeśli <b>Interwał</b> jest <b>godzinny</b> (częstotliwość: godzina i interwał: 1), a <b>AnchorDateTime</b> zawiera <b>minuty i sekund</b> , a następnie są ignorowane części <b>minut i sekund</b> AnchorDateTime. |Nie |01/01/0001 |
 | offset |Przedział czasu, przez który początek i koniec wszystkich wycinków zestawu danych są przesunięte. <br/><br/><b>Uwaga</b>: Jeśli określono zarówno anchorDateTime, jak i przesunięcie, wynik jest połączonym przesunięciem. |Nie |Nie dotyczy |
 
 W poniższej sekcji dostępności określono, że wyjściowy zestaw danych jest generowany co godzinę (lub) zestaw danych wejściowych jest dostępny co godzinę:
@@ -461,7 +461,7 @@ Aby zdefiniować zestaw danych obiektów blob platformy Azure, ustaw **Typ** zes
 | fileName |Nazwa obiektu BLOB. Nazwa pliku jest opcjonalna i uwzględnia wielkość liter.<br/><br/>W przypadku określenia nazwy pliku działanie (łącznie z kopią) działa w określonym obiekcie blob.<br/><br/>Jeśli nazwa pliku nie jest określona, Copy zawiera wszystkie obiekty blob w folderPath dla wejściowego zestawu danych.<br/><br/>Jeśli nie określono nazwy pliku wyjściowego zestawu danych, nazwa wygenerowanego pliku będzie w następującym formacie: `Data.<Guid>.txt` (na przykład:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nie |
 | partitionedBy |partitionedBy jest właściwością opcjonalną. Można jej użyć do określenia dynamicznego folderPath i nazwy pliku dla danych szeregów czasowych. Na przykład folderPath może być sparametryzowany dla każdej godziny danych. |Nie |
 | format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
-| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane są następujące poziomy: Optymalnai najszybsza. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane są następujące poziomy: **Optymalna** i **najszybsza**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
 #### <a name="example"></a>Przykład
 
@@ -644,7 +644,7 @@ Aby zdefiniować zestaw danych Azure Data Lake Store, ustaw **Typ** zestawu dany
 | fileName |Nazwa pliku w magazynie Azure Data Lake. Nazwa pliku jest opcjonalna i uwzględnia wielkość liter. <br/><br/>W przypadku określenia nazwy pliku działanie (łącznie z kopią) działa w określonym pliku.<br/><br/>Jeśli nazwa pliku nie jest określona, Copy zawiera wszystkie pliki w folderPath dla wejściowego zestawu danych.<br/><br/>Jeśli nie określono nazwy pliku wyjściowego zestawu danych, nazwa wygenerowanego pliku będzie w następującym formacie: `Data.<Guid>.txt` (na przykład:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nie |
 | partitionedBy |partitionedBy jest właściwością opcjonalną. Można jej użyć do określenia dynamicznego folderPath i nazwy pliku dla danych szeregów czasowych. Na przykład folderPath może być sparametryzowany dla każdej godziny danych. |Nie |
 | format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
-| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane są następujące poziomy: Optymalnai najszybsza. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane są następujące poziomy: **Optymalna** i **najszybsza**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
 #### <a name="example"></a>Przykład
 ```json
@@ -989,7 +989,7 @@ Aby zdefiniować zestaw danych Azure SQL Database, ustaw **Typ** zestawu danych 
 Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika usługi Azure SQL](data-factory-azure-sql-connector.md#dataset-properties) .
 
 ### <a name="sql-source-in-copy-activity"></a>Źródło SQL w działaniu kopiowania
-W przypadku kopiowania danych z Azure SQL Database Ustaw **Typ Source** działania Copy na sqlsource i określ następujące właściwościw sekcji **Source** :
+W przypadku kopiowania danych z Azure SQL Database Ustaw **Typ Source** działania Copy na **sqlsource**i określ następujące właściwości w sekcji **Source** :
 
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
@@ -1043,7 +1043,7 @@ W przypadku kopiowania danych z Azure SQL Database Ustaw **Typ Source** działan
 Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika usługi Azure SQL](data-factory-azure-sql-connector.md#copy-activity-properties) .
 
 ### <a name="sql-sink-in-copy-activity"></a>Obiekt sink SQL w działaniu kopiowania
-Jeśli kopiujesz dane do Azure SQL Database, ustaw **Typ ujścia** działania Copy na sqlsink i określnastępujące właściwości w sekcji **ujścia** :
+Jeśli kopiujesz dane do Azure SQL Database, ustaw **Typ ujścia** działania Copy na **sqlsink**i określ następujące właściwości w sekcji **ujścia** :
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
@@ -1228,7 +1228,7 @@ Jeśli kopiujesz dane do Azure SQL Data Warehouse, ustaw **Typ ujścia** działa
 | polyBaseSettings |Grupa właściwości, które może być określony, gdy **allowPolybase** właściwość jest ustawiona na **true**. |&nbsp; |Nie |
 | rejectValue |Określa liczbę lub wartość procentowa wierszy, które można odrzucić przed zapytanie nie powiedzie się. <br/><br/>Dowiedz się więcej o opcjach odrzucenia bazy danych w sekcji **argumenty** w temacie [Create External Table (Transact-SQL)](https://msdn.microsoft.com/library/dn935021.aspx) . |0 (wartość domyślna), 1, 2,... |Nie |
 | rejectType |Określa, czy opcja rejectValue jest określona jako wartość literału, czy wartość procentowa. |Wartość (domyślnie), wartość procentowa |Nie |
-| rejectSampleValue |Określa liczbę wierszy do pobrania przed ponownym obliczeniem procentu odrzuconych wierszy. |1, 2, … |Tak, w przypadku odrzucenia **wartości procentowej** |
+| rejectSampleValue |Określa liczbę wierszy do pobrania przed ponownym obliczeniem procentu odrzuconych wierszy. |1, 2, … |Tak, w przypadku **odrzucenia** **wartości procentowej** |
 | useTypeDefault |Określa sposób obsługi brakujących wartości w rozdzielanych plików tekstowych, jeśli funkcja PolyBase pobiera dane z pliku tekstowego.<br/><br/>Dowiedz się więcej na temat tej właściwości z sekcji argumentów w [tworzenie EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). |Prawda, FAŁSZ (wartość domyślna) |Nie |
 | writeBatchSize |Wstawia dane do tabeli SQL, gdy rozmiar buforu osiągnie writeBatchSize |Liczba całkowita (liczba wierszy) |Nie (domyślnie: 10000) |
 | writeBatchTimeout |Czas oczekiwania na zakończenie operacji wstawiania partii przed upływem limitu czasu. |TimeSpan<br/><br/> Przykład: "00:30:00" (30 minut). |Nie |
@@ -1619,7 +1619,7 @@ Aby zdefiniować połączoną usługę Amazon RedShift, ustaw **Typ** połączon
 Aby uzyskać więcej informacji, zobacz artykuł dotyczący łącznika Amazon RedShift.
 
 ### <a name="dataset"></a>Zestaw danych
-Aby zdefiniować zestaw danych Amazon RedShift, ustaw **Typ** zestawu danych na relacyjny, a następnie określ następujące właściwości w sekcji **typeProperties** :
+Aby zdefiniować zestaw danych Amazon RedShift, ustaw **Typ** zestawu danych na **relacyjny**, a następnie określ następujące właściwości w sekcji **typeProperties** :
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
@@ -1652,7 +1652,7 @@ Jeśli kopiujesz dane z Amazon RedShift, ustaw **Typ Source** działania Copy na
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: `select * from MyTable`. |Nie (Jeśli określono element TableName **zestawu danych** ) |
+| query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: `select * from MyTable`. |Nie (Jeśli określono element **TableName** **zestawu danych** ) |
 
 #### <a name="example"></a>Przykład
 
@@ -1733,7 +1733,7 @@ Aby zdefiniować połączoną usługę IBM DB2, ustaw **Typ** połączonej usłu
 Aby uzyskać więcej informacji, zobacz artykuł dotyczący łącznika programu IBM DB2.
 
 ### <a name="dataset"></a>Zestaw danych
-Aby zdefiniować zestaw danych DB2, ustaw **Typ** zestawu danych na relacyjny, a następnie określ następujące właściwości w sekcji **typeProperties** :
+Aby zdefiniować zestaw danych DB2, ustaw **Typ** zestawu danych na **relacyjny**, a następnie określ następujące właściwości w sekcji **typeProperties** :
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
@@ -1771,7 +1771,7 @@ W przypadku kopiowania danych z programu IBM DB2 Ustaw **Typ Source** działania
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: `"query": "select * from "MySchema"."MyTable""`. |Nie (Jeśli określono element TableName **zestawu danych** ) |
+| query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: `"query": "select * from "MySchema"."MyTable""`. |Nie (Jeśli określono element **TableName** **zestawu danych** ) |
 
 #### <a name="example"></a>Przykład
 ```json
@@ -1851,7 +1851,7 @@ Aby zdefiniować połączoną usługę MySQL, ustaw **Typ** połączonej usługi
 Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika MySQL](data-factory-onprem-mysql-connector.md#linked-service-properties) .
 
 ### <a name="dataset"></a>Zestaw danych
-Aby zdefiniować zestaw danych MySQL, ustaw **Typ** zestawu danych na relacyjny, a następnie określ następujące właściwości w sekcji **typeProperties** :
+Aby zdefiniować zestaw danych MySQL, ustaw **Typ** zestawu danych na **relacyjny**, a następnie określ następujące właściwości w sekcji **typeProperties** :
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
@@ -1889,7 +1889,7 @@ W przypadku kopiowania danych z bazy danych MySQL Ustaw **Typ Source** działani
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: `select * from MyTable`. |Nie (Jeśli określono element TableName **zestawu danych** ) |
+| query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: `select * from MyTable`. |Nie (Jeśli określono element **TableName** **zestawu danych** ) |
 
 
 #### <a name="example"></a>Przykład
@@ -2005,7 +2005,7 @@ Jeśli kopiujesz dane z bazy danych programu Oracle, ustaw **Typ Source** dział
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| oracleReaderQuery |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: `select * from MyTable` <br/><br/>Jeśli nie zostanie określony, instrukcja SQL, która jest wykonywana:`select * from MyTable` |Nie (Jeśli określono element TableName **zestawu danych** ) |
+| oracleReaderQuery |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: `select * from MyTable` <br/><br/>Jeśli nie zostanie określony, instrukcja SQL, która jest wykonywana:`select * from MyTable` |Nie (Jeśli określono element **TableName** **zestawu danych** ) |
 
 #### <a name="example"></a>Przykład
 
@@ -2141,7 +2141,7 @@ Aby zdefiniować połączoną usługę PostgreSQL, ustaw **Typ** połączonej us
 Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika PostgreSQL](data-factory-onprem-postgresql-connector.md#linked-service-properties) .
 
 ### <a name="dataset"></a>Zestaw danych
-Aby zdefiniować zestaw danych PostgreSQL, ustaw **Typ** zestawu danych na relacyjny, a następnie określ następujące właściwości w sekcji **typeProperties** :
+Aby zdefiniować zestaw danych PostgreSQL, ustaw **Typ** zestawu danych na **relacyjny**, a następnie określ następujące właściwości w sekcji **typeProperties** :
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
@@ -2178,7 +2178,7 @@ W przypadku kopiowania danych z bazy danych PostgreSQL należy ustawić **Typ ź
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: "Query": "SELECT * FROM \"webschema\".\" MyTable\"". |Nie (Jeśli określono element TableName **zestawu danych** ) |
+| query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: "Query": "SELECT * FROM \"webschema\".\" MyTable\"". |Nie (Jeśli określono element **TableName** **zestawu danych** ) |
 
 #### <a name="example"></a>Przykład
 
@@ -2260,7 +2260,7 @@ encryptedCredential | Zaszyfrowany ciąg poświadczeń. | ciąg | Nie
 Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika SAP Business Warehouse](data-factory-sap-business-warehouse-connector.md#linked-service-properties) .
 
 ### <a name="dataset"></a>Zestaw danych
-Aby zdefiniować zestaw danych SAP BW, ustaw **Typ** zestawu danych na relacyjny. Brak właściwości specyficznych dla typu, które są obsługiwane dla SAP BWgo zestawudanych typu relacyjnego.
+Aby zdefiniować zestaw danych SAP BW, ustaw **Typ** zestawu danych na **relacyjny**. Brak właściwości specyficznych dla typu, które są obsługiwane dla SAP BWgo zestawu danych typu **relacyjnego**.
 
 #### <a name="example"></a>Przykład
 
@@ -2368,7 +2368,7 @@ encryptedCredential | Zaszyfrowany ciąg poświadczeń. | ciąg | Nie
 Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika SAP HANA](data-factory-sap-hana-connector.md#linked-service-properties) .
 
 ### <a name="dataset"></a>Zestaw danych
-Aby zdefiniować zestaw danych SAP HANA, ustaw **Typ** zestawu danych na relacyjny. Brak właściwości specyficznych dla typu, które są obsługiwane dla SAP HANAgo zestawudanych typu relacyjnego.
+Aby zdefiniować zestaw danych SAP HANA, ustaw **Typ** zestawu danych na **relacyjny**. Brak właściwości specyficznych dla typu, które są obsługiwane dla SAP HANAgo zestawu danych typu **relacyjnego**.
 
 #### <a name="example"></a>Przykład
 
@@ -2501,7 +2501,7 @@ Jeśli określono nazwę użytkownika i hasło, brama używa ich do personifikac
 Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika SQL Server](data-factory-sqlserver-connector.md#linked-service-properties) .
 
 ### <a name="dataset"></a>Zestaw danych
-Aby zdefiniować zestaw danych SQL Server, ustaw **Typ** zestawu danych na SqlServerNamei określ następujące właściwości w sekcji **typeProperties** :
+Aby zdefiniować zestaw danych SQL Server, ustaw **Typ** zestawu danych na **SqlServerName**i określ następujące właściwości w sekcji **typeProperties** :
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
@@ -2536,7 +2536,7 @@ Aby zdefiniować zestaw danych SQL Server, ustaw **Typ** zestawu danych na SqlSe
 Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika SQL Server](data-factory-sqlserver-connector.md#dataset-properties) .
 
 ### <a name="sql-source-in-copy-activity"></a>Źródło SQL w działaniu kopiowania
-Jeśli kopiujesz dane z bazy danych SQL Server, ustaw **Typ źródła** działania Copy na sqlsource i określnastępujące właściwości w sekcji **Source** :
+Jeśli kopiujesz dane z bazy danych SQL Server, ustaw **Typ źródła** działania Copy na **sqlsource**i określ następujące właściwości w sekcji **Source** :
 
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
@@ -2552,7 +2552,7 @@ Alternatywnie można określić procedurę składowaną, określając **sqlReade
 Jeśli nie określisz opcji sqlReaderQuery ani sqlReaderStoredProcedureName, kolumny zdefiniowane w sekcji Structure są używane do tworzenia zapytania select do uruchamiania w bazie danych SQL Server. Jeśli definicja zestawu danych nie ma struktury, wszystkie kolumny są wybierane z tabeli.
 
 > [!NOTE]
-> W przypadku korzystania z **sqlReaderStoredProcedureName**, nadal trzeba określić wartość właściwości TableName w kodzie JSON zestawu danych. Nie przeprowadzono żadnych operacji sprawdzania poprawności dla tej tabeli, chociaż.
+> W przypadku korzystania z **sqlReaderStoredProcedureName**, nadal trzeba określić wartość właściwości **TableName** w kodzie JSON zestawu danych. Nie przeprowadzono żadnych operacji sprawdzania poprawności dla tej tabeli, chociaż.
 
 
 #### <a name="example"></a>Przykład
@@ -2604,7 +2604,7 @@ Jeśli nie określisz sqlReaderQuery lub sqlReaderStoredProcedureName, kolumny z
 Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika SQL Server](data-factory-sqlserver-connector.md#copy-activity-properties) .
 
 ### <a name="sql-sink-in-copy-activity"></a>Obiekt sink SQL w działaniu kopiowania
-Jeśli kopiujesz dane do bazy danych SQL Server, ustaw **Typ ujścia** działania Copy na sqlsink i określnastępujące właściwości w sekcji **ujścia** :
+Jeśli kopiujesz dane do bazy danych SQL Server, ustaw **Typ ujścia** działania Copy na **sqlsink**i określ następujące właściwości w sekcji **ujścia** :
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
@@ -2617,7 +2617,7 @@ Jeśli kopiujesz dane do bazy danych SQL Server, ustaw **Typ ujścia** działani
 | sqlWriterTableType |Określ nazwę typu tabeli, która ma zostać użyta w procedurze składowanej. Działanie kopiowania sprawia, że dane są dostępne w tabeli tymczasowej z tym typem tabeli. Kod procedury składowanej może następnie scalić dane kopiowane z istniejącymi danymi. |Nazwa typu tabeli. |Nie |
 
 #### <a name="example"></a>Przykład
-Potok zawiera działanie kopiowania, które jest skonfigurowane do używania tych wejściowych i wyjściowych zestawów danych i zaplanowane do uruchomienia co godzinę. W definicji JSON potoku typ **źródła** ma wartość **BlobSource** , a typ **ujścia** to sqlsink.
+Potok zawiera działanie kopiowania, które jest skonfigurowane do używania tych wejściowych i wyjściowych zestawów danych i zaplanowane do uruchomienia co godzinę. W definicji JSON potoku typ **źródła** ma wartość **BlobSource** , a typ **ujścia** to **sqlsink**.
 
 ```json
 {
@@ -2696,7 +2696,7 @@ Aby zdefiniować połączoną usługę Sybase, ustaw **Typ** połączonej usług
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz artykuł dotyczący łącznika programu [Sybase](data-factory-onprem-sybase-connector.md#linked-service-properties) .
+Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika programu Sybase](data-factory-onprem-sybase-connector.md#linked-service-properties) .
 
 ### <a name="dataset"></a>Zestaw danych
 Aby zdefiniować zestaw danych programu Sybase, ustaw **Typ** zestawu danych na **relacyjny**, a następnie określ następujące właściwości w sekcji **typeProperties** :
@@ -2730,7 +2730,7 @@ Aby zdefiniować zestaw danych programu Sybase, ustaw **Typ** zestawu danych na 
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz artykuł dotyczący łącznika programu [Sybase](data-factory-onprem-sybase-connector.md#dataset-properties) .
+Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika programu Sybase](data-factory-onprem-sybase-connector.md#dataset-properties) .
 
 ### <a name="relational-source-in-copy-activity"></a>Źródło relacyjne w działaniu kopiowania
 W przypadku kopiowania danych z bazy danych programu Sybase Ustaw **Typ Source** działania Copy na **RelationalSource**i określ następujące właściwości w sekcji **Source** :
@@ -2738,7 +2738,7 @@ W przypadku kopiowania danych z bazy danych programu Sybase Ustaw **Typ Source**
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: `select * from MyTable`. |Nie (Jeśli określono element TableName **zestawu danych** ) |
+| query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL. Na przykład: `select * from MyTable`. |Nie (Jeśli określono element **TableName** **zestawu danych** ) |
 
 #### <a name="example"></a>Przykład
 
@@ -2780,7 +2780,7 @@ W przypadku kopiowania danych z bazy danych programu Sybase Ustaw **Typ Source**
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz artykuł dotyczący łącznika programu [Sybase](data-factory-onprem-sybase-connector.md#copy-activity-properties) .
+Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika programu Sybase](data-factory-onprem-sybase-connector.md#copy-activity-properties) .
 
 ## <a name="teradata"></a>Teradata
 
@@ -2812,7 +2812,7 @@ Aby zdefiniować połączoną usługę programu Teradata, ustaw **Typ** połącz
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz artykuł dotyczący łącznika programu [Teradata](data-factory-onprem-teradata-connector.md#linked-service-properties) .
+Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika programu Teradata](data-factory-onprem-teradata-connector.md#linked-service-properties) .
 
 ### <a name="dataset"></a>Zestaw danych
 Aby zdefiniować zestaw danych obiektów BLOB programu Teradata, ustaw **Typ** zestawu danych na **relacyjny**. Obecnie nie istnieją właściwości typu obsługiwane dla zestawu danych programu Teradata.
@@ -2841,7 +2841,7 @@ Aby zdefiniować zestaw danych obiektów BLOB programu Teradata, ustaw **Typ** z
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz artykuł dotyczący łącznika programu [Teradata](data-factory-onprem-teradata-connector.md#dataset-properties) .
+Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika programu Teradata](data-factory-onprem-teradata-connector.md#dataset-properties) .
 
 ### <a name="relational-source-in-copy-activity"></a>Źródło relacyjne w działaniu kopiowania
 W przypadku kopiowania danych z bazy danych programu Teradata Ustaw **Typ Source** działania Copy na **RelationalSource**i określ następujące właściwości w sekcji **Source** :
@@ -2893,7 +2893,7 @@ W przypadku kopiowania danych z bazy danych programu Teradata Ustaw **Typ Source
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz artykuł dotyczący łącznika programu [Teradata](data-factory-onprem-teradata-connector.md#copy-activity-properties) .
+Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika programu Teradata](data-factory-onprem-teradata-connector.md#copy-activity-properties) .
 
 ## <a name="cassandra"></a>Cassandra
 
@@ -3097,7 +3097,7 @@ Jeśli kopiujesz dane z MongoDB, ustaw **Typ Source** działania Copy na **Mongo
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL-92. Na przykład: `select * from MyTable`. |Nie (Jeśli określono CollectionName **zestawu danych** ) |
+| query |Użyj zapytania niestandardowego do odczytywania danych. |Ciąg zapytania SQL-92. Na przykład: `select * from MyTable`. |Nie (Jeśli określono **CollectionName** **zestawu danych** ) |
 
 #### <a name="example"></a>Przykład
 
@@ -3180,7 +3180,7 @@ Aby zdefiniować zestaw danych Amazon S3, ustaw **Typ** zestawu danych na **Amaz
 | prefix |Prefiks klucza obiektu S3. Zostaną zaznaczone obiekty, których klucze rozpoczynały od tego prefiksu. Stosuje się tylko wtedy, gdy klucz jest pusty. |String |Nie |
 | version |Wersja obiektu S3 w przypadku włączenia obsługi wersji S3. |String |Nie |
 | format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie | |
-| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane są następujące poziomy: Optymalnai najszybsza. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie | |
+| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane są następujące poziomy: **Optymalna** i **najszybsza**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie | |
 
 
 > [!NOTE]
@@ -3375,7 +3375,7 @@ Aby zdefiniować zestaw danych systemu plików, ustaw **Typ** zestawu danych na 
 | fileFilter |Określ filtr, który ma być używany do wybierania podzbioru plików w folderPath, a nie wszystkich plików. <br/><br/>Dozwolone wartości to: `*` (wiele znaków) i `?` (pojedynczy znak).<br/><br/>Przykład 1: "fileFilter": "*. log"<br/>Przykład 2: "fileFilter": 2016-1-?. zawierającego<br/><br/>Należy zauważyć, że fileFilter ma zastosowanie do wejściowego zestawu danych. |Nie |
 | partitionedBy |Możesz użyć partitionedBy, aby określić dynamiczny folderPath/fileName dla danych szeregów czasowych. Przykładem jest folderPath sparametryzowane dla każdej godziny danych. |Nie |
 | format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
-| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**; i obsługiwane są następujące poziomy: Optymalnai najszybsza. Zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**; i obsługiwane są następujące poziomy: **Optymalna** i **najszybsza**. Zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
 > [!NOTE]
 > Nie można jednocześnie używać fileName i fileFilter.
@@ -3641,7 +3641,7 @@ Aby zdefiniować zestaw danych FTP, ustaw **Typ** zestawu danych na wartość **
 | fileFilter |Określ filtr, który ma być używany do wybierania podzbioru plików w folderPath, a nie wszystkich plików.<br/><br/>Dozwolone wartości to: `*` (wiele znaków) i `?` (pojedynczy znak).<br/><br/>Przykłady 1:`"fileFilter": "*.log"`<br/>Przykład 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter ma zastosowanie do wejściowego zestawu danych. Ta właściwość nie jest obsługiwana w systemie plików HDFS. |Nie |
 | partitionedBy |partitionedBy można użyć, aby określić dynamiczny folderPath, filename dla danych szeregów czasowych. Na przykład folderPath sparametryzowane dla każdej godziny danych. |Nie |
 | format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
-| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**; i obsługiwane są następujące poziomy: Optymalnai najszybsza. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**; i obsługiwane są następujące poziomy: **Optymalna** i **najszybsza**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 | useBinaryTransfer |Określ, czy ma być używany tryb transferu danych binarnych. Wartość true dla trybu binarnego i false ASCII. Wartość domyślna: True. Tej właściwości można użyć tylko wtedy, gdy skojarzony typ połączonej usługi jest typu: FtpServer. |Nie |
 
 > [!NOTE]
@@ -3782,7 +3782,7 @@ Aby zdefiniować zestaw danych systemu plików HDFS, ustaw **Typ** zestawu danyc
 | fileName |Określ nazwę pliku w **folderPath** , jeśli chcesz, aby tabela odnosiła się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Jeśli nie określono nazwy pliku wyjściowego zestawu danych, nazwa wygenerowanego pliku będzie w następującym formacie: <br/><br/>`Data.<Guid>.txt`(na przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nie |
 | partitionedBy |partitionedBy można użyć, aby określić dynamiczny folderPath, filename dla danych szeregów czasowych. Przykład: folderPath sparametryzowane dla każdej godziny danych. |Nie |
 | format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
-| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane są następujące poziomy: Optymalnai najszybsza. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane są następujące poziomy: **Optymalna** i **najszybsza**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
 > [!NOTE]
 > nazwy pliku i fileFilter nie można jednocześnie używać.
@@ -3983,7 +3983,7 @@ Aby zdefiniować zestaw danych SFTP, ustaw **Typ** zestawu danych na wartość *
 | fileFilter |Określ filtr, który ma być używany do wybierania podzbioru plików w folderPath, a nie wszystkich plików.<br/><br/>Dozwolone wartości to: `*` (wiele znaków) i `?` (pojedynczy znak).<br/><br/>Przykłady 1:`"fileFilter": "*.log"`<br/>Przykład 2: `"fileFilter": 2016-1-?.txt"`<br/><br/> fileFilter ma zastosowanie do wejściowego zestawu danych. Ta właściwość nie jest obsługiwana w systemie plików HDFS. |Nie |
 | partitionedBy |partitionedBy można użyć, aby określić dynamiczny folderPath, filename dla danych szeregów czasowych. Na przykład folderPath sparametryzowane dla każdej godziny danych. |Nie |
 | format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
-| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane są następujące poziomy: Optymalnai najszybsza. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane są następujące poziomy: **Optymalna** i **najszybsza**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 | useBinaryTransfer |Określ, czy ma być używany tryb transferu danych binarnych. Wartość true dla trybu binarnego i false ASCII. Wartość domyślna: True. Tej właściwości można użyć tylko wtedy, gdy skojarzony typ połączonej usługi jest typu: FtpServer. |Nie |
 
 > [!NOTE]
@@ -4164,7 +4164,7 @@ Aby zdefiniować zestaw danych HTTP, ustaw **Typ** zestawu danych na **http**i o
 | additionalHeaders | Dodatkowe nagłówki żądań HTTP. | Nie |
 | Elemencie requestbody | Treść dla żądania HTTP. | Nie |
 | format | Jeśli chcesz po prostu **pobrać dane z punktu końcowego http, tak jakby** nie przeanalizować go, Pomiń ustawienia tego formatu. <br><br> Jeśli chcesz przeanalizować zawartość odpowiedzi HTTP podczas kopiowania, obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. |Nie |
-| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane są następujące poziomy: Optymalnai najszybsza. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
+| compression | Określ typ i poziom kompresji danych. Obsługiwane typy to: **Gzip**, **Wklęśnięcie**, **BZip2**i **ZipDeflate**. Obsługiwane są następujące poziomy: **Optymalna** i **najszybsza**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 
 #### <a name="example-using-the-get-default-method"></a>Przykład: użycie metody GET (default)
 
@@ -4500,7 +4500,7 @@ Poświadczenia można zaszyfrować za pomocą polecenia cmdlet [New-AzDataFactor
 Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika ODBC](data-factory-odbc-connector.md#linked-service-properties) .
 
 ### <a name="dataset"></a>Zestaw danych
-Aby zdefiniować zestaw danych ODBC, ustaw **Typ** zestawu danych na relacyjny, a następnie określ następujące właściwości w sekcji **typeProperties** :
+Aby zdefiniować zestaw danych ODBC, ustaw **Typ** zestawu danych na **relacyjny**, a następnie określ następujące właściwości w sekcji **typeProperties** :
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
@@ -4614,7 +4614,7 @@ Aby zdefiniować połączoną usługę Salesforce, ustaw **Typ** połączonej us
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz artykuł dotyczący łącznika usługi [Salesforce](data-factory-salesforce-connector.md#linked-service-properties) .
+Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika usługi Salesforce](data-factory-salesforce-connector.md#linked-service-properties) .
 
 ### <a name="dataset"></a>Zestaw danych
 Aby zdefiniować zestaw danych usługi Salesforce, ustaw **Typ** zestawu danych na **relacyjny**, a następnie określ następujące właściwości w sekcji **typeProperties** :
@@ -4650,14 +4650,14 @@ Aby zdefiniować zestaw danych usługi Salesforce, ustaw **Typ** zestawu danych 
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz artykuł dotyczący łącznika usługi [Salesforce](data-factory-salesforce-connector.md#dataset-properties) .
+Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika usługi Salesforce](data-factory-salesforce-connector.md#dataset-properties) .
 
 ### <a name="relational-source-in-copy-activity"></a>Źródło relacyjne w działaniu kopiowania
 Jeśli kopiujesz dane z usługi Salesforce, ustaw **Typ Source** działania Copy na **RelationalSource**i określ następujące właściwości w sekcji **Source** :
 
 | Właściwość | Opis | Dozwolone wartości | Wymagane |
 | --- | --- | --- | --- |
-| query |Użyj zapytania niestandardowego do odczytywania danych. |Zapytanie dotyczące języka SQL-92 lub zapytania o [obiekt SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) . Przykład: `select * from MyTable__c`. |Nie (Jeśli określono wartość TableName **zestawu danych** ) |
+| query |Użyj zapytania niestandardowego do odczytywania danych. |Zapytanie dotyczące języka SQL-92 lub zapytania o [obiekt SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) . Przykład: `select * from MyTable__c`. |Nie (Jeśli określono wartość **TableName** **zestawu danych** ) |
 
 #### <a name="example"></a>Przykład
 
@@ -4707,7 +4707,7 @@ Jeśli kopiujesz dane z usługi Salesforce, ustaw **Typ Source** działania Copy
 > [!IMPORTANT]
 > Część "__c" nazwy interfejsu API jest wymagana dla dowolnego obiektu niestandardowego.
 
-Aby uzyskać więcej informacji, zobacz artykuł dotyczący łącznika usługi [Salesforce](data-factory-salesforce-connector.md#copy-activity-properties) .
+Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika usługi Salesforce](data-factory-salesforce-connector.md#copy-activity-properties) .
 
 ## <a name="web-data"></a>Dane sieci Web
 
@@ -4771,7 +4771,7 @@ Aby zdefiniować zestaw danych sieci Web, ustaw **Typ** zestawu danych na **webt
 Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika tabeli sieci Web](data-factory-web-table-connector.md#dataset-properties) .
 
 ### <a name="web-source-in-copy-activity"></a>Źródło sieci Web w działaniu kopiowania
-W przypadku kopiowania danych z tabeli sieci Web należy ustawić **Typ źródła** działania kopiowania na websource. Obecnie, gdy źródło w działaniu kopiowania jest typu **websource**, nie są obsługiwane żadne dodatkowe właściwości.
+W przypadku kopiowania danych z tabeli sieci Web należy ustawić **Typ źródła** działania kopiowania na **websource**. Obecnie, gdy źródło w działaniu kopiowania jest typu **websource**, nie są obsługiwane żadne dodatkowe właściwości.
 
 #### <a name="example"></a>Przykład
 
@@ -4826,7 +4826,7 @@ W poniższej tabeli wymieniono środowiska obliczeniowe obsługiwane przez Data 
 | [Azure Batch](#azure-batch) |[Niestandardowe działanie platformy .NET](#net-custom-activity) |
 | [Azure Machine Learning](#azure-machine-learning) | [Działanie wykonywania wsadowego Machine Learning](#machine-learning-batch-execution-activity), [Machine Learning aktualizowania zasobu](#machine-learning-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[Język U-SQL usługi Data Lake Analytics](#data-lake-analytics-u-sql-activity) |
-| [Azure SQL Database](#azure-sql-database-1), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-1), [SQL Server](#sql-server-1) |[Procedura składowana](#stored-procedure-activity) |
+| [Azure SQL Database](#azure-sql-database), [Azure SQL Data Warehouse](#azure-sql-data-warehouse), [SQL Server](#sql-server-1) |[Procedura składowana](#stored-procedure-activity) |
 
 ## <a name="on-demand-azure-hdinsight-cluster"></a>Klaster usługi Azure HDInsight na żądanie
 Usługa Azure Data Factory może automatycznie utworzyć klaster usługi HDInsight na żądanie z systemem Windows/Linux na potrzeby przetwarzania danych. Klaster jest tworzony w tym samym regionie co konto magazynu (Właściwość linkedServiceName w formacie JSON) skojarzone z klastrem. W tej połączonej usłudze można uruchomić następujące działania przekształcania: [aktywność niestandardowa platformy .NET](#net-custom-activity), działanie [Hive](#hdinsight-hive-activity), aktywność [świń](#hdinsight-pig-activity), działanie [MapReduce](#hdinsight-mapreduce-activity), działanie usługi Hadoop streaming, [działanie platformy Spark](#hdinsight-spark-activity).
@@ -4996,60 +4996,8 @@ Poniższy przykład zawiera definicję JSON dla Azure Data Lake Analytics połą
 }
 ```
 
-## <a name="azure-sql-database"></a>Azure SQL Database
-Utworzysz połączoną usługę Azure SQL i użyjesz jej razem z [działaniem procedury składowanej](#stored-procedure-activity) , aby wywołać procedurę składowaną z potoku Data Factory.
-
-### <a name="linked-service"></a>Połączona usługa
-Aby zdefiniować Azure SQL Database połączoną usługę, ustaw **Typ** połączonej usługi na **AzureSqlDatabase**i określ następujące właściwości w sekcji **typeProperties** :
-
-| Właściwość | Opis | Wymagane |
-| --- | --- | --- |
-| connectionString |Określ informacje, które są konieczne do nawiązania połączenia z wystąpieniem Azure SQL Database dla właściwości connectionString. |Tak |
-
-#### <a name="json-example"></a>Przykład JSON
-
-```json
-{
-    "name": "AzureSqlLinkedService",
-    "properties": {
-        "type": "AzureSqlDatabase",
-        "typeProperties": {
-            "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-        }
-    }
-}
-```
-
-Aby uzyskać szczegółowe informacje na temat tej połączonej usługi, zobacz artykuł dotyczący [łącznika usługi Azure SQL](data-factory-azure-sql-connector.md#linked-service-properties) .
-
-## <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-Utworzysz połączoną usługę Azure SQL Data Warehouse i użyj jej z działaniem [procedury składowanej](data-factory-stored-proc-activity.md) , aby wywołać procedurę składowaną z potoku Data Factory.
-
-### <a name="linked-service"></a>Połączona usługa
-Aby zdefiniować Azure SQL Data Warehouse połączoną usługę, ustaw **Typ** połączonej usługi na **AzureSqlDW**i określ następujące właściwości w sekcji **typeProperties** :
-
-| Właściwość | Opis | Wymagane |
-| --- | --- | --- |
-| connectionString |Określ informacje, które są konieczne do nawiązania połączenia z wystąpieniem Azure SQL Data Warehouse dla właściwości connectionString. |Tak |
-
-#### <a name="json-example"></a>Przykład JSON
-
-```json
-{
-    "name": "AzureSqlDWLinkedService",
-    "properties": {
-        "type": "AzureSqlDW",
-        "typeProperties": {
-            "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-        }
-    }
-}
-```
-
-Aby uzyskać więcej informacji, zobacz artykuł dotyczący [łącznika Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties) .
-
 ## <a name="sql-server"></a>SQL Server
-Utworzysz połączoną usługę SQL Server i użyj jej z działaniem [procedury składowanej](data-factory-stored-proc-activity.md) , aby wywołać procedurę składowaną z potoku Data Factory.
+Utworzysz połączoną usługę SQL Server i użyj jej z [działaniem procedury składowanej](data-factory-stored-proc-activity.md) , aby wywołać procedurę składowaną z potoku Data Factory.
 
 ### <a name="linked-service"></a>Połączona usługa
 Utworzysz połączoną usługę typu **OnPremisesSqlServer** , aby połączyć lokalną bazę danych SQL Server z fabryką danych. Poniższa tabela zawiera opis elementów JSON specyficznych dla lokalnej usługi SQL Server połączonej.
@@ -5293,7 +5241,7 @@ W definicji JSON działania przesyłania strumieniowego Hadoop można określić
 | getDebugInfo | Opcjonalny element. Jeśli jest ustawiona na niepowodzenie, dzienniki są pobierane tylko w przypadku niepowodzenia. Po ustawieniu opcji wszystkie dzienniki są zawsze pobierane niezależnie od stanu wykonania. |
 
 > [!NOTE]
-> Należy określić wyjściowy zestaw danych dla działania Hadoop Streaming dla właściwości Outputs . Ten zestaw danych może być tylko fikcyjnym zestawem danych, który jest wymagany do kierowania harmonogramu potoku (co godzinę, codziennie itd.). Jeśli działanie nie przyjmuje danych wejściowych, można pominąć Określanie wejściowego zestawu danych dla działania dla właściwości **dane wejściowe** .
+> Należy określić wyjściowy zestaw danych dla działania Hadoop Streaming **dla właściwości** Outputs. Ten zestaw danych może być tylko fikcyjnym zestawem danych, który jest wymagany do kierowania harmonogramu potoku (co godzinę, codziennie itd.). Jeśli działanie nie przyjmuje danych wejściowych, można pominąć Określanie wejściowego zestawu danych dla działania dla właściwości **dane wejściowe** .
 
 ## <a name="json-example"></a>Przykład JSON
 
@@ -5603,7 +5551,7 @@ Następujące właściwości są obsługiwane w sekcji **typeProperties** podcza
 
 Jeśli określisz wejściowy zestaw danych, musi on być dostępny (w stanie "gotowe") do uruchomienia działania procedury składowanej. Wejściowy zestaw danych nie może być używany w procedurze składowanej jako parametr. Jest on używany tylko do sprawdzania zależności przed rozpoczęciem działania procedury składowanej. Należy określić wyjściowy zestaw danych dla działania procedury składowanej.
 
-Wyjściowy zestaw danych określa **harmonogram** działania procedury składowanej (co godzinę, co tydzień, co miesiąc itd.). Wyjściowy zestaw danych musi używać **połączonej usługi** , która odwołuje się do Azure SQL Database lub Azure SQL Data Warehouse lub SQL Serverj bazy danych, w której ma zostać uruchomiona procedura składowana. Wyjściowy zestaw danych może stanowić sposób przekazania wyniku procedury składowanej w celu późniejszego przetwarzania przez inne działanie ([łączenie łańcucha](data-factory-scheduling-and-execution.md##multiple-activities-in-a-pipeline)) w potoku. Jednak Data Factory nie zapisuje automatycznie danych wyjściowych procedury składowanej do tego zestawu danych. Jest to procedura składowana, która zapisuje w tabeli SQL, do której wskazuje wyjściowy zestaw danych. W niektórych przypadkach wyjściowy zestaw danych może być fikcyjnym **zestawem danych**, który jest używany tylko do określenia harmonogramu uruchamiania działania procedury składowanej.
+Wyjściowy zestaw danych określa **harmonogram** działania procedury składowanej (co godzinę, co tydzień, co miesiąc itd.). Wyjściowy zestaw danych musi używać **połączonej usługi** , która odwołuje się do Azure SQL Database lub Azure SQL Data Warehouse lub SQL Serverj bazy danych, w której ma zostać uruchomiona procedura składowana. Wyjściowy zestaw danych może stanowić sposób przekazania wyniku procedury składowanej w celu późniejszego przetwarzania przez inne działanie ([łączenie łańcucha](data-factory-scheduling-and-execution.md##multiple-activities-in-a-pipeline)) w potoku. Jednak Data Factory nie zapisuje automatycznie danych wyjściowych procedury składowanej do tego zestawu danych. Jest to procedura składowana, która zapisuje w tabeli SQL, do której wskazuje wyjściowy zestaw danych. W niektórych przypadkach wyjściowy zestaw danych może być **fikcyjnym zestawem danych**, który jest używany tylko do określenia harmonogramu uruchamiania działania procedury składowanej.
 
 ### <a name="json-example"></a>Przykład JSON
 

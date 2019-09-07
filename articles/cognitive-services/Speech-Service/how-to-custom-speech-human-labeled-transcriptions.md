@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1645e97e5648032a1281e7cb410c42f0a28b6767
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4f0cffbb65192a3698df0c658742147aea354b70
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559649"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744529"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Jak utworzyć transkrypcje z etykietami ludzkimi
 
@@ -74,7 +74,7 @@ Poniżej przedstawiono kilka przykładów normalizacji, które są wykonywane au
 | Przejdź do Get-em! | Uzyskaj em |
 | Mam dwustronną wspólną | Jestem wspólnie rozłączony |
 | 104 Elm ulica | 1 0 4 Elm ulica |
-| Dostosuj do 102,7 | Dostosuj do 1 0 2 7 |
+| Dostosuj do 102,7 | Dostosuj do 1 0 2 punktu siedmiu |
 | Pi jest około 3,14 | Pi ma około trzy punkty 1 4 |
 Koszty IT $3,14| koszty IT 3 14 |
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: ab633ca47f684688019b1313de61571252760a20
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: f101a8885d9bf67e8bd589d7cf932b0d35cdfe32
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967745"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744500"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Ciągłe monitorowanie za pomocą Azure Monitor
 
@@ -56,7 +56,7 @@ Aplikacje są tak niezawodne, jak ich podstawowa infrastruktura. Monitorowanie w
 ##  <a name="combine-resources-in-azure-resource-groups"></a>Łączenie zasobów w grupach zasobów platformy Azure
 Typowa aplikacja na platformie Azure obejmuje wiele zasobów, takich jak maszyny wirtualne i App Services lub mikrousługi hostowane w Cloud Services, AKS klastrów lub Service Fabric. Aplikacje te często wykorzystują zależności, takie jak Event Hubs, Storage, SQL i Service Bus.
 
-- Połącz zasoby znajdujące się w grupach zasobów platformy Azure, aby uzyskać pełną widoczność wszystkich zasobów tworzących różne aplikacje. [Azure monitor dla grup zasobów](../azure-monitor/insights/resource-group-insights.md) to prosty sposób na śledzenie kondycji i wydajności całej aplikacji pełnego stosu oraz umożliwia przechodzenie do szczegółów odpowiednich składników dla dowolnych badań lub debugowania.
+- Połącz zasoby w grupach zasobów platformy Azure, aby uzyskać pełną widoczność wszystkich zasobów tworzących różne aplikacje. [Azure monitor dla grup zasobów](../azure-monitor/insights/resource-group-insights.md) to prosty sposób na śledzenie kondycji i wydajności całej aplikacji pełnego stosu oraz umożliwia przechodzenie do szczegółów odpowiednich składników dla dowolnych badań lub debugowania.
 
 ## <a name="ensure-quality-through-continuous-deployment"></a>Zapewnianie jakości poprzez ciągłe wdrażanie
 Ciągła integracja/ciągłe wdrażanie pozwala na automatyczną integrację i wdrażanie zmian kodu w aplikacji na podstawie wyników zautomatyzowanego testowania. Usprawnia proces wdrażania i zapewnia jakość wszelkich zmian przed ich przejściem do środowiska produkcyjnego.
@@ -64,7 +64,7 @@ Ciągła integracja/ciągłe wdrażanie pozwala na automatyczną integrację i w
 
 - Użyj [Azure Pipelines](/azure/devops/pipelines) , aby wdrożyć ciągłe wdrażanie i zautomatyzować cały proces od przekazania kodu do środowiska produkcyjnego na podstawie testów ciągłej integracji/ciągłego dostarczania.
 - Używaj [bram jakości](/azure/devops/pipelines/release/approvals/gates) do integrowania monitorowania z wdrożeniem wstępnym lub po wdrożeniu. Gwarantuje to, że spełniasz kluczowe metryki kondycji/wydajności (KPI), ponieważ aplikacje przechodzą z deweloperów do środowiska produkcyjnego, a różnice w środowisku infrastruktury lub skali nie wpływają negatywnie na wskaźniki KPI.
-- [Przechowuj oddzielne wystąpienia monitorowania](../azure-monitor/app/separate-resources.md) między różnymi środowiskami wdrażania, takimi jak dev, test, Kanaryjskie i prod. Gwarantuje to, że zebrane dane są istotne dla skojarzonych aplikacji i infrastruktury. Aby skorelować dane między środowiskami, można użyć wykresów wielowymiarowych [w Eksplorator metryk](../azure-monitor/platform/metrics-charts.md) lub utworzyć [zapytania krzyżowe w Azure monitor](log-query/cross-workspace-query.md).
+- [Przechowuj oddzielne wystąpienia monitorowania](../azure-monitor/app/separate-resources.md) między różnymi środowiskami wdrażania, takimi jak dev, test, Kanaryjskie i prod. Gwarantuje to, że zebrane dane są istotne dla skojarzonych aplikacji i infrastruktury. Aby skorelować dane między środowiskami, można użyć [wykresów wielowymiarowych w Eksplorator metryk](../azure-monitor/platform/metrics-charts.md) lub utworzyć [zapytania krzyżowe w Azure monitor](log-query/cross-workspace-query.md).
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>Tworzenie alertów z możliwością działania z akcjami
@@ -72,9 +72,9 @@ Krytyczny aspekt monitorowania jest aktywnie powiadamiany administratorów o wsz
 
 - Tworzenie [alertów w Azure monitor](../azure-monitor/platform/alerts-overview.md) na podstawie dzienników i metryk w celu identyfikowania przewidywalnych Stanów niepowodzeń. Należy mieć na celu wykonywanie wszystkich alertów, co oznacza, że reprezentują rzeczywiste krytyczne warunki i starają się zmniejszyć liczbę fałszywie dodatnich. Użyj [progów dynamicznych](platform/alerts-dynamic-thresholds.md) , aby automatycznie obliczać linie bazowe w danych metryk zamiast definiować własne progi statyczne. 
 - Zdefiniuj akcje dla alertów, aby używać najbardziej efektywnego sposobu powiadamiania administratorów. Dostępne [akcje dotyczące powiadomień](platform/action-groups.md#create-an-action-group-by-using-the-azure-portal) to wiadomości SMS, wiadomości e-mail, powiadomienia wypychane lub połączenia głosowe.
-- Użyj bardziej zaawansowanych akcji, aby [nawiązać połączenie z NARZĘDZIEM narzędzia ITSM](platform/itsmc-overview.md) lub innymi systemami zarządzania alertami za pomocą elementów webhook. [](platform/activity-log-alerts-webhook.md)
+- Użyj bardziej zaawansowanych akcji, aby [nawiązać połączenie z NARZĘDZIEM narzędzia ITSM](platform/itsmc-overview.md) lub innymi systemami zarządzania alertami za pomocą elementów [webhook](platform/activity-log-alerts-webhook.md).
 - Koryguj sytuacje określone w alertach, a także [Azure Automation elementy Runbook](../automation/automation-webhooks.md) lub [Logic Apps](/connectors/custom-connectors/create-webhook-trigger) , które mogą być uruchamiane z poziomu alertu za pomocą elementów webhook. 
-- Funkcja [](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md) automatycznego skalowania umożliwia dynamiczne zwiększanie i zmniejszanie zasobów obliczeniowych na podstawie zebranych metryk.
+- Funkcja automatycznego [skalowania](../azure-monitor/learn/tutorial-autoscale-performance-schedule.md) umożliwia dynamiczne zwiększanie i zmniejszanie zasobów obliczeniowych na podstawie zebranych metryk.
 
 ## <a name="prepare-dashboards-and-workbooks"></a>Przygotowywanie pulpitów nawigacyjnych i skoroszytów
 Upewnienie się, że Twoje programowanie i operacje mają dostęp do tych samych danych telemetrii i narzędzi, pozwala im wyświetlać wzorce w całym środowisku i zminimalizować średni czas wykrywania (MTTD) oraz średni czas przywracania (MTTR).

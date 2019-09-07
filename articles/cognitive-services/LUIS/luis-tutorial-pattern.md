@@ -1,5 +1,5 @@
 ---
-title: Wzorce — LUIS
+title: 'Samouczek: Wzorce — LUIS'
 titleSuffix: Azure Cognitive Services
 description: Aby zwiększyć przewidywanie intencji i jednostek przy jednoczesnym zapewnieniu mniejszej liczby przykładowych wypowiedzi, należy użyć wzorców. Wzorzec jest dostarczany za pomocą przykładowej wypowiedzi szablonu, która zawiera składnię służącą do identyfikowania jednostki i tekstu możliwego do zignorowania.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: diberry
-ms.openlocfilehash: 96c58e18abce85354db0d3bdf579600506cf2d86
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 69f853b77e3fbab149dbf163ed5cccb08578aa4e
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563313"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390343"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats"></a>Samouczek: dodawanie wspólnego szablonu wzorca formatów wypowiedzi
 
@@ -197,7 +197,7 @@ Aby poprawny wynik intencji był znacznie wyższy procentowo i bardziej oddalony
 Pozostaw drugie okno przeglądarki otwarte. Będzie potrzebne w dalszej części samouczka. 
 
 ## <a name="template-utterances"></a>Wypowiedzi szablonu
-Ze względu na charakter domeny zarządzania zasobami ludzkimi istnieje kilka typowych sposobów pytania o relacje pracowników w organizacji. Przykład:
+Ze względu na charakter domeny zarządzania zasobami ludzkimi istnieje kilka typowych sposobów pytania o relacje pracowników w organizacji. Na przykład:
 
 |Wypowiedzi|
 |--|

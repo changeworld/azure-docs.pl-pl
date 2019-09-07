@@ -1,19 +1,19 @@
 ---
-title: Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania dotyczące infrastruktury
+title: Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — infrastruktura
 description: Poznaj najlepsze rozwiązania dotyczące infrastruktury dotyczące migrowania lokalnych klastrów Hadoop do usługi Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: jasonwhowell
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0707f08d7c1447ff9aaae919cabfe1a668b25e3d
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: dbd4cc987883c959ad9b13b60491dd2288bd5643
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404370"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735737"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania dotyczące infrastruktury
 
@@ -86,7 +86,7 @@ Usługa HDInsight udostępnia wstępnie zapisane skrypty umożliwiające zainsta
 - Zainstaluj skrypt Presto
 - Zainstaluj program Solr
 - Zainstaluj program Giraph
-- Ładuj wstępnie biblioteki technologii Hive
+- Wstępne ładowanie bibliotek Hive
 - Zainstaluj lub zaktualizuj narzędzie Mono
 
 > [!Note]  

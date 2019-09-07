@@ -1,19 +1,19 @@
 ---
-title: 'Samouczek — Azure Toolkit for IntelliJ: Tworzenie aplikacji platformy Spark dla klastra usługi HDInsight'
+title: 'Samouczek — Azure Toolkit for IntelliJ: Aplikacja platformy Spark dla klastra usługi HDInsight'
 description: Samouczek — Użyj Azure Toolkit for IntelliJ, aby opracowywać aplikacje platformy Spark zapisane w Scala i przesłać je do klastra usługi HDInsight Spark.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
-ms.date: 06/26/2019
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 32f5ff2ebc9d938b1936d7f2929af83d552a543d
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: dac72cee62a3bd4cc4c315e15ace784bf24deff3
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489865"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736473"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Samouczek: Tworzenie aplikacji Apache Spark dla klastra usługi HDInsight za pomocą Azure Toolkit for IntelliJ
 
@@ -131,7 +131,7 @@ Wykonaj następujące kroki, aby zainstalować wtyczkę Scala:
 ## <a name="connect-to-your-hdinsight-cluster"></a>Nawiązywanie połączenia z klastrem usługi HDInsight
 Użytkownik może [zalogować się do subskrypcji platformy Azure](#sign-in-to-your-azure-subscription)lub [połączyć klaster usługi HDInsight](#link-a-cluster) przy użyciu poświadczeń Ambari username/Password lub Domain przyłączonych do domeny, aby połączyć się z klastrem usługi HDInsight.
 
-### <a name="sign-in-to-your-azure-subscription"></a>Zaloguj się do swojej subskrypcji platformy Azure
+### <a name="sign-in-to-your-azure-subscription"></a>Zaloguj się do Twojej subskrypcji platformy Azure.
 
 1. Na pasku menu Przejdź do **widoku** > **Narzędzia** > **Eksplorator platformy Microsoft Azure**.
        
@@ -195,12 +195,12 @@ Można połączyć klaster usługi HDInsight przy użyciu nazwy użytkownika zar
 
     * **Usługa usługi Livy**  
   
-        |Właściwość |Wartość |
+        |Właściwość |Value |
         |----|----|
         |Typ zasobu linku|Z listy rozwijanej wybierz pozycję **Usługa usługi Livy** .|
         |Punkt końcowy usługi Livy| Wprowadź punkt końcowy usługi Livy|
         |Nazwa klastra| Wprowadź nazwę klastra.|
-        |Punkt końcowy przędzy|Opcjonalny.|
+        |Punkt końcowy przędzy|Opcjonalna.|
         |Typ uwierzytelnienia| Pozostaw jako **uwierzytelnianie podstawowe**|
         |Nazwa użytkownika| Wprowadź nazwę użytkownika klastra. wartość domyślna to admin.|
         |Hasło| Wprowadź hasło dla nazwy użytkownika.|
@@ -308,7 +308,7 @@ Upewnij się, że WINUTILS. EXE — wymaganie wstępne.
 
 2. W oknie **konfiguracje uruchamiania/debugowania** w lewym okienku przejdź do **Apache Spark w usłudze HDInsight** >  **[Spark w usłudze HDInsight] MojaApl**.
 
-3. W oknie głównym wybierz kartę uruchomiono **lokalnie** .
+3. W oknie głównym wybierz kartę **uruchomiono lokalnie** .
 
 4. Podaj następujące wartości, a następnie wybierz przycisk **OK**:
 
@@ -407,13 +407,13 @@ Gdy użytkownicy przesyłają zadanie do klastra z uprawnieniami roli tylko do o
    
 ### <a name="view-storage-accounts"></a>Wyświetlanie kont magazynu
 
-* W przypadku klastrów z uprawnieniem tylko do odczytu, kliknij węzeł **konta magazynu** , zostanie wystawione okno odmowa **dostępu do magazynu** . Możesz kliknąć pozycję **otwórz Eksplorator usługi Azure Storage** , aby otworzyć Eksplorator usługi Storage.
+* W przypadku klastrów z uprawnieniem tylko do odczytu, kliknij węzeł **konta magazynu** , zostanie wystawione okno **odmowa dostępu do magazynu** . Możesz kliknąć pozycję **otwórz Eksplorator usługi Azure Storage** , aby otworzyć Eksplorator usługi Storage.
      
    ![Klastry usługi HDInsight Spark w Eksploratorze Azure](./media/apache-spark-intellij-tool-plugin/view-explorer-14.png)
 
    ![Klastry usługi HDInsight Spark w Eksploratorze Azure](./media/apache-spark-intellij-tool-plugin/view-explorer-10.png)
 
-* W przypadku połączonych klastrów kliknij węzeł **konta magazynu** , w którym znajduje się okno odmowa **dostępu do magazynu** . Możesz kliknąć pozycję **Otwórz usługę Azure Storage** , aby otworzyć Eksplorator usługi Storage.
+* W przypadku połączonych klastrów kliknij węzeł **konta magazynu** , w którym znajduje się okno **odmowa dostępu do magazynu** . Możesz kliknąć pozycję **Otwórz usługę Azure Storage** , aby otworzyć Eksplorator usługi Storage.
      
    ![Klastry usługi HDInsight Spark w Eksploratorze Azure](./media/apache-spark-intellij-tool-plugin/view-explorer-13.png)
 

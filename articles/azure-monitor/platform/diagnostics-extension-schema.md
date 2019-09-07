@@ -6,15 +6,15 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 09/20/2018
+ms.date: 09/04/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e8ea8ea749243821e5382fc285e3c38f05d4c6b5
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60527309"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735092"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Wersja schematu i historia konfiguracji rozszerzenia Diagnostyka Azure
 Ta strona indeksuje Diagnostyka Azure wersje schematu rozszerzeń dostarczane jako część zestawu SDK Microsoft Azure.  
@@ -54,13 +54,7 @@ Rozszerzenie Diagnostyka Azure jest używane z innymi produktami diagnostyki fir
  Począwszy od zestawu SDK 2,5 (wersja diagnostyki 1,2), Diagnostyka platformy Azure została przemieszczona w modelu rozszerzeń. Narzędzia do korzystania z nowych funkcji były dostępne tylko w nowszych zestawach SDK platformy Azure, ale każda usługa korzystająca z usługi Azure Diagnostics może pobrać najnowszą wersję wysyłkową bezpośrednio z platformy Azure. Na przykład każdy nadal korzystający z zestawu SDK 2,5 będzie ładować najnowszą wersję przedstawioną w poprzedniej tabeli, niezależnie od tego, czy korzystają one z nowszych funkcji.  
 
 ## <a name="schemas-index"></a>Indeks schematów  
-Różne wersje usługi Azure Diagnostics używają różnych schematów konfiguracji.
-
-[Schemat konfiguracji diagnostyki 1,0](diagnostics-extension-schema-1dot0.md)  
-
-[Schemat konfiguracji diagnostyki 1,2](diagnostics-extension-schema-1dot2.md)  
-
-[Diagnostyka 1,3 i nowszy Schemat konfiguracji](diagnostics-extension-schema-1dot3.md)  
+Różne wersje usługi Azure Diagnostics używają różnych schematów konfiguracji. Schemat 1,0 i 1,2 są przestarzałe. Aby uzyskać więcej informacji na temat wersji 1,3 i nowszych, zobacz [diagnostyka 1,3 i nowszy Schemat konfiguracji](diagnostics-extension-schema-1dot3.md)  
 
 ## <a name="version-history"></a>Historia wersji
 

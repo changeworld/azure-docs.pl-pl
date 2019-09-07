@@ -1,5 +1,5 @@
 ---
-title: 'Szybki start: Tworzenie klastrów Apache Hadoop przy użyciu Menedżer zasobów — Azure HDInsight'
+title: 'Szybki start: Tworzenie klastrów Apache Hadoop Menedżer zasobów — Azure HDInsight'
 description: W tym przewodniku szybki start utworzysz Klaster Apache Hadoop w usłudze Azure HDInsight przy użyciu szablonu Menedżer zasobów
 keywords: wprowadzenie do usługi hadoop,hadoop linux,hadoop szybki start,wprowadzenie do usługi hive,hive szybki start
 ms.service: hdinsight
@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 420a5bb4cec6101f3db36212a9b8fd6690e0e077
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: b65e642e19a9dd34c0f64f2d311fda0c70d4af72
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207262"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736165"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Szybki start: Tworzenie klastra Apache Hadoop w usłudze Azure HDInsight przy użyciu szablonu Menedżer zasobów
 

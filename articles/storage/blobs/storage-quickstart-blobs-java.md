@@ -7,19 +7,16 @@ ms.date: 02/04/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 8cb9a9c6dd2e84318cd4d05bf6e67e127fc39ce3
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0aa3af754082d91c4a5994e42146d1f1f475f64d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726378"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390331"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Przekazywanie, pobieranie i wyświetlanie listy obiektów BLOB przy użyciu biblioteki klienckiej dla języka Java wersji 7
 
 W tym przewodniku krok po kroku dowiesz się, jak za pomocą biblioteki klienckiej programu Java wersji 7 przekazywać, pobierać i wyświetlać listę blokowych obiektów BLOB w kontenerze w usłudze Azure Blob Storage.
-
-> [!TIP]
-> Najnowsza wersja biblioteki klienta usługi Azure Storage dla języka Java to V10. Firma Microsoft zaleca, aby użyć najnowszej wersji biblioteki klienta, gdy jest to możliwe. Aby rozpocząć korzystanie z usługi V10, [zobacz Szybki Start: Przekazywanie, pobieranie i wyświetlanie listy obiektów BLOB przy użyciu zestawu SDK magazynu Java](storage-quickstart-blobs-java-v10.md)v10.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -33,7 +30,7 @@ Upewnij się, że masz następujące wymagania wstępne:
 
 * Możesz również zainstalować i skonfigurować narzędzie Maven tak, aby działało z poziomu wiersza polecenia.
 
-W tym przewodniku zastosowano przesekcję Zastąp [z](https://www.eclipse.org/downloads/) konfiguracją "przezaćmienie IDE for Java Developers".
+[W tym](https://www.eclipse.org/downloads/) przewodniku zastosowano przesekcję Zastąp z konfiguracją "przezaćmienie IDE for Java Developers".
 
 ## <a name="download-the-sample-application"></a>Pobieranie przykładowej aplikacji
 
@@ -203,7 +200,7 @@ if(sourceFile != null)
 sourceFile.deleteOnExit();
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 W tym artykule przedstawiono sposób transferu plików między dyskiem lokalnym i usługą Azure Blob Storage przy użyciu języka Java. Aby dowiedzieć się więcej na temat pracy z językiem Java, przejdź do repozytorium kodu źródłowego w witrynie GitHub.
 

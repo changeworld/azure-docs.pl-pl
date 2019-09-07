@@ -1,6 +1,6 @@
 ---
-title: Migracja klastra HBase do nowej wersji — Azure HDInsight
-description: Jak przeprowadzić migrację bazy danych HBase clusters do nowej wersji.
+title: Migrowanie klastra HBase do nowej wersji — usługa Azure HDInsight
+description: Jak przeprowadzić migrację klastrów Apache HBase do nowszej wersji w usłudze Azure HDInsight.
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,57 +8,57 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: ashishth
-ms.openlocfilehash: a152b815daeefa4c199af9b159eee8e5783971e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 546d491c24198d5f7a92765876e5f6919ca32020
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65143318"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735803"
 ---
-# <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrowanie klastra Apache HBase do nowszej wersji
+# <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Migrowanie klastra Apache HBase do nowej wersji
 
-W tym artykule omówiono kroki wymagane do aktualizacji klastra Apache HBase w usłudze Azure HDInsight do nowszej wersji.
-
-> [!NOTE]  
-> Czas przestoju podczas uaktualniania powinien być minimalny, rzędu kilku minut. Ten czas przestoju jest spowodowany przez kroki Opróżnij wszystkie dane w pamięci, a następnie czasu, aby skonfigurować i uruchomić ponownie usługi w nowym klastrze. Wyniki różnią się w zależności od liczby węzłów, ilości danych i inne zmienne.
-
-## <a name="review-apache-hbase-compatibility"></a>Przegląd zgodności bazy danych Apache HBase
-
-Przed rozpoczęciem uaktualniania bazy danych Apache HBase, upewnij się, że wersje bazy danych HBase w klastrach źródłowe i docelowe są zgodne. Aby uzyskać więcej informacji, zobacz [Apache Hadoop, składniki i wersje, które udostępniono HDInsight](../hdinsight-component-versioning.md).
+W tym artykule omówiono kroki wymagane do zaktualizowania klastra Apache HBase w usłudze Azure HDInsight do nowszej wersji.
 
 > [!NOTE]  
-> Zdecydowanie zalecamy przejrzenie macierz zgodności wersji w [książki HBase](https://hbase.apache.org/book.html#upgrading).
+> Czas przestoju podczas uaktualniania powinien być minimalny w kolejności minut. Ten przestój jest spowodowany przez kroki, aby opróżnić wszystkie dane w pamięci, a następnie skonfigurować i ponownie uruchomić usługi w nowym klastrze. Wyniki będą się różnić w zależności od liczby węzłów, ilości danych i innych zmiennych.
 
-Oto przykład wersji zgodności zestawów. Y oznacza zgodność, a N oznacza potencjalne niezgodności:
+## <a name="review-apache-hbase-compatibility"></a>Przegląd zgodności z Apache HBase
 
-| Typ zgodności | Wersja główna| Wersja pomocnicza | Poprawki |
+Przed uaktualnieniem oprogramowania Apache HBase upewnij się, że wersje HBase w klastrach źródłowym i docelowym są zgodne. Aby uzyskać więcej informacji, zobacz [Apache Hadoop składniki i wersje dostępne w usłudze HDInsight](../hdinsight-component-versioning.md).
+
+> [!NOTE]  
+> Zdecydowanie zalecamy zapoznanie się z macierzą zgodności wersji w [książce HBase](https://hbase.apache.org/book.html#upgrading).
+
+Poniżej znajduje się przykładowa wersja macierzy zgodności. Wartość Y oznacza zgodność i N wskazuje potencjalną niezgodność:
+
+| Typ zgodności | Wersja główna| Wersja pomocnicza | Poprawka |
 | --- | --- | --- | --- |
-| Zgodność przewodowy klient-serwer | Nie | Tak | Tak |
-| Zgodność z serwerami | Nie | Tak | Tak |
-| Zgodność z formatem pliku | Nie | Tak | Tak |
-| Zgodność klienta interfejsu API | Nie | Tak | Tak |
-| Zgodność binarną klienta | Nie | Nie | Tak |
-| **Po stronie serwera ograniczone zgodnością z interfejsem API** |  |  |  |
-| Stable | Nie | Tak | Tak |
-| Zmieniające się | Nie | Nie | Tak |
-| Niestabilne | Nie | Nie | Nie |
-| Zgodność zależności | Nie | Tak | Tak |
-| Zgodność operacyjną | Nie | Nie | Tak |
+| Zgodność sieci klient-serwer | Nie | T | T |
+| Zgodność serwera z serwerem | Nie | T | T |
+| Zgodność formatu pliku | Nie | T | T |
+| Zgodność z interfejsem API klienta | Nie | T | T |
+| Zgodność binarna klienta | Nie | Nie | T |
+| **Ograniczona zgodność interfejsu API po stronie serwera** |  |  |  |
+| Stable | Nie | T | T |
+| Ewoluuje | Nie | Nie | T |
+| Stanie | Nie | Nie | Nie |
+| Zgodność zależności | Nie | T | T |
+| Zgodność operacyjna | Nie | Nie | T |
 
 > [!NOTE]  
-> Wszelkie niezgodności podziału powinny być opisane w informacjach o wersji bazy danych HBase.
+> Wszelkie niezgodności należy opisać w informacjach o wersji HBase.
 
-## <a name="upgrade-with-same-apache-hbase-major-version"></a>Uaktualnienie z tej samej wersji głównej bazy danych Apache HBase
+## <a name="upgrade-with-same-apache-hbase-major-version"></a>Uaktualnij z tą samą wersją główną oprogramowania Apache HBase
 
 Aby uaktualnić klaster Apache HBase w usłudze Azure HDInsight, wykonaj następujące czynności:
 
-1. Upewnij się, że aplikacja jest zgodne z nową wersją zgodnie z bazy danych HBase i wersji macierzy uwagi dotyczące zgodności. Przetestuj aplikację w klastrze z systemem w wersji docelowej, HDInsight i bazy danych HBase.
+1. Upewnij się, że aplikacja jest zgodna z nową wersją, jak pokazano w macierzy zgodności HBase i informacje o wersji. Przetestuj swoją aplikację w klastrze z uruchomioną docelową wersją usługi HDInsight i HBase.
 
-2. [Skonfiguruj nowy klaster HDInsight docelowy](../hdinsight-hadoop-provision-linux-clusters.md) przy użyciu tego samego konta magazynu, ale nazwą innego kontenera:
+2. [Skonfiguruj nowy docelowy klaster usługi HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) przy użyciu tego samego konta magazynu, ale z inną nazwą kontenera:
 
-    ![Użyj tego samego konta magazynu, ale Utwórz innego kontenera](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
+    ![Użyj tego samego konta magazynu, ale Utwórz inny kontener](./media/apache-hbase-migrate-new-version/same-storage-different-container.png)
 
-3. Usuń z klastra HBase źródła, którego to klaster, który chcesz uaktualnić. Baza danych HBase zapisuje dane przychodzące do magazynu w pamięci o nazwie _magazynu pamięci_. Po magazynu pamięci osiągnie określony rozmiar, bazy danych HBase opróżnia je na dysku w celu przechowywania długoterminowego na koncie magazynu klastra. Podczas usuwania starego klastra, memstores są recyklingowi, potencjalnie utraty danych. Aby ręcznie opróżniania magazynu pamięci dla każdej tabeli na dysku, uruchom następujący skrypt. Najnowszą wersję tego skryptu znajduje się na platformie Azure [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh).
+3. Opróżniaj źródłowy klaster HBase, który jest uaktualnianym klastrem. HBase zapisuje dane przychodzące do magazynu w pamięci o nazwie _magazynu_. Gdy magazynu osiągnie określony rozmiar, HBase opróżnia go na dysk w celu długoterminowego przechowywania na koncie magazynu klastra. Podczas usuwania starego klastra memstores są odtwarzane, potencjalnie tracące dane. Aby ręcznie opróżnić magazynu dla każdej tabeli na dysk, uruchom następujący skrypt. Najnowsza wersja tego skryptu znajduje się w witrynie [GitHub](https://raw.githubusercontent.com/Azure/hbase-utils/master/scripts/flush_all_tables.sh)platformy Azure.
 
     ```bash
     #!/bin/bash
@@ -176,46 +176,46 @@ Aby uaktualnić klaster Apache HBase w usłudze Azure HDInsight, wykonaj następ
     
     ```
     
-4. Zatrzymać pozyskiwania dla starego klastra HBase.
-5. Aby upewnić się, że wszystkie najnowsze dane w magazynu w pamięci jest opróżniany, uruchom ponownie poprzednim skrypcie.
-6. Zaloguj się do [Apache Ambari](https://ambari.apache.org/) w starym klastrze (https://OLDCLUSTERNAME.azurehdidnsight.net) i zatrzymywanie usług bazy danych HBase. Po wyświetleniu monitu o potwierdzenie, czy chcesz zatrzymać usługi pole wyboru, aby włączyć tryb konserwacji dla bazy danych HBase. Aby uzyskać więcej informacji na temat nawiązywania połączenia i przy użyciu narzędzia Ambari, zobacz [HDInsight Zarządzanie klastrami przy użyciu interfejsu użytkownika sieci Web Ambari](../hdinsight-hadoop-manage-ambari.md).
+4. Zatrzymaj pozyskiwanie w starym klastrze HBase.
+5. Aby upewnić się, że wszystkie ostatnie dane w magazynu są opróżniane, ponownie uruchom poprzedni skrypt.
+6. Zaloguj się do programu [Apache Ambari](https://ambari.apache.org/) w starym klastrze https://OLDCLUSTERNAME.azurehdidnsight.net) (i Zatrzymaj usługi HBase Services. Po wyświetleniu monitu o potwierdzenie, że chcesz zatrzymać usługi, zaznacz to pole wyboru, aby włączyć tryb konserwacji dla HBase. Aby uzyskać więcej informacji na temat nawiązywania połączenia z usługą Ambari i korzystania z niej, zobacz [Zarządzanie klastrami usługi HDInsight przy użyciu interfejsu użytkownika sieci Web Ambari](../hdinsight-hadoop-manage-ambari.md).
 
-    ![W Ambari, kliknij opcję usługi > bazy danych HBase > Zatrzymaj w obszarze akcji usługi](./media/apache-hbase-migrate-new-version/stop-hbase-services.png)
+    ![W Ambari kliknij pozycję usługi > HBase > Zatrzymaj w obszarze Akcje usługi](./media/apache-hbase-migrate-new-version/stop-hbase-services.png)
 
-    ![Włącz na trybu konserwacji dla bazy danych HBase pole wyboru, a następnie potwierdź](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
+    ![Zaznacz pole wyboru Włącz tryb konserwacji dla HBase, a następnie potwierdź](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 
-7. Zaloguj się do systemu Ambari w nowym klastrze HDInsight. Zmiana `fs.defaultFS` systemu plików HDFS ustawienie, aby wskazać nazwę kontenera posługują się do oryginalnego klastra. To ustawienie ma pod **systemu plików HDFS > konfiguracje > Zaawansowane > Zaawansowane lokacji podstawowej**.
+7. Zaloguj się do usługi Ambari w nowym klastrze usługi HDInsight. Zmień ustawienie systemu HDFS, aby wskazywała nazwę kontenera używanego przez oryginalny klaster. `fs.defaultFS` To ustawienie znajduje się w obszarze **HDFS > konfiguracjami > zaawansowanej > zaawansowanej lokacji głównej**.
 
-    ![W Ambari, kliknij opcję usługi > System plików HDFS > konfiguracje > Zaawansowane](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
+    ![W Ambari kliknij pozycję usługi > HDFS > Konfiguracje > Zaawansowane](./media/apache-hbase-migrate-new-version/hdfs-advanced-settings.png)
 
     ![W Ambari Zmień nazwę kontenera](./media/apache-hbase-migrate-new-version/change-container-name.png)
 
-8. **Jeśli nie używasz klastrów HBase za pomocą funkcji rozszerzone zapisuje, Pomiń ten krok. Potrzebny jest tylko w przypadku klastrów HBase za pomocą funkcji rozszerzone zapisuje.**
+8. **Jeśli nie korzystasz z klastrów HBase z funkcją ulepszone zapisy, Pomiń ten krok. Jest to konieczne tylko w przypadku klastrów HBase z ulepszoną funkcją zapisywania.**
    
-   Zmiana `hbase.rootdir` ścieżki, aby wskazać kontener oryginalnego klastra.
+   `hbase.rootdir` Zmień ścieżkę, aby wskazywała kontener oryginalnego klastra.
 
-    ![W Ambari Zmień nazwę kontenera rootdir bazy danych HBase](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
-1. Jeśli aktualizujesz HDInsight 3.6 4.0, wykonaj następujące czynności, w przeciwnym razie przejdź do kroku 10:
-    1. Uruchom ponownie wszystkie wymagane usługi w Ambari, wybierając **usług** > **Uruchom ponownie wszystkie wymagane**.
-    1. Zatrzymaj usługę bazy danych HBase.
-    1. Protokół SSH z węzłem dozorcy, a następnie wykonaj [zkCli](https://github.com/go-zkcli/zkcli) polecenia `rmr /hbase-unsecure` usuwanie znode głównego HBase dozorcy.
-    1. Ponowne uruchomienie bazy danych HBase.
-1. Jeśli wykonujesz uaktualnienie do dowolnej wersji HDInsight oprócz 4.0, wykonaj następujące kroki:
+    ![W Ambari Zmień nazwę kontenera dla HBase ROOTDIR](./media/apache-hbase-migrate-new-version/change-container-name-for-hbase-rootdir.png)
+1. Jeśli uaktualniasz usługi HDInsight 3,6 do 4,0, wykonaj poniższe kroki, w przeciwnym razie przejdź do kroku 10:
+    1. Uruchom ponownie wszystkie wymagane usługi w programie Ambari, wybierając pozycję **usługi** > **Uruchom ponownie wszystkie wymagane**.
+    1. Zatrzymaj usługę HBase.
+    1. Użyj protokołu SSH do węzła dozorcy i wykonaj `rmr /hbase-unsecure` polecenie [zkCli](https://github.com/go-zkcli/zkcli) , aby usunąć HBase główny znode z dozorcy.
+    1. Uruchom ponownie HBase.
+1. Jeśli uaktualniasz do innej wersji usługi HDInsight niż 4,0, wykonaj następujące kroki:
     1. Zapisz zmiany.
-    1. Uruchom ponownie wszystkie wymagane usługi, wskazane przez Ambari.
-1. Punkt aplikacji do nowego klastra.
+    1. Uruchom ponownie wszystkie wymagane usługi zgodnie z Ambari.
+1. Wskaż aplikację nowym klastrem.
 
     > [!NOTE]  
-    > Statyczny serwera DNS dla zmian aplikacji podczas uaktualniania. Zamiast kodować na tym DNS, można skonfigurować rekord CNAME w ustawieniach DNS nazwy domeny, które wskazuje nazwę klastra. Innym rozwiązaniem jest przy użyciu pliku konfiguracji aplikacji, którą można zaktualizować bez ponownego wdrażania.
+    > Statyczny serwer DNS dla aplikacji zmienia się podczas uaktualniania. Zamiast napisania kodu w systemie DNS można skonfigurować rekord CNAME w ustawieniach DNS nazwy domeny, który wskazuje na nazwę klastra. Innym rozwiązaniem jest użycie pliku konfiguracji dla aplikacji, który można zaktualizować bez ponownego wdrożenia.
 
-12. Rozpocznij wprowadzanie, aby zobaczyć, jeśli to wszystko działa zgodnie z oczekiwaniami.
-13. Jeśli nowy klaster jest zadowalające, należy usunąć oryginalnego klastra.
+12. Rozpocznij pozyskiwanie, aby sprawdzić, czy wszystko działa zgodnie z oczekiwaniami.
+13. Jeśli nowy klaster jest zadowalający, Usuń oryginalny klaster.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat [bazy danych Apache HBase](https://hbase.apache.org/) i uaktualniania klastrów HDInsight, zobacz następujące artykuły:
+Aby dowiedzieć się więcej o platformie [Apache HBase](https://hbase.apache.org/) i uaktualnianiu klastrów usługi HDInsight, zobacz następujące artykuły:
 
 * [Uaktualnianie klastra usługi HDInsight do nowszej wersji](../hdinsight-upgrade-cluster.md)
-* [Monitorowanie i zarządzanie nimi w usłudze Azure HDInsight przy użyciu Interfejsu sieci Web Apache Ambari](../hdinsight-hadoop-manage-ambari.md)
-* [Apache Hadoop, składniki i wersje](../hdinsight-component-versioning.md)
-* [Optymalizacja konfiguracji przy użyciu Apache Ambari](../hdinsight-changing-configs-via-ambari.md#apache-hbase-optimization-with-the-ambari-web-ui)
+* [Monitorowanie usługi Azure HDInsight i zarządzanie nią za pomocą interfejsu użytkownika sieci Web Apache Ambari](../hdinsight-hadoop-manage-ambari.md)
+* [Apache Hadoop składniki i wersje](../hdinsight-component-versioning.md)
+* [Optymalizowanie konfiguracji przy użyciu oprogramowania Apache Ambari](../hdinsight-changing-configs-via-ambari.md#apache-hbase-optimization-with-the-ambari-web-ui)

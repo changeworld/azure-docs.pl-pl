@@ -1,23 +1,23 @@
 ---
-title: Korzystanie z rozszerzonego serwera historii platformy Spark do debugowania i diagnozowania aplikacji platformy Spark — Azure HDInsight
+title: Rozszerzony serwer historii platformy Spark do debugowania aplikacji platformy Spark — Azure HDInsight
 description: Użyj rozszerzonego serwera historii platformy Spark do debugowania i diagnozowania aplikacji platformy Spark — Azure HDInsight.
 ms.service: hdinsight
-author: jejiang
-ms.author: jejiang
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 09/14/2018
-ms.openlocfilehash: 641fc41c25746a67b4b1fe3d5316df17f14f113c
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.date: 09/04/2019
+ms.openlocfilehash: 9ba03f6b1e658e08c3d07d7ccb5e2a99e96fe69c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377248"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736472"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Użyj serwera Apache Spark History, aby debugować i diagnozować aplikacje Apache Spark
 
-Ten artykuł zawiera wskazówki dotyczące korzystania z serwera Apache Spark History w celu debugowania i diagnozowania ukończonych i uruchomionych aplikacji platformy Spark. Rozszerzenie zawiera kartę dane, kartę graf i kartę Diagnostyka. Na karcie **dane** użytkownicy mogą sprawdzać dane wejściowe i wyjściowe zadania Spark. Na karcie **Wykres** użytkownicy mogą sprawdzić przepływ danych i ponownie odtworzyć wykres zadania. Na karcie **Diagnostyka** użytkownik może odwoływać się do **pochylenia danych**, pochylenia **czasowego** i **analizy użycia**programu wykonującego.
+Ten artykuł zawiera wskazówki dotyczące korzystania z serwera Apache Spark History w celu debugowania i diagnozowania ukończonych i uruchomionych aplikacji platformy Spark. Rozszerzenie zawiera kartę dane, kartę graf i kartę Diagnostyka. Na karcie **dane** użytkownicy mogą sprawdzać dane wejściowe i wyjściowe zadania Spark. Na karcie **Wykres** użytkownicy mogą sprawdzić przepływ danych i ponownie odtworzyć wykres zadania. Na karcie **Diagnostyka** użytkownik może odwoływać się do **pochylenia danych**, **pochylenia czasowego** i **analizy użycia programu wykonującego**.
 
 ## <a name="get-access-to-apache-spark-history-server"></a>Uzyskaj dostęp do serwera historii Apache Spark
 
@@ -95,7 +95,7 @@ Wybierz opcję Identyfikator zadania, a następnie kliknij pozycję **Graph** w 
 
     ![Identyfikator zadania grafu](./media/apache-azure-spark-history-server/sparkui-graph-jobid.png)
 
-+ Domyślnie jest wybierany **postęp** , użytkownik może sprawdzić przepływ danych, wybierając pozycję **Odczyt/zapis** na liście rozwijanej wyświetlanej .
++ Domyślnie jest wybierany **postęp** , użytkownik może sprawdzić przepływ danych, wybierając pozycję **Odczyt/zapis** na liście rozwijanej **wyświetlanej**.
 
     ![Wyświetlanie wykresu](./media/apache-azure-spark-history-server/sparkui-graph-display.png)
 
@@ -122,7 +122,7 @@ Wybierz opcję Identyfikator zadania, a następnie kliknij pozycję **Graph** w 
     > Dla każdego zadania jest dozwolone odtwarzanie. W przypadku niekompletnego zadania odtwarzanie nie jest obsługiwane.
 
 
-+ Przesuwa mysz, aby powiększyć/pomniejszyć wykres zadania, lub kliknij przycisk Powiększ, **Aby dopasować** go do ekranu.
++ Przesuwa mysz, aby powiększyć/pomniejszyć wykres zadania, lub kliknij przycisk **Powiększ, aby dopasować** go do ekranu.
  
     ![Dopasuj do wykresu](./media/apache-azure-spark-history-server/sparkui-graph-zoom2fit.png)
 
@@ -158,7 +158,7 @@ Wybierz opcję Identyfikator zadania, a następnie kliknij pozycję **Graph** w 
 
 
 ## <a name="diagnosis-tab-in-apache-spark-history-server"></a>Karta Diagnostyka na serwerze historii Apache Spark
-Wybierz pozycję Identyfikator zadania, a następnie kliknij pozycję **Diagnostyka** w menu Narzędzia, aby wyświetlić widok Diagnostyka zadań. Karta Diagnostyka obejmuje **przechylenie danych**, **pochylenie czasu**i **analizę użycia**programu wykonującego.
+Wybierz pozycję Identyfikator zadania, a następnie kliknij pozycję **Diagnostyka** w menu Narzędzia, aby wyświetlić widok Diagnostyka zadań. Karta Diagnostyka obejmuje **przechylenie danych**, **pochylenie czasu**i **analizę użycia programu wykonującego**.
     
 + Sprawdź **pochylenie danych**, **pochylenie czasu**i **analizę użycia wykonawcy** , wybierając odpowiednio karty.
 
@@ -180,7 +180,7 @@ Kliknij kartę **pochylanie danych** , odpowiednie skośne zadania są wyświetl
 ### <a name="time-skew"></a>Pochylenie czasu
 Karta **przechylenie czasu** przedstawia zadania skośne w oparciu o czas wykonywania zadania. 
 
-+ **Określ parametry** — w pierwszej sekcji są wyświetlane parametry, które są używane do wykrywania pochylenia czasu. Domyślne kryteria wykrywania pochylenia czasu to: czas wykonywania zadania jest dłuższy niż 3 razy średniego czasu wykonywania, a czas wykonywania zadania jest większy niż 30 sekund. Można zmienić parametry w zależności od potrzeb. Wykres **skośny** i skośny wyświetlają odpowiednie etapy i informacje o zadaniach, podobnie jak powyższa karta **skośność danych** .
++ **Określ parametry** — w pierwszej sekcji są wyświetlane parametry, które są używane do wykrywania pochylenia czasu. Domyślne kryteria wykrywania pochylenia czasu to: czas wykonywania zadania jest dłuższy niż 3 razy średniego czasu wykonywania, a czas wykonywania zadania jest większy niż 30 sekund. Można zmienić parametry w zależności od potrzeb. Wykres **skośny** i **skośny** wyświetlają odpowiednie etapy i informacje o zadaniach, podobnie jak powyższa karta **skośność danych** .
 
 + Kliknij przycisk **przechylenie czasu**, a następnie przefiltrowany wynik jest wyświetlany w sekcji **skośne etap** zgodnie z parametrami ustawionymi w sekcji **Określanie parametrów**. Kliknij jeden element w sekcji **skośnego etapu** , a następnie odpowiedni wykres jest przygotowywany w section3, a szczegóły zadania są wyświetlane w prawym dolnym panelu.
 
@@ -189,7 +189,7 @@ Karta **przechylenie czasu** przedstawia zadania skośne w oparciu o czas wykony
 ### <a name="executor-usage-analysis"></a>Analiza użycia wykonawcy
 Wykres użycia programu wykonującego wizualizuje rzeczywistą alokację wykonawców zadania platformy Spark i stan uruchomienia.  
 
-+ Kliknij pozycję **Analiza użycia**programu wykonującego, a następnie wybierz cztery typy krzywe dotyczące użycia programu wykonującego, w tym przydzieloną **wykonawcy**, **uruchomione wykonawcy**, wykonawcze bezczynne i **maksymalne wystąpienia wykonawców**. W odniesieniu do przyznanych wykonawców zdarzenie "dodaliśmy" lub "wykonawca usunięty" spowoduje zwiększenie lub zmniejszenie przyznanych wykonawców, można sprawdzić "oś czasu zdarzeń" na karcie "zadania", aby uzyskać więcej informacji.
++ Kliknij pozycję **Analiza użycia programu wykonującego**, a następnie wybierz cztery typy krzywe dotyczące użycia programu wykonującego, w tym **przydzieloną wykonawcy**, **uruchomione wykonawcy**,**wykonawcze bezczynne**i **maksymalne wystąpienia wykonawców**. W odniesieniu do przyznanych wykonawców zdarzenie "dodaliśmy" lub "wykonawca usunięty" spowoduje zwiększenie lub zmniejszenie przyznanych wykonawców, można sprawdzić "oś czasu zdarzeń" na karcie "zadania", aby uzyskać więcej informacji.
 
     ![Karta wykonawcy](./media/apache-azure-spark-history-server/sparkui-diagnosis-executors.png)
 
@@ -300,7 +300,7 @@ Jeśli chcesz przeprowadzić uaktualnienie przy użyciu poprawki, użyj poniższ
 
 **Aby użyć pliku bash z Azure Portal**
 
-1. Uruchom aplikację [Azure Portal](https://ms.portal.azure.com)i wybierz swój klaster.
+1. Uruchom [Azure Portal](https://ms.portal.azure.com)i wybierz klaster.
 2. Kliknij pozycję **Akcje skryptu**, a następnie **Prześlij nowy**. Wypełnij formularz **Akcja przesyłania skryptu** , a następnie kliknij przycisk **Utwórz** .
     
     + **Typ skryptu**: wybierz pozycję **niestandardowy**.

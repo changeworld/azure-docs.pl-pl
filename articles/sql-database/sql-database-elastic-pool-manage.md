@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 6b2a2029dec917672d6f4ee8db24aed60e4f5bc5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ca00326d5704d3dd26027d90a3e48bfc52ec5653
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568652"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744441"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Zarządzanie pulami elastycznymi w Azure SQL Database
 
@@ -42,7 +42,7 @@ W tym miejscu możesz wprowadzić dowolną kombinację następujących zmian i z
 > [!IMPORTANT]
 > Moduł Azure Resource Manager programu PowerShell jest nadal obsługiwany przez Azure SQL Database, ale wszystkie przyszłe Programowanie dla modułu AZ. SQL. W przypadku tych poleceń cmdlet zobacz [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty poleceń polecenia AZ module i w modułach AzureRm są zasadniczo identyczne.
 
-Aby tworzyć i zarządzać SQL Database elastycznymi pulami i bazami danych w puli za pomocą Azure PowerShell, należy użyć następujących poleceń cmdlet programu PowerShell. Jeśli musisz zainstalować lub uaktualnić program PowerShell, zobacz [install Azure PowerShell module](/powershell/azure/install-az-ps). Aby utworzyć serwery SQL Database i zarządzać nimi dla puli elastycznej, zobacz [Tworzenie serwerów SQL Database i zarządzanie nimi](sql-database-servers.md). Aby utworzyć reguły zapory i zarządzać nimi, zobacz [Tworzenie reguł zapory i zarządzanie nimi przy użyciu programu PowerShell](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-azure-powershell).
+Aby tworzyć i zarządzać SQL Database elastycznymi pulami i bazami danych w puli za pomocą Azure PowerShell, należy użyć następujących poleceń cmdlet programu PowerShell. Jeśli musisz zainstalować lub uaktualnić program PowerShell, zobacz [install Azure PowerShell module](/powershell/azure/install-az-ps). Aby utworzyć serwery SQL Database i zarządzać nimi dla puli elastycznej, zobacz [Tworzenie serwerów SQL Database i zarządzanie nimi](sql-database-servers.md). Aby utworzyć reguły zapory i zarządzać nimi, zobacz [Tworzenie reguł zapory i zarządzanie nimi przy użyciu programu PowerShell](sql-database-firewall-configure.md#use-powershell-to-manage-server-level-ip-firewall-rules).
 
 > [!TIP]
 > Przykładowe skrypty programu PowerShell można znaleźć w temacie [tworzenie pul elastycznych i przenoszenie baz danych między pulami a poza pulą przy użyciu programu PowerShell](scripts/sql-database-move-database-between-pools-powershell.md) i [monitorowanie i skalowanie elastycznej puli SQL w Azure SQL Database przy użyciu programu PowerShell](scripts/sql-database-monitor-and-scale-pool-powershell.md).
@@ -82,7 +82,7 @@ Aby tworzyć pule elastyczne SQL Database i zarządzać nimi za pomocą [interfe
 
 ## <a name="transact-sql-manage-pooled-databases"></a>Język Transact-SQL: Zarządzanie bazami danych w puli
 
-Aby tworzyć i przenosić bazy danych w ramach istniejących pul elastycznych lub zwracać informacje o SQL Database elastycznej puli przy użyciu języka Transact-SQL, należy użyć następujących poleceń języka T-SQL. Te polecenia można wydać przy użyciu Azure Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs)lub innego programu, który może nawiązać połączenie z serwerem Azure SQL Database i przekazać polecenia języka Transact-SQL. Aby utworzyć reguły zapory i zarządzać nimi przy użyciu języka T-SQL, zobacz [Zarządzanie regułami zapory za pomocą Transact-SQL](sql-database-firewall-configure.md#manage-ip-firewall-rules-using-transact-sql).
+Aby tworzyć i przenosić bazy danych w ramach istniejących pul elastycznych lub zwracać informacje o SQL Database elastycznej puli przy użyciu języka Transact-SQL, należy użyć następujących poleceń języka T-SQL. Te polecenia można wydać przy użyciu Azure Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Visual Studio Code](https://code.visualstudio.com/docs)lub innego programu, który może nawiązać połączenie z serwerem Azure SQL Database i przekazać polecenia języka Transact-SQL. Aby utworzyć reguły zapory i zarządzać nimi przy użyciu języka T-SQL, zobacz [Zarządzanie regułami zapory za pomocą Transact-SQL](sql-database-firewall-configure.md#use-transact-sql-to-manage-ip-firewall-rules).
 
 > [!IMPORTANT]
 > Nie można tworzyć, aktualizować ani usuwać Azure SQL Database elastycznej puli przy użyciu języka Transact-SQL. Można dodawać i usuwać bazy danych z puli elastycznej, a także używać widoków DMV, aby zwracać informacje o istniejących pulach elastycznych.
@@ -115,7 +115,7 @@ Aby tworzyć i zarządzać SQL Database elastycznymi pulami i bazami danych w pu
 |[Bazy danych — lista według serwera](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|Zwraca listę baz danych na serwerze.|
 |[Bazy danych — aktualizacja](https://docs.microsoft.com/rest/api/sql/databases/update)|Aktualizuje istniejącą bazę danych.|
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * Aby dowiedzieć się więcej na temat wzorców projektowych dla aplikacji SaaS wykorzystujących pule elastyczne, zobacz artykuł [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md) (Wzorce projektowe dla wielodostępnych aplikacji SaaS korzystających z usługi Azure SQL Database).
 * Aby zapoznać się z samouczkiem SaaS przy użyciu pul elastycznych, zobacz [wprowadzenie do aplikacji Wingtip SaaS](sql-database-wtp-overview.md).

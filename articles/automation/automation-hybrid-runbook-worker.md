@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5573eea4e7a5322c762665d2db8e3fbed1f585a1
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: c10905c283619e6008dbe6ab8c4e721888b8b786
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69970440"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743801"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatyzowanie zasobów w centrum danych lub w chmurze przy użyciu hybrydowego procesu roboczego elementu Runbook
 
@@ -24,7 +24,7 @@ Na poniższej ilustracji przedstawiono tę funkcję:
 
 ![Omówienie hybrydowych procesów roboczych elementów Runbook](media/automation-hybrid-runbook-worker/automation.png)
 
-Każdy hybrydowy proces roboczy elementu Runbook jest członkiem grupy hybrydowych procesów roboczych elementu Runbook, która została określona podczas instalacji agenta. Grupa może zawierać jednego agenta, ale w celu zapewnienia wysokiej dostępności można zainstalować wielu agentów w grupie.
+Każdy hybrydowy proces roboczy elementu Runbook jest członkiem grupy hybrydowych procesów roboczych elementu Runbook, która została określona podczas instalacji agenta. Grupa może zawierać jednego agenta, ale w celu zapewnienia wysokiej dostępności można zainstalować wielu agentów w grupie. Każdy komputer może obsługiwać jedno zgłoszenie hybrydowego procesu roboczego na jedno konto usługi Automation.
 
 Po uruchomieniu elementu Runbook w hybrydowym procesie roboczym elementu Runbook należy określić grupę, w której ma ona działać. Każdy proces roboczy w grupie sonduje Azure Automation, aby sprawdzić, czy jakieś zadania są dostępne. Jeśli zadanie jest dostępne, pierwszy proces roboczy, aby pobrać to zadanie. Czas przetwarzania kolejki zadań zależy od profilu sprzętu hybrydowego procesu roboczego i obciążenia. Nie można określić określonego pracownika. Hybrydowe procesy robocze elementów Runbook nie udostępniają wielu limitów, które są dostępne w piaskownicach platformy Azure. Nie mają one tych samych limitów dotyczących miejsca na dysku, pamięci lub gniazd sieciowych. Hybrydowe procesy robocze elementów Runbook są ograniczone przez zasoby samego hybrydowego procesu roboczego elementu Runbook. Ponadto hybrydowe procesy robocze elementu Runbook nie współdzielą 180-minutowy dozwolony czas [udziału](automation-runbook-execution.md#fair-share) w piaskownicach systemu Azure. Aby dowiedzieć się więcej na temat limitów usługi dla piaskownic platformy Azure i hybrydowych procesów roboczych elementów Runbook, zobacz stronę [limity](../azure-subscription-service-limits.md#automation-limits) zadań.
 
@@ -40,7 +40,7 @@ Aby zainstalować i skonfigurować hybrydowy proces roboczy elementu Runbook sys
 |Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
 
 > [!NOTE]
-> Aby zarządzać konfiguracją serwerów obsługujących rolę hybrydowego procesu roboczego elementu Runbook z konfiguracją żądanego stanu (DSC), należy dodać je jako węzły DSC. Aby uzyskać więcej informacji na temat dołączania do zarządzania przy użyciu usługi DSC, zobacz Dołączanie [maszyn w celu zarządzania przez Azure Automation DSC](automation-dsc-onboarding.md).
+> Aby zarządzać konfiguracją serwerów obsługujących rolę hybrydowego procesu roboczego elementu Runbook z konfiguracją żądanego stanu (DSC), należy dodać je jako węzły DSC. Aby uzyskać więcej informacji na temat dołączania do zarządzania przy użyciu usługi DSC, zobacz [dołączanie maszyn w celu zarządzania przez Azure Automation DSC](automation-dsc-onboarding.md).
 >
 >Jeśli włączysz [Update Management rozwiązanie](automation-update-management.md), każdy komputer połączony z obszarem roboczym usługi Azure log Analytics zostanie automatycznie skonfigurowany jako hybrydowy proces roboczy elementu Runbook w celu obsługi elementów Runbook uwzględnionych w tym rozwiązaniu. Jednak komputer nie jest zarejestrowany dla żadnych grup hybrydowych procesów roboczych, które są już zdefiniowane na koncie usługi Automation. Komputer można dodać do grupy hybrydowych procesów roboczych elementu Runbook na koncie usługi Automation w celu obsługi elementów Runbook usługi Automation, o ile używasz tego samego konta zarówno dla tego rozwiązania, jak i dla członkostwa w grupie hybrydowych procesów roboczych elementu Runbook. Ta funkcja została dodana do wersji 7.2.12024.0 hybrydowego procesu roboczego elementu Runbook.
 

@@ -1,6 +1,6 @@
 ---
-title: Aprowizowanie i zarządzanie nimi serii czasu Azure w wersji zapoznawczej | Dokumentacja firmy Microsoft
-description: Zrozumienie, jak aprowizować i zarządzać nimi Azure czas Series Insights w wersji zapoznawczej.
+title: Inicjowanie obsługi wersji zapoznawczej usługi Azure Time Series i zarządzanie nią | Microsoft Docs
+description: Informacje dotyczące aprowizacji i zarządzania Azure Time Series Insights w wersji zapoznawczej.
 author: ashannon7
 ms.author: dpalled
 ms.workload: big-data
@@ -8,92 +8,92 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 09/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: f626ce2e009a18afcb4d04b7caa6850ea58c7483
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: a84c587a2666982e862f0640b30d2d6bef3b9a42
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446815"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744650"
 ---
-# <a name="provision-and-manage-azure-time-series-insights-preview"></a>Aprowizowanie i zarządzanie nimi Azure czas Series Insights w wersji zapoznawczej
+# <a name="provision-and-manage-azure-time-series-insights-preview"></a>Udostępnianie wersji zapoznawczej Azure Time Series Insights i zarządzanie nią
 
-W tym artykule opisano sposób tworzenia i zarządzanie środowiskiem Azure czas Series Insights w wersji zapoznawczej za pomocą [witryny Azure portal](https://portal.azure.com/).
+W tym artykule opisano sposób tworzenia środowiska Azure Time Series Insights w wersji zapoznawczej i zarządzania nim przy użyciu [Azure Portal](https://portal.azure.com/).
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
-Środowiska czasu Series Insights w wersji zapoznawczej platformy Azure są środowisk płatność za rzeczywiste użycie (PAYG).
+Środowiska Azure Time Series Insights w wersji zapoznawczej to środowiska z opcją płatność zgodnie z rzeczywistym użyciem.
 
-Podczas aprowizacji środowiska Azure czas Series Insights w wersji zapoznawczej, jest utworzenie dwóch zasobów platformy Azure:
+Po udostępnieniu środowiska Azure Time Series Insights w wersji zapoznawczej można utworzyć dwa zasoby platformy Azure:
 
-* Środowisko Azure czas Series Insights w wersji zapoznawczej  
-* Konta ogólnego przeznaczenia w wersji 1 usługi Azure Storage
+* Środowisko wersji zapoznawczej Azure Time Series Insights  
+* Konto usługi Azure Storage ogólnego przeznaczenia w wersji 1
   
-Dowiedz się, [jak Planowanie środowiska](./time-series-insights-update-plan.md).
+Dowiedz się [, jak zaplanować środowisko](./time-series-insights-update-plan.md).
 
 >[!IMPORTANT]
-> W wersji zapoznawczej, upewnij się, korzystania z platformy Azure magazynu ogólnego przeznaczenia w wersji 1 (GPv1) konta.
+> Na potrzeby wersji zapoznawczej upewnij się, że używasz konta ogólnego przeznaczenia w wersji 1 (GPv1) usługi Azure Storage.
 
-Opcjonalnie można skojarzyć każde środowisko Azure czas Series Insights w wersji zapoznawczej z źródła zdarzeń. Aby uzyskać więcej informacji, przeczytaj [dodawania źródła zdarzeń Centrum](./time-series-insights-how-to-add-an-event-source-eventhub.md) i [Dodawanie źródła Centrum IoT](./time-series-insights-how-to-add-an-event-source-iothub.md). W tym kroku możesz podać właściwość Identyfikatora sygnatury czasowej i grupy unikatowych odbiorców. Daje to gwarancję, że środowisko ma dostęp do odpowiedniego zdarzenia.
+Opcjonalnie możesz skojarzyć każde środowisko Azure Time Series Insights w wersji zapoznawczej ze źródłem zdarzenia. Aby uzyskać więcej informacji, przeczytaj temat [Dodawanie źródła centrum zdarzeń](./time-series-insights-how-to-add-an-event-source-eventhub.md) i [Dodawanie źródła Centrum IoT](./time-series-insights-how-to-add-an-event-source-iothub.md). W tym kroku podajesz Właściwość identyfikatora znacznika czasu i unikatową grupę odbiorców. Dzięki temu środowisko będzie miało dostęp do odpowiednich zdarzeń.
 
-Po ukończeniu inicjowania obsługi administracyjnej można zmodyfikować zasady dostępu i inne atrybuty środowiska do własnych potrzeb biznesowych.
+Po zakończeniu aprowizacji można zmodyfikować zasady dostępu i inne atrybuty środowiska zgodnie z wymaganiami firmy.
 
-## <a name="create-the-environment"></a>Utwórz środowisko
+## <a name="create-the-environment"></a>Tworzenie środowiska
 
-W poniższych krokach opisano sposób tworzenia środowiska Azure czas Series Insights w wersji zapoznawczej:
+W poniższych krokach opisano sposób tworzenia środowiska Azure Time Series Insights w wersji zapoznawczej:
 
-1. Wybierz **PAYG** przycisku w obszarze **jednostki SKU** menu. Podaj nazwę środowiska, a następnie wybierz grupę, do której subskrypcję i grupę zasobów do użycia. Następnie wybierz dla środowiska hostowane w obsługiwanej lokalizacji.
+1. Wybierz przycisk **PAYG** w menu **SKU** . Podaj nazwę środowiska, a następnie wybierz grupę subskrypcji i grupę zasobów do użycia. Następnie wybierz obsługiwaną lokalizację, w której ma być hostowane środowisko.
 
-   [![Utwórz wystąpienie usługi Azure Time Series Insights.](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
+   [![Utwórz wystąpienie Azure Time Series Insights.](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
-1. Wprowadź szeregów czasowych identyfikatora.
+1. Wprowadź identyfikator szeregów czasowych.
 
     >[!NOTE]
-    > * Identyfikator serii czasu jest rozróżniana wielkość liter i niezmienne. (Nie można zmienić po jego ustawieniu.)
-    > * Identyfikatory serii czasu może być maksymalnie trzy klucze.
-    > * Aby uzyskać więcej informacji o wybieraniu Identyfikatora serii czasu, przeczytaj [wybierz identyfikator serii czasu](./time-series-insights-update-how-to-id.md).
+    > * Identyfikator szeregów czasowych uwzględnia wielkość liter i jest niezmienny. (Nie można jej zmienić po ustawieniu).
+    > * Identyfikatory szeregów czasowych mogą składać się z maksymalnie trzech kluczy.
+    > * Aby uzyskać więcej informacji na temat wybierania identyfikatora szeregów czasowych, przeczytaj temat [Wybieranie identyfikatora szeregów czasowych](./time-series-insights-update-how-to-id.md).
 
-1. Utwórz konto usługi Azure storage, wybierając nazwę konta magazynu i wyznaczanie wybór replikacji. Wykonując to automatycznie tworzy konto usługi Azure Storage ogólnego przeznaczenia w wersji 1. Zostanie utworzony w tym samym regionie, co środowisko Azure czas Series Insights w wersji zapoznawczej, która została wybrana wcześniej.
+1. Utwórz konto usługi Azure Storage, wybierając nazwę konta magazynu i wyznaczając wybór replikacji. Spowoduje to automatyczne utworzenie konta ogólnego przeznaczenia w usłudze Azure Storage. Zostanie on utworzony w tym samym regionie co wcześniej wybrane środowisko Azure Time Series Insights w wersji zapoznawczej.
 
-    [![Utwórz konto magazynu platformy Azure dla swojego wystąpienia](media/v2-update-manage/manage-five.png)](media/v2-update-manage/manage-five.png#lightbox)
+    [![Utwórz konto usługi Azure Storage dla swojego wystąpienia](media/v2-update-manage/manage-five.png)](media/v2-update-manage/manage-five.png#lightbox)
 
-1. Opcjonalnie można dodać źródła zdarzenia.
+1. Opcjonalnie możesz dodać Źródło zdarzenia.
 
-   * Time Series Insights obsługuje [usługi Azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md) i [usługi Azure Event Hubs](./time-series-insights-how-to-add-an-event-source-eventhub.md) jako opcje. Mimo że można dodawać tylko źródło pojedynczego zdarzenia w czasie tworzenia środowiska, później można dodać innego źródła zdarzeń. Zaleca się, można utworzyć grupy konsumentów unikatowy, aby upewnić się, że wszystkie zdarzenia są widoczne dla swojego wystąpienia usługi Azure czas Series Insights w wersji zapoznawczej. Można wybrać istniejącą grupę odbiorców lub Utwórz nową grupę odbiorców podczas dodawania źródła zdarzeń.
+   * Time Series Insights obsługuje [platformę azure IoT Hub](./time-series-insights-how-to-add-an-event-source-iothub.md) i [Azure Event Hubs](./time-series-insights-how-to-add-an-event-source-eventhub.md) jako opcje. Mimo że można dodać tylko jedno źródło zdarzenia w czasie tworzenia środowiska, można później dodać kolejne Źródło zdarzenia. Najlepiej utworzyć unikatową grupę odbiorców, aby upewnić się, że wszystkie zdarzenia są widoczne dla Twojego wystąpienia w wersji zapoznawczej Azure Time Series Insights. Podczas dodawania źródła zdarzeń można wybrać istniejącą grupę odbiorców lub utworzyć nową grupę odbiorców.
 
-   * Należy również wybrać odpowiednie właściwości sygnatury czasowej. Domyślnie usługa Azure Time Series Insights używa czas umieszczonych w kolejce komunikatu dla każdego źródła zdarzeń.
+   * Należy również wybrać odpowiednią właściwość sygnatury czasowej. Domyślnie Azure Time Series Insights używa czasu komunikatu w kolejce dla każdego źródła zdarzenia.
 
      > [!TIP]
-     > Czas umieszczonych w kolejce komunikatów może nie być najlepiej skonfigurowane ustawienie do użycia w partii zdarzeń lub danych historycznych, przekazywanie scenariuszy. Upewnij się, że zdecydować, czy użycie lub nie właściwość sygnatury czasowej w takich przypadkach.
+     > Czas w kolejce komunikatu może nie być najlepszym skonfigurowanym ustawieniem do użycia w przypadku zdarzeń wsadowych lub scenariuszy przekazywania danych historycznych. Upewnij się, że podjęto próbę zweryfikowania decyzji o użyciu lub nie używać właściwości timestamp w takich przypadkach.
 
-     [![Karta źródła zdarzeń](media/v2-update-manage/manage-two.png)](media/v2-update-manage/manage-two.png#lightbox)
+     [![Karta źródło zdarzeń](media/v2-update-manage/manage-two.png)](media/v2-update-manage/manage-two.png#lightbox)
 
-1. Upewnij się, że środowisko został aprowizowany przy użyciu odpowiednich ustawień.
+1. Upewnij się, że środowisko zostało udostępnione przy użyciu żądanych ustawień.
 
-    [![Przeglądanie + Tworzenie karty](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
+    [![Przejrzyj i Utwórz kartę](media/v2-update-manage/manage-three.png)](media/v2-update-manage/manage-three.png#lightbox)
 
-## <a name="manage-the-environment"></a>Zarządzać środowiskiem
+## <a name="manage-the-environment"></a>Zarządzanie środowiskiem
 
-Środowiska Azure czas Series Insights w wersji zapoznawczej można zarządzać za pomocą witryny Azure portal. Oto najważniejsze różnice w zarządzaniu PAYG Azure czas Series Insights w wersji zapoznawczej środowiska, w przeciwieństwie do S1 lub S2 środowiska, za pomocą witryny Azure portal:
+Możesz zarządzać środowiskiem Azure Time Series Insights w wersji zapoznawczej przy użyciu Azure Portal. Poniżej przedstawiono główne różnice w zarządzaniu środowiskiem Azure Time Series Insights w wersji zapoznawczej PAYG, w przeciwieństwie do środowiska S1 lub S2, przy użyciu Azure Portal:
 
-* Witryny Azure portal **Przegląd** bloku są takie same jak w usłudze Azure Time Series Insights, z wyjątkiem w następujący sposób:
-  * Pojemność zostanie usunięty, ponieważ nie jest odpowiedni dla środowisk PAYG tę koncepcję.
-  * Dodano właściwość ID serii czasu. Ustala, jak Twoje dane są podzielone na partycje.
+* Blok **przegląd** Azure Portal jest niezmieniony w Azure Time Series Insights, z wyjątkiem następujących sposobów:
+  * Pojemność jest usuwana, ponieważ omawiane koncepcje nie odnosi się do środowisk PAYG.
+  * Dodano Właściwość identyfikatora szeregów czasowych. Określa sposób partycjonowania danych.
   * Zestawy danych referencyjnych są usuwane.
-  * Wyświetlany adres URL kieruje użytkownika do [Azure czas Series Insights w wersji zapoznawczej Eksplorator](./time-series-insights-update-explorer.md).
-  * Znajduje się nazwa konta magazynu platformy Azure.
+  * Wyświetlany adres URL kieruje użytkownika do [eksploratora Azure Time Series Insights w wersji zapoznawczej](./time-series-insights-update-explorer.md).
+  * Nazwa konta usługi Azure Storage znajduje się na liście.
 
-* Witryny Azure portal **Konfiguruj** bloku zostały usunięte w wersji zapoznawczej Azure czas serii szczegółowe informacje, ponieważ PAYG środowiska nie są konfigurowalne.
+* Blok **konfigurowania** Azure portal został usunięty w wersji zapoznawczej programu Azure Time Series Insights, ponieważ nie można konfigurować środowisk PAYG.
 
-* Witryny Azure portal **dane referencyjne** bloku zostały usunięte w wersji zapoznawczej Azure czas serii szczegółowe informacje, ponieważ dane referencyjne nie jest składnikiem PAYG środowisk.
+* Blok **danych referencyjnych** Azure portal został usunięty w programie Azure Time Series Insights Preview, ponieważ dane referencyjne nie są składnikiem środowisk PAYG.
 
-[![Środowisko usługi Time Series Insights w wersji zapoznawczej w witrynie Azure portal](media/v2-update-manage/manage-four.png)](media/v2-update-manage/manage-four.png#lightbox)
+[![Środowisko Time Series Insights w wersji zapoznawczej w Azure Portal](media/v2-update-manage/manage-four.png)](media/v2-update-manage/manage-four.png#lightbox)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Odczyt [Planowanie środowiska](./time-series-insights-update-plan.md).
+- Odczytaj [Planowanie środowiska](./time-series-insights-update-plan.md).
 
-- Dowiedz się, jak [dodawania źródła zdarzeń Centrum](./time-series-insights-how-to-add-an-event-source-eventhub.md).
+- Dowiedz się, jak [dodać Źródło centrum zdarzeń](./time-series-insights-how-to-add-an-event-source-eventhub.md).
 
-- Konfigurowanie [źródłem Centrum IoT](./time-series-insights-how-to-add-an-event-source-iothub.md).
+- Skonfiguruj [Źródło Centrum IoT](./time-series-insights-how-to-add-an-event-source-iothub.md).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: ecb840d97a45479d32079766807b4f2788cc29ec
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 836a9fd0b441ff9669c224dc41537e3c177d7dde
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382901"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389705"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network często zadawane pytania
 
@@ -42,7 +42,7 @@ Przejdź do [dokumentacji sieci wirtualnej](https://docs.microsoft.com/azure/vir
 Tak. Możesz użyć sieci wirtualnej bez łączenia jej z Twoim lokalem. Można na przykład uruchomić system Microsoft Windows Server Active Directory kontrolery domeny i farmy programu SharePoint wyłącznie w sieci wirtualnej platformy Azure.
 
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>Czy mogę przeprowadzić optymalizację sieci WAN między sieci wirtualnychą a siecią wirtualną i lokalnym centrum danych?
-Tak. [Wirtualne urządzenie sieciowe optymalizacji sieci WAN](https://azure.microsoft.com/marketplace/?term=wan+optimization) można wdrożyć od kilku dostawców za pośrednictwem portalu Azure Marketplace.
+Tak. [Wirtualne urządzenie sieciowe optymalizacji sieci WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/?term=wan%20optimization) można wdrożyć od kilku dostawców za pośrednictwem portalu Azure Marketplace.
 
 ## <a name="configuration"></a>Konfigurowanie
 

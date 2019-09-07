@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Tworzenie klastrów Apache Hadoop na żądanie w usłudze Azure HDInsight przy użyciu Data Factory '
+title: 'Samouczek: Klastry Apache Hadoop na żądanie w usłudze Azure HDInsight — Data Factory'
 description: Samouczek — informacje na temat tworzenia klastrów Apache Hadoop na żądanie w usłudze HDInsight przy użyciu Azure Data Factory.
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: 7af70de91a7f7696be3b003fec11390d6db9ba60
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: de12725952a2bac6a0b86b1d2e239428c0eaa709
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854979"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736182"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Samouczek: Tworzenie klastrów Apache Hadoop na żądanie w usłudze HDInsight przy użyciu Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -37,7 +37,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 * Program PowerShell [AZ module](https://docs.microsoft.com/powershell/azure/overview) został zainstalowany.
 
-* Nazwa główna usługi Azure Active Directory. Po utworzeniu jednostki usługi Pamiętaj o pobraniu **identyfikatora aplikacji** i **klucza uwierzytelniania** przy użyciu instrukcji w połączonym artykule. Te wartości są potrzebne w dalszej części tego samouczka. Upewnij się również, że jednostka usługi jest członkiem roli współautora subskrypcji lub grupy zasobów, w której tworzony jest klaster. Aby uzyskać instrukcje dotyczące pobierania wymaganych wartości i przypisywania odpowiednich ról, zobacz [Tworzenie jednostki usługi Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md).
+* Nazwa główna usługi Azure Active Directory. Po utworzeniu jednostki usługi Pamiętaj o pobraniu **identyfikatora aplikacji** i **klucza uwierzytelniania** przy użyciu instrukcji w połączonym artykule. Te wartości są potrzebne w dalszej części tego samouczka. Upewnij się również, że jednostka usługi jest członkiem roli *współautora* subskrypcji lub grupy zasobów, w której tworzony jest klaster. Aby uzyskać instrukcje dotyczące pobierania wymaganych wartości i przypisywania odpowiednich ról, zobacz [Tworzenie jednostki usługi Azure Active Directory](../active-directory/develop/howto-create-service-principal-portal.md).
 
 ## <a name="create-preliminary-azure-objects"></a>Tworzenie wstępnych obiektów platformy Azure
 
@@ -199,7 +199,7 @@ W tym artykule opisano konfigurowanie działania programu Hive w celu utworzenia
 
 4. Wybierz pozycję **Utwórz**. Tworzenie fabryki danych może potrwać od 2 do 4 minut.
 
-5. Po utworzeniu fabryki danych otrzymasz powiadomienie o pomyślnym **wdrożeniu** za pomocą przycisku **Przejdź do zasobu** .  Wybierz pozycję **Przejdź do zasobu** , aby otworzyć widok domyślny Data Factory.
+5. Po utworzeniu fabryki danych otrzymasz powiadomienie o **pomyślnym wdrożeniu** za pomocą przycisku **Przejdź do zasobu** .  Wybierz pozycję **Przejdź do zasobu** , aby otworzyć widok domyślny Data Factory.
 
 6. Wybierz pozycję **utwórz & monitor** , aby uruchomić Azure Data Factory Portal tworzenia i monitorowania.
 
@@ -214,7 +214,7 @@ W tej sekcji utworzysz dwie połączone usługi w fabryce danych.
 
 ### <a name="create-an-azure-storage-linked-service"></a>Tworzenie połączonej usługi Azure Storage
 
-1. W lewym okienku na stronie Wprowadzenie wybierz ikonę **autora** .
+1. **W lewym okienku na stronie Wprowadzenie** wybierz ikonę **autora** .
 
     ![Tworzenie połączonej usługi Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-edit-tab.png "Tworzenie połączonej usługi Azure Data Factory")
 
@@ -250,7 +250,7 @@ W tej sekcji utworzysz dwie połączone usługi w fabryce danych.
 
 4. W oknie **Nowa połączona usługa** wprowadź następujące wartości i pozostaw resztę jako domyślną:
 
-    | Właściwość | Wartość |
+    | Właściwość | Value |
     | --- | --- |
     | Name | Wprowadź polecenie `HDInsightLinkedService`.|
     | Type | Wybierz pozycję **HDInsight na żądanie**. |
@@ -294,7 +294,7 @@ W tej sekcji utworzysz dwie połączone usługi w fabryce danych.
 
         ![Podaj szczegóły skryptu Hive dla potoku](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "Podaj szczegóły skryptu Hive dla potoku")
 
-    1. W obszarze**Parametry** **Zaawansowane** > wybierz pozycję Autowypełnianie **ze skryptu**. Ta opcja szuka parametrów w skrypcie Hive, które wymagają wartości w czasie wykonywania. Skrypt używany (**partitionweblogs. HQL**) ma parametr **wyjściowy** . Podaj **wartość** w formacie `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` , aby wskazać istniejący folder w usłudze Azure Storage. W ścieżce jest rozróżniana wielkość liter. Jest to ścieżka, w której będą przechowywane dane wyjściowe skryptu. Schemat `wasbs` jest niezbędny, ponieważ konta magazynu mają teraz włączony bezpieczny transfer.
+    1. W obszarze**Parametry** **Zaawansowane** > wybierz pozycję **Autowypełnianie ze skryptu**. Ta opcja szuka parametrów w skrypcie Hive, które wymagają wartości w czasie wykonywania. Skrypt używany (**partitionweblogs. HQL**) ma parametr **wyjściowy** . Podaj **wartość** w formacie `wasbs://adfgetstarted@<StorageAccount>.blob.core.windows.net/outputfolder/` , aby wskazać istniejący folder w usłudze Azure Storage. W ścieżce jest rozróżniana wielkość liter. Jest to ścieżka, w której będą przechowywane dane wyjściowe skryptu. Schemat `wasbs` jest niezbędny, ponieważ konta magazynu mają teraz włączony bezpieczny transfer.
     
         ![Podaj parametry skryptu Hive](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "Podaj parametry skryptu Hive")
 
@@ -308,7 +308,7 @@ W tej sekcji utworzysz dwie połączone usługi w fabryce danych.
 
 ## <a name="trigger-a-pipeline"></a>Wyzwalanie potoku
 
-1. Na pasku narzędzi na powierzchni projektanta wybierz pozycję **Dodaj** > wyzwalacz wyzwalacza**teraz**.
+1. Na pasku narzędzi na powierzchni projektanta wybierz pozycję **Dodaj wyzwalacz wyzwalacza** > **teraz**.
 
     ![Wyzwalanie potoku Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-trigger-pipeline.png "Wyzwalanie potoku Azure Data Factory")
 
@@ -322,7 +322,7 @@ W tej sekcji utworzysz dwie połączone usługi w fabryce danych.
 
 1. Wybierz pozycję **Odśwież**, aby odświeżyć stan.
 
-1. Możesz również wybrać ikonę **Wyświetl uruchomienia działania** , aby zobaczyć przebieg działania skojarzony z potokiem. Na poniższym zrzucie ekranu zobaczysz tylko jedno uruchomienie działania, ponieważ w utworzonym potoku jest tylko jedno działanie. Aby przełączyć się z powrotem do poprzedniego widoku, wybierz pozycję potoki w górnej części strony.
+1. Możesz również wybrać ikonę **Wyświetl uruchomienia działania** , aby zobaczyć przebieg działania skojarzony z potokiem. Na poniższym zrzucie ekranu zobaczysz tylko jedno uruchomienie działania, ponieważ w utworzonym potoku jest tylko jedno działanie. Aby przełączyć się z powrotem do poprzedniego widoku, wybierz pozycję **potoki** w górnej części strony.
 
     ![Monitorowanie działania potoku Azure Data Factory](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-monitor-pipeline-activity.png "Monitorowanie działania potoku Azure Data Factory")
 

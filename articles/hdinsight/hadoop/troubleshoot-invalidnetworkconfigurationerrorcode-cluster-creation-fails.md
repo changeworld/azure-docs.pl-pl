@@ -1,17 +1,17 @@
 ---
-title: Tworzenie klastra kończy się niepowodzeniem z InvalidNetworkConfigurationErrorCode w usłudze Azure HDInsight
+title: InvalidNetworkConfigurationErrorCode z tworzenia klastra w usłudze Azure HDInsight
 description: Różne przyczyny niepowodzenia tworzenia klastrów z InvalidNetworkConfigurationErrorCode w usłudze Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/05/2019
-ms.openlocfilehash: 9d55041e05101c610a050574f2e940c40dac991a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 1f60ef5e267b0ee3233f9adb9dc9e8ccd3ac1c65
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817149"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734776"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Tworzenie klastra kończy się niepowodzeniem z InvalidNetworkConfigurationErrorCode w usłudze Azure HDInsight
 
@@ -59,7 +59,7 @@ Usługi Azure Storage i SQL nie mają stałych adresów IP, dlatego musimy zezwo
 
 * Jeśli klaster używa [sieciowej grupy zabezpieczeń (sieciowej grupy zabezpieczeń)](../../virtual-network/virtual-network-vnet-plan-design-arm.md).
 
-    Przejdź do Azure Portal i zidentyfikuj sieciowej grupy zabezpieczeń, która jest skojarzona z podsiecią, w której jest wdrażany klaster. W sekcji **reguły zabezpieczeń dla ruchu** wychodzącego Zezwalaj na dostęp wychodzący do Internetu bez ograniczenia (należy zauważyć, że w tym miejscu jest wyższy numer priorytetu). Ponadto w sekcji **podsieci** Sprawdź, czy ta sieciowej grupy zabezpieczeń jest stosowana do podsieci klastra.
+    Przejdź do Azure Portal i zidentyfikuj sieciowej grupy zabezpieczeń, która jest skojarzona z podsiecią, w której jest wdrażany klaster. W sekcji **reguły zabezpieczeń dla ruchu wychodzącego** Zezwalaj na dostęp wychodzący do Internetu bez ograniczenia (należy zauważyć, że w tym miejscu jest wyższy numer **priorytetu** ). Ponadto w sekcji **podsieci** Sprawdź, czy ta sieciowej grupy zabezpieczeń jest stosowana do podsieci klastra.
 
 * Jeśli klaster używa [tras zdefiniowanych przez użytkownika (UDR)](../../virtual-network/virtual-networks-udr-overview.md).
 

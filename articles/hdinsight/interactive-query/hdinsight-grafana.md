@@ -1,31 +1,31 @@
 ---
-title: Korzystanie z narzędzia Grafana w usłudze Azure HDInsight
-description: Dowiedz się, jak dostęp do narzędzia Grafana w usłudze Azure HDInsight.
+title: Korzystanie z Grafana w usłudze Azure HDInsight
+description: Dowiedz się, jak uzyskać dostęp do pulpitu nawigacyjnego Grafana za pomocą klastrów Apache Hadoop w usłudze Azure HDInsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: be804ac1aea76daf5f17e62dd97b8b57b8fdf1fb
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: a8d79e15a0c967c4b00f337928f00e76f6d296fd
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67458821"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733214"
 ---
-# <a name="access-grafana-in-azure-hdinsight"></a>Grafana dostępu w usłudze Azure HDInsight
+# <a name="access-grafana-in-azure-hdinsight"></a>Dostęp do usługi Grafana w usłudze Azure HDInsight
 
 
-[Grafana](https://grafana.com/) to popularny, typu open-source konstruktora wykresu i pulpitu nawigacyjnego. Grafana jest funkcja Zaawansowane; nie tylko jest zezwala użytkownikom na tworzenie można dostosowywać i którą można udostępniać pulpity nawigacyjne, zapewnia ona również oparte na szablonach/inicjowanych przez skrypty pulpitów nawigacyjnych, integracja protokołu LDAP, wiele źródeł danych i.
+[Grafana](https://grafana.com/) to popularny, oparty na grafie i Konstruktor pulpitu nawigacyjnego. Grafana to funkcja rozbudowana; Umożliwia to nie tylko użytkownikom tworzenie dostosowywalnych i udostępnianych pulpitów nawigacyjnych, a także udostępnia pulpity nawigacyjne z szablonami, integrację z protokołem LDAP, wiele źródeł danych i nie tylko.
 
-Obecnie w usłudze Azure HDInsight, Grafana jest obsługiwana przy użyciu typy klastrów Hbase i interakcyjnych zapytań.
+Obecnie w usłudze Azure HDInsight usługa Grafana jest obsługiwana w przypadku typów klastrów HBase i Interactive Query.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-apache-hadoop-cluster"></a>Tworzenie klastra Apache Hadoop
 
-W tej sekcji utworzysz klaser zapytania interaktywnego w HDInsight przy użyciu szablonu usługi Azure Resource Manager. Znajomość szablonów usługi Resource Manager nie jest wymagana do korzystania z tego artykułu. 
+W tej sekcji utworzysz interaktywny klaster zapytań w usłudze HDInsight przy użyciu szablonu Azure Resource Manager. Znajomość szablonów usługi Resource Manager nie jest wymagana do korzystania z tego artykułu. 
 
 1. Kliknij poniższy przycisk **Wdróż na platformie Azure**, aby zalogować się do platformy Azure i otworzyć szablon usługi Resource Manager w witrynie Azure Portal. 
    
@@ -48,7 +48,7 @@ W tej sekcji utworzysz klaser zapytania interaktywnego w HDInsight przy użyciu 
     |**Grupa zasobów**     | Utwórz grupę zasobów lub wybierz istniejącą grupę zasobów.  Grupa zasobów jest kontenerem składników platformy Azure.  W tym przypadku grupa zasobów zawiera klaster usługi HDInsight i zależne konto usługi Azure Storage. |
     |**Lokalizacja**     | Wybierz lokalizację platformy Azure, w której chcesz utworzyć klaster.  Wybierz lokalizację znajdującą się blisko, aby zapewnić lepszą wydajność. |
     |**Typ klastra**     | Wybierz pozycję **hadoop**. |
-    |**Nazwa klastra**     | Wprowadź nazwę klastra platformy Apache Hadoop. Ponieważ wszystkie klastry w usłudze HDInsight używają tej samej przestrzeni nazw DNS, ta nazwa musi być unikatowa. Nazwa może składać się z maksymalnie 59 znaków, w tym liter, cyfr i łączników. Łącznik nie może być pierwszym ani ostatnim znakiem nazwy. |
+    |**Nazwa klastra**     | Wprowadź nazwę dla klastra Apache Hadoop. Ponieważ wszystkie klastry w usłudze HDInsight używają tej samej przestrzeni nazw DNS, ta nazwa musi być unikatowa. Nazwa może składać się z maksymalnie 59 znaków, w tym liter, cyfr i łączników. Łącznik nie może być pierwszym ani ostatnim znakiem nazwy. |
     |**Nazwa użytkownika i hasło logowania do klastra**     | Domyślna nazwa logowania to **admin**. Hasło musi składać się z co najmniej 10 znaków i musi zawierać co najmniej jedną cyfrę, jedną wielką i jedną małą literę oraz jeden znak inny niż alfanumeryczny (z wyjątkiem znaków ' " ` \). Upewnij się, że **nie zostało podane** typowe hasło, takie jak „Pass@word1”.|
     |**Nazwa użytkownika i hasło protokołu SSH**     | Domyślna nazwa użytkownika to **sshuser**.  Nazwę użytkownika SSH można zmienić.  Hasło użytkownika SSH ma te same wymagania co hasło logowania klastra.|
        
@@ -62,29 +62,29 @@ W tej sekcji utworzysz klaser zapytania interaktywnego w HDInsight przy użyciu 
    
     ![Grupa zasobów wprowadzenia do usługi HDInsight Linux](./media/hdinsight-grafana/hdinsight-linux-get-started-resource-group.png "Grupa zasobów klastra usługi Azure HDInsight")
     
-5. Kafelek zawiera także nazwę magazynu domyślnego, skojarzonego z klastrem. Każdy klaster zależy od [konta usługi Azure Storage](../hdinsight-hadoop-use-blob-storage.md) lub od [konta usługi Azure Data Lake](../hdinsight-hadoop-use-data-lake-store.md). Jest ono określane jako domyślne konto magazynu. Klaster HDInsight i jego domyślne konto magazynu muszą wspólnie przechowywane w tym samym regionie platformy Azure. Usunięcie klastrów nie powoduje usunięcia konta magazynu.
+5. Kafelek zawiera także nazwę magazynu domyślnego, skojarzonego z klastrem. Każdy klaster zależy od [konta usługi Azure Storage](../hdinsight-hadoop-use-blob-storage.md) lub od [konta usługi Azure Data Lake](../hdinsight-hadoop-use-data-lake-store.md). Jest ono określane jako domyślne konto magazynu. Klaster usługi HDInsight i jego domyślne konto magazynu muszą znajdować się w tym samym regionie platformy Azure. Usunięcie klastrów nie powoduje usunięcia konta magazynu.
     
 
 > [!NOTE]  
-> Inne metody tworzenia klastrów i opis właściwości używanych w tym artykule, zobacz [klastrów HDInsight tworzenie](../hdinsight-hadoop-provision-linux-clusters.md). 
+> Aby poznać inne metody tworzenia klastrów i zrozumieć właściwości używane w tym artykule, zobacz [Tworzenie klastrów usługi HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). 
 
-## <a name="access-the-grafana-dashboard"></a>Dostęp do pulpitu nawigacyjnego z narzędzia Grafana
+## <a name="access-the-grafana-dashboard"></a>Dostęp do pulpitu nawigacyjnego Grafana
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 
-2. Wybierz **klastry HDInsight**, a następnie wybierz nazwę klastra, utworzone w ostatniej sekcji.
+2. Wybierz pozycję **Klastry usługi HDInsight**, a następnie wybierz nazwę klastra utworzoną w ostatniej sekcji.
 
-3. W obszarze **szybkich łączy**, kliknij przycisk **pulpit nawigacyjny klastra**.
+3. W obszarze **szybkie linki**kliknij pozycję **pulpit nawigacyjny klastra**.
 
-    ![Portal pulpit nawigacyjny klastra HDInsight](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "pulpit nawigacyjny klastra HDInsight w portalu")
+    ![Portal pulpitu nawigacyjnego klastra usługi HDInsight](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "Pulpit nawigacyjny klastra usługi HDInsight w portalu")
 
-4. Z poziomu pulpitu nawigacyjnego, kliknij przycisk **Grafana** kafelka. Alternatywnie, przejdź do `/grafana/` ścieżki adresu URL klastra. Na przykład `https://<clustername>.azurehdinsight.net/grafana/`.
+4. Na pulpicie nawigacyjnym kliknij kafelek **Grafana** . Alternatywnie przejdź do `/grafana/` ścieżki adresu URL klastra. Na przykład `https://<clustername>.azurehdinsight.net/grafana/`.
 
-5. Wprowadź poświadczenia użytkownika klastra Hadoop.
+5. Wprowadź poświadczenia użytkownika klastra usługi Hadoop.
 
-6. Na pulpicie nawigacyjnym Grafana pojawi się i wygląda następująco:
+6. Zostanie wyświetlony pulpit nawigacyjny Grafana, który wygląda następująco:
 
-    ![Pulpitem nawigacyjnym HDInsight Grafana](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "pulpitem nawigacyjnym HDInsight Grafana")
+    ![Pulpit nawigacyjny usługi HDInsight Grafana](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "Pulpit nawigacyjny usługi HDInsight Grafana")
 
    
 
@@ -104,11 +104,11 @@ Po ukończeniu korzystania z artykułu warto usunąć klaster. Dzięki usłudze 
 
 3. Wybierz pozycję **Usuń grupę zasobów**, aby usunąć grupę zasobów zawierającą klaster i domyślne konto magazynu. Uwaga: usunięcie grupy zasobów powoduje usunięcie konta magazynu. Jeśli chcesz zachować konta magazynu, wybierz opcję usunięcia tylko klastra.
 
-## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób tworzenia klastra HDInsight opartych na systemie Linux przy użyciu szablonu usługi Resource Manager oraz wykonywać podstawowe zapytania usługi Apache Hive. W następnym artykule dowiesz się, jak przeprowadzić operację wyodrębniania, transformacji i ładowania (ETL, extract, transform, and load) przy użyciu usługi Hadoop w usłudze HDInsight.
+## <a name="next-steps"></a>Następne kroki
+W tym artykule przedstawiono sposób tworzenia klastra usługi HDInsight opartej na systemie Linux przy użyciu szablonu Menedżer zasobów i wykonywania podstawowych zapytań Apache Hive. W następnym artykule dowiesz się, jak przeprowadzić operację wyodrębniania, transformacji i ładowania (ETL, extract, transform, and load) przy użyciu usługi Hadoop w usłudze HDInsight.
 
 > [!div class="nextstepaction"]
->[Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu zapytań interaktywnych na HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+>[Wyodrębnianie, przekształcanie i ładowanie danych przy użyciu interakcyjnych zapytań w usłudze HDInsight](../interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 
 Jeśli chcesz już zacząć korzystać z własnych danych i dowiedzieć się więcej o sposobie przechowywania danych w usłudze HDInsight lub sposobie pobierania danych do usługi HDInsight, zobacz następujące artykuły:
 
