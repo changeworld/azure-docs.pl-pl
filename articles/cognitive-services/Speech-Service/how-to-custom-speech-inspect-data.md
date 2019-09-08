@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b58f9c17995128091b5c4badd228356dbacc6ae9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0b5f064204c5bca35ccb1a628cb06978180c318c
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562846"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801490"
 ---
 # <a name="inspect-custom-speech-data"></a>Inspekcja danych Custom Speech
 
 > [!NOTE]
 > Na tej stronie założono, że załączono [przygotowanie danych testowych dla Custom Speech](how-to-custom-speech-test-data.md) i przekazano zestaw danych do inspekcji.
 
-Custom Speech udostępnia narzędzia umożliwiające wizualne badanie jakości rozpoznawania modelu przez porównanie danych audio z odpowiednim wynikiem rozpoznawania. Z poziomu portalu Custom Speech można odtworzyć załadowane audio i określić, czy podany wynik rozpoznawania jest poprawny. To narzędzie umożliwia szybkie sprawdzenie jakości linii bazowej tekstu "mowy" firmy Microsoft lub przeszkolonego modelu niestandardowego bez konieczności transkrypcja jakichkolwiek danych audio.
+Custom Speech udostępnia narzędzia umożliwiające wizualne badanie jakości rozpoznawania modelu przez porównanie danych audio z odpowiednim wynikiem rozpoznawania. Z poziomu [portalu Custom Speech](https://speech.microsoft.com/customspeech)można odtworzyć załadowane audio i określić, czy podany wynik rozpoznawania jest poprawny. To narzędzie umożliwia szybkie sprawdzenie jakości linii bazowej tekstu "mowy" firmy Microsoft lub przeszkolonego modelu niestandardowego bez konieczności transkrypcja jakichkolwiek danych audio.
 
 W tym dokumencie dowiesz się, jak wizualnie zbadać jakość modelu przy użyciu przekazanych wcześniej danych szkoleniowych.
 
@@ -32,11 +32,12 @@ Na tej stronie dowiesz się, jak wizualnie zbadać jakość linii bazowej tekstu
 
 Postępuj zgodnie z poniższymi instrukcjami, aby utworzyć test:
 
-1. Przejdź do **> funkcji zamiany mowy na tekst Custom Speech > testowanie**.
-2. Kliknij przycisk **Dodaj test**.
-3. Wybierz pozycję **Inspekcja jakości (dane audio)** . Nadaj testowi nazwę, opis i wybierz zestaw danych audio.
-4. Wybierz maksymalnie dwa modele, które chcesz przetestować.
-5. Kliknij przycisk **Utwórz**.
+1. Zaloguj się do [portalu Custom Speech](https://speech.microsoft.com/customspeech).
+2. Przejdź do **> funkcji zamiany mowy na tekst Custom Speech > testowanie**.
+3. Kliknij przycisk **Dodaj test**.
+4. Wybierz pozycję **Inspekcja jakości (dane audio)** . Nadaj testowi nazwę, opis i wybierz zestaw danych audio.
+5. Wybierz maksymalnie dwa modele, które chcesz przetestować.
+6. Kliknij przycisk **Utwórz**.
 
 Po pomyślnym utworzeniu testu można porównać modele obok siebie.
 
@@ -48,7 +49,7 @@ Aby pomóc w sprawdzeniu porównania obok siebie, można przełączać różne t
 
 Sprawdzanie jakości testowania jest przydatne w przypadku, gdy jakość punktu końcowego rozpoznawania mowy jest wystarczająca dla aplikacji.  Aby określić obiektywną miarę dokładności wymagającą uzyskanego audio, postępuj zgodnie z instrukcjami znajdującymi się w [ocenie dokładności](how-to-custom-speech-evaluate-data.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Oceń dane](how-to-custom-speech-evaluate-data.md)
 * [Uczenie modelu](how-to-custom-speech-train-model.md)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: aa81f181c8d062e5fd68b0fbb2445f5c37540889
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 163c3cbaeed1526f08d047c3bf357232ccb534a3
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309568"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802393"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -206,14 +206,17 @@ Ta sekcja ma zastosowanie tylko do standardowych udziałów plików. Wszystkie u
 
 Standardowe udziały plików są dostępne we wszystkich regionach do 5 TiB. W niektórych regionach jest dostępny z limitem 100 TiB, te regiony są wymienione w poniższej tabeli:
 
-|Region |Obsługiwana nadmiarowość |Obsługuje istniejące konta magazynu |Obsługa portalu *   |
+|Region |Obsługiwana nadmiarowość |Obsługuje istniejące konta magazynu |Obsługa portalu * |
 |-------|---------|---------|---------|
-|Australia Wschodnia  |LRS     |Nie    |Tak|
-|Francja Środkowa  |LRS     |Nie    |Jeszcze nie|
-|Francja Południowa    |LRS     |Nie    |Jeszcze nie|
-|Azja Południowo-Wschodnia  |LRS, ZRS|Nie    |Tak|
-|Europa Zachodnia     |LRS, ZRS|Nie    |Tak|
-|Zachodnie stany USA 2       |LRS, ZRS|Nie    |Tak|
+|Australia Wschodnia |LRS     |Nie    |Tak|
+|Australia Południowo-Wschodnia|LRS     |Nie    |Jeszcze nie|
+|Indie Środkowe  |LRS     |Nie    |Jeszcze nie|
+|Francja Środkowa  |LRS, ZRS|Nie    |LRS — tak, ZRS — jeszcze nie|
+|Indie Południowe    |LRS     |Nie    |Jeszcze nie|
+|Azja Południowo-Wschodnia |LRS, ZRS|Nie    |Tak|
+|Środkowo-zachodnie stany USA|LRS     |Nie    |Jeszcze nie|
+|Europa Zachodnia    |LRS, ZRS|Nie    |Tak|
+|Zachodnie stany USA 2      |LRS, ZRS|Nie    |Tak|
 
 \* W przypadku regionów bez obsługi portalu można nadal używać programu PowerShell lub interfejsu wiersza polecenia platformy Azure do tworzenia większych udziałów TiB. Alternatywnie możesz utworzyć nowy udział za pośrednictwem portalu bez określania limitu przydziału. Spowoduje to utworzenie udziału o domyślnym rozmiarze 100 TiB, który można później zaktualizować za pomocą programu PowerShell lub interfejsu wiersza polecenia platformy Azure.
 

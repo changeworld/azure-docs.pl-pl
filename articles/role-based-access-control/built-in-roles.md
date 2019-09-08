@@ -15,12 +15,12 @@ ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: fb1007929a26384da60e542865c750fd1d642440
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 5f273f2eb36b0bd1d6757eb1ffb2403641cd461f
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114672"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801375"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role dla zasobów platformy Azure
 
@@ -36,7 +36,7 @@ W poniższej tabeli przedstawiono krótki opis każdej wbudowanej roli. Kliknij 
 | Wbudowana rola | Opis |
 | --- | --- |
 | [Właściciel](#owner) | Umożliwia zarządzanie wszystko, w tym dostęp do zasobów. |
-| [Współautor](#contributor) | Umożliwia zarządzanie wszystko z wyjątkiem dostępu do zasobów. |
+| [Współautor](#contributor) | Umożliwia zarządzanie wszystko z wyjątkiem udzielania dostępu do zasobów. |
 | [Czytelnik](#reader) | Umożliwia wyświetlenie wszystkiego, ale nie wprowadza żadnych zmian. |
 | [AcrDelete](#acrdelete) | ACR Usuń |
 | [AcrImageSigner](#acrimagesigner) | osoba podpisująca obraz ACR |

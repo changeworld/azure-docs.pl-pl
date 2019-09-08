@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: quickstart
 ms.date: 08/09/2019
 ms.author: diberry
-ms.openlocfilehash: ca1478801ad704888266175a23b6f436d067dd10
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9ad220287685dd2405931cd6f8cd460b06f340b2
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950793"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801553"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>Szybki start: Personalizowanie biblioteki klienckiej dla języka Python
 
@@ -109,13 +109,15 @@ Następnie Utwórz metodę zwracającą klienta programu Personalizacja. Paramet
 
 Akcje reprezentują opcje zawartości, które chcesz spersonalizować. Dodaj następujące metody do klasy program, aby uzyskać dane wejściowe użytkownika z wiersza polecenia dla pory dnia i bieżącego preferencji żywności.
 
+[!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=getActions)]
+
 [!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=createUserFeatureTimeOfDay)]
 
 [!code-python[Present food taste preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=createUserFeatureTastePreference)]
 
 ## <a name="create-the-learning-loop"></a>Tworzenie pętli uczenia
 
-Pętla szkoleniowa personalizacji jest cyklem [](#request-a-rank) wywołań rangi i [nagrody](#send-a-reward) . W tym przewodniku szybki start każdy wywołania rangi, aby spersonalizować zawartość, nastąpi wywołanie zarobkowe, aby poinformować program Personalizuj, jak dobrze zaklasyfikował zawartość usługi. 
+Pętla szkoleniowa personalizacji jest cyklem wywołań [rangi](#request-a-rank) i [nagrody](#send-a-reward) . W tym przewodniku szybki start każdy wywołania rangi, aby spersonalizować zawartość, nastąpi wywołanie zarobkowe, aby poinformować program Personalizuj, jak dobrze zaklasyfikował zawartość usługi. 
 
 Poniższy kod w `main` metodzie jest pętlą przez cykl, który prosi użytkownika o ich preferencje w wierszu polecenia, wysyłając te informacje do narzędzia Personalizowanie do rangi, prezentując wybór rangi do klienta, aby wybrać spośród , a następnie wysłanie nagrody do programu Personalizowanie sygnalizujące, jak dobrze ta usługa w klasyfikacji zaznaczenia.
 
@@ -135,7 +137,7 @@ Ten przewodnik Szybki Start zawiera proste funkcje kontekstu o porze dnia i pref
 
 Aby zakończyć żądanie pozyskania, program pobiera wybór użytkownika z wiersza polecenia, przypisuje wartość liczbową do każdego zaznaczenia, a następnie wysyła unikatowy identyfikator zdarzenia rangi i wartość liczbową do metody nagrody.
 
-Ten przewodnik Szybki Start przypisuje prostą liczbę jako wynagrodzenie, zero lub 1. W systemach produkcyjnych określenie, kiedy i co mają być wysyłane do [](concept-rewards.md) płatnego wywołania, może być nieuproszczone, w zależności od konkretnych potrzeb. 
+Ten przewodnik Szybki Start przypisuje prostą liczbę jako wynagrodzenie, zero lub 1. W systemach produkcyjnych określenie, kiedy i co mają być wysyłane do [płatnego wywołania,](concept-rewards.md) może być nieuproszczone, w zależności od konkretnych potrzeb. 
 
 [!code-python[The Personalizer learning loop sends a reward.](~/samples-personalizer/quickstarts/python/sample.py?name=reward&highlight=9)]
 

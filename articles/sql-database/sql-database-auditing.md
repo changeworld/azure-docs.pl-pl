@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: c8533f79dd2bf02a03ff4a37283359f3b3a5bf39
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b145b341a4db503a00d517decf6406e26f23c3cd
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066050"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802454"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -42,7 +42,7 @@ Inspekcji bazy danych SQL można użyć do:
 - **Analizuj** raporty. Można znaleźć podejrzane zdarzenia, nietypową aktywność i trendy.
 
 > [!IMPORTANT]
-> Dzienniki inspekcji są zapisywane w celu dołączania **obiektów BLOB** w usłudze Azure Blob Storage w ramach subskrypcji platformy Azure.
+> Dzienniki inspekcji są zapisywane w celu **dołączania obiektów BLOB** w usłudze Azure Blob Storage w ramach subskrypcji platformy Azure.
 >
 > - Obsługiwane są wszystkie rodzaje magazynów (v1, v2, BLOB).
 > - Wszystkie konfiguracje replikacji magazynu są obsługiwane.
@@ -58,7 +58,7 @@ Zasady inspekcji można zdefiniować dla konkretnej bazy danych lub jako domyśl
 
 - Jeśli *Inspekcja obiektów BLOB serwera jest włączona*, *zawsze ma zastosowanie do bazy danych programu*. Baza danych będzie poddawana inspekcji, niezależnie od ustawień inspekcji bazy danych.
 
-- Włączenie inspekcji obiektów BLOB w bazie danych lub hurtowni danych (oprócz włączenia jej na serwerze) nie przesłania ani nie zmienia żadnych ustawień inspekcji obiektów BLOB serwera. Obie inspekcje będą istnieć obok siebie. Inaczej mówiąc, baza danych jest monitorowana dwukrotnie. raz przez zasady serwera i jeden raz przez zasady bazy danych.
+- Włączenie inspekcji obiektów BLOB w bazie danych lub hurtowni danych (oprócz włączenia jej na serwerze) *nie przesłania ani* nie zmienia żadnych ustawień inspekcji obiektów BLOB serwera. Obie inspekcje będą istnieć obok siebie. Inaczej mówiąc, baza danych jest monitorowana dwukrotnie. raz przez zasady serwera i jeden raz przez zasady bazy danych.
 
    > [!NOTE]
    > Należy unikać jednoczesnego włączania inspekcji obiektów BLOB serwera i inspekcji obiektów BLOB bazy danych, chyba że:
@@ -72,7 +72,7 @@ Zasady inspekcji można zdefiniować dla konkretnej bazy danych lub jako domyśl
 W poniższej sekcji opisano konfigurację inspekcji przy użyciu Azure Portal.
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
-2. Przejdź do opcji Inspekcja pod nagłówkiem zabezpieczenia w okienku baza danych SQL/serwer.
+2. Przejdź do opcji **Inspekcja** pod nagłówkiem zabezpieczenia w okienku baza danych SQL/serwer.
 
     <a id="auditing-screenshot"></a>![Okienko nawigacji][1]
 
@@ -119,7 +119,7 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu Azure Portal.
 
 W przypadku wybrania opcji zapisania dzienników inspekcji do Azure Monitor dzienników:
 
-- Użyj [Azure Portal](https://portal.azure.com).  Otwórz odpowiednią bazę danych. W górnej części strony Inspekcja bazy danych kliknij pozycję **Wyświetl dzienniki inspekcji**.
+- Użyj [Azure Portal](https://portal.azure.com).  Otwórz odpowiednią bazę danych. W górnej części strony **Inspekcja** bazy danych kliknij pozycję **Wyświetl dzienniki inspekcji**.
 
     ![Wyświetlanie dzienników inspekcji](./media/sql-database-auditing-get-started/auditing-view-audit-logs.png)
 
@@ -150,7 +150,7 @@ W przypadku wybrania opcji zapisania dzienników inspekcji na koncie usługi Azu
 
 - Dzienniki inspekcji są agregowane na koncie wybranym podczas instalacji. Dzienniki inspekcji można eksplorować przy użyciu narzędzia, takiego jak [Eksplorator usługi Azure Storage](https://storageexplorer.com/). W usłudze Azure Storage dzienniki inspekcji są zapisywane jako kolekcja plików obiektów BLOB w kontenerze o nazwie **sqldbauditlogs**. Aby uzyskać więcej informacji na temat hierarchii folderu magazynu, konwencji nazewnictwa i formatu dziennika, zobacz [format dziennika inspekcji SQL Database](https://go.microsoft.com/fwlink/?linkid=829599).
 
-- Użyj [Azure Portal](https://portal.azure.com).  Otwórz odpowiednią bazę danych. W górnej części strony Inspekcja bazy danych kliknij pozycję **Wyświetl dzienniki inspekcji**.
+- Użyj [Azure Portal](https://portal.azure.com).  Otwórz odpowiednią bazę danych. W górnej części strony **Inspekcja** bazy danych kliknij pozycję **Wyświetl dzienniki inspekcji**.
 
     ![Okienko nawigacji][7]
 
@@ -201,8 +201,6 @@ Po włączeniu inspekcji podstawowej bazy danych przy użyciu baz danych z repli
 
     >[!IMPORTANT]
     >W przypadku inspekcji na poziomie bazy danych ustawienia magazynu dla pomocniczej bazy danych będą takie same, jak w przypadku ruchu międzyregionalnego. Zalecamy włączenie tylko inspekcji na poziomie serwera i pozostawienie wyłączonej inspekcji na poziomie bazy danych dla wszystkich baz danych.
-    > [!WARNING]
-    > Używanie centrum zdarzeń lub dzienników Azure Monitor jako elementów docelowych dla dzienników inspekcji na poziomie serwera nie jest obecnie obsługiwane w przypadku pomocniczych zreplikowanych baz danych.
 
 ### <a id="subheading-6">Ponowne generowanie klucza magazynu</a>
 
@@ -222,9 +220,9 @@ W środowisku produkcyjnym można okresowo odświeżać klucze magazynu. Podczas
 - Aby uzyskać szczegółowe informacje na temat formatu dziennika, hierarchii folderu magazynu i konwencji nazewnictwa, zobacz [dokumentacja formatu dziennika inspekcji obiektów BLOB](https://go.microsoft.com/fwlink/?linkid=829599).
 
     > [!IMPORTANT]
-    > Azure SQL Database inspekcji przechowuje 4000 znaków danych dla pól znaków w rekordzie inspekcji. Gdy **instrukcja** lub wartości **data_sensitivity_information** zwracane z akcji objętej inspekcją zawierają więcej niż 4000 znaków, wszystkie dane spoza pierwszych 4000 znaków będą obcinane **i nieobjęte inspekcją**.
+    > Azure SQL Database inspekcji przechowuje 4000 znaków danych dla pól znaków w rekordzie inspekcji. Gdy **instrukcja** lub wartości **data_sensitivity_information** zwracane z akcji objętej inspekcją zawierają więcej niż 4000 znaków, wszystkie dane spoza pierwszych 4000 znaków będą **obcinane i nieobjęte inspekcją**.
 
-- Dzienniki inspekcji są zapisywane w celu dołączania **obiektów BLOB** w usłudze Azure Blob Storage w ramach subskrypcji platformy Azure:
+- Dzienniki inspekcji są zapisywane w celu **dołączania obiektów BLOB** w usłudze Azure Blob Storage w ramach subskrypcji platformy Azure:
   - **Premium Storage** nie jest obecnie **obsługiwana** przez dołączenie obiektów BLOB.
   - **Magazyn w sieci wirtualnej** nie jest obecnie **obsługiwany**.
 
@@ -264,9 +262,9 @@ Aby zapoznać się z przykładem skryptu, zobacz [Konfigurowanie inspekcji i wyk
 Rozszerzone zasady z klauzulą WHERE obsługują dodatkowe filtrowanie:
 
 - [Utwórz lub zaktualizuj zasady *rozszerzonej* inspekcji bazy danych](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-- [Tworzenie lub aktualizowanie zasad inspekcji rozszerzonej serwera](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [Pobierz zasady inspekcji rozszerzonej bazy danych](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
-- [Pobieranie zasad inspekcji rozszerzonej serwera](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [Tworzenie lub aktualizowanie zasad inspekcji *rozszerzonej* serwera](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [Pobierz zasady inspekcji *rozszerzonej* bazy danych](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [Pobieranie zasad inspekcji *rozszerzonej* serwera](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 ## <a id="subheading-10"></a>Zarządzanie inspekcją usługi SQL Database przy użyciu szablonów Azure Resource Manager
 

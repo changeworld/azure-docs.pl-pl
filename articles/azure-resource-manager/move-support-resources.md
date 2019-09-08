@@ -3,15 +3,15 @@ title: Obsługa operacji przenoszenia według typu zasobów platformy Azure
 description: Wyświetla listę typów zasobów platformy Azure, które można przenieść do nowej grupy zasobów lub subskrypcji.
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: conceptual
-ms.date: 08/23/2019
+ms.topic: reference
+ms.date: 09/06/2019
 ms.author: tomfitz
-ms.openlocfilehash: 3100ce897a09c2747c2b339662c699d197ba73d7
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 9dc86fe7876a050fe67ec73a665be6141a4b98da
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194847"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801351"
 ---
 # <a name="move-operation-support-for-resources"></a>Obsługa operacji przenoszenia dla zasobów
 W tym artykule przedstawiono, czy typ zasobu platformy Azure obsługuje operację przenoszenia. Zawiera również informacje dotyczące specjalnych warunków, które należy wziąć pod uwagę podczas przeniesienia zasobu.
@@ -737,7 +737,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | skoroszyty | Tak | Tak |
 
 > [!IMPORTANT]
-> Upewnij się, że przejście do nowej subskrypcji nie przekracza przydziałów [subskrypcji](../azure-subscription-service-limits.md#azure-monitor-limits).
+> Upewnij się, że przejście do nowej subskrypcji nie przekracza [przydziałów subskrypcji](../azure-subscription-service-limits.md#azure-monitor-limits).
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
@@ -981,7 +981,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | obszary robocze | Tak | Tak |
 
 > [!IMPORTANT]
-> Upewnij się, że przejście do nowej subskrypcji nie przekracza przydziałów [subskrypcji](../azure-subscription-service-limits.md#azure-monitor-limits).
+> Upewnij się, że przejście do nowej subskrypcji nie przekracza [przydziałów subskrypcji](../azure-subscription-service-limits.md#azure-monitor-limits).
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 
@@ -1296,7 +1296,7 @@ Przejdź do przestrzeni nazw dostawcy zasobów:
 > | konto/projekt | Tak | Tak |
 
 > [!IMPORTANT]
-> Aby zmienić subskrypcję usługi Azure DevOps, zobacz [zmiana subskrypcji platformy Azure używanej do](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)rozliczania.
+> Aby zmienić subskrypcję usługi Azure DevOps, zobacz [zmiana subskrypcji platformy Azure używanej do rozliczania](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json).
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft. VMwareCloudSimple
 

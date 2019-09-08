@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fad0fada4d9dd888b0b2a37b59e4eac1e016aec4
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: b18e1b755b4e1339bf00380d8228fc28e355d3e1
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663603"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802519"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Przygotuj dane dla Custom Speech
 
@@ -27,7 +27,7 @@ Ta tabela zawiera listę akceptowanych typów danych, gdy należy użyć poszcze
 
 | Typ danych | Używane do testowania | Ilość | Używany do szkolenia | Ilość |
 |-----------|-----------------|----------|-------------------|----------|
-| [Audio](#audio-data-for-testing) | Yes<br>Używane na potrzeby inspekcji wizualnej | 5 plików audio | Nie | Nie dotyczy |
+| [Audio](#audio-data-for-testing) | Tak<br>Używane na potrzeby inspekcji wizualnej | 5 plików audio | Nie | Nie dotyczy |
 | [Zapisy audio + oznakowane przez człowieka](#audio--human-labeled-transcript-data-for-testingtraining) | Tak<br>Służy do obliczania dokładności | 0,5 – 5 godzin audio | Tak | 1 – 1 000 godzin audio |
 | [Powiązany tekst](#related-text-data-for-training) | Nie | Nie dotyczy | Tak | 1-200 MB powiązanego tekstu |
 
@@ -35,7 +35,7 @@ Pliki powinny być pogrupowane według typu w zestawie danych i przekazywane jak
 
 ## <a name="upload-data"></a>Przekazywanie danych
 
-Gdy wszystko będzie gotowe do przekazania danych, kliknij przycisk **Przekaż dane** , aby uruchomić kreatora i utworzyć swój pierwszy zestaw danych. Przed umożliwieniem przekazania danych użytkownik zostanie poproszony o wybranie typu danych mowy dla zestawu danych.
+Gdy wszystko będzie gotowe do przekazania danych, przejdź do [portalu Custom Speech](https://speech.microsoft.com/customspeech), a następnie kliknij pozycję **Przekaż dane** , aby uruchomić kreatora i utworzyć swój pierwszy zestaw danych. Przed umożliwieniem przekazania danych użytkownik zostanie poproszony o wybranie typu danych mowy dla zestawu danych.
 
 ![Wybierz dźwięk z portalu mowy](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -52,7 +52,7 @@ Dane audio są optymalne do testowania dokładności linii bazowej "zamiany mowy
 
 Użyj tej tabeli, aby upewnić się, że pliki audio są poprawnie sformatowane do użytku z Custom Speech:
 
-| Właściwość | Wartość |
+| Właściwość | Value |
 |----------|-------|
 | Format pliku | RIFF (WAV) |
 | Częstotliwość próbkowania | 8 000 Hz lub 16 000 Hz |
@@ -73,7 +73,7 @@ Jeśli dźwięk nie spełnia tych właściwości lub chcesz sprawdzić, czy jest
 
 Aby zmierzyć dokładność dokładności zamiany mowy na tekst firmy Microsoft podczas przetwarzania plików audio, należy zapewnić, aby porównanie było oznaczone przez człowieka (słowo-by-Word). Chociaż transkrypcja przez człowieka jest często czasochłonna, konieczne jest oszacowanie dokładności i uczenie modelu dla przypadków użycia. Należy pamiętać, że ulepszenia w zakresie rozpoznawania będą tylko tak dobre jak dostarczone dane. Z tego powodu ważne jest, aby przekazywać tylko transkrypcje o wysokiej jakości.  
 
-| Właściwość | Wartość |
+| Właściwość | Value |
 |----------|-------|
 | Format pliku | RIFF (WAV) |
 | Częstotliwość próbkowania | 8 000 Hz lub 16 000 Hz |
@@ -94,9 +94,9 @@ Aby rozwiązać problemy, takie jak usuwanie lub podstawianie wyrazów, wymagana
 > [!NOTE]
 > Transkrypcja powinna być kodowana za pomocą kodowania UTF-8 ze znacznikiem kolejności bajtów (BOM).
 
-Transkrypcje są normalizowane pod względem tekstu, aby mogły być przetwarzane przez system. Istnieją jednak pewne istotne normalizacje, które muszą być wykonane przez użytkownika _przed_ przekazaniem danych do usługi Custom Speech Service. Aby uzyskać odpowiedni język do użycia podczas przygotowywania transkrypcji, zobacz [jak utworzyć transkrypcję](how-to-custom-speech-human-labeled-transcriptions.md) z oznaczeniem ludzkim
+Transkrypcje są normalizowane pod względem tekstu, aby mogły być przetwarzane przez system. Istnieją jednak pewne istotne normalizacje, które muszą być wykonane przez użytkownika _przed_ przekazaniem danych do usługi Custom Speech Service. Aby uzyskać odpowiedni język do użycia podczas przygotowywania transkrypcji, zobacz [jak utworzyć transkrypcję z oznaczeniem ludzkim](how-to-custom-speech-human-labeled-transcriptions.md)
 
-Po zebraniu plików audio i odpowiednich transkrypcji należy je spakować jako jeden plik zip przed przekazaniem do portalu Custom Speech. Jest to przykładowy zestaw danych z trzema plikami audio i plik transkrypcji z etykietą o podanych przez człowieka:
+Po zebraniu plików audio i odpowiednich transkrypcji należy je spakować jako jeden plik zip przed przekazaniem do [portalu Custom Speech](https://speech.microsoft.com/customspeech). Jest to przykładowy zestaw danych z trzema plikami audio i plik transkrypcji z etykietą o podanych przez człowieka:
 
 ![Wybierz dźwięk z portalu mowy](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
@@ -109,7 +109,7 @@ Jeśli posiadasz nazwy produktów lub funkcje, które są unikatowe, i chcesz si
 | Wyrażenia długości i/lub zdania | Mogą one zwiększyć dokładność podczas rozpoznawania nazw produktów lub słownika właściwych dla branż w kontekście zdania. |
 | Wymowy | Mogą one poprawić wymowę nietypowych warunków, akronimów lub innych słów z niezdefiniowanymi wymowiemi. |
 
-Wyrażenia długości można podać jako jeden lub wiele plików tekstowych. Im bliżej danych tekstowych jest wypowiadane, tym większe prawdopodobieństwo poprawy dokładności. Wymowy należy dostarczyć jako pojedynczy plik tekstowy. Wszystkie elementy można spakować jako jeden plik zip i przekazać je do portalu Custom Speech.
+Wyrażenia długości można podać jako jeden lub wiele plików tekstowych. Im bliżej danych tekstowych jest wypowiadane, tym większe prawdopodobieństwo poprawy dokładności. Wymowy należy dostarczyć jako pojedynczy plik tekstowy. Wszystkie elementy można spakować jako jeden plik zip i przekazać je do [portalu Custom Speech](https://speech.microsoft.com/customspeech).
 
 ### <a name="guidelines-to-create-an-utterances-file"></a>Wskazówki dotyczące tworzenia pliku wyrażenia długości
 

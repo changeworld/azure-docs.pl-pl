@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: f628be48039df63700f8e786821f29ba55cfd943
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: dd6cd16302c69266a954816868c04c8507762717
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164889"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801271"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Zarządzanie aplikacjami logiki za pomocą programu Visual Studio
 
@@ -85,7 +85,7 @@ W programie Visual Studio można znaleźć wszystkie aplikacje logiki skojarzone
 
 ## <a name="open-in-visual-studio"></a>Otwórz w programie Visual Studio
 
-W programie Visual Studio można otwierać aplikacje logiki wcześniej utworzone i wdrożone bezpośrednio za pomocą Azure Portal lub jako projekty Azure Resource Manager z programem Visual Studio.
+W programie Visual Studio można otwierać aplikacje logiki wcześniej utworzone i wdrożone bezpośrednio za pomocą Azure Portal lub projektów grupy zasobów platformy Azure z programem Visual Studio.
 
 1. Otwórz program Cloud Explorer i Znajdź aplikację logiki. 
 
@@ -123,7 +123,34 @@ Aplikacje logiki można pobrać z [Azure Portal](https://portal.azure.com) i zap
 
 4. Po wyświetleniu monitu o lokalizację przejdź do tej lokalizacji i Zapisz szablon Menedżer zasobów dla definicji aplikacji logiki w formacie pliku JSON (JSON). 
 
-Definicja aplikacji logiki zostanie wyświetlona `resources` w podsekcji wewnątrz szablonu Menedżer zasobów. Teraz można edytować definicję aplikacji logiki i szablon Menedżer zasobów za pomocą programu Visual Studio. Możesz również dodać szablon jako projekt Azure Resource Manager do rozwiązania programu Visual Studio. Dowiedz się więcej [na temat Menedżer zasobów projektów dla usługi Logic Apps w programie Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md). 
+Definicja aplikacji logiki zostanie wyświetlona `resources` w podsekcji wewnątrz szablonu Menedżer zasobów. Teraz można edytować definicję aplikacji logiki i szablon Menedżer zasobów za pomocą programu Visual Studio. Możesz również dodać szablon jako [projekt grupy zasobów platformy Azure](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) do rozwiązania programu Visual Studio. Dowiedz się więcej o [projektach grup zasobów platformy Azure dla aplikacji logiki w programie Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md). 
+
+<a name="link-integration-account"></a>
+
+## <a name="link-to-integration-account"></a>Link do konta integracji
+
+Aby tworzyć aplikacje logiki dla scenariuszy integracji z przedsiębiorstwem B2B (Business-to-Business), możesz połączyć aplikację logiki z wcześniej utworzonym [kontem integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) , które istnieje w tym samym regionie, w którym znajduje się aplikacja logiki. Konto integracji zawiera artefakty B2B, takie jak partnerzy handlowi, umowy, schematy i mapy, a także umożliwia aplikacji logiki używanie łączników B2B do sprawdzania poprawności kodu XML i prostego kodowania plików lub dekodowania. Chociaż można [utworzyć ten link za pomocą Azure Portal](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account), można również użyć programu Visual Studio po spełnieniu [wymagań wstępnych](#requirements), a aplikacja LOGIKI istnieje jako plik JSON (JSON) w [projekcie grupy zasobów platformy Azure](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md). Dowiedz się więcej o [projektach grup zasobów platformy Azure dla aplikacji logiki w programie Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#create-resource-group-project).
+
+1. W programie Visual Studio Otwórz projekt grupy zasobów platformy Azure, który zawiera aplikację logiki.
+
+1. W Eksplorator rozwiązań otwórz menu skrótów **< logiki-App-name >. JSON** , a następnie wybierz polecenie **Otwórz za pomocą projektanta aplikacji logiki**. Klawiatury Ctrl+L)
+
+   ![Otwórz plik JSON aplikacji logiki przy użyciu projektanta aplikacji logiki](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
+
+   > [!TIP]
+   > Jeśli nie masz tego polecenia w programie Visual Studio 2019, sprawdź, czy masz najnowsze aktualizacje programu Visual Studio.
+
+1. Aby upewnić się, że projektant aplikacji logiki ma fokus, wybierz kartę lub powierzchnię projektanta, aby okienko właściwości pokazywało Właściwość **konta integracji** dla aplikacji logiki.
+
+   ![W okienku właściwości jest wyświetlana właściwość "konto integracji"](./media/manage-logic-apps-with-visual-studio/open-logic-app-properties.png)
+
+1. Otwórz listę **konto integracji** i wybierz konto integracji, które chcesz połączyć z aplikacją logiki, na przykład:
+
+   ![Otwórz listę właściwości "konto integracji"](./media/manage-logic-apps-with-visual-studio/select-integration-account.png)
+
+1. Gdy skończysz, pamiętaj, aby zapisać rozwiązanie programu Visual Studio.
+
+Po ustawieniu właściwości **konto integracji** w programie Visual Studio i zapisaniu aplikacji logiki jako szablonu Azure Resource Manager ten szablon zawiera również deklarację parametru dla wybranego konta integracji. Aby uzyskać więcej informacji na temat parametrów szablonu i usługi Logic [Apps, zobacz Omówienie: Automatyzowanie wdrażania](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)aplikacji logiki.
 
 <a name="refresh"></a>
 

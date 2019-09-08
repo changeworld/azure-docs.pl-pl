@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: bd8bbc28247ecd924db25cb4b916d1d466065606
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 77dc50df7b46aeb6ddfddf92710d576f85492471
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562871"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801546"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Oceń Custom Speech dokładność
 
@@ -51,11 +51,12 @@ Jeśli chcesz przetestować jakość modelu linii bazowej zamiany mowy na tekst 
 
 Aby oszacować modele obok siebie:
 
-1. Przejdź do **> funkcji zamiany mowy na tekst Custom Speech > testowanie**.
-2. Kliknij przycisk **Dodaj test**.
-3. Wybierz pozycję **Oceń dokładność**. Nadaj testowi nazwę, opis, a następnie wybierz swój audio + ludzki zestaw danych transkrypcji.
-4. Wybierz maksymalnie dwa modele, które chcesz przetestować.
-5. Kliknij przycisk **Utwórz**.
+1. Zaloguj się do [portalu Custom Speech](https://speech.microsoft.com/customspeech).
+2. Przejdź do **> funkcji zamiany mowy na tekst Custom Speech > testowanie**.
+3. Kliknij przycisk **Dodaj test**.
+4. Wybierz pozycję **Oceń dokładność**. Nadaj testowi nazwę, opis, a następnie wybierz swój audio + ludzki zestaw danych transkrypcji.
+5. Wybierz maksymalnie dwa modele, które chcesz przetestować.
+6. Kliknij przycisk **Utwórz**.
 
 Po pomyślnym utworzeniu testu można porównać wyniki obok siebie.
 
@@ -63,7 +64,7 @@ Po pomyślnym utworzeniu testu można porównać wyniki obok siebie.
 
 Po zakończeniu testu, wskazywanym przez zmianę stanu na *powodzenie*, można znaleźć numer funkcji Raportowanie błędów dla obu modeli uwzględnionych w teście. Kliknij nazwę testu, aby wyświetlić stronę szczegółów testowania. Ta strona szczegółów zawiera listę wszystkich wyrażenia długości w zestawie danych, wskazując wyniki rozpoznawania dwóch modeli obok transkrypcji z przesłanego zestawu danych. Aby pomóc w sprawdzeniu porównania obok siebie, można przełączać różne typy błędów, w tym Wstawianie, usuwanie i podstawianie. Nasłuchiwanie dźwięku i porównanie wyników rozpoznawania w każdej kolumnie, który pokazuje transkrypcję z etykietami ludzkimi i wyniki dla dwóch modeli zamiany mowy na tekst, można zdecydować, który model spełnia Twoje potrzeby i gdzie są dodatkowe szkolenia i ulepszenia. Wymagane.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Uczenie modelu](how-to-custom-speech-train-model.md)
 * [Wdrażanie modelu](how-to-custom-speech-deploy-model.md)

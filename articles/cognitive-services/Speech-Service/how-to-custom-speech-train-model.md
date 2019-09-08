@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b5893b4f07444b07bf142971a5df4776e549d307
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 21a0cd5e257f57a9371a30c6fe57afb88e174b53
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562814"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801463"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Uczenie modelu dla Custom Speech
 
@@ -37,13 +37,14 @@ Jeśli napotykasz problemy z rozpoznawaniem z modelem, używanie transkrypcji z 
 
 Pierwszym krokiem do uczenia modelu jest przekazanie danych szkoleniowych. Użyj opcji [Przygotuj i przetestuj dane](how-to-custom-speech-test-data.md) , aby uzyskać instrukcje krok po kroku w celu przygotowania oznakowania i powiązanego tekstu (wyrażenia długości i wymowy). Po przesłaniu danych szkoleniowych postępuj zgodnie z poniższymi instrukcjami, aby rozpocząć uczenie modelu:
 
-1. Przejdź do **> mowy Custom Speech > szkolenia**.
-2. Kliknij pozycję **uczenie modelu**.
-3. Następnie Nadaj swojemu szkoleniowi **nazwę** i **Opis**.
-4. Z menu rozwijanego **model scenariusza i linia bazowa** Wybierz scenariusz, który najlepiej pasuje do domeny. Jeśli nie masz pewności, który scenariusz wybrać, wybierz pozycję **Ogólne**. Model linii bazowej jest punktem początkowym szkolenia. Jeśli nie masz preferencji, możesz użyć najnowszej.
-5. Na stronie **Wybierz dane szkoleniowe** wybierz jeden lub wiele zestawów danych, które mają być używane do szkoleń.
-6. Po zakończeniu szkolenia możesz wybrać przeprowadzenie testowania dokładności dla nowo nauczonego modelu. Ten krok jest opcjonalny.
-7. Wybierz pozycję **Utwórz** , aby skompilować niestandardowy model.
+1. Zaloguj się do [portalu Custom Speech](https://speech.microsoft.com/customspeech).
+2. Przejdź do **> mowy Custom Speech > szkolenia**.
+3. Kliknij pozycję **uczenie modelu**.
+4. Następnie Nadaj swojemu szkoleniowi **nazwę** i **Opis**.
+5. Z menu rozwijanego **model scenariusza i linia bazowa** Wybierz scenariusz, który najlepiej pasuje do domeny. Jeśli nie masz pewności, który scenariusz wybrać, wybierz pozycję **Ogólne**. Model linii bazowej jest punktem początkowym szkolenia. Jeśli nie masz preferencji, możesz użyć najnowszej.
+6. Na stronie **Wybierz dane szkoleniowe** wybierz jeden lub wiele zestawów danych, które mają być używane do szkoleń.
+7. Po zakończeniu szkolenia możesz wybrać przeprowadzenie testowania dokładności dla nowo nauczonego modelu. Ten krok jest opcjonalny.
+8. Wybierz pozycję **Utwórz** , aby skompilować niestandardowy model.
 
 W tabeli szkoleń zostanie wyświetlony nowy wpis, który odnosi się do nowo utworzonego modelu. W tabeli jest również wyświetlany stan:  Przetwarzanie zakończone powodzeniem, zakończone niepowodzeniem.
 
@@ -57,7 +58,7 @@ Możesz sprawdzić dane i oszacować dokładność modeli przy użyciu tych doku
 
 Jeśli zdecydowano się na przetestowanie dokładności, ważne jest, aby wybrać akustyczny zestaw danych, który różni się od tego, który był używany z modelem w celu uzyskania realistycznego sensu wydajności modelu.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Wdrażanie modelu](how-to-custom-speech-deploy-model.md)
 

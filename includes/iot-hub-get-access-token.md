@@ -4,19 +4,19 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: b6ea8c7b3a6374572c8bd31e3c62b788efbafcbc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 7f7dc1483002c2bdfe3227a8aade8dbf2a8da417
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67183885"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70803010"
 ---
-## <a name="obtain-an-azure-resource-manager-token"></a>Uzyskiwanie tokenu usługi Azure Resource Manager
-Usługa Azure Active Directory musi uwierzytelniać wszystkie zadania, które wykonują zasobów przy użyciu usługi Azure Resource Manager. W poniższym przykładzie poniżej użyto uwierzytelniania hasła innych metod można znaleźć [żądań uwierzytelniania usługi Azure Resource Manager][lnk-authenticate-arm].
+## <a name="obtain-an-azure-resource-manager-token"></a>Uzyskaj token Azure Resource Manager
+Azure Active Directory musi uwierzytelnić wszystkie zadania wykonywane na zasobach przy użyciu Azure Resource Manager. W poniższym przykładzie jest stosowane uwierzytelnianie hasła dla innych metod zobacz [uwierzytelnianie Azure Resource Manager żądania][lnk-authenticate-arm].
 
-1. Dodaj następujący kod do **Main** metody w pliku Program.cs, aby pobrać token z usługi Azure AD przy użyciu identyfikatora aplikacji i hasła.
+1. Dodaj następujący kod do metody **Main** w programie program.cs, aby pobrać token z usługi Azure AD przy użyciu identyfikatora aplikacji i hasła.
    
-    ```
+    ```csharp
     var authContext = new AuthenticationContext(string.Format  
       ("https://login.microsoftonline.com/{0}", tenantId));
     var credential = new ClientCredential(applicationId, password);
@@ -29,16 +29,16 @@ Usługa Azure Active Directory musi uwierzytelniać wszystkie zadania, które wy
       return;
     }
     ```
-2. Tworzenie **ResourceManagementClient** obiekt, który używa tokenu, dodając następujący kod na końcu **Main** metody:
+2. Utwórz obiekt **ResourceManagementClient** , który używa tokenu, dodając następujący kod na końcu metody **Main** :
    
-    ```
+    ```csharp
     var creds = new TokenCredentials(token.AccessToken);
     var client = new ResourceManagementClient(creds);
     client.SubscriptionId = subscriptionId;
     ```
 3. Utwórz lub uzyskaj odwołanie do grupy zasobów, której używasz:
    
-    ```
+    ```csharp
     var rgResponse = client.ResourceGroups.CreateOrUpdate(rgName,
         new ResourceGroup("East US"));
     if (rgResponse.Properties.ProvisioningState != "Succeeded")

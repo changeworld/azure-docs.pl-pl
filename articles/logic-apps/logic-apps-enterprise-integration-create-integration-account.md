@@ -11,16 +11,16 @@ manager: carmonm
 ms.assetid: d3ad9e99-a9ee-477b-81bf-0881e11e632f
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 55843f9acaafa0c5963cfac735fdb92eeeacdc02
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: be0f534e6770cde561f18bfcb310524a7c506416
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982928"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801292"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-solutions-by-using-azure-logic-apps"></a>Tworzenie kont integracji dla rozwiązań B2B i zarządzanie nimi za pomocą Azure Logic Apps
 
-Przed rozpoczęciem tworzenia [rozwiązań integracji dla przedsiębiorstw i B2B](../logic-apps/logic-apps-enterprise-integration-overview.md) przy użyciu [Azure Logic Apps](../logic-apps/logic-apps-overview.md)należy utworzyć konto integracji, czyli osobny zasób platformy Azure, który zapewnia bezpieczny, skalowalny i zarządzany kontener dla artefakty integracji, które można definiować i korzystać z przepływów pracy aplikacji logiki.
+Zanim będzie możliwe utworzenie [rozwiązań integracji dla przedsiębiorstw i B2B](../logic-apps/logic-apps-enterprise-integration-overview.md) przy użyciu usługi [Azure Logic Apps](../logic-apps/logic-apps-overview.md), należy utworzyć konto integracji, czyli osobny zasób platformy Azure, który zapewnia bezpieczny, skalowalny i możliwy do zarządzania kontener na artefakty integracji, które są definiowane i używane z przepływami pracy aplikacji logiki.
 
 Można na przykład tworzyć, przechowywać i zarządzać artefaktami B2B, takimi jak partnerzy handlowi, umowy, mapy, schematy, certyfikaty i konfiguracje usługi Batch. Ponadto przed rozpoczęciem pracy aplikacji logiki z tymi artefaktami i użyciem łączników Logic Apps B2B należy [połączyć konto integracji](#link-account) z aplikacją logiki. Zarówno konto integracji, jak i aplikacja logiki muszą znajdować się w *tej samej* lokalizacji lub regionie.
 
@@ -80,7 +80,7 @@ W przypadku tego zadania można użyć Azure Portal, wykonując kroki opisane w 
 
 ## <a name="link-to-logic-app"></a>Link do aplikacji logiki
 
-Aby umożliwić aplikacjom logiki dostęp do konta integracji zawierającego artefakty B2B, musisz najpierw połączyć konto integracji z aplikacją logiki. Zarówno aplikacja logiki, jak i konto integracji muszą znajdować się w tym samym regionie. W przypadku tego zadania można użyć Azure Portal, wykonując kroki opisane w tej sekcji.
+Aby umożliwić aplikacjom logiki dostęp do konta integracji zawierającego artefakty B2B, musisz najpierw połączyć konto integracji z aplikacją logiki. Zarówno aplikacja logiki, jak i konto integracji muszą znajdować się w tym samym regionie. Aby wykonać to zadanie, można użyć Azure Portal. Jeśli używasz programu Visual Studio, a aplikacja logiki znajduje się w [projekcie grupy zasobów platformy Azure](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md), możesz [połączyć aplikację logiki z kontem integracji przy użyciu programu Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md#link-integration-account).
 
 1. W Azure Portal Znajdź i Otwórz aplikację logiki.
 

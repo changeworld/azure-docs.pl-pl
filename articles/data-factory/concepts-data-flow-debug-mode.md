@@ -6,13 +6,13 @@ ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 10/04/2018
-ms.openlocfilehash: 71e08f00600bebcc21eba32d991353c9bcaeaa97
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.date: 09/06/2019
+ms.openlocfilehash: 7d1023f6c46c15b6f982193350923f5c91cdc4b9
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991925"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801706"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapowanie trybu debugowania przepływu danych
 
@@ -20,16 +20,17 @@ ms.locfileid: "69991925"
 
 ## <a name="overview"></a>Omówienie
 
-Tryb debugowania przepływu danych mapowania Azure Data Factory można włączyć przy użyciu przycisku "Debugowanie przepływu danych" w górnej części powierzchni projektowej. Podczas projektowania przepływów danych włączenie trybu debugowania pozwala interaktywnie obejrzeć transformację kształtu danych podczas kompilowania i debugowania przepływów danych. Sesja debugowania może być używana zarówno w sesjach projektu przepływu danych, jak i podczas wykonywania debugowania przez potok przepływów danych.
+Tryb debugowania Azure Data Factory mapowania przepływu danych pozwala interaktywnie monitorować transformację kształtu danych podczas kompilowania i debugowania przepływów danych. Sesja debugowania może być używana zarówno w sesjach projektu przepływu danych, jak i podczas wykonywania debugowania przez potok przepływów danych. Aby włączyć tryb debugowania, użyj przycisku "Debugowanie przepływu danych" w górnej części powierzchni projektowej.
 
-![Przycisk Debuguj](media/data-flow/debugbutton.png "Przycisk Debuguj")
+![Suwak debugowania](media/data-flow/debugbutton.png "Suwak debugowania")
+
+Po włączeniu suwaka zostanie wyświetlony monit z pytaniem o wybór konfiguracji środowiska Integration Runtime, która ma być używana. Jeśli wybrano AutoResolveIntegrationRuntime, klaster zawierający osiem rdzeni obliczeń ogólnych z 60-minutowym czasem na żywo zostanie przypadany. Aby uzyskać więcej informacji na temat środowisk integracji przepływu danych, zobacz [wydajność przepływu danych](concepts-data-flow-performance.md#increase-size-of-your-compute-engine-in-azure-integration-runtime).
+
+![Debuguj wybór IR](media/data-flow/debugbutton2.png "Debuguj wybór IR")
 
 Gdy tryb debugowania jest włączony, będziesz interaktywnie kompilować przepływ danych przy użyciu aktywnego klastra Spark. Sesja zostanie zamknięta po wyłączeniu debugowania w Azure Data Factory. Należy zwrócić uwagę na opłaty godzinowe naliczane przez Azure Databricks w czasie, gdy sesja debugowania jest włączona.
 
 W większości przypadków dobrym sposobem jest skompilowanie przepływów danych w trybie debugowania, aby można było zweryfikować logikę biznesową i wyświetlić przekształcenia danych przed opublikowaniem pracy w Azure Data Factory. Użyj przycisku "Debuguj" w panelu potoku, aby przetestować przepływ danych w potoku.
-
-> [!NOTE]
-> Gdy lampa trybu debugowania jest zielona na pasku narzędzi Data Factory, opłata zostanie naliczona za szybkość debugowania przepływu danych wynoszącą 8 rdzeni/HR obliczeń ogólnych, a 60 minut czasu wygaśnięcia 
 
 ## <a name="cluster-status"></a>Stan klastra
 
@@ -81,7 +82,7 @@ Po wybraniu modyfikacji Podgląd danych zostanie natychmiast odświeżony. Klikn
 
 ### <a name="data-profiling"></a>Profilowanie danych
 
-Po wybraniu kolumn na karcie Podgląd danych i kliknięciu pozycji **statystyki** na pasku narzędzi Podgląd danych zostanie wyświetlona tabela z prawej strony siatki danych z szczegółowymi statystykami dotyczącymi każdego pola. Azure Data Factory wykona Określanie na podstawie próbkowania danych, którego wykres ma być wyświetlany. Pola o dużej kardynalności będą domyślnie mieć wartości NULL/NOT NULL, podczas gdy kategorii i dane liczbowe o niskiej kardynalności będą wyświetlać wykresy słupkowe pokazujące częstotliwość wartości danych. Zobaczysz również maksymalną/len długość pól ciągów, minimalną/maksymalną wartość w polach liczbowych, standardowe dev, percentyly, liczniki i średnie.
+Wybranie kolumny na karcie Podgląd danych i kliknięcie pozycji **statystyki** na pasku narzędzi Podgląd danych spowoduje wyczyszczenie wykresu z prawej strony siatki danych z szczegółowymi statystykami dotyczącymi każdego pola. Azure Data Factory wykona Określanie na podstawie próbkowania danych, którego wykres ma być wyświetlany. Pola o dużej kardynalności będą domyślnie mieć wartości NULL/NOT NULL, podczas gdy kategorii i dane liczbowe o niskiej kardynalności będą wyświetlać wykresy słupkowe pokazujące częstotliwość wartości danych. Zobaczysz również maksymalną/len długość pól ciągów, minimalną/maksymalną wartość w polach liczbowych, standardowe dev, percentyly, liczniki i średnie.
 
 ![Statystyki kolumn](media/data-flow/stats.png "Statystyki kolumn")
 
