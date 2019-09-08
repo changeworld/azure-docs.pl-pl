@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 8524a315228601adbb30a5def383f7b54a8f1495
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: f021ac0a7c9c46592f7969dd0df10f76aec88cb7
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70076110"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773219"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Opcja współsprzedawana w centrum partnerskim
 
@@ -47,10 +47,10 @@ Obszary rozwiązań ułatwiają Definiowanie scenariuszy, w których oferta zost
 
 | **Secret**    | **Opis**  |
 | :------------------- | :-------------------|
-| *Klient z jednym modułem stronicowania* | Gotowy do użycia opis oferty przez klienta. Zespoły sprzedaży firmy Microsoft mogą współdzielić te informacje z klientami, aby pomóc w ustaleniu, czy oferta może być dobrze dopasowana, i upewnić się, że jest ona gotowa dla klienta. <br> <br> Użyj jednego z poniższych szablonów: <br> <ul> <li> [Microsoft Azure szablon z jednym modułem stronicowania](https://aka.ms/Customer-One-Pager_MicrosoftAzure) </li> <li> [Microsoft Dynamics 365 1 — szablon modułu stronicowania](https://aka.ms/Customer-One-Pager_MicrosoftDynamics365) </li> <li> [Office 365 1 — szablon modułu stronicowania](https://aka.ms/Customer-One-Pager_MicrosoftOffice365) </li> <li> [Windows 10 1 — szablon modułu stronicowania](https://aka.ms/Customer-One-Pager_Windows) </li> </ul>
+| *Klient z jednym modułem stronicowania* | Gotowy do użycia opis oferty przez klienta. Zespoły sprzedaży firmy Microsoft mogą współdzielić te informacje z klientami, aby pomóc w ustaleniu, czy oferta może być dobrze dopasowana, i upewnić się, że jest ona gotowa dla klienta. <br> <br> Użyj jednego z odpowiednich szablonów dostępnych w centrum partnerskim: <br> <ul> <li> Microsoft Azure szablon z jednym modułem stronicowania </li> <li> Microsoft Dynamics 365 1 — szablon modułu stronicowania </li> <li> Office 365 1 — szablon modułu stronicowania </li> <li> Windows 10 1 — szablon modułu stronicowania </li> </ul>
  |
-| *Prezentacja klienta* | Przesuń na talię swoje rozwiązanie i jego wartość. Po upewnieniu się, że oferta jest gotowa dla klienta, zespoły sprzedaży firmy Microsoft mogą udostępniać prezentację klientom, aby ideach wartość, którą obie firmy przyniosły podczas wdrażania wspólnego rozwiązania. Prezentacja powinna obejmować to, co to jest rozwiązanie, w jaki sposób może pomóc klientom, co to jest rozwiązanie, a także w porównaniu z rozwiązaniami konkurującymi. <br> <br> Aby uzyskać więcej informacji, zobacz [szablon prezentacji klienta](https://aka.ms/GTMServices_CustomerPresentation).|
-| *Analiza przypadku klienta* | Te informacje pokazują potencjalnego klienta, w przypadku których firma Microsoft pomyślnie wdrożyła to rozwiązanie we wcześniejszych przypadkach. <br> <br> Aby uzyskać więcej informacji, zobacz [szablon analizy przypadku](https://aka.ms/GTM_Case_Study_Template). |
+| *Prezentacja klienta* | Przesuń na talię swoje rozwiązanie i jego wartość. Po upewnieniu się, że oferta jest gotowa dla klienta, zespoły sprzedaży firmy Microsoft mogą udostępniać prezentację klientom, aby ideach wartość, którą obie firmy przyniosły podczas wdrażania wspólnego rozwiązania. Prezentacja powinna obejmować to, co to jest rozwiązanie, w jaki sposób może pomóc klientom, co to jest rozwiązanie, a także w porównaniu z rozwiązaniami konkurującymi. <br> <br> Użyj szablonu dostępnego w centrum partnerskim.|
+| *Analiza przypadku klienta* | Te informacje pokazują potencjalnego klienta, w przypadku których firma Microsoft pomyślnie wdrożyła to rozwiązanie we wcześniejszych przypadkach. <br> <br> Użyj szablonu dostępnego w centrum partnerskim. |
 | *Zweryfikowanie klienta WINS (opcjonalnie)* | Określone przykłady sukcesu klientów po wdrożeniu rozwiązania. |
 | *Talia kanału (opcjonalnie)* | Slajd zawierający informacje ułatwiające odsprzedawców kanałów Dowiedz się więcej o Twoim rozwiązaniu i przygotuj zespoły sprzedaży do sprzedaży oferty. Zwykle zawiera ona szerokość windy, informacje na temat klientów docelowych, pytania dotyczące poproszenia klientów, punkty rozmowy i linki do filmów wideo, dokumentacji i pomocy technicznej. |
 | *Diagramy architektury referencyjnej* | Dokument przedstawiający model, który reprezentuje adres IP utworzony przez partnera, wraz z jego relacją z usługami w chmurze firmy Microsoft oraz jak spełnia wymagania techniczne dla współsprzedawanego programu IP. |

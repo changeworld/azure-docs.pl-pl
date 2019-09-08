@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: defc317618dfffd0e2b28c75b6168ec1dbda36b7
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
-ms.translationtype: HT
+ms.openlocfilehash: 3ac6ec9fe55e901e593f201b5ff71668d80d66e3
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735124"
+ms.locfileid: "70773012"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Przegląd alertów w Microsoft Azure 
 
@@ -53,7 +53,11 @@ Sygnały **sygnałów są** emitowane przez zasób docelowy i mogą być różne
 **Opis alertu** — opis reguły alertu skonfigurowanej przez użytkownika
 
 **Ważność** — ważność alertu po spełnieniu kryteriów określonych w regule alertu. Ważność może być z zakresu od 0 do 4.
-Ważność 0 = krytyczny ważność 1 = błąd ważność 2 = ostrzeżenie ważność 3 = informacyjny ważność 4 = verbose
+   - Ważność 0 = krytyczny
+   - Ważność 1 = błąd
+   - Ważność 2 = ostrzeżenie
+   - Ważność 3 = informacyjny
+   - Ważność 4 = pełne 
 
 **Akcja** — określona Akcja podejmowana po wyzwoleniu alertu. Aby uzyskać więcej informacji, zobacz [grupy akcji](../../azure-monitor/platform/action-groups.md).
 

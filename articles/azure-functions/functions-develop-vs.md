@@ -8,12 +8,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 10c356afc235494b00777561259190ae78b65482
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: ebc900735dfbb25206c4b22e3d20da62d85c61df
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905678"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773159"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Opracowywanie Azure Functions przy użyciu programu Visual Studio  
 
@@ -41,6 +41,8 @@ Inne zasoby, które są potrzebne, takie jak konto usługi Azure Storage, są tw
 
 > [!NOTE]
 > W programie Visual Studio 2017 obciążenie Programowanie na platformie Azure instaluje Azure Functions narzędzia jako oddzielne rozszerzenie. Podczas aktualizowania programu Visual Studio 2017 upewnij się również, że używasz najnowszej [wersji](#check-your-tools-version) narzędzi Azure Functions. W poniższych sekcjach pokazano, jak sprawdzić i (w razie potrzeby) zaktualizować rozszerzenie narzędzi Azure Functions w programie Visual Studio 2017. 
+>
+> Pomiń tę sekcję w przypadku korzystania z programu Visual Studio 2019.
 
 ### <a name="check-your-tools-version"></a>Sprawdź wersję narzędzi w programie Visual Studio 2017
 
@@ -84,7 +86,7 @@ Aby uzyskać więcej informacji, zobacz [Functions Library Project](functions-do
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-Ustawienia w pliku Local. Settings. JSON nie są przekazywane automatycznie podczas publikowania projektu. Aby upewnić się, że te ustawienia istnieją także w aplikacji funkcji na platformie Azure, należy je przekazać po opublikowaniu projektu. Aby dowiedzieć się więcej, zobacz [Funkcja ustawienia aplikacji](#function-app-settings).
+Ustawienia w pliku Local. Settings. JSON nie są przekazywane automatycznie przy publikowaniu projektu. Aby upewnić się, że te ustawienia istnieją także w aplikacji funkcji na platformie Azure, należy je przekazać po opublikowaniu projektu. Aby dowiedzieć się więcej, zobacz [Funkcja ustawienia aplikacji](#function-app-settings).
 
 Wartości w **connectionStrings** nigdy nie są publikowane.
 
@@ -92,7 +94,7 @@ Wartości ustawień aplikacji funkcji można także odczytać w kodzie jako zmie
 
 ## <a name="configure-the-project-for-local-development"></a>Konfigurowanie projektu na potrzeby lokalnego projektowania
 
-Środowisko uruchomieniowe funkcji używa wewnętrznego konta usługi Azure Storage. Dla wszystkich typów wyzwalaczy innych niż HTTP i webhook, należy ustawić wartość **. AzureWebJobsStorage** klucza jako prawidłowe parametry połączenia konta usługi Azure Storage. Aplikacja funkcji może również użyć emulatora [usługi Azure Storage](../storage/common/storage-use-emulator.md) dla ustawienia połączenia **AzureWebJobsStorage** , które jest wymagane przez projekt. Aby użyć emulatora, ustaw wartość **AzureWebJobsStorage** na `UseDevelopmentStorage=true`. Zmień to ustawienie na rzeczywiste parametry połączenia konta magazynu przed wdrożeniem.
+Środowisko uruchomieniowe funkcji używa wewnętrznego konta usługi Azure Storage. Dla wszystkich typów wyzwalaczy innych niż HTTP i webhook, należy ustawić wartość **. AzureWebJobsStorage** klucza jako prawidłowe parametry połączenia konta usługi Azure Storage. Aplikacja funkcji może również użyć [emulatora usługi Azure Storage](../storage/common/storage-use-emulator.md) dla ustawienia połączenia **AzureWebJobsStorage** , które jest wymagane przez projekt. Aby użyć emulatora, ustaw wartość **AzureWebJobsStorage** na `UseDevelopmentStorage=true`. Zmień to ustawienie na rzeczywiste parametry połączenia konta magazynu przed wdrożeniem.
 
 Aby ustawić parametry połączenia konta magazynu:
 
@@ -199,7 +201,7 @@ Wykonaj następujące kroki, aby opublikować projekt w aplikacji funkcji na pla
 
 ## <a name="function-app-settings"></a>Ustawienia aplikacji funkcji
 
-Wszystkie ustawienia dodane w pliku Local. Settings. JSON należy również dodać do aplikacji funkcji na platformie Azure. Te ustawienia nie są przekazywane automatycznie po opublikowaniu projektu.
+Wszystkie ustawienia dodane w pliku Local. Settings. JSON należy również dodać do aplikacji funkcji na platformie Azure. Te ustawienia nie są przekazywane automatycznie przy publikowaniu projektu.
 
 Najprostszym sposobem przekazania wymaganych ustawień do aplikacji funkcji na platformie Azure jest użycie linku **Zarządzaj ustawieniami aplikacji...** , który jest wyświetlany po pomyślnym opublikowaniu projektu.
 

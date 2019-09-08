@@ -1,18 +1,27 @@
 ---
-ms.openlocfilehash: fe9879f9574fe1496ebdf20ac76fe5b759d4ea6a
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+title: Repozytoria kontenerów i obrazy
+services: cognitive-services
+author: IEvangelist
+manager: nitinme
+description: Dwie tabele przedstawiające rejestry kontenerów, repozytoria i nazwy obrazów dla wszystkich ofert usług poznawczych.
+ms.service: cognitive-services
+ms.topic: include
+ms.date: 09/06/2019
+ms.author: dapine
+ms.openlocfilehash: 600c01fc2a273141b06996369231c2389c5d6d57
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051240"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70775882"
 ---
 ### <a name="container-repositories-and-images"></a>Repozytoria kontenerów i obrazy
 
 Poniższe tabele stanowią obszerną listę dostępnych obrazów kontenerów oferowanych przez usługę Azure Cognitive Services.
 
-#### <a name="public-container-registry-mcrmicrosoftcom"></a>Public (rejestr kontenerów `mcr.microsoft.com`:)
+#### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Public "ungated" (rejestr kontenerów `mcr.microsoft.com`:)
 
-W Container Registry firmy Microsoft są hostowane wszystkie kontenery ogólnego udostępnienia Cognitive Services.
+Firma Microsoft Container Registry obsługuje wszystkie publicznie dostępne kontenery "niebrama" dla Cognitive Services.
 
 | Usługa | Kontener | Container Registry/repozytorium/nazwa obrazu |
 |--|--|--|
@@ -21,9 +30,9 @@ W Container Registry firmy Microsoft są hostowane wszystkie kontenery ogólnego
 | [Analiza tekstu](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Wykrywanie języka | `mcr.microsoft.com/azure-cognitive-services/language` |
 | [Analiza tekstu](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Analiza tonacji | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
 
-#### <a name="public-preview-container-registry-containerpreviewazurecrio"></a>Publiczna wersja zapoznawcza `containerpreview.azurecr.io`(rejestr kontenerów:)
+#### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Public "Gated" (wersja zapoznawcza `containerpreview.azurecr.io`) (rejestr kontenerów:)
 
-Rejestr w wersji zapoznawczej kontenera zawiera wszystkie kontenery "publiczna wersja zapoznawcza" dla Cognitive Services, które nie były jeszcze ogólnie dostępne. Te kontenery wymagają formalnego żądania dostępu w celu ich użycia.
+Rejestr w wersji zapoznawczej kontenera zawiera wszystkie publicznie dostępne kontenery "Gated" Cognitive Services. Te kontenery wymagają formalnego żądania dostępu w celu ich użycia.
 
 | Usługa | Kontener | Container Registry/repozytorium/nazwa obrazu |
 |--|--|--|

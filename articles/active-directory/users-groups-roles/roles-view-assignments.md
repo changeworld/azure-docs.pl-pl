@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e21bd2b20ac48d3719e41b1e93a82cbe5a864b7
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 923c828a3d7e9e10d79fcf079839b84c2f0e0f77
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382561"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772382"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Wyświetlanie przypisań ról niestandardowych w Azure Active Directory
 
@@ -100,9 +100,9 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="view-assignments-of-a-role-with-single-application-scope-preview"></a>Wyświetlanie przypisań roli z zakresem pojedynczej aplikacji (wersja zapoznawcza)
+## <a name="view-assignments-of-single-application-scope"></a>Wyświetlanie przypisań zakresu pojedynczej aplikacji
 
-W tej sekcji opisano Wyświetlanie przypisań roli z zakresem pojedynczej aplikacji.
+W tej sekcji opisano Wyświetlanie przypisań roli z zakresem pojedynczej aplikacji. Ta funkcja jest obecnie w publicznej wersji zapoznawczej.
 
 1. Zaloguj się do  [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com)przy użyciu uprawnień administrator ról uprzywilejowanych lub Administrator globalny w organizacji usługi Azure AD.
 1. Wybierz pozycję **rejestracje aplikacji**, a następnie wybierz pozycję Rejestracja aplikacji, aby wyświetlić jej właściwości. Może być konieczne wybranie opcji **wszystkie aplikacje** , aby wyświetlić pełną listę rejestracji aplikacji w organizacji usługi Azure AD.

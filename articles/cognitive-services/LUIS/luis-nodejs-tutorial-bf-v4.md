@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: 63a0717e615ff85dbc5cfc06567f83cb9aa83a30
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
-ms.translationtype: HT
+ms.openlocfilehash: 8f0438ab015f9d16fd3776421b8d0032fc0a0639
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735011"
+ms.locfileid: "70772899"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Samouczek: Korzystanie z bot aplikacji sieci Web z włączonym Language Understanding w języku Node. js 
 
@@ -101,7 +101,7 @@ Aby tworzyć kod bota aplikacji internetowej, pobierz kod i użyj go na komputer
 
     [![Pobieranie kodu źródłowego bota aplikacji internetowej dla bota podstawowego](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
-1. Po wyświetleniu okna dialogowego z monitem o **uwzględnienie ustawień aplikacji w pobranym pliku zip**wybierz pozycję **tak**.
+1. Po wyświetleniu okna dialogowego z monitem o **uwzględnienie ustawień aplikacji w pobranym pliku zip**wybierz pozycję **tak**. Zapewnia to ustawienia LUIS. 
 
 1. Po spakowaniu kodu źródłowego w komunikacie zostanie podany hiperlink umożliwiający pobranie kodu. Wybierz hiperlink. 
 
@@ -134,6 +134,13 @@ Aby tworzyć kod bota aplikacji internetowej, pobierz kod i użyj go na komputer
 
     ````javascript
     class MainDialog extends ComponentDialog {
+
+        constructor(luisRecognizer, bookingDialog) {
+            ...
+            this.luisRecognizer = luisRecognizer;
+            ...
+        }
+
 
         ...
 
@@ -185,40 +192,6 @@ Aby tworzyć kod bota aplikacji internetowej, pobierz kod i użyj go na komputer
 
     }
     ````
-
-
-## <a name="install-dependencies-and-start-the-bot-code-in-visual-studio"></a>Zainstaluj zależności i uruchom kod bot w programie Visual Studio
-
-1. W programu vscode, z terminalu zintegrowanego, Zainstaluj zależności za pomocą polecenia `npm install`.
-1. Również z poziomu terminalu zintegrowanego, uruchom bot za pomocą polecenia `npm start`. Spowoduje to rozpoczęcie aplikacji sieci Web dla bot za pomocą punktu końcowego HTTP. Konsola programu udostępnia adres URL i numer portu, aby uzyskać dostęp do uruchomionej witryny sieci Web. Numer portu jest wymagany w następnej sekcji tego samouczka.
-
-    ```console
-    > core-bot@1.0.0 start C:\Users\diberry\repos\bots\2019-bot-nodejs-basic
-    > node ./index.js
-    
-    
-    restify listening to http://[::]:3978
-    
-    Get Bot Framework Emulator: https://aka.ms/botframework-emulator
-    ```
-
-## <a name="create-an-environment-file-and-add-luis-values"></a>Utwórz plik środowiska i Dodaj wartości LUIS
-
-Emulator bot potrzebuje dostępu do zasobu LUIS w celu zapewnienia szczegółowych wyników LUIS.
-
-1. W katalogu głównym projektu Utwórz plik o nazwie `.env` i Dodaj następujące zmienne środowiskowe:
-
-    ```console
-    LuisAppId= 
-    LuisAPIKey=
-    LuisAPIHostName=
-    ```
-
-1. W Azure Portal dla zasobu bot Otwórz ustawienia konfiguracji App Service dla aplikacji.
-1. Otwórz pozycję **Edycja zaawansowana**, aby wyświetlić wartość dla każdego ustawienia.
-
-    ![Otwórz * * Advanced Edit * *, aby wyświetlić wartość dla każdego ustawienia.](./media/bfv4-nodejs/environment-settings-for-luis-app.png)
-
 <a name="ask-bot-a-question-for-the-book-flight-intent"></a>
 
 ## <a name="use-the-bot-emulator-to-test-the-bot"></a>Testowanie bot przy użyciu emulatora bot
@@ -227,6 +200,7 @@ Zażądaj bot pytania dotyczącego zamiaru lotów w ramach książki.
 
 1. Rozpocznij emulator bot i wybierz pozycję **Otwórz bot**.
 1. W wyskakującym okienku Otwórz okno dialogowe **bot** wprowadź adres URL bot, taki jak `http://localhost:3978/api/messages`. `/api/messages` Trasa jest adresem sieci Web dla bot.
+1. Wprowadź **Identyfikator aplikacji firmy Microsoft** i **hasło aplikacji firmy**Microsoft, które znajdują się w pliku **ENV** w katalogu głównym pobranego kodu bot.
 
 1. W emulatorze bot wprowadź `Book a flight from Seattle to Berlin tomorrow` i uzyskaj taką samą odpowiedź dla podstawowego bot, jak w przypadku **testu w rozmowie w sieci Web**.
 

@@ -15,12 +15,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: victorh
-ms.openlocfilehash: 1a62a4d5f06856ca0fe6356ca388047679097e3f
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: ccc418cd3af14c0468ab8d669ad2e2e11a0b6d57
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68004469"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772269"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Przegląd stref i rekordów DNS
 
@@ -30,7 +30,7 @@ Na tej stronie objaśniono kluczowe pojęcia dotyczące domen, stref DNS i rekor
 
 System nazw domen (DNS, Domain Name System) jest hierarchią domen. Hierarchia rozpoczyna się od domeny głównej, której nazwa to po prostu „ **.** ”.  Poniżej są domeny najwyższego poziomu, takie jak „com”, „net”, „org”, „uk” lub „jp”.  Pod nimi są domeny drugiego poziomu, takie jak „org.uk” lub „co.jp”. Domeny w hierarchii DNS są dystrybuowane globalnie, hostowane przez serwery nazw DNS na całym świecie.
 
-Rejestrator nazw domen to organizacja, która umożliwia zakupienie nazwy domeny, takiej jak "contoso.com".  Zakup nazwy domeny daje prawo do kontrolowania hierarchii DNS pod tą nazwą, na przykład w celu skierowania nazwy "www.contoso.com" do firmowej witryny sieci Web. Rejestrator może hostować domenę we własnych serwerach nazw w Twoim imieniu lub zezwolić na Określanie alternatywnych serwerów nazw.
+Rejestrator nazw domen to organizacja, która umożliwia zakupienie nazwy domeny, takiej jak "contoso.com".  Zakup nazwy domeny daje prawo do kontrolowania hierarchii DNS pod tą nazwą, na przykład w celu skierowania nazwy www.contoso.com do firmowej witryny sieci Web. Rejestrator może hostować domenę we własnych serwerach nazw w Twoim imieniu lub zezwolić na Określanie alternatywnych serwerów nazw.
 
 Azure DNS oferuje globalnie dystrybuowaną infrastrukturę serwera nazw o wysokiej dostępności, której można używać do hostowania domeny. Hosting domen w Azure DNS umożliwia zarządzanie rekordami DNS przy użyciu tych samych poświadczeń, interfejsów API, narzędzi, rozliczeń i pomocy technicznej co w przypadku innych usług platformy Azure.
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: swmachan
-ms.openlocfilehash: ad619ad965cf4b7d94b781818c658152f71250a7
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: cb5a3b8572cebfd6c0731a9e572e966fda280be6
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595005"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772784"
 ---
 # <a name="translator-text-api-v30"></a>Interfejs API tłumaczenia tekstu w usłudze Translator v 3.0
 
@@ -99,7 +99,7 @@ W przypadku korzystania z wielousługowego klucza tajnego należy dołączyć dw
 
 Region jest wymagany w przypadku subskrypcji wielousługowego interfejsu API tekstu. Wybrany region jest jedynym regionem, którego można użyć do tłumaczenia tekstu przy użyciu klucza subskrypcji wielousługowej i musi być tym samym regionem wybranym podczas rejestrowania się w ramach subskrypcji wielousługowej za pośrednictwem Azure Portal.
 
-Dostępne regiony to `australiaeast`, `brazilsouth` `canadacentral` ,`centraluseuap` ,,`eastus2`,, ,`japaneast`,,,, ,`southeastasia` `eastus` `centralindia` `eastasia` `northeurope` `southcentralus` `uksouth`, ,`westcentralus` ,i`westus2`. `westeurope` `westus`
+Dostępne regiony to `australiaeast`, `brazilsouth` `canadacentral` ,`centralus` ,,`eastus`,, ,`eastus2`,,,, ,`japanwest` `eastasia` `centralindia` `centraluseuap` `francecentral` `japaneast` `koreacentral`, `northcentralus` ,`westcentralus`,,,,, ,,i`southafricanorth`. `northeurope` `southcentralus` `westeurope` `westus` `southeastasia` `uksouth` `westus2`
 
 Jeśli przekażesz klucz tajny w ciągu zapytania za pomocą parametru `Subscription-Key`, należy określić region z parametrem `Subscription-Region`zapytania.
 

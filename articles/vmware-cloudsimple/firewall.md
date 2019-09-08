@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c56d469360814cb663b4c5c11689961225eebb2d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 798f95281740213ac23892eb3b54ff780ca18395
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544671"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772340"
 ---
 # <a name="set-up-firewall-tables-and-rules-for-private-clouds"></a>Konfigurowanie tabel i reguł zapory dla chmur prywatnych
 
@@ -24,7 +24,7 @@ Tabele zapory i skojarzone reguły pozwalają określić ograniczenia dotyczące
 
 ## <a name="add-a-new-firewall-table"></a>Dodaj nową tabelę zapory
 
-1. [Uzyskaj dostęp do portalu CloudSimple](monitor-activity.md) i wybierz pozycję **Sieć** w menu po stronie.
+1. [Uzyskaj dostęp do portalu CloudSimple](access-cloudsimple-portal.md) i wybierz pozycję **Sieć** w menu po stronie.
 2. Wybierz pozycję **tabele zapory**.
 3. Wybierz pozycję **Utwórz tabelę zapory**.
 

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 618f118ceedb7d55caefc5e2bebceb08c1d732ac
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: fa1aa8c560f4b9cc48c7a6a761abe4d69d5d0265
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018183"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773170"
 ---
 # <a name="control-access-to-iot-hub"></a>Kontrola dostępu do centrum IoT Hub
 
@@ -40,7 +40,7 @@ Musisz mieć odpowiednie uprawnienia, aby uzyskać dostęp do dowolnych punktów
   | Zasady dostępu współużytkowanego | Uprawnienia |
   | -------------------- | ----------- |
   | iothubowner | Wszystkie uprawnienia |
-  | usługa | Uprawnienia serviceconnect |
+  | usługa | Uprawnienia **Serviceconnect** |
   | urządzenie | Uprawnienia **DeviceConnect** |
   | registryRead | Uprawnienia **RegistryRead** |
   | registryReadWrite | Uprawnienia **RegistryRead** i **RegistryWrite** |
@@ -238,7 +238,7 @@ public static string generateSasToken(string resourceUri, string key, string pol
 
 ### <a name="use-sas-tokens-in-a-device-app"></a>Używanie tokenów SAS w aplikacji urządzenia
 
-Istnieją dwa sposoby uzyskania uprawnień **DeviceConnect** IoT Hub za pomocą tokenów zabezpieczających: Użyj [klucza urządzenia symetrycznego z rejestru tożsamości](#use-a-symmetric-key-in-the-identity-registry)lub Użyj [klucza dostępu](#use-a-shared-access-policy)współdzielonego.
+Istnieją dwa sposoby uzyskania uprawnień **DeviceConnect** IoT Hub za pomocą tokenów zabezpieczających: Użyj [klucza urządzenia symetrycznego z rejestru tożsamości](#use-a-symmetric-key-in-the-identity-registry)lub Użyj [klucza dostępu współdzielonego](#use-a-shared-access-policy).
 
 Należy pamiętać, że wszystkie funkcje dostępne na urządzeniach są udostępniane przez projektowanie w punktach końcowych z prefiksem `/devices/{deviceId}`.
 
@@ -363,7 +363,7 @@ Aby uzyskać więcej informacji na temat uwierzytelniania przy użyciu urzędu c
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>Rejestrowanie certyfikatu X. 509 dla urządzenia
 
-[Zestaw SDK usługi Azure IoT dla C# programu](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/service) (wersja 1.0.8 +) obsługuje rejestrowanie urządzenia, które używa certyfikatu X. 509 na potrzeby uwierzytelniania. Inne interfejsy API, takie jak Import/Export urządzeń, obsługują również certyfikaty X. 509.
+[Zestaw SDK usługi Azure IoT dla C# programu](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) (wersja 1.0.8 +) obsługuje rejestrowanie urządzenia, które używa certyfikatu X. 509 na potrzeby uwierzytelniania. Inne interfejsy API, takie jak Import/Export urządzeń, obsługują również certyfikaty X. 509.
 
 Aby skonfigurować certyfikaty X. 509 dla urządzeń, można również użyć polecenia rozszerzenia interfejsu wiersza poleceń [AZ IoT Hub Device-Identity](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) .
 
@@ -390,7 +390,7 @@ await registryManager.AddDeviceAsync(device);
 
 ### <a name="use-an-x509-certificate-during-run-time-operations"></a>Używanie certyfikatu X. 509 podczas operacji w czasie wykonywania
 
-[Zestaw SDK urządzeń Azure IoT dla platformy .NET](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device) (wersja 1.0.11 +) obsługuje używanie certyfikatów X. 509.
+[Zestaw SDK urządzeń Azure IoT dla platformy .NET](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device) (wersja 1.0.11 +) obsługuje używanie certyfikatów X. 509.
 
 ### <a name="c-support"></a>Obsługa\# języka C
 
@@ -406,9 +406,9 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 ## <a name="custom-device-and-module-authentication"></a>Niestandardowe uwierzytelnianie urządzenia i modułu
 
-Za pomocą [rejestru tożsamości](iot-hub-devguide-identity-registry.md) IoT Hub można skonfigurować poświadczenia zabezpieczeń poszczególnych urządzeń/modułów oraz kontrolę dostępu przy użyciu tokenów [](iot-hub-devguide-security.md#security-tokens). Jeśli rozwiązanie IoT ma już niestandardowy rejestr tożsamości i/lub schemat uwierzytelniania, rozważ utworzenie *usługi tokenu* umożliwiającej integrację tej infrastruktury z IoT Hub. W ten sposób można używać innych funkcji IoT w rozwiązaniu.
+Za pomocą [rejestru tożsamości](iot-hub-devguide-identity-registry.md) IoT Hub można skonfigurować poświadczenia zabezpieczeń poszczególnych urządzeń/modułów oraz kontrolę dostępu przy użyciu [tokenów](iot-hub-devguide-security.md#security-tokens). Jeśli rozwiązanie IoT ma już niestandardowy rejestr tożsamości i/lub schemat uwierzytelniania, rozważ utworzenie *usługi tokenu* umożliwiającej integrację tej infrastruktury z IoT Hub. W ten sposób można używać innych funkcji IoT w rozwiązaniu.
 
-Usługa tokenów to niestandardowa usługa w chmurze. Używa *zasad dostępu* współdzielonego IoT Hub z uprawnieniami **DeviceConnect** lub **ModuleConnect** do tworzenia tokenów z zakresem *urządzeń* lub *modułów* . Te tokeny umożliwiają urządzeniu i modułowi łączenie się z Centrum IoT Hub.
+Usługa tokenów to niestandardowa usługa w chmurze. Używa *zasad dostępu współdzielonego* IoT Hub z uprawnieniami **DeviceConnect** lub **ModuleConnect** do tworzenia tokenów z zakresem *urządzeń* lub *modułów* . Te tokeny umożliwiają urządzeniu i modułowi łączenie się z Centrum IoT Hub.
 
 ![Kroki wzorca usługi tokenów](./media/iot-hub-devguide-security/tokenservice.png)
 
@@ -431,7 +431,7 @@ Aby urządzenie/moduł łączył się z centrum, należy dodać go do rejestru t
 
 ### <a name="comparison-with-a-custom-gateway"></a>Porównanie z bramą niestandardową
 
-Wzorzec usługi Token Service jest zalecanym sposobem implementowania niestandardowego schematu rejestru tożsamości i uwierzytelniania za pomocą IoT Hub. Ten wzorzec jest zalecany, ponieważ IoT Hub nadal obsłużyć większość ruchu rozwiązania. Jeśli jednak niestandardowy schemat uwierzytelniania to intertwined z protokołem, może być konieczne, aby *brama* niestandardowa mogła przetworzyć cały ruch. Przykładem takiego scenariusza jest użycie [Transport Layer Security (TLS) i kluczy wstępnych (PSKs)](https://tools.ietf.org/html/rfc4279). Aby uzyskać więcej informacji, zobacz artykuł dotyczący [bramy protokołu](iot-hub-protocol-gateway.md) .
+Wzorzec usługi Token Service jest zalecanym sposobem implementowania niestandardowego schematu rejestru tożsamości i uwierzytelniania za pomocą IoT Hub. Ten wzorzec jest zalecany, ponieważ IoT Hub nadal obsłużyć większość ruchu rozwiązania. Jeśli jednak niestandardowy schemat uwierzytelniania to intertwined z protokołem, może być konieczne, aby *brama niestandardowa* mogła przetworzyć cały ruch. Przykładem takiego scenariusza jest użycie [Transport Layer Security (TLS) i kluczy wstępnych (PSKs)](https://tools.ietf.org/html/rfc4279). Aby uzyskać więcej informacji, zobacz artykuł dotyczący [bramy protokołu](iot-hub-protocol-gateway.md) .
 
 ## <a name="reference-topics"></a>Tematy dotyczące odwołań:
 
@@ -454,7 +454,7 @@ Inne tematy referencyjne w przewodniku dewelopera IoT Hub obejmują:
 
 * [IoT Hub punkty końcowe](iot-hub-devguide-endpoints.md) opisują różne punkty końcowe, które są uwidaczniane przez każde Centrum IoT Hub na potrzeby operacji w czasie wykonywania i zarządzania.
 
-* [Ograniczanie i](iot-hub-devguide-quotas-throttling.md) przydziały opisują zachowania przydziałów i ograniczania przepustowości, które mają zastosowanie do usługi IoT Hub.
+* [Ograniczanie i przydziały](iot-hub-devguide-quotas-throttling.md) opisują zachowania przydziałów i ograniczania przepustowości, które mają zastosowanie do usługi IoT Hub.
 
 * [Zestawy SDK urządzeń i usług Azure IoT](iot-hub-devguide-sdks.md) wymieniają różne zestawy SDK języka, których można używać podczas tworzenia aplikacji dla urządzeń i usług, które współpracują z usługą IoT Hub.
 

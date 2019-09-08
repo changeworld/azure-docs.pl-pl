@@ -1,49 +1,49 @@
 ---
-title: Query Store najlepsze rozwiązania w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-description: W tym artykule opisano najlepsze rozwiązania dotyczące Store zapytania w usłudze Azure Database for PostgreSQL — pojedynczy serwer.
+title: Najlepsze rozwiązania w zakresie magazynu zapytań w Azure Database for PostgreSQL-pojedynczym serwerze
+description: W tym artykule opisano najlepsze rozwiązania dotyczące magazynu zapytań w ramach Azure Database for PostgreSQL-jednego serwera.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 798a7a3edbf11c8421848871d26ba55b5bada0b6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51239f4cf49784dd47470e1272b90508eaf25e6f
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067239"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764231"
 ---
-# <a name="best-practices-for-query-store"></a>Najlepsze rozwiązania dotyczące Query Store
+# <a name="best-practices-for-query-store"></a>Najlepsze rozwiązania dotyczące magazynu zapytań
 
-**Dotyczy:** Azure Database for PostgreSQL — pojedynczy serwer 9.6 i 10
+**Dotyczy:** Azure Database for PostgreSQL — jeden serwer w wersji 9,6, 10, 11
 
-W tym artykule opisano najlepsze rozwiązania dotyczące używania Store zapytania w usłudze Azure Database for PostgreSQL.
+W tym artykule opisano najlepsze rozwiązania dotyczące korzystania z magazynu zapytań w programie Azure Database for PostgreSQL.
 
-## <a name="set-the-optimal-query-capture-mode"></a>Ustaw tryb przechwytywania optymalne zapytania
-Umożliwiają Query Store przechwytywać dane, które są ważne. 
+## <a name="set-the-optimal-query-capture-mode"></a>Ustawianie optymalnego trybu przechwytywania zapytania
+Pozwól, aby Magazyn zapytań przechwytł dane. 
 
 |**pg_qs.query_capture_mode** | **Scenariusz**|
 |---|---|
-|_Wszystkie_  |Analizowanie obciążenia dokładnie pod względem wszystkich zapytań i ich częstotliwości wykonywania i innych danych statystycznych. Identyfikowanie nowych zapytań w obciążenia. Wykryj, jeśli zapytań ad hoc są używane do identyfikowania możliwości dla użytkownika lub parametryzacji automatycznie. _Wszystkie_ dołączono zużycia zasobów zwiększone koszt. |
-|_Do góry_  |Koncentrować na najpopularniejsze zapytania — tymi wystawionymi przez klientów.
-|_Brak_ |Został już przechwycony zestawu zapytania i przedziału czasu, który chcesz zbadać i chcesz wyeliminować rozpraszania, mogą powodować inne zapytania. _Brak_ jest odpowiednie do testowania i oznaczanie testów porównawczych środowisk. _Brak_ należy używać ostrożnie, ponieważ możesz pominąć możliwość śledzenia i zoptymalizować ważnych nowych zapytań. Nie można odzyskać dane na tych ostatnich okna czasowe. |
+|_Wszystkie_  |Dokładne analizowanie obciążeń pod względem wszystkich zapytań i ich częstotliwości wykonywania oraz innych statystyk. Zidentyfikuj nowe zapytania w obciążeniu. Wykrywaj, czy zapytania ad hoc służą do identyfikowania możliwości użytkownika lub autoparametryzacja. _Wszystko_ to zapewnia zwiększony koszt zużycia zasobów. |
+|_Do góry_  |Należy skoncentrować się na najważniejszych zapytaniach — tych, które są wystawiane przez klientów.
+|_Brak_ |Przechwycono już zestaw zapytań i przedział czasu, które chcesz zbadać, i chcesz wyeliminować rozpraszanie, które mogą zostać wprowadzone przez inne zapytania. _Żadna nie_ jest odpowiednia do testowania i oznaczania na kanapie. _Nie_ należy stosować z zachowaniem ostrożności, ponieważ możesz pominąć szansę śledzenia i optymalizacji ważnych nowych zapytań. Nie można odzyskać danych w oknach, które przeszły czas. |
 
-Query Store umożliwia także magazynu statystyki oczekiwania. Brak kwerendy trybu przechwytywania dodatkowe, które regulują statystyki oczekiwania: **pgms_wait_sampling.query_capture_mode** można ustawić _Brak_ lub _wszystkich_. 
+Magazyn zapytań zawiera również magazyn do statystyk oczekiwania. Istnieje dodatkowe zapytanie w trybie przechwytywania, które zarządza statystyką oczekiwania: **pgms_wait_sampling. query_capture_mode** może mieć wartość _none_ lub _All_. 
 
 > [!NOTE] 
-> **pg_qs.query_capture_mode** supersedes **pgms_wait_sampling.query_capture_mode**. Jeśli jest pg_qs.query_capture_mode _Brak_, ustawienie pgms_wait_sampling.query_capture_mode nie ma wpływu. 
+> **pg_qs. query_capture_mode** zastępuje **pgms_wait_sampling. query_capture_mode**. Jeśli pg_qs. query_capture_mode ma _wartość None_, ustawienie pgms_wait_sampling. query_capture_mode nie ma żadnego efektu. 
 
 
-## <a name="keep-the-data-you-need"></a>Zachowaj dane, których potrzebujesz
-**Pg_qs.retention_period_in_days** parametru wyrażaną w dniach okres przechowywania danych dla zapytania Store. Starsze dane zapytań i statystyki są usuwane. Domyślnie Query Store jest skonfigurowany do przechowywania danych przez 7 dni. Unikaj przechowywania danych historycznych, który nie ma korzystać. Zwiększ wartość, jeśli chcesz przechowywać dane dłużej.
+## <a name="keep-the-data-you-need"></a>Zachowaj potrzebne dane
+**Pg_qs. retention_period_in_days** parametr określa w dniach okres przechowywania danych dla magazynu zapytań. Starsze dane dotyczące zapytań i statystyk są usuwane. Domyślnie magazyn zapytań jest skonfigurowany tak, aby dane były przechowywane przez 7 dni. Unikaj przechowywania danych historycznych, których nie planujesz używać. Zwiększ wartość, jeśli chcesz, aby dane były dłużej przechowywane.
 
 
-## <a name="set-the-frequency-of-wait-stats-sampling"></a>Ustaw częstotliwość statystyki oczekiwania próbkowania 
-**Pgms_wait_sampling.history_period** parametr określa, jak często (w milisekundach) oczekiwania zdarzenia są próbkowane. Krótszy okres, czyli bardziej częste odzyskiwanie pamięci pobierania próbek. Więcej informacji jest pobierana, ale która nauczenia się większe użycie zasobów. Zwiększ tego okresu, jeśli serwer jest obciążony lub nie ma potrzeby stopień szczegółowości
+## <a name="set-the-frequency-of-wait-stats-sampling"></a>Ustaw częstotliwość próbkowania statystyk oczekiwania 
+**Pgms_wait_sampling. history_period** określa, jak często (w milisekundach) zdarzenia oczekiwania są próbkowane. Im krótszy okres, tym częstsze próbkowanie. Pobrano więcej informacji, ale jest to koszt większego zużycia zasobów. Zwiększ ten okres, jeśli serwer jest objęty obciążeniem lub nie potrzebujesz stopnia szczegółowości
 
 
-## <a name="get-quick-insights-into-query-store"></a>Uzyskaj szybki wgląd w zapytanie Store
-Możesz użyć [Query Performance Insight](concepts-query-performance-insight.md) w witrynie Azure portal, aby uzyskać szybki wgląd w dane w Query Store. Wizualizacje powierzchni najdłuższy uruchomionych zapytań i najdłużej Zaczekaj zdarzenia, wraz z upływem czasu.
+## <a name="get-quick-insights-into-query-store"></a>Uzyskaj szybki wgląd w szczegółowe informacje na temat magazynu zapytań
+Możesz użyć [szczegółowe informacje o wydajności zapytań](concepts-query-performance-insight.md) w Azure Portal, aby szybko uzyskać wgląd w dane w magazynie zapytań. Wizualizacje powierzchni są najdłuższymi uruchomionymi zapytaniami i najdłuższymi zdarzeniami oczekiwania w czasie.
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się, jak pobrać lub ustawić parametry przy użyciu [witryny Azure portal](howto-configure-server-parameters-using-portal.md) lub [wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md).
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się, jak pobrać lub ustawić parametry za pomocą [Azure Portal](howto-configure-server-parameters-using-portal.md) lub [interfejsu wiersza polecenia platformy Azure](howto-configure-server-parameters-using-cli.md).

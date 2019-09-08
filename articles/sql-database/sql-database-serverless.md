@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 08/26/2019
-ms.openlocfilehash: 418ca6f8d6258b826bb126252d7cf7b1c5fee299
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 09/06/2019
+ms.openlocfilehash: 5b13c3c93f8b2d6f3eed5a32c49baf1b9d1b201e
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035719"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773337"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database bezserwerowe (wersja zapoznawcza)
 
@@ -115,7 +115,8 @@ Następujące funkcje nie obsługują autowstrzymywanie.  Oznacza to, że jeśli
 
 - Replikacja geograficzna (aktywna replikacja geograficzna i grupy autotrybu failover).
 - Długoterminowe przechowywanie kopii zapasowych (LTR).
-- Baza danych synchronizacji używana w usłudze SQL Data Sync.
+- Baza danych synchronizacji używana w usłudze SQL Data Sync.  W przeciwieństwie do baz danych synchronizacji, bazy danych Hub i elementów członkowskich obsługują autowstrzymywanie.
+- Baza danych zadań używana w zadaniach elastycznych.
 
 Autowstrzymywanie jest tymczasowo uniemożliwiane podczas wdrażania niektórych aktualizacji usługi, które wymagają, aby baza danych była w trybie online.  W takich przypadkach autowstrzymywanie zostanie ponownie dozwolone po zakończeniu aktualizacji usługi.
 
@@ -281,7 +282,7 @@ Get-AzSqlDatabase `
 
 ## <a name="resource-limits"></a>Limity zasobów
 
-W przypadku limitów zasobów zapoznaj się z tematem [warstwa obliczeń](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)bezserwerowych.
+W przypadku limitów zasobów zapoznaj się z tematem [warstwa obliczeń Bezserwerowych](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).
 
 ## <a name="billing"></a>Rozliczenia
 
@@ -289,7 +290,7 @@ Kwota naliczanych obliczeń jest wartością maksymalnego użycia procesora CPU 
 
 - **Zasoby rozliczane**: Procesor i pamięć
 - **Kwota rozliczana**: rdzeń wirtualny cena jednostkowa * Max (min rdzeni wirtualnych, rdzeni wirtualnych użyte, min pamięci gb * 1/3, użycie pamięci gb * 1/3) 
-- **Częstotliwość**rozliczeń: Na sekundę
+- **Częstotliwość rozliczeń**: Na sekundę
 
 Cena jednostkowa rdzeń wirtualny w koszcie za rdzeń wirtualny na sekundę. Zapoznaj się ze [stroną cennika Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/) w przypadku określonych cen jednostkowych w danym regionie.
 
@@ -324,4 +325,4 @@ Warstwa obliczeń bezserwerowych jest dostępna na całym świecie, z wyjątkiem
 ## <a name="next-steps"></a>Następne kroki
 
 - Aby rozpocząć, zobacz [szybki start: Utwórz pojedynczą bazę danych w Azure SQL Database przy użyciu](sql-database-single-database-get-started.md)Azure Portal.
-- W przypadku limitów zasobów zobacz [limity zasobów warstwy obliczeń](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)bezserwerowych.
+- W przypadku limitów zasobów zobacz [limity zasobów warstwy obliczeń Bezserwerowych](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute).

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 8c6f13f85b692d2405928fe06605d8b2ac0ec8e7
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 36d24e798e73ef336324eedadee1ba3fec4c0e1d
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70012713"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773034"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Przewodnik dewelopera programu Azure Functions PowerShell
 
@@ -61,7 +61,7 @@ W katalogu głównym projektu znajduje się plik udostępniony [`host.json`](fun
 
 Niektóre powiązania wymagają obecności `extensions.csproj` pliku. Rozszerzenia powiązań wymagane w [wersji 2. x](functions-versions.md) środowiska uruchomieniowego funkcji są zdefiniowane w `extensions.csproj` pliku z rzeczywistymi plikami `bin` biblioteki w folderze. Podczas programowania lokalnego należy [zarejestrować rozszerzenia powiązań](functions-bindings-register.md#extension-bundles). Podczas tworzenia funkcji w Azure Portal Rejestracja jest wykonywana.
 
-W aplikacjach funkcji programu PowerShell możesz opcjonalnie mieć, `profile.ps1` które są uruchamiane, gdy rozpocznie się uruchamianie aplikacji funkcji (w przeciwnym razie jako zimny *[Start](#cold-start)* ). Aby uzyskać więcej informacji, zobacz [profil programu PowerShell](#powershell-profile).
+W aplikacjach funkcji programu PowerShell możesz opcjonalnie mieć, `profile.ps1` które są uruchamiane, gdy rozpocznie się uruchamianie aplikacji funkcji (w przeciwnym razie jako *[zimny start](#cold-start)* ). Aby uzyskać więcej informacji, zobacz [profil programu PowerShell](#powershell-profile).
 
 ## <a name="defining-a-powershell-script-as-a-function"></a>Definiowanie skryptu programu PowerShell jako funkcji
 
@@ -403,14 +403,18 @@ Bieżącą wersję można zobaczyć, drukując `$PSVersionTable` ją z dowolnej 
 
 ## <a name="dependency-management"></a>Zarządzanie zależnościami
 
-Funkcje programu PowerShell obsługują zarządzanie modułami platformy Azure przez usługę. Zmodyfikowanie pliku host. JSON i ustawienie dla właściwości Enabled managedDependency wartości true, plik Requirements. psd1 zostanie przetworzony. Najnowsze moduły platformy Azure zostaną automatycznie pobrane i udostępnione funkcji.
+Funkcje programu PowerShell obsługują pobieranie modułów [Galerii programu PowerShell](https://www.powershellgallery.com) i zarządzanie nimi przez usługę. Zmodyfikowanie pliku host. JSON i ustawienie dla właściwości Enabled managedDependency wartości true, plik Requirements. psd1 zostanie przetworzony. Określone moduły zostaną automatycznie pobrane i udostępnione funkcji. 
+
+Maksymalna obsługiwana liczba modułów to 10. Obsługiwana składnia to MajorNumber. * lub dokładna wersja modułu, jak pokazano poniżej. Usługa Azure AZ module jest uwzględniana domyślnie podczas tworzenia nowej aplikacji funkcji programu PowerShell.
+
+Proces roboczy języka spowoduje pobranie wszelkich zaktualizowanych modułów przy ponownym uruchomieniu.
 
 host.json
 ```json
 {
-    "managedDependency": {
-        "enabled": true
-    }
+  "managedDependency": {
+          "enabled": true
+       }
 }
 ```
 
@@ -419,10 +423,11 @@ wymagania. psd1
 ```powershell
 @{
     Az = '1.*'
+    SqlServer = '21.1.18147'
 }
 ```
 
-Korzystanie z własnych niestandardowych modułów lub modułów z [Galeria programu PowerShell](https://powershellgallery.com) jest nieco inne niż w przypadku normalnego działania.
+Korzystanie z własnych modułów niestandardowych jest nieco inne niż w normalny sposób.
 
 Po zainstalowaniu modułu na komputerze lokalnym znajduje się on w jednym z dostępnych globalnie folderów w usłudze `$env:PSModulePath`. Ponieważ funkcja działa na platformie Azure, nie będziesz mieć dostępu do modułów zainstalowanych na maszynie. Wymaga to, `$env:PSModulePath` aby aplikacja funkcji programu PowerShell była `$env:PSModulePath` inna niż w zwykłych skryptach programu PowerShell.
 
@@ -433,16 +438,19 @@ W funkcjach `PSModulePath` zawiera dwie ścieżki:
 
 ### <a name="function-app-level-modules-folder"></a>Folder poziomu `Modules` aplikacji funkcji
 
-Aby użyć modułów niestandardowych lub modułów programu PowerShell z Galeria programu PowerShell, można umieścić moduły, na których funkcje są zależne `Modules` od folderu. Z tego folderu moduły są automatycznie dostępne dla środowiska uruchomieniowego usługi Functions. Każda funkcja w aplikacji funkcji może korzystać z tych modułów.
+Aby korzystać z modułów niestandardowych, można umieścić moduły, na których funkcje są zależne `Modules` od folderu. Z tego folderu moduły są automatycznie dostępne dla środowiska uruchomieniowego usługi Functions. Każda funkcja w aplikacji funkcji może korzystać z tych modułów. 
 
-Aby skorzystać z tej funkcji, Utwórz `Modules` folder w katalogu głównym aplikacji funkcji. Zapisz moduły, których chcesz używać w funkcjach w tej lokalizacji.
+> [!NOTE]
+> Moduły określone w pliku Requirements. psd1 są automatycznie pobierane i uwzględniane w ścieżce, więc nie trzeba ich dołączać do folderu modules. Są one przechowywane lokalnie w folderze $env: LOCALAPPDATA/AzureFunctions i w folderze/data/ManagedDependencies w przypadku uruchamiania w chmurze.
+
+Aby skorzystać z funkcji niestandardowego modułu, Utwórz `Modules` folder w katalogu głównym aplikacji funkcji. Skopiuj moduły, których chcesz używać w swoich funkcjach, do tej lokalizacji.
 
 ```powershell
 mkdir ./Modules
-Save-Module MyGalleryModule -Path ./Modules
+Copy-Item -Path /mymodules/mycustommodule -Destination ./Modules -Recurse
 ```
 
-Służy `Save-Module` do zapisywania wszystkich modułów używanych przez funkcje lub kopiowania własnych modułów niestandardowych `Modules` do folderu. W przypadku folderu modułów aplikacja funkcji powinna mieć następującą strukturę folderów:
+W przypadku folderu modułów aplikacja funkcji powinna mieć następującą strukturę folderów:
 
 ```
 PSFunctionApp
@@ -450,11 +458,12 @@ PSFunctionApp
  | | - run.ps1
  | | - function.json
  | - Modules
- | | - MyGalleryModule
- | | - MyOtherGalleryModule
- | | - MyCustomModule.psm1
+ | | - MyCustomModule
+ | | - MyOtherCustomModule
+ | | - MySpecialModule.psm1
  | - local.settings.json
  | - host.json
+ | - requirements.psd1
 ```
 
 Po uruchomieniu aplikacji funkcji proces roboczy języka PowerShell dodaje ten `Modules` folder do programu `$env:PSModulePath` , dzięki czemu można polegać na automatyczne ładowanie modułu, tak jak w przypadku zwykłego skryptu programu PowerShell.
@@ -503,17 +512,7 @@ Ta zmienna środowiskowa jest ustawiana w [ustawieniach aplikacji](functions-app
 
 ### <a name="considerations-for-using-concurrency"></a>Zagadnienia dotyczące korzystania z współbieżności
 
-Domyślnie program PowerShell jest wielowątkowym językiem skryptowym. Współbieżność można jednak dodać przy użyciu wielu obszarami działania programu PowerShell w tym samym procesie. Ta funkcja jest oparta na tym, jak działa środowisko uruchomieniowe programu Azure Functions PowerShell.
-
-Takie podejście ma pewne wady.
-
-#### <a name="concurrency-is-only-as-good-as-the-machine-its-running-on"></a>Współbieżność jest taka sama jak na maszynie, w której jest uruchomiona
-
-Jeśli aplikacja funkcji jest uruchomiona w [planie App Service](functions-scale.md#app-service-plan) , który obsługuje tylko jeden rdzeń, współbieżność nie będzie pomocna. Wynika to z faktu, że nie ma dodatkowych rdzeni, które pomogą zrównoważyć obciążenie. W takim przypadku wydajność może się różnić, gdy pojedyncze rdzeń ma przełączać się między obszarami działania.
-
-[Plan zużycia](functions-scale.md#consumption-plan) jest uruchamiany przy użyciu tylko jednego rdzenia, więc nie można użyć współbieżności. Aby w pełni wykorzystać możliwości współbieżności, zamiast tego należy wdrożyć funkcje w aplikacji funkcji działającej w ramach dedykowanego planu App Service z wystarczającą liczbą rdzeni.
-
-#### <a name="azure-powershell-state"></a>Stan Azure PowerShell
+Domyślnie program PowerShell jest _wielowątkowym_ językiem skryptowym. Współbieżność można jednak dodać przy użyciu wielu obszarami działania programu PowerShell w tym samym procesie. Utworzona ilość obszarami działania będzie zgodna z ustawieniem aplikacji PSWorkerInProcConcurrencyUpperBound. Przepustowość będzie miała wpływ na ilość dostępnego procesora i pamięci w wybranym planie.
 
 Azure PowerShell używa niektórych kontekstów i Stanów na _poziomie procesu_ , aby pomóc zaoszczędzić przed nadmiarowym wpisywaniem. Jeśli jednak włączysz współbieżność w aplikacji funkcji i wywołująsz akcje, które zmieniają stan, możesz zakończyć z użyciem warunków wyścigu. Te sytuacje wyścigu są trudne do debugowania, ponieważ jedno wywołanie jest zależne od pewnego stanu, a inne wywołanie zmieniło stan.
 
@@ -595,7 +594,7 @@ Podczas pracy z funkcjami programu PowerShell należy pamiętać o zagadnieniach
 
 ### <a name="cold-start"></a>Zimne uruchomienie
 
-Podczas opracowywania Azure Functions w [modelu hostingu](functions-scale.md#consumption-plan)bezserwerowego zimny start jest rzeczywistości. *Zimny start* odnosi się do okresu czasu potrzebnego na uruchomienie aplikacji funkcji w celu przetworzenia żądania. Zimny przebieg występuje częściej od planu zużycia, ponieważ aplikacja funkcji jest zamykana w okresach braku aktywności.
+Podczas opracowywania Azure Functions w [modelu hostingu bezserwerowego](functions-scale.md#consumption-plan)zimny start jest rzeczywistości. *Zimny start* odnosi się do okresu czasu potrzebnego na uruchomienie aplikacji funkcji w celu przetworzenia żądania. Zimny przebieg występuje częściej od planu zużycia, ponieważ aplikacja funkcji jest zamykana w okresach braku aktywności.
 
 ### <a name="bundle-modules-instead-of-using-install-module"></a>Moduły pakietu zamiast używania`Install-Module`
 

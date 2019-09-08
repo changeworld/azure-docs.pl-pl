@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 09/06/2019
 ms.author: spelluru
-ms.openlocfilehash: 11ac4e10cbd116ed204a8a11274408f5a5a9b4d9
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 7a089eae935fe5ecbf3dd2836d86912d0c63ef84
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183132"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773099"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Tworzenie maszyn wirtualnych i zarządzanie nimi za pomocą DevTest Labs przy użyciu interfejsu wiersza polecenia platformy Azure
 Ten przewodnik Szybki Start przeprowadzi Cię przez proces tworzenia, uruchamiania, łączenia, aktualizowania i czyszczenia maszyny deweloperskiej w laboratorium. 
@@ -58,7 +58,7 @@ Następujące polecenie tworzy maszynę wirtualną na podstawie obrazu z witryny
 az lab vm create --lab-name sampleLabName --resource-group sampleLabResourceGroup --name sampleVMName --image "Ubuntu Server 16.04 LTS" --image-type gallery --size Standard_DS1_v2 --authentication-type  ssh --generate-ssh-keys --ip-configuration public 
 ```
 
-Można również tworzyć maszyny wirtualne na podstawie formuł, ustawiając parametr **typu obrazu** na formułę. Jeśli musisz wybrać konkretną sieć wirtualną dla swojej maszyny wirtualnej, użyj parametrów nazwa sieci **wirtualnej** i **podsieci** . Aby uzyskać więcej informacji, zobacz [AZ Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create).
+Można również tworzyć maszyny wirtualne na podstawie formuł, ustawiając parametr **typu obrazu** na **formułę**. Jeśli musisz wybrać konkretną sieć wirtualną dla swojej maszyny wirtualnej, użyj parametrów nazwa sieci **wirtualnej** i **podsieci** . Aby uzyskać więcej informacji, zobacz [AZ Lab VM Create](/cli/azure/lab/vm#az-lab-vm-create).
 
 ## <a name="verify-that-the-vm-is-available"></a>Sprawdź, czy maszyna wirtualna jest dostępna.
 `az lab vm show` Użyj polecenia, aby sprawdzić, czy maszyna wirtualna jest dostępna przed rozpoczęciem i nawiązać z nią połączenia. 
@@ -123,15 +123,31 @@ az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resou
 ]
 ```
 
-Lista artefaktów dostępnych w środowisku laboratoryjnym.
-```azurecli
-az lab vm show --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup --expand "properties(\$expand=artifacts)" --query 'artifacts[].{artifactId: artifactId, status: status}'
+### <a name="list-artifacts-available-in-the-lab"></a>Lista artefaktów dostępnych w laboratorium
+
+Aby wyświetlić listę artefaktów dostępnych na maszynie wirtualnej w laboratorium, uruchom następujące polecenia.
+
+**Cloud Shell — PowerShell**: Zwróć uwagę na użycie znacznika sprzed (\`) przed $ in $expand (tj. "$expand):
+
+```azurecli-interactive
+az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(`$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
 ```
+
+**Cloud Shell-bash**: Zwróć uwagę na użycie znaku ukośnika\\() przed $ w poleceniu. 
+
+```azurecli-interactive
+az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(\$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
+```
+
+Przykładowe dane wyjściowe: 
+
 ```json
-{
-  "artifactId": "/subscriptions/abcdeftgh1213123/resourceGroups/lisalab123RG822645/providers/Microsoft.DevTestLab/labs/lisalab123/artifactSources/public repo/artifacts/linux-install-nodejs",
-  "status": "Succeeded"
-}
+[
+  {
+    "artifactId": "/subscriptions/<subscription ID>/resourceGroups/<resource group name>/providers/Microsoft.DevTestLab/labs/<lab name>/artifactSources/public repo/artifacts/windows-7zip",
+    "status": "Succeeded"
+  }
+]
 ```
 
 ## <a name="stop-and-delete-the-virtual-machine"></a>Zatrzymaj i Usuń maszynę wirtualną    

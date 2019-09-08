@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: e5f856bbd8f6fdec46d947a4c726024a08a2b6e9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 72e359cf5cfef2072d3511990297f67fc4df92bb
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096051"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773054"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Praca z serwerów proxy usługi Azure Functions
 
@@ -46,13 +46,13 @@ Za pomocą usługi Azure Functions Proxies można modyfikować żądań i odpowi
 
 Domyślnie żądania zaplecza jest inicjowany jako kopię oryginalne żądanie. Oprócz skonfigurowania adresu URL zaplecza, można wprowadzić zmiany do metody HTTP, nagłówki i parametry ciągu zapytania. Zmodyfikowane wartości może odwoływać się [ustawienia aplikacji] i [Parametry z oryginalne żądanie klienta].
 
-Żądania zaplecza można modyfikować w portalu, rozszerzając sekcję przesłonięcie *żądania* na stronie szczegółów serwera proxy. 
+Żądania zaplecza można modyfikować w portalu, rozszerzając sekcję *przesłonięcie żądania* na stronie szczegółów serwera proxy. 
 
 ### <a name="modify-response"></a>Modyfikowanie odpowiedzi
 
 Domyślnie odpowiedź klienta jest inicjowany jako kopię odpowiedzi zaplecza. Można wprowadzić zmiany, aby kod stanu odpowiedzi, frazę przyczyny, nagłówki i treść. Zmodyfikowane wartości może odwoływać się [ustawienia aplikacji], [Parametry z oryginalne żądanie klienta], i [Parametry z odpowiedzi zaplecza].
 
-Żądania zaplecza można modyfikować w portalu, rozszerzając sekcję przesłonięcie *odpowiedzi* na stronie szczegółów serwera proxy. 
+Żądania zaplecza można modyfikować w portalu, rozszerzając sekcję *przesłonięcie odpowiedzi* na stronie szczegółów serwera proxy. 
 
 ## <a name="using-variables"></a>Używanie zmiennych
 
@@ -65,7 +65,7 @@ Możesz użyć `localhost` k odkazu funkcji wewnątrz ta sama aplikacja funkcji 
 
  
 >[!Note]  
->Jeśli korzysta z funkcji *funkcji, administratora lub sys* poziomów dostępu, należy podać kod i clientId, zgodnie z oryginalny adres URL funkcji. W tym przypadku będzie wyglądać odwołania: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`
+>Jeśli korzysta z funkcji *funkcji, administratora lub sys* poziomów dostępu, należy podać kod i clientId, zgodnie z oryginalny adres URL funkcji. W takim przypadku odwołanie będzie wyglądać następująco: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`Zalecamy przechowywanie tych kluczy w [Ustawienia aplikacji] i odwoływanie się do tych z serwerów proxy. Pozwala to uniknąć przechowywania wpisów tajnych w kodzie źródłowym. 
 
 ### <a name="request-parameters"></a>Parametry żądania odwołania
 

@@ -11,14 +11,14 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/26/2018
+ms.date: 09/06/2019
 ms.author: chackdan
-ms.openlocfilehash: 3816fb56b806029d7a23b67741197e32de6a6ff3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9599d59f7f23de4e54ce323aa4a2ad837d8ed074
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102993"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773250"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Certyfikaty i zabezpieczenia w klastrach systemu Linux
 
@@ -30,7 +30,7 @@ Service Fabric zazwyczaj oczekuje, że certyfikaty X. 509 mają być obecne w ka
 
 W przypadku klastrów systemu Linux Service Fabric oczekuje, że certyfikaty mają być obecne jako plik PEM zawierający zarówno certyfikat, jak i klucz prywatny, albo plik CRT zawierający certyfikat i plik klucza, który zawiera klucz prywatny. Wszystkie pliki powinny mieć format PEM. 
 
-W przypadku instalowania certyfikatu z Azure Key Vault przy użyciu [szablonu Menedżer zasobów](./service-fabric-cluster-creation-create-template.md) lub poleceń [programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/?view=latest#service_fabric) certyfikat zostanie zainstalowany w poprawnym formacie w katalogu */var/lib/sfcerts* w każdym węźle. Jeśli certyfikat jest instalowany za pomocą innej metody, należy się upewnić, że certyfikat jest prawidłowo zainstalowany w węzłach klastra.
+W przypadku instalowania certyfikatu z Azure Key Vault przy użyciu [szablonu Menedżer zasobów](./service-fabric-cluster-creation-create-template.md) lub poleceń [programu PowerShell](https://docs.microsoft.com/powershell/module/az.servicefabric/?view=azps-2.6.0) certyfikat zostanie zainstalowany w poprawnym formacie w katalogu */var/lib/sfcerts* w każdym węźle. Jeśli certyfikat jest instalowany za pomocą innej metody, należy się upewnić, że certyfikat jest prawidłowo zainstalowany w węzłach klastra.
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>Certyfikaty, do których odwołuje się manifest aplikacji
 
@@ -73,7 +73,7 @@ Poniższy kod XML przedstawia sekcję **TransportSettings** na podstawie tego st
 
 ### <a name="using-x509_2-securitycredentialstype"></a>Korzystanie z X509_2 SecurityCredentialsType
 
-Za pomocą zestawu SDK języka Java można określić **X509_2** dla **SecurityCredentialsType**. Odnosi się to do `X509Credentials2` typu[](https://docs.microsoft.com/java/api/system.fabric.x509credentials2) `SecurityCredentials` (Java) języka ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)). 
+Za pomocą zestawu SDK języka Java można określić **X509_2** dla **SecurityCredentialsType**. Odnosi się to do `X509Credentials2` `SecurityCredentials` typu[(Java)](https://docs.microsoft.com/java/api/system.fabric.x509credentials2)języka ([Java](https://docs.microsoft.com/java/api/system.fabric.securitycredentials)). 
 
 Za pomocą odwołania **X509_2** należy określić parametr path, aby można było zlokalizować certyfikat w katalogu innym niż */var/lib/sfcerts*.  Poniższy kod XML przedstawia parametry używane do określania lokalizacji certyfikatu: 
 
@@ -103,7 +103,7 @@ Poniższy kod XML przedstawia sekcję **TransportSettings** na podstawie tego st
 
 Zestawy SDK Service Fabric umożliwiają komunikowanie się z interfejsami API środowiska uruchomieniowego Service Fabric w celu wykorzystania platformy. Po uruchomieniu dowolnej aplikacji korzystającej z tej funkcji w zabezpieczonych klastrach systemu Linux należy skonfigurować aplikację przy użyciu certyfikatu, który może być używany do sprawdzania poprawności w środowisku uruchomieniowym Service Fabric. Aplikacje, które zawierają Service Fabric niezawodne usługi usług zapisaną przy użyciu zestawów SDK .NET Core lub Java, wymagają tej konfiguracji. 
 
-Aby skonfigurować aplikację, Dodaj element [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) w obszarze Tag Certificates ( **Certyfikaty** ) znajdujący się pod tagiem **ApplicationManifest** w pliku *ApplicationManifest. XML* . Poniższy kod XML przedstawia certyfikat, do którego odwołuje się odcisk palca: 
+Aby skonfigurować aplikację, Dodaj element [**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) w obszarze tag **Certificates (certyfikaty** ) znajdujący się pod tagiem **ApplicationManifest** w pliku *ApplicationManifest. XML* . Poniższy kod XML przedstawia certyfikat, do którego odwołuje się odcisk palca: 
 
 ```xml
    <Certificates>

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: 333eecb11f0bd20c747bc44419fea26765f886c5
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f7e34d2bbad5f5d8e6b063269b7e87c314fdce90
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509104"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70770697"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatyczne skalowanie klastrów usługi Azure HDInsight (wersja zapoznawcza)
 
@@ -31,7 +31,7 @@ W poniższej tabeli opisano typy i wersje klastra, które są zgodne z funkcją 
 | HDInsight 3,6 bez ESP | Tak | Yes | Nie | Nie | Nie | Nie | Nie |
 | HDInsight 4,0 bez ESP | Tak | Yes | Nie | Nie | Nie | Nie | Nie |
 | HDInsight 3,6 z ESP | Tak | Yes | Nie | Nie | Nie | Nie | Nie |
-| HDInsight 3,6 z ESP | Tak | Yes | Nie | Nie | Nie | Nie | Nie |
+| HDInsight 4,0 z ESP | Tak | Yes | Nie | Nie | Nie | Nie | Nie |
 
 ## <a name="how-it-works"></a>Jak to działa
 
@@ -78,7 +78,7 @@ Aby włączyć funkcję automatycznego skalowania z skalowaniem opartym na obci�
 
 1. Wybierz opcję **niestandardowe (rozmiar, ustawienia, aplikacje)** , a nie **szybkie tworzenie**.
 1. W obszarze **niestandardowy** krok 5 (**rozmiar klastra**) zaznacz pole wyboru **Automatyczne skalowanie węzła roboczego** .
-1. Wybierz opcję opartą na **ładowaniu** w obszarze **Typ automatycznego skalowania**.
+1. Wybierz opcję **opartą na ładowaniu** w obszarze **Typ automatycznego skalowania**.
 1. Wprowadź odpowiednie wartości dla następujących właściwości:  
 
     * Początkowa **Liczba węzłów procesu roboczego**.  
@@ -96,7 +96,7 @@ Aby włączyć funkcję automatycznego skalowania z skalowaniem opartym na harmo
 1. Wybierz opcję **niestandardowe (rozmiar, ustawienia, aplikacje)** , a nie **szybkie tworzenie**.
 1. W obszarze **niestandardowy** krok 5 (**rozmiar klastra**) zaznacz pole wyboru **Automatyczne skalowanie węzła roboczego** .
 1. Wprowadź **liczbę węzłów procesu roboczego**, która kontroluje limit skalowania klastra w górę.
-1. Wybierz opcję **oparte** na harmonogramie w obszarze **Typ automatycznego skalowania**.
+1. Wybierz opcję **oparte na harmonogramie** w obszarze **Typ automatycznego skalowania**.
 1. Kliknij przycisk **Konfiguruj** , aby otworzyć okno **konfiguracji skalowania automatycznego** .
 1. Wybierz strefę czasową, a następnie kliknij pozycję **+ Dodaj warunek**
 1. Wybierz dni tygodnia, do których ma zostać zastosowany nowy warunek.
@@ -249,7 +249,7 @@ Aby wyświetlić bieżącą liczbę węzłów w klastrze, przejdź do wykresu **
 
 Możesz wyświetlić historię skalowania i skalowania w poziomie klastra w ramach metryk klastra. Możesz również wyświetlić listę wszystkich akcji skalowania w ciągu ostatniego dnia, tygodnia lub innego czasu.
 
-Wybierz pozycję metryki w obszarze **monitorowanie**. Następnie w polu listy rozwijanej **Metryka** kliknij pozycję **Dodaj metrykę** i **liczbę aktywnych procesów roboczych** . Kliknij przycisk w prawym górnym rogu, aby zmienić zakres czasu.
+Wybierz pozycję **metryki** w obszarze **monitorowanie**. Następnie w polu listy rozwijanej **Metryka** kliknij pozycję **Dodaj metrykę** i **liczbę aktywnych procesów roboczych** . Kliknij przycisk w prawym górnym rogu, aby zmienić zakres czasu.
 
 ![Włącz opcję automatycznego skalowania opartego na harmonogramie węzłów procesu roboczego](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 

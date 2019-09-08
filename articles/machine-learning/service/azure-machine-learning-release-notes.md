@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0880b5706f2621971a4e5c82a6db03cdd22ce4d6
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 78d16e8e6fc43644cdb318f8e402c2e8bbe0363e
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70278291"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772510"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
@@ -70,6 +70,12 @@ Zobacz [listę znanych problemów](resource-known-issues.md) informacje na temat
   + **azureml-train-core**
     + Wczesna awaria niektórych z parametrów w zestawie SDK, a nie po stronie serwera.
 
+### <a name="azure-machine-learning-data-prep-sdk-v1114"></a>Azure Machine Learning zestawu SDK 1.1.14 przygotowywania danych
++ **Poprawki i ulepszenia błędów**
+  + Włączono funkcję zapisu do ADLS/ADLSGen2 przy użyciu nieprzetworzonej ścieżki i poświadczeń.
+  + Naprawiono usterkę `include_path=True` , która spowodowała `read_parquet`, że nie zadziałała.
+  + Naprawiono `to_pandas_dataframe()` błąd spowodowany przez wyjątek "Nieprawidłowa wartość właściwości: hostSecret".
+  + Naprawiono usterkę polegającą na tym, że nie można odczytać plików na DBFS w trybie Spark.
   
 ## <a name="2019-08-19"></a>2019-08-19
 

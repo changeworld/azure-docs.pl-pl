@@ -8,18 +8,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 12a6af73dc0abc9598184f6c83e9d7652973a99e
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 565c9ad0fbd37b026a1ba555d83b9032d2efcba4
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69544450"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773800"
 ---
 # <a name="allocate-public-ip-addresses-for-private-cloud-environment"></a>Przydzielanie publicznych adresów IP dla środowiska chmury prywatnej
 
 Aby przydzielić publiczne adresy IP maszyn wirtualnych w środowisku chmury prywatnej, Otwórz na stronie sieć kartę publiczna IP.
 
-1. [Uzyskaj dostęp do portalu CloudSimple](monitor-activity.md) i wybierz pozycję **Sieć** w menu po stronie.
+1. [Uzyskaj dostęp do portalu CloudSimple](access-cloudsimple-portal.md) i wybierz pozycję **Sieć** w menu po stronie.
 2. Wybierz pozycję **publiczne adresy IP**.
 3. Kliknij pozycję **Nowy publiczny adres IP**.
 

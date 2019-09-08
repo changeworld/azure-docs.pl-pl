@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e6f781926e2a30ecf6d34274b20991b81f0bb96d
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 0f8e605db3d647b5907c8c6741e4e2200bf14c4f
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972909"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772369"
 ---
 # <a name="create-and-manage-vlanssubnets-for-your-private-clouds"></a>Tworzenie sieci VLAN i podsieci dla chmur prywatnych oraz zarządzanie nimi
 
@@ -21,7 +21,7 @@ Otwórz kartę sieci VLAN/podsieci na stronie sieć, aby utworzyć sieci VLAN/po
 
 ## <a name="create-a-vlansubnet"></a>Tworzenie sieci VLAN/podsieci
 
-1. [Uzyskaj dostęp do portalu CloudSimple](monitor-activity.md) i wybierz pozycję **Sieć** w menu po stronie.
+1. [Uzyskaj dostęp do portalu CloudSimple](access-cloudsimple-portal.md) i wybierz pozycję **Sieć** w menu po stronie.
 2. Wybierz pozycję **VLANs/Subnets**.
 3. Kliknij pozycję **Utwórz sieć VLAN/podsieć**.
 

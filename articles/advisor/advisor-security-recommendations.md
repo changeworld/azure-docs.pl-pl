@@ -1,6 +1,6 @@
 ---
-title: Lepiej zabezpieczyć zasoby za pomocą usługi Azure Advisor | Dokumentacja firmy Microsoft
-description: Aby poprawić zabezpieczenia wdrożeń platformy Azure, należy użyć usługi Azure Advisor.
+title: Zabezpieczanie zasobów za pomocą Azure Advisor | Microsoft Docs
+description: Użyj Azure Advisor, aby zwiększyć bezpieczeństwo wdrożeń platformy Azure.
 services: advisor
 documentationcenter: NA
 author: kasparks
@@ -12,33 +12,33 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 290af605525d552e73c5f3a7a961593689326946
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e9c3556d904dd961a2b8f99f84983c35ccf5c6a
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60467684"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772277"
 ---
-# <a name="make-resources-more-secure-with-azure-advisor"></a>Lepiej zabezpieczyć zasoby za pomocą usługi Azure Advisor
+# <a name="make-resources-more-secure-with-azure-advisor"></a>Zabezpieczanie zasobów za pomocą Azure Advisor
 
-Usługa Azure Advisor zapewnia spójne, skonsolidowanego widoku zaleceń dotyczących wszystkich zasobów platformy Azure. Można zintegrować go z usługi Azure Security Center, aby zapewnić Ci zaleceń dotyczących zabezpieczeń. Można uzyskać zaleceń dotyczących zabezpieczeń z **zabezpieczeń** karty Pulpit nawigacyjny usługi Advisor.
+Azure Advisor zapewnia spójny, skonsolidowany widok zaleceń dla wszystkich zasobów platformy Azure. Integruje się z Azure Security Center, aby uzyskać zalecenia dotyczące zabezpieczeń. Zalecenia dotyczące zabezpieczeń można uzyskać na karcie **zabezpieczenia** na pulpicie nawigacyjnym usługi Advisor.
 
-Usługa Security Center ułatwia zapobieganie zagrożeniom, ich wykrywanie i reagowanie na nie, a przy tym zapewnia lepszy wgląd i większą kontrolę w zakresie bezpieczeństwa zasobów na platformie Azure. Ją okresowo analizuje stan zabezpieczeń zasobów platformy Azure. Po znalezieniu potencjalnych luk w zabezpieczeniach usługa Security Center tworzy odpowiednie zalecenia. Zalecenia ułatwiają konfigurowanie kontrolek, których potrzebujesz. 
+Usługa Security Center ułatwia zapobieganie zagrożeniom, ich wykrywanie i reagowanie na nie, a przy tym zapewnia lepszy wgląd i większą kontrolę w zakresie bezpieczeństwa zasobów na platformie Azure. Okresowo analizuje stan zabezpieczeń zasobów platformy Azure. Po znalezieniu potencjalnych luk w zabezpieczeniach usługa Security Center tworzy odpowiednie zalecenia. Zalecenia przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek. 
 
-Aby uzyskać więcej informacji na temat zaleceń dotyczących zabezpieczeń, zobacz [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](https://azure.microsoft.com/documentation/articles/security-center-recommendations/).
+Aby uzyskać więcej informacji na temat zaleceń dotyczących zabezpieczeń, zobacz [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w Azure Security Center](https://azure.microsoft.com/documentation/articles/security-center-recommendations/).
 
-## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Jak uzyskać dostęp do zaleceń dotyczących zabezpieczeń w usłudze Azure Advisor
+## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Jak uzyskać dostęp do zaleceń dotyczących zabezpieczeń w Azure Advisor
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com), a następnie otwórz [Advisor](https://aka.ms/azureadvisordashboard).
+1. Zaloguj się do [Azure Portal](https://portal.azure.com), a następnie otwórz program [Advisor](https://aka.ms/azureadvisordashboard).
 
-2.  Na pulpicie nawigacyjnym usługi Advisor kliknij **zabezpieczeń** kartę.
+2.  Na pulpicie nawigacyjnym usługi Advisor kliknij kartę **zabezpieczenia** .
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby dowiedzieć się więcej na temat zalecenia usługi Advisor, zobacz:
+Aby dowiedzieć się więcej na temat zaleceń klasyfikatora, zobacz:
 * [Wprowadzenie do usługi Advisor](advisor-overview.md)
 * [Wprowadzenie do usługi Advisor](advisor-get-started.md)
-* [Rekomendacji dotyczących kosztu usługi Advisor](advisor-performance-recommendations.md)
+* [Zalecenia dotyczące kosztów usługi Advisor](advisor-cost-recommendations.md)
 * [Zalecenia dotyczące wydajności usługi Advisor](advisor-performance-recommendations.md)
 * [Zalecenia dotyczące wysokiej dostępności usługi Advisor](advisor-high-availability-recommendations.md)
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7ec30e2445a5ed6008256f7abcef496247922968
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
-ms.translationtype: HT
+ms.openlocfilehash: d5372ac8b31db91aaac018b203ee8868fa313fd8
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744477"
+ms.locfileid: "70772986"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie Log Analytics zapisanych wyszukiwań i alertów do rozwiązania do zarządzania (wersja zapoznawcza)
 
@@ -171,11 +171,10 @@ Właściwości zasobów akcji alertu są opisane w poniższych tabelach.
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| `Type` | Tak | Typ akcji.  Jest to **alert** dotyczący akcji alertów. |
-| `Name` | Tak | Nazwa wyświetlana alertu.  Jest to nazwa wyświetlana w konsoli dla reguły alertu. |
-| `Description` | Nie | Opcjonalny opis alertu. |
-| `Severity` | Tak | Ważność rekordu alertu z następujących wartości:<br><br> **najistotniejsz**<br>**wyświetlania**<br>**informacyjną**
-
+| `type` | Tak | Typ akcji.  Jest to **alert** dotyczący akcji alertów. |
+| `name` | Tak | Nazwa wyświetlana alertu.  Jest to nazwa wyświetlana w konsoli dla reguły alertu. |
+| `description` | Nie | Opcjonalny opis alertu. |
+| `severity` | Tak | Ważność rekordu alertu z następujących wartości:<br><br> **najistotniejsz**<br>**wyświetlania**<br>**informacyjną**
 
 #### <a name="threshold"></a>Próg
 Ta sekcja jest wymagana. Definiuje właściwości dla progu alertu.

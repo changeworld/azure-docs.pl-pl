@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 06/25/2019
-ms.openlocfilehash: c46913f24deffc7c4db95d8a77db1c49ae54b6ae
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 09/06/2019
+ms.openlocfilehash: 03f16987941f79f9161ccbc172bb2ca1a7139384
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566682"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773204"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Warstwy usług w modelu zakupu opartego na jednostkach DTU
 
@@ -37,7 +37,7 @@ Wybieranie warstwy usług zależy przede wszystkim ciągłości biznesowej, maga
 |Umowa SLA dotycząca czasu dostępności|99,99%|99,99%|99,99%|
 |Przechowywanie kopii zapasowych|7 dni|35 dni|35 dni|
 |Procesor CPU|Małe|Niska, średnia, wysoka|Średni i wysoki|
-|Przepustowość operacji We/Wy (w przybliżeniu) |2.5 operacje We/Wy na jednostkach DTU| 2.5 operacje We/Wy na jednostkach DTU | 48 operacje We/Wy na jednostkach DTU|
+|Przepustowość operacji We/Wy (w przybliżeniu) |1-5 operacji we/wy na jednostkę DTU| 1-5 operacji we/wy na jednostkę DTU | 25 operacji we/wy na jednostkę DTU|
 |We/Wy, czas oczekiwania (w przybliżeniu)|5 ms (odczyt), 10 ms (zapis)|5 ms (odczyt), 10 ms (zapis)|2 ms (odczyt/zapis)|
 |Indeksowanie magazynu kolumn |ND|S3 i nowsze wersje|Obsługiwane|
 |Przetwarzanie OLTP danych w pamięci|ND|ND|Obsługiwane|

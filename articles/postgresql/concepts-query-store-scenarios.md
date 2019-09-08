@@ -1,61 +1,61 @@
 ---
-title: Query Store scenariusze użycia w usłudze Azure Database for PostgreSQL — pojedynczy serwer
-description: W tym artykule opisano niektóre scenariusze Store zapytania w usłudze Azure Database for PostgreSQL — pojedynczy serwer.
+title: Scenariusze użycia magazynu zapytań w Azure Database for PostgreSQL — pojedynczy serwer
+description: W tym artykule opisano niektóre scenariusze dla magazynu zapytań w Azure Database for PostgreSQL-pojedynczym serwerze.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 029c595ba983d3b758568fbacaf6577014d893db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3cdb0d4e00e667b0369cdf612662830f18dc5fb8
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067334"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764270"
 ---
-# <a name="usage-scenarios-for-query-store"></a>Scenariusze użycia dotyczące Query Store
+# <a name="usage-scenarios-for-query-store"></a>Scenariusze użycia dla magazynu zapytań
 
-**Dotyczy:** Azure Database for PostgreSQL — pojedynczy serwer 9.6 i 10
+**Dotyczy:** Azure Database for PostgreSQL — jeden serwer w wersji 9,6, 10, 11
 
-Możesz użyć Store zapytania w wielu różnych scenariuszy, w których śledzenie i zachowując wydajność przewidywalnego obciążenia ma kluczowe znaczenie. Należy wziąć pod uwagę następujące przykłady: 
-- Identyfikowanie i dostosowywanie najpopularniejsze kosztowne zapytania 
+Magazynu zapytań można używać w wielu różnych scenariuszach, w których śledzenie i obsługa przewidywalna wydajność obciążeń ma kluczowe znaczenie. Rozważ następujące przykłady: 
+- Identyfikowanie i dostrajanie największych kosztownych zapytań 
 - A / B, testowanie 
-- Zachowanie wydajności stabilne podczas uaktualniania 
-- Identyfikowanie i ulepszanie obciążeń ad-hoc 
+- Zachowywanie stabilności wydajności podczas uaktualniania 
+- Identyfikowanie i ulepszanie obciążeń ad hoc 
 
-## <a name="identify-and-tune-expensive-queries"></a>Identyfikowanie i dostosowywanie kosztownych zapytań 
+## <a name="identify-and-tune-expensive-queries"></a>Zidentyfikuj i Dostosuj kosztowne zapytania 
 
-### <a name="identify-longest-running-queries"></a>Identyfikowanie najdłuższy uruchomionych zapytań 
-Użyj [Query Performance Insight](concepts-query-performance-insight.md) widok w witrynie Azure portal w celu szybkiego identyfikowania najdłuższy uruchamianie zapytań. Te zapytania są zwykle zwykle zużywać znaczną ilość zasobów. Optymalizacja najdłużej działających pytania może poprawić wydajność przy zwalnianiu zasobów przeznaczonych do użycia przez inne zapytania w systemie. 
+### <a name="identify-longest-running-queries"></a>Zidentyfikuj najdłuższe uruchomione zapytania 
+Użyj widoku [szczegółowe informacje o wydajności zapytań](concepts-query-performance-insight.md) w Azure Portal, aby szybko identyfikować najdłuższe uruchomione zapytania. Te zapytania zazwyczaj mają na celu zużywanie znacznej ilości zasobów. Optymalizacja najdłuższych uruchomionych pytań może zwiększyć wydajność dzięki zwolnieniu zasobów do użycia przez inne zapytania działające w systemie. 
 
-### <a name="target-queries-with-performance-deltas"></a>Docelowy zapytania z różnic w wydajności 
-Query Store dzieli dane dotyczące wydajności na okna czasowe, dzięki czemu można śledzić wydajność zapytań, wraz z upływem czasu. Pomaga to identyfikować dokładnie które zapytania są przyczyniające się do wzrostu całkowity czas spędzony. W rezultacie można zrobić, docelowych Rozwiązywanie problemów z obciążeń.
+### <a name="target-queries-with-performance-deltas"></a>Kierowanie zapytań przy użyciu różnic wydajności 
+Magazyn zapytań wycinkiuje dane wydajności w oknach czasu, dzięki czemu można śledzić wydajność zapytania w czasie. Ułatwia to zidentyfikowanie, które zapytania przyczyniają się do wzrostu całkowitego czasu trwania. W związku z tym można rozwiązać problemy związane z obciążeniem.
 
 ### <a name="tuning-expensive-queries"></a>Dostrajanie kosztownych zapytań 
-Po zidentyfikowaniu zapytania z wydajnością suboptymalny akcję, którą należy wykonać zależy od rodzaju problem: 
-- Użyj [zalecenia dotyczące wydajności](concepts-performance-recommendations.md) ustalenie, jeśli istnieją sugerowane indeksów. Jeśli tak, Utwórz indeks, a następnie użyj Query Store, aby ocenić wydajność zapytań, po utworzeniu indeksu. 
-- Upewnij się, że statystyki są aktualne dla tabel użyta przez zapytanie.
-- Należy rozważyć ponowne napisanie zapytania kosztowne. Na przykład korzystać z zalet parametryzacji zapytań i zmniejszyć użycie dynamiczny język SQL. Podczas odczytywania danych, takich jak stosowanie danych filtrowania po stronie bazy danych, nie znajduje się na stronie aplikacji, należy zaimplementować logikę optymalne. 
+Po zidentyfikowaniu zapytania z nieoptymalną wydajnością, podejmowana akcja zależy od natury problemu: 
+- Użyj [zaleceń dotyczących wydajności](concepts-performance-recommendations.md) , aby określić, czy istnieją sugerowane indeksy. Jeśli tak, Utwórz indeks, a następnie użyj magazynu zapytań do oceny wydajności zapytań po utworzeniu indeksu. 
+- Upewnij się, że statystyki są aktualne dla źródłowych tabel używanych przez zapytanie.
+- Rozważ ponowne zapisanie kosztownych zapytań. Na przykład Skorzystaj z zalet zapytania parametryzacja i zmniejsz użycie dynamicznego języka SQL. Zaimplementuj optymalną logikę podczas odczytywania danych, takich jak stosowanie filtrowania danych po stronie bazy danych, a nie po stronie aplikacji. 
 
 
 ## <a name="ab-testing"></a>A / B, testowanie 
-Użyj Query Store Aby porównać wydajność obciążeń przed i po zmianie aplikacji, które planujesz wprowadzić. Przykładowe scenariusze dotyczące używania Query Store w celu oceny wpływu środowiska lub aplikacji, Zmień na wydajność obciążenia: 
-- Wprowadza nową wersję aplikacji. 
-- Dodawanie dodatkowych zasobów do serwera. 
-- Tworzenie brakujące indeksy tabel odwołują się kosztowne zapytania. 
+Użyj magazynu zapytań, aby porównać wydajność obciążeń przed zmianą i po zmianie aplikacji, którą planujesz wprowadzić. Przykłady scenariuszy dotyczących używania magazynu zapytań do oceny wpływu zmiany środowiska lub aplikacji na wydajność obciążeń: 
+- Wdrażanie nowej wersji aplikacji. 
+- Dodawanie dodatkowych zasobów do serwera programu. 
+- Tworzenie brakujących indeksów w tabelach, do których odwołuje się kosztowne zapytania. 
  
-W dowolnym z tych scenariuszy Zastosuj poniższy przepływ pracy: 
-1. Uruchom obciążenia za pomocą Query Store przed planowanej zmiany w celu wygenerowania punkt odniesienia wydajności. 
-2. Zastosowanie zmian aplikacji na kontrolowany moment w czasie. 
-3. Kontynuuj, obciążenie czas wystarczający do generowania obrazu wydajności systemu po zmianie. 
-4. Porównaj wyniki z przed i po zmianie. 
-5. Zdecyduj, czy zachować zmiany lub wycofywania. 
+W każdym z tych scenariuszy zastosuj następujący przepływ pracy: 
+1. Uruchom obciążenie z magazynem zapytań przed zaplanowaną zmianą, aby wygenerować linię bazową wydajności. 
+2. Zastosuj zmiany aplikacji w kontrolowanej chwili w czasie. 
+3. Kontynuuj uruchamianie obciążeń wystarczająco długo, aby generować obraz wydajności systemu po zmianie. 
+4. Porównaj wyniki przed zmianą i po niej. 
+5. Zdecyduj, czy zachować zmianę czy wycofać. 
 
 
-## <a name="identify-and-improve-ad-hoc-workloads"></a>Identyfikuj i Zwiększaj obciążeń ad-hoc 
-Niektórych obciążeń dominujący zapytania, które można dostosować wydajność ogólną aplikacji nie jest konieczne. Te obciążenia są zazwyczaj określony przy użyciu stosunkowo dużej liczby zapytań unikatowy każdego z nich wykorzystywanie część zasobów systemowych. Każdy unikatowy zapytanie jest wykonywane, rzadko, więc osobno, ich użycie środowiska uruchomieniowego nie jest krytyczny. Z drugiej strony biorąc pod uwagę, że aplikacja jest generowanie nowych zapytań przez cały czas, znaczna część zasobów systemowych odbywa się na kompilację, które nie są optymalne. Zazwyczaj ta sytuacja ma miejsce, jeśli aplikacja generuje zapytania (zamiast przy użyciu procedur składowanych i sparametryzowanych zapytań), lub jeśli zależy od struktury mapowania obiektowo relacyjny, które generują zapytania domyślnie. 
+## <a name="identify-and-improve-ad-hoc-workloads"></a>Identyfikowanie i ulepszanie obciążeń ad hoc 
+Niektóre obciążenia nie mają zapytań dominujących, które można dostosować w celu zwiększenia ogólnej wydajności aplikacji. Te obciążenia zwykle charakteryzują się stosunkowo dużą liczbą unikatowych zapytań, a każdy z nich zużywa część zasobów systemowych. Każde unikatowe zapytanie jest wykonywane rzadko, więc poszczególne użycie środowiska uruchomieniowego nie jest krytyczne. Z drugiej strony, jeśli aplikacja generuje nowe zapytania przez cały czas, znaczna część zasobów systemowych jest poświęcana na kompilację zapytań, która nie jest optymalna. Zwykle sytuacja taka występuje, gdy aplikacja generuje zapytania (zamiast używać procedur składowanych lub zapytań parametrycznych) lub jeśli opiera się na strukturach mapowania obiektów relacyjnych, które generują zapytania domyślnie. 
  
-Jeśli masz kontrolę nad tym kod aplikacji, można rozważyć ponowne napisanie warstwy dostępu do danych, aby użyć procedur składowanych i sparametryzowanych zapytań. Jednak takiej sytuacji można również zwiększyć bez wprowadzania zmian w aplikacji, wymuszając parametryzacji zapytań dla całej bazy danych (wszystkie zapytania) lub szablonów poszczególnych zapytań, za pomocą tego samego skrótu zapytania. 
+Jeśli masz kontrolę nad kodem aplikacji, możesz rozważyć przetworzenie warstwy dostępu do danych, aby użyć procedur składowanych lub zapytań parametrycznych. Tę sytuację można jednak ulepszyć bez zmian w aplikacjach, wymuszając parametryzacja zapytania dla całej bazy danych (wszystkie zapytania) lub dla poszczególnych szablonów zapytań z tym samym skrótem zapytania. 
 
-## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o [najlepsze rozwiązania dotyczące korzystania z zapytania Store](concepts-query-store-best-practices.md)
+## <a name="next-steps"></a>Następne kroki
+- Dowiedz się więcej o [najlepszych rozwiązaniach dotyczących korzystania z magazynu zapytań](concepts-query-store-best-practices.md)
