@@ -1,5 +1,5 @@
 ---
-title: Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — Security i DevOps Best Practices
+title: Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — zabezpieczenia
 description: Poznaj zabezpieczenia i DevOps najlepsze rozwiązania dotyczące migrowania lokalnych klastrów Hadoop do usługi Azure HDInsight.
 author: hrasheed-msft
 ms.reviewer: ashishth
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0e7db970bee44d40831c05e8911b72841d027211
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: c1523ccb3952bce904deac375d11de692ac235ef
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442086"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736137"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — Security i DevOps Best Practices
 
@@ -122,6 +122,6 @@ Aby uzyskać więcej informacji, zobacz artykuł: [Stosowanie poprawek systemu o
 2. **Wykonaj testy** — iteracyjnie uruchamiaj testy funkcjonalne i wydajnościowe.
 3. **Zoptymalizuj** wszystkie problemy z wydajnością w oparciu o powyższe wyniki testów, a następnie przetestuj je w celu potwierdzenia poprawy wydajności.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Przeczytaj więcej na temat usługi [HDInsight 4,0](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-introduction).

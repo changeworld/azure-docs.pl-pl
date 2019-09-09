@@ -1,6 +1,6 @@
 ---
-title: Architektura technologii Apache Hadoop — Azure HDInsight
-description: W tym artykule opisano Apache Hadoop, przechowywania i przetwarzania w klastrach HDInsight.
+title: Architektura Apache Hadoop — Azure HDInsight
+description: Opisuje Apache Hadoop magazynowanie i przetwarzanie w klastrach usługi Azure HDInsight.
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
@@ -8,46 +8,46 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/27/2019
-ms.openlocfilehash: 3fd85232ff7044c699a3e68ce34b267bf50c4dc3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d41d671cf773bdab20c3f105c7d1abb6c7bde840
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257861"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810238"
 ---
 # <a name="apache-hadoop-architecture-in-hdinsight"></a>Architektura platformy Apache Hadoop w usłudze HDInsight
 
-[Apache Hadoop](https://hadoop.apache.org/) obejmuje dwa składniki podstawowe: [Apache Hadoop Distributed pliku System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) zapewniający magazynu i [Apache Hadoop jeszcze inny zasób moduł negocjowania (YARN)](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) , Umożliwia przetwarzanie. Z usługi storage i możliwości przetwarzania klastra staje się stanie działać [MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) programów do wykonywania żądanego przetwarzania danych.
+[Apache Hadoop](https://hadoop.apache.org/) obejmuje dwa podstawowe składniki: [Apache HADOOP rozproszony system plików (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsUserGuide.html) , który udostępnia magazyn, i [Apache Hadoop jeszcze inne WYnegocjowane zasoby (przędza)](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) , które zapewniają przetwarzanie. Dzięki możliwościom magazynowania i przetwarzania klaster może uruchamiać programy [MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) do wykonywania żądanych operacji przetwarzania danych.
 
 > [!NOTE]  
-> System plików HDFS nie są zwykle wdrażane w ramach klastra HDInsight w celu zapewnienia magazynu. Zamiast tego warstwy interfejsu zgodnego systemem plików HDFS jest używany przez składniki usługi Hadoop. Możliwości rzeczywisty magazyn są dostarczane przez usługę Azure Storage lub Azure Data Lake Storage. Dla platformy Hadoop zadań MapReduce, wykonywanie w klastrze HDInsight Uruchom tak, jakby systemu plików HDFS znajdowały się i dlatego nie wymagają żadnych zmian do obsługi ich potrzeb dotyczących magazynowania. Na platformie Hadoop, HDInsight magazyn jest obsługiwany zewnętrznie, ale przetwarzanie YARN pozostaje podstawowym składnikiem. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure HDInsight](hadoop/apache-hadoop-introduction.md).
+> System plików HDFS nie jest zazwyczaj wdrażany w klastrze usługi HDInsight w celu zapewnienia magazynu. Zamiast tego warstwa interfejsu zgodna z systemem plików HDFS jest używana przez składniki usługi Hadoop. Rzeczywista możliwość magazynowania jest zapewniana przez usługę Azure Storage lub Azure Data Lake Storage. W przypadku usługi Hadoop zadania MapReduce wykonywane w klastrze usługi HDInsight są uruchamiane tak, jakby były obecne w systemie plików HDFS i dlatego nie wymagają żadnych zmian do obsługi ich potrzeb dotyczących magazynu. W usłudze Hadoop w usłudze HDInsight magazyn jest źródłem, ale przetwarzanie PRZĘDZenia pozostaje składnikiem podstawowym. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure HDInsight](hadoop/apache-hadoop-introduction.md).
 
-W tym artykule przedstawiono YARN i jak go służy do koordynowania wykonywanie aplikacji w HDInsight.
+W tym artykule omówiono PRZĘDZę i sposób koordynowania wykonywania aplikacji w usłudze HDInsight.
 
-## <a name="apache-hadoop-yarn-basics"></a>Podstawy systemu Apache Hadoop YARN 
+## <a name="apache-hadoop-yarn-basics"></a>Podstawy Apache Hadoop PRZĘDZy 
 
-YARN kontroluje oraz służy do aranżacji przetwarzania danych na platformie Hadoop. YARN ma dwa podstawowe usługi są uruchamiane jako procesy w węzłach w klastrze: 
+PRZĘDZa zarządza i organizuje przetwarzanie danych w usłudze Hadoop. PRZĘDZa ma dwie podstawowe usługi, które są uruchamiane jako procesy na węzłach w klastrze: 
 
 * ResourceManager 
-* NodeManager
+* Węzełmanager
 
-ResourceManager przyznaje klaster zasobów obliczeniowych do aplikacji, takich jak zadań MapReduce. ResourceManager przydziela te zasoby jako kontenery, w którym każdy kontener składa się z przydział rdzeni Procesora i pamięci RAM. Jeśli połączeniu wszystkich zasobów dostępnych w klastrze i następnie przesyła rdzeni i pamięci w blokach, każdy blok zasobów jest kontenerem. Każdy węzeł w klastrze ma pojemność określoną liczbę kontenerów, w związku z tym klaster ma stały limit liczby dostępnych kontenerów. Przydział zasobów w kontenerze jest konfigurowany. 
+Program ResourceManager przydaje zasoby obliczeniowe klastra do aplikacji, takich jak MapReduce jobs. Obiekt ResourceManager przypisuje te zasoby jako kontenery, gdzie każdy kontener składa się z przydziału rdzeni procesora CPU i pamięci RAM. W przypadku połączenia wszystkich zasobów dostępnych w klastrze, a następnie rozdystrybuowania rdzeni i pamięci w blokach, każdy blok zasobów jest kontenerem. Każdy węzeł w klastrze ma pojemność określoną liczbę kontenerów, w związku z czym klaster ma stały limit liczby dostępnych kontenerów. Przydział zasobów w kontenerze można skonfigurować. 
 
-Po uruchomieniu aplikacji MapReduce w klastrze, ResourceManager zapewnia aplikacji kontenerów, w której chcesz wykonać. ResourceManager umożliwia śledzenie stanu uruchamiania aplikacji, pojemność klastra dostępny i śledzi aplikacji w miarę ich ukańczania i zwolnić swoje zasoby. 
+Gdy aplikacja MapReduce jest uruchamiana w klastrze, obiekt ResourceManager zapewnia aplikację kontenerów, które mają zostać wykonane. Program ResourceManager śledzi stan uruchomionych aplikacji, dostępnej pojemności klastra i śledzi aplikacje w miarę ich kończenia i zwalniają zasoby. 
 
-ResourceManager również uruchamia proces serwera sieci web, która zapewnia interfejs użytkownika sieci web, aby monitorować stan aplikacji.
+Obiekt ResourceManager również uruchamia proces serwera sieci Web, który udostępnia interfejs użytkownika sieci Web do monitorowania stanu aplikacji.
 
-Gdy użytkownik przesyła aplikacji MapReduce, aby uruchomić w klastrze, aplikacja jest przesyłany do usługi Menedżera zasobów. Z kolei ResourceManager przydziela kontenerze na dostępne węzły NodeManager. Węzły NodeManager są na tym, gdzie aplikacja faktycznie wykonuje. Pierwszy kontener przydzielone uruchamia specjalnej aplikacji o nazwie ApplicationMaster. Ta ApplicationMaster jest odpowiedzialny za pobieranie zasobów w postaci kolejnych kontenery, potrzebne do uruchomienia przesłanej aplikacji. ApplicationMaster sprawdza etapy aplikacji, na przykład na etapie mapy i zmniejszyć etapów i czynniki jak dużo danych wymaga przetworzenia. Następnie żąda ApplicationMaster (*negocjuje*) zasobów z Menedżera zasobów w imieniu aplikacji. Menedżera zasobów z kolei przydziela zasoby z NodeManagers w klastrze ApplicationMaster go do użycia podczas wykonywania aplikacji. 
+Gdy użytkownik przesyła aplikację MapReduce do uruchamiania w klastrze, aplikacja zostanie przesłana do elementu ResourceManager. Z kolei obiekt ResourceManager przydziela kontener w dostępnych węzłach Nodemanager. Węzły Nodemanager to miejsce, w którym aplikacja jest faktycznie wykonywana. Pierwszy przydzielony kontener uruchamia specjalną aplikację o nazwie ApplicationMaster. Ten ApplicationMaster jest odpowiedzialny za pozyskiwanie zasobów w formie kolejnych kontenerów, co jest konieczne do uruchomienia przesłanej aplikacji. ApplicationMaster bada etapy aplikacji, na przykład etap mapy i zmniejsza etap, oraz czynniki, w których należy przetworzyć dane. ApplicationMaster następnie żąda (*negocjuje*) zasobów z obiektu ResourceManager w imieniu aplikacji. Program ResourceManager z kolei przydaje zasoby z NodeManagers w klastrze do ApplicationMaster, aby można było użyć ich do wykonywania aplikacji. 
 
-NodeManagers wykonania zadań, które tworzą aplikację, następnie sprawozdania ich postęp i stan ApplicationMaster. ApplicationMaster z kolei informuje o stanie aplikacji do Menedżera zasobów. ResourceManager zwraca wyniki do klienta.
+NodeManagers uruchamia zadania wchodzące w skład aplikacji, a następnie raportuje postęp i stan z powrotem do ApplicationMaster. ApplicationMaster z kolei raportuje stan aplikacji z powrotem do obiektu ResourceManager. Datasourcemanager zwraca wyniki do klienta.
 
-## <a name="yarn-on-hdinsight"></a>YARN na HDInsight
+## <a name="yarn-on-hdinsight"></a>PRZĘDZa w usłudze HDInsight
 
-Wszystkie typy klastrów HDInsight wdrożenie usługi YARN. Menedżera zasobów jest wdrażany w celu zapewnienia wysokiej dostępności przy użyciu wystąpienia podstawowego i pomocniczego, który jest uruchamiany w pierwszy i drugi węzłów głównych w klastrze odpowiednio. Tylko jedno wystąpienie ResourceManager jest aktywny w danym momencie. Uruchamianie wystąpienia NodeManager dostępnych procesów roboczych w różnych węzłach klastra.
+Wszystkie typy klastrów usługi HDInsight wdrażają PRZĘDZę. Program ResourceManager został wdrożony w celu zapewnienia wysokiej dostępności z wystąpieniem podstawowym i pomocniczym, które działa odpowiednio do pierwszego i drugiego węzła głównego w klastrze. Tylko jedno wystąpienie obiektu ResourceManager jest aktywne w danym momencie. Wystąpienia Nodemanager działają w ramach dostępnych węzłów procesu roboczego w klastrze.
 
-![YARN na HDInsight](./media/hdinsight-hadoop-architecture/yarn-on-hdinsight.png)
+![PRZĘDZa w usłudze HDInsight](./media/hdinsight-hadoop-architecture/yarn-on-hdinsight.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Korzystanie z technologii MapReduce na platformie Apache Hadoop w usłudze HDInsight](hadoop/hdinsight-use-mapreduce.md)
 * [Wprowadzenie do usługi Azure HDInsight](hadoop/apache-hadoop-introduction.md)

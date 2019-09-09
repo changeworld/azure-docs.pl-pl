@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 7171923e4badb3355a64b63515d40e73fadca6b0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4e568d2322088d9f6f6b4f9ad6e4b3cd98f25a47
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596360"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376059"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Wdrażanie modułu zabezpieczeń na urządzeniu IoT Edge
 
@@ -42,7 +42,7 @@ Wykonaj następujące kroki, aby wdrożyć Azure Security Center dla modułu zab
 
 - W IoT Hub upewnij się, że urządzenie jest [zarejestrowane jako urządzenie IoT Edge](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal).
 
-- Azure Security Center modułu IoT Edge wymaga zainstalowania na urządzeniu IoT Edge [platformy](https://linux.die.net/man/8/auditd) z inspekcją.
+- Azure Security Center modułu IoT Edge wymaga zainstalowania na urządzeniu IoT Edge [platformy z inspekcją](https://linux.die.net/man/8/auditd) .
 
     - Zainstaluj platformę, uruchamiając następujące polecenie na urządzeniu IoT Edge:
    
@@ -64,7 +64,7 @@ Wykonaj następujące kroki, aby wdrożyć Azure Security Center dla modułu zab
 
 1. Kliknij przycisk **Utwórz** , aby skonfigurować wdrożenie. 
 
-1. Wybierz subskrypcję platformy Azure IoT Hub, a następnie wybierz **IoT Hub**.<br>Wybierz pozycję **Wdróż na urządzeniu** przeznaczonym dla jednego urządzenia lub wybierz pozycję **Wdróż w odpowiedniej skali** , aby wybrać miejsce docelowe wielu urządzeń, a następnie kliknij pozycję **Utwórz**. Aby uzyskać więcej informacji na temat wdrażania w skali, zobacz artykuł [jak wdrożyć](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor). 
+1. Wybierz **subskrypcję** platformy Azure IoT Hub, a następnie wybierz **IoT Hub**.<br>Wybierz pozycję **Wdróż na urządzeniu** przeznaczonym dla jednego urządzenia lub wybierz pozycję **Wdróż w odpowiedniej skali** , aby wybrać miejsce docelowe wielu urządzeń, a następnie kliknij pozycję **Utwórz**. Aby uzyskać więcej informacji na temat wdrażania w skali, zobacz artykuł [jak wdrożyć](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor). 
 
     >[!Note] 
     >W przypadku wybrania **wdrożenia w odpowiedniej skali**należy dodać nazwę i szczegóły urządzenia przed przejściem do karty **Dodawanie modułów** w poniższych instrukcjach.     
@@ -138,11 +138,11 @@ Istnieją trzy kroki umożliwiające utworzenie wdrożenia IoT Edge dla Azure Se
 1. Kliknij przycisk **Dalej**.
 
     ~~~Default implicit route
-    "route": "FROM /messages/* INTO $upstream 
+    "route": "FROM /messages/* INTO $upstream" 
     ~~~
 
     ~~~Explicit route
-    "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream
+    "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
     ~~~
 
 #### <a name="step-3-review-deployment"></a>Krok 3: Przejrzyj wdrożenie
@@ -161,7 +161,7 @@ Jeśli wystąpi problem, dzienniki kontenerów są najlepszym sposobem poznania 
    
 1. Sprawdź, czy są uruchomione następujące kontenery:
    
-   | Name (Nazwa) | IMAGE |
+   | Name | IMAGE |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
    | edgeHub | mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview |

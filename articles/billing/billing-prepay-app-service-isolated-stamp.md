@@ -1,31 +1,31 @@
 ---
-title: Przedpłata za Azure App Service wydzielona sygnatura z zastrzeżoną pojemnością
-description: Dowiedz się, w jaki sposób możesz przedstawić opłatę za Azure App Serviceą za wydzieloną sygnaturę, aby zaoszczędzić pieniądze.
+title: Oszczędność kosztów Azure App Servicej opłaty za wyizolowaną sygnaturę z zarezerwowaną pojemnością
+description: Dowiedz się, w jaki sposób można zaoszczędzić koszty Azure App Servicej opłaty za wydzieloną sygnaturę z zarezerwowaną pojemnością.
 services: billing
 author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 08/02/2019
+ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: f122ec2474c09cdd6c9ada4ddc59b1adb44f619f
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 5161f18499c082b7064eec2be612557ba09eec97
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780000"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806358"
 ---
-# <a name="prepay-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Przedpłata za Azure App Service wydzielona sygnatura z zastrzeżoną pojemnością
+# <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Oszczędność kosztów Azure App Servicej opłaty za wyizolowaną sygnaturę z zarezerwowaną pojemnością
 
-Opłaty za korzystanie z sygnatury oddzielone na Azure App Service mogą być naliczane przez zapłatę za użycie pieczęci przez trzy lata. Aby kupić zastrzeżoną pojemność opłaty za pieczęć, należy wybrać region platformy Azure, w którym zostanie wdrożona sygnatura, oraz liczbę sygnatur do zakupu.
+Możesz zaoszczędzić pieniądze na Azure App Service odizolowanych opłat za sygnaturę, przekazując do rezerwacji za użycie sygnatury przez trzy lata. Aby kupić zastrzeżoną pojemność opłaty za pieczęć, należy wybrać region platformy Azure, w którym zostanie wdrożona sygnatura, oraz liczbę sygnatur do zakupu.
 
 W przypadku zakupienia rezerwacji użycie opłaty za sygnaturę odizolowaną, która jest zgodna z atrybutami rezerwacji, nie jest już naliczana według stawek płatność zgodnie z rzeczywistym użyciem. Rezerwacja jest stosowana automatycznie do liczby wyizolowanych sygnatur, które pasują do zakresu i regionu zarezerwowanej pojemności. Nie musisz przypisywać rezerwacji do wydzielonej sygnatury. Rezerwacja nie dotyczy procesów roboczych, więc opłaty za inne zasoby skojarzone z sygnaturą są naliczane oddzielnie.
 
-Po wygaśnięciu zarezerwowanej pojemności nadal działają odizolowane sygnatury, ale opłaty są naliczane według stawki płatności zgodnie z rzeczywistym użyciem. Rezerwacje nie są odnawiane automatycznie.
+Po wygaśnięciu zarezerwowanej pojemności nadal działają odizolowane sygnatury, ale opłaty są naliczane według stawki płatności zgodnie z rzeczywistym użyciem. Rezerwacje nie są automatycznie odnawiane.
 
 ## <a name="determine-the-right-reservation-to-purchase"></a>Określanie odpowiedniej rezerwacji do zakupu
 
-Zakup rezerwacji polega na przedpłaceniu za użycie zarezerwowanych ilości przez okres dłuższy niż następne trzy lata. Sprawdź dane dotyczące użycia, aby określić, ile izolowana usługa App Service sygnatur, z których korzystasz, i które mogą być używane w przyszłości.
+Zakup rezerwacji polega na tym, że w ciągu następnych trzech lat zobowiązuje się do korzystania z zarezerwowanych ilości. Sprawdź dane dotyczące użycia, aby określić, ile izolowana usługa App Service sygnatur, z których korzystasz, i które mogą być używane w przyszłości.
 
 Ponadto upewnij się, że wiesz, jak wydzielona sygnatura emituje system Linux lub Windows.
 
@@ -39,7 +39,7 @@ Kup rezerwacje sygnatur systemu Windows, jeśli masz co najmniej jednego pracown
 
 ## <a name="buy-isolated-stamp-reserved-capacity"></a>Kupowanie zarezerwowanej sygnatury pojemności
 
-Możesz kupić wyizolowaną pojemność zastrzeżoną dla [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D). Aby kupić zastrzeżoną pojemność, musisz mieć rolę właściciela dla co najmniej jednej subskrypcji przedsiębiorstwa lub pojedynczej subskrypcji z stawką płatność zgodnie z rzeczywistym użyciem.
+Możesz kupić wyizolowaną pojemność zastrzeżoną dla [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D). Płatność za rezerwację z [góry lub miesięczna płatność](billing-monthly-payments-reservations.md). Aby kupić zastrzeżoną pojemność, musisz mieć rolę właściciela dla co najmniej jednej subskrypcji przedsiębiorstwa lub pojedynczej subskrypcji z stawką płatność zgodnie z rzeczywistym użyciem.
 
 - W przypadku subskrypcji przedsiębiorstwa w [portalu EA](https://ea.azure.com/)należy włączyć opcję **Dodaj wystąpienia zarezerwowane** . Jeśli to ustawienie jest wyłączone, musisz być administratorem EA.
 - W przypadku programu Cloud Solution Provider (CSP) tylko agenci administracyjni lub agenci sprzedaży mogą zakupić SQL Data Warehouse zarezerwowaną pojemność.
@@ -47,7 +47,7 @@ Możesz kupić wyizolowaną pojemność zastrzeżoną dla [Azure Portal](https:/
 **Aby kupić:**
 
 1. Przejdź do [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D).
-1. Wybierz subskrypcję. Użyj listy **subskrypcja** , aby wybrać subskrypcję, która jest używana do regulowania zarezerwowanej pojemności. W przypadku metody płatności w ramach subskrypcji jest naliczana opłata z tytułu kosztów ponoszonych z góry. Typ subskrypcji musi być umową Enterprise Agreement (numery ofert: MS-AZR-0017P lub MS-AZR-0148P) lub płatność zgodnie z rzeczywistym użyciem (numery ofert: MS-AZR-0003P lub MS-AZR-0023P) lub z subskrypcją dostawcy usług kryptograficznych.
+1. Wybierz subskrypcję. Użyj listy **subskrypcja** , aby wybrać subskrypcję, która jest używana do regulowania zarezerwowanej pojemności. Metoda płatności za subskrypcję jest naliczana za koszt zarezerwowanej pojemności. Typ subskrypcji musi być umową Enterprise Agreement (numery ofert: MS-AZR-0017P lub MS-AZR-0148P) lub płatność zgodnie z rzeczywistym użyciem (numery ofert: MS-AZR-0003P lub MS-AZR-0023P) lub z subskrypcją dostawcy usług kryptograficznych.
     - W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka.
     - W przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem opłaty obciążają kartę kredytową lub metodę płatności faktury powiązaną z subskrypcją.
 1. Wybierz **zakres** , aby wybrać zakres subskrypcji.
@@ -77,4 +77,4 @@ Aby uzyskać więcej informacji na temat sposobu, w jaki rabat związany z rezer
 - Aby dowiedzieć się więcej na temat Azure Reservations, zobacz następujące artykuły:
   - [Co to są Azure Reservations?](billing-save-compute-costs-reservations.md)
   - [Dowiedz się, w jaki sposób jest stosowany rabat związany z zarezerwowaną sygnaturą Azure App Service](billing-reservation-discount-app-service-isolated-stamp.md)
-  - [Informacje na temat użycia rezerwacji na potrzeby rejestracji w przedsiębiorstwie](billing-understand-reserved-instance-usage-ea.md)
+  - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](billing-understand-reserved-instance-usage-ea.md)

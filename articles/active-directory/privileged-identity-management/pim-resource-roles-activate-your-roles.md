@@ -1,9 +1,9 @@
 ---
-title: Uaktywnij Moje role zasobów platformy Azure w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak aktywować swoje role zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
+title: Aktywuj moje role zasobów platformy Azure w programie PIM-Azure Active Directory | Microsoft Docs
+description: Dowiedz się, jak aktywować role zasobów platformy Azure w Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,127 +12,127 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 06/28/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdce060006f65f2b0fb08023066ee504578bc552
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
+ms.openlocfilehash: 4e2bf1253f1c2f53b839a73034fcdb33f3aab463
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67501664"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804338"
 ---
-# <a name="activate-my-azure-resource-roles-in-pim"></a>Uaktywnij Moje role zasobów platformy Azure w usłudze PIM
+# <a name="activate-my-azure-resource-roles-in-pim"></a>Aktywuj moje role zasobów platformy Azure w usłudze PIM
 
-Członkowie kwalifikowania się do roli dla zasobów platformy Azure, za pomocą usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM), można zaplanować aktywacji dla przyszłej daty i godziny. Można również wybrać czas trwania aktywacji określonych w maksymalnym (skonfigurowane przez administratorów).
+Za pomocą usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kwalifikujące się elementy członkowskie roli dla zasobów platformy Azure mogą zaplanować aktywację dla przyszłej daty i godziny. Mogą również wybrać określony czas trwania aktywacji w maksymalnym (skonfigurowanym przez administratorów).
 
-W tym artykule jest przeznaczona dla uczestników, którzy muszą aktywować swoją rolę zasobu platformy Azure w usłudze PIM.
+Ten artykuł dotyczy członków, którzy muszą aktywować swoją rolę zasobów platformy Azure w usłudze PIM.
 
-## <a name="activate-a-role"></a>Uaktywnij rolę
+## <a name="activate-a-role"></a>Aktywuj rolę
 
-Gdy zachodzi potrzeba podjęcia roli zasobów platformy Azure, możesz poprosić aktywacji przy użyciu **Moje role** opcji nawigacji w usłudze PIM.
+Gdy musisz przejąć rolę zasobów platformy Azure, możesz zażądać aktywacji przy użyciu opcji nawigacji **Moje role** w programie PIM.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-1. Otwórz **usługi Azure AD Privileged Identity Management**. Aby uzyskać informacje dotyczące sposobu dodawania kafelka PIM do pulpitu nawigacyjnego, zobacz [rozpocząć korzystanie z usługi PIM](pim-getting-started.md).
+1. Otwórz **Azure AD Privileged Identity Management**. Aby uzyskać informacje na temat dodawania kafelka PIM do pulpitu nawigacyjnego, zobacz [Rozpoczynanie korzystania](pim-getting-started.md)z usługi PIM.
 
-1. Kliknij przycisk **Moje role**.
+1. Kliknij pozycję **Moje role**.
 
-    ![Strona Moje role przedstawiający role można uaktywnić](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
+    ![Strona Moje role pokazujące role, które można uaktywnić](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
 
-1. Kliknij przycisk **role zasobów platformy Azure** umożliwia wyświetlenie listy z ról uprawnionych zasobów platformy Azure.
+1. Kliknij pozycję **role zasobów platformy Azure** , aby wyświetlić listę kwalifikujących się ról zasobów platformy Azure.
 
-   ![Moje role — strona role zasobów platformy Azure](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
+   ![Moje role — strona ról zasobów platformy Azure](./media/pim-resource-roles-activate-your-roles/resources-my-roles-azure-resources.png) 
 
-1. W **role zasobów platformy Azure** listy, Znajdź rolę, którą chcesz aktywować.
+1. Na liście **role zasobów platformy Azure** Znajdź rolę, którą chcesz aktywować.
 
-    ![Role zasobów platformy Azure — Moja lista kwalifikujące się role](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
+    ![Role zasobów platformy Azure — lista wszystkich uprawnionych ról](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate.png)
 
-1. Kliknij przycisk **Aktywuj** aby otworzyć okienko aktywacji.
+1. Kliknij przycisk **Aktywuj** , aby otworzyć okienko Aktywuj.
 
-1. Jeśli Twoja rola wymaga uwierzytelniania wieloskładnikowego (MFA), kliknij **zweryfikować swoją tożsamość przed kontynuowaniem**. Musisz uwierzytelnić się jeden raz na sesję.
+1. Jeśli Twoja rola wymaga uwierzytelniania wieloskładnikowego (MFA), kliknij przycisk **Weryfikuj swoją tożsamość przed kontynuowaniem**. Musisz tylko raz uwierzytelnić się na sesję.
 
-    ![Zweryfikuj moją tożsamość za pomocą usługi MFA przed aktywację roli](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
+    ![Weryfikuj moją tożsamość z użyciem usługi MFA przed aktywacją roli](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
 
-1. Kliknij przycisk **Zweryfikuj moją tożsamość** i postępuj zgodnie z instrukcjami w celu zapewnienia dodatkowej weryfikacji zabezpieczeń.
+1. Kliknij pozycję **Weryfikuj moją tożsamość** i postępuj zgodnie z instrukcjami, aby zapewnić dodatkową weryfikację zabezpieczeń.
 
-    ![Ekran w celu zapewnienia weryfikacji zabezpieczeń, takie jak kod PIN](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
+    ![Ekran zapewniający weryfikację zabezpieczeń, np. kod PIN](./media/pim-resource-roles-activate-your-roles/resources-mfa-enter-code.png)
 
-1. Jeśli chcesz określić ograniczonym zakresie, kliknij przycisk **zakres** aby otworzyć okienko filtru zasobów.
+1. Jeśli chcesz określić ograniczony zakres, kliknij pozycję **zakres** , aby otworzyć okienko filtr zasobów.
 
-    Jest najlepszym rozwiązaniem, aby tylko żądania dostępu do zasobów, których potrzebujesz. Na okienka filtru zasobu można określić grupy zasobów lub zasobów, które muszą mieć dostęp do.
+    Najlepszym rozwiązaniem jest zażądanie dostępu do zasobów, które są potrzebne. W okienku Filtr zasobów można określić grupy zasobów lub zasoby, do których jest wymagany dostęp.
 
-    ![Aktywuj — okienko filtru zasobu do określania zakresu](./media/pim-resource-roles-activate-your-roles/resources-my-roles-resource-filter.png)
+    ![Aktywuj okienko filtru zasobów, aby określić zakres](./media/pim-resource-roles-activate-your-roles/resources-my-roles-resource-filter.png)
 
-1. Jeśli to konieczne, należy określić czas rozpoczęcia aktywacji niestandardowych. Element członkowski zostanie aktywowany po wybranej godzinie.
+1. W razie potrzeby określ czas rozpoczęcia aktywacji niestandardowej. Członek zostanie aktywowany po wybranym czasie.
 
-1. W **Przyczyna** Wprowadź przyczynę żądania aktywacji.
+1. W polu **Przyczyna** wprowadź przyczynę żądania aktywacji.
 
-    ![Ukończone okienko Aktywuj z zakresu, czas rozpoczęcia, czas trwania i przyczyny](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
+    ![Okienko ukończono aktywację z zakresem, czasem rozpoczęcia, czasem trwania i przyczynie](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-done.png)
 
 1. Kliknij pozycję **Aktywuj**.
 
-    Jeśli rola wymaga zatwierdzenia, jest aktywowana i dodany do listy aktywnych ról. Jeśli chcesz korzystać z roli, wykonaj kroki opisane w następnej sekcji.
+    Jeśli rola nie wymaga zatwierdzenia, zostanie aktywowana i dodana do listy aktywnych ról. Jeśli chcesz użyć roli, postępuj zgodnie z instrukcjami w następnej sekcji.
 
-    Jeśli [rola wymaga zatwierdzenia](pim-resource-roles-approval-workflow.md) można aktywować, powiadomienie pojawi się w prawym górnym rogu przeglądarki informujące o tym, żądanie oczekuje na zatwierdzenie.
+    Jeśli [rola wymaga zatwierdzenia](pim-resource-roles-approval-workflow.md) do aktywacji, w prawym górnym rogu przeglądarki zostanie wyświetlone powiadomienie z informacją, że żądanie oczekuje na zatwierdzenie.
 
-    ![Żądanie aktywacji jest powiadomienie o oczekujących na zatwierdzenie](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
+    ![Żądanie aktywacji oczekuje na powiadomienie o zatwierdzeniu](./media/pim-resource-roles-activate-your-roles/resources-my-roles-activate-notification.png)
 
-## <a name="use-a-role-immediately-after-activation"></a>Użyj roli od razu po aktywacji
+## <a name="use-a-role-immediately-after-activation"></a>Korzystanie z roli natychmiast po aktywacji
 
-W przypadku wszelkich opóźnień po wykonaniu aktywacji wykonaj następujące czynności, po aktywowaniu natychmiastowe korzystanie role zasobów platformy Azure.
+W przypadku wszelkich opóźnień po aktywacji wykonaj następujące czynności po aktywowaniu programu, aby natychmiast korzystać z ról zasobów platformy Azure.
 
-1. Otwórz program Azure AD Privileged Identity Management.
+1. Otwórz Azure AD Privileged Identity Management.
 
-1. Kliknij przycisk **Moje role** umożliwia wyświetlenie listy z kwalifikujących się ról usługi Azure AD i role zasobów platformy Azure.
+1. Kliknij pozycję **Moje role** , aby wyświetlić listę uprawnionych ról usługi Azure AD i ról zasobów platformy Azure.
 
-1. Kliknij przycisk **role zasobów platformy Azure**.
+1. Kliknij pozycję **role zasobów platformy Azure**.
 
-1. Kliknij przycisk **aktywnych ról** kartę.
+1. Kliknij kartę **aktywne role** .
 
 1. Po uaktywnieniu roli Wyloguj się z portalu i zaloguj się ponownie.
 
-    Roli powinno być teraz dostępne do użycia.
+    Rola powinna być teraz dostępna do użycia.
 
-## <a name="view-the-status-of-your-requests"></a>Wyświetl stan swoich żądań
+## <a name="view-the-status-of-your-requests"></a>Wyświetlanie stanu żądań
 
-Można wyświetlić stan Oczekujące żądania aktywowania.
+Można wyświetlić stan oczekujących żądań, które należy aktywować.
 
-1. Otwórz program Azure AD Privileged Identity Management.
+1. Otwórz Azure AD Privileged Identity Management.
 
-1. Kliknij przycisk **Moje żądania** umożliwia wyświetlenie listy roli usługi Azure AD i rolach usługi Azure resource żądań.
+1. Kliknij pozycję **Moje żądania** , aby wyświetlić listę ról usługi Azure AD i żądań ról zasobów platformy Azure.
 
-    ![Moje żądania - przedstawiający oczekujące żądania stronę zasobów platformy Azure](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
+    ![Moje żądania — Strona zasobów platformy Azure zawierająca oczekujące żądania](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
 
-1. Przewiń w prawo, aby wyświetlić **stan żądania** kolumny.
+1. Przewiń w prawo, aby wyświetlić kolumnę **stan żądania** .
 
 ## <a name="cancel-a-pending-request"></a>Anulowanie oczekującego żądania
 
-Jeśli nie jest wymagane uaktywnienie roli, która wymaga zatwierdzenia, możesz anulować w dowolnym momencie oczekującego żądania.
+Jeśli nie wymagasz aktywacji roli wymagającej zatwierdzenia, możesz w dowolnym momencie anulować oczekujące żądanie.
 
-1. Otwórz program Azure AD Privileged Identity Management.
+1. Otwórz Azure AD Privileged Identity Management.
 
-1. Kliknij przycisk **Moje żądania**.
+1. Kliknij pozycję **Moje żądania**.
 
-1. Dla tej roli, którą chcesz anulować, kliknij przycisk **anulować** łącza.
+1. W przypadku roli, którą chcesz anulować, kliknij link **Anuluj** .
 
-    Gdy klikniesz przycisk Anuluj, żądanie zostanie anulowane. Aby aktywować rolę ponownie, trzeba będzie przesłać nowe żądanie aktywacji.
+    Po kliknięciu przycisku Anuluj żądanie zostanie anulowane. Aby ponownie aktywować rolę, trzeba będzie przesłać nowe żądanie aktywacji.
 
-   ![Moja lista żądania przy użyciu akcji anulowania wyróżniony](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
+   ![Lista moje żądania z wyróżnioną akcją anulowania](./media/pim-resource-roles-activate-your-roles/resources-my-requests-cancel.png)
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-### <a name="permissions-are-not-granted-after-activating-a-role"></a>Nie udzielono uprawnienia po aktywacji roli
+### <a name="permissions-are-not-granted-after-activating-a-role"></a>Nie udzielono uprawnień po aktywowaniu roli
 
-Po aktywacji roli w usłudze PIM aktywacji nie może natychmiast propagowane do wszystkich portalach, które wymagają ról uprzywilejowanych. Czasami nawet wtedy, gdy zmiany są rozprowadzane, sieci web, pamięci podręcznej w portalu może spowodować zmiany nie wpływają od razu. Jeśli proces aktywacji jest opóźnione, Oto co należy zrobić.
+W przypadku aktywowania roli w programie PIM Aktywacja może nie być natychmiast propagowana do wszystkich portali, które wymagają roli uprzywilejowanej. Czasami nawet po rozpropagowaniu zmiany buforowanie internetowe w portalu może spowodować, że zmiany nie zostaną natychmiast uwzględnione. Jeśli aktywacja jest opóźniona, Oto co należy zrobić.
 
-1. Wyloguj się z witryny Azure portal, a następnie zaloguj się ponownie.
+1. Wyloguj się z witryny Azure Portal, a następnie zaloguj się ponownie.
 
-    Podczas aktywacji roli zasobów platformy Azure, zobaczysz etapy proces aktywacji. Po zakończeniu wszystkich etapów zobaczysz **Wyloguj** łącza. Aby się wylogować, można użyć tego łącza. Rozwiąże to najczęściej activation opóźnienia.
+    Po aktywowaniu roli zasobów platformy Azure zobaczysz etapy aktywacji. Po zakończeniu wszystkich etapów zobaczysz link **Wyloguj**. Możesz go użyć do wylogowania się. Rozwiąże to większość problemów z opóźnieniem aktywacji.
 
-1. W usłudze PIM Sprawdź, czy jesteś członkiem roli.
+1. W programie PIM Sprawdź, czy jesteś członkiem roli.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Rozszerzanie lub odnawianie ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-renew-extend.md)
-- [Uaktywnij Moje role usługi Azure AD w usłudze PIM](pim-how-to-activate-role.md)
+- [Przedłużanie lub odnowienie ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-renew-extend.md)
+- [Aktywowanie ról usługi Azure AD w usłudze PIM](pim-how-to-activate-role.md)
