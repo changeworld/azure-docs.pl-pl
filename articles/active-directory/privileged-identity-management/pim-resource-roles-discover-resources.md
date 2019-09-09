@@ -1,9 +1,9 @@
 ---
-title: Odnajdź zasoby platformy Azure do zarządzania w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Odnajdywanie zasobów platformy Azure do zarządzania w usłudze PIM Azure Active Directory | Microsoft Docs
 description: Dowiedz się, jak odnajdywać zasoby platformy Azure do zarządzania w usłudze Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
@@ -12,59 +12,59 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b9ca4862f129b2da23a1d1ad8bb0b1bd0a5078f
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: ef1f1712ab7474747829c8744a39e74b78777668
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476279"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804166"
 ---
-# <a name="discover-azure-resources-to-manage-in-pim"></a>Odnajdź zasoby platformy Azure do zarządzania w usłudze PIM
+# <a name="discover-azure-resources-to-manage-in-pim"></a>Odnajdywanie zasobów platformy Azure do zarządzania w usłudze PIM
 
-Za pomocą usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM), możesz zwiększyć ochronę zasobów platformy Azure. Jest to przydatne, aby organizacje, które już używają do ochrony ról usługi Azure AD PIM i właściciele grupy i subskrypcji zarządzania, którzy chcą zabezpieczanie zasobów w środowisku produkcyjnym.
+Za pomocą usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM) można poprawić ochronę zasobów platformy Azure. Jest to pomocne w organizacjach, które już używają usługi PIM do ochrony ról Azure AD i grup zarządzania i właścicieli subskrypcji, którzy chcą zabezpieczyć zasoby produkcyjne.
 
-Po skonfigurowaniu usługi PIM dla zasobów platformy Azure, należy odnaleźć i wybrać zasoby, które mają być chronione przez usługę PIM. Nie ma żadnego limitu liczby zasobów, którymi można zarządzać za pomocą usługi PIM. Firma Microsoft zaleca jednak począwszy od najbardziej krytycznych zasobów (produkcja).
+Podczas pierwszego konfigurowania usług PIM dla zasobów platformy Azure należy odnaleźć i wybrać zasoby, które mają być chronione za pomocą usługi PIM. Nie ma limitu liczby zasobów, którymi można zarządzać za pomocą programu PIM. Zalecamy jednak rozpoczęcie od najbardziej krytycznych zasobów (produkcyjnych).
 
 ## <a name="discover-resources"></a>Odnajdź zasoby
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-1. Otwórz **usługi Azure AD Privileged Identity Management**.
+1. Otwórz **Azure AD Privileged Identity Management**.
 
-1. Kliknij przycisk **zasobów platformy Azure**.
+1. Kliknij pozycję **zasoby platformy Azure**.
 
-    Jeśli po raz pierwszy przy użyciu usługi PIM dla zasobów platformy Azure, zostanie wyświetlone okienko odnajdywanie zasobów.
+    Jeśli korzystasz z usług PIM dla zasobów platformy Azure po raz pierwszy, zobaczysz okienko odnajdywanie zasobów.
 
-    ![Odnajdź zasoby okienko z żadnych zasobów wymienionych dla pierwszego środowiska czasu](./media/pim-resource-roles-discover-resources/discover-resources-first-run.png)
+    ![Okienko odnajdywanie zasobów bez zasobów wymienionych na potrzeby pierwszego uruchomienia](./media/pim-resource-roles-discover-resources/discover-resources-first-run.png)
 
-    Jeśli innego zasobu lub katalogu administratora w organizacji jest już zarządzać zasobami platformy Azure w usłudze PIM, zobaczysz listę zasobów, które są obecnie zarządzane.
+    Jeśli inny zasób lub administrator katalogu w organizacji zarządza zasobami platformy Azure w usłudze PIM, zostanie wyświetlona lista zasobów, które są aktualnie zarządzane.
 
-    ![Odnajdź zasoby okienko listę zasobów, które są obecnie zarządzane](./media/pim-resource-roles-discover-resources/discover-resources.png)
+    ![Okienko odnajdywania zasobów zawierające listę aktualnie zarządzanych zasobów](./media/pim-resource-roles-discover-resources/discover-resources.png)
 
-1. Kliknij przycisk **odnajdywania zasobów** można uruchomić środowiska odnajdywania.
+1. Kliknij pozycję **odkryj zasoby** , aby uruchomić środowisko odnajdywania.
 
-    ![Wyświetlanie zasobów, które mogą być zarządzane, takie jak subskrypcji i grup zarządzania w okienku odnajdywania](./media/pim-resource-roles-discover-resources/discovery-pane.png)
+    ![Okienko odnajdywania zawierające listę zasobów, którymi można zarządzać, takich jak subskrypcje i grupy zarządzania](./media/pim-resource-roles-discover-resources/discovery-pane.png)
 
-1. W okienku odnajdywania użyj **filtr stanu zasobów** i **wybierz typ zasobu** do filtrowania zarządzania grupy lub subskrypcji masz uprawnienie do zapisu do. Najłatwiej prawdopodobnie zaczynać **wszystkich** początkowo.
+1. W okienku odnajdywania Użyj **filtru stanu zasobów** i **Wybierz typ zasobu** , aby odfiltrować grupy zarządzania lub subskrypcje, do których masz uprawnienia do zapisu. Prawdopodobnie najłatwiej **zacząć od początku** .
 
-    Można jedynie Wyszukaj i wybierz zasoby do grupy lub subskrypcji zarządzania można zarządzać za pomocą usługi PIM. Jeśli zarządzasz grupę zarządzania lub subskrypcji w usłudze PIM, możesz zarządzać jego zasoby podrzędne.
+    Możesz wyszukać i wybrać grupę zarządzania lub zasoby subskrypcji, aby zarządzać za pomocą programu PIM. W przypadku zarządzania grupą zarządzania lub subskrypcją w usłudze PIM można także zarządzać swoimi zasobami podrzędnymi.
 
-1. Dodaj znacznik wyboru obok niezarządzane zasoby, które mają być zarządzane.
+1. Dodaj znacznik wyboru obok wszystkich niezarządzanych zasobów, którymi chcesz zarządzać.
 
-1. Kliknij przycisk **zarządzanie zasobami** do rozpoczęcia zarządzania wybranych zasobów.
+1. Kliknij pozycję **Zarządzaj zasobem** , aby rozpocząć zarządzanie wybranymi zasobami.
 
     > [!NOTE]
-    > Po grupę zarządzania lub subskrypcji jest ustawiony do zarządzanego, nie może być niezarządzane. Zapobiega to usunięcie ustawień usługi PIM przez innego administratora zasobów.
+    > Gdy grupa lub subskrypcja zarządzania jest ustawiona na wartość zarządzane, nie może być niezarządzana. Zapobiega to usunięciu ustawień usługi PIM przez innego administratora zasobów.
 
-    ![Okienko odnajdywania z zasobem, który został wybrany i wyróżnioną opcją zasobów zarządzania](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
+    ![Okienko odnajdywania z wybranym zasobem i z wyróżnioną opcją Zarządzaj zasobem](./media/pim-resource-roles-discover-resources/discovery-manage-resource.png)
 
-1. Jeśli zostanie wyświetlony komunikat o potwierdzenie dołączanie wybranego zasobu do zarządzania, kliknij przycisk **tak**.
+1. Jeśli zostanie wyświetlony komunikat z prośbą o potwierdzenie dołączenia wybranego zasobu do zarządzania, kliknij przycisk **tak**.
 
-    ![Komunikat potwierdzający dołączyć wybranych zasobów do zarządzania](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
+    ![Komunikat potwierdzający dołączenie wybranych zasobów do zarządzania](./media/pim-resource-roles-discover-resources/discovery-manage-resource-message.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - [Konfigurowanie ustawień roli zasobów platformy Azure w usłudze PIM](pim-resource-roles-configure-role-settings.md)
-- [Przypisz role zasobów platformy Azure w usłudze PIM](pim-resource-roles-assign-roles.md)
+- [Przypisywanie ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-assign-roles.md)

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cf5b6d4cadf4592fbaa19c89a969b20e9eb69b6
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 7be9a17bed2a39d16f813332c2d6effc03393264
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424263"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812729"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Rozwiązywanie problemów z serwera Proxy aplikacji i komunikaty o błędach
 
@@ -82,7 +82,7 @@ Ta lista zawiera błędy, które użytkownicy końcowi mogą wystąpić, gdy uż
 | Witryna sieci Web nie można wyświetlić strony. | Błąd ten może wystąpić użytkownika, podczas próby dostępu do aplikacji, która została opublikowana, jeśli aplikacja jest aplikacją programu OWA. Może to być spowodowane przez jedną z następujących czynności:<br><li>Zdefiniowane nazwy SPN dla tej aplikacji jest nieprawidłowy. Upewnij się, że nazwy SPN skonfigurowana dla tej aplikacji jest poprawna.</li><li>Użytkownik próbował uzyskać dostęp do aplikacji jest logowanie przy użyciu konta Microsoft, a nie prawidłowego konta firmowego lub użytkownik jest użytkownikiem-gościem. Upewnij się, że użytkownik loguje się przy użyciu swojego konta firmowego, zgodną z domeną opublikowanej aplikacji. Użytkownicy Account firmy Microsoft i gości nie mają dostępu Zintegrowane aplikacje.</li><li>Użytkownik próbujący uzyskać dostęp do aplikacji nie został poprawnie zdefiniowany dla tej aplikacji na stronie lokalnej. Upewnij się, że ten użytkownik ma odpowiednie uprawnienia zdefiniowane dla tej aplikacji zaplecza na maszynie lokalnej. |
 | Nie można uzyskać dostępu do tej aplikacji firmowej. Nie masz uprawnień dostępu do tej aplikacji. Autoryzacja nie powiodła się. Upewnij się przypisać użytkownika z dostępem do tej aplikacji. | Ten błąd może wystąpić podczas próby uzyskania dostępu do opublikowanej aplikacji w przypadku korzystania z kont Microsoft zamiast konta firmowego w celu zalogowania się. Użytkownicy-goście mogą również otrzymać ten błąd. Użytkownicy Account firmy Microsoft i gości nie mają dostępu Zintegrowane aplikacje. Upewnij się, że użytkownik loguje się przy użyciu swojego konta firmowego, zgodną z domeną opublikowanej aplikacji.<br><br>Może nie przypisano użytkowników do tej aplikacji. Przejdź do **aplikacji** kartę, a następnie w obszarze **użytkowników i grup**, przypisz tego użytkownika lub grupę użytkowników do tej aplikacji. |
 | Tej aplikacji firmowych nie jest dostępny w tej chwili. Spróbuj ponownie później... Upłynął limit czasu łącznika. | Ten błąd może wystąpić podczas próby uzyskania dostępu do opublikowanej aplikacji, jeśli nie są one prawidłowo zdefiniowane dla tej aplikacji na stronie lokalnej. Upewnij się, że użytkownicy mają odpowiednie uprawnienia zdefiniowane dla tej aplikacji zaplecza na maszynie lokalnej. |
-| Nie można uzyskać dostępu do tej aplikacji firmowej. Nie masz uprawnień dostępu do tej aplikacji. Autoryzacja nie powiodła się. Upewnij się, że użytkownik ma licencję usługi Azure Active Directory — wersja Premium lub podstawowa. | Ten błąd może wystąpić podczas próby uzyskania dostępu do opublikowanej aplikacji, jeśli nie zostały one jawnie przypisane do licencji Premium/Basic przez administratora subskrybenta. Przejdź do usługi Active Directory subskrybenta **licencji** kartę i upewnij się, że ten użytkownik lub grupa użytkowników ma przypisanej licencji wersji Premium lub podstawowa. |
+| Nie można uzyskać dostępu do tej aplikacji firmowej. Nie masz uprawnień dostępu do tej aplikacji. Autoryzacja nie powiodła się. Upewnij się, że użytkownik ma licencję na Azure Active Directory — wersja Premium. | Ten błąd może wystąpić podczas próby uzyskania dostępu do opublikowanej aplikacji, jeśli nie zostały one jawnie przypisane do licencji Premium przez administratora subskrybenta. Przejdź do karty Active Directory **licencji** na subskrybencie i upewnij się, że ten użytkownik lub ta grupa użytkowników ma przypisaną licencję Premium. |
 | Nie można znaleźć serwera o określonej nazwie hosta. | Ten błąd może wystąpić podczas próby uzyskania dostępu do opublikowanej aplikacji, jeśli domena niestandardowa aplikacji nie jest prawidłowo skonfigurowana. Upewnij się, że został przekazany certyfikat dla domeny i poprawnie skonfigurowano rekord DNS, wykonując kroki opisane w temacie [Praca z domenami niestandardowymi w usłudze Azure serwer proxy aplikacji usługi Azure AD](application-proxy-configure-custom-domain.md) |
 
 ## <a name="my-error-wasnt-listed-here"></a>Moje błąd nie został wymieniony w tym miejscu

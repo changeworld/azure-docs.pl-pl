@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: 05182b42be232ade4c4206abb9c68e632ad31c03
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 9aa9caca103efb138ca6e188f8dcb6a377e06f3a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275979"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813254"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>Kopiowanie danych z lub do usługi Azure File Storage przy użyciu usługi Azure Data Factory
 
@@ -85,12 +85,12 @@ Następujące właściwości są obsługiwane w przypadku pliku połączoną us�
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. 
 
-- W przypadku **Parquet, rozdzielonego tekstu, Avro i formatu binarnego**zapoznaj się z sekcją [Parquet, rozdzielaną tekstem, Avro i binarnym zestawem danych](#format-based-dataset) .
-- W przypadku innych formatów, takich jak **Format Orc/JSON**, zapoznaj się z sekcją [zestaw danych](#other-format-dataset) .
+- W przypadku **Parquet, rozdzielonego tekstu, JSON, Avro i formatu binarnego**zapoznaj się z sekcją [Parquet, rozdzielaną tekstem, JSON, Avro i binarny zestaw danych](#format-based-dataset) .
+- W przypadku innych formatów, takich jak **Format Orc**, zapoznaj się z sekcją [innego formatu zestawu danych](#other-format-dataset) .
 
-### <a name="format-based-dataset"></a>Parquet, rozdzielany tekstem, Avro i binarny zestaw danych
+### <a name="format-based-dataset"></a>Parquet, rozdzielony tekst, JSON, Avro i binarny zestaw danych
 
-Aby skopiować dane do i z **Parquet, rozdzielonego tekstu, Avro lub formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie zestawu danych i obsługiwanych ustawień. Następujące właściwości są obsługiwane przez usługę Azure File Storage w `location` obszarze Ustawienia w zestawie danych opartym na formacie:
+Aby skopiować dane do i z **Parquet, rozdzielonego tekstu, JSON, Avro i formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie zestawu danych opartym na formacie i obsługiwanymi ustawieniami . Następujące właściwości są obsługiwane przez usługę Azure File Storage w `location` obszarze Ustawienia w zestawie danych opartym na formacie:
 
 | Właściwość   | Opis                                                  | Wymagane |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -130,7 +130,7 @@ Aby skopiować dane do i z **Parquet, rozdzielonego tekstu, Avro lub formatu bin
 
 ### <a name="other-format-dataset"></a>Inny zestaw danych formatu
 
-Aby skopiować dane do i z usługi Azure File Storage w **formacie Orc/JSON**, obsługiwane są następujące właściwości:
+Aby skopiować dane do i z usługi Azure File Storage w **formacie Orc**, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -184,12 +184,12 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania dz
 
 ### <a name="azure-file-storage-as-source"></a>Usługa Azure File Storage jako źródło
 
-- Aby skopiować z **Parquet, rozdzielony tekst, Avro i format binarny**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem, Avro i plikiem binarnym](#format-based-source) .
-- Aby skopiować dane z innych formatów, takich jak **Format Orc/JSON**, zapoznaj się z sekcją [inne źródło formatu](#other-format-source) .
+- Aby skopiować z **Parquet, rozdzielony tekst, JSON, Avro i format binarny**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem, JSON, Avro i binarną](#format-based-source) .
+- Aby skopiować inne formaty, takie jak **Format Orc**, zapoznaj się z sekcją [inne źródło formatu](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, rozdzielany tekstem, Avro i binarny kod źródłowy
+#### <a name="format-based-source"></a>Parquet, rozdzielany tekstem, JSON, Avro i format binarny
 
-Aby skopiować dane z **Parquet, rozdzielonego tekstu, Avro lub formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielonym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie źródłowym działania kopiowania opartego na formacie i obsługiwanych ustawień . Następujące właściwości są obsługiwane przez usługę Azure File Storage w `storeSettings` obszarze Ustawienia w źródle kopiowania na podstawie formatu:
+Aby skopiować dane z **Parquet, rozdzielonego tekstu, JSON, Avro i formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym w formacie](format-binary.md) źródłowym i obsługiwanym przez program. Ustawienia. Następujące właściwości są obsługiwane przez usługę Azure File Storage w `storeSettings` obszarze Ustawienia w źródle kopiowania na podstawie formatu:
 
 | Właściwość                 | Opis                                                  | Wymagane                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -247,7 +247,7 @@ Aby skopiować dane z **Parquet, rozdzielonego tekstu, Avro lub formatu binarneg
 
 #### <a name="other-format-source"></a>Inne źródło formatowania
 
-Aby skopiować dane z usługi Azure File Storage w **formacie JSON**, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+Aby skopiować dane z usługi Azure File Storage w **formacie Orc**, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -289,12 +289,12 @@ Aby skopiować dane z usługi Azure File Storage w **formacie JSON**, w sekcji *
 
 ### <a name="azure-file-storage-as-sink"></a>Usługa Azure File Storage jako obiekt sink
 
-- Aby skopiować do **Parquet, rozdzielonego tekstu, Avro lub formatu binarnego**, zapoznaj się z sekcją [Parquet, rozdzieloną tekstem, Avro i plikiem sink formatu binarnego](#format-based-sink) .
-- Aby skopiować do innych formatów, takich jak **Format Orc/JSON**, zobacz sekcję [inne formatowanie ujścia](#other-format-sink) .
+- Aby skopiować do **Parquet, rozdzielonego tekstu, JSON, Avro i formatu binarnego**, zapoznaj się z sekcją [Parquet, rozdzielonym tekstem, JSON, Avro i binarnym ujścia formatu](#format-based-sink) .
+- Aby skopiować do innych formatów, takich jak **Format Orc**, zapoznaj się z sekcją [inne format ujścia](#other-format-sink) .
 
-#### <a name="format-based-sink"></a>Parquet, rozdzielony tekst, Avro i ujścia formatu binarnego
+#### <a name="format-based-sink"></a>Parquet, rozdzielony tekst, JSON, Avro i ujścia formatu binarnego
 
-Aby skopiować dane do **Parquet, rozdzielonego tekstu, Avro lub formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i formatem [binarnym](format-binary.md) w artykule dotyczącym ujścia działania kopiowania opartego na formacie i obsługiwanych ustawień. Następujące właściwości są obsługiwane przez usługę Azure File Storage w `storeSettings` obszarze Ustawienia w ujściach kopiowania opartych na formacie:
+Aby skopiować dane do **Parquet, rozdzielonego tekstu, JSON, Avro i formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i [formatem binarnym](format-binary.md) w artykule dotyczącym ujścia działania kopiowania opartego na formacie i obsługiwane Ustawienia. Następujące właściwości są obsługiwane przez usługę Azure File Storage w `storeSettings` obszarze Ustawienia w ujściach kopiowania opartych na formacie:
 
 | Właściwość                 | Opis                                                  | Wymagane |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -342,7 +342,7 @@ Aby skopiować dane do **Parquet, rozdzielonego tekstu, Avro lub formatu binarne
 
 #### <a name="other-format-sink"></a>Inny ujścia formatu
 
-Aby skopiować dane do usługi Azure File Storage w **formacie JSON**, w sekcji **ujścia** są obsługiwane następujące właściwości:
+Aby skopiować dane do platformy Azure File Storage w **formacie Orc**, w sekcji **ujścia** są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |

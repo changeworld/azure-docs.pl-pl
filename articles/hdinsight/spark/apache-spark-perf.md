@@ -1,6 +1,6 @@
 ---
-title: Optymalizowanie zadań platformy Spark dla wydajności — Azure HDInsight
-description: Pokazuje typowe strategie uzyskać najlepszą wydajność klastry Spark.
+title: Optymalizowanie zadań platformy Spark pod kątem wydajności — usługa Azure HDInsight
+description: Pokaż typowe strategie dla najlepszej wydajności klastrów Apache Spark w usłudze Azure HDInsight.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,132 +8,132 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 5701bb534d0fd0e25aab90f9d1035c96bb55c518
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d058c55eab3d161e625d7d4ca3ef53b36497e00
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476105"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814078"
 ---
 # <a name="optimize-apache-spark-jobs"></a>Optymalizowanie zadań platformy Apache Spark
 
-Dowiedz się, jak zoptymalizować [platformy Apache Spark](https://spark.apache.org/) konfiguracji klastra dla określonego obciążenia.  Najbardziej typowe wyzwaniem jest wykorzystanie pamięci, z powodu nieprawidłowej konfiguracji (szczególnie problem o rozmiarze executors) długotrwałych operacji i zadań, które powoduje Kartezjańskiego operacji. Można przyspieszyć zadania za pomocą odpowiedniej pamięci podręcznej i w celu umożliwienia [niesymetryczność danych](#optimize-joins-and-shuffles). Uzyskać najlepszą wydajność monitorować i przejrzyj długotrwałych i korzystające z zasobów wykonań zadań platformy Spark.
+Dowiedz się, jak zoptymalizować konfigurację klastra [Apache Spark](https://spark.apache.org/) dla określonego obciążenia.  Najczęstszym wyzwaniem jest wykorzystanie pamięci z powodu nieprawidłowych konfiguracji (szczególnie programów wykonujących niewłaściwe rozmiary), długotrwałych operacji i zadań, które powodują operacje kartezjańskiego. Można przyspieszyć zadania z odpowiednimi buforowaniem i zezwalać na [pochylenie danych](#optimize-joins-and-shuffles). Aby uzyskać najlepszą wydajność, Monitoruj i sprawdzaj długotrwałe i czasochłonne wykonywanie zadań platformy Spark.
 
-W poniższych sekcjach opisano typowe optymalizacje zadanie platformy Spark i zalecenia.
+W poniższych sekcjach opisano typowe optymalizacje i rekomendacje zadań platformy Spark.
 
-## <a name="choose-the-data-abstraction"></a>Wybierz pozyskiwania danych
+## <a name="choose-the-data-abstraction"></a>Wybieranie abstrakcji danych
 
-Wcześniejszych wersji platformy Spark za pomocą danych dane abstrakcyjne, 1.3 platformy Spark i 1.6 wprowadzone elementy Dataframe i zestawy danych, odpowiednio. Należy wziąć pod uwagę następujące względnych zalet:
+Starsze wersje platformy Spark używają odporne do danych abstrakcyjnych, Spark 1,3 i 1,6 wprowadzają odpowiednio dane Frame i DataSets. Rozważ następujące względne wartości:
 
-* **Elementy Dataframe**
-    * W większości przypadków najlepszy wybór.
-    * Udostępnia optymalizacji zapytań za pomocą Catalyst.
-    * Generowanie kodu w całości etapu.
+* **Ramki danych**
+    * Najlepszy wybór w większości sytuacji.
+    * Zapewnia optymalizację zapytania za poorednictwem katalizatora.
+    * Generowanie kodu w całym etapie.
     * Bezpośredni dostęp do pamięci.
-    * Niski wyrzucania elementów bezużytecznych (GC)
-    * Nie jak przyjazny dla dewelopera jako zestawy danych, ponieważ nie ma żadnych sprawdzanie w czasie kompilacji lub programowania obiektu domeny.
-* **Zestawy danych**
-    * Dobre w złożone potoki przetwarzania ETL, w których wpływ na wydajność jest do zaakceptowania.
-    * Nie są odpowiednie w agregacji, gdzie może być znaczny wpływ na wydajność.
-    * Udostępnia optymalizacji zapytań za pomocą Catalyst.
-    * Przyjazne dla deweloperów, zapewniając kontroli programowania i kompilacji obiektu domeny.
-    * Dodaje obciążenie serializacji/deserializacji.
-    * Wysokie obciążenie GC.
-    * Przerywa generowanie kodu w całości etapu.
+    * Obciążenie niskiego wyrzucania elementów bezużytecznych.
+    * Nie jako zestawy danych, które nie są przyjaznymi dla deweloperów, ponieważ nie są sprawdzane w czasie kompilacji ani programowanie obiektów domeny.
 * **Zestawów danych**
-    * Nie należy używać zestawów danych, chyba że potrzebne do tworzenia nowych RDD niestandardowych.
-    * Brak optymalizacji zapytań za pomocą Catalyst.
-    * Etap całości generowanie kodu nie.
-    * Wysokie obciążenie GC.
-    * Należy użyć starszej wersji 1.x Spark interfejsów API.
+    * Dobre w złożonych potokach ETL, w których wpływ na wydajność jest akceptowalny.
+    * Niedobre w agregacjach, w których wpływ na wydajność może być znaczny.
+    * Zapewnia optymalizację zapytania za poorednictwem katalizatora.
+    * Przyjazne dla deweloperów, zapewniając programowanie obiektów domeny i sprawdzanie w czasie kompilacji.
+    * Dodaje narzuty serializacji/deserializacji.
+    * Duże obciążenie GC.
+    * Przerywa generowanie kodu w całym etapie.
+* **Odporne**
+    * Nie trzeba używać odporne, chyba że trzeba utworzyć nową niestandardową RDD.
+    * Brak optymalizacji zapytania za poorednictwem katalizatora.
+    * Brak generowania kodu w całości.
+    * Duże obciążenie GC.
+    * Należy używać starszych interfejsów API Spark 1. x.
 
-## <a name="use-optimal-data-format"></a>Użyj formatu optymalne danych
+## <a name="use-optimal-data-format"></a>Korzystanie z optymalnego formatu danych
 
-Platforma Spark obsługuje wiele formatów, takich jak csv, json, xml, parquet, orc i avro. Platforma Spark można rozszerzyć do obsługi wielu formatach więcej z zewnętrznymi źródłami danych — Aby uzyskać więcej informacji, zobacz [pakietów platformy Apache Spark](https://spark-packages.org).
+Platforma Spark obsługuje wiele formatów, takich jak CSV, JSON, XML, Parquet, Orc i Avro. Platforma Spark może zostać rozszerzona w celu obsługi wielu formatów z zewnętrznymi źródłami danych — Aby uzyskać więcej informacji, zobacz [Apache Spark Packages](https://spark-packages.org).
 
-Najlepszy format dla wydajności jest parquet z *snappy kompresji*, co jest ustawieniem domyślnym platformie Spark 2.x. Parquet przechowuje dane w formacie kolumnowym i jest wysoce zoptymalizowane pod kątem platformie Spark.
+Najlepszym formatem wydajności jest Parquet z *kompresją przyciągania*, która jest wartością domyślną w platformie Spark 2. x. Parquet przechowuje dane w formacie kolumnowym i jest wysoce zoptymalizowany w Spark.
 
-## <a name="select-default-storage"></a>Wybierz magazyn domyślny
+## <a name="select-default-storage"></a>Wybieranie magazynu domyślnego
 
-Gdy tworzysz nowy klaster Spark, masz możliwość dokonania wyboru z usługi Azure Blob Storage lub Azure Data Lake Storage jako magazynu domyślnego klastra. Obie opcje zapewniają korzyści długoterminowego przejściowy klastrów, więc dane nie automatycznie usuwane po usunięciu klastra. Można ponownie utworzyć klaster przejściowy i nadal uzyskiwać dostęp do danych.
+Podczas tworzenia nowego klastra Spark można wybrać platformę Azure Blob Storage lub Azure Data Lake Storage jako domyślny magazyn klastra. Obie opcje umożliwiają korzystanie z magazynu długoterminowego na potrzeby klastrów przejściowych, dzięki czemu dane nie są automatycznie usuwane po usunięciu klastra. Możesz ponownie utworzyć tymczasowy klaster i nadal uzyskiwać dostęp do danych.
 
-| Typ Store | System plików | Szybkość | Przejściowe | Przypadki użycia |
+| Typ magazynu | System plików | Szybkość | Przejściowe | Przypadki użycia |
 | --- | --- | --- | --- | --- |
-| Azure Blob Storage | **wasb:** //url/ | **Standardowa** | Tak | Przejściowy klastra |
-| Azure Data Lake Storage Gen 2| **abfs [s]:** //url/ | **Faster** | Yes | Przejściowy klastra |
-| Azure Data Lake Storage Gen 1| **ADL:** //url/ | **Faster** | Yes | Przejściowy klastra |
-| Lokalny system plików HDFS | **hdfs:** //url/ | **Najszybszy** | Nie | Interaktywne klastra 24/7 |
+| Azure Blob Storage | **wasb:** //URL/ | **Standardowa** | Tak | Przejściowy klaster |
+| Azure Data Lake Storage Gen 2| **ABFS [s]:** //URL/ | **Większej** | Tak | Przejściowy klaster |
+| Azure Data Lake Storage Gen 1| **ADL:** //URL/ | **Większej** | Tak | Przejściowy klaster |
+| Lokalny system plików HDFS | **hdfs:** //url/ | **Najlepszy** | Nie | Interaktywny klaster 24/7 |
 
-## <a name="use-the-cache"></a>Użycie pamięci podręcznej
+## <a name="use-the-cache"></a>Użyj pamięci podręcznej
 
-Platforma Spark udostępnia swoje własne natywnej pamięci podręcznej mechanizmów, które mogą być używane za pośrednictwem różnych metod takich jak `.persist()`, `.cache()`, i `CACHE TABLE`. Natywne buforowania obowiązuje z małymi zestawami danych oraz jak wymagających wyników pośrednich w pamięci podręcznej dostępne potoki przetwarzania ETL. Jednak buforowania natywnego platformy Spark obecnie nie działa dobrze w przypadku partycjonowania, ponieważ tabeli pamięci podręcznej nie zachowuje partycjonowania danych. Jest bardziej ogólny i niezawodne techniki buforowania *buforowania warstwy magazynowania*.
+Platforma Spark zapewnia własne natywne mechanizmy buforowania, które mogą być używane przez różne metody, `.persist()`takie `.cache()`jak, `CACHE TABLE`, i. Natywne buforowanie jest efektywne w przypadku małych zestawów danych oraz potoków ETL, w których należy buforować pośrednie wyniki. Jednak natywne buforowanie Spark obecnie nie działa prawidłowo z partycjonowaniem, ponieważ tabela w pamięci podręcznej nie zachowuje danych partycjonowania. Bardziej generyczną i niezawodną techniką buforowania jest *buforowanie warstwy magazynowania*.
 
-* Natywne Spark buforowania (niezalecane)
-    * Dobra w przypadku małych zestawów danych.
-    * Działa nie z podziałem na partycje, które mogą ulec zmianie w przyszłych wersjach platformy Spark.
+* Natywne buforowanie Spark (niezalecane)
+    * Dobre dla małych zestawów danych.
+    * Nie działa z partycjonowaniem, co może ulec zmianie w przyszłych wersjach platformy Spark.
 
-* Magazyn poziom buforowania (zalecane)
+* Buforowanie na poziomie magazynu (zalecane)
     * Można zaimplementować przy użyciu [Alluxio](https://www.alluxio.org/).
-    * Używa w pamięci i buforowania dysku SSD.
+    * Używa buforowania w pamięci i dysku SSD.
 
-* Lokalnego systemu HDFS (zalecane)
-    * `hdfs://mycluster` Ścieżka.
-    * Korzysta z pamięci podręcznej dysków SSD.
-    * Buforowane dane zostaną utracone po usunięciu klastra, konieczności ponownej kompilacji pamięci podręcznej.
+* Lokalny system plików HDFS (zalecane)
+    * `hdfs://mycluster`ścieżka.
+    * Używa buforowania SSD.
+    * Dane w pamięci podręcznej zostaną utracone po usunięciu klastra, co wymaga odbudowania pamięci podręcznej.
 
-## <a name="use-memory-efficiently"></a>Efektywnie wykorzystać pamięci
+## <a name="use-memory-efficiently"></a>Wydajne korzystanie z pamięci
 
-Platforma Spark działa, umieszczając dane w pamięci, dlatego zarządzanie zasobami pamięci jest kluczowym aspektem optymalizacji wykonywania zadań platformy Spark.  Istnieje kilka technik, które można zastosować, aby efektywnie wykorzystać klastra pamięci.
+Platforma Spark działa przez umieszczenie danych w pamięci, więc zarządzanie zasobami pamięci jest kluczowym aspektem optymalizacji wykonywania zadań platformy Spark.  Istnieje kilka technik, które można zastosować do wydajnego używania pamięci klastra.
 
-* Preferowanie mniejszych partycji danych i uwzględnić rozmiar danych, typy i dystrybucji w strategii partycjonowania.
-* Należy wziąć pod uwagę nowszą, bardziej wydajne [serializacja danych Kryo](https://github.com/EsotericSoftware/kryo), zamiast domyślnej serializacji języka Java.
-* Preferuj za pomocą usługi YARN, ponieważ są dzielone `spark-submit` przy użyciu usługi batch.
-* Monitorowanie i dostosowywanie ustawień konfiguracji platformy Spark.
+* Preferuj mniejsze partycje danych i konta na potrzeby rozmiaru danych, typów i dystrybucji w strategii partycjonowania.
+* Weź pod uwagę nowszą, wydajniejszą [serializację danych Kryo](https://github.com/EsotericSoftware/kryo)zamiast domyślnej serializacji języka Java.
+* Preferuj używanie przędzy, która jest oddzielana `spark-submit` przez usługę Batch.
+* Monitorowanie i dostrajanie ustawień konfiguracji platformy Spark.
 
-Dla Twojej informacji struktury pamięci platforma Spark i niektóre parametry pamięci kluczowych funkcji wykonawczej są wyświetlane na następnej ilustracji.
+Dla odwołania, struktura pamięci platformy Spark i niektóre parametry pamięci modułu wykonującego klucze są wyświetlane na następnym obrazie.
 
-### <a name="spark-memory-considerations"></a>Uwagi dotyczące pamięci aparatu Spark
+### <a name="spark-memory-considerations"></a>Uwagi dotyczące pamięci platformy Spark
 
-Jeśli używasz [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), a następnie YARN steruje maksymalną suma pamięci używanej przez wszystkie kontenery w każdym węźle platformy Spark.  Na poniższym diagramie przedstawiono kluczowe obiektów i ich wzajemne relacje.
+Jeśli używasz [przędzy Apache Hadoop](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), przędza kontroluje maksymalną sumę pamięci używaną przez wszystkie kontenery w każdym węźle platformy Spark.  Na poniższym diagramie przedstawiono obiekty kluczowe i ich relacje.
 
-![Zarządzanie pamięcią platformy Spark usługi YARN](./media/apache-spark-perf/yarn-spark-memory.png)
+![Zarządzanie pamięcią w ramach PRZĘDZy](./media/apache-spark-perf/yarn-spark-memory.png)
 
-Aby rozwiązać "za mało pamięci" wiadomości, wypróbuj:
+Aby rozwiązać komunikaty o braku pamięci, spróbuj wykonać następujące działania:
 
-* Przejrzyj przesuwa zarządzania DAG. Obniżone reducting po stronie mapy, wstępnie partycji (lub Podziel na przedziały) dane źródłowe, zmaksymalizować przesuwa pojedynczego i zmniejszyć ilość wysyłanych danych.
-* Preferuj `ReduceByKey` z jej limitu pamięci stały się `GroupByKey`, zapewniającą agregacji, obsługi okien i innych funkcji, ale ma limitu pamięci niepowiązane pods.
-* Preferuj `TreeReduce`, który wykonuje więcej pracy nad funkcja wykonawcza lub partycji, aby `Reduce`, który wykonuje całą pracę od sterownika.
-* Wykorzystaj elementy Dataframe, a nie obiekty RDD niższego poziomu.
-* Utwórz complexType, które hermetyzują akcje, takie jak "N pierwszych", różne agregacji lub operacje obsługi okien.
+* Przejrzyj DAGe w celu zarządzania nimi. Zmniejszaj dane źródłowe, które znajdują się na dysku (lub dzielenia), Maksymalizuj, przełączając pojedyncze losowo i zmniejszając ilość wysyłanych danych.
+* Preferuj `ReduceByKey` ze stałym limitem pamięci `GroupByKey`na, który zapewnia agregacje, okna i inne funkcje, ale ma limit pamięci nieograniczonej Ann.
+* Preferuj `TreeReduce`, która wykonuje więcej pracy na wszystkich wykonawcach lub partycjach, `Reduce`do, które działają na sterowniku.
+* Wykorzystanie ramek danych zamiast obiektów RDD niskiego poziomu.
+* Utwórz ComplexType, które hermetyzują akcje, takie jak "pierwsze N", różne agregacje lub operacje okienkowe.
 
-## <a name="optimize-data-serialization"></a>Optymalizowanie serializacja danych
+## <a name="optimize-data-serialization"></a>Optymalizowanie serializacji danych
 
-Zadań platformy Spark są dystrybuowane, dzięki czemu serializacji odpowiednie dane to ważne, aby uzyskać najlepszą wydajność.  Istnieją dwie opcje serializacji dla platformy Spark:
+Zadania platformy Spark są dystrybuowane, więc odpowiednia Serializacja danych jest ważna dla najlepszej wydajności.  Istnieją dwie opcje serializacji dla platformy Spark:
 
-* Serializacja Java jest ustawieniem domyślnym.
-* Serializacja Kryo jest nowszy format i może spowodować szybsze i spójne serializacji niż języka Java.  Kryo wymaga zarejestrowania klas w programie, i nie obsługuje jeszcze wszystkich typów możliwych do serializacji.
+* Wartością domyślną jest Serializacja języka Java.
+* Serializacja Kryo jest w nowszym formacie i może powodować szybsze i bardziej kompaktowe serializacji niż w przypadku języka Java.  Kryo wymaga zarejestrowania klas w programie i nie obsługuje jeszcze wszystkich typów możliwych do serializacji.
 
-## <a name="use-bucketing"></a>Użyj obsługą zasobników
+## <a name="use-bucketing"></a>Używanie zasobników
 
-Obsługą zasobników jest podobny do partycjonowanie danych, ale może zawierać każdego przedziału, a nie tylko jeden zestaw wartości w kolumnie. Podziału na zasobniki działa dobrze w przypadku partycjonowania na (w milionach lub więcej) dużą liczbę wartości, takich jak identyfikatory produktu. Zasobnik jest określany przez utworzenie skrótu klucza zasobnika wiersza. Zasobnikach usługa tabele oferuje unikatowe optymalizacji, ponieważ są one przechowywane metadane dotyczące ich zostały zasobnikach i posortowane.
+Przepełnianie jest podobne do partycjonowania danych, ale każdy zasobnik może przechowywać zestaw wartości kolumn, a nie tylko jeden. Przedziały dobrze sprawdzają się w przypadku partycjonowania na dużą liczbę (w milionach lub więcej) wartości, takich jak identyfikatory produktów. Zasobnik jest określany przez mieszanie klucza zasobnika wiersza. Tabele z przedziałów oferują unikatowe optymalizacje, ponieważ przechowują metadane dotyczące ich przedziałów i sortowania.
 
-Niektóre zaawansowane funkcje podziału na zasobniki są:
+Niektóre zaawansowane funkcje zasobników to:
 
-* Na podstawie podziału na zasobniki meta-informacji o optymalizacji zapytań.
-* Zoptymalizowane agregacji.
+* Optymalizacja zapytania oparta na meta-informacjach o przedziale.
+* Zoptymalizowane agregacje.
 * Zoptymalizowane sprzężenia.
 
-Można użyć partycjonowania i obsługą zasobników w tym samym czasie.
+Można używać partycjonowania i tworzenia pakietów jednocześnie.
 
-## <a name="optimize-joins-and-shuffles"></a>Optymalizacja sprzężenia i przesuwa
+## <a name="optimize-joins-and-shuffles"></a>Optymalizuj sprzężenia i Losuj
 
-Jeśli masz powolne zadania na przyłączenie lub losowa przyczyną jest prawdopodobnie *niesymetryczność danych*, czyli rozbieżności danych zadania. Na przykład zadanie mapy może potrwać 20 sekund, ale uruchomienie zadania, gdzie dane są połączone lub przekazanych zajmuje.   Aby rozwiązać problem niesymetryczność danych, należy soli cały klucz lub użyj *izolowany ziarna* dla pewien podzbiór kluczy.  Jeśli używasz izolowanych ziarna powinien dokładniej przefiltrować do izolowania podzbiór solone kluczy w mapie sprzężenia. Innym rozwiązaniem jest wprowadzenie kolumny zasobnika i wstępnej agregacji w zasobnikach najpierw.
+Jeśli masz wolne zadania w sprzężeniu lub losowo, przyczyną jest prawdopodobnie *pochylenie danych*, czyli asymetrii w danych zadania. Na przykład zadanie mapy może trwać 20 sekund, ale uruchomione jest zadanie, w którym dane są przyłączone lub przetworzone w postaci przełączenia.   Aby naprawić pochylenie danych, należy pozbyć się całego klucza lub użyć *odizolowanej soli* tylko dla pewnego podzestawu kluczy.  Jeśli używasz izolowanej soli, należy dodatkowo przefiltrować, aby odizolować podzbiór kluczy solonych w sprzężeniu mapy. Kolejną opcją jest wprowadzenie kolumny przedziału i wstępnego agregacji w zasobnikach.
 
-Innym czynnikiem powodujące powolne sprzężeń może być typ sprzężenia. Domyślnie platforma Spark korzysta `SortMerge` typ sprzężenia. Ten typ sprzężenia jest najlepszym rozwiązaniem w przypadku dużych zestawów danych, ale w przeciwnym razie jest obliczeniowo kosztowne, ponieważ jego musi najpierw posortować lewej i prawej stronie danych przed scaleniem ich.
+Innym czynnikiem powodującym powolne sprzężenie może być typ sprzężenia. Domyślnie platforma Spark używa `SortMerge` typu sprzężenia. Ten typ sprzężenia jest najlepiej dostosowany do dużych zestawów danych, ale jest w inny sposób obliczany, ponieważ należy najpierw posortować po lewej i prawej stronie danych przed ich scaleniem.
 
-A `Broadcast` sprzężenia jest najodpowiedniejsza dla mniejszych zestawów danych lub gdzie jednej strony sprzężenia jest znacznie mniejsza niż druga strona. Tego rodzaju łączenia jednej strony jest wysyłana do wszystkich executors i wymaga większej ilości pamięci emisji ogólnie rzecz biorąc.
+`Broadcast` Sprzężenie najlepiej nadaje się w przypadku mniejszych zestawów danych lub gdy jedna strona sprzężenia jest znacznie mniejsza od drugiej strony. Ten typ sprzężenia emituje jeden bok do wszystkich wykonawców, a więc wymaga więcej pamięci do emisji ogólnie.
 
-W konfiguracji można zmienić typ sprzężenia, ustawiając `spark.sql.autoBroadcastJoinThreshold`, można także ustawić wskazówki sprzężenia, przy użyciu interfejsów API DataFrame (`dataframe.join(broadcast(df2))`).
+Można zmienić typ sprzężenia w konfiguracji przez ustawienie `spark.sql.autoBroadcastJoinThreshold`lub można ustawić wskazówkę sprzężenia przy użyciu interfejsów API Dataframe (`dataframe.join(broadcast(df2))`).
 
 ```scala
 // Option 1
@@ -147,74 +147,74 @@ df1.join(broadcast(df2), Seq("PK")).
 sql("SELECT col1, col2 FROM V_JOIN")
 ```
 
-Jeśli używasz tabel zasobnikach, a następnie jest innego typu, dołącz `Merge` sprzężenia. Poprawnie wstępnie podzielonym na partycje i wstępnie posortowany zestaw danych zostanie pominięta faza kosztowne sortowania z `SortMerge` sprzężenia.
+Jeśli używasz tabel z przedziałem, możesz `Merge` dołączyć do niego trzeci typ sprzężenia. Prawidłowo wstępnie podzielony i wstępnie posortowany zestaw danych pominie kosztowną fazę sortowania z `SortMerge` sprzężenia.
 
-Kolejność sprzężenia ma znaczenie, szczególnie w przypadku bardziej złożonych zapytań. Zacznij od wyselekcjonowanych sprzężenia. Ponadto Przenieś sprzężenia zwiększenia liczby wierszy po agregacji, jeśli jest to możliwe.
+Kolejność sprzężeń, szczególnie w bardziej złożonych zapytaniach. Zacznij od najbardziej wybiórczych sprzężeń. Ponadto należy przenieść sprzężenia, które zwiększają liczbę wierszy po agregacji, jeśli jest to możliwe.
 
-Do zarządzania równoległości, szczególnie w przypadku sprzężenia kartezjańskich wizualizacji, można dodać zagnieżdżone struktury obsługi okien, a być może pominąć kroki co najmniej jeden w ramach zadania Spark.
+Aby zarządzać równoległością, w odniesieniu do kartezjańskiego sprzężeń, można dodać zagnieżdżone struktury, okna i może pominąć jeden lub więcej kroków w zadaniu platformy Spark.
 
-## <a name="customize-cluster-configuration"></a>Dostosowywanie konfiguracji klastra
+## <a name="customize-cluster-configuration"></a>Dostosuj konfigurację klastra
 
-W zależności od obciążenia klastra platformy Spark, może stwierdzisz, że niedomyślna Konfiguracja Spark spowodowałoby więcej zoptymalizowane pod kątem wykonywania zadań platformy Spark.  Wykonywanie testów porównawczych, testowanie za pomocą przykładowych obciążeń do sprawdzania poprawności konfiguracji klastra innych niż domyślne.
+W zależności od obciążenia klastra platformy Spark można określić, że niedomyślna konfiguracja platformy Spark będzie powodować bardziej zoptymalizowane wykonywanie zadań platformy Spark.  Wykonaj testy porównawcze z przykładowymi obciążeniami, aby zweryfikować wszystkie inne niż domyślne konfiguracje klastrów.
 
 Poniżej przedstawiono niektóre typowe parametry, które można dostosować:
 
-* `--num-executors` Ustawia właściwe liczbie funkcji wykonawczych.
-* `--executor-cores` Ustawia liczbę rdzeni dla każdej funkcji wykonawczej. Zazwyczaj powinien mieć middle-sized executors, ponieważ inne procesy zużywają niektóre dostępnej pamięci.
-* `--executor-memory` Określa rozmiar pamięci dla każdego wykonawcy, który kontroluje, Rozmiar sterty w ramach platformy YARN. Należy pozostawić trochę pamięci dla wykonywania czynności.
+* `--num-executors`Ustawia odpowiednią liczbę wykonawców.
+* `--executor-cores`Ustawia liczbę rdzeni dla każdego wykonawcy. Zwykle powinny być stosowane wykonawcy o rozmiarze średnim, ponieważ inne procesy zużywają część dostępnej pamięci.
+* `--executor-memory`ustawia rozmiar pamięci dla każdego wykonawcy, który kontroluje rozmiar sterty w PRZĘDZe. Należy pozostawić pewną ilość pamięci do wykonania.
 
-### <a name="select-the-correct-executor-size"></a>Wybierz rozmiar poprawne funkcji wykonawczej
+### <a name="select-the-correct-executor-size"></a>Wybierz odpowiedni rozmiar wykonawcy
 
-Podczas podejmowania decyzji o konfiguracji funkcji wykonawczej, należy wziąć pod uwagę Java wyrzucania elementów bezużytecznych (GC).
+Podczas podejmowania decyzji o konfiguracji programu wykonującego należy wziąć pod uwagę narzut na wyrzucanie elementów bezużytecznych języka Java.
 
-* Czynniki, aby zmniejszyć rozmiar funkcji wykonawczej:
-    1. Zmniejsz rozmiar sterty poniżej 32 GB, aby zachować GC obciążenie < 10%.
-    2. Zmniejsz liczbę rdzeni, aby zachować GC obciążenie < 10%.
+* Czynniki zmniejszające rozmiar programu wykonującego:
+    1. Zmniejsz rozmiar sterty poniżej 32 GB, aby zachować obciążenie GC < 10%.
+    2. Zmniejsz liczbę rdzeni, aby zachować obciążenie GC < 10%.
 
-* Czynniki, które zwiększają rozmiar funkcji wykonawczej:
-    1. Ogranicz komunikację obciążenie między executors.
-    2. Zmniejsz liczbę otwartych połączeń między executors (N2) w klastrach większa (> 100 executors).
-    3. Zwiększ rozmiar stosu w celu uwzględnienia zadania o znacznym wykorzystaniu pamięci.
-    4. Opcjonalnie: Zmniejsz obciążenie pamięci dla funkcji wykonawczej.
-    5. Opcjonalnie: Zwiększ wykorzystanie i współbieżności, subskrybowanie nadmiernej ilości procesora CPU.
+* Czynniki zwiększające rozmiar wykonawcy:
+    1. Zmniejszenie obciążenia komunikacji między wykonawcami.
+    2. Zmniejsz liczbę otwartych połączeń między modułami wykonującymi (N2) w większych klastrach (> 100 modułów wykonujących).
+    3. Zwiększ rozmiar sterty, aby zapewnić obsługę zadań intensywnie korzystających z pamięci.
+    4. Opcjonalnie: Zmniejsz obciążenie pamięci dla wykonawcy.
+    5. Opcjonalnie: Zwiększ wykorzystanie i współbieżność przez zasubskrybowanie procesora CPU.
 
-Ogólna zasada mówi podczas wybierania rozmiaru funkcji wykonawczej:
+Jako ogólna reguła kciuka podczas wybierania rozmiaru wykonawcy:
     
-1. Rozpocznij 30 GB na wykonawcy i rozpowszechniać maszyny dostępnych rdzeni.
-2. Zwiększ liczbę rdzeni wykonawca w przypadku większych klastrów (> 100 executors).
-3. Zwiększanie lub zmniejszanie rozmiary oparte zarówno na przebiegi wersji próbnej i poprzednim czynników, takich jak obciążenie GC.
+1. Zacznij od 30 GB na wykonawcę i Dystrybuuj dostępne rdzenie maszynowe.
+2. Zwiększ liczbę rdzeni wykonawców dla większych klastrów (> 100).
+3. Zwiększ lub Zmniejsz rozmiary na podstawie wersji próbnej i w powyższych czynnikach, takich jak obciążenie GC.
 
-Podczas uruchamiania zapytań jednoczesnych, należy wziąć pod uwagę następujące informacje:
+Podczas uruchamiania współbieżnych zapytań należy wziąć pod uwagę następujące kwestie:
 
-1. Zacznij od 30 GB dla funkcji wykonawczej i wszystkich rdzeni maszyny.
-2. Tworzenie aplikacji Spark równolegle wielu przez subskrybowanie nadmiernej ilości procesora CPU (około poprawy opóźnienie 30%).
-3. Dystrybuować zapytania równolegle aplikacji MPI.
-4. Zwiększanie lub zmniejszanie rozmiary oparte zarówno na przebiegi wersji próbnej i poprzednim czynników, takich jak obciążenie GC.
+1. Zacznij od 30 GB na wykonawcę i wszystkich rdzeni maszynowych.
+2. Utwórz wiele równoległych aplikacji platformy Spark przez zasubskrybowanie procesora CPU (około 30% poprawy opóźnienia).
+3. Dystrybuuj zapytania w aplikacjach równoległych.
+4. Zwiększ lub Zmniejsz rozmiary na podstawie wersji próbnej i w powyższych czynnikach, takich jak obciążenie GC.
 
-Monitorować wydajność zapytań, elementy odstające lub inne problemy z wydajnością analizując widok osi czasu, wykres SQL, statystyki zadania i tak dalej. Czasami jedno lub kilka executors są wolniej niż inne, a zadania trwa znacznie dłużej, do wykonania. Często zdarza się to w klastrach większa (> 30 węzłów). W tym przypadku podzielić pracę większej liczby zadań dzięki kompensuje harmonogram zadań powolne. Na przykład mieć co najmniej dwa razy więcej zadań, jak liczba rdzeni wykonywania w aplikacji. Można również włączyć związanego z wykonywaniem spekulatywnym zadań o `conf: spark.speculation = true`.
+Monitoruj wydajność zapytań pod kątem wartości odstających lub innych problemów z wydajnością, przeglądając widok oś czasu, program SQL Graph, statystyki zadań i tak dalej. Czasami jeden lub kilka z wykonawców jest wolniejsze niż inne, a wykonywanie zadań trwa znacznie dłużej. Często odbywa się to w większych klastrach (> 30 węzłach). W takim przypadku należy podzielić pracę na większą liczbę zadań, aby harmonogram mógł wyrównać powolne zadania. Na przykład należy mieć co najmniej dwa razy więcej zadań jako liczbę rdzeni wykonawców w aplikacji. Możesz również włączyć spekulacyjne wykonywanie zadań za pomocą `conf: spark.speculation = true`.
 
-## <a name="optimize-job-execution"></a>Optymalizowanie wykonywania zadania
+## <a name="optimize-job-execution"></a>Optymalizuj wykonywanie zadania
 
-* Buforowanie, gdy jest to konieczne, na przykład możesz użyć danych dwa razy, a następnie buforowanie.
-* Zmienne można rozgłaszać do wszystkich executors. Zmienne są serializowane tylko, gdy skutkuje szybszy wyszukiwań.
-* Sterownik, co powoduje szybsze działanie w przypadku wielu zadań, należy użyć puli wątków.
+* Pamięć podręczna w razie potrzeby, na przykład w przypadku używania danych dwa razy, należy ją buforować.
+* Emituj zmienne do wszystkich wykonawców. Zmienne są serializowane tylko raz, co powoduje szybsze wyszukiwanie.
+* Użyj puli wątków w sterowniku, co skutkuje krótszą operacją dla wielu zadań.
 
-Monitorowanie zadań uruchomionych regularne wyszukiwanie problemów z wydajnością. Aby uzyskać lepszy wgląd w niektórych problemów, należy rozważyć użycie jednej z następujących wydajności narzędzi profilowania:
+Regularnie Monitoruj uruchomione zadania pod kątem problemów z wydajnością. Jeśli potrzebujesz więcej szczegółowych informacji na temat niektórych problemów, weź pod uwagę jeden z następujących narzędzi profilowania wydajności:
 
-* [Narzędzie PAL Intel](https://github.com/intel-hadoop/PAT) monitoruje procesora CPU, pamięci masowej i wykorzystanie przepustowości sieci.
-* [Oracle Java 8 centrum sterowania](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) profilów platformy Spark i kodu funkcji wykonawczej.
+* [Narzędzie Intel PAL](https://github.com/intel-hadoop/PAT) monitoruje wykorzystanie procesora CPU, magazynu i przepustowości sieci.
+* Program [Oracle Java 8 profil kontroli misja](https://www.oracle.com/technetwork/java/javaseproducts/mission-control/java-mission-control-1998576.html) Spark i kod wykonawczy.
 
-Kluczem do wydajności zapytań 2.x Spark jest aparat Wolfram, który jest zależna od generowania kodu całości etapu. W niektórych przypadkach mogą być wyłączone generowanie kodu w całości etapu. Na przykład, jeśli używasz typu niemodyfikowalnej (`string`) w wyrażeniu agregacji `SortAggregate` pojawia się zamiast `HashAggregate`. Na przykład lepszą wydajność, spróbuj wykonać następujące czynności, a następnie ponownie Włącz generowanie kodu:
+Klucz do wydajności zapytań Spark 2. x jest aparatem, który zależy od generacji całego etapu. W niektórych przypadkach generowanie kodu w całym etapie może być wyłączone. Na przykład, jeśli w wyrażeniu agregacji jest używany niemodyfikowalny typ (`string`), `SortAggregate` pojawia się zamiast. `HashAggregate` Na przykład w celu uzyskania lepszej wydajności spróbuj wykonać następujące czynności, a następnie ponownie włączyć generowanie kodu:
 
 ```sql
 MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Debugowanie zadania platformy Apache Spark działające w usłudze Azure HDInsight](apache-spark-job-debugging.md)
-* [Zarządzanie zasobami klastra Apache Spark w HDInsight](apache-spark-resource-manager.md)
-* [Użyj interfejsu API REST programu Apache Spark, aby przesłać zdalnej obsługi zadań do klastra Apache Spark](apache-spark-livy-rest-interface.md)
-* [Dostrajanie platformy Apache Spark](https://spark.apache.org/docs/latest/tuning.html)
-* [W jaki sposób można dostrajanie faktycznie Apache Spark zadania tak działają](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
+* [Debugowanie zadań platformy Apache Spark uruchomionych w usłudze Azure HDInsight](apache-spark-job-debugging.md)
+* [Zarządzanie zasobami klastra Apache Spark w usłudze HDInsight](apache-spark-resource-manager.md)
+* [Używanie interfejsu API REST Apache Spark do przesyłania zadań zdalnych do klastra Apache Spark](apache-spark-livy-rest-interface.md)
+* [Dostrajanie Apache Spark](https://spark.apache.org/docs/latest/tuning.html)
+* [Jak w rzeczywistości dostroić zadania Apache Spark, aby działały](https://www.slideshare.net/ilganeli/how-to-actually-tune-your-spark-jobs-so-they-work)
 * [Serializacja Kryo](https://github.com/EsotericSoftware/kryo)

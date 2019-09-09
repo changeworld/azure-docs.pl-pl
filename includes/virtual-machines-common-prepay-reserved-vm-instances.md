@@ -3,17 +3,17 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 08/02/2019
-ms.openlocfilehash: 5c300cb7d5416ada435811872e2cea8865e3c657
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/29/2019
+ms.openlocfilehash: 99263b7c7efee54381c9a7f624429b343dba49d0
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781259"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806074"
 ---
-# <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances-ri"></a>Przedpłata za Virtual Machines z Azure Reserved VM Instances (RI)
+# <a name="save-costs-with-azure-reserved-vm-instances"></a>Oszczędność kosztów dzięki Azure Reserved VM Instances
 
-Przedpłata za maszyny wirtualne i oszczędność pieniędzy za pomocą wystąpień zarezerwowanych maszyn wirtualnych platformy Azure. Rabat rezerwacji jest automatycznie stosowany do liczby uruchomionych maszyn wirtualnych, które pasują do zakresu rezerwacji i atrybutów. Nie musisz przypisywać rezerwacji do maszyny wirtualnej, aby uzyskać rabaty. Zakup wystąpienia zarezerwowanego obejmuje tylko część obliczeniową użycia maszyny wirtualnej. W przypadku maszyn wirtualnych z systemem Windows licznik użycia jest podzielony na dwa oddzielne liczniki. Istnieje licznik obliczeniowy, który jest taki sam jak licznik systemu Linux i miernik adresów IP w systemie Windows. Opłaty, które zobaczysz po dokonaniu zakupu, dotyczą tylko kosztów obliczeń. Opłaty nie obejmują kosztów oprogramowania systemu Windows. Aby uzyskać więcej informacji o kosztach oprogramowania, zobacz [koszty oprogramowania nieuwzględnione w Azure Reserved VM Instances](../articles/billing/billing-reserved-instance-windows-software-costs.md).
+Po zatwierdzeniu do wystąpienia zarezerwowanego maszyny wirtualnej platformy Azure Możesz zaoszczędzić pieniądze. Rabat rezerwacji jest automatycznie stosowany do liczby uruchomionych maszyn wirtualnych, które pasują do zakresu rezerwacji i atrybutów. Nie musisz przypisywać rezerwacji do maszyny wirtualnej, aby uzyskać rabaty. Zakup wystąpienia zarezerwowanego obejmuje tylko część obliczeniową użycia maszyny wirtualnej. W przypadku maszyn wirtualnych z systemem Windows licznik użycia jest podzielony na dwa oddzielne liczniki. Istnieje licznik obliczeniowy, który jest taki sam jak licznik systemu Linux i miernik adresów IP w systemie Windows. Opłaty, które zobaczysz po dokonaniu zakupu, dotyczą tylko kosztów obliczeń. Opłaty nie obejmują kosztów oprogramowania systemu Windows. Aby uzyskać więcej informacji o kosztach oprogramowania, zobacz [koszty oprogramowania nieuwzględnione w Azure Reserved VM Instances](../articles/billing/billing-reserved-instance-windows-software-costs.md).
 
 ## <a name="determine-the-right-vm-size-before-you-buy"></a>Ustalanie odpowiedniego rozmiaru maszyny wirtualnej przed zakupem
 
@@ -80,7 +80,7 @@ Wystąpienia zarezerwowane maszyn wirtualnych są dostępne w przypadku większo
 
 ## <a name="buy-a-reserved-vm-instance"></a>Kupowanie zarezerwowanych wystąpień maszyn wirtualnych
 
-Możesz kupić wystąpienie zarezerwowane maszyny wirtualnej w [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D).
+Możesz kupić wystąpienie zarezerwowane maszyny wirtualnej w [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). Płatność za rezerwację z [góry lub miesięczna płatność](../articles/billing/billing-monthly-payments-reservations.md).
 
 Te wymagania dotyczą kupowania zarezerwowanych wystąpień maszyn wirtualnych:
 
@@ -97,7 +97,7 @@ Aby kupić wystąpienie:
 
 | Pole      | Opis|
 |------------|--------------|
-|Subscription|Subskrypcja używana do płacenia za rezerwację. W przypadku metody płatności w ramach subskrypcji jest naliczana opłata za pozostały koszt. Typ subskrypcji musi być umową Enterprise Agreement (numery ofert: MS-AZR-0017P lub MS-AZR-0148P) lub indywidualna subskrypcja z stawką płatność zgodnie z rzeczywistym użyciem (numery ofert: MS-AZR-0003P lub MS-AZR-0023P). W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka. W przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem opłaty są naliczane za kartę kredytową lub formę płatności faktury dla subskrypcji.|    
+|Subscription|Subskrypcja używana do płacenia za rezerwację. W przypadku metody płatności w ramach subskrypcji jest naliczana opłata za rezerwację. Typ subskrypcji musi być umową Enterprise Agreement (numery ofert: MS-AZR-0017P lub MS-AZR-0148P) lub indywidualna subskrypcja z stawką płatność zgodnie z rzeczywistym użyciem (numery ofert: MS-AZR-0003P lub MS-AZR-0023P). W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka. W przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem opłaty są naliczane za kartę kredytową lub formę płatności faktury dla subskrypcji.|    
 |Scope       |Zakres rezerwacji może obejmować jedną subskrypcję lub wiele subskrypcji (zakres udostępniony). W przypadku wybrania opcji: <ul><li>**Zakres pojedynczej grupy zasobów** — stosuje rabat rezerwacji do zasobów pasujących tylko w wybranej grupie zasobów.</li><li>**Zakres pojedynczej subskrypcji** — stosuje rabat rezerwacji do pasujących zasobów w wybranej subskrypcji.</li><li>**Zakres udostępniony** — stosuje rabat rezerwacji do pasujących zasobów w uprawnionych subskrypcjach, które znajdują się w kontekście rozliczeń. W przypadku klientów z umowami EA kontekst rozliczania to rejestracja. W przypadku indywidualnych subskrypcji z płatnością zgodnie z rzeczywistym użyciem zakres rozliczeń to wszystkie kwalifikujące się subskrypcje utworzone przez administratora konta.</li></ul>|
 |Region    |Region świadczenia usługi Azure objęty rezerwacją.|    
 |Rozmiar maszyny wirtualnej     |Rozmiar wystąpień maszyn wirtualnych.|
@@ -111,7 +111,7 @@ Aby kupić wystąpienie:
 
 Dane użycia mają rzeczywistą cenę równą zero za użycie, które pobiera rabat rezerwacji. Można sprawdzić, które wystąpienie maszyny wirtualnej otrzymało rabat rezerwacji dla każdej rezerwacji.
 
-Aby uzyskać więcej informacji na temat sposobu wyświetlania rabatów rezerwacji w danych użycia, zobacz [Opis użycia usługi Azure Reservation na potrzeby rejestracji](../articles/billing/billing-understand-reserved-instance-usage-ea.md) w przedsiębiorstwie, jeśli jesteś klientem z umową EA. Jeśli masz pojedynczą subskrypcję, zobacz [Opis użycia usługi Azure Reservation dla subskrypcji z opcją płatność zgodnie z rzeczywistym użyciem](../articles/billing/billing-understand-reserved-instance-usage.md).
+Aby uzyskać więcej informacji na temat sposobu wyświetlania rabatów rezerwacji w danych użycia, zobacz [Opis użycia usługi Azure Reservation na potrzeby rejestracji w przedsiębiorstwie](../articles/billing/billing-understand-reserved-instance-usage-ea.md) , jeśli jesteś klientem z umową EA. Jeśli masz pojedynczą subskrypcję, zobacz [Opis użycia usługi Azure Reservation dla subskrypcji z opcją płatność zgodnie z rzeczywistym użyciem](../articles/billing/billing-understand-reserved-instance-usage.md).
 
 ## <a name="change-a-reservation-after-purchase"></a>Zmiana rezerwacji po zakupie
 
@@ -140,7 +140,7 @@ Można anulować, wymienić lub refundować rezerwacje z pewnymi ograniczeniami.
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - Aby dowiedzieć się, jak zarządzać rezerwacją, zobacz [zarządzanie Azure Reservations](../articles/billing/billing-manage-reserved-vm-instance.md).
 - Aby dowiedzieć się więcej na temat Azure Reservations, zobacz następujące artykuły:
@@ -148,6 +148,6 @@ Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https:
     - [Zarządzanie rezerwacjami na platformie Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
     - [Zapoznaj się z zastosowaniem rabatu rezerwacji](../articles/billing/billing-understand-vm-reservation-charges.md)
     - [Poznaj użycie rezerwacji dla subskrypcji z użyciem stawek płatność zgodnie z rzeczywistym zużyciem](../articles/billing/billing-understand-reserved-instance-usage.md)
-    - [Informacje na temat użycia rezerwacji na potrzeby rejestracji w przedsiębiorstwie](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
+    - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
     - [Koszty oprogramowania systemu Windows, które nie są objęte rezerwacjami](../articles/billing/billing-reserved-instance-windows-software-costs.md)
     - [Azure Reservations w programie Partner Center Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)

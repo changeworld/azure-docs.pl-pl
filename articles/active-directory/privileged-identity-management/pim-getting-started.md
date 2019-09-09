@@ -1,9 +1,9 @@
 ---
-title: Rozpoczynanie korzystania z usługi PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak włączyć i rozpoczęcie korzystania z usługi Azure AD Privileged Identity Management (PIM) w witrynie Azure portal.
+title: Zacznij korzystać z usługi PIM Azure Active Directory | Microsoft Docs
+description: Dowiedz się, jak włączyć i rozpocząć korzystanie z Azure AD Privileged Identity Management (PIM) w Azure Portal.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,127 +11,127 @@ ms.subservice: pim
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 408991ffc3922986234f7d40e1cd589b1d126ba1
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 018cc54a770a0d18fa9af3d93fec2f5f720ce17b
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476489"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804520"
 ---
 # <a name="start-using-pim"></a>Rozpoczynanie korzystania z usługi PIM
 
-Za pomocą usługi Azure Active Directory (Azure AD) Privileged Identity Management (PIM), możesz zarządzanie, sterowanie i monitorowanie dostępu w organizacji. Ten zakres obejmuje dostęp do zasobów platformy Azure, usługi Azure AD i innych usług online firmy Microsoft, takich jak Office 365 lub Microsoft Intune.
+Dzięki usłudze Azure Active Directory (Azure AD) Privileged Identity Management (PIM) można zarządzać dostępem, kontrolować i monitorować je w organizacji. Ten zakres obejmuje dostęp do zasobów platformy Azure, usługi Azure AD i innych usług online firmy Microsoft, takich jak Office 365 lub Microsoft Intune.
 
-W tym artykule opisano sposób włączania i rozpoczęcie korzystania z usługi PIM.
+W tym artykule opisano sposób włączania usługi PIM i rozpoczynania pracy z nią.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby używać aplikacji PIM, musisz mieć jedną z następujących licencji:
+Aby korzystać z programu PIM, musisz mieć jedną z następujących licencji:
 
 - Usługa Azure AD — warstwa Premium P2
 - Enterprise Mobility + Security (EMS) E5
 
-Aby uzyskać więcej informacji, zobacz [licencji wymagania dotyczące korzystania z usługi PIM](subscription-requirements.md).
+Aby uzyskać więcej informacji, zobacz [wymagania licencyjne do korzystania z usługi PIM](subscription-requirements.md).
 
-## <a name="first-person-to-use-pim"></a>Pierwszą osobą, aby używać aplikacji PIM
+## <a name="first-person-to-use-pim"></a>Pierwsza osoba do korzystania z programu PIM
 
-Jeśli jesteś pierwszą osobą, która można używać aplikacji PIM w katalogu, są automatycznie przypisywane [Administrator zabezpieczeń](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) i [Administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) ról w katalogu. Tylko administratorzy ról uprzywilejowanych mogą zarządzać przypisaniami ról użytkowników usługi Azure AD. Ponadto możesz zdecydować się na uruchomienie [Kreator zabezpieczeń](pim-security-wizard.md) który przeprowadzi Cię przez środowisko początkowego odnajdywania i przypisywania.
+Jeśli jesteś pierwszą osobą, która ma korzystać z usługi PIM w Twoim katalogu, automatycznie przypiszesz role [administrator zabezpieczeń](../users-groups-roles/directory-assign-admin-roles.md#security-administrator) i [administrator ról uprzywilejowanych](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) w katalogu. Tylko Administratorzy ról uprzywilejowanych mogą zarządzać przypisaniami użytkowników w usłudze Azure AD. Ponadto można uruchomić [Kreatora zabezpieczeń](pim-security-wizard.md) , który przeprowadzi Cię przez początkowe środowisko odnajdywania i przypisywania.
 
 ## <a name="enable-pim"></a>Włącz usługę PIM
 
-Aby rozpocząć korzystanie z usługi PIM w katalogu, należy włączyć usługę PIM.
+Aby rozpocząć korzystanie z programu PIM w katalogu, musisz najpierw włączyć usługę PIM.
 
-1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako Administrator globalny katalogu.
+1. Zaloguj się do [Azure Portal](https://portal.azure.com/) jako Administrator globalny katalogu.
 
-    Musi być administratorem globalnym z kontem organizacyjnym (na przykład @yourdomain.com), nie jest konto Microsoft (na przykład @outlook.com), aby włączyć usługi PIM dla katalogu.
+    Musisz być administratorem globalnym z kontem organizacyjnym (na przykład @yourdomain.com), a nie konto Microsoft (na @outlook.comprzykład), aby włączyć usługę PIM dla katalogu.
 
-1. Kliknij przycisk **wszystkich usług** i Znajdź **usługi Azure AD Privileged Identity Management** usługi.
+1. Kliknij pozycję **wszystkie usługi** i znajdź usługę **Azure AD Privileged Identity Management** .
 
-    ![Usługa Azure AD Privileged Identity Management w przypadku wszystkich usług](./media/pim-getting-started/pim-all-services-find.png)
+    ![Azure AD Privileged Identity Management we wszystkich usługach](./media/pim-getting-started/pim-all-services-find.png)
 
-1. Kliknij, aby otworzyć tego przewodnika Szybki Start usługi PIM.
+1. Kliknij, aby otworzyć usługę PIM szybkiego startu.
 
-1. Na liście kliknij **wyrazić zgodę na usługę PIM**.
+1. Na liście kliknij pozycję **wyrażanie zgody na usługę PIM**.
 
-    ![Zgoda na usługi PIM, aby włączyć usługę PIM](./media/pim-getting-started/consent-pim.png)
+    ![Wyrażanie zgody na korzystanie z programu PIM](./media/pim-getting-started/consent-pim.png)
 
-1. Kliknij przycisk **Zweryfikuj moją tożsamość** Aby zweryfikować swoją tożsamość za pomocą usługi Azure MFA. Użytkownik zostanie zapytany, aby wybrać konto.
+1. Kliknij pozycję **Weryfikuj moją tożsamość** , aby zweryfikować swoją tożsamość za pomocą usługi Azure MFA. Zostanie wyświetlony monit o wybranie konta.
 
     ![Wybierz okno konta, aby zweryfikować swoją tożsamość](./media/pim-getting-started/pick-account.png)
 
-1. Jeżeli jest wymaganych więcej informacji o weryfikację, poprowadzą Cię przez proces. Aby uzyskać więcej informacji, zobacz [Uzyskaj pomoc dotyczącą weryfikacji dwuetapowej](https://go.microsoft.com/fwlink/p/?LinkId=708614).
+1. Jeśli do weryfikacji są wymagane więcej informacji, zostanie przeprowadzony krok po kroku. Aby uzyskać więcej informacji, zobacz [Uzyskaj pomoc dotyczącą weryfikacji dwuetapowej](https://go.microsoft.com/fwlink/p/?LinkId=708614).
 
-    ![Okno wymaganych więcej informacji, jeśli Twoja organizacja potrzebuje więcej informacji](./media/pim-getting-started/more-information-required.png)
+    ![Okno wymagane więcej informacji, jeśli Twoja organizacja potrzebuje więcej informacji](./media/pim-getting-started/more-information-required.png)
 
-    Na przykład użytkownik może zostać poproszona o zapewniają Weryfikacja telefonu.
+    Na przykład może zostać wyświetlony monit o podanie weryfikacji telefonu.
 
-    ![Strony dodatkowych zabezpieczeń weryfikacji pytaniem, jak się z Tobą skontaktować](./media/pim-getting-started/additional-security-verification.png)
+    ![Dodatkowa strona weryfikacji zabezpieczeń z prośbą o kontakt z Tobą](./media/pim-getting-started/additional-security-verification.png)
 
-1. Po zakończeniu procesu weryfikacji kliknij **zgody** przycisku.
+1. Po zakończeniu procesu weryfikacji kliknij przycisk **wyrażanie zgody** .
 
-1. W oknie komunikatu kliknij **tak** do wyrażenia zgody na usługę PIM.
+1. W wyświetlonym komunikacie kliknij przycisk **tak** , aby wyrazić zgodę na usługę PIM.
 
-    ![Zgoda na usługi PIM wiadomości do zakończenia procesu zgody](./media/pim-getting-started/consent-pim-message.png)
+    ![Wyrażanie zgody na komunikat PIM w celu ukończenia procesu wyrażania zgody](./media/pim-getting-started/consent-pim-message.png)
 
-## <a name="sign-up-pim-for-azure-ad-roles"></a>Zaloguj się w usłudze PIM dla ról usługi Azure AD
+## <a name="sign-up-pim-for-azure-ad-roles"></a>Zarejestruj się w usłudze PIM dla ról usługi Azure AD
 
-Po włączeniu usługi PIM dla katalogu należy zarejestrować się w usłudze PIM do zarządzania rolami w usłudze Azure AD.
+Po włączeniu usługi PIM dla katalogu należy zasubskrybować usługę PIM w celu zarządzania rolami usługi Azure AD.
 
-1. Otwórz **usługi Azure AD Privileged Identity Management**.
+1. Otwórz **Azure AD Privileged Identity Management**.
 
-1. Kliknij przycisk **ról usługi Azure AD**.
+1. Kliknij pozycję **role usługi Azure AD**.
 
-    ![Zaloguj się w usłudze PIM dla ról usługi Azure AD](./media/pim-getting-started/sign-up-pim-azure-ad-roles.png)
+    ![Zarejestruj się w usłudze PIM dla ról usługi Azure AD](./media/pim-getting-started/sign-up-pim-azure-ad-roles.png)
 
-1. Kliknij przycisk **Zarejestruj**.
+1. Kliknij pozycję **zarejestruj się**.
 
-1. W oknie komunikatu kliknij **tak** do logowania się w usłudze PIM do zarządzania rolami w usłudze Azure AD.
+1. W wyświetlonym komunikacie kliknij przycisk **tak** , aby utworzyć konto PIM w celu zarządzania rolami usługi Azure AD.
 
-    ![Załóż konto PIM komunikat ról usługi Azure AD](./media/pim-getting-started/sign-up-pim-message.png)
+    ![Zarejestruj się w usłudze PIM dla ról usługi Azure AD](./media/pim-getting-started/sign-up-pim-message.png)
 
-    Po zakończeniu procesu rejestracji, będzie można włączyć opcji usługi Azure AD. Może być konieczne odświeżenie w portalu.
+    Po zakończeniu rejestracji zostaną włączone opcje usługi Azure AD. Może być konieczne odświeżenie portalu.
 
-    Aby dowiedzieć się, jak odnajdywać i wybrać zasoby platformy Azure, które mają być chronione przez usługę PIM, zobacz [odnajdywanie zasobów platformy Azure do zarządzania w usłudze PIM](pim-resource-roles-discover-resources.md).
+    Aby uzyskać informacje na temat odnajdywania i wybierania zasobów platformy Azure w celu ochrony za pomocą usług PIM, zobacz [odnajdywanie zasobów platformy Azure do zarządzania w usłudze PIM](pim-resource-roles-discover-resources.md).
 
 ## <a name="navigate-to-your-tasks"></a>Przejdź do zadań
 
-Po skonfigurowaniu usługi PIM można wykonywać zadania związane z zarządzaniem tożsamościami.
+Po skonfigurowaniu programu PIM można wykonywać zadania związane z zarządzaniem tożsamościami.
 
-![Okna nawigacji przedstawiający PIM zadania i Zarządzaj opcjami](./media/pim-getting-started/pim-quickstart-tasks.png)
+![Okno nawigacji w programie PIM prezentujące zadania i opcje zarządzania](./media/pim-getting-started/pim-quickstart-tasks.png)
 
-| Zadania i zarządzanie nimi | Opis |
+| Zadanie + zarządzanie | Opis |
 | --- | --- |
-| **Moje role**  | Wyświetla listę kwalifikujących się i aktywnych ról przypisanych do Ciebie. Możesz tu aktywować dowolne przypisane, kwalifikujące się role. |
+| **Moje role**  | Wyświetla listę kwalifikujących się i aktywnych ról przypisanych do użytkownika. Możesz tu aktywować dowolne przypisane, kwalifikujące się role. |
 | **Moje żądania** | Wyświetla oczekujące żądania aktywowania kwalifikujących się przypisań ról. |
-| **Zatwierdzanie żądań** | Przedstawia listę żądań aktywowania kwalifikujących się ról użytkowników w katalogu, które zostały oznaczone do zatwierdzenia. |
-| **Przegląd dostępu wszystkich użytkowników** | Wyświetla listę aktywnych przeglądów dostępu, które są przypisane do ukończenia, czy przeglądasz dostęp dla siebie lub kogoś innego. |
-| **Role usługi Azure AD** | Przedstawia pulpit nawigacyjny i ustawienia dla ról uprzywilejowanych administratorów do zarządzania przypisaniami ról usługi Azure AD. Z tego pulpitu nawigacyjnego nie mogą korzystać osoby, które nie są administratorami ról uprzywilejowanych. Tacy użytkownicy mają dostęp do specjalnego pulpitu nawigacyjnego zatytułowanego Mój widok. Pulpit nawigacyjny Mój widok zawiera tylko informacje o użytkowniku, który uzyskał dostęp do pulpitu nawigacyjnego, a nie całej dzierżawie. |
-| **Zasoby platformy Azure** | Przedstawia pulpit nawigacyjny i ustawienia dla ról uprzywilejowanych administratorów do zarządzania przypisaniami ról zasobów platformy Azure. Z tego pulpitu nawigacyjnego nie mogą korzystać osoby, które nie są administratorami ról uprzywilejowanych. Tacy użytkownicy mają dostęp do specjalnego pulpitu nawigacyjnego zatytułowanego Mój widok. Pulpit nawigacyjny Mój widok zawiera tylko informacje o użytkowniku, który uzyskał dostęp do pulpitu nawigacyjnego, a nie całej dzierżawie. |
+| **Zatwierdzanie żądań** | Przedstawia listę żądań, które umożliwiają aktywowanie kwalifikujących się ról użytkownikom w katalogu wskazanym do zatwierdzenia. |
+| **Przeglądanie dostępu** | Wyświetla listę aktywnych przeglądów dostępu, które są przypisane do ukończenia, niezależnie od tego, czy przeglądasz dostęp dla siebie, czy do innej osoby. |
+| **Role usługi Azure AD** | Wyświetla pulpit nawigacyjny i ustawienia administratorów ról uprzywilejowanych w celu zarządzania przypisaniami ról usługi Azure AD. Z tego pulpitu nawigacyjnego nie mogą korzystać osoby, które nie są administratorami ról uprzywilejowanych. Tacy użytkownicy mają dostęp do specjalnego pulpitu nawigacyjnego zatytułowanego Mój widok. Pulpit nawigacyjny Mój widok zawiera tylko informacje o użytkowniku, który uzyskał dostęp do pulpitu nawigacyjnego, a nie całej dzierżawie. |
+| **Zasoby platformy Azure** | Wyświetla pulpit nawigacyjny i ustawienia administratorów ról uprzywilejowanych w celu zarządzania przypisaniami ról zasobów platformy Azure. Z tego pulpitu nawigacyjnego nie mogą korzystać osoby, które nie są administratorami ról uprzywilejowanych. Tacy użytkownicy mają dostęp do specjalnego pulpitu nawigacyjnego zatytułowanego Mój widok. Pulpit nawigacyjny Mój widok zawiera tylko informacje o użytkowniku, który uzyskał dostęp do pulpitu nawigacyjnego, a nie całej dzierżawie. |
 
-## <a name="add-a-pim-tile-to-the-dashboard"></a>Dodaj Kafelek usługi PIM do pulpitu nawigacyjnego
+## <a name="add-a-pim-tile-to-the-dashboard"></a>Dodawanie kafelka PIM do pulpitu nawigacyjnego
 
-Aby ułatwić Otwórz PIM, należy dodać Kafelek usługi PIM do pulpitu nawigacyjnego witryny Azure portal.
+Aby ułatwić Otwieranie programu PIM, należy dodać kafelek PIM do pulpitu nawigacyjnego Azure Portal.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-1. Kliknij przycisk **wszystkich usług** i Znajdź **usługi Azure AD Privileged Identity Management** usługi.
+1. Kliknij pozycję **wszystkie usługi** i znajdź usługę **Azure AD Privileged Identity Management** .
 
-    ![Usługa Azure AD Privileged Identity Management w przypadku wszystkich usług](./media/pim-getting-started/pim-all-services-find.png)
+    ![Azure AD Privileged Identity Management we wszystkich usługach](./media/pim-getting-started/pim-all-services-find.png)
 
-1. Kliknij, aby otworzyć tego przewodnika Szybki Start usługi PIM.
+1. Kliknij, aby otworzyć usługę PIM szybkiego startu.
 
-1. Sprawdź **Przypnij blok do pulpitu nawigacyjnego** Aby przypiąć blok szybkiego startu usługi PIM do pulpitu nawigacyjnego.
+1. Zaznacz opcję **Przypnij blok do pulpitu nawigacyjnego** , aby przypiąć blok szybkiego startu do pulpitu nawigacyjnego.
 
-    ![Ikona pinezki do bloku usługi PIM Przypnij do pulpitu nawigacyjnego](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
+    ![Ikona pinezki do przypinania bloku PIM do pulpitu nawigacyjnego](./media/pim-getting-started/pim-quickstart-pin-to-dashboard.png)
 
-    Na pulpicie nawigacyjnym platformy Azure zobaczysz Kafelek następująco:
+    Na pulpicie nawigacyjnym platformy Azure zobaczysz kafelek podobny do tego:
 
-    ![Przewodnik Szybki Start usługi PIM Kafelek na pulpicie nawigacyjnym](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
+    ![Kafelek z przewodnikiem Szybki Start na pulpicie nawigacyjnym](./media/pim-getting-started/pim-quickstart-dashboard-tile.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Przypisz role usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)
-- [Odnajdź zasoby platformy Azure do zarządzania w usłudze PIM](pim-resource-roles-discover-resources.md)
+- [Przypisywanie ról usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)
+- [Odnajdywanie zasobów platformy Azure do zarządzania w usłudze PIM](pim-resource-roles-discover-resources.md)

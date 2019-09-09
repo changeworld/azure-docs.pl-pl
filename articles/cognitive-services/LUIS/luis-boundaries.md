@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/9/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 3fd593ff199ff87b1c69e1097852a81a21adc1dd
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ff267a524001802f8bcd0903fcb7119bab16ef11
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883957"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813334"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Granice modelu i kluczy LUIS
 Usługa LUIS ma kilka obszarów granic. Pierwsza to [granic modelu](#model-boundaries), która kontroluje intencji, jednostek i funkcji usługi LUIS. Drugi ma [limitów przydziału](#key-limits) na podstawie typu klucza. Trzecie pole granice wynosi [klawiatury kombinacji](#keyboard-controls) do kontrolowania witryny sieci Web usługi LUIS. Czwarty obszar jest [mapowanie regionów świata](luis-reference-regions.md) między LUIS tworzenia witryny sieci Web i LUIS [punktu końcowego](luis-glossary.md#endpoint) interfejsów API. 
@@ -29,12 +29,13 @@ Jeśli aplikacja przekracza limity i granice modelu LUIS, należy rozważyć uż
 |Obszar|Limit|
 |--|:--|
 | [Nazwa aplikacji][luis-get-started-create-app] | \* Znak Domyślna maksymalna |
+| Aplikacje| 500 aplikacji na zasób platformy Azure |
 | [Testy wsadowe][batch-testing]| 10 zestawów danych, 1000 wypowiedzi dla zestawu danych|
 | Lista jawnego | 50 na aplikację|
 | Jednostki zewnętrzne | Brak limitów |
 | [Intencji][intents]|500 na aplikację: 499 niestandardowych założeń i niewymaganego zamiaru _none_ .<br>Aplikacja [oparta na wysyłce](https://aka.ms/dispatch-tool) ma odpowiednie źródła wysyłania 500.|
 | [Lista jednostek](./luis-concept-entity-types.md) | Nadrzędny 50, element podrzędny: 20 000 elementów. Nazwa kanoniczna jest * domyślna maksymalna liczba znaków. Synonim wartości ma żadnych ograniczeń długości. |
-| Jednostki, które zostały wyznanie [maszyn i role](./luis-concept-entity-types.md):<br> złożone<br>ułatwia<br>rola jednostki|Limit 100 jednostek nadrzędnych lub 330 jednostek, w zależności od liczby trafień użytkownika. Rola jest traktowana jako jednostka na potrzeby tej granicy. Przykładem jest projekt złożony z prostą jednostką, która ma 2 role: 1 złożona + 1 prosta + 2 role = 4 jednostek 330.|
+| Jednostki, które zostały [wyznanie maszyn i role](./luis-concept-entity-types.md):<br> złożone<br>ułatwia<br>rola jednostki|Limit 100 jednostek nadrzędnych lub 330 jednostek, w zależności od liczby trafień użytkownika. Rola jest traktowana jako jednostka na potrzeby tej granicy. Przykładem jest projekt złożony z prostą jednostką, która ma 2 role: 1 złożona + 1 prosta + 2 role = 4 jednostek 330.|
 | [Wersja zapoznawcza — jednostki listy dynamicznej](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 listy ~ 1K na żądanie punktu końcowego przewidywania zapytań|
 | [Wzorce](luis-concept-patterns.md)|500 wzorce dla aplikacji.<br>Maksymalna długość wzorca to 400 znaków.<br>3 jednostki Pattern.any na wzorzec<br>Maksymalnie 2 zagnieżdżonych opcjonalnych teksty we wzorcu|
 | [Pattern.any](./luis-concept-entity-types.md)|100 na aplikację, 3 jednostki pattern.any na wzorzec |
@@ -44,7 +45,7 @@ Jeśli aplikacja przekracza limity i granice modelu LUIS, należy rozważyć uż
 | [Role](luis-concept-roles.md)|300 role na aplikację. 10 ról na jednostkę|
 | [Wypowiedź][utterances] | 500 znaków|
 | [Wyrażenia długości][utterances] | 15 000 na aplikację — nie ma limitu liczby wyrażenia długości na zamiar|
-| [Wersje](luis-concept-version.md)| bez ograniczeń |
+| [Wersje](luis-concept-version.md)| 100 wersji na aplikację |
 | [Nazwa wersji][luis-how-to-manage-versions] | 10 znaków dotyczy alfanumeryczne oraz kropki (.) |
 
 \* Znak Domyślna maksymalna to 50 znaków. 
@@ -68,13 +69,15 @@ Zrozumienie języka ma oddzielne klucze, jeden typ do tworzenia i jeden typ do w
 
 Tworzenia klucza ma różne limity dotyczące tworzenia i punktu końcowego. Klucz punktu końcowego usługi LUIS jest prawidłowy tylko dla punktu końcowego zapytań.
 
+* 500 aplikacji na zasób platformy Azure 
+* 100 wersji na aplikację
 
 |Klucz|Tworzenie|Endpoint|Cel|
 |--|--|--|--|
 |Language Understanding tworzenie/Starter|1 mln/miesiąc, 5/s|tysiące 1/miesiąc, 5/s|Tworzenie aplikacji usługi LUIS|
 |Language Understanding [Subscription][pricing] — F0 — warstwa Bezpłatna |nieprawidłowy|10 tysięcy/miesiąc, 5/s|Wykonywanie zapytań punktu końcowego usługi LUIS|
 |Language Understanding [Subscription][pricing] — S0 — warstwa podstawowa|nieprawidłowy|50/sekundę|Wykonywanie zapytań punktu końcowego usługi LUIS|
-|Usługa poznawcze [][pricing] — S0 — warstwa standardowa|nieprawidłowy|50/sekundę|Wykonywanie zapytań punktu końcowego usługi LUIS|
+|[Usługa poznawcze — S0 — warstwa][pricing] standardowa|nieprawidłowy|50/sekundę|Wykonywanie zapytań punktu końcowego usługi LUIS|
 |[Integracja analizy tonacji](luis-how-to-publish-app.md#enable-sentiment-analysis)|nieprawidłowy|Brak opłat|Dodawanie informacji opinii, w tym kluczowe frazy |
 |[Integracja mowy](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|nieprawidłowy|Żądania punktu końcowego 5.50 USD/1 tysięcy|Konwertowanie mowy wypowiedź tekstowe wypowiedź i LUIS zwracają.|
 

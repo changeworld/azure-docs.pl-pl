@@ -1,18 +1,18 @@
 ---
 title: Zadania przesyłania strumieniowego Spark z przetwarzaniem zdarzeń dokładnie raz — usługa Azure HDInsight
-description: Jak skonfigurować przesyłanie strumieniowe w usłudze Spark w celu przetworzenia zdarzenia raz i tylko raz.
+description: Jak skonfigurować Apache Spark streaming, aby przetwarzać zdarzenie raz i tylko raz.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: ce676031e0cace3f3dffc77fcd71159337938661
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: ce2cff6a1a6bf769f52940ecc0d1dc5a4678cbd5
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735990"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814021"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Twórz Apache Spark zadania przesyłania strumieniowego z przetwarzaniem zdarzeń dokładnie raz
 

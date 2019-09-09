@@ -1,6 +1,6 @@
 ---
-title: Przekształcanie danych przy użyciu pliku Jar usługi Databricks — Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się sposób przetwarzania lub przekształcać dane, uruchamiając Jar usługi Databricks.
+title: Przekształcanie danych za pomocą usługi datakosteks jar — Azure | Microsoft Docs
+description: Dowiedz się, jak przetwarzać lub przekształcać dane, uruchamiając plik JAR.
 services: data-factory
 documentationcenter: ''
 ms.assetid: ''
@@ -12,24 +12,24 @@ ms.date: 03/15/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: d299a785d50657ef40c0c49cb2dce33b8939fd02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 924367c6bb85b64bafbcb8feb546eeb490e07a34
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60860991"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812790"
 ---
-# <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Przekształcanie danych za pomocą działania Jar w usłudze Azure Databricks
+# <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Przekształcanie danych przez uruchomienie działania jar w Azure Databricks
 
-Azure Databricks Jar aktywność [potoku usługi Data Factory](concepts-pipelines-activities.md) uruchamia Jar platformy Spark w klastrze usługi Azure Databricks. W tym artykule opiera się na [działania przekształcania danych](transform-data.md) artykułu, który przedstawia ogólny przegląd działań przekształcania obsługiwanych i przekształcania danych. Usługa Azure Databricks to platforma zarządzanych dla platformy Apache Spark.
+Działanie Azure Databricks jar w [potoku Data Factory](concepts-pipelines-activities.md) uruchamia plik JAR platformy Spark w klastrze Azure Databricks. W tym artykule przedstawiono artykuł [działania przekształcania danych](transform-data.md), który zawiera ogólne omówienie transformacji danych i obsługiwanych działań transformacji. Azure Databricks to zarządzana platforma do uruchamiania Apache Spark.
 
 Poniższy klip wideo zawiera jedenastominutowe wprowadzenie i demonstrację tej funkcji:
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Execute-Jars-and-Python-scripts-on-Azure-Databricks-using-Data-Factory/player]
 
-## <a name="databricks-jar-activity-definition"></a>Definicji działania usługi Databricks Jar
+## <a name="databricks-jar-activity-definition"></a>Definicja działania jar
 
-Oto przykład definicji JSON działania Jar usługi Databricks:
+Poniżej znajduje się przykładowa definicja JSON działania dotyczącego jar elementów datakostek:
 
 ```json
 {
@@ -52,23 +52,26 @@ Oto przykład definicji JSON działania Jar usługi Databricks:
 
 ```
 
-## <a name="databricks-jar-activity-properties"></a>Właściwości działania usługi Databricks Jar
+## <a name="databricks-jar-activity-properties"></a>Właściwości działania jar
 
-W poniższej tabeli opisano właściwości JSON używanych w definicji JSON:
+W poniższej tabeli opisano właściwości JSON używane w definicji JSON:
 
 |Właściwość|Opis|Wymagane|
 |:--|---|:-:|
-|name|Nazwa działania w potoku.|Yes|
-|description|Tekst opisujący, co działanie robi.|Nie|
-|— typ|Typ działania jest DatabricksSparkJar Jar działania usługi Databricks.|Tak|
-|linkedServiceName|Nazwa połączonej usługi, w którym uruchamiany jest plik Jar działania usługi Databricks. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.|Yes|
-|mainClassName|Pełna nazwa klasy zawierającej metodę głównego, do wykonania. Ta klasa musi być zawarty w pliku JAR w bibliotece.|Yes|
-|parameters|Parametry, które zostaną przekazane do metody głównej.  Jest to tablica ciągów.|Nie|
-|Biblioteki|Lista bibliotek można zainstalować w klastrze, które spowodują wykonanie zadania. Może to być tablica < string, object >|Tak (co najmniej jeden zawierający metody mainClassName)|
+|name|Nazwa działania w potoku.|Tak|
+|description|Tekst opisujący działanie działania.|Nie|
+|type|W przypadku działania jar dla datakostki typ działania to DatabricksSparkJar.|Tak|
+|linkedServiceName|Nazwa połączonej usługi datakostki, w której działa działanie jar. Aby dowiedzieć się więcej o tej połączonej usłudze, zobacz artykuł dotyczący  [połączonych usług obliczeniowych](compute-linked-services.md).|Tak|
+|mainClassName|Pełna nazwa klasy zawierającej metodę Main, która ma zostać wykonana. Ta klasa musi być zawarta w formacie JAR udostępnionym jako biblioteka.|Tak|
+|parameters|Parametry, które zostaną przesłane do metody Main.  To jest tablica ciągów.|Nie|
+|bibliotece|Lista bibliotek do zainstalowania w klastrze, w którym będą wykonywane zadania. Może to być tablica < String, Object >|Tak (co najmniej jeden zawierający metodę mainClassName)|
 
-## <a name="supported-libraries-for-databricks-activities"></a>Biblioteki obsługiwanych dla działania usługi databricks
+> [!NOTE]
+> **Znany problem** — w przypadku używania tego samego [interaktywnego klastra](compute-linked-services.md#example---using-existing-interactive-cluster-in-databricks) do uruchamiania współbieżnych elementów danych jar (bez ponownego uruchomienia klastra) występuje znany problem w kostkach danych, gdzie w parametrach pierwszego działania będą używane następujące działania również. Z tego powodu nieprawidłowe parametry są przesyłane do kolejnych zadań. Aby uniknąć tego problemu, użyj [klastra zadań](compute-linked-services.md#example---using-new-job-cluster-in-databricks) . 
 
-W powyższej definicji działania usługi Databricks, należy określić te typy biblioteki: *jar*, *egg*, *maven*, *pypi*,  *cran*.
+## <a name="supported-libraries-for-databricks-activities"></a>Biblioteki obsługiwane dla działań datakostek
+
+W powyższej definicji działań datacegły należy określić następujące typy biblioteki: *jar*, *jaja*, *Maven*, *PyPi*, *Cran*.
 
 ```json
 {
@@ -102,19 +105,19 @@ W powyższej definicji działania usługi Databricks, należy określić te typy
 
 ```
 
-Aby uzyskać więcej informacji, zobacz [dokumentacja usługi Databricks](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) dla typów biblioteki.
+Aby uzyskać więcej szczegółowych informacji, zapoznaj się z [dokumentacją](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary) dla typów bibliotek.
 
-## <a name="how-to-upload-a-library-in-databricks"></a>Jak przekazać biblioteki w usłudze Databricks
+## <a name="how-to-upload-a-library-in-databricks"></a>Jak przekazać bibliotekę w kostkach
 
-#### <a name="using-databricks-workspace-uihttpsdocsazuredatabricksnetuser-guidelibrarieshtmlcreate-a-library"></a>[Korzystanie z obszaru roboczego usługi Databricks interfejsu użytkownika](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
+#### <a name="using-databricks-workspace-uihttpsdocsazuredatabricksnetuser-guidelibrarieshtmlcreate-a-library"></a>[Korzystanie z interfejsu użytkownika obszaru roboczego](https://docs.azuredatabricks.net/user-guide/libraries.html#create-a-library)
 
-Aby uzyskać ścieżkę dbfs biblioteki dodać za pomocą interfejsu użytkownika, można użyć [interfejsu wiersza polecenia Databricks (instalacja)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
+Aby uzyskać ścieżkę dBfs biblioteki dodanej przy użyciu interfejsu użytkownika, można użyć elementu [CLI (instalacja)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
 
-Zazwyczaj bibliotek Jar są przechowywane w dbfs: / FileStore/jars przy użyciu interfejsu użytkownika. Możesz wyświetlić listę wszystkich za pomocą interfejsu wiersza polecenia: *usługi databricks fs ls dbfs: / FileStore/zadanie-plikach JAR* 
+Zazwyczaj biblioteki jar są przechowywane w obszarze dBfs:/FileStore/Jars przy użyciu interfejsu użytkownika. Wszystkie te listę można wyświetlić za pomocą interfejsu wiersza polecenia: *datakosteks FS LS dBfs:/FileStore/Job-Jars* 
 
 
 
-#### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[Kopiuj bibliotekę przy użyciu interfejsu wiersza polecenia Databricks](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
-Użyj interfejsu wiersza polecenia Databricks [(kroki instalacji)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
+#### <a name="copy-library-using-databricks-clihttpsdocsazuredatabricksnetuser-guidedev-toolsdatabricks-clihtmlcopy-a-file-to-dbfs"></a>[Kopiowanie biblioteki przy użyciu interfejsu wiersza polecenia datakosteks](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#copy-a-file-to-dbfs)
+Użyj interfejsu wiersza polecenia datakosteks [(kroki instalacji)](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#install-the-cli). 
 
-Przykład — kopiowanie pliku JAR dbfs: *dbfs:/docs/sparkpi.jar cp SparkPi — zestawu 0.1.jar dbfs*
+Przykład: kopiowanie w postaci JAR do dBfs. *dBfs CP sparkpi-Assembly-0,1. jar dBfs:/docs/SparkPi. jar*

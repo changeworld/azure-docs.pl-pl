@@ -1,125 +1,125 @@
 ---
-title: Temat odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure przy użyciu usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure przy użyciu usługi Azure Site Recovery.
+title: Informacje na temat odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure przy użyciu Azure Site Recovery | Microsoft Docs
+description: Ten artykuł zawiera omówienie odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure przy użyciu usługi Azure Site Recovery.
 author: raynew
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 5/30/2019
+ms.date: 9/09/2019
 ms.author: raynew
-ms.openlocfilehash: a00c129126886bd71c82940aa340a8db29cf7a0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dca8174caabf4799c338d780a78ba58f1af5a2f1
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66417793"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814311"
 ---
-# <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Temat odzyskiwania po awarii maszyn wirtualnych programu VMware do platformy Azure
+# <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Informacje na temat odzyskiwania po awarii maszyn wirtualnych VMware na platformie Azure
 
-Ten artykuł zawiera omówienie odzyskiwania po awarii dla lokalnych maszyn wirtualnych VMware do platformy Azure za pomocą [usługi Azure Site Recovery](site-recovery-overview.md) usługi.
+Ten artykuł zawiera omówienie odzyskiwania po awarii dla lokalnych maszyn wirtualnych VMware na platformie Azure przy użyciu usługi [Azure Site Recovery](site-recovery-overview.md) .
 
 ## <a name="what-is-bcdr"></a>Co to jest BCDR?
 
-Ciągłość działalności biznesowej i odzyskiwanie po awarii (BCDR) odzyskiwania strategii biznesowej pomaga firmie działanie. Podczas planowanych i awarii BCDR przechowuje dane pozostają bezpieczne i dostępne i gwarantuje, że aplikacje mogą nadal działa. Oprócz funkcji BCDR platformy, takich jak parowanie regionalne, a magazyn o wysokiej dostępności platforma Azure oferuje usługi Recovery Services w ramach rozwiązania BCDR. Usługi Recovery services obejmują: 
+Strategia ciągłości działania i odzyskiwania po awarii (BCDR) pomaga zapewnić, że Twoja firma działa. Podczas planowanych przestojów i nieoczekiwanych awarii BCDR zapewnia bezpieczeństwo i dostępność danych oraz gwarantuje, że aplikacje będą działać. Oprócz funkcji BCDR platformy, takich jak parowanie regionalne i magazyn o wysokiej dostępności, platforma Azure udostępnia Recovery Services jako integralną część rozwiązania BCDR. Usługi odzyskiwania obejmują: 
 
-- [Usługa Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) tworzy kopię zapasową sieci — lokalnych i danych maszyny Wirtualnej platformy Azure. Można utworzyć kopię zapasową plików i folderów, konkretnych obciążeń lub całą maszynę Wirtualną. 
-- [Usługa Azure Site Recovery](site-recovery-overview.md) zapewnia odporności i odzyskiwania po awarii dla aplikacji i obciążeń uruchamianych na maszynach lokalnych lub maszyn wirtualnych IaaS platformy Azure. Usługa Site Recovery organizuje replikację i obsługuje tryb failover na platformie Azure w przypadku wystąpienia awarii. Obsługuje ona również odzyskiwanie z platformy Azure do lokacji głównej. 
+- [Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) tworzyć kopie zapasowe danych lokalnych i maszyn wirtualnych platformy Azure. Można utworzyć kopię zapasową plików i folderów, określonych obciążeń lub całej maszyny wirtualnej. 
+- [Azure Site Recovery](site-recovery-overview.md) zapewnia odporność i odzyskiwanie po awarii dla aplikacji i obciążeń uruchomionych na maszynach lokalnych lub maszynach wirtualnych Azure IaaS. Site Recovery organizuje replikację i obsługuje pracę w trybie failover na platformie Azure, gdy wystąpi awaria. Obsługuje ona również odzyskiwanie z platformy Azure do lokacji głównej. 
 
-## <a name="how-does-site-recovery-do-disaster-recovery"></a>Jak działa usługa Site Recovery? odzyskiwania po awarii
+## <a name="how-does-site-recovery-do-disaster-recovery"></a>Jak Site Recovery przeprowadzić odzyskiwanie po awarii?
 
-1. Po przygotowaniu platformy Azure i lokacją lokalną, skonfiguruj i Włącz replikację dla maszyn lokalnych.
-2. Usługa Site Recovery organizuje replikację początkową maszyny, zgodnie z ustawieniami zasad.
-3. Po początkowej replikacji usługa Site Recovery replikuje replikowanie zmian różnicowych do platformy Azure. 
-4. Gdy wszystko jest w stanie replikowania zgodnie z oczekiwaniami, możesz uruchomić odzyskiwanie po awarii.
-    - Przechodzenie do szczegółów pomaga, upewnij się, że tryb failover będą działać zgodnie z oczekiwaniami, gdy zajdzie potrzeba rzeczywistych.
-    - Przechodzenie do szczegółów wykonuje test trybu failover bez wywierania wpływu na środowisko produkcyjne.
-5. Jeśli wystąpi awaria, możesz uruchomić pełną przejścia w tryb failover na platformie Azure. Możesz przełączać awaryjnie pojedynczą maszynę lub można utworzyć plan odzyskiwania, który przechodzi w trybie Failover wiele maszyn w tym samym czasie.
-6. W tryb failover maszyn wirtualnych platformy Azure są tworzone na podstawie danych maszyny Wirtualnej w Managed disks i kont magazynu. Użytkownicy mogą nadal dostęp do aplikacji i obciążeń maszyny wirtualnej platformy Azure
-7. Gdy w lokacji sieci lokalnej będzie znowu dostępna, powrotu po awarii z platformy Azure.
-8. Po powrotu po awarii i pracy z witryny głównej raz, uruchom ponownie replikowania lokalnych maszyn wirtualnych do platformy Azure.
-
-
-## <a name="how-do-i-know-if-my-environment-is-suitable-for-disaster-recovery-to-azure"></a>Jak sprawdzić, czy moje środowisko jest odpowiedni dla odzyskiwania po awarii na platformie Azure?
-
-Site Recovery może replikować dowolne obciążenia uruchomione na obsługiwanej maszynie Wirtualnej VMware lub serwera fizycznego. Oto czynności, które należy sprawdzić w danym środowisku:
-
-- Jeśli replikujesz maszyny wirtualne VMware, czy używasz właściwych wersji serwerami wirtualizacji oprogramowania VMware? [Tu](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers).
-- Czy maszyny, którą chcesz replikować z obsługiwanym systemem operacyjnym? [Tu](vmware-physical-azure-support-matrix.md#replicated-machines).
-- Podczas odzyskiwania systemu Linux maszyny działają magazynu systemu/gościa obsługiwane plików? [Sprawdź tutaj](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)
-- Czy maszyny, które mają być replikowane są zgodne z wymaganiami platformy Azure? [Tu](vmware-physical-azure-support-matrix.md#azure-vm-requirements).
-- Konfiguracja sieci jest obsługiwana? [Tu](vmware-physical-azure-support-matrix.md#network).
-- Konfigurację magazynu są obsługiwane? [Tu](vmware-physical-azure-support-matrix.md#storage).
+1. Po przygotowaniu platformy Azure i lokacji lokalnej należy skonfigurować i włączyć replikację na maszynach lokalnych.
+2. Site Recovery organizuje replikację początkową maszyny zgodnie z ustawieniami zasad.
+3. Po replikacji początkowej Site Recovery replikuje zmiany różnicowe na platformie Azure. 
+4. W przypadku replikacji wszystkich elementów zgodnie z oczekiwaniami należy wykonać drążenie odzyskiwania po awarii.
+    - Funkcja drążenia pomaga zapewnić, że praca w trybie failover będzie działała zgodnie z oczekiwaniami, gdy wystąpi rzeczywista konieczność.
+    - Funkcja drążenia wykonuje test pracy w trybie failover bez wpływu na środowisko produkcyjne.
+5. Jeśli wystąpi awaria, należy uruchomić pełną pracę w trybie failover na platformie Azure. Możesz przejść do trybu failover na jednej maszynie lub utworzyć plan odzyskiwania, który przejdzie w tryb failover wielu maszyn w tym samym czasie.
+6. W przypadku przejścia w tryb failover maszyny wirtualne platformy Azure są tworzone na podstawie danych maszyny wirtualnej na dyskach zarządzanych lub na kontach magazynu. Użytkownicy mogą nadal uzyskiwać dostęp do aplikacji i obciążeń z maszyny wirtualnej platformy Azure
+7. Po ponownym udostępnieniu lokacji lokalnej nie można wrócić z powrotem z platformy Azure.
+8. Po powrocie po awarii i zakończeniu pracy z poziomu lokacji głównej należy ponownie rozpocząć replikację lokalnych maszyn wirtualnych na platformę Azure.
 
 
-## <a name="what-do-i-need-to-set-up-in-azure-before-i-start"></a>Co należy skonfigurować na platformie Azure, przed rozpoczęciem utworzeniem?
+## <a name="how-do-i-know-if-my-environment-is-suitable-for-disaster-recovery-to-azure"></a>Jak mogę sprawdzić, czy środowisko jest odpowiednie do odzyskiwania po awarii na platformie Azure?
 
-Na platformie Azure, należy przygotować następujące elementy:
+Site Recovery może replikować dowolne obciążenia uruchomione na obsługiwanej maszynie wirtualnej VMware lub serwerze fizycznym. Poniżej przedstawiono elementy, które należy zaewidencjonować w Twoim środowisku:
+
+- Jeśli replikujesz maszyny wirtualne VMware, czy korzystasz z odpowiednich wersji serwerów wirtualizacji VMware? [Sprawdź tutaj](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers).
+- Czy maszyny, które mają być replikowane, działają w obsługiwanym systemie operacyjnym? [Sprawdź tutaj](vmware-physical-azure-support-matrix.md#replicated-machines).
+- W przypadku odzyskiwania po awarii systemu Linux komputery z systemem plików i magazynem gościa są obsługiwane? [Sprawdź tutaj](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)
+- Czy maszyny, które chcesz replikować, są zgodne z wymaganiami platformy Azure? [Sprawdź tutaj](vmware-physical-azure-support-matrix.md#azure-vm-requirements).
+- Czy konfiguracja sieci jest obsługiwana? [Sprawdź tutaj](vmware-physical-azure-support-matrix.md#network).
+- Czy konfiguracja magazynu jest obsługiwana? [Sprawdź tutaj](vmware-physical-azure-support-matrix.md#storage).
+
+
+## <a name="what-do-i-need-to-set-up-in-azure-before-i-start"></a>Co muszę skonfigurować na platformie Azure przed rozpoczęciem?
+
+Na platformie Azure należy przygotować następujące elementy:
 
 1. Sprawdź, czy Twoje konto platformy Azure ma uprawnienia do tworzenia maszyn wirtualnych na platformie Azure.
-2. Utwórz sieć platformy Azure, do której zostaną dołączone maszyny wirtualne platformy Azure, gdy są tworzone z konta magazynu lub dyski zarządzane po włączeniu trybu failover.
-3. Skonfiguruj magazyn usługi Azure Recovery Services dla usługi Site Recovery. Magazyn znajduje się w witrynie Azure portal i służy do wdrażania, konfigurowania, możesz odpowiednio organizować w, monitorowanie i rozwiązywanie problemów z wdrożenia usługi Site Recovery.
+2. Utwórz sieć platformy Azure, która będzie dołączana do maszyn wirtualnych platformy Azure po utworzeniu ich z poziomu kont magazynu lub dysków zarządzanych po przejściu do trybu failover.
+3. Skonfiguruj magazyn usługi Azure Recovery Services dla Site Recovery. Magazyn znajduje się w Azure Portal i służy do wdrażania, konfigurowania, organizowania, monitorowania i rozwiązywania problemów z wdrożeniem Site Recovery.
 
-*Potrzebujesz dodatkowej pomocy?*
+*Potrzebujesz dalszej pomocy?*
 
-Dowiedz się, jak konfigurowanie platformy Azure przez [weryfikowanie konta](tutorial-prepare-azure.md#verify-account-permissions), tworzenie [sieci](tutorial-prepare-azure.md#set-up-an-azure-network), i [konfigurowania magazynu](tutorial-prepare-azure.md#create-a-recovery-services-vault).
+Dowiedz się, jak skonfigurować platformę Azure, [weryfikując swoje konto](tutorial-prepare-azure.md#verify-account-permissions), tworząc [Sieć](tutorial-prepare-azure.md#set-up-an-azure-network)i [konfigurując magazyn](tutorial-prepare-azure.md#create-a-recovery-services-vault).
 
 
 
-## <a name="what-do-i-need-to-set-up-on-premises-before-i-start"></a>Co należy skonfigurować w środowisku lokalnym przed przystąpieniem?
+## <a name="what-do-i-need-to-set-up-on-premises-before-i-start"></a>Co muszę skonfigurować lokalnie przed rozpoczęciem?
 
-Lokalne Oto co należy zrobić:
+W tym miejscu należy wykonać następujące czynności:
 
-1. Musisz skonfigurować kilka kont:
+1. Należy skonfigurować kilka kont:
 
-    - Jeśli replikujesz maszyny wirtualne VMware, usługi Site Recovery uzyskać dostęp do serwera vCenter lub hostami vSphere ESXi jest potrzebne konto do automatycznego wykrywania maszyn wirtualnych.
-    - Konto jest niezbędne do zainstalowania agenta usługi Site Recovery Mobility na każdym komputerze fizycznym lub maszyny Wirtualnej, którą chcesz replikować.
+    - W przypadku replikowania maszyn wirtualnych VMware do Site Recovery dostępu vCenter Server lub vSphere hostów ESXi do automatycznego odnajdywania maszyn wirtualnych jest potrzebne konto.
+    - Do zainstalowania agenta usługi mobilności Site Recovery na każdym komputerze fizycznym lub maszynie wirtualnej, która ma zostać zreplikowana, jest wymagane konto.
 
-2. Musisz sprawdzić zgodność infrastrukturą produktów VMware, jeśli wcześniej nie zrobił.
-3. Upewnij się, że można połączyć z maszyn wirtualnych platformy Azure po przejściu w tryb failover. Można skonfigurować protokołu RDP na maszyn Windows lokalnych lub SSH na maszynach z systemem Linux.
+2. Jeśli jeszcze tego nie zrobisz, musisz sprawdzić zgodność infrastruktury programu VMware.
+3. Upewnij się, że możesz połączyć się z maszynami wirtualnymi platformy Azure po przejściu do trybu failover. Można skonfigurować protokół RDP na lokalnych maszynach z systemem Windows lub na maszynach SSH na komputerze z systemem Linux.
 
-*Potrzebujesz dodatkowej pomocy?*
-- Przygotowywanie konta do [automatyczne odnajdowanie](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) i [instalacji usługi mobilności](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-mobility-service-installation).
-- [Sprawdź](vmware-azure-tutorial-prepare-on-premises.md#check-vmware-requirements) zgodnych ustawień programu VMware.
-- [Przygotowanie](vmware-azure-tutorial-prepare-on-premises.md#prepare-to-connect-to-azure-vms-after-failover) tak, aby połączyć się na platformie Azure po włączeniu trybu failover.
-- Jeśli chcesz, aby szczegółowe pomocy na temat konfigurowania adresów IP maszyn wirtualnych platformy Azure po przejściu w tryb failover [przeczytaj ten artykuł](concepts-on-premises-to-azure-networking.md).
+*Potrzebujesz dalszej pomocy?*
+- Przygotuj konta do [automatycznego odnajdywania](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-automatic-discovery) i [instalacji usługi mobilności](vmware-azure-tutorial-prepare-on-premises.md#prepare-an-account-for-mobility-service-installation).
+- [Sprawdź](vmware-azure-tutorial-prepare-on-premises.md#check-vmware-requirements) , czy ustawienia programu VMware są zgodne.
+- [Przygotuj](vmware-azure-tutorial-prepare-on-premises.md#prepare-to-connect-to-azure-vms-after-failover) się, aby nawiązać połączenie na platformie Azure po przejściu do trybu failover.
+- Jeśli potrzebujesz więcej szczegółowych informacji na temat konfigurowania adresowania IP dla maszyn wirtualnych platformy Azure po przejściu do trybu failover, [Przeczytaj ten artykuł](concepts-on-premises-to-azure-networking.md).
 
-## <a name="how-do-i-set-up-disaster-recovery"></a>Jak skonfigurować odzyskiwanie po awarii?
+## <a name="how-do-i-set-up-disaster-recovery"></a>Jak mogę skonfigurować odzyskiwanie po awarii?
 
-Po utworzeniu infrastruktury platformy Azure i lokalnie w miejscu, możesz skonfigurować odzyskiwanie po awarii.
+Po włączeniu platformy Azure i infrastruktury lokalnej można skonfigurować odzyskiwanie po awarii.
 
-1. Aby poznać składniki, które należy wdrożyć, zobacz [architektura VMware – Azure](vmware-azure-architecture.md)i [środowisko fizyczne do platformy Azure architektury](physical-azure-architecture.md). Istnieje wiele składników, więc jest ważne zrozumieć, jak one współdziałają ze sobą.
-2. **Środowisko źródłowe**: Pierwszym krokiem we wdrożeniu należy skonfigurować środowiska źródłowego replikacji. Należy określić, co chcesz replikować, i gdzie ma zostać zreplikowana na.
-3. **Serwer konfiguracji**: Należy skonfigurować serwer konfiguracji w środowisku źródłowym w środowisku lokalnym:
-    - Serwer konfiguracji jest pojedynczy na komputerze lokalnym. Do odzyskiwania po awarii programu VMware firma Microsoft zaleca, wdrożyć go jako maszyny Wirtualnej VMware, które mogą być wdrażane z szablonu pakietu OVF do pobrania.
-    - Serwer konfiguracji służy do koordynowania komunikacji między lokalną i platformą Azure
-    - Uruchom kilka innych składników na komputerze z serwerem konfiguracji.
-        - Serwer przetwarzania odbiera optymalizuje i wysyła dane replikacji do konta magazynu pamięci podręcznej na platformie Azure. Obsługuje także automatycznej instalacji usługi mobilności na maszynach, którą chcesz replikować, i przeprowadza automatyczne odnajdywanie maszyn wirtualnych na serwerach VMware.
+1. Aby zrozumieć składniki, które należy wdrożyć, przejrzyj [architekturę programu VMware i platformy Azure](vmware-azure-architecture.md)oraz [architekturę fizyczną z platformą Azure](physical-azure-architecture.md). Istnieje kilka składników, dlatego ważne jest, aby zrozumieć, jak wszystkie te elementy pasują do siebie.
+2. **Środowisko źródłowe**: Pierwszym krokiem we wdrożeniu jest skonfigurowanie środowiska źródłowego replikacji. Określ, co chcesz replikować, i miejsce, w którym chcesz przeprowadzić replikację.
+3. **Serwer konfiguracji**: Musisz skonfigurować serwer konfiguracji w lokalnym środowisku źródłowym:
+    - Serwer konfiguracji jest pojedynczą maszyną lokalną. W przypadku odzyskiwania po awarii programu VMware zalecamy wdrożenie go jako maszyny wirtualnej VMware, którą można wdrożyć przy użyciu szablonu OVF do pobrania.
+    - Serwer konfiguracji koordynuje komunikację między środowiskiem lokalnym i platformą Azure
+    - Kilka innych składników działa na komputerze serwera konfiguracji.
+        - Serwer przetwarzania odbiera, optymalizuje i wysyła dane replikacji do konta magazynu pamięci podręcznej na platformie Azure. Obsługuje ona również automatyczną instalację usługi mobilności na maszynach, które mają być replikowane, i przeprowadza automatyczne odnajdowanie maszyn wirtualnych na serwerach VMware.
         - Główny serwer docelowy służy do obsługi replikacji danych podczas powrotu po awarii z platformy Azure.
-    - Konfiguracja obejmuje rejestrowania serwera konfiguracji w magazynie, pobieranie serwera MySQL i program VMware PowerCLI i określania kont utworzonych dla automatyczne odnajdywanie i instalacja usługi mobilności.
-4. **Środowisko docelowe**: Należy skonfigurować urządzenie docelowe środowisko platformy Azure, określając Twoich subskrypcji platformy Azure i ustawień sieci.
-5. **Zasady replikacji**: Należy określić, jak powinna być wykonywana replikacja. Ustawienia obejmują, jak często punkty odzyskiwania są tworzone i przechowywane, i czy powinny być tworzone migawki spójne z aplikacji.
-6. **Włącz replikację**. Należy włączyć replikację dla maszyn lokalnych. Jeśli utworzono konto, aby zainstalować usługę mobilności, następnie zostanie zainstalowana po włączeniu replikacji dla maszyny. 
+    - Konfiguracja obejmuje rejestrowanie serwera konfiguracji w magazynie, pobieranie serwera MySQL i programu VMware PowerCLI oraz określanie kont utworzonych na potrzeby instalacji automatycznego odnajdywania i usługi mobilności.
+4. **Środowisko docelowe**: Możesz skonfigurować docelowe środowisko platformy Azure, określając subskrypcję platformy Azure i ustawienia sieci.
+5. **Zasady replikacji**: Należy określić sposób replikacji. Ustawienia obejmują między innymi tworzenie i przechowywanie punktów odzyskiwania oraz możliwość tworzenia migawek spójnych na poziomie aplikacji.
+6. **Włącz replikację**. Należy włączyć replikację dla maszyn lokalnych. Jeśli utworzono konto w celu zainstalowania usługi mobilności, zostanie ona zainstalowana po włączeniu replikacji dla maszyny. 
 
-*Potrzebujesz dodatkowej pomocy?*
+*Potrzebujesz dalszej pomocy?*
 
-- Szybki przewodnik te kroki, możesz wypróbować nasze [samouczek VMware](vmware-azure-tutorial.md), i [wskazówki serwera fizycznego](physical-azure-disaster-recovery.md).
-- [Dowiedz się więcej](vmware-azure-set-up-source.md) Konfigurowanie środowiska źródłowego.
-- [Dowiedz się więcej o](vmware-azure-deploy-configuration-server.md) wymagania dotyczące serwera konfiguracji i konfigurowania serwera konfiguracji za pomocą szablonu pakietu OVF dla replikacji VMware. Jeśli z jakiegoś powodu nie można użyć szablonu lub w przypadku replikowania serwerów fizycznych, [przy użyciu tych instrukcji](physical-azure-set-up-source.md#set-up-the-source-environment).
-- [Dowiedz się więcej](vmware-azure-set-up-target.md) o ustawienia obiektu docelowego.
-- [Uzyskaj więcej informacji](vmware-azure-set-up-replication.md) o konfigurowaniu zasad replikacji.
-- [Dowiedz się,](vmware-azure-enable-replication.md) włączania replikacji i [wykluczyć](vmware-azure-exclude-disk.md) dysków z replikacji.
-
-
-## <a name="something-went-wrong-how-do-i-troubleshoot"></a>Wystąpił błąd, jak rozwiązywać problemy?
-
-- Pierwszym krokiem, spróbuj [monitorowania wdrożenia](site-recovery-monitor-and-troubleshoot.md) Sprawdź stan zreplikowane elementy, zadania i problemy dotyczące infrastruktury i zidentyfikować błędy.
-- Jeśli nie możesz się ukończenia replikacji początkowej lub trwającej replikacji nie działa zgodnie z oczekiwaniami, [zapoznaj się z tym artykułem](vmware-azure-troubleshoot-replication.md) dla typowych błędów i wskazówki dotyczące rozwiązywania problemów.
-- Jeśli występują problemy z automatycznej instalacji usługi mobilności na maszynach, które mają być replikowane, zapoznaj się z typowymi błędami w [w tym artykule](vmware-azure-troubleshoot-push-install.md).
-- W przypadku pracy awaryjnej nie działa zgodnie z oczekiwaniami, zaewidencjonuj typowych błędów [w tym artykule](site-recovery-failover-to-azure-troubleshoot.md).
-- W przypadku powrotu po awarii nie działa, sprawdź, czy problem jest wyświetlany w [w tym artykule](vmware-azure-troubleshoot-failback-reprotect.md).
+- Aby zapoznać się z krótkim przewodnikiem, możesz skorzystać z [samouczka](vmware-azure-tutorial.md)dotyczącego programu VMware i [serwera fizycznego](physical-azure-disaster-recovery.md).
+- [Dowiedz się więcej](vmware-azure-set-up-source.md) o konfigurowaniu środowiska źródłowego.
+- [Informacje o](vmware-azure-deploy-configuration-server.md) wymaganiach dotyczących serwera konfiguracji i konfigurowaniu serwera konfiguracji przy użyciu szablonu OVF na potrzeby replikacji oprogramowania VMware. Jeśli z jakiegoś powodu nie można użyć szablonu lub są replikowane serwery fizyczne, [Użyj tych instrukcji](physical-azure-set-up-source.md#set-up-the-source-environment).
+- [Dowiedz się więcej](vmware-azure-set-up-target.md) o ustawieniach docelowych.
+- [Uzyskaj więcej informacji](vmware-azure-set-up-replication.md) na temat konfigurowania zasad replikacji.
+- [Dowiedz się](vmware-azure-enable-replication.md) , jak włączyć replikację i [wykluczyć](vmware-azure-exclude-disk.md) dyski z replikacji.
 
 
+## <a name="something-went-wrong-how-do-i-troubleshoot"></a>Coś poszło źle, jak rozwiązywać problemy?
 
-## <a name="next-steps"></a>Kolejne kroki
+- Najpierw należy przeprowadzić [monitorowanie wdrożenia](site-recovery-monitor-and-troubleshoot.md) w celu sprawdzenia stanu zreplikowanych elementów, zadań i problemów z infrastrukturą oraz zidentyfikowania błędów.
+- Jeśli nie można ukończyć replikacji początkowej lub bieżąca replikacja nie działa zgodnie z oczekiwaniami, [zapoznaj się z tym artykułem](vmware-azure-troubleshoot-replication.md) dotyczącym typowych błędów i porad dotyczących rozwiązywania problemów.
+- Jeśli masz problemy z automatyczną instalacją usługi mobilności na maszynach, które mają być replikowane, przejrzyj typowe błędy w [tym artykule](vmware-azure-troubleshoot-push-install.md).
+- Jeśli tryb failover nie działa zgodnie z oczekiwaniami, Sprawdź typowe błędy w [tym artykule](site-recovery-failover-to-azure-troubleshoot.md).
+- Jeśli powrót po awarii nie działa, sprawdź, czy Twój problem występuje w [tym artykule](vmware-azure-troubleshoot-failback-reprotect.md).
 
-Za pomocą replikacji teraz w miejscu, należy [uruchamianie próbnego odzyskiwania po awarii](tutorial-dr-drill-azure.md) aby upewnić się, tryb failover działa zgodnie z oczekiwaniami. 
+
+
+## <a name="next-steps"></a>Następne kroki
+
+W przypadku replikacji na miejscu należy [przeprowadzić przechodzenie do odzyskiwania po awarii](tutorial-dr-drill-azure.md) , aby upewnić się, że tryb failover działa zgodnie z oczekiwaniami. 

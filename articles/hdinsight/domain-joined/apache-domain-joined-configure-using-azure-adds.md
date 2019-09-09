@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 04/23/2019
-ms.openlocfilehash: 76f95e74c8150ac797d20c3166c0e8d6ea085bf9
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 83e9e1364293601337f854f083bbb279361e29c5
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734947"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810999"
 ---
-# <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra usługi HDInsight z pakietem Enterprise Security przy użyciu usług Azure Active Directory Domain Services
+# <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>pakiet Enterprise Security konfiguracji z Azure Active Directory Domain Services w usłudze HDInsight
 
 Klastry pakiet Enterprise Security (ESP) zapewniają dostęp przez wiele użytkowników do klastrów usługi Azure HDInsight. Klastry usługi HDInsight z protokołem ESP są połączone z domeną, dzięki czemu użytkownicy domeny mogą korzystać z poświadczeń domeny w celu uwierzytelniania w klastrach i uruchamiania zadań Big Data.
 
@@ -118,7 +118,7 @@ Poniższy zrzut ekranu przedstawia pomyślną konfigurację w Azure Portal:
 
 Utworzoną tożsamość zarządzaną można wybrać z listy rozwijanej zarządzanej tożsamości przypisanej przez użytkownika podczas tworzenia nowego klastra.
 
-![Konfiguracja Active Directory Domain Services ESP usługi Azure HDInsight](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png).
+![Tożsamość zarządzana w usłudze Azure HDInsight ESP Active Directory Domain Services](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png).
 
 ## <a name="next-steps"></a>Następne kroki
 

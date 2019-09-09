@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7b569454696717913c325581ca1f00479a371984
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 8bd1bee82941953e96eed1defa04c9fddef3e293
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183189"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70809200"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Często zadawane pytania
 
@@ -124,9 +124,9 @@ Nie, Azure AD B2C nie obsługuje tego samego zestawu raportów co Azure AD — w
 
 Tak!  Przeczytaj o [dostosowywaniu języka](active-directory-b2c-reference-language-customization.md), który jest w publicznej wersji zapoznawczej. Udostępniamy tłumaczenia dla języków 36 i można przesłonić dowolny ciąg, aby odpowiadał Twoim potrzebom.
 
-### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Czy mogę używać własnych adresów URL na stronach do rejestracji i logowania, które są obsługiwane przez Azure AD B2C? Czy na przykład mogę zmienić adres URL z login.microsoftonline.com na login.contoso.com?
+### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Czy mogę używać własnych adresów URL na stronach do rejestracji i logowania, które są obsługiwane przez Azure AD B2C? Czy na przykład mogę zmienić adres URL z contoso.b2clogin.com na login.contoso.com?
 
-Obecnie nie. Ta funkcja jest dostępna w naszym przewodniku. Weryfikowanie domeny na karcie **domeny** w Azure Portal nie ma tego celu.
+Obecnie nie. Ta funkcja jest dostępna w naszym przewodniku. Weryfikowanie domeny na karcie **domeny** w Azure Portal nie ma tego celu. Jednak dzięki b2clogin.com Oferujemy [neutralną domenę najwyższego poziomu](b2clogin.md), a tym samym wygląd zewnętrzny można zaimplementować bez wzmianki firmy Microsoft.
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Jak mogę usunąć moją dzierżawę Azure AD B2C?
 

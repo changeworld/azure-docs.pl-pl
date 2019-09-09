@@ -1,6 +1,6 @@
 ---
 title: Rozwiązywanie problemów z błędami tworzenia klastra za pomocą usługi Azure HDInsight
-description: Dowiedz się, jak rozwiązywać problemy z tworzeniem klastra dla usługi Azure HDInsight.
+description: Dowiedz się, jak rozwiązywać problemy z tworzeniem klastra Apache dla usługi Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
-ms.openlocfilehash: 84dc0115edcab07036b43d5fa19310918f7a2408
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 607eacc531166d9d770f31cc64825e8ffea9ca76
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035980"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810682"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Rozwiązywanie problemów z błędami tworzenia klastra za pomocą usługi Azure HDInsight
 
@@ -29,7 +29,7 @@ Następujące problemy są Najczęstszymi przyczynami głównych niepowodzeń tw
 
 ## <a name="permissions-issues"></a>Problemy z uprawnieniami
 
-Jeśli używasz Azure Data Lake Storage Gen2 i otrzymujesz błąd ```AmbariClusterCreationFailedErrorCode```, ```Internal server error occurred while processing the request. Please retry the request or contact support.```Otwórz Azure Portal, przejdź do konta magazynu i w obszarze Access Control (IAM) Upewnij się, że **współautor danych obiektów blob magazynu** lub **obiekt blob magazynu Rola właściciela danych** ma przypisany dostęp do **tożsamości zarządzanej przypisanej przez użytkownika** dla subskrypcji. Aby uzyskać szczegółowe instrukcje [, zobacz Konfigurowanie uprawnień dla tożsamości zarządzanej na koncie Data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) .
+Jeśli używasz Azure Data Lake Storage Gen2 i otrzymujesz błąd ```AmbariClusterCreationFailedErrorCode```, ```Internal server error occurred while processing the request. Please retry the request or contact support.```Otwórz Azure Portal, przejdź do konta magazynu i w obszarze Access Control (IAM) Upewnij się, że **współautor danych obiektów blob magazynu** lub **obiekt blob magazynu Rola właściciela danych** ma przypisany dostęp do **tożsamości zarządzanej przypisanej przez użytkownika** dla subskrypcji. Aby uzyskać szczegółowe instrukcje, zobacz [Konfigurowanie uprawnień dla tożsamości zarządzanej na koncie Data Lake Storage Gen2](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account).
 
 Jeśli używasz Azure Data Lake Storage Gen1, zobacz instrukcje dotyczące instalacji i konfiguracji w [tym miejscu](../hdinsight-hadoop-use-data-lake-store.md). Data Lake Storage Gen1 nie jest obsługiwana w przypadku klastrów HBase i nie jest obsługiwana w usłudze HDInsight w wersji 4,0.
 

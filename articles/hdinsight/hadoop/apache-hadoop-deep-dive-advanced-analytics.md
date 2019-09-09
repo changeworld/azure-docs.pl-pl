@@ -1,6 +1,6 @@
 ---
-title: Szczegółowe informacje — advanced analytics — Azure HDInsight
-description: Dowiedz się, jak Zaawansowana analiza używa algorytmów do przetwarzania danych big data.
+title: Głębokie szczegółowe — analiza zaawansowana — Azure HDInsight
+description: Dowiedz się, w jaki sposób usługa Advanced Analytics używa algorytmów do przetwarzania danych Big Data w usłudze Azure HDInsight.
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,129 +8,129 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: ac0edf2de4337154b665b8f3898134a7c2fd1f4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 973ac928900cc02f176931ffa3865c2997e552f2
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712395"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810850"
 ---
-# <a name="deep-dive---advanced-analytics"></a>Szczegółowe informacje — zaawansowane analizy
+# <a name="deep-dive---advanced-analytics"></a>Głębokie szczegółowe — analiza zaawansowana
 
-## <a name="what-is-advanced-analytics-for-hdinsight"></a>Co to jest zaawansowany analytics dla usługi HDInsight?
+## <a name="what-is-advanced-analytics-for-hdinsight"></a>Co to jest zaawansowana Analiza usługi HDInsight?
 
-HDInsight zapewnia możliwość uzyskania wartościowy wgląd w informacje z dużych ilości strukturą i bez struktury i szybko zmieniających danych. Analiza zaawansowana polega korzystanie ze architektury wysoce skalowalną statystyczny modeli uczenia maszynowego i inteligentne pulpity nawigacyjne, aby udostępnić istotnych informacji. Uczenie maszynowe, lub *analizy predykcyjnej*, używa algorytmów, które zidentyfikować i ucz się od relacji w danych w celu tworzenia prognoz i przewodnik decyzje.
+Usługa HDInsight umożliwia uzyskanie cennych informacji z dużych ilości danych strukturalnych, niestrukturalnych i szybko przenoszonych. Zaawansowana analiza to korzystanie z wysoce skalowalnych architektur, modeli uczenia maszynowego i analitycznego oraz inteligentnych pulpitów nawigacyjnych, dzięki którym można uzyskiwać wgląd w szczegółowe dane. Uczenie maszynowe lub *Analiza predykcyjna*używa algorytmów, które identyfikują i uczyją się od relacji w danych, aby wprowadzać prognozy i przetwarzać decyzje.
 
 ## <a name="advanced-analytics-process"></a>Proces zaawansowanej analizy
 
-![Process](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
+![Proces](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
 
-Po zidentyfikowaliśmy problem biznesowy i zostały uruchomione, zbierania i przetwarzania danych, należy utworzyć model, który reprezentuje pytanie chcesz przewidzieć. Model użyje jednego lub więcej algorytmów uczenia maszynowego Zmień typ prognozowania, który najlepiej spełnia Twoje potrzeby biznesowe.  Większość danych należy używać do nauczenia modelu, z użyciem usług rest używany w celu przetestowania lub ewaluacji go. 
+Po zidentyfikowaniu problemu biznesowego i rozpoczęciu zbierania i przetwarzania danych należy utworzyć model, który reprezentuje pytanie, które ma zostać przewidywalna. Model będzie używać co najmniej jednego algorytmu uczenia maszynowego w celu zapewnienia typu przewidywania najlepiej dopasowanego do potrzeb Twojej firmy.  Większość danych powinna być używana do uczenia modelu przy użyciu reszty służącej do testowania lub szacowania. 
 
-Po utworzeniu, obciążenia, testowanie i ocenę modelu, następnym krokiem jest, aby wdrożyć model, dzięki czemu rozpocznie się, podając odpowiedzi na pytania. Ostatnim krokiem jest monitorowanie wydajności modelu i dostrojenie jej, zgodnie z potrzebami. 
+Po utworzeniu, załadowaniu, przetestowaniu i ocenie modelu, następnym krokiem jest wdrożenie modelu, aby rozpocząć dostarczanie odpowiedzi na pytania. Ostatnim krokiem jest monitorowanie wydajności modelu i dostrojenie go w razie potrzeby. 
 
-## <a name="common-types-of-algorithms"></a>Popularne typy algorytmów
+## <a name="common-types-of-algorithms"></a>Typowe typy algorytmów
 
-Zaawansowanych rozwiązań analizy zapewniają zestaw algorytmów uczenia maszynowego. Poniżej przedstawiono podsumowanie kategorii algorytmów i skojarzone typowych przypadków użycia biznesowego.
+Zaawansowane rozwiązania analityczne zapewniają zestaw algorytmów uczenia maszynowego. Poniżej znajduje się podsumowanie kategorii algorytmów i skojarzonych typowych przypadków użycia biznesowego.
 
-![W usłudze Machine Learning przypadki użycia](./media/apache-hadoop-deep-dive-advanced-analytics/ml-use-cases.png)
+![Machine Learning przypadków użycia](./media/apache-hadoop-deep-dive-advanced-analytics/ml-use-cases.png)
 
-Wraz z wybraniu najlepszego dopasowania algorytmy, należy wziąć pod uwagę, czy należy podać dane do trenowania. Algorytmów uczenia maszynowego są podzielone na następujące kategorie:
+Wraz z wybraniem algorytmów najlepszego dopasowania należy wziąć pod uwagę, czy należy podać dane do szkoleń. Algorytmy uczenia maszynowego są podzielone w następujący sposób:
 
-* W trybie nadzorowanym — algorytm musi odbywać się w zestawie danych oznaczonych przed zapewnia wyniki
-* Częściowo nadzorowanych — algorytm może zostać rozszerzony o dodatkowe obiekty docelowe za pomocą interakcyjnych zapytań przez instruktora, które nie były dostępne podczas początkowego etapu szkolenia
-* Nienadzorowane — algorytm nie wymaga szkolenia danych 
-* Wzmocnienie — algorytm używa oprogramowania agentów do określenia zachowania idealne rozwiązanie w określonym kontekście (często używane w związane z robotyką)
+* Algorytm nadzorowany musi być szkolony na zestawie danych z etykietą, zanim będzie mógł dostarczyć wyniki
+* Algorytm częściowo nadzorowany można rozszerzyć o dodatkowe elementy docelowe za pomocą zapytania interaktywnego przez Trainer, które nie były dostępne podczas początkowego etapu szkolenia
+* Nienadzorowany algorytm nie wymaga danych szkoleniowych 
+* Algorytm wzmacniania używa agentów oprogramowania do określenia idealnego zachowania w określonym kontekście (często używanym w programie Robotic)
 
 
-| Algorytm kategorii| Użycie | Typ nauki | Algorytmy |
+| Kategoria algorytmu| Zastosowanie | Typ uczenia | Algorytmy |
 | --- | --- | --- | -- |
-| Klasyfikacja | Klasyfikowanie osób lub urządzeń do grup | W trybie nadzorowanym | Drzewa decyzyjne, regresji logistycznej, sieci neuronowych |
-| Klastrowanie | Dzielenie zestaw przykładów na jednorodnego grup | Nienadzorowane | K-średnich klastrowania |
-| Wzorzec wykrywania | Identyfikowanie częste powiązania danych | Nienadzorowane | Reguły kojarzenia |
-| Regresji | Przewidywanie wyników liczbowych | W trybie nadzorowanym | Regresja liniowa sieci neuronowych |
-| Wzmocnienie | Określ zachowanie optymalne dla robotów | Wzmocnienie | Monte Carlo Simulations, DeepMind |
+| Klasyfikacja | Klasyfikowanie osób lub rzeczy do grup | Nadzorowane | Drzewa decyzyjne, regresja logistyczna, sieci neuronowyche |
+| Klastrowanie | Dzielenie zestawu przykładów do jednorodnych grup | Nienadzorowanych | K-oznacza klastrowanie |
+| Wykrywanie wzorca | Zidentyfikuj częste skojarzenia danych | Nienadzorowanych | Reguły kojarzenia |
+| Regresji | Przewidywanie wyników liczbowych | Nadzorowane | Regresja liniowa, sieci neuronowych |
+| Wzmacnianie | Określanie optymalnego zachowania dla robotów | Wzmacnianie | Symulacje Carlo Monte, DeepMind |
 
-## <a name="machine-learning-on-hdinsight"></a>Uczenia maszynowego w HDInsight
+## <a name="machine-learning-on-hdinsight"></a>Uczenie maszynowe w usłudze HDInsight
 
-HDInsight ma kilka usługi machine learning opcje przepływ pracy zaawansowanej analizy:
+Usługa HDInsight ma kilka opcji uczenia maszynowego dla przepływu pracy zaawansowanej analizy:
 
-* Uczenie maszynowe i Apache Spark
-* R i usługi ML
-* Usługi Azure Machine Learning i Apache Hive
-* Platforma Apache Spark i uczenie głębokie
+* Machine Learning i Apache Spark
+* Usługi R i ML
+* Azure Machine Learning i Apache Hive
+* Apache Spark i uczenie głębokie
 
-### <a name="machine-learning-and-apache-spark"></a>Uczenie maszynowe i Apache Spark
-
-
-[HDInsight Spark](../spark/apache-spark-overview.md) to oferta hostowanymi na platformie Azure z [platformy Apache Spark](https://spark.apache.org/), ujednolicone, typu open source, platforma równoległego przetwarzania danych, która używa przetwarzanie w pamięci, aby zwiększyć możliwości analizy danych Big Data. Aparat przetwarzania Spark zaprojektowano pod kątem szybkości, łatwości użycia i zaawansowanych możliwości analitycznych. Możliwości obliczeń rozproszonych w pamięci platforma Spark, że dobry wybór w przypadku algorytmów iteracyjnych używanych używane w machine learning i obliczeniach na grafach. 
+### <a name="machine-learning-and-apache-spark"></a>Machine Learning i Apache Spark
 
 
-Istnieją trzy biblioteki uczenia skalowalne maszyny, które przenieść funkcje modelowania konsolidatorze na tym środowisku rozproszonym:
+[HDInsight Spark](../spark/apache-spark-overview.md) to oparta na platformie Azure oferta [Apache Spark](https://spark.apache.org/), ujednolicona platforma przetwarzania danych typu open source, która korzysta z przetwarzania w pamięci, aby zwiększyć analizę danych Big Data. Aparat przetwarzania Spark zaprojektowano pod kątem szybkości, łatwości użycia i zaawansowanych możliwości analitycznych. Możliwości obliczeń rozproszonych w pamięci platforma Spark, że dobry wybór w przypadku algorytmów iteracyjnych używanych używane w machine learning i obliczeniach na grafach. 
 
-* [**Biblioteka MLlib** ](https://spark.apache.org/docs/latest/ml-guide.html) -MLlib zawiera oryginalny interfejs API, zbudowany na podstawie danych platformy Spark.
-* [**SparkML** ](https://spark.apache.org/docs/1.2.2/ml-guide.html) -SparkML jest nowszy pakiet, który udostępnia interfejs API wyższego poziomu utworzonych na szczycie elementy Dataframe platformy Spark do konstruowania potokach uczenia Maszynowego.
-* [**MMLSpark** ](https://github.com/Azure/mmlspark) — Microsoft Machine Learning library dla platformy Apache Spark (MMLSpark) umożliwia analitykom danych bardziej wydajnej pracy na platformie Spark, zwiększenia szybkości eksperymentowania i uczenie maszynowe najnowocześniejsze technik, w tym uczenia głębokiego, w bardzo dużych zestawów danych. Biblioteka MMLSpark upraszcza typowe zadania modelowania przeznaczone do budowania modeli w PySpark. 
 
-### <a name="r-and-ml-services"></a>R i usługi ML
+Istnieją trzy skalowalne biblioteki uczenia maszynowego, które doprowadzają możliwości modelowania algorytmów do tego środowiska rozproszonego:
 
-Jako część HDInsight, możesz utworzyć klaster usługi HDInsight przy użyciu [usługi ML](../r-server/r-server-overview.md) gotowe do użycia z ogromnych zestawów danych i modelami. Ta nowa funkcja umożliwia analitykom danych i Statystyków za pomocą znajomego interfejsu języka R, która może być skalowana na żądanie za pośrednictwem HDInsight, bez konieczności konfigurowania klastra oraz konserwacji.
+* [**MLlib**](https://spark.apache.org/docs/latest/ml-guide.html) -MLlib zawiera oryginalny interfejs API zbudowany w oparciu o platformę Spark odporne.
+* [**SparkML**](https://spark.apache.org/docs/1.2.2/ml-guide.html) -SparkML to nowszy pakiet, który udostępnia interfejs API wyższego poziomu, który jest oparty na platformie Spark dataframes do konstruowania potoków ml.
+* [**MMLSpark**](https://github.com/Azure/mmlspark) — Biblioteka Machine Learning firmy Microsoft dla Apache Spark (MMLSpark) została zaprojektowana w celu zwiększenia produktywności analityków danych na platformie Spark, zwiększania liczby eksperymentów i korzystania z najnowocześniejszych technik uczenia maszynowego, w tym uczenie głębokie na bardzo dużych zestawach danych. Biblioteka MMLSpark upraszcza typowe zadania modelowania do kompilowania modeli w PySpark. 
 
-### <a name="azure-machine-learning-and-apache-hive"></a>Usługi Azure Machine Learning i Apache Hive
+### <a name="r-and-ml-services"></a>Usługi R i ML
 
-[Usługa Azure Machine Learning Studio](https://studio.azureml.net/) udostępnia narzędzia do analizy predykcyjnej w modelu, a także w pełni zarządzana usługa umożliwia wdrażanie modeli predykcyjnych w postaci gotowych do użycia usług sieci web. Usługa Azure Machine Learning udostępnia narzędzia do tworzenia kompletnych rozwiązań analizy predykcyjnej w chmurze szybkie tworzenie, testowanie, operacjonalizacja i zarządzanie nimi modeli predykcyjnych. Wybierz z dużej biblioteki algorytmów, używać programu studio opartego na sieci web przeznaczone do budowania modeli i łatwy sposób wdrażania modelu w postaci usługi sieci web.
+W ramach programu HDInsight można utworzyć klaster usługi HDInsight z [usługami ml](../r-server/r-server-overview.md) , gotowy do użycia z olbrzymimi zestawami danych i modelami. Ta nowa funkcja zapewnia analitykom danych i statystyków za pomocą znanego interfejsu języka R, który umożliwia skalowanie na żądanie za pomocą usługi HDInsight, bez konieczności konfigurowania i konserwacji klastra.
 
-### <a name="apache-spark-and-deep-learning"></a>Platforma Apache Spark i uczenie głębokie
+### <a name="azure-machine-learning-and-apache-hive"></a>Azure Machine Learning i Apache Hive
 
-[Uczenie głębokie](https://www.microsoft.com/research/group/dltc/) to gałąź usługi machine learning, która używa *głębokich sieciach neuronowych* (sieci), ZAINSPIROWANE procesom mózgu ludzi. Wielu pracowników naukowo-badawczych Zobacz uczenia głębokiego jako obietnic podejście dla sztucznej inteligencji. Kilka przykładów uczenia głębokiego są tłumaczy mowy, systemy rozpoznawania obrazów i logikę maszyny. Aby pomóc w dojściu pracę w uczenia głębokiego, firma Microsoft opracowała bezpłatny, łatwy w użyciu, open source [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/). Zestaw narzędzi jest często używana przez szerokiej gamy produktów firmy Microsoft, firm na całym świecie z konieczności wdrażania uczenia głębokiego na dużą skalę i studentów zainteresowani najnowsze algorytmy i techniki. 
+[Azure Machine Learning Studio](https://studio.azureml.net/) udostępnia narzędzia do modelowania analizy predykcyjnej, a także w pełni zarządzaną usługę, z której można korzystać w celu wdrażania modeli predykcyjnych jako gotowych do użycia usług sieci Web. Azure Machine Learning udostępnia narzędzia do tworzenia kompletnych rozwiązań analizy predykcyjnej w chmurze, które umożliwiają szybkie tworzenie, testowanie i operacjonalizować modeli predykcyjnych oraz zarządzanie nimi. Wybierz jedną z wielu bibliotek algorytmów, użyj programu Studio opartego na sieci Web do tworzenia modeli i łatwo Wdrażaj model jako usługę sieci Web.
 
-## <a name="scenario---score-images-to-identify-patterns-in-urban-development"></a>Scenariusz — obrazy wynik w celu zidentyfikowania wzorców w rozwój miast
+### <a name="apache-spark-and-deep-learning"></a>Apache Spark i uczenie głębokie
 
-Omówmy teraz przykładem maszynie zaawansowane funkcje analityczne uczenia potoku przy użyciu HDInsight.
+[Uczenie głębokie](https://www.microsoft.com/research/group/dltc/) to rozgałęzienie uczenia maszynowego, które korzysta z *głębokiej sieci neuronowych Networks* (DNNs), inspirowane procesami biologicznymi mózgów ludzkich. Wielu badaczy widzą uczenie głębokie jako obietnice dla sztucznej analizy. Przykłady uczenia głębokiego to wypowiadane translatory języka, systemy rozpoznawania obrazów i przyczyny maszyn. Aby pomóc w zapoznaniu się z swoją działalnością w ramach uczenia głębokiego, firma Microsoft opracowała bezpłatną, łatwą w użyciu, [Microsoft Cognitive Toolkitę](https://www.microsoft.com/en-us/cognitive-toolkit/)Open Source. Zestaw narzędzi jest szeroko używany przez różne produkty firmy Microsoft, przedsiębiorstwa na całym świecie, dzięki czemu należy wdrożyć głębokie uczenie na dużą skalę i według uczniów zainteresowanych najnowszymi algorytmami i technikami. 
 
-W tym scenariuszu, zobaczysz, jak jednokierunkowe sieci Dnn generowany w ramach uczenia głębokiego firmy Microsoft Cognitive Toolkit (CNTK), może być udało do oceniania kolekcje duży obraz przechowywany na koncie usługi Azure Blob Storage przy użyciu PySpark w klastrze usługi HDInsight Spark. To podejście jest stosowany do wspólnego DNN przypadek użycia, Klasyfikacja obrazów z powietrza i może służyć do identyfikowania najnowszych wzorce w rozwój miast.  Model klasyfikacji wstępnie przeszkolonych obraz zostanie użyty. Model, który jest wstępnie przeszkolonych na [dataset CIFAR 10](https://www.cs.toronto.edu/~kriz/cifar.html) i została zastosowana do 10 000 obrazów wstrzymana.
+## <a name="scenario---score-images-to-identify-patterns-in-urban-development"></a>Scenariusz — obrazy oceny służące do identyfikowania wzorców w rozwoju miast
 
-W tym scenariuszu zaawansowane funkcje analityczne, istnieją trzy główne zadania:
+Zapoznaj się z przykładem zaawansowanego potoku uczenia maszynowego analizy przy użyciu usługi HDInsight.
 
-1. Utworzenie klastra usługi Azure HDInsight Hadoop z dystrybucji platformy Apache Spark 2.1.0. 
-2. Uruchom niestandardowy skrypt, aby zainstalować Microsoft Cognitive Toolkit we wszystkich węzłach klastra usługi Azure HDInsight Spark. 
-3. Przekazywanie notesu programu Jupyter gotowych do klastra usługi HDInsight Spark do zastosowania uczonego Microsoft Cognitive Toolkit głębokie uczenie modelu do plików w konto usługi Azure Blob Storage przy użyciu interfejsu API Python platformy Spark (PySpark). 
+W tym scenariuszu zobaczysz, jak DNNs produkowany w ramach platformy uczenia głębokiego, Cognitive Toolkit firmy Microsoft (CNTK), może być funkcjonujący do oceniania dużych kolekcji obrazów przechowywanych na koncie platformy Azure Blob Storage przy użyciu PySpark w klastrze usługi HDInsight Spark. Takie podejście jest stosowane do typowego przypadku użycia DNN, klasyfikacji obrazów lotniczych i może służyć do identyfikowania ostatnich wzorców rozwoju w miastach.  Będziesz używać wstępnie nauczonego modelu klasyfikacji obrazu. Model jest wstępnie szkolony w [zestawie danych CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html) i został zastosowany do 10 000 obrazów nieodebranych.
 
-W tym przykładzie użyto zestawu, skompilowane i rozproszonych Alex Krizhevsky, Vinod Nair i Geoffrey Hinton obrazów CIFAR 10. Zestaw danych CIFAR 10 zawiera 60 000 32 × 32 kolor obrazów należących do 10 wzajemnie wykluczających się klasy:
+W tym scenariuszu w ramach zaawansowanej analizy istnieją trzy kluczowe zadania:
+
+1. Utwórz klaster Azure HDInsight Hadoop przy użyciu dystrybucji Apache Spark 2.1.0. 
+2. Uruchom skrypt niestandardowy, aby zainstalować Microsoft Cognitive Toolkit na wszystkich węzłach klastra Azure HDInsight Spark. 
+3. Przekaż wstępnie utworzony Notes Jupyter do klastra usługi HDInsight Spark, aby zastosować szkolony Microsoft Cognitive Toolkit model uczenia głębokiego do plików na koncie usługi Azure Blob Storage przy użyciu interfejsu API Spark Python (PySpark). 
+
+W tym przykładzie zastosowano zestaw obrazu CIFAR-10 skompilowany i rozdystrybuowany przez polecenie Alex Krizhevsky, Vinod Nair i Geoffrey Hinton. Zestaw danych CIFAR-10 zawiera 60 000 32 x 32 kolorowych obrazów należących do 10 wzajemnie wyłącznych klas:
 
 ![Obrazy](./media/apache-hadoop-deep-dive-advanced-analytics/ml-images.png)
 
-Aby uzyskać szczegółowe informacje na temat zestawu danych, zobacz Alex Krizhevsky [Learning wiele warstw z funkcji z niewielki rozmiar obrazów](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
+Aby uzyskać więcej szczegółowych informacji na temat zestawu danych, zobacz Alex Krizhevsky — [uczenie wielu warstw funkcji z niewielkich obrazów](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf).
 
-Zestaw danych została poddana partycjonowaniu na zestaw szkoleniowy, 50 000 obrazów i zestaw testów 10 000 obrazów. Pierwszy zestaw został użyty do uczenia modelu dwadzieścia — warstwa głębokiego splotowe sieci pozostają resztkowe (siecią ResNet), przy użyciu zestawu narzędzi Microsoft Cognitive Toolkit, postępując zgodnie z [w tym samouczku](https://github.com/Microsoft/CNTK/tree/master/Examples/Image/Classification/ResNet) z repozytorium GitHub usługi Cognitive Toolkit. Pozostałych 10 000 obrazów były używane do testowania dokładności modelu. Jest to, gdzie przetwarzania rozproszonego właśnie: zadanie przetwarzania wstępnego i oceniania obrazów jest wysoce równoległego. Zapisane uczonego modelu w kasie użyliśmy:
+Zestaw danych został podzielony na partycje do zestawu szkoleniowego 50 000 obrazów i zestawu testowego z 10 000 obrazów. Pierwszy zestaw został użyty do uczenia modelu sieci splotowych (ResNet) o 20 warstwach z systemem za pomocą Microsoft Cognitive Toolkit, wykonując czynności opisane w [tym samouczku](https://github.com/Microsoft/CNTK/tree/master/Examples/Image/Classification/ResNet) w repozytorium Cognitive Toolkit GitHub. Pozostałe obrazy 10 000 zostały użyte do testowania dokładności modelu. Jest to miejsce, w którym nastąpi odtworzenie rozproszonego przetwarzania: zadanie wstępnego przetwarzania i oceniania obrazów jest wysoce działania równoległego. Dzięki zapisanemu przeszkolonemu modelowi używamy:
 
-* PySpark do dystrybucji obrazów i uczonego modelu z węzłami procesu roboczego klastra.
-* Python wstępnego przetwarzania obrazów w każdym węźle klastra platformy HDInsight Spark.
-* Zestaw narzędzi cognitive Toolkit do załadowania modelu a wynik wstępnie przetworzonych obrazów w każdym węźle.
-* Notesy Jupyter w celu uruchomienia skryptu PySpark agregowanie wyników, a następnie użyj [Matplotlib](https://matplotlib.org/) wizualizacji wydajności modelu.
+* PySpark do dystrybuowania obrazów i przeszkolonego modelu do węzłów procesu roboczego klastra.
+* Środowisko Python do wstępnego przetwarzania obrazów w każdym węźle klastra usługi HDInsight Spark.
+* Cognitive Toolkit załadować modelu i oceny wstępnie przetworzonych obrazów w każdym węźle.
+* Jupyter notesy do uruchamiania skryptu PySpark, agregowania wyników i używania [matplotlib](https://matplotlib.org/) do wizualizacji wydajności modelu.
 
-Całe przetwarzanie wstępne/ocenianie 10 000 obrazów trwa mniej niż minutę w klastrze z 4 węzłów procesu roboczego. Model przewiduje dokładnie etykiet ~ 9,100 (91%) obrazy. Macierz pomyłek przedstawia najbardziej typowe błędy klasyfikacji. Na przykład pokazuje macierzy, przechowywaniu psy jako koty i na odwrót występowanie ponad często dla innych par etykiety.
+Całe przetwarzanie i ocenianie obrazów 10 000 trwa krócej niż jedna minuta w klastrze z 4 węzłami procesu roboczego. Model dokładnie przewidywalnuje etykiety ~ 9 100 (91%) rastrow. Macierz niepomyle ilustruje najczęstsze błędy klasyfikacji. Na przykład macierz pokazuje, że nieoznakowanie psów jako koty i odwrotnie występuje częściej niż w przypadku innych par etykiet.
 
 ![Wyniki](./media/apache-hadoop-deep-dive-advanced-analytics/ml-results.png)
 
 ### <a name="try-it-out"></a>Wypróbuj!
 
-Postępuj zgodnie z [w tym samouczku](../spark/apache-spark-microsoft-cognitive-toolkit.md) implementacji tego rozwiązania end-to-end: Konfigurowanie klastra usługi HDInsight Spark, zainstaluj zestaw narzędzi Cognitive Toolkit i uruchamianie notesu programu Jupyter, która ocenia 10 000 CIFAR obrazów.
+Postępuj zgodnie z [tym samouczkiem](../spark/apache-spark-microsoft-cognitive-toolkit.md) , aby zaimplementować kompleksowe rozwiązanie: skonfiguruj klaster usługi HDInsight Spark, zainstaluj Cognitive Toolkit i uruchom Jupyter Notebook, które oceniają 10 000 obrazów CIFAR.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Apache Hive, jak i usługi Azure Machine Learning
+Apache Hive i Azure Machine Learning
 
-* [Apache Hive i usługi Azure Machine Learning end-to-end](../../machine-learning/team-data-science-process/hive-walkthrough.md)
-* [Przy użyciu klastra usługi Azure HDInsight Hadoop na zestawie danych 1 TB](../../machine-learning/team-data-science-process/hive-criteo-walkthrough.md)
+* [Apache Hive i Azure Machine Learning kompleksowe](../../machine-learning/team-data-science-process/hive-walkthrough.md)
+* [Używanie klastra Azure HDInsight Hadoop na 1 TB zestawu danych](../../machine-learning/team-data-science-process/hive-criteo-walkthrough.md)
 
-Platforma Apache Spark oraz MLLib
+Apache Spark i MLLib
 
-* [Uczenie maszynowe przy użyciu platformy Apache Spark w HDInsight](../../machine-learning/team-data-science-process/spark-overview.md)
-* [Platforma Apache Spark w usłudze Machine Learning: Use Apache Spark w HDInsight do analizy temperatury w budynku z użyciem danych HVAC](../spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Platforma Apache Spark w usłudze Machine Learning: Korzystanie z platformy Apache Spark w HDInsight do przewidywania wyników kontroli żywności](../spark/apache-spark-machine-learning-mllib-ipython.md)
+* [Uczenie maszynowe za pomocą Apache Spark w usłudze HDInsight](../../machine-learning/team-data-science-process/spark-overview.md)
+* [Apache Spark z Machine Learning: Używanie Apache Spark w usłudze HDInsight do analizowania temperatury kompilacji przy użyciu danych HVAC](../spark/apache-spark-ipython-notebook-machine-learning.md)
+* [Apache Spark z Machine Learning: Używanie Apache Spark w usłudze HDInsight do przewidywania wyników inspekcji żywności](../spark/apache-spark-machine-learning-mllib-ipython.md)
 
-Uczenie głębokie, Cognitive Toolkit i innych
+Uczenie głębokie, Cognitive Toolkit i inne
 
-* [Do nauki o danych maszyny wirtualnej platformy Azure](../../machine-learning/data-science-virtual-machine/overview.md)
-* [Wprowadzenie do H2O.ai w usłudze Azure HDInsight](https://azure.microsoft.com/blog/introducing-h2o-ai-with-on-azure-hdinsight-to-bring-the-most-robust-ai-platform-for-enterprises/)
+* [Maszyna wirtualna platformy Azure o danych](../../machine-learning/data-science-virtual-machine/overview.md)
+* [Wprowadzenie do usługi H2O.ai w usłudze Azure HDInsight](https://azure.microsoft.com/blog/introducing-h2o-ai-with-on-azure-hdinsight-to-bring-the-most-robust-ai-platform-for-enterprises/)

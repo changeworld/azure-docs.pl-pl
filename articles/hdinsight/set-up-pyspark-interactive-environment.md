@@ -8,12 +8,12 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 54adb2ec61d77ea429f7da1b88aa9347c1addfe0
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 8e90be5a38ff40b748c11539e1d5c6558d198b62
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736412"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814237"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Skonfiguruj środowisko interaktywne PySpark dla Visual Studio Code
 
@@ -24,13 +24,13 @@ Używamy polecenia **Python/PIP** do kompilowania środowiska wirtualnego w ści
 1. Zainstaluj język [Python](https://www.python.org/downloads/) i narzędzie [PIP](https://pip.pypa.io/en/stable/installing/).
    
    + Zainstaluj Język Python [https://www.python.org/downloads/](https://www.python.org/downloads/)z programu.
-   + Zainstaluj program PIP [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/)z programu. (Jeśli nie jest zainstalowany w instalacji języka Python)
-   + Weryfikowanie, czy język Python i PIP zostały pomyślnie zainstalowane przy użyciu następujących poleceń. Obowiązkowe
+   + Zainstaluj program PIP [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) from (jeśli nie jest zainstalowany w instalacji języka Python).
+   + Sprawdź, czy środowisko Python i PIP zostały pomyślnie zainstalowane, używając następujących poleceń. Obowiązkowe
  
         ![Wersja PIP języka Python](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
      > [!NOTE]
-     > Zalecane jest ręczne zainstalowanie języka Python zamiast używania domyślnej wersji programu MacOS.
+     > Zalecane jest ręczne zainstalowanie języka Python zamiast używania domyślnej wersji programu macOS.
 
 
 2. Zainstaluj **virtualenv** , uruchamiając poniższe polecenie.
@@ -39,19 +39,21 @@ Używamy polecenia **Python/PIP** do kompilowania środowiska wirtualnego w ści
    pip install virtualenv
    ```
 
-3. Tylko w przypadku systemu Linux Zainstaluj wymagane pakiety, uruchamiając polecenia w postaci mieszkowej w przypadku wystąpienia komunikatu o błędzie.
-   
-    ![Wersja PIP języka Python](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
-       
-   ```
-   sudo apt-get install libkrb5-dev 
-   ```
+## <a name="other-packages"></a>Inne pakiety
 
-   ```
-   sudo apt-get install python-dev
-   ```
+Jeśli zostanie wyświetlony komunikat o błędzie, Zainstaluj wymagane pakiety, uruchamiając następujące polecenia:
 
-4. Uruchom ponownie vs Code, a następnie wróć do edytora skryptów, w którym działa **Usługa HDInsight: PySpark Interactive**.
+   ![Wersja PIP języka Python](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
+
+```
+sudo apt-get install libkrb5-dev
+```
+
+```
+sudo apt-get install python-dev
+```
+
+Uruchom ponownie vs Code, a następnie wróć do edytora skryptów, w którym działa **Usługa HDInsight: PySpark Interactive**.
 
 ## <a name="next-steps"></a>Następne kroki
 

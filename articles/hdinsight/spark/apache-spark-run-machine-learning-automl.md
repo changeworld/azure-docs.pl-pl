@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: aaea8a1af7ad6df89d41dc0e39d13bafbb610224
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 599fa62d253eda7992d7d7db4f5178d3ce428a9c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736062"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814044"
 ---
-# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Uruchamianie obciążeń Azure Machine Learning przy użyciu automatycznego uczenia maszynowego (AutoML) na Apache Spark w usłudze Azure HDInsight
+# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Uruchamianie obciążeń Azure Machine Learning przy użyciu automatycznego uczenia maszynowego na Apache Spark w usłudze HDInsight
 
 Azure Machine Learning upraszcza i przyspiesza kompilowanie, uczenie i wdrażanie modeli uczenia maszynowego. W przypadku automatycznego uczenia maszynowego (AutoML) zaczynasz od danych szkoleniowych, które mają zdefiniowaną funkcję docelową, a następnie iterować przez kombinację wybranych algorytmów i funkcji, aby automatycznie wybierać najlepszy model dla danych na podstawie ocen szkoleniowych. Usługa HDInsight umożliwia klientom obsługę klastrów przy użyciu setek węzłów. AutoML uruchomione na platformie Spark w klastrze usługi HDInsight umożliwia użytkownikom wykorzystanie pojemności obliczeniowej w tych węzłach do uruchamiania zadań szkoleniowych w sposób skalowalny w poziomie, a jednocześnie uruchamianie wielu zadań szkoleniowych. Pozwala to użytkownikom na uruchamianie eksperymentów AutoML podczas udostępniania obliczeń przy użyciu innych obciążeń związanych z danymi Big Data.
  

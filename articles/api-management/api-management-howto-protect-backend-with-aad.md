@@ -12,16 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 344613c50f46337ffbd7e786f6753e8030c2af22
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 653089042c87b3223b3de048b6f12056d04b0f3c
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072242"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806331"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Ochrona interfejsu API przy użyciu protokołu OAuth 2,0 z Azure Active Directory i API Management
 
 W tym przewodniku opisano sposób konfigurowania wystąpienia API Management platformy Azure w celu ochrony interfejsu API przy użyciu protokołu OAuth 2,0 z usługą Azure Active Directory (Azure AD). 
+
+> [!NOTE]
+> Ta funkcja jest dostępna w warstwach **Developer**, **Standard** i **Premium** API Management.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby wykonać kroki opisane w tym artykule, musisz mieć:
@@ -29,7 +32,7 @@ Aby wykonać kroki opisane w tym artykule, musisz mieć:
 * Publikowany interfejs API korzystający z wystąpienia API Management
 * Dzierżawa usługi Azure AD
 
-## <a name="overview"></a>Przegląd
+## <a name="overview"></a>Omówienie
 
 Poniżej przedstawiono krótkie omówienie kroków:
 
@@ -85,7 +88,7 @@ Każda aplikacja kliencka, która wywołuje interfejs API, musi zostać zarejest
 
 Teraz Utwórz klucz tajny klienta dla tej aplikacji, aby użyć go w kolejnym kroku.
 
-1. Z listy stron dla aplikacji klienckiej wybierz pozycję **certyfikaty &** wpisy tajne i wybierz pozycję **nowy klucz tajny klienta**.
+1. Z listy stron dla aplikacji klienckiej wybierz pozycję **certyfikaty & wpisy tajne**i wybierz pozycję **nowy klucz tajny klienta**.
 
 1. W obszarze **Dodaj wpis tajny klienta**Podaj **Opis**. Wybierz czas wygaśnięcia klucza i wybierz pozycję **Dodaj**.
 
@@ -193,7 +196,7 @@ W tym momencie, gdy użytkownik próbuje wykonać wywołanie z poziomu konsoli d
 
 Jeśli jednak ktoś dzwoni do interfejsu API bez tokenu lub z nieprawidłowym tokenem? Na przykład spróbuj wywołać interfejs API bez `Authorization` nagłówka, połączenie będzie nadal się powtarzać. Przyczyną jest to, że API Management nie sprawdza poprawności tokenu dostępu w tym momencie. Po prostu przekazuje `Authorization` nagłówek do interfejsu API zaplecza.
 
-Za pomocą walidacji zasad [JWT](api-management-access-restriction-policies.md#ValidateJWT) można wstępnie autoryzować żądania w API Management, sprawdzając tokeny dostępu dla każdego żądania przychodzącego. Jeśli żądanie nie ma prawidłowego tokenu, API Management ją zablokuje. Na przykład Dodaj następujące zasady do `<inbound>` sekcji `Echo API`zasady programu. Sprawdza to w tokenie dostępu i zwraca komunikat o błędzie, jeśli token jest nieprawidłowy. Aby uzyskać informacje na temat konfigurowania zasad, zobacz [Ustawianie lub edytowanie zasad](set-edit-policies.md).
+Za pomocą [walidacji zasad JWT](api-management-access-restriction-policies.md#ValidateJWT) można wstępnie autoryzować żądania w API Management, sprawdzając tokeny dostępu dla każdego żądania przychodzącego. Jeśli żądanie nie ma prawidłowego tokenu, API Management ją zablokuje. Na przykład Dodaj następujące zasady do `<inbound>` sekcji `Echo API`zasady programu. Sprawdza to w tokenie dostępu i zwraca komunikat o błędzie, jeśli token jest nieprawidłowy. Aby uzyskać informacje na temat konfigurowania zasad, zobacz [Ustawianie lub edytowanie zasad](set-edit-policies.md).
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie klastrami usługi HDInsight przy użyciu zabezpieczeń przedsiębiorstwa — Azure
-description: Dowiedz się, jak zarządzać klastrami usługi HDInsight przy użyciu pakiet Enterprise Security.
+description: Dowiedz się, jak zarządzać klastrami usługi Azure HDInsight za pomocą pakiet Enterprise Security.
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: 7fa215f843fd025d26ba0f583b96f3bb7e63c9ed
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: acf11b8107855c6f087f63f592cdbbad3766795e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488722"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811022"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Zarządzanie klastrami usługi HDInsight przy użyciu pakiet Enterprise Security
 Informacje o użytkownikach i rolach w usłudze HDInsight pakiet Enterprise Security (ESP) i sposobach zarządzania klastrami ESP.
@@ -34,7 +34,7 @@ Można połączyć normalny klaster przy użyciu nazwy użytkownika zarządzaneg
    
 3. Można wyświetlić połączony klaster przy użyciu **listy poleceń klaster**. Teraz można przesłać skrypt do tego połączonego klastra.
 
-   ![połączony klaster](./media/apache-domain-joined-manage/linked-cluster.png)
+   ![połączony klaster](./media/apache-domain-joined-manage/linked-cluster.png "połączony klaster")
 
 4. Możesz również odłączyć klaster przez umieszczenie **usługi HDInsight: Odłącz klaster** od palety poleceń.
 
@@ -43,11 +43,11 @@ Można połączyć normalny klaster przy użyciu nazwy użytkownika zarządzaneg
 Normalny klaster można połączyć przy użyciu nazwy użytkownika Ambari Managed, a także połączyć klaster usługi Hadoop z zabezpieczeniami przy użyciu nazwy użytkownika domeny (na `user1@contoso.com`przykład:). 
 1. Kliknij pozycję **Połącz klaster** z poziomu **Eksploratora platformy Azure**.
 
-   ![menu kontekstowe łączenia klastra](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+   ![menu kontekstowe linku klastra IntelliJ](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. Wprowadź **nazwę klastra**, **nazwę użytkownika** i **hasło**. Jeśli wystąpił błąd uwierzytelniania, należy sprawdzić nazwę użytkownika i hasło. Opcjonalnie dodaj konto magazynu, klucz magazynu, a następnie wybierz kontener z kontenera magazynu. Informacje o magazynie są przeznaczone dla Eksploratora usługi Storage w lewym drzewie
    
-   ![okno dialogowe łączenia klastra](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
+   ![IntelliJ okna dialogowego klastra](./media/apache-domain-joined-manage/link-a-cluster-dialog.png)
 
    > [!NOTE]  
    > Jeśli klaster jest zarejestrowany w ramach subskrypcji platformy Azure i połączony z klastrem, użyjemy podanego klucza magazynu, nazwy użytkownika i hasła.
@@ -56,18 +56,18 @@ Normalny klaster można połączyć przy użyciu nazwy użytkownika Ambari Manag
    
 3. Jeśli dane wejściowe są odpowiednie, w węźle usługi **HDInsight** można zobaczyć połączony klaster. Teraz można przesłać aplikację do tego połączonego klastra.
 
-   ![połączony klaster](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+   ![IntelliJ połączonego klastra](./media/apache-domain-joined-manage/linked-cluster-intellij.png "połączony klaster IntelliJ]")
 
 4. Możesz również odłączyć klaster od programu **Azure Explorer**.
    
-   ![niepołączony klaster](./media/apache-domain-joined-manage/unlink.png)
+   ![niepołączony klaster IntelliJ](./media/apache-domain-joined-manage/unlink.png)
 
 ## <a name="use-eclipse-to-link-to-domain-joined-cluster"></a>Łączenie z klastrem przyłączonym do domeny za pomocą programu Eclipse
 
 Normalny klaster można połączyć przy użyciu nazwy użytkownika Ambari Managed, a także połączyć klaster usługi Hadoop z zabezpieczeniami przy użyciu nazwy użytkownika domeny (na `user1@contoso.com`przykład:).
 1. Kliknij pozycję **Połącz klaster** z poziomu **Eksploratora platformy Azure**.
 
-   ![menu kontekstowe łączenia klastra](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
+   ![menu kontekstowe łączenia klastra — zaćmienie](./media/apache-domain-joined-manage/link-a-cluster-context-menu.png)
 
 2. Wprowadź **nazwę klastra**, **nazwę użytkownika** i **hasło**, a następnie kliknij przycisk OK, aby połączyć klaster. Opcjonalnie wprowadź konto magazynu, klucz magazynu, a następnie wybierz pozycję kontener magazynu dla Eksploratora usługi Storage, aby rozpocząć działanie w widoku drzewa po lewej stronie
    
@@ -79,11 +79,11 @@ Normalny klaster można połączyć przy użyciu nazwy użytkownika Ambari Manag
 
 3. Możesz zobaczyć połączony klaster w węźle usługi **HDInsight** po kliknięciu przycisku OK, jeśli dane wejściowe są prawidłowe. Teraz można przesłać aplikację do tego połączonego klastra.
 
-   ![połączony klaster](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
+   ![przezaćmienie połączonego klastra](./media/apache-domain-joined-manage/linked-cluster-intellij.png)
 
 4. Możesz również odłączyć klaster od programu **Azure Explorer**.
    
-   ![niepołączony klaster](./media/apache-domain-joined-manage/unlink.png)
+   ![niepołączony klaster — przezaćmienie](./media/apache-domain-joined-manage/unlink.png)
 
 ## <a name="access-the-clusters-with-enterprise-security-package"></a>Uzyskaj dostęp do klastrów przy użyciu pakiet Enterprise Security.
 

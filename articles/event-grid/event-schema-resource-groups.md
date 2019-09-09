@@ -249,10 +249,10 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| authorization | obiekt | Żądana autoryzacji dla tej operacji. |
-| claims | obiekt | Właściwości oświadczenia. Aby uzyskać więcej informacji, zobacz [specyfikacji JWT](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| authorization | object | Żądana autoryzacji dla tej operacji. |
+| claims | object | Właściwości oświadczenia. Aby uzyskać więcej informacji, zobacz [specyfikacji JWT](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | string | Identyfikator operacji do rozwiązywania problemów. |
-| httpRequest | obiekt | Szczegóły operacji. Ten obiekt jest tylko uwzględnione podczas aktualizowania istniejącego zasobu lub usunięcie zasobu. |
+| httpRequest | object | Szczegóły operacji. Ten obiekt jest tylko uwzględnione podczas aktualizowania istniejącego zasobu lub usunięcie zasobu. |
 | resourceProvider | string | Dostawca zasobów dla tej operacji. |
 | resourceUri | string | Identyfikator URI zasobów w ramach operacji. |
 | operationName | string | Operacja, która została wykonana. |

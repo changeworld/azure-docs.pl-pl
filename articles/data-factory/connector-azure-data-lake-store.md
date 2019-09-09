@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: d64a8431cb0331b58afc635bf8cf9d0fe0f1f225
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 4bb57190a310e1ea4b8e5c511f1acd90f53b8f09
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276044"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813467"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory"></a>Kopiowanie danych do lub z Azure Data Lake Storage Gen1 przy użyciu Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję Azure Data Factory:"]
@@ -163,12 +163,12 @@ W Azure Data Factory nie trzeba określać żadnych właściwości oprócz ogól
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. 
 
-- W przypadku **Parquet, rozdzielonego tekstu, Avro i formatu binarnego**zapoznaj się z sekcją [Parquet, rozdzielaną tekstem, Avro i binarnym zestawem danych](#format-based-dataset) .
-- W przypadku innych formatów, takich jak **Format Orc/JSON**, zapoznaj się z sekcją [zestaw danych](#other-format-dataset) .
+- W przypadku **Parquet, rozdzielonego tekstu, JSON, Avro i formatu binarnego**zapoznaj się z sekcją [Parquet, rozdzielaną tekstem, JSON, Avro i binarny zestaw danych](#format-based-dataset) .
+- W przypadku innych formatów, takich jak **Format Orc**, zapoznaj się z sekcją [innego formatu zestawu danych](#other-format-dataset) .
 
-### <a name="format-based-dataset"></a>Parquet, rozdzielany tekstem, Avro i binarny zestaw danych
+### <a name="format-based-dataset"></a>Parquet, rozdzielony tekst, JSON, Avro i binarny zestaw danych
 
-Aby skopiować dane do i z **Parquet, rozdzielonego tekstu, Avro lub formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie zestawu danych i obsługiwanych ustawień.
+Aby skopiować dane do i z **Parquet, rozdzielonego tekstu, JSON, Avro i formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie zestawu danych opartym na formacie i obsługiwanymi ustawieniami .
 Następujące właściwości są obsługiwane dla Azure Data Lake Store Gen1 w obszarze `location` ustawienia w zestawie danych opartym na formacie:
 
 | Właściwość   | Opis                                                  | Wymagane |
@@ -209,7 +209,7 @@ Następujące właściwości są obsługiwane dla Azure Data Lake Store Gen1 w o
 
 ### <a name="other-format-dataset"></a>Inny zestaw danych formatu
 
-Aby skopiować dane do i z Azure Data Lake Store Gen1 w **formacie Orc/JSON**, obsługiwane są następujące właściwości:
+Aby skopiować dane do i z Azure Data Lake Store Gen1 w **formacie Orc**, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -261,12 +261,12 @@ Aby uzyskać pełną listę sekcji i właściwości dostępnych do definiowania 
 
 ### <a name="azure-data-lake-store-as-source"></a>Azure Data Lake Store jako źródło
 
-- Aby skopiować z **Parquet, rozdzielony tekst, Avro i format binarny**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem, Avro i plikiem binarnym](#format-based-source) .
-- Aby skopiować dane z innych formatów, takich jak **Format Orc/JSON**, zapoznaj się z sekcją [inne źródło formatu](#other-format-source) .
+- Aby skopiować z **Parquet, rozdzielony tekst, JSON, Avro i format binarny**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem, JSON, Avro i binarną](#format-based-source) .
+- Aby skopiować inne formaty, takie jak **Format Orc**, zapoznaj się z sekcją [inne źródło formatu](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, rozdzielany tekstem, Avro i binarny kod źródłowy
+#### <a name="format-based-source"></a>Parquet, rozdzielany tekstem, JSON, Avro i format binarny
 
-Aby skopiować dane z **Parquet, rozdzielonego tekstu, Avro lub formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielonym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie źródłowym działania kopiowania opartego na formacie i obsługiwanych ustawień .  Następujące właściwości są obsługiwane dla Azure Data Lake Store Gen1 w obszarze `storeSettings` ustawienia w źródle kopiowania opartym na formacie:
+Aby skopiować dane z **Parquet, rozdzielonego tekstu, JSON, Avro i formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym w formacie](format-binary.md) źródłowym i obsługiwanym przez program. Ustawienia.  Następujące właściwości są obsługiwane dla Azure Data Lake Store Gen1 w obszarze `storeSettings` ustawienia w źródle kopiowania opartym na formacie:
 
 | Właściwość                 | Opis                                                  | Wymagane                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
@@ -324,7 +324,7 @@ Aby skopiować dane z **Parquet, rozdzielonego tekstu, Avro lub formatu binarneg
 
 #### <a name="other-format-source"></a>Inne źródło formatowania
 
-Aby skopiować dane z Azure Data Lake Store Gen1 w **formacie Orc lub JSON**, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+Aby skopiować dane z Azure Data Lake Store Gen1 w **formacie Orc**, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -366,12 +366,12 @@ Aby skopiować dane z Azure Data Lake Store Gen1 w **formacie Orc lub JSON**, w 
 
 ### <a name="azure-data-lake-store-as-sink"></a>Azure Data Lake Store jako ujście
 
-- Aby skopiować do **Parquet, rozdzielonego tekstu, Avro lub formatu binarnego**, zapoznaj się z sekcją [Parquet, rozdzieloną tekstem, Avro i plikiem sink formatu binarnego](#format-based-sink) .
+- Aby skopiować do **Parquet, rozdzielonego tekstu, JSON, Avro i formatu binarnego**, zapoznaj się z sekcją [Parquet, rozdzielonym tekstem, JSON, Avro i binarnym ujścia formatu](#format-based-sink) .
 - Aby skopiować do innych formatów, takich jak **Format Orc/JSON**, zobacz sekcję [inne formatowanie ujścia](#other-format-sink) .
 
-#### <a name="format-based-sink"></a>Parquet, rozdzielony tekst, Avro i ujścia formatu binarnego
+#### <a name="format-based-sink"></a>Parquet, rozdzielony tekst, JSON, Avro i ujścia formatu binarnego
 
-Aby skopiować dane do **Parquet, rozdzielonego tekstu, Avro lub formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i formatem [binarnym](format-binary.md) w artykule dotyczącym ujścia działania kopiowania opartego na formacie i obsługiwanych ustawień.  Następujące właściwości są obsługiwane dla Azure Data Lake Store Gen1 w obszarze `storeSettings` ustawienia w ujściach kopiowania opartych na formacie:
+Aby skopiować dane do **Parquet, rozdzielonego tekstu, JSON, Avro i formatu binarnego**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i [formatem binarnym](format-binary.md) w artykule dotyczącym ujścia działania kopiowania opartego na formacie i obsługiwane Ustawienia.  Następujące właściwości są obsługiwane dla Azure Data Lake Store Gen1 w obszarze `storeSettings` ustawienia w ujściach kopiowania opartych na formacie:
 
 | Właściwość                 | Opis                                                  | Wymagane |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -419,7 +419,7 @@ Aby skopiować dane do **Parquet, rozdzielonego tekstu, Avro lub formatu binarne
 
 #### <a name="other-format-sink"></a>Inny ujścia formatu
 
-Aby skopiować dane do Azure Data Lake Store Gen1 w **formacie Orc lub JSON**, w sekcji **ujścia** są obsługiwane następujące właściwości:
+Aby skopiować dane do Azure Data Lake Store Gen1 w **formacie Orc**, w sekcji **ujścia** są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |

@@ -1,9 +1,9 @@
 ---
-title: Wiadomości e-mail z powiadomieniami w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: W tym artykule opisano powiadomienia e-mail w usłudze Azure AD Privileged Identity Management (PIM).
+title: Powiadomienia e-mail w programie PIM — Azure Active Directory | Microsoft Docs
+description: Opisuje powiadomienia e-mail w Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
@@ -12,94 +12,94 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
 ms.date: 01/05/2019
-ms.author: rolyon
+ms.author: curtand
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aa9da83a7a6e97f5b721dad550831fe2645ffd3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f0db4828ef7a6d3392ce53b2f2f95b0f7f014d65
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60289189"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804545"
 ---
 # <a name="email-notifications-in-pim"></a>Powiadomienia e-mail w usłudze PIM
 
-Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) informuje o tym, kiedy ważne wydarzenia, takiego jak po przypisaniu lub aktywacji roli. Usługa PIM zapewnia wspieranemu przez wysyłanie powiadomień e-mail razem z innymi uczestnikami. Te wiadomości e-mail może również zawierać łącza do odpowiednich zadań, takich aktywowanie lub odnawianie ról. W tym artykule opisano wyglądać tych wiadomości e-mail, gdy są wysyłane i kto otrzymuje.
+Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) umożliwia informowanie o wystąpieniu ważnych zdarzeń, na przykład w przypadku przypisywania lub aktywowania roli. Program PIM pozwala uzyskać informacje o wysyłaniu powiadomień e-mail i innych uczestników. Te wiadomości e-mail mogą również zawierać linki do odpowiednich zadań, takich jak aktywowanie lub odnawianie roli. W tym artykule opisano, jak wyglądają te wiadomości e-mail, gdy są one wysyłane i kto je otrzymuje.
 
-## <a name="sender-email-address-and-subject-line"></a>Wiersz adresu i temat wiadomości e-mail nadawcy
+## <a name="sender-email-address-and-subject-line"></a>Adres e-mail nadawcy i wiersz tematu
 
-Wysłane wiadomości e-mail z usługi PIM dla usługi Azure AD i role zasobów platformy Azure ma następujący adres e-mail nadawcy:
+Wiadomości e-mail wysyłane z usługi PIM dla ról usług Azure AD i Azure Resource mają następujący adres e-mail nadawcy:
 
-- Adres e-mail: **azure noreply\@microsoft.com**
+- Adres e-mail: **Azure-noreply\@Microsoft.com**
 - Nazwa wyświetlana: Microsoft Azure
 
-Te wiadomości e-mail zawierają **PIM** prefiks w wierszu tematu. Oto przykład:
+Te wiadomości e-mail zawierają prefiks **PIM** w wierszu tematu. Oto przykład:
 
-- PIM: Alain Charon trwale została przypisana rola Czytelnik kopii zapasowej
+- PIM: Alain Charon ma trwale przypisaną rolę czytnika kopii zapasowych
 
-## <a name="pim-emails-for-azure-ad-roles"></a>Wiadomości e-mail z usługi PIM dla ról usługi Azure AD
+## <a name="pim-emails-for-azure-ad-roles"></a>Wiadomości e-mail PIM dla ról usługi Azure AD
 
-Usługa PIM wysyła wiadomości e-mail, gdy wystąpią następujące zdarzenia dla ról usługi Azure AD:
+PIM wysyła wiadomości e-mail w przypadku wystąpienia następujących zdarzeń dla ról usługi Azure AD:
 
-- Po aktywacji ról uprzywilejowanych oczekuje na zatwierdzenie
-- Po wykonaniu żądania aktywacji roli uprzywilejowanej
-- Po włączeniu usługi Azure AD PIM
+- Po oczekiwaniu na zatwierdzenie przez uprzywilejowaną rolę
+- Po ukończeniu żądania aktywacji roli uprzywilejowanej
+- Gdy usługa Azure AD PIM jest włączona
 
-Kto otrzymuje te wiadomości e-mail, usługi ról usługi Azure AD zależy od Twojej roli, zdarzenia i powiadomienia ustawienie:
+Kto odbiera te wiadomości e-mail dla ról usługi Azure AD zależy od roli, zdarzenia i ustawienia powiadomienia:
 
-| Użytkownik | Aktywacja roli oczekuje na zatwierdzenie | Żądanie aktywacji roli zostało zakończone. | Włączono usługę PIM |
+| Użytkownik | Aktywacja roli oczekuje na zatwierdzenie | Żądanie aktywacji roli zostało zakończone | Jest włączony PIM |
 | --- | --- | --- | --- |
-| Administrator ról uprzywilejowanych</br>(Aktywowany/uprawnione) | Yes</br>(tylko wtedy, gdy określono nie jawnego osób zatwierdzających) | Tak* | Tak |
-| Administrator zabezpieczeń</br>(Aktywowany/uprawnione) | Nie | Tak* | Tak |
-| Administrator globalny</br>(Aktywowany/uprawnione) | Nie | Tak* | Tak |
+| Administrator uprawnionej roli</br>(Aktywowane/kwalifikujące się) | Tak</br>(tylko jeśli nie określono jawnych osób zatwierdzających) | Tak* | Tak |
+| Administrator zabezpieczeń</br>(Aktywowane/kwalifikujące się) | Nie | Tak* | Tak |
+| Administrator globalny</br>(Aktywowane/kwalifikujące się) | Nie | Tak* | Tak |
 
-\* Jeśli [ **powiadomienia** ustawienie](pim-how-to-change-default-settings.md#notifications) ustawiono **Włącz**.
+\*Jeśli ustawienie [ **powiadomienia** ](pim-how-to-change-default-settings.md#notifications) jest ustawione na wartość **Włącz**.
 
-Poniżej przedstawiono przykładową wiadomością e-mail jest wysyłana, gdy użytkownik aktywuje roli usługi Azure AD dla fikcyjnej firmy Contoso.
+Poniżej przedstawiono przykładową wiadomość e-mail, która jest wysyłana, gdy użytkownik aktywuje rolę usługi Azure AD dla fikcyjnej organizacji contoso.
 
-![Outlook.com PIM dla ról usługi Azure AD](./media/pim-email-notifications/email-directory-new.png)
+![Nowa poczta e-mail PIM dla ról usługi Azure AD](./media/pim-email-notifications/email-directory-new.png)
 
-### <a name="weekly-pim-digest-email-for-azure-ad-roles"></a>Cotygodniowe wiadomości e-mail szyfrowanego PIM dla ról usługi Azure AD
+### <a name="weekly-pim-digest-email-for-azure-ad-roles"></a>Cotygodniowa poczta e-mail programu PIM Digest dla ról usługi Azure AD
 
-Co tydzień e-mail podsumowania usługi PIM dla ról usługi Azure AD są wysyłane do administratorami ról uprzywilejowanych, Administratorzy zabezpieczeń i administratorów globalnych, które mają włączone usługi PIM. Ten cotygodniowe wiadomości e-mail zawiera migawkę działania PIM dla tygodnia, a także przypisań ról uprzywilejowanych. Jest on dostępny tylko dla dzierżaw w chmurze publicznej. Poniżej przedstawiono przykładową wiadomość e-mail:
+Cotygodniowe podsumowanie wiadomości e-mail w usłudze PIM dla ról usługi Azure AD jest wysyłane do administratorów ról uprzywilejowanych, administratorów zabezpieczeń i administratorów globalnych, którzy włączyli usługę PIM. Ten tygodniowy adres e-mail zawiera migawkę działań PIM dla danego tygodnia oraz przypisań ról uprzywilejowanych. Jest on dostępny tylko dla dzierżawców w chmurze publicznej. Oto przykład wiadomości e-mail:
 
-![Cotygodniowe wiadomości e-mail szyfrowanego PIM dla ról usługi Azure AD](./media/pim-email-notifications/email-directory-weekly.png)
+![Cotygodniowa poczta e-mail programu PIM Digest dla ról usługi Azure AD](./media/pim-email-notifications/email-directory-weekly.png)
 
-Wiadomość e-mail zawiera cztery Kafelki:
+Wiadomość e-mail zawiera cztery kafelki:
 
-| Kafelek | Opis |
+| Sąsiadująco | Opis |
 | --- | --- |
-| **Użytkownicy aktywowany** | Liczba użytkowników aktywacji ich kwalifikowania się do roli w ramach dzierżawy. |
-| **Trwałe użytkowników** | Liczba użytkowników z kwalifikującego się przypisania jest trwałe. |
-| **Przypisania ról w usłudze PIM** | Liczba przypadków, gdy użytkownicy są przypisywani kwalifikowania się do roli w usłudze PIM. |
-| **Przypisania ról poza usługą PIM** | Liczba przypadków, gdy użytkownicy są przypisywani trwałego roli poza usługą PIM (wewnątrz usługi Azure AD). |
+| **Aktywowani użytkownicy** | Liczba przypadków, w których użytkownicy aktywowali rolę kwalifikującą się do dzierżawy. |
+| **Użytkownicy z stałymi** | Liczba przypadków, w których użytkownicy z uprawnionym przypisaniem są trwałe. |
+| **Przypisania ról w usłudze PIM** | Liczba użytkowników, którym przypisano kwalifikującą się rolę w programie PIM. |
+| **Przypisania ról poza usługą PIM** | Liczba użytkowników, którym przypisano stałą rolę poza usługą PIM (w ramach usługi Azure AD). |
 
-**Przegląd najważniejszych role** sekcja zawiera informacje o pierwszych pięciu ról w ramach dzierżawy na podstawie całkowitej liczby administratorów trwałe i kwalifikujące się dla każdej roli. **Reakcję** link zostanie otwarty [kreatora PIM](pim-security-wizard.md) gdzie możesz przekształcić stałych administratorów uprawnionych administratorów w partiach.
+Sekcja **najpopularniejszych ról** zawiera pięć najważniejszych ról w dzierżawie w oparciu o łączną liczbę stałych i kwalifikujących się administratorów dla każdej roli. Link **podejmij działanie** powoduje otwarcie [Kreatora PIM](pim-security-wizard.md) , w którym można skonwertować stałych administratorów do uprawnionych administratorów w partiach.
 
-## <a name="pim-emails-for-azure-resource-roles"></a>Wiadomości e-mail z usługi PIM dla ról zasobów platformy Azure
+## <a name="pim-emails-for-azure-resource-roles"></a>Wiadomości e-mail PIM dla ról zasobów platformy Azure
 
-PIM wysyła wiadomości e-mail do właściciele i Administratorzy dostępu użytkownika, gdy wystąpią następujące zdarzenia dla ról zasobów platformy Azure:
+Program PIM wysyła wiadomości e-mail do właścicieli i administratorów dostępu użytkowników, gdy wystąpią następujące zdarzenia dla ról zasobów platformy Azure:
 
 - Gdy przypisanie roli oczekuje na zatwierdzenie
 - Po przypisaniu roli
-- Gdy rola to wkrótce wygaśnie
-- Gdy rola jest uprawniona do rozszerzenia
-- Gdy rola zostanie odnowiony przez użytkownika końcowego
-- Po wykonaniu żądania uaktywnienia roli
+- Gdy rola wkrótce wygaśnie
+- Gdy rola może zostać rozszerzona
+- Gdy rola jest odnawiana przez użytkownika końcowego
+- Po ukończeniu żądania aktywacji roli
 
-PIM wysyła wiadomości e-mail do użytkowników końcowych, gdy wystąpią następujące zdarzenia dla ról zasobów platformy Azure:
+Usługa PIM wysyła wiadomości e-mail do użytkowników końcowych w przypadku wystąpienia następujących zdarzeń dotyczących ról zasobów platformy Azure:
 
-- Gdy rola jest przypisywana do użytkownika
-- Gdy rola użytkownika wygasła
-- Gdy rola użytkownika jest rozszerzony
-- Po wykonaniu żądania uaktywnienia roli użytkownika
+- Gdy rola jest przypisana do użytkownika
+- Po wygaśnięciu roli użytkownika
+- Gdy rola użytkownika jest rozszerzona
+- Po ukończeniu żądania aktywacji roli użytkownika
 
-Poniżej przedstawiono przykładową wiadomością e-mail jest wysyłana, gdy użytkownik przypisano rolę zasobu platformy Azure dla fikcyjnej firmy Contoso.
+Poniżej przedstawiono przykładową wiadomość e-mail, która jest wysyłana, gdy użytkownik ma przypisaną rolę zasobów platformy Azure dla fikcyjnej organizacji contoso.
 
-![Outlook.com PIM dla ról zasobów platformy Azure](./media/pim-email-notifications/email-resources-new.png)
+![Nowa wiadomość e-mail PIM dla ról zasobów platformy Azure](./media/pim-email-notifications/email-resources-new.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Konfigurowanie ustawień roli w usłudze Azure AD w usłudze PIM](pim-how-to-change-default-settings.md)
-- [Zatwierdź lub Odrzuć żądania dla ról usługi Azure AD w usłudze PIM](azure-ad-pim-approval-workflow.md)
+- [Konfigurowanie ustawień roli usługi Azure AD w usłudze PIM](pim-how-to-change-default-settings.md)
+- [Zatwierdzanie lub odrzucanie żądań dla ról usługi Azure AD w usłudze PIM](azure-ad-pim-approval-workflow.md)

@@ -9,14 +9,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: 0bca6c16124f886d9df9e88e651f3f7450f51a1a
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 9690e114f9ae01c4aee71145525fdda2eff4701c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876363"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814182"
 ---
-# <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Debugowanie aplikacji Apache Spark lokalnie lub zdalnie w klastrze usługi HDInsight z Azure Toolkit for IntelliJ za pośrednictwem protokołu SSH
+# <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Debugowanie Apache Spark aplikacji w klastrze usługi HDInsight z Azure Toolkit for IntelliJ za pośrednictwem protokołu SSH
 
 Ten artykuł zawiera wskazówki krok po kroku dotyczące korzystania z narzędzi usługi HDInsight w [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) do zdalnego debugowania aplikacji w klastrze usługi HDInsight. Aby debugować projekt, możesz również wyświetlić [aplikacje do debugowania usługi HDInsight Spark za pomocą Azure Toolkit for IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ) wideo.
 
@@ -118,7 +118,7 @@ Aby rozwiązać ten problem, [Pobierz plik wykonywalny](https://public-repo-1.ho
 
 1. Kliknij przycisk **Rozłącz** , aby dzienniki przesłane nie były wyświetlane w lewym panelu. Jednak nadal działa w zapleczu.
 
-   ![Przycisk uruchamiania zdalnego](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
+   ![Wynik uruchomienia zdalnego](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
 
 
 
@@ -127,7 +127,7 @@ Aby rozwiązać ten problem, [Pobierz plik wykonywalny](https://public-repo-1.ho
 
    ![Wybierz ikonę debugowania](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-icon.png)
 
-1. Gdy wykonanie programu dociera do punktu przerwania, zobaczysz kartę **sterownika** i dwie karty **wykonawcze** w okienku **debuger** . Wybierz ikonę **Wznów program** , aby kontynuować uruchamianie kodu, który następnie osiągnie następny punkt przerwania. Aby znaleźć docelowy moduł wykonujący debugowanie  , należy przełączyć się na poprawną kartę programu wykonującego. Dzienniki wykonywania można wyświetlić na odpowiedniej karcie **konsoli** .
+1. Gdy wykonanie programu dociera do punktu przerwania, zobaczysz kartę **sterownika** i dwie karty **wykonawcze** w okienku **debuger** . Wybierz ikonę **Wznów program** , aby kontynuować uruchamianie kodu, który następnie osiągnie następny punkt przerwania. Aby znaleźć docelowy moduł wykonujący debugowanie, należy przełączyć się na poprawną kartę programu **wykonującego** . Dzienniki wykonywania można wyświetlić na odpowiedniej karcie **konsoli** .
 
    ![Karta debugowanie](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debugger-tab.png)
 
@@ -148,7 +148,7 @@ Aby rozwiązać ten problem, [Pobierz plik wykonywalny](https://public-repo-1.ho
 
 1. Kliknij prawym przyciskiem myszy obiekt docelowy na karcie **debugowanie** , a następnie wybierz pozycję **Ustaw wartość**. Następnie wprowadź nową wartość dla zmiennej. Następnie wybierz klawisz **Enter** , aby zapisać wartość. 
 
-   ![Ustaw wartość](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value.png) 
+   ![Ustawiono wartość](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value.png) 
 
 1. Wybierz ikonę **Wznów program** , aby kontynuować uruchamianie programu. Tym razem nie jest przechwytywany żaden wyjątek. Można zobaczyć, że projekt zostanie uruchomiony pomyślnie bez żadnych wyjątków.
 
@@ -157,7 +157,7 @@ Aby rozwiązać ten problem, [Pobierz plik wykonywalny](https://public-repo-1.ho
 ## <a name="seealso"></a>Następne kroki
 * [Podsumowanie Apache Spark w usłudze Azure HDInsight](apache-spark-overview.md)
 
-### <a name="demo"></a>Demonstracja
+### <a name="demo"></a>Pokaz
 * Utwórz projekt Scala (wideo): [Tworzenie Apache Spark aplikacji Scala](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
 * Debugowanie zdalne (wideo): [Użyj Azure Toolkit for IntelliJ, aby zdalnie debugować aplikacje Apache Spark w klastrze usługi HDInsight](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 

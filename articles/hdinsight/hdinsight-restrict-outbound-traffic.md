@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 63e23275a68ddde9385bb252dcb872d02c5cea08
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 829f3e730b4993a6a7f32a9224d3c6c38bd4c06e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405976"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811947"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>Konfigurowanie wychodzącego ruchu sieciowego dla klastrów usługi Azure HDInsight przy użyciu zapory (wersja zapoznawcza)
 
@@ -48,7 +48,7 @@ Utwórz kolekcję reguł aplikacji, która umożliwia klastrowi wysyłanie i odb
 
 Wybierz nową zaporę **test-FW01** z Azure Portal. Kliknij pozycję **reguły** w obszarze **Ustawienia** > **Kolekcja** > reguł aplikacji**Dodaj kolekcję reguł aplikacji**.
 
-![Tytuł: Dodawanie kolekcji reguł aplikacji](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
+![Tytuły Dodawanie kolekcji reguł aplikacji](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
 Na ekranie **Dodawanie kolekcji reguł aplikacji** wykonaj następujące czynności:
 
@@ -67,7 +67,7 @@ Na ekranie **Dodawanie kolekcji reguł aplikacji** wykonaj następujące czynno�
 
 1. Kliknij przycisk **Dodaj**.
 
-   ![Tytuł: Wprowadź szczegóły kolekcji reguł aplikacji](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
+   ![Tytuły Wprowadź szczegóły kolekcji reguł aplikacji](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
 ### <a name="configure-the-firewall-with-network-rules"></a>Konfigurowanie zapory przy użyciu reguł sieci
 
@@ -93,7 +93,7 @@ Utwórz reguły sieciowe w celu poprawnego skonfigurowania klastra usługi HDIns
 
 1. Kliknij przycisk **Dodaj** , aby ukończyć tworzenie kolekcji reguł sieci.
 
-   ![Tytuł: Wprowadź szczegóły kolekcji reguł aplikacji](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
+   ![Tytuły Wprowadź kolekcję reguł aplikacji](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
 ### <a name="create-and-configure-a-route-table"></a>Tworzenie i Konfigurowanie tabeli tras
 
@@ -125,7 +125,7 @@ Na przykład aby skonfigurować tabelę tras dla klastra utworzonego w regionie 
 Ukończ konfigurację tabeli tras:
 
 1. Przypisz utworzoną przez siebie tabelę tras do podsieci usługi HDInsight, klikając pozycję **podsieci** w obszarze **Ustawienia** , a następnie pozycję **Skojarz**.
-1. Na ekranie **Skojarz podsieć** wybierz sieć wirtualną, w której został utworzony klaster, oraz podsieć usługi **HDInsight** użytą dla klastra usługi HDInsight.
+1. Na ekranie **Skojarz podsieć** wybierz sieć wirtualną, w której został utworzony klaster, oraz **podsieć usługi HDInsight** użytą dla klastra usługi HDInsight.
 1. Kliknij przycisk **OK**.
 
 ## <a name="edge-node-or-custom-application-traffic"></a>Ruch graniczny węzła lub aplikacji niestandardowej

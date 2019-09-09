@@ -1,17 +1,17 @@
 ---
 title: Nie można zalogować się do klastra usługi Azure HDInsight
-description: Nie można zalogować się do klastra usługi Azure HDInsight
+description: Rozwiązywanie problemów z nie można zalogować się do klastra Apache Hadoop w usłudze Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 07/31/2019
-ms.openlocfilehash: eb7249fc88f37e5c15447e5a8907468a851d2416
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: bd020576f6939ad195c73ebe390d370d0319b5f9
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737448"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810531"
 ---
 # <a name="scenario-unable-to-log-into-azure-hdinsight-cluster"></a>Scenariusz: Nie można zalogować się do klastra usługi Azure HDInsight
 
@@ -33,7 +33,7 @@ Aby rozwiązać typowe problemy, spróbuj wykonać poniższe czynności.
 
 * Jeśli nie można odwołać poświadczeń SSH, można [zresetować poświadczenia w interfejsie użytkownika Ambari](../hdinsight-administer-use-portal-linux.md#change-passwords).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
 

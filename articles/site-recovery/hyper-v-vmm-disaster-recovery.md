@@ -1,20 +1,19 @@
 ---
-title: Konfigurowanie odzyskiwania po awarii maszyn wirtualnych funkcji Hyper V między lokalnymi lokacjami przy użyciu usługi Azure Site Recovery | Microsoft Docs
+title: Skonfiguruj odzyskiwanie po awarii dla maszyn wirtualnych funkcji Hyper-V między lokacjami lokalnymi przy użyciu Azure Site Recovery
 description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych funkcji Hyper-V między własnymi lokalnymi lokacjami przy użyciu usługi Azure Site Recovery.
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 067040349a5d435860492497dddbf39aad2635eb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: a2eb8bf10454ee01953ddd37025f0c0048d00a0a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66398401"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813760"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych funkcji Hyper-V do dodatkowej lokacji lokalnej
 
@@ -154,6 +153,6 @@ Przed rozpoczęciem upewnij się, że wszystkie hosty, które korzystają z zasa
 
 Możesz śledzić postępy akcji **Włącz ochronę** w obszarze **Zadania** > **Zadania usługi Site Recovery**. Po zakończeniu zadania **Finalizuj ochronę** replikacja początkowa zostanie zakończona, a maszyna wirtualna będzie gotowa do pracy w trybie failover.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 [Uruchamianie próbnego odzyskiwania po awarii](hyper-v-vmm-test-failover.md)

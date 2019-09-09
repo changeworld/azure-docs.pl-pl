@@ -1,17 +1,17 @@
 ---
 title: USTERKa nietrwałego zablokowania błędów procesora CPU z klastra usługi Azure HDInsight
-description: w dziennikach systemu jądra pojawia się błąd licznika alarmowego nietrwałego zablokowania błędów
+description: W dziennikach systemu Azure HDInsight występuje procesor CPU nietrwałego zablokowania błędów licznika wydajności
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.date: 08/05/2019
-ms.openlocfilehash: 9278c174d96cb6b1823c8dbfdcba197b7a3c05cc
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 618a871bee762900d4c99700cde42d759506b4b9
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68829179"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810584"
 ---
 # <a name="scenario-watchdog-bug-soft-lockup---cpu-error-from-an-azure-hdinsight-cluster"></a>Scenariusz: "licznik alarmowy: USTERKa: blokowanie miękkie — błąd procesora CPU z klastra usługi Azure HDInsight
 
@@ -38,7 +38,7 @@ Zastosuj poprawkę jądra. Poniższy skrypt uaktualnia jądro systemu Linux i po
     | Właściwość | Value |
     | --- | --- |
     | Typ skryptu | -Niestandardowe |
-    | Name (Nazwa) |Poprawka problemu dotyczącego nieelastycznego blokowania jądra |
+    | Name |Poprawka problemu dotyczącego nieelastycznego blokowania jądra |
     | Identyfikator URI skryptu powłoki systemowej |`https://raw.githubusercontent.com/hdinsight/hdinsight.github.io/master/ClusterCRUD/KernelSoftLockFix/scripts/KernelSoftLockIssue_FixAndReboot.sh` |
     | Typy węzłów |Proces roboczy, dozorcy |
     | Parametry |ND |
@@ -53,7 +53,7 @@ Zastosuj poprawkę jądra. Poniższy skrypt uaktualnia jądro systemu Linux i po
 
 1. Poczekaj na pomyślne wykonanie.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Jeśli problem nie został wyświetlony lub nie można rozwiązać problemu, odwiedź jeden z następujących kanałów, aby uzyskać więcej pomocy:
 

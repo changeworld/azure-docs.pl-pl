@@ -12,16 +12,19 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 7664c2f4fd08e06b51734b5508871b67d1a1b7c9
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 20e5e23e2000095a95913964673ce90a72b87e59
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231411"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813531"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Kopiowanie danych z Netezza za pomocą usługi Azure Data Factory
 
 W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych ze Netezza. Artykuł opiera się na [działania kopiowania w usłudze Azure Data Factory](copy-activity-overview.md), który ma ogólne omówienie działania kopiowania.
+
+>[!TIP]
+>Aby uzyskać informacje na temat scenariusza migracji danych z programu Netezza do platformy Azure, Dowiedz się więcej na temat [używania Azure Data Factory do migrowania danych z lokalnego serwera Netezza na platformę Azure](data-migration-guidance-netezza-azure-sqldw.md).
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
@@ -156,7 +159,7 @@ Aby skopiować dane z Netezza, ustaw **źródła** typ w działaniu kopiowania, 
 |:--- |:--- |:--- |
 | type | **Typu** właściwość źródła działania kopiowania musi być równa **NetezzaSource**. | Yes |
 | query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Przykład: `"SELECT * FROM MyTable"` | Nie (Jeśli określono parametr "tableName" w zestawie danych) |
-| partitionOptions | Określa opcje partycjonowania danych używane do ładowania danych z Netezza. <br>Dozwolone wartości to: **Brak** (wartość domyślna) , dataslice i **DynamicRange**.<br>Gdy opcja partycji jest włączona (to nie `None`jest), stopień równoległości do współbieżnego ładowania danych z bazy danych Netezza jest kontrolowany przez [`parallelCopies`](copy-activity-performance.md#parallel-copy) ustawienie dla działania kopiowania. | Nie |
+| partitionOptions | Określa opcje partycjonowania danych używane do ładowania danych z Netezza. <br>Dozwolone wartości to: **Brak** (wartość domyślna), **dataslice** i **DynamicRange**.<br>Gdy opcja partycji jest włączona (to nie `None`jest), stopień równoległości do współbieżnego ładowania danych z bazy danych Netezza jest kontrolowany przez [`parallelCopies`](copy-activity-performance.md#parallel-copy) ustawienie dla działania kopiowania. | Nie |
 | partitionSettings | Określ grupę ustawień partycjonowania danych. <br>Zastosuj, gdy opcja partycji `None`nie jest. | Nie |
 | partitionColumnName | Określ nazwę kolumny źródłowej **w typie liczb całkowitych** , która będzie używana przez partycjonowanie zakresu do kopiowania równoległego. Jeśli nie zostanie określony, klucz podstawowy tabeli zostanie wykryty i użyty jako kolumna partycji. <br>Zastosuj, gdy opcja partycji to `DynamicRange`. Jeśli używasz zapytania do pobierania danych źródłowych, hak `?AdfRangePartitionColumnName` w klauzuli WHERE. Zobacz przykład w sekcji [Kopiowanie równoległe z Netezza](#parallel-copy-from-netezza) . | Nie |
 | partitionUpperBound | Maksymalna wartość kolumny partycji, w której mają zostać skopiowane dane. <br>Zastosuj, gdy opcja partycji `DynamicRange`jest. Jeśli używasz zapytania do pobierania danych źródłowych, hak `?AdfRangePartitionUpbound` w klauzuli WHERE. Aby zapoznać się z przykładem, zobacz sekcję [copy Parallel from Netezza](#parallel-copy-from-netezza) . | Nie |

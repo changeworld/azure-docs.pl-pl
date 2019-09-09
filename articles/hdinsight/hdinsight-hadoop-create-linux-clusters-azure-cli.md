@@ -1,6 +1,6 @@
 ---
-title: Tworzenie klastrów usługi Apache Hadoop przy użyciu wiersza polecenia platformy Azure — Azure HDInsight
-description: Dowiedz się, jak tworzyć klastry HDInsight przy użyciu wiersza polecenia platformy Azure dla wielu platform.
+title: Tworzenie klastrów Apache Hadoop przy użyciu interfejsu wiersza polecenia platformy Azure — Azure HDInsight
+description: Dowiedz się, jak tworzyć klastry usługi Azure HDInsight przy użyciu międzyplatformowego interfejsu wiersza polecenia platformy Azure.
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,18 +8,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0a278cd98b0dd6c6d8f0fe9bfee81e5bafd4f543
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c26c0b16331ae01f7505e44cef3fe91b3282750b
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65597680"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70809848"
 ---
-# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Tworzenie klastrów HDInsight za pomocą wiersza polecenia platformy Azure
+# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Tworzenie klastrów usługi HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Kroki opisane w tym przewodniku dokumentu, tworzenie klastra HDInsight 3.6 przy użyciu wiersza polecenia platformy Azure.
+Kroki opisane w tym dokumencie przedstawiają Tworzenie klastra HDInsight 3,6 przy użyciu interfejsu wiersza polecenia platformy Azure.
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -27,13 +27,13 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) kroków.
+Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) w celu wykonania kroków.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-cluster"></a>Tworzenie klastra
 
-1. Zaloguj się do subskrypcji platformy Azure. Jeśli planujesz używać usługi Azure Cloud Shell, a następnie po prostu wybierz **wypróbuj** w prawym górnym rogu bloku kodu. W przeciwnym wypadku wprowadź poniższe polecenie:
+1. Zaloguj się do subskrypcji platformy Azure. Jeśli planujesz używać Azure Cloud Shell, po prostu wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. W przeciwnym razie wprowadź poniższe polecenie:
 
     ```azurecli-interactive
     az login
@@ -42,16 +42,16 @@ Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. Ustawianie zmiennych środowiskowych. Używanie zmiennych w tym artykule jest oparty na powłokę Bash. Niewielkie różnice, będzie potrzebna w innych środowiskach. Zobacz [tworzenia usługi hdinsight az](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) pełną listę możliwych parametrów dla tworzenia klastra.
+2. Ustaw zmienne środowiskowe. Użycie zmiennych w tym artykule jest oparte na bash. Inne środowiska będą wymagały niewielkich zmian. Zobacz [AZ-HDInsight-Create](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) , aby uzyskać pełną listę możliwych parametrów do tworzenia klastra.
 
     |Parametr | Opis |
     |---|---|
-    |`--size`| Liczba węzłów procesu roboczego w klastrze. W tym artykule użyto zmiennej `clusterSizeInNodes` jako wartość przekazana do `--size`. |
-    |`--version`| Wersja klastra HDInsight. W tym artykule użyto zmiennej `clusterVersion` jako wartość przekazana do `--version`. Zobacz też: [Obsługiwane wersje serwera HDInsight](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
-    |`--type`| Typ klastra HDInsight, takie jak: hadoop, interactivehive, hbase, kafka, storm, spark, program rserver, mlservices.  W tym artykule użyto zmiennej `clusterType` jako wartość przekazana do `--type`. Zobacz też: [Typy i konfiguracji klastra](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types).|
-    |`--component-version`|Wersje różnych składników usługi Hadoop, w wersjach rozdzielonych spacjami w "component = wersja" format. W tym artykule użyto zmiennej `componentVersion` jako wartość przekazana do `--component-version`. Zobacz też: [Składniki usługi Hadoop](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
+    |`--size`| Liczba węzłów procesu roboczego w klastrze. W tym artykule jest stosowana `clusterSizeInNodes` zmienna jako wartość przekazaną do. `--size` |
+    |`--version`| Wersja klastra usługi HDInsight. W tym artykule jest stosowana `clusterVersion` zmienna jako wartość przekazaną do. `--version` Zobacz też: [Obsługiwane wersje usługi HDInsight](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
+    |`--type`| Typ klastra usługi HDInsight, taki jak: Hadoop, interactivehive, HBase, Kafka, burza, Spark, Rserver, mlservices.  W tym artykule jest stosowana `clusterType` zmienna jako wartość przekazaną do. `--type` Zobacz też: [Typy i konfiguracja klastra](./hdinsight-hadoop-provision-linux-clusters.md#cluster-types).|
+    |`--component-version`|Wersje różnych składników usługi Hadoop, w wersjach rozdzielonych spacjami w formacie "Component = Version". W tym artykule jest stosowana `componentVersion` zmienna jako wartość przekazaną do. `--component-version` Zobacz też: [Składniki usługi Hadoop](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
 
-    Zastąp `RESOURCEGROUPNAME`, `LOCATION`, `CLUSTERNAME`, `STORAGEACCOUNTNAME`, i `PASSWORD` z odpowiednie wartości. Zmień wartości zmiennych zgodnie z potrzebami. Następnie wprowadź polecenia interfejsu wiersza polecenia.
+    Zamień `RESOURCEGROUPNAME`, `LOCATION`, ,`CLUSTERNAME` iz`PASSWORD` wymaganymi wartościami. `STORAGEACCOUNTNAME` Zmień wartości innych zmiennych zgodnie z potrzebami. Następnie wprowadź polecenie interfejsu wiersza polecenia.
 
     ```azurecli-interactive
     export resourceGroupName=RESOURCEGROUPNAME
@@ -68,7 +68,7 @@ Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu
     export componentVersion=Hadoop=2.7
     ```
 
-3. [Utwórz grupę zasobów](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) , wprowadzając poniższe polecenie:
+3. [Utwórz grupę zasobów](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) , wprowadzając następujące polecenie:
 
     ```azurecli-interactive
     az group create \
@@ -76,9 +76,9 @@ Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu
         --name $resourceGroupName
     ```
 
-    Aby uzyskać listę prawidłowych lokalizacji, należy użyć `az account list-locations` polecenia, a następnie użyj jednej z lokalizacji z `name` wartości.
+    Aby uzyskać listę prawidłowych lokalizacji, użyj `az account list-locations` polecenia, a następnie użyj jednej z tych lokalizacji `name` z wartości.
 
-4. [Tworzenie konta usługi Azure storage](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) , wprowadzając poniższe polecenie:
+4. [Utwórz konto usługi Azure Storage](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create) , wprowadzając następujące polecenie:
 
     ```azurecli-interactive
     # Note: kind BlobStorage is not available as the default storage account.
@@ -91,7 +91,7 @@ Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu
         --sku Standard_LRS
     ```
 
-5. [Wyodrębnij klucz podstawowy z kontem usługi Azure storage](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list) i zapisz go w zmiennej, wprowadzając poniższe polecenie:
+5. [Wyodrębnij klucz podstawowy z konta usługi Azure Storage](https://docs.microsoft.com/cli/azure/storage/account/keys?view=azure-cli-latest#az-storage-account-keys-list) i Zapisz go w zmiennej, wprowadzając następujące polecenie:
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -100,7 +100,7 @@ Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu
         --query [0].value -o tsv)
     ```
 
-6. [Tworzenie kontenera usługi Azure storage](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) , wprowadzając poniższe polecenie:
+6. [Utwórz kontener usługi Azure Storage](https://docs.microsoft.com/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create) , wprowadzając następujące polecenie:
 
     ```azurecli-interactive
     az storage container create \
@@ -109,7 +109,7 @@ Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu
         --account-name $AZURE_STORAGE_ACCOUNT
     ```
 
-7. [Tworzenie klastra HDInsight](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) , wprowadzając następujące polecenie:
+7. [Utwórz klaster usługi HDInsight](https://docs.microsoft.com/cli/azure/hdinsight?view=azure-cli-latest#az-hdinsight-create) , wprowadzając następujące polecenie:
 
     ```azurecli-interactive
     az hdinsight create \
@@ -130,15 +130,15 @@ Interfejs wiersza polecenia platformy Azure. Jeśli nie zainstalowano interfejsu
     ```
 
     > [!IMPORTANT]  
-    > HDInsight mogą mieć różne typy, które odnoszą się do obciążenia lub technologii, że klaster jest ona dostrojona dla klastrów. Nie istnieje obsługiwana metoda do tworzenia klastra, który łączy wiele typów, takich jak Storm i bazy danych HBase w jednym klastrze.
+    > Klastry usługi HDInsight są dostępne w różnych typach, które odpowiadają obciążom lub technologiom, dla których jest dostrojony klaster. Nie ma obsługiwanej metody tworzenia klastra, który łączy wiele typów, takich jak burza i HBase w jednym klastrze.
 
-    Może upłynąć kilka minut na zakończenie procesu tworzenia klastra. Zwykle około 15.
+    Ukończenie procesu tworzenia klastra może potrwać kilka minut. Zwykle około 15.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Po ukończeniu korzystania z artykułu warto usunąć klaster. Dzięki usłudze HDInsight dane są przechowywane w usłudze Azure Storage, więc można bezpiecznie usunąć klaster, gdy nie jest używany. Opłaty za klaster usługi HDInsight są naliczane nawet wtedy, gdy nie jest używany. Ponieważ opłaty za klaster są wielokrotnie większe niż opłaty za magazyn, ze względów ekonomicznych warto usuwać klastry, gdy nie są używane.
 
-Wprowadź wszystkie lub niektóre z poniższych poleceń, aby usunąć zasoby:
+Wprowadź wszystkie lub niektóre z następujących poleceń, aby usunąć zasoby:
 
 ```azurecli-interactive
 # Remove cluster
@@ -165,23 +165,23 @@ az group delete \
 
 W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z [wymaganiami dotyczącymi kontroli dostępu](./hdinsight-hadoop-customize-cluster-linux.md#access-control).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, że udało Ci się utworzyć klaster usługi HDInsight przy użyciu wiersza polecenia platformy Azure, należy użyć następującego, aby dowiedzieć się, jak pracować z klastrem:
+Teraz, gdy klaster usługi HDInsight został pomyślnie utworzony przy użyciu interfejsu wiersza polecenia platformy Azure, Skorzystaj z następujących informacji, aby dowiedzieć się, jak współpracować z klastrem:
 
-### <a name="apache-hadoop-clusters"></a>Klastry platformy Apache Hadoop
+### <a name="apache-hadoop-clusters"></a>Klastry Apache Hadoop
 
-* [Use Apache Hive z HDInsight](hadoop/hdinsight-use-hive.md)
-* [Apache Pig za pomocą HDInsight](hadoop/hdinsight-use-pig.md)
-* [Używanie technologii MapReduce z HDInsight](hadoop/hdinsight-use-mapreduce.md)
+* [Korzystanie z Apache Hive z usługą HDInsight](hadoop/hdinsight-use-hive.md)
+* [Korzystanie z Apache świni z usługą HDInsight](hadoop/hdinsight-use-pig.md)
+* [Korzystanie z MapReduce z usługą HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Klastry Apache HBase
 
-* [Rozpoczynanie pracy z usługą Apache HBase na HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
-* [Twórz aplikacje Java dla bazy danych Apache HBase na HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
+* [Wprowadzenie do platformy Apache HBase w usłudze HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [Tworzenie aplikacji Java dla platformy Apache HBase w usłudze HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
 
-### <a name="apache-storm-clusters"></a>Klastrów Apache Storm
+### <a name="apache-storm-clusters"></a>Klastry Apache Storm
 
-* [Opracowywanie topologii języka Java dla usługi Storm Apache na HDInsight](storm/apache-storm-develop-java-topology.md)
-* [Używanie składników języka Python w Storm Apache na HDInsight](storm/apache-storm-develop-python-topology.md)
-* [Wdrażanie i monitorowanie topologii za pomocą Storm Apache na HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)
+* [Tworzenie topologii języka Java dla Apache Storm w usłudze HDInsight](storm/apache-storm-develop-java-topology.md)
+* [Używanie składników języka Python w Apache Storm w usłudze HDInsight](storm/apache-storm-develop-python-topology.md)
+* [Wdrażanie i monitorowanie topologii za pomocą Apache Storm w usłudze HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: hrasheed
-ms.openlocfilehash: 28f30270ab0a6c057ee583ccebc2a8540980c6cc
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: f5052d7e35c3d1c81a3d958bd6e340b9a6a5a244
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442186"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810699"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autoryzowanie użytkowników na potrzeby widoków Apache Ambari
 
@@ -28,7 +28,7 @@ Jeśli jeszcze tego nie zrobiono, postępuj zgodnie z [tymi instrukcjami](./doma
 
 ## <a name="access-the-ambari-management-page"></a>Dostęp do strony zarządzania Ambari
 
-Aby przejść do **strony Ambari Management** w interfejsie [użytkownika sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md), przejdź **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** do. Wprowadź nazwę użytkownika i hasło administratora klastra zdefiniowane podczas tworzenia klastra. Następnie na pulpicie nawigacyjnym Ambari wybierz pozycję **Zarządzaj Ambari** pod menu **administrator** :
+Aby przejść do **strony Ambari Management** w [interfejsie użytkownika sieci Web Apache Ambari](hdinsight-hadoop-manage-ambari.md), przejdź **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** do. Wprowadź nazwę użytkownika i hasło administratora klastra zdefiniowane podczas tworzenia klastra. Następnie na pulpicie nawigacyjnym Ambari wybierz pozycję **Zarządzaj Ambari** pod menu **administrator** :
 
 ![Zarządzanie Ambari](./media/hdinsight-authorize-users-to-ambari/manage-ambari.png)
 
@@ -97,13 +97,13 @@ Aby zarządzać rolami, przejdź do **strony zarządzania Ambari**, a następnie
 
 Aby wyświetlić listę uprawnień przyznanych dla każdej roli, kliknij niebieski znak zapytania obok nagłówka tabeli **role** na stronie role.
 
-![Link do menu role](./media/hdinsight-authorize-users-to-ambari/roles-permissions.png)
+![Uprawnienia menu ról](./media/hdinsight-authorize-users-to-ambari/roles-permissions.png "Uprawnienia menu ról")
 
 Na tej stronie istnieją dwa różne widoki, których można użyć do zarządzania rolami dla użytkowników i grup: Blok i lista.
 
 ### <a name="block-view"></a>Widok bloku
 
-Widok blok przedstawia każdą rolę we własnym wierszu i udostępnia opcje **Przypisz role do tych użytkowników** i przypisuje **role do tych grup** , jak opisano wcześniej.
+Widok blok przedstawia każdą rolę we własnym wierszu i udostępnia opcje **Przypisz role do tych użytkowników** i **przypisuje role do tych grup** , jak opisano wcześniej.
 
 ![Widok bloku ról](./media/hdinsight-authorize-users-to-ambari/roles-block-view.png)
 

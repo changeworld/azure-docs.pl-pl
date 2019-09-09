@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: cd19d1e0cdfa1b160734b23d7f50310948ded80d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 04a2a3f2557ccef510a831a5c9fbf89bb62cb9a7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879911"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812836"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Planowanie wdrożenia usługi Azure serwer proxy aplikacji usługi Azure AD
 
@@ -68,7 +68,7 @@ Następujące podstawowe wymagania muszą zostać spełnione, aby można było s
 
 * **Limity usługi**: Aby chronić przed zużyciem zasobów przez poszczególne dzierżawy, istnieją limity ograniczania ustawione dla poszczególnych aplikacji i dzierżawców. Aby sprawdzić te limity, odnoszą się do [limitów i ograniczeń usługi Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions). Te limity ograniczania są oparte na teście porównawczym znacznie powyżej typowego woluminu użycia i zapewniają szeroki bufor dla większości wdrożeń.
 
-* **Certyfikat publiczny**: Jeśli używasz niestandardowych nazw domen, musisz uzyskać certyfikat publiczny wystawiony przez zaufany urząd certyfikacji firmy innej niż Microsoft. W zależności od wymagań organizacyjnych uzyskanie certyfikatu może zająć trochę czasu, a firma Microsoft zaleca rozpoczęcie procesu tak szybko, jak to możliwe. Serwer proxy aplikacji platformy Azure obsługuje [](application-proxy-wildcard.md)certyfikaty standardowego, wieloznacznego lub opartego na sieci SAN.
+* **Certyfikat publiczny**: Jeśli używasz niestandardowych nazw domen, musisz uzyskać certyfikat publiczny wystawiony przez zaufany urząd certyfikacji firmy innej niż Microsoft. W zależności od wymagań organizacyjnych uzyskanie certyfikatu może zająć trochę czasu, a firma Microsoft zaleca rozpoczęcie procesu tak szybko, jak to możliwe. Serwer proxy aplikacji platformy Azure obsługuje certyfikaty standardowego, [wieloznacznego](application-proxy-wildcard.md)lub opartego na sieci SAN.
 
 * **Wymagania dotyczące domeny**: Logowanie jednokrotne do opublikowanych aplikacji przy użyciu ograniczonego delegowania protokołu Kerberos (KCD) wymaga, aby serwer, na którym działa łącznik oraz serwer, na którym działa aplikacja, są przyłączone do domeny i częścią tej samej domeny lub domen ufających.
 Aby uzyskać szczegółowe informacje na temat tego tematu, zobacz [KCD for Single Signing](application-proxy-configure-single-sign-on-with-kcd.md) in with Application proxy. Usługa łącznika jest uruchamiana w kontekście systemu lokalnego i nie należy jej konfigurować do korzystania z tożsamości niestandardowej.
@@ -85,7 +85,7 @@ Aby uzyskać szczegółowe informacje na temat tego tematu, zobacz [KCD for Sing
 
    * **Publikowanie i administrowanie aplikacjami** wymaga roli *administratora aplikacji* . Administratorzy aplikacji mogą zarządzać wszystkimi aplikacjami w katalogu, takimi jak rejestracje, ustawienia rejestracji jednokrotnej, przypisania użytkowników i grup oraz Licencjonowanie, ustawienia serwera proxy aplikacji i zgodę. Nie przyznaje możliwości zarządzania dostępem warunkowym. Rola *administrator aplikacji w chmurze* ma wszystkie możliwości administratora aplikacji, z tą różnicą, że nie zezwala na zarządzanie ustawieniami serwera proxy aplikacji.
 
-* **Licencjonowanie**: Serwer proxy aplikacji jest dostępny w ramach subskrypcji Azure AD — wersja Podstawowa. Zapoznaj się z pełną listą opcji licencjonowania i funkcji na [stronie z cennikiem Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/) .  
+* **Licencjonowanie**: Serwer proxy aplikacji jest dostępny w ramach subskrypcji Azure AD — wersja Premium. Zapoznaj się z pełną listą opcji licencjonowania i funkcji na [stronie z cennikiem Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/) .  
 
 ### <a name="application-discovery"></a>Odnajdywanie aplikacji
 
@@ -93,8 +93,8 @@ Kompiluj spis wszystkich aplikacji w zakresie, które są publikowane za pośred
 
 | Typ informacji| Informacje do zebrania |
 |---|---|
-| Typ usługi| Na przykład: SharePoint, SAP, CRM, niestandardowa aplikacja sieci Web, interfejs API |
-| Platforma aplikacji | Przykład: Windows IIS, Apache w systemie Linux, Tomcat, NGINX |
+| Typ usługi| Przykład: SharePoint, SAP, CRM, niestandardowa aplikacja sieci Web, interfejs API |
+| Platforma aplikacji | Na przykład: Windows IIS, Apache w systemie Linux, Tomcat, NGINX |
 | Członkostwo w domenie| W pełni kwalifikowana nazwa domeny serwera sieci Web (FQDN) |
 | Lokalizacja aplikacji | Gdzie serwer sieci Web lub farma znajduje się w infrastrukturze |
 | Dostęp wewnętrzny | Dokładny adres URL używany podczas wewnętrznego uzyskiwania dostępu do aplikacji. <br> Jeśli w farmie jest używany typ równoważenia obciążenia? <br> Czy aplikacja rysuje zawartość ze źródeł innych niż sama.<br> Ustal, czy aplikacja działa za pośrednictwem obiektów WebSockets. |
@@ -155,7 +155,7 @@ Następujące elementy projektu powinny zwiększyć sukces implementacji pilota�
 
 **Ustawienia logowania**jednokrotnego: Niektóre ustawienia rejestracji jednokrotnej mają określone zależności, które mogą zająć dużo czasu, aby uniknąć opóźnień kontroli zmian przez zapewnienie, że zależności są rozpatrywane przed czasem. Obejmuje to hosty łącznika przyłączania do domeny w celu przeprowadzenia logowania jednokrotnego przy użyciu ograniczonego delegowania protokołu Kerberos (KCD) i poświęcają inne czasochłonne działania. Można na przykład skonfigurować wystąpienie dostępu do usługi PING, jeśli potrzebne jest logowanie jednokrotne oparte na nagłówkach.
 
-**Protokół SSL między hostem łącznika a aplikacją**docelową: Zabezpieczenia są najważniejsze, dlatego należy zawsze używać protokołu TLS między hostem łącznika a aplikacjami docelowymi. Szczególnie jeśli aplikacja sieci Web jest skonfigurowana do uwierzytelniania opartego na formularzach (FBA), w miarę jak poświadczenia użytkownika są efektywnie przesyłane w postaci zwykłego tekstu.
+**Protokół SSL między hostem łącznika a aplikacją docelową**: Zabezpieczenia są najważniejsze, dlatego należy zawsze używać protokołu TLS między hostem łącznika a aplikacjami docelowymi. Szczególnie jeśli aplikacja sieci Web jest skonfigurowana do uwierzytelniania opartego na formularzach (FBA), w miarę jak poświadczenia użytkownika są efektywnie przesyłane w postaci zwykłego tekstu.
 
 **Zaimplementuj przyrostowo i przetestuj każdy krok**. Przeprowadzaj podstawowe testy funkcjonalne po opublikowaniu aplikacji, aby upewnić się, że wszystkie wymagania użytkownika i biznesowe zostały spełnione, postępując zgodnie z poniższymi instrukcjami:
 
@@ -170,7 +170,7 @@ Następujące elementy projektu powinny zwiększyć sukces implementacji pilota�
 
 ### <a name="deploy-application-proxy"></a>Wdróż serwer proxy aplikacji
 
-Kroki umożliwiające wdrożenie serwera proxy aplikacji zostały omówione w tym samouczku w [celu dodania aplikacji lokalnej dla dostępu zdalnego](application-proxy-add-on-premises-application.md). Jeśli instalacja nie powiedzie się, wybierz pozycję **Rozwiązywanie problemów z serwerem proxy aplikacji** w portalu lub Skorzystaj z przewodnika rozwiązywania problemów w [przypadku problemów z instalacją łącznika agenta serwera proxy aplikacji](application-proxy-connector-installation-problem.md).
+Kroki umożliwiające wdrożenie serwera proxy aplikacji zostały omówione w tym [samouczku w celu dodania aplikacji lokalnej dla dostępu zdalnego](application-proxy-add-on-premises-application.md). Jeśli instalacja nie powiedzie się, wybierz pozycję **Rozwiązywanie problemów z serwerem proxy aplikacji** w portalu lub Skorzystaj z przewodnika rozwiązywania problemów w [przypadku problemów z instalacją łącznika agenta serwera proxy aplikacji](application-proxy-connector-installation-problem.md).
 
 ### <a name="publish-applications-via-application-proxy"></a>Publikowanie aplikacji za pośrednictwem serwera proxy aplikacji
 
@@ -220,7 +220,7 @@ Jeśli ta funkcja jest włączona, użytkownicy będą mogli zalogować się do 
 
 Użytkownicy-Goście mogą również zostać [zaproszeni do dostępu do wewnętrznych aplikacji publikowanych za pośrednictwem serwera proxy aplikacji za pośrednictwem usługi Azure AD B2B](https://docs.microsoft.com/azure/active-directory/b2b/add-users-information-worker).
 
-W przypadku aplikacji lokalnych, które są normalnie dostępne anonimowo, nie wymagając uwierzytelniania, możesz chcieć wyłączyć opcję znajdującą się we właściwościach aplikacji.
+W przypadku aplikacji lokalnych, które są normalnie dostępne anonimowo, nie wymagając uwierzytelniania, możesz chcieć wyłączyć opcję znajdującą się we **właściwościach**aplikacji.
 
 ![Obraz 26](media/App-proxy-deployment-plan/assignment-required.png)
 
@@ -255,7 +255,7 @@ Odczytuj Logowanie jednokrotne [do aplikacji w usłudze Azure AD](what-is-single
 
 Usługa Azure serwer proxy aplikacji usługi Azure AD może również obsługiwać aplikacje opracowane do korzystania z naszej biblioteki uwierzytelniania usługi Azure AD ([ADAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)) lub biblioteki uwierzytelniania firmy Microsoft ([MSAL](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)). Obsługuje natywne aplikacje klienckie przez konsumowanie tokenów wystawionych przez usługę Azure AD odebrane w nagłówku żądania klienta w celu przeprowadzenia wstępnego uwierzytelniania w imieniu użytkowników.
 
-Przeczytaj artykuł [Publikowanie natywnych i mobilnych aplikacji klienckich](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client) oraz [aplikacji opartych](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps) na oświadczeniach, aby dowiedzieć się więcej o dostępnych konfiguracjach serwera proxy aplikacji.
+Przeczytaj artykuł [Publikowanie natywnych i mobilnych aplikacji klienckich](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client) oraz [aplikacji opartych na oświadczeniach](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps) , aby dowiedzieć się więcej o dostępnych konfiguracjach serwera proxy aplikacji.
 
 ### <a name="use-conditional-access-to-strengthen-security"></a>Korzystanie z dostępu warunkowego w celu wzmocnienia zabezpieczeń
 
@@ -269,7 +269,7 @@ Do obsługi serwer proxy aplikacji usługi Azure AD platformy Azure mogą być u
 
 * Dostęp warunkowy oparty na aplikacji: Nie trzeba przerywać pracy, gdy użytkownik nie znajduje się w sieci firmowej. [Bezpieczny dostęp do firmowych aplikacji w chmurze i lokalnych](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam) oraz zachowanie kontroli z dostępem warunkowym.
 
-* Dostęp warunkowy oparty na ryzyku: Ochrona danych przed złośliwymi hakerami przy użyciu [zasad dostępu warunkowego opartych](https://www.microsoft.com/cloud-platform/conditional-access) na ryzyku, które można stosować do wszystkich aplikacji i wszystkich użytkowników, zarówno lokalnych, jak i w chmurze.
+* Dostęp warunkowy oparty na ryzyku: Ochrona danych przed złośliwymi hakerami przy użyciu [zasad dostępu warunkowego opartych na ryzyku](https://www.microsoft.com/cloud-platform/conditional-access) , które można stosować do wszystkich aplikacji i wszystkich użytkowników, zarówno lokalnych, jak i w chmurze.
 
 * Panel dostępu usługi Azure AD: Po wdrożeniu usługi serwera proxy aplikacji i zagwarantowaniu bezpieczeństwa aplikacje umożliwiają użytkownikom proste centrum odnajdywania i uzyskiwania dostępu do wszystkich aplikacji. Zwiększ produktywność dzięki możliwościom samoobsługowym, takim jak możliwość żądania dostępu do nowych aplikacji i grup lub zarządzania dostępem do tych zasobów w imieniu innych użytkowników za pomocą [panelu dostępu](https://aka.ms/AccessPanelDPDownload).
 

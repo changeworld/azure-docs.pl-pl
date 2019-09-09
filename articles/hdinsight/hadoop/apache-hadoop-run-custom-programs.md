@@ -1,6 +1,6 @@
 ---
 title: Uruchamianie niestandardowych programów MapReduce — Azure HDInsight
-description: Kiedy i jak uruchamianie niestandardowych programów MapReduce w HDInsight.
+description: Kiedy i jak uruchamiać niestandardowe programy Apache MapReduce w klastrach usługi Azure HDInsight.
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,71 +8,71 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: 5ed82fc21aedc9af394922059859f81cfba1867e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 305eefbaa674e414ab8134986e6cd526abe8208e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713090"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810745"
 ---
 # <a name="run-custom-mapreduce-programs"></a>Uruchamianie niestandardowych programów MapReduce
 
-Apache systemów opartych na usłudze Hadoop dane big data, takich jak HDInsight umożliwiają przetwarzanie danych przy użyciu szerokiej gamy narzędzi i technologii. W poniższej tabeli opisano główne zalety i wady każdego z nich.
+Oparte na Apache Hadoop systemy danych Big Data, takie jak HDInsight, umożliwiają przetwarzanie danych przy użyciu szerokiej gamy narzędzi i technologii. W poniższej tabeli opisano główne zalety i zagadnienia dotyczące każdego z nich.
 
-| Mechanizm zapytań | Zalety | Zagadnienia do rozważenia |
+| Mechanizm zapytania | Zalety | Zagadnienia do rozważenia |
 | --- | --- | --- |
-| **Apache Hive przy użyciu HiveQL** | <ul><li>Idealne rozwiązanie do przetwarzania wsadowego i analizy dużych ilości danych niezmienne dla podsumowania danych i na żądanie zapytań. Używa dobrze znanej składni podobnego do SQL.</li><li>Może służyć do tworzenia tabel trwałych danych, które można łatwo podzielona na partycje i indeksowane.</li><li>Wiele tabel zewnętrznych i widoki mogą być tworzone za pośrednictwem tych samych danych.</li><li>Obsługuje ona implementację magazynu proste dane, która zapewnia ogromną możliwości skalowania w poziomie i odporności na uszkodzenia przechowywanie i przetwarzanie danych.</li></ul> | <ul><li>Wymaga to źródło danych ma co najmniej niektórych elementów struktury do zidentyfikowania.</li><li>Nie jest odpowiednia dla zapytań w czasie rzeczywistym i aktualizacje poziomu wierszy. Go najlepiej nadaje się do zadania usługi batch w dużych zestawach danych.</li><li>Nie może być możliwe przeprowadzenie niektórych typów zadań przetwarzania złożonych.</li></ul> |
-| **Apache Pig, za pomocą Pig Latin** | <ul><li>Doskonałe rozwiązanie dla manipulowanie danymi, ponieważ Ustawia, scalania i zestawy danych, stosowania funkcji do rekordów lub grup rekordów, filtrowanie i restrukturyzacja danych przez definiowanie kolumn, według wartości grupowania lub za pomocą konwersji kolumn do wierszy.</li><li>Może używać podejścia opartego o przepływ pracy za pomocą sekwencji operacji na danych.</li></ul> | <ul><li>Użytkowników SQL może się okazać, że język Pig Latin jest mniej znanych i trudniejsze niż HiveQL korzystanie z.</li><li>Domyślne dane wyjściowe to zazwyczaj plik tekstowy i dlatego może być trudniejsze do korzystania z narzędzi do wizualizacji takich jak program Excel. Zwykle będzie warstwy tabeli programu Hive za pośrednictwem danych wyjściowych.</li></ul> |
-| **Niestandardowe/mapreduce** | <ul><li>Zapewnia pełną kontrolę nad mapy i zmniejszyć etapów i wykonania.</li><li>Umożliwia ona kwerendy można zoptymalizować w celu uzyskania maksymalnej wydajności z klastra lub aby zminimalizować obciążenie na serwerach i w sieci.</li><li>Składniki mogą być napisane w szeregu dobrze znanych języków.</li></ul> | <ul><li>Jest trudniejsze niż korzystanie z języka Pig i Hive, ponieważ musi utworzyć własną mapę i zmniejszyć składników.</li><li>Procesy, które wymagają łączenie zestawów danych są trudniejsze do zaimplementowania.</li><li>Mimo, że brak dostępnych środowisk testowych, debugowanie kodu jest bardziej skomplikowane niż normalny aplikacji, ponieważ kod jest uruchamiany w trybie wsadowym pod kontrolą harmonogram zadań usługi Hadoop.</li></ul> |
-| **Apache HCatalog** | <ul><li>Jego abstrakcję szczegółów ścieżki magazynu, co ułatwia administrowanie i usuwanie użytkownicy nie wiedzieć, gdzie dane są przechowywane.</li><li>Dzięki temu powiadomień o zdarzeniach, takich jak dostępność danych, dzięki czemu innych narzędzi, takich jak Oozie w celu wykrywania wystąpił błąd operacji.</li><li>On udostępnia relacyjny widok danych, w tym podział na partycje według klucza i ułatwia dostęp do danych.</li></ul> | <ul><li>Obsługuje ona RCFile i tekst w formacie CSV, tekst JSON, SequenceFile i ORC formaty plików domyślnie, ale konieczne może być napisać niestandardowego elementu SerDe, w przypadku innych formatów.</li><li>HCatalog nie jest metodą o bezpiecznych wątkach.</li><li>Istnieją pewne ograniczenia dotyczące typów danych dla kolumn podczas korzystania z modułu ładującego HCatalog w skryptów usługi Pig. Aby uzyskać więcej informacji, zobacz [typy danych HCatLoader](https://cwiki.apache.org/confluence/display/Hive/HCatalog%20LoadStore#HCatalogLoadStore-HCatLoaderDataTypes) w dokumentacji programu Apache HCatalog.</li></ul> |
+| **Apache Hive przy użyciu HiveQL** | <ul><li>Doskonałe rozwiązanie do przetwarzania wsadowego i analizy dużych ilości niezmiennych danych, podsumowania danych i wykonywania zapytań na żądanie. Używa znanej składni podobnej do języka SQL.</li><li>Może służyć do tworzenia trwałych tabel danych, które można łatwo podzielić na partycje i zindeksować.</li><li>Dla tych samych danych można tworzyć wiele tabel i widoków zewnętrznych.</li><li>Obsługuje ona prostą implementację magazynu danych, która zapewnia ogromne możliwości skalowania i odporności na uszkodzenia na potrzeby przechowywania i przetwarzania danych.</li></ul> | <ul><li>Wymaga, aby dane źródłowe miały co najmniej pewną rozpoznawalną strukturę.</li><li>Nie jest to odpowiednie dla zapytań w czasie rzeczywistym i aktualizacji na poziomie wiersza. Najlepiej jest używać w przypadku zadań wsadowych w dużych zestawach danych.</li><li>Może nie być możliwe przeprowadzenie niektórych typów złożonych zadań przetwarzania.</li></ul> |
+| **Apache świnie z użyciem wieprzowiny** | <ul><li>Doskonałe rozwiązanie do manipulowania danymi jako zestawy, scalanie i filtrowanie zestawów danych, stosowanie funkcji do rekordów lub grup rekordów oraz na potrzeby restrukturyzacji danych przez definiowanie kolumn, grupowanie wartości lub konwersja kolumn do wierszy.</li><li>Można użyć podejścia opartego na przepływie pracy jako sekwencji operacji na danych.</li></ul> | <ul><li>Użytkownicy SQL mogą znaleźć mniej znane i trudniejsze na korzystanie z HiveQL.</li><li>Domyślnym wyjściem jest zwykle plik tekstowy, więc może być trudniejszy do użycia z narzędziami do wizualizacji, takimi jak program Excel. Zazwyczaj warstwy Hive zostaną przełączone na dane wyjściowe.</li></ul> |
+| **Mapa niestandardowa/Zmniejsz** | <ul><li>Zapewnia pełną kontrolę nad mapą i zmniejsza fazy i wykonywanie.</li><li>Pozwala to na zoptymalizowanie zapytań w celu osiągnięcia maksymalnej wydajności z klastra lub zminimalizowania obciążenia serwerów i sieci.</li><li>Składniki mogą być zapisywane w zakresie dobrze znanych języków.</li></ul> | <ul><li>Jest to trudniejsze niż używanie świni lub Hive, ponieważ należy utworzyć własne mapy i zredukować składniki.</li><li>Procesy, które wymagają przyłączenia zestawów danych, są trudniejsze do zaimplementowania.</li><li>Mimo że istnieją platformy testowe dostępne, kod debugowania jest bardziej skomplikowany niż zwykła aplikacja, ponieważ kod jest uruchamiany jako zadanie wsadowe pod kontrolą harmonogramu zadań usługi Hadoop.</li></ul> |
+| **Apache HCatalog** | <ul><li>Jest to abstrakcyjne szczegóły ścieżki magazynu, ułatwiając administrację i eliminując konieczność, aby użytkownicy wiedzieli, gdzie są przechowywane dane.</li><li>Umożliwia ona powiadamianie o zdarzeniach, takich jak dostępność danych, pozwalając innym narzędziom, takim jak Oozie, wykrywanie czasu wystąpienia operacji.</li><li>Udostępnia on relacyjny widok danych, w tym partycjonowanie według klucza, i ułatwia dostęp do danych.</li></ul> | <ul><li>Obsługuje format plików RCFile, CSV, tekstu JSON, SequenceFile i ORC, ale może być konieczne napisanie niestandardowego elementu SERDE dla innych formatów.</li><li>HCatalog nie jest bezpieczna wątkowo.</li><li>Istnieją pewne ograniczenia dotyczące typów danych dla kolumn podczas korzystania z modułu ładującego HCatalog w skryptach wieprzowych. Aby uzyskać więcej informacji, zobacz [HCatLoader typy danych](https://cwiki.apache.org/confluence/display/Hive/HCatalog%20LoadStore#HCatalogLoadStore-HCatLoaderDataTypes) w dokumentacji Apache HCatalog.</li></ul> |
 
-Zazwyczaj można użyć Najprostsza z tych metod, które mogą dostarczać wyniki, które są wymagane. Na przykład może być możliwe uzyskanie takich wyników przy użyciu tylko programu Hive, ale w przypadku bardziej złożonych scenariuszy może być konieczne korzystanie z języka Pig, lub nawet napisać własne mapy i zmniejszyć składników. Może również podjąć decyzję, po eksperymentowanie z programu Hive i Pig, niestandardowych mapowane i zmniejszyć składników może zapewnić lepszą wydajność, umożliwiając dostosowywanie i optymalizowanie przetwarzania.
+Zazwyczaj należy używać najprostszych metod, które mogą zapewnić wymagane wyniki. Na przykład możesz mieć możliwość osiągnięcia takich wyników przy użyciu tylko usługi Hive, ale w przypadku bardziej złożonych scenariuszy może być konieczne użycie świni, a nawet napisać własne mapowanie i zredukować składniki. Możesz również zdecydować, że po eksperymentie z gałęzią lub świnią, że mapa niestandardowa i zmniejszenie składników mogą zapewnić lepszą wydajność, umożliwiając precyzyjne dostosowanie i zoptymalizowanie przetwarzania.
 
-## <a name="custom-mapreduce-components"></a>Składniki niestandardowe/mapreduce
+## <a name="custom-mapreduce-components"></a>Mapa niestandardowa/Zmniejsz składniki
 
-Kod/mapreduce składa się z dwóch osobnych funkcji zaimplementowane jako **mapy** i **zmniejszyć** składników. **Mapy** składnik to równolegle w wielu węzłach klastra, każdy węzeł stosowanie mapowania do tego węzła podzbiór danych. **Zmniejszyć** składnika porównuje i podsumowuje wyniki z wszystkich funkcji mapy. Aby uzyskać więcej informacji na temat tych dwóch składników, zobacz [używanie MapReduce na platformie Hadoop w HDInsight](hdinsight-use-mapreduce.md).
+Mapowanie/zmniejszanie kodu składa się z dwóch oddzielnych funkcji wdrożonych jako **Mapa** i **Zmniejsz** składniki. Składnik **mapy** jest uruchamiany równolegle na wielu węzłach klastra, a każdy węzeł stosuje mapowanie do własnego podzestawu danych węzła. Składnik **redukcji** sortuje i podsumowuje wyniki ze wszystkich funkcji map. Aby uzyskać więcej informacji na temat tych dwóch składników, zobacz [Korzystanie z MapReduce w usłudze Hadoop w usłudze HDInsight](hdinsight-use-mapreduce.md).
 
-W większości przypadków HDInsight przetwarzania jest prostszy i bardziej wydajne, aby użyć wyższego poziomu abstrakcji takich jak Pig i Hive. Może również utworzyć niestandardowe mapy i ograniczyć składniki do użycia w skrypty Hive w celu wykonywania przetwarzania bardziej zaawansowanych.
+W większości scenariuszy przetwarzania usługi HDInsight jest to prostsze i bardziej wydajne, aby można było używać abstrakcji wyższego poziomu, takich jak świnie lub Hive. Możesz również utworzyć mapę niestandardową i zredukować składniki do użycia w skryptach Hive w celu przeprowadzenia bardziej zaawansowanego przetwarzania.
 
-Składniki niestandardowe/mapreduce zwykle są napisane w języku Java. Hadoop dostarcza interfejs przesyłania strumieniowego, który umożliwia także składniki do użycia, które są opracowywane w innych językach, takich jak C#, F#, Visual Basic, Python i JavaScript.
+Mapa niestandardowa/Zmniejsz składniki są zwykle zapisywane w języku Java. Usługa Hadoop udostępnia interfejs przesyłania strumieniowego, który umożliwia także używanie składników, które są opracowywane w innych C#językach F#, takich jak, Visual Basic, Python i JavaScript.
 
-* Aby uzyskać wskazówki na temat tworzenia niestandardowych programów MapReduce w języku Java, zobacz [programów opracowywanie MapReduce w języku Java dla usługi Hadoop w HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md).
+* Aby zapoznać się z przewodnikiem dotyczącym tworzenia niestandardowych programów MapReduce języka Java, zobacz [opracowywanie programów Java MapReduce dla platformy Hadoop w usłudze HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md).
 
-Należy rozważyć utworzenie własnego mapy i zmniejszyć składniki dla następujących warunków:
+Należy rozważyć utworzenie własnej mapy i zmniejszenie składników pod kątem następujących warunków:
 
-* Należy do przetwarzania danych, które są całkowicie bez struktury, analizy danych i korzystać z niestandardowej logiki w celu uzyskiwania ustrukturyzowanych informacji z niego.
-* Chcesz wykonać złożone zadania, które są trudne (lub niemożliwe) do wyrażenia w Pig i Hive, bez konieczności uciekania się do tworzenia funkcji zdefiniowanej przez użytkownika. Może na przykład może być konieczne użycie zewnętrznej usługi geokodowania konwertować szerokości i współrzędne geograficzne lub adresów IP w danych źródłowych nazwy lokalizacji geograficznej.
-* Chcesz ponownie użyć istniejącego kodu .NET, Python lub języka JavaScript/mapreduce składniki za pomocą usługi Hadoop, przesyłanie strumieniowe interfejsu.
+* Należy przetwarzać dane, które są całkowicie niestrukturalne, przez analizowanie danych i używanie logiki niestandardowej do uzyskiwania informacji ze strukturą.
+* Chcesz wykonywać złożone zadania, które są trudne (lub niemożliwe) do wyrażania w ramach świni lub Hive, bez konieczności tworzenia plików UDF. Na przykład może być konieczne użycie zewnętrznej usługi geokodowania, aby przekonwertować współrzędne geograficzne lub adresy IP w danych źródłowych na nazwy lokalizacji geograficznej.
+* Chcesz ponownie użyć istniejącego kodu .NET, Python lub JavaScript w programie map/Zmniejsz składniki przy użyciu interfejsu usługi przesyłania strumieniowego Hadoop.
 
-## <a name="upload-and-run-your-custom-mapreduce-program"></a>Przekazywanie i uruchamianie niestandardowych programu MapReduce
+## <a name="upload-and-run-your-custom-mapreduce-program"></a>Przekazywanie i uruchamianie niestandardowego programu MapReduce
 
-Najbardziej typowe programów MapReduce są napisane w języku Java i kompilowane do pliku jar.
+Najpopularniejsze programy MapReduce są zapisywane w języku Java i kompilowane do pliku JAR.
 
-1. Po zostały opracowane, skompilowane i przetestowane programu MapReduce, użyj `scp` polecenie, aby przekazać plik jar z węzłem głównym.
+1. Po opracowaniu, skompilowaniu i przetestowaniu programu MapReduce Użyj `scp` polecenia, aby przekazać plik jar do węzła głównego.
 
     ```bash
     scp mycustomprogram.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    Zastąp **USERNAME** przy użyciu konta użytkownika SSH dla klastra. Zastąp **CLUSTERNAME** nazwą klastra. Aby zabezpieczyć konto SSH użyto hasła, monit o wprowadzenie hasła. Jeśli używany jest certyfikat może być konieczne użycie `-i` parametru, aby określić plik klucza prywatnego.
+    Zastąp **nazwę username** kontem użytkownika SSH dla klastra. Zastąp wartość **ClusterName** nazwą klastra. Jeśli do zabezpieczenia konta SSH użyto hasła, zostanie wyświetlony monit o wprowadzenie hasła. Jeśli użyto certyfikatu, może być konieczne użycie `-i` parametru w celu określenia pliku klucza prywatnego.
 
-2. Nawiązać połączenie z klastrem przy użyciu [SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+2. Połącz się z klastrem przy użyciu protokołu [SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
     ```bash
     ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. W sesji SSH należy wykonać programu MapReduce za pomocą usługi YARN.
+3. W sesji SSH wykonaj swój program MapReduce za pośrednictwem PRZĘDZy.
 
     ```bash
     yarn jar mycustomprogram.jar mynamespace.myclass /example/data/sample.log /example/data/logoutput
     ```
 
-    To polecenie przesyła zadanie MapReduce usługi YARN. Plik wejściowy jest `/example/data/sample.log`, a katalog wyjściowy jest `/example/data/logoutput`. Plik wejściowy i wszystkie pliki wyjściowe są przechowywane do domyślnego magazynu klastra.
+    To polecenie przesyła zadanie MapReduce do PRZĘDZenia. Plik wejściowy jest `/example/data/sample.log`i `/example/data/logoutput`katalog wyjściowy. Plik wejściowy i wszystkie pliki wyjściowe są przechowywane w domyślnym magazynie klastra.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* [Użyj C# o MapReduce, przesyłanie strumieniowe na technologii Apache Hadoop w HDInsight](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
-* [Opracowywanie programów MapReduce w języku Java dla usługi Apache Hadoop w HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-* [Używanie zestawu narzędzi platformy Azure dla środowiska Eclipse do tworzenia aplikacji platformy Apache Spark dla klastra usługi HDInsight](../spark/apache-spark-eclipse-tool-plugin.md)
-* [Funkcje (UDF) zdefiniowane przez użytkownika języka Python korzystanie z programu Apache Hive i Apache Pig w HDInsight](python-udf-hdinsight.md)
+* [Używanie C# z usługą MapReduce streaming na Apache Hadoop w usłudze HDInsight](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
+* [Opracowywanie programów MapReduce w języku Java dla Apache Hadoop w usłudze HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
+* [Tworzenie aplikacji Apache Spark dla klastra usługi HDInsight za pomocą Azure Toolkit for Eclipse](../spark/apache-spark-eclipse-tool-plugin.md)
+* [Używanie funkcji języka Python zdefiniowanej przez użytkownika (UDF) z Apache Hive i Apache chlewnej w usłudze HDInsight](python-udf-hdinsight.md)

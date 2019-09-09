@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/08/2019
 ms.author: diberry
-ms.openlocfilehash: bfd11254ffccd5085701071fcdb2116ca368bc82
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: ee185ca5d2e2cdda89945f0fc1e7aae32030c1be
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801446"
+ms.locfileid: "70803897"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrowanie do klucza tworzenia zasobów platformy Azure
 
@@ -91,7 +91,7 @@ Możesz wyeksportować aplikację, której jesteś współpracownikiem, a nastę
 
 ### <a name="after-the-app-is-migrated"></a>Po migracji aplikacji
 
-Po zakończeniu procesu migracji należy dodać go do zasobu tworzenia platformy Azure przez właściciela aplikacji.  
+Jeśli po zakończeniu procesu migracji potrzebujesz dostępu do oryginalnej aplikacji, musisz dodać do zasobu tworzenia platformy Azure jako współpracownika przez właściciela aplikacji.  
 
 ## <a name="next-steps"></a>Następne kroki
 

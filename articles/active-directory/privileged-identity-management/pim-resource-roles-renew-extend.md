@@ -1,9 +1,9 @@
 ---
-title: Rozszerzanie lub odnawianie przypisań ról zasobów platformy Azure w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozszerzanie lub odnawianie przypisań ról zasobów platformy Azure w usłudze Azure AD Privileged Identity Management (PIM).
+title: Przedłużanie lub odnowienie przypisań ról zasobów platformy Azure w programie PIM-Azure Active Directory | Microsoft Docs
+description: Dowiedz się, jak przedłużyć lub odnowić przypisania ról zasobów platformy Azure w Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,124 +13,124 @@ ms.devlang: na
 ms.topic: conceptual
 ms.subservice: pim
 ms.date: 04/02/2018
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 147b1714c88fd93a3098ecf7a28164a227af29de
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 9eeba148945f7aa52dd32edc0fec4c45e2ab0748
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476296"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804131"
 ---
-# <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>Rozszerzanie lub odnawianie przypisań ról zasobów platformy Azure w usłudze PIM
+# <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>Przedłużanie lub odnowienie przypisań ról zasobów platformy Azure w usłudze PIM
 
-Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) wprowadza nowe formanty do zarządzania cyklem życia dostępu i przypisania dla zasobów platformy Azure. Administratorzy mogą przypisywać członkostwa przy użyciu właściwości Data / Godzina rozpoczęcia i zakończenia. Gdy zbliża się zakończenie przypisania PIM wysyła powiadomienia e-mail do użytkowników lub grup. Wysyła również powiadomienia e-mail administratorom zasobu w celu zapewnienia utrzymania odpowiedni dostęp. Zadania mogą być odnawiane i będą one nadal widoczne wygasła przez maksymalnie 30 dni, nawet jeśli nie zostanie przedłużony dostęp.
+Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) wprowadza nowe kontrolki do zarządzania cyklem życia dostępu i przypisania dla zasobów platformy Azure. Administratorzy mogą przypisywać członkostwo przy użyciu właściwości daty i godziny rozpoczęcia i zakończenia. Gdy zbliża się koniec przypisania, PIM wysyła powiadomienia e-mail do odpowiednich użytkowników lub grup. Wysyła również powiadomienia e-mail do administratorów zasobu, aby zapewnić zachowanie odpowiedniego dostępu. Przypisania mogą zostać odnowione i pozostają widoczne w stanie wygaśnięcia przez maksymalnie 30 dni, nawet jeśli nie przedłużono dostępu.
 
-## <a name="who-can-extend-and-renew"></a>Kto może rozszerzyć i odnowić?
+## <a name="who-can-extend-and-renew"></a>Kto może ją przedłużać i odnowić?
 
-Tylko administratorzy zasobu można rozszerzyć lub odnawiania przypisań ról. Dotyczy składowej może poprosić o przedłużenie role, które wkrótce wygasną i limit czasu żądania odnowienia role, które są już wygasł.
+Tylko Administratorzy zasobu mogą przedłużyć lub odnowić przypisania ról. Dotknięty członek może zażądać przedłużenia ról, które wkrótce wygasną, i zażądać odnowienia ról, które już wygasły.
 
-## <a name="when-are-notifications-sent"></a>Kiedy są wysyłane powiadomienia
+## <a name="when-are-notifications-sent"></a>Kiedy są wysyłane powiadomienia?
 
-Usługa PIM wysyła powiadomienia e-mail dla administratorów i odpowiednich członków ról, które wkrótce wygasną w ciągu 14 dni i jeden dzień przed wygaśnięciem. Wysyła wiadomość e-mail dodatkowych wygaśnięcia przydziału oficjalnie. 
+W programie PIM powiadomienia e-mail są wysyłane do administratorów i podlegają członkom ról, których ważność wygaśnie w ciągu 14 dni i jednego dnia przed wygaśnięciem. Wysyła on dodatkową wiadomość e-mail, gdy przydział oficjalnie wygaśnie. 
 
-Administratorzy otrzymywać powiadomienia, gdy członek roli wygasające lub wygasłe żądania rozszerzanie lub odnawianie. Podczas określonego administratora jest rozpoznawany jako żądania, inni administratorzy powiadomienie o decyzji rozdzielczość (zatwierdzenie lub odrzucenie). Następnie żądania elementu członkowskiego zostanie powiadomiony o decyzji. 
+Administratorzy otrzymują powiadomienia, gdy członek wygaśnięcia lub ważności żądania roli do przedłużenia lub odnowienia. Gdy określony administrator rozwiązuje żądanie, wszyscy inni administratorzy są powiadamiani o decyzji o rozwiązywaniu (zatwierdzone lub odrzucone). Następnie członek wnioskujący zostanie powiadomiony o decyzji. 
 
-## <a name="extend-role-assignments"></a>Rozszerzenia przypisań ról
+## <a name="extend-role-assignments"></a>Rozszeranie przypisań ról
 
-Poniższe kroki wchodzą w skład procesu żądania, rozwiązywanie lub administrowania rozszerzenia lub odnowienia przypisania roli. 
+Poniższe kroki przedstawiają proces żądania, rozwiązywania lub administrowania rozszerzeniem lub odnowieniem przypisania roli. 
 
-### <a name="member-extend"></a>Element członkowski rozszerzenia
+### <a name="member-extend"></a>Przedłużenie przypisania dla członka
 
-Elementy członkowskie przypisania roli można rozszerzyć wygasające przypisań ról bezpośrednio z **kwalifikujących się** lub **Active** karcie **Moje role** stronę zasobu i na najwyższym poziomie **Moje role** stronie portalu usługi PIM. Członkowie mogą poprosić o przedłużenie kwalifikujących się i aktywnych ról (przypisanych), które wygaśnie w ciągu najbliższych 14 dni.
+Członkowie przypisania roli mogą w większym zakresie wycofać przypisania ról, bezpośrednio z karty **uprawniony** lub **aktywny** na stronie **Moje role** zasobu i na stronie **Moje role** w portalu PIM. Członkowie mogą zażądać rozbudowania kwalifikujących się i aktywnych ról (przypisanych), których ważność wygaśnie w ciągu następnych 14 dni.
 
-![Zasoby platformy Azure — Moje role stronie listy kwalifikujące się role kolumna akcji](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-ui.png)
+![Zasoby platformy Azure — strony Moje role wyświetlają kwalifikujące się role z kolumną Action](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-ui.png)
 
-Gdy przypisanie Data / Godzina zakończenia jest w ciągu 14 dni, przycisk, aby **Rozszerz** staje się aktywny odnośnik w interfejsie użytkownika. W poniższym przykładzie przyjęto założenie, bieżąca data jest 27 marca.
+Gdy data/godzina zakończenia przypisania przypada w ciągu 14 dni, **przycisk do** przełączenia zostanie aktywnym linkiem w interfejsie użytkownika. W poniższym przykładzie przyjęto założenie, że bieżąca data to 27 marca.
 
-![Kolumna akcji wraz z łączami do aktywacji lub rozszerzone](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-within-14.png)
+![Kolumna akcji z łączami do aktywacji lub rozbudowania](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-within-14.png)
 
-Aby wnioskiem o przedłużenie okresu tego przypisania ról, wybierz pozycję **Rozszerz** można otworzyć formularz żądania.
+Aby zażądać rozszerzenia tego przypisania roli, wybierz pozycję **rozszerzanie** , aby otworzyć formularz żądania.
 
-![Rozszerzanie okienku przypisania roli z polem Przyczyna](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-role-assignment-request.png)
+![Okienko rozszerzonego przypisania roli z powodu pola przyczyny](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-role-assignment-request.png)
 
-Aby wyświetlić informacje o przypisywaniu oryginalnej, rozwiń węzeł **Szczegóły przypisania**. Podaj przyczynę żądania rozszerzenia, a następnie wybierz **Rozszerz**.
+Aby wyświetlić informacje o oryginalnym przypisaniu, rozwiń węzeł **Szczegóły przydziału**. Wprowadź przyczynę żądania rozszerzenia, a następnie wybierz pozycję **rozszerzaj**.
 
 >[!Note]
->Firma Microsoft zaleca, łącznie ze szczegółami, dlaczego wymagane jest rozszerzenie oraz jak długo może być przyznany rozszerzenia (Jeśli masz te informacje).
+>Zalecamy uwzględnienie szczegółowych informacji o tym, dlaczego rozszerzenie jest niezbędne, oraz o tym, jak długo powinno zostać przyznane rozszerzenie (Jeśli masz te informacje).
 
-![Rozszerzanie okienku przypisania roli przy użyciu szczegółów przypisania rozwinięte](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-form-complete.png)
+![Rozszerzanie okienka przypisania roli z rozwiniętymi szczegółami przypisywania](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-form-complete.png)
 
-W ciągu kilku chwil administratorom zasobów otrzymywać powiadomienia e-mail żądania, przeglądu żądanie rozszerzenia. Jeśli zostało już przesłane żądanie, aby rozszerzyć, w górnej części witryny Azure portal, wyjaśniające, błąd pojawia się powiadomienie wyskakujące.
+W danej chwili Administratorzy zasobów otrzymują powiadomienie e-mail z prośbą o przejrzenie żądania rozszerzenia. Jeśli żądanie przekroczenia zostało już przesłane, na początku Azure Portal zostanie wyświetlone powiadomienie wyskakujące.
 
-![Powiadomienie wyjaśniające, że istnieje już oczekujące rozszerzenia przypisania roli](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-failed-existing-request.png)
+![Powiadomienie wyjaśniające, że istnieje już oczekujące rozszerzenie przypisania roli](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-failed-existing-request.png)
 
-Przejdź do **oczekujących żądań** stronie w okienku po lewej stronie, aby wyświetlić stan swojego żądania lub Anuluj ją.
+Przejdź do strony **oczekujące żądania** w lewym okienku, aby wyświetlić stan żądania lub go anulować.
 
-![Zasoby platformy Azure — oczekujących żądań stronę, wszelkie oczekujące żądanego oraz link do anulowania](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-cancel-request.png)
+![Strona żądania zasobów platformy Azure — oczekujące żądanie oraz link do anulowania](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-cancel-request.png)
 
-### <a name="admin-approve"></a>Zatwierdzenie administratora
+### <a name="admin-approve"></a>Administrator zatwierdził
 
-Gdy członek przesyła żądanie rozszerzenia przypisania roli, administratorom zasobów otrzymywać powiadomienia e-mail, który zawiera szczegółowe informacje, oryginalnym przypisania i przyczynę żądania. Powiadomienie zawiera bezpośredni link do żądania dla administratora zatwierdzić lub odrzucić. 
+Gdy członek przesyła żądanie przekroczenia przypisania roli, Administratorzy zasobów otrzymują powiadomienie e-mail zawierające szczegóły oryginalnego przypisania i przyczynę żądania. Powiadomienie zawiera bezpośredni link do żądania zatwierdzenia lub odrzucenia przez administratora. 
 
-Oprócz korzystając z następującego linku z wiadomości e-mail, administratorzy mogli zatwierdzać lub odrzucać żądania, przechodząc do administrację usługi PIM w portalu, a następnie polecenie **zatwierdzanie żądań** w okienku po lewej stronie.
+Oprócz korzystania z linku pocztą e-mail Administratorzy mogą zatwierdzać lub odrzucać żądania, przechodząc do portalu administracji PIM i wybierając pozycję **Zatwierdź żądania** w okienku po lewej stronie.
 
-![Zasoby platformy Azure — zatwierdzanie żądań stronie żądania listy i linki do Zatwierdź lub Odrzuć](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-grid.png)
+![Zasoby platformy Azure — zatwierdzanie żądań na żądanie i linki do zatwierdzenia lub odmowy](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-grid.png)
 
-Gdy Administrator wybierze **Zatwierdź** lub **Odmów**, są wyświetlane szczegóły żądania, oraz pole, aby podać uzasadnienie dla dzienników inspekcji.
+Gdy administrator wybierze pozycję **Zatwierdź** lub **Odmów**, zostaną wyświetlone szczegóły żądania wraz z polem zawierającym uzasadnienie dla dzienników inspekcji.
 
-![Zatwierdź żądanie przypisania roli z powodu obiektu żądającego, typ przypisania, godzinę rozpoczęcia, czas zakończenia oraz przyczyny](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-blade.png)
+![Zatwierdź żądanie przypisania roli z przyczyną żądającą, typem przypisania, czasem rozpoczęcia, czasem zakończenia i przyczynie](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-blade.png)
 
-Po zatwierdzeniu żądanie rozszerzenia przypisania roli administratorom zasobów można wybrać nową datę rozpoczęcia, Data zakończenia i typ przypisania. Zmiana typu przypisania, może być konieczne, jeśli administrator chce, aby zapewnić ograniczony dostęp do wykonania konkretnego zadania (jeden dzień, na przykład). W tym przykładzie administrator może zmienić przypisanie z **kwalifikujących się** do **Active**. Oznacza to, że można zapewniają dostęp do obiektu żądającego bez konieczności ich do aktywowania.
+Podczas zatwierdzania żądania rozszerzającego przypisanie roli Administratorzy zasobów mogą wybrać nową datę początkową, datę końcową i typ przypisania. Zmiana typu przypisania może być konieczna, jeśli administrator chce udzielić ograniczonego dostępu do wykonania określonego zadania (na przykład jeden dzień). W tym przykładzie administrator może zmienić przypisanie z **kwalifikujące** się do **aktywne**. Oznacza to, że mogą oni zapewnić dostęp do osoby żądającej bez konieczności uaktywniania jej.
 
 ### <a name="admin-extend"></a>Przedłużenie administratora
 
-Członek roli zapomni lub jest w stanie wnioskiem o przedłużenie członkostwa w roli, administrator można rozszerzyć przypisania imieniu elementu członkowskiego. Rozszerzenia administracyjne członkostwo roli nie wymagają zatwierdzenia, ale powiadomienia są wysyłane do innych administratorów po został rozszerzony roli.
+Jeśli członek roli zapomni lub nie może zażądać rozszerzenia członkostwa w roli, administrator może przedłużyć przypisanie w imieniu elementu członkowskiego. Rozszerzenia administracyjne członkostwa w rolach nie wymagają zatwierdzenia, ale powiadomienia są wysyłane do wszystkich innych administratorów po rozszerzeniu roli.
 
-Aby rozszerzyć członkostwo w roli, przejdź do widoku roli lub elementu członkowskiego zasobów w usłudze PIM. Znajdź element członkowski, który wymaga rozszerzenia. Następnie wybierz pozycję **Rozszerz** w kolumnie akcji.
+Aby zwiększyć członkostwo w roli, przejdź do widoku rola zasobu lub elementu członkowskiego w usłudze PIM. Znajdź element członkowski, który wymaga rozszerzenia. Następnie wybierz pozycję **Rozciągnij** w kolumnie Akcja.
 
-![Zasoby platformy Azure — elementy członkowskie stronie listy kwalifikujące się role wraz z łączami do rozszerzenia](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-extend.png)
+![Zasoby platformy Azure — Strona członków z listą uprawnionych ról z linkami do rozbudowania](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-extend.png)
 
-## <a name="renew-role-assignments"></a>Odnów przypisań ról
+## <a name="renew-role-assignments"></a>Odnów przypisania ról
 
-Gdy zachowuje się podobnie jak proces do żądania rozszerzenia, procesu odnowienia przypisania roli wygasłe różni się. Wykonując następujące kroki, członków i administratorów można odnowić dostęp do wygasłe role, gdy jest to konieczne.
+Chociaż koncepcyjnie przypomina proces żądania rozszerzenia, proces odnawiania wygasłego przypisania roli jest inny. Wykonując poniższe kroki, członkowie i Administratorzy mogą odnowić dostęp do wygasłych ról, jeśli jest to konieczne.
 
-### <a name="member-renew"></a>Element członkowski odnowienia
+### <a name="member-renew"></a>Odnawianie przypisania dla członka
 
-Członkowie, którzy nie mogą uzyskać dostępu do zasobów mogą uzyskiwać dostęp do 30 dni historii wygasłe przypisania. Aby to zrobić, przejdź do **Moje role** w okienku po lewej stronie, a następnie wybierz **wygasłe role** kartę w sekcji role zasobów platformy Azure.
+Członkowie, którzy nie mogą już uzyskiwać dostępu do zasobów, mogą uzyskać dostęp do 30-dniowej historii przydziału. W tym celu przejdź do **obszaru Moje role** w lewym okienku, a następnie wybierz kartę **wygasłe role** w sekcji role zasobów platformy Azure.
 
-![Strona Moje role — karta wygasłe role](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-from-myroles.png)
+![Strona Moje role — wygasłe karty ról](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-from-myroles.png)
 
-Na liście ról pokazano wartość domyślna to **kwalifikujące się role**. Użyj menu rozwijanego menu, aby przełączać się między kwalifikujących się i aktywnych przypisane role.
+Lista ról wyświetlana domyślnie jako **kwalifikujące się role**. Użyj menu rozwijanego, aby przełączać między uprawnionymi i aktywnymi rolami przypisanymi.
 
-Żądanie odnowienia dla każdego przypisania roli na liście, wybierz **Odnów** akcji. Podaj przyczynę żądania. Warto Podaj czas oprócz dodatkowy kontekst, ułatwiające administrator zasobów zdecydować zatwierdzić lub odrzucić.
+Aby zażądać odnowienia dla wszystkich przypisań ról na liście, wybierz akcję **Odnów** . Następnie podaj przyczynę żądania. Warto podać czas trwania oprócz dodatkowego kontekstu, który pomaga administratorowi zasobów zdecydować o zatwierdzeniu lub odrzuceniu.
 
-![Odnów wyświetlanie pola Przyczyna okienku przypisania roli](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-request-form.png)
+![Pole przyczyny odnowienia przypisania roli](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-request-form.png)
 
-Po przesłaniu żądania administratorom zasobów jest powiadamiany o oczekujące żądanie odnowienia przypisania roli.
+Po przesłaniu żądania Administratorzy zasobów są powiadamiani o oczekującym żądaniu odnowienia przypisania roli.
 
-### <a name="admin-approves"></a>Zatwierdza administratora
+### <a name="admin-approves"></a>Administrator zatwierdza
 
-Administratorom zasobów mogą uzyskiwać dostęp do żądania odnowienia z linku powiadomienia e-mail lub uzyskiwanie dostępu do usługi PIM w witrynie Azure portal i wybierając **zatwierdzanie żądań** z okienka po lewej stronie.
+Administratorzy zasobów mogą uzyskać dostęp do żądania odnowienia z linku w wiadomości e-mail lub przez uzyskanie dostępu do usługi PIM z Azure Portal i wybranie opcji **Zatwierdź żądania** w okienku po lewej stronie.
 
-![Zasoby platformy Azure — zatwierdzanie żądań stronie żądania listy i linki do Zatwierdź lub Odrzuć](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-grid.png)
+![Zasoby platformy Azure — zatwierdzanie żądań na żądanie i linki do zatwierdzenia lub odmowy](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-grid.png)
 
-Gdy administrator wybierze **Zatwierdź** lub **Odmów**, Szczegóły żądania są wyświetlane wraz z polem, aby podać uzasadnienie dla dzienników inspekcji.
+Gdy administrator wybierze pozycję **Zatwierdź** lub **Odmów**, szczegóły żądania są wyświetlane wraz z polem, aby podać uzasadnienie dzienników inspekcji.
 
-![Zatwierdź żądanie przypisania roli z powodu obiektu żądającego, typ przypisania, godzinę rozpoczęcia, czas zakończenia oraz przyczyny](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-blade.png)
+![Zatwierdź żądanie przypisania roli z przyczyną żądającą, typem przypisania, czasem rozpoczęcia, czasem zakończenia i przyczynie](media/pim-resource-roles-renew-extend/aadpim-rbac-extend-admin-approve-blade.png)
 
-Po zatwierdzeniu żądania odnowienia przypisania roli administratorom zasobów musisz wprowadzić nową datę rozpoczęcia, Data zakończenia i typ przypisania. 
+Podczas zatwierdzania żądania odnowienia przypisania roli Administratorzy zasobów muszą wprowadzić nową datę początkową, datę końcową i typ przypisania. 
 
 ### <a name="admin-renew"></a>Odnowienie administratora
 
-Administratorom zasobów można odnowić przypisań ról wygasłe z **członków** kartę w lewym menu nawigacji zasobu. Przypisania ról wygasłe z poziomu ich odnowić także **wygasłe** kartę role roli zasobu.
+Administratorzy zasobów mogą odnowić wygasłe przypisania ról z karty **Członkowie** w menu nawigacji po lewej stronie zasobu. Mogą również odnowić wygasłe przypisania ról z poziomu karty **wygasłe** role w roli zasobu.
 
-Aby wyświetlić listę wszystkich wygasła przypisań ról **członków** ekranu, wybierz opcję **wygasłe role**.
+Aby wyświetlić listę wszystkich wygasłych przypisań ról, na ekranie **Członkowie** wybierz pozycję **wygasłe role**.
 
-![Zasoby platformy Azure — strona elementów członkowskich wygasłe role wraz z łączami do odnowienia](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-from-member-blade.png)
+![Zasoby platformy Azure — Strona członków lista wygasłych ról z linkami do odnowienia](media/pim-resource-roles-renew-extend/aadpim-rbac-renew-from-member-blade.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Zatwierdź lub Odrzuć żądania dla ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-approval-workflow.md)
+- [Zatwierdzanie lub odrzucanie żądań dotyczących ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-approval-workflow.md)
 - [Konfigurowanie ustawień roli zasobów platformy Azure w usłudze PIM](pim-resource-roles-configure-role-settings.md)

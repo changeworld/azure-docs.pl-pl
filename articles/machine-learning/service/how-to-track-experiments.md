@@ -12,21 +12,21 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b14ed2c18c1106477e21062afaa4cc8f672c203
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 0630ca28652b48b3632dbae94c5e16d6adb462c4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946385"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812288"
 ---
-# <a name="log-metrics-during-training-runs"></a>Metryki dzienników podczas przebiegów szkoleniowych
+# <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>Śledzenie metryk szkolenia uczenia maszynowego za pomocą Azure Machine Learning
 
-Usprawnij proces tworzenia modelu, śledząc eksperymenty i metryki monitorowania. W tym artykule dowiesz się, jak dodać rejestrowanie do skryptu szkoleniowego, przesłać przebieg eksperymentu, monitorować przebieg i przeglądać wyniki przebiegu Azure Machine Learning usługi.
+Usprawnij proces tworzenia modelu, śledząc eksperymenty i metryki monitorowania. W tym artykule dowiesz się, jak dodać kod rejestrowania do skryptu szkoleniowego, przesłać przebieg eksperymentu, monitorować ten przebieg i sprawdzić wyniki w usłudze Azure Machine Learning.
 
 > [!NOTE]
-> Usługa Azure Machine Learning może również rejestrować informacje z innych źródeł podczas szkolenia, takie jak AutoML lub kontener Docker, który uruchamia zadanie szkoleniowe. Te dzienniki nie są udokumentowane. Jeśli wystąpią problemy i skontaktuje się z działem pomocy technicznej firmy Microsoft, mogą oni korzystać z tych dzienników podczas rozwiązywania problemów.
+> Usługa Azure Machine Learning może również rejestrować informacje z innych źródeł podczas szkoleń, takich jak automatyczne uruchomienia uczenia maszynowego lub kontener platformy Docker, który uruchamia zadanie szkoleniowe. Te dzienniki nie są udokumentowane. Jeśli wystąpią problemy i skontaktuje się z działem pomocy technicznej firmy Microsoft, mogą oni korzystać z tych dzienników podczas rozwiązywania problemów.
 
-## <a name="list-of-training-metrics"></a>Listy metryk szkolenia 
+## <a name="available-metrics-to-track"></a>Dostępne metryki do śledzenia
 
 Następujące metryki można dodać do uruchomienia podczas szkolenia eksperymentu. Aby wyświetlić bardziej szczegółowe listy mogą być śledzone przy uruchomieniu, zobacz [Uruchom dokumentację referencyjną klasę](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py).
 
@@ -43,7 +43,7 @@ Następujące metryki można dodać do uruchomienia podczas szkolenia eksperymen
 > [!NOTE]
 > Metryki dla wartości skalarnych, wierszy i listy tabel może mieć typ: float, liczba całkowita lub ciąg.
 
-## <a name="start-logging-metrics"></a>Rozpocznij rejestrowanie metryki
+## <a name="choose-a-logging-option"></a>Wybierz opcję rejestrowania
 
 Jeśli chcesz śledzić lub monitorowania eksperymentu, należy dodać kod, aby rozpocząć rejestrowanie, gdy prześlesz przebiegu. Poniżej przedstawiono sposoby przesyłania wykonywania wyzwalacza:
 * __Run.start_logging__ — Dodawanie funkcji rejestrowania skrypt szkolenia i uruchomić sesję logowania interakcyjnego w określonym eksperymentu. **start_logging** tworzy interakcyjnego wykonywania do użytku w scenariuszach takich jak notesy. Wszystkie metryki, które są rejestrowane w trakcie sesji są dodawane do rekordu uruchomienia w eksperymencie.

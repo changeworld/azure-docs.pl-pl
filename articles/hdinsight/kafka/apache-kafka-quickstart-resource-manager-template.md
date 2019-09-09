@@ -1,18 +1,18 @@
 ---
 title: Konfigurowanie Apache Kafka w usłudze HDInsight przy użyciu Azure Resource Manager — Szybki Start
-description: W tym przewodniku Szybki start dowiesz się, jak utworzyć klaster platformy Apache Kafka w usłudze Azure HDInsight przy użyciu witryny Azure Portal. Zdobędziesz także informacje o tematach, subskrybentach i odbiorcach platformy Kafka.
+description: W tym przewodniku szybki start dowiesz się, jak utworzyć klaster Apache Kafka w usłudze Azure HDInsight przy użyciu szablonu Azure Resource Manager. Zdobędziesz także informacje o tematach, subskrybentach i odbiorcach platformy Kafka.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 75b774a59d3a2a94f1f1132a79c26dcca7b4b6f7
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 399d1146dc71f4670ee0c9bfa497f34911ade638
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780780"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811452"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-resource-manager-template"></a>Szybki start: Tworzenie klastra Apache Kafka w usłudze Azure HDInsight przy użyciu szablonu Menedżer zasobów
 

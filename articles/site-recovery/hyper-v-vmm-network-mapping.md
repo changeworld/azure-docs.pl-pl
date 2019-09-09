@@ -1,85 +1,84 @@
 ---
-title: Temat mapowania sieci na potrzeby odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V, (z programem VMM) do platformy Azure z usługą Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania mapowania sieci na potrzeby odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V (zarządzane w chmurach programu VMM) na platformie Azure przy użyciu usługi Azure Site Recovery.
-services: site-recovery
+title: Informacje o mapowaniu sieci dla maszyny wirtualnej funkcji Hyper-V (z programem VMM) na platformie Azure przy użyciu Site Recovery
+description: Opisuje sposób konfigurowania mapowania sieci na potrzeby odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V (zarządzanych w chmurach programu VMM) na platformie Azure przy użyciu Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 05/30/2019
+ms.topic: conceptual
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: d2f7f83654f397cc6b93adbbebc25193155bcedb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 637f327b40341ac04f37baf9e43f136a0315b17f
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399373"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813674"
 ---
-# <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Przygotowywanie mapowania sieci na potrzeby odzyskiwania po awarii maszyn wirtualnych funkcji Hyper-V na platformie Azure
+# <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Przygotowanie mapowania sieci na potrzeby odzyskiwania po awarii maszyny wirtualnej funkcji Hyper-V na platformie Azure
 
 
-Ten artykuł ułatwia zrozumienie i przygotowanie do mapowania sieci podczas replikowania maszyn wirtualnych z funkcją Hyper-V w chmurach programu System Center Virtual Machine Manager (VMM) do platformy Azure lub lokacji dodatkowej przy użyciu [usługi Azure Site Recovery](site-recovery-overview.md) usługi.
+Ten artykuł ułatwia zrozumienie i przygotowanie mapowania sieci w przypadku replikacji maszyn wirtualnych funkcji Hyper-V w chmurach System Center Virtual Machine Manager (VMM) do platformy Azure lub lokacji dodatkowej przy użyciu usługi [Azure Site Recovery](site-recovery-overview.md) .
 
 
-## <a name="prepare-network-mapping-for-replication-to-azure"></a>Przygotowywanie mapowania sieci na potrzeby replikacji do platformy Azure
+## <a name="prepare-network-mapping-for-replication-to-azure"></a>Przygotowanie mapowania sieci na potrzeby replikacji na platformę Azure
 
-W przypadku replikowania do platformy Azure, mapowanie sieci działa między sieciami maszyny Wirtualnej na źródłowym serwerze programu VMM i docelowych, sieciami wirtualnymi platformy Azure. Mapowanie wykonuje następujące czynności:
--  **Połączenia sieciowego**— gwarantuje, czy replikowane maszyny wirtualne platformy Azure są podłączone do mapowanej sieci. Wszystkie maszyny, które w trybie Failover w tej samej sieci można połączyć ze sobą, nawet wtedy, gdy ich przełączone w tryb failover w planach odzyskiwania inny.
-- **Brama sieci**— Jeśli brama sieci została skonfigurowana w docelowej sieci platformy Azure, maszyny wirtualne można połączyć się maszynami wirtualnymi w środowisku lokalnym.
+W przypadku replikacji na platformę Azure mapowanie sieci jest mapowane między sieciami maszyn wirtualnych na źródłowym serwerze programu VMM i docelowymi sieciami wirtualnymi platformy Azure. Mapowanie wykonuje następujące czynności:
+-  **Połączenie sieciowe**— zapewnia, że zreplikowane maszyny wirtualne platformy Azure są połączone z zamapowanej sieci. Wszystkie maszyny, które przechodzą w tryb failover w tej samej sieci, mogą łączyć się ze sobą, nawet jeśli przechodzą w tryb failover w różnych planach odzyskiwania.
+- **Brama sieci**— Jeśli Brama sieci została skonfigurowana w docelowej sieci platformy Azure, maszyny wirtualne mogą łączyć się z innymi lokalnymi maszynami wirtualnymi.
 
 Mapowanie sieci działa w następujący sposób:
 
-- Źródłowej sieci maszyny Wirtualnej VMM są mapowane na sieć wirtualną platformy Azure.
-- Po przełączeniu w tryb failover maszyn wirtualnych platformy Azure w źródłowej sieci będzie połączony z zamapowanego docelowa sieć wirtualna.
-- Nowe maszyny wirtualne dodane do źródłowej sieci maszyny Wirtualnej są podłączone do mapowanej sieci platformy Azure, podczas replikacji.
+- Źródłową sieć VMNETWORK programu VMM można mapować do sieci wirtualnej platformy Azure.
+- Po przejściu do trybu failover maszyny wirtualne platformy Azure w sieci źródłowej zostaną połączone z zamapowanej docelowej sieci wirtualnej.
+- Nowe maszyny wirtualne dodane do źródłowej sieci maszyn wirtualnych są połączone z zamapowanej sieci platformy Azure w przypadku wystąpienia replikacji.
 - Jeśli sieć docelowa ma wiele podsieci i jedna z tych podsieci ma taką samą nazwę, jak podsieć, w której znajduje się źródłowa maszyna wirtualna, replika maszyny wirtualnej jest łączona z tą docelową podsiecią po przejściu do trybu failover.
 - Jeśli nie istnieje docelowa podsieć o takiej samej nazwie, maszyna wirtualna jest łączona z pierwszą podsiecią w sieci.
 
-## <a name="prepare-network-mapping-for-replication-to-a-secondary-site"></a>Przygotowywanie mapowania sieci na potrzeby replikacji do lokacji dodatkowej
+## <a name="prepare-network-mapping-for-replication-to-a-secondary-site"></a>Przygotowanie mapowania sieci na potrzeby replikacji do lokacji dodatkowej
 
-Jeśli przeprowadzasz replikację do lokacji dodatkowej, mapowanie sieci działa między sieciami maszyny Wirtualnej na źródłowym serwerze programu VMM i sieci maszyn wirtualnych na docelowym serwerze VMM. Mapowanie wykonuje następujące czynności:
+W przypadku replikowania do lokacji dodatkowej mapowanie sieci jest mapowane między sieciami maszyn wirtualnych na źródłowym serwerze programu VMM i sieciami maszyn wirtualnych na docelowym serwerze programu VMM. Mapowanie wykonuje następujące czynności:
 
-- **Połączenia sieciowego**— nawiązuje połączenie z maszynami wirtualnymi z odpowiednimi sieciami po włączeniu trybu failover. Maszyna wirtualna repliki zostaną podłączone do sieci docelowej, która jest mapowana na Sieć źródłowa.
-- **Optymalne umieszczanie maszyny Wirtualnej**— optymalnie umieszcza replik maszyn wirtualnych na serwerach hostów funkcji Hyper-V. Maszyny wirtualne repliki są umieszczane na hostach, które mogą uzyskiwać dostęp do zamapowaną sieć maszyny Wirtualnej.
-- **Nie mapowania sieci**— Jeśli nie skonfigurujesz mapowania sieci, maszyn wirtualnych repliki nie zostanie połączona z żadną siecią maszyny Wirtualnej po włączeniu trybu failover.
+- **Połączenie sieciowe**— nawiązuje połączenie maszyn wirtualnych z odpowiednimi sieciami po przejściu do trybu failover. Replika maszyny wirtualnej zostanie podłączona do sieci docelowej zamapowanej do sieci źródłowej.
+- **Optymalne umieszczanie maszyn wirtualnych**— najlepiej umieszcza maszyny wirtualne repliki na serwerach hostów funkcji Hyper-V. Maszyny wirtualne repliki są umieszczane na hostach, które mogą uzyskać dostęp do mapowanych sieci maszyn wirtualnych.
+- **Brak mapowania sieci**— Jeśli mapowanie sieci nie zostanie skonfigurowane, maszyny wirtualne repliki nie będą połączone z żadną siecią maszyny wirtualnej po przejściu w tryb failover.
 
 Mapowanie sieci działa w następujący sposób:
 
-- Można skonfigurować mapowanie sieci między sieciami maszyny Wirtualnej na dwóch serwerach programu VMM lub na jednym serwerze programu VMM, jeśli dwie lokacje są zarządzane przez ten sam serwer.
-- Podczas mapowania jest poprawnie skonfigurowana replikacja jest włączona, w lokalizacji podstawowej maszyny Wirtualnej zostaną podłączone do sieci i jego repliką w lokalizacji docelowej będą podłączone do jego mapowanej sieci.
-- Po wybraniu opcji sieć maszyny Wirtualnej docelową podczas mapowania sieci w usłudze Site Recovery źródła chmurach programu VMM, które używają źródłowej sieci maszyny Wirtualnej zostanie wyświetlony, wraz z dostępnych sieci maszyn wirtualnych w chmurach docelowych, które są używane do ochrony.
-- Jeśli sieć docelowa ma wiele podsieci i jedna z tych podsieci ma taką samą nazwę jak podsieć, na którym znajduje się źródłowa maszyna wirtualna, następnie repliki maszyny Wirtualnej zostanie podłączona do tej docelowej podsieci po pracy awaryjnej. Jeśli nie ma żadnych docelowa podsieć o takiej samej nazwie, maszyna wirtualna będzie połączony z pierwszej podsieci w sieci.
+- Mapowanie sieci można skonfigurować między sieciami maszyn wirtualnych na dwóch serwerach programu VMM lub na pojedynczym serwerze programu VMM, jeśli dwie lokacje są zarządzane przez ten sam serwer.
+- Gdy mapowanie jest prawidłowo skonfigurowane i replikacja jest włączona, maszyna wirtualna w lokalizacji podstawowej zostanie podłączona do sieci, a jej replika w lokalizacji docelowej zostanie połączona z zamapowanej sieci.
+- Po wybraniu docelowej sieci maszyn wirtualnych podczas mapowania sieci w Site Recovery, zostaną wyświetlone chmury źródłowe programu VMM używające źródłowej sieci maszyn wirtualnych wraz z dostępnymi docelowymi sieciami maszyn wirtualnych w chmurach docelowych, które są używane do ochrony.
+- Jeśli Sieć docelowa ma wiele podsieci i jedna z tych podsieci ma taką samą nazwę jak podsieć, w której znajduje się źródłowa maszyna wirtualna, replika maszyny wirtualnej zostanie podłączona do tej podsieci docelowej po przejściu do trybu failover. Jeśli nie istnieje docelowa podsieć o pasującej nazwie, maszyna wirtualna zostanie połączona z pierwszą podsiecią w sieci.
 
 ## <a name="example"></a>Przykład
 
-Oto przykład, aby zilustrować ten mechanizm. Weźmy organizacji z dwóch lokalizacjach w Nowym Jorku i Chicago.
+Oto przykład ilustrujący ten mechanizm. Przyjrzyjmy się organizacji z dwiema lokalizacjami w Nowym Jorku i Chicago.
 
-**Lokalizacja** | **Serwer VMM** | **Sieci maszyn wirtualnych** | **Mapowany do**
+**Location** | **Serwer VMM** | **Sieci VMNETWORK** | **Zamapowane na**
 ---|---|---|---
-Nowy Jork | VMM-NewYork| VMNetwork1-NewYork | Mapowany do VMNetwork1 Chicago
+Nowy Jork | VMM-NewYork| VMNetwork1-NewYork | Zamapowana na VMNetwork1-Chicago
  |  | VMNetwork2-NewYork | Niezamapowane
-Chicago | VMM-Chicago| VMNetwork1-Chicago | Mapowany do VMNetwork1 NewYork
+Chicago | VMM-Chicago| VMNetwork1-Chicago | Zamapowana do VMNetwork1-NewYork
  | | VMNetwork2-Chicago | Niezamapowane
 
 W tym przykładzie:
 
-- Gdy replika maszyny Wirtualnej jest tworzona dla każdej maszyny Wirtualnej, która jest połączona VMNetwork1 NewYork, zostaną podłączone do VMNetwork1 Chicago.
-- Gdy replika maszyny Wirtualnej jest tworzona dla VMNetwork2 NewYork lub VMNetwork2 Chicago, nie jest połączona z żadną siecią.
+- Po utworzeniu maszyny wirtualnej repliki dla dowolnej maszyny wirtualnej, która jest połączona z usługą VMNetwork1-NewYork, zostanie ona połączona z VMNetwork1-Chicago.
+- Po utworzeniu maszyny wirtualnej repliki dla VMNetwork2-NewYork lub VMNetwork2-Chicago nie będzie ona połączona z żadną siecią.
 
-Oto, jak chmur programu VMM są zainstalowane w naszej przykładowej organizacji oraz sieci logicznych skojarzonych z chmurami.
+Poniżej przedstawiono sposób konfigurowania chmur programu VMM w naszej przykładowej organizacji oraz w sieciach logicznych skojarzonych z chmurami.
 
 ### <a name="cloud-protection-settings"></a>Ustawienia ochrony chmury
 
-**Chronioną chmurą** | **Ochrona chmury** | **Sieć logiczna (Nowy Jork)**  
+**Chroniona chmura** | **Ochrona chmury** | **Sieć logiczna (Nowy Jork)**  
 ---|---|---
 GoldCloud1 | GoldCloud2 |
 SilverCloud1| SilverCloud2 |
 GoldCloud2 | <p>Nie dotyczy</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
 SilverCloud2 | <p>Nie dotyczy</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
 
-### <a name="logical-and-vm-network-settings"></a>Ustawienia sieci logiczne i maszyn wirtualnych
+### <a name="logical-and-vm-network-settings"></a>Ustawienia sieci logicznej i maszyny wirtualnej
 
-**Lokalizacja** | **Sieć logiczna** | **Skojarzona żadna sieć maszyny Wirtualnej**
+**Location** | **Sieć logiczna** | **Skojarzona sieć maszyny wirtualnej**
 ---|---|---
 Nowy Jork | LogicalNetwork1-NewYork | VMNetwork1-NewYork
 Chicago | LogicalNetwork1-Chicago | VMNetwork1-Chicago
@@ -87,41 +86,41 @@ Chicago | LogicalNetwork1-Chicago | VMNetwork1-Chicago
 
 ### <a name="target-network-settings"></a>Ustawienia sieci docelowej
 
-Na podstawie tych ustawień, po wybraniu sieci docelowej maszyny Wirtualnej, w poniższej tabeli przedstawiono opcje, które będą dostępne.
+W oparciu o te ustawienia, po wybraniu docelowej sieci maszyn wirtualnych w poniższej tabeli przedstawiono dostępne opcje.
 
-**Select** | **Chronioną chmurą** | **Ochrona chmury** | **Dostępne sieci docelowej**
+**Select** | **Chroniona chmura** | **Ochrona chmury** | **Dostępna sieć docelowa**
 ---|---|---|---
 VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | Dostępne
  | GoldCloud1 | GoldCloud2 | Dostępne
-VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | Niedostępne
+VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | Niedostępny
  | GoldCloud1 | GoldCloud2 | Dostępne
 
 
-Jeśli sieć docelowa ma wiele podsieci i jedna z tych podsieci ma taką samą nazwę jak podsieć, na którym znajduje się źródłowa maszyna wirtualna, replika maszyny wirtualnej będzie można dołączenie do tej docelowej podsieci po włączeniu trybu failover. Jeśli nie istnieje docelowa podsieć o takiej samej nazwie, maszyna wirtualna zostanie podłączona do pierwszej podsieci w sieci.
+Jeśli Sieć docelowa ma wiele podsieci i jedna z tych podsieci ma taką samą nazwę jak podsieć, w której znajduje się źródłowa maszyna wirtualna, po przejściu w tryb failover maszyna wirtualna repliki zostanie podłączona do tej podsieci docelowej. Jeśli nie istnieje docelowa podsieć o takiej samej nazwie, maszyna wirtualna zostanie podłączona do pierwszej podsieci w sieci.
 
 
-### <a name="failback-behavior"></a>Zachowanie podczas powrotu po awarii
+### <a name="failback-behavior"></a>Zachowanie powrotu po awarii
 
-Aby zobaczyć, co się dzieje w przypadku powrotu po awarii (replikacja odwrotna), załóżmy, że VMNetwork1 NewYork jest mapowany do VMNetwork1 Chicago, z następującymi ustawieniami.
+Aby zobaczyć, co się dzieje w przypadku powrotu po awarii (replikacja odwrotna), Załóżmy, że VMNetwork1-NewYork jest zamapowana na VMNetwork1-Chicago przy użyciu następujących ustawień.
 
 
-**VM** | **Połączone z siecią maszyny Wirtualnej**
+**VM** | **Połączono z siecią maszyny wirtualnej**
 ---|---
-Maszyna wirtualna 1 | VMNetwork1-Network
-VM2 (repliki maszyny VM1) | VMNetwork1-Chicago
+VM1 | VMNetwork1-Network
+VM2 (replika VM1) | VMNetwork1-Chicago
 
-Przy użyciu tych ustawień Omówmy się, co się dzieje w kilka możliwych scenariuszy.
+Korzystając z tych ustawień, zobaczmy, co się dzieje w kilku możliwych scenariuszach.
 
 **Scenariusz** | **Wynik**
 ---|---
-Brak zmian właściwości sieci maszyny Wirtualnej 2 po włączeniu trybu failover. | 1 maszyna wirtualna pozostaje połączone ze źródłową siecią.
-Właściwości sieci maszyny Wirtualnej 2 zostaną zmienione po włączeniu trybu failover i jest odłączony. | 1 maszyna wirtualna jest odłączony.
-Właściwości sieci maszyny Wirtualnej 2 zostały zmienione po włączeniu trybu failover, a jest połączona z VMNetwork2 Chicago. | Jeśli nie jest zamapowany VMNetwork2 Chicago, 1 maszyna wirtualna zostanie odłączony.
-Mapowanie sieci VMNetwork1 Chicago zostanie zmieniony. | 1 maszyny Wirtualnej zostaną podłączone do sieci, teraz są mapowane do VMNetwork1 Chicago.
+Nie zmieniono właściwości sieci maszyny wirtualnej-2 po przejściu w tryb failover. | Maszyna wirtualna — 1 jest połączona z siecią źródłową.
+Właściwości sieci maszyny wirtualnej-2 są zmieniane po przejściu w tryb failover i są odłączone. | Maszyna wirtualna — 1 została odłączona.
+Właściwości sieci maszyny wirtualnej — 2 są zmieniane po przejściu w tryb failover i są połączone z VMNetwork2-Chicago. | Jeśli VMNetwork2-Chicago nie jest zamapowana, maszyna wirtualna-1 zostanie odłączona.
+Mapowanie sieci VMNetwork1-Chicago zostało zmienione. | Maszyna wirtualna-1 zostanie połączona z siecią zamapowana do VMNetwork1-Chicago.
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Dowiedz się więcej o](hyper-v-vmm-networking.md) adresów IP po włączeniu trybu failover do lokacji dodatkowej programu VMM.
-- [Dowiedz się więcej o](concepts-on-premises-to-azure-networking.md) adresów IP po włączeniu trybu failover na platformie Azure.
+- [Dowiedz się więcej o](hyper-v-vmm-networking.md) Adresowanie IP po przełączeniu w tryb failover do pomocniczej lokacji programu VMM.
+- [Dowiedz się więcej o](concepts-on-premises-to-azure-networking.md) Adresowanie IP po przejściu do trybu failover na platformie Azure.

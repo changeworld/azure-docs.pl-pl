@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be7801515355452306cd5e7afa709a0681c7c314
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9766b530b4d795d0f35f097de20155cdd17687ca
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562200"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812393"
 ---
 # <a name="web-app-that-signs-in-users---sign-in"></a>Aplikacja sieci Web, która loguje się do użytkowników
 
@@ -28,7 +28,8 @@ Dowiedz się, jak dodać logowanie do kodu aplikacji sieci Web, które logują s
 
 ## <a name="sign-in"></a>Logowanie
 
-Kod, który mamy w poprzedniej [konfiguracji kodu aplikacji](scenario-web-app-sign-user-app-configuration.md) , to wszystko, co jest potrzebne do zaimplementowania wylogowywania. Gdy użytkownik zaloguje się do aplikacji, prawdopodobnie trzeba będzie ją wylogować. ASP.NET podstawowe uchwyty do wylogowania.
+Kod, który został sprawdzony w [konfiguracji kodu aplikacji](scenario-web-app-sign-user-app-configuration.md) w poprzedniej artykule, jest wymagany do zaimplementowania logowania.
+Gdy użytkownik zaloguje się do aplikacji, prawdopodobnie trzeba będzie ją wylogować. ASP.NET podstawowe uchwyty do wylogowania.
 
 ## <a name="what-sign-out-involves"></a>Co obejmuje wylogowanie
 
@@ -128,7 +129,7 @@ public void SignOut()
 
 Jeśli nie chcesz używać ASP.NET Core lub ASP.NET, możesz zapoznać się z dokumentacją protokołu, która jest dostępna w ramach programu [Open ID Connect](./v2-protocols-oidc.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
 > [Przenieś do środowiska produkcyjnego](scenario-web-app-sign-user-production.md)

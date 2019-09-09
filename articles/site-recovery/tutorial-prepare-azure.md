@@ -1,19 +1,19 @@
 ---
-title: Przygotowywanie platformy Azure do odzyskiwania po awarii maszyn lokalnych przy użyciu usługi Azure Site Recovery | Microsoft Docs
+title: Przygotuj platformę Azure do odzyskiwania po awarii maszyn lokalnych za pomocą Azure Site Recovery
 description: Dowiedz się, jak przygotować platformę Azure do odzyskiwania po awarii maszyn lokalnych przy użyciu usługi Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 87216317a965e85d83aede468163f43b1716c45a
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 1b8bdde64ee003d93ad15df8f1d4d8b1e3a2b5f9
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827238"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814346"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Przygotowywanie zasobów platformy Azure na potrzeby odzyskiwania po awarii maszyn lokalnych
 
@@ -86,7 +86,7 @@ Utworzenie sieci wirtualnej zajmuje kilka sekund. Po utworzeniu sieć jest wyśw
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 - W przypadku odzyskiwania po awarii programu VMware [Przygotuj lokalną infrastrukturę VMware](tutorial-prepare-on-premises-vmware.md).
 - W przypadku odzyskiwania po awarii funkcji Hyper-V [Przygotuj lokalne serwery funkcji Hyper-v](hyper-v-prepare-on-premises-tutorial.md).

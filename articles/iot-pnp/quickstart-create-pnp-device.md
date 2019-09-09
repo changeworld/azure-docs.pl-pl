@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 386c2fa23e8d01f696ef3cf6078bac5fcec58f05
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 4e13e6f86e9ddc494378e35f85962658d3fe5b25
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050139"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806500"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>Szybki start: Tworzenie urządzenia Plug and Play IoT przy użyciu modelu możliwości urządzenia
 
@@ -49,6 +49,9 @@ _Parametry połączenia repozytorium modelu firmy_ można znaleźć w portalu [A
 ## <a name="prepare-an-iot-hub"></a>Przygotowywanie Centrum IoT Hub
 
 Aby ukończyć ten przewodnik Szybki Start, potrzebujesz również usługi Azure IoT Hub w ramach subskrypcji platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+> [!NOTE]
+> W publicznej wersji zapoznawczej funkcje Plug and Play IoT są dostępne tylko w centrach IoT, które zostały utworzone w regionach **środkowe stany USA**, **Europa Północna**i **Japonia Wschodnia** .
 
 Dodaj Microsoft Azure rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure:
 
@@ -208,7 +211,7 @@ Aby sprawdzić poprawność kodu urządzenia za pomocą programu **Azure IoT Exp
 
 1. Rozwiń interfejs o IDENTYFIKATORze **urn: azureiot: EnvironmentalSensor: 1** , aby wyświetlić elementy podstawowe Plug and Play IoT — właściwości, polecenia i dane telemetryczne.
 
-1. Wybierz stronę telemetrii, aby wyświetlić dane telemetryczne wysyłane przez urządzenie.
+1. Wybierz stronę **telemetrii** , aby wyświetlić dane telemetryczne wysyłane przez urządzenie.
 
 1. Wybierz stronę **właściwości (bez możliwości zapisu)** , aby wyświetlić właściwości, które nie zostały zapisywalne zgłoszone przez urządzenie.
 

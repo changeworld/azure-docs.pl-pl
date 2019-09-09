@@ -1,9 +1,9 @@
 ---
-title: Role nie może zarządzać w usłudze PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: W tym artykule opisano role, których nie można zarządzać w usłudze Azure AD Privileged Identity Management (PIM).
+title: Role, którymi nie można zarządzać w programie PIM-Azure Active Directory | Microsoft Docs
+description: Opisuje role, którymi nie można zarządzać w programie Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,38 +11,38 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 01/18/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa5fb632ee5fd9c18bde7443e81fe2ef6e5335e4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d66d433d9de537358777e54e3c7d5489c25c849b
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60437277"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804086"
 ---
-# <a name="roles-you-cannot-manage-in-pim"></a>Role nie można zarządzać w usłudze PIM
+# <a name="roles-you-cannot-manage-in-pim"></a>Role, którymi nie można zarządzać w usłudze PIM
 
-Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) umożliwia zarządzanie wszystkimi [ról usługi Azure AD](../users-groups-roles/directory-assign-admin-roles.md) i wszystkie [role zasobów platformy Azure](../../role-based-access-control/built-in-roles.md). Te role są także niestandardowe role dołączone do grupy zarządzania, subskrypcji, grupy zasobów i zasobów. Istnieje jednak kilka ról, które nie może zarządzać. W tym artykule opisano role, których nie można zarządzać w usłudze PIM.
+Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) umożliwia zarządzanie wszystkimi [rolami usługi Azure AD](../users-groups-roles/directory-assign-admin-roles.md) i wszystkimi [rolami zasobów platformy Azure](../../role-based-access-control/built-in-roles.md). Role te obejmują również niestandardowe role dołączone do grup zarządzania, subskrypcji, grup zasobów i zasobów. Istnieje jednak kilka ról, których nie można zarządzać. W tym artykule opisano role, którymi nie można zarządzać w programie PIM.
 
-## <a name="classic-subscription-administrator-roles"></a>Role klasycznego administratora subskrypcji
+## <a name="classic-subscription-administrator-roles"></a>Role klasycznych administratorów subskrypcji
 
-Następujące role administratora klasyczni w usłudze PIM nie da się zarządzać:
+W programie PIM nie można zarządzać następującymi rolami klasycznych administratorów subskrypcji:
 
 - Administrator konta
 - Administrator usługi
 - Współadministrator
 
-Aby uzyskać więcej informacji o rolach administratora klasyczni zobacz [ról administratora subskrypcji klasyczne, ról RBAC platformy Azure i role administratora usługi Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).
+Aby uzyskać więcej informacji na temat ról administratora klasycznej subskrypcji, zobacz Role [administratora subskrypcji klasycznej, role RBAC platformy Azure i role administratorów usługi Azure AD](../../role-based-access-control/rbac-and-directory-admin-roles.md).
 
-## <a name="what-about-office-365-admin-roles"></a>Jak wygląda role administratora usługi Office 365?
+## <a name="what-about-office-365-admin-roles"></a>Jakie są role administratorów pakietu Office 365?
 
-Role w usłudze Exchange Online lub SharePoint Online, z wyjątkiem administratora programu Exchange i SharePoint administratora, nie są reprezentowane w usłudze Azure AD i dlatego nie mogą być zarządzane w usłudze PIM. Aby uzyskać więcej informacji na temat tych usług Office 365, zobacz [role administratora usługi Office 365](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles).
+Role w usłudze Exchange Online lub SharePoint Online, z wyjątkiem administratorów programu Exchange i administratora programu SharePoint, nie są reprezentowane w usłudze Azure AD i dlatego nie mogą być zarządzane w usłudze PIM. Aby uzyskać więcej informacji na temat tych usług Office 365, zobacz [role administratora pakietu office 365](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles).
 
 > [!NOTE]
-> Administrator programu SharePoint ma dostęp administracyjny do usługi SharePoint Online za pośrednictwem Centrum administracyjnego programu SharePoint Online i mogą wykonywać niemal wszystkich zadań w usłudze SharePoint Online. Uprawnieni użytkownicy mogą wystąpić opóźnienia, po aktywowaniu w usłudze PIM przy użyciu tej roli w programie SharePoint.
+> Administrator programu SharePoint ma dostęp administracyjny do usługi SharePoint Online za pomocą Centrum administracyjnego usługi SharePoint Online i może wykonywać niemal każde zadanie w usłudze SharePoint Online. Uprawnieni użytkownicy mogą napotkać opóźnienia przy użyciu tej roli w programie SharePoint po aktywowaniu w programie PIM.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Przypisz role usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)
-- [Przypisz role zasobów platformy Azure w usłudze PIM](pim-resource-roles-assign-roles.md)
+- [Przypisywanie ról usługi Azure AD w usłudze PIM](pim-how-to-add-role-to-user.md)
+- [Przypisywanie ról zasobów platformy Azure w usłudze PIM](pim-resource-roles-assign-roles.md)

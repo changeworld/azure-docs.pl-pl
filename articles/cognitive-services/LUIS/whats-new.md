@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 09/09/2019
 ms.author: diberry
-ms.openlocfilehash: b29fdf4e5b3f2719865820695f659df7e75e19b5
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 3a32499a85b1cd782c808166c516be7ad9c78913
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256427"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813280"
 ---
 # <a name="whats-new-in-language-understanding"></a>Co nowego w Language Understanding
 
@@ -27,6 +27,8 @@ Dowiedz się, co nowego w usłudze. Te elementy mogą wydawania informacji, wide
 ### <a name="september-3-2019"></a>3 września, 2019
 
 * Tworzenie zasobu platformy Azure — [Migrowanie teraz](luis-migration-authoring.md).
+    * 500 aplikacji na zasób platformy Azure
+    * 100 wersji na aplikację
 * Wsparcie tureckie dla wstępnie utworzonych jednostek
 * Obsługa języka włoskiego dla datetimeV2
 

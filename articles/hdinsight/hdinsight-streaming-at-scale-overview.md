@@ -1,70 +1,70 @@
 ---
 title: Przesyłanie strumieniowe na dużą skalę w usłudze Azure HDInsight
-description: Jak korzystać z klastrami HDInsight, skalowalna do strumieniowego przesyłania danych.
+description: Jak używać przesyłania strumieniowego danych przy użyciu skalowalnych klastrów Apache w usłudze Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 97bc2e585ccce250dd83dc855c3eda5f958186a7
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 18f1c15f12295228dab971f2abfa612d2061ab5d
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484057"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811911"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Przesyłanie strumieniowe na dużą skalę w usłudze HDInsight
 
-W czasie rzeczywistym danych big Data działają na danych w ruchu. Zazwyczaj te dane są najbardziej przydatne w momencie jego nadejścia. Przychodzący strumień danych staje się większą niż mogą być obsługiwane w tej chwili, może być konieczne ograniczanie zasobów w dół. Alternatywnie klaster usługi HDInsight skalować w górę do spełnienia rozwiązania do przesyłania strumieniowego poprzez dodawanie węzłów na żądanie.
+Rozwiązania do obsługi dużych ilości danych w czasie rzeczywistym działają na danych, które są w ruchu. Zazwyczaj te dane są najbardziej cenne w momencie przybycia. Jeśli strumień danych przychodzących stanie się większy niż może być obsługiwany w tym momencie, może być konieczne ograniczenie zasobów. Alternatywnie klaster usługi HDInsight można skalować w górę, aby spełniał Twoje rozwiązanie przesyłania strumieniowego, dodając węzły na żądanie.
 
 
-W przypadku przesyłania strumieniowego aplikacji co najmniej jedno źródło danych jest generowany zdarzeń (czasem w milionach na sekundę), które muszą być pozyskiwane szybko bez usuwania żadnych użytecznych informacji. Zdarzenia przychodzące są obsługiwane za pomocą *buforowanie strumienia*, nazywane również *Kolejkowanie zdarzeń*, przez usługę, takich jak [platformy Apache Kafka](kafka/apache-kafka-introduction.md) lub [usługi Event Hubs](https://azure.microsoft.com/services/event-hubs/). Po zebraniu zdarzenia można następnie analizować dane przy użyciu systemu analizy w czasie rzeczywistym w ramach *przetwarzanie strumienia* warstwy, takich jak [Apache Storm](storm/apache-storm-overview.md) lub [Apache Spark Streaming](spark/apache-spark-streaming-overview.md). Przetworzone dane mogą być przechowywane w systemów magazynowania długoterminowe, takie jak [usługi Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)i wyświetlane w czasie rzeczywistym na pulpicie nawigacyjnym analizy biznesowej, takich jak [usługi Power BI](https://powerbi.microsoft.com), Tableau lub niestandardowe sieci web Strona.
+W aplikacji przesyłania strumieniowego co najmniej jedno źródło danych generuje zdarzenia (czasami w milionach na sekundę), które należy szybko pozyskiwać bez porzucania jakichkolwiek użytecznych informacji. Zdarzenia przychodzące są obsługiwane za pomocą *buforowania strumienia*, nazywanego również *kolejką zdarzeń*, przez usługę, taką jak [Apache Kafka](kafka/apache-kafka-introduction.md) lub [Event Hubs](https://azure.microsoft.com/services/event-hubs/). Po zebraniu zdarzeń można analizować dane przy użyciu systemu analizy w czasie rzeczywistym w ramach warstwy *przetwarzania strumienia* , takiej jak [Apache Storm](storm/apache-storm-overview.md) lub [Apache Spark Streaming](spark/apache-spark-streaming-overview.md). Przetworzone dane mogą być przechowywane w systemach przechowywania długoterminowego, takich jak [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)i wyświetlane w czasie rzeczywistym na pulpicie nawigacyjnym analizy biznesowej, takim jak [Power BI](https://powerbi.microsoft.com), Tableau lub niestandardowa strona sieci Web.
 
 
-![HDInsight Streaming wzorców](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
+![Wzorce przesyłania strumieniowego HDInsight](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
 ## <a name="apache-kafka"></a>Apache Kafka
 
-Platforma Apache Kafka oferuje wysokiej przepływności, Usługa kolejkowania wiadomości o małych opóźnieniach i jest teraz częścią pakietu Apache Software źródła otwartych (OSS). Platforma Kafka korzysta publikowania i subskrybowania komunikatów strumieni modeli i magazynów danych podzielonych na partycje bezpiecznie w klastrze rozproszonym, replikowany. Platforma Kafka liniowe skalowanie w miarę zwiększania przepływności.
+Apache Kafka zapewnia usługę kolejkowania komunikatów o wysokiej przepływności i małych opóźnieniach, a teraz jest częścią pakietu Apache w oprogramowaniu typu Open Source (OSS). Kafka używa modelu obsługi komunikatów Publikuj i Subskrybuj i przechowuje strumienie danych partycjonowanych bezpiecznie w rozproszonym, replikowanym klastrze. Kafka skaluje się liniowo w miarę wzrostu przepływności.
 
-Aby uzyskać więcej informacji, zobacz [wprowadzenie do platformy Apache Kafka w HDInsight](kafka/apache-kafka-introduction.md).
+Aby uzyskać więcej informacji, zobacz [wprowadzenie Apache Kafka w usłudze HDInsight](kafka/apache-kafka-introduction.md).
 
 ## <a name="apache-storm"></a>Apache Storm
 
-Apache Storm to system obliczeń rozproszonych, odpornej na uszkodzenia, typu open source, zoptymalizowana pod kątem przetwarzania strumieni danych w czasie rzeczywistym z użyciem usługi Hadoop. Jednostki podstawowe dane dla zdarzenia przychodzącego jest spójnej kolekcji niezmienialnych zestaw par klucz/wartość. Niepowiązanego sekwencję formach krotek Stream, który jest pochodzi z Spout. Spout otacza przesyłania strumieniowego źródła danych (takiej jak Kafka) i emituje krotek. Topologii platformy storm to sekwencja przekształceń dla tych strumieni.
+Apache Storm to rozproszony, odporny na uszkodzenia system obliczeniowy typu open source, który jest zoptymalizowany pod kątem przetwarzania strumieni danych w czasie rzeczywistym za pomocą usługi Hadoop. Podstawową jednostką danych dla zdarzenia przychodzącego jest krotka, która jest niezmiennym zestawem par klucz/wartość. Nieograniczona sekwencja tych krotek tworzy strumień, który pochodzi z elementu Spout. Elementu Spout otacza źródło danych przesyłania strumieniowego (np. Kafka) i emituje krotki. Topologia burzy to sekwencja transformacji dla tych strumieni.
 
 Aby uzyskać więcej informacji, zobacz [co to jest Apache Storm w usłudze Azure HDInsight?](storm/apache-storm-overview.md).
 
-## <a name="spark-streaming"></a>Przesyłania strumieniowego platformy Spark
+## <a name="spark-streaming"></a>Przesyłanie strumieniowe Spark
 
-Przesyłanie strumieniowe Spark jest rozszerzeniem platformy Spark, która pozwala na ponowne użycie tego samego kodu, których używasz do przetwarzania wsadowego. Możesz połączyć usługi batch i interakcyjnych zapytań w tej samej aplikacji. W przeciwieństwie do systemu Storm, Spark Streaming oferuje stanowa dokładnie — jednokrotne przetwarzanie semantyki. W połączeniu z [bezpośrednie interfejsu API platformy Kafka](https://spark.apache.org/docs/latest/streaming-kafka-integration.html), który zapewnia, że wszystkie dane platformy Kafka jest odbierany przez przesyłanie strumieniowe Spark dokładnie jeden raz, jest możliwe uzyskanie dokładnie end-to-end-gwarantuje raz. Jedną z mocnych strumieniowe Spark jest jego możliwości odpornej na uszkodzenia, odzyskiwanie szybko zwracające błędy węzłów, gdy są używane wiele węzłów w klastrze.
+Przetwarzanie strumieniowe Spark to rozszerzenie platformy Spark, które umożliwia ponowne użycie tego samego kodu, który jest używany do przetwarzania wsadowego. W tej samej aplikacji można łączyć zarówno zapytania wsadowe, jak i interakcyjne. W przeciwieństwie do burzy, przesyłanie strumieniowe Spark zapewnia bezstanową semantykę przetwarzania. Gdy jest używany w połączeniu z [interfejsem API Direct Kafka](https://spark.apache.org/docs/latest/streaming-kafka-integration.html), co zapewnia, że wszystkie dane Kafka są odbierane przez funkcję przesyłania strumieniowego usługi Spark dokładnie jeden raz, można osiągnąć kompleksowe gwarancje dokładnie jednokrotnie. Jedną z mocnych funkcji przesyłania strumieniowego platformy Spark jest funkcja odporna na uszkodzenia, która umożliwia szybkie odzyskiwanie węzłów o błędach w przypadku używania wielu węzłów w klastrze.
 
 Aby uzyskać więcej informacji, zobacz [co to jest Apache Spark Streaming?](hdinsight-spark-streaming-overview.md).
 
 ## <a name="scaling-a-cluster"></a>Skalowanie klastra
 
-Chociaż można określić liczbę węzłów w klastrze podczas tworzenia, może być możliwość zwiększania i zmniejszania klastra w celu dopasowania obciążenia. Wszystkie klastry HDInsight umożliwiają [zmianę liczby węzłów w klastrze](hdinsight-administer-use-portal-linux.md#scale-clusters). Klastry Spark można porzucić bez utraty danych, ponieważ wszystkie dane są przechowywane w usłudze Azure Storage lub magazynu usługi Data Lake.
+Chociaż można określić liczbę węzłów w klastrze podczas tworzenia, można zwiększyć lub zmniejszyć klaster w celu dopasowania do obciążenia. Wszystkie klastry usługi HDInsight umożliwiają [zmianę liczby węzłów w klastrze](hdinsight-administer-use-portal-linux.md#scale-clusters). Klastry Spark można porzucić bez utraty danych, ponieważ wszystkie dane są przechowywane w usłudze Azure Storage lub Data Lake Storage.
 
-Istnieją zalety łączenia odsprzęgania technologii. Na przykład platforma Kafka jest zdarzenie buforowania technologii, dzięki czemu jest bardzo operacji We/Wy o znacznym wykorzystaniu i nie wymaga znacznie mocy obliczeniowej. W odróżnieniu od procesorów strumieni, takich jak Spark Streaming są intensywnie wymagające bardziej wydajne maszyny wirtualne. Dzięki tych technologii odłączone w różnych klastrach, możesz skalować je niezależnie najlepszego wykorzystania maszyn wirtualnych.
+Istnieją zalety oddzielania technologii. Na przykład Kafka jest technologią buforowania zdarzeń, więc bardzo intensywnie korzysta z operacji we/wy i nie wymaga dużej mocy obliczeniowej. W porównaniu z procesorami strumieniowymi, takimi jak Spark streaming, są duże obciążenia, które wymagają bardziej zaawansowanych maszyn wirtualnych. Dzięki wykorzystaniu tych technologii w różnych klastrach można je skalować niezależnie przy użyciu maszyn wirtualnych.
 
-### <a name="scale-the-stream-buffering-layer"></a>Skalowanie usługi stream, buforowanie, warstwy
+### <a name="scale-the-stream-buffering-layer"></a>Skalowanie warstwy buforowania strumienia
 
-Strumień buforowania technologii usługi Event Hubs i Kafka używają partycji, a konsumenci zapoznaj się z tych partycji. Skalowanie przepływność danych wejściowych wymaga skalowanie w górę liczby partycji i dodawanie partycji umożliwia zwiększenie równoległości. W usłudze Event Hubs liczby partycji nie można zmienić po wdrożeniu, więc należy rozpoczynać skalowania docelowych należy pamiętać. Za pomocą platformy Kafka, istnieje możliwość [Dodawanie partycji](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion), nawet wtedy, gdy platforma Kafka jest przetwarzanie danych. Platforma Kafka udostępnia narzędzie do ponownego przypisania partycji, `kafka-reassign-partitions.sh`. HDInsight zapewnia [repliki partycji ponowne równoważenie narzędzie](https://github.com/hdinsight/hdinsight-kafka-tools), `rebalance_rackaware.py`. Wywołuje narzędzie to ponowne `kafka-reassign-partitions.sh` narzędzi w taki sposób, że każda replika znajduje się w awarii oddzielne domeny i domeny aktualizacji, co Kafka stojak pamiętać i zwiększa odporność na uszkodzenia.
+Technologie buforowania strumienia Event Hubs i Kafka obu używają partycji, a konsumenci odczytują te partycje. Skalowanie przepływności danych wejściowych wymaga skalowania w górę liczby partycji, a Dodawanie partycji umożliwia zwiększenie równoległości. W Event Hubs nie można zmienić liczby partycji po wdrożeniu, dlatego ważne jest, aby zacząć od docelowej skali. Za pomocą Kafka można [dodawać partycje](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion), nawet gdy Kafka przetwarza dane. Kafka udostępnia narzędzie do ponownego przypisywania partycji `kafka-reassign-partitions.sh`. Usługa HDInsight udostępnia [Narzędzie ponownego równoważenia repliki partycji](https://github.com/hdinsight/hdinsight-kafka-tools), `rebalance_rackaware.py`. To narzędzie do ponownego równoważenia wywołuje `kafka-reassign-partitions.sh` narzędzie w taki sposób, że każda replika znajduje się w oddzielnej domenie błędów i domenie aktualizacji, co sprawia, że Kafka stojaka i zwiększa odporność na uszkodzenia.
 
 ### <a name="scale-the-stream-processing-layer"></a>Skalowanie warstwy przetwarzania strumienia
 
-Apache Storm i Spark Streaming obsługuje dodawanie węzłów procesu roboczego ich klastry, nawet wtedy, gdy dane są przetwarzane.
+Zarówno Apache Storm, jak i obsługa przesyłania strumieniowego Spark Dodawanie węzłów procesu roboczego do swoich klastrów, nawet podczas przetwarzania danych.
 
-Aby móc skorzystać z nowych węzłów dodanych do skalowania systemu Storm, konieczne jest ponowne zrównoważenie wszelkich topologii systemu Storm uruchomionych przed zwiększeniem rozmiaru klastra. To ponowne równoważenie może odbywać się przy użyciu technologii Storm w sieci web interfejsu użytkownika lub jego interfejsu wiersza polecenia. Aby uzyskać więcej informacji, zobacz [dokumentacji platformy Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+Aby skorzystać z nowych węzłów dodanych poprzez skalowanie burzy, należy ponownie zrównoważyć wszystkie topologie burzy uruchomione przed zwiększeniem rozmiaru klastra. To ponowne zrównoważenie można wykonać za pomocą interfejsu użytkownika sieci Web burzy lub jego interfejsu wiersza polecenia. Aby uzyskać więcej informacji, zobacz [dokumentację Apache Storm](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
 
-Apache Spark korzysta z trzech parametrów klucza konfigurowania swoje środowisko, w zależności od wymagań aplikacji: `spark.executor.instances`, `spark.executor.cores`, i `spark.executor.memory`. *Wykonawca* to proces, który jest uruchamiany w aplikacji platformy Spark. Wykonawca działa w węźle procesu roboczego i jest odpowiedzialny za wykonywanie zadań aplikacji. Domyślna liczba executors i rozmiary przetwarzania dla każdego klastra są obliczane na podstawie liczby węzłów procesu roboczego i rozmiar węzła procesu roboczego. Numery te są przechowywane w `spark-defaults.conf`pliku na każdy węzeł główny klastra.
+Apache Spark używa trzech kluczowych parametrów do konfigurowania środowiska, w zależności od wymagań aplikacji: `spark.executor.instances`, `spark.executor.cores`i `spark.executor.memory`. Program *wykonujący* to proces, który jest uruchamiany dla aplikacji Spark. Program wykonujący działa w węźle procesu roboczego i jest odpowiedzialny za wykonywanie zadań aplikacji. Domyślna liczba modułów wykonujących i rozmiary wykonawców dla każdego klastra są obliczane na podstawie liczby węzłów procesu roboczego i rozmiaru węzła procesu roboczego. Te liczby są przechowywane w `spark-defaults.conf`pliku w każdym węźle głównym klastra.
 
-Te trzy parametry można skonfigurować na poziomie klastra dla wszystkich aplikacji, które są uruchamiane w klastrze i można również określić dla poszczególnych aplikacji. Aby uzyskać więcej informacji, zobacz [zarządzania zasobami klastrów Apache Spark](spark/apache-spark-resource-manager.md).
+Te trzy parametry można skonfigurować na poziomie klastra dla wszystkich aplikacji uruchamianych w klastrze, a także dla każdej pojedynczej aplikacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie zasobami dla klastrów Apache Spark](spark/apache-spark-resource-manager.md).
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 * [Tworzenie i monitorowanie topologii Apache Storm w usłudze Azure HDInsight](storm/apache-storm-quickstart.md)
 * [Przykładowe topologie dla systemu Apache Storm w usłudze HDInsight](storm/apache-storm-example-topology.md)
-* [Wprowadzenie do platformy Apache Spark w HDInsight](spark/apache-spark-overview.md)
-* [Uruchom przy użyciu platformy Apache Kafka w HDInsight](kafka/apache-kafka-get-started.md)
+* [Wprowadzenie do Apache Spark w usłudze HDInsight](spark/apache-spark-overview.md)
+* [Zacznij od Apache Kafka w usłudze HDInsight](kafka/apache-kafka-get-started.md)

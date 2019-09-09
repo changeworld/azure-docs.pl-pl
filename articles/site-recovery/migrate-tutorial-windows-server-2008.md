@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c449b74a9d6185b0616f62d31926feb6ff218cbb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: d0d5c482e2faf5e4a2c2918a64bd56e4aa814323
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400095"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814503"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Migrowanie serwerów z systemem Windows Server 2008 na platformę Azure
 
@@ -29,11 +29,14 @@ W tym samouczku pokazano, jak przeprowadzić migrację lokalnych serwerów z sys
 
 Sekcja Ograniczenia i znane problemy zawiera niektóre ograniczenia i obejścia znanych problemów, które można napotkać podczas migracji maszyn z systemem Windows Server 2008 na platformę Azure. 
 
+> [!NOTE]
+> Teraz można migrować z lokalizacji lokalnej na platformę Azure przy użyciu usługi Azure Migrate. [Dowiedz się więcej](../migrate/migrate-services-overview.md).
+
 
 ## <a name="supported-operating-systems-and-environments"></a>Obsługiwane systemy operacyjne i środowiska
 
 
-|System operacyjny  | W środowisku lokalnym  |
+|System operacyjny  | Środowisko lokalne  |
 |---------|---------|
 |Windows Server 2008 z dodatkiem SP2 — wersje 32-bitowe i 64-bitowe (IA-32 i x86-64)</br>- Standard</br>- Enterprise</br>- Datacenter   |     Maszyny wirtualne VMware, maszyny wirtualne funkcji Hyper-V i serwery fizyczne    |
 |Windows Server 2008 R2 z dodatkiem SP1 — wersja 64-bitowa</br>- Standard</br>- Enterprise</br>- Datacenter     |     Maszyny wirtualne VMware, maszyny wirtualne funkcji Hyper-V i serwery fizyczne|
@@ -51,7 +54,7 @@ Aby przeprowadzić migrację maszyn wirtualnych funkcji Hyper-V z systemem Windo
 
 Pozostała część tego samouczka pokazuje, jak możesz migrować lokalne maszyny wirtualne VMware i serwery fizyczne z systemem Windows Server 2008 lub 2008 R2.
 > [!TIP]
-> Szukasz bez wykorzystania agentów sposób migrowania maszyn wirtualnych VMware na platformę Azure? [Kliknij tutaj](https://aka.ms/migrateVMs-signup)
+> Szukasz bezagentowego sposobu migracji maszyn wirtualnych VMware na platformę Azure? [Kliknij tutaj](https://aka.ms/migrateVMs-signup)
 
 
 ## <a name="limitations-and-known-issues"></a>Ograniczenia i znane problemy
@@ -144,7 +147,7 @@ Możesz przeprowadzić test pracy w trybie failover serwerów replikacji po uko�
 
 Uruchom [testowanie trybu failover](tutorial-dr-drill-azure.md), aby upewnić się, że wszystko działa zgodnie z oczekiwaniami.
 
-   ![Testowanie pracy w trybie failover](media/migrate-tutorial-windows-server-2008/testfailover.png)
+   ![Testowe przełączenie w tryb failover](media/migrate-tutorial-windows-server-2008/testfailover.png)
 
 
 ## <a name="migrate-to-azure"></a>Migracja na platformę Azure
@@ -160,7 +163,7 @@ Uruchom tryb failover dla maszyn, które chcesz migrować.
     - Powoduje zakończenie procesu migracji, zatrzymanie replikacji serwera oraz zatrzymanie naliczania opłat za usługę Site Recovery dla serwera.
     - W tym kroku oczyszczane są dane replikacji. Nie są jednak usuwane migrowane maszyny wirtualne.
 
-   ![Kończenie migracji](media/migrate-tutorial-windows-server-2008/complete-migration.png)
+   ![Zakończ migrację](media/migrate-tutorial-windows-server-2008/complete-migration.png)
 
 
 > [!WARNING]

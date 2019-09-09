@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 8c931521e77123844817dff0e9209f8f95f7ad59
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: f7fc5b32fb18da60816056c72dde8c53d439befe
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279898"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812192"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database
 
@@ -54,7 +54,7 @@ Dynamiczna skalowalność różni się od skalowania automatycznego. O skalowani
 ### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>Modele zakupów, warstwy usług, rozmiary obliczeń i kwoty magazynu
 
 SQL Database oferuje dwa modele zakupu:
-- [Model zakupu oparty na rdzeń wirtualny](sql-database-service-tiers-vcore.md) umożliwia wybranie liczby rdzeni wirtualnych, ilości lub pamięci oraz ilości i szybkości magazynu. Model zakupu oparty na rdzeń wirtualny umożliwia również korzystanie z [Korzyść użycia hybrydowego platformy Azure SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) w celu uzyskania oszczędności kosztów. Aby uzyskać więcej informacji na temat Korzyść użycia hybrydowego platformy Azure, zobacz [często zadawane pytania](#sql-database-frequently-asked-questions-faq).
+- [Model zakupu oparty na rdzeń wirtualny](sql-database-service-tiers-vcore.md) umożliwia wybranie liczby rdzeni wirtualnych, ilości pamięci oraz ilości i szybkości magazynu. Model zakupu oparty na rdzeń wirtualny umożliwia również korzystanie z [Korzyść użycia hybrydowego platformy Azure SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) w celu uzyskania oszczędności kosztów. Aby uzyskać więcej informacji na temat Korzyść użycia hybrydowego platformy Azure, zobacz [często zadawane pytania](#sql-database-frequently-asked-questions-faq).
 - [Model zakupów opartych na](sql-database-service-tiers-dtu.md) jednostkach DTU oferuje mieszankę zasobów obliczeniowych, pamięci i operacji we/wy w trzech warstwach usług w celu obsługi lekkich i intensywnych obciążeń związanych z bazami danych. Rozmiary obliczeniowe w poszczególnych warstwach zapewniają inną kombinację tych zasobów, do których można dodać dodatkowe zasoby magazynu.
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Pule elastyczne umożliwiające zmaksymalizowanie wykorzystania zasobów

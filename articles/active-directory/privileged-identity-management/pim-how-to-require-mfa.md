@@ -1,9 +1,9 @@
 ---
-title: Uwierzytelnianie wieloskładnikowe (MFA) i PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak usługa Azure AD Privileged Identity Management (PIM) sprawdza poprawność uwierzytelnianie wieloskładnikowe (MFA).
+title: Uwierzytelnianie wieloskładnikowe (MFA) i PIM-Azure Active Directory | Microsoft Docs
+description: Dowiedz się, jak Azure AD Privileged Identity Management (PIM) sprawdza poprawność uwierzytelniania wieloskładnikowego (MFA).
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,34 +11,34 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 08/31/2018
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8831a838a403d58d8673c6400e0dda06c03dc69f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 686c39c9fb1f1ff7c0ecf068a6612f530620d5dc
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60442679"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804301"
 ---
-# <a name="multi-factor-authentication-mfa-and-pim"></a>Uwierzytelnianie wieloskładnikowe (MFA) i usługi PIM
+# <a name="multi-factor-authentication-mfa-and-pim"></a>Uwierzytelnianie wieloskładnikowe (MFA) i PIM
 
-Firma Microsoft zaleca Wymagaj uwierzytelniania wieloskładnikowego (MFA) dla wszystkich administratorów. Zmniejsza to ryzyko ataku z powodu hasła ze złamanymi zabezpieczeniami.
+Zalecamy wymaganie uwierzytelniania wieloskładnikowego (MFA) dla wszystkich administratorów. Zmniejsza to ryzyko ataków spowodowanych przez złamane hasło.
 
-Możesz wymagać, użytkownicy wykonać żądanie uwierzytelniania Wieloskładnikowego podczas logowania. Może również wymagać, że użytkownicy ukończyć żądanie usługi MFA podczas aktywacji roli w usłudze Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Dzięki temu, jeśli użytkownik nie została ukończona żądania uwierzytelniania MFA, gdy są one podpisane, ich zostanie wyświetlony monit to zrobić przez usługę PIM.
+Możesz wymagać, aby użytkownicy ukończyli wyzwanie usługi MFA podczas logowania. Możesz również wymagać, aby użytkownicy ukończyli wyzwanie usługi MFA, gdy aktywują rolę w usłudze Azure Active Directory (Azure AD) Privileged Identity Management (PIM). W ten sposób, jeśli użytkownik nie wykonał żądania MFA po zalogowaniu się, zostanie wyświetlony monit o jego przeprowadzenie przez program PIM.
 
 > [!IMPORTANT]
-> Kliknij prawym przyciskiem myszy teraz usługi Azure MFA działa tylko w przypadku pracy lub konta służbowe, a nie konta Microsoft (zazwyczaj konta osobistego, która jest używana do logowania do usług firmy Microsoft, takich jak Skype, Xbox, Outlook.com itd.). W związku z tym każda osoba korzystająca z konta Microsoft nie może być administrator uprawniony ponieważ nie mogą używać usługi MFA do aktywacji ich ról. Jeśli Ci użytkownicy muszą kontynuować zarządzanie obciążeń przy użyciu konta Microsoft, podnoszenie ich poziomu do stałych administratorów teraz.
+> Obecnie usługa Azure MFA działa tylko z kontami służbowymi, a nie kontami firmy Microsoft (zazwyczaj konta osobistego, które jest używane do logowania się do usług firmy Microsoft, takich jak Skype, Xbox, Outlook.com itp.). W związku z tym każda osoba korzystająca z konto Microsoft nie może być uprawnionym administratorem, ponieważ nie mogą aktywować ich ról przy użyciu usługi MFA. Jeśli Ci użytkownicy muszą kontynuować zarządzanie obciążeniami przy użyciu konto Microsoft, w razie potrzeby Podnieś poziom uprawnień do stałych administratorów.
 
-## <a name="how-pim-validates-mfa"></a>Jak sprawdza usługi MFA, usługi PIM
+## <a name="how-pim-validates-mfa"></a>Jak PIM sprawdza poprawność uwierzytelniania MFA
 
-Dostępne są dwie opcje umożliwiające walidację MFA, gdy użytkownik aktywuje roli.
+Istnieją dwie opcje sprawdzania poprawności usługi MFA, gdy użytkownik aktywuje rolę.
 
-Jest to najprostsza opcja korzystaniem z usługi Azure MFA dla użytkowników, którzy aktywowania roli uprzywilejowanej. Aby to zrobić, najpierw sprawdź, czy Ci użytkownicy są licencjonowane w razie potrzeby i zarejestrowany dla usługi Azure MFA. Aby uzyskać więcej informacji na temat wdrażania usługi Azure MFA, zobacz [wdrażanie oparte na chmurze usługi Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md). Jest to zalecane, ale nie jest wymagane, należy skonfigurować wymuszanie uwierzytelniania Wieloskładnikowego dla tych użytkowników podczas logowania w usłudze Azure AD. Jest to spowodowane kontroli uwierzytelniania Wieloskładnikowego, które zostaną wprowadzone przez usługę PIM sam.
+Najprostszą opcją jest poleganie na usłudze Azure MFA dla użytkowników, którzy aktywują rolę uprzywilejowaną. Aby to zrobić, najpierw sprawdź, czy Ci użytkownicy mają licencję, w razie potrzeby, i zarejestrowano usługę Azure MFA. Aby uzyskać więcej informacji o sposobie wdrażania usługi Azure MFA, zobacz [wdrażanie usługi azure Multi-Factor Authentication opartej na chmurze](../authentication/howto-mfa-getstarted.md). Zalecane jest, ale nie wymagane, skonfigurowanie usługi Azure AD w celu wymuszania uwierzytelniania MFA dla tych użytkowników podczas logowania. Wynika to z faktu, że sprawdzanie MFA zostanie przeprowadzone przez program PIM.
 
-Alternatywnie Jeśli użytkownicy są uwierzytelniani w środowisku lokalnym może mieć dostawcy tożsamości do uwierzytelniania Wieloskładnikowego. Na przykład, jeśli skonfigurowano usługi federacyjnej AD wymagające uwierzytelniania opartego na karty inteligentnej przed uzyskaniem dostępu do usługi Azure AD [zabezpieczanie zasobów w chmurze za pomocą usługi Azure Multi-Factor Authentication i usług AD FS](../authentication/howto-mfa-adfs.md) zawiera instrukcje do konfigurowania usług AD FS do wysyłania oświadczeń do usługi Azure AD. Gdy użytkownik próbuje aktywować rolę, usługi PIM będzie akceptować czy MFA została już zweryfikowana użytkownika po odebraniu odpowiednie oświadczenia.
+Alternatywnie, jeśli użytkownicy uwierzytelniają się lokalnie, dostawca tożsamości może być odpowiedzialny za usługę MFA. Jeśli na przykład skonfigurowano usługi federacyjne AD do wymagania uwierzytelniania opartego na karcie inteligentnej przed uzyskaniem dostępu do usługi Azure AD, [Zabezpieczanie zasobów w chmurze za pomocą usługi azure Multi-Factor Authentication i AD FS](../authentication/howto-mfa-adfs.md) zawiera instrukcje dotyczące konfigurowania AD FS do programu Wysyłanie oświadczeń do usługi Azure AD. Gdy użytkownik próbuje aktywować rolę, program PIM przyjmie, że uwierzytelnianie wieloskładnikowe zostało już zweryfikowane dla użytkownika po odebraniu odpowiednich oświadczeń.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Konfigurowanie ustawień roli w usłudze Azure AD w usłudze PIM](pim-how-to-change-default-settings.md)
+- [Konfigurowanie ustawień roli usługi Azure AD w usłudze PIM](pim-how-to-change-default-settings.md)
 - [Konfigurowanie ustawień roli zasobów platformy Azure w usłudze PIM](pim-resource-roles-configure-role-settings.md)

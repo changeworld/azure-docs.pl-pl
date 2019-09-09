@@ -173,7 +173,7 @@ Aby uzyskać **urządzenie połączone** i **Urządzenie odłączone** zdarzeń 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
 | moduleId | string | Unikatowy identyfikator modułu. To pole jest dane wyjściowe tylko na urządzeniach z modułu. Ten ciąg uwzględniający wielkość liter może mieć długości maksymalnie 128 znaków i obsługuje znaki ASCII 7-bitowe znaki alfanumeryczne oraz następujące znaki specjalne: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
-| deviceConnectionStateEventInfo | obiekt | Informacje zdarzeń o stanie połączenia urządzenia
+| deviceConnectionStateEventInfo | object | Informacje zdarzeń o stanie połączenia urządzenia
 | sequenceNumber | string | Liczba, która pomaga wskazać kolejność podłączone urządzenie lub urządzenia odłączony zdarzenia. Najnowsze zdarzenia będzie mieć numer sekwencji jest wyższa niż poprzednie zdarzenie. Ten numer może ulec zmianie przez więcej niż 1, ale jest dokładnie rosnącej. Zobacz [sposób użycia numer sekwencyjny](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
 
 Aby uzyskać **danych Telemetrycznych z urządzenia** zdarzeń usługi IoT Hub zawiera obiekt danych komunikatu urządzenia do chmury w [format komunikatów usługi IoT hub](../iot-hub/iot-hub-devguide-messages-construct.md) i ma następujące właściwości:
@@ -188,7 +188,7 @@ Aby uzyskać **utworzyć urządzenia** i **urządzenie usunięte** zdarzeń usł
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| twin | obiekt | Informacje na temat bliźniaczej reprezentacji urządzenia, czyli chmury reprezentacja metadanych urządzenia w aplikacji. | 
+| twin | object | Informacje na temat bliźniaczej reprezentacji urządzenia, czyli chmury reprezentacja metadanych urządzenia w aplikacji. | 
 | deviceID | string | Unikatowy identyfikator bliźniaczej reprezentacji urządzenia. | 
 | etag | string | Moduł weryfikacji dla zapewnienia spójności aktualizacji bliźniaczej reprezentacji urządzenia. Każdy element etag jest musi być unikatowa dla każdej bliźniaczej reprezentacji urządzenia. |  
 | deviceEtag| string | Moduł weryfikacji dla zapewnienia spójności aktualizacji do rejestru urządzeń. Każdy deviceEtag może być unikatowy dla rejestru urządzeń. |
@@ -202,8 +202,8 @@ Aby uzyskać **utworzyć urządzenia** i **urządzenie usunięte** zdarzeń usł
 | primaryThumbprint | string | Podstawowy odcisk palca dla x509 certyfikatu. |
 | secondaryThumbprint | string | Pomocniczy odcisk palca dla x509 certyfikatu. | 
 | version | liczba całkowita | Liczba całkowita, która jest zwiększany o jeden każdy Godzina aktualizacji bliźniaczej reprezentacji. |
-| desired | obiekt | Część właściwości, które mogą być zapisywane tylko przez serwer zaplecza aplikacji i odczytywane przez urządzenie. | 
-| reported | obiekt | Część właściwości, które mogą być zapisywane tylko przez urządzenia i odczytywane przez serwer zaplecza aplikacji. |
+| desired | object | Część właściwości, które mogą być zapisywane tylko przez serwer zaplecza aplikacji i odczytywane przez urządzenie. | 
+| reported | object | Część właściwości, które mogą być zapisywane tylko przez urządzenia i odczytywane przez serwer zaplecza aplikacji. |
 | lastUpdated | string | Zaktualizuj ISO8601 sygnatura czasowa ostatniej właściwości bliźniaczej reprezentacji urządzenia. | 
 
 ## <a name="next-steps"></a>Kolejne kroki

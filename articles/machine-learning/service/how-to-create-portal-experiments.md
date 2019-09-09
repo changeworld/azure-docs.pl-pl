@@ -1,5 +1,5 @@
 ---
-title: Używanie zautomatyzowanej ML do kompilowania i wdrażania modeli uczenia maszynowego
+title: Używanie interfejsu zautomatyzowanej sieci platformy Azure do uczenia & wdrażania modeli
 titleSuffix: Azure Machine Learning service
 description: Twórz i wdrażaj automatyczne eksperymenty uczenia maszynowego w Azure Portal
 services: machine-learning
@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 08/02/2019
-ms.openlocfilehash: 2f6d45613120d02dd96a9fe0a14ce388d20cf0c6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 0286c82c0b4378e24fa46d0327bd6a5b26037496
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990586"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813647"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-in-the-azure-portal-preview"></a>Twórz, eksploruj i wdrażaj automatyczne eksperymenty uczenia maszynowego w Azure Portal (wersja zapoznawcza)
 
@@ -198,5 +198,5 @@ Teraz masz działającą usługę sieci Web do generowania prognoz!
 
 * Wypróbuj kompleksowy samouczek dotyczący [tworzenia pierwszego zautomatyzowanego eksperymentu ml z Azure Machine Learning](tutorial-first-experiment-automated-ml.md). 
 * [Dowiedz się więcej o zautomatyzowanym uczeniu maszynowym](concept-automated-ml.md) i Azure Machine Learning.
-* [Zapoznaj](how-to-understand-automated-ml.md)się z automatycznymi wynikami uczenia maszynowego.
+* Zapoznaj się z [automatycznymi wynikami uczenia maszynowego](how-to-understand-automated-ml.md).
 * [Dowiedz się, jak korzystać z usługi sieci Web](https://docs.microsoft.com/azure/machine-learning/service/how-to-consume-web-service).

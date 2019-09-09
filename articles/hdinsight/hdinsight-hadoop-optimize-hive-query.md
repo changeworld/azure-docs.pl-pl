@@ -1,6 +1,6 @@
 ---
-title: Optymalizowanie zapytań technologii Hive w usłudze Azure HDInsight
-description: W tym artykule opisano, jak zoptymalizować swoje zapytania usługi Apache Hive dla usługi Hadoop w HDInsight.
+title: Optymalizowanie zapytań programu Hive w usłudze Azure HDInsight
+description: W tym artykule opisano sposób optymalizowania Apache Hive zapytań dotyczących usługi Hadoop w usłudze HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,72 +8,72 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
-ms.openlocfilehash: 218085d8d3969218be1a0557fdc477c730879cbe
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 60c725e084a18326cc4bc9cc05d02d103261f5a4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543704"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70809261"
 ---
-# <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optymalizowanie zapytań technologii Hive w usłudze Azure HDInsight
+# <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optymalizowanie Apache Hive zapytań w usłudze Azure HDInsight
 
-W usłudze Azure HDInsight istnieje kilka typów klastrów i technologie, które można uruchomić zapytania usługi Apache Hive. Podczas tworzenia klastra usługi HDInsight, należy wybrać typ klastra odpowiednie do optymalizowania wydajności na potrzeby związane z obciążeniem.
+W usłudze Azure HDInsight istnieje kilka typów klastrów i technologii, które mogą uruchamiać Apache Hive zapytań. Podczas tworzenia klastra usługi HDInsight wybierz odpowiedni typ klastra, aby pomóc zoptymalizować wydajność dla potrzeb obciążenia.
 
-Na przykład wybrać **Interactive Query** typ zoptymalizowane pod kątem zapytań ad-hoc, interaktywne klastra. Wybierz pozycję Apache **Hadoop** typ zoptymalizowane pod kątem zapytań programu Hive, używane jako proces wsadowy klastra. **Platforma Spark** i **HBase** typy klastrów można również uruchomić zapytania programu Hive. Aby uzyskać więcej informacji na temat uruchamiania zapytań programu Hive na różne typy klastrów HDInsight, zobacz [co to jest Apache Hive i HiveQL w usłudze Azure HDInsight?](hadoop/hdinsight-use-hive.md).
+Na przykład wybierz pozycję **interaktywna kwerenda** typ klastra, aby zoptymalizować zapytania ad hoc. Wybierz typ klastra Apache **Hadoop** , aby zoptymalizować zapytania Hive używane jako proces wsadowy. Typy klastrów **Spark** i **HBase** mogą również uruchamiać zapytania programu Hive. Aby uzyskać więcej informacji na temat uruchamiania zapytań programu Hive w różnych typach klastrów usługi HDInsight, zobacz [co to jest Apache Hive i HiveQL w usłudze Azure HDInsight?](hadoop/hdinsight-use-hive.md).
 
-Klastry HDInsight typu klastra Hadoop nie są zoptymalizowane pod kątem wydajności domyślnie. W tym artykule opisano niektóre z najczęściej stosowanych do zapytań metody optymalizacji wydajności technologii Hive.
+Klastry usługi HDInsight typu klastra Hadoop nie są domyślnie zoptymalizowane pod kątem wydajności. W tym artykule opisano niektóre typowe metody optymalizacji wydajności Hive, które można zastosować do zapytań.
 
 ## <a name="scale-out-worker-nodes"></a>Skalowanie węzłów procesu roboczego
 
-Zwiększenie liczby węzłów procesu roboczego w klastrze usługi HDInsight umożliwia pracę do większej liczby maperów i reduktorów do równoległego uruchamiania. Istnieją dwa sposoby, można zwiększyć, skalowanie w poziomie w HDInsight:
+Zwiększenie liczby węzłów procesu roboczego w klastrze usługi HDInsight pozwala pracować równolegle z większymi mapowaniami i zmniejszami. Istnieją dwa sposoby zwiększenia skalowania w poziomie w usłudze HDInsight:
 
-* W tym czasie, podczas tworzenia klastra można określić liczbę węzłów procesu roboczego przy użyciu witryny Azure portal, programu Azure PowerShell lub interfejsu wiersza polecenia.  Więcej informacji można znaleźć w artykule [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md) (Tworzenie klastrów usługi HDInsight). Poniższy zrzut ekranu przedstawia proces roboczy konfiguracji węzła w witrynie Azure portal:
+* Podczas tworzenia klastra można określić liczbę węzłów procesu roboczego przy użyciu Azure Portal, Azure PowerShell lub interfejsu wiersza polecenia.  Więcej informacji można znaleźć w artykule [Create HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md) (Tworzenie klastrów usługi HDInsight). Poniższy zrzut ekranu przedstawia konfigurację węzła procesu roboczego na Azure Portal:
   
-    ![scaleout_1][image-hdi-optimize-hive-scaleout_1]
+    ![scaleout_1](./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png "scaleout_1")
     
-* Po utworzeniu można również edytować liczbę węzłów procesu roboczego do skalowania w poziomie dalsze klastra bez konieczności ponownego tworzenia jeden:
+* Po utworzeniu można także edytować liczbę węzłów procesu roboczego, aby dodatkowo skalować klaster bez ponownego tworzenia:
 
-    ![scaleout_1][image-hdi-optimize-hive-scaleout_2]
+    ![scaleout_2](./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png "scaleout_2")
 
-Aby uzyskać więcej informacji na temat skalowania HDInsight, zobacz [klastrów HDInsight skalowania](hdinsight-scaling-best-practices.md)
+Aby uzyskać więcej informacji na temat skalowania usługi HDInsight, zobacz [skalowanie klastrów usługi HDInsight](hdinsight-scaling-best-practices.md) .
 
-## <a name="use-apache-tez-instead-of-map-reduce"></a>Używanie Apache Tez zamiast Map Reduce
+## <a name="use-apache-tez-instead-of-map-reduce"></a>Użyj Apache Tez zamiast ograniczenia mapy
 
-[Apache Tez](https://tez.apache.org/) to aparat wykonywania alternatywne do aparatu MapReduce. Opartą na systemie Linux klastrów HDInsight mają domyślnie włączony w aplikacji Tez.
+[Apache tez](https://tez.apache.org/) to alternatywny aparat wykonywania dla aparatu MapReduce. Klastry HDInsight oparte na systemie Linux mają domyślnie włączone tez.
 
 ![tez_1][image-hdi-optimize-hive-tez_1]
 
-Tez jest szybsze, ponieważ:
+Tez jest szybszy, ponieważ:
 
-* **Wykonaj kierowane acykliczne wykresu (DAG) jako pojedyncze zadanie w aparacie MapReduce**. DAG wymaga każdy zestaw liczby maperów stosowaną przez jeden zestaw reduktorów. Powoduje to, że wiele zadań MapReduce zostać rozszerzona dla każdego zapytania programu Hive. Tez nie ma takiego ograniczenia i może przetwarzać złożonych DAG jako jedno zadanie, w związku z tym dodatkowe obciążenie uruchamiania zadania.
-* **Pozwala uniknąć niepotrzebnych zapisów**. Wiele zadań będą używani do przetwarzania tego samego zapytania programu Hive w aparacie MapReduce. Dane wyjściowe każdego zadania MapReduce są zapisywane w systemie plików hdfs dla danych pośrednich. Ponieważ Tez minimalizuje liczbę zadań dla każdego zapytania programu Hive, jest w stanie uniknąć niepotrzebnych zapisu.
-* **Minimalizuje opóźnienia rozruchu**. Tez lepiej jest w stanie zminimalizować opóźnienie uruchamiania zmniejszenie liczby liczby maperów, których potrzebuje, aby rozpocząć, a także ulepszanie optymalizacji w całej.
-* **Ponownie używa kontenerów**. Zawsze, gdy Tez możliwe jest w stanie to ponowne użycie kontenerów, aby upewnić się, czy jest mniejsze opóźnienie z powodu uruchamiania kontenerów.
-* **Techniki optymalizacji ciągłe**. Tradycyjnie optymalizacji została wykonana w fazie kompilacji. Jednak więcej informacji na temat danych wejściowych jest dostępny umożliwiające celu uzyskania lepszej optymalizacji w czasie wykonywania. Tez wykorzystuje techniki optymalizacji ciągłym, w celu optymalizacji plan dalsze w fazie środowiska uruchomieniowego.
+* **Wykonaj ukierunkowany wykres acykliczne (DAG) jako pojedyncze zadanie w aparacie MapReduce**. DAG wymaga, aby każdy zestaw funkcji mapowania, po którym następuje jeden zestaw elementów ograniczających. Powoduje to, że wiele zadań MapReduce jest wyłączonych dla każdego zapytania programu Hive. Tez nie ma takiego ograniczenia i może przetwarzać złożone DAG jako jedno zadanie, co minimalizuje obciążenie uruchomienia zadania.
+* **Unika niepotrzebnych operacji zapisu**. Do przetwarzania tego samego zapytania Hive w aparacie MapReduce są używane wiele zadań. Dane wyjściowe każdego zadania MapReduce są zapisywane w systemie plików HDFS dla danych pośrednich. Ponieważ tez minimalizuje liczbę zadań dla każdego zapytania programu Hive, można uniknąć niepotrzebnych operacji zapisu.
+* **Minimalizuje opóźnienia uruchamiania**. Tez jest lepszym rozwiązaniem w celu zminimalizowania opóźnień uruchamiania przez zmniejszenie liczby wymaganych do uruchomienia, a także usprawnienia optymalizacji.
+* Ponownie **używa kontenerów**. Zawsze, gdy to możliwe, tez jest w stanie ponownie używać kontenerów, aby zapewnić skrócenie opóźnienia z powodu początkowych kontenerów.
+* **Techniki ciągłej optymalizacji**. Tradycyjna Optymalizacja została wykonana podczas fazy kompilacji. Dostępne są jednak więcej informacji na temat danych wejściowych umożliwiających lepszą optymalizację w czasie wykonywania. Tez używa technik ciągłej optymalizacji, które umożliwiają jej dalsze Optymalizowanie do fazy czasu wykonywania.
 
-Aby uzyskać więcej informacji dotyczących tych pojęć, zobacz [Apache TEZ](https://tez.apache.org/).
+Aby uzyskać więcej informacji na temat tych koncepcji, zobacz [Apache tez](https://tez.apache.org/).
 
-Możesz wykonać dowolne zapytanie Hive Tez włączone przez dodanie przedrostka zapytania za pomocą następującego polecenia zestawu:
+Możesz wprowadzić dowolne tez zapytania Hive przez dodanie prefiksu zapytania przy użyciu następującego polecenia Set:
 
    ```hive
    set hive.execution.engine=tez;
    ```
 
-## <a name="hive-partitioning"></a>Hive, partycjonowanie
+## <a name="hive-partitioning"></a>Partycjonowanie Hive
 
-Operacje We/Wy są główne wąskie gardło do uruchamiania zapytań programu Hive. Wydajność można poprawić, jeśli można zmniejszyć ilość danych, który ma być odczytywane. Domyślnie zapytania programu Hive skanowanie całych tabel programu Hive. Jednak dla zapytań, którzy muszą tylko skanowanie niewielką ilość danych (na przykład zapytania przy użyciu filtrowania), to zachowanie tworzy niepotrzebne obciążenie. Partycjonowanie gałęzi umożliwia zapytania Hive w celu dostępu do niezbędnej ilości danych tabel programu Hive.
+Operacje we/wy są głównymi wąskimi gardłami wydajności do uruchamiania zapytań programu Hive. Wydajność można ulepszyć, jeśli ilość danych, które muszą zostać odczytane, może zostać zmniejszona. Domyślnie zapytania programu Hive są skanowane w całej tabeli programu Hive. Jednak w przypadku zapytań, które wymagają tylko skanowania niewielkiej ilości danych (na przykład zapytania z filtrowaniem), to zachowanie powoduje utworzenie niepotrzebnych kosztów. Partycjonowanie Hive umożliwia kwerendom programu Hive dostęp do wymaganej ilości danych w tabelach Hive.
 
-Partycjonowanie hive jest implementowany przez reorganizowanie danych pierwotnych do nowych katalogów. Każda partycja ma swój własny katalog pliku. Podział jest zdefiniowany przez użytkownika. Na poniższym diagramie przedstawiono podział na partycje według kolumny tabeli programu Hive *roku*. Nowy katalog jest tworzony dla każdego roku.
+Partycjonowanie Hive jest implementowane przez reorganizację danych pierwotnych do nowych katalogów. Każda partycja ma swój własny katalog plików. Partycjonowanie jest definiowane przez użytkownika. Na poniższym diagramie przedstawiono partycjonowanie tabeli programu Hive według kolumny *Year*. Nowy katalog jest tworzony dla każdego roku.
 
-![Hive, partycjonowanie][image-hdi-optimize-hive-partitioning_1]
+![Partycjonowanie Hive][image-hdi-optimize-hive-partitioning_1]
 
-Niektóre kwestie partycjonowania:
+Niektóre zagadnienia dotyczące partycjonowania:
 
-* **Czy nie ma pod partycji** -partycjonowania w kolumnach za pomocą tylko kilku wartości może spowodować, że kilka partycji. Na przykład partycjonowania na płeć tworzy tylko dwie partycje można utworzyć (głosu męskiego i żeńskiego), w związku z tym tylko zredukowaniem opóźnień, maksymalnie o połowę.
-* **Nie przez partycję** — na y. Tworzenie partycji kolumn przy użyciu unikatowej wartości (na przykład nazwa użytkownika) powoduje, że wiele partycji. Za pośrednictwem partycji powoduje, że wiele obciążenia na namenode klastra nie pozostał do obsługi dużej liczby katalogów.
-* **Należy unikać niesymetryczność danych** — należy uważnie wybierać klucz partycji, aby wszystkie partycje mają rozmiar nieparzystych. Na przykład partycjonowania na *stanu* kolumny może spowodować przesunięcie rozkład danych. Ponieważ stan Kalifornia populacji prawie 30 x, że z Vermont, rozmiar partycji jest potencjalnie niesymetryczna i wydajność będzie zależeć znacznie.
+* **Nie można podzielić** na partycje w kolumnach zawierających tylko kilka wartości może spowodować kilka partycji. Na przykład partycjonowanie na płeć tworzy tylko dwie partycje, które mają zostać utworzone (samce i kobieta), co pozwala skrócić czas oczekiwania tylko o maksymalnie połowę.
+* **Nie przekraczaj partycji** — w drugiej skrajnej sytuacji utworzenie partycji w kolumnie z unikatową wartością (na przykład UserID) powoduje wystąpienie wielu partycji. Za pośrednictwem partycji powstaje wiele naprężenia namenode klastra, ponieważ musi on obsługiwać dużą liczbę katalogów.
+* **Unikanie pochylania danych** — wybierz swój klucz partycjonowania, tak aby wszystkie partycje miały rozmiar nawet. Na przykład partycjonowanie w kolumnie *State* może spowodować pochylenie dystrybucji danych. Ze względu na to, że stan Kalifornii jest niemal 30x z Vermont, rozmiar partycji jest potencjalnie skośny, a wydajność może się nieco różnić.
 
-Aby utworzyć tabelę partycji, użyj *podzielona na partycje według* klauzuli:
+Aby utworzyć tabelę partycji, użyj *podzielonej na partycje* klauzuli:
 
    ```hive
    CREATE TABLE lineitem_part
@@ -87,9 +87,9 @@ Aby utworzyć tabelę partycji, użyj *podzielona na partycje według* klauzuli:
    STORED AS TEXTFILE;
    ```
    
-Po utworzeniu tabeli partycjonowanej, możesz utworzyć partycjonowanie statyczne lub dynamiczne partycjonowanie.
+Po utworzeniu tabeli partycjonowanej można utworzyć partycjonowanie statyczne lub partycjonowanie dynamiczne.
 
-* **Partycjonowania statycznego** oznacza, że masz już podzielonej na fragmenty dane w odpowiednich katalogów. Przy użyciu statycznych partycji możesz dodać partycje Hive ręcznie oparte na lokalizację katalogu. Przykładem jest poniższy fragment kodu.
+* **Partycjonowanie statyczne** oznacza, że dane są już podzielonej na fragmenty w odpowiednich katalogach. Partycje statyczne umożliwiają dodawanie partycji Hive ręcznie na podstawie lokalizacji katalogu. Poniższy fragment kodu jest przykładem.
   
    ```hive
    INSERT OVERWRITE TABLE lineitem_part
@@ -101,7 +101,7 @@ Po utworzeniu tabeli partycjonowanej, możesz utworzyć partycjonowanie statyczn
    LOCATION ‘wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
    ```
    
-* **Dynamiczne partycjonowanie** oznacza, że ma gałęzi, aby automatycznie utworzyć partycji dla Ciebie. Ponieważ utworzono już partycjonowania tabeli z tabeli przejściowej, jest wszystko, co należy zrobić, wstawiania danych do tabeli partycjonowanej:
+* **Partycjonowanie dynamiczne** polega na tym, że program Hive ma automatycznie tworzyć partycje. Ponieważ tabela partycjonowania została już utworzona z tabeli przemieszczania, Wystarczy wstawić dane do tabeli partycjonowanej:
   
    ```hive
    SET hive.exec.dynamic.partition = true;
@@ -120,21 +120,21 @@ Po utworzeniu tabeli partycjonowanej, możesz utworzyć partycjonowanie statyczn
    
 Aby uzyskać więcej informacji, zobacz [partycjonowane tabele](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables).
 
-## <a name="use-the-orcfile-format"></a>Użycie formatu ORCFile
-Hive obsługuje różne formaty plików. Na przykład:
+## <a name="use-the-orcfile-format"></a>Użyj formatu ORCFile
+Program Hive obsługuje różne formaty plików. Przykład:
 
-* **Tekst**: domyślny format pliku i sprawdza się w przypadku większości scenariuszy.
-* **Avro**: działa dobrze sprawdza się w scenariuszach współpracy.
-* **ORC/Parquet**: najbardziej odpowiednie dla wydajności.
+* **Tekst**: domyślny format pliku i działa z większością scenariuszy.
+* **Avro**: sprawdza się najlepiej w scenariuszach współdziałania.
+* **Orc/Parquet**: najlepiej dopasowane do wydajności.
 
-Format ORC (zoptymalizowane pod kątem wiersz kolumnowy) jest bardzo wydajny sposób przechowywania danych programu Hive. W porównaniu do innych formatów, ORC ma następujące zalety:
+Format ORC (zoptymalizowany wiersz kolumnowy) to wysoce wydajny sposób przechowywania danych programu Hive. W porównaniu do innych formatów ORC ma następujące zalety:
 
-* Obsługa złożonych typów, w tym daty/godziny i typów złożonych i o połowicznej strukturze.
-* nawet o 70% kompresji.
-* indeksuje co 10 000 wierszy, które pozwalają na pomijanie wierszy.
-* znaczny spadek wykonania.
+* Obsługa złożonych typów, w tym typów DateTime i złożonych oraz z częściową strukturą.
+* do 70% kompresji.
+* indeksuje co 10 000 wierszy, które zezwalają na pomijanie wierszy.
+* znacząca porzucanie w czasie wykonywania.
 
-Aby włączyć formacie ORC, należy najpierw utworzyć tabelę z klauzulą *przechowywane jako ORC*:
+Aby włączyć format ORC, należy najpierw utworzyć tabelę z klauzulą *przechowywaną jako Orc*:
 
    ```hive
    CREATE TABLE lineitem_orc_part
@@ -147,7 +147,7 @@ Aby włączyć formacie ORC, należy najpierw utworzyć tabelę z klauzulą *prz
    STORED AS ORC;
    ```
    
-Następnie możesz wstawić dane do tabeli ORC z tabeli tymczasowej. Na przykład:
+Następnie wstawiasz dane do tabeli ORC z tabeli przemieszczania. Przykład:
 
    ```hive
    INSERT INTO TABLE lineitem_orc
@@ -170,35 +170,34 @@ Następnie możesz wstawić dane do tabeli ORC z tabeli tymczasowej. Na przykła
     FROM lineitem;
    ```
    
-Możesz dowiedzieć się więcej na temat formatu ORC w [ręczne Apache Hive języka](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC).
+Więcej informacji można znaleźć w formacie ORC w [podręczniku języka Apache Hive](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC).
 
-## <a name="vectorization"></a>Wektoryzacja
+## <a name="vectorization"></a>Wektoryzacji
 
-Wektoryzacji umożliwia Hive do przetwarzania partii wierszy 1024 zamiast przetwarzania jeden wiersz w danym momencie. Oznacza to, że proste operacje są wykonywane szybciej ponieważ mniejszej ilości kodu wewnętrznego, musi zostać uruchomiony.
+Wektoryzacji umożliwia Hive do przetwarzania partii wierszy 1024 razem zamiast przetwarzania jednego wiersza w czasie. Oznacza to, że proste operacje są wykonywane szybciej, ponieważ mniej wewnętrzny kod musi być uruchomiony.
 
-Aby włączyć wektoryzacji prefiks zapytania Hive z następującymi ustawieniami:
+Aby włączyć prefiks wektoryzacji zapytania programu Hive przy użyciu następującego ustawienia:
 
    ```hive
     set hive.vectorized.execution.enabled = true;
    ```
 
-Aby uzyskać więcej informacji, zobacz [Wektoryzowana wykonywania zapytania](https://cwiki.apache.org/confluence/display/Hive/Vectorized+Query+Execution).
+Aby uzyskać więcej informacji, zobacz [wektorowe wykonywanie zapytań](https://cwiki.apache.org/confluence/display/Hive/Vectorized+Query+Execution).
 
 ## <a name="other-optimization-methods"></a>Inne metody optymalizacji
-Istnieją więcej metod optymalizacji, które należy rozważyć, na przykład:
+Istnieje więcej metod optymalizacji, które można uwzględnić na przykład:
 
-* **Hive, obsługą zasobników:** technika, która pozwala na klastrze lub segmentu dużych zestawów danych w celu zoptymalizowania wydajności zapytania.
-* **Dołącz do optymalizacji:** optymalizacji wykonanie zapytania programu Hive w planowanie zwiększyć wydajność sprzężenia i zmniejszyć zapotrzebowanie na wskazówki użytkownika. Aby uzyskać więcej informacji, zobacz [Dołącz do optymalizacji](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization).
-* **Zwiększ reduktorów**.
+* **Zasobnikowanie Hive:** technika, która umożliwia klastrowi lub segmentację dużych zestawów danych w celu zoptymalizowania wydajności zapytań.
+* **Optymalizacja dołączania:** Optymalizacja planowania wykonania zapytania Hive w celu poprawy wydajności sprzężeń i zmniejszenia potrzeb użytkowników. Aby uzyskać więcej informacji, zobacz sekcję [Optymalizacja optymalizacji](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization).
+* **Zwiększ liczbę zmniejszeń**.
 
-## <a name="next-steps"></a>Kolejne kroki
-W tym artykule mają przedstawiono kilka typowych metod optymalizacji zapytań Hive. Aby dowiedzieć się więcej, zobacz następujące artykuły:
+## <a name="next-steps"></a>Następne kroki
+W tym artykule przedstawiono kilka typowych metod optymalizacji zapytań Hive. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
-* [Use Apache Hive w HDInsight](hadoop/hdinsight-use-hive.md)
-* [Analizowanie danych dotyczących opóźnień lotów przy użyciu zapytania interakcyjnego w HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
-* [Analizowanie danych serwisu Twitter przy użyciu technologii Hive w HDInsight](hdinsight-analyze-twitter-data-linux.md)
+* [Używanie Apache Hive w usłudze HDInsight](hadoop/hdinsight-use-hive.md)
+* [Analizowanie danych dotyczących opóźnień lotów przy użyciu interakcyjnych zapytań w usłudze HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [Analizowanie danych usługi Twitter przy użyciu Apache Hive w usłudze HDInsight](hdinsight-analyze-twitter-data-linux.md)
 
-[image-hdi-optimize-hive-scaleout_1]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_1.png
-[image-hdi-optimize-hive-scaleout_2]: ./media/hdinsight-hadoop-optimize-hive-query/scaleout_2.png
+
 [image-hdi-optimize-hive-tez_1]: ./media/hdinsight-hadoop-optimize-hive-query/tez_1.png
 [image-hdi-optimize-hive-partitioning_1]: ./media/hdinsight-hadoop-optimize-hive-query/partitioning_1.png

@@ -1,9 +1,9 @@
 ---
-title: Kończenie przeglądu dostępu ról usługi Azure AD PIM — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak kończenie przeglądu dostępu ról usługi Azure AD w usłudze Azure AD Privileged Identity Management (PIM) i wyświetlić wyniki
+title: Dokończ przegląd dostępu ról usługi Azure AD w programie PIM-Azure Active Directory | Microsoft Docs
+description: Dowiedz się, jak wykonać przegląd dostępu ról usługi Azure AD w Azure AD Privileged Identity Management (PIM) i wyświetlić wyniki
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,49 +11,49 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 06/06/2017
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a7fa3bfe159620130bc0962b470cea8e7422646
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e50ccc208219896e89bcc80f40c846f69c759f9b
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602172"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804400"
 ---
-# <a name="complete-an-access-review-of-azure-ad-roles-in-pim"></a>Kończenie przeglądu dostępu ról usługi Azure AD w usłudze PIM
-Administratorzy ról uprzywilejowanych mogą raz Sprawdź dostęp uprzywilejowany [przeglądu dostępu została uruchomiona](pim-how-to-start-security-review.md). Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) automatycznie wyśle wiadomość e-mail monitowaniu użytkowników, aby zapoznać się z ich dostęp. Jeśli użytkownik nie pobrały wiadomość e-mail, możesz wysłać im instrukcje [jak przeprowadzić przegląd dostępu](pim-how-to-perform-security-review.md).
+# <a name="complete-an-access-review-of-azure-ad-roles-in-pim"></a>Dokończ przegląd dostępu ról usługi Azure AD w usłudze PIM
+Administratorzy ról uprzywilejowanych mogą przeglądać dostęp uprzywilejowany po [rozpoczęciu przeglądu dostępu](pim-how-to-start-security-review.md). Usługa Azure Active Directory (Azure AD) Privileged Identity Management (PIM) automatycznie wyśle wiadomość e-mail z monitem o sprawdzenie dostępu użytkowników. Jeśli użytkownik nie otrzymał wiadomości e-mail, można wysłać im instrukcje w temacie [Jak przeprowadzić przegląd dostępu](pim-how-to-perform-security-review.md).
 
-Po zakończeniu okresu przeglądu dostępu lub wszystkich użytkowników została zakończona w ich własnym Przejrzyj, wykonaj kroki opisane w tym artykule, aby zarządzać przeglądu i wyświetlić wyniki.
+Po przekroczeniu okresu przeglądu dostępu lub zakończeniu samooceny przez wszystkich użytkowników wykonaj kroki opisane w tym artykule, aby zarządzać przeglądem i zobaczyć wyniki.
 
-## <a name="manage-access-reviews"></a>Zarządzanie przeglądów dostępu
-1. Przejdź do [witryny Azure portal](https://portal.azure.com/) i wybierz **usługi Azure AD Privileged Identity Management** aplikacji na pulpicie nawigacyjnym.
-2. Wybierz **przeglądów dostępu** części pulpitu nawigacyjnego.
-3. Wybierz przeglądu dostępu, które mają być zarządzane.
+## <a name="manage-access-reviews"></a>Zarządzanie recenzjami dostępu
+1. Przejdź do [Azure Portal](https://portal.azure.com/) i wybierz aplikację **Azure AD Privileged Identity Management** na pulpicie nawigacyjnym.
+2. Wybierz sekcję **przeglądy dostępu** na pulpicie nawigacyjnym.
+3. Wybierz przegląd dostępu, który chcesz zarządzać.
 
-W bloku szczegółów przeglądu dostępu istnieją opcje liczb do zarządzania przeglądu.
+W bloku szczegóły przeglądu dostępu dostępne są różne opcje zarządzania tym przeglądem.
 
-![Przyciski PIM do przeglądu dostępu — zrzut ekranu](./media/pim-how-to-complete-review/review-buttons.png)
+![Przyciski przeglądu dostępu PIM — zrzut ekranu](./media/pim-how-to-complete-review/review-buttons.png)
 
 ### <a name="remind"></a>Przypomnij
-Jeśli przeglądu dostępu jest skonfigurowana tak, aby użytkownicy Przejrzyj, **Przypomnij** przycisk wysyła powiadomienie. 
+Jeśli przegląd dostępu zostanie skonfigurowany tak, aby użytkownicy sami przeglądali, przycisk **Przypomnij** wyśle powiadomienie. 
 
 ### <a name="stop"></a>Stop
-Wszystkie przeglądy dostępu mają datę końcową, ale można użyć **zatrzymać** przycisk, aby zakończyć jej początku. Jeśli jeszcze nie zostały sprawdzone wszyscy użytkownicy w tej chwili, będą mogli po zatrzymaniu przeglądu. Nie można ponownie uruchomić przeglądu, po jest zatrzymana.
+Wszystkie przeglądy dostępu mają datę końcową, ale możesz użyć przycisku **Zatrzymaj** , aby zakończyć go na początku. Jeśli żaden użytkownik nie został przejrzany w tym czasie, nie będzie mógł po zatrzymywać przeglądu. Po zatrzymaniu nie można ponownie uruchomić recenzji.
 
 ### <a name="apply"></a>Zastosuj
-Po zakończeniu przeglądu dostępu, ponieważ osiągnięto datę zakończenia lub ręcznie, zatrzymanie **Zastosuj** przycisk implementuje wyniku przeglądu. W przeglądzie nastąpiła odmowa dostępu użytkownika, to krok, który spowoduje usunięcie przypisania roli.  
+Po zakończeniu przeglądu dostępu, ponieważ osiągnięto datę końcową lub została zatrzymana ręcznie, przycisk **Zastosuj** implementuje wynik przeglądu. W przypadku odmowy dostępu użytkownika do przeglądu jest to krok, który spowoduje usunięcie przypisania roli.  
 
 ### <a name="export"></a>Eksportowanie
-Jeśli użytkownik chce ręcznie zastosowania wyników przeglądu dostępu, możesz wyeksportować przeglądu. **Wyeksportować** przycisk rozpocznie się pobieranie pliku CSV. Wyniki w programie Excel lub inne programy, które otwierają pliki CSV można zarządzać.
+Jeśli chcesz zastosować wyniki przeglądu dostępu ręcznie, możesz wyeksportować przegląd. Przycisk **Eksportuj** rozpocznie pobieranie pliku CSV. Można zarządzać wynikami w programie Excel lub innych programach, które otwierają pliki CSV.
 
 ### <a name="delete"></a>Usuwanie
-Jeśli nie jesteś zainteresowany przeglądu w bardziej, należy go usunąć. **Usuń** przycisk usuwa przeglądu z poziomu aplikacji PIM.
+Jeśli nie interesuje Cię przegląd, usuń go. Przycisk **Usuń** usuwa przegląd z aplikacji PIM.
 
 > [!IMPORTANT]
-> Nie zostanie wyświetlone ostrzeżenie, zanim nastąpi usunięcie, więc upewnij się, że chcesz usunąć tego przeglądu. 
+> Przed usunięciem nie zostanie wyświetlone ostrzeżenie, dlatego należy usunąć ten przegląd. 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- [Rozpoczynanie przeglądu dostępu dla ról usługi Azure AD w usłudze PIM](pim-how-to-start-security-review.md)
-- [Wykonywanie przeglądu dostępu Moje ról usługi Azure AD w usłudze PIM](pim-how-to-perform-security-review.md)
+- [Rozpocznij przegląd dostępu dla ról usługi Azure AD w usłudze PIM](pim-how-to-start-security-review.md)
+- [Przeprowadzanie przeglądu dostępu do ról usługi Azure AD w usłudze PIM](pim-how-to-perform-security-review.md)

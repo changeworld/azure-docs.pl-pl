@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b233fcecfe80d1ce4464d2d02fdddb188f9265a7
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 4802c120f4722796fcad4ea99f25adad368451fd
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878243"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806542"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-preview-device-application-to-iot-hub"></a>Szybki start: Połącz przykładową aplikację urządzenia IoT Plug and Play w wersji zapoznawczej do IoT Hub
 
@@ -36,6 +36,9 @@ Pobierz i zainstaluj narzędzie Azure IoT Explorer na stronie [najnowszej wersji
 ## <a name="prepare-an-iot-hub"></a>Przygotowywanie Centrum IoT Hub
 
 Aby ukończyć ten przewodnik Szybki Start, potrzebujesz również usługi Azure IoT Hub w ramach subskrypcji platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+> [!NOTE]
+> W publicznej wersji zapoznawczej funkcje Plug and Play IoT są dostępne tylko w centrach IoT, które zostały utworzone w regionach **środkowe stany USA**, **Europa Północna**i **Japonia Wschodnia** .
 
 Dodaj Microsoft Azure rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure:
 
@@ -123,7 +126,7 @@ Aplikacja urządzenia uruchamia wysyłanie danych do IoT Hub.
 
 1. Rozwiń interfejs o IDENTYFIKATORze **urn: YOUR_COMPANY_NAME_HERE: EnvironmentalSensor: 1** , aby wyświetlić elementy podstawowe Plug and Play IoT — właściwości, polecenia i dane telemetryczne.
 
-1. Wybierz stronę telemetrii, aby wyświetlić dane telemetryczne wysyłane przez urządzenie.
+1. Wybierz stronę **telemetrii** , aby wyświetlić dane telemetryczne wysyłane przez urządzenie.
 
 1. Wybierz stronę **właściwości (bez możliwości zapisu)** , aby wyświetlić właściwości, które nie zostały zapisywalne zgłoszone przez urządzenie.
 

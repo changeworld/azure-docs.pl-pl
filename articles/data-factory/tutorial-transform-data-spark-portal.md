@@ -11,12 +11,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 34c8c49166ea13d67c1f3d51805671c63dbb352b
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: d13e0b95d57e3063292319961d5e1138f994076e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312572"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812279"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Przekształcanie danych w chmurze za pomocą działania platformy Spark w usłudze Azure Data Factory
 W tym samouczku utworzysz potok usługi Azure Data Factory za pomocą witryny Azure Portal. Ten potok przekształca dane przy użyciu działania Spark i połączonej usługi Azure HDInsight dostępnej na żądanie. 
@@ -147,13 +147,13 @@ W tej sekcji zredagujesz dwie połączone usługi:
    
    b. Upewnij się, że w polu **Typ** wybrano wartość **HDInsight na żądanie**.
    
-   c. Aby uzyskać **połączoną usługę Azure Storage**, wybierz opcję **AzureBlobStorage1**. Ta połączona usługa została utworzona wcześniej. Jeśli użyto innej nazwy, podaj w tym miejscu prawidłową nazwę. 
+   c. W przypadku **połączonej usługi Azure Storage**wybierz pozycję **AzureBlobStorage1**. Ta połączona usługa została utworzona wcześniej. Jeśli użyto innej nazwy, podaj w tym miejscu prawidłową nazwę. 
    
    d. W polu **Typ klastra** wybierz wartość **spark**.
    
    e. W polu **Identyfikator jednostki usługi** wprowadź identyfikator, który ma uprawnienia do tworzenia klastra usługi HDInsight. 
    
-      Jednostka usługi musi być członkiem roli współautora subskrypcji lub grupy zasobów, gdzie został utworzony klaster. Aby uzyskać więcej informacji, zobacz [Create Azure Active Directory application and service principal (Tworzenie jednostki usługi i aplikacji usługi Azure Active Directory)](../active-directory/develop/howto-create-service-principal-portal.md).
+      Jednostka usługi musi być członkiem roli współautora subskrypcji lub grupy zasobów, gdzie został utworzony klaster. Aby uzyskać więcej informacji, zobacz [Create Azure Active Directory application and service principal (Tworzenie jednostki usługi i aplikacji usługi Azure Active Directory)](../active-directory/develop/howto-create-service-principal-portal.md). **Identyfikator jednostki usługi** jest odpowiednikiem *identyfikatora aplikacji*, a **klucz jednostki usługi** jest równoważny z wartością klucza *tajnego klienta*.
    
    f. W polu **Klucz jednostki usługi** wprowadź klucz. 
    
@@ -189,7 +189,7 @@ W tej sekcji zredagujesz dwie połączone usługi:
    ![Określanie połączonej usługi HDInsight](./media/tutorial-transform-data-spark-portal/select-hdinsight-linked-service.png)
 1. Przejdź do karty **Skrypt/Jar** i wykonaj następujące czynności: 
 
-   a. Aby uzyskać **połączona usługa zadania**, wybierz opcję **AzureBlobStorage1**.
+   a. W obszarze **połączona usługa**wybierz pozycję **AzureBlobStorage1**.
    
    b. Wybierz pozycję **Przeglądaj magazyn**.
 
@@ -206,7 +206,7 @@ W tej sekcji zredagujesz dwie połączone usługi:
 
 
 ## <a name="trigger-a-pipeline-run"></a>Wyzwalanie uruchomienia potoku
-Wybierz **Dodaj wyzwalacz** na pasku narzędzi, a następnie wybierz pozycję **Wyzwól teraz**. 
+Na pasku narzędzi wybierz pozycję **Dodaj wyzwalacz** , a następnie wybierz pozycję **Wyzwól teraz**. 
 
 ![Przyciski „Wyzwól” i „Wyzwól teraz”](./media/tutorial-transform-data-spark-portal/trigger-now-menu.png)
 
@@ -222,7 +222,7 @@ Wybierz **Dodaj wyzwalacz** na pasku narzędzi, a następnie wybierz pozycję **
 
    ![Stan uruchomienia potoku](./media/tutorial-transform-data-spark-portal/pipeline-run-succeeded.png) 
 
-   Można przełączać do widoku uruchomień potoków, za pomocą **wszystkie uruchomienia potoków** link u góry.
+   Możesz wrócić do widoku uruchomienia potoków, wybierając łącze **wszystkie uruchomienia potoku** w górnej części ekranu.
 
    ![Widok „Uruchomienia działania”](./media/tutorial-transform-data-spark-portal/activity-runs.png)
 

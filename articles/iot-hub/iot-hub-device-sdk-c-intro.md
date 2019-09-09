@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: robinsh
-ms.openlocfilehash: 1c1921391048fc59f03070d4753f422d9cfc5237
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: dd12f974b9b02d919752dcb932c9ce1709d7315b
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883484"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813792"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Zestaw SDK urządzeń Azure IoT dla języka C
 
@@ -62,7 +62,7 @@ Aby można było uruchomić przykłady w zestawie SDK urządzeń Azure IoT dla j
 
 ### <a name="prepare-your-development-environment"></a>Przygotowywanie środowiska projektowego
 
-Pakiety są udostępniane dla typowych platform (takich jak NuGet dla systemu Windows lub apt_get dla Debian i Ubuntu), a próbki używają tych pakietów, jeśli są dostępne. W niektórych przypadkach należy skompilować zestaw SDK dla lub na urządzeniu. Jeśli musisz skompilować zestaw SDK, zobacz Przygotowywanie [środowiska deweloperskiego](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) w repozytorium GitHub.
+Pakiety są udostępniane dla typowych platform (takich jak NuGet dla systemu Windows lub apt_get dla Debian i Ubuntu), a próbki używają tych pakietów, jeśli są dostępne. W niektórych przypadkach należy skompilować zestaw SDK dla lub na urządzeniu. Jeśli musisz skompilować zestaw SDK, zobacz [Przygotowywanie środowiska deweloperskiego](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md) w repozytorium GitHub.
 
 Aby uzyskać przykładowy kod aplikacji, Pobierz kopię zestawu SDK z usługi GitHub. Pobierz swoją kopię źródła z **głównej** gałęzi [repozytorium GitHub](https://github.com/Azure/azure-iot-sdk-c).
 
@@ -119,9 +119,9 @@ static const char* connectionString = "[device connection string]";
 
 ## <a name="use-the-iothubclient-library"></a>Korzystanie z biblioteki usługi iothubclient
 
-W folderze **Client\_iothub** w repozytorium [Azure-IoT-SDK-c](https://github.com/azure/azure-iot-sdk-c) istnieje folder Samples zawierający aplikację o nazwie **iothub\_klienta\_przykład\_MQTT** .
+W folderze **Client\_iothub** w repozytorium [Azure-IoT-SDK-c](https://github.com/azure/azure-iot-sdk-c) istnieje folder **Samples** zawierający aplikację o nazwie **iothub\_klienta\_przykład\_MQTT** .
 
-Wersja systemu Windows **\_iothub_client Samples\_iothub_convenience_sample** Application zawiera następujące rozwiązanie programu Visual Studio:
+Wersja systemu Windows **iothub_client\_Samples\_iothub_convenience_sample** Application zawiera następujące rozwiązanie programu Visual Studio:
 
   ![Eksplorator rozwiązań programu Visual Studio](./media/iot-hub-device-sdk-c-intro/iothub-client-sample-mqtt.png)
 
@@ -137,14 +137,14 @@ To rozwiązanie zawiera pojedynczy projekt. W tym rozwiązaniu są zainstalowane
 
 Pakiet **Microsoft. Azure. C. SharedUtility** jest zawsze potrzebny podczas pracy z zestawem SDK. Ten przykład korzysta z protokołu MQTT, dlatego należy uwzględnić pakiety **Microsoft. Azure. umqtt** i **Microsoft. Azure. IoTHub. MqttTransport** (istnieją równoważne pakiety dla AMQP i https). Ponieważ przykład korzysta z biblioteki **usługi iothubclient** , w rozwiązaniu należy również uwzględnić pakiet **Microsoft. Azure. IoTHub. usługi iothubclient** .
 
-Implementację przykładowej aplikacji można znaleźć w pliku źródłowym **\_iothub_client Samples\_iothub_convenience_sample** .
+Implementację przykładowej aplikacji można znaleźć w pliku źródłowym **iothub_client\_Samples\_iothub_convenience_sample** .
 
 Poniższe kroki umożliwiają korzystanie z tej przykładowej aplikacji w celu przechodzenia przez elementy wymagane do korzystania z biblioteki **usługi iothubclient** .
 
 ### <a name="initialize-the-library"></a>Zainicjuj bibliotekę
 
 > [!NOTE]
-> Przed rozpoczęciem pracy z bibliotekami może być konieczne wykonanie pewnej inicjalizacji specyficznej dla platformy. Na przykład jeśli planujesz używać AMQP w systemie Linux, musisz zainicjować bibliotekę OpenSSL. Przykłady w [repozytorium GitHub](https://github.com/Azure/azure-iot-sdk-c) wywołują funkcję narzędzia **init\_platformy** funkcji podczas uruchamiania klienta i wywołają funkcję **DEINIT platformy\_** przed zamknięciem. Te funkcje są zadeklarowane w pliku nagłówkowym platform. h. Sprawdź definicje tych funkcji dla docelowej platformy w [repozytorium](https://github.com/Azure/azure-iot-sdk-c) , aby określić, czy w kliencie należy uwzględnić kod inicjalizacji specyficzny dla danej platformy.
+> Przed rozpoczęciem pracy z bibliotekami może być konieczne wykonanie pewnej inicjalizacji specyficznej dla platformy. Na przykład jeśli planujesz używać AMQP w systemie Linux, musisz zainicjować bibliotekę OpenSSL. Przykłady w [repozytorium GitHub](https://github.com/Azure/azure-iot-sdk-c) wywołują funkcję narzędzia **init platformy\_** funkcji podczas uruchamiania klienta i wywołają funkcję **\_DEINIT platformy** przed zamknięciem. Te funkcje są zadeklarowane w pliku nagłówkowym platform. h. Sprawdź definicje tych funkcji dla docelowej platformy w [repozytorium](https://github.com/Azure/azure-iot-sdk-c) , aby określić, czy w kliencie należy uwzględnić kod inicjalizacji specyficzny dla danej platformy.
 
 Aby rozpocząć pracę z bibliotekami, najpierw Przydziel IoT Hub obsługę klienta:
 
@@ -161,7 +161,7 @@ else
 
 Do tej funkcji jest przekazywany kopia parametrów połączenia urządzenia uzyskanych w narzędziu Eksplorator urządzeń. Należy również wyznaczyć protokół komunikacyjny do użycia. Ten przykład używa MQTT, ale AMQP i HTTPS są również opcjami.
 
-Jeśli masz prawidłowe dojście **klienta\_\_IOTHUB**, możesz rozpocząć wywoływanie interfejsów API, aby wysyłać i odbierać komunikaty do i z IoT Hub.
+Jeśli masz prawidłowe **dojście klienta\_\_IOTHUB**, możesz rozpocząć wywoływanie interfejsów API, aby wysyłać i odbierać komunikaty do i z IoT Hub.
 
 ### <a name="send-messages"></a>Wysyłanie komunikatów
 
@@ -217,7 +217,7 @@ Za każdym razem, gdy wysyłasz komunikat, należy określić odwołanie do funk
 static void SendConfirmationCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCallback)
 {
     EVENT_INSTANCE* eventInstance = (EVENT_INSTANCE*)userContextCallback;
-    (void)printf("Confirmation[%d] received for message tracking id = %zu with result = %s\r\n", callbackCounter, eventInstance->messageTrackingId, ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
+    (void)printf("Confirmation[%d] received for message tracking id = %zu with result = %s\r\n", callbackCounter, eventInstance->messageTrackingId, MU_ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
     /* Some device specific action code goes here... */
     callbackCounter++;
     IoTHubMessage_Destroy(eventInstance->messageHandle);
@@ -328,7 +328,7 @@ To wywołanie zwalnia zasoby, które zostały wcześniej przydzielone przez **fu
 
 Jak widać, można łatwo wysyłać i odbierać komunikaty z biblioteką **usługi iothubclient** . Biblioteka obsługuje szczegóły komunikacji z IoT Hub, w tym protokół, który ma być używany (z perspektywy dewelopera, to jest prosta opcja konfiguracji).
 
-Biblioteka **usługi iothubclient** zapewnia również precyzyjną kontrolę nad sposobem serializacji danych wysyłanych przez urządzenie do IoT Hub. W niektórych przypadkach ten poziom kontroli jest zaletą, ale w innych jest to szczegółowe informacje o implementacji, których nie chcesz używać. W takim przypadku można rozważyć użycie biblioteki serializatorów, która została opisana w następnej sekcji.
+Biblioteka **usługi iothubclient** zapewnia również precyzyjną kontrolę nad sposobem serializacji danych wysyłanych przez urządzenie do IoT Hub. W niektórych przypadkach ten poziom kontroli jest zaletą, ale w innych jest to szczegółowe informacje o implementacji, których nie chcesz używać. W takim przypadku można rozważyć użycie biblioteki **serializatorów** , która została opisana w następnej sekcji.
 
 ## <a name="use-the-serializer-library"></a>Korzystanie z biblioteki serializatorów
 
@@ -349,9 +349,9 @@ Tak jak w poprzednim przykładzie, to obejmuje kilka pakietów NuGet:
 * Microsoft.Azure.IoTHub.Serializer
 * Microsoft.Azure.umqtt
 
-Większość z tych pakietów była widoczna w poprzednim przykładzie, ale **pakiet Microsoft. Azure. IoTHub. Serializer** jest nowy. Ten pakiet jest wymagany w przypadku korzystania z biblioteki serializatorów.
+Większość z tych pakietów była widoczna w poprzednim przykładzie, ale **pakiet Microsoft. Azure. IoTHub. Serializer** jest nowy. Ten pakiet jest wymagany w przypadku korzystania z biblioteki **serializatorów** .
 
-Implementację przykładowej aplikacji można znaleźć w pliku **\_iothub_client Samples\_iothub_convenience_sample** .
+Implementację przykładowej aplikacji można znaleźć w pliku **iothub_client\_Samples\_iothub_convenience_sample** .
 
 W poniższych sekcjach omówiono najważniejsze części tego przykładu.
 
@@ -392,7 +392,7 @@ Na koniec Wywołaj **funkcję\_Create\_model instance** . **WeatherStation** jes
 
 ### <a name="define-the-model"></a>Zdefiniuj model
 
-Model w bibliotece **serializatorów** definiuje komunikaty, które urządzenie może wysłać do IoT Hub i komunikatów nazywanych akcjami w języku modelowania, które mogą być odbierane. Definiujesz model przy użyciu zestawu makr C, jak w przykładowej **aplikacji\_iothub_client\_Samples iothub_convenience_sample** :
+Model w bibliotece **serializatorów** definiuje komunikaty, które urządzenie może wysłać do IoT Hub i komunikatów nazywanych *akcjami* w języku modelowania, które mogą być odbierane. Definiujesz model przy użyciu zestawu makr C, jak w przykładowej **aplikacji\_iothub_client\_Samples iothub_convenience_sample** :
 
 ```c
 BEGIN_NAMESPACE(WeatherStation);
@@ -475,7 +475,7 @@ void sendCallback(IOTHUB_CLIENT_CONFIRMATION_RESULT result, void* userContextCal
 
     (void)printf("Message Id: %u Received.\r\n", messageTrackingId);
 
-    (void)printf("Result Call Back Called! Result is: %s \r\n", ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
+    (void)printf("Result Call Back Called! Result is: %s \r\n", MU_ENUM_TO_STRING(IOTHUB_CLIENT_CONFIRMATION_RESULT, result));
 }
 ```
 

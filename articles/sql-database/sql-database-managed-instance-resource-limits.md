@@ -11,19 +11,19 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 08/27/2019
-ms.openlocfilehash: 921a14243bc50651358f0df42b88857ab227916d
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: c0bfbbd8b85f0b3eadf468cdd1261f52bff26abe
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060632"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813388"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Przegląd Azure SQL Database limitów zasobów wystąpienia zarządzanego
 
 Ten artykuł zawiera omówienie limitów zasobów dla Azure SQL Database wystąpienia zarządzanego i zawiera informacje o sposobach żądania zwiększenia do tych limitów.
 
 > [!NOTE]
-> Aby uzyskać różnice w obsługiwanych funkcjach i instrukcjach języka T-SQL, zobacz temat [różnice](sql-database-features.md) w funkcjach i [Obsługa instrukcji języka t-SQL](sql-database-managed-instance-transact-sql-information.md).
+> Aby uzyskać różnice w obsługiwanych funkcjach i instrukcjach języka T-SQL, zobacz temat [różnice w funkcjach](sql-database-features.md) i [Obsługa instrukcji języka t-SQL](sql-database-managed-instance-transact-sql-information.md).
 
 ## <a name="instance-level-resource-limits"></a>Limity zasobów na poziomie wystąpienia
 
@@ -54,18 +54,20 @@ Wystąpienie zarządzane ma dwie warstwy usług: Ogólnego przeznaczenia i Kryty
 | Liczba rdzeni wirtualnych\* | Obliczenia 8, 16, 24<br/>5 rdzeń 4, 8, 16, 24, 32, 40, 64, 80 | Obliczenia 8, 16, 24 <br/> 5 rdzeń 4, 8, 16, 24, 32, 40, 64, 80 |
 | Maksymalna pamięć | Obliczenia 56 GB – 168 GB (7GB/rdzeń wirtualny)<br/>5 rdzeń 40,8 GB – 408 GB (5.1 GB/rdzeń wirtualny)<br/>Aby uzyskać więcej pamięci, Dodaj więcej rdzeni wirtualnych. | Obliczenia 56 GB – 168 GB (7GB/rdzeń wirtualny)<br/>5 rdzeń 40,8 GB – 408 GB (5.1 GB/rdzeń wirtualny)<br/>Aby uzyskać więcej pamięci, Dodaj więcej rdzeni wirtualnych. |
 | Maksymalny rozmiar zarezerwowanego wystąpienia magazynu | -2 TB dla 4 rdzeni wirtualnych (tylko 5 rdzeń)<br/>-8 TB dla innych rozmiarów | Obliczenia 1 TB <br/> 5 rdzeń <br/>-1 TB dla 4, 8, 16 rdzeni wirtualnych<br/>-2 TB przez 24 rdzeni wirtualnych<br/>-4 TB dla 32, 40, 64, 80 rdzeni wirtualnych |
-| Maksymalny rozmiar bazy danych | Ustalone na podstawie maksymalnego rozmiaru magazynu na wystąpienie | Ustalone na podstawie maksymalnego rozmiaru magazynu na wystąpienie |
+| Maksymalny rozmiar bazy danych | 8 TB | 4 TB |
 | Maksymalna liczba baz danych na wystąpienie | 100 | 100 |
 | Maksymalna liczba plików bazy danych na wystąpienie | Do 280 | 32 767 plików na bazę danych |
 | Maksymalny rozmiar pliku | 8 TB | 4 TB |
-| Operacje we/wy danych/dziennika (przybliżone) | 500 – 7 500 za plik<br/>\*[Zwiększ rozmiar pliku, aby uzyskać więcej operacji we/wy na sekundę](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 k-110 K (1375/rdzeń wirtualny)<br/>Dodaj więcej rdzeni wirtualnych, aby uzyskać lepszą wydajność operacji we/wy. |
+| Operacje we/wy danych/dziennika (przybliżone) | 500 – 7 500 za plik<br/>\*[Zwiększ rozmiar pliku, aby uzyskać więcej operacji we/wy na sekundę](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 5,5 k – 110 K (1375/rdzeń wirtualny)<br/>Dodaj więcej rdzeni wirtualnych, aby uzyskać lepszą wydajność operacji we/wy. |
 | Limit przepływności zapisu dziennika | 3 MB/s na rdzeń wirtualny<br/>Maks. 22 MB/s na wystąpienie | 4 MB/s na rdzeń wirtualny<br/>Maks 48 MB/s na wystąpienie|
 | Przepływność danych (przybliżona) | 100 – 250 MB/s na plik<br/>\*[Zwiększ rozmiar pliku, aby uzyskać lepszą wydajność we/wy](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | ND |
 | Opóźnienie operacji we/wy magazynu (w przybliżeniu) | 5-10 ms | 1-2 MS |
 | Maksymalny rozmiar bazy danych tempDB | 192 – 1 920 GB (24 GB na rdzeń wirtualny)<br/>Dodaj więcej rdzeni wirtualnych, aby uzyskać więcej przestrzeni TempDB. | Ograniczone przez maksymalny rozmiar magazynu wystąpienia. Rozmiar pliku dziennika bazy danych TempDB jest obecnie ograniczony do 24GB/rdzeń wirtualny. |
 | Przetwarzanie OLTP danych w pamięci | Nieobsługiwane | Dostępne |
 | Maksymalna liczba sesji | 30000 | 30000 |
-| Możliwe do odczytu repliki | 0 | 1 |
+| Możliwe do odczytu repliki | 0 | 1 (wliczone w cenę) |
+| Cennik/rozliczenia | Rdzeń wirtualny, zarezerwowany magazyn  <br/> Nie naliczono żadnych operacji we/wy, magazyn kopii zapasowych nie jest jeszcze naliczany. | Rdzeń wirtualny, zarezerwowany magazyn  <br/> Nie naliczono żadnych operacji we/wy, magazyn kopii zapasowych nie jest jeszcze naliczany. | 
+| Modele rabatów | [Wystąpienia zarezerwowane](sql-database-reserved-capacity.md)<br/>[Korzyść użycia hybrydowego platformy Azure](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (niedostępne w subskrypcjach tworzenia i testowania) | [Wystąpienia zarezerwowane](sql-database-reserved-capacity.md)<br/>[Korzyść użycia hybrydowego platformy Azure](sql-database-service-tiers-vcore.md#azure-hybrid-benefit) (niedostępne w subskrypcjach tworzenia i testowania)|
 
 > [!NOTE]
 > - Rozmiar pliku danych i dziennika w bazach danych użytkownika i systemu jest uwzględniany w rozmiarze magazynu wystąpienia, który jest porównywany z maksymalnym limitem rozmiaru magazynu. Użyj widoku system <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys. master_files</a> , aby określić łączną ilość miejsca używanego przez bazy danych. Dzienniki błędów nie są utrwalane i nie zostały uwzględnione w rozmiarze. Kopie zapasowe nie są uwzględniane w rozmiarze magazynu.
@@ -97,7 +99,7 @@ Obsługiwane typy subskrypcji mogą zawierać ograniczoną liczbę zasobów na r
 > [!Note]
 > Te limity to ustawienia domyślne, a nie ograniczenia techniczne. Limity można zwiększyć na żądanie, tworząc specjalne [żądanie pomocy technicznej w Azure Portal,](#obtaining-a-larger-quota-for-sql-managed-instance) Jeśli potrzebujesz więcej wystąpień zarządzanych w bieżącym regionie. Alternatywnie można tworzyć nowe wystąpienia zarządzane w innym regionie świadczenia usługi Azure bez wysyłania żądań pomocy technicznej.
 
-W poniższej tabeli przedstawiono domyślne limity dla obsługiwanych subskrypcji:
+W poniższej tabeli przedstawiono **domyślne limity** dla obsługiwanych typów subskrypcji (domyślne limity można rozszerzyć przy użyciu żądania pomocy technicznej opisanego poniżej):
 
 |Typ subskrypcji| Maksymalna liczba podsieci wystąpienia zarządzanego | Maksymalna liczba jednostek rdzeń wirtualny * |
 | :---| :--- | :--- |
@@ -109,7 +111,7 @@ W poniższej tabeli przedstawiono domyślne limity dla obsługiwanych subskrypcj
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional i Platformy MSDN|2|32|
 
-\*W obszarze Planowanie wdrożeń należy wziąć pod uwagę, że warstwa usług Krytyczne dla działania firmy (BC) wymaga czterech (4) razy więcej rdzeń wirtualny pojemności niż Ogólnego przeznaczenia (GP). Przykład: 1 rdzeń wirtualny GP = 1 jednostka rdzeń wirtualny i 1 BC rdzeń wirtualny = 4 jednostki rdzeń wirtualny. Aby uprościć analizę zużycia pod kątem domyślnych limitów, należy podsumować jednostki rdzeń wirtualny we wszystkich podsieciach w regionie, w którym wdrożono wystąpienia zarządzane i porównać wyniki z limitami jednostek wystąpienia dla danego typu subskrypcji. **Maksymalna liczba jednostek rdzeń wirtualny** dotyczy każdej subskrypcji w regionie. Nie ma żadnego limitu dla poszczególnych podsieci, z tą różnicą, że suma wszystkich rdzeni wirtualnych wdrożonych w wielu podsieciach musi być mniejsza lub równa **maksymalnej liczbie jednostek rdzeń wirtualny**.
+\*W obszarze Planowanie wdrożeń należy wziąć pod uwagę, że warstwa usług Krytyczne dla działania firmy (BC) wymaga czterech (4) razy więcej rdzeń wirtualny pojemności niż Ogólnego przeznaczenia (GP). Na przykład: 1 rdzeń wirtualny GP = 1 jednostka rdzeń wirtualny i 1 BC rdzeń wirtualny = 4 jednostki rdzeń wirtualny. Aby uprościć analizę zużycia pod kątem domyślnych limitów, należy podsumować jednostki rdzeń wirtualny we wszystkich podsieciach w regionie, w którym wdrożono wystąpienia zarządzane i porównać wyniki z limitami jednostek wystąpienia dla danego typu subskrypcji. **Maksymalna liczba jednostek rdzeń wirtualny** dotyczy każdej subskrypcji w regionie. Nie ma żadnego limitu dla poszczególnych podsieci, z tą różnicą, że suma wszystkich rdzeni wirtualnych wdrożonych w wielu podsieciach musi być mniejsza lub równa **maksymalnej liczbie jednostek rdzeń wirtualny**.
 
 \*\*Większe limity podsieci i rdzeń wirtualny są dostępne w następujących regionach: Australia Wschodnia, Wschodnie stany USA, Wschodnie stany USA 2, Europa Północna, Południowo-środkowe stany USA, Azja Południowo-Wschodnia, Południowe Zjednoczone Królestwo, Europa Zachodnia, zachodnie stany USA 2.
 
@@ -118,7 +120,7 @@ W poniższej tabeli przedstawiono domyślne limity dla obsługiwanych subskrypcj
 Jeśli potrzebujesz więcej wystąpień zarządzanych w Twoich bieżących regionach, Wyślij żądanie obsługi, aby zwiększyć przydział przy użyciu Azure Portal.
 Aby zainicjować proces uzyskiwania większego przydziału:
 
-1. Otwórz **Pomoc**i pomoc techniczną, a następnie kliknij pozycję **nowe żądanie obsługi**.
+1. Otwórz **Pomoc i pomoc techniczną**, a następnie kliknij pozycję **nowe żądanie obsługi**.
 
    ![Pomoc i obsługa techniczna](media/sql-database-managed-instance-resource-limits/help-and-support.png)
 2. Na karcie podstawowe informacje o nowym żądaniu obsługi:
@@ -132,7 +134,7 @@ Aby zainicjować proces uzyskiwania większego przydziału:
 3. Kliknij przycisk **Dalej**.
 4. Na **karcie problem** dla nowego żądania obsługi:
    - W polu **ważność**wybierz poziom ważności problemu.
-   - Abyuzyskać więcej informacji, podaj dodatkowe informacje o problemie, w tym komunikaty o błędach.
+   - Aby **uzyskać więcej informacji**, podaj dodatkowe informacje o problemie, w tym komunikaty o błędach.
    - W przypadku **przekazywania plików**Dołącz plik z więcej informacji (do 4 MB).
 
      ![Szczegóły problemu](media/sql-database-managed-instance-resource-limits/problem-details.png)

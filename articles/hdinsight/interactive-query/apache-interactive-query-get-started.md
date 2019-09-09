@@ -1,6 +1,6 @@
 ---
-title: Co to jest interakcyjnych zapytań w usłudze Azure HDInsight?
-description: Wprowadzenie do interakcyjnego zapytania w usłudze Azure HDInsight
+title: Co to jest zapytanie interaktywne w usłudze Azure HDInsight?
+description: Wprowadzenie do interaktywnego zapytania, nazywanego również Apache Hive LLAP, w usłudze Azure HDInsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,65 +8,65 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
 ms.date: 06/14/2019
-ms.openlocfilehash: ea17ddeab21c371f41cc57115df4dd91277c3c42
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 29b2a9378abaaa697d2d869145d5e912d6c06d6c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67151195"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811602"
 ---
-# <a name="what-is-interactive-query-in-azure-hdinsight"></a>Co to jest interakcyjne zapytania w usłudze Azure HDInsight
+# <a name="what-is-interactive-query-in-azure-hdinsight"></a>Co to jest zapytanie interaktywne w usłudze Azure HDInsight
 
-Zapytania interakcyjnego (nazywane również LLAP programu Hive Apache lub [Niskie opóźnienie analitycznego przetwarzania](https://cwiki.apache.org/confluence/display/Hive/LLAP)) jest usługi Azure HDInsight [typ klastra](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Zapytanie interakcyjne obsługuje buforowanie w pamięci, co sprawia, że zapytania usługi Apache Hive szybsze i bardziej interaktywny. Aby zapytania o dane przechowywane w usłudze Azure storage i usługi Azure Data Lake Storage w sposób superszybkiego, klienci korzystają interakcyjnych zapytań. Zapytanie interakcyjne ułatwia analityk deweloperów i danych do pracy z danymi big data przy użyciu swoich ulubionych narzędzi do analizy Biznesowej najczęściej. Zapytanie interakcyjne HDInsight obsługuje kilka narzędzi, aby uzyskać dostęp do danych big Data w łatwy sposób.
+Zapytanie interaktywne (nazywane również Apache Hive LLAP lub [przetwarzania analitycznego o małym opóźnieniu](https://cwiki.apache.org/confluence/display/Hive/LLAP)) to [Typ klastra](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types)usługi Azure HDInsight. Zapytanie interaktywne obsługuje buforowanie w pamięci, co sprawia, że Apache Hive zapytań szybciej i bardziej interaktywnie. Klienci używają interakcyjnego zapytania do wykonywania zapytań dotyczących danych przechowywanych w usłudze Azure Storage & Azure Data Lake Storage w sposób bardzo szybki. Zapytanie interaktywne ułatwia deweloperom i analitykom danych współpracują z danymi Big Data przy użyciu narzędzi do analizy biznesowej, które są najbardziej największe. Zapytanie interaktywne usługi HDInsight obsługuje kilka narzędzi, które ułatwiają uzyskiwanie dostępu do danych Big Data.
 
 [!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
-Klaser zapytania interaktywnego różni się od klastra Apache Hadoop. Zawiera on tylko usługi Hive.
+Interaktywny klaster zapytań różni się od klastra Apache Hadoop. Zawiera tylko usługę Hive.
 
-Możesz uzyskać dostęp do usługi Hive, w to klastra zapytania interakcyjnego tylko przy użyciu widoku Hive narzędzia Ambari Apache, z usługi Beeline i sterownika Microsoft Hive Open Database Connectivity (ODBC programu Hive). Nie masz dostępu do jego za pośrednictwem konsoli programu Hive, Templeton, klasyczny interfejs wiersza polecenia platformy Azure lub programu Azure PowerShell.
+Można uzyskać dostęp do usługi Hive w klastrze zapytań interakcyjnych tylko za pośrednictwem platformy Apache Ambari Hive View, Z usługi Beeline i sterownika Open Database Connectivity Hive firmy Microsoft (Hive ODBC). Nie możesz uzyskać do niego dostępu za pośrednictwem konsoli programu Hive, Templeton, klasycznego interfejsu wiersza polecenia platformy Azure lub Azure PowerShell.
 
-## <a name="create-an-interactive-query-cluster"></a>Utwórz klaser zapytania interaktywnego
+## <a name="create-an-interactive-query-cluster"></a>Utwórz interaktywny klaster zapytań
 
-Aby dowiedzieć się, jak tworzenie klastra HDInsight, zobacz [klastrów utworzyć Apache Hadoop w HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Wybierz typ klastra zapytania interakcyjnego.
+Aby uzyskać informacje na temat tworzenia klastra usługi HDInsight, zobacz [Tworzenie klastrów Apache Hadoop w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Wybierz typ klastra zapytań interaktywnych.
 
-## <a name="execute-apache-hive-queries-from-interactive-query"></a>Wykonywanie zapytania usługi Apache Hive z zapytaniem interakcyjnym
+## <a name="execute-apache-hive-queries-from-interactive-query"></a>Wykonaj zapytania Apache Hive z zapytania interaktywnego
 
 Aby wykonać zapytania programu Hive, dostępne są następujące opcje:
 
-* Użyj usługi Microsoft Power BI
+* Korzystanie z programu Microsoft Power BI
 
-    Zobacz [danych wizualizacji interaktywnych zapytań technologii Hive z usługą Power BI w usłudze Azure HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md) zobacz [wizualizowanie danych big data dzięki usłudze Power BI w usłudze Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
+    Zobacz [wizualizacje interakcyjne zapytań Apache Hive danych za pomocą Power BI w usłudze Azure HDInsight](./apache-hadoop-connect-hive-power-bi-directquery.md) zobacz [wizualizowanie danych big data za pomocą Power BI w usłudze Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
 
 * Korzystanie z programu Visual Studio
 
-    Zobacz [nawiązywanie połączenia z usługi Azure HDInsight i uruchamianie zapytań technologii Hive przy użyciu narzędzi Data Lake Tools for Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).
+    Zobacz [nawiązywanie połączenia z usługą Azure HDInsight i uruchamianie zapytań Apache Hive przy użyciu narzędzi Data Lake Tools for Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).
 
 * Use Visual Studio Code
 
-    Zobacz [Użyj programu Visual Studio Code dla Apache Hive, LLAP lub pySpark](../hdinsight-for-vscode.md).
-* Uruchom Apache Hive, korzystając z widoku Hive narzędzia Ambari Apache.
+    Zobacz [używanie Visual Studio Code dla Apache Hive, LLAP lub pySpark](../hdinsight-for-vscode.md).
+* Uruchom Apache Hive przy użyciu widoku Hive usługi Apache Ambari.
   
-    Zobacz [Apache Hive widoku za pomocą technologii Apache Hadoop w usłudze Azure HDInsight](../hadoop/apache-hadoop-use-hive-ambari-view.md).
+    Zobacz [Używanie widoku Apache Hive z Apache Hadoop w usłudze Azure HDInsight](../hadoop/apache-hadoop-use-hive-ambari-view.md).
 
-* Uruchom Apache Hive, korzystając z usługi Beeline.
+* Uruchom Apache Hive przy użyciu Z usługi Beeline.
   
-    Zobacz [Apache Hive za pomocą technologii Apache Hadoop w HDInsight z usługą Beeline](../hadoop/apache-hadoop-use-hive-beeline.md).
+    Zobacz [używanie Apache Hive z Apache Hadoop w usłudze HDInsight z z usługi Beeline](../hadoop/apache-hadoop-use-hive-beeline.md).
   
-    Korzystania z usługi Beeline z głównego węzła lub pustego węzła krawędzi. Firma Microsoft zaleca korzystanie z usługi Beeline od pustego węzła krawędzi. Aby uzyskać informacje dotyczące tworzenia klastra usługi HDInsight za pomocą pustego węzła krawędzi, zobacz [używanie pustych węzłów brzegowych w HDInsight](../hdinsight-apps-use-edge-node.md).
-* Uruchom Apache Hive, przy użyciu programu Hive ODBC.
+    Można użyć Z usługi Beeline z węzła głównego lub pustego węzła krawędzi. Zalecamy używanie Z usługi Beeline z pustego węzła krawędzi. Aby uzyskać informacje dotyczące tworzenia klastra usługi HDInsight za pomocą pustego węzła krawędzi, zobacz [używanie pustych węzłów brzegowych w usłudze HDInsight](../hdinsight-apps-use-edge-node.md).
+* Uruchom Apache Hive, używając ODBC programu Hive.
   
-    Zobacz [Connect Excel to Apache Hadoop przy użyciu sterownika Hive ODBC firmy Microsoft](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
+    Zobacz [łączenie programu Excel, aby Apache Hadoop za pomocą sterownika Microsoft Hive ODBC](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).
 
-Aby znaleźć parametry połączenia łączność bazy danych języka Java (JDBC):
+Aby znaleźć parametry połączenia z usługą Java Database Connectivity (JDBC):
 
-1. Zaloguj się do systemu Apache Ambari, korzystając z następującego adresu URL: `https://<cluster name>.AzureHDInsight.net`.
-2. W menu po lewej stronie wybierz **Hive**.
-3. Aby skopiować adres URL, wybierz ikonę Schowka:
+1. Zaloguj się do usługi Apache Ambari, korzystając z następującego adresu `https://<cluster name>.AzureHDInsight.net`URL:.
+2. W menu po lewej stronie wybierz pozycję **Hive**.
+3. Aby skopiować adres URL, wybierz ikonę schowka:
 
-   ![JDBC LLAP interakcyjnych zapytań usługi HDInsight Hadoop](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)
+   ![Zapytanie interaktywne usługi HDInsight Hadoop LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-* Dowiedz się, jak [tworzenie klastrami interakcyjnych zapytań w HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
-* Dowiedz się, jak [wizualizowanie danych big data dzięki usłudze Power BI w usłudze Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
-* Dowiedz się, jak [uruchomić zapytania usługi Apache Hive w usłudze Azure HDInsight za pomocą rozwiązania Zeppelin Apache](../interactive-query/hdinsight-connect-hive-zeppelin.md).
+* Dowiedz się, jak [tworzyć interaktywne klastry zapytań w usłudze HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
+* Dowiedz się, jak [wizualizować dane Big Data za pomocą Power BI w usłudze Azure HDInsight](../hadoop/apache-hadoop-connect-hive-power-bi.md).
+* Dowiedz się, jak [używać oprogramowania Apache Zeppelin do uruchamiania zapytań Apache Hive w usłudze Azure HDInsight](../interactive-query/hdinsight-connect-hive-zeppelin.md).

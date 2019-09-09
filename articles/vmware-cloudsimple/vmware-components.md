@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 51a19d867b4906aacfe58cb4fdfd08f32a16e5f3
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: bd83cff243c94ed62014ff95f6ca7c4e878f6af7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972355"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814571"
 ---
 # <a name="private-cloud-vmware-components"></a>Składniki VMware chmury prywatnej
 
@@ -30,10 +30,10 @@ Stos VMware chmury prywatnej jest wdrażany z użyciem następującej wersji opr
 
 | Składnik | Version | Licencjonowana wersja |
 |-----------|---------|------------------|
-| ESXi | 6.7 U1 | Enterprise Plus |
-| vCenter | 6.7 U1 | Program vCenter Standard |
+| ESXi | 6.7 U2 | Enterprise Plus |
+| vCenter | 6.7 U2 | Program vCenter Standard |
 | Sieci vSAN | 6.7 | Enterprise |
-| Centrum danych NSX | 2.3 | Zaawansowane |
+| Centrum danych NSX | 2.4.1 | Zaawansowane |
 
 ## <a name="esxi"></a>ESXi
 
@@ -53,7 +53,7 @@ Osadzony kontroler usług platformy VCSA jest skojarzony z **domeną logowania**
 
 Chmury prywatne są tworzone za pomocą w pełni skonfigurowanego magazynu sieci vSAN (all-flash) w klastrze.  Aby można było utworzyć klaster vSphere z magazynem danych sieci vSAN, wymagane są co najmniej trzy węzły tej samej jednostki SKU.  Deduplikacja i kompresja są domyślnie włączone w magazynie danych sieci vSAN.  Na każdym węźle klastra vSphere są tworzone dwie grupy dysków. Każda grupa dysków zawiera jeden dysk pamięci podręcznej i trzy dyski pojemności.
 
-Domyślne zasady magazynu sieci vSAN są tworzone w klastrze vSphere i stosowane do magazynu danych sieci vSAN.  Te zasady określają, w jaki sposób obiekty magazynu maszyn wirtualnych są obsługiwane i alokowane w magazynie danych w celu zagwarantowania wymaganego poziomu usługi.  Zasady magazynu definiują **niepowodzenia (FTT)** i **metodę**odporności na awarie.  Można utworzyć nowe zasady magazynu i zastosować je do maszyn wirtualnych. Aby zachować umowę SLA, należy utrzymywać 25% pojemności zapasowej w magazynie danych sieci vSAN.  
+Domyślne zasady magazynu sieci vSAN są tworzone w klastrze vSphere i stosowane do magazynu danych sieci vSAN.  Te zasady określają, w jaki sposób obiekty magazynu maszyn wirtualnych są obsługiwane i alokowane w magazynie danych w celu zagwarantowania wymaganego poziomu usługi.  Zasady magazynu definiują **niepowodzenia (FTT)** i **metodę odporności na awarie**.  Można utworzyć nowe zasady magazynu i zastosować je do maszyn wirtualnych. Aby zachować umowę SLA, należy utrzymywać 25% pojemności zapasowej w magazynie danych sieci vSAN.  
 
 ### <a name="default-vsan-storage-policy"></a>Domyślne zasady magazynu sieci vSAN
 

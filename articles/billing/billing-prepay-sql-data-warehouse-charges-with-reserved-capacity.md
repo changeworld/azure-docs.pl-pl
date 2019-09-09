@@ -1,39 +1,39 @@
 ---
-title: Przedpłata za SQL Data Warehouse opłaty za pomocą zarezerwowanej pojemności platformy Azure
-description: Dowiedz się, w jaki sposób możesz przedSQL Data Warehouse opłaty za korzystanie z zarezerwowanej pojemności, aby zaoszczędzić pieniądze.
+title: Oszczędność kosztów opłat za SQL Data Warehouse dzięki zarezerwowanej pojemności platformy Azure
+description: Dowiedz się, w jaki sposób zaoszczędzić koszty SQL Data Warehouse naliczania opłat za zastrzeżoną pojemność, aby zaoszczędzić pieniądze.
 services: billing
 author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 08/02/2019
+ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: 6ee7a661434bb756c6cf196937229db19d06b373
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 381a709c74f5fcf6bb1f89f07ad84d5e3af0c5e0
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779983"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806282"
 ---
-# <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Przedpłata za SQL Data Warehouse opłaty z zarezerwowaną pojemnością
+# <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Oszczędność kosztów SQL Data Warehouse opłatami za zarezerwowaną pojemność
 
-Możesz zaoszczędzić pieniądze, korzystając z Azure SQL Data Warehouse przez zapłatę za użycie cDWU przez okres jeden lub trzy lata. Aby kupić SQL Data Warehouse zarezerwowaną pojemność, musisz wybrać region i okres świadczenia usługi Azure. Następnie Dodaj SQL Data Warehouse jednostkę SKU do koszyka i wybierz liczbę jednostek cDWU, które chcesz kupić.
+Możesz zaoszczędzić pieniądze z Azure SQL Data Warehouse przez zatwierdzenie rezerwacji użycia cDWU przez okres jeden lub trzy lata. Aby kupić SQL Data Warehouse zarezerwowaną pojemność, musisz wybrać region i okres świadczenia usługi Azure. Następnie musisz dodać jednostkę SKU usługi SQL Data Warehouse do koszyka i wybrać liczbę jednostek cDWU do kupienia.
 
-W przypadku zakupu rezerwacji SQL Data Warehouse użycie, które pasuje do atrybutów rezerwacji, nie jest już naliczana według stawek płatność zgodnie z rzeczywistym użyciem.
+Gdy wykupisz rezerwację, za użycie usługi SQL Data Warehouse zgodne z atrybutami rezerwacji nie będą naliczane opłaty po stawkach płatności zgodnie z rzeczywistym użyciem.
 
-Rezerwacja nie obejmuje opłat za magazyn lub sieć skojarzonych z SQL Data Warehouse użyciu.
+Rezerwacja nie pokrywa kosztów magazynu i sieci wynikających z użycia usługi SQL Data Warehouse.
 
-Po wygaśnięciu zarezerwowanej pojemności SQL Data Warehouse wystąpienia będą nadal działać, ale opłaty są naliczane według stawki płatności zgodnie z rzeczywistym użyciem. Rezerwacje nie są odnawiane automatycznie.
+Gdy zarezerwowana pojemność wygaśnie, wystąpienia usługi SQL Data Warehouse dalej będą działać, ale będą za nie naliczane opłaty po stawkach płatności zgodnie z rzeczywistym użyciem. Rezerwacje nie są automatycznie odnawiane.
 
 Aby uzyskać informacje o cenach, zobacz [SQL Data Warehouse zarezerwowanej pojemności](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/).
 
-W [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)można kupić Azure SQL Data Warehouse zarezerwowaną pojemność. Aby kupić zastrzeżoną pojemność:
+W [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)można kupić Azure SQL Data Warehouse zarezerwowaną pojemność. Płatność za rezerwację z [góry lub miesięczna płatność](billing-monthly-payments-reservations.md). Aby kupić zastrzeżoną pojemność:
 
 - Musisz mieć rolę właściciela dla co najmniej jednej subskrypcji w przedsiębiorstwie lub z opcją płatność zgodnie z rzeczywistym użyciem.
 - W przypadku subskrypcji przedsiębiorstwa w [portalu EA](https://ea.azure.com/)należy włączyć opcję **Dodaj wystąpienia zarezerwowane** . Jeśli to ustawienie jest wyłączone, musisz być administratorem EA.
 - W przypadku programu Cloud Solution Provider (CSP) tylko agenci administracyjni lub agenci sprzedaży mogą zakupić SQL Data Warehouse zarezerwowaną pojemność.
 
-Aby uzyskać więcej informacji na temat sposobu, w jaki Klienci korporacyjni i klienci korzystający z usługi płatność zgodnie z rzeczywistym użyciem są obciążani zakupami rezerwacji, zobacz [Opis użycia usługi Azure Reservation na potrzeby rejestracji](billing-understand-reserved-instance-usage-ea.md) w przedsiębiorstwie i [zrozumienie użycia rezerwacji platformy Azure dla Subskrypcja z płatność zgodnie z rzeczywistym](billing-understand-reserved-instance-usage.md)użyciem.
+Aby uzyskać więcej informacji na temat sposobu, w jaki Klienci korporacyjni i klienci korzystający z usługi płatność zgodnie z rzeczywistym użyciem są obciążani zakupami rezerwacji, zobacz [Opis użycia usługi Azure Reservation na potrzeby rejestracji w przedsiębiorstwie](billing-understand-reserved-instance-usage-ea.md) i [zrozumienie użycia rezerwacji platformy Azure dla Subskrypcja z płatność zgodnie z rzeczywistym](billing-understand-reserved-instance-usage.md)użyciem.
 
 ## <a name="choose-the-right-size-before-purchase"></a>Wybierz odpowiedni rozmiar przed zakupem
 
@@ -45,7 +45,7 @@ Załóżmy na przykład, że całkowite użycie SQL Data Warehouse jest DW3000c.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Wybierz pozycję **wszystkie** > **rezerwacje**usług.
-3. Wybierz subskrypcję. Użyj listy subskrypcja, aby wybrać subskrypcję, która jest używana do regulowania zarezerwowanej pojemności. W przypadku metody płatności w ramach subskrypcji jest naliczana opłata z tytułu kosztów ponoszonych z góry. Typ subskrypcji musi być umową Enterprise Agreement (numery ofert: MS-AZR-0017P lub MS-AZR-0148P) lub płatność zgodnie z rzeczywistym użyciem (numery ofert: MS-AZR-0003P lub MS-AZR-0023P).
+3. Wybierz subskrypcję. Użyj listy subskrypcja, aby wybrać subskrypcję, która jest używana do regulowania zarezerwowanej pojemności. Metoda płatności za subskrypcję jest naliczana za koszt zarezerwowanej pojemności. Typ subskrypcji musi być umową Enterprise Agreement (numery ofert: MS-AZR-0017P lub MS-AZR-0148P) lub płatność zgodnie z rzeczywistym użyciem (numery ofert: MS-AZR-0003P lub MS-AZR-0023P).
    - W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka.
    - W przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem opłaty obciążają kartę kredytową lub metodę płatności faktury powiązaną z subskrypcją.
 4. Wybierz zakres. Użyj listy zakres, aby wybrać zakres subskrypcji.
@@ -79,5 +79,5 @@ Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https:
   - [Co to są Azure Reservations?](billing-save-compute-costs-reservations.md)
   - [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
   - [Opis rabatu Azure Reservations](billing-understand-reservation-charges.md)
-  - [Informacje na temat użycia rezerwacji dla subskrypcji z opcją płatność zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
-  - [Informacje na temat użycia rezerwacji na potrzeby rejestracji w przedsiębiorstwie](billing-understand-reserved-instance-usage-ea.md)
+  - [Understand reservation usage for your Pay-As-You-Go subscription (Informacje na temat użycia wystąpień zarezerwowanych w przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem)](billing-understand-reserved-instance-usage.md)
+  - [Understand reservation usage for your Enterprise enrollment (Informacje na temat użycia wystąpień zarezerwowanych w przypadku rejestracji Enterprise)](billing-understand-reserved-instance-usage-ea.md)

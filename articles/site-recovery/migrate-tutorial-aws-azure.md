@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: bb60fa216c10b11b6a47c029fbef3698c6f7bd6d
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 15ce85385662ba186f8434285130099054e52c05
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663497"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814446"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrowanie maszyn wirtualnych usług Amazon Web Services (AWS) na platformę Azure
 
@@ -30,6 +30,10 @@ W tym samouczku pokazano, jak przeprowadzić migrację maszyn wirtualnych usług
 > * Uruchamianie jednokrotnego przejścia w tryb failover na platformie Azure
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
+
+
+> [!NOTE]
+    > Za pomocą usługi Azure Migrate można teraz migrować wystąpienia AWS na platformę Azure. [Dowiedz się więcej](../migrate/tutorial-migrate-physical-virtual-machines.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 - Upewnij się, że na maszynach wirtualnych, które mają zostać zmigrowane, jest uruchomiona obsługiwana wersja systemu operacyjnego. Obsługiwane wersje to: 
@@ -185,7 +189,7 @@ Włącz replikację dla każdej maszyny wirtualnej, która ma zostać zmigrowana
 
      |  |  |
      |-----|-----|
-     | Obiekt docelowy: | Pozostaw wartość domyślną.|
+     | Cel: | Pozostaw wartość domyślną.|
      | Subskrypcja: | Wybierz subskrypcję, której używasz.|
      | Grupa zasobów po przełączeniu w tryb failover:| Użyj grupy zasobów utworzonej w sekcji [Przygotowywanie zasobów platformy Azure](#prepare-azure-resources).|
      | Model wdrażania po przełączeniu w tryb failover: | Wybierz opcję **Menedżer zasobów**.|

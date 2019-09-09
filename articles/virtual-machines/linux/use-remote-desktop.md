@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 18e8f577a52ff36f5e6c4eb8f9697d301f056911
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1189faf64dc3619d0e4581641c2c66d0b527754a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081400"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813444"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalowanie i Konfigurowanie Pulpit zdalny do nawiązywania połączenia z maszyną wirtualną z systemem Linux na platformie Azure
 Maszyny wirtualne z systemem Linux na platformie Azure są zwykle zarządzane z wiersza polecenia przy użyciu połączenia Secure Shell (SSH). W przypadku nowych do systemu Linux lub w celu szybkiego rozwiązywania problemów korzystanie z pulpitu zdalnego może być prostsze. W tym artykule opisano sposób instalowania i konfigurowania środowiska pulpitu ([pulpit Xfce](https://www.xfce.org)) i pulpitu zdalnego ([xrdp](https://www.xrdp.org)) dla maszyny wirtualnej z systemem Linux przy użyciu modelu wdrażania Menedżer zasobów.
@@ -55,7 +55,7 @@ sudo apt-get install xfce4
 Teraz, gdy masz zainstalowane środowisko pulpitu, skonfiguruj usługę pulpitu zdalnego do nasłuchiwania połączeń przychodzących. [xrdp](http://xrdp.org) to serwer open source Remote Desktop Protocol (RDP), który jest dostępny w większości dystrybucji systemu Linux i dobrze współdziała z pulpit Xfce. Zainstaluj program xrdp na maszynie wirtualnej Ubuntu w następujący sposób:
 
 ```bash
-sudo apt-get install xrdp=0.6.1-2
+sudo apt-get -y install xrdp
 sudo systemctl enable xrdp
 ```
 

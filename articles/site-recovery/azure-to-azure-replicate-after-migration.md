@@ -1,87 +1,87 @@
 ---
-title: Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure po migracji na platformę Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jak przygotować maszyny, aby skonfigurować odzyskiwanie po awarii między regionami platformy Azure po migracji na platformę Azure za pomocą usługi Azure Site Recovery.
+title: Skonfiguruj odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure po migracji na platformę Azure za pomocą Azure Site Recovery
+description: W tym artykule opisano sposób przygotowania maszyn do skonfigurowania odzyskiwania po awarii między regionami platformy Azure po migracji na platformę Azure przy użyciu Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 4b764c8e7c3d97ff521add05033265f705c4136f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff35c5e23c5d8a448d62a3eeb8d15ba8d5a531e4
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399535"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814540"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych platformy Azure po migracji na platformę Azure 
 
 
-Postępuj zgodnie z tego artykułu, jeśli masz [migrację maszyn lokalnych do maszyn wirtualnych platformy Azure](tutorial-migrate-on-premises-to-azure.md) przy użyciu [Site Recovery](site-recovery-overview.md) usługi, a teraz chcesz uzyskać maszyn wirtualnych, konfigurowanie odzyskiwania po awarii do regionu pomocniczego platformy Azure. W artykule opisano, jak upewnić się, że agent maszyny Wirtualnej platformy Azure jest zainstalowany na maszynach wirtualnych migrowanych oraz jak usunąć usługę Site Recovery Mobility po migracji nie są już potrzebne.
+Postępuj zgodnie z tym artykułem, jeśli [maszyny lokalne zostały zmigrowane do maszyn wirtualnych platformy Azure](tutorial-migrate-on-premises-to-azure.md) przy użyciu usługi [Site Recovery](site-recovery-overview.md) i chcesz teraz skonfigurować maszyny wirtualne do odzyskiwania po awarii w regionie pomocniczym platformy Azure. W tym artykule opisano, jak upewnić się, że Agent maszyny wirtualnej platformy Azure jest zainstalowany na zmigrowanych maszynach wirtualnych oraz jak usunąć usługę mobilności Site Recovery, która nie jest już wymagana po migracji.
 
 
 
 ## <a name="verify-migration"></a>Weryfikowanie migracji
 
-Przed rozpoczęciem konfigurowania odzyskiwania po awarii, upewnij się, że migracja została zakończona, zgodnie z oczekiwaniami. Pomyślnie migracji, po włączeniu trybu failover, należy wybrać **kończenia migracji** opcji dla każdej maszyny, które mają zostać zmigrowane. 
+Przed skonfigurowaniem odzyskiwania po awarii upewnij się, że migracja zakończyła się zgodnie z oczekiwaniami. Aby pomyślnie ukończyć migrację, po przejściu do trybu failover należy wybrać opcję **pełna migracja** dla każdej maszyny, która ma zostać zmigrowana. 
 
-## <a name="verify-the-azure-vm-agent"></a>Sprawdź, agent maszyny Wirtualnej platformy Azure
+## <a name="verify-the-azure-vm-agent"></a>Weryfikowanie agenta maszyny wirtualnej platformy Azure
 
-Każda maszyna wirtualna platformy Azure musi mieć [agenta maszyny Wirtualnej platformy Azure](../virtual-machines/extensions/agent-windows.md) zainstalowane. Aby replikować maszyny wirtualne platformy Azure, Usługa Site Recovery instaluje rozszerzenie na agencie.
+Dla każdej maszyny wirtualnej platformy Azure musi być zainstalowany [Agent maszyny wirtualnej platformy Azure](../virtual-machines/extensions/agent-windows.md) . Aby replikować maszyny wirtualne platformy Azure, Site Recovery instaluje rozszerzenie agenta.
 
-- Jeśli komputer jest uruchomiona wersja 9.7.0.0 lub później usługi Site Recovery Mobility agent maszyny Wirtualnej platformy Azure jest automatycznie instalowany przez usługę mobilności na maszynach wirtualnych Windows. We wcześniejszych wersjach usługi mobilności musisz zainstalować agenta automatycznie.
-- W przypadku maszyn wirtualnych systemu Linux trzeba ręcznie zainstalować agenta maszyny Wirtualnej platformy Azure. Musisz zainstalować agenta maszyny Wirtualnej platformy Azure, jeśli zainstalowana na zmigrowanej maszynie usługa mobilności jest v9.6 lub wcześniej.
+- Jeśli na maszynie jest uruchomiona wersja 9.7.0.0 lub nowsza Site Recovery, Agent maszyny wirtualnej platformy Azure zostanie automatycznie zainstalowany przez usługę mobilności na maszynach wirtualnych z systemem Windows. We wcześniejszych wersjach usługi mobilności należy zainstalować agenta automatycznie.
+- W przypadku maszyn wirtualnych z systemem Linux należy ręcznie zainstalować agenta maszyny wirtualnej platformy Azure. Należy zainstalować agenta maszyny wirtualnej platformy Azure tylko wtedy, gdy usługa mobilności zainstalowana na migrowanej maszynie ma wartość v 9.6 lub wcześniejszą.
 
 
-### <a name="install-the-agent-on-windows-vms"></a>Zainstaluj agenta na maszynach wirtualnych Windows
+### <a name="install-the-agent-on-windows-vms"></a>Instalowanie agenta na maszynach wirtualnych z systemem Windows
 
-Jeśli używasz wersji wcześniejszej niż 9.7.0.0 usługa mobilności Site Recovery lub niektórych innych trzeba zainstalować agenta ręcznie, wykonaj następujące czynności:  
+Jeśli używasz wersji usługi mobilności Site Recovery wcześniejszej niż 9.7.0.0, lub kilka innych potrzebnych do zainstalowania agenta ręcznie, wykonaj następujące czynności:  
 
-1. Upewnij się, że masz uprawnienia administratora na maszynie Wirtualnej.
-2. Pobierz [Instalatora agenta maszyny Wirtualnej](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
+1. Upewnij się, że masz uprawnienia administratora na maszynie wirtualnej.
+2. Pobierz [instalatora agenta maszyny wirtualnej](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 3. Uruchom plik Instalatora.
 
 #### <a name="validate-the-installation"></a>Sprawdzanie poprawności instalacji
-Aby sprawdzić, czy agent jest zainstalowany:
+Aby sprawdzić, czy Agent jest zainstalowany:
 
-1. Na maszynie Wirtualnej platformy Azure, w folderze C:\WindowsAzure\Packages powinny być widoczne w nim plik WaAppAgent.exe.
-2. Kliknij prawym przyciskiem myszy plik, a następnie w **właściwości**, wybierz opcję **szczegóły** kartę.
-3. Upewnij się, że **wersji produktu** pola pokazuje się wartość 2.6.1198.718 lub wyższa.
+1. Na maszynie wirtualnej platformy Azure w folderze C:\WindowsAzure\Packages powinien zostać wyświetlony plik WaAppAgent. exe.
+2. Kliknij prawym przyciskiem myszy plik, a następnie w oknie **Właściwości**wybierz kartę **szczegóły** .
+3. Sprawdź, czy w polu **Wersja produktu** jest wyświetlana wartość 2.6.1198.718 lub wyższa.
 
-[Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) informacje dotyczące instalacji agent for Windows.
+[Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) o instalacji agenta dla systemu Windows.
 
-### <a name="install-the-agent-on-linux-vms"></a>Zainstaluj agenta na maszynach wirtualnych z systemem Linux
+### <a name="install-the-agent-on-linux-vms"></a>Instalowanie agenta na maszynach wirtualnych z systemem Linux
 
-Zainstaluj [maszyny Wirtualnej systemu Linux platformy Azure](../virtual-machines/extensions/agent-linux.md) agenta ręcznie w następujący sposób:
+Zainstaluj agenta [maszyny wirtualnej z systemem Linux na platformie Azure](../virtual-machines/extensions/agent-linux.md) ręcznie w następujący sposób:
 
-1. Upewnij się, że masz uprawnienia administratora na komputerze.
-2. Zdecydowanie zaleca się zainstalowanie agenta maszyny Wirtualnej systemu Linux przy użyciu RPM lub DEB pakietu z repozytorium pakietów w Twojej dystrybucji. Wszystkie [zatwierdzonego dla dostawców dystrybucji](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) Zintegruj pakiet Azure Linux agent repozytoriów i obrazów.
-    - Zdecydowanie zaleca się zaktualizowanie agenta wyłącznie za pośrednictwem repozytorium dystrybucji.
-    - Nie zaleca się zainstalowanie agenta maszyny Wirtualnej systemu Linux bezpośrednio z serwisu GitHub i aktualizowania.
-    -  Jeśli najnowszą wersję agenta dla Twojej dystrybucji nie jest obsługiwana dystrybucja dostępnej, skontaktuj się z pomocą instrukcje dotyczące sposobu jego instalacji. 
+1. Upewnij się, że masz uprawnienia administratora na tym komputerze.
+2. Zdecydowanie zalecamy zainstalowanie agenta maszyny wirtualnej z systemem Linux przy użyciu programu RPM lub pakietu DEB z repozytorium pakietu dystrybucji. Wszyscy [pozatwierdzeni dostawcy dystrybucji](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrują pakiet agenta platformy Azure z systemem Linux z obrazami i repozytoriami.
+    - Zdecydowanie zalecamy, aby zaktualizować agenta tylko za pomocą repozytorium dystrybucji.
+    - Nie zalecamy instalowania agenta maszyny wirtualnej systemu Linux bezpośrednio z usługi GitHub i aktualizowania go.
+    -  Jeśli najnowszy Agent dystrybucji nie jest dostępny, skontaktuj się z pomocą techniczną, aby uzyskać instrukcje dotyczące sposobu jej instalacji. 
 
 #### <a name="validate-the-installation"></a>Sprawdzanie poprawności instalacji 
 
-1. Uruchom następujące polecenie: **ps -e** aby upewnić się, że Azure agent jest uruchomiony na maszynie Wirtualnej systemu Linux.
-2. Jeśli proces nie jest uruchomiona, uruchom go ponownie przy użyciu następujących poleceń:
-    - Dla systemu Ubuntu: **usługi walinuxagent start**
-    - Dla innych dystrybucji: **usługi waagent start**
+1. Uruchom to polecenie: **PS-e** , aby upewnić się, że Agent Azure działa na maszynie wirtualnej z systemem Linux.
+2. Jeśli proces nie jest uruchomiony, uruchom go ponownie przy użyciu następujących poleceń:
+    - Dla Ubuntu: **Usługa walinuxagent Start**
+    - W przypadku innych dystrybucji: **waagent usługi Start**
 
 
-## <a name="uninstall-the-mobility-service"></a>Odinstaluj usługę mobilności
+## <a name="uninstall-the-mobility-service"></a>Odinstalowywanie usługi mobilności
 
-1. Ręcznie odinstaluj usługę mobilności z maszyny Wirtualnej platformy Azure, przy użyciu jednej z następujących metod. 
-    - Dla Windows, w Panelu sterowania > **Dodaj/Usuń programy**, odinstaluj **Microsoft Azure lokacji odzyskiwania mobilności usługi/główny serwer docelowy**. W wierszu polecenia z podwyższonym poziomem uprawnień uruchom polecenie:
+1. Ręcznie odinstaluj usługę mobilności z maszyny wirtualnej platformy Azure przy użyciu jednej z poniższych metod. 
+    - W przypadku systemu Windows w panelu sterowania > **Dodaj/Usuń programy**, odinstaluj **Microsoft Azure Site Recovery usługa mobilności/główny serwer docelowy**. W wierszu polecenia z podwyższonym poziomem uprawnień uruchom polecenie:
         ```
         MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\ASRSetupLogs\UnifiedAgentMSIUninstall.log"
         ```
-    - Dla systemu Linux Zaloguj się jako użytkownik root. W terminalu przejdź do **/user/local/ASR**, i uruchom następujące polecenie:
+    - W przypadku systemu Linux Zaloguj się jako użytkownik główny. W terminalu przejdź do **/User/Local/ASR**i uruchom następujące polecenie:
         ```
         ./uninstall.sh -Y
         ```
-2. Uruchom ponownie maszynę Wirtualną, przed skonfigurowaniem replikacji.
+2. Przed skonfigurowaniem replikacji należy ponownie uruchomić maszynę wirtualną.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Rozwiązywanie problemów z przeglądu](site-recovery-extension-troubleshoot.md) dla rozszerzenie usługi Site Recovery na agencie maszyny Wirtualnej platformy Azure.
-[Szybkie replikowanie](azure-to-azure-quickstart.md) Maszynie wirtualnej platformy Azure do regionu pomocniczego.
+[Zapoznaj się z tematem rozwiązywania problemów](site-recovery-extension-troubleshoot.md) dotyczących rozszerzenia Site Recovery w agencie maszyny wirtualnej platformy Azure.
+[Szybka replikacja](azure-to-azure-quickstart.md) maszyny wirtualnej platformy Azure do regionu pomocniczego.

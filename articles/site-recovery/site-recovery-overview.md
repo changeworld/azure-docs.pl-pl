@@ -1,19 +1,18 @@
 ---
-title: Informacje o usłudze Azure Site Recovery | Microsoft Docs
+title: Informacje o Azure Site Recovery
 description: Zawiera omówienie usługi Azure Site Recovery oraz podsumowanie scenariuszy odzyskiwania po awarii i wdrażania migracji.
-services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: overview
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 907d12464156f551930098f6bd6a6a24596307cb
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 3f38560c92e91925ab8a18924acdbb74f4b90e59
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479921"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814385"
 ---
 # <a name="about-site-recovery"></a>Informacje o usłudze Site Recovery
 
@@ -41,7 +40,7 @@ Usługa Site Recovery może zarządzać replikacją dla:
 **Replikacja maszyny wirtualnej platformy Azure** | Odzyskiwanie po awarii maszyn wirtualnych platformy Azure można skonfigurować z regionu podstawowego do regionu dodatkowego.
 **Replikacja lokalnej maszyny wirtualnej** | Lokalne maszyny wirtualne i serwery fizyczne można replikować do platformy Azure lub do dodatkowego lokalnego centrum danych. Replikacja do platformy Azure pozwala wyeliminować koszty i złożoność związane z utrzymywaniem dodatkowego centrum danych.
 **Replikacja obciążenia** | Możliwe jest replikowanie dowolnego obciążenia uruchomionego na obsługiwanych maszynach wirtualnych platformy Azure, lokalnych maszynach wirtualnych funkcji Hyper-V i programu VMware oraz serwerach fizycznych z systemem Windows bądź Linux.
-**Odporność danych** | Usługa Site Recovery organizuje replikację, ale nie przechwytuje danych aplikacji. Podczas replikowania na platformę Azure dane są przechowywane w usłudze Azure Storage, która zapewnia odpowiednią odporność. W przypadku przejścia w tryb failover ma miejsce tworzenie maszyn wirtualnych platformy Azure na podstawie replikowanych danych.
+**Odporność danych** | Site Recovery organizuje replikację bez przechwycenia danych aplikacji. Podczas replikowania na platformę Azure dane są przechowywane w usłudze Azure Storage, która zapewnia odpowiednią odporność. W przypadku przejścia w tryb failover ma miejsce tworzenie maszyn wirtualnych platformy Azure na podstawie replikowanych danych.
 **Cel czasu odzyskiwania i cel punktu odzyskiwania** | Cele czasu odzyskiwania (RTO, recovery time objectives) i cele punktu odzyskiwania (RPO, recovery point objectives) należy utrzymywać w ramach limitów organizacji. Usługa Site Recovery umożliwia przeprowadzanie replikacji ciągłej w przypadku maszyn wirtualnych platformy Azure oraz maszyn wirtualnych programu VMware oraz replikacji nawet co 30 sekund w przypadku funkcji Hyper-V. Cele czasu odzyskiwania można zmniejszyć jeszcze bardziej dzięki integracji z usługą [Azure Traffic Manager](https://azure.microsoft.com/blog/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/).
 **Utrzymywanie spójności aplikacji w trybie failover** | Możliwa jest replikacja za pomocą punktów odzyskiwania z migawkami spójnymi z aplikacjami. Takie migawki przechwytują dane na dysku, wszystkie dane w pamięci oraz wszystkie trwające transakcje.
 **Przeprowadzanie testów bez zakłóceń** | W łatwy sposób można przeprowadzać próbne operacje odzyskiwania po awarii bez wpływu na trwającą replikację.
@@ -56,13 +55,13 @@ Usługa Site Recovery może zarządzać replikacją dla:
 
 **Obsługiwane** | **Szczegóły**
 --- | ---
-**Scenariusze replikacji** | Replikowanie maszyn wirtualnych platformy Azure między regionami platformy Azure.<br/><br/>  Replikowanie lokalnych maszyn wirtualnych programu VMware, maszyn wirtualnych funkcji Hyper-V, serwerów fizycznych (z systemami Windows i Linux) oraz maszyn wirtualnych usługi Azure Stack do platformy Azure.<br/><br/> <br/><br/> Replikacja wystąpień usługi AWS Windows na platformie Azure.<br/><br/> Replikowanie lokalnych maszyn wirtualnych programu VMware, maszyn wirtualnych funkcji Hyper-V zarządzanych przez program System Center VMM oraz serwerów fizycznych do lokacji dodatkowej.
+**Scenariusze replikacji** | Replikowanie maszyn wirtualnych platformy Azure między regionami platformy Azure.<br/><br/>  Replikowanie lokalnych maszyn wirtualnych programu VMware, maszyn wirtualnych funkcji Hyper-V, serwerów fizycznych (z systemami Windows i Linux) oraz maszyn wirtualnych usługi Azure Stack do platformy Azure.<br/><br/> <br/><br/> Replikuj wystąpienia systemu Windows AWS na platformę Azure.<br/><br/> Replikowanie lokalnych maszyn wirtualnych programu VMware, maszyn wirtualnych funkcji Hyper-V zarządzanych przez program System Center VMM oraz serwerów fizycznych do lokacji dodatkowej.
 **Regiony** | Przejrzyj [regiony obsługiwane](https://azure.microsoft.com/regions/services/) na potrzeby usługi Site Recovery. |
 **Zreplikowane maszyny** | Przejrzyj wymagania dotyczące replikacji [maszyn wirtualnych platformy Azure](azure-to-azure-support-matrix.md#replicated-machine-operating-systems), [lokalnych maszyn wirtualnych programu VMware i serwerów fizycznych](vmware-physical-azure-support-matrix.md#replicated-machines) oraz [lokalnych maszyn wirtualnych funkcji Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms).
 **Obciążenia** | Możesz replikować dowolne obciążenia uruchomione na maszynie, która jest obsługiwana na potrzeby replikacji. Dodatkowo zespół usługi Site Recovery wykonał specyficzne dla aplikacji testowanie na potrzeby [wielu aplikacji](site-recovery-workload.md#workload-summary).
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej o [obsłudze obciążeń](site-recovery-workload.md).
 * Zapoznaj się z wprowadzeniem do [replikacji maszyn wirtualnych platformy Azure między regionami](azure-to-azure-quickstart.md). 

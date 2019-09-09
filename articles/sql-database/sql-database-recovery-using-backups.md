@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 00982ea837783a7e7a9dca257f04c77d48aceef2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6f1a0485dbae3234d476ba5df62126f05d52f435
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103121"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813344"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL Database przy użyciu zautomatyzowanych kopii zapasowych bazy danych
 
@@ -91,7 +91,7 @@ Aby odzyskać pojedynczą, pulę lub wystąpienie bazy danych do punktu w czasie
 
 ## <a name="deleted-database-restore"></a>Przywracanie usuniętej bazy danych
 
-Usuniętą bazę danych można przywrócić do czasu usunięcia lub do wcześniejszego punktu w czasie na tym samym serwerze SQL Database przy użyciu Azure Portal, [programu PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)lub [REST (createmode = Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate). Usuniętą [bazę danych można przywrócić w wystąpieniu zarządzanym przy użyciu programu PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance). 
+Usuniętą bazę danych można przywrócić do czasu usunięcia lub do wcześniejszego punktu w czasie na tym samym serwerze SQL Database przy użyciu Azure Portal, [programu PowerShell](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase)lub [REST (createmode = Restore)](https://docs.microsoft.com/rest/api/sql/databases/createorupdate). [Usuniętą bazę danych można przywrócić w wystąpieniu zarządzanym przy użyciu programu PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance). 
 
 > [!TIP]
 > Przykładowy skrypt programu PowerShell przedstawiający sposób przywracania usuniętej bazy danych znajduje się w temacie [przywracanie bazy danych SQL przy użyciu programu PowerShell](scripts/sql-database-restore-database-powershell.md).
@@ -127,10 +127,7 @@ Przywracanie do punktu w czasie na poziomie geograficznym nie jest obecnie obsł
 
 ### <a name="geo-restore-using-the-azure-portal"></a>Przywracanie geograficzne przy użyciu Azure Portal
 
-Aby przywrócić bazę danych przy użyciu Azure Portal, Otwórz stronę bazy danych SQL, a następnie kliknij przycisk **Dodaj**. W polu tekstowym **Wybierz źródło** wybierz pozycję **kopia zapasowa**. Określ kopię zapasową, z której ma zostać wykonane odzyskiwanie w regionie i na wybranym przez siebie serwerze.
-
-> [!Note]
-> Przywracanie geograficzne przy użyciu Azure Portal nie jest dostępne w wystąpieniu zarządzanym. Zamiast tego użyj programu PowerShell.
+Aby przywrócić bazę danych przy użyciu Azure Portal, Otwórz stronę bazy danych SQL, a następnie kliknij przycisk **Dodaj**. W polu tekstowym **Wybierz źródło** wybierz pozycję **kopia zapasowa**. Określ kopię zapasową, z której ma zostać wykonane odzyskiwanie w regionie i na wybranym przez siebie serwerze. 
 
 ## <a name="programmatically-performing-recovery-using-automated-backups"></a>Programowe wykonywanie odzyskiwania przy użyciu zautomatyzowanych kopii zapasowych
 
@@ -182,7 +179,7 @@ Automatyczne kopie zapasowe chronią bazy danych przed błędami użytkowników 
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Aby zapoznać się z omówieniem i scenariuszami ciągłości działania, zobacz temat ciągłość działania [— Omówienie](sql-database-business-continuity.md).
+- Aby zapoznać się z omówieniem i scenariuszami ciągłości działania, zobacz temat [ciągłość działania — Omówienie](sql-database-business-continuity.md).
 - Aby dowiedzieć się więcej o Azure SQL Database zautomatyzowanych kopii zapasowych, zobacz [SQL Database zautomatyzowane kopie zapasowe](sql-database-automated-backups.md).
 - Aby dowiedzieć się więcej na temat przechowywania długoterminowego, zobacz [długoterminowe przechowywanie](sql-database-long-term-retention.md)danych.
 - Aby dowiedzieć się więcej na temat szybszych opcji odzyskiwania, zobacz [aktywne replikacje geograficzne](sql-database-active-geo-replication.md) lub [grupy autopracy awaryjnej](sql-database-auto-failover-group.md).

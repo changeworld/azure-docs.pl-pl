@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 11fc41374089c0ab7258dd191a255387713836eb
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 55e4b04814daaaff5bc217a561e9045d313d9675
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622319"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811429"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania przy użyciu konta usługi QQ za pomocą Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Aby użyć konta QQ jako dostawcy tożsamości w usłudze Azure Active Directory
 ### <a name="register-for-the-qq-developer-program"></a>Zarejestruj się w programie QQ Developer
 
 1. Zaloguj się do [portalu deweloperów QQ](http://open.qq.com) przy użyciu poświadczeń konta QQ.
-1. Po zalogowaniu się przejdź do [http://open.qq.com/reg](http://open.qq.com/reg) , aby zarejestrować się jako deweloper.
+1. Po zalogowaniu się przejdź do [https://open.qq.com/reg](https://open.qq.com/reg) , aby zarejestrować się jako deweloper.
 1. Wybierz pozycję**个人**(indywidualny deweloper).
 1. Wprowadź wymagane informacje i wybierz pozycję**下一步**(Następny krok).
 1. Ukończ proces weryfikacji poczty e-mail. Musisz poczekać kilka dni po zarejestrowaniu się jako deweloper.

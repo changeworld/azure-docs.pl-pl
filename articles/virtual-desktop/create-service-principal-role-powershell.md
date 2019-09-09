@@ -1,54 +1,50 @@
 ---
-title: Tworzenie jednostek usługi Windows wirtualnego pulpitu (wersja zapoznawcza) i przypisań ról za pomocą programu PowerShell — platformy Azure
-description: Jak utworzyć jednostki usługi i przypisz role przy użyciu programu PowerShell w wersji zapoznawczej pulpitu wirtualnego Windows.
+title: Tworzenie głównych i przypisań ról usługi Windows Virtual Desktop w wersji zapoznawczej przy użyciu programu PowerShell — Azure
+description: Jak tworzyć jednostki usługi i przypisywać role przy użyciu programu PowerShell w wersji zapoznawczej pulpitu wirtualnego systemu Windows.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 44c823653ecbad1c4dd1fd35b676c8a6d8bd1620
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 3e9ee3f5dd04ef838f78b9731885b7ea48e6c99d
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206660"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811327"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>Samouczek: Tworzenie jednostek usługi i przypisań ról za pomocą programu PowerShell
 
-Nazwy główne usług są tworzone w usłudze Azure Active Directory do przypisywania ról i uprawnień do określonego celu. W Windows wirtualnego pulpitu (wersja zapoznawcza) można utworzyć usługę podmiotu zabezpieczeń, aby:
+Nazwy główne usług są tożsamościami, które można utworzyć w Azure Active Directory, aby przypisać role i uprawnienia do określonego celu. W wersji zapoznawczej pulpitu wirtualnego systemu Windows można utworzyć jednostkę usługi, aby:
 
-- Automatyzowanie zadań zarządzania w usłudze określonego wirtualnego pulpitu Windows.
-- Użyj jako poświadczeń zamiast użytkowników wymagane uwierzytelnianie wieloskładnikowe podczas uruchamiania dowolnego szablonu usługi Azure Resource Manager dla Windows pulpitu wirtualnego.
+- Automatyzowanie określonych zadań zarządzania pulpitem wirtualnym systemu Windows.
+- Użyj jako poświadczeń zamiast użytkowników wymaganych przez uwierzytelnianie wieloskładnikowe podczas uruchamiania dowolnego szablonu Azure Resource Manager dla pulpitu wirtualnego systemu Windows.
 
 W tym samouczku pokazano, jak:
 
 > [!div class="checklist"]
-> * Tworzenie jednostki usługi w usłudze Azure Active Directory.
-> * Utwórz przypisanie roli w Windows pulpitu wirtualnego.
-> * Zaloguj się do Windows pulpitu wirtualnego przy użyciu nazwy głównej usługi.
+> * Utwórz nazwę główną usługi w Azure Active Directory.
+> * Utwórz przypisanie roli na pulpicie wirtualnym systemu Windows.
+> * Zaloguj się do pulpitu wirtualnego systemu Windows przy użyciu nazwy głównej usługi.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Zanim będzie można utworzyć jednostki usługi i przypisań ról, należy wykonać trzy czynności:
+Aby można było tworzyć jednostki usługi i przypisania ról, należy wykonać trzy czynności:
 
-1. Instalowanie modułu usługi Azure AD. Aby zainstalować moduł, uruchom program PowerShell jako administrator i uruchom następujące polecenie cmdlet:
+1. Zainstaluj moduł AzureAD. Aby zainstalować moduł, uruchom program PowerShell jako administrator i uruchom następujące polecenie cmdlet:
 
     ```powershell
     Install-Module AzureAD
     ```
 
-2. Uruchom następujące polecenia cmdlet przy użyciu wartości w cudzysłowie zastąpione wartościami odpowiednich do sesji.
+2. [Pobieranie i importowanie modułu programu PowerShell dla pulpitu wirtualnego systemu Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)
 
-    ```powershell
-    $myTenantName = "<my-tenant-name>"
-    ```
-
-3. W tej samej sesji programu PowerShell, należy wykonać wszystkie instrukcje w tym artykule. Może ona nie działać po zamknięciu okna i wrócić do niego później.
+3. Wykonaj wszystkie instrukcje zawarte w tym artykule w tej samej sesji programu PowerShell. Może nie zadziałało, jeśli zamkniesz okno i wrócisz do niego później.
 
 ## <a name="create-a-service-principal-in-azure-active-directory"></a>Tworzenie nazwy głównej usługi w usłudze Azure Active Directory
 
-Po wymagania wstępne zostały spełnione, w sesji programu PowerShell, uruchom następujące polecenia cmdlet programu PowerShell do tworzenia wieloma dzierżawcami usługa podmiotu zabezpieczeń na platformie Azure.
+Po spełnieniu wymagań wstępnych w sesji programu PowerShell uruchom następujące polecenia cmdlet programu PowerShell, aby utworzyć nazwę główną usługi wielodostępnej na platformie Azure.
 
 ```powershell
 Import-Module AzureAD
@@ -57,37 +53,13 @@ $svcPrincipal = New-AzureADApplication -AvailableToOtherTenants $true -DisplayNa
 $svcPrincipalCreds = New-AzureADApplicationPasswordCredential -ObjectId $svcPrincipal.ObjectId
 ```
 
-## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Utwórz przypisanie roli w Windows wirtualnego pulpitu (wersja zapoznawcza)
+## <a name="view-your-credentials-in-powershell"></a>Wyświetlanie poświadczeń w programie PowerShell
 
-Teraz, po utworzeniu usługi jednostki, można użyć go do logowania się na Windows pulpitu wirtualnego. Pamiętaj zalogować się przy użyciu konta które ma uprawnienia do utworzenia przypisania roli.
+Przed zakończeniem sesji programu PowerShell Sprawdź swoje poświadczenia i Zapisz je w celu uwzględnienia w przyszłości. Hasło jest szczególnie ważne, ponieważ nie będzie można go pobrać po zamknięciu sesji programu PowerShell.
 
-Po pierwsze, [Pobierz i zaimportuj moduł programu PowerShell pulpitu wirtualnego Windows](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) do użycia w sesji programu PowerShell, jeśli jeszcze go.
+Poniżej przedstawiono trzy poświadczenia, które należy napisać, i polecenia cmdlet, które należy uruchomić, aby je pobrać:
 
-Uruchom następujące polecenia cmdlet programu PowerShell, aby połączyć się pulpitu wirtualnego Windows i utworzyć jednostkę przypisania roli dla usługi.
-
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName $myTenantName
-```
-
-## <a name="sign-in-with-the-service-principal"></a>Zaloguj się przy użyciu jednostki usługi
-
-Po utworzeniu przypisania roli dla usługi jednostki, upewnij się, że nazwa główna usługi zalogować się do Windows pulpitu wirtualnego, uruchamiając następujące polecenie cmdlet:
-
-```powershell
-$creds = New-Object System.Management.Automation.PSCredential($svcPrincipal.AppId, (ConvertTo-SecureString $svcPrincipalCreds.Value -AsPlainText -Force))
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $creds -ServicePrincipal -AadTenantId $aadContext.TenantId.Guid
-```
-
-Po zalogowaniu, upewnij się, że wszystko działa, testując kilka poleceń cmdlet programu PowerShell pulpitu wirtualnego Windows jednostki usługi.
-
-## <a name="view-your-credentials-in-powershell"></a>Wyświetl swoje poświadczenia w programie PowerShell
-
-Zakończyć sesję programu PowerShell wyświetlić swoje poświadczenia, a następnie zapisz je w przyszłości. Hasło jest szczególnie ważne, ponieważ nie można pobrać po zamknięciu tej sesji programu PowerShell.
-
-Poniżej przedstawiono trzy poświadczeń, których należy zanotować i poleceń cmdlet, które należy uruchomić, aby je uzyskać:
-
-- Hasło:
+- Hasło
 
     ```powershell
     $svcPrincipalCreds.Value
@@ -105,9 +77,37 @@ Poniżej przedstawiono trzy poświadczeń, których należy zanotować i polece�
     $svcPrincipal.AppId
     ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="create-a-role-assignment-in-windows-virtual-desktop-preview"></a>Tworzenie przypisania roli w wersji zapoznawczej pulpitu wirtualnego systemu Windows
 
-Po utworzeniu nazwy głównej usługi i przypisana rola w Twojej dzierżawie Windows pulpitu wirtualnego, można użyć go do utworzenia puli hosta. Aby dowiedzieć się więcej o pulach hosta, przejdź do samouczka związane z tworzeniem puli hosta w Windows pulpitu wirtualnego.
+Następnie utworzysz przypisanie roli RDS na pulpicie wirtualnym systemu Windows dla jednostki usługi, co umożliwi jednostce usługi Logowanie się do pulpitu wirtualnego systemu Windows. Upewnij się, że używasz konta z uprawnieniami do tworzenia przypisań ról RDS.
+
+Uruchom następujące polecenia cmdlet programu PowerShell, aby połączyć się z pulpitem wirtualnym systemu Windows i wyświetlić dzierżawy usług pulpitu zdalnego.
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+Get-RdsTenant | FL
+```
+
+Użyj nazwy dzierżawca dla poprawnej dzierżawy i uruchom następujące polecenia cmdlet programu PowerShell, aby utworzyć przypisanie roli dla jednostki usługi w określonej dzierżawie.
+
+```powershell
+New-RdsRoleAssignment -RoleDefinitionName "RDS Owner" -ApplicationId $svcPrincipal.AppId -TenantName "<my-rds-tenantname>"
+```
+
+## <a name="sign-in-with-the-service-principal"></a>Zaloguj się przy użyciu nazwy głównej usługi
+
+Po utworzeniu przypisania roli dla jednostki usługi upewnij się, że jednostka usługi może się zalogować do pulpitu wirtualnego systemu Windows, uruchamiając następujące polecenie cmdlet:
+
+```powershell
+$creds = New-Object System.Management.Automation.PSCredential($svcPrincipal.AppId, (ConvertTo-SecureString $svcPrincipalCreds.Value -AsPlainText -Force))
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com" -Credential $creds -ServicePrincipal -AadTenantId $aadContext.TenantId.Guid
+```
+
+Po zalogowaniu się upewnij się, że wszystko działa, testując kilka poleceń cmdlet programu PowerShell dla pulpitu wirtualnego systemu Windows z jednostką usługi.
+
+## <a name="next-steps"></a>Następne kroki
+
+Po utworzeniu jednostki usługi i przypisaniu jej do roli w dzierżawie pulpitu wirtualnego systemu Windows możesz użyć jej do utworzenia puli hostów. Aby dowiedzieć się więcej na temat pul hostów, przejdź do samouczka dotyczącego tworzenia puli hostów w programie Virtual Desktop systemu Windows.
 
  > [!div class="nextstepaction"]
- > [Samouczek puli hosta Windows pulpitu wirtualnego](./create-host-pools-azure-marketplace.md)
+ > [Samouczek puli hostów usług pulpitu wirtualnego systemu Windows](./create-host-pools-azure-marketplace.md)

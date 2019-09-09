@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: aebcefadf4dfdb9301a01b0b4117e8aa2e429898
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: e11c6d23e93701e1608e1c444deb47c80543789e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276521"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813296"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopiowanie danych z Amazon Simple Storage Service przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Wybierz używaną wersję usługi Data Factory:"]
@@ -25,7 +25,8 @@ ms.locfileid: "70276521"
 
 W tym artykule opisano sposób kopiowania danych z usługi Amazon Simple Storage Service (Amazon S3). Aby dowiedzieć się więcej na temat usługi Azure Data Factory, przeczytaj [artykuł wprowadzający](introduction.md).
 
-Aby uzyskać informacje na temat scenariusza migracji danych z usługi Amazon S3 do magazynu Azure, Dowiedz się więcej na temat [używania Azure Data Factory do migrowania danych z usługi Amazon S3 do magazynu Azure](data-migration-guidance-s3-azure-storage.md).
+>[!TIP]
+>Aby uzyskać informacje na temat scenariusza migracji danych z usługi Amazon S3 do magazynu Azure, Dowiedz się więcej na temat [używania Azure Data Factory do migrowania danych z usługi Amazon S3 do magazynu Azure](data-migration-guidance-s3-azure-storage.md).
 
 ## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
@@ -100,12 +101,12 @@ Oto przykład:
 
 Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. 
 
-- W przypadku **Parquet, rozdzielonego tekstu, Avro i formatu binarnego**zapoznaj się z sekcją [Parquet, rozdzielaną tekstem i binarnym zestawem danych](#format-based-dataset) .
-- W przypadku innych formatów, takich jak **Format Orc/JSON**, zapoznaj się z sekcją [zestaw danych](#other-format-dataset) .
+- W przypadku **Parquet, rozdzielonego tekstu, JSON, Avro i formatu binarnego**zapoznaj się z sekcją [Parquet, rozdzielaną tekstem, JSON, Avro i binarny zestaw danych](#format-based-dataset) .
+- W przypadku innych formatów, takich jak **Format Orc**, zapoznaj się z sekcją [innego formatu zestawu danych](#other-format-dataset) .
 
-### <a name="format-based-dataset"></a>Parquet, rozdzielany tekstem, Avro i binarny zestaw danych
+### <a name="format-based-dataset"></a>Parquet, rozdzielony tekst, JSON, Avro i binarny zestaw danych
 
-Aby skopiować dane z usługi Amazon S3 w **Parquet, rozdzielony tekst, Avro lub binarny**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielonym formatem tekstowym](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie zestawu danych opartym na formacie i obsługiwanymi ustawieniami. Następujące właściwości są obsługiwane w przypadku usługi Amazon S3 `location` w obszarze Ustawienia w zestawie danych opartym na formacie:
+Aby skopiować dane z usługi Amazon S3 w **Parquet, rozdzielony tekst, JSON, Avro i format binarny**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie zestawu danych opartym na formacie i obsługiwane Ustawienia. Następujące właściwości są obsługiwane w przypadku usługi Amazon S3 `location` w obszarze Ustawienia w zestawie danych opartym na formacie:
 
 | Właściwość   | Opis                                                  | Wymagane |
 | ---------- | ------------------------------------------------------------ | -------- |
@@ -147,7 +148,7 @@ Aby skopiować dane z usługi Amazon S3 w **Parquet, rozdzielony tekst, Avro lub
 
 ### <a name="other-format-dataset"></a>Inny zestaw danych formatu
 
-Aby skopiować dane z usługi Amazon S3 w **formacie Orc/JSON**, obsługiwane są następujące właściwości:
+Aby skopiować dane z usługi Amazon S3 w **formacie Orc**, obsługiwane są następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
@@ -229,12 +230,12 @@ Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania dz
 
 ### <a name="amazon-s3-as-source"></a>Amazon S3 jako źródło
 
-- Aby skopiować z **Parquet, rozdzielony tekst, Avro i format binarny**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem i ze źródłem formatu binarnego](#format-based-source) .
-- Aby skopiować dane z innych formatów, takich jak **Format Orc/JSON**, zapoznaj się z sekcją [inne źródło formatu](#other-format-source) .
+- Aby skopiować z **Parquet, rozdzielony tekst, JSON, Avro i format binarny**, zapoznaj się z sekcją [Parquet, rozdzielaną tekstem, JSON, Avro i binarną](#format-based-source) .
+- Aby skopiować inne formaty, takie jak **Format Orc**, zapoznaj się z sekcją [inne źródło formatu](#other-format-source) .
 
-#### <a name="format-based-source"></a>Parquet, rozdzielany tekstem, Avro i binarny kod źródłowy
+#### <a name="format-based-source"></a>Parquet, rozdzielany tekstem, JSON, Avro i format binarny
 
-Aby skopiować dane z usługi Amazon S3 w **Parquet, rozdzielony tekst, Avro lub binarny**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielanym formatem tekstu](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [formatu binarnego](format-binary.md) w źródle działania kopiowania opartego na formacie i obsługiwane ustawienia. Następujące właściwości są obsługiwane w przypadku usługi Amazon S3 `storeSettings` w obszarze Ustawienia źródła kopiowania opartego na formacie:
+Aby skopiować dane z usługi Amazon S3 w **Parquet, rozdzielony tekst, JSON, Avro i format binarny**, zapoznaj się z [formatem Parquet](format-parquet.md), [rozdzielonym formatem tekstowym](format-delimited-text.md), [formatem Avro](format-avro.md) i artykułem [binarnym](format-binary.md) w formacie źródłowym i obsługiwane ustawienia. Następujące właściwości są obsługiwane w przypadku usługi Amazon S3 `storeSettings` w obszarze Ustawienia źródła kopiowania opartego na formacie:
 
 | Właściwość                 | Opis                                                  | Wymagane                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
@@ -293,7 +294,7 @@ Aby skopiować dane z usługi Amazon S3 w **Parquet, rozdzielony tekst, Avro lub
 
 #### <a name="other-format-source"></a>Inne źródło formatowania
 
-Aby skopiować dane z usługi Amazon S3 w **formacie Orc/JSON**, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
+Aby skopiować dane z usługi Amazon S3 w **formacie Orc**, w sekcji **Źródło** działania kopiowania są obsługiwane następujące właściwości:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |

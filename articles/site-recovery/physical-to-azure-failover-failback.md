@@ -1,61 +1,61 @@
 ---
-title: Tryb failover i powrotu po awarii fizycznych serwerów dla odzyskiwania po awarii na platformie Azure z usługą Site Recovery niepowodzenie | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak i serwerów fizycznych na platformę Azure w tryb failover i powrót po awarii do lokacji lokalnej do odzyskiwania po awarii przy użyciu usługi Azure Site Recovery
+title: Przełączenie w tryb failover i powrót po awarii serwerów fizycznych na potrzeby odzyskiwania po awarii na platformie Azure za pomocą Site Recovery | Microsoft Docs
+description: Dowiedz się, jak przełączyć serwery fizyczne do trybu failover na platformie Azure i powrócić po awarii do lokacji lokalnej w celu odzyskiwania po awarii za pomocą Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 14fa5822c575f2d2d60a956263cf916ee8f9bb4d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 49b61423b33282be7f0ace52c2a164d52ba20314
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66400037"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814416"
 ---
-# <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Tryb failover i zakończyć się niepowodzeniem powrotu po awarii fizycznych serwerów replikowanych na platformie Azure
+# <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Przełączenie w tryb failover i powrót po awarii serwerów fizycznych replikowanych do platformy Azure
 
-W tym samouczku opisano sposób awaryjnego przełączania serwera fizycznego na platformę Azure. Po przełączeniu w tryb failover, powrotu po awarii serwera do lokacji lokalnej po udostępnieniu.
+W tym samouczku opisano sposób awaryjnego przełączania serwera fizycznego na platformę Azure. Po przełączeniu w tryb failover serwer nie zostanie przywrócony do lokacji lokalnej, jeśli jest dostępny.
 
 ## <a name="preparing-for-failover-and-failback"></a>Przygotowanie do przełączenia w tryb failover i powrotu po awarii
 
-Fizycznych serwerów replikowanych na platformie Azure przy użyciu Site Recovery można przełączać tylko jako maszyny wirtualne VMware. Infrastruktura VMware jest niezbędna, aby wykonać powrotu po awarii.
+Serwery fizyczne replikowane do platformy Azure za pomocą Site Recovery mogą kończyć się niepowodzeniem tylko jako maszyny wirtualne VMware. Do powrotu po awarii potrzebna jest infrastruktura VMware.
 
 Przełączanie do trybu failover i powrót po awarii odbywa się w czterech etapach:
 
 1. **Przełączenie do trybu failover na platformie Azure**: wprowadzenie maszyn w tryb failover z lokacji lokalnej do platformy Azure.
-2. **Ponowne włączanie ochrony maszyn wirtualnych na platformie Azure**: Ponowne włączanie ochrony maszyn wirtualnych platformy Azure, aby rozpoczynały się replikację maszyn wirtualnych programu VMware w środowisku lokalnym.
+2. **Ponowne włączanie ochrony maszyn wirtualnych na platformie Azure**: Ponownie Włącz ochronę maszyn wirtualnych platformy Azure, aby rozpocząć replikację z powrotem do lokalnych maszyn wirtualnych programu VMware.
 3. **Przełączenie do trybu failover w lokacji lokalnej**: uruchomienie trybu failover w celu powrotu po awarii z platformy Azure.
-4. **Ponowne włączanie ochrony lokalnych maszyn wirtualnych**: Po danych ma powrót po awarii, ponownie włączyć ochronę maszyn wirtualnych programu VMware w środowisku lokalnym, możesz nie udało się ponownie, w tak, aby rozpoczęcia replikacji do platformy Azure.
+4. **Ponowne włączanie ochrony lokalnych maszyn wirtualnych**: Po awarii danych ponownie Włącz ochronę lokalnych maszyn wirtualnych programu VMware, do których nie udało się powrócić, aby rozpocząć replikację do platformy Azure.
 
 ## <a name="verify-server-properties"></a>Sprawdź właściwości serwera
 
-Sprawdź właściwości serwera i upewnij się, że spełnia on [wymagania dotyczące usługi Azure](vmware-physical-azure-support-matrix.md#replicated-machines) maszyn wirtualnych platformy Azure.
+Sprawdź właściwości serwera i upewnij się, że jest ono zgodne z [wymaganiami platformy Azure](vmware-physical-azure-support-matrix.md#replicated-machines) dla maszyn wirtualnych platformy Azure.
 
-1. W **chronione elementy**, kliknij przycisk **zreplikowane elementy**i wybierz maszynę.
+1. W obszarze **chronione elementy**kliknij pozycję **zreplikowane elementy**, a następnie wybierz maszynę.
 
-2. W **zreplikowany element** , znajduje się podsumowanie informacji o maszynie, stan kondycji, a najnowsze dostępne punkty odzyskiwania. Kliknij przycisk **Właściwości**, aby wyświetlić więcej szczegółów.
+2. W okienku **replikowany element** znajduje się podsumowanie informacji o maszynie, kondycji i najnowszych dostępnych punktów odzyskiwania. Kliknij przycisk **Właściwości**, aby wyświetlić więcej szczegółów.
 3. W obszarze **Obliczenia i sieć** można zmodyfikować nazwę platformy Azure, grupę zasobów, rozmiar docelowy, [zestaw dostępności](../virtual-machines/windows/tutorial-availability-sets.md) i ustawienia dysku zarządzanego
 4. Możesz wyświetlać i modyfikować ustawienia sieciowe, w tym sieć/podsieć, w której zlokalizowana będzie maszyna wirtualna na platformie Azure po wejściu w tryb failover, oraz adres IP, który będzie do niej przypisany.
-5. W **dysków**, można wyświetlić informacje o maszynie systemu operacyjnego i dysków z danymi.
+5. W obszarze **dyski**można wyświetlić informacje o systemie operacyjnym komputera i dyskach z danymi.
 
 ## <a name="run-a-failover-to-azure"></a>Przełączanie do trybu failover na platformie Azure
 
 1. W obszarze **Ustawienia** > **Zreplikowane elementy** kliknij maszynę wirtualną > **Tryb failover**.
 2. W obszarze **Tryb failover** wybierz **Punkt odzyskiwania**, którego chcesz użyć do przełączenia do trybu failover. Możesz użyć jednej z następujących opcji:
    - **Najnowszy**: ta opcja najpierw przetwarza wszystkie dane wysyłane do usługi Site Recovery. Zapewnia najniższą wartość celu puntu odzyskiwania, ponieważ maszyna wirtualna platformy Azure utworzona po przejściu do trybu failover zawiera wszystkie dane, które zostały zreplikowane w usłudze Site Recovery do momentu włączenia trybu failover.
-   - **Najnowszy przetworzony**: Ta opcja nie powiedzie się za pośrednictwem maszyny do najnowszego punktu odzyskiwania przetworzonego przez usługę Site Recovery. Ta opcja zapewnia niską wartość celu czasu odzyskiwania, ponieważ nie wymaga przetwarzania nieprzetworzonych danych.
-   - **Najnowszy spójny na poziomie aplikacji**: Ta opcja nie powiedzie się za pośrednictwem komputera najnowszy spójny na poziomie aplikacji punkt przywracania przetworzone przez usługę Site Recovery.
+   - **Najnowszy przetworzony**: Ta opcja powoduje przełączenie komputera w tryb failover do najnowszego punktu odzyskiwania przetworzonego przez Site Recovery. Ta opcja zapewnia niską wartość celu czasu odzyskiwania, ponieważ nie wymaga przetwarzania nieprzetworzonych danych.
+   - **Najnowszy spójny na poziomie aplikacji**: Ta opcja powoduje przełączenie komputera w tryb failover do najnowszego punktu odzyskiwania spójnego na poziomie aplikacji przetworzonego przez Site Recovery.
    - **Niestandardowy**: umożliwia określenie punktu odzyskiwania.
 
-3. Wybierz **Zamknij maszynę przed rozpoczęciem pracy awaryjnej** Jeśli chcesz, aby Usługa Site Recovery, aby spróbować zamknąć maszyny źródłowej przed wyzwoleniem trybu failover. Przełączanie do trybu failover będzie kontynuowane, nawet jeśli zamknięcie nie powiedzie się. Na stronie **Zadania** można śledzić postęp trybu failover.
+3. Wybierz opcję **Zamknij maszynę przed rozpoczęciem pracy w trybie failover** , jeśli chcesz, aby Site Recovery próbuje zamknąć maszynę źródłową przed wyzwoleniem trybu failover. Przełączanie do trybu failover będzie kontynuowane, nawet jeśli zamknięcie nie powiedzie się. Na stronie **Zadania** można śledzić postęp trybu failover.
 4. Jeśli przeprowadzono przygotowanie do nawiązania połączenia z maszyną wirtualną platformy Azure, należy po przełączeniu w tryb failover nawiązać połączenie w celu weryfikacji.
 5. Po weryfikacji należy **Zatwierdzić** tryb failover. To działanie usuwa wszystkie dostępne punkty odzyskiwania.
 
 > [!WARNING]
-> Nie Anuluj trybu failover w toku. Przed rozpoczęciem pracy awaryjnej, powoduje zatrzymanie replikacji maszyny. Jeśli anulujesz tryb failover, zostaje zatrzymana, ale komputer nie zostanie ponownie zreplikowana.
-> Dla serwerów fizycznych pracy awaryjnej dodatkowe przetwarzanie może zająć około 8 – 10 minut.
+> Nie Anuluj trybu failover w toku. Przed rozpoczęciem pracy w trybie failover replikacja maszyny zostaje zatrzymana. Jeśli anulujesz tryb failover, zatrzyma się, ale maszyna nie zostanie ponownie zreplikowana.
+> W przypadku serwerów fizycznych dodatkowe przetwarzanie trybu failover może potrwać około ośmiu do dziesięciu minut.
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Przygotowanie do połączenia z maszynami wirtualnymi Azure po przejściu do trybu failover
 
@@ -65,20 +65,20 @@ Wykonaj czynności opisane [tutaj](site-recovery-failover-to-azure-troubleshoot.
 
 ## <a name="create-a-process-server-in-azure"></a>Tworzenie serwera przetwarzania na platformie Azure
 
-Serwer przetwarzania otrzymuje dane z maszyny wirtualnej Azure i wysyła je do lokacji lokalnej. Sieci o małych opóźnieniach jest wymagany między serwerem przetwarzania a chronioną maszynę.
+Serwer przetwarzania otrzymuje dane z maszyny wirtualnej Azure i wysyła je do lokacji lokalnej. Między serwerem przetwarzania a chronioną maszyną wymagana jest sieć o małym opóźnieniu.
 
 - Jeśli masz połączenie Azure ExpressRoute, możesz użyć do celów testowych lokalnego serwera przetwarzania, który jest automatycznie instalowany na serwerze konfiguracji.
 - Jeśli masz połączenie VPN lub jeśli przeprowadzasz powrót po awarii w środowisku produkcyjnym, musisz na potrzeby powrotu po awarii skonfigurować maszynę wirtualną Azure jako serwer przetwarzania na platformie Azure.
-- Postępuj zgodnie z instrukcjami w [w tym artykule](vmware-azure-set-up-process-server-azure.md) skonfigurować serwer przetwarzania na platformie Azure.
+- Postępuj zgodnie z instrukcjami w [tym artykule](vmware-azure-set-up-process-server-azure.md) , aby skonfigurować serwer przetwarzania na platformie Azure.
 
 ## <a name="configure-the-master-target-server"></a>Konfigurowanie głównego serwera docelowego
 
-Domyślnie główny serwer docelowy odbiera dane podczas powrotu po awarii. Działa na lokalnym serwerze konfiguracji.
+Domyślnie główny serwer docelowy otrzymuje dane powrotu po awarii. Jest on uruchamiany na lokalnym serwerze konfiguracji.
 
-- W przypadku maszyny Wirtualnej VMware, do którego możesz wykonać powrotu po awarii na hoście ESXi zarządzanym przez serwer VMware vCenter, główny serwer docelowy musi mieć dostęp do magazynu danych maszyny Wirtualnej (VMDK), aby zapisać zreplikowane dane na dyskach maszyny Wirtualnej. Upewnij się, że magazyn maszyny wirtualnej jest zainstalowany na hoście głównego serwera docelowego z dostępem do odczytu/zapisu.
-- Jeśli host ESXi, który nie jest zarządzany przez serwer vCenter, Usługa Site Recovery utworzy nową maszynę Wirtualną podczas ponownego włączania ochrony. Maszyna wirtualna jest tworzona na hoście ESX, na którym utworzono główny cel maszyny Wirtualnej. Dysk twardy maszyny wirtualnej musi znajdować się w magazynie danych dostępnym dla hosta, na którym uruchomiony jest główny serwer docelowy.
-- Dla maszyn fizycznych, które możesz wykonać powrotu po awarii należy najpierw ukończyć odnajdowanie hosta, na którym jest uruchomiona na głównym serwerze docelowym, zanim można ponownie włączyć ochronę maszyny.
-- Innym rozwiązaniem, jeśli lokalna maszyna wirtualna już istnieje dla powrotu po awarii jest go usunąć przed wykonaniem powrotu po awarii. W takim przypadku podczas powrotu po awarii zostanie utworzona nowa maszyna wirtualna na tym samym hoście ESX, na którym znajduje się główny serwer docelowy. W przypadku powrotu po awarii do innej lokalizacji dane są odzyskiwane do tego samego magazynu danych i tego samego hosta ESX, który jest używany przez lokalny główny serwer docelowy.
+- Jeśli maszyna wirtualna VMware, do której nastąpi powrót po awarii, znajduje się na hoście ESXi zarządzanym przez VMware vCenter Server, główny serwer docelowy musi mieć dostęp do magazynu danych maszyny wirtualnej (VMDK), aby zapisać zreplikowane dane na dyskach maszyn wirtualnych. Upewnij się, że magazyn maszyny wirtualnej jest zainstalowany na hoście głównego serwera docelowego z dostępem do odczytu/zapisu.
+- Jeśli host ESXi, który nie jest zarządzany przez serwer vCenter, Usługa Site Recovery tworzy nową maszynę wirtualną podczas jej ochrony. Maszyna wirtualna jest tworzona na hoście ESX, na którym tworzysz główną docelową maszynę wirtualną. Dysk twardy maszyny wirtualnej musi znajdować się w magazynie danych dostępnym dla hosta, na którym uruchomiony jest główny serwer docelowy.
+- W przypadku maszyn fizycznych, które zostały przywrócone po awarii, należy przeprowadzić odnajdywanie hosta, na którym jest uruchomiony główny serwer docelowy, zanim będzie można ponownie włączyć ochronę maszyny.
+- Inna opcja, jeśli lokalna maszyna wirtualna już istnieje dla powrotu po awarii, jest usuwana przed powrotem po awarii. W takim przypadku podczas powrotu po awarii zostanie utworzona nowa maszyna wirtualna na tym samym hoście ESX, na którym znajduje się główny serwer docelowy. W przypadku powrotu po awarii do innej lokalizacji dane są odzyskiwane do tego samego magazynu danych i tego samego hosta ESX, który jest używany przez lokalny główny serwer docelowy.
 - Na głównym serwerze docelowym nie można używać narzędzia Storage vMotion. W przypadku jego użycia powrót po awarii nie będzie możliwy, ponieważ dyski nie będą dostępne. Wyklucz główne serwery docelowe z listy vMotion.
 
 ## <a name="reprotect-azure-vms"></a>Ponowne włączanie ochrony maszyn wirtualnych Azure

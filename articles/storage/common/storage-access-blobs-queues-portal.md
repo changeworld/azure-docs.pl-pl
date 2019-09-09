@@ -9,12 +9,12 @@ ms.date: 03/19/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: abbd436e5d1c88c53af95fd8ba9add20fa67c8e4
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 8d19724883e6c2b3630de6100b1b4ca9fd9250a1
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640890"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813355"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>Używanie Azure Portal do uzyskiwania dostępu do danych obiektu BLOB lub kolejki
 
@@ -22,7 +22,7 @@ Gdy uzyskujesz dostęp do danych obiektu BLOB lub kolejki przy użyciu [Azure Po
 
 ## <a name="permissions-needed-to-access-blob-or-queue-data"></a>Uprawnienia do uzyskiwania dostępu do danych obiektu BLOB lub kolejki
 
-W zależności od tego, jak chcesz autoryzować dostęp do obiektu BLOB lub danych w kolejce w Azure Portal, musisz mieć określone uprawnienia. W większości przypadków te uprawnienia są udostępniane za pośrednictwem kontroli dostępu opartej na rolach (RBAC). Aby uzyskać więcej informacji na temat RBAC, zobacz [co to jest kontrola dostępu oparta na rolach (RBAC)?](../../role-based-access-control/overview.md)
+W zależności od tego, jak chcesz autoryzować dostęp do danych obiektu BLOB lub kolejki w Azure Portal, będziesz potrzebować określonych uprawnień. W większości przypadków te uprawnienia są udostępniane za pośrednictwem kontroli dostępu opartej na rolach (RBAC). Aby uzyskać więcej informacji na temat RBAC, zobacz [co to jest kontrola dostępu oparta na rolach (RBAC)?](../../role-based-access-control/overview.md)
 
 ### <a name="account-access-key"></a>Klucz dostępu do konta
 
@@ -57,7 +57,7 @@ Wbudowane role obsługujące dostęp do danych obiektu BLOB lub kolejki obejmuj�
 Role niestandardowe mogą obsługiwać różne kombinacje tych samych uprawnień zapewnianych przez wbudowane role. Aby uzyskać więcej informacji na temat tworzenia niestandardowych ról RBAC, zobacz [role niestandardowe dla zasobów platformy Azure](../../role-based-access-control/custom-roles.md) i [Opis ról dla zasobów platformy Azure](../../role-based-access-control/role-definitions.md).
 
 > [!NOTE]
-> Wyświetlanie listy kolejek z rolą klasycznego administratora subskrypcji nie jest obsługiwane. Aby wyświetlić listę kolejek, użytkownik musi mieć przypisane do nich rolę **czytnika** Azure Resource Manager, rolę **czytnika danych kolejki magazynu** lub rolę współautora **danych kolejki magazynu** .
+> Wyświetlanie listy kolejek z rolą klasycznego administratora subskrypcji nie jest obsługiwane. Aby wyświetlić listę kolejek, użytkownik musi mieć przypisane do nich rolę **czytnika** Azure Resource Manager, rolę **czytnika danych kolejki magazynu** lub rolę **współautora danych kolejki magazynu** .
 
 ## <a name="navigate-to-blobs-or-queues-in-the-portal"></a>Nawigowanie do obiektów blob lub kolejek w portalu
 

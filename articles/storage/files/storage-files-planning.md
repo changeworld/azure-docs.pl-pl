@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 163c3cbaeed1526f08d047c3bf357232ccb534a3
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: dc532ed33fca5120736dfb9503d012b2877e675e
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802393"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806616"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 
@@ -155,7 +155,7 @@ Nowe udziały plików zaczynają się od pełnej liczby kredytów w swoim zasobn
 
 ## <a name="file-share-redundancy"></a>Nadmiarowość udziałów plików
 
-Azure Files udziały standardowe obsługuje trzy opcje nadmiarowości danych: Magazyn lokalnie nadmiarowy (LRS), magazyn strefowo nadmiarowy (ZRS), magazyn Geograficznie nadmiarowy (GRS) i magazyn Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza).
+Azure Files udziały standardowe obsługują cztery opcje nadmiarowości danych: Magazyn lokalnie nadmiarowy (LRS), magazyn strefowo nadmiarowy (ZRS), magazyn Geograficznie nadmiarowy (GRS) i magazyn Geograficznie nadmiarowy (GZRS) (wersja zapoznawcza).
 
 Azure Files udziały w warstwie Premium obsługują tylko Magazyn lokalnie nadmiarowy (LRS).
 

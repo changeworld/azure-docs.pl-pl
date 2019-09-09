@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5559d30921ea44679b4ecd24c77e26be163c18fc
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 53900bcade3f7a283309f5ee1c624c742a62ad3f
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375907"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812441"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Instrukcje: Planowanie implementacji dołączania hybrydowego Azure Active Directory
 
@@ -149,7 +149,7 @@ Poniższa tabela zawiera szczegółowe informacje na temat pomocy technicznej do
 | ----- | ----- | ----- | ----- |
 | Wzajemn | Federacyjne | Od wersji 1703 | Ogólnie dostępna |
 | Bez obsługi routingu | Federacyjne | Od wersji 1803 | Ogólnie dostępna |
-| Wzajemn | Zarządzane | Nieobsługiwane | |
+| Wzajemn | Zarządzane | Od wersji 1803 | Ogólnie dostępna usługa Azure AD SSPR w systemie Windows ekranu blokady nie jest obsługiwana |
 | Bez obsługi routingu | Zarządzane | Nieobsługiwane | |
 
 ## <a name="next-steps"></a>Następne kroki

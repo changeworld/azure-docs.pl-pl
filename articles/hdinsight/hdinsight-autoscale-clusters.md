@@ -1,6 +1,6 @@
 ---
 title: Automatyczne skalowanie klastrów usługi Azure HDInsight (wersja zapoznawcza)
-description: Automatyczne skalowanie klastrów przy użyciu funkcji automatycznego skalowania usługi HDInsight
+description: Automatyczne Apache Hadoop skalowania klastrów przy użyciu funkcji automatycznego skalowania usługi Azure HDInsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: hrasheed
-ms.openlocfilehash: f7e34d2bbad5f5d8e6b063269b7e87c314fdce90
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 877fc3a4e29fc1753d7b4f92091b34d4b2537846
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70770697"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810332"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>Automatyczne skalowanie klastrów usługi Azure HDInsight (wersja zapoznawcza)
 
@@ -85,7 +85,7 @@ Aby włączyć funkcję automatycznego skalowania z skalowaniem opartym na obci�
     * **Minimalna** liczba węzłów procesu roboczego.  
     * **Maksymalna** liczba węzłów procesu roboczego.  
 
-    ![Włącz opcję automatycznego skalowania na podstawie obciążenia węzła procesu roboczego](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
+    ![Włącz automatyczne skalowanie w węźle procesu roboczego](./media/hdinsight-autoscale-clusters/usingAutoscale.png)
 
 Początkowa liczba węzłów procesu roboczego musi należeć do zakresu od minimum do maksimum włącznie. Ta wartość definiuje początkowy rozmiar klastra podczas jego tworzenia. Minimalna liczba węzłów procesu roboczego musi być większa od zera.
 
@@ -103,7 +103,7 @@ Aby włączyć funkcję automatycznego skalowania z skalowaniem opartym na harmo
 1. Edytuj czas, w którym warunek powinien obowiązywać, oraz liczbę węzłów, do których należy przeskalować klaster.
 1. W razie konieczności Dodaj więcej warunków.
 
-    ![Włącz opcję automatycznego skalowania opartego na harmonogramie węzłów procesu roboczego](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
+    ![Włączanie tworzenia opartego na harmonogramie węzłów procesu roboczego](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-schedule-creation.png)
 
 Liczba węzłów musi należeć do zakresu od 1 do liczby wprowadzonych węzłów procesu roboczego przed dodaniem warunków.
 
@@ -111,7 +111,7 @@ Liczba węzłów musi należeć do zakresu od 1 do liczby wprowadzonych węzłó
 
 W przypadku skalowania opartego na ładowaniu i harmonogramie wybierz typ maszyny wirtualnej dla węzłów procesu roboczego, klikając pozycję **rozmiar węzła procesu roboczego** i **rozmiar węzła głównego**. Po wybraniu typu maszyny wirtualnej dla każdego typu węzła można zobaczyć szacowany zakres kosztów dla całego klastra. Dostosuj typy maszyn wirtualnych tak, aby pasowały do budżetu.
 
-![Włącz opcję automatycznego skalowania opartego na harmonogramie węzłów procesu roboczego](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-node-size-selection.png)
+![Włącz rozmiar węzła skalowania automatycznego na podstawie harmonogramu węzła procesu roboczego](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-node-size-selection.png)
 
 Twoja subskrypcja ma przydział pojemności dla każdego regionu. Łączna liczba rdzeni węzłów głównych połączonych z maksymalną liczbą węzłów procesu roboczego nie może przekroczyć limitu przydziału pojemności. Ten limit przydziału jest jednak limitem nieelastycznym; zawsze możesz utworzyć bilet pomocy technicznej, aby ułatwić jego zwiększenie.
 
@@ -189,7 +189,7 @@ Można utworzyć klaster usługi HDInsight z użyciem harmonogramu `autoscale` a
 #### <a name="using-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 Aby włączyć automatyczne skalowanie w uruchomionym klastrze, wybierz pozycję **rozmiar klastra** w obszarze **Ustawienia**. Następnie kliknij pozycję **Włącz automatyczne skalowanie**. Wybierz odpowiedni typ automatycznego skalowania i wprowadź opcje skalowania opartego na załadowaniu lub na podstawie harmonogramu. Na koniec kliknij przycisk **Zapisz**.
 
-![Włącz opcję automatycznego skalowania opartego na harmonogramie węzłów procesu roboczego](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
+![Włącz automatyczne skalowanie uruchomionego klastra opartego na harmonogramie węzłów procesu roboczego](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-enable-running-cluster.png)
 
 #### <a name="using-the-rest-api"></a>Korzystanie z interfejsu API REST
 Aby włączyć lub wyłączyć funkcję automatycznego skalowania w uruchomionym klastrze przy użyciu interfejsu API REST, należy wysłać żądanie POST do punktu końcowego automatycznego skalowania, jak pokazano w poniższym fragmencie kodu:
@@ -231,7 +231,7 @@ Uruchomione zadania będą nadal wykonywane i kończone. Oczekujące zadania bę
 
 Stan klastra wymieniony w Azure Portal może pomóc w monitorowaniu działań skalowania automatycznego.
 
-![Włącz opcję automatycznego skalowania na podstawie obciążenia węzła procesu roboczego](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
+![Włącz stan klastra skalowania automatycznego na podstawie obciążenia węzła procesu roboczego](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-cluster-status.png)
 
 Na poniższej liście objaśniono wszystkie komunikaty o stanie klastra, które mogą zostać wyświetlone.
 
@@ -251,7 +251,7 @@ Możesz wyświetlić historię skalowania i skalowania w poziomie klastra w rama
 
 Wybierz pozycję **metryki** w obszarze **monitorowanie**. Następnie w polu listy rozwijanej **Metryka** kliknij pozycję **Dodaj metrykę** i **liczbę aktywnych procesów roboczych** . Kliknij przycisk w prawym górnym rogu, aby zmienić zakres czasu.
 
-![Włącz opcję automatycznego skalowania opartego na harmonogramie węzłów procesu roboczego](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
+![Włącz metrykę skalowania automatycznego opartego na harmonogramie węzłów procesu roboczego](./media/hdinsight-autoscale-clusters/hdinsight-autoscale-clusters-chart-metric.png)
 
 
 ## <a name="next-steps"></a>Następne kroki
