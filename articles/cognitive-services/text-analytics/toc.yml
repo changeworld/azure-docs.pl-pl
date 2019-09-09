@@ -12,7 +12,7 @@
 - name: Przewodniki Szybki start
   expanded: true
   items:
-    - name: Klient
+    - name: Biblioteka kliencka
       items:
         - name: 'C#'
           href: quickstarts/csharp.md
@@ -60,7 +60,7 @@
       href: How-tos/text-analytics-how-to-sentiment-analysis.md
     - name: Wyodrębnianie kluczowych fraz
       href: How-tos/text-analytics-how-to-keyword-extraction.md
-    - name: Wywoływanie rozpoznawania jednostek nazwanych
+    - name: Rozpoznawanie jednostek nazwanych
       href: How-tos/text-analytics-how-to-entity-linking.md
     - name: Korzystanie z kontenerów
       items:

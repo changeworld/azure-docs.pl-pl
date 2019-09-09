@@ -450,8 +450,6 @@
           href: control-flow-webhook-activity.md
     - name: Przekształcenia przepływu danych
       items:
-        - name: Pole o stałej szerokości
-          href: how-to-fixed-width.md
         - name: Agregacja
           href: data-flow-aggregate.md
         - name: Modyfikuj wiersz
@@ -610,6 +608,10 @@
           href: data-migration-guidance-hdfs-azure-storage.md
         - name: Migrowanie danych z lokalnego serwera Netezza na platformę Azure
           href: data-migration-guidance-netezza-azure-sqldw.md
+    - name: Przekształcanie przy użyciu przepływu danych mapowania
+      items:
+        - name: Przetwarzanie plików tekstowych o stałej szerokości
+          href: how-to-fixed-width.md
 - name: Dokumentacja
   items:
     - name: .NET

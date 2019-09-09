@@ -1,0 +1,49 @@
+### YamlMime:Landing
+title: Dokumentacja wersji zapoznawczej usługi Azure HPC Cache
+summary: Przyspieszanie dostępu do plików na potrzeby obciążeń obliczeń o wysokiej wydajności (HPC) wymagających pod względem odczytu za pomocą usługi Azure HPC Cache
+metadata:
+  title: Usługa Microsoft Azure HPC Cache
+  description: Dowiedz się, jak utworzyć usługę Azure HPC Cache i używać jej w celu rozwiązania problemu z opóźnieniami między zasobami obliczeniowymi a magazynem. Usługa Azure HPC Cache jest przeznaczona dla opartych na plikach obciążeń wymagających pod względem odczytu i może ona utworzyć zagregowany wirtualny system plików obejmujący magazyn obiektów blob platformy Azure oraz lokalne sprzętowe serwery plików.
+  ms.service: hpc-cache
+  ms.topic: landing-page
+  ms.collection: collection
+  author: ekpgh
+  ms.author: v-erkell
+  ms.date: 08/30/2019
+  ms.openlocfilehash: 4d5935646c3266624395b3b29a34d9cf8d446de7
+  ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/06/2019
+  ms.locfileid: "70774559"
+landingContent:
+- title: Azure HPC Cache — informacje
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Azure HPC Cache?
+      url: hpc-cache-overview.md
+- title: Rozpoczęcie pracy
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurowanie wymagań wstępnych dla usługi Azure HPC Cache
+      url: hpc-cache-prereqs.md
+    - text: Tworzenie pamięci podręcznej
+      url: hpc-cache-create.md
+    - text: Dodawanie magazynu
+      url: hpc-cache-add-storage.md
+    - text: Instalowanie klientów
+      url: hpc-cache-mount.md
+  - linkListType: concept
+    links:
+    - text: Konfigurowanie zagregowanej przestrzeni nazw
+      url: hpc-cache-namespace.md
+    - text: Wypełnianie nowego magazynu obiektów blob
+      url: hpc-cache-ingest.md
+- title: Rozwiązywanie problemów
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Otwieranie biletu pomocy technicznej
+      url: hpc-cache-support-ticket.md

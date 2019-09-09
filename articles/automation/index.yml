@@ -1,61 +1,95 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Dokumentacja użytkownika usługi Azure Automation
+### YamlMime:Landing
+title: Dokumentacja usługi Azure Automation
 metadata:
-  document_id: null
-  title: Dokumentacja usługi Azure Automation — samouczki i dokumentacja interfejsu API
-  description: 'Dowiedz się, jak korzystać z usługi Azure Automation'
+  document_id: 
+  title: Dokumentacja usługi Azure Automation
+  description: Dowiedz się, jak korzystać z usługi Automation w celu konfigurowania i automatyzowania zadań operacyjnych w środowisku hybrydowym.
   services: automation
-  author: georgewallace
+  author: bobbytreed
   manager: carmonm
   ms.service: automation
   ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 12/13/2017
-  ms.author: gwallace
-abstract:
-  description: 'Dowiedz się, jak korzystać z usługi Automation w celu konfigurowania i automatyzowania zadań operacyjnych w środowisku hybrydowym. Samouczki, dokumentacja interfejsu API oraz inne dokumenty przedstawiają, jak automatyzować procesy, zarządzać aktualizacjami, dostarczać konfigurację żądanego stanu, śledzić zmiany oraz zbierać dane spisu.'
-sections:
-  - title: 5-minutowe przewodniki Szybki start
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak zautomatyzować i skonfigurować środowisko Azure i środowisko hybrydowe za pomocą usługi Automation:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/automation/media/index/automation.svg
-            text: Tworzenie konta usługi Automation
-            href: /azure/automation/automation-quickstart-create-account
-          - image:
-              src: /azure/automation/media/index/runbook.svg
-            text: Tworzenie elementu runbook
-            href: /azure/automation/automation-quickstart-create-runbook
-          - image:
-              src: /azure/automation/media/index/dscconfig.svg
-            text: Tworzenie konfiguracji DSC
-            href: /azure/automation/automation-quickstart-dsc-configuration
-  - title: Samouczki krok po kroku
-    items:
-      - type: paragraph
-        text: 'Dowiedz się, jak zintegrować i wdrożyć środowisko Azure i środowisko hybrydowe oraz zarządzać nim.'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/automation/automation-watchers-tutorial">Konfigurowanie zadań obserwatora</a>
-          - html: <a href="/azure/automation/automation-tutorial-update-management">Zarządzanie aktualizacjami na maszynie wirtualnej</a>
-          - html: <a href="/azure/automation/automation-onboard-solutions">Dołączanie na dużą skalę</a>
-          - html: <a href="/azure/automation/automation-tutorial-installed-software">Identyfikowanie oprogramowania zainstalowanego na maszynie wirtualnej</a>
-          - html: <a href="/azure/automation/automation-tutorial-troubleshoot-changes">Rozwiązywanie problemów dotyczących zmian na maszynie wirtualnej</a>
-  - title: Dokumentacja
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Wiersz polecenia
-            html: <p><a href="/powershell/module/azurerm.automation">Program PowerShell</a></p>
-          - title: Języki
-            html: <p><a href="/dotnet/api/microsoft.azure.management.automation">.NET</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/automation">Interfejs API REST usługi Automation</a></p>
+  ms.date: 09/06/2019
+  ms.author: robreed
+  ms.openlocfilehash: 3242e2c699e0f99164d6c5ecd2cf61441648b8e8
+  ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+  ms.translationtype: HT
+  ms.contentlocale: pl-PL
+  ms.lasthandoff: 09/06/2019
+  ms.locfileid: "70743732"
+landingContent:
+- title: Rozpocznij pracę z usługą Azure Automation
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Co to jest usługa Automation?
+      url: automation-intro.md
+  - linkListType: get-started
+    links:
+    - text: Tworzenie konta usługi Automation
+      url: automation-quickstart-create-account.md
+  - linkListType: quickstart
+    links:
+    - text: Tworzenie elementu runbook
+      url: automation-quickstart-create-runbook.md
+- title: Zarządzanie aktualizacjami maszyn wirtualnych
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Omówienie rozwiązania Update Management
+      url: automation-update-management.md
+  - linkListType: get-started
+    links:
+    - text: Zarządzanie aktualizacjami dla wielu maszyn wirtualnych
+      url: manage-update-multi.md
+  - linkListType: deploy
+    links:
+    - text: Aktualizowanie, inwentaryzowanie i śledzenie zmian na maszynach wirtualnych platformy Azure
+      url: automation-onboard-solutions.md
+- title: Konfigurowanie maszyn wirtualnych przy użyciu konfiguracji żądanego stanu
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Konfiguracja stanu — omówienie
+      url: automation-dsc-overview.md
+  - linkListType: concept
+    links:
+    - text: PowerShell DSC
+      url: /powershell/dsc/overview/overview
+  - linkListType: quickstart
+    links:
+    - text: Tworzenie konfiguracji DSC na podstawie zasad grupy
+      url: /powershell/dsc/quickstarts/gpo-quickstart
+  - linkListType: tutorial
+    links:
+    - text: Konfigurowanie serwerów i zarządzanie dryftem za pomocą konfiguracji stanu
+      url: tutorial-configure-servers-desired-state.md
+- title: Praca ze środowiskami hybrydowymi
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Omówienie hybrydowego procesu roboczego elementu Runbook
+      url: automation-hybrid-runbook-worker.md
+  - linkListType: deploy
+    links:
+    - text: Wdrażanie hybrydowego procesu roboczego elementu Runbook systemu Windows
+      url: automation-windows-hrw-install.md
+    - text: Wdrażanie hybrydowego procesu roboczego elementu Runbook systemu Linux
+      url: automation-linux-hrw-install.md
+    - text: Uruchamianie elementów Runbook w hybrydowym procesie roboczym elementu Runbook
+      url: automation-hrw-run-runbooks.md
+- title: Automatyzacja między usługami
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Wysyłanie wiadomości e-mail z poziomu elementu runbook za pomocą usługi SendGrid
+      url: automation-send-email.md
+  - linkListType: get-started
+    links:
+    - text: Uruchamianie elementu Runbook z alertów platformy Azure
+      url: automation-create-alert-triggered-runbook.md
+  - linkListType: deploy
+    links:
+    - text: Wdrażanie szablonu usługi Resource Manager w elemencie Runbook programu PowerShell usługi Automation
+      url: automation-deploy-template-runbook.md

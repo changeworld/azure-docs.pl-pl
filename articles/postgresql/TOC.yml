@@ -194,7 +194,7 @@
       items:
         - name: Portal Azure
           href: howto-auto-grow-storage-portal.md
-        - name: Portal Azure
+        - name: Interfejs wiersza polecenia platformy Azure
           href: howto-auto-grow-storage-cli.md
     - name: Dzienniki dostępu serwera
       items:

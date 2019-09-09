@@ -113,10 +113,12 @@
       href: concept-deep-learning-vs-machine-learning.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Zarządzanie obszarami roboczymi
+    - name: Tworzenie obszarów roboczych i zarządzanie nimi
       items:
-        - name: Używanie portalu dla obszarów roboczych
+        - name: Korzystanie z witryny Azure Portal
           href: how-to-manage-workspace.md
+        - name: Interfejs wiersza polecenia platformy Azure
+          href: how-to-manage-workspace-cli.md
         - name: Używanie szablonu usługi Resource Manager
           displayName: arm
           href: how-to-create-workspace-template.md

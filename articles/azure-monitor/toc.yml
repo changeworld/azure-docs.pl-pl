@@ -97,20 +97,12 @@
       items:
         - name: Omówienie
           href: platform/alerts-overview.md
-        - name: Alerty klasyczne
-          href: platform/alerts-classic.overview.md
         - name: Alerty dotyczące metryk
           href: platform/alerts-metric-overview.md
         - name: Alerty dotyczące dzienników
           href: platform/alerts-unified-log.md
         - name: Alerty dotyczące dziennika aktywności
           href: platform/activity-log-alerts.md
-        - name: Typowe schematy alertów
-          href: platform/alerts-common-schema.md
-        - name: Reguły akcji
-          href: platform/alerts-action-rules.md
-        - name: Grupy inteligentne
-          href: platform/alerts-smartgroups-overview.md
         - name: Analiza zmian
           href: app/change-analysis.md
     - name: Wizualizowanie danych
@@ -516,11 +508,7 @@
                   href: insights/container-insights-troubleshoot.md
             - name: Platforma Docker i monitorowanie kontenerów systemu Windows
               href: insights/containers.md
-        - name: Magazyn
-          items:
-            - name: Usługa Azure Monitor dla magazynu
-              href: insights/storage-insights-overview.md
-        - name: Maszyny wirtualne
+        - name: System operacyjny (maszyny wirtualne i inne)
           items:
             - name: Agenci
               items:
@@ -530,26 +518,38 @@
                   items:
                     - name: Omówienie
                       href: platform/diagnostics-extension-overview.md
-                    - name: Wysyłanie do usługi Azure Storage
-                      href: platform/diagnostics-extension-to-storage.md
-                    - name: Wysyłanie do usługi Application Insights
-                      href: platform/diagnostics-extension-to-application-insights.md
-                    - name: Wysyłanie do usługi Event Hubs
-                      href: platform/diagnostics-extension-stream-event-hubs.md
-                    - name: Rozwiązywanie problemów
-                      href: platform/diagnostics-extension-troubleshooting.md
-                    - name: Przygotowywanie do zastosowania formatu dzienników diagnostycznych JSON Lines
-                      href: platform/diagnostic-logs-append-blobs.md
-                    - name: Gość maszyny wirtualnej do metryk
-                      href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
-                    - name: Wysyłanie metryk systemu operacyjnego gościa do metryk — maszyna wirtualna systemu Linux (Telegraf)
-                      href: platform/collect-custom-metrics-linux-telegraf.md
-                    - name: Gość zestawu skalowania maszyn wirtualnych do metryk
-                      href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
-                    - name: Gość maszyny wirtualnej (klasycznej) do metryk
-                      href: platform/collect-custom-metrics-guestos-vm-classic.md
-                    - name: Gość usługi w chmurze do metryk
-                      href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                    - name: Windows
+                      items:
+                        - name: Historia wersji
+                          href: platform/diagnostics-extension-schema.md
+                        - name: Schemat
+                          href: platform/diagnostics-extension-schema-1dot3.md
+                        - name: Wysyłanie do usługi Azure Storage
+                          href: platform/diagnostics-extension-to-storage.md
+                        - name: Wysyłanie do usługi Application Insights
+                          href: platform/diagnostics-extension-to-application-insights.md
+                        - name: Wysyłanie do usługi Event Hubs
+                          href: platform/diagnostics-extension-stream-event-hubs.md
+                        - name: Wysyłanie do usługi Azure Monitor jako metryki niestandardowe
+                          items:
+                            - name: Maszyna wirtualna
+                              href: platform/collect-custom-metrics-guestos-resource-manager-vm.md
+                            - name: Zestaw skalowania maszyn wirtualnych
+                              href: platform/collect-custom-metrics-guestos-resource-manager-vmss.md
+                            - name: Klasyczna maszyna wirtualna
+                              href: platform/collect-custom-metrics-guestos-vm-classic.md
+                            - name: Usługa w chmurze
+                              href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
+                        - name: Format dzienników diagnostycznych JSON Lines
+                          href: platform/diagnostic-logs-append-blobs.md
+                        - name: Rozwiązywanie problemów
+                          href: platform/diagnostics-extension-troubleshooting.md
+                    - name: Linux
+                      items:
+                        - name: Używanie z maszynami wirtualnymi
+                          href: ../virtual-machines/extensions/diagnostics-linux.md
+                        - name: Metryki niestandardowe z programem Telegraf
+                          href: platform/collect-custom-metrics-linux-telegraf.md
                 - name: Konfigurowanie agentów usługi Log Analytics
                   items:
                     - name: Omówienie
@@ -645,13 +645,21 @@
               href: platform/computer-groups.md
             - name: Configuration Manager
               href: platform/collect-sccm.md
-        - name: Bazy danych
-          items:
-            - name: Azure SQL
-              href: insights/azure-sql.md
-            - name: Oprogramowanie SQL Server
-              href: insights/sql-assessment.md
         - name: Zasoby platformy Azure
+          items:
+            - name: Dzienniki diagnostyczne
+              items:
+                - name: Omówienie
+                  href: platform/diagnostic-logs-overview.md
+                - name: Zbieranie dzienników
+                  href: platform/diagnostic-logs-stream-log-store.md
+                - name: Zbieranie z usługi Azure Storage
+                  href: platform/azure-storage-iis-table.md
+                - name: Archiwizowanie w magazynie
+                  href: platform/archive-diagnostic-logs.md
+                - name: Włączanie przy użyciu szablonów usługi Resource Manager
+                  href: platform/diagnostic-logs-stream-template.md
+        - name: Subskrypcja platformy Azure
           items:
             - name: Dziennik aktywności
               items:
@@ -667,20 +675,6 @@
                   href: platform/activity-log-export.md
                 - name: Schemat
                   href: platform/activity-log-schema.md
-            - name: Dzienniki diagnostyczne
-              items:
-                - name: Omówienie
-                  href: platform/diagnostic-logs-overview.md
-                - name: Zbieranie dzienników
-                  href: platform/diagnostic-logs-stream-log-store.md
-                - name: Zbieranie z usługi Azure Storage
-                  href: platform/azure-storage-iis-table.md
-                - name: Archiwizowanie w magazynie
-                  href: platform/archive-diagnostic-logs.md
-                - name: Przesyłanie strumieniowe danych do usługi Event Hubs
-                  href: platform/diagnostic-logs-stream-event-hubs.md
-                - name: Włączanie przy użyciu szablonów usługi Resource Manager
-                  href: platform/diagnostic-logs-stream-template.md
             - name: Przesyłanie strumieniowe danych do usługi Event Hubs
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault Analytics
@@ -689,6 +683,16 @@
               href: ../service-fabric/service-fabric-diagnostics-oms-agent.md
             - name: Monitorowanie grup zasobów
               href: insights/resource-group-insights.md
+        - name: Magazyn
+          items:
+            - name: Usługa Azure Monitor dla magazynu
+              href: insights/storage-insights-overview.md
+        - name: Bazy danych
+          items:
+            - name: Azure SQL
+              href: insights/azure-sql.md
+            - name: Oprogramowanie SQL Server
+              href: insights/sql-assessment.md
         - name: Sieci
           items:
             - name: Analiza sieci
@@ -729,18 +733,20 @@
           items:
             - name: Metryki niestandardowe
               href: platform/metrics-custom-overview.md
+            - name: Interfejs API REST metryk
+              href: platform/metrics-store-custom-rest-api.md
             - name: Interfejs API modułu zbierającego dane usługi Log Analytics
               href: platform/data-collector-api.md
             - name: Przykładowy potok interfejsu API modułu zbierającego dane usługi Log Analytics
               href: platform/create-pipeline-datacollector-api.md
-            - name: Interfejs API REST metryk
-              href: platform/metrics-store-custom-rest-api.md
         - name: Korzystanie z programu System Center
           items:
             - name: Łączenie programu Operations Manager
               href: platform/om-agents.md
             - name: Ocena programu Operations Manager
               href: insights/scom-assessment.md
+        - name: Przesyłanie strumieniowe danych do usługi Event Hubs
+          href: platform/diagnostic-logs-stream-event-hubs.md
     - name: Analizowanie danych
       items:
         - name: Metryki
@@ -873,7 +879,7 @@
               href: app/monitor-web-app-availability.md
             - name: Alerty dotyczące metryk
               href: app/alerts.md
-        - name: Reguły alertów metryk platformy
+        - name: Reguły alertów metryk
           items:
             - name: Zarządzanie alertami metryk
               href: platform/alerts-metric.md
@@ -899,28 +905,40 @@
               href: platform/alerts-activity-log.md
             - name: Migrowanie zdarzeń zarządzania do alertów dziennika aktywności
               href: platform/migrate-management-alerts.md
-        - name: Grupy akcji
+        - name: Alerty dotyczące kondycji usługi w dzienniku aktywności
           items:
+            - name: Wyświetlanie powiadomień
+              href: platform/service-notifications.md
+            - name: Konfigurowanie alertów dotyczących zdarzeń powiadomień
+              href: platform/alerts-activity-log-service-notifications.md
+        - name: Powiadomienia i akcje
+          items:
+            - name: Reguły akcji (wersja zapoznawcza)
+              href: platform/alerts-action-rules.md
             - name: Tworzenie grupy akcji
               href: platform/action-groups.md
-            - name: Schemat elementów webhook
-              href: platform/activity-log-alerts-webhook.md
+            - name: Typowe schematy alertów
+              href: platform/alerts-common-schema.md
             - name: Definicja typowego schematu alertów
               href: platform/alerts-common-schema-definitions.md
+            - name: Integracja typowego schematu alertów z usługą Logic Apps
+              href: platform/alerts-common-schema-integrations.md
+            - name: Schemat elementów webhook
+              href: platform/activity-log-alerts-webhook.md
             - name: Zachowanie alertów SMS
               href: platform/alerts-sms-behavior.md
-            - name: Ograniczanie częstotliwości alertów
+            - name: Ograniczanie częstotliwości powiadomień
               href: platform/alerts-rate-limiting.md
             - name: Tworzenie grup akcji przy użyciu usługi Resource Manager
               href: platform/action-groups-create-resource-manager-template.md
             - name: Implementowanie akcji aplikacji logiki
               href: platform/action-groups-logic-app.md
-            - name: Integracja typowego schematu alertów z usługą Logic Apps
-              href: platform/alerts-common-schema-integrations.md
         - name: Rozwiązanie usługi Alert Management
           href: platform/alert-management-solution.md
         - name: Interfejs użytkownika alertu
           items:
+            - name: Grupy inteligentne — informacje
+              href: platform/alerts-smartgroups-overview.md
             - name: Zarządzanie wystąpieniami alertów
               href: platform/alerts-managing-alert-instances.md
             - name: Zarządzanie grupami inteligentnymi
@@ -931,6 +949,8 @@
               href: platform/alerts-managing-nagios-zabbix-scom.md
         - name: Migrowanie reguł alertów klasycznych
           items:
+            - name: Alerty klasyczne — informacje
+              href: platform/alerts-classic.overview.md
             - name: Przygotowanie do migracji
               href: platform/alerts-prepare-migration.md
             - name: Omówienie narzędzia do migracji
@@ -945,12 +965,6 @@
               href: platform/alerts-enable-template.md
             - name: Alert metryki klasycznej wywołujący element webhook
               href: platform/alerts-webhooks.md
-        - name: Powiadomienia o kondycji usługi w dzienniku aktywności
-          items:
-            - name: Wyświetlanie powiadomień
-              href: platform/service-notifications.md
-            - name: Konfigurowanie alertów dotyczących zdarzeń powiadomień
-              href: platform/alerts-activity-log-service-notifications.md
         - name: Interfejs API alertów
           href: platform/api-alerts.md
         - name: Zarządzanie usługami IT
@@ -1057,6 +1071,18 @@
               href: app/data-model-metric-telemetry.md
             - name: Kontekst
               href: app/data-model-context.md
+            - name: Integracja z usługą Azure Functions
+              href: app/azure-functions-supported-features.md
+    - name: Metryki
+      items:
+        - name: Obsługiwane metryki
+          href: platform/metrics-supported.md
+        - name: Obsługiwane metryki dla nowszych alertów
+          href: platform/alerts-metric-near-real-time.md
+    - name: Dzienniki diagnostyczne
+      items:
+        - name: 'Usługi, kategorie i schematy dla dzienników diagnostycznych'
+          href: platform/diagnostic-logs-schema.md
     - name: Interfejs wiersza polecenia platformy Azure
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: Interfejs wiersza polecenia platformy Azure — usługa Application Insights (wersja zapoznawcza)
@@ -1081,25 +1107,6 @@
           href: /azure/templates/microsoft.insights/allversions
         - name: Dzienniki
           href: /azure/templates/microsoft.operationalinsights/allversions
-    - name: Metryki
-      items:
-        - name: Obsługiwane metryki
-          href: platform/metrics-supported.md
-        - name: Obsługiwane metryki dla nowszych alertów
-          href: platform/alerts-metric-near-real-time.md
-    - name: Dzienniki diagnostyczne
-      items:
-        - name: 'Usługi, kategorie i schematy dla dzienników diagnostycznych'
-          href: platform/diagnostic-logs-schema.md
-        - name: Schemat rozszerzenia Diagnostyki Azure
-          href: platform/diagnostics-extension-schema.md
-          items:
-            - name: 1.3 lub nowszy
-              href: platform/diagnostics-extension-schema-1dot3.md
-            - name: 1.2
-              href: platform/diagnostics-extension-schema-1dot2.md
-            - name: 1
-              href: platform/diagnostics-extension-schema-1dot0.md
     - name: Wycofywanie funkcji i interfejsu API
       items:
         - name: Klasyczne autoskalowanie i interfejs API metryk

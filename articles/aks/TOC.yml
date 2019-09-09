@@ -159,7 +159,7 @@
               href: configure-azure-cni.md
         - name: Utwórz wewnętrzny moduł równoważenia obciążenia.
           href: internal-lb.md
-        - name: Korzystanie z usługi Load Balancer w warstwie Standardowa (wersja zapoznawcza)
+        - name: Używanie modułu równoważenia obciążenia w warstwie Standardowa
           href: load-balancer-standard.md
         - name: Używanie statycznego adresu IP
           href: static-ip.md

@@ -455,6 +455,10 @@
           items:
             - name: 1 — Wykonywanie zapytania o dane
               href: tutorial-query-graph.md
+        - name: Dokumentacja
+          items:
+            - name: Nagłówki odpowiedzi
+              href: gremlin-headers.md
         - name: Przewodniki z instrukcjami
           items:
             - name: Modelowanie danych grafu
